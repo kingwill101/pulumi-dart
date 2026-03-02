@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'create_monitor_action.dart';
 import 'cron_trigger.dart';
 
 /// Base definition of a schedule
 class Schedule {
   /// [Required] Specifies the action of the schedule
-  final CreateMonitorAction action;
+  final pulumi.Input<CreateMonitorAction> action;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Display name of schedule.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Is the schedule enabled?
-  final bool? isEnabled;
+  final pulumi.Input<bool>? isEnabled;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// [Required] Specifies the trigger details
-  final CronTrigger trigger;
+  final pulumi.Input<CronTrigger> trigger;
 
   /// Creates a new [Schedule].
   /// [action] [Required] Specifies the action of the schedule
@@ -40,25 +41,25 @@ class Schedule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': action.toMap(),
+      'action': pulumi.Input.mapInputValue<CreateMonitorAction, Map<String, dynamic>>(action, (value) => value.toMap()),
       'description': ?description,
       'displayName': ?displayName,
       'isEnabled': ?isEnabled,
       'properties': ?properties,
       'tags': ?tags,
-      'trigger': trigger.toMap(),
+      'trigger': pulumi.Input.mapInputValue<CronTrigger, Map<String, dynamic>>(trigger, (value) => value.toMap()),
     };
   }
 
   factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
-      action: CreateMonitorAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled'] as bool,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      trigger: CronTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>()),
+      action: (CreateMonitorAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trigger: (CronTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

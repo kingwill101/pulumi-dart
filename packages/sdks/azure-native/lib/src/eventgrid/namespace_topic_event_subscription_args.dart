@@ -36,23 +36,15 @@ class NamespaceTopicEventSubscriptionArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicName] Name of the namespace topic.
   NamespaceTopicEventSubscriptionArgs({
-    pulumi.Output<DeliveryConfiguration>? deliveryConfiguration,
-    pulumi.Output<String>? eventDeliverySchema,
-    pulumi.Output<String>? eventSubscriptionName,
-    pulumi.Output<String>? expirationTimeUtc,
-    pulumi.Output<FiltersConfiguration>? filtersConfiguration,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> topicName,
-  }) :
-      deliveryConfiguration = pulumi.Input.asOptionalInput<DeliveryConfiguration>(deliveryConfiguration),
-      eventDeliverySchema = pulumi.Input.asOptionalInput<String>(eventDeliverySchema),
-      eventSubscriptionName = pulumi.Input.asOptionalInput<String>(eventSubscriptionName),
-      expirationTimeUtc = pulumi.Input.asOptionalInput<String>(expirationTimeUtc),
-      filtersConfiguration = pulumi.Input.asOptionalInput<FiltersConfiguration>(filtersConfiguration),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    this.deliveryConfiguration,
+    this.eventDeliverySchema,
+    this.eventSubscriptionName,
+    this.expirationTimeUtc,
+    this.filtersConfiguration,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class NamespaceTopicEventSubscriptionArgs {
 
   factory NamespaceTopicEventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceTopicEventSubscriptionArgs(
-      deliveryConfiguration: map['deliveryConfiguration'] == null ? null : pulumi.Output.create<DeliveryConfiguration>(DeliveryConfiguration.fromMap((map['deliveryConfiguration'] as Map).cast<String, dynamic>())),
-      eventDeliverySchema: map['eventDeliverySchema'] == null ? null : pulumi.Output.create<String>(map['eventDeliverySchema'] as String),
-      eventSubscriptionName: map['eventSubscriptionName'] == null ? null : pulumi.Output.create<String>(map['eventSubscriptionName'] as String),
-      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : pulumi.Output.create<String>(map['expirationTimeUtc'] as String),
-      filtersConfiguration: map['filtersConfiguration'] == null ? null : pulumi.Output.create<FiltersConfiguration>(FiltersConfiguration.fromMap((map['filtersConfiguration'] as Map).cast<String, dynamic>())),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      deliveryConfiguration: map['deliveryConfiguration'] == null ? null : (DeliveryConfiguration.fromMap((map['deliveryConfiguration'] as Map).cast<String, dynamic>())).input(),
+      eventDeliverySchema: map['eventDeliverySchema'] == null ? null : (map['eventDeliverySchema'] as String).input(),
+      eventSubscriptionName: map['eventSubscriptionName'] == null ? null : (map['eventSubscriptionName'] as String).input(),
+      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : (map['expirationTimeUtc'] as String).input(),
+      filtersConfiguration: map['filtersConfiguration'] == null ? null : (FiltersConfiguration.fromMap((map['filtersConfiguration'] as Map).cast<String, dynamic>())).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

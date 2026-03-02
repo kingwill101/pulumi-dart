@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Schedule info describing when the server should be started or stopped.
 class ScheduleItem {
   /// Start day.
-  final String startDay;
+  final pulumi.Input<String> startDay;
   /// Start time.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Stop day.
-  final String stopDay;
+  final pulumi.Input<String> stopDay;
   /// Stop time.
-  final String stopTime;
+  final pulumi.Input<String> stopTime;
 
   /// Creates a new [ScheduleItem].
   /// [startDay] Start day.
@@ -35,10 +36,10 @@ class ScheduleItem {
 
   factory ScheduleItem.fromMap(Map<String, dynamic> map) {
     return ScheduleItem(
-      startDay: map['startDay'] as String,
-      startTime: map['startTime'] as String,
-      stopDay: map['stopDay'] as String,
-      stopTime: map['stopTime'] as String,
+      startDay: (map['startDay'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      stopDay: (map['stopDay'] as String).input(),
+      stopTime: (map['stopTime'] as String).input(),
     );
   }
 }

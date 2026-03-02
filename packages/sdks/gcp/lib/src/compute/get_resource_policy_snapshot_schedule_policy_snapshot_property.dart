@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
   /// Creates the new snapshot in the snapshot chain labeled with the
   /// specified name. The chain name must be 1-63 characters long and comply
   /// with RFC1035.
-  final String chainName;
+  final pulumi.Input<String> chainName;
   /// Whether to perform a 'guest aware' snapshot.
-  final bool guestFlush;
+  final pulumi.Input<bool> guestFlush;
   /// A set of key-value pairs.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// Cloud Storage bucket location to store the auto snapshot
   /// (regional or multi-regional)
-  final List<String> storageLocations;
+  final pulumi.Input<List<String>> storageLocations;
 
   /// Creates a new [GetResourcePolicySnapshotSchedulePolicySnapshotProperty].
   /// [chainName] Creates the new snapshot in the snapshot chain labeled with the
@@ -37,10 +38,10 @@ class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
 
   factory GetResourcePolicySnapshotSchedulePolicySnapshotProperty.fromMap(Map<String, dynamic> map) {
     return GetResourcePolicySnapshotSchedulePolicySnapshotProperty(
-      chainName: map['chainName'] as String,
-      guestFlush: map['guestFlush'] as bool,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      storageLocations: (map['storageLocations'] as List).cast<String>(),
+      chainName: (map['chainName'] as String).input(),
+      guestFlush: (map['guestFlush'] as bool).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      storageLocations: ((map['storageLocations'] as List).cast<String>()).input(),
     );
   }
 }

@@ -60,29 +60,18 @@ class SecurityPolicyRuleState {
   /// [redirectOptions] Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// [securityPolicy] The name of the security policy this rule belongs to.
   SecurityPolicyRuleState({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? description,
-    pulumi.Output<SecurityPolicyRuleHeaderAction>? headerAction,
-    pulumi.Output<SecurityPolicyRuleMatch>? match,
-    pulumi.Output<SecurityPolicyRulePreconfiguredWafConfig>? preconfiguredWafConfig,
-    pulumi.Output<bool>? preview,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<SecurityPolicyRuleRateLimitOptions>? rateLimitOptions,
-    pulumi.Output<SecurityPolicyRuleRedirectOptions>? redirectOptions,
-    pulumi.Output<String>? securityPolicy,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      headerAction = pulumi.Input.asOptionalInput<SecurityPolicyRuleHeaderAction>(headerAction),
-      match = pulumi.Input.asOptionalInput<SecurityPolicyRuleMatch>(match),
-      preconfiguredWafConfig = pulumi.Input.asOptionalInput<SecurityPolicyRulePreconfiguredWafConfig>(preconfiguredWafConfig),
-      preview = pulumi.Input.asOptionalInput<bool>(preview),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rateLimitOptions = pulumi.Input.asOptionalInput<SecurityPolicyRuleRateLimitOptions>(rateLimitOptions),
-      redirectOptions = pulumi.Input.asOptionalInput<SecurityPolicyRuleRedirectOptions>(redirectOptions),
-      securityPolicy = pulumi.Input.asOptionalInput<String>(securityPolicy);
+    this.action,
+    this.description,
+    this.headerAction,
+    this.match,
+    this.preconfiguredWafConfig,
+    this.preview,
+    this.priority,
+    this.project,
+    this.rateLimitOptions,
+    this.redirectOptions,
+    this.securityPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,17 +91,17 @@ class SecurityPolicyRuleState {
 
   factory SecurityPolicyRuleState.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      headerAction: map['headerAction'] == null ? null : pulumi.Output.create<SecurityPolicyRuleHeaderAction>(SecurityPolicyRuleHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())),
-      match: map['match'] == null ? null : pulumi.Output.create<SecurityPolicyRuleMatch>(SecurityPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())),
-      preconfiguredWafConfig: map['preconfiguredWafConfig'] == null ? null : pulumi.Output.create<SecurityPolicyRulePreconfiguredWafConfig>(SecurityPolicyRulePreconfiguredWafConfig.fromMap((map['preconfiguredWafConfig'] as Map).cast<String, dynamic>())),
-      preview: map['preview'] == null ? null : pulumi.Output.create<bool>(map['preview'] as bool),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rateLimitOptions: map['rateLimitOptions'] == null ? null : pulumi.Output.create<SecurityPolicyRuleRateLimitOptions>(SecurityPolicyRuleRateLimitOptions.fromMap((map['rateLimitOptions'] as Map).cast<String, dynamic>())),
-      redirectOptions: map['redirectOptions'] == null ? null : pulumi.Output.create<SecurityPolicyRuleRedirectOptions>(SecurityPolicyRuleRedirectOptions.fromMap((map['redirectOptions'] as Map).cast<String, dynamic>())),
-      securityPolicy: map['securityPolicy'] == null ? null : pulumi.Output.create<String>(map['securityPolicy'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      headerAction: map['headerAction'] == null ? null : (SecurityPolicyRuleHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
+      match: map['match'] == null ? null : (SecurityPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      preconfiguredWafConfig: map['preconfiguredWafConfig'] == null ? null : (SecurityPolicyRulePreconfiguredWafConfig.fromMap((map['preconfiguredWafConfig'] as Map).cast<String, dynamic>())).input(),
+      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rateLimitOptions: map['rateLimitOptions'] == null ? null : (SecurityPolicyRuleRateLimitOptions.fromMap((map['rateLimitOptions'] as Map).cast<String, dynamic>())).input(),
+      redirectOptions: map['redirectOptions'] == null ? null : (SecurityPolicyRuleRedirectOptions.fromMap((map['redirectOptions'] as Map).cast<String, dynamic>())).input(),
+      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy'] as String).input(),
     );
   }
 }

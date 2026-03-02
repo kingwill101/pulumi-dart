@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecFunctionLogDestinationPapertrail {
   /// Papertrail syslog endpoint.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
 
   /// Creates a new [AppSpecFunctionLogDestinationPapertrail].
   /// [endpoint] Papertrail syslog endpoint.
@@ -19,7 +20,7 @@ class AppSpecFunctionLogDestinationPapertrail {
 
   factory AppSpecFunctionLogDestinationPapertrail.fromMap(Map<String, dynamic> map) {
     return AppSpecFunctionLogDestinationPapertrail(
-      endpoint: map['endpoint'] as String,
+      endpoint: (map['endpoint'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SANs for certificate.
 class SanForCert {
   /// DNS SANs.
-  final List<String> dns;
+  final pulumi.Input<List<String>> dns;
   /// IP address SANs.
-  final List<String> ip;
+  final pulumi.Input<List<String>> ip;
 
   /// Creates a new [SanForCert].
   /// [dns] DNS SANs.
@@ -25,8 +26,8 @@ class SanForCert {
 
   factory SanForCert.fromMap(Map<String, dynamic> map) {
     return SanForCert(
-      dns: (map['dns'] as List).cast<String>(),
-      ip: (map['ip'] as List).cast<String>(),
+      dns: ((map['dns'] as List).cast<String>()).input(),
+      ip: ((map['ip'] as List).cast<String>()).input(),
     );
   }
 }

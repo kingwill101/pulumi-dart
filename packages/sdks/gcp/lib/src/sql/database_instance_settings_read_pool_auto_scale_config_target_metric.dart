@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric {
   /// Metric name for Read Pool Auto Scale.
-  final String? metric;
+  final pulumi.Input<String>? metric;
   /// Target value for Read Pool Auto Scale.
-  final double? targetValue;
+  final pulumi.Input<double>? targetValue;
 
   /// Creates a new [DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric].
   /// [metric] Metric name for Read Pool Auto Scale.
@@ -24,8 +25,8 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric {
 
   factory DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric(
-      metric: map['metric'] == null ? null : map['metric'] as String,
-      targetValue: map['targetValue'] == null ? null : map['targetValue'] as double,
+      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
+      targetValue: map['targetValue'] == null ? null : (map['targetValue'] as double).input(),
     );
   }
 }

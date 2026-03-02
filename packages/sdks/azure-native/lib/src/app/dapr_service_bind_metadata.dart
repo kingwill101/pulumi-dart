@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Dapr component metadata.
 class DaprServiceBindMetadata {
   /// Service bind metadata property name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Service bind metadata property value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [DaprServiceBindMetadata].
   /// [name] Service bind metadata property name.
@@ -25,8 +26,8 @@ class DaprServiceBindMetadata {
 
   factory DaprServiceBindMetadata.fromMap(Map<String, dynamic> map) {
     return DaprServiceBindMetadata(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

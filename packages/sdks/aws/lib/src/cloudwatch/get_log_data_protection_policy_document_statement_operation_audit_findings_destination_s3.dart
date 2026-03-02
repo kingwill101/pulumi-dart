@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3 {
   /// Name of the S3 Bucket to send findings to.
-  final String bucket;
+  final pulumi.Input<String> bucket;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3].
   /// [bucket] Name of the S3 Bucket to send findings to.
@@ -19,7 +20,7 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinati
 
   factory GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3(
-      bucket: map['bucket'] as String,
+      bucket: (map['bucket'] as String).input(),
     );
   }
 }

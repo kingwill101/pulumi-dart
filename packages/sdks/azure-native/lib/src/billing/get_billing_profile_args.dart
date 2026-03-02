@@ -16,11 +16,9 @@ class GetBillingProfileArgs {
   /// [billingAccountName] The ID that uniquely identifies a billing account.
   /// [billingProfileName] The ID that uniquely identifies a billing profile.
   GetBillingProfileArgs({
-    required pulumi.Output<String> billingAccountName,
-    required pulumi.Output<String> billingProfileName,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      billingProfileName = pulumi.Input.asInput<String>(billingProfileName);
+    required this.billingAccountName,
+    required this.billingProfileName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBillingProfileArgs {
 
   factory GetBillingProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingProfileArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      billingProfileName: pulumi.Output.create<String>(map['billingProfileName'] as String),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      billingProfileName: (map['billingProfileName'] as String).input(),
     );
   }
 }

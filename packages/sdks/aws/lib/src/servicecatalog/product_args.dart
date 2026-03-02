@@ -49,31 +49,19 @@ class ProductArgs {
   /// [tags] Tags to apply to the product. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Type of product. See [AWS Docs](https://docs.aws.amazon.com/servicecatalog/latest/dg/API_CreateProduct.html#API_CreateProduct_RequestSyntax) for valid list of values.
   ProductArgs({
-    pulumi.Output<String>? acceptLanguage,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? distributor,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> owner,
-    required pulumi.Output<ProductProvisioningArtifactParameters> provisioningArtifactParameters,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? supportDescription,
-    pulumi.Output<String>? supportEmail,
-    pulumi.Output<String>? supportUrl,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      distributor = pulumi.Input.asOptionalInput<String>(distributor),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      owner = pulumi.Input.asInput<String>(owner),
-      provisioningArtifactParameters = pulumi.Input.asInput<ProductProvisioningArtifactParameters>(provisioningArtifactParameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      supportDescription = pulumi.Input.asOptionalInput<String>(supportDescription),
-      supportEmail = pulumi.Input.asOptionalInput<String>(supportEmail),
-      supportUrl = pulumi.Input.asOptionalInput<String>(supportUrl),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type);
+    this.acceptLanguage,
+    this.description,
+    this.distributor,
+    this.name,
+    required this.owner,
+    required this.provisioningArtifactParameters,
+    this.region,
+    this.supportDescription,
+    this.supportEmail,
+    this.supportUrl,
+    this.tags,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class ProductArgs {
 
   factory ProductArgs.fromMap(Map<String, dynamic> map) {
     return ProductArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      distributor: map['distributor'] == null ? null : pulumi.Output.create<String>(map['distributor'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      owner: pulumi.Output.create<String>(map['owner'] as String),
-      provisioningArtifactParameters: pulumi.Output.create<ProductProvisioningArtifactParameters>(ProductProvisioningArtifactParameters.fromMap((map['provisioningArtifactParameters'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      supportDescription: map['supportDescription'] == null ? null : pulumi.Output.create<String>(map['supportDescription'] as String),
-      supportEmail: map['supportEmail'] == null ? null : pulumi.Output.create<String>(map['supportEmail'] as String),
-      supportUrl: map['supportUrl'] == null ? null : pulumi.Output.create<String>(map['supportUrl'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      distributor: map['distributor'] == null ? null : (map['distributor'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      owner: (map['owner'] as String).input(),
+      provisioningArtifactParameters: (ProductProvisioningArtifactParameters.fromMap((map['provisioningArtifactParameters'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      supportDescription: map['supportDescription'] == null ? null : (map['supportDescription'] as String).input(),
+      supportEmail: map['supportEmail'] == null ? null : (map['supportEmail'] as String).input(),
+      supportUrl: map['supportUrl'] == null ? null : (map['supportUrl'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

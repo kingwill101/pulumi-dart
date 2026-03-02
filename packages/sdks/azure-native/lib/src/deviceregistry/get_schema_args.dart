@@ -19,13 +19,10 @@ class GetSchemaArgs {
   /// [schemaName] Schema name parameter.
   /// [schemaRegistryName] Schema registry name parameter.
   GetSchemaArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaName,
-    required pulumi.Output<String> schemaRegistryName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asInput<String>(schemaName),
-      schemaRegistryName = pulumi.Input.asInput<String>(schemaRegistryName);
+    required this.resourceGroupName,
+    required this.schemaName,
+    required this.schemaRegistryName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSchemaArgs {
 
   factory GetSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
-      schemaRegistryName: pulumi.Output.create<String>(map['schemaRegistryName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      schemaRegistryName: (map['schemaRegistryName'] as String).input(),
     );
   }
 }

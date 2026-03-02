@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainsDomain {
   /// (Required) The name of the domain.
-  final String name;
+  final pulumi.Input<String> name;
   /// The TTL of the domain.
-  final int ttl;
+  final pulumi.Input<int> ttl;
   /// The uniform resource name of the domain
-  final String urn;
+  final pulumi.Input<String> urn;
 
   /// Creates a new [GetDomainsDomain].
   /// [name] (Required) The name of the domain.
@@ -29,9 +30,9 @@ class GetDomainsDomain {
 
   factory GetDomainsDomain.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomain(
-      name: map['name'] as String,
-      ttl: map['ttl'] as int,
-      urn: map['urn'] as String,
+      name: (map['name'] as String).input(),
+      ttl: (map['ttl'] as int).input(),
+      urn: (map['urn'] as String).input(),
     );
   }
 }

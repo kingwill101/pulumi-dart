@@ -6,15 +6,15 @@ import 'report_comparison_expression_response.dart';
 /// The filter expression to be used in the report.
 class ReportFilterResponse {
   /// The logical "AND" expression. Must have at least 2 items.
-  final List<ReportFilterResponse>? and;
+  final pulumi.Input<List<ReportFilterResponse>>? and;
   /// Has comparison expression for a dimension
-  final ReportComparisonExpressionResponse? dimension;
+  final pulumi.Input<ReportComparisonExpressionResponse>? dimension;
   /// The logical "NOT" expression.
-  final ReportFilterResponse? not;
+  final pulumi.Input<ReportFilterResponse>? not;
   /// The logical "OR" expression. Must have at least 2 items.
-  final List<ReportFilterResponse>? or;
+  final pulumi.Input<List<ReportFilterResponse>>? or;
   /// Has comparison expression for a tag
-  final ReportComparisonExpressionResponse? tag;
+  final pulumi.Input<ReportComparisonExpressionResponse>? tag;
 
   /// Creates a new [ReportFilterResponse].
   /// [and] The logical "AND" expression. Must have at least 2 items.
@@ -32,21 +32,21 @@ class ReportFilterResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'and': ?and == null ? null : pulumi.Input.encodeList<ReportFilterResponse, Map<String, dynamic>>(and!, (value) => value.toMap()),
-      'dimension': ?dimension == null ? null : dimension!.toMap(),
-      'not': ?not == null ? null : not!.toMap(),
-      'or': ?or == null ? null : pulumi.Input.encodeList<ReportFilterResponse, Map<String, dynamic>>(or!, (value) => value.toMap()),
-      'tag': ?tag == null ? null : tag!.toMap(),
+      'and': ?pulumi.Input.mapOptionalInputValue<List<ReportFilterResponse>, List<Map<String, dynamic>>>(and, (value) => pulumi.Input.encodeList<ReportFilterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dimension': ?pulumi.Input.mapOptionalInputValue<ReportComparisonExpressionResponse, Map<String, dynamic>>(dimension, (value) => value.toMap()),
+      'not': ?pulumi.Input.mapOptionalInputValue<ReportFilterResponse, Map<String, dynamic>>(not, (value) => value.toMap()),
+      'or': ?pulumi.Input.mapOptionalInputValue<List<ReportFilterResponse>, List<Map<String, dynamic>>>(or, (value) => pulumi.Input.encodeList<ReportFilterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tag': ?pulumi.Input.mapOptionalInputValue<ReportComparisonExpressionResponse, Map<String, dynamic>>(tag, (value) => value.toMap()),
     };
   }
 
   factory ReportFilterResponse.fromMap(Map<String, dynamic> map) {
     return ReportFilterResponse(
-      and: map['and'] == null ? null : pulumi.Input.decodeList<ReportFilterResponse>(map['and'], (value) => ReportFilterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dimension: map['dimension'] == null ? null : ReportComparisonExpressionResponse.fromMap((map['dimension'] as Map).cast<String, dynamic>()),
-      not: map['not'] == null ? null : ReportFilterResponse.fromMap((map['not'] as Map).cast<String, dynamic>()),
-      or: map['or'] == null ? null : pulumi.Input.decodeList<ReportFilterResponse>(map['or'], (value) => ReportFilterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tag: map['tag'] == null ? null : ReportComparisonExpressionResponse.fromMap((map['tag'] as Map).cast<String, dynamic>()),
+      and: map['and'] == null ? null : (pulumi.Input.decodeList<ReportFilterResponse>(map['and'], (value) => ReportFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimension: map['dimension'] == null ? null : (ReportComparisonExpressionResponse.fromMap((map['dimension'] as Map).cast<String, dynamic>())).input(),
+      not: map['not'] == null ? null : (ReportFilterResponse.fromMap((map['not'] as Map).cast<String, dynamic>())).input(),
+      or: map['or'] == null ? null : (pulumi.Input.decodeList<ReportFilterResponse>(map['or'], (value) => ReportFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tag: map['tag'] == null ? null : (ReportComparisonExpressionResponse.fromMap((map['tag'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

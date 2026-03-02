@@ -30,15 +30,11 @@ class AccessApprovalSettingsArgs {
   /// [notificationEmails] A list of email addresses to which notifications relating to approval requests should be sent.
   /// [organizationId] ID of the organization of the access approval settings.
   AccessApprovalSettingsArgs({
-    pulumi.Output<String>? activeKeyVersion,
-    required pulumi.Output<List<AccessApprovalSettingsEnrolledService>> enrolledServices,
-    pulumi.Output<List<String>>? notificationEmails,
-    required pulumi.Output<String> organizationId,
-  }) :
-      activeKeyVersion = pulumi.Input.asOptionalInput<String>(activeKeyVersion),
-      enrolledServices = pulumi.Input.asInput<List<AccessApprovalSettingsEnrolledService>>(enrolledServices),
-      notificationEmails = pulumi.Input.asOptionalInput<List<String>>(notificationEmails),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    this.activeKeyVersion,
+    required this.enrolledServices,
+    this.notificationEmails,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,10 +47,10 @@ class AccessApprovalSettingsArgs {
 
   factory AccessApprovalSettingsArgs.fromMap(Map<String, dynamic> map) {
     return AccessApprovalSettingsArgs(
-      activeKeyVersion: map['activeKeyVersion'] == null ? null : pulumi.Output.create<String>(map['activeKeyVersion'] as String),
-      enrolledServices: pulumi.Output.create<List<AccessApprovalSettingsEnrolledService>>(pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(map['enrolledServices'], (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>()))),
-      notificationEmails: map['notificationEmails'] == null ? null : pulumi.Output.create<List<String>>((map['notificationEmails'] as List).cast<String>()),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      activeKeyVersion: map['activeKeyVersion'] == null ? null : (map['activeKeyVersion'] as String).input(),
+      enrolledServices: (pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(map['enrolledServices'], (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notificationEmails: map['notificationEmails'] == null ? null : ((map['notificationEmails'] as List).cast<String>()).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings {
-  final String cbetCheckDigitString;
+  final pulumi.Input<String> cbetCheckDigitString;
   /// Determines the method of CBET insertion mode when prior encoding is detected on the same layer.
-  final String cbetStepaside;
+  final pulumi.Input<String> cbetStepaside;
   /// CBET source ID to use in the watermark.
-  final String csid;
+  final pulumi.Input<String> csid;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings].
   /// [cbetCheckDigitString] Required.
@@ -28,9 +29,9 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWaterma
 
   factory ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings(
-      cbetCheckDigitString: map['cbetCheckDigitString'] as String,
-      cbetStepaside: map['cbetStepaside'] as String,
-      csid: map['csid'] as String,
+      cbetCheckDigitString: (map['cbetCheckDigitString'] as String).input(),
+      cbetStepaside: (map['cbetStepaside'] as String).input(),
+      csid: (map['csid'] as String).input(),
     );
   }
 }

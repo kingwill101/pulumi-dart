@@ -5,30 +5,30 @@ import 'reportable_exception_response.dart';
 
 class MigrateSsisTaskOutputMigrationLevelResponse {
   /// Migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Migration exceptions and warnings.
-  final List<ReportableExceptionResponse> exceptionsAndWarnings;
+  final pulumi.Input<List<ReportableExceptionResponse>> exceptionsAndWarnings;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Migration progress message
-  final String message;
+  final pulumi.Input<String> message;
   /// Result type
   /// Expected value is 'MigrationLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Source server brand version
-  final String sourceServerBrandVersion;
+  final pulumi.Input<String> sourceServerBrandVersion;
   /// Source server version
-  final String sourceServerVersion;
+  final pulumi.Input<String> sourceServerVersion;
   /// Stage of SSIS migration.
-  final String stage;
+  final pulumi.Input<String> stage;
   /// Migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Current status of migration
-  final String status;
+  final pulumi.Input<String> status;
   /// Target server brand version
-  final String targetServerBrandVersion;
+  final pulumi.Input<String> targetServerBrandVersion;
   /// Target server version
-  final String targetServerVersion;
+  final pulumi.Input<String> targetServerVersion;
 
   /// Creates a new [MigrateSsisTaskOutputMigrationLevelResponse].
   /// [endedOn] Migration end time
@@ -61,7 +61,7 @@ class MigrateSsisTaskOutputMigrationLevelResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endedOn': endedOn,
-      'exceptionsAndWarnings': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(exceptionsAndWarnings, (value) => value.toMap()),
+      'exceptionsAndWarnings': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(exceptionsAndWarnings, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'message': message,
       'resultType': resultType,
@@ -77,18 +77,18 @@ class MigrateSsisTaskOutputMigrationLevelResponse {
 
   factory MigrateSsisTaskOutputMigrationLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSsisTaskOutputMigrationLevelResponse(
-      endedOn: map['endedOn'] as String,
-      exceptionsAndWarnings: pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      message: map['message'] as String,
-      resultType: map['resultType'] as String,
-      sourceServerBrandVersion: map['sourceServerBrandVersion'] as String,
-      sourceServerVersion: map['sourceServerVersion'] as String,
-      stage: map['stage'] as String,
-      startedOn: map['startedOn'] as String,
-      status: map['status'] as String,
-      targetServerBrandVersion: map['targetServerBrandVersion'] as String,
-      targetServerVersion: map['targetServerVersion'] as String,
+      endedOn: (map['endedOn'] as String).input(),
+      exceptionsAndWarnings: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      message: (map['message'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
+      sourceServerBrandVersion: (map['sourceServerBrandVersion'] as String).input(),
+      sourceServerVersion: (map['sourceServerVersion'] as String).input(),
+      stage: (map['stage'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      status: (map['status'] as String).input(),
+      targetServerBrandVersion: (map['targetServerBrandVersion'] as String).input(),
+      targetServerVersion: (map['targetServerVersion'] as String).input(),
     );
   }
 }

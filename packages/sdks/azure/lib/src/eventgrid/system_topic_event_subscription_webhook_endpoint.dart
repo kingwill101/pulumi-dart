@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SystemTopicEventSubscriptionWebhookEndpoint {
   /// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
-  final String? activeDirectoryAppIdOrUri;
+  final pulumi.Input<String>? activeDirectoryAppIdOrUri;
   /// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
-  final String? activeDirectoryTenantId;
+  final pulumi.Input<String>? activeDirectoryTenantId;
   /// The base url of the webhook where the Event Subscription will receive events.
-  final String? baseUrl;
+  final pulumi.Input<String>? baseUrl;
   /// Maximum number of events per batch.
-  final int? maxEventsPerBatch;
+  final pulumi.Input<int>? maxEventsPerBatch;
   /// Preferred batch size in Kilobytes.
-  final int? preferredBatchSizeInKilobytes;
+  final pulumi.Input<int>? preferredBatchSizeInKilobytes;
   /// Specifies the url of the webhook where the Event Subscription will receive events.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [SystemTopicEventSubscriptionWebhookEndpoint].
   /// [activeDirectoryAppIdOrUri] The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
@@ -44,12 +45,12 @@ class SystemTopicEventSubscriptionWebhookEndpoint {
 
   factory SystemTopicEventSubscriptionWebhookEndpoint.fromMap(Map<String, dynamic> map) {
     return SystemTopicEventSubscriptionWebhookEndpoint(
-      activeDirectoryAppIdOrUri: map['activeDirectoryAppIdOrUri'] == null ? null : map['activeDirectoryAppIdOrUri'] as String,
-      activeDirectoryTenantId: map['activeDirectoryTenantId'] == null ? null : map['activeDirectoryTenantId'] as String,
-      baseUrl: map['baseUrl'] == null ? null : map['baseUrl'] as String,
-      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : map['maxEventsPerBatch'] as int,
-      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : map['preferredBatchSizeInKilobytes'] as int,
-      url: map['url'] as String,
+      activeDirectoryAppIdOrUri: map['activeDirectoryAppIdOrUri'] == null ? null : (map['activeDirectoryAppIdOrUri'] as String).input(),
+      activeDirectoryTenantId: map['activeDirectoryTenantId'] == null ? null : (map['activeDirectoryTenantId'] as String).input(),
+      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl'] as String).input(),
+      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : (map['maxEventsPerBatch'] as int).input(),
+      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : (map['preferredBatchSizeInKilobytes'] as int).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

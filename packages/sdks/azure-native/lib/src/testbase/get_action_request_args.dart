@@ -18,13 +18,10 @@ class GetActionRequestArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
   GetActionRequestArgs({
-    required pulumi.Output<String> actionRequestName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> testBaseAccountName,
-  }) :
-      actionRequestName = pulumi.Input.asInput<String>(actionRequestName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      testBaseAccountName = pulumi.Input.asInput<String>(testBaseAccountName);
+    required this.actionRequestName,
+    required this.resourceGroupName,
+    required this.testBaseAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetActionRequestArgs {
 
   factory GetActionRequestArgs.fromMap(Map<String, dynamic> map) {
     return GetActionRequestArgs(
-      actionRequestName: pulumi.Output.create<String>(map['actionRequestName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      testBaseAccountName: pulumi.Output.create<String>(map['testBaseAccountName'] as String),
+      actionRequestName: (map['actionRequestName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
     );
   }
 }

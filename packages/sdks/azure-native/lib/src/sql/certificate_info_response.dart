@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Certificate information
 class CertificateInfoResponse {
   /// The certificate name
-  final String certificateName;
+  final pulumi.Input<String> certificateName;
   /// The certificate expiry date
-  final String expiryDate;
+  final pulumi.Input<String> expiryDate;
 
   /// Creates a new [CertificateInfoResponse].
   /// [certificateName] The certificate name
@@ -25,8 +26,8 @@ class CertificateInfoResponse {
 
   factory CertificateInfoResponse.fromMap(Map<String, dynamic> map) {
     return CertificateInfoResponse(
-      certificateName: map['certificateName'] as String,
-      expiryDate: map['expiryDate'] as String,
+      certificateName: (map['certificateName'] as String).input(),
+      expiryDate: (map['expiryDate'] as String).input(),
     );
   }
 }

@@ -46,19 +46,13 @@ class CertificateTemplateIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   CertificateTemplateIamBindingArgs({
-    required pulumi.Output<String> certificateTemplate,
-    pulumi.Output<CertificateTemplateIamBindingCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      certificateTemplate = pulumi.Input.asInput<String>(certificateTemplate),
-      condition = pulumi.Input.asOptionalInput<CertificateTemplateIamBindingCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    required this.certificateTemplate,
+    this.condition,
+    this.location,
+    required this.members,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,12 +67,12 @@ class CertificateTemplateIamBindingArgs {
 
   factory CertificateTemplateIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return CertificateTemplateIamBindingArgs(
-      certificateTemplate: pulumi.Output.create<String>(map['certificateTemplate'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<CertificateTemplateIamBindingCondition>(CertificateTemplateIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      certificateTemplate: (map['certificateTemplate'] as String).input(),
+      condition: map['condition'] == null ? null : (CertificateTemplateIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
   /// The Cloud KMS resource identifier of the customer-managed
@@ -7,7 +8,7 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
   /// It has the following format:
   /// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/
   /// {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
-  final String? kmsKey;
+  final pulumi.Input<String>? kmsKey;
 
   /// Creates a new [RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig].
   /// [kmsKey] The Cloud KMS resource identifier of the customer-managed
@@ -23,7 +24,7 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
 
   factory RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig(
-      kmsKey: map['kmsKey'] == null ? null : map['kmsKey'] as String,
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
     );
   }
 }

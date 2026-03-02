@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableBucketEncryptionConfiguration {
   /// The ARN of a KMS Key to be used with `aws:kms` `sse_algorithm`
-  final String kmsKeyArn;
+  final pulumi.Input<String> kmsKeyArn;
   /// One of `aws:kms` or `AES256`
-  final String sseAlgorithm;
+  final pulumi.Input<String> sseAlgorithm;
 
   /// Creates a new [TableBucketEncryptionConfiguration].
   /// [kmsKeyArn] The ARN of a KMS Key to be used with `aws:kms` `sse_algorithm`
@@ -24,8 +25,8 @@ class TableBucketEncryptionConfiguration {
 
   factory TableBucketEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return TableBucketEncryptionConfiguration(
-      kmsKeyArn: map['kmsKeyArn'] as String,
-      sseAlgorithm: map['sseAlgorithm'] as String,
+      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
+      sseAlgorithm: (map['sseAlgorithm'] as String).input(),
     );
   }
 }

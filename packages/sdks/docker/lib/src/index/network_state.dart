@@ -48,33 +48,20 @@ class NetworkState {
   /// [options] Only available with bridge networks. See [bridge options docs](https://docs.docker.com/engine/reference/commandline/network_create/#bridge-driver-options) for more details.
   /// [scope] Scope of the network. One of `swarm`, `global`, or `local`.
   NetworkState({
-    pulumi.Output<bool>? attachable,
-    pulumi.Output<bool>? checkDuplicate,
-    pulumi.Output<String>? driver,
-    pulumi.Output<bool>? ingress,
-    pulumi.Output<bool>? internal,
-    pulumi.Output<List<NetworkIpamConfig>>? ipamConfigs,
-    pulumi.Output<String>? ipamDriver,
-    pulumi.Output<Map<String, String>>? ipamOptions,
-    pulumi.Output<bool>? ipv6,
-    pulumi.Output<List<NetworkLabel>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? options,
-    pulumi.Output<String>? scope,
-  }) :
-      attachable = pulumi.Input.asOptionalInput<bool>(attachable),
-      checkDuplicate = pulumi.Input.asOptionalInput<bool>(checkDuplicate),
-      driver = pulumi.Input.asOptionalInput<String>(driver),
-      ingress = pulumi.Input.asOptionalInput<bool>(ingress),
-      internal = pulumi.Input.asOptionalInput<bool>(internal),
-      ipamConfigs = pulumi.Input.asOptionalInput<List<NetworkIpamConfig>>(ipamConfigs),
-      ipamDriver = pulumi.Input.asOptionalInput<String>(ipamDriver),
-      ipamOptions = pulumi.Input.asOptionalInput<Map<String, String>>(ipamOptions),
-      ipv6 = pulumi.Input.asOptionalInput<bool>(ipv6),
-      labels = pulumi.Input.asOptionalInput<List<NetworkLabel>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      options = pulumi.Input.asOptionalInput<Map<String, String>>(options),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    this.attachable,
+    this.checkDuplicate,
+    this.driver,
+    this.ingress,
+    this.internal,
+    this.ipamConfigs,
+    this.ipamDriver,
+    this.ipamOptions,
+    this.ipv6,
+    this.labels,
+    this.name,
+    this.options,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class NetworkState {
 
   factory NetworkState.fromMap(Map<String, dynamic> map) {
     return NetworkState(
-      attachable: map['attachable'] == null ? null : pulumi.Output.create<bool>(map['attachable'] as bool),
-      checkDuplicate: map['checkDuplicate'] == null ? null : pulumi.Output.create<bool>(map['checkDuplicate'] as bool),
-      driver: map['driver'] == null ? null : pulumi.Output.create<String>(map['driver'] as String),
-      ingress: map['ingress'] == null ? null : pulumi.Output.create<bool>(map['ingress'] as bool),
-      internal: map['internal'] == null ? null : pulumi.Output.create<bool>(map['internal'] as bool),
-      ipamConfigs: map['ipamConfigs'] == null ? null : pulumi.Output.create<List<NetworkIpamConfig>>(pulumi.Input.decodeList<NetworkIpamConfig>(map['ipamConfigs'], (value) => NetworkIpamConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      ipamDriver: map['ipamDriver'] == null ? null : pulumi.Output.create<String>(map['ipamDriver'] as String),
-      ipamOptions: map['ipamOptions'] == null ? null : pulumi.Output.create<Map<String, String>>((map['ipamOptions'] as Map).cast<String, String>()),
-      ipv6: map['ipv6'] == null ? null : pulumi.Output.create<bool>(map['ipv6'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<NetworkLabel>>(pulumi.Input.decodeList<NetworkLabel>(map['labels'], (value) => NetworkLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      options: map['options'] == null ? null : pulumi.Output.create<Map<String, String>>((map['options'] as Map).cast<String, String>()),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      attachable: map['attachable'] == null ? null : (map['attachable'] as bool).input(),
+      checkDuplicate: map['checkDuplicate'] == null ? null : (map['checkDuplicate'] as bool).input(),
+      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
+      ingress: map['ingress'] == null ? null : (map['ingress'] as bool).input(),
+      internal: map['internal'] == null ? null : (map['internal'] as bool).input(),
+      ipamConfigs: map['ipamConfigs'] == null ? null : (pulumi.Input.decodeList<NetworkIpamConfig>(map['ipamConfigs'], (value) => NetworkIpamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipamDriver: map['ipamDriver'] == null ? null : (map['ipamDriver'] as String).input(),
+      ipamOptions: map['ipamOptions'] == null ? null : ((map['ipamOptions'] as Map).cast<String, String>()).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as bool).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<NetworkLabel>(map['labels'], (value) => NetworkLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

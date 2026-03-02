@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
   /// The Amazon Resource Name (ARN) for the Exadata infrastructure.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// The display name of the Exadata infrastructure.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The unique identifier of the Exadata infrastructure.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the OCI resource anchor for the Exadata infrastructure.
-  final String ociResourceAnchorName;
+  final pulumi.Input<String> ociResourceAnchorName;
   /// The HTTPS link to the Exadata infrastructure in OCI.
-  final String ociUrl;
+  final pulumi.Input<String> ociUrl;
   /// The OCID of the Exadata infrastructure in OCI.
-  final String ocid;
+  final pulumi.Input<String> ocid;
 
   /// Creates a new [GetCloudExadataInfrastructuresCloudExadataInfrastructure].
   /// [arn] The Amazon Resource Name (ARN) for the Exadata infrastructure.
@@ -44,12 +45,12 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
 
   factory GetCloudExadataInfrastructuresCloudExadataInfrastructure.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructuresCloudExadataInfrastructure(
-      arn: map['arn'] as String,
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
-      ociResourceAnchorName: map['ociResourceAnchorName'] as String,
-      ociUrl: map['ociUrl'] as String,
-      ocid: map['ocid'] as String,
+      arn: (map['arn'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      id: (map['id'] as String).input(),
+      ociResourceAnchorName: (map['ociResourceAnchorName'] as String).input(),
+      ociUrl: (map['ociUrl'] as String).input(),
+      ocid: (map['ocid'] as String).input(),
     );
   }
 }

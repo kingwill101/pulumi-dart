@@ -22,15 +22,11 @@ class IndexArgs {
   /// [timeouts] Optional.
   /// [type] The type of the index. Valid values: `AGGREGATOR`, `LOCAL`. To understand the difference between `LOCAL` and `AGGREGATOR`, see the [_AWS Resource Explorer User Guide_](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html).
   IndexArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<IndexTimeouts>? timeouts,
-    required pulumi.Output<String> type,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<IndexTimeouts>(timeouts),
-      type = pulumi.Input.asInput<String>(type);
+    this.region,
+    this.tags,
+    this.timeouts,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class IndexArgs {
 
   factory IndexArgs.fromMap(Map<String, dynamic> map) {
     return IndexArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<IndexTimeouts>(IndexTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (IndexTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

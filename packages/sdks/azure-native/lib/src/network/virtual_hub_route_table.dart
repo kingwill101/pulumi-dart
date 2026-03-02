@@ -6,7 +6,7 @@ import 'virtual_hub_route.dart';
 /// VirtualHub route table.
 class VirtualHubRouteTable {
   /// List of all routes.
-  final List<VirtualHubRoute>? routes;
+  final pulumi.Input<List<VirtualHubRoute>>? routes;
 
   /// Creates a new [VirtualHubRouteTable].
   /// [routes] List of all routes.
@@ -16,13 +16,13 @@ class VirtualHubRouteTable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'routes': ?routes == null ? null : pulumi.Input.encodeList<VirtualHubRoute, Map<String, dynamic>>(routes!, (value) => value.toMap()),
+      'routes': ?pulumi.Input.mapOptionalInputValue<List<VirtualHubRoute>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<VirtualHubRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VirtualHubRouteTable.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteTable(
-      routes: map['routes'] == null ? null : pulumi.Input.decodeList<VirtualHubRoute>(map['routes'], (value) => VirtualHubRoute.fromMap((value as Map).cast<String, dynamic>())),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualHubRoute>(map['routes'], (value) => VirtualHubRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

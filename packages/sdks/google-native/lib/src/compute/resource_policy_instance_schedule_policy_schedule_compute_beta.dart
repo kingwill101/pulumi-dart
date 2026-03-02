@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Schedule for an instance operation.
 class ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta {
   /// Specifies the frequency for the operation, using the unix-cron format.
-  final String? schedule;
+  final pulumi.Input<String>? schedule;
 
   /// Creates a new [ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta].
   /// [schedule] Specifies the frequency for the operation, using the unix-cron format.
@@ -20,7 +21,7 @@ class ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta {
 
   factory ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta(
-      schedule: map['schedule'] == null ? null : map['schedule'] as String,
+      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
     );
   }
 }

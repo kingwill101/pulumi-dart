@@ -19,13 +19,10 @@ class ScalingPlanHostPoolAssociationArgs {
   /// [hostPoolId] The resource ID for the Virtual Desktop Host Pool. Changing this forces a new resource to be created.
   /// [scalingPlanId] The resource ID for the Virtual Desktop Scaling Plan. Changing this forces a new resource to be created.
   ScalingPlanHostPoolAssociationArgs({
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> hostPoolId,
-    required pulumi.Output<String> scalingPlanId,
-  }) :
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      hostPoolId = pulumi.Input.asInput<String>(hostPoolId),
-      scalingPlanId = pulumi.Input.asInput<String>(scalingPlanId);
+    required this.enabled,
+    required this.hostPoolId,
+    required this.scalingPlanId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ScalingPlanHostPoolAssociationArgs {
 
   factory ScalingPlanHostPoolAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ScalingPlanHostPoolAssociationArgs(
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      hostPoolId: pulumi.Output.create<String>(map['hostPoolId'] as String),
-      scalingPlanId: pulumi.Output.create<String>(map['scalingPlanId'] as String),
+      enabled: (map['enabled'] as bool).input(),
+      hostPoolId: (map['hostPoolId'] as String).input(),
+      scalingPlanId: (map['scalingPlanId'] as String).input(),
     );
   }
 }

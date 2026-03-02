@@ -16,11 +16,9 @@ class GetNamespaceArgs {
   /// [namespaceName] The name of the namespace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetNamespaceArgs({
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<String>? region,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.namespaceName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNamespaceArgs {
 
   factory GetNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

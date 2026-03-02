@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_group_container_security_context_capability.dart';
 
 class ContainerGroupContainerSecurityContext {
-  final List<ContainerGroupContainerSecurityContextCapability>? capabilities;
+  final pulumi.Input<List<ContainerGroupContainerSecurityContextCapability>>? capabilities;
   /// Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
-  final bool? privileged;
-  final int? runAsUser;
+  final pulumi.Input<bool>? privileged;
+  final pulumi.Input<int>? runAsUser;
 
   /// Creates a new [ContainerGroupContainerSecurityContext].
   /// [capabilities] Optional.
@@ -21,7 +21,7 @@ class ContainerGroupContainerSecurityContext {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capabilities': ?capabilities == null ? null : pulumi.Input.encodeList<ContainerGroupContainerSecurityContextCapability, Map<String, dynamic>>(capabilities!, (value) => value.toMap()),
+      'capabilities': ?pulumi.Input.mapOptionalInputValue<List<ContainerGroupContainerSecurityContextCapability>, List<Map<String, dynamic>>>(capabilities, (value) => pulumi.Input.encodeList<ContainerGroupContainerSecurityContextCapability, Map<String, dynamic>>(value, (value) => value.toMap())),
       'privileged': ?privileged,
       'runAsUser': ?runAsUser,
     };
@@ -29,9 +29,9 @@ class ContainerGroupContainerSecurityContext {
 
   factory ContainerGroupContainerSecurityContext.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerSecurityContext(
-      capabilities: map['capabilities'] == null ? null : pulumi.Input.decodeList<ContainerGroupContainerSecurityContextCapability>(map['capabilities'], (value) => ContainerGroupContainerSecurityContextCapability.fromMap((value as Map).cast<String, dynamic>())),
-      privileged: map['privileged'] == null ? null : map['privileged'] as bool,
-      runAsUser: map['runAsUser'] == null ? null : map['runAsUser'] as int,
+      capabilities: map['capabilities'] == null ? null : (pulumi.Input.decodeList<ContainerGroupContainerSecurityContextCapability>(map['capabilities'], (value) => ContainerGroupContainerSecurityContextCapability.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privileged: map['privileged'] == null ? null : (map['privileged'] as bool).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
     );
   }
 }

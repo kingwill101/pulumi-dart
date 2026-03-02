@@ -16,11 +16,9 @@ class GetLocalRulestackArgs {
   /// [localRulestackName] LocalRulestack resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetLocalRulestackArgs({
-    required pulumi.Output<String> localRulestackName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      localRulestackName = pulumi.Input.asInput<String>(localRulestackName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.localRulestackName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLocalRulestackArgs {
 
   factory GetLocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalRulestackArgs(
-      localRulestackName: pulumi.Output.create<String>(map['localRulestackName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      localRulestackName: (map['localRulestackName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

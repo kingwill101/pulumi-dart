@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_set_resource_dns_target_resource.dart';
 
 class ResourceSetResource {
-  final String? componentId;
+  final pulumi.Input<String>? componentId;
   /// Component for DNS/Routing Control Readiness Checks.
-  final ResourceSetResourceDnsTargetResource? dnsTargetResource;
+  final pulumi.Input<ResourceSetResourceDnsTargetResource>? dnsTargetResource;
   /// Recovery group ARN or cell ARN that contains this resource set.
-  final List<String>? readinessScopes;
+  final pulumi.Input<List<String>>? readinessScopes;
   /// ARN of the resource.
-  final String? resourceArn;
+  final pulumi.Input<String>? resourceArn;
 
   /// Creates a new [ResourceSetResource].
   /// [componentId] Optional.
@@ -26,7 +27,7 @@ class ResourceSetResource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'componentId': ?componentId,
-      'dnsTargetResource': ?dnsTargetResource == null ? null : dnsTargetResource!.toMap(),
+      'dnsTargetResource': ?pulumi.Input.mapOptionalInputValue<ResourceSetResourceDnsTargetResource, Map<String, dynamic>>(dnsTargetResource, (value) => value.toMap()),
       'readinessScopes': ?readinessScopes,
       'resourceArn': ?resourceArn,
     };
@@ -34,10 +35,10 @@ class ResourceSetResource {
 
   factory ResourceSetResource.fromMap(Map<String, dynamic> map) {
     return ResourceSetResource(
-      componentId: map['componentId'] == null ? null : map['componentId'] as String,
-      dnsTargetResource: map['dnsTargetResource'] == null ? null : ResourceSetResourceDnsTargetResource.fromMap((map['dnsTargetResource'] as Map).cast<String, dynamic>()),
-      readinessScopes: map['readinessScopes'] == null ? null : (map['readinessScopes'] as List).cast<String>(),
-      resourceArn: map['resourceArn'] == null ? null : map['resourceArn'] as String,
+      componentId: map['componentId'] == null ? null : (map['componentId'] as String).input(),
+      dnsTargetResource: map['dnsTargetResource'] == null ? null : (ResourceSetResourceDnsTargetResource.fromMap((map['dnsTargetResource'] as Map).cast<String, dynamic>())).input(),
+      readinessScopes: map['readinessScopes'] == null ? null : ((map['readinessScopes'] as List).cast<String>()).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
     );
   }
 }

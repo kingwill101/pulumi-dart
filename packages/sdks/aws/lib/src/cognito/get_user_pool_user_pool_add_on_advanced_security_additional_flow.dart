@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow {
   /// Mode of threat protection operation in custom authentication.
-  final String customAuthMode;
+  final pulumi.Input<String> customAuthMode;
 
   /// Creates a new [GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow].
   /// [customAuthMode] Mode of threat protection operation in custom authentication.
@@ -19,7 +20,7 @@ class GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow {
 
   factory GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow.fromMap(Map<String, dynamic> map) {
     return GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow(
-      customAuthMode: map['customAuthMode'] as String,
+      customAuthMode: (map['customAuthMode'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAttachmentsSlbAttachment {
   /// ID of the attached ECS instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Weight associated to the ECS instance.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetAttachmentsSlbAttachment].
   /// [instanceId] ID of the attached ECS instance.
@@ -24,8 +25,8 @@ class GetAttachmentsSlbAttachment {
 
   factory GetAttachmentsSlbAttachment.fromMap(Map<String, dynamic> map) {
     return GetAttachmentsSlbAttachment(
-      instanceId: map['instanceId'] as String,
-      weight: map['weight'] as int,
+      instanceId: (map['instanceId'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

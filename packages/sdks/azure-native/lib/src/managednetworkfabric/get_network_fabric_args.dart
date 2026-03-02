@@ -16,11 +16,9 @@ class GetNetworkFabricArgs {
   /// [networkFabricName] Name of the Network Fabric.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNetworkFabricArgs({
-    required pulumi.Output<String> networkFabricName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkFabricName = pulumi.Input.asInput<String>(networkFabricName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkFabricName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkFabricArgs {
 
   factory GetNetworkFabricArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkFabricArgs(
-      networkFabricName: pulumi.Output.create<String>(map['networkFabricName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkFabricName: (map['networkFabricName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

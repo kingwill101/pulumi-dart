@@ -23,13 +23,10 @@ class KeyvaluestoreKeysExclusiveArgs {
   /// [maxBatchSize] Maximum resource key values pairs that will update in a single API request. AWS has a default quota of 50 keys or a 3 MB payload, whichever is reached first. Defaults to `50`.
   /// [resourceKeyValuePairs] A list of all resource key value pairs associated with the KeyValueStore.
   KeyvaluestoreKeysExclusiveArgs({
-    required pulumi.Output<String> keyValueStoreArn,
-    pulumi.Output<int>? maxBatchSize,
-    pulumi.Output<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>>? resourceKeyValuePairs,
-  }) :
-      keyValueStoreArn = pulumi.Input.asInput<String>(keyValueStoreArn),
-      maxBatchSize = pulumi.Input.asOptionalInput<int>(maxBatchSize),
-      resourceKeyValuePairs = pulumi.Input.asOptionalInput<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>>(resourceKeyValuePairs);
+    required this.keyValueStoreArn,
+    this.maxBatchSize,
+    this.resourceKeyValuePairs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class KeyvaluestoreKeysExclusiveArgs {
 
   factory KeyvaluestoreKeysExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return KeyvaluestoreKeysExclusiveArgs(
-      keyValueStoreArn: pulumi.Output.create<String>(map['keyValueStoreArn'] as String),
-      maxBatchSize: map['maxBatchSize'] == null ? null : pulumi.Output.create<int>(map['maxBatchSize'] as int),
-      resourceKeyValuePairs: map['resourceKeyValuePairs'] == null ? null : pulumi.Output.create<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>>(pulumi.Input.decodeList<KeyvaluestoreKeysExclusiveResourceKeyValuePair>(map['resourceKeyValuePairs'], (value) => KeyvaluestoreKeysExclusiveResourceKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))),
+      keyValueStoreArn: (map['keyValueStoreArn'] as String).input(),
+      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize'] as int).input(),
+      resourceKeyValuePairs: map['resourceKeyValuePairs'] == null ? null : (pulumi.Input.decodeList<KeyvaluestoreKeysExclusiveResourceKeyValuePair>(map['resourceKeyValuePairs'], (value) => KeyvaluestoreKeysExclusiveResourceKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

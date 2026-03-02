@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of the data scan execution.
 class GoogleCloudDataplexV1DataScanExecutionStatusResponse {
   /// The time when the latest DataScanJob ended.
-  final String latestJobEndTime;
+  final pulumi.Input<String> latestJobEndTime;
   /// The time when the latest DataScanJob started.
-  final String latestJobStartTime;
+  final pulumi.Input<String> latestJobStartTime;
 
   /// Creates a new [GoogleCloudDataplexV1DataScanExecutionStatusResponse].
   /// [latestJobEndTime] The time when the latest DataScanJob ended.
@@ -25,8 +26,8 @@ class GoogleCloudDataplexV1DataScanExecutionStatusResponse {
 
   factory GoogleCloudDataplexV1DataScanExecutionStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataScanExecutionStatusResponse(
-      latestJobEndTime: map['latestJobEndTime'] as String,
-      latestJobStartTime: map['latestJobStartTime'] as String,
+      latestJobEndTime: (map['latestJobEndTime'] as String).input(),
+      latestJobStartTime: (map['latestJobStartTime'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_service_spec_provider_virtual_node.dart';
 import 'virtual_service_spec_provider_virtual_router.dart';
 
 class VirtualServiceSpecProvider {
   /// Virtual node associated with a virtual service.
-  final VirtualServiceSpecProviderVirtualNode? virtualNode;
+  final pulumi.Input<VirtualServiceSpecProviderVirtualNode>? virtualNode;
   /// Virtual router associated with a virtual service.
-  final VirtualServiceSpecProviderVirtualRouter? virtualRouter;
+  final pulumi.Input<VirtualServiceSpecProviderVirtualRouter>? virtualRouter;
 
   /// Creates a new [VirtualServiceSpecProvider].
   /// [virtualNode] Virtual node associated with a virtual service.
@@ -19,15 +20,15 @@ class VirtualServiceSpecProvider {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'virtualNode': ?virtualNode == null ? null : virtualNode!.toMap(),
-      'virtualRouter': ?virtualRouter == null ? null : virtualRouter!.toMap(),
+      'virtualNode': ?pulumi.Input.mapOptionalInputValue<VirtualServiceSpecProviderVirtualNode, Map<String, dynamic>>(virtualNode, (value) => value.toMap()),
+      'virtualRouter': ?pulumi.Input.mapOptionalInputValue<VirtualServiceSpecProviderVirtualRouter, Map<String, dynamic>>(virtualRouter, (value) => value.toMap()),
     };
   }
 
   factory VirtualServiceSpecProvider.fromMap(Map<String, dynamic> map) {
     return VirtualServiceSpecProvider(
-      virtualNode: map['virtualNode'] == null ? null : VirtualServiceSpecProviderVirtualNode.fromMap((map['virtualNode'] as Map).cast<String, dynamic>()),
-      virtualRouter: map['virtualRouter'] == null ? null : VirtualServiceSpecProviderVirtualRouter.fromMap((map['virtualRouter'] as Map).cast<String, dynamic>()),
+      virtualNode: map['virtualNode'] == null ? null : (VirtualServiceSpecProviderVirtualNode.fromMap((map['virtualNode'] as Map).cast<String, dynamic>())).input(),
+      virtualRouter: map['virtualRouter'] == null ? null : (VirtualServiceSpecProviderVirtualRouter.fromMap((map['virtualRouter'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

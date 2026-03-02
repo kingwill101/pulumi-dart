@@ -44,29 +44,18 @@ class DiscoveredAssetEndpointProfileArgs {
   /// [targetAddress] The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
   /// [version] An integer that is incremented each time the resource is modified.
   DiscoveredAssetEndpointProfileArgs({
-    pulumi.Output<String>? additionalConfiguration,
-    pulumi.Output<String>? discoveredAssetEndpointProfileName,
-    required pulumi.Output<String> discoveryId,
-    required pulumi.Output<String> endpointProfileType,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<String>>? supportedAuthenticationMethods,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetAddress,
-    required pulumi.Output<double> version,
-  }) :
-      additionalConfiguration = pulumi.Input.asOptionalInput<String>(additionalConfiguration),
-      discoveredAssetEndpointProfileName = pulumi.Input.asOptionalInput<String>(discoveredAssetEndpointProfileName),
-      discoveryId = pulumi.Input.asInput<String>(discoveryId),
-      endpointProfileType = pulumi.Input.asInput<String>(endpointProfileType),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      supportedAuthenticationMethods = pulumi.Input.asOptionalInput<List<String>>(supportedAuthenticationMethods),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetAddress = pulumi.Input.asInput<String>(targetAddress),
-      version = pulumi.Input.asInput<double>(version);
+    this.additionalConfiguration,
+    this.discoveredAssetEndpointProfileName,
+    required this.discoveryId,
+    required this.endpointProfileType,
+    required this.extendedLocation,
+    this.location,
+    required this.resourceGroupName,
+    this.supportedAuthenticationMethods,
+    this.tags,
+    required this.targetAddress,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class DiscoveredAssetEndpointProfileArgs {
 
   factory DiscoveredAssetEndpointProfileArgs.fromMap(Map<String, dynamic> map) {
     return DiscoveredAssetEndpointProfileArgs(
-      additionalConfiguration: map['additionalConfiguration'] == null ? null : pulumi.Output.create<String>(map['additionalConfiguration'] as String),
-      discoveredAssetEndpointProfileName: map['discoveredAssetEndpointProfileName'] == null ? null : pulumi.Output.create<String>(map['discoveredAssetEndpointProfileName'] as String),
-      discoveryId: pulumi.Output.create<String>(map['discoveryId'] as String),
-      endpointProfileType: pulumi.Output.create<String>(map['endpointProfileType'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      supportedAuthenticationMethods: map['supportedAuthenticationMethods'] == null ? null : pulumi.Output.create<List<String>>((map['supportedAuthenticationMethods'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetAddress: pulumi.Output.create<String>(map['targetAddress'] as String),
-      version: pulumi.Output.create<double>(map['version'] as double),
+      additionalConfiguration: map['additionalConfiguration'] == null ? null : (map['additionalConfiguration'] as String).input(),
+      discoveredAssetEndpointProfileName: map['discoveredAssetEndpointProfileName'] == null ? null : (map['discoveredAssetEndpointProfileName'] as String).input(),
+      discoveryId: (map['discoveryId'] as String).input(),
+      endpointProfileType: (map['endpointProfileType'] as String).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      supportedAuthenticationMethods: map['supportedAuthenticationMethods'] == null ? null : ((map['supportedAuthenticationMethods'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetAddress: (map['targetAddress'] as String).input(),
+      version: (map['version'] as double).input(),
     );
   }
 }

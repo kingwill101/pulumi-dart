@@ -46,29 +46,18 @@ class PoolState {
   /// [sizeInTb] Provisioned size of the pool in TB. Value must be between `1` and `2048`.
   /// [tags] A mapping of tags to assign to the resource.
   PoolState({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<bool>? coolAccessEnabled,
-    pulumi.Output<int>? customThroughputMibps,
-    pulumi.Output<String>? encryptionType,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? qosType,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? serviceLevel,
-    pulumi.Output<int>? sizeInTb,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      coolAccessEnabled = pulumi.Input.asOptionalInput<bool>(coolAccessEnabled),
-      customThroughputMibps = pulumi.Input.asOptionalInput<int>(customThroughputMibps),
-      encryptionType = pulumi.Input.asOptionalInput<String>(encryptionType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      qosType = pulumi.Input.asOptionalInput<String>(qosType),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      serviceLevel = pulumi.Input.asOptionalInput<String>(serviceLevel),
-      sizeInTb = pulumi.Input.asOptionalInput<int>(sizeInTb),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accountName,
+    this.coolAccessEnabled,
+    this.customThroughputMibps,
+    this.encryptionType,
+    this.location,
+    this.name,
+    this.qosType,
+    this.resourceGroupName,
+    this.serviceLevel,
+    this.sizeInTb,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class PoolState {
 
   factory PoolState.fromMap(Map<String, dynamic> map) {
     return PoolState(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      coolAccessEnabled: map['coolAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['coolAccessEnabled'] as bool),
-      customThroughputMibps: map['customThroughputMibps'] == null ? null : pulumi.Output.create<int>(map['customThroughputMibps'] as int),
-      encryptionType: map['encryptionType'] == null ? null : pulumi.Output.create<String>(map['encryptionType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      qosType: map['qosType'] == null ? null : pulumi.Output.create<String>(map['qosType'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceLevel: map['serviceLevel'] == null ? null : pulumi.Output.create<String>(map['serviceLevel'] as String),
-      sizeInTb: map['sizeInTb'] == null ? null : pulumi.Output.create<int>(map['sizeInTb'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      coolAccessEnabled: map['coolAccessEnabled'] == null ? null : (map['coolAccessEnabled'] as bool).input(),
+      customThroughputMibps: map['customThroughputMibps'] == null ? null : (map['customThroughputMibps'] as int).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      qosType: map['qosType'] == null ? null : (map['qosType'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      serviceLevel: map['serviceLevel'] == null ? null : (map['serviceLevel'] as String).input(),
+      sizeInTb: map['sizeInTb'] == null ? null : (map['sizeInTb'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

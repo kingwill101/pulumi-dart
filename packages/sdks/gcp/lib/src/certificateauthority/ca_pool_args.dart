@@ -50,23 +50,15 @@ class CaPoolArgs {
   /// [publishingOptions] The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
   /// [tier] The Tier of this CaPool.
   CaPoolArgs({
-    pulumi.Output<CaPoolEncryptionSpec>? encryptionSpec,
-    pulumi.Output<CaPoolIssuancePolicy>? issuancePolicy,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<CaPoolPublishingOptions>? publishingOptions,
-    required pulumi.Output<String> tier,
-  }) :
-      encryptionSpec = pulumi.Input.asOptionalInput<CaPoolEncryptionSpec>(encryptionSpec),
-      issuancePolicy = pulumi.Input.asOptionalInput<CaPoolIssuancePolicy>(issuancePolicy),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publishingOptions = pulumi.Input.asOptionalInput<CaPoolPublishingOptions>(publishingOptions),
-      tier = pulumi.Input.asInput<String>(tier);
+    this.encryptionSpec,
+    this.issuancePolicy,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    this.publishingOptions,
+    required this.tier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,14 +75,14 @@ class CaPoolArgs {
 
   factory CaPoolArgs.fromMap(Map<String, dynamic> map) {
     return CaPoolArgs(
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<CaPoolEncryptionSpec>(CaPoolEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      issuancePolicy: map['issuancePolicy'] == null ? null : pulumi.Output.create<CaPoolIssuancePolicy>(CaPoolIssuancePolicy.fromMap((map['issuancePolicy'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      publishingOptions: map['publishingOptions'] == null ? null : pulumi.Output.create<CaPoolPublishingOptions>(CaPoolPublishingOptions.fromMap((map['publishingOptions'] as Map).cast<String, dynamic>())),
-      tier: pulumi.Output.create<String>(map['tier'] as String),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (CaPoolEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      issuancePolicy: map['issuancePolicy'] == null ? null : (CaPoolIssuancePolicy.fromMap((map['issuancePolicy'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      publishingOptions: map['publishingOptions'] == null ? null : (CaPoolPublishingOptions.fromMap((map['publishingOptions'] as Map).cast<String, dynamic>())).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

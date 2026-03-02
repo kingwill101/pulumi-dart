@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomLineIpSegmentList {
   /// The end IP address of the CIDR block.
-  final String endIp;
+  final pulumi.Input<String> endIp;
   /// The start IP address of the CIDR block.
-  final String startIp;
+  final pulumi.Input<String> startIp;
 
   /// Creates a new [CustomLineIpSegmentList].
   /// [endIp] The end IP address of the CIDR block.
@@ -24,8 +25,8 @@ class CustomLineIpSegmentList {
 
   factory CustomLineIpSegmentList.fromMap(Map<String, dynamic> map) {
     return CustomLineIpSegmentList(
-      endIp: map['endIp'] as String,
-      startIp: map['startIp'] as String,
+      endIp: (map['endIp'] as String).input(),
+      startIp: (map['startIp'] as String).input(),
     );
   }
 }

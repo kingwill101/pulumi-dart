@@ -29,19 +29,13 @@ class ElasticBackupPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   ElasticBackupPolicyArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? backupPolicyName,
-    pulumi.Output<String>? location,
-    pulumi.Output<ElasticBackupPolicyProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      backupPolicyName = pulumi.Input.asOptionalInput<String>(backupPolicyName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<ElasticBackupPolicyProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    this.backupPolicyName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ElasticBackupPolicyArgs {
 
   factory ElasticBackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ElasticBackupPolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      backupPolicyName: map['backupPolicyName'] == null ? null : pulumi.Output.create<String>(map['backupPolicyName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ElasticBackupPolicyProperties>(ElasticBackupPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      backupPolicyName: map['backupPolicyName'] == null ? null : (map['backupPolicyName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (ElasticBackupPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

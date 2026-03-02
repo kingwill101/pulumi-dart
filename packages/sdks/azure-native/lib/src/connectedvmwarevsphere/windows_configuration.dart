@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the Windows Configuration settings for the virtual machine.
 class WindowsConfiguration {
   /// Sets a value indicating whether auto logon is enabled.
-  final bool? autoLogon;
+  final pulumi.Input<bool>? autoLogon;
   /// Sets auto logon count.
-  final int? autoLogonCount;
+  final pulumi.Input<int>? autoLogonCount;
   /// Sets domain name that vm should join.
-  final String? domainName;
+  final pulumi.Input<String>? domainName;
   /// Sets domain user password.
-  final String? domainUserPassword;
+  final pulumi.Input<String>? domainUserPassword;
   /// Sets domain username.
-  final String? domainUsername;
+  final pulumi.Input<String>? domainUsername;
   /// Sets first logon commands
-  final List<String>? firstLogonCommands;
+  final pulumi.Input<List<String>>? firstLogonCommands;
   /// Sets full name of the owner of the vm.
-  final String? fullName;
+  final pulumi.Input<String>? fullName;
   /// Sets org name to which the owner of the vm belongs.
-  final String? orgName;
+  final pulumi.Input<String>? orgName;
   /// Sets product id of the vm.
-  final String? productId;
+  final pulumi.Input<String>? productId;
   /// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
   /// Sets work group name that vm should join.
-  final String? workGroupName;
+  final pulumi.Input<String>? workGroupName;
 
   /// Creates a new [WindowsConfiguration].
   /// [autoLogon] Sets a value indicating whether auto logon is enabled.
@@ -70,17 +71,17 @@ class WindowsConfiguration {
 
   factory WindowsConfiguration.fromMap(Map<String, dynamic> map) {
     return WindowsConfiguration(
-      autoLogon: map['autoLogon'] == null ? null : map['autoLogon'] as bool,
-      autoLogonCount: map['autoLogonCount'] == null ? null : map['autoLogonCount'] as int,
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      domainUserPassword: map['domainUserPassword'] == null ? null : map['domainUserPassword'] as String,
-      domainUsername: map['domainUsername'] == null ? null : map['domainUsername'] as String,
-      firstLogonCommands: map['firstLogonCommands'] == null ? null : (map['firstLogonCommands'] as List).cast<String>(),
-      fullName: map['fullName'] == null ? null : map['fullName'] as String,
-      orgName: map['orgName'] == null ? null : map['orgName'] as String,
-      productId: map['productId'] == null ? null : map['productId'] as String,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
-      workGroupName: map['workGroupName'] == null ? null : map['workGroupName'] as String,
+      autoLogon: map['autoLogon'] == null ? null : (map['autoLogon'] as bool).input(),
+      autoLogonCount: map['autoLogonCount'] == null ? null : (map['autoLogonCount'] as int).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainUserPassword: map['domainUserPassword'] == null ? null : (map['domainUserPassword'] as String).input(),
+      domainUsername: map['domainUsername'] == null ? null : (map['domainUsername'] as String).input(),
+      firstLogonCommands: map['firstLogonCommands'] == null ? null : ((map['firstLogonCommands'] as List).cast<String>()).input(),
+      fullName: map['fullName'] == null ? null : (map['fullName'] as String).input(),
+      orgName: map['orgName'] == null ? null : (map['orgName'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      workGroupName: map['workGroupName'] == null ? null : (map['workGroupName'] as String).input(),
     );
   }
 }

@@ -35,23 +35,15 @@ class ReplicationRecoveryPlanState {
   /// [sourceRecoveryFabricId] ID of source fabric to be recovered from. Changing this forces a new Replication Plan to be created.
   /// [targetRecoveryFabricId] ID of target fabric to recover. Changing this forces a new Replication Plan to be created.
   ReplicationRecoveryPlanState({
-    pulumi.Output<ReplicationRecoveryPlanAzureToAzureSettings>? azureToAzureSettings,
-    pulumi.Output<List<ReplicationRecoveryPlanBootRecoveryGroup>>? bootRecoveryGroups,
-    pulumi.Output<ReplicationRecoveryPlanFailoverRecoveryGroup>? failoverRecoveryGroup,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? recoveryVaultId,
-    pulumi.Output<ReplicationRecoveryPlanShutdownRecoveryGroup>? shutdownRecoveryGroup,
-    pulumi.Output<String>? sourceRecoveryFabricId,
-    pulumi.Output<String>? targetRecoveryFabricId,
-  }) :
-      azureToAzureSettings = pulumi.Input.asOptionalInput<ReplicationRecoveryPlanAzureToAzureSettings>(azureToAzureSettings),
-      bootRecoveryGroups = pulumi.Input.asOptionalInput<List<ReplicationRecoveryPlanBootRecoveryGroup>>(bootRecoveryGroups),
-      failoverRecoveryGroup = pulumi.Input.asOptionalInput<ReplicationRecoveryPlanFailoverRecoveryGroup>(failoverRecoveryGroup),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryVaultId = pulumi.Input.asOptionalInput<String>(recoveryVaultId),
-      shutdownRecoveryGroup = pulumi.Input.asOptionalInput<ReplicationRecoveryPlanShutdownRecoveryGroup>(shutdownRecoveryGroup),
-      sourceRecoveryFabricId = pulumi.Input.asOptionalInput<String>(sourceRecoveryFabricId),
-      targetRecoveryFabricId = pulumi.Input.asOptionalInput<String>(targetRecoveryFabricId);
+    this.azureToAzureSettings,
+    this.bootRecoveryGroups,
+    this.failoverRecoveryGroup,
+    this.name,
+    this.recoveryVaultId,
+    this.shutdownRecoveryGroup,
+    this.sourceRecoveryFabricId,
+    this.targetRecoveryFabricId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ReplicationRecoveryPlanState {
 
   factory ReplicationRecoveryPlanState.fromMap(Map<String, dynamic> map) {
     return ReplicationRecoveryPlanState(
-      azureToAzureSettings: map['azureToAzureSettings'] == null ? null : pulumi.Output.create<ReplicationRecoveryPlanAzureToAzureSettings>(ReplicationRecoveryPlanAzureToAzureSettings.fromMap((map['azureToAzureSettings'] as Map).cast<String, dynamic>())),
-      bootRecoveryGroups: map['bootRecoveryGroups'] == null ? null : pulumi.Output.create<List<ReplicationRecoveryPlanBootRecoveryGroup>>(pulumi.Input.decodeList<ReplicationRecoveryPlanBootRecoveryGroup>(map['bootRecoveryGroups'], (value) => ReplicationRecoveryPlanBootRecoveryGroup.fromMap((value as Map).cast<String, dynamic>()))),
-      failoverRecoveryGroup: map['failoverRecoveryGroup'] == null ? null : pulumi.Output.create<ReplicationRecoveryPlanFailoverRecoveryGroup>(ReplicationRecoveryPlanFailoverRecoveryGroup.fromMap((map['failoverRecoveryGroup'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryVaultId: map['recoveryVaultId'] == null ? null : pulumi.Output.create<String>(map['recoveryVaultId'] as String),
-      shutdownRecoveryGroup: map['shutdownRecoveryGroup'] == null ? null : pulumi.Output.create<ReplicationRecoveryPlanShutdownRecoveryGroup>(ReplicationRecoveryPlanShutdownRecoveryGroup.fromMap((map['shutdownRecoveryGroup'] as Map).cast<String, dynamic>())),
-      sourceRecoveryFabricId: map['sourceRecoveryFabricId'] == null ? null : pulumi.Output.create<String>(map['sourceRecoveryFabricId'] as String),
-      targetRecoveryFabricId: map['targetRecoveryFabricId'] == null ? null : pulumi.Output.create<String>(map['targetRecoveryFabricId'] as String),
+      azureToAzureSettings: map['azureToAzureSettings'] == null ? null : (ReplicationRecoveryPlanAzureToAzureSettings.fromMap((map['azureToAzureSettings'] as Map).cast<String, dynamic>())).input(),
+      bootRecoveryGroups: map['bootRecoveryGroups'] == null ? null : (pulumi.Input.decodeList<ReplicationRecoveryPlanBootRecoveryGroup>(map['bootRecoveryGroups'], (value) => ReplicationRecoveryPlanBootRecoveryGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failoverRecoveryGroup: map['failoverRecoveryGroup'] == null ? null : (ReplicationRecoveryPlanFailoverRecoveryGroup.fromMap((map['failoverRecoveryGroup'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId'] as String).input(),
+      shutdownRecoveryGroup: map['shutdownRecoveryGroup'] == null ? null : (ReplicationRecoveryPlanShutdownRecoveryGroup.fromMap((map['shutdownRecoveryGroup'] as Map).cast<String, dynamic>())).input(),
+      sourceRecoveryFabricId: map['sourceRecoveryFabricId'] == null ? null : (map['sourceRecoveryFabricId'] as String).input(),
+      targetRecoveryFabricId: map['targetRecoveryFabricId'] == null ? null : (map['targetRecoveryFabricId'] as String).input(),
     );
   }
 }

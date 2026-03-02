@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomProviderResourceType {
   /// Specifies the endpoint of the route definition.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// Specifies the name of the route definition.
-  final String name;
+  final pulumi.Input<String> name;
   /// The routing type that is supported for the resource request. Valid values are `Proxy` and `Proxy,Cache`. Defaults to `Proxy`.
-  final String? routingType;
+  final pulumi.Input<String>? routingType;
 
   /// Creates a new [CustomProviderResourceType].
   /// [endpoint] Specifies the endpoint of the route definition.
@@ -29,9 +30,9 @@ class CustomProviderResourceType {
 
   factory CustomProviderResourceType.fromMap(Map<String, dynamic> map) {
     return CustomProviderResourceType(
-      endpoint: map['endpoint'] as String,
-      name: map['name'] as String,
-      routingType: map['routingType'] == null ? null : map['routingType'] as String,
+      endpoint: (map['endpoint'] as String).input(),
+      name: (map['name'] as String).input(),
+      routingType: map['routingType'] == null ? null : (map['routingType'] as String).input(),
     );
   }
 }

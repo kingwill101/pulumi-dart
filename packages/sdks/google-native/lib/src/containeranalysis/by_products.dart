@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines an object for the byproducts field in in-toto links. The suggested fields are "stderr", "stdout", and "return-value".
 class ByProducts {
-  final Map<String, String>? customValues;
+  final pulumi.Input<Map<String, String>>? customValues;
 
   /// Creates a new [ByProducts].
   /// [customValues] Optional.
@@ -19,7 +20,7 @@ class ByProducts {
 
   factory ByProducts.fromMap(Map<String, dynamic> map) {
     return ByProducts(
-      customValues: map['customValues'] == null ? null : (map['customValues'] as Map).cast<String, String>(),
+      customValues: map['customValues'] == null ? null : ((map['customValues'] as Map).cast<String, String>()).input(),
     );
   }
 }

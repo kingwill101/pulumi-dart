@@ -25,17 +25,12 @@ class GetHealthCheckTemplatesArgs {
   /// [nameRegex] A regex string to filter results by Health Check Template name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetHealthCheckTemplatesArgs({
-    pulumi.Output<List<String>>? healthCheckTemplateIds,
-    pulumi.Output<String>? healthCheckTemplateName,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      healthCheckTemplateIds = pulumi.Input.asOptionalInput<List<String>>(healthCheckTemplateIds),
-      healthCheckTemplateName = pulumi.Input.asOptionalInput<String>(healthCheckTemplateName),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.healthCheckTemplateIds,
+    this.healthCheckTemplateName,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetHealthCheckTemplatesArgs {
 
   factory GetHealthCheckTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckTemplatesArgs(
-      healthCheckTemplateIds: map['healthCheckTemplateIds'] == null ? null : pulumi.Output.create<List<String>>((map['healthCheckTemplateIds'] as List).cast<String>()),
-      healthCheckTemplateName: map['healthCheckTemplateName'] == null ? null : pulumi.Output.create<String>(map['healthCheckTemplateName'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      healthCheckTemplateIds: map['healthCheckTemplateIds'] == null ? null : ((map['healthCheckTemplateIds'] as List).cast<String>()).input(),
+      healthCheckTemplateName: map['healthCheckTemplateName'] == null ? null : (map['healthCheckTemplateName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

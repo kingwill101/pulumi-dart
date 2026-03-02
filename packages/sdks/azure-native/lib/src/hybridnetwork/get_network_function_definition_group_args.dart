@@ -19,13 +19,10 @@ class GetNetworkFunctionDefinitionGroupArgs {
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNetworkFunctionDefinitionGroupArgs({
-    required pulumi.Output<String> networkFunctionDefinitionGroupName,
-    required pulumi.Output<String> publisherName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkFunctionDefinitionGroupName = pulumi.Input.asInput<String>(networkFunctionDefinitionGroupName),
-      publisherName = pulumi.Input.asInput<String>(publisherName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkFunctionDefinitionGroupName,
+    required this.publisherName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNetworkFunctionDefinitionGroupArgs {
 
   factory GetNetworkFunctionDefinitionGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkFunctionDefinitionGroupArgs(
-      networkFunctionDefinitionGroupName: pulumi.Output.create<String>(map['networkFunctionDefinitionGroupName'] as String),
-      publisherName: pulumi.Output.create<String>(map['publisherName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkFunctionDefinitionGroupName: (map['networkFunctionDefinitionGroupName'] as String).input(),
+      publisherName: (map['publisherName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

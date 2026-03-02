@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'filter_response.dart';
 
 /// Filter options to be applied on query.
 class FilterOptionsResponse {
   /// Generic filter to restrict the search, such as `lang:en`, `site:xyz`.
-  final FilterResponse filter;
+  final pulumi.Input<FilterResponse> filter;
   /// If object_type is set, only objects of that type are returned. This should correspond to the name of the object that was registered within the definition of schema. The maximum length is 256 characters.
-  final String objectType;
+  final pulumi.Input<String> objectType;
 
   /// Creates a new [FilterOptionsResponse].
   /// [filter] Generic filter to restrict the search, such as `lang:en`, `site:xyz`.
@@ -19,15 +20,15 @@ class FilterOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filter': filter.toMap(),
+      'filter': pulumi.Input.mapInputValue<FilterResponse, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'objectType': objectType,
     };
   }
 
   factory FilterOptionsResponse.fromMap(Map<String, dynamic> map) {
     return FilterOptionsResponse(
-      filter: FilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>()),
-      objectType: map['objectType'] as String,
+      filter: (FilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      objectType: (map['objectType'] as String).input(),
     );
   }
 }

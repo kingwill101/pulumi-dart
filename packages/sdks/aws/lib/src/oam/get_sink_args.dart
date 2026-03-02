@@ -19,13 +19,10 @@ class GetSinkArgs {
   /// [sinkIdentifier] ARN of the sink.
   /// [tags] Tags assigned to the sink.
   GetSinkArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> sinkIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sinkIdentifier = pulumi.Input.asInput<String>(sinkIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.region,
+    required this.sinkIdentifier,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSinkArgs {
 
   factory GetSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetSinkArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sinkIdentifier: pulumi.Output.create<String>(map['sinkIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sinkIdentifier: (map['sinkIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

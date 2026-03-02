@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The reason for the credit. Not required if not applicable.
 class CreditReasonResponse {
   /// The reason code for credit.
-  final double code;
+  final pulumi.Input<double> code;
   /// The free string description of the credit.
-  final String description;
+  final pulumi.Input<String> description;
 
   /// Creates a new [CreditReasonResponse].
   /// [code] The reason code for credit.
@@ -25,8 +26,8 @@ class CreditReasonResponse {
 
   factory CreditReasonResponse.fromMap(Map<String, dynamic> map) {
     return CreditReasonResponse(
-      code: map['code'] as double,
-      description: map['description'] as String,
+      code: (map['code'] as double).input(),
+      description: (map['description'] as String).input(),
     );
   }
 }

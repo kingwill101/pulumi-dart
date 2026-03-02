@@ -7,13 +7,13 @@ import 'move_resource_dependency_override.dart';
 /// Defines the move resource properties.
 class MoveResourceProperties {
   /// Gets or sets the move resource dependencies overrides.
-  final List<MoveResourceDependencyOverride>? dependsOnOverrides;
+  final pulumi.Input<List<MoveResourceDependencyOverride>>? dependsOnOverrides;
   /// Gets or sets the existing target ARM Id of the resource.
-  final String? existingTargetId;
+  final pulumi.Input<String>? existingTargetId;
   /// Gets or sets the resource settings.
-  final AvailabilitySetResourceSettings? resourceSettings;
+  final pulumi.Input<AvailabilitySetResourceSettings>? resourceSettings;
   /// Gets or sets the Source ARM Id of the resource.
-  final String sourceId;
+  final pulumi.Input<String> sourceId;
 
   /// Creates a new [MoveResourceProperties].
   /// [dependsOnOverrides] Gets or sets the move resource dependencies overrides.
@@ -29,19 +29,19 @@ class MoveResourceProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dependsOnOverrides': ?dependsOnOverrides == null ? null : pulumi.Input.encodeList<MoveResourceDependencyOverride, Map<String, dynamic>>(dependsOnOverrides!, (value) => value.toMap()),
+      'dependsOnOverrides': ?pulumi.Input.mapOptionalInputValue<List<MoveResourceDependencyOverride>, List<Map<String, dynamic>>>(dependsOnOverrides, (value) => pulumi.Input.encodeList<MoveResourceDependencyOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
       'existingTargetId': ?existingTargetId,
-      'resourceSettings': ?resourceSettings == null ? null : resourceSettings!.toMap(),
+      'resourceSettings': ?pulumi.Input.mapOptionalInputValue<AvailabilitySetResourceSettings, Map<String, dynamic>>(resourceSettings, (value) => value.toMap()),
       'sourceId': sourceId,
     };
   }
 
   factory MoveResourceProperties.fromMap(Map<String, dynamic> map) {
     return MoveResourceProperties(
-      dependsOnOverrides: map['dependsOnOverrides'] == null ? null : pulumi.Input.decodeList<MoveResourceDependencyOverride>(map['dependsOnOverrides'], (value) => MoveResourceDependencyOverride.fromMap((value as Map).cast<String, dynamic>())),
-      existingTargetId: map['existingTargetId'] == null ? null : map['existingTargetId'] as String,
-      resourceSettings: map['resourceSettings'] == null ? null : AvailabilitySetResourceSettings.fromMap((map['resourceSettings'] as Map).cast<String, dynamic>()),
-      sourceId: map['sourceId'] as String,
+      dependsOnOverrides: map['dependsOnOverrides'] == null ? null : (pulumi.Input.decodeList<MoveResourceDependencyOverride>(map['dependsOnOverrides'], (value) => MoveResourceDependencyOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      existingTargetId: map['existingTargetId'] == null ? null : (map['existingTargetId'] as String).input(),
+      resourceSettings: map['resourceSettings'] == null ? null : (AvailabilitySetResourceSettings.fromMap((map['resourceSettings'] as Map).cast<String, dynamic>())).input(),
+      sourceId: (map['sourceId'] as String).input(),
     );
   }
 }

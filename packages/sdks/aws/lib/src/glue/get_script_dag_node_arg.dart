@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetScriptDagNodeArg {
   /// Name of the argument or property.
-  final String name;
+  final pulumi.Input<String> name;
   /// Boolean if the value is used as a parameter. Defaults to `false`.
-  final bool? param;
+  final pulumi.Input<bool>? param;
   /// Value of the argument or property.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetScriptDagNodeArg].
   /// [name] Name of the argument or property.
@@ -29,9 +30,9 @@ class GetScriptDagNodeArg {
 
   factory GetScriptDagNodeArg.fromMap(Map<String, dynamic> map) {
     return GetScriptDagNodeArg(
-      name: map['name'] as String,
-      param: map['param'] == null ? null : map['param'] as bool,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      param: map['param'] == null ? null : (map['param'] as bool).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

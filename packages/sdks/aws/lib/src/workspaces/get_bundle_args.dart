@@ -22,15 +22,11 @@ class GetBundleArgs {
   /// [owner] Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetBundleArgs({
-    pulumi.Output<String>? bundleId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? owner,
-    pulumi.Output<String>? region,
-  }) :
-      bundleId = pulumi.Input.asOptionalInput<String>(bundleId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.bundleId,
+    this.name,
+    this.owner,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetBundleArgs {
 
   factory GetBundleArgs.fromMap(Map<String, dynamic> map) {
     return GetBundleArgs(
-      bundleId: map['bundleId'] == null ? null : pulumi.Output.create<String>(map['bundleId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

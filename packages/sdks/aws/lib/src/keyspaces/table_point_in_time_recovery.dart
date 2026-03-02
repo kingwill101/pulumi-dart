@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TablePointInTimeRecovery {
   /// Valid values: `ENABLED`, `DISABLED`. The default value is `DISABLED`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [TablePointInTimeRecovery].
   /// [status] Valid values: `ENABLED`, `DISABLED`. The default value is `DISABLED`.
@@ -19,7 +20,7 @@ class TablePointInTimeRecovery {
 
   factory TablePointInTimeRecovery.fromMap(Map<String, dynamic> map) {
     return TablePointInTimeRecovery(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Predefined URL category object
 class PredefinedUrlCategoryResponse {
-  final String action;
-  final String name;
+  final pulumi.Input<String> action;
+  final pulumi.Input<String> name;
 
   /// Creates a new [PredefinedUrlCategoryResponse].
   /// [action] Required.
@@ -23,8 +24,8 @@ class PredefinedUrlCategoryResponse {
 
   factory PredefinedUrlCategoryResponse.fromMap(Map<String, dynamic> map) {
     return PredefinedUrlCategoryResponse(
-      action: map['action'] as String,
-      name: map['name'] as String,
+      action: (map['action'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

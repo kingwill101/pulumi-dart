@@ -16,11 +16,9 @@ class GetConfigurationStoreArgs {
   /// [configStoreName] The name of the configuration store.
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
   GetConfigurationStoreArgs({
-    required pulumi.Output<String> configStoreName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configStoreName = pulumi.Input.asInput<String>(configStoreName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.configStoreName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetConfigurationStoreArgs {
 
   factory GetConfigurationStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationStoreArgs(
-      configStoreName: pulumi.Output.create<String>(map['configStoreName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configStoreName: (map['configStoreName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

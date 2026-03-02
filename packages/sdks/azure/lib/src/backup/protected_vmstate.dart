@@ -36,21 +36,14 @@ class ProtectedVMState {
   /// [resourceGroupName] Specifies the name of the Resource Group **associated with** the Recovery Services Vault to use. Changing this forces a new resource to be created.
   /// [sourceVmId] Specifies the ID of the virtual machine to back up. Changing this forces a new resource to be created.
   ProtectedVMState({
-    pulumi.Output<String>? backupPolicyId,
-    pulumi.Output<List<int>>? excludeDiskLuns,
-    pulumi.Output<List<int>>? includeDiskLuns,
-    pulumi.Output<String>? protectionState,
-    pulumi.Output<String>? recoveryVaultName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? sourceVmId,
-  }) :
-      backupPolicyId = pulumi.Input.asOptionalInput<String>(backupPolicyId),
-      excludeDiskLuns = pulumi.Input.asOptionalInput<List<int>>(excludeDiskLuns),
-      includeDiskLuns = pulumi.Input.asOptionalInput<List<int>>(includeDiskLuns),
-      protectionState = pulumi.Input.asOptionalInput<String>(protectionState),
-      recoveryVaultName = pulumi.Input.asOptionalInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sourceVmId = pulumi.Input.asOptionalInput<String>(sourceVmId);
+    this.backupPolicyId,
+    this.excludeDiskLuns,
+    this.includeDiskLuns,
+    this.protectionState,
+    this.recoveryVaultName,
+    this.resourceGroupName,
+    this.sourceVmId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class ProtectedVMState {
 
   factory ProtectedVMState.fromMap(Map<String, dynamic> map) {
     return ProtectedVMState(
-      backupPolicyId: map['backupPolicyId'] == null ? null : pulumi.Output.create<String>(map['backupPolicyId'] as String),
-      excludeDiskLuns: map['excludeDiskLuns'] == null ? null : pulumi.Output.create<List<int>>((map['excludeDiskLuns'] as List).cast<int>()),
-      includeDiskLuns: map['includeDiskLuns'] == null ? null : pulumi.Output.create<List<int>>((map['includeDiskLuns'] as List).cast<int>()),
-      protectionState: map['protectionState'] == null ? null : pulumi.Output.create<String>(map['protectionState'] as String),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceVmId: map['sourceVmId'] == null ? null : pulumi.Output.create<String>(map['sourceVmId'] as String),
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
+      excludeDiskLuns: map['excludeDiskLuns'] == null ? null : ((map['excludeDiskLuns'] as List).cast<int>()).input(),
+      includeDiskLuns: map['includeDiskLuns'] == null ? null : ((map['includeDiskLuns'] as List).cast<int>()).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sourceVmId: map['sourceVmId'] == null ? null : (map['sourceVmId'] as String).input(),
     );
   }
 }

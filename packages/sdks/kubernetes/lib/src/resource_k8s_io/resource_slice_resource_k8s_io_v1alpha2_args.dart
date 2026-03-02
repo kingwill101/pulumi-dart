@@ -32,19 +32,13 @@ class ResourceSliceResourceK8sIoV1alpha2Args {
   /// [namedResources] NamedResources describes available resources using the named resources model.
   /// [nodeName] NodeName identifies the node which provides the resources if they are local to a node.
   ResourceSliceResourceK8sIoV1alpha2Args({
-    pulumi.Output<String>? apiVersion,
-    required pulumi.Output<String> driverName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<NamedResourcesResources>? namedResources,
-    pulumi.Output<String>? nodeName,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      driverName = pulumi.Input.asInput<String>(driverName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      namedResources = pulumi.Input.asOptionalInput<NamedResourcesResources>(namedResources),
-      nodeName = pulumi.Input.asOptionalInput<String>(nodeName);
+    this.apiVersion,
+    required this.driverName,
+    this.kind,
+    this.metadata,
+    this.namedResources,
+    this.nodeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class ResourceSliceResourceK8sIoV1alpha2Args {
 
   factory ResourceSliceResourceK8sIoV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return ResourceSliceResourceK8sIoV1alpha2Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      driverName: pulumi.Output.create<String>(map['driverName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      namedResources: map['namedResources'] == null ? null : pulumi.Output.create<NamedResourcesResources>(NamedResourcesResources.fromMap((map['namedResources'] as Map).cast<String, dynamic>())),
-      nodeName: map['nodeName'] == null ? null : pulumi.Output.create<String>(map['nodeName'] as String),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      driverName: (map['driverName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      namedResources: map['namedResources'] == null ? null : (NamedResourcesResources.fromMap((map['namedResources'] as Map).cast<String, dynamic>())).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class RandomPetArgs {
   /// [prefix] A string to prefix the name with.
   /// [separator] The character to separate words in the pet name. Defaults to "-"
   RandomPetArgs({
-    pulumi.Output<Map<String, String>>? keepers,
-    pulumi.Output<int>? length,
-    pulumi.Output<String>? prefix,
-    pulumi.Output<String>? separator,
-  }) :
-      keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
-      length = pulumi.Input.asOptionalInput<int>(length),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      separator = pulumi.Input.asOptionalInput<String>(separator);
+    this.keepers,
+    this.length,
+    this.prefix,
+    this.separator,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class RandomPetArgs {
 
   factory RandomPetArgs.fromMap(Map<String, dynamic> map) {
     return RandomPetArgs(
-      keepers: map['keepers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['keepers'] as Map).cast<String, String>()),
-      length: map['length'] == null ? null : pulumi.Output.create<int>(map['length'] as int),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      separator: map['separator'] == null ? null : pulumi.Output.create<String>(map['separator'] as String),
+      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      length: map['length'] == null ? null : (map['length'] as int).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      separator: map['separator'] == null ? null : (map['separator'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GroupPolicyAttachmentArgs {
   /// [group] The group the policy should be applied to
   /// [policyArn] The ARN of the policy you want to apply
   GroupPolicyAttachmentArgs({
-    required pulumi.Output<String> group,
-    required pulumi.Output<String> policyArn,
-  }) :
-      group = pulumi.Input.asInput<String>(group),
-      policyArn = pulumi.Input.asInput<String>(policyArn);
+    required this.group,
+    required this.policyArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GroupPolicyAttachmentArgs {
 
   factory GroupPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentArgs(
-      group: pulumi.Output.create<String>(map['group'] as String),
-      policyArn: pulumi.Output.create<String>(map['policyArn'] as String),
+      group: (map['group'] as String).input(),
+      policyArn: (map['policyArn'] as String).input(),
     );
   }
 }

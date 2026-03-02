@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScalingGroupLaunchTemplateOverride {
   /// The instance type in launchTemplateOverride.
-  final String? instanceType;
+  final pulumi.Input<String>? instanceType;
   /// The maximum bid price of instance type in launchTemplateOverride.
   ///
   ///
@@ -12,9 +13,9 @@ class ScalingGroupLaunchTemplateOverride {
   /// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
   ///
   /// > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
-  final double? spotPriceLimit;
+  final pulumi.Input<double>? spotPriceLimit;
   /// The weight of the instance type in launchTemplateOverride.
-  final int? weightedCapacity;
+  final pulumi.Input<int>? weightedCapacity;
 
   /// Creates a new [ScalingGroupLaunchTemplateOverride].
   /// [instanceType] The instance type in launchTemplateOverride.
@@ -36,9 +37,9 @@ class ScalingGroupLaunchTemplateOverride {
 
   factory ScalingGroupLaunchTemplateOverride.fromMap(Map<String, dynamic> map) {
     return ScalingGroupLaunchTemplateOverride(
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
-      spotPriceLimit: map['spotPriceLimit'] == null ? null : map['spotPriceLimit'] as double,
-      weightedCapacity: map['weightedCapacity'] == null ? null : map['weightedCapacity'] as int,
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      spotPriceLimit: map['spotPriceLimit'] == null ? null : (map['spotPriceLimit'] as double).input(),
+      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity'] as int).input(),
     );
   }
 }

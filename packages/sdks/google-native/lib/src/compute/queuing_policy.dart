@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'duration.dart';
 
 /// Queuing parameters for the requested deferred capacity.
 class QueuingPolicy {
   /// Relative deadline for waiting for capacity.
-  final Duration? validUntilDuration;
+  final pulumi.Input<Duration>? validUntilDuration;
   /// Absolute deadline for waiting for capacity in RFC3339 text format.
-  final String? validUntilTime;
+  final pulumi.Input<String>? validUntilTime;
 
   /// Creates a new [QueuingPolicy].
   /// [validUntilDuration] Relative deadline for waiting for capacity.
@@ -19,15 +20,15 @@ class QueuingPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'validUntilDuration': ?validUntilDuration == null ? null : validUntilDuration!.toMap(),
+      'validUntilDuration': ?pulumi.Input.mapOptionalInputValue<Duration, Map<String, dynamic>>(validUntilDuration, (value) => value.toMap()),
       'validUntilTime': ?validUntilTime,
     };
   }
 
   factory QueuingPolicy.fromMap(Map<String, dynamic> map) {
     return QueuingPolicy(
-      validUntilDuration: map['validUntilDuration'] == null ? null : Duration.fromMap((map['validUntilDuration'] as Map).cast<String, dynamic>()),
-      validUntilTime: map['validUntilTime'] == null ? null : map['validUntilTime'] as String,
+      validUntilDuration: map['validUntilDuration'] == null ? null : (Duration.fromMap((map['validUntilDuration'] as Map).cast<String, dynamic>())).input(),
+      validUntilTime: map['validUntilTime'] == null ? null : (map['validUntilTime'] as String).input(),
     );
   }
 }

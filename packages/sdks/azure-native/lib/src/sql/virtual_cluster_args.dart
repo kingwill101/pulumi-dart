@@ -25,17 +25,12 @@ class VirtualClusterArgs {
   /// [version] Virtual cluster version.
   /// [virtualClusterName] The name of the virtual cluster.
   VirtualClusterArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? version,
-    pulumi.Output<String>? virtualClusterName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asOptionalInput<String>(version),
-      virtualClusterName = pulumi.Input.asOptionalInput<String>(virtualClusterName);
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    this.version,
+    this.virtualClusterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class VirtualClusterArgs {
 
   factory VirtualClusterArgs.fromMap(Map<String, dynamic> map) {
     return VirtualClusterArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
-      virtualClusterName: map['virtualClusterName'] == null ? null : pulumi.Output.create<String>(map['virtualClusterName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      virtualClusterName: map['virtualClusterName'] == null ? null : (map['virtualClusterName'] as String).input(),
     );
   }
 }

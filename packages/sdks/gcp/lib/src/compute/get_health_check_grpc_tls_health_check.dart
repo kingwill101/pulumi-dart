@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHealthCheckGrpcTlsHealthCheck {
   /// The gRPC service name for the health check.
@@ -7,10 +8,10 @@ class GetHealthCheckGrpcTlsHealthCheck {
   /// - Empty serviceName means the overall status of all services at the backend.
   /// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
   /// The grpcServiceName can only be ASCII.
-  final String grpcServiceName;
+  final pulumi.Input<String> grpcServiceName;
   /// The port number for the health check request.
   /// Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
-  final int port;
+  final pulumi.Input<int> port;
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   ///
@@ -24,7 +25,7 @@ class GetHealthCheckGrpcTlsHealthCheck {
   /// checking.
   ///
   /// If not specified, gRPC with TLS health check follows behavior specified in the 'port' field. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
-  final String portSpecification;
+  final pulumi.Input<String> portSpecification;
 
   /// Creates a new [GetHealthCheckGrpcTlsHealthCheck].
   /// [grpcServiceName] The gRPC service name for the health check.
@@ -46,9 +47,9 @@ class GetHealthCheckGrpcTlsHealthCheck {
 
   factory GetHealthCheckGrpcTlsHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckGrpcTlsHealthCheck(
-      grpcServiceName: map['grpcServiceName'] as String,
-      port: map['port'] as int,
-      portSpecification: map['portSpecification'] as String,
+      grpcServiceName: (map['grpcServiceName'] as String).input(),
+      port: (map['port'] as int).input(),
+      portSpecification: (map['portSpecification'] as String).input(),
     );
   }
 }

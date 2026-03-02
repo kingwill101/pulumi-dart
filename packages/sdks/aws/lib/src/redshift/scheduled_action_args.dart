@@ -38,25 +38,16 @@ class ScheduledActionArgs {
   /// [startTime] The start time in UTC when the schedule is active, in UTC RFC3339 format(for example, YYYY-MM-DDTHH:MM:SSZ).
   /// [targetAction] Target action. Documented below.
   ScheduledActionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enable,
-    pulumi.Output<String>? endTime,
-    required pulumi.Output<String> iamRole,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> schedule,
-    pulumi.Output<String>? startTime,
-    required pulumi.Output<ScheduledActionTargetAction> targetAction,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enable = pulumi.Input.asOptionalInput<bool>(enable),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      iamRole = pulumi.Input.asInput<String>(iamRole),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      schedule = pulumi.Input.asInput<String>(schedule),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      targetAction = pulumi.Input.asInput<ScheduledActionTargetAction>(targetAction);
+    this.description,
+    this.enable,
+    this.endTime,
+    required this.iamRole,
+    this.name,
+    this.region,
+    required this.schedule,
+    this.startTime,
+    required this.targetAction,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class ScheduledActionArgs {
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enable: map['enable'] == null ? null : pulumi.Output.create<bool>(map['enable'] as bool),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      iamRole: pulumi.Output.create<String>(map['iamRole'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      schedule: pulumi.Output.create<String>(map['schedule'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      targetAction: pulumi.Output.create<ScheduledActionTargetAction>(ScheduledActionTargetAction.fromMap((map['targetAction'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      iamRole: (map['iamRole'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      schedule: (map['schedule'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      targetAction: (ScheduledActionTargetAction.fromMap((map['targetAction'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig {
   /// File type that Amazon AppFlow gets from your Amazon S3 bucket. Valid values are `CSV` and `JSON`.
-  final String? s3InputFileType;
+  final pulumi.Input<String>? s3InputFileType;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig].
   /// [s3InputFileType] File type that Amazon AppFlow gets from your Amazon S3 bucket. Valid values are `CSV` and `JSON`.
@@ -19,7 +20,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig(
-      s3InputFileType: map['s3InputFileType'] == null ? null : map['s3InputFileType'] as String,
+      s3InputFileType: map['s3InputFileType'] == null ? null : (map['s3InputFileType'] as String).input(),
     );
   }
 }

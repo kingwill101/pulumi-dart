@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_mesh_type_response.dart';
 
 /// AnalysisMessageBase describes some common information that is needed for all messages.
 class ServiceMeshAnalysisMessageBaseResponse {
   /// A url pointing to the Service Mesh or Istio documentation for this specific error type.
-  final String documentationUrl;
+  final pulumi.Input<String> documentationUrl;
   /// Represents how severe a message is.
-  final String level;
+  final pulumi.Input<String> level;
   /// Represents the specific type of a message.
-  final ServiceMeshTypeResponse type;
+  final pulumi.Input<ServiceMeshTypeResponse> type;
 
   /// Creates a new [ServiceMeshAnalysisMessageBaseResponse].
   /// [documentationUrl] A url pointing to the Service Mesh or Istio documentation for this specific error type.
@@ -25,15 +26,15 @@ class ServiceMeshAnalysisMessageBaseResponse {
     return <String, dynamic>{
       'documentationUrl': documentationUrl,
       'level': level,
-      'type': type.toMap(),
+      'type': pulumi.Input.mapInputValue<ServiceMeshTypeResponse, Map<String, dynamic>>(type, (value) => value.toMap()),
     };
   }
 
   factory ServiceMeshAnalysisMessageBaseResponse.fromMap(Map<String, dynamic> map) {
     return ServiceMeshAnalysisMessageBaseResponse(
-      documentationUrl: map['documentationUrl'] as String,
-      level: map['level'] as String,
-      type: ServiceMeshTypeResponse.fromMap((map['type'] as Map).cast<String, dynamic>()),
+      documentationUrl: (map['documentationUrl'] as String).input(),
+      level: (map['level'] as String).input(),
+      type: (ServiceMeshTypeResponse.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

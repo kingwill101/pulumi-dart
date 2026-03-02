@@ -26,17 +26,12 @@ class DocumentArgs {
   /// [fields] The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
   /// [project] The ID of the project in which the resource belongs.
   DocumentArgs({
-    required pulumi.Output<String> collection,
-    pulumi.Output<String>? database,
-    required pulumi.Output<String> documentId,
-    required pulumi.Output<String> fields,
-    pulumi.Output<String>? project,
-  }) :
-      collection = pulumi.Input.asInput<String>(collection),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      documentId = pulumi.Input.asInput<String>(documentId),
-      fields = pulumi.Input.asInput<String>(fields),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.collection,
+    this.database,
+    required this.documentId,
+    required this.fields,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DocumentArgs {
 
   factory DocumentArgs.fromMap(Map<String, dynamic> map) {
     return DocumentArgs(
-      collection: pulumi.Output.create<String>(map['collection'] as String),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      documentId: pulumi.Output.create<String>(map['documentId'] as String),
-      fields: pulumi.Output.create<String>(map['fields'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      collection: (map['collection'] as String).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      documentId: (map['documentId'] as String).input(),
+      fields: (map['fields'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

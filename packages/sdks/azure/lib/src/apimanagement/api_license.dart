@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiLicense {
   /// The name of the license .
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Absolute URL of the license.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [ApiLicense].
   /// [name] The name of the license .
@@ -24,8 +25,8 @@ class ApiLicense {
 
   factory ApiLicense.fromMap(Map<String, dynamic> map) {
     return ApiLicense(
-      name: map['name'] == null ? null : map['name'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

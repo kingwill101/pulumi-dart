@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The high availability properties of the cluster.
 class HighAvailabilityProperties {
   /// The target high availability mode requested for the cluster.
-  final String? targetMode;
+  final pulumi.Input<String>? targetMode;
 
   /// Creates a new [HighAvailabilityProperties].
   /// [targetMode] The target high availability mode requested for the cluster.
@@ -20,7 +21,7 @@ class HighAvailabilityProperties {
 
   factory HighAvailabilityProperties.fromMap(Map<String, dynamic> map) {
     return HighAvailabilityProperties(
-      targetMode: map['targetMode'] == null ? null : map['targetMode'] as String,
+      targetMode: map['targetMode'] == null ? null : (map['targetMode'] as String).input(),
     );
   }
 }

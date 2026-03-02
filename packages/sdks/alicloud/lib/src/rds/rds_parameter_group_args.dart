@@ -26,17 +26,12 @@ class RdsParameterGroupArgs {
   /// [parameterGroupDesc] The description of the parameter template.
   /// [parameterGroupName] The name of the parameter template.
   RdsParameterGroupArgs({
-    required pulumi.Output<String> engine,
-    required pulumi.Output<String> engineVersion,
-    required pulumi.Output<List<RdsParameterGroupParamDetail>> paramDetails,
-    pulumi.Output<String>? parameterGroupDesc,
-    required pulumi.Output<String> parameterGroupName,
-  }) :
-      engine = pulumi.Input.asInput<String>(engine),
-      engineVersion = pulumi.Input.asInput<String>(engineVersion),
-      paramDetails = pulumi.Input.asInput<List<RdsParameterGroupParamDetail>>(paramDetails),
-      parameterGroupDesc = pulumi.Input.asOptionalInput<String>(parameterGroupDesc),
-      parameterGroupName = pulumi.Input.asInput<String>(parameterGroupName);
+    required this.engine,
+    required this.engineVersion,
+    required this.paramDetails,
+    this.parameterGroupDesc,
+    required this.parameterGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RdsParameterGroupArgs {
 
   factory RdsParameterGroupArgs.fromMap(Map<String, dynamic> map) {
     return RdsParameterGroupArgs(
-      engine: pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: pulumi.Output.create<String>(map['engineVersion'] as String),
-      paramDetails: pulumi.Output.create<List<RdsParameterGroupParamDetail>>(pulumi.Input.decodeList<RdsParameterGroupParamDetail>(map['paramDetails'], (value) => RdsParameterGroupParamDetail.fromMap((value as Map).cast<String, dynamic>()))),
-      parameterGroupDesc: map['parameterGroupDesc'] == null ? null : pulumi.Output.create<String>(map['parameterGroupDesc'] as String),
-      parameterGroupName: pulumi.Output.create<String>(map['parameterGroupName'] as String),
+      engine: (map['engine'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
+      paramDetails: (pulumi.Input.decodeList<RdsParameterGroupParamDetail>(map['paramDetails'], (value) => RdsParameterGroupParamDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameterGroupDesc: map['parameterGroupDesc'] == null ? null : (map['parameterGroupDesc'] as String).input(),
+      parameterGroupName: (map['parameterGroupName'] as String).input(),
     );
   }
 }

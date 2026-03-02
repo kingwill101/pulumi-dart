@@ -19,15 +19,11 @@ class LoadBalancerCommonBandwidthPackageAttachmentState {
   /// [loadBalancerId] The ID of the applied server load balancer instance.
   /// [status] The status of the Application Load balancing instance. Value:-**Inactive**: Stopped, indicating that the instance listener will no longer forward traffic.-**Active**: running.-**Provisioning**: The project is being created.-**Configuring**: The configuration is being changed.-**CreateFailed**: The instance cannot be deleted without any charge.
   LoadBalancerCommonBandwidthPackageAttachmentState({
-    pulumi.Output<String>? bandwidthPackageId,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? loadBalancerId,
-    pulumi.Output<String>? status,
-  }) :
-      bandwidthPackageId = pulumi.Input.asOptionalInput<String>(bandwidthPackageId),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      loadBalancerId = pulumi.Input.asOptionalInput<String>(loadBalancerId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bandwidthPackageId,
+    this.dryRun,
+    this.loadBalancerId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class LoadBalancerCommonBandwidthPackageAttachmentState {
 
   factory LoadBalancerCommonBandwidthPackageAttachmentState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerCommonBandwidthPackageAttachmentState(
-      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : pulumi.Output.create<String>(map['bandwidthPackageId'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      loadBalancerId: map['loadBalancerId'] == null ? null : pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -5,14 +5,14 @@ import 'flexible_app_version_resources_volume.dart';
 
 class FlexibleAppVersionResources {
   /// Number of CPU cores needed.
-  final int? cpu;
+  final pulumi.Input<int>? cpu;
   /// Disk size (GB) needed.
-  final int? diskGb;
+  final pulumi.Input<int>? diskGb;
   /// Memory (GB) needed.
-  final double? memoryGb;
+  final pulumi.Input<double>? memoryGb;
   /// List of ports, or port pairs, to forward from the virtual machine to the application container.
   /// Structure is documented below.
-  final List<FlexibleAppVersionResourcesVolume>? volumes;
+  final pulumi.Input<List<FlexibleAppVersionResourcesVolume>>? volumes;
 
   /// Creates a new [FlexibleAppVersionResources].
   /// [cpu] Number of CPU cores needed.
@@ -31,16 +31,16 @@ class FlexibleAppVersionResources {
       'cpu': ?cpu,
       'diskGb': ?diskGb,
       'memoryGb': ?memoryGb,
-      'volumes': ?volumes == null ? null : pulumi.Input.encodeList<FlexibleAppVersionResourcesVolume, Map<String, dynamic>>(volumes!, (value) => value.toMap()),
+      'volumes': ?pulumi.Input.mapOptionalInputValue<List<FlexibleAppVersionResourcesVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<FlexibleAppVersionResourcesVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory FlexibleAppVersionResources.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionResources(
-      cpu: map['cpu'] == null ? null : map['cpu'] as int,
-      diskGb: map['diskGb'] == null ? null : map['diskGb'] as int,
-      memoryGb: map['memoryGb'] == null ? null : map['memoryGb'] as double,
-      volumes: map['volumes'] == null ? null : pulumi.Input.decodeList<FlexibleAppVersionResourcesVolume>(map['volumes'], (value) => FlexibleAppVersionResourcesVolume.fromMap((value as Map).cast<String, dynamic>())),
+      cpu: map['cpu'] == null ? null : (map['cpu'] as int).input(),
+      diskGb: map['diskGb'] == null ? null : (map['diskGb'] as int).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as double).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<FlexibleAppVersionResourcesVolume>(map['volumes'], (value) => FlexibleAppVersionResourcesVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InputDestination {
   /// A unique name for the location the RTMP stream is being pushed to.
-  final String streamName;
+  final pulumi.Input<String> streamName;
 
   /// Creates a new [InputDestination].
   /// [streamName] A unique name for the location the RTMP stream is being pushed to.
@@ -19,7 +20,7 @@ class InputDestination {
 
   factory InputDestination.fromMap(Map<String, dynamic> map) {
     return InputDestination(
-      streamName: map['streamName'] as String,
+      streamName: (map['streamName'] as String).input(),
     );
   }
 }

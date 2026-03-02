@@ -26,17 +26,12 @@ class ConfigurationAssignmentsForSubscriptionArgs {
   /// [maintenanceConfigurationId] The maintenance configuration Id
   /// [resourceId] The unique resourceId
   ConfigurationAssignmentsForSubscriptionArgs({
-    pulumi.Output<String>? configurationAssignmentName,
-    pulumi.Output<ConfigurationAssignmentFilterProperties>? filter,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? maintenanceConfigurationId,
-    pulumi.Output<String>? resourceId,
-  }) :
-      configurationAssignmentName = pulumi.Input.asOptionalInput<String>(configurationAssignmentName),
-      filter = pulumi.Input.asOptionalInput<ConfigurationAssignmentFilterProperties>(filter),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maintenanceConfigurationId = pulumi.Input.asOptionalInput<String>(maintenanceConfigurationId),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId);
+    this.configurationAssignmentName,
+    this.filter,
+    this.location,
+    this.maintenanceConfigurationId,
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ConfigurationAssignmentsForSubscriptionArgs {
 
   factory ConfigurationAssignmentsForSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationAssignmentsForSubscriptionArgs(
-      configurationAssignmentName: map['configurationAssignmentName'] == null ? null : pulumi.Output.create<String>(map['configurationAssignmentName'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<ConfigurationAssignmentFilterProperties>(ConfigurationAssignmentFilterProperties.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : pulumi.Output.create<String>(map['maintenanceConfigurationId'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
+      configurationAssignmentName: map['configurationAssignmentName'] == null ? null : (map['configurationAssignmentName'] as String).input(),
+      filter: map['filter'] == null ? null : (ConfigurationAssignmentFilterProperties.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

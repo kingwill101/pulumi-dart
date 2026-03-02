@@ -35,25 +35,16 @@ class NfsLocationState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uri] Optional.
   NfsLocationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<NfsLocationMountOptions>? mountOptions,
-    pulumi.Output<NfsLocationOnPremConfig>? onPremConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serverHostname,
-    pulumi.Output<String>? subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? uri,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      mountOptions = pulumi.Input.asOptionalInput<NfsLocationMountOptions>(mountOptions),
-      onPremConfig = pulumi.Input.asOptionalInput<NfsLocationOnPremConfig>(onPremConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverHostname = pulumi.Input.asOptionalInput<String>(serverHostname),
-      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.arn,
+    this.mountOptions,
+    this.onPremConfig,
+    this.region,
+    this.serverHostname,
+    this.subdirectory,
+    this.tags,
+    this.tagsAll,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class NfsLocationState {
 
   factory NfsLocationState.fromMap(Map<String, dynamic> map) {
     return NfsLocationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      mountOptions: map['mountOptions'] == null ? null : pulumi.Output.create<NfsLocationMountOptions>(NfsLocationMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())),
-      onPremConfig: map['onPremConfig'] == null ? null : pulumi.Output.create<NfsLocationOnPremConfig>(NfsLocationOnPremConfig.fromMap((map['onPremConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverHostname: map['serverHostname'] == null ? null : pulumi.Output.create<String>(map['serverHostname'] as String),
-      subdirectory: map['subdirectory'] == null ? null : pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : (NfsLocationMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())).input(),
+      onPremConfig: map['onPremConfig'] == null ? null : (NfsLocationOnPremConfig.fromMap((map['onPremConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverHostname: map['serverHostname'] == null ? null : (map['serverHostname'] as String).input(),
+      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

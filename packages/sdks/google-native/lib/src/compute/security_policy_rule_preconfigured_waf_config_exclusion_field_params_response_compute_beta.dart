@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComputeBeta {
   /// The match operator for the field.
-  final String op;
+  final pulumi.Input<String> op;
   /// The value of the field.
-  final String val;
+  final pulumi.Input<String> val;
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComputeBeta].
   /// [op] The match operator for the field.
@@ -24,8 +25,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComput
 
   factory SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComputeBeta(
-      op: map['op'] as String,
-      val: map['val'] as String,
+      op: (map['op'] as String).input(),
+      val: (map['val'] as String).input(),
     );
   }
 }

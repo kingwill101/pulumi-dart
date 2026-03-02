@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_role_definition_privilege_resource.dart';
 
 class MongoRoleDefinitionPrivilege {
   /// A list of actions that are allowed.
-  final List<String> actions;
+  final pulumi.Input<List<String>> actions;
   /// A `resource` block as defined below.
-  final MongoRoleDefinitionPrivilegeResource resource;
+  final pulumi.Input<MongoRoleDefinitionPrivilegeResource> resource;
 
   /// Creates a new [MongoRoleDefinitionPrivilege].
   /// [actions] A list of actions that are allowed.
@@ -19,14 +20,14 @@ class MongoRoleDefinitionPrivilege {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actions': actions,
-      'resource': resource.toMap(),
+      'resource': pulumi.Input.mapInputValue<MongoRoleDefinitionPrivilegeResource, Map<String, dynamic>>(resource, (value) => value.toMap()),
     };
   }
 
   factory MongoRoleDefinitionPrivilege.fromMap(Map<String, dynamic> map) {
     return MongoRoleDefinitionPrivilege(
-      actions: (map['actions'] as List).cast<String>(),
-      resource: MongoRoleDefinitionPrivilegeResource.fromMap((map['resource'] as Map).cast<String, dynamic>()),
+      actions: ((map['actions'] as List).cast<String>()).input(),
+      resource: (MongoRoleDefinitionPrivilegeResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

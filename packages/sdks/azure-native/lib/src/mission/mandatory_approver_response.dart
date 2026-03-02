@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Approver Metadata for approvals request.
 class MandatoryApproverResponse {
   /// EntraId of the approver
-  final String approverEntraId;
+  final pulumi.Input<String> approverEntraId;
 
   /// Creates a new [MandatoryApproverResponse].
   /// [approverEntraId] EntraId of the approver
@@ -20,7 +21,7 @@ class MandatoryApproverResponse {
 
   factory MandatoryApproverResponse.fromMap(Map<String, dynamic> map) {
     return MandatoryApproverResponse(
-      approverEntraId: map['approverEntraId'] as String,
+      approverEntraId: (map['approverEntraId'] as String).input(),
     );
   }
 }

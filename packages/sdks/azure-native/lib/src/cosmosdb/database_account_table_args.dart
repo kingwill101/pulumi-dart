@@ -26,17 +26,12 @@ class DatabaseAccountTableArgs {
   /// [resourceGroupName] Name of an Azure resource group.
   /// [tableName] Cosmos DB table name.
   DatabaseAccountTableArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<Map<String, String>> options,
-    required pulumi.Output<TableResource> resource,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? tableName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      options = pulumi.Input.asInput<Map<String, String>>(options),
-      resource = pulumi.Input.asInput<TableResource>(resource),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName);
+    required this.accountName,
+    required this.options,
+    required this.resource,
+    required this.resourceGroupName,
+    this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DatabaseAccountTableArgs {
 
   factory DatabaseAccountTableArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAccountTableArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      options: pulumi.Output.create<Map<String, String>>((map['options'] as Map).cast<String, String>()),
-      resource: pulumi.Output.create<TableResource>(TableResource.fromMap((map['resource'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      options: ((map['options'] as Map).cast<String, String>()).input(),
+      resource: (TableResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

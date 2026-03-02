@@ -16,13 +16,10 @@ class ReplicaGroupDrillState {
   /// [replicaGroupDrillId] The first ID of the resource.
   /// [status] Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
   ReplicaGroupDrillState({
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? replicaGroupDrillId,
-    pulumi.Output<String>? status,
-  }) :
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      replicaGroupDrillId = pulumi.Input.asOptionalInput<String>(replicaGroupDrillId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.groupId,
+    this.replicaGroupDrillId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ReplicaGroupDrillState {
 
   factory ReplicaGroupDrillState.fromMap(Map<String, dynamic> map) {
     return ReplicaGroupDrillState(
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      replicaGroupDrillId: map['replicaGroupDrillId'] == null ? null : pulumi.Output.create<String>(map['replicaGroupDrillId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      replicaGroupDrillId: map['replicaGroupDrillId'] == null ? null : (map['replicaGroupDrillId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

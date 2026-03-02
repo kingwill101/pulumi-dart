@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccessRulesRule {
   /// AccessRuleId of the AccessRule.
-  final String accessRuleId;
+  final pulumi.Input<String> accessRuleId;
   /// Priority of the AccessRule.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// Filter results by a specific RWAccess.
-  final String rwAccess;
+  final pulumi.Input<String> rwAccess;
   /// Filter results by a specific SourceCidrIp.
-  final String sourceCidrIp;
+  final pulumi.Input<String> sourceCidrIp;
   /// Filter results by a specific UserAccess.
-  final String userAccess;
+  final pulumi.Input<String> userAccess;
 
   /// Creates a new [GetAccessRulesRule].
   /// [accessRuleId] AccessRuleId of the AccessRule.
@@ -39,11 +40,11 @@ class GetAccessRulesRule {
 
   factory GetAccessRulesRule.fromMap(Map<String, dynamic> map) {
     return GetAccessRulesRule(
-      accessRuleId: map['accessRuleId'] as String,
-      priority: map['priority'] as int,
-      rwAccess: map['rwAccess'] as String,
-      sourceCidrIp: map['sourceCidrIp'] as String,
-      userAccess: map['userAccess'] as String,
+      accessRuleId: (map['accessRuleId'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      rwAccess: (map['rwAccess'] as String).input(),
+      sourceCidrIp: (map['sourceCidrIp'] as String).input(),
+      userAccess: (map['userAccess'] as String).input(),
     );
   }
 }

@@ -1,43 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VMware to AzStackHCI Replication extension model custom properties.
 class VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse {
   /// Gets or sets the Uri of ASR.
-  final String asrServiceUri;
+  final pulumi.Input<String> asrServiceUri;
   /// Gets or sets the ARM Id of the target AzStackHCI fabric.
-  final String azStackHciFabricArmId;
+  final pulumi.Input<String> azStackHciFabricArmId;
   /// Gets or sets the ARM Id of the AzStackHCI site.
-  final String azStackHciSiteId;
+  final pulumi.Input<String> azStackHciSiteId;
   /// Gets or sets the Uri of Gateway.
-  final String gatewayServiceUri;
+  final pulumi.Input<String> gatewayServiceUri;
   /// Gets or sets the instance type.
   /// Expected value is 'VMwareToAzStackHCI'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Gets or sets the Uri of Rcm.
-  final String rcmServiceUri;
+  final pulumi.Input<String> rcmServiceUri;
   /// Gets or sets the resource group.
-  final String resourceGroup;
+  final pulumi.Input<String> resourceGroup;
   /// Gets or sets the resource location.
-  final String resourceLocation;
+  final pulumi.Input<String> resourceLocation;
   /// Gets or sets the gateway service Id of source.
-  final String sourceGatewayServiceId;
+  final pulumi.Input<String> sourceGatewayServiceId;
   /// Gets or sets the source storage container name.
-  final String sourceStorageContainerName;
+  final pulumi.Input<String> sourceStorageContainerName;
   /// Gets or sets the storage account Id.
-  final String? storageAccountId;
+  final pulumi.Input<String>? storageAccountId;
   /// Gets or sets the Sas Secret of storage account.
-  final String? storageAccountSasSecretName;
+  final pulumi.Input<String>? storageAccountSasSecretName;
   /// Gets or sets the subscription.
-  final String subscriptionId;
+  final pulumi.Input<String> subscriptionId;
   /// Gets or sets the gateway service Id of target.
-  final String targetGatewayServiceId;
+  final pulumi.Input<String> targetGatewayServiceId;
   /// Gets or sets the target storage container name.
-  final String targetStorageContainerName;
+  final pulumi.Input<String> targetStorageContainerName;
   /// Gets or sets the ARM Id of the source VMware fabric.
-  final String vmwareFabricArmId;
+  final pulumi.Input<String> vmwareFabricArmId;
   /// Gets or sets the ARM Id of the VMware site.
-  final String vmwareSiteId;
+  final pulumi.Input<String> vmwareSiteId;
 
   /// Creates a new [VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse].
   /// [asrServiceUri] Gets or sets the Uri of ASR.
@@ -101,23 +102,23 @@ class VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse {
 
   factory VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse(
-      asrServiceUri: map['asrServiceUri'] as String,
-      azStackHciFabricArmId: map['azStackHciFabricArmId'] as String,
-      azStackHciSiteId: map['azStackHciSiteId'] as String,
-      gatewayServiceUri: map['gatewayServiceUri'] as String,
-      instanceType: map['instanceType'] as String,
-      rcmServiceUri: map['rcmServiceUri'] as String,
-      resourceGroup: map['resourceGroup'] as String,
-      resourceLocation: map['resourceLocation'] as String,
-      sourceGatewayServiceId: map['sourceGatewayServiceId'] as String,
-      sourceStorageContainerName: map['sourceStorageContainerName'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
-      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : map['storageAccountSasSecretName'] as String,
-      subscriptionId: map['subscriptionId'] as String,
-      targetGatewayServiceId: map['targetGatewayServiceId'] as String,
-      targetStorageContainerName: map['targetStorageContainerName'] as String,
-      vmwareFabricArmId: map['vmwareFabricArmId'] as String,
-      vmwareSiteId: map['vmwareSiteId'] as String,
+      asrServiceUri: (map['asrServiceUri'] as String).input(),
+      azStackHciFabricArmId: (map['azStackHciFabricArmId'] as String).input(),
+      azStackHciSiteId: (map['azStackHciSiteId'] as String).input(),
+      gatewayServiceUri: (map['gatewayServiceUri'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      rcmServiceUri: (map['rcmServiceUri'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      resourceLocation: (map['resourceLocation'] as String).input(),
+      sourceGatewayServiceId: (map['sourceGatewayServiceId'] as String).input(),
+      sourceStorageContainerName: (map['sourceStorageContainerName'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : (map['storageAccountSasSecretName'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      targetGatewayServiceId: (map['targetGatewayServiceId'] as String).input(),
+      targetStorageContainerName: (map['targetStorageContainerName'] as String).input(),
+      vmwareFabricArmId: (map['vmwareFabricArmId'] as String).input(),
+      vmwareSiteId: (map['vmwareSiteId'] as String).input(),
     );
   }
 }

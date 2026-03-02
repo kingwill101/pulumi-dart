@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines logging behavior for conversation lifecycle events.
 class GoogleCloudDialogflowV2LoggingConfig {
   /// Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
-  final bool? enableStackdriverLogging;
+  final pulumi.Input<bool>? enableStackdriverLogging;
 
   /// Creates a new [GoogleCloudDialogflowV2LoggingConfig].
   /// [enableStackdriverLogging] Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowV2LoggingConfig {
 
   factory GoogleCloudDialogflowV2LoggingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2LoggingConfig(
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : map['enableStackdriverLogging'] as bool,
+      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging'] as bool).input(),
     );
   }
 }

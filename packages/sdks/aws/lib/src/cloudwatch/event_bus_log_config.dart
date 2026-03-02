@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventBusLogConfig {
   /// Whether EventBridge include detailed event information in the records it generates. Valid values are `NONE` and `FULL`.
-  final String? includeDetail;
+  final pulumi.Input<String>? includeDetail;
   /// Level of logging detail to include. Valid values are `OFF`, `ERROR`, `INFO`, and `TRACE`.
-  final String? level;
+  final pulumi.Input<String>? level;
 
   /// Creates a new [EventBusLogConfig].
   /// [includeDetail] Whether EventBridge include detailed event information in the records it generates. Valid values are `NONE` and `FULL`.
@@ -24,8 +25,8 @@ class EventBusLogConfig {
 
   factory EventBusLogConfig.fromMap(Map<String, dynamic> map) {
     return EventBusLogConfig(
-      includeDetail: map['includeDetail'] == null ? null : map['includeDetail'] as String,
-      level: map['level'] == null ? null : map['level'] as String,
+      includeDetail: map['includeDetail'] == null ? null : (map['includeDetail'] as String).input(),
+      level: map['level'] == null ? null : (map['level'] as String).input(),
     );
   }
 }

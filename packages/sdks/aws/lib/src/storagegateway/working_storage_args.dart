@@ -19,13 +19,10 @@ class WorkingStorageArgs {
   /// [gatewayArn] The Amazon Resource Name (ARN) of the gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   WorkingStorageArgs({
-    required pulumi.Output<String> diskId,
-    required pulumi.Output<String> gatewayArn,
-    pulumi.Output<String>? region,
-  }) :
-      diskId = pulumi.Input.asInput<String>(diskId),
-      gatewayArn = pulumi.Input.asInput<String>(gatewayArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.diskId,
+    required this.gatewayArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class WorkingStorageArgs {
 
   factory WorkingStorageArgs.fromMap(Map<String, dynamic> map) {
     return WorkingStorageArgs(
-      diskId: pulumi.Output.create<String>(map['diskId'] as String),
-      gatewayArn: pulumi.Output.create<String>(map['gatewayArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      diskId: (map['diskId'] as String).input(),
+      gatewayArn: (map['gatewayArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

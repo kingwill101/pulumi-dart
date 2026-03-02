@@ -28,21 +28,14 @@ class AccessRuleState {
   /// [priority] Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
   /// [rwAccessType] The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
   AccessRuleState({
-    pulumi.Output<String>? accessGroupId,
-    pulumi.Output<String>? accessRuleId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? networkSegment,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? rwAccessType,
-  }) :
-      accessGroupId = pulumi.Input.asOptionalInput<String>(accessGroupId),
-      accessRuleId = pulumi.Input.asOptionalInput<String>(accessRuleId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      networkSegment = pulumi.Input.asOptionalInput<String>(networkSegment),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      rwAccessType = pulumi.Input.asOptionalInput<String>(rwAccessType);
+    this.accessGroupId,
+    this.accessRuleId,
+    this.createTime,
+    this.description,
+    this.networkSegment,
+    this.priority,
+    this.rwAccessType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class AccessRuleState {
 
   factory AccessRuleState.fromMap(Map<String, dynamic> map) {
     return AccessRuleState(
-      accessGroupId: map['accessGroupId'] == null ? null : pulumi.Output.create<String>(map['accessGroupId'] as String),
-      accessRuleId: map['accessRuleId'] == null ? null : pulumi.Output.create<String>(map['accessRuleId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      networkSegment: map['networkSegment'] == null ? null : pulumi.Output.create<String>(map['networkSegment'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      rwAccessType: map['rwAccessType'] == null ? null : pulumi.Output.create<String>(map['rwAccessType'] as String),
+      accessGroupId: map['accessGroupId'] == null ? null : (map['accessGroupId'] as String).input(),
+      accessRuleId: map['accessRuleId'] == null ? null : (map['accessRuleId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkSegment: map['networkSegment'] == null ? null : (map['networkSegment'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      rwAccessType: map['rwAccessType'] == null ? null : (map['rwAccessType'] as String).input(),
     );
   }
 }

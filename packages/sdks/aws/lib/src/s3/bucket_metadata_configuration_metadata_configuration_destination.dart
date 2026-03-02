@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketMetadataConfigurationMetadataConfigurationDestination {
   /// ARN of the table bucket where the metadata configuration is stored.
-  final String tableBucketArn;
+  final pulumi.Input<String> tableBucketArn;
   /// Type of the table bucket where the metadata configuration is stored.
-  final String tableBucketType;
+  final pulumi.Input<String> tableBucketType;
   /// Namespace in the table bucket where the metadata tables for the metadata configuration are stored.
-  final String tableNamespace;
+  final pulumi.Input<String> tableNamespace;
 
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationDestination].
   /// [tableBucketArn] ARN of the table bucket where the metadata configuration is stored.
@@ -29,9 +30,9 @@ class BucketMetadataConfigurationMetadataConfigurationDestination {
 
   factory BucketMetadataConfigurationMetadataConfigurationDestination.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationDestination(
-      tableBucketArn: map['tableBucketArn'] as String,
-      tableBucketType: map['tableBucketType'] as String,
-      tableNamespace: map['tableNamespace'] as String,
+      tableBucketArn: (map['tableBucketArn'] as String).input(),
+      tableBucketType: (map['tableBucketType'] as String).input(),
+      tableNamespace: (map['tableNamespace'] as String).input(),
     );
   }
 }

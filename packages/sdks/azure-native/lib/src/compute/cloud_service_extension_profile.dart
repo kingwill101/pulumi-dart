@@ -6,7 +6,7 @@ import 'extension.dart';
 /// Describes a cloud service extension profile.
 class CloudServiceExtensionProfile {
   /// List of extensions for the cloud service.
-  final List<Extension>? extensions;
+  final pulumi.Input<List<Extension>>? extensions;
 
   /// Creates a new [CloudServiceExtensionProfile].
   /// [extensions] List of extensions for the cloud service.
@@ -16,13 +16,13 @@ class CloudServiceExtensionProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extensions': ?extensions == null ? null : pulumi.Input.encodeList<Extension, Map<String, dynamic>>(extensions!, (value) => value.toMap()),
+      'extensions': ?pulumi.Input.mapOptionalInputValue<List<Extension>, List<Map<String, dynamic>>>(extensions, (value) => pulumi.Input.encodeList<Extension, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CloudServiceExtensionProfile.fromMap(Map<String, dynamic> map) {
     return CloudServiceExtensionProfile(
-      extensions: map['extensions'] == null ? null : pulumi.Input.decodeList<Extension>(map['extensions'], (value) => Extension.fromMap((value as Map).cast<String, dynamic>())),
+      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<Extension>(map['extensions'], (value) => Extension.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UnitInputVariable {
   /// Name of a supported variable type. Supported types are string, int, bool.
@@ -7,11 +8,11 @@ class UnitInputVariable {
   /// STRING
   /// INT
   /// BOOL
-  final String? type;
+  final pulumi.Input<String>? type;
   /// String encoded value for the variable.
-  final String? value;
+  final pulumi.Input<String>? value;
   /// Name of the variable from actuation configs.
-  final String variable;
+  final pulumi.Input<String> variable;
 
   /// Creates a new [UnitInputVariable].
   /// [type] Name of a supported variable type. Supported types are string, int, bool.
@@ -33,9 +34,9 @@ class UnitInputVariable {
 
   factory UnitInputVariable.fromMap(Map<String, dynamic> map) {
     return UnitInputVariable(
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
-      variable: map['variable'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
+      variable: (map['variable'] as String).input(),
     );
   }
 }

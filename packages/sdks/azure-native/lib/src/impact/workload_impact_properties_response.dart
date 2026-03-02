@@ -10,39 +10,39 @@ import 'workload_response.dart';
 /// Workload impact properties
 class WorkloadImpactPropertiesResponse {
   /// Additional fields related to impact, applicable fields per resource type are list under /impactCategories API
-  final dynamic additionalProperties;
+  final pulumi.Input<dynamic>? additionalProperties;
   /// The ARM correlation ids, this is important field for control plane related impacts
-  final List<String>? armCorrelationIds;
+  final pulumi.Input<List<String>>? armCorrelationIds;
   /// Client incident details ex: incidentId , incident source
-  final ClientIncidentDetailsResponse? clientIncidentDetails;
+  final pulumi.Input<ClientIncidentDetailsResponse>? clientIncidentDetails;
   /// Degree of confidence on the impact being a platform issue
-  final String? confidenceLevel;
+  final pulumi.Input<String>? confidenceLevel;
   /// Details about connectivity issue. Applicable when root resource causing the issue is not identified. For example, when a VM is impacted due to a network issue, the impacted resource is identified as the VM, but the root cause is the network. In such cases, the connectivity field will have the details about the network issue
-  final ConnectivityResponse? connectivity;
+  final pulumi.Input<ConnectivityResponse>? connectivity;
   /// Time at which impact has ended
-  final String? endDateTime;
+  final pulumi.Input<String>? endDateTime;
   /// ARM error code and error message associated with the impact
-  final ErrorDetailPropertiesResponse? errorDetails;
+  final pulumi.Input<ErrorDetailPropertiesResponse>? errorDetails;
   /// Category of the impact,  details can found from /impactCategories API
-  final String impactCategory;
+  final pulumi.Input<String> impactCategory;
   /// A detailed description of the impact
-  final String? impactDescription;
+  final pulumi.Input<String>? impactDescription;
   /// Use this field to group impacts
-  final String? impactGroupId;
+  final pulumi.Input<String>? impactGroupId;
   /// Unique ID of the impact (UUID)
-  final String impactUniqueId;
+  final pulumi.Input<String> impactUniqueId;
   /// Azure resource id of the impacted resource
-  final String impactedResourceId;
+  final pulumi.Input<String> impactedResourceId;
   /// Details about performance issue. Applicable for performance impacts.
-  final List<PerformanceResponse>? performance;
+  final pulumi.Input<List<PerformanceResponse>>? performance;
   /// Resource provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Time at which impact is reported
-  final String reportedTimeUtc;
+  final pulumi.Input<String> reportedTimeUtc;
   /// Time at which impact was observed
-  final String startDateTime;
+  final pulumi.Input<String> startDateTime;
   /// Information about the impacted workload
-  final WorkloadResponse? workload;
+  final pulumi.Input<WorkloadResponse>? workload;
 
   /// Creates a new [WorkloadImpactPropertiesResponse].
   /// [additionalProperties] Additional fields related to impact, applicable fields per resource type are list under /impactCategories API
@@ -86,43 +86,43 @@ class WorkloadImpactPropertiesResponse {
     return <String, dynamic>{
       'additionalProperties': ?additionalProperties,
       'armCorrelationIds': ?armCorrelationIds,
-      'clientIncidentDetails': ?clientIncidentDetails == null ? null : clientIncidentDetails!.toMap(),
+      'clientIncidentDetails': ?pulumi.Input.mapOptionalInputValue<ClientIncidentDetailsResponse, Map<String, dynamic>>(clientIncidentDetails, (value) => value.toMap()),
       'confidenceLevel': ?confidenceLevel,
-      'connectivity': ?connectivity == null ? null : connectivity!.toMap(),
+      'connectivity': ?pulumi.Input.mapOptionalInputValue<ConnectivityResponse, Map<String, dynamic>>(connectivity, (value) => value.toMap()),
       'endDateTime': ?endDateTime,
-      'errorDetails': ?errorDetails == null ? null : errorDetails!.toMap(),
+      'errorDetails': ?pulumi.Input.mapOptionalInputValue<ErrorDetailPropertiesResponse, Map<String, dynamic>>(errorDetails, (value) => value.toMap()),
       'impactCategory': impactCategory,
       'impactDescription': ?impactDescription,
       'impactGroupId': ?impactGroupId,
       'impactUniqueId': impactUniqueId,
       'impactedResourceId': impactedResourceId,
-      'performance': ?performance == null ? null : pulumi.Input.encodeList<PerformanceResponse, Map<String, dynamic>>(performance!, (value) => value.toMap()),
+      'performance': ?pulumi.Input.mapOptionalInputValue<List<PerformanceResponse>, List<Map<String, dynamic>>>(performance, (value) => pulumi.Input.encodeList<PerformanceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'reportedTimeUtc': reportedTimeUtc,
       'startDateTime': startDateTime,
-      'workload': ?workload == null ? null : workload!.toMap(),
+      'workload': ?pulumi.Input.mapOptionalInputValue<WorkloadResponse, Map<String, dynamic>>(workload, (value) => value.toMap()),
     };
   }
 
   factory WorkloadImpactPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadImpactPropertiesResponse(
-      additionalProperties: map['additionalProperties'] == null ? null : map['additionalProperties'],
-      armCorrelationIds: map['armCorrelationIds'] == null ? null : (map['armCorrelationIds'] as List).cast<String>(),
-      clientIncidentDetails: map['clientIncidentDetails'] == null ? null : ClientIncidentDetailsResponse.fromMap((map['clientIncidentDetails'] as Map).cast<String, dynamic>()),
-      confidenceLevel: map['confidenceLevel'] == null ? null : map['confidenceLevel'] as String,
-      connectivity: map['connectivity'] == null ? null : ConnectivityResponse.fromMap((map['connectivity'] as Map).cast<String, dynamic>()),
-      endDateTime: map['endDateTime'] == null ? null : map['endDateTime'] as String,
-      errorDetails: map['errorDetails'] == null ? null : ErrorDetailPropertiesResponse.fromMap((map['errorDetails'] as Map).cast<String, dynamic>()),
-      impactCategory: map['impactCategory'] as String,
-      impactDescription: map['impactDescription'] == null ? null : map['impactDescription'] as String,
-      impactGroupId: map['impactGroupId'] == null ? null : map['impactGroupId'] as String,
-      impactUniqueId: map['impactUniqueId'] as String,
-      impactedResourceId: map['impactedResourceId'] as String,
-      performance: map['performance'] == null ? null : pulumi.Input.decodeList<PerformanceResponse>(map['performance'], (value) => PerformanceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      reportedTimeUtc: map['reportedTimeUtc'] as String,
-      startDateTime: map['startDateTime'] as String,
-      workload: map['workload'] == null ? null : WorkloadResponse.fromMap((map['workload'] as Map).cast<String, dynamic>()),
+      additionalProperties: map['additionalProperties'] == null ? null : (map['additionalProperties']).input(),
+      armCorrelationIds: map['armCorrelationIds'] == null ? null : ((map['armCorrelationIds'] as List).cast<String>()).input(),
+      clientIncidentDetails: map['clientIncidentDetails'] == null ? null : (ClientIncidentDetailsResponse.fromMap((map['clientIncidentDetails'] as Map).cast<String, dynamic>())).input(),
+      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel'] as String).input(),
+      connectivity: map['connectivity'] == null ? null : (ConnectivityResponse.fromMap((map['connectivity'] as Map).cast<String, dynamic>())).input(),
+      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime'] as String).input(),
+      errorDetails: map['errorDetails'] == null ? null : (ErrorDetailPropertiesResponse.fromMap((map['errorDetails'] as Map).cast<String, dynamic>())).input(),
+      impactCategory: (map['impactCategory'] as String).input(),
+      impactDescription: map['impactDescription'] == null ? null : (map['impactDescription'] as String).input(),
+      impactGroupId: map['impactGroupId'] == null ? null : (map['impactGroupId'] as String).input(),
+      impactUniqueId: (map['impactUniqueId'] as String).input(),
+      impactedResourceId: (map['impactedResourceId'] as String).input(),
+      performance: map['performance'] == null ? null : (pulumi.Input.decodeList<PerformanceResponse>(map['performance'], (value) => PerformanceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      reportedTimeUtc: (map['reportedTimeUtc'] as String).input(),
+      startDateTime: (map['startDateTime'] as String).input(),
+      workload: map['workload'] == null ? null : (WorkloadResponse.fromMap((map['workload'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

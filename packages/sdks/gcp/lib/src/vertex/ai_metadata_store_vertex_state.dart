@@ -36,23 +36,15 @@ class AiMetadataStoreVertexState {
   /// [states] State information of the MetadataStore.
   /// [updateTime] The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   AiMetadataStoreVertexState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<AiMetadataStoreEncryptionSpec>? encryptionSpec,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<AiMetadataStoreState>>? states,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryptionSpec = pulumi.Input.asOptionalInput<AiMetadataStoreEncryptionSpec>(encryptionSpec),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      states = pulumi.Input.asOptionalInput<List<AiMetadataStoreState>>(states),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.encryptionSpec,
+    this.name,
+    this.project,
+    this.region,
+    this.states,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class AiMetadataStoreVertexState {
 
   factory AiMetadataStoreVertexState.fromMap(Map<String, dynamic> map) {
     return AiMetadataStoreVertexState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<AiMetadataStoreEncryptionSpec>(AiMetadataStoreEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      states: map['states'] == null ? null : pulumi.Output.create<List<AiMetadataStoreState>>(pulumi.Input.decodeList<AiMetadataStoreState>(map['states'], (value) => AiMetadataStoreState.fromMap((value as Map).cast<String, dynamic>()))),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiMetadataStoreEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<AiMetadataStoreState>(map['states'], (value) => AiMetadataStoreState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

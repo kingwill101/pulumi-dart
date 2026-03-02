@@ -42,27 +42,17 @@ class PrometheusAlertRuleArgs {
   /// [prometheusAlertRuleName] The name of the resource.
   /// [type] The type of the alert rule.
   PrometheusAlertRuleArgs({
-    pulumi.Output<List<PrometheusAlertRuleAnnotation>>? annotations,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? dispatchRuleId,
-    required pulumi.Output<String> duration,
-    required pulumi.Output<String> expression,
-    pulumi.Output<List<PrometheusAlertRuleLabel>>? labels,
-    required pulumi.Output<String> message,
-    pulumi.Output<String>? notifyType,
-    required pulumi.Output<String> prometheusAlertRuleName,
-    pulumi.Output<String>? type,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<List<PrometheusAlertRuleAnnotation>>(annotations),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      dispatchRuleId = pulumi.Input.asOptionalInput<String>(dispatchRuleId),
-      duration = pulumi.Input.asInput<String>(duration),
-      expression = pulumi.Input.asInput<String>(expression),
-      labels = pulumi.Input.asOptionalInput<List<PrometheusAlertRuleLabel>>(labels),
-      message = pulumi.Input.asInput<String>(message),
-      notifyType = pulumi.Input.asOptionalInput<String>(notifyType),
-      prometheusAlertRuleName = pulumi.Input.asInput<String>(prometheusAlertRuleName),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.annotations,
+    required this.clusterId,
+    this.dispatchRuleId,
+    required this.duration,
+    required this.expression,
+    this.labels,
+    required this.message,
+    this.notifyType,
+    required this.prometheusAlertRuleName,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class PrometheusAlertRuleArgs {
 
   factory PrometheusAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return PrometheusAlertRuleArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<PrometheusAlertRuleAnnotation>>(pulumi.Input.decodeList<PrometheusAlertRuleAnnotation>(map['annotations'], (value) => PrometheusAlertRuleAnnotation.fromMap((value as Map).cast<String, dynamic>()))),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      dispatchRuleId: map['dispatchRuleId'] == null ? null : pulumi.Output.create<String>(map['dispatchRuleId'] as String),
-      duration: pulumi.Output.create<String>(map['duration'] as String),
-      expression: pulumi.Output.create<String>(map['expression'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<PrometheusAlertRuleLabel>>(pulumi.Input.decodeList<PrometheusAlertRuleLabel>(map['labels'], (value) => PrometheusAlertRuleLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      message: pulumi.Output.create<String>(map['message'] as String),
-      notifyType: map['notifyType'] == null ? null : pulumi.Output.create<String>(map['notifyType'] as String),
-      prometheusAlertRuleName: pulumi.Output.create<String>(map['prometheusAlertRuleName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      annotations: map['annotations'] == null ? null : (pulumi.Input.decodeList<PrometheusAlertRuleAnnotation>(map['annotations'], (value) => PrometheusAlertRuleAnnotation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      dispatchRuleId: map['dispatchRuleId'] == null ? null : (map['dispatchRuleId'] as String).input(),
+      duration: (map['duration'] as String).input(),
+      expression: (map['expression'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<PrometheusAlertRuleLabel>(map['labels'], (value) => PrometheusAlertRuleLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: (map['message'] as String).input(),
+      notifyType: map['notifyType'] == null ? null : (map['notifyType'] as String).input(),
+      prometheusAlertRuleName: (map['prometheusAlertRuleName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

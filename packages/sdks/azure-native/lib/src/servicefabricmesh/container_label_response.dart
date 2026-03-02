@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a container label.
 class ContainerLabelResponse {
   /// The name of the container label.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the container label.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ContainerLabelResponse].
   /// [name] The name of the container label.
@@ -25,8 +26,8 @@ class ContainerLabelResponse {
 
   factory ContainerLabelResponse.fromMap(Map<String, dynamic> map) {
     return ContainerLabelResponse(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

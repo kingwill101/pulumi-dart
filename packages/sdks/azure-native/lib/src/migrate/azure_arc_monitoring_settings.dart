@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Arc Monitoring settings.
 class AzureArcMonitoringSettings {
   /// Number of alert rules settings.
-  final int alertRulesCount;
+  final pulumi.Input<int> alertRulesCount;
   /// Logs volume settings.
-  final double logsVolumeInGB;
+  final pulumi.Input<double> logsVolumeInGB;
 
   /// Creates a new [AzureArcMonitoringSettings].
   /// [alertRulesCount] Number of alert rules settings.
@@ -25,8 +26,8 @@ class AzureArcMonitoringSettings {
 
   factory AzureArcMonitoringSettings.fromMap(Map<String, dynamic> map) {
     return AzureArcMonitoringSettings(
-      alertRulesCount: map['alertRulesCount'] as int,
-      logsVolumeInGB: map['logsVolumeInGB'] as double,
+      alertRulesCount: (map['alertRulesCount'] as int).input(),
+      logsVolumeInGB: (map['logsVolumeInGB'] as double).input(),
     );
   }
 }

@@ -18,11 +18,9 @@ class ProjectCloudArmorTierArgs {
   /// [cloudArmorTier] Managed protection tier to be set.
   /// [project] The ID of the project in which the resource belongs.
   ProjectCloudArmorTierArgs({
-    required pulumi.Output<String> cloudArmorTier,
-    pulumi.Output<String>? project,
-  }) :
-      cloudArmorTier = pulumi.Input.asInput<String>(cloudArmorTier),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.cloudArmorTier,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class ProjectCloudArmorTierArgs {
 
   factory ProjectCloudArmorTierArgs.fromMap(Map<String, dynamic> map) {
     return ProjectCloudArmorTierArgs(
-      cloudArmorTier: pulumi.Output.create<String>(map['cloudArmorTier'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      cloudArmorTier: (map['cloudArmorTier'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

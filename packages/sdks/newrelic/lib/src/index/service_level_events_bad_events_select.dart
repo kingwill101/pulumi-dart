@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceLevelEventsBadEventsSelect {
   /// The event attribute to use in the SELECT clause.
-  final String? attribute;
+  final pulumi.Input<String>? attribute;
   /// The function to use in the SELECT clause. Valid values are `COUNT`, `SUM`, `GET_FIELD`, and `GET_CDF_COUNT`.
-  final String function;
+  final pulumi.Input<String> function;
   /// Limit for values to be counter by `GET_CDF_COUNT` function.
-  final double? threshold;
+  final pulumi.Input<double>? threshold;
 
   /// Creates a new [ServiceLevelEventsBadEventsSelect].
   /// [attribute] The event attribute to use in the SELECT clause.
@@ -29,9 +30,9 @@ class ServiceLevelEventsBadEventsSelect {
 
   factory ServiceLevelEventsBadEventsSelect.fromMap(Map<String, dynamic> map) {
     return ServiceLevelEventsBadEventsSelect(
-      attribute: map['attribute'] == null ? null : map['attribute'] as String,
-      function: map['function'] as String,
-      threshold: map['threshold'] == null ? null : map['threshold'] as double,
+      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
+      function: (map['function'] as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold'] as double).input(),
     );
   }
 }

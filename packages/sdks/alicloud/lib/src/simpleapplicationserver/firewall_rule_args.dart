@@ -22,15 +22,11 @@ class FirewallRuleArgs {
   /// [remark] The remarks of the firewall rule.
   /// [ruleProtocol] The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
   FirewallRuleArgs({
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> port,
-    pulumi.Output<String>? remark,
-    required pulumi.Output<String> ruleProtocol,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      port = pulumi.Input.asInput<String>(port),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      ruleProtocol = pulumi.Input.asInput<String>(ruleProtocol);
+    required this.instanceId,
+    required this.port,
+    this.remark,
+    required this.ruleProtocol,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      port: pulumi.Output.create<String>(map['port'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      ruleProtocol: pulumi.Output.create<String>(map['ruleProtocol'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      port: (map['port'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      ruleProtocol: (map['ruleProtocol'] as String).input(),
     );
   }
 }

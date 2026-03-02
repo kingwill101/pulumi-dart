@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties to configure Identity for Bring your Own Keys
 class MySQLServerIdentity {
   /// Type of managed service identity.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Metadata of user assigned identity.
-  final List<String>? userAssignedIdentities;
+  final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [MySQLServerIdentity].
   /// [type] Type of managed service identity.
@@ -25,8 +26,8 @@ class MySQLServerIdentity {
 
   factory MySQLServerIdentity.fromMap(Map<String, dynamic> map) {
     return MySQLServerIdentity(
-      type: map['type'] == null ? null : map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (map['userAssignedIdentities'] as List).cast<String>(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
     );
   }
 }

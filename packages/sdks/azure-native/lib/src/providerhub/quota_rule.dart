@@ -5,11 +5,11 @@ import 'location_quota_rule.dart';
 
 class QuotaRule {
   /// The location rules.
-  final List<LocationQuotaRule>? locationRules;
+  final pulumi.Input<List<LocationQuotaRule>>? locationRules;
   /// The quota policy.
-  final String? quotaPolicy;
+  final pulumi.Input<String>? quotaPolicy;
   /// The required features.
-  final List<String>? requiredFeatures;
+  final pulumi.Input<List<String>>? requiredFeatures;
 
   /// Creates a new [QuotaRule].
   /// [locationRules] The location rules.
@@ -23,7 +23,7 @@ class QuotaRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'locationRules': ?locationRules == null ? null : pulumi.Input.encodeList<LocationQuotaRule, Map<String, dynamic>>(locationRules!, (value) => value.toMap()),
+      'locationRules': ?pulumi.Input.mapOptionalInputValue<List<LocationQuotaRule>, List<Map<String, dynamic>>>(locationRules, (value) => pulumi.Input.encodeList<LocationQuotaRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'quotaPolicy': ?quotaPolicy,
       'requiredFeatures': ?requiredFeatures,
     };
@@ -31,9 +31,9 @@ class QuotaRule {
 
   factory QuotaRule.fromMap(Map<String, dynamic> map) {
     return QuotaRule(
-      locationRules: map['locationRules'] == null ? null : pulumi.Input.decodeList<LocationQuotaRule>(map['locationRules'], (value) => LocationQuotaRule.fromMap((value as Map).cast<String, dynamic>())),
-      quotaPolicy: map['quotaPolicy'] == null ? null : map['quotaPolicy'] as String,
-      requiredFeatures: map['requiredFeatures'] == null ? null : (map['requiredFeatures'] as List).cast<String>(),
+      locationRules: map['locationRules'] == null ? null : (pulumi.Input.decodeList<LocationQuotaRule>(map['locationRules'], (value) => LocationQuotaRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      quotaPolicy: map['quotaPolicy'] == null ? null : (map['quotaPolicy'] as String).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
     );
   }
 }

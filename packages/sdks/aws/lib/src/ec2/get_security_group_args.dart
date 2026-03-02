@@ -34,19 +34,13 @@ class GetSecurityGroupArgs {
   /// [tags] Map of tags, each pair of which must exactly match
   /// [vpcId] Id of the VPC that the desired security group belongs to.
   GetSecurityGroupArgs({
-    pulumi.Output<List<GetSecurityGroupFilter>>? filters,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetSecurityGroupFilter>>(filters),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.filters,
+    this.id,
+    this.name,
+    this.region,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class GetSecurityGroupArgs {
 
   factory GetSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetSecurityGroupFilter>>(pulumi.Input.decodeList<GetSecurityGroupFilter>(map['filters'], (value) => GetSecurityGroupFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSecurityGroupFilter>(map['filters'], (value) => GetSecurityGroupFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class GetBrokerArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the broker.
   GetBrokerArgs({
-    pulumi.Output<String>? brokerId,
-    pulumi.Output<String>? brokerName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      brokerId = pulumi.Input.asOptionalInput<String>(brokerId),
-      brokerName = pulumi.Input.asOptionalInput<String>(brokerName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.brokerId,
+    this.brokerName,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetBrokerArgs {
 
   factory GetBrokerArgs.fromMap(Map<String, dynamic> map) {
     return GetBrokerArgs(
-      brokerId: map['brokerId'] == null ? null : pulumi.Output.create<String>(map['brokerId'] as String),
-      brokerName: map['brokerName'] == null ? null : pulumi.Output.create<String>(map['brokerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      brokerId: map['brokerId'] == null ? null : (map['brokerId'] as String).input(),
+      brokerName: map['brokerName'] == null ? null : (map['brokerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

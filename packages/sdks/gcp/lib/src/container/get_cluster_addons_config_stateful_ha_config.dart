@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterAddonsConfigStatefulHaConfig {
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetClusterAddonsConfigStatefulHaConfig].
   /// [enabled] Required.
@@ -18,7 +19,7 @@ class GetClusterAddonsConfigStatefulHaConfig {
 
   factory GetClusterAddonsConfigStatefulHaConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigStatefulHaConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

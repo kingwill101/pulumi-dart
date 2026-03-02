@@ -1,317 +1,318 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Endpoints {
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
-  final String? acr;
+  final pulumi.Input<String>? acr;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
-  final String? actiontrail;
+  final pulumi.Input<String>? actiontrail;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
-  final String? adb;
-  final String? aiworkspace;
+  final pulumi.Input<String>? adb;
+  final pulumi.Input<String>? aiworkspace;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
-  final String? alb;
+  final pulumi.Input<String>? alb;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
-  final String? alidfs;
+  final pulumi.Input<String>? alidfs;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
-  final String? alidns;
+  final pulumi.Input<String>? alidns;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
-  final String? alikafka;
+  final pulumi.Input<String>? alikafka;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
-  final String? amqp;
+  final pulumi.Input<String>? amqp;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
-  final String? antiddosPublic;
-  final String? apig;
+  final pulumi.Input<String>? antiddosPublic;
+  final pulumi.Input<String>? apig;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
-  final String? apigateway;
+  final pulumi.Input<String>? apigateway;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
-  final String? arms;
+  final pulumi.Input<String>? arms;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
-  final String? bastionhost;
+  final pulumi.Input<String>? bastionhost;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
-  final String? beebot;
+  final pulumi.Input<String>? beebot;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
-  final String? bpstudio;
+  final pulumi.Input<String>? bpstudio;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brain_industrial endpoints.
-  final String? brainIndustrial;
+  final pulumi.Input<String>? brainIndustrial;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
-  final String? bssopenapi;
+  final pulumi.Input<String>? bssopenapi;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
-  final String? cas;
+  final pulumi.Input<String>? cas;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
-  final String? cassandra;
+  final pulumi.Input<String>? cassandra;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
-  final String? cbn;
+  final pulumi.Input<String>? cbn;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
-  final String? cbs;
+  final pulumi.Input<String>? cbs;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
-  final String? cddc;
+  final pulumi.Input<String>? cddc;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
-  final String? cdn;
+  final pulumi.Input<String>? cdn;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
-  final String? cds;
+  final pulumi.Input<String>? cds;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
-  final String? chatbot;
+  final pulumi.Input<String>? chatbot;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
-  final String? clickhouse;
+  final pulumi.Input<String>? clickhouse;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
-  final String? cloudapi;
+  final pulumi.Input<String>? cloudapi;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
-  final String? cloudauth;
+  final pulumi.Input<String>? cloudauth;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
-  final String? cloudfirewall;
+  final pulumi.Input<String>? cloudfirewall;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
-  final String? cloudfw;
+  final pulumi.Input<String>? cloudfw;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
-  final String? cloudphone;
+  final pulumi.Input<String>? cloudphone;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
-  final String? cloudsso;
+  final pulumi.Input<String>? cloudsso;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
-  final String? cms;
+  final pulumi.Input<String>? cms;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
-  final String? computenest;
+  final pulumi.Input<String>? computenest;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
-  final String? config;
+  final pulumi.Input<String>? config;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
-  final String? cr;
+  final pulumi.Input<String>? cr;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
-  final String? cs;
+  final pulumi.Input<String>? cs;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
-  final String? das;
+  final pulumi.Input<String>? das;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
-  final String? datahub;
+  final pulumi.Input<String>? datahub;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
-  final String? dataworksPublic;
+  final pulumi.Input<String>? dataworksPublic;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
-  final String? dataworkspublic;
+  final pulumi.Input<String>? dataworkspublic;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
-  final String? dbfs;
+  final pulumi.Input<String>? dbfs;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
-  final String? dbs;
+  final pulumi.Input<String>? dbs;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
-  final String? dcdn;
+  final pulumi.Input<String>? dcdn;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
-  final String? ddosbasic;
+  final pulumi.Input<String>? ddosbasic;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
-  final String? ddosbgp;
+  final pulumi.Input<String>? ddosbgp;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
-  final String? ddoscoo;
+  final pulumi.Input<String>? ddoscoo;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
-  final String? dds;
-  final String? devopsRdc;
+  final pulumi.Input<String>? dds;
+  final pulumi.Input<String>? devopsRdc;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
-  final String? devopsrdc;
+  final pulumi.Input<String>? devopsrdc;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
-  final String? dfs;
+  final pulumi.Input<String>? dfs;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
-  final String? dg;
+  final pulumi.Input<String>? dg;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
-  final String? dm;
+  final pulumi.Input<String>? dm;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dms_enterprise endpoints.
-  final String? dmsEnterprise;
+  final pulumi.Input<String>? dmsEnterprise;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
-  final String? dmsenterprise;
+  final pulumi.Input<String>? dmsenterprise;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
-  final String? dns;
+  final pulumi.Input<String>? dns;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
-  final String? drds;
+  final pulumi.Input<String>? drds;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
-  final String? dts;
-  final String? dysms;
+  final pulumi.Input<String>? dts;
+  final pulumi.Input<String>? dysms;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
-  final String? dysmsapi;
+  final pulumi.Input<String>? dysmsapi;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
-  final String? eais;
+  final pulumi.Input<String>? eais;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
-  final String? ebs;
+  final pulumi.Input<String>? ebs;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
-  final String? ecd;
+  final pulumi.Input<String>? ecd;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
-  final String? eci;
+  final pulumi.Input<String>? eci;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
-  final String? ecs;
+  final pulumi.Input<String>? ecs;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
-  final String? edas;
+  final pulumi.Input<String>? edas;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
-  final String? edasschedulerx;
+  final pulumi.Input<String>? edasschedulerx;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
-  final String? edsUser;
+  final pulumi.Input<String>? edsUser;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
-  final String? edsuser;
+  final pulumi.Input<String>? edsuser;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
-  final String? eflo;
-  final String? efloCnp;
+  final pulumi.Input<String>? eflo;
+  final pulumi.Input<String>? efloCnp;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
-  final String? efloController;
+  final pulumi.Input<String>? efloController;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
-  final String? ehpc;
+  final pulumi.Input<String>? ehpc;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
-  final String? ehs;
+  final pulumi.Input<String>? ehs;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
-  final String? eipanycast;
+  final pulumi.Input<String>? eipanycast;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
-  final String? elasticsearch;
+  final pulumi.Input<String>? elasticsearch;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
-  final String? emr;
+  final pulumi.Input<String>? emr;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
-  final String? ens;
-  final String? esa;
+  final pulumi.Input<String>? ens;
+  final pulumi.Input<String>? esa;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
-  final String? ess;
+  final pulumi.Input<String>? ess;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridge_share endpoints.
-  final String? eventbridge;
+  final pulumi.Input<String>? eventbridge;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
-  final String? fc;
+  final pulumi.Input<String>? fc;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
-  final String? fcOpen;
+  final pulumi.Input<String>? fcOpen;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
-  final String? fnf;
+  final pulumi.Input<String>? fnf;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
-  final String? ga;
+  final pulumi.Input<String>? ga;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
-  final String? gaplus;
+  final pulumi.Input<String>? gaplus;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
-  final String? gdb;
+  final pulumi.Input<String>? gdb;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
-  final String? gds;
+  final pulumi.Input<String>? gds;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
-  final String? gpdb;
-  final String? gwlb;
+  final pulumi.Input<String>? gpdb;
+  final pulumi.Input<String>? gwlb;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
-  final String? gwsecd;
+  final pulumi.Input<String>? gwsecd;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
-  final String? hbr;
+  final pulumi.Input<String>? hbr;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcs_sgw endpoints.
-  final String? hcsSgw;
+  final pulumi.Input<String>? hcsSgw;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
-  final String? hitsdb;
+  final pulumi.Input<String>? hitsdb;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
-  final String? imm;
+  final pulumi.Input<String>? imm;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
-  final String? imp;
+  final pulumi.Input<String>? imp;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
-  final String? ims;
+  final pulumi.Input<String>? ims;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
-  final String? iot;
+  final pulumi.Input<String>? iot;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
-  final String? kms;
+  final pulumi.Input<String>? kms;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
-  final String? kvstore;
+  final pulumi.Input<String>? kvstore;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
-  final String? log;
+  final pulumi.Input<String>? log;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
-  final String? market;
+  final pulumi.Input<String>? market;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
-  final String? maxcompute;
+  final pulumi.Input<String>? maxcompute;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
-  final String? mhub;
+  final pulumi.Input<String>? mhub;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
-  final String? mns;
+  final pulumi.Input<String>? mns;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
-  final String? mnsOpen;
+  final pulumi.Input<String>? mnsOpen;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
-  final String? mscopensubscription;
+  final pulumi.Input<String>? mscopensubscription;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
-  final String? mse;
+  final pulumi.Input<String>? mse;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
-  final String? nas;
+  final pulumi.Input<String>? nas;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
-  final String? nlb;
+  final pulumi.Input<String>? nlb;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
-  final String? oceanbase;
+  final pulumi.Input<String>? oceanbase;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
-  final String? oceanbasepro;
+  final pulumi.Input<String>? oceanbasepro;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
-  final String? ons;
+  final pulumi.Input<String>? ons;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
-  final String? onsproxy;
+  final pulumi.Input<String>? onsproxy;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
-  final String? oos;
+  final pulumi.Input<String>? oos;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
-  final String? opensearch;
+  final pulumi.Input<String>? opensearch;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
-  final String? oss;
+  final pulumi.Input<String>? oss;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
-  final String? ots;
+  final pulumi.Input<String>? ots;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
-  final String? polardb;
+  final pulumi.Input<String>? polardb;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
-  final String? polardbx;
+  final pulumi.Input<String>? polardbx;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
-  final String? privatelink;
+  final pulumi.Input<String>? privatelink;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
-  final String? pvtz;
+  final pulumi.Input<String>? pvtz;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
-  final String? quickbi;
+  final pulumi.Input<String>? quickbi;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
-  final String? quickbiPublic;
+  final pulumi.Input<String>? quickbiPublic;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
-  final String? quotas;
+  final pulumi.Input<String>? quotas;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom r_kvstore endpoints.
-  final String? rKvstore;
+  final pulumi.Input<String>? rKvstore;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
-  final String? ram;
+  final pulumi.Input<String>? ram;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
-  final String? rds;
+  final pulumi.Input<String>? rds;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
-  final String? redisa;
+  final pulumi.Input<String>? redisa;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
-  final String? resourcemanager;
-  final String? resourcesharing;
+  final pulumi.Input<String>? resourcemanager;
+  final pulumi.Input<String>? resourcesharing;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
-  final String? ressharing;
-  final String? rocketmq;
+  final pulumi.Input<String>? ressharing;
+  final pulumi.Input<String>? rocketmq;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
-  final String? ros;
+  final pulumi.Input<String>? ros;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
-  final String? sae;
+  final pulumi.Input<String>? sae;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
-  final String? sas;
+  final pulumi.Input<String>? sas;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
-  final String? scdn;
+  final pulumi.Input<String>? scdn;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
-  final String? schedulerx2;
+  final pulumi.Input<String>? schedulerx2;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
-  final String? sddp;
+  final pulumi.Input<String>? sddp;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
-  final String? selectdb;
+  final pulumi.Input<String>? selectdb;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
-  final String? serverless;
+  final pulumi.Input<String>? serverless;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
-  final String? servicecatalog;
+  final pulumi.Input<String>? servicecatalog;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
-  final String? servicemesh;
+  final pulumi.Input<String>? servicemesh;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
-  final String? sgw;
+  final pulumi.Input<String>? sgw;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
-  final String? slb;
+  final pulumi.Input<String>? slb;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
-  final String? smartag;
+  final pulumi.Input<String>? smartag;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
-  final String? srvcatalog;
+  final pulumi.Input<String>? srvcatalog;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
-  final String? sts;
+  final pulumi.Input<String>? sts;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
-  final String? swas;
+  final pulumi.Input<String>? swas;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
-  final String? swasOpen;
+  final pulumi.Input<String>? swasOpen;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
-  final String? tag;
+  final pulumi.Input<String>? tag;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
-  final String? vod;
+  final pulumi.Input<String>? vod;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
-  final String? vpc;
-  final String? vpcipam;
+  final pulumi.Input<String>? vpc;
+  final pulumi.Input<String>? vpcipam;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
-  final String? vpcpeer;
+  final pulumi.Input<String>? vpcpeer;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
-  final String? vs;
+  final pulumi.Input<String>? vs;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
-  final String? waf;
+  final pulumi.Input<String>? waf;
   /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf_openapi endpoints.
-  final String? wafOpenapi;
+  final pulumi.Input<String>? wafOpenapi;
 
   /// Creates a new [Endpoints].
   /// [acr] Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
@@ -804,166 +805,166 @@ class Endpoints {
 
   factory Endpoints.fromMap(Map<String, dynamic> map) {
     return Endpoints(
-      acr: map['acr'] == null ? null : map['acr'] as String,
-      actiontrail: map['actiontrail'] == null ? null : map['actiontrail'] as String,
-      adb: map['adb'] == null ? null : map['adb'] as String,
-      aiworkspace: map['aiworkspace'] == null ? null : map['aiworkspace'] as String,
-      alb: map['alb'] == null ? null : map['alb'] as String,
-      alidfs: map['alidfs'] == null ? null : map['alidfs'] as String,
-      alidns: map['alidns'] == null ? null : map['alidns'] as String,
-      alikafka: map['alikafka'] == null ? null : map['alikafka'] as String,
-      amqp: map['amqp'] == null ? null : map['amqp'] as String,
-      antiddosPublic: map['antiddosPublic'] == null ? null : map['antiddosPublic'] as String,
-      apig: map['apig'] == null ? null : map['apig'] as String,
-      apigateway: map['apigateway'] == null ? null : map['apigateway'] as String,
-      arms: map['arms'] == null ? null : map['arms'] as String,
-      bastionhost: map['bastionhost'] == null ? null : map['bastionhost'] as String,
-      beebot: map['beebot'] == null ? null : map['beebot'] as String,
-      bpstudio: map['bpstudio'] == null ? null : map['bpstudio'] as String,
-      brainIndustrial: map['brainIndustrial'] == null ? null : map['brainIndustrial'] as String,
-      bssopenapi: map['bssopenapi'] == null ? null : map['bssopenapi'] as String,
-      cas: map['cas'] == null ? null : map['cas'] as String,
-      cassandra: map['cassandra'] == null ? null : map['cassandra'] as String,
-      cbn: map['cbn'] == null ? null : map['cbn'] as String,
-      cbs: map['cbs'] == null ? null : map['cbs'] as String,
-      cddc: map['cddc'] == null ? null : map['cddc'] as String,
-      cdn: map['cdn'] == null ? null : map['cdn'] as String,
-      cds: map['cds'] == null ? null : map['cds'] as String,
-      chatbot: map['chatbot'] == null ? null : map['chatbot'] as String,
-      clickhouse: map['clickhouse'] == null ? null : map['clickhouse'] as String,
-      cloudapi: map['cloudapi'] == null ? null : map['cloudapi'] as String,
-      cloudauth: map['cloudauth'] == null ? null : map['cloudauth'] as String,
-      cloudfirewall: map['cloudfirewall'] == null ? null : map['cloudfirewall'] as String,
-      cloudfw: map['cloudfw'] == null ? null : map['cloudfw'] as String,
-      cloudphone: map['cloudphone'] == null ? null : map['cloudphone'] as String,
-      cloudsso: map['cloudsso'] == null ? null : map['cloudsso'] as String,
-      cms: map['cms'] == null ? null : map['cms'] as String,
-      computenest: map['computenest'] == null ? null : map['computenest'] as String,
-      config: map['config'] == null ? null : map['config'] as String,
-      cr: map['cr'] == null ? null : map['cr'] as String,
-      cs: map['cs'] == null ? null : map['cs'] as String,
-      das: map['das'] == null ? null : map['das'] as String,
-      datahub: map['datahub'] == null ? null : map['datahub'] as String,
-      dataworksPublic: map['dataworksPublic'] == null ? null : map['dataworksPublic'] as String,
-      dataworkspublic: map['dataworkspublic'] == null ? null : map['dataworkspublic'] as String,
-      dbfs: map['dbfs'] == null ? null : map['dbfs'] as String,
-      dbs: map['dbs'] == null ? null : map['dbs'] as String,
-      dcdn: map['dcdn'] == null ? null : map['dcdn'] as String,
-      ddosbasic: map['ddosbasic'] == null ? null : map['ddosbasic'] as String,
-      ddosbgp: map['ddosbgp'] == null ? null : map['ddosbgp'] as String,
-      ddoscoo: map['ddoscoo'] == null ? null : map['ddoscoo'] as String,
-      dds: map['dds'] == null ? null : map['dds'] as String,
-      devopsRdc: map['devopsRdc'] == null ? null : map['devopsRdc'] as String,
-      devopsrdc: map['devopsrdc'] == null ? null : map['devopsrdc'] as String,
-      dfs: map['dfs'] == null ? null : map['dfs'] as String,
-      dg: map['dg'] == null ? null : map['dg'] as String,
-      dm: map['dm'] == null ? null : map['dm'] as String,
-      dmsEnterprise: map['dmsEnterprise'] == null ? null : map['dmsEnterprise'] as String,
-      dmsenterprise: map['dmsenterprise'] == null ? null : map['dmsenterprise'] as String,
-      dns: map['dns'] == null ? null : map['dns'] as String,
-      drds: map['drds'] == null ? null : map['drds'] as String,
-      dts: map['dts'] == null ? null : map['dts'] as String,
-      dysms: map['dysms'] == null ? null : map['dysms'] as String,
-      dysmsapi: map['dysmsapi'] == null ? null : map['dysmsapi'] as String,
-      eais: map['eais'] == null ? null : map['eais'] as String,
-      ebs: map['ebs'] == null ? null : map['ebs'] as String,
-      ecd: map['ecd'] == null ? null : map['ecd'] as String,
-      eci: map['eci'] == null ? null : map['eci'] as String,
-      ecs: map['ecs'] == null ? null : map['ecs'] as String,
-      edas: map['edas'] == null ? null : map['edas'] as String,
-      edasschedulerx: map['edasschedulerx'] == null ? null : map['edasschedulerx'] as String,
-      edsUser: map['edsUser'] == null ? null : map['edsUser'] as String,
-      edsuser: map['edsuser'] == null ? null : map['edsuser'] as String,
-      eflo: map['eflo'] == null ? null : map['eflo'] as String,
-      efloCnp: map['efloCnp'] == null ? null : map['efloCnp'] as String,
-      efloController: map['efloController'] == null ? null : map['efloController'] as String,
-      ehpc: map['ehpc'] == null ? null : map['ehpc'] as String,
-      ehs: map['ehs'] == null ? null : map['ehs'] as String,
-      eipanycast: map['eipanycast'] == null ? null : map['eipanycast'] as String,
-      elasticsearch: map['elasticsearch'] == null ? null : map['elasticsearch'] as String,
-      emr: map['emr'] == null ? null : map['emr'] as String,
-      ens: map['ens'] == null ? null : map['ens'] as String,
-      esa: map['esa'] == null ? null : map['esa'] as String,
-      ess: map['ess'] == null ? null : map['ess'] as String,
-      eventbridge: map['eventbridge'] == null ? null : map['eventbridge'] as String,
-      fc: map['fc'] == null ? null : map['fc'] as String,
-      fcOpen: map['fcOpen'] == null ? null : map['fcOpen'] as String,
-      fnf: map['fnf'] == null ? null : map['fnf'] as String,
-      ga: map['ga'] == null ? null : map['ga'] as String,
-      gaplus: map['gaplus'] == null ? null : map['gaplus'] as String,
-      gdb: map['gdb'] == null ? null : map['gdb'] as String,
-      gds: map['gds'] == null ? null : map['gds'] as String,
-      gpdb: map['gpdb'] == null ? null : map['gpdb'] as String,
-      gwlb: map['gwlb'] == null ? null : map['gwlb'] as String,
-      gwsecd: map['gwsecd'] == null ? null : map['gwsecd'] as String,
-      hbr: map['hbr'] == null ? null : map['hbr'] as String,
-      hcsSgw: map['hcsSgw'] == null ? null : map['hcsSgw'] as String,
-      hitsdb: map['hitsdb'] == null ? null : map['hitsdb'] as String,
-      imm: map['imm'] == null ? null : map['imm'] as String,
-      imp: map['imp'] == null ? null : map['imp'] as String,
-      ims: map['ims'] == null ? null : map['ims'] as String,
-      iot: map['iot'] == null ? null : map['iot'] as String,
-      kms: map['kms'] == null ? null : map['kms'] as String,
-      kvstore: map['kvstore'] == null ? null : map['kvstore'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      log: map['log'] == null ? null : map['log'] as String,
-      market: map['market'] == null ? null : map['market'] as String,
-      maxcompute: map['maxcompute'] == null ? null : map['maxcompute'] as String,
-      mhub: map['mhub'] == null ? null : map['mhub'] as String,
-      mns: map['mns'] == null ? null : map['mns'] as String,
-      mnsOpen: map['mnsOpen'] == null ? null : map['mnsOpen'] as String,
-      mscopensubscription: map['mscopensubscription'] == null ? null : map['mscopensubscription'] as String,
-      mse: map['mse'] == null ? null : map['mse'] as String,
-      nas: map['nas'] == null ? null : map['nas'] as String,
-      nlb: map['nlb'] == null ? null : map['nlb'] as String,
-      oceanbase: map['oceanbase'] == null ? null : map['oceanbase'] as String,
-      oceanbasepro: map['oceanbasepro'] == null ? null : map['oceanbasepro'] as String,
-      ons: map['ons'] == null ? null : map['ons'] as String,
-      onsproxy: map['onsproxy'] == null ? null : map['onsproxy'] as String,
-      oos: map['oos'] == null ? null : map['oos'] as String,
-      opensearch: map['opensearch'] == null ? null : map['opensearch'] as String,
-      oss: map['oss'] == null ? null : map['oss'] as String,
-      ots: map['ots'] == null ? null : map['ots'] as String,
-      polardb: map['polardb'] == null ? null : map['polardb'] as String,
-      polardbx: map['polardbx'] == null ? null : map['polardbx'] as String,
-      privatelink: map['privatelink'] == null ? null : map['privatelink'] as String,
-      pvtz: map['pvtz'] == null ? null : map['pvtz'] as String,
-      quickbi: map['quickbi'] == null ? null : map['quickbi'] as String,
-      quickbiPublic: map['quickbiPublic'] == null ? null : map['quickbiPublic'] as String,
-      quotas: map['quotas'] == null ? null : map['quotas'] as String,
-      rKvstore: map['rKvstore'] == null ? null : map['rKvstore'] as String,
-      ram: map['ram'] == null ? null : map['ram'] as String,
-      rds: map['rds'] == null ? null : map['rds'] as String,
-      redisa: map['redisa'] == null ? null : map['redisa'] as String,
-      resourcemanager: map['resourcemanager'] == null ? null : map['resourcemanager'] as String,
-      resourcesharing: map['resourcesharing'] == null ? null : map['resourcesharing'] as String,
-      ressharing: map['ressharing'] == null ? null : map['ressharing'] as String,
-      rocketmq: map['rocketmq'] == null ? null : map['rocketmq'] as String,
-      ros: map['ros'] == null ? null : map['ros'] as String,
-      sae: map['sae'] == null ? null : map['sae'] as String,
-      sas: map['sas'] == null ? null : map['sas'] as String,
-      scdn: map['scdn'] == null ? null : map['scdn'] as String,
-      schedulerx2: map['schedulerx2'] == null ? null : map['schedulerx2'] as String,
-      sddp: map['sddp'] == null ? null : map['sddp'] as String,
-      selectdb: map['selectdb'] == null ? null : map['selectdb'] as String,
-      serverless: map['serverless'] == null ? null : map['serverless'] as String,
-      servicecatalog: map['servicecatalog'] == null ? null : map['servicecatalog'] as String,
-      servicemesh: map['servicemesh'] == null ? null : map['servicemesh'] as String,
-      sgw: map['sgw'] == null ? null : map['sgw'] as String,
-      slb: map['slb'] == null ? null : map['slb'] as String,
-      smartag: map['smartag'] == null ? null : map['smartag'] as String,
-      srvcatalog: map['srvcatalog'] == null ? null : map['srvcatalog'] as String,
-      sts: map['sts'] == null ? null : map['sts'] as String,
-      swas: map['swas'] == null ? null : map['swas'] as String,
-      swasOpen: map['swasOpen'] == null ? null : map['swasOpen'] as String,
-      tag: map['tag'] == null ? null : map['tag'] as String,
-      vod: map['vod'] == null ? null : map['vod'] as String,
-      vpc: map['vpc'] == null ? null : map['vpc'] as String,
-      vpcipam: map['vpcipam'] == null ? null : map['vpcipam'] as String,
-      vpcpeer: map['vpcpeer'] == null ? null : map['vpcpeer'] as String,
-      vs: map['vs'] == null ? null : map['vs'] as String,
-      waf: map['waf'] == null ? null : map['waf'] as String,
-      wafOpenapi: map['wafOpenapi'] == null ? null : map['wafOpenapi'] as String,
+      acr: map['acr'] == null ? null : (map['acr'] as String).input(),
+      actiontrail: map['actiontrail'] == null ? null : (map['actiontrail'] as String).input(),
+      adb: map['adb'] == null ? null : (map['adb'] as String).input(),
+      aiworkspace: map['aiworkspace'] == null ? null : (map['aiworkspace'] as String).input(),
+      alb: map['alb'] == null ? null : (map['alb'] as String).input(),
+      alidfs: map['alidfs'] == null ? null : (map['alidfs'] as String).input(),
+      alidns: map['alidns'] == null ? null : (map['alidns'] as String).input(),
+      alikafka: map['alikafka'] == null ? null : (map['alikafka'] as String).input(),
+      amqp: map['amqp'] == null ? null : (map['amqp'] as String).input(),
+      antiddosPublic: map['antiddosPublic'] == null ? null : (map['antiddosPublic'] as String).input(),
+      apig: map['apig'] == null ? null : (map['apig'] as String).input(),
+      apigateway: map['apigateway'] == null ? null : (map['apigateway'] as String).input(),
+      arms: map['arms'] == null ? null : (map['arms'] as String).input(),
+      bastionhost: map['bastionhost'] == null ? null : (map['bastionhost'] as String).input(),
+      beebot: map['beebot'] == null ? null : (map['beebot'] as String).input(),
+      bpstudio: map['bpstudio'] == null ? null : (map['bpstudio'] as String).input(),
+      brainIndustrial: map['brainIndustrial'] == null ? null : (map['brainIndustrial'] as String).input(),
+      bssopenapi: map['bssopenapi'] == null ? null : (map['bssopenapi'] as String).input(),
+      cas: map['cas'] == null ? null : (map['cas'] as String).input(),
+      cassandra: map['cassandra'] == null ? null : (map['cassandra'] as String).input(),
+      cbn: map['cbn'] == null ? null : (map['cbn'] as String).input(),
+      cbs: map['cbs'] == null ? null : (map['cbs'] as String).input(),
+      cddc: map['cddc'] == null ? null : (map['cddc'] as String).input(),
+      cdn: map['cdn'] == null ? null : (map['cdn'] as String).input(),
+      cds: map['cds'] == null ? null : (map['cds'] as String).input(),
+      chatbot: map['chatbot'] == null ? null : (map['chatbot'] as String).input(),
+      clickhouse: map['clickhouse'] == null ? null : (map['clickhouse'] as String).input(),
+      cloudapi: map['cloudapi'] == null ? null : (map['cloudapi'] as String).input(),
+      cloudauth: map['cloudauth'] == null ? null : (map['cloudauth'] as String).input(),
+      cloudfirewall: map['cloudfirewall'] == null ? null : (map['cloudfirewall'] as String).input(),
+      cloudfw: map['cloudfw'] == null ? null : (map['cloudfw'] as String).input(),
+      cloudphone: map['cloudphone'] == null ? null : (map['cloudphone'] as String).input(),
+      cloudsso: map['cloudsso'] == null ? null : (map['cloudsso'] as String).input(),
+      cms: map['cms'] == null ? null : (map['cms'] as String).input(),
+      computenest: map['computenest'] == null ? null : (map['computenest'] as String).input(),
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      cr: map['cr'] == null ? null : (map['cr'] as String).input(),
+      cs: map['cs'] == null ? null : (map['cs'] as String).input(),
+      das: map['das'] == null ? null : (map['das'] as String).input(),
+      datahub: map['datahub'] == null ? null : (map['datahub'] as String).input(),
+      dataworksPublic: map['dataworksPublic'] == null ? null : (map['dataworksPublic'] as String).input(),
+      dataworkspublic: map['dataworkspublic'] == null ? null : (map['dataworkspublic'] as String).input(),
+      dbfs: map['dbfs'] == null ? null : (map['dbfs'] as String).input(),
+      dbs: map['dbs'] == null ? null : (map['dbs'] as String).input(),
+      dcdn: map['dcdn'] == null ? null : (map['dcdn'] as String).input(),
+      ddosbasic: map['ddosbasic'] == null ? null : (map['ddosbasic'] as String).input(),
+      ddosbgp: map['ddosbgp'] == null ? null : (map['ddosbgp'] as String).input(),
+      ddoscoo: map['ddoscoo'] == null ? null : (map['ddoscoo'] as String).input(),
+      dds: map['dds'] == null ? null : (map['dds'] as String).input(),
+      devopsRdc: map['devopsRdc'] == null ? null : (map['devopsRdc'] as String).input(),
+      devopsrdc: map['devopsrdc'] == null ? null : (map['devopsrdc'] as String).input(),
+      dfs: map['dfs'] == null ? null : (map['dfs'] as String).input(),
+      dg: map['dg'] == null ? null : (map['dg'] as String).input(),
+      dm: map['dm'] == null ? null : (map['dm'] as String).input(),
+      dmsEnterprise: map['dmsEnterprise'] == null ? null : (map['dmsEnterprise'] as String).input(),
+      dmsenterprise: map['dmsenterprise'] == null ? null : (map['dmsenterprise'] as String).input(),
+      dns: map['dns'] == null ? null : (map['dns'] as String).input(),
+      drds: map['drds'] == null ? null : (map['drds'] as String).input(),
+      dts: map['dts'] == null ? null : (map['dts'] as String).input(),
+      dysms: map['dysms'] == null ? null : (map['dysms'] as String).input(),
+      dysmsapi: map['dysmsapi'] == null ? null : (map['dysmsapi'] as String).input(),
+      eais: map['eais'] == null ? null : (map['eais'] as String).input(),
+      ebs: map['ebs'] == null ? null : (map['ebs'] as String).input(),
+      ecd: map['ecd'] == null ? null : (map['ecd'] as String).input(),
+      eci: map['eci'] == null ? null : (map['eci'] as String).input(),
+      ecs: map['ecs'] == null ? null : (map['ecs'] as String).input(),
+      edas: map['edas'] == null ? null : (map['edas'] as String).input(),
+      edasschedulerx: map['edasschedulerx'] == null ? null : (map['edasschedulerx'] as String).input(),
+      edsUser: map['edsUser'] == null ? null : (map['edsUser'] as String).input(),
+      edsuser: map['edsuser'] == null ? null : (map['edsuser'] as String).input(),
+      eflo: map['eflo'] == null ? null : (map['eflo'] as String).input(),
+      efloCnp: map['efloCnp'] == null ? null : (map['efloCnp'] as String).input(),
+      efloController: map['efloController'] == null ? null : (map['efloController'] as String).input(),
+      ehpc: map['ehpc'] == null ? null : (map['ehpc'] as String).input(),
+      ehs: map['ehs'] == null ? null : (map['ehs'] as String).input(),
+      eipanycast: map['eipanycast'] == null ? null : (map['eipanycast'] as String).input(),
+      elasticsearch: map['elasticsearch'] == null ? null : (map['elasticsearch'] as String).input(),
+      emr: map['emr'] == null ? null : (map['emr'] as String).input(),
+      ens: map['ens'] == null ? null : (map['ens'] as String).input(),
+      esa: map['esa'] == null ? null : (map['esa'] as String).input(),
+      ess: map['ess'] == null ? null : (map['ess'] as String).input(),
+      eventbridge: map['eventbridge'] == null ? null : (map['eventbridge'] as String).input(),
+      fc: map['fc'] == null ? null : (map['fc'] as String).input(),
+      fcOpen: map['fcOpen'] == null ? null : (map['fcOpen'] as String).input(),
+      fnf: map['fnf'] == null ? null : (map['fnf'] as String).input(),
+      ga: map['ga'] == null ? null : (map['ga'] as String).input(),
+      gaplus: map['gaplus'] == null ? null : (map['gaplus'] as String).input(),
+      gdb: map['gdb'] == null ? null : (map['gdb'] as String).input(),
+      gds: map['gds'] == null ? null : (map['gds'] as String).input(),
+      gpdb: map['gpdb'] == null ? null : (map['gpdb'] as String).input(),
+      gwlb: map['gwlb'] == null ? null : (map['gwlb'] as String).input(),
+      gwsecd: map['gwsecd'] == null ? null : (map['gwsecd'] as String).input(),
+      hbr: map['hbr'] == null ? null : (map['hbr'] as String).input(),
+      hcsSgw: map['hcsSgw'] == null ? null : (map['hcsSgw'] as String).input(),
+      hitsdb: map['hitsdb'] == null ? null : (map['hitsdb'] as String).input(),
+      imm: map['imm'] == null ? null : (map['imm'] as String).input(),
+      imp: map['imp'] == null ? null : (map['imp'] as String).input(),
+      ims: map['ims'] == null ? null : (map['ims'] as String).input(),
+      iot: map['iot'] == null ? null : (map['iot'] as String).input(),
+      kms: map['kms'] == null ? null : (map['kms'] as String).input(),
+      kvstore: map['kvstore'] == null ? null : (map['kvstore'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      log: map['log'] == null ? null : (map['log'] as String).input(),
+      market: map['market'] == null ? null : (map['market'] as String).input(),
+      maxcompute: map['maxcompute'] == null ? null : (map['maxcompute'] as String).input(),
+      mhub: map['mhub'] == null ? null : (map['mhub'] as String).input(),
+      mns: map['mns'] == null ? null : (map['mns'] as String).input(),
+      mnsOpen: map['mnsOpen'] == null ? null : (map['mnsOpen'] as String).input(),
+      mscopensubscription: map['mscopensubscription'] == null ? null : (map['mscopensubscription'] as String).input(),
+      mse: map['mse'] == null ? null : (map['mse'] as String).input(),
+      nas: map['nas'] == null ? null : (map['nas'] as String).input(),
+      nlb: map['nlb'] == null ? null : (map['nlb'] as String).input(),
+      oceanbase: map['oceanbase'] == null ? null : (map['oceanbase'] as String).input(),
+      oceanbasepro: map['oceanbasepro'] == null ? null : (map['oceanbasepro'] as String).input(),
+      ons: map['ons'] == null ? null : (map['ons'] as String).input(),
+      onsproxy: map['onsproxy'] == null ? null : (map['onsproxy'] as String).input(),
+      oos: map['oos'] == null ? null : (map['oos'] as String).input(),
+      opensearch: map['opensearch'] == null ? null : (map['opensearch'] as String).input(),
+      oss: map['oss'] == null ? null : (map['oss'] as String).input(),
+      ots: map['ots'] == null ? null : (map['ots'] as String).input(),
+      polardb: map['polardb'] == null ? null : (map['polardb'] as String).input(),
+      polardbx: map['polardbx'] == null ? null : (map['polardbx'] as String).input(),
+      privatelink: map['privatelink'] == null ? null : (map['privatelink'] as String).input(),
+      pvtz: map['pvtz'] == null ? null : (map['pvtz'] as String).input(),
+      quickbi: map['quickbi'] == null ? null : (map['quickbi'] as String).input(),
+      quickbiPublic: map['quickbiPublic'] == null ? null : (map['quickbiPublic'] as String).input(),
+      quotas: map['quotas'] == null ? null : (map['quotas'] as String).input(),
+      rKvstore: map['rKvstore'] == null ? null : (map['rKvstore'] as String).input(),
+      ram: map['ram'] == null ? null : (map['ram'] as String).input(),
+      rds: map['rds'] == null ? null : (map['rds'] as String).input(),
+      redisa: map['redisa'] == null ? null : (map['redisa'] as String).input(),
+      resourcemanager: map['resourcemanager'] == null ? null : (map['resourcemanager'] as String).input(),
+      resourcesharing: map['resourcesharing'] == null ? null : (map['resourcesharing'] as String).input(),
+      ressharing: map['ressharing'] == null ? null : (map['ressharing'] as String).input(),
+      rocketmq: map['rocketmq'] == null ? null : (map['rocketmq'] as String).input(),
+      ros: map['ros'] == null ? null : (map['ros'] as String).input(),
+      sae: map['sae'] == null ? null : (map['sae'] as String).input(),
+      sas: map['sas'] == null ? null : (map['sas'] as String).input(),
+      scdn: map['scdn'] == null ? null : (map['scdn'] as String).input(),
+      schedulerx2: map['schedulerx2'] == null ? null : (map['schedulerx2'] as String).input(),
+      sddp: map['sddp'] == null ? null : (map['sddp'] as String).input(),
+      selectdb: map['selectdb'] == null ? null : (map['selectdb'] as String).input(),
+      serverless: map['serverless'] == null ? null : (map['serverless'] as String).input(),
+      servicecatalog: map['servicecatalog'] == null ? null : (map['servicecatalog'] as String).input(),
+      servicemesh: map['servicemesh'] == null ? null : (map['servicemesh'] as String).input(),
+      sgw: map['sgw'] == null ? null : (map['sgw'] as String).input(),
+      slb: map['slb'] == null ? null : (map['slb'] as String).input(),
+      smartag: map['smartag'] == null ? null : (map['smartag'] as String).input(),
+      srvcatalog: map['srvcatalog'] == null ? null : (map['srvcatalog'] as String).input(),
+      sts: map['sts'] == null ? null : (map['sts'] as String).input(),
+      swas: map['swas'] == null ? null : (map['swas'] as String).input(),
+      swasOpen: map['swasOpen'] == null ? null : (map['swasOpen'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      vod: map['vod'] == null ? null : (map['vod'] as String).input(),
+      vpc: map['vpc'] == null ? null : (map['vpc'] as String).input(),
+      vpcipam: map['vpcipam'] == null ? null : (map['vpcipam'] as String).input(),
+      vpcpeer: map['vpcpeer'] == null ? null : (map['vpcpeer'] as String).input(),
+      vs: map['vs'] == null ? null : (map['vs'] as String).input(),
+      waf: map['waf'] == null ? null : (map['waf'] as String).input(),
+      wafOpenapi: map['wafOpenapi'] == null ? null : (map['wafOpenapi'] as String).input(),
     );
   }
 }

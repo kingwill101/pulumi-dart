@@ -24,15 +24,11 @@ class NamespaceSchemaGroupArgs {
   /// [schemaCompatibility] Specifies the compatibility of this schema group. Possible values are `None`, `Backward`, `Forward`. Changing this forces a new resource to be created.
   /// [schemaType] Specifies the Type of this schema group. Possible values are `Avro`, `Unknown` and `Json`. Changing this forces a new resource to be created.
   NamespaceSchemaGroupArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespaceId,
-    required pulumi.Output<String> schemaCompatibility,
-    required pulumi.Output<String> schemaType,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      schemaCompatibility = pulumi.Input.asInput<String>(schemaCompatibility),
-      schemaType = pulumi.Input.asInput<String>(schemaType);
+    this.name,
+    required this.namespaceId,
+    required this.schemaCompatibility,
+    required this.schemaType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class NamespaceSchemaGroupArgs {
 
   factory NamespaceSchemaGroupArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceSchemaGroupArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
-      schemaCompatibility: pulumi.Output.create<String>(map['schemaCompatibility'] as String),
-      schemaType: pulumi.Output.create<String>(map['schemaType'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      schemaCompatibility: (map['schemaCompatibility'] as String).input(),
+      schemaType: (map['schemaType'] as String).input(),
     );
   }
 }

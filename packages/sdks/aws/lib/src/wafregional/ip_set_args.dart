@@ -20,13 +20,10 @@ class IpSetArgs {
   /// [name] The name or description of the IPSet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   IpSetArgs({
-    pulumi.Output<List<IpSetIpSetDescriptor>>? ipSetDescriptors,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      ipSetDescriptors = pulumi.Input.asOptionalInput<List<IpSetIpSetDescriptor>>(ipSetDescriptors),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.ipSetDescriptors,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class IpSetArgs {
 
   factory IpSetArgs.fromMap(Map<String, dynamic> map) {
     return IpSetArgs(
-      ipSetDescriptors: map['ipSetDescriptors'] == null ? null : pulumi.Output.create<List<IpSetIpSetDescriptor>>(pulumi.Input.decodeList<IpSetIpSetDescriptor>(map['ipSetDescriptors'], (value) => IpSetIpSetDescriptor.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      ipSetDescriptors: map['ipSetDescriptors'] == null ? null : (pulumi.Input.decodeList<IpSetIpSetDescriptor>(map['ipSetDescriptors'], (value) => IpSetIpSetDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

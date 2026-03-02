@@ -19,13 +19,10 @@ class GetRegistrationAssignmentArgs {
   /// [registrationAssignmentId] The GUID of the registration assignment.
   /// [scope] The scope of the resource.
   GetRegistrationAssignmentArgs({
-    pulumi.Output<bool>? expandRegistrationDefinition,
-    required pulumi.Output<String> registrationAssignmentId,
-    required pulumi.Output<String> scope,
-  }) :
-      expandRegistrationDefinition = pulumi.Input.asOptionalInput<bool>(expandRegistrationDefinition),
-      registrationAssignmentId = pulumi.Input.asInput<String>(registrationAssignmentId),
-      scope = pulumi.Input.asInput<String>(scope);
+    this.expandRegistrationDefinition,
+    required this.registrationAssignmentId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRegistrationAssignmentArgs {
 
   factory GetRegistrationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistrationAssignmentArgs(
-      expandRegistrationDefinition: map['expandRegistrationDefinition'] == null ? null : pulumi.Output.create<bool>(map['expandRegistrationDefinition'] as bool),
-      registrationAssignmentId: pulumi.Output.create<String>(map['registrationAssignmentId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      expandRegistrationDefinition: map['expandRegistrationDefinition'] == null ? null : (map['expandRegistrationDefinition'] as bool).input(),
+      registrationAssignmentId: (map['registrationAssignmentId'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

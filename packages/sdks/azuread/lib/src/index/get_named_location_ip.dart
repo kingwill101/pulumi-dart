@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNamedLocationIp {
-  final List<String> ipRanges;
-  final bool trusted;
+  final pulumi.Input<List<String>> ipRanges;
+  final pulumi.Input<bool> trusted;
 
   /// Creates a new [GetNamedLocationIp].
   /// [ipRanges] Required.
@@ -22,8 +23,8 @@ class GetNamedLocationIp {
 
   factory GetNamedLocationIp.fromMap(Map<String, dynamic> map) {
     return GetNamedLocationIp(
-      ipRanges: (map['ipRanges'] as List).cast<String>(),
-      trusted: map['trusted'] as bool,
+      ipRanges: ((map['ipRanges'] as List).cast<String>()).input(),
+      trusted: (map['trusted'] as bool).input(),
     );
   }
 }

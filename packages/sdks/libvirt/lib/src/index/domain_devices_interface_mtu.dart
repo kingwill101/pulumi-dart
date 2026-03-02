@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceMtu {
   /// Sets the specific MTU size for network communication.
-  final double size;
+  final pulumi.Input<double> size;
 
   /// Creates a new [DomainDevicesInterfaceMtu].
   /// [size] Sets the specific MTU size for network communication.
@@ -19,7 +20,7 @@ class DomainDevicesInterfaceMtu {
 
   factory DomainDevicesInterfaceMtu.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceMtu(
-      size: map['size'] as double,
+      size: (map['size'] as double).input(),
     );
   }
 }

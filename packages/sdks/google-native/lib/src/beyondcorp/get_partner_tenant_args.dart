@@ -14,11 +14,9 @@ class GetPartnerTenantArgs {
   /// [organizationId] Required.
   /// [partnerTenantId] Required.
   GetPartnerTenantArgs({
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> partnerTenantId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId);
+    required this.organizationId,
+    required this.partnerTenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetPartnerTenantArgs {
 
   factory GetPartnerTenantArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerTenantArgs(
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      partnerTenantId: pulumi.Output.create<String>(map['partnerTenantId'] as String),
+      organizationId: (map['organizationId'] as String).input(),
+      partnerTenantId: (map['partnerTenantId'] as String).input(),
     );
   }
 }

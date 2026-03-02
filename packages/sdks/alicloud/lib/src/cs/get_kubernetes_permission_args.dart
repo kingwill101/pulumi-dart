@@ -13,9 +13,8 @@ class GetKubernetesPermissionArgs {
   /// Creates a new [GetKubernetesPermissionArgs].
   /// [uid] The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
   GetKubernetesPermissionArgs({
-    required pulumi.Output<String> uid,
-  }) :
-      uid = pulumi.Input.asInput<String>(uid);
+    required this.uid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetKubernetesPermissionArgs {
 
   factory GetKubernetesPermissionArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesPermissionArgs(
-      uid: pulumi.Output.create<String>(map['uid'] as String),
+      uid: (map['uid'] as String).input(),
     );
   }
 }

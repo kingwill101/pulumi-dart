@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
   /// Number of characters after the finding to consider. Either this or window_before must be specified
-  final int? windowAfter;
+  final pulumi.Input<int>? windowAfter;
   /// Number of characters before the finding to consider. Either this or window_after must be specified
-  final int? windowBefore;
+  final pulumi.Input<int>? windowBefore;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity].
   /// [windowAfter] Number of characters after the finding to consider. Either this or window_before must be specified
@@ -24,8 +25,8 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
 
   factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity(
-      windowAfter: map['windowAfter'] == null ? null : map['windowAfter'] as int,
-      windowBefore: map['windowBefore'] == null ? null : map['windowBefore'] as int,
+      windowAfter: map['windowAfter'] == null ? null : (map['windowAfter'] as int).input(),
+      windowBefore: map['windowBefore'] == null ? null : (map['windowBefore'] as int).input(),
     );
   }
 }

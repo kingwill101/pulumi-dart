@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserAuthenticationMode {
   /// Number of passwords belonging to the user if `type` is set to `password`.
-  final int passwordCount;
+  final pulumi.Input<int> passwordCount;
   /// Type of authentication configured.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetUserAuthenticationMode].
   /// [passwordCount] Number of passwords belonging to the user if `type` is set to `password`.
@@ -24,8 +25,8 @@ class GetUserAuthenticationMode {
 
   factory GetUserAuthenticationMode.fromMap(Map<String, dynamic> map) {
     return GetUserAuthenticationMode(
-      passwordCount: map['passwordCount'] as int,
-      type: map['type'] as String,
+      passwordCount: (map['passwordCount'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

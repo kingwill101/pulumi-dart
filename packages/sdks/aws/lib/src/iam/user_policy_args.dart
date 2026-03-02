@@ -22,15 +22,11 @@ class UserPolicyArgs {
   /// [policy] The policy document. This is a JSON formatted string.
   /// [user] IAM user to which to attach this policy.
   UserPolicyArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    required pulumi.Output<String> policy,
-    required pulumi.Output<String> user,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      policy = pulumi.Input.asInput<String>(policy),
-      user = pulumi.Input.asInput<String>(user);
+    this.name,
+    this.namePrefix,
+    required this.policy,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class UserPolicyArgs {
 
   factory UserPolicyArgs.fromMap(Map<String, dynamic> map) {
     return UserPolicyArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      user: pulumi.Output.create<String>(map['user'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

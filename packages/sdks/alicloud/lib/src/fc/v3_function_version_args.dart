@@ -16,11 +16,9 @@ class V3FunctionVersionArgs {
   /// [description] Description of the function version
   /// [functionName] Function Name
   V3FunctionVersionArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> functionName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      functionName = pulumi.Input.asInput<String>(functionName);
+    this.description,
+    required this.functionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class V3FunctionVersionArgs {
 
   factory V3FunctionVersionArgs.fromMap(Map<String, dynamic> map) {
     return V3FunctionVersionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      functionName: (map['functionName'] as String).input(),
     );
   }
 }

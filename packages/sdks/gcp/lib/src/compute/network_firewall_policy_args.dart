@@ -26,15 +26,11 @@ class NetworkFirewallPolicyArgs {
   /// [policyType] Policy type is used to determine which resources (networks) the policy can be associated with.
   /// [project] The ID of the project in which the resource belongs.
   NetworkFirewallPolicyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    this.name,
+    this.policyType,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class NetworkFirewallPolicyArgs {
 
   factory NetworkFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

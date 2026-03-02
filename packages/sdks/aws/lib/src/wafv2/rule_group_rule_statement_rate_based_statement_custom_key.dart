@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_statement_rate_based_statement_custom_key_cookie.dart';
 import 'rule_group_rule_statement_rate_based_statement_custom_key_header.dart';
 import 'rule_group_rule_statement_rate_based_statement_custom_key_ja3_fingerprint.dart';
@@ -10,29 +11,29 @@ import 'rule_group_rule_statement_rate_based_statement_custom_key_query_string.d
 import 'rule_group_rule_statement_rate_based_statement_custom_key_uri_path.dart';
 
 class RuleGroupRuleStatementRateBasedStatementCustomKey {
-  final Map<String, dynamic>? asn;
+  final pulumi.Input<Map<String, dynamic>>? asn;
   /// (Optional) Use the value of a cookie in the request as an aggregate key. See RateLimit `cookie` below for details.
-  final RuleGroupRuleStatementRateBasedStatementCustomKeyCookie? cookie;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyCookie>? cookie;
   /// (Optional) Use the first IP address in an HTTP header as an aggregate key. See `forwarded_ip` below for details.
-  final Map<String, dynamic>? forwardedIp;
+  final pulumi.Input<Map<String, dynamic>>? forwardedIp;
   /// (Optional) Use the value of a header in the request as an aggregate key. See RateLimit `header` below for details.
-  final RuleGroupRuleStatementRateBasedStatementCustomKeyHeader? header;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyHeader>? header;
   /// (Optional) Use the request's HTTP method as an aggregate key. See RateLimit `http_method` below for details.
-  final Map<String, dynamic>? httpMethod;
+  final pulumi.Input<Map<String, dynamic>>? httpMethod;
   /// (Optional) Use the request's originating IP address as an aggregate key. See `RateLimit ip` below for details.
-  final Map<String, dynamic>? ip;
+  final pulumi.Input<Map<String, dynamic>>? ip;
   /// (Optional) Use the JA3 fingerprint in the request as an aggregate key. See `RateLimit ip` below for details.
-  final RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint? ja3Fingerprint;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint>? ja3Fingerprint;
   /// (Optional) Use the JA3 fingerprint in the request as an aggregate key. See `RateLimit ip` below for details.
-  final RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint? ja4Fingerprint;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint>? ja4Fingerprint;
   /// (Optional) Use the specified label namespace as an aggregate key. See RateLimit `label_namespace` below for details.
-  final RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace? labelNamespace;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace>? labelNamespace;
   /// (Optional) Use the specified query argument as an aggregate key. See RateLimit `query_argument` below for details.
-  final RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument? queryArgument;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument>? queryArgument;
   /// (Optional) Use the request's query string as an aggregate key. See RateLimit `query_string` below for details.
-  final RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString? queryString;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString>? queryString;
   /// (Optional) Use the request's URI path as an aggregate key. See RateLimit `uri_path` below for details.
-  final RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath? uriPath;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath>? uriPath;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementCustomKey].
   /// [asn] Optional.
@@ -65,34 +66,34 @@ class RuleGroupRuleStatementRateBasedStatementCustomKey {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'asn': ?asn,
-      'cookie': ?cookie == null ? null : cookie!.toMap(),
+      'cookie': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRateBasedStatementCustomKeyCookie, Map<String, dynamic>>(cookie, (value) => value.toMap()),
       'forwardedIp': ?forwardedIp,
-      'header': ?header == null ? null : header!.toMap(),
+      'header': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRateBasedStatementCustomKeyHeader, Map<String, dynamic>>(header, (value) => value.toMap()),
       'httpMethod': ?httpMethod,
       'ip': ?ip,
-      'ja3Fingerprint': ?ja3Fingerprint == null ? null : ja3Fingerprint!.toMap(),
-      'ja4Fingerprint': ?ja4Fingerprint == null ? null : ja4Fingerprint!.toMap(),
-      'labelNamespace': ?labelNamespace == null ? null : labelNamespace!.toMap(),
-      'queryArgument': ?queryArgument == null ? null : queryArgument!.toMap(),
-      'queryString': ?queryString == null ? null : queryString!.toMap(),
-      'uriPath': ?uriPath == null ? null : uriPath!.toMap(),
+      'ja3Fingerprint': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint, Map<String, dynamic>>(ja3Fingerprint, (value) => value.toMap()),
+      'ja4Fingerprint': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint, Map<String, dynamic>>(ja4Fingerprint, (value) => value.toMap()),
+      'labelNamespace': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace, Map<String, dynamic>>(labelNamespace, (value) => value.toMap()),
+      'queryArgument': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument, Map<String, dynamic>>(queryArgument, (value) => value.toMap()),
+      'queryString': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString, Map<String, dynamic>>(queryString, (value) => value.toMap()),
+      'uriPath': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath, Map<String, dynamic>>(uriPath, (value) => value.toMap()),
     };
   }
 
   factory RuleGroupRuleStatementRateBasedStatementCustomKey.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementCustomKey(
-      asn: map['asn'] == null ? null : (map['asn'] as Map).cast<String, dynamic>(),
-      cookie: map['cookie'] == null ? null : RuleGroupRuleStatementRateBasedStatementCustomKeyCookie.fromMap((map['cookie'] as Map).cast<String, dynamic>()),
-      forwardedIp: map['forwardedIp'] == null ? null : (map['forwardedIp'] as Map).cast<String, dynamic>(),
-      header: map['header'] == null ? null : RuleGroupRuleStatementRateBasedStatementCustomKeyHeader.fromMap((map['header'] as Map).cast<String, dynamic>()),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as Map).cast<String, dynamic>(),
-      ip: map['ip'] == null ? null : (map['ip'] as Map).cast<String, dynamic>(),
-      ja3Fingerprint: map['ja3Fingerprint'] == null ? null : RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint.fromMap((map['ja3Fingerprint'] as Map).cast<String, dynamic>()),
-      ja4Fingerprint: map['ja4Fingerprint'] == null ? null : RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint.fromMap((map['ja4Fingerprint'] as Map).cast<String, dynamic>()),
-      labelNamespace: map['labelNamespace'] == null ? null : RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap((map['labelNamespace'] as Map).cast<String, dynamic>()),
-      queryArgument: map['queryArgument'] == null ? null : RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument.fromMap((map['queryArgument'] as Map).cast<String, dynamic>()),
-      queryString: map['queryString'] == null ? null : RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString.fromMap((map['queryString'] as Map).cast<String, dynamic>()),
-      uriPath: map['uriPath'] == null ? null : RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath.fromMap((map['uriPath'] as Map).cast<String, dynamic>()),
+      asn: map['asn'] == null ? null : ((map['asn'] as Map).cast<String, dynamic>()).input(),
+      cookie: map['cookie'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyCookie.fromMap((map['cookie'] as Map).cast<String, dynamic>())).input(),
+      forwardedIp: map['forwardedIp'] == null ? null : ((map['forwardedIp'] as Map).cast<String, dynamic>()).input(),
+      header: map['header'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyHeader.fromMap((map['header'] as Map).cast<String, dynamic>())).input(),
+      httpMethod: map['httpMethod'] == null ? null : ((map['httpMethod'] as Map).cast<String, dynamic>()).input(),
+      ip: map['ip'] == null ? null : ((map['ip'] as Map).cast<String, dynamic>()).input(),
+      ja3Fingerprint: map['ja3Fingerprint'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint.fromMap((map['ja3Fingerprint'] as Map).cast<String, dynamic>())).input(),
+      ja4Fingerprint: map['ja4Fingerprint'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint.fromMap((map['ja4Fingerprint'] as Map).cast<String, dynamic>())).input(),
+      labelNamespace: map['labelNamespace'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap((map['labelNamespace'] as Map).cast<String, dynamic>())).input(),
+      queryArgument: map['queryArgument'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument.fromMap((map['queryArgument'] as Map).cast<String, dynamic>())).input(),
+      queryString: map['queryString'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString.fromMap((map['queryString'] as Map).cast<String, dynamic>())).input(),
+      uriPath: map['uriPath'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath.fromMap((map['uriPath'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

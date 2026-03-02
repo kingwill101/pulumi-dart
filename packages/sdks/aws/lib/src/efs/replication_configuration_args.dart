@@ -20,13 +20,10 @@ class ReplicationConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceFileSystemId] The ID of the file system that is to be replicated.
   ReplicationConfigurationArgs({
-    required pulumi.Output<ReplicationConfigurationDestination> destination,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> sourceFileSystemId,
-  }) :
-      destination = pulumi.Input.asInput<ReplicationConfigurationDestination>(destination),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceFileSystemId = pulumi.Input.asInput<String>(sourceFileSystemId);
+    required this.destination,
+    this.region,
+    required this.sourceFileSystemId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class ReplicationConfigurationArgs {
 
   factory ReplicationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationArgs(
-      destination: pulumi.Output.create<ReplicationConfigurationDestination>(ReplicationConfigurationDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceFileSystemId: pulumi.Output.create<String>(map['sourceFileSystemId'] as String),
+      destination: (ReplicationConfigurationDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceFileSystemId: (map['sourceFileSystemId'] as String).input(),
     );
   }
 }

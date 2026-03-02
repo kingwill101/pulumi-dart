@@ -31,21 +31,14 @@ class CloudFormationStackArgs {
   /// [semanticVersion] The version of the application to deploy. If not supplied, deploys the latest version.
   /// [tags] A list of tags to associate with this stack. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   CloudFormationStackArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<List<String>> capabilities,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? semanticVersion,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      capabilities = pulumi.Input.asInput<List<String>>(capabilities),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      semanticVersion = pulumi.Input.asOptionalInput<String>(semanticVersion),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.applicationId,
+    required this.capabilities,
+    this.name,
+    this.parameters,
+    this.region,
+    this.semanticVersion,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class CloudFormationStackArgs {
 
   factory CloudFormationStackArgs.fromMap(Map<String, dynamic> map) {
     return CloudFormationStackArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      capabilities: pulumi.Output.create<List<String>>((map['capabilities'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      semanticVersion: map['semanticVersion'] == null ? null : pulumi.Output.create<String>(map['semanticVersion'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationId: (map['applicationId'] as String).input(),
+      capabilities: ((map['capabilities'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      semanticVersion: map['semanticVersion'] == null ? null : (map['semanticVersion'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

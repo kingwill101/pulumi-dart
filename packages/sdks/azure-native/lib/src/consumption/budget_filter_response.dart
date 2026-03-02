@@ -7,11 +7,11 @@ import 'budget_filter_properties_response.dart';
 /// May be used to filter budgets by resource group, resource, or meter.
 class BudgetFilterResponse {
   /// The logical "AND" expression. Must have at least 2 items.
-  final List<BudgetFilterPropertiesResponse>? and;
+  final pulumi.Input<List<BudgetFilterPropertiesResponse>>? and;
   /// Has comparison expression for a dimension
-  final BudgetComparisonExpressionResponse? dimensions;
+  final pulumi.Input<BudgetComparisonExpressionResponse>? dimensions;
   /// Has comparison expression for a tag
-  final BudgetComparisonExpressionResponse? tags;
+  final pulumi.Input<BudgetComparisonExpressionResponse>? tags;
 
   /// Creates a new [BudgetFilterResponse].
   /// [and] The logical "AND" expression. Must have at least 2 items.
@@ -25,17 +25,17 @@ class BudgetFilterResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'and': ?and == null ? null : pulumi.Input.encodeList<BudgetFilterPropertiesResponse, Map<String, dynamic>>(and!, (value) => value.toMap()),
-      'dimensions': ?dimensions == null ? null : dimensions!.toMap(),
-      'tags': ?tags == null ? null : tags!.toMap(),
+      'and': ?pulumi.Input.mapOptionalInputValue<List<BudgetFilterPropertiesResponse>, List<Map<String, dynamic>>>(and, (value) => pulumi.Input.encodeList<BudgetFilterPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<BudgetComparisonExpressionResponse, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<BudgetComparisonExpressionResponse, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory BudgetFilterResponse.fromMap(Map<String, dynamic> map) {
     return BudgetFilterResponse(
-      and: map['and'] == null ? null : pulumi.Input.decodeList<BudgetFilterPropertiesResponse>(map['and'], (value) => BudgetFilterPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dimensions: map['dimensions'] == null ? null : BudgetComparisonExpressionResponse.fromMap((map['dimensions'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : BudgetComparisonExpressionResponse.fromMap((map['tags'] as Map).cast<String, dynamic>()),
+      and: map['and'] == null ? null : (pulumi.Input.decodeList<BudgetFilterPropertiesResponse>(map['and'], (value) => BudgetFilterPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: map['dimensions'] == null ? null : (BudgetComparisonExpressionResponse.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (BudgetComparisonExpressionResponse.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

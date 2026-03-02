@@ -21,13 +21,10 @@ class TenantArgs {
   /// [tags] Map of tags to assign to the tenant.
   /// [tenantName] Name of the SESV2 tenant.  The name must be unique within the AWS account and Region.  Changing the tenant name forces creation of a new tenant.
   TenantArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> tenantName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantName = pulumi.Input.asInput<String>(tenantName);
+    this.region,
+    this.tags,
+    required this.tenantName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class TenantArgs {
 
   factory TenantArgs.fromMap(Map<String, dynamic> map) {
     return TenantArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantName: pulumi.Output.create<String>(map['tenantName'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantName: (map['tenantName'] as String).input(),
     );
   }
 }

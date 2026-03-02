@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The schema source information.
 class GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource {
   /// The schema name in the source.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The Doc AI processor type name.
-  final String? processorType;
+  final pulumi.Input<String>? processorType;
 
   /// Creates a new [GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource].
   /// [name] The schema name in the source.
@@ -25,8 +26,8 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource {
 
   factory GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource(
-      name: map['name'] == null ? null : map['name'] as String,
-      processorType: map['processorType'] == null ? null : map['processorType'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      processorType: map['processorType'] == null ? null : (map['processorType'] as String).input(),
     );
   }
 }

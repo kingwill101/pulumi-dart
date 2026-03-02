@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters.
 class UncountedTerminatedPodsPatch {
   /// failed holds UIDs of failed Pods.
-  final List<String>? failed;
+  final pulumi.Input<List<String>>? failed;
   /// succeeded holds UIDs of succeeded Pods.
-  final List<String>? succeeded;
+  final pulumi.Input<List<String>>? succeeded;
 
   /// Creates a new [UncountedTerminatedPodsPatch].
   /// [failed] failed holds UIDs of failed Pods.
@@ -25,8 +26,8 @@ class UncountedTerminatedPodsPatch {
 
   factory UncountedTerminatedPodsPatch.fromMap(Map<String, dynamic> map) {
     return UncountedTerminatedPodsPatch(
-      failed: map['failed'] == null ? null : (map['failed'] as List).cast<String>(),
-      succeeded: map['succeeded'] == null ? null : (map['succeeded'] as List).cast<String>(),
+      failed: map['failed'] == null ? null : ((map['failed'] as List).cast<String>()).input(),
+      succeeded: map['succeeded'] == null ? null : ((map['succeeded'] as List).cast<String>()).input(),
     );
   }
 }

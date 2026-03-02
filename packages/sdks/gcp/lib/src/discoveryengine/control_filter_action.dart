@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ControlFilterAction {
   /// The data store to filter.
-  final String dataStore;
+  final pulumi.Input<String> dataStore;
   /// The filter to apply to the search results.
-  final String filter;
+  final pulumi.Input<String> filter;
 
   /// Creates a new [ControlFilterAction].
   /// [dataStore] The data store to filter.
@@ -24,8 +25,8 @@ class ControlFilterAction {
 
   factory ControlFilterAction.fromMap(Map<String, dynamic> map) {
     return ControlFilterAction(
-      dataStore: map['dataStore'] as String,
-      filter: map['filter'] as String,
+      dataStore: (map['dataStore'] as String).input(),
+      filter: (map['filter'] as String).input(),
     );
   }
 }

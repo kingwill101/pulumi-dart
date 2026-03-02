@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains a list of images to reference when building using a cache
 class CacheFrom {
   /// Specifies cached images
-  final List<String>? images;
+  final pulumi.Input<List<String>>? images;
 
   /// Creates a new [CacheFrom].
   /// [images] Specifies cached images
@@ -20,7 +21,7 @@ class CacheFrom {
 
   factory CacheFrom.fromMap(Map<String, dynamic> map) {
     return CacheFrom(
-      images: map['images'] == null ? null : (map['images'] as List).cast<String>(),
+      images: map['images'] == null ? null : ((map['images'] as List).cast<String>()).input(),
     );
   }
 }

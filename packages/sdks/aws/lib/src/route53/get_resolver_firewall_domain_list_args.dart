@@ -16,11 +16,9 @@ class GetResolverFirewallDomainListArgs {
   /// [firewallDomainListId] The ID of the domain list.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetResolverFirewallDomainListArgs({
-    required pulumi.Output<String> firewallDomainListId,
-    pulumi.Output<String>? region,
-  }) :
-      firewallDomainListId = pulumi.Input.asInput<String>(firewallDomainListId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.firewallDomainListId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResolverFirewallDomainListArgs {
 
   factory GetResolverFirewallDomainListArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallDomainListArgs(
-      firewallDomainListId: pulumi.Output.create<String>(map['firewallDomainListId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      firewallDomainListId: (map['firewallDomainListId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

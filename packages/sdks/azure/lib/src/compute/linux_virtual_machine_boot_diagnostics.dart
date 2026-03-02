@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxVirtualMachineBootDiagnostics {
   /// The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor.
   ///
   /// > **NOTE:** Passing a null value will utilize a Managed Storage Account to store Boot Diagnostics
-  final String? storageAccountUri;
+  final pulumi.Input<String>? storageAccountUri;
 
   /// Creates a new [LinuxVirtualMachineBootDiagnostics].
   /// [storageAccountUri] The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor.
@@ -21,7 +22,7 @@ class LinuxVirtualMachineBootDiagnostics {
 
   factory LinuxVirtualMachineBootDiagnostics.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineBootDiagnostics(
-      storageAccountUri: map['storageAccountUri'] == null ? null : map['storageAccountUri'] as String,
+      storageAccountUri: map['storageAccountUri'] == null ? null : (map['storageAccountUri'] as String).input(),
     );
   }
 }

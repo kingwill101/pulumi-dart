@@ -42,27 +42,17 @@ class NetworkTapRuleArgs {
   /// [tags] Resource tags.
   /// [tapRulesUrl] Network Tap Rules file URL.
   NetworkTapRuleArgs({
-    pulumi.Output<String>? annotation,
-    required pulumi.Output<String> configurationType,
-    pulumi.Output<List<CommonDynamicMatchConfiguration>>? dynamicMatchConfigurations,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<NetworkTapRuleMatchConfiguration>>? matchConfigurations,
-    pulumi.Output<String>? networkTapRuleName,
-    pulumi.Output<int>? pollingIntervalInSeconds,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tapRulesUrl,
-  }) :
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      configurationType = pulumi.Input.asInput<String>(configurationType),
-      dynamicMatchConfigurations = pulumi.Input.asOptionalInput<List<CommonDynamicMatchConfiguration>>(dynamicMatchConfigurations),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      matchConfigurations = pulumi.Input.asOptionalInput<List<NetworkTapRuleMatchConfiguration>>(matchConfigurations),
-      networkTapRuleName = pulumi.Input.asOptionalInput<String>(networkTapRuleName),
-      pollingIntervalInSeconds = pulumi.Input.asOptionalInput<int>(pollingIntervalInSeconds),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tapRulesUrl = pulumi.Input.asOptionalInput<String>(tapRulesUrl);
+    this.annotation,
+    required this.configurationType,
+    this.dynamicMatchConfigurations,
+    this.location,
+    this.matchConfigurations,
+    this.networkTapRuleName,
+    this.pollingIntervalInSeconds,
+    required this.resourceGroupName,
+    this.tags,
+    this.tapRulesUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class NetworkTapRuleArgs {
 
   factory NetworkTapRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkTapRuleArgs(
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      configurationType: pulumi.Output.create<String>(map['configurationType'] as String),
-      dynamicMatchConfigurations: map['dynamicMatchConfigurations'] == null ? null : pulumi.Output.create<List<CommonDynamicMatchConfiguration>>(pulumi.Input.decodeList<CommonDynamicMatchConfiguration>(map['dynamicMatchConfigurations'], (value) => CommonDynamicMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      matchConfigurations: map['matchConfigurations'] == null ? null : pulumi.Output.create<List<NetworkTapRuleMatchConfiguration>>(pulumi.Input.decodeList<NetworkTapRuleMatchConfiguration>(map['matchConfigurations'], (value) => NetworkTapRuleMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      networkTapRuleName: map['networkTapRuleName'] == null ? null : pulumi.Output.create<String>(map['networkTapRuleName'] as String),
-      pollingIntervalInSeconds: map['pollingIntervalInSeconds'] == null ? null : pulumi.Output.create<int>(map['pollingIntervalInSeconds'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tapRulesUrl: map['tapRulesUrl'] == null ? null : pulumi.Output.create<String>(map['tapRulesUrl'] as String),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      configurationType: (map['configurationType'] as String).input(),
+      dynamicMatchConfigurations: map['dynamicMatchConfigurations'] == null ? null : (pulumi.Input.decodeList<CommonDynamicMatchConfiguration>(map['dynamicMatchConfigurations'], (value) => CommonDynamicMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      matchConfigurations: map['matchConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkTapRuleMatchConfiguration>(map['matchConfigurations'], (value) => NetworkTapRuleMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkTapRuleName: map['networkTapRuleName'] == null ? null : (map['networkTapRuleName'] as String).input(),
+      pollingIntervalInSeconds: map['pollingIntervalInSeconds'] == null ? null : (map['pollingIntervalInSeconds'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tapRulesUrl: map['tapRulesUrl'] == null ? null : (map['tapRulesUrl'] as String).input(),
     );
   }
 }

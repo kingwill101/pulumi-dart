@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv {
   /// Indicates if the CSV data has a header.
-  final bool? header;
+  final pulumi.Input<bool>? header;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv].
   /// [header] Indicates if the CSV data has a header.
@@ -19,7 +20,7 @@ class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetForma
 
   factory DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv(
-      header: map['header'] == null ? null : map['header'] as bool,
+      header: map['header'] == null ? null : (map['header'] as bool).input(),
     );
   }
 }

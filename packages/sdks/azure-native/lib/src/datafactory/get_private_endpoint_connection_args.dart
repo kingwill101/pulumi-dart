@@ -19,13 +19,10 @@ class GetPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The private endpoint connection name.
   /// [resourceGroupName] The resource group name.
   GetPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<String> privateEndpointConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      privateEndpointConnectionName = pulumi.Input.asInput<String>(privateEndpointConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.factoryName,
+    required this.privateEndpointConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPrivateEndpointConnectionArgs {
 
   factory GetPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      privateEndpointConnectionName: pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authentication configuration information
 class DicomServiceAuthenticationConfigurationResponse {
   /// The audiences for the service
-  final List<String> audiences;
+  final pulumi.Input<List<String>> audiences;
   /// The authority url for the service
-  final String authority;
+  final pulumi.Input<String> authority;
 
   /// Creates a new [DicomServiceAuthenticationConfigurationResponse].
   /// [audiences] The audiences for the service
@@ -25,8 +26,8 @@ class DicomServiceAuthenticationConfigurationResponse {
 
   factory DicomServiceAuthenticationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DicomServiceAuthenticationConfigurationResponse(
-      audiences: (map['audiences'] as List).cast<String>(),
-      authority: map['authority'] as String,
+      audiences: ((map['audiences'] as List).cast<String>()).input(),
+      authority: (map['authority'] as String).input(),
     );
   }
 }

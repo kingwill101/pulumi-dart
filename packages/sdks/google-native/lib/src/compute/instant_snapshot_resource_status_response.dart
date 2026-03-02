@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstantSnapshotResourceStatusResponse {
   /// The storage size of this instant snapshot.
-  final String storageSizeBytes;
+  final pulumi.Input<String> storageSizeBytes;
 
   /// Creates a new [InstantSnapshotResourceStatusResponse].
   /// [storageSizeBytes] The storage size of this instant snapshot.
@@ -19,7 +20,7 @@ class InstantSnapshotResourceStatusResponse {
 
   factory InstantSnapshotResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return InstantSnapshotResourceStatusResponse(
-      storageSizeBytes: map['storageSizeBytes'] as String,
+      storageSizeBytes: (map['storageSizeBytes'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest {
   /// CPU requirement expressed in Kubernetes resource units.
-  final String cpu;
+  final pulumi.Input<String> cpu;
   /// Memory requirement expressed in Kubernetes resource units.
-  final String memory;
+  final pulumi.Input<String> memory;
 
   /// Creates a new [GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest].
   /// [cpu] CPU requirement expressed in Kubernetes resource units.
@@ -24,8 +25,8 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
 
   factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest.fromMap(Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest(
-      cpu: map['cpu'] as String,
-      memory: map['memory'] as String,
+      cpu: (map['cpu'] as String).input(),
+      memory: (map['memory'] as String).input(),
     );
   }
 }

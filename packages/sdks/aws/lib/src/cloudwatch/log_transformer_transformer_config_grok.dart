@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigGrok {
   /// Specifies the grok pattern to match against the log event.
-  final String match;
+  final pulumi.Input<String> match;
   /// Specifies the path to the field in the log event that has the comma separated values to be parsed. If omitted, the whole log message is processed.
-  final String? source;
+  final pulumi.Input<String>? source;
 
   /// Creates a new [LogTransformerTransformerConfigGrok].
   /// [match] Specifies the grok pattern to match against the log event.
@@ -24,8 +25,8 @@ class LogTransformerTransformerConfigGrok {
 
   factory LogTransformerTransformerConfigGrok.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigGrok(
-      match: map['match'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      match: (map['match'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

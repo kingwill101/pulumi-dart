@@ -37,23 +37,15 @@ class RoutingProfileArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the Routing Profile. If configured with a provider
   RoutingProfileArgs({
-    required pulumi.Output<String> defaultOutboundQueueId,
-    required pulumi.Output<String> description,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<List<RoutingProfileMediaConcurrency>> mediaConcurrencies,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<RoutingProfileQueueConfig>>? queueConfigs,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      defaultOutboundQueueId = pulumi.Input.asInput<String>(defaultOutboundQueueId),
-      description = pulumi.Input.asInput<String>(description),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      mediaConcurrencies = pulumi.Input.asInput<List<RoutingProfileMediaConcurrency>>(mediaConcurrencies),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queueConfigs = pulumi.Input.asOptionalInput<List<RoutingProfileQueueConfig>>(queueConfigs),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.defaultOutboundQueueId,
+    required this.description,
+    required this.instanceId,
+    required this.mediaConcurrencies,
+    this.name,
+    this.queueConfigs,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class RoutingProfileArgs {
 
   factory RoutingProfileArgs.fromMap(Map<String, dynamic> map) {
     return RoutingProfileArgs(
-      defaultOutboundQueueId: pulumi.Output.create<String>(map['defaultOutboundQueueId'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      mediaConcurrencies: pulumi.Output.create<List<RoutingProfileMediaConcurrency>>(pulumi.Input.decodeList<RoutingProfileMediaConcurrency>(map['mediaConcurrencies'], (value) => RoutingProfileMediaConcurrency.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queueConfigs: map['queueConfigs'] == null ? null : pulumi.Output.create<List<RoutingProfileQueueConfig>>(pulumi.Input.decodeList<RoutingProfileQueueConfig>(map['queueConfigs'], (value) => RoutingProfileQueueConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      defaultOutboundQueueId: (map['defaultOutboundQueueId'] as String).input(),
+      description: (map['description'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      mediaConcurrencies: (pulumi.Input.decodeList<RoutingProfileMediaConcurrency>(map['mediaConcurrencies'], (value) => RoutingProfileMediaConcurrency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queueConfigs: map['queueConfigs'] == null ? null : (pulumi.Input.decodeList<RoutingProfileQueueConfig>(map['queueConfigs'], (value) => RoutingProfileQueueConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

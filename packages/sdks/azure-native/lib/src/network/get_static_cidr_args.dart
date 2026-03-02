@@ -22,15 +22,11 @@ class GetStaticCidrArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [staticCidrName] StaticCidr resource name to retrieve.
   GetStaticCidrArgs({
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> staticCidrName,
-  }) :
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      staticCidrName = pulumi.Input.asInput<String>(staticCidrName);
+    required this.networkManagerName,
+    required this.poolName,
+    required this.resourceGroupName,
+    required this.staticCidrName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetStaticCidrArgs {
 
   factory GetStaticCidrArgs.fromMap(Map<String, dynamic> map) {
     return GetStaticCidrArgs(
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      staticCidrName: pulumi.Output.create<String>(map['staticCidrName'] as String),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      staticCidrName: (map['staticCidrName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SAP Software configuration Input when the software is installed externally outside the service.
 class ExternalInstallationSoftwareConfigurationResponse {
   /// The resource ID of the virtual machine containing the central server instance.
-  final String? centralServerVmId;
+  final pulumi.Input<String>? centralServerVmId;
   /// The SAP software installation Type.
   /// Expected value is 'External'.
-  final String softwareInstallationType;
+  final pulumi.Input<String> softwareInstallationType;
 
   /// Creates a new [ExternalInstallationSoftwareConfigurationResponse].
   /// [centralServerVmId] The resource ID of the virtual machine containing the central server instance.
@@ -26,8 +27,8 @@ class ExternalInstallationSoftwareConfigurationResponse {
 
   factory ExternalInstallationSoftwareConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ExternalInstallationSoftwareConfigurationResponse(
-      centralServerVmId: map['centralServerVmId'] == null ? null : map['centralServerVmId'] as String,
-      softwareInstallationType: map['softwareInstallationType'] as String,
+      centralServerVmId: map['centralServerVmId'] == null ? null : (map['centralServerVmId'] as String).input(),
+      softwareInstallationType: (map['softwareInstallationType'] as String).input(),
     );
   }
 }

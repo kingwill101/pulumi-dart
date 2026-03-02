@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScalingPlanHostPool {
   /// The ID of the HostPool to assign the Scaling Plan to.
-  final String hostpoolId;
+  final pulumi.Input<String> hostpoolId;
   /// Specifies if the scaling plan is enabled or disabled for the HostPool.
-  final bool scalingPlanEnabled;
+  final pulumi.Input<bool> scalingPlanEnabled;
 
   /// Creates a new [ScalingPlanHostPool].
   /// [hostpoolId] The ID of the HostPool to assign the Scaling Plan to.
@@ -24,8 +25,8 @@ class ScalingPlanHostPool {
 
   factory ScalingPlanHostPool.fromMap(Map<String, dynamic> map) {
     return ScalingPlanHostPool(
-      hostpoolId: map['hostpoolId'] as String,
-      scalingPlanEnabled: map['scalingPlanEnabled'] as bool,
+      hostpoolId: (map['hostpoolId'] as String).input(),
+      scalingPlanEnabled: (map['scalingPlanEnabled'] as bool).input(),
     );
   }
 }

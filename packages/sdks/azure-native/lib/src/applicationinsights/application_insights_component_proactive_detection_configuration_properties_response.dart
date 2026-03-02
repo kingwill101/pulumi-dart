@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_insights_component_proactive_detection_configuration_properties_response_rule_definitions.dart';
 
 /// Properties that define a ProactiveDetection configuration.
 class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse {
   /// Custom email addresses for this rule notifications
-  final List<String>? customEmails;
+  final pulumi.Input<List<String>>? customEmails;
   /// A flag that indicates whether this rule is enabled by the user
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The last time this rule was updated
-  final String lastUpdatedTime;
+  final pulumi.Input<String> lastUpdatedTime;
   /// The rule name
-  final String name;
+  final pulumi.Input<String> name;
   /// Static definitions of the ProactiveDetection configuration rule (same values for all components).
-  final ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions? ruleDefinitions;
+  final pulumi.Input<ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions>? ruleDefinitions;
   /// A flag that indicated whether notifications on this rule should be sent to subscription owners
-  final bool? sendEmailsToSubscriptionOwners;
+  final pulumi.Input<bool>? sendEmailsToSubscriptionOwners;
 
   /// Creates a new [ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse].
   /// [customEmails] Custom email addresses for this rule notifications
@@ -39,19 +40,19 @@ class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRespo
       'enabled': ?enabled,
       'lastUpdatedTime': lastUpdatedTime,
       'name': name,
-      'ruleDefinitions': ?ruleDefinitions == null ? null : ruleDefinitions!.toMap(),
+      'ruleDefinitions': ?pulumi.Input.mapOptionalInputValue<ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions, Map<String, dynamic>>(ruleDefinitions, (value) => value.toMap()),
       'sendEmailsToSubscriptionOwners': ?sendEmailsToSubscriptionOwners,
     };
   }
 
   factory ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse(
-      customEmails: map['customEmails'] == null ? null : (map['customEmails'] as List).cast<String>(),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      lastUpdatedTime: map['lastUpdatedTime'] as String,
-      name: map['name'] as String,
-      ruleDefinitions: map['ruleDefinitions'] == null ? null : ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions.fromMap((map['ruleDefinitions'] as Map).cast<String, dynamic>()),
-      sendEmailsToSubscriptionOwners: map['sendEmailsToSubscriptionOwners'] == null ? null : map['sendEmailsToSubscriptionOwners'] as bool,
+      customEmails: map['customEmails'] == null ? null : ((map['customEmails'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      lastUpdatedTime: (map['lastUpdatedTime'] as String).input(),
+      name: (map['name'] as String).input(),
+      ruleDefinitions: map['ruleDefinitions'] == null ? null : (ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions.fromMap((map['ruleDefinitions'] as Map).cast<String, dynamic>())).input(),
+      sendEmailsToSubscriptionOwners: map['sendEmailsToSubscriptionOwners'] == null ? null : (map['sendEmailsToSubscriptionOwners'] as bool).input(),
     );
   }
 }

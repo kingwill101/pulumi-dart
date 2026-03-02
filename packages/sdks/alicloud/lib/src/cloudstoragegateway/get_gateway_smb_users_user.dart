@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGatewaySmbUsersUser {
   /// The Gateway ID.
-  final String gatewayId;
+  final pulumi.Input<String> gatewayId;
   /// The ID of the Gateway SMB User.
-  final String id;
+  final pulumi.Input<String> id;
   /// The username of the Gateway SMB User.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GetGatewaySmbUsersUser].
   /// [gatewayId] The Gateway ID.
@@ -29,9 +30,9 @@ class GetGatewaySmbUsersUser {
 
   factory GetGatewaySmbUsersUser.fromMap(Map<String, dynamic> map) {
     return GetGatewaySmbUsersUser(
-      gatewayId: map['gatewayId'] as String,
-      id: map['id'] as String,
-      username: map['username'] as String,
+      gatewayId: (map['gatewayId'] as String).input(),
+      id: (map['id'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

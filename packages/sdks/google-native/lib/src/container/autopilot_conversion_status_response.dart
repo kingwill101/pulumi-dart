@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AutopilotConversionStatus represents conversion status.
 class AutopilotConversionStatusResponse {
   /// The current state of the conversion.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [AutopilotConversionStatusResponse].
   /// [state] The current state of the conversion.
@@ -20,7 +21,7 @@ class AutopilotConversionStatusResponse {
 
   factory AutopilotConversionStatusResponse.fromMap(Map<String, dynamic> map) {
     return AutopilotConversionStatusResponse(
-      state: map['state'] as String,
+      state: (map['state'] as String).input(),
     );
   }
 }

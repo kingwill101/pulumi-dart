@@ -21,15 +21,11 @@ class WorkspaceKeyState {
   /// [customerManagedKeyVersionlessId] The Azure Key Vault Key Versionless ID to be used as the Customer Managed Key (CMK) for double encryption
   /// [synapseWorkspaceId] The ID of the Synapse Workspace where the encryption key should be configured.
   WorkspaceKeyState({
-    pulumi.Output<bool>? active,
-    pulumi.Output<String>? customerManagedKeyName,
-    pulumi.Output<String>? customerManagedKeyVersionlessId,
-    pulumi.Output<String>? synapseWorkspaceId,
-  }) :
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      customerManagedKeyName = pulumi.Input.asOptionalInput<String>(customerManagedKeyName),
-      customerManagedKeyVersionlessId = pulumi.Input.asOptionalInput<String>(customerManagedKeyVersionlessId),
-      synapseWorkspaceId = pulumi.Input.asOptionalInput<String>(synapseWorkspaceId);
+    this.active,
+    this.customerManagedKeyName,
+    this.customerManagedKeyVersionlessId,
+    this.synapseWorkspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class WorkspaceKeyState {
 
   factory WorkspaceKeyState.fromMap(Map<String, dynamic> map) {
     return WorkspaceKeyState(
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      customerManagedKeyName: map['customerManagedKeyName'] == null ? null : pulumi.Output.create<String>(map['customerManagedKeyName'] as String),
-      customerManagedKeyVersionlessId: map['customerManagedKeyVersionlessId'] == null ? null : pulumi.Output.create<String>(map['customerManagedKeyVersionlessId'] as String),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      customerManagedKeyName: map['customerManagedKeyName'] == null ? null : (map['customerManagedKeyName'] as String).input(),
+      customerManagedKeyVersionlessId: map['customerManagedKeyVersionlessId'] == null ? null : (map['customerManagedKeyVersionlessId'] as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
     );
   }
 }

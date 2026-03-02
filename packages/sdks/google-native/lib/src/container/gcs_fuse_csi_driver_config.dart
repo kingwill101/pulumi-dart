@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for the Cloud Storage Fuse CSI driver.
 class GcsFuseCsiDriverConfig {
   /// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [GcsFuseCsiDriverConfig].
   /// [enabled] Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
@@ -20,7 +21,7 @@ class GcsFuseCsiDriverConfig {
 
   factory GcsFuseCsiDriverConfig.fromMap(Map<String, dynamic> map) {
     return GcsFuseCsiDriverConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

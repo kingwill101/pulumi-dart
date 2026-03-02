@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The X12 delimiter override settings.
 class X12DelimiterOverridesResponse {
   /// The component separator.
-  final int componentSeparator;
+  final pulumi.Input<int> componentSeparator;
   /// The data element separator.
-  final int dataElementSeparator;
+  final pulumi.Input<int> dataElementSeparator;
   /// The message id.
-  final String? messageId;
+  final pulumi.Input<String>? messageId;
   /// The protocol version.
-  final String? protocolVersion;
+  final pulumi.Input<String>? protocolVersion;
   /// The replacement character.
-  final int replaceCharacter;
+  final pulumi.Input<int> replaceCharacter;
   /// The value indicating whether to replace separators in payload.
-  final bool replaceSeparatorsInPayload;
+  final pulumi.Input<bool> replaceSeparatorsInPayload;
   /// The segment terminator.
-  final int segmentTerminator;
+  final pulumi.Input<int> segmentTerminator;
   /// The segment terminator suffix.
-  final String segmentTerminatorSuffix;
+  final pulumi.Input<String> segmentTerminatorSuffix;
   /// The target namespace on which this delimiter settings has to be applied.
-  final String? targetNamespace;
+  final pulumi.Input<String>? targetNamespace;
 
   /// Creates a new [X12DelimiterOverridesResponse].
   /// [componentSeparator] The component separator.
@@ -60,15 +61,15 @@ class X12DelimiterOverridesResponse {
 
   factory X12DelimiterOverridesResponse.fromMap(Map<String, dynamic> map) {
     return X12DelimiterOverridesResponse(
-      componentSeparator: map['componentSeparator'] as int,
-      dataElementSeparator: map['dataElementSeparator'] as int,
-      messageId: map['messageId'] == null ? null : map['messageId'] as String,
-      protocolVersion: map['protocolVersion'] == null ? null : map['protocolVersion'] as String,
-      replaceCharacter: map['replaceCharacter'] as int,
-      replaceSeparatorsInPayload: map['replaceSeparatorsInPayload'] as bool,
-      segmentTerminator: map['segmentTerminator'] as int,
-      segmentTerminatorSuffix: map['segmentTerminatorSuffix'] as String,
-      targetNamespace: map['targetNamespace'] == null ? null : map['targetNamespace'] as String,
+      componentSeparator: (map['componentSeparator'] as int).input(),
+      dataElementSeparator: (map['dataElementSeparator'] as int).input(),
+      messageId: map['messageId'] == null ? null : (map['messageId'] as String).input(),
+      protocolVersion: map['protocolVersion'] == null ? null : (map['protocolVersion'] as String).input(),
+      replaceCharacter: (map['replaceCharacter'] as int).input(),
+      replaceSeparatorsInPayload: (map['replaceSeparatorsInPayload'] as bool).input(),
+      segmentTerminator: (map['segmentTerminator'] as int).input(),
+      segmentTerminatorSuffix: (map['segmentTerminatorSuffix'] as String).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
     );
   }
 }

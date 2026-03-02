@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HostingCustomDomainCertVerificationHttp {
   /// A text string to serve at the path.
-  final String? desired;
+  final pulumi.Input<String>? desired;
   /// Whether Hosting was able to find the required file contents on the
   /// specified path during its last check.
-  final String? discovered;
+  final pulumi.Input<String>? discovered;
   /// (Output)
   /// The last time Hosting systems checked for the file contents.
-  final String? lastCheckTime;
+  final pulumi.Input<String>? lastCheckTime;
   /// The path to the file.
-  final String? path;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [HostingCustomDomainCertVerificationHttp].
   /// [desired] A text string to serve at the path.
@@ -36,10 +37,10 @@ class HostingCustomDomainCertVerificationHttp {
 
   factory HostingCustomDomainCertVerificationHttp.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainCertVerificationHttp(
-      desired: map['desired'] == null ? null : map['desired'] as String,
-      discovered: map['discovered'] == null ? null : map['discovered'] as String,
-      lastCheckTime: map['lastCheckTime'] == null ? null : map['lastCheckTime'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
+      desired: map['desired'] == null ? null : (map['desired'] as String).input(),
+      discovered: map['discovered'] == null ? null : (map['discovered'] as String).input(),
+      lastCheckTime: map['lastCheckTime'] == null ? null : (map['lastCheckTime'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

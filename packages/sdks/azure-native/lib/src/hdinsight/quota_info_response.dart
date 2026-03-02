@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The quota properties for the cluster.
 class QuotaInfoResponse {
   /// The cores used by the cluster.
-  final int? coresUsed;
+  final pulumi.Input<int>? coresUsed;
 
   /// Creates a new [QuotaInfoResponse].
   /// [coresUsed] The cores used by the cluster.
@@ -20,7 +21,7 @@ class QuotaInfoResponse {
 
   factory QuotaInfoResponse.fromMap(Map<String, dynamic> map) {
     return QuotaInfoResponse(
-      coresUsed: map['coresUsed'] == null ? null : map['coresUsed'] as int,
+      coresUsed: map['coresUsed'] == null ? null : (map['coresUsed'] as int).input(),
     );
   }
 }

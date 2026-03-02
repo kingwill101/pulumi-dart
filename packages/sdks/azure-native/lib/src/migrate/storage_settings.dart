@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Storage settings.
 class StorageSettings {
   /// Cost per gigabyte per month.
-  final double costPerGbPerMonth;
+  final pulumi.Input<double> costPerGbPerMonth;
   /// Maintenance cost percentage.
-  final double maintainanceCostPercentageToAcquisitionCost;
+  final pulumi.Input<double> maintainanceCostPercentageToAcquisitionCost;
 
   /// Creates a new [StorageSettings].
   /// [costPerGbPerMonth] Cost per gigabyte per month.
@@ -25,8 +26,8 @@ class StorageSettings {
 
   factory StorageSettings.fromMap(Map<String, dynamic> map) {
     return StorageSettings(
-      costPerGbPerMonth: map['costPerGbPerMonth'] as double,
-      maintainanceCostPercentageToAcquisitionCost: map['maintainanceCostPercentageToAcquisitionCost'] as double,
+      costPerGbPerMonth: (map['costPerGbPerMonth'] as double).input(),
+      maintainanceCostPercentageToAcquisitionCost: (map['maintainanceCostPercentageToAcquisitionCost'] as double).input(),
     );
   }
 }

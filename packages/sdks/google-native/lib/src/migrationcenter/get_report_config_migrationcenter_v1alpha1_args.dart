@@ -16,13 +16,10 @@ class GetReportConfigMigrationcenterV1alpha1Args {
   /// [project] Optional.
   /// [reportConfigId] Required.
   GetReportConfigMigrationcenterV1alpha1Args({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> reportConfigId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reportConfigId = pulumi.Input.asInput<String>(reportConfigId);
+    required this.location,
+    this.project,
+    required this.reportConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetReportConfigMigrationcenterV1alpha1Args {
 
   factory GetReportConfigMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetReportConfigMigrationcenterV1alpha1Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reportConfigId: pulumi.Output.create<String>(map['reportConfigId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reportConfigId: (map['reportConfigId'] as String).input(),
     );
   }
 }

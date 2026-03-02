@@ -34,23 +34,15 @@ class ListSourceControlRepositoriesArgs {
   /// [token] Personal Access Token. Required when `kind` is `PAT`
   /// [workspaceName] The name of the workspace.
   ListSourceControlRepositoriesArgs({
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? code,
-    pulumi.Output<String>? installationId,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? token,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      code = pulumi.Input.asOptionalInput<String>(code),
-      installationId = pulumi.Input.asOptionalInput<String>(installationId),
-      kind = pulumi.Input.asInput<String>(kind),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      token = pulumi.Input.asOptionalInput<String>(token),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.clientId,
+    this.code,
+    this.installationId,
+    required this.kind,
+    required this.resourceGroupName,
+    this.state,
+    this.token,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ListSourceControlRepositoriesArgs {
 
   factory ListSourceControlRepositoriesArgs.fromMap(Map<String, dynamic> map) {
     return ListSourceControlRepositoriesArgs(
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      code: map['code'] == null ? null : pulumi.Output.create<String>(map['code'] as String),
-      installationId: map['installationId'] == null ? null : pulumi.Output.create<String>(map['installationId'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      token: map['token'] == null ? null : pulumi.Output.create<String>(map['token'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      installationId: map['installationId'] == null ? null : (map['installationId'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

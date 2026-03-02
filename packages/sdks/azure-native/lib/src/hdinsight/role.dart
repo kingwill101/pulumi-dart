@@ -11,27 +11,27 @@ import 'virtual_network_profile.dart';
 /// Describes a role on the cluster.
 class Role {
   /// The autoscale configurations.
-  final Autoscale? autoscaleConfiguration;
+  final pulumi.Input<Autoscale>? autoscaleConfiguration;
   /// The data disks groups for the role.
-  final List<DataDisksGroups>? dataDisksGroups;
+  final pulumi.Input<List<DataDisksGroups>>? dataDisksGroups;
   /// Indicates whether encrypt the data disks.
-  final bool? encryptDataDisks;
+  final pulumi.Input<bool>? encryptDataDisks;
   /// The hardware profile.
-  final HardwareProfile? hardwareProfile;
+  final pulumi.Input<HardwareProfile>? hardwareProfile;
   /// The minimum instance count of the cluster.
-  final int? minInstanceCount;
+  final pulumi.Input<int>? minInstanceCount;
   /// The name of the role.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The operating system profile.
-  final OsProfile? osProfile;
+  final pulumi.Input<OsProfile>? osProfile;
   /// The list of script actions on the role.
-  final List<ScriptAction>? scriptActions;
+  final pulumi.Input<List<ScriptAction>>? scriptActions;
   /// The instance count of the cluster.
-  final int? targetInstanceCount;
+  final pulumi.Input<int>? targetInstanceCount;
   /// The name of the virtual machine group.
-  final String? vMGroupName;
+  final pulumi.Input<String>? vMGroupName;
   /// The virtual network profile.
-  final VirtualNetworkProfile? virtualNetworkProfile;
+  final pulumi.Input<VirtualNetworkProfile>? virtualNetworkProfile;
 
   /// Creates a new [Role].
   /// [autoscaleConfiguration] The autoscale configurations.
@@ -61,33 +61,33 @@ class Role {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscaleConfiguration': ?autoscaleConfiguration == null ? null : autoscaleConfiguration!.toMap(),
-      'dataDisksGroups': ?dataDisksGroups == null ? null : pulumi.Input.encodeList<DataDisksGroups, Map<String, dynamic>>(dataDisksGroups!, (value) => value.toMap()),
+      'autoscaleConfiguration': ?pulumi.Input.mapOptionalInputValue<Autoscale, Map<String, dynamic>>(autoscaleConfiguration, (value) => value.toMap()),
+      'dataDisksGroups': ?pulumi.Input.mapOptionalInputValue<List<DataDisksGroups>, List<Map<String, dynamic>>>(dataDisksGroups, (value) => pulumi.Input.encodeList<DataDisksGroups, Map<String, dynamic>>(value, (value) => value.toMap())),
       'encryptDataDisks': ?encryptDataDisks,
-      'hardwareProfile': ?hardwareProfile == null ? null : hardwareProfile!.toMap(),
+      'hardwareProfile': ?pulumi.Input.mapOptionalInputValue<HardwareProfile, Map<String, dynamic>>(hardwareProfile, (value) => value.toMap()),
       'minInstanceCount': ?minInstanceCount,
       'name': ?name,
-      'osProfile': ?osProfile == null ? null : osProfile!.toMap(),
-      'scriptActions': ?scriptActions == null ? null : pulumi.Input.encodeList<ScriptAction, Map<String, dynamic>>(scriptActions!, (value) => value.toMap()),
+      'osProfile': ?pulumi.Input.mapOptionalInputValue<OsProfile, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'scriptActions': ?pulumi.Input.mapOptionalInputValue<List<ScriptAction>, List<Map<String, dynamic>>>(scriptActions, (value) => pulumi.Input.encodeList<ScriptAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetInstanceCount': ?targetInstanceCount,
       'vMGroupName': ?vMGroupName,
-      'virtualNetworkProfile': ?virtualNetworkProfile == null ? null : virtualNetworkProfile!.toMap(),
+      'virtualNetworkProfile': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkProfile, Map<String, dynamic>>(virtualNetworkProfile, (value) => value.toMap()),
     };
   }
 
   factory Role.fromMap(Map<String, dynamic> map) {
     return Role(
-      autoscaleConfiguration: map['autoscaleConfiguration'] == null ? null : Autoscale.fromMap((map['autoscaleConfiguration'] as Map).cast<String, dynamic>()),
-      dataDisksGroups: map['dataDisksGroups'] == null ? null : pulumi.Input.decodeList<DataDisksGroups>(map['dataDisksGroups'], (value) => DataDisksGroups.fromMap((value as Map).cast<String, dynamic>())),
-      encryptDataDisks: map['encryptDataDisks'] == null ? null : map['encryptDataDisks'] as bool,
-      hardwareProfile: map['hardwareProfile'] == null ? null : HardwareProfile.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>()),
-      minInstanceCount: map['minInstanceCount'] == null ? null : map['minInstanceCount'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      osProfile: map['osProfile'] == null ? null : OsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>()),
-      scriptActions: map['scriptActions'] == null ? null : pulumi.Input.decodeList<ScriptAction>(map['scriptActions'], (value) => ScriptAction.fromMap((value as Map).cast<String, dynamic>())),
-      targetInstanceCount: map['targetInstanceCount'] == null ? null : map['targetInstanceCount'] as int,
-      vMGroupName: map['vMGroupName'] == null ? null : map['vMGroupName'] as String,
-      virtualNetworkProfile: map['virtualNetworkProfile'] == null ? null : VirtualNetworkProfile.fromMap((map['virtualNetworkProfile'] as Map).cast<String, dynamic>()),
+      autoscaleConfiguration: map['autoscaleConfiguration'] == null ? null : (Autoscale.fromMap((map['autoscaleConfiguration'] as Map).cast<String, dynamic>())).input(),
+      dataDisksGroups: map['dataDisksGroups'] == null ? null : (pulumi.Input.decodeList<DataDisksGroups>(map['dataDisksGroups'], (value) => DataDisksGroups.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptDataDisks: map['encryptDataDisks'] == null ? null : (map['encryptDataDisks'] as bool).input(),
+      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      osProfile: map['osProfile'] == null ? null : (OsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      scriptActions: map['scriptActions'] == null ? null : (pulumi.Input.decodeList<ScriptAction>(map['scriptActions'], (value) => ScriptAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetInstanceCount: map['targetInstanceCount'] == null ? null : (map['targetInstanceCount'] as int).input(),
+      vMGroupName: map['vMGroupName'] == null ? null : (map['vMGroupName'] as String).input(),
+      virtualNetworkProfile: map['virtualNetworkProfile'] == null ? null : (VirtualNetworkProfile.fromMap((map['virtualNetworkProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

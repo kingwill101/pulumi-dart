@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendServiceLocalityLbPolicyPolicy {
   /// The name of a locality load balancer policy to be used. The value
@@ -29,7 +30,7 @@ class BackendServiceLocalityLbPolicyPolicy {
   /// build times and host selection times. For more information about
   /// Maglev, refer to https://ai.google/research/pubs/pub44824
   /// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [BackendServiceLocalityLbPolicyPolicy].
   /// [name] The name of a locality load balancer policy to be used. The value
@@ -45,7 +46,7 @@ class BackendServiceLocalityLbPolicyPolicy {
 
   factory BackendServiceLocalityLbPolicyPolicy.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLbPolicyPolicy(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -35,19 +35,13 @@ class EnvironmentCertificateArgs {
   /// [name] The name of the Container Apps Environment Certificate. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   EnvironmentCertificateArgs({
-    pulumi.Output<String>? certificateBlobBase64,
-    pulumi.Output<EnvironmentCertificateCertificateKeyVault>? certificateKeyVault,
-    pulumi.Output<String>? certificatePassword,
-    required pulumi.Output<String> containerAppEnvironmentId,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      certificateBlobBase64 = pulumi.Input.asOptionalInput<String>(certificateBlobBase64),
-      certificateKeyVault = pulumi.Input.asOptionalInput<EnvironmentCertificateCertificateKeyVault>(certificateKeyVault),
-      certificatePassword = pulumi.Input.asOptionalInput<String>(certificatePassword),
-      containerAppEnvironmentId = pulumi.Input.asInput<String>(containerAppEnvironmentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.certificateBlobBase64,
+    this.certificateKeyVault,
+    this.certificatePassword,
+    required this.containerAppEnvironmentId,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class EnvironmentCertificateArgs {
 
   factory EnvironmentCertificateArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentCertificateArgs(
-      certificateBlobBase64: map['certificateBlobBase64'] == null ? null : pulumi.Output.create<String>(map['certificateBlobBase64'] as String),
-      certificateKeyVault: map['certificateKeyVault'] == null ? null : pulumi.Output.create<EnvironmentCertificateCertificateKeyVault>(EnvironmentCertificateCertificateKeyVault.fromMap((map['certificateKeyVault'] as Map).cast<String, dynamic>())),
-      certificatePassword: map['certificatePassword'] == null ? null : pulumi.Output.create<String>(map['certificatePassword'] as String),
-      containerAppEnvironmentId: pulumi.Output.create<String>(map['containerAppEnvironmentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      certificateBlobBase64: map['certificateBlobBase64'] == null ? null : (map['certificateBlobBase64'] as String).input(),
+      certificateKeyVault: map['certificateKeyVault'] == null ? null : (EnvironmentCertificateCertificateKeyVault.fromMap((map['certificateKeyVault'] as Map).cast<String, dynamic>())).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
+      containerAppEnvironmentId: (map['containerAppEnvironmentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

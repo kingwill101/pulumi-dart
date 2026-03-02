@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IngressClassParametersReference identifies an API object. This can be used to specify a cluster or namespace-scoped resource.
 class IngressClassParametersReference {
   /// apiGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
-  final String? apiGroup;
+  final pulumi.Input<String>? apiGroup;
   /// kind is the type of resource being referenced.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// name is the name of resource being referenced.
-  final String name;
+  final pulumi.Input<String> name;
   /// namespace is the namespace of the resource being referenced. This field is required when scope is set to "Namespace" and must be unset when scope is set to "Cluster".
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
   /// scope represents if this refers to a cluster or namespace scoped resource. This may be set to "Cluster" (default) or "Namespace".
-  final String? scope;
+  final pulumi.Input<String>? scope;
 
   /// Creates a new [IngressClassParametersReference].
   /// [apiGroup] apiGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
@@ -40,11 +41,11 @@ class IngressClassParametersReference {
 
   factory IngressClassParametersReference.fromMap(Map<String, dynamic> map) {
     return IngressClassParametersReference(
-      apiGroup: map['apiGroup'] == null ? null : map['apiGroup'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

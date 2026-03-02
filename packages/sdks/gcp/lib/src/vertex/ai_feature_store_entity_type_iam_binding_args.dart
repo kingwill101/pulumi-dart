@@ -38,17 +38,12 @@ class AiFeatureStoreEntityTypeIamBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   AiFeatureStoreEntityTypeIamBindingArgs({
-    pulumi.Output<AiFeatureStoreEntityTypeIamBindingCondition>? condition,
-    required pulumi.Output<String> entitytype,
-    required pulumi.Output<String> featurestore,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<AiFeatureStoreEntityTypeIamBindingCondition>(condition),
-      entitytype = pulumi.Input.asInput<String>(entitytype),
-      featurestore = pulumi.Input.asInput<String>(featurestore),
-      members = pulumi.Input.asInput<List<String>>(members),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.entitytype,
+    required this.featurestore,
+    required this.members,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,11 +57,11 @@ class AiFeatureStoreEntityTypeIamBindingArgs {
 
   factory AiFeatureStoreEntityTypeIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<AiFeatureStoreEntityTypeIamBindingCondition>(AiFeatureStoreEntityTypeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      entitytype: pulumi.Output.create<String>(map['entitytype'] as String),
-      featurestore: pulumi.Output.create<String>(map['featurestore'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (AiFeatureStoreEntityTypeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      entitytype: (map['entitytype'] as String).input(),
+      featurestore: (map['featurestore'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

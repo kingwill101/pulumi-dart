@@ -27,17 +27,12 @@ class RegistryEndpointArgs {
   /// [registryEndpointName] Name of RegistryEndpoint resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   RegistryEndpointArgs({
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<RegistryEndpointProperties>? properties,
-    pulumi.Output<String>? registryEndpointName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      properties = pulumi.Input.asOptionalInput<RegistryEndpointProperties>(properties),
-      registryEndpointName = pulumi.Input.asOptionalInput<String>(registryEndpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.extendedLocation,
+    required this.instanceName,
+    this.properties,
+    this.registryEndpointName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class RegistryEndpointArgs {
 
   factory RegistryEndpointArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<RegistryEndpointProperties>(RegistryEndpointProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      registryEndpointName: map['registryEndpointName'] == null ? null : pulumi.Output.create<String>(map['registryEndpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      properties: map['properties'] == null ? null : (RegistryEndpointProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      registryEndpointName: map['registryEndpointName'] == null ? null : (map['registryEndpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

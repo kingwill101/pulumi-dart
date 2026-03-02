@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAnalysisForwardPathComponentComponent {
   /// ARN of the Network Insights Analysis.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// ID of the Network Insights Analysis.
-  final String? id;
-  final String? name;
+  final pulumi.Input<String>? id;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [NetworkInsightsAnalysisForwardPathComponentComponent].
   /// [arn] ARN of the Network Insights Analysis.
@@ -28,9 +29,9 @@ class NetworkInsightsAnalysisForwardPathComponentComponent {
 
   factory NetworkInsightsAnalysisForwardPathComponentComponent.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisForwardPathComponentComponent(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

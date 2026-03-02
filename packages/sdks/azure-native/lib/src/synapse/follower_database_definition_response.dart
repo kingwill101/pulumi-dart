@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A class representing follower database request.
 class FollowerDatabaseDefinitionResponse {
   /// Resource name of the attached database configuration in the follower cluster.
-  final String attachedDatabaseConfigurationName;
+  final pulumi.Input<String> attachedDatabaseConfigurationName;
   /// The database name owned by this cluster that was followed. * in case following all databases.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// Resource id of the cluster that follows a database owned by this cluster.
-  final String kustoPoolResourceId;
+  final pulumi.Input<String> kustoPoolResourceId;
 
   /// Creates a new [FollowerDatabaseDefinitionResponse].
   /// [attachedDatabaseConfigurationName] Resource name of the attached database configuration in the follower cluster.
@@ -30,9 +31,9 @@ class FollowerDatabaseDefinitionResponse {
 
   factory FollowerDatabaseDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return FollowerDatabaseDefinitionResponse(
-      attachedDatabaseConfigurationName: map['attachedDatabaseConfigurationName'] as String,
-      databaseName: map['databaseName'] as String,
-      kustoPoolResourceId: map['kustoPoolResourceId'] as String,
+      attachedDatabaseConfigurationName: (map['attachedDatabaseConfigurationName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      kustoPoolResourceId: (map['kustoPoolResourceId'] as String).input(),
     );
   }
 }

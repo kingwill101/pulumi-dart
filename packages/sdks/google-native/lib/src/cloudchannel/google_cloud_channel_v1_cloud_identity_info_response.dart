@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_channel_v1_edu_data_response.dart';
 
 /// Cloud Identity information for the Cloud Channel Customer.
 class GoogleCloudChannelV1CloudIdentityInfoResponse {
   /// URI of Customer's Admin console dashboard.
-  final String adminConsoleUri;
+  final pulumi.Input<String> adminConsoleUri;
   /// The alternate email.
-  final String alternateEmail;
+  final pulumi.Input<String> alternateEmail;
   /// CustomerType indicates verification type needed for using services.
-  final String customerType;
+  final pulumi.Input<String> customerType;
   /// Edu information about the customer.
-  final GoogleCloudChannelV1EduDataResponse eduData;
+  final pulumi.Input<GoogleCloudChannelV1EduDataResponse> eduData;
   /// Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
-  final bool isDomainVerified;
+  final pulumi.Input<bool> isDomainVerified;
   /// Language code.
-  final String languageCode;
+  final pulumi.Input<String> languageCode;
   /// Phone number associated with the Cloud Identity.
-  final String phoneNumber;
+  final pulumi.Input<String> phoneNumber;
   /// The primary domain name.
-  final String primaryDomain;
+  final pulumi.Input<String> primaryDomain;
 
   /// Creates a new [GoogleCloudChannelV1CloudIdentityInfoResponse].
   /// [adminConsoleUri] URI of Customer's Admin console dashboard.
@@ -46,7 +47,7 @@ class GoogleCloudChannelV1CloudIdentityInfoResponse {
       'adminConsoleUri': adminConsoleUri,
       'alternateEmail': alternateEmail,
       'customerType': customerType,
-      'eduData': eduData.toMap(),
+      'eduData': pulumi.Input.mapInputValue<GoogleCloudChannelV1EduDataResponse, Map<String, dynamic>>(eduData, (value) => value.toMap()),
       'isDomainVerified': isDomainVerified,
       'languageCode': languageCode,
       'phoneNumber': phoneNumber,
@@ -56,14 +57,14 @@ class GoogleCloudChannelV1CloudIdentityInfoResponse {
 
   factory GoogleCloudChannelV1CloudIdentityInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1CloudIdentityInfoResponse(
-      adminConsoleUri: map['adminConsoleUri'] as String,
-      alternateEmail: map['alternateEmail'] as String,
-      customerType: map['customerType'] as String,
-      eduData: GoogleCloudChannelV1EduDataResponse.fromMap((map['eduData'] as Map).cast<String, dynamic>()),
-      isDomainVerified: map['isDomainVerified'] as bool,
-      languageCode: map['languageCode'] as String,
-      phoneNumber: map['phoneNumber'] as String,
-      primaryDomain: map['primaryDomain'] as String,
+      adminConsoleUri: (map['adminConsoleUri'] as String).input(),
+      alternateEmail: (map['alternateEmail'] as String).input(),
+      customerType: (map['customerType'] as String).input(),
+      eduData: (GoogleCloudChannelV1EduDataResponse.fromMap((map['eduData'] as Map).cast<String, dynamic>())).input(),
+      isDomainVerified: (map['isDomainVerified'] as bool).input(),
+      languageCode: (map['languageCode'] as String).input(),
+      phoneNumber: (map['phoneNumber'] as String).input(),
+      primaryDomain: (map['primaryDomain'] as String).input(),
     );
   }
 }

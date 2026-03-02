@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobJobMonitorInfoMonitorConfig {
   /// Enable failure alarm
-  final bool? failEnable;
+  final pulumi.Input<bool>? failEnable;
   /// Whether no available Machine alarm is on
-  final bool? missWorkerEnable;
+  final pulumi.Input<bool>? missWorkerEnable;
   /// Alarm sending form
   /// - sms: sms alarm
   /// - phone: phone alarm
   /// - mail: mail alarm
   /// - webhook:webhook alarm
-  final String? sendChannel;
+  final pulumi.Input<String>? sendChannel;
   /// Timeout threshold, unit s, default 7200.
-  final int? timeout;
+  final pulumi.Input<int>? timeout;
   /// Time-out alarm switch. The values are as follows:
-  final bool? timeoutEnable;
+  final pulumi.Input<bool>? timeoutEnable;
   /// The trigger switch is terminated by timeout and is turned off by default.
-  final bool? timeoutKillEnable;
+  final pulumi.Input<bool>? timeoutKillEnable;
 
   /// Creates a new [JobJobMonitorInfoMonitorConfig].
   /// [failEnable] Enable failure alarm
@@ -48,12 +49,12 @@ class JobJobMonitorInfoMonitorConfig {
 
   factory JobJobMonitorInfoMonitorConfig.fromMap(Map<String, dynamic> map) {
     return JobJobMonitorInfoMonitorConfig(
-      failEnable: map['failEnable'] == null ? null : map['failEnable'] as bool,
-      missWorkerEnable: map['missWorkerEnable'] == null ? null : map['missWorkerEnable'] as bool,
-      sendChannel: map['sendChannel'] == null ? null : map['sendChannel'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as int,
-      timeoutEnable: map['timeoutEnable'] == null ? null : map['timeoutEnable'] as bool,
-      timeoutKillEnable: map['timeoutKillEnable'] == null ? null : map['timeoutKillEnable'] as bool,
+      failEnable: map['failEnable'] == null ? null : (map['failEnable'] as bool).input(),
+      missWorkerEnable: map['missWorkerEnable'] == null ? null : (map['missWorkerEnable'] as bool).input(),
+      sendChannel: map['sendChannel'] == null ? null : (map['sendChannel'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      timeoutEnable: map['timeoutEnable'] == null ? null : (map['timeoutEnable'] as bool).input(),
+      timeoutKillEnable: map['timeoutKillEnable'] == null ? null : (map['timeoutKillEnable'] as bool).input(),
     );
   }
 }

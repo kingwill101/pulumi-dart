@@ -13,11 +13,9 @@ class AutomanageConfigurationAssignmentState {
   /// [configurationId] The ARM resource ID of the Automanage Configuration to assign to the Virtual Machine. Changing this forces a new resource to be created.
   /// [virtualMachineId] The ARM resource ID of the Virtual Machine to assign the Automanage Configuration to. Changing this forces a new resource to be created.
   AutomanageConfigurationAssignmentState({
-    pulumi.Output<String>? configurationId,
-    pulumi.Output<String>? virtualMachineId,
-  }) :
-      configurationId = pulumi.Input.asOptionalInput<String>(configurationId),
-      virtualMachineId = pulumi.Input.asOptionalInput<String>(virtualMachineId);
+    this.configurationId,
+    this.virtualMachineId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class AutomanageConfigurationAssignmentState {
 
   factory AutomanageConfigurationAssignmentState.fromMap(Map<String, dynamic> map) {
     return AutomanageConfigurationAssignmentState(
-      configurationId: map['configurationId'] == null ? null : pulumi.Output.create<String>(map['configurationId'] as String),
-      virtualMachineId: map['virtualMachineId'] == null ? null : pulumi.Output.create<String>(map['virtualMachineId'] as String),
+      configurationId: map['configurationId'] == null ? null : (map['configurationId'] as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
     );
   }
 }

@@ -28,21 +28,14 @@ class AccessLogState {
   /// [slsRegionId] The region ID of the Log Service project.
   /// [status] Whether access log is enabled.
   AccessLogState({
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<String>? endpointGroupId,
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<String>? slsLogStoreName,
-    pulumi.Output<String>? slsProjectName,
-    pulumi.Output<String>? slsRegionId,
-    pulumi.Output<String>? status,
-  }) :
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      endpointGroupId = pulumi.Input.asOptionalInput<String>(endpointGroupId),
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      slsLogStoreName = pulumi.Input.asOptionalInput<String>(slsLogStoreName),
-      slsProjectName = pulumi.Input.asOptionalInput<String>(slsProjectName),
-      slsRegionId = pulumi.Input.asOptionalInput<String>(slsRegionId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.acceleratorId,
+    this.endpointGroupId,
+    this.listenerId,
+    this.slsLogStoreName,
+    this.slsProjectName,
+    this.slsRegionId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class AccessLogState {
 
   factory AccessLogState.fromMap(Map<String, dynamic> map) {
     return AccessLogState(
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      endpointGroupId: map['endpointGroupId'] == null ? null : pulumi.Output.create<String>(map['endpointGroupId'] as String),
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      slsLogStoreName: map['slsLogStoreName'] == null ? null : pulumi.Output.create<String>(map['slsLogStoreName'] as String),
-      slsProjectName: map['slsProjectName'] == null ? null : pulumi.Output.create<String>(map['slsProjectName'] as String),
-      slsRegionId: map['slsRegionId'] == null ? null : pulumi.Output.create<String>(map['slsRegionId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId'] as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      slsLogStoreName: map['slsLogStoreName'] == null ? null : (map['slsLogStoreName'] as String).input(),
+      slsProjectName: map['slsProjectName'] == null ? null : (map['slsProjectName'] as String).input(),
+      slsRegionId: map['slsRegionId'] == null ? null : (map['slsRegionId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

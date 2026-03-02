@@ -51,27 +51,17 @@ class LbRouteExtensionState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   LbRouteExtensionState({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<List<LbRouteExtensionExtensionChain>>? extensionChains,
-    pulumi.Output<List<String>>? forwardingRules,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? loadBalancingScheme,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      extensionChains = pulumi.Input.asOptionalInput<List<LbRouteExtensionExtensionChain>>(extensionChains),
-      forwardingRules = pulumi.Input.asOptionalInput<List<String>>(forwardingRules),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      loadBalancingScheme = pulumi.Input.asOptionalInput<String>(loadBalancingScheme),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels);
+    this.description,
+    this.effectiveLabels,
+    this.extensionChains,
+    this.forwardingRules,
+    this.labels,
+    this.loadBalancingScheme,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,16 +80,16 @@ class LbRouteExtensionState {
 
   factory LbRouteExtensionState.fromMap(Map<String, dynamic> map) {
     return LbRouteExtensionState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      extensionChains: map['extensionChains'] == null ? null : pulumi.Output.create<List<LbRouteExtensionExtensionChain>>(pulumi.Input.decodeList<LbRouteExtensionExtensionChain>(map['extensionChains'], (value) => LbRouteExtensionExtensionChain.fromMap((value as Map).cast<String, dynamic>()))),
-      forwardingRules: map['forwardingRules'] == null ? null : pulumi.Output.create<List<String>>((map['forwardingRules'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      loadBalancingScheme: map['loadBalancingScheme'] == null ? null : pulumi.Output.create<String>(map['loadBalancingScheme'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      extensionChains: map['extensionChains'] == null ? null : (pulumi.Input.decodeList<LbRouteExtensionExtensionChain>(map['extensionChains'], (value) => LbRouteExtensionExtensionChain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forwardingRules: map['forwardingRules'] == null ? null : ((map['forwardingRules'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      loadBalancingScheme: map['loadBalancingScheme'] == null ? null : (map['loadBalancingScheme'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
     );
   }
 }

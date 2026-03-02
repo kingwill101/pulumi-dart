@@ -10,106 +10,106 @@ import 'vmware_cbt_security_profile_properties_response.dart';
 /// VMwareCbt provider specific settings.
 class VMwareCbtMigrationDetailsResponse {
   /// A value indicating the appliance monitoring details.
-  final ApplianceMonitoringDetailsResponse applianceMonitoringDetails;
+  final pulumi.Input<ApplianceMonitoringDetailsResponse> applianceMonitoringDetails;
   /// The confidential VM key vault Id for ADE installation.
-  final String? confidentialVmKeyVaultId;
+  final pulumi.Input<String>? confidentialVmKeyVaultId;
   /// The data mover run as account Id.
-  final String dataMoverRunAsAccountId;
+  final pulumi.Input<String> dataMoverRunAsAccountId;
   /// The delta sync progress percentage.
-  final int deltaSyncProgressPercentage;
+  final pulumi.Input<int> deltaSyncProgressPercentage;
   /// The delta sync retry count.
-  final double deltaSyncRetryCount;
+  final pulumi.Input<double> deltaSyncRetryCount;
   /// The firmware type.
-  final String firmwareType;
+  final pulumi.Input<String> firmwareType;
   /// A value indicating the gateway operation details.
-  final GatewayOperationDetailsResponse gatewayOperationDetails;
+  final pulumi.Input<GatewayOperationDetailsResponse> gatewayOperationDetails;
   /// The initial seeding progress percentage.
-  final int initialSeedingProgressPercentage;
+  final pulumi.Input<int> initialSeedingProgressPercentage;
   /// The initial seeding retry count.
-  final double initialSeedingRetryCount;
+  final pulumi.Input<double> initialSeedingRetryCount;
   /// Gets the instance type.
   /// Expected value is 'VMwareCbt'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// A value indicating whether checksum resync cycle is in progress.
-  final String isCheckSumResyncCycle;
+  final pulumi.Input<String> isCheckSumResyncCycle;
   /// The last recovery point Id.
-  final String lastRecoveryPointId;
+  final pulumi.Input<String> lastRecoveryPointId;
   /// The last recovery point received time.
-  final String lastRecoveryPointReceived;
+  final pulumi.Input<String> lastRecoveryPointReceived;
   /// License Type of the VM to be used.
-  final String? licenseType;
+  final pulumi.Input<String>? licenseType;
   /// The license type for Linux VM's.
-  final String? linuxLicenseType;
+  final pulumi.Input<String>? linuxLicenseType;
   /// The migration progress percentage.
-  final int migrationProgressPercentage;
+  final pulumi.Input<int> migrationProgressPercentage;
   /// The recovery point Id to which the VM was migrated.
-  final String migrationRecoveryPointId;
+  final pulumi.Input<String> migrationRecoveryPointId;
   /// A value indicating the SRS operation name.
-  final String operationName;
+  final pulumi.Input<String> operationName;
   /// The name of the OS on the VM.
-  final String osName;
+  final pulumi.Input<String> osName;
   /// The type of the OS on the VM.
-  final String osType;
+  final pulumi.Input<String> osType;
   /// A value indicating whether auto resync is to be done.
-  final String? performAutoResync;
+  final pulumi.Input<String>? performAutoResync;
   /// The list of protected disks.
-  final List<VMwareCbtProtectedDiskDetailsResponse>? protectedDisks;
+  final pulumi.Input<List<VMwareCbtProtectedDiskDetailsResponse>>? protectedDisks;
   /// The resume progress percentage.
-  final int resumeProgressPercentage;
+  final pulumi.Input<int> resumeProgressPercentage;
   /// The resume retry count.
-  final double resumeRetryCount;
+  final pulumi.Input<double> resumeRetryCount;
   /// The resync progress percentage.
-  final int resyncProgressPercentage;
+  final pulumi.Input<int> resyncProgressPercentage;
   /// A value indicating whether resync is required.
-  final String resyncRequired;
+  final pulumi.Input<String> resyncRequired;
   /// The resync retry count.
-  final double resyncRetryCount;
+  final pulumi.Input<double> resyncRetryCount;
   /// The resync state.
-  final String resyncState;
+  final pulumi.Input<String> resyncState;
   /// The tags for the seed disks.
-  final Map<String, String>? seedDiskTags;
+  final pulumi.Input<Map<String, String>>? seedDiskTags;
   /// The snapshot run as account Id.
-  final String snapshotRunAsAccountId;
+  final pulumi.Input<String> snapshotRunAsAccountId;
   /// The SQL Server license type.
-  final String? sqlServerLicenseType;
+  final pulumi.Input<String>? sqlServerLicenseType;
   /// The replication storage account ARM Id. This is applicable only for the blob based replication test hook.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
   /// A value indicating the inplace OS Upgrade version.
-  final List<String>? supportedOSVersions;
+  final pulumi.Input<List<String>>? supportedOSVersions;
   /// The target availability set Id.
-  final String? targetAvailabilitySetId;
+  final pulumi.Input<String>? targetAvailabilitySetId;
   /// The target availability zone.
-  final String? targetAvailabilityZone;
+  final pulumi.Input<String>? targetAvailabilityZone;
   /// The target boot diagnostics storage account ARM Id.
-  final String? targetBootDiagnosticsStorageAccountId;
+  final pulumi.Input<String>? targetBootDiagnosticsStorageAccountId;
   /// The tags for the target disks.
-  final Map<String, String>? targetDiskTags;
+  final pulumi.Input<Map<String, String>>? targetDiskTags;
   /// The target generation.
-  final String targetGeneration;
+  final pulumi.Input<String> targetGeneration;
   /// The target location.
-  final String targetLocation;
+  final pulumi.Input<String> targetLocation;
   /// The target network Id.
-  final String? targetNetworkId;
+  final pulumi.Input<String>? targetNetworkId;
   /// The tags for the target NICs.
-  final Map<String, String>? targetNicTags;
+  final pulumi.Input<Map<String, String>>? targetNicTags;
   /// The target proximity placement group Id.
-  final String? targetProximityPlacementGroupId;
+  final pulumi.Input<String>? targetProximityPlacementGroupId;
   /// The target resource group Id.
-  final String? targetResourceGroupId;
+  final pulumi.Input<String>? targetResourceGroupId;
   /// Target VM name.
-  final String? targetVmName;
+  final pulumi.Input<String>? targetVmName;
   /// The target VM security profile.
-  final VMwareCbtSecurityProfilePropertiesResponse? targetVmSecurityProfile;
+  final pulumi.Input<VMwareCbtSecurityProfilePropertiesResponse>? targetVmSecurityProfile;
   /// The target VM size.
-  final String? targetVmSize;
+  final pulumi.Input<String>? targetVmSize;
   /// The target VM tags.
-  final Map<String, String>? targetVmTags;
+  final pulumi.Input<Map<String, String>>? targetVmTags;
   /// The test network Id.
-  final String? testNetworkId;
+  final pulumi.Input<String>? testNetworkId;
   /// The network details.
-  final List<VMwareCbtNicDetailsResponse>? vmNics;
+  final pulumi.Input<List<VMwareCbtNicDetailsResponse>>? vmNics;
   /// The ARM Id of the VM discovered in VMware.
-  final String vmwareMachineId;
+  final pulumi.Input<String> vmwareMachineId;
 
   /// Creates a new [VMwareCbtMigrationDetailsResponse].
   /// [applianceMonitoringDetails] A value indicating the appliance monitoring details.
@@ -217,13 +217,13 @@ class VMwareCbtMigrationDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applianceMonitoringDetails': applianceMonitoringDetails.toMap(),
+      'applianceMonitoringDetails': pulumi.Input.mapInputValue<ApplianceMonitoringDetailsResponse, Map<String, dynamic>>(applianceMonitoringDetails, (value) => value.toMap()),
       'confidentialVmKeyVaultId': ?confidentialVmKeyVaultId,
       'dataMoverRunAsAccountId': dataMoverRunAsAccountId,
       'deltaSyncProgressPercentage': deltaSyncProgressPercentage,
       'deltaSyncRetryCount': deltaSyncRetryCount,
       'firmwareType': firmwareType,
-      'gatewayOperationDetails': gatewayOperationDetails.toMap(),
+      'gatewayOperationDetails': pulumi.Input.mapInputValue<GatewayOperationDetailsResponse, Map<String, dynamic>>(gatewayOperationDetails, (value) => value.toMap()),
       'initialSeedingProgressPercentage': initialSeedingProgressPercentage,
       'initialSeedingRetryCount': initialSeedingRetryCount,
       'instanceType': instanceType,
@@ -238,7 +238,7 @@ class VMwareCbtMigrationDetailsResponse {
       'osName': osName,
       'osType': osType,
       'performAutoResync': ?performAutoResync,
-      'protectedDisks': ?protectedDisks == null ? null : pulumi.Input.encodeList<VMwareCbtProtectedDiskDetailsResponse, Map<String, dynamic>>(protectedDisks!, (value) => value.toMap()),
+      'protectedDisks': ?pulumi.Input.mapOptionalInputValue<List<VMwareCbtProtectedDiskDetailsResponse>, List<Map<String, dynamic>>>(protectedDisks, (value) => pulumi.Input.encodeList<VMwareCbtProtectedDiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resumeProgressPercentage': resumeProgressPercentage,
       'resumeRetryCount': resumeRetryCount,
       'resyncProgressPercentage': resyncProgressPercentage,
@@ -261,67 +261,67 @@ class VMwareCbtMigrationDetailsResponse {
       'targetProximityPlacementGroupId': ?targetProximityPlacementGroupId,
       'targetResourceGroupId': ?targetResourceGroupId,
       'targetVmName': ?targetVmName,
-      'targetVmSecurityProfile': ?targetVmSecurityProfile == null ? null : targetVmSecurityProfile!.toMap(),
+      'targetVmSecurityProfile': ?pulumi.Input.mapOptionalInputValue<VMwareCbtSecurityProfilePropertiesResponse, Map<String, dynamic>>(targetVmSecurityProfile, (value) => value.toMap()),
       'targetVmSize': ?targetVmSize,
       'targetVmTags': ?targetVmTags,
       'testNetworkId': ?testNetworkId,
-      'vmNics': ?vmNics == null ? null : pulumi.Input.encodeList<VMwareCbtNicDetailsResponse, Map<String, dynamic>>(vmNics!, (value) => value.toMap()),
+      'vmNics': ?pulumi.Input.mapOptionalInputValue<List<VMwareCbtNicDetailsResponse>, List<Map<String, dynamic>>>(vmNics, (value) => pulumi.Input.encodeList<VMwareCbtNicDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmwareMachineId': vmwareMachineId,
     };
   }
 
   factory VMwareCbtMigrationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VMwareCbtMigrationDetailsResponse(
-      applianceMonitoringDetails: ApplianceMonitoringDetailsResponse.fromMap((map['applianceMonitoringDetails'] as Map).cast<String, dynamic>()),
-      confidentialVmKeyVaultId: map['confidentialVmKeyVaultId'] == null ? null : map['confidentialVmKeyVaultId'] as String,
-      dataMoverRunAsAccountId: map['dataMoverRunAsAccountId'] as String,
-      deltaSyncProgressPercentage: map['deltaSyncProgressPercentage'] as int,
-      deltaSyncRetryCount: map['deltaSyncRetryCount'] as double,
-      firmwareType: map['firmwareType'] as String,
-      gatewayOperationDetails: GatewayOperationDetailsResponse.fromMap((map['gatewayOperationDetails'] as Map).cast<String, dynamic>()),
-      initialSeedingProgressPercentage: map['initialSeedingProgressPercentage'] as int,
-      initialSeedingRetryCount: map['initialSeedingRetryCount'] as double,
-      instanceType: map['instanceType'] as String,
-      isCheckSumResyncCycle: map['isCheckSumResyncCycle'] as String,
-      lastRecoveryPointId: map['lastRecoveryPointId'] as String,
-      lastRecoveryPointReceived: map['lastRecoveryPointReceived'] as String,
-      licenseType: map['licenseType'] == null ? null : map['licenseType'] as String,
-      linuxLicenseType: map['linuxLicenseType'] == null ? null : map['linuxLicenseType'] as String,
-      migrationProgressPercentage: map['migrationProgressPercentage'] as int,
-      migrationRecoveryPointId: map['migrationRecoveryPointId'] as String,
-      operationName: map['operationName'] as String,
-      osName: map['osName'] as String,
-      osType: map['osType'] as String,
-      performAutoResync: map['performAutoResync'] == null ? null : map['performAutoResync'] as String,
-      protectedDisks: map['protectedDisks'] == null ? null : pulumi.Input.decodeList<VMwareCbtProtectedDiskDetailsResponse>(map['protectedDisks'], (value) => VMwareCbtProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resumeProgressPercentage: map['resumeProgressPercentage'] as int,
-      resumeRetryCount: map['resumeRetryCount'] as double,
-      resyncProgressPercentage: map['resyncProgressPercentage'] as int,
-      resyncRequired: map['resyncRequired'] as String,
-      resyncRetryCount: map['resyncRetryCount'] as double,
-      resyncState: map['resyncState'] as String,
-      seedDiskTags: map['seedDiskTags'] == null ? null : (map['seedDiskTags'] as Map).cast<String, String>(),
-      snapshotRunAsAccountId: map['snapshotRunAsAccountId'] as String,
-      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : map['sqlServerLicenseType'] as String,
-      storageAccountId: map['storageAccountId'] as String,
-      supportedOSVersions: map['supportedOSVersions'] == null ? null : (map['supportedOSVersions'] as List).cast<String>(),
-      targetAvailabilitySetId: map['targetAvailabilitySetId'] == null ? null : map['targetAvailabilitySetId'] as String,
-      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : map['targetAvailabilityZone'] as String,
-      targetBootDiagnosticsStorageAccountId: map['targetBootDiagnosticsStorageAccountId'] == null ? null : map['targetBootDiagnosticsStorageAccountId'] as String,
-      targetDiskTags: map['targetDiskTags'] == null ? null : (map['targetDiskTags'] as Map).cast<String, String>(),
-      targetGeneration: map['targetGeneration'] as String,
-      targetLocation: map['targetLocation'] as String,
-      targetNetworkId: map['targetNetworkId'] == null ? null : map['targetNetworkId'] as String,
-      targetNicTags: map['targetNicTags'] == null ? null : (map['targetNicTags'] as Map).cast<String, String>(),
-      targetProximityPlacementGroupId: map['targetProximityPlacementGroupId'] == null ? null : map['targetProximityPlacementGroupId'] as String,
-      targetResourceGroupId: map['targetResourceGroupId'] == null ? null : map['targetResourceGroupId'] as String,
-      targetVmName: map['targetVmName'] == null ? null : map['targetVmName'] as String,
-      targetVmSecurityProfile: map['targetVmSecurityProfile'] == null ? null : VMwareCbtSecurityProfilePropertiesResponse.fromMap((map['targetVmSecurityProfile'] as Map).cast<String, dynamic>()),
-      targetVmSize: map['targetVmSize'] == null ? null : map['targetVmSize'] as String,
-      targetVmTags: map['targetVmTags'] == null ? null : (map['targetVmTags'] as Map).cast<String, String>(),
-      testNetworkId: map['testNetworkId'] == null ? null : map['testNetworkId'] as String,
-      vmNics: map['vmNics'] == null ? null : pulumi.Input.decodeList<VMwareCbtNicDetailsResponse>(map['vmNics'], (value) => VMwareCbtNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vmwareMachineId: map['vmwareMachineId'] as String,
+      applianceMonitoringDetails: (ApplianceMonitoringDetailsResponse.fromMap((map['applianceMonitoringDetails'] as Map).cast<String, dynamic>())).input(),
+      confidentialVmKeyVaultId: map['confidentialVmKeyVaultId'] == null ? null : (map['confidentialVmKeyVaultId'] as String).input(),
+      dataMoverRunAsAccountId: (map['dataMoverRunAsAccountId'] as String).input(),
+      deltaSyncProgressPercentage: (map['deltaSyncProgressPercentage'] as int).input(),
+      deltaSyncRetryCount: (map['deltaSyncRetryCount'] as double).input(),
+      firmwareType: (map['firmwareType'] as String).input(),
+      gatewayOperationDetails: (GatewayOperationDetailsResponse.fromMap((map['gatewayOperationDetails'] as Map).cast<String, dynamic>())).input(),
+      initialSeedingProgressPercentage: (map['initialSeedingProgressPercentage'] as int).input(),
+      initialSeedingRetryCount: (map['initialSeedingRetryCount'] as double).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      isCheckSumResyncCycle: (map['isCheckSumResyncCycle'] as String).input(),
+      lastRecoveryPointId: (map['lastRecoveryPointId'] as String).input(),
+      lastRecoveryPointReceived: (map['lastRecoveryPointReceived'] as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      linuxLicenseType: map['linuxLicenseType'] == null ? null : (map['linuxLicenseType'] as String).input(),
+      migrationProgressPercentage: (map['migrationProgressPercentage'] as int).input(),
+      migrationRecoveryPointId: (map['migrationRecoveryPointId'] as String).input(),
+      operationName: (map['operationName'] as String).input(),
+      osName: (map['osName'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      performAutoResync: map['performAutoResync'] == null ? null : (map['performAutoResync'] as String).input(),
+      protectedDisks: map['protectedDisks'] == null ? null : (pulumi.Input.decodeList<VMwareCbtProtectedDiskDetailsResponse>(map['protectedDisks'], (value) => VMwareCbtProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resumeProgressPercentage: (map['resumeProgressPercentage'] as int).input(),
+      resumeRetryCount: (map['resumeRetryCount'] as double).input(),
+      resyncProgressPercentage: (map['resyncProgressPercentage'] as int).input(),
+      resyncRequired: (map['resyncRequired'] as String).input(),
+      resyncRetryCount: (map['resyncRetryCount'] as double).input(),
+      resyncState: (map['resyncState'] as String).input(),
+      seedDiskTags: map['seedDiskTags'] == null ? null : ((map['seedDiskTags'] as Map).cast<String, String>()).input(),
+      snapshotRunAsAccountId: (map['snapshotRunAsAccountId'] as String).input(),
+      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : (map['sqlServerLicenseType'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
+      supportedOSVersions: map['supportedOSVersions'] == null ? null : ((map['supportedOSVersions'] as List).cast<String>()).input(),
+      targetAvailabilitySetId: map['targetAvailabilitySetId'] == null ? null : (map['targetAvailabilitySetId'] as String).input(),
+      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : (map['targetAvailabilityZone'] as String).input(),
+      targetBootDiagnosticsStorageAccountId: map['targetBootDiagnosticsStorageAccountId'] == null ? null : (map['targetBootDiagnosticsStorageAccountId'] as String).input(),
+      targetDiskTags: map['targetDiskTags'] == null ? null : ((map['targetDiskTags'] as Map).cast<String, String>()).input(),
+      targetGeneration: (map['targetGeneration'] as String).input(),
+      targetLocation: (map['targetLocation'] as String).input(),
+      targetNetworkId: map['targetNetworkId'] == null ? null : (map['targetNetworkId'] as String).input(),
+      targetNicTags: map['targetNicTags'] == null ? null : ((map['targetNicTags'] as Map).cast<String, String>()).input(),
+      targetProximityPlacementGroupId: map['targetProximityPlacementGroupId'] == null ? null : (map['targetProximityPlacementGroupId'] as String).input(),
+      targetResourceGroupId: map['targetResourceGroupId'] == null ? null : (map['targetResourceGroupId'] as String).input(),
+      targetVmName: map['targetVmName'] == null ? null : (map['targetVmName'] as String).input(),
+      targetVmSecurityProfile: map['targetVmSecurityProfile'] == null ? null : (VMwareCbtSecurityProfilePropertiesResponse.fromMap((map['targetVmSecurityProfile'] as Map).cast<String, dynamic>())).input(),
+      targetVmSize: map['targetVmSize'] == null ? null : (map['targetVmSize'] as String).input(),
+      targetVmTags: map['targetVmTags'] == null ? null : ((map['targetVmTags'] as Map).cast<String, String>()).input(),
+      testNetworkId: map['testNetworkId'] == null ? null : (map['testNetworkId'] as String).input(),
+      vmNics: map['vmNics'] == null ? null : (pulumi.Input.decodeList<VMwareCbtNicDetailsResponse>(map['vmNics'], (value) => VMwareCbtNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmwareMachineId: (map['vmwareMachineId'] as String).input(),
     );
   }
 }

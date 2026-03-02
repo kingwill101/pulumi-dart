@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionEventTriggerFailurePolicy {
   /// Whether the function should be retried on failure.
-  final bool retry;
+  final pulumi.Input<bool> retry;
 
   /// Creates a new [GetFunctionEventTriggerFailurePolicy].
   /// [retry] Whether the function should be retried on failure.
@@ -19,7 +20,7 @@ class GetFunctionEventTriggerFailurePolicy {
 
   factory GetFunctionEventTriggerFailurePolicy.fromMap(Map<String, dynamic> map) {
     return GetFunctionEventTriggerFailurePolicy(
-      retry: map['retry'] as bool,
+      retry: (map['retry'] as bool).input(),
     );
   }
 }

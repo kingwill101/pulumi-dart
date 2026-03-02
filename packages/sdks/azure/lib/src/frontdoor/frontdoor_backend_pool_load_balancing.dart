@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorBackendPoolLoadBalancing {
   /// The additional latency in milliseconds for probes to fall into the lowest latency bucket. Defaults to `0`.
-  final int? additionalLatencyMilliseconds;
+  final pulumi.Input<int>? additionalLatencyMilliseconds;
   /// The ID of the FrontDoor.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies the name of the Load Balancer.
-  final String name;
+  final pulumi.Input<String> name;
   /// The number of samples to consider for load balancing decisions. Defaults to `4`.
-  final int? sampleSize;
+  final pulumi.Input<int>? sampleSize;
   /// The number of samples within the sample period that must succeed. Defaults to `2`.
-  final int? successfulSamplesRequired;
+  final pulumi.Input<int>? successfulSamplesRequired;
 
   /// Creates a new [FrontdoorBackendPoolLoadBalancing].
   /// [additionalLatencyMilliseconds] The additional latency in milliseconds for probes to fall into the lowest latency bucket. Defaults to `0`.
@@ -39,11 +40,11 @@ class FrontdoorBackendPoolLoadBalancing {
 
   factory FrontdoorBackendPoolLoadBalancing.fromMap(Map<String, dynamic> map) {
     return FrontdoorBackendPoolLoadBalancing(
-      additionalLatencyMilliseconds: map['additionalLatencyMilliseconds'] == null ? null : map['additionalLatencyMilliseconds'] as int,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] as String,
-      sampleSize: map['sampleSize'] == null ? null : map['sampleSize'] as int,
-      successfulSamplesRequired: map['successfulSamplesRequired'] == null ? null : map['successfulSamplesRequired'] as int,
+      additionalLatencyMilliseconds: map['additionalLatencyMilliseconds'] == null ? null : (map['additionalLatencyMilliseconds'] as int).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      sampleSize: map['sampleSize'] == null ? null : (map['sampleSize'] as int).input(),
+      successfulSamplesRequired: map['successfulSamplesRequired'] == null ? null : (map['successfulSamplesRequired'] as int).input(),
     );
   }
 }

@@ -39,23 +39,15 @@ class RuleArgs {
   /// [retentionPeriod] Information about the retention period for which the retention rule is to retain resources. See `retention_period` below.
   /// [tags] Optional.
   RuleArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<RuleExcludeResourceTag>>? excludeResourceTags,
-    pulumi.Output<RuleLockConfiguration>? lockConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<RuleResourceTag>>? resourceTags,
-    required pulumi.Output<String> resourceType,
-    required pulumi.Output<RuleRetentionPeriod> retentionPeriod,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      excludeResourceTags = pulumi.Input.asOptionalInput<List<RuleExcludeResourceTag>>(excludeResourceTags),
-      lockConfiguration = pulumi.Input.asOptionalInput<RuleLockConfiguration>(lockConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceTags = pulumi.Input.asOptionalInput<List<RuleResourceTag>>(resourceTags),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      retentionPeriod = pulumi.Input.asInput<RuleRetentionPeriod>(retentionPeriod),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.excludeResourceTags,
+    this.lockConfiguration,
+    this.region,
+    this.resourceTags,
+    required this.resourceType,
+    required this.retentionPeriod,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      excludeResourceTags: map['excludeResourceTags'] == null ? null : pulumi.Output.create<List<RuleExcludeResourceTag>>(pulumi.Input.decodeList<RuleExcludeResourceTag>(map['excludeResourceTags'], (value) => RuleExcludeResourceTag.fromMap((value as Map).cast<String, dynamic>()))),
-      lockConfiguration: map['lockConfiguration'] == null ? null : pulumi.Output.create<RuleLockConfiguration>(RuleLockConfiguration.fromMap((map['lockConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceTags: map['resourceTags'] == null ? null : pulumi.Output.create<List<RuleResourceTag>>(pulumi.Input.decodeList<RuleResourceTag>(map['resourceTags'], (value) => RuleResourceTag.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      retentionPeriod: pulumi.Output.create<RuleRetentionPeriod>(RuleRetentionPeriod.fromMap((map['retentionPeriod'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      excludeResourceTags: map['excludeResourceTags'] == null ? null : (pulumi.Input.decodeList<RuleExcludeResourceTag>(map['excludeResourceTags'], (value) => RuleExcludeResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lockConfiguration: map['lockConfiguration'] == null ? null : (RuleLockConfiguration.fromMap((map['lockConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceTags: map['resourceTags'] == null ? null : (pulumi.Input.decodeList<RuleResourceTag>(map['resourceTags'], (value) => RuleResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      retentionPeriod: (RuleRetentionPeriod.fromMap((map['retentionPeriod'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

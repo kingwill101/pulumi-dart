@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateValidity {
   /// Determines how `value` is interpreted. Valid values: `DAYS`, `MONTHS`, `YEARS`, `ABSOLUTE`, `END_DATE`.
-  final String type;
+  final pulumi.Input<String> type;
   /// If `type` is `DAYS`, `MONTHS`, or `YEARS`, the relative time until the certificate expires. If `type` is `ABSOLUTE`, the date in seconds since the Unix epoch. If `type` is `END_DATE`, the  date in RFC 3339 format.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [CertificateValidity].
   /// [type] Determines how `value` is interpreted. Valid values: `DAYS`, `MONTHS`, `YEARS`, `ABSOLUTE`, `END_DATE`.
@@ -24,8 +25,8 @@ class CertificateValidity {
 
   factory CertificateValidity.fromMap(Map<String, dynamic> map) {
     return CertificateValidity(
-      type: map['type'] as String,
-      value: map['value'] as String,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

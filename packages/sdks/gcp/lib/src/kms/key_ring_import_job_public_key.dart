@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeyRingImportJobPublicKey {
   /// (Output)
   /// The public key, encoded in PEM format. For more information, see the RFC 7468 sections
   /// for General Considerations and Textual Encoding of Subject Public Key Info.
-  final String? pem;
+  final pulumi.Input<String>? pem;
 
   /// Creates a new [KeyRingImportJobPublicKey].
   /// [pem] (Output)
@@ -21,7 +22,7 @@ class KeyRingImportJobPublicKey {
 
   factory KeyRingImportJobPublicKey.fromMap(Map<String, dynamic> map) {
     return KeyRingImportJobPublicKey(
-      pem: map['pem'] == null ? null : map['pem'] as String,
+      pem: map['pem'] == null ? null : (map['pem'] as String).input(),
     );
   }
 }

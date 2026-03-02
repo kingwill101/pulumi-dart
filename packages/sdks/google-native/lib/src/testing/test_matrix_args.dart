@@ -38,23 +38,15 @@ class TestMatrixArgs {
   /// [resultStorage] Where the results for the matrix are written.
   /// [testSpecification] How to run the test.
   TestMatrixArgs({
-    pulumi.Output<ClientInfo>? clientInfo,
-    required pulumi.Output<EnvironmentMatrix> environmentMatrix,
-    pulumi.Output<bool>? failFast,
-    pulumi.Output<int>? flakyTestAttempts,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<ResultStorage> resultStorage,
-    required pulumi.Output<TestSpecification> testSpecification,
-  }) :
-      clientInfo = pulumi.Input.asOptionalInput<ClientInfo>(clientInfo),
-      environmentMatrix = pulumi.Input.asInput<EnvironmentMatrix>(environmentMatrix),
-      failFast = pulumi.Input.asOptionalInput<bool>(failFast),
-      flakyTestAttempts = pulumi.Input.asOptionalInput<int>(flakyTestAttempts),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      resultStorage = pulumi.Input.asInput<ResultStorage>(resultStorage),
-      testSpecification = pulumi.Input.asInput<TestSpecification>(testSpecification);
+    this.clientInfo,
+    required this.environmentMatrix,
+    this.failFast,
+    this.flakyTestAttempts,
+    this.project,
+    this.requestId,
+    required this.resultStorage,
+    required this.testSpecification,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class TestMatrixArgs {
 
   factory TestMatrixArgs.fromMap(Map<String, dynamic> map) {
     return TestMatrixArgs(
-      clientInfo: map['clientInfo'] == null ? null : pulumi.Output.create<ClientInfo>(ClientInfo.fromMap((map['clientInfo'] as Map).cast<String, dynamic>())),
-      environmentMatrix: pulumi.Output.create<EnvironmentMatrix>(EnvironmentMatrix.fromMap((map['environmentMatrix'] as Map).cast<String, dynamic>())),
-      failFast: map['failFast'] == null ? null : pulumi.Output.create<bool>(map['failFast'] as bool),
-      flakyTestAttempts: map['flakyTestAttempts'] == null ? null : pulumi.Output.create<int>(map['flakyTestAttempts'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      resultStorage: pulumi.Output.create<ResultStorage>(ResultStorage.fromMap((map['resultStorage'] as Map).cast<String, dynamic>())),
-      testSpecification: pulumi.Output.create<TestSpecification>(TestSpecification.fromMap((map['testSpecification'] as Map).cast<String, dynamic>())),
+      clientInfo: map['clientInfo'] == null ? null : (ClientInfo.fromMap((map['clientInfo'] as Map).cast<String, dynamic>())).input(),
+      environmentMatrix: (EnvironmentMatrix.fromMap((map['environmentMatrix'] as Map).cast<String, dynamic>())).input(),
+      failFast: map['failFast'] == null ? null : (map['failFast'] as bool).input(),
+      flakyTestAttempts: map['flakyTestAttempts'] == null ? null : (map['flakyTestAttempts'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      resultStorage: (ResultStorage.fromMap((map['resultStorage'] as Map).cast<String, dynamic>())).input(),
+      testSpecification: (TestSpecification.fromMap((map['testSpecification'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

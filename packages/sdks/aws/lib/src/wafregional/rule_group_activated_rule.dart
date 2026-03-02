@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_activated_rule_action.dart';
 
 class RuleGroupActivatedRule {
   /// Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule.
-  final RuleGroupActivatedRuleAction action;
+  final pulumi.Input<RuleGroupActivatedRuleAction> action;
   /// Specifies the order in which the rules are evaluated. Rules with a lower value are evaluated before rules with a higher value.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The ID of a rule
-  final String ruleId;
-  final String? type;
+  final pulumi.Input<String> ruleId;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [RuleGroupActivatedRule].
   /// [action] Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule.
@@ -25,7 +26,7 @@ class RuleGroupActivatedRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': action.toMap(),
+      'action': pulumi.Input.mapInputValue<RuleGroupActivatedRuleAction, Map<String, dynamic>>(action, (value) => value.toMap()),
       'priority': priority,
       'ruleId': ruleId,
       'type': ?type,
@@ -34,10 +35,10 @@ class RuleGroupActivatedRule {
 
   factory RuleGroupActivatedRule.fromMap(Map<String, dynamic> map) {
     return RuleGroupActivatedRule(
-      action: RuleGroupActivatedRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      priority: map['priority'] as int,
-      ruleId: map['ruleId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      action: (RuleGroupActivatedRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      priority: (map['priority'] as int).input(),
+      ruleId: (map['ruleId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

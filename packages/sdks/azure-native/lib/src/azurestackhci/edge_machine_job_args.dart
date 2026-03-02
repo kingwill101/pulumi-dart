@@ -23,15 +23,11 @@ class EdgeMachineJobArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   EdgeMachineJobArgs({
-    required pulumi.Output<String> edgeMachineName,
-    pulumi.Output<String>? jobsName,
-    pulumi.Output<DownloadOsJobProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      edgeMachineName = pulumi.Input.asInput<String>(edgeMachineName),
-      jobsName = pulumi.Input.asOptionalInput<String>(jobsName),
-      properties = pulumi.Input.asOptionalInput<DownloadOsJobProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.edgeMachineName,
+    this.jobsName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class EdgeMachineJobArgs {
 
   factory EdgeMachineJobArgs.fromMap(Map<String, dynamic> map) {
     return EdgeMachineJobArgs(
-      edgeMachineName: pulumi.Output.create<String>(map['edgeMachineName'] as String),
-      jobsName: map['jobsName'] == null ? null : pulumi.Output.create<String>(map['jobsName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DownloadOsJobProperties>(DownloadOsJobProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      edgeMachineName: (map['edgeMachineName'] as String).input(),
+      jobsName: map['jobsName'] == null ? null : (map['jobsName'] as String).input(),
+      properties: map['properties'] == null ? null : (DownloadOsJobProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppAutoBranchCreationConfig {
   /// Basic authorization credentials for the autocreated branch.
-  final String? basicAuthCredentials;
+  final pulumi.Input<String>? basicAuthCredentials;
   /// Build specification (build spec) for the autocreated branch.
-  final String? buildSpec;
+  final pulumi.Input<String>? buildSpec;
   /// Enables auto building for the autocreated branch.
-  final bool? enableAutoBuild;
+  final pulumi.Input<bool>? enableAutoBuild;
   /// Enables basic authorization for the autocreated branch.
-  final bool? enableBasicAuth;
+  final pulumi.Input<bool>? enableBasicAuth;
   /// Enables performance mode for the branch.
-  final bool? enablePerformanceMode;
+  final pulumi.Input<bool>? enablePerformanceMode;
   /// Enables pull request previews for the autocreated branch.
-  final bool? enablePullRequestPreview;
+  final pulumi.Input<bool>? enablePullRequestPreview;
   /// Environment variables for the autocreated branch.
-  final Map<String, String>? environmentVariables;
+  final pulumi.Input<Map<String, String>>? environmentVariables;
   /// Framework for the autocreated branch.
-  final String? framework;
+  final pulumi.Input<String>? framework;
   /// Amplify environment name for the pull request.
-  final String? pullRequestEnvironmentName;
+  final pulumi.Input<String>? pullRequestEnvironmentName;
   /// Describes the current stage for the autocreated branch. Valid values: `PRODUCTION`, `BETA`, `DEVELOPMENT`, `EXPERIMENTAL`, `PULL_REQUEST`.
-  final String? stage;
+  final pulumi.Input<String>? stage;
 
   /// Creates a new [AppAutoBranchCreationConfig].
   /// [basicAuthCredentials] Basic authorization credentials for the autocreated branch.
@@ -64,16 +65,16 @@ class AppAutoBranchCreationConfig {
 
   factory AppAutoBranchCreationConfig.fromMap(Map<String, dynamic> map) {
     return AppAutoBranchCreationConfig(
-      basicAuthCredentials: map['basicAuthCredentials'] == null ? null : map['basicAuthCredentials'] as String,
-      buildSpec: map['buildSpec'] == null ? null : map['buildSpec'] as String,
-      enableAutoBuild: map['enableAutoBuild'] == null ? null : map['enableAutoBuild'] as bool,
-      enableBasicAuth: map['enableBasicAuth'] == null ? null : map['enableBasicAuth'] as bool,
-      enablePerformanceMode: map['enablePerformanceMode'] == null ? null : map['enablePerformanceMode'] as bool,
-      enablePullRequestPreview: map['enablePullRequestPreview'] == null ? null : map['enablePullRequestPreview'] as bool,
-      environmentVariables: map['environmentVariables'] == null ? null : (map['environmentVariables'] as Map).cast<String, String>(),
-      framework: map['framework'] == null ? null : map['framework'] as String,
-      pullRequestEnvironmentName: map['pullRequestEnvironmentName'] == null ? null : map['pullRequestEnvironmentName'] as String,
-      stage: map['stage'] == null ? null : map['stage'] as String,
+      basicAuthCredentials: map['basicAuthCredentials'] == null ? null : (map['basicAuthCredentials'] as String).input(),
+      buildSpec: map['buildSpec'] == null ? null : (map['buildSpec'] as String).input(),
+      enableAutoBuild: map['enableAutoBuild'] == null ? null : (map['enableAutoBuild'] as bool).input(),
+      enableBasicAuth: map['enableBasicAuth'] == null ? null : (map['enableBasicAuth'] as bool).input(),
+      enablePerformanceMode: map['enablePerformanceMode'] == null ? null : (map['enablePerformanceMode'] as bool).input(),
+      enablePullRequestPreview: map['enablePullRequestPreview'] == null ? null : (map['enablePullRequestPreview'] as bool).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
+      framework: map['framework'] == null ? null : (map['framework'] as String).input(),
+      pullRequestEnvironmentName: map['pullRequestEnvironmentName'] == null ? null : (map['pullRequestEnvironmentName'] as String).input(),
+      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
     );
   }
 }

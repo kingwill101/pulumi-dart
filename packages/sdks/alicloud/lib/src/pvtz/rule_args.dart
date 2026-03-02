@@ -26,17 +26,12 @@ class RuleArgs {
   /// [type] The type of the rule. Valid values: `OUTBOUND`.
   /// [zoneName] The name of the forwarding zone.
   RuleArgs({
-    required pulumi.Output<String> endpointId,
-    required pulumi.Output<List<RuleForwardIp>> forwardIps,
-    required pulumi.Output<String> ruleName,
-    pulumi.Output<String>? type,
-    required pulumi.Output<String> zoneName,
-  }) :
-      endpointId = pulumi.Input.asInput<String>(endpointId),
-      forwardIps = pulumi.Input.asInput<List<RuleForwardIp>>(forwardIps),
-      ruleName = pulumi.Input.asInput<String>(ruleName),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      zoneName = pulumi.Input.asInput<String>(zoneName);
+    required this.endpointId,
+    required this.forwardIps,
+    required this.ruleName,
+    this.type,
+    required this.zoneName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      endpointId: pulumi.Output.create<String>(map['endpointId'] as String),
-      forwardIps: pulumi.Output.create<List<RuleForwardIp>>(pulumi.Input.decodeList<RuleForwardIp>(map['forwardIps'], (value) => RuleForwardIp.fromMap((value as Map).cast<String, dynamic>()))),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      zoneName: pulumi.Output.create<String>(map['zoneName'] as String),
+      endpointId: (map['endpointId'] as String).input(),
+      forwardIps: (pulumi.Input.decodeList<RuleForwardIp>(map['forwardIps'], (value) => RuleForwardIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      zoneName: (map['zoneName'] as String).input(),
     );
   }
 }

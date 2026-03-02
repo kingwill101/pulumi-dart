@@ -6,11 +6,11 @@ import 'firewall_policy_managed_rule_override_rule.dart';
 
 class FirewallPolicyManagedRuleOverride {
   /// One or more `exclusion` blocks as defined below.
-  final List<FirewallPolicyManagedRuleOverrideExclusion>? exclusions;
+  final pulumi.Input<List<FirewallPolicyManagedRuleOverrideExclusion>>? exclusions;
   /// The managed rule group to override.
-  final String ruleGroupName;
+  final pulumi.Input<String> ruleGroupName;
   /// One or more `rule` blocks as defined below. If none are specified, all of the rules in the group will be disabled.
-  final List<FirewallPolicyManagedRuleOverrideRule>? rules;
+  final pulumi.Input<List<FirewallPolicyManagedRuleOverrideRule>>? rules;
 
   /// Creates a new [FirewallPolicyManagedRuleOverride].
   /// [exclusions] One or more `exclusion` blocks as defined below.
@@ -24,17 +24,17 @@ class FirewallPolicyManagedRuleOverride {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exclusions': ?exclusions == null ? null : pulumi.Input.encodeList<FirewallPolicyManagedRuleOverrideExclusion, Map<String, dynamic>>(exclusions!, (value) => value.toMap()),
+      'exclusions': ?pulumi.Input.mapOptionalInputValue<List<FirewallPolicyManagedRuleOverrideExclusion>, List<Map<String, dynamic>>>(exclusions, (value) => pulumi.Input.encodeList<FirewallPolicyManagedRuleOverrideExclusion, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ruleGroupName': ruleGroupName,
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<FirewallPolicyManagedRuleOverrideRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<FirewallPolicyManagedRuleOverrideRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<FirewallPolicyManagedRuleOverrideRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory FirewallPolicyManagedRuleOverride.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyManagedRuleOverride(
-      exclusions: map['exclusions'] == null ? null : pulumi.Input.decodeList<FirewallPolicyManagedRuleOverrideExclusion>(map['exclusions'], (value) => FirewallPolicyManagedRuleOverrideExclusion.fromMap((value as Map).cast<String, dynamic>())),
-      ruleGroupName: map['ruleGroupName'] as String,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<FirewallPolicyManagedRuleOverrideRule>(map['rules'], (value) => FirewallPolicyManagedRuleOverrideRule.fromMap((value as Map).cast<String, dynamic>())),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyManagedRuleOverrideExclusion>(map['exclusions'], (value) => FirewallPolicyManagedRuleOverrideExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleGroupName: (map['ruleGroupName'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyManagedRuleOverrideRule>(map['rules'], (value) => FirewallPolicyManagedRuleOverrideRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

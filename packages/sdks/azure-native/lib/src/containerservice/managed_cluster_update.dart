@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_cluster_upgrade_spec.dart';
 import 'node_image_selection.dart';
 
 /// The update to be applied to the ManagedClusters.
 class ManagedClusterUpdate {
   /// The node image upgrade to be applied to the target nodes in update run.
-  final NodeImageSelection? nodeImageSelection;
+  final pulumi.Input<NodeImageSelection>? nodeImageSelection;
   /// The upgrade to apply to the ManagedClusters.
-  final ManagedClusterUpgradeSpec upgrade;
+  final pulumi.Input<ManagedClusterUpgradeSpec> upgrade;
 
   /// Creates a new [ManagedClusterUpdate].
   /// [nodeImageSelection] The node image upgrade to be applied to the target nodes in update run.
@@ -20,15 +21,15 @@ class ManagedClusterUpdate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeImageSelection': ?nodeImageSelection == null ? null : nodeImageSelection!.toMap(),
-      'upgrade': upgrade.toMap(),
+      'nodeImageSelection': ?pulumi.Input.mapOptionalInputValue<NodeImageSelection, Map<String, dynamic>>(nodeImageSelection, (value) => value.toMap()),
+      'upgrade': pulumi.Input.mapInputValue<ManagedClusterUpgradeSpec, Map<String, dynamic>>(upgrade, (value) => value.toMap()),
     };
   }
 
   factory ManagedClusterUpdate.fromMap(Map<String, dynamic> map) {
     return ManagedClusterUpdate(
-      nodeImageSelection: map['nodeImageSelection'] == null ? null : NodeImageSelection.fromMap((map['nodeImageSelection'] as Map).cast<String, dynamic>()),
-      upgrade: ManagedClusterUpgradeSpec.fromMap((map['upgrade'] as Map).cast<String, dynamic>()),
+      nodeImageSelection: map['nodeImageSelection'] == null ? null : (NodeImageSelection.fromMap((map['nodeImageSelection'] as Map).cast<String, dynamic>())).input(),
+      upgrade: (ManagedClusterUpgradeSpec.fromMap((map['upgrade'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

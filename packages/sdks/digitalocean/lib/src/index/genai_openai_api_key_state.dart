@@ -32,23 +32,15 @@ class GenaiOpenaiApiKeyState {
   /// [updatedAt] When the API key was last updated.
   /// [uuid] The UUID of the API key.
   GenaiOpenaiApiKeyState({
-    pulumi.Output<String>? apiKey,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? createdBy,
-    pulumi.Output<String>? deletedAt,
-    pulumi.Output<List<GenaiOpenaiApiKeyModel>>? models,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? updatedAt,
-    pulumi.Output<String>? uuid,
-  }) :
-      apiKey = pulumi.Input.asOptionalInput<String>(apiKey),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      createdBy = pulumi.Input.asOptionalInput<String>(createdBy),
-      deletedAt = pulumi.Input.asOptionalInput<String>(deletedAt),
-      models = pulumi.Input.asOptionalInput<List<GenaiOpenaiApiKeyModel>>(models),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid);
+    this.apiKey,
+    this.createdAt,
+    this.createdBy,
+    this.deletedAt,
+    this.models,
+    this.name,
+    this.updatedAt,
+    this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class GenaiOpenaiApiKeyState {
 
   factory GenaiOpenaiApiKeyState.fromMap(Map<String, dynamic> map) {
     return GenaiOpenaiApiKeyState(
-      apiKey: map['apiKey'] == null ? null : pulumi.Output.create<String>(map['apiKey'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      createdBy: map['createdBy'] == null ? null : pulumi.Output.create<String>(map['createdBy'] as String),
-      deletedAt: map['deletedAt'] == null ? null : pulumi.Output.create<String>(map['deletedAt'] as String),
-      models: map['models'] == null ? null : pulumi.Output.create<List<GenaiOpenaiApiKeyModel>>(pulumi.Input.decodeList<GenaiOpenaiApiKeyModel>(map['models'], (value) => GenaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      deletedAt: map['deletedAt'] == null ? null : (map['deletedAt'] as String).input(),
+      models: map['models'] == null ? null : (pulumi.Input.decodeList<GenaiOpenaiApiKeyModel>(map['models'], (value) => GenaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

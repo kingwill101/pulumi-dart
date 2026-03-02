@@ -38,21 +38,14 @@ class EipAssociationArgs {
   /// [publicIp] ) Address of the associated Elastic IP.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   EipAssociationArgs({
-    pulumi.Output<String>? allocationId,
-    pulumi.Output<bool>? allowReassociation,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? networkInterfaceId,
-    pulumi.Output<String>? privateIpAddress,
-    pulumi.Output<String>? publicIp,
-    pulumi.Output<String>? region,
-  }) :
-      allocationId = pulumi.Input.asOptionalInput<String>(allocationId),
-      allowReassociation = pulumi.Input.asOptionalInput<bool>(allowReassociation),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      networkInterfaceId = pulumi.Input.asOptionalInput<String>(networkInterfaceId),
-      privateIpAddress = pulumi.Input.asOptionalInput<String>(privateIpAddress),
-      publicIp = pulumi.Input.asOptionalInput<String>(publicIp),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.allocationId,
+    this.allowReassociation,
+    this.instanceId,
+    this.networkInterfaceId,
+    this.privateIpAddress,
+    this.publicIp,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,13 +61,13 @@ class EipAssociationArgs {
 
   factory EipAssociationArgs.fromMap(Map<String, dynamic> map) {
     return EipAssociationArgs(
-      allocationId: map['allocationId'] == null ? null : pulumi.Output.create<String>(map['allocationId'] as String),
-      allowReassociation: map['allowReassociation'] == null ? null : pulumi.Output.create<bool>(map['allowReassociation'] as bool),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      privateIpAddress: map['privateIpAddress'] == null ? null : pulumi.Output.create<String>(map['privateIpAddress'] as String),
-      publicIp: map['publicIp'] == null ? null : pulumi.Output.create<String>(map['publicIp'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
+      allowReassociation: map['allowReassociation'] == null ? null : (map['allowReassociation'] as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      publicIp: map['publicIp'] == null ? null : (map['publicIp'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

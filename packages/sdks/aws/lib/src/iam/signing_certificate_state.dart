@@ -19,15 +19,11 @@ class SigningCertificateState {
   /// [status] The status you want to assign to the certificate. `Active` means that the certificate can be used for programmatic calls to Amazon Web Services `Inactive` means that the certificate cannot be used.
   /// [userName] The name of the user the signing certificate is for.
   SigningCertificateState({
-    pulumi.Output<String>? certificateBody,
-    pulumi.Output<String>? certificateId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? userName,
-  }) :
-      certificateBody = pulumi.Input.asOptionalInput<String>(certificateBody),
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.certificateBody,
+    this.certificateId,
+    this.status,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class SigningCertificateState {
 
   factory SigningCertificateState.fromMap(Map<String, dynamic> map) {
     return SigningCertificateState(
-      certificateBody: map['certificateBody'] == null ? null : pulumi.Output.create<String>(map['certificateBody'] as String),
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      certificateBody: map['certificateBody'] == null ? null : (map['certificateBody'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

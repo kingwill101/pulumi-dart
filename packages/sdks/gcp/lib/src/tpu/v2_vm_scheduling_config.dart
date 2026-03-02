@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2VmSchedulingConfig {
   /// Defines whether the node is preemptible.
-  final bool? preemptible;
+  final pulumi.Input<bool>? preemptible;
   /// Whether the node is created under a reservation.
-  final bool? reserved;
+  final pulumi.Input<bool>? reserved;
   /// Optional. Defines whether the node is Spot VM.
-  final bool? spot;
+  final pulumi.Input<bool>? spot;
 
   /// Creates a new [V2VmSchedulingConfig].
   /// [preemptible] Defines whether the node is preemptible.
@@ -29,9 +30,9 @@ class V2VmSchedulingConfig {
 
   factory V2VmSchedulingConfig.fromMap(Map<String, dynamic> map) {
     return V2VmSchedulingConfig(
-      preemptible: map['preemptible'] == null ? null : map['preemptible'] as bool,
-      reserved: map['reserved'] == null ? null : map['reserved'] as bool,
-      spot: map['spot'] == null ? null : map['spot'] as bool,
+      preemptible: map['preemptible'] == null ? null : (map['preemptible'] as bool).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
+      spot: map['spot'] == null ? null : (map['spot'] as bool).input(),
     );
   }
 }

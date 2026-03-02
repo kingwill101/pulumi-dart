@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_style_font_size.dart';
 import 'google_cloud_documentai_v1_document_text_anchor.dart';
 import 'google_type_color.dart';
@@ -7,21 +8,21 @@ import 'google_type_color.dart';
 /// Annotation for common text style attributes. This adheres to CSS conventions as much as possible.
 class GoogleCloudDocumentaiV1DocumentStyle {
   /// Text background color.
-  final GoogleTypeColor? backgroundColor;
+  final pulumi.Input<GoogleTypeColor>? backgroundColor;
   /// Text color.
-  final GoogleTypeColor? color;
+  final pulumi.Input<GoogleTypeColor>? color;
   /// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
-  final String? fontFamily;
+  final pulumi.Input<String>? fontFamily;
   /// Font size.
-  final GoogleCloudDocumentaiV1DocumentStyleFontSize? fontSize;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentStyleFontSize>? fontSize;
   /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
-  final String? fontWeight;
+  final pulumi.Input<String>? fontWeight;
   /// Text anchor indexing into the Document.text.
-  final GoogleCloudDocumentaiV1DocumentTextAnchor? textAnchor;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentTextAnchor>? textAnchor;
   /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
-  final String? textDecoration;
+  final pulumi.Input<String>? textDecoration;
   /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
-  final String? textStyle;
+  final pulumi.Input<String>? textStyle;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentStyle].
   /// [backgroundColor] Text background color.
@@ -45,12 +46,12 @@ class GoogleCloudDocumentaiV1DocumentStyle {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backgroundColor': ?backgroundColor == null ? null : backgroundColor!.toMap(),
-      'color': ?color == null ? null : color!.toMap(),
+      'backgroundColor': ?pulumi.Input.mapOptionalInputValue<GoogleTypeColor, Map<String, dynamic>>(backgroundColor, (value) => value.toMap()),
+      'color': ?pulumi.Input.mapOptionalInputValue<GoogleTypeColor, Map<String, dynamic>>(color, (value) => value.toMap()),
       'fontFamily': ?fontFamily,
-      'fontSize': ?fontSize == null ? null : fontSize!.toMap(),
+      'fontSize': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDocumentaiV1DocumentStyleFontSize, Map<String, dynamic>>(fontSize, (value) => value.toMap()),
       'fontWeight': ?fontWeight,
-      'textAnchor': ?textAnchor == null ? null : textAnchor!.toMap(),
+      'textAnchor': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDocumentaiV1DocumentTextAnchor, Map<String, dynamic>>(textAnchor, (value) => value.toMap()),
       'textDecoration': ?textDecoration,
       'textStyle': ?textStyle,
     };
@@ -58,14 +59,14 @@ class GoogleCloudDocumentaiV1DocumentStyle {
 
   factory GoogleCloudDocumentaiV1DocumentStyle.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentStyle(
-      backgroundColor: map['backgroundColor'] == null ? null : GoogleTypeColor.fromMap((map['backgroundColor'] as Map).cast<String, dynamic>()),
-      color: map['color'] == null ? null : GoogleTypeColor.fromMap((map['color'] as Map).cast<String, dynamic>()),
-      fontFamily: map['fontFamily'] == null ? null : map['fontFamily'] as String,
-      fontSize: map['fontSize'] == null ? null : GoogleCloudDocumentaiV1DocumentStyleFontSize.fromMap((map['fontSize'] as Map).cast<String, dynamic>()),
-      fontWeight: map['fontWeight'] == null ? null : map['fontWeight'] as String,
-      textAnchor: map['textAnchor'] == null ? null : GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((map['textAnchor'] as Map).cast<String, dynamic>()),
-      textDecoration: map['textDecoration'] == null ? null : map['textDecoration'] as String,
-      textStyle: map['textStyle'] == null ? null : map['textStyle'] as String,
+      backgroundColor: map['backgroundColor'] == null ? null : (GoogleTypeColor.fromMap((map['backgroundColor'] as Map).cast<String, dynamic>())).input(),
+      color: map['color'] == null ? null : (GoogleTypeColor.fromMap((map['color'] as Map).cast<String, dynamic>())).input(),
+      fontFamily: map['fontFamily'] == null ? null : (map['fontFamily'] as String).input(),
+      fontSize: map['fontSize'] == null ? null : (GoogleCloudDocumentaiV1DocumentStyleFontSize.fromMap((map['fontSize'] as Map).cast<String, dynamic>())).input(),
+      fontWeight: map['fontWeight'] == null ? null : (map['fontWeight'] as String).input(),
+      textAnchor: map['textAnchor'] == null ? null : (GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((map['textAnchor'] as Map).cast<String, dynamic>())).input(),
+      textDecoration: map['textDecoration'] == null ? null : (map['textDecoration'] as String).input(),
+      textStyle: map['textStyle'] == null ? null : (map['textStyle'] as String).input(),
     );
   }
 }

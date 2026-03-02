@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Parameter
 class Parameter {
   /// The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.
-  final String? parameterKey;
+  final pulumi.Input<String>? parameterKey;
   /// The name of the parameter.
-  final String? parameterName;
+  final pulumi.Input<String>? parameterName;
   /// The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
-  final String? parameterValue;
+  final pulumi.Input<String>? parameterValue;
 
   /// Creates a new [Parameter].
   /// [parameterKey] The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.
@@ -30,9 +31,9 @@ class Parameter {
 
   factory Parameter.fromMap(Map<String, dynamic> map) {
     return Parameter(
-      parameterKey: map['parameterKey'] == null ? null : map['parameterKey'] as String,
-      parameterName: map['parameterName'] == null ? null : map['parameterName'] as String,
-      parameterValue: map['parameterValue'] == null ? null : map['parameterValue'] as String,
+      parameterKey: map['parameterKey'] == null ? null : (map['parameterKey'] as String).input(),
+      parameterName: map['parameterName'] == null ? null : (map['parameterName'] as String).input(),
+      parameterValue: map['parameterValue'] == null ? null : (map['parameterValue'] as String).input(),
     );
   }
 }

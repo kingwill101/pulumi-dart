@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of group resource.
 class GroupProperties {
   /// The type of group.
-  final String? groupType;
+  final pulumi.Input<String>? groupType;
 
   /// Creates a new [GroupProperties].
   /// [groupType] The type of group.
@@ -20,7 +21,7 @@ class GroupProperties {
 
   factory GroupProperties.fromMap(Map<String, dynamic> map) {
     return GroupProperties(
-      groupType: map['groupType'] == null ? null : map['groupType'] as String,
+      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
     );
   }
 }

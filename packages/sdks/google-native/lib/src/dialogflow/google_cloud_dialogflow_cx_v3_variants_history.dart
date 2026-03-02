@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_version_variants.dart';
 
 /// The history of variants update.
 class GoogleCloudDialogflowCxV3VariantsHistory {
   /// Update time of the variants.
-  final String? updateTime;
+  final pulumi.Input<String>? updateTime;
   /// The flow versions as the variants.
-  final GoogleCloudDialogflowCxV3VersionVariants? versionVariants;
+  final pulumi.Input<GoogleCloudDialogflowCxV3VersionVariants>? versionVariants;
 
   /// Creates a new [GoogleCloudDialogflowCxV3VariantsHistory].
   /// [updateTime] Update time of the variants.
@@ -20,14 +21,14 @@ class GoogleCloudDialogflowCxV3VariantsHistory {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'updateTime': ?updateTime,
-      'versionVariants': ?versionVariants == null ? null : versionVariants!.toMap(),
+      'versionVariants': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3VersionVariants, Map<String, dynamic>>(versionVariants, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDialogflowCxV3VariantsHistory.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3VariantsHistory(
-      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
-      versionVariants: map['versionVariants'] == null ? null : GoogleCloudDialogflowCxV3VersionVariants.fromMap((map['versionVariants'] as Map).cast<String, dynamic>()),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      versionVariants: map['versionVariants'] == null ? null : (GoogleCloudDialogflowCxV3VersionVariants.fromMap((map['versionVariants'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectionsConnectionIkeConfig {
   /// IKE auth Algorithm.
-  final String? ikeAuthAlg;
+  final pulumi.Input<String>? ikeAuthAlg;
   /// IKE encript algorithm.
-  final String? ikeEncAlg;
+  final pulumi.Input<String>? ikeEncAlg;
   /// IKE lifetime.
-  final int? ikeLifetime;
+  final pulumi.Input<int>? ikeLifetime;
   /// The identification of the VPN gateway.
-  final String? ikeLocalId;
+  final pulumi.Input<String>? ikeLocalId;
   /// IKE Mode.
-  final String? ikeMode;
+  final pulumi.Input<String>? ikeMode;
   /// DH Group.
-  final String? ikePfs;
+  final pulumi.Input<String>? ikePfs;
   /// The identification of the customer gateway.
-  final String? ikeRemoteId;
+  final pulumi.Input<String>? ikeRemoteId;
   /// IKE Version.
-  final String? ikeVersion;
+  final pulumi.Input<String>? ikeVersion;
   /// Preshared secret key.
-  final String? psk;
+  final pulumi.Input<String>? psk;
 
   /// Creates a new [GetConnectionsConnectionIkeConfig].
   /// [ikeAuthAlg] IKE auth Algorithm.
@@ -59,15 +60,15 @@ class GetConnectionsConnectionIkeConfig {
 
   factory GetConnectionsConnectionIkeConfig.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnectionIkeConfig(
-      ikeAuthAlg: map['ikeAuthAlg'] == null ? null : map['ikeAuthAlg'] as String,
-      ikeEncAlg: map['ikeEncAlg'] == null ? null : map['ikeEncAlg'] as String,
-      ikeLifetime: map['ikeLifetime'] == null ? null : map['ikeLifetime'] as int,
-      ikeLocalId: map['ikeLocalId'] == null ? null : map['ikeLocalId'] as String,
-      ikeMode: map['ikeMode'] == null ? null : map['ikeMode'] as String,
-      ikePfs: map['ikePfs'] == null ? null : map['ikePfs'] as String,
-      ikeRemoteId: map['ikeRemoteId'] == null ? null : map['ikeRemoteId'] as String,
-      ikeVersion: map['ikeVersion'] == null ? null : map['ikeVersion'] as String,
-      psk: map['psk'] == null ? null : map['psk'] as String,
+      ikeAuthAlg: map['ikeAuthAlg'] == null ? null : (map['ikeAuthAlg'] as String).input(),
+      ikeEncAlg: map['ikeEncAlg'] == null ? null : (map['ikeEncAlg'] as String).input(),
+      ikeLifetime: map['ikeLifetime'] == null ? null : (map['ikeLifetime'] as int).input(),
+      ikeLocalId: map['ikeLocalId'] == null ? null : (map['ikeLocalId'] as String).input(),
+      ikeMode: map['ikeMode'] == null ? null : (map['ikeMode'] as String).input(),
+      ikePfs: map['ikePfs'] == null ? null : (map['ikePfs'] as String).input(),
+      ikeRemoteId: map['ikeRemoteId'] == null ? null : (map['ikeRemoteId'] as String).input(),
+      ikeVersion: map['ikeVersion'] == null ? null : (map['ikeVersion'] as String).input(),
+      psk: map['psk'] == null ? null : (map['psk'] as String).input(),
     );
   }
 }

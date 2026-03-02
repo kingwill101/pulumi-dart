@@ -26,17 +26,12 @@ class QueueAuthorizationRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [rights] The rights associated with the rule.
   QueueAuthorizationRuleArgs({
-    pulumi.Output<String>? authorizationRuleName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> queueName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<AccessRights>> rights,
-  }) :
-      authorizationRuleName = pulumi.Input.asOptionalInput<String>(authorizationRuleName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      queueName = pulumi.Input.asInput<String>(queueName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rights = pulumi.Input.asInput<List<AccessRights>>(rights);
+    this.authorizationRuleName,
+    required this.namespaceName,
+    required this.queueName,
+    required this.resourceGroupName,
+    required this.rights,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class QueueAuthorizationRuleArgs {
 
   factory QueueAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return QueueAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : pulumi.Output.create<String>(map['authorizationRuleName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      queueName: pulumi.Output.create<String>(map['queueName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rights: pulumi.Output.create<List<AccessRights>>(pulumi.Input.decodeList<AccessRights>(map['rights'], (value) => AccessRights.fromValue(value as String))),
+      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      queueName: (map['queueName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rights: (pulumi.Input.decodeList<AccessRights>(map['rights'], (value) => AccessRights.fromValue(value as String))).input(),
     );
   }
 }

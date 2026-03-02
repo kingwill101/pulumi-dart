@@ -16,13 +16,10 @@ class DomainIdentityVerificationState {
   /// [domain] The domain name of the SES domain identity to verify.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DomainIdentityVerificationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.arn,
+    this.domain,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class DomainIdentityVerificationState {
 
   factory DomainIdentityVerificationState.fromMap(Map<String, dynamic> map) {
     return DomainIdentityVerificationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

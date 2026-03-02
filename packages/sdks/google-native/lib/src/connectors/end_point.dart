@@ -6,9 +6,9 @@ import 'header.dart';
 /// Endpoint message includes details of the Destination endpoint.
 class EndPoint {
   /// The URI of the Endpoint.
-  final String? endpointUri;
+  final pulumi.Input<String>? endpointUri;
   /// List of Header to be added to the Endpoint.
-  final List<Header>? headers;
+  final pulumi.Input<List<Header>>? headers;
 
   /// Creates a new [EndPoint].
   /// [endpointUri] The URI of the Endpoint.
@@ -21,14 +21,14 @@ class EndPoint {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endpointUri': ?endpointUri,
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<Header, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<Header>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<Header, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EndPoint.fromMap(Map<String, dynamic> map) {
     return EndPoint(
-      endpointUri: map['endpointUri'] == null ? null : map['endpointUri'] as String,
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<Header>(map['headers'], (value) => Header.fromMap((value as Map).cast<String, dynamic>())),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<Header>(map['headers'], (value) => Header.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

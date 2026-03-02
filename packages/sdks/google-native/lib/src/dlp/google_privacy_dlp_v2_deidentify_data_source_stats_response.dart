@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Summary of what was modified during a transformation.
 class GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse {
   /// Number of successfully applied transformations.
-  final String transformationCount;
+  final pulumi.Input<String> transformationCount;
   /// Number of errors encountered while trying to apply transformations.
-  final String transformationErrorCount;
+  final pulumi.Input<String> transformationErrorCount;
   /// Total size in bytes that were transformed in some way.
-  final String transformedBytes;
+  final pulumi.Input<String> transformedBytes;
 
   /// Creates a new [GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse].
   /// [transformationCount] Number of successfully applied transformations.
@@ -30,9 +31,9 @@ class GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse {
 
   factory GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse(
-      transformationCount: map['transformationCount'] as String,
-      transformationErrorCount: map['transformationErrorCount'] as String,
-      transformedBytes: map['transformedBytes'] as String,
+      transformationCount: (map['transformationCount'] as String).input(),
+      transformationErrorCount: (map['transformationErrorCount'] as String).input(),
+      transformedBytes: (map['transformedBytes'] as String).input(),
     );
   }
 }

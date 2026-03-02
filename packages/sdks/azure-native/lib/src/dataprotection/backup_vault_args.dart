@@ -33,21 +33,14 @@ class BackupVaultArgs {
   /// [tags] Resource tags.
   /// [vaultName] The name of the backup vault.
   BackupVaultArgs({
-    pulumi.Output<String>? eTag,
-    pulumi.Output<DppIdentityDetails>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<BackupVaultDataprotection> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vaultName,
-  }) :
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      identity = pulumi.Input.asOptionalInput<DppIdentityDetails>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<BackupVaultDataprotection>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vaultName = pulumi.Input.asOptionalInput<String>(vaultName);
+    this.eTag,
+    this.identity,
+    this.location,
+    required this.properties,
+    required this.resourceGroupName,
+    this.tags,
+    this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class BackupVaultArgs {
 
   factory BackupVaultArgs.fromMap(Map<String, dynamic> map) {
     return BackupVaultArgs(
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<DppIdentityDetails>(DppIdentityDetails.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<BackupVaultDataprotection>(map['properties'] as BackupVaultDataprotection),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vaultName: map['vaultName'] == null ? null : pulumi.Output.create<String>(map['vaultName'] as String),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      identity: map['identity'] == null ? null : (DppIdentityDetails.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (map['properties'] as BackupVaultDataprotection).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vaultName: map['vaultName'] == null ? null : (map['vaultName'] as String).input(),
     );
   }
 }

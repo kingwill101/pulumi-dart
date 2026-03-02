@@ -49,33 +49,20 @@ class ArtifactSourceArgs {
   /// [tags] The tags of the resource.
   /// [uri] The artifact source's URI.
   ArtifactSourceArgs({
-    pulumi.Output<String>? armTemplateFolderPath,
-    pulumi.Output<String>? branchRef,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? folderPath,
-    required pulumi.Output<String> labName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? securityToken,
-    pulumi.Output<String>? sourceType,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? uri,
-  }) :
-      armTemplateFolderPath = pulumi.Input.asOptionalInput<String>(armTemplateFolderPath),
-      branchRef = pulumi.Input.asOptionalInput<String>(branchRef),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      folderPath = pulumi.Input.asOptionalInput<String>(folderPath),
-      labName = pulumi.Input.asInput<String>(labName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityToken = pulumi.Input.asOptionalInput<String>(securityToken),
-      sourceType = pulumi.Input.asOptionalInput<String>(sourceType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.armTemplateFolderPath,
+    this.branchRef,
+    this.displayName,
+    this.folderPath,
+    required this.labName,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.securityToken,
+    this.sourceType,
+    this.status,
+    this.tags,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class ArtifactSourceArgs {
 
   factory ArtifactSourceArgs.fromMap(Map<String, dynamic> map) {
     return ArtifactSourceArgs(
-      armTemplateFolderPath: map['armTemplateFolderPath'] == null ? null : pulumi.Output.create<String>(map['armTemplateFolderPath'] as String),
-      branchRef: map['branchRef'] == null ? null : pulumi.Output.create<String>(map['branchRef'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      folderPath: map['folderPath'] == null ? null : pulumi.Output.create<String>(map['folderPath'] as String),
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityToken: map['securityToken'] == null ? null : pulumi.Output.create<String>(map['securityToken'] as String),
-      sourceType: map['sourceType'] == null ? null : pulumi.Output.create<String>(map['sourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      armTemplateFolderPath: map['armTemplateFolderPath'] == null ? null : (map['armTemplateFolderPath'] as String).input(),
+      branchRef: map['branchRef'] == null ? null : (map['branchRef'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
+      labName: (map['labName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityToken: map['securityToken'] == null ? null : (map['securityToken'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

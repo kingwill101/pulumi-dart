@@ -37,27 +37,17 @@ class OutputTableState {
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   /// [table] The name of the table where the stream should be output to.
   OutputTableState({
-    pulumi.Output<int>? batchSize,
-    pulumi.Output<List<String>>? columnsToRemoves,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? partitionKey,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? rowKey,
-    pulumi.Output<String>? storageAccountKey,
-    pulumi.Output<String>? storageAccountName,
-    pulumi.Output<String>? streamAnalyticsJobName,
-    pulumi.Output<String>? table,
-  }) :
-      batchSize = pulumi.Input.asOptionalInput<int>(batchSize),
-      columnsToRemoves = pulumi.Input.asOptionalInput<List<String>>(columnsToRemoves),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partitionKey = pulumi.Input.asOptionalInput<String>(partitionKey),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      rowKey = pulumi.Input.asOptionalInput<String>(rowKey),
-      storageAccountKey = pulumi.Input.asOptionalInput<String>(storageAccountKey),
-      storageAccountName = pulumi.Input.asOptionalInput<String>(storageAccountName),
-      streamAnalyticsJobName = pulumi.Input.asOptionalInput<String>(streamAnalyticsJobName),
-      table = pulumi.Input.asOptionalInput<String>(table);
+    this.batchSize,
+    this.columnsToRemoves,
+    this.name,
+    this.partitionKey,
+    this.resourceGroupName,
+    this.rowKey,
+    this.storageAccountKey,
+    this.storageAccountName,
+    this.streamAnalyticsJobName,
+    this.table,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class OutputTableState {
 
   factory OutputTableState.fromMap(Map<String, dynamic> map) {
     return OutputTableState(
-      batchSize: map['batchSize'] == null ? null : pulumi.Output.create<int>(map['batchSize'] as int),
-      columnsToRemoves: map['columnsToRemoves'] == null ? null : pulumi.Output.create<List<String>>((map['columnsToRemoves'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partitionKey: map['partitionKey'] == null ? null : pulumi.Output.create<String>(map['partitionKey'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rowKey: map['rowKey'] == null ? null : pulumi.Output.create<String>(map['rowKey'] as String),
-      storageAccountKey: map['storageAccountKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountKey'] as String),
-      storageAccountName: map['storageAccountName'] == null ? null : pulumi.Output.create<String>(map['storageAccountName'] as String),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
-      table: map['table'] == null ? null : pulumi.Output.create<String>(map['table'] as String),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
+      columnsToRemoves: map['columnsToRemoves'] == null ? null : ((map['columnsToRemoves'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      rowKey: map['rowKey'] == null ? null : (map['rowKey'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName'] as String).input(),
+      table: map['table'] == null ? null : (map['table'] as String).input(),
     );
   }
 }

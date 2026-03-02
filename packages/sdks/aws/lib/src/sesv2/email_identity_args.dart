@@ -28,17 +28,12 @@ class EmailIdentityArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   EmailIdentityArgs({
-    pulumi.Output<String>? configurationSetName,
-    pulumi.Output<EmailIdentityDkimSigningAttributes>? dkimSigningAttributes,
-    required pulumi.Output<String> emailIdentity,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      configurationSetName = pulumi.Input.asOptionalInput<String>(configurationSetName),
-      dkimSigningAttributes = pulumi.Input.asOptionalInput<EmailIdentityDkimSigningAttributes>(dkimSigningAttributes),
-      emailIdentity = pulumi.Input.asInput<String>(emailIdentity),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.configurationSetName,
+    this.dkimSigningAttributes,
+    required this.emailIdentity,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class EmailIdentityArgs {
 
   factory EmailIdentityArgs.fromMap(Map<String, dynamic> map) {
     return EmailIdentityArgs(
-      configurationSetName: map['configurationSetName'] == null ? null : pulumi.Output.create<String>(map['configurationSetName'] as String),
-      dkimSigningAttributes: map['dkimSigningAttributes'] == null ? null : pulumi.Output.create<EmailIdentityDkimSigningAttributes>(EmailIdentityDkimSigningAttributes.fromMap((map['dkimSigningAttributes'] as Map).cast<String, dynamic>())),
-      emailIdentity: pulumi.Output.create<String>(map['emailIdentity'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      configurationSetName: map['configurationSetName'] == null ? null : (map['configurationSetName'] as String).input(),
+      dkimSigningAttributes: map['dkimSigningAttributes'] == null ? null : (EmailIdentityDkimSigningAttributes.fromMap((map['dkimSigningAttributes'] as Map).cast<String, dynamic>())).input(),
+      emailIdentity: (map['emailIdentity'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

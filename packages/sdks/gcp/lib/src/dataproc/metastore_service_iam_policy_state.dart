@@ -28,17 +28,12 @@ class MetastoreServiceIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
   MetastoreServiceIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serviceId,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asOptionalInput<String>(serviceId);
+    this.etag,
+    this.location,
+    this.policyData,
+    this.project,
+    this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class MetastoreServiceIamPolicyState {
 
   factory MetastoreServiceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: map['serviceId'] == null ? null : pulumi.Output.create<String>(map['serviceId'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
     );
   }
 }

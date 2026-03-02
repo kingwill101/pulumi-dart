@@ -31,21 +31,14 @@ class SecretIamPolicySecretmanagerV1beta1Args {
   /// [updateMask] OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
   /// [version] Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   SecretIamPolicySecretmanagerV1beta1Args({
-    pulumi.Output<List<AuditConfigSecretmanagerV1beta1>>? auditConfigs,
-    pulumi.Output<List<BindingSecretmanagerV1beta1>>? bindings,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> secretId,
-    pulumi.Output<String>? updateMask,
-    pulumi.Output<int>? version,
-  }) :
-      auditConfigs = pulumi.Input.asOptionalInput<List<AuditConfigSecretmanagerV1beta1>>(auditConfigs),
-      bindings = pulumi.Input.asOptionalInput<List<BindingSecretmanagerV1beta1>>(bindings),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secretId = pulumi.Input.asInput<String>(secretId),
-      updateMask = pulumi.Input.asOptionalInput<String>(updateMask),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.project,
+    required this.secretId,
+    this.updateMask,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class SecretIamPolicySecretmanagerV1beta1Args {
 
   factory SecretIamPolicySecretmanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return SecretIamPolicySecretmanagerV1beta1Args(
-      auditConfigs: map['auditConfigs'] == null ? null : pulumi.Output.create<List<AuditConfigSecretmanagerV1beta1>>(pulumi.Input.decodeList<AuditConfigSecretmanagerV1beta1>(map['auditConfigs'], (value) => AuditConfigSecretmanagerV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
-      bindings: map['bindings'] == null ? null : pulumi.Output.create<List<BindingSecretmanagerV1beta1>>(pulumi.Input.decodeList<BindingSecretmanagerV1beta1>(map['bindings'], (value) => BindingSecretmanagerV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secretId: pulumi.Output.create<String>(map['secretId'] as String),
-      updateMask: map['updateMask'] == null ? null : pulumi.Output.create<String>(map['updateMask'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigSecretmanagerV1beta1>(map['auditConfigs'], (value) => AuditConfigSecretmanagerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingSecretmanagerV1beta1>(map['bindings'], (value) => BindingSecretmanagerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secretId: (map['secretId'] as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

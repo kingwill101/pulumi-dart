@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxTestCaseLastTestResultConversationTurnUserInputInputEvent {
   /// Name of the event.
-  final String event;
+  final pulumi.Input<String> event;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurnUserInputInputEvent].
   /// [event] Name of the event.
@@ -19,7 +20,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputEvent {
 
   factory CxTestCaseLastTestResultConversationTurnUserInputInputEvent.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurnUserInputInputEvent(
-      event: map['event'] as String,
+      event: (map['event'] as String).input(),
     );
   }
 }

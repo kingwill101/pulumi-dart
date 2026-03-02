@@ -6,9 +6,9 @@ import 'filter.dart';
 /// Definition of LoggingFilterModelProperties
 class LoggingFilterModelProperties {
   /// Default handling for logs that don't match any of the specified filtering conditions.
-  final String? defaultBehavior;
+  final pulumi.Input<String>? defaultBehavior;
   /// The filters that you want to apply to the logs.
-  final List<Filter>? filters;
+  final pulumi.Input<List<Filter>>? filters;
 
   /// Creates a new [LoggingFilterModelProperties].
   /// [defaultBehavior] Default handling for logs that don't match any of the specified filtering conditions.
@@ -21,14 +21,14 @@ class LoggingFilterModelProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultBehavior': ?defaultBehavior,
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<Filter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<Filter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<Filter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LoggingFilterModelProperties.fromMap(Map<String, dynamic> map) {
     return LoggingFilterModelProperties(
-      defaultBehavior: map['defaultBehavior'] == null ? null : map['defaultBehavior'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<Filter>(map['filters'], (value) => Filter.fromMap((value as Map).cast<String, dynamic>())),
+      defaultBehavior: map['defaultBehavior'] == null ? null : (map['defaultBehavior'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<Filter>(map['filters'], (value) => Filter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

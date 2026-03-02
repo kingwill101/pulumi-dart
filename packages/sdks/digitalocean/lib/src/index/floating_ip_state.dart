@@ -19,15 +19,11 @@ class FloatingIpState {
   /// [ipAddress] The IP Address of the resource
   /// [region] The region that the Floating IP is reserved to.
   FloatingIpState({
-    pulumi.Output<int>? dropletId,
-    pulumi.Output<String>? floatingIpUrn,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? region,
-  }) :
-      dropletId = pulumi.Input.asOptionalInput<int>(dropletId),
-      floatingIpUrn = pulumi.Input.asOptionalInput<String>(floatingIpUrn),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.dropletId,
+    this.floatingIpUrn,
+    this.ipAddress,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class FloatingIpState {
 
   factory FloatingIpState.fromMap(Map<String, dynamic> map) {
     return FloatingIpState(
-      dropletId: map['dropletId'] == null ? null : pulumi.Output.create<int>(map['dropletId'] as int),
-      floatingIpUrn: map['floatingIpUrn'] == null ? null : pulumi.Output.create<String>(map['floatingIpUrn'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
+      floatingIpUrn: map['floatingIpUrn'] == null ? null : (map['floatingIpUrn'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

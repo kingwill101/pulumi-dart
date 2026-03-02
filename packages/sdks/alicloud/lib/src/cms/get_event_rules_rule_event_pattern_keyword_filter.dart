@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEventRulesRuleEventPatternKeywordFilter {
   /// The keywords that are used to match events.
-  final List<String> keyWords;
+  final pulumi.Input<List<String>> keyWords;
   /// The relationship between multiple keywords in a condition.
-  final String relation;
+  final pulumi.Input<String> relation;
 
   /// Creates a new [GetEventRulesRuleEventPatternKeywordFilter].
   /// [keyWords] The keywords that are used to match events.
@@ -24,8 +25,8 @@ class GetEventRulesRuleEventPatternKeywordFilter {
 
   factory GetEventRulesRuleEventPatternKeywordFilter.fromMap(Map<String, dynamic> map) {
     return GetEventRulesRuleEventPatternKeywordFilter(
-      keyWords: (map['keyWords'] as List).cast<String>(),
-      relation: map['relation'] as String,
+      keyWords: ((map['keyWords'] as List).cast<String>()).input(),
+      relation: (map['relation'] as String).input(),
     );
   }
 }

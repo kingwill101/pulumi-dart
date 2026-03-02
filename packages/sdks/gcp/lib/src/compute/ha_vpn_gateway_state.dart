@@ -69,33 +69,20 @@ class HaVpnGatewayState {
   /// [stackType] The stack type for this VPN gateway to identify the IP protocols that are enabled.
   /// [vpnInterfaces] A list of interfaces on this VPN gateway.
   HaVpnGatewayState({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? gatewayIpVersion,
-    pulumi.Output<String>? labelFingerprint,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? stackType,
-    pulumi.Output<List<HaVpnGatewayVpnInterface>>? vpnInterfaces,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      gatewayIpVersion = pulumi.Input.asOptionalInput<String>(gatewayIpVersion),
-      labelFingerprint = pulumi.Input.asOptionalInput<String>(labelFingerprint),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      stackType = pulumi.Input.asOptionalInput<String>(stackType),
-      vpnInterfaces = pulumi.Input.asOptionalInput<List<HaVpnGatewayVpnInterface>>(vpnInterfaces);
+    this.description,
+    this.effectiveLabels,
+    this.gatewayIpVersion,
+    this.labelFingerprint,
+    this.labels,
+    this.name,
+    this.network,
+    this.project,
+    this.pulumiLabels,
+    this.region,
+    this.selfLink,
+    this.stackType,
+    this.vpnInterfaces,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -117,19 +104,19 @@ class HaVpnGatewayState {
 
   factory HaVpnGatewayState.fromMap(Map<String, dynamic> map) {
     return HaVpnGatewayState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      gatewayIpVersion: map['gatewayIpVersion'] == null ? null : pulumi.Output.create<String>(map['gatewayIpVersion'] as String),
-      labelFingerprint: map['labelFingerprint'] == null ? null : pulumi.Output.create<String>(map['labelFingerprint'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      stackType: map['stackType'] == null ? null : pulumi.Output.create<String>(map['stackType'] as String),
-      vpnInterfaces: map['vpnInterfaces'] == null ? null : pulumi.Output.create<List<HaVpnGatewayVpnInterface>>(pulumi.Input.decodeList<HaVpnGatewayVpnInterface>(map['vpnInterfaces'], (value) => HaVpnGatewayVpnInterface.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      gatewayIpVersion: map['gatewayIpVersion'] == null ? null : (map['gatewayIpVersion'] as String).input(),
+      labelFingerprint: map['labelFingerprint'] == null ? null : (map['labelFingerprint'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      stackType: map['stackType'] == null ? null : (map['stackType'] as String).input(),
+      vpnInterfaces: map['vpnInterfaces'] == null ? null : (pulumi.Input.decodeList<HaVpnGatewayVpnInterface>(map['vpnInterfaces'], (value) => HaVpnGatewayVpnInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

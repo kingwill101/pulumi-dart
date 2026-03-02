@@ -19,13 +19,10 @@ class GetDiscoveredWorkloadArgs {
   /// [project] The host project of the discovered workload.
   /// [workloadUri] The uri of the workload (instance group managed by the Instance Group Manager). Example: "//compute.googleapis.com/projects/1/regions/us-east1/instanceGroups/id1"
   GetDiscoveredWorkloadArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> workloadUri,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workloadUri = pulumi.Input.asInput<String>(workloadUri);
+    required this.location,
+    this.project,
+    required this.workloadUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDiscoveredWorkloadArgs {
 
   factory GetDiscoveredWorkloadArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredWorkloadArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workloadUri: pulumi.Output.create<String>(map['workloadUri'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workloadUri: (map['workloadUri'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The API general information.
 class ApiResourceGeneralInformationResponse {
   /// The description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The display name.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The icon url.
-  final String? iconUrl;
+  final pulumi.Input<String>? iconUrl;
   /// The release tag.
-  final String? releaseTag;
+  final pulumi.Input<String>? releaseTag;
   /// The terms of use url.
-  final String? termsOfUseUrl;
+  final pulumi.Input<String>? termsOfUseUrl;
   /// The tier.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [ApiResourceGeneralInformationResponse].
   /// [description] The description.
@@ -45,12 +46,12 @@ class ApiResourceGeneralInformationResponse {
 
   factory ApiResourceGeneralInformationResponse.fromMap(Map<String, dynamic> map) {
     return ApiResourceGeneralInformationResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      iconUrl: map['iconUrl'] == null ? null : map['iconUrl'] as String,
-      releaseTag: map['releaseTag'] == null ? null : map['releaseTag'] as String,
-      termsOfUseUrl: map['termsOfUseUrl'] == null ? null : map['termsOfUseUrl'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl'] as String).input(),
+      releaseTag: map['releaseTag'] == null ? null : (map['releaseTag'] as String).input(),
+      termsOfUseUrl: map['termsOfUseUrl'] == null ? null : (map['termsOfUseUrl'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

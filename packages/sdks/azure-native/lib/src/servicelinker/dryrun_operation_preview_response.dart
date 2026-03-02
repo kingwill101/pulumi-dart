@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The preview of the operations for creation
 class DryrunOperationPreviewResponse {
   /// The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format
-  final String? action;
+  final pulumi.Input<String>? action;
   /// The description of the operation
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The operation name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The operation type
-  final String? operationType;
+  final pulumi.Input<String>? operationType;
   /// The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview
-  final String? scope;
+  final pulumi.Input<String>? scope;
 
   /// Creates a new [DryrunOperationPreviewResponse].
   /// [action] The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format
@@ -40,11 +41,11 @@ class DryrunOperationPreviewResponse {
 
   factory DryrunOperationPreviewResponse.fromMap(Map<String, dynamic> map) {
     return DryrunOperationPreviewResponse(
-      action: map['action'] == null ? null : map['action'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      operationType: map['operationType'] == null ? null : map['operationType'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operationType: map['operationType'] == null ? null : (map['operationType'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

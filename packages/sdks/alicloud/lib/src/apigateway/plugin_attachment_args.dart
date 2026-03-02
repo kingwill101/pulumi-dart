@@ -22,15 +22,11 @@ class PluginAttachmentArgs {
   /// [pluginId] The plugin that attaches to the api.
   /// [stageName] Stage that the plugin attaches to.
   PluginAttachmentArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> pluginId,
-    required pulumi.Output<String> stageName,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      pluginId = pulumi.Input.asInput<String>(pluginId),
-      stageName = pulumi.Input.asInput<String>(stageName);
+    required this.apiId,
+    required this.groupId,
+    required this.pluginId,
+    required this.stageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class PluginAttachmentArgs {
 
   factory PluginAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PluginAttachmentArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      pluginId: pulumi.Output.create<String>(map['pluginId'] as String),
-      stageName: pulumi.Output.create<String>(map['stageName'] as String),
+      apiId: (map['apiId'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      pluginId: (map['pluginId'] as String).input(),
+      stageName: (map['stageName'] as String).input(),
     );
   }
 }

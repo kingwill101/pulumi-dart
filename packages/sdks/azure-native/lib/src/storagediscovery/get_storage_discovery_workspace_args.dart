@@ -16,11 +16,9 @@ class GetStorageDiscoveryWorkspaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageDiscoveryWorkspaceName] The name of the StorageDiscoveryWorkspace
   GetStorageDiscoveryWorkspaceArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageDiscoveryWorkspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageDiscoveryWorkspaceName = pulumi.Input.asInput<String>(storageDiscoveryWorkspaceName);
+    required this.resourceGroupName,
+    required this.storageDiscoveryWorkspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStorageDiscoveryWorkspaceArgs {
 
   factory GetStorageDiscoveryWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageDiscoveryWorkspaceArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageDiscoveryWorkspaceName: pulumi.Output.create<String>(map['storageDiscoveryWorkspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageDiscoveryWorkspaceName: (map['storageDiscoveryWorkspaceName'] as String).input(),
     );
   }
 }

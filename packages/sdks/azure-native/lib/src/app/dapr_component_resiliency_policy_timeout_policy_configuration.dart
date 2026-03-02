@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Dapr Component Resiliency Policy Timeout Policy Configuration.
 class DaprComponentResiliencyPolicyTimeoutPolicyConfiguration {
   /// The optional response timeout in seconds
-  final int? responseTimeoutInSeconds;
+  final pulumi.Input<int>? responseTimeoutInSeconds;
 
   /// Creates a new [DaprComponentResiliencyPolicyTimeoutPolicyConfiguration].
   /// [responseTimeoutInSeconds] The optional response timeout in seconds
@@ -20,7 +21,7 @@ class DaprComponentResiliencyPolicyTimeoutPolicyConfiguration {
 
   factory DaprComponentResiliencyPolicyTimeoutPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyTimeoutPolicyConfiguration(
-      responseTimeoutInSeconds: map['responseTimeoutInSeconds'] == null ? null : map['responseTimeoutInSeconds'] as int,
+      responseTimeoutInSeconds: map['responseTimeoutInSeconds'] == null ? null : (map['responseTimeoutInSeconds'] as int).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetDropletAutoscaleArgs {
   /// [id] The ID of Droplet Autoscale pool.
   /// [name] The name of Droplet Autoscale pool.
   GetDropletAutoscaleArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.id,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDropletAutoscaleArgs {
 
   factory GetDropletAutoscaleArgs.fromMap(Map<String, dynamic> map) {
     return GetDropletAutoscaleArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

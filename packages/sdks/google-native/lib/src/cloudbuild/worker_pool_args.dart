@@ -27,19 +27,13 @@ class WorkerPoolArgs {
   /// [project] Optional.
   /// [workerPoolId] Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
   WorkerPoolArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<PrivatePoolV1Config>? privatePoolV1Config,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> workerPoolId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      privatePoolV1Config = pulumi.Input.asOptionalInput<PrivatePoolV1Config>(privatePoolV1Config),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workerPoolId = pulumi.Input.asInput<String>(workerPoolId);
+    this.annotations,
+    this.displayName,
+    this.location,
+    this.privatePoolV1Config,
+    this.project,
+    required this.workerPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class WorkerPoolArgs {
 
   factory WorkerPoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkerPoolArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      privatePoolV1Config: map['privatePoolV1Config'] == null ? null : pulumi.Output.create<PrivatePoolV1Config>(PrivatePoolV1Config.fromMap((map['privatePoolV1Config'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workerPoolId: pulumi.Output.create<String>(map['workerPoolId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      privatePoolV1Config: map['privatePoolV1Config'] == null ? null : (PrivatePoolV1Config.fromMap((map['privatePoolV1Config'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workerPoolId: (map['workerPoolId'] as String).input(),
     );
   }
 }

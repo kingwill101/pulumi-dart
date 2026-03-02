@@ -13,9 +13,8 @@ class ReplicaGroupDrillArgs {
   /// Creates a new [ReplicaGroupDrillArgs].
   /// [groupId] The ID of the replication group. You can use the describediskreplicaggroups interface to query the asynchronous replication group list to obtain the value of the replication group ID input parameter.
   ReplicaGroupDrillArgs({
-    required pulumi.Output<String> groupId,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId);
+    required this.groupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class ReplicaGroupDrillArgs {
 
   factory ReplicaGroupDrillArgs.fromMap(Map<String, dynamic> map) {
     return ReplicaGroupDrillArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
+      groupId: (map['groupId'] as String).input(),
     );
   }
 }

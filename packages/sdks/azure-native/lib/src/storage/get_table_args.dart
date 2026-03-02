@@ -19,13 +19,10 @@ class GetTableArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [tableName] A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   GetTableArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> tableName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTableArgs {
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class SolutionInstanceArgs {
   /// [solutionId] Solution ID.
   /// [solutionInstanceName] Solution Instance Name.
   SolutionInstanceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<SolutionInstanceParameter>>? parameters,
-    pulumi.Output<String>? resourceGroupId,
-    required pulumi.Output<String> solutionId,
-    pulumi.Output<String>? solutionInstanceName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      parameters = pulumi.Input.asOptionalInput<List<SolutionInstanceParameter>>(parameters),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      solutionId = pulumi.Input.asInput<String>(solutionId),
-      solutionInstanceName = pulumi.Input.asOptionalInput<String>(solutionInstanceName);
+    this.description,
+    this.parameters,
+    this.resourceGroupId,
+    required this.solutionId,
+    this.solutionInstanceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class SolutionInstanceArgs {
 
   factory SolutionInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SolutionInstanceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<SolutionInstanceParameter>>(pulumi.Input.decodeList<SolutionInstanceParameter>(map['parameters'], (value) => SolutionInstanceParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      solutionId: pulumi.Output.create<String>(map['solutionId'] as String),
-      solutionInstanceName: map['solutionInstanceName'] == null ? null : pulumi.Output.create<String>(map['solutionInstanceName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<SolutionInstanceParameter>(map['parameters'], (value) => SolutionInstanceParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      solutionId: (map['solutionId'] as String).input(),
+      solutionInstanceName: map['solutionInstanceName'] == null ? null : (map['solutionInstanceName'] as String).input(),
     );
   }
 }

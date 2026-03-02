@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AddressSpace contains an array of IP address ranges that can be used by subnets of the virtual network.
 class AddressSpace {
   /// A list of address blocks reserved for this virtual network in CIDR notation.
-  final List<String>? addressPrefixes;
+  final pulumi.Input<List<String>>? addressPrefixes;
 
   /// Creates a new [AddressSpace].
   /// [addressPrefixes] A list of address blocks reserved for this virtual network in CIDR notation.
@@ -20,7 +21,7 @@ class AddressSpace {
 
   factory AddressSpace.fromMap(Map<String, dynamic> map) {
     return AddressSpace(
-      addressPrefixes: map['addressPrefixes'] == null ? null : (map['addressPrefixes'] as List).cast<String>(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
     );
   }
 }

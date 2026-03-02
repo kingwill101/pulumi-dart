@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataLakeConfigurationEncryptionConfiguration {
   /// The id of KMS encryption key used by Amazon Security Lake to encrypt the Security Lake object.
-  final String kmsKeyId;
+  final pulumi.Input<String> kmsKeyId;
 
   /// Creates a new [DataLakeConfigurationEncryptionConfiguration].
   /// [kmsKeyId] The id of KMS encryption key used by Amazon Security Lake to encrypt the Security Lake object.
@@ -19,7 +20,7 @@ class DataLakeConfigurationEncryptionConfiguration {
 
   factory DataLakeConfigurationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return DataLakeConfigurationEncryptionConfiguration(
-      kmsKeyId: map['kmsKeyId'] as String,
+      kmsKeyId: (map['kmsKeyId'] as String).input(),
     );
   }
 }

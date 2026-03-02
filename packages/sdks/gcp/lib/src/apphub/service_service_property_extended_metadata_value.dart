@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceServicePropertyExtendedMetadataValue {
   /// (Output)
   /// The resource name for the Extended Metadata Schema.
-  final String? extendedMetadataSchema;
+  final pulumi.Input<String>? extendedMetadataSchema;
   /// (Output)
   /// The metadata contents as a JSON string.
-  final String? metadataStruct;
+  final pulumi.Input<String>? metadataStruct;
 
   /// Creates a new [ServiceServicePropertyExtendedMetadataValue].
   /// [extendedMetadataSchema] (Output)
@@ -26,8 +27,8 @@ class ServiceServicePropertyExtendedMetadataValue {
 
   factory ServiceServicePropertyExtendedMetadataValue.fromMap(Map<String, dynamic> map) {
     return ServiceServicePropertyExtendedMetadataValue(
-      extendedMetadataSchema: map['extendedMetadataSchema'] == null ? null : map['extendedMetadataSchema'] as String,
-      metadataStruct: map['metadataStruct'] == null ? null : map['metadataStruct'] as String,
+      extendedMetadataSchema: map['extendedMetadataSchema'] == null ? null : (map['extendedMetadataSchema'] as String).input(),
+      metadataStruct: map['metadataStruct'] == null ? null : (map['metadataStruct'] as String).input(),
     );
   }
 }

@@ -22,17 +22,12 @@ class LicationLoadBalancerState {
   /// [resourceGroupName] The name of Resource Group where the Application Gateway for Containers (ALB) should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Application Gateway for Containers (ALB).
   LicationLoadBalancerState({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? primaryConfigurationEndpoint,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryConfigurationEndpoint = pulumi.Input.asOptionalInput<String>(primaryConfigurationEndpoint),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.name,
+    this.primaryConfigurationEndpoint,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class LicationLoadBalancerState {
 
   factory LicationLoadBalancerState.fromMap(Map<String, dynamic> map) {
     return LicationLoadBalancerState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryConfigurationEndpoint: map['primaryConfigurationEndpoint'] == null ? null : pulumi.Output.create<String>(map['primaryConfigurationEndpoint'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryConfigurationEndpoint: map['primaryConfigurationEndpoint'] == null ? null : (map['primaryConfigurationEndpoint'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

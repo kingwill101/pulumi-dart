@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualGatewaySpecListenerTlCertificateSd {
-  final String secretName;
+  final pulumi.Input<String> secretName;
 
   /// Creates a new [GetVirtualGatewaySpecListenerTlCertificateSd].
   /// [secretName] Required.
@@ -18,7 +19,7 @@ class GetVirtualGatewaySpecListenerTlCertificateSd {
 
   factory GetVirtualGatewaySpecListenerTlCertificateSd.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerTlCertificateSd(
-      secretName: map['secretName'] as String,
+      secretName: (map['secretName'] as String).input(),
     );
   }
 }

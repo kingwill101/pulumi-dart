@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpaceSpaceSharingSettings {
   /// Specifies the sharing type of the space. Valid values are `Private` and `Shared`.
-  final String sharingType;
+  final pulumi.Input<String> sharingType;
 
   /// Creates a new [SpaceSpaceSharingSettings].
   /// [sharingType] Specifies the sharing type of the space. Valid values are `Private` and `Shared`.
@@ -19,7 +20,7 @@ class SpaceSpaceSharingSettings {
 
   factory SpaceSpaceSharingSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSharingSettings(
-      sharingType: map['sharingType'] as String,
+      sharingType: (map['sharingType'] as String).input(),
     );
   }
 }

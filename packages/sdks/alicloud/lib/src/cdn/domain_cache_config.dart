@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCacheConfig {
-  final String cacheContent;
-  final String? cacheId;
-  final String cacheType;
-  final int ttl;
-  final int? weight;
+  final pulumi.Input<String> cacheContent;
+  final pulumi.Input<String>? cacheId;
+  final pulumi.Input<String> cacheType;
+  final pulumi.Input<int> ttl;
+  final pulumi.Input<int>? weight;
 
   /// Creates a new [DomainCacheConfig].
   /// [cacheContent] Required.
@@ -34,11 +35,11 @@ class DomainCacheConfig {
 
   factory DomainCacheConfig.fromMap(Map<String, dynamic> map) {
     return DomainCacheConfig(
-      cacheContent: map['cacheContent'] as String,
-      cacheId: map['cacheId'] == null ? null : map['cacheId'] as String,
-      cacheType: map['cacheType'] as String,
-      ttl: map['ttl'] as int,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      cacheContent: (map['cacheContent'] as String).input(),
+      cacheId: map['cacheId'] == null ? null : (map['cacheId'] as String).input(),
+      cacheType: (map['cacheType'] as String).input(),
+      ttl: (map['ttl'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetWebAppSiteContainerArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   GetWebAppSiteContainerArgs({
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      containerName = pulumi.Input.asInput<String>(containerName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.containerName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWebAppSiteContainerArgs {
 
   factory GetWebAppSiteContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppSiteContainerArgs(
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      containerName: (map['containerName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

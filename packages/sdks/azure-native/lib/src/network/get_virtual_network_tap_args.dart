@@ -16,11 +16,9 @@ class GetVirtualNetworkTapArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tapName] The name of virtual network tap.
   GetVirtualNetworkTapArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> tapName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tapName = pulumi.Input.asInput<String>(tapName);
+    required this.resourceGroupName,
+    required this.tapName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVirtualNetworkTapArgs {
 
   factory GetVirtualNetworkTapArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkTapArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tapName: pulumi.Output.create<String>(map['tapName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tapName: (map['tapName'] as String).input(),
     );
   }
 }

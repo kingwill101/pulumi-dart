@@ -71,35 +71,21 @@ class TenantState {
   /// [uid] The unique identifier of the resource. UID is unique in the time
   /// [updateTime] The timestamp when the resource was last updated. Any
   TenantState({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? consumerResource,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? effectiveAnnotations,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? saas,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? updateTime,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      consumerResource = pulumi.Input.asOptionalInput<String>(consumerResource),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      effectiveAnnotations = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveAnnotations),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      saas = pulumi.Input.asOptionalInput<String>(saas),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.annotations,
+    this.consumerResource,
+    this.createTime,
+    this.effectiveAnnotations,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.saas,
+    this.tenantId,
+    this.uid,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -122,20 +108,20 @@ class TenantState {
 
   factory TenantState.fromMap(Map<String, dynamic> map) {
     return TenantState(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      consumerResource: map['consumerResource'] == null ? null : pulumi.Output.create<String>(map['consumerResource'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveAnnotations'] as Map).cast<String, String>()),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      saas: map['saas'] == null ? null : pulumi.Output.create<String>(map['saas'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      consumerResource: map['consumerResource'] == null ? null : (map['consumerResource'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations'] as Map).cast<String, String>()).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      saas: map['saas'] == null ? null : (map['saas'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class GetIpaDomainsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
   GetIpaDomainsArgs({
-    pulumi.Output<String>? domainName,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.domainName,
+    this.enableDetails,
+    this.ids,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetIpaDomainsArgs {
 
   factory GetIpaDomainsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpaDomainsArgs(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

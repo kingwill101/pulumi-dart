@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DeployParameters contains deploy parameters information.
 class DeployParametersResponse {
   /// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
-  final Map<String, String> matchTargetLabels;
+  final pulumi.Input<Map<String, String>> matchTargetLabels;
   /// Values are deploy parameters in key-value pairs.
-  final Map<String, String> values;
+  final pulumi.Input<Map<String, String>> values;
 
   /// Creates a new [DeployParametersResponse].
   /// [matchTargetLabels] Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
@@ -25,8 +26,8 @@ class DeployParametersResponse {
 
   factory DeployParametersResponse.fromMap(Map<String, dynamic> map) {
     return DeployParametersResponse(
-      matchTargetLabels: (map['matchTargetLabels'] as Map).cast<String, String>(),
-      values: (map['values'] as Map).cast<String, String>(),
+      matchTargetLabels: ((map['matchTargetLabels'] as Map).cast<String, String>()).input(),
+      values: ((map['values'] as Map).cast<String, String>()).input(),
     );
   }
 }

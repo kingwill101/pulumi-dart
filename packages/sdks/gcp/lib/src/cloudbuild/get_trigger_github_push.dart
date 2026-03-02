@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTriggerGithubPush {
   /// Regex of branches to match.  Specify only one of branch or tag.
-  final String branch;
+  final pulumi.Input<String> branch;
   /// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
-  final bool invertRegex;
+  final pulumi.Input<bool> invertRegex;
   /// Regex of tags to match.  Specify only one of branch or tag.
-  final String tag;
+  final pulumi.Input<String> tag;
 
   /// Creates a new [GetTriggerGithubPush].
   /// [branch] Regex of branches to match.  Specify only one of branch or tag.
@@ -29,9 +30,9 @@ class GetTriggerGithubPush {
 
   factory GetTriggerGithubPush.fromMap(Map<String, dynamic> map) {
     return GetTriggerGithubPush(
-      branch: map['branch'] as String,
-      invertRegex: map['invertRegex'] as bool,
-      tag: map['tag'] as String,
+      branch: (map['branch'] as String).input(),
+      invertRegex: (map['invertRegex'] as bool).input(),
+      tag: (map['tag'] as String).input(),
     );
   }
 }

@@ -43,25 +43,16 @@ class HostingChannelState {
   /// [siteId] Required. The ID of the site in which to create this channel.
   /// [ttl] Input only. A time-to-live for this channel. Sets `expire_time` to the provided
   HostingChannelState({
-    pulumi.Output<String>? channelId,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<int>? retainedReleaseCount,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<String>? ttl,
-  }) :
-      channelId = pulumi.Input.asOptionalInput<String>(channelId),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      retainedReleaseCount = pulumi.Input.asOptionalInput<int>(retainedReleaseCount),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl);
+    this.channelId,
+    this.effectiveLabels,
+    this.expireTime,
+    this.labels,
+    this.name,
+    this.pulumiLabels,
+    this.retainedReleaseCount,
+    this.siteId,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class HostingChannelState {
 
   factory HostingChannelState.fromMap(Map<String, dynamic> map) {
     return HostingChannelState(
-      channelId: map['channelId'] == null ? null : pulumi.Output.create<String>(map['channelId'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      retainedReleaseCount: map['retainedReleaseCount'] == null ? null : pulumi.Output.create<int>(map['retainedReleaseCount'] as int),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
+      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      retainedReleaseCount: map['retainedReleaseCount'] == null ? null : (map['retainedReleaseCount'] as int).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
     );
   }
 }

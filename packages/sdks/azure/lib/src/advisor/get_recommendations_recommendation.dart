@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRecommendationsRecommendation {
   /// The category of the recommendation.
-  final String category;
+  final pulumi.Input<String> category;
   /// The description of the issue or the opportunity identified by the recommendation.
-  final String description;
+  final pulumi.Input<String> description;
   /// The business impact of the recommendation.
-  final String impact;
+  final pulumi.Input<String> impact;
   /// The name of the Advisor Recommendation.
-  final String recommendationName;
+  final pulumi.Input<String> recommendationName;
   /// The recommendation type id of the Advisor Recommendation.
-  final String recommendationTypeId;
+  final pulumi.Input<String> recommendationTypeId;
   /// The name of the identified resource of the Advisor Recommendation.
-  final String resourceName;
+  final pulumi.Input<String> resourceName;
   /// The type of the identified resource of the Advisor Recommendation.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// A list of Advisor Suppression names of the Advisor Recommendation.
-  final List<String> suppressionNames;
+  final pulumi.Input<List<String>> suppressionNames;
   /// The most recent time that Advisor checked the validity of the recommendation..
-  final String updatedTime;
+  final pulumi.Input<String> updatedTime;
 
   /// Creates a new [GetRecommendationsRecommendation].
   /// [category] The category of the recommendation.
@@ -59,15 +60,15 @@ class GetRecommendationsRecommendation {
 
   factory GetRecommendationsRecommendation.fromMap(Map<String, dynamic> map) {
     return GetRecommendationsRecommendation(
-      category: map['category'] as String,
-      description: map['description'] as String,
-      impact: map['impact'] as String,
-      recommendationName: map['recommendationName'] as String,
-      recommendationTypeId: map['recommendationTypeId'] as String,
-      resourceName: map['resourceName'] as String,
-      resourceType: map['resourceType'] as String,
-      suppressionNames: (map['suppressionNames'] as List).cast<String>(),
-      updatedTime: map['updatedTime'] as String,
+      category: (map['category'] as String).input(),
+      description: (map['description'] as String).input(),
+      impact: (map['impact'] as String).input(),
+      recommendationName: (map['recommendationName'] as String).input(),
+      recommendationTypeId: (map['recommendationTypeId'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      suppressionNames: ((map['suppressionNames'] as List).cast<String>()).input(),
+      updatedTime: (map['updatedTime'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_key_vault_properties_response.dart';
 
 /// Azure File Properties.
 class AzureFilePropertiesResponse {
   /// Access mode for storage
-  final String? accessMode;
+  final pulumi.Input<String>? accessMode;
   /// Storage account key for azure file.
-  final String? accountKey;
+  final pulumi.Input<String>? accountKey;
   /// Storage account key stored as an Azure Key Vault secret.
-  final SecretKeyVaultPropertiesResponse? accountKeyVaultProperties;
+  final pulumi.Input<SecretKeyVaultPropertiesResponse>? accountKeyVaultProperties;
   /// Storage account name for azure file.
-  final String? accountName;
+  final pulumi.Input<String>? accountName;
   /// Azure file share name.
-  final String? shareName;
+  final pulumi.Input<String>? shareName;
 
   /// Creates a new [AzureFilePropertiesResponse].
   /// [accessMode] Access mode for storage
@@ -33,7 +34,7 @@ class AzureFilePropertiesResponse {
     return <String, dynamic>{
       'accessMode': ?accessMode,
       'accountKey': ?accountKey,
-      'accountKeyVaultProperties': ?accountKeyVaultProperties == null ? null : accountKeyVaultProperties!.toMap(),
+      'accountKeyVaultProperties': ?pulumi.Input.mapOptionalInputValue<SecretKeyVaultPropertiesResponse, Map<String, dynamic>>(accountKeyVaultProperties, (value) => value.toMap()),
       'accountName': ?accountName,
       'shareName': ?shareName,
     };
@@ -41,11 +42,11 @@ class AzureFilePropertiesResponse {
 
   factory AzureFilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AzureFilePropertiesResponse(
-      accessMode: map['accessMode'] == null ? null : map['accessMode'] as String,
-      accountKey: map['accountKey'] == null ? null : map['accountKey'] as String,
-      accountKeyVaultProperties: map['accountKeyVaultProperties'] == null ? null : SecretKeyVaultPropertiesResponse.fromMap((map['accountKeyVaultProperties'] as Map).cast<String, dynamic>()),
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
-      shareName: map['shareName'] == null ? null : map['shareName'] as String,
+      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
+      accountKeyVaultProperties: map['accountKeyVaultProperties'] == null ? null : (SecretKeyVaultPropertiesResponse.fromMap((map['accountKeyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
     );
   }
 }

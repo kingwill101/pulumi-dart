@@ -51,27 +51,17 @@ class ManagedRedisArgs {
   /// [skuName] The features and specification of the Managed Redis instance to deploy. Possible values are `Balanced_B0`, `Balanced_B1`, `Balanced_B10`, `Balanced_B100`, `Balanced_B1000`, `Balanced_B150`, `Balanced_B20`, `Balanced_B250`, `Balanced_B3`, `Balanced_B350`, `Balanced_B5`, `Balanced_B50`, `Balanced_B500`, `Balanced_B700`, `ComputeOptimized_X10`, `ComputeOptimized_X100`, `ComputeOptimized_X150`, `ComputeOptimized_X20`, `ComputeOptimized_X250`, `ComputeOptimized_X3`, `ComputeOptimized_X350`, `ComputeOptimized_X5`, `ComputeOptimized_X50`, `ComputeOptimized_X500`, `ComputeOptimized_X700`, `FlashOptimized_A1000`, `FlashOptimized_A1500`, `FlashOptimized_A2000`, `FlashOptimized_A250`, `FlashOptimized_A4500`, `FlashOptimized_A500`, `FlashOptimized_A700`, `MemoryOptimized_M10`, `MemoryOptimized_M100`, `MemoryOptimized_M1000`, `MemoryOptimized_M150`, `MemoryOptimized_M1500`, `MemoryOptimized_M20`, `MemoryOptimized_M2000`, `MemoryOptimized_M250`, `MemoryOptimized_M350`, `MemoryOptimized_M50`, `MemoryOptimized_M500` and `MemoryOptimized_M700`. `Balanced_B3` SKU or higher is required for geo-replication.
   /// [tags] A mapping of tags which should be assigned to the Managed Redis instance.
   ManagedRedisArgs({
-    pulumi.Output<ManagedRedisCustomerManagedKey>? customerManagedKey,
-    pulumi.Output<ManagedRedisDefaultDatabase>? defaultDatabase,
-    pulumi.Output<bool>? highAvailabilityEnabled,
-    pulumi.Output<ManagedRedisIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> skuName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      customerManagedKey = pulumi.Input.asOptionalInput<ManagedRedisCustomerManagedKey>(customerManagedKey),
-      defaultDatabase = pulumi.Input.asOptionalInput<ManagedRedisDefaultDatabase>(defaultDatabase),
-      highAvailabilityEnabled = pulumi.Input.asOptionalInput<bool>(highAvailabilityEnabled),
-      identity = pulumi.Input.asOptionalInput<ManagedRedisIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.customerManagedKey,
+    this.defaultDatabase,
+    this.highAvailabilityEnabled,
+    this.identity,
+    this.location,
+    this.name,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    required this.skuName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,16 +80,16 @@ class ManagedRedisArgs {
 
   factory ManagedRedisArgs.fromMap(Map<String, dynamic> map) {
     return ManagedRedisArgs(
-      customerManagedKey: map['customerManagedKey'] == null ? null : pulumi.Output.create<ManagedRedisCustomerManagedKey>(ManagedRedisCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())),
-      defaultDatabase: map['defaultDatabase'] == null ? null : pulumi.Output.create<ManagedRedisDefaultDatabase>(ManagedRedisDefaultDatabase.fromMap((map['defaultDatabase'] as Map).cast<String, dynamic>())),
-      highAvailabilityEnabled: map['highAvailabilityEnabled'] == null ? null : pulumi.Output.create<bool>(map['highAvailabilityEnabled'] as bool),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedRedisIdentity>(ManagedRedisIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (ManagedRedisCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())).input(),
+      defaultDatabase: map['defaultDatabase'] == null ? null : (ManagedRedisDefaultDatabase.fromMap((map['defaultDatabase'] as Map).cast<String, dynamic>())).input(),
+      highAvailabilityEnabled: map['highAvailabilityEnabled'] == null ? null : (map['highAvailabilityEnabled'] as bool).input(),
+      identity: map['identity'] == null ? null : (ManagedRedisIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skuName: (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

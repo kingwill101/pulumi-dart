@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileOraclePrivateConnectivity {
   /// Required. The resource name (URI) of the private connection.
-  final String privateConnection;
+  final pulumi.Input<String> privateConnection;
 
   /// Creates a new [ConnectionProfileOraclePrivateConnectivity].
   /// [privateConnection] Required. The resource name (URI) of the private connection.
@@ -19,7 +20,7 @@ class ConnectionProfileOraclePrivateConnectivity {
 
   factory ConnectionProfileOraclePrivateConnectivity.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileOraclePrivateConnectivity(
-      privateConnection: map['privateConnection'] as String,
+      privateConnection: (map['privateConnection'] as String).input(),
     );
   }
 }

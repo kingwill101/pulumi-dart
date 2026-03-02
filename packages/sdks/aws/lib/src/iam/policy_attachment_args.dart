@@ -25,17 +25,12 @@ class PolicyAttachmentArgs {
   /// [roles] Role(s) the policy should be applied to.
   /// [users] User(s) the policy should be applied to.
   PolicyAttachmentArgs({
-    pulumi.Output<List<String>>? groups,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> policyArn,
-    pulumi.Output<List<String>>? roles,
-    pulumi.Output<List<String>>? users,
-  }) :
-      groups = pulumi.Input.asOptionalInput<List<String>>(groups),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyArn = pulumi.Input.asInput<String>(policyArn),
-      roles = pulumi.Input.asOptionalInput<List<String>>(roles),
-      users = pulumi.Input.asOptionalInput<List<String>>(users);
+    this.groups,
+    this.name,
+    required this.policyArn,
+    this.roles,
+    this.users,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PolicyAttachmentArgs {
 
   factory PolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentArgs(
-      groups: map['groups'] == null ? null : pulumi.Output.create<List<String>>((map['groups'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyArn: pulumi.Output.create<String>(map['policyArn'] as String),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<String>>((map['roles'] as List).cast<String>()),
-      users: map['users'] == null ? null : pulumi.Output.create<List<String>>((map['users'] as List).cast<String>()),
+      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyArn: (map['policyArn'] as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
+      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
     );
   }
 }

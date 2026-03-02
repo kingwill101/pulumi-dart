@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccessKeysAccessKey {
   /// Access key ID.
-  final String accessKeyId;
+  final pulumi.Input<String> accessKeyId;
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the access key was created.
-  final String createDate;
+  final pulumi.Input<String> createDate;
   /// Access key status. Possible values are `Active` and `Inactive`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetAccessKeysAccessKey].
   /// [accessKeyId] Access key ID.
@@ -29,9 +30,9 @@ class GetAccessKeysAccessKey {
 
   factory GetAccessKeysAccessKey.fromMap(Map<String, dynamic> map) {
     return GetAccessKeysAccessKey(
-      accessKeyId: map['accessKeyId'] as String,
-      createDate: map['createDate'] as String,
-      status: map['status'] as String,
+      accessKeyId: (map['accessKeyId'] as String).input(),
+      createDate: (map['createDate'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

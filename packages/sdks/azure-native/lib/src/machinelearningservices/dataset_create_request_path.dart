@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_create_request_data_path.dart';
 
 class DatasetCreateRequestPath {
-  final DatasetCreateRequestDataPath? dataPath;
+  final pulumi.Input<DatasetCreateRequestDataPath>? dataPath;
   /// The Http URL.
-  final String? httpUrl;
+  final pulumi.Input<String>? httpUrl;
 
   /// Creates a new [DatasetCreateRequestPath].
   /// [dataPath] Optional.
@@ -17,15 +18,15 @@ class DatasetCreateRequestPath {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataPath': ?dataPath == null ? null : dataPath!.toMap(),
+      'dataPath': ?pulumi.Input.mapOptionalInputValue<DatasetCreateRequestDataPath, Map<String, dynamic>>(dataPath, (value) => value.toMap()),
       'httpUrl': ?httpUrl,
     };
   }
 
   factory DatasetCreateRequestPath.fromMap(Map<String, dynamic> map) {
     return DatasetCreateRequestPath(
-      dataPath: map['dataPath'] == null ? null : DatasetCreateRequestDataPath.fromMap((map['dataPath'] as Map).cast<String, dynamic>()),
-      httpUrl: map['httpUrl'] == null ? null : map['httpUrl'] as String,
+      dataPath: map['dataPath'] == null ? null : (DatasetCreateRequestDataPath.fromMap((map['dataPath'] as Map).cast<String, dynamic>())).input(),
+      httpUrl: map['httpUrl'] == null ? null : (map['httpUrl'] as String).input(),
     );
   }
 }

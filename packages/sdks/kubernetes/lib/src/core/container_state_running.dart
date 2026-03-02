@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ContainerStateRunning is a running state of a container.
 class ContainerStateRunning {
   /// Time at which the container was last (re-)started
-  final String? startedAt;
+  final pulumi.Input<String>? startedAt;
 
   /// Creates a new [ContainerStateRunning].
   /// [startedAt] Time at which the container was last (re-)started
@@ -20,7 +21,7 @@ class ContainerStateRunning {
 
   factory ContainerStateRunning.fromMap(Map<String, dynamic> map) {
     return ContainerStateRunning(
-      startedAt: map['startedAt'] == null ? null : map['startedAt'] as String,
+      startedAt: map['startedAt'] == null ? null : (map['startedAt'] as String).input(),
     );
   }
 }

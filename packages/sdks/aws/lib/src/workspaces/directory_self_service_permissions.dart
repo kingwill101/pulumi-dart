@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectorySelfServicePermissions {
   /// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
-  final bool? changeComputeType;
+  final pulumi.Input<bool>? changeComputeType;
   /// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace. Default `false`.
-  final bool? increaseVolumeSize;
+  final pulumi.Input<bool>? increaseVolumeSize;
   /// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
-  final bool? rebuildWorkspace;
+  final pulumi.Input<bool>? rebuildWorkspace;
   /// Whether WorkSpaces directory users can restart their workspace. Default `true`.
-  final bool? restartWorkspace;
+  final pulumi.Input<bool>? restartWorkspace;
   /// Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
-  final bool? switchRunningMode;
+  final pulumi.Input<bool>? switchRunningMode;
 
   /// Creates a new [DirectorySelfServicePermissions].
   /// [changeComputeType] Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
@@ -39,11 +40,11 @@ class DirectorySelfServicePermissions {
 
   factory DirectorySelfServicePermissions.fromMap(Map<String, dynamic> map) {
     return DirectorySelfServicePermissions(
-      changeComputeType: map['changeComputeType'] == null ? null : map['changeComputeType'] as bool,
-      increaseVolumeSize: map['increaseVolumeSize'] == null ? null : map['increaseVolumeSize'] as bool,
-      rebuildWorkspace: map['rebuildWorkspace'] == null ? null : map['rebuildWorkspace'] as bool,
-      restartWorkspace: map['restartWorkspace'] == null ? null : map['restartWorkspace'] as bool,
-      switchRunningMode: map['switchRunningMode'] == null ? null : map['switchRunningMode'] as bool,
+      changeComputeType: map['changeComputeType'] == null ? null : (map['changeComputeType'] as bool).input(),
+      increaseVolumeSize: map['increaseVolumeSize'] == null ? null : (map['increaseVolumeSize'] as bool).input(),
+      rebuildWorkspace: map['rebuildWorkspace'] == null ? null : (map['rebuildWorkspace'] as bool).input(),
+      restartWorkspace: map['restartWorkspace'] == null ? null : (map['restartWorkspace'] as bool).input(),
+      switchRunningMode: map['switchRunningMode'] == null ? null : (map['switchRunningMode'] as bool).input(),
     );
   }
 }

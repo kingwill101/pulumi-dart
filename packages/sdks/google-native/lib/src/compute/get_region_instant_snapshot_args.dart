@@ -16,13 +16,10 @@ class GetRegionInstantSnapshotArgs {
   /// [project] Optional.
   /// [region] Required.
   GetRegionInstantSnapshotArgs({
-    required pulumi.Output<String> instantSnapshot,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-  }) :
-      instantSnapshot = pulumi.Input.asInput<String>(instantSnapshot),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+    required this.instantSnapshot,
+    this.project,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetRegionInstantSnapshotArgs {
 
   factory GetRegionInstantSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstantSnapshotArgs(
-      instantSnapshot: pulumi.Output.create<String>(map['instantSnapshot'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      instantSnapshot: (map['instantSnapshot'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

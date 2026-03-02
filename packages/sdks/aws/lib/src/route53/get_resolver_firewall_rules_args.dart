@@ -22,15 +22,11 @@ class GetResolverFirewallRulesArgs {
   /// [priority] The setting that determines the processing order of the rules in a rule group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetResolverFirewallRulesArgs({
-    pulumi.Output<String>? action,
-    required pulumi.Output<String> firewallRuleGroupId,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? region,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      firewallRuleGroupId = pulumi.Input.asInput<String>(firewallRuleGroupId),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.action,
+    required this.firewallRuleGroupId,
+    this.priority,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetResolverFirewallRulesArgs {
 
   factory GetResolverFirewallRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallRulesArgs(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      firewallRuleGroupId: pulumi.Output.create<String>(map['firewallRuleGroupId'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      firewallRuleGroupId: (map['firewallRuleGroupId'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

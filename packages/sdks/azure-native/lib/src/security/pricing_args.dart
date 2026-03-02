@@ -29,19 +29,13 @@ class PricingArgs {
   /// [scopeId] The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
   /// [subPlan] The sub-plan selected for a Standard pricing configuration, when more than one sub-plan is available. Each sub-plan enables a set of security features. When not specified, full plan is applied. For VirtualMachines plan, available sub plans are 'P1' & 'P2', where for resource level only 'P1' sub plan is supported.
   PricingArgs({
-    pulumi.Output<String>? enforce,
-    pulumi.Output<List<Extension>>? extensions,
-    pulumi.Output<String>? pricingName,
-    required pulumi.Output<String> pricingTier,
-    required pulumi.Output<String> scopeId,
-    pulumi.Output<String>? subPlan,
-  }) :
-      enforce = pulumi.Input.asOptionalInput<String>(enforce),
-      extensions = pulumi.Input.asOptionalInput<List<Extension>>(extensions),
-      pricingName = pulumi.Input.asOptionalInput<String>(pricingName),
-      pricingTier = pulumi.Input.asInput<String>(pricingTier),
-      scopeId = pulumi.Input.asInput<String>(scopeId),
-      subPlan = pulumi.Input.asOptionalInput<String>(subPlan);
+    this.enforce,
+    this.extensions,
+    this.pricingName,
+    required this.pricingTier,
+    required this.scopeId,
+    this.subPlan,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class PricingArgs {
 
   factory PricingArgs.fromMap(Map<String, dynamic> map) {
     return PricingArgs(
-      enforce: map['enforce'] == null ? null : pulumi.Output.create<String>(map['enforce'] as String),
-      extensions: map['extensions'] == null ? null : pulumi.Output.create<List<Extension>>(pulumi.Input.decodeList<Extension>(map['extensions'], (value) => Extension.fromMap((value as Map).cast<String, dynamic>()))),
-      pricingName: map['pricingName'] == null ? null : pulumi.Output.create<String>(map['pricingName'] as String),
-      pricingTier: pulumi.Output.create<String>(map['pricingTier'] as String),
-      scopeId: pulumi.Output.create<String>(map['scopeId'] as String),
-      subPlan: map['subPlan'] == null ? null : pulumi.Output.create<String>(map['subPlan'] as String),
+      enforce: map['enforce'] == null ? null : (map['enforce'] as String).input(),
+      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<Extension>(map['extensions'], (value) => Extension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pricingName: map['pricingName'] == null ? null : (map['pricingName'] as String).input(),
+      pricingTier: (map['pricingTier'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
+      subPlan: map['subPlan'] == null ? null : (map['subPlan'] as String).input(),
     );
   }
 }

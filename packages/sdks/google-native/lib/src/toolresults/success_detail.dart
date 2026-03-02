@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
 class SuccessDetail {
   /// If a native process other than the app crashed.
-  final bool? otherNativeCrash;
+  final pulumi.Input<bool>? otherNativeCrash;
 
   /// Creates a new [SuccessDetail].
   /// [otherNativeCrash] If a native process other than the app crashed.
@@ -20,7 +21,7 @@ class SuccessDetail {
 
   factory SuccessDetail.fromMap(Map<String, dynamic> map) {
     return SuccessDetail(
-      otherNativeCrash: map['otherNativeCrash'] == null ? null : map['otherNativeCrash'] as bool,
+      otherNativeCrash: map['otherNativeCrash'] == null ? null : (map['otherNativeCrash'] as bool).input(),
     );
   }
 }

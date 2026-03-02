@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents Activity timeline item.
 class ActivityTimelineItemResponse {
   /// The grouping bucket end time.
-  final String bucketEndTimeUTC;
+  final pulumi.Input<String> bucketEndTimeUTC;
   /// The grouping bucket start time.
-  final String bucketStartTimeUTC;
+  final pulumi.Input<String> bucketStartTimeUTC;
   /// The activity timeline content.
-  final String content;
+  final pulumi.Input<String> content;
   /// The time of the first activity in the grouping bucket.
-  final String firstActivityTimeUTC;
+  final pulumi.Input<String> firstActivityTimeUTC;
   /// The entity query kind
   /// Expected value is 'Activity'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// The time of the last activity in the grouping bucket.
-  final String lastActivityTimeUTC;
+  final pulumi.Input<String> lastActivityTimeUTC;
   /// The activity query id.
-  final String queryId;
+  final pulumi.Input<String> queryId;
   /// The activity timeline title.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [ActivityTimelineItemResponse].
   /// [bucketEndTimeUTC] The grouping bucket end time.
@@ -56,14 +57,14 @@ class ActivityTimelineItemResponse {
 
   factory ActivityTimelineItemResponse.fromMap(Map<String, dynamic> map) {
     return ActivityTimelineItemResponse(
-      bucketEndTimeUTC: map['bucketEndTimeUTC'] as String,
-      bucketStartTimeUTC: map['bucketStartTimeUTC'] as String,
-      content: map['content'] as String,
-      firstActivityTimeUTC: map['firstActivityTimeUTC'] as String,
-      kind: map['kind'] as String,
-      lastActivityTimeUTC: map['lastActivityTimeUTC'] as String,
-      queryId: map['queryId'] as String,
-      title: map['title'] as String,
+      bucketEndTimeUTC: (map['bucketEndTimeUTC'] as String).input(),
+      bucketStartTimeUTC: (map['bucketStartTimeUTC'] as String).input(),
+      content: (map['content'] as String).input(),
+      firstActivityTimeUTC: (map['firstActivityTimeUTC'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      lastActivityTimeUTC: (map['lastActivityTimeUTC'] as String).input(),
+      queryId: (map['queryId'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

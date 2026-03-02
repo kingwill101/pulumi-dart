@@ -16,11 +16,9 @@ class MetaTagArgs {
   /// [key] The key of the tag meta tag. key must be 1 to 128 characters in length.
   /// [values] The values of the tag meta tag.
   MetaTagArgs({
-    required pulumi.Output<String> key,
-    required pulumi.Output<List<String>> values,
-  }) :
-      key = pulumi.Input.asInput<String>(key),
-      values = pulumi.Input.asInput<List<String>>(values);
+    required this.key,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class MetaTagArgs {
 
   factory MetaTagArgs.fromMap(Map<String, dynamic> map) {
     return MetaTagArgs(
-      key: pulumi.Output.create<String>(map['key'] as String),
-      values: pulumi.Output.create<List<String>>((map['values'] as List).cast<String>()),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

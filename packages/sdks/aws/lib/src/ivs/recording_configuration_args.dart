@@ -30,19 +30,13 @@ class RecordingConfigurationArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [thumbnailConfiguration] Object containing information to enable/disable the recording of thumbnails for a live session and modify the interval at which thumbnails are generated for the live session.
   RecordingConfigurationArgs({
-    required pulumi.Output<RecordingConfigurationDestinationConfiguration> destinationConfiguration,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? recordingReconnectWindowSeconds,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<RecordingConfigurationThumbnailConfiguration>? thumbnailConfiguration,
-  }) :
-      destinationConfiguration = pulumi.Input.asInput<RecordingConfigurationDestinationConfiguration>(destinationConfiguration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recordingReconnectWindowSeconds = pulumi.Input.asOptionalInput<int>(recordingReconnectWindowSeconds),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      thumbnailConfiguration = pulumi.Input.asOptionalInput<RecordingConfigurationThumbnailConfiguration>(thumbnailConfiguration);
+    required this.destinationConfiguration,
+    this.name,
+    this.recordingReconnectWindowSeconds,
+    this.region,
+    this.tags,
+    this.thumbnailConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class RecordingConfigurationArgs {
 
   factory RecordingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return RecordingConfigurationArgs(
-      destinationConfiguration: pulumi.Output.create<RecordingConfigurationDestinationConfiguration>(RecordingConfigurationDestinationConfiguration.fromMap((map['destinationConfiguration'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recordingReconnectWindowSeconds: map['recordingReconnectWindowSeconds'] == null ? null : pulumi.Output.create<int>(map['recordingReconnectWindowSeconds'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      thumbnailConfiguration: map['thumbnailConfiguration'] == null ? null : pulumi.Output.create<RecordingConfigurationThumbnailConfiguration>(RecordingConfigurationThumbnailConfiguration.fromMap((map['thumbnailConfiguration'] as Map).cast<String, dynamic>())),
+      destinationConfiguration: (RecordingConfigurationDestinationConfiguration.fromMap((map['destinationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recordingReconnectWindowSeconds: map['recordingReconnectWindowSeconds'] == null ? null : (map['recordingReconnectWindowSeconds'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      thumbnailConfiguration: map['thumbnailConfiguration'] == null ? null : (RecordingConfigurationThumbnailConfiguration.fromMap((map['thumbnailConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

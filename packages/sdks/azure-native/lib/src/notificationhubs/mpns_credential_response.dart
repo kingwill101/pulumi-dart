@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of a NotificationHub MpnsCredential.
 class MpnsCredentialResponse {
   /// Gets or sets the certificate key for this credential.
-  final String certificateKey;
+  final pulumi.Input<String> certificateKey;
   /// Gets or sets the MPNS certificate.
-  final String mpnsCertificate;
+  final pulumi.Input<String> mpnsCertificate;
   /// Gets or sets the MPNS certificate Thumbprint
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
 
   /// Creates a new [MpnsCredentialResponse].
   /// [certificateKey] Gets or sets the certificate key for this credential.
@@ -30,9 +31,9 @@ class MpnsCredentialResponse {
 
   factory MpnsCredentialResponse.fromMap(Map<String, dynamic> map) {
     return MpnsCredentialResponse(
-      certificateKey: map['certificateKey'] as String,
-      mpnsCertificate: map['mpnsCertificate'] as String,
-      thumbprint: map['thumbprint'] as String,
+      certificateKey: (map['certificateKey'] as String).input(),
+      mpnsCertificate: (map['mpnsCertificate'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
     );
   }
 }

@@ -52,35 +52,21 @@ class BudgetActionState {
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   BudgetActionState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? actionId,
-    pulumi.Output<BudgetActionActionThreshold>? actionThreshold,
-    pulumi.Output<String>? actionType,
-    pulumi.Output<String>? approvalModel,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? budgetName,
-    pulumi.Output<BudgetActionDefinition>? definition,
-    pulumi.Output<String>? executionRoleArn,
-    pulumi.Output<String>? notificationType,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<BudgetActionSubscriber>>? subscribers,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      actionId = pulumi.Input.asOptionalInput<String>(actionId),
-      actionThreshold = pulumi.Input.asOptionalInput<BudgetActionActionThreshold>(actionThreshold),
-      actionType = pulumi.Input.asOptionalInput<String>(actionType),
-      approvalModel = pulumi.Input.asOptionalInput<String>(approvalModel),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      budgetName = pulumi.Input.asOptionalInput<String>(budgetName),
-      definition = pulumi.Input.asOptionalInput<BudgetActionDefinition>(definition),
-      executionRoleArn = pulumi.Input.asOptionalInput<String>(executionRoleArn),
-      notificationType = pulumi.Input.asOptionalInput<String>(notificationType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      subscribers = pulumi.Input.asOptionalInput<List<BudgetActionSubscriber>>(subscribers),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.accountId,
+    this.actionId,
+    this.actionThreshold,
+    this.actionType,
+    this.approvalModel,
+    this.arn,
+    this.budgetName,
+    this.definition,
+    this.executionRoleArn,
+    this.notificationType,
+    this.status,
+    this.subscribers,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class BudgetActionState {
 
   factory BudgetActionState.fromMap(Map<String, dynamic> map) {
     return BudgetActionState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      actionId: map['actionId'] == null ? null : pulumi.Output.create<String>(map['actionId'] as String),
-      actionThreshold: map['actionThreshold'] == null ? null : pulumi.Output.create<BudgetActionActionThreshold>(BudgetActionActionThreshold.fromMap((map['actionThreshold'] as Map).cast<String, dynamic>())),
-      actionType: map['actionType'] == null ? null : pulumi.Output.create<String>(map['actionType'] as String),
-      approvalModel: map['approvalModel'] == null ? null : pulumi.Output.create<String>(map['approvalModel'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      budgetName: map['budgetName'] == null ? null : pulumi.Output.create<String>(map['budgetName'] as String),
-      definition: map['definition'] == null ? null : pulumi.Output.create<BudgetActionDefinition>(BudgetActionDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())),
-      executionRoleArn: map['executionRoleArn'] == null ? null : pulumi.Output.create<String>(map['executionRoleArn'] as String),
-      notificationType: map['notificationType'] == null ? null : pulumi.Output.create<String>(map['notificationType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      subscribers: map['subscribers'] == null ? null : pulumi.Output.create<List<BudgetActionSubscriber>>(pulumi.Input.decodeList<BudgetActionSubscriber>(map['subscribers'], (value) => BudgetActionSubscriber.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      actionId: map['actionId'] == null ? null : (map['actionId'] as String).input(),
+      actionThreshold: map['actionThreshold'] == null ? null : (BudgetActionActionThreshold.fromMap((map['actionThreshold'] as Map).cast<String, dynamic>())).input(),
+      actionType: map['actionType'] == null ? null : (map['actionType'] as String).input(),
+      approvalModel: map['approvalModel'] == null ? null : (map['approvalModel'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      budgetName: map['budgetName'] == null ? null : (map['budgetName'] as String).input(),
+      definition: map['definition'] == null ? null : (BudgetActionDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
+      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subscribers: map['subscribers'] == null ? null : (pulumi.Input.decodeList<BudgetActionSubscriber>(map['subscribers'], (value) => BudgetActionSubscriber.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -6,17 +6,17 @@ import 'facebook_page_response.dart';
 /// The parameters to provide for the Facebook channel.
 class FacebookChannelPropertiesResponse {
   /// Facebook application id
-  final String appId;
+  final pulumi.Input<String> appId;
   /// Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
-  final String? appSecret;
+  final pulumi.Input<String>? appSecret;
   /// Callback Url
-  final String callbackUrl;
+  final pulumi.Input<String> callbackUrl;
   /// Whether this channel is enabled for the bot
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
   /// The list of Facebook pages
-  final List<FacebookPageResponse>? pages;
+  final pulumi.Input<List<FacebookPageResponse>>? pages;
   /// Verify token. Value only returned through POST to the action Channel List API, otherwise empty.
-  final String verifyToken;
+  final pulumi.Input<String> verifyToken;
 
   /// Creates a new [FacebookChannelPropertiesResponse].
   /// [appId] Facebook application id
@@ -40,19 +40,19 @@ class FacebookChannelPropertiesResponse {
       'appSecret': ?appSecret,
       'callbackUrl': callbackUrl,
       'isEnabled': isEnabled,
-      'pages': ?pages == null ? null : pulumi.Input.encodeList<FacebookPageResponse, Map<String, dynamic>>(pages!, (value) => value.toMap()),
+      'pages': ?pulumi.Input.mapOptionalInputValue<List<FacebookPageResponse>, List<Map<String, dynamic>>>(pages, (value) => pulumi.Input.encodeList<FacebookPageResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'verifyToken': verifyToken,
     };
   }
 
   factory FacebookChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FacebookChannelPropertiesResponse(
-      appId: map['appId'] as String,
-      appSecret: map['appSecret'] == null ? null : map['appSecret'] as String,
-      callbackUrl: map['callbackUrl'] as String,
-      isEnabled: map['isEnabled'] as bool,
-      pages: map['pages'] == null ? null : pulumi.Input.decodeList<FacebookPageResponse>(map['pages'], (value) => FacebookPageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      verifyToken: map['verifyToken'] as String,
+      appId: (map['appId'] as String).input(),
+      appSecret: map['appSecret'] == null ? null : (map['appSecret'] as String).input(),
+      callbackUrl: (map['callbackUrl'] as String).input(),
+      isEnabled: (map['isEnabled'] as bool).input(),
+      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<FacebookPageResponse>(map['pages'], (value) => FacebookPageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      verifyToken: (map['verifyToken'] as String).input(),
     );
   }
 }

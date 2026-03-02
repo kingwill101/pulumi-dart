@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCognitoOptions {
   /// Whether Amazon Cognito authentication with Kibana is enabled or not.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// ID of the Cognito Identity Pool to use.
-  final String identityPoolId;
+  final pulumi.Input<String> identityPoolId;
   /// ARN of the IAM role that has the AmazonESCognitoAccess policy attached.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// ID of the Cognito User Pool to use.
-  final String userPoolId;
+  final pulumi.Input<String> userPoolId;
 
   /// Creates a new [DomainCognitoOptions].
   /// [enabled] Whether Amazon Cognito authentication with Kibana is enabled or not.
@@ -34,10 +35,10 @@ class DomainCognitoOptions {
 
   factory DomainCognitoOptions.fromMap(Map<String, dynamic> map) {
     return DomainCognitoOptions(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      identityPoolId: map['identityPoolId'] as String,
-      roleArn: map['roleArn'] as String,
-      userPoolId: map['userPoolId'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      identityPoolId: (map['identityPoolId'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      userPoolId: (map['userPoolId'] as String).input(),
     );
   }
 }

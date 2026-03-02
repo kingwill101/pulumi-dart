@@ -55,33 +55,20 @@ class WorkforcePoolProviderScimTenantState {
   /// [state] The current state of the scim tenant.
   /// [workforcePoolId] The ID of the workforce pool.
   WorkforcePoolProviderScimTenantState({
-    pulumi.Output<String>? baseUri,
-    pulumi.Output<Map<String, String>>? claimMapping,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? hardDelete,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? providerId,
-    pulumi.Output<String>? purgeTime,
-    pulumi.Output<String>? scimTenantId,
-    pulumi.Output<String>? serviceAgent,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? workforcePoolId,
-  }) :
-      baseUri = pulumi.Input.asOptionalInput<String>(baseUri),
-      claimMapping = pulumi.Input.asOptionalInput<Map<String, String>>(claimMapping),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      hardDelete = pulumi.Input.asOptionalInput<bool>(hardDelete),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      providerId = pulumi.Input.asOptionalInput<String>(providerId),
-      purgeTime = pulumi.Input.asOptionalInput<String>(purgeTime),
-      scimTenantId = pulumi.Input.asOptionalInput<String>(scimTenantId),
-      serviceAgent = pulumi.Input.asOptionalInput<String>(serviceAgent),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      workforcePoolId = pulumi.Input.asOptionalInput<String>(workforcePoolId);
+    this.baseUri,
+    this.claimMapping,
+    this.description,
+    this.displayName,
+    this.hardDelete,
+    this.location,
+    this.name,
+    this.providerId,
+    this.purgeTime,
+    this.scimTenantId,
+    this.serviceAgent,
+    this.state,
+    this.workforcePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,19 +90,19 @@ class WorkforcePoolProviderScimTenantState {
 
   factory WorkforcePoolProviderScimTenantState.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTenantState(
-      baseUri: map['baseUri'] == null ? null : pulumi.Output.create<String>(map['baseUri'] as String),
-      claimMapping: map['claimMapping'] == null ? null : pulumi.Output.create<Map<String, String>>((map['claimMapping'] as Map).cast<String, String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      hardDelete: map['hardDelete'] == null ? null : pulumi.Output.create<bool>(map['hardDelete'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      providerId: map['providerId'] == null ? null : pulumi.Output.create<String>(map['providerId'] as String),
-      purgeTime: map['purgeTime'] == null ? null : pulumi.Output.create<String>(map['purgeTime'] as String),
-      scimTenantId: map['scimTenantId'] == null ? null : pulumi.Output.create<String>(map['scimTenantId'] as String),
-      serviceAgent: map['serviceAgent'] == null ? null : pulumi.Output.create<String>(map['serviceAgent'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      workforcePoolId: map['workforcePoolId'] == null ? null : pulumi.Output.create<String>(map['workforcePoolId'] as String),
+      baseUri: map['baseUri'] == null ? null : (map['baseUri'] as String).input(),
+      claimMapping: map['claimMapping'] == null ? null : ((map['claimMapping'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      hardDelete: map['hardDelete'] == null ? null : (map['hardDelete'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      providerId: map['providerId'] == null ? null : (map['providerId'] as String).input(),
+      purgeTime: map['purgeTime'] == null ? null : (map['purgeTime'] as String).input(),
+      scimTenantId: map['scimTenantId'] == null ? null : (map['scimTenantId'] as String).input(),
+      serviceAgent: map['serviceAgent'] == null ? null : (map['serviceAgent'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId'] as String).input(),
     );
   }
 }

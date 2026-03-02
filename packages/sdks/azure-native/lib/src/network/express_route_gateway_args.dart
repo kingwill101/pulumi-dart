@@ -41,25 +41,16 @@ class ExpressRouteGatewayArgs {
   /// [tags] Resource tags.
   /// [virtualHub] The Virtual Hub where the ExpressRoute gateway is or will be deployed.
   ExpressRouteGatewayArgs({
-    pulumi.Output<bool>? allowNonVirtualWanTraffic,
-    pulumi.Output<ExpressRouteGatewayPropertiesAutoScaleConfiguration>? autoScaleConfiguration,
-    pulumi.Output<List<ExpressRouteConnectionNetwork>>? expressRouteConnections,
-    pulumi.Output<String>? expressRouteGatewayName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<VirtualHubId> virtualHub,
-  }) :
-      allowNonVirtualWanTraffic = pulumi.Input.asOptionalInput<bool>(allowNonVirtualWanTraffic),
-      autoScaleConfiguration = pulumi.Input.asOptionalInput<ExpressRouteGatewayPropertiesAutoScaleConfiguration>(autoScaleConfiguration),
-      expressRouteConnections = pulumi.Input.asOptionalInput<List<ExpressRouteConnectionNetwork>>(expressRouteConnections),
-      expressRouteGatewayName = pulumi.Input.asOptionalInput<String>(expressRouteGatewayName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualHub = pulumi.Input.asInput<VirtualHubId>(virtualHub);
+    this.allowNonVirtualWanTraffic,
+    this.autoScaleConfiguration,
+    this.expressRouteConnections,
+    this.expressRouteGatewayName,
+    this.id,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    required this.virtualHub,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class ExpressRouteGatewayArgs {
 
   factory ExpressRouteGatewayArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteGatewayArgs(
-      allowNonVirtualWanTraffic: map['allowNonVirtualWanTraffic'] == null ? null : pulumi.Output.create<bool>(map['allowNonVirtualWanTraffic'] as bool),
-      autoScaleConfiguration: map['autoScaleConfiguration'] == null ? null : pulumi.Output.create<ExpressRouteGatewayPropertiesAutoScaleConfiguration>(ExpressRouteGatewayPropertiesAutoScaleConfiguration.fromMap((map['autoScaleConfiguration'] as Map).cast<String, dynamic>())),
-      expressRouteConnections: map['expressRouteConnections'] == null ? null : pulumi.Output.create<List<ExpressRouteConnectionNetwork>>((map['expressRouteConnections'] as List).cast<ExpressRouteConnectionNetwork>()),
-      expressRouteGatewayName: map['expressRouteGatewayName'] == null ? null : pulumi.Output.create<String>(map['expressRouteGatewayName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualHub: pulumi.Output.create<VirtualHubId>(VirtualHubId.fromMap((map['virtualHub'] as Map).cast<String, dynamic>())),
+      allowNonVirtualWanTraffic: map['allowNonVirtualWanTraffic'] == null ? null : (map['allowNonVirtualWanTraffic'] as bool).input(),
+      autoScaleConfiguration: map['autoScaleConfiguration'] == null ? null : (ExpressRouteGatewayPropertiesAutoScaleConfiguration.fromMap((map['autoScaleConfiguration'] as Map).cast<String, dynamic>())).input(),
+      expressRouteConnections: map['expressRouteConnections'] == null ? null : ((map['expressRouteConnections'] as List).cast<ExpressRouteConnectionNetwork>()).input(),
+      expressRouteGatewayName: map['expressRouteGatewayName'] == null ? null : (map['expressRouteGatewayName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualHub: (VirtualHubId.fromMap((map['virtualHub'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

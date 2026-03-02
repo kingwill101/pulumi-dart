@@ -19,15 +19,11 @@ class GetPartnerAttachmentArgs {
   /// [name] Optional.
   /// [redundancyZone] Optional.
   GetPartnerAttachmentArgs({
-    pulumi.Output<GetPartnerAttachmentBgp>? bgp,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? redundancyZone,
-  }) :
-      bgp = pulumi.Input.asOptionalInput<GetPartnerAttachmentBgp>(bgp),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      redundancyZone = pulumi.Input.asOptionalInput<String>(redundancyZone);
+    this.bgp,
+    this.id,
+    this.name,
+    this.redundancyZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class GetPartnerAttachmentArgs {
 
   factory GetPartnerAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerAttachmentArgs(
-      bgp: map['bgp'] == null ? null : pulumi.Output.create<GetPartnerAttachmentBgp>(GetPartnerAttachmentBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      redundancyZone: map['redundancyZone'] == null ? null : pulumi.Output.create<String>(map['redundancyZone'] as String),
+      bgp: map['bgp'] == null ? null : (GetPartnerAttachmentBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      redundancyZone: map['redundancyZone'] == null ? null : (map['redundancyZone'] as String).input(),
     );
   }
 }

@@ -38,19 +38,13 @@ class AiFeatureStoreEntityTypeIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   AiFeatureStoreEntityTypeIamMemberState({
-    pulumi.Output<AiFeatureStoreEntityTypeIamMemberCondition>? condition,
-    pulumi.Output<String>? entitytype,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? featurestore,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<AiFeatureStoreEntityTypeIamMemberCondition>(condition),
-      entitytype = pulumi.Input.asOptionalInput<String>(entitytype),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featurestore = pulumi.Input.asOptionalInput<String>(featurestore),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.entitytype,
+    this.etag,
+    this.featurestore,
+    this.member,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,12 +59,12 @@ class AiFeatureStoreEntityTypeIamMemberState {
 
   factory AiFeatureStoreEntityTypeIamMemberState.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeIamMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<AiFeatureStoreEntityTypeIamMemberCondition>(AiFeatureStoreEntityTypeIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      entitytype: map['entitytype'] == null ? null : pulumi.Output.create<String>(map['entitytype'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featurestore: map['featurestore'] == null ? null : pulumi.Output.create<String>(map['featurestore'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (AiFeatureStoreEntityTypeIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      entitytype: map['entitytype'] == null ? null : (map['entitytype'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featurestore: map['featurestore'] == null ? null : (map['featurestore'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

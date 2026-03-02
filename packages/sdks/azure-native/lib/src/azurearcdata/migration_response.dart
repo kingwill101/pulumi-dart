@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'migration_assessment_response.dart';
 
 /// Migration related configuration.
 class MigrationResponse {
   /// Migration assessments related configuration.
-  final MigrationAssessmentResponse? assessment;
+  final pulumi.Input<MigrationAssessmentResponse>? assessment;
 
   /// Creates a new [MigrationResponse].
   /// [assessment] Migration assessments related configuration.
@@ -15,13 +16,13 @@ class MigrationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assessment': ?assessment == null ? null : assessment!.toMap(),
+      'assessment': ?pulumi.Input.mapOptionalInputValue<MigrationAssessmentResponse, Map<String, dynamic>>(assessment, (value) => value.toMap()),
     };
   }
 
   factory MigrationResponse.fromMap(Map<String, dynamic> map) {
     return MigrationResponse(
-      assessment: map['assessment'] == null ? null : MigrationAssessmentResponse.fromMap((map['assessment'] as Map).cast<String, dynamic>()),
+      assessment: map['assessment'] == null ? null : (MigrationAssessmentResponse.fromMap((map['assessment'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

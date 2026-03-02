@@ -16,11 +16,9 @@ class GetNetworkTapArgs {
   /// [networkTapName] Name of the Network Tap.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNetworkTapArgs({
-    required pulumi.Output<String> networkTapName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkTapName = pulumi.Input.asInput<String>(networkTapName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkTapName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkTapArgs {
 
   factory GetNetworkTapArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkTapArgs(
-      networkTapName: pulumi.Output.create<String>(map['networkTapName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkTapName: (map['networkTapName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

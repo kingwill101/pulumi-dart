@@ -37,25 +37,16 @@ class RouteFilterRuleArgs {
   /// [routeFilterRuleType] The rule type of the rule.
   /// [ruleName] The name of the route filter rule.
   RouteFilterRuleArgs({
-    required pulumi.Output<String> access,
-    required pulumi.Output<List<String>> communities,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> routeFilterName,
-    required pulumi.Output<String> routeFilterRuleType,
-    pulumi.Output<String>? ruleName,
-  }) :
-      access = pulumi.Input.asInput<String>(access),
-      communities = pulumi.Input.asInput<List<String>>(communities),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeFilterName = pulumi.Input.asInput<String>(routeFilterName),
-      routeFilterRuleType = pulumi.Input.asInput<String>(routeFilterRuleType),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName);
+    required this.access,
+    required this.communities,
+    this.id,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    required this.routeFilterName,
+    required this.routeFilterRuleType,
+    this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class RouteFilterRuleArgs {
 
   factory RouteFilterRuleArgs.fromMap(Map<String, dynamic> map) {
     return RouteFilterRuleArgs(
-      access: pulumi.Output.create<String>(map['access'] as String),
-      communities: pulumi.Output.create<List<String>>((map['communities'] as List).cast<String>()),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeFilterName: pulumi.Output.create<String>(map['routeFilterName'] as String),
-      routeFilterRuleType: pulumi.Output.create<String>(map['routeFilterRuleType'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
+      access: (map['access'] as String).input(),
+      communities: ((map['communities'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeFilterName: (map['routeFilterName'] as String).input(),
+      routeFilterRuleType: (map['routeFilterRuleType'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
     );
   }
 }

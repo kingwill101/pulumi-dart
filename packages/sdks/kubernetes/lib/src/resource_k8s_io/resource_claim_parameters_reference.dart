@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ResourceClaimParametersReference contains enough information to let you locate the parameters for a ResourceClaim. The object must be in the same namespace as the ResourceClaim.
 class ResourceClaimParametersReference {
   /// APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.
-  final String? apiGroup;
+  final pulumi.Input<String>? apiGroup;
   /// Kind is the type of resource being referenced. This is the same value as in the parameter object's metadata, for example "ConfigMap".
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Name is the name of resource being referenced.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ResourceClaimParametersReference].
   /// [apiGroup] APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.
@@ -30,9 +31,9 @@ class ResourceClaimParametersReference {
 
   factory ResourceClaimParametersReference.fromMap(Map<String, dynamic> map) {
     return ResourceClaimParametersReference(
-      apiGroup: map['apiGroup'] == null ? null : map['apiGroup'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock {
   /// The region ID of the endpoint group.
-  final String endpointGroupRegion;
+  final pulumi.Input<String> endpointGroupRegion;
   /// The CIDR blocks.
-  final List<String> ipAddressCidrBlocks;
+  final pulumi.Input<List<String>> ipAddressCidrBlocks;
   /// The status of the list of endpoint group ip address cidr blocks.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock].
   /// [endpointGroupRegion] The region ID of the endpoint group.
@@ -29,9 +30,9 @@ class GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock {
 
   factory GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock.fromMap(Map<String, dynamic> map) {
     return GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock(
-      endpointGroupRegion: map['endpointGroupRegion'] as String,
-      ipAddressCidrBlocks: (map['ipAddressCidrBlocks'] as List).cast<String>(),
-      status: map['status'] as String,
+      endpointGroupRegion: (map['endpointGroupRegion'] as String).input(),
+      ipAddressCidrBlocks: ((map['ipAddressCidrBlocks'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

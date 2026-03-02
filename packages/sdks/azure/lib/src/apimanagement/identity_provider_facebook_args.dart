@@ -22,15 +22,11 @@ class IdentityProviderFacebookArgs {
   /// [appSecret] App Secret for Facebook.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   IdentityProviderFacebookArgs({
-    required pulumi.Output<String> apiManagementName,
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> appSecret,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      appId = pulumi.Input.asInput<String>(appId),
-      appSecret = pulumi.Input.asInput<String>(appSecret),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.apiManagementName,
+    required this.appId,
+    required this.appSecret,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class IdentityProviderFacebookArgs {
 
   factory IdentityProviderFacebookArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderFacebookArgs(
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      appSecret: pulumi.Output.create<String>(map['appSecret'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      appId: (map['appId'] as String).input(),
+      appSecret: (map['appSecret'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

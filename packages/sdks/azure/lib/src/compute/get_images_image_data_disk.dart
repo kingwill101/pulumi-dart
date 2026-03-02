@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagesImageDataDisk {
   /// the URI in Azure storage of the blob used to create the image.
-  final String blobUri;
+  final pulumi.Input<String> blobUri;
   /// the caching mode for the Data Disk.
-  final String caching;
+  final pulumi.Input<String> caching;
   /// the logical unit number of the data disk.
-  final int lun;
+  final pulumi.Input<int> lun;
   /// the ID of the Managed Disk used as the Data Disk Image.
-  final String managedDiskId;
+  final pulumi.Input<String> managedDiskId;
   /// the size of this Data Disk in GB.
-  final int sizeGb;
+  final pulumi.Input<int> sizeGb;
 
   /// Creates a new [GetImagesImageDataDisk].
   /// [blobUri] the URI in Azure storage of the blob used to create the image.
@@ -39,11 +40,11 @@ class GetImagesImageDataDisk {
 
   factory GetImagesImageDataDisk.fromMap(Map<String, dynamic> map) {
     return GetImagesImageDataDisk(
-      blobUri: map['blobUri'] as String,
-      caching: map['caching'] as String,
-      lun: map['lun'] as int,
-      managedDiskId: map['managedDiskId'] as String,
-      sizeGb: map['sizeGb'] as int,
+      blobUri: (map['blobUri'] as String).input(),
+      caching: (map['caching'] as String).input(),
+      lun: (map['lun'] as int).input(),
+      managedDiskId: (map['managedDiskId'] as String).input(),
+      sizeGb: (map['sizeGb'] as int).input(),
     );
   }
 }

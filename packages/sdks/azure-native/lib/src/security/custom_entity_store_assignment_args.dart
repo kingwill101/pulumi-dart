@@ -19,13 +19,10 @@ class CustomEntityStoreAssignmentArgs {
   /// [principal] The principal assigned with entity store. If not provided, will use caller principal. Format of principal is: [AAD type]=[PrincipalObjectId];[TenantId]
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   CustomEntityStoreAssignmentArgs({
-    pulumi.Output<String>? customEntityStoreAssignmentName,
-    pulumi.Output<String>? principal,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      customEntityStoreAssignmentName = pulumi.Input.asOptionalInput<String>(customEntityStoreAssignmentName),
-      principal = pulumi.Input.asOptionalInput<String>(principal),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.customEntityStoreAssignmentName,
+    this.principal,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class CustomEntityStoreAssignmentArgs {
 
   factory CustomEntityStoreAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return CustomEntityStoreAssignmentArgs(
-      customEntityStoreAssignmentName: map['customEntityStoreAssignmentName'] == null ? null : pulumi.Output.create<String>(map['customEntityStoreAssignmentName'] as String),
-      principal: map['principal'] == null ? null : pulumi.Output.create<String>(map['principal'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      customEntityStoreAssignmentName: map['customEntityStoreAssignmentName'] == null ? null : (map['customEntityStoreAssignmentName'] as String).input(),
+      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

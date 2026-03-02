@@ -35,23 +35,15 @@ class ProvisionedProductArgs {
   /// [stackRegionId] The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
   /// [tags] A mapping of tags to assign to the resource.
   ProvisionedProductArgs({
-    pulumi.Output<List<ProvisionedProductParameter>>? parameters,
-    pulumi.Output<String>? portfolioId,
-    required pulumi.Output<String> productId,
-    required pulumi.Output<String> productVersionId,
-    pulumi.Output<String>? provisionedProductId,
-    required pulumi.Output<String> provisionedProductName,
-    required pulumi.Output<String> stackRegionId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      parameters = pulumi.Input.asOptionalInput<List<ProvisionedProductParameter>>(parameters),
-      portfolioId = pulumi.Input.asOptionalInput<String>(portfolioId),
-      productId = pulumi.Input.asInput<String>(productId),
-      productVersionId = pulumi.Input.asInput<String>(productVersionId),
-      provisionedProductId = pulumi.Input.asOptionalInput<String>(provisionedProductId),
-      provisionedProductName = pulumi.Input.asInput<String>(provisionedProductName),
-      stackRegionId = pulumi.Input.asInput<String>(stackRegionId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.parameters,
+    this.portfolioId,
+    required this.productId,
+    required this.productVersionId,
+    this.provisionedProductId,
+    required this.provisionedProductName,
+    required this.stackRegionId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ProvisionedProductArgs {
 
   factory ProvisionedProductArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductArgs(
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<ProvisionedProductParameter>>(pulumi.Input.decodeList<ProvisionedProductParameter>(map['parameters'], (value) => ProvisionedProductParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      portfolioId: map['portfolioId'] == null ? null : pulumi.Output.create<String>(map['portfolioId'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      productVersionId: pulumi.Output.create<String>(map['productVersionId'] as String),
-      provisionedProductId: map['provisionedProductId'] == null ? null : pulumi.Output.create<String>(map['provisionedProductId'] as String),
-      provisionedProductName: pulumi.Output.create<String>(map['provisionedProductName'] as String),
-      stackRegionId: pulumi.Output.create<String>(map['stackRegionId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ProvisionedProductParameter>(map['parameters'], (value) => ProvisionedProductParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portfolioId: map['portfolioId'] == null ? null : (map['portfolioId'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      productVersionId: (map['productVersionId'] as String).input(),
+      provisionedProductId: map['provisionedProductId'] == null ? null : (map['provisionedProductId'] as String).input(),
+      provisionedProductName: (map['provisionedProductName'] as String).input(),
+      stackRegionId: (map['stackRegionId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

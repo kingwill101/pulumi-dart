@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionTenancyConfig {
   /// (Required) Tenant Isolation Mode. Valid values: `PER_TENANT`.
-  final String tenantIsolationMode;
+  final pulumi.Input<String> tenantIsolationMode;
 
   /// Creates a new [GetFunctionTenancyConfig].
   /// [tenantIsolationMode] (Required) Tenant Isolation Mode. Valid values: `PER_TENANT`.
@@ -19,7 +20,7 @@ class GetFunctionTenancyConfig {
 
   factory GetFunctionTenancyConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionTenancyConfig(
-      tenantIsolationMode: map['tenantIsolationMode'] as String,
+      tenantIsolationMode: (map['tenantIsolationMode'] as String).input(),
     );
   }
 }

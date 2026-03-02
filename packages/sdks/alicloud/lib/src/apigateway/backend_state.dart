@@ -19,15 +19,11 @@ class BackendState {
   /// [createEventBridgeServiceLinkedRole] Whether to create an Event bus service association role.
   /// [description] The description of the Backend.
   BackendState({
-    pulumi.Output<String>? backendName,
-    pulumi.Output<String>? backendType,
-    pulumi.Output<bool>? createEventBridgeServiceLinkedRole,
-    pulumi.Output<String>? description,
-  }) :
-      backendName = pulumi.Input.asOptionalInput<String>(backendName),
-      backendType = pulumi.Input.asOptionalInput<String>(backendType),
-      createEventBridgeServiceLinkedRole = pulumi.Input.asOptionalInput<bool>(createEventBridgeServiceLinkedRole),
-      description = pulumi.Input.asOptionalInput<String>(description);
+    this.backendName,
+    this.backendType,
+    this.createEventBridgeServiceLinkedRole,
+    this.description,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class BackendState {
 
   factory BackendState.fromMap(Map<String, dynamic> map) {
     return BackendState(
-      backendName: map['backendName'] == null ? null : pulumi.Output.create<String>(map['backendName'] as String),
-      backendType: map['backendType'] == null ? null : pulumi.Output.create<String>(map['backendType'] as String),
-      createEventBridgeServiceLinkedRole: map['createEventBridgeServiceLinkedRole'] == null ? null : pulumi.Output.create<bool>(map['createEventBridgeServiceLinkedRole'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      backendName: map['backendName'] == null ? null : (map['backendName'] as String).input(),
+      backendType: map['backendType'] == null ? null : (map['backendType'] as String).input(),
+      createEventBridgeServiceLinkedRole: map['createEventBridgeServiceLinkedRole'] == null ? null : (map['createEventBridgeServiceLinkedRole'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
     );
   }
 }

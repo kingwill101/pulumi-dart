@@ -54,29 +54,18 @@ class GetPermissionsArgs {
   /// [table] Configuration block for a table resource. Detailed below.
   /// [tableWithColumns] Configuration block for a table with columns resource. Detailed below.
   GetPermissionsArgs({
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<bool>? catalogResource,
-    pulumi.Output<GetPermissionsDataCellsFilter>? dataCellsFilter,
-    pulumi.Output<GetPermissionsDataLocation>? dataLocation,
-    pulumi.Output<GetPermissionsDatabase>? database,
-    pulumi.Output<GetPermissionsLfTag>? lfTag,
-    pulumi.Output<GetPermissionsLfTagPolicy>? lfTagPolicy,
-    required pulumi.Output<String> principal,
-    pulumi.Output<String>? region,
-    pulumi.Output<GetPermissionsTable>? table,
-    pulumi.Output<GetPermissionsTableWithColumns>? tableWithColumns,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      catalogResource = pulumi.Input.asOptionalInput<bool>(catalogResource),
-      dataCellsFilter = pulumi.Input.asOptionalInput<GetPermissionsDataCellsFilter>(dataCellsFilter),
-      dataLocation = pulumi.Input.asOptionalInput<GetPermissionsDataLocation>(dataLocation),
-      database = pulumi.Input.asOptionalInput<GetPermissionsDatabase>(database),
-      lfTag = pulumi.Input.asOptionalInput<GetPermissionsLfTag>(lfTag),
-      lfTagPolicy = pulumi.Input.asOptionalInput<GetPermissionsLfTagPolicy>(lfTagPolicy),
-      principal = pulumi.Input.asInput<String>(principal),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      table = pulumi.Input.asOptionalInput<GetPermissionsTable>(table),
-      tableWithColumns = pulumi.Input.asOptionalInput<GetPermissionsTableWithColumns>(tableWithColumns);
+    this.catalogId,
+    this.catalogResource,
+    this.dataCellsFilter,
+    this.dataLocation,
+    this.database,
+    this.lfTag,
+    this.lfTagPolicy,
+    required this.principal,
+    this.region,
+    this.table,
+    this.tableWithColumns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,17 +85,17 @@ class GetPermissionsArgs {
 
   factory GetPermissionsArgs.fromMap(Map<String, dynamic> map) {
     return GetPermissionsArgs(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      catalogResource: map['catalogResource'] == null ? null : pulumi.Output.create<bool>(map['catalogResource'] as bool),
-      dataCellsFilter: map['dataCellsFilter'] == null ? null : pulumi.Output.create<GetPermissionsDataCellsFilter>(GetPermissionsDataCellsFilter.fromMap((map['dataCellsFilter'] as Map).cast<String, dynamic>())),
-      dataLocation: map['dataLocation'] == null ? null : pulumi.Output.create<GetPermissionsDataLocation>(GetPermissionsDataLocation.fromMap((map['dataLocation'] as Map).cast<String, dynamic>())),
-      database: map['database'] == null ? null : pulumi.Output.create<GetPermissionsDatabase>(GetPermissionsDatabase.fromMap((map['database'] as Map).cast<String, dynamic>())),
-      lfTag: map['lfTag'] == null ? null : pulumi.Output.create<GetPermissionsLfTag>(GetPermissionsLfTag.fromMap((map['lfTag'] as Map).cast<String, dynamic>())),
-      lfTagPolicy: map['lfTagPolicy'] == null ? null : pulumi.Output.create<GetPermissionsLfTagPolicy>(GetPermissionsLfTagPolicy.fromMap((map['lfTagPolicy'] as Map).cast<String, dynamic>())),
-      principal: pulumi.Output.create<String>(map['principal'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      table: map['table'] == null ? null : pulumi.Output.create<GetPermissionsTable>(GetPermissionsTable.fromMap((map['table'] as Map).cast<String, dynamic>())),
-      tableWithColumns: map['tableWithColumns'] == null ? null : pulumi.Output.create<GetPermissionsTableWithColumns>(GetPermissionsTableWithColumns.fromMap((map['tableWithColumns'] as Map).cast<String, dynamic>())),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogResource: map['catalogResource'] == null ? null : (map['catalogResource'] as bool).input(),
+      dataCellsFilter: map['dataCellsFilter'] == null ? null : (GetPermissionsDataCellsFilter.fromMap((map['dataCellsFilter'] as Map).cast<String, dynamic>())).input(),
+      dataLocation: map['dataLocation'] == null ? null : (GetPermissionsDataLocation.fromMap((map['dataLocation'] as Map).cast<String, dynamic>())).input(),
+      database: map['database'] == null ? null : (GetPermissionsDatabase.fromMap((map['database'] as Map).cast<String, dynamic>())).input(),
+      lfTag: map['lfTag'] == null ? null : (GetPermissionsLfTag.fromMap((map['lfTag'] as Map).cast<String, dynamic>())).input(),
+      lfTagPolicy: map['lfTagPolicy'] == null ? null : (GetPermissionsLfTagPolicy.fromMap((map['lfTagPolicy'] as Map).cast<String, dynamic>())).input(),
+      principal: (map['principal'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      table: map['table'] == null ? null : (GetPermissionsTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
+      tableWithColumns: map['tableWithColumns'] == null ? null : (GetPermissionsTableWithColumns.fromMap((map['tableWithColumns'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

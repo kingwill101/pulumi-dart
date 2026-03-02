@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorGroupInstancesInstance {
   /// The category of instance.
-  final String category;
+  final pulumi.Input<String> category;
   /// The id of instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The name of instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The region id of instance.
-  final String regionId;
+  final pulumi.Input<String> regionId;
 
   /// Creates a new [MonitorGroupInstancesInstance].
   /// [category] The category of instance.
@@ -34,10 +35,10 @@ class MonitorGroupInstancesInstance {
 
   factory MonitorGroupInstancesInstance.fromMap(Map<String, dynamic> map) {
     return MonitorGroupInstancesInstance(
-      category: map['category'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      regionId: map['regionId'] as String,
+      category: (map['category'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
     );
   }
 }

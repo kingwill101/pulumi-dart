@@ -20,13 +20,10 @@ class GetMapDependencyViewForAllMachinesArgs {
   /// [mapName] Maps resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetMapDependencyViewForAllMachinesArgs({
-    pulumi.Output<DependencyProcessFilter>? filters,
-    required pulumi.Output<String> mapName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      filters = pulumi.Input.asOptionalInput<DependencyProcessFilter>(filters),
-      mapName = pulumi.Input.asInput<String>(mapName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.filters,
+    required this.mapName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetMapDependencyViewForAllMachinesArgs {
 
   factory GetMapDependencyViewForAllMachinesArgs.fromMap(Map<String, dynamic> map) {
     return GetMapDependencyViewForAllMachinesArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<DependencyProcessFilter>(DependencyProcessFilter.fromMap((map['filters'] as Map).cast<String, dynamic>())),
-      mapName: pulumi.Output.create<String>(map['mapName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      filters: map['filters'] == null ? null : (DependencyProcessFilter.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      mapName: (map['mapName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

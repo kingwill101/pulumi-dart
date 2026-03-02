@@ -6,9 +6,9 @@ import 'service_oci_artifact_entry_response.dart';
 /// Azure container registry configuration information
 class ServiceAcrConfigurationInfoResponse {
   /// The list of the ACR login servers.
-  final List<String>? loginServers;
+  final pulumi.Input<List<String>>? loginServers;
   /// The list of Open Container Initiative (OCI) artifacts.
-  final List<ServiceOciArtifactEntryResponse>? ociArtifacts;
+  final pulumi.Input<List<ServiceOciArtifactEntryResponse>>? ociArtifacts;
 
   /// Creates a new [ServiceAcrConfigurationInfoResponse].
   /// [loginServers] The list of the ACR login servers.
@@ -21,14 +21,14 @@ class ServiceAcrConfigurationInfoResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'loginServers': ?loginServers,
-      'ociArtifacts': ?ociArtifacts == null ? null : pulumi.Input.encodeList<ServiceOciArtifactEntryResponse, Map<String, dynamic>>(ociArtifacts!, (value) => value.toMap()),
+      'ociArtifacts': ?pulumi.Input.mapOptionalInputValue<List<ServiceOciArtifactEntryResponse>, List<Map<String, dynamic>>>(ociArtifacts, (value) => pulumi.Input.encodeList<ServiceOciArtifactEntryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ServiceAcrConfigurationInfoResponse.fromMap(Map<String, dynamic> map) {
     return ServiceAcrConfigurationInfoResponse(
-      loginServers: map['loginServers'] == null ? null : (map['loginServers'] as List).cast<String>(),
-      ociArtifacts: map['ociArtifacts'] == null ? null : pulumi.Input.decodeList<ServiceOciArtifactEntryResponse>(map['ociArtifacts'], (value) => ServiceOciArtifactEntryResponse.fromMap((value as Map).cast<String, dynamic>())),
+      loginServers: map['loginServers'] == null ? null : ((map['loginServers'] as List).cast<String>()).input(),
+      ociArtifacts: map['ociArtifacts'] == null ? null : (pulumi.Input.decodeList<ServiceOciArtifactEntryResponse>(map['ociArtifacts'], (value) => ServiceOciArtifactEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class VulWhitelistArgs {
   /// [targetInfo] Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
   /// [whitelist] Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
   VulWhitelistArgs({
-    pulumi.Output<String>? reason,
-    pulumi.Output<String>? targetInfo,
-    required pulumi.Output<String> whitelist,
-  }) :
-      reason = pulumi.Input.asOptionalInput<String>(reason),
-      targetInfo = pulumi.Input.asOptionalInput<String>(targetInfo),
-      whitelist = pulumi.Input.asInput<String>(whitelist);
+    this.reason,
+    this.targetInfo,
+    required this.whitelist,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VulWhitelistArgs {
 
   factory VulWhitelistArgs.fromMap(Map<String, dynamic> map) {
     return VulWhitelistArgs(
-      reason: map['reason'] == null ? null : pulumi.Output.create<String>(map['reason'] as String),
-      targetInfo: map['targetInfo'] == null ? null : pulumi.Output.create<String>(map['targetInfo'] as String),
-      whitelist: pulumi.Output.create<String>(map['whitelist'] as String),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      targetInfo: map['targetInfo'] == null ? null : (map['targetInfo'] as String).input(),
+      whitelist: (map['whitelist'] as String).input(),
     );
   }
 }

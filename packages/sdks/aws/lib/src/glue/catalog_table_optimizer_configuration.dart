@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'catalog_table_optimizer_configuration_orphan_file_deletion_configuration.dart';
 import 'catalog_table_optimizer_configuration_retention_configuration.dart';
 
 class CatalogTableOptimizerConfiguration {
   /// Indicates whether the table optimizer is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The configuration block for an orphan file deletion optimizer. See Orphan File Deletion Configuration for additional details.
-  final CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration? orphanFileDeletionConfiguration;
+  final pulumi.Input<CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration>? orphanFileDeletionConfiguration;
   /// The configuration block for a snapshot retention optimizer. See Retention Configuration for additional details.
-  final CatalogTableOptimizerConfigurationRetentionConfiguration? retentionConfiguration;
+  final pulumi.Input<CatalogTableOptimizerConfigurationRetentionConfiguration>? retentionConfiguration;
   /// The ARN of the IAM role to use for the table optimizer.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [CatalogTableOptimizerConfiguration].
   /// [enabled] Indicates whether the table optimizer is enabled.
@@ -28,18 +29,18 @@ class CatalogTableOptimizerConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'orphanFileDeletionConfiguration': ?orphanFileDeletionConfiguration == null ? null : orphanFileDeletionConfiguration!.toMap(),
-      'retentionConfiguration': ?retentionConfiguration == null ? null : retentionConfiguration!.toMap(),
+      'orphanFileDeletionConfiguration': ?pulumi.Input.mapOptionalInputValue<CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration, Map<String, dynamic>>(orphanFileDeletionConfiguration, (value) => value.toMap()),
+      'retentionConfiguration': ?pulumi.Input.mapOptionalInputValue<CatalogTableOptimizerConfigurationRetentionConfiguration, Map<String, dynamic>>(retentionConfiguration, (value) => value.toMap()),
       'roleArn': roleArn,
     };
   }
 
   factory CatalogTableOptimizerConfiguration.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerConfiguration(
-      enabled: map['enabled'] as bool,
-      orphanFileDeletionConfiguration: map['orphanFileDeletionConfiguration'] == null ? null : CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration.fromMap((map['orphanFileDeletionConfiguration'] as Map).cast<String, dynamic>()),
-      retentionConfiguration: map['retentionConfiguration'] == null ? null : CatalogTableOptimizerConfigurationRetentionConfiguration.fromMap((map['retentionConfiguration'] as Map).cast<String, dynamic>()),
-      roleArn: map['roleArn'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      orphanFileDeletionConfiguration: map['orphanFileDeletionConfiguration'] == null ? null : (CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration.fromMap((map['orphanFileDeletionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      retentionConfiguration: map['retentionConfiguration'] == null ? null : (CatalogTableOptimizerConfigurationRetentionConfiguration.fromMap((map['retentionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

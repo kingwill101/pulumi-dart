@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iisweb_application_response.dart';
 
 /// IIS workload instance model custom properties.
 class IISWorkloadInstanceModelCustomPropertiesResponse {
   /// Gets or sets the container Id.
-  final String? containerName;
+  final pulumi.Input<String>? containerName;
   /// Gets or sets the fileshare name.
-  final String? fileshareName;
+  final pulumi.Input<String>? fileshareName;
   /// IISWeb application.
-  final IISWebApplicationResponse? iisWebApplication;
+  final pulumi.Input<IISWebApplicationResponse>? iisWebApplication;
   /// Gets or sets the instance type.
   /// Expected value is 'IISWorkloadInstanceModelCustomProperties'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Gets or sets the Web application ARM id.
-  final String? webAppArmId;
+  final pulumi.Input<String>? webAppArmId;
   /// Gets or sets the Web application site name.
-  final String? webAppSiteName;
+  final pulumi.Input<String>? webAppSiteName;
 
   /// Creates a new [IISWorkloadInstanceModelCustomPropertiesResponse].
   /// [containerName] Gets or sets the container Id.
@@ -38,7 +39,7 @@ class IISWorkloadInstanceModelCustomPropertiesResponse {
     return <String, dynamic>{
       'containerName': ?containerName,
       'fileshareName': ?fileshareName,
-      'iisWebApplication': ?iisWebApplication == null ? null : iisWebApplication!.toMap(),
+      'iisWebApplication': ?pulumi.Input.mapOptionalInputValue<IISWebApplicationResponse, Map<String, dynamic>>(iisWebApplication, (value) => value.toMap()),
       'instanceType': instanceType,
       'webAppArmId': ?webAppArmId,
       'webAppSiteName': ?webAppSiteName,
@@ -47,12 +48,12 @@ class IISWorkloadInstanceModelCustomPropertiesResponse {
 
   factory IISWorkloadInstanceModelCustomPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IISWorkloadInstanceModelCustomPropertiesResponse(
-      containerName: map['containerName'] == null ? null : map['containerName'] as String,
-      fileshareName: map['fileshareName'] == null ? null : map['fileshareName'] as String,
-      iisWebApplication: map['iisWebApplication'] == null ? null : IISWebApplicationResponse.fromMap((map['iisWebApplication'] as Map).cast<String, dynamic>()),
-      instanceType: map['instanceType'] as String,
-      webAppArmId: map['webAppArmId'] == null ? null : map['webAppArmId'] as String,
-      webAppSiteName: map['webAppSiteName'] == null ? null : map['webAppSiteName'] as String,
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      fileshareName: map['fileshareName'] == null ? null : (map['fileshareName'] as String).input(),
+      iisWebApplication: map['iisWebApplication'] == null ? null : (IISWebApplicationResponse.fromMap((map['iisWebApplication'] as Map).cast<String, dynamic>())).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      webAppArmId: map['webAppArmId'] == null ? null : (map['webAppArmId'] as String).input(),
+      webAppSiteName: map['webAppSiteName'] == null ? null : (map['webAppSiteName'] as String).input(),
     );
   }
 }

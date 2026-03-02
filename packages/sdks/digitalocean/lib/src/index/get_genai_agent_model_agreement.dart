@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiAgentModelAgreement {
   /// Description of the agreement
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Name of the agreement
-  final String? name;
+  final pulumi.Input<String>? name;
   /// URL of the agreement
-  final String? url;
+  final pulumi.Input<String>? url;
   /// UUID of the agreement
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
 
   /// Creates a new [GetGenaiAgentModelAgreement].
   /// [description] Description of the agreement
@@ -34,10 +35,10 @@ class GetGenaiAgentModelAgreement {
 
   factory GetGenaiAgentModelAgreement.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentModelAgreement(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

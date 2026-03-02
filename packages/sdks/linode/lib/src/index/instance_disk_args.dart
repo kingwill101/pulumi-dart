@@ -45,29 +45,18 @@ class InstanceDiskArgs {
   /// [stackscriptId] A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
   /// [timeouts] Optional.
   InstanceDiskArgs({
-    pulumi.Output<List<String>>? authorizedKeys,
-    pulumi.Output<List<String>>? authorizedUsers,
-    pulumi.Output<String>? filesystem,
-    pulumi.Output<String>? image,
-    required pulumi.Output<String> label,
-    required pulumi.Output<int> linodeId,
-    pulumi.Output<String>? rootPass,
-    required pulumi.Output<int> size,
-    pulumi.Output<Map<String, String>>? stackscriptData,
-    pulumi.Output<int>? stackscriptId,
-    pulumi.Output<InstanceDiskTimeouts>? timeouts,
-  }) :
-      authorizedKeys = pulumi.Input.asOptionalInput<List<String>>(authorizedKeys),
-      authorizedUsers = pulumi.Input.asOptionalInput<List<String>>(authorizedUsers),
-      filesystem = pulumi.Input.asOptionalInput<String>(filesystem),
-      image = pulumi.Input.asOptionalInput<String>(image),
-      label = pulumi.Input.asInput<String>(label),
-      linodeId = pulumi.Input.asInput<int>(linodeId),
-      rootPass = pulumi.Input.asOptionalInput<String>(rootPass),
-      size = pulumi.Input.asInput<int>(size),
-      stackscriptData = pulumi.Input.asOptionalInput<Map<String, String>>(stackscriptData),
-      stackscriptId = pulumi.Input.asOptionalInput<int>(stackscriptId),
-      timeouts = pulumi.Input.asOptionalInput<InstanceDiskTimeouts>(timeouts);
+    this.authorizedKeys,
+    this.authorizedUsers,
+    this.filesystem,
+    this.image,
+    required this.label,
+    required this.linodeId,
+    this.rootPass,
+    required this.size,
+    this.stackscriptData,
+    this.stackscriptId,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class InstanceDiskArgs {
 
   factory InstanceDiskArgs.fromMap(Map<String, dynamic> map) {
     return InstanceDiskArgs(
-      authorizedKeys: map['authorizedKeys'] == null ? null : pulumi.Output.create<List<String>>((map['authorizedKeys'] as List).cast<String>()),
-      authorizedUsers: map['authorizedUsers'] == null ? null : pulumi.Output.create<List<String>>((map['authorizedUsers'] as List).cast<String>()),
-      filesystem: map['filesystem'] == null ? null : pulumi.Output.create<String>(map['filesystem'] as String),
-      image: map['image'] == null ? null : pulumi.Output.create<String>(map['image'] as String),
-      label: pulumi.Output.create<String>(map['label'] as String),
-      linodeId: pulumi.Output.create<int>(map['linodeId'] as int),
-      rootPass: map['rootPass'] == null ? null : pulumi.Output.create<String>(map['rootPass'] as String),
-      size: pulumi.Output.create<int>(map['size'] as int),
-      stackscriptData: map['stackscriptData'] == null ? null : pulumi.Output.create<Map<String, String>>((map['stackscriptData'] as Map).cast<String, String>()),
-      stackscriptId: map['stackscriptId'] == null ? null : pulumi.Output.create<int>(map['stackscriptId'] as int),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<InstanceDiskTimeouts>(InstanceDiskTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      authorizedKeys: map['authorizedKeys'] == null ? null : ((map['authorizedKeys'] as List).cast<String>()).input(),
+      authorizedUsers: map['authorizedUsers'] == null ? null : ((map['authorizedUsers'] as List).cast<String>()).input(),
+      filesystem: map['filesystem'] == null ? null : (map['filesystem'] as String).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      label: (map['label'] as String).input(),
+      linodeId: (map['linodeId'] as int).input(),
+      rootPass: map['rootPass'] == null ? null : (map['rootPass'] as String).input(),
+      size: (map['size'] as int).input(),
+      stackscriptData: map['stackscriptData'] == null ? null : ((map['stackscriptData'] as Map).cast<String, String>()).input(),
+      stackscriptId: map['stackscriptId'] == null ? null : (map['stackscriptId'] as int).input(),
+      timeouts: map['timeouts'] == null ? null : (InstanceDiskTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

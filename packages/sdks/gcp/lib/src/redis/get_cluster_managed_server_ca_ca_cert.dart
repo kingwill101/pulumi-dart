@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterManagedServerCaCaCert {
   /// The certificates that form the CA chain, from leaf to root order
-  final List<String> certificates;
+  final pulumi.Input<List<String>> certificates;
 
   /// Creates a new [GetClusterManagedServerCaCaCert].
   /// [certificates] The certificates that form the CA chain, from leaf to root order
@@ -19,7 +20,7 @@ class GetClusterManagedServerCaCaCert {
 
   factory GetClusterManagedServerCaCaCert.fromMap(Map<String, dynamic> map) {
     return GetClusterManagedServerCaCaCert(
-      certificates: (map['certificates'] as List).cast<String>(),
+      certificates: ((map['certificates'] as List).cast<String>()).input(),
     );
   }
 }

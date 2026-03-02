@@ -5,34 +5,34 @@ import 'get_server_types_server_type_location.dart';
 
 class GetServerTypesServerType {
   /// Architecture of the cpu for a Server of this type.
-  final String architecture;
+  final pulumi.Input<String> architecture;
   /// Category of the Server Type.
-  final String category;
+  final pulumi.Input<String> category;
   /// Number of cpu cores for a Server of this type.
-  final int cores;
+  final pulumi.Input<int> cores;
   /// Type of cpu for a Server of this type.
-  final String cpuType;
+  final pulumi.Input<String> cpuType;
   /// Date of the Server Type deprecation announcement.
-  final String deprecationAnnounced;
+  final pulumi.Input<String> deprecationAnnounced;
   /// Description of the Server Type.
-  final String description;
+  final pulumi.Input<String> description;
   /// Disk size in GB for a Server of this type.
-  final int disk;
+  final pulumi.Input<int> disk;
   /// ID of the Server Type.
-  final int id;
-  final int includedTraffic;
+  final pulumi.Input<int> id;
+  final pulumi.Input<int> includedTraffic;
   /// Whether the Server Type is deprecated.
-  final bool isDeprecated;
+  final pulumi.Input<bool> isDeprecated;
   /// List of supported Locations for this Server Type.
-  final List<GetServerTypesServerTypeLocation> locations;
+  final pulumi.Input<List<GetServerTypesServerTypeLocation>> locations;
   /// Memory in GB for a Server of this type.
-  final int memory;
+  final pulumi.Input<int> memory;
   /// Name of the Server Type.
-  final String name;
+  final pulumi.Input<String> name;
   /// Type of boot drive for a Server of this type.
-  final String storageType;
+  final pulumi.Input<String> storageType;
   /// Date of the Server Type removal. After this date, the Server Type cannot be used anymore.
-  final String unavailableAfter;
+  final pulumi.Input<String> unavailableAfter;
 
   /// Creates a new [GetServerTypesServerType].
   /// [architecture] Architecture of the cpu for a Server of this type.
@@ -80,7 +80,7 @@ class GetServerTypesServerType {
       'id': id,
       'includedTraffic': includedTraffic,
       'isDeprecated': isDeprecated,
-      'locations': pulumi.Input.encodeList<GetServerTypesServerTypeLocation, Map<String, dynamic>>(locations, (value) => value.toMap()),
+      'locations': pulumi.Input.mapInputValue<List<GetServerTypesServerTypeLocation>, List<Map<String, dynamic>>>(locations, (value) => pulumi.Input.encodeList<GetServerTypesServerTypeLocation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'memory': memory,
       'name': name,
       'storageType': storageType,
@@ -90,21 +90,21 @@ class GetServerTypesServerType {
 
   factory GetServerTypesServerType.fromMap(Map<String, dynamic> map) {
     return GetServerTypesServerType(
-      architecture: map['architecture'] as String,
-      category: map['category'] as String,
-      cores: map['cores'] as int,
-      cpuType: map['cpuType'] as String,
-      deprecationAnnounced: map['deprecationAnnounced'] as String,
-      description: map['description'] as String,
-      disk: map['disk'] as int,
-      id: map['id'] as int,
-      includedTraffic: map['includedTraffic'] as int,
-      isDeprecated: map['isDeprecated'] as bool,
-      locations: pulumi.Input.decodeList<GetServerTypesServerTypeLocation>(map['locations'], (value) => GetServerTypesServerTypeLocation.fromMap((value as Map).cast<String, dynamic>())),
-      memory: map['memory'] as int,
-      name: map['name'] as String,
-      storageType: map['storageType'] as String,
-      unavailableAfter: map['unavailableAfter'] as String,
+      architecture: (map['architecture'] as String).input(),
+      category: (map['category'] as String).input(),
+      cores: (map['cores'] as int).input(),
+      cpuType: (map['cpuType'] as String).input(),
+      deprecationAnnounced: (map['deprecationAnnounced'] as String).input(),
+      description: (map['description'] as String).input(),
+      disk: (map['disk'] as int).input(),
+      id: (map['id'] as int).input(),
+      includedTraffic: (map['includedTraffic'] as int).input(),
+      isDeprecated: (map['isDeprecated'] as bool).input(),
+      locations: (pulumi.Input.decodeList<GetServerTypesServerTypeLocation>(map['locations'], (value) => GetServerTypesServerTypeLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      memory: (map['memory'] as int).input(),
+      name: (map['name'] as String).input(),
+      storageType: (map['storageType'] as String).input(),
+      unavailableAfter: (map['unavailableAfter'] as String).input(),
     );
   }
 }

@@ -7,9 +7,9 @@ import 'port_set_response.dart';
 /// Definition of RuleVariables
 class RuleVariablesResponse {
   /// Property ipSets
-  final Map<String, IPSetResponse>? ipSets;
+  final pulumi.Input<Map<String, IPSetResponse>>? ipSets;
   /// Property portSets
-  final Map<String, PortSetResponse>? portSets;
+  final pulumi.Input<Map<String, PortSetResponse>>? portSets;
 
   /// Creates a new [RuleVariablesResponse].
   /// [ipSets] Property ipSets
@@ -21,15 +21,15 @@ class RuleVariablesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipSets': ?ipSets == null ? null : pulumi.Input.encodeMapValues<IPSetResponse, Map<String, dynamic>>(ipSets!, (value) => value.toMap()),
-      'portSets': ?portSets == null ? null : pulumi.Input.encodeMapValues<PortSetResponse, Map<String, dynamic>>(portSets!, (value) => value.toMap()),
+      'ipSets': ?pulumi.Input.mapOptionalInputValue<Map<String, IPSetResponse>, Map<String, Map<String, dynamic>>>(ipSets, (value) => pulumi.Input.encodeMapValues<IPSetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'portSets': ?pulumi.Input.mapOptionalInputValue<Map<String, PortSetResponse>, Map<String, Map<String, dynamic>>>(portSets, (value) => pulumi.Input.encodeMapValues<PortSetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RuleVariablesResponse.fromMap(Map<String, dynamic> map) {
     return RuleVariablesResponse(
-      ipSets: map['ipSets'] == null ? null : pulumi.Input.decodeMapValues<IPSetResponse>(map['ipSets'], (value) => IPSetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      portSets: map['portSets'] == null ? null : pulumi.Input.decodeMapValues<PortSetResponse>(map['portSets'], (value) => PortSetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ipSets: map['ipSets'] == null ? null : (pulumi.Input.decodeMapValues<IPSetResponse>(map['ipSets'], (value) => IPSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portSets: map['portSets'] == null ? null : (pulumi.Input.decodeMapValues<PortSetResponse>(map['portSets'], (value) => PortSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

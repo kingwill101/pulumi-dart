@@ -33,21 +33,14 @@ class AccountArgs {
   /// [storage] A `storage` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   AccountArgs({
-    required pulumi.Output<AccountIdentity> identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<AccountStorage> storage,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asInput<AccountIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storage = pulumi.Input.asInput<AccountStorage>(storage),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.identity,
+    this.location,
+    this.name,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    required this.storage,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      identity: pulumi.Output.create<AccountIdentity>(AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storage: pulumi.Output.create<AccountStorage>(AccountStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: (AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storage: (AccountStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

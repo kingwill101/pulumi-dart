@@ -19,13 +19,10 @@ class GetDeploymentSettingArgs {
   /// [deploymentSettingsName] Name of Deployment Setting
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDeploymentSettingArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> deploymentSettingsName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      deploymentSettingsName = pulumi.Input.asInput<String>(deploymentSettingsName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.deploymentSettingsName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDeploymentSettingArgs {
 
   factory GetDeploymentSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentSettingArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      deploymentSettingsName: pulumi.Output.create<String>(map['deploymentSettingsName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      deploymentSettingsName: (map['deploymentSettingsName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class TopicAuthorizationRuleArgs {
   /// [rights] The rights associated with the rule.
   /// [topicName] The topic name.
   TopicAuthorizationRuleArgs({
-    pulumi.Output<String>? authorizationRuleName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<AccessRights>> rights,
-    required pulumi.Output<String> topicName,
-  }) :
-      authorizationRuleName = pulumi.Input.asOptionalInput<String>(authorizationRuleName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rights = pulumi.Input.asInput<List<AccessRights>>(rights),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    this.authorizationRuleName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    required this.rights,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class TopicAuthorizationRuleArgs {
 
   factory TopicAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return TopicAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : pulumi.Output.create<String>(map['authorizationRuleName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rights: pulumi.Output.create<List<AccessRights>>(pulumi.Input.decodeList<AccessRights>(map['rights'], (value) => AccessRights.fromValue(value as String))),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rights: (pulumi.Input.decodeList<AccessRights>(map['rights'], (value) => AccessRights.fromValue(value as String))).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

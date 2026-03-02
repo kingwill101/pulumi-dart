@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryCleanupPolicyMostRecentVersions {
   /// Minimum number of versions to keep.
-  final int? keepCount;
+  final pulumi.Input<int>? keepCount;
   /// Match versions by package prefix. Applied on any prefix match.
-  final List<String>? packageNamePrefixes;
+  final pulumi.Input<List<String>>? packageNamePrefixes;
 
   /// Creates a new [RepositoryCleanupPolicyMostRecentVersions].
   /// [keepCount] Minimum number of versions to keep.
@@ -24,8 +25,8 @@ class RepositoryCleanupPolicyMostRecentVersions {
 
   factory RepositoryCleanupPolicyMostRecentVersions.fromMap(Map<String, dynamic> map) {
     return RepositoryCleanupPolicyMostRecentVersions(
-      keepCount: map['keepCount'] == null ? null : map['keepCount'] as int,
-      packageNamePrefixes: map['packageNamePrefixes'] == null ? null : (map['packageNamePrefixes'] as List).cast<String>(),
+      keepCount: map['keepCount'] == null ? null : (map['keepCount'] as int).input(),
+      packageNamePrefixes: map['packageNamePrefixes'] == null ? null : ((map['packageNamePrefixes'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// [Deprecated] The paths to the mounted TLS Certificates and private key. The paths to the mounted TLS Certificates and private key.
 class TlsCertificatePathsResponse {
   /// The path to the file holding the client or server TLS certificate to use.
-  final String certificatePath;
+  final pulumi.Input<String> certificatePath;
   /// The path to the file holding the client or server private key.
-  final String privateKeyPath;
+  final pulumi.Input<String> privateKeyPath;
 
   /// Creates a new [TlsCertificatePathsResponse].
   /// [certificatePath] The path to the file holding the client or server TLS certificate to use.
@@ -25,8 +26,8 @@ class TlsCertificatePathsResponse {
 
   factory TlsCertificatePathsResponse.fromMap(Map<String, dynamic> map) {
     return TlsCertificatePathsResponse(
-      certificatePath: map['certificatePath'] as String,
-      privateKeyPath: map['privateKeyPath'] as String,
+      certificatePath: (map['certificatePath'] as String).input(),
+      privateKeyPath: (map['privateKeyPath'] as String).input(),
     );
   }
 }

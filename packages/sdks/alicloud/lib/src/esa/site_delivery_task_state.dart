@@ -62,33 +62,20 @@ class SiteDeliveryTaskState {
   /// [status] Task status, value:
   /// [taskName] The task name.
   SiteDeliveryTaskState({
-    pulumi.Output<String>? businessType,
-    pulumi.Output<String>? dataCenter,
-    pulumi.Output<String>? deliveryType,
-    pulumi.Output<double>? discardRate,
-    pulumi.Output<String>? fieldName,
-    pulumi.Output<SiteDeliveryTaskHttpDelivery>? httpDelivery,
-    pulumi.Output<SiteDeliveryTaskKafkaDelivery>? kafkaDelivery,
-    pulumi.Output<SiteDeliveryTaskOssDelivery>? ossDelivery,
-    pulumi.Output<SiteDeliveryTaskS3Delivery>? s3Delivery,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<SiteDeliveryTaskSlsDelivery>? slsDelivery,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? taskName,
-  }) :
-      businessType = pulumi.Input.asOptionalInput<String>(businessType),
-      dataCenter = pulumi.Input.asOptionalInput<String>(dataCenter),
-      deliveryType = pulumi.Input.asOptionalInput<String>(deliveryType),
-      discardRate = pulumi.Input.asOptionalInput<double>(discardRate),
-      fieldName = pulumi.Input.asOptionalInput<String>(fieldName),
-      httpDelivery = pulumi.Input.asOptionalInput<SiteDeliveryTaskHttpDelivery>(httpDelivery),
-      kafkaDelivery = pulumi.Input.asOptionalInput<SiteDeliveryTaskKafkaDelivery>(kafkaDelivery),
-      ossDelivery = pulumi.Input.asOptionalInput<SiteDeliveryTaskOssDelivery>(ossDelivery),
-      s3Delivery = pulumi.Input.asOptionalInput<SiteDeliveryTaskS3Delivery>(s3Delivery),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      slsDelivery = pulumi.Input.asOptionalInput<SiteDeliveryTaskSlsDelivery>(slsDelivery),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      taskName = pulumi.Input.asOptionalInput<String>(taskName);
+    this.businessType,
+    this.dataCenter,
+    this.deliveryType,
+    this.discardRate,
+    this.fieldName,
+    this.httpDelivery,
+    this.kafkaDelivery,
+    this.ossDelivery,
+    this.s3Delivery,
+    this.siteId,
+    this.slsDelivery,
+    this.status,
+    this.taskName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -110,19 +97,19 @@ class SiteDeliveryTaskState {
 
   factory SiteDeliveryTaskState.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskState(
-      businessType: map['businessType'] == null ? null : pulumi.Output.create<String>(map['businessType'] as String),
-      dataCenter: map['dataCenter'] == null ? null : pulumi.Output.create<String>(map['dataCenter'] as String),
-      deliveryType: map['deliveryType'] == null ? null : pulumi.Output.create<String>(map['deliveryType'] as String),
-      discardRate: map['discardRate'] == null ? null : pulumi.Output.create<double>(map['discardRate'] as double),
-      fieldName: map['fieldName'] == null ? null : pulumi.Output.create<String>(map['fieldName'] as String),
-      httpDelivery: map['httpDelivery'] == null ? null : pulumi.Output.create<SiteDeliveryTaskHttpDelivery>(SiteDeliveryTaskHttpDelivery.fromMap((map['httpDelivery'] as Map).cast<String, dynamic>())),
-      kafkaDelivery: map['kafkaDelivery'] == null ? null : pulumi.Output.create<SiteDeliveryTaskKafkaDelivery>(SiteDeliveryTaskKafkaDelivery.fromMap((map['kafkaDelivery'] as Map).cast<String, dynamic>())),
-      ossDelivery: map['ossDelivery'] == null ? null : pulumi.Output.create<SiteDeliveryTaskOssDelivery>(SiteDeliveryTaskOssDelivery.fromMap((map['ossDelivery'] as Map).cast<String, dynamic>())),
-      s3Delivery: map['s3Delivery'] == null ? null : pulumi.Output.create<SiteDeliveryTaskS3Delivery>(SiteDeliveryTaskS3Delivery.fromMap((map['s3Delivery'] as Map).cast<String, dynamic>())),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      slsDelivery: map['slsDelivery'] == null ? null : pulumi.Output.create<SiteDeliveryTaskSlsDelivery>(SiteDeliveryTaskSlsDelivery.fromMap((map['slsDelivery'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      taskName: map['taskName'] == null ? null : pulumi.Output.create<String>(map['taskName'] as String),
+      businessType: map['businessType'] == null ? null : (map['businessType'] as String).input(),
+      dataCenter: map['dataCenter'] == null ? null : (map['dataCenter'] as String).input(),
+      deliveryType: map['deliveryType'] == null ? null : (map['deliveryType'] as String).input(),
+      discardRate: map['discardRate'] == null ? null : (map['discardRate'] as double).input(),
+      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
+      httpDelivery: map['httpDelivery'] == null ? null : (SiteDeliveryTaskHttpDelivery.fromMap((map['httpDelivery'] as Map).cast<String, dynamic>())).input(),
+      kafkaDelivery: map['kafkaDelivery'] == null ? null : (SiteDeliveryTaskKafkaDelivery.fromMap((map['kafkaDelivery'] as Map).cast<String, dynamic>())).input(),
+      ossDelivery: map['ossDelivery'] == null ? null : (SiteDeliveryTaskOssDelivery.fromMap((map['ossDelivery'] as Map).cast<String, dynamic>())).input(),
+      s3Delivery: map['s3Delivery'] == null ? null : (SiteDeliveryTaskS3Delivery.fromMap((map['s3Delivery'] as Map).cast<String, dynamic>())).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      slsDelivery: map['slsDelivery'] == null ? null : (SiteDeliveryTaskSlsDelivery.fromMap((map['slsDelivery'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      taskName: map['taskName'] == null ? null : (map['taskName'] as String).input(),
     );
   }
 }

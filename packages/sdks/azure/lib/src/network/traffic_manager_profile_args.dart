@@ -47,25 +47,16 @@ class TrafficManagerProfileArgs {
   /// [trafficRoutingMethod] Specifies the algorithm used to route traffic. Possible values are `Geographic`, `Weighted`, `Performance`, `Priority`, `Subnet` and `MultiValue`.
   /// [trafficViewEnabled] Indicates whether Traffic View is enabled for the Traffic Manager profile.
   TrafficManagerProfileArgs({
-    required pulumi.Output<TrafficManagerProfileDnsConfig> dnsConfig,
-    pulumi.Output<int>? maxReturn,
-    required pulumi.Output<TrafficManagerProfileMonitorConfig> monitorConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? profileStatus,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> trafficRoutingMethod,
-    pulumi.Output<bool>? trafficViewEnabled,
-  }) :
-      dnsConfig = pulumi.Input.asInput<TrafficManagerProfileDnsConfig>(dnsConfig),
-      maxReturn = pulumi.Input.asOptionalInput<int>(maxReturn),
-      monitorConfig = pulumi.Input.asInput<TrafficManagerProfileMonitorConfig>(monitorConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      profileStatus = pulumi.Input.asOptionalInput<String>(profileStatus),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trafficRoutingMethod = pulumi.Input.asInput<String>(trafficRoutingMethod),
-      trafficViewEnabled = pulumi.Input.asOptionalInput<bool>(trafficViewEnabled);
+    required this.dnsConfig,
+    this.maxReturn,
+    required this.monitorConfig,
+    this.name,
+    this.profileStatus,
+    required this.resourceGroupName,
+    this.tags,
+    required this.trafficRoutingMethod,
+    this.trafficViewEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,15 +74,15 @@ class TrafficManagerProfileArgs {
 
   factory TrafficManagerProfileArgs.fromMap(Map<String, dynamic> map) {
     return TrafficManagerProfileArgs(
-      dnsConfig: pulumi.Output.create<TrafficManagerProfileDnsConfig>(TrafficManagerProfileDnsConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())),
-      maxReturn: map['maxReturn'] == null ? null : pulumi.Output.create<int>(map['maxReturn'] as int),
-      monitorConfig: pulumi.Output.create<TrafficManagerProfileMonitorConfig>(TrafficManagerProfileMonitorConfig.fromMap((map['monitorConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      profileStatus: map['profileStatus'] == null ? null : pulumi.Output.create<String>(map['profileStatus'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trafficRoutingMethod: pulumi.Output.create<String>(map['trafficRoutingMethod'] as String),
-      trafficViewEnabled: map['trafficViewEnabled'] == null ? null : pulumi.Output.create<bool>(map['trafficViewEnabled'] as bool),
+      dnsConfig: (TrafficManagerProfileDnsConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())).input(),
+      maxReturn: map['maxReturn'] == null ? null : (map['maxReturn'] as int).input(),
+      monitorConfig: (TrafficManagerProfileMonitorConfig.fromMap((map['monitorConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      profileStatus: map['profileStatus'] == null ? null : (map['profileStatus'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trafficRoutingMethod: (map['trafficRoutingMethod'] as String).input(),
+      trafficViewEnabled: map['trafficViewEnabled'] == null ? null : (map['trafficViewEnabled'] as bool).input(),
     );
   }
 }

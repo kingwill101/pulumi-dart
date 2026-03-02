@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The reference to the contact profile resource.
 class ContactsPropertiesContactProfile {
   /// Resource ID.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [ContactsPropertiesContactProfile].
   /// [id] Resource ID.
@@ -20,7 +21,7 @@ class ContactsPropertiesContactProfile {
 
   factory ContactsPropertiesContactProfile.fromMap(Map<String, dynamic> map) {
     return ContactsPropertiesContactProfile(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

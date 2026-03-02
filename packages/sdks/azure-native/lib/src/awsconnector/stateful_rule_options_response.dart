@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of StatefulRuleOptions
 class StatefulRuleOptionsResponse {
   /// Property ruleOrder
-  final String? ruleOrder;
+  final pulumi.Input<String>? ruleOrder;
 
   /// Creates a new [StatefulRuleOptionsResponse].
   /// [ruleOrder] Property ruleOrder
@@ -20,7 +21,7 @@ class StatefulRuleOptionsResponse {
 
   factory StatefulRuleOptionsResponse.fromMap(Map<String, dynamic> map) {
     return StatefulRuleOptionsResponse(
-      ruleOrder: map['ruleOrder'] == null ? null : map['ruleOrder'] as String,
+      ruleOrder: map['ruleOrder'] == null ? null : (map['ruleOrder'] as String).input(),
     );
   }
 }

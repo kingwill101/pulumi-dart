@@ -26,17 +26,12 @@ class LoginProfileState {
   /// [passwordResetRequired] Whether the user must reset the password at the next logon. Value:
   /// [userName] The user name.
   LoginProfileState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? mfaBindRequired,
-    pulumi.Output<String>? password,
-    pulumi.Output<bool>? passwordResetRequired,
-    pulumi.Output<String>? userName,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      mfaBindRequired = pulumi.Input.asOptionalInput<bool>(mfaBindRequired),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      passwordResetRequired = pulumi.Input.asOptionalInput<bool>(passwordResetRequired),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.createTime,
+    this.mfaBindRequired,
+    this.password,
+    this.passwordResetRequired,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class LoginProfileState {
 
   factory LoginProfileState.fromMap(Map<String, dynamic> map) {
     return LoginProfileState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      mfaBindRequired: map['mfaBindRequired'] == null ? null : pulumi.Output.create<bool>(map['mfaBindRequired'] as bool),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      passwordResetRequired: map['passwordResetRequired'] == null ? null : pulumi.Output.create<bool>(map['passwordResetRequired'] as bool),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      mfaBindRequired: map['mfaBindRequired'] == null ? null : (map['mfaBindRequired'] as bool).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      passwordResetRequired: map['passwordResetRequired'] == null ? null : (map['passwordResetRequired'] as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class SecondaryIndexArgs {
   /// [primaryKeys] A list of primary keys for index, referenced from Table's primary keys or predefined columns.
   /// [tableName] The name of the OTS table. If changed, a new table would be created.
   SecondaryIndexArgs({
-    pulumi.Output<List<String>>? definedColumns,
-    required pulumi.Output<bool> includeBaseData,
-    required pulumi.Output<String> indexName,
-    required pulumi.Output<String> indexType,
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<List<String>> primaryKeys,
-    required pulumi.Output<String> tableName,
-  }) :
-      definedColumns = pulumi.Input.asOptionalInput<List<String>>(definedColumns),
-      includeBaseData = pulumi.Input.asInput<bool>(includeBaseData),
-      indexName = pulumi.Input.asInput<String>(indexName),
-      indexType = pulumi.Input.asInput<String>(indexType),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      primaryKeys = pulumi.Input.asInput<List<String>>(primaryKeys),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    this.definedColumns,
+    required this.includeBaseData,
+    required this.indexName,
+    required this.indexType,
+    required this.instanceName,
+    required this.primaryKeys,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class SecondaryIndexArgs {
 
   factory SecondaryIndexArgs.fromMap(Map<String, dynamic> map) {
     return SecondaryIndexArgs(
-      definedColumns: map['definedColumns'] == null ? null : pulumi.Output.create<List<String>>((map['definedColumns'] as List).cast<String>()),
-      includeBaseData: pulumi.Output.create<bool>(map['includeBaseData'] as bool),
-      indexName: pulumi.Output.create<String>(map['indexName'] as String),
-      indexType: pulumi.Output.create<String>(map['indexType'] as String),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      primaryKeys: pulumi.Output.create<List<String>>((map['primaryKeys'] as List).cast<String>()),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      definedColumns: map['definedColumns'] == null ? null : ((map['definedColumns'] as List).cast<String>()).input(),
+      includeBaseData: (map['includeBaseData'] as bool).input(),
+      indexName: (map['indexName'] as String).input(),
+      indexType: (map['indexType'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      primaryKeys: ((map['primaryKeys'] as List).cast<String>()).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

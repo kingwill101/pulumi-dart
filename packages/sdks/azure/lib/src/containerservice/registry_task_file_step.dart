@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryTaskFileStep {
   /// The token (Git PAT or SAS token of storage account blob) associated with the context for this step.
-  final String? contextAccessToken;
+  final pulumi.Input<String>? contextAccessToken;
   /// The URL (absolute or relative) of the source context for this step.
-  final String? contextPath;
+  final pulumi.Input<String>? contextPath;
   /// Specifies a map of secret values that can be passed when running a task.
-  final Map<String, String>? secretValues;
+  final pulumi.Input<Map<String, String>>? secretValues;
   /// The task template file path relative to the source context.
-  final String taskFilePath;
+  final pulumi.Input<String> taskFilePath;
   /// The parameters file path relative to the source context.
-  final String? valueFilePath;
+  final pulumi.Input<String>? valueFilePath;
   /// Specifies a map of values that can be passed when running a task.
-  final Map<String, String>? values;
+  final pulumi.Input<Map<String, String>>? values;
 
   /// Creates a new [RegistryTaskFileStep].
   /// [contextAccessToken] The token (Git PAT or SAS token of storage account blob) associated with the context for this step.
@@ -44,12 +45,12 @@ class RegistryTaskFileStep {
 
   factory RegistryTaskFileStep.fromMap(Map<String, dynamic> map) {
     return RegistryTaskFileStep(
-      contextAccessToken: map['contextAccessToken'] == null ? null : map['contextAccessToken'] as String,
-      contextPath: map['contextPath'] == null ? null : map['contextPath'] as String,
-      secretValues: map['secretValues'] == null ? null : (map['secretValues'] as Map).cast<String, String>(),
-      taskFilePath: map['taskFilePath'] as String,
-      valueFilePath: map['valueFilePath'] == null ? null : map['valueFilePath'] as String,
-      values: map['values'] == null ? null : (map['values'] as Map).cast<String, String>(),
+      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken'] as String).input(),
+      contextPath: map['contextPath'] == null ? null : (map['contextPath'] as String).input(),
+      secretValues: map['secretValues'] == null ? null : ((map['secretValues'] as Map).cast<String, String>()).input(),
+      taskFilePath: (map['taskFilePath'] as String).input(),
+      valueFilePath: map['valueFilePath'] == null ? null : (map['valueFilePath'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as Map).cast<String, String>()).input(),
     );
   }
 }

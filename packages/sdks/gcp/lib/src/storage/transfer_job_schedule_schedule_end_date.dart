@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TransferJobScheduleScheduleEndDate {
   /// Day of month. Must be from 1 to 31 and valid for the year and month.
-  final int day;
+  final pulumi.Input<int> day;
   /// Month of year. Must be from 1 to 12.
-  final int month;
+  final pulumi.Input<int> month;
   /// Year of date. Must be from 1 to 9999.
-  final int year;
+  final pulumi.Input<int> year;
 
   /// Creates a new [TransferJobScheduleScheduleEndDate].
   /// [day] Day of month. Must be from 1 to 31 and valid for the year and month.
@@ -29,9 +30,9 @@ class TransferJobScheduleScheduleEndDate {
 
   factory TransferJobScheduleScheduleEndDate.fromMap(Map<String, dynamic> map) {
     return TransferJobScheduleScheduleEndDate(
-      day: map['day'] as int,
-      month: map['month'] as int,
-      year: map['year'] as int,
+      day: (map['day'] as int).input(),
+      month: (map['month'] as int).input(),
+      year: (map['year'] as int).input(),
     );
   }
 }

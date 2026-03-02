@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHandshakesHandshake {
   /// The time when the invitation expires.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
   /// The ID of the invitation.
-  final String handshakeId;
+  final pulumi.Input<String> handshakeId;
   /// The ID of the resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// (Available in v1.114.0+) The real name of the invited account.
-  final String invitedAccountRealName;
+  final pulumi.Input<String> invitedAccountRealName;
   /// The ID of the master account of the resource directory.
-  final String masterAccountId;
+  final pulumi.Input<String> masterAccountId;
   /// The name of the master account of the resource directory.
-  final String masterAccountName;
+  final pulumi.Input<String> masterAccountName;
   /// (Available in v1.114.0+) The real name of the master account of the resource directory.
-  final String masterAccountRealName;
+  final pulumi.Input<String> masterAccountRealName;
   /// The time when the invitation was modified.
-  final String modifyTime;
+  final pulumi.Input<String> modifyTime;
   /// The invitation note.
-  final String note;
+  final pulumi.Input<String> note;
   /// The ID of the resource directory.
-  final String resourceDirectoryId;
+  final pulumi.Input<String> resourceDirectoryId;
   /// The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID or logon email address of the invited account.
-  final String targetEntity;
+  final pulumi.Input<String> targetEntity;
   /// The type of the invited account.
-  final String targetType;
+  final pulumi.Input<String> targetType;
 
   /// Creates a new [GetHandshakesHandshake].
   /// [expireTime] The time when the invitation expires.
@@ -79,19 +80,19 @@ class GetHandshakesHandshake {
 
   factory GetHandshakesHandshake.fromMap(Map<String, dynamic> map) {
     return GetHandshakesHandshake(
-      expireTime: map['expireTime'] as String,
-      handshakeId: map['handshakeId'] as String,
-      id: map['id'] as String,
-      invitedAccountRealName: map['invitedAccountRealName'] as String,
-      masterAccountId: map['masterAccountId'] as String,
-      masterAccountName: map['masterAccountName'] as String,
-      masterAccountRealName: map['masterAccountRealName'] as String,
-      modifyTime: map['modifyTime'] as String,
-      note: map['note'] as String,
-      resourceDirectoryId: map['resourceDirectoryId'] as String,
-      status: map['status'] as String,
-      targetEntity: map['targetEntity'] as String,
-      targetType: map['targetType'] as String,
+      expireTime: (map['expireTime'] as String).input(),
+      handshakeId: (map['handshakeId'] as String).input(),
+      id: (map['id'] as String).input(),
+      invitedAccountRealName: (map['invitedAccountRealName'] as String).input(),
+      masterAccountId: (map['masterAccountId'] as String).input(),
+      masterAccountName: (map['masterAccountName'] as String).input(),
+      masterAccountRealName: (map['masterAccountRealName'] as String).input(),
+      modifyTime: (map['modifyTime'] as String).input(),
+      note: (map['note'] as String).input(),
+      resourceDirectoryId: (map['resourceDirectoryId'] as String).input(),
+      status: (map['status'] as String).input(),
+      targetEntity: (map['targetEntity'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
     );
   }
 }

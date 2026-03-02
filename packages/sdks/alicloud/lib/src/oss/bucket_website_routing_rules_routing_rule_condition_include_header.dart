@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader {
   /// This rule can only be matched if the request contains the Header specified by Key and the value ends with this value.
-  final String? endsWith;
+  final pulumi.Input<String>? endsWith;
   /// This rule can only be matched if the request contains the Header specified by Key and the value is the specified value.
-  final String? equals;
-  final String? key;
+  final pulumi.Input<String>? equals;
+  final pulumi.Input<String>? key;
   /// This rule can only be matched if the request contains the Header specified by Key and the value starts with this value.
-  final String? startsWith;
+  final pulumi.Input<String>? startsWith;
 
   /// Creates a new [BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader].
   /// [endsWith] This rule can only be matched if the request contains the Header specified by Key and the value ends with this value.
@@ -33,10 +34,10 @@ class BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader {
 
   factory BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader(
-      endsWith: map['endsWith'] == null ? null : map['endsWith'] as String,
-      equals: map['equals'] == null ? null : map['equals'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      startsWith: map['startsWith'] == null ? null : map['startsWith'] as String,
+      endsWith: map['endsWith'] == null ? null : (map['endsWith'] as String).input(),
+      equals: map['equals'] == null ? null : (map['equals'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      startsWith: map['startsWith'] == null ? null : (map['startsWith'] as String).input(),
     );
   }
 }

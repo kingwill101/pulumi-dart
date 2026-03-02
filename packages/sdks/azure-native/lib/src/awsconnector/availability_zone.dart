@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of AvailabilityZone
 class AvailabilityZone {
   /// <p>The name of the Availability Zone.</p>
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [AvailabilityZone].
   /// [name] <p>The name of the Availability Zone.</p>
@@ -20,7 +21,7 @@ class AvailabilityZone {
 
   factory AvailabilityZone.fromMap(Map<String, dynamic> map) {
     return AvailabilityZone(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

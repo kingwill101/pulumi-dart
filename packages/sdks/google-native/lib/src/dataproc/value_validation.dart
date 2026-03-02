@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Validation based on a list of allowed values.
 class ValueValidation {
   /// List of allowed values for the parameter.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ValueValidation].
   /// [values] List of allowed values for the parameter.
@@ -20,7 +21,7 @@ class ValueValidation {
 
   factory ValueValidation.fromMap(Map<String, dynamic> map) {
     return ValueValidation(
-      values: (map['values'] as List).cast<String>(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

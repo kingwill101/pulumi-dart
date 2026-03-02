@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'run_command_source_script_uri_managed_identity.dart';
 
 class RunCommandSource {
-  final String? commandId;
-  final String? script;
-  final String? scriptUri;
+  final pulumi.Input<String>? commandId;
+  final pulumi.Input<String>? script;
+  final pulumi.Input<String>? scriptUri;
   /// A `script_uri_managed_identity` block as defined above.
-  final RunCommandSourceScriptUriManagedIdentity? scriptUriManagedIdentity;
+  final pulumi.Input<RunCommandSourceScriptUriManagedIdentity>? scriptUriManagedIdentity;
 
   /// Creates a new [RunCommandSource].
   /// [commandId] Optional.
@@ -26,16 +27,16 @@ class RunCommandSource {
       'commandId': ?commandId,
       'script': ?script,
       'scriptUri': ?scriptUri,
-      'scriptUriManagedIdentity': ?scriptUriManagedIdentity == null ? null : scriptUriManagedIdentity!.toMap(),
+      'scriptUriManagedIdentity': ?pulumi.Input.mapOptionalInputValue<RunCommandSourceScriptUriManagedIdentity, Map<String, dynamic>>(scriptUriManagedIdentity, (value) => value.toMap()),
     };
   }
 
   factory RunCommandSource.fromMap(Map<String, dynamic> map) {
     return RunCommandSource(
-      commandId: map['commandId'] == null ? null : map['commandId'] as String,
-      script: map['script'] == null ? null : map['script'] as String,
-      scriptUri: map['scriptUri'] == null ? null : map['scriptUri'] as String,
-      scriptUriManagedIdentity: map['scriptUriManagedIdentity'] == null ? null : RunCommandSourceScriptUriManagedIdentity.fromMap((map['scriptUriManagedIdentity'] as Map).cast<String, dynamic>()),
+      commandId: map['commandId'] == null ? null : (map['commandId'] as String).input(),
+      script: map['script'] == null ? null : (map['script'] as String).input(),
+      scriptUri: map['scriptUri'] == null ? null : (map['scriptUri'] as String).input(),
+      scriptUriManagedIdentity: map['scriptUriManagedIdentity'] == null ? null : (RunCommandSourceScriptUriManagedIdentity.fromMap((map['scriptUriManagedIdentity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

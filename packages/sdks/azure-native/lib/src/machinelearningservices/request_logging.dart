@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RequestLogging {
   /// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
-  final List<String>? captureHeaders;
+  final pulumi.Input<List<String>>? captureHeaders;
 
   /// Creates a new [RequestLogging].
   /// [captureHeaders] For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
@@ -19,7 +20,7 @@ class RequestLogging {
 
   factory RequestLogging.fromMap(Map<String, dynamic> map) {
     return RequestLogging(
-      captureHeaders: map['captureHeaders'] == null ? null : (map['captureHeaders'] as List).cast<String>(),
+      captureHeaders: map['captureHeaders'] == null ? null : ((map['captureHeaders'] as List).cast<String>()).input(),
     );
   }
 }

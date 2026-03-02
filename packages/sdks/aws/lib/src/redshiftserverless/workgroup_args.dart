@@ -56,35 +56,21 @@ class WorkgroupArgs {
   /// [trackName] The name of the track for the workgroup. If it is `current`, you get the most up-to-date certified release version with the latest features, security updates, and performance enhancements. If it is `trailing`, you will be on the previous certified release. For more information, see the following [AWS document](https://docs.aws.amazon.com/redshift/latest/mgmt/tracks.html).
   /// [workgroupName] The name of the workgroup.
   WorkgroupArgs({
-    pulumi.Output<int>? baseCapacity,
-    pulumi.Output<List<WorkgroupConfigParameter>>? configParameters,
-    pulumi.Output<bool>? enhancedVpcRouting,
-    pulumi.Output<int>? maxCapacity,
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<int>? port,
-    pulumi.Output<WorkgroupPricePerformanceTarget>? pricePerformanceTarget,
-    pulumi.Output<bool>? publiclyAccessible,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupIds,
-    pulumi.Output<List<String>>? subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? trackName,
-    required pulumi.Output<String> workgroupName,
-  }) :
-      baseCapacity = pulumi.Input.asOptionalInput<int>(baseCapacity),
-      configParameters = pulumi.Input.asOptionalInput<List<WorkgroupConfigParameter>>(configParameters),
-      enhancedVpcRouting = pulumi.Input.asOptionalInput<bool>(enhancedVpcRouting),
-      maxCapacity = pulumi.Input.asOptionalInput<int>(maxCapacity),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      pricePerformanceTarget = pulumi.Input.asOptionalInput<WorkgroupPricePerformanceTarget>(pricePerformanceTarget),
-      publiclyAccessible = pulumi.Input.asOptionalInput<bool>(publiclyAccessible),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trackName = pulumi.Input.asOptionalInput<String>(trackName),
-      workgroupName = pulumi.Input.asInput<String>(workgroupName);
+    this.baseCapacity,
+    this.configParameters,
+    this.enhancedVpcRouting,
+    this.maxCapacity,
+    required this.namespaceName,
+    this.port,
+    this.pricePerformanceTarget,
+    this.publiclyAccessible,
+    this.region,
+    this.securityGroupIds,
+    this.subnetIds,
+    this.tags,
+    this.trackName,
+    required this.workgroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class WorkgroupArgs {
 
   factory WorkgroupArgs.fromMap(Map<String, dynamic> map) {
     return WorkgroupArgs(
-      baseCapacity: map['baseCapacity'] == null ? null : pulumi.Output.create<int>(map['baseCapacity'] as int),
-      configParameters: map['configParameters'] == null ? null : pulumi.Output.create<List<WorkgroupConfigParameter>>(pulumi.Input.decodeList<WorkgroupConfigParameter>(map['configParameters'], (value) => WorkgroupConfigParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      enhancedVpcRouting: map['enhancedVpcRouting'] == null ? null : pulumi.Output.create<bool>(map['enhancedVpcRouting'] as bool),
-      maxCapacity: map['maxCapacity'] == null ? null : pulumi.Output.create<int>(map['maxCapacity'] as int),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      pricePerformanceTarget: map['pricePerformanceTarget'] == null ? null : pulumi.Output.create<WorkgroupPricePerformanceTarget>(WorkgroupPricePerformanceTarget.fromMap((map['pricePerformanceTarget'] as Map).cast<String, dynamic>())),
-      publiclyAccessible: map['publiclyAccessible'] == null ? null : pulumi.Output.create<bool>(map['publiclyAccessible'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trackName: map['trackName'] == null ? null : pulumi.Output.create<String>(map['trackName'] as String),
-      workgroupName: pulumi.Output.create<String>(map['workgroupName'] as String),
+      baseCapacity: map['baseCapacity'] == null ? null : (map['baseCapacity'] as int).input(),
+      configParameters: map['configParameters'] == null ? null : (pulumi.Input.decodeList<WorkgroupConfigParameter>(map['configParameters'], (value) => WorkgroupConfigParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enhancedVpcRouting: map['enhancedVpcRouting'] == null ? null : (map['enhancedVpcRouting'] as bool).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      pricePerformanceTarget: map['pricePerformanceTarget'] == null ? null : (WorkgroupPricePerformanceTarget.fromMap((map['pricePerformanceTarget'] as Map).cast<String, dynamic>())).input(),
+      publiclyAccessible: map['publiclyAccessible'] == null ? null : (map['publiclyAccessible'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trackName: map['trackName'] == null ? null : (map['trackName'] as String).input(),
+      workgroupName: (map['workgroupName'] as String).input(),
     );
   }
 }

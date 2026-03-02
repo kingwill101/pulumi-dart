@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WafRuleSharedMatchCriteriaCriteriaCriteria {
-  final String? matchType;
+  final pulumi.Input<String>? matchType;
 
   /// Creates a new [WafRuleSharedMatchCriteriaCriteriaCriteria].
   /// [matchType] Optional.
@@ -18,7 +19,7 @@ class WafRuleSharedMatchCriteriaCriteriaCriteria {
 
   factory WafRuleSharedMatchCriteriaCriteriaCriteria.fromMap(Map<String, dynamic> map) {
     return WafRuleSharedMatchCriteriaCriteriaCriteria(
-      matchType: map['matchType'] == null ? null : map['matchType'] as String,
+      matchType: map['matchType'] == null ? null : (map['matchType'] as String).input(),
     );
   }
 }

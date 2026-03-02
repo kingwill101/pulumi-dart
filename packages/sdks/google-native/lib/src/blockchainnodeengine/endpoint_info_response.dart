@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains endpoint information through which to interact with a blockchain node.
 class EndpointInfoResponse {
   /// The assigned URL for the node JSON-RPC API endpoint.
-  final String jsonRpcApiEndpoint;
+  final pulumi.Input<String> jsonRpcApiEndpoint;
   /// The assigned URL for the node WebSockets API endpoint.
-  final String websocketsApiEndpoint;
+  final pulumi.Input<String> websocketsApiEndpoint;
 
   /// Creates a new [EndpointInfoResponse].
   /// [jsonRpcApiEndpoint] The assigned URL for the node JSON-RPC API endpoint.
@@ -25,8 +26,8 @@ class EndpointInfoResponse {
 
   factory EndpointInfoResponse.fromMap(Map<String, dynamic> map) {
     return EndpointInfoResponse(
-      jsonRpcApiEndpoint: map['jsonRpcApiEndpoint'] as String,
-      websocketsApiEndpoint: map['websocketsApiEndpoint'] as String,
+      jsonRpcApiEndpoint: (map['jsonRpcApiEndpoint'] as String).input(),
+      websocketsApiEndpoint: (map['websocketsApiEndpoint'] as String).input(),
     );
   }
 }

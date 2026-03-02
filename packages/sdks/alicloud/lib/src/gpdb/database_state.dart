@@ -28,21 +28,14 @@ class DatabaseState {
   /// [description] Database Description
   /// [owner] Data Sheet owner
   DatabaseState({
-    pulumi.Output<String>? characterSetName,
-    pulumi.Output<String>? collate,
-    pulumi.Output<String>? ctype,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? owner,
-  }) :
-      characterSetName = pulumi.Input.asOptionalInput<String>(characterSetName),
-      collate = pulumi.Input.asOptionalInput<String>(collate),
-      ctype = pulumi.Input.asOptionalInput<String>(ctype),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      owner = pulumi.Input.asOptionalInput<String>(owner);
+    this.characterSetName,
+    this.collate,
+    this.ctype,
+    this.databaseName,
+    this.dbInstanceId,
+    this.description,
+    this.owner,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      characterSetName: map['characterSetName'] == null ? null : pulumi.Output.create<String>(map['characterSetName'] as String),
-      collate: map['collate'] == null ? null : pulumi.Output.create<String>(map['collate'] as String),
-      ctype: map['ctype'] == null ? null : pulumi.Output.create<String>(map['ctype'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
+      characterSetName: map['characterSetName'] == null ? null : (map['characterSetName'] as String).input(),
+      collate: map['collate'] == null ? null : (map['collate'] as String).input(),
+      ctype: map['ctype'] == null ? null : (map['ctype'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
     );
   }
 }

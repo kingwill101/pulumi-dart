@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Document processor properties
 class DocumentProcessorProperties {
   /// The ID (GUID) of an SharePoint Online (SPO) tenant associated with this document processor resource
-  final String spoTenantId;
+  final pulumi.Input<String> spoTenantId;
   /// The URL of an SharePoint Online (SPO) tenant associated with this document processor resource
-  final String spoTenantUrl;
+  final pulumi.Input<String> spoTenantUrl;
 
   /// Creates a new [DocumentProcessorProperties].
   /// [spoTenantId] The ID (GUID) of an SharePoint Online (SPO) tenant associated with this document processor resource
@@ -25,8 +26,8 @@ class DocumentProcessorProperties {
 
   factory DocumentProcessorProperties.fromMap(Map<String, dynamic> map) {
     return DocumentProcessorProperties(
-      spoTenantId: map['spoTenantId'] as String,
-      spoTenantUrl: map['spoTenantUrl'] as String,
+      spoTenantId: (map['spoTenantId'] as String).input(),
+      spoTenantUrl: (map['spoTenantUrl'] as String).input(),
     );
   }
 }

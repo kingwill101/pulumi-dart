@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the policy to be used for placement of a Service Fabric service where a particular fault or upgrade domain should not be used for placement of the instances or replicas of that service.
 class ServicePlacementInvalidDomainPolicy {
   /// The name of the domain that should not be used for placement.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The type of placement policy for a service fabric service. Following are the possible values.
   /// Expected value is 'InvalidDomain'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ServicePlacementInvalidDomainPolicy].
   /// [domainName] The name of the domain that should not be used for placement.
@@ -26,8 +27,8 @@ class ServicePlacementInvalidDomainPolicy {
 
   factory ServicePlacementInvalidDomainPolicy.fromMap(Map<String, dynamic> map) {
     return ServicePlacementInvalidDomainPolicy(
-      domainName: map['domainName'] as String,
-      type: map['type'] as String,
+      domainName: (map['domainName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

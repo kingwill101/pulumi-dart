@@ -5,11 +5,11 @@ import 'region_ssl_policy_warnings_item_data_item_response_compute_beta.dart';
 
 class RegionSslPolicyWarningsItemResponseComputeBeta {
   /// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-  final String code;
+  final pulumi.Input<String> code;
   /// Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-  final List<RegionSslPolicyWarningsItemDataItemResponseComputeBeta> data;
+  final pulumi.Input<List<RegionSslPolicyWarningsItemDataItemResponseComputeBeta>> data;
   /// A human-readable description of the warning code.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [RegionSslPolicyWarningsItemResponseComputeBeta].
   /// [code] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
@@ -24,16 +24,16 @@ class RegionSslPolicyWarningsItemResponseComputeBeta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'data': pulumi.Input.encodeList<RegionSslPolicyWarningsItemDataItemResponseComputeBeta, Map<String, dynamic>>(data, (value) => value.toMap()),
+      'data': pulumi.Input.mapInputValue<List<RegionSslPolicyWarningsItemDataItemResponseComputeBeta>, List<Map<String, dynamic>>>(data, (value) => pulumi.Input.encodeList<RegionSslPolicyWarningsItemDataItemResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
       'message': message,
     };
   }
 
   factory RegionSslPolicyWarningsItemResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return RegionSslPolicyWarningsItemResponseComputeBeta(
-      code: map['code'] as String,
-      data: pulumi.Input.decodeList<RegionSslPolicyWarningsItemDataItemResponseComputeBeta>(map['data'], (value) => RegionSslPolicyWarningsItemDataItemResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      data: (pulumi.Input.decodeList<RegionSslPolicyWarningsItemDataItemResponseComputeBeta>(map['data'], (value) => RegionSslPolicyWarningsItemDataItemResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketsBucketVersioning {
   /// A bucket versioning state. Possible values:`Enabled` and `Suspended`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBucketsBucketVersioning].
   /// [status] A bucket versioning state. Possible values:`Enabled` and `Suspended`.
@@ -19,7 +20,7 @@ class GetBucketsBucketVersioning {
 
   factory GetBucketsBucketVersioning.fromMap(Map<String, dynamic> map) {
     return GetBucketsBucketVersioning(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

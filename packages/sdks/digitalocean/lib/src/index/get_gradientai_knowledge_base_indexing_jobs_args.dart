@@ -12,9 +12,8 @@ class GetGradientaiKnowledgeBaseIndexingJobsArgs {
   /// Creates a new [GetGradientaiKnowledgeBaseIndexingJobsArgs].
   /// [knowledgeBaseUuid] Required.
   GetGradientaiKnowledgeBaseIndexingJobsArgs({
-    required pulumi.Output<String> knowledgeBaseUuid,
-  }) :
-      knowledgeBaseUuid = pulumi.Input.asInput<String>(knowledgeBaseUuid);
+    required this.knowledgeBaseUuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetGradientaiKnowledgeBaseIndexingJobsArgs {
 
   factory GetGradientaiKnowledgeBaseIndexingJobsArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiKnowledgeBaseIndexingJobsArgs(
-      knowledgeBaseUuid: pulumi.Output.create<String>(map['knowledgeBaseUuid'] as String),
+      knowledgeBaseUuid: (map['knowledgeBaseUuid'] as String).input(),
     );
   }
 }

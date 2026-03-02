@@ -23,15 +23,11 @@ class CustomResourcePatchArgs {
   /// [metadata] Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   /// [others] This field is not an actual property. It is used to represent custom property names and their values that can be passed in addition to the other input properties.
   CustomResourcePatchArgs({
-    required pulumi.Output<String> apiVersion,
-    required pulumi.Output<String> kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<Map<String, dynamic>>? others,
-  }) :
-      apiVersion = pulumi.Input.asInput<String>(apiVersion),
-      kind = pulumi.Input.asInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      others = pulumi.Input.asOptionalInput<Map<String, dynamic>>(others);
+    required this.apiVersion,
+    required this.kind,
+    this.metadata,
+    this.others,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class CustomResourcePatchArgs {
 
   factory CustomResourcePatchArgs.fromMap(Map<String, dynamic> map) {
     return CustomResourcePatchArgs(
-      apiVersion: pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      others: map['others'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['others'] as Map).cast<String, dynamic>()),
+      apiVersion: (map['apiVersion'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      others: map['others'] == null ? null : ((map['others'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

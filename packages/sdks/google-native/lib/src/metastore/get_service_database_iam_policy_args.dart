@@ -20,17 +20,12 @@ class GetServiceDatabaseIamPolicyArgs {
   /// [project] Optional.
   /// [serviceId] Required.
   GetServiceDatabaseIamPolicyArgs({
-    required pulumi.Output<String> databaseId,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceId,
-  }) :
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    required this.databaseId,
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetServiceDatabaseIamPolicyArgs {
 
   factory GetServiceDatabaseIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceDatabaseIamPolicyArgs(
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      databaseId: (map['databaseId'] as String).input(),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

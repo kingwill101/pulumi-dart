@@ -24,15 +24,11 @@ class ApplicationAccessScopeArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scope] Specifies the name of the access scope to be associated with the specified targets.
   ApplicationAccessScopeArgs({
-    required pulumi.Output<String> applicationArn,
-    pulumi.Output<List<String>>? authorizedTargets,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> scope,
-  }) :
-      applicationArn = pulumi.Input.asInput<String>(applicationArn),
-      authorizedTargets = pulumi.Input.asOptionalInput<List<String>>(authorizedTargets),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.applicationArn,
+    this.authorizedTargets,
+    this.region,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ApplicationAccessScopeArgs {
 
   factory ApplicationAccessScopeArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAccessScopeArgs(
-      applicationArn: pulumi.Output.create<String>(map['applicationArn'] as String),
-      authorizedTargets: map['authorizedTargets'] == null ? null : pulumi.Output.create<List<String>>((map['authorizedTargets'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      applicationArn: (map['applicationArn'] as String).input(),
+      authorizedTargets: map['authorizedTargets'] == null ? null : ((map['authorizedTargets'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_action.dart';
 
 /// Task Option Properties
 class TaskOption {
   /// Parallel worker numbers of the tasks
-  final int? concurrency;
+  final pulumi.Input<int>? concurrency;
   /// Error action for the tasks
-  final ErrorAction? errorAction;
+  final pulumi.Input<ErrorAction>? errorAction;
 
   /// Creates a new [TaskOption].
   /// [concurrency] Parallel worker numbers of the tasks
@@ -20,14 +21,14 @@ class TaskOption {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'concurrency': ?concurrency,
-      'errorAction': ?errorAction == null ? null : errorAction!.toMap(),
+      'errorAction': ?pulumi.Input.mapOptionalInputValue<ErrorAction, Map<String, dynamic>>(errorAction, (value) => value.toMap()),
     };
   }
 
   factory TaskOption.fromMap(Map<String, dynamic> map) {
     return TaskOption(
-      concurrency: map['concurrency'] == null ? null : map['concurrency'] as int,
-      errorAction: map['errorAction'] == null ? null : ErrorAction.fromMap((map['errorAction'] as Map).cast<String, dynamic>()),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as int).input(),
+      errorAction: map['errorAction'] == null ? null : (ErrorAction.fromMap((map['errorAction'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

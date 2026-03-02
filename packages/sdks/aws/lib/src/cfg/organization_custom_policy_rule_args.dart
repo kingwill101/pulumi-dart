@@ -54,35 +54,21 @@ class OrganizationCustomPolicyRuleArgs {
   /// [tagValueScope] Tag value of AWS resources to evaluate.
   /// [triggerTypes] List of notification types that trigger AWS Config to run an evaluation for the rule. Valid values: `ConfigurationItemChangeNotification`, `OversizedConfigurationItemChangeNotification`.
   OrganizationCustomPolicyRuleArgs({
-    pulumi.Output<List<String>>? debugLogDeliveryAccounts,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? excludedAccounts,
-    pulumi.Output<String>? inputParameters,
-    pulumi.Output<String>? maximumExecutionFrequency,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> policyRuntime,
-    required pulumi.Output<String> policyText,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceIdScope,
-    pulumi.Output<List<String>>? resourceTypesScopes,
-    pulumi.Output<String>? tagKeyScope,
-    pulumi.Output<String>? tagValueScope,
-    required pulumi.Output<List<String>> triggerTypes,
-  }) :
-      debugLogDeliveryAccounts = pulumi.Input.asOptionalInput<List<String>>(debugLogDeliveryAccounts),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      excludedAccounts = pulumi.Input.asOptionalInput<List<String>>(excludedAccounts),
-      inputParameters = pulumi.Input.asOptionalInput<String>(inputParameters),
-      maximumExecutionFrequency = pulumi.Input.asOptionalInput<String>(maximumExecutionFrequency),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyRuntime = pulumi.Input.asInput<String>(policyRuntime),
-      policyText = pulumi.Input.asInput<String>(policyText),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceIdScope = pulumi.Input.asOptionalInput<String>(resourceIdScope),
-      resourceTypesScopes = pulumi.Input.asOptionalInput<List<String>>(resourceTypesScopes),
-      tagKeyScope = pulumi.Input.asOptionalInput<String>(tagKeyScope),
-      tagValueScope = pulumi.Input.asOptionalInput<String>(tagValueScope),
-      triggerTypes = pulumi.Input.asInput<List<String>>(triggerTypes);
+    this.debugLogDeliveryAccounts,
+    this.description,
+    this.excludedAccounts,
+    this.inputParameters,
+    this.maximumExecutionFrequency,
+    this.name,
+    required this.policyRuntime,
+    required this.policyText,
+    this.region,
+    this.resourceIdScope,
+    this.resourceTypesScopes,
+    this.tagKeyScope,
+    this.tagValueScope,
+    required this.triggerTypes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class OrganizationCustomPolicyRuleArgs {
 
   factory OrganizationCustomPolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationCustomPolicyRuleArgs(
-      debugLogDeliveryAccounts: map['debugLogDeliveryAccounts'] == null ? null : pulumi.Output.create<List<String>>((map['debugLogDeliveryAccounts'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      excludedAccounts: map['excludedAccounts'] == null ? null : pulumi.Output.create<List<String>>((map['excludedAccounts'] as List).cast<String>()),
-      inputParameters: map['inputParameters'] == null ? null : pulumi.Output.create<String>(map['inputParameters'] as String),
-      maximumExecutionFrequency: map['maximumExecutionFrequency'] == null ? null : pulumi.Output.create<String>(map['maximumExecutionFrequency'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyRuntime: pulumi.Output.create<String>(map['policyRuntime'] as String),
-      policyText: pulumi.Output.create<String>(map['policyText'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceIdScope: map['resourceIdScope'] == null ? null : pulumi.Output.create<String>(map['resourceIdScope'] as String),
-      resourceTypesScopes: map['resourceTypesScopes'] == null ? null : pulumi.Output.create<List<String>>((map['resourceTypesScopes'] as List).cast<String>()),
-      tagKeyScope: map['tagKeyScope'] == null ? null : pulumi.Output.create<String>(map['tagKeyScope'] as String),
-      tagValueScope: map['tagValueScope'] == null ? null : pulumi.Output.create<String>(map['tagValueScope'] as String),
-      triggerTypes: pulumi.Output.create<List<String>>((map['triggerTypes'] as List).cast<String>()),
+      debugLogDeliveryAccounts: map['debugLogDeliveryAccounts'] == null ? null : ((map['debugLogDeliveryAccounts'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      excludedAccounts: map['excludedAccounts'] == null ? null : ((map['excludedAccounts'] as List).cast<String>()).input(),
+      inputParameters: map['inputParameters'] == null ? null : (map['inputParameters'] as String).input(),
+      maximumExecutionFrequency: map['maximumExecutionFrequency'] == null ? null : (map['maximumExecutionFrequency'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyRuntime: (map['policyRuntime'] as String).input(),
+      policyText: (map['policyText'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceIdScope: map['resourceIdScope'] == null ? null : (map['resourceIdScope'] as String).input(),
+      resourceTypesScopes: map['resourceTypesScopes'] == null ? null : ((map['resourceTypesScopes'] as List).cast<String>()).input(),
+      tagKeyScope: map['tagKeyScope'] == null ? null : (map['tagKeyScope'] as String).input(),
+      tagValueScope: map['tagValueScope'] == null ? null : (map['tagValueScope'] as String).input(),
+      triggerTypes: ((map['triggerTypes'] as List).cast<String>()).input(),
     );
   }
 }

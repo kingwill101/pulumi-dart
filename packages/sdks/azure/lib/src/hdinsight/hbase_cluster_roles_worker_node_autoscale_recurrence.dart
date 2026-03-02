@@ -5,9 +5,9 @@ import 'hbase_cluster_roles_worker_node_autoscale_recurrence_schedule.dart';
 
 class HBaseClusterRolesWorkerNodeAutoscaleRecurrence {
   /// A list of `schedule` blocks as defined below.
-  final List<HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule> schedules;
+  final pulumi.Input<List<HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule>> schedules;
   /// The time zone for the autoscale schedule times.
-  final String timezone;
+  final pulumi.Input<String> timezone;
 
   /// Creates a new [HBaseClusterRolesWorkerNodeAutoscaleRecurrence].
   /// [schedules] A list of `schedule` blocks as defined below.
@@ -19,15 +19,15 @@ class HBaseClusterRolesWorkerNodeAutoscaleRecurrence {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schedules': pulumi.Input.encodeList<HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule, Map<String, dynamic>>(schedules, (value) => value.toMap()),
+      'schedules': pulumi.Input.mapInputValue<List<HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timezone': timezone,
     };
   }
 
   factory HBaseClusterRolesWorkerNodeAutoscaleRecurrence.fromMap(Map<String, dynamic> map) {
     return HBaseClusterRolesWorkerNodeAutoscaleRecurrence(
-      schedules: pulumi.Input.decodeList<HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule>(map['schedules'], (value) => HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule.fromMap((value as Map).cast<String, dynamic>())),
-      timezone: map['timezone'] as String,
+      schedules: (pulumi.Input.decodeList<HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule>(map['schedules'], (value) => HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timezone: (map['timezone'] as String).input(),
     );
   }
 }

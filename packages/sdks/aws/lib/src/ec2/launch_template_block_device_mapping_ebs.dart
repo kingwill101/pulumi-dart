@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateBlockDeviceMappingEbs {
   /// Whether the volume should be destroyed on instance termination.
   /// See [Preserving Amazon EBS Volumes on Instance Termination](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/preserving-volumes-on-termination.html) for more information.
-  final String? deleteOnTermination;
+  final pulumi.Input<String>? deleteOnTermination;
   /// Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
   /// Cannot be used with `snapshot_id`.
-  final String? encrypted;
+  final pulumi.Input<String>? encrypted;
   /// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
   /// This must be set with a `volume_type` of `"io1/io2/gp3"`.
-  final int? iops;
+  final pulumi.Input<int>? iops;
   /// Identifier (key ID, key alias, key ARN, or alias ARN) of the customer managed KMS key to use for EBS encryption.
   /// `encrypted` must be set to `true` when this is set.
-  final String? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
   /// The Snapshot ID to mount.
-  final String? snapshotId;
+  final pulumi.Input<String>? snapshotId;
   /// The throughput to provision for a `gp3` volume in MiB/s (specified as an integer, e.g., 500), with a maximum of 1,000 MiB/s.
-  final int? throughput;
+  final pulumi.Input<int>? throughput;
   /// The volume initialization rate in MiB/s (specified as an integer, e.g. 100), with a minimum of 100 MiB/s and maximum of 300 MiB/s.
-  final int? volumeInitializationRate;
+  final pulumi.Input<int>? volumeInitializationRate;
   /// The size of the volume in gigabytes.
-  final int? volumeSize;
+  final pulumi.Input<int>? volumeSize;
   /// The volume type.
   /// Can be one of `standard`, `gp2`, `gp3`, `io1`, `io2`, `sc1` or `st1`.
-  final String? volumeType;
+  final pulumi.Input<String>? volumeType;
 
   /// Creates a new [LaunchTemplateBlockDeviceMappingEbs].
   /// [deleteOnTermination] Whether the volume should be destroyed on instance termination.
@@ -64,15 +65,15 @@ class LaunchTemplateBlockDeviceMappingEbs {
 
   factory LaunchTemplateBlockDeviceMappingEbs.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateBlockDeviceMappingEbs(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : map['deleteOnTermination'] as String,
-      encrypted: map['encrypted'] == null ? null : map['encrypted'] as String,
-      iops: map['iops'] == null ? null : map['iops'] as int,
-      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      snapshotId: map['snapshotId'] == null ? null : map['snapshotId'] as String,
-      throughput: map['throughput'] == null ? null : map['throughput'] as int,
-      volumeInitializationRate: map['volumeInitializationRate'] == null ? null : map['volumeInitializationRate'] as int,
-      volumeSize: map['volumeSize'] == null ? null : map['volumeSize'] as int,
-      volumeType: map['volumeType'] == null ? null : map['volumeType'] as String,
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as String).input(),
+      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      volumeInitializationRate: map['volumeInitializationRate'] == null ? null : (map['volumeInitializationRate'] as int).input(),
+      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize'] as int).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
     );
   }
 }

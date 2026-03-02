@@ -22,17 +22,12 @@ class MoverTargetEndpointState {
   /// [storageContainerName] Specifies the name of the storage blob container for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   /// [storageMoverId] Specifies the ID of the storage mover for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   MoverTargetEndpointState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? storageContainerName,
-    pulumi.Output<String>? storageMoverId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      storageContainerName = pulumi.Input.asOptionalInput<String>(storageContainerName),
-      storageMoverId = pulumi.Input.asOptionalInput<String>(storageMoverId);
+    this.description,
+    this.name,
+    this.storageAccountId,
+    this.storageContainerName,
+    this.storageMoverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class MoverTargetEndpointState {
 
   factory MoverTargetEndpointState.fromMap(Map<String, dynamic> map) {
     return MoverTargetEndpointState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      storageContainerName: map['storageContainerName'] == null ? null : pulumi.Output.create<String>(map['storageContainerName'] as String),
-      storageMoverId: map['storageMoverId'] == null ? null : pulumi.Output.create<String>(map['storageMoverId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName'] as String).input(),
+      storageMoverId: map['storageMoverId'] == null ? null : (map['storageMoverId'] as String).input(),
     );
   }
 }

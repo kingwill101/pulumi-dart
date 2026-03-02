@@ -19,13 +19,10 @@ class GetGuestConfigurationAssignmentsVMSSArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmssName] The name of the virtual machine scale set.
   GetGuestConfigurationAssignmentsVMSSArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vmssName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmssName = pulumi.Input.asInput<String>(vmssName);
+    required this.name,
+    required this.resourceGroupName,
+    required this.vmssName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGuestConfigurationAssignmentsVMSSArgs {
 
   factory GetGuestConfigurationAssignmentsVMSSArgs.fromMap(Map<String, dynamic> map) {
     return GetGuestConfigurationAssignmentsVMSSArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmssName: pulumi.Output.create<String>(map['vmssName'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmssName: (map['vmssName'] as String).input(),
     );
   }
 }

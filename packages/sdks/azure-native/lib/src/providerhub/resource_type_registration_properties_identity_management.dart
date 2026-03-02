@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The identity management.
 class ResourceTypeRegistrationPropertiesIdentityManagement {
   /// The application id.
-  final String? applicationId;
+  final pulumi.Input<String>? applicationId;
   /// The application ids.
-  final List<String>? applicationIds;
+  final pulumi.Input<List<String>>? applicationIds;
   /// The delegation app ids.
-  final List<String>? delegationAppIds;
+  final pulumi.Input<List<String>>? delegationAppIds;
   /// The type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesIdentityManagement].
   /// [applicationId] The application id.
@@ -35,10 +36,10 @@ class ResourceTypeRegistrationPropertiesIdentityManagement {
 
   factory ResourceTypeRegistrationPropertiesIdentityManagement.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesIdentityManagement(
-      applicationId: map['applicationId'] == null ? null : map['applicationId'] as String,
-      applicationIds: map['applicationIds'] == null ? null : (map['applicationIds'] as List).cast<String>(),
-      delegationAppIds: map['delegationAppIds'] == null ? null : (map['delegationAppIds'] as List).cast<String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      applicationIds: map['applicationIds'] == null ? null : ((map['applicationIds'] as List).cast<String>()).input(),
+      delegationAppIds: map['delegationAppIds'] == null ? null : ((map['delegationAppIds'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -7,11 +7,11 @@ import 'extended_error_info.dart';
 /// The status.
 class CustomRolloutPropertiesStatus {
   /// The completed regions.
-  final List<String>? completedRegions;
+  final pulumi.Input<List<String>>? completedRegions;
   /// The failed or skipped regions.
-  final Map<String, ExtendedErrorInfo>? failedOrSkippedRegions;
+  final pulumi.Input<Map<String, ExtendedErrorInfo>>? failedOrSkippedRegions;
   /// The manifest checkin status.
-  final CustomRolloutStatusManifestCheckinStatus? manifestCheckinStatus;
+  final pulumi.Input<CustomRolloutStatusManifestCheckinStatus>? manifestCheckinStatus;
 
   /// Creates a new [CustomRolloutPropertiesStatus].
   /// [completedRegions] The completed regions.
@@ -26,16 +26,16 @@ class CustomRolloutPropertiesStatus {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'completedRegions': ?completedRegions,
-      'failedOrSkippedRegions': ?failedOrSkippedRegions == null ? null : pulumi.Input.encodeMapValues<ExtendedErrorInfo, Map<String, dynamic>>(failedOrSkippedRegions!, (value) => value.toMap()),
-      'manifestCheckinStatus': ?manifestCheckinStatus == null ? null : manifestCheckinStatus!.toMap(),
+      'failedOrSkippedRegions': ?pulumi.Input.mapOptionalInputValue<Map<String, ExtendedErrorInfo>, Map<String, Map<String, dynamic>>>(failedOrSkippedRegions, (value) => pulumi.Input.encodeMapValues<ExtendedErrorInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'manifestCheckinStatus': ?pulumi.Input.mapOptionalInputValue<CustomRolloutStatusManifestCheckinStatus, Map<String, dynamic>>(manifestCheckinStatus, (value) => value.toMap()),
     };
   }
 
   factory CustomRolloutPropertiesStatus.fromMap(Map<String, dynamic> map) {
     return CustomRolloutPropertiesStatus(
-      completedRegions: map['completedRegions'] == null ? null : (map['completedRegions'] as List).cast<String>(),
-      failedOrSkippedRegions: map['failedOrSkippedRegions'] == null ? null : pulumi.Input.decodeMapValues<ExtendedErrorInfo>(map['failedOrSkippedRegions'], (value) => ExtendedErrorInfo.fromMap((value as Map).cast<String, dynamic>())),
-      manifestCheckinStatus: map['manifestCheckinStatus'] == null ? null : CustomRolloutStatusManifestCheckinStatus.fromMap((map['manifestCheckinStatus'] as Map).cast<String, dynamic>()),
+      completedRegions: map['completedRegions'] == null ? null : ((map['completedRegions'] as List).cast<String>()).input(),
+      failedOrSkippedRegions: map['failedOrSkippedRegions'] == null ? null : (pulumi.Input.decodeMapValues<ExtendedErrorInfo>(map['failedOrSkippedRegions'], (value) => ExtendedErrorInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manifestCheckinStatus: map['manifestCheckinStatus'] == null ? null : (CustomRolloutStatusManifestCheckinStatus.fromMap((map['manifestCheckinStatus'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

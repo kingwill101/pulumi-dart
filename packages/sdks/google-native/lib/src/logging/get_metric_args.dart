@@ -14,11 +14,9 @@ class GetMetricArgs {
   /// [metricId] Required.
   /// [project] Optional.
   GetMetricArgs({
-    required pulumi.Output<String> metricId,
-    pulumi.Output<String>? project,
-  }) :
-      metricId = pulumi.Input.asInput<String>(metricId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.metricId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetMetricArgs {
 
   factory GetMetricArgs.fromMap(Map<String, dynamic> map) {
     return GetMetricArgs(
-      metricId: pulumi.Output.create<String>(map['metricId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      metricId: (map['metricId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -55,33 +55,20 @@ class CxPlaybookState {
   /// [tokenCount] Estimated number of tokes current playbook takes when sent to the LLM.
   /// [updateTime] Last time the playbook version was updated.
   CxPlaybookState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? goal,
-    pulumi.Output<CxPlaybookInstruction>? instruction,
-    pulumi.Output<CxPlaybookLlmModelSettings>? llmModelSettings,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? playbookType,
-    pulumi.Output<List<String>>? referencedFlows,
-    pulumi.Output<List<String>>? referencedPlaybooks,
-    pulumi.Output<List<String>>? referencedTools,
-    pulumi.Output<String>? tokenCount,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      goal = pulumi.Input.asOptionalInput<String>(goal),
-      instruction = pulumi.Input.asOptionalInput<CxPlaybookInstruction>(instruction),
-      llmModelSettings = pulumi.Input.asOptionalInput<CxPlaybookLlmModelSettings>(llmModelSettings),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      playbookType = pulumi.Input.asOptionalInput<String>(playbookType),
-      referencedFlows = pulumi.Input.asOptionalInput<List<String>>(referencedFlows),
-      referencedPlaybooks = pulumi.Input.asOptionalInput<List<String>>(referencedPlaybooks),
-      referencedTools = pulumi.Input.asOptionalInput<List<String>>(referencedTools),
-      tokenCount = pulumi.Input.asOptionalInput<String>(tokenCount),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.displayName,
+    this.goal,
+    this.instruction,
+    this.llmModelSettings,
+    this.name,
+    this.parent,
+    this.playbookType,
+    this.referencedFlows,
+    this.referencedPlaybooks,
+    this.referencedTools,
+    this.tokenCount,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,19 +90,19 @@ class CxPlaybookState {
 
   factory CxPlaybookState.fromMap(Map<String, dynamic> map) {
     return CxPlaybookState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      goal: map['goal'] == null ? null : pulumi.Output.create<String>(map['goal'] as String),
-      instruction: map['instruction'] == null ? null : pulumi.Output.create<CxPlaybookInstruction>(CxPlaybookInstruction.fromMap((map['instruction'] as Map).cast<String, dynamic>())),
-      llmModelSettings: map['llmModelSettings'] == null ? null : pulumi.Output.create<CxPlaybookLlmModelSettings>(CxPlaybookLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      playbookType: map['playbookType'] == null ? null : pulumi.Output.create<String>(map['playbookType'] as String),
-      referencedFlows: map['referencedFlows'] == null ? null : pulumi.Output.create<List<String>>((map['referencedFlows'] as List).cast<String>()),
-      referencedPlaybooks: map['referencedPlaybooks'] == null ? null : pulumi.Output.create<List<String>>((map['referencedPlaybooks'] as List).cast<String>()),
-      referencedTools: map['referencedTools'] == null ? null : pulumi.Output.create<List<String>>((map['referencedTools'] as List).cast<String>()),
-      tokenCount: map['tokenCount'] == null ? null : pulumi.Output.create<String>(map['tokenCount'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      goal: map['goal'] == null ? null : (map['goal'] as String).input(),
+      instruction: map['instruction'] == null ? null : (CxPlaybookInstruction.fromMap((map['instruction'] as Map).cast<String, dynamic>())).input(),
+      llmModelSettings: map['llmModelSettings'] == null ? null : (CxPlaybookLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      playbookType: map['playbookType'] == null ? null : (map['playbookType'] as String).input(),
+      referencedFlows: map['referencedFlows'] == null ? null : ((map['referencedFlows'] as List).cast<String>()).input(),
+      referencedPlaybooks: map['referencedPlaybooks'] == null ? null : ((map['referencedPlaybooks'] as List).cast<String>()).input(),
+      referencedTools: map['referencedTools'] == null ? null : ((map['referencedTools'] as List).cast<String>()).input(),
+      tokenCount: map['tokenCount'] == null ? null : (map['tokenCount'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

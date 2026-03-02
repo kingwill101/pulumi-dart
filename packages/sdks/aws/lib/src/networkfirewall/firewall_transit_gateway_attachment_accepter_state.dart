@@ -16,13 +16,10 @@ class FirewallTransitGatewayAttachmentAccepterState {
   /// [timeouts] Optional.
   /// [transitGatewayAttachmentId] The unique identifier of the transit gateway attachment to accept. This ID is returned in the response when creating a transit gateway-attached firewall.
   FirewallTransitGatewayAttachmentAccepterState({
-    pulumi.Output<String>? region,
-    pulumi.Output<FirewallTransitGatewayAttachmentAccepterTimeouts>? timeouts,
-    pulumi.Output<String>? transitGatewayAttachmentId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<FirewallTransitGatewayAttachmentAccepterTimeouts>(timeouts),
-      transitGatewayAttachmentId = pulumi.Input.asOptionalInput<String>(transitGatewayAttachmentId);
+    this.region,
+    this.timeouts,
+    this.transitGatewayAttachmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class FirewallTransitGatewayAttachmentAccepterState {
 
   factory FirewallTransitGatewayAttachmentAccepterState.fromMap(Map<String, dynamic> map) {
     return FirewallTransitGatewayAttachmentAccepterState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<FirewallTransitGatewayAttachmentAccepterTimeouts>(FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
     );
   }
 }

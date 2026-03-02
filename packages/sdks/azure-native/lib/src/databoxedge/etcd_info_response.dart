@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Etcd configuration
 class EtcdInfoResponse {
   /// Etcd type
-  final String type;
+  final pulumi.Input<String> type;
   /// Etcd version
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [EtcdInfoResponse].
   /// [type] Etcd type
@@ -25,8 +26,8 @@ class EtcdInfoResponse {
 
   factory EtcdInfoResponse.fromMap(Map<String, dynamic> map) {
     return EtcdInfoResponse(
-      type: map['type'] as String,
-      version: map['version'] as String,
+      type: (map['type'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

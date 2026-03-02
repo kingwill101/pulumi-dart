@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcIngressConnectionIngressVpcConfiguration {
   /// The ID of the VPC endpoint that your App Runner service connects to.
-  final String? vpcEndpointId;
+  final pulumi.Input<String>? vpcEndpointId;
   /// The ID of the VPC that is used for the VPC endpoint.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [VpcIngressConnectionIngressVpcConfiguration].
   /// [vpcEndpointId] The ID of the VPC endpoint that your App Runner service connects to.
@@ -24,8 +25,8 @@ class VpcIngressConnectionIngressVpcConfiguration {
 
   factory VpcIngressConnectionIngressVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return VpcIngressConnectionIngressVpcConfiguration(
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : map['vpcEndpointId'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

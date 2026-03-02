@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of Fast Socket feature.
 class FastSocketContainerV1beta1 {
   /// Whether Fast Socket features are enabled in the node pool.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [FastSocketContainerV1beta1].
   /// [enabled] Whether Fast Socket features are enabled in the node pool.
@@ -20,7 +21,7 @@ class FastSocketContainerV1beta1 {
 
   factory FastSocketContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return FastSocketContainerV1beta1(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

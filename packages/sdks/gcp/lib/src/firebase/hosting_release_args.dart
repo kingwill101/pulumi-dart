@@ -34,17 +34,12 @@ class HostingReleaseArgs {
   /// [type] The type of the release; indicates what happened to the content of the site. There is no need to specify
   /// [versionName] The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
   HostingReleaseArgs({
-    pulumi.Output<String>? channelId,
-    pulumi.Output<String>? message,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? versionName,
-  }) :
-      channelId = pulumi.Input.asOptionalInput<String>(channelId),
-      message = pulumi.Input.asOptionalInput<String>(message),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      versionName = pulumi.Input.asOptionalInput<String>(versionName);
+    this.channelId,
+    this.message,
+    required this.siteId,
+    this.type,
+    this.versionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,11 +53,11 @@ class HostingReleaseArgs {
 
   factory HostingReleaseArgs.fromMap(Map<String, dynamic> map) {
     return HostingReleaseArgs(
-      channelId: map['channelId'] == null ? null : pulumi.Output.create<String>(map['channelId'] as String),
-      message: map['message'] == null ? null : pulumi.Output.create<String>(map['message'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      versionName: map['versionName'] == null ? null : pulumi.Output.create<String>(map['versionName'] as String),
+      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
     );
   }
 }

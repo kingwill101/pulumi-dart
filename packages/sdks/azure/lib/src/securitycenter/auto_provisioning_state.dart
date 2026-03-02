@@ -10,9 +10,8 @@ class AutoProvisioningState {
   /// Creates a new [AutoProvisioningState].
   /// [autoProvision] Should the security agent be automatically provisioned on Virtual Machines in this subscription? Possible values are `On` (to install the security agent automatically, if it's missing) or `Off` (to not install the security agent automatically).
   AutoProvisioningState({
-    pulumi.Output<String>? autoProvision,
-  }) :
-      autoProvision = pulumi.Input.asOptionalInput<String>(autoProvision);
+    this.autoProvision,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class AutoProvisioningState {
 
   factory AutoProvisioningState.fromMap(Map<String, dynamic> map) {
     return AutoProvisioningState(
-      autoProvision: map['autoProvision'] == null ? null : pulumi.Output.create<String>(map['autoProvision'] as String),
+      autoProvision: map['autoProvision'] == null ? null : (map['autoProvision'] as String).input(),
     );
   }
 }

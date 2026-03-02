@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MarketplaceSubscription {
   /// [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
-  final String modelId;
+  final pulumi.Input<String> modelId;
 
   /// Creates a new [MarketplaceSubscription].
   /// [modelId] [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
@@ -19,7 +20,7 @@ class MarketplaceSubscription {
 
   factory MarketplaceSubscription.fromMap(Map<String, dynamic> map) {
     return MarketplaceSubscription(
-      modelId: map['modelId'] as String,
+      modelId: (map['modelId'] as String).input(),
     );
   }
 }

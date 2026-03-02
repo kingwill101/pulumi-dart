@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_app_template_tcp_scale_rule_authentication.dart';
 
 class GetAppTemplateTcpScaleRule {
-  final List<GetAppTemplateTcpScaleRuleAuthentication> authentications;
-  final String concurrentRequests;
+  final pulumi.Input<List<GetAppTemplateTcpScaleRuleAuthentication>> authentications;
+  final pulumi.Input<String> concurrentRequests;
   /// The name of the Container App.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetAppTemplateTcpScaleRule].
   /// [authentications] Required.
@@ -21,7 +21,7 @@ class GetAppTemplateTcpScaleRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentications': pulumi.Input.encodeList<GetAppTemplateTcpScaleRuleAuthentication, Map<String, dynamic>>(authentications, (value) => value.toMap()),
+      'authentications': pulumi.Input.mapInputValue<List<GetAppTemplateTcpScaleRuleAuthentication>, List<Map<String, dynamic>>>(authentications, (value) => pulumi.Input.encodeList<GetAppTemplateTcpScaleRuleAuthentication, Map<String, dynamic>>(value, (value) => value.toMap())),
       'concurrentRequests': concurrentRequests,
       'name': name,
     };
@@ -29,9 +29,9 @@ class GetAppTemplateTcpScaleRule {
 
   factory GetAppTemplateTcpScaleRule.fromMap(Map<String, dynamic> map) {
     return GetAppTemplateTcpScaleRule(
-      authentications: pulumi.Input.decodeList<GetAppTemplateTcpScaleRuleAuthentication>(map['authentications'], (value) => GetAppTemplateTcpScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>())),
-      concurrentRequests: map['concurrentRequests'] as String,
-      name: map['name'] as String,
+      authentications: (pulumi.Input.decodeList<GetAppTemplateTcpScaleRuleAuthentication>(map['authentications'], (value) => GetAppTemplateTcpScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      concurrentRequests: (map['concurrentRequests'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

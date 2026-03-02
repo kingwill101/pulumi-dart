@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouterBgpAdvertisedIpRange {
   /// User-specified description for the IP range.
   ///
   /// <a name="nested_md5_authentication_keys"></a>The `md5_authentication_keys` block supports:
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The IP range to advertise. The value must be a
   /// CIDR-formatted string.
-  final String range;
+  final pulumi.Input<String> range;
 
   /// Creates a new [RouterBgpAdvertisedIpRange].
   /// [description] User-specified description for the IP range.
@@ -27,8 +28,8 @@ class RouterBgpAdvertisedIpRange {
 
   factory RouterBgpAdvertisedIpRange.fromMap(Map<String, dynamic> map) {
     return RouterBgpAdvertisedIpRange(
-      description: map['description'] == null ? null : map['description'] as String,
-      range: map['range'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      range: (map['range'] as String).input(),
     );
   }
 }

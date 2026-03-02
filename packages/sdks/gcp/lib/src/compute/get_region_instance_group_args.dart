@@ -28,15 +28,11 @@ class GetRegionInstanceGroupArgs {
   /// [region] The region in which the resource belongs.  If `self_link`
   /// [selfLink] The link to the instance group.  One of `name` or `self_link` must be provided.
   GetRegionInstanceGroupArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? selfLink,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+    this.name,
+    this.project,
+    this.region,
+    this.selfLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class GetRegionInstanceGroupArgs {
 
   factory GetRegionInstanceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
     );
   }
 }

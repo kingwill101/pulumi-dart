@@ -25,17 +25,12 @@ class ManagedHardwareSecurityModuleRoleAssignmentArgs {
   /// [roleDefinitionId] The resource ID of the role definition to assign. Changing this forces a new Managed Hardware Security Module to be created.
   /// [scope] Specifies the scope to create the role assignment. Changing this forces a new Managed Hardware Security Module to be created.
   ManagedHardwareSecurityModuleRoleAssignmentArgs({
-    required pulumi.Output<String> managedHsmId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> principalId,
-    required pulumi.Output<String> roleDefinitionId,
-    required pulumi.Output<String> scope,
-  }) :
-      managedHsmId = pulumi.Input.asInput<String>(managedHsmId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      roleDefinitionId = pulumi.Input.asInput<String>(roleDefinitionId),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.managedHsmId,
+    this.name,
+    required this.principalId,
+    required this.roleDefinitionId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ManagedHardwareSecurityModuleRoleAssignmentArgs {
 
   factory ManagedHardwareSecurityModuleRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleRoleAssignmentArgs(
-      managedHsmId: pulumi.Output.create<String>(map['managedHsmId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      roleDefinitionId: pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      managedHsmId: (map['managedHsmId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketCnameCertificate {
   /// Certificate Identifier
-  final String? certId;
+  final pulumi.Input<String>? certId;
   /// The certificate public key.
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// Certificate creation time
-  final String? creationDate;
+  final pulumi.Input<String>? creationDate;
   /// Certificate Fingerprint
-  final String? fingerprint;
+  final pulumi.Input<String>? fingerprint;
   /// The certificate private key.
-  final String? privateKey;
+  final pulumi.Input<String>? privateKey;
   /// Cname status
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Certificate Type
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Certificate validity period end time
-  final String? validEndDate;
+  final pulumi.Input<String>? validEndDate;
   /// Certificate validity period start time
-  final String? validStartDate;
+  final pulumi.Input<String>? validStartDate;
 
   /// Creates a new [BucketCnameCertificate].
   /// [certId] Certificate Identifier
@@ -59,15 +60,15 @@ class BucketCnameCertificate {
 
   factory BucketCnameCertificate.fromMap(Map<String, dynamic> map) {
     return BucketCnameCertificate(
-      certId: map['certId'] == null ? null : map['certId'] as String,
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      creationDate: map['creationDate'] == null ? null : map['creationDate'] as String,
-      fingerprint: map['fingerprint'] == null ? null : map['fingerprint'] as String,
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      validEndDate: map['validEndDate'] == null ? null : map['validEndDate'] as String,
-      validStartDate: map['validStartDate'] == null ? null : map['validStartDate'] as String,
+      certId: map['certId'] == null ? null : (map['certId'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      creationDate: map['creationDate'] == null ? null : (map['creationDate'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      validEndDate: map['validEndDate'] == null ? null : (map['validEndDate'] as String).input(),
+      validStartDate: map['validStartDate'] == null ? null : (map['validStartDate'] as String).input(),
     );
   }
 }

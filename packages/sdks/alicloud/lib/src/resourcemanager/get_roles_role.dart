@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRolesRole {
   /// The Alibaba Cloud Resource Name (ARN) of the RAM role.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// (Available in v1.114.0+) The assume role policy document.
-  final String assumeRolePolicyDocument;
+  final pulumi.Input<String> assumeRolePolicyDocument;
   /// The description of the RAM role.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the role.
-  final String id;
+  final pulumi.Input<String> id;
   /// The maximum session duration of the RAM role.
-  final int maxSessionDuration;
+  final pulumi.Input<int> maxSessionDuration;
   /// The ID of the role.
-  final String roleId;
+  final pulumi.Input<String> roleId;
   /// The name of the role.
-  final String roleName;
+  final pulumi.Input<String> roleName;
   /// The time when the RAM role was updated.
-  final String updateDate;
+  final pulumi.Input<String> updateDate;
 
   /// Creates a new [GetRolesRole].
   /// [arn] The Alibaba Cloud Resource Name (ARN) of the RAM role.
@@ -54,14 +55,14 @@ class GetRolesRole {
 
   factory GetRolesRole.fromMap(Map<String, dynamic> map) {
     return GetRolesRole(
-      arn: map['arn'] as String,
-      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      maxSessionDuration: map['maxSessionDuration'] as int,
-      roleId: map['roleId'] as String,
-      roleName: map['roleName'] as String,
-      updateDate: map['updateDate'] as String,
+      arn: (map['arn'] as String).input(),
+      assumeRolePolicyDocument: (map['assumeRolePolicyDocument'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      maxSessionDuration: (map['maxSessionDuration'] as int).input(),
+      roleId: (map['roleId'] as String).input(),
+      roleName: (map['roleName'] as String).input(),
+      updateDate: (map['updateDate'] as String).input(),
     );
   }
 }

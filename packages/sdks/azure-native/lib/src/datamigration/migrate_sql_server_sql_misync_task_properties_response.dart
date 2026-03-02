@@ -9,22 +9,22 @@ import 'odata_error_response.dart';
 /// Properties for task that migrates SQL Server databases to Azure SQL Database Managed Instance sync scenario
 class MigrateSqlServerSqlMISyncTaskPropertiesResponse {
   /// Key value pairs of client data to attach meta data information to task
-  final Map<String, String>? clientData;
+  final pulumi.Input<Map<String, String>>? clientData;
   /// Array of command properties.
-  final List<MigrateMISyncCompleteCommandPropertiesResponse> commands;
+  final pulumi.Input<List<MigrateMISyncCompleteCommandPropertiesResponse>> commands;
   /// DateTime in UTC when the task was created
-  final String? createdOn;
+  final pulumi.Input<String>? createdOn;
   /// Array of errors. This is ignored if submitted.
-  final List<ODataErrorResponse> errors;
+  final pulumi.Input<List<ODataErrorResponse>> errors;
   /// Task input
-  final MigrateSqlServerSqlMISyncTaskInputResponse? input;
+  final pulumi.Input<MigrateSqlServerSqlMISyncTaskInputResponse>? input;
   /// Task output. This is ignored if submitted.
-  final List<MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse> output;
+  final pulumi.Input<List<MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse>> output;
   /// The state of the task. This is ignored if submitted.
-  final String state;
+  final pulumi.Input<String> state;
   /// Task type.
   /// Expected value is 'Migrate.SqlServer.AzureSqlDbMI.Sync.LRS'.
-  final String taskType;
+  final pulumi.Input<String> taskType;
 
   /// Creates a new [MigrateSqlServerSqlMISyncTaskPropertiesResponse].
   /// [clientData] Key value pairs of client data to attach meta data information to task
@@ -49,11 +49,11 @@ class MigrateSqlServerSqlMISyncTaskPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientData': ?clientData,
-      'commands': pulumi.Input.encodeList<MigrateMISyncCompleteCommandPropertiesResponse, Map<String, dynamic>>(commands, (value) => value.toMap()),
+      'commands': pulumi.Input.mapInputValue<List<MigrateMISyncCompleteCommandPropertiesResponse>, List<Map<String, dynamic>>>(commands, (value) => pulumi.Input.encodeList<MigrateMISyncCompleteCommandPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createdOn': ?createdOn,
-      'errors': pulumi.Input.encodeList<ODataErrorResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
-      'input': ?input == null ? null : input!.toMap(),
-      'output': pulumi.Input.encodeList<MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse, Map<String, dynamic>>(output, (value) => value.toMap()),
+      'errors': pulumi.Input.mapInputValue<List<ODataErrorResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ODataErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'input': ?pulumi.Input.mapOptionalInputValue<MigrateSqlServerSqlMISyncTaskInputResponse, Map<String, dynamic>>(input, (value) => value.toMap()),
+      'output': pulumi.Input.mapInputValue<List<MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse>, List<Map<String, dynamic>>>(output, (value) => pulumi.Input.encodeList<MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': state,
       'taskType': taskType,
     };
@@ -61,14 +61,14 @@ class MigrateSqlServerSqlMISyncTaskPropertiesResponse {
 
   factory MigrateSqlServerSqlMISyncTaskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMISyncTaskPropertiesResponse(
-      clientData: map['clientData'] == null ? null : (map['clientData'] as Map).cast<String, String>(),
-      commands: pulumi.Input.decodeList<MigrateMISyncCompleteCommandPropertiesResponse>(map['commands'], (value) => MigrateMISyncCompleteCommandPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      createdOn: map['createdOn'] == null ? null : map['createdOn'] as String,
-      errors: pulumi.Input.decodeList<ODataErrorResponse>(map['errors'], (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      input: map['input'] == null ? null : MigrateSqlServerSqlMISyncTaskInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>()),
-      output: pulumi.Input.decodeList<MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse>(map['output'], (value) => MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse.fromMap((value as Map).cast<String, dynamic>())),
-      state: map['state'] as String,
-      taskType: map['taskType'] as String,
+      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
+      commands: (pulumi.Input.decodeList<MigrateMISyncCompleteCommandPropertiesResponse>(map['commands'], (value) => MigrateMISyncCompleteCommandPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createdOn: map['createdOn'] == null ? null : (map['createdOn'] as String).input(),
+      errors: (pulumi.Input.decodeList<ODataErrorResponse>(map['errors'], (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      input: map['input'] == null ? null : (MigrateSqlServerSqlMISyncTaskInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      output: (pulumi.Input.decodeList<MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse>(map['output'], (value) => MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: (map['state'] as String).input(),
+      taskType: (map['taskType'] as String).input(),
     );
   }
 }

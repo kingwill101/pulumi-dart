@@ -22,15 +22,11 @@ class GetSchemaVersionArgs {
   /// [schemaRegistryName] Schema registry name parameter.
   /// [schemaVersionName] Schema version name parameter.
   GetSchemaVersionArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaName,
-    required pulumi.Output<String> schemaRegistryName,
-    required pulumi.Output<String> schemaVersionName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asInput<String>(schemaName),
-      schemaRegistryName = pulumi.Input.asInput<String>(schemaRegistryName),
-      schemaVersionName = pulumi.Input.asInput<String>(schemaVersionName);
+    required this.resourceGroupName,
+    required this.schemaName,
+    required this.schemaRegistryName,
+    required this.schemaVersionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSchemaVersionArgs {
 
   factory GetSchemaVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaVersionArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
-      schemaRegistryName: pulumi.Output.create<String>(map['schemaRegistryName'] as String),
-      schemaVersionName: pulumi.Output.create<String>(map['schemaVersionName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      schemaRegistryName: (map['schemaRegistryName'] as String).input(),
+      schemaVersionName: (map['schemaVersionName'] as String).input(),
     );
   }
 }

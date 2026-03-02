@@ -22,15 +22,11 @@ class GetModifyParameterLogsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [startTime] The start time.
   GetModifyParameterLogsArgs({
-    required pulumi.Output<String> dbInstanceId,
-    required pulumi.Output<String> endTime,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> startTime,
-  }) :
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      endTime = pulumi.Input.asInput<String>(endTime),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      startTime = pulumi.Input.asInput<String>(startTime);
+    required this.dbInstanceId,
+    required this.endTime,
+    this.outputFile,
+    required this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetModifyParameterLogsArgs {
 
   factory GetModifyParameterLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetModifyParameterLogsArgs(
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      endTime: pulumi.Output.create<String>(map['endTime'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      startTime: pulumi.Output.create<String>(map['startTime'] as String),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

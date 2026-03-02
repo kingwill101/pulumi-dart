@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Volume Backup Properties
 class VolumeBackupProperties {
   /// Backup Policy Resource ID
-  final String? backupPolicyId;
+  final pulumi.Input<String>? backupPolicyId;
   /// Backup Vault Resource ID
-  final String? backupVaultId;
+  final pulumi.Input<String>? backupVaultId;
   /// Policy Enforced
-  final bool? policyEnforced;
+  final pulumi.Input<bool>? policyEnforced;
 
   /// Creates a new [VolumeBackupProperties].
   /// [backupPolicyId] Backup Policy Resource ID
@@ -30,9 +31,9 @@ class VolumeBackupProperties {
 
   factory VolumeBackupProperties.fromMap(Map<String, dynamic> map) {
     return VolumeBackupProperties(
-      backupPolicyId: map['backupPolicyId'] == null ? null : map['backupPolicyId'] as String,
-      backupVaultId: map['backupVaultId'] == null ? null : map['backupVaultId'] as String,
-      policyEnforced: map['policyEnforced'] == null ? null : map['policyEnforced'] as bool,
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
+      backupVaultId: map['backupVaultId'] == null ? null : (map['backupVaultId'] as String).input(),
+      policyEnforced: map['policyEnforced'] == null ? null : (map['policyEnforced'] as bool).input(),
     );
   }
 }

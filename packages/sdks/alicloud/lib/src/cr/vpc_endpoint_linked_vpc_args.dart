@@ -27,17 +27,12 @@ class VpcEndpointLinkedVpcArgs {
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The ID of the vSwitch.
   VpcEndpointLinkedVpcArgs({
-    pulumi.Output<bool>? enableCreateDnsRecordInPvzt,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> moduleName,
-    required pulumi.Output<String> vpcId,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      enableCreateDnsRecordInPvzt = pulumi.Input.asOptionalInput<bool>(enableCreateDnsRecordInPvzt),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      moduleName = pulumi.Input.asInput<String>(moduleName),
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    this.enableCreateDnsRecordInPvzt,
+    required this.instanceId,
+    required this.moduleName,
+    required this.vpcId,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class VpcEndpointLinkedVpcArgs {
 
   factory VpcEndpointLinkedVpcArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointLinkedVpcArgs(
-      enableCreateDnsRecordInPvzt: map['enableCreateDnsRecordInPvzt'] == null ? null : pulumi.Output.create<bool>(map['enableCreateDnsRecordInPvzt'] as bool),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      moduleName: pulumi.Output.create<String>(map['moduleName'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      enableCreateDnsRecordInPvzt: map['enableCreateDnsRecordInPvzt'] == null ? null : (map['enableCreateDnsRecordInPvzt'] as bool).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      moduleName: (map['moduleName'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

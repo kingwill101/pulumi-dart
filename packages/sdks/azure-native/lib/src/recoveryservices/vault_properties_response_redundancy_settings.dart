@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The redundancy Settings of a Vault
 class VaultPropertiesResponseRedundancySettings {
   /// Flag to show if Cross Region Restore is enabled on the Vault or not
-  final String? crossRegionRestore;
+  final pulumi.Input<String>? crossRegionRestore;
   /// The storage redundancy setting of a vault
-  final String? standardTierStorageRedundancy;
+  final pulumi.Input<String>? standardTierStorageRedundancy;
 
   /// Creates a new [VaultPropertiesResponseRedundancySettings].
   /// [crossRegionRestore] Flag to show if Cross Region Restore is enabled on the Vault or not
@@ -25,8 +26,8 @@ class VaultPropertiesResponseRedundancySettings {
 
   factory VaultPropertiesResponseRedundancySettings.fromMap(Map<String, dynamic> map) {
     return VaultPropertiesResponseRedundancySettings(
-      crossRegionRestore: map['crossRegionRestore'] == null ? null : map['crossRegionRestore'] as String,
-      standardTierStorageRedundancy: map['standardTierStorageRedundancy'] == null ? null : map['standardTierStorageRedundancy'] as String,
+      crossRegionRestore: map['crossRegionRestore'] == null ? null : (map['crossRegionRestore'] as String).input(),
+      standardTierStorageRedundancy: map['standardTierStorageRedundancy'] == null ? null : (map['standardTierStorageRedundancy'] as String).input(),
     );
   }
 }

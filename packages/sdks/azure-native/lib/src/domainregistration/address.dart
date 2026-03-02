@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Address information for domain registration.
 class Address {
   /// First line of an Address.
-  final String address1;
+  final pulumi.Input<String> address1;
   /// The second line of the Address. Optional.
-  final String? address2;
+  final pulumi.Input<String>? address2;
   /// The city for the address.
-  final String city;
+  final pulumi.Input<String> city;
   /// The country for the address.
-  final String country;
+  final pulumi.Input<String> country;
   /// The postal code for the address.
-  final String postalCode;
+  final pulumi.Input<String> postalCode;
   /// The state or province for the address.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [Address].
   /// [address1] First line of an Address.
@@ -45,12 +46,12 @@ class Address {
 
   factory Address.fromMap(Map<String, dynamic> map) {
     return Address(
-      address1: map['address1'] as String,
-      address2: map['address2'] == null ? null : map['address2'] as String,
-      city: map['city'] as String,
-      country: map['country'] as String,
-      postalCode: map['postalCode'] as String,
-      state: map['state'] as String,
+      address1: (map['address1'] as String).input(),
+      address2: map['address2'] == null ? null : (map['address2'] as String).input(),
+      city: (map['city'] as String).input(),
+      country: (map['country'] as String).input(),
+      postalCode: (map['postalCode'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

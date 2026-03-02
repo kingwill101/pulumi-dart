@@ -26,19 +26,13 @@ class VpcIpamPoolCidrState {
   /// [netmaskLength] If provided, the cidr provisioned into the specified pool will be the next available cidr given this declared netmask length. Conflicts with `cidr`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   VpcIpamPoolCidrState({
-    pulumi.Output<String>? cidr,
-    pulumi.Output<VpcIpamPoolCidrCidrAuthorizationContext>? cidrAuthorizationContext,
-    pulumi.Output<String>? ipamPoolCidrId,
-    pulumi.Output<String>? ipamPoolId,
-    pulumi.Output<int>? netmaskLength,
-    pulumi.Output<String>? region,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      cidrAuthorizationContext = pulumi.Input.asOptionalInput<VpcIpamPoolCidrCidrAuthorizationContext>(cidrAuthorizationContext),
-      ipamPoolCidrId = pulumi.Input.asOptionalInput<String>(ipamPoolCidrId),
-      ipamPoolId = pulumi.Input.asOptionalInput<String>(ipamPoolId),
-      netmaskLength = pulumi.Input.asOptionalInput<int>(netmaskLength),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.cidr,
+    this.cidrAuthorizationContext,
+    this.ipamPoolCidrId,
+    this.ipamPoolId,
+    this.netmaskLength,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class VpcIpamPoolCidrState {
 
   factory VpcIpamPoolCidrState.fromMap(Map<String, dynamic> map) {
     return VpcIpamPoolCidrState(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      cidrAuthorizationContext: map['cidrAuthorizationContext'] == null ? null : pulumi.Output.create<VpcIpamPoolCidrCidrAuthorizationContext>(VpcIpamPoolCidrCidrAuthorizationContext.fromMap((map['cidrAuthorizationContext'] as Map).cast<String, dynamic>())),
-      ipamPoolCidrId: map['ipamPoolCidrId'] == null ? null : pulumi.Output.create<String>(map['ipamPoolCidrId'] as String),
-      ipamPoolId: map['ipamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipamPoolId'] as String),
-      netmaskLength: map['netmaskLength'] == null ? null : pulumi.Output.create<int>(map['netmaskLength'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      cidrAuthorizationContext: map['cidrAuthorizationContext'] == null ? null : (VpcIpamPoolCidrCidrAuthorizationContext.fromMap((map['cidrAuthorizationContext'] as Map).cast<String, dynamic>())).input(),
+      ipamPoolCidrId: map['ipamPoolCidrId'] == null ? null : (map['ipamPoolCidrId'] as String).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
+      netmaskLength: map['netmaskLength'] == null ? null : (map['netmaskLength'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

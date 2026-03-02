@@ -35,25 +35,16 @@ class CustomConstraintState {
   /// [resourceTypes] Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
   /// [updateTime] Output only. The timestamp representing when the constraint was last updated.
   CustomConstraintState({
-    pulumi.Output<String>? actionType,
-    pulumi.Output<String>? condition,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<String>>? methodTypes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<List<String>>? resourceTypes,
-    pulumi.Output<String>? updateTime,
-  }) :
-      actionType = pulumi.Input.asOptionalInput<String>(actionType),
-      condition = pulumi.Input.asOptionalInput<String>(condition),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      methodTypes = pulumi.Input.asOptionalInput<List<String>>(methodTypes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      resourceTypes = pulumi.Input.asOptionalInput<List<String>>(resourceTypes),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.actionType,
+    this.condition,
+    this.description,
+    this.displayName,
+    this.methodTypes,
+    this.name,
+    this.parent,
+    this.resourceTypes,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class CustomConstraintState {
 
   factory CustomConstraintState.fromMap(Map<String, dynamic> map) {
     return CustomConstraintState(
-      actionType: map['actionType'] == null ? null : pulumi.Output.create<String>(map['actionType'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<String>(map['condition'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      methodTypes: map['methodTypes'] == null ? null : pulumi.Output.create<List<String>>((map['methodTypes'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      resourceTypes: map['resourceTypes'] == null ? null : pulumi.Output.create<List<String>>((map['resourceTypes'] as List).cast<String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      actionType: map['actionType'] == null ? null : (map['actionType'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      methodTypes: map['methodTypes'] == null ? null : ((map['methodTypes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

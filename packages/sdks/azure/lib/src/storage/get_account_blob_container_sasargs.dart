@@ -49,31 +49,19 @@ class GetAccountBlobContainerSASArgs {
   /// [permissions] A `permissions` block as defined below.
   /// [start] The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
   GetAccountBlobContainerSASArgs({
-    pulumi.Output<String>? cacheControl,
-    required pulumi.Output<String> connectionString,
-    required pulumi.Output<String> containerName,
-    pulumi.Output<String>? contentDisposition,
-    pulumi.Output<String>? contentEncoding,
-    pulumi.Output<String>? contentLanguage,
-    pulumi.Output<String>? contentType,
-    required pulumi.Output<String> expiry,
-    pulumi.Output<bool>? httpsOnly,
-    pulumi.Output<String>? ipAddress,
-    required pulumi.Output<GetAccountBlobContainerSASPermissions> permissions,
-    required pulumi.Output<String> start,
-  }) :
-      cacheControl = pulumi.Input.asOptionalInput<String>(cacheControl),
-      connectionString = pulumi.Input.asInput<String>(connectionString),
-      containerName = pulumi.Input.asInput<String>(containerName),
-      contentDisposition = pulumi.Input.asOptionalInput<String>(contentDisposition),
-      contentEncoding = pulumi.Input.asOptionalInput<String>(contentEncoding),
-      contentLanguage = pulumi.Input.asOptionalInput<String>(contentLanguage),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      expiry = pulumi.Input.asInput<String>(expiry),
-      httpsOnly = pulumi.Input.asOptionalInput<bool>(httpsOnly),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      permissions = pulumi.Input.asInput<GetAccountBlobContainerSASPermissions>(permissions),
-      start = pulumi.Input.asInput<String>(start);
+    this.cacheControl,
+    required this.connectionString,
+    required this.containerName,
+    this.contentDisposition,
+    this.contentEncoding,
+    this.contentLanguage,
+    this.contentType,
+    required this.expiry,
+    this.httpsOnly,
+    this.ipAddress,
+    required this.permissions,
+    required this.start,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class GetAccountBlobContainerSASArgs {
 
   factory GetAccountBlobContainerSASArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountBlobContainerSASArgs(
-      cacheControl: map['cacheControl'] == null ? null : pulumi.Output.create<String>(map['cacheControl'] as String),
-      connectionString: pulumi.Output.create<String>(map['connectionString'] as String),
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      contentDisposition: map['contentDisposition'] == null ? null : pulumi.Output.create<String>(map['contentDisposition'] as String),
-      contentEncoding: map['contentEncoding'] == null ? null : pulumi.Output.create<String>(map['contentEncoding'] as String),
-      contentLanguage: map['contentLanguage'] == null ? null : pulumi.Output.create<String>(map['contentLanguage'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      expiry: pulumi.Output.create<String>(map['expiry'] as String),
-      httpsOnly: map['httpsOnly'] == null ? null : pulumi.Output.create<bool>(map['httpsOnly'] as bool),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      permissions: pulumi.Output.create<GetAccountBlobContainerSASPermissions>(GetAccountBlobContainerSASPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())),
-      start: pulumi.Output.create<String>(map['start'] as String),
+      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl'] as String).input(),
+      connectionString: (map['connectionString'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition'] as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
+      contentLanguage: map['contentLanguage'] == null ? null : (map['contentLanguage'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      expiry: (map['expiry'] as String).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      permissions: (GetAccountBlobContainerSASPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

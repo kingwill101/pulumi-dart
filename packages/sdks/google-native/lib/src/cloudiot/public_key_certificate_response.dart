@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'x509_certificate_details_response.dart';
 
 /// A public key certificate format and data.
 class PublicKeyCertificateResponse {
   /// The certificate data.
-  final String certificate;
+  final pulumi.Input<String> certificate;
   /// The certificate format.
-  final String format;
+  final pulumi.Input<String> format;
   /// [Output only] The certificate details. Used only for X.509 certificates.
-  final X509CertificateDetailsResponse x509Details;
+  final pulumi.Input<X509CertificateDetailsResponse> x509Details;
 
   /// Creates a new [PublicKeyCertificateResponse].
   /// [certificate] The certificate data.
@@ -25,15 +26,15 @@ class PublicKeyCertificateResponse {
     return <String, dynamic>{
       'certificate': certificate,
       'format': format,
-      'x509Details': x509Details.toMap(),
+      'x509Details': pulumi.Input.mapInputValue<X509CertificateDetailsResponse, Map<String, dynamic>>(x509Details, (value) => value.toMap()),
     };
   }
 
   factory PublicKeyCertificateResponse.fromMap(Map<String, dynamic> map) {
     return PublicKeyCertificateResponse(
-      certificate: map['certificate'] as String,
-      format: map['format'] as String,
-      x509Details: X509CertificateDetailsResponse.fromMap((map['x509Details'] as Map).cast<String, dynamic>()),
+      certificate: (map['certificate'] as String).input(),
+      format: (map['format'] as String).input(),
+      x509Details: (X509CertificateDetailsResponse.fromMap((map['x509Details'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

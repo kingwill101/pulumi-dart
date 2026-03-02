@@ -55,35 +55,21 @@ class SubscriptionPolicyAssignmentState {
   /// [resourceSelectors] One or more `resource_selectors` blocks as defined below to filter polices by resource properties.
   /// [subscriptionId] The ID of the Subscription where this Policy Assignment should be created. Changing this forces a new Policy Assignment to be created.
   SubscriptionPolicyAssignmentState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enforce,
-    pulumi.Output<SubscriptionPolicyAssignmentIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<SubscriptionPolicyAssignmentNonComplianceMessage>>? nonComplianceMessages,
-    pulumi.Output<List<String>>? notScopes,
-    pulumi.Output<List<SubscriptionPolicyAssignmentOverride>>? overrides,
-    pulumi.Output<String>? parameters,
-    pulumi.Output<String>? policyDefinitionId,
-    pulumi.Output<List<SubscriptionPolicyAssignmentResourceSelector>>? resourceSelectors,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enforce = pulumi.Input.asOptionalInput<bool>(enforce),
-      identity = pulumi.Input.asOptionalInput<SubscriptionPolicyAssignmentIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<String>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nonComplianceMessages = pulumi.Input.asOptionalInput<List<SubscriptionPolicyAssignmentNonComplianceMessage>>(nonComplianceMessages),
-      notScopes = pulumi.Input.asOptionalInput<List<String>>(notScopes),
-      overrides = pulumi.Input.asOptionalInput<List<SubscriptionPolicyAssignmentOverride>>(overrides),
-      parameters = pulumi.Input.asOptionalInput<String>(parameters),
-      policyDefinitionId = pulumi.Input.asOptionalInput<String>(policyDefinitionId),
-      resourceSelectors = pulumi.Input.asOptionalInput<List<SubscriptionPolicyAssignmentResourceSelector>>(resourceSelectors),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    this.description,
+    this.displayName,
+    this.enforce,
+    this.identity,
+    this.location,
+    this.metadata,
+    this.name,
+    this.nonComplianceMessages,
+    this.notScopes,
+    this.overrides,
+    this.parameters,
+    this.policyDefinitionId,
+    this.resourceSelectors,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,20 +92,20 @@ class SubscriptionPolicyAssignmentState {
 
   factory SubscriptionPolicyAssignmentState.fromMap(Map<String, dynamic> map) {
     return SubscriptionPolicyAssignmentState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enforce: map['enforce'] == null ? null : pulumi.Output.create<bool>(map['enforce'] as bool),
-      identity: map['identity'] == null ? null : pulumi.Output.create<SubscriptionPolicyAssignmentIdentity>(SubscriptionPolicyAssignmentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<String>(map['metadata'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nonComplianceMessages: map['nonComplianceMessages'] == null ? null : pulumi.Output.create<List<SubscriptionPolicyAssignmentNonComplianceMessage>>(pulumi.Input.decodeList<SubscriptionPolicyAssignmentNonComplianceMessage>(map['nonComplianceMessages'], (value) => SubscriptionPolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>()))),
-      notScopes: map['notScopes'] == null ? null : pulumi.Output.create<List<String>>((map['notScopes'] as List).cast<String>()),
-      overrides: map['overrides'] == null ? null : pulumi.Output.create<List<SubscriptionPolicyAssignmentOverride>>(pulumi.Input.decodeList<SubscriptionPolicyAssignmentOverride>(map['overrides'], (value) => SubscriptionPolicyAssignmentOverride.fromMap((value as Map).cast<String, dynamic>()))),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<String>(map['parameters'] as String),
-      policyDefinitionId: map['policyDefinitionId'] == null ? null : pulumi.Output.create<String>(map['policyDefinitionId'] as String),
-      resourceSelectors: map['resourceSelectors'] == null ? null : pulumi.Output.create<List<SubscriptionPolicyAssignmentResourceSelector>>(pulumi.Input.decodeList<SubscriptionPolicyAssignmentResourceSelector>(map['resourceSelectors'], (value) => SubscriptionPolicyAssignmentResourceSelector.fromMap((value as Map).cast<String, dynamic>()))),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enforce: map['enforce'] == null ? null : (map['enforce'] as bool).input(),
+      identity: map['identity'] == null ? null : (SubscriptionPolicyAssignmentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nonComplianceMessages: map['nonComplianceMessages'] == null ? null : (pulumi.Input.decodeList<SubscriptionPolicyAssignmentNonComplianceMessage>(map['nonComplianceMessages'], (value) => SubscriptionPolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notScopes: map['notScopes'] == null ? null : ((map['notScopes'] as List).cast<String>()).input(),
+      overrides: map['overrides'] == null ? null : (pulumi.Input.decodeList<SubscriptionPolicyAssignmentOverride>(map['overrides'], (value) => SubscriptionPolicyAssignmentOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      policyDefinitionId: map['policyDefinitionId'] == null ? null : (map['policyDefinitionId'] as String).input(),
+      resourceSelectors: map['resourceSelectors'] == null ? null : (pulumi.Input.decodeList<SubscriptionPolicyAssignmentResourceSelector>(map['resourceSelectors'], (value) => SubscriptionPolicyAssignmentResourceSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

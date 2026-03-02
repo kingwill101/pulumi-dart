@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineWsfcDomainCredential {
   /// The account password used for creating cluster.
-  final String clusterBootstrapAccountPassword;
+  final pulumi.Input<String> clusterBootstrapAccountPassword;
   /// The account password used for operating cluster.
-  final String clusterOperatorAccountPassword;
+  final pulumi.Input<String> clusterOperatorAccountPassword;
   /// The account password under which SQL service will run on all participating SQL virtual machines in the cluster.
-  final String sqlServiceAccountPassword;
+  final pulumi.Input<String> sqlServiceAccountPassword;
 
   /// Creates a new [VirtualMachineWsfcDomainCredential].
   /// [clusterBootstrapAccountPassword] The account password used for creating cluster.
@@ -29,9 +30,9 @@ class VirtualMachineWsfcDomainCredential {
 
   factory VirtualMachineWsfcDomainCredential.fromMap(Map<String, dynamic> map) {
     return VirtualMachineWsfcDomainCredential(
-      clusterBootstrapAccountPassword: map['clusterBootstrapAccountPassword'] as String,
-      clusterOperatorAccountPassword: map['clusterOperatorAccountPassword'] as String,
-      sqlServiceAccountPassword: map['sqlServiceAccountPassword'] as String,
+      clusterBootstrapAccountPassword: (map['clusterBootstrapAccountPassword'] as String).input(),
+      clusterOperatorAccountPassword: (map['clusterOperatorAccountPassword'] as String).input(),
+      sqlServiceAccountPassword: (map['sqlServiceAccountPassword'] as String).input(),
     );
   }
 }

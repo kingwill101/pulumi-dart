@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MaterializedViewDefinition {
   /// [Optional] Allow non incremental materialized view definition. The default value is "false".
-  final bool? allowNonIncrementalDefinition;
+  final pulumi.Input<bool>? allowNonIncrementalDefinition;
   /// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
-  final bool? enableRefresh;
+  final pulumi.Input<bool>? enableRefresh;
   /// [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
-  final String? maxStaleness;
+  final pulumi.Input<String>? maxStaleness;
   /// [Required] A query whose result is persisted.
-  final String? query;
+  final pulumi.Input<String>? query;
   /// [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
-  final String? refreshIntervalMs;
+  final pulumi.Input<String>? refreshIntervalMs;
 
   /// Creates a new [MaterializedViewDefinition].
   /// [allowNonIncrementalDefinition] [Optional] Allow non incremental materialized view definition. The default value is "false".
@@ -39,11 +40,11 @@ class MaterializedViewDefinition {
 
   factory MaterializedViewDefinition.fromMap(Map<String, dynamic> map) {
     return MaterializedViewDefinition(
-      allowNonIncrementalDefinition: map['allowNonIncrementalDefinition'] == null ? null : map['allowNonIncrementalDefinition'] as bool,
-      enableRefresh: map['enableRefresh'] == null ? null : map['enableRefresh'] as bool,
-      maxStaleness: map['maxStaleness'] == null ? null : map['maxStaleness'] as String,
-      query: map['query'] == null ? null : map['query'] as String,
-      refreshIntervalMs: map['refreshIntervalMs'] == null ? null : map['refreshIntervalMs'] as String,
+      allowNonIncrementalDefinition: map['allowNonIncrementalDefinition'] == null ? null : (map['allowNonIncrementalDefinition'] as bool).input(),
+      enableRefresh: map['enableRefresh'] == null ? null : (map['enableRefresh'] as bool).input(),
+      maxStaleness: map['maxStaleness'] == null ? null : (map['maxStaleness'] as String).input(),
+      query: map['query'] == null ? null : (map['query'] as String).input(),
+      refreshIntervalMs: map['refreshIntervalMs'] == null ? null : (map['refreshIntervalMs'] as String).input(),
     );
   }
 }

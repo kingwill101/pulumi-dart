@@ -16,11 +16,9 @@ class GetGradientaiOpenaiApiKeysArgs {
   /// [filters] Optional.
   /// [sorts] Optional.
   GetGradientaiOpenaiApiKeysArgs({
-    pulumi.Output<List<GetGradientaiOpenaiApiKeysFilter>>? filters,
-    pulumi.Output<List<GetGradientaiOpenaiApiKeysSort>>? sorts,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetGradientaiOpenaiApiKeysFilter>>(filters),
-      sorts = pulumi.Input.asOptionalInput<List<GetGradientaiOpenaiApiKeysSort>>(sorts);
+    this.filters,
+    this.sorts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetGradientaiOpenaiApiKeysArgs {
 
   factory GetGradientaiOpenaiApiKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiOpenaiApiKeysArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetGradientaiOpenaiApiKeysFilter>>(pulumi.Input.decodeList<GetGradientaiOpenaiApiKeysFilter>(map['filters'], (value) => GetGradientaiOpenaiApiKeysFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      sorts: map['sorts'] == null ? null : pulumi.Output.create<List<GetGradientaiOpenaiApiKeysSort>>(pulumi.Input.decodeList<GetGradientaiOpenaiApiKeysSort>(map['sorts'], (value) => GetGradientaiOpenaiApiKeysSort.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiOpenaiApiKeysFilter>(map['filters'], (value) => GetGradientaiOpenaiApiKeysFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiOpenaiApiKeysSort>(map['sorts'], (value) => GetGradientaiOpenaiApiKeysSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

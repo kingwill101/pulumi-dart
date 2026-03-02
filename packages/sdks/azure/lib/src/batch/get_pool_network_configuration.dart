@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_pool_network_configuration_endpoint_configuration.dart';
 
 class GetPoolNetworkConfiguration {
-  final bool acceleratedNetworkingEnabled;
+  final pulumi.Input<bool> acceleratedNetworkingEnabled;
   /// The scope of dynamic vnet assignment.
-  final String dynamicVnetAssignmentScope;
+  final pulumi.Input<String> dynamicVnetAssignmentScope;
   /// The inbound NAT pools that are used to address specific ports on the individual compute node externally.
-  final List<GetPoolNetworkConfigurationEndpointConfiguration> endpointConfigurations;
+  final pulumi.Input<List<GetPoolNetworkConfigurationEndpointConfiguration>> endpointConfigurations;
   /// Type of public IP address provisioning.
-  final String publicAddressProvisioningType;
+  final pulumi.Input<String> publicAddressProvisioningType;
   /// A list of public IP ids that will be allocated to nodes.
-  final List<String> publicIps;
+  final pulumi.Input<List<String>> publicIps;
   /// The ARM resource identifier of the virtual network subnet which the compute nodes of the pool are joined too.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetPoolNetworkConfiguration].
   /// [acceleratedNetworkingEnabled] Required.
@@ -36,7 +36,7 @@ class GetPoolNetworkConfiguration {
     return <String, dynamic>{
       'acceleratedNetworkingEnabled': acceleratedNetworkingEnabled,
       'dynamicVnetAssignmentScope': dynamicVnetAssignmentScope,
-      'endpointConfigurations': pulumi.Input.encodeList<GetPoolNetworkConfigurationEndpointConfiguration, Map<String, dynamic>>(endpointConfigurations, (value) => value.toMap()),
+      'endpointConfigurations': pulumi.Input.mapInputValue<List<GetPoolNetworkConfigurationEndpointConfiguration>, List<Map<String, dynamic>>>(endpointConfigurations, (value) => pulumi.Input.encodeList<GetPoolNetworkConfigurationEndpointConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'publicAddressProvisioningType': publicAddressProvisioningType,
       'publicIps': publicIps,
       'subnetId': subnetId,
@@ -45,12 +45,12 @@ class GetPoolNetworkConfiguration {
 
   factory GetPoolNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return GetPoolNetworkConfiguration(
-      acceleratedNetworkingEnabled: map['acceleratedNetworkingEnabled'] as bool,
-      dynamicVnetAssignmentScope: map['dynamicVnetAssignmentScope'] as String,
-      endpointConfigurations: pulumi.Input.decodeList<GetPoolNetworkConfigurationEndpointConfiguration>(map['endpointConfigurations'], (value) => GetPoolNetworkConfigurationEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      publicAddressProvisioningType: map['publicAddressProvisioningType'] as String,
-      publicIps: (map['publicIps'] as List).cast<String>(),
-      subnetId: map['subnetId'] as String,
+      acceleratedNetworkingEnabled: (map['acceleratedNetworkingEnabled'] as bool).input(),
+      dynamicVnetAssignmentScope: (map['dynamicVnetAssignmentScope'] as String).input(),
+      endpointConfigurations: (pulumi.Input.decodeList<GetPoolNetworkConfigurationEndpointConfiguration>(map['endpointConfigurations'], (value) => GetPoolNetworkConfigurationEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicAddressProvisioningType: (map['publicAddressProvisioningType'] as String).input(),
+      publicIps: ((map['publicIps'] as List).cast<String>()).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

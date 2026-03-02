@@ -32,23 +32,15 @@ class GetGlobalDatabaseNetworksArgs {
   /// [pageSize] Optional.
   /// [status] The status of the Global Database Network. Valid values:
   GetGlobalDatabaseNetworksArgs({
-    pulumi.Output<String>? dbClusterId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? gdnId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-    pulumi.Output<String>? status,
-  }) :
-      dbClusterId = pulumi.Input.asOptionalInput<String>(dbClusterId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gdnId = pulumi.Input.asOptionalInput<String>(gdnId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.dbClusterId,
+    this.description,
+    this.gdnId,
+    this.ids,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class GetGlobalDatabaseNetworksArgs {
 
   factory GetGlobalDatabaseNetworksArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalDatabaseNetworksArgs(
-      dbClusterId: map['dbClusterId'] == null ? null : pulumi.Output.create<String>(map['dbClusterId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gdnId: map['gdnId'] == null ? null : pulumi.Output.create<String>(map['gdnId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gdnId: map['gdnId'] == null ? null : (map['gdnId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

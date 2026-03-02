@@ -29,21 +29,14 @@ class SharedImageGalleryState {
   /// [tags] A mapping of tags to assign to the Shared Image Gallery.
   /// [uniqueName] The Unique Name for this Shared Image Gallery.
   SharedImageGalleryState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<SharedImageGallerySharing>? sharing,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? uniqueName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sharing = pulumi.Input.asOptionalInput<SharedImageGallerySharing>(sharing),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      uniqueName = pulumi.Input.asOptionalInput<String>(uniqueName);
+    this.description,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.sharing,
+    this.tags,
+    this.uniqueName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class SharedImageGalleryState {
 
   factory SharedImageGalleryState.fromMap(Map<String, dynamic> map) {
     return SharedImageGalleryState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sharing: map['sharing'] == null ? null : pulumi.Output.create<SharedImageGallerySharing>(SharedImageGallerySharing.fromMap((map['sharing'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      uniqueName: map['uniqueName'] == null ? null : pulumi.Output.create<String>(map['uniqueName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sharing: map['sharing'] == null ? null : (SharedImageGallerySharing.fromMap((map['sharing'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      uniqueName: map['uniqueName'] == null ? null : (map['uniqueName'] as String).input(),
     );
   }
 }

@@ -45,33 +45,20 @@ class DocumentDiscoveryengineV1betaArgs {
   /// [schemaId] The identifier of the schema located in the same data store.
   /// [structData] The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
   DocumentDiscoveryengineV1betaArgs({
-    required pulumi.Output<String> branchId,
-    required pulumi.Output<String> collectionId,
-    pulumi.Output<GoogleCloudDiscoveryengineV1betaDocumentContent>? content,
-    required pulumi.Output<String> dataStoreId,
-    required pulumi.Output<String> documentId,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? jsonData,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentDocumentId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? schemaId,
-    pulumi.Output<Map<String, String>>? structData,
-  }) :
-      branchId = pulumi.Input.asInput<String>(branchId),
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      content = pulumi.Input.asOptionalInput<GoogleCloudDiscoveryengineV1betaDocumentContent>(content),
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      documentId = pulumi.Input.asInput<String>(documentId),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      jsonData = pulumi.Input.asOptionalInput<String>(jsonData),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentDocumentId = pulumi.Input.asOptionalInput<String>(parentDocumentId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schemaId = pulumi.Input.asOptionalInput<String>(schemaId),
-      structData = pulumi.Input.asOptionalInput<Map<String, String>>(structData);
+    required this.branchId,
+    required this.collectionId,
+    this.content,
+    required this.dataStoreId,
+    required this.documentId,
+    this.id,
+    this.jsonData,
+    this.location,
+    this.name,
+    this.parentDocumentId,
+    this.project,
+    this.schemaId,
+    this.structData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,19 +80,19 @@ class DocumentDiscoveryengineV1betaArgs {
 
   factory DocumentDiscoveryengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return DocumentDiscoveryengineV1betaArgs(
-      branchId: pulumi.Output.create<String>(map['branchId'] as String),
-      collectionId: pulumi.Output.create<String>(map['collectionId'] as String),
-      content: map['content'] == null ? null : pulumi.Output.create<GoogleCloudDiscoveryengineV1betaDocumentContent>(GoogleCloudDiscoveryengineV1betaDocumentContent.fromMap((map['content'] as Map).cast<String, dynamic>())),
-      dataStoreId: pulumi.Output.create<String>(map['dataStoreId'] as String),
-      documentId: pulumi.Output.create<String>(map['documentId'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      jsonData: map['jsonData'] == null ? null : pulumi.Output.create<String>(map['jsonData'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentDocumentId: map['parentDocumentId'] == null ? null : pulumi.Output.create<String>(map['parentDocumentId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schemaId: map['schemaId'] == null ? null : pulumi.Output.create<String>(map['schemaId'] as String),
-      structData: map['structData'] == null ? null : pulumi.Output.create<Map<String, String>>((map['structData'] as Map).cast<String, String>()),
+      branchId: (map['branchId'] as String).input(),
+      collectionId: (map['collectionId'] as String).input(),
+      content: map['content'] == null ? null : (GoogleCloudDiscoveryengineV1betaDocumentContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
+      dataStoreId: (map['dataStoreId'] as String).input(),
+      documentId: (map['documentId'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      jsonData: map['jsonData'] == null ? null : (map['jsonData'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentDocumentId: map['parentDocumentId'] == null ? null : (map['parentDocumentId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
+      structData: map['structData'] == null ? null : ((map['structData'] as Map).cast<String, String>()).input(),
     );
   }
 }

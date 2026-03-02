@@ -33,23 +33,15 @@ class CNameRecordState {
   /// [ttl] The Time To Live (TTL) of the DNS record in seconds.
   /// [zoneName] Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
   CNameRecordState({
-    pulumi.Output<String>? fqdn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? record,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? targetResourceId,
-    pulumi.Output<int>? ttl,
-    pulumi.Output<String>? zoneName,
-  }) :
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      record = pulumi.Input.asOptionalInput<String>(record),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      zoneName = pulumi.Input.asOptionalInput<String>(zoneName);
+    this.fqdn,
+    this.name,
+    this.record,
+    this.resourceGroupName,
+    this.tags,
+    this.targetResourceId,
+    this.ttl,
+    this.zoneName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class CNameRecordState {
 
   factory CNameRecordState.fromMap(Map<String, dynamic> map) {
     return CNameRecordState(
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<String>(map['fqdn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      record: map['record'] == null ? null : pulumi.Output.create<String>(map['record'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      zoneName: map['zoneName'] == null ? null : pulumi.Output.create<String>(map['zoneName'] as String),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      record: map['record'] == null ? null : (map['record'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      zoneName: map['zoneName'] == null ? null : (map['zoneName'] as String).input(),
     );
   }
 }

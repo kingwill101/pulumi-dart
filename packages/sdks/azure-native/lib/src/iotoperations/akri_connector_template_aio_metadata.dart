@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AkriConnectorTemplateAioMetadata properties.
 class AkriConnectorTemplateAioMetadata {
   /// The maximum version of AIO required for the connector.
-  final String? aioMaxVersion;
+  final pulumi.Input<String>? aioMaxVersion;
   /// The minimum version of AIO required for the connector.
-  final String? aioMinVersion;
+  final pulumi.Input<String>? aioMinVersion;
 
   /// Creates a new [AkriConnectorTemplateAioMetadata].
   /// [aioMaxVersion] The maximum version of AIO required for the connector.
@@ -25,8 +26,8 @@ class AkriConnectorTemplateAioMetadata {
 
   factory AkriConnectorTemplateAioMetadata.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateAioMetadata(
-      aioMaxVersion: map['aioMaxVersion'] == null ? null : map['aioMaxVersion'] as String,
-      aioMinVersion: map['aioMinVersion'] == null ? null : map['aioMinVersion'] as String,
+      aioMaxVersion: map['aioMaxVersion'] == null ? null : (map['aioMaxVersion'] as String).input(),
+      aioMinVersion: map['aioMinVersion'] == null ? null : (map['aioMinVersion'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metric_target.dart';
 
 /// ContainerResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.  Only one "target" type should be set.
 class ContainerResourceMetricSource {
   /// container is the name of the container in the pods of the scaling target
-  final String container;
+  final pulumi.Input<String> container;
   /// name is the name of the resource in question.
-  final String name;
+  final pulumi.Input<String> name;
   /// target specifies the target value for the given metric
-  final MetricTarget target;
+  final pulumi.Input<MetricTarget> target;
 
   /// Creates a new [ContainerResourceMetricSource].
   /// [container] container is the name of the container in the pods of the scaling target
@@ -25,15 +26,15 @@ class ContainerResourceMetricSource {
     return <String, dynamic>{
       'container': container,
       'name': name,
-      'target': target.toMap(),
+      'target': pulumi.Input.mapInputValue<MetricTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory ContainerResourceMetricSource.fromMap(Map<String, dynamic> map) {
     return ContainerResourceMetricSource(
-      container: map['container'] as String,
-      name: map['name'] as String,
-      target: MetricTarget.fromMap((map['target'] as Map).cast<String, dynamic>()),
+      container: (map['container'] as String).input(),
+      name: (map['name'] as String).input(),
+      target: (MetricTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

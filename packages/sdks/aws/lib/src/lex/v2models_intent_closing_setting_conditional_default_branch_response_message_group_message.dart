@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2models_intent_closing_setting_conditional_default_branch_response_message_group_message_custom_payload.dart';
 import 'v2models_intent_closing_setting_conditional_default_branch_response_message_group_message_image_response_card.dart';
 import 'v2models_intent_closing_setting_conditional_default_branch_response_message_group_message_plain_text_message.dart';
@@ -7,13 +8,13 @@ import 'v2models_intent_closing_setting_conditional_default_branch_response_mess
 
 class V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessage {
   /// Configuration block for a message in a custom format defined by the client application. See `custom_payload`.
-  final V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageCustomPayload? customPayload;
+  final pulumi.Input<V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageCustomPayload>? customPayload;
   /// Configuration block for a message that defines a response card that the client application can show to the user. See `image_response_card`.
-  final V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageImageResponseCard? imageResponseCard;
+  final pulumi.Input<V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageImageResponseCard>? imageResponseCard;
   /// Configuration block for a message in plain text format. See `plain_text_message`.
-  final V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage? plainTextMessage;
+  final pulumi.Input<V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage>? plainTextMessage;
   /// Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssml_message`.
-  final V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage? ssmlMessage;
+  final pulumi.Input<V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage>? ssmlMessage;
 
   /// Creates a new [V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessage].
   /// [customPayload] Configuration block for a message in a custom format defined by the client application. See `custom_payload`.
@@ -29,19 +30,19 @@ class V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMe
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customPayload': ?customPayload == null ? null : customPayload!.toMap(),
-      'imageResponseCard': ?imageResponseCard == null ? null : imageResponseCard!.toMap(),
-      'plainTextMessage': ?plainTextMessage == null ? null : plainTextMessage!.toMap(),
-      'ssmlMessage': ?ssmlMessage == null ? null : ssmlMessage!.toMap(),
+      'customPayload': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageCustomPayload, Map<String, dynamic>>(customPayload, (value) => value.toMap()),
+      'imageResponseCard': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageImageResponseCard, Map<String, dynamic>>(imageResponseCard, (value) => value.toMap()),
+      'plainTextMessage': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage, Map<String, dynamic>>(plainTextMessage, (value) => value.toMap()),
+      'ssmlMessage': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage, Map<String, dynamic>>(ssmlMessage, (value) => value.toMap()),
     };
   }
 
   factory V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessage.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessage(
-      customPayload: map['customPayload'] == null ? null : V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageCustomPayload.fromMap((map['customPayload'] as Map).cast<String, dynamic>()),
-      imageResponseCard: map['imageResponseCard'] == null ? null : V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageImageResponseCard.fromMap((map['imageResponseCard'] as Map).cast<String, dynamic>()),
-      plainTextMessage: map['plainTextMessage'] == null ? null : V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage.fromMap((map['plainTextMessage'] as Map).cast<String, dynamic>()),
-      ssmlMessage: map['ssmlMessage'] == null ? null : V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage.fromMap((map['ssmlMessage'] as Map).cast<String, dynamic>()),
+      customPayload: map['customPayload'] == null ? null : (V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageCustomPayload.fromMap((map['customPayload'] as Map).cast<String, dynamic>())).input(),
+      imageResponseCard: map['imageResponseCard'] == null ? null : (V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageImageResponseCard.fromMap((map['imageResponseCard'] as Map).cast<String, dynamic>())).input(),
+      plainTextMessage: map['plainTextMessage'] == null ? null : (V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage.fromMap((map['plainTextMessage'] as Map).cast<String, dynamic>())).input(),
+      ssmlMessage: map['ssmlMessage'] == null ? null : (V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage.fromMap((map['ssmlMessage'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

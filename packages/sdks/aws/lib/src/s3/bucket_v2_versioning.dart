@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketV2Versioning {
   /// Enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Enable MFA delete for either `Change the versioning state of your bucket` or `Permanently delete an object version`. Default is `false`. This cannot be used to toggle this setting but is available to allow managed buckets to reflect the state in AWS
-  final bool? mfaDelete;
+  final pulumi.Input<bool>? mfaDelete;
 
   /// Creates a new [BucketV2Versioning].
   /// [enabled] Enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
@@ -24,8 +25,8 @@ class BucketV2Versioning {
 
   factory BucketV2Versioning.fromMap(Map<String, dynamic> map) {
     return BucketV2Versioning(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      mfaDelete: map['mfaDelete'] == null ? null : map['mfaDelete'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      mfaDelete: map['mfaDelete'] == null ? null : (map['mfaDelete'] as bool).input(),
     );
   }
 }

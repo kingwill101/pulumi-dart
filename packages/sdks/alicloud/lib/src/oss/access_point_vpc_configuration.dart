@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPointVpcConfiguration {
   /// The vpc ID is required only when the value of NetworkOrigin is VPC.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [AccessPointVpcConfiguration].
   /// [vpcId] The vpc ID is required only when the value of NetworkOrigin is VPC.
@@ -19,7 +20,7 @@ class AccessPointVpcConfiguration {
 
   factory AccessPointVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return AccessPointVpcConfiguration(
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

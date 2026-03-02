@@ -7,12 +7,12 @@ import 'slsa_recipe_response.dart';
 
 class SlsaProvenanceResponse {
   /// required
-  final Map<String, dynamic> builder;
+  final pulumi.Input<Map<String, dynamic>> builder;
   /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
-  final List<MaterialResponse> materials;
-  final SlsaMetadataResponse metadata;
+  final pulumi.Input<List<MaterialResponse>> materials;
+  final pulumi.Input<SlsaMetadataResponse> metadata;
   /// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
-  final SlsaRecipeResponse recipe;
+  final pulumi.Input<SlsaRecipeResponse> recipe;
 
   /// Creates a new [SlsaProvenanceResponse].
   /// [builder] required
@@ -29,18 +29,18 @@ class SlsaProvenanceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'builder': builder,
-      'materials': pulumi.Input.encodeList<MaterialResponse, Map<String, dynamic>>(materials, (value) => value.toMap()),
-      'metadata': metadata.toMap(),
-      'recipe': recipe.toMap(),
+      'materials': pulumi.Input.mapInputValue<List<MaterialResponse>, List<Map<String, dynamic>>>(materials, (value) => pulumi.Input.encodeList<MaterialResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metadata': pulumi.Input.mapInputValue<SlsaMetadataResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'recipe': pulumi.Input.mapInputValue<SlsaRecipeResponse, Map<String, dynamic>>(recipe, (value) => value.toMap()),
     };
   }
 
   factory SlsaProvenanceResponse.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceResponse(
-      builder: (map['builder'] as Map).cast<String, dynamic>(),
-      materials: pulumi.Input.decodeList<MaterialResponse>(map['materials'], (value) => MaterialResponse.fromMap((value as Map).cast<String, dynamic>())),
-      metadata: SlsaMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      recipe: SlsaRecipeResponse.fromMap((map['recipe'] as Map).cast<String, dynamic>()),
+      builder: ((map['builder'] as Map).cast<String, dynamic>()).input(),
+      materials: (pulumi.Input.decodeList<MaterialResponse>(map['materials'], (value) => MaterialResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: (SlsaMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      recipe: (SlsaRecipeResponse.fromMap((map['recipe'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

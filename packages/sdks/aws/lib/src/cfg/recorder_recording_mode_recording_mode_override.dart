@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecorderRecordingModeRecordingModeOverride {
   /// A description you provide of the override.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The recording frequency for the resources in the override block. `CONTINUOUS` or `DAILY`.
-  final String recordingFrequency;
+  final pulumi.Input<String> recordingFrequency;
   /// A list that specifies the types of AWS resources for which the override applies to.  See [restrictions in the AWS Docs](https://docs.aws.amazon.com/config/latest/APIReference/API_RecordingModeOverride.html)
-  final List<String> resourceTypes;
+  final pulumi.Input<List<String>> resourceTypes;
 
   /// Creates a new [RecorderRecordingModeRecordingModeOverride].
   /// [description] A description you provide of the override.
@@ -29,9 +30,9 @@ class RecorderRecordingModeRecordingModeOverride {
 
   factory RecorderRecordingModeRecordingModeOverride.fromMap(Map<String, dynamic> map) {
     return RecorderRecordingModeRecordingModeOverride(
-      description: map['description'] == null ? null : map['description'] as String,
-      recordingFrequency: map['recordingFrequency'] as String,
-      resourceTypes: (map['resourceTypes'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      recordingFrequency: (map['recordingFrequency'] as String).input(),
+      resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
     );
   }
 }

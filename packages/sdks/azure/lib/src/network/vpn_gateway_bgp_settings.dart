@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_gateway_bgp_settings_instance0_bgp_peering_address.dart';
 import 'vpn_gateway_bgp_settings_instance1_bgp_peering_address.dart';
 
 class VpnGatewayBgpSettings {
   /// The ASN of the BGP Speaker. Changing this forces a new resource to be created.
-  final int asn;
+  final pulumi.Input<int> asn;
   /// The Address which should be used for the BGP Peering.
-  final String? bgpPeeringAddress;
+  final pulumi.Input<String>? bgpPeeringAddress;
   /// An `instance_bgp_peering_address` block as defined below.
-  final VpnGatewayBgpSettingsInstance0BgpPeeringAddress? instance0BgpPeeringAddress;
+  final pulumi.Input<VpnGatewayBgpSettingsInstance0BgpPeeringAddress>? instance0BgpPeeringAddress;
   /// An `instance_bgp_peering_address` block as defined below.
-  final VpnGatewayBgpSettingsInstance1BgpPeeringAddress? instance1BgpPeeringAddress;
+  final pulumi.Input<VpnGatewayBgpSettingsInstance1BgpPeeringAddress>? instance1BgpPeeringAddress;
   /// The weight added to Routes learned from this BGP Speaker. Changing this forces a new resource to be created.
-  final int peerWeight;
+  final pulumi.Input<int> peerWeight;
 
   /// Creates a new [VpnGatewayBgpSettings].
   /// [asn] The ASN of the BGP Speaker. Changing this forces a new resource to be created.
@@ -33,19 +34,19 @@ class VpnGatewayBgpSettings {
     return <String, dynamic>{
       'asn': asn,
       'bgpPeeringAddress': ?bgpPeeringAddress,
-      'instance0BgpPeeringAddress': ?instance0BgpPeeringAddress == null ? null : instance0BgpPeeringAddress!.toMap(),
-      'instance1BgpPeeringAddress': ?instance1BgpPeeringAddress == null ? null : instance1BgpPeeringAddress!.toMap(),
+      'instance0BgpPeeringAddress': ?pulumi.Input.mapOptionalInputValue<VpnGatewayBgpSettingsInstance0BgpPeeringAddress, Map<String, dynamic>>(instance0BgpPeeringAddress, (value) => value.toMap()),
+      'instance1BgpPeeringAddress': ?pulumi.Input.mapOptionalInputValue<VpnGatewayBgpSettingsInstance1BgpPeeringAddress, Map<String, dynamic>>(instance1BgpPeeringAddress, (value) => value.toMap()),
       'peerWeight': peerWeight,
     };
   }
 
   factory VpnGatewayBgpSettings.fromMap(Map<String, dynamic> map) {
     return VpnGatewayBgpSettings(
-      asn: map['asn'] as int,
-      bgpPeeringAddress: map['bgpPeeringAddress'] == null ? null : map['bgpPeeringAddress'] as String,
-      instance0BgpPeeringAddress: map['instance0BgpPeeringAddress'] == null ? null : VpnGatewayBgpSettingsInstance0BgpPeeringAddress.fromMap((map['instance0BgpPeeringAddress'] as Map).cast<String, dynamic>()),
-      instance1BgpPeeringAddress: map['instance1BgpPeeringAddress'] == null ? null : VpnGatewayBgpSettingsInstance1BgpPeeringAddress.fromMap((map['instance1BgpPeeringAddress'] as Map).cast<String, dynamic>()),
-      peerWeight: map['peerWeight'] as int,
+      asn: (map['asn'] as int).input(),
+      bgpPeeringAddress: map['bgpPeeringAddress'] == null ? null : (map['bgpPeeringAddress'] as String).input(),
+      instance0BgpPeeringAddress: map['instance0BgpPeeringAddress'] == null ? null : (VpnGatewayBgpSettingsInstance0BgpPeeringAddress.fromMap((map['instance0BgpPeeringAddress'] as Map).cast<String, dynamic>())).input(),
+      instance1BgpPeeringAddress: map['instance1BgpPeeringAddress'] == null ? null : (VpnGatewayBgpSettingsInstance1BgpPeeringAddress.fromMap((map['instance1BgpPeeringAddress'] as Map).cast<String, dynamic>())).input(),
+      peerWeight: (map['peerWeight'] as int).input(),
     );
   }
 }

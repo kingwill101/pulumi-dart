@@ -24,15 +24,11 @@ class CollectionArgs {
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   CollectionArgs({
-    required pulumi.Output<String> collectionId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<CollectionTimeouts>? timeouts,
-  }) :
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<CollectionTimeouts>(timeouts);
+    required this.collectionId,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class CollectionArgs {
 
   factory CollectionArgs.fromMap(Map<String, dynamic> map) {
     return CollectionArgs(
-      collectionId: pulumi.Output.create<String>(map['collectionId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<CollectionTimeouts>(CollectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      collectionId: (map['collectionId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (CollectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

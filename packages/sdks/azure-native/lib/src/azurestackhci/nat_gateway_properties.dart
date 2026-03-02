@@ -7,9 +7,9 @@ import 'public_ipaddress_arm_reference.dart';
 /// Nat Gateway resource properties
 class NatGatewayProperties {
   /// List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
-  final List<InboundNATRule>? inboundNATRules;
+  final pulumi.Input<List<InboundNATRule>>? inboundNATRules;
   /// List of public ip addresses that the gateway can use for NAT.
-  final List<PublicIPAddressArmReference>? publicIPAddresses;
+  final pulumi.Input<List<PublicIPAddressArmReference>>? publicIPAddresses;
 
   /// Creates a new [NatGatewayProperties].
   /// [inboundNATRules] List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
@@ -21,15 +21,15 @@ class NatGatewayProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inboundNATRules': ?inboundNATRules == null ? null : pulumi.Input.encodeList<InboundNATRule, Map<String, dynamic>>(inboundNATRules!, (value) => value.toMap()),
-      'publicIPAddresses': ?publicIPAddresses == null ? null : pulumi.Input.encodeList<PublicIPAddressArmReference, Map<String, dynamic>>(publicIPAddresses!, (value) => value.toMap()),
+      'inboundNATRules': ?pulumi.Input.mapOptionalInputValue<List<InboundNATRule>, List<Map<String, dynamic>>>(inboundNATRules, (value) => pulumi.Input.encodeList<InboundNATRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'publicIPAddresses': ?pulumi.Input.mapOptionalInputValue<List<PublicIPAddressArmReference>, List<Map<String, dynamic>>>(publicIPAddresses, (value) => pulumi.Input.encodeList<PublicIPAddressArmReference, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NatGatewayProperties.fromMap(Map<String, dynamic> map) {
     return NatGatewayProperties(
-      inboundNATRules: map['inboundNATRules'] == null ? null : pulumi.Input.decodeList<InboundNATRule>(map['inboundNATRules'], (value) => InboundNATRule.fromMap((value as Map).cast<String, dynamic>())),
-      publicIPAddresses: map['publicIPAddresses'] == null ? null : pulumi.Input.decodeList<PublicIPAddressArmReference>(map['publicIPAddresses'], (value) => PublicIPAddressArmReference.fromMap((value as Map).cast<String, dynamic>())),
+      inboundNATRules: map['inboundNATRules'] == null ? null : (pulumi.Input.decodeList<InboundNATRule>(map['inboundNATRules'], (value) => InboundNATRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicIPAddresses: map['publicIPAddresses'] == null ? null : (pulumi.Input.decodeList<PublicIPAddressArmReference>(map['publicIPAddresses'], (value) => PublicIPAddressArmReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'topic_response.dart';
 
 /// Defines the event properties.
 class DiscoveredEventResponse {
   /// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
-  final String? eventConfiguration;
+  final pulumi.Input<String>? eventConfiguration;
   /// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
-  final String eventNotifier;
+  final pulumi.Input<String> eventNotifier;
   /// UTC timestamp indicating when the event was added or modified.
-  final String? lastUpdatedOn;
+  final pulumi.Input<String>? lastUpdatedOn;
   /// The name of the event.
-  final String name;
+  final pulumi.Input<String> name;
   /// Object that describes the topic information for the specific event.
-  final TopicResponse? topic;
+  final pulumi.Input<TopicResponse>? topic;
 
   /// Creates a new [DiscoveredEventResponse].
   /// [eventConfiguration] Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
@@ -35,17 +36,17 @@ class DiscoveredEventResponse {
       'eventNotifier': eventNotifier,
       'lastUpdatedOn': ?lastUpdatedOn,
       'name': name,
-      'topic': ?topic == null ? null : topic!.toMap(),
+      'topic': ?pulumi.Input.mapOptionalInputValue<TopicResponse, Map<String, dynamic>>(topic, (value) => value.toMap()),
     };
   }
 
   factory DiscoveredEventResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveredEventResponse(
-      eventConfiguration: map['eventConfiguration'] == null ? null : map['eventConfiguration'] as String,
-      eventNotifier: map['eventNotifier'] as String,
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : map['lastUpdatedOn'] as String,
-      name: map['name'] as String,
-      topic: map['topic'] == null ? null : TopicResponse.fromMap((map['topic'] as Map).cast<String, dynamic>()),
+      eventConfiguration: map['eventConfiguration'] == null ? null : (map['eventConfiguration'] as String).input(),
+      eventNotifier: (map['eventNotifier'] as String).input(),
+      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn'] as String).input(),
+      name: (map['name'] as String).input(),
+      topic: map['topic'] == null ? null : (TopicResponse.fromMap((map['topic'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

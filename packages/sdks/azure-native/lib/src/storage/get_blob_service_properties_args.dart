@@ -19,13 +19,10 @@ class GetBlobServicePropertiesArgs {
   /// [blobServicesName] The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetBlobServicePropertiesArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> blobServicesName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      blobServicesName = pulumi.Input.asInput<String>(blobServicesName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.blobServicesName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBlobServicePropertiesArgs {
 
   factory GetBlobServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return GetBlobServicePropertiesArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      blobServicesName: pulumi.Output.create<String>(map['blobServicesName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      blobServicesName: (map['blobServicesName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

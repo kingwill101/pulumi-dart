@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Google Cloud Storage location for the input content.
 class GcsSourceResponse {
   /// Source data URI. For example, `gs://my_bucket/my_object`.
-  final String inputUri;
+  final pulumi.Input<String> inputUri;
 
   /// Creates a new [GcsSourceResponse].
   /// [inputUri] Source data URI. For example, `gs://my_bucket/my_object`.
@@ -20,7 +21,7 @@ class GcsSourceResponse {
 
   factory GcsSourceResponse.fromMap(Map<String, dynamic> map) {
     return GcsSourceResponse(
-      inputUri: map['inputUri'] as String,
+      inputUri: (map['inputUri'] as String).input(),
     );
   }
 }

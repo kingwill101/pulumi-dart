@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigLinuxNodeConfigHugepagesConfig {
   /// Amount of 1G hugepages.
-  final int? hugepageSize1g;
+  final pulumi.Input<int>? hugepageSize1g;
   /// Amount of 2M hugepages.
-  final int? hugepageSize2m;
+  final pulumi.Input<int>? hugepageSize2m;
 
   /// Creates a new [ClusterNodeConfigLinuxNodeConfigHugepagesConfig].
   /// [hugepageSize1g] Amount of 1G hugepages.
@@ -24,8 +25,8 @@ class ClusterNodeConfigLinuxNodeConfigHugepagesConfig {
 
   factory ClusterNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigLinuxNodeConfigHugepagesConfig(
-      hugepageSize1g: map['hugepageSize1g'] == null ? null : map['hugepageSize1g'] as int,
-      hugepageSize2m: map['hugepageSize2m'] == null ? null : map['hugepageSize2m'] as int,
+      hugepageSize1g: map['hugepageSize1g'] == null ? null : (map['hugepageSize1g'] as int).input(),
+      hugepageSize2m: map['hugepageSize2m'] == null ? null : (map['hugepageSize2m'] as int).input(),
     );
   }
 }

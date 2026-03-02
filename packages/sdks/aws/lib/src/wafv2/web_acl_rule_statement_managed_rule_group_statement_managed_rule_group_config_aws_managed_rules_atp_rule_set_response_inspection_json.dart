@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionJson {
   /// Values in the response header with the specified name that indicate a failed login attempt.
-  final List<String> failureValues;
+  final pulumi.Input<List<String>> failureValues;
   /// The identifier for the value to match against in the JSON.
-  final String identifier;
+  final pulumi.Input<String> identifier;
   /// Values in the response header with the specified name that indicate a successful login attempt.
-  final List<String> successValues;
+  final pulumi.Input<List<String>> successValues;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionJson].
   /// [failureValues] Values in the response header with the specified name that indicate a failed login attempt.
@@ -29,9 +30,9 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
 
   factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionJson.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionJson(
-      failureValues: (map['failureValues'] as List).cast<String>(),
-      identifier: map['identifier'] as String,
-      successValues: (map['successValues'] as List).cast<String>(),
+      failureValues: ((map['failureValues'] as List).cast<String>()).input(),
+      identifier: (map['identifier'] as String).input(),
+      successValues: ((map['successValues'] as List).cast<String>()).input(),
     );
   }
 }

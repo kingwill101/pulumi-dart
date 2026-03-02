@@ -7,9 +7,9 @@ import 'version_source.dart';
 /// Root config for HL7v2 datatype definitions for a specific HL7v2 version.
 class Hl7TypesConfig {
   /// The HL7v2 type definitions.
-  final List<Type>? type;
+  final pulumi.Input<List<Type>>? type;
   /// The version selectors that this config applies to. A message must match ALL version sources to apply.
-  final List<VersionSource>? version;
+  final pulumi.Input<List<VersionSource>>? version;
 
   /// Creates a new [Hl7TypesConfig].
   /// [type] The HL7v2 type definitions.
@@ -21,15 +21,15 @@ class Hl7TypesConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?type == null ? null : pulumi.Input.encodeList<Type, Map<String, dynamic>>(type!, (value) => value.toMap()),
-      'version': ?version == null ? null : pulumi.Input.encodeList<VersionSource, Map<String, dynamic>>(version!, (value) => value.toMap()),
+      'type': ?pulumi.Input.mapOptionalInputValue<List<Type>, List<Map<String, dynamic>>>(type, (value) => pulumi.Input.encodeList<Type, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'version': ?pulumi.Input.mapOptionalInputValue<List<VersionSource>, List<Map<String, dynamic>>>(version, (value) => pulumi.Input.encodeList<VersionSource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Hl7TypesConfig.fromMap(Map<String, dynamic> map) {
     return Hl7TypesConfig(
-      type: map['type'] == null ? null : pulumi.Input.decodeList<Type>(map['type'], (value) => Type.fromMap((value as Map).cast<String, dynamic>())),
-      version: map['version'] == null ? null : pulumi.Input.decodeList<VersionSource>(map['version'], (value) => VersionSource.fromMap((value as Map).cast<String, dynamic>())),
+      type: map['type'] == null ? null : (pulumi.Input.decodeList<Type>(map['type'], (value) => Type.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (pulumi.Input.decodeList<VersionSource>(map['version'], (value) => VersionSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

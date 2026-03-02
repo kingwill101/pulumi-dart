@@ -35,25 +35,16 @@ class GetPortfoliosArgs {
   /// [sortBy] The field that is used to sort the queried data. The value is fixed as CreateTime, which specifies the creation time of product portfolios.
   /// [sortOrder] The order in which you want to sort the queried data. Valid values: `Asc`, `Desc`.
   GetPortfoliosArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-    pulumi.Output<String>? productId,
-    pulumi.Output<String>? scope,
-    pulumi.Output<String>? sortBy,
-    pulumi.Output<String>? sortOrder,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize),
-      productId = pulumi.Input.asOptionalInput<String>(productId),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      sortBy = pulumi.Input.asOptionalInput<String>(sortBy),
-      sortOrder = pulumi.Input.asOptionalInput<String>(sortOrder);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+    this.productId,
+    this.scope,
+    this.sortBy,
+    this.sortOrder,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class GetPortfoliosArgs {
 
   factory GetPortfoliosArgs.fromMap(Map<String, dynamic> map) {
     return GetPortfoliosArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      sortBy: map['sortBy'] == null ? null : pulumi.Output.create<String>(map['sortBy'] as String),
-      sortOrder: map['sortOrder'] == null ? null : pulumi.Output.create<String>(map['sortOrder'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      sortBy: map['sortBy'] == null ? null : (map['sortBy'] as String).input(),
+      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder'] as String).input(),
     );
   }
 }

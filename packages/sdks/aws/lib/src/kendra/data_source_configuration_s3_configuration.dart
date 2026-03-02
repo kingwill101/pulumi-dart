@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_source_configuration_s3_configuration_access_control_list_configuration.dart';
 import 'data_source_configuration_s3_configuration_documents_metadata_configuration.dart';
 
 class DataSourceConfigurationS3Configuration {
   /// A block that provides the path to the S3 bucket that contains the user context filtering files for the data source. For the format of the file, see [Access control for S3 data sources](https://docs.aws.amazon.com/kendra/latest/dg/s3-acl.html). Detailed below.
-  final DataSourceConfigurationS3ConfigurationAccessControlListConfiguration? accessControlListConfiguration;
+  final pulumi.Input<DataSourceConfigurationS3ConfigurationAccessControlListConfiguration>? accessControlListConfiguration;
   /// The name of the bucket that contains the documents.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// A block that defines the Document metadata files that contain information such as the document access control information, source URI, document author, and custom attributes. Each metadata file contains metadata about a single document. Detailed below.
-  final DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration? documentsMetadataConfiguration;
+  final pulumi.Input<DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration>? documentsMetadataConfiguration;
   /// A list of glob patterns for documents that should not be indexed. If a document that matches an inclusion prefix or inclusion pattern also matches an exclusion pattern, the document is not indexed. Refer to [Exclusion Patterns for more examples](https://docs.aws.amazon.com/kendra/latest/dg/API_S3DataSourceConfiguration.html#Kendra-Type-S3DataSourceConfiguration-ExclusionPatterns).
-  final List<String>? exclusionPatterns;
+  final pulumi.Input<List<String>>? exclusionPatterns;
   /// A list of glob patterns for documents that should be indexed. If a document that matches an inclusion pattern also matches an exclusion pattern, the document is not indexed. Refer to [Inclusion Patterns for more examples](https://docs.aws.amazon.com/kendra/latest/dg/API_S3DataSourceConfiguration.html#Kendra-Type-S3DataSourceConfiguration-InclusionPatterns).
-  final List<String>? inclusionPatterns;
+  final pulumi.Input<List<String>>? inclusionPatterns;
   /// A list of S3 prefixes for the documents that should be included in the index.
-  final List<String>? inclusionPrefixes;
+  final pulumi.Input<List<String>>? inclusionPrefixes;
 
   /// Creates a new [DataSourceConfigurationS3Configuration].
   /// [accessControlListConfiguration] A block that provides the path to the S3 bucket that contains the user context filtering files for the data source. For the format of the file, see [Access control for S3 data sources](https://docs.aws.amazon.com/kendra/latest/dg/s3-acl.html). Detailed below.
@@ -35,9 +36,9 @@ class DataSourceConfigurationS3Configuration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessControlListConfiguration': ?accessControlListConfiguration == null ? null : accessControlListConfiguration!.toMap(),
+      'accessControlListConfiguration': ?pulumi.Input.mapOptionalInputValue<DataSourceConfigurationS3ConfigurationAccessControlListConfiguration, Map<String, dynamic>>(accessControlListConfiguration, (value) => value.toMap()),
       'bucketName': bucketName,
-      'documentsMetadataConfiguration': ?documentsMetadataConfiguration == null ? null : documentsMetadataConfiguration!.toMap(),
+      'documentsMetadataConfiguration': ?pulumi.Input.mapOptionalInputValue<DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration, Map<String, dynamic>>(documentsMetadataConfiguration, (value) => value.toMap()),
       'exclusionPatterns': ?exclusionPatterns,
       'inclusionPatterns': ?inclusionPatterns,
       'inclusionPrefixes': ?inclusionPrefixes,
@@ -46,12 +47,12 @@ class DataSourceConfigurationS3Configuration {
 
   factory DataSourceConfigurationS3Configuration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationS3Configuration(
-      accessControlListConfiguration: map['accessControlListConfiguration'] == null ? null : DataSourceConfigurationS3ConfigurationAccessControlListConfiguration.fromMap((map['accessControlListConfiguration'] as Map).cast<String, dynamic>()),
-      bucketName: map['bucketName'] as String,
-      documentsMetadataConfiguration: map['documentsMetadataConfiguration'] == null ? null : DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration.fromMap((map['documentsMetadataConfiguration'] as Map).cast<String, dynamic>()),
-      exclusionPatterns: map['exclusionPatterns'] == null ? null : (map['exclusionPatterns'] as List).cast<String>(),
-      inclusionPatterns: map['inclusionPatterns'] == null ? null : (map['inclusionPatterns'] as List).cast<String>(),
-      inclusionPrefixes: map['inclusionPrefixes'] == null ? null : (map['inclusionPrefixes'] as List).cast<String>(),
+      accessControlListConfiguration: map['accessControlListConfiguration'] == null ? null : (DataSourceConfigurationS3ConfigurationAccessControlListConfiguration.fromMap((map['accessControlListConfiguration'] as Map).cast<String, dynamic>())).input(),
+      bucketName: (map['bucketName'] as String).input(),
+      documentsMetadataConfiguration: map['documentsMetadataConfiguration'] == null ? null : (DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration.fromMap((map['documentsMetadataConfiguration'] as Map).cast<String, dynamic>())).input(),
+      exclusionPatterns: map['exclusionPatterns'] == null ? null : ((map['exclusionPatterns'] as List).cast<String>()).input(),
+      inclusionPatterns: map['inclusionPatterns'] == null ? null : ((map['inclusionPatterns'] as List).cast<String>()).input(),
+      inclusionPrefixes: map['inclusionPrefixes'] == null ? null : ((map['inclusionPrefixes'] as List).cast<String>()).input(),
     );
   }
 }

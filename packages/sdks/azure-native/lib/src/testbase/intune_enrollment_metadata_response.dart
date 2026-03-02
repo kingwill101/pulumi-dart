@@ -6,11 +6,11 @@ import 'enrolled_intune_app_response.dart';
 /// The metadata of Intune enrollment.
 class IntuneEnrollmentMetadataResponse {
   /// The enrolled Intune apps.
-  final List<EnrolledIntuneAppResponse>? appList;
+  final pulumi.Input<List<EnrolledIntuneAppResponse>>? appList;
   /// The id of the Intune enrollment credential.
-  final String? credentialId;
+  final pulumi.Input<String>? credentialId;
   /// The expected duration of Intune applications and policies deployment.
-  final int? expectedDeploymentDurationInMinute;
+  final pulumi.Input<int>? expectedDeploymentDurationInMinute;
 
   /// Creates a new [IntuneEnrollmentMetadataResponse].
   /// [appList] The enrolled Intune apps.
@@ -24,7 +24,7 @@ class IntuneEnrollmentMetadataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appList': ?appList == null ? null : pulumi.Input.encodeList<EnrolledIntuneAppResponse, Map<String, dynamic>>(appList!, (value) => value.toMap()),
+      'appList': ?pulumi.Input.mapOptionalInputValue<List<EnrolledIntuneAppResponse>, List<Map<String, dynamic>>>(appList, (value) => pulumi.Input.encodeList<EnrolledIntuneAppResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'credentialId': ?credentialId,
       'expectedDeploymentDurationInMinute': ?expectedDeploymentDurationInMinute,
     };
@@ -32,9 +32,9 @@ class IntuneEnrollmentMetadataResponse {
 
   factory IntuneEnrollmentMetadataResponse.fromMap(Map<String, dynamic> map) {
     return IntuneEnrollmentMetadataResponse(
-      appList: map['appList'] == null ? null : pulumi.Input.decodeList<EnrolledIntuneAppResponse>(map['appList'], (value) => EnrolledIntuneAppResponse.fromMap((value as Map).cast<String, dynamic>())),
-      credentialId: map['credentialId'] == null ? null : map['credentialId'] as String,
-      expectedDeploymentDurationInMinute: map['expectedDeploymentDurationInMinute'] == null ? null : map['expectedDeploymentDurationInMinute'] as int,
+      appList: map['appList'] == null ? null : (pulumi.Input.decodeList<EnrolledIntuneAppResponse>(map['appList'], (value) => EnrolledIntuneAppResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      credentialId: map['credentialId'] == null ? null : (map['credentialId'] as String).input(),
+      expectedDeploymentDurationInMinute: map['expectedDeploymentDurationInMinute'] == null ? null : (map['expectedDeploymentDurationInMinute'] as int).input(),
     );
   }
 }

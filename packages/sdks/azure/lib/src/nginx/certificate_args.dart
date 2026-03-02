@@ -25,17 +25,12 @@ class CertificateArgs {
   /// [name] The name which should be used for this NGINX Certificate. Changing this forces a new NGINX Certificate to be created.
   /// [nginxDeploymentId] The ID of the NGINX Deployment that this Certificate should be associated with. Changing this forces a new NGINX Certificate to be created.
   CertificateArgs({
-    required pulumi.Output<String> certificateVirtualPath,
-    required pulumi.Output<String> keyVaultSecretId,
-    required pulumi.Output<String> keyVirtualPath,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> nginxDeploymentId,
-  }) :
-      certificateVirtualPath = pulumi.Input.asInput<String>(certificateVirtualPath),
-      keyVaultSecretId = pulumi.Input.asInput<String>(keyVaultSecretId),
-      keyVirtualPath = pulumi.Input.asInput<String>(keyVirtualPath),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nginxDeploymentId = pulumi.Input.asInput<String>(nginxDeploymentId);
+    required this.certificateVirtualPath,
+    required this.keyVaultSecretId,
+    required this.keyVirtualPath,
+    this.name,
+    required this.nginxDeploymentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateVirtualPath: pulumi.Output.create<String>(map['certificateVirtualPath'] as String),
-      keyVaultSecretId: pulumi.Output.create<String>(map['keyVaultSecretId'] as String),
-      keyVirtualPath: pulumi.Output.create<String>(map['keyVirtualPath'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nginxDeploymentId: pulumi.Output.create<String>(map['nginxDeploymentId'] as String),
+      certificateVirtualPath: (map['certificateVirtualPath'] as String).input(),
+      keyVaultSecretId: (map['keyVaultSecretId'] as String).input(),
+      keyVirtualPath: (map['keyVirtualPath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nginxDeploymentId: (map['nginxDeploymentId'] as String).input(),
     );
   }
 }

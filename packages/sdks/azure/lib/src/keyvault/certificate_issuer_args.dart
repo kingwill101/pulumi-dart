@@ -32,21 +32,14 @@ class CertificateIssuerArgs {
   /// [password] The password associated with the account and organization ID at the third-party Certificate Issuer. If not specified, will not overwrite any previous value.
   /// [providerName] The name of the third-party Certificate Issuer. Possible values are: `DigiCert`, `GlobalSign`, `OneCertV2-PrivateCA`, `OneCertV2-PublicCA` and `SslAdminV2`.
   CertificateIssuerArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<List<CertificateIssuerAdmin>>? admins,
-    required pulumi.Output<String> keyVaultId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> providerName,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      admins = pulumi.Input.asOptionalInput<List<CertificateIssuerAdmin>>(admins),
-      keyVaultId = pulumi.Input.asInput<String>(keyVaultId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      providerName = pulumi.Input.asInput<String>(providerName);
+    this.accountId,
+    this.admins,
+    required this.keyVaultId,
+    this.name,
+    this.orgId,
+    this.password,
+    required this.providerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class CertificateIssuerArgs {
 
   factory CertificateIssuerArgs.fromMap(Map<String, dynamic> map) {
     return CertificateIssuerArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      admins: map['admins'] == null ? null : pulumi.Output.create<List<CertificateIssuerAdmin>>(pulumi.Input.decodeList<CertificateIssuerAdmin>(map['admins'], (value) => CertificateIssuerAdmin.fromMap((value as Map).cast<String, dynamic>()))),
-      keyVaultId: pulumi.Output.create<String>(map['keyVaultId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      providerName: pulumi.Output.create<String>(map['providerName'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      admins: map['admins'] == null ? null : (pulumi.Input.decodeList<CertificateIssuerAdmin>(map['admins'], (value) => CertificateIssuerAdmin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyVaultId: (map['keyVaultId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      providerName: (map['providerName'] as String).input(),
     );
   }
 }

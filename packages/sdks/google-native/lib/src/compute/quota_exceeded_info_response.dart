@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional details for quota exceeded error for resource quota.
 class QuotaExceededInfoResponse {
   /// The map holding related quota dimensions.
-  final Map<String, String> dimensions;
+  final pulumi.Input<Map<String, String>> dimensions;
   /// Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
-  final double futureLimit;
+  final pulumi.Input<double> futureLimit;
   /// Current effective quota limit. The limit's unit depends on the quota type or metric.
-  final double limit;
+  final pulumi.Input<double> limit;
   /// The name of the quota limit.
-  final String limitName;
+  final pulumi.Input<String> limitName;
   /// The Compute Engine quota metric name.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// Rollout status of the future quota limit.
-  final String rolloutStatus;
+  final pulumi.Input<String> rolloutStatus;
 
   /// Creates a new [QuotaExceededInfoResponse].
   /// [dimensions] The map holding related quota dimensions.
@@ -45,12 +46,12 @@ class QuotaExceededInfoResponse {
 
   factory QuotaExceededInfoResponse.fromMap(Map<String, dynamic> map) {
     return QuotaExceededInfoResponse(
-      dimensions: (map['dimensions'] as Map).cast<String, String>(),
-      futureLimit: map['futureLimit'] as double,
-      limit: map['limit'] as double,
-      limitName: map['limitName'] as String,
-      metricName: map['metricName'] as String,
-      rolloutStatus: map['rolloutStatus'] as String,
+      dimensions: ((map['dimensions'] as Map).cast<String, String>()).input(),
+      futureLimit: (map['futureLimit'] as double).input(),
+      limit: (map['limit'] as double).input(),
+      limitName: (map['limitName'] as String).input(),
+      metricName: (map['metricName'] as String).input(),
+      rolloutStatus: (map['rolloutStatus'] as String).input(),
     );
   }
 }

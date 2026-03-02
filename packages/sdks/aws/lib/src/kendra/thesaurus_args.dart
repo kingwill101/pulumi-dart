@@ -30,21 +30,14 @@ class ThesaurusArgs {
   /// [sourceS3Path] The S3 path where your thesaurus file sits in S3. Detailed below.
   /// [tags] Optional.
   ThesaurusArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> indexId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    required pulumi.Output<ThesaurusSourceS3Path> sourceS3Path,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      indexId = pulumi.Input.asInput<String>(indexId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      sourceS3Path = pulumi.Input.asInput<ThesaurusSourceS3Path>(sourceS3Path),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.indexId,
+    this.name,
+    this.region,
+    required this.roleArn,
+    required this.sourceS3Path,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ThesaurusArgs {
 
   factory ThesaurusArgs.fromMap(Map<String, dynamic> map) {
     return ThesaurusArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      indexId: pulumi.Output.create<String>(map['indexId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      sourceS3Path: pulumi.Output.create<ThesaurusSourceS3Path>(ThesaurusSourceS3Path.fromMap((map['sourceS3Path'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      indexId: (map['indexId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      sourceS3Path: (ThesaurusSourceS3Path.fromMap((map['sourceS3Path'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -36,25 +36,16 @@ class CapacityReservationState {
   /// [targetDpus] Number of data processing units requested. Must be at least `24` units.
   /// [timeouts] Optional.
   CapacityReservationState({
-    pulumi.Output<int>? allocatedDpus,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<int>? targetDpus,
-    pulumi.Output<CapacityReservationTimeouts>? timeouts,
-  }) :
-      allocatedDpus = pulumi.Input.asOptionalInput<int>(allocatedDpus),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      targetDpus = pulumi.Input.asOptionalInput<int>(targetDpus),
-      timeouts = pulumi.Input.asOptionalInput<CapacityReservationTimeouts>(timeouts);
+    this.allocatedDpus,
+    this.arn,
+    this.name,
+    this.region,
+    this.status,
+    this.tags,
+    this.tagsAll,
+    this.targetDpus,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class CapacityReservationState {
 
   factory CapacityReservationState.fromMap(Map<String, dynamic> map) {
     return CapacityReservationState(
-      allocatedDpus: map['allocatedDpus'] == null ? null : pulumi.Output.create<int>(map['allocatedDpus'] as int),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      targetDpus: map['targetDpus'] == null ? null : pulumi.Output.create<int>(map['targetDpus'] as int),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<CapacityReservationTimeouts>(CapacityReservationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      allocatedDpus: map['allocatedDpus'] == null ? null : (map['allocatedDpus'] as int).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      targetDpus: map['targetDpus'] == null ? null : (map['targetDpus'] as int).input(),
+      timeouts: map['timeouts'] == null ? null : (CapacityReservationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

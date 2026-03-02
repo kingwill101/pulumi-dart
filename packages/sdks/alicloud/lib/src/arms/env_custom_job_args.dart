@@ -25,17 +25,12 @@ class EnvCustomJobArgs {
   /// [environmentId] Environment id.
   /// [status] Status: run, stop.
   EnvCustomJobArgs({
-    pulumi.Output<String>? aliyunLang,
-    required pulumi.Output<String> configYaml,
-    required pulumi.Output<String> envCustomJobName,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? status,
-  }) :
-      aliyunLang = pulumi.Input.asOptionalInput<String>(aliyunLang),
-      configYaml = pulumi.Input.asInput<String>(configYaml),
-      envCustomJobName = pulumi.Input.asInput<String>(envCustomJobName),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.aliyunLang,
+    required this.configYaml,
+    required this.envCustomJobName,
+    required this.environmentId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EnvCustomJobArgs {
 
   factory EnvCustomJobArgs.fromMap(Map<String, dynamic> map) {
     return EnvCustomJobArgs(
-      aliyunLang: map['aliyunLang'] == null ? null : pulumi.Output.create<String>(map['aliyunLang'] as String),
-      configYaml: pulumi.Output.create<String>(map['configYaml'] as String),
-      envCustomJobName: pulumi.Output.create<String>(map['envCustomJobName'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
+      configYaml: (map['configYaml'] as String).input(),
+      envCustomJobName: (map['envCustomJobName'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

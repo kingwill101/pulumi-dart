@@ -6,15 +6,15 @@ import 'arm_template_parameter_response.dart';
 /// ManagementConfiguration properties supported by the OperationsManagement resource provider.
 class ManagementConfigurationPropertiesResponse {
   /// The applicationId of the appliance for this Management.
-  final String? applicationId;
+  final pulumi.Input<String>? applicationId;
   /// Parameters to run the ARM template
-  final List<ArmTemplateParameterResponse> parameters;
+  final pulumi.Input<List<ArmTemplateParameterResponse>> parameters;
   /// The type of the parent resource.
-  final String parentResourceType;
+  final pulumi.Input<String> parentResourceType;
   /// The provisioning state for the ManagementConfiguration.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The Json object containing the ARM template to deploy
-  final dynamic template;
+  final pulumi.Input<dynamic> template;
 
   /// Creates a new [ManagementConfigurationPropertiesResponse].
   /// [applicationId] The applicationId of the appliance for this Management.
@@ -33,7 +33,7 @@ class ManagementConfigurationPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationId': ?applicationId,
-      'parameters': pulumi.Input.encodeList<ArmTemplateParameterResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.mapInputValue<List<ArmTemplateParameterResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ArmTemplateParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'parentResourceType': parentResourceType,
       'provisioningState': provisioningState,
       'template': template,
@@ -42,11 +42,11 @@ class ManagementConfigurationPropertiesResponse {
 
   factory ManagementConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagementConfigurationPropertiesResponse(
-      applicationId: map['applicationId'] == null ? null : map['applicationId'] as String,
-      parameters: pulumi.Input.decodeList<ArmTemplateParameterResponse>(map['parameters'], (value) => ArmTemplateParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      parentResourceType: map['parentResourceType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      template: map['template'],
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      parameters: (pulumi.Input.decodeList<ArmTemplateParameterResponse>(map['parameters'], (value) => ArmTemplateParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parentResourceType: (map['parentResourceType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      template: (map['template']).input(),
     );
   }
 }

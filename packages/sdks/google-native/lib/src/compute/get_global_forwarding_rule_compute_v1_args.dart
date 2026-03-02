@@ -14,11 +14,9 @@ class GetGlobalForwardingRuleComputeV1Args {
   /// [forwardingRule] Required.
   /// [project] Optional.
   GetGlobalForwardingRuleComputeV1Args({
-    required pulumi.Output<String> forwardingRule,
-    pulumi.Output<String>? project,
-  }) :
-      forwardingRule = pulumi.Input.asInput<String>(forwardingRule),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.forwardingRule,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetGlobalForwardingRuleComputeV1Args {
 
   factory GetGlobalForwardingRuleComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetGlobalForwardingRuleComputeV1Args(
-      forwardingRule: pulumi.Output.create<String>(map['forwardingRule'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      forwardingRule: (map['forwardingRule'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

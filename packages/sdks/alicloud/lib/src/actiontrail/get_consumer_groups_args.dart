@@ -22,15 +22,11 @@ class GetConsumerGroupsArgs {
   /// [instanceId] ID of the ALIKAFKA Instance that owns the consumer groups.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetConsumerGroupsArgs({
-    pulumi.Output<String>? consumerIdRegex,
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      consumerIdRegex = pulumi.Input.asOptionalInput<String>(consumerIdRegex),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.consumerIdRegex,
+    this.ids,
+    required this.instanceId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetConsumerGroupsArgs {
 
   factory GetConsumerGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetConsumerGroupsArgs(
-      consumerIdRegex: map['consumerIdRegex'] == null ? null : pulumi.Output.create<String>(map['consumerIdRegex'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      consumerIdRegex: map['consumerIdRegex'] == null ? null : (map['consumerIdRegex'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

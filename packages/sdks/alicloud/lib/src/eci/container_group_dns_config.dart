@@ -5,11 +5,11 @@ import 'container_group_dns_config_option.dart';
 
 class ContainerGroupDnsConfig {
   /// The list of DNS server IP addresses.
-  final List<String>? nameServers;
+  final pulumi.Input<List<String>>? nameServers;
   /// The structure of options. See `options` below.
-  final List<ContainerGroupDnsConfigOption>? options;
+  final pulumi.Input<List<ContainerGroupDnsConfigOption>>? options;
   /// The list of DNS lookup domains.
-  final List<String>? searches;
+  final pulumi.Input<List<String>>? searches;
 
   /// Creates a new [ContainerGroupDnsConfig].
   /// [nameServers] The list of DNS server IP addresses.
@@ -24,16 +24,16 @@ class ContainerGroupDnsConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nameServers': ?nameServers,
-      'options': ?options == null ? null : pulumi.Input.encodeList<ContainerGroupDnsConfigOption, Map<String, dynamic>>(options!, (value) => value.toMap()),
+      'options': ?pulumi.Input.mapOptionalInputValue<List<ContainerGroupDnsConfigOption>, List<Map<String, dynamic>>>(options, (value) => pulumi.Input.encodeList<ContainerGroupDnsConfigOption, Map<String, dynamic>>(value, (value) => value.toMap())),
       'searches': ?searches,
     };
   }
 
   factory ContainerGroupDnsConfig.fromMap(Map<String, dynamic> map) {
     return ContainerGroupDnsConfig(
-      nameServers: map['nameServers'] == null ? null : (map['nameServers'] as List).cast<String>(),
-      options: map['options'] == null ? null : pulumi.Input.decodeList<ContainerGroupDnsConfigOption>(map['options'], (value) => ContainerGroupDnsConfigOption.fromMap((value as Map).cast<String, dynamic>())),
-      searches: map['searches'] == null ? null : (map['searches'] as List).cast<String>(),
+      nameServers: map['nameServers'] == null ? null : ((map['nameServers'] as List).cast<String>()).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<ContainerGroupDnsConfigOption>(map['options'], (value) => ContainerGroupDnsConfigOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      searches: map['searches'] == null ? null : ((map['searches'] as List).cast<String>()).input(),
     );
   }
 }

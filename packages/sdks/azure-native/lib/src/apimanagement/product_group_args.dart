@@ -22,15 +22,11 @@ class ProductGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   ProductGroupArgs({
-    pulumi.Output<String>? groupId,
-    required pulumi.Output<String> productId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      productId = pulumi.Input.asInput<String>(productId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.groupId,
+    required this.productId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ProductGroupArgs {
 
   factory ProductGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProductGroupArgs(
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional information on Azure IaaS VM specific backup item.
 class AzureIaaSVMProtectedItemExtendedInfoResponse {
   /// The latest backup copy available for this backup item in archive tier
-  final String? newestRecoveryPointInArchive;
+  final pulumi.Input<String>? newestRecoveryPointInArchive;
   /// The oldest backup copy available for this backup item across all tiers.
-  final String? oldestRecoveryPoint;
+  final pulumi.Input<String>? oldestRecoveryPoint;
   /// The oldest backup copy available for this backup item in archive tier
-  final String? oldestRecoveryPointInArchive;
+  final pulumi.Input<String>? oldestRecoveryPointInArchive;
   /// The oldest backup copy available for this backup item in vault tier
-  final String? oldestRecoveryPointInVault;
+  final pulumi.Input<String>? oldestRecoveryPointInVault;
   /// Specifies if backup policy associated with the backup item is inconsistent.
-  final bool? policyInconsistent;
+  final pulumi.Input<bool>? policyInconsistent;
   /// Number of backup copies available for this backup item.
-  final int? recoveryPointCount;
+  final pulumi.Input<int>? recoveryPointCount;
 
   /// Creates a new [AzureIaaSVMProtectedItemExtendedInfoResponse].
   /// [newestRecoveryPointInArchive] The latest backup copy available for this backup item in archive tier
@@ -45,12 +46,12 @@ class AzureIaaSVMProtectedItemExtendedInfoResponse {
 
   factory AzureIaaSVMProtectedItemExtendedInfoResponse.fromMap(Map<String, dynamic> map) {
     return AzureIaaSVMProtectedItemExtendedInfoResponse(
-      newestRecoveryPointInArchive: map['newestRecoveryPointInArchive'] == null ? null : map['newestRecoveryPointInArchive'] as String,
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : map['oldestRecoveryPoint'] as String,
-      oldestRecoveryPointInArchive: map['oldestRecoveryPointInArchive'] == null ? null : map['oldestRecoveryPointInArchive'] as String,
-      oldestRecoveryPointInVault: map['oldestRecoveryPointInVault'] == null ? null : map['oldestRecoveryPointInVault'] as String,
-      policyInconsistent: map['policyInconsistent'] == null ? null : map['policyInconsistent'] as bool,
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : map['recoveryPointCount'] as int,
+      newestRecoveryPointInArchive: map['newestRecoveryPointInArchive'] == null ? null : (map['newestRecoveryPointInArchive'] as String).input(),
+      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint'] as String).input(),
+      oldestRecoveryPointInArchive: map['oldestRecoveryPointInArchive'] == null ? null : (map['oldestRecoveryPointInArchive'] as String).input(),
+      oldestRecoveryPointInVault: map['oldestRecoveryPointInVault'] == null ? null : (map['oldestRecoveryPointInVault'] as String).input(),
+      policyInconsistent: map['policyInconsistent'] == null ? null : (map['policyInconsistent'] as bool).input(),
+      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount'] as int).input(),
     );
   }
 }

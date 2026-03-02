@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Part of Management Group diagnostic setting. Specifies the settings for a particular log.
 class ManagementGroupLogSettings {
   /// Name of a Management Group Diagnostic Log category for a resource type this setting is applied to.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Name of a Management Group Diagnostic Log category group for a resource type this setting is applied to.
-  final String? categoryGroup;
+  final pulumi.Input<String>? categoryGroup;
   /// a value indicating whether this log is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ManagementGroupLogSettings].
   /// [category] Name of a Management Group Diagnostic Log category for a resource type this setting is applied to.
@@ -30,9 +31,9 @@ class ManagementGroupLogSettings {
 
   factory ManagementGroupLogSettings.fromMap(Map<String, dynamic> map) {
     return ManagementGroupLogSettings(
-      category: map['category'] == null ? null : map['category'] as String,
-      categoryGroup: map['categoryGroup'] == null ? null : map['categoryGroup'] as String,
-      enabled: map['enabled'] as bool,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      categoryGroup: map['categoryGroup'] == null ? null : (map['categoryGroup'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

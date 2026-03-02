@@ -49,27 +49,17 @@ class SecurityServiceArgs {
   /// [type] The security service type - can either be active\_directory,
   /// [user] The security service user or group name that is used by the
   SecurityServiceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? dnsIp,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ou,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? server,
-    required pulumi.Output<String> type,
-    pulumi.Output<String>? user,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dnsIp = pulumi.Input.asOptionalInput<String>(dnsIp),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ou = pulumi.Input.asOptionalInput<String>(ou),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      server = pulumi.Input.asOptionalInput<String>(server),
-      type = pulumi.Input.asInput<String>(type),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.description,
+    this.dnsIp,
+    this.domain,
+    this.name,
+    this.ou,
+    this.password,
+    this.region,
+    this.server,
+    required this.type,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,16 +78,16 @@ class SecurityServiceArgs {
 
   factory SecurityServiceArgs.fromMap(Map<String, dynamic> map) {
     return SecurityServiceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dnsIp: map['dnsIp'] == null ? null : pulumi.Output.create<String>(map['dnsIp'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ou: map['ou'] == null ? null : pulumi.Output.create<String>(map['ou'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      server: map['server'] == null ? null : pulumi.Output.create<String>(map['server'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dnsIp: map['dnsIp'] == null ? null : (map['dnsIp'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ou: map['ou'] == null ? null : (map['ou'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      server: map['server'] == null ? null : (map['server'] as String).input(),
+      type: (map['type'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

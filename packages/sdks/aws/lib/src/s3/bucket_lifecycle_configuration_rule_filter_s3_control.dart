@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketLifecycleConfigurationRuleFilterS3Control {
   /// Object prefix for rule filtering.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// Key-value map of object tags for rule filtering.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [BucketLifecycleConfigurationRuleFilterS3Control].
   /// [prefix] Object prefix for rule filtering.
@@ -24,8 +25,8 @@ class BucketLifecycleConfigurationRuleFilterS3Control {
 
   factory BucketLifecycleConfigurationRuleFilterS3Control.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationRuleFilterS3Control(
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

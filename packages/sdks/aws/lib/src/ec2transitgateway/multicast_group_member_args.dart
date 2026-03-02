@@ -22,15 +22,11 @@ class MulticastGroupMemberArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [transitGatewayMulticastDomainId] The ID of the transit gateway multicast domain.
   MulticastGroupMemberArgs({
-    required pulumi.Output<String> groupIpAddress,
-    required pulumi.Output<String> networkInterfaceId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> transitGatewayMulticastDomainId,
-  }) :
-      groupIpAddress = pulumi.Input.asInput<String>(groupIpAddress),
-      networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      transitGatewayMulticastDomainId = pulumi.Input.asInput<String>(transitGatewayMulticastDomainId);
+    required this.groupIpAddress,
+    required this.networkInterfaceId,
+    this.region,
+    required this.transitGatewayMulticastDomainId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class MulticastGroupMemberArgs {
 
   factory MulticastGroupMemberArgs.fromMap(Map<String, dynamic> map) {
     return MulticastGroupMemberArgs(
-      groupIpAddress: pulumi.Output.create<String>(map['groupIpAddress'] as String),
-      networkInterfaceId: pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      transitGatewayMulticastDomainId: pulumi.Output.create<String>(map['transitGatewayMulticastDomainId'] as String),
+      groupIpAddress: (map['groupIpAddress'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      transitGatewayMulticastDomainId: (map['transitGatewayMulticastDomainId'] as String).input(),
     );
   }
 }

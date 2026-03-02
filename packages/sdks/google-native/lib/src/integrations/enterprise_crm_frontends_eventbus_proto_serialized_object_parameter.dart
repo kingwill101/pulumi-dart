@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter {
-  final String? objectValue;
+  final pulumi.Input<String>? objectValue;
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter].
   /// [objectValue] Optional.
@@ -18,7 +19,7 @@ class EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter {
 
   factory EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter(
-      objectValue: map['objectValue'] == null ? null : map['objectValue'] as String,
+      objectValue: map['objectValue'] == null ? null : (map['objectValue'] as String).input(),
     );
   }
 }

@@ -39,19 +39,13 @@ class NoteIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   NoteIamMemberState({
-    pulumi.Output<NoteIamMemberCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? note,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<NoteIamMemberCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      note = pulumi.Input.asOptionalInput<String>(note),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.etag,
+    this.member,
+    this.note,
+    this.project,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class NoteIamMemberState {
 
   factory NoteIamMemberState.fromMap(Map<String, dynamic> map) {
     return NoteIamMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<NoteIamMemberCondition>(NoteIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      note: map['note'] == null ? null : pulumi.Output.create<String>(map['note'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (NoteIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      note: map['note'] == null ? null : (map['note'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

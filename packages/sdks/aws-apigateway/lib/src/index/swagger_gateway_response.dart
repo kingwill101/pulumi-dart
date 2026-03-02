@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SwaggerGatewayResponse {
-  final Map<String, String>? responseParameters;
-  final Map<String, String>? responseTemplates;
-  final double? statusCode;
+  final pulumi.Input<Map<String, String>>? responseParameters;
+  final pulumi.Input<Map<String, String>>? responseTemplates;
+  final pulumi.Input<double>? statusCode;
 
   /// Creates a new [SwaggerGatewayResponse].
   /// [responseParameters] Optional.
@@ -26,9 +27,9 @@ class SwaggerGatewayResponse {
 
   factory SwaggerGatewayResponse.fromMap(Map<String, dynamic> map) {
     return SwaggerGatewayResponse(
-      responseParameters: map['responseParameters'] == null ? null : (map['responseParameters'] as Map).cast<String, String>(),
-      responseTemplates: map['responseTemplates'] == null ? null : (map['responseTemplates'] as Map).cast<String, String>(),
-      statusCode: map['statusCode'] == null ? null : map['statusCode'] as double,
+      responseParameters: map['responseParameters'] == null ? null : ((map['responseParameters'] as Map).cast<String, String>()).input(),
+      responseTemplates: map['responseTemplates'] == null ? null : ((map['responseTemplates'] as Map).cast<String, String>()).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as double).input(),
     );
   }
 }

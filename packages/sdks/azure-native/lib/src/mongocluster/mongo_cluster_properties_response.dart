@@ -13,35 +13,35 @@ import 'storage_properties_response.dart';
 /// The properties of a mongo cluster.
 class MongoClusterPropertiesResponse {
   /// The local administrator properties for the mongo cluster.
-  final AdministratorPropertiesResponse? administrator;
+  final pulumi.Input<AdministratorPropertiesResponse>? administrator;
   /// The backup properties of the mongo cluster.
-  final BackupPropertiesResponse? backup;
+  final pulumi.Input<BackupPropertiesResponse>? backup;
   /// The status of the mongo cluster.
-  final String clusterStatus;
+  final pulumi.Input<String> clusterStatus;
   /// The compute properties of the mongo cluster.
-  final ComputePropertiesResponse? compute;
+  final pulumi.Input<ComputePropertiesResponse>? compute;
   /// The default mongo connection string for the cluster.
-  final String connectionString;
+  final pulumi.Input<String> connectionString;
   /// The high availability properties of the mongo cluster.
-  final HighAvailabilityPropertiesResponse? highAvailability;
+  final pulumi.Input<HighAvailabilityPropertiesResponse>? highAvailability;
   /// The infrastructure version the cluster is provisioned on.
-  final String infrastructureVersion;
+  final pulumi.Input<String> infrastructureVersion;
   /// List of private endpoint connections.
-  final List<String>? previewFeatures;
+  final pulumi.Input<List<String>>? previewFeatures;
   /// List of private endpoint connections.
-  final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// The provisioning state of the mongo cluster.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Whether or not public endpoint access is allowed for this mongo cluster.
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
   /// The replication properties for the mongo cluster
-  final ReplicationPropertiesResponse replica;
+  final pulumi.Input<ReplicationPropertiesResponse> replica;
   /// The Mongo DB server version. Defaults to the latest available version if not specified.
-  final String? serverVersion;
+  final pulumi.Input<String>? serverVersion;
   /// The sharding properties of the mongo cluster.
-  final ShardingPropertiesResponse? sharding;
+  final pulumi.Input<ShardingPropertiesResponse>? sharding;
   /// The storage properties of the mongo cluster.
-  final StoragePropertiesResponse? storage;
+  final pulumi.Input<StoragePropertiesResponse>? storage;
 
   /// Creates a new [MongoClusterPropertiesResponse].
   /// [administrator] The local administrator properties for the mongo cluster.
@@ -79,41 +79,41 @@ class MongoClusterPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'administrator': ?administrator == null ? null : administrator!.toMap(),
-      'backup': ?backup == null ? null : backup!.toMap(),
+      'administrator': ?pulumi.Input.mapOptionalInputValue<AdministratorPropertiesResponse, Map<String, dynamic>>(administrator, (value) => value.toMap()),
+      'backup': ?pulumi.Input.mapOptionalInputValue<BackupPropertiesResponse, Map<String, dynamic>>(backup, (value) => value.toMap()),
       'clusterStatus': clusterStatus,
-      'compute': ?compute == null ? null : compute!.toMap(),
+      'compute': ?pulumi.Input.mapOptionalInputValue<ComputePropertiesResponse, Map<String, dynamic>>(compute, (value) => value.toMap()),
       'connectionString': connectionString,
-      'highAvailability': ?highAvailability == null ? null : highAvailability!.toMap(),
+      'highAvailability': ?pulumi.Input.mapOptionalInputValue<HighAvailabilityPropertiesResponse, Map<String, dynamic>>(highAvailability, (value) => value.toMap()),
       'infrastructureVersion': infrastructureVersion,
       'previewFeatures': ?previewFeatures,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
-      'replica': replica.toMap(),
+      'replica': pulumi.Input.mapInputValue<ReplicationPropertiesResponse, Map<String, dynamic>>(replica, (value) => value.toMap()),
       'serverVersion': ?serverVersion,
-      'sharding': ?sharding == null ? null : sharding!.toMap(),
-      'storage': ?storage == null ? null : storage!.toMap(),
+      'sharding': ?pulumi.Input.mapOptionalInputValue<ShardingPropertiesResponse, Map<String, dynamic>>(sharding, (value) => value.toMap()),
+      'storage': ?pulumi.Input.mapOptionalInputValue<StoragePropertiesResponse, Map<String, dynamic>>(storage, (value) => value.toMap()),
     };
   }
 
   factory MongoClusterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MongoClusterPropertiesResponse(
-      administrator: map['administrator'] == null ? null : AdministratorPropertiesResponse.fromMap((map['administrator'] as Map).cast<String, dynamic>()),
-      backup: map['backup'] == null ? null : BackupPropertiesResponse.fromMap((map['backup'] as Map).cast<String, dynamic>()),
-      clusterStatus: map['clusterStatus'] as String,
-      compute: map['compute'] == null ? null : ComputePropertiesResponse.fromMap((map['compute'] as Map).cast<String, dynamic>()),
-      connectionString: map['connectionString'] as String,
-      highAvailability: map['highAvailability'] == null ? null : HighAvailabilityPropertiesResponse.fromMap((map['highAvailability'] as Map).cast<String, dynamic>()),
-      infrastructureVersion: map['infrastructureVersion'] as String,
-      previewFeatures: map['previewFeatures'] == null ? null : (map['previewFeatures'] as List).cast<String>(),
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
-      replica: ReplicationPropertiesResponse.fromMap((map['replica'] as Map).cast<String, dynamic>()),
-      serverVersion: map['serverVersion'] == null ? null : map['serverVersion'] as String,
-      sharding: map['sharding'] == null ? null : ShardingPropertiesResponse.fromMap((map['sharding'] as Map).cast<String, dynamic>()),
-      storage: map['storage'] == null ? null : StoragePropertiesResponse.fromMap((map['storage'] as Map).cast<String, dynamic>()),
+      administrator: map['administrator'] == null ? null : (AdministratorPropertiesResponse.fromMap((map['administrator'] as Map).cast<String, dynamic>())).input(),
+      backup: map['backup'] == null ? null : (BackupPropertiesResponse.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
+      clusterStatus: (map['clusterStatus'] as String).input(),
+      compute: map['compute'] == null ? null : (ComputePropertiesResponse.fromMap((map['compute'] as Map).cast<String, dynamic>())).input(),
+      connectionString: (map['connectionString'] as String).input(),
+      highAvailability: map['highAvailability'] == null ? null : (HighAvailabilityPropertiesResponse.fromMap((map['highAvailability'] as Map).cast<String, dynamic>())).input(),
+      infrastructureVersion: (map['infrastructureVersion'] as String).input(),
+      previewFeatures: map['previewFeatures'] == null ? null : ((map['previewFeatures'] as List).cast<String>()).input(),
+      privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      replica: (ReplicationPropertiesResponse.fromMap((map['replica'] as Map).cast<String, dynamic>())).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
+      sharding: map['sharding'] == null ? null : (ShardingPropertiesResponse.fromMap((map['sharding'] as Map).cast<String, dynamic>())).input(),
+      storage: map['storage'] == null ? null : (StoragePropertiesResponse.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

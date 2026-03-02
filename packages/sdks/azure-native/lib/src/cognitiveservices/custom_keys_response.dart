@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Custom Keys credential object
 class CustomKeysResponse {
-  final Map<String, String>? keys;
+  final pulumi.Input<Map<String, String>>? keys;
 
   /// Creates a new [CustomKeysResponse].
   /// [keys] Optional.
@@ -19,7 +20,7 @@ class CustomKeysResponse {
 
   factory CustomKeysResponse.fromMap(Map<String, dynamic> map) {
     return CustomKeysResponse(
-      keys: map['keys'] == null ? null : (map['keys'] as Map).cast<String, String>(),
+      keys: map['keys'] == null ? null : ((map['keys'] as Map).cast<String, String>()).input(),
     );
   }
 }

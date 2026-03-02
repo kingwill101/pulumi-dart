@@ -24,15 +24,11 @@ class TransitGatewayRouteTableAttachmentArgs {
   /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayRouteTableArn] ARN of the transit gateway route table for the attachment.
   TransitGatewayRouteTableAttachmentArgs({
-    required pulumi.Output<String> peeringId,
-    pulumi.Output<String>? routingPolicyLabel,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> transitGatewayRouteTableArn,
-  }) :
-      peeringId = pulumi.Input.asInput<String>(peeringId),
-      routingPolicyLabel = pulumi.Input.asOptionalInput<String>(routingPolicyLabel),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayRouteTableArn = pulumi.Input.asInput<String>(transitGatewayRouteTableArn);
+    required this.peeringId,
+    this.routingPolicyLabel,
+    this.tags,
+    required this.transitGatewayRouteTableArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class TransitGatewayRouteTableAttachmentArgs {
 
   factory TransitGatewayRouteTableAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayRouteTableAttachmentArgs(
-      peeringId: pulumi.Output.create<String>(map['peeringId'] as String),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : pulumi.Output.create<String>(map['routingPolicyLabel'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayRouteTableArn: pulumi.Output.create<String>(map['transitGatewayRouteTableArn'] as String),
+      peeringId: (map['peeringId'] as String).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayRouteTableArn: (map['transitGatewayRouteTableArn'] as String).input(),
     );
   }
 }

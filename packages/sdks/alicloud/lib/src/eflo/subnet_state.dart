@@ -43,29 +43,18 @@ class SubnetState {
   /// [vpdId] The Eflo VPD ID.
   /// [zoneId] The zone ID  of the resource.
   SubnetState({
-    pulumi.Output<String>? cidr,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? gmtModified,
-    pulumi.Output<String>? message,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<String>? subnetName,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? vpdId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      gmtModified = pulumi.Input.asOptionalInput<String>(gmtModified),
-      message = pulumi.Input.asOptionalInput<String>(message),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      subnetName = pulumi.Input.asOptionalInput<String>(subnetName),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vpdId = pulumi.Input.asOptionalInput<String>(vpdId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.cidr,
+    this.createTime,
+    this.gmtModified,
+    this.message,
+    this.resourceGroupId,
+    this.status,
+    this.subnetId,
+    this.subnetName,
+    this.type,
+    this.vpdId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class SubnetState {
 
   factory SubnetState.fromMap(Map<String, dynamic> map) {
     return SubnetState(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      gmtModified: map['gmtModified'] == null ? null : pulumi.Output.create<String>(map['gmtModified'] as String),
-      message: map['message'] == null ? null : pulumi.Output.create<String>(map['message'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      subnetName: map['subnetName'] == null ? null : pulumi.Output.create<String>(map['subnetName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vpdId: map['vpdId'] == null ? null : pulumi.Output.create<String>(map['vpdId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      subnetName: map['subnetName'] == null ? null : (map['subnetName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vpdId: map['vpdId'] == null ? null : (map['vpdId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

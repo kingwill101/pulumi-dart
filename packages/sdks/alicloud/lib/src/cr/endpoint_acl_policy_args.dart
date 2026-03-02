@@ -25,17 +25,12 @@ class EndpointAclPolicyArgs {
   /// [instanceId] The ID of the CR Instance.
   /// [moduleName] The module that needs to set the access policy. Valid values: `Registry`.
   EndpointAclPolicyArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> endpointType,
-    required pulumi.Output<String> entry,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? moduleName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpointType = pulumi.Input.asInput<String>(endpointType),
-      entry = pulumi.Input.asInput<String>(entry),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      moduleName = pulumi.Input.asOptionalInput<String>(moduleName);
+    this.description,
+    required this.endpointType,
+    required this.entry,
+    required this.instanceId,
+    this.moduleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EndpointAclPolicyArgs {
 
   factory EndpointAclPolicyArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAclPolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpointType: pulumi.Output.create<String>(map['endpointType'] as String),
-      entry: pulumi.Output.create<String>(map['entry'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      moduleName: map['moduleName'] == null ? null : pulumi.Output.create<String>(map['moduleName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      entry: (map['entry'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      moduleName: map['moduleName'] == null ? null : (map['moduleName'] as String).input(),
     );
   }
 }

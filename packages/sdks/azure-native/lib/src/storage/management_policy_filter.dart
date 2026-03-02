@@ -6,11 +6,11 @@ import 'tag_filter.dart';
 /// Filters limit rule actions to a subset of blobs within the storage account. If multiple filters are defined, a logical AND is performed on all filters.
 class ManagementPolicyFilter {
   /// An array of blob index tag based filters, there can be at most 10 tag filters
-  final List<TagFilter>? blobIndexMatch;
+  final pulumi.Input<List<TagFilter>>? blobIndexMatch;
   /// An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
-  final List<String> blobTypes;
+  final pulumi.Input<List<String>> blobTypes;
   /// An array of strings for prefixes to be match.
-  final List<String>? prefixMatch;
+  final pulumi.Input<List<String>>? prefixMatch;
 
   /// Creates a new [ManagementPolicyFilter].
   /// [blobIndexMatch] An array of blob index tag based filters, there can be at most 10 tag filters
@@ -24,7 +24,7 @@ class ManagementPolicyFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blobIndexMatch': ?blobIndexMatch == null ? null : pulumi.Input.encodeList<TagFilter, Map<String, dynamic>>(blobIndexMatch!, (value) => value.toMap()),
+      'blobIndexMatch': ?pulumi.Input.mapOptionalInputValue<List<TagFilter>, List<Map<String, dynamic>>>(blobIndexMatch, (value) => pulumi.Input.encodeList<TagFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'blobTypes': blobTypes,
       'prefixMatch': ?prefixMatch,
     };
@@ -32,9 +32,9 @@ class ManagementPolicyFilter {
 
   factory ManagementPolicyFilter.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyFilter(
-      blobIndexMatch: map['blobIndexMatch'] == null ? null : pulumi.Input.decodeList<TagFilter>(map['blobIndexMatch'], (value) => TagFilter.fromMap((value as Map).cast<String, dynamic>())),
-      blobTypes: (map['blobTypes'] as List).cast<String>(),
-      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch'] as List).cast<String>(),
+      blobIndexMatch: map['blobIndexMatch'] == null ? null : (pulumi.Input.decodeList<TagFilter>(map['blobIndexMatch'], (value) => TagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      blobTypes: ((map['blobTypes'] as List).cast<String>()).input(),
+      prefixMatch: map['prefixMatch'] == null ? null : ((map['prefixMatch'] as List).cast<String>()).input(),
     );
   }
 }

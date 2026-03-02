@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileTtsConfigVoice {
   /// The name of the voice.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The preferred gender of the voice.
   /// Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
-  final String? ssmlGender;
+  final pulumi.Input<String>? ssmlGender;
 
   /// Creates a new [ConversationProfileTtsConfigVoice].
   /// [name] The name of the voice.
@@ -25,8 +26,8 @@ class ConversationProfileTtsConfigVoice {
 
   factory ConversationProfileTtsConfigVoice.fromMap(Map<String, dynamic> map) {
     return ConversationProfileTtsConfigVoice(
-      name: map['name'] == null ? null : map['name'] as String,
-      ssmlGender: map['ssmlGender'] == null ? null : map['ssmlGender'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ssmlGender: map['ssmlGender'] == null ? null : (map['ssmlGender'] as String).input(),
     );
   }
 }

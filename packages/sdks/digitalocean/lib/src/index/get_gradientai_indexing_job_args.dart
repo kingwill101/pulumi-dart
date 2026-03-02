@@ -12,9 +12,8 @@ class GetGradientaiIndexingJobArgs {
   /// Creates a new [GetGradientaiIndexingJobArgs].
   /// [uuid] Required.
   GetGradientaiIndexingJobArgs({
-    required pulumi.Output<String> uuid,
-  }) :
-      uuid = pulumi.Input.asInput<String>(uuid);
+    required this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetGradientaiIndexingJobArgs {
 
   factory GetGradientaiIndexingJobArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiIndexingJobArgs(
-      uuid: pulumi.Output.create<String>(map['uuid'] as String),
+      uuid: (map['uuid'] as String).input(),
     );
   }
 }

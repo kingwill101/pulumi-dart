@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sysctl_config.dart';
 
 /// OS configurations of Linux agent nodes. See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
 class LinuxOSConfig {
   /// The size in MB of a swap file that will be created on each node.
-  final int? swapFileSizeMB;
+  final pulumi.Input<int>? swapFileSizeMB;
   /// Sysctl settings for Linux agent nodes.
-  final SysctlConfig? sysctls;
+  final pulumi.Input<SysctlConfig>? sysctls;
   /// Whether the kernel should make aggressive use of memory compaction to make more hugepages available. Valid values are 'always', 'defer', 'defer+madvise', 'madvise' and 'never'. The default is 'madvise'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
-  final String? transparentHugePageDefrag;
+  final pulumi.Input<String>? transparentHugePageDefrag;
   /// Whether transparent hugepages are enabled. Valid values are 'always', 'madvise', and 'never'. The default is 'always'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
-  final String? transparentHugePageEnabled;
+  final pulumi.Input<String>? transparentHugePageEnabled;
 
   /// Creates a new [LinuxOSConfig].
   /// [swapFileSizeMB] The size in MB of a swap file that will be created on each node.
@@ -28,7 +29,7 @@ class LinuxOSConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'swapFileSizeMB': ?swapFileSizeMB,
-      'sysctls': ?sysctls == null ? null : sysctls!.toMap(),
+      'sysctls': ?pulumi.Input.mapOptionalInputValue<SysctlConfig, Map<String, dynamic>>(sysctls, (value) => value.toMap()),
       'transparentHugePageDefrag': ?transparentHugePageDefrag,
       'transparentHugePageEnabled': ?transparentHugePageEnabled,
     };
@@ -36,10 +37,10 @@ class LinuxOSConfig {
 
   factory LinuxOSConfig.fromMap(Map<String, dynamic> map) {
     return LinuxOSConfig(
-      swapFileSizeMB: map['swapFileSizeMB'] == null ? null : map['swapFileSizeMB'] as int,
-      sysctls: map['sysctls'] == null ? null : SysctlConfig.fromMap((map['sysctls'] as Map).cast<String, dynamic>()),
-      transparentHugePageDefrag: map['transparentHugePageDefrag'] == null ? null : map['transparentHugePageDefrag'] as String,
-      transparentHugePageEnabled: map['transparentHugePageEnabled'] == null ? null : map['transparentHugePageEnabled'] as String,
+      swapFileSizeMB: map['swapFileSizeMB'] == null ? null : (map['swapFileSizeMB'] as int).input(),
+      sysctls: map['sysctls'] == null ? null : (SysctlConfig.fromMap((map['sysctls'] as Map).cast<String, dynamic>())).input(),
+      transparentHugePageDefrag: map['transparentHugePageDefrag'] == null ? null : (map['transparentHugePageDefrag'] as String).input(),
+      transparentHugePageEnabled: map['transparentHugePageEnabled'] == null ? null : (map['transparentHugePageEnabled'] as String).input(),
     );
   }
 }

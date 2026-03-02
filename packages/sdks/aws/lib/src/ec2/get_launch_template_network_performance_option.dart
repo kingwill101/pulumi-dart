@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateNetworkPerformanceOption {
-  final String bandwidthWeighting;
+  final pulumi.Input<String> bandwidthWeighting;
 
   /// Creates a new [GetLaunchTemplateNetworkPerformanceOption].
   /// [bandwidthWeighting] Required.
@@ -18,7 +19,7 @@ class GetLaunchTemplateNetworkPerformanceOption {
 
   factory GetLaunchTemplateNetworkPerformanceOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateNetworkPerformanceOption(
-      bandwidthWeighting: map['bandwidthWeighting'] as String,
+      bandwidthWeighting: (map['bandwidthWeighting'] as String).input(),
     );
   }
 }

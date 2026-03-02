@@ -6,13 +6,13 @@ import 'task_definition_kernel_capabilities.dart';
 import 'task_definition_tmpfs.dart';
 
 class TaskDefinitionLinuxParameters {
-  final TaskDefinitionKernelCapabilities? capabilities;
-  final List<TaskDefinitionDevice>? devices;
-  final bool? initProcessEnabled;
-  final int? maxSwap;
-  final int? sharedMemorySize;
-  final int? swappiness;
-  final List<TaskDefinitionTmpfs>? tmpfs;
+  final pulumi.Input<TaskDefinitionKernelCapabilities>? capabilities;
+  final pulumi.Input<List<TaskDefinitionDevice>>? devices;
+  final pulumi.Input<bool>? initProcessEnabled;
+  final pulumi.Input<int>? maxSwap;
+  final pulumi.Input<int>? sharedMemorySize;
+  final pulumi.Input<int>? swappiness;
+  final pulumi.Input<List<TaskDefinitionTmpfs>>? tmpfs;
 
   /// Creates a new [TaskDefinitionLinuxParameters].
   /// [capabilities] Optional.
@@ -34,25 +34,25 @@ class TaskDefinitionLinuxParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capabilities': ?capabilities == null ? null : capabilities!.toMap(),
-      'devices': ?devices == null ? null : pulumi.Input.encodeList<TaskDefinitionDevice, Map<String, dynamic>>(devices!, (value) => value.toMap()),
+      'capabilities': ?pulumi.Input.mapOptionalInputValue<TaskDefinitionKernelCapabilities, Map<String, dynamic>>(capabilities, (value) => value.toMap()),
+      'devices': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionDevice>, List<Map<String, dynamic>>>(devices, (value) => pulumi.Input.encodeList<TaskDefinitionDevice, Map<String, dynamic>>(value, (value) => value.toMap())),
       'initProcessEnabled': ?initProcessEnabled,
       'maxSwap': ?maxSwap,
       'sharedMemorySize': ?sharedMemorySize,
       'swappiness': ?swappiness,
-      'tmpfs': ?tmpfs == null ? null : pulumi.Input.encodeList<TaskDefinitionTmpfs, Map<String, dynamic>>(tmpfs!, (value) => value.toMap()),
+      'tmpfs': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionTmpfs>, List<Map<String, dynamic>>>(tmpfs, (value) => pulumi.Input.encodeList<TaskDefinitionTmpfs, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TaskDefinitionLinuxParameters.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionLinuxParameters(
-      capabilities: map['capabilities'] == null ? null : TaskDefinitionKernelCapabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>()),
-      devices: map['devices'] == null ? null : pulumi.Input.decodeList<TaskDefinitionDevice>(map['devices'], (value) => TaskDefinitionDevice.fromMap((value as Map).cast<String, dynamic>())),
-      initProcessEnabled: map['initProcessEnabled'] == null ? null : map['initProcessEnabled'] as bool,
-      maxSwap: map['maxSwap'] == null ? null : map['maxSwap'] as int,
-      sharedMemorySize: map['sharedMemorySize'] == null ? null : map['sharedMemorySize'] as int,
-      swappiness: map['swappiness'] == null ? null : map['swappiness'] as int,
-      tmpfs: map['tmpfs'] == null ? null : pulumi.Input.decodeList<TaskDefinitionTmpfs>(map['tmpfs'], (value) => TaskDefinitionTmpfs.fromMap((value as Map).cast<String, dynamic>())),
+      capabilities: map['capabilities'] == null ? null : (TaskDefinitionKernelCapabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>())).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionDevice>(map['devices'], (value) => TaskDefinitionDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initProcessEnabled: map['initProcessEnabled'] == null ? null : (map['initProcessEnabled'] as bool).input(),
+      maxSwap: map['maxSwap'] == null ? null : (map['maxSwap'] as int).input(),
+      sharedMemorySize: map['sharedMemorySize'] == null ? null : (map['sharedMemorySize'] as int).input(),
+      swappiness: map['swappiness'] == null ? null : (map['swappiness'] as int).input(),
+      tmpfs: map['tmpfs'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionTmpfs>(map['tmpfs'], (value) => TaskDefinitionTmpfs.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

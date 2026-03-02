@@ -26,17 +26,12 @@ class DlpJobArgs {
   /// [project] Optional.
   /// [riskJob] A risk analysis job calculates re-identification risk metrics for a BigQuery table.
   DlpJobArgs({
-    pulumi.Output<GooglePrivacyDlpV2InspectJobConfig>? inspectJob,
-    pulumi.Output<String>? jobId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<GooglePrivacyDlpV2RiskAnalysisJobConfig>? riskJob,
-  }) :
-      inspectJob = pulumi.Input.asOptionalInput<GooglePrivacyDlpV2InspectJobConfig>(inspectJob),
-      jobId = pulumi.Input.asOptionalInput<String>(jobId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      riskJob = pulumi.Input.asOptionalInput<GooglePrivacyDlpV2RiskAnalysisJobConfig>(riskJob);
+    this.inspectJob,
+    this.jobId,
+    this.location,
+    this.project,
+    this.riskJob,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DlpJobArgs {
 
   factory DlpJobArgs.fromMap(Map<String, dynamic> map) {
     return DlpJobArgs(
-      inspectJob: map['inspectJob'] == null ? null : pulumi.Output.create<GooglePrivacyDlpV2InspectJobConfig>(GooglePrivacyDlpV2InspectJobConfig.fromMap((map['inspectJob'] as Map).cast<String, dynamic>())),
-      jobId: map['jobId'] == null ? null : pulumi.Output.create<String>(map['jobId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      riskJob: map['riskJob'] == null ? null : pulumi.Output.create<GooglePrivacyDlpV2RiskAnalysisJobConfig>(GooglePrivacyDlpV2RiskAnalysisJobConfig.fromMap((map['riskJob'] as Map).cast<String, dynamic>())),
+      inspectJob: map['inspectJob'] == null ? null : (GooglePrivacyDlpV2InspectJobConfig.fromMap((map['inspectJob'] as Map).cast<String, dynamic>())).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      riskJob: map['riskJob'] == null ? null : (GooglePrivacyDlpV2RiskAnalysisJobConfig.fromMap((map['riskJob'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

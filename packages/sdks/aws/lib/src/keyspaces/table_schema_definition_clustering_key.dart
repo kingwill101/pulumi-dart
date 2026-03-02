@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableSchemaDefinitionClusteringKey {
   /// The name of the clustering key column.
-  final String name;
+  final pulumi.Input<String> name;
   /// The order modifier. Valid values: `ASC`, `DESC`.
-  final String orderBy;
+  final pulumi.Input<String> orderBy;
 
   /// Creates a new [TableSchemaDefinitionClusteringKey].
   /// [name] The name of the clustering key column.
@@ -24,8 +25,8 @@ class TableSchemaDefinitionClusteringKey {
 
   factory TableSchemaDefinitionClusteringKey.fromMap(Map<String, dynamic> map) {
     return TableSchemaDefinitionClusteringKey(
-      name: map['name'] as String,
-      orderBy: map['orderBy'] as String,
+      name: (map['name'] as String).input(),
+      orderBy: (map['orderBy'] as String).input(),
     );
   }
 }

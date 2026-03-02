@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceLevelObjectiveTimeWindowRolling {
   /// Valid values are `1`, `7` and `28`.
-  final int count;
+  final pulumi.Input<int> count;
   /// The only supported value is `DAY`.
-  final String unit;
+  final pulumi.Input<String> unit;
 
   /// Creates a new [ServiceLevelObjectiveTimeWindowRolling].
   /// [count] Valid values are `1`, `7` and `28`.
@@ -24,8 +25,8 @@ class ServiceLevelObjectiveTimeWindowRolling {
 
   factory ServiceLevelObjectiveTimeWindowRolling.fromMap(Map<String, dynamic> map) {
     return ServiceLevelObjectiveTimeWindowRolling(
-      count: map['count'] as int,
-      unit: map['unit'] as String,
+      count: (map['count'] as int).input(),
+      unit: (map['unit'] as String).input(),
     );
   }
 }

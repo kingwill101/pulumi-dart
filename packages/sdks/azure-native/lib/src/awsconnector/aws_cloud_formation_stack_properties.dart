@@ -7,51 +7,51 @@ import 'tag.dart';
 /// Definition of awsCloudFormationStack
 class AwsCloudFormationStackProperties {
   /// Property capabilities
-  final List<String>? capabilities;
+  final pulumi.Input<List<String>>? capabilities;
   /// Property changeSetId
-  final String? changeSetId;
+  final pulumi.Input<String>? changeSetId;
   /// Property creationTime
-  final String? creationTime;
+  final pulumi.Input<String>? creationTime;
   /// Property description
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Property disableRollback
-  final bool? disableRollback;
+  final pulumi.Input<bool>? disableRollback;
   /// Property enableTerminationProtection
-  final bool? enableTerminationProtection;
+  final pulumi.Input<bool>? enableTerminationProtection;
   /// Property lastUpdateTime
-  final String? lastUpdateTime;
+  final pulumi.Input<String>? lastUpdateTime;
   /// Property notificationARNs
-  final List<String>? notificationARNs;
+  final pulumi.Input<List<String>>? notificationARNs;
   /// Property outputs
-  final List<OutputType>? outputs;
+  final pulumi.Input<List<OutputType>>? outputs;
   /// Property parameters
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
   /// Property parentId
-  final String? parentId;
+  final pulumi.Input<String>? parentId;
   /// Property roleARN
-  final String? roleARN;
+  final pulumi.Input<String>? roleARN;
   /// Property rootId
-  final String? rootId;
+  final pulumi.Input<String>? rootId;
   /// Property stackId
-  final String? stackId;
+  final pulumi.Input<String>? stackId;
   /// Property stackName
-  final String? stackName;
+  final pulumi.Input<String>? stackName;
   /// Property stackPolicyBody
-  final dynamic stackPolicyBody;
+  final pulumi.Input<dynamic>? stackPolicyBody;
   /// Property stackPolicyURL
-  final String? stackPolicyURL;
+  final pulumi.Input<String>? stackPolicyURL;
   /// Property stackStatus
-  final String? stackStatus;
+  final pulumi.Input<String>? stackStatus;
   /// Property stackStatusReason
-  final String? stackStatusReason;
+  final pulumi.Input<String>? stackStatusReason;
   /// Property tags
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
   /// Property templateBody
-  final dynamic templateBody;
+  final pulumi.Input<dynamic>? templateBody;
   /// Property templateURL
-  final String? templateURL;
+  final pulumi.Input<String>? templateURL;
   /// Property timeoutInMinutes
-  final int? timeoutInMinutes;
+  final pulumi.Input<int>? timeoutInMinutes;
 
   /// Creates a new [AwsCloudFormationStackProperties].
   /// [capabilities] Property capabilities
@@ -113,7 +113,7 @@ class AwsCloudFormationStackProperties {
       'enableTerminationProtection': ?enableTerminationProtection,
       'lastUpdateTime': ?lastUpdateTime,
       'notificationARNs': ?notificationARNs,
-      'outputs': ?outputs == null ? null : pulumi.Input.encodeList<OutputType, Map<String, dynamic>>(outputs!, (value) => value.toMap()),
+      'outputs': ?pulumi.Input.mapOptionalInputValue<List<OutputType>, List<Map<String, dynamic>>>(outputs, (value) => pulumi.Input.encodeList<OutputType, Map<String, dynamic>>(value, (value) => value.toMap())),
       'parameters': ?parameters,
       'parentId': ?parentId,
       'roleARN': ?roleARN,
@@ -124,7 +124,7 @@ class AwsCloudFormationStackProperties {
       'stackPolicyURL': ?stackPolicyURL,
       'stackStatus': ?stackStatus,
       'stackStatusReason': ?stackStatusReason,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'templateBody': ?templateBody,
       'templateURL': ?templateURL,
       'timeoutInMinutes': ?timeoutInMinutes,
@@ -133,29 +133,29 @@ class AwsCloudFormationStackProperties {
 
   factory AwsCloudFormationStackProperties.fromMap(Map<String, dynamic> map) {
     return AwsCloudFormationStackProperties(
-      capabilities: map['capabilities'] == null ? null : (map['capabilities'] as List).cast<String>(),
-      changeSetId: map['changeSetId'] == null ? null : map['changeSetId'] as String,
-      creationTime: map['creationTime'] == null ? null : map['creationTime'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      disableRollback: map['disableRollback'] == null ? null : map['disableRollback'] as bool,
-      enableTerminationProtection: map['enableTerminationProtection'] == null ? null : map['enableTerminationProtection'] as bool,
-      lastUpdateTime: map['lastUpdateTime'] == null ? null : map['lastUpdateTime'] as String,
-      notificationARNs: map['notificationARNs'] == null ? null : (map['notificationARNs'] as List).cast<String>(),
-      outputs: map['outputs'] == null ? null : pulumi.Input.decodeList<OutputType>(map['outputs'], (value) => OutputType.fromMap((value as Map).cast<String, dynamic>())),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      parentId: map['parentId'] == null ? null : map['parentId'] as String,
-      roleARN: map['roleARN'] == null ? null : map['roleARN'] as String,
-      rootId: map['rootId'] == null ? null : map['rootId'] as String,
-      stackId: map['stackId'] == null ? null : map['stackId'] as String,
-      stackName: map['stackName'] == null ? null : map['stackName'] as String,
-      stackPolicyBody: map['stackPolicyBody'] == null ? null : map['stackPolicyBody'],
-      stackPolicyURL: map['stackPolicyURL'] == null ? null : map['stackPolicyURL'] as String,
-      stackStatus: map['stackStatus'] == null ? null : map['stackStatus'] as String,
-      stackStatusReason: map['stackStatusReason'] == null ? null : map['stackStatusReason'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
-      templateBody: map['templateBody'] == null ? null : map['templateBody'],
-      templateURL: map['templateURL'] == null ? null : map['templateURL'] as String,
-      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : map['timeoutInMinutes'] as int,
+      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as List).cast<String>()).input(),
+      changeSetId: map['changeSetId'] == null ? null : (map['changeSetId'] as String).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableRollback: map['disableRollback'] == null ? null : (map['disableRollback'] as bool).input(),
+      enableTerminationProtection: map['enableTerminationProtection'] == null ? null : (map['enableTerminationProtection'] as bool).input(),
+      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime'] as String).input(),
+      notificationARNs: map['notificationARNs'] == null ? null : ((map['notificationARNs'] as List).cast<String>()).input(),
+      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeList<OutputType>(map['outputs'], (value) => OutputType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
+      roleARN: map['roleARN'] == null ? null : (map['roleARN'] as String).input(),
+      rootId: map['rootId'] == null ? null : (map['rootId'] as String).input(),
+      stackId: map['stackId'] == null ? null : (map['stackId'] as String).input(),
+      stackName: map['stackName'] == null ? null : (map['stackName'] as String).input(),
+      stackPolicyBody: map['stackPolicyBody'] == null ? null : (map['stackPolicyBody']).input(),
+      stackPolicyURL: map['stackPolicyURL'] == null ? null : (map['stackPolicyURL'] as String).input(),
+      stackStatus: map['stackStatus'] == null ? null : (map['stackStatus'] as String).input(),
+      stackStatusReason: map['stackStatusReason'] == null ? null : (map['stackStatusReason'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateBody: map['templateBody'] == null ? null : (map['templateBody']).input(),
+      templateURL: map['templateURL'] == null ? null : (map['templateURL'] as String).input(),
+      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : (map['timeoutInMinutes'] as int).input(),
     );
   }
 }

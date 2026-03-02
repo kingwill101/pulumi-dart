@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ShareInfoElementResponse {
   /// A relative URI containing the ID of the VM that has the disk attached.
-  final String vmUri;
+  final pulumi.Input<String> vmUri;
 
   /// Creates a new [ShareInfoElementResponse].
   /// [vmUri] A relative URI containing the ID of the VM that has the disk attached.
@@ -19,7 +20,7 @@ class ShareInfoElementResponse {
 
   factory ShareInfoElementResponse.fromMap(Map<String, dynamic> map) {
     return ShareInfoElementResponse(
-      vmUri: map['vmUri'] as String,
+      vmUri: (map['vmUri'] as String).input(),
     );
   }
 }

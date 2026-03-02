@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpacesKeyGrant {
   /// Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
-  final String permission;
+  final pulumi.Input<String> permission;
 
   /// Creates a new [SpacesKeyGrant].
   /// [bucket] Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
@@ -24,8 +25,8 @@ class SpacesKeyGrant {
 
   factory SpacesKeyGrant.fromMap(Map<String, dynamic> map) {
     return SpacesKeyGrant(
-      bucket: map['bucket'] as String,
-      permission: map['permission'] as String,
+      bucket: (map['bucket'] as String).input(),
+      permission: (map['permission'] as String).input(),
     );
   }
 }

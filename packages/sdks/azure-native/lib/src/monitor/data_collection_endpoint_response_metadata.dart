@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata for the resource. This property is READ-ONLY.
 class DataCollectionEndpointResponseMetadata {
   /// Azure offering managing this resource on-behalf-of customer.
-  final String provisionedBy;
+  final pulumi.Input<String> provisionedBy;
   /// Resource Id of azure offering managing this resource on-behalf-of customer.
-  final String provisionedByResourceId;
+  final pulumi.Input<String> provisionedByResourceId;
 
   /// Creates a new [DataCollectionEndpointResponseMetadata].
   /// [provisionedBy] Azure offering managing this resource on-behalf-of customer.
@@ -25,8 +26,8 @@ class DataCollectionEndpointResponseMetadata {
 
   factory DataCollectionEndpointResponseMetadata.fromMap(Map<String, dynamic> map) {
     return DataCollectionEndpointResponseMetadata(
-      provisionedBy: map['provisionedBy'] as String,
-      provisionedByResourceId: map['provisionedByResourceId'] as String,
+      provisionedBy: (map['provisionedBy'] as String).input(),
+      provisionedByResourceId: (map['provisionedByResourceId'] as String).input(),
     );
   }
 }

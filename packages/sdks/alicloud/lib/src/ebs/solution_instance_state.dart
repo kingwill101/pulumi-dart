@@ -29,21 +29,14 @@ class SolutionInstanceState {
   /// [solutionInstanceName] Solution Instance Name.
   /// [status] The status of the resource.
   SolutionInstanceState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<SolutionInstanceParameter>>? parameters,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? solutionId,
-    pulumi.Output<String>? solutionInstanceName,
-    pulumi.Output<String>? status,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      parameters = pulumi.Input.asOptionalInput<List<SolutionInstanceParameter>>(parameters),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      solutionId = pulumi.Input.asOptionalInput<String>(solutionId),
-      solutionInstanceName = pulumi.Input.asOptionalInput<String>(solutionInstanceName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createTime,
+    this.description,
+    this.parameters,
+    this.resourceGroupId,
+    this.solutionId,
+    this.solutionInstanceName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class SolutionInstanceState {
 
   factory SolutionInstanceState.fromMap(Map<String, dynamic> map) {
     return SolutionInstanceState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<SolutionInstanceParameter>>(pulumi.Input.decodeList<SolutionInstanceParameter>(map['parameters'], (value) => SolutionInstanceParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      solutionId: map['solutionId'] == null ? null : pulumi.Output.create<String>(map['solutionId'] as String),
-      solutionInstanceName: map['solutionInstanceName'] == null ? null : pulumi.Output.create<String>(map['solutionInstanceName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<SolutionInstanceParameter>(map['parameters'], (value) => SolutionInstanceParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      solutionId: map['solutionId'] == null ? null : (map['solutionId'] as String).input(),
+      solutionInstanceName: map['solutionInstanceName'] == null ? null : (map['solutionInstanceName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class SnapshotArgs {
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [serverId] Server to the snapshot should be created from.
   SnapshotArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<int> serverId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      serverId = pulumi.Input.asInput<int>(serverId);
+    this.description,
+    this.labels,
+    required this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      serverId: pulumi.Output.create<int>(map['serverId'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      serverId: (map['serverId'] as int).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AutoScale settings for the pool.
 class AutoScaleSettingsResponse {
   /// If omitted, the default value is 15 minutes (PT15M).
-  final String? evaluationInterval;
+  final pulumi.Input<String>? evaluationInterval;
   /// A formula for the desired number of compute nodes in the pool.
-  final String formula;
+  final pulumi.Input<String> formula;
 
   /// Creates a new [AutoScaleSettingsResponse].
   /// [evaluationInterval] If omitted, the default value is 15 minutes (PT15M).
@@ -25,8 +26,8 @@ class AutoScaleSettingsResponse {
 
   factory AutoScaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AutoScaleSettingsResponse(
-      evaluationInterval: map['evaluationInterval'] == null ? null : map['evaluationInterval'] as String,
-      formula: map['formula'] as String,
+      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval'] as String).input(),
+      formula: (map['formula'] as String).input(),
     );
   }
 }

@@ -25,15 +25,11 @@ class NetworkSecurityPerimeterAssociationArgs {
   /// [networkSecurityPerimeterProfileId] The ID of the Network Security Perimeter Profile. Changing this forces a new Network Security Perimeter Association to be created.
   /// [resourceId] The ID of the associated resource. Changing this forces a new Network Security Perimeter Association to be created.
   NetworkSecurityPerimeterAssociationArgs({
-    required pulumi.Output<String> accessMode,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkSecurityPerimeterProfileId,
-    required pulumi.Output<String> resourceId,
-  }) :
-      accessMode = pulumi.Input.asInput<String>(accessMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkSecurityPerimeterProfileId = pulumi.Input.asInput<String>(networkSecurityPerimeterProfileId),
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+    required this.accessMode,
+    this.name,
+    required this.networkSecurityPerimeterProfileId,
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class NetworkSecurityPerimeterAssociationArgs {
 
   factory NetworkSecurityPerimeterAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterAssociationArgs(
-      accessMode: pulumi.Output.create<String>(map['accessMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkSecurityPerimeterProfileId: pulumi.Output.create<String>(map['networkSecurityPerimeterProfileId'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
+      accessMode: (map['accessMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkSecurityPerimeterProfileId: (map['networkSecurityPerimeterProfileId'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

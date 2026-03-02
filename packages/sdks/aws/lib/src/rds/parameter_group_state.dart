@@ -38,27 +38,17 @@ class ParameterGroupState {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ParameterGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? family,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<List<ParameterGroupParameter>>? parameters,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? skipDestroy,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      family = pulumi.Input.asOptionalInput<String>(family),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      parameters = pulumi.Input.asOptionalInput<List<ParameterGroupParameter>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.family,
+    this.name,
+    this.namePrefix,
+    this.parameters,
+    this.region,
+    this.skipDestroy,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class ParameterGroupState {
 
   factory ParameterGroupState.fromMap(Map<String, dynamic> map) {
     return ParameterGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      family: map['family'] == null ? null : pulumi.Output.create<String>(map['family'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<ParameterGroupParameter>>(pulumi.Input.decodeList<ParameterGroupParameter>(map['parameters'], (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ParameterGroupParameter>(map['parameters'], (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

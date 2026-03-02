@@ -5,23 +5,23 @@ import 'linux_function_app_site_config_application_stack_docker.dart';
 
 class LinuxFunctionAppSiteConfigApplicationStack {
   /// One or more `docker` blocks as defined below.
-  final List<LinuxFunctionAppSiteConfigApplicationStackDocker>? dockers;
+  final pulumi.Input<List<LinuxFunctionAppSiteConfigApplicationStackDocker>>? dockers;
   /// The version of .NET to use. Possible values include `3.1`, `6.0`, `7.0`, `8.0`, `9.0` and `10.0`.
-  final String? dotnetVersion;
+  final pulumi.Input<String>? dotnetVersion;
   /// The Version of Java to use. Supported versions include `8`, `11`, `17`, `21`.
   ///
   /// > **Note:** The value `21` is currently in Preview for `java_version`.
-  final String? javaVersion;
+  final pulumi.Input<String>? javaVersion;
   /// The version of Node to run. Possible values include `12`, `14`, `16`, `18`, `20`, `22` and `24`.
-  final String? nodeVersion;
+  final pulumi.Input<String>? nodeVersion;
   /// The version of PowerShell Core to run. Possible values are `7`, `7.2`, and `7.4`.
-  final String? powershellCoreVersion;
+  final pulumi.Input<String>? powershellCoreVersion;
   /// The version of Python to run. Possible values are `3.14`, `3.13`, `3.12`, `3.11`, `3.10`, `3.9`, `3.8` and `3.7`.
-  final String? pythonVersion;
+  final pulumi.Input<String>? pythonVersion;
   /// Should the Linux Function App use a custom runtime?
-  final bool? useCustomRuntime;
+  final pulumi.Input<bool>? useCustomRuntime;
   /// Should the DotNet process use an isolated runtime. Defaults to `false`.
-  final bool? useDotnetIsolatedRuntime;
+  final pulumi.Input<bool>? useDotnetIsolatedRuntime;
 
   /// Creates a new [LinuxFunctionAppSiteConfigApplicationStack].
   /// [dockers] One or more `docker` blocks as defined below.
@@ -45,7 +45,7 @@ class LinuxFunctionAppSiteConfigApplicationStack {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dockers': ?dockers == null ? null : pulumi.Input.encodeList<LinuxFunctionAppSiteConfigApplicationStackDocker, Map<String, dynamic>>(dockers!, (value) => value.toMap()),
+      'dockers': ?pulumi.Input.mapOptionalInputValue<List<LinuxFunctionAppSiteConfigApplicationStackDocker>, List<Map<String, dynamic>>>(dockers, (value) => pulumi.Input.encodeList<LinuxFunctionAppSiteConfigApplicationStackDocker, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dotnetVersion': ?dotnetVersion,
       'javaVersion': ?javaVersion,
       'nodeVersion': ?nodeVersion,
@@ -58,14 +58,14 @@ class LinuxFunctionAppSiteConfigApplicationStack {
 
   factory LinuxFunctionAppSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
     return LinuxFunctionAppSiteConfigApplicationStack(
-      dockers: map['dockers'] == null ? null : pulumi.Input.decodeList<LinuxFunctionAppSiteConfigApplicationStackDocker>(map['dockers'], (value) => LinuxFunctionAppSiteConfigApplicationStackDocker.fromMap((value as Map).cast<String, dynamic>())),
-      dotnetVersion: map['dotnetVersion'] == null ? null : map['dotnetVersion'] as String,
-      javaVersion: map['javaVersion'] == null ? null : map['javaVersion'] as String,
-      nodeVersion: map['nodeVersion'] == null ? null : map['nodeVersion'] as String,
-      powershellCoreVersion: map['powershellCoreVersion'] == null ? null : map['powershellCoreVersion'] as String,
-      pythonVersion: map['pythonVersion'] == null ? null : map['pythonVersion'] as String,
-      useCustomRuntime: map['useCustomRuntime'] == null ? null : map['useCustomRuntime'] as bool,
-      useDotnetIsolatedRuntime: map['useDotnetIsolatedRuntime'] == null ? null : map['useDotnetIsolatedRuntime'] as bool,
+      dockers: map['dockers'] == null ? null : (pulumi.Input.decodeList<LinuxFunctionAppSiteConfigApplicationStackDocker>(map['dockers'], (value) => LinuxFunctionAppSiteConfigApplicationStackDocker.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dotnetVersion: map['dotnetVersion'] == null ? null : (map['dotnetVersion'] as String).input(),
+      javaVersion: map['javaVersion'] == null ? null : (map['javaVersion'] as String).input(),
+      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion'] as String).input(),
+      powershellCoreVersion: map['powershellCoreVersion'] == null ? null : (map['powershellCoreVersion'] as String).input(),
+      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion'] as String).input(),
+      useCustomRuntime: map['useCustomRuntime'] == null ? null : (map['useCustomRuntime'] as bool).input(),
+      useDotnetIsolatedRuntime: map['useDotnetIsolatedRuntime'] == null ? null : (map['useDotnetIsolatedRuntime'] as bool).input(),
     );
   }
 }

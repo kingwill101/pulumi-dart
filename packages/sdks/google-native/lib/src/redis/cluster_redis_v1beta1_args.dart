@@ -41,27 +41,17 @@ class ClusterRedisV1beta1Args {
   /// [shardCount] Number of shards for the Redis cluster.
   /// [transitEncryptionMode] Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
   ClusterRedisV1beta1Args({
-    pulumi.Output<ClusterAuthorizationModeRedisV1beta1>? authorizationMode,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<List<PscConfigRedisV1beta1>> pscConfigs,
-    pulumi.Output<int>? replicaCount,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<int> shardCount,
-    pulumi.Output<ClusterTransitEncryptionModeRedisV1beta1>? transitEncryptionMode,
-  }) :
-      authorizationMode = pulumi.Input.asOptionalInput<ClusterAuthorizationModeRedisV1beta1>(authorizationMode),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pscConfigs = pulumi.Input.asInput<List<PscConfigRedisV1beta1>>(pscConfigs),
-      replicaCount = pulumi.Input.asOptionalInput<int>(replicaCount),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      shardCount = pulumi.Input.asInput<int>(shardCount),
-      transitEncryptionMode = pulumi.Input.asOptionalInput<ClusterTransitEncryptionModeRedisV1beta1>(transitEncryptionMode);
+    this.authorizationMode,
+    required this.clusterId,
+    this.location,
+    this.name,
+    this.project,
+    required this.pscConfigs,
+    this.replicaCount,
+    this.requestId,
+    required this.shardCount,
+    this.transitEncryptionMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class ClusterRedisV1beta1Args {
 
   factory ClusterRedisV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ClusterRedisV1beta1Args(
-      authorizationMode: map['authorizationMode'] == null ? null : pulumi.Output.create<ClusterAuthorizationModeRedisV1beta1>(ClusterAuthorizationModeRedisV1beta1.fromValue(map['authorizationMode'] as String)),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pscConfigs: pulumi.Output.create<List<PscConfigRedisV1beta1>>(pulumi.Input.decodeList<PscConfigRedisV1beta1>(map['pscConfigs'], (value) => PscConfigRedisV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
-      replicaCount: map['replicaCount'] == null ? null : pulumi.Output.create<int>(map['replicaCount'] as int),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      shardCount: pulumi.Output.create<int>(map['shardCount'] as int),
-      transitEncryptionMode: map['transitEncryptionMode'] == null ? null : pulumi.Output.create<ClusterTransitEncryptionModeRedisV1beta1>(ClusterTransitEncryptionModeRedisV1beta1.fromValue(map['transitEncryptionMode'] as String)),
+      authorizationMode: map['authorizationMode'] == null ? null : (ClusterAuthorizationModeRedisV1beta1.fromValue(map['authorizationMode'] as String)).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pscConfigs: (pulumi.Input.decodeList<PscConfigRedisV1beta1>(map['pscConfigs'], (value) => PscConfigRedisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      shardCount: (map['shardCount'] as int).input(),
+      transitEncryptionMode: map['transitEncryptionMode'] == null ? null : (ClusterTransitEncryptionModeRedisV1beta1.fromValue(map['transitEncryptionMode'] as String)).input(),
     );
   }
 }

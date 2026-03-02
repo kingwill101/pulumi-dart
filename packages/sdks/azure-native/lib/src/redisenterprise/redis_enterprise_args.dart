@@ -43,27 +43,17 @@ class RedisEnterpriseArgs {
   /// [tags] Resource tags.
   /// [zones] The Availability Zones where this cluster will be deployed.
   RedisEnterpriseArgs({
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<ClusterPropertiesEncryption>? encryption,
-    pulumi.Output<String>? highAvailability,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? minimumTlsVersion,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<Sku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      encryption = pulumi.Input.asOptionalInput<ClusterPropertiesEncryption>(encryption),
-      highAvailability = pulumi.Input.asOptionalInput<String>(highAvailability),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      minimumTlsVersion = pulumi.Input.asOptionalInput<String>(minimumTlsVersion),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.clusterName,
+    this.encryption,
+    this.highAvailability,
+    this.identity,
+    this.location,
+    this.minimumTlsVersion,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class RedisEnterpriseArgs {
 
   factory RedisEnterpriseArgs.fromMap(Map<String, dynamic> map) {
     return RedisEnterpriseArgs(
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<ClusterPropertiesEncryption>(ClusterPropertiesEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      highAvailability: map['highAvailability'] == null ? null : pulumi.Output.create<String>(map['highAvailability'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : pulumi.Output.create<String>(map['minimumTlsVersion'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      encryption: map['encryption'] == null ? null : (ClusterPropertiesEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      highAvailability: map['highAvailability'] == null ? null : (map['highAvailability'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

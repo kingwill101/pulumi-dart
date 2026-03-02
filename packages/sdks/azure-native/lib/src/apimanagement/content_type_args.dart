@@ -34,23 +34,15 @@ class ContentTypeArgs {
   /// [serviceName] The name of the API Management service.
   /// [version] Content type version.
   ContentTypeArgs({
-    pulumi.Output<String>? contentTypeId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<dynamic>? schema,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? version,
-  }) :
-      contentTypeId = pulumi.Input.asOptionalInput<String>(contentTypeId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schema = pulumi.Input.asOptionalInput<dynamic>(schema),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.contentTypeId,
+    this.description,
+    this.id,
+    this.name,
+    required this.resourceGroupName,
+    this.schema,
+    required this.serviceName,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ContentTypeArgs {
 
   factory ContentTypeArgs.fromMap(Map<String, dynamic> map) {
     return ContentTypeArgs(
-      contentTypeId: map['contentTypeId'] == null ? null : pulumi.Output.create<String>(map['contentTypeId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<dynamic>(map['schema']),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      contentTypeId: map['contentTypeId'] == null ? null : (map['contentTypeId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

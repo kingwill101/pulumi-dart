@@ -40,25 +40,16 @@ class AvailabilityGroupListenerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sqlVirtualMachineGroupName] Name of the SQL virtual machine group.
   AvailabilityGroupListenerArgs({
-    pulumi.Output<AgConfiguration>? availabilityGroupConfiguration,
-    pulumi.Output<String>? availabilityGroupListenerName,
-    pulumi.Output<String>? availabilityGroupName,
-    pulumi.Output<bool>? createDefaultAvailabilityGroupIfNotExist,
-    pulumi.Output<List<LoadBalancerConfiguration>>? loadBalancerConfigurations,
-    pulumi.Output<List<MultiSubnetIpConfiguration>>? multiSubnetIpConfigurations,
-    pulumi.Output<int>? port,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlVirtualMachineGroupName,
-  }) :
-      availabilityGroupConfiguration = pulumi.Input.asOptionalInput<AgConfiguration>(availabilityGroupConfiguration),
-      availabilityGroupListenerName = pulumi.Input.asOptionalInput<String>(availabilityGroupListenerName),
-      availabilityGroupName = pulumi.Input.asOptionalInput<String>(availabilityGroupName),
-      createDefaultAvailabilityGroupIfNotExist = pulumi.Input.asOptionalInput<bool>(createDefaultAvailabilityGroupIfNotExist),
-      loadBalancerConfigurations = pulumi.Input.asOptionalInput<List<LoadBalancerConfiguration>>(loadBalancerConfigurations),
-      multiSubnetIpConfigurations = pulumi.Input.asOptionalInput<List<MultiSubnetIpConfiguration>>(multiSubnetIpConfigurations),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlVirtualMachineGroupName = pulumi.Input.asInput<String>(sqlVirtualMachineGroupName);
+    this.availabilityGroupConfiguration,
+    this.availabilityGroupListenerName,
+    this.availabilityGroupName,
+    this.createDefaultAvailabilityGroupIfNotExist,
+    this.loadBalancerConfigurations,
+    this.multiSubnetIpConfigurations,
+    this.port,
+    required this.resourceGroupName,
+    required this.sqlVirtualMachineGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class AvailabilityGroupListenerArgs {
 
   factory AvailabilityGroupListenerArgs.fromMap(Map<String, dynamic> map) {
     return AvailabilityGroupListenerArgs(
-      availabilityGroupConfiguration: map['availabilityGroupConfiguration'] == null ? null : pulumi.Output.create<AgConfiguration>(AgConfiguration.fromMap((map['availabilityGroupConfiguration'] as Map).cast<String, dynamic>())),
-      availabilityGroupListenerName: map['availabilityGroupListenerName'] == null ? null : pulumi.Output.create<String>(map['availabilityGroupListenerName'] as String),
-      availabilityGroupName: map['availabilityGroupName'] == null ? null : pulumi.Output.create<String>(map['availabilityGroupName'] as String),
-      createDefaultAvailabilityGroupIfNotExist: map['createDefaultAvailabilityGroupIfNotExist'] == null ? null : pulumi.Output.create<bool>(map['createDefaultAvailabilityGroupIfNotExist'] as bool),
-      loadBalancerConfigurations: map['loadBalancerConfigurations'] == null ? null : pulumi.Output.create<List<LoadBalancerConfiguration>>(pulumi.Input.decodeList<LoadBalancerConfiguration>(map['loadBalancerConfigurations'], (value) => LoadBalancerConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      multiSubnetIpConfigurations: map['multiSubnetIpConfigurations'] == null ? null : pulumi.Output.create<List<MultiSubnetIpConfiguration>>(pulumi.Input.decodeList<MultiSubnetIpConfiguration>(map['multiSubnetIpConfigurations'], (value) => MultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlVirtualMachineGroupName: pulumi.Output.create<String>(map['sqlVirtualMachineGroupName'] as String),
+      availabilityGroupConfiguration: map['availabilityGroupConfiguration'] == null ? null : (AgConfiguration.fromMap((map['availabilityGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      availabilityGroupListenerName: map['availabilityGroupListenerName'] == null ? null : (map['availabilityGroupListenerName'] as String).input(),
+      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName'] as String).input(),
+      createDefaultAvailabilityGroupIfNotExist: map['createDefaultAvailabilityGroupIfNotExist'] == null ? null : (map['createDefaultAvailabilityGroupIfNotExist'] as bool).input(),
+      loadBalancerConfigurations: map['loadBalancerConfigurations'] == null ? null : (pulumi.Input.decodeList<LoadBalancerConfiguration>(map['loadBalancerConfigurations'], (value) => LoadBalancerConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      multiSubnetIpConfigurations: map['multiSubnetIpConfigurations'] == null ? null : (pulumi.Input.decodeList<MultiSubnetIpConfiguration>(map['multiSubnetIpConfigurations'], (value) => MultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlVirtualMachineGroupName: (map['sqlVirtualMachineGroupName'] as String).input(),
     );
   }
 }

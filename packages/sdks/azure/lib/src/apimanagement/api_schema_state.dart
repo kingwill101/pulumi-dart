@@ -31,23 +31,15 @@ class ApiSchemaState {
   /// [schemaId] A unique identifier for this API Schema. Changing this forces a new resource to be created.
   /// [value] The JSON escaped string defining the document representing the Schema.
   ApiSchemaState({
-    pulumi.Output<String>? apiManagementName,
-    pulumi.Output<String>? apiName,
-    pulumi.Output<String>? components,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? definitions,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? schemaId,
-    pulumi.Output<String>? value,
-  }) :
-      apiManagementName = pulumi.Input.asOptionalInput<String>(apiManagementName),
-      apiName = pulumi.Input.asOptionalInput<String>(apiName),
-      components = pulumi.Input.asOptionalInput<String>(components),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      definitions = pulumi.Input.asOptionalInput<String>(definitions),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      schemaId = pulumi.Input.asOptionalInput<String>(schemaId),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.apiManagementName,
+    this.apiName,
+    this.components,
+    this.contentType,
+    this.definitions,
+    this.resourceGroupName,
+    this.schemaId,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class ApiSchemaState {
 
   factory ApiSchemaState.fromMap(Map<String, dynamic> map) {
     return ApiSchemaState(
-      apiManagementName: map['apiManagementName'] == null ? null : pulumi.Output.create<String>(map['apiManagementName'] as String),
-      apiName: map['apiName'] == null ? null : pulumi.Output.create<String>(map['apiName'] as String),
-      components: map['components'] == null ? null : pulumi.Output.create<String>(map['components'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      definitions: map['definitions'] == null ? null : pulumi.Output.create<String>(map['definitions'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaId: map['schemaId'] == null ? null : pulumi.Output.create<String>(map['schemaId'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
+      apiName: map['apiName'] == null ? null : (map['apiName'] as String).input(),
+      components: map['components'] == null ? null : (map['components'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      definitions: map['definitions'] == null ? null : (map['definitions'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

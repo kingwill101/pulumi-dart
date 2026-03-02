@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SparkJobScalaEntryResponse {
   /// [Required] Scala class name used as entry point.
-  final String className;
+  final pulumi.Input<String> className;
   /// Expected value is 'SparkJobScalaEntry'.
-  final String sparkJobEntryType;
+  final pulumi.Input<String> sparkJobEntryType;
 
   /// Creates a new [SparkJobScalaEntryResponse].
   /// [className] [Required] Scala class name used as entry point.
@@ -24,8 +25,8 @@ class SparkJobScalaEntryResponse {
 
   factory SparkJobScalaEntryResponse.fromMap(Map<String, dynamic> map) {
     return SparkJobScalaEntryResponse(
-      className: map['className'] as String,
-      sparkJobEntryType: map['sparkJobEntryType'] as String,
+      className: (map['className'] as String).input(),
+      sparkJobEntryType: (map['sparkJobEntryType'] as String).input(),
     );
   }
 }

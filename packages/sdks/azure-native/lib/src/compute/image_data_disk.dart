@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'caching_types.dart';
 import 'disk_encryption_set_parameters.dart';
 import 'sub_resource.dart';
@@ -7,21 +8,21 @@ import 'sub_resource.dart';
 /// Describes a data disk.
 class ImageDataDisk {
   /// The Virtual Hard Disk.
-  final String? blobUri;
+  final pulumi.Input<String>? blobUri;
   /// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
-  final CachingTypes? caching;
+  final pulumi.Input<CachingTypes>? caching;
   /// Specifies the customer managed disk encryption set resource id for the managed image disk.
-  final DiskEncryptionSetParameters? diskEncryptionSet;
+  final pulumi.Input<DiskEncryptionSetParameters>? diskEncryptionSet;
   /// Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. This value cannot be larger than 1023 GB.
-  final int? diskSizeGB;
+  final pulumi.Input<int>? diskSizeGB;
   /// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
-  final int lun;
+  final pulumi.Input<int> lun;
   /// The managedDisk.
-  final SubResource? managedDisk;
+  final pulumi.Input<SubResource>? managedDisk;
   /// The snapshot.
-  final SubResource? snapshot;
+  final pulumi.Input<SubResource>? snapshot;
   /// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-  final String? storageAccountType;
+  final pulumi.Input<String>? storageAccountType;
 
   /// Creates a new [ImageDataDisk].
   /// [blobUri] The Virtual Hard Disk.
@@ -46,26 +47,26 @@ class ImageDataDisk {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'blobUri': ?blobUri,
-      'caching': ?caching == null ? null : caching!.value,
-      'diskEncryptionSet': ?diskEncryptionSet == null ? null : diskEncryptionSet!.toMap(),
+      'caching': ?pulumi.Input.mapOptionalInputValue<CachingTypes, String>(caching, (value) => value.value),
+      'diskEncryptionSet': ?pulumi.Input.mapOptionalInputValue<DiskEncryptionSetParameters, Map<String, dynamic>>(diskEncryptionSet, (value) => value.toMap()),
       'diskSizeGB': ?diskSizeGB,
       'lun': lun,
-      'managedDisk': ?managedDisk == null ? null : managedDisk!.toMap(),
-      'snapshot': ?snapshot == null ? null : snapshot!.toMap(),
+      'managedDisk': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(managedDisk, (value) => value.toMap()),
+      'snapshot': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(snapshot, (value) => value.toMap()),
       'storageAccountType': ?storageAccountType,
     };
   }
 
   factory ImageDataDisk.fromMap(Map<String, dynamic> map) {
     return ImageDataDisk(
-      blobUri: map['blobUri'] == null ? null : map['blobUri'] as String,
-      caching: map['caching'] == null ? null : CachingTypes.fromValue(map['caching'] as String),
-      diskEncryptionSet: map['diskEncryptionSet'] == null ? null : DiskEncryptionSetParameters.fromMap((map['diskEncryptionSet'] as Map).cast<String, dynamic>()),
-      diskSizeGB: map['diskSizeGB'] == null ? null : map['diskSizeGB'] as int,
-      lun: map['lun'] as int,
-      managedDisk: map['managedDisk'] == null ? null : SubResource.fromMap((map['managedDisk'] as Map).cast<String, dynamic>()),
-      snapshot: map['snapshot'] == null ? null : SubResource.fromMap((map['snapshot'] as Map).cast<String, dynamic>()),
-      storageAccountType: map['storageAccountType'] == null ? null : map['storageAccountType'] as String,
+      blobUri: map['blobUri'] == null ? null : (map['blobUri'] as String).input(),
+      caching: map['caching'] == null ? null : (CachingTypes.fromValue(map['caching'] as String)).input(),
+      diskEncryptionSet: map['diskEncryptionSet'] == null ? null : (DiskEncryptionSetParameters.fromMap((map['diskEncryptionSet'] as Map).cast<String, dynamic>())).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
+      lun: (map['lun'] as int).input(),
+      managedDisk: map['managedDisk'] == null ? null : (SubResource.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
+      snapshot: map['snapshot'] == null ? null : (SubResource.fromMap((map['snapshot'] as Map).cast<String, dynamic>())).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
     );
   }
 }

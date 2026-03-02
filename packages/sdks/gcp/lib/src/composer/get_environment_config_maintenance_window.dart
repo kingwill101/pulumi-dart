@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnvironmentConfigMaintenanceWindow {
   /// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
-  final String recurrence;
+  final pulumi.Input<String> recurrence;
   /// Start time of the first recurrence of the maintenance window.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [GetEnvironmentConfigMaintenanceWindow].
   /// [endTime] Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
@@ -29,9 +30,9 @@ class GetEnvironmentConfigMaintenanceWindow {
 
   factory GetEnvironmentConfigMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigMaintenanceWindow(
-      endTime: map['endTime'] as String,
-      recurrence: map['recurrence'] as String,
-      startTime: map['startTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      recurrence: (map['recurrence'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

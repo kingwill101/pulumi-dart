@@ -57,25 +57,16 @@ class RegionCompositeHealthCheckState {
   /// [region] URL of the region where the composite health check resides.
   /// [selfLinkWithId] Server-defined URL with id for the resource.
   RegionCompositeHealthCheckState({
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<String>? healthDestination,
-    pulumi.Output<List<String>>? healthSources,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? selfLinkWithId,
-  }) :
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      healthDestination = pulumi.Input.asOptionalInput<String>(healthDestination),
-      healthSources = pulumi.Input.asOptionalInput<List<String>>(healthSources),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLinkWithId = pulumi.Input.asOptionalInput<String>(selfLinkWithId);
+    this.creationTimestamp,
+    this.description,
+    this.fingerprint,
+    this.healthDestination,
+    this.healthSources,
+    this.name,
+    this.project,
+    this.region,
+    this.selfLinkWithId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,15 +84,15 @@ class RegionCompositeHealthCheckState {
 
   factory RegionCompositeHealthCheckState.fromMap(Map<String, dynamic> map) {
     return RegionCompositeHealthCheckState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      healthDestination: map['healthDestination'] == null ? null : pulumi.Output.create<String>(map['healthDestination'] as String),
-      healthSources: map['healthSources'] == null ? null : pulumi.Output.create<List<String>>((map['healthSources'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selfLinkWithId: map['selfLinkWithId'] == null ? null : pulumi.Output.create<String>(map['selfLinkWithId'] as String),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      healthDestination: map['healthDestination'] == null ? null : (map['healthDestination'] as String).input(),
+      healthSources: map['healthSources'] == null ? null : ((map['healthSources'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId'] as String).input(),
     );
   }
 }

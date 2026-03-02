@@ -6,7 +6,7 @@ import 'verification_result_response.dart';
 /// The image validation result.
 class ImageValidationResultsResponse {
   /// The validation results of the image.
-  final List<VerificationResultResponse>? results;
+  final pulumi.Input<List<VerificationResultResponse>>? results;
 
   /// Creates a new [ImageValidationResultsResponse].
   /// [results] The validation results of the image.
@@ -16,13 +16,13 @@ class ImageValidationResultsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'results': ?results == null ? null : pulumi.Input.encodeList<VerificationResultResponse, Map<String, dynamic>>(results!, (value) => value.toMap()),
+      'results': ?pulumi.Input.mapOptionalInputValue<List<VerificationResultResponse>, List<Map<String, dynamic>>>(results, (value) => pulumi.Input.encodeList<VerificationResultResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ImageValidationResultsResponse.fromMap(Map<String, dynamic> map) {
     return ImageValidationResultsResponse(
-      results: map['results'] == null ? null : pulumi.Input.decodeList<VerificationResultResponse>(map['results'], (value) => VerificationResultResponse.fromMap((value as Map).cast<String, dynamic>())),
+      results: map['results'] == null ? null : (pulumi.Input.decodeList<VerificationResultResponse>(map['results'], (value) => VerificationResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

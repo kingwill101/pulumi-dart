@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertsAlertConfigurationTemplateConfiguration {
   /// Template Annotations.
-  final Map<String, String> annotations;
+  final pulumi.Input<Map<String, String>> annotations;
   /// Template Language.
-  final String lang;
+  final pulumi.Input<String> lang;
   /// Template ID.
-  final String templateId;
+  final pulumi.Input<String> templateId;
   /// Template Variables.
-  final Map<String, String> tokens;
+  final pulumi.Input<Map<String, String>> tokens;
   /// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
-  final String type;
+  final pulumi.Input<String> type;
   /// Fixed as 2.0.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetAlertsAlertConfigurationTemplateConfiguration].
   /// [annotations] Template Annotations.
@@ -44,12 +45,12 @@ class GetAlertsAlertConfigurationTemplateConfiguration {
 
   factory GetAlertsAlertConfigurationTemplateConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAlertsAlertConfigurationTemplateConfiguration(
-      annotations: (map['annotations'] as Map).cast<String, String>(),
-      lang: map['lang'] as String,
-      templateId: map['templateId'] as String,
-      tokens: (map['tokens'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      version: map['version'] as String,
+      annotations: ((map['annotations'] as Map).cast<String, String>()).input(),
+      lang: (map['lang'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
+      tokens: ((map['tokens'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

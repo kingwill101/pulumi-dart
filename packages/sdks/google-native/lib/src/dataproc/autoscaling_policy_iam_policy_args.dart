@@ -26,19 +26,13 @@ class AutoscalingPolicyIamPolicyArgs {
   /// [project] Optional.
   /// [version] Specifies the format of the policy.Valid values are 0, 1, and 3. Requests that specify an invalid value are rejected.Any operation that affects conditional role bindings must specify version 3. This requirement applies to the following operations: Getting a policy that includes a conditional role binding Adding a conditional role binding to a policy Changing a conditional role binding in a policy Removing any role binding, with or without a condition, from a policy that includes conditionsImportant: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost.If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
   AutoscalingPolicyIamPolicyArgs({
-    required pulumi.Output<String> autoscalingPolicyId,
-    pulumi.Output<List<Binding>>? bindings,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<int>? version,
-  }) :
-      autoscalingPolicyId = pulumi.Input.asInput<String>(autoscalingPolicyId),
-      bindings = pulumi.Input.asOptionalInput<List<Binding>>(bindings),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    required this.autoscalingPolicyId,
+    this.bindings,
+    this.etag,
+    this.location,
+    this.project,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class AutoscalingPolicyIamPolicyArgs {
 
   factory AutoscalingPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyIamPolicyArgs(
-      autoscalingPolicyId: pulumi.Output.create<String>(map['autoscalingPolicyId'] as String),
-      bindings: map['bindings'] == null ? null : pulumi.Output.create<List<Binding>>(pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      autoscalingPolicyId: (map['autoscalingPolicyId'] as String).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

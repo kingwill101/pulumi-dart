@@ -27,19 +27,13 @@ class LicenseComputeV1Args {
   /// [resourceRequirements] Optional.
   /// [transferable] If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
   LicenseComputeV1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<LicenseResourceRequirementsComputeV1>? resourceRequirements,
-    pulumi.Output<bool>? transferable,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      resourceRequirements = pulumi.Input.asOptionalInput<LicenseResourceRequirementsComputeV1>(resourceRequirements),
-      transferable = pulumi.Input.asOptionalInput<bool>(transferable);
+    this.description,
+    this.name,
+    this.project,
+    this.requestId,
+    this.resourceRequirements,
+    this.transferable,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class LicenseComputeV1Args {
 
   factory LicenseComputeV1Args.fromMap(Map<String, dynamic> map) {
     return LicenseComputeV1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      resourceRequirements: map['resourceRequirements'] == null ? null : pulumi.Output.create<LicenseResourceRequirementsComputeV1>(LicenseResourceRequirementsComputeV1.fromMap((map['resourceRequirements'] as Map).cast<String, dynamic>())),
-      transferable: map['transferable'] == null ? null : pulumi.Output.create<bool>(map['transferable'] as bool),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      resourceRequirements: map['resourceRequirements'] == null ? null : (LicenseResourceRequirementsComputeV1.fromMap((map['resourceRequirements'] as Map).cast<String, dynamic>())).input(),
+      transferable: map['transferable'] == null ? null : (map['transferable'] as bool).input(),
     );
   }
 }

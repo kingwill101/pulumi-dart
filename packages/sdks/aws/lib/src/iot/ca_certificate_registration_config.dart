@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CaCertificateRegistrationConfig {
   /// The ARN of the role.
-  final String? roleArn;
+  final pulumi.Input<String>? roleArn;
   /// The template body.
-  final String? templateBody;
+  final pulumi.Input<String>? templateBody;
   /// The name of the provisioning template.
-  final String? templateName;
+  final pulumi.Input<String>? templateName;
 
   /// Creates a new [CaCertificateRegistrationConfig].
   /// [roleArn] The ARN of the role.
@@ -29,9 +30,9 @@ class CaCertificateRegistrationConfig {
 
   factory CaCertificateRegistrationConfig.fromMap(Map<String, dynamic> map) {
     return CaCertificateRegistrationConfig(
-      roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
-      templateBody: map['templateBody'] == null ? null : map['templateBody'] as String,
-      templateName: map['templateName'] == null ? null : map['templateName'] as String,
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      templateBody: map['templateBody'] == null ? null : (map['templateBody'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
     );
   }
 }

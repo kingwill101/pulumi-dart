@@ -6,9 +6,9 @@ import 'threat_intelligence_parsed_pattern_type_value.dart';
 /// Describes parsed pattern entity
 class ThreatIntelligenceParsedPattern {
   /// Pattern type key
-  final String? patternTypeKey;
+  final pulumi.Input<String>? patternTypeKey;
   /// Pattern type keys
-  final List<ThreatIntelligenceParsedPatternTypeValue>? patternTypeValues;
+  final pulumi.Input<List<ThreatIntelligenceParsedPatternTypeValue>>? patternTypeValues;
 
   /// Creates a new [ThreatIntelligenceParsedPattern].
   /// [patternTypeKey] Pattern type key
@@ -21,14 +21,14 @@ class ThreatIntelligenceParsedPattern {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'patternTypeKey': ?patternTypeKey,
-      'patternTypeValues': ?patternTypeValues == null ? null : pulumi.Input.encodeList<ThreatIntelligenceParsedPatternTypeValue, Map<String, dynamic>>(patternTypeValues!, (value) => value.toMap()),
+      'patternTypeValues': ?pulumi.Input.mapOptionalInputValue<List<ThreatIntelligenceParsedPatternTypeValue>, List<Map<String, dynamic>>>(patternTypeValues, (value) => pulumi.Input.encodeList<ThreatIntelligenceParsedPatternTypeValue, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ThreatIntelligenceParsedPattern.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceParsedPattern(
-      patternTypeKey: map['patternTypeKey'] == null ? null : map['patternTypeKey'] as String,
-      patternTypeValues: map['patternTypeValues'] == null ? null : pulumi.Input.decodeList<ThreatIntelligenceParsedPatternTypeValue>(map['patternTypeValues'], (value) => ThreatIntelligenceParsedPatternTypeValue.fromMap((value as Map).cast<String, dynamic>())),
+      patternTypeKey: map['patternTypeKey'] == null ? null : (map['patternTypeKey'] as String).input(),
+      patternTypeValues: map['patternTypeValues'] == null ? null : (pulumi.Input.decodeList<ThreatIntelligenceParsedPatternTypeValue>(map['patternTypeValues'], (value) => ThreatIntelligenceParsedPatternTypeValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

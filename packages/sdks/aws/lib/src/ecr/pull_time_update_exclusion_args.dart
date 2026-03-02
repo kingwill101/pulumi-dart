@@ -18,11 +18,9 @@ class PullTimeUpdateExclusionArgs {
   /// [principalArn] ARN of the IAM principal to exclude from having image pull times recorded.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PullTimeUpdateExclusionArgs({
-    required pulumi.Output<String> principalArn,
-    pulumi.Output<String>? region,
-  }) :
-      principalArn = pulumi.Input.asInput<String>(principalArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.principalArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class PullTimeUpdateExclusionArgs {
 
   factory PullTimeUpdateExclusionArgs.fromMap(Map<String, dynamic> map) {
     return PullTimeUpdateExclusionArgs(
-      principalArn: pulumi.Output.create<String>(map['principalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      principalArn: (map['principalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

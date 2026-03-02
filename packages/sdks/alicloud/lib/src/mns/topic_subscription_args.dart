@@ -31,19 +31,13 @@ class TopicSubscriptionArgs {
   /// [notifyStrategy] The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
   /// [topicName] The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
   TopicSubscriptionArgs({
-    required pulumi.Output<String> endpoint,
-    pulumi.Output<String>? filterTag,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notifyContentFormat,
-    pulumi.Output<String>? notifyStrategy,
-    required pulumi.Output<String> topicName,
-  }) :
-      endpoint = pulumi.Input.asInput<String>(endpoint),
-      filterTag = pulumi.Input.asOptionalInput<String>(filterTag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notifyContentFormat = pulumi.Input.asOptionalInput<String>(notifyContentFormat),
-      notifyStrategy = pulumi.Input.asOptionalInput<String>(notifyStrategy),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    required this.endpoint,
+    this.filterTag,
+    this.name,
+    this.notifyContentFormat,
+    this.notifyStrategy,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class TopicSubscriptionArgs {
 
   factory TopicSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return TopicSubscriptionArgs(
-      endpoint: pulumi.Output.create<String>(map['endpoint'] as String),
-      filterTag: map['filterTag'] == null ? null : pulumi.Output.create<String>(map['filterTag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notifyContentFormat: map['notifyContentFormat'] == null ? null : pulumi.Output.create<String>(map['notifyContentFormat'] as String),
-      notifyStrategy: map['notifyStrategy'] == null ? null : pulumi.Output.create<String>(map['notifyStrategy'] as String),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      endpoint: (map['endpoint'] as String).input(),
+      filterTag: map['filterTag'] == null ? null : (map['filterTag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notifyContentFormat: map['notifyContentFormat'] == null ? null : (map['notifyContentFormat'] as String).input(),
+      notifyStrategy: map['notifyStrategy'] == null ? null : (map['notifyStrategy'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

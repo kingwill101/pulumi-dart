@@ -18,11 +18,9 @@ class IpamIpamPoolCidrArgs {
   /// [cidr] The CIDR address segment to be preset.
   /// [ipamPoolId] The ID of the IPAM pool instance.
   IpamIpamPoolCidrArgs({
-    required pulumi.Output<String> cidr,
-    required pulumi.Output<String> ipamPoolId,
-  }) :
-      cidr = pulumi.Input.asInput<String>(cidr),
-      ipamPoolId = pulumi.Input.asInput<String>(ipamPoolId);
+    required this.cidr,
+    required this.ipamPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class IpamIpamPoolCidrArgs {
 
   factory IpamIpamPoolCidrArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolCidrArgs(
-      cidr: pulumi.Output.create<String>(map['cidr'] as String),
-      ipamPoolId: pulumi.Output.create<String>(map['ipamPoolId'] as String),
+      cidr: (map['cidr'] as String).input(),
+      ipamPoolId: (map['ipamPoolId'] as String).input(),
     );
   }
 }

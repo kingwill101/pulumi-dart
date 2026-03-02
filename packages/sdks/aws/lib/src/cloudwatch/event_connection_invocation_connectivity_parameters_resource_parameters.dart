@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventConnectionInvocationConnectivityParametersResourceParameters {
-  final String? resourceAssociationArn;
+  final pulumi.Input<String>? resourceAssociationArn;
   /// ARN of the Amazon VPC Lattice resource configuration for the resource endpoint.
-  final String resourceConfigurationArn;
+  final pulumi.Input<String> resourceConfigurationArn;
 
   /// Creates a new [EventConnectionInvocationConnectivityParametersResourceParameters].
   /// [resourceAssociationArn] Optional.
@@ -23,8 +24,8 @@ class EventConnectionInvocationConnectivityParametersResourceParameters {
 
   factory EventConnectionInvocationConnectivityParametersResourceParameters.fromMap(Map<String, dynamic> map) {
     return EventConnectionInvocationConnectivityParametersResourceParameters(
-      resourceAssociationArn: map['resourceAssociationArn'] == null ? null : map['resourceAssociationArn'] as String,
-      resourceConfigurationArn: map['resourceConfigurationArn'] as String,
+      resourceAssociationArn: map['resourceAssociationArn'] == null ? null : (map['resourceAssociationArn'] as String).input(),
+      resourceConfigurationArn: (map['resourceConfigurationArn'] as String).input(),
     );
   }
 }

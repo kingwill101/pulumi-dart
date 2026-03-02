@@ -13,9 +13,8 @@ class GetFolderSettingsArgs {
   /// Creates a new [GetFolderSettingsArgs].
   /// [folder] The ID of the folder for which to retrieve settings.
   GetFolderSettingsArgs({
-    required pulumi.Output<String> folder,
-  }) :
-      folder = pulumi.Input.asInput<String>(folder);
+    required this.folder,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetFolderSettingsArgs {
 
   factory GetFolderSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderSettingsArgs(
-      folder: pulumi.Output.create<String>(map['folder'] as String),
+      folder: (map['folder'] as String).input(),
     );
   }
 }

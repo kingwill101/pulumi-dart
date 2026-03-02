@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Data Factory secure string definition. The string value will be masked with asterisks '*' during Get or List API calls.
 class SecureString {
   /// Type of the secret.
   /// Expected value is 'SecureString'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Value of secure string.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [SecureString].
   /// [type] Type of the secret.
@@ -26,8 +27,8 @@ class SecureString {
 
   factory SecureString.fromMap(Map<String, dynamic> map) {
     return SecureString(
-      type: map['type'] as String,
-      value: map['value'] as String,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

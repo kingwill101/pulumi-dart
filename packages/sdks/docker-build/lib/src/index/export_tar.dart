@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExportTar {
   /// Output path.
-  final String dest;
+  final pulumi.Input<String> dest;
 
   /// Creates a new [ExportTar].
   /// [dest] Output path.
@@ -19,7 +20,7 @@ class ExportTar {
 
   factory ExportTar.fromMap(Map<String, dynamic> map) {
     return ExportTar(
-      dest: map['dest'] as String,
+      dest: (map['dest'] as String).input(),
     );
   }
 }

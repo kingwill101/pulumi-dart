@@ -31,21 +31,14 @@ class GetDeviceGroupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [superGroupId] The id of the SuperGroup.
   GetDeviceGroupsArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? iotInstanceId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? superGroupId,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      iotInstanceId = pulumi.Input.asOptionalInput<String>(iotInstanceId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      superGroupId = pulumi.Input.asOptionalInput<String>(superGroupId);
+    this.enableDetails,
+    this.groupName,
+    this.ids,
+    this.iotInstanceId,
+    this.nameRegex,
+    this.outputFile,
+    this.superGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetDeviceGroupsArgs {
 
   factory GetDeviceGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceGroupsArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      iotInstanceId: map['iotInstanceId'] == null ? null : pulumi.Output.create<String>(map['iotInstanceId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      superGroupId: map['superGroupId'] == null ? null : pulumi.Output.create<String>(map['superGroupId'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      iotInstanceId: map['iotInstanceId'] == null ? null : (map['iotInstanceId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      superGroupId: map['superGroupId'] == null ? null : (map['superGroupId'] as String).input(),
     );
   }
 }

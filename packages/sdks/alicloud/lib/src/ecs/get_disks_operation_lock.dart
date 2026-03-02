@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDisksOperationLock {
-  final String? lockReason;
+  final pulumi.Input<String>? lockReason;
 
   /// Creates a new [GetDisksOperationLock].
   /// [lockReason] Optional.
@@ -18,7 +19,7 @@ class GetDisksOperationLock {
 
   factory GetDisksOperationLock.fromMap(Map<String, dynamic> map) {
     return GetDisksOperationLock(
-      lockReason: map['lockReason'] == null ? null : map['lockReason'] as String,
+      lockReason: map['lockReason'] == null ? null : (map['lockReason'] as String).input(),
     );
   }
 }

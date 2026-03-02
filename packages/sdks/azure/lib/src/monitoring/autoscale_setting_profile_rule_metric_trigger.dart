@@ -5,29 +5,29 @@ import 'autoscale_setting_profile_rule_metric_trigger_dimension.dart';
 
 class AutoscaleSettingProfileRuleMetricTrigger {
   /// One or more `dimensions` block as defined below.
-  final List<AutoscaleSettingProfileRuleMetricTriggerDimension>? dimensions;
+  final pulumi.Input<List<AutoscaleSettingProfileRuleMetricTriggerDimension>>? dimensions;
   /// Whether to enable metric divide by instance count.
-  final bool? divideByInstanceCount;
+  final pulumi.Input<bool>? divideByInstanceCount;
   /// The name of the metric that defines what the rule monitors, such as `Percentage CPU` for `Virtual Machine Scale Sets` and `CpuPercentage` for `App Service Plan`.
   ///
   /// > **Note:** The allowed value of `metric_name` highly depends on the targeting resource type, please visit [Supported metrics with Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) for more details.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The namespace of the metric that defines what the rule monitors, such as `microsoft.compute/virtualmachinescalesets` for `Virtual Machine Scale Sets`.
-  final String? metricNamespace;
+  final pulumi.Input<String>? metricNamespace;
   /// The ID of the Resource which the Rule monitors.
-  final String metricResourceId;
+  final pulumi.Input<String> metricResourceId;
   /// Specifies the operator used to compare the metric data and threshold. Possible values are: `Equals`, `NotEquals`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan`, `LessThanOrEqual`.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Specifies how the metrics from multiple instances are combined. Possible values are `Average`, `Max`, `Min` and `Sum`.
-  final String statistic;
+  final pulumi.Input<String> statistic;
   /// Specifies the threshold of the metric that triggers the scale action.
-  final double threshold;
+  final pulumi.Input<double> threshold;
   /// Specifies how the data that's collected should be combined over time. Possible values include `Average`, `Count`, `Maximum`, `Minimum`, `Last` and `Total`.
-  final String timeAggregation;
+  final pulumi.Input<String> timeAggregation;
   /// Specifies the granularity of metrics that the rule monitors, which must be one of the pre-defined values returned from the metric definitions for the metric. This value must be between 1 minute and 12 hours an be formatted as an ISO 8601 string.
-  final String timeGrain;
+  final pulumi.Input<String> timeGrain;
   /// Specifies the time range for which data is collected, which must be greater than the delay in metric collection (which varies from resource to resource). This value must be between 5 minutes and 12 hours and be formatted as an ISO 8601 string.
-  final String timeWindow;
+  final pulumi.Input<String> timeWindow;
 
   /// Creates a new [AutoscaleSettingProfileRuleMetricTrigger].
   /// [dimensions] One or more `dimensions` block as defined below.
@@ -57,7 +57,7 @@ class AutoscaleSettingProfileRuleMetricTrigger {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<AutoscaleSettingProfileRuleMetricTriggerDimension, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<AutoscaleSettingProfileRuleMetricTriggerDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<AutoscaleSettingProfileRuleMetricTriggerDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'divideByInstanceCount': ?divideByInstanceCount,
       'metricName': metricName,
       'metricNamespace': ?metricNamespace,
@@ -73,17 +73,17 @@ class AutoscaleSettingProfileRuleMetricTrigger {
 
   factory AutoscaleSettingProfileRuleMetricTrigger.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingProfileRuleMetricTrigger(
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<AutoscaleSettingProfileRuleMetricTriggerDimension>(map['dimensions'], (value) => AutoscaleSettingProfileRuleMetricTriggerDimension.fromMap((value as Map).cast<String, dynamic>())),
-      divideByInstanceCount: map['divideByInstanceCount'] == null ? null : map['divideByInstanceCount'] as bool,
-      metricName: map['metricName'] as String,
-      metricNamespace: map['metricNamespace'] == null ? null : map['metricNamespace'] as String,
-      metricResourceId: map['metricResourceId'] as String,
-      operator: map['operator'] as String,
-      statistic: map['statistic'] as String,
-      threshold: map['threshold'] as double,
-      timeAggregation: map['timeAggregation'] as String,
-      timeGrain: map['timeGrain'] as String,
-      timeWindow: map['timeWindow'] as String,
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<AutoscaleSettingProfileRuleMetricTriggerDimension>(map['dimensions'], (value) => AutoscaleSettingProfileRuleMetricTriggerDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      divideByInstanceCount: map['divideByInstanceCount'] == null ? null : (map['divideByInstanceCount'] as bool).input(),
+      metricName: (map['metricName'] as String).input(),
+      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace'] as String).input(),
+      metricResourceId: (map['metricResourceId'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      statistic: (map['statistic'] as String).input(),
+      threshold: (map['threshold'] as double).input(),
+      timeAggregation: (map['timeAggregation'] as String).input(),
+      timeGrain: (map['timeGrain'] as String).input(),
+      timeWindow: (map['timeWindow'] as String).input(),
     );
   }
 }

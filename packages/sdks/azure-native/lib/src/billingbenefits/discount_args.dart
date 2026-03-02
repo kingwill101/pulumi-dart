@@ -44,27 +44,17 @@ class DiscountArgs {
   /// [sku] The resource model definition representing SKU
   /// [tags] Resource tags.
   DiscountArgs({
-    pulumi.Output<String>? discountName,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedBy,
-    pulumi.Output<Plan>? plan,
-    pulumi.Output<EntityTypeAffiliateDiscount>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      discountName = pulumi.Input.asOptionalInput<String>(discountName),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedBy = pulumi.Input.asOptionalInput<String>(managedBy),
-      plan = pulumi.Input.asOptionalInput<Plan>(plan),
-      properties = pulumi.Input.asOptionalInput<EntityTypeAffiliateDiscount>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.discountName,
+    this.identity,
+    this.kind,
+    this.location,
+    this.managedBy,
+    this.plan,
+    this.properties,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class DiscountArgs {
 
   factory DiscountArgs.fromMap(Map<String, dynamic> map) {
     return DiscountArgs(
-      discountName: map['discountName'] == null ? null : pulumi.Output.create<String>(map['discountName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedBy: map['managedBy'] == null ? null : pulumi.Output.create<String>(map['managedBy'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<Plan>(Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      properties: map['properties'] == null ? null : pulumi.Output.create<EntityTypeAffiliateDiscount>(EntityTypeAffiliateDiscount.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      discountName: map['discountName'] == null ? null : (map['discountName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (EntityTypeAffiliateDiscount.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

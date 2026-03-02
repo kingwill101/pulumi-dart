@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_service_backup_schedule.dart';
 
 class AppServiceBackup {
   /// Is this Backup enabled? Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Specifies the name for this Backup.
-  final String name;
+  final pulumi.Input<String> name;
   /// A `schedule` block as defined below.
-  final AppServiceBackupSchedule schedule;
+  final pulumi.Input<AppServiceBackupSchedule> schedule;
   /// The SAS URL to a Storage Container where Backups should be saved.
-  final String storageAccountUrl;
+  final pulumi.Input<String> storageAccountUrl;
 
   /// Creates a new [AppServiceBackup].
   /// [enabled] Is this Backup enabled? Defaults to `true`.
@@ -28,17 +29,17 @@ class AppServiceBackup {
     return <String, dynamic>{
       'enabled': ?enabled,
       'name': name,
-      'schedule': schedule.toMap(),
+      'schedule': pulumi.Input.mapInputValue<AppServiceBackupSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
       'storageAccountUrl': storageAccountUrl,
     };
   }
 
   factory AppServiceBackup.fromMap(Map<String, dynamic> map) {
     return AppServiceBackup(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      name: map['name'] as String,
-      schedule: AppServiceBackupSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
-      storageAccountUrl: map['storageAccountUrl'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      schedule: (AppServiceBackupSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      storageAccountUrl: (map['storageAccountUrl'] as String).input(),
     );
   }
 }

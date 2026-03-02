@@ -13,9 +13,8 @@ class HistoryDeliveryJobArgs {
   /// Creates a new [HistoryDeliveryJobArgs].
   /// [trailName] The Track Name.
   HistoryDeliveryJobArgs({
-    required pulumi.Output<String> trailName,
-  }) :
-      trailName = pulumi.Input.asInput<String>(trailName);
+    required this.trailName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class HistoryDeliveryJobArgs {
 
   factory HistoryDeliveryJobArgs.fromMap(Map<String, dynamic> map) {
     return HistoryDeliveryJobArgs(
-      trailName: pulumi.Output.create<String>(map['trailName'] as String),
+      trailName: (map['trailName'] as String).input(),
     );
   }
 }

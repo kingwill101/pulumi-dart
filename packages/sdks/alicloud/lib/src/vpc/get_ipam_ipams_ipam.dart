@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIpamIpamsIpam {
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// After an IPAM is created, the association between the resource discovery created by the system by default and the IPAM.
-  final String defaultResourceDiscoveryAssociationId;
+  final pulumi.Input<String> defaultResourceDiscoveryAssociationId;
   /// After IPAM is created, the system creates resource discovery by default.
-  final String defaultResourceDiscoveryId;
+  final pulumi.Input<String> defaultResourceDiscoveryId;
   /// The ID of the resource supplied above.
-  final String id;
+  final pulumi.Input<String> id;
   /// The description of IPAM.It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
-  final String ipamDescription;
+  final pulumi.Input<String> ipamDescription;
   /// The first ID of the resource.
-  final String ipamId;
+  final pulumi.Input<String> ipamId;
   /// The name of the resource.
-  final String ipamName;
+  final pulumi.Input<String> ipamName;
   /// After an IPAM is created, the scope of the private network IPAM created by the system by default.
-  final String privateDefaultScopeId;
+  final pulumi.Input<String> privateDefaultScopeId;
   /// After an IPAM is created, the public network IPAM is created by default.
-  final String publicDefaultScopeId;
+  final pulumi.Input<String> publicDefaultScopeId;
   /// The region ID of the resource.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The number of resource discovery objects associated with IPAM.
-  final int resourceDiscoveryAssociationCount;
+  final pulumi.Input<int> resourceDiscoveryAssociationCount;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// The tag of the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetIpamIpamsIpam].
   /// [createTime] The creation time of the resource.
@@ -84,20 +85,20 @@ class GetIpamIpamsIpam {
 
   factory GetIpamIpamsIpam.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamsIpam(
-      createTime: map['createTime'] as String,
-      defaultResourceDiscoveryAssociationId: map['defaultResourceDiscoveryAssociationId'] as String,
-      defaultResourceDiscoveryId: map['defaultResourceDiscoveryId'] as String,
-      id: map['id'] as String,
-      ipamDescription: map['ipamDescription'] as String,
-      ipamId: map['ipamId'] as String,
-      ipamName: map['ipamName'] as String,
-      privateDefaultScopeId: map['privateDefaultScopeId'] as String,
-      publicDefaultScopeId: map['publicDefaultScopeId'] as String,
-      regionId: map['regionId'] as String,
-      resourceDiscoveryAssociationCount: map['resourceDiscoveryAssociationCount'] as int,
-      resourceGroupId: map['resourceGroupId'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      createTime: (map['createTime'] as String).input(),
+      defaultResourceDiscoveryAssociationId: (map['defaultResourceDiscoveryAssociationId'] as String).input(),
+      defaultResourceDiscoveryId: (map['defaultResourceDiscoveryId'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipamDescription: (map['ipamDescription'] as String).input(),
+      ipamId: (map['ipamId'] as String).input(),
+      ipamName: (map['ipamName'] as String).input(),
+      privateDefaultScopeId: (map['privateDefaultScopeId'] as String).input(),
+      publicDefaultScopeId: (map['publicDefaultScopeId'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      resourceDiscoveryAssociationCount: (map['resourceDiscoveryAssociationCount'] as int).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

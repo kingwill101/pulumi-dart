@@ -16,11 +16,9 @@ class GetVirtualNetworkGatewayConnectionIkeSasArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayConnectionName] The name of the virtual network gateway Connection.
   GetVirtualNetworkGatewayConnectionIkeSasArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualNetworkGatewayConnectionName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualNetworkGatewayConnectionName = pulumi.Input.asInput<String>(virtualNetworkGatewayConnectionName);
+    required this.resourceGroupName,
+    required this.virtualNetworkGatewayConnectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVirtualNetworkGatewayConnectionIkeSasArgs {
 
   factory GetVirtualNetworkGatewayConnectionIkeSasArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayConnectionIkeSasArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualNetworkGatewayConnectionName: pulumi.Output.create<String>(map['virtualNetworkGatewayConnectionName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualNetworkGatewayConnectionName: (map['virtualNetworkGatewayConnectionName'] as String).input(),
     );
   }
 }

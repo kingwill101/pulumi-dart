@@ -8,13 +8,13 @@ class GetEntitlementApprovalWorkflowManualApprovalStep {
   /// If there are not enough distinct users in the list above then the workflow
   /// will indefinitely block. Should always be greater than 0. Currently 1 is the only
   /// supported value.
-  final int approvalsNeeded;
+  final pulumi.Input<int> approvalsNeeded;
   /// Optional. Additional email addresses to be notified when a grant is pending approval.
-  final List<String> approverEmailRecipients;
+  final pulumi.Input<List<String>> approverEmailRecipients;
   /// The potential set of approvers in this step. This list should contain at only one entry.
-  final List<GetEntitlementApprovalWorkflowManualApprovalStepApprover> approvers;
+  final pulumi.Input<List<GetEntitlementApprovalWorkflowManualApprovalStepApprover>> approvers;
   /// Output Only. The ID of the approval step.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetEntitlementApprovalWorkflowManualApprovalStep].
   /// [approvalsNeeded] How many users from the above list need to approve.
@@ -32,17 +32,17 @@ class GetEntitlementApprovalWorkflowManualApprovalStep {
     return <String, dynamic>{
       'approvalsNeeded': approvalsNeeded,
       'approverEmailRecipients': approverEmailRecipients,
-      'approvers': pulumi.Input.encodeList<GetEntitlementApprovalWorkflowManualApprovalStepApprover, Map<String, dynamic>>(approvers, (value) => value.toMap()),
+      'approvers': pulumi.Input.mapInputValue<List<GetEntitlementApprovalWorkflowManualApprovalStepApprover>, List<Map<String, dynamic>>>(approvers, (value) => pulumi.Input.encodeList<GetEntitlementApprovalWorkflowManualApprovalStepApprover, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
     };
   }
 
   factory GetEntitlementApprovalWorkflowManualApprovalStep.fromMap(Map<String, dynamic> map) {
     return GetEntitlementApprovalWorkflowManualApprovalStep(
-      approvalsNeeded: map['approvalsNeeded'] as int,
-      approverEmailRecipients: (map['approverEmailRecipients'] as List).cast<String>(),
-      approvers: pulumi.Input.decodeList<GetEntitlementApprovalWorkflowManualApprovalStepApprover>(map['approvers'], (value) => GetEntitlementApprovalWorkflowManualApprovalStepApprover.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
+      approvalsNeeded: (map['approvalsNeeded'] as int).input(),
+      approverEmailRecipients: ((map['approverEmailRecipients'] as List).cast<String>()).input(),
+      approvers: (pulumi.Input.decodeList<GetEntitlementApprovalWorkflowManualApprovalStepApprover>(map['approvers'], (value) => GetEntitlementApprovalWorkflowManualApprovalStepApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

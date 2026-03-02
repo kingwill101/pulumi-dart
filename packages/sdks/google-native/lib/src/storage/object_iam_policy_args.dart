@@ -36,25 +36,16 @@ class ObjectIamPolicyArgs {
   /// [userProject] The project to be billed for this request. Required for Requester Pays buckets.
   /// [version] The IAM policy format version.
   ObjectIamPolicyArgs({
-    pulumi.Output<List<ObjectIamPolicyBindingsItem>>? bindings,
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? generation,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> object,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? userProject,
-    pulumi.Output<int>? version,
-  }) :
-      bindings = pulumi.Input.asOptionalInput<List<ObjectIamPolicyBindingsItem>>(bindings),
-      bucket = pulumi.Input.asInput<String>(bucket),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      generation = pulumi.Input.asOptionalInput<String>(generation),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      object = pulumi.Input.asInput<String>(object),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.bindings,
+    required this.bucket,
+    this.etag,
+    this.generation,
+    this.kind,
+    required this.object,
+    this.resourceId,
+    this.userProject,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class ObjectIamPolicyArgs {
 
   factory ObjectIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ObjectIamPolicyArgs(
-      bindings: map['bindings'] == null ? null : pulumi.Output.create<List<ObjectIamPolicyBindingsItem>>(pulumi.Input.decodeList<ObjectIamPolicyBindingsItem>(map['bindings'], (value) => ObjectIamPolicyBindingsItem.fromMap((value as Map).cast<String, dynamic>()))),
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      generation: map['generation'] == null ? null : pulumi.Output.create<String>(map['generation'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      object: pulumi.Output.create<String>(map['object'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<ObjectIamPolicyBindingsItem>(map['bindings'], (value) => ObjectIamPolicyBindingsItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bucket: (map['bucket'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      object: (map['object'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

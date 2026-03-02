@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyRuleMatchConfig {
   /// CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
-  final List<String>? srcIpRanges;
+  final pulumi.Input<List<String>>? srcIpRanges;
 
   /// Creates a new [SecurityPolicyRuleMatchConfig].
   /// [srcIpRanges] CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
@@ -19,7 +20,7 @@ class SecurityPolicyRuleMatchConfig {
 
   factory SecurityPolicyRuleMatchConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatchConfig(
-      srcIpRanges: map['srcIpRanges'] == null ? null : (map['srcIpRanges'] as List).cast<String>(),
+      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges'] as List).cast<String>()).input(),
     );
   }
 }

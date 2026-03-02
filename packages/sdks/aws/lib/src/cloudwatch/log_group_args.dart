@@ -41,25 +41,16 @@ class LogGroupArgs {
   /// [skipDestroy] Set to true if you do not wish the log group (and any logs it may contain) to be deleted at destroy time, and instead just remove the log group from the state.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   LogGroupArgs({
-    pulumi.Output<bool>? deletionProtectionEnabled,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? logGroupClass,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? retentionInDays,
-    pulumi.Output<bool>? skipDestroy,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deletionProtectionEnabled = pulumi.Input.asOptionalInput<bool>(deletionProtectionEnabled),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      logGroupClass = pulumi.Input.asOptionalInput<String>(logGroupClass),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionInDays = pulumi.Input.asOptionalInput<int>(retentionInDays),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deletionProtectionEnabled,
+    this.kmsKeyId,
+    this.logGroupClass,
+    this.name,
+    this.namePrefix,
+    this.region,
+    this.retentionInDays,
+    this.skipDestroy,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class LogGroupArgs {
 
   factory LogGroupArgs.fromMap(Map<String, dynamic> map) {
     return LogGroupArgs(
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : pulumi.Output.create<bool>(map['deletionProtectionEnabled'] as bool),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      logGroupClass: map['logGroupClass'] == null ? null : pulumi.Output.create<String>(map['logGroupClass'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionInDays: map['retentionInDays'] == null ? null : pulumi.Output.create<int>(map['retentionInDays'] as int),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled'] as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      logGroupClass: map['logGroupClass'] == null ? null : (map['logGroupClass'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

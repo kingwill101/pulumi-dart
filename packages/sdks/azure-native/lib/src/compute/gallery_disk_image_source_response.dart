@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The source for the disk image.
 class GalleryDiskImageSourceResponse {
   /// The id of the gallery artifact version source.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The Storage Account Id that contains the vhd blob being used as a source for this artifact version.
-  final String? storageAccountId;
+  final pulumi.Input<String>? storageAccountId;
   /// The uri of the gallery artifact version source. Currently used to specify vhd/blob source.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [GalleryDiskImageSourceResponse].
   /// [id] The id of the gallery artifact version source.
@@ -30,9 +31,9 @@ class GalleryDiskImageSourceResponse {
 
   factory GalleryDiskImageSourceResponse.fromMap(Map<String, dynamic> map) {
     return GalleryDiskImageSourceResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

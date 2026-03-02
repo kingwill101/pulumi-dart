@@ -6,11 +6,11 @@ import 'google_cloud_retail_v2alpha_model_page_optimization_config_candidate.dar
 /// An individual panel with a list of ServingConfigs to consider for it.
 class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel {
   /// The candidates to consider on the panel.
-  final List<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate> candidates;
+  final pulumi.Input<List<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate>> candidates;
   /// The default candidate. If the model fails at serving time, we fall back to the default.
-  final GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate defaultCandidate;
+  final pulumi.Input<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate> defaultCandidate;
   /// Optional. The name to display for the panel.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Creates a new [GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel].
   /// [candidates] The candidates to consider on the panel.
@@ -24,17 +24,17 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'candidates': pulumi.Input.encodeList<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate, Map<String, dynamic>>(candidates, (value) => value.toMap()),
-      'defaultCandidate': defaultCandidate.toMap(),
+      'candidates': pulumi.Input.mapInputValue<List<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate>, List<Map<String, dynamic>>>(candidates, (value) => pulumi.Input.encodeList<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultCandidate': pulumi.Input.mapInputValue<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate, Map<String, dynamic>>(defaultCandidate, (value) => value.toMap()),
       'displayName': ?displayName,
     };
   }
 
   factory GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel(
-      candidates: pulumi.Input.decodeList<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate>(map['candidates'], (value) => GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate.fromMap((value as Map).cast<String, dynamic>())),
-      defaultCandidate: GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate.fromMap((map['defaultCandidate'] as Map).cast<String, dynamic>()),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      candidates: (pulumi.Input.decodeList<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate>(map['candidates'], (value) => GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultCandidate: (GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate.fromMap((map['defaultCandidate'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
     );
   }
 }

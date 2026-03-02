@@ -28,21 +28,14 @@ class PartnerState {
   /// [status] (Optional) The partner integration status.
   /// [statusMessage] (Optional) The status message provided by the partner.
   PartnerState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? clusterIdentifier,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? partnerName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? statusMessage,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      clusterIdentifier = pulumi.Input.asOptionalInput<String>(clusterIdentifier),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      partnerName = pulumi.Input.asOptionalInput<String>(partnerName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      statusMessage = pulumi.Input.asOptionalInput<String>(statusMessage);
+    this.accountId,
+    this.clusterIdentifier,
+    this.databaseName,
+    this.partnerName,
+    this.region,
+    this.status,
+    this.statusMessage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class PartnerState {
 
   factory PartnerState.fromMap(Map<String, dynamic> map) {
     return PartnerState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      partnerName: map['partnerName'] == null ? null : pulumi.Output.create<String>(map['partnerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      statusMessage: map['statusMessage'] == null ? null : pulumi.Output.create<String>(map['statusMessage'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      partnerName: map['partnerName'] == null ? null : (map['partnerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
     );
   }
 }

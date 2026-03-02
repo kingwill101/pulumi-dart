@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiKnowledgeBaseIndexingJobsMeta {
   /// Current page number
-  final int page;
+  final pulumi.Input<int> page;
   /// Total number of pages
-  final int pages;
+  final pulumi.Input<int> pages;
   /// Total number of items
-  final int total;
+  final pulumi.Input<int> total;
 
   /// Creates a new [GetGenaiKnowledgeBaseIndexingJobsMeta].
   /// [page] Current page number
@@ -29,9 +30,9 @@ class GetGenaiKnowledgeBaseIndexingJobsMeta {
 
   factory GetGenaiKnowledgeBaseIndexingJobsMeta.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseIndexingJobsMeta(
-      page: map['page'] as int,
-      pages: map['pages'] as int,
-      total: map['total'] as int,
+      page: (map['page'] as int).input(),
+      pages: (map['pages'] as int).input(),
+      total: (map['total'] as int).input(),
     );
   }
 }

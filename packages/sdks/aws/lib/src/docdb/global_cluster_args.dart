@@ -35,23 +35,15 @@ class GlobalClusterArgs {
   /// [sourceDbClusterIdentifier] Amazon Resource Name (ARN) to use as the primary DB Cluster of the Global Cluster on creation. The provider cannot perform drift detection of this value.
   /// [storageEncrypted] Specifies whether the DB cluster is encrypted. The default is `false` unless `source_db_cluster_identifier` is specified and encrypted. The provider will only perform drift detection if a configuration value is provided.
   GlobalClusterArgs({
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? engineVersion,
-    required pulumi.Output<String> globalClusterIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sourceDbClusterIdentifier,
-    pulumi.Output<bool>? storageEncrypted,
-  }) :
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      globalClusterIdentifier = pulumi.Input.asInput<String>(globalClusterIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceDbClusterIdentifier = pulumi.Input.asOptionalInput<String>(sourceDbClusterIdentifier),
-      storageEncrypted = pulumi.Input.asOptionalInput<bool>(storageEncrypted);
+    this.databaseName,
+    this.deletionProtection,
+    this.engine,
+    this.engineVersion,
+    required this.globalClusterIdentifier,
+    this.region,
+    this.sourceDbClusterIdentifier,
+    this.storageEncrypted,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class GlobalClusterArgs {
 
   factory GlobalClusterArgs.fromMap(Map<String, dynamic> map) {
     return GlobalClusterArgs(
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      globalClusterIdentifier: pulumi.Output.create<String>(map['globalClusterIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceDbClusterIdentifier: map['sourceDbClusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['sourceDbClusterIdentifier'] as String),
-      storageEncrypted: map['storageEncrypted'] == null ? null : pulumi.Output.create<bool>(map['storageEncrypted'] as bool),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      globalClusterIdentifier: (map['globalClusterIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceDbClusterIdentifier: map['sourceDbClusterIdentifier'] == null ? null : (map['sourceDbClusterIdentifier'] as String).input(),
+      storageEncrypted: map['storageEncrypted'] == null ? null : (map['storageEncrypted'] as bool).input(),
     );
   }
 }

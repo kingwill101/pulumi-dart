@@ -41,27 +41,17 @@ class NspAssociationArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   NspAssociationArgs({
-    pulumi.Output<String>? accessMode,
-    pulumi.Output<String>? associationName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkSecurityPerimeterName,
-    pulumi.Output<SubResource>? privateLinkResource,
-    pulumi.Output<SubResource>? profile,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accessMode = pulumi.Input.asOptionalInput<String>(accessMode),
-      associationName = pulumi.Input.asOptionalInput<String>(associationName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkSecurityPerimeterName = pulumi.Input.asInput<String>(networkSecurityPerimeterName),
-      privateLinkResource = pulumi.Input.asOptionalInput<SubResource>(privateLinkResource),
-      profile = pulumi.Input.asOptionalInput<SubResource>(profile),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accessMode,
+    this.associationName,
+    this.id,
+    this.location,
+    this.name,
+    required this.networkSecurityPerimeterName,
+    this.privateLinkResource,
+    this.profile,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class NspAssociationArgs {
 
   factory NspAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NspAssociationArgs(
-      accessMode: map['accessMode'] == null ? null : pulumi.Output.create<String>(map['accessMode'] as String),
-      associationName: map['associationName'] == null ? null : pulumi.Output.create<String>(map['associationName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkSecurityPerimeterName: pulumi.Output.create<String>(map['networkSecurityPerimeterName'] as String),
-      privateLinkResource: map['privateLinkResource'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['privateLinkResource'] as Map).cast<String, dynamic>())),
-      profile: map['profile'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['profile'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
+      associationName: map['associationName'] == null ? null : (map['associationName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
+      privateLinkResource: map['privateLinkResource'] == null ? null : (SubResource.fromMap((map['privateLinkResource'] as Map).cast<String, dynamic>())).input(),
+      profile: map['profile'] == null ? null : (SubResource.fromMap((map['profile'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

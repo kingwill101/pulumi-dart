@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClientCredentialsResponse {
   /// The authority URL used for authentication.
-  final String? authorityUrl;
+  final pulumi.Input<String>? authorityUrl;
   /// The content of the certificate used for authentication.
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// The Client ID/Application ID
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The client secret.
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// Is it using certificate to authenticate. If false then use client secret.
-  final bool? isCertAuth;
+  final pulumi.Input<bool>? isCertAuth;
   /// Resource Group.
-  final String? resourceGroup;
+  final pulumi.Input<String>? resourceGroup;
   /// The resource the service principal/app has access to.
-  final String? resourceUri;
+  final pulumi.Input<String>? resourceUri;
   /// Indicates which identity to use to authenticate service data access to customer's storage.
-  final String? serviceDataAccessAuthIdentity;
+  final pulumi.Input<String>? serviceDataAccessAuthIdentity;
   /// Subscription ID.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// The ID of the tenant the service principal/app belongs to.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// The thumbprint of the certificate above.
-  final String? thumbprint;
+  final pulumi.Input<String>? thumbprint;
 
   /// Creates a new [ClientCredentialsResponse].
   /// [authorityUrl] The authority URL used for authentication.
@@ -69,17 +70,17 @@ class ClientCredentialsResponse {
 
   factory ClientCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return ClientCredentialsResponse(
-      authorityUrl: map['authorityUrl'] == null ? null : map['authorityUrl'] as String,
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      isCertAuth: map['isCertAuth'] == null ? null : map['isCertAuth'] as bool,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      resourceUri: map['resourceUri'] == null ? null : map['resourceUri'] as String,
-      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : map['serviceDataAccessAuthIdentity'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      thumbprint: map['thumbprint'] == null ? null : map['thumbprint'] as String,
+      authorityUrl: map['authorityUrl'] == null ? null : (map['authorityUrl'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      isCertAuth: map['isCertAuth'] == null ? null : (map['isCertAuth'] as bool).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri'] as String).input(),
+      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : (map['serviceDataAccessAuthIdentity'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

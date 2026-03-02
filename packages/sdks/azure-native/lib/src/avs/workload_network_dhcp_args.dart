@@ -23,15 +23,11 @@ class WorkloadNetworkDhcpArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   WorkloadNetworkDhcpArgs({
-    pulumi.Output<String>? dhcpId,
-    required pulumi.Output<String> privateCloudName,
-    pulumi.Output<WorkloadNetworkDhcpRelay>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dhcpId = pulumi.Input.asOptionalInput<String>(dhcpId),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      properties = pulumi.Input.asOptionalInput<WorkloadNetworkDhcpRelay>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.dhcpId,
+    required this.privateCloudName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class WorkloadNetworkDhcpArgs {
 
   factory WorkloadNetworkDhcpArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkDhcpArgs(
-      dhcpId: map['dhcpId'] == null ? null : pulumi.Output.create<String>(map['dhcpId'] as String),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<WorkloadNetworkDhcpRelay>(WorkloadNetworkDhcpRelay.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dhcpId: map['dhcpId'] == null ? null : (map['dhcpId'] as String).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      properties: map['properties'] == null ? null : (WorkloadNetworkDhcpRelay.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

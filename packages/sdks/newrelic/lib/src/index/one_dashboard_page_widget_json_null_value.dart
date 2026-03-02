@@ -5,9 +5,9 @@ import 'one_dashboard_page_widget_json_null_value_series_override.dart';
 
 class OneDashboardPageWidgetJsonNullValue {
   /// Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
-  final String? nullValue;
+  final pulumi.Input<String>? nullValue;
   /// (Optional) A Nested block which will take two string attributes `color` and `series_name`. This nested block is used to customize colors of individual.
-  final List<OneDashboardPageWidgetJsonNullValueSeriesOverride>? seriesOverrides;
+  final pulumi.Input<List<OneDashboardPageWidgetJsonNullValueSeriesOverride>>? seriesOverrides;
 
   /// Creates a new [OneDashboardPageWidgetJsonNullValue].
   /// [nullValue] Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
@@ -20,14 +20,14 @@ class OneDashboardPageWidgetJsonNullValue {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nullValue': ?nullValue,
-      'seriesOverrides': ?seriesOverrides == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetJsonNullValueSeriesOverride, Map<String, dynamic>>(seriesOverrides!, (value) => value.toMap()),
+      'seriesOverrides': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetJsonNullValueSeriesOverride>, List<Map<String, dynamic>>>(seriesOverrides, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetJsonNullValueSeriesOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OneDashboardPageWidgetJsonNullValue.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetJsonNullValue(
-      nullValue: map['nullValue'] == null ? null : map['nullValue'] as String,
-      seriesOverrides: map['seriesOverrides'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetJsonNullValueSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetJsonNullValueSeriesOverride.fromMap((value as Map).cast<String, dynamic>())),
+      nullValue: map['nullValue'] == null ? null : (map['nullValue'] as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetJsonNullValueSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetJsonNullValueSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

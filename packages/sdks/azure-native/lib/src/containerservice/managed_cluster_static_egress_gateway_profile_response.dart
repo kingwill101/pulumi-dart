@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Static Egress Gateway addon configuration for the cluster.
 class ManagedClusterStaticEgressGatewayProfileResponse {
   /// Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ManagedClusterStaticEgressGatewayProfileResponse].
   /// [enabled] Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not.
@@ -20,7 +21,7 @@ class ManagedClusterStaticEgressGatewayProfileResponse {
 
   factory ManagedClusterStaticEgressGatewayProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterStaticEgressGatewayProfileResponse(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

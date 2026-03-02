@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_input_destination_vpc.dart';
 
 class GetInputDestination {
-  final String ip;
-  final String port;
-  final String url;
-  final List<GetInputDestinationVpc> vpcs;
+  final pulumi.Input<String> ip;
+  final pulumi.Input<String> port;
+  final pulumi.Input<String> url;
+  final pulumi.Input<List<GetInputDestinationVpc>> vpcs;
 
   /// Creates a new [GetInputDestination].
   /// [ip] Required.
@@ -26,16 +26,16 @@ class GetInputDestination {
       'ip': ip,
       'port': port,
       'url': url,
-      'vpcs': pulumi.Input.encodeList<GetInputDestinationVpc, Map<String, dynamic>>(vpcs, (value) => value.toMap()),
+      'vpcs': pulumi.Input.mapInputValue<List<GetInputDestinationVpc>, List<Map<String, dynamic>>>(vpcs, (value) => pulumi.Input.encodeList<GetInputDestinationVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetInputDestination.fromMap(Map<String, dynamic> map) {
     return GetInputDestination(
-      ip: map['ip'] as String,
-      port: map['port'] as String,
-      url: map['url'] as String,
-      vpcs: pulumi.Input.decodeList<GetInputDestinationVpc>(map['vpcs'], (value) => GetInputDestinationVpc.fromMap((value as Map).cast<String, dynamic>())),
+      ip: (map['ip'] as String).input(),
+      port: (map['port'] as String).input(),
+      url: (map['url'] as String).input(),
+      vpcs: (pulumi.Input.decodeList<GetInputDestinationVpc>(map['vpcs'], (value) => GetInputDestinationVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultitenantDistributionOriginOriginShield {
   /// Whether Origin Shield is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// AWS Region for Origin Shield. Required when `enabled` is `true`.
-  final String? originShieldRegion;
+  final pulumi.Input<String>? originShieldRegion;
 
   /// Creates a new [MultitenantDistributionOriginOriginShield].
   /// [enabled] Whether Origin Shield is enabled.
@@ -24,8 +25,8 @@ class MultitenantDistributionOriginOriginShield {
 
   factory MultitenantDistributionOriginOriginShield.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginOriginShield(
-      enabled: map['enabled'] as bool,
-      originShieldRegion: map['originShieldRegion'] == null ? null : map['originShieldRegion'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      originShieldRegion: map['originShieldRegion'] == null ? null : (map['originShieldRegion'] as String).input(),
     );
   }
 }

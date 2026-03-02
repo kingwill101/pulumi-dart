@@ -25,17 +25,12 @@ class FlowArgs {
   /// [roleArn] The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
   /// [type] The type of the flow. Valid values are `FDL` or `DEFAULT`.
   FlowArgs({
-    required pulumi.Output<String> definition,
-    required pulumi.Output<String> description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? roleArn,
-    required pulumi.Output<String> type,
-  }) :
-      definition = pulumi.Input.asInput<String>(definition),
-      description = pulumi.Input.asInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      type = pulumi.Input.asInput<String>(type);
+    required this.definition,
+    required this.description,
+    this.name,
+    this.roleArn,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class FlowArgs {
 
   factory FlowArgs.fromMap(Map<String, dynamic> map) {
     return FlowArgs(
-      definition: pulumi.Output.create<String>(map['definition'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      definition: (map['definition'] as String).input(),
+      description: (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

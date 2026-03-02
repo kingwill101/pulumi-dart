@@ -19,15 +19,11 @@ class VMWareReplicationPolicyState {
   /// [recoveryPointRetentionInMinutes] Specifies the period up to which the recovery points will be retained. Must between `0` to `21600`.
   /// [recoveryVaultId] ID of the Recovery Services Vault. Changing this forces a new Replication Policy to be created.
   VMWareReplicationPolicyState({
-    pulumi.Output<int>? applicationConsistentSnapshotFrequencyInMinutes,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? recoveryPointRetentionInMinutes,
-    pulumi.Output<String>? recoveryVaultId,
-  }) :
-      applicationConsistentSnapshotFrequencyInMinutes = pulumi.Input.asOptionalInput<int>(applicationConsistentSnapshotFrequencyInMinutes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryPointRetentionInMinutes = pulumi.Input.asOptionalInput<int>(recoveryPointRetentionInMinutes),
-      recoveryVaultId = pulumi.Input.asOptionalInput<String>(recoveryVaultId);
+    this.applicationConsistentSnapshotFrequencyInMinutes,
+    this.name,
+    this.recoveryPointRetentionInMinutes,
+    this.recoveryVaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class VMWareReplicationPolicyState {
 
   factory VMWareReplicationPolicyState.fromMap(Map<String, dynamic> map) {
     return VMWareReplicationPolicyState(
-      applicationConsistentSnapshotFrequencyInMinutes: map['applicationConsistentSnapshotFrequencyInMinutes'] == null ? null : pulumi.Output.create<int>(map['applicationConsistentSnapshotFrequencyInMinutes'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryPointRetentionInMinutes: map['recoveryPointRetentionInMinutes'] == null ? null : pulumi.Output.create<int>(map['recoveryPointRetentionInMinutes'] as int),
-      recoveryVaultId: map['recoveryVaultId'] == null ? null : pulumi.Output.create<String>(map['recoveryVaultId'] as String),
+      applicationConsistentSnapshotFrequencyInMinutes: map['applicationConsistentSnapshotFrequencyInMinutes'] == null ? null : (map['applicationConsistentSnapshotFrequencyInMinutes'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryPointRetentionInMinutes: map['recoveryPointRetentionInMinutes'] == null ? null : (map['recoveryPointRetentionInMinutes'] as int).input(),
+      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId'] as String).input(),
     );
   }
 }

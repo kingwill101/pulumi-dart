@@ -33,21 +33,14 @@ class CNameRecordArgs {
   /// [ttl] The Time To Live (TTL) of the DNS record in seconds.
   /// [zoneName] Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
   CNameRecordArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? record,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? targetResourceId,
-    required pulumi.Output<int> ttl,
-    required pulumi.Output<String> zoneName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      record = pulumi.Input.asOptionalInput<String>(record),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId),
-      ttl = pulumi.Input.asInput<int>(ttl),
-      zoneName = pulumi.Input.asInput<String>(zoneName);
+    this.name,
+    this.record,
+    required this.resourceGroupName,
+    this.tags,
+    this.targetResourceId,
+    required this.ttl,
+    required this.zoneName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class CNameRecordArgs {
 
   factory CNameRecordArgs.fromMap(Map<String, dynamic> map) {
     return CNameRecordArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      record: map['record'] == null ? null : pulumi.Output.create<String>(map['record'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
-      ttl: pulumi.Output.create<int>(map['ttl'] as int),
-      zoneName: pulumi.Output.create<String>(map['zoneName'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      record: map['record'] == null ? null : (map['record'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      ttl: (map['ttl'] as int).input(),
+      zoneName: (map['zoneName'] as String).input(),
     );
   }
 }

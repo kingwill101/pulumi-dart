@@ -26,17 +26,12 @@ class AddressPoolArgs {
   /// [lbaStrategy] The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
   /// [type] The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
   AddressPoolArgs({
-    required pulumi.Output<String> addressPoolName,
-    required pulumi.Output<List<AddressPoolAddress>> addresses,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> lbaStrategy,
-    required pulumi.Output<String> type,
-  }) :
-      addressPoolName = pulumi.Input.asInput<String>(addressPoolName),
-      addresses = pulumi.Input.asInput<List<AddressPoolAddress>>(addresses),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      lbaStrategy = pulumi.Input.asInput<String>(lbaStrategy),
-      type = pulumi.Input.asInput<String>(type);
+    required this.addressPoolName,
+    required this.addresses,
+    required this.instanceId,
+    required this.lbaStrategy,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AddressPoolArgs {
 
   factory AddressPoolArgs.fromMap(Map<String, dynamic> map) {
     return AddressPoolArgs(
-      addressPoolName: pulumi.Output.create<String>(map['addressPoolName'] as String),
-      addresses: pulumi.Output.create<List<AddressPoolAddress>>(pulumi.Input.decodeList<AddressPoolAddress>(map['addresses'], (value) => AddressPoolAddress.fromMap((value as Map).cast<String, dynamic>()))),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      lbaStrategy: pulumi.Output.create<String>(map['lbaStrategy'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      addressPoolName: (map['addressPoolName'] as String).input(),
+      addresses: (pulumi.Input.decodeList<AddressPoolAddress>(map['addresses'], (value) => AddressPoolAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      lbaStrategy: (map['lbaStrategy'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

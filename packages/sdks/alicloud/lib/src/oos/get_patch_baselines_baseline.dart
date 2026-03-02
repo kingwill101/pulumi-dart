@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPatchBaselinesBaseline {
   /// Accept the rules.
-  final String approvalRules;
+  final pulumi.Input<String> approvalRules;
   /// The create time of patch baselines.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The user who created the patch baselines.
-  final String createdBy;
+  final pulumi.Input<String> createdBy;
   /// Patches baseline description information.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Patch Baseline. Its value is same as `patch_baseline_name`.
-  final String id;
+  final pulumi.Input<String> id;
   /// Whether it is the default patch baseline.
-  final bool isDefault;
+  final pulumi.Input<bool> isDefault;
   /// Operating system type.
-  final String operationSystem;
+  final pulumi.Input<String> operationSystem;
   /// Patch baseline ID.
-  final String patchBaselineId;
+  final pulumi.Input<String> patchBaselineId;
   /// The name of the patch baseline.
-  final String patchBaselineName;
+  final pulumi.Input<String> patchBaselineName;
   /// Patch baseline sharing type.
-  final String shareType;
+  final pulumi.Input<String> shareType;
   /// The user who updated the patch baselines.
-  final String updatedBy;
+  final pulumi.Input<String> updatedBy;
   /// The update time of patch baselines.
-  final String updatedDate;
+  final pulumi.Input<String> updatedDate;
 
   /// Creates a new [GetPatchBaselinesBaseline].
   /// [approvalRules] Accept the rules.
@@ -74,18 +75,18 @@ class GetPatchBaselinesBaseline {
 
   factory GetPatchBaselinesBaseline.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselinesBaseline(
-      approvalRules: map['approvalRules'] as String,
-      createTime: map['createTime'] as String,
-      createdBy: map['createdBy'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      isDefault: map['isDefault'] as bool,
-      operationSystem: map['operationSystem'] as String,
-      patchBaselineId: map['patchBaselineId'] as String,
-      patchBaselineName: map['patchBaselineName'] as String,
-      shareType: map['shareType'] as String,
-      updatedBy: map['updatedBy'] as String,
-      updatedDate: map['updatedDate'] as String,
+      approvalRules: (map['approvalRules'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      createdBy: (map['createdBy'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      isDefault: (map['isDefault'] as bool).input(),
+      operationSystem: (map['operationSystem'] as String).input(),
+      patchBaselineId: (map['patchBaselineId'] as String).input(),
+      patchBaselineName: (map['patchBaselineName'] as String).input(),
+      shareType: (map['shareType'] as String).input(),
+      updatedBy: (map['updatedBy'] as String).input(),
+      updatedDate: (map['updatedDate'] as String).input(),
     );
   }
 }

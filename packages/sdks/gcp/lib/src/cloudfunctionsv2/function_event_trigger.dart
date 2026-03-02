@@ -6,28 +6,28 @@ import 'function_event_trigger_event_filter.dart';
 class FunctionEventTrigger {
   /// Criteria used to filter events.
   /// Structure is documented below.
-  final List<FunctionEventTriggerEventFilter>? eventFilters;
+  final pulumi.Input<List<FunctionEventTriggerEventFilter>>? eventFilters;
   /// Required. The type of event to observe.
-  final String eventType;
+  final pulumi.Input<String> eventType;
   /// The name of a Pub/Sub topic in the same project that will be used
   /// as the transport topic for the event delivery.
-  final String? pubsubTopic;
+  final pulumi.Input<String>? pubsubTopic;
   /// Describes the retry policy in case of function's execution failure.
   /// Retried execution is charged as any other execution.
   /// Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
-  final String? retryPolicy;
+  final pulumi.Input<String>? retryPolicy;
   /// Optional. The email of the trigger's service account. The service account
   /// must have permission to invoke Cloud Run services. If empty, defaults to the
   /// Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
-  final String? serviceAccountEmail;
+  final pulumi.Input<String>? serviceAccountEmail;
   /// (Output)
   /// Output only. The resource name of the Eventarc trigger.
-  final String? trigger;
+  final pulumi.Input<String>? trigger;
   /// The region that the trigger will be in. The trigger will only receive
   /// events originating in this region. It can be the same
   /// region as the function, a different region or multi-region, or the global
   /// region. If not provided, defaults to the same region as the function.
-  final String? triggerRegion;
+  final pulumi.Input<String>? triggerRegion;
 
   /// Creates a new [FunctionEventTrigger].
   /// [eventFilters] Criteria used to filter events.
@@ -49,7 +49,7 @@ class FunctionEventTrigger {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'eventFilters': ?eventFilters == null ? null : pulumi.Input.encodeList<FunctionEventTriggerEventFilter, Map<String, dynamic>>(eventFilters!, (value) => value.toMap()),
+      'eventFilters': ?pulumi.Input.mapOptionalInputValue<List<FunctionEventTriggerEventFilter>, List<Map<String, dynamic>>>(eventFilters, (value) => pulumi.Input.encodeList<FunctionEventTriggerEventFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'eventType': eventType,
       'pubsubTopic': ?pubsubTopic,
       'retryPolicy': ?retryPolicy,
@@ -61,13 +61,13 @@ class FunctionEventTrigger {
 
   factory FunctionEventTrigger.fromMap(Map<String, dynamic> map) {
     return FunctionEventTrigger(
-      eventFilters: map['eventFilters'] == null ? null : pulumi.Input.decodeList<FunctionEventTriggerEventFilter>(map['eventFilters'], (value) => FunctionEventTriggerEventFilter.fromMap((value as Map).cast<String, dynamic>())),
-      eventType: map['eventType'] as String,
-      pubsubTopic: map['pubsubTopic'] == null ? null : map['pubsubTopic'] as String,
-      retryPolicy: map['retryPolicy'] == null ? null : map['retryPolicy'] as String,
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : map['serviceAccountEmail'] as String,
-      trigger: map['trigger'] == null ? null : map['trigger'] as String,
-      triggerRegion: map['triggerRegion'] == null ? null : map['triggerRegion'] as String,
+      eventFilters: map['eventFilters'] == null ? null : (pulumi.Input.decodeList<FunctionEventTriggerEventFilter>(map['eventFilters'], (value) => FunctionEventTriggerEventFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventType: (map['eventType'] as String).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (map['retryPolicy'] as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      trigger: map['trigger'] == null ? null : (map['trigger'] as String).input(),
+      triggerRegion: map['triggerRegion'] == null ? null : (map['triggerRegion'] as String).input(),
     );
   }
 }

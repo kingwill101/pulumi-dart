@@ -23,15 +23,11 @@ class DocumentationPartArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] ID of the associated Rest API
   DocumentationPartArgs({
-    required pulumi.Output<DocumentationPartLocation> location,
-    required pulumi.Output<String> properties,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> restApiId,
-  }) :
-      location = pulumi.Input.asInput<DocumentationPartLocation>(location),
-      properties = pulumi.Input.asInput<String>(properties),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApiId = pulumi.Input.asInput<String>(restApiId);
+    required this.location,
+    required this.properties,
+    this.region,
+    required this.restApiId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class DocumentationPartArgs {
 
   factory DocumentationPartArgs.fromMap(Map<String, dynamic> map) {
     return DocumentationPartArgs(
-      location: pulumi.Output.create<DocumentationPartLocation>(DocumentationPartLocation.fromMap((map['location'] as Map).cast<String, dynamic>())),
-      properties: pulumi.Output.create<String>(map['properties'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApiId: pulumi.Output.create<String>(map['restApiId'] as String),
+      location: (DocumentationPartLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
+      properties: (map['properties'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApiId: (map['restApiId'] as String).input(),
     );
   }
 }

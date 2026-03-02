@@ -22,15 +22,11 @@ class GetMachineGroupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [projectName] Project name
   GetMachineGroupsArgs({
-    pulumi.Output<String>? groupName,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> projectName,
-  }) :
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      projectName = pulumi.Input.asInput<String>(projectName);
+    this.groupName,
+    this.ids,
+    this.outputFile,
+    required this.projectName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetMachineGroupsArgs {
 
   factory GetMachineGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineGroupsArgs(
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
     );
   }
 }

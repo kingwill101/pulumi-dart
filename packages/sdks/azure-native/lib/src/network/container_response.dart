@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to container resource in remote resource provider.
 class ContainerResponse {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [ContainerResponse].
   /// [id] Resource ID.
@@ -20,7 +21,7 @@ class ContainerResponse {
 
   factory ContainerResponse.fromMap(Map<String, dynamic> map) {
     return ContainerResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

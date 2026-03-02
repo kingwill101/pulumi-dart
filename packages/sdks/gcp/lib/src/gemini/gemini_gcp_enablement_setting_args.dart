@@ -40,21 +40,14 @@ class GeminiGcpEnablementSettingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [webGroundingType] Web grounding type.
   GeminiGcpEnablementSettingArgs({
-    pulumi.Output<bool>? disableWebGrounding,
-    pulumi.Output<bool>? enableCustomerDataSharing,
-    required pulumi.Output<String> geminiGcpEnablementSettingId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? webGroundingType,
-  }) :
-      disableWebGrounding = pulumi.Input.asOptionalInput<bool>(disableWebGrounding),
-      enableCustomerDataSharing = pulumi.Input.asOptionalInput<bool>(enableCustomerDataSharing),
-      geminiGcpEnablementSettingId = pulumi.Input.asInput<String>(geminiGcpEnablementSettingId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      webGroundingType = pulumi.Input.asOptionalInput<String>(webGroundingType);
+    this.disableWebGrounding,
+    this.enableCustomerDataSharing,
+    required this.geminiGcpEnablementSettingId,
+    this.labels,
+    required this.location,
+    this.project,
+    this.webGroundingType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,13 +63,13 @@ class GeminiGcpEnablementSettingArgs {
 
   factory GeminiGcpEnablementSettingArgs.fromMap(Map<String, dynamic> map) {
     return GeminiGcpEnablementSettingArgs(
-      disableWebGrounding: map['disableWebGrounding'] == null ? null : pulumi.Output.create<bool>(map['disableWebGrounding'] as bool),
-      enableCustomerDataSharing: map['enableCustomerDataSharing'] == null ? null : pulumi.Output.create<bool>(map['enableCustomerDataSharing'] as bool),
-      geminiGcpEnablementSettingId: pulumi.Output.create<String>(map['geminiGcpEnablementSettingId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      webGroundingType: map['webGroundingType'] == null ? null : pulumi.Output.create<String>(map['webGroundingType'] as String),
+      disableWebGrounding: map['disableWebGrounding'] == null ? null : (map['disableWebGrounding'] as bool).input(),
+      enableCustomerDataSharing: map['enableCustomerDataSharing'] == null ? null : (map['enableCustomerDataSharing'] as bool).input(),
+      geminiGcpEnablementSettingId: (map['geminiGcpEnablementSettingId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      webGroundingType: map['webGroundingType'] == null ? null : (map['webGroundingType'] as String).input(),
     );
   }
 }

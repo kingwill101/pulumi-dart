@@ -19,13 +19,10 @@ class GetCertificateArgs {
   /// [certificateAuthorityArn] ARN of the certificate authority.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetCertificateArgs({
-    required pulumi.Output<String> arn,
-    required pulumi.Output<String> certificateAuthorityArn,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asInput<String>(arn),
-      certificateAuthorityArn = pulumi.Input.asInput<String>(certificateAuthorityArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.arn,
+    required this.certificateAuthorityArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      arn: pulumi.Output.create<String>(map['arn'] as String),
-      certificateAuthorityArn: pulumi.Output.create<String>(map['certificateAuthorityArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: (map['arn'] as String).input(),
+      certificateAuthorityArn: (map['certificateAuthorityArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

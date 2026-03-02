@@ -33,23 +33,15 @@ class GetImageArgs {
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   /// [withStatuses] Select only images with the specified status, could contain `creating` or `available`.
   GetImageArgs({
-    pulumi.Output<int>? id,
-    pulumi.Output<bool>? includeDeprecated,
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? selector,
-    pulumi.Output<String>? withArchitecture,
-    pulumi.Output<String>? withSelector,
-    pulumi.Output<List<String>>? withStatuses,
-  }) :
-      id = pulumi.Input.asOptionalInput<int>(id),
-      includeDeprecated = pulumi.Input.asOptionalInput<bool>(includeDeprecated),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      selector = pulumi.Input.asOptionalInput<String>(selector),
-      withArchitecture = pulumi.Input.asOptionalInput<String>(withArchitecture),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector),
-      withStatuses = pulumi.Input.asOptionalInput<List<String>>(withStatuses);
+    this.id,
+    this.includeDeprecated,
+    this.mostRecent,
+    this.name,
+    this.selector,
+    this.withArchitecture,
+    this.withSelector,
+    this.withStatuses,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
-      includeDeprecated: map['includeDeprecated'] == null ? null : pulumi.Output.create<bool>(map['includeDeprecated'] as bool),
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      selector: map['selector'] == null ? null : pulumi.Output.create<String>(map['selector'] as String),
-      withArchitecture: map['withArchitecture'] == null ? null : pulumi.Output.create<String>(map['withArchitecture'] as String),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
-      withStatuses: map['withStatuses'] == null ? null : pulumi.Output.create<List<String>>((map['withStatuses'] as List).cast<String>()),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated'] as bool).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      withArchitecture: map['withArchitecture'] == null ? null : (map['withArchitecture'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses'] as List).cast<String>()).input(),
     );
   }
 }

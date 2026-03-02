@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionOrderedCacheBehaviorGrpcConfig {
   /// Whether the distribution is enabled to accept end user requests for content.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [DistributionOrderedCacheBehaviorGrpcConfig].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.
@@ -19,7 +20,7 @@ class DistributionOrderedCacheBehaviorGrpcConfig {
 
   factory DistributionOrderedCacheBehaviorGrpcConfig.fromMap(Map<String, dynamic> map) {
     return DistributionOrderedCacheBehaviorGrpcConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

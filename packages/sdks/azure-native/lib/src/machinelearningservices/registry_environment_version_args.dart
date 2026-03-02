@@ -26,17 +26,12 @@ class RegistryEnvironmentVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier.
   RegistryEnvironmentVersionArgs({
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<EnvironmentVersionMachinelearningservices> environmentVersionProperties,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? version,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      environmentVersionProperties = pulumi.Input.asInput<EnvironmentVersionMachinelearningservices>(environmentVersionProperties),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.environmentName,
+    required this.environmentVersionProperties,
+    required this.registryName,
+    required this.resourceGroupName,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RegistryEnvironmentVersionArgs {
 
   factory RegistryEnvironmentVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEnvironmentVersionArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      environmentVersionProperties: pulumi.Output.create<EnvironmentVersionMachinelearningservices>(map['environmentVersionProperties'] as EnvironmentVersionMachinelearningservices),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      environmentVersionProperties: (map['environmentVersionProperties'] as EnvironmentVersionMachinelearningservices).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

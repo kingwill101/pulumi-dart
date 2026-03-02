@@ -42,33 +42,20 @@ class CertificateArgs {
   /// [validationMethod] Optional.
   /// [validationOptions] Optional.
   CertificateArgs({
-    pulumi.Output<String>? certificateAuthorityArn,
-    pulumi.Output<String>? certificateBody,
-    pulumi.Output<String>? certificateChain,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? earlyRenewalDuration,
-    pulumi.Output<String>? keyAlgorithm,
-    pulumi.Output<CertificateOptions>? options,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? subjectAlternativeNames,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? validationMethod,
-    pulumi.Output<List<CertificateValidationOption>>? validationOptions,
-  }) :
-      certificateAuthorityArn = pulumi.Input.asOptionalInput<String>(certificateAuthorityArn),
-      certificateBody = pulumi.Input.asOptionalInput<String>(certificateBody),
-      certificateChain = pulumi.Input.asOptionalInput<String>(certificateChain),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      earlyRenewalDuration = pulumi.Input.asOptionalInput<String>(earlyRenewalDuration),
-      keyAlgorithm = pulumi.Input.asOptionalInput<String>(keyAlgorithm),
-      options = pulumi.Input.asOptionalInput<CertificateOptions>(options),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subjectAlternativeNames = pulumi.Input.asOptionalInput<List<String>>(subjectAlternativeNames),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      validationMethod = pulumi.Input.asOptionalInput<String>(validationMethod),
-      validationOptions = pulumi.Input.asOptionalInput<List<CertificateValidationOption>>(validationOptions);
+    this.certificateAuthorityArn,
+    this.certificateBody,
+    this.certificateChain,
+    this.domainName,
+    this.earlyRenewalDuration,
+    this.keyAlgorithm,
+    this.options,
+    this.privateKey,
+    this.region,
+    this.subjectAlternativeNames,
+    this.tags,
+    this.validationMethod,
+    this.validationOptions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,19 +77,19 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : pulumi.Output.create<String>(map['certificateAuthorityArn'] as String),
-      certificateBody: map['certificateBody'] == null ? null : pulumi.Output.create<String>(map['certificateBody'] as String),
-      certificateChain: map['certificateChain'] == null ? null : pulumi.Output.create<String>(map['certificateChain'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      earlyRenewalDuration: map['earlyRenewalDuration'] == null ? null : pulumi.Output.create<String>(map['earlyRenewalDuration'] as String),
-      keyAlgorithm: map['keyAlgorithm'] == null ? null : pulumi.Output.create<String>(map['keyAlgorithm'] as String),
-      options: map['options'] == null ? null : pulumi.Output.create<CertificateOptions>(CertificateOptions.fromMap((map['options'] as Map).cast<String, dynamic>())),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : pulumi.Output.create<List<String>>((map['subjectAlternativeNames'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      validationMethod: map['validationMethod'] == null ? null : pulumi.Output.create<String>(map['validationMethod'] as String),
-      validationOptions: map['validationOptions'] == null ? null : pulumi.Output.create<List<CertificateValidationOption>>(pulumi.Input.decodeList<CertificateValidationOption>(map['validationOptions'], (value) => CertificateValidationOption.fromMap((value as Map).cast<String, dynamic>()))),
+      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : (map['certificateAuthorityArn'] as String).input(),
+      certificateBody: map['certificateBody'] == null ? null : (map['certificateBody'] as String).input(),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      earlyRenewalDuration: map['earlyRenewalDuration'] == null ? null : (map['earlyRenewalDuration'] as String).input(),
+      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm'] as String).input(),
+      options: map['options'] == null ? null : (CertificateOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      validationMethod: map['validationMethod'] == null ? null : (map['validationMethod'] as String).input(),
+      validationOptions: map['validationOptions'] == null ? null : (pulumi.Input.decodeList<CertificateValidationOption>(map['validationOptions'], (value) => CertificateValidationOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

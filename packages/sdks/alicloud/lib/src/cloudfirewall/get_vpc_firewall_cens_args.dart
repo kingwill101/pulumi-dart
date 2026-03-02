@@ -41,29 +41,18 @@ class GetVpcFirewallCensArgs {
   /// [vpcFirewallId] VPC firewall ID
   /// [vpcFirewallName] The name of the VPC firewall instance.
   GetVpcFirewallCensArgs({
-    pulumi.Output<String>? cenId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? memberUid,
-    pulumi.Output<String>? networkInstanceId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcFirewallId,
-    pulumi.Output<String>? vpcFirewallName,
-  }) :
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      memberUid = pulumi.Input.asOptionalInput<String>(memberUid),
-      networkInstanceId = pulumi.Input.asOptionalInput<String>(networkInstanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcFirewallId = pulumi.Input.asOptionalInput<String>(vpcFirewallId),
-      vpcFirewallName = pulumi.Input.asOptionalInput<String>(vpcFirewallName);
+    this.cenId,
+    this.ids,
+    this.lang,
+    this.memberUid,
+    this.networkInstanceId,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+    this.status,
+    this.vpcFirewallId,
+    this.vpcFirewallName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class GetVpcFirewallCensArgs {
 
   factory GetVpcFirewallCensArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallCensArgs(
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      memberUid: map['memberUid'] == null ? null : pulumi.Output.create<String>(map['memberUid'] as String),
-      networkInstanceId: map['networkInstanceId'] == null ? null : pulumi.Output.create<String>(map['networkInstanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : pulumi.Output.create<String>(map['vpcFirewallId'] as String),
-      vpcFirewallName: map['vpcFirewallName'] == null ? null : pulumi.Output.create<String>(map['vpcFirewallName'] as String),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
+      networkInstanceId: map['networkInstanceId'] == null ? null : (map['networkInstanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId'] as String).input(),
+      vpcFirewallName: map['vpcFirewallName'] == null ? null : (map['vpcFirewallName'] as String).input(),
     );
   }
 }

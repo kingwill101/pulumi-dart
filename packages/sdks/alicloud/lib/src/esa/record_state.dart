@@ -51,31 +51,19 @@ class RecordState {
   /// [sourceType] The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
   /// [ttl] The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
   RecordState({
-    pulumi.Output<RecordAuthConf>? authConf,
-    pulumi.Output<String>? bizName,
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<RecordData>? data,
-    pulumi.Output<String>? hostPolicy,
-    pulumi.Output<bool>? proxied,
-    pulumi.Output<String>? recordName,
-    pulumi.Output<String>? recordType,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<String>? sourceType,
-    pulumi.Output<int>? ttl,
-  }) :
-      authConf = pulumi.Input.asOptionalInput<RecordAuthConf>(authConf),
-      bizName = pulumi.Input.asOptionalInput<String>(bizName),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      data = pulumi.Input.asOptionalInput<RecordData>(data),
-      hostPolicy = pulumi.Input.asOptionalInput<String>(hostPolicy),
-      proxied = pulumi.Input.asOptionalInput<bool>(proxied),
-      recordName = pulumi.Input.asOptionalInput<String>(recordName),
-      recordType = pulumi.Input.asOptionalInput<String>(recordType),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      sourceType = pulumi.Input.asOptionalInput<String>(sourceType),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl);
+    this.authConf,
+    this.bizName,
+    this.comment,
+    this.createTime,
+    this.data,
+    this.hostPolicy,
+    this.proxied,
+    this.recordName,
+    this.recordType,
+    this.siteId,
+    this.sourceType,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,18 +84,18 @@ class RecordState {
 
   factory RecordState.fromMap(Map<String, dynamic> map) {
     return RecordState(
-      authConf: map['authConf'] == null ? null : pulumi.Output.create<RecordAuthConf>(RecordAuthConf.fromMap((map['authConf'] as Map).cast<String, dynamic>())),
-      bizName: map['bizName'] == null ? null : pulumi.Output.create<String>(map['bizName'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<RecordData>(RecordData.fromMap((map['data'] as Map).cast<String, dynamic>())),
-      hostPolicy: map['hostPolicy'] == null ? null : pulumi.Output.create<String>(map['hostPolicy'] as String),
-      proxied: map['proxied'] == null ? null : pulumi.Output.create<bool>(map['proxied'] as bool),
-      recordName: map['recordName'] == null ? null : pulumi.Output.create<String>(map['recordName'] as String),
-      recordType: map['recordType'] == null ? null : pulumi.Output.create<String>(map['recordType'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      sourceType: map['sourceType'] == null ? null : pulumi.Output.create<String>(map['sourceType'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
+      authConf: map['authConf'] == null ? null : (RecordAuthConf.fromMap((map['authConf'] as Map).cast<String, dynamic>())).input(),
+      bizName: map['bizName'] == null ? null : (map['bizName'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      data: map['data'] == null ? null : (RecordData.fromMap((map['data'] as Map).cast<String, dynamic>())).input(),
+      hostPolicy: map['hostPolicy'] == null ? null : (map['hostPolicy'] as String).input(),
+      proxied: map['proxied'] == null ? null : (map['proxied'] as bool).input(),
+      recordName: map['recordName'] == null ? null : (map['recordName'] as String).input(),
+      recordType: map['recordType'] == null ? null : (map['recordType'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
     );
   }
 }

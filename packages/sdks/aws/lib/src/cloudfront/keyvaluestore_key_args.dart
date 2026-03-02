@@ -19,13 +19,10 @@ class KeyvaluestoreKeyArgs {
   /// [keyValueStoreArn] Amazon Resource Name (ARN) of the Key Value Store.
   /// [value] Value to put.
   KeyvaluestoreKeyArgs({
-    required pulumi.Output<String> key,
-    required pulumi.Output<String> keyValueStoreArn,
-    required pulumi.Output<String> value,
-  }) :
-      key = pulumi.Input.asInput<String>(key),
-      keyValueStoreArn = pulumi.Input.asInput<String>(keyValueStoreArn),
-      value = pulumi.Input.asInput<String>(value);
+    required this.key,
+    required this.keyValueStoreArn,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class KeyvaluestoreKeyArgs {
 
   factory KeyvaluestoreKeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyvaluestoreKeyArgs(
-      key: pulumi.Output.create<String>(map['key'] as String),
-      keyValueStoreArn: pulumi.Output.create<String>(map['keyValueStoreArn'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      key: (map['key'] as String).input(),
+      keyValueStoreArn: (map['keyValueStoreArn'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

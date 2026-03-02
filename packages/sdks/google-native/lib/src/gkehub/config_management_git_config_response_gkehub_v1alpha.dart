@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Git repo configuration for a single cluster.
 class ConfigManagementGitConfigResponseGkehubV1alpha {
   /// The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
-  final String gcpServiceAccountEmail;
+  final pulumi.Input<String> gcpServiceAccountEmail;
   /// URL for the HTTPS proxy to be used when communicating with the Git repo.
-  final String httpsProxy;
+  final pulumi.Input<String> httpsProxy;
   /// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
-  final String policyDir;
+  final pulumi.Input<String> policyDir;
   /// Type of secret configured for access to the Git repo. Must be one of ssh, cookiefile, gcenode, token, gcpserviceaccount or none. The validation of this is case-sensitive. Required.
-  final String secretType;
+  final pulumi.Input<String> secretType;
   /// The branch of the repository to sync from. Default: master.
-  final String syncBranch;
+  final pulumi.Input<String> syncBranch;
   /// The URL of the Git repository to use as the source of truth.
-  final String syncRepo;
+  final pulumi.Input<String> syncRepo;
   /// Git revision (tag or hash) to check out. Default HEAD.
-  final String syncRev;
+  final pulumi.Input<String> syncRev;
   /// Period in seconds between consecutive syncs. Default: 15.
-  final String syncWaitSecs;
+  final pulumi.Input<String> syncWaitSecs;
 
   /// Creates a new [ConfigManagementGitConfigResponseGkehubV1alpha].
   /// [gcpServiceAccountEmail] The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
@@ -55,14 +56,14 @@ class ConfigManagementGitConfigResponseGkehubV1alpha {
 
   factory ConfigManagementGitConfigResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return ConfigManagementGitConfigResponseGkehubV1alpha(
-      gcpServiceAccountEmail: map['gcpServiceAccountEmail'] as String,
-      httpsProxy: map['httpsProxy'] as String,
-      policyDir: map['policyDir'] as String,
-      secretType: map['secretType'] as String,
-      syncBranch: map['syncBranch'] as String,
-      syncRepo: map['syncRepo'] as String,
-      syncRev: map['syncRev'] as String,
-      syncWaitSecs: map['syncWaitSecs'] as String,
+      gcpServiceAccountEmail: (map['gcpServiceAccountEmail'] as String).input(),
+      httpsProxy: (map['httpsProxy'] as String).input(),
+      policyDir: (map['policyDir'] as String).input(),
+      secretType: (map['secretType'] as String).input(),
+      syncBranch: (map['syncBranch'] as String).input(),
+      syncRepo: (map['syncRepo'] as String).input(),
+      syncRev: (map['syncRev'] as String).input(),
+      syncWaitSecs: (map['syncWaitSecs'] as String).input(),
     );
   }
 }

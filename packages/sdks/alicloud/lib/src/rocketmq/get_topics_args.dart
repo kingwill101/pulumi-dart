@@ -27,19 +27,13 @@ class GetTopicsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tags] A map of tags assigned to the Ons instance.
   GetTopicsArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.enableDetails,
+    this.ids,
+    required this.instanceId,
+    this.nameRegex,
+    this.outputFile,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class GetTopicsArgs {
 
   factory GetTopicsArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicsArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

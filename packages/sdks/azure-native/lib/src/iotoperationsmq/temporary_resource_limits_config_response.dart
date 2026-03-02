@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Internal knobs of Resource Limits for FE and BE
 class TemporaryResourceLimitsConfigResponse {
   /// Maximum number of messages a client can have inflight.
-  final int maxInflightMessages;
+  final pulumi.Input<int> maxInflightMessages;
   /// Maximum number of patch inflight per node.
-  final int maxInflightPatches;
+  final pulumi.Input<int> maxInflightPatches;
   /// Maximum number of patch a client can have in flight.
-  final int maxInflightPatchesPerClient;
+  final pulumi.Input<int> maxInflightPatchesPerClient;
   /// Maximum message expiry interval, in seconds.
-  final double? maxMessageExpirySecs;
+  final pulumi.Input<double>? maxMessageExpirySecs;
   /// Maximum receive for external clients.
-  final double maxQueuedMessages;
+  final pulumi.Input<double> maxQueuedMessages;
   /// Maximum receive QoS0 for external clients.
-  final double maxQueuedQos0Messages;
+  final pulumi.Input<double> maxQueuedQos0Messages;
   /// Maximum session expiry interval, in seconds.
-  final double maxSessionExpirySecs;
+  final pulumi.Input<double> maxSessionExpirySecs;
 
   /// Creates a new [TemporaryResourceLimitsConfigResponse].
   /// [maxInflightMessages] Maximum number of messages a client can have inflight.
@@ -50,13 +51,13 @@ class TemporaryResourceLimitsConfigResponse {
 
   factory TemporaryResourceLimitsConfigResponse.fromMap(Map<String, dynamic> map) {
     return TemporaryResourceLimitsConfigResponse(
-      maxInflightMessages: map['maxInflightMessages'] as int,
-      maxInflightPatches: map['maxInflightPatches'] as int,
-      maxInflightPatchesPerClient: map['maxInflightPatchesPerClient'] as int,
-      maxMessageExpirySecs: map['maxMessageExpirySecs'] == null ? null : map['maxMessageExpirySecs'] as double,
-      maxQueuedMessages: map['maxQueuedMessages'] as double,
-      maxQueuedQos0Messages: map['maxQueuedQos0Messages'] as double,
-      maxSessionExpirySecs: map['maxSessionExpirySecs'] as double,
+      maxInflightMessages: (map['maxInflightMessages'] as int).input(),
+      maxInflightPatches: (map['maxInflightPatches'] as int).input(),
+      maxInflightPatchesPerClient: (map['maxInflightPatchesPerClient'] as int).input(),
+      maxMessageExpirySecs: map['maxMessageExpirySecs'] == null ? null : (map['maxMessageExpirySecs'] as double).input(),
+      maxQueuedMessages: (map['maxQueuedMessages'] as double).input(),
+      maxQueuedQos0Messages: (map['maxQueuedQos0Messages'] as double).input(),
+      maxSessionExpirySecs: (map['maxSessionExpirySecs'] as double).input(),
     );
   }
 }

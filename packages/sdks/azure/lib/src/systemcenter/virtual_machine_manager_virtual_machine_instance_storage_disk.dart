@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineManagerVirtualMachineInstanceStorageDisk {
   /// The disk bus. Possible values are between `0` and `3`.
-  final int? bus;
+  final pulumi.Input<int>? bus;
   /// The disk bus type. Possible values are `IDE` and `SCSI`.
-  final String? busType;
+  final pulumi.Input<String>? busType;
   /// The disk total size.
-  final int? diskSizeGb;
+  final pulumi.Input<int>? diskSizeGb;
   /// The disk lun. Possible values are between `0` and `63`.
-  final int? lun;
+  final pulumi.Input<int>? lun;
   /// The name of the disk.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The name of the Storage QoS policy.
-  final String? storageQosPolicyName;
+  final pulumi.Input<String>? storageQosPolicyName;
   /// The disk ID in the System Center Virtual Machine Manager Virtual Machine Template. Changing this forces a new resource to be created.
-  final String? templateDiskId;
+  final pulumi.Input<String>? templateDiskId;
   /// The disk vhd type. Possible values are `Dynamic` and `Fixed`.
-  final String? vhdType;
+  final pulumi.Input<String>? vhdType;
 
   /// Creates a new [VirtualMachineManagerVirtualMachineInstanceStorageDisk].
   /// [bus] The disk bus. Possible values are between `0` and `3`.
@@ -54,14 +55,14 @@ class VirtualMachineManagerVirtualMachineInstanceStorageDisk {
 
   factory VirtualMachineManagerVirtualMachineInstanceStorageDisk.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerVirtualMachineInstanceStorageDisk(
-      bus: map['bus'] == null ? null : map['bus'] as int,
-      busType: map['busType'] == null ? null : map['busType'] as String,
-      diskSizeGb: map['diskSizeGb'] == null ? null : map['diskSizeGb'] as int,
-      lun: map['lun'] == null ? null : map['lun'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      storageQosPolicyName: map['storageQosPolicyName'] == null ? null : map['storageQosPolicyName'] as String,
-      templateDiskId: map['templateDiskId'] == null ? null : map['templateDiskId'] as String,
-      vhdType: map['vhdType'] == null ? null : map['vhdType'] as String,
+      bus: map['bus'] == null ? null : (map['bus'] as int).input(),
+      busType: map['busType'] == null ? null : (map['busType'] as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
+      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageQosPolicyName: map['storageQosPolicyName'] == null ? null : (map['storageQosPolicyName'] as String).input(),
+      templateDiskId: map['templateDiskId'] == null ? null : (map['templateDiskId'] as String).input(),
+      vhdType: map['vhdType'] == null ? null : (map['vhdType'] as String).input(),
     );
   }
 }

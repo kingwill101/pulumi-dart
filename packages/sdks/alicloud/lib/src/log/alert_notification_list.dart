@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertNotificationList {
   /// Notice content of alarm.
-  final String content;
+  final pulumi.Input<String> content;
   /// Email address list.
-  final List<String>? emailLists;
+  final pulumi.Input<List<String>>? emailLists;
   /// SMS sending mobile number.
-  final List<String>? mobileLists;
+  final pulumi.Input<List<String>>? mobileLists;
   /// Request address.
-  final String? serviceUri;
+  final pulumi.Input<String>? serviceUri;
   /// Notification type. support Email, SMS, DingTalk, MessageCenter.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AlertNotificationList].
   /// [content] Notice content of alarm.
@@ -39,11 +40,11 @@ class AlertNotificationList {
 
   factory AlertNotificationList.fromMap(Map<String, dynamic> map) {
     return AlertNotificationList(
-      content: map['content'] as String,
-      emailLists: map['emailLists'] == null ? null : (map['emailLists'] as List).cast<String>(),
-      mobileLists: map['mobileLists'] == null ? null : (map['mobileLists'] as List).cast<String>(),
-      serviceUri: map['serviceUri'] == null ? null : map['serviceUri'] as String,
-      type: map['type'] as String,
+      content: (map['content'] as String).input(),
+      emailLists: map['emailLists'] == null ? null : ((map['emailLists'] as List).cast<String>()).input(),
+      mobileLists: map['mobileLists'] == null ? null : ((map['mobileLists'] as List).cast<String>()).input(),
+      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class LogDataProtectionPolicyState {
   /// [policyDocument] Specifies the data protection policy in JSON. Read more at [Data protection policy syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data-start.html#mask-sensitive-log-data-policysyntax).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LogDataProtectionPolicyState({
-    pulumi.Output<String>? logGroupName,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? region,
-  }) :
-      logGroupName = pulumi.Input.asOptionalInput<String>(logGroupName),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.logGroupName,
+    this.policyDocument,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class LogDataProtectionPolicyState {
 
   factory LogDataProtectionPolicyState.fromMap(Map<String, dynamic> map) {
     return LogDataProtectionPolicyState(
-      logGroupName: map['logGroupName'] == null ? null : pulumi.Output.create<String>(map['logGroupName'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

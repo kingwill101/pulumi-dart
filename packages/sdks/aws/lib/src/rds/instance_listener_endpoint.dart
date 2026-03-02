@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceListenerEndpoint {
   /// Specifies the DNS address of the DB instance.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.
-  final String? hostedZoneId;
+  final pulumi.Input<String>? hostedZoneId;
   /// The port on which the DB accepts connections.
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [InstanceListenerEndpoint].
   /// [address] Specifies the DNS address of the DB instance.
@@ -29,9 +30,9 @@ class InstanceListenerEndpoint {
 
   factory InstanceListenerEndpoint.fromMap(Map<String, dynamic> map) {
     return InstanceListenerEndpoint(
-      address: map['address'] == null ? null : map['address'] as String,
-      hostedZoneId: map['hostedZoneId'] == null ? null : map['hostedZoneId'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

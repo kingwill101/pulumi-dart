@@ -36,23 +36,15 @@ class ListenerArgs {
   /// [serviceIdentifier] ID of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ListenerArgs({
-    required pulumi.Output<ListenerDefaultAction> defaultAction,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? port,
-    required pulumi.Output<String> protocol,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceArn,
-    pulumi.Output<String>? serviceIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      defaultAction = pulumi.Input.asInput<ListenerDefaultAction>(defaultAction),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceArn = pulumi.Input.asOptionalInput<String>(serviceArn),
-      serviceIdentifier = pulumi.Input.asOptionalInput<String>(serviceIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.defaultAction,
+    this.name,
+    this.port,
+    required this.protocol,
+    this.region,
+    this.serviceArn,
+    this.serviceIdentifier,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class ListenerArgs {
 
   factory ListenerArgs.fromMap(Map<String, dynamic> map) {
     return ListenerArgs(
-      defaultAction: pulumi.Output.create<ListenerDefaultAction>(ListenerDefaultAction.fromMap((map['defaultAction'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceArn: map['serviceArn'] == null ? null : pulumi.Output.create<String>(map['serviceArn'] as String),
-      serviceIdentifier: map['serviceIdentifier'] == null ? null : pulumi.Output.create<String>(map['serviceIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      defaultAction: (ListenerDefaultAction.fromMap((map['defaultAction'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceArn: map['serviceArn'] == null ? null : (map['serviceArn'] as String).input(),
+      serviceIdentifier: map['serviceIdentifier'] == null ? null : (map['serviceIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

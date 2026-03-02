@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_configuration_execute_command_configuration.dart';
 import 'cluster_configuration_managed_storage_configuration.dart';
 
 class ClusterConfiguration {
   /// Details of the execute command configuration. See `execute_command_configuration` Block for details.
-  final ClusterConfigurationExecuteCommandConfiguration? executeCommandConfiguration;
+  final pulumi.Input<ClusterConfigurationExecuteCommandConfiguration>? executeCommandConfiguration;
   /// Details of the managed storage configuration. See `managed_storage_configuration` Block for details.
-  final ClusterConfigurationManagedStorageConfiguration? managedStorageConfiguration;
+  final pulumi.Input<ClusterConfigurationManagedStorageConfiguration>? managedStorageConfiguration;
 
   /// Creates a new [ClusterConfiguration].
   /// [executeCommandConfiguration] Details of the execute command configuration. See `execute_command_configuration` Block for details.
@@ -19,15 +20,15 @@ class ClusterConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'executeCommandConfiguration': ?executeCommandConfiguration == null ? null : executeCommandConfiguration!.toMap(),
-      'managedStorageConfiguration': ?managedStorageConfiguration == null ? null : managedStorageConfiguration!.toMap(),
+      'executeCommandConfiguration': ?pulumi.Input.mapOptionalInputValue<ClusterConfigurationExecuteCommandConfiguration, Map<String, dynamic>>(executeCommandConfiguration, (value) => value.toMap()),
+      'managedStorageConfiguration': ?pulumi.Input.mapOptionalInputValue<ClusterConfigurationManagedStorageConfiguration, Map<String, dynamic>>(managedStorageConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ClusterConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterConfiguration(
-      executeCommandConfiguration: map['executeCommandConfiguration'] == null ? null : ClusterConfigurationExecuteCommandConfiguration.fromMap((map['executeCommandConfiguration'] as Map).cast<String, dynamic>()),
-      managedStorageConfiguration: map['managedStorageConfiguration'] == null ? null : ClusterConfigurationManagedStorageConfiguration.fromMap((map['managedStorageConfiguration'] as Map).cast<String, dynamic>()),
+      executeCommandConfiguration: map['executeCommandConfiguration'] == null ? null : (ClusterConfigurationExecuteCommandConfiguration.fromMap((map['executeCommandConfiguration'] as Map).cast<String, dynamic>())).input(),
+      managedStorageConfiguration: map['managedStorageConfiguration'] == null ? null : (ClusterConfigurationManagedStorageConfiguration.fromMap((map['managedStorageConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

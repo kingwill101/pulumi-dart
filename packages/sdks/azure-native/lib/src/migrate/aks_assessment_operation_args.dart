@@ -27,17 +27,12 @@ class AksAssessmentOperationArgs {
   /// [scope] Gets or sets scope parameters to identify inventory items for assessment.
   /// [settings] Gets or sets AKS Assessment Settings.
   AksAssessmentOperationArgs({
-    pulumi.Output<String>? assessmentName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<AssessmentScopeParameters>? scope,
-    required pulumi.Output<AKSAssessmentSettings> settings,
-  }) :
-      assessmentName = pulumi.Input.asOptionalInput<String>(assessmentName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asOptionalInput<AssessmentScopeParameters>(scope),
-      settings = pulumi.Input.asInput<AKSAssessmentSettings>(settings);
+    this.assessmentName,
+    required this.projectName,
+    required this.resourceGroupName,
+    this.scope,
+    required this.settings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class AksAssessmentOperationArgs {
 
   factory AksAssessmentOperationArgs.fromMap(Map<String, dynamic> map) {
     return AksAssessmentOperationArgs(
-      assessmentName: map['assessmentName'] == null ? null : pulumi.Output.create<String>(map['assessmentName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<AssessmentScopeParameters>(AssessmentScopeParameters.fromMap((map['scope'] as Map).cast<String, dynamic>())),
-      settings: pulumi.Output.create<AKSAssessmentSettings>(AKSAssessmentSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())),
+      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: map['scope'] == null ? null : (AssessmentScopeParameters.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      settings: (AKSAssessmentSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

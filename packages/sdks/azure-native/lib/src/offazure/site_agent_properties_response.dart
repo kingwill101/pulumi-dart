@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Class for site agent properties.
 class SiteAgentPropertiesResponse {
   /// Gets the ID of the agent.
-  final String id;
+  final pulumi.Input<String> id;
   /// Gets or sets the key vault ARM Id.
-  final String? keyVaultId;
+  final pulumi.Input<String>? keyVaultId;
   /// Gets or sets the key vault URI.
-  final String? keyVaultUri;
+  final pulumi.Input<String>? keyVaultUri;
   /// Gets the last heartbeat time of the agent in UTC.
-  final String lastHeartBeatUtc;
+  final pulumi.Input<String> lastHeartBeatUtc;
   /// Gets the version of the agent.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [SiteAgentPropertiesResponse].
   /// [id] Gets the ID of the agent.
@@ -40,11 +41,11 @@ class SiteAgentPropertiesResponse {
 
   factory SiteAgentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SiteAgentPropertiesResponse(
-      id: map['id'] as String,
-      keyVaultId: map['keyVaultId'] == null ? null : map['keyVaultId'] as String,
-      keyVaultUri: map['keyVaultUri'] == null ? null : map['keyVaultUri'] as String,
-      lastHeartBeatUtc: map['lastHeartBeatUtc'] as String,
-      version: map['version'] as String,
+      id: (map['id'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      lastHeartBeatUtc: (map['lastHeartBeatUtc'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

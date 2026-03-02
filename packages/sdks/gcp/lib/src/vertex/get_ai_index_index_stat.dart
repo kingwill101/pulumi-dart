@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAiIndexIndexStat {
   /// The number of shards in the Index.
-  final int shardsCount;
+  final pulumi.Input<int> shardsCount;
   /// The number of vectors in the Index.
-  final String vectorsCount;
+  final pulumi.Input<String> vectorsCount;
 
   /// Creates a new [GetAiIndexIndexStat].
   /// [shardsCount] The number of shards in the Index.
@@ -24,8 +25,8 @@ class GetAiIndexIndexStat {
 
   factory GetAiIndexIndexStat.fromMap(Map<String, dynamic> map) {
     return GetAiIndexIndexStat(
-      shardsCount: map['shardsCount'] as int,
-      vectorsCount: map['vectorsCount'] as String,
+      shardsCount: (map['shardsCount'] as int).input(),
+      vectorsCount: (map['vectorsCount'] as String).input(),
     );
   }
 }

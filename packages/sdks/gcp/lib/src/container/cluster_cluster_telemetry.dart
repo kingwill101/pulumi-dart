@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterTelemetry {
   /// Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
   /// `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ClusterClusterTelemetry].
   /// [type] Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
@@ -20,7 +21,7 @@ class ClusterClusterTelemetry {
 
   factory ClusterClusterTelemetry.fromMap(Map<String, dynamic> map) {
     return ClusterClusterTelemetry(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

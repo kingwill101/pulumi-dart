@@ -19,13 +19,10 @@ class GetAccessRulesArgs {
   /// [ids] A list of Access Rule IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetAccessRulesArgs({
-    required pulumi.Output<String> accessGroupId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-  }) :
-      accessGroupId = pulumi.Input.asInput<String>(accessGroupId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.accessGroupId,
+    this.ids,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAccessRulesArgs {
 
   factory GetAccessRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessRulesArgs(
-      accessGroupId: pulumi.Output.create<String>(map['accessGroupId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      accessGroupId: (map['accessGroupId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

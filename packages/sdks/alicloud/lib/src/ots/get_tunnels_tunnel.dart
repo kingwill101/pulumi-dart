@@ -5,27 +5,27 @@ import 'get_tunnels_tunnel_channel.dart';
 
 class GetTunnelsTunnel {
   /// The channels of OTS tunnel. Each element contains the following attributes:
-  final List<GetTunnelsTunnelChannel> channels;
+  final pulumi.Input<List<GetTunnelsTunnelChannel>> channels;
   /// The creation time of the Tunnel.
-  final int createTime;
+  final pulumi.Input<int> createTime;
   /// Whether the tunnel has expired.
-  final bool expired;
+  final pulumi.Input<bool> expired;
   /// The resource ID. The value is `<instance_name>:<table_name>:<tunnel_name>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of OTS instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The name of OTS table.
-  final String tableName;
+  final pulumi.Input<String> tableName;
   /// The tunnel id of the OTS which could not be changed.
-  final String tunnelId;
+  final pulumi.Input<String> tunnelId;
   /// The tunnel name of the OTS which could not be changed.
-  final String tunnelName;
+  final pulumi.Input<String> tunnelName;
   /// The latest consumption time of the tunnel, unix time in nanosecond.
-  final int tunnelRpo;
+  final pulumi.Input<int> tunnelRpo;
   /// The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
-  final String tunnelStage;
+  final pulumi.Input<String> tunnelStage;
   /// The type of the OTS tunnel, valid values: `BaseAndStream`, `BaseData`, `Stream`.
-  final String tunnelType;
+  final pulumi.Input<String> tunnelType;
 
   /// Creates a new [GetTunnelsTunnel].
   /// [channels] The channels of OTS tunnel. Each element contains the following attributes:
@@ -55,7 +55,7 @@ class GetTunnelsTunnel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channels': pulumi.Input.encodeList<GetTunnelsTunnelChannel, Map<String, dynamic>>(channels, (value) => value.toMap()),
+      'channels': pulumi.Input.mapInputValue<List<GetTunnelsTunnelChannel>, List<Map<String, dynamic>>>(channels, (value) => pulumi.Input.encodeList<GetTunnelsTunnelChannel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': createTime,
       'expired': expired,
       'id': id,
@@ -71,17 +71,17 @@ class GetTunnelsTunnel {
 
   factory GetTunnelsTunnel.fromMap(Map<String, dynamic> map) {
     return GetTunnelsTunnel(
-      channels: pulumi.Input.decodeList<GetTunnelsTunnelChannel>(map['channels'], (value) => GetTunnelsTunnelChannel.fromMap((value as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] as int,
-      expired: map['expired'] as bool,
-      id: map['id'] as String,
-      instanceName: map['instanceName'] as String,
-      tableName: map['tableName'] as String,
-      tunnelId: map['tunnelId'] as String,
-      tunnelName: map['tunnelName'] as String,
-      tunnelRpo: map['tunnelRpo'] as int,
-      tunnelStage: map['tunnelStage'] as String,
-      tunnelType: map['tunnelType'] as String,
+      channels: (pulumi.Input.decodeList<GetTunnelsTunnelChannel>(map['channels'], (value) => GetTunnelsTunnelChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: (map['createTime'] as int).input(),
+      expired: (map['expired'] as bool).input(),
+      id: (map['id'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      tunnelId: (map['tunnelId'] as String).input(),
+      tunnelName: (map['tunnelName'] as String).input(),
+      tunnelRpo: (map['tunnelRpo'] as int).input(),
+      tunnelStage: (map['tunnelStage'] as String).input(),
+      tunnelType: (map['tunnelType'] as String).input(),
     );
   }
 }

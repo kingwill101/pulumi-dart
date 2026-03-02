@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterClusterNode {
   /// Whether the node is a leader node or a compute node
-  final String nodeRole;
+  final pulumi.Input<String> nodeRole;
   /// Private IP address of a node within a cluster
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// Public IP address of a node within a cluster
-  final String publicIpAddress;
+  final pulumi.Input<String> publicIpAddress;
 
   /// Creates a new [GetClusterClusterNode].
   /// [nodeRole] Whether the node is a leader node or a compute node
@@ -29,9 +30,9 @@ class GetClusterClusterNode {
 
   factory GetClusterClusterNode.fromMap(Map<String, dynamic> map) {
     return GetClusterClusterNode(
-      nodeRole: map['nodeRole'] as String,
-      privateIpAddress: map['privateIpAddress'] as String,
-      publicIpAddress: map['publicIpAddress'] as String,
+      nodeRole: (map['nodeRole'] as String).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      publicIpAddress: (map['publicIpAddress'] as String).input(),
     );
   }
 }

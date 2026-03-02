@@ -16,11 +16,9 @@ class GetNetworkMonitorArgs {
   /// [networkMonitorName] Name of the Network Monitor.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNetworkMonitorArgs({
-    required pulumi.Output<String> networkMonitorName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkMonitorName = pulumi.Input.asInput<String>(networkMonitorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkMonitorName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkMonitorArgs {
 
   factory GetNetworkMonitorArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkMonitorArgs(
-      networkMonitorName: pulumi.Output.create<String>(map['networkMonitorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkMonitorName: (map['networkMonitorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

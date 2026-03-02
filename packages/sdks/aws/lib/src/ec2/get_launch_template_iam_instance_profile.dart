@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateIamInstanceProfile {
-  final String arn;
+  final pulumi.Input<String> arn;
   /// Name of the launch template.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetLaunchTemplateIamInstanceProfile].
   /// [arn] Required.
@@ -23,8 +24,8 @@ class GetLaunchTemplateIamInstanceProfile {
 
   factory GetLaunchTemplateIamInstanceProfile.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateIamInstanceProfile(
-      arn: map['arn'] as String,
-      name: map['name'] as String,
+      arn: (map['arn'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

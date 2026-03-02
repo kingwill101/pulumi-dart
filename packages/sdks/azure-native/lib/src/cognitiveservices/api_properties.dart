@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The api properties for special APIs.
 class ApiProperties {
   /// (Metrics Advisor Only) The Azure AD Client Id (Application Id).
-  final String? aadClientId;
+  final pulumi.Input<String>? aadClientId;
   /// (Metrics Advisor Only) The Azure AD Tenant Id.
-  final String? aadTenantId;
+  final pulumi.Input<String>? aadTenantId;
   /// (Personalization Only) The flag to enable statistics of Bing Search.
-  final String? eventHubConnectionString;
+  final pulumi.Input<String>? eventHubConnectionString;
   /// (QnAMaker Only) The Azure Search endpoint id of QnAMaker.
-  final String? qnaAzureSearchEndpointId;
+  final pulumi.Input<String>? qnaAzureSearchEndpointId;
   /// (QnAMaker Only) The Azure Search endpoint key of QnAMaker.
-  final String? qnaAzureSearchEndpointKey;
+  final pulumi.Input<String>? qnaAzureSearchEndpointKey;
   /// (QnAMaker Only) The runtime endpoint of QnAMaker.
-  final String? qnaRuntimeEndpoint;
+  final pulumi.Input<String>? qnaRuntimeEndpoint;
   /// (Bing Search Only) The flag to enable statistics of Bing Search.
-  final bool? statisticsEnabled;
+  final pulumi.Input<bool>? statisticsEnabled;
   /// (Personalization Only) The storage account connection string.
-  final String? storageAccountConnectionString;
+  final pulumi.Input<String>? storageAccountConnectionString;
   /// (Metrics Advisor Only) The super user of Metrics Advisor.
-  final String? superUser;
+  final pulumi.Input<String>? superUser;
   /// (Metrics Advisor Only) The website name of Metrics Advisor.
-  final String? websiteName;
+  final pulumi.Input<String>? websiteName;
 
   /// Creates a new [ApiProperties].
   /// [aadClientId] (Metrics Advisor Only) The Azure AD Client Id (Application Id).
@@ -65,16 +66,16 @@ class ApiProperties {
 
   factory ApiProperties.fromMap(Map<String, dynamic> map) {
     return ApiProperties(
-      aadClientId: map['aadClientId'] == null ? null : map['aadClientId'] as String,
-      aadTenantId: map['aadTenantId'] == null ? null : map['aadTenantId'] as String,
-      eventHubConnectionString: map['eventHubConnectionString'] == null ? null : map['eventHubConnectionString'] as String,
-      qnaAzureSearchEndpointId: map['qnaAzureSearchEndpointId'] == null ? null : map['qnaAzureSearchEndpointId'] as String,
-      qnaAzureSearchEndpointKey: map['qnaAzureSearchEndpointKey'] == null ? null : map['qnaAzureSearchEndpointKey'] as String,
-      qnaRuntimeEndpoint: map['qnaRuntimeEndpoint'] == null ? null : map['qnaRuntimeEndpoint'] as String,
-      statisticsEnabled: map['statisticsEnabled'] == null ? null : map['statisticsEnabled'] as bool,
-      storageAccountConnectionString: map['storageAccountConnectionString'] == null ? null : map['storageAccountConnectionString'] as String,
-      superUser: map['superUser'] == null ? null : map['superUser'] as String,
-      websiteName: map['websiteName'] == null ? null : map['websiteName'] as String,
+      aadClientId: map['aadClientId'] == null ? null : (map['aadClientId'] as String).input(),
+      aadTenantId: map['aadTenantId'] == null ? null : (map['aadTenantId'] as String).input(),
+      eventHubConnectionString: map['eventHubConnectionString'] == null ? null : (map['eventHubConnectionString'] as String).input(),
+      qnaAzureSearchEndpointId: map['qnaAzureSearchEndpointId'] == null ? null : (map['qnaAzureSearchEndpointId'] as String).input(),
+      qnaAzureSearchEndpointKey: map['qnaAzureSearchEndpointKey'] == null ? null : (map['qnaAzureSearchEndpointKey'] as String).input(),
+      qnaRuntimeEndpoint: map['qnaRuntimeEndpoint'] == null ? null : (map['qnaRuntimeEndpoint'] as String).input(),
+      statisticsEnabled: map['statisticsEnabled'] == null ? null : (map['statisticsEnabled'] as bool).input(),
+      storageAccountConnectionString: map['storageAccountConnectionString'] == null ? null : (map['storageAccountConnectionString'] as String).input(),
+      superUser: map['superUser'] == null ? null : (map['superUser'] as String).input(),
+      websiteName: map['websiteName'] == null ? null : (map['websiteName'] as String).input(),
     );
   }
 }

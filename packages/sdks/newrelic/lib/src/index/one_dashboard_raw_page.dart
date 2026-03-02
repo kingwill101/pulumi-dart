@@ -5,13 +5,13 @@ import 'one_dashboard_raw_page_widget.dart';
 
 class OneDashboardRawPage {
   /// Brief text describing the dashboard.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The unique entity identifier of the dashboard page in New Relic.
-  final String? guid;
+  final pulumi.Input<String>? guid;
   /// The title of the dashboard.
-  final String name;
+  final pulumi.Input<String> name;
   /// (Optional) A nested block that describes a widget. See Nested widget blocks below for details.
-  final List<OneDashboardRawPageWidget>? widgets;
+  final pulumi.Input<List<OneDashboardRawPageWidget>>? widgets;
 
   /// Creates a new [OneDashboardRawPage].
   /// [description] Brief text describing the dashboard.
@@ -30,16 +30,16 @@ class OneDashboardRawPage {
       'description': ?description,
       'guid': ?guid,
       'name': name,
-      'widgets': ?widgets == null ? null : pulumi.Input.encodeList<OneDashboardRawPageWidget, Map<String, dynamic>>(widgets!, (value) => value.toMap()),
+      'widgets': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardRawPageWidget>, List<Map<String, dynamic>>>(widgets, (value) => pulumi.Input.encodeList<OneDashboardRawPageWidget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OneDashboardRawPage.fromMap(Map<String, dynamic> map) {
     return OneDashboardRawPage(
-      description: map['description'] == null ? null : map['description'] as String,
-      guid: map['guid'] == null ? null : map['guid'] as String,
-      name: map['name'] as String,
-      widgets: map['widgets'] == null ? null : pulumi.Input.decodeList<OneDashboardRawPageWidget>(map['widgets'], (value) => OneDashboardRawPageWidget.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
+      name: (map['name'] as String).input(),
+      widgets: map['widgets'] == null ? null : (pulumi.Input.decodeList<OneDashboardRawPageWidget>(map['widgets'], (value) => OneDashboardRawPageWidget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

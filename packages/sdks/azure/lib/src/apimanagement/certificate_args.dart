@@ -37,21 +37,14 @@ class CertificateArgs {
   /// [password] The password used for this certificate.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   CertificateArgs({
-    required pulumi.Output<String> apiManagementName,
-    pulumi.Output<String>? data,
-    pulumi.Output<String>? keyVaultIdentityClientId,
-    pulumi.Output<String>? keyVaultSecretId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      data = pulumi.Input.asOptionalInput<String>(data),
-      keyVaultIdentityClientId = pulumi.Input.asOptionalInput<String>(keyVaultIdentityClientId),
-      keyVaultSecretId = pulumi.Input.asOptionalInput<String>(keyVaultSecretId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.apiManagementName,
+    this.data,
+    this.keyVaultIdentityClientId,
+    this.keyVaultSecretId,
+    this.name,
+    this.password,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      keyVaultIdentityClientId: map['keyVaultIdentityClientId'] == null ? null : pulumi.Output.create<String>(map['keyVaultIdentityClientId'] as String),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : pulumi.Output.create<String>(map['keyVaultSecretId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      keyVaultIdentityClientId: map['keyVaultIdentityClientId'] == null ? null : (map['keyVaultIdentityClientId'] as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

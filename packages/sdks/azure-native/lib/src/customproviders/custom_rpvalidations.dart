@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A validation to apply on custom resource provider requests.
 class CustomRPValidations {
   /// A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.
-  final String specification;
+  final pulumi.Input<String> specification;
   /// The type of validation to run against a matching request.
-  final String? validationType;
+  final pulumi.Input<String>? validationType;
 
   /// Creates a new [CustomRPValidations].
   /// [specification] A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.
@@ -25,8 +26,8 @@ class CustomRPValidations {
 
   factory CustomRPValidations.fromMap(Map<String, dynamic> map) {
     return CustomRPValidations(
-      specification: map['specification'] as String,
-      validationType: map['validationType'] == null ? null : map['validationType'] as String,
+      specification: (map['specification'] as String).input(),
+      validationType: map['validationType'] == null ? null : (map['validationType'] as String).input(),
     );
   }
 }

@@ -45,31 +45,19 @@ class BitbucketServerConfigArgs {
   /// [sslCa] Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
   /// [username] Username of the account Cloud Build will use on Bitbucket Server.
   BitbucketServerConfigArgs({
-    required pulumi.Output<String> apiKey,
-    pulumi.Output<String>? bitbucketServerConfigId,
-    pulumi.Output<String>? createTime,
-    required pulumi.Output<String> hostUri,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? peeredNetwork,
-    pulumi.Output<String>? peeredNetworkIpRange,
-    pulumi.Output<String>? project,
-    required pulumi.Output<BitbucketServerSecrets> secrets,
-    pulumi.Output<String>? sslCa,
-    pulumi.Output<String>? username,
-  }) :
-      apiKey = pulumi.Input.asInput<String>(apiKey),
-      bitbucketServerConfigId = pulumi.Input.asOptionalInput<String>(bitbucketServerConfigId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      hostUri = pulumi.Input.asInput<String>(hostUri),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peeredNetwork = pulumi.Input.asOptionalInput<String>(peeredNetwork),
-      peeredNetworkIpRange = pulumi.Input.asOptionalInput<String>(peeredNetworkIpRange),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secrets = pulumi.Input.asInput<BitbucketServerSecrets>(secrets),
-      sslCa = pulumi.Input.asOptionalInput<String>(sslCa),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    required this.apiKey,
+    this.bitbucketServerConfigId,
+    this.createTime,
+    required this.hostUri,
+    this.location,
+    this.name,
+    this.peeredNetwork,
+    this.peeredNetworkIpRange,
+    this.project,
+    required this.secrets,
+    this.sslCa,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class BitbucketServerConfigArgs {
 
   factory BitbucketServerConfigArgs.fromMap(Map<String, dynamic> map) {
     return BitbucketServerConfigArgs(
-      apiKey: pulumi.Output.create<String>(map['apiKey'] as String),
-      bitbucketServerConfigId: map['bitbucketServerConfigId'] == null ? null : pulumi.Output.create<String>(map['bitbucketServerConfigId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      hostUri: pulumi.Output.create<String>(map['hostUri'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peeredNetwork: map['peeredNetwork'] == null ? null : pulumi.Output.create<String>(map['peeredNetwork'] as String),
-      peeredNetworkIpRange: map['peeredNetworkIpRange'] == null ? null : pulumi.Output.create<String>(map['peeredNetworkIpRange'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secrets: pulumi.Output.create<BitbucketServerSecrets>(BitbucketServerSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())),
-      sslCa: map['sslCa'] == null ? null : pulumi.Output.create<String>(map['sslCa'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      apiKey: (map['apiKey'] as String).input(),
+      bitbucketServerConfigId: map['bitbucketServerConfigId'] == null ? null : (map['bitbucketServerConfigId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      hostUri: (map['hostUri'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peeredNetwork: map['peeredNetwork'] == null ? null : (map['peeredNetwork'] as String).input(),
+      peeredNetworkIpRange: map['peeredNetworkIpRange'] == null ? null : (map['peeredNetworkIpRange'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secrets: (BitbucketServerSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

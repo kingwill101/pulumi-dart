@@ -34,23 +34,15 @@ class RegistryAgentPoolArgs {
   /// [tier] Sets the VM your agent pool will run on. Valid values are: `S1` (2 vCPUs, 3 GiB RAM), `S2` (4 vCPUs, 8 GiB RAM), `S3` (8 vCPUs, 16 GiB RAM) or `I6` (64 vCPUs, 216 GiB RAM, Isolated). Defaults to `S1`. Changing this forces a new Azure Container Registry Agent Pool to be created.
   /// [virtualNetworkSubnetId] The ID of the Virtual Network Subnet Resource where the agent machines will be running. Changing this forces a new Azure Container Registry Agent Pool to be created.
   RegistryAgentPoolArgs({
-    required pulumi.Output<String> containerRegistryName,
-    pulumi.Output<int>? instanceCount,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tier,
-    pulumi.Output<String>? virtualNetworkSubnetId,
-  }) :
-      containerRegistryName = pulumi.Input.asInput<String>(containerRegistryName),
-      instanceCount = pulumi.Input.asOptionalInput<int>(instanceCount),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tier = pulumi.Input.asOptionalInput<String>(tier),
-      virtualNetworkSubnetId = pulumi.Input.asOptionalInput<String>(virtualNetworkSubnetId);
+    required this.containerRegistryName,
+    this.instanceCount,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+    this.tier,
+    this.virtualNetworkSubnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class RegistryAgentPoolArgs {
 
   factory RegistryAgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return RegistryAgentPoolArgs(
-      containerRegistryName: pulumi.Output.create<String>(map['containerRegistryName'] as String),
-      instanceCount: map['instanceCount'] == null ? null : pulumi.Output.create<int>(map['instanceCount'] as int),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tier: map['tier'] == null ? null : pulumi.Output.create<String>(map['tier'] as String),
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkSubnetId'] as String),
+      containerRegistryName: (map['containerRegistryName'] as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : (map['virtualNetworkSubnetId'] as String).input(),
     );
   }
 }

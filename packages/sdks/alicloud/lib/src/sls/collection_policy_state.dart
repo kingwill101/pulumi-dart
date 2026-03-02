@@ -41,25 +41,16 @@ class CollectionPolicyState {
   /// [productCode] Product code.
   /// [resourceDirectory] Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
   CollectionPolicyState({
-    pulumi.Output<CollectionPolicyCentralizeConfig>? centralizeConfig,
-    pulumi.Output<bool>? centralizeEnabled,
-    pulumi.Output<String>? dataCode,
-    pulumi.Output<CollectionPolicyDataConfig>? dataConfig,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<CollectionPolicyPolicyConfig>? policyConfig,
-    pulumi.Output<String>? policyName,
-    pulumi.Output<String>? productCode,
-    pulumi.Output<CollectionPolicyResourceDirectory>? resourceDirectory,
-  }) :
-      centralizeConfig = pulumi.Input.asOptionalInput<CollectionPolicyCentralizeConfig>(centralizeConfig),
-      centralizeEnabled = pulumi.Input.asOptionalInput<bool>(centralizeEnabled),
-      dataCode = pulumi.Input.asOptionalInput<String>(dataCode),
-      dataConfig = pulumi.Input.asOptionalInput<CollectionPolicyDataConfig>(dataConfig),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      policyConfig = pulumi.Input.asOptionalInput<CollectionPolicyPolicyConfig>(policyConfig),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      productCode = pulumi.Input.asOptionalInput<String>(productCode),
-      resourceDirectory = pulumi.Input.asOptionalInput<CollectionPolicyResourceDirectory>(resourceDirectory);
+    this.centralizeConfig,
+    this.centralizeEnabled,
+    this.dataCode,
+    this.dataConfig,
+    this.enabled,
+    this.policyConfig,
+    this.policyName,
+    this.productCode,
+    this.resourceDirectory,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class CollectionPolicyState {
 
   factory CollectionPolicyState.fromMap(Map<String, dynamic> map) {
     return CollectionPolicyState(
-      centralizeConfig: map['centralizeConfig'] == null ? null : pulumi.Output.create<CollectionPolicyCentralizeConfig>(CollectionPolicyCentralizeConfig.fromMap((map['centralizeConfig'] as Map).cast<String, dynamic>())),
-      centralizeEnabled: map['centralizeEnabled'] == null ? null : pulumi.Output.create<bool>(map['centralizeEnabled'] as bool),
-      dataCode: map['dataCode'] == null ? null : pulumi.Output.create<String>(map['dataCode'] as String),
-      dataConfig: map['dataConfig'] == null ? null : pulumi.Output.create<CollectionPolicyDataConfig>(CollectionPolicyDataConfig.fromMap((map['dataConfig'] as Map).cast<String, dynamic>())),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      policyConfig: map['policyConfig'] == null ? null : pulumi.Output.create<CollectionPolicyPolicyConfig>(CollectionPolicyPolicyConfig.fromMap((map['policyConfig'] as Map).cast<String, dynamic>())),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      productCode: map['productCode'] == null ? null : pulumi.Output.create<String>(map['productCode'] as String),
-      resourceDirectory: map['resourceDirectory'] == null ? null : pulumi.Output.create<CollectionPolicyResourceDirectory>(CollectionPolicyResourceDirectory.fromMap((map['resourceDirectory'] as Map).cast<String, dynamic>())),
+      centralizeConfig: map['centralizeConfig'] == null ? null : (CollectionPolicyCentralizeConfig.fromMap((map['centralizeConfig'] as Map).cast<String, dynamic>())).input(),
+      centralizeEnabled: map['centralizeEnabled'] == null ? null : (map['centralizeEnabled'] as bool).input(),
+      dataCode: map['dataCode'] == null ? null : (map['dataCode'] as String).input(),
+      dataConfig: map['dataConfig'] == null ? null : (CollectionPolicyDataConfig.fromMap((map['dataConfig'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      policyConfig: map['policyConfig'] == null ? null : (CollectionPolicyPolicyConfig.fromMap((map['policyConfig'] as Map).cast<String, dynamic>())).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
+      resourceDirectory: map['resourceDirectory'] == null ? null : (CollectionPolicyResourceDirectory.fromMap((map['resourceDirectory'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

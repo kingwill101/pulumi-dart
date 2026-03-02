@@ -52,35 +52,21 @@ class NetworkProfileArgs {
   /// [uplinkJitterMs] Time variation in the delay of received packets in milliseconds as an integer from `0` to `2000`.
   /// [uplinkLossPercent] Proportion of received packets that fail to arrive from `0` to `100` percent.
   NetworkProfileArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? downlinkBandwidthBits,
-    pulumi.Output<int>? downlinkDelayMs,
-    pulumi.Output<int>? downlinkJitterMs,
-    pulumi.Output<int>? downlinkLossPercent,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> projectArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-    pulumi.Output<int>? uplinkBandwidthBits,
-    pulumi.Output<int>? uplinkDelayMs,
-    pulumi.Output<int>? uplinkJitterMs,
-    pulumi.Output<int>? uplinkLossPercent,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      downlinkBandwidthBits = pulumi.Input.asOptionalInput<int>(downlinkBandwidthBits),
-      downlinkDelayMs = pulumi.Input.asOptionalInput<int>(downlinkDelayMs),
-      downlinkJitterMs = pulumi.Input.asOptionalInput<int>(downlinkJitterMs),
-      downlinkLossPercent = pulumi.Input.asOptionalInput<int>(downlinkLossPercent),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectArn = pulumi.Input.asInput<String>(projectArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      uplinkBandwidthBits = pulumi.Input.asOptionalInput<int>(uplinkBandwidthBits),
-      uplinkDelayMs = pulumi.Input.asOptionalInput<int>(uplinkDelayMs),
-      uplinkJitterMs = pulumi.Input.asOptionalInput<int>(uplinkJitterMs),
-      uplinkLossPercent = pulumi.Input.asOptionalInput<int>(uplinkLossPercent);
+    this.description,
+    this.downlinkBandwidthBits,
+    this.downlinkDelayMs,
+    this.downlinkJitterMs,
+    this.downlinkLossPercent,
+    this.name,
+    required this.projectArn,
+    this.region,
+    this.tags,
+    this.type,
+    this.uplinkBandwidthBits,
+    this.uplinkDelayMs,
+    this.uplinkJitterMs,
+    this.uplinkLossPercent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class NetworkProfileArgs {
 
   factory NetworkProfileArgs.fromMap(Map<String, dynamic> map) {
     return NetworkProfileArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      downlinkBandwidthBits: map['downlinkBandwidthBits'] == null ? null : pulumi.Output.create<int>(map['downlinkBandwidthBits'] as int),
-      downlinkDelayMs: map['downlinkDelayMs'] == null ? null : pulumi.Output.create<int>(map['downlinkDelayMs'] as int),
-      downlinkJitterMs: map['downlinkJitterMs'] == null ? null : pulumi.Output.create<int>(map['downlinkJitterMs'] as int),
-      downlinkLossPercent: map['downlinkLossPercent'] == null ? null : pulumi.Output.create<int>(map['downlinkLossPercent'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectArn: pulumi.Output.create<String>(map['projectArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      uplinkBandwidthBits: map['uplinkBandwidthBits'] == null ? null : pulumi.Output.create<int>(map['uplinkBandwidthBits'] as int),
-      uplinkDelayMs: map['uplinkDelayMs'] == null ? null : pulumi.Output.create<int>(map['uplinkDelayMs'] as int),
-      uplinkJitterMs: map['uplinkJitterMs'] == null ? null : pulumi.Output.create<int>(map['uplinkJitterMs'] as int),
-      uplinkLossPercent: map['uplinkLossPercent'] == null ? null : pulumi.Output.create<int>(map['uplinkLossPercent'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      downlinkBandwidthBits: map['downlinkBandwidthBits'] == null ? null : (map['downlinkBandwidthBits'] as int).input(),
+      downlinkDelayMs: map['downlinkDelayMs'] == null ? null : (map['downlinkDelayMs'] as int).input(),
+      downlinkJitterMs: map['downlinkJitterMs'] == null ? null : (map['downlinkJitterMs'] as int).input(),
+      downlinkLossPercent: map['downlinkLossPercent'] == null ? null : (map['downlinkLossPercent'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectArn: (map['projectArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      uplinkBandwidthBits: map['uplinkBandwidthBits'] == null ? null : (map['uplinkBandwidthBits'] as int).input(),
+      uplinkDelayMs: map['uplinkDelayMs'] == null ? null : (map['uplinkDelayMs'] as int).input(),
+      uplinkJitterMs: map['uplinkJitterMs'] == null ? null : (map['uplinkJitterMs'] as int).input(),
+      uplinkLossPercent: map['uplinkLossPercent'] == null ? null : (map['uplinkLossPercent'] as int).input(),
     );
   }
 }

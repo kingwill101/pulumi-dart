@@ -6,7 +6,7 @@ import 'config_management_policy_controller_monitoring_backends_item_gkehub_v1al
 /// PolicyControllerMonitoring specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
 class ConfigManagementPolicyControllerMonitoringGkehubV1alpha {
   /// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
-  final List<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha>? backends;
+  final pulumi.Input<List<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha>>? backends;
 
   /// Creates a new [ConfigManagementPolicyControllerMonitoringGkehubV1alpha].
   /// [backends] Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
@@ -16,13 +16,13 @@ class ConfigManagementPolicyControllerMonitoringGkehubV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backends': ?backends == null ? null : pulumi.Input.encodeList<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha, String>(backends!, (value) => value.value),
+      'backends': ?pulumi.Input.mapOptionalInputValue<List<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha>, List<String>>(backends, (value) => pulumi.Input.encodeList<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha, String>(value, (value) => value.value)),
     };
   }
 
   factory ConfigManagementPolicyControllerMonitoringGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return ConfigManagementPolicyControllerMonitoringGkehubV1alpha(
-      backends: map['backends'] == null ? null : pulumi.Input.decodeList<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha>(map['backends'], (value) => ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha.fromValue(value as String)),
+      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha>(map['backends'], (value) => ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha.fromValue(value as String))).input(),
     );
   }
 }

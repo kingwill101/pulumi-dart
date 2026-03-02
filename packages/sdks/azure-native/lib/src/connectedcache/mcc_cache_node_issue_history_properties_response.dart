@@ -6,11 +6,11 @@ import 'mcc_issue_response.dart';
 /// Mcc cache node resource issue history properties.
 class MccCacheNodeIssueHistoryPropertiesResponse {
   /// Mcc cache node resource Id.
-  final String cacheNodeId;
+  final pulumi.Input<String> cacheNodeId;
   /// Mcc customer resource Id.
-  final String customerId;
+  final pulumi.Input<String> customerId;
   /// Cache node resource issue details history.
-  final List<MccIssueResponse>? mccIssueHistory;
+  final pulumi.Input<List<MccIssueResponse>>? mccIssueHistory;
 
   /// Creates a new [MccCacheNodeIssueHistoryPropertiesResponse].
   /// [cacheNodeId] Mcc cache node resource Id.
@@ -26,15 +26,15 @@ class MccCacheNodeIssueHistoryPropertiesResponse {
     return <String, dynamic>{
       'cacheNodeId': cacheNodeId,
       'customerId': customerId,
-      'mccIssueHistory': ?mccIssueHistory == null ? null : pulumi.Input.encodeList<MccIssueResponse, Map<String, dynamic>>(mccIssueHistory!, (value) => value.toMap()),
+      'mccIssueHistory': ?pulumi.Input.mapOptionalInputValue<List<MccIssueResponse>, List<Map<String, dynamic>>>(mccIssueHistory, (value) => pulumi.Input.encodeList<MccIssueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MccCacheNodeIssueHistoryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MccCacheNodeIssueHistoryPropertiesResponse(
-      cacheNodeId: map['cacheNodeId'] as String,
-      customerId: map['customerId'] as String,
-      mccIssueHistory: map['mccIssueHistory'] == null ? null : pulumi.Input.decodeList<MccIssueResponse>(map['mccIssueHistory'], (value) => MccIssueResponse.fromMap((value as Map).cast<String, dynamic>())),
+      cacheNodeId: (map['cacheNodeId'] as String).input(),
+      customerId: (map['customerId'] as String).input(),
+      mccIssueHistory: map['mccIssueHistory'] == null ? null : (pulumi.Input.decodeList<MccIssueResponse>(map['mccIssueHistory'], (value) => MccIssueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

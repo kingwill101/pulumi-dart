@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterMaintenancePolicyDailyMaintenanceWindow {
-  final String duration;
-  final String startTime;
+  final pulumi.Input<String> duration;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [GetClusterMaintenancePolicyDailyMaintenanceWindow].
   /// [duration] Required.
@@ -22,8 +23,8 @@ class GetClusterMaintenancePolicyDailyMaintenanceWindow {
 
   factory GetClusterMaintenancePolicyDailyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetClusterMaintenancePolicyDailyMaintenanceWindow(
-      duration: map['duration'] as String,
-      startTime: map['startTime'] as String,
+      duration: (map['duration'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

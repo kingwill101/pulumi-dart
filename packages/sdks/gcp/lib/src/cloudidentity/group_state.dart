@@ -55,27 +55,17 @@ class GroupState {
   /// [parent] The resource name of the entity under which this Group resides in the
   /// [updateTime] The time when the Group was last updated.
   GroupState({
-    pulumi.Output<List<GroupAdditionalGroupKey>>? additionalGroupKeys,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GroupGroupKey>? groupKey,
-    pulumi.Output<String>? initialGroupConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? updateTime,
-  }) :
-      additionalGroupKeys = pulumi.Input.asOptionalInput<List<GroupAdditionalGroupKey>>(additionalGroupKeys),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      groupKey = pulumi.Input.asOptionalInput<GroupGroupKey>(groupKey),
-      initialGroupConfig = pulumi.Input.asOptionalInput<String>(initialGroupConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.additionalGroupKeys,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.groupKey,
+    this.initialGroupConfig,
+    this.labels,
+    this.name,
+    this.parent,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,16 +84,16 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      additionalGroupKeys: map['additionalGroupKeys'] == null ? null : pulumi.Output.create<List<GroupAdditionalGroupKey>>(pulumi.Input.decodeList<GroupAdditionalGroupKey>(map['additionalGroupKeys'], (value) => GroupAdditionalGroupKey.fromMap((value as Map).cast<String, dynamic>()))),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      groupKey: map['groupKey'] == null ? null : pulumi.Output.create<GroupGroupKey>(GroupGroupKey.fromMap((map['groupKey'] as Map).cast<String, dynamic>())),
-      initialGroupConfig: map['initialGroupConfig'] == null ? null : pulumi.Output.create<String>(map['initialGroupConfig'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      additionalGroupKeys: map['additionalGroupKeys'] == null ? null : (pulumi.Input.decodeList<GroupAdditionalGroupKey>(map['additionalGroupKeys'], (value) => GroupAdditionalGroupKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      groupKey: map['groupKey'] == null ? null : (GroupGroupKey.fromMap((map['groupKey'] as Map).cast<String, dynamic>())).input(),
+      initialGroupConfig: map['initialGroupConfig'] == null ? null : (map['initialGroupConfig'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

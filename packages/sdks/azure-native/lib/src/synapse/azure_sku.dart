@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure SKU definition.
 class AzureSku {
   /// The number of instances of the cluster.
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// SKU name.
-  final String name;
+  final pulumi.Input<String> name;
   /// SKU size.
-  final String size;
+  final pulumi.Input<String> size;
 
   /// Creates a new [AzureSku].
   /// [capacity] The number of instances of the cluster.
@@ -30,9 +31,9 @@ class AzureSku {
 
   factory AzureSku.fromMap(Map<String, dynamic> map) {
     return AzureSku(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      name: map['name'] as String,
-      size: map['size'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      name: (map['name'] as String).input(),
+      size: (map['size'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The retry policy for the user request
 class RetryPolicy {
   /// Retry count for user request
-  final int? retryCount;
+  final pulumi.Input<int>? retryCount;
   /// Retry window in minutes for user request
-  final int? retryWindowInMinutes;
+  final pulumi.Input<int>? retryWindowInMinutes;
 
   /// Creates a new [RetryPolicy].
   /// [retryCount] Retry count for user request
@@ -25,8 +26,8 @@ class RetryPolicy {
 
   factory RetryPolicy.fromMap(Map<String, dynamic> map) {
     return RetryPolicy(
-      retryCount: map['retryCount'] == null ? null : map['retryCount'] as int,
-      retryWindowInMinutes: map['retryWindowInMinutes'] == null ? null : map['retryWindowInMinutes'] as int,
+      retryCount: map['retryCount'] == null ? null : (map['retryCount'] as int).input(),
+      retryWindowInMinutes: map['retryWindowInMinutes'] == null ? null : (map['retryWindowInMinutes'] as int).input(),
     );
   }
 }

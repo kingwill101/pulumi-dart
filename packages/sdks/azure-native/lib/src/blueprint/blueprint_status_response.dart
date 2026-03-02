@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The status of the blueprint. This field is readonly.
 class BlueprintStatusResponse {
   /// Last modified time of this blueprint definition.
-  final String lastModified;
+  final pulumi.Input<String> lastModified;
   /// Creation time of this blueprint definition.
-  final String timeCreated;
+  final pulumi.Input<String> timeCreated;
 
   /// Creates a new [BlueprintStatusResponse].
   /// [lastModified] Last modified time of this blueprint definition.
@@ -25,8 +26,8 @@ class BlueprintStatusResponse {
 
   factory BlueprintStatusResponse.fromMap(Map<String, dynamic> map) {
     return BlueprintStatusResponse(
-      lastModified: map['lastModified'] as String,
-      timeCreated: map['timeCreated'] as String,
+      lastModified: (map['lastModified'] as String).input(),
+      timeCreated: (map['timeCreated'] as String).input(),
     );
   }
 }

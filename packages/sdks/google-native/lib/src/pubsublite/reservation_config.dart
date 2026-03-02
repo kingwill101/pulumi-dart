@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The settings for this topic's Reservation usage.
 class ReservationConfig {
   /// The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
-  final String? throughputReservation;
+  final pulumi.Input<String>? throughputReservation;
 
   /// Creates a new [ReservationConfig].
   /// [throughputReservation] The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
@@ -20,7 +21,7 @@ class ReservationConfig {
 
   factory ReservationConfig.fromMap(Map<String, dynamic> map) {
     return ReservationConfig(
-      throughputReservation: map['throughputReservation'] == null ? null : map['throughputReservation'] as String,
+      throughputReservation: map['throughputReservation'] == null ? null : (map['throughputReservation'] as String).input(),
     );
   }
 }

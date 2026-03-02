@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PullRequestFilter contains filter properties for matching GitHub Pull Requests.
 class PullRequestFilterResponse {
   /// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-  final String branch;
+  final pulumi.Input<String> branch;
   /// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
-  final String commentControl;
+  final pulumi.Input<String> commentControl;
   /// If true, branches that do NOT match the git_ref will trigger a build.
-  final bool invertRegex;
+  final pulumi.Input<bool> invertRegex;
 
   /// Creates a new [PullRequestFilterResponse].
   /// [branch] Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -30,9 +31,9 @@ class PullRequestFilterResponse {
 
   factory PullRequestFilterResponse.fromMap(Map<String, dynamic> map) {
     return PullRequestFilterResponse(
-      branch: map['branch'] as String,
-      commentControl: map['commentControl'] as String,
-      invertRegex: map['invertRegex'] as bool,
+      branch: (map['branch'] as String).input(),
+      commentControl: (map['commentControl'] as String).input(),
+      invertRegex: (map['invertRegex'] as bool).input(),
     );
   }
 }

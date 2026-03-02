@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataQualityRulesRuleRangeExpectation {
   /// The maximum column value allowed for a row to pass this validation.
-  final String maxValue;
+  final pulumi.Input<String> maxValue;
   /// The minimum column value allowed for a row to pass this validation.
-  final String minValue;
+  final pulumi.Input<String> minValue;
   /// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
-  final bool strictMaxEnabled;
+  final pulumi.Input<bool> strictMaxEnabled;
   /// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
-  final bool strictMinEnabled;
+  final pulumi.Input<bool> strictMinEnabled;
 
   /// Creates a new [GetDataQualityRulesRuleRangeExpectation].
   /// [maxValue] The maximum column value allowed for a row to pass this validation.
@@ -34,10 +35,10 @@ class GetDataQualityRulesRuleRangeExpectation {
 
   factory GetDataQualityRulesRuleRangeExpectation.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesRuleRangeExpectation(
-      maxValue: map['maxValue'] as String,
-      minValue: map['minValue'] as String,
-      strictMaxEnabled: map['strictMaxEnabled'] as bool,
-      strictMinEnabled: map['strictMinEnabled'] as bool,
+      maxValue: (map['maxValue'] as String).input(),
+      minValue: (map['minValue'] as String).input(),
+      strictMaxEnabled: (map['strictMaxEnabled'] as bool).input(),
+      strictMinEnabled: (map['strictMinEnabled'] as bool).input(),
     );
   }
 }

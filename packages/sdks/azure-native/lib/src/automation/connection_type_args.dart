@@ -29,19 +29,13 @@ class ConnectionTypeArgs {
   /// [name] Gets or sets the name of the connection type.
   /// [resourceGroupName] Name of an Azure Resource group.
   ConnectionTypeArgs({
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<String>? connectionTypeName,
-    required pulumi.Output<Map<String, FieldDefinition>> fieldDefinitions,
-    pulumi.Output<bool>? isGlobal,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      connectionTypeName = pulumi.Input.asOptionalInput<String>(connectionTypeName),
-      fieldDefinitions = pulumi.Input.asInput<Map<String, FieldDefinition>>(fieldDefinitions),
-      isGlobal = pulumi.Input.asOptionalInput<bool>(isGlobal),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    this.connectionTypeName,
+    required this.fieldDefinitions,
+    this.isGlobal,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ConnectionTypeArgs {
 
   factory ConnectionTypeArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionTypeArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      connectionTypeName: map['connectionTypeName'] == null ? null : pulumi.Output.create<String>(map['connectionTypeName'] as String),
-      fieldDefinitions: pulumi.Output.create<Map<String, FieldDefinition>>(pulumi.Input.decodeMapValues<FieldDefinition>(map['fieldDefinitions'], (value) => FieldDefinition.fromMap((value as Map).cast<String, dynamic>()))),
-      isGlobal: map['isGlobal'] == null ? null : pulumi.Output.create<bool>(map['isGlobal'] as bool),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      connectionTypeName: map['connectionTypeName'] == null ? null : (map['connectionTypeName'] as String).input(),
+      fieldDefinitions: (pulumi.Input.decodeMapValues<FieldDefinition>(map['fieldDefinitions'], (value) => FieldDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal'] as bool).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

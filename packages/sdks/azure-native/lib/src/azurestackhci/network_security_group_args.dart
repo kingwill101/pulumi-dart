@@ -26,17 +26,12 @@ class NetworkSecurityGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   NetworkSecurityGroupArgs({
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? networkSecurityGroupName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkSecurityGroupName = pulumi.Input.asOptionalInput<String>(networkSecurityGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.extendedLocation,
+    this.location,
+    this.networkSecurityGroupName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class NetworkSecurityGroupArgs {
 
   factory NetworkSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkSecurityGroupName: map['networkSecurityGroupName'] == null ? null : pulumi.Output.create<String>(map['networkSecurityGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkSecurityGroupName: map['networkSecurityGroupName'] == null ? null : (map['networkSecurityGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

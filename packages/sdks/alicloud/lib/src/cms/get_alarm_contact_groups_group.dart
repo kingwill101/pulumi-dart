@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlarmContactGroupsGroup {
   /// The name of Alarm Contact Group.
-  final String alarmContactGroupName;
+  final pulumi.Input<String> alarmContactGroupName;
   /// The alarm contacts in the alarm group.
-  final List<String> contacts;
+  final pulumi.Input<List<String>> contacts;
   /// The description of the Alarm Group.
-  final String describe;
+  final pulumi.Input<String> describe;
   /// Indicates whether the alarm group subscribes to weekly reports.
-  final bool enableSubscribed;
+  final pulumi.Input<bool> enableSubscribed;
   /// The ID of the CMS.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetAlarmContactGroupsGroup].
   /// [alarmContactGroupName] The name of Alarm Contact Group.
@@ -39,11 +40,11 @@ class GetAlarmContactGroupsGroup {
 
   factory GetAlarmContactGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetAlarmContactGroupsGroup(
-      alarmContactGroupName: map['alarmContactGroupName'] as String,
-      contacts: (map['contacts'] as List).cast<String>(),
-      describe: map['describe'] as String,
-      enableSubscribed: map['enableSubscribed'] as bool,
-      id: map['id'] as String,
+      alarmContactGroupName: (map['alarmContactGroupName'] as String).input(),
+      contacts: ((map['contacts'] as List).cast<String>()).input(),
+      describe: (map['describe'] as String).input(),
+      enableSubscribed: (map['enableSubscribed'] as bool).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

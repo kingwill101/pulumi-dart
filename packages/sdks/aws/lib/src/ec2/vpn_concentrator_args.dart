@@ -24,15 +24,11 @@ class VpnConcentratorArgs {
   /// [transitGatewayId] ID of the transit gateway to attach the VPN concentrator to.
   /// [type] Type of VPN concentrator. Valid value: `ipsec.1`.
   VpnConcentratorArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> transitGatewayId,
-    required pulumi.Output<String> type,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayId = pulumi.Input.asInput<String>(transitGatewayId),
-      type = pulumi.Input.asInput<String>(type);
+    this.region,
+    this.tags,
+    required this.transitGatewayId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class VpnConcentratorArgs {
 
   factory VpnConcentratorArgs.fromMap(Map<String, dynamic> map) {
     return VpnConcentratorArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayId: pulumi.Output.create<String>(map['transitGatewayId'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayId: (map['transitGatewayId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

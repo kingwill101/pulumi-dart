@@ -22,15 +22,11 @@ class GetGremlinResourceGremlinGraphArgs {
   /// [graphName] Cosmos DB graph name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetGremlinResourceGremlinGraphArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> graphName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      graphName = pulumi.Input.asInput<String>(graphName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.databaseName,
+    required this.graphName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetGremlinResourceGremlinGraphArgs {
 
   factory GetGremlinResourceGremlinGraphArgs.fromMap(Map<String, dynamic> map) {
     return GetGremlinResourceGremlinGraphArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      graphName: pulumi.Output.create<String>(map['graphName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      graphName: (map['graphName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

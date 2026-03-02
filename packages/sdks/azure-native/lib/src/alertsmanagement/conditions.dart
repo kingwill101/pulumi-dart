@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'condition.dart';
 
 /// Conditions in alert instance to be matched for a given action rule. Default value is all. Multiple values could be provided with comma separation.
 class Conditions {
   /// filter alerts by alert context (payload)
-  final Condition? alertContext;
+  final pulumi.Input<Condition>? alertContext;
   /// filter alerts by alert rule id
-  final Condition? alertRuleId;
+  final pulumi.Input<Condition>? alertRuleId;
   /// filter alerts by alert rule name
-  final Condition? alertRuleName;
+  final pulumi.Input<Condition>? alertRuleName;
   /// filter alerts by alert rule description
-  final Condition? description;
+  final pulumi.Input<Condition>? description;
   /// filter alerts by monitor condition
-  final Condition? monitorCondition;
+  final pulumi.Input<Condition>? monitorCondition;
   /// filter alerts by monitor service
-  final Condition? monitorService;
+  final pulumi.Input<Condition>? monitorService;
   /// filter alerts by severity
-  final Condition? severity;
+  final pulumi.Input<Condition>? severity;
   /// filter alerts by target resource type
-  final Condition? targetResourceType;
+  final pulumi.Input<Condition>? targetResourceType;
 
   /// Creates a new [Conditions].
   /// [alertContext] filter alerts by alert context (payload)
@@ -43,27 +44,27 @@ class Conditions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alertContext': ?alertContext == null ? null : alertContext!.toMap(),
-      'alertRuleId': ?alertRuleId == null ? null : alertRuleId!.toMap(),
-      'alertRuleName': ?alertRuleName == null ? null : alertRuleName!.toMap(),
-      'description': ?description == null ? null : description!.toMap(),
-      'monitorCondition': ?monitorCondition == null ? null : monitorCondition!.toMap(),
-      'monitorService': ?monitorService == null ? null : monitorService!.toMap(),
-      'severity': ?severity == null ? null : severity!.toMap(),
-      'targetResourceType': ?targetResourceType == null ? null : targetResourceType!.toMap(),
+      'alertContext': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(alertContext, (value) => value.toMap()),
+      'alertRuleId': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(alertRuleId, (value) => value.toMap()),
+      'alertRuleName': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(alertRuleName, (value) => value.toMap()),
+      'description': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(description, (value) => value.toMap()),
+      'monitorCondition': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(monitorCondition, (value) => value.toMap()),
+      'monitorService': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(monitorService, (value) => value.toMap()),
+      'severity': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(severity, (value) => value.toMap()),
+      'targetResourceType': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(targetResourceType, (value) => value.toMap()),
     };
   }
 
   factory Conditions.fromMap(Map<String, dynamic> map) {
     return Conditions(
-      alertContext: map['alertContext'] == null ? null : Condition.fromMap((map['alertContext'] as Map).cast<String, dynamic>()),
-      alertRuleId: map['alertRuleId'] == null ? null : Condition.fromMap((map['alertRuleId'] as Map).cast<String, dynamic>()),
-      alertRuleName: map['alertRuleName'] == null ? null : Condition.fromMap((map['alertRuleName'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : Condition.fromMap((map['description'] as Map).cast<String, dynamic>()),
-      monitorCondition: map['monitorCondition'] == null ? null : Condition.fromMap((map['monitorCondition'] as Map).cast<String, dynamic>()),
-      monitorService: map['monitorService'] == null ? null : Condition.fromMap((map['monitorService'] as Map).cast<String, dynamic>()),
-      severity: map['severity'] == null ? null : Condition.fromMap((map['severity'] as Map).cast<String, dynamic>()),
-      targetResourceType: map['targetResourceType'] == null ? null : Condition.fromMap((map['targetResourceType'] as Map).cast<String, dynamic>()),
+      alertContext: map['alertContext'] == null ? null : (Condition.fromMap((map['alertContext'] as Map).cast<String, dynamic>())).input(),
+      alertRuleId: map['alertRuleId'] == null ? null : (Condition.fromMap((map['alertRuleId'] as Map).cast<String, dynamic>())).input(),
+      alertRuleName: map['alertRuleName'] == null ? null : (Condition.fromMap((map['alertRuleName'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (Condition.fromMap((map['description'] as Map).cast<String, dynamic>())).input(),
+      monitorCondition: map['monitorCondition'] == null ? null : (Condition.fromMap((map['monitorCondition'] as Map).cast<String, dynamic>())).input(),
+      monitorService: map['monitorService'] == null ? null : (Condition.fromMap((map['monitorService'] as Map).cast<String, dynamic>())).input(),
+      severity: map['severity'] == null ? null : (Condition.fromMap((map['severity'] as Map).cast<String, dynamic>())).input(),
+      targetResourceType: map['targetResourceType'] == null ? null : (Condition.fromMap((map['targetResourceType'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

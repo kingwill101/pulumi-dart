@@ -37,23 +37,15 @@ class TraceScopeState {
   /// [traceScopeId] A client-assigned identifier for the trace scope.
   /// [updateTime] The last update timestamp of the trace scope.
   TraceScopeState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? resourceNames,
-    pulumi.Output<String>? traceScopeId,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceNames = pulumi.Input.asOptionalInput<List<String>>(resourceNames),
-      traceScopeId = pulumi.Input.asOptionalInput<String>(traceScopeId),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.location,
+    this.name,
+    this.project,
+    this.resourceNames,
+    this.traceScopeId,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class TraceScopeState {
 
   factory TraceScopeState.fromMap(Map<String, dynamic> map) {
     return TraceScopeState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceNames: map['resourceNames'] == null ? null : pulumi.Output.create<List<String>>((map['resourceNames'] as List).cast<String>()),
-      traceScopeId: map['traceScopeId'] == null ? null : pulumi.Output.create<String>(map['traceScopeId'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames'] as List).cast<String>()).input(),
+      traceScopeId: map['traceScopeId'] == null ? null : (map['traceScopeId'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

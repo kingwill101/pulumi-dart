@@ -7,17 +7,17 @@ import 'http_route_query_parameter_match_networkservices_v1beta1.dart';
 /// RouteMatch defines specifications used to match requests. If multiple match types are set, this RouteMatch will match if ALL type of matches are matched.
 class HttpRouteRouteMatchNetworkservicesV1beta1 {
   /// The HTTP request path value should exactly match this value. Only one of full_path_match, prefix_match, or regex_match should be used.
-  final String? fullPathMatch;
+  final pulumi.Input<String>? fullPathMatch;
   /// Specifies a list of HTTP request headers to match against. ALL of the supplied headers must be matched.
-  final List<HttpRouteHeaderMatchNetworkservicesV1beta1>? headers;
+  final pulumi.Input<List<HttpRouteHeaderMatchNetworkservicesV1beta1>>? headers;
   /// Specifies if prefix_match and full_path_match matches are case sensitive. The default value is false.
-  final bool? ignoreCase;
+  final pulumi.Input<bool>? ignoreCase;
   /// The HTTP request path value must begin with specified prefix_match. prefix_match must begin with a /. Only one of full_path_match, prefix_match, or regex_match should be used.
-  final String? prefixMatch;
+  final pulumi.Input<String>? prefixMatch;
   /// Specifies a list of query parameters to match against. ALL of the query parameters must be matched.
-  final List<HttpRouteQueryParameterMatchNetworkservicesV1beta1>? queryParameters;
+  final pulumi.Input<List<HttpRouteQueryParameterMatchNetworkservicesV1beta1>>? queryParameters;
   /// The HTTP request path value must satisfy the regular expression specified by regex_match after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax Only one of full_path_match, prefix_match, or regex_match should be used.
-  final String? regexMatch;
+  final pulumi.Input<String>? regexMatch;
 
   /// Creates a new [HttpRouteRouteMatchNetworkservicesV1beta1].
   /// [fullPathMatch] The HTTP request path value should exactly match this value. Only one of full_path_match, prefix_match, or regex_match should be used.
@@ -38,22 +38,22 @@ class HttpRouteRouteMatchNetworkservicesV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fullPathMatch': ?fullPathMatch,
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<HttpRouteHeaderMatchNetworkservicesV1beta1, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<HttpRouteHeaderMatchNetworkservicesV1beta1>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<HttpRouteHeaderMatchNetworkservicesV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ignoreCase': ?ignoreCase,
       'prefixMatch': ?prefixMatch,
-      'queryParameters': ?queryParameters == null ? null : pulumi.Input.encodeList<HttpRouteQueryParameterMatchNetworkservicesV1beta1, Map<String, dynamic>>(queryParameters!, (value) => value.toMap()),
+      'queryParameters': ?pulumi.Input.mapOptionalInputValue<List<HttpRouteQueryParameterMatchNetworkservicesV1beta1>, List<Map<String, dynamic>>>(queryParameters, (value) => pulumi.Input.encodeList<HttpRouteQueryParameterMatchNetworkservicesV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'regexMatch': ?regexMatch,
     };
   }
 
   factory HttpRouteRouteMatchNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteRouteMatchNetworkservicesV1beta1(
-      fullPathMatch: map['fullPathMatch'] == null ? null : map['fullPathMatch'] as String,
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<HttpRouteHeaderMatchNetworkservicesV1beta1>(map['headers'], (value) => HttpRouteHeaderMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      ignoreCase: map['ignoreCase'] == null ? null : map['ignoreCase'] as bool,
-      prefixMatch: map['prefixMatch'] == null ? null : map['prefixMatch'] as String,
-      queryParameters: map['queryParameters'] == null ? null : pulumi.Input.decodeList<HttpRouteQueryParameterMatchNetworkservicesV1beta1>(map['queryParameters'], (value) => HttpRouteQueryParameterMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      regexMatch: map['regexMatch'] == null ? null : map['regexMatch'] as String,
+      fullPathMatch: map['fullPathMatch'] == null ? null : (map['fullPathMatch'] as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HttpRouteHeaderMatchNetworkservicesV1beta1>(map['headers'], (value) => HttpRouteHeaderMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
+      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch'] as String).input(),
+      queryParameters: map['queryParameters'] == null ? null : (pulumi.Input.decodeList<HttpRouteQueryParameterMatchNetworkservicesV1beta1>(map['queryParameters'], (value) => HttpRouteQueryParameterMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch'] as String).input(),
     );
   }
 }

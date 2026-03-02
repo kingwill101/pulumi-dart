@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
   /// Specific uri to the registry, e.g. `"https://pypi.io"`
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository].
   /// [uri] Specific uri to the registry, e.g. `"https://pypi.io"`
@@ -19,7 +20,7 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
 
   factory RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository(
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

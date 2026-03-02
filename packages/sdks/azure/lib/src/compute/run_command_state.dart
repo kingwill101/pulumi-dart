@@ -54,35 +54,21 @@ class RunCommandState {
   /// [tags] A mapping of tags which should be assigned to the Virtual Machine Run Command.
   /// [virtualMachineId] Specifies the Virtual Machine ID within which this Virtual Machine Run Command should exist. Changing this forces a new Virtual Machine Run Command to be created.
   RunCommandState({
-    pulumi.Output<RunCommandErrorBlobManagedIdentity>? errorBlobManagedIdentity,
-    pulumi.Output<String>? errorBlobUri,
-    pulumi.Output<List<RunCommandInstanceView>>? instanceViews,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<RunCommandOutputBlobManagedIdentity>? outputBlobManagedIdentity,
-    pulumi.Output<String>? outputBlobUri,
-    pulumi.Output<List<RunCommandParameter>>? parameters,
-    pulumi.Output<List<RunCommandProtectedParameter>>? protectedParameters,
-    pulumi.Output<String>? runAsPassword,
-    pulumi.Output<String>? runAsUser,
-    pulumi.Output<RunCommandSource>? source,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? virtualMachineId,
-  }) :
-      errorBlobManagedIdentity = pulumi.Input.asOptionalInput<RunCommandErrorBlobManagedIdentity>(errorBlobManagedIdentity),
-      errorBlobUri = pulumi.Input.asOptionalInput<String>(errorBlobUri),
-      instanceViews = pulumi.Input.asOptionalInput<List<RunCommandInstanceView>>(instanceViews),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputBlobManagedIdentity = pulumi.Input.asOptionalInput<RunCommandOutputBlobManagedIdentity>(outputBlobManagedIdentity),
-      outputBlobUri = pulumi.Input.asOptionalInput<String>(outputBlobUri),
-      parameters = pulumi.Input.asOptionalInput<List<RunCommandParameter>>(parameters),
-      protectedParameters = pulumi.Input.asOptionalInput<List<RunCommandProtectedParameter>>(protectedParameters),
-      runAsPassword = pulumi.Input.asOptionalInput<String>(runAsPassword),
-      runAsUser = pulumi.Input.asOptionalInput<String>(runAsUser),
-      source = pulumi.Input.asOptionalInput<RunCommandSource>(source),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualMachineId = pulumi.Input.asOptionalInput<String>(virtualMachineId);
+    this.errorBlobManagedIdentity,
+    this.errorBlobUri,
+    this.instanceViews,
+    this.location,
+    this.name,
+    this.outputBlobManagedIdentity,
+    this.outputBlobUri,
+    this.parameters,
+    this.protectedParameters,
+    this.runAsPassword,
+    this.runAsUser,
+    this.source,
+    this.tags,
+    this.virtualMachineId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class RunCommandState {
 
   factory RunCommandState.fromMap(Map<String, dynamic> map) {
     return RunCommandState(
-      errorBlobManagedIdentity: map['errorBlobManagedIdentity'] == null ? null : pulumi.Output.create<RunCommandErrorBlobManagedIdentity>(RunCommandErrorBlobManagedIdentity.fromMap((map['errorBlobManagedIdentity'] as Map).cast<String, dynamic>())),
-      errorBlobUri: map['errorBlobUri'] == null ? null : pulumi.Output.create<String>(map['errorBlobUri'] as String),
-      instanceViews: map['instanceViews'] == null ? null : pulumi.Output.create<List<RunCommandInstanceView>>(pulumi.Input.decodeList<RunCommandInstanceView>(map['instanceViews'], (value) => RunCommandInstanceView.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputBlobManagedIdentity: map['outputBlobManagedIdentity'] == null ? null : pulumi.Output.create<RunCommandOutputBlobManagedIdentity>(RunCommandOutputBlobManagedIdentity.fromMap((map['outputBlobManagedIdentity'] as Map).cast<String, dynamic>())),
-      outputBlobUri: map['outputBlobUri'] == null ? null : pulumi.Output.create<String>(map['outputBlobUri'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<RunCommandParameter>>(pulumi.Input.decodeList<RunCommandParameter>(map['parameters'], (value) => RunCommandParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      protectedParameters: map['protectedParameters'] == null ? null : pulumi.Output.create<List<RunCommandProtectedParameter>>(pulumi.Input.decodeList<RunCommandProtectedParameter>(map['protectedParameters'], (value) => RunCommandProtectedParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      runAsPassword: map['runAsPassword'] == null ? null : pulumi.Output.create<String>(map['runAsPassword'] as String),
-      runAsUser: map['runAsUser'] == null ? null : pulumi.Output.create<String>(map['runAsUser'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<RunCommandSource>(RunCommandSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualMachineId: map['virtualMachineId'] == null ? null : pulumi.Output.create<String>(map['virtualMachineId'] as String),
+      errorBlobManagedIdentity: map['errorBlobManagedIdentity'] == null ? null : (RunCommandErrorBlobManagedIdentity.fromMap((map['errorBlobManagedIdentity'] as Map).cast<String, dynamic>())).input(),
+      errorBlobUri: map['errorBlobUri'] == null ? null : (map['errorBlobUri'] as String).input(),
+      instanceViews: map['instanceViews'] == null ? null : (pulumi.Input.decodeList<RunCommandInstanceView>(map['instanceViews'], (value) => RunCommandInstanceView.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputBlobManagedIdentity: map['outputBlobManagedIdentity'] == null ? null : (RunCommandOutputBlobManagedIdentity.fromMap((map['outputBlobManagedIdentity'] as Map).cast<String, dynamic>())).input(),
+      outputBlobUri: map['outputBlobUri'] == null ? null : (map['outputBlobUri'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<RunCommandParameter>(map['parameters'], (value) => RunCommandParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectedParameters: map['protectedParameters'] == null ? null : (pulumi.Input.decodeList<RunCommandProtectedParameter>(map['protectedParameters'], (value) => RunCommandProtectedParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      runAsPassword: map['runAsPassword'] == null ? null : (map['runAsPassword'] as String).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as String).input(),
+      source: map['source'] == null ? null : (RunCommandSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
     );
   }
 }

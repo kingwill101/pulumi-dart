@@ -10,38 +10,38 @@ import 'parameter_specification.dart';
 /// HDInsight linked service.
 class HDInsightLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// HDInsight cluster authentication type.
-  final String? clusterAuthType;
+  final pulumi.Input<String>? clusterAuthType;
   /// HDInsight cluster URI. Type: string (or Expression with resultType string).
-  final dynamic clusterUri;
+  final pulumi.Input<dynamic> clusterUri;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// The credential reference containing MI authentication information for the HDInsight cluster.
-  final CredentialReference? credential;
+  final pulumi.Input<CredentialReference>? credential;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
-  final dynamic fileSystem;
+  final pulumi.Input<dynamic>? fileSystem;
   /// A reference to the Azure SQL linked service that points to the HCatalog database.
-  final LinkedServiceReference? hcatalogLinkedServiceName;
+  final pulumi.Input<LinkedServiceReference>? hcatalogLinkedServiceName;
   /// Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
-  final dynamic isEspEnabled;
+  final pulumi.Input<dynamic>? isEspEnabled;
   /// The Azure Storage linked service reference.
-  final LinkedServiceReference? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// HDInsight cluster password.
-  final AzureKeyVaultSecretReference? password;
+  final pulumi.Input<AzureKeyVaultSecretReference>? password;
   /// Type of linked service.
   /// Expected value is 'HDInsight'.
-  final String type;
+  final pulumi.Input<String> type;
   /// HDInsight cluster user name. Type: string (or Expression with resultType string).
-  final dynamic userName;
+  final pulumi.Input<dynamic>? userName;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [HDInsightLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -84,16 +84,16 @@ class HDInsightLinkedService {
       'annotations': ?annotations,
       'clusterAuthType': ?clusterAuthType,
       'clusterUri': clusterUri,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
-      'credential': ?credential == null ? null : credential!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReference, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'fileSystem': ?fileSystem,
-      'hcatalogLinkedServiceName': ?hcatalogLinkedServiceName == null ? null : hcatalogLinkedServiceName!.toMap(),
+      'hcatalogLinkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(hcatalogLinkedServiceName, (value) => value.toMap()),
       'isEspEnabled': ?isEspEnabled,
-      'linkedServiceName': ?linkedServiceName == null ? null : linkedServiceName!.toMap(),
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
+      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
       'type': type,
       'userName': ?userName,
       'version': ?version,
@@ -102,22 +102,22 @@ class HDInsightLinkedService {
 
   factory HDInsightLinkedService.fromMap(Map<String, dynamic> map) {
     return HDInsightLinkedService(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      clusterAuthType: map['clusterAuthType'] == null ? null : map['clusterAuthType'] as String,
-      clusterUri: map['clusterUri'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      credential: map['credential'] == null ? null : CredentialReference.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      fileSystem: map['fileSystem'] == null ? null : map['fileSystem'],
-      hcatalogLinkedServiceName: map['hcatalogLinkedServiceName'] == null ? null : LinkedServiceReference.fromMap((map['hcatalogLinkedServiceName'] as Map).cast<String, dynamic>()),
-      isEspEnabled: map['isEspEnabled'] == null ? null : map['isEspEnabled'],
-      linkedServiceName: map['linkedServiceName'] == null ? null : LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      userName: map['userName'] == null ? null : map['userName'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      clusterAuthType: map['clusterAuthType'] == null ? null : (map['clusterAuthType'] as String).input(),
+      clusterUri: (map['clusterUri']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (CredentialReference.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      fileSystem: map['fileSystem'] == null ? null : (map['fileSystem']).input(),
+      hcatalogLinkedServiceName: map['hcatalogLinkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['hcatalogLinkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      isEspEnabled: map['isEspEnabled'] == null ? null : (map['isEspEnabled']).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A2A Network Mapping fabric specific settings.
 class AzureToAzureNetworkMappingSettingsResponse {
   /// Gets the Instance type.
   /// Expected value is 'AzureToAzure'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The primary fabric location.
-  final String? primaryFabricLocation;
+  final pulumi.Input<String>? primaryFabricLocation;
   /// The recovery fabric location.
-  final String? recoveryFabricLocation;
+  final pulumi.Input<String>? recoveryFabricLocation;
 
   /// Creates a new [AzureToAzureNetworkMappingSettingsResponse].
   /// [instanceType] Gets the Instance type.
@@ -31,9 +32,9 @@ class AzureToAzureNetworkMappingSettingsResponse {
 
   factory AzureToAzureNetworkMappingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureToAzureNetworkMappingSettingsResponse(
-      instanceType: map['instanceType'] as String,
-      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : map['primaryFabricLocation'] as String,
-      recoveryFabricLocation: map['recoveryFabricLocation'] == null ? null : map['recoveryFabricLocation'] as String,
+      instanceType: (map['instanceType'] as String).input(),
+      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : (map['primaryFabricLocation'] as String).input(),
+      recoveryFabricLocation: map['recoveryFabricLocation'] == null ? null : (map['recoveryFabricLocation'] as String).input(),
     );
   }
 }

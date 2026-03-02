@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Full view of networking configuration for an ASE.
 class AseV3NetworkingConfigurationResponse {
   /// Property to enable and disable new private endpoint connection creation on ASE
-  final bool? allowNewPrivateEndpointConnections;
-  final List<String> externalInboundIpAddresses;
+  final pulumi.Input<bool>? allowNewPrivateEndpointConnections;
+  final pulumi.Input<List<String>> externalInboundIpAddresses;
   /// Property to enable and disable FTP on ASEV3
-  final bool? ftpEnabled;
+  final pulumi.Input<bool>? ftpEnabled;
   /// Resource Id.
-  final String id;
+  final pulumi.Input<String> id;
   /// Customer provided Inbound IP Address. Only able to be set on Ase create.
-  final String? inboundIpAddressOverride;
-  final List<String> internalInboundIpAddresses;
+  final pulumi.Input<String>? inboundIpAddressOverride;
+  final pulumi.Input<List<String>> internalInboundIpAddresses;
   /// Kind of resource.
-  final String? kind;
-  final List<String> linuxOutboundIpAddresses;
+  final pulumi.Input<String>? kind;
+  final pulumi.Input<List<String>> linuxOutboundIpAddresses;
   /// Resource Name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Property to enable and disable Remote Debug on ASEV3
-  final bool? remoteDebugEnabled;
+  final pulumi.Input<bool>? remoteDebugEnabled;
   /// Resource type.
-  final String type;
-  final List<String> windowsOutboundIpAddresses;
+  final pulumi.Input<String> type;
+  final pulumi.Input<List<String>> windowsOutboundIpAddresses;
 
   /// Creates a new [AseV3NetworkingConfigurationResponse].
   /// [allowNewPrivateEndpointConnections] Property to enable and disable new private endpoint connection creation on ASE
@@ -71,18 +72,18 @@ class AseV3NetworkingConfigurationResponse {
 
   factory AseV3NetworkingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AseV3NetworkingConfigurationResponse(
-      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] == null ? null : map['allowNewPrivateEndpointConnections'] as bool,
-      externalInboundIpAddresses: (map['externalInboundIpAddresses'] as List).cast<String>(),
-      ftpEnabled: map['ftpEnabled'] == null ? null : map['ftpEnabled'] as bool,
-      id: map['id'] as String,
-      inboundIpAddressOverride: map['inboundIpAddressOverride'] == null ? null : map['inboundIpAddressOverride'] as String,
-      internalInboundIpAddresses: (map['internalInboundIpAddresses'] as List).cast<String>(),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      linuxOutboundIpAddresses: (map['linuxOutboundIpAddresses'] as List).cast<String>(),
-      name: map['name'] as String,
-      remoteDebugEnabled: map['remoteDebugEnabled'] == null ? null : map['remoteDebugEnabled'] as bool,
-      type: map['type'] as String,
-      windowsOutboundIpAddresses: (map['windowsOutboundIpAddresses'] as List).cast<String>(),
+      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] == null ? null : (map['allowNewPrivateEndpointConnections'] as bool).input(),
+      externalInboundIpAddresses: ((map['externalInboundIpAddresses'] as List).cast<String>()).input(),
+      ftpEnabled: map['ftpEnabled'] == null ? null : (map['ftpEnabled'] as bool).input(),
+      id: (map['id'] as String).input(),
+      inboundIpAddressOverride: map['inboundIpAddressOverride'] == null ? null : (map['inboundIpAddressOverride'] as String).input(),
+      internalInboundIpAddresses: ((map['internalInboundIpAddresses'] as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      linuxOutboundIpAddresses: ((map['linuxOutboundIpAddresses'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      remoteDebugEnabled: map['remoteDebugEnabled'] == null ? null : (map['remoteDebugEnabled'] as bool).input(),
+      type: (map['type'] as String).input(),
+      windowsOutboundIpAddresses: ((map['windowsOutboundIpAddresses'] as List).cast<String>()).input(),
     );
   }
 }

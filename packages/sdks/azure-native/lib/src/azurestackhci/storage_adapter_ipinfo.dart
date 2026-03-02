@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The StorageAdapter physical nodes of a cluster.
 class StorageAdapterIPInfo {
   /// The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-  final String? ipv4Address;
+  final pulumi.Input<String>? ipv4Address;
   /// storage adapter physical node name.
-  final String? physicalNode;
+  final pulumi.Input<String>? physicalNode;
   /// The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-  final String? subnetMask;
+  final pulumi.Input<String>? subnetMask;
 
   /// Creates a new [StorageAdapterIPInfo].
   /// [ipv4Address] The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
@@ -30,9 +31,9 @@ class StorageAdapterIPInfo {
 
   factory StorageAdapterIPInfo.fromMap(Map<String, dynamic> map) {
     return StorageAdapterIPInfo(
-      ipv4Address: map['ipv4Address'] == null ? null : map['ipv4Address'] as String,
-      physicalNode: map['physicalNode'] == null ? null : map['physicalNode'] as String,
-      subnetMask: map['subnetMask'] == null ? null : map['subnetMask'] as String,
+      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address'] as String).input(),
+      physicalNode: map['physicalNode'] == null ? null : (map['physicalNode'] as String).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
     );
   }
 }

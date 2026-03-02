@@ -28,19 +28,13 @@ class FqdnListLocalRulestackArgs {
   /// [name] fqdn list name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   FqdnListLocalRulestackArgs({
-    pulumi.Output<String>? auditComment,
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<String>> fqdnList,
-    required pulumi.Output<String> localRulestackName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      auditComment = pulumi.Input.asOptionalInput<String>(auditComment),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fqdnList = pulumi.Input.asInput<List<String>>(fqdnList),
-      localRulestackName = pulumi.Input.asInput<String>(localRulestackName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.auditComment,
+    this.description,
+    required this.fqdnList,
+    required this.localRulestackName,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class FqdnListLocalRulestackArgs {
 
   factory FqdnListLocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return FqdnListLocalRulestackArgs(
-      auditComment: map['auditComment'] == null ? null : pulumi.Output.create<String>(map['auditComment'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fqdnList: pulumi.Output.create<List<String>>((map['fqdnList'] as List).cast<String>()),
-      localRulestackName: pulumi.Output.create<String>(map['localRulestackName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fqdnList: ((map['fqdnList'] as List).cast<String>()).input(),
+      localRulestackName: (map['localRulestackName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

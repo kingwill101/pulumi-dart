@@ -41,27 +41,17 @@ class PartnerDestinationArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [tags] Tags of the resource.
   PartnerDestinationArgs({
-    pulumi.Output<String>? activationState,
-    pulumi.Output<String>? endpointBaseUrl,
-    pulumi.Output<String>? endpointServiceContext,
-    pulumi.Output<String>? expirationTimeIfNotActivatedUtc,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? messageForActivation,
-    pulumi.Output<String>? partnerDestinationName,
-    pulumi.Output<String>? partnerRegistrationImmutableId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      activationState = pulumi.Input.asOptionalInput<String>(activationState),
-      endpointBaseUrl = pulumi.Input.asOptionalInput<String>(endpointBaseUrl),
-      endpointServiceContext = pulumi.Input.asOptionalInput<String>(endpointServiceContext),
-      expirationTimeIfNotActivatedUtc = pulumi.Input.asOptionalInput<String>(expirationTimeIfNotActivatedUtc),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      messageForActivation = pulumi.Input.asOptionalInput<String>(messageForActivation),
-      partnerDestinationName = pulumi.Input.asOptionalInput<String>(partnerDestinationName),
-      partnerRegistrationImmutableId = pulumi.Input.asOptionalInput<String>(partnerRegistrationImmutableId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.activationState,
+    this.endpointBaseUrl,
+    this.endpointServiceContext,
+    this.expirationTimeIfNotActivatedUtc,
+    this.location,
+    this.messageForActivation,
+    this.partnerDestinationName,
+    this.partnerRegistrationImmutableId,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class PartnerDestinationArgs {
 
   factory PartnerDestinationArgs.fromMap(Map<String, dynamic> map) {
     return PartnerDestinationArgs(
-      activationState: map['activationState'] == null ? null : pulumi.Output.create<String>(map['activationState'] as String),
-      endpointBaseUrl: map['endpointBaseUrl'] == null ? null : pulumi.Output.create<String>(map['endpointBaseUrl'] as String),
-      endpointServiceContext: map['endpointServiceContext'] == null ? null : pulumi.Output.create<String>(map['endpointServiceContext'] as String),
-      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : pulumi.Output.create<String>(map['expirationTimeIfNotActivatedUtc'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      messageForActivation: map['messageForActivation'] == null ? null : pulumi.Output.create<String>(map['messageForActivation'] as String),
-      partnerDestinationName: map['partnerDestinationName'] == null ? null : pulumi.Output.create<String>(map['partnerDestinationName'] as String),
-      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : pulumi.Output.create<String>(map['partnerRegistrationImmutableId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      activationState: map['activationState'] == null ? null : (map['activationState'] as String).input(),
+      endpointBaseUrl: map['endpointBaseUrl'] == null ? null : (map['endpointBaseUrl'] as String).input(),
+      endpointServiceContext: map['endpointServiceContext'] == null ? null : (map['endpointServiceContext'] as String).input(),
+      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : (map['expirationTimeIfNotActivatedUtc'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      messageForActivation: map['messageForActivation'] == null ? null : (map['messageForActivation'] as String).input(),
+      partnerDestinationName: map['partnerDestinationName'] == null ? null : (map['partnerDestinationName'] as String).input(),
+      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : (map['partnerRegistrationImmutableId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSourceV2SourceOssEventParametersMatchRule {
-  final String? matchState;
-  final String? name;
-  final String? prefix;
-  final String? suffix;
+  final pulumi.Input<String>? matchState;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String>? suffix;
 
   /// Creates a new [EventSourceV2SourceOssEventParametersMatchRule].
   /// [matchState] Optional.
@@ -30,10 +31,10 @@ class EventSourceV2SourceOssEventParametersMatchRule {
 
   factory EventSourceV2SourceOssEventParametersMatchRule.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceOssEventParametersMatchRule(
-      matchState: map['matchState'] == null ? null : map['matchState'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      suffix: map['suffix'] == null ? null : map['suffix'] as String,
+      matchState: map['matchState'] == null ? null : (map['matchState'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
     );
   }
 }

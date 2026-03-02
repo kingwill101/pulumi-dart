@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spark_cluster_roles_head_node.dart';
 import 'spark_cluster_roles_worker_node.dart';
 import 'spark_cluster_roles_zookeeper_node.dart';
 
 class SparkClusterRoles {
   /// A `head_node` block as defined above.
-  final SparkClusterRolesHeadNode headNode;
+  final pulumi.Input<SparkClusterRolesHeadNode> headNode;
   /// A `worker_node` block as defined below.
-  final SparkClusterRolesWorkerNode workerNode;
+  final pulumi.Input<SparkClusterRolesWorkerNode> workerNode;
   /// A `zookeeper_node` block as defined below.
-  final SparkClusterRolesZookeeperNode zookeeperNode;
+  final pulumi.Input<SparkClusterRolesZookeeperNode> zookeeperNode;
 
   /// Creates a new [SparkClusterRoles].
   /// [headNode] A `head_node` block as defined above.
@@ -24,17 +25,17 @@ class SparkClusterRoles {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headNode': headNode.toMap(),
-      'workerNode': workerNode.toMap(),
-      'zookeeperNode': zookeeperNode.toMap(),
+      'headNode': pulumi.Input.mapInputValue<SparkClusterRolesHeadNode, Map<String, dynamic>>(headNode, (value) => value.toMap()),
+      'workerNode': pulumi.Input.mapInputValue<SparkClusterRolesWorkerNode, Map<String, dynamic>>(workerNode, (value) => value.toMap()),
+      'zookeeperNode': pulumi.Input.mapInputValue<SparkClusterRolesZookeeperNode, Map<String, dynamic>>(zookeeperNode, (value) => value.toMap()),
     };
   }
 
   factory SparkClusterRoles.fromMap(Map<String, dynamic> map) {
     return SparkClusterRoles(
-      headNode: SparkClusterRolesHeadNode.fromMap((map['headNode'] as Map).cast<String, dynamic>()),
-      workerNode: SparkClusterRolesWorkerNode.fromMap((map['workerNode'] as Map).cast<String, dynamic>()),
-      zookeeperNode: SparkClusterRolesZookeeperNode.fromMap((map['zookeeperNode'] as Map).cast<String, dynamic>()),
+      headNode: (SparkClusterRolesHeadNode.fromMap((map['headNode'] as Map).cast<String, dynamic>())).input(),
+      workerNode: (SparkClusterRolesWorkerNode.fromMap((map['workerNode'] as Map).cast<String, dynamic>())).input(),
+      zookeeperNode: (SparkClusterRolesZookeeperNode.fromMap((map['zookeeperNode'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

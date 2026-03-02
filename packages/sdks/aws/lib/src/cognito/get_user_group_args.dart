@@ -19,13 +19,10 @@ class GetUserGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] User pool the client belongs to.
   GetUserGroupArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> userPoolId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userPoolId = pulumi.Input.asInput<String>(userPoolId);
+    required this.name,
+    this.region,
+    required this.userPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetUserGroupArgs {
 
   factory GetUserGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetUserGroupArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userPoolId: pulumi.Output.create<String>(map['userPoolId'] as String),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userPoolId: (map['userPoolId'] as String).input(),
     );
   }
 }

@@ -33,21 +33,14 @@ class V3ProvisionConfigArgs {
   /// [target] Number of reserved target resources. The value range is [0,10000].
   /// [targetTrackingPolicies] Metric tracking scaling policy configuration See `target_tracking_policies` below.
   V3ProvisionConfigArgs({
-    pulumi.Output<bool>? alwaysAllocateCpu,
-    pulumi.Output<bool>? alwaysAllocateGpu,
-    required pulumi.Output<String> functionName,
-    pulumi.Output<String>? qualifier,
-    pulumi.Output<List<V3ProvisionConfigScheduledAction>>? scheduledActions,
-    pulumi.Output<int>? target,
-    pulumi.Output<List<V3ProvisionConfigTargetTrackingPolicy>>? targetTrackingPolicies,
-  }) :
-      alwaysAllocateCpu = pulumi.Input.asOptionalInput<bool>(alwaysAllocateCpu),
-      alwaysAllocateGpu = pulumi.Input.asOptionalInput<bool>(alwaysAllocateGpu),
-      functionName = pulumi.Input.asInput<String>(functionName),
-      qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
-      scheduledActions = pulumi.Input.asOptionalInput<List<V3ProvisionConfigScheduledAction>>(scheduledActions),
-      target = pulumi.Input.asOptionalInput<int>(target),
-      targetTrackingPolicies = pulumi.Input.asOptionalInput<List<V3ProvisionConfigTargetTrackingPolicy>>(targetTrackingPolicies);
+    this.alwaysAllocateCpu,
+    this.alwaysAllocateGpu,
+    required this.functionName,
+    this.qualifier,
+    this.scheduledActions,
+    this.target,
+    this.targetTrackingPolicies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class V3ProvisionConfigArgs {
 
   factory V3ProvisionConfigArgs.fromMap(Map<String, dynamic> map) {
     return V3ProvisionConfigArgs(
-      alwaysAllocateCpu: map['alwaysAllocateCpu'] == null ? null : pulumi.Output.create<bool>(map['alwaysAllocateCpu'] as bool),
-      alwaysAllocateGpu: map['alwaysAllocateGpu'] == null ? null : pulumi.Output.create<bool>(map['alwaysAllocateGpu'] as bool),
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      qualifier: map['qualifier'] == null ? null : pulumi.Output.create<String>(map['qualifier'] as String),
-      scheduledActions: map['scheduledActions'] == null ? null : pulumi.Output.create<List<V3ProvisionConfigScheduledAction>>(pulumi.Input.decodeList<V3ProvisionConfigScheduledAction>(map['scheduledActions'], (value) => V3ProvisionConfigScheduledAction.fromMap((value as Map).cast<String, dynamic>()))),
-      target: map['target'] == null ? null : pulumi.Output.create<int>(map['target'] as int),
-      targetTrackingPolicies: map['targetTrackingPolicies'] == null ? null : pulumi.Output.create<List<V3ProvisionConfigTargetTrackingPolicy>>(pulumi.Input.decodeList<V3ProvisionConfigTargetTrackingPolicy>(map['targetTrackingPolicies'], (value) => V3ProvisionConfigTargetTrackingPolicy.fromMap((value as Map).cast<String, dynamic>()))),
+      alwaysAllocateCpu: map['alwaysAllocateCpu'] == null ? null : (map['alwaysAllocateCpu'] as bool).input(),
+      alwaysAllocateGpu: map['alwaysAllocateGpu'] == null ? null : (map['alwaysAllocateGpu'] as bool).input(),
+      functionName: (map['functionName'] as String).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      scheduledActions: map['scheduledActions'] == null ? null : (pulumi.Input.decodeList<V3ProvisionConfigScheduledAction>(map['scheduledActions'], (value) => V3ProvisionConfigScheduledAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      target: map['target'] == null ? null : (map['target'] as int).input(),
+      targetTrackingPolicies: map['targetTrackingPolicies'] == null ? null : (pulumi.Input.decodeList<V3ProvisionConfigTargetTrackingPolicy>(map['targetTrackingPolicies'], (value) => V3ProvisionConfigTargetTrackingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

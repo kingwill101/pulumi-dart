@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bandit_policy.dart';
 
 /// Model sweeping and hyperparameter sweeping related settings.
 class ImageSweepSettings {
   /// Type of early termination policy.
-  final BanditPolicy? earlyTermination;
+  final pulumi.Input<BanditPolicy>? earlyTermination;
   /// [Required] Type of the hyperparameter sampling algorithms.
-  final String samplingAlgorithm;
+  final pulumi.Input<String> samplingAlgorithm;
 
   /// Creates a new [ImageSweepSettings].
   /// [earlyTermination] Type of early termination policy.
@@ -19,15 +20,15 @@ class ImageSweepSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'earlyTermination': ?earlyTermination == null ? null : earlyTermination!.toMap(),
+      'earlyTermination': ?pulumi.Input.mapOptionalInputValue<BanditPolicy, Map<String, dynamic>>(earlyTermination, (value) => value.toMap()),
       'samplingAlgorithm': samplingAlgorithm,
     };
   }
 
   factory ImageSweepSettings.fromMap(Map<String, dynamic> map) {
     return ImageSweepSettings(
-      earlyTermination: map['earlyTermination'] == null ? null : BanditPolicy.fromMap((map['earlyTermination'] as Map).cast<String, dynamic>()),
-      samplingAlgorithm: map['samplingAlgorithm'] as String,
+      earlyTermination: map['earlyTermination'] == null ? null : (BanditPolicy.fromMap((map['earlyTermination'] as Map).cast<String, dynamic>())).input(),
+      samplingAlgorithm: (map['samplingAlgorithm'] as String).input(),
     );
   }
 }

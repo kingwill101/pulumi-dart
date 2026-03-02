@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The user associated with the access policy.
 class AccessPolicyAssignmentPropertiesUser {
   /// The object ID of the user.
-  final String? objectId;
+  final pulumi.Input<String>? objectId;
 
   /// Creates a new [AccessPolicyAssignmentPropertiesUser].
   /// [objectId] The object ID of the user.
@@ -20,7 +21,7 @@ class AccessPolicyAssignmentPropertiesUser {
 
   factory AccessPolicyAssignmentPropertiesUser.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssignmentPropertiesUser(
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
     );
   }
 }

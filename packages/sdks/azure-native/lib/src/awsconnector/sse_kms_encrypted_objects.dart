@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of SseKmsEncryptedObjects
 class SseKmsEncryptedObjects {
   /// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [SseKmsEncryptedObjects].
   /// [status] Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
@@ -20,7 +21,7 @@ class SseKmsEncryptedObjects {
 
   factory SseKmsEncryptedObjects.fromMap(Map<String, dynamic> map) {
     return SseKmsEncryptedObjects(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

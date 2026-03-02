@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings {
   /// String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
-  final String? nameModifier;
+  final pulumi.Input<String>? nameModifier;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings].
   /// [nameModifier] String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
@@ -19,7 +20,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSet
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings(
-      nameModifier: map['nameModifier'] == null ? null : map['nameModifier'] as String,
+      nameModifier: map['nameModifier'] == null ? null : (map['nameModifier'] as String).input(),
     );
   }
 }

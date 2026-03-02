@@ -19,15 +19,11 @@ class ConsumerGroupState {
   /// [name] The name of this Consumer Group. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group that contains the IoT hub. Changing this forces a new resource to be created.
   ConsumerGroupState({
-    pulumi.Output<String>? eventhubEndpointName,
-    pulumi.Output<String>? iothubName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      eventhubEndpointName = pulumi.Input.asOptionalInput<String>(eventhubEndpointName),
-      iothubName = pulumi.Input.asOptionalInput<String>(iothubName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.eventhubEndpointName,
+    this.iothubName,
+    this.name,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ConsumerGroupState {
 
   factory ConsumerGroupState.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupState(
-      eventhubEndpointName: map['eventhubEndpointName'] == null ? null : pulumi.Output.create<String>(map['eventhubEndpointName'] as String),
-      iothubName: map['iothubName'] == null ? null : pulumi.Output.create<String>(map['iothubName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      eventhubEndpointName: map['eventhubEndpointName'] == null ? null : (map['eventhubEndpointName'] as String).input(),
+      iothubName: map['iothubName'] == null ? null : (map['iothubName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

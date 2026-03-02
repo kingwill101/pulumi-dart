@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField {
   /// Name describing the field.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField].
   /// [name] Name describing the field.
@@ -19,7 +20,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField
 
   factory PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

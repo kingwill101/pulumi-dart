@@ -29,17 +29,12 @@ class LoadBalancerCookieStickinessPolicyArgs {
   /// [name] The name of the stickiness policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LoadBalancerCookieStickinessPolicyArgs({
-    pulumi.Output<int>? cookieExpirationPeriod,
-    required pulumi.Output<int> lbPort,
-    required pulumi.Output<String> loadBalancer,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      cookieExpirationPeriod = pulumi.Input.asOptionalInput<int>(cookieExpirationPeriod),
-      lbPort = pulumi.Input.asInput<int>(lbPort),
-      loadBalancer = pulumi.Input.asInput<String>(loadBalancer),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.cookieExpirationPeriod,
+    required this.lbPort,
+    required this.loadBalancer,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class LoadBalancerCookieStickinessPolicyArgs {
 
   factory LoadBalancerCookieStickinessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerCookieStickinessPolicyArgs(
-      cookieExpirationPeriod: map['cookieExpirationPeriod'] == null ? null : pulumi.Output.create<int>(map['cookieExpirationPeriod'] as int),
-      lbPort: pulumi.Output.create<int>(map['lbPort'] as int),
-      loadBalancer: pulumi.Output.create<String>(map['loadBalancer'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      cookieExpirationPeriod: map['cookieExpirationPeriod'] == null ? null : (map['cookieExpirationPeriod'] as int).input(),
+      lbPort: (map['lbPort'] as int).input(),
+      loadBalancer: (map['loadBalancer'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -30,19 +30,13 @@ class StandbyContainerGroupPoolArgs {
   /// [standbyContainerGroupPoolName] Name of the standby container group pool
   /// [tags] Resource tags.
   StandbyContainerGroupPoolArgs({
-    required pulumi.Output<ContainerGroupProperties> containerGroupProperties,
-    required pulumi.Output<StandbyContainerGroupPoolElasticityProfile> elasticityProfile,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? standbyContainerGroupPoolName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      containerGroupProperties = pulumi.Input.asInput<ContainerGroupProperties>(containerGroupProperties),
-      elasticityProfile = pulumi.Input.asInput<StandbyContainerGroupPoolElasticityProfile>(elasticityProfile),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      standbyContainerGroupPoolName = pulumi.Input.asOptionalInput<String>(standbyContainerGroupPoolName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.containerGroupProperties,
+    required this.elasticityProfile,
+    this.location,
+    required this.resourceGroupName,
+    this.standbyContainerGroupPoolName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class StandbyContainerGroupPoolArgs {
 
   factory StandbyContainerGroupPoolArgs.fromMap(Map<String, dynamic> map) {
     return StandbyContainerGroupPoolArgs(
-      containerGroupProperties: pulumi.Output.create<ContainerGroupProperties>(ContainerGroupProperties.fromMap((map['containerGroupProperties'] as Map).cast<String, dynamic>())),
-      elasticityProfile: pulumi.Output.create<StandbyContainerGroupPoolElasticityProfile>(StandbyContainerGroupPoolElasticityProfile.fromMap((map['elasticityProfile'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      standbyContainerGroupPoolName: map['standbyContainerGroupPoolName'] == null ? null : pulumi.Output.create<String>(map['standbyContainerGroupPoolName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      containerGroupProperties: (ContainerGroupProperties.fromMap((map['containerGroupProperties'] as Map).cast<String, dynamic>())).input(),
+      elasticityProfile: (StandbyContainerGroupPoolElasticityProfile.fromMap((map['elasticityProfile'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      standbyContainerGroupPoolName: map['standbyContainerGroupPoolName'] == null ? null : (map['standbyContainerGroupPoolName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

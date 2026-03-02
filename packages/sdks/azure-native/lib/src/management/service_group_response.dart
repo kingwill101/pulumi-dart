@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_group_properties_response.dart';
 import 'system_data_response.dart';
 
 /// The serviceGroup details.
 class ServiceGroupResponse {
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final pulumi.Input<String> id;
   /// The kind of the serviceGroup.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// The name of the resource
-  final String name;
+  final pulumi.Input<String> name;
   /// ServiceGroup creation request body parameters.
-  final ServiceGroupPropertiesResponse? properties;
+  final pulumi.Input<ServiceGroupPropertiesResponse>? properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// The serviceGroup tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ServiceGroupResponse].
   /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -43,8 +44,8 @@ class ServiceGroupResponse {
       'id': id,
       'kind': ?kind,
       'name': name,
-      'properties': ?properties == null ? null : properties!.toMap(),
-      'systemData': systemData.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ServiceGroupPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'tags': ?tags,
       'type': type,
     };
@@ -52,13 +53,13 @@ class ServiceGroupResponse {
 
   factory ServiceGroupResponse.fromMap(Map<String, dynamic> map) {
     return ServiceGroupResponse(
-      id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      name: map['name'] as String,
-      properties: map['properties'] == null ? null : ServiceGroupPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (ServiceGroupPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

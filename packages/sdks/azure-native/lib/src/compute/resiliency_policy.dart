@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'automatic_zone_rebalancing_policy.dart';
 import 'resilient_vmcreation_policy.dart';
 import 'resilient_vmdeletion_policy.dart';
@@ -7,11 +8,11 @@ import 'resilient_vmdeletion_policy.dart';
 /// Describes an resiliency policy - AutomaticZoneRebalancingPolicy, ResilientVMCreationPolicy and/or ResilientVMDeletionPolicy.
 class ResiliencyPolicy {
   /// The configuration parameters used while performing automatic AZ balancing.
-  final AutomaticZoneRebalancingPolicy? automaticZoneRebalancingPolicy;
+  final pulumi.Input<AutomaticZoneRebalancingPolicy>? automaticZoneRebalancingPolicy;
   /// The configuration parameters used while performing resilient VM creation.
-  final ResilientVMCreationPolicy? resilientVMCreationPolicy;
+  final pulumi.Input<ResilientVMCreationPolicy>? resilientVMCreationPolicy;
   /// The configuration parameters used while performing resilient VM deletion.
-  final ResilientVMDeletionPolicy? resilientVMDeletionPolicy;
+  final pulumi.Input<ResilientVMDeletionPolicy>? resilientVMDeletionPolicy;
 
   /// Creates a new [ResiliencyPolicy].
   /// [automaticZoneRebalancingPolicy] The configuration parameters used while performing automatic AZ balancing.
@@ -25,17 +26,17 @@ class ResiliencyPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'automaticZoneRebalancingPolicy': ?automaticZoneRebalancingPolicy == null ? null : automaticZoneRebalancingPolicy!.toMap(),
-      'resilientVMCreationPolicy': ?resilientVMCreationPolicy == null ? null : resilientVMCreationPolicy!.toMap(),
-      'resilientVMDeletionPolicy': ?resilientVMDeletionPolicy == null ? null : resilientVMDeletionPolicy!.toMap(),
+      'automaticZoneRebalancingPolicy': ?pulumi.Input.mapOptionalInputValue<AutomaticZoneRebalancingPolicy, Map<String, dynamic>>(automaticZoneRebalancingPolicy, (value) => value.toMap()),
+      'resilientVMCreationPolicy': ?pulumi.Input.mapOptionalInputValue<ResilientVMCreationPolicy, Map<String, dynamic>>(resilientVMCreationPolicy, (value) => value.toMap()),
+      'resilientVMDeletionPolicy': ?pulumi.Input.mapOptionalInputValue<ResilientVMDeletionPolicy, Map<String, dynamic>>(resilientVMDeletionPolicy, (value) => value.toMap()),
     };
   }
 
   factory ResiliencyPolicy.fromMap(Map<String, dynamic> map) {
     return ResiliencyPolicy(
-      automaticZoneRebalancingPolicy: map['automaticZoneRebalancingPolicy'] == null ? null : AutomaticZoneRebalancingPolicy.fromMap((map['automaticZoneRebalancingPolicy'] as Map).cast<String, dynamic>()),
-      resilientVMCreationPolicy: map['resilientVMCreationPolicy'] == null ? null : ResilientVMCreationPolicy.fromMap((map['resilientVMCreationPolicy'] as Map).cast<String, dynamic>()),
-      resilientVMDeletionPolicy: map['resilientVMDeletionPolicy'] == null ? null : ResilientVMDeletionPolicy.fromMap((map['resilientVMDeletionPolicy'] as Map).cast<String, dynamic>()),
+      automaticZoneRebalancingPolicy: map['automaticZoneRebalancingPolicy'] == null ? null : (AutomaticZoneRebalancingPolicy.fromMap((map['automaticZoneRebalancingPolicy'] as Map).cast<String, dynamic>())).input(),
+      resilientVMCreationPolicy: map['resilientVMCreationPolicy'] == null ? null : (ResilientVMCreationPolicy.fromMap((map['resilientVMCreationPolicy'] as Map).cast<String, dynamic>())).input(),
+      resilientVMDeletionPolicy: map['resilientVMDeletionPolicy'] == null ? null : (ResilientVMDeletionPolicy.fromMap((map['resilientVMDeletionPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

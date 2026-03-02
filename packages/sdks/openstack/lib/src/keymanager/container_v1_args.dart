@@ -34,17 +34,12 @@ class ContainerV1Args {
   /// [secretRefs] A set of dictionaries containing references to secrets. The structure is described
   /// [type] Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
   ContainerV1Args({
-    pulumi.Output<ContainerV1Acl>? acl,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<ContainerV1SecretRef>>? secretRefs,
-    required pulumi.Output<String> type,
-  }) :
-      acl = pulumi.Input.asOptionalInput<ContainerV1Acl>(acl),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretRefs = pulumi.Input.asOptionalInput<List<ContainerV1SecretRef>>(secretRefs),
-      type = pulumi.Input.asInput<String>(type);
+    this.acl,
+    this.name,
+    this.region,
+    this.secretRefs,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,11 +53,11 @@ class ContainerV1Args {
 
   factory ContainerV1Args.fromMap(Map<String, dynamic> map) {
     return ContainerV1Args(
-      acl: map['acl'] == null ? null : pulumi.Output.create<ContainerV1Acl>(ContainerV1Acl.fromMap((map['acl'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretRefs: map['secretRefs'] == null ? null : pulumi.Output.create<List<ContainerV1SecretRef>>(pulumi.Input.decodeList<ContainerV1SecretRef>(map['secretRefs'], (value) => ContainerV1SecretRef.fromMap((value as Map).cast<String, dynamic>()))),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      acl: map['acl'] == null ? null : (ContainerV1Acl.fromMap((map['acl'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretRefs: map['secretRefs'] == null ? null : (pulumi.Input.decodeList<ContainerV1SecretRef>(map['secretRefs'], (value) => ContainerV1SecretRef.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

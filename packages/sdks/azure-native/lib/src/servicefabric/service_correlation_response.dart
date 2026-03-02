@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Creates a particular correlation between services.
 class ServiceCorrelationResponse {
   /// The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
-  final String scheme;
+  final pulumi.Input<String> scheme;
   /// The Arm Resource ID of the service that the correlation relationship is established with.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [ServiceCorrelationResponse].
   /// [scheme] The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
@@ -25,8 +26,8 @@ class ServiceCorrelationResponse {
 
   factory ServiceCorrelationResponse.fromMap(Map<String, dynamic> map) {
     return ServiceCorrelationResponse(
-      scheme: map['scheme'] as String,
-      serviceName: map['serviceName'] as String,
+      scheme: (map['scheme'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

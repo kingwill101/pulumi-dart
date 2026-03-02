@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworksPropertiesResponseError {
-  final String? code;
-  final String? message;
+  final pulumi.Input<String>? code;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [VirtualNetworksPropertiesResponseError].
   /// [code] Optional.
@@ -22,8 +23,8 @@ class VirtualNetworksPropertiesResponseError {
 
   factory VirtualNetworksPropertiesResponseError.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesResponseError(
-      code: map['code'] == null ? null : map['code'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

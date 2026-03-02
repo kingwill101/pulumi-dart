@@ -56,35 +56,21 @@ class CustomImageArgs {
   /// [vhd] The VHD from which the image is to be created.
   /// [vm] The virtual machine from which the image is to be created.
   CustomImageArgs({
-    pulumi.Output<String>? author,
-    pulumi.Output<CustomImagePropertiesFromPlan>? customImagePlan,
-    pulumi.Output<List<DataDiskStorageTypeInfo>>? dataDiskStorageInfo,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? isPlanAuthorized,
-    required pulumi.Output<String> labName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedImageId,
-    pulumi.Output<String>? managedSnapshotId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<CustomImagePropertiesCustom>? vhd,
-    pulumi.Output<CustomImagePropertiesFromVm>? vm,
-  }) :
-      author = pulumi.Input.asOptionalInput<String>(author),
-      customImagePlan = pulumi.Input.asOptionalInput<CustomImagePropertiesFromPlan>(customImagePlan),
-      dataDiskStorageInfo = pulumi.Input.asOptionalInput<List<DataDiskStorageTypeInfo>>(dataDiskStorageInfo),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      isPlanAuthorized = pulumi.Input.asOptionalInput<bool>(isPlanAuthorized),
-      labName = pulumi.Input.asInput<String>(labName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedImageId = pulumi.Input.asOptionalInput<String>(managedImageId),
-      managedSnapshotId = pulumi.Input.asOptionalInput<String>(managedSnapshotId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vhd = pulumi.Input.asOptionalInput<CustomImagePropertiesCustom>(vhd),
-      vm = pulumi.Input.asOptionalInput<CustomImagePropertiesFromVm>(vm);
+    this.author,
+    this.customImagePlan,
+    this.dataDiskStorageInfo,
+    this.description,
+    this.isPlanAuthorized,
+    required this.labName,
+    this.location,
+    this.managedImageId,
+    this.managedSnapshotId,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+    this.vhd,
+    this.vm,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class CustomImageArgs {
 
   factory CustomImageArgs.fromMap(Map<String, dynamic> map) {
     return CustomImageArgs(
-      author: map['author'] == null ? null : pulumi.Output.create<String>(map['author'] as String),
-      customImagePlan: map['customImagePlan'] == null ? null : pulumi.Output.create<CustomImagePropertiesFromPlan>(CustomImagePropertiesFromPlan.fromMap((map['customImagePlan'] as Map).cast<String, dynamic>())),
-      dataDiskStorageInfo: map['dataDiskStorageInfo'] == null ? null : pulumi.Output.create<List<DataDiskStorageTypeInfo>>(pulumi.Input.decodeList<DataDiskStorageTypeInfo>(map['dataDiskStorageInfo'], (value) => DataDiskStorageTypeInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      isPlanAuthorized: map['isPlanAuthorized'] == null ? null : pulumi.Output.create<bool>(map['isPlanAuthorized'] as bool),
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedImageId: map['managedImageId'] == null ? null : pulumi.Output.create<String>(map['managedImageId'] as String),
-      managedSnapshotId: map['managedSnapshotId'] == null ? null : pulumi.Output.create<String>(map['managedSnapshotId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vhd: map['vhd'] == null ? null : pulumi.Output.create<CustomImagePropertiesCustom>(CustomImagePropertiesCustom.fromMap((map['vhd'] as Map).cast<String, dynamic>())),
-      vm: map['vm'] == null ? null : pulumi.Output.create<CustomImagePropertiesFromVm>(CustomImagePropertiesFromVm.fromMap((map['vm'] as Map).cast<String, dynamic>())),
+      author: map['author'] == null ? null : (map['author'] as String).input(),
+      customImagePlan: map['customImagePlan'] == null ? null : (CustomImagePropertiesFromPlan.fromMap((map['customImagePlan'] as Map).cast<String, dynamic>())).input(),
+      dataDiskStorageInfo: map['dataDiskStorageInfo'] == null ? null : (pulumi.Input.decodeList<DataDiskStorageTypeInfo>(map['dataDiskStorageInfo'], (value) => DataDiskStorageTypeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isPlanAuthorized: map['isPlanAuthorized'] == null ? null : (map['isPlanAuthorized'] as bool).input(),
+      labName: (map['labName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedImageId: map['managedImageId'] == null ? null : (map['managedImageId'] as String).input(),
+      managedSnapshotId: map['managedSnapshotId'] == null ? null : (map['managedSnapshotId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vhd: map['vhd'] == null ? null : (CustomImagePropertiesCustom.fromMap((map['vhd'] as Map).cast<String, dynamic>())).input(),
+      vm: map['vm'] == null ? null : (CustomImagePropertiesFromVm.fromMap((map['vm'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

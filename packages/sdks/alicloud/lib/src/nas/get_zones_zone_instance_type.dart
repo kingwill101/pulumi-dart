@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZonesZoneInstanceType {
   /// File transfer protocol type. Valid values:
-  final String protocolType;
+  final pulumi.Input<String> protocolType;
   /// The storage type of the nas zones. Valid values:
-  final String storageType;
+  final pulumi.Input<String> storageType;
 
   /// Creates a new [GetZonesZoneInstanceType].
   /// [protocolType] File transfer protocol type. Valid values:
@@ -24,8 +25,8 @@ class GetZonesZoneInstanceType {
 
   factory GetZonesZoneInstanceType.fromMap(Map<String, dynamic> map) {
     return GetZonesZoneInstanceType(
-      protocolType: map['protocolType'] as String,
-      storageType: map['storageType'] as String,
+      protocolType: (map['protocolType'] as String).input(),
+      storageType: (map['storageType'] as String).input(),
     );
   }
 }

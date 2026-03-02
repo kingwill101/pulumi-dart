@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a lab's support banner
 class LabSupportProperties {
   /// Is the lab support banner active/enabled at this time?
-  final String? enabled;
+  final pulumi.Input<String>? enabled;
   /// The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown.
-  final String? markdown;
+  final pulumi.Input<String>? markdown;
 
   /// Creates a new [LabSupportProperties].
   /// [enabled] Is the lab support banner active/enabled at this time?
@@ -25,8 +26,8 @@ class LabSupportProperties {
 
   factory LabSupportProperties.fromMap(Map<String, dynamic> map) {
     return LabSupportProperties(
-      enabled: map['enabled'] == null ? null : map['enabled'] as String,
-      markdown: map['markdown'] == null ? null : map['markdown'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
+      markdown: map['markdown'] == null ? null : (map['markdown'] as String).input(),
     );
   }
 }

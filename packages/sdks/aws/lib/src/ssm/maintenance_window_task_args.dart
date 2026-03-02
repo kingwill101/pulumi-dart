@@ -51,33 +51,20 @@ class MaintenanceWindowTaskArgs {
   /// [taskType] The type of task being registered. Valid values: `AUTOMATION`, `LAMBDA`, `RUN_COMMAND` or `STEP_FUNCTIONS`.
   /// [windowId] The Id of the maintenance window to register the task with.
   MaintenanceWindowTaskArgs({
-    pulumi.Output<String>? cutoffBehavior,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? maxConcurrency,
-    pulumi.Output<String>? maxErrors,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceRoleArn,
-    pulumi.Output<List<MaintenanceWindowTaskTarget>>? targets,
-    required pulumi.Output<String> taskArn,
-    pulumi.Output<MaintenanceWindowTaskTaskInvocationParameters>? taskInvocationParameters,
-    required pulumi.Output<String> taskType,
-    required pulumi.Output<String> windowId,
-  }) :
-      cutoffBehavior = pulumi.Input.asOptionalInput<String>(cutoffBehavior),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      maxConcurrency = pulumi.Input.asOptionalInput<String>(maxConcurrency),
-      maxErrors = pulumi.Input.asOptionalInput<String>(maxErrors),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceRoleArn = pulumi.Input.asOptionalInput<String>(serviceRoleArn),
-      targets = pulumi.Input.asOptionalInput<List<MaintenanceWindowTaskTarget>>(targets),
-      taskArn = pulumi.Input.asInput<String>(taskArn),
-      taskInvocationParameters = pulumi.Input.asOptionalInput<MaintenanceWindowTaskTaskInvocationParameters>(taskInvocationParameters),
-      taskType = pulumi.Input.asInput<String>(taskType),
-      windowId = pulumi.Input.asInput<String>(windowId);
+    this.cutoffBehavior,
+    this.description,
+    this.maxConcurrency,
+    this.maxErrors,
+    this.name,
+    this.priority,
+    this.region,
+    this.serviceRoleArn,
+    this.targets,
+    required this.taskArn,
+    this.taskInvocationParameters,
+    required this.taskType,
+    required this.windowId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class MaintenanceWindowTaskArgs {
 
   factory MaintenanceWindowTaskArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskArgs(
-      cutoffBehavior: map['cutoffBehavior'] == null ? null : pulumi.Output.create<String>(map['cutoffBehavior'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      maxConcurrency: map['maxConcurrency'] == null ? null : pulumi.Output.create<String>(map['maxConcurrency'] as String),
-      maxErrors: map['maxErrors'] == null ? null : pulumi.Output.create<String>(map['maxErrors'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceRoleArn: map['serviceRoleArn'] == null ? null : pulumi.Output.create<String>(map['serviceRoleArn'] as String),
-      targets: map['targets'] == null ? null : pulumi.Output.create<List<MaintenanceWindowTaskTarget>>(pulumi.Input.decodeList<MaintenanceWindowTaskTarget>(map['targets'], (value) => MaintenanceWindowTaskTarget.fromMap((value as Map).cast<String, dynamic>()))),
-      taskArn: pulumi.Output.create<String>(map['taskArn'] as String),
-      taskInvocationParameters: map['taskInvocationParameters'] == null ? null : pulumi.Output.create<MaintenanceWindowTaskTaskInvocationParameters>(MaintenanceWindowTaskTaskInvocationParameters.fromMap((map['taskInvocationParameters'] as Map).cast<String, dynamic>())),
-      taskType: pulumi.Output.create<String>(map['taskType'] as String),
-      windowId: pulumi.Output.create<String>(map['windowId'] as String),
+      cutoffBehavior: map['cutoffBehavior'] == null ? null : (map['cutoffBehavior'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency'] as String).input(),
+      maxErrors: map['maxErrors'] == null ? null : (map['maxErrors'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceRoleArn: map['serviceRoleArn'] == null ? null : (map['serviceRoleArn'] as String).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<MaintenanceWindowTaskTarget>(map['targets'], (value) => MaintenanceWindowTaskTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      taskArn: (map['taskArn'] as String).input(),
+      taskInvocationParameters: map['taskInvocationParameters'] == null ? null : (MaintenanceWindowTaskTaskInvocationParameters.fromMap((map['taskInvocationParameters'] as Map).cast<String, dynamic>())).input(),
+      taskType: (map['taskType'] as String).input(),
+      windowId: (map['windowId'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CrossRegionRestoreSettings {
   /// CrossRegionRestore state
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [CrossRegionRestoreSettings].
   /// [state] CrossRegionRestore state
@@ -19,7 +20,7 @@ class CrossRegionRestoreSettings {
 
   factory CrossRegionRestoreSettings.fromMap(Map<String, dynamic> map) {
     return CrossRegionRestoreSettings(
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

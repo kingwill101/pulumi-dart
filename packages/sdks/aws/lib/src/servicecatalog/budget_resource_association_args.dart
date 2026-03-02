@@ -19,13 +19,10 @@ class BudgetResourceAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceId] Resource identifier.
   BudgetResourceAssociationArgs({
-    required pulumi.Output<String> budgetName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceId,
-  }) :
-      budgetName = pulumi.Input.asInput<String>(budgetName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+    required this.budgetName,
+    this.region,
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class BudgetResourceAssociationArgs {
 
   factory BudgetResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return BudgetResourceAssociationArgs(
-      budgetName: pulumi.Output.create<String>(map['budgetName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
+      budgetName: (map['budgetName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

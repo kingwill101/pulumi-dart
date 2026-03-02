@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerCustomEventPipeline {
   /// The Data Factory Pipeline name that the trigger will act on.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Data Factory Pipeline parameters that the trigger will act on.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
 
   /// Creates a new [TriggerCustomEventPipeline].
   /// [name] The Data Factory Pipeline name that the trigger will act on.
@@ -24,8 +25,8 @@ class TriggerCustomEventPipeline {
 
   factory TriggerCustomEventPipeline.fromMap(Map<String, dynamic> map) {
     return TriggerCustomEventPipeline(
-      name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
+      name: (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class AliasArgs {
   /// [serviceName] The Function Compute service name.
   /// [serviceVersion] The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
   AliasArgs({
-    required pulumi.Output<String> aliasName,
-    pulumi.Output<String>? description,
-    pulumi.Output<AliasRoutingConfig>? routingConfig,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> serviceVersion,
-  }) :
-      aliasName = pulumi.Input.asInput<String>(aliasName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      routingConfig = pulumi.Input.asOptionalInput<AliasRoutingConfig>(routingConfig),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      serviceVersion = pulumi.Input.asInput<String>(serviceVersion);
+    required this.aliasName,
+    this.description,
+    this.routingConfig,
+    required this.serviceName,
+    required this.serviceVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AliasArgs {
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      aliasName: pulumi.Output.create<String>(map['aliasName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      routingConfig: map['routingConfig'] == null ? null : pulumi.Output.create<AliasRoutingConfig>(AliasRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      serviceVersion: pulumi.Output.create<String>(map['serviceVersion'] as String),
+      aliasName: (map['aliasName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      routingConfig: map['routingConfig'] == null ? null : (AliasRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      serviceVersion: (map['serviceVersion'] as String).input(),
     );
   }
 }

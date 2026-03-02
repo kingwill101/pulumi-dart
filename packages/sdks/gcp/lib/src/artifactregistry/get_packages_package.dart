@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPackagesPackage {
   /// Client specified annotations.
-  final Map<String, String> annotations;
+  final pulumi.Input<Map<String, String>> annotations;
   /// The time, as a RFC 3339 string, this package was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The display name of the package.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped.
-  final String name;
+  final pulumi.Input<String> name;
   /// The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GetPackagesPackage].
   /// [annotations] Client specified annotations.
@@ -39,11 +40,11 @@ class GetPackagesPackage {
 
   factory GetPackagesPackage.fromMap(Map<String, dynamic> map) {
     return GetPackagesPackage(
-      annotations: (map['annotations'] as Map).cast<String, String>(),
-      createTime: map['createTime'] as String,
-      displayName: map['displayName'] as String,
-      name: map['name'] as String,
-      updateTime: map['updateTime'] as String,
+      annotations: ((map['annotations'] as Map).cast<String, String>()).input(),
+      createTime: (map['createTime'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      name: (map['name'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

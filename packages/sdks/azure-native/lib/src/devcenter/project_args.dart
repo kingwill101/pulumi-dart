@@ -42,27 +42,17 @@ class ProjectArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   ProjectArgs({
-    pulumi.Output<ProjectCatalogSettings>? catalogSettings,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? devCenterId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? maxDevBoxesPerUser,
-    pulumi.Output<String>? projectName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      catalogSettings = pulumi.Input.asOptionalInput<ProjectCatalogSettings>(catalogSettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      devCenterId = pulumi.Input.asOptionalInput<String>(devCenterId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maxDevBoxesPerUser = pulumi.Input.asOptionalInput<int>(maxDevBoxesPerUser),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.catalogSettings,
+    this.description,
+    this.devCenterId,
+    this.displayName,
+    this.identity,
+    this.location,
+    this.maxDevBoxesPerUser,
+    this.projectName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      catalogSettings: map['catalogSettings'] == null ? null : pulumi.Output.create<ProjectCatalogSettings>(ProjectCatalogSettings.fromMap((map['catalogSettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      devCenterId: map['devCenterId'] == null ? null : pulumi.Output.create<String>(map['devCenterId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maxDevBoxesPerUser: map['maxDevBoxesPerUser'] == null ? null : pulumi.Output.create<int>(map['maxDevBoxesPerUser'] as int),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      catalogSettings: map['catalogSettings'] == null ? null : (ProjectCatalogSettings.fromMap((map['catalogSettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maxDevBoxesPerUser: map['maxDevBoxesPerUser'] == null ? null : (map['maxDevBoxesPerUser'] as int).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

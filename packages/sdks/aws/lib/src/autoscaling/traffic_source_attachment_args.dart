@@ -20,13 +20,10 @@ class TrafficSourceAttachmentArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [trafficSource] The unique identifiers of a traffic sources.
   TrafficSourceAttachmentArgs({
-    required pulumi.Output<String> autoscalingGroupName,
-    pulumi.Output<String>? region,
-    pulumi.Output<TrafficSourceAttachmentTrafficSource>? trafficSource,
-  }) :
-      autoscalingGroupName = pulumi.Input.asInput<String>(autoscalingGroupName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      trafficSource = pulumi.Input.asOptionalInput<TrafficSourceAttachmentTrafficSource>(trafficSource);
+    required this.autoscalingGroupName,
+    this.region,
+    this.trafficSource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class TrafficSourceAttachmentArgs {
 
   factory TrafficSourceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TrafficSourceAttachmentArgs(
-      autoscalingGroupName: pulumi.Output.create<String>(map['autoscalingGroupName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      trafficSource: map['trafficSource'] == null ? null : pulumi.Output.create<TrafficSourceAttachmentTrafficSource>(TrafficSourceAttachmentTrafficSource.fromMap((map['trafficSource'] as Map).cast<String, dynamic>())),
+      autoscalingGroupName: (map['autoscalingGroupName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      trafficSource: map['trafficSource'] == null ? null : (TrafficSourceAttachmentTrafficSource.fromMap((map['trafficSource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

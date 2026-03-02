@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Import disk details
 class ImportDiskDetailsResponse {
   /// Path to backed up manifest, only returned if enableManifestBackup is true.
-  final String backupManifestCloudPath;
+  final pulumi.Input<String> backupManifestCloudPath;
   /// BitLocker key used to encrypt the disk.
-  final String bitLockerKey;
+  final pulumi.Input<String> bitLockerKey;
   /// The relative path of the manifest file on the disk.
-  final String manifestFile;
+  final pulumi.Input<String> manifestFile;
   /// The Base16-encoded MD5 hash of the manifest file on the disk.
-  final String manifestHash;
+  final pulumi.Input<String> manifestHash;
 
   /// Creates a new [ImportDiskDetailsResponse].
   /// [backupManifestCloudPath] Path to backed up manifest, only returned if enableManifestBackup is true.
@@ -35,10 +36,10 @@ class ImportDiskDetailsResponse {
 
   factory ImportDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ImportDiskDetailsResponse(
-      backupManifestCloudPath: map['backupManifestCloudPath'] as String,
-      bitLockerKey: map['bitLockerKey'] as String,
-      manifestFile: map['manifestFile'] as String,
-      manifestHash: map['manifestHash'] as String,
+      backupManifestCloudPath: (map['backupManifestCloudPath'] as String).input(),
+      bitLockerKey: (map['bitLockerKey'] as String).input(),
+      manifestFile: (map['manifestFile'] as String).input(),
+      manifestHash: (map['manifestHash'] as String).input(),
     );
   }
 }

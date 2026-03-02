@@ -25,17 +25,12 @@ class GetGroupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [provisionType] The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
   GetGroupsArgs({
-    required pulumi.Output<String> directoryId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? provisionType,
-  }) :
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      provisionType = pulumi.Input.asOptionalInput<String>(provisionType);
+    required this.directoryId,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.provisionType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetGroupsArgs {
 
   factory GetGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupsArgs(
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      provisionType: map['provisionType'] == null ? null : pulumi.Output.create<String>(map['provisionType'] as String),
+      directoryId: (map['directoryId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      provisionType: map['provisionType'] == null ? null : (map['provisionType'] as String).input(),
     );
   }
 }

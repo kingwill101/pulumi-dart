@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceGuestAttributesQueryValue {
   /// Key of the guest_attribute.
-  final String key;
+  final pulumi.Input<String> key;
   /// Namespace of the guest_attribute.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// Value of the guest_attribute.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetInstanceGuestAttributesQueryValue].
   /// [key] Key of the guest_attribute.
@@ -29,9 +30,9 @@ class GetInstanceGuestAttributesQueryValue {
 
   factory GetInstanceGuestAttributesQueryValue.fromMap(Map<String, dynamic> map) {
     return GetInstanceGuestAttributesQueryValue(
-      key: map['key'] as String,
-      namespace: map['namespace'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description about the errors happen while performing migration validation
 class ValidationErrorResponse {
   /// Severity of the error
-  final String? severity;
+  final pulumi.Input<String>? severity;
   /// Error Text
-  final String? text;
+  final pulumi.Input<String>? text;
 
   /// Creates a new [ValidationErrorResponse].
   /// [severity] Severity of the error
@@ -25,8 +26,8 @@ class ValidationErrorResponse {
 
   factory ValidationErrorResponse.fromMap(Map<String, dynamic> map) {
     return ValidationErrorResponse(
-      severity: map['severity'] == null ? null : map['severity'] as String,
-      text: map['text'] == null ? null : map['text'] as String,
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
     );
   }
 }

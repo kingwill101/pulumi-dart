@@ -29,19 +29,13 @@ class ReportGroupArgs {
   /// [tags] Key-value mapping of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] The type of the Report Group. Valid value are `TEST` and `CODE_COVERAGE`.
   ReportGroupArgs({
-    pulumi.Output<bool>? deleteReports,
-    required pulumi.Output<ReportGroupExportConfig> exportConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-  }) :
-      deleteReports = pulumi.Input.asOptionalInput<bool>(deleteReports),
-      exportConfig = pulumi.Input.asInput<ReportGroupExportConfig>(exportConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type);
+    this.deleteReports,
+    required this.exportConfig,
+    this.name,
+    this.region,
+    this.tags,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ReportGroupArgs {
 
   factory ReportGroupArgs.fromMap(Map<String, dynamic> map) {
     return ReportGroupArgs(
-      deleteReports: map['deleteReports'] == null ? null : pulumi.Output.create<bool>(map['deleteReports'] as bool),
-      exportConfig: pulumi.Output.create<ReportGroupExportConfig>(ReportGroupExportConfig.fromMap((map['exportConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      deleteReports: map['deleteReports'] == null ? null : (map['deleteReports'] as bool).input(),
+      exportConfig: (ReportGroupExportConfig.fromMap((map['exportConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sub_resource_response.dart';
 
 /// Listener of an application gateway.
 class ApplicationGatewayListenerResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Frontend IP configuration resource of an application gateway.
-  final SubResourceResponse? frontendIPConfiguration;
+  final pulumi.Input<SubResourceResponse>? frontendIPConfiguration;
   /// Frontend port resource of an application gateway.
-  final SubResourceResponse? frontendPort;
+  final pulumi.Input<SubResourceResponse>? frontendPort;
   /// List of Server Name Indications(SNI) for TLS Multi-site Listener that allows special wildcard characters as well.
-  final List<String>? hostNames;
+  final pulumi.Input<List<String>>? hostNames;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of the listener that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Protocol of the listener.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// The provisioning state of the listener resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// SSL certificate resource of an application gateway.
-  final SubResourceResponse? sslCertificate;
+  final pulumi.Input<SubResourceResponse>? sslCertificate;
   /// SSL profile resource of the application gateway.
-  final SubResourceResponse? sslProfile;
+  final pulumi.Input<SubResourceResponse>? sslProfile;
   /// Type of the resource.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ApplicationGatewayListenerResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.
@@ -56,32 +57,32 @@ class ApplicationGatewayListenerResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'etag': etag,
-      'frontendIPConfiguration': ?frontendIPConfiguration == null ? null : frontendIPConfiguration!.toMap(),
-      'frontendPort': ?frontendPort == null ? null : frontendPort!.toMap(),
+      'frontendIPConfiguration': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(frontendIPConfiguration, (value) => value.toMap()),
+      'frontendPort': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(frontendPort, (value) => value.toMap()),
       'hostNames': ?hostNames,
       'id': ?id,
       'name': ?name,
       'protocol': ?protocol,
       'provisioningState': provisioningState,
-      'sslCertificate': ?sslCertificate == null ? null : sslCertificate!.toMap(),
-      'sslProfile': ?sslProfile == null ? null : sslProfile!.toMap(),
+      'sslCertificate': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(sslCertificate, (value) => value.toMap()),
+      'sslProfile': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(sslProfile, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory ApplicationGatewayListenerResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayListenerResponse(
-      etag: map['etag'] as String,
-      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : SubResourceResponse.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>()),
-      frontendPort: map['frontendPort'] == null ? null : SubResourceResponse.fromMap((map['frontendPort'] as Map).cast<String, dynamic>()),
-      hostNames: map['hostNames'] == null ? null : (map['hostNames'] as List).cast<String>(),
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      provisioningState: map['provisioningState'] as String,
-      sslCertificate: map['sslCertificate'] == null ? null : SubResourceResponse.fromMap((map['sslCertificate'] as Map).cast<String, dynamic>()),
-      sslProfile: map['sslProfile'] == null ? null : SubResourceResponse.fromMap((map['sslProfile'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      etag: (map['etag'] as String).input(),
+      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      frontendPort: map['frontendPort'] == null ? null : (SubResourceResponse.fromMap((map['frontendPort'] as Map).cast<String, dynamic>())).input(),
+      hostNames: map['hostNames'] == null ? null : ((map['hostNames'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      sslCertificate: map['sslCertificate'] == null ? null : (SubResourceResponse.fromMap((map['sslCertificate'] as Map).cast<String, dynamic>())).input(),
+      sslProfile: map['sslProfile'] == null ? null : (SubResourceResponse.fromMap((map['sslProfile'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

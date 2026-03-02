@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SystemTopicEventSubscriptionStorageQueueEndpoint {
   /// Storage queue message time to live in seconds.
-  final int? queueMessageTimeToLiveInSeconds;
+  final pulumi.Input<int>? queueMessageTimeToLiveInSeconds;
   /// Specifies the name of the storage queue where the Event Subscription will receive events.
-  final String queueName;
+  final pulumi.Input<String> queueName;
   /// Specifies the id of the storage account id where the storage queue is located.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
 
   /// Creates a new [SystemTopicEventSubscriptionStorageQueueEndpoint].
   /// [queueMessageTimeToLiveInSeconds] Storage queue message time to live in seconds.
@@ -29,9 +30,9 @@ class SystemTopicEventSubscriptionStorageQueueEndpoint {
 
   factory SystemTopicEventSubscriptionStorageQueueEndpoint.fromMap(Map<String, dynamic> map) {
     return SystemTopicEventSubscriptionStorageQueueEndpoint(
-      queueMessageTimeToLiveInSeconds: map['queueMessageTimeToLiveInSeconds'] == null ? null : map['queueMessageTimeToLiveInSeconds'] as int,
-      queueName: map['queueName'] as String,
-      storageAccountId: map['storageAccountId'] as String,
+      queueMessageTimeToLiveInSeconds: map['queueMessageTimeToLiveInSeconds'] == null ? null : (map['queueMessageTimeToLiveInSeconds'] as int).input(),
+      queueName: (map['queueName'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

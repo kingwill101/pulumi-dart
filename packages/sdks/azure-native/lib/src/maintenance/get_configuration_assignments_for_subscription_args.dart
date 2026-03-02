@@ -13,9 +13,8 @@ class GetConfigurationAssignmentsForSubscriptionArgs {
   /// Creates a new [GetConfigurationAssignmentsForSubscriptionArgs].
   /// [configurationAssignmentName] The name of the ConfigurationAssignment
   GetConfigurationAssignmentsForSubscriptionArgs({
-    required pulumi.Output<String> configurationAssignmentName,
-  }) :
-      configurationAssignmentName = pulumi.Input.asInput<String>(configurationAssignmentName);
+    required this.configurationAssignmentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetConfigurationAssignmentsForSubscriptionArgs {
 
   factory GetConfigurationAssignmentsForSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationAssignmentsForSubscriptionArgs(
-      configurationAssignmentName: pulumi.Output.create<String>(map['configurationAssignmentName'] as String),
+      configurationAssignmentName: (map['configurationAssignmentName'] as String).input(),
     );
   }
 }

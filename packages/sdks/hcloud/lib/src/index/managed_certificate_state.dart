@@ -35,25 +35,16 @@ class ManagedCertificateState {
   /// [notValidBefore] (string) Point in time when the Certificate becomes valid (in ISO-8601 format).
   /// [type] Optional.
   ManagedCertificateState({
-    pulumi.Output<String>? certificate,
-    pulumi.Output<String>? created,
-    pulumi.Output<List<String>>? domainNames,
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notValidAfter,
-    pulumi.Output<String>? notValidBefore,
-    pulumi.Output<String>? type,
-  }) :
-      certificate = pulumi.Input.asOptionalInput<String>(certificate),
-      created = pulumi.Input.asOptionalInput<String>(created),
-      domainNames = pulumi.Input.asOptionalInput<List<String>>(domainNames),
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notValidAfter = pulumi.Input.asOptionalInput<String>(notValidAfter),
-      notValidBefore = pulumi.Input.asOptionalInput<String>(notValidBefore),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.certificate,
+    this.created,
+    this.domainNames,
+    this.fingerprint,
+    this.labels,
+    this.name,
+    this.notValidAfter,
+    this.notValidBefore,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class ManagedCertificateState {
 
   factory ManagedCertificateState.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateState(
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<String>(map['certificate'] as String),
-      created: map['created'] == null ? null : pulumi.Output.create<String>(map['created'] as String),
-      domainNames: map['domainNames'] == null ? null : pulumi.Output.create<List<String>>((map['domainNames'] as List).cast<String>()),
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notValidAfter: map['notValidAfter'] == null ? null : pulumi.Output.create<String>(map['notValidAfter'] as String),
-      notValidBefore: map['notValidBefore'] == null ? null : pulumi.Output.create<String>(map['notValidBefore'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      created: map['created'] == null ? null : (map['created'] as String).input(),
+      domainNames: map['domainNames'] == null ? null : ((map['domainNames'] as List).cast<String>()).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notValidAfter: map['notValidAfter'] == null ? null : (map['notValidAfter'] as String).input(),
+      notValidBefore: map['notValidBefore'] == null ? null : (map['notValidBefore'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

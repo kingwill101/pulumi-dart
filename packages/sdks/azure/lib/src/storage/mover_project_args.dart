@@ -19,13 +19,10 @@ class MoverProjectArgs {
   /// [name] Specifies the name which should be used for this Storage Mover Project. Changing this forces a new resource to be created.
   /// [storageMoverId] Specifies the ID of the storage mover for this Storage Mover Project. Changing this forces a new resource to be created.
   MoverProjectArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> storageMoverId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageMoverId = pulumi.Input.asInput<String>(storageMoverId);
+    this.description,
+    this.name,
+    required this.storageMoverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class MoverProjectArgs {
 
   factory MoverProjectArgs.fromMap(Map<String, dynamic> map) {
     return MoverProjectArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageMoverId: pulumi.Output.create<String>(map['storageMoverId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageMoverId: (map['storageMoverId'] as String).input(),
     );
   }
 }

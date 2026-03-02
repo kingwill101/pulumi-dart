@@ -8,7 +8,7 @@ class GlobalForwardingRuleMetadataFilter {
   /// provided metadata based on filterMatchCriteria
   /// This list must not be empty and can have at the most 64 entries.
   /// Structure is documented below.
-  final List<GlobalForwardingRuleMetadataFilterFilterLabel> filterLabels;
+  final pulumi.Input<List<GlobalForwardingRuleMetadataFilterFilterLabel>> filterLabels;
   /// Specifies how individual filterLabel matches within the list of
   /// filterLabels contribute towards the overall metadataFilter match.
   /// MATCH_ANY - At least one of the filterLabels must have a matching
@@ -16,7 +16,7 @@ class GlobalForwardingRuleMetadataFilter {
   /// MATCH_ALL - All filterLabels must have matching labels in the
   /// provided metadata.
   /// Possible values are: `MATCH_ANY`, `MATCH_ALL`.
-  final String filterMatchCriteria;
+  final pulumi.Input<String> filterMatchCriteria;
 
   /// Creates a new [GlobalForwardingRuleMetadataFilter].
   /// [filterLabels] The list of label value pairs that must match labels in the
@@ -28,15 +28,15 @@ class GlobalForwardingRuleMetadataFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filterLabels': pulumi.Input.encodeList<GlobalForwardingRuleMetadataFilterFilterLabel, Map<String, dynamic>>(filterLabels, (value) => value.toMap()),
+      'filterLabels': pulumi.Input.mapInputValue<List<GlobalForwardingRuleMetadataFilterFilterLabel>, List<Map<String, dynamic>>>(filterLabels, (value) => pulumi.Input.encodeList<GlobalForwardingRuleMetadataFilterFilterLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'filterMatchCriteria': filterMatchCriteria,
     };
   }
 
   factory GlobalForwardingRuleMetadataFilter.fromMap(Map<String, dynamic> map) {
     return GlobalForwardingRuleMetadataFilter(
-      filterLabels: pulumi.Input.decodeList<GlobalForwardingRuleMetadataFilterFilterLabel>(map['filterLabels'], (value) => GlobalForwardingRuleMetadataFilterFilterLabel.fromMap((value as Map).cast<String, dynamic>())),
-      filterMatchCriteria: map['filterMatchCriteria'] as String,
+      filterLabels: (pulumi.Input.decodeList<GlobalForwardingRuleMetadataFilterFilterLabel>(map['filterLabels'], (value) => GlobalForwardingRuleMetadataFilterFilterLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filterMatchCriteria: (map['filterMatchCriteria'] as String).input(),
     );
   }
 }

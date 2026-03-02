@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultitenantDistributionActiveTrustedKeyGroupItem {
   /// ID of the key group that contains the public keys.
-  final String? keyGroupId;
+  final pulumi.Input<String>? keyGroupId;
   /// Set of active CloudFront key pairs associated with the signer that can be used to verify the signatures of signed URLs and signed cookies.
-  final List<String>? keyPairIds;
+  final pulumi.Input<List<String>>? keyPairIds;
 
   /// Creates a new [MultitenantDistributionActiveTrustedKeyGroupItem].
   /// [keyGroupId] ID of the key group that contains the public keys.
@@ -24,8 +25,8 @@ class MultitenantDistributionActiveTrustedKeyGroupItem {
 
   factory MultitenantDistributionActiveTrustedKeyGroupItem.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionActiveTrustedKeyGroupItem(
-      keyGroupId: map['keyGroupId'] == null ? null : map['keyGroupId'] as String,
-      keyPairIds: map['keyPairIds'] == null ? null : (map['keyPairIds'] as List).cast<String>(),
+      keyGroupId: map['keyGroupId'] == null ? null : (map['keyGroupId'] as String).input(),
+      keyPairIds: map['keyPairIds'] == null ? null : ((map['keyPairIds'] as List).cast<String>()).input(),
     );
   }
 }

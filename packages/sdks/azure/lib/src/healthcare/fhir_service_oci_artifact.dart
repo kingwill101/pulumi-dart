@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FhirServiceOciArtifact {
   /// A digest of an image within Azure container registry used for export operations of the service instance to narrow the artifacts down.
-  final String? digest;
+  final pulumi.Input<String>? digest;
   /// An image within Azure container registry used for export operations of the service instance.
-  final String? imageName;
+  final pulumi.Input<String>? imageName;
   /// An Azure container registry used for export operations of the service instance.
-  final String loginServer;
+  final pulumi.Input<String> loginServer;
 
   /// Creates a new [FhirServiceOciArtifact].
   /// [digest] A digest of an image within Azure container registry used for export operations of the service instance to narrow the artifacts down.
@@ -29,9 +30,9 @@ class FhirServiceOciArtifact {
 
   factory FhirServiceOciArtifact.fromMap(Map<String, dynamic> map) {
     return FhirServiceOciArtifact(
-      digest: map['digest'] == null ? null : map['digest'] as String,
-      imageName: map['imageName'] == null ? null : map['imageName'] as String,
-      loginServer: map['loginServer'] as String,
+      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      loginServer: (map['loginServer'] as String).input(),
     );
   }
 }

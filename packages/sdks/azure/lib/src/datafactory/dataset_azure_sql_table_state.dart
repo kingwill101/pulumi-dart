@@ -41,29 +41,18 @@ class DatasetAzureSqlTableState {
   /// [schemaColumns] A `schema_column` block as defined below.
   /// [table] The table name of the table in the Azure SQL Database.
   DatasetAzureSqlTableState({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? folder,
-    pulumi.Output<String>? linkedServiceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? schema,
-    pulumi.Output<List<DatasetAzureSqlTableSchemaColumn>>? schemaColumns,
-    pulumi.Output<String>? table,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      linkedServiceId = pulumi.Input.asOptionalInput<String>(linkedServiceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      schema = pulumi.Input.asOptionalInput<String>(schema),
-      schemaColumns = pulumi.Input.asOptionalInput<List<DatasetAzureSqlTableSchemaColumn>>(schemaColumns),
-      table = pulumi.Input.asOptionalInput<String>(table);
+    this.additionalProperties,
+    this.annotations,
+    this.dataFactoryId,
+    this.description,
+    this.folder,
+    this.linkedServiceId,
+    this.name,
+    this.parameters,
+    this.schema,
+    this.schemaColumns,
+    this.table,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class DatasetAzureSqlTableState {
 
   factory DatasetAzureSqlTableState.fromMap(Map<String, dynamic> map) {
     return DatasetAzureSqlTableState(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      linkedServiceId: map['linkedServiceId'] == null ? null : pulumi.Output.create<String>(map['linkedServiceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      schema: map['schema'] == null ? null : pulumi.Output.create<String>(map['schema'] as String),
-      schemaColumns: map['schemaColumns'] == null ? null : pulumi.Output.create<List<DatasetAzureSqlTableSchemaColumn>>(pulumi.Input.decodeList<DatasetAzureSqlTableSchemaColumn>(map['schemaColumns'], (value) => DatasetAzureSqlTableSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))),
-      table: map['table'] == null ? null : pulumi.Output.create<String>(map['table'] as String),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      linkedServiceId: map['linkedServiceId'] == null ? null : (map['linkedServiceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      schemaColumns: map['schemaColumns'] == null ? null : (pulumi.Input.decodeList<DatasetAzureSqlTableSchemaColumn>(map['schemaColumns'], (value) => DatasetAzureSqlTableSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      table: map['table'] == null ? null : (map['table'] as String).input(),
     );
   }
 }

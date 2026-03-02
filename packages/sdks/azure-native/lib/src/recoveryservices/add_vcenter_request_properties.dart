@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of an add vCenter request.
 class AddVCenterRequestProperties {
   /// The friendly name of the vCenter.
-  final String? friendlyName;
+  final pulumi.Input<String>? friendlyName;
   /// The IP address of the vCenter to be discovered.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The port number for discovery.
-  final String? port;
+  final pulumi.Input<String>? port;
   /// The process server Id from where the discovery is orchestrated.
-  final String? processServerId;
+  final pulumi.Input<String>? processServerId;
   /// The account Id which has privileges to discover the vCenter.
-  final String? runAsAccountId;
+  final pulumi.Input<String>? runAsAccountId;
 
   /// Creates a new [AddVCenterRequestProperties].
   /// [friendlyName] The friendly name of the vCenter.
@@ -40,11 +41,11 @@ class AddVCenterRequestProperties {
 
   factory AddVCenterRequestProperties.fromMap(Map<String, dynamic> map) {
     return AddVCenterRequestProperties(
-      friendlyName: map['friendlyName'] == null ? null : map['friendlyName'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      port: map['port'] == null ? null : map['port'] as String,
-      processServerId: map['processServerId'] == null ? null : map['processServerId'] as String,
-      runAsAccountId: map['runAsAccountId'] == null ? null : map['runAsAccountId'] as String,
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      processServerId: map['processServerId'] == null ? null : (map['processServerId'] as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
     );
   }
 }

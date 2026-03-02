@@ -44,29 +44,18 @@ class FavoriteArgs {
   /// [tags] A list of 0 or more tags that are associated with this favorite definition
   /// [version] This instance's version of the data model. This can change as new features are added that can be marked favorite. Current examples include MetricsExplorer (ME) and Search.
   FavoriteArgs({
-    pulumi.Output<String>? category,
-    pulumi.Output<String>? config,
-    pulumi.Output<String>? favoriteId,
-    pulumi.Output<FavoriteType>? favoriteType,
-    pulumi.Output<bool>? isGeneratedFromTemplate,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? sourceType,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? version,
-  }) :
-      category = pulumi.Input.asOptionalInput<String>(category),
-      config = pulumi.Input.asOptionalInput<String>(config),
-      favoriteId = pulumi.Input.asOptionalInput<String>(favoriteId),
-      favoriteType = pulumi.Input.asOptionalInput<FavoriteType>(favoriteType),
-      isGeneratedFromTemplate = pulumi.Input.asOptionalInput<bool>(isGeneratedFromTemplate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      sourceType = pulumi.Input.asOptionalInput<String>(sourceType),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.category,
+    this.config,
+    this.favoriteId,
+    this.favoriteType,
+    this.isGeneratedFromTemplate,
+    this.name,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.sourceType,
+    this.tags,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class FavoriteArgs {
 
   factory FavoriteArgs.fromMap(Map<String, dynamic> map) {
     return FavoriteArgs(
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      config: map['config'] == null ? null : pulumi.Output.create<String>(map['config'] as String),
-      favoriteId: map['favoriteId'] == null ? null : pulumi.Output.create<String>(map['favoriteId'] as String),
-      favoriteType: map['favoriteType'] == null ? null : pulumi.Output.create<FavoriteType>(FavoriteType.fromValue(map['favoriteType'] as String)),
-      isGeneratedFromTemplate: map['isGeneratedFromTemplate'] == null ? null : pulumi.Output.create<bool>(map['isGeneratedFromTemplate'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      sourceType: map['sourceType'] == null ? null : pulumi.Output.create<String>(map['sourceType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      favoriteId: map['favoriteId'] == null ? null : (map['favoriteId'] as String).input(),
+      favoriteType: map['favoriteType'] == null ? null : (FavoriteType.fromValue(map['favoriteType'] as String)).input(),
+      isGeneratedFromTemplate: map['isGeneratedFromTemplate'] == null ? null : (map['isGeneratedFromTemplate'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

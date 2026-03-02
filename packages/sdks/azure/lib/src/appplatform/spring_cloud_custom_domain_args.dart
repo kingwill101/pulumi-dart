@@ -22,15 +22,11 @@ class SpringCloudCustomDomainArgs {
   /// [springCloudAppId] Specifies the resource ID of the Spring Cloud Application. Changing this forces a new resource to be created.
   /// [thumbprint] Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `certificate_name` is specified. Changing this forces a new resource to be created.
   SpringCloudCustomDomainArgs({
-    pulumi.Output<String>? certificateName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> springCloudAppId,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      springCloudAppId = pulumi.Input.asInput<String>(springCloudAppId),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    this.certificateName,
+    this.name,
+    required this.springCloudAppId,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SpringCloudCustomDomainArgs {
 
   factory SpringCloudCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudCustomDomainArgs(
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      springCloudAppId: pulumi.Output.create<String>(map['springCloudAppId'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      springCloudAppId: (map['springCloudAppId'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

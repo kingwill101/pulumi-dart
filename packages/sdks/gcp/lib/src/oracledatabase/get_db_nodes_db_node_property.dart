@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDbNodesDbNodeProperty {
   /// Output only
-  final int dbNodeStorageSizeGb;
+  final pulumi.Input<int> dbNodeStorageSizeGb;
   /// Output only
-  final String dbServerOcid;
+  final pulumi.Input<String> dbServerOcid;
   /// Output only
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// Output only
-  final int memorySizeGb;
+  final pulumi.Input<int> memorySizeGb;
   /// Output only
-  final String ocid;
+  final pulumi.Input<String> ocid;
   /// Output only
-  final int ocpuCount;
+  final pulumi.Input<int> ocpuCount;
   /// Output only
-  final String state;
+  final pulumi.Input<String> state;
   /// Output only
-  final int totalCpuCoreCount;
+  final pulumi.Input<int> totalCpuCoreCount;
 
   /// Creates a new [GetDbNodesDbNodeProperty].
   /// [dbNodeStorageSizeGb] Output only
@@ -54,14 +55,14 @@ class GetDbNodesDbNodeProperty {
 
   factory GetDbNodesDbNodeProperty.fromMap(Map<String, dynamic> map) {
     return GetDbNodesDbNodeProperty(
-      dbNodeStorageSizeGb: map['dbNodeStorageSizeGb'] as int,
-      dbServerOcid: map['dbServerOcid'] as String,
-      hostname: map['hostname'] as String,
-      memorySizeGb: map['memorySizeGb'] as int,
-      ocid: map['ocid'] as String,
-      ocpuCount: map['ocpuCount'] as int,
-      state: map['state'] as String,
-      totalCpuCoreCount: map['totalCpuCoreCount'] as int,
+      dbNodeStorageSizeGb: (map['dbNodeStorageSizeGb'] as int).input(),
+      dbServerOcid: (map['dbServerOcid'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      memorySizeGb: (map['memorySizeGb'] as int).input(),
+      ocid: (map['ocid'] as String).input(),
+      ocpuCount: (map['ocpuCount'] as int).input(),
+      state: (map['state'] as String).input(),
+      totalCpuCoreCount: (map['totalCpuCoreCount'] as int).input(),
     );
   }
 }

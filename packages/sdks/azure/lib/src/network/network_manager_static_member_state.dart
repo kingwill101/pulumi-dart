@@ -21,15 +21,11 @@ class NetworkManagerStaticMemberState {
   /// [region] The region of the Network Manager Static Member.
   /// [targetVirtualNetworkId] Specifies the Resource ID of the Virtual Network or Subnet used as the Static Member. Changing this forces a new Network Manager Static Member to be created.
   NetworkManagerStaticMemberState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkGroupId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? targetVirtualNetworkId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkGroupId = pulumi.Input.asOptionalInput<String>(networkGroupId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetVirtualNetworkId = pulumi.Input.asOptionalInput<String>(targetVirtualNetworkId);
+    this.name,
+    this.networkGroupId,
+    this.region,
+    this.targetVirtualNetworkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class NetworkManagerStaticMemberState {
 
   factory NetworkManagerStaticMemberState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerStaticMemberState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkGroupId: map['networkGroupId'] == null ? null : pulumi.Output.create<String>(map['networkGroupId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetVirtualNetworkId: map['targetVirtualNetworkId'] == null ? null : pulumi.Output.create<String>(map['targetVirtualNetworkId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkGroupId: map['networkGroupId'] == null ? null : (map['networkGroupId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetVirtualNetworkId: map['targetVirtualNetworkId'] == null ? null : (map['targetVirtualNetworkId'] as String).input(),
     );
   }
 }

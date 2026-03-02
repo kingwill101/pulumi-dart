@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResponsePlanIncidentTemplateNotificationTarget {
   /// The ARN of the Amazon SNS topic.
-  final String snsTopicArn;
+  final pulumi.Input<String> snsTopicArn;
 
   /// Creates a new [GetResponsePlanIncidentTemplateNotificationTarget].
   /// [snsTopicArn] The ARN of the Amazon SNS topic.
@@ -19,7 +20,7 @@ class GetResponsePlanIncidentTemplateNotificationTarget {
 
   factory GetResponsePlanIncidentTemplateNotificationTarget.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanIncidentTemplateNotificationTarget(
-      snsTopicArn: map['snsTopicArn'] as String,
+      snsTopicArn: (map['snsTopicArn'] as String).input(),
     );
   }
 }

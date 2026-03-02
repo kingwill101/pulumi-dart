@@ -38,17 +38,12 @@ class WebTypeComputeIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   WebTypeComputeIamMemberState({
-    pulumi.Output<WebTypeComputeIamMemberCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<WebTypeComputeIamMemberCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.etag,
+    this.member,
+    this.project,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,11 +57,11 @@ class WebTypeComputeIamMemberState {
 
   factory WebTypeComputeIamMemberState.fromMap(Map<String, dynamic> map) {
     return WebTypeComputeIamMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<WebTypeComputeIamMemberCondition>(WebTypeComputeIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (WebTypeComputeIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

@@ -37,25 +37,16 @@ class TopicArgs {
   /// [schemaSettings] Optional. Settings for validating messages published against a schema.
   /// [topicId] Required.
   TopicArgs({
-    pulumi.Output<String>? kmsKeyName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? messageRetentionDuration,
-    pulumi.Output<MessageStoragePolicy>? messageStoragePolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? satisfiesPzs,
-    pulumi.Output<SchemaSettings>? schemaSettings,
-    required pulumi.Output<String> topicId,
-  }) :
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      messageRetentionDuration = pulumi.Input.asOptionalInput<String>(messageRetentionDuration),
-      messageStoragePolicy = pulumi.Input.asOptionalInput<MessageStoragePolicy>(messageStoragePolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      satisfiesPzs = pulumi.Input.asOptionalInput<bool>(satisfiesPzs),
-      schemaSettings = pulumi.Input.asOptionalInput<SchemaSettings>(schemaSettings),
-      topicId = pulumi.Input.asInput<String>(topicId);
+    this.kmsKeyName,
+    this.labels,
+    this.messageRetentionDuration,
+    this.messageStoragePolicy,
+    this.name,
+    this.project,
+    this.satisfiesPzs,
+    this.schemaSettings,
+    required this.topicId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      messageRetentionDuration: map['messageRetentionDuration'] == null ? null : pulumi.Output.create<String>(map['messageRetentionDuration'] as String),
-      messageStoragePolicy: map['messageStoragePolicy'] == null ? null : pulumi.Output.create<MessageStoragePolicy>(MessageStoragePolicy.fromMap((map['messageStoragePolicy'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      satisfiesPzs: map['satisfiesPzs'] == null ? null : pulumi.Output.create<bool>(map['satisfiesPzs'] as bool),
-      schemaSettings: map['schemaSettings'] == null ? null : pulumi.Output.create<SchemaSettings>(SchemaSettings.fromMap((map['schemaSettings'] as Map).cast<String, dynamic>())),
-      topicId: pulumi.Output.create<String>(map['topicId'] as String),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      messageRetentionDuration: map['messageRetentionDuration'] == null ? null : (map['messageRetentionDuration'] as String).input(),
+      messageStoragePolicy: map['messageStoragePolicy'] == null ? null : (MessageStoragePolicy.fromMap((map['messageStoragePolicy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      satisfiesPzs: map['satisfiesPzs'] == null ? null : (map['satisfiesPzs'] as bool).input(),
+      schemaSettings: map['schemaSettings'] == null ? null : (SchemaSettings.fromMap((map['schemaSettings'] as Map).cast<String, dynamic>())).input(),
+      topicId: (map['topicId'] as String).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class UserArgs {
   /// [resourceGroupName] The resource group name.
   /// [userType] Type of the user.
   UserArgs({
-    required pulumi.Output<String> deviceName,
-    pulumi.Output<AsymmetricEncryptedSecret>? encryptedPassword,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> userType,
-  }) :
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      encryptedPassword = pulumi.Input.asOptionalInput<AsymmetricEncryptedSecret>(encryptedPassword),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userType = pulumi.Input.asInput<String>(userType);
+    required this.deviceName,
+    this.encryptedPassword,
+    this.name,
+    required this.resourceGroupName,
+    required this.userType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      encryptedPassword: map['encryptedPassword'] == null ? null : pulumi.Output.create<AsymmetricEncryptedSecret>(AsymmetricEncryptedSecret.fromMap((map['encryptedPassword'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userType: pulumi.Output.create<String>(map['userType'] as String),
+      deviceName: (map['deviceName'] as String).input(),
+      encryptedPassword: map['encryptedPassword'] == null ? null : (AsymmetricEncryptedSecret.fromMap((map['encryptedPassword'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userType: (map['userType'] as String).input(),
     );
   }
 }

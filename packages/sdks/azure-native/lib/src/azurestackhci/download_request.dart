@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'download_os_profile.dart';
 
 /// Download Request properties
 class DownloadRequest {
   /// Operating system profile.
-  final DownloadOsProfile osProfile;
+  final pulumi.Input<DownloadOsProfile> osProfile;
   /// Target operating system to support polymorphic resource.
-  final String target;
+  final pulumi.Input<String> target;
 
   /// Creates a new [DownloadRequest].
   /// [osProfile] Operating system profile.
@@ -19,15 +20,15 @@ class DownloadRequest {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'osProfile': osProfile.toMap(),
+      'osProfile': pulumi.Input.mapInputValue<DownloadOsProfile, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
       'target': target,
     };
   }
 
   factory DownloadRequest.fromMap(Map<String, dynamic> map) {
     return DownloadRequest(
-      osProfile: DownloadOsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>()),
-      target: map['target'] as String,
+      osProfile: (DownloadOsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

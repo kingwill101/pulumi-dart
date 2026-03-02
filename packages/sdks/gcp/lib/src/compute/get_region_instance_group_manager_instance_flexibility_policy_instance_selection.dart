@@ -5,15 +5,15 @@ import 'get_region_instance_group_manager_instance_flexibility_policy_instance_s
 
 class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
   /// List of disks to be attached to the instances created from this selection.
-  final List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk> disks;
+  final pulumi.Input<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk>> disks;
   /// Full machine-type names, e.g. "n1-standard-16"
-  final List<String> machineTypes;
+  final pulumi.Input<List<String>> machineTypes;
   /// Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
-  final String minCpuPlatform;
+  final pulumi.Input<String> minCpuPlatform;
   /// The name of the instance group. Either `name` or `self_link` must be provided.
-  final String name;
+  final pulumi.Input<String> name;
   /// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
-  final int rank;
+  final pulumi.Input<int> rank;
 
   /// Creates a new [GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection].
   /// [disks] List of disks to be attached to the instances created from this selection.
@@ -31,7 +31,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks': pulumi.Input.encodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk, Map<String, dynamic>>(disks, (value) => value.toMap()),
+      'disks': pulumi.Input.mapInputValue<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'machineTypes': machineTypes,
       'minCpuPlatform': minCpuPlatform,
       'name': name,
@@ -41,11 +41,11 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 
   factory GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection(
-      disks: pulumi.Input.decodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk>(map['disks'], (value) => GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk.fromMap((value as Map).cast<String, dynamic>())),
-      machineTypes: (map['machineTypes'] as List).cast<String>(),
-      minCpuPlatform: map['minCpuPlatform'] as String,
-      name: map['name'] as String,
-      rank: map['rank'] as int,
+      disks: (pulumi.Input.decodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk>(map['disks'], (value) => GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      machineTypes: ((map['machineTypes'] as List).cast<String>()).input(),
+      minCpuPlatform: (map['minCpuPlatform'] as String).input(),
+      name: (map['name'] as String).input(),
+      rank: (map['rank'] as int).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class AttachedNetworkState {
   /// [name] Specifies the name of this Dev Center Attached Network. Changing this forces a new resource to be created.
   /// [networkConnectionId] The ID of the Dev Center Network Connection you want to attach. Changing this forces a new resource to be created.
   AttachedNetworkState({
-    pulumi.Output<String>? devCenterId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkConnectionId,
-  }) :
-      devCenterId = pulumi.Input.asOptionalInput<String>(devCenterId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkConnectionId = pulumi.Input.asOptionalInput<String>(networkConnectionId);
+    this.devCenterId,
+    this.name,
+    this.networkConnectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AttachedNetworkState {
 
   factory AttachedNetworkState.fromMap(Map<String, dynamic> map) {
     return AttachedNetworkState(
-      devCenterId: map['devCenterId'] == null ? null : pulumi.Output.create<String>(map['devCenterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkConnectionId: map['networkConnectionId'] == null ? null : pulumi.Output.create<String>(map['networkConnectionId'] as String),
+      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkConnectionId: map['networkConnectionId'] == null ? null : (map['networkConnectionId'] as String).input(),
     );
   }
 }

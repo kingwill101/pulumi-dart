@@ -27,19 +27,13 @@ class EventRuleState {
   /// [regions] Set of AWS regions where the event rule will be applied. Each region must be between 2 and 25 characters, and match the pattern `([a-z]{1,2})-([a-z]{1,15}-)+([0-9])`.
   /// [source] Source of the event. Must be between 1 and 36 characters, and match the pattern `aws.([a-z0-9\-])+`.
   EventRuleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? eventPattern,
-    pulumi.Output<String>? eventType,
-    pulumi.Output<String>? notificationConfigurationArn,
-    pulumi.Output<List<String>>? regions,
-    pulumi.Output<String>? source,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      eventPattern = pulumi.Input.asOptionalInput<String>(eventPattern),
-      eventType = pulumi.Input.asOptionalInput<String>(eventType),
-      notificationConfigurationArn = pulumi.Input.asOptionalInput<String>(notificationConfigurationArn),
-      regions = pulumi.Input.asOptionalInput<List<String>>(regions),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    this.arn,
+    this.eventPattern,
+    this.eventType,
+    this.notificationConfigurationArn,
+    this.regions,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class EventRuleState {
 
   factory EventRuleState.fromMap(Map<String, dynamic> map) {
     return EventRuleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      eventPattern: map['eventPattern'] == null ? null : pulumi.Output.create<String>(map['eventPattern'] as String),
-      eventType: map['eventType'] == null ? null : pulumi.Output.create<String>(map['eventType'] as String),
-      notificationConfigurationArn: map['notificationConfigurationArn'] == null ? null : pulumi.Output.create<String>(map['notificationConfigurationArn'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      eventPattern: map['eventPattern'] == null ? null : (map['eventPattern'] as String).input(),
+      eventType: map['eventType'] == null ? null : (map['eventType'] as String).input(),
+      notificationConfigurationArn: map['notificationConfigurationArn'] == null ? null : (map['notificationConfigurationArn'] as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

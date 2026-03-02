@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupsGroupExternalId {
   /// Identifier issued to this resource by an external identity provider.
-  final String id;
+  final pulumi.Input<String> id;
   /// Issuer for an external identifier.
-  final String issuer;
+  final pulumi.Input<String> issuer;
 
   /// Creates a new [GetGroupsGroupExternalId].
   /// [id] Identifier issued to this resource by an external identity provider.
@@ -24,8 +25,8 @@ class GetGroupsGroupExternalId {
 
   factory GetGroupsGroupExternalId.fromMap(Map<String, dynamic> map) {
     return GetGroupsGroupExternalId(
-      id: map['id'] as String,
-      issuer: map['issuer'] as String,
+      id: (map['id'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
     );
   }
 }

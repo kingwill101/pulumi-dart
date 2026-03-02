@@ -39,25 +39,16 @@ class SslCertificateComputeBetaArgs {
   /// [selfManaged] Configuration and status of a self-managed SSL certificate.
   /// [type] (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
   SslCertificateComputeBetaArgs({
-    pulumi.Output<String>? certificate,
-    pulumi.Output<String>? description,
-    pulumi.Output<SslCertificateManagedSslCertificateComputeBeta>? managed,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<SslCertificateSelfManagedSslCertificateComputeBeta>? selfManaged,
-    pulumi.Output<SslCertificateTypeComputeBeta>? type,
-  }) :
-      certificate = pulumi.Input.asOptionalInput<String>(certificate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      managed = pulumi.Input.asOptionalInput<SslCertificateManagedSslCertificateComputeBeta>(managed),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      selfManaged = pulumi.Input.asOptionalInput<SslCertificateSelfManagedSslCertificateComputeBeta>(selfManaged),
-      type = pulumi.Input.asOptionalInput<SslCertificateTypeComputeBeta>(type);
+    this.certificate,
+    this.description,
+    this.managed,
+    this.name,
+    this.privateKey,
+    this.project,
+    this.requestId,
+    this.selfManaged,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class SslCertificateComputeBetaArgs {
 
   factory SslCertificateComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return SslCertificateComputeBetaArgs(
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<String>(map['certificate'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      managed: map['managed'] == null ? null : pulumi.Output.create<SslCertificateManagedSslCertificateComputeBeta>(SslCertificateManagedSslCertificateComputeBeta.fromMap((map['managed'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      selfManaged: map['selfManaged'] == null ? null : pulumi.Output.create<SslCertificateSelfManagedSslCertificateComputeBeta>(SslCertificateSelfManagedSslCertificateComputeBeta.fromMap((map['selfManaged'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<SslCertificateTypeComputeBeta>(SslCertificateTypeComputeBeta.fromValue(map['type'] as String)),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      managed: map['managed'] == null ? null : (SslCertificateManagedSslCertificateComputeBeta.fromMap((map['managed'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      selfManaged: map['selfManaged'] == null ? null : (SslCertificateSelfManagedSslCertificateComputeBeta.fromMap((map['selfManaged'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (SslCertificateTypeComputeBeta.fromValue(map['type'] as String)).input(),
     );
   }
 }

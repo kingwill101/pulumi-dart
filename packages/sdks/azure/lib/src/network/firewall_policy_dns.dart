@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyDns {
   /// Whether to enable DNS proxy on Firewalls attached to this Firewall Policy? Defaults to `false`.
-  final bool? proxyEnabled;
+  final pulumi.Input<bool>? proxyEnabled;
   /// A list of custom DNS servers' IP addresses.
-  final List<String>? servers;
+  final pulumi.Input<List<String>>? servers;
 
   /// Creates a new [FirewallPolicyDns].
   /// [proxyEnabled] Whether to enable DNS proxy on Firewalls attached to this Firewall Policy? Defaults to `false`.
@@ -24,8 +25,8 @@ class FirewallPolicyDns {
 
   factory FirewallPolicyDns.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyDns(
-      proxyEnabled: map['proxyEnabled'] == null ? null : map['proxyEnabled'] as bool,
-      servers: map['servers'] == null ? null : (map['servers'] as List).cast<String>(),
+      proxyEnabled: map['proxyEnabled'] == null ? null : (map['proxyEnabled'] as bool).input(),
+      servers: map['servers'] == null ? null : ((map['servers'] as List).cast<String>()).input(),
     );
   }
 }

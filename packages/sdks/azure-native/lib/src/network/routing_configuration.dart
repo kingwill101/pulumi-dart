@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'propagated_route_table.dart';
 import 'sub_resource.dart';
 import 'vnet_route.dart';
@@ -7,15 +8,15 @@ import 'vnet_route.dart';
 /// Routing Configuration indicating the associated and propagated route tables for this connection.
 class RoutingConfiguration {
   /// The resource id RouteTable associated with this RoutingConfiguration.
-  final SubResource? associatedRouteTable;
+  final pulumi.Input<SubResource>? associatedRouteTable;
   /// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-  final SubResource? inboundRouteMap;
+  final pulumi.Input<SubResource>? inboundRouteMap;
   /// The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
-  final SubResource? outboundRouteMap;
+  final pulumi.Input<SubResource>? outboundRouteMap;
   /// The list of RouteTables to advertise the routes to.
-  final PropagatedRouteTable? propagatedRouteTables;
+  final pulumi.Input<PropagatedRouteTable>? propagatedRouteTables;
   /// List of routes that control routing from VirtualHub into a virtual network connection.
-  final VnetRoute? vnetRoutes;
+  final pulumi.Input<VnetRoute>? vnetRoutes;
 
   /// Creates a new [RoutingConfiguration].
   /// [associatedRouteTable] The resource id RouteTable associated with this RoutingConfiguration.
@@ -33,21 +34,21 @@ class RoutingConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'associatedRouteTable': ?associatedRouteTable == null ? null : associatedRouteTable!.toMap(),
-      'inboundRouteMap': ?inboundRouteMap == null ? null : inboundRouteMap!.toMap(),
-      'outboundRouteMap': ?outboundRouteMap == null ? null : outboundRouteMap!.toMap(),
-      'propagatedRouteTables': ?propagatedRouteTables == null ? null : propagatedRouteTables!.toMap(),
-      'vnetRoutes': ?vnetRoutes == null ? null : vnetRoutes!.toMap(),
+      'associatedRouteTable': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(associatedRouteTable, (value) => value.toMap()),
+      'inboundRouteMap': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(inboundRouteMap, (value) => value.toMap()),
+      'outboundRouteMap': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(outboundRouteMap, (value) => value.toMap()),
+      'propagatedRouteTables': ?pulumi.Input.mapOptionalInputValue<PropagatedRouteTable, Map<String, dynamic>>(propagatedRouteTables, (value) => value.toMap()),
+      'vnetRoutes': ?pulumi.Input.mapOptionalInputValue<VnetRoute, Map<String, dynamic>>(vnetRoutes, (value) => value.toMap()),
     };
   }
 
   factory RoutingConfiguration.fromMap(Map<String, dynamic> map) {
     return RoutingConfiguration(
-      associatedRouteTable: map['associatedRouteTable'] == null ? null : SubResource.fromMap((map['associatedRouteTable'] as Map).cast<String, dynamic>()),
-      inboundRouteMap: map['inboundRouteMap'] == null ? null : SubResource.fromMap((map['inboundRouteMap'] as Map).cast<String, dynamic>()),
-      outboundRouteMap: map['outboundRouteMap'] == null ? null : SubResource.fromMap((map['outboundRouteMap'] as Map).cast<String, dynamic>()),
-      propagatedRouteTables: map['propagatedRouteTables'] == null ? null : PropagatedRouteTable.fromMap((map['propagatedRouteTables'] as Map).cast<String, dynamic>()),
-      vnetRoutes: map['vnetRoutes'] == null ? null : VnetRoute.fromMap((map['vnetRoutes'] as Map).cast<String, dynamic>()),
+      associatedRouteTable: map['associatedRouteTable'] == null ? null : (SubResource.fromMap((map['associatedRouteTable'] as Map).cast<String, dynamic>())).input(),
+      inboundRouteMap: map['inboundRouteMap'] == null ? null : (SubResource.fromMap((map['inboundRouteMap'] as Map).cast<String, dynamic>())).input(),
+      outboundRouteMap: map['outboundRouteMap'] == null ? null : (SubResource.fromMap((map['outboundRouteMap'] as Map).cast<String, dynamic>())).input(),
+      propagatedRouteTables: map['propagatedRouteTables'] == null ? null : (PropagatedRouteTable.fromMap((map['propagatedRouteTables'] as Map).cast<String, dynamic>())).input(),
+      vnetRoutes: map['vnetRoutes'] == null ? null : (VnetRoute.fromMap((map['vnetRoutes'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

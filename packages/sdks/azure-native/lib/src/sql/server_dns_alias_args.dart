@@ -19,13 +19,10 @@ class ServerDnsAliasArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server that the alias is pointing to.
   ServerDnsAliasArgs({
-    pulumi.Output<String>? dnsAliasName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      dnsAliasName = pulumi.Input.asOptionalInput<String>(dnsAliasName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    this.dnsAliasName,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ServerDnsAliasArgs {
 
   factory ServerDnsAliasArgs.fromMap(Map<String, dynamic> map) {
     return ServerDnsAliasArgs(
-      dnsAliasName: map['dnsAliasName'] == null ? null : pulumi.Output.create<String>(map['dnsAliasName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      dnsAliasName: map['dnsAliasName'] == null ? null : (map['dnsAliasName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

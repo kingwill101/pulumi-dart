@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagesImage {
-  final String architecture;
-  final String created;
-  final String deprecated;
-  final String description;
-  final int id;
-  final Map<String, String> labels;
-  final String name;
-  final String osFlavor;
-  final String osVersion;
-  final bool rapidDeploy;
-  final String? selector;
-  final String type;
+  final pulumi.Input<String> architecture;
+  final pulumi.Input<String> created;
+  final pulumi.Input<String> deprecated;
+  final pulumi.Input<String> description;
+  final pulumi.Input<int> id;
+  final pulumi.Input<Map<String, String>> labels;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> osFlavor;
+  final pulumi.Input<String> osVersion;
+  final pulumi.Input<bool> rapidDeploy;
+  final pulumi.Input<String>? selector;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetImagesImage].
   /// [architecture] Required.
@@ -62,18 +63,18 @@ class GetImagesImage {
 
   factory GetImagesImage.fromMap(Map<String, dynamic> map) {
     return GetImagesImage(
-      architecture: map['architecture'] as String,
-      created: map['created'] as String,
-      deprecated: map['deprecated'] as String,
-      description: map['description'] as String,
-      id: map['id'] as int,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      osFlavor: map['osFlavor'] as String,
-      osVersion: map['osVersion'] as String,
-      rapidDeploy: map['rapidDeploy'] as bool,
-      selector: map['selector'] == null ? null : map['selector'] as String,
-      type: map['type'] as String,
+      architecture: (map['architecture'] as String).input(),
+      created: (map['created'] as String).input(),
+      deprecated: (map['deprecated'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as int).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      osFlavor: (map['osFlavor'] as String).input(),
+      osVersion: (map['osVersion'] as String).input(),
+      rapidDeploy: (map['rapidDeploy'] as bool).input(),
+      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

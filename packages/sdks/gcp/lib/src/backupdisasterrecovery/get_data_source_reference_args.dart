@@ -18,13 +18,10 @@ class GetDataSourceReferenceArgs {
   /// [location] Required.
   /// [project] - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   GetDataSourceReferenceArgs({
-    required pulumi.Output<String> dataSourceReferenceId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      dataSourceReferenceId = pulumi.Input.asInput<String>(dataSourceReferenceId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dataSourceReferenceId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetDataSourceReferenceArgs {
 
   factory GetDataSourceReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSourceReferenceArgs(
-      dataSourceReferenceId: pulumi.Output.create<String>(map['dataSourceReferenceId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataSourceReferenceId: (map['dataSourceReferenceId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

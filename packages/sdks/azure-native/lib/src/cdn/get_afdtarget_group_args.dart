@@ -19,13 +19,10 @@ class GetAFDTargetGroupArgs {
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [targetGroupName] Name of the Target Group under the profile.
   GetAFDTargetGroupArgs({
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> targetGroupName,
-  }) :
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetGroupName = pulumi.Input.asInput<String>(targetGroupName);
+    required this.profileName,
+    required this.resourceGroupName,
+    required this.targetGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAFDTargetGroupArgs {
 
   factory GetAFDTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetAFDTargetGroupArgs(
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetGroupName: pulumi.Output.create<String>(map['targetGroupName'] as String),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetGroupName: (map['targetGroupName'] as String).input(),
     );
   }
 }

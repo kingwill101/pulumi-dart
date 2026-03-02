@@ -46,19 +46,13 @@ class InstanceIAMBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [zone] A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
   InstanceIAMBindingArgs({
-    pulumi.Output<InstanceIAMBindingCondition>? condition,
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    pulumi.Output<String>? zone,
-  }) :
-      condition = pulumi.Input.asOptionalInput<InstanceIAMBindingCondition>(condition),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.condition,
+    required this.instanceName,
+    required this.members,
+    this.project,
+    required this.role,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,12 +67,12 @@ class InstanceIAMBindingArgs {
 
   factory InstanceIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIAMBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<InstanceIAMBindingCondition>(InstanceIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      condition: map['condition'] == null ? null : (InstanceIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

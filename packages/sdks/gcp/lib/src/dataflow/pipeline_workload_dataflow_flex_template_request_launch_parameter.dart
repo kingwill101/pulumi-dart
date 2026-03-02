@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_workload_dataflow_flex_template_request_launch_parameter_environment.dart';
 
 class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter {
   /// Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
-  final String? containerSpecGcsPath;
+  final pulumi.Input<String>? containerSpecGcsPath;
   /// The runtime environment for the Flex Template job.
   /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
   /// Structure is documented below.
-  final PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment? environment;
+  final pulumi.Input<PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment>? environment;
   /// The job name to use for the created job. For an update job request, the job name should be the same as the existing running job.
-  final String jobName;
+  final pulumi.Input<String> jobName;
   /// Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters.
   /// 'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
-  final Map<String, String>? launchOptions;
+  final pulumi.Input<Map<String, String>>? launchOptions;
   /// 'The parameters for the Flex Template. Example: {"numWorkers":"5"}'
   /// 'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
   /// 'Use this to pass transform name mappings for streaming update jobs. Example: {"oldTransformName":"newTransformName",...}'
   /// 'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
-  final Map<String, String>? transformNameMappings;
+  final pulumi.Input<Map<String, String>>? transformNameMappings;
   /// Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job.
-  final bool? update;
+  final pulumi.Input<bool>? update;
 
   /// Creates a new [PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter].
   /// [containerSpecGcsPath] Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
@@ -44,7 +45,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'containerSpecGcsPath': ?containerSpecGcsPath,
-      'environment': ?environment == null ? null : environment!.toMap(),
+      'environment': ?pulumi.Input.mapOptionalInputValue<PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment, Map<String, dynamic>>(environment, (value) => value.toMap()),
       'jobName': jobName,
       'launchOptions': ?launchOptions,
       'parameters': ?parameters,
@@ -55,13 +56,13 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter {
 
   factory PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter.fromMap(Map<String, dynamic> map) {
     return PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter(
-      containerSpecGcsPath: map['containerSpecGcsPath'] == null ? null : map['containerSpecGcsPath'] as String,
-      environment: map['environment'] == null ? null : PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment.fromMap((map['environment'] as Map).cast<String, dynamic>()),
-      jobName: map['jobName'] as String,
-      launchOptions: map['launchOptions'] == null ? null : (map['launchOptions'] as Map).cast<String, String>(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      transformNameMappings: map['transformNameMappings'] == null ? null : (map['transformNameMappings'] as Map).cast<String, String>(),
-      update: map['update'] == null ? null : map['update'] as bool,
+      containerSpecGcsPath: map['containerSpecGcsPath'] == null ? null : (map['containerSpecGcsPath'] as String).input(),
+      environment: map['environment'] == null ? null : (PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
+      jobName: (map['jobName'] as String).input(),
+      launchOptions: map['launchOptions'] == null ? null : ((map['launchOptions'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      transformNameMappings: map['transformNameMappings'] == null ? null : ((map['transformNameMappings'] as Map).cast<String, String>()).input(),
+      update: map['update'] == null ? null : (map['update'] as bool).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class GetRoutingProfileArgs {
   /// [routingProfileId] Returns information on a specific Routing Profile by Routing Profile id
   /// [tags] Map of tags to assign to the Routing Profile.
   GetRoutingProfileArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routingProfileId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingProfileId = pulumi.Input.asOptionalInput<String>(routingProfileId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.instanceId,
+    this.name,
+    this.region,
+    this.routingProfileId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GetRoutingProfileArgs {
 
   factory GetRoutingProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetRoutingProfileArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingProfileId: map['routingProfileId'] == null ? null : pulumi.Output.create<String>(map['routingProfileId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingProfileId: map['routingProfileId'] == null ? null : (map['routingProfileId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

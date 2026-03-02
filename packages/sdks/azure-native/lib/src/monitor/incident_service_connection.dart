@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The connection info for Incident Receiver.
 class IncidentServiceConnection {
   /// GUID value representing the connection ID for the incident management service.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the connection.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [IncidentServiceConnection].
   /// [id] GUID value representing the connection ID for the incident management service.
@@ -25,8 +26,8 @@ class IncidentServiceConnection {
 
   factory IncidentServiceConnection.fromMap(Map<String, dynamic> map) {
     return IncidentServiceConnection(
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

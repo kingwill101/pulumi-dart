@@ -16,11 +16,9 @@ class ClaimsMappingPolicyArgs {
   /// [definitions] The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
   /// [displayName] The display name for this Claims Mapping Policy.
   ClaimsMappingPolicyArgs({
-    required pulumi.Output<List<String>> definitions,
-    required pulumi.Output<String> displayName,
-  }) :
-      definitions = pulumi.Input.asInput<List<String>>(definitions),
-      displayName = pulumi.Input.asInput<String>(displayName);
+    required this.definitions,
+    required this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ClaimsMappingPolicyArgs {
 
   factory ClaimsMappingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ClaimsMappingPolicyArgs(
-      definitions: pulumi.Output.create<List<String>>((map['definitions'] as List).cast<String>()),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
+      definitions: ((map['definitions'] as List).cast<String>()).input(),
+      displayName: (map['displayName'] as String).input(),
     );
   }
 }

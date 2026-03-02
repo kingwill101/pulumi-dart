@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the service account which can be used to generate access token for authenticating the service call.
 class GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse {
   /// A space-delimited list of requested scope permissions.
-  final String scope;
+  final pulumi.Input<String> scope;
   /// Name of the service account that has the permission to make the request.
-  final String serviceAccount;
+  final pulumi.Input<String> serviceAccount;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse].
   /// [scope] A space-delimited list of requested scope permissions.
@@ -25,8 +26,8 @@ class GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse {
 
   factory GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse(
-      scope: map['scope'] as String,
-      serviceAccount: map['serviceAccount'] as String,
+      scope: (map['scope'] as String).input(),
+      serviceAccount: (map['serviceAccount'] as String).input(),
     );
   }
 }

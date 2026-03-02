@@ -6,15 +6,15 @@ import 'application_settings_transaction_tracer_sql.dart';
 
 class ApplicationSettingsTransactionTracer {
   /// Configuration block for query plans. Including this block enables the capture of query plans. The following arguments are supported:
-  final List<ApplicationSettingsTransactionTracerExplainQueryPlan>? explainQueryPlans;
+  final pulumi.Input<List<ApplicationSettingsTransactionTracerExplainQueryPlan>>? explainQueryPlans;
   /// Configuration block for SQL logging.  Including this block enables SQL logging. The following arguments are supported:
-  final ApplicationSettingsTransactionTracerSql? sql;
+  final pulumi.Input<ApplicationSettingsTransactionTracerSql>? sql;
   /// The response time threshold for collecting stack traces.
-  final double? stackTraceThresholdValue;
+  final pulumi.Input<double>? stackTraceThresholdValue;
   /// The type of threshold for transactions. Valid values are `VALUE`,`APDEX_F`(4 times your apdex target)
-  final String? transactionThresholdType;
+  final pulumi.Input<String>? transactionThresholdType;
   /// The threshold value for transactions(in seconds).
-  final double? transactionThresholdValue;
+  final pulumi.Input<double>? transactionThresholdValue;
 
   /// Creates a new [ApplicationSettingsTransactionTracer].
   /// [explainQueryPlans] Configuration block for query plans. Including this block enables the capture of query plans. The following arguments are supported:
@@ -32,8 +32,8 @@ class ApplicationSettingsTransactionTracer {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'explainQueryPlans': ?explainQueryPlans == null ? null : pulumi.Input.encodeList<ApplicationSettingsTransactionTracerExplainQueryPlan, Map<String, dynamic>>(explainQueryPlans!, (value) => value.toMap()),
-      'sql': ?sql == null ? null : sql!.toMap(),
+      'explainQueryPlans': ?pulumi.Input.mapOptionalInputValue<List<ApplicationSettingsTransactionTracerExplainQueryPlan>, List<Map<String, dynamic>>>(explainQueryPlans, (value) => pulumi.Input.encodeList<ApplicationSettingsTransactionTracerExplainQueryPlan, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sql': ?pulumi.Input.mapOptionalInputValue<ApplicationSettingsTransactionTracerSql, Map<String, dynamic>>(sql, (value) => value.toMap()),
       'stackTraceThresholdValue': ?stackTraceThresholdValue,
       'transactionThresholdType': ?transactionThresholdType,
       'transactionThresholdValue': ?transactionThresholdValue,
@@ -42,11 +42,11 @@ class ApplicationSettingsTransactionTracer {
 
   factory ApplicationSettingsTransactionTracer.fromMap(Map<String, dynamic> map) {
     return ApplicationSettingsTransactionTracer(
-      explainQueryPlans: map['explainQueryPlans'] == null ? null : pulumi.Input.decodeList<ApplicationSettingsTransactionTracerExplainQueryPlan>(map['explainQueryPlans'], (value) => ApplicationSettingsTransactionTracerExplainQueryPlan.fromMap((value as Map).cast<String, dynamic>())),
-      sql: map['sql'] == null ? null : ApplicationSettingsTransactionTracerSql.fromMap((map['sql'] as Map).cast<String, dynamic>()),
-      stackTraceThresholdValue: map['stackTraceThresholdValue'] == null ? null : map['stackTraceThresholdValue'] as double,
-      transactionThresholdType: map['transactionThresholdType'] == null ? null : map['transactionThresholdType'] as String,
-      transactionThresholdValue: map['transactionThresholdValue'] == null ? null : map['transactionThresholdValue'] as double,
+      explainQueryPlans: map['explainQueryPlans'] == null ? null : (pulumi.Input.decodeList<ApplicationSettingsTransactionTracerExplainQueryPlan>(map['explainQueryPlans'], (value) => ApplicationSettingsTransactionTracerExplainQueryPlan.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sql: map['sql'] == null ? null : (ApplicationSettingsTransactionTracerSql.fromMap((map['sql'] as Map).cast<String, dynamic>())).input(),
+      stackTraceThresholdValue: map['stackTraceThresholdValue'] == null ? null : (map['stackTraceThresholdValue'] as double).input(),
+      transactionThresholdType: map['transactionThresholdType'] == null ? null : (map['transactionThresholdType'] as String).input(),
+      transactionThresholdValue: map['transactionThresholdValue'] == null ? null : (map['transactionThresholdValue'] as double).input(),
     );
   }
 }

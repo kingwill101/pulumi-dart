@@ -37,21 +37,14 @@ class ServerArgs {
   /// [serverType] Optional server type, potentially useful to foreign-data wrappers.
   /// [serverVersion] Optional server version, potentially useful to foreign-data wrappers.
   ServerArgs({
-    pulumi.Output<bool>? dropCascade,
-    required pulumi.Output<String> fdwName,
-    pulumi.Output<Map<String, String>>? options,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? serverOwner,
-    pulumi.Output<String>? serverType,
-    pulumi.Output<String>? serverVersion,
-  }) :
-      dropCascade = pulumi.Input.asOptionalInput<bool>(dropCascade),
-      fdwName = pulumi.Input.asInput<String>(fdwName),
-      options = pulumi.Input.asOptionalInput<Map<String, String>>(options),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      serverOwner = pulumi.Input.asOptionalInput<String>(serverOwner),
-      serverType = pulumi.Input.asOptionalInput<String>(serverType),
-      serverVersion = pulumi.Input.asOptionalInput<String>(serverVersion);
+    this.dropCascade,
+    required this.fdwName,
+    this.options,
+    required this.serverName,
+    this.serverOwner,
+    this.serverType,
+    this.serverVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class ServerArgs {
 
   factory ServerArgs.fromMap(Map<String, dynamic> map) {
     return ServerArgs(
-      dropCascade: map['dropCascade'] == null ? null : pulumi.Output.create<bool>(map['dropCascade'] as bool),
-      fdwName: pulumi.Output.create<String>(map['fdwName'] as String),
-      options: map['options'] == null ? null : pulumi.Output.create<Map<String, String>>((map['options'] as Map).cast<String, String>()),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      serverOwner: map['serverOwner'] == null ? null : pulumi.Output.create<String>(map['serverOwner'] as String),
-      serverType: map['serverType'] == null ? null : pulumi.Output.create<String>(map['serverType'] as String),
-      serverVersion: map['serverVersion'] == null ? null : pulumi.Output.create<String>(map['serverVersion'] as String),
+      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade'] as bool).input(),
+      fdwName: (map['fdwName'] as String).input(),
+      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
+      serverName: (map['serverName'] as String).input(),
+      serverOwner: map['serverOwner'] == null ? null : (map['serverOwner'] as String).input(),
+      serverType: map['serverType'] == null ? null : (map['serverType'] as String).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
     );
   }
 }

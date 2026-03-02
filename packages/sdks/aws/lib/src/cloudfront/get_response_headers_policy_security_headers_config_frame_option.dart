@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResponseHeadersPolicySecurityHeadersConfigFrameOption {
   /// Value of the X-Frame-Options HTTP response header. Valid values: `DENY` | `SAMEORIGIN`
-  final String frameOption;
+  final pulumi.Input<String> frameOption;
   /// Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
-  final bool override;
+  final pulumi.Input<bool> override;
 
   /// Creates a new [GetResponseHeadersPolicySecurityHeadersConfigFrameOption].
   /// [frameOption] Value of the X-Frame-Options HTTP response header. Valid values: `DENY` | `SAMEORIGIN`
@@ -24,8 +25,8 @@ class GetResponseHeadersPolicySecurityHeadersConfigFrameOption {
 
   factory GetResponseHeadersPolicySecurityHeadersConfigFrameOption.fromMap(Map<String, dynamic> map) {
     return GetResponseHeadersPolicySecurityHeadersConfigFrameOption(
-      frameOption: map['frameOption'] as String,
-      override: map['override'] as bool,
+      frameOption: (map['frameOption'] as String).input(),
+      override: (map['override'] as bool).input(),
     );
   }
 }

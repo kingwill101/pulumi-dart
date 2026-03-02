@@ -43,27 +43,17 @@ class SubscriptionCostManagementViewArgs {
   /// [subscriptionId] The ID of the Subscription this View is scoped to. Changing this forces a new Cost Management View for a Subscription to be created.
   /// [timeframe] The time frame for pulling data for the report. Possible values are `Custom`, `MonthToDate`, `WeekToDate` and `YearToDate`.
   SubscriptionCostManagementViewArgs({
-    required pulumi.Output<bool> accumulated,
-    required pulumi.Output<String> chartType,
-    required pulumi.Output<SubscriptionCostManagementViewDataset> dataset,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<List<SubscriptionCostManagementViewKpi>>? kpis,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<SubscriptionCostManagementViewPivot>>? pivots,
-    required pulumi.Output<String> reportType,
-    required pulumi.Output<String> subscriptionId,
-    required pulumi.Output<String> timeframe,
-  }) :
-      accumulated = pulumi.Input.asInput<bool>(accumulated),
-      chartType = pulumi.Input.asInput<String>(chartType),
-      dataset = pulumi.Input.asInput<SubscriptionCostManagementViewDataset>(dataset),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      kpis = pulumi.Input.asOptionalInput<List<SubscriptionCostManagementViewKpi>>(kpis),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pivots = pulumi.Input.asOptionalInput<List<SubscriptionCostManagementViewPivot>>(pivots),
-      reportType = pulumi.Input.asInput<String>(reportType),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId),
-      timeframe = pulumi.Input.asInput<String>(timeframe);
+    required this.accumulated,
+    required this.chartType,
+    required this.dataset,
+    required this.displayName,
+    this.kpis,
+    this.name,
+    this.pivots,
+    required this.reportType,
+    required this.subscriptionId,
+    required this.timeframe,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class SubscriptionCostManagementViewArgs {
 
   factory SubscriptionCostManagementViewArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionCostManagementViewArgs(
-      accumulated: pulumi.Output.create<bool>(map['accumulated'] as bool),
-      chartType: pulumi.Output.create<String>(map['chartType'] as String),
-      dataset: pulumi.Output.create<SubscriptionCostManagementViewDataset>(SubscriptionCostManagementViewDataset.fromMap((map['dataset'] as Map).cast<String, dynamic>())),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      kpis: map['kpis'] == null ? null : pulumi.Output.create<List<SubscriptionCostManagementViewKpi>>(pulumi.Input.decodeList<SubscriptionCostManagementViewKpi>(map['kpis'], (value) => SubscriptionCostManagementViewKpi.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pivots: map['pivots'] == null ? null : pulumi.Output.create<List<SubscriptionCostManagementViewPivot>>(pulumi.Input.decodeList<SubscriptionCostManagementViewPivot>(map['pivots'], (value) => SubscriptionCostManagementViewPivot.fromMap((value as Map).cast<String, dynamic>()))),
-      reportType: pulumi.Output.create<String>(map['reportType'] as String),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
-      timeframe: pulumi.Output.create<String>(map['timeframe'] as String),
+      accumulated: (map['accumulated'] as bool).input(),
+      chartType: (map['chartType'] as String).input(),
+      dataset: (SubscriptionCostManagementViewDataset.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      kpis: map['kpis'] == null ? null : (pulumi.Input.decodeList<SubscriptionCostManagementViewKpi>(map['kpis'], (value) => SubscriptionCostManagementViewKpi.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pivots: map['pivots'] == null ? null : (pulumi.Input.decodeList<SubscriptionCostManagementViewPivot>(map['pivots'], (value) => SubscriptionCostManagementViewPivot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reportType: (map['reportType'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      timeframe: (map['timeframe'] as String).input(),
     );
   }
 }

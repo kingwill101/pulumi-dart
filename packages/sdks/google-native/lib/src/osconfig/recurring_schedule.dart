@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monthly_schedule.dart';
 import 'recurring_schedule_frequency.dart';
 import 'time_of_day.dart';
@@ -9,19 +10,19 @@ import 'weekly_schedule.dart';
 /// Sets the time for recurring patch deployments.
 class RecurringSchedule {
   /// Optional. The end time at which a recurring patch deployment schedule is no longer active.
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// The frequency unit of this recurring schedule.
-  final RecurringScheduleFrequency frequency;
+  final pulumi.Input<RecurringScheduleFrequency> frequency;
   /// Schedule with monthly executions.
-  final MonthlySchedule monthly;
+  final pulumi.Input<MonthlySchedule> monthly;
   /// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// Time of the day to run a recurring deployment.
-  final TimeOfDay timeOfDay;
+  final pulumi.Input<TimeOfDay> timeOfDay;
   /// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-  final TimeZone timeZone;
+  final pulumi.Input<TimeZone> timeZone;
   /// Schedule with weekly executions.
-  final WeeklySchedule weekly;
+  final pulumi.Input<WeeklySchedule> weekly;
 
   /// Creates a new [RecurringSchedule].
   /// [endTime] Optional. The end time at which a recurring patch deployment schedule is no longer active.
@@ -44,24 +45,24 @@ class RecurringSchedule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTime': ?endTime,
-      'frequency': frequency.value,
-      'monthly': monthly.toMap(),
+      'frequency': pulumi.Input.mapInputValue<RecurringScheduleFrequency, String>(frequency, (value) => value.value),
+      'monthly': pulumi.Input.mapInputValue<MonthlySchedule, Map<String, dynamic>>(monthly, (value) => value.toMap()),
       'startTime': ?startTime,
-      'timeOfDay': timeOfDay.toMap(),
-      'timeZone': timeZone.toMap(),
-      'weekly': weekly.toMap(),
+      'timeOfDay': pulumi.Input.mapInputValue<TimeOfDay, Map<String, dynamic>>(timeOfDay, (value) => value.toMap()),
+      'timeZone': pulumi.Input.mapInputValue<TimeZone, Map<String, dynamic>>(timeZone, (value) => value.toMap()),
+      'weekly': pulumi.Input.mapInputValue<WeeklySchedule, Map<String, dynamic>>(weekly, (value) => value.toMap()),
     };
   }
 
   factory RecurringSchedule.fromMap(Map<String, dynamic> map) {
     return RecurringSchedule(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      frequency: RecurringScheduleFrequency.fromValue(map['frequency'] as String),
-      monthly: MonthlySchedule.fromMap((map['monthly'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      timeOfDay: TimeOfDay.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>()),
-      timeZone: TimeZone.fromMap((map['timeZone'] as Map).cast<String, dynamic>()),
-      weekly: WeeklySchedule.fromMap((map['weekly'] as Map).cast<String, dynamic>()),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      frequency: (RecurringScheduleFrequency.fromValue(map['frequency'] as String)).input(),
+      monthly: (MonthlySchedule.fromMap((map['monthly'] as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timeOfDay: (TimeOfDay.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>())).input(),
+      timeZone: (TimeZone.fromMap((map['timeZone'] as Map).cast<String, dynamic>())).input(),
+      weekly: (WeeklySchedule.fromMap((map['weekly'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

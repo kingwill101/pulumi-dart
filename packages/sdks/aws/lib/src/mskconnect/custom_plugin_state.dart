@@ -38,27 +38,17 @@ class CustomPluginState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   CustomPluginState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? latestRevision,
-    pulumi.Output<CustomPluginLocation>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      latestRevision = pulumi.Input.asOptionalInput<int>(latestRevision),
-      location = pulumi.Input.asOptionalInput<CustomPluginLocation>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.contentType,
+    this.description,
+    this.latestRevision,
+    this.location,
+    this.name,
+    this.region,
+    this.state,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class CustomPluginState {
 
   factory CustomPluginState.fromMap(Map<String, dynamic> map) {
     return CustomPluginState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      latestRevision: map['latestRevision'] == null ? null : pulumi.Output.create<int>(map['latestRevision'] as int),
-      location: map['location'] == null ? null : pulumi.Output.create<CustomPluginLocation>(CustomPluginLocation.fromMap((map['location'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      latestRevision: map['latestRevision'] == null ? null : (map['latestRevision'] as int).input(),
+      location: map['location'] == null ? null : (CustomPluginLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

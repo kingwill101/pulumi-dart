@@ -16,13 +16,10 @@ class SpringCloudApiPortalCustomDomainState {
   /// [springCloudApiPortalId] The ID of the Spring Cloud API Portal. Changing this forces a new Spring Cloud API Portal Domain to be created.
   /// [thumbprint] Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud API Portal Domain.
   SpringCloudApiPortalCustomDomainState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? springCloudApiPortalId,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      springCloudApiPortalId = pulumi.Input.asOptionalInput<String>(springCloudApiPortalId),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    this.name,
+    this.springCloudApiPortalId,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class SpringCloudApiPortalCustomDomainState {
 
   factory SpringCloudApiPortalCustomDomainState.fromMap(Map<String, dynamic> map) {
     return SpringCloudApiPortalCustomDomainState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      springCloudApiPortalId: map['springCloudApiPortalId'] == null ? null : pulumi.Output.create<String>(map['springCloudApiPortalId'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      springCloudApiPortalId: map['springCloudApiPortalId'] == null ? null : (map['springCloudApiPortalId'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

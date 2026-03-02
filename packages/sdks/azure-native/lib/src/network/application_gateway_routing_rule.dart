@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sub_resource.dart';
 
 /// Routing rule of an application gateway.
 class ApplicationGatewayRoutingRule {
   /// Backend address pool resource of the application gateway.
-  final SubResource? backendAddressPool;
+  final pulumi.Input<SubResource>? backendAddressPool;
   /// Backend settings resource of the application gateway.
-  final SubResource? backendSettings;
+  final pulumi.Input<SubResource>? backendSettings;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Listener resource of the application gateway.
-  final SubResource? listener;
+  final pulumi.Input<SubResource>? listener;
   /// Name of the routing rule that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Priority of the routing rule.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// Rule type.
-  final String? ruleType;
+  final pulumi.Input<String>? ruleType;
 
   /// Creates a new [ApplicationGatewayRoutingRule].
   /// [backendAddressPool] Backend address pool resource of the application gateway.
@@ -39,10 +40,10 @@ class ApplicationGatewayRoutingRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddressPool': ?backendAddressPool == null ? null : backendAddressPool!.toMap(),
-      'backendSettings': ?backendSettings == null ? null : backendSettings!.toMap(),
+      'backendAddressPool': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(backendAddressPool, (value) => value.toMap()),
+      'backendSettings': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(backendSettings, (value) => value.toMap()),
       'id': ?id,
-      'listener': ?listener == null ? null : listener!.toMap(),
+      'listener': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(listener, (value) => value.toMap()),
       'name': ?name,
       'priority': priority,
       'ruleType': ?ruleType,
@@ -51,13 +52,13 @@ class ApplicationGatewayRoutingRule {
 
   factory ApplicationGatewayRoutingRule.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRoutingRule(
-      backendAddressPool: map['backendAddressPool'] == null ? null : SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>()),
-      backendSettings: map['backendSettings'] == null ? null : SubResource.fromMap((map['backendSettings'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      listener: map['listener'] == null ? null : SubResource.fromMap((map['listener'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] as int,
-      ruleType: map['ruleType'] == null ? null : map['ruleType'] as String,
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
+      backendSettings: map['backendSettings'] == null ? null : (SubResource.fromMap((map['backendSettings'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      listener: map['listener'] == null ? null : (SubResource.fromMap((map['listener'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
     );
   }
 }

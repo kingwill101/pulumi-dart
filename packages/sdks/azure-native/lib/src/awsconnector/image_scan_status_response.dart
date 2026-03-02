@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scan_status_enum_value_response.dart';
 
 /// Definition of ImageScanStatus
 class ImageScanStatusResponse {
   /// <p>The description of the image scan status.</p>
-  final String? description;
+  final pulumi.Input<String>? description;
   /// <p>The current state of an image scan.</p>
-  final ScanStatusEnumValueResponse? status;
+  final pulumi.Input<ScanStatusEnumValueResponse>? status;
 
   /// Creates a new [ImageScanStatusResponse].
   /// [description] <p>The description of the image scan status.</p>
@@ -20,14 +21,14 @@ class ImageScanStatusResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'status': ?status == null ? null : status!.toMap(),
+      'status': ?pulumi.Input.mapOptionalInputValue<ScanStatusEnumValueResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory ImageScanStatusResponse.fromMap(Map<String, dynamic> map) {
     return ImageScanStatusResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      status: map['status'] == null ? null : ScanStatusEnumValueResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      status: map['status'] == null ? null : (ScanStatusEnumValueResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

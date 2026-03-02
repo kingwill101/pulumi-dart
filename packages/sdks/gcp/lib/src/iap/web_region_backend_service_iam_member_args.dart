@@ -46,19 +46,13 @@ class WebRegionBackendServiceIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [webRegionBackendService] Used to find the parent resource to bind the IAM policy to
   WebRegionBackendServiceIamMemberArgs({
-    pulumi.Output<WebRegionBackendServiceIamMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> webRegionBackendService,
-  }) :
-      condition = pulumi.Input.asOptionalInput<WebRegionBackendServiceIamMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role),
-      webRegionBackendService = pulumi.Input.asInput<String>(webRegionBackendService);
+    this.condition,
+    required this.member,
+    this.project,
+    this.region,
+    required this.role,
+    required this.webRegionBackendService,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,12 +67,12 @@ class WebRegionBackendServiceIamMemberArgs {
 
   factory WebRegionBackendServiceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return WebRegionBackendServiceIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<WebRegionBackendServiceIamMemberCondition>(WebRegionBackendServiceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      webRegionBackendService: pulumi.Output.create<String>(map['webRegionBackendService'] as String),
+      condition: map['condition'] == null ? null : (WebRegionBackendServiceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
+      webRegionBackendService: (map['webRegionBackendService'] as String).input(),
     );
   }
 }

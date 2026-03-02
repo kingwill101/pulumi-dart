@@ -31,15 +31,11 @@ class AccessApprovalSettingsArgs {
   /// [folderId] ID of the folder of the access approval settings.
   /// [notificationEmails] A list of email addresses to which notifications relating to approval requests should be sent.
   AccessApprovalSettingsArgs({
-    pulumi.Output<String>? activeKeyVersion,
-    required pulumi.Output<List<AccessApprovalSettingsEnrolledService>> enrolledServices,
-    required pulumi.Output<String> folderId,
-    pulumi.Output<List<String>>? notificationEmails,
-  }) :
-      activeKeyVersion = pulumi.Input.asOptionalInput<String>(activeKeyVersion),
-      enrolledServices = pulumi.Input.asInput<List<AccessApprovalSettingsEnrolledService>>(enrolledServices),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      notificationEmails = pulumi.Input.asOptionalInput<List<String>>(notificationEmails);
+    this.activeKeyVersion,
+    required this.enrolledServices,
+    required this.folderId,
+    this.notificationEmails,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,10 +48,10 @@ class AccessApprovalSettingsArgs {
 
   factory AccessApprovalSettingsArgs.fromMap(Map<String, dynamic> map) {
     return AccessApprovalSettingsArgs(
-      activeKeyVersion: map['activeKeyVersion'] == null ? null : pulumi.Output.create<String>(map['activeKeyVersion'] as String),
-      enrolledServices: pulumi.Output.create<List<AccessApprovalSettingsEnrolledService>>(pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(map['enrolledServices'], (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>()))),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
-      notificationEmails: map['notificationEmails'] == null ? null : pulumi.Output.create<List<String>>((map['notificationEmails'] as List).cast<String>()),
+      activeKeyVersion: map['activeKeyVersion'] == null ? null : (map['activeKeyVersion'] as String).input(),
+      enrolledServices: (pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(map['enrolledServices'], (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      folderId: (map['folderId'] as String).input(),
+      notificationEmails: map['notificationEmails'] == null ? null : ((map['notificationEmails'] as List).cast<String>()).input(),
     );
   }
 }

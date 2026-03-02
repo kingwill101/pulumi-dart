@@ -24,17 +24,12 @@ class SynonymSetArgs {
   /// [project] Optional.
   /// [synonyms] List of Synonyms for the context.
   SynonymSetArgs({
-    pulumi.Output<String>? context,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<GoogleCloudContentwarehouseV1SynonymSetSynonym>>? synonyms,
-  }) :
-      context = pulumi.Input.asOptionalInput<String>(context),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      synonyms = pulumi.Input.asOptionalInput<List<GoogleCloudContentwarehouseV1SynonymSetSynonym>>(synonyms);
+    this.context,
+    this.location,
+    this.name,
+    this.project,
+    this.synonyms,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class SynonymSetArgs {
 
   factory SynonymSetArgs.fromMap(Map<String, dynamic> map) {
     return SynonymSetArgs(
-      context: map['context'] == null ? null : pulumi.Output.create<String>(map['context'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      synonyms: map['synonyms'] == null ? null : pulumi.Output.create<List<GoogleCloudContentwarehouseV1SynonymSetSynonym>>(pulumi.Input.decodeList<GoogleCloudContentwarehouseV1SynonymSetSynonym>(map['synonyms'], (value) => GoogleCloudContentwarehouseV1SynonymSetSynonym.fromMap((value as Map).cast<String, dynamic>()))),
+      context: map['context'] == null ? null : (map['context'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      synonyms: map['synonyms'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1SynonymSetSynonym>(map['synonyms'], (value) => GoogleCloudContentwarehouseV1SynonymSetSynonym.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

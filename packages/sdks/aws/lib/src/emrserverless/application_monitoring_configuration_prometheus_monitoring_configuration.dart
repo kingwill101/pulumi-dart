@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration {
   /// The Prometheus remote write URL for sending metrics. Only supported in EMR 7.1.0 and later versions.
-  final String? remoteWriteUrl;
+  final pulumi.Input<String>? remoteWriteUrl;
 
   /// Creates a new [ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration].
   /// [remoteWriteUrl] The Prometheus remote write URL for sending metrics. Only supported in EMR 7.1.0 and later versions.
@@ -19,7 +20,7 @@ class ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration {
 
   factory ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration(
-      remoteWriteUrl: map['remoteWriteUrl'] == null ? null : map['remoteWriteUrl'] as String,
+      remoteWriteUrl: map['remoteWriteUrl'] == null ? null : (map['remoteWriteUrl'] as String).input(),
     );
   }
 }

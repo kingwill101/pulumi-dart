@@ -19,15 +19,11 @@ class WorkspaceState {
   /// [displayName] The display name of the API Management Workspace.
   /// [name] Specifies the name which should be used for this API Management Workspace. Changing this forces a new resource to be created.
   WorkspaceState({
-    pulumi.Output<String>? apiManagementId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-  }) :
-      apiManagementId = pulumi.Input.asOptionalInput<String>(apiManagementId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.apiManagementId,
+    this.description,
+    this.displayName,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      apiManagementId: map['apiManagementId'] == null ? null : pulumi.Output.create<String>(map['apiManagementId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

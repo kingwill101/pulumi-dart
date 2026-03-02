@@ -40,29 +40,18 @@ class AlidnsRecordState {
   /// [userClientIp] The IP address of the client.
   /// [value] The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
   AlidnsRecordState({
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? line,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? remark,
-    pulumi.Output<String>? rr,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? ttl,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? userClientIp,
-    pulumi.Output<String>? value,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      line = pulumi.Input.asOptionalInput<String>(line),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      rr = pulumi.Input.asOptionalInput<String>(rr),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      userClientIp = pulumi.Input.asOptionalInput<String>(userClientIp),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.domainName,
+    this.lang,
+    this.line,
+    this.priority,
+    this.remark,
+    this.rr,
+    this.status,
+    this.ttl,
+    this.type,
+    this.userClientIp,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class AlidnsRecordState {
 
   factory AlidnsRecordState.fromMap(Map<String, dynamic> map) {
     return AlidnsRecordState(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      line: map['line'] == null ? null : pulumi.Output.create<String>(map['line'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      rr: map['rr'] == null ? null : pulumi.Output.create<String>(map['rr'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      userClientIp: map['userClientIp'] == null ? null : pulumi.Output.create<String>(map['userClientIp'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      line: map['line'] == null ? null : (map['line'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      rr: map['rr'] == null ? null : (map['rr'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

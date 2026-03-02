@@ -18,15 +18,11 @@ class GetLoggingServerArgs {
   /// [privateCloudId] Required.
   /// [project] Optional.
   GetLoggingServerArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> loggingServerId,
-    required pulumi.Output<String> privateCloudId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      loggingServerId = pulumi.Input.asInput<String>(loggingServerId),
-      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    required this.loggingServerId,
+    required this.privateCloudId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetLoggingServerArgs {
 
   factory GetLoggingServerArgs.fromMap(Map<String, dynamic> map) {
     return GetLoggingServerArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      loggingServerId: pulumi.Output.create<String>(map['loggingServerId'] as String),
-      privateCloudId: pulumi.Output.create<String>(map['privateCloudId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      loggingServerId: (map['loggingServerId'] as String).input(),
+      privateCloudId: (map['privateCloudId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

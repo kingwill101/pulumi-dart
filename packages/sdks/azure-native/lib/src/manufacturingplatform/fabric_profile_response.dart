@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties related to Fabric
 class FabricProfileResponse {
   /// Azure Key Vault Uri
-  final String keyUri;
+  final pulumi.Input<String> keyUri;
   /// One Lake Path
-  final String oneLakePath;
+  final pulumi.Input<String> oneLakePath;
   /// URI of One Lake
-  final String oneLakeUri;
+  final pulumi.Input<String> oneLakeUri;
 
   /// Creates a new [FabricProfileResponse].
   /// [keyUri] Azure Key Vault Uri
@@ -30,9 +31,9 @@ class FabricProfileResponse {
 
   factory FabricProfileResponse.fromMap(Map<String, dynamic> map) {
     return FabricProfileResponse(
-      keyUri: map['keyUri'] as String,
-      oneLakePath: map['oneLakePath'] as String,
-      oneLakeUri: map['oneLakeUri'] as String,
+      keyUri: (map['keyUri'] as String).input(),
+      oneLakePath: (map['oneLakePath'] as String).input(),
+      oneLakeUri: (map['oneLakeUri'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetDatabaseAccountSqlContainerArgs {
   /// [databaseName] Cosmos DB database name.
   /// [resourceGroupName] Name of an Azure resource group.
   GetDatabaseAccountSqlContainerArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      containerName = pulumi.Input.asInput<String>(containerName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.containerName,
+    required this.databaseName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDatabaseAccountSqlContainerArgs {
 
   factory GetDatabaseAccountSqlContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseAccountSqlContainerArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -34,25 +34,16 @@ class ScheduleGroupState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ScheduleGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? creationDate,
-    pulumi.Output<String>? lastModificationDate,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      creationDate = pulumi.Input.asOptionalInput<String>(creationDate),
-      lastModificationDate = pulumi.Input.asOptionalInput<String>(lastModificationDate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.creationDate,
+    this.lastModificationDate,
+    this.name,
+    this.namePrefix,
+    this.region,
+    this.state,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class ScheduleGroupState {
 
   factory ScheduleGroupState.fromMap(Map<String, dynamic> map) {
     return ScheduleGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      creationDate: map['creationDate'] == null ? null : pulumi.Output.create<String>(map['creationDate'] as String),
-      lastModificationDate: map['lastModificationDate'] == null ? null : pulumi.Output.create<String>(map['lastModificationDate'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      creationDate: map['creationDate'] == null ? null : (map['creationDate'] as String).input(),
+      lastModificationDate: map['lastModificationDate'] == null ? null : (map['lastModificationDate'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

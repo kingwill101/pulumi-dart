@@ -5,11 +5,11 @@ import 'query_parameter_type_struct_types_item.dart';
 
 class QueryParameterType {
   /// [Optional] The type of the array's elements, if this is an array.
-  final QueryParameterType? arrayType;
+  final pulumi.Input<QueryParameterType>? arrayType;
   /// [Optional] The types of the fields of this struct, in order, if this is a struct.
-  final List<QueryParameterTypeStructTypesItem>? structTypes;
+  final pulumi.Input<List<QueryParameterTypeStructTypesItem>>? structTypes;
   /// [Required] The top level type of this field.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [QueryParameterType].
   /// [arrayType] [Optional] The type of the array's elements, if this is an array.
@@ -23,17 +23,17 @@ class QueryParameterType {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arrayType': ?arrayType == null ? null : arrayType!.toMap(),
-      'structTypes': ?structTypes == null ? null : pulumi.Input.encodeList<QueryParameterTypeStructTypesItem, Map<String, dynamic>>(structTypes!, (value) => value.toMap()),
+      'arrayType': ?pulumi.Input.mapOptionalInputValue<QueryParameterType, Map<String, dynamic>>(arrayType, (value) => value.toMap()),
+      'structTypes': ?pulumi.Input.mapOptionalInputValue<List<QueryParameterTypeStructTypesItem>, List<Map<String, dynamic>>>(structTypes, (value) => pulumi.Input.encodeList<QueryParameterTypeStructTypesItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': ?type,
     };
   }
 
   factory QueryParameterType.fromMap(Map<String, dynamic> map) {
     return QueryParameterType(
-      arrayType: map['arrayType'] == null ? null : QueryParameterType.fromMap((map['arrayType'] as Map).cast<String, dynamic>()),
-      structTypes: map['structTypes'] == null ? null : pulumi.Input.decodeList<QueryParameterTypeStructTypesItem>(map['structTypes'], (value) => QueryParameterTypeStructTypesItem.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : map['type'] as String,
+      arrayType: map['arrayType'] == null ? null : (QueryParameterType.fromMap((map['arrayType'] as Map).cast<String, dynamic>())).input(),
+      structTypes: map['structTypes'] == null ? null : (pulumi.Input.decodeList<QueryParameterTypeStructTypesItem>(map['structTypes'], (value) => QueryParameterTypeStructTypesItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

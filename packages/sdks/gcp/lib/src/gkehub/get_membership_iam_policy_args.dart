@@ -24,13 +24,10 @@ class GetMembershipIamPolicyArgs {
   /// [membershipId] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   GetMembershipIamPolicyArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> membershipId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.location,
+    required this.membershipId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,9 +39,9 @@ class GetMembershipIamPolicyArgs {
 
   factory GetMembershipIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetMembershipIamPolicyArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      membershipId: pulumi.Output.create<String>(map['membershipId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

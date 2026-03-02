@@ -21,15 +21,11 @@ class ApplicationApiAccessState {
   /// [roleIds] A set of role IDs to be granted to the application, as published by the API.
   /// [scopeIds] A set of scope IDs to be granted to the application, as published by the API.
   ApplicationApiAccessState({
-    pulumi.Output<String>? apiClientId,
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<List<String>>? roleIds,
-    pulumi.Output<List<String>>? scopeIds,
-  }) :
-      apiClientId = pulumi.Input.asOptionalInput<String>(apiClientId),
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      roleIds = pulumi.Input.asOptionalInput<List<String>>(roleIds),
-      scopeIds = pulumi.Input.asOptionalInput<List<String>>(scopeIds);
+    this.apiClientId,
+    this.applicationId,
+    this.roleIds,
+    this.scopeIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class ApplicationApiAccessState {
 
   factory ApplicationApiAccessState.fromMap(Map<String, dynamic> map) {
     return ApplicationApiAccessState(
-      apiClientId: map['apiClientId'] == null ? null : pulumi.Output.create<String>(map['apiClientId'] as String),
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      roleIds: map['roleIds'] == null ? null : pulumi.Output.create<List<String>>((map['roleIds'] as List).cast<String>()),
-      scopeIds: map['scopeIds'] == null ? null : pulumi.Output.create<List<String>>((map['scopeIds'] as List).cast<String>()),
+      apiClientId: map['apiClientId'] == null ? null : (map['apiClientId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      roleIds: map['roleIds'] == null ? null : ((map['roleIds'] as List).cast<String>()).input(),
+      scopeIds: map['scopeIds'] == null ? null : ((map['scopeIds'] as List).cast<String>()).input(),
     );
   }
 }

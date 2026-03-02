@@ -26,17 +26,12 @@ class AliasArgs {
   /// [routingStrategy] Specifies the fleet and/or routing type to use for the alias.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AliasArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<AliasRoutingStrategy> routingStrategy,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingStrategy = pulumi.Input.asInput<AliasRoutingStrategy>(routingStrategy),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.name,
+    this.region,
+    required this.routingStrategy,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AliasArgs {
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingStrategy: pulumi.Output.create<AliasRoutingStrategy>(AliasRoutingStrategy.fromMap((map['routingStrategy'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingStrategy: (AliasRoutingStrategy.fromMap((map['routingStrategy'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

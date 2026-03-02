@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_run_source_properties_response.dart';
 import 'pipeline_run_target_properties_response.dart';
 
@@ -9,15 +10,15 @@ class PipelineRunRequestResponse {
   /// Specify an image by repository ('hello-world'). This will use the 'latest' tag.
   /// Specify an image by tag ('hello-world:latest').
   /// Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123').
-  final List<String>? artifacts;
+  final pulumi.Input<List<String>>? artifacts;
   /// The digest of the tar used to transfer the artifacts.
-  final String? catalogDigest;
+  final pulumi.Input<String>? catalogDigest;
   /// The resource ID of the pipeline to run.
-  final String? pipelineResourceId;
+  final pulumi.Input<String>? pipelineResourceId;
   /// The source properties of the pipeline run.
-  final PipelineRunSourcePropertiesResponse? source;
+  final pulumi.Input<PipelineRunSourcePropertiesResponse>? source;
   /// The target properties of the pipeline run.
-  final PipelineRunTargetPropertiesResponse? target;
+  final pulumi.Input<PipelineRunTargetPropertiesResponse>? target;
 
   /// Creates a new [PipelineRunRequestResponse].
   /// [artifacts] List of source artifacts to be transferred by the pipeline.
@@ -38,18 +39,18 @@ class PipelineRunRequestResponse {
       'artifacts': ?artifacts,
       'catalogDigest': ?catalogDigest,
       'pipelineResourceId': ?pipelineResourceId,
-      'source': ?source == null ? null : source!.toMap(),
-      'target': ?target == null ? null : target!.toMap(),
+      'source': ?pulumi.Input.mapOptionalInputValue<PipelineRunSourcePropertiesResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'target': ?pulumi.Input.mapOptionalInputValue<PipelineRunTargetPropertiesResponse, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory PipelineRunRequestResponse.fromMap(Map<String, dynamic> map) {
     return PipelineRunRequestResponse(
-      artifacts: map['artifacts'] == null ? null : (map['artifacts'] as List).cast<String>(),
-      catalogDigest: map['catalogDigest'] == null ? null : map['catalogDigest'] as String,
-      pipelineResourceId: map['pipelineResourceId'] == null ? null : map['pipelineResourceId'] as String,
-      source: map['source'] == null ? null : PipelineRunSourcePropertiesResponse.fromMap((map['source'] as Map).cast<String, dynamic>()),
-      target: map['target'] == null ? null : PipelineRunTargetPropertiesResponse.fromMap((map['target'] as Map).cast<String, dynamic>()),
+      artifacts: map['artifacts'] == null ? null : ((map['artifacts'] as List).cast<String>()).input(),
+      catalogDigest: map['catalogDigest'] == null ? null : (map['catalogDigest'] as String).input(),
+      pipelineResourceId: map['pipelineResourceId'] == null ? null : (map['pipelineResourceId'] as String).input(),
+      source: map['source'] == null ? null : (PipelineRunSourcePropertiesResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (PipelineRunTargetPropertiesResponse.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -28,21 +28,14 @@ class ZoneVirtualNetworkLinkState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualNetworkId] The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
   ZoneVirtualNetworkLinkState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateDnsZoneName,
-    pulumi.Output<bool>? registrationEnabled,
-    pulumi.Output<String>? resolutionPolicy,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? virtualNetworkId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateDnsZoneName = pulumi.Input.asOptionalInput<String>(privateDnsZoneName),
-      registrationEnabled = pulumi.Input.asOptionalInput<bool>(registrationEnabled),
-      resolutionPolicy = pulumi.Input.asOptionalInput<String>(resolutionPolicy),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualNetworkId = pulumi.Input.asOptionalInput<String>(virtualNetworkId);
+    this.name,
+    this.privateDnsZoneName,
+    this.registrationEnabled,
+    this.resolutionPolicy,
+    this.resourceGroupName,
+    this.tags,
+    this.virtualNetworkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class ZoneVirtualNetworkLinkState {
 
   factory ZoneVirtualNetworkLinkState.fromMap(Map<String, dynamic> map) {
     return ZoneVirtualNetworkLinkState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateDnsZoneName: map['privateDnsZoneName'] == null ? null : pulumi.Output.create<String>(map['privateDnsZoneName'] as String),
-      registrationEnabled: map['registrationEnabled'] == null ? null : pulumi.Output.create<bool>(map['registrationEnabled'] as bool),
-      resolutionPolicy: map['resolutionPolicy'] == null ? null : pulumi.Output.create<String>(map['resolutionPolicy'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateDnsZoneName: map['privateDnsZoneName'] == null ? null : (map['privateDnsZoneName'] as String).input(),
+      registrationEnabled: map['registrationEnabled'] == null ? null : (map['registrationEnabled'] as bool).input(),
+      resolutionPolicy: map['resolutionPolicy'] == null ? null : (map['resolutionPolicy'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
     );
   }
 }

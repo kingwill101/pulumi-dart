@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterIpAllocationPolicyNetworkTierConfig {
   /// Network tier configuration.
@@ -7,7 +8,7 @@ class ClusterIpAllocationPolicyNetworkTierConfig {
   /// * `NETWORK_TIER_DEFAULT`: (Default) Use project-level configuration.
   /// * `NETWORK_TIER_PREMIUM`: Premium network tier.
   /// * `NETWORK_TIER_STANDARD`: Standard network tier.
-  final String networkTier;
+  final pulumi.Input<String> networkTier;
 
   /// Creates a new [ClusterIpAllocationPolicyNetworkTierConfig].
   /// [networkTier] Network tier configuration.
@@ -23,7 +24,7 @@ class ClusterIpAllocationPolicyNetworkTierConfig {
 
   factory ClusterIpAllocationPolicyNetworkTierConfig.fromMap(Map<String, dynamic> map) {
     return ClusterIpAllocationPolicyNetworkTierConfig(
-      networkTier: map['networkTier'] as String,
+      networkTier: (map['networkTier'] as String).input(),
     );
   }
 }

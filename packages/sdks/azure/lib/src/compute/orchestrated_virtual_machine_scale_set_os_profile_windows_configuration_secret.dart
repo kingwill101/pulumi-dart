@@ -5,9 +5,9 @@ import 'orchestrated_virtual_machine_scale_set_os_profile_windows_configuration_
 
 class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret {
   /// One or more `certificate` blocks as defined below.
-  final List<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate> certificates;
+  final pulumi.Input<List<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate>> certificates;
   /// The ID of the Key Vault from which all Secrets should be sourced.
-  final String keyVaultId;
+  final pulumi.Input<String> keyVaultId;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret].
   /// [certificates] One or more `certificate` blocks as defined below.
@@ -19,15 +19,15 @@ class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates': pulumi.Input.encodeList<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
+      'certificates': pulumi.Input.mapInputValue<List<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate>, List<Map<String, dynamic>>>(certificates, (value) => pulumi.Input.encodeList<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
       'keyVaultId': keyVaultId,
     };
   }
 
   factory OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret(
-      certificates: pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate>(map['certificates'], (value) => OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      keyVaultId: map['keyVaultId'] as String,
+      certificates: (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate>(map['certificates'], (value) => OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyVaultId: (map['keyVaultId'] as String).input(),
     );
   }
 }

@@ -58,33 +58,20 @@ class AlertConditionArgs {
   /// [userDefinedValueFunction] One of: `average`, `min`, `max`, `total`, `sample_size`, `rate` or `percent`.
   /// [violationCloseTimer] Automatically close instance-based incidents, including JVM health metric incidents, after the number of hours specified. Must be between 1 and 720 hours. Must be specified in the following two cases, to prevent drift:
   AlertConditionArgs({
-    pulumi.Output<String>? conditionScope,
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<List<String>> entities,
-    pulumi.Output<String>? gcMetric,
-    required pulumi.Output<String> metric,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> policyId,
-    pulumi.Output<String>? runbookUrl,
-    required pulumi.Output<List<AlertConditionTerm>> terms,
-    required pulumi.Output<String> type,
-    pulumi.Output<String>? userDefinedMetric,
-    pulumi.Output<String>? userDefinedValueFunction,
-    pulumi.Output<int>? violationCloseTimer,
-  }) :
-      conditionScope = pulumi.Input.asOptionalInput<String>(conditionScope),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      entities = pulumi.Input.asInput<List<String>>(entities),
-      gcMetric = pulumi.Input.asOptionalInput<String>(gcMetric),
-      metric = pulumi.Input.asInput<String>(metric),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyId = pulumi.Input.asInput<String>(policyId),
-      runbookUrl = pulumi.Input.asOptionalInput<String>(runbookUrl),
-      terms = pulumi.Input.asInput<List<AlertConditionTerm>>(terms),
-      type = pulumi.Input.asInput<String>(type),
-      userDefinedMetric = pulumi.Input.asOptionalInput<String>(userDefinedMetric),
-      userDefinedValueFunction = pulumi.Input.asOptionalInput<String>(userDefinedValueFunction),
-      violationCloseTimer = pulumi.Input.asOptionalInput<int>(violationCloseTimer);
+    this.conditionScope,
+    this.enabled,
+    required this.entities,
+    this.gcMetric,
+    required this.metric,
+    this.name,
+    required this.policyId,
+    this.runbookUrl,
+    required this.terms,
+    required this.type,
+    this.userDefinedMetric,
+    this.userDefinedValueFunction,
+    this.violationCloseTimer,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,19 +93,19 @@ class AlertConditionArgs {
 
   factory AlertConditionArgs.fromMap(Map<String, dynamic> map) {
     return AlertConditionArgs(
-      conditionScope: map['conditionScope'] == null ? null : pulumi.Output.create<String>(map['conditionScope'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      entities: pulumi.Output.create<List<String>>((map['entities'] as List).cast<String>()),
-      gcMetric: map['gcMetric'] == null ? null : pulumi.Output.create<String>(map['gcMetric'] as String),
-      metric: pulumi.Output.create<String>(map['metric'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
-      runbookUrl: map['runbookUrl'] == null ? null : pulumi.Output.create<String>(map['runbookUrl'] as String),
-      terms: pulumi.Output.create<List<AlertConditionTerm>>(pulumi.Input.decodeList<AlertConditionTerm>(map['terms'], (value) => AlertConditionTerm.fromMap((value as Map).cast<String, dynamic>()))),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      userDefinedMetric: map['userDefinedMetric'] == null ? null : pulumi.Output.create<String>(map['userDefinedMetric'] as String),
-      userDefinedValueFunction: map['userDefinedValueFunction'] == null ? null : pulumi.Output.create<String>(map['userDefinedValueFunction'] as String),
-      violationCloseTimer: map['violationCloseTimer'] == null ? null : pulumi.Output.create<int>(map['violationCloseTimer'] as int),
+      conditionScope: map['conditionScope'] == null ? null : (map['conditionScope'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      entities: ((map['entities'] as List).cast<String>()).input(),
+      gcMetric: map['gcMetric'] == null ? null : (map['gcMetric'] as String).input(),
+      metric: (map['metric'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
+      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl'] as String).input(),
+      terms: (pulumi.Input.decodeList<AlertConditionTerm>(map['terms'], (value) => AlertConditionTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      userDefinedMetric: map['userDefinedMetric'] == null ? null : (map['userDefinedMetric'] as String).input(),
+      userDefinedValueFunction: map['userDefinedValueFunction'] == null ? null : (map['userDefinedValueFunction'] as String).input(),
+      violationCloseTimer: map['violationCloseTimer'] == null ? null : (map['violationCloseTimer'] as int).input(),
     );
   }
 }

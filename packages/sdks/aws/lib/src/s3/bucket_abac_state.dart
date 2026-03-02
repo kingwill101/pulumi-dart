@@ -22,15 +22,11 @@ class BucketAbacState {
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   BucketAbacState({
-    pulumi.Output<BucketAbacAbacStatus>? abacStatus,
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? expectedBucketOwner,
-    pulumi.Output<String>? region,
-  }) :
-      abacStatus = pulumi.Input.asOptionalInput<BucketAbacAbacStatus>(abacStatus),
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.abacStatus,
+    this.bucket,
+    this.expectedBucketOwner,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class BucketAbacState {
 
   factory BucketAbacState.fromMap(Map<String, dynamic> map) {
     return BucketAbacState(
-      abacStatus: map['abacStatus'] == null ? null : pulumi.Output.create<BucketAbacAbacStatus>(BucketAbacAbacStatus.fromMap((map['abacStatus'] as Map).cast<String, dynamic>())),
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      abacStatus: map['abacStatus'] == null ? null : (BucketAbacAbacStatus.fromMap((map['abacStatus'] as Map).cast<String, dynamic>())).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_max_recurrence.dart';
 
 class JobCollectionQuota {
   /// Gets or set the maximum job count.
-  final int? maxJobCount;
+  final pulumi.Input<int>? maxJobCount;
   /// Gets or sets the maximum job occurrence.
-  final int? maxJobOccurrence;
+  final pulumi.Input<int>? maxJobOccurrence;
   /// Gets or set the maximum recurrence.
-  final JobMaxRecurrence? maxRecurrence;
+  final pulumi.Input<JobMaxRecurrence>? maxRecurrence;
 
   /// Creates a new [JobCollectionQuota].
   /// [maxJobCount] Gets or set the maximum job count.
@@ -24,15 +25,15 @@ class JobCollectionQuota {
     return <String, dynamic>{
       'maxJobCount': ?maxJobCount,
       'maxJobOccurrence': ?maxJobOccurrence,
-      'maxRecurrence': ?maxRecurrence == null ? null : maxRecurrence!.toMap(),
+      'maxRecurrence': ?pulumi.Input.mapOptionalInputValue<JobMaxRecurrence, Map<String, dynamic>>(maxRecurrence, (value) => value.toMap()),
     };
   }
 
   factory JobCollectionQuota.fromMap(Map<String, dynamic> map) {
     return JobCollectionQuota(
-      maxJobCount: map['maxJobCount'] == null ? null : map['maxJobCount'] as int,
-      maxJobOccurrence: map['maxJobOccurrence'] == null ? null : map['maxJobOccurrence'] as int,
-      maxRecurrence: map['maxRecurrence'] == null ? null : JobMaxRecurrence.fromMap((map['maxRecurrence'] as Map).cast<String, dynamic>()),
+      maxJobCount: map['maxJobCount'] == null ? null : (map['maxJobCount'] as int).input(),
+      maxJobOccurrence: map['maxJobOccurrence'] == null ? null : (map['maxJobOccurrence'] as int).input(),
+      maxRecurrence: map['maxRecurrence'] == null ? null : (JobMaxRecurrence.fromMap((map['maxRecurrence'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

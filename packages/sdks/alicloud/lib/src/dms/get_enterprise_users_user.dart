@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnterpriseUsersUser {
   /// The Alibaba Cloud unique ID (UID) of the user.
-  final String id;
+  final pulumi.Input<String> id;
   /// The DingTalk number or mobile number of the user.
-  final String mobile;
+  final pulumi.Input<String> mobile;
   /// The nickname of the user.
-  final String nickName;
+  final pulumi.Input<String> nickName;
   /// The Alibaba Cloud unique ID (UID) of the parent account if the user corresponds to a Resource Access Management (RAM) user.
-  final int parentUid;
+  final pulumi.Input<int> parentUid;
   /// The list ids of the role that the user plays.
-  final List<int> roleIds;
+  final pulumi.Input<List<int>> roleIds;
   /// The list names of the role that he user plays.
-  final List<String> roleNames;
+  final pulumi.Input<List<String>> roleNames;
   /// The status of the user.
-  final String status;
-  final String uid;
+  final pulumi.Input<String> status;
+  final pulumi.Input<String> uid;
   /// The ID of the user.
-  final String userId;
+  final pulumi.Input<String> userId;
   /// The nickname of the user.
-  final String userName;
+  final pulumi.Input<String> userName;
 
   /// Creates a new [GetEnterpriseUsersUser].
   /// [id] The Alibaba Cloud unique ID (UID) of the user.
@@ -63,16 +64,16 @@ class GetEnterpriseUsersUser {
 
   factory GetEnterpriseUsersUser.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseUsersUser(
-      id: map['id'] as String,
-      mobile: map['mobile'] as String,
-      nickName: map['nickName'] as String,
-      parentUid: map['parentUid'] as int,
-      roleIds: (map['roleIds'] as List).cast<int>(),
-      roleNames: (map['roleNames'] as List).cast<String>(),
-      status: map['status'] as String,
-      uid: map['uid'] as String,
-      userId: map['userId'] as String,
-      userName: map['userName'] as String,
+      id: (map['id'] as String).input(),
+      mobile: (map['mobile'] as String).input(),
+      nickName: (map['nickName'] as String).input(),
+      parentUid: (map['parentUid'] as int).input(),
+      roleIds: ((map['roleIds'] as List).cast<int>()).input(),
+      roleNames: ((map['roleNames'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
+      uid: (map['uid'] as String).input(),
+      userId: (map['userId'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

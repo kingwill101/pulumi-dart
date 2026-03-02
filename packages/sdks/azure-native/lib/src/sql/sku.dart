@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An ARM Resource SKU.
 class Sku {
   /// Capacity of the particular SKU.
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  final String? family;
+  final pulumi.Input<String>? family;
   /// The name of the SKU, typically, a letter + Number code, e.g. P3.
-  final String name;
+  final pulumi.Input<String> name;
   /// Size of the particular SKU
-  final String? size;
+  final pulumi.Input<String>? size;
   /// The tier or edition of the particular SKU, e.g. Basic, Premium.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [Sku].
   /// [capacity] Capacity of the particular SKU.
@@ -40,11 +41,11 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      family: map['family'] == null ? null : map['family'] as String,
-      name: map['name'] as String,
-      size: map['size'] == null ? null : map['size'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      name: (map['name'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

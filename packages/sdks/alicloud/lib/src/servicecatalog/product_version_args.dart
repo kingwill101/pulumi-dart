@@ -31,21 +31,14 @@ class ProductVersionArgs {
   /// [templateType] Template Type
   /// [templateUrl] Template URL
   ProductVersionArgs({
-    pulumi.Output<bool>? active,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? guidance,
-    required pulumi.Output<String> productId,
-    required pulumi.Output<String> productVersionName,
-    required pulumi.Output<String> templateType,
-    required pulumi.Output<String> templateUrl,
-  }) :
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      guidance = pulumi.Input.asOptionalInput<String>(guidance),
-      productId = pulumi.Input.asInput<String>(productId),
-      productVersionName = pulumi.Input.asInput<String>(productVersionName),
-      templateType = pulumi.Input.asInput<String>(templateType),
-      templateUrl = pulumi.Input.asInput<String>(templateUrl);
+    this.active,
+    this.description,
+    this.guidance,
+    required this.productId,
+    required this.productVersionName,
+    required this.templateType,
+    required this.templateUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ProductVersionArgs {
 
   factory ProductVersionArgs.fromMap(Map<String, dynamic> map) {
     return ProductVersionArgs(
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      guidance: map['guidance'] == null ? null : pulumi.Output.create<String>(map['guidance'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      productVersionName: pulumi.Output.create<String>(map['productVersionName'] as String),
-      templateType: pulumi.Output.create<String>(map['templateType'] as String),
-      templateUrl: pulumi.Output.create<String>(map['templateUrl'] as String),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      guidance: map['guidance'] == null ? null : (map['guidance'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      productVersionName: (map['productVersionName'] as String).input(),
+      templateType: (map['templateType'] as String).input(),
+      templateUrl: (map['templateUrl'] as String).input(),
     );
   }
 }

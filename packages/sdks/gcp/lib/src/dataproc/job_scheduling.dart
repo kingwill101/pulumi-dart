@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobScheduling {
   /// Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-  final int maxFailuresPerHour;
+  final pulumi.Input<int> maxFailuresPerHour;
   /// Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-  final int maxFailuresTotal;
+  final pulumi.Input<int> maxFailuresTotal;
 
   /// Creates a new [JobScheduling].
   /// [maxFailuresPerHour] Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
@@ -24,8 +25,8 @@ class JobScheduling {
 
   factory JobScheduling.fromMap(Map<String, dynamic> map) {
     return JobScheduling(
-      maxFailuresPerHour: map['maxFailuresPerHour'] as int,
-      maxFailuresTotal: map['maxFailuresTotal'] as int,
+      maxFailuresPerHour: (map['maxFailuresPerHour'] as int).input(),
+      maxFailuresTotal: (map['maxFailuresTotal'] as int).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFileSystemLifecyclePolicy {
-  final String transitionToArchive;
-  final String transitionToIa;
-  final String transitionToPrimaryStorageClass;
+  final pulumi.Input<String> transitionToArchive;
+  final pulumi.Input<String> transitionToIa;
+  final pulumi.Input<String> transitionToPrimaryStorageClass;
 
   /// Creates a new [GetFileSystemLifecyclePolicy].
   /// [transitionToArchive] Required.
@@ -26,9 +27,9 @@ class GetFileSystemLifecyclePolicy {
 
   factory GetFileSystemLifecyclePolicy.fromMap(Map<String, dynamic> map) {
     return GetFileSystemLifecyclePolicy(
-      transitionToArchive: map['transitionToArchive'] as String,
-      transitionToIa: map['transitionToIa'] as String,
-      transitionToPrimaryStorageClass: map['transitionToPrimaryStorageClass'] as String,
+      transitionToArchive: (map['transitionToArchive'] as String).input(),
+      transitionToIa: (map['transitionToIa'] as String).input(),
+      transitionToPrimaryStorageClass: (map['transitionToPrimaryStorageClass'] as String).input(),
     );
   }
 }

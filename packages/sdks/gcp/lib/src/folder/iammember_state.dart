@@ -31,17 +31,12 @@ class IAMMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   IAMMemberState({
-    pulumi.Output<IAMMemberCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? folder,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<IAMMemberCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.etag,
+    this.folder,
+    this.member,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class IAMMemberState {
 
   factory IAMMemberState.fromMap(Map<String, dynamic> map) {
     return IAMMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<IAMMemberCondition>(IAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (IAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

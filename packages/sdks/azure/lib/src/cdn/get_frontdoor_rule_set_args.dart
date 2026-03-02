@@ -19,13 +19,10 @@ class GetFrontdoorRuleSetArgs {
   /// [profileName] Specifies the name of the Front Door Profile where this Front Door Rule Set exists.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Front Door Profile exists.
   GetFrontdoorRuleSetArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.profileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFrontdoorRuleSetArgs {
 
   factory GetFrontdoorRuleSetArgs.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorRuleSetArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

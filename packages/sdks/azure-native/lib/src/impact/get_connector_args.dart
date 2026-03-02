@@ -13,9 +13,8 @@ class GetConnectorArgs {
   /// Creates a new [GetConnectorArgs].
   /// [connectorName] The name of the connector
   GetConnectorArgs({
-    required pulumi.Output<String> connectorName,
-  }) :
-      connectorName = pulumi.Input.asInput<String>(connectorName);
+    required this.connectorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetConnectorArgs {
 
   factory GetConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectorArgs(
-      connectorName: pulumi.Output.create<String>(map['connectorName'] as String),
+      connectorName: (map['connectorName'] as String).input(),
     );
   }
 }

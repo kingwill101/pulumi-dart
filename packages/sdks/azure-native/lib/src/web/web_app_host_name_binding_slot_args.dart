@@ -53,33 +53,20 @@ class WebAppHostNameBindingSlotArgs {
   /// [sslState] SSL type
   /// [thumbprint] SSL certificate thumbprint
   WebAppHostNameBindingSlotArgs({
-    pulumi.Output<String>? azureResourceName,
-    pulumi.Output<AzureResourceType>? azureResourceType,
-    pulumi.Output<CustomHostNameDnsRecordType>? customHostNameDnsRecordType,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<String>? hostName,
-    pulumi.Output<HostNameType>? hostNameType,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? siteName,
-    required pulumi.Output<String> slot,
-    pulumi.Output<SslState>? sslState,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      azureResourceName = pulumi.Input.asOptionalInput<String>(azureResourceName),
-      azureResourceType = pulumi.Input.asOptionalInput<AzureResourceType>(azureResourceType),
-      customHostNameDnsRecordType = pulumi.Input.asOptionalInput<CustomHostNameDnsRecordType>(customHostNameDnsRecordType),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      hostName = pulumi.Input.asOptionalInput<String>(hostName),
-      hostNameType = pulumi.Input.asOptionalInput<HostNameType>(hostNameType),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asOptionalInput<String>(siteName),
-      slot = pulumi.Input.asInput<String>(slot),
-      sslState = pulumi.Input.asOptionalInput<SslState>(sslState),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    this.azureResourceName,
+    this.azureResourceType,
+    this.customHostNameDnsRecordType,
+    this.domainId,
+    this.hostName,
+    this.hostNameType,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+    this.siteName,
+    required this.slot,
+    this.sslState,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class WebAppHostNameBindingSlotArgs {
 
   factory WebAppHostNameBindingSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppHostNameBindingSlotArgs(
-      azureResourceName: map['azureResourceName'] == null ? null : pulumi.Output.create<String>(map['azureResourceName'] as String),
-      azureResourceType: map['azureResourceType'] == null ? null : pulumi.Output.create<AzureResourceType>(AzureResourceType.fromValue(map['azureResourceType'] as String)),
-      customHostNameDnsRecordType: map['customHostNameDnsRecordType'] == null ? null : pulumi.Output.create<CustomHostNameDnsRecordType>(CustomHostNameDnsRecordType.fromValue(map['customHostNameDnsRecordType'] as String)),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      hostName: map['hostName'] == null ? null : pulumi.Output.create<String>(map['hostName'] as String),
-      hostNameType: map['hostNameType'] == null ? null : pulumi.Output.create<HostNameType>(HostNameType.fromValue(map['hostNameType'] as String)),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: map['siteName'] == null ? null : pulumi.Output.create<String>(map['siteName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
-      sslState: map['sslState'] == null ? null : pulumi.Output.create<SslState>(SslState.fromValue(map['sslState'] as String)),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      azureResourceName: map['azureResourceName'] == null ? null : (map['azureResourceName'] as String).input(),
+      azureResourceType: map['azureResourceType'] == null ? null : (AzureResourceType.fromValue(map['azureResourceType'] as String)).input(),
+      customHostNameDnsRecordType: map['customHostNameDnsRecordType'] == null ? null : (CustomHostNameDnsRecordType.fromValue(map['customHostNameDnsRecordType'] as String)).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      hostNameType: map['hostNameType'] == null ? null : (HostNameType.fromValue(map['hostNameType'] as String)).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
+      slot: (map['slot'] as String).input(),
+      sslState: map['sslState'] == null ? null : (SslState.fromValue(map['sslState'] as String)).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

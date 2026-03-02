@@ -19,13 +19,10 @@ class GetBusinessCaseOperationReportDownloadUrlArgs {
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetBusinessCaseOperationReportDownloadUrlArgs({
-    required pulumi.Output<String> businessCaseName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      businessCaseName = pulumi.Input.asInput<String>(businessCaseName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.businessCaseName,
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBusinessCaseOperationReportDownloadUrlArgs {
 
   factory GetBusinessCaseOperationReportDownloadUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetBusinessCaseOperationReportDownloadUrlArgs(
-      businessCaseName: pulumi.Output.create<String>(map['businessCaseName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      businessCaseName: (map['businessCaseName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

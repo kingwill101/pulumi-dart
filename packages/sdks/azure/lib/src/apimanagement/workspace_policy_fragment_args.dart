@@ -25,17 +25,12 @@ class WorkspacePolicyFragmentArgs {
   /// [xmlContent] Specifies the XML content of the API Management Workspace Policy Fragment.
   /// [xmlFormat] Specifies the XML format of the API Management Workspace Policy Fragment. Possible values are `xml` or `rawxml`. Defaults to `xml`.
   WorkspacePolicyFragmentArgs({
-    required pulumi.Output<String> apiManagementWorkspaceId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> xmlContent,
-    pulumi.Output<String>? xmlFormat,
-  }) :
-      apiManagementWorkspaceId = pulumi.Input.asInput<String>(apiManagementWorkspaceId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      xmlContent = pulumi.Input.asInput<String>(xmlContent),
-      xmlFormat = pulumi.Input.asOptionalInput<String>(xmlFormat);
+    required this.apiManagementWorkspaceId,
+    this.description,
+    this.name,
+    required this.xmlContent,
+    this.xmlFormat,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class WorkspacePolicyFragmentArgs {
 
   factory WorkspacePolicyFragmentArgs.fromMap(Map<String, dynamic> map) {
     return WorkspacePolicyFragmentArgs(
-      apiManagementWorkspaceId: pulumi.Output.create<String>(map['apiManagementWorkspaceId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      xmlContent: pulumi.Output.create<String>(map['xmlContent'] as String),
-      xmlFormat: map['xmlFormat'] == null ? null : pulumi.Output.create<String>(map['xmlFormat'] as String),
+      apiManagementWorkspaceId: (map['apiManagementWorkspaceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      xmlContent: (map['xmlContent'] as String).input(),
+      xmlFormat: map['xmlFormat'] == null ? null : (map['xmlFormat'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs {
   /// [name] Name of the static site.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs({
-    required pulumi.Output<String> functionAppName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      functionAppName = pulumi.Input.asInput<String>(functionAppName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.functionAppName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs {
 
   factory GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs(
-      functionAppName: pulumi.Output.create<String>(map['functionAppName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      functionAppName: (map['functionAppName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

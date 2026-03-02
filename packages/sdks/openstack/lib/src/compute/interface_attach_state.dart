@@ -27,17 +27,12 @@ class InterfaceAttachState {
   /// [portId] The ID of the Port to attach to an Instance.
   /// [region] The region in which to create the interface attachment.
   InterfaceAttachState({
-    pulumi.Output<String>? fixedIp,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? networkId,
-    pulumi.Output<String>? portId,
-    pulumi.Output<String>? region,
-  }) :
-      fixedIp = pulumi.Input.asOptionalInput<String>(fixedIp),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      networkId = pulumi.Input.asOptionalInput<String>(networkId),
-      portId = pulumi.Input.asOptionalInput<String>(portId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.fixedIp,
+    this.instanceId,
+    this.networkId,
+    this.portId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class InterfaceAttachState {
 
   factory InterfaceAttachState.fromMap(Map<String, dynamic> map) {
     return InterfaceAttachState(
-      fixedIp: map['fixedIp'] == null ? null : pulumi.Output.create<String>(map['fixedIp'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      networkId: map['networkId'] == null ? null : pulumi.Output.create<String>(map['networkId'] as String),
-      portId: map['portId'] == null ? null : pulumi.Output.create<String>(map['portId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
+      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

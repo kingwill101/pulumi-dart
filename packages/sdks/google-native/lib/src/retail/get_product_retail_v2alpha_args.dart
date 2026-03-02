@@ -20,17 +20,12 @@ class GetProductRetailV2alphaArgs {
   /// [productId] Required.
   /// [project] Optional.
   GetProductRetailV2alphaArgs({
-    required pulumi.Output<String> branchId,
-    required pulumi.Output<String> catalogId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> productId,
-    pulumi.Output<String>? project,
-  }) :
-      branchId = pulumi.Input.asInput<String>(branchId),
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      location = pulumi.Input.asInput<String>(location),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.branchId,
+    required this.catalogId,
+    required this.location,
+    required this.productId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetProductRetailV2alphaArgs {
 
   factory GetProductRetailV2alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetProductRetailV2alphaArgs(
-      branchId: pulumi.Output.create<String>(map['branchId'] as String),
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      branchId: (map['branchId'] as String).input(),
+      catalogId: (map['catalogId'] as String).input(),
+      location: (map['location'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

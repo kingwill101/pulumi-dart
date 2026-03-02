@@ -18,15 +18,11 @@ class GetBucketViewArgs {
   /// [project] Optional.
   /// [viewId] Required.
   GetBucketViewArgs({
-    required pulumi.Output<String> bucketId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> viewId,
-  }) :
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      viewId = pulumi.Input.asInput<String>(viewId);
+    required this.bucketId,
+    required this.location,
+    this.project,
+    required this.viewId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetBucketViewArgs {
 
   factory GetBucketViewArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketViewArgs(
-      bucketId: pulumi.Output.create<String>(map['bucketId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      viewId: pulumi.Output.create<String>(map['viewId'] as String),
+      bucketId: (map['bucketId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      viewId: (map['viewId'] as String).input(),
     );
   }
 }

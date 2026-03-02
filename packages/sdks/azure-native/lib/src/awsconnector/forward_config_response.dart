@@ -7,9 +7,9 @@ import 'target_group_tuple_response.dart';
 /// Definition of ForwardConfig
 class ForwardConfigResponse {
   /// Information about the target group stickiness for a rule. Information about the target group stickiness for a rule.
-  final TargetGroupStickinessConfigResponse? targetGroupStickinessConfig;
+  final pulumi.Input<TargetGroupStickinessConfigResponse>? targetGroupStickinessConfig;
   /// Information about how traffic will be distributed between multiple target groups in a forward rule.
-  final List<TargetGroupTupleResponse>? targetGroups;
+  final pulumi.Input<List<TargetGroupTupleResponse>>? targetGroups;
 
   /// Creates a new [ForwardConfigResponse].
   /// [targetGroupStickinessConfig] Information about the target group stickiness for a rule. Information about the target group stickiness for a rule.
@@ -21,15 +21,15 @@ class ForwardConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'targetGroupStickinessConfig': ?targetGroupStickinessConfig == null ? null : targetGroupStickinessConfig!.toMap(),
-      'targetGroups': ?targetGroups == null ? null : pulumi.Input.encodeList<TargetGroupTupleResponse, Map<String, dynamic>>(targetGroups!, (value) => value.toMap()),
+      'targetGroupStickinessConfig': ?pulumi.Input.mapOptionalInputValue<TargetGroupStickinessConfigResponse, Map<String, dynamic>>(targetGroupStickinessConfig, (value) => value.toMap()),
+      'targetGroups': ?pulumi.Input.mapOptionalInputValue<List<TargetGroupTupleResponse>, List<Map<String, dynamic>>>(targetGroups, (value) => pulumi.Input.encodeList<TargetGroupTupleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ForwardConfigResponse.fromMap(Map<String, dynamic> map) {
     return ForwardConfigResponse(
-      targetGroupStickinessConfig: map['targetGroupStickinessConfig'] == null ? null : TargetGroupStickinessConfigResponse.fromMap((map['targetGroupStickinessConfig'] as Map).cast<String, dynamic>()),
-      targetGroups: map['targetGroups'] == null ? null : pulumi.Input.decodeList<TargetGroupTupleResponse>(map['targetGroups'], (value) => TargetGroupTupleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      targetGroupStickinessConfig: map['targetGroupStickinessConfig'] == null ? null : (TargetGroupStickinessConfigResponse.fromMap((map['targetGroupStickinessConfig'] as Map).cast<String, dynamic>())).input(),
+      targetGroups: map['targetGroups'] == null ? null : (pulumi.Input.decodeList<TargetGroupTupleResponse>(map['targetGroups'], (value) => TargetGroupTupleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

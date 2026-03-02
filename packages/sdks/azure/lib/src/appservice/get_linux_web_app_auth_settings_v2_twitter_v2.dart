@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLinuxWebAppAuthSettingsV2TwitterV2 {
   /// The OAuth 1.0a consumer key of the Twitter application used for sign-in.
-  final String consumerKey;
+  final pulumi.Input<String> consumerKey;
   /// The app setting name that contains the OAuth 1.0a consumer secret of the Twitter application used for sign-in.
-  final String consumerSecretSettingName;
+  final pulumi.Input<String> consumerSecretSettingName;
 
   /// Creates a new [GetLinuxWebAppAuthSettingsV2TwitterV2].
   /// [consumerKey] The OAuth 1.0a consumer key of the Twitter application used for sign-in.
@@ -24,8 +25,8 @@ class GetLinuxWebAppAuthSettingsV2TwitterV2 {
 
   factory GetLinuxWebAppAuthSettingsV2TwitterV2.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppAuthSettingsV2TwitterV2(
-      consumerKey: map['consumerKey'] as String,
-      consumerSecretSettingName: map['consumerSecretSettingName'] as String,
+      consumerKey: (map['consumerKey'] as String).input(),
+      consumerSecretSettingName: (map['consumerSecretSettingName'] as String).input(),
     );
   }
 }

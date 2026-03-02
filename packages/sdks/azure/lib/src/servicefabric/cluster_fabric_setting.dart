@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterFabricSetting {
   /// The name of the Fabric Setting, such as `Security` or `Federation`.
-  final String name;
+  final pulumi.Input<String> name;
   /// A map containing settings for the specified Fabric Setting.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
 
   /// Creates a new [ClusterFabricSetting].
   /// [name] The name of the Fabric Setting, such as `Security` or `Federation`.
@@ -24,8 +25,8 @@ class ClusterFabricSetting {
 
   factory ClusterFabricSetting.fromMap(Map<String, dynamic> map) {
     return ClusterFabricSetting(
-      name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
+      name: (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

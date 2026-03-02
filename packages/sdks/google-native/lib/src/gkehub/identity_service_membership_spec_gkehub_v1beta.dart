@@ -6,7 +6,7 @@ import 'identity_service_auth_method_gkehub_v1beta.dart';
 /// **Anthos Identity Service**: Configuration for a single Membership.
 class IdentityServiceMembershipSpecGkehubV1beta {
   /// A member may support multiple auth methods.
-  final List<IdentityServiceAuthMethodGkehubV1beta>? authMethods;
+  final pulumi.Input<List<IdentityServiceAuthMethodGkehubV1beta>>? authMethods;
 
   /// Creates a new [IdentityServiceMembershipSpecGkehubV1beta].
   /// [authMethods] A member may support multiple auth methods.
@@ -16,13 +16,13 @@ class IdentityServiceMembershipSpecGkehubV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authMethods': ?authMethods == null ? null : pulumi.Input.encodeList<IdentityServiceAuthMethodGkehubV1beta, Map<String, dynamic>>(authMethods!, (value) => value.toMap()),
+      'authMethods': ?pulumi.Input.mapOptionalInputValue<List<IdentityServiceAuthMethodGkehubV1beta>, List<Map<String, dynamic>>>(authMethods, (value) => pulumi.Input.encodeList<IdentityServiceAuthMethodGkehubV1beta, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory IdentityServiceMembershipSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return IdentityServiceMembershipSpecGkehubV1beta(
-      authMethods: map['authMethods'] == null ? null : pulumi.Input.decodeList<IdentityServiceAuthMethodGkehubV1beta>(map['authMethods'], (value) => IdentityServiceAuthMethodGkehubV1beta.fromMap((value as Map).cast<String, dynamic>())),
+      authMethods: map['authMethods'] == null ? null : (pulumi.Input.decodeList<IdentityServiceAuthMethodGkehubV1beta>(map['authMethods'], (value) => IdentityServiceAuthMethodGkehubV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

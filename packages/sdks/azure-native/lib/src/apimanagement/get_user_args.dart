@@ -19,13 +19,10 @@ class GetUserArgs {
   /// [serviceName] The name of the API Management service.
   /// [userId] User identifier. Must be unique in the current API Management service instance.
   GetUserArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> userId,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

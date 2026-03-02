@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Rule definition parameters.
 class RuleDefinitionResponse {
   /// The minimum delay in seconds before bin processing.
-  final int? binDelay;
+  final pulumi.Input<int>? binDelay;
   /// Scheduled window in minutes. Allowed values: 20, 30, 60, 120, 180, 360, 720, 1440.
-  final int? binSize;
+  final pulumi.Input<int>? binSize;
   /// The start time (UTC) when Summary rule execution starts.
-  final String? binStartTime;
+  final pulumi.Input<String>? binStartTime;
   /// The destination table used for the Summary rule results.
-  final String? destinationTable;
+  final pulumi.Input<String>? destinationTable;
   /// Summary rule query.
-  final String? query;
+  final pulumi.Input<String>? query;
   /// The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
-  final String? timeSelector;
+  final pulumi.Input<String>? timeSelector;
 
   /// Creates a new [RuleDefinitionResponse].
   /// [binDelay] The minimum delay in seconds before bin processing.
@@ -45,12 +46,12 @@ class RuleDefinitionResponse {
 
   factory RuleDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return RuleDefinitionResponse(
-      binDelay: map['binDelay'] == null ? null : map['binDelay'] as int,
-      binSize: map['binSize'] == null ? null : map['binSize'] as int,
-      binStartTime: map['binStartTime'] == null ? null : map['binStartTime'] as String,
-      destinationTable: map['destinationTable'] == null ? null : map['destinationTable'] as String,
-      query: map['query'] == null ? null : map['query'] as String,
-      timeSelector: map['timeSelector'] == null ? null : map['timeSelector'] as String,
+      binDelay: map['binDelay'] == null ? null : (map['binDelay'] as int).input(),
+      binSize: map['binSize'] == null ? null : (map['binSize'] as int).input(),
+      binStartTime: map['binStartTime'] == null ? null : (map['binStartTime'] as String).input(),
+      destinationTable: map['destinationTable'] == null ? null : (map['destinationTable'] as String).input(),
+      query: map['query'] == null ? null : (map['query'] as String).input(),
+      timeSelector: map['timeSelector'] == null ? null : (map['timeSelector'] as String).input(),
     );
   }
 }

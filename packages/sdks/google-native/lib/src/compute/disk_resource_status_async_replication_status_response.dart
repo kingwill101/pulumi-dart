@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiskResourceStatusAsyncReplicationStatusResponse {
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [DiskResourceStatusAsyncReplicationStatusResponse].
   /// [state] Required.
@@ -18,7 +19,7 @@ class DiskResourceStatusAsyncReplicationStatusResponse {
 
   factory DiskResourceStatusAsyncReplicationStatusResponse.fromMap(Map<String, dynamic> map) {
     return DiskResourceStatusAsyncReplicationStatusResponse(
-      state: map['state'] as String,
+      state: (map['state'] as String).input(),
     );
   }
 }

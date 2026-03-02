@@ -16,11 +16,9 @@ class GetStandardAssignmentArgs {
   /// [resourceId] The identifier of the resource.
   /// [standardAssignmentName] The standard assignments assignment key - unique key for the standard assignment
   GetStandardAssignmentArgs({
-    required pulumi.Output<String> resourceId,
-    required pulumi.Output<String> standardAssignmentName,
-  }) :
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      standardAssignmentName = pulumi.Input.asInput<String>(standardAssignmentName);
+    required this.resourceId,
+    required this.standardAssignmentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStandardAssignmentArgs {
 
   factory GetStandardAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetStandardAssignmentArgs(
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      standardAssignmentName: pulumi.Output.create<String>(map['standardAssignmentName'] as String),
+      resourceId: (map['resourceId'] as String).input(),
+      standardAssignmentName: (map['standardAssignmentName'] as String).input(),
     );
   }
 }

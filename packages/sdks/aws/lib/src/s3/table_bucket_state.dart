@@ -46,27 +46,17 @@ class TableBucketState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   TableBucketState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<TableBucketEncryptionConfiguration>? encryptionConfiguration,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<TableBucketMaintenanceConfiguration>? maintenanceConfiguration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ownerAccountId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      encryptionConfiguration = pulumi.Input.asOptionalInput<TableBucketEncryptionConfiguration>(encryptionConfiguration),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      maintenanceConfiguration = pulumi.Input.asOptionalInput<TableBucketMaintenanceConfiguration>(maintenanceConfiguration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerAccountId = pulumi.Input.asOptionalInput<String>(ownerAccountId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.createdAt,
+    this.encryptionConfiguration,
+    this.forceDestroy,
+    this.maintenanceConfiguration,
+    this.name,
+    this.ownerAccountId,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class TableBucketState {
 
   factory TableBucketState.fromMap(Map<String, dynamic> map) {
     return TableBucketState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : pulumi.Output.create<TableBucketEncryptionConfiguration>(TableBucketEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      maintenanceConfiguration: map['maintenanceConfiguration'] == null ? null : pulumi.Output.create<TableBucketMaintenanceConfiguration>(TableBucketMaintenanceConfiguration.fromMap((map['maintenanceConfiguration'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerAccountId: map['ownerAccountId'] == null ? null : pulumi.Output.create<String>(map['ownerAccountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (TableBucketEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      maintenanceConfiguration: map['maintenanceConfiguration'] == null ? null : (TableBucketMaintenanceConfiguration.fromMap((map['maintenanceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

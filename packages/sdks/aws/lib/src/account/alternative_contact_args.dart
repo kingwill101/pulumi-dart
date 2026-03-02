@@ -28,19 +28,13 @@ class AlternativeContactArgs {
   /// [phoneNumber] Phone number for the alternate contact.
   /// [title] Title for the alternate contact.
   AlternativeContactArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> alternateContactType,
-    required pulumi.Output<String> emailAddress,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> phoneNumber,
-    required pulumi.Output<String> title,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      alternateContactType = pulumi.Input.asInput<String>(alternateContactType),
-      emailAddress = pulumi.Input.asInput<String>(emailAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      phoneNumber = pulumi.Input.asInput<String>(phoneNumber),
-      title = pulumi.Input.asInput<String>(title);
+    this.accountId,
+    required this.alternateContactType,
+    required this.emailAddress,
+    this.name,
+    required this.phoneNumber,
+    required this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class AlternativeContactArgs {
 
   factory AlternativeContactArgs.fromMap(Map<String, dynamic> map) {
     return AlternativeContactArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      alternateContactType: pulumi.Output.create<String>(map['alternateContactType'] as String),
-      emailAddress: pulumi.Output.create<String>(map['emailAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      phoneNumber: pulumi.Output.create<String>(map['phoneNumber'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      alternateContactType: (map['alternateContactType'] as String).input(),
+      emailAddress: (map['emailAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      phoneNumber: (map['phoneNumber'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

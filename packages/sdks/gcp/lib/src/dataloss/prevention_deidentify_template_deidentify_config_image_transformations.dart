@@ -6,7 +6,7 @@ import 'prevention_deidentify_template_deidentify_config_image_transformations_t
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformations {
   /// For determination of how redaction of images should occur.
   /// Structure is documented below.
-  final List<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform> transforms;
+  final pulumi.Input<List<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform>> transforms;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigImageTransformations].
   /// [transforms] For determination of how redaction of images should occur.
@@ -16,13 +16,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformations {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'transforms': pulumi.Input.encodeList<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform, Map<String, dynamic>>(transforms, (value) => value.toMap()),
+      'transforms': pulumi.Input.mapInputValue<List<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform>, List<Map<String, dynamic>>>(transforms, (value) => pulumi.Input.encodeList<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PreventionDeidentifyTemplateDeidentifyConfigImageTransformations.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigImageTransformations(
-      transforms: pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform>(map['transforms'], (value) => PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform.fromMap((value as Map).cast<String, dynamic>())),
+      transforms: (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform>(map['transforms'], (value) => PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

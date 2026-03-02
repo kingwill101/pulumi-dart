@@ -13,11 +13,9 @@ class RolePoliciesExclusiveState {
   /// [policyNames] A list of inline policy names to be assigned to the role. Policies attached to this role but not configured in this argument will be removed.
   /// [roleName] IAM role name.
   RolePoliciesExclusiveState({
-    pulumi.Output<List<String>>? policyNames,
-    pulumi.Output<String>? roleName,
-  }) :
-      policyNames = pulumi.Input.asOptionalInput<List<String>>(policyNames),
-      roleName = pulumi.Input.asOptionalInput<String>(roleName);
+    this.policyNames,
+    this.roleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class RolePoliciesExclusiveState {
 
   factory RolePoliciesExclusiveState.fromMap(Map<String, dynamic> map) {
     return RolePoliciesExclusiveState(
-      policyNames: map['policyNames'] == null ? null : pulumi.Output.create<List<String>>((map['policyNames'] as List).cast<String>()),
-      roleName: map['roleName'] == null ? null : pulumi.Output.create<String>(map['roleName'] as String),
+      policyNames: map['policyNames'] == null ? null : ((map['policyNames'] as List).cast<String>()).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
     );
   }
 }

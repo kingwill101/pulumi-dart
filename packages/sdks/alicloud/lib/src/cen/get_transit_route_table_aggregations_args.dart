@@ -28,19 +28,13 @@ class GetTransitRouteTableAggregationsArgs {
   /// [transitRouteTableAggregationCidr] The destination CIDR block of the aggregate route.
   /// [transitRouteTableId] The ID of the route table of the Enterprise Edition transit router.
   GetTransitRouteTableAggregationsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transitRouteTableAggregationCidr,
-    required pulumi.Output<String> transitRouteTableId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouteTableAggregationCidr = pulumi.Input.asOptionalInput<String>(transitRouteTableAggregationCidr),
-      transitRouteTableId = pulumi.Input.asInput<String>(transitRouteTableId);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+    this.transitRouteTableAggregationCidr,
+    required this.transitRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetTransitRouteTableAggregationsArgs {
 
   factory GetTransitRouteTableAggregationsArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouteTableAggregationsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouteTableAggregationCidr: map['transitRouteTableAggregationCidr'] == null ? null : pulumi.Output.create<String>(map['transitRouteTableAggregationCidr'] as String),
-      transitRouteTableId: pulumi.Output.create<String>(map['transitRouteTableId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouteTableAggregationCidr: map['transitRouteTableAggregationCidr'] == null ? null : (map['transitRouteTableAggregationCidr'] as String).input(),
+      transitRouteTableId: (map['transitRouteTableId'] as String).input(),
     );
   }
 }

@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fmp4_config_response.dart';
 import 'segment_settings_response.dart';
 
 /// Multiplexing settings for output stream.
 class MuxStreamResponse {
   /// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
-  final String container;
+  final pulumi.Input<String> container;
   /// List of ElementaryStream.key values multiplexed in this stream.
-  final List<String> elementaryStreams;
+  final pulumi.Input<List<String>> elementaryStreams;
   /// Identifier of the encryption configuration to use. If omitted, output will be unencrypted.
-  final String encryptionId;
+  final pulumi.Input<String> encryptionId;
   /// The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
-  final String fileName;
+  final pulumi.Input<String> fileName;
   /// Optional. `fmp4` container configuration.
-  final Fmp4ConfigResponse fmp4;
+  final pulumi.Input<Fmp4ConfigResponse> fmp4;
   /// A unique key for this multiplexed stream.
-  final String key;
+  final pulumi.Input<String> key;
   /// Segment settings for `ts`, `fmp4` and `vtt`.
-  final SegmentSettingsResponse segmentSettings;
+  final pulumi.Input<SegmentSettingsResponse> segmentSettings;
 
   /// Creates a new [MuxStreamResponse].
   /// [container] The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
@@ -44,21 +45,21 @@ class MuxStreamResponse {
       'elementaryStreams': elementaryStreams,
       'encryptionId': encryptionId,
       'fileName': fileName,
-      'fmp4': fmp4.toMap(),
+      'fmp4': pulumi.Input.mapInputValue<Fmp4ConfigResponse, Map<String, dynamic>>(fmp4, (value) => value.toMap()),
       'key': key,
-      'segmentSettings': segmentSettings.toMap(),
+      'segmentSettings': pulumi.Input.mapInputValue<SegmentSettingsResponse, Map<String, dynamic>>(segmentSettings, (value) => value.toMap()),
     };
   }
 
   factory MuxStreamResponse.fromMap(Map<String, dynamic> map) {
     return MuxStreamResponse(
-      container: map['container'] as String,
-      elementaryStreams: (map['elementaryStreams'] as List).cast<String>(),
-      encryptionId: map['encryptionId'] as String,
-      fileName: map['fileName'] as String,
-      fmp4: Fmp4ConfigResponse.fromMap((map['fmp4'] as Map).cast<String, dynamic>()),
-      key: map['key'] as String,
-      segmentSettings: SegmentSettingsResponse.fromMap((map['segmentSettings'] as Map).cast<String, dynamic>()),
+      container: (map['container'] as String).input(),
+      elementaryStreams: ((map['elementaryStreams'] as List).cast<String>()).input(),
+      encryptionId: (map['encryptionId'] as String).input(),
+      fileName: (map['fileName'] as String).input(),
+      fmp4: (Fmp4ConfigResponse.fromMap((map['fmp4'] as Map).cast<String, dynamic>())).input(),
+      key: (map['key'] as String).input(),
+      segmentSettings: (SegmentSettingsResponse.fromMap((map['segmentSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

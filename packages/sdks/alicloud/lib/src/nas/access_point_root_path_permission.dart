@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPointRootPathPermission {
   /// The ID of the primary user group.
-  final int? ownerGroupId;
+  final pulumi.Input<int>? ownerGroupId;
   /// The owner user ID.
-  final int? ownerUserId;
+  final pulumi.Input<int>? ownerUserId;
   /// The Portable Operating System Interface for UNIX (POSIX) permission.
-  final String? permission;
+  final pulumi.Input<String>? permission;
 
   /// Creates a new [AccessPointRootPathPermission].
   /// [ownerGroupId] The ID of the primary user group.
@@ -29,9 +30,9 @@ class AccessPointRootPathPermission {
 
   factory AccessPointRootPathPermission.fromMap(Map<String, dynamic> map) {
     return AccessPointRootPathPermission(
-      ownerGroupId: map['ownerGroupId'] == null ? null : map['ownerGroupId'] as int,
-      ownerUserId: map['ownerUserId'] == null ? null : map['ownerUserId'] as int,
-      permission: map['permission'] == null ? null : map['permission'] as String,
+      ownerGroupId: map['ownerGroupId'] == null ? null : (map['ownerGroupId'] as int).input(),
+      ownerUserId: map['ownerUserId'] == null ? null : (map['ownerUserId'] as int).input(),
+      permission: map['permission'] == null ? null : (map['permission'] as String).input(),
     );
   }
 }

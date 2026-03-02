@@ -36,25 +36,16 @@ class LoggingServerArgs {
   /// [requestId] Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [sourceType] The type of component that produces logs that will be forwarded to this logging server.
   LoggingServerArgs({
-    required pulumi.Output<String> hostname,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> loggingServerId,
-    required pulumi.Output<int> port,
-    required pulumi.Output<String> privateCloudId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<LoggingServerProtocol> protocol,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<LoggingServerSourceType> sourceType,
-  }) :
-      hostname = pulumi.Input.asInput<String>(hostname),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      loggingServerId = pulumi.Input.asInput<String>(loggingServerId),
-      port = pulumi.Input.asInput<int>(port),
-      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      protocol = pulumi.Input.asInput<LoggingServerProtocol>(protocol),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      sourceType = pulumi.Input.asInput<LoggingServerSourceType>(sourceType);
+    required this.hostname,
+    this.location,
+    required this.loggingServerId,
+    required this.port,
+    required this.privateCloudId,
+    this.project,
+    required this.protocol,
+    this.requestId,
+    required this.sourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class LoggingServerArgs {
 
   factory LoggingServerArgs.fromMap(Map<String, dynamic> map) {
     return LoggingServerArgs(
-      hostname: pulumi.Output.create<String>(map['hostname'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      loggingServerId: pulumi.Output.create<String>(map['loggingServerId'] as String),
-      port: pulumi.Output.create<int>(map['port'] as int),
-      privateCloudId: pulumi.Output.create<String>(map['privateCloudId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      protocol: pulumi.Output.create<LoggingServerProtocol>(LoggingServerProtocol.fromValue(map['protocol'] as String)),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      sourceType: pulumi.Output.create<LoggingServerSourceType>(LoggingServerSourceType.fromValue(map['sourceType'] as String)),
+      hostname: (map['hostname'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      loggingServerId: (map['loggingServerId'] as String).input(),
+      port: (map['port'] as int).input(),
+      privateCloudId: (map['privateCloudId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      protocol: (LoggingServerProtocol.fromValue(map['protocol'] as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      sourceType: (LoggingServerSourceType.fromValue(map['sourceType'] as String)).input(),
     );
   }
 }

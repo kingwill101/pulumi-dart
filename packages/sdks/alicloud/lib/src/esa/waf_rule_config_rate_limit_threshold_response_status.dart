@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WafRuleConfigRateLimitThresholdResponseStatus {
-  final int? code;
+  final pulumi.Input<int>? code;
   /// The maximum number of times the specified status code can be returned.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// The upper limit of the percentage of occurrences of the specified status code among all responses.
-  final int? ratio;
+  final pulumi.Input<int>? ratio;
 
   /// Creates a new [WafRuleConfigRateLimitThresholdResponseStatus].
   /// [code] Optional.
@@ -28,9 +29,9 @@ class WafRuleConfigRateLimitThresholdResponseStatus {
 
   factory WafRuleConfigRateLimitThresholdResponseStatus.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigRateLimitThresholdResponseStatus(
-      code: map['code'] == null ? null : map['code'] as int,
-      count: map['count'] == null ? null : map['count'] as int,
-      ratio: map['ratio'] == null ? null : map['ratio'] as int,
+      code: map['code'] == null ? null : (map['code'] as int).input(),
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      ratio: map['ratio'] == null ? null : (map['ratio'] as int).input(),
     );
   }
 }

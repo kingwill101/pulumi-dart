@@ -22,15 +22,11 @@ class GetGalleryScriptVersionArgs {
   /// [galleryScriptVersionName] The name of the gallery Script Version to be retrieved.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetGalleryScriptVersionArgs({
-    required pulumi.Output<String> galleryName,
-    required pulumi.Output<String> galleryScriptName,
-    required pulumi.Output<String> galleryScriptVersionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      galleryScriptName = pulumi.Input.asInput<String>(galleryScriptName),
-      galleryScriptVersionName = pulumi.Input.asInput<String>(galleryScriptVersionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.galleryName,
+    required this.galleryScriptName,
+    required this.galleryScriptVersionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetGalleryScriptVersionArgs {
 
   factory GetGalleryScriptVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetGalleryScriptVersionArgs(
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      galleryScriptName: pulumi.Output.create<String>(map['galleryScriptName'] as String),
-      galleryScriptVersionName: pulumi.Output.create<String>(map['galleryScriptVersionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      galleryName: (map['galleryName'] as String).input(),
+      galleryScriptName: (map['galleryScriptName'] as String).input(),
+      galleryScriptVersionName: (map['galleryScriptVersionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

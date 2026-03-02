@@ -41,25 +41,16 @@ class TriggerArgs {
   /// [sourceArn] Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
   /// [type] The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
   TriggerArgs({
-    pulumi.Output<String>? config,
-    pulumi.Output<String>? configMns,
-    required pulumi.Output<String> function,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? role,
-    required pulumi.Output<String> service,
-    pulumi.Output<String>? sourceArn,
-    required pulumi.Output<String> type,
-  }) :
-      config = pulumi.Input.asOptionalInput<String>(config),
-      configMns = pulumi.Input.asOptionalInput<String>(configMns),
-      function = pulumi.Input.asInput<String>(function),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      service = pulumi.Input.asInput<String>(service),
-      sourceArn = pulumi.Input.asOptionalInput<String>(sourceArn),
-      type = pulumi.Input.asInput<String>(type);
+    this.config,
+    this.configMns,
+    required this.function,
+    this.name,
+    this.namePrefix,
+    this.role,
+    required this.service,
+    this.sourceArn,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class TriggerArgs {
 
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
-      config: map['config'] == null ? null : pulumi.Output.create<String>(map['config'] as String),
-      configMns: map['configMns'] == null ? null : pulumi.Output.create<String>(map['configMns'] as String),
-      function: pulumi.Output.create<String>(map['function'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
-      sourceArn: map['sourceArn'] == null ? null : pulumi.Output.create<String>(map['sourceArn'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      configMns: map['configMns'] == null ? null : (map['configMns'] as String).input(),
+      function: (map['function'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      service: (map['service'] as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

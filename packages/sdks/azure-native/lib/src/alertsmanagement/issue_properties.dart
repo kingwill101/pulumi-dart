@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The issue properties
 class IssueProperties {
   /// The issue impact time (in UTC)
-  final String impactTime;
+  final pulumi.Input<String> impactTime;
   /// The issue severity
-  final String severity;
+  final pulumi.Input<String> severity;
   /// The issue status
-  final String status;
+  final pulumi.Input<String> status;
   /// The issue title
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [IssueProperties].
   /// [impactTime] The issue impact time (in UTC)
@@ -35,10 +36,10 @@ class IssueProperties {
 
   factory IssueProperties.fromMap(Map<String, dynamic> map) {
     return IssueProperties(
-      impactTime: map['impactTime'] as String,
-      severity: map['severity'] as String,
-      status: map['status'] as String,
-      title: map['title'] as String,
+      impactTime: (map['impactTime'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      status: (map['status'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class WorkspaceNetworkOutboundRuleFqdnArgs {
   /// [name] Specifies the name of the Machine Learning Workspace FQDN Network Outbound Rule. Changing this forces a new resource to be created.
   /// [workspaceId] Specifies the ID of the Machine Learning Workspace. Changing this forces a new resource to be created.
   WorkspaceNetworkOutboundRuleFqdnArgs({
-    required pulumi.Output<String> destinationFqdn,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      destinationFqdn = pulumi.Input.asInput<String>(destinationFqdn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.destinationFqdn,
+    this.name,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class WorkspaceNetworkOutboundRuleFqdnArgs {
 
   factory WorkspaceNetworkOutboundRuleFqdnArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceNetworkOutboundRuleFqdnArgs(
-      destinationFqdn: pulumi.Output.create<String>(map['destinationFqdn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      destinationFqdn: (map['destinationFqdn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

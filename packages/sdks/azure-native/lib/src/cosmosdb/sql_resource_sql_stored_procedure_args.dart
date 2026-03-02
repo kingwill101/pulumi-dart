@@ -39,25 +39,16 @@ class SqlResourceSqlStoredProcedureArgs {
   /// [storedProcedureName] Cosmos DB storedProcedure name.
   /// [tags] Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   SqlResourceSqlStoredProcedureArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? location,
-    pulumi.Output<CreateUpdateOptions>? options,
-    required pulumi.Output<SqlStoredProcedureResource> resource,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storedProcedureName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      containerName = pulumi.Input.asInput<String>(containerName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      options = pulumi.Input.asOptionalInput<CreateUpdateOptions>(options),
-      resource = pulumi.Input.asInput<SqlStoredProcedureResource>(resource),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storedProcedureName = pulumi.Input.asOptionalInput<String>(storedProcedureName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    required this.containerName,
+    required this.databaseName,
+    this.location,
+    this.options,
+    required this.resource,
+    required this.resourceGroupName,
+    this.storedProcedureName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class SqlResourceSqlStoredProcedureArgs {
 
   factory SqlResourceSqlStoredProcedureArgs.fromMap(Map<String, dynamic> map) {
     return SqlResourceSqlStoredProcedureArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      options: map['options'] == null ? null : pulumi.Output.create<CreateUpdateOptions>(CreateUpdateOptions.fromMap((map['options'] as Map).cast<String, dynamic>())),
-      resource: pulumi.Output.create<SqlStoredProcedureResource>(SqlStoredProcedureResource.fromMap((map['resource'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storedProcedureName: map['storedProcedureName'] == null ? null : pulumi.Output.create<String>(map['storedProcedureName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      options: map['options'] == null ? null : (CreateUpdateOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      resource: (SqlStoredProcedureResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storedProcedureName: map['storedProcedureName'] == null ? null : (map['storedProcedureName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

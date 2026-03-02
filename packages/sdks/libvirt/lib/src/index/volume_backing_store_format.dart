@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeBackingStoreFormat {
   /// Specifies the type of the backing store format used for the storage volume.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [VolumeBackingStoreFormat].
   /// [type] Specifies the type of the backing store format used for the storage volume.
@@ -19,7 +20,7 @@ class VolumeBackingStoreFormat {
 
   factory VolumeBackingStoreFormat.fromMap(Map<String, dynamic> map) {
     return VolumeBackingStoreFormat(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

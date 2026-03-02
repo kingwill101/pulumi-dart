@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateMetadataOption {
-  final String httpEndpoint;
-  final String httpProtocolIpv6;
-  final int httpPutResponseHopLimit;
-  final String httpTokens;
-  final String instanceMetadataTags;
+  final pulumi.Input<String> httpEndpoint;
+  final pulumi.Input<String> httpProtocolIpv6;
+  final pulumi.Input<int> httpPutResponseHopLimit;
+  final pulumi.Input<String> httpTokens;
+  final pulumi.Input<String> instanceMetadataTags;
 
   /// Creates a new [GetLaunchTemplateMetadataOption].
   /// [httpEndpoint] Required.
@@ -34,11 +35,11 @@ class GetLaunchTemplateMetadataOption {
 
   factory GetLaunchTemplateMetadataOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateMetadataOption(
-      httpEndpoint: map['httpEndpoint'] as String,
-      httpProtocolIpv6: map['httpProtocolIpv6'] as String,
-      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] as int,
-      httpTokens: map['httpTokens'] as String,
-      instanceMetadataTags: map['instanceMetadataTags'] as String,
+      httpEndpoint: (map['httpEndpoint'] as String).input(),
+      httpProtocolIpv6: (map['httpProtocolIpv6'] as String).input(),
+      httpPutResponseHopLimit: (map['httpPutResponseHopLimit'] as int).input(),
+      httpTokens: (map['httpTokens'] as String).input(),
+      instanceMetadataTags: (map['instanceMetadataTags'] as String).input(),
     );
   }
 }

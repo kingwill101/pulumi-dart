@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties specific to the dashboard definition.
 class DashboardDefinitionPropertiesResponse {
   /// The provisioning state of the dashboard definition resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The dashboard definition data in JSON format.
-  final String? serializedData;
+  final pulumi.Input<String>? serializedData;
 
   /// Creates a new [DashboardDefinitionPropertiesResponse].
   /// [provisioningState] The provisioning state of the dashboard definition resource.
@@ -25,8 +26,8 @@ class DashboardDefinitionPropertiesResponse {
 
   factory DashboardDefinitionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DashboardDefinitionPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
-      serializedData: map['serializedData'] == null ? null : map['serializedData'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
+      serializedData: map['serializedData'] == null ? null : (map['serializedData'] as String).input(),
     );
   }
 }

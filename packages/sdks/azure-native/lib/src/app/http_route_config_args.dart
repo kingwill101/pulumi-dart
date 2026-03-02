@@ -23,15 +23,11 @@ class HttpRouteConfigArgs {
   /// [properties] Http Route Config properties
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   HttpRouteConfigArgs({
-    required pulumi.Output<String> environmentName,
-    pulumi.Output<String>? httpRouteName,
-    pulumi.Output<HttpRouteConfigProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      httpRouteName = pulumi.Input.asOptionalInput<String>(httpRouteName),
-      properties = pulumi.Input.asOptionalInput<HttpRouteConfigProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentName,
+    this.httpRouteName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class HttpRouteConfigArgs {
 
   factory HttpRouteConfigArgs.fromMap(Map<String, dynamic> map) {
     return HttpRouteConfigArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      httpRouteName: map['httpRouteName'] == null ? null : pulumi.Output.create<String>(map['httpRouteName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<HttpRouteConfigProperties>(HttpRouteConfigProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      httpRouteName: map['httpRouteName'] == null ? null : (map['httpRouteName'] as String).input(),
+      properties: map['properties'] == null ? null : (HttpRouteConfigProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

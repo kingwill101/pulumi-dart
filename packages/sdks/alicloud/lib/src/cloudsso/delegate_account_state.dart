@@ -10,9 +10,8 @@ class DelegateAccountState {
   /// Creates a new [DelegateAccountState].
   /// [accountId] Delegate administrator account Id
   DelegateAccountState({
-    pulumi.Output<String>? accountId,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId);
+    this.accountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class DelegateAccountState {
 
   factory DelegateAccountState.fromMap(Map<String, dynamic> map) {
     return DelegateAccountState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
     );
   }
 }

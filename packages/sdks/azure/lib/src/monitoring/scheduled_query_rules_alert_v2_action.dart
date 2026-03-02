@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryRulesAlertV2Action {
   /// List of Action Group resource IDs to invoke when the alert fires.
-  final List<String>? actionGroups;
+  final pulumi.Input<List<String>>? actionGroups;
   /// Specifies the properties of an alert payload.
-  final Map<String, String>? customProperties;
+  final pulumi.Input<Map<String, String>>? customProperties;
 
   /// Creates a new [ScheduledQueryRulesAlertV2Action].
   /// [actionGroups] List of Action Group resource IDs to invoke when the alert fires.
@@ -24,8 +25,8 @@ class ScheduledQueryRulesAlertV2Action {
 
   factory ScheduledQueryRulesAlertV2Action.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesAlertV2Action(
-      actionGroups: map['actionGroups'] == null ? null : (map['actionGroups'] as List).cast<String>(),
-      customProperties: map['customProperties'] == null ? null : (map['customProperties'] as Map).cast<String, String>(),
+      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups'] as List).cast<String>()).input(),
+      customProperties: map['customProperties'] == null ? null : ((map['customProperties'] as Map).cast<String, String>()).input(),
     );
   }
 }

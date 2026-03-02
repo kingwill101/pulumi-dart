@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compute_recurrence_schedule_response.dart';
 
 /// The workflow trigger recurrence for ComputeStartStop schedule type.
 class RecurrenceResponse {
   /// [Required] The frequency to trigger schedule.
-  final String? frequency;
+  final pulumi.Input<String>? frequency;
   /// [Required] Specifies schedule interval in conjunction with frequency
-  final int? interval;
+  final pulumi.Input<int>? interval;
   /// [Required] The recurrence schedule.
-  final ComputeRecurrenceScheduleResponse? schedule;
+  final pulumi.Input<ComputeRecurrenceScheduleResponse>? schedule;
   /// The start time in yyyy-MM-ddTHH:mm:ss format.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// Specifies time zone in which the schedule runs.
   /// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [RecurrenceResponse].
   /// [frequency] [Required] The frequency to trigger schedule.
@@ -34,7 +35,7 @@ class RecurrenceResponse {
     return <String, dynamic>{
       'frequency': ?frequency,
       'interval': ?interval,
-      'schedule': ?schedule == null ? null : schedule!.toMap(),
+      'schedule': ?pulumi.Input.mapOptionalInputValue<ComputeRecurrenceScheduleResponse, Map<String, dynamic>>(schedule, (value) => value.toMap()),
       'startTime': ?startTime,
       'timeZone': ?timeZone,
     };
@@ -42,11 +43,11 @@ class RecurrenceResponse {
 
   factory RecurrenceResponse.fromMap(Map<String, dynamic> map) {
     return RecurrenceResponse(
-      frequency: map['frequency'] == null ? null : map['frequency'] as String,
-      interval: map['interval'] == null ? null : map['interval'] as int,
-      schedule: map['schedule'] == null ? null : ComputeRecurrenceScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      schedule: map['schedule'] == null ? null : (ComputeRecurrenceScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class KubernetesAddonArgs {
   /// [name] The name of addon.
   /// [version] The current version of addon.
   KubernetesAddonArgs({
-    pulumi.Output<bool>? cleanupCloudResources,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? config,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? version,
-  }) :
-      cleanupCloudResources = pulumi.Input.asOptionalInput<bool>(cleanupCloudResources),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      config = pulumi.Input.asOptionalInput<String>(config),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.cleanupCloudResources,
+    required this.clusterId,
+    this.config,
+    this.name,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class KubernetesAddonArgs {
 
   factory KubernetesAddonArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesAddonArgs(
-      cleanupCloudResources: map['cleanupCloudResources'] == null ? null : pulumi.Output.create<bool>(map['cleanupCloudResources'] as bool),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      config: map['config'] == null ? null : pulumi.Output.create<String>(map['config'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      cleanupCloudResources: map['cleanupCloudResources'] == null ? null : (map['cleanupCloudResources'] as bool).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

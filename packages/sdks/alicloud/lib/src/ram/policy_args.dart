@@ -43,27 +43,17 @@ class PolicyArgs {
   /// [tags] The list of tags on the policy.
   /// [version] Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
   PolicyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? document,
-    pulumi.Output<bool>? force,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? policyName,
-    pulumi.Output<String>? rotateStrategy,
-    pulumi.Output<List<PolicyStatement>>? statements,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? version,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      document = pulumi.Input.asOptionalInput<String>(document),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      rotateStrategy = pulumi.Input.asOptionalInput<String>(rotateStrategy),
-      statements = pulumi.Input.asOptionalInput<List<PolicyStatement>>(statements),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.description,
+    this.document,
+    this.force,
+    this.name,
+    this.policyDocument,
+    this.policyName,
+    this.rotateStrategy,
+    this.statements,
+    this.tags,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      document: map['document'] == null ? null : pulumi.Output.create<String>(map['document'] as String),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      rotateStrategy: map['rotateStrategy'] == null ? null : pulumi.Output.create<String>(map['rotateStrategy'] as String),
-      statements: map['statements'] == null ? null : pulumi.Output.create<List<PolicyStatement>>(pulumi.Input.decodeList<PolicyStatement>(map['statements'], (value) => PolicyStatement.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      document: map['document'] == null ? null : (map['document'] as String).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      rotateStrategy: map['rotateStrategy'] == null ? null : (map['rotateStrategy'] as String).input(),
+      statements: map['statements'] == null ? null : (pulumi.Input.decodeList<PolicyStatement>(map['statements'], (value) => PolicyStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

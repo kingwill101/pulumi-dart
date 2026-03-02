@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnhancedNatAvailableZonesZone {
   /// Name of the available zone.
-  final String localName;
+  final pulumi.Input<String> localName;
   /// The ID of the available zone.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetEnhancedNatAvailableZonesZone].
   /// [localName] Name of the available zone.
@@ -24,8 +25,8 @@ class GetEnhancedNatAvailableZonesZone {
 
   factory GetEnhancedNatAvailableZonesZone.fromMap(Map<String, dynamic> map) {
     return GetEnhancedNatAvailableZonesZone(
-      localName: map['localName'] as String,
-      zoneId: map['zoneId'] as String,
+      localName: (map['localName'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class ImageSharePermissionArgs {
   /// [accountId] Alibaba Cloud Account ID. It is used to share images.
   /// [imageId] The source image ID.
   ImageSharePermissionArgs({
-    required pulumi.Output<String> accountId,
-    required pulumi.Output<String> imageId,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      imageId = pulumi.Input.asInput<String>(imageId);
+    required this.accountId,
+    required this.imageId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ImageSharePermissionArgs {
 
   factory ImageSharePermissionArgs.fromMap(Map<String, dynamic> map) {
     return ImageSharePermissionArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      imageId: pulumi.Output.create<String>(map['imageId'] as String),
+      accountId: (map['accountId'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
     );
   }
 }

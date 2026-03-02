@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the service principal.
 class ServicePrincipalPropertiesResponse {
   /// Application ID of service principal.
-  final String? applicationId;
+  final pulumi.Input<String>? applicationId;
   /// A secret string that the application uses to prove its identity, also can be referred to as application password (write only).
-  final String? secret;
+  final pulumi.Input<String>? secret;
 
   /// Creates a new [ServicePrincipalPropertiesResponse].
   /// [applicationId] Application ID of service principal.
@@ -25,8 +26,8 @@ class ServicePrincipalPropertiesResponse {
 
   factory ServicePrincipalPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalPropertiesResponse(
-      applicationId: map['applicationId'] == null ? null : map['applicationId'] as String,
-      secret: map['secret'] == null ? null : map['secret'] as String,
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
     );
   }
 }

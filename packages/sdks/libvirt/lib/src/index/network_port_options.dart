@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkPortOptions {
   /// Specifies whether the network port is isolated, preventing traffic flow from other ports.
-  final String? isolated;
+  final pulumi.Input<String>? isolated;
 
   /// Creates a new [NetworkPortOptions].
   /// [isolated] Specifies whether the network port is isolated, preventing traffic flow from other ports.
@@ -19,7 +20,7 @@ class NetworkPortOptions {
 
   factory NetworkPortOptions.fromMap(Map<String, dynamic> map) {
     return NetworkPortOptions(
-      isolated: map['isolated'] == null ? null : map['isolated'] as String,
+      isolated: map['isolated'] == null ? null : (map['isolated'] as String).input(),
     );
   }
 }

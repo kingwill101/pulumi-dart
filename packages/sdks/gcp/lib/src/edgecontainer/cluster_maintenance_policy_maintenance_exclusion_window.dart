@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMaintenancePolicyMaintenanceExclusionWindow {
   /// The time that the window ends. The end time must take place after the
   /// start time.
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// The time that the window first starts.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [ClusterMaintenancePolicyMaintenanceExclusionWindow].
   /// [endTime] The time that the window ends. The end time must take place after the
@@ -25,8 +26,8 @@ class ClusterMaintenancePolicyMaintenanceExclusionWindow {
 
   factory ClusterMaintenancePolicyMaintenanceExclusionWindow.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyMaintenanceExclusionWindow(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

@@ -45,29 +45,18 @@ class NextGenerationFirewallVirtualHubPanoramaState {
   /// [resourceGroupName] The name of the Resource Group where the Palo Alto Next Generation Firewall VHub Panorama should exist. Changing this forces a new Palo Alto Next Generation Firewall VHub Panorama to be created.
   /// [tags] A mapping of tags which should be assigned to the Palo Alto Next Generation Firewall VHub Panorama.
   NextGenerationFirewallVirtualHubPanoramaState({
-    pulumi.Output<List<NextGenerationFirewallVirtualHubPanoramaDestinationNat>>? destinationNats,
-    pulumi.Output<NextGenerationFirewallVirtualHubPanoramaDnsSettings>? dnsSettings,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? marketplaceOfferId,
-    pulumi.Output<String>? name,
-    pulumi.Output<NextGenerationFirewallVirtualHubPanoramaNetworkProfile>? networkProfile,
-    pulumi.Output<String>? panoramaBase64Config,
-    pulumi.Output<List<NextGenerationFirewallVirtualHubPanoramaPanorama>>? panoramas,
-    pulumi.Output<String>? planId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      destinationNats = pulumi.Input.asOptionalInput<List<NextGenerationFirewallVirtualHubPanoramaDestinationNat>>(destinationNats),
-      dnsSettings = pulumi.Input.asOptionalInput<NextGenerationFirewallVirtualHubPanoramaDnsSettings>(dnsSettings),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      marketplaceOfferId = pulumi.Input.asOptionalInput<String>(marketplaceOfferId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkProfile = pulumi.Input.asOptionalInput<NextGenerationFirewallVirtualHubPanoramaNetworkProfile>(networkProfile),
-      panoramaBase64Config = pulumi.Input.asOptionalInput<String>(panoramaBase64Config),
-      panoramas = pulumi.Input.asOptionalInput<List<NextGenerationFirewallVirtualHubPanoramaPanorama>>(panoramas),
-      planId = pulumi.Input.asOptionalInput<String>(planId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.destinationNats,
+    this.dnsSettings,
+    this.location,
+    this.marketplaceOfferId,
+    this.name,
+    this.networkProfile,
+    this.panoramaBase64Config,
+    this.panoramas,
+    this.planId,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class NextGenerationFirewallVirtualHubPanoramaState {
 
   factory NextGenerationFirewallVirtualHubPanoramaState.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubPanoramaState(
-      destinationNats: map['destinationNats'] == null ? null : pulumi.Output.create<List<NextGenerationFirewallVirtualHubPanoramaDestinationNat>>(pulumi.Input.decodeList<NextGenerationFirewallVirtualHubPanoramaDestinationNat>(map['destinationNats'], (value) => NextGenerationFirewallVirtualHubPanoramaDestinationNat.fromMap((value as Map).cast<String, dynamic>()))),
-      dnsSettings: map['dnsSettings'] == null ? null : pulumi.Output.create<NextGenerationFirewallVirtualHubPanoramaDnsSettings>(NextGenerationFirewallVirtualHubPanoramaDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : pulumi.Output.create<String>(map['marketplaceOfferId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkProfile: map['networkProfile'] == null ? null : pulumi.Output.create<NextGenerationFirewallVirtualHubPanoramaNetworkProfile>(NextGenerationFirewallVirtualHubPanoramaNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())),
-      panoramaBase64Config: map['panoramaBase64Config'] == null ? null : pulumi.Output.create<String>(map['panoramaBase64Config'] as String),
-      panoramas: map['panoramas'] == null ? null : pulumi.Output.create<List<NextGenerationFirewallVirtualHubPanoramaPanorama>>(pulumi.Input.decodeList<NextGenerationFirewallVirtualHubPanoramaPanorama>(map['panoramas'], (value) => NextGenerationFirewallVirtualHubPanoramaPanorama.fromMap((value as Map).cast<String, dynamic>()))),
-      planId: map['planId'] == null ? null : pulumi.Output.create<String>(map['planId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      destinationNats: map['destinationNats'] == null ? null : (pulumi.Input.decodeList<NextGenerationFirewallVirtualHubPanoramaDestinationNat>(map['destinationNats'], (value) => NextGenerationFirewallVirtualHubPanoramaDestinationNat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (NextGenerationFirewallVirtualHubPanoramaDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : (map['marketplaceOfferId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NextGenerationFirewallVirtualHubPanoramaNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      panoramaBase64Config: map['panoramaBase64Config'] == null ? null : (map['panoramaBase64Config'] as String).input(),
+      panoramas: map['panoramas'] == null ? null : (pulumi.Input.decodeList<NextGenerationFirewallVirtualHubPanoramaPanorama>(map['panoramas'], (value) => NextGenerationFirewallVirtualHubPanoramaPanorama.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

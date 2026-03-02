@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Aggregated status of the underlying assets of a lake or zone.
 class GoogleCloudDataplexV1AssetStatusResponse {
   /// Number of active assets.
-  final int activeAssets;
+  final pulumi.Input<int> activeAssets;
   /// Number of assets that are in process of updating the security policy on attached resources.
-  final int securityPolicyApplyingAssets;
+  final pulumi.Input<int> securityPolicyApplyingAssets;
   /// Last update time of the status.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GoogleCloudDataplexV1AssetStatusResponse].
   /// [activeAssets] Number of active assets.
@@ -30,9 +31,9 @@ class GoogleCloudDataplexV1AssetStatusResponse {
 
   factory GoogleCloudDataplexV1AssetStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1AssetStatusResponse(
-      activeAssets: map['activeAssets'] as int,
-      securityPolicyApplyingAssets: map['securityPolicyApplyingAssets'] as int,
-      updateTime: map['updateTime'] as String,
+      activeAssets: (map['activeAssets'] as int).input(),
+      securityPolicyApplyingAssets: (map['securityPolicyApplyingAssets'] as int).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

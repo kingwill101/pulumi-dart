@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalClusterOsEnvironmentConfig {
   /// Whether the package repo should not be included when initializing
   /// bare metal machines.
-  final bool packageRepoExcluded;
+  final pulumi.Input<bool> packageRepoExcluded;
 
   /// Creates a new [BareMetalClusterOsEnvironmentConfig].
   /// [packageRepoExcluded] Whether the package repo should not be included when initializing
@@ -20,7 +21,7 @@ class BareMetalClusterOsEnvironmentConfig {
 
   factory BareMetalClusterOsEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterOsEnvironmentConfig(
-      packageRepoExcluded: map['packageRepoExcluded'] as bool,
+      packageRepoExcluded: (map['packageRepoExcluded'] as bool).input(),
     );
   }
 }

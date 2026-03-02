@@ -29,17 +29,12 @@ class SharedPrivateLinkResourceArgs {
   /// [targetResourceId] Specify the ID of the Shared Private Link Enabled Remote Resource which this Web Pubsub Private Endpoint should be connected to. Changing this forces a new resource to be created.
   /// [webPubsubId] Specify the id of the Web Pubsub. Changing this forces a new resource to be created.
   SharedPrivateLinkResourceArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? requestMessage,
-    required pulumi.Output<String> subresourceName,
-    required pulumi.Output<String> targetResourceId,
-    required pulumi.Output<String> webPubsubId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      requestMessage = pulumi.Input.asOptionalInput<String>(requestMessage),
-      subresourceName = pulumi.Input.asInput<String>(subresourceName),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId),
-      webPubsubId = pulumi.Input.asInput<String>(webPubsubId);
+    this.name,
+    this.requestMessage,
+    required this.subresourceName,
+    required this.targetResourceId,
+    required this.webPubsubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class SharedPrivateLinkResourceArgs {
 
   factory SharedPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      requestMessage: map['requestMessage'] == null ? null : pulumi.Output.create<String>(map['requestMessage'] as String),
-      subresourceName: pulumi.Output.create<String>(map['subresourceName'] as String),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
-      webPubsubId: pulumi.Output.create<String>(map['webPubsubId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      subresourceName: (map['subresourceName'] as String).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
+      webPubsubId: (map['webPubsubId'] as String).input(),
     );
   }
 }

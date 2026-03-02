@@ -27,19 +27,13 @@ class AssessmentReportState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Current status of the specified assessment report. Valid values are `COMPLETE`, `IN_PROGRESS`, and `FAILED`.
   AssessmentReportState({
-    pulumi.Output<String>? assessmentId,
-    pulumi.Output<String>? author,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-  }) :
-      assessmentId = pulumi.Input.asOptionalInput<String>(assessmentId),
-      author = pulumi.Input.asOptionalInput<String>(author),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.assessmentId,
+    this.author,
+    this.description,
+    this.name,
+    this.region,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class AssessmentReportState {
 
   factory AssessmentReportState.fromMap(Map<String, dynamic> map) {
     return AssessmentReportState(
-      assessmentId: map['assessmentId'] == null ? null : pulumi.Output.create<String>(map['assessmentId'] as String),
-      author: map['author'] == null ? null : pulumi.Output.create<String>(map['author'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      assessmentId: map['assessmentId'] == null ? null : (map['assessmentId'] as String).input(),
+      author: map['author'] == null ? null : (map['author'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

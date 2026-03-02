@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains information about a button.
 class GoogleCloudDialogflowV2IntentMessageCardButtonResponse {
   /// Optional. The text to send back to the Dialogflow API or a URI to open.
-  final String postback;
+  final pulumi.Input<String> postback;
   /// Optional. The text to show on the button.
-  final String text;
+  final pulumi.Input<String> text;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageCardButtonResponse].
   /// [postback] Optional. The text to send back to the Dialogflow API or a URI to open.
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowV2IntentMessageCardButtonResponse {
 
   factory GoogleCloudDialogflowV2IntentMessageCardButtonResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageCardButtonResponse(
-      postback: map['postback'] as String,
-      text: map['text'] as String,
+      postback: (map['postback'] as String).input(),
+      text: (map['text'] as String).input(),
     );
   }
 }

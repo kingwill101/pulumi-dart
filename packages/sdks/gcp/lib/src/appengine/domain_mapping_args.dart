@@ -28,15 +28,11 @@ class DomainMappingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [sslSettings] SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   DomainMappingArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? overrideStrategy,
-    pulumi.Output<String>? project,
-    pulumi.Output<DomainMappingSslSettings>? sslSettings,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      overrideStrategy = pulumi.Input.asOptionalInput<String>(overrideStrategy),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sslSettings = pulumi.Input.asOptionalInput<DomainMappingSslSettings>(sslSettings);
+    required this.domainName,
+    this.overrideStrategy,
+    this.project,
+    this.sslSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class DomainMappingArgs {
 
   factory DomainMappingArgs.fromMap(Map<String, dynamic> map) {
     return DomainMappingArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      overrideStrategy: map['overrideStrategy'] == null ? null : pulumi.Output.create<String>(map['overrideStrategy'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sslSettings: map['sslSettings'] == null ? null : pulumi.Output.create<DomainMappingSslSettings>(DomainMappingSslSettings.fromMap((map['sslSettings'] as Map).cast<String, dynamic>())),
+      domainName: (map['domainName'] as String).input(),
+      overrideStrategy: map['overrideStrategy'] == null ? null : (map['overrideStrategy'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sslSettings: map['sslSettings'] == null ? null : (DomainMappingSslSettings.fromMap((map['sslSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

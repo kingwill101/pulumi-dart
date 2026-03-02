@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesVeeva {
   /// Document type specified in the Veeva document extract flow.
-  final String? documentType;
+  final pulumi.Input<String>? documentType;
   /// Boolean value to include All Versions of files in Veeva document extract flow.
-  final bool? includeAllVersions;
+  final pulumi.Input<bool>? includeAllVersions;
   /// Boolean value to include file renditions in Veeva document extract flow.
-  final bool? includeRenditions;
+  final pulumi.Input<bool>? includeRenditions;
   /// Boolean value to include source files in Veeva document extract flow.
-  final bool? includeSourceFiles;
-  final String object;
+  final pulumi.Input<bool>? includeSourceFiles;
+  final pulumi.Input<String> object;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesVeeva].
   /// [documentType] Document type specified in the Veeva document extract flow.
@@ -38,11 +39,11 @@ class FlowSourceFlowConfigSourceConnectorPropertiesVeeva {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesVeeva.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesVeeva(
-      documentType: map['documentType'] == null ? null : map['documentType'] as String,
-      includeAllVersions: map['includeAllVersions'] == null ? null : map['includeAllVersions'] as bool,
-      includeRenditions: map['includeRenditions'] == null ? null : map['includeRenditions'] as bool,
-      includeSourceFiles: map['includeSourceFiles'] == null ? null : map['includeSourceFiles'] as bool,
-      object: map['object'] as String,
+      documentType: map['documentType'] == null ? null : (map['documentType'] as String).input(),
+      includeAllVersions: map['includeAllVersions'] == null ? null : (map['includeAllVersions'] as bool).input(),
+      includeRenditions: map['includeRenditions'] == null ? null : (map['includeRenditions'] as bool).input(),
+      includeSourceFiles: map['includeSourceFiles'] == null ? null : (map['includeSourceFiles'] as bool).input(),
+      object: (map['object'] as String).input(),
     );
   }
 }

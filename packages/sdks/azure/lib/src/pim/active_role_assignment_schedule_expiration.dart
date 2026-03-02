@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ActiveRoleAssignmentScheduleExpiration {
   /// The duration of the role assignment in days. Changing this forces a new resource to be created.
-  final int? durationDays;
+  final pulumi.Input<int>? durationDays;
   /// The duration of the role assignment in hours. Changing this forces a new resource to be created.
-  final int? durationHours;
+  final pulumi.Input<int>? durationHours;
   /// The end date/time of the role assignment. Changing this forces a new resource to be created.
   ///
   /// > **Note:** Only one of `duration_days`, `duration_hours` or `end_date_time` should be specified.
-  final String? endDateTime;
+  final pulumi.Input<String>? endDateTime;
 
   /// Creates a new [ActiveRoleAssignmentScheduleExpiration].
   /// [durationDays] The duration of the role assignment in days. Changing this forces a new resource to be created.
@@ -31,9 +32,9 @@ class ActiveRoleAssignmentScheduleExpiration {
 
   factory ActiveRoleAssignmentScheduleExpiration.fromMap(Map<String, dynamic> map) {
     return ActiveRoleAssignmentScheduleExpiration(
-      durationDays: map['durationDays'] == null ? null : map['durationDays'] as int,
-      durationHours: map['durationHours'] == null ? null : map['durationHours'] as int,
-      endDateTime: map['endDateTime'] == null ? null : map['endDateTime'] as String,
+      durationDays: map['durationDays'] == null ? null : (map['durationDays'] as int).input(),
+      durationHours: map['durationHours'] == null ? null : (map['durationHours'] as int).input(),
+      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedClusterCustomFabricSetting {
   /// Parameter name.
-  final String parameter;
+  final pulumi.Input<String> parameter;
   /// Section name.
-  final String section;
+  final pulumi.Input<String> section;
   /// Parameter value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ManagedClusterCustomFabricSetting].
   /// [parameter] Parameter name.
@@ -29,9 +30,9 @@ class ManagedClusterCustomFabricSetting {
 
   factory ManagedClusterCustomFabricSetting.fromMap(Map<String, dynamic> map) {
     return ManagedClusterCustomFabricSetting(
-      parameter: map['parameter'] as String,
-      section: map['section'] as String,
-      value: map['value'] as String,
+      parameter: (map['parameter'] as String).input(),
+      section: (map['section'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

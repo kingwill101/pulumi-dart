@@ -29,19 +29,13 @@ class DataMaskingPolicyArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
   DataMaskingPolicyArgs({
-    pulumi.Output<String>? dataMaskingPolicyName,
-    required pulumi.Output<DataMaskingState> dataMaskingState,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? exemptPrincipals,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      dataMaskingPolicyName = pulumi.Input.asOptionalInput<String>(dataMaskingPolicyName),
-      dataMaskingState = pulumi.Input.asInput<DataMaskingState>(dataMaskingState),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      exemptPrincipals = pulumi.Input.asOptionalInput<String>(exemptPrincipals),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    this.dataMaskingPolicyName,
+    required this.dataMaskingState,
+    required this.databaseName,
+    this.exemptPrincipals,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class DataMaskingPolicyArgs {
 
   factory DataMaskingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DataMaskingPolicyArgs(
-      dataMaskingPolicyName: map['dataMaskingPolicyName'] == null ? null : pulumi.Output.create<String>(map['dataMaskingPolicyName'] as String),
-      dataMaskingState: pulumi.Output.create<DataMaskingState>(DataMaskingState.fromValue(map['dataMaskingState'] as String)),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      exemptPrincipals: map['exemptPrincipals'] == null ? null : pulumi.Output.create<String>(map['exemptPrincipals'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      dataMaskingPolicyName: map['dataMaskingPolicyName'] == null ? null : (map['dataMaskingPolicyName'] as String).input(),
+      dataMaskingState: (DataMaskingState.fromValue(map['dataMaskingState'] as String)).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      exemptPrincipals: map['exemptPrincipals'] == null ? null : (map['exemptPrincipals'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

@@ -7,40 +7,40 @@ import 'start_migration_scenario_server_role_result_response.dart';
 
 class MigrateSqlServerSqlMITaskOutputMigrationLevelResponse {
   /// Selected agent jobs as a map from name to id
-  final Map<String, String> agentJobs;
+  final pulumi.Input<Map<String, String>> agentJobs;
   /// Selected databases as a map from database name to database id
-  final Map<String, String> databases;
+  final pulumi.Input<Map<String, String>> databases;
   /// Migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Migration exceptions and warnings.
-  final List<ReportableExceptionResponse> exceptionsAndWarnings;
+  final pulumi.Input<List<ReportableExceptionResponse>> exceptionsAndWarnings;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Selected logins as a map from name to id
-  final Map<String, String> logins;
+  final pulumi.Input<Map<String, String>> logins;
   /// Migration progress message
-  final String message;
+  final pulumi.Input<String> message;
   /// List of orphaned users.
-  final List<OrphanedUserInfoResponse> orphanedUsersInfo;
+  final pulumi.Input<List<OrphanedUserInfoResponse>> orphanedUsersInfo;
   /// Result type
   /// Expected value is 'MigrationLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Map of server role migration results.
-  final Map<String, StartMigrationScenarioServerRoleResultResponse> serverRoleResults;
+  final pulumi.Input<Map<String, StartMigrationScenarioServerRoleResultResponse>> serverRoleResults;
   /// Source server brand version
-  final String sourceServerBrandVersion;
+  final pulumi.Input<String> sourceServerBrandVersion;
   /// Source server version
-  final String sourceServerVersion;
+  final pulumi.Input<String> sourceServerVersion;
   /// Migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Current state of migration
-  final String state;
+  final pulumi.Input<String> state;
   /// Current status of migration
-  final String status;
+  final pulumi.Input<String> status;
   /// Target server brand version
-  final String targetServerBrandVersion;
+  final pulumi.Input<String> targetServerBrandVersion;
   /// Target server version
-  final String targetServerVersion;
+  final pulumi.Input<String> targetServerVersion;
 
   /// Creates a new [MigrateSqlServerSqlMITaskOutputMigrationLevelResponse].
   /// [agentJobs] Selected agent jobs as a map from name to id
@@ -85,13 +85,13 @@ class MigrateSqlServerSqlMITaskOutputMigrationLevelResponse {
       'agentJobs': agentJobs,
       'databases': databases,
       'endedOn': endedOn,
-      'exceptionsAndWarnings': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(exceptionsAndWarnings, (value) => value.toMap()),
+      'exceptionsAndWarnings': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(exceptionsAndWarnings, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'logins': logins,
       'message': message,
-      'orphanedUsersInfo': pulumi.Input.encodeList<OrphanedUserInfoResponse, Map<String, dynamic>>(orphanedUsersInfo, (value) => value.toMap()),
+      'orphanedUsersInfo': pulumi.Input.mapInputValue<List<OrphanedUserInfoResponse>, List<Map<String, dynamic>>>(orphanedUsersInfo, (value) => pulumi.Input.encodeList<OrphanedUserInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resultType': resultType,
-      'serverRoleResults': pulumi.Input.encodeMapValues<StartMigrationScenarioServerRoleResultResponse, Map<String, dynamic>>(serverRoleResults, (value) => value.toMap()),
+      'serverRoleResults': pulumi.Input.mapInputValue<Map<String, StartMigrationScenarioServerRoleResultResponse>, Map<String, Map<String, dynamic>>>(serverRoleResults, (value) => pulumi.Input.encodeMapValues<StartMigrationScenarioServerRoleResultResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sourceServerBrandVersion': sourceServerBrandVersion,
       'sourceServerVersion': sourceServerVersion,
       'startedOn': startedOn,
@@ -104,23 +104,23 @@ class MigrateSqlServerSqlMITaskOutputMigrationLevelResponse {
 
   factory MigrateSqlServerSqlMITaskOutputMigrationLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMITaskOutputMigrationLevelResponse(
-      agentJobs: (map['agentJobs'] as Map).cast<String, String>(),
-      databases: (map['databases'] as Map).cast<String, String>(),
-      endedOn: map['endedOn'] as String,
-      exceptionsAndWarnings: pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      logins: (map['logins'] as Map).cast<String, String>(),
-      message: map['message'] as String,
-      orphanedUsersInfo: pulumi.Input.decodeList<OrphanedUserInfoResponse>(map['orphanedUsersInfo'], (value) => OrphanedUserInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resultType: map['resultType'] as String,
-      serverRoleResults: pulumi.Input.decodeMapValues<StartMigrationScenarioServerRoleResultResponse>(map['serverRoleResults'], (value) => StartMigrationScenarioServerRoleResultResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sourceServerBrandVersion: map['sourceServerBrandVersion'] as String,
-      sourceServerVersion: map['sourceServerVersion'] as String,
-      startedOn: map['startedOn'] as String,
-      state: map['state'] as String,
-      status: map['status'] as String,
-      targetServerBrandVersion: map['targetServerBrandVersion'] as String,
-      targetServerVersion: map['targetServerVersion'] as String,
+      agentJobs: ((map['agentJobs'] as Map).cast<String, String>()).input(),
+      databases: ((map['databases'] as Map).cast<String, String>()).input(),
+      endedOn: (map['endedOn'] as String).input(),
+      exceptionsAndWarnings: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      logins: ((map['logins'] as Map).cast<String, String>()).input(),
+      message: (map['message'] as String).input(),
+      orphanedUsersInfo: (pulumi.Input.decodeList<OrphanedUserInfoResponse>(map['orphanedUsersInfo'], (value) => OrphanedUserInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resultType: (map['resultType'] as String).input(),
+      serverRoleResults: (pulumi.Input.decodeMapValues<StartMigrationScenarioServerRoleResultResponse>(map['serverRoleResults'], (value) => StartMigrationScenarioServerRoleResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceServerBrandVersion: (map['sourceServerBrandVersion'] as String).input(),
+      sourceServerVersion: (map['sourceServerVersion'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      state: (map['state'] as String).input(),
+      status: (map['status'] as String).input(),
+      targetServerBrandVersion: (map['targetServerBrandVersion'] as String).input(),
+      targetServerVersion: (map['targetServerVersion'] as String).input(),
     );
   }
 }

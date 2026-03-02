@@ -6,20 +6,20 @@ import 'get_load_balancers_load_balancer_service.dart';
 import 'get_load_balancers_load_balancer_target.dart';
 
 class GetLoadBalancersLoadBalancer {
-  final List<GetLoadBalancersLoadBalancerAlgorithm> algorithms;
-  final bool deleteProtection;
-  final int id;
-  final String ipv4;
-  final String ipv6;
-  final Map<String, String> labels;
-  final String loadBalancerType;
-  final String location;
-  final String? name;
-  final int networkId;
-  final String networkIp;
-  final String networkZone;
-  final List<GetLoadBalancersLoadBalancerService> services;
-  final List<GetLoadBalancersLoadBalancerTarget> targets;
+  final pulumi.Input<List<GetLoadBalancersLoadBalancerAlgorithm>> algorithms;
+  final pulumi.Input<bool> deleteProtection;
+  final pulumi.Input<int> id;
+  final pulumi.Input<String> ipv4;
+  final pulumi.Input<String> ipv6;
+  final pulumi.Input<Map<String, String>> labels;
+  final pulumi.Input<String> loadBalancerType;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<int> networkId;
+  final pulumi.Input<String> networkIp;
+  final pulumi.Input<String> networkZone;
+  final pulumi.Input<List<GetLoadBalancersLoadBalancerService>> services;
+  final pulumi.Input<List<GetLoadBalancersLoadBalancerTarget>> targets;
 
   /// Creates a new [GetLoadBalancersLoadBalancer].
   /// [algorithms] Required.
@@ -55,7 +55,7 @@ class GetLoadBalancersLoadBalancer {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'algorithms': pulumi.Input.encodeList<GetLoadBalancersLoadBalancerAlgorithm, Map<String, dynamic>>(algorithms, (value) => value.toMap()),
+      'algorithms': pulumi.Input.mapInputValue<List<GetLoadBalancersLoadBalancerAlgorithm>, List<Map<String, dynamic>>>(algorithms, (value) => pulumi.Input.encodeList<GetLoadBalancersLoadBalancerAlgorithm, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deleteProtection': deleteProtection,
       'id': id,
       'ipv4': ipv4,
@@ -67,27 +67,27 @@ class GetLoadBalancersLoadBalancer {
       'networkId': networkId,
       'networkIp': networkIp,
       'networkZone': networkZone,
-      'services': pulumi.Input.encodeList<GetLoadBalancersLoadBalancerService, Map<String, dynamic>>(services, (value) => value.toMap()),
-      'targets': pulumi.Input.encodeList<GetLoadBalancersLoadBalancerTarget, Map<String, dynamic>>(targets, (value) => value.toMap()),
+      'services': pulumi.Input.mapInputValue<List<GetLoadBalancersLoadBalancerService>, List<Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeList<GetLoadBalancersLoadBalancerService, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targets': pulumi.Input.mapInputValue<List<GetLoadBalancersLoadBalancerTarget>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<GetLoadBalancersLoadBalancerTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetLoadBalancersLoadBalancer.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersLoadBalancer(
-      algorithms: pulumi.Input.decodeList<GetLoadBalancersLoadBalancerAlgorithm>(map['algorithms'], (value) => GetLoadBalancersLoadBalancerAlgorithm.fromMap((value as Map).cast<String, dynamic>())),
-      deleteProtection: map['deleteProtection'] as bool,
-      id: map['id'] as int,
-      ipv4: map['ipv4'] as String,
-      ipv6: map['ipv6'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      loadBalancerType: map['loadBalancerType'] as String,
-      location: map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      networkId: map['networkId'] as int,
-      networkIp: map['networkIp'] as String,
-      networkZone: map['networkZone'] as String,
-      services: pulumi.Input.decodeList<GetLoadBalancersLoadBalancerService>(map['services'], (value) => GetLoadBalancersLoadBalancerService.fromMap((value as Map).cast<String, dynamic>())),
-      targets: pulumi.Input.decodeList<GetLoadBalancersLoadBalancerTarget>(map['targets'], (value) => GetLoadBalancersLoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>())),
+      algorithms: (pulumi.Input.decodeList<GetLoadBalancersLoadBalancerAlgorithm>(map['algorithms'], (value) => GetLoadBalancersLoadBalancerAlgorithm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deleteProtection: (map['deleteProtection'] as bool).input(),
+      id: (map['id'] as int).input(),
+      ipv4: (map['ipv4'] as String).input(),
+      ipv6: (map['ipv6'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      loadBalancerType: (map['loadBalancerType'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkId: (map['networkId'] as int).input(),
+      networkIp: (map['networkIp'] as String).input(),
+      networkZone: (map['networkZone'] as String).input(),
+      services: (pulumi.Input.decodeList<GetLoadBalancersLoadBalancerService>(map['services'], (value) => GetLoadBalancersLoadBalancerService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targets: (pulumi.Input.decodeList<GetLoadBalancersLoadBalancerTarget>(map['targets'], (value) => GetLoadBalancersLoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

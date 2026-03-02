@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'json_file_format_compression.dart';
 import 'json_file_format_schema_file_format.dart';
 
 /// JSON file format configuration.
 class JsonFileFormat {
   /// Compression of the loaded JSON file.
-  final JsonFileFormatCompression? compression;
+  final pulumi.Input<JsonFileFormatCompression>? compression;
   /// The schema file format along JSON data files.
-  final JsonFileFormatSchemaFileFormat? schemaFileFormat;
+  final pulumi.Input<JsonFileFormatSchemaFileFormat>? schemaFileFormat;
 
   /// Creates a new [JsonFileFormat].
   /// [compression] Compression of the loaded JSON file.
@@ -20,15 +21,15 @@ class JsonFileFormat {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compression': ?compression == null ? null : compression!.value,
-      'schemaFileFormat': ?schemaFileFormat == null ? null : schemaFileFormat!.value,
+      'compression': ?pulumi.Input.mapOptionalInputValue<JsonFileFormatCompression, String>(compression, (value) => value.value),
+      'schemaFileFormat': ?pulumi.Input.mapOptionalInputValue<JsonFileFormatSchemaFileFormat, String>(schemaFileFormat, (value) => value.value),
     };
   }
 
   factory JsonFileFormat.fromMap(Map<String, dynamic> map) {
     return JsonFileFormat(
-      compression: map['compression'] == null ? null : JsonFileFormatCompression.fromValue(map['compression'] as String),
-      schemaFileFormat: map['schemaFileFormat'] == null ? null : JsonFileFormatSchemaFileFormat.fromValue(map['schemaFileFormat'] as String),
+      compression: map['compression'] == null ? null : (JsonFileFormatCompression.fromValue(map['compression'] as String)).input(),
+      schemaFileFormat: map['schemaFileFormat'] == null ? null : (JsonFileFormatSchemaFileFormat.fromValue(map['schemaFileFormat'] as String)).input(),
     );
   }
 }

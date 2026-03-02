@@ -26,17 +26,12 @@ class GatewayArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GatewayArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? gatewayId,
-    pulumi.Output<ResourceLocationDataContract>? locationData,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gatewayId = pulumi.Input.asOptionalInput<String>(gatewayId),
-      locationData = pulumi.Input.asOptionalInput<ResourceLocationDataContract>(locationData),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.description,
+    this.gatewayId,
+    this.locationData,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gatewayId: map['gatewayId'] == null ? null : pulumi.Output.create<String>(map['gatewayId'] as String),
-      locationData: map['locationData'] == null ? null : pulumi.Output.create<ResourceLocationDataContract>(ResourceLocationDataContract.fromMap((map['locationData'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
+      locationData: map['locationData'] == null ? null : (ResourceLocationDataContract.fromMap((map['locationData'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

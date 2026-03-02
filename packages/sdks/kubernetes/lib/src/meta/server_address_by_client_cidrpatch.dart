@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match.
 class ServerAddressByClientCIDRPatch {
   /// The CIDR with which clients can match their IP to figure out the server address that they should use.
-  final String? clientCIDR;
+  final pulumi.Input<String>? clientCIDR;
   /// Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port.
-  final String? serverAddress;
+  final pulumi.Input<String>? serverAddress;
 
   /// Creates a new [ServerAddressByClientCIDRPatch].
   /// [clientCIDR] The CIDR with which clients can match their IP to figure out the server address that they should use.
@@ -25,8 +26,8 @@ class ServerAddressByClientCIDRPatch {
 
   factory ServerAddressByClientCIDRPatch.fromMap(Map<String, dynamic> map) {
     return ServerAddressByClientCIDRPatch(
-      clientCIDR: map['clientCIDR'] == null ? null : map['clientCIDR'] as String,
-      serverAddress: map['serverAddress'] == null ? null : map['serverAddress'] as String,
+      clientCIDR: map['clientCIDR'] == null ? null : (map['clientCIDR'] as String).input(),
+      serverAddress: map['serverAddress'] == null ? null : (map['serverAddress'] as String).input(),
     );
   }
 }

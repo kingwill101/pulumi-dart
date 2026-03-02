@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLBFrontendIpConfiguration {
   /// The id of the Frontend IP Configuration.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specifies the name of the Load Balancer.
-  final String name;
+  final pulumi.Input<String> name;
   /// Private IP Address to assign to the Load Balancer.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// The allocation method for the Private IP Address used by this Load Balancer.
-  final String privateIpAddressAllocation;
+  final pulumi.Input<String> privateIpAddressAllocation;
   /// The Private IP Address Version, either `IPv4` or `IPv6`.
-  final String privateIpAddressVersion;
+  final pulumi.Input<String> privateIpAddressVersion;
   /// The ID of a  Public IP Address which is associated with this Load Balancer.
-  final String publicIpAddressId;
+  final pulumi.Input<String> publicIpAddressId;
   /// The ID of the Subnet which is associated with the IP Configuration.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
   /// A list of Availability Zones which the Load Balancer's IP Addresses should be created in.
-  final List<String> zones;
+  final pulumi.Input<List<String>> zones;
 
   /// Creates a new [GetLBFrontendIpConfiguration].
   /// [id] The id of the Frontend IP Configuration.
@@ -54,14 +55,14 @@ class GetLBFrontendIpConfiguration {
 
   factory GetLBFrontendIpConfiguration.fromMap(Map<String, dynamic> map) {
     return GetLBFrontendIpConfiguration(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      privateIpAddress: map['privateIpAddress'] as String,
-      privateIpAddressAllocation: map['privateIpAddressAllocation'] as String,
-      privateIpAddressVersion: map['privateIpAddressVersion'] as String,
-      publicIpAddressId: map['publicIpAddressId'] as String,
-      subnetId: map['subnetId'] as String,
-      zones: (map['zones'] as List).cast<String>(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      privateIpAddressAllocation: (map['privateIpAddressAllocation'] as String).input(),
+      privateIpAddressVersion: (map['privateIpAddressVersion'] as String).input(),
+      publicIpAddressId: (map['publicIpAddressId'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      zones: ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

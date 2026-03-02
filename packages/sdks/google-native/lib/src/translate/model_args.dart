@@ -23,17 +23,12 @@ class ModelArgs {
   /// [name] The resource name of the model, in form of `projects/{project-number-or-id}/locations/{location_id}/models/{model_id}`
   /// [project] Optional.
   ModelArgs({
-    pulumi.Output<String>? dataset,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      dataset = pulumi.Input.asOptionalInput<String>(dataset),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.dataset,
+    this.displayName,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class ModelArgs {
 
   factory ModelArgs.fromMap(Map<String, dynamic> map) {
     return ModelArgs(
-      dataset: map['dataset'] == null ? null : pulumi.Output.create<String>(map['dataset'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

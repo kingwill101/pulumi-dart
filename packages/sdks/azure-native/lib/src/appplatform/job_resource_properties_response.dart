@@ -9,15 +9,15 @@ import 'manual_job_trigger_config_response.dart';
 /// Job resource properties payload
 class JobResourcePropertiesResponse {
   /// Referenced managed components collection
-  final List<ManagedComponentReferenceResponse>? managedComponentReferences;
+  final pulumi.Input<List<ManagedComponentReferenceResponse>>? managedComponentReferences;
   /// Provisioning state of the Job
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Uploaded source information of the Job.
-  final BuildResultUserSourceInfoResponse? source;
+  final pulumi.Input<BuildResultUserSourceInfoResponse>? source;
   /// The template which is applied for all executions of the Job.
-  final JobExecutionTemplateResponse? template;
+  final pulumi.Input<JobExecutionTemplateResponse>? template;
   /// The Job trigger related configuration.
-  final ManualJobTriggerConfigResponse? triggerConfig;
+  final pulumi.Input<ManualJobTriggerConfigResponse>? triggerConfig;
 
   /// Creates a new [JobResourcePropertiesResponse].
   /// [managedComponentReferences] Referenced managed components collection
@@ -35,21 +35,21 @@ class JobResourcePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedComponentReferences': ?managedComponentReferences == null ? null : pulumi.Input.encodeList<ManagedComponentReferenceResponse, Map<String, dynamic>>(managedComponentReferences!, (value) => value.toMap()),
+      'managedComponentReferences': ?pulumi.Input.mapOptionalInputValue<List<ManagedComponentReferenceResponse>, List<Map<String, dynamic>>>(managedComponentReferences, (value) => pulumi.Input.encodeList<ManagedComponentReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
-      'source': ?source == null ? null : source!.toMap(),
-      'template': ?template == null ? null : template!.toMap(),
-      'triggerConfig': ?triggerConfig == null ? null : triggerConfig!.toMap(),
+      'source': ?pulumi.Input.mapOptionalInputValue<BuildResultUserSourceInfoResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'template': ?pulumi.Input.mapOptionalInputValue<JobExecutionTemplateResponse, Map<String, dynamic>>(template, (value) => value.toMap()),
+      'triggerConfig': ?pulumi.Input.mapOptionalInputValue<ManualJobTriggerConfigResponse, Map<String, dynamic>>(triggerConfig, (value) => value.toMap()),
     };
   }
 
   factory JobResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return JobResourcePropertiesResponse(
-      managedComponentReferences: map['managedComponentReferences'] == null ? null : pulumi.Input.decodeList<ManagedComponentReferenceResponse>(map['managedComponentReferences'], (value) => ManagedComponentReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      source: map['source'] == null ? null : BuildResultUserSourceInfoResponse.fromMap((map['source'] as Map).cast<String, dynamic>()),
-      template: map['template'] == null ? null : JobExecutionTemplateResponse.fromMap((map['template'] as Map).cast<String, dynamic>()),
-      triggerConfig: map['triggerConfig'] == null ? null : ManualJobTriggerConfigResponse.fromMap((map['triggerConfig'] as Map).cast<String, dynamic>()),
+      managedComponentReferences: map['managedComponentReferences'] == null ? null : (pulumi.Input.decodeList<ManagedComponentReferenceResponse>(map['managedComponentReferences'], (value) => ManagedComponentReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      source: map['source'] == null ? null : (BuildResultUserSourceInfoResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      template: map['template'] == null ? null : (JobExecutionTemplateResponse.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      triggerConfig: map['triggerConfig'] == null ? null : (ManualJobTriggerConfigResponse.fromMap((map['triggerConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

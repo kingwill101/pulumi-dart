@@ -22,15 +22,11 @@ class GetReposArgs {
   /// [namespace] Name of container registry namespace where the repositories are located in.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetReposArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? outputFile,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.enableDetails,
+    this.nameRegex,
+    this.namespace,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetReposArgs {
 
   factory GetReposArgs.fromMap(Map<String, dynamic> map) {
     return GetReposArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

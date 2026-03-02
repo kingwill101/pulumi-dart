@@ -5,7 +5,7 @@ import 'sql_container_indexing_policy_composite_index_index.dart';
 
 class SqlContainerIndexingPolicyCompositeIndex {
   /// One or more `index` blocks as defined below.
-  final List<SqlContainerIndexingPolicyCompositeIndexIndex> indices;
+  final pulumi.Input<List<SqlContainerIndexingPolicyCompositeIndexIndex>> indices;
 
   /// Creates a new [SqlContainerIndexingPolicyCompositeIndex].
   /// [indices] One or more `index` blocks as defined below.
@@ -15,13 +15,13 @@ class SqlContainerIndexingPolicyCompositeIndex {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'indices': pulumi.Input.encodeList<SqlContainerIndexingPolicyCompositeIndexIndex, Map<String, dynamic>>(indices, (value) => value.toMap()),
+      'indices': pulumi.Input.mapInputValue<List<SqlContainerIndexingPolicyCompositeIndexIndex>, List<Map<String, dynamic>>>(indices, (value) => pulumi.Input.encodeList<SqlContainerIndexingPolicyCompositeIndexIndex, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SqlContainerIndexingPolicyCompositeIndex.fromMap(Map<String, dynamic> map) {
     return SqlContainerIndexingPolicyCompositeIndex(
-      indices: pulumi.Input.decodeList<SqlContainerIndexingPolicyCompositeIndexIndex>(map['indices'], (value) => SqlContainerIndexingPolicyCompositeIndexIndex.fromMap((value as Map).cast<String, dynamic>())),
+      indices: (pulumi.Input.decodeList<SqlContainerIndexingPolicyCompositeIndexIndex>(map['indices'], (value) => SqlContainerIndexingPolicyCompositeIndexIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

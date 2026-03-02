@@ -50,33 +50,20 @@ class PoolState {
   /// [type] Specifies the type of the storage pool being defined.
   /// [uuid] Sets the universally unique identifier for the storage pool.
   PoolState({
-    pulumi.Output<double>? allocation,
-    pulumi.Output<String>? allocationUnit,
-    pulumi.Output<double>? available,
-    pulumi.Output<String>? availableUnit,
-    pulumi.Output<double>? capacity,
-    pulumi.Output<String>? capacityUnit,
-    pulumi.Output<PoolFeatures>? features,
-    pulumi.Output<String>? name,
-    pulumi.Output<PoolRefresh>? refresh,
-    pulumi.Output<PoolSource>? source,
-    pulumi.Output<PoolTarget>? target,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? uuid,
-  }) :
-      allocation = pulumi.Input.asOptionalInput<double>(allocation),
-      allocationUnit = pulumi.Input.asOptionalInput<String>(allocationUnit),
-      available = pulumi.Input.asOptionalInput<double>(available),
-      availableUnit = pulumi.Input.asOptionalInput<String>(availableUnit),
-      capacity = pulumi.Input.asOptionalInput<double>(capacity),
-      capacityUnit = pulumi.Input.asOptionalInput<String>(capacityUnit),
-      features = pulumi.Input.asOptionalInput<PoolFeatures>(features),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      refresh = pulumi.Input.asOptionalInput<PoolRefresh>(refresh),
-      source = pulumi.Input.asOptionalInput<PoolSource>(source),
-      target = pulumi.Input.asOptionalInput<PoolTarget>(target),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid);
+    this.allocation,
+    this.allocationUnit,
+    this.available,
+    this.availableUnit,
+    this.capacity,
+    this.capacityUnit,
+    this.features,
+    this.name,
+    this.refresh,
+    this.source,
+    this.target,
+    this.type,
+    this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class PoolState {
 
   factory PoolState.fromMap(Map<String, dynamic> map) {
     return PoolState(
-      allocation: map['allocation'] == null ? null : pulumi.Output.create<double>(map['allocation'] as double),
-      allocationUnit: map['allocationUnit'] == null ? null : pulumi.Output.create<String>(map['allocationUnit'] as String),
-      available: map['available'] == null ? null : pulumi.Output.create<double>(map['available'] as double),
-      availableUnit: map['availableUnit'] == null ? null : pulumi.Output.create<String>(map['availableUnit'] as String),
-      capacity: map['capacity'] == null ? null : pulumi.Output.create<double>(map['capacity'] as double),
-      capacityUnit: map['capacityUnit'] == null ? null : pulumi.Output.create<String>(map['capacityUnit'] as String),
-      features: map['features'] == null ? null : pulumi.Output.create<PoolFeatures>(PoolFeatures.fromMap((map['features'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      refresh: map['refresh'] == null ? null : pulumi.Output.create<PoolRefresh>(PoolRefresh.fromMap((map['refresh'] as Map).cast<String, dynamic>())),
-      source: map['source'] == null ? null : pulumi.Output.create<PoolSource>(PoolSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
-      target: map['target'] == null ? null : pulumi.Output.create<PoolTarget>(PoolTarget.fromMap((map['target'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
+      allocation: map['allocation'] == null ? null : (map['allocation'] as double).input(),
+      allocationUnit: map['allocationUnit'] == null ? null : (map['allocationUnit'] as String).input(),
+      available: map['available'] == null ? null : (map['available'] as double).input(),
+      availableUnit: map['availableUnit'] == null ? null : (map['availableUnit'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as double).input(),
+      capacityUnit: map['capacityUnit'] == null ? null : (map['capacityUnit'] as String).input(),
+      features: map['features'] == null ? null : (PoolFeatures.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      refresh: map['refresh'] == null ? null : (PoolRefresh.fromMap((map['refresh'] as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (PoolSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (PoolTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

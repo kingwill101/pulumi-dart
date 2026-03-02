@@ -19,13 +19,10 @@ class GetStorageTargetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageTargetName] Name of Storage Target.
   GetStorageTargetArgs({
-    required pulumi.Output<String> cacheName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageTargetName,
-  }) :
-      cacheName = pulumi.Input.asInput<String>(cacheName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageTargetName = pulumi.Input.asInput<String>(storageTargetName);
+    required this.cacheName,
+    required this.resourceGroupName,
+    required this.storageTargetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetStorageTargetArgs {
 
   factory GetStorageTargetArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageTargetArgs(
-      cacheName: pulumi.Output.create<String>(map['cacheName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageTargetName: pulumi.Output.create<String>(map['storageTargetName'] as String),
+      cacheName: (map['cacheName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageTargetName: (map['storageTargetName'] as String).input(),
     );
   }
 }

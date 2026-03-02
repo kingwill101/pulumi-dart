@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_node_spec_listener_tls_validation_subject_alternative_names.dart';
 import 'virtual_node_spec_listener_tls_validation_trust.dart';
 
 class VirtualNodeSpecListenerTlsValidation {
   /// SANs for a TLS validation context.
-  final VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames? subjectAlternativeNames;
+  final pulumi.Input<VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames>? subjectAlternativeNames;
   /// TLS validation context trust.
-  final VirtualNodeSpecListenerTlsValidationTrust trust;
+  final pulumi.Input<VirtualNodeSpecListenerTlsValidationTrust> trust;
 
   /// Creates a new [VirtualNodeSpecListenerTlsValidation].
   /// [subjectAlternativeNames] SANs for a TLS validation context.
@@ -19,15 +20,15 @@ class VirtualNodeSpecListenerTlsValidation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subjectAlternativeNames': ?subjectAlternativeNames == null ? null : subjectAlternativeNames!.toMap(),
-      'trust': trust.toMap(),
+      'subjectAlternativeNames': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames, Map<String, dynamic>>(subjectAlternativeNames, (value) => value.toMap()),
+      'trust': pulumi.Input.mapInputValue<VirtualNodeSpecListenerTlsValidationTrust, Map<String, dynamic>>(trust, (value) => value.toMap()),
     };
   }
 
   factory VirtualNodeSpecListenerTlsValidation.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsValidation(
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames'] as Map).cast<String, dynamic>()),
-      trust: VirtualNodeSpecListenerTlsValidationTrust.fromMap((map['trust'] as Map).cast<String, dynamic>()),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : (VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames'] as Map).cast<String, dynamic>())).input(),
+      trust: (VirtualNodeSpecListenerTlsValidationTrust.fromMap((map['trust'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

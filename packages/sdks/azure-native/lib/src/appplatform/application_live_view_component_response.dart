@@ -7,11 +7,11 @@ import 'application_live_view_resource_requests_response.dart';
 /// Application Live View properties payload
 class ApplicationLiveViewComponentResponse {
   /// Collection of instances belong to Application Live View.
-  final List<ApplicationLiveViewInstanceResponse> instances;
+  final pulumi.Input<List<ApplicationLiveViewInstanceResponse>> instances;
   /// Name of the component.
-  final dynamic name;
+  final pulumi.Input<dynamic> name;
   /// The requested resource quantity for required CPU and Memory.
-  final ApplicationLiveViewResourceRequestsResponse resourceRequests;
+  final pulumi.Input<ApplicationLiveViewResourceRequestsResponse> resourceRequests;
 
   /// Creates a new [ApplicationLiveViewComponentResponse].
   /// [instances] Collection of instances belong to Application Live View.
@@ -25,17 +25,17 @@ class ApplicationLiveViewComponentResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instances': pulumi.Input.encodeList<ApplicationLiveViewInstanceResponse, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances': pulumi.Input.mapInputValue<List<ApplicationLiveViewInstanceResponse>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<ApplicationLiveViewInstanceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
-      'resourceRequests': resourceRequests.toMap(),
+      'resourceRequests': pulumi.Input.mapInputValue<ApplicationLiveViewResourceRequestsResponse, Map<String, dynamic>>(resourceRequests, (value) => value.toMap()),
     };
   }
 
   factory ApplicationLiveViewComponentResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationLiveViewComponentResponse(
-      instances: pulumi.Input.decodeList<ApplicationLiveViewInstanceResponse>(map['instances'], (value) => ApplicationLiveViewInstanceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'],
-      resourceRequests: ApplicationLiveViewResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>()),
+      instances: (pulumi.Input.decodeList<ApplicationLiveViewInstanceResponse>(map['instances'], (value) => ApplicationLiveViewInstanceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name']).input(),
+      resourceRequests: (ApplicationLiveViewResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

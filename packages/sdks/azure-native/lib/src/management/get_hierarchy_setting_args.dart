@@ -13,9 +13,8 @@ class GetHierarchySettingArgs {
   /// Creates a new [GetHierarchySettingArgs].
   /// [groupId] Management Group ID.
   GetHierarchySettingArgs({
-    required pulumi.Output<String> groupId,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId);
+    required this.groupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetHierarchySettingArgs {
 
   factory GetHierarchySettingArgs.fromMap(Map<String, dynamic> map) {
     return GetHierarchySettingArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
+      groupId: (map['groupId'] as String).input(),
     );
   }
 }

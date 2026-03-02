@@ -40,25 +40,16 @@ class TableArgs {
   /// [totalRetentionInDays] The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
   /// [workspaceName] The name of the workspace.
   TableArgs({
-    pulumi.Output<String>? plan,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<RestoredLogs>? restoredLogs,
-    pulumi.Output<int>? retentionInDays,
-    pulumi.Output<Schema>? schema,
-    pulumi.Output<SearchResults>? searchResults,
-    pulumi.Output<String>? tableName,
-    pulumi.Output<int>? totalRetentionInDays,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      plan = pulumi.Input.asOptionalInput<String>(plan),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      restoredLogs = pulumi.Input.asOptionalInput<RestoredLogs>(restoredLogs),
-      retentionInDays = pulumi.Input.asOptionalInput<int>(retentionInDays),
-      schema = pulumi.Input.asOptionalInput<Schema>(schema),
-      searchResults = pulumi.Input.asOptionalInput<SearchResults>(searchResults),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName),
-      totalRetentionInDays = pulumi.Input.asOptionalInput<int>(totalRetentionInDays),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.plan,
+    required this.resourceGroupName,
+    this.restoredLogs,
+    this.retentionInDays,
+    this.schema,
+    this.searchResults,
+    this.tableName,
+    this.totalRetentionInDays,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      plan: map['plan'] == null ? null : pulumi.Output.create<String>(map['plan'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      restoredLogs: map['restoredLogs'] == null ? null : pulumi.Output.create<RestoredLogs>(RestoredLogs.fromMap((map['restoredLogs'] as Map).cast<String, dynamic>())),
-      retentionInDays: map['retentionInDays'] == null ? null : pulumi.Output.create<int>(map['retentionInDays'] as int),
-      schema: map['schema'] == null ? null : pulumi.Output.create<Schema>(Schema.fromMap((map['schema'] as Map).cast<String, dynamic>())),
-      searchResults: map['searchResults'] == null ? null : pulumi.Output.create<SearchResults>(SearchResults.fromMap((map['searchResults'] as Map).cast<String, dynamic>())),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
-      totalRetentionInDays: map['totalRetentionInDays'] == null ? null : pulumi.Output.create<int>(map['totalRetentionInDays'] as int),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      plan: map['plan'] == null ? null : (map['plan'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      restoredLogs: map['restoredLogs'] == null ? null : (RestoredLogs.fromMap((map['restoredLogs'] as Map).cast<String, dynamic>())).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
+      schema: map['schema'] == null ? null : (Schema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      searchResults: map['searchResults'] == null ? null : (SearchResults.fromMap((map['searchResults'] as Map).cast<String, dynamic>())).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      totalRetentionInDays: map['totalRetentionInDays'] == null ? null : (map['totalRetentionInDays'] as int).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

@@ -41,27 +41,17 @@ class ClusterExtensionArgs {
   /// [targetNamespace] Namespace where the extension will be created for a namespace scoped extension. If this namespace does not exist, it will be created. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   /// [version] User-specified version that the extension should pin to. If it is not set, Azure will use the latest version and auto upgrade it. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   ClusterExtensionArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<Map<String, String>>? configurationProtectedSettings,
-    pulumi.Output<Map<String, String>>? configurationSettings,
-    required pulumi.Output<String> extensionType,
-    required pulumi.Output<ClusterExtensionIdentity> identity,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? releaseNamespace,
-    pulumi.Output<String>? releaseTrain,
-    pulumi.Output<String>? targetNamespace,
-    pulumi.Output<String>? version,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      configurationProtectedSettings = pulumi.Input.asOptionalInput<Map<String, String>>(configurationProtectedSettings),
-      configurationSettings = pulumi.Input.asOptionalInput<Map<String, String>>(configurationSettings),
-      extensionType = pulumi.Input.asInput<String>(extensionType),
-      identity = pulumi.Input.asInput<ClusterExtensionIdentity>(identity),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      releaseNamespace = pulumi.Input.asOptionalInput<String>(releaseNamespace),
-      releaseTrain = pulumi.Input.asOptionalInput<String>(releaseTrain),
-      targetNamespace = pulumi.Input.asOptionalInput<String>(targetNamespace),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.clusterId,
+    this.configurationProtectedSettings,
+    this.configurationSettings,
+    required this.extensionType,
+    required this.identity,
+    this.name,
+    this.releaseNamespace,
+    this.releaseTrain,
+    this.targetNamespace,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class ClusterExtensionArgs {
 
   factory ClusterExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ClusterExtensionArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : pulumi.Output.create<Map<String, String>>((map['configurationProtectedSettings'] as Map).cast<String, String>()),
-      configurationSettings: map['configurationSettings'] == null ? null : pulumi.Output.create<Map<String, String>>((map['configurationSettings'] as Map).cast<String, String>()),
-      extensionType: pulumi.Output.create<String>(map['extensionType'] as String),
-      identity: pulumi.Output.create<ClusterExtensionIdentity>(ClusterExtensionIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      releaseNamespace: map['releaseNamespace'] == null ? null : pulumi.Output.create<String>(map['releaseNamespace'] as String),
-      releaseTrain: map['releaseTrain'] == null ? null : pulumi.Output.create<String>(map['releaseTrain'] as String),
-      targetNamespace: map['targetNamespace'] == null ? null : pulumi.Output.create<String>(map['targetNamespace'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : ((map['configurationProtectedSettings'] as Map).cast<String, String>()).input(),
+      configurationSettings: map['configurationSettings'] == null ? null : ((map['configurationSettings'] as Map).cast<String, String>()).input(),
+      extensionType: (map['extensionType'] as String).input(),
+      identity: (ClusterExtensionIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace'] as String).input(),
+      releaseTrain: map['releaseTrain'] == null ? null : (map['releaseTrain'] as String).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

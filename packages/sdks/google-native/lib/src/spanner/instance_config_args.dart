@@ -40,27 +40,17 @@ class InstanceConfigArgs {
   /// [replicas] The geographic placement of nodes in this instance configuration and their replication properties.
   /// [validateOnly] An option to validate, but not actually execute, a request, and provide the same response.
   InstanceConfigArgs({
-    pulumi.Output<String>? baseConfig,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> instanceConfigId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<List<String>>? leaderOptions,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<ReplicaInfo>>? replicas,
-    pulumi.Output<bool>? validateOnly,
-  }) :
-      baseConfig = pulumi.Input.asOptionalInput<String>(baseConfig),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      instanceConfigId = pulumi.Input.asInput<String>(instanceConfigId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      leaderOptions = pulumi.Input.asOptionalInput<List<String>>(leaderOptions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      replicas = pulumi.Input.asOptionalInput<List<ReplicaInfo>>(replicas),
-      validateOnly = pulumi.Input.asOptionalInput<bool>(validateOnly);
+    this.baseConfig,
+    this.displayName,
+    this.etag,
+    required this.instanceConfigId,
+    this.labels,
+    this.leaderOptions,
+    this.name,
+    this.project,
+    this.replicas,
+    this.validateOnly,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class InstanceConfigArgs {
 
   factory InstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return InstanceConfigArgs(
-      baseConfig: map['baseConfig'] == null ? null : pulumi.Output.create<String>(map['baseConfig'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      instanceConfigId: pulumi.Output.create<String>(map['instanceConfigId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      leaderOptions: map['leaderOptions'] == null ? null : pulumi.Output.create<List<String>>((map['leaderOptions'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      replicas: map['replicas'] == null ? null : pulumi.Output.create<List<ReplicaInfo>>(pulumi.Input.decodeList<ReplicaInfo>(map['replicas'], (value) => ReplicaInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      validateOnly: map['validateOnly'] == null ? null : pulumi.Output.create<bool>(map['validateOnly'] as bool),
+      baseConfig: map['baseConfig'] == null ? null : (map['baseConfig'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      instanceConfigId: (map['instanceConfigId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      leaderOptions: map['leaderOptions'] == null ? null : ((map['leaderOptions'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<ReplicaInfo>(map['replicas'], (value) => ReplicaInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly'] as bool).input(),
     );
   }
 }

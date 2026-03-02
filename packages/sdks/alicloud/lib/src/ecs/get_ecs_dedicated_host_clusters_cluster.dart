@@ -5,23 +5,23 @@ import 'get_ecs_dedicated_host_clusters_cluster_dedicated_host_cluster_capacity.
 
 class GetEcsDedicatedHostClustersCluster {
   /// The capacity of the dedicated host cluster.
-  final List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity> dedicatedHostClusterCapacities;
+  final pulumi.Input<List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity>> dedicatedHostClusterCapacities;
   /// The ID of the dedicated host cluster.
-  final String dedicatedHostClusterId;
+  final pulumi.Input<String> dedicatedHostClusterId;
   /// The name of the dedicated host cluster.
-  final String dedicatedHostClusterName;
+  final pulumi.Input<String> dedicatedHostClusterName;
   /// The IDs of dedicated hosts in the dedicated host cluster.
-  final List<String> dedicatedHostIds;
+  final pulumi.Input<List<String>> dedicatedHostIds;
   /// The description of the dedicated host cluster.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Dedicated Host Cluster.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the resource group to which the dedicated host cluster belongs.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The zone ID of the dedicated host cluster.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetEcsDedicatedHostClustersCluster].
   /// [dedicatedHostClusterCapacities] The capacity of the dedicated host cluster.
@@ -47,7 +47,7 @@ class GetEcsDedicatedHostClustersCluster {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dedicatedHostClusterCapacities': pulumi.Input.encodeList<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity, Map<String, dynamic>>(dedicatedHostClusterCapacities, (value) => value.toMap()),
+      'dedicatedHostClusterCapacities': pulumi.Input.mapInputValue<List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity>, List<Map<String, dynamic>>>(dedicatedHostClusterCapacities, (value) => pulumi.Input.encodeList<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dedicatedHostClusterId': dedicatedHostClusterId,
       'dedicatedHostClusterName': dedicatedHostClusterName,
       'dedicatedHostIds': dedicatedHostIds,
@@ -61,15 +61,15 @@ class GetEcsDedicatedHostClustersCluster {
 
   factory GetEcsDedicatedHostClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetEcsDedicatedHostClustersCluster(
-      dedicatedHostClusterCapacities: pulumi.Input.decodeList<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity>(map['dedicatedHostClusterCapacities'], (value) => GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity.fromMap((value as Map).cast<String, dynamic>())),
-      dedicatedHostClusterId: map['dedicatedHostClusterId'] as String,
-      dedicatedHostClusterName: map['dedicatedHostClusterName'] as String,
-      dedicatedHostIds: (map['dedicatedHostIds'] as List).cast<String>(),
-      description: map['description'] as String,
-      id: map['id'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      zoneId: map['zoneId'] as String,
+      dedicatedHostClusterCapacities: (pulumi.Input.decodeList<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity>(map['dedicatedHostClusterCapacities'], (value) => GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dedicatedHostClusterId: (map['dedicatedHostClusterId'] as String).input(),
+      dedicatedHostClusterName: (map['dedicatedHostClusterName'] as String).input(),
+      dedicatedHostIds: ((map['dedicatedHostIds'] as List).cast<String>()).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

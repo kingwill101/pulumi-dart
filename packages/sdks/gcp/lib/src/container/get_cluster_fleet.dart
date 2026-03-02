@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterFleet {
   /// Full resource name of the registered fleet membership of the cluster.
-  final String membership;
+  final pulumi.Input<String> membership;
   /// Short name of the fleet membership, for example "member-1".
-  final String membershipId;
+  final pulumi.Input<String> membershipId;
   /// Location of the fleet membership, for example "us-central1".
-  final String membershipLocation;
+  final pulumi.Input<String> membershipLocation;
   /// The type of the cluster's fleet membership.
-  final String membershipType;
+  final pulumi.Input<String> membershipType;
   /// Whether the cluster has been registered via the fleet API.
-  final bool preRegistered;
+  final pulumi.Input<bool> preRegistered;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [GetClusterFleet].
   /// [membership] Full resource name of the registered fleet membership of the cluster.
@@ -45,12 +46,12 @@ class GetClusterFleet {
 
   factory GetClusterFleet.fromMap(Map<String, dynamic> map) {
     return GetClusterFleet(
-      membership: map['membership'] as String,
-      membershipId: map['membershipId'] as String,
-      membershipLocation: map['membershipLocation'] as String,
-      membershipType: map['membershipType'] as String,
-      preRegistered: map['preRegistered'] as bool,
-      project: map['project'] as String,
+      membership: (map['membership'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
+      membershipLocation: (map['membershipLocation'] as String).input(),
+      membershipType: (map['membershipType'] as String).input(),
+      preRegistered: (map['preRegistered'] as bool).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

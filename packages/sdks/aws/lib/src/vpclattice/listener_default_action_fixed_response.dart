@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerDefaultActionFixedResponse {
   /// Custom HTTP status code to return, e.g. a 404 response code. See [Listeners](https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html) in the AWS documentation for a list of supported codes.
-  final int statusCode;
+  final pulumi.Input<int> statusCode;
 
   /// Creates a new [ListenerDefaultActionFixedResponse].
   /// [statusCode] Custom HTTP status code to return, e.g. a 404 response code. See [Listeners](https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html) in the AWS documentation for a list of supported codes.
@@ -19,7 +20,7 @@ class ListenerDefaultActionFixedResponse {
 
   factory ListenerDefaultActionFixedResponse.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionFixedResponse(
-      statusCode: map['statusCode'] as int,
+      statusCode: (map['statusCode'] as int).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_audio_oss_input.dart';
 import 'domain_devices_audio_oss_output.dart';
 
 class DomainDevicesAudioOss {
   /// Sets the DSP policy for the OSS audio device.
-  final double? dspPolicy;
+  final pulumi.Input<double>? dspPolicy;
   /// Configures the exclusivity for the OSS audio device.
-  final String? exclusive;
+  final pulumi.Input<String>? exclusive;
   /// Configures the output settings for the OSS audio device.
-  final DomainDevicesAudioOssInput? input;
+  final pulumi.Input<DomainDevicesAudioOssInput>? input;
   /// Configures the output settings for the OSS audio device.
-  final DomainDevicesAudioOssOutput? output;
+  final pulumi.Input<DomainDevicesAudioOssOutput>? output;
   /// Enables or disables mmap for the OSS audio device.
-  final String? tryMMap;
+  final pulumi.Input<String>? tryMMap;
 
   /// Creates a new [DomainDevicesAudioOss].
   /// [dspPolicy] Sets the DSP policy for the OSS audio device.
@@ -33,19 +34,19 @@ class DomainDevicesAudioOss {
     return <String, dynamic>{
       'dspPolicy': ?dspPolicy,
       'exclusive': ?exclusive,
-      'input': ?input == null ? null : input!.toMap(),
-      'output': ?output == null ? null : output!.toMap(),
+      'input': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioOssInput, Map<String, dynamic>>(input, (value) => value.toMap()),
+      'output': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioOssOutput, Map<String, dynamic>>(output, (value) => value.toMap()),
       'tryMMap': ?tryMMap,
     };
   }
 
   factory DomainDevicesAudioOss.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioOss(
-      dspPolicy: map['dspPolicy'] == null ? null : map['dspPolicy'] as double,
-      exclusive: map['exclusive'] == null ? null : map['exclusive'] as String,
-      input: map['input'] == null ? null : DomainDevicesAudioOssInput.fromMap((map['input'] as Map).cast<String, dynamic>()),
-      output: map['output'] == null ? null : DomainDevicesAudioOssOutput.fromMap((map['output'] as Map).cast<String, dynamic>()),
-      tryMMap: map['tryMMap'] == null ? null : map['tryMMap'] as String,
+      dspPolicy: map['dspPolicy'] == null ? null : (map['dspPolicy'] as double).input(),
+      exclusive: map['exclusive'] == null ? null : (map['exclusive'] as String).input(),
+      input: map['input'] == null ? null : (DomainDevicesAudioOssInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      output: map['output'] == null ? null : (DomainDevicesAudioOssOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      tryMMap: map['tryMMap'] == null ? null : (map['tryMMap'] as String).input(),
     );
   }
 }

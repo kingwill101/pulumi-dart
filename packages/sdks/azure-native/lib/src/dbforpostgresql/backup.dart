@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Backup properties of a server.
 class Backup {
   /// Backup retention days for the server.
-  final int? backupRetentionDays;
+  final pulumi.Input<int>? backupRetentionDays;
   /// Indicates if the server is configured to create geographically redundant backups.
-  final String? geoRedundantBackup;
+  final pulumi.Input<String>? geoRedundantBackup;
 
   /// Creates a new [Backup].
   /// [backupRetentionDays] Backup retention days for the server.
@@ -25,8 +26,8 @@ class Backup {
 
   factory Backup.fromMap(Map<String, dynamic> map) {
     return Backup(
-      backupRetentionDays: map['backupRetentionDays'] == null ? null : map['backupRetentionDays'] as int,
-      geoRedundantBackup: map['geoRedundantBackup'] == null ? null : map['geoRedundantBackup'] as String,
+      backupRetentionDays: map['backupRetentionDays'] == null ? null : (map['backupRetentionDays'] as int).input(),
+      geoRedundantBackup: map['geoRedundantBackup'] == null ? null : (map['geoRedundantBackup'] as String).input(),
     );
   }
 }

@@ -1,53 +1,54 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDbSystemShapesDbSystemShape {
   /// Indicates if the shape supports database and storage server types.
-  final bool areServerTypesSupported;
+  final pulumi.Input<bool> areServerTypesSupported;
   /// The maximum number of CPU cores that can be enabled on the DB system for this shape.
-  final int availableCoreCount;
+  final pulumi.Input<int> availableCoreCount;
   /// The maximum number of CPU cores per database node that can be enabled for this shape. Only applicable to the flex Exadata shape, ExaCC Elastic shapes and VM Flex shapes.
-  final int availableCoreCountPerNode;
+  final pulumi.Input<int> availableCoreCountPerNode;
   /// The maximum data storage that can be enabled for this shape.
-  final int availableDataStorageInTbs;
+  final pulumi.Input<int> availableDataStorageInTbs;
   /// The maximum data storage available per storage server for this shape. Only applicable to ExaCC Elastic shapes.
-  final int availableDataStoragePerServerInTbs;
+  final pulumi.Input<int> availableDataStoragePerServerInTbs;
   /// The maximum DB Node storage available per database node for this shape. Only applicable to ExaCC Elastic shapes.
-  final int availableDbNodePerNodeInGbs;
+  final pulumi.Input<int> availableDbNodePerNodeInGbs;
   /// The maximum DB Node storage that can be enabled for this shape.
-  final int availableDbNodeStorageInGbs;
+  final pulumi.Input<int> availableDbNodeStorageInGbs;
   /// The maximum memory that can be enabled for this shape.
-  final int availableMemoryInGbs;
+  final pulumi.Input<int> availableMemoryInGbs;
   /// The maximum memory available per database node for this shape. Only applicable to ExaCC Elastic shapes.
-  final int availableMemoryPerNodeInGbs;
+  final pulumi.Input<int> availableMemoryPerNodeInGbs;
   /// The compute model of the Exadata Infrastructure.
-  final String computeModel;
+  final pulumi.Input<String> computeModel;
   /// The discrete number by which the CPU core count for this shape can be increased or decreased.
-  final int coreCountIncrement;
+  final pulumi.Input<int> coreCountIncrement;
   /// The display name of the shape used for the DB system.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The maximum number of compute servers available for this shape.
-  final int maximumNodeCount;
+  final pulumi.Input<int> maximumNodeCount;
   /// The maximum number of Exadata storage servers available for the Exadata infrastructure.
-  final int maximumStorageCount;
+  final pulumi.Input<int> maximumStorageCount;
   /// The minimum number of CPU cores that can be enabled on the DB system for this shape.
-  final int minimumCoreCount;
+  final pulumi.Input<int> minimumCoreCount;
   /// The minimum number of CPU cores that can be enabled per node for this shape.
-  final int minimumCoreCountPerNode;
+  final pulumi.Input<int> minimumCoreCountPerNode;
   /// The minimum data storage that need be allocated for this shape.
-  final int minimumDataStorageInTbs;
+  final pulumi.Input<int> minimumDataStorageInTbs;
   /// The minimum DB Node storage that need be allocated per node for this shape.
-  final int minimumDbNodeStoragePerNodeInGbs;
+  final pulumi.Input<int> minimumDbNodeStoragePerNodeInGbs;
   /// The minimum memory that need be allocated per node for this shape.
-  final int minimumMemoryPerNodeInGbs;
+  final pulumi.Input<int> minimumMemoryPerNodeInGbs;
   /// The minimum number of compute servers available for this shape.
-  final int minimumNodeCount;
+  final pulumi.Input<int> minimumNodeCount;
   /// The minimum number of Exadata storage servers available for the Exadata infrastructure.
-  final int minimumStorageCount;
+  final pulumi.Input<int> minimumStorageCount;
   /// The runtime minimum number of compute servers available for this shape.
-  final int runtimeMinimumCoreCount;
+  final pulumi.Input<int> runtimeMinimumCoreCount;
   /// The family of the shape used for the DB system.
-  final String shapeFamily;
+  final pulumi.Input<String> shapeFamily;
 
   /// Creates a new [GetDbSystemShapesDbSystemShape].
   /// [areServerTypesSupported] Indicates if the shape supports database and storage server types.
@@ -129,29 +130,29 @@ class GetDbSystemShapesDbSystemShape {
 
   factory GetDbSystemShapesDbSystemShape.fromMap(Map<String, dynamic> map) {
     return GetDbSystemShapesDbSystemShape(
-      areServerTypesSupported: map['areServerTypesSupported'] as bool,
-      availableCoreCount: map['availableCoreCount'] as int,
-      availableCoreCountPerNode: map['availableCoreCountPerNode'] as int,
-      availableDataStorageInTbs: map['availableDataStorageInTbs'] as int,
-      availableDataStoragePerServerInTbs: map['availableDataStoragePerServerInTbs'] as int,
-      availableDbNodePerNodeInGbs: map['availableDbNodePerNodeInGbs'] as int,
-      availableDbNodeStorageInGbs: map['availableDbNodeStorageInGbs'] as int,
-      availableMemoryInGbs: map['availableMemoryInGbs'] as int,
-      availableMemoryPerNodeInGbs: map['availableMemoryPerNodeInGbs'] as int,
-      computeModel: map['computeModel'] as String,
-      coreCountIncrement: map['coreCountIncrement'] as int,
-      displayName: map['displayName'] as String,
-      maximumNodeCount: map['maximumNodeCount'] as int,
-      maximumStorageCount: map['maximumStorageCount'] as int,
-      minimumCoreCount: map['minimumCoreCount'] as int,
-      minimumCoreCountPerNode: map['minimumCoreCountPerNode'] as int,
-      minimumDataStorageInTbs: map['minimumDataStorageInTbs'] as int,
-      minimumDbNodeStoragePerNodeInGbs: map['minimumDbNodeStoragePerNodeInGbs'] as int,
-      minimumMemoryPerNodeInGbs: map['minimumMemoryPerNodeInGbs'] as int,
-      minimumNodeCount: map['minimumNodeCount'] as int,
-      minimumStorageCount: map['minimumStorageCount'] as int,
-      runtimeMinimumCoreCount: map['runtimeMinimumCoreCount'] as int,
-      shapeFamily: map['shapeFamily'] as String,
+      areServerTypesSupported: (map['areServerTypesSupported'] as bool).input(),
+      availableCoreCount: (map['availableCoreCount'] as int).input(),
+      availableCoreCountPerNode: (map['availableCoreCountPerNode'] as int).input(),
+      availableDataStorageInTbs: (map['availableDataStorageInTbs'] as int).input(),
+      availableDataStoragePerServerInTbs: (map['availableDataStoragePerServerInTbs'] as int).input(),
+      availableDbNodePerNodeInGbs: (map['availableDbNodePerNodeInGbs'] as int).input(),
+      availableDbNodeStorageInGbs: (map['availableDbNodeStorageInGbs'] as int).input(),
+      availableMemoryInGbs: (map['availableMemoryInGbs'] as int).input(),
+      availableMemoryPerNodeInGbs: (map['availableMemoryPerNodeInGbs'] as int).input(),
+      computeModel: (map['computeModel'] as String).input(),
+      coreCountIncrement: (map['coreCountIncrement'] as int).input(),
+      displayName: (map['displayName'] as String).input(),
+      maximumNodeCount: (map['maximumNodeCount'] as int).input(),
+      maximumStorageCount: (map['maximumStorageCount'] as int).input(),
+      minimumCoreCount: (map['minimumCoreCount'] as int).input(),
+      minimumCoreCountPerNode: (map['minimumCoreCountPerNode'] as int).input(),
+      minimumDataStorageInTbs: (map['minimumDataStorageInTbs'] as int).input(),
+      minimumDbNodeStoragePerNodeInGbs: (map['minimumDbNodeStoragePerNodeInGbs'] as int).input(),
+      minimumMemoryPerNodeInGbs: (map['minimumMemoryPerNodeInGbs'] as int).input(),
+      minimumNodeCount: (map['minimumNodeCount'] as int).input(),
+      minimumStorageCount: (map['minimumStorageCount'] as int).input(),
+      runtimeMinimumCoreCount: (map['runtimeMinimumCoreCount'] as int).input(),
+      shapeFamily: (map['shapeFamily'] as String).input(),
     );
   }
 }

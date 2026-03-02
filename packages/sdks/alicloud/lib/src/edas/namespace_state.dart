@@ -21,15 +21,11 @@ class NamespaceState {
   /// [namespaceLogicalId] The ID of the namespace.
   /// [namespaceName] The name of the namespace, The name can be up to `63` characters in length.
   NamespaceState({
-    pulumi.Output<bool>? debugEnable,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? namespaceLogicalId,
-    pulumi.Output<String>? namespaceName,
-  }) :
-      debugEnable = pulumi.Input.asOptionalInput<bool>(debugEnable),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      namespaceLogicalId = pulumi.Input.asOptionalInput<String>(namespaceLogicalId),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName);
+    this.debugEnable,
+    this.description,
+    this.namespaceLogicalId,
+    this.namespaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      debugEnable: map['debugEnable'] == null ? null : pulumi.Output.create<bool>(map['debugEnable'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      namespaceLogicalId: map['namespaceLogicalId'] == null ? null : pulumi.Output.create<String>(map['namespaceLogicalId'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
+      debugEnable: map['debugEnable'] == null ? null : (map['debugEnable'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      namespaceLogicalId: map['namespaceLogicalId'] == null ? null : (map['namespaceLogicalId'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
     );
   }
 }

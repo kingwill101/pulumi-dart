@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'schema_registry_ref.dart';
 
 /// The properties of the Instance resource.
 class InstanceProperties {
   /// Detailed description of the Instance.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The reference to the Schema Registry for this AIO Instance.
-  final SchemaRegistryRef schemaRegistryRef;
+  final pulumi.Input<SchemaRegistryRef> schemaRegistryRef;
 
   /// Creates a new [InstanceProperties].
   /// [description] Detailed description of the Instance.
@@ -20,14 +21,14 @@ class InstanceProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'schemaRegistryRef': schemaRegistryRef.toMap(),
+      'schemaRegistryRef': pulumi.Input.mapInputValue<SchemaRegistryRef, Map<String, dynamic>>(schemaRegistryRef, (value) => value.toMap()),
     };
   }
 
   factory InstanceProperties.fromMap(Map<String, dynamic> map) {
     return InstanceProperties(
-      description: map['description'] == null ? null : map['description'] as String,
-      schemaRegistryRef: SchemaRegistryRef.fromMap((map['schemaRegistryRef'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      schemaRegistryRef: (SchemaRegistryRef.fromMap((map['schemaRegistryRef'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

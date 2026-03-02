@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstanceRestoreRange {
   /// The beginning of the recoverable time range.
-  final String restoreBeginTime;
+  final pulumi.Input<String> restoreBeginTime;
   /// The end of the recoverable time range.
-  final String restoreEndTime;
+  final pulumi.Input<String> restoreEndTime;
   /// The restoration method.
-  final String restoreType;
+  final pulumi.Input<String> restoreType;
 
   /// Creates a new [GetInstancesInstanceRestoreRange].
   /// [restoreBeginTime] The beginning of the recoverable time range.
@@ -29,9 +30,9 @@ class GetInstancesInstanceRestoreRange {
 
   factory GetInstancesInstanceRestoreRange.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceRestoreRange(
-      restoreBeginTime: map['restoreBeginTime'] as String,
-      restoreEndTime: map['restoreEndTime'] as String,
-      restoreType: map['restoreType'] as String,
+      restoreBeginTime: (map['restoreBeginTime'] as String).input(),
+      restoreEndTime: (map['restoreEndTime'] as String).input(),
+      restoreType: (map['restoreType'] as String).input(),
     );
   }
 }

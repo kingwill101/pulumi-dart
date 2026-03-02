@@ -31,19 +31,13 @@ class RepositoryArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [remoteUri] Required. Git Clone HTTPS URI.
   RepositoryArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parentConnection,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> remoteUri,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentConnection = pulumi.Input.asInput<String>(parentConnection),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      remoteUri = pulumi.Input.asInput<String>(remoteUri);
+    this.annotations,
+    this.location,
+    this.name,
+    required this.parentConnection,
+    this.project,
+    required this.remoteUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentConnection: pulumi.Output.create<String>(map['parentConnection'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      remoteUri: pulumi.Output.create<String>(map['remoteUri'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentConnection: (map['parentConnection'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      remoteUri: (map['remoteUri'] as String).input(),
     );
   }
 }

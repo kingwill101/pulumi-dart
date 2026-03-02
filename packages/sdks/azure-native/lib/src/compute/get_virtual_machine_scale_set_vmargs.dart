@@ -22,15 +22,11 @@ class GetVirtualMachineScaleSetVMArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmScaleSetName] The name of the VM scale set.
   GetVirtualMachineScaleSetVMArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vmScaleSetName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmScaleSetName = pulumi.Input.asInput<String>(vmScaleSetName);
+    this.expand,
+    required this.instanceId,
+    required this.resourceGroupName,
+    required this.vmScaleSetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetVirtualMachineScaleSetVMArgs {
 
   factory GetVirtualMachineScaleSetVMArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetVMArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmScaleSetName: pulumi.Output.create<String>(map['vmScaleSetName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmScaleSetName: (map['vmScaleSetName'] as String).input(),
     );
   }
 }

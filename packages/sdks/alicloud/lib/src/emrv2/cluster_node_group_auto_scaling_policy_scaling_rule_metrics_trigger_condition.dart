@@ -5,15 +5,15 @@ import 'cluster_node_group_auto_scaling_policy_scaling_rule_metrics_trigger_cond
 
 class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition {
   /// The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
-  final String comparisonOperator;
+  final pulumi.Input<String> comparisonOperator;
   /// The metric name for this scaling rule specific metrics trigger.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The statistics for this scaling rule specific metrics trigger.
-  final String statistics;
+  final pulumi.Input<String> statistics;
   /// A mapping of tags to assign to the resource.
-  final List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag>? tags;
+  final pulumi.Input<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag>>? tags;
   /// The threshold for this scaling rule specific metrics trigger.
-  final double threshold;
+  final pulumi.Input<double> threshold;
 
   /// Creates a new [ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition].
   /// [comparisonOperator] The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
@@ -34,18 +34,18 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition {
       'comparisonOperator': comparisonOperator,
       'metricName': metricName,
       'statistics': statistics,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'threshold': threshold,
     };
   }
 
   factory ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition(
-      comparisonOperator: map['comparisonOperator'] as String,
-      metricName: map['metricName'] as String,
-      statistics: map['statistics'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag>(map['tags'], (value) => ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag.fromMap((value as Map).cast<String, dynamic>())),
-      threshold: map['threshold'] as double,
+      comparisonOperator: (map['comparisonOperator'] as String).input(),
+      metricName: (map['metricName'] as String).input(),
+      statistics: (map['statistics'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag>(map['tags'], (value) => ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      threshold: (map['threshold'] as double).input(),
     );
   }
 }

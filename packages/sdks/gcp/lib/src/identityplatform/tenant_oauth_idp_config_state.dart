@@ -32,23 +32,15 @@ class TenantOauthIdpConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [tenant] The name of the tenant where this OIDC IDP configuration resource exists
   TenantOauthIdpConfigState({
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? clientSecret,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? issuer,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? tenant,
-  }) :
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      issuer = pulumi.Input.asOptionalInput<String>(issuer),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tenant = pulumi.Input.asOptionalInput<String>(tenant);
+    this.clientId,
+    this.clientSecret,
+    this.displayName,
+    this.enabled,
+    this.issuer,
+    this.name,
+    this.project,
+    this.tenant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class TenantOauthIdpConfigState {
 
   factory TenantOauthIdpConfigState.fromMap(Map<String, dynamic> map) {
     return TenantOauthIdpConfigState(
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      clientSecret: map['clientSecret'] == null ? null : pulumi.Output.create<String>(map['clientSecret'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      issuer: map['issuer'] == null ? null : pulumi.Output.create<String>(map['issuer'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tenant: map['tenant'] == null ? null : pulumi.Output.create<String>(map['tenant'] as String),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
     );
   }
 }

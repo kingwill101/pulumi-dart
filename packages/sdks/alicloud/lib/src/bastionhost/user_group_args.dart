@@ -19,13 +19,10 @@ class UserGroupArgs {
   /// [instanceId] Specify the New Group of the Bastion Host of Instance Id.
   /// [userGroupName] Specify the New Group Name. Supports up to 128 Characters.
   UserGroupArgs({
-    pulumi.Output<String>? comment,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> userGroupName,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      userGroupName = pulumi.Input.asInput<String>(userGroupName);
+    this.comment,
+    required this.instanceId,
+    required this.userGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class UserGroupArgs {
 
   factory UserGroupArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      userGroupName: pulumi.Output.create<String>(map['userGroupName'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      userGroupName: (map['userGroupName'] as String).input(),
     );
   }
 }

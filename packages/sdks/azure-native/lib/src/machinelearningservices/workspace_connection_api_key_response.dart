@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Api key object for workspace connection credential.
 class WorkspaceConnectionApiKeyResponse {
-  final String? key;
+  final pulumi.Input<String>? key;
 
   /// Creates a new [WorkspaceConnectionApiKeyResponse].
   /// [key] Optional.
@@ -19,7 +20,7 @@ class WorkspaceConnectionApiKeyResponse {
 
   factory WorkspaceConnectionApiKeyResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionApiKeyResponse(
-      key: map['key'] == null ? null : map['key'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
     );
   }
 }

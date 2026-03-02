@@ -19,15 +19,11 @@ class BackupPolicyState {
   /// [preferredBackupPeriod] Backup period.
   /// [preferredBackupTime] Backup time.
   BackupPolicyState({
-    pulumi.Output<int>? backupRetentionPeriod,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? preferredBackupPeriod,
-    pulumi.Output<String>? preferredBackupTime,
-  }) :
-      backupRetentionPeriod = pulumi.Input.asOptionalInput<int>(backupRetentionPeriod),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      preferredBackupPeriod = pulumi.Input.asOptionalInput<String>(preferredBackupPeriod),
-      preferredBackupTime = pulumi.Input.asOptionalInput<String>(preferredBackupTime);
+    this.backupRetentionPeriod,
+    this.dbInstanceId,
+    this.preferredBackupPeriod,
+    this.preferredBackupTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : pulumi.Output.create<int>(map['backupRetentionPeriod'] as int),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      preferredBackupPeriod: map['preferredBackupPeriod'] == null ? null : pulumi.Output.create<String>(map['preferredBackupPeriod'] as String),
-      preferredBackupTime: map['preferredBackupTime'] == null ? null : pulumi.Output.create<String>(map['preferredBackupTime'] as String),
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod'] as int).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      preferredBackupPeriod: map['preferredBackupPeriod'] == null ? null : (map['preferredBackupPeriod'] as String).input(),
+      preferredBackupTime: map['preferredBackupTime'] == null ? null : (map['preferredBackupTime'] as String).input(),
     );
   }
 }

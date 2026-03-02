@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_oauth2_credential_provider_oauth2_provider_config_salesforce_oauth2_provider_config_oauth_discovery.dart';
 
 class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfig {
-  final int? clientCredentialsWoVersion;
-  final String? clientId;
+  final pulumi.Input<int>? clientCredentialsWoVersion;
+  final pulumi.Input<String>? clientId;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  final String? clientIdWo;
-  final String? clientSecret;
+  final pulumi.Input<String>? clientIdWo;
+  final pulumi.Input<String>? clientSecret;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  final String? clientSecretWo;
+  final pulumi.Input<String>? clientSecretWo;
   /// OAuth discovery configuration. See `oauth_discovery` below.
-  final List<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery>? oauthDiscoveries;
+  final pulumi.Input<List<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery>>? oauthDiscoveries;
 
   /// Creates a new [AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfig].
   /// [clientCredentialsWoVersion] Optional.
@@ -37,18 +37,18 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2Provi
       'clientIdWo': ?clientIdWo,
       'clientSecret': ?clientSecret,
       'clientSecretWo': ?clientSecretWo,
-      'oauthDiscoveries': ?oauthDiscoveries == null ? null : pulumi.Input.encodeList<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery, Map<String, dynamic>>(oauthDiscoveries!, (value) => value.toMap()),
+      'oauthDiscoveries': ?pulumi.Input.mapOptionalInputValue<List<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery>, List<Map<String, dynamic>>>(oauthDiscoveries, (value) => pulumi.Input.encodeList<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfig(
-      clientCredentialsWoVersion: map['clientCredentialsWoVersion'] == null ? null : map['clientCredentialsWoVersion'] as int,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientIdWo: map['clientIdWo'] == null ? null : map['clientIdWo'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      clientSecretWo: map['clientSecretWo'] == null ? null : map['clientSecretWo'] as String,
-      oauthDiscoveries: map['oauthDiscoveries'] == null ? null : pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery>(map['oauthDiscoveries'], (value) => AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery.fromMap((value as Map).cast<String, dynamic>())),
+      clientCredentialsWoVersion: map['clientCredentialsWoVersion'] == null ? null : (map['clientCredentialsWoVersion'] as int).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientIdWo: map['clientIdWo'] == null ? null : (map['clientIdWo'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      clientSecretWo: map['clientSecretWo'] == null ? null : (map['clientSecretWo'] as String).input(),
+      oauthDiscoveries: map['oauthDiscoveries'] == null ? null : (pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery>(map['oauthDiscoveries'], (value) => AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

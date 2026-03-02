@@ -32,15 +32,11 @@ class AppCheckDebugTokenArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [token] The secret token itself. Must be provided during creation, and must be a UUID4,
   AppCheckDebugTokenArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> token,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      token = pulumi.Input.asInput<String>(token);
+    required this.appId,
+    required this.displayName,
+    this.project,
+    required this.token,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,10 +49,10 @@ class AppCheckDebugTokenArgs {
 
   factory AppCheckDebugTokenArgs.fromMap(Map<String, dynamic> map) {
     return AppCheckDebugTokenArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      token: pulumi.Output.create<String>(map['token'] as String),
+      appId: (map['appId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      token: (map['token'] as String).input(),
     );
   }
 }

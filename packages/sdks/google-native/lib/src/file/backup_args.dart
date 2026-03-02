@@ -32,23 +32,15 @@ class BackupArgs {
   /// [sourceFileShare] Name of the file share in the source Filestore instance that the backup is created from.
   /// [sourceInstance] The resource name of the source Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
   BackupArgs({
-    required pulumi.Output<String> backupId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? sourceFileShare,
-    pulumi.Output<String>? sourceInstance,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceFileShare = pulumi.Input.asOptionalInput<String>(sourceFileShare),
-      sourceInstance = pulumi.Input.asOptionalInput<String>(sourceInstance);
+    required this.backupId,
+    this.description,
+    this.kmsKey,
+    this.labels,
+    this.location,
+    this.project,
+    this.sourceFileShare,
+    this.sourceInstance,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      backupId: pulumi.Output.create<String>(map['backupId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sourceFileShare: map['sourceFileShare'] == null ? null : pulumi.Output.create<String>(map['sourceFileShare'] as String),
-      sourceInstance: map['sourceInstance'] == null ? null : pulumi.Output.create<String>(map['sourceInstance'] as String),
+      backupId: (map['backupId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sourceFileShare: map['sourceFileShare'] == null ? null : (map['sourceFileShare'] as String).input(),
+      sourceInstance: map['sourceInstance'] == null ? null : (map['sourceInstance'] as String).input(),
     );
   }
 }

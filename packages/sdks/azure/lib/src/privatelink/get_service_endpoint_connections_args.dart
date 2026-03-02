@@ -16,11 +16,9 @@ class GetServiceEndpointConnectionsArgs {
   /// [resourceGroupName] The name of the resource group in which the private link service resides.
   /// [serviceId] The resource ID of the private link service.
   GetServiceEndpointConnectionsArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceId,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    required this.resourceGroupName,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetServiceEndpointConnectionsArgs {
 
   factory GetServiceEndpointConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceEndpointConnectionsArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

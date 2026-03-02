@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration for an individual load balancer to health check.
 class RRSetRoutingPolicyLoadBalancerTargetResponse {
   /// The frontend IP address of the load balancer to health check.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The protocol of the load balancer to health check.
-  final String ipProtocol;
-  final String kind;
+  final pulumi.Input<String> ipProtocol;
+  final pulumi.Input<String> kind;
   /// The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer.
-  final String loadBalancerType;
+  final pulumi.Input<String> loadBalancerType;
   /// The fully qualified URL of the network that the load balancer is attached to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} .
-  final String networkUrl;
+  final pulumi.Input<String> networkUrl;
   /// The configured port of the load balancer.
-  final String port;
+  final pulumi.Input<String> port;
   /// The project ID in which the load balancer is located.
-  final String project;
+  final pulumi.Input<String> project;
   /// The region in which the load balancer is located.
-  final String region;
+  final pulumi.Input<String> region;
 
   /// Creates a new [RRSetRoutingPolicyLoadBalancerTargetResponse].
   /// [ipAddress] The frontend IP address of the load balancer to health check.
@@ -54,14 +55,14 @@ class RRSetRoutingPolicyLoadBalancerTargetResponse {
 
   factory RRSetRoutingPolicyLoadBalancerTargetResponse.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyLoadBalancerTargetResponse(
-      ipAddress: map['ipAddress'] as String,
-      ipProtocol: map['ipProtocol'] as String,
-      kind: map['kind'] as String,
-      loadBalancerType: map['loadBalancerType'] as String,
-      networkUrl: map['networkUrl'] as String,
-      port: map['port'] as String,
-      project: map['project'] as String,
-      region: map['region'] as String,
+      ipAddress: (map['ipAddress'] as String).input(),
+      ipProtocol: (map['ipProtocol'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      loadBalancerType: (map['loadBalancerType'] as String).input(),
+      networkUrl: (map['networkUrl'] as String).input(),
+      port: (map['port'] as String).input(),
+      project: (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

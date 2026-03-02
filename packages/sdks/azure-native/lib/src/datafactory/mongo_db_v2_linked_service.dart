@@ -7,22 +7,22 @@ import 'parameter_specification.dart';
 /// Linked service for MongoDB data source.
 class MongoDbV2LinkedService {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// The MongoDB connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
-  final dynamic connectionString;
+  final pulumi.Input<dynamic> connectionString;
   /// The name of the MongoDB database that you want to access. Type: string (or Expression with resultType string).
-  final dynamic database;
+  final pulumi.Input<dynamic> database;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// Type of linked service.
   /// Expected value is 'MongoDbV2'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [MongoDbV2LinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -47,11 +47,11 @@ class MongoDbV2LinkedService {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionString': connectionString,
       'database': database,
       'description': ?description,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
       'version': ?version,
     };
@@ -59,14 +59,14 @@ class MongoDbV2LinkedService {
 
   factory MongoDbV2LinkedService.fromMap(Map<String, dynamic> map) {
     return MongoDbV2LinkedService(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      connectionString: map['connectionString'],
-      database: map['database'],
-      description: map['description'] == null ? null : map['description'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      connectionString: (map['connectionString']).input(),
+      database: (map['database']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

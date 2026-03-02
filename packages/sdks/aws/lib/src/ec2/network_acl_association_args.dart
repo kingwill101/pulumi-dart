@@ -19,13 +19,10 @@ class NetworkAclAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetId] The ID of the associated Subnet.
   NetworkAclAssociationArgs({
-    required pulumi.Output<String> networkAclId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> subnetId,
-  }) :
-      networkAclId = pulumi.Input.asInput<String>(networkAclId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asInput<String>(subnetId);
+    required this.networkAclId,
+    this.region,
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class NetworkAclAssociationArgs {
 
   factory NetworkAclAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAclAssociationArgs(
-      networkAclId: pulumi.Output.create<String>(map['networkAclId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
+      networkAclId: (map['networkAclId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

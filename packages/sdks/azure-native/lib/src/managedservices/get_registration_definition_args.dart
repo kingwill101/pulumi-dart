@@ -16,11 +16,9 @@ class GetRegistrationDefinitionArgs {
   /// [registrationDefinitionId] The GUID of the registration definition.
   /// [scope] The scope of the resource.
   GetRegistrationDefinitionArgs({
-    required pulumi.Output<String> registrationDefinitionId,
-    required pulumi.Output<String> scope,
-  }) :
-      registrationDefinitionId = pulumi.Input.asInput<String>(registrationDefinitionId),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.registrationDefinitionId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRegistrationDefinitionArgs {
 
   factory GetRegistrationDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistrationDefinitionArgs(
-      registrationDefinitionId: pulumi.Output.create<String>(map['registrationDefinitionId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      registrationDefinitionId: (map['registrationDefinitionId'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

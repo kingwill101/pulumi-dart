@@ -43,21 +43,14 @@ class RemediationArgs {
   /// [remediationTemplateId] The ID of the correction template.
   /// [remediationType] Remediation type. Value:
   RemediationArgs({
-    required pulumi.Output<String> aggregatorId,
-    required pulumi.Output<String> configRuleId,
-    required pulumi.Output<String> invokeType,
-    required pulumi.Output<String> remediationOriginParams,
-    pulumi.Output<String>? remediationSourceType,
-    required pulumi.Output<String> remediationTemplateId,
-    required pulumi.Output<String> remediationType,
-  }) :
-      aggregatorId = pulumi.Input.asInput<String>(aggregatorId),
-      configRuleId = pulumi.Input.asInput<String>(configRuleId),
-      invokeType = pulumi.Input.asInput<String>(invokeType),
-      remediationOriginParams = pulumi.Input.asInput<String>(remediationOriginParams),
-      remediationSourceType = pulumi.Input.asOptionalInput<String>(remediationSourceType),
-      remediationTemplateId = pulumi.Input.asInput<String>(remediationTemplateId),
-      remediationType = pulumi.Input.asInput<String>(remediationType);
+    required this.aggregatorId,
+    required this.configRuleId,
+    required this.invokeType,
+    required this.remediationOriginParams,
+    this.remediationSourceType,
+    required this.remediationTemplateId,
+    required this.remediationType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,13 +66,13 @@ class RemediationArgs {
 
   factory RemediationArgs.fromMap(Map<String, dynamic> map) {
     return RemediationArgs(
-      aggregatorId: pulumi.Output.create<String>(map['aggregatorId'] as String),
-      configRuleId: pulumi.Output.create<String>(map['configRuleId'] as String),
-      invokeType: pulumi.Output.create<String>(map['invokeType'] as String),
-      remediationOriginParams: pulumi.Output.create<String>(map['remediationOriginParams'] as String),
-      remediationSourceType: map['remediationSourceType'] == null ? null : pulumi.Output.create<String>(map['remediationSourceType'] as String),
-      remediationTemplateId: pulumi.Output.create<String>(map['remediationTemplateId'] as String),
-      remediationType: pulumi.Output.create<String>(map['remediationType'] as String),
+      aggregatorId: (map['aggregatorId'] as String).input(),
+      configRuleId: (map['configRuleId'] as String).input(),
+      invokeType: (map['invokeType'] as String).input(),
+      remediationOriginParams: (map['remediationOriginParams'] as String).input(),
+      remediationSourceType: map['remediationSourceType'] == null ? null : (map['remediationSourceType'] as String).input(),
+      remediationTemplateId: (map['remediationTemplateId'] as String).input(),
+      remediationType: (map['remediationType'] as String).input(),
     );
   }
 }

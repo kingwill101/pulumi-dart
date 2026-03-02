@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_service_locality_load_balancing_policy_config_custom_policy_response_compute_beta.dart';
 import 'backend_service_locality_load_balancing_policy_config_policy_response_compute_beta.dart';
 
 /// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
 class BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta {
-  final BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseComputeBeta customPolicy;
-  final BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta policy;
+  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseComputeBeta> customPolicy;
+  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta> policy;
 
   /// Creates a new [BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta].
   /// [customPolicy] Required.
@@ -18,15 +19,15 @@ class BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customPolicy': customPolicy.toMap(),
-      'policy': policy.toMap(),
+      'customPolicy': pulumi.Input.mapInputValue<BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseComputeBeta, Map<String, dynamic>>(customPolicy, (value) => value.toMap()),
+      'policy': pulumi.Input.mapInputValue<BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta, Map<String, dynamic>>(policy, (value) => value.toMap()),
     };
   }
 
   factory BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta(
-      customPolicy: BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseComputeBeta.fromMap((map['customPolicy'] as Map).cast<String, dynamic>()),
-      policy: BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta.fromMap((map['policy'] as Map).cast<String, dynamic>()),
+      customPolicy: (BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseComputeBeta.fromMap((map['customPolicy'] as Map).cast<String, dynamic>())).input(),
+      policy: (BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

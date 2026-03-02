@@ -19,13 +19,10 @@ class GetFqdnListLocalRulestackArgs {
   /// [name] fqdn list name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFqdnListLocalRulestackArgs({
-    required pulumi.Output<String> localRulestackName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      localRulestackName = pulumi.Input.asInput<String>(localRulestackName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.localRulestackName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFqdnListLocalRulestackArgs {
 
   factory GetFqdnListLocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GetFqdnListLocalRulestackArgs(
-      localRulestackName: pulumi.Output.create<String>(map['localRulestackName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      localRulestackName: (map['localRulestackName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

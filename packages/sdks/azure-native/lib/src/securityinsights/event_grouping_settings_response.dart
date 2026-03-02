@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Event grouping settings property bag.
 class EventGroupingSettingsResponse {
   /// The event grouping aggregation kinds
-  final String? aggregationKind;
+  final pulumi.Input<String>? aggregationKind;
 
   /// Creates a new [EventGroupingSettingsResponse].
   /// [aggregationKind] The event grouping aggregation kinds
@@ -20,7 +21,7 @@ class EventGroupingSettingsResponse {
 
   factory EventGroupingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EventGroupingSettingsResponse(
-      aggregationKind: map['aggregationKind'] == null ? null : map['aggregationKind'] as String,
+      aggregationKind: map['aggregationKind'] == null ? null : (map['aggregationKind'] as String).input(),
     );
   }
 }

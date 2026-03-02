@@ -51,25 +51,16 @@ class FunctionArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceConfig] Describes the Service being deployed.
   FunctionArgs({
-    pulumi.Output<FunctionBuildConfig>? buildConfig,
-    pulumi.Output<String>? description,
-    pulumi.Output<FunctionEventTrigger>? eventTrigger,
-    pulumi.Output<String>? kmsKeyName,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<FunctionServiceConfig>? serviceConfig,
-  }) :
-      buildConfig = pulumi.Input.asOptionalInput<FunctionBuildConfig>(buildConfig),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventTrigger = pulumi.Input.asOptionalInput<FunctionEventTrigger>(eventTrigger),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceConfig = pulumi.Input.asOptionalInput<FunctionServiceConfig>(serviceConfig);
+    this.buildConfig,
+    this.description,
+    this.eventTrigger,
+    this.kmsKeyName,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    this.serviceConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,15 +78,15 @@ class FunctionArgs {
 
   factory FunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionArgs(
-      buildConfig: map['buildConfig'] == null ? null : pulumi.Output.create<FunctionBuildConfig>(FunctionBuildConfig.fromMap((map['buildConfig'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventTrigger: map['eventTrigger'] == null ? null : pulumi.Output.create<FunctionEventTrigger>(FunctionEventTrigger.fromMap((map['eventTrigger'] as Map).cast<String, dynamic>())),
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceConfig: map['serviceConfig'] == null ? null : pulumi.Output.create<FunctionServiceConfig>(FunctionServiceConfig.fromMap((map['serviceConfig'] as Map).cast<String, dynamic>())),
+      buildConfig: map['buildConfig'] == null ? null : (FunctionBuildConfig.fromMap((map['buildConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventTrigger: map['eventTrigger'] == null ? null : (FunctionEventTrigger.fromMap((map['eventTrigger'] as Map).cast<String, dynamic>())).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceConfig: map['serviceConfig'] == null ? null : (FunctionServiceConfig.fromMap((map['serviceConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

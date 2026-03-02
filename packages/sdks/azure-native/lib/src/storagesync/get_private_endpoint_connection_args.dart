@@ -19,13 +19,10 @@ class GetPrivateEndpointConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageSyncServiceName] Name of Storage Sync Service resource.
   GetPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> privateEndpointConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageSyncServiceName,
-  }) :
-      privateEndpointConnectionName = pulumi.Input.asInput<String>(privateEndpointConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageSyncServiceName = pulumi.Input.asInput<String>(storageSyncServiceName);
+    required this.privateEndpointConnectionName,
+    required this.resourceGroupName,
+    required this.storageSyncServiceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPrivateEndpointConnectionArgs {
 
   factory GetPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionArgs(
-      privateEndpointConnectionName: pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageSyncServiceName: pulumi.Output.create<String>(map['storageSyncServiceName'] as String),
+      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageSyncServiceName: (map['storageSyncServiceName'] as String).input(),
     );
   }
 }

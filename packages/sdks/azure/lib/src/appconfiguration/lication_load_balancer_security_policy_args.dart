@@ -25,17 +25,12 @@ class LicationLoadBalancerSecurityPolicyArgs {
   /// [tags] A mapping of tags which should be assigned to the Application Load Balancer Security Policy.
   /// [webApplicationFirewallPolicyId] The ID of the Web Application Firewall Policy. Changing this forces a new Application Load Balancer Security Policy to be created.
   LicationLoadBalancerSecurityPolicyArgs({
-    required pulumi.Output<String> applicationLoadBalancerId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> webApplicationFirewallPolicyId,
-  }) :
-      applicationLoadBalancerId = pulumi.Input.asInput<String>(applicationLoadBalancerId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      webApplicationFirewallPolicyId = pulumi.Input.asInput<String>(webApplicationFirewallPolicyId);
+    required this.applicationLoadBalancerId,
+    this.location,
+    this.name,
+    this.tags,
+    required this.webApplicationFirewallPolicyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class LicationLoadBalancerSecurityPolicyArgs {
 
   factory LicationLoadBalancerSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LicationLoadBalancerSecurityPolicyArgs(
-      applicationLoadBalancerId: pulumi.Output.create<String>(map['applicationLoadBalancerId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      webApplicationFirewallPolicyId: pulumi.Output.create<String>(map['webApplicationFirewallPolicyId'] as String),
+      applicationLoadBalancerId: (map['applicationLoadBalancerId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      webApplicationFirewallPolicyId: (map['webApplicationFirewallPolicyId'] as String).input(),
     );
   }
 }

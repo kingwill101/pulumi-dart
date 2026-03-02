@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_recurrence_schedule_response.dart';
 
 class JobRecurrenceResponse {
   /// Gets or sets the maximum number of times that the job should run.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Gets or sets the time at which the job will complete.
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// Gets or sets the frequency of recurrence (second, minute, hour, day, week, month).
-  final String? frequency;
+  final pulumi.Input<String>? frequency;
   /// Gets or sets the interval between retries.
-  final int? interval;
-  final JobRecurrenceScheduleResponse? schedule;
+  final pulumi.Input<int>? interval;
+  final pulumi.Input<JobRecurrenceScheduleResponse>? schedule;
 
   /// Creates a new [JobRecurrenceResponse].
   /// [count] Gets or sets the maximum number of times that the job should run.
@@ -33,17 +34,17 @@ class JobRecurrenceResponse {
       'endTime': ?endTime,
       'frequency': ?frequency,
       'interval': ?interval,
-      'schedule': ?schedule == null ? null : schedule!.toMap(),
+      'schedule': ?pulumi.Input.mapOptionalInputValue<JobRecurrenceScheduleResponse, Map<String, dynamic>>(schedule, (value) => value.toMap()),
     };
   }
 
   factory JobRecurrenceResponse.fromMap(Map<String, dynamic> map) {
     return JobRecurrenceResponse(
-      count: map['count'] == null ? null : map['count'] as int,
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      frequency: map['frequency'] == null ? null : map['frequency'] as String,
-      interval: map['interval'] == null ? null : map['interval'] as int,
-      schedule: map['schedule'] == null ? null : JobRecurrenceScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      schedule: map['schedule'] == null ? null : (JobRecurrenceScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

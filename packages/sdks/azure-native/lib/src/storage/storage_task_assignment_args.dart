@@ -23,15 +23,11 @@ class StorageTaskAssignmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageTaskAssignmentName] The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   StorageTaskAssignmentArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<StorageTaskAssignmentProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageTaskAssignmentName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      properties = pulumi.Input.asInput<StorageTaskAssignmentProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageTaskAssignmentName = pulumi.Input.asOptionalInput<String>(storageTaskAssignmentName);
+    required this.accountName,
+    required this.properties,
+    required this.resourceGroupName,
+    this.storageTaskAssignmentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class StorageTaskAssignmentArgs {
 
   factory StorageTaskAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return StorageTaskAssignmentArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      properties: pulumi.Output.create<StorageTaskAssignmentProperties>(StorageTaskAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageTaskAssignmentName: map['storageTaskAssignmentName'] == null ? null : pulumi.Output.create<String>(map['storageTaskAssignmentName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      properties: (StorageTaskAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageTaskAssignmentName: map['storageTaskAssignmentName'] == null ? null : (map['storageTaskAssignmentName'] as String).input(),
     );
   }
 }

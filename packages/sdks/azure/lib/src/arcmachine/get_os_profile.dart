@@ -6,11 +6,11 @@ import 'get_os_profile_window.dart';
 
 class GetOsProfile {
   /// Specifies the host OS name of the Azure Arc machine.
-  final String computerName;
+  final pulumi.Input<String> computerName;
   /// A `linux` block as defined above.
-  final List<GetOsProfileLinux> linuxes;
+  final pulumi.Input<List<GetOsProfileLinux>> linuxes;
   /// A `windows` block as defined below.
-  final List<GetOsProfileWindow> windows;
+  final pulumi.Input<List<GetOsProfileWindow>> windows;
 
   /// Creates a new [GetOsProfile].
   /// [computerName] Specifies the host OS name of the Azure Arc machine.
@@ -25,16 +25,16 @@ class GetOsProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'computerName': computerName,
-      'linuxes': pulumi.Input.encodeList<GetOsProfileLinux, Map<String, dynamic>>(linuxes, (value) => value.toMap()),
-      'windows': pulumi.Input.encodeList<GetOsProfileWindow, Map<String, dynamic>>(windows, (value) => value.toMap()),
+      'linuxes': pulumi.Input.mapInputValue<List<GetOsProfileLinux>, List<Map<String, dynamic>>>(linuxes, (value) => pulumi.Input.encodeList<GetOsProfileLinux, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'windows': pulumi.Input.mapInputValue<List<GetOsProfileWindow>, List<Map<String, dynamic>>>(windows, (value) => pulumi.Input.encodeList<GetOsProfileWindow, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetOsProfile.fromMap(Map<String, dynamic> map) {
     return GetOsProfile(
-      computerName: map['computerName'] as String,
-      linuxes: pulumi.Input.decodeList<GetOsProfileLinux>(map['linuxes'], (value) => GetOsProfileLinux.fromMap((value as Map).cast<String, dynamic>())),
-      windows: pulumi.Input.decodeList<GetOsProfileWindow>(map['windows'], (value) => GetOsProfileWindow.fromMap((value as Map).cast<String, dynamic>())),
+      computerName: (map['computerName'] as String).input(),
+      linuxes: (pulumi.Input.decodeList<GetOsProfileLinux>(map['linuxes'], (value) => GetOsProfileLinux.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      windows: (pulumi.Input.decodeList<GetOsProfileWindow>(map['windows'], (value) => GetOsProfileWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authorization Profile
 class AuthorizationProfileResponse {
   /// The approved time
-  final String approvedTime;
+  final pulumi.Input<String> approvedTime;
   /// The approver
-  final String approver;
+  final pulumi.Input<String> approver;
   /// The requested time
-  final String requestedTime;
+  final pulumi.Input<String> requestedTime;
   /// The requester
-  final String requester;
+  final pulumi.Input<String> requester;
   /// The requester object id
-  final String requesterObjectId;
+  final pulumi.Input<String> requesterObjectId;
 
   /// Creates a new [AuthorizationProfileResponse].
   /// [approvedTime] The approved time
@@ -40,11 +41,11 @@ class AuthorizationProfileResponse {
 
   factory AuthorizationProfileResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizationProfileResponse(
-      approvedTime: map['approvedTime'] as String,
-      approver: map['approver'] as String,
-      requestedTime: map['requestedTime'] as String,
-      requester: map['requester'] as String,
-      requesterObjectId: map['requesterObjectId'] as String,
+      approvedTime: (map['approvedTime'] as String).input(),
+      approver: (map['approver'] as String).input(),
+      requestedTime: (map['requestedTime'] as String).input(),
+      requester: (map['requester'] as String).input(),
+      requesterObjectId: (map['requesterObjectId'] as String).input(),
     );
   }
 }

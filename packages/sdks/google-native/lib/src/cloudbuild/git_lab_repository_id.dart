@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise
 class GitLabRepositoryId {
   /// Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GitLabRepositoryId].
   /// [id] Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID
@@ -20,7 +21,7 @@ class GitLabRepositoryId {
 
   factory GitLabRepositoryId.fromMap(Map<String, dynamic> map) {
     return GitLabRepositoryId(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

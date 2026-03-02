@@ -49,35 +49,21 @@ class IotHubDataConnectionState {
   /// [sharedAccessPolicyName] Specifies the IotHub Shared Access Policy this data connection will use for ingestion, which must have read permission. Changing this forces a new resource to be created.
   /// [tableName] Specifies the target table name used for the message ingestion. Table must exist before resource is created. Changing this forces a new resource to be created.
   IotHubDataConnectionState({
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? consumerGroup,
-    pulumi.Output<String>? dataFormat,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? databaseRoutingType,
-    pulumi.Output<List<String>>? eventSystemProperties,
-    pulumi.Output<String>? iothubId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? mappingRuleName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? retrievalStartDate,
-    pulumi.Output<String>? sharedAccessPolicyName,
-    pulumi.Output<String>? tableName,
-  }) :
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      consumerGroup = pulumi.Input.asOptionalInput<String>(consumerGroup),
-      dataFormat = pulumi.Input.asOptionalInput<String>(dataFormat),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      databaseRoutingType = pulumi.Input.asOptionalInput<String>(databaseRoutingType),
-      eventSystemProperties = pulumi.Input.asOptionalInput<List<String>>(eventSystemProperties),
-      iothubId = pulumi.Input.asOptionalInput<String>(iothubId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mappingRuleName = pulumi.Input.asOptionalInput<String>(mappingRuleName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      retrievalStartDate = pulumi.Input.asOptionalInput<String>(retrievalStartDate),
-      sharedAccessPolicyName = pulumi.Input.asOptionalInput<String>(sharedAccessPolicyName),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName);
+    this.clusterName,
+    this.consumerGroup,
+    this.dataFormat,
+    this.databaseName,
+    this.databaseRoutingType,
+    this.eventSystemProperties,
+    this.iothubId,
+    this.location,
+    this.mappingRuleName,
+    this.name,
+    this.resourceGroupName,
+    this.retrievalStartDate,
+    this.sharedAccessPolicyName,
+    this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,20 +86,20 @@ class IotHubDataConnectionState {
 
   factory IotHubDataConnectionState.fromMap(Map<String, dynamic> map) {
     return IotHubDataConnectionState(
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      consumerGroup: map['consumerGroup'] == null ? null : pulumi.Output.create<String>(map['consumerGroup'] as String),
-      dataFormat: map['dataFormat'] == null ? null : pulumi.Output.create<String>(map['dataFormat'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      databaseRoutingType: map['databaseRoutingType'] == null ? null : pulumi.Output.create<String>(map['databaseRoutingType'] as String),
-      eventSystemProperties: map['eventSystemProperties'] == null ? null : pulumi.Output.create<List<String>>((map['eventSystemProperties'] as List).cast<String>()),
-      iothubId: map['iothubId'] == null ? null : pulumi.Output.create<String>(map['iothubId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mappingRuleName: map['mappingRuleName'] == null ? null : pulumi.Output.create<String>(map['mappingRuleName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retrievalStartDate: map['retrievalStartDate'] == null ? null : pulumi.Output.create<String>(map['retrievalStartDate'] as String),
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : pulumi.Output.create<String>(map['sharedAccessPolicyName'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
+      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      databaseRoutingType: map['databaseRoutingType'] == null ? null : (map['databaseRoutingType'] as String).input(),
+      eventSystemProperties: map['eventSystemProperties'] == null ? null : ((map['eventSystemProperties'] as List).cast<String>()).input(),
+      iothubId: map['iothubId'] == null ? null : (map['iothubId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      retrievalStartDate: map['retrievalStartDate'] == null ? null : (map['retrievalStartDate'] as String).input(),
+      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

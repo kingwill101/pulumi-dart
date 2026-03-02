@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExpressGatewayServicePrimaryContainerSecret {
-  final String name;
+  final pulumi.Input<String> name;
   /// ARN of the AWS Secrets Manager secret or AWS Systems Manager parameter containing the secret value.
-  final String valueFrom;
+  final pulumi.Input<String> valueFrom;
 
   /// Creates a new [ExpressGatewayServicePrimaryContainerSecret].
   /// [name] Required.
@@ -23,8 +24,8 @@ class ExpressGatewayServicePrimaryContainerSecret {
 
   factory ExpressGatewayServicePrimaryContainerSecret.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServicePrimaryContainerSecret(
-      name: map['name'] as String,
-      valueFrom: map['valueFrom'] as String,
+      name: (map['name'] as String).input(),
+      valueFrom: (map['valueFrom'] as String).input(),
     );
   }
 }

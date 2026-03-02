@@ -28,19 +28,13 @@ class ClusterArgs {
   /// [subnetIds] The IDs of subnets in which cluster will operate.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ClusterArgs({
-    required pulumi.Output<String> hsmType,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sourceBackupIdentifier,
-    required pulumi.Output<List<String>> subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      hsmType = pulumi.Input.asInput<String>(hsmType),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceBackupIdentifier = pulumi.Input.asOptionalInput<String>(sourceBackupIdentifier),
-      subnetIds = pulumi.Input.asInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.hsmType,
+    this.mode,
+    this.region,
+    this.sourceBackupIdentifier,
+    required this.subnetIds,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      hsmType: pulumi.Output.create<String>(map['hsmType'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceBackupIdentifier: map['sourceBackupIdentifier'] == null ? null : pulumi.Output.create<String>(map['sourceBackupIdentifier'] as String),
-      subnetIds: pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      hsmType: (map['hsmType'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceBackupIdentifier: map['sourceBackupIdentifier'] == null ? null : (map['sourceBackupIdentifier'] as String).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

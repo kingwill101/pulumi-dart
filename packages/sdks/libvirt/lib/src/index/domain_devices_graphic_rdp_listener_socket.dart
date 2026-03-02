@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicRdpListenerSocket {
   /// Defines the socket's attributes for listener configurations in the Spice protocol.
-  final String? socket;
+  final pulumi.Input<String>? socket;
 
   /// Creates a new [DomainDevicesGraphicRdpListenerSocket].
   /// [socket] Defines the socket's attributes for listener configurations in the Spice protocol.
@@ -19,7 +20,7 @@ class DomainDevicesGraphicRdpListenerSocket {
 
   factory DomainDevicesGraphicRdpListenerSocket.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicRdpListenerSocket(
-      socket: map['socket'] == null ? null : map['socket'] as String,
+      socket: map['socket'] == null ? null : (map['socket'] as String).input(),
     );
   }
 }

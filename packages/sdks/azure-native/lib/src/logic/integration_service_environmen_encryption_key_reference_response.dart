@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_reference_response.dart';
 
 /// The encryption key details for the integration service environment.
 class IntegrationServiceEnvironmenEncryptionKeyReferenceResponse {
   /// Gets the key name in the Key Vault.
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
   /// The key vault reference.
-  final ResourceReferenceResponse? keyVault;
+  final pulumi.Input<ResourceReferenceResponse>? keyVault;
   /// Gets the version of the key specified in the keyName property.
-  final String? keyVersion;
+  final pulumi.Input<String>? keyVersion;
 
   /// Creates a new [IntegrationServiceEnvironmenEncryptionKeyReferenceResponse].
   /// [keyName] Gets the key name in the Key Vault.
@@ -24,16 +25,16 @@ class IntegrationServiceEnvironmenEncryptionKeyReferenceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keyName': ?keyName,
-      'keyVault': ?keyVault == null ? null : keyVault!.toMap(),
+      'keyVault': ?pulumi.Input.mapOptionalInputValue<ResourceReferenceResponse, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
       'keyVersion': ?keyVersion,
     };
   }
 
   factory IntegrationServiceEnvironmenEncryptionKeyReferenceResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmenEncryptionKeyReferenceResponse(
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      keyVault: map['keyVault'] == null ? null : ResourceReferenceResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>()),
-      keyVersion: map['keyVersion'] == null ? null : map['keyVersion'] as String,
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyVault: map['keyVault'] == null ? null : (ResourceReferenceResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
     );
   }
 }

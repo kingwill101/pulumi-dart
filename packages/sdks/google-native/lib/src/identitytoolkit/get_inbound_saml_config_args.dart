@@ -16,13 +16,10 @@ class GetInboundSamlConfigArgs {
   /// [project] Optional.
   /// [tenantId] Required.
   GetInboundSamlConfigArgs({
-    required pulumi.Output<String> inboundSamlConfigId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tenantId,
-  }) :
-      inboundSamlConfigId = pulumi.Input.asInput<String>(inboundSamlConfigId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    required this.inboundSamlConfigId,
+    this.project,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetInboundSamlConfigArgs {
 
   factory GetInboundSamlConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetInboundSamlConfigArgs(
-      inboundSamlConfigId: pulumi.Output.create<String>(map['inboundSamlConfigId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      inboundSamlConfigId: (map['inboundSamlConfigId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

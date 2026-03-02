@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceNetworkInterfaces {
   /// The index of the network card for Secondary ENI.
-  final int? networkCardIndex;
+  final pulumi.Input<int>? networkCardIndex;
   /// The ID of the Secondary ENI.
-  final String? networkInterfaceId;
+  final pulumi.Input<String>? networkInterfaceId;
   /// The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
   /// - `Standard`: Uses the TCP communication mode.
   /// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
-  final String? networkInterfaceTrafficMode;
+  final pulumi.Input<String>? networkInterfaceTrafficMode;
   /// The number of queues supported by the ERI.
-  final int? queuePairNumber;
+  final pulumi.Input<int>? queuePairNumber;
   /// The ID of security group N to which to assign Secondary ENI N.
-  final List<String>? securityGroupIds;
+  final pulumi.Input<List<String>>? securityGroupIds;
   /// The ID of the vSwitch to which to connect Secondary ENI N.
-  final String? vswitchId;
+  final pulumi.Input<String>? vswitchId;
 
   /// Creates a new [InstanceNetworkInterfaces].
   /// [networkCardIndex] The index of the network card for Secondary ENI.
@@ -46,12 +47,12 @@ class InstanceNetworkInterfaces {
 
   factory InstanceNetworkInterfaces.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkInterfaces(
-      networkCardIndex: map['networkCardIndex'] == null ? null : map['networkCardIndex'] as int,
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
-      networkInterfaceTrafficMode: map['networkInterfaceTrafficMode'] == null ? null : map['networkInterfaceTrafficMode'] as String,
-      queuePairNumber: map['queuePairNumber'] == null ? null : map['queuePairNumber'] as int,
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
+      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      networkInterfaceTrafficMode: map['networkInterfaceTrafficMode'] == null ? null : (map['networkInterfaceTrafficMode'] as String).input(),
+      queuePairNumber: map['queuePairNumber'] == null ? null : (map['queuePairNumber'] as int).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

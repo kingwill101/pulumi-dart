@@ -28,19 +28,13 @@ class GetDiskTypesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [zoneId] The Zone to create emr cluster instance.
   GetDiskTypesArgs({
-    required pulumi.Output<String> clusterType,
-    required pulumi.Output<String> destinationResource,
-    required pulumi.Output<String> instanceChargeType,
-    required pulumi.Output<String> instanceType,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? zoneId,
-  }) :
-      clusterType = pulumi.Input.asInput<String>(clusterType),
-      destinationResource = pulumi.Input.asInput<String>(destinationResource),
-      instanceChargeType = pulumi.Input.asInput<String>(instanceChargeType),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    required this.clusterType,
+    required this.destinationResource,
+    required this.instanceChargeType,
+    required this.instanceType,
+    this.outputFile,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetDiskTypesArgs {
 
   factory GetDiskTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskTypesArgs(
-      clusterType: pulumi.Output.create<String>(map['clusterType'] as String),
-      destinationResource: pulumi.Output.create<String>(map['destinationResource'] as String),
-      instanceChargeType: pulumi.Output.create<String>(map['instanceChargeType'] as String),
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      clusterType: (map['clusterType'] as String).input(),
+      destinationResource: (map['destinationResource'] as String).input(),
+      instanceChargeType: (map['instanceChargeType'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

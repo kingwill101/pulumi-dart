@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A service account.
 class ServiceAccountResponse {
   /// Email address of the service account. If empty, default Compute service account will be used.
-  final String email;
+  final pulumi.Input<String> email;
   /// The list of scopes to be made available for this service account. If empty, access to all Cloud APIs will be allowed.
-  final List<String> scope;
+  final pulumi.Input<List<String>> scope;
 
   /// Creates a new [ServiceAccountResponse].
   /// [email] Email address of the service account. If empty, default Compute service account will be used.
@@ -25,8 +26,8 @@ class ServiceAccountResponse {
 
   factory ServiceAccountResponse.fromMap(Map<String, dynamic> map) {
     return ServiceAccountResponse(
-      email: map['email'] as String,
-      scope: (map['scope'] as List).cast<String>(),
+      email: (map['email'] as String).input(),
+      scope: ((map['scope'] as List).cast<String>()).input(),
     );
   }
 }

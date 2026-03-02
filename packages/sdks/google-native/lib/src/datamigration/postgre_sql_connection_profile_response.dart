@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_service_connect_connectivity_response.dart';
 import 'ssl_config_response.dart';
 
 /// Specifies connection parameters required specifically for PostgreSQL databases.
 class PostgreSqlConnectionProfileResponse {
   /// Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
-  final String alloydbClusterId;
+  final pulumi.Input<String> alloydbClusterId;
   /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
-  final String cloudSqlId;
+  final pulumi.Input<String> cloudSqlId;
   /// The IP or hostname of the source PostgreSQL database.
-  final String host;
+  final pulumi.Input<String> host;
   /// If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
-  final String networkArchitecture;
+  final pulumi.Input<String> networkArchitecture;
   /// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-  final String password;
+  final pulumi.Input<String> password;
   /// Indicates If this connection profile password is stored.
-  final bool passwordSet;
+  final pulumi.Input<bool> passwordSet;
   /// The network port of the source PostgreSQL database.
-  final int port;
+  final pulumi.Input<int> port;
   /// Private service connect connectivity.
-  final PrivateServiceConnectConnectivityResponse privateServiceConnectConnectivity;
+  final pulumi.Input<PrivateServiceConnectConnectivityResponse> privateServiceConnectConnectivity;
   /// SSL configuration for the destination to connect to the source database.
-  final SslConfigResponse ssl;
+  final pulumi.Input<SslConfigResponse> ssl;
   /// Static ip connectivity data (default, no additional details needed).
-  final Map<String, dynamic> staticIpConnectivity;
+  final pulumi.Input<Map<String, dynamic>> staticIpConnectivity;
   /// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [PostgreSqlConnectionProfileResponse].
   /// [alloydbClusterId] Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
@@ -63,8 +64,8 @@ class PostgreSqlConnectionProfileResponse {
       'password': password,
       'passwordSet': passwordSet,
       'port': port,
-      'privateServiceConnectConnectivity': privateServiceConnectConnectivity.toMap(),
-      'ssl': ssl.toMap(),
+      'privateServiceConnectConnectivity': pulumi.Input.mapInputValue<PrivateServiceConnectConnectivityResponse, Map<String, dynamic>>(privateServiceConnectConnectivity, (value) => value.toMap()),
+      'ssl': pulumi.Input.mapInputValue<SslConfigResponse, Map<String, dynamic>>(ssl, (value) => value.toMap()),
       'staticIpConnectivity': staticIpConnectivity,
       'username': username,
     };
@@ -72,17 +73,17 @@ class PostgreSqlConnectionProfileResponse {
 
   factory PostgreSqlConnectionProfileResponse.fromMap(Map<String, dynamic> map) {
     return PostgreSqlConnectionProfileResponse(
-      alloydbClusterId: map['alloydbClusterId'] as String,
-      cloudSqlId: map['cloudSqlId'] as String,
-      host: map['host'] as String,
-      networkArchitecture: map['networkArchitecture'] as String,
-      password: map['password'] as String,
-      passwordSet: map['passwordSet'] as bool,
-      port: map['port'] as int,
-      privateServiceConnectConnectivity: PrivateServiceConnectConnectivityResponse.fromMap((map['privateServiceConnectConnectivity'] as Map).cast<String, dynamic>()),
-      ssl: SslConfigResponse.fromMap((map['ssl'] as Map).cast<String, dynamic>()),
-      staticIpConnectivity: (map['staticIpConnectivity'] as Map).cast<String, dynamic>(),
-      username: map['username'] as String,
+      alloydbClusterId: (map['alloydbClusterId'] as String).input(),
+      cloudSqlId: (map['cloudSqlId'] as String).input(),
+      host: (map['host'] as String).input(),
+      networkArchitecture: (map['networkArchitecture'] as String).input(),
+      password: (map['password'] as String).input(),
+      passwordSet: (map['passwordSet'] as bool).input(),
+      port: (map['port'] as int).input(),
+      privateServiceConnectConnectivity: (PrivateServiceConnectConnectivityResponse.fromMap((map['privateServiceConnectConnectivity'] as Map).cast<String, dynamic>())).input(),
+      ssl: (SslConfigResponse.fromMap((map['ssl'] as Map).cast<String, dynamic>())).input(),
+      staticIpConnectivity: ((map['staticIpConnectivity'] as Map).cast<String, dynamic>()).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

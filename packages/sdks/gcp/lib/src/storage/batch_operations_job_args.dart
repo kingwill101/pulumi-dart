@@ -45,23 +45,15 @@ class BatchOperationsJobArgs {
   /// [putObjectHold] allows to update temporary hold or eventBased hold for objects in bucket.
   /// [rewriteObject] allows to update encryption key for objects in bucket.
   BatchOperationsJobArgs({
-    pulumi.Output<BatchOperationsJobBucketList>? bucketList,
-    pulumi.Output<BatchOperationsJobDeleteObject>? deleteObject,
-    pulumi.Output<bool>? deleteProtection,
-    pulumi.Output<String>? jobId,
-    pulumi.Output<String>? project,
-    pulumi.Output<BatchOperationsJobPutMetadata>? putMetadata,
-    pulumi.Output<BatchOperationsJobPutObjectHold>? putObjectHold,
-    pulumi.Output<BatchOperationsJobRewriteObject>? rewriteObject,
-  }) :
-      bucketList = pulumi.Input.asOptionalInput<BatchOperationsJobBucketList>(bucketList),
-      deleteObject = pulumi.Input.asOptionalInput<BatchOperationsJobDeleteObject>(deleteObject),
-      deleteProtection = pulumi.Input.asOptionalInput<bool>(deleteProtection),
-      jobId = pulumi.Input.asOptionalInput<String>(jobId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      putMetadata = pulumi.Input.asOptionalInput<BatchOperationsJobPutMetadata>(putMetadata),
-      putObjectHold = pulumi.Input.asOptionalInput<BatchOperationsJobPutObjectHold>(putObjectHold),
-      rewriteObject = pulumi.Input.asOptionalInput<BatchOperationsJobRewriteObject>(rewriteObject);
+    this.bucketList,
+    this.deleteObject,
+    this.deleteProtection,
+    this.jobId,
+    this.project,
+    this.putMetadata,
+    this.putObjectHold,
+    this.rewriteObject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,14 +70,14 @@ class BatchOperationsJobArgs {
 
   factory BatchOperationsJobArgs.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobArgs(
-      bucketList: map['bucketList'] == null ? null : pulumi.Output.create<BatchOperationsJobBucketList>(BatchOperationsJobBucketList.fromMap((map['bucketList'] as Map).cast<String, dynamic>())),
-      deleteObject: map['deleteObject'] == null ? null : pulumi.Output.create<BatchOperationsJobDeleteObject>(BatchOperationsJobDeleteObject.fromMap((map['deleteObject'] as Map).cast<String, dynamic>())),
-      deleteProtection: map['deleteProtection'] == null ? null : pulumi.Output.create<bool>(map['deleteProtection'] as bool),
-      jobId: map['jobId'] == null ? null : pulumi.Output.create<String>(map['jobId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      putMetadata: map['putMetadata'] == null ? null : pulumi.Output.create<BatchOperationsJobPutMetadata>(BatchOperationsJobPutMetadata.fromMap((map['putMetadata'] as Map).cast<String, dynamic>())),
-      putObjectHold: map['putObjectHold'] == null ? null : pulumi.Output.create<BatchOperationsJobPutObjectHold>(BatchOperationsJobPutObjectHold.fromMap((map['putObjectHold'] as Map).cast<String, dynamic>())),
-      rewriteObject: map['rewriteObject'] == null ? null : pulumi.Output.create<BatchOperationsJobRewriteObject>(BatchOperationsJobRewriteObject.fromMap((map['rewriteObject'] as Map).cast<String, dynamic>())),
+      bucketList: map['bucketList'] == null ? null : (BatchOperationsJobBucketList.fromMap((map['bucketList'] as Map).cast<String, dynamic>())).input(),
+      deleteObject: map['deleteObject'] == null ? null : (BatchOperationsJobDeleteObject.fromMap((map['deleteObject'] as Map).cast<String, dynamic>())).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      putMetadata: map['putMetadata'] == null ? null : (BatchOperationsJobPutMetadata.fromMap((map['putMetadata'] as Map).cast<String, dynamic>())).input(),
+      putObjectHold: map['putObjectHold'] == null ? null : (BatchOperationsJobPutObjectHold.fromMap((map['putObjectHold'] as Map).cast<String, dynamic>())).input(),
+      rewriteObject: map['rewriteObject'] == null ? null : (BatchOperationsJobRewriteObject.fromMap((map['rewriteObject'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

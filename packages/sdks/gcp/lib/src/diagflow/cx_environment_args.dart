@@ -25,15 +25,11 @@ class CxEnvironmentArgs {
   /// [parent] The Agent to create an Environment for.
   /// [versionConfigs] A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
   CxEnvironmentArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? parent,
-    required pulumi.Output<List<CxEnvironmentVersionConfig>> versionConfigs,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      versionConfigs = pulumi.Input.asInput<List<CxEnvironmentVersionConfig>>(versionConfigs);
+    this.description,
+    required this.displayName,
+    this.parent,
+    required this.versionConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class CxEnvironmentArgs {
 
   factory CxEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return CxEnvironmentArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      versionConfigs: pulumi.Output.create<List<CxEnvironmentVersionConfig>>(pulumi.Input.decodeList<CxEnvironmentVersionConfig>(map['versionConfigs'], (value) => CxEnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      versionConfigs: (pulumi.Input.decodeList<CxEnvironmentVersionConfig>(map['versionConfigs'], (value) => CxEnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

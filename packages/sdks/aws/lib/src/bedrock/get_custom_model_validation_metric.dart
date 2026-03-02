@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCustomModelValidationMetric {
   /// The validation loss associated with the validator.
-  final double validationLoss;
+  final pulumi.Input<double> validationLoss;
 
   /// Creates a new [GetCustomModelValidationMetric].
   /// [validationLoss] The validation loss associated with the validator.
@@ -19,7 +20,7 @@ class GetCustomModelValidationMetric {
 
   factory GetCustomModelValidationMetric.fromMap(Map<String, dynamic> map) {
     return GetCustomModelValidationMetric(
-      validationLoss: map['validationLoss'] as double,
+      validationLoss: (map['validationLoss'] as double).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class EmailIdentityState {
   /// [email] The email address to assign to SES.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   EmailIdentityState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.arn,
+    this.email,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class EmailIdentityState {
 
   factory EmailIdentityState.fromMap(Map<String, dynamic> map) {
     return EmailIdentityState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

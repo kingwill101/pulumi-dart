@@ -29,19 +29,13 @@ class CapacityReservationGroupArgs {
   /// [tags] Resource tags.
   /// [zones] The availability zones.
   CapacityReservationGroupArgs({
-    pulumi.Output<String>? capacityReservationGroupName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<ResourceSharingProfile>? sharingProfile,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      capacityReservationGroupName = pulumi.Input.asOptionalInput<String>(capacityReservationGroupName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sharingProfile = pulumi.Input.asOptionalInput<ResourceSharingProfile>(sharingProfile),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.capacityReservationGroupName,
+    this.location,
+    required this.resourceGroupName,
+    this.sharingProfile,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class CapacityReservationGroupArgs {
 
   factory CapacityReservationGroupArgs.fromMap(Map<String, dynamic> map) {
     return CapacityReservationGroupArgs(
-      capacityReservationGroupName: map['capacityReservationGroupName'] == null ? null : pulumi.Output.create<String>(map['capacityReservationGroupName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sharingProfile: map['sharingProfile'] == null ? null : pulumi.Output.create<ResourceSharingProfile>(ResourceSharingProfile.fromMap((map['sharingProfile'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      capacityReservationGroupName: map['capacityReservationGroupName'] == null ? null : (map['capacityReservationGroupName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sharingProfile: map['sharingProfile'] == null ? null : (ResourceSharingProfile.fromMap((map['sharingProfile'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

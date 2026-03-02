@@ -17,15 +17,11 @@ class JobStorageAccountState {
   /// [storageAccountName] Optional.
   /// [streamAnalyticsJobId] The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   JobStorageAccountState({
-    pulumi.Output<String>? authenticationMode,
-    pulumi.Output<String>? storageAccountKey,
-    pulumi.Output<String>? storageAccountName,
-    pulumi.Output<String>? streamAnalyticsJobId,
-  }) :
-      authenticationMode = pulumi.Input.asOptionalInput<String>(authenticationMode),
-      storageAccountKey = pulumi.Input.asOptionalInput<String>(storageAccountKey),
-      storageAccountName = pulumi.Input.asOptionalInput<String>(storageAccountName),
-      streamAnalyticsJobId = pulumi.Input.asOptionalInput<String>(streamAnalyticsJobId);
+    this.authenticationMode,
+    this.storageAccountKey,
+    this.storageAccountName,
+    this.streamAnalyticsJobId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,10 +34,10 @@ class JobStorageAccountState {
 
   factory JobStorageAccountState.fromMap(Map<String, dynamic> map) {
     return JobStorageAccountState(
-      authenticationMode: map['authenticationMode'] == null ? null : pulumi.Output.create<String>(map['authenticationMode'] as String),
-      storageAccountKey: map['storageAccountKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountKey'] as String),
-      storageAccountName: map['storageAccountName'] == null ? null : pulumi.Output.create<String>(map['storageAccountName'] as String),
-      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : pulumi.Output.create<String>(map['streamAnalyticsJobId'] as String),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId'] as String).input(),
     );
   }
 }

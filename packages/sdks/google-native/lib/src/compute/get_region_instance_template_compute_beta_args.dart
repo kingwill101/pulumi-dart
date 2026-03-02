@@ -16,13 +16,10 @@ class GetRegionInstanceTemplateComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   GetRegionInstanceTemplateComputeBetaArgs({
-    required pulumi.Output<String> instanceTemplate,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-  }) :
-      instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+    required this.instanceTemplate,
+    this.project,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetRegionInstanceTemplateComputeBetaArgs {
 
   factory GetRegionInstanceTemplateComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateComputeBetaArgs(
-      instanceTemplate: pulumi.Output.create<String>(map['instanceTemplate'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      instanceTemplate: (map['instanceTemplate'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

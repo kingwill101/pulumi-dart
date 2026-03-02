@@ -13,9 +13,8 @@ class GetNetworkingIpArgs {
   /// Creates a new [GetNetworkingIpArgs].
   /// [address] The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
   GetNetworkingIpArgs({
-    required pulumi.Output<String> address,
-  }) :
-      address = pulumi.Input.asInput<String>(address);
+    required this.address,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetNetworkingIpArgs {
 
   factory GetNetworkingIpArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkingIpArgs(
-      address: pulumi.Output.create<String>(map['address'] as String),
+      address: (map['address'] as String).input(),
     );
   }
 }

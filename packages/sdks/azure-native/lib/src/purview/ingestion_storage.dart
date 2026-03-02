@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Ingestion Storage Account Info
 class IngestionStorage {
   /// Gets or sets the public network access setting
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
 
   /// Creates a new [IngestionStorage].
   /// [publicNetworkAccess] Gets or sets the public network access setting
@@ -20,7 +21,7 @@ class IngestionStorage {
 
   factory IngestionStorage.fromMap(Map<String, dynamic> map) {
     return IngestionStorage(
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
     );
   }
 }

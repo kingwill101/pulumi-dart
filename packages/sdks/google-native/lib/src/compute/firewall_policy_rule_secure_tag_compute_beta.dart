@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyRuleSecureTagComputeBeta {
   /// Name of the secure tag, created with TagManager's TagValue API.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [FirewallPolicyRuleSecureTagComputeBeta].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
@@ -19,7 +20,7 @@ class FirewallPolicyRuleSecureTagComputeBeta {
 
   factory FirewallPolicyRuleSecureTagComputeBeta.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleSecureTagComputeBeta(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

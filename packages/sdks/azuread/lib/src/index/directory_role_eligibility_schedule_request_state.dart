@@ -19,15 +19,11 @@ class DirectoryRoleEligibilityScheduleRequestState {
   /// [principalId] The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
   /// [roleDefinitionId] The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
   DirectoryRoleEligibilityScheduleRequestState({
-    pulumi.Output<String>? directoryScopeId,
-    pulumi.Output<String>? justification,
-    pulumi.Output<String>? principalId,
-    pulumi.Output<String>? roleDefinitionId,
-  }) :
-      directoryScopeId = pulumi.Input.asOptionalInput<String>(directoryScopeId),
-      justification = pulumi.Input.asOptionalInput<String>(justification),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      roleDefinitionId = pulumi.Input.asOptionalInput<String>(roleDefinitionId);
+    this.directoryScopeId,
+    this.justification,
+    this.principalId,
+    this.roleDefinitionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class DirectoryRoleEligibilityScheduleRequestState {
 
   factory DirectoryRoleEligibilityScheduleRequestState.fromMap(Map<String, dynamic> map) {
     return DirectoryRoleEligibilityScheduleRequestState(
-      directoryScopeId: map['directoryScopeId'] == null ? null : pulumi.Output.create<String>(map['directoryScopeId'] as String),
-      justification: map['justification'] == null ? null : pulumi.Output.create<String>(map['justification'] as String),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : pulumi.Output.create<String>(map['roleDefinitionId'] as String),
+      directoryScopeId: map['directoryScopeId'] == null ? null : (map['directoryScopeId'] as String).input(),
+      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
     );
   }
 }

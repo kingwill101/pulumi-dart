@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message storing the URIs of the ContactCenter.
 class URIsResponse {
   /// Chat Bot Uri of the ContactCenter
-  final String chatBotUri;
+  final pulumi.Input<String> chatBotUri;
   /// Media Uri of the ContactCenter.
-  final String mediaUri;
+  final pulumi.Input<String> mediaUri;
   /// Root Uri of the ContactCenter.
-  final String rootUri;
+  final pulumi.Input<String> rootUri;
   /// Virtual Agent Streaming Service Uri of the ContactCenter.
-  final String virtualAgentStreamingServiceUri;
+  final pulumi.Input<String> virtualAgentStreamingServiceUri;
 
   /// Creates a new [URIsResponse].
   /// [chatBotUri] Chat Bot Uri of the ContactCenter
@@ -35,10 +36,10 @@ class URIsResponse {
 
   factory URIsResponse.fromMap(Map<String, dynamic> map) {
     return URIsResponse(
-      chatBotUri: map['chatBotUri'] as String,
-      mediaUri: map['mediaUri'] as String,
-      rootUri: map['rootUri'] as String,
-      virtualAgentStreamingServiceUri: map['virtualAgentStreamingServiceUri'] as String,
+      chatBotUri: (map['chatBotUri'] as String).input(),
+      mediaUri: (map['mediaUri'] as String).input(),
+      rootUri: (map['rootUri'] as String).input(),
+      virtualAgentStreamingServiceUri: (map['virtualAgentStreamingServiceUri'] as String).input(),
     );
   }
 }

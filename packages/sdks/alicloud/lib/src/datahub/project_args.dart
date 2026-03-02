@@ -16,11 +16,9 @@ class ProjectArgs {
   /// [comment] Comment of the datahub project. It cannot be longer than 255 characters.
   /// [name] The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   ProjectArgs({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? name,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.comment,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

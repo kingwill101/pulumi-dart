@@ -34,23 +34,15 @@ class FeaturestoreAiplatformV1beta1Args {
   /// [onlineStorageTtlDays] Optional. TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than `online_storage_ttl_days` since the feature generation time. Note that `online_storage_ttl_days` should be less than or equal to `offline_storage_ttl_days` for each EntityType under a featurestore. If not set, default to 4000 days
   /// [project] Optional.
   FeaturestoreAiplatformV1beta1Args({
-    pulumi.Output<GoogleCloudAiplatformV1beta1EncryptionSpec>? encryptionSpec,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> featurestoreId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig>? onlineServingConfig,
-    pulumi.Output<int>? onlineStorageTtlDays,
-    pulumi.Output<String>? project,
-  }) :
-      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1EncryptionSpec>(encryptionSpec),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      onlineServingConfig = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig>(onlineServingConfig),
-      onlineStorageTtlDays = pulumi.Input.asOptionalInput<int>(onlineStorageTtlDays),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.encryptionSpec,
+    this.etag,
+    required this.featurestoreId,
+    this.labels,
+    this.location,
+    this.onlineServingConfig,
+    this.onlineStorageTtlDays,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class FeaturestoreAiplatformV1beta1Args {
 
   factory FeaturestoreAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return FeaturestoreAiplatformV1beta1Args(
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1EncryptionSpec>(GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featurestoreId: pulumi.Output.create<String>(map['featurestoreId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      onlineServingConfig: map['onlineServingConfig'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig>(GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig.fromMap((map['onlineServingConfig'] as Map).cast<String, dynamic>())),
-      onlineStorageTtlDays: map['onlineStorageTtlDays'] == null ? null : pulumi.Output.create<int>(map['onlineStorageTtlDays'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featurestoreId: (map['featurestoreId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      onlineServingConfig: map['onlineServingConfig'] == null ? null : (GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig.fromMap((map['onlineServingConfig'] as Map).cast<String, dynamic>())).input(),
+      onlineStorageTtlDays: map['onlineStorageTtlDays'] == null ? null : (map['onlineStorageTtlDays'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

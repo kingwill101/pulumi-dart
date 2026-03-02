@@ -39,23 +39,15 @@ class GetVpnGatewayArgs {
   /// [state] State of the specific VPN Gateway to retrieve.
   /// [tags] Map of tags, each pair of which must exactly match
   GetVpnGatewayArgs({
-    pulumi.Output<String>? amazonSideAsn,
-    pulumi.Output<String>? attachedVpcId,
-    pulumi.Output<String>? availabilityZone,
-    pulumi.Output<List<GetVpnGatewayFilter>>? filters,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      amazonSideAsn = pulumi.Input.asOptionalInput<String>(amazonSideAsn),
-      attachedVpcId = pulumi.Input.asOptionalInput<String>(attachedVpcId),
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      filters = pulumi.Input.asOptionalInput<List<GetVpnGatewayFilter>>(filters),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.amazonSideAsn,
+    this.attachedVpcId,
+    this.availabilityZone,
+    this.filters,
+    this.id,
+    this.region,
+    this.state,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class GetVpnGatewayArgs {
 
   factory GetVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetVpnGatewayArgs(
-      amazonSideAsn: map['amazonSideAsn'] == null ? null : pulumi.Output.create<String>(map['amazonSideAsn'] as String),
-      attachedVpcId: map['attachedVpcId'] == null ? null : pulumi.Output.create<String>(map['attachedVpcId'] as String),
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpnGatewayFilter>>(pulumi.Input.decodeList<GetVpnGatewayFilter>(map['filters'], (value) => GetVpnGatewayFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      amazonSideAsn: map['amazonSideAsn'] == null ? null : (map['amazonSideAsn'] as String).input(),
+      attachedVpcId: map['attachedVpcId'] == null ? null : (map['attachedVpcId'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpnGatewayFilter>(map['filters'], (value) => GetVpnGatewayFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -8,15 +8,15 @@ import 'pipeline_stage_on_success.dart';
 
 class PipelineStage {
   /// The action(s) to include in the stage. Defined as an `action` block below
-  final List<PipelineStageAction> actions;
+  final pulumi.Input<List<PipelineStageAction>> actions;
   /// The method to use when a stage allows entry. For example, configuring this field for conditions will allow entry to the stage when the conditions are met.
-  final PipelineStageBeforeEntry? beforeEntry;
+  final pulumi.Input<PipelineStageBeforeEntry>? beforeEntry;
   /// The name of the stage.
-  final String name;
+  final pulumi.Input<String> name;
   /// The method to use when a stage has not completed successfully. For example, configuring this field for rollback will roll back a failed stage automatically to the last successful pipeline execution in the stage.
-  final PipelineStageOnFailure? onFailure;
+  final pulumi.Input<PipelineStageOnFailure>? onFailure;
   /// The method to use when a stage has succeeded. For example, configuring this field for conditions will allow the stage to succeed when the conditions are met.
-  final PipelineStageOnSuccess? onSuccess;
+  final pulumi.Input<PipelineStageOnSuccess>? onSuccess;
 
   /// Creates a new [PipelineStage].
   /// [actions] The action(s) to include in the stage. Defined as an `action` block below
@@ -34,21 +34,21 @@ class PipelineStage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.encodeList<PipelineStageAction, Map<String, dynamic>>(actions, (value) => value.toMap()),
-      'beforeEntry': ?beforeEntry == null ? null : beforeEntry!.toMap(),
+      'actions': pulumi.Input.mapInputValue<List<PipelineStageAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<PipelineStageAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'beforeEntry': ?pulumi.Input.mapOptionalInputValue<PipelineStageBeforeEntry, Map<String, dynamic>>(beforeEntry, (value) => value.toMap()),
       'name': name,
-      'onFailure': ?onFailure == null ? null : onFailure!.toMap(),
-      'onSuccess': ?onSuccess == null ? null : onSuccess!.toMap(),
+      'onFailure': ?pulumi.Input.mapOptionalInputValue<PipelineStageOnFailure, Map<String, dynamic>>(onFailure, (value) => value.toMap()),
+      'onSuccess': ?pulumi.Input.mapOptionalInputValue<PipelineStageOnSuccess, Map<String, dynamic>>(onSuccess, (value) => value.toMap()),
     };
   }
 
   factory PipelineStage.fromMap(Map<String, dynamic> map) {
     return PipelineStage(
-      actions: pulumi.Input.decodeList<PipelineStageAction>(map['actions'], (value) => PipelineStageAction.fromMap((value as Map).cast<String, dynamic>())),
-      beforeEntry: map['beforeEntry'] == null ? null : PipelineStageBeforeEntry.fromMap((map['beforeEntry'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      onFailure: map['onFailure'] == null ? null : PipelineStageOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>()),
-      onSuccess: map['onSuccess'] == null ? null : PipelineStageOnSuccess.fromMap((map['onSuccess'] as Map).cast<String, dynamic>()),
+      actions: (pulumi.Input.decodeList<PipelineStageAction>(map['actions'], (value) => PipelineStageAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      beforeEntry: map['beforeEntry'] == null ? null : (PipelineStageBeforeEntry.fromMap((map['beforeEntry'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      onFailure: map['onFailure'] == null ? null : (PipelineStageOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>())).input(),
+      onSuccess: map['onSuccess'] == null ? null : (PipelineStageOnSuccess.fromMap((map['onSuccess'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

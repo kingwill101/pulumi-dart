@@ -50,31 +50,19 @@ class ExternalNetworkArgs {
   /// [peeringOption] Peering option list.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ExternalNetworkArgs({
-    pulumi.Output<String>? annotation,
-    pulumi.Output<ExportRoutePolicy>? exportRoutePolicy,
-    pulumi.Output<String>? exportRoutePolicyId,
-    pulumi.Output<String>? externalNetworkName,
-    pulumi.Output<ImportRoutePolicy>? importRoutePolicy,
-    pulumi.Output<String>? importRoutePolicyId,
-    required pulumi.Output<String> l3IsolationDomainName,
-    pulumi.Output<String>? networkToNetworkInterconnectId,
-    pulumi.Output<ExternalNetworkPropertiesOptionAProperties>? optionAProperties,
-    pulumi.Output<L3OptionBProperties>? optionBProperties,
-    required pulumi.Output<String> peeringOption,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      exportRoutePolicy = pulumi.Input.asOptionalInput<ExportRoutePolicy>(exportRoutePolicy),
-      exportRoutePolicyId = pulumi.Input.asOptionalInput<String>(exportRoutePolicyId),
-      externalNetworkName = pulumi.Input.asOptionalInput<String>(externalNetworkName),
-      importRoutePolicy = pulumi.Input.asOptionalInput<ImportRoutePolicy>(importRoutePolicy),
-      importRoutePolicyId = pulumi.Input.asOptionalInput<String>(importRoutePolicyId),
-      l3IsolationDomainName = pulumi.Input.asInput<String>(l3IsolationDomainName),
-      networkToNetworkInterconnectId = pulumi.Input.asOptionalInput<String>(networkToNetworkInterconnectId),
-      optionAProperties = pulumi.Input.asOptionalInput<ExternalNetworkPropertiesOptionAProperties>(optionAProperties),
-      optionBProperties = pulumi.Input.asOptionalInput<L3OptionBProperties>(optionBProperties),
-      peeringOption = pulumi.Input.asInput<String>(peeringOption),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.annotation,
+    this.exportRoutePolicy,
+    this.exportRoutePolicyId,
+    this.externalNetworkName,
+    this.importRoutePolicy,
+    this.importRoutePolicyId,
+    required this.l3IsolationDomainName,
+    this.networkToNetworkInterconnectId,
+    this.optionAProperties,
+    this.optionBProperties,
+    required this.peeringOption,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class ExternalNetworkArgs {
 
   factory ExternalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return ExternalNetworkArgs(
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      exportRoutePolicy: map['exportRoutePolicy'] == null ? null : pulumi.Output.create<ExportRoutePolicy>(ExportRoutePolicy.fromMap((map['exportRoutePolicy'] as Map).cast<String, dynamic>())),
-      exportRoutePolicyId: map['exportRoutePolicyId'] == null ? null : pulumi.Output.create<String>(map['exportRoutePolicyId'] as String),
-      externalNetworkName: map['externalNetworkName'] == null ? null : pulumi.Output.create<String>(map['externalNetworkName'] as String),
-      importRoutePolicy: map['importRoutePolicy'] == null ? null : pulumi.Output.create<ImportRoutePolicy>(ImportRoutePolicy.fromMap((map['importRoutePolicy'] as Map).cast<String, dynamic>())),
-      importRoutePolicyId: map['importRoutePolicyId'] == null ? null : pulumi.Output.create<String>(map['importRoutePolicyId'] as String),
-      l3IsolationDomainName: pulumi.Output.create<String>(map['l3IsolationDomainName'] as String),
-      networkToNetworkInterconnectId: map['networkToNetworkInterconnectId'] == null ? null : pulumi.Output.create<String>(map['networkToNetworkInterconnectId'] as String),
-      optionAProperties: map['optionAProperties'] == null ? null : pulumi.Output.create<ExternalNetworkPropertiesOptionAProperties>(ExternalNetworkPropertiesOptionAProperties.fromMap((map['optionAProperties'] as Map).cast<String, dynamic>())),
-      optionBProperties: map['optionBProperties'] == null ? null : pulumi.Output.create<L3OptionBProperties>(L3OptionBProperties.fromMap((map['optionBProperties'] as Map).cast<String, dynamic>())),
-      peeringOption: pulumi.Output.create<String>(map['peeringOption'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      exportRoutePolicy: map['exportRoutePolicy'] == null ? null : (ExportRoutePolicy.fromMap((map['exportRoutePolicy'] as Map).cast<String, dynamic>())).input(),
+      exportRoutePolicyId: map['exportRoutePolicyId'] == null ? null : (map['exportRoutePolicyId'] as String).input(),
+      externalNetworkName: map['externalNetworkName'] == null ? null : (map['externalNetworkName'] as String).input(),
+      importRoutePolicy: map['importRoutePolicy'] == null ? null : (ImportRoutePolicy.fromMap((map['importRoutePolicy'] as Map).cast<String, dynamic>())).input(),
+      importRoutePolicyId: map['importRoutePolicyId'] == null ? null : (map['importRoutePolicyId'] as String).input(),
+      l3IsolationDomainName: (map['l3IsolationDomainName'] as String).input(),
+      networkToNetworkInterconnectId: map['networkToNetworkInterconnectId'] == null ? null : (map['networkToNetworkInterconnectId'] as String).input(),
+      optionAProperties: map['optionAProperties'] == null ? null : (ExternalNetworkPropertiesOptionAProperties.fromMap((map['optionAProperties'] as Map).cast<String, dynamic>())).input(),
+      optionBProperties: map['optionBProperties'] == null ? null : (L3OptionBProperties.fromMap((map['optionBProperties'] as Map).cast<String, dynamic>())).input(),
+      peeringOption: (map['peeringOption'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

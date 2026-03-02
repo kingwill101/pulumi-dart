@@ -19,13 +19,10 @@ class HierarchySettingArgs {
   /// [groupId] Management Group ID.
   /// [requireAuthorizationForGroupCreation] Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access.
   HierarchySettingArgs({
-    pulumi.Output<String>? defaultManagementGroup,
-    required pulumi.Output<String> groupId,
-    pulumi.Output<bool>? requireAuthorizationForGroupCreation,
-  }) :
-      defaultManagementGroup = pulumi.Input.asOptionalInput<String>(defaultManagementGroup),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      requireAuthorizationForGroupCreation = pulumi.Input.asOptionalInput<bool>(requireAuthorizationForGroupCreation);
+    this.defaultManagementGroup,
+    required this.groupId,
+    this.requireAuthorizationForGroupCreation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class HierarchySettingArgs {
 
   factory HierarchySettingArgs.fromMap(Map<String, dynamic> map) {
     return HierarchySettingArgs(
-      defaultManagementGroup: map['defaultManagementGroup'] == null ? null : pulumi.Output.create<String>(map['defaultManagementGroup'] as String),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      requireAuthorizationForGroupCreation: map['requireAuthorizationForGroupCreation'] == null ? null : pulumi.Output.create<bool>(map['requireAuthorizationForGroupCreation'] as bool),
+      defaultManagementGroup: map['defaultManagementGroup'] == null ? null : (map['defaultManagementGroup'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      requireAuthorizationForGroupCreation: map['requireAuthorizationForGroupCreation'] == null ? null : (map['requireAuthorizationForGroupCreation'] as bool).input(),
     );
   }
 }

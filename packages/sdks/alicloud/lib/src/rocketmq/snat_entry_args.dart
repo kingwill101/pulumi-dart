@@ -19,13 +19,10 @@ class SnatEntryArgs {
   /// [sagId] The ID of the SAG instance.
   /// [snatIp] The public IP address.
   SnatEntryArgs({
-    required pulumi.Output<String> cidrBlock,
-    required pulumi.Output<String> sagId,
-    required pulumi.Output<String> snatIp,
-  }) :
-      cidrBlock = pulumi.Input.asInput<String>(cidrBlock),
-      sagId = pulumi.Input.asInput<String>(sagId),
-      snatIp = pulumi.Input.asInput<String>(snatIp);
+    required this.cidrBlock,
+    required this.sagId,
+    required this.snatIp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SnatEntryArgs {
 
   factory SnatEntryArgs.fromMap(Map<String, dynamic> map) {
     return SnatEntryArgs(
-      cidrBlock: pulumi.Output.create<String>(map['cidrBlock'] as String),
-      sagId: pulumi.Output.create<String>(map['sagId'] as String),
-      snatIp: pulumi.Output.create<String>(map['snatIp'] as String),
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      sagId: (map['sagId'] as String).input(),
+      snatIp: (map['snatIp'] as String).input(),
     );
   }
 }

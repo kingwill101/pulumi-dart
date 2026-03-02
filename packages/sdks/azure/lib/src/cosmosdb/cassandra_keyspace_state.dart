@@ -25,17 +25,12 @@ class CassandraKeyspaceState {
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB Cassandra KeySpace is created. Changing this forces a new resource to be created.
   /// [throughput] The throughput of Cassandra KeySpace (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
   CassandraKeyspaceState({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<CassandraKeyspaceAutoscaleSettings>? autoscaleSettings,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<int>? throughput,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      autoscaleSettings = pulumi.Input.asOptionalInput<CassandraKeyspaceAutoscaleSettings>(autoscaleSettings),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      throughput = pulumi.Input.asOptionalInput<int>(throughput);
+    this.accountName,
+    this.autoscaleSettings,
+    this.name,
+    this.resourceGroupName,
+    this.throughput,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CassandraKeyspaceState {
 
   factory CassandraKeyspaceState.fromMap(Map<String, dynamic> map) {
     return CassandraKeyspaceState(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : pulumi.Output.create<CassandraKeyspaceAutoscaleSettings>(CassandraKeyspaceAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      throughput: map['throughput'] == null ? null : pulumi.Output.create<int>(map['throughput'] as int),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (CassandraKeyspaceAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
     );
   }
 }

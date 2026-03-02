@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
   /// A list of custom Content-Type header values to apply the JSON parsing.
-  final List<String> contentTypes;
+  final pulumi.Input<List<String>> contentTypes;
 
   /// Creates a new [GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig].
   /// [contentTypes] A list of custom Content-Type header values to apply the JSON parsing.
@@ -19,7 +20,7 @@ class GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
 
   factory GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig(
-      contentTypes: (map['contentTypes'] as List).cast<String>(),
+      contentTypes: ((map['contentTypes'] as List).cast<String>()).input(),
     );
   }
 }

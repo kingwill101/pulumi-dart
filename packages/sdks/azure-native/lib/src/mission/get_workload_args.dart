@@ -19,13 +19,10 @@ class GetWorkloadArgs {
   /// [virtualEnclaveName] The name of the enclaveResource Resource
   /// [workloadName] The name of the workloadResource Resource
   GetWorkloadArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualEnclaveName,
-    required pulumi.Output<String> workloadName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualEnclaveName = pulumi.Input.asInput<String>(virtualEnclaveName),
-      workloadName = pulumi.Input.asInput<String>(workloadName);
+    required this.resourceGroupName,
+    required this.virtualEnclaveName,
+    required this.workloadName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWorkloadArgs {
 
   factory GetWorkloadArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualEnclaveName: pulumi.Output.create<String>(map['virtualEnclaveName'] as String),
-      workloadName: pulumi.Output.create<String>(map['workloadName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualEnclaveName: (map['virtualEnclaveName'] as String).input(),
+      workloadName: (map['workloadName'] as String).input(),
     );
   }
 }

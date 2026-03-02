@@ -13,11 +13,9 @@ class GeoReplicationState {
   /// [linkedManagedRedisIds] A set of other Managed Redis IDs to link together in the geo-replication group. The ID of this Managed Redis is always included by default and does not need to be provided here. Can contain up to 4 Managed Redis IDs, making up a group of 5 in total. All Managed Redis must have the same `geo_replication_group_name` configured. Once linked, the geo-replication state of all Managed Redis will be updated.
   /// [managedRedisId] The ID of the Managed Redis through which geo-replication group will be managed. Linking is reciprocal, if A is linked to B, both A and B will have the same linking state. There is no need to have duplicate `azure.managedredis.GeoReplication` resources for each. Changing this forces a new resource to be created.
   GeoReplicationState({
-    pulumi.Output<List<String>>? linkedManagedRedisIds,
-    pulumi.Output<String>? managedRedisId,
-  }) :
-      linkedManagedRedisIds = pulumi.Input.asOptionalInput<List<String>>(linkedManagedRedisIds),
-      managedRedisId = pulumi.Input.asOptionalInput<String>(managedRedisId);
+    this.linkedManagedRedisIds,
+    this.managedRedisId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class GeoReplicationState {
 
   factory GeoReplicationState.fromMap(Map<String, dynamic> map) {
     return GeoReplicationState(
-      linkedManagedRedisIds: map['linkedManagedRedisIds'] == null ? null : pulumi.Output.create<List<String>>((map['linkedManagedRedisIds'] as List).cast<String>()),
-      managedRedisId: map['managedRedisId'] == null ? null : pulumi.Output.create<String>(map['managedRedisId'] as String),
+      linkedManagedRedisIds: map['linkedManagedRedisIds'] == null ? null : ((map['linkedManagedRedisIds'] as List).cast<String>()).input(),
+      managedRedisId: map['managedRedisId'] == null ? null : (map['managedRedisId'] as String).input(),
     );
   }
 }

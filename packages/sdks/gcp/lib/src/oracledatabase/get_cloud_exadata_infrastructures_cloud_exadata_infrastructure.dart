@@ -8,38 +8,38 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
   /// to (^a-z?$) and must be a maximum of 63
   /// characters in length. The value must start with a letter and end with
   /// a letter or a number.
-  final String cloudExadataInfrastructureId;
+  final pulumi.Input<String> cloudExadataInfrastructureId;
   /// The date and time that the Exadata Infrastructure was created.
-  final String createTime;
-  final bool deletionProtection;
+  final pulumi.Input<String> createTime;
+  final pulumi.Input<bool> deletionProtection;
   /// User friendly name for this resource.
-  final String displayName;
-  final Map<String, String> effectiveLabels;
+  final pulumi.Input<String> displayName;
+  final pulumi.Input<Map<String, String>> effectiveLabels;
   /// Entitlement ID of the private offer against which this infrastructure
   /// resource is provisioned.
-  final String entitlementId;
+  final pulumi.Input<String> entitlementId;
   /// GCP location where Oracle Exadata is hosted.
-  final String gcpOracleZone;
+  final pulumi.Input<String> gcpOracleZone;
   /// Labels or tags associated with the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// The location of the resource.
   ///
   /// - - -
-  final String location;
+  final pulumi.Input<String> location;
   /// Identifier. The name of the Exadata Infrastructure resource with the following format:
   /// projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}
-  final String name;
+  final pulumi.Input<String> name;
   /// The project to which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final String project;
+  final pulumi.Input<String> project;
   /// Various properties of Exadata Infrastructure.
-  final List<GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty> properties;
+  final pulumi.Input<List<GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty>> properties;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final Map<String, String> pulumiLabels;
+  final pulumi.Input<Map<String, String>> pulumiLabels;
 
   /// Creates a new [GetCloudExadataInfrastructuresCloudExadataInfrastructure].
   /// [cloudExadataInfrastructureId] The ID of the Exadata Infrastructure to create. This value is restricted
@@ -84,26 +84,26 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
       'location': location,
       'name': name,
       'project': project,
-      'properties': pulumi.Input.encodeList<GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<List<GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
       'pulumiLabels': pulumiLabels,
     };
   }
 
   factory GetCloudExadataInfrastructuresCloudExadataInfrastructure.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructuresCloudExadataInfrastructure(
-      cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] as String,
-      createTime: map['createTime'] as String,
-      deletionProtection: map['deletionProtection'] as bool,
-      displayName: map['displayName'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      entitlementId: map['entitlementId'] as String,
-      gcpOracleZone: map['gcpOracleZone'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      project: map['project'] as String,
-      properties: pulumi.Input.decodeList<GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty>(map['properties'], (value) => GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty.fromMap((value as Map).cast<String, dynamic>())),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
+      cloudExadataInfrastructureId: (map['cloudExadataInfrastructureId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      deletionProtection: (map['deletionProtection'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      effectiveLabels: ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      entitlementId: (map['entitlementId'] as String).input(),
+      gcpOracleZone: (map['gcpOracleZone'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      project: (map['project'] as String).input(),
+      properties: (pulumi.Input.decodeList<GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty>(map['properties'], (value) => GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pulumiLabels: ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
     );
   }
 }

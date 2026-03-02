@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetLaunchTemplateConfigOverrideInstanceRequirementsBaselineEbsBandwidthMbps {
   /// The maximum baseline bandwidth, in Mbps. To specify no maximum limit, omit this parameter..
-  final int? max;
+  final pulumi.Input<int>? max;
   /// The minimum baseline bandwidth, in Mbps. To specify no minimum limit, omit this parameter..
-  final int? min;
+  final pulumi.Input<int>? min;
 
   /// Creates a new [FleetLaunchTemplateConfigOverrideInstanceRequirementsBaselineEbsBandwidthMbps].
   /// [max] The maximum baseline bandwidth, in Mbps. To specify no maximum limit, omit this parameter..
@@ -24,8 +25,8 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsBaselineEbsBandwidthM
 
   factory FleetLaunchTemplateConfigOverrideInstanceRequirementsBaselineEbsBandwidthMbps.fromMap(Map<String, dynamic> map) {
     return FleetLaunchTemplateConfigOverrideInstanceRequirementsBaselineEbsBandwidthMbps(
-      max: map['max'] == null ? null : map['max'] as int,
-      min: map['min'] == null ? null : map['min'] as int,
+      max: map['max'] == null ? null : (map['max'] as int).input(),
+      min: map['min'] == null ? null : (map['min'] as int).input(),
     );
   }
 }

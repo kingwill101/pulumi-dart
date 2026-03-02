@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_run_config_response.dart';
 import 'kubernetes_config_response.dart';
 
 /// RuntimeConfig contains the runtime specific configurations for a deployment strategy.
 class RuntimeConfigResponse {
   /// Cloud Run runtime configuration.
-  final CloudRunConfigResponse cloudRun;
+  final pulumi.Input<CloudRunConfigResponse> cloudRun;
   /// Kubernetes runtime configuration.
-  final KubernetesConfigResponse kubernetes;
+  final pulumi.Input<KubernetesConfigResponse> kubernetes;
 
   /// Creates a new [RuntimeConfigResponse].
   /// [cloudRun] Cloud Run runtime configuration.
@@ -20,15 +21,15 @@ class RuntimeConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudRun': cloudRun.toMap(),
-      'kubernetes': kubernetes.toMap(),
+      'cloudRun': pulumi.Input.mapInputValue<CloudRunConfigResponse, Map<String, dynamic>>(cloudRun, (value) => value.toMap()),
+      'kubernetes': pulumi.Input.mapInputValue<KubernetesConfigResponse, Map<String, dynamic>>(kubernetes, (value) => value.toMap()),
     };
   }
 
   factory RuntimeConfigResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeConfigResponse(
-      cloudRun: CloudRunConfigResponse.fromMap((map['cloudRun'] as Map).cast<String, dynamic>()),
-      kubernetes: KubernetesConfigResponse.fromMap((map['kubernetes'] as Map).cast<String, dynamic>()),
+      cloudRun: (CloudRunConfigResponse.fromMap((map['cloudRun'] as Map).cast<String, dynamic>())).input(),
+      kubernetes: (KubernetesConfigResponse.fromMap((map['kubernetes'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class ExpressSyncArgs {
   /// [description] The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
   /// [expressSyncName] The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
   ExpressSyncArgs({
-    required pulumi.Output<String> bucketName,
-    pulumi.Output<String>? bucketPrefix,
-    required pulumi.Output<String> bucketRegion,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> expressSyncName,
-  }) :
-      bucketName = pulumi.Input.asInput<String>(bucketName),
-      bucketPrefix = pulumi.Input.asOptionalInput<String>(bucketPrefix),
-      bucketRegion = pulumi.Input.asInput<String>(bucketRegion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expressSyncName = pulumi.Input.asInput<String>(expressSyncName);
+    required this.bucketName,
+    this.bucketPrefix,
+    required this.bucketRegion,
+    this.description,
+    required this.expressSyncName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ExpressSyncArgs {
 
   factory ExpressSyncArgs.fromMap(Map<String, dynamic> map) {
     return ExpressSyncArgs(
-      bucketName: pulumi.Output.create<String>(map['bucketName'] as String),
-      bucketPrefix: map['bucketPrefix'] == null ? null : pulumi.Output.create<String>(map['bucketPrefix'] as String),
-      bucketRegion: pulumi.Output.create<String>(map['bucketRegion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expressSyncName: pulumi.Output.create<String>(map['expressSyncName'] as String),
+      bucketName: (map['bucketName'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
+      bucketRegion: (map['bucketRegion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expressSyncName: (map['expressSyncName'] as String).input(),
     );
   }
 }

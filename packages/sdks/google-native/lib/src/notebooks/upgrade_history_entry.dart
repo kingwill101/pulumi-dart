@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'upgrade_history_entry_action.dart';
 import 'upgrade_history_entry_state.dart';
 
 /// The entry of VM image upgrade history.
 class UpgradeHistoryEntry {
   /// Action. Rolloback or Upgrade.
-  final UpgradeHistoryEntryAction? action;
+  final pulumi.Input<UpgradeHistoryEntryAction>? action;
   /// The container image before this instance upgrade.
-  final String? containerImage;
+  final pulumi.Input<String>? containerImage;
   /// The time that this instance upgrade history entry is created.
-  final String? createTime;
+  final pulumi.Input<String>? createTime;
   /// The framework of this notebook instance.
-  final String? framework;
+  final pulumi.Input<String>? framework;
   /// The snapshot of the boot disk of this notebook instance before upgrade.
-  final String? snapshot;
+  final pulumi.Input<String>? snapshot;
   /// The state of this instance upgrade history entry.
-  final UpgradeHistoryEntryState? state;
+  final pulumi.Input<UpgradeHistoryEntryState>? state;
   /// Target VM Image. Format: `ainotebooks-vm/project/image-name/name`.
-  final String? targetImage;
+  final pulumi.Input<String>? targetImage;
   /// Target VM Version, like m63.
-  final String? targetVersion;
+  final pulumi.Input<String>? targetVersion;
   /// The version of the notebook instance before this upgrade.
-  final String? version;
+  final pulumi.Input<String>? version;
   /// The VM image before this instance upgrade.
-  final String? vmImage;
+  final pulumi.Input<String>? vmImage;
 
   /// Creates a new [UpgradeHistoryEntry].
   /// [action] Action. Rolloback or Upgrade.
@@ -52,12 +53,12 @@ class UpgradeHistoryEntry {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?action == null ? null : action!.value,
+      'action': ?pulumi.Input.mapOptionalInputValue<UpgradeHistoryEntryAction, String>(action, (value) => value.value),
       'containerImage': ?containerImage,
       'createTime': ?createTime,
       'framework': ?framework,
       'snapshot': ?snapshot,
-      'state': ?state == null ? null : state!.value,
+      'state': ?pulumi.Input.mapOptionalInputValue<UpgradeHistoryEntryState, String>(state, (value) => value.value),
       'targetImage': ?targetImage,
       'targetVersion': ?targetVersion,
       'version': ?version,
@@ -67,16 +68,16 @@ class UpgradeHistoryEntry {
 
   factory UpgradeHistoryEntry.fromMap(Map<String, dynamic> map) {
     return UpgradeHistoryEntry(
-      action: map['action'] == null ? null : UpgradeHistoryEntryAction.fromValue(map['action'] as String),
-      containerImage: map['containerImage'] == null ? null : map['containerImage'] as String,
-      createTime: map['createTime'] == null ? null : map['createTime'] as String,
-      framework: map['framework'] == null ? null : map['framework'] as String,
-      snapshot: map['snapshot'] == null ? null : map['snapshot'] as String,
-      state: map['state'] == null ? null : UpgradeHistoryEntryState.fromValue(map['state'] as String),
-      targetImage: map['targetImage'] == null ? null : map['targetImage'] as String,
-      targetVersion: map['targetVersion'] == null ? null : map['targetVersion'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
-      vmImage: map['vmImage'] == null ? null : map['vmImage'] as String,
+      action: map['action'] == null ? null : (UpgradeHistoryEntryAction.fromValue(map['action'] as String)).input(),
+      containerImage: map['containerImage'] == null ? null : (map['containerImage'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      framework: map['framework'] == null ? null : (map['framework'] as String).input(),
+      snapshot: map['snapshot'] == null ? null : (map['snapshot'] as String).input(),
+      state: map['state'] == null ? null : (UpgradeHistoryEntryState.fromValue(map['state'] as String)).input(),
+      targetImage: map['targetImage'] == null ? null : (map['targetImage'] as String).input(),
+      targetVersion: map['targetVersion'] == null ? null : (map['targetVersion'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      vmImage: map['vmImage'] == null ? null : (map['vmImage'] as String).input(),
     );
   }
 }

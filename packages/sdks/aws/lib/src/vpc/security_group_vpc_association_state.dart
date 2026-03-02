@@ -22,17 +22,12 @@ class SecurityGroupVpcAssociationState {
   /// [timeouts] Optional.
   /// [vpcId] The ID of the VPC to make the association with.
   SecurityGroupVpcAssociationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityGroupId,
-    pulumi.Output<String>? state,
-    pulumi.Output<SecurityGroupVpcAssociationTimeouts>? timeouts,
-    pulumi.Output<String>? vpcId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      timeouts = pulumi.Input.asOptionalInput<SecurityGroupVpcAssociationTimeouts>(timeouts),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.region,
+    this.securityGroupId,
+    this.state,
+    this.timeouts,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class SecurityGroupVpcAssociationState {
 
   factory SecurityGroupVpcAssociationState.fromMap(Map<String, dynamic> map) {
     return SecurityGroupVpcAssociationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<SecurityGroupVpcAssociationTimeouts>(SecurityGroupVpcAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (SecurityGroupVpcAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

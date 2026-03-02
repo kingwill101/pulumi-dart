@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketObjectContentRetention {
   /// The object retention mode. Supported values include: "Unlocked", "Locked".
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
-  final String retainUntilTime;
+  final pulumi.Input<String> retainUntilTime;
 
   /// Creates a new [GetBucketObjectContentRetention].
   /// [mode] The object retention mode. Supported values include: "Unlocked", "Locked".
@@ -24,8 +25,8 @@ class GetBucketObjectContentRetention {
 
   factory GetBucketObjectContentRetention.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectContentRetention(
-      mode: map['mode'] as String,
-      retainUntilTime: map['retainUntilTime'] as String,
+      mode: (map['mode'] as String).input(),
+      retainUntilTime: (map['retainUntilTime'] as String).input(),
     );
   }
 }

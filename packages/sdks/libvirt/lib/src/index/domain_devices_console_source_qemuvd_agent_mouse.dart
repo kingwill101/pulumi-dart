@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesConsoleSourceQemuvdAgentMouse {
   /// Sets the mode for the mouse interaction through the QEMU guest agent.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [DomainDevicesConsoleSourceQemuvdAgentMouse].
   /// [mode] Sets the mode for the mouse interaction through the QEMU guest agent.
@@ -19,7 +20,7 @@ class DomainDevicesConsoleSourceQemuvdAgentMouse {
 
   factory DomainDevicesConsoleSourceQemuvdAgentMouse.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsoleSourceQemuvdAgentMouse(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterResourceUsageExportConfigBigqueryDestination {
   /// The ID of a BigQuery Dataset.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
 
   /// Creates a new [GetClusterResourceUsageExportConfigBigqueryDestination].
   /// [datasetId] The ID of a BigQuery Dataset.
@@ -19,7 +20,7 @@ class GetClusterResourceUsageExportConfigBigqueryDestination {
 
   factory GetClusterResourceUsageExportConfigBigqueryDestination.fromMap(Map<String, dynamic> map) {
     return GetClusterResourceUsageExportConfigBigqueryDestination(
-      datasetId: map['datasetId'] as String,
+      datasetId: (map['datasetId'] as String).input(),
     );
   }
 }

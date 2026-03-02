@@ -8,34 +8,34 @@ import 'parameter_specification_response.dart';
 /// Netezza linked service.
 class NetezzaLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
-  final dynamic connectionString;
+  final pulumi.Input<dynamic>? connectionString;
   /// Database name for connection. Type: string.
-  final dynamic database;
+  final pulumi.Input<dynamic>? database;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// The port for the connection. Type: integer.
-  final dynamic port;
+  final pulumi.Input<dynamic>? port;
   /// The Azure key vault secret reference of password in connection string.
-  final AzureKeyVaultSecretReferenceResponse? pwd;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? pwd;
   /// Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
-  final String? securityLevel;
+  final pulumi.Input<String>? securityLevel;
   /// Server name for connection. Type: string.
-  final dynamic server;
+  final pulumi.Input<dynamic>? server;
   /// Type of linked service.
   /// Expected value is 'Netezza'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Username for authentication. Type: string.
-  final dynamic uid;
+  final pulumi.Input<dynamic>? uid;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [NetezzaLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -72,14 +72,14 @@ class NetezzaLinkedServiceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionString': ?connectionString,
       'database': ?database,
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'port': ?port,
-      'pwd': ?pwd == null ? null : pwd!.toMap(),
+      'pwd': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(pwd, (value) => value.toMap()),
       'securityLevel': ?securityLevel,
       'server': ?server,
       'type': type,
@@ -90,20 +90,20 @@ class NetezzaLinkedServiceResponse {
 
   factory NetezzaLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return NetezzaLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      connectionString: map['connectionString'] == null ? null : map['connectionString'],
-      database: map['database'] == null ? null : map['database'],
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      port: map['port'] == null ? null : map['port'],
-      pwd: map['pwd'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['pwd'] as Map).cast<String, dynamic>()),
-      securityLevel: map['securityLevel'] == null ? null : map['securityLevel'] as String,
-      server: map['server'] == null ? null : map['server'],
-      type: map['type'] as String,
-      uid: map['uid'] == null ? null : map['uid'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']).input(),
+      database: map['database'] == null ? null : (map['database']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      port: map['port'] == null ? null : (map['port']).input(),
+      pwd: map['pwd'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['pwd'] as Map).cast<String, dynamic>())).input(),
+      securityLevel: map['securityLevel'] == null ? null : (map['securityLevel'] as String).input(),
+      server: map['server'] == null ? null : (map['server']).input(),
+      type: (map['type'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

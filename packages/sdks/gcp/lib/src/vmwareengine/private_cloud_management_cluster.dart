@@ -9,21 +9,21 @@ class PrivateCloudManagementCluster {
   /// Configuration of the autoscaling applied to this cluster
   /// Private cloud must have a minimum of 3 nodes to add autoscale settings
   /// Structure is documented below.
-  final PrivateCloudManagementClusterAutoscalingSettings? autoscalingSettings;
+  final pulumi.Input<PrivateCloudManagementClusterAutoscalingSettings>? autoscalingSettings;
   /// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
   /// * Only contains 1-63 alphanumeric characters and hyphens
   /// * Begins with an alphabetical character
   /// * Ends with a non-hyphen character
   /// * Not formatted as a UUID
   /// * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The map of cluster node types in this cluster,
   /// where the key is canonical identifier of the node type (corresponds to the NodeType).
   /// Structure is documented below.
-  final List<PrivateCloudManagementClusterNodeTypeConfig>? nodeTypeConfigs;
+  final pulumi.Input<List<PrivateCloudManagementClusterNodeTypeConfig>>? nodeTypeConfigs;
   /// The stretched cluster configuration for the private cloud.
   /// Structure is documented below.
-  final PrivateCloudManagementClusterStretchedClusterConfig? stretchedClusterConfig;
+  final pulumi.Input<PrivateCloudManagementClusterStretchedClusterConfig>? stretchedClusterConfig;
 
   /// Creates a new [PrivateCloudManagementCluster].
   /// [autoscalingSettings] Configuration of the autoscaling applied to this cluster
@@ -39,19 +39,19 @@ class PrivateCloudManagementCluster {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingSettings': ?autoscalingSettings == null ? null : autoscalingSettings!.toMap(),
+      'autoscalingSettings': ?pulumi.Input.mapOptionalInputValue<PrivateCloudManagementClusterAutoscalingSettings, Map<String, dynamic>>(autoscalingSettings, (value) => value.toMap()),
       'clusterId': clusterId,
-      'nodeTypeConfigs': ?nodeTypeConfigs == null ? null : pulumi.Input.encodeList<PrivateCloudManagementClusterNodeTypeConfig, Map<String, dynamic>>(nodeTypeConfigs!, (value) => value.toMap()),
-      'stretchedClusterConfig': ?stretchedClusterConfig == null ? null : stretchedClusterConfig!.toMap(),
+      'nodeTypeConfigs': ?pulumi.Input.mapOptionalInputValue<List<PrivateCloudManagementClusterNodeTypeConfig>, List<Map<String, dynamic>>>(nodeTypeConfigs, (value) => pulumi.Input.encodeList<PrivateCloudManagementClusterNodeTypeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stretchedClusterConfig': ?pulumi.Input.mapOptionalInputValue<PrivateCloudManagementClusterStretchedClusterConfig, Map<String, dynamic>>(stretchedClusterConfig, (value) => value.toMap()),
     };
   }
 
   factory PrivateCloudManagementCluster.fromMap(Map<String, dynamic> map) {
     return PrivateCloudManagementCluster(
-      autoscalingSettings: map['autoscalingSettings'] == null ? null : PrivateCloudManagementClusterAutoscalingSettings.fromMap((map['autoscalingSettings'] as Map).cast<String, dynamic>()),
-      clusterId: map['clusterId'] as String,
-      nodeTypeConfigs: map['nodeTypeConfigs'] == null ? null : pulumi.Input.decodeList<PrivateCloudManagementClusterNodeTypeConfig>(map['nodeTypeConfigs'], (value) => PrivateCloudManagementClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>())),
-      stretchedClusterConfig: map['stretchedClusterConfig'] == null ? null : PrivateCloudManagementClusterStretchedClusterConfig.fromMap((map['stretchedClusterConfig'] as Map).cast<String, dynamic>()),
+      autoscalingSettings: map['autoscalingSettings'] == null ? null : (PrivateCloudManagementClusterAutoscalingSettings.fromMap((map['autoscalingSettings'] as Map).cast<String, dynamic>())).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      nodeTypeConfigs: map['nodeTypeConfigs'] == null ? null : (pulumi.Input.decodeList<PrivateCloudManagementClusterNodeTypeConfig>(map['nodeTypeConfigs'], (value) => PrivateCloudManagementClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stretchedClusterConfig: map['stretchedClusterConfig'] == null ? null : (PrivateCloudManagementClusterStretchedClusterConfig.fromMap((map['stretchedClusterConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

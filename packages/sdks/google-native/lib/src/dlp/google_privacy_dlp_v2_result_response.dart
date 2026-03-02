@@ -7,13 +7,13 @@ import 'google_privacy_dlp_v2_info_type_stats_response.dart';
 /// All result fields mentioned below are updated while the job is processing.
 class GooglePrivacyDlpV2ResultResponse {
   /// Statistics related to the processing of hybrid inspect.
-  final GooglePrivacyDlpV2HybridInspectStatisticsResponse hybridStats;
+  final pulumi.Input<GooglePrivacyDlpV2HybridInspectStatisticsResponse> hybridStats;
   /// Statistics of how many instances of each info type were found during inspect job.
-  final List<GooglePrivacyDlpV2InfoTypeStatsResponse> infoTypeStats;
+  final pulumi.Input<List<GooglePrivacyDlpV2InfoTypeStatsResponse>> infoTypeStats;
   /// Total size in bytes that were processed.
-  final String processedBytes;
+  final pulumi.Input<String> processedBytes;
   /// Estimate of the number of bytes to process.
-  final String totalEstimatedBytes;
+  final pulumi.Input<String> totalEstimatedBytes;
 
   /// Creates a new [GooglePrivacyDlpV2ResultResponse].
   /// [hybridStats] Statistics related to the processing of hybrid inspect.
@@ -29,8 +29,8 @@ class GooglePrivacyDlpV2ResultResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hybridStats': hybridStats.toMap(),
-      'infoTypeStats': pulumi.Input.encodeList<GooglePrivacyDlpV2InfoTypeStatsResponse, Map<String, dynamic>>(infoTypeStats, (value) => value.toMap()),
+      'hybridStats': pulumi.Input.mapInputValue<GooglePrivacyDlpV2HybridInspectStatisticsResponse, Map<String, dynamic>>(hybridStats, (value) => value.toMap()),
+      'infoTypeStats': pulumi.Input.mapInputValue<List<GooglePrivacyDlpV2InfoTypeStatsResponse>, List<Map<String, dynamic>>>(infoTypeStats, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2InfoTypeStatsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'processedBytes': processedBytes,
       'totalEstimatedBytes': totalEstimatedBytes,
     };
@@ -38,10 +38,10 @@ class GooglePrivacyDlpV2ResultResponse {
 
   factory GooglePrivacyDlpV2ResultResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ResultResponse(
-      hybridStats: GooglePrivacyDlpV2HybridInspectStatisticsResponse.fromMap((map['hybridStats'] as Map).cast<String, dynamic>()),
-      infoTypeStats: pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeStatsResponse>(map['infoTypeStats'], (value) => GooglePrivacyDlpV2InfoTypeStatsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      processedBytes: map['processedBytes'] as String,
-      totalEstimatedBytes: map['totalEstimatedBytes'] as String,
+      hybridStats: (GooglePrivacyDlpV2HybridInspectStatisticsResponse.fromMap((map['hybridStats'] as Map).cast<String, dynamic>())).input(),
+      infoTypeStats: (pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeStatsResponse>(map['infoTypeStats'], (value) => GooglePrivacyDlpV2InfoTypeStatsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      processedBytes: (map['processedBytes'] as String).input(),
+      totalEstimatedBytes: (map['totalEstimatedBytes'] as String).input(),
     );
   }
 }

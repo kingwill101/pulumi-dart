@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The secret info when type is keyVaultSecretReference. It's for scenario that user provides a secret stored in user's keyvault and source is Azure Kubernetes. The key Vault's resource id is linked to secretStore.keyVaultId.
 class KeyVaultSecretReferenceSecretInfoResponse {
   /// Name of the Key Vault secret.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The secret type.
   /// Expected value is 'keyVaultSecretReference'.
-  final String secretType;
+  final pulumi.Input<String> secretType;
   /// Version of the Key Vault secret.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [KeyVaultSecretReferenceSecretInfoResponse].
   /// [name] Name of the Key Vault secret.
@@ -31,9 +32,9 @@ class KeyVaultSecretReferenceSecretInfoResponse {
 
   factory KeyVaultSecretReferenceSecretInfoResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultSecretReferenceSecretInfoResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      secretType: map['secretType'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      secretType: (map['secretType'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

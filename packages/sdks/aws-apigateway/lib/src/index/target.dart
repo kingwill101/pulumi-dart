@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'integration_connection_type.dart';
 import 'integration_passthrough_behavior.dart';
 import 'integration_type.dart';
@@ -7,13 +8,13 @@ import 'integration_type.dart';
 class Target {
   /// The (id) of the VpcLink used for the integration when connectionType=VPC_LINK and undefined,
   /// otherwise.
-  final String? connectionId;
+  final pulumi.Input<String>? connectionId;
   /// The type of the network connection to the integration endpoint. The valid value is `INTERNET`
   /// for connections through the public routable internet or `VPC_LINK` for private connections
   /// between API Gateway and a network load balancer in a VPC. The default value is `INTERNET`.
-  final IntegrationConnectionType? connectionType;
+  final pulumi.Input<IntegrationConnectionType>? connectionType;
   /// Specifies the integration's HTTP method type.  Currently, the only supported type is 'ANY'.
-  final String? httpMethod;
+  final pulumi.Input<String>? httpMethod;
   /// Specifies how the method request body of an unmapped content type will be passed through the
   /// integration request to the back end without transformation.
   ///
@@ -34,7 +35,7 @@ class Target {
   /// integration request.
   ///
   /// Defaults to `WHEN_NO_MATCH` if unspecified.
-  final IntegrationPassthroughBehavior? passthroughBehaviour;
+  final pulumi.Input<IntegrationPassthroughBehavior>? passthroughBehaviour;
   /// Specifies an API method integration type. The valid value is one of the following:
   ///
   /// * `aws`: for integrating the API method request with an AWS service action, including the Lambda
@@ -55,7 +56,7 @@ class Target {
   ///
   /// * `mock`: for integrating the API method request with API Gateway as a "loop-back" endpoint
   /// without invoking any backend.
-  final IntegrationType type;
+  final pulumi.Input<IntegrationType> type;
   /// Specifies Uniform Resource Identifier (URI) of the integration endpoint.
   ///
   /// For HTTP or HTTP_PROXY integrations, the URI must be a fully formed, encoded HTTP(S) URL
@@ -75,7 +76,7 @@ class Target {
   /// example, for integration with the S3 API of GetObject, the uri can be either
   /// arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key} or
   /// arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [Target].
   /// [connectionId] The (id) of the VpcLink used for the integration when connectionType=VPC_LINK and undefined,
@@ -96,22 +97,22 @@ class Target {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'connectionId': ?connectionId,
-      'connectionType': ?connectionType == null ? null : connectionType!.value,
+      'connectionType': ?pulumi.Input.mapOptionalInputValue<IntegrationConnectionType, String>(connectionType, (value) => value.value),
       'httpMethod': ?httpMethod,
-      'passthroughBehaviour': ?passthroughBehaviour == null ? null : passthroughBehaviour!.value,
-      'type': type.value,
+      'passthroughBehaviour': ?pulumi.Input.mapOptionalInputValue<IntegrationPassthroughBehavior, String>(passthroughBehaviour, (value) => value.value),
+      'type': pulumi.Input.mapInputValue<IntegrationType, String>(type, (value) => value.value),
       'uri': ?uri,
     };
   }
 
   factory Target.fromMap(Map<String, dynamic> map) {
     return Target(
-      connectionId: map['connectionId'] == null ? null : map['connectionId'] as String,
-      connectionType: map['connectionType'] == null ? null : IntegrationConnectionType.fromValue(map['connectionType'] as String),
-      httpMethod: map['httpMethod'] == null ? null : map['httpMethod'] as String,
-      passthroughBehaviour: map['passthroughBehaviour'] == null ? null : IntegrationPassthroughBehavior.fromValue(map['passthroughBehaviour'] as String),
-      type: IntegrationType.fromValue(map['type'] as String),
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      connectionType: map['connectionType'] == null ? null : (IntegrationConnectionType.fromValue(map['connectionType'] as String)).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
+      passthroughBehaviour: map['passthroughBehaviour'] == null ? null : (IntegrationPassthroughBehavior.fromValue(map['passthroughBehaviour'] as String)).input(),
+      type: (IntegrationType.fromValue(map['type'] as String)).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

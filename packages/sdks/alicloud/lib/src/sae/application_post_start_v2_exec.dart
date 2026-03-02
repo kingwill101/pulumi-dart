@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationPostStartV2Exec {
   /// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-  final List<String>? commands;
+  final pulumi.Input<List<String>>? commands;
 
   /// Creates a new [ApplicationPostStartV2Exec].
   /// [commands] Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
@@ -19,7 +20,7 @@ class ApplicationPostStartV2Exec {
 
   factory ApplicationPostStartV2Exec.fromMap(Map<String, dynamic> map) {
     return ApplicationPostStartV2Exec(
-      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
+      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
     );
   }
 }

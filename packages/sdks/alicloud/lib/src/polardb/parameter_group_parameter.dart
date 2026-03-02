@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ParameterGroupParameter {
   /// The name of the parameter.
-  final String? paramName;
+  final pulumi.Input<String>? paramName;
   /// The value of the parameter.
-  final String? paramValue;
+  final pulumi.Input<String>? paramValue;
 
   /// Creates a new [ParameterGroupParameter].
   /// [paramName] The name of the parameter.
@@ -24,8 +25,8 @@ class ParameterGroupParameter {
 
   factory ParameterGroupParameter.fromMap(Map<String, dynamic> map) {
     return ParameterGroupParameter(
-      paramName: map['paramName'] == null ? null : map['paramName'] as String,
-      paramValue: map['paramValue'] == null ? null : map['paramValue'] as String,
+      paramName: map['paramName'] == null ? null : (map['paramName'] as String).input(),
+      paramValue: map['paramValue'] == null ? null : (map['paramValue'] as String).input(),
     );
   }
 }

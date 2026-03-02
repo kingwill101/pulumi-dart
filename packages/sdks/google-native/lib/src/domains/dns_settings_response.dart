@@ -8,11 +8,11 @@ import 'google_domains_dns_response.dart';
 /// Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
 class DnsSettingsResponse {
   /// An arbitrary DNS provider identified by its name servers.
-  final CustomDnsResponse customDns;
+  final pulumi.Input<CustomDnsResponse> customDns;
   /// The list of glue records for this `Registration`. Commonly empty.
-  final List<GlueRecordResponse> glueRecords;
+  final pulumi.Input<List<GlueRecordResponse>> glueRecords;
   /// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
-  final GoogleDomainsDnsResponse googleDomainsDns;
+  final pulumi.Input<GoogleDomainsDnsResponse> googleDomainsDns;
 
   /// Creates a new [DnsSettingsResponse].
   /// [customDns] An arbitrary DNS provider identified by its name servers.
@@ -26,17 +26,17 @@ class DnsSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customDns': customDns.toMap(),
-      'glueRecords': pulumi.Input.encodeList<GlueRecordResponse, Map<String, dynamic>>(glueRecords, (value) => value.toMap()),
-      'googleDomainsDns': googleDomainsDns.toMap(),
+      'customDns': pulumi.Input.mapInputValue<CustomDnsResponse, Map<String, dynamic>>(customDns, (value) => value.toMap()),
+      'glueRecords': pulumi.Input.mapInputValue<List<GlueRecordResponse>, List<Map<String, dynamic>>>(glueRecords, (value) => pulumi.Input.encodeList<GlueRecordResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'googleDomainsDns': pulumi.Input.mapInputValue<GoogleDomainsDnsResponse, Map<String, dynamic>>(googleDomainsDns, (value) => value.toMap()),
     };
   }
 
   factory DnsSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DnsSettingsResponse(
-      customDns: CustomDnsResponse.fromMap((map['customDns'] as Map).cast<String, dynamic>()),
-      glueRecords: pulumi.Input.decodeList<GlueRecordResponse>(map['glueRecords'], (value) => GlueRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
-      googleDomainsDns: GoogleDomainsDnsResponse.fromMap((map['googleDomainsDns'] as Map).cast<String, dynamic>()),
+      customDns: (CustomDnsResponse.fromMap((map['customDns'] as Map).cast<String, dynamic>())).input(),
+      glueRecords: (pulumi.Input.decodeList<GlueRecordResponse>(map['glueRecords'], (value) => GlueRecordResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      googleDomainsDns: (GoogleDomainsDnsResponse.fromMap((map['googleDomainsDns'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the settings of a remote support node.
 class RemoteSupportJobNodeSettingsResponse {
   /// The error message, if any, from the last connection attempt.
-  final String connectionErrorMessage;
+  final pulumi.Input<String> connectionErrorMessage;
   /// The current connection status of the remote support session.
-  final String connectionStatus;
+  final pulumi.Input<String> connectionStatus;
   /// The timestamp when the node settings were created, in UTC.
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// The state of the remote support node.
-  final String state;
+  final pulumi.Input<String> state;
   /// The timestamp when the node settings were last updated, in UTC.
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
 
   /// Creates a new [RemoteSupportJobNodeSettingsResponse].
   /// [connectionErrorMessage] The error message, if any, from the last connection attempt.
@@ -40,11 +41,11 @@ class RemoteSupportJobNodeSettingsResponse {
 
   factory RemoteSupportJobNodeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return RemoteSupportJobNodeSettingsResponse(
-      connectionErrorMessage: map['connectionErrorMessage'] as String,
-      connectionStatus: map['connectionStatus'] as String,
-      createdAt: map['createdAt'] as String,
-      state: map['state'] as String,
-      updatedAt: map['updatedAt'] as String,
+      connectionErrorMessage: (map['connectionErrorMessage'] as String).input(),
+      connectionStatus: (map['connectionStatus'] as String).input(),
+      createdAt: (map['createdAt'] as String).input(),
+      state: (map['state'] as String).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
     );
   }
 }

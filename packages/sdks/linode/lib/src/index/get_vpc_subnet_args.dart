@@ -16,11 +16,9 @@ class GetVpcSubnetArgs {
   /// [id] The unique id of this VPC subnet.
   /// [vpcId] The id of the parent VPC for this VPC Subnet.
   GetVpcSubnetArgs({
-    required pulumi.Output<String> id,
-    required pulumi.Output<int> vpcId,
-  }) :
-      id = pulumi.Input.asInput<String>(id),
-      vpcId = pulumi.Input.asInput<int>(vpcId);
+    required this.id,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVpcSubnetArgs {
 
   factory GetVpcSubnetArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcSubnetArgs(
-      id: pulumi.Output.create<String>(map['id'] as String),
-      vpcId: pulumi.Output.create<int>(map['vpcId'] as int),
+      id: (map['id'] as String).input(),
+      vpcId: (map['vpcId'] as int).input(),
     );
   }
 }

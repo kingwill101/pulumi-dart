@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reboots a VM and waits for it to come back online (Windows). Corresponds to Packer windows-restart provisioner
 class ImageTemplateRestartCustomizerResponse {
   /// Friendly Name to provide context on what this customization step does
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Command to check if restart succeeded [Default: '']
-  final String? restartCheckCommand;
+  final pulumi.Input<String>? restartCheckCommand;
   /// Command to execute the restart [Default: 'shutdown /r /f /t 0 /c "packer restart"']
-  final String? restartCommand;
+  final pulumi.Input<String>? restartCommand;
   /// Restart timeout specified as a string of magnitude and unit, e.g. '5m' (5 minutes) or '2h' (2 hours) [Default: '5m']
-  final String? restartTimeout;
+  final pulumi.Input<String>? restartTimeout;
   /// The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
   /// Expected value is 'WindowsRestart'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ImageTemplateRestartCustomizerResponse].
   /// [name] Friendly Name to provide context on what this customization step does
@@ -41,11 +42,11 @@ class ImageTemplateRestartCustomizerResponse {
 
   factory ImageTemplateRestartCustomizerResponse.fromMap(Map<String, dynamic> map) {
     return ImageTemplateRestartCustomizerResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      restartCheckCommand: map['restartCheckCommand'] == null ? null : map['restartCheckCommand'] as String,
-      restartCommand: map['restartCommand'] == null ? null : map['restartCommand'] as String,
-      restartTimeout: map['restartTimeout'] == null ? null : map['restartTimeout'] as String,
-      type: map['type'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      restartCheckCommand: map['restartCheckCommand'] == null ? null : (map['restartCheckCommand'] as String).input(),
+      restartCommand: map['restartCommand'] == null ? null : (map['restartCommand'] as String).input(),
+      restartTimeout: map['restartTimeout'] == null ? null : (map['restartTimeout'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

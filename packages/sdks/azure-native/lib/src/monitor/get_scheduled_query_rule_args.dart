@@ -16,11 +16,9 @@ class GetScheduledQueryRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] The name of the rule.
   GetScheduledQueryRuleArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleName = pulumi.Input.asInput<String>(ruleName);
+    required this.resourceGroupName,
+    required this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetScheduledQueryRuleArgs {
 
   factory GetScheduledQueryRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduledQueryRuleArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
     );
   }
 }

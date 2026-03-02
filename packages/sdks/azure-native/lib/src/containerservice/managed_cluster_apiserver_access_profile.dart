@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Access profile for managed cluster API server.
 class ManagedClusterAPIServerAccessProfile {
   /// The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
-  final List<String>? authorizedIPRanges;
+  final pulumi.Input<List<String>>? authorizedIPRanges;
   /// Whether to disable run command for the cluster or not.
-  final bool? disableRunCommand;
+  final pulumi.Input<bool>? disableRunCommand;
   /// Whether to create the cluster as a private cluster or not. For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
-  final bool? enablePrivateCluster;
+  final pulumi.Input<bool>? enablePrivateCluster;
   /// Whether to create additional public FQDN for private cluster or not.
-  final bool? enablePrivateClusterPublicFQDN;
+  final pulumi.Input<bool>? enablePrivateClusterPublicFQDN;
   /// Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.
-  final bool? enableVnetIntegration;
+  final pulumi.Input<bool>? enableVnetIntegration;
   /// The private DNS zone mode for the cluster. The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone). Allowed values are 'system' and 'none'.
-  final String? privateDNSZone;
+  final pulumi.Input<String>? privateDNSZone;
   /// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO Vnet, or when updating an existing cluster to enable apiserver vnet integration.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Creates a new [ManagedClusterAPIServerAccessProfile].
   /// [authorizedIPRanges] The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
@@ -50,13 +51,13 @@ class ManagedClusterAPIServerAccessProfile {
 
   factory ManagedClusterAPIServerAccessProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAPIServerAccessProfile(
-      authorizedIPRanges: map['authorizedIPRanges'] == null ? null : (map['authorizedIPRanges'] as List).cast<String>(),
-      disableRunCommand: map['disableRunCommand'] == null ? null : map['disableRunCommand'] as bool,
-      enablePrivateCluster: map['enablePrivateCluster'] == null ? null : map['enablePrivateCluster'] as bool,
-      enablePrivateClusterPublicFQDN: map['enablePrivateClusterPublicFQDN'] == null ? null : map['enablePrivateClusterPublicFQDN'] as bool,
-      enableVnetIntegration: map['enableVnetIntegration'] == null ? null : map['enableVnetIntegration'] as bool,
-      privateDNSZone: map['privateDNSZone'] == null ? null : map['privateDNSZone'] as String,
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
+      authorizedIPRanges: map['authorizedIPRanges'] == null ? null : ((map['authorizedIPRanges'] as List).cast<String>()).input(),
+      disableRunCommand: map['disableRunCommand'] == null ? null : (map['disableRunCommand'] as bool).input(),
+      enablePrivateCluster: map['enablePrivateCluster'] == null ? null : (map['enablePrivateCluster'] as bool).input(),
+      enablePrivateClusterPublicFQDN: map['enablePrivateClusterPublicFQDN'] == null ? null : (map['enablePrivateClusterPublicFQDN'] as bool).input(),
+      enableVnetIntegration: map['enableVnetIntegration'] == null ? null : (map['enableVnetIntegration'] as bool).input(),
+      privateDNSZone: map['privateDNSZone'] == null ? null : (map['privateDNSZone'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

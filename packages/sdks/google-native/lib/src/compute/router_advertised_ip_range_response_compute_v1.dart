@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description-tagged IP ranges for the router to advertise.
 class RouterAdvertisedIpRangeResponseComputeV1 {
   /// User-specified description for the IP range.
-  final String description;
+  final pulumi.Input<String> description;
   /// The IP range to advertise. The value must be a CIDR-formatted string.
-  final String range;
+  final pulumi.Input<String> range;
 
   /// Creates a new [RouterAdvertisedIpRangeResponseComputeV1].
   /// [description] User-specified description for the IP range.
@@ -25,8 +26,8 @@ class RouterAdvertisedIpRangeResponseComputeV1 {
 
   factory RouterAdvertisedIpRangeResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return RouterAdvertisedIpRangeResponseComputeV1(
-      description: map['description'] as String,
-      range: map['range'] as String,
+      description: (map['description'] as String).input(),
+      range: (map['range'] as String).input(),
     );
   }
 }

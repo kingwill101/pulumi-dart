@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationTomcatConfigV2 {
   /// The path.
-  final String? contextPath;
+  final pulumi.Input<String>? contextPath;
   /// The maximum number of connections in the connection pool.
-  final int? maxThreads;
+  final pulumi.Input<int>? maxThreads;
   /// The port.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The URI encoding scheme in the Tomcat container.
-  final String? uriEncoding;
+  final pulumi.Input<String>? uriEncoding;
   /// Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
-  final String? useBodyEncodingForUri;
+  final pulumi.Input<String>? useBodyEncodingForUri;
 
   /// Creates a new [ApplicationTomcatConfigV2].
   /// [contextPath] The path.
@@ -39,11 +40,11 @@ class ApplicationTomcatConfigV2 {
 
   factory ApplicationTomcatConfigV2.fromMap(Map<String, dynamic> map) {
     return ApplicationTomcatConfigV2(
-      contextPath: map['contextPath'] == null ? null : map['contextPath'] as String,
-      maxThreads: map['maxThreads'] == null ? null : map['maxThreads'] as int,
-      port: map['port'] == null ? null : map['port'] as int,
-      uriEncoding: map['uriEncoding'] == null ? null : map['uriEncoding'] as String,
-      useBodyEncodingForUri: map['useBodyEncodingForUri'] == null ? null : map['useBodyEncodingForUri'] as String,
+      contextPath: map['contextPath'] == null ? null : (map['contextPath'] as String).input(),
+      maxThreads: map['maxThreads'] == null ? null : (map['maxThreads'] as int).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      uriEncoding: map['uriEncoding'] == null ? null : (map['uriEncoding'] as String).input(),
+      useBodyEncodingForUri: map['useBodyEncodingForUri'] == null ? null : (map['useBodyEncodingForUri'] as String).input(),
     );
   }
 }

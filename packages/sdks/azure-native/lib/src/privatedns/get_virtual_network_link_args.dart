@@ -19,13 +19,10 @@ class GetVirtualNetworkLinkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualNetworkLinkName] The name of the virtual network link.
   GetVirtualNetworkLinkArgs({
-    required pulumi.Output<String> privateZoneName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualNetworkLinkName,
-  }) :
-      privateZoneName = pulumi.Input.asInput<String>(privateZoneName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualNetworkLinkName = pulumi.Input.asInput<String>(virtualNetworkLinkName);
+    required this.privateZoneName,
+    required this.resourceGroupName,
+    required this.virtualNetworkLinkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVirtualNetworkLinkArgs {
 
   factory GetVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkLinkArgs(
-      privateZoneName: pulumi.Output.create<String>(map['privateZoneName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualNetworkLinkName: pulumi.Output.create<String>(map['virtualNetworkLinkName'] as String),
+      privateZoneName: (map['privateZoneName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualNetworkLinkName: (map['virtualNetworkLinkName'] as String).input(),
     );
   }
 }

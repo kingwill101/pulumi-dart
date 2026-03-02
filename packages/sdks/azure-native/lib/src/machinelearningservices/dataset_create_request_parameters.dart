@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_create_request_path.dart';
 import 'dataset_create_request_query.dart';
 
 class DatasetCreateRequestParameters {
   /// Header type.
-  final String? header;
+  final pulumi.Input<String>? header;
   /// Boolean to keep path information as column in the dataset. Defaults to False. This is useful when reading multiple files, and want to know which file a particular record originated from, or to keep useful information in file path.
-  final bool? includePath;
+  final pulumi.Input<bool>? includePath;
   /// The partition information of each path will be extracted into columns based on the specified format. Format part '{column_name}' creates string column, and '{column_name:yyyy/MM/dd/HH/mm/ss}' creates datetime column, where 'yyyy', 'MM', 'dd', 'HH', 'mm' and 'ss' are used to extract year, month, day, hour, minute and second for the datetime type. The format should start from the position of first partition key until the end of file path. For example, given the path '../USA/2019/01/01/data.parquet' where the partition is by country/region and time, partition_format='/{CountryOrRegion}/{PartitionDate:yyyy/MM/dd}/data.csv' creates a string column 'CountryOrRegion' with the value 'USA' and a datetime column 'PartitionDate' with the value '2019-01-01
-  final String? partitionFormat;
-  final DatasetCreateRequestPath? path;
-  final DatasetCreateRequestQuery? query;
+  final pulumi.Input<String>? partitionFormat;
+  final pulumi.Input<DatasetCreateRequestPath>? path;
+  final pulumi.Input<DatasetCreateRequestQuery>? query;
   /// The separator used to split columns for 'delimited_files' sourceType.
-  final String? separator;
+  final pulumi.Input<String>? separator;
   /// Data source type.
-  final String? sourceType;
+  final pulumi.Input<String>? sourceType;
 
   /// Creates a new [DatasetCreateRequestParameters].
   /// [header] Header type.
@@ -40,8 +41,8 @@ class DatasetCreateRequestParameters {
       'header': ?header,
       'includePath': ?includePath,
       'partitionFormat': ?partitionFormat,
-      'path': ?path == null ? null : path!.toMap(),
-      'query': ?query == null ? null : query!.toMap(),
+      'path': ?pulumi.Input.mapOptionalInputValue<DatasetCreateRequestPath, Map<String, dynamic>>(path, (value) => value.toMap()),
+      'query': ?pulumi.Input.mapOptionalInputValue<DatasetCreateRequestQuery, Map<String, dynamic>>(query, (value) => value.toMap()),
       'separator': ?separator,
       'sourceType': ?sourceType,
     };
@@ -49,13 +50,13 @@ class DatasetCreateRequestParameters {
 
   factory DatasetCreateRequestParameters.fromMap(Map<String, dynamic> map) {
     return DatasetCreateRequestParameters(
-      header: map['header'] == null ? null : map['header'] as String,
-      includePath: map['includePath'] == null ? null : map['includePath'] as bool,
-      partitionFormat: map['partitionFormat'] == null ? null : map['partitionFormat'] as String,
-      path: map['path'] == null ? null : DatasetCreateRequestPath.fromMap((map['path'] as Map).cast<String, dynamic>()),
-      query: map['query'] == null ? null : DatasetCreateRequestQuery.fromMap((map['query'] as Map).cast<String, dynamic>()),
-      separator: map['separator'] == null ? null : map['separator'] as String,
-      sourceType: map['sourceType'] == null ? null : map['sourceType'] as String,
+      header: map['header'] == null ? null : (map['header'] as String).input(),
+      includePath: map['includePath'] == null ? null : (map['includePath'] as bool).input(),
+      partitionFormat: map['partitionFormat'] == null ? null : (map['partitionFormat'] as String).input(),
+      path: map['path'] == null ? null : (DatasetCreateRequestPath.fromMap((map['path'] as Map).cast<String, dynamic>())).input(),
+      query: map['query'] == null ? null : (DatasetCreateRequestQuery.fromMap((map['query'] as Map).cast<String, dynamic>())).input(),
+      separator: map['separator'] == null ? null : (map['separator'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
     );
   }
 }

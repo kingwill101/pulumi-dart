@@ -19,13 +19,10 @@ class GetPrivateLinkServiceArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [serviceName] The name of the private link service.
   GetPrivateLinkServiceArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.expand,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPrivateLinkServiceArgs {
 
   factory GetPrivateLinkServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkServiceArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

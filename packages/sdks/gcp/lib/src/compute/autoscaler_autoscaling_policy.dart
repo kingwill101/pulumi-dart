@@ -18,41 +18,41 @@ class AutoscalerAutoscalingPolicy {
   /// numerous factors. We recommend that you test how long an
   /// instance may take to initialize. To do this, create an instance
   /// and time the startup process.
-  final int? cooldownPeriod;
+  final pulumi.Input<int>? cooldownPeriod;
   /// Defines the CPU utilization policy that allows the autoscaler to
   /// scale based on the average CPU utilization of a managed instance
   /// group.
   /// Structure is documented below.
-  final AutoscalerAutoscalingPolicyCpuUtilization? cpuUtilization;
+  final pulumi.Input<AutoscalerAutoscalingPolicyCpuUtilization>? cpuUtilization;
   /// Configuration parameters of autoscaling based on a load balancer.
   /// Structure is documented below.
-  final AutoscalerAutoscalingPolicyLoadBalancingUtilization? loadBalancingUtilization;
+  final pulumi.Input<AutoscalerAutoscalingPolicyLoadBalancingUtilization>? loadBalancingUtilization;
   /// The maximum number of instances that the autoscaler can scale up
   /// to. This is required when creating or updating an autoscaler. The
   /// maximum number of replicas should not be lower than minimal number
   /// of replicas.
-  final int maxReplicas;
+  final pulumi.Input<int> maxReplicas;
   /// Configuration parameters of autoscaling based on a custom metric.
   /// Structure is documented below.
-  final List<AutoscalerAutoscalingPolicyMetric>? metrics;
+  final pulumi.Input<List<AutoscalerAutoscalingPolicyMetric>>? metrics;
   /// The minimum number of replicas that the autoscaler can scale down
   /// to. This cannot be less than 0. If not provided, autoscaler will
   /// choose a default value depending on maximum number of instances
   /// allowed.
-  final int minReplicas;
+  final pulumi.Input<int> minReplicas;
   /// Defines operating mode for this policy.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Defines scale down controls to reduce the risk of response latency
   /// and outages due to abrupt scale-in events
   /// Structure is documented below.
-  final AutoscalerAutoscalingPolicyScaleDownControl? scaleDownControl;
+  final pulumi.Input<AutoscalerAutoscalingPolicyScaleDownControl>? scaleDownControl;
   /// Defines scale in controls to reduce the risk of response latency
   /// and outages due to abrupt scale-in events
   /// Structure is documented below.
-  final AutoscalerAutoscalingPolicyScaleInControl? scaleInControl;
+  final pulumi.Input<AutoscalerAutoscalingPolicyScaleInControl>? scaleInControl;
   /// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
   /// Structure is documented below.
-  final List<AutoscalerAutoscalingPolicyScalingSchedule>? scalingSchedules;
+  final pulumi.Input<List<AutoscalerAutoscalingPolicyScalingSchedule>>? scalingSchedules;
 
   /// Creates a new [AutoscalerAutoscalingPolicy].
   /// [cooldownPeriod] The number of seconds that the autoscaler should wait before it
@@ -81,30 +81,30 @@ class AutoscalerAutoscalingPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cooldownPeriod': ?cooldownPeriod,
-      'cpuUtilization': ?cpuUtilization == null ? null : cpuUtilization!.toMap(),
-      'loadBalancingUtilization': ?loadBalancingUtilization == null ? null : loadBalancingUtilization!.toMap(),
+      'cpuUtilization': ?pulumi.Input.mapOptionalInputValue<AutoscalerAutoscalingPolicyCpuUtilization, Map<String, dynamic>>(cpuUtilization, (value) => value.toMap()),
+      'loadBalancingUtilization': ?pulumi.Input.mapOptionalInputValue<AutoscalerAutoscalingPolicyLoadBalancingUtilization, Map<String, dynamic>>(loadBalancingUtilization, (value) => value.toMap()),
       'maxReplicas': maxReplicas,
-      'metrics': ?metrics == null ? null : pulumi.Input.encodeList<AutoscalerAutoscalingPolicyMetric, Map<String, dynamic>>(metrics!, (value) => value.toMap()),
+      'metrics': ?pulumi.Input.mapOptionalInputValue<List<AutoscalerAutoscalingPolicyMetric>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<AutoscalerAutoscalingPolicyMetric, Map<String, dynamic>>(value, (value) => value.toMap())),
       'minReplicas': minReplicas,
       'mode': ?mode,
-      'scaleDownControl': ?scaleDownControl == null ? null : scaleDownControl!.toMap(),
-      'scaleInControl': ?scaleInControl == null ? null : scaleInControl!.toMap(),
-      'scalingSchedules': ?scalingSchedules == null ? null : pulumi.Input.encodeList<AutoscalerAutoscalingPolicyScalingSchedule, Map<String, dynamic>>(scalingSchedules!, (value) => value.toMap()),
+      'scaleDownControl': ?pulumi.Input.mapOptionalInputValue<AutoscalerAutoscalingPolicyScaleDownControl, Map<String, dynamic>>(scaleDownControl, (value) => value.toMap()),
+      'scaleInControl': ?pulumi.Input.mapOptionalInputValue<AutoscalerAutoscalingPolicyScaleInControl, Map<String, dynamic>>(scaleInControl, (value) => value.toMap()),
+      'scalingSchedules': ?pulumi.Input.mapOptionalInputValue<List<AutoscalerAutoscalingPolicyScalingSchedule>, List<Map<String, dynamic>>>(scalingSchedules, (value) => pulumi.Input.encodeList<AutoscalerAutoscalingPolicyScalingSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AutoscalerAutoscalingPolicy.fromMap(Map<String, dynamic> map) {
     return AutoscalerAutoscalingPolicy(
-      cooldownPeriod: map['cooldownPeriod'] == null ? null : map['cooldownPeriod'] as int,
-      cpuUtilization: map['cpuUtilization'] == null ? null : AutoscalerAutoscalingPolicyCpuUtilization.fromMap((map['cpuUtilization'] as Map).cast<String, dynamic>()),
-      loadBalancingUtilization: map['loadBalancingUtilization'] == null ? null : AutoscalerAutoscalingPolicyLoadBalancingUtilization.fromMap((map['loadBalancingUtilization'] as Map).cast<String, dynamic>()),
-      maxReplicas: map['maxReplicas'] as int,
-      metrics: map['metrics'] == null ? null : pulumi.Input.decodeList<AutoscalerAutoscalingPolicyMetric>(map['metrics'], (value) => AutoscalerAutoscalingPolicyMetric.fromMap((value as Map).cast<String, dynamic>())),
-      minReplicas: map['minReplicas'] as int,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      scaleDownControl: map['scaleDownControl'] == null ? null : AutoscalerAutoscalingPolicyScaleDownControl.fromMap((map['scaleDownControl'] as Map).cast<String, dynamic>()),
-      scaleInControl: map['scaleInControl'] == null ? null : AutoscalerAutoscalingPolicyScaleInControl.fromMap((map['scaleInControl'] as Map).cast<String, dynamic>()),
-      scalingSchedules: map['scalingSchedules'] == null ? null : pulumi.Input.decodeList<AutoscalerAutoscalingPolicyScalingSchedule>(map['scalingSchedules'], (value) => AutoscalerAutoscalingPolicyScalingSchedule.fromMap((value as Map).cast<String, dynamic>())),
+      cooldownPeriod: map['cooldownPeriod'] == null ? null : (map['cooldownPeriod'] as int).input(),
+      cpuUtilization: map['cpuUtilization'] == null ? null : (AutoscalerAutoscalingPolicyCpuUtilization.fromMap((map['cpuUtilization'] as Map).cast<String, dynamic>())).input(),
+      loadBalancingUtilization: map['loadBalancingUtilization'] == null ? null : (AutoscalerAutoscalingPolicyLoadBalancingUtilization.fromMap((map['loadBalancingUtilization'] as Map).cast<String, dynamic>())).input(),
+      maxReplicas: (map['maxReplicas'] as int).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<AutoscalerAutoscalingPolicyMetric>(map['metrics'], (value) => AutoscalerAutoscalingPolicyMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      minReplicas: (map['minReplicas'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      scaleDownControl: map['scaleDownControl'] == null ? null : (AutoscalerAutoscalingPolicyScaleDownControl.fromMap((map['scaleDownControl'] as Map).cast<String, dynamic>())).input(),
+      scaleInControl: map['scaleInControl'] == null ? null : (AutoscalerAutoscalingPolicyScaleInControl.fromMap((map['scaleInControl'] as Map).cast<String, dynamic>())).input(),
+      scalingSchedules: map['scalingSchedules'] == null ? null : (pulumi.Input.decodeList<AutoscalerAutoscalingPolicyScalingSchedule>(map['scalingSchedules'], (value) => AutoscalerAutoscalingPolicyScalingSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallNatRuleCollectionRule {
   /// Specifies a description for the rule.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// A list of destination IP addresses and/or IP ranges.
-  final List<String> destinationAddresses;
+  final pulumi.Input<List<String>> destinationAddresses;
   /// A list of destination ports.
-  final List<String> destinationPorts;
+  final pulumi.Input<List<String>> destinationPorts;
   /// Specifies the name of the rule.
-  final String name;
+  final pulumi.Input<String> name;
   /// A list of protocols. Possible values are `Any`, `ICMP`, `TCP` and `UDP`. If `action` is `Dnat`, protocols can only be `TCP` and `UDP`.
-  final List<String> protocols;
+  final pulumi.Input<List<String>> protocols;
   /// A list of source IP addresses and/or IP ranges.
-  final List<String>? sourceAddresses;
+  final pulumi.Input<List<String>>? sourceAddresses;
   /// A list of source IP Group IDs for the rule.
   ///
   /// > **Note:** At least one of `source_addresses` and `source_ip_groups` must be specified for a rule.
-  final List<String>? sourceIpGroups;
+  final pulumi.Input<List<String>>? sourceIpGroups;
   /// The address of the service behind the Firewall.
-  final String translatedAddress;
+  final pulumi.Input<String> translatedAddress;
   /// The port of the service behind the Firewall.
-  final String translatedPort;
+  final pulumi.Input<String> translatedPort;
 
   /// Creates a new [FirewallNatRuleCollectionRule].
   /// [description] Specifies a description for the rule.
@@ -61,15 +62,15 @@ class FirewallNatRuleCollectionRule {
 
   factory FirewallNatRuleCollectionRule.fromMap(Map<String, dynamic> map) {
     return FirewallNatRuleCollectionRule(
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationAddresses: (map['destinationAddresses'] as List).cast<String>(),
-      destinationPorts: (map['destinationPorts'] as List).cast<String>(),
-      name: map['name'] as String,
-      protocols: (map['protocols'] as List).cast<String>(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : (map['sourceAddresses'] as List).cast<String>(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : (map['sourceIpGroups'] as List).cast<String>(),
-      translatedAddress: map['translatedAddress'] as String,
-      translatedPort: map['translatedPort'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationAddresses: ((map['destinationAddresses'] as List).cast<String>()).input(),
+      destinationPorts: ((map['destinationPorts'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      protocols: ((map['protocols'] as List).cast<String>()).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
+      translatedAddress: (map['translatedAddress'] as String).input(),
+      translatedPort: (map['translatedPort'] as String).input(),
     );
   }
 }

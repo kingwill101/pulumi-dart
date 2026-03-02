@@ -19,15 +19,11 @@ class IpsecProfileState {
   /// [parentProfile] Specifies the profile from which this profile inherits settings. The default is the system-supplied `/Common/ipsec` profile
   /// [trafficSelector] Specifies the traffic selector for the IPsec interface tunnel to which the profile is applied
   IpsecProfileState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentProfile,
-    pulumi.Output<String>? trafficSelector,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentProfile = pulumi.Input.asOptionalInput<String>(parentProfile),
-      trafficSelector = pulumi.Input.asOptionalInput<String>(trafficSelector);
+    this.description,
+    this.name,
+    this.parentProfile,
+    this.trafficSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class IpsecProfileState {
 
   factory IpsecProfileState.fromMap(Map<String, dynamic> map) {
     return IpsecProfileState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentProfile: map['parentProfile'] == null ? null : pulumi.Output.create<String>(map['parentProfile'] as String),
-      trafficSelector: map['trafficSelector'] == null ? null : pulumi.Output.create<String>(map['trafficSelector'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentProfile: map['parentProfile'] == null ? null : (map['parentProfile'] as String).input(),
+      trafficSelector: map['trafficSelector'] == null ? null : (map['trafficSelector'] as String).input(),
     );
   }
 }

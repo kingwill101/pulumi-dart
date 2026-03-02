@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseInstancesInstanceSettingPasswordValidationPolicy {
   /// Password complexity.
-  final String complexity;
+  final pulumi.Input<String> complexity;
   /// Disallow username as a part of the password.
-  final bool disallowUsernameSubstring;
+  final pulumi.Input<bool> disallowUsernameSubstring;
   /// Whether the password policy is enabled or not.
-  final bool enablePasswordPolicy;
+  final pulumi.Input<bool> enablePasswordPolicy;
   /// Minimum number of characters allowed.
-  final int minLength;
+  final pulumi.Input<int> minLength;
   /// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
-  final String passwordChangeInterval;
+  final pulumi.Input<String> passwordChangeInterval;
   /// Number of previous passwords that cannot be reused.
-  final int reuseInterval;
+  final pulumi.Input<int> reuseInterval;
 
   /// Creates a new [GetDatabaseInstancesInstanceSettingPasswordValidationPolicy].
   /// [complexity] Password complexity.
@@ -44,12 +45,12 @@ class GetDatabaseInstancesInstanceSettingPasswordValidationPolicy {
 
   factory GetDatabaseInstancesInstanceSettingPasswordValidationPolicy.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingPasswordValidationPolicy(
-      complexity: map['complexity'] as String,
-      disallowUsernameSubstring: map['disallowUsernameSubstring'] as bool,
-      enablePasswordPolicy: map['enablePasswordPolicy'] as bool,
-      minLength: map['minLength'] as int,
-      passwordChangeInterval: map['passwordChangeInterval'] as String,
-      reuseInterval: map['reuseInterval'] as int,
+      complexity: (map['complexity'] as String).input(),
+      disallowUsernameSubstring: (map['disallowUsernameSubstring'] as bool).input(),
+      enablePasswordPolicy: (map['enablePasswordPolicy'] as bool).input(),
+      minLength: (map['minLength'] as int).input(),
+      passwordChangeInterval: (map['passwordChangeInterval'] as String).input(),
+      reuseInterval: (map['reuseInterval'] as int).input(),
     );
   }
 }

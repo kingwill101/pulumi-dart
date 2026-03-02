@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_sampling_config.dart';
 
 /// Describes any options that have an effect on the debugging of pipelines.
 class DebugOptions {
   /// Configuration options for sampling elements from a running pipeline.
-  final DataSamplingConfig? dataSampling;
+  final pulumi.Input<DataSamplingConfig>? dataSampling;
   /// When true, enables the logging of the literal hot key to the user's Cloud Logging.
-  final bool? enableHotKeyLogging;
+  final pulumi.Input<bool>? enableHotKeyLogging;
 
   /// Creates a new [DebugOptions].
   /// [dataSampling] Configuration options for sampling elements from a running pipeline.
@@ -19,15 +20,15 @@ class DebugOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataSampling': ?dataSampling == null ? null : dataSampling!.toMap(),
+      'dataSampling': ?pulumi.Input.mapOptionalInputValue<DataSamplingConfig, Map<String, dynamic>>(dataSampling, (value) => value.toMap()),
       'enableHotKeyLogging': ?enableHotKeyLogging,
     };
   }
 
   factory DebugOptions.fromMap(Map<String, dynamic> map) {
     return DebugOptions(
-      dataSampling: map['dataSampling'] == null ? null : DataSamplingConfig.fromMap((map['dataSampling'] as Map).cast<String, dynamic>()),
-      enableHotKeyLogging: map['enableHotKeyLogging'] == null ? null : map['enableHotKeyLogging'] as bool,
+      dataSampling: map['dataSampling'] == null ? null : (DataSamplingConfig.fromMap((map['dataSampling'] as Map).cast<String, dynamic>())).input(),
+      enableHotKeyLogging: map['enableHotKeyLogging'] == null ? null : (map['enableHotKeyLogging'] as bool).input(),
     );
   }
 }

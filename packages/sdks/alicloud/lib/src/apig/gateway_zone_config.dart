@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayZoneConfig {
   /// Availability Zone Options
-  final String selectOption;
+  final pulumi.Input<String> selectOption;
 
   /// Creates a new [GatewayZoneConfig].
   /// [selectOption] Availability Zone Options
@@ -19,7 +20,7 @@ class GatewayZoneConfig {
 
   factory GatewayZoneConfig.fromMap(Map<String, dynamic> map) {
     return GatewayZoneConfig(
-      selectOption: map['selectOption'] as String,
+      selectOption: (map['selectOption'] as String).input(),
     );
   }
 }

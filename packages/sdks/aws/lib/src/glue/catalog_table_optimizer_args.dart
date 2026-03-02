@@ -29,19 +29,13 @@ class CatalogTableOptimizerArgs {
   /// [tableName] The name of the table.
   /// [type] The type of table optimizer. Valid values are `compaction`, `retention`, and `orphan_file_deletion`.
   CatalogTableOptimizerArgs({
-    required pulumi.Output<String> catalogId,
-    required pulumi.Output<CatalogTableOptimizerConfiguration> configuration,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> tableName,
-    required pulumi.Output<String> type,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      configuration = pulumi.Input.asInput<CatalogTableOptimizerConfiguration>(configuration),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableName = pulumi.Input.asInput<String>(tableName),
-      type = pulumi.Input.asInput<String>(type);
+    required this.catalogId,
+    required this.configuration,
+    required this.databaseName,
+    this.region,
+    required this.tableName,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class CatalogTableOptimizerArgs {
 
   factory CatalogTableOptimizerArgs.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      configuration: pulumi.Output.create<CatalogTableOptimizerConfiguration>(CatalogTableOptimizerConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      catalogId: (map['catalogId'] as String).input(),
+      configuration: (CatalogTableOptimizerConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

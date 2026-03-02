@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message contains the JWT encryption information for the proxy server.
 class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse {
   /// Optional. Service Account for encryption key.
-  final String encryptionSaEmail;
+  final pulumi.Input<String> encryptionSaEmail;
   /// Optional. JWK in string.
-  final String jwk;
+  final pulumi.Input<String> jwk;
 
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse].
   /// [encryptionSaEmail] Optional. Service Account for encryption key.
@@ -25,8 +26,8 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse {
 
   factory GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse(
-      encryptionSaEmail: map['encryptionSaEmail'] as String,
-      jwk: map['jwk'] as String,
+      encryptionSaEmail: (map['encryptionSaEmail'] as String).input(),
+      jwk: (map['jwk'] as String).input(),
     );
   }
 }

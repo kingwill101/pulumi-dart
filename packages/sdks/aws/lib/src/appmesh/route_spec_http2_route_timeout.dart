@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_spec_http2_route_timeout_idle.dart';
 import 'route_spec_http2_route_timeout_per_request.dart';
 
 class RouteSpecHttp2RouteTimeout {
   /// Idle timeout. An idle timeout bounds the amount of time that a connection may be idle.
-  final RouteSpecHttp2RouteTimeoutIdle? idle;
+  final pulumi.Input<RouteSpecHttp2RouteTimeoutIdle>? idle;
   /// Per request timeout.
-  final RouteSpecHttp2RouteTimeoutPerRequest? perRequest;
+  final pulumi.Input<RouteSpecHttp2RouteTimeoutPerRequest>? perRequest;
 
   /// Creates a new [RouteSpecHttp2RouteTimeout].
   /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle.
@@ -19,15 +20,15 @@ class RouteSpecHttp2RouteTimeout {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'idle': ?idle == null ? null : idle!.toMap(),
-      'perRequest': ?perRequest == null ? null : perRequest!.toMap(),
+      'idle': ?pulumi.Input.mapOptionalInputValue<RouteSpecHttp2RouteTimeoutIdle, Map<String, dynamic>>(idle, (value) => value.toMap()),
+      'perRequest': ?pulumi.Input.mapOptionalInputValue<RouteSpecHttp2RouteTimeoutPerRequest, Map<String, dynamic>>(perRequest, (value) => value.toMap()),
     };
   }
 
   factory RouteSpecHttp2RouteTimeout.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttp2RouteTimeout(
-      idle: map['idle'] == null ? null : RouteSpecHttp2RouteTimeoutIdle.fromMap((map['idle'] as Map).cast<String, dynamic>()),
-      perRequest: map['perRequest'] == null ? null : RouteSpecHttp2RouteTimeoutPerRequest.fromMap((map['perRequest'] as Map).cast<String, dynamic>()),
+      idle: map['idle'] == null ? null : (RouteSpecHttp2RouteTimeoutIdle.fromMap((map['idle'] as Map).cast<String, dynamic>())).input(),
+      perRequest: map['perRequest'] == null ? null : (RouteSpecHttp2RouteTimeoutPerRequest.fromMap((map['perRequest'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

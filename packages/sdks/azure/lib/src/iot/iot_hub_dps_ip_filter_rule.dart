@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IotHubDpsIpFilterRule {
   /// The desired action for requests captured by this rule. Possible values are `Accept`, `Reject`
-  final String action;
+  final pulumi.Input<String> action;
   /// The IP address range in CIDR notation for the rule.
-  final String ipMask;
+  final pulumi.Input<String> ipMask;
   /// The name of the filter.
-  final String name;
+  final pulumi.Input<String> name;
   /// Target for requests captured by this rule. Possible values are `all`, `deviceApi` and `serviceApi`.
-  final String? target;
+  final pulumi.Input<String>? target;
 
   /// Creates a new [IotHubDpsIpFilterRule].
   /// [action] The desired action for requests captured by this rule. Possible values are `Accept`, `Reject`
@@ -34,10 +35,10 @@ class IotHubDpsIpFilterRule {
 
   factory IotHubDpsIpFilterRule.fromMap(Map<String, dynamic> map) {
     return IotHubDpsIpFilterRule(
-      action: map['action'] as String,
-      ipMask: map['ipMask'] as String,
-      name: map['name'] as String,
-      target: map['target'] == null ? null : map['target'] as String,
+      action: (map['action'] as String).input(),
+      ipMask: (map['ipMask'] as String).input(),
+      name: (map['name'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetJobDefinitionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageMoverName] The name of the Storage Mover resource.
   GetJobDefinitionArgs({
-    required pulumi.Output<String> jobDefinitionName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageMoverName,
-  }) :
-      jobDefinitionName = pulumi.Input.asInput<String>(jobDefinitionName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageMoverName = pulumi.Input.asInput<String>(storageMoverName);
+    required this.jobDefinitionName,
+    required this.projectName,
+    required this.resourceGroupName,
+    required this.storageMoverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetJobDefinitionArgs {
 
   factory GetJobDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionArgs(
-      jobDefinitionName: pulumi.Output.create<String>(map['jobDefinitionName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageMoverName: pulumi.Output.create<String>(map['storageMoverName'] as String),
+      jobDefinitionName: (map['jobDefinitionName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageMoverName: (map['storageMoverName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesHyperVTlbFlushDirect {
   /// Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [DomainFeaturesHyperVTlbFlushDirect].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
@@ -19,7 +20,7 @@ class DomainFeaturesHyperVTlbFlushDirect {
 
   factory DomainFeaturesHyperVTlbFlushDirect.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVTlbFlushDirect(
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

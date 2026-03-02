@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_instance_private_endpoint_connection_properties_response.dart';
 
 /// A private endpoint connection under a managed instance
 class ManagedInstancePecPropertyResponse {
   /// Resource ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Private endpoint connection properties
-  final ManagedInstancePrivateEndpointConnectionPropertiesResponse properties;
+  final pulumi.Input<ManagedInstancePrivateEndpointConnectionPropertiesResponse> properties;
 
   /// Creates a new [ManagedInstancePecPropertyResponse].
   /// [id] Resource ID.
@@ -20,14 +21,14 @@ class ManagedInstancePecPropertyResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'properties': properties.toMap(),
+      'properties': pulumi.Input.mapInputValue<ManagedInstancePrivateEndpointConnectionPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory ManagedInstancePecPropertyResponse.fromMap(Map<String, dynamic> map) {
     return ManagedInstancePecPropertyResponse(
-      id: map['id'] as String,
-      properties: ManagedInstancePrivateEndpointConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      id: (map['id'] as String).input(),
+      properties: (ManagedInstancePrivateEndpointConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationsApplicationMountDesc {
   /// Container mount path.
-  final String mountPath;
+  final pulumi.Input<String> mountPath;
   /// NAS relative file directory.
-  final String nasPath;
+  final pulumi.Input<String> nasPath;
 
   /// Creates a new [GetApplicationsApplicationMountDesc].
   /// [mountPath] Container mount path.
@@ -24,8 +25,8 @@ class GetApplicationsApplicationMountDesc {
 
   factory GetApplicationsApplicationMountDesc.fromMap(Map<String, dynamic> map) {
     return GetApplicationsApplicationMountDesc(
-      mountPath: map['mountPath'] as String,
-      nasPath: map['nasPath'] as String,
+      mountPath: (map['mountPath'] as String).input(),
+      nasPath: (map['nasPath'] as String).input(),
     );
   }
 }

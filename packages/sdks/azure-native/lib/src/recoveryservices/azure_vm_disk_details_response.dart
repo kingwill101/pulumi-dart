@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Disk details for E2A provider.
 class AzureVmDiskDetailsResponse {
   /// The custom target Azure disk name.
-  final String? customTargetDiskName;
+  final pulumi.Input<String>? customTargetDiskName;
   /// The DiskEncryptionSet ARM ID.
-  final String? diskEncryptionSetId;
+  final pulumi.Input<String>? diskEncryptionSetId;
   /// The disk resource id.
-  final String? diskId;
+  final pulumi.Input<String>? diskId;
   /// Ordinal\LunId of the disk for the Azure VM.
-  final String? lunId;
+  final pulumi.Input<String>? lunId;
   /// Max side in MB.
-  final String? maxSizeMB;
+  final pulumi.Input<String>? maxSizeMB;
   /// Blob uri of the Azure disk.
-  final String? targetDiskLocation;
+  final pulumi.Input<String>? targetDiskLocation;
   /// The target Azure disk name.
-  final String? targetDiskName;
+  final pulumi.Input<String>? targetDiskName;
   /// The VHD id.
-  final String? vhdId;
+  final pulumi.Input<String>? vhdId;
   /// VHD name.
-  final String? vhdName;
+  final pulumi.Input<String>? vhdName;
   /// VHD type.
-  final String? vhdType;
+  final pulumi.Input<String>? vhdType;
 
   /// Creates a new [AzureVmDiskDetailsResponse].
   /// [customTargetDiskName] The custom target Azure disk name.
@@ -65,16 +66,16 @@ class AzureVmDiskDetailsResponse {
 
   factory AzureVmDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureVmDiskDetailsResponse(
-      customTargetDiskName: map['customTargetDiskName'] == null ? null : map['customTargetDiskName'] as String,
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : map['diskEncryptionSetId'] as String,
-      diskId: map['diskId'] == null ? null : map['diskId'] as String,
-      lunId: map['lunId'] == null ? null : map['lunId'] as String,
-      maxSizeMB: map['maxSizeMB'] == null ? null : map['maxSizeMB'] as String,
-      targetDiskLocation: map['targetDiskLocation'] == null ? null : map['targetDiskLocation'] as String,
-      targetDiskName: map['targetDiskName'] == null ? null : map['targetDiskName'] as String,
-      vhdId: map['vhdId'] == null ? null : map['vhdId'] as String,
-      vhdName: map['vhdName'] == null ? null : map['vhdName'] as String,
-      vhdType: map['vhdType'] == null ? null : map['vhdType'] as String,
+      customTargetDiskName: map['customTargetDiskName'] == null ? null : (map['customTargetDiskName'] as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      lunId: map['lunId'] == null ? null : (map['lunId'] as String).input(),
+      maxSizeMB: map['maxSizeMB'] == null ? null : (map['maxSizeMB'] as String).input(),
+      targetDiskLocation: map['targetDiskLocation'] == null ? null : (map['targetDiskLocation'] as String).input(),
+      targetDiskName: map['targetDiskName'] == null ? null : (map['targetDiskName'] as String).input(),
+      vhdId: map['vhdId'] == null ? null : (map['vhdId'] as String).input(),
+      vhdName: map['vhdName'] == null ? null : (map['vhdName'] as String).input(),
+      vhdType: map['vhdType'] == null ? null : (map['vhdType'] as String).input(),
     );
   }
 }

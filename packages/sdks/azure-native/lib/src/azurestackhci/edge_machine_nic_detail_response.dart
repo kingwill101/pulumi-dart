@@ -1,40 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network Interface Card (NIC) Details of edge machine.
 class EdgeMachineNicDetailResponse {
   /// Adapter Name of NIC
-  final String adapterName;
+  final pulumi.Input<String> adapterName;
   /// Component Id of NIC
-  final String componentId;
+  final pulumi.Input<String> componentId;
   /// Default Gateway of NIC
-  final String defaultGateway;
+  final pulumi.Input<String> defaultGateway;
   /// Default Isolation of Management NIC
-  final String defaultIsolationId;
+  final pulumi.Input<String> defaultIsolationId;
   /// DNS Servers for NIC
-  final List<String> dnsServers;
+  final pulumi.Input<List<String>> dnsServers;
   /// Driver Version of NIC
-  final String driverVersion;
+  final pulumi.Input<String> driverVersion;
   /// Interface Description of NIC
-  final String interfaceDescription;
+  final pulumi.Input<String> interfaceDescription;
   /// Subnet Mask of NIC
-  final String ip4Address;
+  final pulumi.Input<String> ip4Address;
   /// MAC address information of NIC.
-  final String macAddress;
+  final pulumi.Input<String> macAddress;
   /// The status of NIC, up, disconnected.
-  final String nicStatus;
+  final pulumi.Input<String> nicStatus;
   /// The type of NIC, physical, virtual, management.
-  final String nicType;
+  final pulumi.Input<String> nicType;
   /// Describes the RDMA capability of the network adapter.
-  final String rdmaCapability;
+  final pulumi.Input<String> rdmaCapability;
   /// The slot attached to the NIC.
-  final String slot;
+  final pulumi.Input<String> slot;
   /// Subnet Mask of NIC
-  final String subnetMask;
+  final pulumi.Input<String> subnetMask;
   /// The switch attached to the NIC, if any.
-  final String switchName;
+  final pulumi.Input<String> switchName;
   /// The VLAN ID of the physical NIC.
-  final String vlanId;
+  final pulumi.Input<String> vlanId;
 
   /// Creates a new [EdgeMachineNicDetailResponse].
   /// [adapterName] Adapter Name of NIC
@@ -95,22 +96,22 @@ class EdgeMachineNicDetailResponse {
 
   factory EdgeMachineNicDetailResponse.fromMap(Map<String, dynamic> map) {
     return EdgeMachineNicDetailResponse(
-      adapterName: map['adapterName'] as String,
-      componentId: map['componentId'] as String,
-      defaultGateway: map['defaultGateway'] as String,
-      defaultIsolationId: map['defaultIsolationId'] as String,
-      dnsServers: (map['dnsServers'] as List).cast<String>(),
-      driverVersion: map['driverVersion'] as String,
-      interfaceDescription: map['interfaceDescription'] as String,
-      ip4Address: map['ip4Address'] as String,
-      macAddress: map['macAddress'] as String,
-      nicStatus: map['nicStatus'] as String,
-      nicType: map['nicType'] as String,
-      rdmaCapability: map['rdmaCapability'] as String,
-      slot: map['slot'] as String,
-      subnetMask: map['subnetMask'] as String,
-      switchName: map['switchName'] as String,
-      vlanId: map['vlanId'] as String,
+      adapterName: (map['adapterName'] as String).input(),
+      componentId: (map['componentId'] as String).input(),
+      defaultGateway: (map['defaultGateway'] as String).input(),
+      defaultIsolationId: (map['defaultIsolationId'] as String).input(),
+      dnsServers: ((map['dnsServers'] as List).cast<String>()).input(),
+      driverVersion: (map['driverVersion'] as String).input(),
+      interfaceDescription: (map['interfaceDescription'] as String).input(),
+      ip4Address: (map['ip4Address'] as String).input(),
+      macAddress: (map['macAddress'] as String).input(),
+      nicStatus: (map['nicStatus'] as String).input(),
+      nicType: (map['nicType'] as String).input(),
+      rdmaCapability: (map['rdmaCapability'] as String).input(),
+      slot: (map['slot'] as String).input(),
+      subnetMask: (map['subnetMask'] as String).input(),
+      switchName: (map['switchName'] as String).input(),
+      vlanId: (map['vlanId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'anthos_observability_membership_spec.dart';
 
 /// **Anthos Observability**: Spec
 class AnthosObservabilityFeatureSpec {
   /// Default membership spec for unconfigured memberships
-  final AnthosObservabilityMembershipSpec? defaultMembershipSpec;
+  final pulumi.Input<AnthosObservabilityMembershipSpec>? defaultMembershipSpec;
 
   /// Creates a new [AnthosObservabilityFeatureSpec].
   /// [defaultMembershipSpec] Default membership spec for unconfigured memberships
@@ -15,13 +16,13 @@ class AnthosObservabilityFeatureSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultMembershipSpec': ?defaultMembershipSpec == null ? null : defaultMembershipSpec!.toMap(),
+      'defaultMembershipSpec': ?pulumi.Input.mapOptionalInputValue<AnthosObservabilityMembershipSpec, Map<String, dynamic>>(defaultMembershipSpec, (value) => value.toMap()),
     };
   }
 
   factory AnthosObservabilityFeatureSpec.fromMap(Map<String, dynamic> map) {
     return AnthosObservabilityFeatureSpec(
-      defaultMembershipSpec: map['defaultMembershipSpec'] == null ? null : AnthosObservabilityMembershipSpec.fromMap((map['defaultMembershipSpec'] as Map).cast<String, dynamic>()),
+      defaultMembershipSpec: map['defaultMembershipSpec'] == null ? null : (AnthosObservabilityMembershipSpec.fromMap((map['defaultMembershipSpec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

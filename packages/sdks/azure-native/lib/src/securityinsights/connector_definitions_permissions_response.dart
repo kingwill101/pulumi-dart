@@ -7,13 +7,13 @@ import 'custom_permission_details_response.dart';
 /// The required Permissions for the connector.
 class ConnectorDefinitionsPermissionsResponse {
   /// Gets or sets the customs permissions required for the user to create connections.
-  final List<CustomPermissionDetailsResponse>? customs;
+  final pulumi.Input<List<CustomPermissionDetailsResponse>>? customs;
   /// Gets or sets the required licenses for the user to create connections.
-  final List<String>? licenses;
+  final pulumi.Input<List<String>>? licenses;
   /// Gets or sets the resource provider permissions required for the user to create connections.
-  final List<ConnectorDefinitionsResourceProviderResponse>? resourceProvider;
+  final pulumi.Input<List<ConnectorDefinitionsResourceProviderResponse>>? resourceProvider;
   /// Gets or sets the required tenant permissions for the connector.
-  final List<String>? tenant;
+  final pulumi.Input<List<String>>? tenant;
 
   /// Creates a new [ConnectorDefinitionsPermissionsResponse].
   /// [customs] Gets or sets the customs permissions required for the user to create connections.
@@ -29,19 +29,19 @@ class ConnectorDefinitionsPermissionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customs': ?customs == null ? null : pulumi.Input.encodeList<CustomPermissionDetailsResponse, Map<String, dynamic>>(customs!, (value) => value.toMap()),
+      'customs': ?pulumi.Input.mapOptionalInputValue<List<CustomPermissionDetailsResponse>, List<Map<String, dynamic>>>(customs, (value) => pulumi.Input.encodeList<CustomPermissionDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'licenses': ?licenses,
-      'resourceProvider': ?resourceProvider == null ? null : pulumi.Input.encodeList<ConnectorDefinitionsResourceProviderResponse, Map<String, dynamic>>(resourceProvider!, (value) => value.toMap()),
+      'resourceProvider': ?pulumi.Input.mapOptionalInputValue<List<ConnectorDefinitionsResourceProviderResponse>, List<Map<String, dynamic>>>(resourceProvider, (value) => pulumi.Input.encodeList<ConnectorDefinitionsResourceProviderResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tenant': ?tenant,
     };
   }
 
   factory ConnectorDefinitionsPermissionsResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorDefinitionsPermissionsResponse(
-      customs: map['customs'] == null ? null : pulumi.Input.decodeList<CustomPermissionDetailsResponse>(map['customs'], (value) => CustomPermissionDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      licenses: map['licenses'] == null ? null : (map['licenses'] as List).cast<String>(),
-      resourceProvider: map['resourceProvider'] == null ? null : pulumi.Input.decodeList<ConnectorDefinitionsResourceProviderResponse>(map['resourceProvider'], (value) => ConnectorDefinitionsResourceProviderResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as List).cast<String>(),
+      customs: map['customs'] == null ? null : (pulumi.Input.decodeList<CustomPermissionDetailsResponse>(map['customs'], (value) => CustomPermissionDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      licenses: map['licenses'] == null ? null : ((map['licenses'] as List).cast<String>()).input(),
+      resourceProvider: map['resourceProvider'] == null ? null : (pulumi.Input.decodeList<ConnectorDefinitionsResourceProviderResponse>(map['resourceProvider'], (value) => ConnectorDefinitionsResourceProviderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tenant: map['tenant'] == null ? null : ((map['tenant'] as List).cast<String>()).input(),
     );
   }
 }

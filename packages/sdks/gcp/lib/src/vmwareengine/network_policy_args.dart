@@ -46,23 +46,15 @@ class NetworkPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [vmwareEngineNetwork] The relative resource name of the VMware Engine network. Specify the name in the following form:
   NetworkPolicyArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> edgeServicesCidr,
-    pulumi.Output<NetworkPolicyExternalIp>? externalIp,
-    pulumi.Output<NetworkPolicyInternetAccess>? internetAccess,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> vmwareEngineNetwork,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      edgeServicesCidr = pulumi.Input.asInput<String>(edgeServicesCidr),
-      externalIp = pulumi.Input.asOptionalInput<NetworkPolicyExternalIp>(externalIp),
-      internetAccess = pulumi.Input.asOptionalInput<NetworkPolicyInternetAccess>(internetAccess),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      vmwareEngineNetwork = pulumi.Input.asInput<String>(vmwareEngineNetwork);
+    this.description,
+    required this.edgeServicesCidr,
+    this.externalIp,
+    this.internetAccess,
+    required this.location,
+    this.name,
+    this.project,
+    required this.vmwareEngineNetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,14 +71,14 @@ class NetworkPolicyArgs {
 
   factory NetworkPolicyArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      edgeServicesCidr: pulumi.Output.create<String>(map['edgeServicesCidr'] as String),
-      externalIp: map['externalIp'] == null ? null : pulumi.Output.create<NetworkPolicyExternalIp>(NetworkPolicyExternalIp.fromMap((map['externalIp'] as Map).cast<String, dynamic>())),
-      internetAccess: map['internetAccess'] == null ? null : pulumi.Output.create<NetworkPolicyInternetAccess>(NetworkPolicyInternetAccess.fromMap((map['internetAccess'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      vmwareEngineNetwork: pulumi.Output.create<String>(map['vmwareEngineNetwork'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      edgeServicesCidr: (map['edgeServicesCidr'] as String).input(),
+      externalIp: map['externalIp'] == null ? null : (NetworkPolicyExternalIp.fromMap((map['externalIp'] as Map).cast<String, dynamic>())).input(),
+      internetAccess: map['internetAccess'] == null ? null : (NetworkPolicyInternetAccess.fromMap((map['internetAccess'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      vmwareEngineNetwork: (map['vmwareEngineNetwork'] as String).input(),
     );
   }
 }

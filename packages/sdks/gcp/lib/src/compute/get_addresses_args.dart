@@ -42,13 +42,10 @@ class GetAddressesArgs {
   /// [project] The google project in which addresses are listed.
   /// [region] Region that should be considered to search addresses.
   GetAddressesArgs({
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filter,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,9 +57,9 @@ class GetAddressesArgs {
 
   factory GetAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetAddressesArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

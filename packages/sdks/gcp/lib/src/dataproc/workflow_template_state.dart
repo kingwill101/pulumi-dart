@@ -55,35 +55,21 @@ class WorkflowTemplateState {
   /// [updateTime] Output only. The time template was last updated.
   /// [version] Output only. The current version of this workflow template.
   WorkflowTemplateState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? dagTimeout,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<WorkflowTemplateEncryptionConfig>? encryptionConfig,
-    pulumi.Output<List<WorkflowTemplateJob>>? jobs,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<WorkflowTemplateParameter>>? parameters,
-    pulumi.Output<WorkflowTemplatePlacement>? placement,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<int>? version,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dagTimeout = pulumi.Input.asOptionalInput<String>(dagTimeout),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      encryptionConfig = pulumi.Input.asOptionalInput<WorkflowTemplateEncryptionConfig>(encryptionConfig),
-      jobs = pulumi.Input.asOptionalInput<List<WorkflowTemplateJob>>(jobs),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<List<WorkflowTemplateParameter>>(parameters),
-      placement = pulumi.Input.asOptionalInput<WorkflowTemplatePlacement>(placement),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.createTime,
+    this.dagTimeout,
+    this.effectiveLabels,
+    this.encryptionConfig,
+    this.jobs,
+    this.labels,
+    this.location,
+    this.name,
+    this.parameters,
+    this.placement,
+    this.project,
+    this.pulumiLabels,
+    this.updateTime,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,20 +92,20 @@ class WorkflowTemplateState {
 
   factory WorkflowTemplateState.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dagTimeout: map['dagTimeout'] == null ? null : pulumi.Output.create<String>(map['dagTimeout'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      encryptionConfig: map['encryptionConfig'] == null ? null : pulumi.Output.create<WorkflowTemplateEncryptionConfig>(WorkflowTemplateEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())),
-      jobs: map['jobs'] == null ? null : pulumi.Output.create<List<WorkflowTemplateJob>>(pulumi.Input.decodeList<WorkflowTemplateJob>(map['jobs'], (value) => WorkflowTemplateJob.fromMap((value as Map).cast<String, dynamic>()))),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<WorkflowTemplateParameter>>(pulumi.Input.decodeList<WorkflowTemplateParameter>(map['parameters'], (value) => WorkflowTemplateParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      placement: map['placement'] == null ? null : pulumi.Output.create<WorkflowTemplatePlacement>(WorkflowTemplatePlacement.fromMap((map['placement'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dagTimeout: map['dagTimeout'] == null ? null : (map['dagTimeout'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (WorkflowTemplateEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      jobs: map['jobs'] == null ? null : (pulumi.Input.decodeList<WorkflowTemplateJob>(map['jobs'], (value) => WorkflowTemplateJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<WorkflowTemplateParameter>(map['parameters'], (value) => WorkflowTemplateParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      placement: map['placement'] == null ? null : (WorkflowTemplatePlacement.fromMap((map['placement'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

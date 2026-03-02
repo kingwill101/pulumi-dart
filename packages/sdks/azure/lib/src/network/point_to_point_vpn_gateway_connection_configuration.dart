@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'point_to_point_vpn_gateway_connection_configuration_route.dart';
 import 'point_to_point_vpn_gateway_connection_configuration_vpn_client_address_pool.dart';
 
 class PointToPointVpnGatewayConnectionConfiguration {
   /// Should Internet Security be enabled to secure internet traffic? Defaults to `false`.
-  final bool? internetSecurityEnabled;
+  final pulumi.Input<bool>? internetSecurityEnabled;
   /// The Name which should be used for this Connection Configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// A `route` block as defined below.
-  final PointToPointVpnGatewayConnectionConfigurationRoute? route;
+  final pulumi.Input<PointToPointVpnGatewayConnectionConfigurationRoute>? route;
   /// A `vpn_client_address_pool` block as defined below.
-  final PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool vpnClientAddressPool;
+  final pulumi.Input<PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool> vpnClientAddressPool;
 
   /// Creates a new [PointToPointVpnGatewayConnectionConfiguration].
   /// [internetSecurityEnabled] Should Internet Security be enabled to secure internet traffic? Defaults to `false`.
@@ -29,17 +30,17 @@ class PointToPointVpnGatewayConnectionConfiguration {
     return <String, dynamic>{
       'internetSecurityEnabled': ?internetSecurityEnabled,
       'name': name,
-      'route': ?route == null ? null : route!.toMap(),
-      'vpnClientAddressPool': vpnClientAddressPool.toMap(),
+      'route': ?pulumi.Input.mapOptionalInputValue<PointToPointVpnGatewayConnectionConfigurationRoute, Map<String, dynamic>>(route, (value) => value.toMap()),
+      'vpnClientAddressPool': pulumi.Input.mapInputValue<PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool, Map<String, dynamic>>(vpnClientAddressPool, (value) => value.toMap()),
     };
   }
 
   factory PointToPointVpnGatewayConnectionConfiguration.fromMap(Map<String, dynamic> map) {
     return PointToPointVpnGatewayConnectionConfiguration(
-      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : map['internetSecurityEnabled'] as bool,
-      name: map['name'] as String,
-      route: map['route'] == null ? null : PointToPointVpnGatewayConnectionConfigurationRoute.fromMap((map['route'] as Map).cast<String, dynamic>()),
-      vpnClientAddressPool: PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>()),
+      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : (map['internetSecurityEnabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      route: map['route'] == null ? null : (PointToPointVpnGatewayConnectionConfigurationRoute.fromMap((map['route'] as Map).cast<String, dynamic>())).input(),
+      vpnClientAddressPool: (PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

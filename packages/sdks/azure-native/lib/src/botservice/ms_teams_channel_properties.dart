@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The parameters to provide for the Microsoft Teams channel.
 class MsTeamsChannelProperties {
   /// Whether this channel accepted terms
-  final bool? acceptedTerms;
+  final pulumi.Input<bool>? acceptedTerms;
   /// Webhook for Microsoft Teams channel calls
-  final String? callingWebhook;
+  final pulumi.Input<String>? callingWebhook;
   /// Deployment environment for Microsoft Teams channel calls
-  final String? deploymentEnvironment;
+  final pulumi.Input<String>? deploymentEnvironment;
   /// Enable calling for Microsoft Teams channel
-  final bool? enableCalling;
+  final pulumi.Input<bool>? enableCalling;
   /// Webhook for Microsoft Teams channel calls
-  final String? incomingCallRoute;
+  final pulumi.Input<String>? incomingCallRoute;
   /// Whether this channel is enabled for the bot
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
 
   /// Creates a new [MsTeamsChannelProperties].
   /// [acceptedTerms] Whether this channel accepted terms
@@ -45,12 +46,12 @@ class MsTeamsChannelProperties {
 
   factory MsTeamsChannelProperties.fromMap(Map<String, dynamic> map) {
     return MsTeamsChannelProperties(
-      acceptedTerms: map['acceptedTerms'] == null ? null : map['acceptedTerms'] as bool,
-      callingWebhook: map['callingWebhook'] == null ? null : map['callingWebhook'] as String,
-      deploymentEnvironment: map['deploymentEnvironment'] == null ? null : map['deploymentEnvironment'] as String,
-      enableCalling: map['enableCalling'] == null ? null : map['enableCalling'] as bool,
-      incomingCallRoute: map['incomingCallRoute'] == null ? null : map['incomingCallRoute'] as String,
-      isEnabled: map['isEnabled'] as bool,
+      acceptedTerms: map['acceptedTerms'] == null ? null : (map['acceptedTerms'] as bool).input(),
+      callingWebhook: map['callingWebhook'] == null ? null : (map['callingWebhook'] as String).input(),
+      deploymentEnvironment: map['deploymentEnvironment'] == null ? null : (map['deploymentEnvironment'] as String).input(),
+      enableCalling: map['enableCalling'] == null ? null : (map['enableCalling'] as bool).input(),
+      incomingCallRoute: map['incomingCallRoute'] == null ? null : (map['incomingCallRoute'] as String).input(),
+      isEnabled: (map['isEnabled'] as bool).input(),
     );
   }
 }

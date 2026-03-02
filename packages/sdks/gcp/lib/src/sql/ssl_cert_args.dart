@@ -22,13 +22,10 @@ class SslCertArgs {
   /// [instance] The name of the Cloud SQL instance. Changing this
   /// [project] The ID of the project in which the resource belongs. If it
   SslCertArgs({
-    required pulumi.Output<String> commonName,
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? project,
-  }) :
-      commonName = pulumi.Input.asInput<String>(commonName),
-      instance = pulumi.Input.asInput<String>(instance),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.commonName,
+    required this.instance,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class SslCertArgs {
 
   factory SslCertArgs.fromMap(Map<String, dynamic> map) {
     return SslCertArgs(
-      commonName: pulumi.Output.create<String>(map['commonName'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      commonName: (map['commonName'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

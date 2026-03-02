@@ -7,13 +7,13 @@ import 'role.dart';
 /// RoleList is a collection of Roles
 class RoleList {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Items is a list of Roles
-  final List<Role> items;
+  final pulumi.Input<List<Role>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Standard object's metadata.
-  final ListMeta? metadata;
+  final pulumi.Input<ListMeta>? metadata;
 
   /// Creates a new [RoleList].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -30,18 +30,18 @@ class RoleList {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'items': pulumi.Input.encodeList<Role, Map<String, dynamic>>(items, (value) => value.toMap()),
+      'items': pulumi.Input.mapInputValue<List<Role>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<Role, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
   }
 
   factory RoleList.fromMap(Map<String, dynamic> map) {
     return RoleList(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      items: pulumi.Input.decodeList<Role>(map['items'], (value) => Role.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      items: (pulumi.Input.decodeList<Role>(map['items'], (value) => Role.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

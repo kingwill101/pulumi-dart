@@ -25,17 +25,12 @@ class GetWorkloadClassifierArgs {
   /// [workloadClassifierName] The name of the workload classifier.
   /// [workloadGroupName] The name of the workload group from which to receive the classifier from.
   GetWorkloadClassifierArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> workloadClassifierName,
-    required pulumi.Output<String> workloadGroupName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      workloadClassifierName = pulumi.Input.asInput<String>(workloadClassifierName),
-      workloadGroupName = pulumi.Input.asInput<String>(workloadGroupName);
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.workloadClassifierName,
+    required this.workloadGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetWorkloadClassifierArgs {
 
   factory GetWorkloadClassifierArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadClassifierArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      workloadClassifierName: pulumi.Output.create<String>(map['workloadClassifierName'] as String),
-      workloadGroupName: pulumi.Output.create<String>(map['workloadGroupName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      workloadClassifierName: (map['workloadClassifierName'] as String).input(),
+      workloadGroupName: (map['workloadGroupName'] as String).input(),
     );
   }
 }

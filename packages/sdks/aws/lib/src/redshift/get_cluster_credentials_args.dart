@@ -31,21 +31,14 @@ class GetClusterCredentialsArgs {
   /// [durationSeconds] The number of seconds until the returned temporary password expires. Valid values are between `900` and `3600`. Default value is `900`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetClusterCredentialsArgs({
-    pulumi.Output<bool>? autoCreate,
-    required pulumi.Output<String> clusterIdentifier,
-    pulumi.Output<List<String>>? dbGroups,
-    pulumi.Output<String>? dbName,
-    required pulumi.Output<String> dbUser,
-    pulumi.Output<int>? durationSeconds,
-    pulumi.Output<String>? region,
-  }) :
-      autoCreate = pulumi.Input.asOptionalInput<bool>(autoCreate),
-      clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
-      dbGroups = pulumi.Input.asOptionalInput<List<String>>(dbGroups),
-      dbName = pulumi.Input.asOptionalInput<String>(dbName),
-      dbUser = pulumi.Input.asInput<String>(dbUser),
-      durationSeconds = pulumi.Input.asOptionalInput<int>(durationSeconds),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.autoCreate,
+    required this.clusterIdentifier,
+    this.dbGroups,
+    this.dbName,
+    required this.dbUser,
+    this.durationSeconds,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetClusterCredentialsArgs {
 
   factory GetClusterCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterCredentialsArgs(
-      autoCreate: map['autoCreate'] == null ? null : pulumi.Output.create<bool>(map['autoCreate'] as bool),
-      clusterIdentifier: pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      dbGroups: map['dbGroups'] == null ? null : pulumi.Output.create<List<String>>((map['dbGroups'] as List).cast<String>()),
-      dbName: map['dbName'] == null ? null : pulumi.Output.create<String>(map['dbName'] as String),
-      dbUser: pulumi.Output.create<String>(map['dbUser'] as String),
-      durationSeconds: map['durationSeconds'] == null ? null : pulumi.Output.create<int>(map['durationSeconds'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      autoCreate: map['autoCreate'] == null ? null : (map['autoCreate'] as bool).input(),
+      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
+      dbGroups: map['dbGroups'] == null ? null : ((map['dbGroups'] as List).cast<String>()).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
+      dbUser: (map['dbUser'] as String).input(),
+      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

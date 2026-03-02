@@ -49,29 +49,18 @@ class DashboardArgs {
   /// [themeArn] The Amazon Resource Name (ARN) of the theme that is being used for this dashboard. The theme ARN must exist in the same AWS account where you create the dashboard.
   /// [versionDescription] A description of the current dashboard version being created/updated.
   DashboardArgs({
-    pulumi.Output<String>? awsAccountId,
-    required pulumi.Output<String> dashboardId,
-    pulumi.Output<DashboardDashboardPublishOptions>? dashboardPublishOptions,
-    pulumi.Output<String>? name,
-    pulumi.Output<DashboardParameters>? parameters,
-    pulumi.Output<List<DashboardPermission>>? permissions,
-    pulumi.Output<String>? region,
-    pulumi.Output<DashboardSourceEntity>? sourceEntity,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? themeArn,
-    required pulumi.Output<String> versionDescription,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      dashboardId = pulumi.Input.asInput<String>(dashboardId),
-      dashboardPublishOptions = pulumi.Input.asOptionalInput<DashboardDashboardPublishOptions>(dashboardPublishOptions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<DashboardParameters>(parameters),
-      permissions = pulumi.Input.asOptionalInput<List<DashboardPermission>>(permissions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceEntity = pulumi.Input.asOptionalInput<DashboardSourceEntity>(sourceEntity),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      themeArn = pulumi.Input.asOptionalInput<String>(themeArn),
-      versionDescription = pulumi.Input.asInput<String>(versionDescription);
+    this.awsAccountId,
+    required this.dashboardId,
+    this.dashboardPublishOptions,
+    this.name,
+    this.parameters,
+    this.permissions,
+    this.region,
+    this.sourceEntity,
+    this.tags,
+    this.themeArn,
+    required this.versionDescription,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,17 +80,17 @@ class DashboardArgs {
 
   factory DashboardArgs.fromMap(Map<String, dynamic> map) {
     return DashboardArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      dashboardId: pulumi.Output.create<String>(map['dashboardId'] as String),
-      dashboardPublishOptions: map['dashboardPublishOptions'] == null ? null : pulumi.Output.create<DashboardDashboardPublishOptions>(DashboardDashboardPublishOptions.fromMap((map['dashboardPublishOptions'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<DashboardParameters>(DashboardParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<List<DashboardPermission>>(pulumi.Input.decodeList<DashboardPermission>(map['permissions'], (value) => DashboardPermission.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceEntity: map['sourceEntity'] == null ? null : pulumi.Output.create<DashboardSourceEntity>(DashboardSourceEntity.fromMap((map['sourceEntity'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      themeArn: map['themeArn'] == null ? null : pulumi.Output.create<String>(map['themeArn'] as String),
-      versionDescription: pulumi.Output.create<String>(map['versionDescription'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      dashboardId: (map['dashboardId'] as String).input(),
+      dashboardPublishOptions: map['dashboardPublishOptions'] == null ? null : (DashboardDashboardPublishOptions.fromMap((map['dashboardPublishOptions'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (DashboardParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<DashboardPermission>(map['permissions'], (value) => DashboardPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceEntity: map['sourceEntity'] == null ? null : (DashboardSourceEntity.fromMap((map['sourceEntity'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      themeArn: map['themeArn'] == null ? null : (map['themeArn'] as String).input(),
+      versionDescription: (map['versionDescription'] as String).input(),
     );
   }
 }

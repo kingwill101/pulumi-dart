@@ -34,25 +34,16 @@ class InstanceProfileState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   InstanceProfileState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? excludeAppPackagesFromCleanups,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? packageCleanup,
-    pulumi.Output<bool>? rebootAfterUse,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      excludeAppPackagesFromCleanups = pulumi.Input.asOptionalInput<List<String>>(excludeAppPackagesFromCleanups),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      packageCleanup = pulumi.Input.asOptionalInput<bool>(packageCleanup),
-      rebootAfterUse = pulumi.Input.asOptionalInput<bool>(rebootAfterUse),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.excludeAppPackagesFromCleanups,
+    this.name,
+    this.packageCleanup,
+    this.rebootAfterUse,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class InstanceProfileState {
 
   factory InstanceProfileState.fromMap(Map<String, dynamic> map) {
     return InstanceProfileState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      excludeAppPackagesFromCleanups: map['excludeAppPackagesFromCleanups'] == null ? null : pulumi.Output.create<List<String>>((map['excludeAppPackagesFromCleanups'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      packageCleanup: map['packageCleanup'] == null ? null : pulumi.Output.create<bool>(map['packageCleanup'] as bool),
-      rebootAfterUse: map['rebootAfterUse'] == null ? null : pulumi.Output.create<bool>(map['rebootAfterUse'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      excludeAppPackagesFromCleanups: map['excludeAppPackagesFromCleanups'] == null ? null : ((map['excludeAppPackagesFromCleanups'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      packageCleanup: map['packageCleanup'] == null ? null : (map['packageCleanup'] as bool).input(),
+      rebootAfterUse: map['rebootAfterUse'] == null ? null : (map['rebootAfterUse'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

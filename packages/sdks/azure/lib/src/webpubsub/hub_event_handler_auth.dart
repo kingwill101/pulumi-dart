@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HubEventHandlerAuth {
   /// Specify the identity ID of the target resource.
   ///
   /// > **Note:** `managed_identity_id` is required if the auth block is defined
-  final String managedIdentityId;
+  final pulumi.Input<String> managedIdentityId;
 
   /// Creates a new [HubEventHandlerAuth].
   /// [managedIdentityId] Specify the identity ID of the target resource.
@@ -21,7 +22,7 @@ class HubEventHandlerAuth {
 
   factory HubEventHandlerAuth.fromMap(Map<String, dynamic> map) {
     return HubEventHandlerAuth(
-      managedIdentityId: map['managedIdentityId'] as String,
+      managedIdentityId: (map['managedIdentityId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiEventConfigAuthProviderCognitoConfig {
   /// Regular expression for matching the client ID.
-  final String? appIdClientRegex;
+  final pulumi.Input<String>? appIdClientRegex;
   /// AWS region where the user pool is located.
-  final String awsRegion;
+  final pulumi.Input<String> awsRegion;
   /// ID of the Cognito user pool.
-  final String userPoolId;
+  final pulumi.Input<String> userPoolId;
 
   /// Creates a new [ApiEventConfigAuthProviderCognitoConfig].
   /// [appIdClientRegex] Regular expression for matching the client ID.
@@ -29,9 +30,9 @@ class ApiEventConfigAuthProviderCognitoConfig {
 
   factory ApiEventConfigAuthProviderCognitoConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigAuthProviderCognitoConfig(
-      appIdClientRegex: map['appIdClientRegex'] == null ? null : map['appIdClientRegex'] as String,
-      awsRegion: map['awsRegion'] as String,
-      userPoolId: map['userPoolId'] as String,
+      appIdClientRegex: map['appIdClientRegex'] == null ? null : (map['appIdClientRegex'] as String).input(),
+      awsRegion: (map['awsRegion'] as String).input(),
+      userPoolId: (map['userPoolId'] as String).input(),
     );
   }
 }

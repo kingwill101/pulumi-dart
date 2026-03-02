@@ -48,33 +48,20 @@ class GetInstancesArgs {
   /// [tags] Optional.
   /// [vswitchId] Used to retrieve instances belong to specified `vswitch` resources.
   GetInstancesArgs({
-    pulumi.Output<String>? availabilityZone,
-    pulumi.Output<String>? dbInstanceCategories,
-    pulumi.Output<String>? dbInstanceModes,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? instanceNetworkType,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      dbInstanceCategories = pulumi.Input.asOptionalInput<String>(dbInstanceCategories),
-      dbInstanceModes = pulumi.Input.asOptionalInput<String>(dbInstanceModes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceNetworkType = pulumi.Input.asOptionalInput<String>(instanceNetworkType),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.availabilityZone,
+    this.dbInstanceCategories,
+    this.dbInstanceModes,
+    this.description,
+    this.enableDetails,
+    this.ids,
+    this.instanceNetworkType,
+    this.nameRegex,
+    this.outputFile,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      dbInstanceCategories: map['dbInstanceCategories'] == null ? null : pulumi.Output.create<String>(map['dbInstanceCategories'] as String),
-      dbInstanceModes: map['dbInstanceModes'] == null ? null : pulumi.Output.create<String>(map['dbInstanceModes'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceNetworkType: map['instanceNetworkType'] == null ? null : pulumi.Output.create<String>(map['instanceNetworkType'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      dbInstanceCategories: map['dbInstanceCategories'] == null ? null : (map['dbInstanceCategories'] as String).input(),
+      dbInstanceModes: map['dbInstanceModes'] == null ? null : (map['dbInstanceModes'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceNetworkType: map['instanceNetworkType'] == null ? null : (map['instanceNetworkType'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

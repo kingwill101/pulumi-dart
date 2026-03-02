@@ -36,25 +36,16 @@ class OrganizationBucketConfigState {
   /// [organization] The parent resource that contains the logging bucket.
   /// [retentionDays] Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
   OrganizationBucketConfigState({
-    pulumi.Output<String>? bucketId,
-    pulumi.Output<OrganizationBucketConfigCmekSettings>? cmekSettings,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<OrganizationBucketConfigIndexConfig>>? indexConfigs,
-    pulumi.Output<String>? lifecycleState,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? organization,
-    pulumi.Output<int>? retentionDays,
-  }) :
-      bucketId = pulumi.Input.asOptionalInput<String>(bucketId),
-      cmekSettings = pulumi.Input.asOptionalInput<OrganizationBucketConfigCmekSettings>(cmekSettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      indexConfigs = pulumi.Input.asOptionalInput<List<OrganizationBucketConfigIndexConfig>>(indexConfigs),
-      lifecycleState = pulumi.Input.asOptionalInput<String>(lifecycleState),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organization = pulumi.Input.asOptionalInput<String>(organization),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays);
+    this.bucketId,
+    this.cmekSettings,
+    this.description,
+    this.indexConfigs,
+    this.lifecycleState,
+    this.location,
+    this.name,
+    this.organization,
+    this.retentionDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class OrganizationBucketConfigState {
 
   factory OrganizationBucketConfigState.fromMap(Map<String, dynamic> map) {
     return OrganizationBucketConfigState(
-      bucketId: map['bucketId'] == null ? null : pulumi.Output.create<String>(map['bucketId'] as String),
-      cmekSettings: map['cmekSettings'] == null ? null : pulumi.Output.create<OrganizationBucketConfigCmekSettings>(OrganizationBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      indexConfigs: map['indexConfigs'] == null ? null : pulumi.Output.create<List<OrganizationBucketConfigIndexConfig>>(pulumi.Input.decodeList<OrganizationBucketConfigIndexConfig>(map['indexConfigs'], (value) => OrganizationBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      lifecycleState: map['lifecycleState'] == null ? null : pulumi.Output.create<String>(map['lifecycleState'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organization: map['organization'] == null ? null : pulumi.Output.create<String>(map['organization'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
+      bucketId: map['bucketId'] == null ? null : (map['bucketId'] as String).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (OrganizationBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<OrganizationBucketConfigIndexConfig>(map['indexConfigs'], (value) => OrganizationBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecycleState: map['lifecycleState'] == null ? null : (map['lifecycleState'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
     );
   }
 }

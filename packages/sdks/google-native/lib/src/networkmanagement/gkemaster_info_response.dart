@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For display only. Metadata associated with a Google Kubernetes Engine (GKE) cluster master.
 class GKEMasterInfoResponse {
   /// URI of a GKE cluster network.
-  final String clusterNetworkUri;
+  final pulumi.Input<String> clusterNetworkUri;
   /// URI of a GKE cluster.
-  final String clusterUri;
+  final pulumi.Input<String> clusterUri;
   /// External IP address of a GKE cluster master.
-  final String externalIp;
+  final pulumi.Input<String> externalIp;
   /// Internal IP address of a GKE cluster master.
-  final String internalIp;
+  final pulumi.Input<String> internalIp;
 
   /// Creates a new [GKEMasterInfoResponse].
   /// [clusterNetworkUri] URI of a GKE cluster network.
@@ -35,10 +36,10 @@ class GKEMasterInfoResponse {
 
   factory GKEMasterInfoResponse.fromMap(Map<String, dynamic> map) {
     return GKEMasterInfoResponse(
-      clusterNetworkUri: map['clusterNetworkUri'] as String,
-      clusterUri: map['clusterUri'] as String,
-      externalIp: map['externalIp'] as String,
-      internalIp: map['internalIp'] as String,
+      clusterNetworkUri: (map['clusterNetworkUri'] as String).input(),
+      clusterUri: (map['clusterUri'] as String).input(),
+      externalIp: (map['externalIp'] as String).input(),
+      internalIp: (map['internalIp'] as String).input(),
     );
   }
 }

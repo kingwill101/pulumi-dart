@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3FunctionCode {
   /// The CRC-64 value of the function code package.
-  final String? checksum;
+  final pulumi.Input<String>? checksum;
   /// The name of the OSS Bucket that stores the function code ZIP package.
-  final String? ossBucketName;
+  final pulumi.Input<String>? ossBucketName;
   /// The name of the OSS Object that stores the function code ZIP package.
-  final String? ossObjectName;
+  final pulumi.Input<String>? ossObjectName;
   /// The Base 64 encoding of the function code ZIP package.
-  final String? zipFile;
+  final pulumi.Input<String>? zipFile;
 
   /// Creates a new [V3FunctionCode].
   /// [checksum] The CRC-64 value of the function code package.
@@ -34,10 +35,10 @@ class V3FunctionCode {
 
   factory V3FunctionCode.fromMap(Map<String, dynamic> map) {
     return V3FunctionCode(
-      checksum: map['checksum'] == null ? null : map['checksum'] as String,
-      ossBucketName: map['ossBucketName'] == null ? null : map['ossBucketName'] as String,
-      ossObjectName: map['ossObjectName'] == null ? null : map['ossObjectName'] as String,
-      zipFile: map['zipFile'] == null ? null : map['zipFile'] as String,
+      checksum: map['checksum'] == null ? null : (map['checksum'] as String).input(),
+      ossBucketName: map['ossBucketName'] == null ? null : (map['ossBucketName'] as String).input(),
+      ossObjectName: map['ossObjectName'] == null ? null : (map['ossObjectName'] as String).input(),
+      zipFile: map['zipFile'] == null ? null : (map['zipFile'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Replica properties of the mongo cluster.
 class ReplicationPropertiesResponse {
   /// The replication link state of the replica cluster.
-  final String replicationState;
+  final pulumi.Input<String> replicationState;
   /// The replication role of the cluster
-  final String role;
+  final pulumi.Input<String> role;
   /// The resource id the source cluster for the replica cluster.
-  final String sourceResourceId;
+  final pulumi.Input<String> sourceResourceId;
 
   /// Creates a new [ReplicationPropertiesResponse].
   /// [replicationState] The replication link state of the replica cluster.
@@ -30,9 +31,9 @@ class ReplicationPropertiesResponse {
 
   factory ReplicationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationPropertiesResponse(
-      replicationState: map['replicationState'] as String,
-      role: map['role'] as String,
-      sourceResourceId: map['sourceResourceId'] as String,
+      replicationState: (map['replicationState'] as String).input(),
+      role: (map['role'] as String).input(),
+      sourceResourceId: (map['sourceResourceId'] as String).input(),
     );
   }
 }

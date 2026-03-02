@@ -66,35 +66,21 @@ class ListenerArgs {
   /// [requestTimeout] The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
   /// [securityPolicyId] The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
   ListenerArgs({
-    required pulumi.Output<String> acceleratorId,
-    pulumi.Output<List<ListenerCertificate>>? certificates,
-    pulumi.Output<String>? clientAffinity,
-    pulumi.Output<String>? description,
-    pulumi.Output<ListenerForwardedForConfig>? forwardedForConfig,
-    pulumi.Output<String>? httpVersion,
-    pulumi.Output<int>? idleTimeout,
-    pulumi.Output<String>? listenerType,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<ListenerPortRange>> portRanges,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<bool>? proxyProtocol,
-    pulumi.Output<int>? requestTimeout,
-    pulumi.Output<String>? securityPolicyId,
-  }) :
-      acceleratorId = pulumi.Input.asInput<String>(acceleratorId),
-      certificates = pulumi.Input.asOptionalInput<List<ListenerCertificate>>(certificates),
-      clientAffinity = pulumi.Input.asOptionalInput<String>(clientAffinity),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      forwardedForConfig = pulumi.Input.asOptionalInput<ListenerForwardedForConfig>(forwardedForConfig),
-      httpVersion = pulumi.Input.asOptionalInput<String>(httpVersion),
-      idleTimeout = pulumi.Input.asOptionalInput<int>(idleTimeout),
-      listenerType = pulumi.Input.asOptionalInput<String>(listenerType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      portRanges = pulumi.Input.asInput<List<ListenerPortRange>>(portRanges),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      proxyProtocol = pulumi.Input.asOptionalInput<bool>(proxyProtocol),
-      requestTimeout = pulumi.Input.asOptionalInput<int>(requestTimeout),
-      securityPolicyId = pulumi.Input.asOptionalInput<String>(securityPolicyId);
+    required this.acceleratorId,
+    this.certificates,
+    this.clientAffinity,
+    this.description,
+    this.forwardedForConfig,
+    this.httpVersion,
+    this.idleTimeout,
+    this.listenerType,
+    this.name,
+    required this.portRanges,
+    this.protocol,
+    this.proxyProtocol,
+    this.requestTimeout,
+    this.securityPolicyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -117,20 +103,20 @@ class ListenerArgs {
 
   factory ListenerArgs.fromMap(Map<String, dynamic> map) {
     return ListenerArgs(
-      acceleratorId: pulumi.Output.create<String>(map['acceleratorId'] as String),
-      certificates: map['certificates'] == null ? null : pulumi.Output.create<List<ListenerCertificate>>(pulumi.Input.decodeList<ListenerCertificate>(map['certificates'], (value) => ListenerCertificate.fromMap((value as Map).cast<String, dynamic>()))),
-      clientAffinity: map['clientAffinity'] == null ? null : pulumi.Output.create<String>(map['clientAffinity'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      forwardedForConfig: map['forwardedForConfig'] == null ? null : pulumi.Output.create<ListenerForwardedForConfig>(ListenerForwardedForConfig.fromMap((map['forwardedForConfig'] as Map).cast<String, dynamic>())),
-      httpVersion: map['httpVersion'] == null ? null : pulumi.Output.create<String>(map['httpVersion'] as String),
-      idleTimeout: map['idleTimeout'] == null ? null : pulumi.Output.create<int>(map['idleTimeout'] as int),
-      listenerType: map['listenerType'] == null ? null : pulumi.Output.create<String>(map['listenerType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      portRanges: pulumi.Output.create<List<ListenerPortRange>>(pulumi.Input.decodeList<ListenerPortRange>(map['portRanges'], (value) => ListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      proxyProtocol: map['proxyProtocol'] == null ? null : pulumi.Output.create<bool>(map['proxyProtocol'] as bool),
-      requestTimeout: map['requestTimeout'] == null ? null : pulumi.Output.create<int>(map['requestTimeout'] as int),
-      securityPolicyId: map['securityPolicyId'] == null ? null : pulumi.Output.create<String>(map['securityPolicyId'] as String),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<ListenerCertificate>(map['certificates'], (value) => ListenerCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientAffinity: map['clientAffinity'] == null ? null : (map['clientAffinity'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      forwardedForConfig: map['forwardedForConfig'] == null ? null : (ListenerForwardedForConfig.fromMap((map['forwardedForConfig'] as Map).cast<String, dynamic>())).input(),
+      httpVersion: map['httpVersion'] == null ? null : (map['httpVersion'] as String).input(),
+      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout'] as int).input(),
+      listenerType: map['listenerType'] == null ? null : (map['listenerType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      portRanges: (pulumi.Input.decodeList<ListenerPortRange>(map['portRanges'], (value) => ListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      proxyProtocol: map['proxyProtocol'] == null ? null : (map['proxyProtocol'] as bool).input(),
+      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout'] as int).input(),
+      securityPolicyId: map['securityPolicyId'] == null ? null : (map['securityPolicyId'] as String).input(),
     );
   }
 }

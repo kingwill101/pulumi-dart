@@ -24,17 +24,12 @@ class ResourcePolicyState {
   /// [resourceArn] The Amazon Resource Name (ARN) of the DynamoDB resource to which the policy will be attached. The resources you can specify include tables and streams. You can control index permissions using the base table's policy. To specify the same permission level for your table and its indexes, you can provide both the table and index Amazon Resource Name (ARN)s in the Resource field of a given Statement in your policy document. Alternatively, to specify different permissions for your table, indexes, or both, you can define multiple Statement fields in your policy document.
   /// [revisionId] A unique string that represents the revision ID of the policy. If you are comparing revision IDs, make sure to always use string comparison logic.
   ResourcePolicyState({
-    pulumi.Output<bool>? confirmRemoveSelfResourceAccess,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? revisionId,
-  }) :
-      confirmRemoveSelfResourceAccess = pulumi.Input.asOptionalInput<bool>(confirmRemoveSelfResourceAccess),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      revisionId = pulumi.Input.asOptionalInput<String>(revisionId);
+    this.confirmRemoveSelfResourceAccess,
+    this.policy,
+    this.region,
+    this.resourceArn,
+    this.revisionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ResourcePolicyState {
 
   factory ResourcePolicyState.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyState(
-      confirmRemoveSelfResourceAccess: map['confirmRemoveSelfResourceAccess'] == null ? null : pulumi.Output.create<bool>(map['confirmRemoveSelfResourceAccess'] as bool),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      revisionId: map['revisionId'] == null ? null : pulumi.Output.create<String>(map['revisionId'] as String),
+      confirmRemoveSelfResourceAccess: map['confirmRemoveSelfResourceAccess'] == null ? null : (map['confirmRemoveSelfResourceAccess'] as bool).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
     );
   }
 }

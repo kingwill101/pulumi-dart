@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigTypeConverterEntry {
   /// Specifies the key with the value that will be converted to a different type.
-  final String key;
+  final pulumi.Input<String> key;
   /// Specifies the type to convert the field value to. Allowed values are: `integer`, `double`, `string` and `boolean`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [LogTransformerTransformerConfigTypeConverterEntry].
   /// [key] Specifies the key with the value that will be converted to a different type.
@@ -24,8 +25,8 @@ class LogTransformerTransformerConfigTypeConverterEntry {
 
   factory LogTransformerTransformerConfigTypeConverterEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigTypeConverterEntry(
-      key: map['key'] as String,
-      type: map['type'] as String,
+      key: (map['key'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

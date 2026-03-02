@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling {
   /// The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
-  final int? maxNodeCount;
+  final pulumi.Input<int>? maxNodeCount;
   /// The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
-  final int? minNodeCount;
+  final pulumi.Input<int>? minNodeCount;
 
   /// Creates a new [ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling].
   /// [maxNodeCount] The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
@@ -24,8 +25,8 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
 
   factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling(
-      maxNodeCount: map['maxNodeCount'] == null ? null : map['maxNodeCount'] as int,
-      minNodeCount: map['minNodeCount'] == null ? null : map['minNodeCount'] as int,
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as int).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as int).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class ListBatchAccountKeysArgs {
   /// [accountName] A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListBatchAccountKeysArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListBatchAccountKeysArgs {
 
   factory ListBatchAccountKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListBatchAccountKeysArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

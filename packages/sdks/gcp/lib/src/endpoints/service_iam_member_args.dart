@@ -35,15 +35,11 @@ class ServiceIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [serviceName] Used to find the parent resource to bind the IAM policy to
   ServiceIamMemberArgs({
-    pulumi.Output<ServiceIamMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> serviceName,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ServiceIamMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      role = pulumi.Input.asInput<String>(role),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.condition,
+    required this.member,
+    required this.role,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,10 +52,10 @@ class ServiceIamMemberArgs {
 
   factory ServiceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ServiceIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<ServiceIamMemberCondition>(ServiceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      condition: map['condition'] == null ? null : (ServiceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      role: (map['role'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

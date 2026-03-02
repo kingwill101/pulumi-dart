@@ -25,17 +25,12 @@ class CipherGroupArgs {
   /// [ordering] Controls the order of the Cipher String list in the Cipher Audit section. Options are Default, Speed, Strength, FIPS, and Hardware. The rules are processed in the order listed. The default is `default`.
   /// [requires] Specifies the configuration of the restrict groups of ciphers. You can select a cipher rule from the Available Cipher Rules list. To have no restricted ciphers, omit this attribute in the config or set it to an empty set like, `[]`.
   CipherGroupArgs({
-    pulumi.Output<List<String>>? allows,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? ordering,
-    pulumi.Output<List<String>>? requires,
-  }) :
-      allows = pulumi.Input.asOptionalInput<List<String>>(allows),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asInput<String>(name),
-      ordering = pulumi.Input.asOptionalInput<String>(ordering),
-      requires = pulumi.Input.asOptionalInput<List<String>>(requires);
+    this.allows,
+    this.description,
+    required this.name,
+    this.ordering,
+    this.requires,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CipherGroupArgs {
 
   factory CipherGroupArgs.fromMap(Map<String, dynamic> map) {
     return CipherGroupArgs(
-      allows: map['allows'] == null ? null : pulumi.Output.create<List<String>>((map['allows'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      ordering: map['ordering'] == null ? null : pulumi.Output.create<String>(map['ordering'] as String),
-      requires: map['requires'] == null ? null : pulumi.Output.create<List<String>>((map['requires'] as List).cast<String>()),
+      allows: map['allows'] == null ? null : ((map['allows'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      ordering: map['ordering'] == null ? null : (map['ordering'] as String).input(),
+      requires: map['requires'] == null ? null : ((map['requires'] as List).cast<String>()).input(),
     );
   }
 }

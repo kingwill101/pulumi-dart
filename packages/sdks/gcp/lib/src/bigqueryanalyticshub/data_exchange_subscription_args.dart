@@ -41,25 +41,16 @@ class DataExchangeSubscriptionArgs {
   /// [subscriberContact] Email of the subscriber.
   /// [subscriptionId] Name of the subscription to create.
   DataExchangeSubscriptionArgs({
-    required pulumi.Output<String> dataExchangeId,
-    required pulumi.Output<String> dataExchangeLocation,
-    required pulumi.Output<String> dataExchangeProject,
-    pulumi.Output<DataExchangeSubscriptionDestinationDataset>? destinationDataset,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? refreshPolicy,
-    pulumi.Output<String>? subscriberContact,
-    required pulumi.Output<String> subscriptionId,
-  }) :
-      dataExchangeId = pulumi.Input.asInput<String>(dataExchangeId),
-      dataExchangeLocation = pulumi.Input.asInput<String>(dataExchangeLocation),
-      dataExchangeProject = pulumi.Input.asInput<String>(dataExchangeProject),
-      destinationDataset = pulumi.Input.asOptionalInput<DataExchangeSubscriptionDestinationDataset>(destinationDataset),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      refreshPolicy = pulumi.Input.asOptionalInput<String>(refreshPolicy),
-      subscriberContact = pulumi.Input.asOptionalInput<String>(subscriberContact),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+    required this.dataExchangeId,
+    required this.dataExchangeLocation,
+    required this.dataExchangeProject,
+    this.destinationDataset,
+    required this.location,
+    this.project,
+    this.refreshPolicy,
+    this.subscriberContact,
+    required this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class DataExchangeSubscriptionArgs {
 
   factory DataExchangeSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return DataExchangeSubscriptionArgs(
-      dataExchangeId: pulumi.Output.create<String>(map['dataExchangeId'] as String),
-      dataExchangeLocation: pulumi.Output.create<String>(map['dataExchangeLocation'] as String),
-      dataExchangeProject: pulumi.Output.create<String>(map['dataExchangeProject'] as String),
-      destinationDataset: map['destinationDataset'] == null ? null : pulumi.Output.create<DataExchangeSubscriptionDestinationDataset>(DataExchangeSubscriptionDestinationDataset.fromMap((map['destinationDataset'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      refreshPolicy: map['refreshPolicy'] == null ? null : pulumi.Output.create<String>(map['refreshPolicy'] as String),
-      subscriberContact: map['subscriberContact'] == null ? null : pulumi.Output.create<String>(map['subscriberContact'] as String),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
+      dataExchangeId: (map['dataExchangeId'] as String).input(),
+      dataExchangeLocation: (map['dataExchangeLocation'] as String).input(),
+      dataExchangeProject: (map['dataExchangeProject'] as String).input(),
+      destinationDataset: map['destinationDataset'] == null ? null : (DataExchangeSubscriptionDestinationDataset.fromMap((map['destinationDataset'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      refreshPolicy: map['refreshPolicy'] == null ? null : (map['refreshPolicy'] as String).input(),
+      subscriberContact: map['subscriberContact'] == null ? null : (map['subscriberContact'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }
 }

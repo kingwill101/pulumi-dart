@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Conditions required to match a header
 class HeaderMatch {
   /// Exact value of the header
-  final String? exactMatch;
+  final pulumi.Input<String>? exactMatch;
   /// Name of the header
-  final String? header;
+  final pulumi.Input<String>? header;
   /// Prefix value of the header
-  final String? prefixMatch;
+  final pulumi.Input<String>? prefixMatch;
   /// Regex value of the header
-  final String? regexMatch;
+  final pulumi.Input<String>? regexMatch;
   /// Suffix value of the header
-  final String? suffixMatch;
+  final pulumi.Input<String>? suffixMatch;
 
   /// Creates a new [HeaderMatch].
   /// [exactMatch] Exact value of the header
@@ -40,11 +41,11 @@ class HeaderMatch {
 
   factory HeaderMatch.fromMap(Map<String, dynamic> map) {
     return HeaderMatch(
-      exactMatch: map['exactMatch'] == null ? null : map['exactMatch'] as String,
-      header: map['header'] == null ? null : map['header'] as String,
-      prefixMatch: map['prefixMatch'] == null ? null : map['prefixMatch'] as String,
-      regexMatch: map['regexMatch'] == null ? null : map['regexMatch'] as String,
-      suffixMatch: map['suffixMatch'] == null ? null : map['suffixMatch'] as String,
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as String).input(),
+      header: map['header'] == null ? null : (map['header'] as String).input(),
+      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch'] as String).input(),
+      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch'] as String).input(),
+      suffixMatch: map['suffixMatch'] == null ? null : (map['suffixMatch'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'daemon_endpoint.dart';
 
 /// NodeDaemonEndpoints lists ports opened by daemons running on the Node.
 class NodeDaemonEndpoints {
   /// Endpoint on which Kubelet is listening.
-  final DaemonEndpoint? kubeletEndpoint;
+  final pulumi.Input<DaemonEndpoint>? kubeletEndpoint;
 
   /// Creates a new [NodeDaemonEndpoints].
   /// [kubeletEndpoint] Endpoint on which Kubelet is listening.
@@ -15,13 +16,13 @@ class NodeDaemonEndpoints {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kubeletEndpoint': ?kubeletEndpoint == null ? null : kubeletEndpoint!.toMap(),
+      'kubeletEndpoint': ?pulumi.Input.mapOptionalInputValue<DaemonEndpoint, Map<String, dynamic>>(kubeletEndpoint, (value) => value.toMap()),
     };
   }
 
   factory NodeDaemonEndpoints.fromMap(Map<String, dynamic> map) {
     return NodeDaemonEndpoints(
-      kubeletEndpoint: map['kubeletEndpoint'] == null ? null : DaemonEndpoint.fromMap((map['kubeletEndpoint'] as Map).cast<String, dynamic>()),
+      kubeletEndpoint: map['kubeletEndpoint'] == null ? null : (DaemonEndpoint.fromMap((map['kubeletEndpoint'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

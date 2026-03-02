@@ -5,11 +5,11 @@ import 'get_container_groups_group_dns_config_option.dart';
 
 class GetContainerGroupsGroupDnsConfig {
   /// The list of DNS server IP addresses.
-  final List<String> nameServers;
+  final pulumi.Input<List<String>> nameServers;
   /// The list of objects. Each object is a name-value pair. The value is optional.
-  final List<GetContainerGroupsGroupDnsConfigOption> options;
+  final pulumi.Input<List<GetContainerGroupsGroupDnsConfigOption>> options;
   /// The list of DNS lookup domains.
-  final List<String> searches;
+  final pulumi.Input<List<String>> searches;
 
   /// Creates a new [GetContainerGroupsGroupDnsConfig].
   /// [nameServers] The list of DNS server IP addresses.
@@ -24,16 +24,16 @@ class GetContainerGroupsGroupDnsConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nameServers': nameServers,
-      'options': pulumi.Input.encodeList<GetContainerGroupsGroupDnsConfigOption, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'options': pulumi.Input.mapInputValue<List<GetContainerGroupsGroupDnsConfigOption>, List<Map<String, dynamic>>>(options, (value) => pulumi.Input.encodeList<GetContainerGroupsGroupDnsConfigOption, Map<String, dynamic>>(value, (value) => value.toMap())),
       'searches': searches,
     };
   }
 
   factory GetContainerGroupsGroupDnsConfig.fromMap(Map<String, dynamic> map) {
     return GetContainerGroupsGroupDnsConfig(
-      nameServers: (map['nameServers'] as List).cast<String>(),
-      options: pulumi.Input.decodeList<GetContainerGroupsGroupDnsConfigOption>(map['options'], (value) => GetContainerGroupsGroupDnsConfigOption.fromMap((value as Map).cast<String, dynamic>())),
-      searches: (map['searches'] as List).cast<String>(),
+      nameServers: ((map['nameServers'] as List).cast<String>()).input(),
+      options: (pulumi.Input.decodeList<GetContainerGroupsGroupDnsConfigOption>(map['options'], (value) => GetContainerGroupsGroupDnsConfigOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      searches: ((map['searches'] as List).cast<String>()).input(),
     );
   }
 }

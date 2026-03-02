@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secure_string_response.dart';
 
 /// The key authorization type integration runtime.
 class LinkedIntegrationRuntimeKeyAuthorizationResponse {
   /// The authorization type for integration runtime sharing.
   /// Expected value is 'Key'.
-  final String authorizationType;
+  final pulumi.Input<String> authorizationType;
   /// The key used for authorization.
-  final SecureStringResponse key;
+  final pulumi.Input<SecureStringResponse> key;
 
   /// Creates a new [LinkedIntegrationRuntimeKeyAuthorizationResponse].
   /// [authorizationType] The authorization type for integration runtime sharing.
@@ -21,14 +22,14 @@ class LinkedIntegrationRuntimeKeyAuthorizationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authorizationType': authorizationType,
-      'key': key.toMap(),
+      'key': pulumi.Input.mapInputValue<SecureStringResponse, Map<String, dynamic>>(key, (value) => value.toMap()),
     };
   }
 
   factory LinkedIntegrationRuntimeKeyAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return LinkedIntegrationRuntimeKeyAuthorizationResponse(
-      authorizationType: map['authorizationType'] as String,
-      key: SecureStringResponse.fromMap((map['key'] as Map).cast<String, dynamic>()),
+      authorizationType: (map['authorizationType'] as String).input(),
+      key: (SecureStringResponse.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

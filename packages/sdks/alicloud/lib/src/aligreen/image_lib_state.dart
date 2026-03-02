@@ -22,17 +22,12 @@ class ImageLibState {
   /// [imageLibName] The name of the image library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
   /// [scene] The moderation scenario to which the custom image library applies. Valid values: PORN: pornography detection, AD: ad detection, ILLEGAL: terrorist content detection
   ImageLibState({
-    pulumi.Output<List<String>>? bizTypes,
-    pulumi.Output<String>? category,
-    pulumi.Output<bool>? enable,
-    pulumi.Output<String>? imageLibName,
-    pulumi.Output<String>? scene,
-  }) :
-      bizTypes = pulumi.Input.asOptionalInput<List<String>>(bizTypes),
-      category = pulumi.Input.asOptionalInput<String>(category),
-      enable = pulumi.Input.asOptionalInput<bool>(enable),
-      imageLibName = pulumi.Input.asOptionalInput<String>(imageLibName),
-      scene = pulumi.Input.asOptionalInput<String>(scene);
+    this.bizTypes,
+    this.category,
+    this.enable,
+    this.imageLibName,
+    this.scene,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ImageLibState {
 
   factory ImageLibState.fromMap(Map<String, dynamic> map) {
     return ImageLibState(
-      bizTypes: map['bizTypes'] == null ? null : pulumi.Output.create<List<String>>((map['bizTypes'] as List).cast<String>()),
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      enable: map['enable'] == null ? null : pulumi.Output.create<bool>(map['enable'] as bool),
-      imageLibName: map['imageLibName'] == null ? null : pulumi.Output.create<String>(map['imageLibName'] as String),
-      scene: map['scene'] == null ? null : pulumi.Output.create<String>(map['scene'] as String),
+      bizTypes: map['bizTypes'] == null ? null : ((map['bizTypes'] as List).cast<String>()).input(),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      imageLibName: map['imageLibName'] == null ? null : (map['imageLibName'] as String).input(),
+      scene: map['scene'] == null ? null : (map['scene'] as String).input(),
     );
   }
 }

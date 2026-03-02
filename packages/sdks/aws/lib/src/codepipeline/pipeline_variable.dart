@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineVariable {
   /// The default value of a pipeline-level variable.
-  final String? defaultValue;
+  final pulumi.Input<String>? defaultValue;
   /// The description of a pipeline-level variable.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The name of a pipeline-level variable.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [PipelineVariable].
   /// [defaultValue] The default value of a pipeline-level variable.
@@ -29,9 +30,9 @@ class PipelineVariable {
 
   factory PipelineVariable.fromMap(Map<String, dynamic> map) {
     return PipelineVariable(
-      defaultValue: map['defaultValue'] == null ? null : map['defaultValue'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] as String,
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

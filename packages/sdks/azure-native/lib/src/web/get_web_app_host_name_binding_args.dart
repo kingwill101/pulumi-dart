@@ -19,13 +19,10 @@ class GetWebAppHostNameBindingArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   GetWebAppHostNameBindingArgs({
-    required pulumi.Output<String> hostName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hostName = pulumi.Input.asInput<String>(hostName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hostName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWebAppHostNameBindingArgs {
 
   factory GetWebAppHostNameBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppHostNameBindingArgs(
-      hostName: pulumi.Output.create<String>(map['hostName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hostName: (map['hostName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

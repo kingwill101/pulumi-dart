@@ -16,11 +16,9 @@ class DropletSnapshotArgs {
   /// [dropletId] The ID of the Droplet from which the snapshot will be taken.
   /// [name] A name for the Droplet snapshot.
   DropletSnapshotArgs({
-    required pulumi.Output<String> dropletId,
-    pulumi.Output<String>? name,
-  }) :
-      dropletId = pulumi.Input.asInput<String>(dropletId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.dropletId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class DropletSnapshotArgs {
 
   factory DropletSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return DropletSnapshotArgs(
-      dropletId: pulumi.Output.create<String>(map['dropletId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      dropletId: (map['dropletId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

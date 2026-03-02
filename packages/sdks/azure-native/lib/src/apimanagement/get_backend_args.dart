@@ -19,13 +19,10 @@ class GetBackendArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetBackendArgs({
-    required pulumi.Output<String> backendId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      backendId = pulumi.Input.asInput<String>(backendId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.backendId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBackendArgs {
 
   factory GetBackendArgs.fromMap(Map<String, dynamic> map) {
     return GetBackendArgs(
-      backendId: pulumi.Output.create<String>(map['backendId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      backendId: (map['backendId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class ApiDestinationArgs {
   /// [description] The description of the API destination.
   /// [httpApiParameters] The parameters that are configured for the API destination. See `http_api_parameters` below.
   ApiDestinationArgs({
-    required pulumi.Output<String> apiDestinationName,
-    required pulumi.Output<String> connectionName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<ApiDestinationHttpApiParameters> httpApiParameters,
-  }) :
-      apiDestinationName = pulumi.Input.asInput<String>(apiDestinationName),
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      httpApiParameters = pulumi.Input.asInput<ApiDestinationHttpApiParameters>(httpApiParameters);
+    required this.apiDestinationName,
+    required this.connectionName,
+    this.description,
+    required this.httpApiParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ApiDestinationArgs {
 
   factory ApiDestinationArgs.fromMap(Map<String, dynamic> map) {
     return ApiDestinationArgs(
-      apiDestinationName: pulumi.Output.create<String>(map['apiDestinationName'] as String),
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      httpApiParameters: pulumi.Output.create<ApiDestinationHttpApiParameters>(ApiDestinationHttpApiParameters.fromMap((map['httpApiParameters'] as Map).cast<String, dynamic>())),
+      apiDestinationName: (map['apiDestinationName'] as String).input(),
+      connectionName: (map['connectionName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpApiParameters: (ApiDestinationHttpApiParameters.fromMap((map['httpApiParameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

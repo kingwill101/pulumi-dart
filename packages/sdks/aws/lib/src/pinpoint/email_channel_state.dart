@@ -34,25 +34,16 @@ class EmailChannelState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] *Deprecated* The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
   EmailChannelState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? configurationSet,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? fromAddress,
-    pulumi.Output<String>? identity,
-    pulumi.Output<int>? messagesPerSecond,
-    pulumi.Output<String>? orchestrationSendingRoleArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      configurationSet = pulumi.Input.asOptionalInput<String>(configurationSet),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      fromAddress = pulumi.Input.asOptionalInput<String>(fromAddress),
-      identity = pulumi.Input.asOptionalInput<String>(identity),
-      messagesPerSecond = pulumi.Input.asOptionalInput<int>(messagesPerSecond),
-      orchestrationSendingRoleArn = pulumi.Input.asOptionalInput<String>(orchestrationSendingRoleArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn);
+    this.applicationId,
+    this.configurationSet,
+    this.enabled,
+    this.fromAddress,
+    this.identity,
+    this.messagesPerSecond,
+    this.orchestrationSendingRoleArn,
+    this.region,
+    this.roleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class EmailChannelState {
 
   factory EmailChannelState.fromMap(Map<String, dynamic> map) {
     return EmailChannelState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      configurationSet: map['configurationSet'] == null ? null : pulumi.Output.create<String>(map['configurationSet'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      fromAddress: map['fromAddress'] == null ? null : pulumi.Output.create<String>(map['fromAddress'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<String>(map['identity'] as String),
-      messagesPerSecond: map['messagesPerSecond'] == null ? null : pulumi.Output.create<int>(map['messagesPerSecond'] as int),
-      orchestrationSendingRoleArn: map['orchestrationSendingRoleArn'] == null ? null : pulumi.Output.create<String>(map['orchestrationSendingRoleArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      configurationSet: map['configurationSet'] == null ? null : (map['configurationSet'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      fromAddress: map['fromAddress'] == null ? null : (map['fromAddress'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      messagesPerSecond: map['messagesPerSecond'] == null ? null : (map['messagesPerSecond'] as int).input(),
+      orchestrationSendingRoleArn: map['orchestrationSendingRoleArn'] == null ? null : (map['orchestrationSendingRoleArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
     );
   }
 }

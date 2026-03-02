@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The API backend service
 class ApiResourceBackendServiceResponse {
   /// The service URL
-  final String? serviceUrl;
+  final pulumi.Input<String>? serviceUrl;
 
   /// Creates a new [ApiResourceBackendServiceResponse].
   /// [serviceUrl] The service URL
@@ -20,7 +21,7 @@ class ApiResourceBackendServiceResponse {
 
   factory ApiResourceBackendServiceResponse.fromMap(Map<String, dynamic> map) {
     return ApiResourceBackendServiceResponse(
-      serviceUrl: map['serviceUrl'] == null ? null : map['serviceUrl'] as String,
+      serviceUrl: map['serviceUrl'] == null ? null : (map['serviceUrl'] as String).input(),
     );
   }
 }

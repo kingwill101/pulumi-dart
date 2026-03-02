@@ -14,11 +14,9 @@ class GetOrganizationPolicyArgs {
   /// [organizationId] Required.
   /// [policyId] Required.
   GetOrganizationPolicyArgs({
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> policyId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      policyId = pulumi.Input.asInput<String>(policyId);
+    required this.organizationId,
+    required this.policyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetOrganizationPolicyArgs {
 
   factory GetOrganizationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPolicyArgs(
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
+      organizationId: (map['organizationId'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
     );
   }
 }

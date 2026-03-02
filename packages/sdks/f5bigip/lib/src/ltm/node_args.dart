@@ -45,29 +45,18 @@ class NodeArgs {
   /// [session] Enables or disables the node for new sessions. The default value is user-enabled.
   /// [state] Default is "user-up" you can set to "user-down" if you want to disable
   NodeArgs({
-    required pulumi.Output<String> address,
-    pulumi.Output<int>? connectionLimit,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? dynamicRatio,
-    pulumi.Output<NodeFqdn>? fqdn,
-    pulumi.Output<String>? monitor,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? rateLimit,
-    pulumi.Output<int>? ratio,
-    pulumi.Output<String>? session,
-    pulumi.Output<String>? state,
-  }) :
-      address = pulumi.Input.asInput<String>(address),
-      connectionLimit = pulumi.Input.asOptionalInput<int>(connectionLimit),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dynamicRatio = pulumi.Input.asOptionalInput<int>(dynamicRatio),
-      fqdn = pulumi.Input.asOptionalInput<NodeFqdn>(fqdn),
-      monitor = pulumi.Input.asOptionalInput<String>(monitor),
-      name = pulumi.Input.asInput<String>(name),
-      rateLimit = pulumi.Input.asOptionalInput<String>(rateLimit),
-      ratio = pulumi.Input.asOptionalInput<int>(ratio),
-      session = pulumi.Input.asOptionalInput<String>(session),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    required this.address,
+    this.connectionLimit,
+    this.description,
+    this.dynamicRatio,
+    this.fqdn,
+    this.monitor,
+    required this.name,
+    this.rateLimit,
+    this.ratio,
+    this.session,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class NodeArgs {
 
   factory NodeArgs.fromMap(Map<String, dynamic> map) {
     return NodeArgs(
-      address: pulumi.Output.create<String>(map['address'] as String),
-      connectionLimit: map['connectionLimit'] == null ? null : pulumi.Output.create<int>(map['connectionLimit'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dynamicRatio: map['dynamicRatio'] == null ? null : pulumi.Output.create<int>(map['dynamicRatio'] as int),
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<NodeFqdn>(NodeFqdn.fromMap((map['fqdn'] as Map).cast<String, dynamic>())),
-      monitor: map['monitor'] == null ? null : pulumi.Output.create<String>(map['monitor'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      rateLimit: map['rateLimit'] == null ? null : pulumi.Output.create<String>(map['rateLimit'] as String),
-      ratio: map['ratio'] == null ? null : pulumi.Output.create<int>(map['ratio'] as int),
-      session: map['session'] == null ? null : pulumi.Output.create<String>(map['session'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      address: (map['address'] as String).input(),
+      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dynamicRatio: map['dynamicRatio'] == null ? null : (map['dynamicRatio'] as int).input(),
+      fqdn: map['fqdn'] == null ? null : (NodeFqdn.fromMap((map['fqdn'] as Map).cast<String, dynamic>())).input(),
+      monitor: map['monitor'] == null ? null : (map['monitor'] as String).input(),
+      name: (map['name'] as String).input(),
+      rateLimit: map['rateLimit'] == null ? null : (map['rateLimit'] as String).input(),
+      ratio: map['ratio'] == null ? null : (map['ratio'] as int).input(),
+      session: map['session'] == null ? null : (map['session'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

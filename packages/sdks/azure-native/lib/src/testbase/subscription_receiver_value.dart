@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The subscription role receiver value.
 class SubscriptionReceiverValue {
   /// The role of the notification receiver.
-  final String? role;
+  final pulumi.Input<String>? role;
   /// The subscription id of the notification receiver.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// The subscription name of the notification receiver.
-  final String? subscriptionName;
+  final pulumi.Input<String>? subscriptionName;
 
   /// Creates a new [SubscriptionReceiverValue].
   /// [role] The role of the notification receiver.
@@ -30,9 +31,9 @@ class SubscriptionReceiverValue {
 
   factory SubscriptionReceiverValue.fromMap(Map<String, dynamic> map) {
     return SubscriptionReceiverValue(
-      role: map['role'] == null ? null : map['role'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      subscriptionName: map['subscriptionName'] == null ? null : map['subscriptionName'] as String,
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// TokenRequest contains parameters of a service account token.
 class TokenRequestPatch {
   /// audience is the intended audience of the token in "TokenRequestSpec". It will default to the audiences of kube apiserver.
-  final String? audience;
+  final pulumi.Input<String>? audience;
   /// expirationSeconds is the duration of validity of the token in "TokenRequestSpec". It has the same default value of "ExpirationSeconds" in "TokenRequestSpec".
-  final int? expirationSeconds;
+  final pulumi.Input<int>? expirationSeconds;
 
   /// Creates a new [TokenRequestPatch].
   /// [audience] audience is the intended audience of the token in "TokenRequestSpec". It will default to the audiences of kube apiserver.
@@ -25,8 +26,8 @@ class TokenRequestPatch {
 
   factory TokenRequestPatch.fromMap(Map<String, dynamic> map) {
     return TokenRequestPatch(
-      audience: map['audience'] == null ? null : map['audience'] as String,
-      expirationSeconds: map['expirationSeconds'] == null ? null : map['expirationSeconds'] as int,
+      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds'] as int).input(),
     );
   }
 }

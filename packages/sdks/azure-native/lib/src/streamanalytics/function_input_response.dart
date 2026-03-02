@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes one input parameter of a function.
 class FunctionInputResponse {
   /// The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-  final String? dataType;
+  final pulumi.Input<String>? dataType;
   /// A flag indicating if the parameter is a configuration parameter. True if this input parameter is expected to be a constant. Default is false.
-  final bool? isConfigurationParameter;
+  final pulumi.Input<bool>? isConfigurationParameter;
 
   /// Creates a new [FunctionInputResponse].
   /// [dataType] The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
@@ -25,8 +26,8 @@ class FunctionInputResponse {
 
   factory FunctionInputResponse.fromMap(Map<String, dynamic> map) {
     return FunctionInputResponse(
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      isConfigurationParameter: map['isConfigurationParameter'] == null ? null : map['isConfigurationParameter'] as bool,
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      isConfigurationParameter: map['isConfigurationParameter'] == null ? null : (map['isConfigurationParameter'] as bool).input(),
     );
   }
 }

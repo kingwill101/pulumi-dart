@@ -32,19 +32,13 @@ class DeviceSecurityGroupArgs {
   /// [thresholdRules] The list of custom alert threshold rules.
   /// [timeWindowRules] The list of custom alert time-window rules.
   DeviceSecurityGroupArgs({
-    pulumi.Output<List<AllowlistCustomAlertRule>>? allowlistRules,
-    pulumi.Output<List<DenylistCustomAlertRule>>? denylistRules,
-    pulumi.Output<String>? deviceSecurityGroupName,
-    required pulumi.Output<String> resourceId,
-    pulumi.Output<List<ThresholdCustomAlertRule>>? thresholdRules,
-    pulumi.Output<List<TimeWindowCustomAlertRule>>? timeWindowRules,
-  }) :
-      allowlistRules = pulumi.Input.asOptionalInput<List<AllowlistCustomAlertRule>>(allowlistRules),
-      denylistRules = pulumi.Input.asOptionalInput<List<DenylistCustomAlertRule>>(denylistRules),
-      deviceSecurityGroupName = pulumi.Input.asOptionalInput<String>(deviceSecurityGroupName),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      thresholdRules = pulumi.Input.asOptionalInput<List<ThresholdCustomAlertRule>>(thresholdRules),
-      timeWindowRules = pulumi.Input.asOptionalInput<List<TimeWindowCustomAlertRule>>(timeWindowRules);
+    this.allowlistRules,
+    this.denylistRules,
+    this.deviceSecurityGroupName,
+    required this.resourceId,
+    this.thresholdRules,
+    this.timeWindowRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class DeviceSecurityGroupArgs {
 
   factory DeviceSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return DeviceSecurityGroupArgs(
-      allowlistRules: map['allowlistRules'] == null ? null : pulumi.Output.create<List<AllowlistCustomAlertRule>>(pulumi.Input.decodeList<AllowlistCustomAlertRule>(map['allowlistRules'], (value) => AllowlistCustomAlertRule.fromMap((value as Map).cast<String, dynamic>()))),
-      denylistRules: map['denylistRules'] == null ? null : pulumi.Output.create<List<DenylistCustomAlertRule>>(pulumi.Input.decodeList<DenylistCustomAlertRule>(map['denylistRules'], (value) => DenylistCustomAlertRule.fromMap((value as Map).cast<String, dynamic>()))),
-      deviceSecurityGroupName: map['deviceSecurityGroupName'] == null ? null : pulumi.Output.create<String>(map['deviceSecurityGroupName'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      thresholdRules: map['thresholdRules'] == null ? null : pulumi.Output.create<List<ThresholdCustomAlertRule>>(pulumi.Input.decodeList<ThresholdCustomAlertRule>(map['thresholdRules'], (value) => ThresholdCustomAlertRule.fromMap((value as Map).cast<String, dynamic>()))),
-      timeWindowRules: map['timeWindowRules'] == null ? null : pulumi.Output.create<List<TimeWindowCustomAlertRule>>(pulumi.Input.decodeList<TimeWindowCustomAlertRule>(map['timeWindowRules'], (value) => TimeWindowCustomAlertRule.fromMap((value as Map).cast<String, dynamic>()))),
+      allowlistRules: map['allowlistRules'] == null ? null : (pulumi.Input.decodeList<AllowlistCustomAlertRule>(map['allowlistRules'], (value) => AllowlistCustomAlertRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      denylistRules: map['denylistRules'] == null ? null : (pulumi.Input.decodeList<DenylistCustomAlertRule>(map['denylistRules'], (value) => DenylistCustomAlertRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deviceSecurityGroupName: map['deviceSecurityGroupName'] == null ? null : (map['deviceSecurityGroupName'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      thresholdRules: map['thresholdRules'] == null ? null : (pulumi.Input.decodeList<ThresholdCustomAlertRule>(map['thresholdRules'], (value) => ThresholdCustomAlertRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeWindowRules: map['timeWindowRules'] == null ? null : (pulumi.Input.decodeList<TimeWindowCustomAlertRule>(map['timeWindowRules'], (value) => TimeWindowCustomAlertRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessConfigurationPermissionPolicy {
   /// The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
-  final String? permissionPolicyDocument;
+  final pulumi.Input<String>? permissionPolicyDocument;
   /// The name of the policy.
-  final String permissionPolicyName;
+  final pulumi.Input<String> permissionPolicyName;
   /// The type of the policy. Valid values: `System`, `Inline`.
-  final String permissionPolicyType;
+  final pulumi.Input<String> permissionPolicyType;
 
   /// Creates a new [AccessConfigurationPermissionPolicy].
   /// [permissionPolicyDocument] The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
@@ -29,9 +30,9 @@ class AccessConfigurationPermissionPolicy {
 
   factory AccessConfigurationPermissionPolicy.fromMap(Map<String, dynamic> map) {
     return AccessConfigurationPermissionPolicy(
-      permissionPolicyDocument: map['permissionPolicyDocument'] == null ? null : map['permissionPolicyDocument'] as String,
-      permissionPolicyName: map['permissionPolicyName'] as String,
-      permissionPolicyType: map['permissionPolicyType'] as String,
+      permissionPolicyDocument: map['permissionPolicyDocument'] == null ? null : (map['permissionPolicyDocument'] as String).input(),
+      permissionPolicyName: (map['permissionPolicyName'] as String).input(),
+      permissionPolicyType: (map['permissionPolicyType'] as String).input(),
     );
   }
 }

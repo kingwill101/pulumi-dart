@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_gateway_spec_backend_defaults_client_policy_tls.dart';
 
 class VirtualGatewaySpecBackendDefaultsClientPolicy {
   /// Transport Layer Security (TLS) client policy.
-  final VirtualGatewaySpecBackendDefaultsClientPolicyTls? tls;
+  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTls>? tls;
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicy].
   /// [tls] Transport Layer Security (TLS) client policy.
@@ -14,13 +15,13 @@ class VirtualGatewaySpecBackendDefaultsClientPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'tls': ?tls == null ? null : tls!.toMap(),
+      'tls': ?pulumi.Input.mapOptionalInputValue<VirtualGatewaySpecBackendDefaultsClientPolicyTls, Map<String, dynamic>>(tls, (value) => value.toMap()),
     };
   }
 
   factory VirtualGatewaySpecBackendDefaultsClientPolicy.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicy(
-      tls: map['tls'] == null ? null : VirtualGatewaySpecBackendDefaultsClientPolicyTls.fromMap((map['tls'] as Map).cast<String, dynamic>()),
+      tls: map['tls'] == null ? null : (VirtualGatewaySpecBackendDefaultsClientPolicyTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

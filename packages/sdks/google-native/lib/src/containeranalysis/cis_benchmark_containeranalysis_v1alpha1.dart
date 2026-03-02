@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cis_benchmark_severity_containeranalysis_v1alpha1.dart';
 
 /// A compliance check that is a CIS benchmark.
 class CisBenchmarkContaineranalysisV1alpha1 {
   /// The profile level of this CIS benchmark check.
-  final int? profileLevel;
+  final pulumi.Input<int>? profileLevel;
   /// The severity level of this CIS benchmark check.
-  final CisBenchmarkSeverityContaineranalysisV1alpha1? severity;
+  final pulumi.Input<CisBenchmarkSeverityContaineranalysisV1alpha1>? severity;
 
   /// Creates a new [CisBenchmarkContaineranalysisV1alpha1].
   /// [profileLevel] The profile level of this CIS benchmark check.
@@ -20,14 +21,14 @@ class CisBenchmarkContaineranalysisV1alpha1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'profileLevel': ?profileLevel,
-      'severity': ?severity == null ? null : severity!.value,
+      'severity': ?pulumi.Input.mapOptionalInputValue<CisBenchmarkSeverityContaineranalysisV1alpha1, String>(severity, (value) => value.value),
     };
   }
 
   factory CisBenchmarkContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return CisBenchmarkContaineranalysisV1alpha1(
-      profileLevel: map['profileLevel'] == null ? null : map['profileLevel'] as int,
-      severity: map['severity'] == null ? null : CisBenchmarkSeverityContaineranalysisV1alpha1.fromValue(map['severity'] as String),
+      profileLevel: map['profileLevel'] == null ? null : (map['profileLevel'] as int).input(),
+      severity: map['severity'] == null ? null : (CisBenchmarkSeverityContaineranalysisV1alpha1.fromValue(map['severity'] as String)).input(),
     );
   }
 }

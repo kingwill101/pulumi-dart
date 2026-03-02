@@ -25,17 +25,12 @@ class DocumentationArgs {
   /// [serviceName] The name of the API Management service.
   /// [title] documentation title.
   DocumentationArgs({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? documentationId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? title,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      documentationId = pulumi.Input.asOptionalInput<String>(documentationId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      title = pulumi.Input.asOptionalInput<String>(title);
+    this.content,
+    this.documentationId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DocumentationArgs {
 
   factory DocumentationArgs.fromMap(Map<String, dynamic> map) {
     return DocumentationArgs(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      documentationId: map['documentationId'] == null ? null : pulumi.Output.create<String>(map['documentationId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      documentationId: map['documentationId'] == null ? null : (map['documentationId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

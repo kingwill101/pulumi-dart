@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_managed_rules_exclusion_excluded_rule_set.dart';
 
 class PolicyManagedRulesExclusion {
   /// One or more `excluded_rule_set` block defined below.
-  final PolicyManagedRulesExclusionExcludedRuleSet? excludedRuleSet;
+  final pulumi.Input<PolicyManagedRulesExclusionExcludedRuleSet>? excludedRuleSet;
   /// The name of the Match Variable. Possible values: `RequestArgKeys`, `RequestArgNames`, `RequestArgValues`, `RequestCookieKeys`, `RequestCookieNames`, `RequestCookieValues`, `RequestHeaderKeys`, `RequestHeaderNames`, `RequestHeaderValues`.
-  final String matchVariable;
+  final pulumi.Input<String> matchVariable;
   /// Describes field of the matchVariable collection.
-  final String selector;
+  final pulumi.Input<String> selector;
   /// Describes operator to be matched. Possible values: `Contains`, `EndsWith`, `Equals`, `EqualsAny`, `StartsWith`.
-  final String selectorMatchOperator;
+  final pulumi.Input<String> selectorMatchOperator;
 
   /// Creates a new [PolicyManagedRulesExclusion].
   /// [excludedRuleSet] One or more `excluded_rule_set` block defined below.
@@ -26,7 +27,7 @@ class PolicyManagedRulesExclusion {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'excludedRuleSet': ?excludedRuleSet == null ? null : excludedRuleSet!.toMap(),
+      'excludedRuleSet': ?pulumi.Input.mapOptionalInputValue<PolicyManagedRulesExclusionExcludedRuleSet, Map<String, dynamic>>(excludedRuleSet, (value) => value.toMap()),
       'matchVariable': matchVariable,
       'selector': selector,
       'selectorMatchOperator': selectorMatchOperator,
@@ -35,10 +36,10 @@ class PolicyManagedRulesExclusion {
 
   factory PolicyManagedRulesExclusion.fromMap(Map<String, dynamic> map) {
     return PolicyManagedRulesExclusion(
-      excludedRuleSet: map['excludedRuleSet'] == null ? null : PolicyManagedRulesExclusionExcludedRuleSet.fromMap((map['excludedRuleSet'] as Map).cast<String, dynamic>()),
-      matchVariable: map['matchVariable'] as String,
-      selector: map['selector'] as String,
-      selectorMatchOperator: map['selectorMatchOperator'] as String,
+      excludedRuleSet: map['excludedRuleSet'] == null ? null : (PolicyManagedRulesExclusionExcludedRuleSet.fromMap((map['excludedRuleSet'] as Map).cast<String, dynamic>())).input(),
+      matchVariable: (map['matchVariable'] as String).input(),
+      selector: (map['selector'] as String).input(),
+      selectorMatchOperator: (map['selectorMatchOperator'] as String).input(),
     );
   }
 }

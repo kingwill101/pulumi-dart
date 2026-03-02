@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The available logging options for a firewall rule.
 class FirewallLogConfigResponse {
   /// This field denotes whether to enable logging for a particular firewall rule.
-  final bool enable;
+  final pulumi.Input<bool> enable;
   /// This field can only be specified for a particular firewall rule if logging is enabled for that rule. This field denotes whether to include or exclude metadata for firewall logs.
-  final String metadata;
+  final pulumi.Input<String> metadata;
 
   /// Creates a new [FirewallLogConfigResponse].
   /// [enable] This field denotes whether to enable logging for a particular firewall rule.
@@ -25,8 +26,8 @@ class FirewallLogConfigResponse {
 
   factory FirewallLogConfigResponse.fromMap(Map<String, dynamic> map) {
     return FirewallLogConfigResponse(
-      enable: map['enable'] as bool,
-      metadata: map['metadata'] as String,
+      enable: (map['enable'] as bool).input(),
+      metadata: (map['metadata'] as String).input(),
     );
   }
 }

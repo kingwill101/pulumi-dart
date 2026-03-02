@@ -20,17 +20,12 @@ class GetTaskCloudtasksV2beta2Args {
   /// [responseView] Optional.
   /// [taskId] Required.
   GetTaskCloudtasksV2beta2Args({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> queueId,
-    pulumi.Output<String>? responseView,
-    required pulumi.Output<String> taskId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queueId = pulumi.Input.asInput<String>(queueId),
-      responseView = pulumi.Input.asOptionalInput<String>(responseView),
-      taskId = pulumi.Input.asInput<String>(taskId);
+    required this.location,
+    this.project,
+    required this.queueId,
+    this.responseView,
+    required this.taskId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetTaskCloudtasksV2beta2Args {
 
   factory GetTaskCloudtasksV2beta2Args.fromMap(Map<String, dynamic> map) {
     return GetTaskCloudtasksV2beta2Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      queueId: pulumi.Output.create<String>(map['queueId'] as String),
-      responseView: map['responseView'] == null ? null : pulumi.Output.create<String>(map['responseView'] as String),
-      taskId: pulumi.Output.create<String>(map['taskId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      queueId: (map['queueId'] as String).input(),
+      responseView: map['responseView'] == null ? null : (map['responseView'] as String).input(),
+      taskId: (map['taskId'] as String).input(),
     );
   }
 }

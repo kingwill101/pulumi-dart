@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertProcessingRuleSuppressionConditionMonitorCondition {
   /// The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Specifies a list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [AlertProcessingRuleSuppressionConditionMonitorCondition].
   /// [operator] The operator for a given condition. Possible values are `Equals` and `NotEquals`.
@@ -24,8 +25,8 @@ class AlertProcessingRuleSuppressionConditionMonitorCondition {
 
   factory AlertProcessingRuleSuppressionConditionMonitorCondition.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleSuppressionConditionMonitorCondition(
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

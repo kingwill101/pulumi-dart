@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VMwareCbt container mapping input.
 class VMwareCbtContainerMappingInput {
   /// The class type.
   /// Expected value is 'VMwareCbt'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The target key vault ARM Id.
-  final String? keyVaultId;
+  final pulumi.Input<String>? keyVaultId;
   /// The target key vault URL.
-  final String? keyVaultUri;
+  final pulumi.Input<String>? keyVaultUri;
   /// The secret name of the service bus connection string.
-  final String? serviceBusConnectionStringSecretName;
+  final pulumi.Input<String>? serviceBusConnectionStringSecretName;
   /// The storage account ARM Id.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
   /// The secret name of the storage account.
-  final String? storageAccountSasSecretName;
+  final pulumi.Input<String>? storageAccountSasSecretName;
   /// The target location.
-  final String targetLocation;
+  final pulumi.Input<String> targetLocation;
 
   /// Creates a new [VMwareCbtContainerMappingInput].
   /// [instanceType] The class type.
@@ -51,13 +52,13 @@ class VMwareCbtContainerMappingInput {
 
   factory VMwareCbtContainerMappingInput.fromMap(Map<String, dynamic> map) {
     return VMwareCbtContainerMappingInput(
-      instanceType: map['instanceType'] as String,
-      keyVaultId: map['keyVaultId'] == null ? null : map['keyVaultId'] as String,
-      keyVaultUri: map['keyVaultUri'] == null ? null : map['keyVaultUri'] as String,
-      serviceBusConnectionStringSecretName: map['serviceBusConnectionStringSecretName'] == null ? null : map['serviceBusConnectionStringSecretName'] as String,
-      storageAccountId: map['storageAccountId'] as String,
-      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : map['storageAccountSasSecretName'] as String,
-      targetLocation: map['targetLocation'] as String,
+      instanceType: (map['instanceType'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      serviceBusConnectionStringSecretName: map['serviceBusConnectionStringSecretName'] == null ? null : (map['serviceBusConnectionStringSecretName'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
+      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : (map['storageAccountSasSecretName'] as String).input(),
+      targetLocation: (map['targetLocation'] as String).input(),
     );
   }
 }

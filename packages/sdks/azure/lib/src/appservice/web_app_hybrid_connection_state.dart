@@ -37,27 +37,17 @@ class WebAppHybridConnectionState {
   /// [serviceBusSuffix] The suffix for the endpoint.
   /// [webAppId] The ID of the Web App for this Hybrid Connection. Changing this forces a new resource to be created.
   WebAppHybridConnectionState({
-    pulumi.Output<String>? hostname,
-    pulumi.Output<String>? namespaceName,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? relayId,
-    pulumi.Output<String>? relayName,
-    pulumi.Output<String>? sendKeyName,
-    pulumi.Output<String>? sendKeyValue,
-    pulumi.Output<String>? serviceBusNamespace,
-    pulumi.Output<String>? serviceBusSuffix,
-    pulumi.Output<String>? webAppId,
-  }) :
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      relayId = pulumi.Input.asOptionalInput<String>(relayId),
-      relayName = pulumi.Input.asOptionalInput<String>(relayName),
-      sendKeyName = pulumi.Input.asOptionalInput<String>(sendKeyName),
-      sendKeyValue = pulumi.Input.asOptionalInput<String>(sendKeyValue),
-      serviceBusNamespace = pulumi.Input.asOptionalInput<String>(serviceBusNamespace),
-      serviceBusSuffix = pulumi.Input.asOptionalInput<String>(serviceBusSuffix),
-      webAppId = pulumi.Input.asOptionalInput<String>(webAppId);
+    this.hostname,
+    this.namespaceName,
+    this.port,
+    this.relayId,
+    this.relayName,
+    this.sendKeyName,
+    this.sendKeyValue,
+    this.serviceBusNamespace,
+    this.serviceBusSuffix,
+    this.webAppId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class WebAppHybridConnectionState {
 
   factory WebAppHybridConnectionState.fromMap(Map<String, dynamic> map) {
     return WebAppHybridConnectionState(
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      relayId: map['relayId'] == null ? null : pulumi.Output.create<String>(map['relayId'] as String),
-      relayName: map['relayName'] == null ? null : pulumi.Output.create<String>(map['relayName'] as String),
-      sendKeyName: map['sendKeyName'] == null ? null : pulumi.Output.create<String>(map['sendKeyName'] as String),
-      sendKeyValue: map['sendKeyValue'] == null ? null : pulumi.Output.create<String>(map['sendKeyValue'] as String),
-      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : pulumi.Output.create<String>(map['serviceBusNamespace'] as String),
-      serviceBusSuffix: map['serviceBusSuffix'] == null ? null : pulumi.Output.create<String>(map['serviceBusSuffix'] as String),
-      webAppId: map['webAppId'] == null ? null : pulumi.Output.create<String>(map['webAppId'] as String),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      relayId: map['relayId'] == null ? null : (map['relayId'] as String).input(),
+      relayName: map['relayName'] == null ? null : (map['relayName'] as String).input(),
+      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName'] as String).input(),
+      sendKeyValue: map['sendKeyValue'] == null ? null : (map['sendKeyValue'] as String).input(),
+      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : (map['serviceBusNamespace'] as String).input(),
+      serviceBusSuffix: map['serviceBusSuffix'] == null ? null : (map['serviceBusSuffix'] as String).input(),
+      webAppId: map['webAppId'] == null ? null : (map['webAppId'] as String).input(),
     );
   }
 }

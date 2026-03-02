@@ -5,15 +5,15 @@ import 'image_pipeline_workflow_parameter.dart';
 
 class ImagePipelineWorkflow {
   /// The action to take if the workflow fails. Must be one of `CONTINUE` or `ABORT`.
-  final String? onFailure;
+  final pulumi.Input<String>? onFailure;
   /// The parallel group in which to run a test Workflow.
-  final String? parallelGroup;
+  final pulumi.Input<String>? parallelGroup;
   /// Configuration block for the workflow parameters. Detailed below.
-  final List<ImagePipelineWorkflowParameter>? parameters;
+  final pulumi.Input<List<ImagePipelineWorkflowParameter>>? parameters;
   /// Amazon Resource Name (ARN) of the Image Builder Workflow.
   ///
   /// The following arguments are optional:
-  final String workflowArn;
+  final pulumi.Input<String> workflowArn;
 
   /// Creates a new [ImagePipelineWorkflow].
   /// [onFailure] The action to take if the workflow fails. Must be one of `CONTINUE` or `ABORT`.
@@ -31,17 +31,17 @@ class ImagePipelineWorkflow {
     return <String, dynamic>{
       'onFailure': ?onFailure,
       'parallelGroup': ?parallelGroup,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<ImagePipelineWorkflowParameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ImagePipelineWorkflowParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ImagePipelineWorkflowParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workflowArn': workflowArn,
     };
   }
 
   factory ImagePipelineWorkflow.fromMap(Map<String, dynamic> map) {
     return ImagePipelineWorkflow(
-      onFailure: map['onFailure'] == null ? null : map['onFailure'] as String,
-      parallelGroup: map['parallelGroup'] == null ? null : map['parallelGroup'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<ImagePipelineWorkflowParameter>(map['parameters'], (value) => ImagePipelineWorkflowParameter.fromMap((value as Map).cast<String, dynamic>())),
-      workflowArn: map['workflowArn'] as String,
+      onFailure: map['onFailure'] == null ? null : (map['onFailure'] as String).input(),
+      parallelGroup: map['parallelGroup'] == null ? null : (map['parallelGroup'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ImagePipelineWorkflowParameter>(map['parameters'], (value) => ImagePipelineWorkflowParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workflowArn: (map['workflowArn'] as String).input(),
     );
   }
 }

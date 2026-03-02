@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkforcePoolProviderSaml {
   /// SAML Identity provider configuration metadata xml doc.
@@ -15,7 +16,7 @@ class WorkforcePoolProviderSaml {
   /// When updating the provider's metadata xml, at least one non-expired signing key
   /// must overlap with the existing metadata. This requirement is skipped if there are
   /// no non-expired signing keys present in the existing metadata.
-  final String idpMetadataXml;
+  final pulumi.Input<String> idpMetadataXml;
 
   /// Creates a new [WorkforcePoolProviderSaml].
   /// [idpMetadataXml] SAML Identity provider configuration metadata xml doc.
@@ -31,7 +32,7 @@ class WorkforcePoolProviderSaml {
 
   factory WorkforcePoolProviderSaml.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderSaml(
-      idpMetadataXml: map['idpMetadataXml'] as String,
+      idpMetadataXml: (map['idpMetadataXml'] as String).input(),
     );
   }
 }

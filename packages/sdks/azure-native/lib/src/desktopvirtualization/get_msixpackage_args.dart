@@ -19,13 +19,10 @@ class GetMSIXPackageArgs {
   /// [msixPackageFullName] The version specific package full name of the MSIX package within specified hostpool
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetMSIXPackageArgs({
-    required pulumi.Output<String> hostPoolName,
-    required pulumi.Output<String> msixPackageFullName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hostPoolName = pulumi.Input.asInput<String>(hostPoolName),
-      msixPackageFullName = pulumi.Input.asInput<String>(msixPackageFullName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hostPoolName,
+    required this.msixPackageFullName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMSIXPackageArgs {
 
   factory GetMSIXPackageArgs.fromMap(Map<String, dynamic> map) {
     return GetMSIXPackageArgs(
-      hostPoolName: pulumi.Output.create<String>(map['hostPoolName'] as String),
-      msixPackageFullName: pulumi.Output.create<String>(map['msixPackageFullName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hostPoolName: (map['hostPoolName'] as String).input(),
+      msixPackageFullName: (map['msixPackageFullName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

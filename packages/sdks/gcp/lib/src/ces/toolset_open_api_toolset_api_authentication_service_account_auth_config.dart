@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig {
   /// The email address of the service account used for authenticatation. CES
@@ -9,7 +10,7 @@ class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig {
   /// `roles/iam.serviceAccountTokenCreator` role granted to the
   /// CES service agent
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-  final String serviceAccount;
+  final pulumi.Input<String> serviceAccount;
 
   /// Creates a new [ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig].
   /// [serviceAccount] The email address of the service account used for authenticatation. CES
@@ -25,7 +26,7 @@ class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig {
 
   factory ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig(
-      serviceAccount: map['serviceAccount'] as String,
+      serviceAccount: (map['serviceAccount'] as String).input(),
     );
   }
 }

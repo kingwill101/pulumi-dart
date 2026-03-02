@@ -16,11 +16,9 @@ class GetReportByBillingAccountArgs {
   /// [billingAccountId] BillingAccount ID
   /// [reportName] Report Name.
   GetReportByBillingAccountArgs({
-    required pulumi.Output<String> billingAccountId,
-    required pulumi.Output<String> reportName,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      reportName = pulumi.Input.asInput<String>(reportName);
+    required this.billingAccountId,
+    required this.reportName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetReportByBillingAccountArgs {
 
   factory GetReportByBillingAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetReportByBillingAccountArgs(
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      reportName: pulumi.Output.create<String>(map['reportName'] as String),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      reportName: (map['reportName'] as String).input(),
     );
   }
 }

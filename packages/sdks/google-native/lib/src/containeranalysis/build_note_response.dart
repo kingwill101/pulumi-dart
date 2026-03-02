@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
 class BuildNoteResponse {
   /// Immutable. Version of the builder which produced this build.
-  final String builderVersion;
+  final pulumi.Input<String> builderVersion;
 
   /// Creates a new [BuildNoteResponse].
   /// [builderVersion] Immutable. Version of the builder which produced this build.
@@ -20,7 +21,7 @@ class BuildNoteResponse {
 
   factory BuildNoteResponse.fromMap(Map<String, dynamic> map) {
     return BuildNoteResponse(
-      builderVersion: map['builderVersion'] as String,
+      builderVersion: (map['builderVersion'] as String).input(),
     );
   }
 }

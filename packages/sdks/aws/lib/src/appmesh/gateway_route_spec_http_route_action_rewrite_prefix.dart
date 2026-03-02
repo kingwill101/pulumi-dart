@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayRouteSpecHttpRouteActionRewritePrefix {
   /// Default prefix used to replace the incoming route prefix when rewritten. Valid values: `ENABLED`, `DISABLED`.
-  final String? defaultPrefix;
+  final pulumi.Input<String>? defaultPrefix;
   /// Value used to replace the incoming route prefix when rewritten.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [GatewayRouteSpecHttpRouteActionRewritePrefix].
   /// [defaultPrefix] Default prefix used to replace the incoming route prefix when rewritten. Valid values: `ENABLED`, `DISABLED`.
@@ -24,8 +25,8 @@ class GatewayRouteSpecHttpRouteActionRewritePrefix {
 
   factory GatewayRouteSpecHttpRouteActionRewritePrefix.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRouteActionRewritePrefix(
-      defaultPrefix: map['defaultPrefix'] == null ? null : map['defaultPrefix'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      defaultPrefix: map['defaultPrefix'] == null ? null : (map['defaultPrefix'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

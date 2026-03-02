@@ -19,13 +19,10 @@ class GetVolumeGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeGroupName] The name of the volumeGroup
   GetVolumeGroupArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> volumeGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      volumeGroupName = pulumi.Input.asInput<String>(volumeGroupName);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.volumeGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVolumeGroupArgs {
 
   factory GetVolumeGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      volumeGroupName: pulumi.Output.create<String>(map['volumeGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      volumeGroupName: (map['volumeGroupName'] as String).input(),
     );
   }
 }

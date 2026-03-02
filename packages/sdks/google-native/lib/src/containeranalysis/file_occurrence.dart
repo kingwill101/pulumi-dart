@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'license_containeranalysis_v1alpha1.dart';
 
 /// FileOccurrence represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
 class FileOccurrence {
   /// This field provides a place for the SPDX data creator to record, at the file level, acknowledgements that may be needed to be communicated in some contexts
-  final List<String>? attributions;
+  final pulumi.Input<List<String>>? attributions;
   /// This field provides a place for the SPDX file creator to record any general comments about the file
-  final String? comment;
+  final pulumi.Input<String>? comment;
   /// This field provides a place for the SPDX file creator to record file contributors
-  final List<String>? contributors;
+  final pulumi.Input<List<String>>? contributors;
   /// Identify the copyright holder of the file, as well as any dates present
-  final String? copyright;
+  final pulumi.Input<String>? copyright;
   /// This field contains the license information actually found in the file, if any
-  final List<String>? filesLicenseInfo;
+  final pulumi.Input<List<String>>? filesLicenseInfo;
   /// Uniquely identify any element in an SPDX document which may be referenced by other elements
-  final String? id;
+  final pulumi.Input<String>? id;
   /// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-  final LicenseContaineranalysisV1alpha1? licenseConcluded;
+  final pulumi.Input<LicenseContaineranalysisV1alpha1>? licenseConcluded;
   /// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
-  final String? notice;
+  final pulumi.Input<String>? notice;
 
   /// Creates a new [FileOccurrence].
   /// [attributions] This field provides a place for the SPDX data creator to record, at the file level, acknowledgements that may be needed to be communicated in some contexts
@@ -49,21 +50,21 @@ class FileOccurrence {
       'copyright': ?copyright,
       'filesLicenseInfo': ?filesLicenseInfo,
       'id': ?id,
-      'licenseConcluded': ?licenseConcluded == null ? null : licenseConcluded!.toMap(),
+      'licenseConcluded': ?pulumi.Input.mapOptionalInputValue<LicenseContaineranalysisV1alpha1, Map<String, dynamic>>(licenseConcluded, (value) => value.toMap()),
       'notice': ?notice,
     };
   }
 
   factory FileOccurrence.fromMap(Map<String, dynamic> map) {
     return FileOccurrence(
-      attributions: map['attributions'] == null ? null : (map['attributions'] as List).cast<String>(),
-      comment: map['comment'] == null ? null : map['comment'] as String,
-      contributors: map['contributors'] == null ? null : (map['contributors'] as List).cast<String>(),
-      copyright: map['copyright'] == null ? null : map['copyright'] as String,
-      filesLicenseInfo: map['filesLicenseInfo'] == null ? null : (map['filesLicenseInfo'] as List).cast<String>(),
-      id: map['id'] == null ? null : map['id'] as String,
-      licenseConcluded: map['licenseConcluded'] == null ? null : LicenseContaineranalysisV1alpha1.fromMap((map['licenseConcluded'] as Map).cast<String, dynamic>()),
-      notice: map['notice'] == null ? null : map['notice'] as String,
+      attributions: map['attributions'] == null ? null : ((map['attributions'] as List).cast<String>()).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      contributors: map['contributors'] == null ? null : ((map['contributors'] as List).cast<String>()).input(),
+      copyright: map['copyright'] == null ? null : (map['copyright'] as String).input(),
+      filesLicenseInfo: map['filesLicenseInfo'] == null ? null : ((map['filesLicenseInfo'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      licenseConcluded: map['licenseConcluded'] == null ? null : (LicenseContaineranalysisV1alpha1.fromMap((map['licenseConcluded'] as Map).cast<String, dynamic>())).input(),
+      notice: map['notice'] == null ? null : (map['notice'] as String).input(),
     );
   }
 }

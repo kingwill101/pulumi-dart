@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extension_profile_response.dart';
 import 'hci_network_profile_response.dart';
 import 'hci_os_profile_response.dart';
@@ -8,15 +9,15 @@ import 'sbe_deployment_package_info_response.dart';
 /// The device Configuration for HCI device.
 class HciReportedPropertiesResponse {
   /// edge device state.
-  final String deviceState;
+  final pulumi.Input<String> deviceState;
   /// Extensions details for edge device.
-  final ExtensionProfileResponse extensionProfile;
+  final pulumi.Input<ExtensionProfileResponse> extensionProfile;
   /// HCI device network information.
-  final HciNetworkProfileResponse networkProfile;
+  final pulumi.Input<HciNetworkProfileResponse> networkProfile;
   /// HCI device OS specific information.
-  final HciOsProfileResponse osProfile;
+  final pulumi.Input<HciOsProfileResponse> osProfile;
   /// Solution builder extension (SBE) deployment package information.
-  final SbeDeploymentPackageInfoResponse sbeDeploymentPackageInfo;
+  final pulumi.Input<SbeDeploymentPackageInfoResponse> sbeDeploymentPackageInfo;
 
   /// Creates a new [HciReportedPropertiesResponse].
   /// [deviceState] edge device state.
@@ -35,20 +36,20 @@ class HciReportedPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deviceState': deviceState,
-      'extensionProfile': extensionProfile.toMap(),
-      'networkProfile': networkProfile.toMap(),
-      'osProfile': osProfile.toMap(),
-      'sbeDeploymentPackageInfo': sbeDeploymentPackageInfo.toMap(),
+      'extensionProfile': pulumi.Input.mapInputValue<ExtensionProfileResponse, Map<String, dynamic>>(extensionProfile, (value) => value.toMap()),
+      'networkProfile': pulumi.Input.mapInputValue<HciNetworkProfileResponse, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
+      'osProfile': pulumi.Input.mapInputValue<HciOsProfileResponse, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'sbeDeploymentPackageInfo': pulumi.Input.mapInputValue<SbeDeploymentPackageInfoResponse, Map<String, dynamic>>(sbeDeploymentPackageInfo, (value) => value.toMap()),
     };
   }
 
   factory HciReportedPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HciReportedPropertiesResponse(
-      deviceState: map['deviceState'] as String,
-      extensionProfile: ExtensionProfileResponse.fromMap((map['extensionProfile'] as Map).cast<String, dynamic>()),
-      networkProfile: HciNetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>()),
-      osProfile: HciOsProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>()),
-      sbeDeploymentPackageInfo: SbeDeploymentPackageInfoResponse.fromMap((map['sbeDeploymentPackageInfo'] as Map).cast<String, dynamic>()),
+      deviceState: (map['deviceState'] as String).input(),
+      extensionProfile: (ExtensionProfileResponse.fromMap((map['extensionProfile'] as Map).cast<String, dynamic>())).input(),
+      networkProfile: (HciNetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      osProfile: (HciOsProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      sbeDeploymentPackageInfo: (SbeDeploymentPackageInfoResponse.fromMap((map['sbeDeploymentPackageInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

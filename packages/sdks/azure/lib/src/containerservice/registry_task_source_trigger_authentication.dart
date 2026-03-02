@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryTaskSourceTriggerAuthentication {
   /// Time in seconds that the token remains valid.
-  final int? expireInSeconds;
+  final pulumi.Input<int>? expireInSeconds;
   /// The refresh token used to refresh the access token.
-  final String? refreshToken;
+  final pulumi.Input<String>? refreshToken;
   /// The scope of the access token.
-  final String? scope;
+  final pulumi.Input<String>? scope;
   /// The access token used to access the source control provider.
-  final String token;
+  final pulumi.Input<String> token;
   /// The type of the token. Possible values are `PAT` (personal access token) and `OAuth`.
-  final String tokenType;
+  final pulumi.Input<String> tokenType;
 
   /// Creates a new [RegistryTaskSourceTriggerAuthentication].
   /// [expireInSeconds] Time in seconds that the token remains valid.
@@ -39,11 +40,11 @@ class RegistryTaskSourceTriggerAuthentication {
 
   factory RegistryTaskSourceTriggerAuthentication.fromMap(Map<String, dynamic> map) {
     return RegistryTaskSourceTriggerAuthentication(
-      expireInSeconds: map['expireInSeconds'] == null ? null : map['expireInSeconds'] as int,
-      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      token: map['token'] as String,
-      tokenType: map['tokenType'] as String,
+      expireInSeconds: map['expireInSeconds'] == null ? null : (map['expireInSeconds'] as int).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      token: (map['token'] as String).input(),
+      tokenType: (map['tokenType'] as String).input(),
     );
   }
 }

@@ -29,17 +29,12 @@ class SharedResourceArgs {
   /// [resourceShareId] The ID of the resource share.
   /// [resourceType] The type of the shared resource.
   SharedResourceArgs({
-    pulumi.Output<String>? permissionName,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? resourceId,
-    required pulumi.Output<String> resourceShareId,
-    pulumi.Output<String>? resourceType,
-  }) :
-      permissionName = pulumi.Input.asOptionalInput<String>(permissionName),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceShareId = pulumi.Input.asInput<String>(resourceShareId),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType);
+    this.permissionName,
+    this.resourceArn,
+    this.resourceId,
+    required this.resourceShareId,
+    this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class SharedResourceArgs {
 
   factory SharedResourceArgs.fromMap(Map<String, dynamic> map) {
     return SharedResourceArgs(
-      permissionName: map['permissionName'] == null ? null : pulumi.Output.create<String>(map['permissionName'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceShareId: pulumi.Output.create<String>(map['resourceShareId'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
+      permissionName: map['permissionName'] == null ? null : (map['permissionName'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceShareId: (map['resourceShareId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class ListEndpointKeysArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
   ListEndpointKeysArgs({
-    required pulumi.Output<String> endpointName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.endpointName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListEndpointKeysArgs {
 
   factory ListEndpointKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListEndpointKeysArgs(
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      endpointName: (map['endpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

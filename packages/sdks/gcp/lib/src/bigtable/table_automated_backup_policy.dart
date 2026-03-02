@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableAutomatedBackupPolicy {
   /// How frequently automated backups should occur.
-  final String? frequency;
+  final pulumi.Input<String>? frequency;
   /// How long the automated backups should be retained.
-  final String? retentionPeriod;
+  final pulumi.Input<String>? retentionPeriod;
 
   /// Creates a new [TableAutomatedBackupPolicy].
   /// [frequency] How frequently automated backups should occur.
@@ -24,8 +25,8 @@ class TableAutomatedBackupPolicy {
 
   factory TableAutomatedBackupPolicy.fromMap(Map<String, dynamic> map) {
     return TableAutomatedBackupPolicy(
-      frequency: map['frequency'] == null ? null : map['frequency'] as String,
-      retentionPeriod: map['retentionPeriod'] == null ? null : map['retentionPeriod'] as String,
+      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as String).input(),
     );
   }
 }

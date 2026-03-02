@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_table_options_response.dart';
 
 /// Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
 class GooglePrivacyDlpV2HybridOptionsResponse {
   /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
-  final String description;
+  final pulumi.Input<String> description;
   /// To organize findings, these labels will be added to each finding. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 10 labels can be associated with a given finding. Examples: * `"environment" : "production"` * `"pipeline" : "etl"`
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// These are labels that each inspection request must include within their 'finding_labels' map. Request may contain others, but any missing one of these will be rejected. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. No more than 10 keys can be required.
-  final List<String> requiredFindingLabelKeys;
+  final pulumi.Input<List<String>> requiredFindingLabelKeys;
   /// If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
-  final GooglePrivacyDlpV2TableOptionsResponse tableOptions;
+  final pulumi.Input<GooglePrivacyDlpV2TableOptionsResponse> tableOptions;
 
   /// Creates a new [GooglePrivacyDlpV2HybridOptionsResponse].
   /// [description] A short description of where the data is coming from. Will be stored once in the job. 256 max length.
@@ -30,16 +31,16 @@ class GooglePrivacyDlpV2HybridOptionsResponse {
       'description': description,
       'labels': labels,
       'requiredFindingLabelKeys': requiredFindingLabelKeys,
-      'tableOptions': tableOptions.toMap(),
+      'tableOptions': pulumi.Input.mapInputValue<GooglePrivacyDlpV2TableOptionsResponse, Map<String, dynamic>>(tableOptions, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2HybridOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2HybridOptionsResponse(
-      description: map['description'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      requiredFindingLabelKeys: (map['requiredFindingLabelKeys'] as List).cast<String>(),
-      tableOptions: GooglePrivacyDlpV2TableOptionsResponse.fromMap((map['tableOptions'] as Map).cast<String, dynamic>()),
+      description: (map['description'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      requiredFindingLabelKeys: ((map['requiredFindingLabelKeys'] as List).cast<String>()).input(),
+      tableOptions: (GooglePrivacyDlpV2TableOptionsResponse.fromMap((map['tableOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

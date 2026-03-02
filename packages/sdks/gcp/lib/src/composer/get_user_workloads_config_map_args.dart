@@ -23,15 +23,11 @@ class GetUserWorkloadsConfigMapArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location or Compute Engine region of the environment.
   GetUserWorkloadsConfigMapArgs({
-    required pulumi.Output<String> environment,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      environment = pulumi.Input.asInput<String>(environment),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.environment,
+    required this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetUserWorkloadsConfigMapArgs {
 
   factory GetUserWorkloadsConfigMapArgs.fromMap(Map<String, dynamic> map) {
     return GetUserWorkloadsConfigMapArgs(
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      environment: (map['environment'] as String).input(),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

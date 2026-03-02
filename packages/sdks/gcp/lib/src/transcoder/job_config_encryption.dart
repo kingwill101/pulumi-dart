@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_config_encryption_drm_systems.dart';
 import 'job_config_encryption_mpeg_cenc.dart';
 import 'job_config_encryption_secret_manager_key_source.dart';
 
 class JobConfigEncryption {
   /// Configuration for AES-128 encryption.
-  final Map<String, dynamic>? aes128;
+  final pulumi.Input<Map<String, dynamic>>? aes128;
   /// DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
   /// Structure is documented below.
-  final JobConfigEncryptionDrmSystems? drmSystems;
+  final pulumi.Input<JobConfigEncryptionDrmSystems>? drmSystems;
   /// Identifier for this set of encryption options.
-  final String id;
+  final pulumi.Input<String> id;
   /// Configuration for MPEG Common Encryption (MPEG-CENC).
   /// Structure is documented below.
-  final JobConfigEncryptionMpegCenc? mpegCenc;
+  final pulumi.Input<JobConfigEncryptionMpegCenc>? mpegCenc;
   /// Configuration for SAMPLE-AES encryption.
-  final Map<String, dynamic>? sampleAes;
+  final pulumi.Input<Map<String, dynamic>>? sampleAes;
   /// Configuration for secrets stored in Google Secret Manager.
   /// Structure is documented below.
-  final JobConfigEncryptionSecretManagerKeySource? secretManagerKeySource;
+  final pulumi.Input<JobConfigEncryptionSecretManagerKeySource>? secretManagerKeySource;
 
   /// Creates a new [JobConfigEncryption].
   /// [aes128] Configuration for AES-128 encryption.
@@ -40,22 +41,22 @@ class JobConfigEncryption {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aes128': ?aes128,
-      'drmSystems': ?drmSystems == null ? null : drmSystems!.toMap(),
+      'drmSystems': ?pulumi.Input.mapOptionalInputValue<JobConfigEncryptionDrmSystems, Map<String, dynamic>>(drmSystems, (value) => value.toMap()),
       'id': id,
-      'mpegCenc': ?mpegCenc == null ? null : mpegCenc!.toMap(),
+      'mpegCenc': ?pulumi.Input.mapOptionalInputValue<JobConfigEncryptionMpegCenc, Map<String, dynamic>>(mpegCenc, (value) => value.toMap()),
       'sampleAes': ?sampleAes,
-      'secretManagerKeySource': ?secretManagerKeySource == null ? null : secretManagerKeySource!.toMap(),
+      'secretManagerKeySource': ?pulumi.Input.mapOptionalInputValue<JobConfigEncryptionSecretManagerKeySource, Map<String, dynamic>>(secretManagerKeySource, (value) => value.toMap()),
     };
   }
 
   factory JobConfigEncryption.fromMap(Map<String, dynamic> map) {
     return JobConfigEncryption(
-      aes128: map['aes128'] == null ? null : (map['aes128'] as Map).cast<String, dynamic>(),
-      drmSystems: map['drmSystems'] == null ? null : JobConfigEncryptionDrmSystems.fromMap((map['drmSystems'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      mpegCenc: map['mpegCenc'] == null ? null : JobConfigEncryptionMpegCenc.fromMap((map['mpegCenc'] as Map).cast<String, dynamic>()),
-      sampleAes: map['sampleAes'] == null ? null : (map['sampleAes'] as Map).cast<String, dynamic>(),
-      secretManagerKeySource: map['secretManagerKeySource'] == null ? null : JobConfigEncryptionSecretManagerKeySource.fromMap((map['secretManagerKeySource'] as Map).cast<String, dynamic>()),
+      aes128: map['aes128'] == null ? null : ((map['aes128'] as Map).cast<String, dynamic>()).input(),
+      drmSystems: map['drmSystems'] == null ? null : (JobConfigEncryptionDrmSystems.fromMap((map['drmSystems'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      mpegCenc: map['mpegCenc'] == null ? null : (JobConfigEncryptionMpegCenc.fromMap((map['mpegCenc'] as Map).cast<String, dynamic>())).input(),
+      sampleAes: map['sampleAes'] == null ? null : ((map['sampleAes'] as Map).cast<String, dynamic>()).input(),
+      secretManagerKeySource: map['secretManagerKeySource'] == null ? null : (JobConfigEncryptionSecretManagerKeySource.fromMap((map['secretManagerKeySource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

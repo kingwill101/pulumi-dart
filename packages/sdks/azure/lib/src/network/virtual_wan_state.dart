@@ -31,23 +31,15 @@ class VirtualWanState {
   /// [tags] A mapping of tags to assign to the Virtual WAN.
   /// [type] Specifies the Virtual WAN type. Possible Values include: `Basic` and `Standard`. Defaults to `Standard`.
   VirtualWanState({
-    pulumi.Output<bool>? allowBranchToBranchTraffic,
-    pulumi.Output<bool>? disableVpnEncryption,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? office365LocalBreakoutCategory,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-  }) :
-      allowBranchToBranchTraffic = pulumi.Input.asOptionalInput<bool>(allowBranchToBranchTraffic),
-      disableVpnEncryption = pulumi.Input.asOptionalInput<bool>(disableVpnEncryption),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      office365LocalBreakoutCategory = pulumi.Input.asOptionalInput<String>(office365LocalBreakoutCategory),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.allowBranchToBranchTraffic,
+    this.disableVpnEncryption,
+    this.location,
+    this.name,
+    this.office365LocalBreakoutCategory,
+    this.resourceGroupName,
+    this.tags,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class VirtualWanState {
 
   factory VirtualWanState.fromMap(Map<String, dynamic> map) {
     return VirtualWanState(
-      allowBranchToBranchTraffic: map['allowBranchToBranchTraffic'] == null ? null : pulumi.Output.create<bool>(map['allowBranchToBranchTraffic'] as bool),
-      disableVpnEncryption: map['disableVpnEncryption'] == null ? null : pulumi.Output.create<bool>(map['disableVpnEncryption'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      office365LocalBreakoutCategory: map['office365LocalBreakoutCategory'] == null ? null : pulumi.Output.create<String>(map['office365LocalBreakoutCategory'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      allowBranchToBranchTraffic: map['allowBranchToBranchTraffic'] == null ? null : (map['allowBranchToBranchTraffic'] as bool).input(),
+      disableVpnEncryption: map['disableVpnEncryption'] == null ? null : (map['disableVpnEncryption'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      office365LocalBreakoutCategory: map['office365LocalBreakoutCategory'] == null ? null : (map['office365LocalBreakoutCategory'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

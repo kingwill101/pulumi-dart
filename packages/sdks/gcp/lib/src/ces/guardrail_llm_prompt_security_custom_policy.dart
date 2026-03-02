@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'guardrail_llm_prompt_security_custom_policy_model_settings.dart';
 
 class GuardrailLlmPromptSecurityCustomPolicy {
   /// By default, the LLM policy check is bypassed for short utterances.
   /// Enabling this setting applies the policy check to all utterances,
   /// including those that would normally be skipped.
-  final bool? allowShortUtterance;
+  final pulumi.Input<bool>? allowShortUtterance;
   /// If an error occurs during the policy check, fail open and do not trigger
   /// the guardrail.
-  final bool? failOpen;
+  final pulumi.Input<bool>? failOpen;
   /// When checking this policy, consider the last 'n' messages in the
   /// conversation.
   /// When not set a default value of 10 will be used.
-  final int? maxConversationMessages;
+  final pulumi.Input<int>? maxConversationMessages;
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
-  final GuardrailLlmPromptSecurityCustomPolicyModelSettings? modelSettings;
+  final pulumi.Input<GuardrailLlmPromptSecurityCustomPolicyModelSettings>? modelSettings;
   /// Defines when to apply the policy check during the conversation. If set to
   /// `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
   /// When applying the policy to the agent response, additional latency will
@@ -25,9 +26,9 @@ class GuardrailLlmPromptSecurityCustomPolicy {
   /// USER_QUERY
   /// AGENT_RESPONSE
   /// USER_QUERY_AND_AGENT_RESPONSE
-  final String policyScope;
+  final pulumi.Input<String> policyScope;
   /// Policy prompt.
-  final String prompt;
+  final pulumi.Input<String> prompt;
 
   /// Creates a new [GuardrailLlmPromptSecurityCustomPolicy].
   /// [allowShortUtterance] By default, the LLM policy check is bypassed for short utterances.
@@ -50,7 +51,7 @@ class GuardrailLlmPromptSecurityCustomPolicy {
       'allowShortUtterance': ?allowShortUtterance,
       'failOpen': ?failOpen,
       'maxConversationMessages': ?maxConversationMessages,
-      'modelSettings': ?modelSettings == null ? null : modelSettings!.toMap(),
+      'modelSettings': ?pulumi.Input.mapOptionalInputValue<GuardrailLlmPromptSecurityCustomPolicyModelSettings, Map<String, dynamic>>(modelSettings, (value) => value.toMap()),
       'policyScope': policyScope,
       'prompt': prompt,
     };
@@ -58,12 +59,12 @@ class GuardrailLlmPromptSecurityCustomPolicy {
 
   factory GuardrailLlmPromptSecurityCustomPolicy.fromMap(Map<String, dynamic> map) {
     return GuardrailLlmPromptSecurityCustomPolicy(
-      allowShortUtterance: map['allowShortUtterance'] == null ? null : map['allowShortUtterance'] as bool,
-      failOpen: map['failOpen'] == null ? null : map['failOpen'] as bool,
-      maxConversationMessages: map['maxConversationMessages'] == null ? null : map['maxConversationMessages'] as int,
-      modelSettings: map['modelSettings'] == null ? null : GuardrailLlmPromptSecurityCustomPolicyModelSettings.fromMap((map['modelSettings'] as Map).cast<String, dynamic>()),
-      policyScope: map['policyScope'] as String,
-      prompt: map['prompt'] as String,
+      allowShortUtterance: map['allowShortUtterance'] == null ? null : (map['allowShortUtterance'] as bool).input(),
+      failOpen: map['failOpen'] == null ? null : (map['failOpen'] as bool).input(),
+      maxConversationMessages: map['maxConversationMessages'] == null ? null : (map['maxConversationMessages'] as int).input(),
+      modelSettings: map['modelSettings'] == null ? null : (GuardrailLlmPromptSecurityCustomPolicyModelSettings.fromMap((map['modelSettings'] as Map).cast<String, dynamic>())).input(),
+      policyScope: (map['policyScope'] as String).input(),
+      prompt: (map['prompt'] as String).input(),
     );
   }
 }

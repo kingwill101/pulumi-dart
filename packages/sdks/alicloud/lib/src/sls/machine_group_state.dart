@@ -36,19 +36,13 @@ class MachineGroupState {
   /// [machineLists] The identification information of the machine group.
   /// [projectName] The name of the project.
   MachineGroupState({
-    pulumi.Output<MachineGroupGroupAttribute>? groupAttribute,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? groupType,
-    pulumi.Output<String>? machineIdentifyType,
-    pulumi.Output<List<String>>? machineLists,
-    pulumi.Output<String>? projectName,
-  }) :
-      groupAttribute = pulumi.Input.asOptionalInput<MachineGroupGroupAttribute>(groupAttribute),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      groupType = pulumi.Input.asOptionalInput<String>(groupType),
-      machineIdentifyType = pulumi.Input.asOptionalInput<String>(machineIdentifyType),
-      machineLists = pulumi.Input.asOptionalInput<List<String>>(machineLists),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName);
+    this.groupAttribute,
+    this.groupName,
+    this.groupType,
+    this.machineIdentifyType,
+    this.machineLists,
+    this.projectName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,12 +57,12 @@ class MachineGroupState {
 
   factory MachineGroupState.fromMap(Map<String, dynamic> map) {
     return MachineGroupState(
-      groupAttribute: map['groupAttribute'] == null ? null : pulumi.Output.create<MachineGroupGroupAttribute>(MachineGroupGroupAttribute.fromMap((map['groupAttribute'] as Map).cast<String, dynamic>())),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      groupType: map['groupType'] == null ? null : pulumi.Output.create<String>(map['groupType'] as String),
-      machineIdentifyType: map['machineIdentifyType'] == null ? null : pulumi.Output.create<String>(map['machineIdentifyType'] as String),
-      machineLists: map['machineLists'] == null ? null : pulumi.Output.create<List<String>>((map['machineLists'] as List).cast<String>()),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
+      groupAttribute: map['groupAttribute'] == null ? null : (MachineGroupGroupAttribute.fromMap((map['groupAttribute'] as Map).cast<String, dynamic>())).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
+      machineIdentifyType: map['machineIdentifyType'] == null ? null : (map['machineIdentifyType'] as String).input(),
+      machineLists: map['machineLists'] == null ? null : ((map['machineLists'] as List).cast<String>()).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
     );
   }
 }

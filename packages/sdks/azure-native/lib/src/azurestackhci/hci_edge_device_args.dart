@@ -24,15 +24,11 @@ class HciEdgeDeviceArgs {
   /// [properties] properties for Arc-enabled edge device with HCI OS.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   HciEdgeDeviceArgs({
-    pulumi.Output<String>? edgeDeviceName,
-    required pulumi.Output<String> kind,
-    pulumi.Output<HciEdgeDeviceProperties>? properties,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      edgeDeviceName = pulumi.Input.asOptionalInput<String>(edgeDeviceName),
-      kind = pulumi.Input.asInput<String>(kind),
-      properties = pulumi.Input.asOptionalInput<HciEdgeDeviceProperties>(properties),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.edgeDeviceName,
+    required this.kind,
+    this.properties,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class HciEdgeDeviceArgs {
 
   factory HciEdgeDeviceArgs.fromMap(Map<String, dynamic> map) {
     return HciEdgeDeviceArgs(
-      edgeDeviceName: map['edgeDeviceName'] == null ? null : pulumi.Output.create<String>(map['edgeDeviceName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<HciEdgeDeviceProperties>(HciEdgeDeviceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      edgeDeviceName: map['edgeDeviceName'] == null ? null : (map['edgeDeviceName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      properties: map['properties'] == null ? null : (HciEdgeDeviceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetVpcPeeringArgs {
   /// [name] The name of an existing VPC Peering.
   /// [vpcIds] The list of VPC IDs involved in the peering.
   GetVpcPeeringArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? vpcIds,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      vpcIds = pulumi.Input.asOptionalInput<List<String>>(vpcIds);
+    this.id,
+    this.name,
+    this.vpcIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVpcPeeringArgs {
 
   factory GetVpcPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcPeeringArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      vpcIds: map['vpcIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcIds'] as List).cast<String>()),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
     );
   }
 }

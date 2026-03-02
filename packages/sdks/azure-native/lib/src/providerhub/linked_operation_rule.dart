@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinkedOperationRule {
   /// Depends on types.
-  final List<String>? dependsOnTypes;
+  final pulumi.Input<List<String>>? dependsOnTypes;
   /// The linked action.
-  final String linkedAction;
+  final pulumi.Input<String> linkedAction;
   /// The linked operation.
-  final String linkedOperation;
+  final pulumi.Input<String> linkedOperation;
 
   /// Creates a new [LinkedOperationRule].
   /// [dependsOnTypes] Depends on types.
@@ -29,9 +30,9 @@ class LinkedOperationRule {
 
   factory LinkedOperationRule.fromMap(Map<String, dynamic> map) {
     return LinkedOperationRule(
-      dependsOnTypes: map['dependsOnTypes'] == null ? null : (map['dependsOnTypes'] as List).cast<String>(),
-      linkedAction: map['linkedAction'] as String,
-      linkedOperation: map['linkedOperation'] as String,
+      dependsOnTypes: map['dependsOnTypes'] == null ? null : ((map['dependsOnTypes'] as List).cast<String>()).input(),
+      linkedAction: (map['linkedAction'] as String).input(),
+      linkedOperation: (map['linkedOperation'] as String).input(),
     );
   }
 }

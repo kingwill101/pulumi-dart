@@ -56,25 +56,16 @@ class SecurityPolicyArgs {
   /// [rules] The set of rules that belong to this policy. There must always be a default
   /// [type] The type indicates the intended use of the security policy. This field can be set only at resource creation time.
   SecurityPolicyArgs({
-    pulumi.Output<SecurityPolicyAdaptiveProtectionConfig>? adaptiveProtectionConfig,
-    pulumi.Output<SecurityPolicyAdvancedOptionsConfig>? advancedOptionsConfig,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<SecurityPolicyRecaptchaOptionsConfig>? recaptchaOptionsConfig,
-    pulumi.Output<List<SecurityPolicyRule>>? rules,
-    pulumi.Output<String>? type,
-  }) :
-      adaptiveProtectionConfig = pulumi.Input.asOptionalInput<SecurityPolicyAdaptiveProtectionConfig>(adaptiveProtectionConfig),
-      advancedOptionsConfig = pulumi.Input.asOptionalInput<SecurityPolicyAdvancedOptionsConfig>(advancedOptionsConfig),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      recaptchaOptionsConfig = pulumi.Input.asOptionalInput<SecurityPolicyRecaptchaOptionsConfig>(recaptchaOptionsConfig),
-      rules = pulumi.Input.asOptionalInput<List<SecurityPolicyRule>>(rules),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.adaptiveProtectionConfig,
+    this.advancedOptionsConfig,
+    this.description,
+    this.labels,
+    this.name,
+    this.project,
+    this.recaptchaOptionsConfig,
+    this.rules,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,15 +83,15 @@ class SecurityPolicyArgs {
 
   factory SecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyArgs(
-      adaptiveProtectionConfig: map['adaptiveProtectionConfig'] == null ? null : pulumi.Output.create<SecurityPolicyAdaptiveProtectionConfig>(SecurityPolicyAdaptiveProtectionConfig.fromMap((map['adaptiveProtectionConfig'] as Map).cast<String, dynamic>())),
-      advancedOptionsConfig: map['advancedOptionsConfig'] == null ? null : pulumi.Output.create<SecurityPolicyAdvancedOptionsConfig>(SecurityPolicyAdvancedOptionsConfig.fromMap((map['advancedOptionsConfig'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      recaptchaOptionsConfig: map['recaptchaOptionsConfig'] == null ? null : pulumi.Output.create<SecurityPolicyRecaptchaOptionsConfig>(SecurityPolicyRecaptchaOptionsConfig.fromMap((map['recaptchaOptionsConfig'] as Map).cast<String, dynamic>())),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<SecurityPolicyRule>>(pulumi.Input.decodeList<SecurityPolicyRule>(map['rules'], (value) => SecurityPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      adaptiveProtectionConfig: map['adaptiveProtectionConfig'] == null ? null : (SecurityPolicyAdaptiveProtectionConfig.fromMap((map['adaptiveProtectionConfig'] as Map).cast<String, dynamic>())).input(),
+      advancedOptionsConfig: map['advancedOptionsConfig'] == null ? null : (SecurityPolicyAdvancedOptionsConfig.fromMap((map['advancedOptionsConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      recaptchaOptionsConfig: map['recaptchaOptionsConfig'] == null ? null : (SecurityPolicyRecaptchaOptionsConfig.fromMap((map['recaptchaOptionsConfig'] as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRule>(map['rules'], (value) => SecurityPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

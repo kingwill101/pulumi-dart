@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsClusterBinaryAuthorization {
   /// Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
-  final String? evaluationMode;
+  final pulumi.Input<String>? evaluationMode;
 
   /// Creates a new [AwsClusterBinaryAuthorization].
   /// [evaluationMode] Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
@@ -19,7 +20,7 @@ class AwsClusterBinaryAuthorization {
 
   factory AwsClusterBinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return AwsClusterBinaryAuthorization(
-      evaluationMode: map['evaluationMode'] == null ? null : map['evaluationMode'] as String,
+      evaluationMode: map['evaluationMode'] == null ? null : (map['evaluationMode'] as String).input(),
     );
   }
 }

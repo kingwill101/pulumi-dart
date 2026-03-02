@@ -38,25 +38,16 @@ class EntitlementArgs {
   /// [purchaseOrderId] Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements.
   /// [requestId] Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   EntitlementArgs({
-    required pulumi.Output<String> accountId,
-    pulumi.Output<GoogleCloudChannelV1AssociationInfo>? associationInfo,
-    pulumi.Output<String>? billingAccount,
-    pulumi.Output<GoogleCloudChannelV1CommitmentSettings>? commitmentSettings,
-    required pulumi.Output<String> customerId,
-    required pulumi.Output<String> offer,
-    pulumi.Output<List<GoogleCloudChannelV1Parameter>>? parameters,
-    pulumi.Output<String>? purchaseOrderId,
-    pulumi.Output<String>? requestId,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      associationInfo = pulumi.Input.asOptionalInput<GoogleCloudChannelV1AssociationInfo>(associationInfo),
-      billingAccount = pulumi.Input.asOptionalInput<String>(billingAccount),
-      commitmentSettings = pulumi.Input.asOptionalInput<GoogleCloudChannelV1CommitmentSettings>(commitmentSettings),
-      customerId = pulumi.Input.asInput<String>(customerId),
-      offer = pulumi.Input.asInput<String>(offer),
-      parameters = pulumi.Input.asOptionalInput<List<GoogleCloudChannelV1Parameter>>(parameters),
-      purchaseOrderId = pulumi.Input.asOptionalInput<String>(purchaseOrderId),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    required this.accountId,
+    this.associationInfo,
+    this.billingAccount,
+    this.commitmentSettings,
+    required this.customerId,
+    required this.offer,
+    this.parameters,
+    this.purchaseOrderId,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class EntitlementArgs {
 
   factory EntitlementArgs.fromMap(Map<String, dynamic> map) {
     return EntitlementArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      associationInfo: map['associationInfo'] == null ? null : pulumi.Output.create<GoogleCloudChannelV1AssociationInfo>(GoogleCloudChannelV1AssociationInfo.fromMap((map['associationInfo'] as Map).cast<String, dynamic>())),
-      billingAccount: map['billingAccount'] == null ? null : pulumi.Output.create<String>(map['billingAccount'] as String),
-      commitmentSettings: map['commitmentSettings'] == null ? null : pulumi.Output.create<GoogleCloudChannelV1CommitmentSettings>(GoogleCloudChannelV1CommitmentSettings.fromMap((map['commitmentSettings'] as Map).cast<String, dynamic>())),
-      customerId: pulumi.Output.create<String>(map['customerId'] as String),
-      offer: pulumi.Output.create<String>(map['offer'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<GoogleCloudChannelV1Parameter>>(pulumi.Input.decodeList<GoogleCloudChannelV1Parameter>(map['parameters'], (value) => GoogleCloudChannelV1Parameter.fromMap((value as Map).cast<String, dynamic>()))),
-      purchaseOrderId: map['purchaseOrderId'] == null ? null : pulumi.Output.create<String>(map['purchaseOrderId'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      accountId: (map['accountId'] as String).input(),
+      associationInfo: map['associationInfo'] == null ? null : (GoogleCloudChannelV1AssociationInfo.fromMap((map['associationInfo'] as Map).cast<String, dynamic>())).input(),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
+      commitmentSettings: map['commitmentSettings'] == null ? null : (GoogleCloudChannelV1CommitmentSettings.fromMap((map['commitmentSettings'] as Map).cast<String, dynamic>())).input(),
+      customerId: (map['customerId'] as String).input(),
+      offer: (map['offer'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudChannelV1Parameter>(map['parameters'], (value) => GoogleCloudChannelV1Parameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      purchaseOrderId: map['purchaseOrderId'] == null ? null : (map['purchaseOrderId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

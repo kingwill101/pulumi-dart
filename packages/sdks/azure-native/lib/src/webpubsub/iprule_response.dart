@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An IP rule
 class IPRuleResponse {
   /// Azure Networking ACL Action.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// An IP or CIDR or ServiceTag
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [IPRuleResponse].
   /// [action] Azure Networking ACL Action.
@@ -25,8 +26,8 @@ class IPRuleResponse {
 
   factory IPRuleResponse.fromMap(Map<String, dynamic> map) {
     return IPRuleResponse(
-      action: map['action'] == null ? null : map['action'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

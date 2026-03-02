@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
   /// Output only. The name of the Instance Group Manager for this group.
-  final String? instanceGroupManagerName;
+  final pulumi.Input<String>? instanceGroupManagerName;
   /// Output only. The name of the Instance Template used for the Managed Instance Group.
-  final String? instanceTemplateName;
+  final pulumi.Input<String>? instanceTemplateName;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig].
   /// [instanceGroupManagerName] Output only. The name of the Instance Group Manager for this group.
@@ -24,8 +25,8 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedG
 
   factory WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig(
-      instanceGroupManagerName: map['instanceGroupManagerName'] == null ? null : map['instanceGroupManagerName'] as String,
-      instanceTemplateName: map['instanceTemplateName'] == null ? null : map['instanceTemplateName'] as String,
+      instanceGroupManagerName: map['instanceGroupManagerName'] == null ? null : (map['instanceGroupManagerName'] as String).input(),
+      instanceTemplateName: map['instanceTemplateName'] == null ? null : (map['instanceTemplateName'] as String).input(),
     );
   }
 }

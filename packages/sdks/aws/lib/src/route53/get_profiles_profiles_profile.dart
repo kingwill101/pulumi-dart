@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProfilesProfilesProfile {
   /// ARN of the Profile.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// ID of the Profile.
-  final String id;
+  final pulumi.Input<String> id;
   /// Name of the Profile.
-  final String name;
+  final pulumi.Input<String> name;
   /// Share status of the Profile. Valid values [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_Profile.html)
-  final String shareStatus;
+  final pulumi.Input<String> shareStatus;
 
   /// Creates a new [GetProfilesProfilesProfile].
   /// [arn] ARN of the Profile.
@@ -34,10 +35,10 @@ class GetProfilesProfilesProfile {
 
   factory GetProfilesProfilesProfile.fromMap(Map<String, dynamic> map) {
     return GetProfilesProfilesProfile(
-      arn: map['arn'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      shareStatus: map['shareStatus'] as String,
+      arn: (map['arn'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      shareStatus: (map['shareStatus'] as String).input(),
     );
   }
 }

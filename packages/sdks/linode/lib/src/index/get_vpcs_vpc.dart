@@ -5,19 +5,19 @@ import 'get_vpcs_vpc_ipv6.dart';
 
 class GetVpcsVpc {
   /// The date and time when the VPC was created.
-  final String created;
+  final pulumi.Input<String> created;
   /// The user-defined description of this VPC.
-  final String description;
+  final pulumi.Input<String> description;
   /// The unique id of this VPC.
-  final String id;
+  final pulumi.Input<String> id;
   /// A list of IPv6 allocations under this VPC.
-  final List<GetVpcsVpcIpv6> ipv6s;
+  final pulumi.Input<List<GetVpcsVpcIpv6>> ipv6s;
   /// The label of the VPC.
-  final String label;
+  final pulumi.Input<String> label;
   /// The region where the VPC is deployed.
-  final String region;
+  final pulumi.Input<String> region;
   /// The date and time when the VPC was last updated.
-  final String updated;
+  final pulumi.Input<String> updated;
 
   /// Creates a new [GetVpcsVpc].
   /// [created] The date and time when the VPC was created.
@@ -42,7 +42,7 @@ class GetVpcsVpc {
       'created': created,
       'description': description,
       'id': id,
-      'ipv6s': pulumi.Input.encodeList<GetVpcsVpcIpv6, Map<String, dynamic>>(ipv6s, (value) => value.toMap()),
+      'ipv6s': pulumi.Input.mapInputValue<List<GetVpcsVpcIpv6>, List<Map<String, dynamic>>>(ipv6s, (value) => pulumi.Input.encodeList<GetVpcsVpcIpv6, Map<String, dynamic>>(value, (value) => value.toMap())),
       'label': label,
       'region': region,
       'updated': updated,
@@ -51,13 +51,13 @@ class GetVpcsVpc {
 
   factory GetVpcsVpc.fromMap(Map<String, dynamic> map) {
     return GetVpcsVpc(
-      created: map['created'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      ipv6s: pulumi.Input.decodeList<GetVpcsVpcIpv6>(map['ipv6s'], (value) => GetVpcsVpcIpv6.fromMap((value as Map).cast<String, dynamic>())),
-      label: map['label'] as String,
-      region: map['region'] as String,
-      updated: map['updated'] as String,
+      created: (map['created'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipv6s: (pulumi.Input.decodeList<GetVpcsVpcIpv6>(map['ipv6s'], (value) => GetVpcsVpcIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      label: (map['label'] as String).input(),
+      region: (map['region'] as String).input(),
+      updated: (map['updated'] as String).input(),
     );
   }
 }

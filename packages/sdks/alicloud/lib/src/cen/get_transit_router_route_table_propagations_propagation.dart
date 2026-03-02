@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTransitRouterRouteTablePropagationsPropagation {
   /// The ID of the network instance connection.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the network instance.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// The type of the network instance.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the network instance connection.
-  final String transitRouterAttachmentId;
+  final pulumi.Input<String> transitRouterAttachmentId;
   /// The ID of the route table of the Enterprise Edition transit router.
-  final String transitRouterRouteTableId;
+  final pulumi.Input<String> transitRouterRouteTableId;
 
   /// Creates a new [GetTransitRouterRouteTablePropagationsPropagation].
   /// [id] The ID of the network instance connection.
@@ -44,12 +45,12 @@ class GetTransitRouterRouteTablePropagationsPropagation {
 
   factory GetTransitRouterRouteTablePropagationsPropagation.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterRouteTablePropagationsPropagation(
-      id: map['id'] as String,
-      resourceId: map['resourceId'] as String,
-      resourceType: map['resourceType'] as String,
-      status: map['status'] as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] as String,
-      transitRouterRouteTableId: map['transitRouterRouteTableId'] as String,
+      id: (map['id'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      status: (map['status'] as String).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterRouteTableId: (map['transitRouterRouteTableId'] as String).input(),
     );
   }
 }

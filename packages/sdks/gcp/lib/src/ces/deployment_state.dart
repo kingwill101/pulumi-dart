@@ -47,27 +47,17 @@ class DeploymentState {
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Timestamp when this deployment was last updated.
   DeploymentState({
-    pulumi.Output<String>? app,
-    pulumi.Output<String>? appVersion,
-    pulumi.Output<DeploymentChannelProfile>? channelProfile,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateTime,
-  }) :
-      app = pulumi.Input.asOptionalInput<String>(app),
-      appVersion = pulumi.Input.asOptionalInput<String>(appVersion),
-      channelProfile = pulumi.Input.asOptionalInput<DeploymentChannelProfile>(channelProfile),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.app,
+    this.appVersion,
+    this.channelProfile,
+    this.createTime,
+    this.displayName,
+    this.etag,
+    this.location,
+    this.name,
+    this.project,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,16 +76,16 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      app: map['app'] == null ? null : pulumi.Output.create<String>(map['app'] as String),
-      appVersion: map['appVersion'] == null ? null : pulumi.Output.create<String>(map['appVersion'] as String),
-      channelProfile: map['channelProfile'] == null ? null : pulumi.Output.create<DeploymentChannelProfile>(DeploymentChannelProfile.fromMap((map['channelProfile'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      app: map['app'] == null ? null : (map['app'] as String).input(),
+      appVersion: map['appVersion'] == null ? null : (map['appVersion'] as String).input(),
+      channelProfile: map['channelProfile'] == null ? null : (DeploymentChannelProfile.fromMap((map['channelProfile'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

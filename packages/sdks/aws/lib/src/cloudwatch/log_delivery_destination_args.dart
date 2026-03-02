@@ -29,19 +29,13 @@ class LogDeliveryDestinationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   LogDeliveryDestinationArgs({
-    pulumi.Output<LogDeliveryDestinationDeliveryDestinationConfiguration>? deliveryDestinationConfiguration,
-    pulumi.Output<String>? deliveryDestinationType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? outputFormat,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deliveryDestinationConfiguration = pulumi.Input.asOptionalInput<LogDeliveryDestinationDeliveryDestinationConfiguration>(deliveryDestinationConfiguration),
-      deliveryDestinationType = pulumi.Input.asOptionalInput<String>(deliveryDestinationType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputFormat = pulumi.Input.asOptionalInput<String>(outputFormat),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deliveryDestinationConfiguration,
+    this.deliveryDestinationType,
+    this.name,
+    this.outputFormat,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class LogDeliveryDestinationArgs {
 
   factory LogDeliveryDestinationArgs.fromMap(Map<String, dynamic> map) {
     return LogDeliveryDestinationArgs(
-      deliveryDestinationConfiguration: map['deliveryDestinationConfiguration'] == null ? null : pulumi.Output.create<LogDeliveryDestinationDeliveryDestinationConfiguration>(LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap((map['deliveryDestinationConfiguration'] as Map).cast<String, dynamic>())),
-      deliveryDestinationType: map['deliveryDestinationType'] == null ? null : pulumi.Output.create<String>(map['deliveryDestinationType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputFormat: map['outputFormat'] == null ? null : pulumi.Output.create<String>(map['outputFormat'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deliveryDestinationConfiguration: map['deliveryDestinationConfiguration'] == null ? null : (LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap((map['deliveryDestinationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      deliveryDestinationType: map['deliveryDestinationType'] == null ? null : (map['deliveryDestinationType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

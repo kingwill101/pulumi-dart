@@ -22,17 +22,12 @@ class InstanceMetadataDefaultsState {
   /// [instanceMetadataTags] Enables or disables access to instance tags from the instance metadata service. Can be `"enabled"`, `"disabled"`, or `"no-preference"`. Default: `"no-preference"`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   InstanceMetadataDefaultsState({
-    pulumi.Output<String>? httpEndpoint,
-    pulumi.Output<int>? httpPutResponseHopLimit,
-    pulumi.Output<String>? httpTokens,
-    pulumi.Output<String>? instanceMetadataTags,
-    pulumi.Output<String>? region,
-  }) :
-      httpEndpoint = pulumi.Input.asOptionalInput<String>(httpEndpoint),
-      httpPutResponseHopLimit = pulumi.Input.asOptionalInput<int>(httpPutResponseHopLimit),
-      httpTokens = pulumi.Input.asOptionalInput<String>(httpTokens),
-      instanceMetadataTags = pulumi.Input.asOptionalInput<String>(instanceMetadataTags),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.httpEndpoint,
+    this.httpPutResponseHopLimit,
+    this.httpTokens,
+    this.instanceMetadataTags,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class InstanceMetadataDefaultsState {
 
   factory InstanceMetadataDefaultsState.fromMap(Map<String, dynamic> map) {
     return InstanceMetadataDefaultsState(
-      httpEndpoint: map['httpEndpoint'] == null ? null : pulumi.Output.create<String>(map['httpEndpoint'] as String),
-      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : pulumi.Output.create<int>(map['httpPutResponseHopLimit'] as int),
-      httpTokens: map['httpTokens'] == null ? null : pulumi.Output.create<String>(map['httpTokens'] as String),
-      instanceMetadataTags: map['instanceMetadataTags'] == null ? null : pulumi.Output.create<String>(map['instanceMetadataTags'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      httpEndpoint: map['httpEndpoint'] == null ? null : (map['httpEndpoint'] as String).input(),
+      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : (map['httpPutResponseHopLimit'] as int).input(),
+      httpTokens: map['httpTokens'] == null ? null : (map['httpTokens'] as String).input(),
+      instanceMetadataTags: map['instanceMetadataTags'] == null ? null : (map['instanceMetadataTags'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

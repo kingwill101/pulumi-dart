@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayRewriteRuleSetRewriteRuleCondition {
   /// Perform a case in-sensitive comparison. Defaults to `false`
-  final bool? ignoreCase;
+  final pulumi.Input<bool>? ignoreCase;
   /// Negate the result of the condition evaluation. Defaults to `false`
-  final bool? negate;
+  final pulumi.Input<bool>? negate;
   /// The pattern, either fixed string or regular expression, that evaluates the truthfulness of the condition.
-  final String pattern;
+  final pulumi.Input<String> pattern;
   /// The [variable](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) of the condition.
-  final String variable;
+  final pulumi.Input<String> variable;
 
   /// Creates a new [ApplicationGatewayRewriteRuleSetRewriteRuleCondition].
   /// [ignoreCase] Perform a case in-sensitive comparison. Defaults to `false`
@@ -34,10 +35,10 @@ class ApplicationGatewayRewriteRuleSetRewriteRuleCondition {
 
   factory ApplicationGatewayRewriteRuleSetRewriteRuleCondition.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRuleSetRewriteRuleCondition(
-      ignoreCase: map['ignoreCase'] == null ? null : map['ignoreCase'] as bool,
-      negate: map['negate'] == null ? null : map['negate'] as bool,
-      pattern: map['pattern'] as String,
-      variable: map['variable'] as String,
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
+      negate: map['negate'] == null ? null : (map['negate'] as bool).input(),
+      pattern: (map['pattern'] as String).input(),
+      variable: (map['variable'] as String).input(),
     );
   }
 }

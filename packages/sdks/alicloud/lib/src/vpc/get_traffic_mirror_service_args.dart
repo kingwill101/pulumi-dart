@@ -15,9 +15,8 @@ class GetTrafficMirrorServiceArgs {
   /// Creates a new [GetTrafficMirrorServiceArgs].
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
   GetTrafficMirrorServiceArgs({
-    pulumi.Output<String>? enable,
-  }) :
-      enable = pulumi.Input.asOptionalInput<String>(enable);
+    this.enable,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +26,7 @@ class GetTrafficMirrorServiceArgs {
 
   factory GetTrafficMirrorServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetTrafficMirrorServiceArgs(
-      enable: map['enable'] == null ? null : pulumi.Output.create<String>(map['enable'] as String),
+      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
     );
   }
 }

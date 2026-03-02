@@ -37,23 +37,15 @@ class AFDOriginGroupArgs {
   /// [sessionAffinityState] Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
   /// [trafficRestorationTimeToHealedOrNewEndpointsInMinutes] Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
   AFDOriginGroupArgs({
-    pulumi.Output<OriginAuthenticationProperties>? authentication,
-    pulumi.Output<HealthProbeParameters>? healthProbeSettings,
-    pulumi.Output<LoadBalancingSettingsParameters>? loadBalancingSettings,
-    pulumi.Output<String>? originGroupName,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sessionAffinityState,
-    pulumi.Output<int>? trafficRestorationTimeToHealedOrNewEndpointsInMinutes,
-  }) :
-      authentication = pulumi.Input.asOptionalInput<OriginAuthenticationProperties>(authentication),
-      healthProbeSettings = pulumi.Input.asOptionalInput<HealthProbeParameters>(healthProbeSettings),
-      loadBalancingSettings = pulumi.Input.asOptionalInput<LoadBalancingSettingsParameters>(loadBalancingSettings),
-      originGroupName = pulumi.Input.asOptionalInput<String>(originGroupName),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sessionAffinityState = pulumi.Input.asOptionalInput<String>(sessionAffinityState),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes = pulumi.Input.asOptionalInput<int>(trafficRestorationTimeToHealedOrNewEndpointsInMinutes);
+    this.authentication,
+    this.healthProbeSettings,
+    this.loadBalancingSettings,
+    this.originGroupName,
+    required this.profileName,
+    required this.resourceGroupName,
+    this.sessionAffinityState,
+    this.trafficRestorationTimeToHealedOrNewEndpointsInMinutes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class AFDOriginGroupArgs {
 
   factory AFDOriginGroupArgs.fromMap(Map<String, dynamic> map) {
     return AFDOriginGroupArgs(
-      authentication: map['authentication'] == null ? null : pulumi.Output.create<OriginAuthenticationProperties>(OriginAuthenticationProperties.fromMap((map['authentication'] as Map).cast<String, dynamic>())),
-      healthProbeSettings: map['healthProbeSettings'] == null ? null : pulumi.Output.create<HealthProbeParameters>(HealthProbeParameters.fromMap((map['healthProbeSettings'] as Map).cast<String, dynamic>())),
-      loadBalancingSettings: map['loadBalancingSettings'] == null ? null : pulumi.Output.create<LoadBalancingSettingsParameters>(LoadBalancingSettingsParameters.fromMap((map['loadBalancingSettings'] as Map).cast<String, dynamic>())),
-      originGroupName: map['originGroupName'] == null ? null : pulumi.Output.create<String>(map['originGroupName'] as String),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sessionAffinityState: map['sessionAffinityState'] == null ? null : pulumi.Output.create<String>(map['sessionAffinityState'] as String),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] == null ? null : pulumi.Output.create<int>(map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] as int),
+      authentication: map['authentication'] == null ? null : (OriginAuthenticationProperties.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      healthProbeSettings: map['healthProbeSettings'] == null ? null : (HealthProbeParameters.fromMap((map['healthProbeSettings'] as Map).cast<String, dynamic>())).input(),
+      loadBalancingSettings: map['loadBalancingSettings'] == null ? null : (LoadBalancingSettingsParameters.fromMap((map['loadBalancingSettings'] as Map).cast<String, dynamic>())).input(),
+      originGroupName: map['originGroupName'] == null ? null : (map['originGroupName'] as String).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sessionAffinityState: map['sessionAffinityState'] == null ? null : (map['sessionAffinityState'] as String).input(),
+      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] == null ? null : (map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] as int).input(),
     );
   }
 }

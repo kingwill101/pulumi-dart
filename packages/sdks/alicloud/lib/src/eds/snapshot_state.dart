@@ -22,17 +22,12 @@ class SnapshotState {
   /// [sourceDiskType] The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
   /// [status] The status of the snapshot.
   SnapshotState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? desktopId,
-    pulumi.Output<String>? snapshotName,
-    pulumi.Output<String>? sourceDiskType,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      desktopId = pulumi.Input.asOptionalInput<String>(desktopId),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName),
-      sourceDiskType = pulumi.Input.asOptionalInput<String>(sourceDiskType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    this.desktopId,
+    this.snapshotName,
+    this.sourceDiskType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      desktopId: map['desktopId'] == null ? null : pulumi.Output.create<String>(map['desktopId'] as String),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
-      sourceDiskType: map['sourceDiskType'] == null ? null : pulumi.Output.create<String>(map['sourceDiskType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      desktopId: map['desktopId'] == null ? null : (map['desktopId'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      sourceDiskType: map['sourceDiskType'] == null ? null : (map['sourceDiskType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

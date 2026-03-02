@@ -5,39 +5,39 @@ import 'get_vpc_ips_vpc_ip_ipv6_address.dart';
 
 class GetVpcIpsVpcIp {
   /// True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
-  final bool active;
+  final pulumi.Input<bool> active;
   /// An IPv4 address configured for this VPC interface. These follow the RFC 1918 private address format. Null if an address_range.
-  final String address;
+  final pulumi.Input<String> address;
   /// A range of IPv4 addresses configured for this VPC interface. Null if a single address.
-  final String addressRange;
+  final pulumi.Input<String> addressRange;
   /// The globally general entity identifier for the Linode configuration profile where the VPC is included.
-  final int configId;
+  final pulumi.Input<int> configId;
   /// The default gateway for the VPC subnet that the IP or IP range belongs to.
-  final String gateway;
+  final pulumi.Input<String> gateway;
   /// The globally general API entity identifier for the Linode interface.
-  final int interfaceId;
+  final pulumi.Input<int> interfaceId;
   /// The addresses within the prefix that the interface is associated with.
-  final List<GetVpcIpsVpcIpIpv6Address> ipv6Addresses;
+  final pulumi.Input<List<GetVpcIpsVpcIpIpv6Address>> ipv6Addresses;
   /// The is_public setting for the interface associated with this address.
-  final bool ipv6IsPublic;
+  final pulumi.Input<bool> ipv6IsPublic;
   /// The /64 prefix, in CIDR notation, assigned to an interface.
-  final String ipv6Range;
+  final pulumi.Input<String> ipv6Range;
   /// The identifier for the Linode the VPC interface currently belongs to.
-  final int linodeId;
+  final pulumi.Input<int> linodeId;
   /// The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.
-  final String nat11;
+  final pulumi.Input<String> nat11;
   /// The number of bits set in the subnet mask.
-  final int prefix;
+  final pulumi.Input<int> prefix;
   /// The region of the VPC.
-  final String region;
+  final pulumi.Input<String> region;
   /// The id of the VPC Subnet for this interface.
-  final int subnetId;
+  final pulumi.Input<int> subnetId;
   /// The mask that separates host bits from network bits for the address or address_range.
-  final String subnetMask;
+  final pulumi.Input<String> subnetMask;
   /// The id of the parent VPC for the list of VPC IPs.
   ///
   /// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
-  final int vpcId;
+  final pulumi.Input<int> vpcId;
 
   /// Creates a new [GetVpcIpsVpcIp].
   /// [active] True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
@@ -83,7 +83,7 @@ class GetVpcIpsVpcIp {
       'configId': configId,
       'gateway': gateway,
       'interfaceId': interfaceId,
-      'ipv6Addresses': pulumi.Input.encodeList<GetVpcIpsVpcIpIpv6Address, Map<String, dynamic>>(ipv6Addresses, (value) => value.toMap()),
+      'ipv6Addresses': pulumi.Input.mapInputValue<List<GetVpcIpsVpcIpIpv6Address>, List<Map<String, dynamic>>>(ipv6Addresses, (value) => pulumi.Input.encodeList<GetVpcIpsVpcIpIpv6Address, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipv6IsPublic': ipv6IsPublic,
       'ipv6Range': ipv6Range,
       'linodeId': linodeId,
@@ -98,22 +98,22 @@ class GetVpcIpsVpcIp {
 
   factory GetVpcIpsVpcIp.fromMap(Map<String, dynamic> map) {
     return GetVpcIpsVpcIp(
-      active: map['active'] as bool,
-      address: map['address'] as String,
-      addressRange: map['addressRange'] as String,
-      configId: map['configId'] as int,
-      gateway: map['gateway'] as String,
-      interfaceId: map['interfaceId'] as int,
-      ipv6Addresses: pulumi.Input.decodeList<GetVpcIpsVpcIpIpv6Address>(map['ipv6Addresses'], (value) => GetVpcIpsVpcIpIpv6Address.fromMap((value as Map).cast<String, dynamic>())),
-      ipv6IsPublic: map['ipv6IsPublic'] as bool,
-      ipv6Range: map['ipv6Range'] as String,
-      linodeId: map['linodeId'] as int,
-      nat11: map['nat11'] as String,
-      prefix: map['prefix'] as int,
-      region: map['region'] as String,
-      subnetId: map['subnetId'] as int,
-      subnetMask: map['subnetMask'] as String,
-      vpcId: map['vpcId'] as int,
+      active: (map['active'] as bool).input(),
+      address: (map['address'] as String).input(),
+      addressRange: (map['addressRange'] as String).input(),
+      configId: (map['configId'] as int).input(),
+      gateway: (map['gateway'] as String).input(),
+      interfaceId: (map['interfaceId'] as int).input(),
+      ipv6Addresses: (pulumi.Input.decodeList<GetVpcIpsVpcIpIpv6Address>(map['ipv6Addresses'], (value) => GetVpcIpsVpcIpIpv6Address.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6IsPublic: (map['ipv6IsPublic'] as bool).input(),
+      ipv6Range: (map['ipv6Range'] as String).input(),
+      linodeId: (map['linodeId'] as int).input(),
+      nat11: (map['nat11'] as String).input(),
+      prefix: (map['prefix'] as int).input(),
+      region: (map['region'] as String).input(),
+      subnetId: (map['subnetId'] as int).input(),
+      subnetMask: (map['subnetMask'] as String).input(),
+      vpcId: (map['vpcId'] as int).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover {
   /// The display name of the Azure Active Directory Principal for the approver.
-  final String? principalDisplayName;
+  final pulumi.Input<String>? principalDisplayName;
   /// The Principal ID of the Azure Active Directory principal for the approver.
-  final String principalId;
+  final pulumi.Input<String> principalId;
 
   /// Creates a new [DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover].
   /// [principalDisplayName] The display name of the Azure Active Directory Principal for the approver.
@@ -24,8 +25,8 @@ class DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover {
 
   factory DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover.fromMap(Map<String, dynamic> map) {
     return DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover(
-      principalDisplayName: map['principalDisplayName'] == null ? null : map['principalDisplayName'] as String,
-      principalId: map['principalId'] as String,
+      principalDisplayName: map['principalDisplayName'] == null ? null : (map['principalDisplayName'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
     );
   }
 }

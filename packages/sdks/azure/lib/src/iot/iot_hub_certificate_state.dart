@@ -22,17 +22,12 @@ class IotHubCertificateState {
   /// [name] Specifies the name of the Iot Device Provisioning Service Certificate resource. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group under which the Iot Device Provisioning Service Certificate resource has to be created. Changing this forces a new resource to be created.
   IotHubCertificateState({
-    pulumi.Output<String>? certificateContent,
-    pulumi.Output<String>? iotDpsName,
-    pulumi.Output<bool>? isVerified,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      certificateContent = pulumi.Input.asOptionalInput<String>(certificateContent),
-      iotDpsName = pulumi.Input.asOptionalInput<String>(iotDpsName),
-      isVerified = pulumi.Input.asOptionalInput<bool>(isVerified),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.certificateContent,
+    this.iotDpsName,
+    this.isVerified,
+    this.name,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class IotHubCertificateState {
 
   factory IotHubCertificateState.fromMap(Map<String, dynamic> map) {
     return IotHubCertificateState(
-      certificateContent: map['certificateContent'] == null ? null : pulumi.Output.create<String>(map['certificateContent'] as String),
-      iotDpsName: map['iotDpsName'] == null ? null : pulumi.Output.create<String>(map['iotDpsName'] as String),
-      isVerified: map['isVerified'] == null ? null : pulumi.Output.create<bool>(map['isVerified'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      certificateContent: map['certificateContent'] == null ? null : (map['certificateContent'] as String).input(),
+      iotDpsName: map['iotDpsName'] == null ? null : (map['iotDpsName'] as String).input(),
+      isVerified: map['isVerified'] == null ? null : (map['isVerified'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

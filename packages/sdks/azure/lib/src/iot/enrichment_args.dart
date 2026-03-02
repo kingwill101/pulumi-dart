@@ -25,17 +25,12 @@ class EnrichmentArgs {
   /// [resourceGroupName] The name of the resource group under which the IoTHub resource is created. Changing this forces a new resource to be created.
   /// [value] The value of the enrichment. Value can be any static string, the name of the IoT hub sending the message (use `$iothubname`) or information from the device twin (ex: `$twin.tags.latitude`)
   EnrichmentArgs({
-    required pulumi.Output<List<String>> endpointNames,
-    required pulumi.Output<String> iothubName,
-    required pulumi.Output<String> key,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> value,
-  }) :
-      endpointNames = pulumi.Input.asInput<List<String>>(endpointNames),
-      iothubName = pulumi.Input.asInput<String>(iothubName),
-      key = pulumi.Input.asInput<String>(key),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      value = pulumi.Input.asInput<String>(value);
+    required this.endpointNames,
+    required this.iothubName,
+    required this.key,
+    required this.resourceGroupName,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EnrichmentArgs {
 
   factory EnrichmentArgs.fromMap(Map<String, dynamic> map) {
     return EnrichmentArgs(
-      endpointNames: pulumi.Output.create<List<String>>((map['endpointNames'] as List).cast<String>()),
-      iothubName: pulumi.Output.create<String>(map['iothubName'] as String),
-      key: pulumi.Output.create<String>(map['key'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      endpointNames: ((map['endpointNames'] as List).cast<String>()).input(),
+      iothubName: (map['iothubName'] as String).input(),
+      key: (map['key'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

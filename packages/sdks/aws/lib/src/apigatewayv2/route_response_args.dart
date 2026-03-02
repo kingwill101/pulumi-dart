@@ -28,19 +28,13 @@ class RouteResponseArgs {
   /// [routeId] Identifier of the `aws.apigatewayv2.Route`.
   /// [routeResponseKey] Route response key.
   RouteResponseArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? modelSelectionExpression,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? responseModels,
-    required pulumi.Output<String> routeId,
-    required pulumi.Output<String> routeResponseKey,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      modelSelectionExpression = pulumi.Input.asOptionalInput<String>(modelSelectionExpression),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      responseModels = pulumi.Input.asOptionalInput<Map<String, String>>(responseModels),
-      routeId = pulumi.Input.asInput<String>(routeId),
-      routeResponseKey = pulumi.Input.asInput<String>(routeResponseKey);
+    required this.apiId,
+    this.modelSelectionExpression,
+    this.region,
+    this.responseModels,
+    required this.routeId,
+    required this.routeResponseKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class RouteResponseArgs {
 
   factory RouteResponseArgs.fromMap(Map<String, dynamic> map) {
     return RouteResponseArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      modelSelectionExpression: map['modelSelectionExpression'] == null ? null : pulumi.Output.create<String>(map['modelSelectionExpression'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      responseModels: map['responseModels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['responseModels'] as Map).cast<String, String>()),
-      routeId: pulumi.Output.create<String>(map['routeId'] as String),
-      routeResponseKey: pulumi.Output.create<String>(map['routeResponseKey'] as String),
+      apiId: (map['apiId'] as String).input(),
+      modelSelectionExpression: map['modelSelectionExpression'] == null ? null : (map['modelSelectionExpression'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      responseModels: map['responseModels'] == null ? null : ((map['responseModels'] as Map).cast<String, String>()).input(),
+      routeId: (map['routeId'] as String).input(),
+      routeResponseKey: (map['routeResponseKey'] as String).input(),
     );
   }
 }

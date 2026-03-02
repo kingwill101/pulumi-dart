@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuilderConfig {
   /// Name of an existing buildx builder to use.
@@ -8,7 +9,7 @@ class BuilderConfig {
   /// supported. The legacy `docker` driver is not supported.
   ///
   /// Equivalent to Docker's `--builder` flag.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [BuilderConfig].
   /// [name] Name of an existing buildx builder to use.
@@ -24,7 +25,7 @@ class BuilderConfig {
 
   factory BuilderConfig.fromMap(Map<String, dynamic> map) {
     return BuilderConfig(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecretReplicationAutoCustomerManagedEncryption {
   /// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
-  final String kmsKeyName;
+  final pulumi.Input<String> kmsKeyName;
 
   /// Creates a new [GetSecretReplicationAutoCustomerManagedEncryption].
   /// [kmsKeyName] The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
@@ -19,7 +20,7 @@ class GetSecretReplicationAutoCustomerManagedEncryption {
 
   factory GetSecretReplicationAutoCustomerManagedEncryption.fromMap(Map<String, dynamic> map) {
     return GetSecretReplicationAutoCustomerManagedEncryption(
-      kmsKeyName: map['kmsKeyName'] as String,
+      kmsKeyName: (map['kmsKeyName'] as String).input(),
     );
   }
 }

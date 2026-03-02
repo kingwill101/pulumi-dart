@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_encryption_settings_response.dart';
 import 'disk_restore_point_attributes_response.dart';
 import 'managed_disk_parameters_response.dart';
@@ -7,21 +8,21 @@ import 'managed_disk_parameters_response.dart';
 /// Describes an Operating System disk.
 class RestorePointSourceVMOSDiskResponse {
   /// Gets the caching type.
-  final String caching;
+  final pulumi.Input<String> caching;
   /// Contains Disk Restore Point properties.
-  final DiskRestorePointAttributesResponse? diskRestorePoint;
+  final pulumi.Input<DiskRestorePointAttributesResponse>? diskRestorePoint;
   /// Gets the disk size in GB.
-  final int diskSizeGB;
+  final pulumi.Input<int> diskSizeGB;
   /// Gets the disk encryption settings.
-  final DiskEncryptionSettingsResponse encryptionSettings;
+  final pulumi.Input<DiskEncryptionSettingsResponse> encryptionSettings;
   /// Gets the managed disk details
-  final ManagedDiskParametersResponse? managedDisk;
+  final pulumi.Input<ManagedDiskParametersResponse>? managedDisk;
   /// Gets the disk name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Gets the Operating System type.
-  final String osType;
+  final pulumi.Input<String> osType;
   /// Shows true if the disk is write-accelerator enabled.
-  final bool writeAcceleratorEnabled;
+  final pulumi.Input<bool> writeAcceleratorEnabled;
 
   /// Creates a new [RestorePointSourceVMOSDiskResponse].
   /// [caching] Gets the caching type.
@@ -46,10 +47,10 @@ class RestorePointSourceVMOSDiskResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'caching': caching,
-      'diskRestorePoint': ?diskRestorePoint == null ? null : diskRestorePoint!.toMap(),
+      'diskRestorePoint': ?pulumi.Input.mapOptionalInputValue<DiskRestorePointAttributesResponse, Map<String, dynamic>>(diskRestorePoint, (value) => value.toMap()),
       'diskSizeGB': diskSizeGB,
-      'encryptionSettings': encryptionSettings.toMap(),
-      'managedDisk': ?managedDisk == null ? null : managedDisk!.toMap(),
+      'encryptionSettings': pulumi.Input.mapInputValue<DiskEncryptionSettingsResponse, Map<String, dynamic>>(encryptionSettings, (value) => value.toMap()),
+      'managedDisk': ?pulumi.Input.mapOptionalInputValue<ManagedDiskParametersResponse, Map<String, dynamic>>(managedDisk, (value) => value.toMap()),
       'name': name,
       'osType': osType,
       'writeAcceleratorEnabled': writeAcceleratorEnabled,
@@ -58,14 +59,14 @@ class RestorePointSourceVMOSDiskResponse {
 
   factory RestorePointSourceVMOSDiskResponse.fromMap(Map<String, dynamic> map) {
     return RestorePointSourceVMOSDiskResponse(
-      caching: map['caching'] as String,
-      diskRestorePoint: map['diskRestorePoint'] == null ? null : DiskRestorePointAttributesResponse.fromMap((map['diskRestorePoint'] as Map).cast<String, dynamic>()),
-      diskSizeGB: map['diskSizeGB'] as int,
-      encryptionSettings: DiskEncryptionSettingsResponse.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>()),
-      managedDisk: map['managedDisk'] == null ? null : ManagedDiskParametersResponse.fromMap((map['managedDisk'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      osType: map['osType'] as String,
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] as bool,
+      caching: (map['caching'] as String).input(),
+      diskRestorePoint: map['diskRestorePoint'] == null ? null : (DiskRestorePointAttributesResponse.fromMap((map['diskRestorePoint'] as Map).cast<String, dynamic>())).input(),
+      diskSizeGB: (map['diskSizeGB'] as int).input(),
+      encryptionSettings: (DiskEncryptionSettingsResponse.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())).input(),
+      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParametersResponse.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      writeAcceleratorEnabled: (map['writeAcceleratorEnabled'] as bool).input(),
     );
   }
 }

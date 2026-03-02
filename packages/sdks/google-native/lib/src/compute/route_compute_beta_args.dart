@@ -51,35 +51,21 @@ class RouteComputeBetaArgs {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [tags] A list of instance tags to which this route applies.
   RouteComputeBetaArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destRange,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? nextHopGateway,
-    pulumi.Output<String>? nextHopIlb,
-    pulumi.Output<String>? nextHopInstance,
-    pulumi.Output<String>? nextHopIp,
-    pulumi.Output<String>? nextHopNetwork,
-    pulumi.Output<String>? nextHopVpnTunnel,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<List<String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destRange = pulumi.Input.asOptionalInput<String>(destRange),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      nextHopGateway = pulumi.Input.asOptionalInput<String>(nextHopGateway),
-      nextHopIlb = pulumi.Input.asOptionalInput<String>(nextHopIlb),
-      nextHopInstance = pulumi.Input.asOptionalInput<String>(nextHopInstance),
-      nextHopIp = pulumi.Input.asOptionalInput<String>(nextHopIp),
-      nextHopNetwork = pulumi.Input.asOptionalInput<String>(nextHopNetwork),
-      nextHopVpnTunnel = pulumi.Input.asOptionalInput<String>(nextHopVpnTunnel),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags);
+    this.description,
+    this.destRange,
+    this.name,
+    this.network,
+    this.nextHopGateway,
+    this.nextHopIlb,
+    this.nextHopInstance,
+    this.nextHopIp,
+    this.nextHopNetwork,
+    this.nextHopVpnTunnel,
+    this.priority,
+    this.project,
+    this.requestId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class RouteComputeBetaArgs {
 
   factory RouteComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return RouteComputeBetaArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destRange: map['destRange'] == null ? null : pulumi.Output.create<String>(map['destRange'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      nextHopGateway: map['nextHopGateway'] == null ? null : pulumi.Output.create<String>(map['nextHopGateway'] as String),
-      nextHopIlb: map['nextHopIlb'] == null ? null : pulumi.Output.create<String>(map['nextHopIlb'] as String),
-      nextHopInstance: map['nextHopInstance'] == null ? null : pulumi.Output.create<String>(map['nextHopInstance'] as String),
-      nextHopIp: map['nextHopIp'] == null ? null : pulumi.Output.create<String>(map['nextHopIp'] as String),
-      nextHopNetwork: map['nextHopNetwork'] == null ? null : pulumi.Output.create<String>(map['nextHopNetwork'] as String),
-      nextHopVpnTunnel: map['nextHopVpnTunnel'] == null ? null : pulumi.Output.create<String>(map['nextHopVpnTunnel'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destRange: map['destRange'] == null ? null : (map['destRange'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      nextHopGateway: map['nextHopGateway'] == null ? null : (map['nextHopGateway'] as String).input(),
+      nextHopIlb: map['nextHopIlb'] == null ? null : (map['nextHopIlb'] as String).input(),
+      nextHopInstance: map['nextHopInstance'] == null ? null : (map['nextHopInstance'] as String).input(),
+      nextHopIp: map['nextHopIp'] == null ? null : (map['nextHopIp'] as String).input(),
+      nextHopNetwork: map['nextHopNetwork'] == null ? null : (map['nextHopNetwork'] as String).input(),
+      nextHopVpnTunnel: map['nextHopVpnTunnel'] == null ? null : (map['nextHopVpnTunnel'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

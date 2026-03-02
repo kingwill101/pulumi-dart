@@ -34,23 +34,15 @@ class OrderArgs {
   /// [productCode] The product_code of market place product.
   /// [quantity] The quantity of the market product will be purchased.
   OrderArgs({
-    pulumi.Output<Map<String, String>>? components,
-    pulumi.Output<String>? couponId,
-    pulumi.Output<int>? duration,
-    required pulumi.Output<String> packageVersion,
-    pulumi.Output<String>? payType,
-    required pulumi.Output<String> pricingCycle,
-    required pulumi.Output<String> productCode,
-    pulumi.Output<int>? quantity,
-  }) :
-      components = pulumi.Input.asOptionalInput<Map<String, String>>(components),
-      couponId = pulumi.Input.asOptionalInput<String>(couponId),
-      duration = pulumi.Input.asOptionalInput<int>(duration),
-      packageVersion = pulumi.Input.asInput<String>(packageVersion),
-      payType = pulumi.Input.asOptionalInput<String>(payType),
-      pricingCycle = pulumi.Input.asInput<String>(pricingCycle),
-      productCode = pulumi.Input.asInput<String>(productCode),
-      quantity = pulumi.Input.asOptionalInput<int>(quantity);
+    this.components,
+    this.couponId,
+    this.duration,
+    required this.packageVersion,
+    this.payType,
+    required this.pricingCycle,
+    required this.productCode,
+    this.quantity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class OrderArgs {
 
   factory OrderArgs.fromMap(Map<String, dynamic> map) {
     return OrderArgs(
-      components: map['components'] == null ? null : pulumi.Output.create<Map<String, String>>((map['components'] as Map).cast<String, String>()),
-      couponId: map['couponId'] == null ? null : pulumi.Output.create<String>(map['couponId'] as String),
-      duration: map['duration'] == null ? null : pulumi.Output.create<int>(map['duration'] as int),
-      packageVersion: pulumi.Output.create<String>(map['packageVersion'] as String),
-      payType: map['payType'] == null ? null : pulumi.Output.create<String>(map['payType'] as String),
-      pricingCycle: pulumi.Output.create<String>(map['pricingCycle'] as String),
-      productCode: pulumi.Output.create<String>(map['productCode'] as String),
-      quantity: map['quantity'] == null ? null : pulumi.Output.create<int>(map['quantity'] as int),
+      components: map['components'] == null ? null : ((map['components'] as Map).cast<String, String>()).input(),
+      couponId: map['couponId'] == null ? null : (map['couponId'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
+      packageVersion: (map['packageVersion'] as String).input(),
+      payType: map['payType'] == null ? null : (map['payType'] as String).input(),
+      pricingCycle: (map['pricingCycle'] as String).input(),
+      productCode: (map['productCode'] as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity'] as int).input(),
     );
   }
 }

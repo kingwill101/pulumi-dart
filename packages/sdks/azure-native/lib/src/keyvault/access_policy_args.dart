@@ -20,13 +20,10 @@ class AccessPolicyArgs {
   /// [resourceGroupName] Name of the resource group that contains the vault.
   /// [vaultName] Name of the Key Vault.
   AccessPolicyArgs({
-    required pulumi.Output<AccessPolicyEntry> policy,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      policy = pulumi.Input.asInput<AccessPolicyEntry>(policy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.policy,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class AccessPolicyArgs {
 
   factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyArgs(
-      policy: pulumi.Output.create<AccessPolicyEntry>(AccessPolicyEntry.fromMap((map['policy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      policy: (AccessPolicyEntry.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Key-value pair to store extra metadata.
 class GoogleCloudApigeeV1Attribute {
   /// API key of the attribute.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Value of the attribute.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [GoogleCloudApigeeV1Attribute].
   /// [name] API key of the attribute.
@@ -25,8 +26,8 @@ class GoogleCloudApigeeV1Attribute {
 
   factory GoogleCloudApigeeV1Attribute.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1Attribute(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetPolicySetDefinitionArgs {
   /// [expand] Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
   /// [policySetDefinitionName] The name of the policy set definition to get.
   GetPolicySetDefinitionArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> policySetDefinitionName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      policySetDefinitionName = pulumi.Input.asInput<String>(policySetDefinitionName);
+    this.expand,
+    required this.policySetDefinitionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPolicySetDefinitionArgs {
 
   factory GetPolicySetDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicySetDefinitionArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      policySetDefinitionName: pulumi.Output.create<String>(map['policySetDefinitionName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      policySetDefinitionName: (map['policySetDefinitionName'] as String).input(),
     );
   }
 }

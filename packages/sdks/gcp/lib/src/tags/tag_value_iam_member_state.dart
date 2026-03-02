@@ -35,17 +35,12 @@ class TagValueIamMemberState {
   /// [role] The role that should be applied. Only one
   /// [tagValue] Used to find the parent resource to bind the IAM policy to
   TagValueIamMemberState({
-    pulumi.Output<TagValueIamMemberCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? tagValue,
-  }) :
-      condition = pulumi.Input.asOptionalInput<TagValueIamMemberCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      tagValue = pulumi.Input.asOptionalInput<String>(tagValue);
+    this.condition,
+    this.etag,
+    this.member,
+    this.role,
+    this.tagValue,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,11 +54,11 @@ class TagValueIamMemberState {
 
   factory TagValueIamMemberState.fromMap(Map<String, dynamic> map) {
     return TagValueIamMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<TagValueIamMemberCondition>(TagValueIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      tagValue: map['tagValue'] == null ? null : pulumi.Output.create<String>(map['tagValue'] as String),
+      condition: map['condition'] == null ? null : (TagValueIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
     );
   }
 }

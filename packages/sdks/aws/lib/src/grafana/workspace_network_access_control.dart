@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceNetworkAccessControl {
   /// An array of prefix list IDs.
-  final List<String> prefixListIds;
+  final pulumi.Input<List<String>> prefixListIds;
   /// An array of Amazon VPC endpoint IDs for the workspace. The only VPC endpoints that can be specified here are interface VPC endpoints for Grafana workspaces (using the com.amazonaws.[region].grafana-workspace service endpoint). Other VPC endpoints will be ignored.
-  final List<String> vpceIds;
+  final pulumi.Input<List<String>> vpceIds;
 
   /// Creates a new [WorkspaceNetworkAccessControl].
   /// [prefixListIds] An array of prefix list IDs.
@@ -24,8 +25,8 @@ class WorkspaceNetworkAccessControl {
 
   factory WorkspaceNetworkAccessControl.fromMap(Map<String, dynamic> map) {
     return WorkspaceNetworkAccessControl(
-      prefixListIds: (map['prefixListIds'] as List).cast<String>(),
-      vpceIds: (map['vpceIds'] as List).cast<String>(),
+      prefixListIds: ((map['prefixListIds'] as List).cast<String>()).input(),
+      vpceIds: ((map['vpceIds'] as List).cast<String>()).input(),
     );
   }
 }

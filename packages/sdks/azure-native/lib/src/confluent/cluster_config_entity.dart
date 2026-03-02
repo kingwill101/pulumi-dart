@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration of the Kafka cluster
 class ClusterConfigEntity {
   /// The lifecycle phase of the cluster
-  final String? kind;
+  final pulumi.Input<String>? kind;
 
   /// Creates a new [ClusterConfigEntity].
   /// [kind] The lifecycle phase of the cluster
@@ -20,7 +21,7 @@ class ClusterConfigEntity {
 
   factory ClusterConfigEntity.fromMap(Map<String, dynamic> map) {
     return ClusterConfigEntity(
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
     );
   }
 }

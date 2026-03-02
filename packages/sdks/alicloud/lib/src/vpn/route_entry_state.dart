@@ -28,21 +28,14 @@ class RouteEntryState {
   /// [vpnGatewayId] The id of the vpn gateway.
   /// [weight] The value should be 0 or 100.
   RouteEntryState({
-    pulumi.Output<String>? nextHop,
-    pulumi.Output<bool>? publishVpc,
-    pulumi.Output<String>? routeDest,
-    pulumi.Output<String>? routeEntryType,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpnGatewayId,
-    pulumi.Output<int>? weight,
-  }) :
-      nextHop = pulumi.Input.asOptionalInput<String>(nextHop),
-      publishVpc = pulumi.Input.asOptionalInput<bool>(publishVpc),
-      routeDest = pulumi.Input.asOptionalInput<String>(routeDest),
-      routeEntryType = pulumi.Input.asOptionalInput<String>(routeEntryType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpnGatewayId = pulumi.Input.asOptionalInput<String>(vpnGatewayId),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    this.nextHop,
+    this.publishVpc,
+    this.routeDest,
+    this.routeEntryType,
+    this.status,
+    this.vpnGatewayId,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class RouteEntryState {
 
   factory RouteEntryState.fromMap(Map<String, dynamic> map) {
     return RouteEntryState(
-      nextHop: map['nextHop'] == null ? null : pulumi.Output.create<String>(map['nextHop'] as String),
-      publishVpc: map['publishVpc'] == null ? null : pulumi.Output.create<bool>(map['publishVpc'] as bool),
-      routeDest: map['routeDest'] == null ? null : pulumi.Output.create<String>(map['routeDest'] as String),
-      routeEntryType: map['routeEntryType'] == null ? null : pulumi.Output.create<String>(map['routeEntryType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : pulumi.Output.create<String>(map['vpnGatewayId'] as String),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      nextHop: map['nextHop'] == null ? null : (map['nextHop'] as String).input(),
+      publishVpc: map['publishVpc'] == null ? null : (map['publishVpc'] as bool).input(),
+      routeDest: map['routeDest'] == null ? null : (map['routeDest'] as String).input(),
+      routeEntryType: map['routeEntryType'] == null ? null : (map['routeEntryType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

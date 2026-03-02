@@ -10,102 +10,102 @@ import 'vmware_to_az_stack_hciprotected_nic_properties_response.dart';
 /// VMware to AzStackHCI Protected item model custom properties.
 class VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse {
   /// Gets or sets the location of the protected item.
-  final String activeLocation;
+  final pulumi.Input<String> activeLocation;
   /// Gets or sets the location of Azure Arc HCI custom location resource.
-  final String customLocationRegion;
+  final pulumi.Input<String> customLocationRegion;
   /// Gets or sets the list of disks to replicate.
-  final List<VMwareToAzStackHCIDiskInputResponse> disksToInclude;
+  final pulumi.Input<List<VMwareToAzStackHCIDiskInputResponse>> disksToInclude;
   /// Protected item dynamic memory config.
-  final ProtectedItemDynamicMemoryConfigResponse? dynamicMemoryConfig;
+  final pulumi.Input<ProtectedItemDynamicMemoryConfigResponse>? dynamicMemoryConfig;
   /// Gets or sets the ARM Id of the discovered machine.
-  final String fabricDiscoveryMachineId;
+  final pulumi.Input<String> fabricDiscoveryMachineId;
   /// Gets or sets the recovery point Id to which the VM was failed over.
-  final String failoverRecoveryPointId;
+  final pulumi.Input<String> failoverRecoveryPointId;
   /// Gets or sets the firmware type.
-  final String firmwareType;
+  final pulumi.Input<String> firmwareType;
   /// Gets or sets the hypervisor generation of the virtual machine possible values are 1,2.
-  final String hyperVGeneration;
+  final pulumi.Input<String> hyperVGeneration;
   /// Gets or sets the initial replication progress percentage. This is calculated based on
   /// total bytes processed for all disks in the source VM.
-  final int initialReplicationProgressPercentage;
+  final pulumi.Input<int> initialReplicationProgressPercentage;
   /// Gets or sets the instance type.
   /// Expected value is 'VMwareToAzStackHCI'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Gets or sets a value indicating whether memory is dynamical.
-  final bool? isDynamicRam;
+  final pulumi.Input<bool>? isDynamicRam;
   /// Gets or sets the last recovery point Id.
-  final String lastRecoveryPointId;
+  final pulumi.Input<String> lastRecoveryPointId;
   /// Gets or sets the last recovery point received time.
-  final String lastRecoveryPointReceived;
+  final pulumi.Input<String> lastRecoveryPointReceived;
   /// Gets or sets the latest timestamp that replication status is updated.
-  final String lastReplicationUpdateTime;
+  final pulumi.Input<String> lastReplicationUpdateTime;
   /// Gets or sets the migration progress percentage.
-  final int migrationProgressPercentage;
+  final pulumi.Input<int> migrationProgressPercentage;
   /// Gets or sets the list of VM NIC to replicate.
-  final List<VMwareToAzStackHCINicInputResponse> nicsToInclude;
+  final pulumi.Input<List<VMwareToAzStackHCINicInputResponse>> nicsToInclude;
   /// Gets or sets the name of the OS.
-  final String osName;
+  final pulumi.Input<String> osName;
   /// Gets or sets the type of the OS.
-  final String osType;
+  final pulumi.Input<String> osType;
   /// Gets or sets a value indicating whether auto resync is to be done.
-  final bool? performAutoResync;
+  final pulumi.Input<bool>? performAutoResync;
   /// Gets or sets the list of protected disks.
-  final List<VMwareToAzStackHCIProtectedDiskPropertiesResponse> protectedDisks;
+  final pulumi.Input<List<VMwareToAzStackHCIProtectedDiskPropertiesResponse>> protectedDisks;
   /// Gets or sets the VM NIC details.
-  final List<VMwareToAzStackHCIProtectedNicPropertiesResponse> protectedNics;
+  final pulumi.Input<List<VMwareToAzStackHCIProtectedNicPropertiesResponse>> protectedNics;
   /// Gets or sets the resume progress percentage.
-  final int resumeProgressPercentage;
+  final pulumi.Input<int> resumeProgressPercentage;
   /// Gets or sets the resume retry count.
-  final double resumeRetryCount;
+  final pulumi.Input<double> resumeRetryCount;
   /// Gets or sets the resync progress percentage. This is calculated based on total bytes
   /// processed for all disks in the source VM.
-  final int resyncProgressPercentage;
+  final pulumi.Input<int> resyncProgressPercentage;
   /// Gets or sets a value indicating whether resync is required.
-  final bool resyncRequired;
+  final pulumi.Input<bool> resyncRequired;
   /// Gets or sets the resync retry count.
-  final double resyncRetryCount;
+  final pulumi.Input<double> resyncRetryCount;
   /// Gets or sets the resync state.
-  final String resyncState;
+  final pulumi.Input<String> resyncState;
   /// Gets or sets the run as account Id.
-  final String runAsAccountId;
+  final pulumi.Input<String> runAsAccountId;
   /// Gets or sets the source appliance name.
-  final String sourceApplianceName;
+  final pulumi.Input<String> sourceApplianceName;
   /// Gets or sets the source VM CPU cores.
-  final int sourceCpuCores;
+  final pulumi.Input<int> sourceCpuCores;
   /// Gets or sets the source DRA name.
-  final String sourceDraName;
+  final pulumi.Input<String> sourceDraName;
   /// Gets or sets the source VM ram memory size in megabytes.
-  final double sourceMemoryInMegaBytes;
+  final pulumi.Input<double> sourceMemoryInMegaBytes;
   /// Gets or sets the source VM display name.
-  final String sourceVmName;
+  final pulumi.Input<String> sourceVmName;
   /// Gets or sets the target storage container ARM Id.
-  final String storageContainerId;
+  final pulumi.Input<String> storageContainerId;
   /// Gets or sets the target appliance name.
-  final String targetApplianceName;
+  final pulumi.Input<String> targetApplianceName;
   /// Gets or sets the Target Arc Cluster Custom Location ARM Id.
-  final String targetArcClusterCustomLocationId;
+  final pulumi.Input<String> targetArcClusterCustomLocationId;
   /// Gets or sets the Target AzStackHCI cluster name.
-  final String targetAzStackHciClusterName;
+  final pulumi.Input<String> targetAzStackHciClusterName;
   /// Gets or sets the target CPU cores.
-  final int? targetCpuCores;
+  final pulumi.Input<int>? targetCpuCores;
   /// Gets or sets the target DRA name.
-  final String targetDraName;
+  final pulumi.Input<String> targetDraName;
   /// Gets or sets the Target HCI Cluster ARM Id.
-  final String targetHciClusterId;
+  final pulumi.Input<String> targetHciClusterId;
   /// Gets or sets the target location.
-  final String targetLocation;
+  final pulumi.Input<String> targetLocation;
   /// Gets or sets the target memory in mega-bytes.
-  final int? targetMemoryInMegaBytes;
+  final pulumi.Input<int>? targetMemoryInMegaBytes;
   /// Gets or sets the target network Id within AzStackHCI Cluster.
-  final String? targetNetworkId;
+  final pulumi.Input<String>? targetNetworkId;
   /// Gets or sets the target resource group ARM Id.
-  final String targetResourceGroupId;
+  final pulumi.Input<String> targetResourceGroupId;
   /// Gets or sets the BIOS Id of the target AzStackHCI VM.
-  final String targetVmBiosId;
+  final pulumi.Input<String> targetVmBiosId;
   /// Gets or sets the target VM display name.
-  final String? targetVmName;
+  final pulumi.Input<String>? targetVmName;
   /// Gets or sets the target test network Id within AzStackHCI Cluster.
-  final String? testNetworkId;
+  final pulumi.Input<String>? testNetworkId;
 
   /// Creates a new [VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse].
   /// [activeLocation] Gets or sets the location of the protected item.
@@ -209,8 +209,8 @@ class VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse {
     return <String, dynamic>{
       'activeLocation': activeLocation,
       'customLocationRegion': customLocationRegion,
-      'disksToInclude': pulumi.Input.encodeList<VMwareToAzStackHCIDiskInputResponse, Map<String, dynamic>>(disksToInclude, (value) => value.toMap()),
-      'dynamicMemoryConfig': ?dynamicMemoryConfig == null ? null : dynamicMemoryConfig!.toMap(),
+      'disksToInclude': pulumi.Input.mapInputValue<List<VMwareToAzStackHCIDiskInputResponse>, List<Map<String, dynamic>>>(disksToInclude, (value) => pulumi.Input.encodeList<VMwareToAzStackHCIDiskInputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dynamicMemoryConfig': ?pulumi.Input.mapOptionalInputValue<ProtectedItemDynamicMemoryConfigResponse, Map<String, dynamic>>(dynamicMemoryConfig, (value) => value.toMap()),
       'fabricDiscoveryMachineId': fabricDiscoveryMachineId,
       'failoverRecoveryPointId': failoverRecoveryPointId,
       'firmwareType': firmwareType,
@@ -222,12 +222,12 @@ class VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse {
       'lastRecoveryPointReceived': lastRecoveryPointReceived,
       'lastReplicationUpdateTime': lastReplicationUpdateTime,
       'migrationProgressPercentage': migrationProgressPercentage,
-      'nicsToInclude': pulumi.Input.encodeList<VMwareToAzStackHCINicInputResponse, Map<String, dynamic>>(nicsToInclude, (value) => value.toMap()),
+      'nicsToInclude': pulumi.Input.mapInputValue<List<VMwareToAzStackHCINicInputResponse>, List<Map<String, dynamic>>>(nicsToInclude, (value) => pulumi.Input.encodeList<VMwareToAzStackHCINicInputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'osName': osName,
       'osType': osType,
       'performAutoResync': ?performAutoResync,
-      'protectedDisks': pulumi.Input.encodeList<VMwareToAzStackHCIProtectedDiskPropertiesResponse, Map<String, dynamic>>(protectedDisks, (value) => value.toMap()),
-      'protectedNics': pulumi.Input.encodeList<VMwareToAzStackHCIProtectedNicPropertiesResponse, Map<String, dynamic>>(protectedNics, (value) => value.toMap()),
+      'protectedDisks': pulumi.Input.mapInputValue<List<VMwareToAzStackHCIProtectedDiskPropertiesResponse>, List<Map<String, dynamic>>>(protectedDisks, (value) => pulumi.Input.encodeList<VMwareToAzStackHCIProtectedDiskPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'protectedNics': pulumi.Input.mapInputValue<List<VMwareToAzStackHCIProtectedNicPropertiesResponse>, List<Map<String, dynamic>>>(protectedNics, (value) => pulumi.Input.encodeList<VMwareToAzStackHCIProtectedNicPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resumeProgressPercentage': resumeProgressPercentage,
       'resumeRetryCount': resumeRetryCount,
       'resyncProgressPercentage': resyncProgressPercentage,
@@ -259,53 +259,53 @@ class VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse {
 
   factory VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse(
-      activeLocation: map['activeLocation'] as String,
-      customLocationRegion: map['customLocationRegion'] as String,
-      disksToInclude: pulumi.Input.decodeList<VMwareToAzStackHCIDiskInputResponse>(map['disksToInclude'], (value) => VMwareToAzStackHCIDiskInputResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dynamicMemoryConfig: map['dynamicMemoryConfig'] == null ? null : ProtectedItemDynamicMemoryConfigResponse.fromMap((map['dynamicMemoryConfig'] as Map).cast<String, dynamic>()),
-      fabricDiscoveryMachineId: map['fabricDiscoveryMachineId'] as String,
-      failoverRecoveryPointId: map['failoverRecoveryPointId'] as String,
-      firmwareType: map['firmwareType'] as String,
-      hyperVGeneration: map['hyperVGeneration'] as String,
-      initialReplicationProgressPercentage: map['initialReplicationProgressPercentage'] as int,
-      instanceType: map['instanceType'] as String,
-      isDynamicRam: map['isDynamicRam'] == null ? null : map['isDynamicRam'] as bool,
-      lastRecoveryPointId: map['lastRecoveryPointId'] as String,
-      lastRecoveryPointReceived: map['lastRecoveryPointReceived'] as String,
-      lastReplicationUpdateTime: map['lastReplicationUpdateTime'] as String,
-      migrationProgressPercentage: map['migrationProgressPercentage'] as int,
-      nicsToInclude: pulumi.Input.decodeList<VMwareToAzStackHCINicInputResponse>(map['nicsToInclude'], (value) => VMwareToAzStackHCINicInputResponse.fromMap((value as Map).cast<String, dynamic>())),
-      osName: map['osName'] as String,
-      osType: map['osType'] as String,
-      performAutoResync: map['performAutoResync'] == null ? null : map['performAutoResync'] as bool,
-      protectedDisks: pulumi.Input.decodeList<VMwareToAzStackHCIProtectedDiskPropertiesResponse>(map['protectedDisks'], (value) => VMwareToAzStackHCIProtectedDiskPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      protectedNics: pulumi.Input.decodeList<VMwareToAzStackHCIProtectedNicPropertiesResponse>(map['protectedNics'], (value) => VMwareToAzStackHCIProtectedNicPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resumeProgressPercentage: map['resumeProgressPercentage'] as int,
-      resumeRetryCount: map['resumeRetryCount'] as double,
-      resyncProgressPercentage: map['resyncProgressPercentage'] as int,
-      resyncRequired: map['resyncRequired'] as bool,
-      resyncRetryCount: map['resyncRetryCount'] as double,
-      resyncState: map['resyncState'] as String,
-      runAsAccountId: map['runAsAccountId'] as String,
-      sourceApplianceName: map['sourceApplianceName'] as String,
-      sourceCpuCores: map['sourceCpuCores'] as int,
-      sourceDraName: map['sourceDraName'] as String,
-      sourceMemoryInMegaBytes: map['sourceMemoryInMegaBytes'] as double,
-      sourceVmName: map['sourceVmName'] as String,
-      storageContainerId: map['storageContainerId'] as String,
-      targetApplianceName: map['targetApplianceName'] as String,
-      targetArcClusterCustomLocationId: map['targetArcClusterCustomLocationId'] as String,
-      targetAzStackHciClusterName: map['targetAzStackHciClusterName'] as String,
-      targetCpuCores: map['targetCpuCores'] == null ? null : map['targetCpuCores'] as int,
-      targetDraName: map['targetDraName'] as String,
-      targetHciClusterId: map['targetHciClusterId'] as String,
-      targetLocation: map['targetLocation'] as String,
-      targetMemoryInMegaBytes: map['targetMemoryInMegaBytes'] == null ? null : map['targetMemoryInMegaBytes'] as int,
-      targetNetworkId: map['targetNetworkId'] == null ? null : map['targetNetworkId'] as String,
-      targetResourceGroupId: map['targetResourceGroupId'] as String,
-      targetVmBiosId: map['targetVmBiosId'] as String,
-      targetVmName: map['targetVmName'] == null ? null : map['targetVmName'] as String,
-      testNetworkId: map['testNetworkId'] == null ? null : map['testNetworkId'] as String,
+      activeLocation: (map['activeLocation'] as String).input(),
+      customLocationRegion: (map['customLocationRegion'] as String).input(),
+      disksToInclude: (pulumi.Input.decodeList<VMwareToAzStackHCIDiskInputResponse>(map['disksToInclude'], (value) => VMwareToAzStackHCIDiskInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dynamicMemoryConfig: map['dynamicMemoryConfig'] == null ? null : (ProtectedItemDynamicMemoryConfigResponse.fromMap((map['dynamicMemoryConfig'] as Map).cast<String, dynamic>())).input(),
+      fabricDiscoveryMachineId: (map['fabricDiscoveryMachineId'] as String).input(),
+      failoverRecoveryPointId: (map['failoverRecoveryPointId'] as String).input(),
+      firmwareType: (map['firmwareType'] as String).input(),
+      hyperVGeneration: (map['hyperVGeneration'] as String).input(),
+      initialReplicationProgressPercentage: (map['initialReplicationProgressPercentage'] as int).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      isDynamicRam: map['isDynamicRam'] == null ? null : (map['isDynamicRam'] as bool).input(),
+      lastRecoveryPointId: (map['lastRecoveryPointId'] as String).input(),
+      lastRecoveryPointReceived: (map['lastRecoveryPointReceived'] as String).input(),
+      lastReplicationUpdateTime: (map['lastReplicationUpdateTime'] as String).input(),
+      migrationProgressPercentage: (map['migrationProgressPercentage'] as int).input(),
+      nicsToInclude: (pulumi.Input.decodeList<VMwareToAzStackHCINicInputResponse>(map['nicsToInclude'], (value) => VMwareToAzStackHCINicInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osName: (map['osName'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      performAutoResync: map['performAutoResync'] == null ? null : (map['performAutoResync'] as bool).input(),
+      protectedDisks: (pulumi.Input.decodeList<VMwareToAzStackHCIProtectedDiskPropertiesResponse>(map['protectedDisks'], (value) => VMwareToAzStackHCIProtectedDiskPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectedNics: (pulumi.Input.decodeList<VMwareToAzStackHCIProtectedNicPropertiesResponse>(map['protectedNics'], (value) => VMwareToAzStackHCIProtectedNicPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resumeProgressPercentage: (map['resumeProgressPercentage'] as int).input(),
+      resumeRetryCount: (map['resumeRetryCount'] as double).input(),
+      resyncProgressPercentage: (map['resyncProgressPercentage'] as int).input(),
+      resyncRequired: (map['resyncRequired'] as bool).input(),
+      resyncRetryCount: (map['resyncRetryCount'] as double).input(),
+      resyncState: (map['resyncState'] as String).input(),
+      runAsAccountId: (map['runAsAccountId'] as String).input(),
+      sourceApplianceName: (map['sourceApplianceName'] as String).input(),
+      sourceCpuCores: (map['sourceCpuCores'] as int).input(),
+      sourceDraName: (map['sourceDraName'] as String).input(),
+      sourceMemoryInMegaBytes: (map['sourceMemoryInMegaBytes'] as double).input(),
+      sourceVmName: (map['sourceVmName'] as String).input(),
+      storageContainerId: (map['storageContainerId'] as String).input(),
+      targetApplianceName: (map['targetApplianceName'] as String).input(),
+      targetArcClusterCustomLocationId: (map['targetArcClusterCustomLocationId'] as String).input(),
+      targetAzStackHciClusterName: (map['targetAzStackHciClusterName'] as String).input(),
+      targetCpuCores: map['targetCpuCores'] == null ? null : (map['targetCpuCores'] as int).input(),
+      targetDraName: (map['targetDraName'] as String).input(),
+      targetHciClusterId: (map['targetHciClusterId'] as String).input(),
+      targetLocation: (map['targetLocation'] as String).input(),
+      targetMemoryInMegaBytes: map['targetMemoryInMegaBytes'] == null ? null : (map['targetMemoryInMegaBytes'] as int).input(),
+      targetNetworkId: map['targetNetworkId'] == null ? null : (map['targetNetworkId'] as String).input(),
+      targetResourceGroupId: (map['targetResourceGroupId'] as String).input(),
+      targetVmBiosId: (map['targetVmBiosId'] as String).input(),
+      targetVmName: map['targetVmName'] == null ? null : (map['targetVmName'] as String).input(),
+      testNetworkId: map['testNetworkId'] == null ? null : (map['testNetworkId'] as String).input(),
     );
   }
 }

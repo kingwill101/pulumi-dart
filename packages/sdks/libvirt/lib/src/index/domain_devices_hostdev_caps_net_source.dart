@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevCapsNetSource {
   /// Specifies the network interface to which the host device is associated.
-  final String interface;
+  final pulumi.Input<String> interface;
 
   /// Creates a new [DomainDevicesHostdevCapsNetSource].
   /// [interface] Specifies the network interface to which the host device is associated.
@@ -19,7 +20,7 @@ class DomainDevicesHostdevCapsNetSource {
 
   factory DomainDevicesHostdevCapsNetSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevCapsNetSource(
-      interface: map['interface'] as String,
+      interface: (map['interface'] as String).input(),
     );
   }
 }

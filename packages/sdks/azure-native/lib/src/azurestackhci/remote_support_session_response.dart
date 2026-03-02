@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a remote support session.
 class RemoteSupportSessionResponse {
   /// The level of access granted during the remote support session.
-  final String accessLevel;
+  final pulumi.Input<String> accessLevel;
   /// The end time of the remote support session, in UTC.
-  final String sessionEndTime;
+  final pulumi.Input<String> sessionEndTime;
   /// Unique session Id.
-  final String sessionId;
+  final pulumi.Input<String> sessionId;
   /// The start time of the remote support session, in UTC.
-  final String sessionStartTime;
+  final pulumi.Input<String> sessionStartTime;
   /// The location where the session transcript is stored.
-  final String transcriptLocation;
+  final pulumi.Input<String> transcriptLocation;
 
   /// Creates a new [RemoteSupportSessionResponse].
   /// [accessLevel] The level of access granted during the remote support session.
@@ -40,11 +41,11 @@ class RemoteSupportSessionResponse {
 
   factory RemoteSupportSessionResponse.fromMap(Map<String, dynamic> map) {
     return RemoteSupportSessionResponse(
-      accessLevel: map['accessLevel'] as String,
-      sessionEndTime: map['sessionEndTime'] as String,
-      sessionId: map['sessionId'] as String,
-      sessionStartTime: map['sessionStartTime'] as String,
-      transcriptLocation: map['transcriptLocation'] as String,
+      accessLevel: (map['accessLevel'] as String).input(),
+      sessionEndTime: (map['sessionEndTime'] as String).input(),
+      sessionId: (map['sessionId'] as String).input(),
+      sessionStartTime: (map['sessionStartTime'] as String).input(),
+      transcriptLocation: (map['transcriptLocation'] as String).input(),
     );
   }
 }

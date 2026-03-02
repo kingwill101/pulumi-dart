@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_cluster_master_global_access_config_response_container_v1beta1.dart';
 
 /// Configuration options for private clusters.
 class PrivateClusterConfigResponseContainerV1beta1 {
   /// Whether the master's internal IP address is used as the cluster endpoint.
-  final bool enablePrivateEndpoint;
+  final pulumi.Input<bool> enablePrivateEndpoint;
   /// Whether nodes have internal IP addresses only. If enabled, all nodes are given only RFC 1918 private addresses and communicate with the master via private networking.
-  final bool enablePrivateNodes;
+  final pulumi.Input<bool> enablePrivateNodes;
   /// Controls master global access settings.
-  final PrivateClusterMasterGlobalAccessConfigResponseContainerV1beta1 masterGlobalAccessConfig;
+  final pulumi.Input<PrivateClusterMasterGlobalAccessConfigResponseContainerV1beta1> masterGlobalAccessConfig;
   /// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
-  final String masterIpv4CidrBlock;
+  final pulumi.Input<String> masterIpv4CidrBlock;
   /// The peering name in the customer VPC used by this cluster.
-  final String peeringName;
+  final pulumi.Input<String> peeringName;
   /// The internal IP address of this cluster's master endpoint.
-  final String privateEndpoint;
+  final pulumi.Input<String> privateEndpoint;
   /// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
-  final String privateEndpointSubnetwork;
+  final pulumi.Input<String> privateEndpointSubnetwork;
   /// The external IP address of this cluster's master endpoint.
-  final String publicEndpoint;
+  final pulumi.Input<String> publicEndpoint;
 
   /// Creates a new [PrivateClusterConfigResponseContainerV1beta1].
   /// [enablePrivateEndpoint] Whether the master's internal IP address is used as the cluster endpoint.
@@ -45,7 +46,7 @@ class PrivateClusterConfigResponseContainerV1beta1 {
     return <String, dynamic>{
       'enablePrivateEndpoint': enablePrivateEndpoint,
       'enablePrivateNodes': enablePrivateNodes,
-      'masterGlobalAccessConfig': masterGlobalAccessConfig.toMap(),
+      'masterGlobalAccessConfig': pulumi.Input.mapInputValue<PrivateClusterMasterGlobalAccessConfigResponseContainerV1beta1, Map<String, dynamic>>(masterGlobalAccessConfig, (value) => value.toMap()),
       'masterIpv4CidrBlock': masterIpv4CidrBlock,
       'peeringName': peeringName,
       'privateEndpoint': privateEndpoint,
@@ -56,14 +57,14 @@ class PrivateClusterConfigResponseContainerV1beta1 {
 
   factory PrivateClusterConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return PrivateClusterConfigResponseContainerV1beta1(
-      enablePrivateEndpoint: map['enablePrivateEndpoint'] as bool,
-      enablePrivateNodes: map['enablePrivateNodes'] as bool,
-      masterGlobalAccessConfig: PrivateClusterMasterGlobalAccessConfigResponseContainerV1beta1.fromMap((map['masterGlobalAccessConfig'] as Map).cast<String, dynamic>()),
-      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] as String,
-      peeringName: map['peeringName'] as String,
-      privateEndpoint: map['privateEndpoint'] as String,
-      privateEndpointSubnetwork: map['privateEndpointSubnetwork'] as String,
-      publicEndpoint: map['publicEndpoint'] as String,
+      enablePrivateEndpoint: (map['enablePrivateEndpoint'] as bool).input(),
+      enablePrivateNodes: (map['enablePrivateNodes'] as bool).input(),
+      masterGlobalAccessConfig: (PrivateClusterMasterGlobalAccessConfigResponseContainerV1beta1.fromMap((map['masterGlobalAccessConfig'] as Map).cast<String, dynamic>())).input(),
+      masterIpv4CidrBlock: (map['masterIpv4CidrBlock'] as String).input(),
+      peeringName: (map['peeringName'] as String).input(),
+      privateEndpoint: (map['privateEndpoint'] as String).input(),
+      privateEndpointSubnetwork: (map['privateEndpointSubnetwork'] as String).input(),
+      publicEndpoint: (map['publicEndpoint'] as String).input(),
     );
   }
 }

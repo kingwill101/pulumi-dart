@@ -14,11 +14,9 @@ class GetSecretSecretmanagerV1beta1Args {
   /// [project] Optional.
   /// [secretId] Required.
   GetSecretSecretmanagerV1beta1Args({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> secretId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secretId = pulumi.Input.asInput<String>(secretId);
+    this.project,
+    required this.secretId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetSecretSecretmanagerV1beta1Args {
 
   factory GetSecretSecretmanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetSecretSecretmanagerV1beta1Args(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secretId: pulumi.Output.create<String>(map['secretId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secretId: (map['secretId'] as String).input(),
     );
   }
 }

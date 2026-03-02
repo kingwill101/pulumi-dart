@@ -13,9 +13,8 @@ class GetApplicationArgs {
   /// Creates a new [GetApplicationArgs].
   /// [applicationId] The security Application key - unique key for the standard application
   GetApplicationArgs({
-    required pulumi.Output<String> applicationId,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId);
+    required this.applicationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetApplicationArgs {
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
+      applicationId: (map['applicationId'] as String).input(),
     );
   }
 }

@@ -12,9 +12,8 @@ class SlrArgs {
   /// Creates a new [SlrArgs].
   /// [productName] Required.
   SlrArgs({
-    required pulumi.Output<String> productName,
-  }) :
-      productName = pulumi.Input.asInput<String>(productName);
+    required this.productName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class SlrArgs {
 
   factory SlrArgs.fromMap(Map<String, dynamic> map) {
     return SlrArgs(
-      productName: pulumi.Output.create<String>(map['productName'] as String),
+      productName: (map['productName'] as String).input(),
     );
   }
 }

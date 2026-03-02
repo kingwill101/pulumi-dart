@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'os_policy_assignment_os_policy_resource_group_resource_exec_enforce.dart';
 import 'os_policy_assignment_os_policy_resource_group_resource_exec_validate.dart';
 
@@ -8,13 +9,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
   /// state. An exit code of 100 indicates "success", any other exit code
   /// indicates a failure running enforce. Structure is
   /// documented below.
-  final OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce? enforce;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce>? enforce;
   /// What to run to validate this resource is in the
   /// desired state. An exit code of 100 indicates "in desired state", and exit
   /// code of 101 indicates "not in desired state". Any other exit code indicates
   /// a failure running validate. Structure is
   /// documented below.
-  final OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate validate;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate> validate;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourceExec].
   /// [enforce] What to run to bring this resource into the desired
@@ -26,15 +27,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enforce': ?enforce == null ? null : enforce!.toMap(),
-      'validate': validate.toMap(),
+      'enforce': ?pulumi.Input.mapOptionalInputValue<OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce, Map<String, dynamic>>(enforce, (value) => value.toMap()),
+      'validate': pulumi.Input.mapInputValue<OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate, Map<String, dynamic>>(validate, (value) => value.toMap()),
     };
   }
 
   factory OsPolicyAssignmentOsPolicyResourceGroupResourceExec.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceExec(
-      enforce: map['enforce'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce.fromMap((map['enforce'] as Map).cast<String, dynamic>()),
-      validate: OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate.fromMap((map['validate'] as Map).cast<String, dynamic>()),
+      enforce: map['enforce'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce.fromMap((map['enforce'] as Map).cast<String, dynamic>())).input(),
+      validate: (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate.fromMap((map['validate'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

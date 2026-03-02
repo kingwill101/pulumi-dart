@@ -40,29 +40,18 @@ class DomainState {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   DomainState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? assetSizeBytes,
-    pulumi.Output<String>? createdTime,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? encryptionKey,
-    pulumi.Output<String>? owner,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? repositoryCount,
-    pulumi.Output<String>? s3BucketArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      assetSizeBytes = pulumi.Input.asOptionalInput<String>(assetSizeBytes),
-      createdTime = pulumi.Input.asOptionalInput<String>(createdTime),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      encryptionKey = pulumi.Input.asOptionalInput<String>(encryptionKey),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repositoryCount = pulumi.Input.asOptionalInput<int>(repositoryCount),
-      s3BucketArn = pulumi.Input.asOptionalInput<String>(s3BucketArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.assetSizeBytes,
+    this.createdTime,
+    this.domain,
+    this.encryptionKey,
+    this.owner,
+    this.region,
+    this.repositoryCount,
+    this.s3BucketArn,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      assetSizeBytes: map['assetSizeBytes'] == null ? null : pulumi.Output.create<String>(map['assetSizeBytes'] as String),
-      createdTime: map['createdTime'] == null ? null : pulumi.Output.create<String>(map['createdTime'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      encryptionKey: map['encryptionKey'] == null ? null : pulumi.Output.create<String>(map['encryptionKey'] as String),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repositoryCount: map['repositoryCount'] == null ? null : pulumi.Output.create<int>(map['repositoryCount'] as int),
-      s3BucketArn: map['s3BucketArn'] == null ? null : pulumi.Output.create<String>(map['s3BucketArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      assetSizeBytes: map['assetSizeBytes'] == null ? null : (map['assetSizeBytes'] as String).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repositoryCount: map['repositoryCount'] == null ? null : (map['repositoryCount'] as int).input(),
+      s3BucketArn: map['s3BucketArn'] == null ? null : (map['s3BucketArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

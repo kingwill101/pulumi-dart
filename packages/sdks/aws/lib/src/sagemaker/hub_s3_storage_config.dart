@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HubS3StorageConfig {
   /// The Amazon S3 bucket prefix for hosting hub content.interface.
-  final String? s3OutputPath;
+  final pulumi.Input<String>? s3OutputPath;
 
   /// Creates a new [HubS3StorageConfig].
   /// [s3OutputPath] The Amazon S3 bucket prefix for hosting hub content.interface.
@@ -19,7 +20,7 @@ class HubS3StorageConfig {
 
   factory HubS3StorageConfig.fromMap(Map<String, dynamic> map) {
     return HubS3StorageConfig(
-      s3OutputPath: map['s3OutputPath'] == null ? null : map['s3OutputPath'] as String,
+      s3OutputPath: map['s3OutputPath'] == null ? null : (map['s3OutputPath'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatascanDataQualitySpecRuleSqlAssertion {
   /// The SQL statement.
-  final String sqlStatement;
+  final pulumi.Input<String> sqlStatement;
 
   /// Creates a new [DatascanDataQualitySpecRuleSqlAssertion].
   /// [sqlStatement] The SQL statement.
@@ -19,7 +20,7 @@ class DatascanDataQualitySpecRuleSqlAssertion {
 
   factory DatascanDataQualitySpecRuleSqlAssertion.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecRuleSqlAssertion(
-      sqlStatement: map['sqlStatement'] as String,
+      sqlStatement: (map['sqlStatement'] as String).input(),
     );
   }
 }

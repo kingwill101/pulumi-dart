@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetExpressRouteCircuitServiceProviderProperty {
   /// The bandwidth in Mbps of the ExpressRoute circuit.
-  final int bandwidthInMbps;
+  final pulumi.Input<int> bandwidthInMbps;
   /// The name of the peering location and **not** the Azure resource location.
-  final String peeringLocation;
+  final pulumi.Input<String> peeringLocation;
   /// The name of the ExpressRoute Service Provider.
-  final String serviceProviderName;
+  final pulumi.Input<String> serviceProviderName;
 
   /// Creates a new [GetExpressRouteCircuitServiceProviderProperty].
   /// [bandwidthInMbps] The bandwidth in Mbps of the ExpressRoute circuit.
@@ -29,9 +30,9 @@ class GetExpressRouteCircuitServiceProviderProperty {
 
   factory GetExpressRouteCircuitServiceProviderProperty.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCircuitServiceProviderProperty(
-      bandwidthInMbps: map['bandwidthInMbps'] as int,
-      peeringLocation: map['peeringLocation'] as String,
-      serviceProviderName: map['serviceProviderName'] as String,
+      bandwidthInMbps: (map['bandwidthInMbps'] as int).input(),
+      peeringLocation: (map['peeringLocation'] as String).input(),
+      serviceProviderName: (map['serviceProviderName'] as String).input(),
     );
   }
 }

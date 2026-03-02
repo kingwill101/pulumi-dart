@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPrometheusMonitoringsPrometheusMonitoring {
   /// The ID of the Prometheus instance.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The monitoring configuration. The value is a YAML string.
-  final String configYaml;
+  final pulumi.Input<String> configYaml;
   /// The ID of the Prometheus Monitoring. It formats as `<cluster_id>:<monitoring_name>:<type>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the monitoring configuration.
-  final String monitoringName;
+  final pulumi.Input<String> monitoringName;
   /// The status of the monitoring configuration. Valid values: `run`, `stop`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetPrometheusMonitoringsPrometheusMonitoring].
   /// [clusterId] The ID of the Prometheus instance.
@@ -44,12 +45,12 @@ class GetPrometheusMonitoringsPrometheusMonitoring {
 
   factory GetPrometheusMonitoringsPrometheusMonitoring.fromMap(Map<String, dynamic> map) {
     return GetPrometheusMonitoringsPrometheusMonitoring(
-      clusterId: map['clusterId'] as String,
-      configYaml: map['configYaml'] as String,
-      id: map['id'] as String,
-      monitoringName: map['monitoringName'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
+      clusterId: (map['clusterId'] as String).input(),
+      configYaml: (map['configYaml'] as String).input(),
+      id: (map['id'] as String).input(),
+      monitoringName: (map['monitoringName'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

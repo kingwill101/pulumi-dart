@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata for a Spanner connector used by the job.
 class SpannerIODetailsResponse {
   /// DatabaseId accessed in the connection.
-  final String databaseId;
+  final pulumi.Input<String> databaseId;
   /// InstanceId accessed in the connection.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// ProjectId accessed in the connection.
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [SpannerIODetailsResponse].
   /// [databaseId] DatabaseId accessed in the connection.
@@ -30,9 +31,9 @@ class SpannerIODetailsResponse {
 
   factory SpannerIODetailsResponse.fromMap(Map<String, dynamic> map) {
     return SpannerIODetailsResponse(
-      databaseId: map['databaseId'] as String,
-      instanceId: map['instanceId'] as String,
-      project: map['project'] as String,
+      databaseId: (map['databaseId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

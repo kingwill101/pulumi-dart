@@ -6,7 +6,7 @@ import 'oracle_schema_response_datastream_v1alpha1.dart';
 /// Oracle database structure.
 class OracleRdbmsResponseDatastreamV1alpha1 {
   /// Oracle schemas/databases in the database server.
-  final List<OracleSchemaResponseDatastreamV1alpha1> oracleSchemas;
+  final pulumi.Input<List<OracleSchemaResponseDatastreamV1alpha1>> oracleSchemas;
 
   /// Creates a new [OracleRdbmsResponseDatastreamV1alpha1].
   /// [oracleSchemas] Oracle schemas/databases in the database server.
@@ -16,13 +16,13 @@ class OracleRdbmsResponseDatastreamV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleSchemas': pulumi.Input.encodeList<OracleSchemaResponseDatastreamV1alpha1, Map<String, dynamic>>(oracleSchemas, (value) => value.toMap()),
+      'oracleSchemas': pulumi.Input.mapInputValue<List<OracleSchemaResponseDatastreamV1alpha1>, List<Map<String, dynamic>>>(oracleSchemas, (value) => pulumi.Input.encodeList<OracleSchemaResponseDatastreamV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OracleRdbmsResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleRdbmsResponseDatastreamV1alpha1(
-      oracleSchemas: pulumi.Input.decodeList<OracleSchemaResponseDatastreamV1alpha1>(map['oracleSchemas'], (value) => OracleSchemaResponseDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      oracleSchemas: (pulumi.Input.decodeList<OracleSchemaResponseDatastreamV1alpha1>(map['oracleSchemas'], (value) => OracleSchemaResponseDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

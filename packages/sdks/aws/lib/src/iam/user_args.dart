@@ -27,17 +27,12 @@ class UserArgs {
   /// [permissionsBoundary] The ARN of the policy that is used to set the permissions boundary for the user.
   /// [tags] Key-value mapping of tags for the IAM user. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   UserArgs({
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? permissionsBoundary,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      permissionsBoundary = pulumi.Input.asOptionalInput<String>(permissionsBoundary),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.forceDestroy,
+    this.name,
+    this.path,
+    this.permissionsBoundary,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      permissionsBoundary: map['permissionsBoundary'] == null ? null : pulumi.Output.create<String>(map['permissionsBoundary'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      permissionsBoundary: map['permissionsBoundary'] == null ? null : (map['permissionsBoundary'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

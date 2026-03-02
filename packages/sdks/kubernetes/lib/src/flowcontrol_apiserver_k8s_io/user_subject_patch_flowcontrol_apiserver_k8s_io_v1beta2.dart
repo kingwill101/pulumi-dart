@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// UserSubject holds detailed information for user-kind subject.
 class UserSubjectPatchFlowcontrolApiserverK8sIoV1beta2 {
   /// `name` is the username that matches, or "*" to match all usernames. Required.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [UserSubjectPatchFlowcontrolApiserverK8sIoV1beta2].
   /// [name] `name` is the username that matches, or "*" to match all usernames. Required.
@@ -20,7 +21,7 @@ class UserSubjectPatchFlowcontrolApiserverK8sIoV1beta2 {
 
   factory UserSubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return UserSubjectPatchFlowcontrolApiserverK8sIoV1beta2(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

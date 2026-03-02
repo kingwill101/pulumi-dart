@@ -30,19 +30,13 @@ class DotNetComponentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceBinds] List of .NET Components that are bound to the .NET component
   DotNetComponentArgs({
-    pulumi.Output<String>? componentType,
-    pulumi.Output<List<DotNetComponentConfigurationProperty>>? configurations,
-    required pulumi.Output<String> environmentName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<DotNetComponentServiceBind>>? serviceBinds,
-  }) :
-      componentType = pulumi.Input.asOptionalInput<String>(componentType),
-      configurations = pulumi.Input.asOptionalInput<List<DotNetComponentConfigurationProperty>>(configurations),
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceBinds = pulumi.Input.asOptionalInput<List<DotNetComponentServiceBind>>(serviceBinds);
+    this.componentType,
+    this.configurations,
+    required this.environmentName,
+    this.name,
+    required this.resourceGroupName,
+    this.serviceBinds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class DotNetComponentArgs {
 
   factory DotNetComponentArgs.fromMap(Map<String, dynamic> map) {
     return DotNetComponentArgs(
-      componentType: map['componentType'] == null ? null : pulumi.Output.create<String>(map['componentType'] as String),
-      configurations: map['configurations'] == null ? null : pulumi.Output.create<List<DotNetComponentConfigurationProperty>>(pulumi.Input.decodeList<DotNetComponentConfigurationProperty>(map['configurations'], (value) => DotNetComponentConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))),
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceBinds: map['serviceBinds'] == null ? null : pulumi.Output.create<List<DotNetComponentServiceBind>>(pulumi.Input.decodeList<DotNetComponentServiceBind>(map['serviceBinds'], (value) => DotNetComponentServiceBind.fromMap((value as Map).cast<String, dynamic>()))),
+      componentType: map['componentType'] == null ? null : (map['componentType'] as String).input(),
+      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<DotNetComponentConfigurationProperty>(map['configurations'], (value) => DotNetComponentConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environmentName: (map['environmentName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceBinds: map['serviceBinds'] == null ? null : (pulumi.Input.decodeList<DotNetComponentServiceBind>(map['serviceBinds'], (value) => DotNetComponentServiceBind.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

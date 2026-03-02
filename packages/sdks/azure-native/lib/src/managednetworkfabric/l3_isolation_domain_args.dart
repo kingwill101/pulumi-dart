@@ -42,27 +42,17 @@ class L3IsolationDomainArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   L3IsolationDomainArgs({
-    pulumi.Output<AggregateRouteConfiguration>? aggregateRouteConfiguration,
-    pulumi.Output<String>? annotation,
-    pulumi.Output<ConnectedSubnetRoutePolicy>? connectedSubnetRoutePolicy,
-    pulumi.Output<String>? l3IsolationDomainName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> networkFabricId,
-    pulumi.Output<String>? redistributeConnectedSubnets,
-    pulumi.Output<String>? redistributeStaticRoutes,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      aggregateRouteConfiguration = pulumi.Input.asOptionalInput<AggregateRouteConfiguration>(aggregateRouteConfiguration),
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      connectedSubnetRoutePolicy = pulumi.Input.asOptionalInput<ConnectedSubnetRoutePolicy>(connectedSubnetRoutePolicy),
-      l3IsolationDomainName = pulumi.Input.asOptionalInput<String>(l3IsolationDomainName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkFabricId = pulumi.Input.asInput<String>(networkFabricId),
-      redistributeConnectedSubnets = pulumi.Input.asOptionalInput<String>(redistributeConnectedSubnets),
-      redistributeStaticRoutes = pulumi.Input.asOptionalInput<String>(redistributeStaticRoutes),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.aggregateRouteConfiguration,
+    this.annotation,
+    this.connectedSubnetRoutePolicy,
+    this.l3IsolationDomainName,
+    this.location,
+    required this.networkFabricId,
+    this.redistributeConnectedSubnets,
+    this.redistributeStaticRoutes,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class L3IsolationDomainArgs {
 
   factory L3IsolationDomainArgs.fromMap(Map<String, dynamic> map) {
     return L3IsolationDomainArgs(
-      aggregateRouteConfiguration: map['aggregateRouteConfiguration'] == null ? null : pulumi.Output.create<AggregateRouteConfiguration>(AggregateRouteConfiguration.fromMap((map['aggregateRouteConfiguration'] as Map).cast<String, dynamic>())),
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      connectedSubnetRoutePolicy: map['connectedSubnetRoutePolicy'] == null ? null : pulumi.Output.create<ConnectedSubnetRoutePolicy>(ConnectedSubnetRoutePolicy.fromMap((map['connectedSubnetRoutePolicy'] as Map).cast<String, dynamic>())),
-      l3IsolationDomainName: map['l3IsolationDomainName'] == null ? null : pulumi.Output.create<String>(map['l3IsolationDomainName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkFabricId: pulumi.Output.create<String>(map['networkFabricId'] as String),
-      redistributeConnectedSubnets: map['redistributeConnectedSubnets'] == null ? null : pulumi.Output.create<String>(map['redistributeConnectedSubnets'] as String),
-      redistributeStaticRoutes: map['redistributeStaticRoutes'] == null ? null : pulumi.Output.create<String>(map['redistributeStaticRoutes'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      aggregateRouteConfiguration: map['aggregateRouteConfiguration'] == null ? null : (AggregateRouteConfiguration.fromMap((map['aggregateRouteConfiguration'] as Map).cast<String, dynamic>())).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      connectedSubnetRoutePolicy: map['connectedSubnetRoutePolicy'] == null ? null : (ConnectedSubnetRoutePolicy.fromMap((map['connectedSubnetRoutePolicy'] as Map).cast<String, dynamic>())).input(),
+      l3IsolationDomainName: map['l3IsolationDomainName'] == null ? null : (map['l3IsolationDomainName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkFabricId: (map['networkFabricId'] as String).input(),
+      redistributeConnectedSubnets: map['redistributeConnectedSubnets'] == null ? null : (map['redistributeConnectedSubnets'] as String).input(),
+      redistributeStaticRoutes: map['redistributeStaticRoutes'] == null ? null : (map['redistributeStaticRoutes'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

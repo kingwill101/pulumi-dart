@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be a publicly routable address, some Google Services use special routes within Google production infrastructure to reach Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#special_return_paths
 class GoogleServiceInfoResponse {
   /// Recognized type of a Google Service.
-  final String googleServiceType;
+  final pulumi.Input<String> googleServiceType;
   /// Source IP address.
-  final String sourceIp;
+  final pulumi.Input<String> sourceIp;
 
   /// Creates a new [GoogleServiceInfoResponse].
   /// [googleServiceType] Recognized type of a Google Service.
@@ -25,8 +26,8 @@ class GoogleServiceInfoResponse {
 
   factory GoogleServiceInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleServiceInfoResponse(
-      googleServiceType: map['googleServiceType'] as String,
-      sourceIp: map['sourceIp'] as String,
+      googleServiceType: (map['googleServiceType'] as String).input(),
+      sourceIp: (map['sourceIp'] as String).input(),
     );
   }
 }

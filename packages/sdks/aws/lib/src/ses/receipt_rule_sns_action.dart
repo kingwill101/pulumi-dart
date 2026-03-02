@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReceiptRuleSnsAction {
   /// The encoding to use for the email within the Amazon SNS notification. Default value is `UTF-8`.
-  final String? encoding;
+  final pulumi.Input<String>? encoding;
   /// The position of the action in the receipt rule
-  final int position;
+  final pulumi.Input<int> position;
   /// The ARN of an SNS topic to notify
-  final String topicArn;
+  final pulumi.Input<String> topicArn;
 
   /// Creates a new [ReceiptRuleSnsAction].
   /// [encoding] The encoding to use for the email within the Amazon SNS notification. Default value is `UTF-8`.
@@ -29,9 +30,9 @@ class ReceiptRuleSnsAction {
 
   factory ReceiptRuleSnsAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleSnsAction(
-      encoding: map['encoding'] == null ? null : map['encoding'] as String,
-      position: map['position'] as int,
-      topicArn: map['topicArn'] as String,
+      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      position: (map['position'] as int).input(),
+      topicArn: (map['topicArn'] as String).input(),
     );
   }
 }

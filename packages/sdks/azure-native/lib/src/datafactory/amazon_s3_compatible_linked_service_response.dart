@@ -8,28 +8,28 @@ import 'parameter_specification_response.dart';
 /// Linked service for Amazon S3 Compatible.
 class AmazonS3CompatibleLinkedServiceResponse {
   /// The access key identifier of the Amazon S3 Compatible Identity and Access Management (IAM) user. Type: string (or Expression with resultType string).
-  final dynamic accessKeyId;
+  final pulumi.Input<dynamic>? accessKeyId;
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// If true, use S3 path-style access instead of virtual hosted-style access. Default value is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic forcePathStyle;
+  final pulumi.Input<dynamic>? forcePathStyle;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// The secret access key of the Amazon S3 Compatible Identity and Access Management (IAM) user.
-  final AzureKeyVaultSecretReferenceResponse? secretAccessKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? secretAccessKey;
   /// This value specifies the endpoint to access with the Amazon S3 Compatible Connector. This is an optional property; change it only if you want to try a different service endpoint or want to switch between https and http. Type: string (or Expression with resultType string).
-  final dynamic serviceUrl;
+  final pulumi.Input<dynamic>? serviceUrl;
   /// Type of linked service.
   /// Expected value is 'AmazonS3Compatible'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [AmazonS3CompatibleLinkedServiceResponse].
   /// [accessKeyId] The access key identifier of the Amazon S3 Compatible Identity and Access Management (IAM) user. Type: string (or Expression with resultType string).
@@ -61,12 +61,12 @@ class AmazonS3CompatibleLinkedServiceResponse {
     return <String, dynamic>{
       'accessKeyId': ?accessKeyId,
       'annotations': ?annotations,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'forcePathStyle': ?forcePathStyle,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'secretAccessKey': ?secretAccessKey == null ? null : secretAccessKey!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'secretAccessKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(secretAccessKey, (value) => value.toMap()),
       'serviceUrl': ?serviceUrl,
       'type': type,
       'version': ?version,
@@ -75,17 +75,17 @@ class AmazonS3CompatibleLinkedServiceResponse {
 
   factory AmazonS3CompatibleLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return AmazonS3CompatibleLinkedServiceResponse(
-      accessKeyId: map['accessKeyId'] == null ? null : map['accessKeyId'],
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      forcePathStyle: map['forcePathStyle'] == null ? null : map['forcePathStyle'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      secretAccessKey: map['secretAccessKey'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['secretAccessKey'] as Map).cast<String, dynamic>()),
-      serviceUrl: map['serviceUrl'] == null ? null : map['serviceUrl'],
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId']).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      forcePathStyle: map['forcePathStyle'] == null ? null : (map['forcePathStyle']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['secretAccessKey'] as Map).cast<String, dynamic>())).input(),
+      serviceUrl: map['serviceUrl'] == null ? null : (map['serviceUrl']).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

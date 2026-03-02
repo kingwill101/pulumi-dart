@@ -7,11 +7,11 @@ import 'version_containeranalysis_v1alpha1.dart';
 /// An Upgrade Note represents a potential upgrade of a package to a given version. For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2), there will be a Upgrade Note.
 class UpgradeNoteContaineranalysisV1alpha1 {
   /// Metadata about the upgrade for each specific operating system.
-  final List<UpgradeDistributionContaineranalysisV1alpha1>? distributions;
+  final pulumi.Input<List<UpgradeDistributionContaineranalysisV1alpha1>>? distributions;
   /// Required - The package this Upgrade is for.
-  final String? package;
+  final pulumi.Input<String>? package;
   /// Required - The version of the package in machine + human readable form.
-  final VersionContaineranalysisV1alpha1? version;
+  final pulumi.Input<VersionContaineranalysisV1alpha1>? version;
 
   /// Creates a new [UpgradeNoteContaineranalysisV1alpha1].
   /// [distributions] Metadata about the upgrade for each specific operating system.
@@ -25,17 +25,17 @@ class UpgradeNoteContaineranalysisV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'distributions': ?distributions == null ? null : pulumi.Input.encodeList<UpgradeDistributionContaineranalysisV1alpha1, Map<String, dynamic>>(distributions!, (value) => value.toMap()),
+      'distributions': ?pulumi.Input.mapOptionalInputValue<List<UpgradeDistributionContaineranalysisV1alpha1>, List<Map<String, dynamic>>>(distributions, (value) => pulumi.Input.encodeList<UpgradeDistributionContaineranalysisV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'package': ?package,
-      'version': ?version == null ? null : version!.toMap(),
+      'version': ?pulumi.Input.mapOptionalInputValue<VersionContaineranalysisV1alpha1, Map<String, dynamic>>(version, (value) => value.toMap()),
     };
   }
 
   factory UpgradeNoteContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return UpgradeNoteContaineranalysisV1alpha1(
-      distributions: map['distributions'] == null ? null : pulumi.Input.decodeList<UpgradeDistributionContaineranalysisV1alpha1>(map['distributions'], (value) => UpgradeDistributionContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
-      package: map['package'] == null ? null : map['package'] as String,
-      version: map['version'] == null ? null : VersionContaineranalysisV1alpha1.fromMap((map['version'] as Map).cast<String, dynamic>()),
+      distributions: map['distributions'] == null ? null : (pulumi.Input.decodeList<UpgradeDistributionContaineranalysisV1alpha1>(map['distributions'], (value) => UpgradeDistributionContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      package: map['package'] == null ? null : (map['package'] as String).input(),
+      version: map['version'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

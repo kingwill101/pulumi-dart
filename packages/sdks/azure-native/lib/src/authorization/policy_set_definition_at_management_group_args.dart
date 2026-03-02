@@ -46,29 +46,18 @@ class PolicySetDefinitionAtManagementGroupArgs {
   /// [version] The policy set definition version in #.#.# format.
   /// [versions] A list of available versions for this policy set definition.
   PolicySetDefinitionAtManagementGroupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> managementGroupId,
-    pulumi.Output<dynamic>? metadata,
-    pulumi.Output<Map<String, ParameterDefinitionsValue>>? parameters,
-    pulumi.Output<List<PolicyDefinitionGroup>>? policyDefinitionGroups,
-    required pulumi.Output<List<PolicyDefinitionReference>> policyDefinitions,
-    pulumi.Output<String>? policySetDefinitionName,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<String>? version,
-    pulumi.Output<List<String>>? versions,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      metadata = pulumi.Input.asOptionalInput<dynamic>(metadata),
-      parameters = pulumi.Input.asOptionalInput<Map<String, ParameterDefinitionsValue>>(parameters),
-      policyDefinitionGroups = pulumi.Input.asOptionalInput<List<PolicyDefinitionGroup>>(policyDefinitionGroups),
-      policyDefinitions = pulumi.Input.asInput<List<PolicyDefinitionReference>>(policyDefinitions),
-      policySetDefinitionName = pulumi.Input.asOptionalInput<String>(policySetDefinitionName),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      version = pulumi.Input.asOptionalInput<String>(version),
-      versions = pulumi.Input.asOptionalInput<List<String>>(versions);
+    this.description,
+    this.displayName,
+    required this.managementGroupId,
+    this.metadata,
+    this.parameters,
+    this.policyDefinitionGroups,
+    required this.policyDefinitions,
+    this.policySetDefinitionName,
+    this.policyType,
+    this.version,
+    this.versions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class PolicySetDefinitionAtManagementGroupArgs {
 
   factory PolicySetDefinitionAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return PolicySetDefinitionAtManagementGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<dynamic>(map['metadata']),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, ParameterDefinitionsValue>>(pulumi.Input.decodeMapValues<ParameterDefinitionsValue>(map['parameters'], (value) => ParameterDefinitionsValue.fromMap((value as Map).cast<String, dynamic>()))),
-      policyDefinitionGroups: map['policyDefinitionGroups'] == null ? null : pulumi.Output.create<List<PolicyDefinitionGroup>>(pulumi.Input.decodeList<PolicyDefinitionGroup>(map['policyDefinitionGroups'], (value) => PolicyDefinitionGroup.fromMap((value as Map).cast<String, dynamic>()))),
-      policyDefinitions: pulumi.Output.create<List<PolicyDefinitionReference>>(pulumi.Input.decodeList<PolicyDefinitionReference>(map['policyDefinitions'], (value) => PolicyDefinitionReference.fromMap((value as Map).cast<String, dynamic>()))),
-      policySetDefinitionName: map['policySetDefinitionName'] == null ? null : pulumi.Output.create<String>(map['policySetDefinitionName'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
-      versions: map['versions'] == null ? null : pulumi.Output.create<List<String>>((map['versions'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterDefinitionsValue>(map['parameters'], (value) => ParameterDefinitionsValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyDefinitionGroups: map['policyDefinitionGroups'] == null ? null : (pulumi.Input.decodeList<PolicyDefinitionGroup>(map['policyDefinitionGroups'], (value) => PolicyDefinitionGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyDefinitions: (pulumi.Input.decodeList<PolicyDefinitionReference>(map['policyDefinitions'], (value) => PolicyDefinitionReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policySetDefinitionName: map['policySetDefinitionName'] == null ? null : (map['policySetDefinitionName'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      versions: map['versions'] == null ? null : ((map['versions'] as List).cast<String>()).input(),
     );
   }
 }

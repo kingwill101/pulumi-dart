@@ -22,15 +22,11 @@ class SentinelOnboardingStateArgs {
   /// [sentinelOnboardingStateName] The Sentinel onboarding state name. Supports - default
   /// [workspaceName] The name of the workspace.
   SentinelOnboardingStateArgs({
-    pulumi.Output<bool>? customerManagedKey,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sentinelOnboardingStateName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      customerManagedKey = pulumi.Input.asOptionalInput<bool>(customerManagedKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sentinelOnboardingStateName = pulumi.Input.asOptionalInput<String>(sentinelOnboardingStateName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.customerManagedKey,
+    required this.resourceGroupName,
+    this.sentinelOnboardingStateName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SentinelOnboardingStateArgs {
 
   factory SentinelOnboardingStateArgs.fromMap(Map<String, dynamic> map) {
     return SentinelOnboardingStateArgs(
-      customerManagedKey: map['customerManagedKey'] == null ? null : pulumi.Output.create<bool>(map['customerManagedKey'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sentinelOnboardingStateName: map['sentinelOnboardingStateName'] == null ? null : pulumi.Output.create<String>(map['sentinelOnboardingStateName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sentinelOnboardingStateName: map['sentinelOnboardingStateName'] == null ? null : (map['sentinelOnboardingStateName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

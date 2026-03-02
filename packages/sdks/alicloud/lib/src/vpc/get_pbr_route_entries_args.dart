@@ -19,13 +19,10 @@ class GetPbrRouteEntriesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [vpnGatewayId] The ID of the VPN gateway.
   GetPbrRouteEntriesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> vpnGatewayId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      vpnGatewayId = pulumi.Input.asInput<String>(vpnGatewayId);
+    this.ids,
+    this.outputFile,
+    required this.vpnGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPbrRouteEntriesArgs {
 
   factory GetPbrRouteEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetPbrRouteEntriesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      vpnGatewayId: pulumi.Output.create<String>(map['vpnGatewayId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      vpnGatewayId: (map['vpnGatewayId'] as String).input(),
     );
   }
 }

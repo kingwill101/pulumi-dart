@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterAddonsConfigNetworkPolicyConfig {
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
 
   /// Creates a new [GetClusterAddonsConfigNetworkPolicyConfig].
   /// [disabled] Required.
@@ -18,7 +19,7 @@ class GetClusterAddonsConfigNetworkPolicyConfig {
 
   factory GetClusterAddonsConfigNetworkPolicyConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigNetworkPolicyConfig(
-      disabled: map['disabled'] as bool,
+      disabled: (map['disabled'] as bool).input(),
     );
   }
 }

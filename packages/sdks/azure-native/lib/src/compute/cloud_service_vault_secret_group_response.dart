@@ -7,9 +7,9 @@ import 'sub_resource_response.dart';
 /// Describes a set of certificates which are all in the same Key Vault.
 class CloudServiceVaultSecretGroupResponse {
   /// The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
-  final SubResourceResponse? sourceVault;
+  final pulumi.Input<SubResourceResponse>? sourceVault;
   /// The list of key vault references in SourceVault which contain certificates.
-  final List<CloudServiceVaultCertificateResponse>? vaultCertificates;
+  final pulumi.Input<List<CloudServiceVaultCertificateResponse>>? vaultCertificates;
 
   /// Creates a new [CloudServiceVaultSecretGroupResponse].
   /// [sourceVault] The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
@@ -21,15 +21,15 @@ class CloudServiceVaultSecretGroupResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceVault': ?sourceVault == null ? null : sourceVault!.toMap(),
-      'vaultCertificates': ?vaultCertificates == null ? null : pulumi.Input.encodeList<CloudServiceVaultCertificateResponse, Map<String, dynamic>>(vaultCertificates!, (value) => value.toMap()),
+      'sourceVault': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(sourceVault, (value) => value.toMap()),
+      'vaultCertificates': ?pulumi.Input.mapOptionalInputValue<List<CloudServiceVaultCertificateResponse>, List<Map<String, dynamic>>>(vaultCertificates, (value) => pulumi.Input.encodeList<CloudServiceVaultCertificateResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CloudServiceVaultSecretGroupResponse.fromMap(Map<String, dynamic> map) {
     return CloudServiceVaultSecretGroupResponse(
-      sourceVault: map['sourceVault'] == null ? null : SubResourceResponse.fromMap((map['sourceVault'] as Map).cast<String, dynamic>()),
-      vaultCertificates: map['vaultCertificates'] == null ? null : pulumi.Input.decodeList<CloudServiceVaultCertificateResponse>(map['vaultCertificates'], (value) => CloudServiceVaultCertificateResponse.fromMap((value as Map).cast<String, dynamic>())),
+      sourceVault: map['sourceVault'] == null ? null : (SubResourceResponse.fromMap((map['sourceVault'] as Map).cast<String, dynamic>())).input(),
+      vaultCertificates: map['vaultCertificates'] == null ? null : (pulumi.Input.decodeList<CloudServiceVaultCertificateResponse>(map['vaultCertificates'], (value) => CloudServiceVaultCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class SystemGroupArgs {
   /// [playDomain] The domain name of plan streaming used by the group.
   /// [pushDomain] The domain name of push streaming used by the group.
   SystemGroupArgs({
-    pulumi.Output<String>? callback,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> inProtocol,
-    required pulumi.Output<String> outProtocol,
-    required pulumi.Output<String> playDomain,
-    required pulumi.Output<String> pushDomain,
-  }) :
-      callback = pulumi.Input.asOptionalInput<String>(callback),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      inProtocol = pulumi.Input.asInput<String>(inProtocol),
-      outProtocol = pulumi.Input.asInput<String>(outProtocol),
-      playDomain = pulumi.Input.asInput<String>(playDomain),
-      pushDomain = pulumi.Input.asInput<String>(pushDomain);
+    this.callback,
+    this.description,
+    this.enabled,
+    required this.groupName,
+    required this.inProtocol,
+    required this.outProtocol,
+    required this.playDomain,
+    required this.pushDomain,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class SystemGroupArgs {
 
   factory SystemGroupArgs.fromMap(Map<String, dynamic> map) {
     return SystemGroupArgs(
-      callback: map['callback'] == null ? null : pulumi.Output.create<String>(map['callback'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      inProtocol: pulumi.Output.create<String>(map['inProtocol'] as String),
-      outProtocol: pulumi.Output.create<String>(map['outProtocol'] as String),
-      playDomain: pulumi.Output.create<String>(map['playDomain'] as String),
-      pushDomain: pulumi.Output.create<String>(map['pushDomain'] as String),
+      callback: map['callback'] == null ? null : (map['callback'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      groupName: (map['groupName'] as String).input(),
+      inProtocol: (map['inProtocol'] as String).input(),
+      outProtocol: (map['outProtocol'] as String).input(),
+      playDomain: (map['playDomain'] as String).input(),
+      pushDomain: (map['pushDomain'] as String).input(),
     );
   }
 }

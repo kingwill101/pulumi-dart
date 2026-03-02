@@ -36,21 +36,14 @@ class TenantInboundSamlConfigState {
   /// [spConfig] SAML SP (Service Provider) configuration when the project acts as the relying party to receive
   /// [tenant] The name of the tenant where this inbound SAML config resource exists
   TenantInboundSamlConfigState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<TenantInboundSamlConfigIdpConfig>? idpConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<TenantInboundSamlConfigSpConfig>? spConfig,
-    pulumi.Output<String>? tenant,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      idpConfig = pulumi.Input.asOptionalInput<TenantInboundSamlConfigIdpConfig>(idpConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spConfig = pulumi.Input.asOptionalInput<TenantInboundSamlConfigSpConfig>(spConfig),
-      tenant = pulumi.Input.asOptionalInput<String>(tenant);
+    this.displayName,
+    this.enabled,
+    this.idpConfig,
+    this.name,
+    this.project,
+    this.spConfig,
+    this.tenant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class TenantInboundSamlConfigState {
 
   factory TenantInboundSamlConfigState.fromMap(Map<String, dynamic> map) {
     return TenantInboundSamlConfigState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      idpConfig: map['idpConfig'] == null ? null : pulumi.Output.create<TenantInboundSamlConfigIdpConfig>(TenantInboundSamlConfigIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      spConfig: map['spConfig'] == null ? null : pulumi.Output.create<TenantInboundSamlConfigSpConfig>(TenantInboundSamlConfigSpConfig.fromMap((map['spConfig'] as Map).cast<String, dynamic>())),
-      tenant: map['tenant'] == null ? null : pulumi.Output.create<String>(map['tenant'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      idpConfig: map['idpConfig'] == null ? null : (TenantInboundSamlConfigIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      spConfig: map['spConfig'] == null ? null : (TenantInboundSamlConfigSpConfig.fromMap((map['spConfig'] as Map).cast<String, dynamic>())).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
     );
   }
 }

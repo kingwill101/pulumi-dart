@@ -25,17 +25,12 @@ class ServiceArgs {
   /// [tags] The tag of the resource.
   /// [workspaceId] Workspace id
   ServiceArgs({
-    pulumi.Output<String>? develop,
-    required pulumi.Output<String> serviceConfig,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      develop = pulumi.Input.asOptionalInput<String>(develop),
-      serviceConfig = pulumi.Input.asInput<String>(serviceConfig),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.develop,
+    required this.serviceConfig,
+    this.status,
+    this.tags,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      develop: map['develop'] == null ? null : pulumi.Output.create<String>(map['develop'] as String),
-      serviceConfig: pulumi.Output.create<String>(map['serviceConfig'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      develop: map['develop'] == null ? null : (map['develop'] as String).input(),
+      serviceConfig: (map['serviceConfig'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

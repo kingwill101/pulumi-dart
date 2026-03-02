@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuestPoliciesRecipeInstallStepArchiveExtraction {
   /// The id of the relevant artifact in the recipe.
-  final String artifactId;
+  final pulumi.Input<String> artifactId;
   /// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-  final String? destination;
+  final pulumi.Input<String>? destination;
   /// The type of the archive to extract.
   /// Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GuestPoliciesRecipeInstallStepArchiveExtraction].
   /// [artifactId] The id of the relevant artifact in the recipe.
@@ -30,9 +31,9 @@ class GuestPoliciesRecipeInstallStepArchiveExtraction {
 
   factory GuestPoliciesRecipeInstallStepArchiveExtraction.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeInstallStepArchiveExtraction(
-      artifactId: map['artifactId'] as String,
-      destination: map['destination'] == null ? null : map['destination'] as String,
-      type: map['type'] as String,
+      artifactId: (map['artifactId'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class FloatingIpAssociateState {
   /// [portId] ID of an existing port with at least one IP address to
   /// [region] The region in which to obtain the V2 Networking client.
   FloatingIpAssociateState({
-    pulumi.Output<String>? fixedIp,
-    pulumi.Output<String>? floatingIp,
-    pulumi.Output<String>? portId,
-    pulumi.Output<String>? region,
-  }) :
-      fixedIp = pulumi.Input.asOptionalInput<String>(fixedIp),
-      floatingIp = pulumi.Input.asOptionalInput<String>(floatingIp),
-      portId = pulumi.Input.asOptionalInput<String>(portId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.fixedIp,
+    this.floatingIp,
+    this.portId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class FloatingIpAssociateState {
 
   factory FloatingIpAssociateState.fromMap(Map<String, dynamic> map) {
     return FloatingIpAssociateState(
-      fixedIp: map['fixedIp'] == null ? null : pulumi.Output.create<String>(map['fixedIp'] as String),
-      floatingIp: map['floatingIp'] == null ? null : pulumi.Output.create<String>(map['floatingIp'] as String),
-      portId: map['portId'] == null ? null : pulumi.Output.create<String>(map['portId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp'] as String).input(),
+      floatingIp: map['floatingIp'] == null ? null : (map['floatingIp'] as String).input(),
+      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3CustomDomainAuthConfig {
   /// Authentication Information
-  final String? authInfo;
+  final pulumi.Input<String>? authInfo;
   /// Authentication type. anonymous, function, or jwt.
-  final String? authType;
+  final pulumi.Input<String>? authType;
 
   /// Creates a new [V3CustomDomainAuthConfig].
   /// [authInfo] Authentication Information
@@ -24,8 +25,8 @@ class V3CustomDomainAuthConfig {
 
   factory V3CustomDomainAuthConfig.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainAuthConfig(
-      authInfo: map['authInfo'] == null ? null : map['authInfo'] as String,
-      authType: map['authType'] == null ? null : map['authType'] as String,
+      authInfo: map['authInfo'] == null ? null : (map['authInfo'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
     );
   }
 }

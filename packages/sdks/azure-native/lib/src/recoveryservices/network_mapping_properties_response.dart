@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_to_azure_network_mapping_settings_response.dart';
 
 /// Network Mapping Properties.
 class NetworkMappingPropertiesResponse {
   /// The fabric specific settings.
-  final AzureToAzureNetworkMappingSettingsResponse? fabricSpecificSettings;
+  final pulumi.Input<AzureToAzureNetworkMappingSettingsResponse>? fabricSpecificSettings;
   /// The primary fabric friendly name.
-  final String? primaryFabricFriendlyName;
+  final pulumi.Input<String>? primaryFabricFriendlyName;
   /// The primary network friendly name.
-  final String? primaryNetworkFriendlyName;
+  final pulumi.Input<String>? primaryNetworkFriendlyName;
   /// The primary network id for network mapping.
-  final String? primaryNetworkId;
+  final pulumi.Input<String>? primaryNetworkId;
   /// The recovery fabric ARM id.
-  final String? recoveryFabricArmId;
+  final pulumi.Input<String>? recoveryFabricArmId;
   /// The recovery fabric friendly name.
-  final String? recoveryFabricFriendlyName;
+  final pulumi.Input<String>? recoveryFabricFriendlyName;
   /// The recovery network friendly name.
-  final String? recoveryNetworkFriendlyName;
+  final pulumi.Input<String>? recoveryNetworkFriendlyName;
   /// The recovery network id for network mapping.
-  final String? recoveryNetworkId;
+  final pulumi.Input<String>? recoveryNetworkId;
   /// The pairing state for network mapping.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [NetworkMappingPropertiesResponse].
   /// [fabricSpecificSettings] The fabric specific settings.
@@ -47,7 +48,7 @@ class NetworkMappingPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fabricSpecificSettings': ?fabricSpecificSettings == null ? null : fabricSpecificSettings!.toMap(),
+      'fabricSpecificSettings': ?pulumi.Input.mapOptionalInputValue<AzureToAzureNetworkMappingSettingsResponse, Map<String, dynamic>>(fabricSpecificSettings, (value) => value.toMap()),
       'primaryFabricFriendlyName': ?primaryFabricFriendlyName,
       'primaryNetworkFriendlyName': ?primaryNetworkFriendlyName,
       'primaryNetworkId': ?primaryNetworkId,
@@ -61,15 +62,15 @@ class NetworkMappingPropertiesResponse {
 
   factory NetworkMappingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkMappingPropertiesResponse(
-      fabricSpecificSettings: map['fabricSpecificSettings'] == null ? null : AzureToAzureNetworkMappingSettingsResponse.fromMap((map['fabricSpecificSettings'] as Map).cast<String, dynamic>()),
-      primaryFabricFriendlyName: map['primaryFabricFriendlyName'] == null ? null : map['primaryFabricFriendlyName'] as String,
-      primaryNetworkFriendlyName: map['primaryNetworkFriendlyName'] == null ? null : map['primaryNetworkFriendlyName'] as String,
-      primaryNetworkId: map['primaryNetworkId'] == null ? null : map['primaryNetworkId'] as String,
-      recoveryFabricArmId: map['recoveryFabricArmId'] == null ? null : map['recoveryFabricArmId'] as String,
-      recoveryFabricFriendlyName: map['recoveryFabricFriendlyName'] == null ? null : map['recoveryFabricFriendlyName'] as String,
-      recoveryNetworkFriendlyName: map['recoveryNetworkFriendlyName'] == null ? null : map['recoveryNetworkFriendlyName'] as String,
-      recoveryNetworkId: map['recoveryNetworkId'] == null ? null : map['recoveryNetworkId'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      fabricSpecificSettings: map['fabricSpecificSettings'] == null ? null : (AzureToAzureNetworkMappingSettingsResponse.fromMap((map['fabricSpecificSettings'] as Map).cast<String, dynamic>())).input(),
+      primaryFabricFriendlyName: map['primaryFabricFriendlyName'] == null ? null : (map['primaryFabricFriendlyName'] as String).input(),
+      primaryNetworkFriendlyName: map['primaryNetworkFriendlyName'] == null ? null : (map['primaryNetworkFriendlyName'] as String).input(),
+      primaryNetworkId: map['primaryNetworkId'] == null ? null : (map['primaryNetworkId'] as String).input(),
+      recoveryFabricArmId: map['recoveryFabricArmId'] == null ? null : (map['recoveryFabricArmId'] as String).input(),
+      recoveryFabricFriendlyName: map['recoveryFabricFriendlyName'] == null ? null : (map['recoveryFabricFriendlyName'] as String).input(),
+      recoveryNetworkFriendlyName: map['recoveryNetworkFriendlyName'] == null ? null : (map['recoveryNetworkFriendlyName'] as String).input(),
+      recoveryNetworkId: map['recoveryNetworkId'] == null ? null : (map['recoveryNetworkId'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

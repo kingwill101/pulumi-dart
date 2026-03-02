@@ -19,13 +19,10 @@ class GetVirtualNetworkRuleArgs {
   /// [serverName] The name of the server.
   /// [virtualNetworkRuleName] The name of the virtual network rule.
   GetVirtualNetworkRuleArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> virtualNetworkRuleName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      virtualNetworkRuleName = pulumi.Input.asInput<String>(virtualNetworkRuleName);
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.virtualNetworkRuleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVirtualNetworkRuleArgs {
 
   factory GetVirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkRuleArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      virtualNetworkRuleName: pulumi.Output.create<String>(map['virtualNetworkRuleName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      virtualNetworkRuleName: (map['virtualNetworkRuleName'] as String).input(),
     );
   }
 }

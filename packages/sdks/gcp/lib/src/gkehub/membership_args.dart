@@ -39,19 +39,13 @@ class MembershipArgs {
   /// [membershipId] The client-provided identifier of the membership.
   /// [project] The ID of the project in which the resource belongs.
   MembershipArgs({
-    pulumi.Output<MembershipAuthority>? authority,
-    pulumi.Output<MembershipEndpoint>? endpoint,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> membershipId,
-    pulumi.Output<String>? project,
-  }) :
-      authority = pulumi.Input.asOptionalInput<MembershipAuthority>(authority),
-      endpoint = pulumi.Input.asOptionalInput<MembershipEndpoint>(endpoint),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.authority,
+    this.endpoint,
+    this.labels,
+    this.location,
+    required this.membershipId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class MembershipArgs {
 
   factory MembershipArgs.fromMap(Map<String, dynamic> map) {
     return MembershipArgs(
-      authority: map['authority'] == null ? null : pulumi.Output.create<MembershipAuthority>(MembershipAuthority.fromMap((map['authority'] as Map).cast<String, dynamic>())),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<MembershipEndpoint>(MembershipEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      membershipId: pulumi.Output.create<String>(map['membershipId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      authority: map['authority'] == null ? null : (MembershipAuthority.fromMap((map['authority'] as Map).cast<String, dynamic>())).input(),
+      endpoint: map['endpoint'] == null ? null : (MembershipEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

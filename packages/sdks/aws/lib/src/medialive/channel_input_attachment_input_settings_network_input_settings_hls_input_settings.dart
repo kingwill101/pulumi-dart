@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings {
   /// The bitrate is specified in bits per second, as in an HLS manifest.
-  final int? bandwidth;
+  final pulumi.Input<int>? bandwidth;
   /// Buffer segments.
-  final int? bufferSegments;
+  final pulumi.Input<int>? bufferSegments;
   /// The number of consecutive times that attempts to read a manifest or segment must fail before the input is considered unavailable.
-  final int? retries;
+  final pulumi.Input<int>? retries;
   /// The number of seconds between retries when an attempt to read a manifest or segment fails.
-  final int? retryInterval;
-  final String? scte35Source;
+  final pulumi.Input<int>? retryInterval;
+  final pulumi.Input<String>? scte35Source;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings].
   /// [bandwidth] The bitrate is specified in bits per second, as in an HLS manifest.
@@ -38,11 +39,11 @@ class ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings {
 
   factory ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings(
-      bandwidth: map['bandwidth'] == null ? null : map['bandwidth'] as int,
-      bufferSegments: map['bufferSegments'] == null ? null : map['bufferSegments'] as int,
-      retries: map['retries'] == null ? null : map['retries'] as int,
-      retryInterval: map['retryInterval'] == null ? null : map['retryInterval'] as int,
-      scte35Source: map['scte35Source'] == null ? null : map['scte35Source'] as String,
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      bufferSegments: map['bufferSegments'] == null ? null : (map['bufferSegments'] as int).input(),
+      retries: map['retries'] == null ? null : (map['retries'] as int).input(),
+      retryInterval: map['retryInterval'] == null ? null : (map['retryInterval'] as int).input(),
+      scte35Source: map['scte35Source'] == null ? null : (map['scte35Source'] as String).input(),
     );
   }
 }

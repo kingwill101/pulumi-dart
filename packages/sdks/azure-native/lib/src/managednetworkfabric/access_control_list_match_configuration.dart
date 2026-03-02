@@ -7,15 +7,15 @@ import 'access_control_list_match_condition.dart';
 /// Defines the match configuration that are supported to filter the traffic.
 class AccessControlListMatchConfiguration {
   /// List of actions that need to be performed for the matched conditions.
-  final List<AccessControlListAction>? actions;
+  final pulumi.Input<List<AccessControlListAction>>? actions;
   /// Type of IP Address. IPv4 or IPv6
-  final String? ipAddressType;
+  final pulumi.Input<String>? ipAddressType;
   /// List of the match conditions.
-  final List<AccessControlListMatchCondition>? matchConditions;
+  final pulumi.Input<List<AccessControlListMatchCondition>>? matchConditions;
   /// The name of the match configuration.
-  final String? matchConfigurationName;
+  final pulumi.Input<String>? matchConfigurationName;
   /// Sequence Number of the match configuration.
-  final double? sequenceNumber;
+  final pulumi.Input<double>? sequenceNumber;
 
   /// Creates a new [AccessControlListMatchConfiguration].
   /// [actions] List of actions that need to be performed for the matched conditions.
@@ -33,9 +33,9 @@ class AccessControlListMatchConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?actions == null ? null : pulumi.Input.encodeList<AccessControlListAction, Map<String, dynamic>>(actions!, (value) => value.toMap()),
+      'actions': ?pulumi.Input.mapOptionalInputValue<List<AccessControlListAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<AccessControlListAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipAddressType': ?ipAddressType,
-      'matchConditions': ?matchConditions == null ? null : pulumi.Input.encodeList<AccessControlListMatchCondition, Map<String, dynamic>>(matchConditions!, (value) => value.toMap()),
+      'matchConditions': ?pulumi.Input.mapOptionalInputValue<List<AccessControlListMatchCondition>, List<Map<String, dynamic>>>(matchConditions, (value) => pulumi.Input.encodeList<AccessControlListMatchCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'matchConfigurationName': ?matchConfigurationName,
       'sequenceNumber': ?sequenceNumber,
     };
@@ -43,11 +43,11 @@ class AccessControlListMatchConfiguration {
 
   factory AccessControlListMatchConfiguration.fromMap(Map<String, dynamic> map) {
     return AccessControlListMatchConfiguration(
-      actions: map['actions'] == null ? null : pulumi.Input.decodeList<AccessControlListAction>(map['actions'], (value) => AccessControlListAction.fromMap((value as Map).cast<String, dynamic>())),
-      ipAddressType: map['ipAddressType'] == null ? null : map['ipAddressType'] as String,
-      matchConditions: map['matchConditions'] == null ? null : pulumi.Input.decodeList<AccessControlListMatchCondition>(map['matchConditions'], (value) => AccessControlListMatchCondition.fromMap((value as Map).cast<String, dynamic>())),
-      matchConfigurationName: map['matchConfigurationName'] == null ? null : map['matchConfigurationName'] as String,
-      sequenceNumber: map['sequenceNumber'] == null ? null : map['sequenceNumber'] as double,
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<AccessControlListAction>(map['actions'], (value) => AccessControlListAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<AccessControlListMatchCondition>(map['matchConditions'], (value) => AccessControlListMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchConfigurationName: map['matchConfigurationName'] == null ? null : (map['matchConfigurationName'] as String).input(),
+      sequenceNumber: map['sequenceNumber'] == null ? null : (map['sequenceNumber'] as double).input(),
     );
   }
 }

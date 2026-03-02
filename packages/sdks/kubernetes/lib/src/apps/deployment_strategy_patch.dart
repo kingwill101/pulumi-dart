@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rolling_update_deployment_patch.dart';
 
 /// DeploymentStrategy describes how to replace existing pods with new ones.
 class DeploymentStrategyPatch {
   /// Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.
-  final RollingUpdateDeploymentPatch? rollingUpdate;
+  final pulumi.Input<RollingUpdateDeploymentPatch>? rollingUpdate;
   /// Type of deployment. Can be "Recreate" or "RollingUpdate". Default is RollingUpdate.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DeploymentStrategyPatch].
   /// [rollingUpdate] Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.
@@ -19,15 +20,15 @@ class DeploymentStrategyPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rollingUpdate': ?rollingUpdate == null ? null : rollingUpdate!.toMap(),
+      'rollingUpdate': ?pulumi.Input.mapOptionalInputValue<RollingUpdateDeploymentPatch, Map<String, dynamic>>(rollingUpdate, (value) => value.toMap()),
       'type': ?type,
     };
   }
 
   factory DeploymentStrategyPatch.fromMap(Map<String, dynamic> map) {
     return DeploymentStrategyPatch(
-      rollingUpdate: map['rollingUpdate'] == null ? null : RollingUpdateDeploymentPatch.fromMap((map['rollingUpdate'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : map['type'] as String,
+      rollingUpdate: map['rollingUpdate'] == null ? null : (RollingUpdateDeploymentPatch.fromMap((map['rollingUpdate'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

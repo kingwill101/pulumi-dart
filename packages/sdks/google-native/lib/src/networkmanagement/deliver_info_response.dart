@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the final state "deliver" and associated resource.
 class DeliverInfoResponse {
   /// URI of the resource that the packet is delivered to.
-  final String resourceUri;
+  final pulumi.Input<String> resourceUri;
   /// Target type where the packet is delivered to.
-  final String target;
+  final pulumi.Input<String> target;
 
   /// Creates a new [DeliverInfoResponse].
   /// [resourceUri] URI of the resource that the packet is delivered to.
@@ -25,8 +26,8 @@ class DeliverInfoResponse {
 
   factory DeliverInfoResponse.fromMap(Map<String, dynamic> map) {
     return DeliverInfoResponse(
-      resourceUri: map['resourceUri'] as String,
-      target: map['target'] as String,
+      resourceUri: (map['resourceUri'] as String).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

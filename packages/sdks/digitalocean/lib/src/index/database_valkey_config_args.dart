@@ -52,35 +52,21 @@ class DatabaseValkeyConfigArgs {
   /// [valkeyActiveExpireEffort] Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
   /// [valkeyMaxmemoryPolicy] Eviction policy model
   DatabaseValkeyConfigArgs({
-    pulumi.Output<String>? aclChannelsDefault,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<bool>? frequentSnapshots,
-    pulumi.Output<int>? ioThreads,
-    pulumi.Output<int>? lfuDecayTime,
-    pulumi.Output<int>? lfuLogFactor,
-    pulumi.Output<String>? notifyKeyspaceEvents,
-    pulumi.Output<int>? numberOfDatabases,
-    pulumi.Output<String>? persistence,
-    pulumi.Output<int>? pubsubClientOutputBufferLimit,
-    pulumi.Output<bool>? ssl,
-    pulumi.Output<int>? timeout,
-    pulumi.Output<int>? valkeyActiveExpireEffort,
-    pulumi.Output<String>? valkeyMaxmemoryPolicy,
-  }) :
-      aclChannelsDefault = pulumi.Input.asOptionalInput<String>(aclChannelsDefault),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      frequentSnapshots = pulumi.Input.asOptionalInput<bool>(frequentSnapshots),
-      ioThreads = pulumi.Input.asOptionalInput<int>(ioThreads),
-      lfuDecayTime = pulumi.Input.asOptionalInput<int>(lfuDecayTime),
-      lfuLogFactor = pulumi.Input.asOptionalInput<int>(lfuLogFactor),
-      notifyKeyspaceEvents = pulumi.Input.asOptionalInput<String>(notifyKeyspaceEvents),
-      numberOfDatabases = pulumi.Input.asOptionalInput<int>(numberOfDatabases),
-      persistence = pulumi.Input.asOptionalInput<String>(persistence),
-      pubsubClientOutputBufferLimit = pulumi.Input.asOptionalInput<int>(pubsubClientOutputBufferLimit),
-      ssl = pulumi.Input.asOptionalInput<bool>(ssl),
-      timeout = pulumi.Input.asOptionalInput<int>(timeout),
-      valkeyActiveExpireEffort = pulumi.Input.asOptionalInput<int>(valkeyActiveExpireEffort),
-      valkeyMaxmemoryPolicy = pulumi.Input.asOptionalInput<String>(valkeyMaxmemoryPolicy);
+    this.aclChannelsDefault,
+    required this.clusterId,
+    this.frequentSnapshots,
+    this.ioThreads,
+    this.lfuDecayTime,
+    this.lfuLogFactor,
+    this.notifyKeyspaceEvents,
+    this.numberOfDatabases,
+    this.persistence,
+    this.pubsubClientOutputBufferLimit,
+    this.ssl,
+    this.timeout,
+    this.valkeyActiveExpireEffort,
+    this.valkeyMaxmemoryPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class DatabaseValkeyConfigArgs {
 
   factory DatabaseValkeyConfigArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseValkeyConfigArgs(
-      aclChannelsDefault: map['aclChannelsDefault'] == null ? null : pulumi.Output.create<String>(map['aclChannelsDefault'] as String),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      frequentSnapshots: map['frequentSnapshots'] == null ? null : pulumi.Output.create<bool>(map['frequentSnapshots'] as bool),
-      ioThreads: map['ioThreads'] == null ? null : pulumi.Output.create<int>(map['ioThreads'] as int),
-      lfuDecayTime: map['lfuDecayTime'] == null ? null : pulumi.Output.create<int>(map['lfuDecayTime'] as int),
-      lfuLogFactor: map['lfuLogFactor'] == null ? null : pulumi.Output.create<int>(map['lfuLogFactor'] as int),
-      notifyKeyspaceEvents: map['notifyKeyspaceEvents'] == null ? null : pulumi.Output.create<String>(map['notifyKeyspaceEvents'] as String),
-      numberOfDatabases: map['numberOfDatabases'] == null ? null : pulumi.Output.create<int>(map['numberOfDatabases'] as int),
-      persistence: map['persistence'] == null ? null : pulumi.Output.create<String>(map['persistence'] as String),
-      pubsubClientOutputBufferLimit: map['pubsubClientOutputBufferLimit'] == null ? null : pulumi.Output.create<int>(map['pubsubClientOutputBufferLimit'] as int),
-      ssl: map['ssl'] == null ? null : pulumi.Output.create<bool>(map['ssl'] as bool),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<int>(map['timeout'] as int),
-      valkeyActiveExpireEffort: map['valkeyActiveExpireEffort'] == null ? null : pulumi.Output.create<int>(map['valkeyActiveExpireEffort'] as int),
-      valkeyMaxmemoryPolicy: map['valkeyMaxmemoryPolicy'] == null ? null : pulumi.Output.create<String>(map['valkeyMaxmemoryPolicy'] as String),
+      aclChannelsDefault: map['aclChannelsDefault'] == null ? null : (map['aclChannelsDefault'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      frequentSnapshots: map['frequentSnapshots'] == null ? null : (map['frequentSnapshots'] as bool).input(),
+      ioThreads: map['ioThreads'] == null ? null : (map['ioThreads'] as int).input(),
+      lfuDecayTime: map['lfuDecayTime'] == null ? null : (map['lfuDecayTime'] as int).input(),
+      lfuLogFactor: map['lfuLogFactor'] == null ? null : (map['lfuLogFactor'] as int).input(),
+      notifyKeyspaceEvents: map['notifyKeyspaceEvents'] == null ? null : (map['notifyKeyspaceEvents'] as String).input(),
+      numberOfDatabases: map['numberOfDatabases'] == null ? null : (map['numberOfDatabases'] as int).input(),
+      persistence: map['persistence'] == null ? null : (map['persistence'] as String).input(),
+      pubsubClientOutputBufferLimit: map['pubsubClientOutputBufferLimit'] == null ? null : (map['pubsubClientOutputBufferLimit'] as int).input(),
+      ssl: map['ssl'] == null ? null : (map['ssl'] as bool).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      valkeyActiveExpireEffort: map['valkeyActiveExpireEffort'] == null ? null : (map['valkeyActiveExpireEffort'] as int).input(),
+      valkeyMaxmemoryPolicy: map['valkeyMaxmemoryPolicy'] == null ? null : (map['valkeyMaxmemoryPolicy'] as String).input(),
     );
   }
 }

@@ -47,29 +47,18 @@ class TrafficMirrorFilterRuleArgs {
   /// [trafficDirection] Direction of traffic to be captured. Valid values are `ingress` and `egress`
   /// [trafficMirrorFilterId] ID of the traffic mirror filter to which this rule should be added
   TrafficMirrorFilterRuleArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> destinationCidrBlock,
-    pulumi.Output<TrafficMirrorFilterRuleDestinationPortRange>? destinationPortRange,
-    pulumi.Output<int>? protocol,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> ruleAction,
-    required pulumi.Output<int> ruleNumber,
-    required pulumi.Output<String> sourceCidrBlock,
-    pulumi.Output<TrafficMirrorFilterRuleSourcePortRange>? sourcePortRange,
-    required pulumi.Output<String> trafficDirection,
-    required pulumi.Output<String> trafficMirrorFilterId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationCidrBlock = pulumi.Input.asInput<String>(destinationCidrBlock),
-      destinationPortRange = pulumi.Input.asOptionalInput<TrafficMirrorFilterRuleDestinationPortRange>(destinationPortRange),
-      protocol = pulumi.Input.asOptionalInput<int>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleAction = pulumi.Input.asInput<String>(ruleAction),
-      ruleNumber = pulumi.Input.asInput<int>(ruleNumber),
-      sourceCidrBlock = pulumi.Input.asInput<String>(sourceCidrBlock),
-      sourcePortRange = pulumi.Input.asOptionalInput<TrafficMirrorFilterRuleSourcePortRange>(sourcePortRange),
-      trafficDirection = pulumi.Input.asInput<String>(trafficDirection),
-      trafficMirrorFilterId = pulumi.Input.asInput<String>(trafficMirrorFilterId);
+    this.description,
+    required this.destinationCidrBlock,
+    this.destinationPortRange,
+    this.protocol,
+    this.region,
+    required this.ruleAction,
+    required this.ruleNumber,
+    required this.sourceCidrBlock,
+    this.sourcePortRange,
+    required this.trafficDirection,
+    required this.trafficMirrorFilterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class TrafficMirrorFilterRuleArgs {
 
   factory TrafficMirrorFilterRuleArgs.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorFilterRuleArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationCidrBlock: pulumi.Output.create<String>(map['destinationCidrBlock'] as String),
-      destinationPortRange: map['destinationPortRange'] == null ? null : pulumi.Output.create<TrafficMirrorFilterRuleDestinationPortRange>(TrafficMirrorFilterRuleDestinationPortRange.fromMap((map['destinationPortRange'] as Map).cast<String, dynamic>())),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<int>(map['protocol'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleAction: pulumi.Output.create<String>(map['ruleAction'] as String),
-      ruleNumber: pulumi.Output.create<int>(map['ruleNumber'] as int),
-      sourceCidrBlock: pulumi.Output.create<String>(map['sourceCidrBlock'] as String),
-      sourcePortRange: map['sourcePortRange'] == null ? null : pulumi.Output.create<TrafficMirrorFilterRuleSourcePortRange>(TrafficMirrorFilterRuleSourcePortRange.fromMap((map['sourcePortRange'] as Map).cast<String, dynamic>())),
-      trafficDirection: pulumi.Output.create<String>(map['trafficDirection'] as String),
-      trafficMirrorFilterId: pulumi.Output.create<String>(map['trafficMirrorFilterId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
+      destinationPortRange: map['destinationPortRange'] == null ? null : (TrafficMirrorFilterRuleDestinationPortRange.fromMap((map['destinationPortRange'] as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleAction: (map['ruleAction'] as String).input(),
+      ruleNumber: (map['ruleNumber'] as int).input(),
+      sourceCidrBlock: (map['sourceCidrBlock'] as String).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (TrafficMirrorFilterRuleSourcePortRange.fromMap((map['sourcePortRange'] as Map).cast<String, dynamic>())).input(),
+      trafficDirection: (map['trafficDirection'] as String).input(),
+      trafficMirrorFilterId: (map['trafficMirrorFilterId'] as String).input(),
     );
   }
 }

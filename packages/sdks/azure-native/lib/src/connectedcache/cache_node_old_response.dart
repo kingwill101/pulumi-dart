@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model representing Cache Node for ConnectedCache resource
 class CacheNodeOldResponse {
   /// statusCode used to get code details of Mcc response object
-  final String? statusCode;
+  final pulumi.Input<String>? statusCode;
   /// statusDetails used to get inner details of Mcc response object
-  final String? statusDetails;
+  final pulumi.Input<String>? statusDetails;
   /// statusText used to get status details in string format of Mcc response object
-  final String? statusText;
+  final pulumi.Input<String>? statusText;
 
   /// Creates a new [CacheNodeOldResponse].
   /// [statusCode] statusCode used to get code details of Mcc response object
@@ -30,9 +31,9 @@ class CacheNodeOldResponse {
 
   factory CacheNodeOldResponse.fromMap(Map<String, dynamic> map) {
     return CacheNodeOldResponse(
-      statusCode: map['statusCode'] == null ? null : map['statusCode'] as String,
-      statusDetails: map['statusDetails'] == null ? null : map['statusDetails'] as String,
-      statusText: map['statusText'] == null ? null : map['statusText'] as String,
+      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails'] as String).input(),
+      statusText: map['statusText'] == null ? null : (map['statusText'] as String).input(),
     );
   }
 }

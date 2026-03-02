@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Commitment for a particular license resource.
 class LicenseResourceCommitmentResponse {
   /// The number of licenses purchased.
-  final String amount;
+  final pulumi.Input<String> amount;
   /// Specifies the core range of the instance for which this license applies.
-  final String coresPerLicense;
+  final pulumi.Input<String> coresPerLicense;
   /// Any applicable license URI.
-  final String license;
+  final pulumi.Input<String> license;
 
   /// Creates a new [LicenseResourceCommitmentResponse].
   /// [amount] The number of licenses purchased.
@@ -30,9 +31,9 @@ class LicenseResourceCommitmentResponse {
 
   factory LicenseResourceCommitmentResponse.fromMap(Map<String, dynamic> map) {
     return LicenseResourceCommitmentResponse(
-      amount: map['amount'] as String,
-      coresPerLicense: map['coresPerLicense'] as String,
-      license: map['license'] as String,
+      amount: (map['amount'] as String).input(),
+      coresPerLicense: (map['coresPerLicense'] as String).input(),
+      license: (map['license'] as String).input(),
     );
   }
 }

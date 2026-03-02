@@ -38,27 +38,17 @@ class TunnelState {
   /// [tunnelStage] The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
   /// [tunnelType] The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
   TunnelState({
-    pulumi.Output<List<TunnelChannel>>? channels,
-    pulumi.Output<int>? createTime,
-    pulumi.Output<bool>? expired,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? tableName,
-    pulumi.Output<String>? tunnelId,
-    pulumi.Output<String>? tunnelName,
-    pulumi.Output<int>? tunnelRpo,
-    pulumi.Output<String>? tunnelStage,
-    pulumi.Output<String>? tunnelType,
-  }) :
-      channels = pulumi.Input.asOptionalInput<List<TunnelChannel>>(channels),
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      expired = pulumi.Input.asOptionalInput<bool>(expired),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName),
-      tunnelId = pulumi.Input.asOptionalInput<String>(tunnelId),
-      tunnelName = pulumi.Input.asOptionalInput<String>(tunnelName),
-      tunnelRpo = pulumi.Input.asOptionalInput<int>(tunnelRpo),
-      tunnelStage = pulumi.Input.asOptionalInput<String>(tunnelStage),
-      tunnelType = pulumi.Input.asOptionalInput<String>(tunnelType);
+    this.channels,
+    this.createTime,
+    this.expired,
+    this.instanceName,
+    this.tableName,
+    this.tunnelId,
+    this.tunnelName,
+    this.tunnelRpo,
+    this.tunnelStage,
+    this.tunnelType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class TunnelState {
 
   factory TunnelState.fromMap(Map<String, dynamic> map) {
     return TunnelState(
-      channels: map['channels'] == null ? null : pulumi.Output.create<List<TunnelChannel>>(pulumi.Input.decodeList<TunnelChannel>(map['channels'], (value) => TunnelChannel.fromMap((value as Map).cast<String, dynamic>()))),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      expired: map['expired'] == null ? null : pulumi.Output.create<bool>(map['expired'] as bool),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
-      tunnelId: map['tunnelId'] == null ? null : pulumi.Output.create<String>(map['tunnelId'] as String),
-      tunnelName: map['tunnelName'] == null ? null : pulumi.Output.create<String>(map['tunnelName'] as String),
-      tunnelRpo: map['tunnelRpo'] == null ? null : pulumi.Output.create<int>(map['tunnelRpo'] as int),
-      tunnelStage: map['tunnelStage'] == null ? null : pulumi.Output.create<String>(map['tunnelStage'] as String),
-      tunnelType: map['tunnelType'] == null ? null : pulumi.Output.create<String>(map['tunnelType'] as String),
+      channels: map['channels'] == null ? null : (pulumi.Input.decodeList<TunnelChannel>(map['channels'], (value) => TunnelChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      expired: map['expired'] == null ? null : (map['expired'] as bool).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      tunnelId: map['tunnelId'] == null ? null : (map['tunnelId'] as String).input(),
+      tunnelName: map['tunnelName'] == null ? null : (map['tunnelName'] as String).input(),
+      tunnelRpo: map['tunnelRpo'] == null ? null : (map['tunnelRpo'] as int).input(),
+      tunnelStage: map['tunnelStage'] == null ? null : (map['tunnelStage'] as String).input(),
+      tunnelType: map['tunnelType'] == null ? null : (map['tunnelType'] as String).input(),
     );
   }
 }

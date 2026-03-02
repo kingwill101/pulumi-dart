@@ -5,9 +5,9 @@ import 'node_group_ip_allocation_policy_bond_policy_bond.dart';
 
 class NodeGroupIpAllocationPolicyBondPolicy {
   /// Default bond cluster subnet
-  final String? bondDefaultSubnet;
+  final pulumi.Input<String>? bondDefaultSubnet;
   /// Bond information See `bonds` below.
-  final List<NodeGroupIpAllocationPolicyBondPolicyBond>? bonds;
+  final pulumi.Input<List<NodeGroupIpAllocationPolicyBondPolicyBond>>? bonds;
 
   /// Creates a new [NodeGroupIpAllocationPolicyBondPolicy].
   /// [bondDefaultSubnet] Default bond cluster subnet
@@ -20,14 +20,14 @@ class NodeGroupIpAllocationPolicyBondPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bondDefaultSubnet': ?bondDefaultSubnet,
-      'bonds': ?bonds == null ? null : pulumi.Input.encodeList<NodeGroupIpAllocationPolicyBondPolicyBond, Map<String, dynamic>>(bonds!, (value) => value.toMap()),
+      'bonds': ?pulumi.Input.mapOptionalInputValue<List<NodeGroupIpAllocationPolicyBondPolicyBond>, List<Map<String, dynamic>>>(bonds, (value) => pulumi.Input.encodeList<NodeGroupIpAllocationPolicyBondPolicyBond, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NodeGroupIpAllocationPolicyBondPolicy.fromMap(Map<String, dynamic> map) {
     return NodeGroupIpAllocationPolicyBondPolicy(
-      bondDefaultSubnet: map['bondDefaultSubnet'] == null ? null : map['bondDefaultSubnet'] as String,
-      bonds: map['bonds'] == null ? null : pulumi.Input.decodeList<NodeGroupIpAllocationPolicyBondPolicyBond>(map['bonds'], (value) => NodeGroupIpAllocationPolicyBondPolicyBond.fromMap((value as Map).cast<String, dynamic>())),
+      bondDefaultSubnet: map['bondDefaultSubnet'] == null ? null : (map['bondDefaultSubnet'] as String).input(),
+      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<NodeGroupIpAllocationPolicyBondPolicyBond>(map['bonds'], (value) => NodeGroupIpAllocationPolicyBondPolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

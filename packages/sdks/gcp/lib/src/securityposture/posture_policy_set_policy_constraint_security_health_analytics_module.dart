@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule {
   /// The state of enablement for the module at its level of the resource hierarchy.
   /// Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final String? moduleEnablementState;
+  final pulumi.Input<String>? moduleEnablementState;
   /// The name of the module eg: BIGQUERY_TABLE_CMEK_DISABLED.
-  final String moduleName;
+  final pulumi.Input<String> moduleName;
 
   /// Creates a new [PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule].
   /// [moduleEnablementState] The state of enablement for the module at its level of the resource hierarchy.
@@ -25,8 +26,8 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule {
 
   factory PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule(
-      moduleEnablementState: map['moduleEnablementState'] == null ? null : map['moduleEnablementState'] as String,
-      moduleName: map['moduleName'] as String,
+      moduleEnablementState: map['moduleEnablementState'] == null ? null : (map['moduleEnablementState'] as String).input(),
+      moduleName: (map['moduleName'] as String).input(),
     );
   }
 }

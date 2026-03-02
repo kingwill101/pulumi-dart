@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PostgresqlClusterServer {
   /// The Fully Qualified Domain Name of the server.
-  final String? fqdn;
+  final pulumi.Input<String>? fqdn;
   /// The name which should be used for this Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [PostgresqlClusterServer].
   /// [fqdn] The Fully Qualified Domain Name of the server.
@@ -24,8 +25,8 @@ class PostgresqlClusterServer {
 
   factory PostgresqlClusterServer.fromMap(Map<String, dynamic> map) {
     return PostgresqlClusterServer(
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

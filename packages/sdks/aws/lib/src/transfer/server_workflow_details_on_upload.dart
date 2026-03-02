@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerWorkflowDetailsOnUpload {
   /// Includes the necessary permissions for S3, EFS, and Lambda operations that Transfer can assume, so that all workflow steps can operate on the required resources.
-  final String executionRole;
+  final pulumi.Input<String> executionRole;
   /// A unique identifier for the workflow.
-  final String workflowId;
+  final pulumi.Input<String> workflowId;
 
   /// Creates a new [ServerWorkflowDetailsOnUpload].
   /// [executionRole] Includes the necessary permissions for S3, EFS, and Lambda operations that Transfer can assume, so that all workflow steps can operate on the required resources.
@@ -24,8 +25,8 @@ class ServerWorkflowDetailsOnUpload {
 
   factory ServerWorkflowDetailsOnUpload.fromMap(Map<String, dynamic> map) {
     return ServerWorkflowDetailsOnUpload(
-      executionRole: map['executionRole'] as String,
-      workflowId: map['workflowId'] as String,
+      executionRole: (map['executionRole'] as String).input(),
+      workflowId: (map['workflowId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks {
   /// IPV4 address
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// IPV4 netmask
-  final String? mask;
+  final pulumi.Input<String>? mask;
 
   /// Creates a new [SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks].
   /// [ipAddress] IPV4 address
@@ -24,8 +25,8 @@ class SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMask
 
   factory SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks.fromMap(Map<String, dynamic> map) {
     return SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      mask: map['mask'] == null ? null : map['mask'] as String,
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      mask: map['mask'] == null ? null : (map['mask'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class InstanceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceId] The ID of the service that you want to use to create the instance.
   InstanceArgs({
-    required pulumi.Output<Map<String, String>> attributes,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceId,
-  }) :
-      attributes = pulumi.Input.asInput<Map<String, String>>(attributes),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    required this.attributes,
+    required this.instanceId,
+    this.region,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      attributes: pulumi.Output.create<Map<String, String>>((map['attributes'] as Map).cast<String, String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      attributes: ((map['attributes'] as Map).cast<String, String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Wrapper for the App Engine service version attributes.
 class AppEngineVersionEndpoint {
   /// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [AppEngineVersionEndpoint].
   /// [uri] An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
@@ -20,7 +21,7 @@ class AppEngineVersionEndpoint {
 
   factory AppEngineVersionEndpoint.fromMap(Map<String, dynamic> map) {
     return AppEngineVersionEndpoint(
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

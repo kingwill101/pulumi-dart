@@ -7,9 +7,9 @@ import 'otlp_configuration_response.dart';
 /// Configuration of Open Telemetry destinations
 class DestinationsConfigurationResponse {
   /// Open telemetry datadog destination configuration
-  final DataDogConfigurationResponse? dataDogConfiguration;
+  final pulumi.Input<DataDogConfigurationResponse>? dataDogConfiguration;
   /// Open telemetry otlp configurations
-  final List<OtlpConfigurationResponse>? otlpConfigurations;
+  final pulumi.Input<List<OtlpConfigurationResponse>>? otlpConfigurations;
 
   /// Creates a new [DestinationsConfigurationResponse].
   /// [dataDogConfiguration] Open telemetry datadog destination configuration
@@ -21,15 +21,15 @@ class DestinationsConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataDogConfiguration': ?dataDogConfiguration == null ? null : dataDogConfiguration!.toMap(),
-      'otlpConfigurations': ?otlpConfigurations == null ? null : pulumi.Input.encodeList<OtlpConfigurationResponse, Map<String, dynamic>>(otlpConfigurations!, (value) => value.toMap()),
+      'dataDogConfiguration': ?pulumi.Input.mapOptionalInputValue<DataDogConfigurationResponse, Map<String, dynamic>>(dataDogConfiguration, (value) => value.toMap()),
+      'otlpConfigurations': ?pulumi.Input.mapOptionalInputValue<List<OtlpConfigurationResponse>, List<Map<String, dynamic>>>(otlpConfigurations, (value) => pulumi.Input.encodeList<OtlpConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DestinationsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DestinationsConfigurationResponse(
-      dataDogConfiguration: map['dataDogConfiguration'] == null ? null : DataDogConfigurationResponse.fromMap((map['dataDogConfiguration'] as Map).cast<String, dynamic>()),
-      otlpConfigurations: map['otlpConfigurations'] == null ? null : pulumi.Input.decodeList<OtlpConfigurationResponse>(map['otlpConfigurations'], (value) => OtlpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      dataDogConfiguration: map['dataDogConfiguration'] == null ? null : (DataDogConfigurationResponse.fromMap((map['dataDogConfiguration'] as Map).cast<String, dynamic>())).input(),
+      otlpConfigurations: map['otlpConfigurations'] == null ? null : (pulumi.Input.decodeList<OtlpConfigurationResponse>(map['otlpConfigurations'], (value) => OtlpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

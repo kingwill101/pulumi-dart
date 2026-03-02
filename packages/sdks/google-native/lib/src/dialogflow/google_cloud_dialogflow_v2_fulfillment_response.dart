@@ -7,15 +7,15 @@ import 'google_cloud_dialogflow_v2_fulfillment_generic_web_service_response.dart
 /// By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
 class GoogleCloudDialogflowV2FulfillmentResponse {
   /// Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Optional. Whether fulfillment is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Optional. The field defines whether the fulfillment is enabled for certain features.
-  final List<GoogleCloudDialogflowV2FulfillmentFeatureResponse> features;
+  final pulumi.Input<List<GoogleCloudDialogflowV2FulfillmentFeatureResponse>> features;
   /// Configuration for a generic web service.
-  final GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse genericWebService;
+  final pulumi.Input<GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse> genericWebService;
   /// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GoogleCloudDialogflowV2FulfillmentResponse].
   /// [displayName] Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
@@ -35,19 +35,19 @@ class GoogleCloudDialogflowV2FulfillmentResponse {
     return <String, dynamic>{
       'displayName': displayName,
       'enabled': enabled,
-      'features': pulumi.Input.encodeList<GoogleCloudDialogflowV2FulfillmentFeatureResponse, Map<String, dynamic>>(features, (value) => value.toMap()),
-      'genericWebService': genericWebService.toMap(),
+      'features': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowV2FulfillmentFeatureResponse>, List<Map<String, dynamic>>>(features, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowV2FulfillmentFeatureResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'genericWebService': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse, Map<String, dynamic>>(genericWebService, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory GoogleCloudDialogflowV2FulfillmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2FulfillmentResponse(
-      displayName: map['displayName'] as String,
-      enabled: map['enabled'] as bool,
-      features: pulumi.Input.decodeList<GoogleCloudDialogflowV2FulfillmentFeatureResponse>(map['features'], (value) => GoogleCloudDialogflowV2FulfillmentFeatureResponse.fromMap((value as Map).cast<String, dynamic>())),
-      genericWebService: GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse.fromMap((map['genericWebService'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
+      displayName: (map['displayName'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      features: (pulumi.Input.decodeList<GoogleCloudDialogflowV2FulfillmentFeatureResponse>(map['features'], (value) => GoogleCloudDialogflowV2FulfillmentFeatureResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      genericWebService: (GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource creation begin.
 class ResourceTypeExtensionOptionsResourceCreationBeginResponse {
   /// The request.
-  final List<String>? request;
+  final pulumi.Input<List<String>>? request;
   /// The response.
-  final List<String>? response;
+  final pulumi.Input<List<String>>? response;
 
   /// Creates a new [ResourceTypeExtensionOptionsResourceCreationBeginResponse].
   /// [request] The request.
@@ -25,8 +26,8 @@ class ResourceTypeExtensionOptionsResourceCreationBeginResponse {
 
   factory ResourceTypeExtensionOptionsResourceCreationBeginResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeExtensionOptionsResourceCreationBeginResponse(
-      request: map['request'] == null ? null : (map['request'] as List).cast<String>(),
-      response: map['response'] == null ? null : (map['response'] as List).cast<String>(),
+      request: map['request'] == null ? null : ((map['request'] as List).cast<String>()).input(),
+      response: map['response'] == null ? null : ((map['response'] as List).cast<String>()).input(),
     );
   }
 }

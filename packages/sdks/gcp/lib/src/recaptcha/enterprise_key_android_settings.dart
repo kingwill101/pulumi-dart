@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseKeyAndroidSettings {
   /// If set to true, it means allowed_package_names will not be enforced.
-  final bool? allowAllPackageNames;
+  final pulumi.Input<bool>? allowAllPackageNames;
   /// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
-  final List<String>? allowedPackageNames;
+  final pulumi.Input<List<String>>? allowedPackageNames;
 
   /// Creates a new [EnterpriseKeyAndroidSettings].
   /// [allowAllPackageNames] If set to true, it means allowed_package_names will not be enforced.
@@ -24,8 +25,8 @@ class EnterpriseKeyAndroidSettings {
 
   factory EnterpriseKeyAndroidSettings.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyAndroidSettings(
-      allowAllPackageNames: map['allowAllPackageNames'] == null ? null : map['allowAllPackageNames'] as bool,
-      allowedPackageNames: map['allowedPackageNames'] == null ? null : (map['allowedPackageNames'] as List).cast<String>(),
+      allowAllPackageNames: map['allowAllPackageNames'] == null ? null : (map['allowAllPackageNames'] as bool).input(),
+      allowedPackageNames: map['allowedPackageNames'] == null ? null : ((map['allowedPackageNames'] as List).cast<String>()).input(),
     );
   }
 }

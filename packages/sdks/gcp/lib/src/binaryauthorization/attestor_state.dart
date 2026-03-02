@@ -23,15 +23,11 @@ class AttestorState {
   /// [name] The resource name.
   /// [project] The ID of the project in which the resource belongs.
   AttestorState({
-    pulumi.Output<AttestorAttestationAuthorityNote>? attestationAuthorityNote,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      attestationAuthorityNote = pulumi.Input.asOptionalInput<AttestorAttestationAuthorityNote>(attestationAuthorityNote),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.attestationAuthorityNote,
+    this.description,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class AttestorState {
 
   factory AttestorState.fromMap(Map<String, dynamic> map) {
     return AttestorState(
-      attestationAuthorityNote: map['attestationAuthorityNote'] == null ? null : pulumi.Output.create<AttestorAttestationAuthorityNote>(AttestorAttestationAuthorityNote.fromMap((map['attestationAuthorityNote'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      attestationAuthorityNote: map['attestationAuthorityNote'] == null ? null : (AttestorAttestationAuthorityNote.fromMap((map['attestationAuthorityNote'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

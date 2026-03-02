@@ -23,13 +23,10 @@ class HandshakeArgs {
   /// [targetEntity] The ID or logon email address of the account that you want to invite.
   /// [targetType] The type of the invited account. Valid values:
   HandshakeArgs({
-    pulumi.Output<String>? note,
-    required pulumi.Output<String> targetEntity,
-    required pulumi.Output<String> targetType,
-  }) :
-      note = pulumi.Input.asOptionalInput<String>(note),
-      targetEntity = pulumi.Input.asInput<String>(targetEntity),
-      targetType = pulumi.Input.asInput<String>(targetType);
+    this.note,
+    required this.targetEntity,
+    required this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class HandshakeArgs {
 
   factory HandshakeArgs.fromMap(Map<String, dynamic> map) {
     return HandshakeArgs(
-      note: map['note'] == null ? null : pulumi.Output.create<String>(map['note'] as String),
-      targetEntity: pulumi.Output.create<String>(map['targetEntity'] as String),
-      targetType: pulumi.Output.create<String>(map['targetType'] as String),
+      note: map['note'] == null ? null : (map['note'] as String).input(),
+      targetEntity: (map['targetEntity'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
     );
   }
 }

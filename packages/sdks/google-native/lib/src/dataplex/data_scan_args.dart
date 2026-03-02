@@ -42,27 +42,17 @@ class DataScanArgs {
   /// [location] Optional.
   /// [project] Optional.
   DataScanArgs({
-    required pulumi.Output<GoogleCloudDataplexV1DataSource> data,
-    pulumi.Output<GoogleCloudDataplexV1DataProfileSpec>? dataProfileSpec,
-    pulumi.Output<GoogleCloudDataplexV1DataQualitySpec>? dataQualitySpec,
-    required pulumi.Output<String> dataScanId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GoogleCloudDataplexV1DataScanExecutionSpec>? executionSpec,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      data = pulumi.Input.asInput<GoogleCloudDataplexV1DataSource>(data),
-      dataProfileSpec = pulumi.Input.asOptionalInput<GoogleCloudDataplexV1DataProfileSpec>(dataProfileSpec),
-      dataQualitySpec = pulumi.Input.asOptionalInput<GoogleCloudDataplexV1DataQualitySpec>(dataQualitySpec),
-      dataScanId = pulumi.Input.asInput<String>(dataScanId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      executionSpec = pulumi.Input.asOptionalInput<GoogleCloudDataplexV1DataScanExecutionSpec>(executionSpec),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.data,
+    this.dataProfileSpec,
+    this.dataQualitySpec,
+    required this.dataScanId,
+    this.description,
+    this.displayName,
+    this.executionSpec,
+    this.labels,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class DataScanArgs {
 
   factory DataScanArgs.fromMap(Map<String, dynamic> map) {
     return DataScanArgs(
-      data: pulumi.Output.create<GoogleCloudDataplexV1DataSource>(GoogleCloudDataplexV1DataSource.fromMap((map['data'] as Map).cast<String, dynamic>())),
-      dataProfileSpec: map['dataProfileSpec'] == null ? null : pulumi.Output.create<GoogleCloudDataplexV1DataProfileSpec>(GoogleCloudDataplexV1DataProfileSpec.fromMap((map['dataProfileSpec'] as Map).cast<String, dynamic>())),
-      dataQualitySpec: map['dataQualitySpec'] == null ? null : pulumi.Output.create<GoogleCloudDataplexV1DataQualitySpec>(GoogleCloudDataplexV1DataQualitySpec.fromMap((map['dataQualitySpec'] as Map).cast<String, dynamic>())),
-      dataScanId: pulumi.Output.create<String>(map['dataScanId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      executionSpec: map['executionSpec'] == null ? null : pulumi.Output.create<GoogleCloudDataplexV1DataScanExecutionSpec>(GoogleCloudDataplexV1DataScanExecutionSpec.fromMap((map['executionSpec'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      data: (GoogleCloudDataplexV1DataSource.fromMap((map['data'] as Map).cast<String, dynamic>())).input(),
+      dataProfileSpec: map['dataProfileSpec'] == null ? null : (GoogleCloudDataplexV1DataProfileSpec.fromMap((map['dataProfileSpec'] as Map).cast<String, dynamic>())).input(),
+      dataQualitySpec: map['dataQualitySpec'] == null ? null : (GoogleCloudDataplexV1DataQualitySpec.fromMap((map['dataQualitySpec'] as Map).cast<String, dynamic>())).input(),
+      dataScanId: (map['dataScanId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      executionSpec: map['executionSpec'] == null ? null : (GoogleCloudDataplexV1DataScanExecutionSpec.fromMap((map['executionSpec'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

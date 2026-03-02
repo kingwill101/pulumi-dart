@@ -72,31 +72,19 @@ class DatabaseArgs {
   /// [tags] Input only. A map of resource manager tags. Resource manager tag keys
   /// [type] The type of the database.
   DatabaseArgs({
-    pulumi.Output<String>? appEngineIntegrationMode,
-    pulumi.Output<DatabaseCmekConfig>? cmekConfig,
-    pulumi.Output<String>? concurrencyMode,
-    pulumi.Output<String>? databaseEdition,
-    pulumi.Output<String>? deleteProtectionState,
-    pulumi.Output<String>? deletionPolicy,
-    required pulumi.Output<String> locationId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pointInTimeRecoveryEnablement,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-  }) :
-      appEngineIntegrationMode = pulumi.Input.asOptionalInput<String>(appEngineIntegrationMode),
-      cmekConfig = pulumi.Input.asOptionalInput<DatabaseCmekConfig>(cmekConfig),
-      concurrencyMode = pulumi.Input.asOptionalInput<String>(concurrencyMode),
-      databaseEdition = pulumi.Input.asOptionalInput<String>(databaseEdition),
-      deleteProtectionState = pulumi.Input.asOptionalInput<String>(deleteProtectionState),
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      locationId = pulumi.Input.asInput<String>(locationId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pointInTimeRecoveryEnablement = pulumi.Input.asOptionalInput<String>(pointInTimeRecoveryEnablement),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type);
+    this.appEngineIntegrationMode,
+    this.cmekConfig,
+    this.concurrencyMode,
+    this.databaseEdition,
+    this.deleteProtectionState,
+    this.deletionPolicy,
+    required this.locationId,
+    this.name,
+    this.pointInTimeRecoveryEnablement,
+    this.project,
+    this.tags,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -117,18 +105,18 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      appEngineIntegrationMode: map['appEngineIntegrationMode'] == null ? null : pulumi.Output.create<String>(map['appEngineIntegrationMode'] as String),
-      cmekConfig: map['cmekConfig'] == null ? null : pulumi.Output.create<DatabaseCmekConfig>(DatabaseCmekConfig.fromMap((map['cmekConfig'] as Map).cast<String, dynamic>())),
-      concurrencyMode: map['concurrencyMode'] == null ? null : pulumi.Output.create<String>(map['concurrencyMode'] as String),
-      databaseEdition: map['databaseEdition'] == null ? null : pulumi.Output.create<String>(map['databaseEdition'] as String),
-      deleteProtectionState: map['deleteProtectionState'] == null ? null : pulumi.Output.create<String>(map['deleteProtectionState'] as String),
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      locationId: pulumi.Output.create<String>(map['locationId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pointInTimeRecoveryEnablement: map['pointInTimeRecoveryEnablement'] == null ? null : pulumi.Output.create<String>(map['pointInTimeRecoveryEnablement'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      appEngineIntegrationMode: map['appEngineIntegrationMode'] == null ? null : (map['appEngineIntegrationMode'] as String).input(),
+      cmekConfig: map['cmekConfig'] == null ? null : (DatabaseCmekConfig.fromMap((map['cmekConfig'] as Map).cast<String, dynamic>())).input(),
+      concurrencyMode: map['concurrencyMode'] == null ? null : (map['concurrencyMode'] as String).input(),
+      databaseEdition: map['databaseEdition'] == null ? null : (map['databaseEdition'] as String).input(),
+      deleteProtectionState: map['deleteProtectionState'] == null ? null : (map['deleteProtectionState'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      locationId: (map['locationId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pointInTimeRecoveryEnablement: map['pointInTimeRecoveryEnablement'] == null ? null : (map['pointInTimeRecoveryEnablement'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

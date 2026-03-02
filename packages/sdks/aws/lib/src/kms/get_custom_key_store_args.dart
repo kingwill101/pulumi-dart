@@ -19,13 +19,10 @@ class GetCustomKeyStoreArgs {
   /// [customKeyStoreName] The user-specified friendly name for the custom key store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetCustomKeyStoreArgs({
-    pulumi.Output<String>? customKeyStoreId,
-    pulumi.Output<String>? customKeyStoreName,
-    pulumi.Output<String>? region,
-  }) :
-      customKeyStoreId = pulumi.Input.asOptionalInput<String>(customKeyStoreId),
-      customKeyStoreName = pulumi.Input.asOptionalInput<String>(customKeyStoreName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.customKeyStoreId,
+    this.customKeyStoreName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCustomKeyStoreArgs {
 
   factory GetCustomKeyStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomKeyStoreArgs(
-      customKeyStoreId: map['customKeyStoreId'] == null ? null : pulumi.Output.create<String>(map['customKeyStoreId'] as String),
-      customKeyStoreName: map['customKeyStoreName'] == null ? null : pulumi.Output.create<String>(map['customKeyStoreName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      customKeyStoreId: map['customKeyStoreId'] == null ? null : (map['customKeyStoreId'] as String).input(),
+      customKeyStoreName: map['customKeyStoreName'] == null ? null : (map['customKeyStoreName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

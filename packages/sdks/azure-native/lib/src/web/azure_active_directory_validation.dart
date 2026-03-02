@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_authorization_policy.dart';
 import 'jwt_claim_checks.dart';
 
 /// The configuration settings of the Azure Active Directory token validation flow.
 class AzureActiveDirectoryValidation {
   /// The list of audiences that can make successful authentication/authorization requests.
-  final List<String>? allowedAudiences;
+  final pulumi.Input<List<String>>? allowedAudiences;
   /// The configuration settings of the default authorization policy.
-  final DefaultAuthorizationPolicy? defaultAuthorizationPolicy;
+  final pulumi.Input<DefaultAuthorizationPolicy>? defaultAuthorizationPolicy;
   /// The configuration settings of the checks that should be made while validating the JWT Claims.
-  final JwtClaimChecks? jwtClaimChecks;
+  final pulumi.Input<JwtClaimChecks>? jwtClaimChecks;
 
   /// Creates a new [AzureActiveDirectoryValidation].
   /// [allowedAudiences] The list of audiences that can make successful authentication/authorization requests.
@@ -25,16 +26,16 @@ class AzureActiveDirectoryValidation {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedAudiences': ?allowedAudiences,
-      'defaultAuthorizationPolicy': ?defaultAuthorizationPolicy == null ? null : defaultAuthorizationPolicy!.toMap(),
-      'jwtClaimChecks': ?jwtClaimChecks == null ? null : jwtClaimChecks!.toMap(),
+      'defaultAuthorizationPolicy': ?pulumi.Input.mapOptionalInputValue<DefaultAuthorizationPolicy, Map<String, dynamic>>(defaultAuthorizationPolicy, (value) => value.toMap()),
+      'jwtClaimChecks': ?pulumi.Input.mapOptionalInputValue<JwtClaimChecks, Map<String, dynamic>>(jwtClaimChecks, (value) => value.toMap()),
     };
   }
 
   factory AzureActiveDirectoryValidation.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectoryValidation(
-      allowedAudiences: map['allowedAudiences'] == null ? null : (map['allowedAudiences'] as List).cast<String>(),
-      defaultAuthorizationPolicy: map['defaultAuthorizationPolicy'] == null ? null : DefaultAuthorizationPolicy.fromMap((map['defaultAuthorizationPolicy'] as Map).cast<String, dynamic>()),
-      jwtClaimChecks: map['jwtClaimChecks'] == null ? null : JwtClaimChecks.fromMap((map['jwtClaimChecks'] as Map).cast<String, dynamic>()),
+      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
+      defaultAuthorizationPolicy: map['defaultAuthorizationPolicy'] == null ? null : (DefaultAuthorizationPolicy.fromMap((map['defaultAuthorizationPolicy'] as Map).cast<String, dynamic>())).input(),
+      jwtClaimChecks: map['jwtClaimChecks'] == null ? null : (JwtClaimChecks.fromMap((map['jwtClaimChecks'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

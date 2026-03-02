@@ -36,23 +36,15 @@ class OutputArgs {
   /// [sizeWindow] The size window to constrain a Stream Analytics output to.
   /// [timeWindow] The time frame for filtering Stream Analytics job outputs.
   OutputArgs({
-    pulumi.Output<AzureDataLakeStoreOutputDataSource>? datasource,
-    required pulumi.Output<String> jobName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? outputName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<AvroSerialization>? serialization,
-    pulumi.Output<int>? sizeWindow,
-    pulumi.Output<String>? timeWindow,
-  }) :
-      datasource = pulumi.Input.asOptionalInput<AzureDataLakeStoreOutputDataSource>(datasource),
-      jobName = pulumi.Input.asInput<String>(jobName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputName = pulumi.Input.asOptionalInput<String>(outputName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serialization = pulumi.Input.asOptionalInput<AvroSerialization>(serialization),
-      sizeWindow = pulumi.Input.asOptionalInput<int>(sizeWindow),
-      timeWindow = pulumi.Input.asOptionalInput<String>(timeWindow);
+    this.datasource,
+    required this.jobName,
+    this.name,
+    this.outputName,
+    required this.resourceGroupName,
+    this.serialization,
+    this.sizeWindow,
+    this.timeWindow,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class OutputArgs {
 
   factory OutputArgs.fromMap(Map<String, dynamic> map) {
     return OutputArgs(
-      datasource: map['datasource'] == null ? null : pulumi.Output.create<AzureDataLakeStoreOutputDataSource>(AzureDataLakeStoreOutputDataSource.fromMap((map['datasource'] as Map).cast<String, dynamic>())),
-      jobName: pulumi.Output.create<String>(map['jobName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputName: map['outputName'] == null ? null : pulumi.Output.create<String>(map['outputName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serialization: map['serialization'] == null ? null : pulumi.Output.create<AvroSerialization>(AvroSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())),
-      sizeWindow: map['sizeWindow'] == null ? null : pulumi.Output.create<int>(map['sizeWindow'] as int),
-      timeWindow: map['timeWindow'] == null ? null : pulumi.Output.create<String>(map['timeWindow'] as String),
+      datasource: map['datasource'] == null ? null : (AzureDataLakeStoreOutputDataSource.fromMap((map['datasource'] as Map).cast<String, dynamic>())).input(),
+      jobName: (map['jobName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputName: map['outputName'] == null ? null : (map['outputName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serialization: map['serialization'] == null ? null : (AvroSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
+      sizeWindow: map['sizeWindow'] == null ? null : (map['sizeWindow'] as int).input(),
+      timeWindow: map['timeWindow'] == null ? null : (map['timeWindow'] as String).input(),
     );
   }
 }

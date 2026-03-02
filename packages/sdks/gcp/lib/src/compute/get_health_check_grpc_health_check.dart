@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHealthCheckGrpcHealthCheck {
   /// The gRPC service name for the health check.
@@ -7,14 +8,14 @@ class GetHealthCheckGrpcHealthCheck {
   /// - Empty serviceName means the overall status of all services at the backend.
   /// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
   /// The grpcServiceName can only be ASCII.
-  final String grpcServiceName;
+  final pulumi.Input<String> grpcServiceName;
   /// The port number for the health check request.
   /// Must be specified if portName and portSpecification are not set
   /// or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
-  final int port;
+  final pulumi.Input<int> port;
   /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
   /// port_name are defined, port takes precedence.
-  final String portName;
+  final pulumi.Input<String> portName;
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   ///
@@ -29,7 +30,7 @@ class GetHealthCheckGrpcHealthCheck {
   ///
   /// If not specified, gRPC health check follows behavior specified in 'port' and
   /// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
-  final String portSpecification;
+  final pulumi.Input<String> portSpecification;
 
   /// Creates a new [GetHealthCheckGrpcHealthCheck].
   /// [grpcServiceName] The gRPC service name for the health check.
@@ -54,10 +55,10 @@ class GetHealthCheckGrpcHealthCheck {
 
   factory GetHealthCheckGrpcHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckGrpcHealthCheck(
-      grpcServiceName: map['grpcServiceName'] as String,
-      port: map['port'] as int,
-      portName: map['portName'] as String,
-      portSpecification: map['portSpecification'] as String,
+      grpcServiceName: (map['grpcServiceName'] as String).input(),
+      port: (map['port'] as int).input(),
+      portName: (map['portName'] as String).input(),
+      portSpecification: (map['portSpecification'] as String).input(),
     );
   }
 }

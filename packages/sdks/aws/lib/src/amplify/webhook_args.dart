@@ -22,15 +22,11 @@ class WebhookArgs {
   /// [description] Description for a webhook.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   WebhookArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> branchName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      branchName = pulumi.Input.asInput<String>(branchName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.appId,
+    required this.branchName,
+    this.description,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      branchName: pulumi.Output.create<String>(map['branchName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      appId: (map['appId'] as String).input(),
+      branchName: (map['branchName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

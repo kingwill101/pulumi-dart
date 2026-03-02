@@ -32,17 +32,12 @@ class HubArgs {
   /// [name] The name of the Web Pubsub hub service. Changing this forces a new resource to be created.
   /// [webPubsubId] Specifies the id of the Web Pubsub. Changing this forces a new resource to be created.
   HubArgs({
-    pulumi.Output<bool>? anonymousConnectionsEnabled,
-    pulumi.Output<List<HubEventHandler>>? eventHandlers,
-    pulumi.Output<List<HubEventListener>>? eventListeners,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> webPubsubId,
-  }) :
-      anonymousConnectionsEnabled = pulumi.Input.asOptionalInput<bool>(anonymousConnectionsEnabled),
-      eventHandlers = pulumi.Input.asOptionalInput<List<HubEventHandler>>(eventHandlers),
-      eventListeners = pulumi.Input.asOptionalInput<List<HubEventListener>>(eventListeners),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      webPubsubId = pulumi.Input.asInput<String>(webPubsubId);
+    this.anonymousConnectionsEnabled,
+    this.eventHandlers,
+    this.eventListeners,
+    this.name,
+    required this.webPubsubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class HubArgs {
 
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
-      anonymousConnectionsEnabled: map['anonymousConnectionsEnabled'] == null ? null : pulumi.Output.create<bool>(map['anonymousConnectionsEnabled'] as bool),
-      eventHandlers: map['eventHandlers'] == null ? null : pulumi.Output.create<List<HubEventHandler>>(pulumi.Input.decodeList<HubEventHandler>(map['eventHandlers'], (value) => HubEventHandler.fromMap((value as Map).cast<String, dynamic>()))),
-      eventListeners: map['eventListeners'] == null ? null : pulumi.Output.create<List<HubEventListener>>(pulumi.Input.decodeList<HubEventListener>(map['eventListeners'], (value) => HubEventListener.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      webPubsubId: pulumi.Output.create<String>(map['webPubsubId'] as String),
+      anonymousConnectionsEnabled: map['anonymousConnectionsEnabled'] == null ? null : (map['anonymousConnectionsEnabled'] as bool).input(),
+      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<HubEventHandler>(map['eventHandlers'], (value) => HubEventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventListeners: map['eventListeners'] == null ? null : (pulumi.Input.decodeList<HubEventListener>(map['eventListeners'], (value) => HubEventListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      webPubsubId: (map['webPubsubId'] as String).input(),
     );
   }
 }

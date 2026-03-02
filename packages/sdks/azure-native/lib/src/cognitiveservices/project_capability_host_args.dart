@@ -26,17 +26,12 @@ class ProjectCapabilityHostArgs {
   /// [projectName] The name of Cognitive Services account's project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ProjectCapabilityHostArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? capabilityHostName,
-    required pulumi.Output<ProjectCapabilityHostCognitiveservices> projectCapabilityHostProperties,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      capabilityHostName = pulumi.Input.asOptionalInput<String>(capabilityHostName),
-      projectCapabilityHostProperties = pulumi.Input.asInput<ProjectCapabilityHostCognitiveservices>(projectCapabilityHostProperties),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.capabilityHostName,
+    required this.projectCapabilityHostProperties,
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ProjectCapabilityHostArgs {
 
   factory ProjectCapabilityHostArgs.fromMap(Map<String, dynamic> map) {
     return ProjectCapabilityHostArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      capabilityHostName: map['capabilityHostName'] == null ? null : pulumi.Output.create<String>(map['capabilityHostName'] as String),
-      projectCapabilityHostProperties: pulumi.Output.create<ProjectCapabilityHostCognitiveservices>(map['projectCapabilityHostProperties'] as ProjectCapabilityHostCognitiveservices),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      capabilityHostName: map['capabilityHostName'] == null ? null : (map['capabilityHostName'] as String).input(),
+      projectCapabilityHostProperties: (map['projectCapabilityHostProperties'] as ProjectCapabilityHostCognitiveservices).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

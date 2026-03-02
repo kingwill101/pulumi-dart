@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A logic app receiver.
 class LogicAppReceiverResponse {
   /// The callback url where http request sent to.
-  final String callbackUrl;
+  final pulumi.Input<String> callbackUrl;
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
-  final String? managedIdentity;
+  final pulumi.Input<String>? managedIdentity;
   /// The name of the logic app receiver. Names must be unique across all receivers within an action group.
-  final String name;
+  final pulumi.Input<String> name;
   /// The azure resource id of the logic app receiver.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// Indicates whether to use common alert schema.
-  final bool? useCommonAlertSchema;
+  final pulumi.Input<bool>? useCommonAlertSchema;
 
   /// Creates a new [LogicAppReceiverResponse].
   /// [callbackUrl] The callback url where http request sent to.
@@ -40,11 +41,11 @@ class LogicAppReceiverResponse {
 
   factory LogicAppReceiverResponse.fromMap(Map<String, dynamic> map) {
     return LogicAppReceiverResponse(
-      callbackUrl: map['callbackUrl'] as String,
-      managedIdentity: map['managedIdentity'] == null ? null : map['managedIdentity'] as String,
-      name: map['name'] as String,
-      resourceId: map['resourceId'] as String,
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : map['useCommonAlertSchema'] as bool,
+      callbackUrl: (map['callbackUrl'] as String).input(),
+      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
     );
   }
 }

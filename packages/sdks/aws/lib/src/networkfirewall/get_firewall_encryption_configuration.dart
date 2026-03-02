@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallEncryptionConfiguration {
   /// The ID of the AWS Key Management Service (AWS KMS) customer managed key.
-  final String keyId;
+  final pulumi.Input<String> keyId;
   /// The type of the AWS Key Management Service (AWS KMS) key use by the firewall.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetFirewallEncryptionConfiguration].
   /// [keyId] The ID of the AWS Key Management Service (AWS KMS) customer managed key.
@@ -24,8 +25,8 @@ class GetFirewallEncryptionConfiguration {
 
   factory GetFirewallEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetFirewallEncryptionConfiguration(
-      keyId: map['keyId'] as String,
-      type: map['type'] as String,
+      keyId: (map['keyId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

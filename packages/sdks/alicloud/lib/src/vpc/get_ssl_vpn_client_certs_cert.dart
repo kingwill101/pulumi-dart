@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSslVpnClientCertsCert {
   /// The time of creation.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The expiration time of the client certificate.
-  final int endTime;
+  final pulumi.Input<int> endTime;
   /// ID of the SSL-VPN client certificate.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the SSL-VPN client certificate.
-  final String name;
+  final pulumi.Input<String> name;
   /// Use the SSL-VPN server ID as the search key.
-  final String sslVpnServerId;
+  final pulumi.Input<String> sslVpnServerId;
   /// The status of the client certificate. valid value:expiring-soon, normal, expired.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetSslVpnClientCertsCert].
   /// [createTime] The time of creation.
@@ -44,12 +45,12 @@ class GetSslVpnClientCertsCert {
 
   factory GetSslVpnClientCertsCert.fromMap(Map<String, dynamic> map) {
     return GetSslVpnClientCertsCert(
-      createTime: map['createTime'] as String,
-      endTime: map['endTime'] as int,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      sslVpnServerId: map['sslVpnServerId'] as String,
-      status: map['status'] as String,
+      createTime: (map['createTime'] as String).input(),
+      endTime: (map['endTime'] as int).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      sslVpnServerId: (map['sslVpnServerId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

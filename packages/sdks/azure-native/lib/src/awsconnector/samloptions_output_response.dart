@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'samlidp_response.dart';
 
 /// Definition of SAMLOptionsOutput
 class SAMLOptionsOutputResponse {
   /// <p>True if SAML is enabled.</p>
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// <p>Describes the SAML identity provider's information.</p>
-  final SAMLIdpResponse? idp;
+  final pulumi.Input<SAMLIdpResponse>? idp;
   /// <p>The key used for matching the SAML roles attribute.</p>
-  final String? rolesKey;
+  final pulumi.Input<String>? rolesKey;
   /// <p>The duration, in minutes, after which a user session becomes inactive.</p>
-  final int? sessionTimeoutMinutes;
+  final pulumi.Input<int>? sessionTimeoutMinutes;
   /// <p>The key used for matching the SAML subject attribute.</p>
-  final String? subjectKey;
+  final pulumi.Input<String>? subjectKey;
 
   /// Creates a new [SAMLOptionsOutputResponse].
   /// [enabled] <p>True if SAML is enabled.</p>
@@ -32,7 +33,7 @@ class SAMLOptionsOutputResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'idp': ?idp == null ? null : idp!.toMap(),
+      'idp': ?pulumi.Input.mapOptionalInputValue<SAMLIdpResponse, Map<String, dynamic>>(idp, (value) => value.toMap()),
       'rolesKey': ?rolesKey,
       'sessionTimeoutMinutes': ?sessionTimeoutMinutes,
       'subjectKey': ?subjectKey,
@@ -41,11 +42,11 @@ class SAMLOptionsOutputResponse {
 
   factory SAMLOptionsOutputResponse.fromMap(Map<String, dynamic> map) {
     return SAMLOptionsOutputResponse(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      idp: map['idp'] == null ? null : SAMLIdpResponse.fromMap((map['idp'] as Map).cast<String, dynamic>()),
-      rolesKey: map['rolesKey'] == null ? null : map['rolesKey'] as String,
-      sessionTimeoutMinutes: map['sessionTimeoutMinutes'] == null ? null : map['sessionTimeoutMinutes'] as int,
-      subjectKey: map['subjectKey'] == null ? null : map['subjectKey'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      idp: map['idp'] == null ? null : (SAMLIdpResponse.fromMap((map['idp'] as Map).cast<String, dynamic>())).input(),
+      rolesKey: map['rolesKey'] == null ? null : (map['rolesKey'] as String).input(),
+      sessionTimeoutMinutes: map['sessionTimeoutMinutes'] == null ? null : (map['sessionTimeoutMinutes'] as int).input(),
+      subjectKey: map['subjectKey'] == null ? null : (map['subjectKey'] as String).input(),
     );
   }
 }

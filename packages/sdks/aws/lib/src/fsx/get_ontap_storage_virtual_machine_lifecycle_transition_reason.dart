@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOntapStorageVirtualMachineLifecycleTransitionReason {
   /// A detailed message.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [GetOntapStorageVirtualMachineLifecycleTransitionReason].
   /// [message] A detailed message.
@@ -19,7 +20,7 @@ class GetOntapStorageVirtualMachineLifecycleTransitionReason {
 
   factory GetOntapStorageVirtualMachineLifecycleTransitionReason.fromMap(Map<String, dynamic> map) {
     return GetOntapStorageVirtualMachineLifecycleTransitionReason(
-      message: map['message'] as String,
+      message: (map['message'] as String).input(),
     );
   }
 }

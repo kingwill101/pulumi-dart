@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterAddonsConfigCloudrunConfig {
-  final bool disabled;
-  final String loadBalancerType;
+  final pulumi.Input<bool> disabled;
+  final pulumi.Input<String> loadBalancerType;
 
   /// Creates a new [GetClusterAddonsConfigCloudrunConfig].
   /// [disabled] Required.
@@ -22,8 +23,8 @@ class GetClusterAddonsConfigCloudrunConfig {
 
   factory GetClusterAddonsConfigCloudrunConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigCloudrunConfig(
-      disabled: map['disabled'] as bool,
-      loadBalancerType: map['loadBalancerType'] as String,
+      disabled: (map['disabled'] as bool).input(),
+      loadBalancerType: (map['loadBalancerType'] as String).input(),
     );
   }
 }

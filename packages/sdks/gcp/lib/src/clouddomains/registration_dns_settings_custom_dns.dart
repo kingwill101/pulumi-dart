@@ -7,10 +7,10 @@ class RegistrationDnsSettingsCustomDns {
   /// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide
   /// the values to set here. If this field is empty, DNSSEC is disabled.
   /// Structure is documented below.
-  final List<RegistrationDnsSettingsCustomDnsDsRecord>? dsRecords;
+  final pulumi.Input<List<RegistrationDnsSettingsCustomDnsDsRecord>>? dsRecords;
   /// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain
   /// name, with Unicode domain names expressed in Punycode format.
-  final List<String> nameServers;
+  final pulumi.Input<List<String>> nameServers;
 
   /// Creates a new [RegistrationDnsSettingsCustomDns].
   /// [dsRecords] The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide
@@ -22,15 +22,15 @@ class RegistrationDnsSettingsCustomDns {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dsRecords': ?dsRecords == null ? null : pulumi.Input.encodeList<RegistrationDnsSettingsCustomDnsDsRecord, Map<String, dynamic>>(dsRecords!, (value) => value.toMap()),
+      'dsRecords': ?pulumi.Input.mapOptionalInputValue<List<RegistrationDnsSettingsCustomDnsDsRecord>, List<Map<String, dynamic>>>(dsRecords, (value) => pulumi.Input.encodeList<RegistrationDnsSettingsCustomDnsDsRecord, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nameServers': nameServers,
     };
   }
 
   factory RegistrationDnsSettingsCustomDns.fromMap(Map<String, dynamic> map) {
     return RegistrationDnsSettingsCustomDns(
-      dsRecords: map['dsRecords'] == null ? null : pulumi.Input.decodeList<RegistrationDnsSettingsCustomDnsDsRecord>(map['dsRecords'], (value) => RegistrationDnsSettingsCustomDnsDsRecord.fromMap((value as Map).cast<String, dynamic>())),
-      nameServers: (map['nameServers'] as List).cast<String>(),
+      dsRecords: map['dsRecords'] == null ? null : (pulumi.Input.decodeList<RegistrationDnsSettingsCustomDnsDsRecord>(map['dsRecords'], (value) => RegistrationDnsSettingsCustomDnsDsRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nameServers: ((map['nameServers'] as List).cast<String>()).input(),
     );
   }
 }

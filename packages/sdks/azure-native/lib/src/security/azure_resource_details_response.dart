@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the Azure resource that was assessed
 class AzureResourceDetailsResponse {
   /// Azure resource Id of the assessed resource
-  final String id;
+  final pulumi.Input<String> id;
   /// The platform where the assessed resource resides
   /// Expected value is 'Azure'.
-  final String source;
+  final pulumi.Input<String> source;
 
   /// Creates a new [AzureResourceDetailsResponse].
   /// [id] Azure resource Id of the assessed resource
@@ -26,8 +27,8 @@ class AzureResourceDetailsResponse {
 
   factory AzureResourceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureResourceDetailsResponse(
-      id: map['id'] as String,
-      source: map['source'] as String,
+      id: (map['id'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

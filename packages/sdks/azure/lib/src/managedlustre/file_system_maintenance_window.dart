@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FileSystemMaintenanceWindow {
   /// The day of the week on which the maintenance window will occur. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and `Saturday`.
-  final String dayOfWeek;
+  final pulumi.Input<String> dayOfWeek;
   /// The time of day (in UTC) to start the maintenance window.
-  final String timeOfDayInUtc;
+  final pulumi.Input<String> timeOfDayInUtc;
 
   /// Creates a new [FileSystemMaintenanceWindow].
   /// [dayOfWeek] The day of the week on which the maintenance window will occur. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and `Saturday`.
@@ -24,8 +25,8 @@ class FileSystemMaintenanceWindow {
 
   factory FileSystemMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return FileSystemMaintenanceWindow(
-      dayOfWeek: map['dayOfWeek'] as String,
-      timeOfDayInUtc: map['timeOfDayInUtc'] as String,
+      dayOfWeek: (map['dayOfWeek'] as String).input(),
+      timeOfDayInUtc: (map['timeOfDayInUtc'] as String).input(),
     );
   }
 }

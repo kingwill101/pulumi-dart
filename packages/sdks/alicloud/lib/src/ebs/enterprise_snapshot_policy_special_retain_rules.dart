@@ -7,9 +7,9 @@ class EnterpriseSnapshotPolicySpecialRetainRules {
   /// Whether special reservations are enabled. Value range:
   /// - true
   /// - false.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// List of special retention rules. See `rules` below.
-  final List<EnterpriseSnapshotPolicySpecialRetainRulesRule>? rules;
+  final pulumi.Input<List<EnterpriseSnapshotPolicySpecialRetainRulesRule>>? rules;
 
   /// Creates a new [EnterpriseSnapshotPolicySpecialRetainRules].
   /// [enabled] Whether special reservations are enabled. Value range:
@@ -22,14 +22,14 @@ class EnterpriseSnapshotPolicySpecialRetainRules {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<EnterpriseSnapshotPolicySpecialRetainRulesRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<EnterpriseSnapshotPolicySpecialRetainRulesRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<EnterpriseSnapshotPolicySpecialRetainRulesRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EnterpriseSnapshotPolicySpecialRetainRules.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicySpecialRetainRules(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<EnterpriseSnapshotPolicySpecialRetainRulesRule>(map['rules'], (value) => EnterpriseSnapshotPolicySpecialRetainRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<EnterpriseSnapshotPolicySpecialRetainRulesRule>(map['rules'], (value) => EnterpriseSnapshotPolicySpecialRetainRulesRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

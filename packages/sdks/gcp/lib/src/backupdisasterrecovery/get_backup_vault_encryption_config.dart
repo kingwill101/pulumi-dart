@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackupVaultEncryptionConfig {
   /// The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
-  final String kmsKeyName;
+  final pulumi.Input<String> kmsKeyName;
 
   /// Creates a new [GetBackupVaultEncryptionConfig].
   /// [kmsKeyName] The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
@@ -19,7 +20,7 @@ class GetBackupVaultEncryptionConfig {
 
   factory GetBackupVaultEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return GetBackupVaultEncryptionConfig(
-      kmsKeyName: map['kmsKeyName'] as String,
+      kmsKeyName: (map['kmsKeyName'] as String).input(),
     );
   }
 }

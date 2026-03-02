@@ -19,13 +19,10 @@ class ListRemediationDeploymentsAtResourceArgs {
   /// [resourceId] Resource ID.
   /// [top] Maximum number of records to return.
   ListRemediationDeploymentsAtResourceArgs({
-    required pulumi.Output<String> remediationName,
-    required pulumi.Output<String> resourceId,
-    pulumi.Output<int>? top,
-  }) :
-      remediationName = pulumi.Input.asInput<String>(remediationName),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      top = pulumi.Input.asOptionalInput<int>(top);
+    required this.remediationName,
+    required this.resourceId,
+    this.top,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListRemediationDeploymentsAtResourceArgs {
 
   factory ListRemediationDeploymentsAtResourceArgs.fromMap(Map<String, dynamic> map) {
     return ListRemediationDeploymentsAtResourceArgs(
-      remediationName: pulumi.Output.create<String>(map['remediationName'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
+      remediationName: (map['remediationName'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

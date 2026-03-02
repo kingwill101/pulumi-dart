@@ -40,25 +40,16 @@ class JobQueueArgs {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   JobQueueArgs({
-    pulumi.Output<List<JobQueueComputeEnvironmentOrder>>? computeEnvironmentOrders,
-    pulumi.Output<List<JobQueueJobStateTimeLimitAction>>? jobStateTimeLimitActions,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> priority,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? schedulingPolicyArn,
-    required pulumi.Output<String> state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<JobQueueTimeouts>? timeouts,
-  }) :
-      computeEnvironmentOrders = pulumi.Input.asOptionalInput<List<JobQueueComputeEnvironmentOrder>>(computeEnvironmentOrders),
-      jobStateTimeLimitActions = pulumi.Input.asOptionalInput<List<JobQueueJobStateTimeLimitAction>>(jobStateTimeLimitActions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asInput<int>(priority),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      schedulingPolicyArn = pulumi.Input.asOptionalInput<String>(schedulingPolicyArn),
-      state = pulumi.Input.asInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<JobQueueTimeouts>(timeouts);
+    this.computeEnvironmentOrders,
+    this.jobStateTimeLimitActions,
+    this.name,
+    required this.priority,
+    this.region,
+    this.schedulingPolicyArn,
+    required this.state,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class JobQueueArgs {
 
   factory JobQueueArgs.fromMap(Map<String, dynamic> map) {
     return JobQueueArgs(
-      computeEnvironmentOrders: map['computeEnvironmentOrders'] == null ? null : pulumi.Output.create<List<JobQueueComputeEnvironmentOrder>>(pulumi.Input.decodeList<JobQueueComputeEnvironmentOrder>(map['computeEnvironmentOrders'], (value) => JobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>()))),
-      jobStateTimeLimitActions: map['jobStateTimeLimitActions'] == null ? null : pulumi.Output.create<List<JobQueueJobStateTimeLimitAction>>(pulumi.Input.decodeList<JobQueueJobStateTimeLimitAction>(map['jobStateTimeLimitActions'], (value) => JobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      schedulingPolicyArn: map['schedulingPolicyArn'] == null ? null : pulumi.Output.create<String>(map['schedulingPolicyArn'] as String),
-      state: pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<JobQueueTimeouts>(JobQueueTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      computeEnvironmentOrders: map['computeEnvironmentOrders'] == null ? null : (pulumi.Input.decodeList<JobQueueComputeEnvironmentOrder>(map['computeEnvironmentOrders'], (value) => JobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jobStateTimeLimitActions: map['jobStateTimeLimitActions'] == null ? null : (pulumi.Input.decodeList<JobQueueJobStateTimeLimitAction>(map['jobStateTimeLimitActions'], (value) => JobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      schedulingPolicyArn: map['schedulingPolicyArn'] == null ? null : (map['schedulingPolicyArn'] as String).input(),
+      state: (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (JobQueueTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

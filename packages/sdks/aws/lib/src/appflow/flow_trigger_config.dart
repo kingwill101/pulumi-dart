@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_trigger_config_trigger_properties.dart';
 
 class FlowTriggerConfig {
   /// Configuration details of a schedule-triggered flow as defined by the user. Currently, these settings only apply to the `Scheduled` trigger type. See Scheduled Trigger Properties for details.
-  final FlowTriggerConfigTriggerProperties? triggerProperties;
+  final pulumi.Input<FlowTriggerConfigTriggerProperties>? triggerProperties;
   /// Type of flow trigger. Valid values are `Scheduled`, `Event`, and `OnDemand`.
-  final String triggerType;
+  final pulumi.Input<String> triggerType;
 
   /// Creates a new [FlowTriggerConfig].
   /// [triggerProperties] Configuration details of a schedule-triggered flow as defined by the user. Currently, these settings only apply to the `Scheduled` trigger type. See Scheduled Trigger Properties for details.
@@ -18,15 +19,15 @@ class FlowTriggerConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'triggerProperties': ?triggerProperties == null ? null : triggerProperties!.toMap(),
+      'triggerProperties': ?pulumi.Input.mapOptionalInputValue<FlowTriggerConfigTriggerProperties, Map<String, dynamic>>(triggerProperties, (value) => value.toMap()),
       'triggerType': triggerType,
     };
   }
 
   factory FlowTriggerConfig.fromMap(Map<String, dynamic> map) {
     return FlowTriggerConfig(
-      triggerProperties: map['triggerProperties'] == null ? null : FlowTriggerConfigTriggerProperties.fromMap((map['triggerProperties'] as Map).cast<String, dynamic>()),
-      triggerType: map['triggerType'] as String,
+      triggerProperties: map['triggerProperties'] == null ? null : (FlowTriggerConfigTriggerProperties.fromMap((map['triggerProperties'] as Map).cast<String, dynamic>())).input(),
+      triggerType: (map['triggerType'] as String).input(),
     );
   }
 }

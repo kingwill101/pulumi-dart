@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines configuration for DRM systems in use.
 class DrmSystemsResponse {
   /// Clearkey configuration.
-  final Map<String, dynamic> clearkey;
+  final pulumi.Input<Map<String, dynamic>> clearkey;
   /// Fairplay configuration.
-  final Map<String, dynamic> fairplay;
+  final pulumi.Input<Map<String, dynamic>> fairplay;
   /// Playready configuration.
-  final Map<String, dynamic> playready;
+  final pulumi.Input<Map<String, dynamic>> playready;
   /// Widevine configuration.
-  final Map<String, dynamic> widevine;
+  final pulumi.Input<Map<String, dynamic>> widevine;
 
   /// Creates a new [DrmSystemsResponse].
   /// [clearkey] Clearkey configuration.
@@ -35,10 +36,10 @@ class DrmSystemsResponse {
 
   factory DrmSystemsResponse.fromMap(Map<String, dynamic> map) {
     return DrmSystemsResponse(
-      clearkey: (map['clearkey'] as Map).cast<String, dynamic>(),
-      fairplay: (map['fairplay'] as Map).cast<String, dynamic>(),
-      playready: (map['playready'] as Map).cast<String, dynamic>(),
-      widevine: (map['widevine'] as Map).cast<String, dynamic>(),
+      clearkey: ((map['clearkey'] as Map).cast<String, dynamic>()).input(),
+      fairplay: ((map['fairplay'] as Map).cast<String, dynamic>()).input(),
+      playready: ((map['playready'] as Map).cast<String, dynamic>()).input(),
+      widevine: ((map['widevine'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

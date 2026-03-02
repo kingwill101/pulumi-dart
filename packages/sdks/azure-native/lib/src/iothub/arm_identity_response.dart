@@ -5,12 +5,12 @@ import 'arm_user_identity_response.dart';
 
 class ArmIdentityResponse {
   /// Principal Id
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// Tenant Id
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
-  final String? type;
-  final Map<String, ArmUserIdentityResponse>? userAssignedIdentities;
+  final pulumi.Input<String>? type;
+  final pulumi.Input<Map<String, ArmUserIdentityResponse>>? userAssignedIdentities;
 
   /// Creates a new [ArmIdentityResponse].
   /// [principalId] Principal Id
@@ -29,16 +29,16 @@ class ArmIdentityResponse {
       'principalId': principalId,
       'tenantId': tenantId,
       'type': ?type,
-      'userAssignedIdentities': ?userAssignedIdentities == null ? null : pulumi.Input.encodeMapValues<ArmUserIdentityResponse, Map<String, dynamic>>(userAssignedIdentities!, (value) => value.toMap()),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, ArmUserIdentityResponse>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<ArmUserIdentityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ArmIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ArmIdentityResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : pulumi.Input.decodeMapValues<ArmUserIdentityResponse>(map['userAssignedIdentities'], (value) => ArmUserIdentityResponse.fromMap((value as Map).cast<String, dynamic>())),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<ArmUserIdentityResponse>(map['userAssignedIdentities'], (value) => ArmUserIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

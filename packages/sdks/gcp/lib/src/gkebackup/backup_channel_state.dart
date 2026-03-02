@@ -55,29 +55,18 @@ class BackupChannelState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [uid] Server generated, unique identifier of UUID format.
   BackupChannelState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destinationProject,
-    pulumi.Output<String>? destinationProjectId,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? uid,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationProject = pulumi.Input.asOptionalInput<String>(destinationProject),
-      destinationProjectId = pulumi.Input.asOptionalInput<String>(destinationProjectId),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      uid = pulumi.Input.asOptionalInput<String>(uid);
+    this.description,
+    this.destinationProject,
+    this.destinationProjectId,
+    this.effectiveLabels,
+    this.etag,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.uid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,17 +86,17 @@ class BackupChannelState {
 
   factory BackupChannelState.fromMap(Map<String, dynamic> map) {
     return BackupChannelState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationProject: map['destinationProject'] == null ? null : pulumi.Output.create<String>(map['destinationProject'] as String),
-      destinationProjectId: map['destinationProjectId'] == null ? null : pulumi.Output.create<String>(map['destinationProjectId'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationProject: map['destinationProject'] == null ? null : (map['destinationProject'] as String).input(),
+      destinationProjectId: map['destinationProjectId'] == null ? null : (map['destinationProjectId'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
     );
   }
 }

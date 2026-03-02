@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationUserAssignedIdentityResponse {
   /// The friendly name of user assigned identity.
-  final String name;
+  final pulumi.Input<String> name;
   /// The principal id of user assigned identity.
-  final String principalId;
+  final pulumi.Input<String> principalId;
 
   /// Creates a new [ApplicationUserAssignedIdentityResponse].
   /// [name] The friendly name of user assigned identity.
@@ -24,8 +25,8 @@ class ApplicationUserAssignedIdentityResponse {
 
   factory ApplicationUserAssignedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationUserAssignedIdentityResponse(
-      name: map['name'] as String,
-      principalId: map['principalId'] as String,
+      name: (map['name'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
     );
   }
 }

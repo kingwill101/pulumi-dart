@@ -46,31 +46,19 @@ class FileSystemArgs {
   /// [tags] A mapping of tags which should be assigned to the File System.
   /// [zone] The Availability Zone in which the Azure Native Qumulo Scalable File system is located. Changing this forces a new resource to be created.
   FileSystemArgs({
-    required pulumi.Output<String> adminPassword,
-    required pulumi.Output<String> email,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? offerId,
-    pulumi.Output<String>? planId,
-    pulumi.Output<String>? publisherId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageSku,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> zone,
-  }) :
-      adminPassword = pulumi.Input.asInput<String>(adminPassword),
-      email = pulumi.Input.asInput<String>(email),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      offerId = pulumi.Input.asOptionalInput<String>(offerId),
-      planId = pulumi.Input.asOptionalInput<String>(planId),
-      publisherId = pulumi.Input.asOptionalInput<String>(publisherId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageSku = pulumi.Input.asInput<String>(storageSku),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zone = pulumi.Input.asInput<String>(zone);
+    required this.adminPassword,
+    required this.email,
+    this.location,
+    this.name,
+    this.offerId,
+    this.planId,
+    this.publisherId,
+    required this.resourceGroupName,
+    required this.storageSku,
+    required this.subnetId,
+    this.tags,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class FileSystemArgs {
 
   factory FileSystemArgs.fromMap(Map<String, dynamic> map) {
     return FileSystemArgs(
-      adminPassword: pulumi.Output.create<String>(map['adminPassword'] as String),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      offerId: map['offerId'] == null ? null : pulumi.Output.create<String>(map['offerId'] as String),
-      planId: map['planId'] == null ? null : pulumi.Output.create<String>(map['planId'] as String),
-      publisherId: map['publisherId'] == null ? null : pulumi.Output.create<String>(map['publisherId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageSku: pulumi.Output.create<String>(map['storageSku'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      adminPassword: (map['adminPassword'] as String).input(),
+      email: (map['email'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      offerId: map['offerId'] == null ? null : (map['offerId'] as String).input(),
+      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      publisherId: map['publisherId'] == null ? null : (map['publisherId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageSku: (map['storageSku'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

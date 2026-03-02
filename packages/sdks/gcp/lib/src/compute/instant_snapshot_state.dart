@@ -57,33 +57,20 @@ class InstantSnapshotState {
   /// [sourceDiskId] The ID value of the disk used to create this InstantSnapshot.
   /// [zone] A reference to the zone where the disk is located.
   InstantSnapshotState({
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? diskSizeGb,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? labelFingerprint,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? sourceDisk,
-    pulumi.Output<String>? sourceDiskId,
-    pulumi.Output<String>? zone,
-  }) :
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskSizeGb = pulumi.Input.asOptionalInput<int>(diskSizeGb),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labelFingerprint = pulumi.Input.asOptionalInput<String>(labelFingerprint),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      sourceDisk = pulumi.Input.asOptionalInput<String>(sourceDisk),
-      sourceDiskId = pulumi.Input.asOptionalInput<String>(sourceDiskId),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.creationTimestamp,
+    this.description,
+    this.diskSizeGb,
+    this.effectiveLabels,
+    this.labelFingerprint,
+    this.labels,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.selfLink,
+    this.sourceDisk,
+    this.sourceDiskId,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,19 +92,19 @@ class InstantSnapshotState {
 
   factory InstantSnapshotState.fromMap(Map<String, dynamic> map) {
     return InstantSnapshotState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskSizeGb: map['diskSizeGb'] == null ? null : pulumi.Output.create<int>(map['diskSizeGb'] as int),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labelFingerprint: map['labelFingerprint'] == null ? null : pulumi.Output.create<String>(map['labelFingerprint'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      sourceDisk: map['sourceDisk'] == null ? null : pulumi.Output.create<String>(map['sourceDisk'] as String),
-      sourceDiskId: map['sourceDiskId'] == null ? null : pulumi.Output.create<String>(map['sourceDiskId'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labelFingerprint: map['labelFingerprint'] == null ? null : (map['labelFingerprint'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk'] as String).input(),
+      sourceDiskId: map['sourceDiskId'] == null ? null : (map['sourceDiskId'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

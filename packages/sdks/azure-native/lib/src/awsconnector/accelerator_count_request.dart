@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of AcceleratorCountRequest
 class AcceleratorCountRequest {
   /// The maximum value.
-  final int? max;
+  final pulumi.Input<int>? max;
   /// The minimum value.
-  final int? min;
+  final pulumi.Input<int>? min;
 
   /// Creates a new [AcceleratorCountRequest].
   /// [max] The maximum value.
@@ -25,8 +26,8 @@ class AcceleratorCountRequest {
 
   factory AcceleratorCountRequest.fromMap(Map<String, dynamic> map) {
     return AcceleratorCountRequest(
-      max: map['max'] == null ? null : map['max'] as int,
-      min: map['min'] == null ? null : map['min'] as int,
+      max: map['max'] == null ? null : (map['max'] as int).input(),
+      min: map['min'] == null ? null : (map['min'] as int).input(),
     );
   }
 }

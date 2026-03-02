@@ -19,13 +19,10 @@ class ApplicationAssignmentConfigurationArgs {
   /// [assignmentRequired] Indicates whether users must have an explicit assignment to access the application. If `false`, all users have access to the application.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ApplicationAssignmentConfigurationArgs({
-    required pulumi.Output<String> applicationArn,
-    required pulumi.Output<bool> assignmentRequired,
-    pulumi.Output<String>? region,
-  }) :
-      applicationArn = pulumi.Input.asInput<String>(applicationArn),
-      assignmentRequired = pulumi.Input.asInput<bool>(assignmentRequired),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.applicationArn,
+    required this.assignmentRequired,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ApplicationAssignmentConfigurationArgs {
 
   factory ApplicationAssignmentConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAssignmentConfigurationArgs(
-      applicationArn: pulumi.Output.create<String>(map['applicationArn'] as String),
-      assignmentRequired: pulumi.Output.create<bool>(map['assignmentRequired'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      applicationArn: (map['applicationArn'] as String).input(),
+      assignmentRequired: (map['assignmentRequired'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

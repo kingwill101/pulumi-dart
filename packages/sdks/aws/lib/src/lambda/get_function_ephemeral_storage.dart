@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionEphemeralStorage {
   /// Size of the Lambda function ephemeral storage (`/tmp`) in MB.
-  final int size;
+  final pulumi.Input<int> size;
 
   /// Creates a new [GetFunctionEphemeralStorage].
   /// [size] Size of the Lambda function ephemeral storage (`/tmp`) in MB.
@@ -19,7 +20,7 @@ class GetFunctionEphemeralStorage {
 
   factory GetFunctionEphemeralStorage.fromMap(Map<String, dynamic> map) {
     return GetFunctionEphemeralStorage(
-      size: map['size'] as int,
+      size: (map['size'] as int).input(),
     );
   }
 }

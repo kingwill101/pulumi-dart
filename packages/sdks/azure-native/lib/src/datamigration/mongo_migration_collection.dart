@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Mongo source and target database and collection details.
 class MongoMigrationCollection {
   /// Source collection name.
-  final String? sourceCollection;
+  final pulumi.Input<String>? sourceCollection;
   /// Source database name.
-  final String? sourceDatabase;
+  final pulumi.Input<String>? sourceDatabase;
   /// Target collection name.
-  final String? targetCollection;
+  final pulumi.Input<String>? targetCollection;
   /// Target database name.
-  final String? targetDatabase;
+  final pulumi.Input<String>? targetDatabase;
 
   /// Creates a new [MongoMigrationCollection].
   /// [sourceCollection] Source collection name.
@@ -35,10 +36,10 @@ class MongoMigrationCollection {
 
   factory MongoMigrationCollection.fromMap(Map<String, dynamic> map) {
     return MongoMigrationCollection(
-      sourceCollection: map['sourceCollection'] == null ? null : map['sourceCollection'] as String,
-      sourceDatabase: map['sourceDatabase'] == null ? null : map['sourceDatabase'] as String,
-      targetCollection: map['targetCollection'] == null ? null : map['targetCollection'] as String,
-      targetDatabase: map['targetDatabase'] == null ? null : map['targetDatabase'] as String,
+      sourceCollection: map['sourceCollection'] == null ? null : (map['sourceCollection'] as String).input(),
+      sourceDatabase: map['sourceDatabase'] == null ? null : (map['sourceDatabase'] as String).input(),
+      targetCollection: map['targetCollection'] == null ? null : (map['targetCollection'] as String).input(),
+      targetDatabase: map['targetDatabase'] == null ? null : (map['targetDatabase'] as String).input(),
     );
   }
 }

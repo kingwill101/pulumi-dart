@@ -13,9 +13,8 @@ class GetViewArgs {
   /// Creates a new [GetViewArgs].
   /// [viewName] View name
   GetViewArgs({
-    required pulumi.Output<String> viewName,
-  }) :
-      viewName = pulumi.Input.asInput<String>(viewName);
+    required this.viewName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetViewArgs {
 
   factory GetViewArgs.fromMap(Map<String, dynamic> map) {
     return GetViewArgs(
-      viewName: pulumi.Output.create<String>(map['viewName'] as String),
+      viewName: (map['viewName'] as String).input(),
     );
   }
 }

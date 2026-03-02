@@ -31,19 +31,13 @@ class GetZonesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [slaveZoneId] The secondary zone.
   GetZonesArgs({
-    pulumi.Output<String>? availableSlbAddressIpVersion,
-    pulumi.Output<String>? availableSlbAddressType,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<String>? masterZoneId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? slaveZoneId,
-  }) :
-      availableSlbAddressIpVersion = pulumi.Input.asOptionalInput<String>(availableSlbAddressIpVersion),
-      availableSlbAddressType = pulumi.Input.asOptionalInput<String>(availableSlbAddressType),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      masterZoneId = pulumi.Input.asOptionalInput<String>(masterZoneId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      slaveZoneId = pulumi.Input.asOptionalInput<String>(slaveZoneId);
+    this.availableSlbAddressIpVersion,
+    this.availableSlbAddressType,
+    this.enableDetails,
+    this.masterZoneId,
+    this.outputFile,
+    this.slaveZoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : pulumi.Output.create<String>(map['availableSlbAddressIpVersion'] as String),
-      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : pulumi.Output.create<String>(map['availableSlbAddressType'] as String),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      masterZoneId: map['masterZoneId'] == null ? null : pulumi.Output.create<String>(map['masterZoneId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      slaveZoneId: map['slaveZoneId'] == null ? null : pulumi.Output.create<String>(map['slaveZoneId'] as String),
+      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : (map['availableSlbAddressIpVersion'] as String).input(),
+      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : (map['availableSlbAddressType'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      masterZoneId: map['masterZoneId'] == null ? null : (map['masterZoneId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      slaveZoneId: map['slaveZoneId'] == null ? null : (map['slaveZoneId'] as String).input(),
     );
   }
 }

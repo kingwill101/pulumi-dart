@@ -6,25 +6,25 @@ import 'azure_plan_response.dart';
 /// Invoice section properties with create subscription permission.
 class InvoiceSectionWithCreateSubPermissionResponse {
   /// The name of the billing profile.
-  final String billingProfileDisplayName;
+  final pulumi.Input<String> billingProfileDisplayName;
   /// The fully qualified ID that uniquely identifies a billing profile.
-  final String billingProfileId;
+  final pulumi.Input<String> billingProfileId;
   /// The billing profile spending limit.
-  final String billingProfileSpendingLimit;
+  final pulumi.Input<String> billingProfileSpendingLimit;
   /// The status of the billing profile.
-  final String billingProfileStatus;
+  final pulumi.Input<String> billingProfileStatus;
   /// Reason for the specified billing profile status.
-  final String billingProfileStatusReasonCode;
+  final pulumi.Input<String> billingProfileStatusReasonCode;
   /// The system generated unique identifier for a billing profile.
-  final String billingProfileSystemId;
+  final pulumi.Input<String> billingProfileSystemId;
   /// Enabled azure plans for the associated billing profile.
-  final List<AzurePlanResponse> enabledAzurePlans;
+  final pulumi.Input<List<AzurePlanResponse>> enabledAzurePlans;
   /// The name of the invoice section.
-  final String invoiceSectionDisplayName;
+  final pulumi.Input<String> invoiceSectionDisplayName;
   /// The fully qualified ID that uniquely identifies an invoice section.
-  final String invoiceSectionId;
+  final pulumi.Input<String> invoiceSectionId;
   /// The system generated unique identifier for an invoice section.
-  final String invoiceSectionSystemId;
+  final pulumi.Input<String> invoiceSectionSystemId;
 
   /// Creates a new [InvoiceSectionWithCreateSubPermissionResponse].
   /// [billingProfileDisplayName] The name of the billing profile.
@@ -58,7 +58,7 @@ class InvoiceSectionWithCreateSubPermissionResponse {
       'billingProfileStatus': billingProfileStatus,
       'billingProfileStatusReasonCode': billingProfileStatusReasonCode,
       'billingProfileSystemId': billingProfileSystemId,
-      'enabledAzurePlans': pulumi.Input.encodeList<AzurePlanResponse, Map<String, dynamic>>(enabledAzurePlans, (value) => value.toMap()),
+      'enabledAzurePlans': pulumi.Input.mapInputValue<List<AzurePlanResponse>, List<Map<String, dynamic>>>(enabledAzurePlans, (value) => pulumi.Input.encodeList<AzurePlanResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'invoiceSectionDisplayName': invoiceSectionDisplayName,
       'invoiceSectionId': invoiceSectionId,
       'invoiceSectionSystemId': invoiceSectionSystemId,
@@ -67,16 +67,16 @@ class InvoiceSectionWithCreateSubPermissionResponse {
 
   factory InvoiceSectionWithCreateSubPermissionResponse.fromMap(Map<String, dynamic> map) {
     return InvoiceSectionWithCreateSubPermissionResponse(
-      billingProfileDisplayName: map['billingProfileDisplayName'] as String,
-      billingProfileId: map['billingProfileId'] as String,
-      billingProfileSpendingLimit: map['billingProfileSpendingLimit'] as String,
-      billingProfileStatus: map['billingProfileStatus'] as String,
-      billingProfileStatusReasonCode: map['billingProfileStatusReasonCode'] as String,
-      billingProfileSystemId: map['billingProfileSystemId'] as String,
-      enabledAzurePlans: pulumi.Input.decodeList<AzurePlanResponse>(map['enabledAzurePlans'], (value) => AzurePlanResponse.fromMap((value as Map).cast<String, dynamic>())),
-      invoiceSectionDisplayName: map['invoiceSectionDisplayName'] as String,
-      invoiceSectionId: map['invoiceSectionId'] as String,
-      invoiceSectionSystemId: map['invoiceSectionSystemId'] as String,
+      billingProfileDisplayName: (map['billingProfileDisplayName'] as String).input(),
+      billingProfileId: (map['billingProfileId'] as String).input(),
+      billingProfileSpendingLimit: (map['billingProfileSpendingLimit'] as String).input(),
+      billingProfileStatus: (map['billingProfileStatus'] as String).input(),
+      billingProfileStatusReasonCode: (map['billingProfileStatusReasonCode'] as String).input(),
+      billingProfileSystemId: (map['billingProfileSystemId'] as String).input(),
+      enabledAzurePlans: (pulumi.Input.decodeList<AzurePlanResponse>(map['enabledAzurePlans'], (value) => AzurePlanResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      invoiceSectionDisplayName: (map['invoiceSectionDisplayName'] as String).input(),
+      invoiceSectionId: (map['invoiceSectionId'] as String).input(),
+      invoiceSectionSystemId: (map['invoiceSectionSystemId'] as String).input(),
     );
   }
 }

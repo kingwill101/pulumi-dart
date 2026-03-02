@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Microsoft Defender for Endpoint autoprovisioning configuration
 class DefenderForServersGcpOfferingResponseMdeAutoProvisioning {
   /// configuration for Microsoft Defender for Endpoint autoprovisioning
-  final dynamic configuration;
+  final pulumi.Input<dynamic>? configuration;
   /// Is Microsoft Defender for Endpoint auto provisioning enabled
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [DefenderForServersGcpOfferingResponseMdeAutoProvisioning].
   /// [configuration] configuration for Microsoft Defender for Endpoint autoprovisioning
@@ -25,8 +26,8 @@ class DefenderForServersGcpOfferingResponseMdeAutoProvisioning {
 
   factory DefenderForServersGcpOfferingResponseMdeAutoProvisioning.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingResponseMdeAutoProvisioning(
-      configuration: map['configuration'] == null ? null : map['configuration'],
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      configuration: map['configuration'] == null ? null : (map['configuration']).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

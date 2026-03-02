@@ -51,29 +51,18 @@ class ZoneState {
   /// [type] The type of zone. Can either be `PRIMARY` or `SECONDARY`.
   /// [valueSpecs] Map of additional options. Changing this creates a
   ZoneState({
-    pulumi.Output<Map<String, String>>? attributes,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disableStatusCheck,
-    pulumi.Output<String>? email,
-    pulumi.Output<List<String>>? masters,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? ttl,
-    pulumi.Output<String>? type,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<Map<String, String>>(attributes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disableStatusCheck = pulumi.Input.asOptionalInput<bool>(disableStatusCheck),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      masters = pulumi.Input.asOptionalInput<List<String>>(masters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs);
+    this.attributes,
+    this.description,
+    this.disableStatusCheck,
+    this.email,
+    this.masters,
+    this.name,
+    this.projectId,
+    this.region,
+    this.ttl,
+    this.type,
+    this.valueSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,17 +82,17 @@ class ZoneState {
 
   factory ZoneState.fromMap(Map<String, dynamic> map) {
     return ZoneState(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<Map<String, String>>((map['attributes'] as Map).cast<String, String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disableStatusCheck: map['disableStatusCheck'] == null ? null : pulumi.Output.create<bool>(map['disableStatusCheck'] as bool),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      masters: map['masters'] == null ? null : pulumi.Output.create<List<String>>((map['masters'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
+      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableStatusCheck: map['disableStatusCheck'] == null ? null : (map['disableStatusCheck'] as bool).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      masters: map['masters'] == null ? null : ((map['masters'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
     );
   }
 }

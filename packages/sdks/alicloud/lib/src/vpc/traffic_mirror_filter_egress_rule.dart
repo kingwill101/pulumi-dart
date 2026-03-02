@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrafficMirrorFilterEgressRule {
-  final String action;
-  final String? destinationCidrBlock;
-  final String? destinationPortRange;
-  final int? priority;
-  final String protocol;
-  final String? sourceCidrBlock;
-  final String? sourcePortRange;
-  final String? trafficMirrorFilterRuleStatus;
+  final pulumi.Input<String> action;
+  final pulumi.Input<String>? destinationCidrBlock;
+  final pulumi.Input<String>? destinationPortRange;
+  final pulumi.Input<int>? priority;
+  final pulumi.Input<String> protocol;
+  final pulumi.Input<String>? sourceCidrBlock;
+  final pulumi.Input<String>? sourcePortRange;
+  final pulumi.Input<String>? trafficMirrorFilterRuleStatus;
 
   /// Creates a new [TrafficMirrorFilterEgressRule].
   /// [action] Required.
@@ -46,14 +47,14 @@ class TrafficMirrorFilterEgressRule {
 
   factory TrafficMirrorFilterEgressRule.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorFilterEgressRule(
-      action: map['action'] as String,
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : map['destinationCidrBlock'] as String,
-      destinationPortRange: map['destinationPortRange'] == null ? null : map['destinationPortRange'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      protocol: map['protocol'] as String,
-      sourceCidrBlock: map['sourceCidrBlock'] == null ? null : map['sourceCidrBlock'] as String,
-      sourcePortRange: map['sourcePortRange'] == null ? null : map['sourcePortRange'] as String,
-      trafficMirrorFilterRuleStatus: map['trafficMirrorFilterRuleStatus'] == null ? null : map['trafficMirrorFilterRuleStatus'] as String,
+      action: (map['action'] as String).input(),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
+      destinationPortRange: map['destinationPortRange'] == null ? null : (map['destinationPortRange'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      sourceCidrBlock: map['sourceCidrBlock'] == null ? null : (map['sourceCidrBlock'] as String).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange'] as String).input(),
+      trafficMirrorFilterRuleStatus: map['trafficMirrorFilterRuleStatus'] == null ? null : (map['trafficMirrorFilterRuleStatus'] as String).input(),
     );
   }
 }

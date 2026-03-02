@@ -34,25 +34,16 @@ class IngestionState {
   /// [source] Data source and data format details. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
   /// [timeZone] Which time zone is the log time imported in, e.g. `+0800`.
   IngestionState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? ingestionName,
-    pulumi.Output<String>? interval,
-    pulumi.Output<String>? logstore,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? runImmediately,
-    pulumi.Output<String>? source,
-    pulumi.Output<String>? timeZone,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      ingestionName = pulumi.Input.asOptionalInput<String>(ingestionName),
-      interval = pulumi.Input.asOptionalInput<String>(interval),
-      logstore = pulumi.Input.asOptionalInput<String>(logstore),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runImmediately = pulumi.Input.asOptionalInput<bool>(runImmediately),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.description,
+    this.displayName,
+    this.ingestionName,
+    this.interval,
+    this.logstore,
+    this.project,
+    this.runImmediately,
+    this.source,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class IngestionState {
 
   factory IngestionState.fromMap(Map<String, dynamic> map) {
     return IngestionState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      ingestionName: map['ingestionName'] == null ? null : pulumi.Output.create<String>(map['ingestionName'] as String),
-      interval: map['interval'] == null ? null : pulumi.Output.create<String>(map['interval'] as String),
-      logstore: map['logstore'] == null ? null : pulumi.Output.create<String>(map['logstore'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runImmediately: map['runImmediately'] == null ? null : pulumi.Output.create<bool>(map['runImmediately'] as bool),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      ingestionName: map['ingestionName'] == null ? null : (map['ingestionName'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      logstore: map['logstore'] == null ? null : (map['logstore'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runImmediately: map['runImmediately'] == null ? null : (map['runImmediately'] as bool).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

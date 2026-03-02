@@ -22,13 +22,10 @@ class ManagedDiskSasTokenArgs {
   /// [durationInSeconds] The duration for which the export should be allowed. Should be between 30 & 4294967295 seconds. Changing this forces a new resource to be created.
   /// [managedDiskId] The ID of an existing Managed Disk which should be exported. Changing this forces a new resource to be created.
   ManagedDiskSasTokenArgs({
-    required pulumi.Output<String> accessLevel,
-    required pulumi.Output<int> durationInSeconds,
-    required pulumi.Output<String> managedDiskId,
-  }) :
-      accessLevel = pulumi.Input.asInput<String>(accessLevel),
-      durationInSeconds = pulumi.Input.asInput<int>(durationInSeconds),
-      managedDiskId = pulumi.Input.asInput<String>(managedDiskId);
+    required this.accessLevel,
+    required this.durationInSeconds,
+    required this.managedDiskId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class ManagedDiskSasTokenArgs {
 
   factory ManagedDiskSasTokenArgs.fromMap(Map<String, dynamic> map) {
     return ManagedDiskSasTokenArgs(
-      accessLevel: pulumi.Output.create<String>(map['accessLevel'] as String),
-      durationInSeconds: pulumi.Output.create<int>(map['durationInSeconds'] as int),
-      managedDiskId: pulumi.Output.create<String>(map['managedDiskId'] as String),
+      accessLevel: (map['accessLevel'] as String).input(),
+      durationInSeconds: (map['durationInSeconds'] as int).input(),
+      managedDiskId: (map['managedDiskId'] as String).input(),
     );
   }
 }

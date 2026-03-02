@@ -35,23 +35,15 @@ class GetInstanceTypesArgs {
   /// [supportNodeTypes] The specific supported node type list.
   /// [zoneId] The supported resources of specific zoneId.
   GetInstanceTypesArgs({
-    required pulumi.Output<String> clusterType,
-    required pulumi.Output<String> destinationResource,
-    required pulumi.Output<String> instanceChargeType,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<bool>? supportLocalStorage,
-    pulumi.Output<List<String>>? supportNodeTypes,
-    pulumi.Output<String>? zoneId,
-  }) :
-      clusterType = pulumi.Input.asInput<String>(clusterType),
-      destinationResource = pulumi.Input.asInput<String>(destinationResource),
-      instanceChargeType = pulumi.Input.asInput<String>(instanceChargeType),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      supportLocalStorage = pulumi.Input.asOptionalInput<bool>(supportLocalStorage),
-      supportNodeTypes = pulumi.Input.asOptionalInput<List<String>>(supportNodeTypes),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    required this.clusterType,
+    required this.destinationResource,
+    required this.instanceChargeType,
+    this.instanceType,
+    this.outputFile,
+    this.supportLocalStorage,
+    this.supportNodeTypes,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class GetInstanceTypesArgs {
 
   factory GetInstanceTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesArgs(
-      clusterType: pulumi.Output.create<String>(map['clusterType'] as String),
-      destinationResource: pulumi.Output.create<String>(map['destinationResource'] as String),
-      instanceChargeType: pulumi.Output.create<String>(map['instanceChargeType'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      supportLocalStorage: map['supportLocalStorage'] == null ? null : pulumi.Output.create<bool>(map['supportLocalStorage'] as bool),
-      supportNodeTypes: map['supportNodeTypes'] == null ? null : pulumi.Output.create<List<String>>((map['supportNodeTypes'] as List).cast<String>()),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      clusterType: (map['clusterType'] as String).input(),
+      destinationResource: (map['destinationResource'] as String).input(),
+      instanceChargeType: (map['instanceChargeType'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      supportLocalStorage: map['supportLocalStorage'] == null ? null : (map['supportLocalStorage'] as bool).input(),
+      supportNodeTypes: map['supportNodeTypes'] == null ? null : ((map['supportNodeTypes'] as List).cast<String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

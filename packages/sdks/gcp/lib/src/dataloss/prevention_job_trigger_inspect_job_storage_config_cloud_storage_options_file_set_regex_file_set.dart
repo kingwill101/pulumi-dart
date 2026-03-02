@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet {
   /// The name of a Cloud Storage bucket.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// A list of regular expressions matching file paths to exclude. All files in the bucket that match at
   /// least one of these regular expressions will be excluded from the scan.
-  final List<String>? excludeRegexes;
+  final pulumi.Input<List<String>>? excludeRegexes;
   /// A list of regular expressions matching file paths to include. All files in the bucket
   /// that match at least one of these regular expressions will be included in the set of files,
   /// except for those that also match an item in excludeRegex. Leaving this field empty will
   /// match all files by default (this is equivalent to including .* in the list)
-  final List<String>? includeRegexes;
+  final pulumi.Input<List<String>>? includeRegexes;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet].
   /// [bucketName] The name of a Cloud Storage bucket.
@@ -33,9 +34,9 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
 
   factory PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet(
-      bucketName: map['bucketName'] as String,
-      excludeRegexes: map['excludeRegexes'] == null ? null : (map['excludeRegexes'] as List).cast<String>(),
-      includeRegexes: map['includeRegexes'] == null ? null : (map['includeRegexes'] as List).cast<String>(),
+      bucketName: (map['bucketName'] as String).input(),
+      excludeRegexes: map['excludeRegexes'] == null ? null : ((map['excludeRegexes'] as List).cast<String>()).input(),
+      includeRegexes: map['includeRegexes'] == null ? null : ((map['includeRegexes'] as List).cast<String>()).input(),
     );
   }
 }

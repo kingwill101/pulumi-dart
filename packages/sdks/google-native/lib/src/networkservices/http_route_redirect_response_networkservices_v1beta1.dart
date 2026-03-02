@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The specification for redirecting traffic.
 class HttpRouteRedirectResponseNetworkservicesV1beta1 {
   /// The host that will be used in the redirect response instead of the one that was supplied in the request.
-  final String hostRedirect;
+  final pulumi.Input<String> hostRedirect;
   /// If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. The default is set to false.
-  final bool httpsRedirect;
+  final pulumi.Input<bool> httpsRedirect;
   /// The path that will be used in the redirect response instead of the one that was supplied in the request. path_redirect can not be supplied together with prefix_redirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
-  final String pathRedirect;
+  final pulumi.Input<String> pathRedirect;
   /// The port that will be used in the redirected request instead of the one that was supplied in the request.
-  final int portRedirect;
+  final pulumi.Input<int> portRedirect;
   /// Indicates that during redirection, the matched prefix (or path) should be swapped with this value. This option allows URLs be dynamically created based on the request.
-  final String prefixRewrite;
+  final pulumi.Input<String> prefixRewrite;
   /// The HTTP Status code to use for the redirect.
-  final String responseCode;
+  final pulumi.Input<String> responseCode;
   /// if set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
-  final bool stripQuery;
+  final pulumi.Input<bool> stripQuery;
 
   /// Creates a new [HttpRouteRedirectResponseNetworkservicesV1beta1].
   /// [hostRedirect] The host that will be used in the redirect response instead of the one that was supplied in the request.
@@ -50,13 +51,13 @@ class HttpRouteRedirectResponseNetworkservicesV1beta1 {
 
   factory HttpRouteRedirectResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteRedirectResponseNetworkservicesV1beta1(
-      hostRedirect: map['hostRedirect'] as String,
-      httpsRedirect: map['httpsRedirect'] as bool,
-      pathRedirect: map['pathRedirect'] as String,
-      portRedirect: map['portRedirect'] as int,
-      prefixRewrite: map['prefixRewrite'] as String,
-      responseCode: map['responseCode'] as String,
-      stripQuery: map['stripQuery'] as bool,
+      hostRedirect: (map['hostRedirect'] as String).input(),
+      httpsRedirect: (map['httpsRedirect'] as bool).input(),
+      pathRedirect: (map['pathRedirect'] as String).input(),
+      portRedirect: (map['portRedirect'] as int).input(),
+      prefixRewrite: (map['prefixRewrite'] as String).input(),
+      responseCode: (map['responseCode'] as String).input(),
+      stripQuery: (map['stripQuery'] as bool).input(),
     );
   }
 }

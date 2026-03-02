@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the volume options for the container
 class VolumeOptionsResponse {
   /// Indicate whether volume is nocopy
-  final bool? nocopy;
+  final pulumi.Input<bool>? nocopy;
 
   /// Creates a new [VolumeOptionsResponse].
   /// [nocopy] Indicate whether volume is nocopy
@@ -20,7 +21,7 @@ class VolumeOptionsResponse {
 
   factory VolumeOptionsResponse.fromMap(Map<String, dynamic> map) {
     return VolumeOptionsResponse(
-      nocopy: map['nocopy'] == null ? null : map['nocopy'] as bool,
+      nocopy: map['nocopy'] == null ? null : (map['nocopy'] as bool).input(),
     );
   }
 }

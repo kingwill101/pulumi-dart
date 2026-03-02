@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration settings of the storage of the tokens if blob storage is used.
 class BlobStorageTokenStore {
   /// The URI of the blob storage containing the tokens. Should not be used along with sasUrlSettingName.
-  final String? blobContainerUri;
+  final pulumi.Input<String>? blobContainerUri;
   /// The Client ID of a User-Assigned Managed Identity. Should not be used along with managedIdentityResourceId.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The Resource ID of a User-Assigned Managed Identity. Should not be used along with clientId.
-  final String? managedIdentityResourceId;
+  final pulumi.Input<String>? managedIdentityResourceId;
   /// The name of the app secrets containing the SAS URL of the blob storage containing the tokens. Should not be used along with blobContainerUri.
-  final String? sasUrlSettingName;
+  final pulumi.Input<String>? sasUrlSettingName;
 
   /// Creates a new [BlobStorageTokenStore].
   /// [blobContainerUri] The URI of the blob storage containing the tokens. Should not be used along with sasUrlSettingName.
@@ -35,10 +36,10 @@ class BlobStorageTokenStore {
 
   factory BlobStorageTokenStore.fromMap(Map<String, dynamic> map) {
     return BlobStorageTokenStore(
-      blobContainerUri: map['blobContainerUri'] == null ? null : map['blobContainerUri'] as String,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      managedIdentityResourceId: map['managedIdentityResourceId'] == null ? null : map['managedIdentityResourceId'] as String,
-      sasUrlSettingName: map['sasUrlSettingName'] == null ? null : map['sasUrlSettingName'] as String,
+      blobContainerUri: map['blobContainerUri'] == null ? null : (map['blobContainerUri'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      managedIdentityResourceId: map['managedIdentityResourceId'] == null ? null : (map['managedIdentityResourceId'] as String).input(),
+      sasUrlSettingName: map['sasUrlSettingName'] == null ? null : (map['sasUrlSettingName'] as String).input(),
     );
   }
 }

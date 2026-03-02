@@ -29,25 +29,16 @@ class CustomerManagedKeyState {
   /// [storageAccountId] The ID of the Storage Account. Changing this forces a new resource to be created.
   /// [userAssignedIdentityId] The ID of a user assigned identity.
   CustomerManagedKeyState({
-    pulumi.Output<String>? federatedIdentityClientId,
-    pulumi.Output<String>? keyName,
-    pulumi.Output<String>? keyVaultId,
-    pulumi.Output<String>? keyVaultKeyId,
-    pulumi.Output<String>? keyVaultUri,
-    pulumi.Output<String>? keyVersion,
-    pulumi.Output<String>? managedHsmKeyId,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? userAssignedIdentityId,
-  }) :
-      federatedIdentityClientId = pulumi.Input.asOptionalInput<String>(federatedIdentityClientId),
-      keyName = pulumi.Input.asOptionalInput<String>(keyName),
-      keyVaultId = pulumi.Input.asOptionalInput<String>(keyVaultId),
-      keyVaultKeyId = pulumi.Input.asOptionalInput<String>(keyVaultKeyId),
-      keyVaultUri = pulumi.Input.asOptionalInput<String>(keyVaultUri),
-      keyVersion = pulumi.Input.asOptionalInput<String>(keyVersion),
-      managedHsmKeyId = pulumi.Input.asOptionalInput<String>(managedHsmKeyId),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      userAssignedIdentityId = pulumi.Input.asOptionalInput<String>(userAssignedIdentityId);
+    this.federatedIdentityClientId,
+    this.keyName,
+    this.keyVaultId,
+    this.keyVaultKeyId,
+    this.keyVaultUri,
+    this.keyVersion,
+    this.managedHsmKeyId,
+    this.storageAccountId,
+    this.userAssignedIdentityId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,15 +56,15 @@ class CustomerManagedKeyState {
 
   factory CustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyState(
-      federatedIdentityClientId: map['federatedIdentityClientId'] == null ? null : pulumi.Output.create<String>(map['federatedIdentityClientId'] as String),
-      keyName: map['keyName'] == null ? null : pulumi.Output.create<String>(map['keyName'] as String),
-      keyVaultId: map['keyVaultId'] == null ? null : pulumi.Output.create<String>(map['keyVaultId'] as String),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      keyVaultUri: map['keyVaultUri'] == null ? null : pulumi.Output.create<String>(map['keyVaultUri'] as String),
-      keyVersion: map['keyVersion'] == null ? null : pulumi.Output.create<String>(map['keyVersion'] as String),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : pulumi.Output.create<String>(map['managedHsmKeyId'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : pulumi.Output.create<String>(map['userAssignedIdentityId'] as String),
+      federatedIdentityClientId: map['federatedIdentityClientId'] == null ? null : (map['federatedIdentityClientId'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
     );
   }
 }

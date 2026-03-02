@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Job Delay Notification details
 class JobDelayDetailsResponse {
   /// Description of the delay.
-  final String description;
+  final pulumi.Input<String> description;
   /// Delay Error code
-  final String errorCode;
+  final pulumi.Input<String> errorCode;
   /// Timestamp when the delay notification was resolved.
-  final String resolutionTime;
+  final pulumi.Input<String> resolutionTime;
   /// Timestamp when the delay notification was created.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Status of notification
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [JobDelayDetailsResponse].
   /// [description] Description of the delay.
@@ -40,11 +41,11 @@ class JobDelayDetailsResponse {
 
   factory JobDelayDetailsResponse.fromMap(Map<String, dynamic> map) {
     return JobDelayDetailsResponse(
-      description: map['description'] as String,
-      errorCode: map['errorCode'] as String,
-      resolutionTime: map['resolutionTime'] as String,
-      startTime: map['startTime'] as String,
-      status: map['status'] as String,
+      description: (map['description'] as String).input(),
+      errorCode: (map['errorCode'] as String).input(),
+      resolutionTime: (map['resolutionTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

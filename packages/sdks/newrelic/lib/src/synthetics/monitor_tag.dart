@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorTag {
   /// Name of the tag key.
-  final String key;
+  final pulumi.Input<String> key;
   /// Values associated with the tag key.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [MonitorTag].
   /// [key] Name of the tag key.
@@ -24,8 +25,8 @@ class MonitorTag {
 
   factory MonitorTag.fromMap(Map<String, dynamic> map) {
     return MonitorTag(
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

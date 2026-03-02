@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareReplicatedVmNetworkInterface {
   /// Whether this `network_interface` is primary for the replicated VM.
-  final bool isPrimary;
+  final pulumi.Input<bool> isPrimary;
   /// Mac address of the network interface of source VM.
-  final String sourceMacAddress;
+  final pulumi.Input<String> sourceMacAddress;
   /// Static IP to assign when a failover is done.
-  final String? targetStaticIp;
+  final pulumi.Input<String>? targetStaticIp;
   /// Name of the subnet to use when a failover is done.
-  final String? targetSubnetName;
+  final pulumi.Input<String>? targetSubnetName;
   /// Name of the subnet to use when a test failover is done.
-  final String? testSubnetName;
+  final pulumi.Input<String>? testSubnetName;
 
   /// Creates a new [VmwareReplicatedVmNetworkInterface].
   /// [isPrimary] Whether this `network_interface` is primary for the replicated VM.
@@ -39,11 +40,11 @@ class VmwareReplicatedVmNetworkInterface {
 
   factory VmwareReplicatedVmNetworkInterface.fromMap(Map<String, dynamic> map) {
     return VmwareReplicatedVmNetworkInterface(
-      isPrimary: map['isPrimary'] as bool,
-      sourceMacAddress: map['sourceMacAddress'] as String,
-      targetStaticIp: map['targetStaticIp'] == null ? null : map['targetStaticIp'] as String,
-      targetSubnetName: map['targetSubnetName'] == null ? null : map['targetSubnetName'] as String,
-      testSubnetName: map['testSubnetName'] == null ? null : map['testSubnetName'] as String,
+      isPrimary: (map['isPrimary'] as bool).input(),
+      sourceMacAddress: (map['sourceMacAddress'] as String).input(),
+      targetStaticIp: map['targetStaticIp'] == null ? null : (map['targetStaticIp'] as String).input(),
+      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName'] as String).input(),
+      testSubnetName: map['testSubnetName'] == null ? null : (map['testSubnetName'] as String).input(),
     );
   }
 }

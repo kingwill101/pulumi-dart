@@ -40,23 +40,15 @@ class V3CustomDomainArgs {
   /// [tlsConfig] TLS configuration information See `tls_config` below.
   /// [wafConfig] Web application firewall configuration information See `waf_config` below.
   V3CustomDomainArgs({
-    pulumi.Output<V3CustomDomainAuthConfig>? authConfig,
-    pulumi.Output<V3CustomDomainCertConfig>? certConfig,
-    pulumi.Output<V3CustomDomainCorsConfig>? corsConfig,
-    pulumi.Output<String>? customDomainName,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<V3CustomDomainRouteConfig>? routeConfig,
-    pulumi.Output<V3CustomDomainTlsConfig>? tlsConfig,
-    pulumi.Output<V3CustomDomainWafConfig>? wafConfig,
-  }) :
-      authConfig = pulumi.Input.asOptionalInput<V3CustomDomainAuthConfig>(authConfig),
-      certConfig = pulumi.Input.asOptionalInput<V3CustomDomainCertConfig>(certConfig),
-      corsConfig = pulumi.Input.asOptionalInput<V3CustomDomainCorsConfig>(corsConfig),
-      customDomainName = pulumi.Input.asOptionalInput<String>(customDomainName),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      routeConfig = pulumi.Input.asOptionalInput<V3CustomDomainRouteConfig>(routeConfig),
-      tlsConfig = pulumi.Input.asOptionalInput<V3CustomDomainTlsConfig>(tlsConfig),
-      wafConfig = pulumi.Input.asOptionalInput<V3CustomDomainWafConfig>(wafConfig);
+    this.authConfig,
+    this.certConfig,
+    this.corsConfig,
+    this.customDomainName,
+    this.protocol,
+    this.routeConfig,
+    this.tlsConfig,
+    this.wafConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,14 +65,14 @@ class V3CustomDomainArgs {
 
   factory V3CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainArgs(
-      authConfig: map['authConfig'] == null ? null : pulumi.Output.create<V3CustomDomainAuthConfig>(V3CustomDomainAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())),
-      certConfig: map['certConfig'] == null ? null : pulumi.Output.create<V3CustomDomainCertConfig>(V3CustomDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())),
-      corsConfig: map['corsConfig'] == null ? null : pulumi.Output.create<V3CustomDomainCorsConfig>(V3CustomDomainCorsConfig.fromMap((map['corsConfig'] as Map).cast<String, dynamic>())),
-      customDomainName: map['customDomainName'] == null ? null : pulumi.Output.create<String>(map['customDomainName'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      routeConfig: map['routeConfig'] == null ? null : pulumi.Output.create<V3CustomDomainRouteConfig>(V3CustomDomainRouteConfig.fromMap((map['routeConfig'] as Map).cast<String, dynamic>())),
-      tlsConfig: map['tlsConfig'] == null ? null : pulumi.Output.create<V3CustomDomainTlsConfig>(V3CustomDomainTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())),
-      wafConfig: map['wafConfig'] == null ? null : pulumi.Output.create<V3CustomDomainWafConfig>(V3CustomDomainWafConfig.fromMap((map['wafConfig'] as Map).cast<String, dynamic>())),
+      authConfig: map['authConfig'] == null ? null : (V3CustomDomainAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
+      certConfig: map['certConfig'] == null ? null : (V3CustomDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())).input(),
+      corsConfig: map['corsConfig'] == null ? null : (V3CustomDomainCorsConfig.fromMap((map['corsConfig'] as Map).cast<String, dynamic>())).input(),
+      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      routeConfig: map['routeConfig'] == null ? null : (V3CustomDomainRouteConfig.fromMap((map['routeConfig'] as Map).cast<String, dynamic>())).input(),
+      tlsConfig: map['tlsConfig'] == null ? null : (V3CustomDomainTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())).input(),
+      wafConfig: map['wafConfig'] == null ? null : (V3CustomDomainWafConfig.fromMap((map['wafConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

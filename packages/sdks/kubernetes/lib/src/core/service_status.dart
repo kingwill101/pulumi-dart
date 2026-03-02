@@ -7,9 +7,9 @@ import 'load_balancer_status.dart';
 /// ServiceStatus represents the current status of a service.
 class ServiceStatus {
   /// Current service state
-  final List<Condition>? conditions;
+  final pulumi.Input<List<Condition>>? conditions;
   /// LoadBalancer contains the current status of the load-balancer, if one is present.
-  final LoadBalancerStatus? loadBalancer;
+  final pulumi.Input<LoadBalancerStatus>? loadBalancer;
 
   /// Creates a new [ServiceStatus].
   /// [conditions] Current service state
@@ -21,15 +21,15 @@ class ServiceStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<Condition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
-      'loadBalancer': ?loadBalancer == null ? null : loadBalancer!.toMap(),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<Condition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loadBalancer': ?pulumi.Input.mapOptionalInputValue<LoadBalancerStatus, Map<String, dynamic>>(loadBalancer, (value) => value.toMap()),
     };
   }
 
   factory ServiceStatus.fromMap(Map<String, dynamic> map) {
     return ServiceStatus(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancer: map['loadBalancer'] == null ? null : LoadBalancerStatus.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>()),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : (LoadBalancerStatus.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

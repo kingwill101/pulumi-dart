@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings {
-  final String? amazonBedrockRoleArn;
+  final pulumi.Input<String>? amazonBedrockRoleArn;
 
   /// Creates a new [UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings].
   /// [amazonBedrockRoleArn] Optional.
@@ -18,7 +19,7 @@ class UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings {
 
   factory UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings(
-      amazonBedrockRoleArn: map['amazonBedrockRoleArn'] == null ? null : map['amazonBedrockRoleArn'] as String,
+      amazonBedrockRoleArn: map['amazonBedrockRoleArn'] == null ? null : (map['amazonBedrockRoleArn'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy {
   /// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
-  final bool autoUpgradeKubelet;
+  final pulumi.Input<bool> autoUpgradeKubelet;
 
   /// Creates a new [GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy].
   /// [autoUpgradeKubelet] Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
@@ -19,7 +20,7 @@ class GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy {
 
   factory GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy(
-      autoUpgradeKubelet: map['autoUpgradeKubelet'] as bool,
+      autoUpgradeKubelet: (map['autoUpgradeKubelet'] as bool).input(),
     );
   }
 }

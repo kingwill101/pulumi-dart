@@ -43,31 +43,19 @@ class SchemaState {
   /// [version] The version of the schema.
   /// [versionCreatedDate] The created date of the version of the schema.
   SchemaState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? lastModified,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registryName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? version,
-    pulumi.Output<String>? versionCreatedDate,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      content = pulumi.Input.asOptionalInput<String>(content),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      lastModified = pulumi.Input.asOptionalInput<String>(lastModified),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryName = pulumi.Input.asOptionalInput<String>(registryName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      version = pulumi.Input.asOptionalInput<String>(version),
-      versionCreatedDate = pulumi.Input.asOptionalInput<String>(versionCreatedDate);
+    this.arn,
+    this.content,
+    this.description,
+    this.lastModified,
+    this.name,
+    this.region,
+    this.registryName,
+    this.tags,
+    this.tagsAll,
+    this.type,
+    this.version,
+    this.versionCreatedDate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class SchemaState {
 
   factory SchemaState.fromMap(Map<String, dynamic> map) {
     return SchemaState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      lastModified: map['lastModified'] == null ? null : pulumi.Output.create<String>(map['lastModified'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryName: map['registryName'] == null ? null : pulumi.Output.create<String>(map['registryName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
-      versionCreatedDate: map['versionCreatedDate'] == null ? null : pulumi.Output.create<String>(map['versionCreatedDate'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryName: map['registryName'] == null ? null : (map['registryName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      versionCreatedDate: map['versionCreatedDate'] == null ? null : (map['versionCreatedDate'] as String).input(),
     );
   }
 }

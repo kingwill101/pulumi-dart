@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the job status.
 class JobStatusResponse {
   /// Defines the job name.
-  final String jobName;
+  final pulumi.Input<String> jobName;
   /// Gets or sets the monitoring job percentage.
-  final String jobProgress;
+  final pulumi.Input<String> jobProgress;
 
   /// Creates a new [JobStatusResponse].
   /// [jobName] Defines the job name.
@@ -25,8 +26,8 @@ class JobStatusResponse {
 
   factory JobStatusResponse.fromMap(Map<String, dynamic> map) {
     return JobStatusResponse(
-      jobName: map['jobName'] as String,
-      jobProgress: map['jobProgress'] as String,
+      jobName: (map['jobName'] as String).input(),
+      jobProgress: (map['jobProgress'] as String).input(),
     );
   }
 }

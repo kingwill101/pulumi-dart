@@ -16,11 +16,9 @@ class GetPostgresInstanceArgs {
   /// [postgresInstanceName] Name of Postgres Instance
   /// [resourceGroupName] The name of the Azure resource group
   GetPostgresInstanceArgs({
-    required pulumi.Output<String> postgresInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      postgresInstanceName = pulumi.Input.asInput<String>(postgresInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.postgresInstanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPostgresInstanceArgs {
 
   factory GetPostgresInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetPostgresInstanceArgs(
-      postgresInstanceName: pulumi.Output.create<String>(map['postgresInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      postgresInstanceName: (map['postgresInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

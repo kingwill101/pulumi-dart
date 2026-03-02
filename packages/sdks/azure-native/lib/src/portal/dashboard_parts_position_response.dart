@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The dashboard's part position.
 class DashboardPartsPositionResponse {
   /// The dashboard's part column span.
-  final int colSpan;
+  final pulumi.Input<int> colSpan;
   /// The dashboard part's metadata.
-  final dynamic metadata;
+  final pulumi.Input<dynamic>? metadata;
   /// The dashboard's part row span.
-  final int rowSpan;
+  final pulumi.Input<int> rowSpan;
   /// The dashboard's part x coordinate.
-  final int x;
+  final pulumi.Input<int> x;
   /// The dashboard's part y coordinate.
-  final int y;
+  final pulumi.Input<int> y;
 
   /// Creates a new [DashboardPartsPositionResponse].
   /// [colSpan] The dashboard's part column span.
@@ -40,11 +41,11 @@ class DashboardPartsPositionResponse {
 
   factory DashboardPartsPositionResponse.fromMap(Map<String, dynamic> map) {
     return DashboardPartsPositionResponse(
-      colSpan: map['colSpan'] as int,
-      metadata: map['metadata'] == null ? null : map['metadata'],
-      rowSpan: map['rowSpan'] as int,
-      x: map['x'] as int,
-      y: map['y'] as int,
+      colSpan: (map['colSpan'] as int).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      rowSpan: (map['rowSpan'] as int).input(),
+      x: (map['x'] as int).input(),
+      y: (map['y'] as int).input(),
     );
   }
 }

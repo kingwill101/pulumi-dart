@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WafRuleRateLimitStatus {
   /// The HTTP status code returned.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
-  final int? ratio;
+  final pulumi.Input<int>? ratio;
 
   /// Creates a new [WafRuleRateLimitStatus].
   /// [code] The HTTP status code returned.
@@ -29,9 +30,9 @@ class WafRuleRateLimitStatus {
 
   factory WafRuleRateLimitStatus.fromMap(Map<String, dynamic> map) {
     return WafRuleRateLimitStatus(
-      code: map['code'] == null ? null : map['code'] as String,
-      count: map['count'] == null ? null : map['count'] as int,
-      ratio: map['ratio'] == null ? null : map['ratio'] as int,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      ratio: map['ratio'] == null ? null : (map['ratio'] as int).input(),
     );
   }
 }

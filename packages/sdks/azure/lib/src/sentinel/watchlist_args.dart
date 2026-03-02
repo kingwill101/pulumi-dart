@@ -31,21 +31,14 @@ class WatchlistArgs {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace where this Sentinel Watchlist resides in. Changing this forces a new Sentinel Watchlist to be created.
   /// [name] The name which should be used for this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
   WatchlistArgs({
-    pulumi.Output<String>? defaultDuration,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> itemSearchKey,
-    pulumi.Output<List<String>>? labels,
-    required pulumi.Output<String> logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-  }) :
-      defaultDuration = pulumi.Input.asOptionalInput<String>(defaultDuration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      itemSearchKey = pulumi.Input.asInput<String>(itemSearchKey),
-      labels = pulumi.Input.asOptionalInput<List<String>>(labels),
-      logAnalyticsWorkspaceId = pulumi.Input.asInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.defaultDuration,
+    this.description,
+    required this.displayName,
+    required this.itemSearchKey,
+    this.labels,
+    required this.logAnalyticsWorkspaceId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class WatchlistArgs {
 
   factory WatchlistArgs.fromMap(Map<String, dynamic> map) {
     return WatchlistArgs(
-      defaultDuration: map['defaultDuration'] == null ? null : pulumi.Output.create<String>(map['defaultDuration'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      itemSearchKey: pulumi.Output.create<String>(map['itemSearchKey'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<String>>((map['labels'] as List).cast<String>()),
-      logAnalyticsWorkspaceId: pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      defaultDuration: map['defaultDuration'] == null ? null : (map['defaultDuration'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      itemSearchKey: (map['itemSearchKey'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

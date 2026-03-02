@@ -19,13 +19,10 @@ class GetPolicyArgs {
   /// [policyName] The name of the Policy tracked resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetPolicyArgs({
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      policyName = pulumi.Input.asInput<String>(policyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.namespaceName,
+    required this.policyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPolicyArgs {
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

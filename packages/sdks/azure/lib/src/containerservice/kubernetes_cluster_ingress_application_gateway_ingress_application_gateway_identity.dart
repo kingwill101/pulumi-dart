@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterIngressApplicationGatewayIngressApplicationGatewayIdentity {
   /// The Client ID of the user-defined Managed Identity used for Web App Routing.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The Object ID of the user-defined Managed Identity used for Web App Routing
-  final String? objectId;
+  final pulumi.Input<String>? objectId;
   /// The ID of the User Assigned Identity used for Web App Routing.
-  final String? userAssignedIdentityId;
+  final pulumi.Input<String>? userAssignedIdentityId;
 
   /// Creates a new [KubernetesClusterIngressApplicationGatewayIngressApplicationGatewayIdentity].
   /// [clientId] The Client ID of the user-defined Managed Identity used for Web App Routing.
@@ -29,9 +30,9 @@ class KubernetesClusterIngressApplicationGatewayIngressApplicationGatewayIdentit
 
   factory KubernetesClusterIngressApplicationGatewayIngressApplicationGatewayIdentity.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterIngressApplicationGatewayIngressApplicationGatewayIdentity(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : map['userAssignedIdentityId'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
     );
   }
 }

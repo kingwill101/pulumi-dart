@@ -25,17 +25,12 @@ class ApiGatewayConfigConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceId] The link to the API Management service workspace.
   ApiGatewayConfigConnectionArgs({
-    pulumi.Output<String>? configConnectionName,
-    required pulumi.Output<String> gatewayName,
-    pulumi.Output<List<String>>? hostnames,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sourceId,
-  }) :
-      configConnectionName = pulumi.Input.asOptionalInput<String>(configConnectionName),
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      hostnames = pulumi.Input.asOptionalInput<List<String>>(hostnames),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceId = pulumi.Input.asOptionalInput<String>(sourceId);
+    this.configConnectionName,
+    required this.gatewayName,
+    this.hostnames,
+    required this.resourceGroupName,
+    this.sourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ApiGatewayConfigConnectionArgs {
 
   factory ApiGatewayConfigConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ApiGatewayConfigConnectionArgs(
-      configConnectionName: map['configConnectionName'] == null ? null : pulumi.Output.create<String>(map['configConnectionName'] as String),
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      hostnames: map['hostnames'] == null ? null : pulumi.Output.create<List<String>>((map['hostnames'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceId: map['sourceId'] == null ? null : pulumi.Output.create<String>(map['sourceId'] as String),
+      configConnectionName: map['configConnectionName'] == null ? null : (map['configConnectionName'] as String).input(),
+      gatewayName: (map['gatewayName'] as String).input(),
+      hostnames: map['hostnames'] == null ? null : ((map['hostnames'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
     );
   }
 }

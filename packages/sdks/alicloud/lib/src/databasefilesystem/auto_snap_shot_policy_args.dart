@@ -22,15 +22,11 @@ class AutoSnapShotPolicyArgs {
   /// [retentionDays] Automatic snapshot retention days.
   /// [timePoints] The set of times at which the snapshot is taken on the day the automatic snapshot is executed. Value range: `00` to `23`, representing 24 time points from 00:00 to 23:00, for example, `01` indicates 01:00.
   AutoSnapShotPolicyArgs({
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<List<String>> repeatWeekdays,
-    required pulumi.Output<int> retentionDays,
-    required pulumi.Output<List<String>> timePoints,
-  }) :
-      policyName = pulumi.Input.asInput<String>(policyName),
-      repeatWeekdays = pulumi.Input.asInput<List<String>>(repeatWeekdays),
-      retentionDays = pulumi.Input.asInput<int>(retentionDays),
-      timePoints = pulumi.Input.asInput<List<String>>(timePoints);
+    required this.policyName,
+    required this.repeatWeekdays,
+    required this.retentionDays,
+    required this.timePoints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AutoSnapShotPolicyArgs {
 
   factory AutoSnapShotPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AutoSnapShotPolicyArgs(
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      repeatWeekdays: pulumi.Output.create<List<String>>((map['repeatWeekdays'] as List).cast<String>()),
-      retentionDays: pulumi.Output.create<int>(map['retentionDays'] as int),
-      timePoints: pulumi.Output.create<List<String>>((map['timePoints'] as List).cast<String>()),
+      policyName: (map['policyName'] as String).input(),
+      repeatWeekdays: ((map['repeatWeekdays'] as List).cast<String>()).input(),
+      retentionDays: (map['retentionDays'] as int).input(),
+      timePoints: ((map['timePoints'] as List).cast<String>()).input(),
     );
   }
 }

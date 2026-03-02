@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hbase_cluster_roles_head_node.dart';
 import 'hbase_cluster_roles_worker_node.dart';
 import 'hbase_cluster_roles_zookeeper_node.dart';
 
 class HBaseClusterRoles {
   /// A `head_node` block as defined above.
-  final HBaseClusterRolesHeadNode headNode;
+  final pulumi.Input<HBaseClusterRolesHeadNode> headNode;
   /// A `worker_node` block as defined below.
-  final HBaseClusterRolesWorkerNode workerNode;
+  final pulumi.Input<HBaseClusterRolesWorkerNode> workerNode;
   /// A `zookeeper_node` block as defined below.
-  final HBaseClusterRolesZookeeperNode zookeeperNode;
+  final pulumi.Input<HBaseClusterRolesZookeeperNode> zookeeperNode;
 
   /// Creates a new [HBaseClusterRoles].
   /// [headNode] A `head_node` block as defined above.
@@ -24,17 +25,17 @@ class HBaseClusterRoles {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headNode': headNode.toMap(),
-      'workerNode': workerNode.toMap(),
-      'zookeeperNode': zookeeperNode.toMap(),
+      'headNode': pulumi.Input.mapInputValue<HBaseClusterRolesHeadNode, Map<String, dynamic>>(headNode, (value) => value.toMap()),
+      'workerNode': pulumi.Input.mapInputValue<HBaseClusterRolesWorkerNode, Map<String, dynamic>>(workerNode, (value) => value.toMap()),
+      'zookeeperNode': pulumi.Input.mapInputValue<HBaseClusterRolesZookeeperNode, Map<String, dynamic>>(zookeeperNode, (value) => value.toMap()),
     };
   }
 
   factory HBaseClusterRoles.fromMap(Map<String, dynamic> map) {
     return HBaseClusterRoles(
-      headNode: HBaseClusterRolesHeadNode.fromMap((map['headNode'] as Map).cast<String, dynamic>()),
-      workerNode: HBaseClusterRolesWorkerNode.fromMap((map['workerNode'] as Map).cast<String, dynamic>()),
-      zookeeperNode: HBaseClusterRolesZookeeperNode.fromMap((map['zookeeperNode'] as Map).cast<String, dynamic>()),
+      headNode: (HBaseClusterRolesHeadNode.fromMap((map['headNode'] as Map).cast<String, dynamic>())).input(),
+      workerNode: (HBaseClusterRolesWorkerNode.fromMap((map['workerNode'] as Map).cast<String, dynamic>())).input(),
+      zookeeperNode: (HBaseClusterRolesZookeeperNode.fromMap((map['zookeeperNode'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

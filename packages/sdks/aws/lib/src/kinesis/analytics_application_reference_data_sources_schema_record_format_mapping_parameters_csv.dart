@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv {
   /// The Column Delimiter.
-  final String recordColumnDelimiter;
+  final pulumi.Input<String> recordColumnDelimiter;
   /// The Row Delimiter.
-  final String recordRowDelimiter;
+  final pulumi.Input<String> recordRowDelimiter;
 
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv].
   /// [recordColumnDelimiter] The Column Delimiter.
@@ -24,8 +25,8 @@ class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameter
 
   factory AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv(
-      recordColumnDelimiter: map['recordColumnDelimiter'] as String,
-      recordRowDelimiter: map['recordRowDelimiter'] as String,
+      recordColumnDelimiter: (map['recordColumnDelimiter'] as String).input(),
+      recordRowDelimiter: (map['recordRowDelimiter'] as String).input(),
     );
   }
 }

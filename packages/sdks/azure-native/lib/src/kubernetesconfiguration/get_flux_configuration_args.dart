@@ -25,17 +25,12 @@ class GetFluxConfigurationArgs {
   /// [fluxConfigurationName] Name of the Flux Configuration.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFluxConfigurationArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> clusterResourceName,
-    required pulumi.Output<String> clusterRp,
-    required pulumi.Output<String> fluxConfigurationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      clusterResourceName = pulumi.Input.asInput<String>(clusterResourceName),
-      clusterRp = pulumi.Input.asInput<String>(clusterRp),
-      fluxConfigurationName = pulumi.Input.asInput<String>(fluxConfigurationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.clusterResourceName,
+    required this.clusterRp,
+    required this.fluxConfigurationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetFluxConfigurationArgs {
 
   factory GetFluxConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetFluxConfigurationArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      clusterResourceName: pulumi.Output.create<String>(map['clusterResourceName'] as String),
-      clusterRp: pulumi.Output.create<String>(map['clusterRp'] as String),
-      fluxConfigurationName: pulumi.Output.create<String>(map['fluxConfigurationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      clusterResourceName: (map['clusterResourceName'] as String).input(),
+      clusterRp: (map['clusterRp'] as String).input(),
+      fluxConfigurationName: (map['fluxConfigurationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

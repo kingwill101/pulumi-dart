@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNodeClassesClassSupportedEngineAvailableResource {
   /// The PolarDB node class type by the user.
-  final String dbNodeClass;
+  final pulumi.Input<String> dbNodeClass;
 
   /// Creates a new [GetNodeClassesClassSupportedEngineAvailableResource].
   /// [dbNodeClass] The PolarDB node class type by the user.
@@ -19,7 +20,7 @@ class GetNodeClassesClassSupportedEngineAvailableResource {
 
   factory GetNodeClassesClassSupportedEngineAvailableResource.fromMap(Map<String, dynamic> map) {
     return GetNodeClassesClassSupportedEngineAvailableResource(
-      dbNodeClass: map['dbNodeClass'] as String,
+      dbNodeClass: (map['dbNodeClass'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class SecurityLabelArgs {
   /// [objectName] The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
   /// [objectType] The PostgreSQL object type to apply this security label to.
   SecurityLabelArgs({
-    required pulumi.Output<String> label,
-    required pulumi.Output<String> labelProvider,
-    required pulumi.Output<String> objectName,
-    required pulumi.Output<String> objectType,
-  }) :
-      label = pulumi.Input.asInput<String>(label),
-      labelProvider = pulumi.Input.asInput<String>(labelProvider),
-      objectName = pulumi.Input.asInput<String>(objectName),
-      objectType = pulumi.Input.asInput<String>(objectType);
+    required this.label,
+    required this.labelProvider,
+    required this.objectName,
+    required this.objectType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SecurityLabelArgs {
 
   factory SecurityLabelArgs.fromMap(Map<String, dynamic> map) {
     return SecurityLabelArgs(
-      label: pulumi.Output.create<String>(map['label'] as String),
-      labelProvider: pulumi.Output.create<String>(map['labelProvider'] as String),
-      objectName: pulumi.Output.create<String>(map['objectName'] as String),
-      objectType: pulumi.Output.create<String>(map['objectType'] as String),
+      label: (map['label'] as String).input(),
+      labelProvider: (map['labelProvider'] as String).input(),
+      objectName: (map['objectName'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
     );
   }
 }

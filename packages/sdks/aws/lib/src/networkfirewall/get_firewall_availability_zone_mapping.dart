@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallAvailabilityZoneMapping {
   /// The ID of the Availability Zone where the firewall endpoint is located.
-  final String availabilityZoneId;
+  final pulumi.Input<String> availabilityZoneId;
 
   /// Creates a new [GetFirewallAvailabilityZoneMapping].
   /// [availabilityZoneId] The ID of the Availability Zone where the firewall endpoint is located.
@@ -19,7 +20,7 @@ class GetFirewallAvailabilityZoneMapping {
 
   factory GetFirewallAvailabilityZoneMapping.fromMap(Map<String, dynamic> map) {
     return GetFirewallAvailabilityZoneMapping(
-      availabilityZoneId: map['availabilityZoneId'] as String,
+      availabilityZoneId: (map['availabilityZoneId'] as String).input(),
     );
   }
 }

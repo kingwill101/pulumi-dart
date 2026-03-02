@@ -40,27 +40,17 @@ class GetMountTargetsArgs {
   /// [vpcId] Filter results by a specific VpcId.
   /// [vswitchId] Filter results by a specific VSwitchId.
   GetMountTargetsArgs({
-    pulumi.Output<String>? accessGroupName,
-    required pulumi.Output<String> fileSystemId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? mountTargetDomain,
-    pulumi.Output<String>? networkType,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      accessGroupName = pulumi.Input.asOptionalInput<String>(accessGroupName),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      mountTargetDomain = pulumi.Input.asOptionalInput<String>(mountTargetDomain),
-      networkType = pulumi.Input.asOptionalInput<String>(networkType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.accessGroupName,
+    required this.fileSystemId,
+    this.ids,
+    this.mountTargetDomain,
+    this.networkType,
+    this.outputFile,
+    this.status,
+    this.type,
+    this.vpcId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class GetMountTargetsArgs {
 
   factory GetMountTargetsArgs.fromMap(Map<String, dynamic> map) {
     return GetMountTargetsArgs(
-      accessGroupName: map['accessGroupName'] == null ? null : pulumi.Output.create<String>(map['accessGroupName'] as String),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      mountTargetDomain: map['mountTargetDomain'] == null ? null : pulumi.Output.create<String>(map['mountTargetDomain'] as String),
-      networkType: map['networkType'] == null ? null : pulumi.Output.create<String>(map['networkType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain'] as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

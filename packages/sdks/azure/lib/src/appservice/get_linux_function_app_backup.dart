@@ -5,13 +5,13 @@ import 'get_linux_function_app_backup_schedule.dart';
 
 class GetLinuxFunctionAppBackup {
   /// Is this backup job enabled?
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The name which should be used for this Linux Function App.
-  final String name;
+  final pulumi.Input<String> name;
   /// A `schedule` block as defined below.
-  final List<GetLinuxFunctionAppBackupSchedule> schedules;
+  final pulumi.Input<List<GetLinuxFunctionAppBackupSchedule>> schedules;
   /// The SAS URL to the container.
-  final String storageAccountUrl;
+  final pulumi.Input<String> storageAccountUrl;
 
   /// Creates a new [GetLinuxFunctionAppBackup].
   /// [enabled] Is this backup job enabled?
@@ -29,17 +29,17 @@ class GetLinuxFunctionAppBackup {
     return <String, dynamic>{
       'enabled': enabled,
       'name': name,
-      'schedules': pulumi.Input.encodeList<GetLinuxFunctionAppBackupSchedule, Map<String, dynamic>>(schedules, (value) => value.toMap()),
+      'schedules': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppBackupSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppBackupSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'storageAccountUrl': storageAccountUrl,
     };
   }
 
   factory GetLinuxFunctionAppBackup.fromMap(Map<String, dynamic> map) {
     return GetLinuxFunctionAppBackup(
-      enabled: map['enabled'] as bool,
-      name: map['name'] as String,
-      schedules: pulumi.Input.decodeList<GetLinuxFunctionAppBackupSchedule>(map['schedules'], (value) => GetLinuxFunctionAppBackupSchedule.fromMap((value as Map).cast<String, dynamic>())),
-      storageAccountUrl: map['storageAccountUrl'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      schedules: (pulumi.Input.decodeList<GetLinuxFunctionAppBackupSchedule>(map['schedules'], (value) => GetLinuxFunctionAppBackupSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountUrl: (map['storageAccountUrl'] as String).input(),
     );
   }
 }

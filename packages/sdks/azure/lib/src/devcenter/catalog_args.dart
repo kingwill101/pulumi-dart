@@ -27,17 +27,12 @@ class CatalogArgs {
   /// [name] Specifies the name of this Dev Center Catalog. Changing this forces a new Dev Center to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group within which this Dev Center Catalog should exist. Changing this forces a new Dev Center to be created.
   CatalogArgs({
-    pulumi.Output<CatalogCatalogAdogit>? catalogAdogit,
-    pulumi.Output<CatalogCatalogGithub>? catalogGithub,
-    required pulumi.Output<String> devCenterId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      catalogAdogit = pulumi.Input.asOptionalInput<CatalogCatalogAdogit>(catalogAdogit),
-      catalogGithub = pulumi.Input.asOptionalInput<CatalogCatalogGithub>(catalogGithub),
-      devCenterId = pulumi.Input.asInput<String>(devCenterId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.catalogAdogit,
+    this.catalogGithub,
+    required this.devCenterId,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class CatalogArgs {
 
   factory CatalogArgs.fromMap(Map<String, dynamic> map) {
     return CatalogArgs(
-      catalogAdogit: map['catalogAdogit'] == null ? null : pulumi.Output.create<CatalogCatalogAdogit>(CatalogCatalogAdogit.fromMap((map['catalogAdogit'] as Map).cast<String, dynamic>())),
-      catalogGithub: map['catalogGithub'] == null ? null : pulumi.Output.create<CatalogCatalogGithub>(CatalogCatalogGithub.fromMap((map['catalogGithub'] as Map).cast<String, dynamic>())),
-      devCenterId: pulumi.Output.create<String>(map['devCenterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      catalogAdogit: map['catalogAdogit'] == null ? null : (CatalogCatalogAdogit.fromMap((map['catalogAdogit'] as Map).cast<String, dynamic>())).input(),
+      catalogGithub: map['catalogGithub'] == null ? null : (CatalogCatalogGithub.fromMap((map['catalogGithub'] as Map).cast<String, dynamic>())).input(),
+      devCenterId: (map['devCenterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

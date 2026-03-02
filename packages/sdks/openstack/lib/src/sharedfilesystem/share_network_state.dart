@@ -50,29 +50,18 @@ class ShareNetworkState {
   /// [securityServiceIds] The list of security service IDs to associate with
   /// [segmentationId] The share network segmentation ID.
   ShareNetworkState({
-    pulumi.Output<String>? cidr,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? ipVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkType,
-    pulumi.Output<String>? neutronNetId,
-    pulumi.Output<String>? neutronSubnetId,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityServiceIds,
-    pulumi.Output<int>? segmentationId,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipVersion = pulumi.Input.asOptionalInput<int>(ipVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkType = pulumi.Input.asOptionalInput<String>(networkType),
-      neutronNetId = pulumi.Input.asOptionalInput<String>(neutronNetId),
-      neutronSubnetId = pulumi.Input.asOptionalInput<String>(neutronSubnetId),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityServiceIds = pulumi.Input.asOptionalInput<List<String>>(securityServiceIds),
-      segmentationId = pulumi.Input.asOptionalInput<int>(segmentationId);
+    this.cidr,
+    this.description,
+    this.ipVersion,
+    this.name,
+    this.networkType,
+    this.neutronNetId,
+    this.neutronSubnetId,
+    this.projectId,
+    this.region,
+    this.securityServiceIds,
+    this.segmentationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,17 +81,17 @@ class ShareNetworkState {
 
   factory ShareNetworkState.fromMap(Map<String, dynamic> map) {
     return ShareNetworkState(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<int>(map['ipVersion'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkType: map['networkType'] == null ? null : pulumi.Output.create<String>(map['networkType'] as String),
-      neutronNetId: map['neutronNetId'] == null ? null : pulumi.Output.create<String>(map['neutronNetId'] as String),
-      neutronSubnetId: map['neutronSubnetId'] == null ? null : pulumi.Output.create<String>(map['neutronSubnetId'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityServiceIds: map['securityServiceIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityServiceIds'] as List).cast<String>()),
-      segmentationId: map['segmentationId'] == null ? null : pulumi.Output.create<int>(map['segmentationId'] as int),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      neutronNetId: map['neutronNetId'] == null ? null : (map['neutronNetId'] as String).input(),
+      neutronSubnetId: map['neutronSubnetId'] == null ? null : (map['neutronSubnetId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityServiceIds: map['securityServiceIds'] == null ? null : ((map['securityServiceIds'] as List).cast<String>()).input(),
+      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId'] as int).input(),
     );
   }
 }

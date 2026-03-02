@@ -6,13 +6,13 @@ import 'storage_discovery_scope.dart';
 /// Storage Discovery Workspace Properties
 class StorageDiscoveryWorkspaceProperties {
   /// The description of the storage discovery workspace
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The scopes of the storage discovery workspace.
-  final List<StorageDiscoveryScope> scopes;
+  final pulumi.Input<List<StorageDiscoveryScope>> scopes;
   /// The storage discovery sku
-  final String? sku;
+  final pulumi.Input<String>? sku;
   /// The view level storage discovery data estate
-  final List<String> workspaceRoots;
+  final pulumi.Input<List<String>> workspaceRoots;
 
   /// Creates a new [StorageDiscoveryWorkspaceProperties].
   /// [description] The description of the storage discovery workspace
@@ -29,7 +29,7 @@ class StorageDiscoveryWorkspaceProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'scopes': pulumi.Input.encodeList<StorageDiscoveryScope, Map<String, dynamic>>(scopes, (value) => value.toMap()),
+      'scopes': pulumi.Input.mapInputValue<List<StorageDiscoveryScope>, List<Map<String, dynamic>>>(scopes, (value) => pulumi.Input.encodeList<StorageDiscoveryScope, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sku': ?sku,
       'workspaceRoots': workspaceRoots,
     };
@@ -37,10 +37,10 @@ class StorageDiscoveryWorkspaceProperties {
 
   factory StorageDiscoveryWorkspaceProperties.fromMap(Map<String, dynamic> map) {
     return StorageDiscoveryWorkspaceProperties(
-      description: map['description'] == null ? null : map['description'] as String,
-      scopes: pulumi.Input.decodeList<StorageDiscoveryScope>(map['scopes'], (value) => StorageDiscoveryScope.fromMap((value as Map).cast<String, dynamic>())),
-      sku: map['sku'] == null ? null : map['sku'] as String,
-      workspaceRoots: (map['workspaceRoots'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      scopes: (pulumi.Input.decodeList<StorageDiscoveryScope>(map['scopes'], (value) => StorageDiscoveryScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      workspaceRoots: ((map['workspaceRoots'] as List).cast<String>()).input(),
     );
   }
 }

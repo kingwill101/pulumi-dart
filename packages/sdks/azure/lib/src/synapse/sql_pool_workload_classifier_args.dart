@@ -34,23 +34,15 @@ class SqlPoolWorkloadClassifierArgs {
   /// [startTime] The workload classifier start time for classification. It's of the `HH:MM` format in UTC time zone.
   /// [workloadGroupId] The ID of the Synapse SQL Pool Workload Group. Changing this forces a new Synapse SQL Pool Workload Classifier to be created.
   SqlPoolWorkloadClassifierArgs({
-    pulumi.Output<String>? context,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? importance,
-    pulumi.Output<String>? label,
-    required pulumi.Output<String> memberName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? startTime,
-    required pulumi.Output<String> workloadGroupId,
-  }) :
-      context = pulumi.Input.asOptionalInput<String>(context),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      importance = pulumi.Input.asOptionalInput<String>(importance),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      memberName = pulumi.Input.asInput<String>(memberName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      workloadGroupId = pulumi.Input.asInput<String>(workloadGroupId);
+    this.context,
+    this.endTime,
+    this.importance,
+    this.label,
+    required this.memberName,
+    this.name,
+    this.startTime,
+    required this.workloadGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class SqlPoolWorkloadClassifierArgs {
 
   factory SqlPoolWorkloadClassifierArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolWorkloadClassifierArgs(
-      context: map['context'] == null ? null : pulumi.Output.create<String>(map['context'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      importance: map['importance'] == null ? null : pulumi.Output.create<String>(map['importance'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      memberName: pulumi.Output.create<String>(map['memberName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      workloadGroupId: pulumi.Output.create<String>(map['workloadGroupId'] as String),
+      context: map['context'] == null ? null : (map['context'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      importance: map['importance'] == null ? null : (map['importance'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      memberName: (map['memberName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      workloadGroupId: (map['workloadGroupId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Ports and any VIF attached to segment.
 class WorkloadNetworkSegmentPortVifResponse {
   /// Name of port or VIF attached to segment.
-  final String? portName;
+  final pulumi.Input<String>? portName;
 
   /// Creates a new [WorkloadNetworkSegmentPortVifResponse].
   /// [portName] Name of port or VIF attached to segment.
@@ -20,7 +21,7 @@ class WorkloadNetworkSegmentPortVifResponse {
 
   factory WorkloadNetworkSegmentPortVifResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkSegmentPortVifResponse(
-      portName: map['portName'] == null ? null : map['portName'] as String,
+      portName: map['portName'] == null ? null : (map['portName'] as String).input(),
     );
   }
 }

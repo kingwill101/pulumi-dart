@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerTumblingWindowTriggerDependency {
   /// The offset of the dependency trigger. Must be in Timespan format (±hh:mm:ss) and must be a negative offset for a self dependency.
-  final String? offset;
+  final pulumi.Input<String>? offset;
   /// The size of the dependency tumbling window. Must be in Timespan format (hh:mm:ss).
-  final String? size;
+  final pulumi.Input<String>? size;
   /// The dependency trigger name. If not specified, it will use self dependency.
-  final String? triggerName;
+  final pulumi.Input<String>? triggerName;
 
   /// Creates a new [TriggerTumblingWindowTriggerDependency].
   /// [offset] The offset of the dependency trigger. Must be in Timespan format (±hh:mm:ss) and must be a negative offset for a self dependency.
@@ -29,9 +30,9 @@ class TriggerTumblingWindowTriggerDependency {
 
   factory TriggerTumblingWindowTriggerDependency.fromMap(Map<String, dynamic> map) {
     return TriggerTumblingWindowTriggerDependency(
-      offset: map['offset'] == null ? null : map['offset'] as String,
-      size: map['size'] == null ? null : map['size'] as String,
-      triggerName: map['triggerName'] == null ? null : map['triggerName'] as String,
+      offset: map['offset'] == null ? null : (map['offset'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      triggerName: map['triggerName'] == null ? null : (map['triggerName'] as String).input(),
     );
   }
 }

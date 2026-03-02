@@ -47,33 +47,20 @@ class WorkspaceState {
   /// [volumeEncryptionKey] The ARN of a symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
   /// [workspaceProperties] The WorkSpace properties.
   WorkspaceState({
-    pulumi.Output<String>? bundleId,
-    pulumi.Output<String>? computerName,
-    pulumi.Output<String>? directoryId,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? rootVolumeEncryptionEnabled,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? userName,
-    pulumi.Output<bool>? userVolumeEncryptionEnabled,
-    pulumi.Output<String>? volumeEncryptionKey,
-    pulumi.Output<WorkspaceWorkspaceProperties>? workspaceProperties,
-  }) :
-      bundleId = pulumi.Input.asOptionalInput<String>(bundleId),
-      computerName = pulumi.Input.asOptionalInput<String>(computerName),
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rootVolumeEncryptionEnabled = pulumi.Input.asOptionalInput<bool>(rootVolumeEncryptionEnabled),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      userName = pulumi.Input.asOptionalInput<String>(userName),
-      userVolumeEncryptionEnabled = pulumi.Input.asOptionalInput<bool>(userVolumeEncryptionEnabled),
-      volumeEncryptionKey = pulumi.Input.asOptionalInput<String>(volumeEncryptionKey),
-      workspaceProperties = pulumi.Input.asOptionalInput<WorkspaceWorkspaceProperties>(workspaceProperties);
+    this.bundleId,
+    this.computerName,
+    this.directoryId,
+    this.ipAddress,
+    this.region,
+    this.rootVolumeEncryptionEnabled,
+    this.state,
+    this.tags,
+    this.tagsAll,
+    this.userName,
+    this.userVolumeEncryptionEnabled,
+    this.volumeEncryptionKey,
+    this.workspaceProperties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      bundleId: map['bundleId'] == null ? null : pulumi.Output.create<String>(map['bundleId'] as String),
-      computerName: map['computerName'] == null ? null : pulumi.Output.create<String>(map['computerName'] as String),
-      directoryId: map['directoryId'] == null ? null : pulumi.Output.create<String>(map['directoryId'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rootVolumeEncryptionEnabled: map['rootVolumeEncryptionEnabled'] == null ? null : pulumi.Output.create<bool>(map['rootVolumeEncryptionEnabled'] as bool),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
-      userVolumeEncryptionEnabled: map['userVolumeEncryptionEnabled'] == null ? null : pulumi.Output.create<bool>(map['userVolumeEncryptionEnabled'] as bool),
-      volumeEncryptionKey: map['volumeEncryptionKey'] == null ? null : pulumi.Output.create<String>(map['volumeEncryptionKey'] as String),
-      workspaceProperties: map['workspaceProperties'] == null ? null : pulumi.Output.create<WorkspaceWorkspaceProperties>(WorkspaceWorkspaceProperties.fromMap((map['workspaceProperties'] as Map).cast<String, dynamic>())),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rootVolumeEncryptionEnabled: map['rootVolumeEncryptionEnabled'] == null ? null : (map['rootVolumeEncryptionEnabled'] as bool).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userVolumeEncryptionEnabled: map['userVolumeEncryptionEnabled'] == null ? null : (map['userVolumeEncryptionEnabled'] as bool).input(),
+      volumeEncryptionKey: map['volumeEncryptionKey'] == null ? null : (map['volumeEncryptionKey'] as String).input(),
+      workspaceProperties: map['workspaceProperties'] == null ? null : (WorkspaceWorkspaceProperties.fromMap((map['workspaceProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

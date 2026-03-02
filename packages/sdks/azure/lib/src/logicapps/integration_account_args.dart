@@ -28,19 +28,13 @@ class IntegrationAccountArgs {
   /// [skuName] The SKU name of the Logic App Integration Account. Possible Values are `Basic`, `Free` and `Standard`.
   /// [tags] A mapping of tags which should be assigned to the Logic App Integration Account.
   IntegrationAccountArgs({
-    pulumi.Output<String>? integrationServiceEnvironmentId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> skuName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      integrationServiceEnvironmentId = pulumi.Input.asOptionalInput<String>(integrationServiceEnvironmentId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.integrationServiceEnvironmentId,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    required this.skuName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class IntegrationAccountArgs {
 
   factory IntegrationAccountArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountArgs(
-      integrationServiceEnvironmentId: map['integrationServiceEnvironmentId'] == null ? null : pulumi.Output.create<String>(map['integrationServiceEnvironmentId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      integrationServiceEnvironmentId: map['integrationServiceEnvironmentId'] == null ? null : (map['integrationServiceEnvironmentId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skuName: (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

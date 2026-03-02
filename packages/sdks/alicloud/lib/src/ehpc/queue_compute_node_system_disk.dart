@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueueComputeNodeSystemDisk {
   /// Category
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Level
-  final String? level;
+  final pulumi.Input<String>? level;
   /// Size
-  final int? size;
+  final pulumi.Input<int>? size;
 
   /// Creates a new [QueueComputeNodeSystemDisk].
   /// [category] Category
@@ -29,9 +30,9 @@ class QueueComputeNodeSystemDisk {
 
   factory QueueComputeNodeSystemDisk.fromMap(Map<String, dynamic> map) {
     return QueueComputeNodeSystemDisk(
-      category: map['category'] == null ? null : map['category'] as String,
-      level: map['level'] == null ? null : map['level'] as String,
-      size: map['size'] == null ? null : map['size'] as int,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      level: map['level'] == null ? null : (map['level'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

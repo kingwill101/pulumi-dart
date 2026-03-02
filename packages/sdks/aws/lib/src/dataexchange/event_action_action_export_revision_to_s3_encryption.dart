@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventActionActionExportRevisionToS3Encryption {
   /// ARN of the KMS key used for encryption.
-  final String? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
   /// Type of server-side encryption.
   /// Valid values are `aws:kms` or `aws:s3`.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [EventActionActionExportRevisionToS3Encryption].
   /// [kmsKeyArn] ARN of the KMS key used for encryption.
@@ -25,8 +26,8 @@ class EventActionActionExportRevisionToS3Encryption {
 
   factory EventActionActionExportRevisionToS3Encryption.fromMap(Map<String, dynamic> map) {
     return EventActionActionExportRevisionToS3Encryption(
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

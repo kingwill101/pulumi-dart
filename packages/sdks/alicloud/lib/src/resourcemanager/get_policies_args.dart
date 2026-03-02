@@ -22,15 +22,11 @@ class GetPoliciesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [policyType] The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
   GetPoliciesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? policyType,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.policyType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetPoliciesArgs {
 
   factory GetPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetPoliciesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
     );
   }
 }

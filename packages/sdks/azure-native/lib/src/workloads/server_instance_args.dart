@@ -22,15 +22,11 @@ class ServerInstanceArgs {
   /// [sapInstanceName] The name of SAP Instance resource for SAP Migration.
   /// [serverInstanceName] The name of the Server instance resource for SAP Migration.
   ServerInstanceArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sapDiscoverySiteName,
-    required pulumi.Output<String> sapInstanceName,
-    pulumi.Output<String>? serverInstanceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sapDiscoverySiteName = pulumi.Input.asInput<String>(sapDiscoverySiteName),
-      sapInstanceName = pulumi.Input.asInput<String>(sapInstanceName),
-      serverInstanceName = pulumi.Input.asOptionalInput<String>(serverInstanceName);
+    required this.resourceGroupName,
+    required this.sapDiscoverySiteName,
+    required this.sapInstanceName,
+    this.serverInstanceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ServerInstanceArgs {
 
   factory ServerInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ServerInstanceArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sapDiscoverySiteName: pulumi.Output.create<String>(map['sapDiscoverySiteName'] as String),
-      sapInstanceName: pulumi.Output.create<String>(map['sapInstanceName'] as String),
-      serverInstanceName: map['serverInstanceName'] == null ? null : pulumi.Output.create<String>(map['serverInstanceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sapDiscoverySiteName: (map['sapDiscoverySiteName'] as String).input(),
+      sapInstanceName: (map['sapInstanceName'] as String).input(),
+      serverInstanceName: map['serverInstanceName'] == null ? null : (map['serverInstanceName'] as String).input(),
     );
   }
 }

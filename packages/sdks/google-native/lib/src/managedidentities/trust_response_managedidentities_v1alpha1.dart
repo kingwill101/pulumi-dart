@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a relationship between two domains which makes it possible for users in one domain to be authenticated by a dc in another domain. Refer https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731335(v%3dws.10) If the trust is being changed, it will be placed into the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an intermediate state.
 class TrustResponseManagedidentitiesV1alpha1 {
   /// The time the instance was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The last heartbeat time when the trust was known to be connected.
-  final String lastKnownTrustConnectedHeartbeatTime;
+  final pulumi.Input<String> lastKnownTrustConnectedHeartbeatTime;
   /// The trust authentication type which decides whether the trusted side has forest/domain wide access or selective access to approved set of resources.
-  final bool selectiveAuthentication;
+  final pulumi.Input<bool> selectiveAuthentication;
   /// The current state of this trust.
-  final String state;
+  final pulumi.Input<String> state;
   /// Additional information about the current state of this trust, if available.
-  final String stateDescription;
+  final pulumi.Input<String> stateDescription;
   /// The target dns server ip addresses which can resolve the remote domain involved in trust.
-  final List<String> targetDnsIpAddresses;
+  final pulumi.Input<List<String>> targetDnsIpAddresses;
   /// The fully qualified target domain name which will be in trust with current domain.
-  final String targetDomainName;
+  final pulumi.Input<String> targetDomainName;
   /// The trust direction decides the current domain is trusted, trusting or both.
-  final String trustDirection;
+  final pulumi.Input<String> trustDirection;
   /// Input only, and will not be stored. The trust secret used for handshake with target domain.
-  final String trustHandshakeSecret;
+  final pulumi.Input<String> trustHandshakeSecret;
   /// The type of trust represented by the trust resource.
-  final String trustType;
+  final pulumi.Input<String> trustType;
   /// Last update time.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [TrustResponseManagedidentitiesV1alpha1].
   /// [createTime] The time the instance was created.
@@ -70,17 +71,17 @@ class TrustResponseManagedidentitiesV1alpha1 {
 
   factory TrustResponseManagedidentitiesV1alpha1.fromMap(Map<String, dynamic> map) {
     return TrustResponseManagedidentitiesV1alpha1(
-      createTime: map['createTime'] as String,
-      lastKnownTrustConnectedHeartbeatTime: map['lastKnownTrustConnectedHeartbeatTime'] as String,
-      selectiveAuthentication: map['selectiveAuthentication'] as bool,
-      state: map['state'] as String,
-      stateDescription: map['stateDescription'] as String,
-      targetDnsIpAddresses: (map['targetDnsIpAddresses'] as List).cast<String>(),
-      targetDomainName: map['targetDomainName'] as String,
-      trustDirection: map['trustDirection'] as String,
-      trustHandshakeSecret: map['trustHandshakeSecret'] as String,
-      trustType: map['trustType'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (map['createTime'] as String).input(),
+      lastKnownTrustConnectedHeartbeatTime: (map['lastKnownTrustConnectedHeartbeatTime'] as String).input(),
+      selectiveAuthentication: (map['selectiveAuthentication'] as bool).input(),
+      state: (map['state'] as String).input(),
+      stateDescription: (map['stateDescription'] as String).input(),
+      targetDnsIpAddresses: ((map['targetDnsIpAddresses'] as List).cast<String>()).input(),
+      targetDomainName: (map['targetDomainName'] as String).input(),
+      trustDirection: (map['trustDirection'] as String).input(),
+      trustHandshakeSecret: (map['trustHandshakeSecret'] as String).input(),
+      trustType: (map['trustType'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

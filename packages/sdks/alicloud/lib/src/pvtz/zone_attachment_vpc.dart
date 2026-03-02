@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ZoneAttachmentVpc {
   /// The region of the vpc. If not set, the current region will instead of.
-  final String? regionId;
+  final pulumi.Input<String>? regionId;
   /// The Id of the vpc.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [ZoneAttachmentVpc].
   /// [regionId] The region of the vpc. If not set, the current region will instead of.
@@ -24,8 +25,8 @@ class ZoneAttachmentVpc {
 
   factory ZoneAttachmentVpc.fromMap(Map<String, dynamic> map) {
     return ZoneAttachmentVpc(
-      regionId: map['regionId'] == null ? null : map['regionId'] as String,
-      vpcId: map['vpcId'] as String,
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

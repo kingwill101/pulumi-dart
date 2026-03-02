@@ -39,17 +39,12 @@ class ManagedSslCertificateArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [type] Enum field whose value is always `MANAGED` - used to signal to the API
   ManagedSslCertificateArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<ManagedSslCertificateManaged>? managed,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      managed = pulumi.Input.asOptionalInput<ManagedSslCertificateManaged>(managed),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.description,
+    this.managed,
+    this.name,
+    this.project,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,11 +58,11 @@ class ManagedSslCertificateArgs {
 
   factory ManagedSslCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ManagedSslCertificateArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      managed: map['managed'] == null ? null : pulumi.Output.create<ManagedSslCertificateManaged>(ManagedSslCertificateManaged.fromMap((map['managed'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      managed: map['managed'] == null ? null : (ManagedSslCertificateManaged.fromMap((map['managed'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

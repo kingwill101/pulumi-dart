@@ -38,23 +38,15 @@ class ScraperArgs {
   /// [tags] Optional.
   /// [timeouts] Optional.
   ScraperArgs({
-    pulumi.Output<String>? alias,
-    required pulumi.Output<ScraperDestination> destination,
-    pulumi.Output<String>? region,
-    pulumi.Output<ScraperRoleConfiguration>? roleConfiguration,
-    required pulumi.Output<String> scrapeConfiguration,
-    pulumi.Output<ScraperSource>? source,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ScraperTimeouts>? timeouts,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      destination = pulumi.Input.asInput<ScraperDestination>(destination),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleConfiguration = pulumi.Input.asOptionalInput<ScraperRoleConfiguration>(roleConfiguration),
-      scrapeConfiguration = pulumi.Input.asInput<String>(scrapeConfiguration),
-      source = pulumi.Input.asOptionalInput<ScraperSource>(source),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ScraperTimeouts>(timeouts);
+    this.alias,
+    required this.destination,
+    this.region,
+    this.roleConfiguration,
+    required this.scrapeConfiguration,
+    this.source,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class ScraperArgs {
 
   factory ScraperArgs.fromMap(Map<String, dynamic> map) {
     return ScraperArgs(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      destination: pulumi.Output.create<ScraperDestination>(ScraperDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleConfiguration: map['roleConfiguration'] == null ? null : pulumi.Output.create<ScraperRoleConfiguration>(ScraperRoleConfiguration.fromMap((map['roleConfiguration'] as Map).cast<String, dynamic>())),
-      scrapeConfiguration: pulumi.Output.create<String>(map['scrapeConfiguration'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<ScraperSource>(ScraperSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ScraperTimeouts>(ScraperTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      destination: (ScraperDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleConfiguration: map['roleConfiguration'] == null ? null : (ScraperRoleConfiguration.fromMap((map['roleConfiguration'] as Map).cast<String, dynamic>())).input(),
+      scrapeConfiguration: (map['scrapeConfiguration'] as String).input(),
+      source: map['source'] == null ? null : (ScraperSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ScraperTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

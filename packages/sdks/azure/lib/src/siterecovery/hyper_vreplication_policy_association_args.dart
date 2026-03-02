@@ -19,13 +19,10 @@ class HyperVReplicationPolicyAssociationArgs {
   /// [name] The name of the replication policy association. Changing this forces a new association to be created.
   /// [policyId] The ID of the HyperV replication policy which to be associated. Changing this forces a new association to be created.
   HyperVReplicationPolicyAssociationArgs({
-    required pulumi.Output<String> hypervSiteId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> policyId,
-  }) :
-      hypervSiteId = pulumi.Input.asInput<String>(hypervSiteId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyId = pulumi.Input.asInput<String>(policyId);
+    required this.hypervSiteId,
+    this.name,
+    required this.policyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class HyperVReplicationPolicyAssociationArgs {
 
   factory HyperVReplicationPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return HyperVReplicationPolicyAssociationArgs(
-      hypervSiteId: pulumi.Output.create<String>(map['hypervSiteId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
+      hypervSiteId: (map['hypervSiteId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
     );
   }
 }

@@ -55,27 +55,17 @@ class DnsAuthorizationState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [type] type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
   DnsAuthorizationState({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<DnsAuthorizationDnsResourceRecord>>? dnsResourceRecords,
-    pulumi.Output<String>? domain,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dnsResourceRecords = pulumi.Input.asOptionalInput<List<DnsAuthorizationDnsResourceRecord>>(dnsResourceRecords),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.description,
+    this.dnsResourceRecords,
+    this.domain,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,16 +84,16 @@ class DnsAuthorizationState {
 
   factory DnsAuthorizationState.fromMap(Map<String, dynamic> map) {
     return DnsAuthorizationState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dnsResourceRecords: map['dnsResourceRecords'] == null ? null : pulumi.Output.create<List<DnsAuthorizationDnsResourceRecord>>(pulumi.Input.decodeList<DnsAuthorizationDnsResourceRecord>(map['dnsResourceRecords'], (value) => DnsAuthorizationDnsResourceRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dnsResourceRecords: map['dnsResourceRecords'] == null ? null : (pulumi.Input.decodeList<DnsAuthorizationDnsResourceRecord>(map['dnsResourceRecords'], (value) => DnsAuthorizationDnsResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

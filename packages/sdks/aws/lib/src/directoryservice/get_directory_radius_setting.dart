@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDirectoryRadiusSetting {
   /// The protocol specified for your RADIUS endpoints.
-  final String authenticationProtocol;
+  final pulumi.Input<String> authenticationProtocol;
   /// Display label.
-  final String displayLabel;
+  final pulumi.Input<String> displayLabel;
   /// Port that your RADIUS server is using for communications.
-  final int radiusPort;
+  final pulumi.Input<int> radiusPort;
   /// Maximum number of times that communication with the RADIUS server is attempted.
-  final int radiusRetries;
+  final pulumi.Input<int> radiusRetries;
   /// Set of strings that contains the fully qualified domain name (FQDN) or IP addresses of the RADIUS server endpoints, or the FQDN or IP addresses of your RADIUS server load balancer.
-  final List<String> radiusServers;
+  final pulumi.Input<List<String>> radiusServers;
   /// Amount of time, in seconds, to wait for the RADIUS server to respond.
-  final int radiusTimeout;
+  final pulumi.Input<int> radiusTimeout;
   /// Not currently used.
-  final bool useSameUsername;
+  final pulumi.Input<bool> useSameUsername;
 
   /// Creates a new [GetDirectoryRadiusSetting].
   /// [authenticationProtocol] The protocol specified for your RADIUS endpoints.
@@ -49,13 +50,13 @@ class GetDirectoryRadiusSetting {
 
   factory GetDirectoryRadiusSetting.fromMap(Map<String, dynamic> map) {
     return GetDirectoryRadiusSetting(
-      authenticationProtocol: map['authenticationProtocol'] as String,
-      displayLabel: map['displayLabel'] as String,
-      radiusPort: map['radiusPort'] as int,
-      radiusRetries: map['radiusRetries'] as int,
-      radiusServers: (map['radiusServers'] as List).cast<String>(),
-      radiusTimeout: map['radiusTimeout'] as int,
-      useSameUsername: map['useSameUsername'] as bool,
+      authenticationProtocol: (map['authenticationProtocol'] as String).input(),
+      displayLabel: (map['displayLabel'] as String).input(),
+      radiusPort: (map['radiusPort'] as int).input(),
+      radiusRetries: (map['radiusRetries'] as int).input(),
+      radiusServers: ((map['radiusServers'] as List).cast<String>()).input(),
+      radiusTimeout: (map['radiusTimeout'] as int).input(),
+      useSameUsername: (map['useSameUsername'] as bool).input(),
     );
   }
 }

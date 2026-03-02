@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'floorsetting_filter_config_malicious_uri_filter_settings.dart';
 import 'floorsetting_filter_config_pi_and_jailbreak_filter_settings.dart';
 import 'floorsetting_filter_config_rai_settings.dart';
@@ -8,16 +9,16 @@ import 'floorsetting_filter_config_sdp_settings.dart';
 class FloorsettingFilterConfig {
   /// Malicious URI filter settings.
   /// Structure is documented below.
-  final FloorsettingFilterConfigMaliciousUriFilterSettings? maliciousUriFilterSettings;
+  final pulumi.Input<FloorsettingFilterConfigMaliciousUriFilterSettings>? maliciousUriFilterSettings;
   /// Prompt injection and Jailbreak Filter settings.
   /// Structure is documented below.
-  final FloorsettingFilterConfigPiAndJailbreakFilterSettings? piAndJailbreakFilterSettings;
+  final pulumi.Input<FloorsettingFilterConfigPiAndJailbreakFilterSettings>? piAndJailbreakFilterSettings;
   /// Responsible AI Filter settings.
   /// Structure is documented below.
-  final FloorsettingFilterConfigRaiSettings? raiSettings;
+  final pulumi.Input<FloorsettingFilterConfigRaiSettings>? raiSettings;
   /// Sensitive Data Protection settings.
   /// Structure is documented below.
-  final FloorsettingFilterConfigSdpSettings? sdpSettings;
+  final pulumi.Input<FloorsettingFilterConfigSdpSettings>? sdpSettings;
 
   /// Creates a new [FloorsettingFilterConfig].
   /// [maliciousUriFilterSettings] Malicious URI filter settings.
@@ -33,19 +34,19 @@ class FloorsettingFilterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maliciousUriFilterSettings': ?maliciousUriFilterSettings == null ? null : maliciousUriFilterSettings!.toMap(),
-      'piAndJailbreakFilterSettings': ?piAndJailbreakFilterSettings == null ? null : piAndJailbreakFilterSettings!.toMap(),
-      'raiSettings': ?raiSettings == null ? null : raiSettings!.toMap(),
-      'sdpSettings': ?sdpSettings == null ? null : sdpSettings!.toMap(),
+      'maliciousUriFilterSettings': ?pulumi.Input.mapOptionalInputValue<FloorsettingFilterConfigMaliciousUriFilterSettings, Map<String, dynamic>>(maliciousUriFilterSettings, (value) => value.toMap()),
+      'piAndJailbreakFilterSettings': ?pulumi.Input.mapOptionalInputValue<FloorsettingFilterConfigPiAndJailbreakFilterSettings, Map<String, dynamic>>(piAndJailbreakFilterSettings, (value) => value.toMap()),
+      'raiSettings': ?pulumi.Input.mapOptionalInputValue<FloorsettingFilterConfigRaiSettings, Map<String, dynamic>>(raiSettings, (value) => value.toMap()),
+      'sdpSettings': ?pulumi.Input.mapOptionalInputValue<FloorsettingFilterConfigSdpSettings, Map<String, dynamic>>(sdpSettings, (value) => value.toMap()),
     };
   }
 
   factory FloorsettingFilterConfig.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfig(
-      maliciousUriFilterSettings: map['maliciousUriFilterSettings'] == null ? null : FloorsettingFilterConfigMaliciousUriFilterSettings.fromMap((map['maliciousUriFilterSettings'] as Map).cast<String, dynamic>()),
-      piAndJailbreakFilterSettings: map['piAndJailbreakFilterSettings'] == null ? null : FloorsettingFilterConfigPiAndJailbreakFilterSettings.fromMap((map['piAndJailbreakFilterSettings'] as Map).cast<String, dynamic>()),
-      raiSettings: map['raiSettings'] == null ? null : FloorsettingFilterConfigRaiSettings.fromMap((map['raiSettings'] as Map).cast<String, dynamic>()),
-      sdpSettings: map['sdpSettings'] == null ? null : FloorsettingFilterConfigSdpSettings.fromMap((map['sdpSettings'] as Map).cast<String, dynamic>()),
+      maliciousUriFilterSettings: map['maliciousUriFilterSettings'] == null ? null : (FloorsettingFilterConfigMaliciousUriFilterSettings.fromMap((map['maliciousUriFilterSettings'] as Map).cast<String, dynamic>())).input(),
+      piAndJailbreakFilterSettings: map['piAndJailbreakFilterSettings'] == null ? null : (FloorsettingFilterConfigPiAndJailbreakFilterSettings.fromMap((map['piAndJailbreakFilterSettings'] as Map).cast<String, dynamic>())).input(),
+      raiSettings: map['raiSettings'] == null ? null : (FloorsettingFilterConfigRaiSettings.fromMap((map['raiSettings'] as Map).cast<String, dynamic>())).input(),
+      sdpSettings: map['sdpSettings'] == null ? null : (FloorsettingFilterConfigSdpSettings.fromMap((map['sdpSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

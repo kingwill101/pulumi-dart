@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_store_details.dart';
 
 /// Class for app insight monitoring properties.
 class AppInsightMonitoringProperties {
   /// Gets or sets the app insights name.
-  final String? appInsightsName;
+  final pulumi.Input<String>? appInsightsName;
   /// Gets or sets a value indicating whether monitoring is enabled.
-  final bool? isEnabled;
+  final pulumi.Input<bool>? isEnabled;
   /// Gets or sets the region.
-  final String? region;
+  final pulumi.Input<String>? region;
   /// Gets or sets the resource group of the resource.
-  final String? resourceGroup;
-  final SecretStoreDetails? secretStoreDetails;
+  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<SecretStoreDetails>? secretStoreDetails;
   /// Gets or sets the subscription id of the resource.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
 
   /// Creates a new [AppInsightMonitoringProperties].
   /// [appInsightsName] Gets or sets the app insights name.
@@ -38,19 +39,19 @@ class AppInsightMonitoringProperties {
       'isEnabled': ?isEnabled,
       'region': ?region,
       'resourceGroup': ?resourceGroup,
-      'secretStoreDetails': ?secretStoreDetails == null ? null : secretStoreDetails!.toMap(),
+      'secretStoreDetails': ?pulumi.Input.mapOptionalInputValue<SecretStoreDetails, Map<String, dynamic>>(secretStoreDetails, (value) => value.toMap()),
       'subscriptionId': ?subscriptionId,
     };
   }
 
   factory AppInsightMonitoringProperties.fromMap(Map<String, dynamic> map) {
     return AppInsightMonitoringProperties(
-      appInsightsName: map['appInsightsName'] == null ? null : map['appInsightsName'] as String,
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled'] as bool,
-      region: map['region'] == null ? null : map['region'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      secretStoreDetails: map['secretStoreDetails'] == null ? null : SecretStoreDetails.fromMap((map['secretStoreDetails'] as Map).cast<String, dynamic>()),
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
+      appInsightsName: map['appInsightsName'] == null ? null : (map['appInsightsName'] as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      secretStoreDetails: map['secretStoreDetails'] == null ? null : (SecretStoreDetails.fromMap((map['secretStoreDetails'] as Map).cast<String, dynamic>())).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

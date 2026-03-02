@@ -51,23 +51,15 @@ class WorkloadIdentityPoolNamespaceState {
   /// [workloadIdentityPoolId] The ID to use for the pool, which becomes the final component of the resource name. This
   /// [workloadIdentityPoolNamespaceId] The ID to use for the namespace. This value must:
   WorkloadIdentityPoolNamespaceState({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<WorkloadIdentityPoolNamespaceOwnerService>>? ownerServices,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? workloadIdentityPoolId,
-    pulumi.Output<String>? workloadIdentityPoolNamespaceId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerServices = pulumi.Input.asOptionalInput<List<WorkloadIdentityPoolNamespaceOwnerService>>(ownerServices),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      workloadIdentityPoolId = pulumi.Input.asOptionalInput<String>(workloadIdentityPoolId),
-      workloadIdentityPoolNamespaceId = pulumi.Input.asOptionalInput<String>(workloadIdentityPoolNamespaceId);
+    this.description,
+    this.disabled,
+    this.name,
+    this.ownerServices,
+    this.project,
+    this.state,
+    this.workloadIdentityPoolId,
+    this.workloadIdentityPoolNamespaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,14 +76,14 @@ class WorkloadIdentityPoolNamespaceState {
 
   factory WorkloadIdentityPoolNamespaceState.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolNamespaceState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerServices: map['ownerServices'] == null ? null : pulumi.Output.create<List<WorkloadIdentityPoolNamespaceOwnerService>>(pulumi.Input.decodeList<WorkloadIdentityPoolNamespaceOwnerService>(map['ownerServices'], (value) => WorkloadIdentityPoolNamespaceOwnerService.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : pulumi.Output.create<String>(map['workloadIdentityPoolId'] as String),
-      workloadIdentityPoolNamespaceId: map['workloadIdentityPoolNamespaceId'] == null ? null : pulumi.Output.create<String>(map['workloadIdentityPoolNamespaceId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerServices: map['ownerServices'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolNamespaceOwnerService>(map['ownerServices'], (value) => WorkloadIdentityPoolNamespaceOwnerService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : (map['workloadIdentityPoolId'] as String).input(),
+      workloadIdentityPoolNamespaceId: map['workloadIdentityPoolNamespaceId'] == null ? null : (map['workloadIdentityPoolNamespaceId'] as String).input(),
     );
   }
 }

@@ -35,23 +35,15 @@ class DedicatedHostGroupArgs {
   /// [tags] Resource tags.
   /// [zones] The availability zones.
   DedicatedHostGroupArgs({
-    pulumi.Output<DedicatedHostGroupPropertiesAdditionalCapabilities>? additionalCapabilities,
-    pulumi.Output<String>? hostGroupName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<int> platformFaultDomainCount,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? supportAutomaticPlacement,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      additionalCapabilities = pulumi.Input.asOptionalInput<DedicatedHostGroupPropertiesAdditionalCapabilities>(additionalCapabilities),
-      hostGroupName = pulumi.Input.asOptionalInput<String>(hostGroupName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      platformFaultDomainCount = pulumi.Input.asInput<int>(platformFaultDomainCount),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      supportAutomaticPlacement = pulumi.Input.asOptionalInput<bool>(supportAutomaticPlacement),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.additionalCapabilities,
+    this.hostGroupName,
+    this.location,
+    required this.platformFaultDomainCount,
+    required this.resourceGroupName,
+    this.supportAutomaticPlacement,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class DedicatedHostGroupArgs {
 
   factory DedicatedHostGroupArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedHostGroupArgs(
-      additionalCapabilities: map['additionalCapabilities'] == null ? null : pulumi.Output.create<DedicatedHostGroupPropertiesAdditionalCapabilities>(DedicatedHostGroupPropertiesAdditionalCapabilities.fromMap((map['additionalCapabilities'] as Map).cast<String, dynamic>())),
-      hostGroupName: map['hostGroupName'] == null ? null : pulumi.Output.create<String>(map['hostGroupName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      platformFaultDomainCount: pulumi.Output.create<int>(map['platformFaultDomainCount'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      supportAutomaticPlacement: map['supportAutomaticPlacement'] == null ? null : pulumi.Output.create<bool>(map['supportAutomaticPlacement'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      additionalCapabilities: map['additionalCapabilities'] == null ? null : (DedicatedHostGroupPropertiesAdditionalCapabilities.fromMap((map['additionalCapabilities'] as Map).cast<String, dynamic>())).input(),
+      hostGroupName: map['hostGroupName'] == null ? null : (map['hostGroupName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      platformFaultDomainCount: (map['platformFaultDomainCount'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      supportAutomaticPlacement: map['supportAutomaticPlacement'] == null ? null : (map['supportAutomaticPlacement'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

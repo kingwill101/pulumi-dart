@@ -50,21 +50,14 @@ class ConnectionIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   ConnectionIamMemberState({
-    pulumi.Output<ConnectionIamMemberCondition>? condition,
-    pulumi.Output<String>? connectionId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ConnectionIamMemberCondition>(condition),
-      connectionId = pulumi.Input.asOptionalInput<String>(connectionId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.connectionId,
+    this.etag,
+    this.location,
+    this.member,
+    this.project,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,13 +73,13 @@ class ConnectionIamMemberState {
 
   factory ConnectionIamMemberState.fromMap(Map<String, dynamic> map) {
     return ConnectionIamMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<ConnectionIamMemberCondition>(ConnectionIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      connectionId: map['connectionId'] == null ? null : pulumi.Output.create<String>(map['connectionId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (ConnectionIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

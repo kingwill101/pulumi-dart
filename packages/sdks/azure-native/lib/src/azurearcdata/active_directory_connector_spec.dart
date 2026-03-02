@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'active_directory_connector_dnsdetails.dart';
 import 'active_directory_connector_domain_details.dart';
 
 /// The specifications of the AD Kubernetes resource.
 class ActiveDirectoryConnectorSpec {
   /// null
-  final ActiveDirectoryConnectorDomainDetails activeDirectory;
+  final pulumi.Input<ActiveDirectoryConnectorDomainDetails> activeDirectory;
   /// null
-  final ActiveDirectoryConnectorDNSDetails dns;
+  final pulumi.Input<ActiveDirectoryConnectorDNSDetails> dns;
 
   /// Creates a new [ActiveDirectoryConnectorSpec].
   /// [activeDirectory] null
@@ -20,15 +21,15 @@ class ActiveDirectoryConnectorSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectory': activeDirectory.toMap(),
-      'dns': dns.toMap(),
+      'activeDirectory': pulumi.Input.mapInputValue<ActiveDirectoryConnectorDomainDetails, Map<String, dynamic>>(activeDirectory, (value) => value.toMap()),
+      'dns': pulumi.Input.mapInputValue<ActiveDirectoryConnectorDNSDetails, Map<String, dynamic>>(dns, (value) => value.toMap()),
     };
   }
 
   factory ActiveDirectoryConnectorSpec.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorSpec(
-      activeDirectory: ActiveDirectoryConnectorDomainDetails.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>()),
-      dns: ActiveDirectoryConnectorDNSDetails.fromMap((map['dns'] as Map).cast<String, dynamic>()),
+      activeDirectory: (ActiveDirectoryConnectorDomainDetails.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>())).input(),
+      dns: (ActiveDirectoryConnectorDNSDetails.fromMap((map['dns'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

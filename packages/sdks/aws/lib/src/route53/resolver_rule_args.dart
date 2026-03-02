@@ -34,21 +34,14 @@ class ResolverRuleArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetIps] Configuration block(s) indicating the IPs that you want Resolver to forward DNS queries to (documented below).
   ResolverRuleArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resolverEndpointId,
-    required pulumi.Output<String> ruleType,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<ResolverRuleTargetIp>>? targetIps,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resolverEndpointId = pulumi.Input.asOptionalInput<String>(resolverEndpointId),
-      ruleType = pulumi.Input.asInput<String>(ruleType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetIps = pulumi.Input.asOptionalInput<List<ResolverRuleTargetIp>>(targetIps);
+    required this.domainName,
+    this.name,
+    this.region,
+    this.resolverEndpointId,
+    required this.ruleType,
+    this.tags,
+    this.targetIps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class ResolverRuleArgs {
 
   factory ResolverRuleArgs.fromMap(Map<String, dynamic> map) {
     return ResolverRuleArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resolverEndpointId: map['resolverEndpointId'] == null ? null : pulumi.Output.create<String>(map['resolverEndpointId'] as String),
-      ruleType: pulumi.Output.create<String>(map['ruleType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetIps: map['targetIps'] == null ? null : pulumi.Output.create<List<ResolverRuleTargetIp>>(pulumi.Input.decodeList<ResolverRuleTargetIp>(map['targetIps'], (value) => ResolverRuleTargetIp.fromMap((value as Map).cast<String, dynamic>()))),
+      domainName: (map['domainName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resolverEndpointId: map['resolverEndpointId'] == null ? null : (map['resolverEndpointId'] as String).input(),
+      ruleType: (map['ruleType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetIps: map['targetIps'] == null ? null : (pulumi.Input.decodeList<ResolverRuleTargetIp>(map['targetIps'], (value) => ResolverRuleTargetIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

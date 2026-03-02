@@ -44,29 +44,18 @@ class OutputEventHubArgs {
   /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required when `authentication_mode` is set to `ConnectionString`.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   OutputEventHubArgs({
-    pulumi.Output<String>? authenticationMode,
-    required pulumi.Output<String> eventhubName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? partitionKey,
-    pulumi.Output<List<String>>? propertyColumns,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<OutputEventHubSerialization> serialization,
-    required pulumi.Output<String> servicebusNamespace,
-    pulumi.Output<String>? sharedAccessPolicyKey,
-    pulumi.Output<String>? sharedAccessPolicyName,
-    required pulumi.Output<String> streamAnalyticsJobName,
-  }) :
-      authenticationMode = pulumi.Input.asOptionalInput<String>(authenticationMode),
-      eventhubName = pulumi.Input.asInput<String>(eventhubName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partitionKey = pulumi.Input.asOptionalInput<String>(partitionKey),
-      propertyColumns = pulumi.Input.asOptionalInput<List<String>>(propertyColumns),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serialization = pulumi.Input.asInput<OutputEventHubSerialization>(serialization),
-      servicebusNamespace = pulumi.Input.asInput<String>(servicebusNamespace),
-      sharedAccessPolicyKey = pulumi.Input.asOptionalInput<String>(sharedAccessPolicyKey),
-      sharedAccessPolicyName = pulumi.Input.asOptionalInput<String>(sharedAccessPolicyName),
-      streamAnalyticsJobName = pulumi.Input.asInput<String>(streamAnalyticsJobName);
+    this.authenticationMode,
+    required this.eventhubName,
+    this.name,
+    this.partitionKey,
+    this.propertyColumns,
+    required this.resourceGroupName,
+    required this.serialization,
+    required this.servicebusNamespace,
+    this.sharedAccessPolicyKey,
+    this.sharedAccessPolicyName,
+    required this.streamAnalyticsJobName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class OutputEventHubArgs {
 
   factory OutputEventHubArgs.fromMap(Map<String, dynamic> map) {
     return OutputEventHubArgs(
-      authenticationMode: map['authenticationMode'] == null ? null : pulumi.Output.create<String>(map['authenticationMode'] as String),
-      eventhubName: pulumi.Output.create<String>(map['eventhubName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partitionKey: map['partitionKey'] == null ? null : pulumi.Output.create<String>(map['partitionKey'] as String),
-      propertyColumns: map['propertyColumns'] == null ? null : pulumi.Output.create<List<String>>((map['propertyColumns'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serialization: pulumi.Output.create<OutputEventHubSerialization>(OutputEventHubSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())),
-      servicebusNamespace: pulumi.Output.create<String>(map['servicebusNamespace'] as String),
-      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : pulumi.Output.create<String>(map['sharedAccessPolicyKey'] as String),
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : pulumi.Output.create<String>(map['sharedAccessPolicyName'] as String),
-      streamAnalyticsJobName: pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      eventhubName: (map['eventhubName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
+      propertyColumns: map['propertyColumns'] == null ? null : ((map['propertyColumns'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serialization: (OutputEventHubSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
+      servicebusNamespace: (map['servicebusNamespace'] as String).input(),
+      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey'] as String).input(),
+      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName'] as String).input(),
+      streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
     );
   }
 }

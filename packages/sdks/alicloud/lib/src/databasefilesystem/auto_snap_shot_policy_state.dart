@@ -37,27 +37,17 @@ class AutoSnapShotPolicyState {
   /// [statusDetail] Automatic snapshot policy status details
   /// [timePoints] The set of times at which the snapshot is taken on the day the automatic snapshot is executed. Value range: `00` to `23`, representing 24 time points from 00:00 to 23:00, for example, `01` indicates 01:00.
   AutoSnapShotPolicyState({
-    pulumi.Output<int>? appliedDbfsNumber,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? lastModified,
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? policyName,
-    pulumi.Output<List<String>>? repeatWeekdays,
-    pulumi.Output<int>? retentionDays,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? statusDetail,
-    pulumi.Output<List<String>>? timePoints,
-  }) :
-      appliedDbfsNumber = pulumi.Input.asOptionalInput<int>(appliedDbfsNumber),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      lastModified = pulumi.Input.asOptionalInput<String>(lastModified),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      repeatWeekdays = pulumi.Input.asOptionalInput<List<String>>(repeatWeekdays),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      statusDetail = pulumi.Input.asOptionalInput<String>(statusDetail),
-      timePoints = pulumi.Input.asOptionalInput<List<String>>(timePoints);
+    this.appliedDbfsNumber,
+    this.createTime,
+    this.lastModified,
+    this.policyId,
+    this.policyName,
+    this.repeatWeekdays,
+    this.retentionDays,
+    this.status,
+    this.statusDetail,
+    this.timePoints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class AutoSnapShotPolicyState {
 
   factory AutoSnapShotPolicyState.fromMap(Map<String, dynamic> map) {
     return AutoSnapShotPolicyState(
-      appliedDbfsNumber: map['appliedDbfsNumber'] == null ? null : pulumi.Output.create<int>(map['appliedDbfsNumber'] as int),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      lastModified: map['lastModified'] == null ? null : pulumi.Output.create<String>(map['lastModified'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      repeatWeekdays: map['repeatWeekdays'] == null ? null : pulumi.Output.create<List<String>>((map['repeatWeekdays'] as List).cast<String>()),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      statusDetail: map['statusDetail'] == null ? null : pulumi.Output.create<String>(map['statusDetail'] as String),
-      timePoints: map['timePoints'] == null ? null : pulumi.Output.create<List<String>>((map['timePoints'] as List).cast<String>()),
+      appliedDbfsNumber: map['appliedDbfsNumber'] == null ? null : (map['appliedDbfsNumber'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      repeatWeekdays: map['repeatWeekdays'] == null ? null : ((map['repeatWeekdays'] as List).cast<String>()).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      statusDetail: map['statusDetail'] == null ? null : (map['statusDetail'] as String).input(),
+      timePoints: map['timePoints'] == null ? null : ((map['timePoints'] as List).cast<String>()).input(),
     );
   }
 }

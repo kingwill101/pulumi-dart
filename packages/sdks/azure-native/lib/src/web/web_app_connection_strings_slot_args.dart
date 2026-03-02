@@ -26,17 +26,12 @@ class WebAppConnectionStringsSlotArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will update the connection settings for the production slot.
   WebAppConnectionStringsSlotArgs({
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    pulumi.Output<Map<String, ConnStringValueTypePair>>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> slot,
-  }) :
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<Map<String, ConnStringValueTypePair>>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      slot = pulumi.Input.asInput<String>(slot);
+    this.kind,
+    required this.name,
+    this.properties,
+    required this.resourceGroupName,
+    required this.slot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class WebAppConnectionStringsSlotArgs {
 
   factory WebAppConnectionStringsSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppConnectionStringsSlotArgs(
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<Map<String, ConnStringValueTypePair>>(pulumi.Input.decodeMapValues<ConnStringValueTypePair>(map['properties'], (value) => ConnStringValueTypePair.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeMapValues<ConnStringValueTypePair>(map['properties'], (value) => ConnStringValueTypePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      slot: (map['slot'] as String).input(),
     );
   }
 }

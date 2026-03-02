@@ -25,17 +25,12 @@ class GetFeaturesetVersionFeatureArgs {
   /// [version] Feature set version identifier. This is case-sensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   GetFeaturesetVersionFeatureArgs({
-    pulumi.Output<String>? featureName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> version,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      featureName = pulumi.Input.asOptionalInput<String>(featureName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      version = pulumi.Input.asInput<String>(version),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.featureName,
+    required this.name,
+    required this.resourceGroupName,
+    required this.version,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetFeaturesetVersionFeatureArgs {
 
   factory GetFeaturesetVersionFeatureArgs.fromMap(Map<String, dynamic> map) {
     return GetFeaturesetVersionFeatureArgs(
-      featureName: map['featureName'] == null ? null : pulumi.Output.create<String>(map['featureName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      version: (map['version'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

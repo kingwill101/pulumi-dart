@@ -16,11 +16,9 @@ class GetMscSubContactVerificationMessageArgs {
   /// [contactId] The ID of the Contact.
   /// [type] How a user receives verification messages. Valid values : `1`, `2`.
   GetMscSubContactVerificationMessageArgs({
-    required pulumi.Output<String> contactId,
-    required pulumi.Output<int> type,
-  }) :
-      contactId = pulumi.Input.asInput<String>(contactId),
-      type = pulumi.Input.asInput<int>(type);
+    required this.contactId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMscSubContactVerificationMessageArgs {
 
   factory GetMscSubContactVerificationMessageArgs.fromMap(Map<String, dynamic> map) {
     return GetMscSubContactVerificationMessageArgs(
-      contactId: pulumi.Output.create<String>(map['contactId'] as String),
-      type: pulumi.Output.create<int>(map['type'] as int),
+      contactId: (map['contactId'] as String).input(),
+      type: (map['type'] as int).input(),
     );
   }
 }

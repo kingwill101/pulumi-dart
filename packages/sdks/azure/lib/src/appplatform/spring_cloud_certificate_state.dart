@@ -28,21 +28,14 @@ class SpringCloudCertificateState {
   /// [serviceName] Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
   /// [thumbprint] The thumbprint of the Spring Cloud certificate.
   SpringCloudCertificateState({
-    pulumi.Output<String>? certificateContent,
-    pulumi.Output<bool>? excludePrivateKey,
-    pulumi.Output<String>? keyVaultCertificateId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      certificateContent = pulumi.Input.asOptionalInput<String>(certificateContent),
-      excludePrivateKey = pulumi.Input.asOptionalInput<bool>(excludePrivateKey),
-      keyVaultCertificateId = pulumi.Input.asOptionalInput<String>(keyVaultCertificateId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    this.certificateContent,
+    this.excludePrivateKey,
+    this.keyVaultCertificateId,
+    this.name,
+    this.resourceGroupName,
+    this.serviceName,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class SpringCloudCertificateState {
 
   factory SpringCloudCertificateState.fromMap(Map<String, dynamic> map) {
     return SpringCloudCertificateState(
-      certificateContent: map['certificateContent'] == null ? null : pulumi.Output.create<String>(map['certificateContent'] as String),
-      excludePrivateKey: map['excludePrivateKey'] == null ? null : pulumi.Output.create<bool>(map['excludePrivateKey'] as bool),
-      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : pulumi.Output.create<String>(map['keyVaultCertificateId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      certificateContent: map['certificateContent'] == null ? null : (map['certificateContent'] as String).input(),
+      excludePrivateKey: map['excludePrivateKey'] == null ? null : (map['excludePrivateKey'] as bool).input(),
+      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : (map['keyVaultCertificateId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

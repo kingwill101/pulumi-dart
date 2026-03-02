@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAuthorityUserDefinedAccessUrl {
   /// A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
-  final List<String> aiaIssuingCertificateUrls;
+  final pulumi.Input<List<String>> aiaIssuingCertificateUrls;
   /// A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
-  final List<String> crlAccessUrls;
+  final pulumi.Input<List<String>> crlAccessUrls;
 
   /// Creates a new [GetAuthorityUserDefinedAccessUrl].
   /// [aiaIssuingCertificateUrls] A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
@@ -24,8 +25,8 @@ class GetAuthorityUserDefinedAccessUrl {
 
   factory GetAuthorityUserDefinedAccessUrl.fromMap(Map<String, dynamic> map) {
     return GetAuthorityUserDefinedAccessUrl(
-      aiaIssuingCertificateUrls: (map['aiaIssuingCertificateUrls'] as List).cast<String>(),
-      crlAccessUrls: (map['crlAccessUrls'] as List).cast<String>(),
+      aiaIssuingCertificateUrls: ((map['aiaIssuingCertificateUrls'] as List).cast<String>()).input(),
+      crlAccessUrls: ((map['crlAccessUrls'] as List).cast<String>()).input(),
     );
   }
 }

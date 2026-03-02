@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_basic_card_response.dart';
 import 'google_cloud_dialogflow_v2beta1_intent_message_browse_carousel_card_response.dart';
 import 'google_cloud_dialogflow_v2beta1_intent_message_card_response.dart';
@@ -23,47 +24,47 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_text_response.dart';
 /// Corresponds to the `Response` field in the Dialogflow console.
 class GoogleCloudDialogflowV2beta1IntentMessageResponse {
   /// Displays a basic card for Actions on Google.
-  final GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse basicCard;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse> basicCard;
   /// Browse carousel card for Actions on Google.
-  final GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse browseCarouselCard;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse> browseCarouselCard;
   /// Displays a card.
-  final GoogleCloudDialogflowV2beta1IntentMessageCardResponse card;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageCardResponse> card;
   /// Displays a carousel card for Actions on Google.
-  final GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectResponse carouselSelect;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectResponse> carouselSelect;
   /// Displays an image.
-  final GoogleCloudDialogflowV2beta1IntentMessageImageResponse image;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageImageResponse> image;
   /// Displays a link out suggestion chip for Actions on Google.
-  final GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionResponse linkOutSuggestion;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionResponse> linkOutSuggestion;
   /// Displays a list card for Actions on Google.
-  final GoogleCloudDialogflowV2beta1IntentMessageListSelectResponse listSelect;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageListSelectResponse> listSelect;
   /// The media content card for Actions on Google.
-  final GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse mediaContent;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse> mediaContent;
   /// A custom platform-specific response.
-  final Map<String, String> payload;
+  final pulumi.Input<Map<String, String>> payload;
   /// Optional. The platform that this message is intended for.
-  final String platform;
+  final pulumi.Input<String> platform;
   /// Displays quick replies.
-  final GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesResponse quickReplies;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesResponse> quickReplies;
   /// Rich Business Messaging (RBM) carousel rich card response.
-  final GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse rbmCarouselRichCard;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse> rbmCarouselRichCard;
   /// Standalone Rich Business Messaging (RBM) rich card response.
-  final GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse rbmStandaloneRichCard;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse> rbmStandaloneRichCard;
   /// Rich Business Messaging (RBM) text response. RBM allows businesses to send enriched and branded versions of SMS. See https://jibe.google.com/business-messaging.
-  final GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse rbmText;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse> rbmText;
   /// Returns a voice or text-only response for Actions on Google.
-  final GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse simpleResponses;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse> simpleResponses;
   /// Displays suggestion chips for Actions on Google.
-  final GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse suggestions;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse> suggestions;
   /// Table card for Actions on Google.
-  final GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse tableCard;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse> tableCard;
   /// Plays audio from a file in Telephony Gateway.
-  final GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioResponse telephonyPlayAudio;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioResponse> telephonyPlayAudio;
   /// Synthesizes speech in Telephony Gateway.
-  final GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechResponse telephonySynthesizeSpeech;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechResponse> telephonySynthesizeSpeech;
   /// Transfers the call in Telephony Gateway.
-  final GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse telephonyTransferCall;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse> telephonyTransferCall;
   /// Returns a text response.
-  final GoogleCloudDialogflowV2beta1IntentMessageTextResponse text;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTextResponse> text;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageResponse].
   /// [basicCard] Displays a basic card for Actions on Google.
@@ -113,53 +114,53 @@ class GoogleCloudDialogflowV2beta1IntentMessageResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicCard': basicCard.toMap(),
-      'browseCarouselCard': browseCarouselCard.toMap(),
-      'card': card.toMap(),
-      'carouselSelect': carouselSelect.toMap(),
-      'image': image.toMap(),
-      'linkOutSuggestion': linkOutSuggestion.toMap(),
-      'listSelect': listSelect.toMap(),
-      'mediaContent': mediaContent.toMap(),
+      'basicCard': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse, Map<String, dynamic>>(basicCard, (value) => value.toMap()),
+      'browseCarouselCard': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse, Map<String, dynamic>>(browseCarouselCard, (value) => value.toMap()),
+      'card': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageCardResponse, Map<String, dynamic>>(card, (value) => value.toMap()),
+      'carouselSelect': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectResponse, Map<String, dynamic>>(carouselSelect, (value) => value.toMap()),
+      'image': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageImageResponse, Map<String, dynamic>>(image, (value) => value.toMap()),
+      'linkOutSuggestion': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionResponse, Map<String, dynamic>>(linkOutSuggestion, (value) => value.toMap()),
+      'listSelect': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageListSelectResponse, Map<String, dynamic>>(listSelect, (value) => value.toMap()),
+      'mediaContent': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse, Map<String, dynamic>>(mediaContent, (value) => value.toMap()),
       'payload': payload,
       'platform': platform,
-      'quickReplies': quickReplies.toMap(),
-      'rbmCarouselRichCard': rbmCarouselRichCard.toMap(),
-      'rbmStandaloneRichCard': rbmStandaloneRichCard.toMap(),
-      'rbmText': rbmText.toMap(),
-      'simpleResponses': simpleResponses.toMap(),
-      'suggestions': suggestions.toMap(),
-      'tableCard': tableCard.toMap(),
-      'telephonyPlayAudio': telephonyPlayAudio.toMap(),
-      'telephonySynthesizeSpeech': telephonySynthesizeSpeech.toMap(),
-      'telephonyTransferCall': telephonyTransferCall.toMap(),
-      'text': text.toMap(),
+      'quickReplies': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesResponse, Map<String, dynamic>>(quickReplies, (value) => value.toMap()),
+      'rbmCarouselRichCard': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse, Map<String, dynamic>>(rbmCarouselRichCard, (value) => value.toMap()),
+      'rbmStandaloneRichCard': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse, Map<String, dynamic>>(rbmStandaloneRichCard, (value) => value.toMap()),
+      'rbmText': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse, Map<String, dynamic>>(rbmText, (value) => value.toMap()),
+      'simpleResponses': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse, Map<String, dynamic>>(simpleResponses, (value) => value.toMap()),
+      'suggestions': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse, Map<String, dynamic>>(suggestions, (value) => value.toMap()),
+      'tableCard': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse, Map<String, dynamic>>(tableCard, (value) => value.toMap()),
+      'telephonyPlayAudio': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioResponse, Map<String, dynamic>>(telephonyPlayAudio, (value) => value.toMap()),
+      'telephonySynthesizeSpeech': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechResponse, Map<String, dynamic>>(telephonySynthesizeSpeech, (value) => value.toMap()),
+      'telephonyTransferCall': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse, Map<String, dynamic>>(telephonyTransferCall, (value) => value.toMap()),
+      'text': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageTextResponse, Map<String, dynamic>>(text, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDialogflowV2beta1IntentMessageResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageResponse(
-      basicCard: GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse.fromMap((map['basicCard'] as Map).cast<String, dynamic>()),
-      browseCarouselCard: GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse.fromMap((map['browseCarouselCard'] as Map).cast<String, dynamic>()),
-      card: GoogleCloudDialogflowV2beta1IntentMessageCardResponse.fromMap((map['card'] as Map).cast<String, dynamic>()),
-      carouselSelect: GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectResponse.fromMap((map['carouselSelect'] as Map).cast<String, dynamic>()),
-      image: GoogleCloudDialogflowV2beta1IntentMessageImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      linkOutSuggestion: GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionResponse.fromMap((map['linkOutSuggestion'] as Map).cast<String, dynamic>()),
-      listSelect: GoogleCloudDialogflowV2beta1IntentMessageListSelectResponse.fromMap((map['listSelect'] as Map).cast<String, dynamic>()),
-      mediaContent: GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse.fromMap((map['mediaContent'] as Map).cast<String, dynamic>()),
-      payload: (map['payload'] as Map).cast<String, String>(),
-      platform: map['platform'] as String,
-      quickReplies: GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesResponse.fromMap((map['quickReplies'] as Map).cast<String, dynamic>()),
-      rbmCarouselRichCard: GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse.fromMap((map['rbmCarouselRichCard'] as Map).cast<String, dynamic>()),
-      rbmStandaloneRichCard: GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse.fromMap((map['rbmStandaloneRichCard'] as Map).cast<String, dynamic>()),
-      rbmText: GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse.fromMap((map['rbmText'] as Map).cast<String, dynamic>()),
-      simpleResponses: GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse.fromMap((map['simpleResponses'] as Map).cast<String, dynamic>()),
-      suggestions: GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse.fromMap((map['suggestions'] as Map).cast<String, dynamic>()),
-      tableCard: GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse.fromMap((map['tableCard'] as Map).cast<String, dynamic>()),
-      telephonyPlayAudio: GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioResponse.fromMap((map['telephonyPlayAudio'] as Map).cast<String, dynamic>()),
-      telephonySynthesizeSpeech: GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechResponse.fromMap((map['telephonySynthesizeSpeech'] as Map).cast<String, dynamic>()),
-      telephonyTransferCall: GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse.fromMap((map['telephonyTransferCall'] as Map).cast<String, dynamic>()),
-      text: GoogleCloudDialogflowV2beta1IntentMessageTextResponse.fromMap((map['text'] as Map).cast<String, dynamic>()),
+      basicCard: (GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse.fromMap((map['basicCard'] as Map).cast<String, dynamic>())).input(),
+      browseCarouselCard: (GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse.fromMap((map['browseCarouselCard'] as Map).cast<String, dynamic>())).input(),
+      card: (GoogleCloudDialogflowV2beta1IntentMessageCardResponse.fromMap((map['card'] as Map).cast<String, dynamic>())).input(),
+      carouselSelect: (GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectResponse.fromMap((map['carouselSelect'] as Map).cast<String, dynamic>())).input(),
+      image: (GoogleCloudDialogflowV2beta1IntentMessageImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      linkOutSuggestion: (GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionResponse.fromMap((map['linkOutSuggestion'] as Map).cast<String, dynamic>())).input(),
+      listSelect: (GoogleCloudDialogflowV2beta1IntentMessageListSelectResponse.fromMap((map['listSelect'] as Map).cast<String, dynamic>())).input(),
+      mediaContent: (GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse.fromMap((map['mediaContent'] as Map).cast<String, dynamic>())).input(),
+      payload: ((map['payload'] as Map).cast<String, String>()).input(),
+      platform: (map['platform'] as String).input(),
+      quickReplies: (GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesResponse.fromMap((map['quickReplies'] as Map).cast<String, dynamic>())).input(),
+      rbmCarouselRichCard: (GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse.fromMap((map['rbmCarouselRichCard'] as Map).cast<String, dynamic>())).input(),
+      rbmStandaloneRichCard: (GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse.fromMap((map['rbmStandaloneRichCard'] as Map).cast<String, dynamic>())).input(),
+      rbmText: (GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse.fromMap((map['rbmText'] as Map).cast<String, dynamic>())).input(),
+      simpleResponses: (GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse.fromMap((map['simpleResponses'] as Map).cast<String, dynamic>())).input(),
+      suggestions: (GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse.fromMap((map['suggestions'] as Map).cast<String, dynamic>())).input(),
+      tableCard: (GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse.fromMap((map['tableCard'] as Map).cast<String, dynamic>())).input(),
+      telephonyPlayAudio: (GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioResponse.fromMap((map['telephonyPlayAudio'] as Map).cast<String, dynamic>())).input(),
+      telephonySynthesizeSpeech: (GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechResponse.fromMap((map['telephonySynthesizeSpeech'] as Map).cast<String, dynamic>())).input(),
+      telephonyTransferCall: (GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse.fromMap((map['telephonyTransferCall'] as Map).cast<String, dynamic>())).input(),
+      text: (GoogleCloudDialogflowV2beta1IntentMessageTextResponse.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

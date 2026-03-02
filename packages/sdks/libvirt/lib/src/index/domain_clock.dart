@@ -5,17 +5,17 @@ import 'domain_clock_timer.dart';
 
 class DomainClock {
   /// Sets the amount by which the guest's clock is adjusted during timekeeping.
-  final String? adjustment;
+  final pulumi.Input<String>? adjustment;
   /// Specifies the basis for the clock adjustments, usually defining a time reference.
-  final String? basis;
+  final pulumi.Input<String>? basis;
   /// Configures an offset to the guest's clock time, allowing for time synchronization.
-  final String? offset;
+  final pulumi.Input<String>? offset;
   /// Determines when the clock starts, affecting how time is counted in the guest.
-  final double? start;
+  final pulumi.Input<double>? start;
   /// Sets the time zone for the guest clock, influencing the display of local time.
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
   /// Configures timer settings that manage clock updates and adjustments.
-  final List<DomainClockTimer>? timers;
+  final pulumi.Input<List<DomainClockTimer>>? timers;
 
   /// Creates a new [DomainClock].
   /// [adjustment] Sets the amount by which the guest's clock is adjusted during timekeeping.
@@ -40,18 +40,18 @@ class DomainClock {
       'offset': ?offset,
       'start': ?start,
       'timeZone': ?timeZone,
-      'timers': ?timers == null ? null : pulumi.Input.encodeList<DomainClockTimer, Map<String, dynamic>>(timers!, (value) => value.toMap()),
+      'timers': ?pulumi.Input.mapOptionalInputValue<List<DomainClockTimer>, List<Map<String, dynamic>>>(timers, (value) => pulumi.Input.encodeList<DomainClockTimer, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainClock.fromMap(Map<String, dynamic> map) {
     return DomainClock(
-      adjustment: map['adjustment'] == null ? null : map['adjustment'] as String,
-      basis: map['basis'] == null ? null : map['basis'] as String,
-      offset: map['offset'] == null ? null : map['offset'] as String,
-      start: map['start'] == null ? null : map['start'] as double,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
-      timers: map['timers'] == null ? null : pulumi.Input.decodeList<DomainClockTimer>(map['timers'], (value) => DomainClockTimer.fromMap((value as Map).cast<String, dynamic>())),
+      adjustment: map['adjustment'] == null ? null : (map['adjustment'] as String).input(),
+      basis: map['basis'] == null ? null : (map['basis'] as String).input(),
+      offset: map['offset'] == null ? null : (map['offset'] as String).input(),
+      start: map['start'] == null ? null : (map['start'] as double).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      timers: map['timers'] == null ? null : (pulumi.Input.decodeList<DomainClockTimer>(map['timers'], (value) => DomainClockTimer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

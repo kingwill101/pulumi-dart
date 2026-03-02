@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Required information for every language.
 class CommonLanguageSettingsResponse {
   /// The destination where API teams want this client library to be published.
-  final List<String> destinations;
+  final pulumi.Input<List<String>> destinations;
   /// Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
-  final String referenceDocsUri;
+  final pulumi.Input<String> referenceDocsUri;
 
   /// Creates a new [CommonLanguageSettingsResponse].
   /// [destinations] The destination where API teams want this client library to be published.
@@ -25,8 +26,8 @@ class CommonLanguageSettingsResponse {
 
   factory CommonLanguageSettingsResponse.fromMap(Map<String, dynamic> map) {
     return CommonLanguageSettingsResponse(
-      destinations: (map['destinations'] as List).cast<String>(),
-      referenceDocsUri: map['referenceDocsUri'] as String,
+      destinations: ((map['destinations'] as List).cast<String>()).input(),
+      referenceDocsUri: (map['referenceDocsUri'] as String).input(),
     );
   }
 }

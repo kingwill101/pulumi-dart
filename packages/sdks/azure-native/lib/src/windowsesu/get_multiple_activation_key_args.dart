@@ -16,11 +16,9 @@ class GetMultipleActivationKeyArgs {
   /// [multipleActivationKeyName] The name of the MAK key.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetMultipleActivationKeyArgs({
-    required pulumi.Output<String> multipleActivationKeyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      multipleActivationKeyName = pulumi.Input.asInput<String>(multipleActivationKeyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.multipleActivationKeyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMultipleActivationKeyArgs {
 
   factory GetMultipleActivationKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetMultipleActivationKeyArgs(
-      multipleActivationKeyName: pulumi.Output.create<String>(map['multipleActivationKeyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      multipleActivationKeyName: (map['multipleActivationKeyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

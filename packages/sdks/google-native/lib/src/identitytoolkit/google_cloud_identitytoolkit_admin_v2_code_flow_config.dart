@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional config for Apple for code flow.
 class GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig {
   /// Key ID for the private key.
-  final String? keyId;
+  final pulumi.Input<String>? keyId;
   /// Private key used for signing the client secret JWT.
-  final String? privateKey;
+  final pulumi.Input<String>? privateKey;
   /// Apple Developer Team ID.
-  final String? teamId;
+  final pulumi.Input<String>? teamId;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig].
   /// [keyId] Key ID for the private key.
@@ -30,9 +31,9 @@ class GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig(
-      keyId: map['keyId'] == null ? null : map['keyId'] as String,
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
-      teamId: map['teamId'] == null ? null : map['teamId'] as String,
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      teamId: map['teamId'] == null ? null : (map['teamId'] as String).input(),
     );
   }
 }

@@ -22,17 +22,12 @@ class TransitRouterGrantAttachmentState {
   /// [instanceType] The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
   /// [orderType] The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
   TransitRouterGrantAttachmentState({
-    pulumi.Output<String>? cenId,
-    pulumi.Output<String>? cenOwnerId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? orderType,
-  }) :
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      cenOwnerId = pulumi.Input.asOptionalInput<String>(cenOwnerId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      orderType = pulumi.Input.asOptionalInput<String>(orderType);
+    this.cenId,
+    this.cenOwnerId,
+    this.instanceId,
+    this.instanceType,
+    this.orderType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class TransitRouterGrantAttachmentState {
 
   factory TransitRouterGrantAttachmentState.fromMap(Map<String, dynamic> map) {
     return TransitRouterGrantAttachmentState(
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      cenOwnerId: map['cenOwnerId'] == null ? null : pulumi.Output.create<String>(map['cenOwnerId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      orderType: map['orderType'] == null ? null : pulumi.Output.create<String>(map['orderType'] as String),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      orderType: map['orderType'] == null ? null : (map['orderType'] as String).input(),
     );
   }
 }

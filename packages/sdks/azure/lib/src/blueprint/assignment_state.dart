@@ -53,35 +53,21 @@ class AssignmentState {
   /// [type] Optional.
   /// [versionId] The ID of the Published Version of the blueprint to be assigned.
   AssignmentState({
-    pulumi.Output<String>? blueprintName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<AssignmentIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<String>>? lockExcludeActions,
-    pulumi.Output<List<String>>? lockExcludePrincipals,
-    pulumi.Output<String>? lockMode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parameterValues,
-    pulumi.Output<String>? resourceGroups,
-    pulumi.Output<String>? targetSubscriptionId,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? versionId,
-  }) :
-      blueprintName = pulumi.Input.asOptionalInput<String>(blueprintName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      identity = pulumi.Input.asOptionalInput<AssignmentIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      lockExcludeActions = pulumi.Input.asOptionalInput<List<String>>(lockExcludeActions),
-      lockExcludePrincipals = pulumi.Input.asOptionalInput<List<String>>(lockExcludePrincipals),
-      lockMode = pulumi.Input.asOptionalInput<String>(lockMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameterValues = pulumi.Input.asOptionalInput<String>(parameterValues),
-      resourceGroups = pulumi.Input.asOptionalInput<String>(resourceGroups),
-      targetSubscriptionId = pulumi.Input.asOptionalInput<String>(targetSubscriptionId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      versionId = pulumi.Input.asOptionalInput<String>(versionId);
+    this.blueprintName,
+    this.description,
+    this.displayName,
+    this.identity,
+    this.location,
+    this.lockExcludeActions,
+    this.lockExcludePrincipals,
+    this.lockMode,
+    this.name,
+    this.parameterValues,
+    this.resourceGroups,
+    this.targetSubscriptionId,
+    this.type,
+    this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class AssignmentState {
 
   factory AssignmentState.fromMap(Map<String, dynamic> map) {
     return AssignmentState(
-      blueprintName: map['blueprintName'] == null ? null : pulumi.Output.create<String>(map['blueprintName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<AssignmentIdentity>(AssignmentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      lockExcludeActions: map['lockExcludeActions'] == null ? null : pulumi.Output.create<List<String>>((map['lockExcludeActions'] as List).cast<String>()),
-      lockExcludePrincipals: map['lockExcludePrincipals'] == null ? null : pulumi.Output.create<List<String>>((map['lockExcludePrincipals'] as List).cast<String>()),
-      lockMode: map['lockMode'] == null ? null : pulumi.Output.create<String>(map['lockMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameterValues: map['parameterValues'] == null ? null : pulumi.Output.create<String>(map['parameterValues'] as String),
-      resourceGroups: map['resourceGroups'] == null ? null : pulumi.Output.create<String>(map['resourceGroups'] as String),
-      targetSubscriptionId: map['targetSubscriptionId'] == null ? null : pulumi.Output.create<String>(map['targetSubscriptionId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      versionId: map['versionId'] == null ? null : pulumi.Output.create<String>(map['versionId'] as String),
+      blueprintName: map['blueprintName'] == null ? null : (map['blueprintName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      identity: map['identity'] == null ? null : (AssignmentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      lockExcludeActions: map['lockExcludeActions'] == null ? null : ((map['lockExcludeActions'] as List).cast<String>()).input(),
+      lockExcludePrincipals: map['lockExcludePrincipals'] == null ? null : ((map['lockExcludePrincipals'] as List).cast<String>()).input(),
+      lockMode: map['lockMode'] == null ? null : (map['lockMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues'] as String).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : (map['resourceGroups'] as String).input(),
+      targetSubscriptionId: map['targetSubscriptionId'] == null ? null : (map['targetSubscriptionId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
     );
   }
 }

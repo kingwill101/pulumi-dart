@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_ipaddress_sku_response.dart';
 import 'virtual_machine_scale_set_public_ipaddress_configuration_properties_response.dart';
 
@@ -7,13 +8,13 @@ import 'virtual_machine_scale_set_public_ipaddress_configuration_properties_resp
 /// configuration
 class VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
   /// The publicIP address configuration name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Describes a virtual machines scale set IP Configuration's PublicIPAddress
   /// configuration
-  final VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse? properties;
+  final pulumi.Input<VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse>? properties;
   /// Describes the public IP Sku. It can only be set with OrchestrationMode as
   /// Flexible.
-  final PublicIPAddressSkuResponse? sku;
+  final pulumi.Input<PublicIPAddressSkuResponse>? sku;
 
   /// Creates a new [VirtualMachineScaleSetPublicIPAddressConfigurationResponse].
   /// [name] The publicIP address configuration name.
@@ -28,16 +29,16 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': ?properties == null ? null : properties!.toMap(),
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineScaleSetPublicIPAddressConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetPublicIPAddressConfigurationResponse(
-      name: map['name'] as String,
-      properties: map['properties'] == null ? null : VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      sku: map['sku'] == null ? null : PublicIPAddressSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (PublicIPAddressSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

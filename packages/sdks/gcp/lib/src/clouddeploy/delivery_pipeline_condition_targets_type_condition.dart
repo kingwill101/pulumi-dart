@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeliveryPipelineConditionTargetsTypeCondition {
   /// Human readable error message.
-  final String? errorDetails;
+  final pulumi.Input<String>? errorDetails;
   /// True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
-  final bool? status;
+  final pulumi.Input<bool>? status;
 
   /// Creates a new [DeliveryPipelineConditionTargetsTypeCondition].
   /// [errorDetails] Human readable error message.
@@ -24,8 +25,8 @@ class DeliveryPipelineConditionTargetsTypeCondition {
 
   factory DeliveryPipelineConditionTargetsTypeCondition.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineConditionTargetsTypeCondition(
-      errorDetails: map['errorDetails'] == null ? null : map['errorDetails'] as String,
-      status: map['status'] == null ? null : map['status'] as bool,
+      errorDetails: map['errorDetails'] == null ? null : (map['errorDetails'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as bool).input(),
     );
   }
 }

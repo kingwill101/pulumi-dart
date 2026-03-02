@@ -43,21 +43,14 @@ class MessageContactState {
   /// [status] The status of the contact.
   /// [title] The job title of the contact.Valid values:
   MessageContactState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? emailAddress,
-    pulumi.Output<String>? messageContactName,
-    pulumi.Output<List<String>>? messageTypes,
-    pulumi.Output<String>? phoneNumber,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? title,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      emailAddress = pulumi.Input.asOptionalInput<String>(emailAddress),
-      messageContactName = pulumi.Input.asOptionalInput<String>(messageContactName),
-      messageTypes = pulumi.Input.asOptionalInput<List<String>>(messageTypes),
-      phoneNumber = pulumi.Input.asOptionalInput<String>(phoneNumber),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      title = pulumi.Input.asOptionalInput<String>(title);
+    this.createTime,
+    this.emailAddress,
+    this.messageContactName,
+    this.messageTypes,
+    this.phoneNumber,
+    this.status,
+    this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,13 +66,13 @@ class MessageContactState {
 
   factory MessageContactState.fromMap(Map<String, dynamic> map) {
     return MessageContactState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      emailAddress: map['emailAddress'] == null ? null : pulumi.Output.create<String>(map['emailAddress'] as String),
-      messageContactName: map['messageContactName'] == null ? null : pulumi.Output.create<String>(map['messageContactName'] as String),
-      messageTypes: map['messageTypes'] == null ? null : pulumi.Output.create<List<String>>((map['messageTypes'] as List).cast<String>()),
-      phoneNumber: map['phoneNumber'] == null ? null : pulumi.Output.create<String>(map['phoneNumber'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
+      messageContactName: map['messageContactName'] == null ? null : (map['messageContactName'] as String).input(),
+      messageTypes: map['messageTypes'] == null ? null : ((map['messageTypes'] as List).cast<String>()).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

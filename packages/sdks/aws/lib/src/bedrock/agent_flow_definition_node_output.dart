@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeOutput {
   /// A name for the flow.
-  final String name;
-  final String type;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AgentFlowDefinitionNodeOutput].
   /// [name] A name for the flow.
@@ -23,8 +24,8 @@ class AgentFlowDefinitionNodeOutput {
 
   factory AgentFlowDefinitionNodeOutput.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeOutput(
-      name: map['name'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

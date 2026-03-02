@@ -9,41 +9,41 @@ import 'version_details_response.dart';
 /// Details of a Master Target Server.
 class MasterTargetServerResponse {
   /// Agent expiry date.
-  final String? agentExpiryDate;
+  final pulumi.Input<String>? agentExpiryDate;
   /// The version of the scout component on the server.
-  final String? agentVersion;
+  final pulumi.Input<String>? agentVersion;
   /// Agent version details.
-  final VersionDetailsResponse? agentVersionDetails;
+  final pulumi.Input<VersionDetailsResponse>? agentVersionDetails;
   /// The list of data stores in the fabric.
-  final List<DataStoreResponse>? dataStores;
+  final pulumi.Input<List<DataStoreResponse>>? dataStores;
   /// Disk count of the master target.
-  final int? diskCount;
+  final pulumi.Input<int>? diskCount;
   /// Health errors.
-  final List<HealthErrorResponse>? healthErrors;
+  final pulumi.Input<List<HealthErrorResponse>>? healthErrors;
   /// The server Id.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The IP address of the server.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The last heartbeat received from the server.
-  final String? lastHeartbeat;
+  final pulumi.Input<String>? lastHeartbeat;
   /// MARS agent expiry date.
-  final String? marsAgentExpiryDate;
+  final pulumi.Input<String>? marsAgentExpiryDate;
   /// MARS agent version.
-  final String? marsAgentVersion;
+  final pulumi.Input<String>? marsAgentVersion;
   /// Mars agent version details.
-  final VersionDetailsResponse? marsAgentVersionDetails;
+  final pulumi.Input<VersionDetailsResponse>? marsAgentVersionDetails;
   /// The server name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The OS type of the server.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// OS Version of the master target.
-  final String? osVersion;
+  final pulumi.Input<String>? osVersion;
   /// The retention volumes of Master target Server.
-  final List<RetentionVolumeResponse>? retentionVolumes;
+  final pulumi.Input<List<RetentionVolumeResponse>>? retentionVolumes;
   /// Validation errors.
-  final List<HealthErrorResponse>? validationErrors;
+  final pulumi.Input<List<HealthErrorResponse>>? validationErrors;
   /// Version status.
-  final String? versionStatus;
+  final pulumi.Input<String>? versionStatus;
 
   /// Creates a new [MasterTargetServerResponse].
   /// [agentExpiryDate] Agent expiry date.
@@ -89,45 +89,45 @@ class MasterTargetServerResponse {
     return <String, dynamic>{
       'agentExpiryDate': ?agentExpiryDate,
       'agentVersion': ?agentVersion,
-      'agentVersionDetails': ?agentVersionDetails == null ? null : agentVersionDetails!.toMap(),
-      'dataStores': ?dataStores == null ? null : pulumi.Input.encodeList<DataStoreResponse, Map<String, dynamic>>(dataStores!, (value) => value.toMap()),
+      'agentVersionDetails': ?pulumi.Input.mapOptionalInputValue<VersionDetailsResponse, Map<String, dynamic>>(agentVersionDetails, (value) => value.toMap()),
+      'dataStores': ?pulumi.Input.mapOptionalInputValue<List<DataStoreResponse>, List<Map<String, dynamic>>>(dataStores, (value) => pulumi.Input.encodeList<DataStoreResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'diskCount': ?diskCount,
-      'healthErrors': ?healthErrors == null ? null : pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(healthErrors!, (value) => value.toMap()),
+      'healthErrors': ?pulumi.Input.mapOptionalInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'ipAddress': ?ipAddress,
       'lastHeartbeat': ?lastHeartbeat,
       'marsAgentExpiryDate': ?marsAgentExpiryDate,
       'marsAgentVersion': ?marsAgentVersion,
-      'marsAgentVersionDetails': ?marsAgentVersionDetails == null ? null : marsAgentVersionDetails!.toMap(),
+      'marsAgentVersionDetails': ?pulumi.Input.mapOptionalInputValue<VersionDetailsResponse, Map<String, dynamic>>(marsAgentVersionDetails, (value) => value.toMap()),
       'name': ?name,
       'osType': ?osType,
       'osVersion': ?osVersion,
-      'retentionVolumes': ?retentionVolumes == null ? null : pulumi.Input.encodeList<RetentionVolumeResponse, Map<String, dynamic>>(retentionVolumes!, (value) => value.toMap()),
-      'validationErrors': ?validationErrors == null ? null : pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(validationErrors!, (value) => value.toMap()),
+      'retentionVolumes': ?pulumi.Input.mapOptionalInputValue<List<RetentionVolumeResponse>, List<Map<String, dynamic>>>(retentionVolumes, (value) => pulumi.Input.encodeList<RetentionVolumeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'validationErrors': ?pulumi.Input.mapOptionalInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'versionStatus': ?versionStatus,
     };
   }
 
   factory MasterTargetServerResponse.fromMap(Map<String, dynamic> map) {
     return MasterTargetServerResponse(
-      agentExpiryDate: map['agentExpiryDate'] == null ? null : map['agentExpiryDate'] as String,
-      agentVersion: map['agentVersion'] == null ? null : map['agentVersion'] as String,
-      agentVersionDetails: map['agentVersionDetails'] == null ? null : VersionDetailsResponse.fromMap((map['agentVersionDetails'] as Map).cast<String, dynamic>()),
-      dataStores: map['dataStores'] == null ? null : pulumi.Input.decodeList<DataStoreResponse>(map['dataStores'], (value) => DataStoreResponse.fromMap((value as Map).cast<String, dynamic>())),
-      diskCount: map['diskCount'] == null ? null : map['diskCount'] as int,
-      healthErrors: map['healthErrors'] == null ? null : pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      lastHeartbeat: map['lastHeartbeat'] == null ? null : map['lastHeartbeat'] as String,
-      marsAgentExpiryDate: map['marsAgentExpiryDate'] == null ? null : map['marsAgentExpiryDate'] as String,
-      marsAgentVersion: map['marsAgentVersion'] == null ? null : map['marsAgentVersion'] as String,
-      marsAgentVersionDetails: map['marsAgentVersionDetails'] == null ? null : VersionDetailsResponse.fromMap((map['marsAgentVersionDetails'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      osVersion: map['osVersion'] == null ? null : map['osVersion'] as String,
-      retentionVolumes: map['retentionVolumes'] == null ? null : pulumi.Input.decodeList<RetentionVolumeResponse>(map['retentionVolumes'], (value) => RetentionVolumeResponse.fromMap((value as Map).cast<String, dynamic>())),
-      validationErrors: map['validationErrors'] == null ? null : pulumi.Input.decodeList<HealthErrorResponse>(map['validationErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      versionStatus: map['versionStatus'] == null ? null : map['versionStatus'] as String,
+      agentExpiryDate: map['agentExpiryDate'] == null ? null : (map['agentExpiryDate'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      agentVersionDetails: map['agentVersionDetails'] == null ? null : (VersionDetailsResponse.fromMap((map['agentVersionDetails'] as Map).cast<String, dynamic>())).input(),
+      dataStores: map['dataStores'] == null ? null : (pulumi.Input.decodeList<DataStoreResponse>(map['dataStores'], (value) => DataStoreResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskCount: map['diskCount'] == null ? null : (map['diskCount'] as int).input(),
+      healthErrors: map['healthErrors'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      lastHeartbeat: map['lastHeartbeat'] == null ? null : (map['lastHeartbeat'] as String).input(),
+      marsAgentExpiryDate: map['marsAgentExpiryDate'] == null ? null : (map['marsAgentExpiryDate'] as String).input(),
+      marsAgentVersion: map['marsAgentVersion'] == null ? null : (map['marsAgentVersion'] as String).input(),
+      marsAgentVersionDetails: map['marsAgentVersionDetails'] == null ? null : (VersionDetailsResponse.fromMap((map['marsAgentVersionDetails'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
+      retentionVolumes: map['retentionVolumes'] == null ? null : (pulumi.Input.decodeList<RetentionVolumeResponse>(map['retentionVolumes'], (value) => RetentionVolumeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationErrors: map['validationErrors'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['validationErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      versionStatus: map['versionStatus'] == null ? null : (map['versionStatus'] as String).input(),
     );
   }
 }

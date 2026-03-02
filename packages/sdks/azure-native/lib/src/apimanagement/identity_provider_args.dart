@@ -52,35 +52,21 @@ class IdentityProviderArgs {
   /// [signupPolicyName] Signup Policy Name. Only applies to AAD B2C Identity Provider.
   /// [type] Identity Provider Type identifier.
   IdentityProviderArgs({
-    pulumi.Output<List<String>>? allowedTenants,
-    pulumi.Output<String>? authority,
-    required pulumi.Output<String> clientId,
-    pulumi.Output<String>? clientLibrary,
-    required pulumi.Output<String> clientSecret,
-    pulumi.Output<String>? identityProviderName,
-    pulumi.Output<String>? passwordResetPolicyName,
-    pulumi.Output<String>? profileEditingPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? signinPolicyName,
-    pulumi.Output<String>? signinTenant,
-    pulumi.Output<String>? signupPolicyName,
-    pulumi.Output<String>? type,
-  }) :
-      allowedTenants = pulumi.Input.asOptionalInput<List<String>>(allowedTenants),
-      authority = pulumi.Input.asOptionalInput<String>(authority),
-      clientId = pulumi.Input.asInput<String>(clientId),
-      clientLibrary = pulumi.Input.asOptionalInput<String>(clientLibrary),
-      clientSecret = pulumi.Input.asInput<String>(clientSecret),
-      identityProviderName = pulumi.Input.asOptionalInput<String>(identityProviderName),
-      passwordResetPolicyName = pulumi.Input.asOptionalInput<String>(passwordResetPolicyName),
-      profileEditingPolicyName = pulumi.Input.asOptionalInput<String>(profileEditingPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      signinPolicyName = pulumi.Input.asOptionalInput<String>(signinPolicyName),
-      signinTenant = pulumi.Input.asOptionalInput<String>(signinTenant),
-      signupPolicyName = pulumi.Input.asOptionalInput<String>(signupPolicyName),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.allowedTenants,
+    this.authority,
+    required this.clientId,
+    this.clientLibrary,
+    required this.clientSecret,
+    this.identityProviderName,
+    this.passwordResetPolicyName,
+    this.profileEditingPolicyName,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.signinPolicyName,
+    this.signinTenant,
+    this.signupPolicyName,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class IdentityProviderArgs {
 
   factory IdentityProviderArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderArgs(
-      allowedTenants: map['allowedTenants'] == null ? null : pulumi.Output.create<List<String>>((map['allowedTenants'] as List).cast<String>()),
-      authority: map['authority'] == null ? null : pulumi.Output.create<String>(map['authority'] as String),
-      clientId: pulumi.Output.create<String>(map['clientId'] as String),
-      clientLibrary: map['clientLibrary'] == null ? null : pulumi.Output.create<String>(map['clientLibrary'] as String),
-      clientSecret: pulumi.Output.create<String>(map['clientSecret'] as String),
-      identityProviderName: map['identityProviderName'] == null ? null : pulumi.Output.create<String>(map['identityProviderName'] as String),
-      passwordResetPolicyName: map['passwordResetPolicyName'] == null ? null : pulumi.Output.create<String>(map['passwordResetPolicyName'] as String),
-      profileEditingPolicyName: map['profileEditingPolicyName'] == null ? null : pulumi.Output.create<String>(map['profileEditingPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      signinPolicyName: map['signinPolicyName'] == null ? null : pulumi.Output.create<String>(map['signinPolicyName'] as String),
-      signinTenant: map['signinTenant'] == null ? null : pulumi.Output.create<String>(map['signinTenant'] as String),
-      signupPolicyName: map['signupPolicyName'] == null ? null : pulumi.Output.create<String>(map['signupPolicyName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      allowedTenants: map['allowedTenants'] == null ? null : ((map['allowedTenants'] as List).cast<String>()).input(),
+      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      identityProviderName: map['identityProviderName'] == null ? null : (map['identityProviderName'] as String).input(),
+      passwordResetPolicyName: map['passwordResetPolicyName'] == null ? null : (map['passwordResetPolicyName'] as String).input(),
+      profileEditingPolicyName: map['profileEditingPolicyName'] == null ? null : (map['profileEditingPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      signinPolicyName: map['signinPolicyName'] == null ? null : (map['signinPolicyName'] as String).input(),
+      signinTenant: map['signinTenant'] == null ? null : (map['signinTenant'] as String).input(),
+      signupPolicyName: map['signupPolicyName'] == null ? null : (map['signupPolicyName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

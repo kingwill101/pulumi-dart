@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'model_primary_container_additional_model_data_source_s3_data_source_model_access_config.dart';
 
 class ModelPrimaryContainerAdditionalModelDataSourceS3DataSource {
   /// How the model data is prepared. Allowed values are: `None` and `Gzip`.
-  final String compressionType;
+  final pulumi.Input<String> compressionType;
   /// Specifies the access configuration file for the ML model. You can explicitly accept the model end-user license agreement (EULA) within the [`model_access_config` configuration block]. See Model Access Config.
-  final ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig? modelAccessConfig;
+  final pulumi.Input<ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig>? modelAccessConfig;
   /// Type of model data to deploy. Allowed values are: `S3Object` and `S3Prefix`.
-  final String s3DataType;
+  final pulumi.Input<String> s3DataType;
   /// The S3 path of model data to deploy.
-  final String s3Uri;
+  final pulumi.Input<String> s3Uri;
 
   /// Creates a new [ModelPrimaryContainerAdditionalModelDataSourceS3DataSource].
   /// [compressionType] How the model data is prepared. Allowed values are: `None` and `Gzip`.
@@ -27,7 +28,7 @@ class ModelPrimaryContainerAdditionalModelDataSourceS3DataSource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'compressionType': compressionType,
-      'modelAccessConfig': ?modelAccessConfig == null ? null : modelAccessConfig!.toMap(),
+      'modelAccessConfig': ?pulumi.Input.mapOptionalInputValue<ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig, Map<String, dynamic>>(modelAccessConfig, (value) => value.toMap()),
       's3DataType': s3DataType,
       's3Uri': s3Uri,
     };
@@ -35,10 +36,10 @@ class ModelPrimaryContainerAdditionalModelDataSourceS3DataSource {
 
   factory ModelPrimaryContainerAdditionalModelDataSourceS3DataSource.fromMap(Map<String, dynamic> map) {
     return ModelPrimaryContainerAdditionalModelDataSourceS3DataSource(
-      compressionType: map['compressionType'] as String,
-      modelAccessConfig: map['modelAccessConfig'] == null ? null : ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig.fromMap((map['modelAccessConfig'] as Map).cast<String, dynamic>()),
-      s3DataType: map['s3DataType'] as String,
-      s3Uri: map['s3Uri'] as String,
+      compressionType: (map['compressionType'] as String).input(),
+      modelAccessConfig: map['modelAccessConfig'] == null ? null : (ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig.fromMap((map['modelAccessConfig'] as Map).cast<String, dynamic>())).input(),
+      s3DataType: (map['s3DataType'] as String).input(),
+      s3Uri: (map['s3Uri'] as String).input(),
     );
   }
 }

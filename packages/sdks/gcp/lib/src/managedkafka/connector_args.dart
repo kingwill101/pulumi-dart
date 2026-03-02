@@ -31,19 +31,13 @@ class ConnectorArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [taskRestartPolicy] A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
   ConnectorArgs({
-    pulumi.Output<Map<String, String>>? configs,
-    required pulumi.Output<String> connectCluster,
-    required pulumi.Output<String> connectorId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<ConnectorTaskRestartPolicy>? taskRestartPolicy,
-  }) :
-      configs = pulumi.Input.asOptionalInput<Map<String, String>>(configs),
-      connectCluster = pulumi.Input.asInput<String>(connectCluster),
-      connectorId = pulumi.Input.asInput<String>(connectorId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      taskRestartPolicy = pulumi.Input.asOptionalInput<ConnectorTaskRestartPolicy>(taskRestartPolicy);
+    this.configs,
+    required this.connectCluster,
+    required this.connectorId,
+    required this.location,
+    this.project,
+    this.taskRestartPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      configs: map['configs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['configs'] as Map).cast<String, String>()),
-      connectCluster: pulumi.Output.create<String>(map['connectCluster'] as String),
-      connectorId: pulumi.Output.create<String>(map['connectorId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      taskRestartPolicy: map['taskRestartPolicy'] == null ? null : pulumi.Output.create<ConnectorTaskRestartPolicy>(ConnectorTaskRestartPolicy.fromMap((map['taskRestartPolicy'] as Map).cast<String, dynamic>())),
+      configs: map['configs'] == null ? null : ((map['configs'] as Map).cast<String, String>()).input(),
+      connectCluster: (map['connectCluster'] as String).input(),
+      connectorId: (map['connectorId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      taskRestartPolicy: map['taskRestartPolicy'] == null ? null : (ConnectorTaskRestartPolicy.fromMap((map['taskRestartPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

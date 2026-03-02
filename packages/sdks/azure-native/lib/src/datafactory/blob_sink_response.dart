@@ -6,30 +6,30 @@ import 'metadata_item_response.dart';
 /// A copy activity Azure Blob sink.
 class BlobSinkResponse {
   /// Blob writer add header. Type: boolean (or Expression with resultType boolean).
-  final dynamic blobWriterAddHeader;
+  final pulumi.Input<dynamic>? blobWriterAddHeader;
   /// Blob writer date time format. Type: string (or Expression with resultType string).
-  final dynamic blobWriterDateTimeFormat;
+  final pulumi.Input<dynamic>? blobWriterDateTimeFormat;
   /// Blob writer overwrite files. Type: boolean (or Expression with resultType boolean).
-  final dynamic blobWriterOverwriteFiles;
+  final pulumi.Input<dynamic>? blobWriterOverwriteFiles;
   /// The type of copy behavior for copy sink.
-  final dynamic copyBehavior;
+  final pulumi.Input<dynamic>? copyBehavior;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
-  final List<MetadataItemResponse>? metadata;
+  final pulumi.Input<List<MetadataItemResponse>>? metadata;
   /// Sink retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sinkRetryCount;
+  final pulumi.Input<dynamic>? sinkRetryCount;
   /// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sinkRetryWait;
+  final pulumi.Input<dynamic>? sinkRetryWait;
   /// Copy sink type.
   /// Expected value is 'BlobSink'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
-  final dynamic writeBatchSize;
+  final pulumi.Input<dynamic>? writeBatchSize;
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic writeBatchTimeout;
+  final pulumi.Input<dynamic>? writeBatchTimeout;
 
   /// Creates a new [BlobSinkResponse].
   /// [blobWriterAddHeader] Blob writer add header. Type: boolean (or Expression with resultType boolean).
@@ -67,7 +67,7 @@ class BlobSinkResponse {
       'copyBehavior': ?copyBehavior,
       'disableMetricsCollection': ?disableMetricsCollection,
       'maxConcurrentConnections': ?maxConcurrentConnections,
-      'metadata': ?metadata == null ? null : pulumi.Input.encodeList<MetadataItemResponse, Map<String, dynamic>>(metadata!, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<List<MetadataItemResponse>, List<Map<String, dynamic>>>(metadata, (value) => pulumi.Input.encodeList<MetadataItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sinkRetryCount': ?sinkRetryCount,
       'sinkRetryWait': ?sinkRetryWait,
       'type': type,
@@ -78,18 +78,18 @@ class BlobSinkResponse {
 
   factory BlobSinkResponse.fromMap(Map<String, dynamic> map) {
     return BlobSinkResponse(
-      blobWriterAddHeader: map['blobWriterAddHeader'] == null ? null : map['blobWriterAddHeader'],
-      blobWriterDateTimeFormat: map['blobWriterDateTimeFormat'] == null ? null : map['blobWriterDateTimeFormat'],
-      blobWriterOverwriteFiles: map['blobWriterOverwriteFiles'] == null ? null : map['blobWriterOverwriteFiles'],
-      copyBehavior: map['copyBehavior'] == null ? null : map['copyBehavior'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      metadata: map['metadata'] == null ? null : pulumi.Input.decodeList<MetadataItemResponse>(map['metadata'], (value) => MetadataItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sinkRetryCount: map['sinkRetryCount'] == null ? null : map['sinkRetryCount'],
-      sinkRetryWait: map['sinkRetryWait'] == null ? null : map['sinkRetryWait'],
-      type: map['type'] as String,
-      writeBatchSize: map['writeBatchSize'] == null ? null : map['writeBatchSize'],
-      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : map['writeBatchTimeout'],
+      blobWriterAddHeader: map['blobWriterAddHeader'] == null ? null : (map['blobWriterAddHeader']).input(),
+      blobWriterDateTimeFormat: map['blobWriterDateTimeFormat'] == null ? null : (map['blobWriterDateTimeFormat']).input(),
+      blobWriterOverwriteFiles: map['blobWriterOverwriteFiles'] == null ? null : (map['blobWriterOverwriteFiles']).input(),
+      copyBehavior: map['copyBehavior'] == null ? null : (map['copyBehavior']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<MetadataItemResponse>(map['metadata'], (value) => MetadataItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']).input(),
+      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']).input(),
+      type: (map['type'] as String).input(),
+      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']).input(),
+      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']).input(),
     );
   }
 }

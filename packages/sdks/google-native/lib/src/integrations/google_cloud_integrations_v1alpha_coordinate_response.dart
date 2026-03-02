@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration detail of coordinate, it used for UI
 class GoogleCloudIntegrationsV1alphaCoordinateResponse {
   /// X axis of the coordinate
-  final int x;
+  final pulumi.Input<int> x;
   /// Y axis of the coordinate
-  final int y;
+  final pulumi.Input<int> y;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaCoordinateResponse].
   /// [x] X axis of the coordinate
@@ -25,8 +26,8 @@ class GoogleCloudIntegrationsV1alphaCoordinateResponse {
 
   factory GoogleCloudIntegrationsV1alphaCoordinateResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaCoordinateResponse(
-      x: map['x'] as int,
-      y: map['y'] as int,
+      x: (map['x'] as int).input(),
+      y: (map['y'] as int).input(),
     );
   }
 }

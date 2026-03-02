@@ -22,15 +22,11 @@ class ListShareSubscriptionSourceShareSynchronizationSettingsArgs {
   /// [shareSubscriptionName] The name of the shareSubscription.
   /// [skipToken] Continuation token
   ListShareSubscriptionSourceShareSynchronizationSettingsArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareSubscriptionName,
-    pulumi.Output<String>? skipToken,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareSubscriptionName = pulumi.Input.asInput<String>(shareSubscriptionName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.shareSubscriptionName,
+    this.skipToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListShareSubscriptionSourceShareSynchronizationSettingsArgs {
 
   factory ListShareSubscriptionSourceShareSynchronizationSettingsArgs.fromMap(Map<String, dynamic> map) {
     return ListShareSubscriptionSourceShareSynchronizationSettingsArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareSubscriptionName: pulumi.Output.create<String>(map['shareSubscriptionName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
     );
   }
 }

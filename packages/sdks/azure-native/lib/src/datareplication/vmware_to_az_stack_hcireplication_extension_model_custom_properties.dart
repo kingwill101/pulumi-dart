@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VMware to AzStackHCI Replication extension model custom properties.
 class VMwareToAzStackHCIReplicationExtensionModelCustomProperties {
   /// Gets or sets the ARM Id of the target AzStackHCI fabric.
-  final String azStackHciFabricArmId;
+  final pulumi.Input<String> azStackHciFabricArmId;
   /// Gets or sets the instance type.
   /// Expected value is 'VMwareToAzStackHCI'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Gets or sets the storage account Id.
-  final String? storageAccountId;
+  final pulumi.Input<String>? storageAccountId;
   /// Gets or sets the Sas Secret of storage account.
-  final String? storageAccountSasSecretName;
+  final pulumi.Input<String>? storageAccountSasSecretName;
   /// Gets or sets the ARM Id of the source VMware fabric.
-  final String vmwareFabricArmId;
+  final pulumi.Input<String> vmwareFabricArmId;
 
   /// Creates a new [VMwareToAzStackHCIReplicationExtensionModelCustomProperties].
   /// [azStackHciFabricArmId] Gets or sets the ARM Id of the target AzStackHCI fabric.
@@ -41,11 +42,11 @@ class VMwareToAzStackHCIReplicationExtensionModelCustomProperties {
 
   factory VMwareToAzStackHCIReplicationExtensionModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return VMwareToAzStackHCIReplicationExtensionModelCustomProperties(
-      azStackHciFabricArmId: map['azStackHciFabricArmId'] as String,
-      instanceType: map['instanceType'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
-      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : map['storageAccountSasSecretName'] as String,
-      vmwareFabricArmId: map['vmwareFabricArmId'] as String,
+      azStackHciFabricArmId: (map['azStackHciFabricArmId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : (map['storageAccountSasSecretName'] as String).input(),
+      vmwareFabricArmId: (map['vmwareFabricArmId'] as String).input(),
     );
   }
 }

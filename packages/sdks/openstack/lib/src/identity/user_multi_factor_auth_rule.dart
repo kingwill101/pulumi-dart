@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserMultiFactorAuthRule {
   /// A list of authentication plugins that the user must
   /// authenticate with.
-  final List<String> rules;
+  final pulumi.Input<List<String>> rules;
 
   /// Creates a new [UserMultiFactorAuthRule].
   /// [rules] A list of authentication plugins that the user must
@@ -20,7 +21,7 @@ class UserMultiFactorAuthRule {
 
   factory UserMultiFactorAuthRule.fromMap(Map<String, dynamic> map) {
     return UserMultiFactorAuthRule(
-      rules: (map['rules'] as List).cast<String>(),
+      rules: ((map['rules'] as List).cast<String>()).input(),
     );
   }
 }

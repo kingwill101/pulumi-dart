@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsNodePoolMaxPodsConstraint {
   /// The maximum number of pods to schedule on a single node.
   ///
   /// - - -
-  final int maxPodsPerNode;
+  final pulumi.Input<int> maxPodsPerNode;
 
   /// Creates a new [AwsNodePoolMaxPodsConstraint].
   /// [maxPodsPerNode] The maximum number of pods to schedule on a single node.
@@ -21,7 +22,7 @@ class AwsNodePoolMaxPodsConstraint {
 
   factory AwsNodePoolMaxPodsConstraint.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolMaxPodsConstraint(
-      maxPodsPerNode: map['maxPodsPerNode'] as int,
+      maxPodsPerNode: (map['maxPodsPerNode'] as int).input(),
     );
   }
 }

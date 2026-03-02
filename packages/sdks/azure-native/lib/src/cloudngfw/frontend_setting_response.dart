@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_configuration_response.dart';
 
 /// Frontend setting for Firewall
 class FrontendSettingResponse {
   /// Backend configurations
-  final EndpointConfigurationResponse backendConfiguration;
+  final pulumi.Input<EndpointConfigurationResponse> backendConfiguration;
   /// Frontend configurations
-  final EndpointConfigurationResponse frontendConfiguration;
+  final pulumi.Input<EndpointConfigurationResponse> frontendConfiguration;
   /// Settings name
-  final String name;
+  final pulumi.Input<String> name;
   /// Protocol Type
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [FrontendSettingResponse].
   /// [backendConfiguration] Backend configurations
@@ -27,8 +28,8 @@ class FrontendSettingResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendConfiguration': backendConfiguration.toMap(),
-      'frontendConfiguration': frontendConfiguration.toMap(),
+      'backendConfiguration': pulumi.Input.mapInputValue<EndpointConfigurationResponse, Map<String, dynamic>>(backendConfiguration, (value) => value.toMap()),
+      'frontendConfiguration': pulumi.Input.mapInputValue<EndpointConfigurationResponse, Map<String, dynamic>>(frontendConfiguration, (value) => value.toMap()),
       'name': name,
       'protocol': protocol,
     };
@@ -36,10 +37,10 @@ class FrontendSettingResponse {
 
   factory FrontendSettingResponse.fromMap(Map<String, dynamic> map) {
     return FrontendSettingResponse(
-      backendConfiguration: EndpointConfigurationResponse.fromMap((map['backendConfiguration'] as Map).cast<String, dynamic>()),
-      frontendConfiguration: EndpointConfigurationResponse.fromMap((map['frontendConfiguration'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      protocol: map['protocol'] as String,
+      backendConfiguration: (EndpointConfigurationResponse.fromMap((map['backendConfiguration'] as Map).cast<String, dynamic>())).input(),
+      frontendConfiguration: (EndpointConfigurationResponse.fromMap((map['frontendConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

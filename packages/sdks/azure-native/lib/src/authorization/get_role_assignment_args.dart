@@ -19,13 +19,10 @@ class GetRoleAssignmentArgs {
   /// [scope] The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   /// [tenantId] Tenant ID for cross-tenant request
   GetRoleAssignmentArgs({
-    required pulumi.Output<String> roleAssignmentName,
-    required pulumi.Output<String> scope,
-    pulumi.Output<String>? tenantId,
-  }) :
-      roleAssignmentName = pulumi.Input.asInput<String>(roleAssignmentName),
-      scope = pulumi.Input.asInput<String>(scope),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    required this.roleAssignmentName,
+    required this.scope,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRoleAssignmentArgs {
 
   factory GetRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentArgs(
-      roleAssignmentName: pulumi.Output.create<String>(map['roleAssignmentName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      roleAssignmentName: (map['roleAssignmentName'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

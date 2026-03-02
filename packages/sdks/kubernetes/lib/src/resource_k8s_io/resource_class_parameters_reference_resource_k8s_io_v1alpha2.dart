@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ResourceClassParametersReference contains enough information to let you locate the parameters for a ResourceClass.
 class ResourceClassParametersReferenceResourceK8sIoV1alpha2 {
   /// APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.
-  final String? apiGroup;
+  final pulumi.Input<String>? apiGroup;
   /// Kind is the type of resource being referenced. This is the same value as in the parameter object's metadata.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Name is the name of resource being referenced.
-  final String name;
+  final pulumi.Input<String> name;
   /// Namespace that contains the referenced resource. Must be empty for cluster-scoped resources and non-empty for namespaced resources.
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// Creates a new [ResourceClassParametersReferenceResourceK8sIoV1alpha2].
   /// [apiGroup] APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.
@@ -35,10 +36,10 @@ class ResourceClassParametersReferenceResourceK8sIoV1alpha2 {
 
   factory ResourceClassParametersReferenceResourceK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
     return ResourceClassParametersReferenceResourceK8sIoV1alpha2(
-      apiGroup: map['apiGroup'] == null ? null : map['apiGroup'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
     );
   }
 }

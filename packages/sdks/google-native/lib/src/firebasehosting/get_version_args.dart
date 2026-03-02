@@ -16,13 +16,10 @@ class GetVersionArgs {
   /// [siteId] Required.
   /// [versionId] Required.
   GetVersionArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> siteId,
-    required pulumi.Output<String> versionId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      versionId = pulumi.Input.asInput<String>(versionId);
+    this.project,
+    required this.siteId,
+    required this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetVersionArgs {
 
   factory GetVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      versionId: pulumi.Output.create<String>(map['versionId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
     );
   }
 }

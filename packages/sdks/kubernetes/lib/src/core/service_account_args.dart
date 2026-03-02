@@ -31,19 +31,13 @@ class ServiceAccountArgs {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [secrets] Secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". The "kubernetes.io/enforce-mountable-secrets" annotation is deprecated since v1.32. Prefer separate namespaces to isolate access to mounted secrets. This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: https://kubernetes.io/docs/concepts/configuration/secret
   ServiceAccountArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<bool>? automountServiceAccountToken,
-    pulumi.Output<List<LocalObjectReference>>? imagePullSecrets,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<List<ObjectReference>>? secrets,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      automountServiceAccountToken = pulumi.Input.asOptionalInput<bool>(automountServiceAccountToken),
-      imagePullSecrets = pulumi.Input.asOptionalInput<List<LocalObjectReference>>(imagePullSecrets),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      secrets = pulumi.Input.asOptionalInput<List<ObjectReference>>(secrets);
+    this.apiVersion,
+    this.automountServiceAccountToken,
+    this.imagePullSecrets,
+    this.kind,
+    this.metadata,
+    this.secrets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class ServiceAccountArgs {
 
   factory ServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return ServiceAccountArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      automountServiceAccountToken: map['automountServiceAccountToken'] == null ? null : pulumi.Output.create<bool>(map['automountServiceAccountToken'] as bool),
-      imagePullSecrets: map['imagePullSecrets'] == null ? null : pulumi.Output.create<List<LocalObjectReference>>(pulumi.Input.decodeList<LocalObjectReference>(map['imagePullSecrets'], (value) => LocalObjectReference.fromMap((value as Map).cast<String, dynamic>()))),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      secrets: map['secrets'] == null ? null : pulumi.Output.create<List<ObjectReference>>(pulumi.Input.decodeList<ObjectReference>(map['secrets'], (value) => ObjectReference.fromMap((value as Map).cast<String, dynamic>()))),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      automountServiceAccountToken: map['automountServiceAccountToken'] == null ? null : (map['automountServiceAccountToken'] as bool).input(),
+      imagePullSecrets: map['imagePullSecrets'] == null ? null : (pulumi.Input.decodeList<LocalObjectReference>(map['imagePullSecrets'], (value) => LocalObjectReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<ObjectReference>(map['secrets'], (value) => ObjectReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

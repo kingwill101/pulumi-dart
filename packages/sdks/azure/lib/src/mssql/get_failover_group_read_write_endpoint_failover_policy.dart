@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFailoverGroupReadWriteEndpointFailoverPolicy {
   /// The grace period in minutes, before failover with data loss is attempted for the read-write endpoint.
-  final int graceMinutes;
+  final pulumi.Input<int> graceMinutes;
   /// The failover policy of the read-write endpoint for the Failover Group.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [GetFailoverGroupReadWriteEndpointFailoverPolicy].
   /// [graceMinutes] The grace period in minutes, before failover with data loss is attempted for the read-write endpoint.
@@ -24,8 +25,8 @@ class GetFailoverGroupReadWriteEndpointFailoverPolicy {
 
   factory GetFailoverGroupReadWriteEndpointFailoverPolicy.fromMap(Map<String, dynamic> map) {
     return GetFailoverGroupReadWriteEndpointFailoverPolicy(
-      graceMinutes: map['graceMinutes'] as int,
-      mode: map['mode'] as String,
+      graceMinutes: (map['graceMinutes'] as int).input(),
+      mode: (map['mode'] as String).input(),
     );
   }
 }

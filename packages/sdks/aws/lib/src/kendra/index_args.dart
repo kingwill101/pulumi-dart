@@ -52,31 +52,19 @@ class IndexArgs {
   /// [userGroupResolutionConfiguration] A block that enables fetching access levels of groups and users from an AWS Single Sign-On identity source. To configure this, see [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/dg/API_UserGroupResolutionConfiguration.html). Detailed below.
   /// [userTokenConfigurations] A block that specifies the user token configuration. Detailed below.
   IndexArgs({
-    pulumi.Output<IndexCapacityUnits>? capacityUnits,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<IndexDocumentMetadataConfigurationUpdate>>? documentMetadataConfigurationUpdates,
-    pulumi.Output<String>? edition,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<IndexServerSideEncryptionConfiguration>? serverSideEncryptionConfiguration,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? userContextPolicy,
-    pulumi.Output<IndexUserGroupResolutionConfiguration>? userGroupResolutionConfiguration,
-    pulumi.Output<IndexUserTokenConfigurations>? userTokenConfigurations,
-  }) :
-      capacityUnits = pulumi.Input.asOptionalInput<IndexCapacityUnits>(capacityUnits),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      documentMetadataConfigurationUpdates = pulumi.Input.asOptionalInput<List<IndexDocumentMetadataConfigurationUpdate>>(documentMetadataConfigurationUpdates),
-      edition = pulumi.Input.asOptionalInput<String>(edition),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      serverSideEncryptionConfiguration = pulumi.Input.asOptionalInput<IndexServerSideEncryptionConfiguration>(serverSideEncryptionConfiguration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userContextPolicy = pulumi.Input.asOptionalInput<String>(userContextPolicy),
-      userGroupResolutionConfiguration = pulumi.Input.asOptionalInput<IndexUserGroupResolutionConfiguration>(userGroupResolutionConfiguration),
-      userTokenConfigurations = pulumi.Input.asOptionalInput<IndexUserTokenConfigurations>(userTokenConfigurations);
+    this.capacityUnits,
+    this.description,
+    this.documentMetadataConfigurationUpdates,
+    this.edition,
+    this.name,
+    this.region,
+    required this.roleArn,
+    this.serverSideEncryptionConfiguration,
+    this.tags,
+    this.userContextPolicy,
+    this.userGroupResolutionConfiguration,
+    this.userTokenConfigurations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class IndexArgs {
 
   factory IndexArgs.fromMap(Map<String, dynamic> map) {
     return IndexArgs(
-      capacityUnits: map['capacityUnits'] == null ? null : pulumi.Output.create<IndexCapacityUnits>(IndexCapacityUnits.fromMap((map['capacityUnits'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      documentMetadataConfigurationUpdates: map['documentMetadataConfigurationUpdates'] == null ? null : pulumi.Output.create<List<IndexDocumentMetadataConfigurationUpdate>>(pulumi.Input.decodeList<IndexDocumentMetadataConfigurationUpdate>(map['documentMetadataConfigurationUpdates'], (value) => IndexDocumentMetadataConfigurationUpdate.fromMap((value as Map).cast<String, dynamic>()))),
-      edition: map['edition'] == null ? null : pulumi.Output.create<String>(map['edition'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : pulumi.Output.create<IndexServerSideEncryptionConfiguration>(IndexServerSideEncryptionConfiguration.fromMap((map['serverSideEncryptionConfiguration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userContextPolicy: map['userContextPolicy'] == null ? null : pulumi.Output.create<String>(map['userContextPolicy'] as String),
-      userGroupResolutionConfiguration: map['userGroupResolutionConfiguration'] == null ? null : pulumi.Output.create<IndexUserGroupResolutionConfiguration>(IndexUserGroupResolutionConfiguration.fromMap((map['userGroupResolutionConfiguration'] as Map).cast<String, dynamic>())),
-      userTokenConfigurations: map['userTokenConfigurations'] == null ? null : pulumi.Output.create<IndexUserTokenConfigurations>(IndexUserTokenConfigurations.fromMap((map['userTokenConfigurations'] as Map).cast<String, dynamic>())),
+      capacityUnits: map['capacityUnits'] == null ? null : (IndexCapacityUnits.fromMap((map['capacityUnits'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      documentMetadataConfigurationUpdates: map['documentMetadataConfigurationUpdates'] == null ? null : (pulumi.Input.decodeList<IndexDocumentMetadataConfigurationUpdate>(map['documentMetadataConfigurationUpdates'], (value) => IndexDocumentMetadataConfigurationUpdate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : (IndexServerSideEncryptionConfiguration.fromMap((map['serverSideEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userContextPolicy: map['userContextPolicy'] == null ? null : (map['userContextPolicy'] as String).input(),
+      userGroupResolutionConfiguration: map['userGroupResolutionConfiguration'] == null ? null : (IndexUserGroupResolutionConfiguration.fromMap((map['userGroupResolutionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      userTokenConfigurations: map['userTokenConfigurations'] == null ? null : (IndexUserTokenConfigurations.fromMap((map['userTokenConfigurations'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

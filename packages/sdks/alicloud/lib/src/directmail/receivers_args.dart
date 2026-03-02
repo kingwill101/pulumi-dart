@@ -19,13 +19,10 @@ class ReceiversArgs {
   /// [receiversAlias] The alias of receivers. Must email address and less than 30 characters in length.
   /// [receiversName] The name of the resource. The length that cannot be repeated is 1-30 characters.
   ReceiversArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> receiversAlias,
-    required pulumi.Output<String> receiversName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      receiversAlias = pulumi.Input.asInput<String>(receiversAlias),
-      receiversName = pulumi.Input.asInput<String>(receiversName);
+    this.description,
+    required this.receiversAlias,
+    required this.receiversName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ReceiversArgs {
 
   factory ReceiversArgs.fromMap(Map<String, dynamic> map) {
     return ReceiversArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      receiversAlias: pulumi.Output.create<String>(map['receiversAlias'] as String),
-      receiversName: pulumi.Output.create<String>(map['receiversName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      receiversAlias: (map['receiversAlias'] as String).input(),
+      receiversName: (map['receiversName'] as String).input(),
     );
   }
 }

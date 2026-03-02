@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BigQueryModelTrainingResponse {
   /// [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
-  final int currentIteration;
+  final pulumi.Input<int> currentIteration;
   /// [Output-only, Beta] Expected number of iterations for the create model query job specified as num_iterations in the input query. The actual total number of iterations may be less than this number due to early stop.
-  final String expectedTotalIterations;
+  final pulumi.Input<String> expectedTotalIterations;
 
   /// Creates a new [BigQueryModelTrainingResponse].
   /// [currentIteration] [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
@@ -24,8 +25,8 @@ class BigQueryModelTrainingResponse {
 
   factory BigQueryModelTrainingResponse.fromMap(Map<String, dynamic> map) {
     return BigQueryModelTrainingResponse(
-      currentIteration: map['currentIteration'] as int,
-      expectedTotalIterations: map['expectedTotalIterations'] as String,
+      currentIteration: (map['currentIteration'] as int).input(),
+      expectedTotalIterations: (map['expectedTotalIterations'] as String).input(),
     );
   }
 }

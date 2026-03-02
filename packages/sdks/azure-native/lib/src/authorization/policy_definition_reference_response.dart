@@ -6,19 +6,19 @@ import 'parameter_values_value_response.dart';
 /// The policy definition reference.
 class PolicyDefinitionReferenceResponse {
   /// The version of the policy definition to use.
-  final String? definitionVersion;
+  final pulumi.Input<String>? definitionVersion;
   /// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
-  final String effectiveDefinitionVersion;
+  final pulumi.Input<String> effectiveDefinitionVersion;
   /// The name of the groups that this policy definition reference belongs to.
-  final List<String>? groupNames;
+  final pulumi.Input<List<String>>? groupNames;
   /// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
-  final String latestDefinitionVersion;
+  final pulumi.Input<String> latestDefinitionVersion;
   /// The parameter values for the referenced policy rule. The keys are the parameter names.
-  final Map<String, ParameterValuesValueResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterValuesValueResponse>>? parameters;
   /// The ID of the policy definition or policy set definition.
-  final String policyDefinitionId;
+  final pulumi.Input<String> policyDefinitionId;
   /// A unique id (within the policy set definition) for this policy definition reference.
-  final String? policyDefinitionReferenceId;
+  final pulumi.Input<String>? policyDefinitionReferenceId;
 
   /// Creates a new [PolicyDefinitionReferenceResponse].
   /// [definitionVersion] The version of the policy definition to use.
@@ -44,7 +44,7 @@ class PolicyDefinitionReferenceResponse {
       'effectiveDefinitionVersion': effectiveDefinitionVersion,
       'groupNames': ?groupNames,
       'latestDefinitionVersion': latestDefinitionVersion,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterValuesValueResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterValuesValueResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterValuesValueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'policyDefinitionId': policyDefinitionId,
       'policyDefinitionReferenceId': ?policyDefinitionReferenceId,
     };
@@ -52,13 +52,13 @@ class PolicyDefinitionReferenceResponse {
 
   factory PolicyDefinitionReferenceResponse.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionReferenceResponse(
-      definitionVersion: map['definitionVersion'] == null ? null : map['definitionVersion'] as String,
-      effectiveDefinitionVersion: map['effectiveDefinitionVersion'] as String,
-      groupNames: map['groupNames'] == null ? null : (map['groupNames'] as List).cast<String>(),
-      latestDefinitionVersion: map['latestDefinitionVersion'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterValuesValueResponse>(map['parameters'], (value) => ParameterValuesValueResponse.fromMap((value as Map).cast<String, dynamic>())),
-      policyDefinitionId: map['policyDefinitionId'] as String,
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : map['policyDefinitionReferenceId'] as String,
+      definitionVersion: map['definitionVersion'] == null ? null : (map['definitionVersion'] as String).input(),
+      effectiveDefinitionVersion: (map['effectiveDefinitionVersion'] as String).input(),
+      groupNames: map['groupNames'] == null ? null : ((map['groupNames'] as List).cast<String>()).input(),
+      latestDefinitionVersion: (map['latestDefinitionVersion'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterValuesValueResponse>(map['parameters'], (value) => ParameterValuesValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyDefinitionId: (map['policyDefinitionId'] as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class GetServerArgs {
   /// [withSelector] Label Selector. For more information about possible values, visit the [Hetzner Cloud Documentation](https://docs.hetzner.cloud/reference/cloud#label-selector).
   /// [withStatuses] List only servers with the specified status, could contain `initializing`, `starting`, `running`, `stopping`, `off`, `deleting`, `rebuilding`, `migrating`, `unknown`.
   GetServerArgs({
-    pulumi.Output<int>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<GetServerNetwork>>? networks,
-    pulumi.Output<int>? placementGroupId,
-    pulumi.Output<String>? selector,
-    pulumi.Output<String>? withSelector,
-    pulumi.Output<List<String>>? withStatuses,
-  }) :
-      id = pulumi.Input.asOptionalInput<int>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networks = pulumi.Input.asOptionalInput<List<GetServerNetwork>>(networks),
-      placementGroupId = pulumi.Input.asOptionalInput<int>(placementGroupId),
-      selector = pulumi.Input.asOptionalInput<String>(selector),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector),
-      withStatuses = pulumi.Input.asOptionalInput<List<String>>(withStatuses);
+    this.id,
+    this.name,
+    this.networks,
+    this.placementGroupId,
+    this.selector,
+    this.withSelector,
+    this.withStatuses,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetServerArgs {
 
   factory GetServerArgs.fromMap(Map<String, dynamic> map) {
     return GetServerArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networks: map['networks'] == null ? null : pulumi.Output.create<List<GetServerNetwork>>(pulumi.Input.decodeList<GetServerNetwork>(map['networks'], (value) => GetServerNetwork.fromMap((value as Map).cast<String, dynamic>()))),
-      placementGroupId: map['placementGroupId'] == null ? null : pulumi.Output.create<int>(map['placementGroupId'] as int),
-      selector: map['selector'] == null ? null : pulumi.Output.create<String>(map['selector'] as String),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
-      withStatuses: map['withStatuses'] == null ? null : pulumi.Output.create<List<String>>((map['withStatuses'] as List).cast<String>()),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<GetServerNetwork>(map['networks'], (value) => GetServerNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      placementGroupId: map['placementGroupId'] == null ? null : (map['placementGroupId'] as int).input(),
+      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses'] as List).cast<String>()).input(),
     );
   }
 }

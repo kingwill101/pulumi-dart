@@ -16,13 +16,10 @@ class GetSubnetworkArgs {
   /// [region] Required.
   /// [subnetwork] Required.
   GetSubnetworkArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> subnetwork,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      subnetwork = pulumi.Input.asInput<String>(subnetwork);
+    this.project,
+    required this.region,
+    required this.subnetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetSubnetworkArgs {
 
   factory GetSubnetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetworkArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      subnetwork: pulumi.Output.create<String>(map['subnetwork'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      subnetwork: (map['subnetwork'] as String).input(),
     );
   }
 }

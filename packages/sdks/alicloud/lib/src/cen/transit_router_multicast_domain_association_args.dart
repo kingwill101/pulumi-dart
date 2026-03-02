@@ -19,13 +19,10 @@ class TransitRouterMulticastDomainAssociationArgs {
   /// [transitRouterMulticastDomainId] The ID of the multicast domain.
   /// [vswitchId] The ID of the vSwitch.
   TransitRouterMulticastDomainAssociationArgs({
-    required pulumi.Output<String> transitRouterAttachmentId,
-    required pulumi.Output<String> transitRouterMulticastDomainId,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      transitRouterAttachmentId = pulumi.Input.asInput<String>(transitRouterAttachmentId),
-      transitRouterMulticastDomainId = pulumi.Input.asInput<String>(transitRouterMulticastDomainId),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    required this.transitRouterAttachmentId,
+    required this.transitRouterMulticastDomainId,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class TransitRouterMulticastDomainAssociationArgs {
 
   factory TransitRouterMulticastDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainAssociationArgs(
-      transitRouterAttachmentId: pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
-      transitRouterMulticastDomainId: pulumi.Output.create<String>(map['transitRouterMulticastDomainId'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class WorkloadArgs {
   /// [virtualEnclaveName] The name of the enclaveResource Resource
   /// [workloadName] The name of the workloadResource Resource
   WorkloadArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<List<String>>? resourceGroupCollection,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualEnclaveName,
-    pulumi.Output<String>? workloadName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupCollection = pulumi.Input.asOptionalInput<List<String>>(resourceGroupCollection),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualEnclaveName = pulumi.Input.asInput<String>(virtualEnclaveName),
-      workloadName = pulumi.Input.asOptionalInput<String>(workloadName);
+    this.location,
+    this.resourceGroupCollection,
+    required this.resourceGroupName,
+    this.tags,
+    required this.virtualEnclaveName,
+    this.workloadName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class WorkloadArgs {
 
   factory WorkloadArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupCollection: map['resourceGroupCollection'] == null ? null : pulumi.Output.create<List<String>>((map['resourceGroupCollection'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualEnclaveName: pulumi.Output.create<String>(map['virtualEnclaveName'] as String),
-      workloadName: map['workloadName'] == null ? null : pulumi.Output.create<String>(map['workloadName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupCollection: map['resourceGroupCollection'] == null ? null : ((map['resourceGroupCollection'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualEnclaveName: (map['virtualEnclaveName'] as String).input(),
+      workloadName: map['workloadName'] == null ? null : (map['workloadName'] as String).input(),
     );
   }
 }

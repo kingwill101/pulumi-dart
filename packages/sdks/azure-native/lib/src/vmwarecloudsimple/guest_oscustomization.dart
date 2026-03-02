@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Guest OS Customization properties
 class GuestOSCustomization {
   /// List of dns servers to use
-  final List<String>? dnsServers;
+  final pulumi.Input<List<String>>? dnsServers;
   /// Virtual Machine hostname
-  final String? hostName;
+  final pulumi.Input<String>? hostName;
   /// Password for login
-  final String? password;
+  final pulumi.Input<String>? password;
   /// id of customization policy
-  final String? policyId;
+  final pulumi.Input<String>? policyId;
   /// Username for login
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [GuestOSCustomization].
   /// [dnsServers] List of dns servers to use
@@ -40,11 +41,11 @@ class GuestOSCustomization {
 
   factory GuestOSCustomization.fromMap(Map<String, dynamic> map) {
     return GuestOSCustomization(
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
-      hostName: map['hostName'] == null ? null : map['hostName'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      policyId: map['policyId'] == null ? null : map['policyId'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

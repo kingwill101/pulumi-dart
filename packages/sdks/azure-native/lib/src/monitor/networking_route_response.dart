@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Networking route configuration.
 class NetworkingRouteResponse {
   /// Route path.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// The port that will be configured externally. If not specified, it will use the port from the receiver definition.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The name of the previously defined receiver.
-  final String receiver;
+  final pulumi.Input<String> receiver;
   /// Route subdomain.
-  final String? subdomain;
+  final pulumi.Input<String>? subdomain;
 
   /// Creates a new [NetworkingRouteResponse].
   /// [path] Route path.
@@ -35,10 +36,10 @@ class NetworkingRouteResponse {
 
   factory NetworkingRouteResponse.fromMap(Map<String, dynamic> map) {
     return NetworkingRouteResponse(
-      path: map['path'] == null ? null : map['path'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      receiver: map['receiver'] as String,
-      subdomain: map['subdomain'] == null ? null : map['subdomain'] as String,
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      receiver: (map['receiver'] as String).input(),
+      subdomain: map['subdomain'] == null ? null : (map['subdomain'] as String).input(),
     );
   }
 }

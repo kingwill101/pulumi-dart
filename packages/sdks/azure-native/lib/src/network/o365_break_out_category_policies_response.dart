@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Office365 breakout categories.
 class O365BreakOutCategoryPoliciesResponse {
   /// Flag to control allow category.
-  final bool? allow;
+  final pulumi.Input<bool>? allow;
   /// Flag to control default category.
-  final bool? default_;
+  final pulumi.Input<bool>? default_;
   /// Flag to control optimize category.
-  final bool? optimize;
+  final pulumi.Input<bool>? optimize;
 
   /// Creates a new [O365BreakOutCategoryPoliciesResponse].
   /// [allow] Flag to control allow category.
@@ -30,9 +31,9 @@ class O365BreakOutCategoryPoliciesResponse {
 
   factory O365BreakOutCategoryPoliciesResponse.fromMap(Map<String, dynamic> map) {
     return O365BreakOutCategoryPoliciesResponse(
-      allow: map['allow'] == null ? null : map['allow'] as bool,
-      default_: map['default'] == null ? null : map['default'] as bool,
-      optimize: map['optimize'] == null ? null : map['optimize'] as bool,
+      allow: map['allow'] == null ? null : (map['allow'] as bool).input(),
+      default_: map['default'] == null ? null : (map['default'] as bool).input(),
+      optimize: map['optimize'] == null ? null : (map['optimize'] as bool).input(),
     );
   }
 }

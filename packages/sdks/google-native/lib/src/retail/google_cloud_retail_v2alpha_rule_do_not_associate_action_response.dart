@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
 class GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse {
   /// Cannot contain duplicates or the query term. Can specify up to 100 terms.
-  final List<String> doNotAssociateTerms;
+  final pulumi.Input<List<String>> doNotAssociateTerms;
   /// Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
-  final List<String> queryTerms;
+  final pulumi.Input<List<String>> queryTerms;
   /// Will be [deprecated = true] post migration;
-  final List<String> terms;
+  final pulumi.Input<List<String>> terms;
 
   /// Creates a new [GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse].
   /// [doNotAssociateTerms] Cannot contain duplicates or the query term. Can specify up to 100 terms.
@@ -30,9 +31,9 @@ class GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse {
 
   factory GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse(
-      doNotAssociateTerms: (map['doNotAssociateTerms'] as List).cast<String>(),
-      queryTerms: (map['queryTerms'] as List).cast<String>(),
-      terms: (map['terms'] as List).cast<String>(),
+      doNotAssociateTerms: ((map['doNotAssociateTerms'] as List).cast<String>()).input(),
+      queryTerms: ((map['queryTerms'] as List).cast<String>()).input(),
+      terms: ((map['terms'] as List).cast<String>()).input(),
     );
   }
 }

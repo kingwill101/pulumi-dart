@@ -1,50 +1,51 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The specifications of the availability group replica configuration
 class AvailabilityGroupConfigureResponse {
   /// Property that determines whether a given availability replica can run in synchronous-commit mode
-  final String? availabilityMode;
+  final pulumi.Input<String>? availabilityMode;
   /// The Availability Synchronization mode of the availability group replica.
-  final String availabilityModeDescription;
+  final pulumi.Input<String> availabilityModeDescription;
   /// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
-  final int? backupPriority;
+  final pulumi.Input<int>? backupPriority;
   /// Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified.
-  final String? certificateName;
+  final pulumi.Input<String>? certificateName;
   /// Permitted authentication modes for the mirroring endpoint.
-  final String? endpointAuthenticationMode;
+  final pulumi.Input<String>? endpointAuthenticationMode;
   /// The login which will connect to the mirroring endpoint.
-  final String? endpointConnectLogin;
+  final pulumi.Input<String>? endpointConnectLogin;
   /// Name of the mirroring endpoint URL
-  final String? endpointName;
+  final pulumi.Input<String>? endpointName;
   /// Mirroring endpoint URL of availability group replica
-  final String? endpointUrl;
+  final pulumi.Input<String>? endpointUrl;
   /// Property to set the failover mode of the availability group replica
-  final String? failoverMode;
+  final pulumi.Input<String>? failoverMode;
   /// The failover mode of the availability group replica.
-  final String failoverModeDescription;
+  final pulumi.Input<String> failoverModeDescription;
   /// Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)
-  final String? primaryAllowConnections;
+  final pulumi.Input<String>? primaryAllowConnections;
   /// Whether the availability allows all connections or only read-write connections.
-  final String primaryRoleAllowConnectionsDescription;
+  final pulumi.Input<String> primaryRoleAllowConnectionsDescription;
   /// Connectivity endpoint (URL) of the read only availability replica.
-  final String? readOnlyRoutingUrl;
+  final pulumi.Input<String>? readOnlyRoutingUrl;
   /// Connectivity endpoint (URL) of the read write availability replica.
-  final String? readWriteRoutingUrl;
+  final pulumi.Input<String>? readWriteRoutingUrl;
   /// Date that the replica was created.
-  final String replicaCreateDate;
+  final pulumi.Input<String> replicaCreateDate;
   /// Date that the replica was modified.
-  final String replicaModifyDate;
+  final pulumi.Input<String> replicaModifyDate;
   /// Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
-  final String? secondaryAllowConnections;
+  final pulumi.Input<String>? secondaryAllowConnections;
   /// Whether an availability replica that is performing the secondary role (that is, a secondary replica) can accept connections from clients.
-  final String secondaryRoleAllowConnectionsDescription;
+  final pulumi.Input<String> secondaryRoleAllowConnectionsDescription;
   /// Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.
-  final String? seedingMode;
+  final pulumi.Input<String>? seedingMode;
   /// Describes seeding mode.
-  final String seedingModeDescription;
+  final pulumi.Input<String> seedingModeDescription;
   /// The time-out period of availability group session replica, in seconds.
-  final int? sessionTimeout;
+  final pulumi.Input<int>? sessionTimeout;
 
   /// Creates a new [AvailabilityGroupConfigureResponse].
   /// [availabilityMode] Property that determines whether a given availability replica can run in synchronous-commit mode
@@ -120,27 +121,27 @@ class AvailabilityGroupConfigureResponse {
 
   factory AvailabilityGroupConfigureResponse.fromMap(Map<String, dynamic> map) {
     return AvailabilityGroupConfigureResponse(
-      availabilityMode: map['availabilityMode'] == null ? null : map['availabilityMode'] as String,
-      availabilityModeDescription: map['availabilityModeDescription'] as String,
-      backupPriority: map['backupPriority'] == null ? null : map['backupPriority'] as int,
-      certificateName: map['certificateName'] == null ? null : map['certificateName'] as String,
-      endpointAuthenticationMode: map['endpointAuthenticationMode'] == null ? null : map['endpointAuthenticationMode'] as String,
-      endpointConnectLogin: map['endpointConnectLogin'] == null ? null : map['endpointConnectLogin'] as String,
-      endpointName: map['endpointName'] == null ? null : map['endpointName'] as String,
-      endpointUrl: map['endpointUrl'] == null ? null : map['endpointUrl'] as String,
-      failoverMode: map['failoverMode'] == null ? null : map['failoverMode'] as String,
-      failoverModeDescription: map['failoverModeDescription'] as String,
-      primaryAllowConnections: map['primaryAllowConnections'] == null ? null : map['primaryAllowConnections'] as String,
-      primaryRoleAllowConnectionsDescription: map['primaryRoleAllowConnectionsDescription'] as String,
-      readOnlyRoutingUrl: map['readOnlyRoutingUrl'] == null ? null : map['readOnlyRoutingUrl'] as String,
-      readWriteRoutingUrl: map['readWriteRoutingUrl'] == null ? null : map['readWriteRoutingUrl'] as String,
-      replicaCreateDate: map['replicaCreateDate'] as String,
-      replicaModifyDate: map['replicaModifyDate'] as String,
-      secondaryAllowConnections: map['secondaryAllowConnections'] == null ? null : map['secondaryAllowConnections'] as String,
-      secondaryRoleAllowConnectionsDescription: map['secondaryRoleAllowConnectionsDescription'] as String,
-      seedingMode: map['seedingMode'] == null ? null : map['seedingMode'] as String,
-      seedingModeDescription: map['seedingModeDescription'] as String,
-      sessionTimeout: map['sessionTimeout'] == null ? null : map['sessionTimeout'] as int,
+      availabilityMode: map['availabilityMode'] == null ? null : (map['availabilityMode'] as String).input(),
+      availabilityModeDescription: (map['availabilityModeDescription'] as String).input(),
+      backupPriority: map['backupPriority'] == null ? null : (map['backupPriority'] as int).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      endpointAuthenticationMode: map['endpointAuthenticationMode'] == null ? null : (map['endpointAuthenticationMode'] as String).input(),
+      endpointConnectLogin: map['endpointConnectLogin'] == null ? null : (map['endpointConnectLogin'] as String).input(),
+      endpointName: map['endpointName'] == null ? null : (map['endpointName'] as String).input(),
+      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl'] as String).input(),
+      failoverMode: map['failoverMode'] == null ? null : (map['failoverMode'] as String).input(),
+      failoverModeDescription: (map['failoverModeDescription'] as String).input(),
+      primaryAllowConnections: map['primaryAllowConnections'] == null ? null : (map['primaryAllowConnections'] as String).input(),
+      primaryRoleAllowConnectionsDescription: (map['primaryRoleAllowConnectionsDescription'] as String).input(),
+      readOnlyRoutingUrl: map['readOnlyRoutingUrl'] == null ? null : (map['readOnlyRoutingUrl'] as String).input(),
+      readWriteRoutingUrl: map['readWriteRoutingUrl'] == null ? null : (map['readWriteRoutingUrl'] as String).input(),
+      replicaCreateDate: (map['replicaCreateDate'] as String).input(),
+      replicaModifyDate: (map['replicaModifyDate'] as String).input(),
+      secondaryAllowConnections: map['secondaryAllowConnections'] == null ? null : (map['secondaryAllowConnections'] as String).input(),
+      secondaryRoleAllowConnectionsDescription: (map['secondaryRoleAllowConnectionsDescription'] as String).input(),
+      seedingMode: map['seedingMode'] == null ? null : (map['seedingMode'] as String).input(),
+      seedingModeDescription: (map['seedingModeDescription'] as String).input(),
+      sessionTimeout: map['sessionTimeout'] == null ? null : (map['sessionTimeout'] as int).input(),
     );
   }
 }

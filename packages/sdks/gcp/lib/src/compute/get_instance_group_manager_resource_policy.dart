@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceGroupManagerResourcePolicy {
   /// The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
-  final String workloadPolicy;
+  final pulumi.Input<String> workloadPolicy;
 
   /// Creates a new [GetInstanceGroupManagerResourcePolicy].
   /// [workloadPolicy] The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
@@ -19,7 +20,7 @@ class GetInstanceGroupManagerResourcePolicy {
 
   factory GetInstanceGroupManagerResourcePolicy.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerResourcePolicy(
-      workloadPolicy: map['workloadPolicy'] as String,
+      workloadPolicy: (map['workloadPolicy'] as String).input(),
     );
   }
 }

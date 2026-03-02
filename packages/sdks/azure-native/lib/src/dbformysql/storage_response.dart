@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Storage Profile properties of a server
 class StorageResponse {
   /// Enable Storage Auto Grow or not.
-  final String? autoGrow;
+  final pulumi.Input<String>? autoGrow;
   /// Enable IO Auto Scaling or not.
-  final String? autoIoScaling;
+  final pulumi.Input<String>? autoIoScaling;
   /// Storage IOPS for a server.
-  final int? iops;
+  final pulumi.Input<int>? iops;
   /// Enable Log On Disk or not.
-  final String? logOnDisk;
+  final pulumi.Input<String>? logOnDisk;
   /// The redundant type of the server storage. The parameter is used for server creation.
-  final String? storageRedundancy;
+  final pulumi.Input<String>? storageRedundancy;
   /// Max storage size allowed for a server.
-  final int? storageSizeGB;
+  final pulumi.Input<int>? storageSizeGB;
   /// The sku name of the server storage.
-  final String storageSku;
+  final pulumi.Input<String> storageSku;
 
   /// Creates a new [StorageResponse].
   /// [autoGrow] Enable Storage Auto Grow or not.
@@ -50,13 +51,13 @@ class StorageResponse {
 
   factory StorageResponse.fromMap(Map<String, dynamic> map) {
     return StorageResponse(
-      autoGrow: map['autoGrow'] == null ? null : map['autoGrow'] as String,
-      autoIoScaling: map['autoIoScaling'] == null ? null : map['autoIoScaling'] as String,
-      iops: map['iops'] == null ? null : map['iops'] as int,
-      logOnDisk: map['logOnDisk'] == null ? null : map['logOnDisk'] as String,
-      storageRedundancy: map['storageRedundancy'] == null ? null : map['storageRedundancy'] as String,
-      storageSizeGB: map['storageSizeGB'] == null ? null : map['storageSizeGB'] as int,
-      storageSku: map['storageSku'] as String,
+      autoGrow: map['autoGrow'] == null ? null : (map['autoGrow'] as String).input(),
+      autoIoScaling: map['autoIoScaling'] == null ? null : (map['autoIoScaling'] as String).input(),
+      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
+      logOnDisk: map['logOnDisk'] == null ? null : (map['logOnDisk'] as String).input(),
+      storageRedundancy: map['storageRedundancy'] == null ? null : (map['storageRedundancy'] as String).input(),
+      storageSizeGB: map['storageSizeGB'] == null ? null : (map['storageSizeGB'] as int).input(),
+      storageSku: (map['storageSku'] as String).input(),
     );
   }
 }

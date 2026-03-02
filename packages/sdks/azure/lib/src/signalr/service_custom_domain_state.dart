@@ -21,15 +21,11 @@ class ServiceCustomDomainState {
   /// [signalrCustomCertificateId] Specifies the SignalR Custom Certificate ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
   /// [signalrServiceId] Specifies the SignalR ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
   ServiceCustomDomainState({
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? signalrCustomCertificateId,
-    pulumi.Output<String>? signalrServiceId,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      signalrCustomCertificateId = pulumi.Input.asOptionalInput<String>(signalrCustomCertificateId),
-      signalrServiceId = pulumi.Input.asOptionalInput<String>(signalrServiceId);
+    this.domainName,
+    this.name,
+    this.signalrCustomCertificateId,
+    this.signalrServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class ServiceCustomDomainState {
 
   factory ServiceCustomDomainState.fromMap(Map<String, dynamic> map) {
     return ServiceCustomDomainState(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      signalrCustomCertificateId: map['signalrCustomCertificateId'] == null ? null : pulumi.Output.create<String>(map['signalrCustomCertificateId'] as String),
-      signalrServiceId: map['signalrServiceId'] == null ? null : pulumi.Output.create<String>(map['signalrServiceId'] as String),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      signalrCustomCertificateId: map['signalrCustomCertificateId'] == null ? null : (map['signalrCustomCertificateId'] as String).input(),
+      signalrServiceId: map['signalrServiceId'] == null ? null : (map['signalrServiceId'] as String).input(),
     );
   }
 }

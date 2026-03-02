@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolAdminCreateUserConfigInviteMessageTemplate {
   /// Message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
-  final String? emailMessage;
+  final pulumi.Input<String>? emailMessage;
   /// Subject line for email messages.
-  final String? emailSubject;
+  final pulumi.Input<String>? emailSubject;
   /// Message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
-  final String? smsMessage;
+  final pulumi.Input<String>? smsMessage;
 
   /// Creates a new [UserPoolAdminCreateUserConfigInviteMessageTemplate].
   /// [emailMessage] Message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
@@ -29,9 +30,9 @@ class UserPoolAdminCreateUserConfigInviteMessageTemplate {
 
   factory UserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap(Map<String, dynamic> map) {
     return UserPoolAdminCreateUserConfigInviteMessageTemplate(
-      emailMessage: map['emailMessage'] == null ? null : map['emailMessage'] as String,
-      emailSubject: map['emailSubject'] == null ? null : map['emailSubject'] as String,
-      smsMessage: map['smsMessage'] == null ? null : map['smsMessage'] as String,
+      emailMessage: map['emailMessage'] == null ? null : (map['emailMessage'] as String).input(),
+      emailSubject: map['emailSubject'] == null ? null : (map['emailSubject'] as String).input(),
+      smsMessage: map['smsMessage'] == null ? null : (map['smsMessage'] as String).input(),
     );
   }
 }

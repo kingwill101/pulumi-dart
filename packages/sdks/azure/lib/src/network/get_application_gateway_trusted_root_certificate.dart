@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationGatewayTrustedRootCertificate {
   /// The ID of the Rewrite Rule Set
-  final String id;
+  final pulumi.Input<String> id;
   /// The Secret ID of (base-64 encoded unencrypted pfx) the `Secret` or `Certificate` object stored in Azure KeyVault.
-  final String keyVaultSecretId;
+  final pulumi.Input<String> keyVaultSecretId;
   /// The name of this Application Gateway.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetApplicationGatewayTrustedRootCertificate].
   /// [id] The ID of the Rewrite Rule Set
@@ -29,9 +30,9 @@ class GetApplicationGatewayTrustedRootCertificate {
 
   factory GetApplicationGatewayTrustedRootCertificate.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayTrustedRootCertificate(
-      id: map['id'] as String,
-      keyVaultSecretId: map['keyVaultSecretId'] as String,
-      name: map['name'] as String,
+      id: (map['id'] as String).input(),
+      keyVaultSecretId: (map['keyVaultSecretId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

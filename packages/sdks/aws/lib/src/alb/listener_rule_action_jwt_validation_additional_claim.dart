@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleActionJwtValidationAdditionalClaim {
   /// Format of the claim value. Valid values are `single-string`, `string-array` and `space-separated-values`.
-  final String format;
+  final pulumi.Input<String> format;
   /// Name of the claim to validate. `exp`, `iss`, `nbf`, or `iat` cannot be specified because they are validated by default.
-  final String name;
+  final pulumi.Input<String> name;
   /// List of expected values of the claim.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ListenerRuleActionJwtValidationAdditionalClaim].
   /// [format] Format of the claim value. Valid values are `single-string`, `string-array` and `space-separated-values`.
@@ -29,9 +30,9 @@ class ListenerRuleActionJwtValidationAdditionalClaim {
 
   factory ListenerRuleActionJwtValidationAdditionalClaim.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionJwtValidationAdditionalClaim(
-      format: map['format'] as String,
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      format: (map['format'] as String).input(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

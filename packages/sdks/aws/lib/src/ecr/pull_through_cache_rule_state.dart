@@ -28,21 +28,14 @@ class PullThroughCacheRuleState {
   /// [upstreamRegistryUrl] The registry URL of the upstream registry to use as the source.
   /// [upstreamRepositoryPrefix] The upstream repository prefix associated with the pull through cache rule. Used if the upstream registry is an ECR private registry. If not specified, it's set to `ROOT`, which allows matching with any upstream repository. See [AWS Document - Customizing repository prefixes for ECR to ECR pull through cache](https://docs.aws.amazon.com/AmazonECR/latest/userguide/pull-through-cache-private-wildcards.html).
   PullThroughCacheRuleState({
-    pulumi.Output<String>? credentialArn,
-    pulumi.Output<String>? customRoleArn,
-    pulumi.Output<String>? ecrRepositoryPrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registryId,
-    pulumi.Output<String>? upstreamRegistryUrl,
-    pulumi.Output<String>? upstreamRepositoryPrefix,
-  }) :
-      credentialArn = pulumi.Input.asOptionalInput<String>(credentialArn),
-      customRoleArn = pulumi.Input.asOptionalInput<String>(customRoleArn),
-      ecrRepositoryPrefix = pulumi.Input.asOptionalInput<String>(ecrRepositoryPrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryId = pulumi.Input.asOptionalInput<String>(registryId),
-      upstreamRegistryUrl = pulumi.Input.asOptionalInput<String>(upstreamRegistryUrl),
-      upstreamRepositoryPrefix = pulumi.Input.asOptionalInput<String>(upstreamRepositoryPrefix);
+    this.credentialArn,
+    this.customRoleArn,
+    this.ecrRepositoryPrefix,
+    this.region,
+    this.registryId,
+    this.upstreamRegistryUrl,
+    this.upstreamRepositoryPrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class PullThroughCacheRuleState {
 
   factory PullThroughCacheRuleState.fromMap(Map<String, dynamic> map) {
     return PullThroughCacheRuleState(
-      credentialArn: map['credentialArn'] == null ? null : pulumi.Output.create<String>(map['credentialArn'] as String),
-      customRoleArn: map['customRoleArn'] == null ? null : pulumi.Output.create<String>(map['customRoleArn'] as String),
-      ecrRepositoryPrefix: map['ecrRepositoryPrefix'] == null ? null : pulumi.Output.create<String>(map['ecrRepositoryPrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryId: map['registryId'] == null ? null : pulumi.Output.create<String>(map['registryId'] as String),
-      upstreamRegistryUrl: map['upstreamRegistryUrl'] == null ? null : pulumi.Output.create<String>(map['upstreamRegistryUrl'] as String),
-      upstreamRepositoryPrefix: map['upstreamRepositoryPrefix'] == null ? null : pulumi.Output.create<String>(map['upstreamRepositoryPrefix'] as String),
+      credentialArn: map['credentialArn'] == null ? null : (map['credentialArn'] as String).input(),
+      customRoleArn: map['customRoleArn'] == null ? null : (map['customRoleArn'] as String).input(),
+      ecrRepositoryPrefix: map['ecrRepositoryPrefix'] == null ? null : (map['ecrRepositoryPrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      upstreamRegistryUrl: map['upstreamRegistryUrl'] == null ? null : (map['upstreamRegistryUrl'] as String).input(),
+      upstreamRepositoryPrefix: map['upstreamRepositoryPrefix'] == null ? null : (map['upstreamRepositoryPrefix'] as String).input(),
     );
   }
 }

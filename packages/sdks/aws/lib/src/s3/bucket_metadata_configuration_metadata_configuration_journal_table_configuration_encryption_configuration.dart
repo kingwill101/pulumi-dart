@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration {
   /// KMS key ARN when `sse_algorithm` is `aws:kms`.
-  final String? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
   /// Encryption type for the metadata table. Valid values: `aws:kms`, `AES256`.
-  final String sseAlgorithm;
+  final pulumi.Input<String> sseAlgorithm;
 
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration].
   /// [kmsKeyArn] KMS key ARN when `sse_algorithm` is `aws:kms`.
@@ -24,8 +25,8 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationE
 
   factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration(
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
-      sseAlgorithm: map['sseAlgorithm'] as String,
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      sseAlgorithm: (map['sseAlgorithm'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetConfigurationProfileAssignmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmName] The name of the virtual machine.
   GetConfigurationProfileAssignmentArgs({
-    required pulumi.Output<String> configurationProfileAssignmentName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vmName,
-  }) :
-      configurationProfileAssignmentName = pulumi.Input.asInput<String>(configurationProfileAssignmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmName = pulumi.Input.asInput<String>(vmName);
+    required this.configurationProfileAssignmentName,
+    required this.resourceGroupName,
+    required this.vmName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConfigurationProfileAssignmentArgs {
 
   factory GetConfigurationProfileAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationProfileAssignmentArgs(
-      configurationProfileAssignmentName: pulumi.Output.create<String>(map['configurationProfileAssignmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmName: pulumi.Output.create<String>(map['vmName'] as String),
+      configurationProfileAssignmentName: (map['configurationProfileAssignmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmName: (map['vmName'] as String).input(),
     );
   }
 }

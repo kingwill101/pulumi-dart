@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouteTableRoute {
   /// The destination CIDR to which the route applies.
-  final String addressPrefix;
+  final pulumi.Input<String> addressPrefix;
   /// The name of the Route Table.
-  final String name;
+  final pulumi.Input<String> name;
   /// Contains the IP address packets should be forwarded to.
-  final String nextHopInIpAddress;
+  final pulumi.Input<String> nextHopInIpAddress;
   /// The type of Azure hop the packet should be sent to.
-  final String nextHopType;
+  final pulumi.Input<String> nextHopType;
 
   /// Creates a new [GetRouteTableRoute].
   /// [addressPrefix] The destination CIDR to which the route applies.
@@ -34,10 +35,10 @@ class GetRouteTableRoute {
 
   factory GetRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return GetRouteTableRoute(
-      addressPrefix: map['addressPrefix'] as String,
-      name: map['name'] as String,
-      nextHopInIpAddress: map['nextHopInIpAddress'] as String,
-      nextHopType: map['nextHopType'] as String,
+      addressPrefix: (map['addressPrefix'] as String).input(),
+      name: (map['name'] as String).input(),
+      nextHopInIpAddress: (map['nextHopInIpAddress'] as String).input(),
+      nextHopType: (map['nextHopType'] as String).input(),
     );
   }
 }

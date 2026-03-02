@@ -24,15 +24,11 @@ class VolumeAttachmentPatchStorageK8sIoV1beta1Args {
   /// [metadata] Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
   VolumeAttachmentPatchStorageK8sIoV1beta1Args({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<VolumeAttachmentSpecPatchStorageK8sIoV1beta1>? spec,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      spec = pulumi.Input.asOptionalInput<VolumeAttachmentSpecPatchStorageK8sIoV1beta1>(spec);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class VolumeAttachmentPatchStorageK8sIoV1beta1Args {
 
   factory VolumeAttachmentPatchStorageK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentPatchStorageK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      spec: map['spec'] == null ? null : pulumi.Output.create<VolumeAttachmentSpecPatchStorageK8sIoV1beta1>(VolumeAttachmentSpecPatchStorageK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (VolumeAttachmentSpecPatchStorageK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

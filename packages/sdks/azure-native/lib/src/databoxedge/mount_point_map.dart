@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The share mount point.
 class MountPointMap {
   /// ID of the share mounted to the role VM.
-  final String shareId;
+  final pulumi.Input<String> shareId;
 
   /// Creates a new [MountPointMap].
   /// [shareId] ID of the share mounted to the role VM.
@@ -20,7 +21,7 @@ class MountPointMap {
 
   factory MountPointMap.fromMap(Map<String, dynamic> map) {
     return MountPointMap(
-      shareId: map['shareId'] as String,
+      shareId: (map['shareId'] as String).input(),
     );
   }
 }

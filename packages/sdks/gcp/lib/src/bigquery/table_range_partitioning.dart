@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_range_partitioning_range.dart';
 
 class TableRangePartitioning {
   /// The field used to determine how to create a range-based
   /// partition.
-  final String field;
+  final pulumi.Input<String> field;
   /// Information required to partition based on ranges.
   /// Structure is documented below.
-  final TableRangePartitioningRange range;
+  final pulumi.Input<TableRangePartitioningRange> range;
 
   /// Creates a new [TableRangePartitioning].
   /// [field] The field used to determine how to create a range-based
@@ -21,14 +22,14 @@ class TableRangePartitioning {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'field': field,
-      'range': range.toMap(),
+      'range': pulumi.Input.mapInputValue<TableRangePartitioningRange, Map<String, dynamic>>(range, (value) => value.toMap()),
     };
   }
 
   factory TableRangePartitioning.fromMap(Map<String, dynamic> map) {
     return TableRangePartitioning(
-      field: map['field'] as String,
-      range: TableRangePartitioningRange.fromMap((map['range'] as Map).cast<String, dynamic>()),
+      field: (map['field'] as String).input(),
+      range: (TableRangePartitioningRange.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

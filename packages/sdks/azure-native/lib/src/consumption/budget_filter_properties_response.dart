@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'budget_comparison_expression_response.dart';
 
 /// The Dimensions or Tags to filter a budget by.
 class BudgetFilterPropertiesResponse {
   /// Has comparison expression for a dimension
-  final BudgetComparisonExpressionResponse? dimensions;
+  final pulumi.Input<BudgetComparisonExpressionResponse>? dimensions;
   /// Has comparison expression for a tag
-  final BudgetComparisonExpressionResponse? tags;
+  final pulumi.Input<BudgetComparisonExpressionResponse>? tags;
 
   /// Creates a new [BudgetFilterPropertiesResponse].
   /// [dimensions] Has comparison expression for a dimension
@@ -19,15 +20,15 @@ class BudgetFilterPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': ?dimensions == null ? null : dimensions!.toMap(),
-      'tags': ?tags == null ? null : tags!.toMap(),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<BudgetComparisonExpressionResponse, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<BudgetComparisonExpressionResponse, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory BudgetFilterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BudgetFilterPropertiesResponse(
-      dimensions: map['dimensions'] == null ? null : BudgetComparisonExpressionResponse.fromMap((map['dimensions'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : BudgetComparisonExpressionResponse.fromMap((map['tags'] as Map).cast<String, dynamic>()),
+      dimensions: map['dimensions'] == null ? null : (BudgetComparisonExpressionResponse.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (BudgetComparisonExpressionResponse.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

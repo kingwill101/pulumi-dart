@@ -6,7 +6,7 @@ import 'inbound_nat_rule_response.dart';
 /// Properties of a virtual machine that determine how it is connected to a load balancer.
 class SharedPublicIpAddressConfigurationResponse {
   /// The incoming NAT rules
-  final List<InboundNatRuleResponse>? inboundNatRules;
+  final pulumi.Input<List<InboundNatRuleResponse>>? inboundNatRules;
 
   /// Creates a new [SharedPublicIpAddressConfigurationResponse].
   /// [inboundNatRules] The incoming NAT rules
@@ -16,13 +16,13 @@ class SharedPublicIpAddressConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inboundNatRules': ?inboundNatRules == null ? null : pulumi.Input.encodeList<InboundNatRuleResponse, Map<String, dynamic>>(inboundNatRules!, (value) => value.toMap()),
+      'inboundNatRules': ?pulumi.Input.mapOptionalInputValue<List<InboundNatRuleResponse>, List<Map<String, dynamic>>>(inboundNatRules, (value) => pulumi.Input.encodeList<InboundNatRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SharedPublicIpAddressConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SharedPublicIpAddressConfigurationResponse(
-      inboundNatRules: map['inboundNatRules'] == null ? null : pulumi.Input.decodeList<InboundNatRuleResponse>(map['inboundNatRules'], (value) => InboundNatRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      inboundNatRules: map['inboundNatRules'] == null ? null : (pulumi.Input.decodeList<InboundNatRuleResponse>(map['inboundNatRules'], (value) => InboundNatRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

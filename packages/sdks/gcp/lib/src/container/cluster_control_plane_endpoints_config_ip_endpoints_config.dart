@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterControlPlaneEndpointsConfigIpEndpointsConfig {
   /// Controls whether to allow direct IP access. Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ClusterControlPlaneEndpointsConfigIpEndpointsConfig].
   /// [enabled] Controls whether to allow direct IP access. Defaults to `true`.
@@ -19,7 +20,7 @@ class ClusterControlPlaneEndpointsConfigIpEndpointsConfig {
 
   factory ClusterControlPlaneEndpointsConfigIpEndpointsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneEndpointsConfigIpEndpointsConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

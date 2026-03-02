@@ -33,21 +33,14 @@ class EnvironmentBlueprintConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [regionalParameters] Parameters for each region in which the blueprint is enabled
   EnvironmentBlueprintConfigurationArgs({
-    required pulumi.Output<String> domainId,
-    required pulumi.Output<List<String>> enabledRegions,
-    required pulumi.Output<String> environmentBlueprintId,
-    pulumi.Output<String>? manageAccessRoleArn,
-    pulumi.Output<String>? provisioningRoleArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, Map<String, String>>>? regionalParameters,
-  }) :
-      domainId = pulumi.Input.asInput<String>(domainId),
-      enabledRegions = pulumi.Input.asInput<List<String>>(enabledRegions),
-      environmentBlueprintId = pulumi.Input.asInput<String>(environmentBlueprintId),
-      manageAccessRoleArn = pulumi.Input.asOptionalInput<String>(manageAccessRoleArn),
-      provisioningRoleArn = pulumi.Input.asOptionalInput<String>(provisioningRoleArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      regionalParameters = pulumi.Input.asOptionalInput<Map<String, Map<String, String>>>(regionalParameters);
+    required this.domainId,
+    required this.enabledRegions,
+    required this.environmentBlueprintId,
+    this.manageAccessRoleArn,
+    this.provisioningRoleArn,
+    this.region,
+    this.regionalParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class EnvironmentBlueprintConfigurationArgs {
 
   factory EnvironmentBlueprintConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentBlueprintConfigurationArgs(
-      domainId: pulumi.Output.create<String>(map['domainId'] as String),
-      enabledRegions: pulumi.Output.create<List<String>>((map['enabledRegions'] as List).cast<String>()),
-      environmentBlueprintId: pulumi.Output.create<String>(map['environmentBlueprintId'] as String),
-      manageAccessRoleArn: map['manageAccessRoleArn'] == null ? null : pulumi.Output.create<String>(map['manageAccessRoleArn'] as String),
-      provisioningRoleArn: map['provisioningRoleArn'] == null ? null : pulumi.Output.create<String>(map['provisioningRoleArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      regionalParameters: map['regionalParameters'] == null ? null : pulumi.Output.create<Map<String, Map<String, String>>>((map['regionalParameters'] as Map).cast<String, Map<String, String>>()),
+      domainId: (map['domainId'] as String).input(),
+      enabledRegions: ((map['enabledRegions'] as List).cast<String>()).input(),
+      environmentBlueprintId: (map['environmentBlueprintId'] as String).input(),
+      manageAccessRoleArn: map['manageAccessRoleArn'] == null ? null : (map['manageAccessRoleArn'] as String).input(),
+      provisioningRoleArn: map['provisioningRoleArn'] == null ? null : (map['provisioningRoleArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      regionalParameters: map['regionalParameters'] == null ? null : ((map['regionalParameters'] as Map).cast<String, Map<String, String>>()).input(),
     );
   }
 }

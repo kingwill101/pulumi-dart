@@ -26,17 +26,12 @@ class BuildServiceBuilderArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   BuildServiceBuilderArgs({
-    required pulumi.Output<String> buildServiceName,
-    pulumi.Output<String>? builderName,
-    pulumi.Output<BuilderProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      buildServiceName = pulumi.Input.asInput<String>(buildServiceName),
-      builderName = pulumi.Input.asOptionalInput<String>(builderName),
-      properties = pulumi.Input.asOptionalInput<BuilderProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.buildServiceName,
+    this.builderName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class BuildServiceBuilderArgs {
 
   factory BuildServiceBuilderArgs.fromMap(Map<String, dynamic> map) {
     return BuildServiceBuilderArgs(
-      buildServiceName: pulumi.Output.create<String>(map['buildServiceName'] as String),
-      builderName: map['builderName'] == null ? null : pulumi.Output.create<String>(map['builderName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<BuilderProperties>(BuilderProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      buildServiceName: (map['buildServiceName'] as String).input(),
+      builderName: map['builderName'] == null ? null : (map['builderName'] as String).input(),
+      properties: map['properties'] == null ? null : (BuilderProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

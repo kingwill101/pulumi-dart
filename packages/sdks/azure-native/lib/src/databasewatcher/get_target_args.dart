@@ -19,13 +19,10 @@ class GetTargetArgs {
   /// [targetName] The target resource name.
   /// [watcherName] The database watcher name.
   GetTargetArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> targetName,
-    required pulumi.Output<String> watcherName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetName = pulumi.Input.asInput<String>(targetName),
-      watcherName = pulumi.Input.asInput<String>(watcherName);
+    required this.resourceGroupName,
+    required this.targetName,
+    required this.watcherName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTargetArgs {
 
   factory GetTargetArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetName: pulumi.Output.create<String>(map['targetName'] as String),
-      watcherName: pulumi.Output.create<String>(map['watcherName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetName: (map['targetName'] as String).input(),
+      watcherName: (map['watcherName'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'android_instrumentation_test_response.dart';
 import 'android_robo_test_response.dart';
 import 'android_test_loop_response.dart';
@@ -12,27 +13,27 @@ import 'test_setup_response.dart';
 /// A description of how to run the test.
 class TestSpecificationResponse {
   /// An Android instrumentation test.
-  final AndroidInstrumentationTestResponse androidInstrumentationTest;
+  final pulumi.Input<AndroidInstrumentationTestResponse> androidInstrumentationTest;
   /// An Android robo test.
-  final AndroidRoboTestResponse androidRoboTest;
+  final pulumi.Input<AndroidRoboTestResponse> androidRoboTest;
   /// An Android Application with a Test Loop.
-  final AndroidTestLoopResponse androidTestLoop;
+  final pulumi.Input<AndroidTestLoopResponse> androidTestLoop;
   /// Disables performance metrics recording. May reduce test latency.
-  final bool disablePerformanceMetrics;
+  final pulumi.Input<bool> disablePerformanceMetrics;
   /// Disables video recording. May reduce test latency.
-  final bool disableVideoRecording;
+  final pulumi.Input<bool> disableVideoRecording;
   /// An iOS Robo test.
-  final IosRoboTestResponse iosRoboTest;
+  final pulumi.Input<IosRoboTestResponse> iosRoboTest;
   /// An iOS application with a test loop.
-  final IosTestLoopResponse iosTestLoop;
+  final pulumi.Input<IosTestLoopResponse> iosTestLoop;
   /// Test setup requirements for iOS.
-  final IosTestSetupResponse iosTestSetup;
+  final pulumi.Input<IosTestSetupResponse> iosTestSetup;
   /// An iOS XCTest, via an .xctestrun file.
-  final IosXcTestResponse iosXcTest;
+  final pulumi.Input<IosXcTestResponse> iosXcTest;
   /// Test setup requirements for Android e.g. files to install, bootstrap scripts.
-  final TestSetupResponse testSetup;
+  final pulumi.Input<TestSetupResponse> testSetup;
   /// Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5 min.
-  final String testTimeout;
+  final pulumi.Input<String> testTimeout;
 
   /// Creates a new [TestSpecificationResponse].
   /// [androidInstrumentationTest] An Android instrumentation test.
@@ -62,33 +63,33 @@ class TestSpecificationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'androidInstrumentationTest': androidInstrumentationTest.toMap(),
-      'androidRoboTest': androidRoboTest.toMap(),
-      'androidTestLoop': androidTestLoop.toMap(),
+      'androidInstrumentationTest': pulumi.Input.mapInputValue<AndroidInstrumentationTestResponse, Map<String, dynamic>>(androidInstrumentationTest, (value) => value.toMap()),
+      'androidRoboTest': pulumi.Input.mapInputValue<AndroidRoboTestResponse, Map<String, dynamic>>(androidRoboTest, (value) => value.toMap()),
+      'androidTestLoop': pulumi.Input.mapInputValue<AndroidTestLoopResponse, Map<String, dynamic>>(androidTestLoop, (value) => value.toMap()),
       'disablePerformanceMetrics': disablePerformanceMetrics,
       'disableVideoRecording': disableVideoRecording,
-      'iosRoboTest': iosRoboTest.toMap(),
-      'iosTestLoop': iosTestLoop.toMap(),
-      'iosTestSetup': iosTestSetup.toMap(),
-      'iosXcTest': iosXcTest.toMap(),
-      'testSetup': testSetup.toMap(),
+      'iosRoboTest': pulumi.Input.mapInputValue<IosRoboTestResponse, Map<String, dynamic>>(iosRoboTest, (value) => value.toMap()),
+      'iosTestLoop': pulumi.Input.mapInputValue<IosTestLoopResponse, Map<String, dynamic>>(iosTestLoop, (value) => value.toMap()),
+      'iosTestSetup': pulumi.Input.mapInputValue<IosTestSetupResponse, Map<String, dynamic>>(iosTestSetup, (value) => value.toMap()),
+      'iosXcTest': pulumi.Input.mapInputValue<IosXcTestResponse, Map<String, dynamic>>(iosXcTest, (value) => value.toMap()),
+      'testSetup': pulumi.Input.mapInputValue<TestSetupResponse, Map<String, dynamic>>(testSetup, (value) => value.toMap()),
       'testTimeout': testTimeout,
     };
   }
 
   factory TestSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return TestSpecificationResponse(
-      androidInstrumentationTest: AndroidInstrumentationTestResponse.fromMap((map['androidInstrumentationTest'] as Map).cast<String, dynamic>()),
-      androidRoboTest: AndroidRoboTestResponse.fromMap((map['androidRoboTest'] as Map).cast<String, dynamic>()),
-      androidTestLoop: AndroidTestLoopResponse.fromMap((map['androidTestLoop'] as Map).cast<String, dynamic>()),
-      disablePerformanceMetrics: map['disablePerformanceMetrics'] as bool,
-      disableVideoRecording: map['disableVideoRecording'] as bool,
-      iosRoboTest: IosRoboTestResponse.fromMap((map['iosRoboTest'] as Map).cast<String, dynamic>()),
-      iosTestLoop: IosTestLoopResponse.fromMap((map['iosTestLoop'] as Map).cast<String, dynamic>()),
-      iosTestSetup: IosTestSetupResponse.fromMap((map['iosTestSetup'] as Map).cast<String, dynamic>()),
-      iosXcTest: IosXcTestResponse.fromMap((map['iosXcTest'] as Map).cast<String, dynamic>()),
-      testSetup: TestSetupResponse.fromMap((map['testSetup'] as Map).cast<String, dynamic>()),
-      testTimeout: map['testTimeout'] as String,
+      androidInstrumentationTest: (AndroidInstrumentationTestResponse.fromMap((map['androidInstrumentationTest'] as Map).cast<String, dynamic>())).input(),
+      androidRoboTest: (AndroidRoboTestResponse.fromMap((map['androidRoboTest'] as Map).cast<String, dynamic>())).input(),
+      androidTestLoop: (AndroidTestLoopResponse.fromMap((map['androidTestLoop'] as Map).cast<String, dynamic>())).input(),
+      disablePerformanceMetrics: (map['disablePerformanceMetrics'] as bool).input(),
+      disableVideoRecording: (map['disableVideoRecording'] as bool).input(),
+      iosRoboTest: (IosRoboTestResponse.fromMap((map['iosRoboTest'] as Map).cast<String, dynamic>())).input(),
+      iosTestLoop: (IosTestLoopResponse.fromMap((map['iosTestLoop'] as Map).cast<String, dynamic>())).input(),
+      iosTestSetup: (IosTestSetupResponse.fromMap((map['iosTestSetup'] as Map).cast<String, dynamic>())).input(),
+      iosXcTest: (IosXcTestResponse.fromMap((map['iosXcTest'] as Map).cast<String, dynamic>())).input(),
+      testSetup: (TestSetupResponse.fromMap((map['testSetup'] as Map).cast<String, dynamic>())).input(),
+      testTimeout: (map['testTimeout'] as String).input(),
     );
   }
 }

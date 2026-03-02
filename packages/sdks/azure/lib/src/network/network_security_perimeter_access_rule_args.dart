@@ -31,21 +31,14 @@ class NetworkSecurityPerimeterAccessRuleArgs {
   /// [serviceTags] Specifies a list of service tags. Can only be specified when direction is set to `Inbound`. Conflicts with `address_prefixes`, `fqdns`, and `subscription_ids`.
   /// [subscriptionIds] Specifies a list of subscription IDs this rule applies to. Can only be specified when direction is set to `Inbound`. Conflicts with `address_prefixes`, `fqdns`, and `service_tags`.
   NetworkSecurityPerimeterAccessRuleArgs({
-    pulumi.Output<List<String>>? addressPrefixes,
-    required pulumi.Output<String> direction,
-    pulumi.Output<List<String>>? fqdns,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkSecurityPerimeterProfileId,
-    pulumi.Output<List<String>>? serviceTags,
-    pulumi.Output<List<String>>? subscriptionIds,
-  }) :
-      addressPrefixes = pulumi.Input.asOptionalInput<List<String>>(addressPrefixes),
-      direction = pulumi.Input.asInput<String>(direction),
-      fqdns = pulumi.Input.asOptionalInput<List<String>>(fqdns),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkSecurityPerimeterProfileId = pulumi.Input.asInput<String>(networkSecurityPerimeterProfileId),
-      serviceTags = pulumi.Input.asOptionalInput<List<String>>(serviceTags),
-      subscriptionIds = pulumi.Input.asOptionalInput<List<String>>(subscriptionIds);
+    this.addressPrefixes,
+    required this.direction,
+    this.fqdns,
+    this.name,
+    required this.networkSecurityPerimeterProfileId,
+    this.serviceTags,
+    this.subscriptionIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class NetworkSecurityPerimeterAccessRuleArgs {
 
   factory NetworkSecurityPerimeterAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterAccessRuleArgs(
-      addressPrefixes: map['addressPrefixes'] == null ? null : pulumi.Output.create<List<String>>((map['addressPrefixes'] as List).cast<String>()),
-      direction: pulumi.Output.create<String>(map['direction'] as String),
-      fqdns: map['fqdns'] == null ? null : pulumi.Output.create<List<String>>((map['fqdns'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkSecurityPerimeterProfileId: pulumi.Output.create<String>(map['networkSecurityPerimeterProfileId'] as String),
-      serviceTags: map['serviceTags'] == null ? null : pulumi.Output.create<List<String>>((map['serviceTags'] as List).cast<String>()),
-      subscriptionIds: map['subscriptionIds'] == null ? null : pulumi.Output.create<List<String>>((map['subscriptionIds'] as List).cast<String>()),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
+      direction: (map['direction'] as String).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkSecurityPerimeterProfileId: (map['networkSecurityPerimeterProfileId'] as String).input(),
+      serviceTags: map['serviceTags'] == null ? null : ((map['serviceTags'] as List).cast<String>()).input(),
+      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds'] as List).cast<String>()).input(),
     );
   }
 }

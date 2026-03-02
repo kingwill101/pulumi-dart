@@ -54,33 +54,20 @@ class NetworkToNetworkInterconnectArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [useOptionB] Based on this option layer3 parameters are mandatory. Example: True/False
   NetworkToNetworkInterconnectArgs({
-    pulumi.Output<String>? egressAclId,
-    pulumi.Output<ExportRoutePolicyInformation>? exportRoutePolicy,
-    pulumi.Output<ImportRoutePolicyInformation>? importRoutePolicy,
-    pulumi.Output<String>? ingressAclId,
-    pulumi.Output<String>? isManagementType,
-    pulumi.Output<Layer2Configuration>? layer2Configuration,
-    required pulumi.Output<String> networkFabricName,
-    pulumi.Output<String>? networkToNetworkInterconnectName,
-    pulumi.Output<String>? nniType,
-    pulumi.Output<NpbStaticRouteConfiguration>? npbStaticRouteConfiguration,
-    pulumi.Output<NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration>? optionBLayer3Configuration,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> useOptionB,
-  }) :
-      egressAclId = pulumi.Input.asOptionalInput<String>(egressAclId),
-      exportRoutePolicy = pulumi.Input.asOptionalInput<ExportRoutePolicyInformation>(exportRoutePolicy),
-      importRoutePolicy = pulumi.Input.asOptionalInput<ImportRoutePolicyInformation>(importRoutePolicy),
-      ingressAclId = pulumi.Input.asOptionalInput<String>(ingressAclId),
-      isManagementType = pulumi.Input.asOptionalInput<String>(isManagementType),
-      layer2Configuration = pulumi.Input.asOptionalInput<Layer2Configuration>(layer2Configuration),
-      networkFabricName = pulumi.Input.asInput<String>(networkFabricName),
-      networkToNetworkInterconnectName = pulumi.Input.asOptionalInput<String>(networkToNetworkInterconnectName),
-      nniType = pulumi.Input.asOptionalInput<String>(nniType),
-      npbStaticRouteConfiguration = pulumi.Input.asOptionalInput<NpbStaticRouteConfiguration>(npbStaticRouteConfiguration),
-      optionBLayer3Configuration = pulumi.Input.asOptionalInput<NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration>(optionBLayer3Configuration),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      useOptionB = pulumi.Input.asInput<String>(useOptionB);
+    this.egressAclId,
+    this.exportRoutePolicy,
+    this.importRoutePolicy,
+    this.ingressAclId,
+    this.isManagementType,
+    this.layer2Configuration,
+    required this.networkFabricName,
+    this.networkToNetworkInterconnectName,
+    this.nniType,
+    this.npbStaticRouteConfiguration,
+    this.optionBLayer3Configuration,
+    required this.resourceGroupName,
+    required this.useOptionB,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class NetworkToNetworkInterconnectArgs {
 
   factory NetworkToNetworkInterconnectArgs.fromMap(Map<String, dynamic> map) {
     return NetworkToNetworkInterconnectArgs(
-      egressAclId: map['egressAclId'] == null ? null : pulumi.Output.create<String>(map['egressAclId'] as String),
-      exportRoutePolicy: map['exportRoutePolicy'] == null ? null : pulumi.Output.create<ExportRoutePolicyInformation>(ExportRoutePolicyInformation.fromMap((map['exportRoutePolicy'] as Map).cast<String, dynamic>())),
-      importRoutePolicy: map['importRoutePolicy'] == null ? null : pulumi.Output.create<ImportRoutePolicyInformation>(ImportRoutePolicyInformation.fromMap((map['importRoutePolicy'] as Map).cast<String, dynamic>())),
-      ingressAclId: map['ingressAclId'] == null ? null : pulumi.Output.create<String>(map['ingressAclId'] as String),
-      isManagementType: map['isManagementType'] == null ? null : pulumi.Output.create<String>(map['isManagementType'] as String),
-      layer2Configuration: map['layer2Configuration'] == null ? null : pulumi.Output.create<Layer2Configuration>(Layer2Configuration.fromMap((map['layer2Configuration'] as Map).cast<String, dynamic>())),
-      networkFabricName: pulumi.Output.create<String>(map['networkFabricName'] as String),
-      networkToNetworkInterconnectName: map['networkToNetworkInterconnectName'] == null ? null : pulumi.Output.create<String>(map['networkToNetworkInterconnectName'] as String),
-      nniType: map['nniType'] == null ? null : pulumi.Output.create<String>(map['nniType'] as String),
-      npbStaticRouteConfiguration: map['npbStaticRouteConfiguration'] == null ? null : pulumi.Output.create<NpbStaticRouteConfiguration>(NpbStaticRouteConfiguration.fromMap((map['npbStaticRouteConfiguration'] as Map).cast<String, dynamic>())),
-      optionBLayer3Configuration: map['optionBLayer3Configuration'] == null ? null : pulumi.Output.create<NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration>(NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration.fromMap((map['optionBLayer3Configuration'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      useOptionB: pulumi.Output.create<String>(map['useOptionB'] as String),
+      egressAclId: map['egressAclId'] == null ? null : (map['egressAclId'] as String).input(),
+      exportRoutePolicy: map['exportRoutePolicy'] == null ? null : (ExportRoutePolicyInformation.fromMap((map['exportRoutePolicy'] as Map).cast<String, dynamic>())).input(),
+      importRoutePolicy: map['importRoutePolicy'] == null ? null : (ImportRoutePolicyInformation.fromMap((map['importRoutePolicy'] as Map).cast<String, dynamic>())).input(),
+      ingressAclId: map['ingressAclId'] == null ? null : (map['ingressAclId'] as String).input(),
+      isManagementType: map['isManagementType'] == null ? null : (map['isManagementType'] as String).input(),
+      layer2Configuration: map['layer2Configuration'] == null ? null : (Layer2Configuration.fromMap((map['layer2Configuration'] as Map).cast<String, dynamic>())).input(),
+      networkFabricName: (map['networkFabricName'] as String).input(),
+      networkToNetworkInterconnectName: map['networkToNetworkInterconnectName'] == null ? null : (map['networkToNetworkInterconnectName'] as String).input(),
+      nniType: map['nniType'] == null ? null : (map['nniType'] as String).input(),
+      npbStaticRouteConfiguration: map['npbStaticRouteConfiguration'] == null ? null : (NpbStaticRouteConfiguration.fromMap((map['npbStaticRouteConfiguration'] as Map).cast<String, dynamic>())).input(),
+      optionBLayer3Configuration: map['optionBLayer3Configuration'] == null ? null : (NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration.fromMap((map['optionBLayer3Configuration'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      useOptionB: (map['useOptionB'] as String).input(),
     );
   }
 }

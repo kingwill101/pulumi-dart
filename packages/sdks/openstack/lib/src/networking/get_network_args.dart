@@ -47,29 +47,18 @@ class GetNetworkArgs {
   /// [tenantId] The owner of the network.
   /// [transparentVlan] The VLAN transparent attribute for the
   GetNetworkArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? external,
-    pulumi.Output<String>? matchingSubnetCidr,
-    pulumi.Output<int>? mtu,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<bool>? transparentVlan,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      external = pulumi.Input.asOptionalInput<bool>(external),
-      matchingSubnetCidr = pulumi.Input.asOptionalInput<String>(matchingSubnetCidr),
-      mtu = pulumi.Input.asOptionalInput<int>(mtu),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkId = pulumi.Input.asOptionalInput<String>(networkId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      transparentVlan = pulumi.Input.asOptionalInput<bool>(transparentVlan);
+    this.description,
+    this.external,
+    this.matchingSubnetCidr,
+    this.mtu,
+    this.name,
+    this.networkId,
+    this.region,
+    this.status,
+    this.tags,
+    this.tenantId,
+    this.transparentVlan,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class GetNetworkArgs {
 
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      external: map['external'] == null ? null : pulumi.Output.create<bool>(map['external'] as bool),
-      matchingSubnetCidr: map['matchingSubnetCidr'] == null ? null : pulumi.Output.create<String>(map['matchingSubnetCidr'] as String),
-      mtu: map['mtu'] == null ? null : pulumi.Output.create<int>(map['mtu'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkId: map['networkId'] == null ? null : pulumi.Output.create<String>(map['networkId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      transparentVlan: map['transparentVlan'] == null ? null : pulumi.Output.create<bool>(map['transparentVlan'] as bool),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      external: map['external'] == null ? null : (map['external'] as bool).input(),
+      matchingSubnetCidr: map['matchingSubnetCidr'] == null ? null : (map['matchingSubnetCidr'] as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      transparentVlan: map['transparentVlan'] == null ? null : (map['transparentVlan'] as bool).input(),
     );
   }
 }

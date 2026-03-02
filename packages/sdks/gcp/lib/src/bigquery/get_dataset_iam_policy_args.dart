@@ -17,11 +17,9 @@ class GetDatasetIamPolicyArgs {
   /// [datasetId] The dataset ID.
   /// [project] The ID of the project in which the resource belongs.
   GetDatasetIamPolicyArgs({
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<String>? project,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.datasetId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetDatasetIamPolicyArgs {
 
   factory GetDatasetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetIamPolicyArgs(
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      datasetId: (map['datasetId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

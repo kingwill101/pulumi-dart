@@ -40,29 +40,18 @@ class PolicyState {
   /// [tags] Map of resource tags for the IAM Policy. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   PolicyState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<int>? attachmentCount,
-    pulumi.Output<int>? delayAfterPolicyCreationInMs,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? policyId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      attachmentCount = pulumi.Input.asOptionalInput<int>(attachmentCount),
-      delayAfterPolicyCreationInMs = pulumi.Input.asOptionalInput<int>(delayAfterPolicyCreationInMs),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.attachmentCount,
+    this.delayAfterPolicyCreationInMs,
+    this.description,
+    this.name,
+    this.namePrefix,
+    this.path,
+    this.policy,
+    this.policyId,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      attachmentCount: map['attachmentCount'] == null ? null : pulumi.Output.create<int>(map['attachmentCount'] as int),
-      delayAfterPolicyCreationInMs: map['delayAfterPolicyCreationInMs'] == null ? null : pulumi.Output.create<int>(map['delayAfterPolicyCreationInMs'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      attachmentCount: map['attachmentCount'] == null ? null : (map['attachmentCount'] as int).input(),
+      delayAfterPolicyCreationInMs: map['delayAfterPolicyCreationInMs'] == null ? null : (map['delayAfterPolicyCreationInMs'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

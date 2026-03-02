@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_reference.dart';
 
 /// A test that explores an iOS application on an iOS device.
 class IosRoboTest {
   /// The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
-  final String? appBundleId;
+  final pulumi.Input<String>? appBundleId;
   /// The ipa stored at this file should be used to run the test.
-  final FileReference appIpa;
+  final pulumi.Input<FileReference> appIpa;
   /// An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
-  final FileReference? roboScript;
+  final pulumi.Input<FileReference>? roboScript;
 
   /// Creates a new [IosRoboTest].
   /// [appBundleId] The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
@@ -24,16 +25,16 @@ class IosRoboTest {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appBundleId': ?appBundleId,
-      'appIpa': appIpa.toMap(),
-      'roboScript': ?roboScript == null ? null : roboScript!.toMap(),
+      'appIpa': pulumi.Input.mapInputValue<FileReference, Map<String, dynamic>>(appIpa, (value) => value.toMap()),
+      'roboScript': ?pulumi.Input.mapOptionalInputValue<FileReference, Map<String, dynamic>>(roboScript, (value) => value.toMap()),
     };
   }
 
   factory IosRoboTest.fromMap(Map<String, dynamic> map) {
     return IosRoboTest(
-      appBundleId: map['appBundleId'] == null ? null : map['appBundleId'] as String,
-      appIpa: FileReference.fromMap((map['appIpa'] as Map).cast<String, dynamic>()),
-      roboScript: map['roboScript'] == null ? null : FileReference.fromMap((map['roboScript'] as Map).cast<String, dynamic>()),
+      appBundleId: map['appBundleId'] == null ? null : (map['appBundleId'] as String).input(),
+      appIpa: (FileReference.fromMap((map['appIpa'] as Map).cast<String, dynamic>())).input(),
+      roboScript: map['roboScript'] == null ? null : (FileReference.fromMap((map['roboScript'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

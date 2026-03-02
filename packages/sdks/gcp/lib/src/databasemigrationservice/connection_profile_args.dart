@@ -54,27 +54,17 @@ class ConnectionProfileArgs {
   /// [postgresql] Specifies connection parameters required specifically for PostgreSQL databases.
   /// [project] The ID of the project in which the resource belongs.
   ConnectionProfileArgs({
-    pulumi.Output<ConnectionProfileAlloydb>? alloydb,
-    pulumi.Output<ConnectionProfileCloudsql>? cloudsql,
-    required pulumi.Output<String> connectionProfileId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<ConnectionProfileMysql>? mysql,
-    pulumi.Output<ConnectionProfileOracle>? oracle,
-    pulumi.Output<ConnectionProfilePostgresql>? postgresql,
-    pulumi.Output<String>? project,
-  }) :
-      alloydb = pulumi.Input.asOptionalInput<ConnectionProfileAlloydb>(alloydb),
-      cloudsql = pulumi.Input.asOptionalInput<ConnectionProfileCloudsql>(cloudsql),
-      connectionProfileId = pulumi.Input.asInput<String>(connectionProfileId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mysql = pulumi.Input.asOptionalInput<ConnectionProfileMysql>(mysql),
-      oracle = pulumi.Input.asOptionalInput<ConnectionProfileOracle>(oracle),
-      postgresql = pulumi.Input.asOptionalInput<ConnectionProfilePostgresql>(postgresql),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.alloydb,
+    this.cloudsql,
+    required this.connectionProfileId,
+    this.displayName,
+    this.labels,
+    this.location,
+    this.mysql,
+    this.oracle,
+    this.postgresql,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,16 +83,16 @@ class ConnectionProfileArgs {
 
   factory ConnectionProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileArgs(
-      alloydb: map['alloydb'] == null ? null : pulumi.Output.create<ConnectionProfileAlloydb>(ConnectionProfileAlloydb.fromMap((map['alloydb'] as Map).cast<String, dynamic>())),
-      cloudsql: map['cloudsql'] == null ? null : pulumi.Output.create<ConnectionProfileCloudsql>(ConnectionProfileCloudsql.fromMap((map['cloudsql'] as Map).cast<String, dynamic>())),
-      connectionProfileId: pulumi.Output.create<String>(map['connectionProfileId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mysql: map['mysql'] == null ? null : pulumi.Output.create<ConnectionProfileMysql>(ConnectionProfileMysql.fromMap((map['mysql'] as Map).cast<String, dynamic>())),
-      oracle: map['oracle'] == null ? null : pulumi.Output.create<ConnectionProfileOracle>(ConnectionProfileOracle.fromMap((map['oracle'] as Map).cast<String, dynamic>())),
-      postgresql: map['postgresql'] == null ? null : pulumi.Output.create<ConnectionProfilePostgresql>(ConnectionProfilePostgresql.fromMap((map['postgresql'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      alloydb: map['alloydb'] == null ? null : (ConnectionProfileAlloydb.fromMap((map['alloydb'] as Map).cast<String, dynamic>())).input(),
+      cloudsql: map['cloudsql'] == null ? null : (ConnectionProfileCloudsql.fromMap((map['cloudsql'] as Map).cast<String, dynamic>())).input(),
+      connectionProfileId: (map['connectionProfileId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mysql: map['mysql'] == null ? null : (ConnectionProfileMysql.fromMap((map['mysql'] as Map).cast<String, dynamic>())).input(),
+      oracle: map['oracle'] == null ? null : (ConnectionProfileOracle.fromMap((map['oracle'] as Map).cast<String, dynamic>())).input(),
+      postgresql: map['postgresql'] == null ? null : (ConnectionProfilePostgresql.fromMap((map['postgresql'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

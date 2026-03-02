@@ -18,15 +18,11 @@ class GetShareArgs {
   /// [project] Optional.
   /// [shareId] Required.
   GetShareArgs({
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> shareId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      shareId = pulumi.Input.asInput<String>(shareId);
+    required this.instanceId,
+    required this.location,
+    this.project,
+    required this.shareId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetShareArgs {
 
   factory GetShareArgs.fromMap(Map<String, dynamic> map) {
     return GetShareArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      shareId: pulumi.Output.create<String>(map['shareId'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      shareId: (map['shareId'] as String).input(),
     );
   }
 }

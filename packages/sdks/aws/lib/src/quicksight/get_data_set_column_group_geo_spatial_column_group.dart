@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetColumnGroupGeoSpatialColumnGroup {
-  final List<String> columns;
-  final String countryCode;
-  final String name;
+  final pulumi.Input<List<String>> columns;
+  final pulumi.Input<String> countryCode;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetDataSetColumnGroupGeoSpatialColumnGroup].
   /// [columns] Required.
@@ -26,9 +27,9 @@ class GetDataSetColumnGroupGeoSpatialColumnGroup {
 
   factory GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap(Map<String, dynamic> map) {
     return GetDataSetColumnGroupGeoSpatialColumnGroup(
-      columns: (map['columns'] as List).cast<String>(),
-      countryCode: map['countryCode'] as String,
-      name: map['name'] as String,
+      columns: ((map['columns'] as List).cast<String>()).input(),
+      countryCode: (map['countryCode'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

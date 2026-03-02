@@ -43,27 +43,17 @@ class MetricRuleTemplateArgs {
   /// [silenceTime] The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
   /// [webhook] The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
   MetricRuleTemplateArgs({
-    pulumi.Output<List<MetricRuleTemplateAlertTemplate>>? alertTemplates,
-    pulumi.Output<String>? applyMode,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? enableEndTime,
-    pulumi.Output<String>? enableStartTime,
-    pulumi.Output<String>? groupId,
-    required pulumi.Output<String> metricRuleTemplateName,
-    pulumi.Output<String>? notifyLevel,
-    pulumi.Output<int>? silenceTime,
-    pulumi.Output<String>? webhook,
-  }) :
-      alertTemplates = pulumi.Input.asOptionalInput<List<MetricRuleTemplateAlertTemplate>>(alertTemplates),
-      applyMode = pulumi.Input.asOptionalInput<String>(applyMode),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enableEndTime = pulumi.Input.asOptionalInput<String>(enableEndTime),
-      enableStartTime = pulumi.Input.asOptionalInput<String>(enableStartTime),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      metricRuleTemplateName = pulumi.Input.asInput<String>(metricRuleTemplateName),
-      notifyLevel = pulumi.Input.asOptionalInput<String>(notifyLevel),
-      silenceTime = pulumi.Input.asOptionalInput<int>(silenceTime),
-      webhook = pulumi.Input.asOptionalInput<String>(webhook);
+    this.alertTemplates,
+    this.applyMode,
+    this.description,
+    this.enableEndTime,
+    this.enableStartTime,
+    this.groupId,
+    required this.metricRuleTemplateName,
+    this.notifyLevel,
+    this.silenceTime,
+    this.webhook,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class MetricRuleTemplateArgs {
 
   factory MetricRuleTemplateArgs.fromMap(Map<String, dynamic> map) {
     return MetricRuleTemplateArgs(
-      alertTemplates: map['alertTemplates'] == null ? null : pulumi.Output.create<List<MetricRuleTemplateAlertTemplate>>(pulumi.Input.decodeList<MetricRuleTemplateAlertTemplate>(map['alertTemplates'], (value) => MetricRuleTemplateAlertTemplate.fromMap((value as Map).cast<String, dynamic>()))),
-      applyMode: map['applyMode'] == null ? null : pulumi.Output.create<String>(map['applyMode'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enableEndTime: map['enableEndTime'] == null ? null : pulumi.Output.create<String>(map['enableEndTime'] as String),
-      enableStartTime: map['enableStartTime'] == null ? null : pulumi.Output.create<String>(map['enableStartTime'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      metricRuleTemplateName: pulumi.Output.create<String>(map['metricRuleTemplateName'] as String),
-      notifyLevel: map['notifyLevel'] == null ? null : pulumi.Output.create<String>(map['notifyLevel'] as String),
-      silenceTime: map['silenceTime'] == null ? null : pulumi.Output.create<int>(map['silenceTime'] as int),
-      webhook: map['webhook'] == null ? null : pulumi.Output.create<String>(map['webhook'] as String),
+      alertTemplates: map['alertTemplates'] == null ? null : (pulumi.Input.decodeList<MetricRuleTemplateAlertTemplate>(map['alertTemplates'], (value) => MetricRuleTemplateAlertTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applyMode: map['applyMode'] == null ? null : (map['applyMode'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableEndTime: map['enableEndTime'] == null ? null : (map['enableEndTime'] as String).input(),
+      enableStartTime: map['enableStartTime'] == null ? null : (map['enableStartTime'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      metricRuleTemplateName: (map['metricRuleTemplateName'] as String).input(),
+      notifyLevel: map['notifyLevel'] == null ? null : (map['notifyLevel'] as String).input(),
+      silenceTime: map['silenceTime'] == null ? null : (map['silenceTime'] as int).input(),
+      webhook: map['webhook'] == null ? null : (map['webhook'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ListNetworkManagerEffectiveConnectivityConfigurationsArgs {
   /// [top] An optional query parameter which specifies the maximum number of records to be returned by the server.
   /// [virtualNetworkName] The name of the virtual network.
   ListNetworkManagerEffectiveConnectivityConfigurationsArgs({
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skipToken,
-    pulumi.Output<int>? top,
-    required pulumi.Output<String> virtualNetworkName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken),
-      top = pulumi.Input.asOptionalInput<int>(top),
-      virtualNetworkName = pulumi.Input.asInput<String>(virtualNetworkName);
+    required this.resourceGroupName,
+    this.skipToken,
+    this.top,
+    required this.virtualNetworkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListNetworkManagerEffectiveConnectivityConfigurationsArgs {
 
   factory ListNetworkManagerEffectiveConnectivityConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return ListNetworkManagerEffectiveConnectivityConfigurationsArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
-      virtualNetworkName: pulumi.Output.create<String>(map['virtualNetworkName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
+      virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }
 }

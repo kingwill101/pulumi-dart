@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Service configuration details
 class ServiceConfigurationResponse {
   /// The port on which service is enabled.
-  final double port;
+  final pulumi.Input<double> port;
   /// Name of the service.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [ServiceConfigurationResponse].
   /// [port] The port on which service is enabled.
@@ -25,8 +26,8 @@ class ServiceConfigurationResponse {
 
   factory ServiceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ServiceConfigurationResponse(
-      port: map['port'] as double,
-      serviceName: map['serviceName'] as String,
+      port: (map['port'] as double).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

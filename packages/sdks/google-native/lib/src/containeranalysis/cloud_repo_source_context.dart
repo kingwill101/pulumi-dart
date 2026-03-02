@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alias_context.dart';
 import 'repo_id.dart';
 
 /// A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
 class CloudRepoSourceContext {
   /// An alias, which may be a branch or tag.
-  final AliasContext? aliasContext;
+  final pulumi.Input<AliasContext>? aliasContext;
   /// The ID of the repo.
-  final RepoId? repoId;
+  final pulumi.Input<RepoId>? repoId;
   /// A revision ID.
-  final String? revisionId;
+  final pulumi.Input<String>? revisionId;
 
   /// Creates a new [CloudRepoSourceContext].
   /// [aliasContext] An alias, which may be a branch or tag.
@@ -24,17 +25,17 @@ class CloudRepoSourceContext {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aliasContext': ?aliasContext == null ? null : aliasContext!.toMap(),
-      'repoId': ?repoId == null ? null : repoId!.toMap(),
+      'aliasContext': ?pulumi.Input.mapOptionalInputValue<AliasContext, Map<String, dynamic>>(aliasContext, (value) => value.toMap()),
+      'repoId': ?pulumi.Input.mapOptionalInputValue<RepoId, Map<String, dynamic>>(repoId, (value) => value.toMap()),
       'revisionId': ?revisionId,
     };
   }
 
   factory CloudRepoSourceContext.fromMap(Map<String, dynamic> map) {
     return CloudRepoSourceContext(
-      aliasContext: map['aliasContext'] == null ? null : AliasContext.fromMap((map['aliasContext'] as Map).cast<String, dynamic>()),
-      repoId: map['repoId'] == null ? null : RepoId.fromMap((map['repoId'] as Map).cast<String, dynamic>()),
-      revisionId: map['revisionId'] == null ? null : map['revisionId'] as String,
+      aliasContext: map['aliasContext'] == null ? null : (AliasContext.fromMap((map['aliasContext'] as Map).cast<String, dynamic>())).input(),
+      repoId: map['repoId'] == null ? null : (RepoId.fromMap((map['repoId'] as Map).cast<String, dynamic>())).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
     );
   }
 }

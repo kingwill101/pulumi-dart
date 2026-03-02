@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'all_nodes_response.dart';
 
 /// Job endpoint definition
 class JobServiceResponse {
   /// Url for endpoint.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// Any error in the service.
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// Endpoint type.
-  final String? jobServiceType;
+  final pulumi.Input<String>? jobServiceType;
   /// Nodes that user would like to start the service on.
   /// If Nodes is not set or set to null, the service will only be started on leader node.
-  final AllNodesResponse? nodes;
+  final pulumi.Input<AllNodesResponse>? nodes;
   /// Port for endpoint.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Additional properties to set on the endpoint.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Status of endpoint.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [JobServiceResponse].
   /// [endpoint] Url for endpoint.
@@ -43,7 +44,7 @@ class JobServiceResponse {
       'endpoint': ?endpoint,
       'errorMessage': errorMessage,
       'jobServiceType': ?jobServiceType,
-      'nodes': ?nodes == null ? null : nodes!.toMap(),
+      'nodes': ?pulumi.Input.mapOptionalInputValue<AllNodesResponse, Map<String, dynamic>>(nodes, (value) => value.toMap()),
       'port': ?port,
       'properties': ?properties,
       'status': status,
@@ -52,13 +53,13 @@ class JobServiceResponse {
 
   factory JobServiceResponse.fromMap(Map<String, dynamic> map) {
     return JobServiceResponse(
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      errorMessage: map['errorMessage'] as String,
-      jobServiceType: map['jobServiceType'] == null ? null : map['jobServiceType'] as String,
-      nodes: map['nodes'] == null ? null : AllNodesResponse.fromMap((map['nodes'] as Map).cast<String, dynamic>()),
-      port: map['port'] == null ? null : map['port'] as int,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      status: map['status'] as String,
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      jobServiceType: map['jobServiceType'] == null ? null : (map['jobServiceType'] as String).input(),
+      nodes: map['nodes'] == null ? null : (AllNodesResponse.fromMap((map['nodes'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

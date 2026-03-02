@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 class GatewayAPIConfigResponse {
   /// The Gateway API release channel to use for Gateway API.
-  final String channel;
+  final pulumi.Input<String> channel;
 
   /// Creates a new [GatewayAPIConfigResponse].
   /// [channel] The Gateway API release channel to use for Gateway API.
@@ -20,7 +21,7 @@ class GatewayAPIConfigResponse {
 
   factory GatewayAPIConfigResponse.fromMap(Map<String, dynamic> map) {
     return GatewayAPIConfigResponse(
-      channel: map['channel'] as String,
+      channel: (map['channel'] as String).input(),
     );
   }
 }

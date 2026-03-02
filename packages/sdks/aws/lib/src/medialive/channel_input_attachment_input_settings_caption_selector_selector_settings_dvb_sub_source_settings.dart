@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings {
   /// If you will configure a WebVTT caption description that references this caption selector, use this field to provide the language to consider when translating the image-based source to text.
-  final String? ocrLanguage;
+  final pulumi.Input<String>? ocrLanguage;
   /// When using DVB-Sub with Burn-In or SMPTE-TT, use this PID for the source content. Unused for DVB-Sub passthrough. All DVB-Sub content is passed through, regardless of selectors.
-  final int? pid;
+  final pulumi.Input<int>? pid;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings].
   /// [ocrLanguage] If you will configure a WebVTT caption description that references this caption selector, use this field to provide the language to consider when translating the image-based source to text.
@@ -24,8 +25,8 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSo
 
   factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings(
-      ocrLanguage: map['ocrLanguage'] == null ? null : map['ocrLanguage'] as String,
-      pid: map['pid'] == null ? null : map['pid'] as int,
+      ocrLanguage: map['ocrLanguage'] == null ? null : (map['ocrLanguage'] as String).input(),
+      pid: map['pid'] == null ? null : (map['pid'] as int).input(),
     );
   }
 }

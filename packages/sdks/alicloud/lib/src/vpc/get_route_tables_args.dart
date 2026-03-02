@@ -47,33 +47,20 @@ class GetRouteTablesArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpcId] Vpc id of the route table.
   GetRouteTablesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? routeTableName,
-    pulumi.Output<String>? routeTableType,
-    pulumi.Output<String>? routerId,
-    pulumi.Output<String>? routerType,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      routeTableName = pulumi.Input.asOptionalInput<String>(routeTableName),
-      routeTableType = pulumi.Input.asOptionalInput<String>(routeTableType),
-      routerId = pulumi.Input.asOptionalInput<String>(routerId),
-      routerType = pulumi.Input.asOptionalInput<String>(routerType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+    this.resourceGroupId,
+    this.routeTableName,
+    this.routeTableType,
+    this.routerId,
+    this.routerType,
+    this.status,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class GetRouteTablesArgs {
 
   factory GetRouteTablesArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteTablesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      routeTableName: map['routeTableName'] == null ? null : pulumi.Output.create<String>(map['routeTableName'] as String),
-      routeTableType: map['routeTableType'] == null ? null : pulumi.Output.create<String>(map['routeTableType'] as String),
-      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
-      routerType: map['routerType'] == null ? null : pulumi.Output.create<String>(map['routerType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName'] as String).input(),
+      routeTableType: map['routeTableType'] == null ? null : (map['routeTableType'] as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
+      routerType: map['routerType'] == null ? null : (map['routerType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolUsernameConfiguration {
   /// Whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
-  final bool? caseSensitive;
+  final pulumi.Input<bool>? caseSensitive;
 
   /// Creates a new [UserPoolUsernameConfiguration].
   /// [caseSensitive] Whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
@@ -19,7 +20,7 @@ class UserPoolUsernameConfiguration {
 
   factory UserPoolUsernameConfiguration.fromMap(Map<String, dynamic> map) {
     return UserPoolUsernameConfiguration(
-      caseSensitive: map['caseSensitive'] == null ? null : map['caseSensitive'] as bool,
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig {
   /// he maximum number of records that Amazon AppFlow receives in each page of the response from your SAP application.
-  final int maxPageSize;
+  final pulumi.Input<int> maxPageSize;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig].
   /// [maxPageSize] he maximum number of records that Amazon AppFlow receives in each page of the response from your SAP application.
@@ -19,7 +20,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig(
-      maxPageSize: map['maxPageSize'] as int,
+      maxPageSize: (map['maxPageSize'] as int).input(),
     );
   }
 }

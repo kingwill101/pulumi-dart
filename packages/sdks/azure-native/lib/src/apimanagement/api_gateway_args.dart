@@ -33,21 +33,14 @@ class ApiGatewayArgs {
   /// [tags] Resource tags.
   /// [virtualNetworkType] The type of VPN in which API Management gateway needs to be configured in.
   ApiGatewayArgs({
-    pulumi.Output<BackendConfiguration>? backend,
-    pulumi.Output<String>? gatewayName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<ApiManagementGatewaySkuProperties> sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? virtualNetworkType,
-  }) :
-      backend = pulumi.Input.asOptionalInput<BackendConfiguration>(backend),
-      gatewayName = pulumi.Input.asOptionalInput<String>(gatewayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<ApiManagementGatewaySkuProperties>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualNetworkType = pulumi.Input.asOptionalInput<String>(virtualNetworkType);
+    this.backend,
+    this.gatewayName,
+    this.location,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+    this.virtualNetworkType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ApiGatewayArgs {
 
   factory ApiGatewayArgs.fromMap(Map<String, dynamic> map) {
     return ApiGatewayArgs(
-      backend: map['backend'] == null ? null : pulumi.Output.create<BackendConfiguration>(BackendConfiguration.fromMap((map['backend'] as Map).cast<String, dynamic>())),
-      gatewayName: map['gatewayName'] == null ? null : pulumi.Output.create<String>(map['gatewayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<ApiManagementGatewaySkuProperties>(ApiManagementGatewaySkuProperties.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualNetworkType: map['virtualNetworkType'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkType'] as String),
+      backend: map['backend'] == null ? null : (BackendConfiguration.fromMap((map['backend'] as Map).cast<String, dynamic>())).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (ApiManagementGatewaySkuProperties.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualNetworkType: map['virtualNetworkType'] == null ? null : (map['virtualNetworkType'] as String).input(),
     );
   }
 }

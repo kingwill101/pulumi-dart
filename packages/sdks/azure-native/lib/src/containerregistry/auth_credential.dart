@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authentication credential stored for an upstream.
 class AuthCredential {
   /// The name of the credential.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// KeyVault Secret URI for accessing the password.
-  final String? passwordSecretIdentifier;
+  final pulumi.Input<String>? passwordSecretIdentifier;
   /// KeyVault Secret URI for accessing the username.
-  final String? usernameSecretIdentifier;
+  final pulumi.Input<String>? usernameSecretIdentifier;
 
   /// Creates a new [AuthCredential].
   /// [name] The name of the credential.
@@ -30,9 +31,9 @@ class AuthCredential {
 
   factory AuthCredential.fromMap(Map<String, dynamic> map) {
     return AuthCredential(
-      name: map['name'] == null ? null : map['name'] as String,
-      passwordSecretIdentifier: map['passwordSecretIdentifier'] == null ? null : map['passwordSecretIdentifier'] as String,
-      usernameSecretIdentifier: map['usernameSecretIdentifier'] == null ? null : map['usernameSecretIdentifier'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      passwordSecretIdentifier: map['passwordSecretIdentifier'] == null ? null : (map['passwordSecretIdentifier'] as String).input(),
+      usernameSecretIdentifier: map['usernameSecretIdentifier'] == null ? null : (map['usernameSecretIdentifier'] as String).input(),
     );
   }
 }

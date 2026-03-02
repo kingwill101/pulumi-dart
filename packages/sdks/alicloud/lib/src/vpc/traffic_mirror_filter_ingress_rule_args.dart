@@ -44,27 +44,17 @@ class TrafficMirrorFilterIngressRuleArgs {
   /// [sourcePortRange] The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
   /// [trafficMirrorFilterId] The ID of the filter.
   TrafficMirrorFilterIngressRuleArgs({
-    pulumi.Output<String>? action,
-    required pulumi.Output<String> destinationCidrBlock,
-    pulumi.Output<String>? destinationPortRange,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<int> priority,
-    required pulumi.Output<String> protocol,
-    pulumi.Output<String>? ruleAction,
-    required pulumi.Output<String> sourceCidrBlock,
-    pulumi.Output<String>? sourcePortRange,
-    required pulumi.Output<String> trafficMirrorFilterId,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      destinationCidrBlock = pulumi.Input.asInput<String>(destinationCidrBlock),
-      destinationPortRange = pulumi.Input.asOptionalInput<String>(destinationPortRange),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      priority = pulumi.Input.asInput<int>(priority),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      ruleAction = pulumi.Input.asOptionalInput<String>(ruleAction),
-      sourceCidrBlock = pulumi.Input.asInput<String>(sourceCidrBlock),
-      sourcePortRange = pulumi.Input.asOptionalInput<String>(sourcePortRange),
-      trafficMirrorFilterId = pulumi.Input.asInput<String>(trafficMirrorFilterId);
+    this.action,
+    required this.destinationCidrBlock,
+    this.destinationPortRange,
+    this.dryRun,
+    required this.priority,
+    required this.protocol,
+    this.ruleAction,
+    required this.sourceCidrBlock,
+    this.sourcePortRange,
+    required this.trafficMirrorFilterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class TrafficMirrorFilterIngressRuleArgs {
 
   factory TrafficMirrorFilterIngressRuleArgs.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorFilterIngressRuleArgs(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      destinationCidrBlock: pulumi.Output.create<String>(map['destinationCidrBlock'] as String),
-      destinationPortRange: map['destinationPortRange'] == null ? null : pulumi.Output.create<String>(map['destinationPortRange'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      ruleAction: map['ruleAction'] == null ? null : pulumi.Output.create<String>(map['ruleAction'] as String),
-      sourceCidrBlock: pulumi.Output.create<String>(map['sourceCidrBlock'] as String),
-      sourcePortRange: map['sourcePortRange'] == null ? null : pulumi.Output.create<String>(map['sourcePortRange'] as String),
-      trafficMirrorFilterId: pulumi.Output.create<String>(map['trafficMirrorFilterId'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
+      destinationPortRange: map['destinationPortRange'] == null ? null : (map['destinationPortRange'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      priority: (map['priority'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction'] as String).input(),
+      sourceCidrBlock: (map['sourceCidrBlock'] as String).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange'] as String).input(),
+      trafficMirrorFilterId: (map['trafficMirrorFilterId'] as String).input(),
     );
   }
 }

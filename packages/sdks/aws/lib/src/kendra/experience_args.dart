@@ -33,19 +33,13 @@ class ExperienceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] The Amazon Resource Name (ARN) of a role with permission to access `Query API`, `QuerySuggestions API`, `SubmitFeedback API`, and `AWS SSO` that stores your user and group information. For more information, see [IAM roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
   ExperienceArgs({
-    pulumi.Output<ExperienceConfiguration>? configuration,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> indexId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<ExperienceConfiguration>(configuration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      indexId = pulumi.Input.asInput<String>(indexId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn);
+    this.configuration,
+    this.description,
+    required this.indexId,
+    this.name,
+    this.region,
+    required this.roleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class ExperienceArgs {
 
   factory ExperienceArgs.fromMap(Map<String, dynamic> map) {
     return ExperienceArgs(
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<ExperienceConfiguration>(ExperienceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      indexId: pulumi.Output.create<String>(map['indexId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
+      configuration: map['configuration'] == null ? null : (ExperienceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      indexId: (map['indexId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

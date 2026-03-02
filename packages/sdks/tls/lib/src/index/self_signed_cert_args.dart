@@ -46,31 +46,19 @@ class SelfSignedCertArgs {
   /// [uris] List of URIs for which a certificate is being requested (i.e. certificate subjects).
   /// [validityPeriodHours] Number of hours, after initial issuing, that the certificate will remain valid for.
   SelfSignedCertArgs({
-    required pulumi.Output<List<String>> allowedUses,
-    pulumi.Output<List<String>>? dnsNames,
-    pulumi.Output<int>? earlyRenewalHours,
-    pulumi.Output<List<String>>? ipAddresses,
-    pulumi.Output<bool>? isCaCertificate,
-    pulumi.Output<int>? maxPathLength,
-    required pulumi.Output<String> privateKeyPem,
-    pulumi.Output<bool>? setAuthorityKeyId,
-    pulumi.Output<bool>? setSubjectKeyId,
-    pulumi.Output<SelfSignedCertSubject>? subject,
-    pulumi.Output<List<String>>? uris,
-    required pulumi.Output<int> validityPeriodHours,
-  }) :
-      allowedUses = pulumi.Input.asInput<List<String>>(allowedUses),
-      dnsNames = pulumi.Input.asOptionalInput<List<String>>(dnsNames),
-      earlyRenewalHours = pulumi.Input.asOptionalInput<int>(earlyRenewalHours),
-      ipAddresses = pulumi.Input.asOptionalInput<List<String>>(ipAddresses),
-      isCaCertificate = pulumi.Input.asOptionalInput<bool>(isCaCertificate),
-      maxPathLength = pulumi.Input.asOptionalInput<int>(maxPathLength),
-      privateKeyPem = pulumi.Input.asInput<String>(privateKeyPem),
-      setAuthorityKeyId = pulumi.Input.asOptionalInput<bool>(setAuthorityKeyId),
-      setSubjectKeyId = pulumi.Input.asOptionalInput<bool>(setSubjectKeyId),
-      subject = pulumi.Input.asOptionalInput<SelfSignedCertSubject>(subject),
-      uris = pulumi.Input.asOptionalInput<List<String>>(uris),
-      validityPeriodHours = pulumi.Input.asInput<int>(validityPeriodHours);
+    required this.allowedUses,
+    this.dnsNames,
+    this.earlyRenewalHours,
+    this.ipAddresses,
+    this.isCaCertificate,
+    this.maxPathLength,
+    required this.privateKeyPem,
+    this.setAuthorityKeyId,
+    this.setSubjectKeyId,
+    this.subject,
+    this.uris,
+    required this.validityPeriodHours,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class SelfSignedCertArgs {
 
   factory SelfSignedCertArgs.fromMap(Map<String, dynamic> map) {
     return SelfSignedCertArgs(
-      allowedUses: pulumi.Output.create<List<String>>((map['allowedUses'] as List).cast<String>()),
-      dnsNames: map['dnsNames'] == null ? null : pulumi.Output.create<List<String>>((map['dnsNames'] as List).cast<String>()),
-      earlyRenewalHours: map['earlyRenewalHours'] == null ? null : pulumi.Output.create<int>(map['earlyRenewalHours'] as int),
-      ipAddresses: map['ipAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['ipAddresses'] as List).cast<String>()),
-      isCaCertificate: map['isCaCertificate'] == null ? null : pulumi.Output.create<bool>(map['isCaCertificate'] as bool),
-      maxPathLength: map['maxPathLength'] == null ? null : pulumi.Output.create<int>(map['maxPathLength'] as int),
-      privateKeyPem: pulumi.Output.create<String>(map['privateKeyPem'] as String),
-      setAuthorityKeyId: map['setAuthorityKeyId'] == null ? null : pulumi.Output.create<bool>(map['setAuthorityKeyId'] as bool),
-      setSubjectKeyId: map['setSubjectKeyId'] == null ? null : pulumi.Output.create<bool>(map['setSubjectKeyId'] as bool),
-      subject: map['subject'] == null ? null : pulumi.Output.create<SelfSignedCertSubject>(SelfSignedCertSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())),
-      uris: map['uris'] == null ? null : pulumi.Output.create<List<String>>((map['uris'] as List).cast<String>()),
-      validityPeriodHours: pulumi.Output.create<int>(map['validityPeriodHours'] as int),
+      allowedUses: ((map['allowedUses'] as List).cast<String>()).input(),
+      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames'] as List).cast<String>()).input(),
+      earlyRenewalHours: map['earlyRenewalHours'] == null ? null : (map['earlyRenewalHours'] as int).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      isCaCertificate: map['isCaCertificate'] == null ? null : (map['isCaCertificate'] as bool).input(),
+      maxPathLength: map['maxPathLength'] == null ? null : (map['maxPathLength'] as int).input(),
+      privateKeyPem: (map['privateKeyPem'] as String).input(),
+      setAuthorityKeyId: map['setAuthorityKeyId'] == null ? null : (map['setAuthorityKeyId'] as bool).input(),
+      setSubjectKeyId: map['setSubjectKeyId'] == null ? null : (map['setSubjectKeyId'] as bool).input(),
+      subject: map['subject'] == null ? null : (SelfSignedCertSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
+      uris: map['uris'] == null ? null : ((map['uris'] as List).cast<String>()).input(),
+      validityPeriodHours: (map['validityPeriodHours'] as int).input(),
     );
   }
 }

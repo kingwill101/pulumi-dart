@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stateful_policy_preserved_state_compute_beta.dart';
 
 class StatefulPolicyComputeBeta {
-  final StatefulPolicyPreservedStateComputeBeta? preservedState;
+  final pulumi.Input<StatefulPolicyPreservedStateComputeBeta>? preservedState;
 
   /// Creates a new [StatefulPolicyComputeBeta].
   /// [preservedState] Optional.
@@ -13,13 +14,13 @@ class StatefulPolicyComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'preservedState': ?preservedState == null ? null : preservedState!.toMap(),
+      'preservedState': ?pulumi.Input.mapOptionalInputValue<StatefulPolicyPreservedStateComputeBeta, Map<String, dynamic>>(preservedState, (value) => value.toMap()),
     };
   }
 
   factory StatefulPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return StatefulPolicyComputeBeta(
-      preservedState: map['preservedState'] == null ? null : StatefulPolicyPreservedStateComputeBeta.fromMap((map['preservedState'] as Map).cast<String, dynamic>()),
+      preservedState: map['preservedState'] == null ? null : (StatefulPolicyPreservedStateComputeBeta.fromMap((map['preservedState'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

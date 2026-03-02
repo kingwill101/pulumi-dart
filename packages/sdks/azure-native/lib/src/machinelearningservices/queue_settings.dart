@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueueSettings {
   /// Controls the compute job tier
-  final String? jobTier;
+  final pulumi.Input<String>? jobTier;
 
   /// Creates a new [QueueSettings].
   /// [jobTier] Controls the compute job tier
@@ -19,7 +20,7 @@ class QueueSettings {
 
   factory QueueSettings.fromMap(Map<String, dynamic> map) {
     return QueueSettings(
-      jobTier: map['jobTier'] == null ? null : map['jobTier'] as String,
+      jobTier: map['jobTier'] == null ? null : (map['jobTier'] as String).input(),
     );
   }
 }

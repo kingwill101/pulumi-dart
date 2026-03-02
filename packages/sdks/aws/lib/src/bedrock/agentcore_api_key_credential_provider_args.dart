@@ -32,17 +32,12 @@ class AgentcoreApiKeyCredentialProviderArgs {
   /// [name] Name of the API Key credential provider. Forces replacement when changed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AgentcoreApiKeyCredentialProviderArgs({
-    pulumi.Output<String>? apiKey,
-    pulumi.Output<String>? apiKeyWo,
-    pulumi.Output<int>? apiKeyWoVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      apiKey = pulumi.Input.asOptionalInput<String>(apiKey),
-      apiKeyWo = pulumi.Input.asOptionalInput<String>(apiKeyWo),
-      apiKeyWoVersion = pulumi.Input.asOptionalInput<int>(apiKeyWoVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.apiKey,
+    this.apiKeyWo,
+    this.apiKeyWoVersion,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class AgentcoreApiKeyCredentialProviderArgs {
 
   factory AgentcoreApiKeyCredentialProviderArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreApiKeyCredentialProviderArgs(
-      apiKey: map['apiKey'] == null ? null : pulumi.Output.create<String>(map['apiKey'] as String),
-      apiKeyWo: map['apiKeyWo'] == null ? null : pulumi.Output.create<String>(map['apiKeyWo'] as String),
-      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : pulumi.Output.create<int>(map['apiKeyWoVersion'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiKeyWo: map['apiKeyWo'] == null ? null : (map['apiKeyWo'] as String).input(),
+      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : (map['apiKeyWoVersion'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

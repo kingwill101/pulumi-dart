@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_active_directory_login.dart';
 import 'azure_active_directory_registration.dart';
 import 'azure_active_directory_validation.dart';
@@ -7,17 +8,17 @@ import 'azure_active_directory_validation.dart';
 /// The configuration settings of the Azure Active directory provider.
 class AzureActiveDirectory {
   /// <code>false</code> if the Azure Active Directory provider should not be enabled despite the set registration; otherwise, <code>true</code>.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Gets a value indicating whether the Azure AD configuration was auto-provisioned using 1st party tooling.
   /// This is an internal flag primarily intended to support the Azure Management Portal. Users should not
   /// read or write to this property.
-  final bool? isAutoProvisioned;
+  final pulumi.Input<bool>? isAutoProvisioned;
   /// The configuration settings of the Azure Active Directory login flow.
-  final AzureActiveDirectoryLogin? login;
+  final pulumi.Input<AzureActiveDirectoryLogin>? login;
   /// The configuration settings of the Azure Active Directory app registration.
-  final AzureActiveDirectoryRegistration? registration;
+  final pulumi.Input<AzureActiveDirectoryRegistration>? registration;
   /// The configuration settings of the Azure Active Directory token validation flow.
-  final AzureActiveDirectoryValidation? validation;
+  final pulumi.Input<AzureActiveDirectoryValidation>? validation;
 
   /// Creates a new [AzureActiveDirectory].
   /// [enabled] <code>false</code> if the Azure Active Directory provider should not be enabled despite the set registration; otherwise, <code>true</code>.
@@ -37,19 +38,19 @@ class AzureActiveDirectory {
     return <String, dynamic>{
       'enabled': ?enabled,
       'isAutoProvisioned': ?isAutoProvisioned,
-      'login': ?login == null ? null : login!.toMap(),
-      'registration': ?registration == null ? null : registration!.toMap(),
-      'validation': ?validation == null ? null : validation!.toMap(),
+      'login': ?pulumi.Input.mapOptionalInputValue<AzureActiveDirectoryLogin, Map<String, dynamic>>(login, (value) => value.toMap()),
+      'registration': ?pulumi.Input.mapOptionalInputValue<AzureActiveDirectoryRegistration, Map<String, dynamic>>(registration, (value) => value.toMap()),
+      'validation': ?pulumi.Input.mapOptionalInputValue<AzureActiveDirectoryValidation, Map<String, dynamic>>(validation, (value) => value.toMap()),
     };
   }
 
   factory AzureActiveDirectory.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectory(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      isAutoProvisioned: map['isAutoProvisioned'] == null ? null : map['isAutoProvisioned'] as bool,
-      login: map['login'] == null ? null : AzureActiveDirectoryLogin.fromMap((map['login'] as Map).cast<String, dynamic>()),
-      registration: map['registration'] == null ? null : AzureActiveDirectoryRegistration.fromMap((map['registration'] as Map).cast<String, dynamic>()),
-      validation: map['validation'] == null ? null : AzureActiveDirectoryValidation.fromMap((map['validation'] as Map).cast<String, dynamic>()),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      isAutoProvisioned: map['isAutoProvisioned'] == null ? null : (map['isAutoProvisioned'] as bool).input(),
+      login: map['login'] == null ? null : (AzureActiveDirectoryLogin.fromMap((map['login'] as Map).cast<String, dynamic>())).input(),
+      registration: map['registration'] == null ? null : (AzureActiveDirectoryRegistration.fromMap((map['registration'] as Map).cast<String, dynamic>())).input(),
+      validation: map['validation'] == null ? null : (AzureActiveDirectoryValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

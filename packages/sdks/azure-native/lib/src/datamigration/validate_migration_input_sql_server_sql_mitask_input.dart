@@ -9,19 +9,19 @@ import 'sql_connection_info.dart';
 /// Input for task that validates migration input for SQL to Azure SQL Managed Instance
 class ValidateMigrationInputSqlServerSqlMITaskInput {
   /// SAS URI of Azure Storage Account Container to be used for storing backup files.
-  final BlobShare backupBlobShare;
+  final pulumi.Input<BlobShare> backupBlobShare;
   /// Backup file share information for all selected databases.
-  final FileShare? backupFileShare;
+  final pulumi.Input<FileShare>? backupFileShare;
   /// Backup Mode to specify whether to use existing backup or create new backup.
-  final String? backupMode;
+  final pulumi.Input<String>? backupMode;
   /// Databases to migrate
-  final List<MigrateSqlServerSqlMIDatabaseInput> selectedDatabases;
+  final pulumi.Input<List<MigrateSqlServerSqlMIDatabaseInput>> selectedDatabases;
   /// Logins to migrate
-  final List<String>? selectedLogins;
+  final pulumi.Input<List<String>>? selectedLogins;
   /// Information for connecting to source
-  final SqlConnectionInfo sourceConnectionInfo;
+  final pulumi.Input<SqlConnectionInfo> sourceConnectionInfo;
   /// Information for connecting to target
-  final SqlConnectionInfo targetConnectionInfo;
+  final pulumi.Input<SqlConnectionInfo> targetConnectionInfo;
 
   /// Creates a new [ValidateMigrationInputSqlServerSqlMITaskInput].
   /// [backupBlobShare] SAS URI of Azure Storage Account Container to be used for storing backup files.
@@ -43,25 +43,25 @@ class ValidateMigrationInputSqlServerSqlMITaskInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupBlobShare': backupBlobShare.toMap(),
-      'backupFileShare': ?backupFileShare == null ? null : backupFileShare!.toMap(),
+      'backupBlobShare': pulumi.Input.mapInputValue<BlobShare, Map<String, dynamic>>(backupBlobShare, (value) => value.toMap()),
+      'backupFileShare': ?pulumi.Input.mapOptionalInputValue<FileShare, Map<String, dynamic>>(backupFileShare, (value) => value.toMap()),
       'backupMode': ?backupMode,
-      'selectedDatabases': pulumi.Input.encodeList<MigrateSqlServerSqlMIDatabaseInput, Map<String, dynamic>>(selectedDatabases, (value) => value.toMap()),
+      'selectedDatabases': pulumi.Input.mapInputValue<List<MigrateSqlServerSqlMIDatabaseInput>, List<Map<String, dynamic>>>(selectedDatabases, (value) => pulumi.Input.encodeList<MigrateSqlServerSqlMIDatabaseInput, Map<String, dynamic>>(value, (value) => value.toMap())),
       'selectedLogins': ?selectedLogins,
-      'sourceConnectionInfo': sourceConnectionInfo.toMap(),
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfo, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfo, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory ValidateMigrationInputSqlServerSqlMITaskInput.fromMap(Map<String, dynamic> map) {
     return ValidateMigrationInputSqlServerSqlMITaskInput(
-      backupBlobShare: BlobShare.fromMap((map['backupBlobShare'] as Map).cast<String, dynamic>()),
-      backupFileShare: map['backupFileShare'] == null ? null : FileShare.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>()),
-      backupMode: map['backupMode'] == null ? null : map['backupMode'] as String,
-      selectedDatabases: pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInput>(map['selectedDatabases'], (value) => MigrateSqlServerSqlMIDatabaseInput.fromMap((value as Map).cast<String, dynamic>())),
-      selectedLogins: map['selectedLogins'] == null ? null : (map['selectedLogins'] as List).cast<String>(),
-      sourceConnectionInfo: SqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>()),
-      targetConnectionInfo: SqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
+      backupBlobShare: (BlobShare.fromMap((map['backupBlobShare'] as Map).cast<String, dynamic>())).input(),
+      backupFileShare: map['backupFileShare'] == null ? null : (FileShare.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>())).input(),
+      backupMode: map['backupMode'] == null ? null : (map['backupMode'] as String).input(),
+      selectedDatabases: (pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInput>(map['selectedDatabases'], (value) => MigrateSqlServerSqlMIDatabaseInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectedLogins: map['selectedLogins'] == null ? null : ((map['selectedLogins'] as List).cast<String>()).input(),
+      sourceConnectionInfo: (SqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      targetConnectionInfo: (SqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

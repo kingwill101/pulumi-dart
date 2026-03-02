@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Volumes mounted within the app container. Only applicable in the App Engine flexible environment.
 class VolumeResponse {
   /// Unique name for the volume.
-  final String name;
+  final pulumi.Input<String> name;
   /// Volume size in gigabytes.
-  final double sizeGb;
+  final pulumi.Input<double> sizeGb;
   /// Underlying volume type, e.g. 'tmpfs'.
-  final String volumeType;
+  final pulumi.Input<String> volumeType;
 
   /// Creates a new [VolumeResponse].
   /// [name] Unique name for the volume.
@@ -30,9 +31,9 @@ class VolumeResponse {
 
   factory VolumeResponse.fromMap(Map<String, dynamic> map) {
     return VolumeResponse(
-      name: map['name'] as String,
-      sizeGb: map['sizeGb'] as double,
-      volumeType: map['volumeType'] as String,
+      name: (map['name'] as String).input(),
+      sizeGb: (map['sizeGb'] as double).input(),
+      volumeType: (map['volumeType'] as String).input(),
     );
   }
 }

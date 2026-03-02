@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information regarding how the subnet to which the gateway should be injected.
 class BackendSubnetConfigurationResponse {
   /// The ARM ID of the subnet in which the backend systems are hosted.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [BackendSubnetConfigurationResponse].
   /// [id] The ARM ID of the subnet in which the backend systems are hosted.
@@ -20,7 +21,7 @@ class BackendSubnetConfigurationResponse {
 
   factory BackendSubnetConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BackendSubnetConfigurationResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

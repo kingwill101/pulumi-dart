@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'acrproperties.dart';
 
 /// Class for container image properties.
 class ContainerImageProperties {
   /// Gets or sets the dockerfile for the container image.
-  final String? dockerfile;
+  final pulumi.Input<String>? dockerfile;
   /// Gets or sets the container image name.
-  final String? imageName;
+  final pulumi.Input<String>? imageName;
   /// Gets or sets the container image tag.
-  final String? imageTag;
+  final pulumi.Input<String>? imageTag;
   /// Class for ACR Properties.
-  final ACRProperties? registryProperties;
+  final pulumi.Input<ACRProperties>? registryProperties;
   /// Gets or sets the RunId.
-  final String? runId;
+  final pulumi.Input<String>? runId;
   /// Gets or sets the RunStatus.
-  final String? runStatus;
+  final pulumi.Input<String>? runStatus;
 
   /// Creates a new [ContainerImageProperties].
   /// [dockerfile] Gets or sets the dockerfile for the container image.
@@ -38,7 +39,7 @@ class ContainerImageProperties {
       'dockerfile': ?dockerfile,
       'imageName': ?imageName,
       'imageTag': ?imageTag,
-      'registryProperties': ?registryProperties == null ? null : registryProperties!.toMap(),
+      'registryProperties': ?pulumi.Input.mapOptionalInputValue<ACRProperties, Map<String, dynamic>>(registryProperties, (value) => value.toMap()),
       'runId': ?runId,
       'runStatus': ?runStatus,
     };
@@ -46,12 +47,12 @@ class ContainerImageProperties {
 
   factory ContainerImageProperties.fromMap(Map<String, dynamic> map) {
     return ContainerImageProperties(
-      dockerfile: map['dockerfile'] == null ? null : map['dockerfile'] as String,
-      imageName: map['imageName'] == null ? null : map['imageName'] as String,
-      imageTag: map['imageTag'] == null ? null : map['imageTag'] as String,
-      registryProperties: map['registryProperties'] == null ? null : ACRProperties.fromMap((map['registryProperties'] as Map).cast<String, dynamic>()),
-      runId: map['runId'] == null ? null : map['runId'] as String,
-      runStatus: map['runStatus'] == null ? null : map['runStatus'] as String,
+      dockerfile: map['dockerfile'] == null ? null : (map['dockerfile'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      imageTag: map['imageTag'] == null ? null : (map['imageTag'] as String).input(),
+      registryProperties: map['registryProperties'] == null ? null : (ACRProperties.fromMap((map['registryProperties'] as Map).cast<String, dynamic>())).input(),
+      runId: map['runId'] == null ? null : (map['runId'] as String).input(),
+      runStatus: map['runStatus'] == null ? null : (map['runStatus'] as String).input(),
     );
   }
 }

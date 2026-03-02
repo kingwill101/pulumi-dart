@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_gateway_vpn_attachments_attachment_tunnel_options_specification_tunnel_bgp_config.dart';
 import 'get_gateway_vpn_attachments_attachment_tunnel_options_specification_tunnel_ike_config.dart';
 import 'get_gateway_vpn_attachments_attachment_tunnel_options_specification_tunnel_ipsec_config.dart';
 
 class GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification {
   /// The ID of the user gateway associated with the tunnel.> This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
-  final String customerGatewayId;
+  final pulumi.Input<String> customerGatewayId;
   /// Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:-**true** (default): enable the DPD function. IPsec initiator will send DPD message to check whether the peer device is alive. If the peer device does not receive a correct response within the set time, it is considered that the peer has been disconnected. IPsec will delete ISAKMP SA and the corresponding IPsec SA, and the security tunnel will also be deleted.-**false**: If the DPD function is disabled, the IPsec initiator does not send DPD detection packets.
-  final bool enableDpd;
+  final pulumi.Input<bool> enableDpd;
   /// Whether the NAT crossing function is enabled for the tunnel. Value:-**true** (default): Enables the NAT Traversal function. When enabled, the IKE negotiation process deletes the verification process of the UDP port number and realizes the discovery function of the NAT gateway device in the tunnel.-**false**: does not enable the NAT Traversal function.
-  final bool enableNatTraversal;
+  final pulumi.Input<bool> enableNatTraversal;
   /// The local internet IP in Tunnel.
-  final String internetIp;
+  final pulumi.Input<String> internetIp;
   /// The role of Tunnel.
-  final String role;
+  final pulumi.Input<String> role;
   /// The state of Tunnel.
-  final String state;
+  final pulumi.Input<String> state;
   /// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
-  final String status;
+  final pulumi.Input<String> status;
   /// Add the BGP configuration for the tunnel.> After you enable the BGP function for IPsec connections (that is, specify **EnableTunnelsBgp** as **true**), you must configure this parameter.
-  final GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig tunnelBgpConfig;
+  final pulumi.Input<GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig> tunnelBgpConfig;
   /// The tunnel ID of IPsec-VPN connection.
-  final String tunnelId;
+  final pulumi.Input<String> tunnelId;
   /// Configuration information for the first phase negotiation.
-  final GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig tunnelIkeConfig;
+  final pulumi.Input<GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig> tunnelIkeConfig;
   /// The order in which the tunnel was created.-**1**: First tunnel.-**2**: The second tunnel.
-  final int tunnelIndex;
+  final pulumi.Input<int> tunnelIndex;
   /// Configuration information for the second-stage negotiation.
-  final GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig tunnelIpsecConfig;
+  final pulumi.Input<GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig> tunnelIpsecConfig;
   /// The zoneNo of tunnel.
-  final String zoneNo;
+  final pulumi.Input<String> zoneNo;
 
   /// Creates a new [GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification].
   /// [customerGatewayId] The ID of the user gateway associated with the tunnel.> This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
@@ -71,30 +72,30 @@ class GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification {
       'role': role,
       'state': state,
       'status': status,
-      'tunnelBgpConfig': tunnelBgpConfig.toMap(),
+      'tunnelBgpConfig': pulumi.Input.mapInputValue<GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig, Map<String, dynamic>>(tunnelBgpConfig, (value) => value.toMap()),
       'tunnelId': tunnelId,
-      'tunnelIkeConfig': tunnelIkeConfig.toMap(),
+      'tunnelIkeConfig': pulumi.Input.mapInputValue<GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig, Map<String, dynamic>>(tunnelIkeConfig, (value) => value.toMap()),
       'tunnelIndex': tunnelIndex,
-      'tunnelIpsecConfig': tunnelIpsecConfig.toMap(),
+      'tunnelIpsecConfig': pulumi.Input.mapInputValue<GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig, Map<String, dynamic>>(tunnelIpsecConfig, (value) => value.toMap()),
       'zoneNo': zoneNo,
     };
   }
 
   factory GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification.fromMap(Map<String, dynamic> map) {
     return GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification(
-      customerGatewayId: map['customerGatewayId'] as String,
-      enableDpd: map['enableDpd'] as bool,
-      enableNatTraversal: map['enableNatTraversal'] as bool,
-      internetIp: map['internetIp'] as String,
-      role: map['role'] as String,
-      state: map['state'] as String,
-      status: map['status'] as String,
-      tunnelBgpConfig: GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig.fromMap((map['tunnelBgpConfig'] as Map).cast<String, dynamic>()),
-      tunnelId: map['tunnelId'] as String,
-      tunnelIkeConfig: GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig.fromMap((map['tunnelIkeConfig'] as Map).cast<String, dynamic>()),
-      tunnelIndex: map['tunnelIndex'] as int,
-      tunnelIpsecConfig: GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig.fromMap((map['tunnelIpsecConfig'] as Map).cast<String, dynamic>()),
-      zoneNo: map['zoneNo'] as String,
+      customerGatewayId: (map['customerGatewayId'] as String).input(),
+      enableDpd: (map['enableDpd'] as bool).input(),
+      enableNatTraversal: (map['enableNatTraversal'] as bool).input(),
+      internetIp: (map['internetIp'] as String).input(),
+      role: (map['role'] as String).input(),
+      state: (map['state'] as String).input(),
+      status: (map['status'] as String).input(),
+      tunnelBgpConfig: (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig.fromMap((map['tunnelBgpConfig'] as Map).cast<String, dynamic>())).input(),
+      tunnelId: (map['tunnelId'] as String).input(),
+      tunnelIkeConfig: (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig.fromMap((map['tunnelIkeConfig'] as Map).cast<String, dynamic>())).input(),
+      tunnelIndex: (map['tunnelIndex'] as int).input(),
+      tunnelIpsecConfig: (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig.fromMap((map['tunnelIpsecConfig'] as Map).cast<String, dynamic>())).input(),
+      zoneNo: (map['zoneNo'] as String).input(),
     );
   }
 }

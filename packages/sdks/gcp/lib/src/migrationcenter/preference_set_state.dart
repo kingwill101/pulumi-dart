@@ -37,25 +37,16 @@ class PreferenceSetState {
   /// [updateTime] Output only. The timestamp when the preference set was last updated.
   /// [virtualMachinePreferences] VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
   PreferenceSetState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? preferenceSetId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<PreferenceSetVirtualMachinePreferences>? virtualMachinePreferences,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      preferenceSetId = pulumi.Input.asOptionalInput<String>(preferenceSetId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      virtualMachinePreferences = pulumi.Input.asOptionalInput<PreferenceSetVirtualMachinePreferences>(virtualMachinePreferences);
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.location,
+    this.name,
+    this.preferenceSetId,
+    this.project,
+    this.updateTime,
+    this.virtualMachinePreferences,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class PreferenceSetState {
 
   factory PreferenceSetState.fromMap(Map<String, dynamic> map) {
     return PreferenceSetState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      preferenceSetId: map['preferenceSetId'] == null ? null : pulumi.Output.create<String>(map['preferenceSetId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : pulumi.Output.create<PreferenceSetVirtualMachinePreferences>(PreferenceSetVirtualMachinePreferences.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>())),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      preferenceSetId: map['preferenceSetId'] == null ? null : (map['preferenceSetId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : (PreferenceSetVirtualMachinePreferences.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

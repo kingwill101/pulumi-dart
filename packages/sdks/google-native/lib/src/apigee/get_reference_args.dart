@@ -16,13 +16,10 @@ class GetReferenceArgs {
   /// [organizationId] Required.
   /// [referenceId] Required.
   GetReferenceArgs({
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> referenceId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      referenceId = pulumi.Input.asInput<String>(referenceId);
+    required this.environmentId,
+    required this.organizationId,
+    required this.referenceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetReferenceArgs {
 
   factory GetReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetReferenceArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      referenceId: pulumi.Output.create<String>(map['referenceId'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      referenceId: (map['referenceId'] as String).input(),
     );
   }
 }

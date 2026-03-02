@@ -19,13 +19,10 @@ class SpacesBucketPolicyArgs {
   /// [policy] The text of the policy.
   /// [region] The region where the bucket resides.
   SpacesBucketPolicyArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<String> policy,
-    required pulumi.Output<String> region,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asInput<String>(region);
+    required this.bucket,
+    required this.policy,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SpacesBucketPolicyArgs {
 
   factory SpacesBucketPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SpacesBucketPolicyArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      bucket: (map['bucket'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

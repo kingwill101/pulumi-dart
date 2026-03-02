@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleHourlyRecurrence {
   /// Minutes of the hour the schedule will run.
-  final int minute;
+  final pulumi.Input<int> minute;
 
   /// Creates a new [ScheduleHourlyRecurrence].
   /// [minute] Minutes of the hour the schedule will run.
@@ -19,7 +20,7 @@ class ScheduleHourlyRecurrence {
 
   factory ScheduleHourlyRecurrence.fromMap(Map<String, dynamic> map) {
     return ScheduleHourlyRecurrence(
-      minute: map['minute'] as int,
+      minute: (map['minute'] as int).input(),
     );
   }
 }

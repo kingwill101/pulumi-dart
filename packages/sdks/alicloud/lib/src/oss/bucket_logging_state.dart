@@ -19,15 +19,11 @@ class BucketLoggingState {
   /// [targetBucket] The bucket that stores access logs.
   /// [targetPrefix] The prefix of the saved log objects. This element can be left empty.
   BucketLoggingState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? loggingRole,
-    pulumi.Output<String>? targetBucket,
-    pulumi.Output<String>? targetPrefix,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      loggingRole = pulumi.Input.asOptionalInput<String>(loggingRole),
-      targetBucket = pulumi.Input.asOptionalInput<String>(targetBucket),
-      targetPrefix = pulumi.Input.asOptionalInput<String>(targetPrefix);
+    this.bucket,
+    this.loggingRole,
+    this.targetBucket,
+    this.targetPrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class BucketLoggingState {
 
   factory BucketLoggingState.fromMap(Map<String, dynamic> map) {
     return BucketLoggingState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      loggingRole: map['loggingRole'] == null ? null : pulumi.Output.create<String>(map['loggingRole'] as String),
-      targetBucket: map['targetBucket'] == null ? null : pulumi.Output.create<String>(map['targetBucket'] as String),
-      targetPrefix: map['targetPrefix'] == null ? null : pulumi.Output.create<String>(map['targetPrefix'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      loggingRole: map['loggingRole'] == null ? null : (map['loggingRole'] as String).input(),
+      targetBucket: map['targetBucket'] == null ? null : (map['targetBucket'] as String).input(),
+      targetPrefix: map['targetPrefix'] == null ? null : (map['targetPrefix'] as String).input(),
     );
   }
 }

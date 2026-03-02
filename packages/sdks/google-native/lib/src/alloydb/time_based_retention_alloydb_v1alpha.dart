@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A time based retention policy specifies that all backups within a certain time period should be retained.
 class TimeBasedRetentionAlloydbV1alpha {
   /// The retention period.
-  final String? retentionPeriod;
+  final pulumi.Input<String>? retentionPeriod;
 
   /// Creates a new [TimeBasedRetentionAlloydbV1alpha].
   /// [retentionPeriod] The retention period.
@@ -20,7 +21,7 @@ class TimeBasedRetentionAlloydbV1alpha {
 
   factory TimeBasedRetentionAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return TimeBasedRetentionAlloydbV1alpha(
-      retentionPeriod: map['retentionPeriod'] == null ? null : map['retentionPeriod'] as String,
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as String).input(),
     );
   }
 }

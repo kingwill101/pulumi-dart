@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An object that represents the status of warm storage on an environment.
 class WarmStorageEnvironmentStatusResponse {
   /// A value that represents the number of properties used by the environment for S1/S2 SKU and number of properties used by Warm Store for PAYG SKU
-  final int? currentCount;
+  final pulumi.Input<int>? currentCount;
   /// A value that represents the maximum number of properties used allowed by the environment for S1/S2 SKU and maximum number of properties allowed by Warm Store for PAYG SKU.
-  final int? maxCount;
+  final pulumi.Input<int>? maxCount;
   /// This string represents the state of warm storage properties usage. It can be "Ok", "Error", "Unknown".
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [WarmStorageEnvironmentStatusResponse].
   /// [currentCount] A value that represents the number of properties used by the environment for S1/S2 SKU and number of properties used by Warm Store for PAYG SKU
@@ -30,9 +31,9 @@ class WarmStorageEnvironmentStatusResponse {
 
   factory WarmStorageEnvironmentStatusResponse.fromMap(Map<String, dynamic> map) {
     return WarmStorageEnvironmentStatusResponse(
-      currentCount: map['currentCount'] == null ? null : map['currentCount'] as int,
-      maxCount: map['maxCount'] == null ? null : map['maxCount'] as int,
-      state: map['state'] == null ? null : map['state'] as String,
+      currentCount: map['currentCount'] == null ? null : (map['currentCount'] as int).input(),
+      maxCount: map['maxCount'] == null ? null : (map['maxCount'] as int).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

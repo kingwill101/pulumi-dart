@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionsRegion {
   /// A boolean value that represents whether new Droplets can be created in this region.
-  final bool available;
+  final pulumi.Input<bool> available;
   /// A set of features available in this region.
-  final List<String> features;
+  final pulumi.Input<List<String>> features;
   /// The display name of the region.
-  final String name;
+  final pulumi.Input<String> name;
   /// A set of identifying slugs for the Droplet sizes available in this region.
-  final List<String> sizes;
+  final pulumi.Input<List<String>> sizes;
   /// A human-readable string that is used as a unique identifier for each region.
-  final String slug;
+  final pulumi.Input<String> slug;
 
   /// Creates a new [GetRegionsRegion].
   /// [available] A boolean value that represents whether new Droplets can be created in this region.
@@ -39,11 +40,11 @@ class GetRegionsRegion {
 
   factory GetRegionsRegion.fromMap(Map<String, dynamic> map) {
     return GetRegionsRegion(
-      available: map['available'] as bool,
-      features: (map['features'] as List).cast<String>(),
-      name: map['name'] as String,
-      sizes: (map['sizes'] as List).cast<String>(),
-      slug: map['slug'] as String,
+      available: (map['available'] as bool).input(),
+      features: ((map['features'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      sizes: ((map['sizes'] as List).cast<String>()).input(),
+      slug: (map['slug'] as String).input(),
     );
   }
 }

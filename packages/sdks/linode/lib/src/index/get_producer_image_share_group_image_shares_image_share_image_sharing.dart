@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_producer_image_share_group_image_shares_image_share_image_sharing_shared_by.dart';
 import 'get_producer_image_share_group_image_shares_image_share_image_sharing_shared_with.dart';
 
 class GetProducerImageShareGroupImageSharesImageShareImageSharing {
   /// Details about who the image is shared by.
-  final GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy sharedBy;
+  final pulumi.Input<GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy> sharedBy;
   /// Details about who the image is shared with.
-  final GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith sharedWith;
+  final pulumi.Input<GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith> sharedWith;
 
   /// Creates a new [GetProducerImageShareGroupImageSharesImageShareImageSharing].
   /// [sharedBy] Details about who the image is shared by.
@@ -19,15 +20,15 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharing {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sharedBy': sharedBy.toMap(),
-      'sharedWith': sharedWith.toMap(),
+      'sharedBy': pulumi.Input.mapInputValue<GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy, Map<String, dynamic>>(sharedBy, (value) => value.toMap()),
+      'sharedWith': pulumi.Input.mapInputValue<GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith, Map<String, dynamic>>(sharedWith, (value) => value.toMap()),
     };
   }
 
   factory GetProducerImageShareGroupImageSharesImageShareImageSharing.fromMap(Map<String, dynamic> map) {
     return GetProducerImageShareGroupImageSharesImageShareImageSharing(
-      sharedBy: GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy.fromMap((map['sharedBy'] as Map).cast<String, dynamic>()),
-      sharedWith: GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith.fromMap((map['sharedWith'] as Map).cast<String, dynamic>()),
+      sharedBy: (GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy.fromMap((map['sharedBy'] as Map).cast<String, dynamic>())).input(),
+      sharedWith: (GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith.fromMap((map['sharedWith'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

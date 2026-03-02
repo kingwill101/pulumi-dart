@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo {
   /// The output type of the delegated device info. Possible values: ["PROTOBUF", "JSON", "NONE"]
-  final String outputType;
+  final pulumi.Input<String> outputType;
 
   /// Creates a new [GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo].
   /// [outputType] The output type of the delegated device info. Possible values: ["PROTOBUF", "JSON", "NONE"]
@@ -19,7 +20,7 @@ class GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo {
 
   factory GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo.fromMap(Map<String, dynamic> map) {
     return GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo(
-      outputType: map['outputType'] as String,
+      outputType: (map['outputType'] as String).input(),
     );
   }
 }

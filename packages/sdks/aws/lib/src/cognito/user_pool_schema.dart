@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_pool_schema_number_attribute_constraints.dart';
 import 'user_pool_schema_string_attribute_constraints.dart';
 
 class UserPoolSchema {
   /// Attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
-  final String attributeDataType;
+  final pulumi.Input<String> attributeDataType;
   /// Whether the attribute type is developer only.
-  final bool? developerOnlyAttribute;
+  final pulumi.Input<bool>? developerOnlyAttribute;
   /// Whether the attribute can be changed once it has been created.
-  final bool? mutable;
+  final pulumi.Input<bool>? mutable;
   /// Name of the attribute.
-  final String name;
+  final pulumi.Input<String> name;
   /// Configuration block for the constraints for an attribute of the number type. Detailed below.
-  final UserPoolSchemaNumberAttributeConstraints? numberAttributeConstraints;
+  final pulumi.Input<UserPoolSchemaNumberAttributeConstraints>? numberAttributeConstraints;
   /// Whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
-  final bool? required;
+  final pulumi.Input<bool>? required;
   /// Constraints for an attribute of the string type. Detailed below.
-  final UserPoolSchemaStringAttributeConstraints? stringAttributeConstraints;
+  final pulumi.Input<UserPoolSchemaStringAttributeConstraints>? stringAttributeConstraints;
 
   /// Creates a new [UserPoolSchema].
   /// [attributeDataType] Attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
@@ -43,21 +44,21 @@ class UserPoolSchema {
       'developerOnlyAttribute': ?developerOnlyAttribute,
       'mutable': ?mutable,
       'name': name,
-      'numberAttributeConstraints': ?numberAttributeConstraints == null ? null : numberAttributeConstraints!.toMap(),
+      'numberAttributeConstraints': ?pulumi.Input.mapOptionalInputValue<UserPoolSchemaNumberAttributeConstraints, Map<String, dynamic>>(numberAttributeConstraints, (value) => value.toMap()),
       'required': ?required,
-      'stringAttributeConstraints': ?stringAttributeConstraints == null ? null : stringAttributeConstraints!.toMap(),
+      'stringAttributeConstraints': ?pulumi.Input.mapOptionalInputValue<UserPoolSchemaStringAttributeConstraints, Map<String, dynamic>>(stringAttributeConstraints, (value) => value.toMap()),
     };
   }
 
   factory UserPoolSchema.fromMap(Map<String, dynamic> map) {
     return UserPoolSchema(
-      attributeDataType: map['attributeDataType'] as String,
-      developerOnlyAttribute: map['developerOnlyAttribute'] == null ? null : map['developerOnlyAttribute'] as bool,
-      mutable: map['mutable'] == null ? null : map['mutable'] as bool,
-      name: map['name'] as String,
-      numberAttributeConstraints: map['numberAttributeConstraints'] == null ? null : UserPoolSchemaNumberAttributeConstraints.fromMap((map['numberAttributeConstraints'] as Map).cast<String, dynamic>()),
-      required: map['required'] == null ? null : map['required'] as bool,
-      stringAttributeConstraints: map['stringAttributeConstraints'] == null ? null : UserPoolSchemaStringAttributeConstraints.fromMap((map['stringAttributeConstraints'] as Map).cast<String, dynamic>()),
+      attributeDataType: (map['attributeDataType'] as String).input(),
+      developerOnlyAttribute: map['developerOnlyAttribute'] == null ? null : (map['developerOnlyAttribute'] as bool).input(),
+      mutable: map['mutable'] == null ? null : (map['mutable'] as bool).input(),
+      name: (map['name'] as String).input(),
+      numberAttributeConstraints: map['numberAttributeConstraints'] == null ? null : (UserPoolSchemaNumberAttributeConstraints.fromMap((map['numberAttributeConstraints'] as Map).cast<String, dynamic>())).input(),
+      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      stringAttributeConstraints: map['stringAttributeConstraints'] == null ? null : (UserPoolSchemaStringAttributeConstraints.fromMap((map['stringAttributeConstraints'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

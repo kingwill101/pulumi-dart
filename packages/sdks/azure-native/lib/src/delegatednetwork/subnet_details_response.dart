@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of orchestrator
 class SubnetDetailsResponse {
   /// subnet arm resource id
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [SubnetDetailsResponse].
   /// [id] subnet arm resource id
@@ -20,7 +21,7 @@ class SubnetDetailsResponse {
 
   factory SubnetDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SubnetDetailsResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

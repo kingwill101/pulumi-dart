@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connect_peer_configuration_bgp_configuration.dart';
 
 class ConnectPeerConfiguration {
-  final List<ConnectPeerConfigurationBgpConfiguration>? bgpConfigurations;
+  final pulumi.Input<List<ConnectPeerConfigurationBgpConfiguration>>? bgpConfigurations;
   /// Connect peer core network address.
-  final String? coreNetworkAddress;
+  final pulumi.Input<String>? coreNetworkAddress;
   /// Inside IP addresses used for BGP peering. Required when the Connect attachment protocol is `GRE`. See `aws.networkmanager.ConnectAttachment` for details.
-  final List<String>? insideCidrBlocks;
+  final pulumi.Input<List<String>>? insideCidrBlocks;
   /// Connect peer address.
   ///
   /// The following arguments are optional:
-  final String? peerAddress;
-  final String? protocol;
+  final pulumi.Input<String>? peerAddress;
+  final pulumi.Input<String>? protocol;
 
   /// Creates a new [ConnectPeerConfiguration].
   /// [bgpConfigurations] Optional.
@@ -31,7 +31,7 @@ class ConnectPeerConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgpConfigurations': ?bgpConfigurations == null ? null : pulumi.Input.encodeList<ConnectPeerConfigurationBgpConfiguration, Map<String, dynamic>>(bgpConfigurations!, (value) => value.toMap()),
+      'bgpConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ConnectPeerConfigurationBgpConfiguration>, List<Map<String, dynamic>>>(bgpConfigurations, (value) => pulumi.Input.encodeList<ConnectPeerConfigurationBgpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'coreNetworkAddress': ?coreNetworkAddress,
       'insideCidrBlocks': ?insideCidrBlocks,
       'peerAddress': ?peerAddress,
@@ -41,11 +41,11 @@ class ConnectPeerConfiguration {
 
   factory ConnectPeerConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectPeerConfiguration(
-      bgpConfigurations: map['bgpConfigurations'] == null ? null : pulumi.Input.decodeList<ConnectPeerConfigurationBgpConfiguration>(map['bgpConfigurations'], (value) => ConnectPeerConfigurationBgpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      coreNetworkAddress: map['coreNetworkAddress'] == null ? null : map['coreNetworkAddress'] as String,
-      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : (map['insideCidrBlocks'] as List).cast<String>(),
-      peerAddress: map['peerAddress'] == null ? null : map['peerAddress'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
+      bgpConfigurations: map['bgpConfigurations'] == null ? null : (pulumi.Input.decodeList<ConnectPeerConfigurationBgpConfiguration>(map['bgpConfigurations'], (value) => ConnectPeerConfigurationBgpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      coreNetworkAddress: map['coreNetworkAddress'] == null ? null : (map['coreNetworkAddress'] as String).input(),
+      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : ((map['insideCidrBlocks'] as List).cast<String>()).input(),
+      peerAddress: map['peerAddress'] == null ? null : (map['peerAddress'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
     );
   }
 }

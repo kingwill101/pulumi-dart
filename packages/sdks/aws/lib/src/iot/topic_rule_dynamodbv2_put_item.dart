@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleDynamodbv2PutItem {
   /// The name of the DynamoDB table.
-  final String tableName;
+  final pulumi.Input<String> tableName;
 
   /// Creates a new [TopicRuleDynamodbv2PutItem].
   /// [tableName] The name of the DynamoDB table.
@@ -19,7 +20,7 @@ class TopicRuleDynamodbv2PutItem {
 
   factory TopicRuleDynamodbv2PutItem.fromMap(Map<String, dynamic> map) {
     return TopicRuleDynamodbv2PutItem(
-      tableName: map['tableName'] as String,
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

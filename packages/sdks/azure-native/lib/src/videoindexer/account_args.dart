@@ -33,21 +33,14 @@ class AccountArgs {
   /// [storageServices] The storage services details
   /// [tags] Resource tags.
   AccountArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? accountName,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<StorageServicesForPutRequest>? storageServices,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageServices = pulumi.Input.asOptionalInput<StorageServicesForPutRequest>(storageServices),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accountId,
+    this.accountName,
+    this.identity,
+    this.location,
+    required this.resourceGroupName,
+    this.storageServices,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageServices: map['storageServices'] == null ? null : pulumi.Output.create<StorageServicesForPutRequest>(StorageServicesForPutRequest.fromMap((map['storageServices'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageServices: map['storageServices'] == null ? null : (StorageServicesForPutRequest.fromMap((map['storageServices'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

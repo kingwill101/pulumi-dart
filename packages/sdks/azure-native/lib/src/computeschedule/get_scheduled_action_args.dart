@@ -16,11 +16,9 @@ class GetScheduledActionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scheduledActionName] The name of the ScheduledAction
   GetScheduledActionArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scheduledActionName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scheduledActionName = pulumi.Input.asInput<String>(scheduledActionName);
+    required this.resourceGroupName,
+    required this.scheduledActionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetScheduledActionArgs {
 
   factory GetScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduledActionArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scheduledActionName: pulumi.Output.create<String>(map['scheduledActionName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scheduledActionName: (map['scheduledActionName'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetReachabilityAnalysisRunArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [workspaceName] Workspace name.
   GetReachabilityAnalysisRunArgs({
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> reachabilityAnalysisRunName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      reachabilityAnalysisRunName = pulumi.Input.asInput<String>(reachabilityAnalysisRunName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.networkManagerName,
+    required this.reachabilityAnalysisRunName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetReachabilityAnalysisRunArgs {
 
   factory GetReachabilityAnalysisRunArgs.fromMap(Map<String, dynamic> map) {
     return GetReachabilityAnalysisRunArgs(
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      reachabilityAnalysisRunName: pulumi.Output.create<String>(map['reachabilityAnalysisRunName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      reachabilityAnalysisRunName: (map['reachabilityAnalysisRunName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

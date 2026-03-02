@@ -19,13 +19,10 @@ class GetSqlResourceSqlRoleDefinitionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [roleDefinitionId] The GUID for the Role Definition.
   GetSqlResourceSqlRoleDefinitionArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> roleDefinitionId,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleDefinitionId = pulumi.Input.asInput<String>(roleDefinitionId);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.roleDefinitionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSqlResourceSqlRoleDefinitionArgs {
 
   factory GetSqlResourceSqlRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlResourceSqlRoleDefinitionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleDefinitionId: pulumi.Output.create<String>(map['roleDefinitionId'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );
   }
 }

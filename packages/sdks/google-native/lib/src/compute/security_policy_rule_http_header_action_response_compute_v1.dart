@@ -5,7 +5,7 @@ import 'security_policy_rule_http_header_action_http_header_option_response_comp
 
 class SecurityPolicyRuleHttpHeaderActionResponseComputeV1 {
   /// The list of request headers to add or overwrite if they're already present.
-  final List<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1> requestHeadersToAdds;
+  final pulumi.Input<List<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1>> requestHeadersToAdds;
 
   /// Creates a new [SecurityPolicyRuleHttpHeaderActionResponseComputeV1].
   /// [requestHeadersToAdds] The list of request headers to add or overwrite if they're already present.
@@ -15,13 +15,13 @@ class SecurityPolicyRuleHttpHeaderActionResponseComputeV1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestHeadersToAdds': pulumi.Input.encodeList<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1, Map<String, dynamic>>(requestHeadersToAdds, (value) => value.toMap()),
+      'requestHeadersToAdds': pulumi.Input.mapInputValue<List<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1>, List<Map<String, dynamic>>>(requestHeadersToAdds, (value) => pulumi.Input.encodeList<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SecurityPolicyRuleHttpHeaderActionResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleHttpHeaderActionResponseComputeV1(
-      requestHeadersToAdds: pulumi.Input.decodeList<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1>(map['requestHeadersToAdds'], (value) => SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())),
+      requestHeadersToAdds: (pulumi.Input.decodeList<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1>(map['requestHeadersToAdds'], (value) => SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

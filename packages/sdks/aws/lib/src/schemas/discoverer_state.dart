@@ -25,19 +25,13 @@ class DiscovererState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   DiscovererState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sourceArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceArn = pulumi.Input.asOptionalInput<String>(sourceArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.region,
+    this.sourceArn,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class DiscovererState {
 
   factory DiscovererState.fromMap(Map<String, dynamic> map) {
     return DiscovererState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceArn: map['sourceArn'] == null ? null : pulumi.Output.create<String>(map['sourceArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

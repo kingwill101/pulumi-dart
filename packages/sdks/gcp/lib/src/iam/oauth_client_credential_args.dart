@@ -34,19 +34,13 @@ class OauthClientCredentialArgs {
   /// [oauthclient] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
   OauthClientCredentialArgs({
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> oauthClientCredentialId,
-    required pulumi.Output<String> oauthclient,
-    pulumi.Output<String>? project,
-  }) :
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      oauthClientCredentialId = pulumi.Input.asInput<String>(oauthClientCredentialId),
-      oauthclient = pulumi.Input.asInput<String>(oauthclient),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.disabled,
+    this.displayName,
+    required this.location,
+    required this.oauthClientCredentialId,
+    required this.oauthclient,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class OauthClientCredentialArgs {
 
   factory OauthClientCredentialArgs.fromMap(Map<String, dynamic> map) {
     return OauthClientCredentialArgs(
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      oauthClientCredentialId: pulumi.Output.create<String>(map['oauthClientCredentialId'] as String),
-      oauthclient: pulumi.Output.create<String>(map['oauthclient'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      oauthClientCredentialId: (map['oauthClientCredentialId'] as String).input(),
+      oauthclient: (map['oauthclient'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

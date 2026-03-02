@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An image resource belonging to a catalog resource.
 class Image {
   /// Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads.
-  final String? image;
+  final pulumi.Input<String>? image;
   /// Image ID
-  final String? imageId;
+  final pulumi.Input<String>? imageId;
   /// Regional data boundary for an image
-  final String? regionalDataBoundary;
+  final pulumi.Input<String>? regionalDataBoundary;
 
   /// Creates a new [Image].
   /// [image] Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads.
@@ -30,9 +31,9 @@ class Image {
 
   factory Image.fromMap(Map<String, dynamic> map) {
     return Image(
-      image: map['image'] == null ? null : map['image'] as String,
-      imageId: map['imageId'] == null ? null : map['imageId'] as String,
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : map['regionalDataBoundary'] as String,
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary'] as String).input(),
     );
   }
 }

@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_descriptor_response.dart';
 
 class ProvenanceBuilderResponse {
-  final List<ResourceDescriptorResponse> builderDependencies;
-  final Map<String, String> version;
+  final pulumi.Input<List<ResourceDescriptorResponse>> builderDependencies;
+  final pulumi.Input<Map<String, String>> version;
 
   /// Creates a new [ProvenanceBuilderResponse].
   /// [builderDependencies] Required.
@@ -17,15 +17,15 @@ class ProvenanceBuilderResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'builderDependencies': pulumi.Input.encodeList<ResourceDescriptorResponse, Map<String, dynamic>>(builderDependencies, (value) => value.toMap()),
+      'builderDependencies': pulumi.Input.mapInputValue<List<ResourceDescriptorResponse>, List<Map<String, dynamic>>>(builderDependencies, (value) => pulumi.Input.encodeList<ResourceDescriptorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'version': version,
     };
   }
 
   factory ProvenanceBuilderResponse.fromMap(Map<String, dynamic> map) {
     return ProvenanceBuilderResponse(
-      builderDependencies: pulumi.Input.decodeList<ResourceDescriptorResponse>(map['builderDependencies'], (value) => ResourceDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      version: (map['version'] as Map).cast<String, String>(),
+      builderDependencies: (pulumi.Input.decodeList<ResourceDescriptorResponse>(map['builderDependencies'], (value) => ResourceDescriptorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: ((map['version'] as Map).cast<String, String>()).input(),
     );
   }
 }

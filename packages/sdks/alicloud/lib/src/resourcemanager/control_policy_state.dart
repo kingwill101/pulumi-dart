@@ -34,19 +34,13 @@ class ControlPolicyState {
   /// [policyDocument] The new document of the access control policy.
   /// [tags] The tags.
   ControlPolicyState({
-    pulumi.Output<String>? controlPolicyName,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? effectScope,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      controlPolicyName = pulumi.Input.asOptionalInput<String>(controlPolicyName),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectScope = pulumi.Input.asOptionalInput<String>(effectScope),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.controlPolicyName,
+    this.createTime,
+    this.description,
+    this.effectScope,
+    this.policyDocument,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class ControlPolicyState {
 
   factory ControlPolicyState.fromMap(Map<String, dynamic> map) {
     return ControlPolicyState(
-      controlPolicyName: map['controlPolicyName'] == null ? null : pulumi.Output.create<String>(map['controlPolicyName'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectScope: map['effectScope'] == null ? null : pulumi.Output.create<String>(map['effectScope'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      controlPolicyName: map['controlPolicyName'] == null ? null : (map['controlPolicyName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectScope: map['effectScope'] == null ? null : (map['effectScope'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobConfigOutput {
   /// URI for the output file(s). For example, gs://my-bucket/outputs/.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [JobConfigOutput].
   /// [uri] URI for the output file(s). For example, gs://my-bucket/outputs/.
@@ -19,7 +20,7 @@ class JobConfigOutput {
 
   factory JobConfigOutput.fromMap(Map<String, dynamic> map) {
     return JobConfigOutput(
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetFirewallArgs {
   /// [name] The name of the Azure Firewall.
   /// [resourceGroupName] The name of the Resource Group in which the Azure Firewall exists.
   GetFirewallArgs({
-    pulumi.Output<bool>? dnsProxyEnabled,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dnsProxyEnabled = pulumi.Input.asOptionalInput<bool>(dnsProxyEnabled),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.dnsProxyEnabled,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFirewallArgs {
 
   factory GetFirewallArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallArgs(
-      dnsProxyEnabled: map['dnsProxyEnabled'] == null ? null : pulumi.Output.create<bool>(map['dnsProxyEnabled'] as bool),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dnsProxyEnabled: map['dnsProxyEnabled'] == null ? null : (map['dnsProxyEnabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

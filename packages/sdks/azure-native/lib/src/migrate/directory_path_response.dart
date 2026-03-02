@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Second level entity for virtual directories.
 class DirectoryPathResponse {
   /// Gets the ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Gets or sets the physical path of the directory on the web server.
-  final String? physical;
+  final pulumi.Input<String>? physical;
   /// Gets or sets the virtual path for the directory.
-  final String? virtual;
+  final pulumi.Input<String>? virtual;
 
   /// Creates a new [DirectoryPathResponse].
   /// [id] Gets the ID.
@@ -30,9 +31,9 @@ class DirectoryPathResponse {
 
   factory DirectoryPathResponse.fromMap(Map<String, dynamic> map) {
     return DirectoryPathResponse(
-      id: map['id'] as String,
-      physical: map['physical'] == null ? null : map['physical'] as String,
-      virtual: map['virtual'] == null ? null : map['virtual'] as String,
+      id: (map['id'] as String).input(),
+      physical: map['physical'] == null ? null : (map['physical'] as String).input(),
+      virtual: map['virtual'] == null ? null : (map['virtual'] as String).input(),
     );
   }
 }

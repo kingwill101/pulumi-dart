@@ -25,17 +25,12 @@ class GetServerGroupServerAttachmentsArgs {
   /// [serverIds] The IDs of the servers. You can specify at most 40 server IDs in each call.
   /// [serverIps] The IP addresses of the servers. You can specify at most 40 server IP addresses in each call.
   GetServerGroupServerAttachmentsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? serverGroupId,
-    pulumi.Output<List<String>>? serverIds,
-    pulumi.Output<List<String>>? serverIps,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      serverGroupId = pulumi.Input.asOptionalInput<String>(serverGroupId),
-      serverIds = pulumi.Input.asOptionalInput<List<String>>(serverIds),
-      serverIps = pulumi.Input.asOptionalInput<List<String>>(serverIps);
+    this.ids,
+    this.outputFile,
+    this.serverGroupId,
+    this.serverIds,
+    this.serverIps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetServerGroupServerAttachmentsArgs {
 
   factory GetServerGroupServerAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetServerGroupServerAttachmentsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      serverGroupId: map['serverGroupId'] == null ? null : pulumi.Output.create<String>(map['serverGroupId'] as String),
-      serverIds: map['serverIds'] == null ? null : pulumi.Output.create<List<String>>((map['serverIds'] as List).cast<String>()),
-      serverIps: map['serverIps'] == null ? null : pulumi.Output.create<List<String>>((map['serverIps'] as List).cast<String>()),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
+      serverIds: map['serverIds'] == null ? null : ((map['serverIds'] as List).cast<String>()).input(),
+      serverIps: map['serverIps'] == null ? null : ((map['serverIps'] as List).cast<String>()).input(),
     );
   }
 }

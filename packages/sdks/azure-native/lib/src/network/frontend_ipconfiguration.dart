@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_ipaddress.dart';
 import 'sub_resource.dart';
 import 'subnet.dart';
@@ -7,25 +8,25 @@ import 'subnet.dart';
 /// Frontend IP address of the load balancer.
 class FrontendIPConfiguration {
   /// The reference to gateway load balancer frontend IP.
-  final SubResource? gatewayLoadBalancer;
+  final pulumi.Input<SubResource>? gatewayLoadBalancer;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The private IP address of the IP configuration.
-  final String? privateIPAddress;
+  final pulumi.Input<String>? privateIPAddress;
   /// Whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-  final String? privateIPAddressVersion;
+  final pulumi.Input<String>? privateIPAddressVersion;
   /// The Private IP allocation method.
-  final String? privateIPAllocationMethod;
+  final pulumi.Input<String>? privateIPAllocationMethod;
   /// The reference to the Public IP resource.
-  final PublicIPAddress? publicIPAddress;
+  final pulumi.Input<PublicIPAddress>? publicIPAddress;
   /// The reference to the Public IP Prefix resource.
-  final SubResource? publicIPPrefix;
+  final pulumi.Input<SubResource>? publicIPPrefix;
   /// The reference to the subnet resource.
-  final Subnet? subnet;
+  final pulumi.Input<Subnet>? subnet;
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
-  final List<String>? zones;
+  final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [FrontendIPConfiguration].
   /// [gatewayLoadBalancer] The reference to gateway load balancer frontend IP.
@@ -53,31 +54,31 @@ class FrontendIPConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gatewayLoadBalancer': ?gatewayLoadBalancer == null ? null : gatewayLoadBalancer!.toMap(),
+      'gatewayLoadBalancer': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(gatewayLoadBalancer, (value) => value.toMap()),
       'id': ?id,
       'name': ?name,
       'privateIPAddress': ?privateIPAddress,
       'privateIPAddressVersion': ?privateIPAddressVersion,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
-      'publicIPAddress': ?publicIPAddress == null ? null : publicIPAddress!.toMap(),
-      'publicIPPrefix': ?publicIPPrefix == null ? null : publicIPPrefix!.toMap(),
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'publicIPAddress': ?pulumi.Input.mapOptionalInputValue<PublicIPAddress, Map<String, dynamic>>(publicIPAddress, (value) => value.toMap()),
+      'publicIPPrefix': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(publicIPPrefix, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<Subnet, Map<String, dynamic>>(subnet, (value) => value.toMap()),
       'zones': ?zones,
     };
   }
 
   factory FrontendIPConfiguration.fromMap(Map<String, dynamic> map) {
     return FrontendIPConfiguration(
-      gatewayLoadBalancer: map['gatewayLoadBalancer'] == null ? null : SubResource.fromMap((map['gatewayLoadBalancer'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      privateIPAddress: map['privateIPAddress'] == null ? null : map['privateIPAddress'] as String,
-      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : map['privateIPAddressVersion'] as String,
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : map['privateIPAllocationMethod'] as String,
-      publicIPAddress: map['publicIPAddress'] == null ? null : PublicIPAddress.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>()),
-      publicIPPrefix: map['publicIPPrefix'] == null ? null : SubResource.fromMap((map['publicIPPrefix'] as Map).cast<String, dynamic>()),
-      subnet: map['subnet'] == null ? null : Subnet.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      gatewayLoadBalancer: map['gatewayLoadBalancer'] == null ? null : (SubResource.fromMap((map['gatewayLoadBalancer'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : (map['privateIPAddressVersion'] as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (PublicIPAddress.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
+      publicIPPrefix: map['publicIPPrefix'] == null ? null : (SubResource.fromMap((map['publicIPPrefix'] as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (Subnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupResourceQuery {
   /// The resource query as a JSON string.
-  final String query;
+  final pulumi.Input<String> query;
   /// The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [GroupResourceQuery].
   /// [query] The resource query as a JSON string.
@@ -24,8 +25,8 @@ class GroupResourceQuery {
 
   factory GroupResourceQuery.fromMap(Map<String, dynamic> map) {
     return GroupResourceQuery(
-      query: map['query'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      query: (map['query'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

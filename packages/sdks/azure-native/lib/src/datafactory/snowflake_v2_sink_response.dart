@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'snowflake_import_copy_command_response.dart';
 
 /// A copy activity snowflake sink.
 class SnowflakeV2SinkResponse {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Snowflake import settings.
-  final SnowflakeImportCopyCommandResponse? importSettings;
+  final pulumi.Input<SnowflakeImportCopyCommandResponse>? importSettings;
   /// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// SQL pre-copy script. Type: string (or Expression with resultType string).
-  final dynamic preCopyScript;
+  final pulumi.Input<dynamic>? preCopyScript;
   /// Sink retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sinkRetryCount;
+  final pulumi.Input<dynamic>? sinkRetryCount;
   /// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sinkRetryWait;
+  final pulumi.Input<dynamic>? sinkRetryWait;
   /// Copy sink type.
   /// Expected value is 'SnowflakeV2Sink'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
-  final dynamic writeBatchSize;
+  final pulumi.Input<dynamic>? writeBatchSize;
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic writeBatchTimeout;
+  final pulumi.Input<dynamic>? writeBatchTimeout;
 
   /// Creates a new [SnowflakeV2SinkResponse].
   /// [disableMetricsCollection] If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -49,7 +50,7 @@ class SnowflakeV2SinkResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'disableMetricsCollection': ?disableMetricsCollection,
-      'importSettings': ?importSettings == null ? null : importSettings!.toMap(),
+      'importSettings': ?pulumi.Input.mapOptionalInputValue<SnowflakeImportCopyCommandResponse, Map<String, dynamic>>(importSettings, (value) => value.toMap()),
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'preCopyScript': ?preCopyScript,
       'sinkRetryCount': ?sinkRetryCount,
@@ -62,15 +63,15 @@ class SnowflakeV2SinkResponse {
 
   factory SnowflakeV2SinkResponse.fromMap(Map<String, dynamic> map) {
     return SnowflakeV2SinkResponse(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      importSettings: map['importSettings'] == null ? null : SnowflakeImportCopyCommandResponse.fromMap((map['importSettings'] as Map).cast<String, dynamic>()),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      preCopyScript: map['preCopyScript'] == null ? null : map['preCopyScript'],
-      sinkRetryCount: map['sinkRetryCount'] == null ? null : map['sinkRetryCount'],
-      sinkRetryWait: map['sinkRetryWait'] == null ? null : map['sinkRetryWait'],
-      type: map['type'] as String,
-      writeBatchSize: map['writeBatchSize'] == null ? null : map['writeBatchSize'],
-      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : map['writeBatchTimeout'],
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      importSettings: map['importSettings'] == null ? null : (SnowflakeImportCopyCommandResponse.fromMap((map['importSettings'] as Map).cast<String, dynamic>())).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      preCopyScript: map['preCopyScript'] == null ? null : (map['preCopyScript']).input(),
+      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']).input(),
+      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']).input(),
+      type: (map['type'] as String).input(),
+      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']).input(),
+      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']).input(),
     );
   }
 }

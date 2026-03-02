@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointCustomDomainUserManagedHttps {
   /// The ID of the Key Vault Secret that contains the HTTPS certificate.
-  final String keyVaultSecretId;
+  final pulumi.Input<String> keyVaultSecretId;
   /// The minimum TLS protocol version that is used for HTTPS. Possible values are `TLS10` (representing TLS 1.0/1.1), `TLS12` (representing TLS 1.2) and `None` (representing no minimums). Defaults to `TLS12`.
   ///
   /// > **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
-  final String? tlsVersion;
+  final pulumi.Input<String>? tlsVersion;
 
   /// Creates a new [EndpointCustomDomainUserManagedHttps].
   /// [keyVaultSecretId] The ID of the Key Vault Secret that contains the HTTPS certificate.
@@ -26,8 +27,8 @@ class EndpointCustomDomainUserManagedHttps {
 
   factory EndpointCustomDomainUserManagedHttps.fromMap(Map<String, dynamic> map) {
     return EndpointCustomDomainUserManagedHttps(
-      keyVaultSecretId: map['keyVaultSecretId'] as String,
-      tlsVersion: map['tlsVersion'] == null ? null : map['tlsVersion'] as String,
+      keyVaultSecretId: (map['keyVaultSecretId'] as String).input(),
+      tlsVersion: map['tlsVersion'] == null ? null : (map['tlsVersion'] as String).input(),
     );
   }
 }

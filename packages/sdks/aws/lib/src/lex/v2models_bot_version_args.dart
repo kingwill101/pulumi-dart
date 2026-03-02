@@ -30,19 +30,13 @@ class V2modelsBotVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   V2modelsBotVersionArgs({
-    required pulumi.Output<String> botId,
-    pulumi.Output<String>? botVersion,
-    pulumi.Output<String>? description,
-    required pulumi.Output<Map<String, V2modelsBotVersionLocaleSpecification>> localeSpecification,
-    pulumi.Output<String>? region,
-    pulumi.Output<V2modelsBotVersionTimeouts>? timeouts,
-  }) :
-      botId = pulumi.Input.asInput<String>(botId),
-      botVersion = pulumi.Input.asOptionalInput<String>(botVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      localeSpecification = pulumi.Input.asInput<Map<String, V2modelsBotVersionLocaleSpecification>>(localeSpecification),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<V2modelsBotVersionTimeouts>(timeouts);
+    required this.botId,
+    this.botVersion,
+    this.description,
+    required this.localeSpecification,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class V2modelsBotVersionArgs {
 
   factory V2modelsBotVersionArgs.fromMap(Map<String, dynamic> map) {
     return V2modelsBotVersionArgs(
-      botId: pulumi.Output.create<String>(map['botId'] as String),
-      botVersion: map['botVersion'] == null ? null : pulumi.Output.create<String>(map['botVersion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      localeSpecification: pulumi.Output.create<Map<String, V2modelsBotVersionLocaleSpecification>>(pulumi.Input.decodeMapValues<V2modelsBotVersionLocaleSpecification>(map['localeSpecification'], (value) => V2modelsBotVersionLocaleSpecification.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<V2modelsBotVersionTimeouts>(V2modelsBotVersionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      botId: (map['botId'] as String).input(),
+      botVersion: map['botVersion'] == null ? null : (map['botVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      localeSpecification: (pulumi.Input.decodeMapValues<V2modelsBotVersionLocaleSpecification>(map['localeSpecification'], (value) => V2modelsBotVersionLocaleSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (V2modelsBotVersionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

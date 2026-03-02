@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationDatastore {
   /// Database engine type to be used with this configuration. Changing this creates a new resource.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of database engine type to be used with this configuration. Changing this creates a new resource.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [ConfigurationDatastore].
   /// [type] Database engine type to be used with this configuration. Changing this creates a new resource.
@@ -24,8 +25,8 @@ class ConfigurationDatastore {
 
   factory ConfigurationDatastore.fromMap(Map<String, dynamic> map) {
     return ConfigurationDatastore(
-      type: map['type'] as String,
-      version: map['version'] as String,
+      type: (map['type'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

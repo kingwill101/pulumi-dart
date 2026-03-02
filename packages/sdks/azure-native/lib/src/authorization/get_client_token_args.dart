@@ -13,9 +13,8 @@ class GetClientTokenArgs {
   /// Creates a new [GetClientTokenArgs].
   /// [endpoint] Optional authentication endpoint. Defaults to the endpoint of Azure Resource Manager.
   GetClientTokenArgs({
-    pulumi.Output<String>? endpoint,
-  }) :
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint);
+    this.endpoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetClientTokenArgs {
 
   factory GetClientTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetClientTokenArgs(
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
     );
   }
 }

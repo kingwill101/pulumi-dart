@@ -40,27 +40,17 @@ class DatastoreDatalakeGen2Args {
   /// [tenantId] The ID of the Tenant which the Service Principal belongs to.
   /// [workspaceId] The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning DataStore to be created.
   DatastoreDatalakeGen2Args({
-    pulumi.Output<String>? authorityUrl,
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? clientSecret,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? serviceDataIdentity,
-    required pulumi.Output<String> storageContainerId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tenantId,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      authorityUrl = pulumi.Input.asOptionalInput<String>(authorityUrl),
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serviceDataIdentity = pulumi.Input.asOptionalInput<String>(serviceDataIdentity),
-      storageContainerId = pulumi.Input.asInput<String>(storageContainerId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.authorityUrl,
+    this.clientId,
+    this.clientSecret,
+    this.description,
+    this.name,
+    this.serviceDataIdentity,
+    required this.storageContainerId,
+    this.tags,
+    this.tenantId,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class DatastoreDatalakeGen2Args {
 
   factory DatastoreDatalakeGen2Args.fromMap(Map<String, dynamic> map) {
     return DatastoreDatalakeGen2Args(
-      authorityUrl: map['authorityUrl'] == null ? null : pulumi.Output.create<String>(map['authorityUrl'] as String),
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      clientSecret: map['clientSecret'] == null ? null : pulumi.Output.create<String>(map['clientSecret'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serviceDataIdentity: map['serviceDataIdentity'] == null ? null : pulumi.Output.create<String>(map['serviceDataIdentity'] as String),
-      storageContainerId: pulumi.Output.create<String>(map['storageContainerId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      authorityUrl: map['authorityUrl'] == null ? null : (map['authorityUrl'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serviceDataIdentity: map['serviceDataIdentity'] == null ? null : (map['serviceDataIdentity'] as String).input(),
+      storageContainerId: (map['storageContainerId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

@@ -24,17 +24,12 @@ class FolderMembershipState {
   /// [memberType] Type of the member. Valid values are `ANALYSIS`, `DASHBOARD`, and `DATASET`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   FolderMembershipState({
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? folderId,
-    pulumi.Output<String>? memberId,
-    pulumi.Output<String>? memberType,
-    pulumi.Output<String>? region,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      folderId = pulumi.Input.asOptionalInput<String>(folderId),
-      memberId = pulumi.Input.asOptionalInput<String>(memberId),
-      memberType = pulumi.Input.asOptionalInput<String>(memberType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.awsAccountId,
+    this.folderId,
+    this.memberId,
+    this.memberType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class FolderMembershipState {
 
   factory FolderMembershipState.fromMap(Map<String, dynamic> map) {
     return FolderMembershipState(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      folderId: map['folderId'] == null ? null : pulumi.Output.create<String>(map['folderId'] as String),
-      memberId: map['memberId'] == null ? null : pulumi.Output.create<String>(map['memberId'] as String),
-      memberType: map['memberType'] == null ? null : pulumi.Output.create<String>(map['memberType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
+      memberId: map['memberId'] == null ? null : (map['memberId'] as String).input(),
+      memberType: map['memberType'] == null ? null : (map['memberType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

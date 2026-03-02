@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network settings.
 class NetworkSettingsResponse {
   /// Network hardware and software cost percentage.
-  final double hardwareSoftwareCostPercentage;
+  final pulumi.Input<double> hardwareSoftwareCostPercentage;
   /// Network maintenance cost percentage.
-  final double maintenanceCostPercentage;
+  final pulumi.Input<double> maintenanceCostPercentage;
 
   /// Creates a new [NetworkSettingsResponse].
   /// [hardwareSoftwareCostPercentage] Network hardware and software cost percentage.
@@ -25,8 +26,8 @@ class NetworkSettingsResponse {
 
   factory NetworkSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NetworkSettingsResponse(
-      hardwareSoftwareCostPercentage: map['hardwareSoftwareCostPercentage'] as double,
-      maintenanceCostPercentage: map['maintenanceCostPercentage'] as double,
+      hardwareSoftwareCostPercentage: (map['hardwareSoftwareCostPercentage'] as double).input(),
+      maintenanceCostPercentage: (map['maintenanceCostPercentage'] as double).input(),
     );
   }
 }

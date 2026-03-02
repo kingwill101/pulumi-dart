@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PodSchedulingGate is associated to a Pod to guard its scheduling.
 class PodSchedulingGate {
   /// Name of the scheduling gate. Each scheduling gate must have a unique name field.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [PodSchedulingGate].
   /// [name] Name of the scheduling gate. Each scheduling gate must have a unique name field.
@@ -20,7 +21,7 @@ class PodSchedulingGate {
 
   factory PodSchedulingGate.fromMap(Map<String, dynamic> map) {
     return PodSchedulingGate(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

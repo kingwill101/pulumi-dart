@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authentication method to access the storage account for deployment.
 class FunctionsDeploymentResponseAuthentication {
   /// Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
-  final String? storageAccountConnectionStringName;
+  final pulumi.Input<String>? storageAccountConnectionStringName;
   /// Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.
-  final String? userAssignedIdentityResourceId;
+  final pulumi.Input<String>? userAssignedIdentityResourceId;
 
   /// Creates a new [FunctionsDeploymentResponseAuthentication].
   /// [storageAccountConnectionStringName] Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
@@ -30,9 +31,9 @@ class FunctionsDeploymentResponseAuthentication {
 
   factory FunctionsDeploymentResponseAuthentication.fromMap(Map<String, dynamic> map) {
     return FunctionsDeploymentResponseAuthentication(
-      storageAccountConnectionStringName: map['storageAccountConnectionStringName'] == null ? null : map['storageAccountConnectionStringName'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : map['userAssignedIdentityResourceId'] as String,
+      storageAccountConnectionStringName: map['storageAccountConnectionStringName'] == null ? null : (map['storageAccountConnectionStringName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId'] as String).input(),
     );
   }
 }

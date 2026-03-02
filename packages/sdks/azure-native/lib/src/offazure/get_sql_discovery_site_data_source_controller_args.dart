@@ -22,15 +22,11 @@ class GetSqlDiscoverySiteDataSourceControllerArgs {
   /// [siteName] Site name
   /// [sqlSiteName] SQL site name.
   GetSqlDiscoverySiteDataSourceControllerArgs({
-    required pulumi.Output<String> discoverySiteDataSourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteName,
-    required pulumi.Output<String> sqlSiteName,
-  }) :
-      discoverySiteDataSourceName = pulumi.Input.asInput<String>(discoverySiteDataSourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asInput<String>(siteName),
-      sqlSiteName = pulumi.Input.asInput<String>(sqlSiteName);
+    required this.discoverySiteDataSourceName,
+    required this.resourceGroupName,
+    required this.siteName,
+    required this.sqlSiteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSqlDiscoverySiteDataSourceControllerArgs {
 
   factory GetSqlDiscoverySiteDataSourceControllerArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlDiscoverySiteDataSourceControllerArgs(
-      discoverySiteDataSourceName: pulumi.Output.create<String>(map['discoverySiteDataSourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
-      sqlSiteName: pulumi.Output.create<String>(map['sqlSiteName'] as String),
+      discoverySiteDataSourceName: (map['discoverySiteDataSourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
+      sqlSiteName: (map['sqlSiteName'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AkriConnectorTemplateTrustList properties.
 class AkriConnectorTemplateTrustListResponse {
   /// The secret reference for certificates to trust.
-  final String trustListSecretRef;
+  final pulumi.Input<String> trustListSecretRef;
 
   /// Creates a new [AkriConnectorTemplateTrustListResponse].
   /// [trustListSecretRef] The secret reference for certificates to trust.
@@ -20,7 +21,7 @@ class AkriConnectorTemplateTrustListResponse {
 
   factory AkriConnectorTemplateTrustListResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateTrustListResponse(
-      trustListSecretRef: map['trustListSecretRef'] as String,
+      trustListSecretRef: (map['trustListSecretRef'] as String).input(),
     );
   }
 }

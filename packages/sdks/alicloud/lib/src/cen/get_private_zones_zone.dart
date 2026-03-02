@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPrivateZonesZone {
   /// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
-  final String accessRegionId;
+  final pulumi.Input<String> accessRegionId;
   /// The ID of the CEN instance.
-  final String cenId;
+  final pulumi.Input<String> cenId;
   /// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
-  final String hostRegionId;
+  final pulumi.Input<String> hostRegionId;
   /// The VPC that belongs to the service region.
-  final String hostVpcId;
+  final pulumi.Input<String> hostVpcId;
   /// The ID of the private zone. It formats as `<cen_id>:<access_region_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The DNS IP addresses of the PrivateZone service.
-  final String privateZoneDnsServers;
+  final pulumi.Input<String> privateZoneDnsServers;
   /// The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetPrivateZonesZone].
   /// [accessRegionId] The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
@@ -49,13 +50,13 @@ class GetPrivateZonesZone {
 
   factory GetPrivateZonesZone.fromMap(Map<String, dynamic> map) {
     return GetPrivateZonesZone(
-      accessRegionId: map['accessRegionId'] as String,
-      cenId: map['cenId'] as String,
-      hostRegionId: map['hostRegionId'] as String,
-      hostVpcId: map['hostVpcId'] as String,
-      id: map['id'] as String,
-      privateZoneDnsServers: map['privateZoneDnsServers'] as String,
-      status: map['status'] as String,
+      accessRegionId: (map['accessRegionId'] as String).input(),
+      cenId: (map['cenId'] as String).input(),
+      hostRegionId: (map['hostRegionId'] as String).input(),
+      hostVpcId: (map['hostVpcId'] as String).input(),
+      id: (map['id'] as String).input(),
+      privateZoneDnsServers: (map['privateZoneDnsServers'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

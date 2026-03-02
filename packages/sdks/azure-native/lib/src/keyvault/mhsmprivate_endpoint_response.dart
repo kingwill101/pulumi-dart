@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Private endpoint object properties.
 class MHSMPrivateEndpointResponse {
   /// Full identifier of the private endpoint resource.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [MHSMPrivateEndpointResponse].
   /// [id] Full identifier of the private endpoint resource.
@@ -20,7 +21,7 @@ class MHSMPrivateEndpointResponse {
 
   factory MHSMPrivateEndpointResponse.fromMap(Map<String, dynamic> map) {
     return MHSMPrivateEndpointResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

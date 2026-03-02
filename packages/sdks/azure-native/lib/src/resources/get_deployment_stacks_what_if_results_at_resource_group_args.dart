@@ -16,11 +16,9 @@ class GetDeploymentStacksWhatIfResultsAtResourceGroupArgs {
   /// [deploymentStacksWhatIfResultName] Name of the deployment stack what-if result.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDeploymentStacksWhatIfResultsAtResourceGroupArgs({
-    required pulumi.Output<String> deploymentStacksWhatIfResultName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      deploymentStacksWhatIfResultName = pulumi.Input.asInput<String>(deploymentStacksWhatIfResultName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.deploymentStacksWhatIfResultName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDeploymentStacksWhatIfResultsAtResourceGroupArgs {
 
   factory GetDeploymentStacksWhatIfResultsAtResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentStacksWhatIfResultsAtResourceGroupArgs(
-      deploymentStacksWhatIfResultName: pulumi.Output.create<String>(map['deploymentStacksWhatIfResultName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      deploymentStacksWhatIfResultName: (map['deploymentStacksWhatIfResultName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

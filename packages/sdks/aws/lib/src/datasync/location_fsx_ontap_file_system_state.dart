@@ -43,29 +43,18 @@ class LocationFsxOntapFileSystemState {
   /// [tagsAll] Optional.
   /// [uri] URI of the FSx ONTAP file system location
   LocationFsxOntapFileSystemState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<String>? fsxFilesystemArn,
-    pulumi.Output<LocationFsxOntapFileSystemProtocol>? protocol,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupArns,
-    pulumi.Output<String>? storageVirtualMachineArn,
-    pulumi.Output<String>? subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? uri,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      fsxFilesystemArn = pulumi.Input.asOptionalInput<String>(fsxFilesystemArn),
-      protocol = pulumi.Input.asOptionalInput<LocationFsxOntapFileSystemProtocol>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupArns = pulumi.Input.asOptionalInput<List<String>>(securityGroupArns),
-      storageVirtualMachineArn = pulumi.Input.asOptionalInput<String>(storageVirtualMachineArn),
-      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.arn,
+    this.creationTime,
+    this.fsxFilesystemArn,
+    this.protocol,
+    this.region,
+    this.securityGroupArns,
+    this.storageVirtualMachineArn,
+    this.subdirectory,
+    this.tags,
+    this.tagsAll,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class LocationFsxOntapFileSystemState {
 
   factory LocationFsxOntapFileSystemState.fromMap(Map<String, dynamic> map) {
     return LocationFsxOntapFileSystemState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      fsxFilesystemArn: map['fsxFilesystemArn'] == null ? null : pulumi.Output.create<String>(map['fsxFilesystemArn'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<LocationFsxOntapFileSystemProtocol>(LocationFsxOntapFileSystemProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupArns: map['securityGroupArns'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupArns'] as List).cast<String>()),
-      storageVirtualMachineArn: map['storageVirtualMachineArn'] == null ? null : pulumi.Output.create<String>(map['storageVirtualMachineArn'] as String),
-      subdirectory: map['subdirectory'] == null ? null : pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      fsxFilesystemArn: map['fsxFilesystemArn'] == null ? null : (map['fsxFilesystemArn'] as String).input(),
+      protocol: map['protocol'] == null ? null : (LocationFsxOntapFileSystemProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupArns: map['securityGroupArns'] == null ? null : ((map['securityGroupArns'] as List).cast<String>()).input(),
+      storageVirtualMachineArn: map['storageVirtualMachineArn'] == null ? null : (map['storageVirtualMachineArn'] as String).input(),
+      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

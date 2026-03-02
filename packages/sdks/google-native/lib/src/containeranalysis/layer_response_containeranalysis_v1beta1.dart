@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Layer holds metadata specific to a layer of a Docker image.
 class LayerResponseContaineranalysisV1beta1 {
   /// The recovered arguments to the Dockerfile directive.
-  final String arguments;
+  final pulumi.Input<String> arguments;
   /// The recovered Dockerfile directive used to construct this layer.
-  final String directive;
+  final pulumi.Input<String> directive;
 
   /// Creates a new [LayerResponseContaineranalysisV1beta1].
   /// [arguments] The recovered arguments to the Dockerfile directive.
@@ -25,8 +26,8 @@ class LayerResponseContaineranalysisV1beta1 {
 
   factory LayerResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return LayerResponseContaineranalysisV1beta1(
-      arguments: map['arguments'] as String,
-      directive: map['directive'] as String,
+      arguments: (map['arguments'] as String).input(),
+      directive: (map['directive'] as String).input(),
     );
   }
 }

@@ -6,13 +6,13 @@ import 'header.dart';
 /// Configuration of otlp
 class OtlpConfiguration {
   /// The endpoint of otlp configuration
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// Headers of otlp configurations
-  final List<Header>? headers;
+  final pulumi.Input<List<Header>>? headers;
   /// Boolean indicating if otlp configuration is insecure
-  final bool? insecure;
+  final pulumi.Input<bool>? insecure;
   /// The name of otlp configuration
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [OtlpConfiguration].
   /// [endpoint] The endpoint of otlp configuration
@@ -29,7 +29,7 @@ class OtlpConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endpoint': ?endpoint,
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<Header, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<Header>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<Header, Map<String, dynamic>>(value, (value) => value.toMap())),
       'insecure': ?insecure,
       'name': ?name,
     };
@@ -37,10 +37,10 @@ class OtlpConfiguration {
 
   factory OtlpConfiguration.fromMap(Map<String, dynamic> map) {
     return OtlpConfiguration(
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<Header>(map['headers'], (value) => Header.fromMap((value as Map).cast<String, dynamic>())),
-      insecure: map['insecure'] == null ? null : map['insecure'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<Header>(map['headers'], (value) => Header.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      insecure: map['insecure'] == null ? null : (map['insecure'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

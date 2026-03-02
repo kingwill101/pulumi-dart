@@ -5,41 +5,41 @@ import 'get_kubernetes_cluster_agent_pool_profile_upgrade_setting.dart';
 
 class GetKubernetesClusterAgentPoolProfile {
   /// If the auto-scaler is enabled.
-  final bool autoScalingEnabled;
+  final pulumi.Input<bool> autoScalingEnabled;
   /// The number of Agents (VMs) in the Pool.
-  final int count;
+  final pulumi.Input<int> count;
   /// Maximum number of nodes for auto-scaling
-  final int maxCount;
+  final pulumi.Input<int> maxCount;
   /// The maximum number of pods that can run on each agent.
-  final int maxPods;
+  final pulumi.Input<int> maxPods;
   /// Minimum number of nodes for auto-scaling
-  final int minCount;
+  final pulumi.Input<int> minCount;
   /// The name of the managed Kubernetes Cluster.
-  final String name;
-  final Map<String, String> nodeLabels;
+  final pulumi.Input<String> name;
+  final pulumi.Input<Map<String, String>> nodeLabels;
   /// If the Public IPs for the nodes in this Agent Pool are enabled.
-  final bool nodePublicIpEnabled;
+  final pulumi.Input<bool> nodePublicIpEnabled;
   /// Resource ID for the Public IP Addresses Prefix for the nodes in this Agent Pool.
-  final String nodePublicIpPrefixId;
-  final List<String> nodeTaints;
+  final pulumi.Input<String> nodePublicIpPrefixId;
+  final pulumi.Input<List<String>> nodeTaints;
   /// Kubernetes version used for the Agents.
-  final String orchestratorVersion;
+  final pulumi.Input<String> orchestratorVersion;
   /// The size of the Agent VM's Operating System Disk in GB.
-  final int osDiskSizeGb;
+  final pulumi.Input<int> osDiskSizeGb;
   /// The Operating System used for the Agents.
-  final String osType;
+  final pulumi.Input<String> osType;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The type of Managed Service Identity that is configured on this Kubernetes Cluster.
-  final String type;
+  final pulumi.Input<String> type;
   /// A `upgrade_settings` block as documented below.
-  final List<GetKubernetesClusterAgentPoolProfileUpgradeSetting> upgradeSettings;
+  final pulumi.Input<List<GetKubernetesClusterAgentPoolProfileUpgradeSetting>> upgradeSettings;
   /// The size of each VM in the Agent Pool (e.g. `Standard_F1`).
-  final String vmSize;
+  final pulumi.Input<String> vmSize;
   /// The ID of the Subnet where the Agents in the Pool are provisioned.
-  final String vnetSubnetId;
+  final pulumi.Input<String> vnetSubnetId;
   /// A list of Availability Zones in which this Kubernetes Cluster is located.
-  final List<String> zones;
+  final pulumi.Input<List<String>> zones;
 
   /// Creates a new [GetKubernetesClusterAgentPoolProfile].
   /// [autoScalingEnabled] If the auto-scaler is enabled.
@@ -100,7 +100,7 @@ class GetKubernetesClusterAgentPoolProfile {
       'osType': osType,
       'tags': tags,
       'type': type,
-      'upgradeSettings': pulumi.Input.encodeList<GetKubernetesClusterAgentPoolProfileUpgradeSetting, Map<String, dynamic>>(upgradeSettings, (value) => value.toMap()),
+      'upgradeSettings': pulumi.Input.mapInputValue<List<GetKubernetesClusterAgentPoolProfileUpgradeSetting>, List<Map<String, dynamic>>>(upgradeSettings, (value) => pulumi.Input.encodeList<GetKubernetesClusterAgentPoolProfileUpgradeSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmSize': vmSize,
       'vnetSubnetId': vnetSubnetId,
       'zones': zones,
@@ -109,25 +109,25 @@ class GetKubernetesClusterAgentPoolProfile {
 
   factory GetKubernetesClusterAgentPoolProfile.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterAgentPoolProfile(
-      autoScalingEnabled: map['autoScalingEnabled'] as bool,
-      count: map['count'] as int,
-      maxCount: map['maxCount'] as int,
-      maxPods: map['maxPods'] as int,
-      minCount: map['minCount'] as int,
-      name: map['name'] as String,
-      nodeLabels: (map['nodeLabels'] as Map).cast<String, String>(),
-      nodePublicIpEnabled: map['nodePublicIpEnabled'] as bool,
-      nodePublicIpPrefixId: map['nodePublicIpPrefixId'] as String,
-      nodeTaints: (map['nodeTaints'] as List).cast<String>(),
-      orchestratorVersion: map['orchestratorVersion'] as String,
-      osDiskSizeGb: map['osDiskSizeGb'] as int,
-      osType: map['osType'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      upgradeSettings: pulumi.Input.decodeList<GetKubernetesClusterAgentPoolProfileUpgradeSetting>(map['upgradeSettings'], (value) => GetKubernetesClusterAgentPoolProfileUpgradeSetting.fromMap((value as Map).cast<String, dynamic>())),
-      vmSize: map['vmSize'] as String,
-      vnetSubnetId: map['vnetSubnetId'] as String,
-      zones: (map['zones'] as List).cast<String>(),
+      autoScalingEnabled: (map['autoScalingEnabled'] as bool).input(),
+      count: (map['count'] as int).input(),
+      maxCount: (map['maxCount'] as int).input(),
+      maxPods: (map['maxPods'] as int).input(),
+      minCount: (map['minCount'] as int).input(),
+      name: (map['name'] as String).input(),
+      nodeLabels: ((map['nodeLabels'] as Map).cast<String, String>()).input(),
+      nodePublicIpEnabled: (map['nodePublicIpEnabled'] as bool).input(),
+      nodePublicIpPrefixId: (map['nodePublicIpPrefixId'] as String).input(),
+      nodeTaints: ((map['nodeTaints'] as List).cast<String>()).input(),
+      orchestratorVersion: (map['orchestratorVersion'] as String).input(),
+      osDiskSizeGb: (map['osDiskSizeGb'] as int).input(),
+      osType: (map['osType'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      upgradeSettings: (pulumi.Input.decodeList<GetKubernetesClusterAgentPoolProfileUpgradeSetting>(map['upgradeSettings'], (value) => GetKubernetesClusterAgentPoolProfileUpgradeSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmSize: (map['vmSize'] as String).input(),
+      vnetSubnetId: (map['vnetSubnetId'] as String).input(),
+      zones: ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

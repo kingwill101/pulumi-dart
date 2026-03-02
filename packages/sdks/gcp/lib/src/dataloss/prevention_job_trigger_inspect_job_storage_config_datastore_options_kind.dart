@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind {
   /// The name of the Datastore kind.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind].
   /// [name] The name of the Datastore kind.
@@ -19,7 +20,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind {
 
   factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

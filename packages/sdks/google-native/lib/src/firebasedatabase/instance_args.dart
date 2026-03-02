@@ -24,17 +24,12 @@ class InstanceArgs {
   /// [project] Optional.
   /// [type] Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
   InstanceArgs({
-    pulumi.Output<String>? databaseId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<InstanceType>? type,
-  }) :
-      databaseId = pulumi.Input.asOptionalInput<String>(databaseId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asOptionalInput<InstanceType>(type);
+    this.databaseId,
+    this.location,
+    this.name,
+    this.project,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      databaseId: map['databaseId'] == null ? null : pulumi.Output.create<String>(map['databaseId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<InstanceType>(InstanceType.fromValue(map['type'] as String)),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: map['type'] == null ? null : (InstanceType.fromValue(map['type'] as String)).input(),
     );
   }
 }

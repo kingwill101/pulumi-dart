@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineDestinationAuthenticationConfigGoogleOidc {
   /// Audience to be used to generate the OIDC Token. The audience claim
   /// identifies the recipient that the JWT is intended for. If
   /// unspecified, the destination URI will be used.
-  final String? audience;
+  final pulumi.Input<String>? audience;
   /// Service account email used to generate the OIDC Token.
   /// The principal who calls this API must have
   /// iam.serviceAccounts.actAs permission in the service account. See
@@ -13,7 +14,7 @@ class PipelineDestinationAuthenticationConfigGoogleOidc {
   /// for more information. Eventarc service agents must have
   /// roles/roles/iam.serviceAccountTokenCreator role to allow the
   /// Pipeline to create OpenID tokens for authenticated requests.
-  final String serviceAccount;
+  final pulumi.Input<String> serviceAccount;
 
   /// Creates a new [PipelineDestinationAuthenticationConfigGoogleOidc].
   /// [audience] Audience to be used to generate the OIDC Token. The audience claim
@@ -32,8 +33,8 @@ class PipelineDestinationAuthenticationConfigGoogleOidc {
 
   factory PipelineDestinationAuthenticationConfigGoogleOidc.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationAuthenticationConfigGoogleOidc(
-      audience: map['audience'] == null ? null : map['audience'] as String,
-      serviceAccount: map['serviceAccount'] as String,
+      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      serviceAccount: (map['serviceAccount'] as String).input(),
     );
   }
 }

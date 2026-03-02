@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceGuest {
   /// Indicates the actual guest device identifier.
-  final String? actual;
+  final pulumi.Input<String>? actual;
   /// Sets the device identifier for the guest network interface.
-  final String? dev;
+  final pulumi.Input<String>? dev;
 
   /// Creates a new [DomainDevicesInterfaceGuest].
   /// [actual] Indicates the actual guest device identifier.
@@ -24,8 +25,8 @@ class DomainDevicesInterfaceGuest {
 
   factory DomainDevicesInterfaceGuest.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceGuest(
-      actual: map['actual'] == null ? null : map['actual'] as String,
-      dev: map['dev'] == null ? null : map['dev'] as String,
+      actual: map['actual'] == null ? null : (map['actual'] as String).input(),
+      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
     );
   }
 }

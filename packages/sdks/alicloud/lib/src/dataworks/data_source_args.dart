@@ -28,19 +28,13 @@ class DataSourceArgs {
   /// [projectId] The ID of the project to which the data source belongs.
   /// [type] The type of data source. For a list of data source types, see the values listed in the API documentation.
   DataSourceArgs({
-    required pulumi.Output<String> connectionProperties,
-    required pulumi.Output<String> connectionPropertiesMode,
-    required pulumi.Output<String> dataSourceName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<int> projectId,
-    required pulumi.Output<String> type,
-  }) :
-      connectionProperties = pulumi.Input.asInput<String>(connectionProperties),
-      connectionPropertiesMode = pulumi.Input.asInput<String>(connectionPropertiesMode),
-      dataSourceName = pulumi.Input.asInput<String>(dataSourceName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      projectId = pulumi.Input.asInput<int>(projectId),
-      type = pulumi.Input.asInput<String>(type);
+    required this.connectionProperties,
+    required this.connectionPropertiesMode,
+    required this.dataSourceName,
+    this.description,
+    required this.projectId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class DataSourceArgs {
 
   factory DataSourceArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceArgs(
-      connectionProperties: pulumi.Output.create<String>(map['connectionProperties'] as String),
-      connectionPropertiesMode: pulumi.Output.create<String>(map['connectionPropertiesMode'] as String),
-      dataSourceName: pulumi.Output.create<String>(map['dataSourceName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      projectId: pulumi.Output.create<int>(map['projectId'] as int),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      connectionProperties: (map['connectionProperties'] as String).input(),
+      connectionPropertiesMode: (map['connectionPropertiesMode'] as String).input(),
+      dataSourceName: (map['dataSourceName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      projectId: (map['projectId'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

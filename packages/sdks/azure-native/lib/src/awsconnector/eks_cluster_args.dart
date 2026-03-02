@@ -17,11 +17,9 @@ class EksClusterArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   EksClusterArgs({
-    pulumi.Output<EksClusterProperties>? properties,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      properties = pulumi.Input.asOptionalInput<EksClusterProperties>(properties),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.properties,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class EksClusterArgs {
 
   factory EksClusterArgs.fromMap(Map<String, dynamic> map) {
     return EksClusterArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<EksClusterProperties>(EksClusterProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      properties: map['properties'] == null ? null : (EksClusterProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

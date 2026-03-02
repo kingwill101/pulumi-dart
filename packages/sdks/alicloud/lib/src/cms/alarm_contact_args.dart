@@ -33,21 +33,14 @@ class AlarmContactArgs {
   /// [describe] The description of the alarm contact.
   /// [lang] The language type of the alarm. Valid values: `en`, `zh-cn`.
   AlarmContactArgs({
-    required pulumi.Output<String> alarmContactName,
-    pulumi.Output<String>? channelsAliim,
-    pulumi.Output<String>? channelsDingWebHook,
-    pulumi.Output<String>? channelsMail,
-    pulumi.Output<String>? channelsSms,
-    required pulumi.Output<String> describe,
-    pulumi.Output<String>? lang,
-  }) :
-      alarmContactName = pulumi.Input.asInput<String>(alarmContactName),
-      channelsAliim = pulumi.Input.asOptionalInput<String>(channelsAliim),
-      channelsDingWebHook = pulumi.Input.asOptionalInput<String>(channelsDingWebHook),
-      channelsMail = pulumi.Input.asOptionalInput<String>(channelsMail),
-      channelsSms = pulumi.Input.asOptionalInput<String>(channelsSms),
-      describe = pulumi.Input.asInput<String>(describe),
-      lang = pulumi.Input.asOptionalInput<String>(lang);
+    required this.alarmContactName,
+    this.channelsAliim,
+    this.channelsDingWebHook,
+    this.channelsMail,
+    this.channelsSms,
+    required this.describe,
+    this.lang,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AlarmContactArgs {
 
   factory AlarmContactArgs.fromMap(Map<String, dynamic> map) {
     return AlarmContactArgs(
-      alarmContactName: pulumi.Output.create<String>(map['alarmContactName'] as String),
-      channelsAliim: map['channelsAliim'] == null ? null : pulumi.Output.create<String>(map['channelsAliim'] as String),
-      channelsDingWebHook: map['channelsDingWebHook'] == null ? null : pulumi.Output.create<String>(map['channelsDingWebHook'] as String),
-      channelsMail: map['channelsMail'] == null ? null : pulumi.Output.create<String>(map['channelsMail'] as String),
-      channelsSms: map['channelsSms'] == null ? null : pulumi.Output.create<String>(map['channelsSms'] as String),
-      describe: pulumi.Output.create<String>(map['describe'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
+      alarmContactName: (map['alarmContactName'] as String).input(),
+      channelsAliim: map['channelsAliim'] == null ? null : (map['channelsAliim'] as String).input(),
+      channelsDingWebHook: map['channelsDingWebHook'] == null ? null : (map['channelsDingWebHook'] as String).input(),
+      channelsMail: map['channelsMail'] == null ? null : (map['channelsMail'] as String).input(),
+      channelsSms: map['channelsSms'] == null ? null : (map['channelsSms'] as String).input(),
+      describe: (map['describe'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
     );
   }
 }

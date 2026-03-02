@@ -34,25 +34,16 @@ class RestoreTestingPlanState {
   /// [tags] Optional.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   RestoreTestingPlanState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<RestoreTestingPlanRecoveryPointSelection>? recoveryPointSelection,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? scheduleExpression,
-    pulumi.Output<String>? scheduleExpressionTimezone,
-    pulumi.Output<int>? startWindowHours,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryPointSelection = pulumi.Input.asOptionalInput<RestoreTestingPlanRecoveryPointSelection>(recoveryPointSelection),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scheduleExpression = pulumi.Input.asOptionalInput<String>(scheduleExpression),
-      scheduleExpressionTimezone = pulumi.Input.asOptionalInput<String>(scheduleExpressionTimezone),
-      startWindowHours = pulumi.Input.asOptionalInput<int>(startWindowHours),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.name,
+    this.recoveryPointSelection,
+    this.region,
+    this.scheduleExpression,
+    this.scheduleExpressionTimezone,
+    this.startWindowHours,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class RestoreTestingPlanState {
 
   factory RestoreTestingPlanState.fromMap(Map<String, dynamic> map) {
     return RestoreTestingPlanState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryPointSelection: map['recoveryPointSelection'] == null ? null : pulumi.Output.create<RestoreTestingPlanRecoveryPointSelection>(RestoreTestingPlanRecoveryPointSelection.fromMap((map['recoveryPointSelection'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scheduleExpression: map['scheduleExpression'] == null ? null : pulumi.Output.create<String>(map['scheduleExpression'] as String),
-      scheduleExpressionTimezone: map['scheduleExpressionTimezone'] == null ? null : pulumi.Output.create<String>(map['scheduleExpressionTimezone'] as String),
-      startWindowHours: map['startWindowHours'] == null ? null : pulumi.Output.create<int>(map['startWindowHours'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryPointSelection: map['recoveryPointSelection'] == null ? null : (RestoreTestingPlanRecoveryPointSelection.fromMap((map['recoveryPointSelection'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scheduleExpression: map['scheduleExpression'] == null ? null : (map['scheduleExpression'] as String).input(),
+      scheduleExpressionTimezone: map['scheduleExpressionTimezone'] == null ? null : (map['scheduleExpressionTimezone'] as String).input(),
+      startWindowHours: map['startWindowHours'] == null ? null : (map['startWindowHours'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

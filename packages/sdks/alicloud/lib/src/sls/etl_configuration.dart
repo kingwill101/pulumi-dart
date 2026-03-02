@@ -5,21 +5,21 @@ import 'etl_configuration_sink.dart';
 
 class EtlConfiguration {
   /// The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
-  final int fromTime;
+  final pulumi.Input<int> fromTime;
   /// The syntax type used for data transformation.
-  final String lang;
+  final pulumi.Input<String> lang;
   /// The name of the destination Logstore.
-  final String logstore;
+  final pulumi.Input<String> logstore;
   /// Advanced parameter configuration.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
   /// The ARN of the role authorized to write to the destination Logstore.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// Processing script.
-  final String script;
+  final pulumi.Input<String> script;
   /// List of output destinations for processing results.   See `sink` below.
-  final List<EtlConfigurationSink> sinks;
+  final pulumi.Input<List<EtlConfigurationSink>> sinks;
   /// End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
-  final int toTime;
+  final pulumi.Input<int> toTime;
 
   /// Creates a new [EtlConfiguration].
   /// [fromTime] The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
@@ -49,21 +49,21 @@ class EtlConfiguration {
       'parameters': ?parameters,
       'roleArn': roleArn,
       'script': script,
-      'sinks': pulumi.Input.encodeList<EtlConfigurationSink, Map<String, dynamic>>(sinks, (value) => value.toMap()),
+      'sinks': pulumi.Input.mapInputValue<List<EtlConfigurationSink>, List<Map<String, dynamic>>>(sinks, (value) => pulumi.Input.encodeList<EtlConfigurationSink, Map<String, dynamic>>(value, (value) => value.toMap())),
       'toTime': toTime,
     };
   }
 
   factory EtlConfiguration.fromMap(Map<String, dynamic> map) {
     return EtlConfiguration(
-      fromTime: map['fromTime'] as int,
-      lang: map['lang'] as String,
-      logstore: map['logstore'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      roleArn: map['roleArn'] as String,
-      script: map['script'] as String,
-      sinks: pulumi.Input.decodeList<EtlConfigurationSink>(map['sinks'], (value) => EtlConfigurationSink.fromMap((value as Map).cast<String, dynamic>())),
-      toTime: map['toTime'] as int,
+      fromTime: (map['fromTime'] as int).input(),
+      lang: (map['lang'] as String).input(),
+      logstore: (map['logstore'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      script: (map['script'] as String).input(),
+      sinks: (pulumi.Input.decodeList<EtlConfigurationSink>(map['sinks'], (value) => EtlConfigurationSink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      toTime: (map['toTime'] as int).input(),
     );
   }
 }

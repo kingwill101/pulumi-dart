@@ -19,15 +19,11 @@ class IdentityProviderTwitterState {
   /// [apiSecretKey] App Consumer API secret key for Twitter.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   IdentityProviderTwitterState({
-    pulumi.Output<String>? apiKey,
-    pulumi.Output<String>? apiManagementName,
-    pulumi.Output<String>? apiSecretKey,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      apiKey = pulumi.Input.asOptionalInput<String>(apiKey),
-      apiManagementName = pulumi.Input.asOptionalInput<String>(apiManagementName),
-      apiSecretKey = pulumi.Input.asOptionalInput<String>(apiSecretKey),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.apiKey,
+    this.apiManagementName,
+    this.apiSecretKey,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class IdentityProviderTwitterState {
 
   factory IdentityProviderTwitterState.fromMap(Map<String, dynamic> map) {
     return IdentityProviderTwitterState(
-      apiKey: map['apiKey'] == null ? null : pulumi.Output.create<String>(map['apiKey'] as String),
-      apiManagementName: map['apiManagementName'] == null ? null : pulumi.Output.create<String>(map['apiManagementName'] as String),
-      apiSecretKey: map['apiSecretKey'] == null ? null : pulumi.Output.create<String>(map['apiSecretKey'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
+      apiSecretKey: map['apiSecretKey'] == null ? null : (map['apiSecretKey'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

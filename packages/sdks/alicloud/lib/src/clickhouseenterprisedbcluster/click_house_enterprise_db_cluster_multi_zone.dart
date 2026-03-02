@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClickHouseEnterpriseDbClusterMultiZone {
   /// List of vSwitch IDs.
-  final List<String>? vswitchIds;
+  final pulumi.Input<List<String>>? vswitchIds;
   /// Zone ID.
-  final String? zoneId;
+  final pulumi.Input<String>? zoneId;
 
   /// Creates a new [ClickHouseEnterpriseDbClusterMultiZone].
   /// [vswitchIds] List of vSwitch IDs.
@@ -24,8 +25,8 @@ class ClickHouseEnterpriseDbClusterMultiZone {
 
   factory ClickHouseEnterpriseDbClusterMultiZone.fromMap(Map<String, dynamic> map) {
     return ClickHouseEnterpriseDbClusterMultiZone(
-      vswitchIds: map['vswitchIds'] == null ? null : (map['vswitchIds'] as List).cast<String>(),
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomerManagedPolicyAttachmentCustomerManagedPolicyReference {
   /// Name of the customer managed IAM Policy to be attached.
-  final String name;
+  final pulumi.Input<String> name;
   /// The path to the IAM policy to be attached. The default is `/`. See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names) for more information.
-  final String? path;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [CustomerManagedPolicyAttachmentCustomerManagedPolicyReference].
   /// [name] Name of the customer managed IAM Policy to be attached.
@@ -24,8 +25,8 @@ class CustomerManagedPolicyAttachmentCustomerManagedPolicyReference {
 
   factory CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap(Map<String, dynamic> map) {
     return CustomerManagedPolicyAttachmentCustomerManagedPolicyReference(
-      name: map['name'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
+      name: (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

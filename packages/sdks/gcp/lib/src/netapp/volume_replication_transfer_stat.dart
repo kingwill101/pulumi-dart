@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeReplicationTransferStat {
   /// (Output)
   /// The elapsed time since the creation of the snapshot on the source volume that was last replicated
   /// to the destination volume. Lag time represents the difference in age of the destination volume
   /// data in relation to the source volume data.
-  final String? lagDuration;
+  final pulumi.Input<String>? lagDuration;
   /// (Output)
   /// Size of last completed transfer in bytes.
-  final String? lastTransferBytes;
+  final pulumi.Input<String>? lastTransferBytes;
   /// (Output)
   /// Time taken during last completed transfer.
-  final String? lastTransferDuration;
+  final pulumi.Input<String>? lastTransferDuration;
   /// (Output)
   /// Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-  final String? lastTransferEndTime;
+  final pulumi.Input<String>? lastTransferEndTime;
   /// (Output)
   /// A message describing the cause of the last transfer failure.
-  final String? lastTransferError;
+  final pulumi.Input<String>? lastTransferError;
   /// (Output)
   /// Cumulative time taken across all transfers for the replication relationship.
-  final String? totalTransferDuration;
+  final pulumi.Input<String>? totalTransferDuration;
   /// (Output)
   /// Cumulative bytes transferred so far for the replication relationship.
-  final String? transferBytes;
+  final pulumi.Input<String>? transferBytes;
   /// (Output)
   /// Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-  final String? updateTime;
+  final pulumi.Input<String>? updateTime;
 
   /// Creates a new [VolumeReplicationTransferStat].
   /// [lagDuration] (Output)
@@ -64,14 +65,14 @@ class VolumeReplicationTransferStat {
 
   factory VolumeReplicationTransferStat.fromMap(Map<String, dynamic> map) {
     return VolumeReplicationTransferStat(
-      lagDuration: map['lagDuration'] == null ? null : map['lagDuration'] as String,
-      lastTransferBytes: map['lastTransferBytes'] == null ? null : map['lastTransferBytes'] as String,
-      lastTransferDuration: map['lastTransferDuration'] == null ? null : map['lastTransferDuration'] as String,
-      lastTransferEndTime: map['lastTransferEndTime'] == null ? null : map['lastTransferEndTime'] as String,
-      lastTransferError: map['lastTransferError'] == null ? null : map['lastTransferError'] as String,
-      totalTransferDuration: map['totalTransferDuration'] == null ? null : map['totalTransferDuration'] as String,
-      transferBytes: map['transferBytes'] == null ? null : map['transferBytes'] as String,
-      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
+      lagDuration: map['lagDuration'] == null ? null : (map['lagDuration'] as String).input(),
+      lastTransferBytes: map['lastTransferBytes'] == null ? null : (map['lastTransferBytes'] as String).input(),
+      lastTransferDuration: map['lastTransferDuration'] == null ? null : (map['lastTransferDuration'] as String).input(),
+      lastTransferEndTime: map['lastTransferEndTime'] == null ? null : (map['lastTransferEndTime'] as String).input(),
+      lastTransferError: map['lastTransferError'] == null ? null : (map['lastTransferError'] as String).input(),
+      totalTransferDuration: map['totalTransferDuration'] == null ? null : (map['totalTransferDuration'] as String).input(),
+      transferBytes: map['transferBytes'] == null ? null : (map['transferBytes'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

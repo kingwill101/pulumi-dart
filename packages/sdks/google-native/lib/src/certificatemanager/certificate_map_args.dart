@@ -26,19 +26,13 @@ class CertificateMapArgs {
   /// [name] A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.
   /// [project] Optional.
   CertificateMapArgs({
-    required pulumi.Output<String> certificateMapId,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      certificateMapId = pulumi.Input.asInput<String>(certificateMapId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.certificateMapId,
+    this.description,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class CertificateMapArgs {
 
   factory CertificateMapArgs.fromMap(Map<String, dynamic> map) {
     return CertificateMapArgs(
-      certificateMapId: pulumi.Output.create<String>(map['certificateMapId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      certificateMapId: (map['certificateMapId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

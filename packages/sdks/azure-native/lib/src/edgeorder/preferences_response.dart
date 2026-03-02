@@ -10,15 +10,15 @@ import 'transport_preferences_response.dart';
 /// Preferences related to the order.
 class PreferencesResponse {
   /// Preferences related to the Encryption.
-  final EncryptionPreferencesResponse? encryptionPreferences;
+  final pulumi.Input<EncryptionPreferencesResponse>? encryptionPreferences;
   /// Preferences related to the Management resource.
-  final ManagementResourcePreferencesResponse? managementResourcePreferences;
+  final pulumi.Input<ManagementResourcePreferencesResponse>? managementResourcePreferences;
   /// Notification preferences.
-  final List<NotificationPreferenceResponse>? notificationPreferences;
+  final pulumi.Input<List<NotificationPreferenceResponse>>? notificationPreferences;
   /// Preferences related to the Term commitment.
-  final TermCommitmentPreferencesResponse? termCommitmentPreferences;
+  final pulumi.Input<TermCommitmentPreferencesResponse>? termCommitmentPreferences;
   /// Preferences related to the shipment logistics of the order.
-  final TransportPreferencesResponse? transportPreferences;
+  final pulumi.Input<TransportPreferencesResponse>? transportPreferences;
 
   /// Creates a new [PreferencesResponse].
   /// [encryptionPreferences] Preferences related to the Encryption.
@@ -36,21 +36,21 @@ class PreferencesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionPreferences': ?encryptionPreferences == null ? null : encryptionPreferences!.toMap(),
-      'managementResourcePreferences': ?managementResourcePreferences == null ? null : managementResourcePreferences!.toMap(),
-      'notificationPreferences': ?notificationPreferences == null ? null : pulumi.Input.encodeList<NotificationPreferenceResponse, Map<String, dynamic>>(notificationPreferences!, (value) => value.toMap()),
-      'termCommitmentPreferences': ?termCommitmentPreferences == null ? null : termCommitmentPreferences!.toMap(),
-      'transportPreferences': ?transportPreferences == null ? null : transportPreferences!.toMap(),
+      'encryptionPreferences': ?pulumi.Input.mapOptionalInputValue<EncryptionPreferencesResponse, Map<String, dynamic>>(encryptionPreferences, (value) => value.toMap()),
+      'managementResourcePreferences': ?pulumi.Input.mapOptionalInputValue<ManagementResourcePreferencesResponse, Map<String, dynamic>>(managementResourcePreferences, (value) => value.toMap()),
+      'notificationPreferences': ?pulumi.Input.mapOptionalInputValue<List<NotificationPreferenceResponse>, List<Map<String, dynamic>>>(notificationPreferences, (value) => pulumi.Input.encodeList<NotificationPreferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'termCommitmentPreferences': ?pulumi.Input.mapOptionalInputValue<TermCommitmentPreferencesResponse, Map<String, dynamic>>(termCommitmentPreferences, (value) => value.toMap()),
+      'transportPreferences': ?pulumi.Input.mapOptionalInputValue<TransportPreferencesResponse, Map<String, dynamic>>(transportPreferences, (value) => value.toMap()),
     };
   }
 
   factory PreferencesResponse.fromMap(Map<String, dynamic> map) {
     return PreferencesResponse(
-      encryptionPreferences: map['encryptionPreferences'] == null ? null : EncryptionPreferencesResponse.fromMap((map['encryptionPreferences'] as Map).cast<String, dynamic>()),
-      managementResourcePreferences: map['managementResourcePreferences'] == null ? null : ManagementResourcePreferencesResponse.fromMap((map['managementResourcePreferences'] as Map).cast<String, dynamic>()),
-      notificationPreferences: map['notificationPreferences'] == null ? null : pulumi.Input.decodeList<NotificationPreferenceResponse>(map['notificationPreferences'], (value) => NotificationPreferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      termCommitmentPreferences: map['termCommitmentPreferences'] == null ? null : TermCommitmentPreferencesResponse.fromMap((map['termCommitmentPreferences'] as Map).cast<String, dynamic>()),
-      transportPreferences: map['transportPreferences'] == null ? null : TransportPreferencesResponse.fromMap((map['transportPreferences'] as Map).cast<String, dynamic>()),
+      encryptionPreferences: map['encryptionPreferences'] == null ? null : (EncryptionPreferencesResponse.fromMap((map['encryptionPreferences'] as Map).cast<String, dynamic>())).input(),
+      managementResourcePreferences: map['managementResourcePreferences'] == null ? null : (ManagementResourcePreferencesResponse.fromMap((map['managementResourcePreferences'] as Map).cast<String, dynamic>())).input(),
+      notificationPreferences: map['notificationPreferences'] == null ? null : (pulumi.Input.decodeList<NotificationPreferenceResponse>(map['notificationPreferences'], (value) => NotificationPreferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      termCommitmentPreferences: map['termCommitmentPreferences'] == null ? null : (TermCommitmentPreferencesResponse.fromMap((map['termCommitmentPreferences'] as Map).cast<String, dynamic>())).input(),
+      transportPreferences: map['transportPreferences'] == null ? null : (TransportPreferencesResponse.fromMap((map['transportPreferences'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

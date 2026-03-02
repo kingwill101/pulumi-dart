@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiJobSourceDataSourceSettingDataSourceProperties {
   /// Data Source Encoding
-  final String? encoding;
+  final pulumi.Input<String>? encoding;
   /// Data Source Time Zone
-  final String? timezone;
+  final pulumi.Input<String>? timezone;
 
   /// Creates a new [DiJobSourceDataSourceSettingDataSourceProperties].
   /// [encoding] Data Source Encoding
@@ -24,8 +25,8 @@ class DiJobSourceDataSourceSettingDataSourceProperties {
 
   factory DiJobSourceDataSourceSettingDataSourceProperties.fromMap(Map<String, dynamic> map) {
     return DiJobSourceDataSourceSettingDataSourceProperties(
-      encoding: map['encoding'] == null ? null : map['encoding'] as String,
-      timezone: map['timezone'] == null ? null : map['timezone'] as String,
+      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
     );
   }
 }

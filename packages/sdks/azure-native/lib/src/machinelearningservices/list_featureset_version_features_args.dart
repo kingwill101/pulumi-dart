@@ -28,19 +28,13 @@ class ListFeaturesetVersionFeaturesArgs {
   /// [version] Featureset Version identifier. This is case-sensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   ListFeaturesetVersionFeaturesArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skip,
-    pulumi.Output<String>? tags,
-    required pulumi.Output<String> version,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skip = pulumi.Input.asOptionalInput<String>(skip),
-      tags = pulumi.Input.asOptionalInput<String>(tags),
-      version = pulumi.Input.asInput<String>(version),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.name,
+    required this.resourceGroupName,
+    this.skip,
+    this.tags,
+    required this.version,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ListFeaturesetVersionFeaturesArgs {
 
   factory ListFeaturesetVersionFeaturesArgs.fromMap(Map<String, dynamic> map) {
     return ListFeaturesetVersionFeaturesArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skip: map['skip'] == null ? null : pulumi.Output.create<String>(map['skip'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<String>(map['tags'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
+      tags: map['tags'] == null ? null : (map['tags'] as String).input(),
+      version: (map['version'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

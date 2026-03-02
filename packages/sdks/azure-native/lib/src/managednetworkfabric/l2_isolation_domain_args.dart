@@ -34,23 +34,15 @@ class L2IsolationDomainArgs {
   /// [tags] Resource tags.
   /// [vlanId] Vlan Identifier of the Network Fabric. Example: 501.
   L2IsolationDomainArgs({
-    pulumi.Output<String>? annotation,
-    pulumi.Output<String>? l2IsolationDomainName,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? mtu,
-    required pulumi.Output<String> networkFabricId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<int> vlanId,
-  }) :
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      l2IsolationDomainName = pulumi.Input.asOptionalInput<String>(l2IsolationDomainName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mtu = pulumi.Input.asOptionalInput<int>(mtu),
-      networkFabricId = pulumi.Input.asInput<String>(networkFabricId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vlanId = pulumi.Input.asInput<int>(vlanId);
+    this.annotation,
+    this.l2IsolationDomainName,
+    this.location,
+    this.mtu,
+    required this.networkFabricId,
+    required this.resourceGroupName,
+    this.tags,
+    required this.vlanId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class L2IsolationDomainArgs {
 
   factory L2IsolationDomainArgs.fromMap(Map<String, dynamic> map) {
     return L2IsolationDomainArgs(
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      l2IsolationDomainName: map['l2IsolationDomainName'] == null ? null : pulumi.Output.create<String>(map['l2IsolationDomainName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mtu: map['mtu'] == null ? null : pulumi.Output.create<int>(map['mtu'] as int),
-      networkFabricId: pulumi.Output.create<String>(map['networkFabricId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vlanId: pulumi.Output.create<int>(map['vlanId'] as int),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      l2IsolationDomainName: map['l2IsolationDomainName'] == null ? null : (map['l2IsolationDomainName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      networkFabricId: (map['networkFabricId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vlanId: (map['vlanId'] as int).input(),
     );
   }
 }

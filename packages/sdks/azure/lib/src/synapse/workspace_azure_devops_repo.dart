@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceAzureDevopsRepo {
   /// Specifies the Azure DevOps account name.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// Specifies the collaboration branch of the repository to get code from.
-  final String branchName;
+  final pulumi.Input<String> branchName;
   /// The last commit ID.
-  final String? lastCommitId;
+  final pulumi.Input<String>? lastCommitId;
   /// Specifies the name of the Azure DevOps project.
-  final String projectName;
+  final pulumi.Input<String> projectName;
   /// Specifies the name of the git repository.
-  final String repositoryName;
+  final pulumi.Input<String> repositoryName;
   /// Specifies the root folder within the repository. Set to `/` for the top level.
-  final String rootFolder;
+  final pulumi.Input<String> rootFolder;
   /// the ID of the tenant for the Azure DevOps account.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [WorkspaceAzureDevopsRepo].
   /// [accountName] Specifies the Azure DevOps account name.
@@ -49,13 +50,13 @@ class WorkspaceAzureDevopsRepo {
 
   factory WorkspaceAzureDevopsRepo.fromMap(Map<String, dynamic> map) {
     return WorkspaceAzureDevopsRepo(
-      accountName: map['accountName'] as String,
-      branchName: map['branchName'] as String,
-      lastCommitId: map['lastCommitId'] == null ? null : map['lastCommitId'] as String,
-      projectName: map['projectName'] as String,
-      repositoryName: map['repositoryName'] as String,
-      rootFolder: map['rootFolder'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      accountName: (map['accountName'] as String).input(),
+      branchName: (map['branchName'] as String).input(),
+      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
+      rootFolder: (map['rootFolder'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

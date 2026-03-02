@@ -6,10 +6,10 @@ import 'metric_criteria.dart';
 /// Specifies the metric alert criteria for a single resource that has multiple metric criteria.
 class MetricAlertSingleResourceMultipleMetricCriteria {
   /// The list of metric criteria for this 'all of' operation.
-  final List<MetricCriteria>? allOf;
+  final pulumi.Input<List<MetricCriteria>>? allOf;
   /// specifies the type of the alert criteria.
   /// Expected value is 'Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria'.
-  final String odataType;
+  final pulumi.Input<String> odataType;
 
   /// Creates a new [MetricAlertSingleResourceMultipleMetricCriteria].
   /// [allOf] The list of metric criteria for this 'all of' operation.
@@ -21,15 +21,15 @@ class MetricAlertSingleResourceMultipleMetricCriteria {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allOf': ?allOf == null ? null : pulumi.Input.encodeList<MetricCriteria, Map<String, dynamic>>(allOf!, (value) => value.toMap()),
+      'allOf': ?pulumi.Input.mapOptionalInputValue<List<MetricCriteria>, List<Map<String, dynamic>>>(allOf, (value) => pulumi.Input.encodeList<MetricCriteria, Map<String, dynamic>>(value, (value) => value.toMap())),
       'odataType': odataType,
     };
   }
 
   factory MetricAlertSingleResourceMultipleMetricCriteria.fromMap(Map<String, dynamic> map) {
     return MetricAlertSingleResourceMultipleMetricCriteria(
-      allOf: map['allOf'] == null ? null : pulumi.Input.decodeList<MetricCriteria>(map['allOf'], (value) => MetricCriteria.fromMap((value as Map).cast<String, dynamic>())),
-      odataType: map['odataType'] as String,
+      allOf: map['allOf'] == null ? null : (pulumi.Input.decodeList<MetricCriteria>(map['allOf'], (value) => MetricCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      odataType: (map['odataType'] as String).input(),
     );
   }
 }

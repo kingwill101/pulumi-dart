@@ -53,31 +53,19 @@ class NetworkState {
   /// [updateTime] The time when the subnet was last updated.
   /// [zone] The name of the target Distributed Cloud Edge zone.
   NetworkState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? mtu,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkId,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<String>? zone,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mtu = pulumi.Input.asOptionalInput<int>(mtu),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkId = pulumi.Input.asOptionalInput<String>(networkId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.mtu,
+    this.name,
+    this.networkId,
+    this.project,
+    this.pulumiLabels,
+    this.updateTime,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,18 +86,18 @@ class NetworkState {
 
   factory NetworkState.fromMap(Map<String, dynamic> map) {
     return NetworkState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mtu: map['mtu'] == null ? null : pulumi.Output.create<int>(map['mtu'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkId: map['networkId'] == null ? null : pulumi.Output.create<String>(map['networkId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

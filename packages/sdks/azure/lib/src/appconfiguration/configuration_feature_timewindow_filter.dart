@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationFeatureTimewindowFilter {
   /// The latest timestamp the feature is enabled. The timestamp must be in RFC3339 format.
-  final String? end;
+  final pulumi.Input<String>? end;
   /// The earliest timestamp the feature is enabled. The timestamp must be in RFC3339 format.
-  final String? start;
+  final pulumi.Input<String>? start;
 
   /// Creates a new [ConfigurationFeatureTimewindowFilter].
   /// [end] The latest timestamp the feature is enabled. The timestamp must be in RFC3339 format.
@@ -24,8 +25,8 @@ class ConfigurationFeatureTimewindowFilter {
 
   factory ConfigurationFeatureTimewindowFilter.fromMap(Map<String, dynamic> map) {
     return ConfigurationFeatureTimewindowFilter(
-      end: map['end'] == null ? null : map['end'] as String,
-      start: map['start'] == null ? null : map['start'] as String,
+      end: map['end'] == null ? null : (map['end'] as String).input(),
+      start: map['start'] == null ? null : (map['start'] as String).input(),
     );
   }
 }

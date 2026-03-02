@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerDefaultActionRedirect {
   /// Hostname. This component is not percent-encoded. The hostname can contain `#{host}`. Defaults to `#{host}`.
-  final String? host;
+  final pulumi.Input<String>? host;
   /// Absolute path, starting with the leading "/". This component is not percent-encoded. The path can contain #{host}, #{path}, and #{port}. Defaults to `/#{path}`.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Port. Specify a value from `1` to `65535` or `#{port}`. Defaults to `#{port}`.
-  final String? port;
+  final pulumi.Input<String>? port;
   /// Protocol. Valid values are `HTTP`, `HTTPS`, or `#{protocol}`. Defaults to `#{protocol}`.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Query parameters, URL-encoded when necessary, but not percent-encoded. Do not include the leading "?". Defaults to `#{query}`.
-  final String? query;
+  final pulumi.Input<String>? query;
   /// HTTP redirect code. The redirect is either permanent (`HTTP_301`) or temporary (`HTTP_302`).
   ///
   /// The following arguments are optional:
-  final String statusCode;
+  final pulumi.Input<String> statusCode;
 
   /// Creates a new [ListenerDefaultActionRedirect].
   /// [host] Hostname. This component is not percent-encoded. The hostname can contain `#{host}`. Defaults to `#{host}`.
@@ -46,12 +47,12 @@ class ListenerDefaultActionRedirect {
 
   factory ListenerDefaultActionRedirect.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionRedirect(
-      host: map['host'] == null ? null : map['host'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      port: map['port'] == null ? null : map['port'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      query: map['query'] == null ? null : map['query'] as String,
-      statusCode: map['statusCode'] as String,
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      query: map['query'] == null ? null : (map['query'] as String).input(),
+      statusCode: (map['statusCode'] as String).input(),
     );
   }
 }

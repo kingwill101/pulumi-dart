@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcEndpointVpcOptions {
-  final List<String>? availabilityZones;
+  final pulumi.Input<List<String>>? availabilityZones;
   /// The list of security group IDs associated with the VPC endpoints for the domain. If you do not provide a security group ID, OpenSearch Service uses the default security group for the VPC.
-  final List<String>? securityGroupIds;
+  final pulumi.Input<List<String>>? securityGroupIds;
   /// A list of subnet IDs associated with the VPC endpoints for the domain. If your domain uses multiple Availability Zones, you need to provide two subnet IDs, one per zone. Otherwise, provide only one.
-  final List<String> subnetIds;
-  final String? vpcId;
+  final pulumi.Input<List<String>> subnetIds;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [VpcEndpointVpcOptions].
   /// [availabilityZones] Optional.
@@ -32,10 +33,10 @@ class VpcEndpointVpcOptions {
 
   factory VpcEndpointVpcOptions.fromMap(Map<String, dynamic> map) {
     return VpcEndpointVpcOptions(
-      availabilityZones: map['availabilityZones'] == null ? null : (map['availabilityZones'] as List).cast<String>(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

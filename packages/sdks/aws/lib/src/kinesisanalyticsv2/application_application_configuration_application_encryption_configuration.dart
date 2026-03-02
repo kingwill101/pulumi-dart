@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationApplicationEncryptionConfiguration {
   /// The ARN of the KMS key to use for encryption. Required when `key_type` is set to `CUSTOMER_MANAGED_KEY`. The KMS key must be in the same region as the application.
-  final String? keyId;
+  final pulumi.Input<String>? keyId;
   /// The type of encryption key to use. Valid values: `CUSTOMER_MANAGED_KEY`, `AWS_OWNED_KEY`.
-  final String keyType;
+  final pulumi.Input<String> keyType;
 
   /// Creates a new [ApplicationApplicationConfigurationApplicationEncryptionConfiguration].
   /// [keyId] The ARN of the KMS key to use for encryption. Required when `key_type` is set to `CUSTOMER_MANAGED_KEY`. The KMS key must be in the same region as the application.
@@ -24,8 +25,8 @@ class ApplicationApplicationConfigurationApplicationEncryptionConfiguration {
 
   factory ApplicationApplicationConfigurationApplicationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationApplicationEncryptionConfiguration(
-      keyId: map['keyId'] == null ? null : map['keyId'] as String,
-      keyType: map['keyType'] as String,
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      keyType: (map['keyType'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a single data point in the Chart.
 class ReportSummaryChartDataDataPointResponse {
   /// The X-axis label for this data point.
-  final String label;
+  final pulumi.Input<String> label;
   /// The Y-axis value for this data point.
-  final double value;
+  final pulumi.Input<double> value;
 
   /// Creates a new [ReportSummaryChartDataDataPointResponse].
   /// [label] The X-axis label for this data point.
@@ -25,8 +26,8 @@ class ReportSummaryChartDataDataPointResponse {
 
   factory ReportSummaryChartDataDataPointResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryChartDataDataPointResponse(
-      label: map['label'] as String,
-      value: map['value'] as double,
+      label: (map['label'] as String).input(),
+      value: (map['value'] as double).input(),
     );
   }
 }

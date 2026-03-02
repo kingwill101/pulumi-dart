@@ -6,42 +6,42 @@ import 'region_network_firewall_policy_rule_match_src_secure_tag.dart';
 
 class RegionNetworkFirewallPolicyRuleMatch {
   /// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
-  final List<String>? destAddressGroups;
+  final pulumi.Input<List<String>>? destAddressGroups;
   /// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
-  final List<String>? destFqdns;
+  final pulumi.Input<List<String>>? destFqdns;
   /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
-  final List<String>? destIpRanges;
+  final pulumi.Input<List<String>>? destIpRanges;
   /// Network scope of the traffic destination.
   /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
-  final String? destNetworkScope;
+  final pulumi.Input<String>? destNetworkScope;
   /// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
-  final List<String>? destRegionCodes;
+  final pulumi.Input<List<String>>? destRegionCodes;
   /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
-  final List<String>? destThreatIntelligences;
+  final pulumi.Input<List<String>>? destThreatIntelligences;
   /// Pairs of IP protocols and ports that the rule should match.
   /// Structure is documented below.
-  final List<RegionNetworkFirewallPolicyRuleMatchLayer4Config> layer4Configs;
+  final pulumi.Input<List<RegionNetworkFirewallPolicyRuleMatchLayer4Config>> layer4Configs;
   /// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
-  final List<String>? srcAddressGroups;
+  final pulumi.Input<List<String>>? srcAddressGroups;
   /// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
-  final List<String>? srcFqdns;
+  final pulumi.Input<List<String>>? srcFqdns;
   /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
-  final List<String>? srcIpRanges;
+  final pulumi.Input<List<String>>? srcIpRanges;
   /// Network scope of the traffic source.
   /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
-  final String? srcNetworkScope;
+  final pulumi.Input<String>? srcNetworkScope;
   /// Networks of the traffic source. It can be either a full or partial url.
-  final List<String>? srcNetworks;
+  final pulumi.Input<List<String>>? srcNetworks;
   /// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
-  final List<String>? srcRegionCodes;
+  final pulumi.Input<List<String>>? srcRegionCodes;
   /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
   /// Structure is documented below.
-  final List<RegionNetworkFirewallPolicyRuleMatchSrcSecureTag>? srcSecureTags;
+  final pulumi.Input<List<RegionNetworkFirewallPolicyRuleMatchSrcSecureTag>>? srcSecureTags;
   /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
   ///
   ///
   /// <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
-  final List<String>? srcThreatIntelligences;
+  final pulumi.Input<List<String>>? srcThreatIntelligences;
 
   /// Creates a new [RegionNetworkFirewallPolicyRuleMatch].
   /// [destAddressGroups] Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
@@ -85,35 +85,35 @@ class RegionNetworkFirewallPolicyRuleMatch {
       'destNetworkScope': ?destNetworkScope,
       'destRegionCodes': ?destRegionCodes,
       'destThreatIntelligences': ?destThreatIntelligences,
-      'layer4Configs': pulumi.Input.encodeList<RegionNetworkFirewallPolicyRuleMatchLayer4Config, Map<String, dynamic>>(layer4Configs, (value) => value.toMap()),
+      'layer4Configs': pulumi.Input.mapInputValue<List<RegionNetworkFirewallPolicyRuleMatchLayer4Config>, List<Map<String, dynamic>>>(layer4Configs, (value) => pulumi.Input.encodeList<RegionNetworkFirewallPolicyRuleMatchLayer4Config, Map<String, dynamic>>(value, (value) => value.toMap())),
       'srcAddressGroups': ?srcAddressGroups,
       'srcFqdns': ?srcFqdns,
       'srcIpRanges': ?srcIpRanges,
       'srcNetworkScope': ?srcNetworkScope,
       'srcNetworks': ?srcNetworks,
       'srcRegionCodes': ?srcRegionCodes,
-      'srcSecureTags': ?srcSecureTags == null ? null : pulumi.Input.encodeList<RegionNetworkFirewallPolicyRuleMatchSrcSecureTag, Map<String, dynamic>>(srcSecureTags!, (value) => value.toMap()),
+      'srcSecureTags': ?pulumi.Input.mapOptionalInputValue<List<RegionNetworkFirewallPolicyRuleMatchSrcSecureTag>, List<Map<String, dynamic>>>(srcSecureTags, (value) => pulumi.Input.encodeList<RegionNetworkFirewallPolicyRuleMatchSrcSecureTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'srcThreatIntelligences': ?srcThreatIntelligences,
     };
   }
 
   factory RegionNetworkFirewallPolicyRuleMatch.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyRuleMatch(
-      destAddressGroups: map['destAddressGroups'] == null ? null : (map['destAddressGroups'] as List).cast<String>(),
-      destFqdns: map['destFqdns'] == null ? null : (map['destFqdns'] as List).cast<String>(),
-      destIpRanges: map['destIpRanges'] == null ? null : (map['destIpRanges'] as List).cast<String>(),
-      destNetworkScope: map['destNetworkScope'] == null ? null : map['destNetworkScope'] as String,
-      destRegionCodes: map['destRegionCodes'] == null ? null : (map['destRegionCodes'] as List).cast<String>(),
-      destThreatIntelligences: map['destThreatIntelligences'] == null ? null : (map['destThreatIntelligences'] as List).cast<String>(),
-      layer4Configs: pulumi.Input.decodeList<RegionNetworkFirewallPolicyRuleMatchLayer4Config>(map['layer4Configs'], (value) => RegionNetworkFirewallPolicyRuleMatchLayer4Config.fromMap((value as Map).cast<String, dynamic>())),
-      srcAddressGroups: map['srcAddressGroups'] == null ? null : (map['srcAddressGroups'] as List).cast<String>(),
-      srcFqdns: map['srcFqdns'] == null ? null : (map['srcFqdns'] as List).cast<String>(),
-      srcIpRanges: map['srcIpRanges'] == null ? null : (map['srcIpRanges'] as List).cast<String>(),
-      srcNetworkScope: map['srcNetworkScope'] == null ? null : map['srcNetworkScope'] as String,
-      srcNetworks: map['srcNetworks'] == null ? null : (map['srcNetworks'] as List).cast<String>(),
-      srcRegionCodes: map['srcRegionCodes'] == null ? null : (map['srcRegionCodes'] as List).cast<String>(),
-      srcSecureTags: map['srcSecureTags'] == null ? null : pulumi.Input.decodeList<RegionNetworkFirewallPolicyRuleMatchSrcSecureTag>(map['srcSecureTags'], (value) => RegionNetworkFirewallPolicyRuleMatchSrcSecureTag.fromMap((value as Map).cast<String, dynamic>())),
-      srcThreatIntelligences: map['srcThreatIntelligences'] == null ? null : (map['srcThreatIntelligences'] as List).cast<String>(),
+      destAddressGroups: map['destAddressGroups'] == null ? null : ((map['destAddressGroups'] as List).cast<String>()).input(),
+      destFqdns: map['destFqdns'] == null ? null : ((map['destFqdns'] as List).cast<String>()).input(),
+      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges'] as List).cast<String>()).input(),
+      destNetworkScope: map['destNetworkScope'] == null ? null : (map['destNetworkScope'] as String).input(),
+      destRegionCodes: map['destRegionCodes'] == null ? null : ((map['destRegionCodes'] as List).cast<String>()).input(),
+      destThreatIntelligences: map['destThreatIntelligences'] == null ? null : ((map['destThreatIntelligences'] as List).cast<String>()).input(),
+      layer4Configs: (pulumi.Input.decodeList<RegionNetworkFirewallPolicyRuleMatchLayer4Config>(map['layer4Configs'], (value) => RegionNetworkFirewallPolicyRuleMatchLayer4Config.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      srcAddressGroups: map['srcAddressGroups'] == null ? null : ((map['srcAddressGroups'] as List).cast<String>()).input(),
+      srcFqdns: map['srcFqdns'] == null ? null : ((map['srcFqdns'] as List).cast<String>()).input(),
+      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges'] as List).cast<String>()).input(),
+      srcNetworkScope: map['srcNetworkScope'] == null ? null : (map['srcNetworkScope'] as String).input(),
+      srcNetworks: map['srcNetworks'] == null ? null : ((map['srcNetworks'] as List).cast<String>()).input(),
+      srcRegionCodes: map['srcRegionCodes'] == null ? null : ((map['srcRegionCodes'] as List).cast<String>()).input(),
+      srcSecureTags: map['srcSecureTags'] == null ? null : (pulumi.Input.decodeList<RegionNetworkFirewallPolicyRuleMatchSrcSecureTag>(map['srcSecureTags'], (value) => RegionNetworkFirewallPolicyRuleMatchSrcSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      srcThreatIntelligences: map['srcThreatIntelligences'] == null ? null : ((map['srcThreatIntelligences'] as List).cast<String>()).input(),
     );
   }
 }

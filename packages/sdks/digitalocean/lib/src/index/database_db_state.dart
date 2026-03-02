@@ -13,11 +13,9 @@ class DatabaseDbState {
   /// [clusterId] The ID of the original source database cluster.
   /// [name] The name for the database.
   DatabaseDbState({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? name,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.clusterId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class DatabaseDbState {
 
   factory DatabaseDbState.fromMap(Map<String, dynamic> map) {
     return DatabaseDbState(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

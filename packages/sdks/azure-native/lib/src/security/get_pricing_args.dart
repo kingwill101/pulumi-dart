@@ -16,11 +16,9 @@ class GetPricingArgs {
   /// [pricingName] name of the pricing configuration
   /// [scopeId] The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
   GetPricingArgs({
-    required pulumi.Output<String> pricingName,
-    required pulumi.Output<String> scopeId,
-  }) :
-      pricingName = pulumi.Input.asInput<String>(pricingName),
-      scopeId = pulumi.Input.asInput<String>(scopeId);
+    required this.pricingName,
+    required this.scopeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPricingArgs {
 
   factory GetPricingArgs.fromMap(Map<String, dynamic> map) {
     return GetPricingArgs(
-      pricingName: pulumi.Output.create<String>(map['pricingName'] as String),
-      scopeId: pulumi.Output.create<String>(map['scopeId'] as String),
+      pricingName: (map['pricingName'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
     );
   }
 }

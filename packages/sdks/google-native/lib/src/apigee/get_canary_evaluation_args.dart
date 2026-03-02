@@ -16,13 +16,10 @@ class GetCanaryEvaluationArgs {
   /// [instanceId] Required.
   /// [organizationId] Required.
   GetCanaryEvaluationArgs({
-    required pulumi.Output<String> canaryevaluationId,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      canaryevaluationId = pulumi.Input.asInput<String>(canaryevaluationId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.canaryevaluationId,
+    required this.instanceId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetCanaryEvaluationArgs {
 
   factory GetCanaryEvaluationArgs.fromMap(Map<String, dynamic> map) {
     return GetCanaryEvaluationArgs(
-      canaryevaluationId: pulumi.Output.create<String>(map['canaryevaluationId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      canaryevaluationId: (map['canaryevaluationId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

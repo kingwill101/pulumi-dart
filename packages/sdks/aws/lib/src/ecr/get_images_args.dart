@@ -19,13 +19,10 @@ class GetImagesArgs {
   /// [registryId] ID of the Registry where the repository resides.
   /// [repositoryName] Name of the ECR Repository.
   GetImagesArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registryId,
-    required pulumi.Output<String> repositoryName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryId = pulumi.Input.asOptionalInput<String>(registryId),
-      repositoryName = pulumi.Input.asInput<String>(repositoryName);
+    this.region,
+    this.registryId,
+    required this.repositoryName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetImagesArgs {
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryId: map['registryId'] == null ? null : pulumi.Output.create<String>(map['registryId'] as String),
-      repositoryName: pulumi.Output.create<String>(map['repositoryName'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
     );
   }
 }

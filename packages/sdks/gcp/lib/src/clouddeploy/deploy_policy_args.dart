@@ -46,25 +46,16 @@ class DeployPolicyArgs {
   /// [selectors] Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
   /// [suspended] When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
   DeployPolicyArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<List<DeployPolicyRule>> rules,
-    required pulumi.Output<List<DeployPolicySelector>> selectors,
-    pulumi.Output<bool>? suspended,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rules = pulumi.Input.asInput<List<DeployPolicyRule>>(rules),
-      selectors = pulumi.Input.asInput<List<DeployPolicySelector>>(selectors),
-      suspended = pulumi.Input.asOptionalInput<bool>(suspended);
+    this.annotations,
+    this.description,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    required this.rules,
+    required this.selectors,
+    this.suspended,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,15 +73,15 @@ class DeployPolicyArgs {
 
   factory DeployPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DeployPolicyArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rules: pulumi.Output.create<List<DeployPolicyRule>>(pulumi.Input.decodeList<DeployPolicyRule>(map['rules'], (value) => DeployPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
-      selectors: pulumi.Output.create<List<DeployPolicySelector>>(pulumi.Input.decodeList<DeployPolicySelector>(map['selectors'], (value) => DeployPolicySelector.fromMap((value as Map).cast<String, dynamic>()))),
-      suspended: map['suspended'] == null ? null : pulumi.Output.create<bool>(map['suspended'] as bool),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rules: (pulumi.Input.decodeList<DeployPolicyRule>(map['rules'], (value) => DeployPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectors: (pulumi.Input.decodeList<DeployPolicySelector>(map['selectors'], (value) => DeployPolicySelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      suspended: map['suspended'] == null ? null : (map['suspended'] as bool).input(),
     );
   }
 }

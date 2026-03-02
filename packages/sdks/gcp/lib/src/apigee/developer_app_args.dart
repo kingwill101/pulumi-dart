@@ -50,27 +50,17 @@ class DeveloperAppArgs {
   /// [scopes] Scopes to apply to the developer app.
   /// [status] Status of the credential. Valid values include approved or revoked.
   DeveloperAppArgs({
-    pulumi.Output<List<String>>? apiProducts,
-    pulumi.Output<String>? appFamily,
-    pulumi.Output<List<DeveloperAppAttribute>>? attributes,
-    required pulumi.Output<String> callbackUrl,
-    required pulumi.Output<String> developerEmail,
-    pulumi.Output<String>? keyExpiresIn,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> orgId,
-    pulumi.Output<List<String>>? scopes,
-    pulumi.Output<String>? status,
-  }) :
-      apiProducts = pulumi.Input.asOptionalInput<List<String>>(apiProducts),
-      appFamily = pulumi.Input.asOptionalInput<String>(appFamily),
-      attributes = pulumi.Input.asOptionalInput<List<DeveloperAppAttribute>>(attributes),
-      callbackUrl = pulumi.Input.asInput<String>(callbackUrl),
-      developerEmail = pulumi.Input.asInput<String>(developerEmail),
-      keyExpiresIn = pulumi.Input.asOptionalInput<String>(keyExpiresIn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      scopes = pulumi.Input.asOptionalInput<List<String>>(scopes),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.apiProducts,
+    this.appFamily,
+    this.attributes,
+    required this.callbackUrl,
+    required this.developerEmail,
+    this.keyExpiresIn,
+    this.name,
+    required this.orgId,
+    this.scopes,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,16 +79,16 @@ class DeveloperAppArgs {
 
   factory DeveloperAppArgs.fromMap(Map<String, dynamic> map) {
     return DeveloperAppArgs(
-      apiProducts: map['apiProducts'] == null ? null : pulumi.Output.create<List<String>>((map['apiProducts'] as List).cast<String>()),
-      appFamily: map['appFamily'] == null ? null : pulumi.Output.create<String>(map['appFamily'] as String),
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<List<DeveloperAppAttribute>>(pulumi.Input.decodeList<DeveloperAppAttribute>(map['attributes'], (value) => DeveloperAppAttribute.fromMap((value as Map).cast<String, dynamic>()))),
-      callbackUrl: pulumi.Output.create<String>(map['callbackUrl'] as String),
-      developerEmail: pulumi.Output.create<String>(map['developerEmail'] as String),
-      keyExpiresIn: map['keyExpiresIn'] == null ? null : pulumi.Output.create<String>(map['keyExpiresIn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      apiProducts: map['apiProducts'] == null ? null : ((map['apiProducts'] as List).cast<String>()).input(),
+      appFamily: map['appFamily'] == null ? null : (map['appFamily'] as String).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAppAttribute>(map['attributes'], (value) => DeveloperAppAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      callbackUrl: (map['callbackUrl'] as String).input(),
+      developerEmail: (map['developerEmail'] as String).input(),
+      keyExpiresIn: map['keyExpiresIn'] == null ? null : (map['keyExpiresIn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

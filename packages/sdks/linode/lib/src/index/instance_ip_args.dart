@@ -22,15 +22,11 @@ class InstanceIpArgs {
   /// [public] Whether the IPv4 address is public or private. Defaults to true.
   /// [rdns] The reverse DNS assigned to this address.
   InstanceIpArgs({
-    pulumi.Output<bool>? applyImmediately,
-    required pulumi.Output<int> linodeId,
-    pulumi.Output<bool>? public,
-    pulumi.Output<String>? rdns,
-  }) :
-      applyImmediately = pulumi.Input.asOptionalInput<bool>(applyImmediately),
-      linodeId = pulumi.Input.asInput<int>(linodeId),
-      public = pulumi.Input.asOptionalInput<bool>(public),
-      rdns = pulumi.Input.asOptionalInput<String>(rdns);
+    this.applyImmediately,
+    required this.linodeId,
+    this.public,
+    this.rdns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class InstanceIpArgs {
 
   factory InstanceIpArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIpArgs(
-      applyImmediately: map['applyImmediately'] == null ? null : pulumi.Output.create<bool>(map['applyImmediately'] as bool),
-      linodeId: pulumi.Output.create<int>(map['linodeId'] as int),
-      public: map['public'] == null ? null : pulumi.Output.create<bool>(map['public'] as bool),
-      rdns: map['rdns'] == null ? null : pulumi.Output.create<String>(map['rdns'] as String),
+      applyImmediately: map['applyImmediately'] == null ? null : (map['applyImmediately'] as bool).input(),
+      linodeId: (map['linodeId'] as int).input(),
+      public: map['public'] == null ? null : (map['public'] as bool).input(),
+      rdns: map['rdns'] == null ? null : (map['rdns'] as String).input(),
     );
   }
 }

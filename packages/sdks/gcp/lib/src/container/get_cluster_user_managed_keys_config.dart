@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterUserManagedKeysConfig {
   /// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
-  final String aggregationCa;
+  final pulumi.Input<String> aggregationCa;
   /// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
-  final String clusterCa;
+  final pulumi.Input<String> clusterCa;
   /// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
-  final String controlPlaneDiskEncryptionKey;
+  final pulumi.Input<String> controlPlaneDiskEncryptionKey;
   /// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
-  final String etcdApiCa;
+  final pulumi.Input<String> etcdApiCa;
   /// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
-  final String etcdPeerCa;
+  final pulumi.Input<String> etcdPeerCa;
   /// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
-  final String gkeopsEtcdBackupEncryptionKey;
+  final pulumi.Input<String> gkeopsEtcdBackupEncryptionKey;
   /// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
-  final List<String> serviceAccountSigningKeys;
+  final pulumi.Input<List<String>> serviceAccountSigningKeys;
   /// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
-  final List<String> serviceAccountVerificationKeys;
+  final pulumi.Input<List<String>> serviceAccountVerificationKeys;
 
   /// Creates a new [GetClusterUserManagedKeysConfig].
   /// [aggregationCa] The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
@@ -54,14 +55,14 @@ class GetClusterUserManagedKeysConfig {
 
   factory GetClusterUserManagedKeysConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterUserManagedKeysConfig(
-      aggregationCa: map['aggregationCa'] as String,
-      clusterCa: map['clusterCa'] as String,
-      controlPlaneDiskEncryptionKey: map['controlPlaneDiskEncryptionKey'] as String,
-      etcdApiCa: map['etcdApiCa'] as String,
-      etcdPeerCa: map['etcdPeerCa'] as String,
-      gkeopsEtcdBackupEncryptionKey: map['gkeopsEtcdBackupEncryptionKey'] as String,
-      serviceAccountSigningKeys: (map['serviceAccountSigningKeys'] as List).cast<String>(),
-      serviceAccountVerificationKeys: (map['serviceAccountVerificationKeys'] as List).cast<String>(),
+      aggregationCa: (map['aggregationCa'] as String).input(),
+      clusterCa: (map['clusterCa'] as String).input(),
+      controlPlaneDiskEncryptionKey: (map['controlPlaneDiskEncryptionKey'] as String).input(),
+      etcdApiCa: (map['etcdApiCa'] as String).input(),
+      etcdPeerCa: (map['etcdPeerCa'] as String).input(),
+      gkeopsEtcdBackupEncryptionKey: (map['gkeopsEtcdBackupEncryptionKey'] as String).input(),
+      serviceAccountSigningKeys: ((map['serviceAccountSigningKeys'] as List).cast<String>()).input(),
+      serviceAccountVerificationKeys: ((map['serviceAccountVerificationKeys'] as List).cast<String>()).input(),
     );
   }
 }

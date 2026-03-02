@@ -53,35 +53,21 @@ class StandardWebTestState {
   /// [timeout] Seconds until this WebTest will timeout and fail. Default is `30`.
   /// [validationRules] A `validation_rules` block as defined below.
   StandardWebTestState({
-    pulumi.Output<String>? applicationInsightsId,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<int>? frequency,
-    pulumi.Output<List<String>>? geoLocations,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<StandardWebTestRequest>? request,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<bool>? retryEnabled,
-    pulumi.Output<String>? syntheticMonitorId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? timeout,
-    pulumi.Output<StandardWebTestValidationRules>? validationRules,
-  }) :
-      applicationInsightsId = pulumi.Input.asOptionalInput<String>(applicationInsightsId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      frequency = pulumi.Input.asOptionalInput<int>(frequency),
-      geoLocations = pulumi.Input.asOptionalInput<List<String>>(geoLocations),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      request = pulumi.Input.asOptionalInput<StandardWebTestRequest>(request),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      retryEnabled = pulumi.Input.asOptionalInput<bool>(retryEnabled),
-      syntheticMonitorId = pulumi.Input.asOptionalInput<String>(syntheticMonitorId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeout = pulumi.Input.asOptionalInput<int>(timeout),
-      validationRules = pulumi.Input.asOptionalInput<StandardWebTestValidationRules>(validationRules);
+    this.applicationInsightsId,
+    this.description,
+    this.enabled,
+    this.frequency,
+    this.geoLocations,
+    this.location,
+    this.name,
+    this.request,
+    this.resourceGroupName,
+    this.retryEnabled,
+    this.syntheticMonitorId,
+    this.tags,
+    this.timeout,
+    this.validationRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class StandardWebTestState {
 
   factory StandardWebTestState.fromMap(Map<String, dynamic> map) {
     return StandardWebTestState(
-      applicationInsightsId: map['applicationInsightsId'] == null ? null : pulumi.Output.create<String>(map['applicationInsightsId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      frequency: map['frequency'] == null ? null : pulumi.Output.create<int>(map['frequency'] as int),
-      geoLocations: map['geoLocations'] == null ? null : pulumi.Output.create<List<String>>((map['geoLocations'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      request: map['request'] == null ? null : pulumi.Output.create<StandardWebTestRequest>(StandardWebTestRequest.fromMap((map['request'] as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retryEnabled: map['retryEnabled'] == null ? null : pulumi.Output.create<bool>(map['retryEnabled'] as bool),
-      syntheticMonitorId: map['syntheticMonitorId'] == null ? null : pulumi.Output.create<String>(map['syntheticMonitorId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<int>(map['timeout'] as int),
-      validationRules: map['validationRules'] == null ? null : pulumi.Output.create<StandardWebTestValidationRules>(StandardWebTestValidationRules.fromMap((map['validationRules'] as Map).cast<String, dynamic>())),
+      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency'] as int).input(),
+      geoLocations: map['geoLocations'] == null ? null : ((map['geoLocations'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      request: map['request'] == null ? null : (StandardWebTestRequest.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      retryEnabled: map['retryEnabled'] == null ? null : (map['retryEnabled'] as bool).input(),
+      syntheticMonitorId: map['syntheticMonitorId'] == null ? null : (map['syntheticMonitorId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      validationRules: map['validationRules'] == null ? null : (StandardWebTestValidationRules.fromMap((map['validationRules'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

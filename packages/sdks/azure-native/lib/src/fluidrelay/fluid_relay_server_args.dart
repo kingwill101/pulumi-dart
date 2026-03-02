@@ -36,23 +36,15 @@ class FluidRelayServerArgs {
   /// [storagesku] Sku of the storage associated with the resource
   /// [tags] Resource tags.
   FluidRelayServerArgs({
-    pulumi.Output<EncryptionProperties>? encryption,
-    pulumi.Output<String>? fluidRelayServerName,
-    pulumi.Output<Identity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? provisioningState,
-    required pulumi.Output<String> resourceGroup,
-    pulumi.Output<String>? storagesku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      encryption = pulumi.Input.asOptionalInput<EncryptionProperties>(encryption),
-      fluidRelayServerName = pulumi.Input.asOptionalInput<String>(fluidRelayServerName),
-      identity = pulumi.Input.asOptionalInput<Identity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup),
-      storagesku = pulumi.Input.asOptionalInput<String>(storagesku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.encryption,
+    this.fluidRelayServerName,
+    this.identity,
+    this.location,
+    this.provisioningState,
+    required this.resourceGroup,
+    this.storagesku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class FluidRelayServerArgs {
 
   factory FluidRelayServerArgs.fromMap(Map<String, dynamic> map) {
     return FluidRelayServerArgs(
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<EncryptionProperties>(EncryptionProperties.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      fluidRelayServerName: map['fluidRelayServerName'] == null ? null : pulumi.Output.create<String>(map['fluidRelayServerName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<Identity>(Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
-      storagesku: map['storagesku'] == null ? null : pulumi.Output.create<String>(map['storagesku'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      encryption: map['encryption'] == null ? null : (EncryptionProperties.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      fluidRelayServerName: map['fluidRelayServerName'] == null ? null : (map['fluidRelayServerName'] as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      storagesku: map['storagesku'] == null ? null : (map['storagesku'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

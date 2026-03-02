@@ -28,19 +28,13 @@ class ReadWriteSplittingConnectionArgs {
   /// [port] Intranet connection port. Valid value: [3001-3999]. Default to 3306.
   /// [weight] Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
   ReadWriteSplittingConnectionArgs({
-    pulumi.Output<String>? connectionPrefix,
-    required pulumi.Output<String> distributionType,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<int>? maxDelayTime,
-    pulumi.Output<int>? port,
-    pulumi.Output<Map<String, String>>? weight,
-  }) :
-      connectionPrefix = pulumi.Input.asOptionalInput<String>(connectionPrefix),
-      distributionType = pulumi.Input.asInput<String>(distributionType),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      maxDelayTime = pulumi.Input.asOptionalInput<int>(maxDelayTime),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      weight = pulumi.Input.asOptionalInput<Map<String, String>>(weight);
+    this.connectionPrefix,
+    required this.distributionType,
+    required this.instanceId,
+    this.maxDelayTime,
+    this.port,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ReadWriteSplittingConnectionArgs {
 
   factory ReadWriteSplittingConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ReadWriteSplittingConnectionArgs(
-      connectionPrefix: map['connectionPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionPrefix'] as String),
-      distributionType: pulumi.Output.create<String>(map['distributionType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      maxDelayTime: map['maxDelayTime'] == null ? null : pulumi.Output.create<int>(map['maxDelayTime'] as int),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      weight: map['weight'] == null ? null : pulumi.Output.create<Map<String, String>>((map['weight'] as Map).cast<String, String>()),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      distributionType: (map['distributionType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      maxDelayTime: map['maxDelayTime'] == null ? null : (map['maxDelayTime'] as int).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      weight: map['weight'] == null ? null : ((map['weight'] as Map).cast<String, String>()).input(),
     );
   }
 }

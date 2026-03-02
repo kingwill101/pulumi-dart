@@ -25,19 +25,13 @@ class IntegrationAccountMapState {
   /// [name] The name which should be used for this Logic App Integration Account Map. Changing this forces a new Logic App Integration Account Map to be created.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Map should exist. Changing this forces a new Logic App Integration Account Map to be created.
   IntegrationAccountMapState({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? integrationAccountName,
-    pulumi.Output<String>? mapType,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      integrationAccountName = pulumi.Input.asOptionalInput<String>(integrationAccountName),
-      mapType = pulumi.Input.asOptionalInput<String>(mapType),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.content,
+    this.integrationAccountName,
+    this.mapType,
+    this.metadata,
+    this.name,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class IntegrationAccountMapState {
 
   factory IntegrationAccountMapState.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountMapState(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      integrationAccountName: map['integrationAccountName'] == null ? null : pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      mapType: map['mapType'] == null ? null : pulumi.Output.create<String>(map['mapType'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName'] as String).input(),
+      mapType: map['mapType'] == null ? null : (map['mapType'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

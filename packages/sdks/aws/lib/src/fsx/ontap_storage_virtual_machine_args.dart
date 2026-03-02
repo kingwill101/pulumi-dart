@@ -32,21 +32,14 @@ class OntapStorageVirtualMachineArgs {
   /// [svmAdminPassword] Specifies the password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
   /// [tags] A map of tags to assign to the storage virtual machine. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   OntapStorageVirtualMachineArgs({
-    pulumi.Output<OntapStorageVirtualMachineActiveDirectoryConfiguration>? activeDirectoryConfiguration,
-    required pulumi.Output<String> fileSystemId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? rootVolumeSecurityStyle,
-    pulumi.Output<String>? svmAdminPassword,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      activeDirectoryConfiguration = pulumi.Input.asOptionalInput<OntapStorageVirtualMachineActiveDirectoryConfiguration>(activeDirectoryConfiguration),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rootVolumeSecurityStyle = pulumi.Input.asOptionalInput<String>(rootVolumeSecurityStyle),
-      svmAdminPassword = pulumi.Input.asOptionalInput<String>(svmAdminPassword),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.activeDirectoryConfiguration,
+    required this.fileSystemId,
+    this.name,
+    this.region,
+    this.rootVolumeSecurityStyle,
+    this.svmAdminPassword,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class OntapStorageVirtualMachineArgs {
 
   factory OntapStorageVirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return OntapStorageVirtualMachineArgs(
-      activeDirectoryConfiguration: map['activeDirectoryConfiguration'] == null ? null : pulumi.Output.create<OntapStorageVirtualMachineActiveDirectoryConfiguration>(OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((map['activeDirectoryConfiguration'] as Map).cast<String, dynamic>())),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rootVolumeSecurityStyle: map['rootVolumeSecurityStyle'] == null ? null : pulumi.Output.create<String>(map['rootVolumeSecurityStyle'] as String),
-      svmAdminPassword: map['svmAdminPassword'] == null ? null : pulumi.Output.create<String>(map['svmAdminPassword'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      activeDirectoryConfiguration: map['activeDirectoryConfiguration'] == null ? null : (OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((map['activeDirectoryConfiguration'] as Map).cast<String, dynamic>())).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rootVolumeSecurityStyle: map['rootVolumeSecurityStyle'] == null ? null : (map['rootVolumeSecurityStyle'] as String).input(),
+      svmAdminPassword: map['svmAdminPassword'] == null ? null : (map['svmAdminPassword'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

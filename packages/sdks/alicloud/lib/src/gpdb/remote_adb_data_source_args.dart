@@ -37,25 +37,16 @@ class RemoteAdbDataSourceArgs {
   /// [userName] The user name used to connect to the remote instance
   /// [userPassword] The user password used to connect to the remote instance
   RemoteAdbDataSourceArgs({
-    pulumi.Output<String>? dataSourceName,
-    required pulumi.Output<String> localDatabase,
-    required pulumi.Output<String> localDbInstanceId,
-    required pulumi.Output<String> managerUserName,
-    required pulumi.Output<String> managerUserPassword,
-    required pulumi.Output<String> remoteDatabase,
-    required pulumi.Output<String> remoteDbInstanceId,
-    required pulumi.Output<String> userName,
-    required pulumi.Output<String> userPassword,
-  }) :
-      dataSourceName = pulumi.Input.asOptionalInput<String>(dataSourceName),
-      localDatabase = pulumi.Input.asInput<String>(localDatabase),
-      localDbInstanceId = pulumi.Input.asInput<String>(localDbInstanceId),
-      managerUserName = pulumi.Input.asInput<String>(managerUserName),
-      managerUserPassword = pulumi.Input.asInput<String>(managerUserPassword),
-      remoteDatabase = pulumi.Input.asInput<String>(remoteDatabase),
-      remoteDbInstanceId = pulumi.Input.asInput<String>(remoteDbInstanceId),
-      userName = pulumi.Input.asInput<String>(userName),
-      userPassword = pulumi.Input.asInput<String>(userPassword);
+    this.dataSourceName,
+    required this.localDatabase,
+    required this.localDbInstanceId,
+    required this.managerUserName,
+    required this.managerUserPassword,
+    required this.remoteDatabase,
+    required this.remoteDbInstanceId,
+    required this.userName,
+    required this.userPassword,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class RemoteAdbDataSourceArgs {
 
   factory RemoteAdbDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return RemoteAdbDataSourceArgs(
-      dataSourceName: map['dataSourceName'] == null ? null : pulumi.Output.create<String>(map['dataSourceName'] as String),
-      localDatabase: pulumi.Output.create<String>(map['localDatabase'] as String),
-      localDbInstanceId: pulumi.Output.create<String>(map['localDbInstanceId'] as String),
-      managerUserName: pulumi.Output.create<String>(map['managerUserName'] as String),
-      managerUserPassword: pulumi.Output.create<String>(map['managerUserPassword'] as String),
-      remoteDatabase: pulumi.Output.create<String>(map['remoteDatabase'] as String),
-      remoteDbInstanceId: pulumi.Output.create<String>(map['remoteDbInstanceId'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
-      userPassword: pulumi.Output.create<String>(map['userPassword'] as String),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
+      localDatabase: (map['localDatabase'] as String).input(),
+      localDbInstanceId: (map['localDbInstanceId'] as String).input(),
+      managerUserName: (map['managerUserName'] as String).input(),
+      managerUserPassword: (map['managerUserPassword'] as String).input(),
+      remoteDatabase: (map['remoteDatabase'] as String).input(),
+      remoteDbInstanceId: (map['remoteDbInstanceId'] as String).input(),
+      userName: (map['userName'] as String).input(),
+      userPassword: (map['userPassword'] as String).input(),
     );
   }
 }

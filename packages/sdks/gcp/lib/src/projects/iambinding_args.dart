@@ -32,15 +32,11 @@ class IAMBindingArgs {
   /// [project] The project id of the target project. This is not
   /// [role] The role that should be applied. Only one
   IAMBindingArgs({
-    pulumi.Output<IAMBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<IAMBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.members,
+    required this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,10 +49,10 @@ class IAMBindingArgs {
 
   factory IAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return IAMBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<IAMBindingCondition>(IAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (IAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

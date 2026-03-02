@@ -36,25 +36,16 @@ class AlertProcessingRuleActionGroupState {
   /// [scopes] A list of resource IDs which will be the target of alert processing rule.
   /// [tags] A mapping of tags which should be assigned to the Alert Processing Rule.
   AlertProcessingRuleActionGroupState({
-    pulumi.Output<List<String>>? addActionGroupIds,
-    pulumi.Output<AlertProcessingRuleActionGroupCondition>? condition,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<AlertProcessingRuleActionGroupSchedule>? schedule,
-    pulumi.Output<List<String>>? scopes,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      addActionGroupIds = pulumi.Input.asOptionalInput<List<String>>(addActionGroupIds),
-      condition = pulumi.Input.asOptionalInput<AlertProcessingRuleActionGroupCondition>(condition),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      schedule = pulumi.Input.asOptionalInput<AlertProcessingRuleActionGroupSchedule>(schedule),
-      scopes = pulumi.Input.asOptionalInput<List<String>>(scopes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.addActionGroupIds,
+    this.condition,
+    this.description,
+    this.enabled,
+    this.name,
+    this.resourceGroupName,
+    this.schedule,
+    this.scopes,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class AlertProcessingRuleActionGroupState {
 
   factory AlertProcessingRuleActionGroupState.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleActionGroupState(
-      addActionGroupIds: map['addActionGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['addActionGroupIds'] as List).cast<String>()),
-      condition: map['condition'] == null ? null : pulumi.Output.create<AlertProcessingRuleActionGroupCondition>(AlertProcessingRuleActionGroupCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<AlertProcessingRuleActionGroupSchedule>(AlertProcessingRuleActionGroupSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      addActionGroupIds: map['addActionGroupIds'] == null ? null : ((map['addActionGroupIds'] as List).cast<String>()).input(),
+      condition: map['condition'] == null ? null : (AlertProcessingRuleActionGroupCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      schedule: map['schedule'] == null ? null : (AlertProcessingRuleActionGroupSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

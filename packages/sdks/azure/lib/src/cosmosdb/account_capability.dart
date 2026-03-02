@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountCapability {
   /// Specifies the name of the CosmosDB Account. Changing this forces a new resource to be created.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [AccountCapability].
   /// [name] Specifies the name of the CosmosDB Account. Changing this forces a new resource to be created.
@@ -19,7 +20,7 @@ class AccountCapability {
 
   factory AccountCapability.fromMap(Map<String, dynamic> map) {
     return AccountCapability(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

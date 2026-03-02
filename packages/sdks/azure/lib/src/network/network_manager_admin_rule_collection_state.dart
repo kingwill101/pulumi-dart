@@ -19,15 +19,11 @@ class NetworkManagerAdminRuleCollectionState {
   /// [networkGroupIds] A list of Network Group ID which this Network Manager Admin Rule Collection applies to.
   /// [securityAdminConfigurationId] Specifies the ID of the Network Manager Security Admin Configuration. Changing this forces a new Network Manager Admin Rule Collection to be created.
   NetworkManagerAdminRuleCollectionState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? networkGroupIds,
-    pulumi.Output<String>? securityAdminConfigurationId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkGroupIds = pulumi.Input.asOptionalInput<List<String>>(networkGroupIds),
-      securityAdminConfigurationId = pulumi.Input.asOptionalInput<String>(securityAdminConfigurationId);
+    this.description,
+    this.name,
+    this.networkGroupIds,
+    this.securityAdminConfigurationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class NetworkManagerAdminRuleCollectionState {
 
   factory NetworkManagerAdminRuleCollectionState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerAdminRuleCollectionState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkGroupIds: map['networkGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['networkGroupIds'] as List).cast<String>()),
-      securityAdminConfigurationId: map['securityAdminConfigurationId'] == null ? null : pulumi.Output.create<String>(map['securityAdminConfigurationId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkGroupIds: map['networkGroupIds'] == null ? null : ((map['networkGroupIds'] as List).cast<String>()).input(),
+      securityAdminConfigurationId: map['securityAdminConfigurationId'] == null ? null : (map['securityAdminConfigurationId'] as String).input(),
     );
   }
 }

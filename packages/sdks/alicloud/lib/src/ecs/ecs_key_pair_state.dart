@@ -32,25 +32,16 @@ class EcsKeyPairState {
   /// [resourceGroupId] The ID of the resource group to which to add the key pair.
   /// [tags] A mapping of tags to assign to the resource.
   EcsKeyPairState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? fingerPrint,
-    pulumi.Output<String>? keyFile,
-    pulumi.Output<String>? keyName,
-    pulumi.Output<String>? keyNamePrefix,
-    pulumi.Output<String>? keyPairName,
-    pulumi.Output<String>? publicKey,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      fingerPrint = pulumi.Input.asOptionalInput<String>(fingerPrint),
-      keyFile = pulumi.Input.asOptionalInput<String>(keyFile),
-      keyName = pulumi.Input.asOptionalInput<String>(keyName),
-      keyNamePrefix = pulumi.Input.asOptionalInput<String>(keyNamePrefix),
-      keyPairName = pulumi.Input.asOptionalInput<String>(keyPairName),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.createTime,
+    this.fingerPrint,
+    this.keyFile,
+    this.keyName,
+    this.keyNamePrefix,
+    this.keyPairName,
+    this.publicKey,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,15 +59,15 @@ class EcsKeyPairState {
 
   factory EcsKeyPairState.fromMap(Map<String, dynamic> map) {
     return EcsKeyPairState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      fingerPrint: map['fingerPrint'] == null ? null : pulumi.Output.create<String>(map['fingerPrint'] as String),
-      keyFile: map['keyFile'] == null ? null : pulumi.Output.create<String>(map['keyFile'] as String),
-      keyName: map['keyName'] == null ? null : pulumi.Output.create<String>(map['keyName'] as String),
-      keyNamePrefix: map['keyNamePrefix'] == null ? null : pulumi.Output.create<String>(map['keyNamePrefix'] as String),
-      keyPairName: map['keyPairName'] == null ? null : pulumi.Output.create<String>(map['keyPairName'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      fingerPrint: map['fingerPrint'] == null ? null : (map['fingerPrint'] as String).input(),
+      keyFile: map['keyFile'] == null ? null : (map['keyFile'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyNamePrefix: map['keyNamePrefix'] == null ? null : (map['keyNamePrefix'] as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

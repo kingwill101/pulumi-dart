@@ -28,19 +28,13 @@ class HuntRelationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   HuntRelationArgs({
-    required pulumi.Output<String> huntId,
-    pulumi.Output<String>? huntRelationId,
-    pulumi.Output<List<String>>? labels,
-    required pulumi.Output<String> relatedResourceId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      huntId = pulumi.Input.asInput<String>(huntId),
-      huntRelationId = pulumi.Input.asOptionalInput<String>(huntRelationId),
-      labels = pulumi.Input.asOptionalInput<List<String>>(labels),
-      relatedResourceId = pulumi.Input.asInput<String>(relatedResourceId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.huntId,
+    this.huntRelationId,
+    this.labels,
+    required this.relatedResourceId,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class HuntRelationArgs {
 
   factory HuntRelationArgs.fromMap(Map<String, dynamic> map) {
     return HuntRelationArgs(
-      huntId: pulumi.Output.create<String>(map['huntId'] as String),
-      huntRelationId: map['huntRelationId'] == null ? null : pulumi.Output.create<String>(map['huntRelationId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<String>>((map['labels'] as List).cast<String>()),
-      relatedResourceId: pulumi.Output.create<String>(map['relatedResourceId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      huntId: (map['huntId'] as String).input(),
+      huntRelationId: map['huntRelationId'] == null ? null : (map['huntRelationId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      relatedResourceId: (map['relatedResourceId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxVolumeAttachedCluster {
-  final String clusterName;
-  final String clusterStatus;
-  final String clusterType;
+  final pulumi.Input<String> clusterName;
+  final pulumi.Input<String> clusterStatus;
+  final pulumi.Input<String> clusterType;
 
   /// Creates a new [KxVolumeAttachedCluster].
   /// [clusterName] Required.
@@ -26,9 +27,9 @@ class KxVolumeAttachedCluster {
 
   factory KxVolumeAttachedCluster.fromMap(Map<String, dynamic> map) {
     return KxVolumeAttachedCluster(
-      clusterName: map['clusterName'] as String,
-      clusterStatus: map['clusterStatus'] as String,
-      clusterType: map['clusterType'] as String,
+      clusterName: (map['clusterName'] as String).input(),
+      clusterStatus: (map['clusterStatus'] as String).input(),
+      clusterType: (map['clusterType'] as String).input(),
     );
   }
 }

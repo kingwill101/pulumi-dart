@@ -33,21 +33,14 @@ class NetworkSecurityGroupArgs {
   /// [securityRules] A collection of security rules of the network security group.
   /// [tags] Resource tags.
   NetworkSecurityGroupArgs({
-    pulumi.Output<bool>? flushConnection,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? networkSecurityGroupName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<SecurityRuleNetwork>>? securityRules,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      flushConnection = pulumi.Input.asOptionalInput<bool>(flushConnection),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkSecurityGroupName = pulumi.Input.asOptionalInput<String>(networkSecurityGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityRules = pulumi.Input.asOptionalInput<List<SecurityRuleNetwork>>(securityRules),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.flushConnection,
+    this.id,
+    this.location,
+    this.networkSecurityGroupName,
+    required this.resourceGroupName,
+    this.securityRules,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class NetworkSecurityGroupArgs {
 
   factory NetworkSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupArgs(
-      flushConnection: map['flushConnection'] == null ? null : pulumi.Output.create<bool>(map['flushConnection'] as bool),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkSecurityGroupName: map['networkSecurityGroupName'] == null ? null : pulumi.Output.create<String>(map['networkSecurityGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityRules: map['securityRules'] == null ? null : pulumi.Output.create<List<SecurityRuleNetwork>>((map['securityRules'] as List).cast<SecurityRuleNetwork>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      flushConnection: map['flushConnection'] == null ? null : (map['flushConnection'] as bool).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkSecurityGroupName: map['networkSecurityGroupName'] == null ? null : (map['networkSecurityGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityRules: map['securityRules'] == null ? null : ((map['securityRules'] as List).cast<SecurityRuleNetwork>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

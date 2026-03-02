@@ -55,31 +55,19 @@ class JobStepArgs {
   /// [sqlScript] The T-SQL script to be executed by this Elastic Job Step.
   /// [timeoutSeconds] The execution timeout in seconds for this Elastic Job Step. Defaults to `43200`.
   JobStepArgs({
-    pulumi.Output<int>? initialRetryIntervalSeconds,
-    pulumi.Output<String>? jobCredentialId,
-    required pulumi.Output<String> jobId,
-    required pulumi.Output<int> jobStepIndex,
-    required pulumi.Output<String> jobTargetGroupId,
-    pulumi.Output<int>? maximumRetryIntervalSeconds,
-    pulumi.Output<String>? name,
-    pulumi.Output<JobStepOutputTarget>? outputTarget,
-    pulumi.Output<int>? retryAttempts,
-    pulumi.Output<double>? retryIntervalBackoffMultiplier,
-    required pulumi.Output<String> sqlScript,
-    pulumi.Output<int>? timeoutSeconds,
-  }) :
-      initialRetryIntervalSeconds = pulumi.Input.asOptionalInput<int>(initialRetryIntervalSeconds),
-      jobCredentialId = pulumi.Input.asOptionalInput<String>(jobCredentialId),
-      jobId = pulumi.Input.asInput<String>(jobId),
-      jobStepIndex = pulumi.Input.asInput<int>(jobStepIndex),
-      jobTargetGroupId = pulumi.Input.asInput<String>(jobTargetGroupId),
-      maximumRetryIntervalSeconds = pulumi.Input.asOptionalInput<int>(maximumRetryIntervalSeconds),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputTarget = pulumi.Input.asOptionalInput<JobStepOutputTarget>(outputTarget),
-      retryAttempts = pulumi.Input.asOptionalInput<int>(retryAttempts),
-      retryIntervalBackoffMultiplier = pulumi.Input.asOptionalInput<double>(retryIntervalBackoffMultiplier),
-      sqlScript = pulumi.Input.asInput<String>(sqlScript),
-      timeoutSeconds = pulumi.Input.asOptionalInput<int>(timeoutSeconds);
+    this.initialRetryIntervalSeconds,
+    this.jobCredentialId,
+    required this.jobId,
+    required this.jobStepIndex,
+    required this.jobTargetGroupId,
+    this.maximumRetryIntervalSeconds,
+    this.name,
+    this.outputTarget,
+    this.retryAttempts,
+    this.retryIntervalBackoffMultiplier,
+    required this.sqlScript,
+    this.timeoutSeconds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,18 +88,18 @@ class JobStepArgs {
 
   factory JobStepArgs.fromMap(Map<String, dynamic> map) {
     return JobStepArgs(
-      initialRetryIntervalSeconds: map['initialRetryIntervalSeconds'] == null ? null : pulumi.Output.create<int>(map['initialRetryIntervalSeconds'] as int),
-      jobCredentialId: map['jobCredentialId'] == null ? null : pulumi.Output.create<String>(map['jobCredentialId'] as String),
-      jobId: pulumi.Output.create<String>(map['jobId'] as String),
-      jobStepIndex: pulumi.Output.create<int>(map['jobStepIndex'] as int),
-      jobTargetGroupId: pulumi.Output.create<String>(map['jobTargetGroupId'] as String),
-      maximumRetryIntervalSeconds: map['maximumRetryIntervalSeconds'] == null ? null : pulumi.Output.create<int>(map['maximumRetryIntervalSeconds'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputTarget: map['outputTarget'] == null ? null : pulumi.Output.create<JobStepOutputTarget>(JobStepOutputTarget.fromMap((map['outputTarget'] as Map).cast<String, dynamic>())),
-      retryAttempts: map['retryAttempts'] == null ? null : pulumi.Output.create<int>(map['retryAttempts'] as int),
-      retryIntervalBackoffMultiplier: map['retryIntervalBackoffMultiplier'] == null ? null : pulumi.Output.create<double>(map['retryIntervalBackoffMultiplier'] as double),
-      sqlScript: pulumi.Output.create<String>(map['sqlScript'] as String),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : pulumi.Output.create<int>(map['timeoutSeconds'] as int),
+      initialRetryIntervalSeconds: map['initialRetryIntervalSeconds'] == null ? null : (map['initialRetryIntervalSeconds'] as int).input(),
+      jobCredentialId: map['jobCredentialId'] == null ? null : (map['jobCredentialId'] as String).input(),
+      jobId: (map['jobId'] as String).input(),
+      jobStepIndex: (map['jobStepIndex'] as int).input(),
+      jobTargetGroupId: (map['jobTargetGroupId'] as String).input(),
+      maximumRetryIntervalSeconds: map['maximumRetryIntervalSeconds'] == null ? null : (map['maximumRetryIntervalSeconds'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputTarget: map['outputTarget'] == null ? null : (JobStepOutputTarget.fromMap((map['outputTarget'] as Map).cast<String, dynamic>())).input(),
+      retryAttempts: map['retryAttempts'] == null ? null : (map['retryAttempts'] as int).input(),
+      retryIntervalBackoffMultiplier: map['retryIntervalBackoffMultiplier'] == null ? null : (map['retryIntervalBackoffMultiplier'] as double).input(),
+      sqlScript: (map['sqlScript'] as String).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
     );
   }
 }

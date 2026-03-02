@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Container App Ingress configuration.
 class JavaComponentIngressResponse {
   /// Hostname of the Java Component endpoint
-  final String fqdn;
+  final pulumi.Input<String> fqdn;
 
   /// Creates a new [JavaComponentIngressResponse].
   /// [fqdn] Hostname of the Java Component endpoint
@@ -20,7 +21,7 @@ class JavaComponentIngressResponse {
 
   factory JavaComponentIngressResponse.fromMap(Map<String, dynamic> map) {
     return JavaComponentIngressResponse(
-      fqdn: map['fqdn'] as String,
+      fqdn: (map['fqdn'] as String).input(),
     );
   }
 }

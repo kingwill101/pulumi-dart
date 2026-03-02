@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A resource selected from ARM
 class SelectedResource {
   /// Id of the connection
-  final String id;
+  final pulumi.Input<String> id;
   /// Location of the connection
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Name of the connection
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Name of the subscription with the connection
-  final String? subscriptionName;
+  final pulumi.Input<String>? subscriptionName;
 
   /// Creates a new [SelectedResource].
   /// [id] Id of the connection
@@ -35,10 +36,10 @@ class SelectedResource {
 
   factory SelectedResource.fromMap(Map<String, dynamic> map) {
     return SelectedResource(
-      id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      subscriptionName: map['subscriptionName'] == null ? null : map['subscriptionName'] as String,
+      id: (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName'] as String).input(),
     );
   }
 }

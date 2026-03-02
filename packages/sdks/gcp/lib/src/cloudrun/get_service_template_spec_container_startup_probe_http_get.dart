@@ -5,12 +5,12 @@ import 'get_service_template_spec_container_startup_probe_http_get_http_header.d
 
 class GetServiceTemplateSpecContainerStartupProbeHttpGet {
   /// Custom headers to set in the request. HTTP allows repeated headers.
-  final List<GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader> httpHeaders;
+  final pulumi.Input<List<GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader>> httpHeaders;
   /// Path to access on the HTTP server. If set, it should not be empty string.
-  final String path;
+  final pulumi.Input<String> path;
   /// Port number to access on the container. Number must be in the range 1 to 65535.
   /// If not specified, defaults to the same value as container.ports[0].containerPort.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [GetServiceTemplateSpecContainerStartupProbeHttpGet].
   /// [httpHeaders] Custom headers to set in the request. HTTP allows repeated headers.
@@ -24,7 +24,7 @@ class GetServiceTemplateSpecContainerStartupProbeHttpGet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'httpHeaders': pulumi.Input.encodeList<GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader, Map<String, dynamic>>(httpHeaders, (value) => value.toMap()),
+      'httpHeaders': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader>, List<Map<String, dynamic>>>(httpHeaders, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'path': path,
       'port': port,
     };
@@ -32,9 +32,9 @@ class GetServiceTemplateSpecContainerStartupProbeHttpGet {
 
   factory GetServiceTemplateSpecContainerStartupProbeHttpGet.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerStartupProbeHttpGet(
-      httpHeaders: pulumi.Input.decodeList<GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader>(map['httpHeaders'], (value) => GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader.fromMap((value as Map).cast<String, dynamic>())),
-      path: map['path'] as String,
-      port: map['port'] as int,
+      httpHeaders: (pulumi.Input.decodeList<GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader>(map['httpHeaders'], (value) => GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      path: (map['path'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

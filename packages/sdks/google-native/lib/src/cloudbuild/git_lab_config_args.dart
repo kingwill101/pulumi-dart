@@ -35,23 +35,15 @@ class GitLabConfigArgs {
   /// [secrets] Secret Manager secrets needed by the config.
   /// [username] Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
   GitLabConfigArgs({
-    pulumi.Output<List<GitLabRepositoryId>>? connectedRepositories,
-    pulumi.Output<GitLabEnterpriseConfig>? enterpriseConfig,
-    pulumi.Output<String>? gitlabConfigId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<GitLabSecrets> secrets,
-    pulumi.Output<String>? username,
-  }) :
-      connectedRepositories = pulumi.Input.asOptionalInput<List<GitLabRepositoryId>>(connectedRepositories),
-      enterpriseConfig = pulumi.Input.asOptionalInput<GitLabEnterpriseConfig>(enterpriseConfig),
-      gitlabConfigId = pulumi.Input.asOptionalInput<String>(gitlabConfigId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secrets = pulumi.Input.asInput<GitLabSecrets>(secrets),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.connectedRepositories,
+    this.enterpriseConfig,
+    this.gitlabConfigId,
+    this.location,
+    this.name,
+    this.project,
+    required this.secrets,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class GitLabConfigArgs {
 
   factory GitLabConfigArgs.fromMap(Map<String, dynamic> map) {
     return GitLabConfigArgs(
-      connectedRepositories: map['connectedRepositories'] == null ? null : pulumi.Output.create<List<GitLabRepositoryId>>(pulumi.Input.decodeList<GitLabRepositoryId>(map['connectedRepositories'], (value) => GitLabRepositoryId.fromMap((value as Map).cast<String, dynamic>()))),
-      enterpriseConfig: map['enterpriseConfig'] == null ? null : pulumi.Output.create<GitLabEnterpriseConfig>(GitLabEnterpriseConfig.fromMap((map['enterpriseConfig'] as Map).cast<String, dynamic>())),
-      gitlabConfigId: map['gitlabConfigId'] == null ? null : pulumi.Output.create<String>(map['gitlabConfigId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secrets: pulumi.Output.create<GitLabSecrets>(GitLabSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      connectedRepositories: map['connectedRepositories'] == null ? null : (pulumi.Input.decodeList<GitLabRepositoryId>(map['connectedRepositories'], (value) => GitLabRepositoryId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enterpriseConfig: map['enterpriseConfig'] == null ? null : (GitLabEnterpriseConfig.fromMap((map['enterpriseConfig'] as Map).cast<String, dynamic>())).input(),
+      gitlabConfigId: map['gitlabConfigId'] == null ? null : (map['gitlabConfigId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secrets: (GitLabSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

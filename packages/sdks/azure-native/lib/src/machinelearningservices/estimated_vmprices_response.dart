@@ -6,11 +6,11 @@ import 'estimated_vmprice_response.dart';
 /// The estimated price info for using a VM.
 class EstimatedVMPricesResponse {
   /// Three lettered code specifying the currency of the VM price. Example: USD
-  final String billingCurrency;
+  final pulumi.Input<String> billingCurrency;
   /// The unit of time measurement for the specified VM price. Example: OneHour
-  final String unitOfMeasure;
+  final pulumi.Input<String> unitOfMeasure;
   /// The list of estimated prices for using a VM of a particular OS type, tier, etc.
-  final List<EstimatedVMPriceResponse> values;
+  final pulumi.Input<List<EstimatedVMPriceResponse>> values;
 
   /// Creates a new [EstimatedVMPricesResponse].
   /// [billingCurrency] Three lettered code specifying the currency of the VM price. Example: USD
@@ -26,15 +26,15 @@ class EstimatedVMPricesResponse {
     return <String, dynamic>{
       'billingCurrency': billingCurrency,
       'unitOfMeasure': unitOfMeasure,
-      'values': pulumi.Input.encodeList<EstimatedVMPriceResponse, Map<String, dynamic>>(values, (value) => value.toMap()),
+      'values': pulumi.Input.mapInputValue<List<EstimatedVMPriceResponse>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<EstimatedVMPriceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EstimatedVMPricesResponse.fromMap(Map<String, dynamic> map) {
     return EstimatedVMPricesResponse(
-      billingCurrency: map['billingCurrency'] as String,
-      unitOfMeasure: map['unitOfMeasure'] as String,
-      values: pulumi.Input.decodeList<EstimatedVMPriceResponse>(map['values'], (value) => EstimatedVMPriceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      billingCurrency: (map['billingCurrency'] as String).input(),
+      unitOfMeasure: (map['unitOfMeasure'] as String).input(),
+      values: (pulumi.Input.decodeList<EstimatedVMPriceResponse>(map['values'], (value) => EstimatedVMPriceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

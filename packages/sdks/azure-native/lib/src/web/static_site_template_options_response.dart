@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Template Options for the static site.
 class StaticSiteTemplateOptionsResponse {
   /// Description of the newly generated repository.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Whether or not the newly generated repository is a private repository. Defaults to false (i.e. public).
-  final bool? isPrivate;
+  final pulumi.Input<bool>? isPrivate;
   /// Owner of the newly generated repository.
-  final String? owner;
+  final pulumi.Input<String>? owner;
   /// Name of the newly generated repository.
-  final String? repositoryName;
+  final pulumi.Input<String>? repositoryName;
   /// URL of the template repository. The newly generated repository will be based on this one.
-  final String? templateRepositoryUrl;
+  final pulumi.Input<String>? templateRepositoryUrl;
 
   /// Creates a new [StaticSiteTemplateOptionsResponse].
   /// [description] Description of the newly generated repository.
@@ -40,11 +41,11 @@ class StaticSiteTemplateOptionsResponse {
 
   factory StaticSiteTemplateOptionsResponse.fromMap(Map<String, dynamic> map) {
     return StaticSiteTemplateOptionsResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      isPrivate: map['isPrivate'] == null ? null : map['isPrivate'] as bool,
-      owner: map['owner'] == null ? null : map['owner'] as String,
-      repositoryName: map['repositoryName'] == null ? null : map['repositoryName'] as String,
-      templateRepositoryUrl: map['templateRepositoryUrl'] == null ? null : map['templateRepositoryUrl'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isPrivate: map['isPrivate'] == null ? null : (map['isPrivate'] as bool).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
+      templateRepositoryUrl: map['templateRepositoryUrl'] == null ? null : (map['templateRepositoryUrl'] as String).input(),
     );
   }
 }

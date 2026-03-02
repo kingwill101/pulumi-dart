@@ -31,23 +31,15 @@ class DatabaseLogsinkOpensearchState {
   /// [name] Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
   /// [timeoutSeconds] Request timeout for log deliveries in seconds. Must be 1 or greater.
   DatabaseLogsinkOpensearchState({
-    pulumi.Output<String>? caCert,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<int>? indexDaysMax,
-    pulumi.Output<String>? indexPrefix,
-    pulumi.Output<String>? logsinkId,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? timeoutSeconds,
-  }) :
-      caCert = pulumi.Input.asOptionalInput<String>(caCert),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      indexDaysMax = pulumi.Input.asOptionalInput<int>(indexDaysMax),
-      indexPrefix = pulumi.Input.asOptionalInput<String>(indexPrefix),
-      logsinkId = pulumi.Input.asOptionalInput<String>(logsinkId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      timeoutSeconds = pulumi.Input.asOptionalInput<int>(timeoutSeconds);
+    this.caCert,
+    this.clusterId,
+    this.endpoint,
+    this.indexDaysMax,
+    this.indexPrefix,
+    this.logsinkId,
+    this.name,
+    this.timeoutSeconds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class DatabaseLogsinkOpensearchState {
 
   factory DatabaseLogsinkOpensearchState.fromMap(Map<String, dynamic> map) {
     return DatabaseLogsinkOpensearchState(
-      caCert: map['caCert'] == null ? null : pulumi.Output.create<String>(map['caCert'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      indexDaysMax: map['indexDaysMax'] == null ? null : pulumi.Output.create<int>(map['indexDaysMax'] as int),
-      indexPrefix: map['indexPrefix'] == null ? null : pulumi.Output.create<String>(map['indexPrefix'] as String),
-      logsinkId: map['logsinkId'] == null ? null : pulumi.Output.create<String>(map['logsinkId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : pulumi.Output.create<int>(map['timeoutSeconds'] as int),
+      caCert: map['caCert'] == null ? null : (map['caCert'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      indexDaysMax: map['indexDaysMax'] == null ? null : (map['indexDaysMax'] as int).input(),
+      indexPrefix: map['indexPrefix'] == null ? null : (map['indexPrefix'] as String).input(),
+      logsinkId: map['logsinkId'] == null ? null : (map['logsinkId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
     );
   }
 }

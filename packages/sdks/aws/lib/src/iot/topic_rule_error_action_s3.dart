@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleErrorActionS3 {
   /// The Amazon S3 bucket name.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// The Amazon S3 canned ACL that controls access to the object identified by the object key. [Valid values](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
-  final String? cannedAcl;
+  final pulumi.Input<String>? cannedAcl;
   /// The object key.
-  final String key;
+  final pulumi.Input<String> key;
   /// The ARN of the IAM role that grants access.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [TopicRuleErrorActionS3].
   /// [bucketName] The Amazon S3 bucket name.
@@ -34,10 +35,10 @@ class TopicRuleErrorActionS3 {
 
   factory TopicRuleErrorActionS3.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionS3(
-      bucketName: map['bucketName'] as String,
-      cannedAcl: map['cannedAcl'] == null ? null : map['cannedAcl'] as String,
-      key: map['key'] as String,
-      roleArn: map['roleArn'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      cannedAcl: map['cannedAcl'] == null ? null : (map['cannedAcl'] as String).input(),
+      key: (map['key'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

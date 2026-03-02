@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a mapping from an AWS IAM role to a Kubernetes user and groups.
 class RoleMapping {
   /// A list of groups within Kubernetes to which the role is mapped.
-  final List<String> groups;
+  final pulumi.Input<List<String>> groups;
   /// The ARN of the IAM role to add.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// The user name within Kubernetes to map to the IAM role. By default, the user name is the ARN of the IAM role.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [RoleMapping].
   /// [groups] A list of groups within Kubernetes to which the role is mapped.
@@ -30,9 +31,9 @@ class RoleMapping {
 
   factory RoleMapping.fromMap(Map<String, dynamic> map) {
     return RoleMapping(
-      groups: (map['groups'] as List).cast<String>(),
-      roleArn: map['roleArn'] as String,
-      username: map['username'] as String,
+      groups: ((map['groups'] as List).cast<String>()).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

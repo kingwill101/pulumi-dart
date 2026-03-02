@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketLifecycleRuleCondition {
   /// Minimum age of an object in days to satisfy this condition.
-  final int age;
+  final pulumi.Input<int> age;
   /// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
-  final String createdBefore;
+  final pulumi.Input<String> createdBefore;
   /// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
-  final String customTimeBefore;
+  final pulumi.Input<String> customTimeBefore;
   /// Number of days elapsed since the user-specified timestamp set on an object.
-  final int daysSinceCustomTime;
+  final pulumi.Input<int> daysSinceCustomTime;
   /// Number of days elapsed since the noncurrent timestamp of an object. This
   /// condition is relevant only for versioned objects.
-  final int daysSinceNoncurrentTime;
+  final pulumi.Input<int> daysSinceNoncurrentTime;
   /// One or more matching name prefixes to satisfy this condition.
-  final List<String> matchesPrefixes;
+  final pulumi.Input<List<String>> matchesPrefixes;
   /// Storage Class of objects to satisfy this condition. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, DURABLE_REDUCED_AVAILABILITY.
-  final List<String> matchesStorageClasses;
+  final pulumi.Input<List<String>> matchesStorageClasses;
   /// One or more matching name suffixes to satisfy this condition.
-  final List<String> matchesSuffixes;
+  final pulumi.Input<List<String>> matchesSuffixes;
   /// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
-  final String noncurrentTimeBefore;
+  final pulumi.Input<String> noncurrentTimeBefore;
   /// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
-  final int numNewerVersions;
+  final pulumi.Input<int> numNewerVersions;
   /// While set true, age value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the age field. It can be used alone or together with age.
-  final bool sendAgeIfZero;
+  final pulumi.Input<bool> sendAgeIfZero;
   /// While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
-  final bool sendDaysSinceCustomTimeIfZero;
+  final pulumi.Input<bool> sendDaysSinceCustomTimeIfZero;
   /// While set true, days_since_noncurrent_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_noncurrent_time field. It can be used alone or together with days_since_noncurrent_time.
-  final bool sendDaysSinceNoncurrentTimeIfZero;
+  final pulumi.Input<bool> sendDaysSinceNoncurrentTimeIfZero;
   /// While set true, num_newer_versions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the num_newer_versions field. It can be used alone or together with num_newer_versions.
-  final bool sendNumNewerVersionsIfZero;
+  final pulumi.Input<bool> sendNumNewerVersionsIfZero;
   /// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
-  final String withState;
+  final pulumi.Input<String> withState;
 
   /// Creates a new [GetBucketLifecycleRuleCondition].
   /// [age] Minimum age of an object in days to satisfy this condition.
@@ -90,21 +91,21 @@ class GetBucketLifecycleRuleCondition {
 
   factory GetBucketLifecycleRuleCondition.fromMap(Map<String, dynamic> map) {
     return GetBucketLifecycleRuleCondition(
-      age: map['age'] as int,
-      createdBefore: map['createdBefore'] as String,
-      customTimeBefore: map['customTimeBefore'] as String,
-      daysSinceCustomTime: map['daysSinceCustomTime'] as int,
-      daysSinceNoncurrentTime: map['daysSinceNoncurrentTime'] as int,
-      matchesPrefixes: (map['matchesPrefixes'] as List).cast<String>(),
-      matchesStorageClasses: (map['matchesStorageClasses'] as List).cast<String>(),
-      matchesSuffixes: (map['matchesSuffixes'] as List).cast<String>(),
-      noncurrentTimeBefore: map['noncurrentTimeBefore'] as String,
-      numNewerVersions: map['numNewerVersions'] as int,
-      sendAgeIfZero: map['sendAgeIfZero'] as bool,
-      sendDaysSinceCustomTimeIfZero: map['sendDaysSinceCustomTimeIfZero'] as bool,
-      sendDaysSinceNoncurrentTimeIfZero: map['sendDaysSinceNoncurrentTimeIfZero'] as bool,
-      sendNumNewerVersionsIfZero: map['sendNumNewerVersionsIfZero'] as bool,
-      withState: map['withState'] as String,
+      age: (map['age'] as int).input(),
+      createdBefore: (map['createdBefore'] as String).input(),
+      customTimeBefore: (map['customTimeBefore'] as String).input(),
+      daysSinceCustomTime: (map['daysSinceCustomTime'] as int).input(),
+      daysSinceNoncurrentTime: (map['daysSinceNoncurrentTime'] as int).input(),
+      matchesPrefixes: ((map['matchesPrefixes'] as List).cast<String>()).input(),
+      matchesStorageClasses: ((map['matchesStorageClasses'] as List).cast<String>()).input(),
+      matchesSuffixes: ((map['matchesSuffixes'] as List).cast<String>()).input(),
+      noncurrentTimeBefore: (map['noncurrentTimeBefore'] as String).input(),
+      numNewerVersions: (map['numNewerVersions'] as int).input(),
+      sendAgeIfZero: (map['sendAgeIfZero'] as bool).input(),
+      sendDaysSinceCustomTimeIfZero: (map['sendDaysSinceCustomTimeIfZero'] as bool).input(),
+      sendDaysSinceNoncurrentTimeIfZero: (map['sendDaysSinceNoncurrentTimeIfZero'] as bool).input(),
+      sendNumNewerVersionsIfZero: (map['sendNumNewerVersionsIfZero'] as bool).input(),
+      withState: (map['withState'] as String).input(),
     );
   }
 }

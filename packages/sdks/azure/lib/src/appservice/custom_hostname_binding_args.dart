@@ -29,17 +29,12 @@ class CustomHostnameBindingArgs {
   /// [sslState] The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
   /// [thumbprint] The SSL certificate thumbprint. Changing this forces a new resource to be created.
   CustomHostnameBindingArgs({
-    required pulumi.Output<String> appServiceName,
-    required pulumi.Output<String> hostname,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sslState,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      appServiceName = pulumi.Input.asInput<String>(appServiceName),
-      hostname = pulumi.Input.asInput<String>(hostname),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sslState = pulumi.Input.asOptionalInput<String>(sslState),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    required this.appServiceName,
+    required this.hostname,
+    required this.resourceGroupName,
+    this.sslState,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class CustomHostnameBindingArgs {
 
   factory CustomHostnameBindingArgs.fromMap(Map<String, dynamic> map) {
     return CustomHostnameBindingArgs(
-      appServiceName: pulumi.Output.create<String>(map['appServiceName'] as String),
-      hostname: pulumi.Output.create<String>(map['hostname'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sslState: map['sslState'] == null ? null : pulumi.Output.create<String>(map['sslState'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      appServiceName: (map['appServiceName'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sslState: map['sslState'] == null ? null : (map['sslState'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

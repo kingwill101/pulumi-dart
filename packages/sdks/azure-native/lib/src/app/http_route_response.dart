@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_route_action_response.dart';
 import 'http_route_match_response.dart';
 
 /// Http Routes configuration, including paths to match on and whether or not rewrites are to be done.
 class HttpRouteResponse {
   /// Once route is matched, what is the desired action
-  final HttpRouteActionResponse? action;
+  final pulumi.Input<HttpRouteActionResponse>? action;
   /// Conditions route will match on
-  final HttpRouteMatchResponse? match;
+  final pulumi.Input<HttpRouteMatchResponse>? match;
 
   /// Creates a new [HttpRouteResponse].
   /// [action] Once route is matched, what is the desired action
@@ -20,15 +21,15 @@ class HttpRouteResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?action == null ? null : action!.toMap(),
-      'match': ?match == null ? null : match!.toMap(),
+      'action': ?pulumi.Input.mapOptionalInputValue<HttpRouteActionResponse, Map<String, dynamic>>(action, (value) => value.toMap()),
+      'match': ?pulumi.Input.mapOptionalInputValue<HttpRouteMatchResponse, Map<String, dynamic>>(match, (value) => value.toMap()),
     };
   }
 
   factory HttpRouteResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteResponse(
-      action: map['action'] == null ? null : HttpRouteActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      match: map['match'] == null ? null : HttpRouteMatchResponse.fromMap((map['match'] as Map).cast<String, dynamic>()),
+      action: map['action'] == null ? null : (HttpRouteActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      match: map['match'] == null ? null : (HttpRouteMatchResponse.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

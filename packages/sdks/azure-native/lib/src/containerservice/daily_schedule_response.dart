@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For schedules like: 'recur every day' or 'recur every 3 days'.
 class DailyScheduleResponse {
   /// Specifies the number of days between each set of occurrences.
-  final int intervalDays;
+  final pulumi.Input<int> intervalDays;
 
   /// Creates a new [DailyScheduleResponse].
   /// [intervalDays] Specifies the number of days between each set of occurrences.
@@ -20,7 +21,7 @@ class DailyScheduleResponse {
 
   factory DailyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return DailyScheduleResponse(
-      intervalDays: map['intervalDays'] as int,
+      intervalDays: (map['intervalDays'] as int).input(),
     );
   }
 }

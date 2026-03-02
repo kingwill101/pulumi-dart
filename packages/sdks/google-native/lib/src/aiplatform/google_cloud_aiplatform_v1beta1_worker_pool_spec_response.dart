@@ -10,17 +10,17 @@ import 'google_cloud_aiplatform_v1beta1_python_package_spec_response.dart';
 /// Represents the spec of a worker pool in a job.
 class GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse {
   /// The custom container task.
-  final GoogleCloudAiplatformV1beta1ContainerSpecResponse containerSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ContainerSpecResponse> containerSpec;
   /// Disk spec.
-  final GoogleCloudAiplatformV1beta1DiskSpecResponse diskSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1DiskSpecResponse> diskSpec;
   /// Optional. Immutable. The specification of a single machine.
-  final GoogleCloudAiplatformV1beta1MachineSpecResponse machineSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1MachineSpecResponse> machineSpec;
   /// Optional. List of NFS mount spec.
-  final List<GoogleCloudAiplatformV1beta1NfsMountResponse> nfsMounts;
+  final pulumi.Input<List<GoogleCloudAiplatformV1beta1NfsMountResponse>> nfsMounts;
   /// The Python packaged task.
-  final GoogleCloudAiplatformV1beta1PythonPackageSpecResponse pythonPackageSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1PythonPackageSpecResponse> pythonPackageSpec;
   /// Optional. The number of worker replicas to use for this worker pool.
-  final String replicaCount;
+  final pulumi.Input<String> replicaCount;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse].
   /// [containerSpec] The custom container task.
@@ -40,23 +40,23 @@ class GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerSpec': containerSpec.toMap(),
-      'diskSpec': diskSpec.toMap(),
-      'machineSpec': machineSpec.toMap(),
-      'nfsMounts': pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1NfsMountResponse, Map<String, dynamic>>(nfsMounts, (value) => value.toMap()),
-      'pythonPackageSpec': pythonPackageSpec.toMap(),
+      'containerSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1ContainerSpecResponse, Map<String, dynamic>>(containerSpec, (value) => value.toMap()),
+      'diskSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1DiskSpecResponse, Map<String, dynamic>>(diskSpec, (value) => value.toMap()),
+      'machineSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1MachineSpecResponse, Map<String, dynamic>>(machineSpec, (value) => value.toMap()),
+      'nfsMounts': pulumi.Input.mapInputValue<List<GoogleCloudAiplatformV1beta1NfsMountResponse>, List<Map<String, dynamic>>>(nfsMounts, (value) => pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1NfsMountResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pythonPackageSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1PythonPackageSpecResponse, Map<String, dynamic>>(pythonPackageSpec, (value) => value.toMap()),
       'replicaCount': replicaCount,
     };
   }
 
   factory GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse(
-      containerSpec: GoogleCloudAiplatformV1beta1ContainerSpecResponse.fromMap((map['containerSpec'] as Map).cast<String, dynamic>()),
-      diskSpec: GoogleCloudAiplatformV1beta1DiskSpecResponse.fromMap((map['diskSpec'] as Map).cast<String, dynamic>()),
-      machineSpec: GoogleCloudAiplatformV1beta1MachineSpecResponse.fromMap((map['machineSpec'] as Map).cast<String, dynamic>()),
-      nfsMounts: pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1NfsMountResponse>(map['nfsMounts'], (value) => GoogleCloudAiplatformV1beta1NfsMountResponse.fromMap((value as Map).cast<String, dynamic>())),
-      pythonPackageSpec: GoogleCloudAiplatformV1beta1PythonPackageSpecResponse.fromMap((map['pythonPackageSpec'] as Map).cast<String, dynamic>()),
-      replicaCount: map['replicaCount'] as String,
+      containerSpec: (GoogleCloudAiplatformV1beta1ContainerSpecResponse.fromMap((map['containerSpec'] as Map).cast<String, dynamic>())).input(),
+      diskSpec: (GoogleCloudAiplatformV1beta1DiskSpecResponse.fromMap((map['diskSpec'] as Map).cast<String, dynamic>())).input(),
+      machineSpec: (GoogleCloudAiplatformV1beta1MachineSpecResponse.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
+      nfsMounts: (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1NfsMountResponse>(map['nfsMounts'], (value) => GoogleCloudAiplatformV1beta1NfsMountResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pythonPackageSpec: (GoogleCloudAiplatformV1beta1PythonPackageSpecResponse.fromMap((map['pythonPackageSpec'] as Map).cast<String, dynamic>())).input(),
+      replicaCount: (map['replicaCount'] as String).input(),
     );
   }
 }

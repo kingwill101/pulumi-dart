@@ -33,23 +33,15 @@ class InstanceState {
   /// [status] The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
   /// [tags] A mapping of tags to assign to the resource.
   InstanceState({
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<int>? instanceStatus,
-    pulumi.Output<int>? instanceType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? releaseTime,
-    pulumi.Output<String>? remark,
-    pulumi.Output<int>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      instanceStatus = pulumi.Input.asOptionalInput<int>(instanceStatus),
-      instanceType = pulumi.Input.asOptionalInput<int>(instanceType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      releaseTime = pulumi.Input.asOptionalInput<String>(releaseTime),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      status = pulumi.Input.asOptionalInput<int>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.instanceName,
+    this.instanceStatus,
+    this.instanceType,
+    this.name,
+    this.releaseTime,
+    this.remark,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      instanceStatus: map['instanceStatus'] == null ? null : pulumi.Output.create<int>(map['instanceStatus'] as int),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<int>(map['instanceType'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      releaseTime: map['releaseTime'] == null ? null : pulumi.Output.create<String>(map['releaseTime'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      instanceStatus: map['instanceStatus'] == null ? null : (map['instanceStatus'] as int).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      releaseTime: map['releaseTime'] == null ? null : (map['releaseTime'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

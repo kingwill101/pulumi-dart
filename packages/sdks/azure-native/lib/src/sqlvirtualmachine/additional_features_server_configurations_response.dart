@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional SQL Server feature settings.
 class AdditionalFeaturesServerConfigurationsResponse {
   /// Enable or disable R services (SQL 2016 onwards).
-  final bool? isRServicesEnabled;
+  final pulumi.Input<bool>? isRServicesEnabled;
 
   /// Creates a new [AdditionalFeaturesServerConfigurationsResponse].
   /// [isRServicesEnabled] Enable or disable R services (SQL 2016 onwards).
@@ -20,7 +21,7 @@ class AdditionalFeaturesServerConfigurationsResponse {
 
   factory AdditionalFeaturesServerConfigurationsResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalFeaturesServerConfigurationsResponse(
-      isRServicesEnabled: map['isRServicesEnabled'] == null ? null : map['isRServicesEnabled'] as bool,
+      isRServicesEnabled: map['isRServicesEnabled'] == null ? null : (map['isRServicesEnabled'] as bool).input(),
     );
   }
 }

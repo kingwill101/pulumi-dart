@@ -41,27 +41,17 @@ class LicenseProfileArgs {
   /// [subscriptionStatus] Indicates the subscription status of the product.
   /// [tags] Resource tags.
   LicenseProfileArgs({
-    pulumi.Output<String>? assignedLicense,
-    pulumi.Output<String>? licenseProfileName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> machineName,
-    pulumi.Output<List<ProductFeature>>? productFeatures,
-    pulumi.Output<String>? productType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? softwareAssuranceCustomer,
-    pulumi.Output<String>? subscriptionStatus,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      assignedLicense = pulumi.Input.asOptionalInput<String>(assignedLicense),
-      licenseProfileName = pulumi.Input.asOptionalInput<String>(licenseProfileName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      machineName = pulumi.Input.asInput<String>(machineName),
-      productFeatures = pulumi.Input.asOptionalInput<List<ProductFeature>>(productFeatures),
-      productType = pulumi.Input.asOptionalInput<String>(productType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      softwareAssuranceCustomer = pulumi.Input.asOptionalInput<bool>(softwareAssuranceCustomer),
-      subscriptionStatus = pulumi.Input.asOptionalInput<String>(subscriptionStatus),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.assignedLicense,
+    this.licenseProfileName,
+    this.location,
+    required this.machineName,
+    this.productFeatures,
+    this.productType,
+    required this.resourceGroupName,
+    this.softwareAssuranceCustomer,
+    this.subscriptionStatus,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class LicenseProfileArgs {
 
   factory LicenseProfileArgs.fromMap(Map<String, dynamic> map) {
     return LicenseProfileArgs(
-      assignedLicense: map['assignedLicense'] == null ? null : pulumi.Output.create<String>(map['assignedLicense'] as String),
-      licenseProfileName: map['licenseProfileName'] == null ? null : pulumi.Output.create<String>(map['licenseProfileName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      machineName: pulumi.Output.create<String>(map['machineName'] as String),
-      productFeatures: map['productFeatures'] == null ? null : pulumi.Output.create<List<ProductFeature>>(pulumi.Input.decodeList<ProductFeature>(map['productFeatures'], (value) => ProductFeature.fromMap((value as Map).cast<String, dynamic>()))),
-      productType: map['productType'] == null ? null : pulumi.Output.create<String>(map['productType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : pulumi.Output.create<bool>(map['softwareAssuranceCustomer'] as bool),
-      subscriptionStatus: map['subscriptionStatus'] == null ? null : pulumi.Output.create<String>(map['subscriptionStatus'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      assignedLicense: map['assignedLicense'] == null ? null : (map['assignedLicense'] as String).input(),
+      licenseProfileName: map['licenseProfileName'] == null ? null : (map['licenseProfileName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      machineName: (map['machineName'] as String).input(),
+      productFeatures: map['productFeatures'] == null ? null : (pulumi.Input.decodeList<ProductFeature>(map['productFeatures'], (value) => ProductFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : (map['softwareAssuranceCustomer'] as bool).input(),
+      subscriptionStatus: map['subscriptionStatus'] == null ? null : (map['subscriptionStatus'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

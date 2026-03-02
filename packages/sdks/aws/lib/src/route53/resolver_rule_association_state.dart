@@ -19,15 +19,11 @@ class ResolverRuleAssociationState {
   /// [resolverRuleId] The ID of the resolver rule that you want to associate with the VPC.
   /// [vpcId] The ID of the VPC that you want to associate the resolver rule with.
   ResolverRuleAssociationState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resolverRuleId,
-    pulumi.Output<String>? vpcId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resolverRuleId = pulumi.Input.asOptionalInput<String>(resolverRuleId),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.name,
+    this.region,
+    this.resolverRuleId,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ResolverRuleAssociationState {
 
   factory ResolverRuleAssociationState.fromMap(Map<String, dynamic> map) {
     return ResolverRuleAssociationState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resolverRuleId: map['resolverRuleId'] == null ? null : pulumi.Output.create<String>(map['resolverRuleId'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resolverRuleId: map['resolverRuleId'] == null ? null : (map['resolverRuleId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

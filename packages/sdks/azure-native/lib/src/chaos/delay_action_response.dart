@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model that represents a delay action.
 class DelayActionResponse {
   /// ISO8601 formatted string that represents a duration.
-  final String duration;
+  final pulumi.Input<String> duration;
   /// String that represents a Capability URN.
-  final String name;
+  final pulumi.Input<String> name;
   /// Enum that discriminates between action models.
   /// Expected value is 'delay'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DelayActionResponse].
   /// [duration] ISO8601 formatted string that represents a duration.
@@ -31,9 +32,9 @@ class DelayActionResponse {
 
   factory DelayActionResponse.fromMap(Map<String, dynamic> map) {
     return DelayActionResponse(
-      duration: map['duration'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      duration: (map['duration'] as String).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

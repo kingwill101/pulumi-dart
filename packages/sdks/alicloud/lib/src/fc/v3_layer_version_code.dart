@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3LayerVersionCode {
   /// The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
-  final String? checksum;
+  final pulumi.Input<String>? checksum;
   /// Name of the OSS Bucket where the user stores the Layer Code ZIP package
-  final String? ossBucketName;
+  final pulumi.Input<String>? ossBucketName;
   /// Name of the OSS Object where the user stores the Layer Code ZIP package
-  final String? ossObjectName;
+  final pulumi.Input<String>? ossObjectName;
   /// Base 64 encoding of Layer Code ZIP package
-  final String? zipFile;
+  final pulumi.Input<String>? zipFile;
 
   /// Creates a new [V3LayerVersionCode].
   /// [checksum] The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
@@ -34,10 +35,10 @@ class V3LayerVersionCode {
 
   factory V3LayerVersionCode.fromMap(Map<String, dynamic> map) {
     return V3LayerVersionCode(
-      checksum: map['checksum'] == null ? null : map['checksum'] as String,
-      ossBucketName: map['ossBucketName'] == null ? null : map['ossBucketName'] as String,
-      ossObjectName: map['ossObjectName'] == null ? null : map['ossObjectName'] as String,
-      zipFile: map['zipFile'] == null ? null : map['zipFile'] as String,
+      checksum: map['checksum'] == null ? null : (map['checksum'] as String).input(),
+      ossBucketName: map['ossBucketName'] == null ? null : (map['ossBucketName'] as String).input(),
+      ossObjectName: map['ossObjectName'] == null ? null : (map['ossObjectName'] as String).input(),
+      zipFile: map['zipFile'] == null ? null : (map['zipFile'] as String).input(),
     );
   }
 }

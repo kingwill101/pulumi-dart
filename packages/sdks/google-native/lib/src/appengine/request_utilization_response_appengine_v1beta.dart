@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Target scaling by request utilization. Only applicable in the App Engine flexible environment.
 class RequestUtilizationResponseAppengineV1beta {
   /// Target number of concurrent requests.
-  final int targetConcurrentRequests;
+  final pulumi.Input<int> targetConcurrentRequests;
   /// Target requests per second.
-  final int targetRequestCountPerSecond;
+  final pulumi.Input<int> targetRequestCountPerSecond;
 
   /// Creates a new [RequestUtilizationResponseAppengineV1beta].
   /// [targetConcurrentRequests] Target number of concurrent requests.
@@ -25,8 +26,8 @@ class RequestUtilizationResponseAppengineV1beta {
 
   factory RequestUtilizationResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return RequestUtilizationResponseAppengineV1beta(
-      targetConcurrentRequests: map['targetConcurrentRequests'] as int,
-      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] as int,
+      targetConcurrentRequests: (map['targetConcurrentRequests'] as int).input(),
+      targetRequestCountPerSecond: (map['targetRequestCountPerSecond'] as int).input(),
     );
   }
 }

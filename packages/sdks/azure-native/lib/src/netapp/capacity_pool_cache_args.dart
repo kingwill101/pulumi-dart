@@ -35,23 +35,15 @@ class CapacityPoolCacheArgs {
   /// [tags] Resource tags.
   /// [zones] The availability zones.
   CapacityPoolCacheArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? cacheName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<CacheProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      cacheName = pulumi.Input.asOptionalInput<String>(cacheName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      properties = pulumi.Input.asInput<CacheProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    required this.accountName,
+    this.cacheName,
+    this.location,
+    required this.poolName,
+    required this.properties,
+    required this.resourceGroupName,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class CapacityPoolCacheArgs {
 
   factory CapacityPoolCacheArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolCacheArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      cacheName: map['cacheName'] == null ? null : pulumi.Output.create<String>(map['cacheName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      properties: pulumi.Output.create<CacheProperties>(CacheProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      accountName: (map['accountName'] as String).input(),
+      cacheName: map['cacheName'] == null ? null : (map['cacheName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      properties: (CacheProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

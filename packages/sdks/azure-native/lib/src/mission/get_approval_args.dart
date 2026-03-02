@@ -16,11 +16,9 @@ class GetApprovalArgs {
   /// [approvalName] The name of the approvals resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   GetApprovalArgs({
-    required pulumi.Output<String> approvalName,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      approvalName = pulumi.Input.asInput<String>(approvalName),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.approvalName,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetApprovalArgs {
 
   factory GetApprovalArgs.fromMap(Map<String, dynamic> map) {
     return GetApprovalArgs(
-      approvalName: pulumi.Output.create<String>(map['approvalName'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      approvalName: (map['approvalName'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

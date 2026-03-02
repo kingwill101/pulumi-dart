@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFeatureSpecMulticlusteringress {
   /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: 'projects/foo-proj/locations/global/memberships/bar'
-  final String configMembership;
+  final pulumi.Input<String> configMembership;
 
   /// Creates a new [GetFeatureSpecMulticlusteringress].
   /// [configMembership] Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: 'projects/foo-proj/locations/global/memberships/bar'
@@ -19,7 +20,7 @@ class GetFeatureSpecMulticlusteringress {
 
   factory GetFeatureSpecMulticlusteringress.fromMap(Map<String, dynamic> map) {
     return GetFeatureSpecMulticlusteringress(
-      configMembership: map['configMembership'] as String,
+      configMembership: (map['configMembership'] as String).input(),
     );
   }
 }

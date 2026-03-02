@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The endpoint used by clients to ingest metrics.
 class DataCollectionEndpointResponseMetricsIngestion {
   /// The endpoint. This property is READ-ONLY.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
 
   /// Creates a new [DataCollectionEndpointResponseMetricsIngestion].
   /// [endpoint] The endpoint. This property is READ-ONLY.
@@ -20,7 +21,7 @@ class DataCollectionEndpointResponseMetricsIngestion {
 
   factory DataCollectionEndpointResponseMetricsIngestion.fromMap(Map<String, dynamic> map) {
     return DataCollectionEndpointResponseMetricsIngestion(
-      endpoint: map['endpoint'] as String,
+      endpoint: (map['endpoint'] as String).input(),
     );
   }
 }

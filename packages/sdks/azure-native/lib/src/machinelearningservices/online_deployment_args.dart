@@ -43,27 +43,17 @@ class OnlineDeploymentArgs {
   /// [tags] Resource tags.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   OnlineDeploymentArgs({
-    pulumi.Output<String>? deploymentName,
-    required pulumi.Output<String> endpointName,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    required pulumi.Output<KubernetesOnlineDeployment> onlineDeploymentProperties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      deploymentName = pulumi.Input.asOptionalInput<String>(deploymentName),
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      onlineDeploymentProperties = pulumi.Input.asInput<KubernetesOnlineDeployment>(onlineDeploymentProperties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.deploymentName,
+    required this.endpointName,
+    this.identity,
+    this.kind,
+    this.location,
+    required this.onlineDeploymentProperties,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class OnlineDeploymentArgs {
 
   factory OnlineDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return OnlineDeploymentArgs(
-      deploymentName: map['deploymentName'] == null ? null : pulumi.Output.create<String>(map['deploymentName'] as String),
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      onlineDeploymentProperties: pulumi.Output.create<KubernetesOnlineDeployment>(KubernetesOnlineDeployment.fromMap((map['onlineDeploymentProperties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      endpointName: (map['endpointName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      onlineDeploymentProperties: (KubernetesOnlineDeployment.fromMap((map['onlineDeploymentProperties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

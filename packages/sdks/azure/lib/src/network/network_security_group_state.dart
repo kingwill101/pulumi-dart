@@ -25,17 +25,12 @@ class NetworkSecurityGroupState {
   /// [securityRules] A list of objects representing security rules, as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   NetworkSecurityGroupState({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<List<NetworkSecurityGroupSecurityRule>>? securityRules,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      securityRules = pulumi.Input.asOptionalInput<List<NetworkSecurityGroupSecurityRule>>(securityRules),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.securityRules,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class NetworkSecurityGroupState {
 
   factory NetworkSecurityGroupState.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityRules: map['securityRules'] == null ? null : pulumi.Output.create<List<NetworkSecurityGroupSecurityRule>>(pulumi.Input.decodeList<NetworkSecurityGroupSecurityRule>(map['securityRules'], (value) => NetworkSecurityGroupSecurityRule.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      securityRules: map['securityRules'] == null ? null : (pulumi.Input.decodeList<NetworkSecurityGroupSecurityRule>(map['securityRules'], (value) => NetworkSecurityGroupSecurityRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

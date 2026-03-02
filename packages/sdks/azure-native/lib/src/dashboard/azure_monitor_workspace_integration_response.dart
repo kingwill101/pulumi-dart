@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Integrations for Azure Monitor Workspace.
 class AzureMonitorWorkspaceIntegrationResponse {
   /// The resource Id of the connected Azure Monitor Workspace.
-  final String? azureMonitorWorkspaceResourceId;
+  final pulumi.Input<String>? azureMonitorWorkspaceResourceId;
 
   /// Creates a new [AzureMonitorWorkspaceIntegrationResponse].
   /// [azureMonitorWorkspaceResourceId] The resource Id of the connected Azure Monitor Workspace.
@@ -20,7 +21,7 @@ class AzureMonitorWorkspaceIntegrationResponse {
 
   factory AzureMonitorWorkspaceIntegrationResponse.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceIntegrationResponse(
-      azureMonitorWorkspaceResourceId: map['azureMonitorWorkspaceResourceId'] == null ? null : map['azureMonitorWorkspaceResourceId'] as String,
+      azureMonitorWorkspaceResourceId: map['azureMonitorWorkspaceResourceId'] == null ? null : (map['azureMonitorWorkspaceResourceId'] as String).input(),
     );
   }
 }

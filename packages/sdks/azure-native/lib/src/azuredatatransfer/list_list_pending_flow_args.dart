@@ -16,11 +16,9 @@ class ListListPendingFlowArgs {
   /// [connectionName] The name for the connection that is to be requested.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListListPendingFlowArgs({
-    required pulumi.Output<String> connectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.connectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListListPendingFlowArgs {
 
   factory ListListPendingFlowArgs.fromMap(Map<String, dynamic> map) {
     return ListListPendingFlowArgs(
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      connectionName: (map['connectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

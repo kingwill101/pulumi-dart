@@ -31,23 +31,15 @@ class LinkedServiceKeyVaultState {
   /// [name] Specifies the name of the Data Factory Linked Service Key Vault. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service Key Vault.
   LinkedServiceKeyVaultState({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? integrationRuntimeName,
-    pulumi.Output<String>? keyVaultId,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      integrationRuntimeName = pulumi.Input.asOptionalInput<String>(integrationRuntimeName),
-      keyVaultId = pulumi.Input.asOptionalInput<String>(keyVaultId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters);
+    this.additionalProperties,
+    this.annotations,
+    this.dataFactoryId,
+    this.description,
+    this.integrationRuntimeName,
+    this.keyVaultId,
+    this.name,
+    this.parameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class LinkedServiceKeyVaultState {
 
   factory LinkedServiceKeyVaultState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceKeyVaultState(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      keyVaultId: map['keyVaultId'] == null ? null : pulumi.Output.create<String>(map['keyVaultId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetAzureServersSettingArgs {
   /// Creates a new [GetAzureServersSettingArgs].
   /// [settingKind] The kind of the server vulnerability assessments setting
   GetAzureServersSettingArgs({
-    required pulumi.Output<String> settingKind,
-  }) :
-      settingKind = pulumi.Input.asInput<String>(settingKind);
+    required this.settingKind,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetAzureServersSettingArgs {
 
   factory GetAzureServersSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureServersSettingArgs(
-      settingKind: pulumi.Output.create<String>(map['settingKind'] as String),
+      settingKind: (map['settingKind'] as String).input(),
     );
   }
 }

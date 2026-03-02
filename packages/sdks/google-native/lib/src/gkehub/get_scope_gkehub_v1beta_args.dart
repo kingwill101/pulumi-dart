@@ -16,13 +16,10 @@ class GetScopeGkehubV1betaArgs {
   /// [project] Optional.
   /// [scopeId] Required.
   GetScopeGkehubV1betaArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> scopeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scopeId = pulumi.Input.asInput<String>(scopeId);
+    required this.location,
+    this.project,
+    required this.scopeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetScopeGkehubV1betaArgs {
 
   factory GetScopeGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeGkehubV1betaArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scopeId: pulumi.Output.create<String>(map['scopeId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
     );
   }
 }

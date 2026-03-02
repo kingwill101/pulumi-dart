@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linked_service_reference.dart';
 
 /// Staging settings.
 class StagingSettings {
   /// Specifies whether to use compression when copying data via an interim staging. Default value is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic enableCompression;
+  final pulumi.Input<dynamic>? enableCompression;
   /// Staging linked service reference.
-  final LinkedServiceReference linkedServiceName;
+  final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// The path to storage for storing the interim data. Type: string (or Expression with resultType string).
-  final dynamic path;
+  final pulumi.Input<dynamic>? path;
 
   /// Creates a new [StagingSettings].
   /// [enableCompression] Specifies whether to use compression when copying data via an interim staging. Default value is false. Type: boolean (or Expression with resultType boolean).
@@ -24,16 +25,16 @@ class StagingSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enableCompression': ?enableCompression,
-      'linkedServiceName': linkedServiceName.toMap(),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'path': ?path,
     };
   }
 
   factory StagingSettings.fromMap(Map<String, dynamic> map) {
     return StagingSettings(
-      enableCompression: map['enableCompression'] == null ? null : map['enableCompression'],
-      linkedServiceName: LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      path: map['path'] == null ? null : map['path'],
+      enableCompression: map['enableCompression'] == null ? null : (map['enableCompression']).input(),
+      linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path']).input(),
     );
   }
 }

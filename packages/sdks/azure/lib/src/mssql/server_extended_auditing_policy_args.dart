@@ -42,27 +42,17 @@ class ServerExtendedAuditingPolicyArgs {
   /// [storageAccountSubscriptionId] The ID of the Subscription containing the Storage Account.
   /// [storageEndpoint] The blob storage endpoint (e.g. <https://example.blob.core.windows.net>). This blob storage will hold all extended auditing logs.
   ServerExtendedAuditingPolicyArgs({
-    pulumi.Output<List<String>>? auditActionsAndGroups,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? logMonitoringEnabled,
-    pulumi.Output<String>? predicateExpression,
-    pulumi.Output<int>? retentionInDays,
-    required pulumi.Output<String> serverId,
-    pulumi.Output<String>? storageAccountAccessKey,
-    pulumi.Output<bool>? storageAccountAccessKeyIsSecondary,
-    pulumi.Output<String>? storageAccountSubscriptionId,
-    pulumi.Output<String>? storageEndpoint,
-  }) :
-      auditActionsAndGroups = pulumi.Input.asOptionalInput<List<String>>(auditActionsAndGroups),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      logMonitoringEnabled = pulumi.Input.asOptionalInput<bool>(logMonitoringEnabled),
-      predicateExpression = pulumi.Input.asOptionalInput<String>(predicateExpression),
-      retentionInDays = pulumi.Input.asOptionalInput<int>(retentionInDays),
-      serverId = pulumi.Input.asInput<String>(serverId),
-      storageAccountAccessKey = pulumi.Input.asOptionalInput<String>(storageAccountAccessKey),
-      storageAccountAccessKeyIsSecondary = pulumi.Input.asOptionalInput<bool>(storageAccountAccessKeyIsSecondary),
-      storageAccountSubscriptionId = pulumi.Input.asOptionalInput<String>(storageAccountSubscriptionId),
-      storageEndpoint = pulumi.Input.asOptionalInput<String>(storageEndpoint);
+    this.auditActionsAndGroups,
+    this.enabled,
+    this.logMonitoringEnabled,
+    this.predicateExpression,
+    this.retentionInDays,
+    required this.serverId,
+    this.storageAccountAccessKey,
+    this.storageAccountAccessKeyIsSecondary,
+    this.storageAccountSubscriptionId,
+    this.storageEndpoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class ServerExtendedAuditingPolicyArgs {
 
   factory ServerExtendedAuditingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServerExtendedAuditingPolicyArgs(
-      auditActionsAndGroups: map['auditActionsAndGroups'] == null ? null : pulumi.Output.create<List<String>>((map['auditActionsAndGroups'] as List).cast<String>()),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      logMonitoringEnabled: map['logMonitoringEnabled'] == null ? null : pulumi.Output.create<bool>(map['logMonitoringEnabled'] as bool),
-      predicateExpression: map['predicateExpression'] == null ? null : pulumi.Output.create<String>(map['predicateExpression'] as String),
-      retentionInDays: map['retentionInDays'] == null ? null : pulumi.Output.create<int>(map['retentionInDays'] as int),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountAccessKey'] as String),
-      storageAccountAccessKeyIsSecondary: map['storageAccountAccessKeyIsSecondary'] == null ? null : pulumi.Output.create<bool>(map['storageAccountAccessKeyIsSecondary'] as bool),
-      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : pulumi.Output.create<String>(map['storageAccountSubscriptionId'] as String),
-      storageEndpoint: map['storageEndpoint'] == null ? null : pulumi.Output.create<String>(map['storageEndpoint'] as String),
+      auditActionsAndGroups: map['auditActionsAndGroups'] == null ? null : ((map['auditActionsAndGroups'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      logMonitoringEnabled: map['logMonitoringEnabled'] == null ? null : (map['logMonitoringEnabled'] as bool).input(),
+      predicateExpression: map['predicateExpression'] == null ? null : (map['predicateExpression'] as String).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
+      serverId: (map['serverId'] as String).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
+      storageAccountAccessKeyIsSecondary: map['storageAccountAccessKeyIsSecondary'] == null ? null : (map['storageAccountAccessKeyIsSecondary'] as bool).input(),
+      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : (map['storageAccountSubscriptionId'] as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
     );
   }
 }

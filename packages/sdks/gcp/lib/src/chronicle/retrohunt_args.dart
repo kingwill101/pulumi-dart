@@ -35,19 +35,13 @@ class RetrohuntArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [rule] The Rule ID of the rule.
   RetrohuntArgs({
-    pulumi.Output<String>? retrohuntId,
-    required pulumi.Output<String> instance,
-    required pulumi.Output<String> location,
-    required pulumi.Output<RetrohuntProcessInterval> processInterval,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> rule,
-  }) :
-      retrohuntId = pulumi.Input.asOptionalInput<String>(retrohuntId),
-      instance = pulumi.Input.asInput<String>(instance),
-      location = pulumi.Input.asInput<String>(location),
-      processInterval = pulumi.Input.asInput<RetrohuntProcessInterval>(processInterval),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rule = pulumi.Input.asInput<String>(rule);
+    this.retrohuntId,
+    required this.instance,
+    required this.location,
+    required this.processInterval,
+    this.project,
+    required this.rule,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class RetrohuntArgs {
 
   factory RetrohuntArgs.fromMap(Map<String, dynamic> map) {
     return RetrohuntArgs(
-      retrohuntId: map['RetrohuntId'] == null ? null : pulumi.Output.create<String>(map['RetrohuntId'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      processInterval: pulumi.Output.create<RetrohuntProcessInterval>(RetrohuntProcessInterval.fromMap((map['processInterval'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rule: pulumi.Output.create<String>(map['rule'] as String),
+      retrohuntId: map['RetrohuntId'] == null ? null : (map['RetrohuntId'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      location: (map['location'] as String).input(),
+      processInterval: (RetrohuntProcessInterval.fromMap((map['processInterval'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rule: (map['rule'] as String).input(),
     );
   }
 }

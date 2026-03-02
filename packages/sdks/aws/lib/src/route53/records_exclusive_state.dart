@@ -20,13 +20,10 @@ class RecordsExclusiveState {
   /// [timeouts] Optional.
   /// [zoneId] ID of the hosted zone containing the resource record sets.
   RecordsExclusiveState({
-    pulumi.Output<List<RecordsExclusiveResourceRecordSet>>? resourceRecordSets,
-    pulumi.Output<RecordsExclusiveTimeouts>? timeouts,
-    pulumi.Output<String>? zoneId,
-  }) :
-      resourceRecordSets = pulumi.Input.asOptionalInput<List<RecordsExclusiveResourceRecordSet>>(resourceRecordSets),
-      timeouts = pulumi.Input.asOptionalInput<RecordsExclusiveTimeouts>(timeouts),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.resourceRecordSets,
+    this.timeouts,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class RecordsExclusiveState {
 
   factory RecordsExclusiveState.fromMap(Map<String, dynamic> map) {
     return RecordsExclusiveState(
-      resourceRecordSets: map['resourceRecordSets'] == null ? null : pulumi.Output.create<List<RecordsExclusiveResourceRecordSet>>(pulumi.Input.decodeList<RecordsExclusiveResourceRecordSet>(map['resourceRecordSets'], (value) => RecordsExclusiveResourceRecordSet.fromMap((value as Map).cast<String, dynamic>()))),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<RecordsExclusiveTimeouts>(RecordsExclusiveTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      resourceRecordSets: map['resourceRecordSets'] == null ? null : (pulumi.Input.decodeList<RecordsExclusiveResourceRecordSet>(map['resourceRecordSets'], (value) => RecordsExclusiveResourceRecordSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeouts: map['timeouts'] == null ? null : (RecordsExclusiveTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

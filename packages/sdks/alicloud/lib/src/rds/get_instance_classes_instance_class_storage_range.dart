@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceClassesInstanceClassStorageRange {
   /// DB Instance available storage max value.
-  final String max;
+  final pulumi.Input<String> max;
   /// DB Instance available storage min value.
-  final String min;
+  final pulumi.Input<String> min;
   /// DB Instance available storage increase step.
-  final String step;
+  final pulumi.Input<String> step;
 
   /// Creates a new [GetInstanceClassesInstanceClassStorageRange].
   /// [max] DB Instance available storage max value.
@@ -29,9 +30,9 @@ class GetInstanceClassesInstanceClassStorageRange {
 
   factory GetInstanceClassesInstanceClassStorageRange.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassesInstanceClassStorageRange(
-      max: map['max'] as String,
-      min: map['min'] as String,
-      step: map['step'] as String,
+      max: (map['max'] as String).input(),
+      min: (map['min'] as String).input(),
+      step: (map['step'] as String).input(),
     );
   }
 }

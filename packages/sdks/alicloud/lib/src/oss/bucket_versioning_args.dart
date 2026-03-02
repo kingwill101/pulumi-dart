@@ -16,11 +16,9 @@ class BucketVersioningArgs {
   /// [bucket] The name of the bucket.
   /// [status] A bucket can be in one of the following versioning states: disabled, enabled, or suspended. By default, versioning is disabled for a bucket. Updating the value from Enabled or Suspended to Disabled will result in errors, because OSS does not support returning buckets to an unversioned state. .
   BucketVersioningArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? status,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.bucket,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class BucketVersioningArgs {
 
   factory BucketVersioningArgs.fromMap(Map<String, dynamic> map) {
     return BucketVersioningArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bucket: (map['bucket'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -53,25 +53,16 @@ class TableState {
   /// [type] The database type.
   /// [updateTime] Output only. The last modification time of the table. A timestamp in
   TableState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? database,
-    pulumi.Output<String>? deleteTime,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<TableHiveOptions>? hiveOptions,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      deleteTime = pulumi.Input.asOptionalInput<String>(deleteTime),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      hiveOptions = pulumi.Input.asOptionalInput<TableHiveOptions>(hiveOptions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.database,
+    this.deleteTime,
+    this.etag,
+    this.expireTime,
+    this.hiveOptions,
+    this.name,
+    this.type,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,15 +80,15 @@ class TableState {
 
   factory TableState.fromMap(Map<String, dynamic> map) {
     return TableState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      deleteTime: map['deleteTime'] == null ? null : pulumi.Output.create<String>(map['deleteTime'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      hiveOptions: map['hiveOptions'] == null ? null : pulumi.Output.create<TableHiveOptions>(TableHiveOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      hiveOptions: map['hiveOptions'] == null ? null : (TableHiveOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

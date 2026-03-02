@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Schema for MSIX Package Dependencies properties.
 class MsixPackageDependenciesResponse {
   /// Name of package dependency.
-  final String? dependencyName;
+  final pulumi.Input<String>? dependencyName;
   /// Dependency version required.
-  final String? minVersion;
+  final pulumi.Input<String>? minVersion;
   /// Name of dependency publisher.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
 
   /// Creates a new [MsixPackageDependenciesResponse].
   /// [dependencyName] Name of package dependency.
@@ -30,9 +31,9 @@ class MsixPackageDependenciesResponse {
 
   factory MsixPackageDependenciesResponse.fromMap(Map<String, dynamic> map) {
     return MsixPackageDependenciesResponse(
-      dependencyName: map['dependencyName'] == null ? null : map['dependencyName'] as String,
-      minVersion: map['minVersion'] == null ? null : map['minVersion'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
+      dependencyName: map['dependencyName'] == null ? null : (map['dependencyName'] as String).input(),
+      minVersion: map['minVersion'] == null ? null : (map['minVersion'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
     );
   }
 }

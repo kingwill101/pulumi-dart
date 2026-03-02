@@ -30,17 +30,12 @@ class AppHostingDomainArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serve] The serving behavior of the domain. If specified, the domain will
   AppHostingDomainArgs({
-    required pulumi.Output<String> backend,
-    required pulumi.Output<String> domainId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<AppHostingDomainServe>? serve,
-  }) :
-      backend = pulumi.Input.asInput<String>(backend),
-      domainId = pulumi.Input.asInput<String>(domainId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serve = pulumi.Input.asOptionalInput<AppHostingDomainServe>(serve);
+    required this.backend,
+    required this.domainId,
+    required this.location,
+    this.project,
+    this.serve,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class AppHostingDomainArgs {
 
   factory AppHostingDomainArgs.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainArgs(
-      backend: pulumi.Output.create<String>(map['backend'] as String),
-      domainId: pulumi.Output.create<String>(map['domainId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serve: map['serve'] == null ? null : pulumi.Output.create<AppHostingDomainServe>(AppHostingDomainServe.fromMap((map['serve'] as Map).cast<String, dynamic>())),
+      backend: (map['backend'] as String).input(),
+      domainId: (map['domainId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serve: map['serve'] == null ? null : (AppHostingDomainServe.fromMap((map['serve'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

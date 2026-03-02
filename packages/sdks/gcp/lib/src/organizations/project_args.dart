@@ -51,25 +51,16 @@ class ProjectArgs {
   /// [projectId] The project ID. Changing this forces a new project to be created.
   /// [tags] A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
   ProjectArgs({
-    pulumi.Output<bool>? autoCreateNetwork,
-    pulumi.Output<String>? billingAccount,
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? folderId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoCreateNetwork = pulumi.Input.asOptionalInput<bool>(autoCreateNetwork),
-      billingAccount = pulumi.Input.asOptionalInput<String>(billingAccount),
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      folderId = pulumi.Input.asOptionalInput<String>(folderId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.autoCreateNetwork,
+    this.billingAccount,
+    this.deletionPolicy,
+    this.folderId,
+    this.labels,
+    this.name,
+    this.orgId,
+    this.projectId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,15 +78,15 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      autoCreateNetwork: map['autoCreateNetwork'] == null ? null : pulumi.Output.create<bool>(map['autoCreateNetwork'] as bool),
-      billingAccount: map['billingAccount'] == null ? null : pulumi.Output.create<String>(map['billingAccount'] as String),
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      folderId: map['folderId'] == null ? null : pulumi.Output.create<String>(map['folderId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoCreateNetwork: map['autoCreateNetwork'] == null ? null : (map['autoCreateNetwork'] as bool).input(),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

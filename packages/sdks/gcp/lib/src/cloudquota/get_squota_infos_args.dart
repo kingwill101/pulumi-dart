@@ -16,11 +16,9 @@ class GetSQuotaInfosArgs {
   /// [parent] Parent value of QuotaInfo resources. Listing across different resource containers (such as 'projects/-') is not allowed. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number].
   /// [service] The name of the service in which the quotas are defined.
   GetSQuotaInfosArgs({
-    required pulumi.Output<String> parent,
-    required pulumi.Output<String> service,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent),
-      service = pulumi.Input.asInput<String>(service);
+    required this.parent,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSQuotaInfosArgs {
 
   factory GetSQuotaInfosArgs.fromMap(Map<String, dynamic> map) {
     return GetSQuotaInfosArgs(
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
+      parent: (map['parent'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

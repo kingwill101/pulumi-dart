@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DevCenterIdentity {
-  final List<String>? identityIds;
-  final String? principalId;
-  final String? tenantId;
-  final String type;
+  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DevCenterIdentity].
   /// [identityIds] Optional.
@@ -30,10 +31,10 @@ class DevCenterIdentity {
 
   factory DevCenterIdentity.fromMap(Map<String, dynamic> map) {
     return DevCenterIdentity(
-      identityIds: map['identityIds'] == null ? null : (map['identityIds'] as List).cast<String>(),
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] as String,
+      identityIds: map['identityIds'] == null ? null : ((map['identityIds'] as List).cast<String>()).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

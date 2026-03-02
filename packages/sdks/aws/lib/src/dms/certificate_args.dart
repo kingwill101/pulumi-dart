@@ -25,17 +25,12 @@ class CertificateArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   CertificateArgs({
-    required pulumi.Output<String> certificateId,
-    pulumi.Output<String>? certificatePem,
-    pulumi.Output<String>? certificateWallet,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      certificateId = pulumi.Input.asInput<String>(certificateId),
-      certificatePem = pulumi.Input.asOptionalInput<String>(certificatePem),
-      certificateWallet = pulumi.Input.asOptionalInput<String>(certificateWallet),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.certificateId,
+    this.certificatePem,
+    this.certificateWallet,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateId: pulumi.Output.create<String>(map['certificateId'] as String),
-      certificatePem: map['certificatePem'] == null ? null : pulumi.Output.create<String>(map['certificatePem'] as String),
-      certificateWallet: map['certificateWallet'] == null ? null : pulumi.Output.create<String>(map['certificateWallet'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      certificateId: (map['certificateId'] as String).input(),
+      certificatePem: map['certificatePem'] == null ? null : (map['certificatePem'] as String).input(),
+      certificateWallet: map['certificateWallet'] == null ? null : (map['certificateWallet'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

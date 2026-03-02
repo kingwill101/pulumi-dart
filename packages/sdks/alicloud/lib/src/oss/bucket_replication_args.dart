@@ -46,27 +46,17 @@ class BucketReplicationArgs {
   /// [sourceSelectionCriteria] Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
   /// [syncRole] Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
   BucketReplicationArgs({
-    pulumi.Output<String>? action,
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<BucketReplicationDestination> destination,
-    pulumi.Output<BucketReplicationEncryptionConfiguration>? encryptionConfiguration,
-    pulumi.Output<String>? historicalObjectReplication,
-    pulumi.Output<BucketReplicationPrefixSet>? prefixSet,
-    pulumi.Output<BucketReplicationProgress>? progress,
-    pulumi.Output<BucketReplicationRtc>? rtc,
-    pulumi.Output<BucketReplicationSourceSelectionCriteria>? sourceSelectionCriteria,
-    pulumi.Output<String>? syncRole,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      bucket = pulumi.Input.asInput<String>(bucket),
-      destination = pulumi.Input.asInput<BucketReplicationDestination>(destination),
-      encryptionConfiguration = pulumi.Input.asOptionalInput<BucketReplicationEncryptionConfiguration>(encryptionConfiguration),
-      historicalObjectReplication = pulumi.Input.asOptionalInput<String>(historicalObjectReplication),
-      prefixSet = pulumi.Input.asOptionalInput<BucketReplicationPrefixSet>(prefixSet),
-      progress = pulumi.Input.asOptionalInput<BucketReplicationProgress>(progress),
-      rtc = pulumi.Input.asOptionalInput<BucketReplicationRtc>(rtc),
-      sourceSelectionCriteria = pulumi.Input.asOptionalInput<BucketReplicationSourceSelectionCriteria>(sourceSelectionCriteria),
-      syncRole = pulumi.Input.asOptionalInput<String>(syncRole);
+    this.action,
+    required this.bucket,
+    required this.destination,
+    this.encryptionConfiguration,
+    this.historicalObjectReplication,
+    this.prefixSet,
+    this.progress,
+    this.rtc,
+    this.sourceSelectionCriteria,
+    this.syncRole,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class BucketReplicationArgs {
 
   factory BucketReplicationArgs.fromMap(Map<String, dynamic> map) {
     return BucketReplicationArgs(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      destination: pulumi.Output.create<BucketReplicationDestination>(BucketReplicationDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : pulumi.Output.create<BucketReplicationEncryptionConfiguration>(BucketReplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())),
-      historicalObjectReplication: map['historicalObjectReplication'] == null ? null : pulumi.Output.create<String>(map['historicalObjectReplication'] as String),
-      prefixSet: map['prefixSet'] == null ? null : pulumi.Output.create<BucketReplicationPrefixSet>(BucketReplicationPrefixSet.fromMap((map['prefixSet'] as Map).cast<String, dynamic>())),
-      progress: map['progress'] == null ? null : pulumi.Output.create<BucketReplicationProgress>(BucketReplicationProgress.fromMap((map['progress'] as Map).cast<String, dynamic>())),
-      rtc: map['rtc'] == null ? null : pulumi.Output.create<BucketReplicationRtc>(BucketReplicationRtc.fromMap((map['rtc'] as Map).cast<String, dynamic>())),
-      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : pulumi.Output.create<BucketReplicationSourceSelectionCriteria>(BucketReplicationSourceSelectionCriteria.fromMap((map['sourceSelectionCriteria'] as Map).cast<String, dynamic>())),
-      syncRole: map['syncRole'] == null ? null : pulumi.Output.create<String>(map['syncRole'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      bucket: (map['bucket'] as String).input(),
+      destination: (BucketReplicationDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (BucketReplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      historicalObjectReplication: map['historicalObjectReplication'] == null ? null : (map['historicalObjectReplication'] as String).input(),
+      prefixSet: map['prefixSet'] == null ? null : (BucketReplicationPrefixSet.fromMap((map['prefixSet'] as Map).cast<String, dynamic>())).input(),
+      progress: map['progress'] == null ? null : (BucketReplicationProgress.fromMap((map['progress'] as Map).cast<String, dynamic>())).input(),
+      rtc: map['rtc'] == null ? null : (BucketReplicationRtc.fromMap((map['rtc'] as Map).cast<String, dynamic>())).input(),
+      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : (BucketReplicationSourceSelectionCriteria.fromMap((map['sourceSelectionCriteria'] as Map).cast<String, dynamic>())).input(),
+      syncRole: map['syncRole'] == null ? null : (map['syncRole'] as String).input(),
     );
   }
 }

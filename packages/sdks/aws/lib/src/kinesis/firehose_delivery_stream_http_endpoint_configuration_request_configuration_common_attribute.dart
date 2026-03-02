@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute {
   /// The name of the HTTP endpoint common attribute.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the HTTP endpoint common attribute.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute].
   /// [name] The name of the HTTP endpoint common attribute.
@@ -24,8 +25,8 @@ class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonA
 
   factory FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

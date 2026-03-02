@@ -25,19 +25,13 @@ class EnvPodMonitorState {
   /// [namespace] Resource namespace.
   /// [status] PodMonitor status.
   EnvPodMonitorState({
-    pulumi.Output<String>? aliyunLang,
-    pulumi.Output<String>? configYaml,
-    pulumi.Output<String>? envPodMonitorName,
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? status,
-  }) :
-      aliyunLang = pulumi.Input.asOptionalInput<String>(aliyunLang),
-      configYaml = pulumi.Input.asOptionalInput<String>(configYaml),
-      envPodMonitorName = pulumi.Input.asOptionalInput<String>(envPodMonitorName),
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.aliyunLang,
+    this.configYaml,
+    this.envPodMonitorName,
+    this.environmentId,
+    this.namespace,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class EnvPodMonitorState {
 
   factory EnvPodMonitorState.fromMap(Map<String, dynamic> map) {
     return EnvPodMonitorState(
-      aliyunLang: map['aliyunLang'] == null ? null : pulumi.Output.create<String>(map['aliyunLang'] as String),
-      configYaml: map['configYaml'] == null ? null : pulumi.Output.create<String>(map['configYaml'] as String),
-      envPodMonitorName: map['envPodMonitorName'] == null ? null : pulumi.Output.create<String>(map['envPodMonitorName'] as String),
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
+      configYaml: map['configYaml'] == null ? null : (map['configYaml'] as String).input(),
+      envPodMonitorName: map['envPodMonitorName'] == null ? null : (map['envPodMonitorName'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class PrivateEndpointConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name.
   PrivateEndpointConnectionArgs({
-    pulumi.Output<String>? peConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteName,
-  }) :
-      peConnectionName = pulumi.Input.asOptionalInput<String>(peConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asInput<String>(siteName);
+    this.peConnectionName,
+    required this.resourceGroupName,
+    required this.siteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PrivateEndpointConnectionArgs {
 
   factory PrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionArgs(
-      peConnectionName: map['peConnectionName'] == null ? null : pulumi.Output.create<String>(map['peConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
+      peConnectionName: map['peConnectionName'] == null ? null : (map['peConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
     );
   }
 }

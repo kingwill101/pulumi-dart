@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkteamMemberDefinitionOidcMemberDefinition {
   /// A list of comma separated strings that identifies user groups in your OIDC IdP. Each user group is made up of a group of private workers.
-  final List<String> groups;
+  final pulumi.Input<List<String>> groups;
 
   /// Creates a new [WorkteamMemberDefinitionOidcMemberDefinition].
   /// [groups] A list of comma separated strings that identifies user groups in your OIDC IdP. Each user group is made up of a group of private workers.
@@ -19,7 +20,7 @@ class WorkteamMemberDefinitionOidcMemberDefinition {
 
   factory WorkteamMemberDefinitionOidcMemberDefinition.fromMap(Map<String, dynamic> map) {
     return WorkteamMemberDefinitionOidcMemberDefinition(
-      groups: (map['groups'] as List).cast<String>(),
+      groups: ((map['groups'] as List).cast<String>()).input(),
     );
   }
 }

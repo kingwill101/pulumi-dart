@@ -37,25 +37,16 @@ class GetRandomPasswordArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [requireEachIncludedType] Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation.
   GetRandomPasswordArgs({
-    pulumi.Output<String>? excludeCharacters,
-    pulumi.Output<bool>? excludeLowercase,
-    pulumi.Output<bool>? excludeNumbers,
-    pulumi.Output<bool>? excludePunctuation,
-    pulumi.Output<bool>? excludeUppercase,
-    pulumi.Output<bool>? includeSpace,
-    pulumi.Output<int>? passwordLength,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? requireEachIncludedType,
-  }) :
-      excludeCharacters = pulumi.Input.asOptionalInput<String>(excludeCharacters),
-      excludeLowercase = pulumi.Input.asOptionalInput<bool>(excludeLowercase),
-      excludeNumbers = pulumi.Input.asOptionalInput<bool>(excludeNumbers),
-      excludePunctuation = pulumi.Input.asOptionalInput<bool>(excludePunctuation),
-      excludeUppercase = pulumi.Input.asOptionalInput<bool>(excludeUppercase),
-      includeSpace = pulumi.Input.asOptionalInput<bool>(includeSpace),
-      passwordLength = pulumi.Input.asOptionalInput<int>(passwordLength),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      requireEachIncludedType = pulumi.Input.asOptionalInput<bool>(requireEachIncludedType);
+    this.excludeCharacters,
+    this.excludeLowercase,
+    this.excludeNumbers,
+    this.excludePunctuation,
+    this.excludeUppercase,
+    this.includeSpace,
+    this.passwordLength,
+    this.region,
+    this.requireEachIncludedType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class GetRandomPasswordArgs {
 
   factory GetRandomPasswordArgs.fromMap(Map<String, dynamic> map) {
     return GetRandomPasswordArgs(
-      excludeCharacters: map['excludeCharacters'] == null ? null : pulumi.Output.create<String>(map['excludeCharacters'] as String),
-      excludeLowercase: map['excludeLowercase'] == null ? null : pulumi.Output.create<bool>(map['excludeLowercase'] as bool),
-      excludeNumbers: map['excludeNumbers'] == null ? null : pulumi.Output.create<bool>(map['excludeNumbers'] as bool),
-      excludePunctuation: map['excludePunctuation'] == null ? null : pulumi.Output.create<bool>(map['excludePunctuation'] as bool),
-      excludeUppercase: map['excludeUppercase'] == null ? null : pulumi.Output.create<bool>(map['excludeUppercase'] as bool),
-      includeSpace: map['includeSpace'] == null ? null : pulumi.Output.create<bool>(map['includeSpace'] as bool),
-      passwordLength: map['passwordLength'] == null ? null : pulumi.Output.create<int>(map['passwordLength'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      requireEachIncludedType: map['requireEachIncludedType'] == null ? null : pulumi.Output.create<bool>(map['requireEachIncludedType'] as bool),
+      excludeCharacters: map['excludeCharacters'] == null ? null : (map['excludeCharacters'] as String).input(),
+      excludeLowercase: map['excludeLowercase'] == null ? null : (map['excludeLowercase'] as bool).input(),
+      excludeNumbers: map['excludeNumbers'] == null ? null : (map['excludeNumbers'] as bool).input(),
+      excludePunctuation: map['excludePunctuation'] == null ? null : (map['excludePunctuation'] as bool).input(),
+      excludeUppercase: map['excludeUppercase'] == null ? null : (map['excludeUppercase'] as bool).input(),
+      includeSpace: map['includeSpace'] == null ? null : (map['includeSpace'] as bool).input(),
+      passwordLength: map['passwordLength'] == null ? null : (map['passwordLength'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      requireEachIncludedType: map['requireEachIncludedType'] == null ? null : (map['requireEachIncludedType'] as bool).input(),
     );
   }
 }

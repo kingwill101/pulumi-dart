@@ -16,11 +16,9 @@ class GetCapacityDetailsArgs {
   /// [dedicatedCapacityName] The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCapacityDetailsArgs({
-    required pulumi.Output<String> dedicatedCapacityName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dedicatedCapacityName = pulumi.Input.asInput<String>(dedicatedCapacityName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dedicatedCapacityName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCapacityDetailsArgs {
 
   factory GetCapacityDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityDetailsArgs(
-      dedicatedCapacityName: pulumi.Output.create<String>(map['dedicatedCapacityName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dedicatedCapacityName: (map['dedicatedCapacityName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

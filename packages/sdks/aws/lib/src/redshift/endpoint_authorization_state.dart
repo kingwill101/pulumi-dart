@@ -34,25 +34,16 @@ class EndpointAuthorizationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcIds] The virtual private cloud (VPC) identifiers to grant access to. If none are specified all VPCs in shared account are allowed.
   EndpointAuthorizationState({
-    pulumi.Output<String>? account,
-    pulumi.Output<bool>? allowedAllVpcs,
-    pulumi.Output<String>? clusterIdentifier,
-    pulumi.Output<int>? endpointCount,
-    pulumi.Output<bool>? forceDelete,
-    pulumi.Output<String>? grantee,
-    pulumi.Output<String>? grantor,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? vpcIds,
-  }) :
-      account = pulumi.Input.asOptionalInput<String>(account),
-      allowedAllVpcs = pulumi.Input.asOptionalInput<bool>(allowedAllVpcs),
-      clusterIdentifier = pulumi.Input.asOptionalInput<String>(clusterIdentifier),
-      endpointCount = pulumi.Input.asOptionalInput<int>(endpointCount),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      grantee = pulumi.Input.asOptionalInput<String>(grantee),
-      grantor = pulumi.Input.asOptionalInput<String>(grantor),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcIds = pulumi.Input.asOptionalInput<List<String>>(vpcIds);
+    this.account,
+    this.allowedAllVpcs,
+    this.clusterIdentifier,
+    this.endpointCount,
+    this.forceDelete,
+    this.grantee,
+    this.grantor,
+    this.region,
+    this.vpcIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class EndpointAuthorizationState {
 
   factory EndpointAuthorizationState.fromMap(Map<String, dynamic> map) {
     return EndpointAuthorizationState(
-      account: map['account'] == null ? null : pulumi.Output.create<String>(map['account'] as String),
-      allowedAllVpcs: map['allowedAllVpcs'] == null ? null : pulumi.Output.create<bool>(map['allowedAllVpcs'] as bool),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      endpointCount: map['endpointCount'] == null ? null : pulumi.Output.create<int>(map['endpointCount'] as int),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      grantee: map['grantee'] == null ? null : pulumi.Output.create<String>(map['grantee'] as String),
-      grantor: map['grantor'] == null ? null : pulumi.Output.create<String>(map['grantor'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcIds: map['vpcIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcIds'] as List).cast<String>()),
+      account: map['account'] == null ? null : (map['account'] as String).input(),
+      allowedAllVpcs: map['allowedAllVpcs'] == null ? null : (map['allowedAllVpcs'] as bool).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
+      endpointCount: map['endpointCount'] == null ? null : (map['endpointCount'] as int).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      grantee: map['grantee'] == null ? null : (map['grantee'] as String).input(),
+      grantor: map['grantor'] == null ? null : (map['grantor'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
     );
   }
 }

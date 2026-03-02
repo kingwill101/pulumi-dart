@@ -8,29 +8,29 @@ import 'source_response.dart';
 /// Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
 class BuildProvenanceResponse {
   /// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
-  final Map<String, String> buildOptions;
+  final pulumi.Input<Map<String, String>> buildOptions;
   /// Version string of the builder at the time this build was executed.
-  final String builderVersion;
+  final pulumi.Input<String> builderVersion;
   /// Output of the build.
-  final List<ArtifactResponse> builtArtifacts;
+  final pulumi.Input<List<ArtifactResponse>> builtArtifacts;
   /// Commands requested by the build.
-  final List<CommandResponse> commands;
+  final pulumi.Input<List<CommandResponse>> commands;
   /// Time at which the build was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
-  final String creator;
+  final pulumi.Input<String> creator;
   /// Time at which execution of the build was finished.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// URI where any logs for this provenance were written.
-  final String logsUri;
+  final pulumi.Input<String> logsUri;
   /// ID of the project.
-  final String project;
+  final pulumi.Input<String> project;
   /// Details of the Source input to the build.
-  final SourceResponse sourceProvenance;
+  final pulumi.Input<SourceResponse> sourceProvenance;
   /// Time at which execution of the build was started.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Trigger identifier if the build was triggered automatically; empty if not.
-  final String triggerId;
+  final pulumi.Input<String> triggerId;
 
   /// Creates a new [BuildProvenanceResponse].
   /// [buildOptions] Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
@@ -64,14 +64,14 @@ class BuildProvenanceResponse {
     return <String, dynamic>{
       'buildOptions': buildOptions,
       'builderVersion': builderVersion,
-      'builtArtifacts': pulumi.Input.encodeList<ArtifactResponse, Map<String, dynamic>>(builtArtifacts, (value) => value.toMap()),
-      'commands': pulumi.Input.encodeList<CommandResponse, Map<String, dynamic>>(commands, (value) => value.toMap()),
+      'builtArtifacts': pulumi.Input.mapInputValue<List<ArtifactResponse>, List<Map<String, dynamic>>>(builtArtifacts, (value) => pulumi.Input.encodeList<ArtifactResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'commands': pulumi.Input.mapInputValue<List<CommandResponse>, List<Map<String, dynamic>>>(commands, (value) => pulumi.Input.encodeList<CommandResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': createTime,
       'creator': creator,
       'endTime': endTime,
       'logsUri': logsUri,
       'project': project,
-      'sourceProvenance': sourceProvenance.toMap(),
+      'sourceProvenance': pulumi.Input.mapInputValue<SourceResponse, Map<String, dynamic>>(sourceProvenance, (value) => value.toMap()),
       'startTime': startTime,
       'triggerId': triggerId,
     };
@@ -79,18 +79,18 @@ class BuildProvenanceResponse {
 
   factory BuildProvenanceResponse.fromMap(Map<String, dynamic> map) {
     return BuildProvenanceResponse(
-      buildOptions: (map['buildOptions'] as Map).cast<String, String>(),
-      builderVersion: map['builderVersion'] as String,
-      builtArtifacts: pulumi.Input.decodeList<ArtifactResponse>(map['builtArtifacts'], (value) => ArtifactResponse.fromMap((value as Map).cast<String, dynamic>())),
-      commands: pulumi.Input.decodeList<CommandResponse>(map['commands'], (value) => CommandResponse.fromMap((value as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] as String,
-      creator: map['creator'] as String,
-      endTime: map['endTime'] as String,
-      logsUri: map['logsUri'] as String,
-      project: map['project'] as String,
-      sourceProvenance: SourceResponse.fromMap((map['sourceProvenance'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] as String,
-      triggerId: map['triggerId'] as String,
+      buildOptions: ((map['buildOptions'] as Map).cast<String, String>()).input(),
+      builderVersion: (map['builderVersion'] as String).input(),
+      builtArtifacts: (pulumi.Input.decodeList<ArtifactResponse>(map['builtArtifacts'], (value) => ArtifactResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commands: (pulumi.Input.decodeList<CommandResponse>(map['commands'], (value) => CommandResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: (map['createTime'] as String).input(),
+      creator: (map['creator'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      logsUri: (map['logsUri'] as String).input(),
+      project: (map['project'] as String).input(),
+      sourceProvenance: (SourceResponse.fromMap((map['sourceProvenance'] as Map).cast<String, dynamic>())).input(),
+      startTime: (map['startTime'] as String).input(),
+      triggerId: (map['triggerId'] as String).input(),
     );
   }
 }

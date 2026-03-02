@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The status of the operation performed on the gallery image
 class GalleryImageStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the gallery image
-  final String? operationId;
+  final pulumi.Input<String>? operationId;
   /// The status of the operation performed on the gallery image [Succeeded, Failed, InProgress]
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GalleryImageStatusProvisioningStatusResponse].
   /// [operationId] The ID of the operation performed on the gallery image
@@ -25,8 +26,8 @@ class GalleryImageStatusProvisioningStatusResponse {
 
   factory GalleryImageStatusProvisioningStatusResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageStatusProvisioningStatusResponse(
-      operationId: map['operationId'] == null ? null : map['operationId'] as String,
-      status: map['status'] as String,
+      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

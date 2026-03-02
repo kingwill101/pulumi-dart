@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The destination information for the delivery of the report.
 class ReportDeliveryDestination {
   /// The name of the container where reports will be uploaded.
-  final String container;
+  final pulumi.Input<String> container;
   /// The resource id of the storage account where reports will be delivered.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// The name of the directory where reports will be uploaded.
-  final String? rootFolderPath;
+  final pulumi.Input<String>? rootFolderPath;
 
   /// Creates a new [ReportDeliveryDestination].
   /// [container] The name of the container where reports will be uploaded.
@@ -30,9 +31,9 @@ class ReportDeliveryDestination {
 
   factory ReportDeliveryDestination.fromMap(Map<String, dynamic> map) {
     return ReportDeliveryDestination(
-      container: map['container'] as String,
-      resourceId: map['resourceId'] as String,
-      rootFolderPath: map['rootFolderPath'] == null ? null : map['rootFolderPath'] as String,
+      container: (map['container'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      rootFolderPath: map['rootFolderPath'] == null ? null : (map['rootFolderPath'] as String).input(),
     );
   }
 }

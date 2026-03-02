@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxClusterCapacityConfiguration {
   /// Number of instances running in a cluster. Must be at least 1 and at most 5.
-  final int nodeCount;
+  final pulumi.Input<int> nodeCount;
   /// Determines the hardware of the host computer used for your cluster instance. Each node type offers different memory and storage capabilities. Choose a node type based on the requirements of the application or software that you plan to run on your instance.
   ///
   /// You can only specify one of the following values:
@@ -14,7 +15,7 @@ class KxClusterCapacityConfiguration {
   /// * kx.s.8xlarge - The node type with a configuration of 216 GiB memory and 32 vCPUs.
   /// * kx.s.16xlarge - The node type with a configuration of 432 GiB memory and 64 vCPUs.
   /// * kx.s.32xlarge - The node type with a configuration of 864 GiB memory and 128 vCPUs.
-  final String nodeType;
+  final pulumi.Input<String> nodeType;
 
   /// Creates a new [KxClusterCapacityConfiguration].
   /// [nodeCount] Number of instances running in a cluster. Must be at least 1 and at most 5.
@@ -33,8 +34,8 @@ class KxClusterCapacityConfiguration {
 
   factory KxClusterCapacityConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterCapacityConfiguration(
-      nodeCount: map['nodeCount'] as int,
-      nodeType: map['nodeType'] as String,
+      nodeCount: (map['nodeCount'] as int).input(),
+      nodeType: (map['nodeType'] as String).input(),
     );
   }
 }

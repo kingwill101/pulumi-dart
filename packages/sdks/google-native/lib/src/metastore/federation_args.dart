@@ -32,23 +32,15 @@ class FederationArgs {
   /// [requestId] Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
   /// [version] Immutable. The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
   FederationArgs({
-    pulumi.Output<Map<String, String>>? backendMetastores,
-    required pulumi.Output<String> federationId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? version,
-  }) :
-      backendMetastores = pulumi.Input.asOptionalInput<Map<String, String>>(backendMetastores),
-      federationId = pulumi.Input.asInput<String>(federationId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.backendMetastores,
+    required this.federationId,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.requestId,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class FederationArgs {
 
   factory FederationArgs.fromMap(Map<String, dynamic> map) {
     return FederationArgs(
-      backendMetastores: map['backendMetastores'] == null ? null : pulumi.Output.create<Map<String, String>>((map['backendMetastores'] as Map).cast<String, String>()),
-      federationId: pulumi.Output.create<String>(map['federationId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      backendMetastores: map['backendMetastores'] == null ? null : ((map['backendMetastores'] as Map).cast<String, String>()).input(),
+      federationId: (map['federationId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

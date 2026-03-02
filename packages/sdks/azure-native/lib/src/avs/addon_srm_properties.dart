@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of a Site Recovery Manager (SRM) addon
 class AddonSrmProperties {
   /// Addon type
   /// Expected value is 'SRM'.
-  final String addonType;
+  final pulumi.Input<String> addonType;
   /// The Site Recovery Manager (SRM) license
-  final String? licenseKey;
+  final pulumi.Input<String>? licenseKey;
 
   /// Creates a new [AddonSrmProperties].
   /// [addonType] Addon type
@@ -26,8 +27,8 @@ class AddonSrmProperties {
 
   factory AddonSrmProperties.fromMap(Map<String, dynamic> map) {
     return AddonSrmProperties(
-      addonType: map['addonType'] as String,
-      licenseKey: map['licenseKey'] == null ? null : map['licenseKey'] as String,
+      addonType: (map['addonType'] as String).input(),
+      licenseKey: map['licenseKey'] == null ? null : (map['licenseKey'] as String).input(),
     );
   }
 }

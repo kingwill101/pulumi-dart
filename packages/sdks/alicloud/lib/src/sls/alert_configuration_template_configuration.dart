@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertConfigurationTemplateConfiguration {
   /// Template Annotations.
-  final Map<String, String>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
   /// Template Language.
-  final String? lang;
+  final pulumi.Input<String>? lang;
   /// Template ID.
-  final String? templateId;
+  final pulumi.Input<String>? templateId;
   /// Template Variables.
-  final Map<String, String>? tokens;
-  final String? type;
+  final pulumi.Input<Map<String, String>>? tokens;
+  final pulumi.Input<String>? type;
   /// Template Version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [AlertConfigurationTemplateConfiguration].
   /// [annotations] Template Annotations.
@@ -43,12 +44,12 @@ class AlertConfigurationTemplateConfiguration {
 
   factory AlertConfigurationTemplateConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationTemplateConfiguration(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      templateId: map['templateId'] == null ? null : map['templateId'] as String,
-      tokens: map['tokens'] == null ? null : (map['tokens'] as Map).cast<String, String>(),
-      type: map['type'] == null ? null : map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      tokens: map['tokens'] == null ? null : ((map['tokens'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BgpPolicyContentLayer4RuleListConditionList {
   /// Matching target character.
-  final String arg;
+  final pulumi.Input<String> arg;
   /// Depth of Matching.
-  final int depth;
+  final pulumi.Input<int> depth;
   /// Position to start matching, starting from 0.
-  final int position;
+  final pulumi.Input<int> position;
 
   /// Creates a new [BgpPolicyContentLayer4RuleListConditionList].
   /// [arg] Matching target character.
@@ -29,9 +30,9 @@ class BgpPolicyContentLayer4RuleListConditionList {
 
   factory BgpPolicyContentLayer4RuleListConditionList.fromMap(Map<String, dynamic> map) {
     return BgpPolicyContentLayer4RuleListConditionList(
-      arg: map['arg'] as String,
-      depth: map['depth'] as int,
-      position: map['position'] as int,
+      arg: (map['arg'] as String).input(),
+      depth: (map['depth'] as int).input(),
+      position: (map['position'] as int).input(),
     );
   }
 }

@@ -23,13 +23,10 @@ class GetKeyArgs {
   /// [keyId] Key identifier which can be one of the following format:
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetKeyArgs({
-    pulumi.Output<List<String>>? grantTokens,
-    required pulumi.Output<String> keyId,
-    pulumi.Output<String>? region,
-  }) :
-      grantTokens = pulumi.Input.asOptionalInput<List<String>>(grantTokens),
-      keyId = pulumi.Input.asInput<String>(keyId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.grantTokens,
+    required this.keyId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetKeyArgs {
 
   factory GetKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyArgs(
-      grantTokens: map['grantTokens'] == null ? null : pulumi.Output.create<List<String>>((map['grantTokens'] as List).cast<String>()),
-      keyId: pulumi.Output.create<String>(map['keyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      grantTokens: map['grantTokens'] == null ? null : ((map['grantTokens'] as List).cast<String>()).input(),
+      keyId: (map['keyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

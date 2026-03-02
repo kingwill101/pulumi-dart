@@ -19,13 +19,10 @@ class GetGroupArgs {
   /// [name] The Name of the API Management Group.
   /// [resourceGroupName] The Name of the Resource Group in which the API Management Service exists.
   GetGroupArgs({
-    required pulumi.Output<String> apiManagementName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.apiManagementName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGroupArgs {
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

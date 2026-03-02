@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// API route config of the Spring Cloud Gateway
 class GatewayApiRoute {
   /// A description, will be applied to methods in the generated OpenAPI documentation.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// To modify the request before sending it to the target endpoint, or the received response.
-  final List<String>? filters;
+  final pulumi.Input<List<String>>? filters;
   /// Route processing order.
-  final int? order;
+  final pulumi.Input<int>? order;
   /// A number of conditions to evaluate a route for each request. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request.
-  final List<String>? predicates;
+  final pulumi.Input<List<String>>? predicates;
   /// Enable sso validation.
-  final bool? ssoEnabled;
+  final pulumi.Input<bool>? ssoEnabled;
   /// Classification tags, will be applied to methods in the generated OpenAPI documentation.
-  final List<String>? tags;
+  final pulumi.Input<List<String>>? tags;
   /// A title, will be applied to methods in the generated OpenAPI documentation.
-  final String? title;
+  final pulumi.Input<String>? title;
   /// Pass currently-authenticated user's identity token to application service, default is 'false'
-  final bool? tokenRelay;
+  final pulumi.Input<bool>? tokenRelay;
   /// Full uri, will override `appName`.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [GatewayApiRoute].
   /// [description] A description, will be applied to methods in the generated OpenAPI documentation.
@@ -60,15 +61,15 @@ class GatewayApiRoute {
 
   factory GatewayApiRoute.fromMap(Map<String, dynamic> map) {
     return GatewayApiRoute(
-      description: map['description'] == null ? null : map['description'] as String,
-      filters: map['filters'] == null ? null : (map['filters'] as List).cast<String>(),
-      order: map['order'] == null ? null : map['order'] as int,
-      predicates: map['predicates'] == null ? null : (map['predicates'] as List).cast<String>(),
-      ssoEnabled: map['ssoEnabled'] == null ? null : map['ssoEnabled'] as bool,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
-      title: map['title'] == null ? null : map['title'] as String,
-      tokenRelay: map['tokenRelay'] == null ? null : map['tokenRelay'] as bool,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filters: map['filters'] == null ? null : ((map['filters'] as List).cast<String>()).input(),
+      order: map['order'] == null ? null : (map['order'] as int).input(),
+      predicates: map['predicates'] == null ? null : ((map['predicates'] as List).cast<String>()).input(),
+      ssoEnabled: map['ssoEnabled'] == null ? null : (map['ssoEnabled'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
+      tokenRelay: map['tokenRelay'] == null ? null : (map['tokenRelay'] as bool).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

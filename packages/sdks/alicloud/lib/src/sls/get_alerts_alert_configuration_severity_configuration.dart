@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_alerts_alert_configuration_severity_configuration_eval_condition.dart';
 
 class GetAlertsAlertConfigurationSeverityConfiguration {
   /// Trigger condition.
-  final GetAlertsAlertConfigurationSeverityConfigurationEvalCondition evalCondition;
+  final pulumi.Input<GetAlertsAlertConfigurationSeverityConfigurationEvalCondition> evalCondition;
   /// Alarm severity.
-  final int severity;
+  final pulumi.Input<int> severity;
 
   /// Creates a new [GetAlertsAlertConfigurationSeverityConfiguration].
   /// [evalCondition] Trigger condition.
@@ -18,15 +19,15 @@ class GetAlertsAlertConfigurationSeverityConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'evalCondition': evalCondition.toMap(),
+      'evalCondition': pulumi.Input.mapInputValue<GetAlertsAlertConfigurationSeverityConfigurationEvalCondition, Map<String, dynamic>>(evalCondition, (value) => value.toMap()),
       'severity': severity,
     };
   }
 
   factory GetAlertsAlertConfigurationSeverityConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAlertsAlertConfigurationSeverityConfiguration(
-      evalCondition: GetAlertsAlertConfigurationSeverityConfigurationEvalCondition.fromMap((map['evalCondition'] as Map).cast<String, dynamic>()),
-      severity: map['severity'] as int,
+      evalCondition: (GetAlertsAlertConfigurationSeverityConfigurationEvalCondition.fromMap((map['evalCondition'] as Map).cast<String, dynamic>())).input(),
+      severity: (map['severity'] as int).input(),
     );
   }
 }

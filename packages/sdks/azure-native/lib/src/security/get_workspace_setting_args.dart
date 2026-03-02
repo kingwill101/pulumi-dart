@@ -13,9 +13,8 @@ class GetWorkspaceSettingArgs {
   /// Creates a new [GetWorkspaceSettingArgs].
   /// [workspaceSettingName] Name of the security setting
   GetWorkspaceSettingArgs({
-    required pulumi.Output<String> workspaceSettingName,
-  }) :
-      workspaceSettingName = pulumi.Input.asInput<String>(workspaceSettingName);
+    required this.workspaceSettingName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetWorkspaceSettingArgs {
 
   factory GetWorkspaceSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceSettingArgs(
-      workspaceSettingName: pulumi.Output.create<String>(map['workspaceSettingName'] as String),
+      workspaceSettingName: (map['workspaceSettingName'] as String).input(),
     );
   }
 }

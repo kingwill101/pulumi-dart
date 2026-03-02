@@ -20,17 +20,12 @@ class GetLakeTaskIamPolicyArgs {
   /// [project] Optional.
   /// [taskId] Required.
   GetLakeTaskIamPolicyArgs({
-    required pulumi.Output<String> lakeId,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> taskId,
-  }) :
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      taskId = pulumi.Input.asInput<String>(taskId);
+    required this.lakeId,
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+    required this.taskId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetLakeTaskIamPolicyArgs {
 
   factory GetLakeTaskIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetLakeTaskIamPolicyArgs(
-      lakeId: pulumi.Output.create<String>(map['lakeId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      taskId: pulumi.Output.create<String>(map['taskId'] as String),
+      lakeId: (map['lakeId'] as String).input(),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      taskId: (map['taskId'] as String).input(),
     );
   }
 }

@@ -43,31 +43,19 @@ class AppMonitorState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   AppMonitorState({
-    pulumi.Output<AppMonitorAppMonitorConfiguration>? appMonitorConfiguration,
-    pulumi.Output<String>? appMonitorId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<AppMonitorCustomEvents>? customEvents,
-    pulumi.Output<bool>? cwLogEnabled,
-    pulumi.Output<String>? cwLogGroup,
-    pulumi.Output<String>? domain,
-    pulumi.Output<List<String>>? domainLists,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      appMonitorConfiguration = pulumi.Input.asOptionalInput<AppMonitorAppMonitorConfiguration>(appMonitorConfiguration),
-      appMonitorId = pulumi.Input.asOptionalInput<String>(appMonitorId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      customEvents = pulumi.Input.asOptionalInput<AppMonitorCustomEvents>(customEvents),
-      cwLogEnabled = pulumi.Input.asOptionalInput<bool>(cwLogEnabled),
-      cwLogGroup = pulumi.Input.asOptionalInput<String>(cwLogGroup),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      domainLists = pulumi.Input.asOptionalInput<List<String>>(domainLists),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.appMonitorConfiguration,
+    this.appMonitorId,
+    this.arn,
+    this.customEvents,
+    this.cwLogEnabled,
+    this.cwLogGroup,
+    this.domain,
+    this.domainLists,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class AppMonitorState {
 
   factory AppMonitorState.fromMap(Map<String, dynamic> map) {
     return AppMonitorState(
-      appMonitorConfiguration: map['appMonitorConfiguration'] == null ? null : pulumi.Output.create<AppMonitorAppMonitorConfiguration>(AppMonitorAppMonitorConfiguration.fromMap((map['appMonitorConfiguration'] as Map).cast<String, dynamic>())),
-      appMonitorId: map['appMonitorId'] == null ? null : pulumi.Output.create<String>(map['appMonitorId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      customEvents: map['customEvents'] == null ? null : pulumi.Output.create<AppMonitorCustomEvents>(AppMonitorCustomEvents.fromMap((map['customEvents'] as Map).cast<String, dynamic>())),
-      cwLogEnabled: map['cwLogEnabled'] == null ? null : pulumi.Output.create<bool>(map['cwLogEnabled'] as bool),
-      cwLogGroup: map['cwLogGroup'] == null ? null : pulumi.Output.create<String>(map['cwLogGroup'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      domainLists: map['domainLists'] == null ? null : pulumi.Output.create<List<String>>((map['domainLists'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      appMonitorConfiguration: map['appMonitorConfiguration'] == null ? null : (AppMonitorAppMonitorConfiguration.fromMap((map['appMonitorConfiguration'] as Map).cast<String, dynamic>())).input(),
+      appMonitorId: map['appMonitorId'] == null ? null : (map['appMonitorId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      customEvents: map['customEvents'] == null ? null : (AppMonitorCustomEvents.fromMap((map['customEvents'] as Map).cast<String, dynamic>())).input(),
+      cwLogEnabled: map['cwLogEnabled'] == null ? null : (map['cwLogEnabled'] as bool).input(),
+      cwLogGroup: map['cwLogGroup'] == null ? null : (map['cwLogGroup'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domainLists: map['domainLists'] == null ? null : ((map['domainLists'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

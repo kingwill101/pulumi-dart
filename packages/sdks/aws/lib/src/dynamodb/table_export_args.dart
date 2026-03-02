@@ -46,29 +46,18 @@ class TableExportArgs {
   /// [s3SseKmsKeyId] ID of the AWS KMS managed key used to encrypt the S3 bucket where export data will be stored (if applicable).
   /// [tableArn] ARN associated with the table to export.
   TableExportArgs({
-    pulumi.Output<String>? exportFormat,
-    pulumi.Output<String>? exportTime,
-    pulumi.Output<String>? exportType,
-    pulumi.Output<TableExportIncrementalExportSpecification>? incrementalExportSpecification,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> s3Bucket,
-    pulumi.Output<String>? s3BucketOwner,
-    pulumi.Output<String>? s3Prefix,
-    pulumi.Output<String>? s3SseAlgorithm,
-    pulumi.Output<String>? s3SseKmsKeyId,
-    required pulumi.Output<String> tableArn,
-  }) :
-      exportFormat = pulumi.Input.asOptionalInput<String>(exportFormat),
-      exportTime = pulumi.Input.asOptionalInput<String>(exportTime),
-      exportType = pulumi.Input.asOptionalInput<String>(exportType),
-      incrementalExportSpecification = pulumi.Input.asOptionalInput<TableExportIncrementalExportSpecification>(incrementalExportSpecification),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3Bucket = pulumi.Input.asInput<String>(s3Bucket),
-      s3BucketOwner = pulumi.Input.asOptionalInput<String>(s3BucketOwner),
-      s3Prefix = pulumi.Input.asOptionalInput<String>(s3Prefix),
-      s3SseAlgorithm = pulumi.Input.asOptionalInput<String>(s3SseAlgorithm),
-      s3SseKmsKeyId = pulumi.Input.asOptionalInput<String>(s3SseKmsKeyId),
-      tableArn = pulumi.Input.asInput<String>(tableArn);
+    this.exportFormat,
+    this.exportTime,
+    this.exportType,
+    this.incrementalExportSpecification,
+    this.region,
+    required this.s3Bucket,
+    this.s3BucketOwner,
+    this.s3Prefix,
+    this.s3SseAlgorithm,
+    this.s3SseKmsKeyId,
+    required this.tableArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class TableExportArgs {
 
   factory TableExportArgs.fromMap(Map<String, dynamic> map) {
     return TableExportArgs(
-      exportFormat: map['exportFormat'] == null ? null : pulumi.Output.create<String>(map['exportFormat'] as String),
-      exportTime: map['exportTime'] == null ? null : pulumi.Output.create<String>(map['exportTime'] as String),
-      exportType: map['exportType'] == null ? null : pulumi.Output.create<String>(map['exportType'] as String),
-      incrementalExportSpecification: map['incrementalExportSpecification'] == null ? null : pulumi.Output.create<TableExportIncrementalExportSpecification>(TableExportIncrementalExportSpecification.fromMap((map['incrementalExportSpecification'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3Bucket: pulumi.Output.create<String>(map['s3Bucket'] as String),
-      s3BucketOwner: map['s3BucketOwner'] == null ? null : pulumi.Output.create<String>(map['s3BucketOwner'] as String),
-      s3Prefix: map['s3Prefix'] == null ? null : pulumi.Output.create<String>(map['s3Prefix'] as String),
-      s3SseAlgorithm: map['s3SseAlgorithm'] == null ? null : pulumi.Output.create<String>(map['s3SseAlgorithm'] as String),
-      s3SseKmsKeyId: map['s3SseKmsKeyId'] == null ? null : pulumi.Output.create<String>(map['s3SseKmsKeyId'] as String),
-      tableArn: pulumi.Output.create<String>(map['tableArn'] as String),
+      exportFormat: map['exportFormat'] == null ? null : (map['exportFormat'] as String).input(),
+      exportTime: map['exportTime'] == null ? null : (map['exportTime'] as String).input(),
+      exportType: map['exportType'] == null ? null : (map['exportType'] as String).input(),
+      incrementalExportSpecification: map['incrementalExportSpecification'] == null ? null : (TableExportIncrementalExportSpecification.fromMap((map['incrementalExportSpecification'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3Bucket: (map['s3Bucket'] as String).input(),
+      s3BucketOwner: map['s3BucketOwner'] == null ? null : (map['s3BucketOwner'] as String).input(),
+      s3Prefix: map['s3Prefix'] == null ? null : (map['s3Prefix'] as String).input(),
+      s3SseAlgorithm: map['s3SseAlgorithm'] == null ? null : (map['s3SseAlgorithm'] as String).input(),
+      s3SseKmsKeyId: map['s3SseKmsKeyId'] == null ? null : (map['s3SseKmsKeyId'] as String).input(),
+      tableArn: (map['tableArn'] as String).input(),
     );
   }
 }

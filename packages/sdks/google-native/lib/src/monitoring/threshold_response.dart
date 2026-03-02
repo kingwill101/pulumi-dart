@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a threshold for categorizing time series values.
 class ThresholdResponse {
   /// The state color for this threshold. Color is not allowed in a XyChart.
-  final String color;
+  final pulumi.Input<String> color;
   /// The direction for the current threshold. Direction is not allowed in a XyChart.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// A label for the threshold.
-  final String label;
+  final pulumi.Input<String> label;
   /// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
-  final String targetAxis;
+  final pulumi.Input<String> targetAxis;
   /// The value of the threshold. The value should be defined in the native scale of the metric.
-  final double value;
+  final pulumi.Input<double> value;
 
   /// Creates a new [ThresholdResponse].
   /// [color] The state color for this threshold. Color is not allowed in a XyChart.
@@ -40,11 +41,11 @@ class ThresholdResponse {
 
   factory ThresholdResponse.fromMap(Map<String, dynamic> map) {
     return ThresholdResponse(
-      color: map['color'] as String,
-      direction: map['direction'] as String,
-      label: map['label'] as String,
-      targetAxis: map['targetAxis'] as String,
-      value: map['value'] as double,
+      color: (map['color'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      label: (map['label'] as String).input(),
+      targetAxis: (map['targetAxis'] as String).input(),
+      value: (map['value'] as double).input(),
     );
   }
 }

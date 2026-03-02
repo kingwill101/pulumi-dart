@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A dictionary of name and value pairs.
 class TagsResponse {
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [TagsResponse].
   /// [tags] Optional.
@@ -19,7 +20,7 @@ class TagsResponse {
 
   factory TagsResponse.fromMap(Map<String, dynamic> map) {
     return TagsResponse(
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

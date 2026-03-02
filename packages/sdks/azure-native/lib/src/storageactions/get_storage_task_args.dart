@@ -16,11 +16,9 @@ class GetStorageTaskArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageTaskName] The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
   GetStorageTaskArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageTaskName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageTaskName = pulumi.Input.asInput<String>(storageTaskName);
+    required this.resourceGroupName,
+    required this.storageTaskName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStorageTaskArgs {
 
   factory GetStorageTaskArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageTaskArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageTaskName: pulumi.Output.create<String>(map['storageTaskName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageTaskName: (map['storageTaskName'] as String).input(),
     );
   }
 }

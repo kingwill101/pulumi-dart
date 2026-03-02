@@ -45,29 +45,18 @@ class DiskPoolArgs {
   /// [subnetId] Azure Resource ID of a Subnet for the Disk Pool.
   /// [tags] Resource tags.
   DiskPoolArgs({
-    pulumi.Output<List<String>>? additionalCapabilities,
-    pulumi.Output<List<String>>? availabilityZones,
-    pulumi.Output<String>? diskPoolName,
-    pulumi.Output<List<Disk>>? disks,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedBy,
-    pulumi.Output<List<String>>? managedByExtended,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<Sku> sku,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      additionalCapabilities = pulumi.Input.asOptionalInput<List<String>>(additionalCapabilities),
-      availabilityZones = pulumi.Input.asOptionalInput<List<String>>(availabilityZones),
-      diskPoolName = pulumi.Input.asOptionalInput<String>(diskPoolName),
-      disks = pulumi.Input.asOptionalInput<List<Disk>>(disks),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedBy = pulumi.Input.asOptionalInput<String>(managedBy),
-      managedByExtended = pulumi.Input.asOptionalInput<List<String>>(managedByExtended),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<Sku>(sku),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.additionalCapabilities,
+    this.availabilityZones,
+    this.diskPoolName,
+    this.disks,
+    this.location,
+    this.managedBy,
+    this.managedByExtended,
+    required this.resourceGroupName,
+    required this.sku,
+    required this.subnetId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class DiskPoolArgs {
 
   factory DiskPoolArgs.fromMap(Map<String, dynamic> map) {
     return DiskPoolArgs(
-      additionalCapabilities: map['additionalCapabilities'] == null ? null : pulumi.Output.create<List<String>>((map['additionalCapabilities'] as List).cast<String>()),
-      availabilityZones: map['availabilityZones'] == null ? null : pulumi.Output.create<List<String>>((map['availabilityZones'] as List).cast<String>()),
-      diskPoolName: map['diskPoolName'] == null ? null : pulumi.Output.create<String>(map['diskPoolName'] as String),
-      disks: map['disks'] == null ? null : pulumi.Output.create<List<Disk>>(pulumi.Input.decodeList<Disk>(map['disks'], (value) => Disk.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedBy: map['managedBy'] == null ? null : pulumi.Output.create<String>(map['managedBy'] as String),
-      managedByExtended: map['managedByExtended'] == null ? null : pulumi.Output.create<List<String>>((map['managedByExtended'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      additionalCapabilities: map['additionalCapabilities'] == null ? null : ((map['additionalCapabilities'] as List).cast<String>()).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
+      diskPoolName: map['diskPoolName'] == null ? null : (map['diskPoolName'] as String).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<Disk>(map['disks'], (value) => Disk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
+      managedByExtended: map['managedByExtended'] == null ? null : ((map['managedByExtended'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

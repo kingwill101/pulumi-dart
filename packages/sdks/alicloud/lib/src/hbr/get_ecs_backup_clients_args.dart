@@ -22,15 +22,11 @@ class GetEcsBackupClientsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
   GetEcsBackupClientsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<List<String>>? instanceIds,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceIds = pulumi.Input.asOptionalInput<List<String>>(instanceIds),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.instanceIds,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetEcsBackupClientsArgs {
 
   factory GetEcsBackupClientsArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsBackupClientsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceIds: map['instanceIds'] == null ? null : pulumi.Output.create<List<String>>((map['instanceIds'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -9,33 +9,33 @@ import 'mhsmprivate_endpoint_connection_item_response.dart';
 /// Properties of the managed HSM Pool
 class ManagedHsmPropertiesResponse {
   /// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
-  final bool? enablePurgeProtection;
+  final pulumi.Input<bool>? enablePurgeProtection;
   /// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
-  final bool? enableSoftDelete;
+  final pulumi.Input<bool>? enableSoftDelete;
   /// The URI of the managed hsm pool for performing operations on keys.
-  final String hsmUri;
+  final pulumi.Input<String> hsmUri;
   /// Array of initial administrators object ids for this managed hsm pool.
-  final List<String>? initialAdminObjectIds;
+  final pulumi.Input<List<String>>? initialAdminObjectIds;
   /// Rules governing the accessibility of the key vault from specific network locations.
-  final MHSMNetworkRuleSetResponse? networkAcls;
+  final pulumi.Input<MHSMNetworkRuleSetResponse>? networkAcls;
   /// List of private endpoint connections associated with the managed hsm pool.
-  final List<MHSMPrivateEndpointConnectionItemResponse> privateEndpointConnections;
+  final pulumi.Input<List<MHSMPrivateEndpointConnectionItemResponse>> privateEndpointConnections;
   /// Provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Control permission to the managed HSM from public networks.
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
   /// List of all regions associated with the managed hsm pool.
-  final List<MHSMGeoReplicatedRegionResponse>? regions;
+  final pulumi.Input<List<MHSMGeoReplicatedRegionResponse>>? regions;
   /// The scheduled purge date in UTC.
-  final String scheduledPurgeDate;
+  final pulumi.Input<String> scheduledPurgeDate;
   /// Managed HSM security domain properties.
-  final ManagedHSMSecurityDomainPropertiesResponse securityDomainProperties;
+  final pulumi.Input<ManagedHSMSecurityDomainPropertiesResponse> securityDomainProperties;
   /// Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
-  final int? softDeleteRetentionInDays;
+  final pulumi.Input<int>? softDeleteRetentionInDays;
   /// Resource Status Message.
-  final String statusMessage;
+  final pulumi.Input<String> statusMessage;
   /// The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [ManagedHsmPropertiesResponse].
   /// [enablePurgeProtection] Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
@@ -75,13 +75,13 @@ class ManagedHsmPropertiesResponse {
       'enableSoftDelete': ?enableSoftDelete,
       'hsmUri': hsmUri,
       'initialAdminObjectIds': ?initialAdminObjectIds,
-      'networkAcls': ?networkAcls == null ? null : networkAcls!.toMap(),
-      'privateEndpointConnections': pulumi.Input.encodeList<MHSMPrivateEndpointConnectionItemResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'networkAcls': ?pulumi.Input.mapOptionalInputValue<MHSMNetworkRuleSetResponse, Map<String, dynamic>>(networkAcls, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.mapInputValue<List<MHSMPrivateEndpointConnectionItemResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<MHSMPrivateEndpointConnectionItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
-      'regions': ?regions == null ? null : pulumi.Input.encodeList<MHSMGeoReplicatedRegionResponse, Map<String, dynamic>>(regions!, (value) => value.toMap()),
+      'regions': ?pulumi.Input.mapOptionalInputValue<List<MHSMGeoReplicatedRegionResponse>, List<Map<String, dynamic>>>(regions, (value) => pulumi.Input.encodeList<MHSMGeoReplicatedRegionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scheduledPurgeDate': scheduledPurgeDate,
-      'securityDomainProperties': securityDomainProperties.toMap(),
+      'securityDomainProperties': pulumi.Input.mapInputValue<ManagedHSMSecurityDomainPropertiesResponse, Map<String, dynamic>>(securityDomainProperties, (value) => value.toMap()),
       'softDeleteRetentionInDays': ?softDeleteRetentionInDays,
       'statusMessage': statusMessage,
       'tenantId': ?tenantId,
@@ -90,20 +90,20 @@ class ManagedHsmPropertiesResponse {
 
   factory ManagedHsmPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedHsmPropertiesResponse(
-      enablePurgeProtection: map['enablePurgeProtection'] == null ? null : map['enablePurgeProtection'] as bool,
-      enableSoftDelete: map['enableSoftDelete'] == null ? null : map['enableSoftDelete'] as bool,
-      hsmUri: map['hsmUri'] as String,
-      initialAdminObjectIds: map['initialAdminObjectIds'] == null ? null : (map['initialAdminObjectIds'] as List).cast<String>(),
-      networkAcls: map['networkAcls'] == null ? null : MHSMNetworkRuleSetResponse.fromMap((map['networkAcls'] as Map).cast<String, dynamic>()),
-      privateEndpointConnections: pulumi.Input.decodeList<MHSMPrivateEndpointConnectionItemResponse>(map['privateEndpointConnections'], (value) => MHSMPrivateEndpointConnectionItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
-      regions: map['regions'] == null ? null : pulumi.Input.decodeList<MHSMGeoReplicatedRegionResponse>(map['regions'], (value) => MHSMGeoReplicatedRegionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      scheduledPurgeDate: map['scheduledPurgeDate'] as String,
-      securityDomainProperties: ManagedHSMSecurityDomainPropertiesResponse.fromMap((map['securityDomainProperties'] as Map).cast<String, dynamic>()),
-      softDeleteRetentionInDays: map['softDeleteRetentionInDays'] == null ? null : map['softDeleteRetentionInDays'] as int,
-      statusMessage: map['statusMessage'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      enablePurgeProtection: map['enablePurgeProtection'] == null ? null : (map['enablePurgeProtection'] as bool).input(),
+      enableSoftDelete: map['enableSoftDelete'] == null ? null : (map['enableSoftDelete'] as bool).input(),
+      hsmUri: (map['hsmUri'] as String).input(),
+      initialAdminObjectIds: map['initialAdminObjectIds'] == null ? null : ((map['initialAdminObjectIds'] as List).cast<String>()).input(),
+      networkAcls: map['networkAcls'] == null ? null : (MHSMNetworkRuleSetResponse.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
+      privateEndpointConnections: (pulumi.Input.decodeList<MHSMPrivateEndpointConnectionItemResponse>(map['privateEndpointConnections'], (value) => MHSMPrivateEndpointConnectionItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<MHSMGeoReplicatedRegionResponse>(map['regions'], (value) => MHSMGeoReplicatedRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scheduledPurgeDate: (map['scheduledPurgeDate'] as String).input(),
+      securityDomainProperties: (ManagedHSMSecurityDomainPropertiesResponse.fromMap((map['securityDomainProperties'] as Map).cast<String, dynamic>())).input(),
+      softDeleteRetentionInDays: map['softDeleteRetentionInDays'] == null ? null : (map['softDeleteRetentionInDays'] as int).input(),
+      statusMessage: (map['statusMessage'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

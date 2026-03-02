@@ -19,13 +19,10 @@ class RandomIdArgs {
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   /// [prefix] Arbitrary string to prefix the output value with. This string is supplied as-is, meaning it is not guaranteed to be URL-safe or base64 encoded.
   RandomIdArgs({
-    required pulumi.Output<int> byteLength,
-    pulumi.Output<Map<String, String>>? keepers,
-    pulumi.Output<String>? prefix,
-  }) :
-      byteLength = pulumi.Input.asInput<int>(byteLength),
-      keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix);
+    required this.byteLength,
+    this.keepers,
+    this.prefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class RandomIdArgs {
 
   factory RandomIdArgs.fromMap(Map<String, dynamic> map) {
     return RandomIdArgs(
-      byteLength: pulumi.Output.create<int>(map['byteLength'] as int),
-      keepers: map['keepers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['keepers'] as Map).cast<String, String>()),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
+      byteLength: (map['byteLength'] as int).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a properties of a cluster that is part of a migration.
 class MigrationClusterPropertiesResponse {
   /// The public data ingestion URL of the cluster.
-  final String dataIngestionUri;
+  final pulumi.Input<String> dataIngestionUri;
   /// The resource ID of the cluster.
-  final String id;
+  final pulumi.Input<String> id;
   /// The role of the cluster in the migration process.
-  final String role;
+  final pulumi.Input<String> role;
   /// The public URL of the cluster.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [MigrationClusterPropertiesResponse].
   /// [dataIngestionUri] The public data ingestion URL of the cluster.
@@ -35,10 +36,10 @@ class MigrationClusterPropertiesResponse {
 
   factory MigrationClusterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrationClusterPropertiesResponse(
-      dataIngestionUri: map['dataIngestionUri'] as String,
-      id: map['id'] as String,
-      role: map['role'] as String,
-      uri: map['uri'] as String,
+      dataIngestionUri: (map['dataIngestionUri'] as String).input(),
+      id: (map['id'] as String).input(),
+      role: (map['role'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

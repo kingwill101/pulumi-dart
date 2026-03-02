@@ -16,11 +16,9 @@ class GetSolutionTemplateArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [solutionTemplateName] The name of the SolutionTemplate
   GetSolutionTemplateArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> solutionTemplateName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      solutionTemplateName = pulumi.Input.asInput<String>(solutionTemplateName);
+    required this.resourceGroupName,
+    required this.solutionTemplateName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSolutionTemplateArgs {
 
   factory GetSolutionTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetSolutionTemplateArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      solutionTemplateName: pulumi.Output.create<String>(map['solutionTemplateName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      solutionTemplateName: (map['solutionTemplateName'] as String).input(),
     );
   }
 }

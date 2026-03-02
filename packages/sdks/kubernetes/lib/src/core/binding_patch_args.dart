@@ -24,15 +24,11 @@ class BindingPatchArgs {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [target] The target object that you want to bind to the standard object.
   BindingPatchArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<ObjectReferencePatch>? target,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      target = pulumi.Input.asOptionalInput<ObjectReferencePatch>(target);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class BindingPatchArgs {
 
   factory BindingPatchArgs.fromMap(Map<String, dynamic> map) {
     return BindingPatchArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      target: map['target'] == null ? null : pulumi.Output.create<ObjectReferencePatch>(ObjectReferencePatch.fromMap((map['target'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (ObjectReferencePatch.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

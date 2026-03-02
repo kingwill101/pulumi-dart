@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_retention_settings_response.dart';
 
 /// Database instance backup configuration.
 class BackupConfigurationResponse {
   /// Backup retention settings.
-  final BackupRetentionSettingsResponse backupRetentionSettings;
+  final pulumi.Input<BackupRetentionSettingsResponse> backupRetentionSettings;
   /// (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
-  final bool binaryLogEnabled;
+  final pulumi.Input<bool> binaryLogEnabled;
   /// Whether this configuration is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// This is always `sql#backupConfiguration`.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Location of the backup
-  final String location;
+  final pulumi.Input<String> location;
   /// Whether point in time recovery is enabled.
-  final bool pointInTimeRecoveryEnabled;
+  final pulumi.Input<bool> pointInTimeRecoveryEnabled;
   /// Reserved for future use.
-  final bool replicationLogArchivingEnabled;
+  final pulumi.Input<bool> replicationLogArchivingEnabled;
   /// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The number of days of transaction logs we retain for point in time restore, from 1-7.
-  final int transactionLogRetentionDays;
+  final pulumi.Input<int> transactionLogRetentionDays;
 
   /// Creates a new [BackupConfigurationResponse].
   /// [backupRetentionSettings] Backup retention settings.
@@ -47,7 +48,7 @@ class BackupConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupRetentionSettings': backupRetentionSettings.toMap(),
+      'backupRetentionSettings': pulumi.Input.mapInputValue<BackupRetentionSettingsResponse, Map<String, dynamic>>(backupRetentionSettings, (value) => value.toMap()),
       'binaryLogEnabled': binaryLogEnabled,
       'enabled': enabled,
       'kind': kind,
@@ -61,15 +62,15 @@ class BackupConfigurationResponse {
 
   factory BackupConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BackupConfigurationResponse(
-      backupRetentionSettings: BackupRetentionSettingsResponse.fromMap((map['backupRetentionSettings'] as Map).cast<String, dynamic>()),
-      binaryLogEnabled: map['binaryLogEnabled'] as bool,
-      enabled: map['enabled'] as bool,
-      kind: map['kind'] as String,
-      location: map['location'] as String,
-      pointInTimeRecoveryEnabled: map['pointInTimeRecoveryEnabled'] as bool,
-      replicationLogArchivingEnabled: map['replicationLogArchivingEnabled'] as bool,
-      startTime: map['startTime'] as String,
-      transactionLogRetentionDays: map['transactionLogRetentionDays'] as int,
+      backupRetentionSettings: (BackupRetentionSettingsResponse.fromMap((map['backupRetentionSettings'] as Map).cast<String, dynamic>())).input(),
+      binaryLogEnabled: (map['binaryLogEnabled'] as bool).input(),
+      enabled: (map['enabled'] as bool).input(),
+      kind: (map['kind'] as String).input(),
+      location: (map['location'] as String).input(),
+      pointInTimeRecoveryEnabled: (map['pointInTimeRecoveryEnabled'] as bool).input(),
+      replicationLogArchivingEnabled: (map['replicationLogArchivingEnabled'] as bool).input(),
+      startTime: (map['startTime'] as String).input(),
+      transactionLogRetentionDays: (map['transactionLogRetentionDays'] as int).input(),
     );
   }
 }

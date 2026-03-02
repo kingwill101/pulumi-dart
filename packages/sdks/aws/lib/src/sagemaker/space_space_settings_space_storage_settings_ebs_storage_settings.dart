@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings {
   /// The size of an EBS storage volume for a space.
-  final int ebsVolumeSizeInGb;
+  final pulumi.Input<int> ebsVolumeSizeInGb;
 
   /// Creates a new [SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings].
   /// [ebsVolumeSizeInGb] The size of an EBS storage volume for a space.
@@ -19,7 +20,7 @@ class SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings {
 
   factory SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings(
-      ebsVolumeSizeInGb: map['ebsVolumeSizeInGb'] as int,
+      ebsVolumeSizeInGb: (map['ebsVolumeSizeInGb'] as int).input(),
     );
   }
 }

@@ -38,25 +38,16 @@ class AzureKeyVaultSecretProviderClassArgs {
   /// [tags] Resource tags.
   /// [tenantId] The Azure Active Directory tenant ID that should be used for authenticating requests to the Azure Key Vault.
   AzureKeyVaultSecretProviderClassArgs({
-    pulumi.Output<String>? azureKeyVaultSecretProviderClassName,
-    required pulumi.Output<String> clientId,
-    pulumi.Output<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation,
-    required pulumi.Output<String> keyvaultName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? objects,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> tenantId,
-  }) :
-      azureKeyVaultSecretProviderClassName = pulumi.Input.asOptionalInput<String>(azureKeyVaultSecretProviderClassName),
-      clientId = pulumi.Input.asInput<String>(clientId),
-      extendedLocation = pulumi.Input.asOptionalInput<AzureResourceManagerCommonTypesExtendedLocation>(extendedLocation),
-      keyvaultName = pulumi.Input.asInput<String>(keyvaultName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      objects = pulumi.Input.asOptionalInput<String>(objects),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    this.azureKeyVaultSecretProviderClassName,
+    required this.clientId,
+    this.extendedLocation,
+    required this.keyvaultName,
+    this.location,
+    this.objects,
+    required this.resourceGroupName,
+    this.tags,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class AzureKeyVaultSecretProviderClassArgs {
 
   factory AzureKeyVaultSecretProviderClassArgs.fromMap(Map<String, dynamic> map) {
     return AzureKeyVaultSecretProviderClassArgs(
-      azureKeyVaultSecretProviderClassName: map['azureKeyVaultSecretProviderClassName'] == null ? null : pulumi.Output.create<String>(map['azureKeyVaultSecretProviderClassName'] as String),
-      clientId: pulumi.Output.create<String>(map['clientId'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<AzureResourceManagerCommonTypesExtendedLocation>(AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      keyvaultName: pulumi.Output.create<String>(map['keyvaultName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      objects: map['objects'] == null ? null : pulumi.Output.create<String>(map['objects'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      azureKeyVaultSecretProviderClassName: map['azureKeyVaultSecretProviderClassName'] == null ? null : (map['azureKeyVaultSecretProviderClassName'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      keyvaultName: (map['keyvaultName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      objects: map['objects'] == null ? null : (map['objects'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

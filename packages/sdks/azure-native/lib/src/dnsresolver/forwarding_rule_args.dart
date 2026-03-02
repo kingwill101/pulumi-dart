@@ -32,21 +32,14 @@ class ForwardingRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [targetDnsServers] DNS servers to forward the DNS query to.
   ForwardingRuleArgs({
-    required pulumi.Output<String> dnsForwardingRulesetName,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? forwardingRuleName,
-    pulumi.Output<String>? forwardingRuleState,
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<TargetDnsServer>> targetDnsServers,
-  }) :
-      dnsForwardingRulesetName = pulumi.Input.asInput<String>(dnsForwardingRulesetName),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      forwardingRuleName = pulumi.Input.asOptionalInput<String>(forwardingRuleName),
-      forwardingRuleState = pulumi.Input.asOptionalInput<String>(forwardingRuleState),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetDnsServers = pulumi.Input.asInput<List<TargetDnsServer>>(targetDnsServers);
+    required this.dnsForwardingRulesetName,
+    required this.domainName,
+    this.forwardingRuleName,
+    this.forwardingRuleState,
+    this.metadata,
+    required this.resourceGroupName,
+    required this.targetDnsServers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ForwardingRuleArgs {
 
   factory ForwardingRuleArgs.fromMap(Map<String, dynamic> map) {
     return ForwardingRuleArgs(
-      dnsForwardingRulesetName: pulumi.Output.create<String>(map['dnsForwardingRulesetName'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      forwardingRuleName: map['forwardingRuleName'] == null ? null : pulumi.Output.create<String>(map['forwardingRuleName'] as String),
-      forwardingRuleState: map['forwardingRuleState'] == null ? null : pulumi.Output.create<String>(map['forwardingRuleState'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetDnsServers: pulumi.Output.create<List<TargetDnsServer>>(pulumi.Input.decodeList<TargetDnsServer>(map['targetDnsServers'], (value) => TargetDnsServer.fromMap((value as Map).cast<String, dynamic>()))),
+      dnsForwardingRulesetName: (map['dnsForwardingRulesetName'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      forwardingRuleName: map['forwardingRuleName'] == null ? null : (map['forwardingRuleName'] as String).input(),
+      forwardingRuleState: map['forwardingRuleState'] == null ? null : (map['forwardingRuleState'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetDnsServers: (pulumi.Input.decodeList<TargetDnsServer>(map['targetDnsServers'], (value) => TargetDnsServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

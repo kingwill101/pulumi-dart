@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'software_recipe_step_copy_file.dart';
 import 'software_recipe_step_exec_file.dart';
 import 'software_recipe_step_extract_archive.dart';
@@ -11,19 +12,19 @@ import 'software_recipe_step_run_script.dart';
 /// An action that can be taken as part of installing or updating a recipe.
 class SoftwareRecipeStep {
   /// Extracts an archive into the specified directory.
-  final SoftwareRecipeStepExtractArchive? archiveExtraction;
+  final pulumi.Input<SoftwareRecipeStepExtractArchive>? archiveExtraction;
   /// Installs a deb file via dpkg.
-  final SoftwareRecipeStepInstallDpkg? dpkgInstallation;
+  final pulumi.Input<SoftwareRecipeStepInstallDpkg>? dpkgInstallation;
   /// Copies a file onto the instance.
-  final SoftwareRecipeStepCopyFile? fileCopy;
+  final pulumi.Input<SoftwareRecipeStepCopyFile>? fileCopy;
   /// Executes an artifact or local file.
-  final SoftwareRecipeStepExecFile? fileExec;
+  final pulumi.Input<SoftwareRecipeStepExecFile>? fileExec;
   /// Installs an MSI file.
-  final SoftwareRecipeStepInstallMsi? msiInstallation;
+  final pulumi.Input<SoftwareRecipeStepInstallMsi>? msiInstallation;
   /// Installs an rpm file via the rpm utility.
-  final SoftwareRecipeStepInstallRpm? rpmInstallation;
+  final pulumi.Input<SoftwareRecipeStepInstallRpm>? rpmInstallation;
   /// Runs commands in a shell.
-  final SoftwareRecipeStepRunScript? scriptRun;
+  final pulumi.Input<SoftwareRecipeStepRunScript>? scriptRun;
 
   /// Creates a new [SoftwareRecipeStep].
   /// [archiveExtraction] Extracts an archive into the specified directory.
@@ -45,25 +46,25 @@ class SoftwareRecipeStep {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'archiveExtraction': ?archiveExtraction == null ? null : archiveExtraction!.toMap(),
-      'dpkgInstallation': ?dpkgInstallation == null ? null : dpkgInstallation!.toMap(),
-      'fileCopy': ?fileCopy == null ? null : fileCopy!.toMap(),
-      'fileExec': ?fileExec == null ? null : fileExec!.toMap(),
-      'msiInstallation': ?msiInstallation == null ? null : msiInstallation!.toMap(),
-      'rpmInstallation': ?rpmInstallation == null ? null : rpmInstallation!.toMap(),
-      'scriptRun': ?scriptRun == null ? null : scriptRun!.toMap(),
+      'archiveExtraction': ?pulumi.Input.mapOptionalInputValue<SoftwareRecipeStepExtractArchive, Map<String, dynamic>>(archiveExtraction, (value) => value.toMap()),
+      'dpkgInstallation': ?pulumi.Input.mapOptionalInputValue<SoftwareRecipeStepInstallDpkg, Map<String, dynamic>>(dpkgInstallation, (value) => value.toMap()),
+      'fileCopy': ?pulumi.Input.mapOptionalInputValue<SoftwareRecipeStepCopyFile, Map<String, dynamic>>(fileCopy, (value) => value.toMap()),
+      'fileExec': ?pulumi.Input.mapOptionalInputValue<SoftwareRecipeStepExecFile, Map<String, dynamic>>(fileExec, (value) => value.toMap()),
+      'msiInstallation': ?pulumi.Input.mapOptionalInputValue<SoftwareRecipeStepInstallMsi, Map<String, dynamic>>(msiInstallation, (value) => value.toMap()),
+      'rpmInstallation': ?pulumi.Input.mapOptionalInputValue<SoftwareRecipeStepInstallRpm, Map<String, dynamic>>(rpmInstallation, (value) => value.toMap()),
+      'scriptRun': ?pulumi.Input.mapOptionalInputValue<SoftwareRecipeStepRunScript, Map<String, dynamic>>(scriptRun, (value) => value.toMap()),
     };
   }
 
   factory SoftwareRecipeStep.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeStep(
-      archiveExtraction: map['archiveExtraction'] == null ? null : SoftwareRecipeStepExtractArchive.fromMap((map['archiveExtraction'] as Map).cast<String, dynamic>()),
-      dpkgInstallation: map['dpkgInstallation'] == null ? null : SoftwareRecipeStepInstallDpkg.fromMap((map['dpkgInstallation'] as Map).cast<String, dynamic>()),
-      fileCopy: map['fileCopy'] == null ? null : SoftwareRecipeStepCopyFile.fromMap((map['fileCopy'] as Map).cast<String, dynamic>()),
-      fileExec: map['fileExec'] == null ? null : SoftwareRecipeStepExecFile.fromMap((map['fileExec'] as Map).cast<String, dynamic>()),
-      msiInstallation: map['msiInstallation'] == null ? null : SoftwareRecipeStepInstallMsi.fromMap((map['msiInstallation'] as Map).cast<String, dynamic>()),
-      rpmInstallation: map['rpmInstallation'] == null ? null : SoftwareRecipeStepInstallRpm.fromMap((map['rpmInstallation'] as Map).cast<String, dynamic>()),
-      scriptRun: map['scriptRun'] == null ? null : SoftwareRecipeStepRunScript.fromMap((map['scriptRun'] as Map).cast<String, dynamic>()),
+      archiveExtraction: map['archiveExtraction'] == null ? null : (SoftwareRecipeStepExtractArchive.fromMap((map['archiveExtraction'] as Map).cast<String, dynamic>())).input(),
+      dpkgInstallation: map['dpkgInstallation'] == null ? null : (SoftwareRecipeStepInstallDpkg.fromMap((map['dpkgInstallation'] as Map).cast<String, dynamic>())).input(),
+      fileCopy: map['fileCopy'] == null ? null : (SoftwareRecipeStepCopyFile.fromMap((map['fileCopy'] as Map).cast<String, dynamic>())).input(),
+      fileExec: map['fileExec'] == null ? null : (SoftwareRecipeStepExecFile.fromMap((map['fileExec'] as Map).cast<String, dynamic>())).input(),
+      msiInstallation: map['msiInstallation'] == null ? null : (SoftwareRecipeStepInstallMsi.fromMap((map['msiInstallation'] as Map).cast<String, dynamic>())).input(),
+      rpmInstallation: map['rpmInstallation'] == null ? null : (SoftwareRecipeStepInstallRpm.fromMap((map['rpmInstallation'] as Map).cast<String, dynamic>())).input(),
+      scriptRun: map['scriptRun'] == null ? null : (SoftwareRecipeStepRunScript.fromMap((map['scriptRun'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

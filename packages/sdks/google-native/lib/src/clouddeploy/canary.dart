@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'canary_deployment.dart';
 import 'custom_canary_deployment.dart';
 import 'runtime_config.dart';
@@ -7,11 +8,11 @@ import 'runtime_config.dart';
 /// Canary represents the canary deployment strategy.
 class Canary {
   /// Configures the progressive based deployment for a Target.
-  final CanaryDeployment? canaryDeployment;
+  final pulumi.Input<CanaryDeployment>? canaryDeployment;
   /// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
-  final CustomCanaryDeployment? customCanaryDeployment;
+  final pulumi.Input<CustomCanaryDeployment>? customCanaryDeployment;
   /// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
-  final RuntimeConfig? runtimeConfig;
+  final pulumi.Input<RuntimeConfig>? runtimeConfig;
 
   /// Creates a new [Canary].
   /// [canaryDeployment] Configures the progressive based deployment for a Target.
@@ -25,17 +26,17 @@ class Canary {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'canaryDeployment': ?canaryDeployment == null ? null : canaryDeployment!.toMap(),
-      'customCanaryDeployment': ?customCanaryDeployment == null ? null : customCanaryDeployment!.toMap(),
-      'runtimeConfig': ?runtimeConfig == null ? null : runtimeConfig!.toMap(),
+      'canaryDeployment': ?pulumi.Input.mapOptionalInputValue<CanaryDeployment, Map<String, dynamic>>(canaryDeployment, (value) => value.toMap()),
+      'customCanaryDeployment': ?pulumi.Input.mapOptionalInputValue<CustomCanaryDeployment, Map<String, dynamic>>(customCanaryDeployment, (value) => value.toMap()),
+      'runtimeConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeConfig, Map<String, dynamic>>(runtimeConfig, (value) => value.toMap()),
     };
   }
 
   factory Canary.fromMap(Map<String, dynamic> map) {
     return Canary(
-      canaryDeployment: map['canaryDeployment'] == null ? null : CanaryDeployment.fromMap((map['canaryDeployment'] as Map).cast<String, dynamic>()),
-      customCanaryDeployment: map['customCanaryDeployment'] == null ? null : CustomCanaryDeployment.fromMap((map['customCanaryDeployment'] as Map).cast<String, dynamic>()),
-      runtimeConfig: map['runtimeConfig'] == null ? null : RuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>()),
+      canaryDeployment: map['canaryDeployment'] == null ? null : (CanaryDeployment.fromMap((map['canaryDeployment'] as Map).cast<String, dynamic>())).input(),
+      customCanaryDeployment: map['customCanaryDeployment'] == null ? null : (CustomCanaryDeployment.fromMap((map['customCanaryDeployment'] as Map).cast<String, dynamic>())).input(),
+      runtimeConfig: map['runtimeConfig'] == null ? null : (RuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

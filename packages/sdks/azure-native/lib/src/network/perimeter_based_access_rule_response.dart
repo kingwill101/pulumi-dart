@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PerimeterBasedAccessRuleResponse {
   /// NSP id in the ARM id format.
-  final String id;
+  final pulumi.Input<String> id;
   /// Location of the NSP supplied.
-  final String location;
+  final pulumi.Input<String> location;
   /// Resource guid of the NSP supplied.
-  final String perimeterGuid;
+  final pulumi.Input<String> perimeterGuid;
 
   /// Creates a new [PerimeterBasedAccessRuleResponse].
   /// [id] NSP id in the ARM id format.
@@ -29,9 +30,9 @@ class PerimeterBasedAccessRuleResponse {
 
   factory PerimeterBasedAccessRuleResponse.fromMap(Map<String, dynamic> map) {
     return PerimeterBasedAccessRuleResponse(
-      id: map['id'] as String,
-      location: map['location'] as String,
-      perimeterGuid: map['perimeterGuid'] as String,
+      id: (map['id'] as String).input(),
+      location: (map['location'] as String).input(),
+      perimeterGuid: (map['perimeterGuid'] as String).input(),
     );
   }
 }

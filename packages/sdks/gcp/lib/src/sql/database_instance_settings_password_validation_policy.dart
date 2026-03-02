@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceSettingsPasswordValidationPolicy {
   /// Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
-  final String? complexity;
+  final pulumi.Input<String>? complexity;
   /// Prevents the use of the username in the password.
-  final bool? disallowUsernameSubstring;
+  final pulumi.Input<bool>? disallowUsernameSubstring;
   /// Enables or disable the password validation policy.
-  final bool enablePasswordPolicy;
+  final pulumi.Input<bool> enablePasswordPolicy;
   /// Specifies the minimum number of characters that the password must have.
-  final int? minLength;
+  final pulumi.Input<int>? minLength;
   /// Specifies the minimum duration after which you can change the password.
-  final String? passwordChangeInterval;
+  final pulumi.Input<String>? passwordChangeInterval;
   /// Specifies the number of previous passwords that you can't reuse.
-  final int? reuseInterval;
+  final pulumi.Input<int>? reuseInterval;
 
   /// Creates a new [DatabaseInstanceSettingsPasswordValidationPolicy].
   /// [complexity] Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
@@ -44,12 +45,12 @@ class DatabaseInstanceSettingsPasswordValidationPolicy {
 
   factory DatabaseInstanceSettingsPasswordValidationPolicy.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsPasswordValidationPolicy(
-      complexity: map['complexity'] == null ? null : map['complexity'] as String,
-      disallowUsernameSubstring: map['disallowUsernameSubstring'] == null ? null : map['disallowUsernameSubstring'] as bool,
-      enablePasswordPolicy: map['enablePasswordPolicy'] as bool,
-      minLength: map['minLength'] == null ? null : map['minLength'] as int,
-      passwordChangeInterval: map['passwordChangeInterval'] == null ? null : map['passwordChangeInterval'] as String,
-      reuseInterval: map['reuseInterval'] == null ? null : map['reuseInterval'] as int,
+      complexity: map['complexity'] == null ? null : (map['complexity'] as String).input(),
+      disallowUsernameSubstring: map['disallowUsernameSubstring'] == null ? null : (map['disallowUsernameSubstring'] as bool).input(),
+      enablePasswordPolicy: (map['enablePasswordPolicy'] as bool).input(),
+      minLength: map['minLength'] == null ? null : (map['minLength'] as int).input(),
+      passwordChangeInterval: map['passwordChangeInterval'] == null ? null : (map['passwordChangeInterval'] as String).input(),
+      reuseInterval: map['reuseInterval'] == null ? null : (map['reuseInterval'] as int).input(),
     );
   }
 }

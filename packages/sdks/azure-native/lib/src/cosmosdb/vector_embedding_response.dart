@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a vector embedding. A vector embedding is used to define a vector field in the documents.
 class VectorEmbeddingResponse {
   /// Indicates the data type of vector.
-  final String dataType;
+  final pulumi.Input<String> dataType;
   /// The number of dimensions in the vector.
-  final int dimensions;
+  final pulumi.Input<int> dimensions;
   /// The distance function to use for distance calculation in between vectors.
-  final String distanceFunction;
+  final pulumi.Input<String> distanceFunction;
   /// The path to the vector field in the document.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [VectorEmbeddingResponse].
   /// [dataType] Indicates the data type of vector.
@@ -35,10 +36,10 @@ class VectorEmbeddingResponse {
 
   factory VectorEmbeddingResponse.fromMap(Map<String, dynamic> map) {
     return VectorEmbeddingResponse(
-      dataType: map['dataType'] as String,
-      dimensions: map['dimensions'] as int,
-      distanceFunction: map['distanceFunction'] as String,
-      path: map['path'] as String,
+      dataType: (map['dataType'] as String).input(),
+      dimensions: (map['dimensions'] as int).input(),
+      distanceFunction: (map['distanceFunction'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

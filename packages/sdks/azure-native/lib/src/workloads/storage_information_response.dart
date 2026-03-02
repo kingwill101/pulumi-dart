@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Storage details of all the Storage accounts attached to the VM. For e.g. NFS on AFS Shared Storage.
 class StorageInformationResponse {
   /// Fully qualified resource ID for the storage account.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [StorageInformationResponse].
   /// [id] Fully qualified resource ID for the storage account.
@@ -20,7 +21,7 @@ class StorageInformationResponse {
 
   factory StorageInformationResponse.fromMap(Map<String, dynamic> map) {
     return StorageInformationResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

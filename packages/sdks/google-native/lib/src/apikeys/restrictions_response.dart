@@ -10,15 +10,15 @@ import 'server_key_restrictions_response.dart';
 /// Describes the restrictions on the key.
 class RestrictionsResponse {
   /// The Android apps that are allowed to use the key.
-  final AndroidKeyRestrictionsResponse androidKeyRestrictions;
+  final pulumi.Input<AndroidKeyRestrictionsResponse> androidKeyRestrictions;
   /// A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
-  final List<ApiTargetResponse> apiTargets;
+  final pulumi.Input<List<ApiTargetResponse>> apiTargets;
   /// The HTTP referrers (websites) that are allowed to use the key.
-  final BrowserKeyRestrictionsResponse browserKeyRestrictions;
+  final pulumi.Input<BrowserKeyRestrictionsResponse> browserKeyRestrictions;
   /// The iOS apps that are allowed to use the key.
-  final IosKeyRestrictionsResponse iosKeyRestrictions;
+  final pulumi.Input<IosKeyRestrictionsResponse> iosKeyRestrictions;
   /// The IP addresses of callers that are allowed to use the key.
-  final ServerKeyRestrictionsResponse serverKeyRestrictions;
+  final pulumi.Input<ServerKeyRestrictionsResponse> serverKeyRestrictions;
 
   /// Creates a new [RestrictionsResponse].
   /// [androidKeyRestrictions] The Android apps that are allowed to use the key.
@@ -36,21 +36,21 @@ class RestrictionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'androidKeyRestrictions': androidKeyRestrictions.toMap(),
-      'apiTargets': pulumi.Input.encodeList<ApiTargetResponse, Map<String, dynamic>>(apiTargets, (value) => value.toMap()),
-      'browserKeyRestrictions': browserKeyRestrictions.toMap(),
-      'iosKeyRestrictions': iosKeyRestrictions.toMap(),
-      'serverKeyRestrictions': serverKeyRestrictions.toMap(),
+      'androidKeyRestrictions': pulumi.Input.mapInputValue<AndroidKeyRestrictionsResponse, Map<String, dynamic>>(androidKeyRestrictions, (value) => value.toMap()),
+      'apiTargets': pulumi.Input.mapInputValue<List<ApiTargetResponse>, List<Map<String, dynamic>>>(apiTargets, (value) => pulumi.Input.encodeList<ApiTargetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'browserKeyRestrictions': pulumi.Input.mapInputValue<BrowserKeyRestrictionsResponse, Map<String, dynamic>>(browserKeyRestrictions, (value) => value.toMap()),
+      'iosKeyRestrictions': pulumi.Input.mapInputValue<IosKeyRestrictionsResponse, Map<String, dynamic>>(iosKeyRestrictions, (value) => value.toMap()),
+      'serverKeyRestrictions': pulumi.Input.mapInputValue<ServerKeyRestrictionsResponse, Map<String, dynamic>>(serverKeyRestrictions, (value) => value.toMap()),
     };
   }
 
   factory RestrictionsResponse.fromMap(Map<String, dynamic> map) {
     return RestrictionsResponse(
-      androidKeyRestrictions: AndroidKeyRestrictionsResponse.fromMap((map['androidKeyRestrictions'] as Map).cast<String, dynamic>()),
-      apiTargets: pulumi.Input.decodeList<ApiTargetResponse>(map['apiTargets'], (value) => ApiTargetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      browserKeyRestrictions: BrowserKeyRestrictionsResponse.fromMap((map['browserKeyRestrictions'] as Map).cast<String, dynamic>()),
-      iosKeyRestrictions: IosKeyRestrictionsResponse.fromMap((map['iosKeyRestrictions'] as Map).cast<String, dynamic>()),
-      serverKeyRestrictions: ServerKeyRestrictionsResponse.fromMap((map['serverKeyRestrictions'] as Map).cast<String, dynamic>()),
+      androidKeyRestrictions: (AndroidKeyRestrictionsResponse.fromMap((map['androidKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
+      apiTargets: (pulumi.Input.decodeList<ApiTargetResponse>(map['apiTargets'], (value) => ApiTargetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      browserKeyRestrictions: (BrowserKeyRestrictionsResponse.fromMap((map['browserKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
+      iosKeyRestrictions: (IosKeyRestrictionsResponse.fromMap((map['iosKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
+      serverKeyRestrictions: (ServerKeyRestrictionsResponse.fromMap((map['serverKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

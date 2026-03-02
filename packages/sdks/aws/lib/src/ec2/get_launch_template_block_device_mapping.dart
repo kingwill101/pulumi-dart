@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_launch_template_block_device_mapping_eb.dart';
 
 class GetLaunchTemplateBlockDeviceMapping {
-  final String deviceName;
-  final List<GetLaunchTemplateBlockDeviceMappingEb> ebs;
-  final String noDevice;
-  final String virtualName;
+  final pulumi.Input<String> deviceName;
+  final pulumi.Input<List<GetLaunchTemplateBlockDeviceMappingEb>> ebs;
+  final pulumi.Input<String> noDevice;
+  final pulumi.Input<String> virtualName;
 
   /// Creates a new [GetLaunchTemplateBlockDeviceMapping].
   /// [deviceName] Required.
@@ -24,7 +24,7 @@ class GetLaunchTemplateBlockDeviceMapping {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deviceName': deviceName,
-      'ebs': pulumi.Input.encodeList<GetLaunchTemplateBlockDeviceMappingEb, Map<String, dynamic>>(ebs, (value) => value.toMap()),
+      'ebs': pulumi.Input.mapInputValue<List<GetLaunchTemplateBlockDeviceMappingEb>, List<Map<String, dynamic>>>(ebs, (value) => pulumi.Input.encodeList<GetLaunchTemplateBlockDeviceMappingEb, Map<String, dynamic>>(value, (value) => value.toMap())),
       'noDevice': noDevice,
       'virtualName': virtualName,
     };
@@ -32,10 +32,10 @@ class GetLaunchTemplateBlockDeviceMapping {
 
   factory GetLaunchTemplateBlockDeviceMapping.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateBlockDeviceMapping(
-      deviceName: map['deviceName'] as String,
-      ebs: pulumi.Input.decodeList<GetLaunchTemplateBlockDeviceMappingEb>(map['ebs'], (value) => GetLaunchTemplateBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>())),
-      noDevice: map['noDevice'] as String,
-      virtualName: map['virtualName'] as String,
+      deviceName: (map['deviceName'] as String).input(),
+      ebs: (pulumi.Input.decodeList<GetLaunchTemplateBlockDeviceMappingEb>(map['ebs'], (value) => GetLaunchTemplateBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      noDevice: (map['noDevice'] as String).input(),
+      virtualName: (map['virtualName'] as String).input(),
     );
   }
 }

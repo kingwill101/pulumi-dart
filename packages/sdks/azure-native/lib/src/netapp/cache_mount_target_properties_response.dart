@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains all the information needed to mount a cache
 class CacheMountTargetPropertiesResponse {
   /// The mount target's IPv4 address, used to mount the cache.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// UUID v4 used to identify the MountTarget
-  final String mountTargetId;
+  final pulumi.Input<String> mountTargetId;
   /// The SMB server's Fully Qualified Domain Name, FQDN
-  final String smbServerFqdn;
+  final pulumi.Input<String> smbServerFqdn;
 
   /// Creates a new [CacheMountTargetPropertiesResponse].
   /// [ipAddress] The mount target's IPv4 address, used to mount the cache.
@@ -30,9 +31,9 @@ class CacheMountTargetPropertiesResponse {
 
   factory CacheMountTargetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CacheMountTargetPropertiesResponse(
-      ipAddress: map['ipAddress'] as String,
-      mountTargetId: map['mountTargetId'] as String,
-      smbServerFqdn: map['smbServerFqdn'] as String,
+      ipAddress: (map['ipAddress'] as String).input(),
+      mountTargetId: (map['mountTargetId'] as String).input(),
+      smbServerFqdn: (map['smbServerFqdn'] as String).input(),
     );
   }
 }

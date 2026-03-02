@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTemplateSpecContainerResources {
   /// Limits describes the maximum amount of compute resources allowed.
@@ -9,13 +10,13 @@ class ServiceTemplateSpecContainerResources {
   /// https://cloud.google.com/run/docs/configuring/services/cpu
   /// The values of the map is string form of the 'quantity' k8s type:
   /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-  final Map<String, String>? limits;
+  final pulumi.Input<Map<String, String>>? limits;
   /// Requests describes the minimum amount of compute resources required.
   /// If Requests is omitted for a container, it defaults to Limits if that is
   /// explicitly specified, otherwise to an implementation-defined value.
   /// The values of the map is string form of the 'quantity' k8s type:
   /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-  final Map<String, String>? requests;
+  final pulumi.Input<Map<String, String>>? requests;
 
   /// Creates a new [ServiceTemplateSpecContainerResources].
   /// [limits] Limits describes the maximum amount of compute resources allowed.
@@ -34,8 +35,8 @@ class ServiceTemplateSpecContainerResources {
 
   factory ServiceTemplateSpecContainerResources.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerResources(
-      limits: map['limits'] == null ? null : (map['limits'] as Map).cast<String, String>(),
-      requests: map['requests'] == null ? null : (map['requests'] as Map).cast<String, String>(),
+      limits: map['limits'] == null ? null : ((map['limits'] as Map).cast<String, String>()).input(),
+      requests: map['requests'] == null ? null : ((map['requests'] as Map).cast<String, String>()).input(),
     );
   }
 }

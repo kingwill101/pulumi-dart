@@ -22,13 +22,10 @@ class BoundaryArgs {
   /// [location] The location for the Boundary resource. Must be global.
   /// [project] The ID of the project in which the resource belongs.
   BoundaryArgs({
-    pulumi.Output<String>? crmNode,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      crmNode = pulumi.Input.asOptionalInput<String>(crmNode),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.crmNode,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class BoundaryArgs {
 
   factory BoundaryArgs.fromMap(Map<String, dynamic> map) {
     return BoundaryArgs(
-      crmNode: map['crmNode'] == null ? null : pulumi.Output.create<String>(map['crmNode'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      crmNode: map['crmNode'] == null ? null : (map['crmNode'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

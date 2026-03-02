@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GitLabSecrets represents the secrets in Secret Manager for a GitLab integration.
 class GitLabSecrets {
   /// The resource name for the api access token’s secret version
-  final String apiAccessTokenVersion;
+  final pulumi.Input<String> apiAccessTokenVersion;
   /// Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build.
-  final String apiKeyVersion;
+  final pulumi.Input<String> apiKeyVersion;
   /// The resource name for the read access token’s secret version
-  final String readAccessTokenVersion;
+  final pulumi.Input<String> readAccessTokenVersion;
   /// Immutable. The resource name for the webhook secret’s secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another GitLabConfig.
-  final String webhookSecretVersion;
+  final pulumi.Input<String> webhookSecretVersion;
 
   /// Creates a new [GitLabSecrets].
   /// [apiAccessTokenVersion] The resource name for the api access token’s secret version
@@ -35,10 +36,10 @@ class GitLabSecrets {
 
   factory GitLabSecrets.fromMap(Map<String, dynamic> map) {
     return GitLabSecrets(
-      apiAccessTokenVersion: map['apiAccessTokenVersion'] as String,
-      apiKeyVersion: map['apiKeyVersion'] as String,
-      readAccessTokenVersion: map['readAccessTokenVersion'] as String,
-      webhookSecretVersion: map['webhookSecretVersion'] as String,
+      apiAccessTokenVersion: (map['apiAccessTokenVersion'] as String).input(),
+      apiKeyVersion: (map['apiKeyVersion'] as String).input(),
+      readAccessTokenVersion: (map['readAccessTokenVersion'] as String).input(),
+      webhookSecretVersion: (map['webhookSecretVersion'] as String).input(),
     );
   }
 }

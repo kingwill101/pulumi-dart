@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleErrorActionDynamodb {
   /// The hash key name.
-  final String hashKeyField;
+  final pulumi.Input<String> hashKeyField;
   /// The hash key type. Valid values are "STRING" or "NUMBER".
-  final String? hashKeyType;
+  final pulumi.Input<String>? hashKeyType;
   /// The hash key value.
-  final String hashKeyValue;
+  final pulumi.Input<String> hashKeyValue;
   /// The operation. Valid values are "INSERT", "UPDATE", or "DELETE".
-  final String? operation;
+  final pulumi.Input<String>? operation;
   /// The action payload.
-  final String? payloadField;
+  final pulumi.Input<String>? payloadField;
   /// The range key name.
-  final String? rangeKeyField;
+  final pulumi.Input<String>? rangeKeyField;
   /// The range key type. Valid values are "STRING" or "NUMBER".
-  final String? rangeKeyType;
+  final pulumi.Input<String>? rangeKeyType;
   /// The range key value.
-  final String? rangeKeyValue;
+  final pulumi.Input<String>? rangeKeyValue;
   /// The ARN of the IAM role that grants access to the DynamoDB table.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// The name of the DynamoDB table.
-  final String tableName;
+  final pulumi.Input<String> tableName;
 
   /// Creates a new [TopicRuleErrorActionDynamodb].
   /// [hashKeyField] The hash key name.
@@ -64,16 +65,16 @@ class TopicRuleErrorActionDynamodb {
 
   factory TopicRuleErrorActionDynamodb.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionDynamodb(
-      hashKeyField: map['hashKeyField'] as String,
-      hashKeyType: map['hashKeyType'] == null ? null : map['hashKeyType'] as String,
-      hashKeyValue: map['hashKeyValue'] as String,
-      operation: map['operation'] == null ? null : map['operation'] as String,
-      payloadField: map['payloadField'] == null ? null : map['payloadField'] as String,
-      rangeKeyField: map['rangeKeyField'] == null ? null : map['rangeKeyField'] as String,
-      rangeKeyType: map['rangeKeyType'] == null ? null : map['rangeKeyType'] as String,
-      rangeKeyValue: map['rangeKeyValue'] == null ? null : map['rangeKeyValue'] as String,
-      roleArn: map['roleArn'] as String,
-      tableName: map['tableName'] as String,
+      hashKeyField: (map['hashKeyField'] as String).input(),
+      hashKeyType: map['hashKeyType'] == null ? null : (map['hashKeyType'] as String).input(),
+      hashKeyValue: (map['hashKeyValue'] as String).input(),
+      operation: map['operation'] == null ? null : (map['operation'] as String).input(),
+      payloadField: map['payloadField'] == null ? null : (map['payloadField'] as String).input(),
+      rangeKeyField: map['rangeKeyField'] == null ? null : (map['rangeKeyField'] as String).input(),
+      rangeKeyType: map['rangeKeyType'] == null ? null : (map['rangeKeyType'] as String).input(),
+      rangeKeyValue: map['rangeKeyValue'] == null ? null : (map['rangeKeyValue'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

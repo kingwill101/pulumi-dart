@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclDefaultAction {
   /// Specifies how you want AWS WAF Regional to respond to requests that match the settings in a ruleE.g., `ALLOW`, `BLOCK` or `COUNT`
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [WebAclDefaultAction].
   /// [type] Specifies how you want AWS WAF Regional to respond to requests that match the settings in a ruleE.g., `ALLOW`, `BLOCK` or `COUNT`
@@ -19,7 +20,7 @@ class WebAclDefaultAction {
 
   factory WebAclDefaultAction.fromMap(Map<String, dynamic> map) {
     return WebAclDefaultAction(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

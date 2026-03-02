@@ -28,19 +28,13 @@ class GetChildInstanceRouteEntryToAttachmentsArgs {
   /// [serviceType] ServiceType
   /// [transitRouterAttachmentId] TransitRouterAttachmentId
   GetChildInstanceRouteEntryToAttachmentsArgs({
-    pulumi.Output<String>? cenId,
-    required pulumi.Output<String> childInstanceRouteTableId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? serviceType,
-    required pulumi.Output<String> transitRouterAttachmentId,
-  }) :
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      childInstanceRouteTableId = pulumi.Input.asInput<String>(childInstanceRouteTableId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      serviceType = pulumi.Input.asOptionalInput<String>(serviceType),
-      transitRouterAttachmentId = pulumi.Input.asInput<String>(transitRouterAttachmentId);
+    this.cenId,
+    required this.childInstanceRouteTableId,
+    this.ids,
+    this.outputFile,
+    this.serviceType,
+    required this.transitRouterAttachmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetChildInstanceRouteEntryToAttachmentsArgs {
 
   factory GetChildInstanceRouteEntryToAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetChildInstanceRouteEntryToAttachmentsArgs(
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      childInstanceRouteTableId: pulumi.Output.create<String>(map['childInstanceRouteTableId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      serviceType: map['serviceType'] == null ? null : pulumi.Output.create<String>(map['serviceType'] as String),
-      transitRouterAttachmentId: pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      childInstanceRouteTableId: (map['childInstanceRouteTableId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
     );
   }
 }

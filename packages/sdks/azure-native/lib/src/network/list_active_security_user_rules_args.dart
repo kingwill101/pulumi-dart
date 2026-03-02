@@ -22,15 +22,11 @@ class ListActiveSecurityUserRulesArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [skipToken] When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
   ListActiveSecurityUserRulesArgs({
-    required pulumi.Output<String> networkManagerName,
-    pulumi.Output<List<String>>? regions,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skipToken,
-  }) :
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      regions = pulumi.Input.asOptionalInput<List<String>>(regions),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken);
+    required this.networkManagerName,
+    this.regions,
+    required this.resourceGroupName,
+    this.skipToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListActiveSecurityUserRulesArgs {
 
   factory ListActiveSecurityUserRulesArgs.fromMap(Map<String, dynamic> map) {
     return ListActiveSecurityUserRulesArgs(
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
     );
   }
 }

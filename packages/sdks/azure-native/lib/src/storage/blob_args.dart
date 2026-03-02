@@ -42,27 +42,17 @@ class BlobArgs {
   /// [source] An asset to copy to the blob contents. This field cannot be specified for Append blobs.
   /// [type] The type of the storage blob to be created. Defaults to 'Block'.
   BlobArgs({
-    pulumi.Output<BlobAccessTier>? accessTier,
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? blobName,
-    required pulumi.Output<String> containerName,
-    pulumi.Output<String>? contentMd5,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<dynamic>? source,
-    pulumi.Output<BlobType>? type,
-  }) :
-      accessTier = pulumi.Input.asOptionalInput<BlobAccessTier>(accessTier),
-      accountName = pulumi.Input.asInput<String>(accountName),
-      blobName = pulumi.Input.asOptionalInput<String>(blobName),
-      containerName = pulumi.Input.asInput<String>(containerName),
-      contentMd5 = pulumi.Input.asOptionalInput<String>(contentMd5),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      source = pulumi.Input.asOptionalInput<dynamic>(source),
-      type = pulumi.Input.asOptionalInput<BlobType>(type);
+    this.accessTier,
+    required this.accountName,
+    this.blobName,
+    required this.containerName,
+    this.contentMd5,
+    this.contentType,
+    this.metadata,
+    required this.resourceGroupName,
+    this.source,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class BlobArgs {
 
   factory BlobArgs.fromMap(Map<String, dynamic> map) {
     return BlobArgs(
-      accessTier: map['accessTier'] == null ? null : pulumi.Output.create<BlobAccessTier>(BlobAccessTier.fromValue(map['accessTier'] as String)),
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      blobName: map['blobName'] == null ? null : pulumi.Output.create<String>(map['blobName'] as String),
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      contentMd5: map['contentMd5'] == null ? null : pulumi.Output.create<String>(map['contentMd5'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<dynamic>(map['source']),
-      type: map['type'] == null ? null : pulumi.Output.create<BlobType>(BlobType.fromValue(map['type'] as String)),
+      accessTier: map['accessTier'] == null ? null : (BlobAccessTier.fromValue(map['accessTier'] as String)).input(),
+      accountName: (map['accountName'] as String).input(),
+      blobName: map['blobName'] == null ? null : (map['blobName'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      source: map['source'] == null ? null : (map['source']).input(),
+      type: map['type'] == null ? null : (BlobType.fromValue(map['type'] as String)).input(),
     );
   }
 }

@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeHybridReplicationParameters {
   /// Optional. Name of source cluster location associated with the replication. This is a free-form field
   /// for display purposes only.
-  final String? clusterLocation;
+  final pulumi.Input<String>? clusterLocation;
   /// Optional. Description of the replication.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
   /// and `ONPREM_REPLICATION` to create an external replication.
   /// Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
   /// replication which got reversed. Default is `MIGRATION`.
   /// Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
-  final String? hybridReplicationType;
+  final pulumi.Input<String>? hybridReplicationType;
   /// Optional. Labels to be added to the replication as the key value pairs.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
-  final int? largeVolumeConstituentCount;
+  final pulumi.Input<int>? largeVolumeConstituentCount;
   /// Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
-  final String? peerClusterName;
+  final pulumi.Input<String>? peerClusterName;
   /// Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
-  final List<String>? peerIpAddresses;
+  final pulumi.Input<List<String>>? peerIpAddresses;
   /// Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
-  final String? peerSvmName;
+  final pulumi.Input<String>? peerSvmName;
   /// Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
-  final String? peerVolumeName;
+  final pulumi.Input<String>? peerVolumeName;
   /// Required. Desired name for the replication of this volume.
-  final String? replication;
+  final pulumi.Input<String>? replication;
   /// Optional. Replication Schedule for the replication created.
   /// Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
-  final String? replicationSchedule;
+  final pulumi.Input<String>? replicationSchedule;
 
   /// Creates a new [VolumeHybridReplicationParameters].
   /// [clusterLocation] Optional. Name of source cluster location associated with the replication. This is a free-form field
@@ -76,17 +77,17 @@ class VolumeHybridReplicationParameters {
 
   factory VolumeHybridReplicationParameters.fromMap(Map<String, dynamic> map) {
     return VolumeHybridReplicationParameters(
-      clusterLocation: map['clusterLocation'] == null ? null : map['clusterLocation'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      hybridReplicationType: map['hybridReplicationType'] == null ? null : map['hybridReplicationType'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      largeVolumeConstituentCount: map['largeVolumeConstituentCount'] == null ? null : map['largeVolumeConstituentCount'] as int,
-      peerClusterName: map['peerClusterName'] == null ? null : map['peerClusterName'] as String,
-      peerIpAddresses: map['peerIpAddresses'] == null ? null : (map['peerIpAddresses'] as List).cast<String>(),
-      peerSvmName: map['peerSvmName'] == null ? null : map['peerSvmName'] as String,
-      peerVolumeName: map['peerVolumeName'] == null ? null : map['peerVolumeName'] as String,
-      replication: map['replication'] == null ? null : map['replication'] as String,
-      replicationSchedule: map['replicationSchedule'] == null ? null : map['replicationSchedule'] as String,
+      clusterLocation: map['clusterLocation'] == null ? null : (map['clusterLocation'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hybridReplicationType: map['hybridReplicationType'] == null ? null : (map['hybridReplicationType'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      largeVolumeConstituentCount: map['largeVolumeConstituentCount'] == null ? null : (map['largeVolumeConstituentCount'] as int).input(),
+      peerClusterName: map['peerClusterName'] == null ? null : (map['peerClusterName'] as String).input(),
+      peerIpAddresses: map['peerIpAddresses'] == null ? null : ((map['peerIpAddresses'] as List).cast<String>()).input(),
+      peerSvmName: map['peerSvmName'] == null ? null : (map['peerSvmName'] as String).input(),
+      peerVolumeName: map['peerVolumeName'] == null ? null : (map['peerVolumeName'] as String).input(),
+      replication: map['replication'] == null ? null : (map['replication'] as String).input(),
+      replicationSchedule: map['replicationSchedule'] == null ? null : (map['replicationSchedule'] as String).input(),
     );
   }
 }

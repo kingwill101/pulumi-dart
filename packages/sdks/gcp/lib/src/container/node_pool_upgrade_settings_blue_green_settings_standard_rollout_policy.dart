@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
   /// Number of blue nodes to drain in a batch.
-  final int? batchNodeCount;
+  final pulumi.Input<int>? batchNodeCount;
   /// Percentage of the blue pool nodes to drain in a batch.
-  final double? batchPercentage;
+  final pulumi.Input<double>? batchPercentage;
   /// Soak time after each batch gets drained.
-  final String? batchSoakDuration;
+  final pulumi.Input<String>? batchSoakDuration;
 
   /// Creates a new [NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy].
   /// [batchNodeCount] Number of blue nodes to drain in a batch.
@@ -29,9 +30,9 @@ class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
 
   factory NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(
-      batchNodeCount: map['batchNodeCount'] == null ? null : map['batchNodeCount'] as int,
-      batchPercentage: map['batchPercentage'] == null ? null : map['batchPercentage'] as double,
-      batchSoakDuration: map['batchSoakDuration'] == null ? null : map['batchSoakDuration'] as String,
+      batchNodeCount: map['batchNodeCount'] == null ? null : (map['batchNodeCount'] as int).input(),
+      batchPercentage: map['batchPercentage'] == null ? null : (map['batchPercentage'] as double).input(),
+      batchSoakDuration: map['batchSoakDuration'] == null ? null : (map['batchSoakDuration'] as String).input(),
     );
   }
 }

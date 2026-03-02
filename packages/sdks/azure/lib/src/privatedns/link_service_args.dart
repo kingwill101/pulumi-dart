@@ -46,29 +46,18 @@ class LinkServiceArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [visibilitySubscriptionIds] A list of Subscription UUID/GUID's that will be able to see this Private Link Service.
   LinkServiceArgs({
-    pulumi.Output<List<String>>? autoApprovalSubscriptionIds,
-    pulumi.Output<String>? destinationIpAddress,
-    pulumi.Output<bool>? enableProxyProtocol,
-    pulumi.Output<List<String>>? fqdns,
-    pulumi.Output<List<String>>? loadBalancerFrontendIpConfigurationIds,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<LinkServiceNatIpConfiguration>> natIpConfigurations,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? visibilitySubscriptionIds,
-  }) :
-      autoApprovalSubscriptionIds = pulumi.Input.asOptionalInput<List<String>>(autoApprovalSubscriptionIds),
-      destinationIpAddress = pulumi.Input.asOptionalInput<String>(destinationIpAddress),
-      enableProxyProtocol = pulumi.Input.asOptionalInput<bool>(enableProxyProtocol),
-      fqdns = pulumi.Input.asOptionalInput<List<String>>(fqdns),
-      loadBalancerFrontendIpConfigurationIds = pulumi.Input.asOptionalInput<List<String>>(loadBalancerFrontendIpConfigurationIds),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      natIpConfigurations = pulumi.Input.asInput<List<LinkServiceNatIpConfiguration>>(natIpConfigurations),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      visibilitySubscriptionIds = pulumi.Input.asOptionalInput<List<String>>(visibilitySubscriptionIds);
+    this.autoApprovalSubscriptionIds,
+    this.destinationIpAddress,
+    this.enableProxyProtocol,
+    this.fqdns,
+    this.loadBalancerFrontendIpConfigurationIds,
+    this.location,
+    this.name,
+    required this.natIpConfigurations,
+    required this.resourceGroupName,
+    this.tags,
+    this.visibilitySubscriptionIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class LinkServiceArgs {
 
   factory LinkServiceArgs.fromMap(Map<String, dynamic> map) {
     return LinkServiceArgs(
-      autoApprovalSubscriptionIds: map['autoApprovalSubscriptionIds'] == null ? null : pulumi.Output.create<List<String>>((map['autoApprovalSubscriptionIds'] as List).cast<String>()),
-      destinationIpAddress: map['destinationIpAddress'] == null ? null : pulumi.Output.create<String>(map['destinationIpAddress'] as String),
-      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : pulumi.Output.create<bool>(map['enableProxyProtocol'] as bool),
-      fqdns: map['fqdns'] == null ? null : pulumi.Output.create<List<String>>((map['fqdns'] as List).cast<String>()),
-      loadBalancerFrontendIpConfigurationIds: map['loadBalancerFrontendIpConfigurationIds'] == null ? null : pulumi.Output.create<List<String>>((map['loadBalancerFrontendIpConfigurationIds'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      natIpConfigurations: pulumi.Output.create<List<LinkServiceNatIpConfiguration>>(pulumi.Input.decodeList<LinkServiceNatIpConfiguration>(map['natIpConfigurations'], (value) => LinkServiceNatIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      visibilitySubscriptionIds: map['visibilitySubscriptionIds'] == null ? null : pulumi.Output.create<List<String>>((map['visibilitySubscriptionIds'] as List).cast<String>()),
+      autoApprovalSubscriptionIds: map['autoApprovalSubscriptionIds'] == null ? null : ((map['autoApprovalSubscriptionIds'] as List).cast<String>()).input(),
+      destinationIpAddress: map['destinationIpAddress'] == null ? null : (map['destinationIpAddress'] as String).input(),
+      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol'] as bool).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
+      loadBalancerFrontendIpConfigurationIds: map['loadBalancerFrontendIpConfigurationIds'] == null ? null : ((map['loadBalancerFrontendIpConfigurationIds'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      natIpConfigurations: (pulumi.Input.decodeList<LinkServiceNatIpConfiguration>(map['natIpConfigurations'], (value) => LinkServiceNatIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      visibilitySubscriptionIds: map['visibilitySubscriptionIds'] == null ? null : ((map['visibilitySubscriptionIds'] as List).cast<String>()).input(),
     );
   }
 }

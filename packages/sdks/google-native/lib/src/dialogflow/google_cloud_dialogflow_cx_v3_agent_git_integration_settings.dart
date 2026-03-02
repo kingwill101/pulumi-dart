@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_agent_git_integration_settings_github_settings.dart';
 
 /// Settings for connecting to Git repository for an agent.
 class GoogleCloudDialogflowCxV3AgentGitIntegrationSettings {
   /// GitHub settings.
-  final GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings? githubSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings>? githubSettings;
 
   /// Creates a new [GoogleCloudDialogflowCxV3AgentGitIntegrationSettings].
   /// [githubSettings] GitHub settings.
@@ -15,13 +16,13 @@ class GoogleCloudDialogflowCxV3AgentGitIntegrationSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'githubSettings': ?githubSettings == null ? null : githubSettings!.toMap(),
+      'githubSettings': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings, Map<String, dynamic>>(githubSettings, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDialogflowCxV3AgentGitIntegrationSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3AgentGitIntegrationSettings(
-      githubSettings: map['githubSettings'] == null ? null : GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings.fromMap((map['githubSettings'] as Map).cast<String, dynamic>()),
+      githubSettings: map['githubSettings'] == null ? null : (GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings.fromMap((map['githubSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

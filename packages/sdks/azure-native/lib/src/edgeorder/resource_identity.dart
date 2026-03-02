@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Msi identity details of the resource
 class ResourceIdentity {
   /// Identity type
-  final String? type;
+  final pulumi.Input<String>? type;
   /// User Assigned Identities
-  final List<String>? userAssignedIdentities;
+  final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [ResourceIdentity].
   /// [type] Identity type
@@ -25,8 +26,8 @@ class ResourceIdentity {
 
   factory ResourceIdentity.fromMap(Map<String, dynamic> map) {
     return ResourceIdentity(
-      type: map['type'] == null ? null : map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (map['userAssignedIdentities'] as List).cast<String>(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
     );
   }
 }

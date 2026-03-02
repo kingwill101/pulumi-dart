@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
   /// Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
-  final String scope;
+  final pulumi.Input<String> scope;
 
   /// Creates a new [ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig].
   /// [scope] Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
@@ -19,7 +20,7 @@ class ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
 
   factory ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig(
-      scope: map['scope'] as String,
+      scope: (map['scope'] as String).input(),
     );
   }
 }

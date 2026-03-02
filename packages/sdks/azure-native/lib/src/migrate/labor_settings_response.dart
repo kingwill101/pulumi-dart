@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Labour settings.
 class LaborSettingsResponse {
   /// Hourly administrator cost.
-  final double hourlyAdminCost;
+  final pulumi.Input<double> hourlyAdminCost;
   /// Physical servers per administrator.
-  final int physicalServersPerAdmin;
+  final pulumi.Input<int> physicalServersPerAdmin;
   /// Virtual machines per administrator.
-  final int virtualMachinesPerAdmin;
+  final pulumi.Input<int> virtualMachinesPerAdmin;
 
   /// Creates a new [LaborSettingsResponse].
   /// [hourlyAdminCost] Hourly administrator cost.
@@ -30,9 +31,9 @@ class LaborSettingsResponse {
 
   factory LaborSettingsResponse.fromMap(Map<String, dynamic> map) {
     return LaborSettingsResponse(
-      hourlyAdminCost: map['hourlyAdminCost'] as double,
-      physicalServersPerAdmin: map['physicalServersPerAdmin'] as int,
-      virtualMachinesPerAdmin: map['virtualMachinesPerAdmin'] as int,
+      hourlyAdminCost: (map['hourlyAdminCost'] as double).input(),
+      physicalServersPerAdmin: (map['physicalServersPerAdmin'] as int).input(),
+      virtualMachinesPerAdmin: (map['virtualMachinesPerAdmin'] as int).input(),
     );
   }
 }

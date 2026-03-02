@@ -8,19 +8,19 @@ import 'version_response_containeranalysis_v1beta1.dart';
 /// This represents how a particular software package may be installed on a system.
 class InstallationResponseContaineranalysisV1beta1 {
   /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
-  final String architecture;
+  final pulumi.Input<String> architecture;
   /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
-  final String cpeUri;
+  final pulumi.Input<String> cpeUri;
   /// Licenses that have been declared by the authors of the package.
-  final LicenseResponseContaineranalysisV1beta1 license;
+  final pulumi.Input<LicenseResponseContaineranalysisV1beta1> license;
   /// All of the places within the filesystem versions of this package have been found.
-  final List<LocationResponseContaineranalysisV1beta1> location;
+  final pulumi.Input<List<LocationResponseContaineranalysisV1beta1>> location;
   /// The name of the installed package.
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
-  final String packageType;
+  final pulumi.Input<String> packageType;
   /// The version of the package.
-  final VersionResponseContaineranalysisV1beta1 version;
+  final pulumi.Input<VersionResponseContaineranalysisV1beta1> version;
 
   /// Creates a new [InstallationResponseContaineranalysisV1beta1].
   /// [architecture] The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
@@ -44,23 +44,23 @@ class InstallationResponseContaineranalysisV1beta1 {
     return <String, dynamic>{
       'architecture': architecture,
       'cpeUri': cpeUri,
-      'license': license.toMap(),
-      'location': pulumi.Input.encodeList<LocationResponseContaineranalysisV1beta1, Map<String, dynamic>>(location, (value) => value.toMap()),
+      'license': pulumi.Input.mapInputValue<LicenseResponseContaineranalysisV1beta1, Map<String, dynamic>>(license, (value) => value.toMap()),
+      'location': pulumi.Input.mapInputValue<List<LocationResponseContaineranalysisV1beta1>, List<Map<String, dynamic>>>(location, (value) => pulumi.Input.encodeList<LocationResponseContaineranalysisV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'packageType': packageType,
-      'version': version.toMap(),
+      'version': pulumi.Input.mapInputValue<VersionResponseContaineranalysisV1beta1, Map<String, dynamic>>(version, (value) => value.toMap()),
     };
   }
 
   factory InstallationResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return InstallationResponseContaineranalysisV1beta1(
-      architecture: map['architecture'] as String,
-      cpeUri: map['cpeUri'] as String,
-      license: LicenseResponseContaineranalysisV1beta1.fromMap((map['license'] as Map).cast<String, dynamic>()),
-      location: pulumi.Input.decodeList<LocationResponseContaineranalysisV1beta1>(map['location'], (value) => LocationResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      packageType: map['packageType'] as String,
-      version: VersionResponseContaineranalysisV1beta1.fromMap((map['version'] as Map).cast<String, dynamic>()),
+      architecture: (map['architecture'] as String).input(),
+      cpeUri: (map['cpeUri'] as String).input(),
+      license: (LicenseResponseContaineranalysisV1beta1.fromMap((map['license'] as Map).cast<String, dynamic>())).input(),
+      location: (pulumi.Input.decodeList<LocationResponseContaineranalysisV1beta1>(map['location'], (value) => LocationResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      packageType: (map['packageType'] as String).input(),
+      version: (VersionResponseContaineranalysisV1beta1.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

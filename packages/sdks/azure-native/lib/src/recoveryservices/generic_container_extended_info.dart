@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_identity_info.dart';
 
 /// Container extended information
 class GenericContainerExtendedInfo {
   /// Container identity information
-  final ContainerIdentityInfo? containerIdentityInfo;
+  final pulumi.Input<ContainerIdentityInfo>? containerIdentityInfo;
   /// Public key of container cert
-  final String? rawCertData;
+  final pulumi.Input<String>? rawCertData;
   /// Azure Backup Service Endpoints for the container
-  final Map<String, String>? serviceEndpoints;
+  final pulumi.Input<Map<String, String>>? serviceEndpoints;
 
   /// Creates a new [GenericContainerExtendedInfo].
   /// [containerIdentityInfo] Container identity information
@@ -23,7 +24,7 @@ class GenericContainerExtendedInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerIdentityInfo': ?containerIdentityInfo == null ? null : containerIdentityInfo!.toMap(),
+      'containerIdentityInfo': ?pulumi.Input.mapOptionalInputValue<ContainerIdentityInfo, Map<String, dynamic>>(containerIdentityInfo, (value) => value.toMap()),
       'rawCertData': ?rawCertData,
       'serviceEndpoints': ?serviceEndpoints,
     };
@@ -31,9 +32,9 @@ class GenericContainerExtendedInfo {
 
   factory GenericContainerExtendedInfo.fromMap(Map<String, dynamic> map) {
     return GenericContainerExtendedInfo(
-      containerIdentityInfo: map['containerIdentityInfo'] == null ? null : ContainerIdentityInfo.fromMap((map['containerIdentityInfo'] as Map).cast<String, dynamic>()),
-      rawCertData: map['rawCertData'] == null ? null : map['rawCertData'] as String,
-      serviceEndpoints: map['serviceEndpoints'] == null ? null : (map['serviceEndpoints'] as Map).cast<String, String>(),
+      containerIdentityInfo: map['containerIdentityInfo'] == null ? null : (ContainerIdentityInfo.fromMap((map['containerIdentityInfo'] as Map).cast<String, dynamic>())).input(),
+      rawCertData: map['rawCertData'] == null ? null : (map['rawCertData'] as String).input(),
+      serviceEndpoints: map['serviceEndpoints'] == null ? null : ((map['serviceEndpoints'] as Map).cast<String, String>()).input(),
     );
   }
 }

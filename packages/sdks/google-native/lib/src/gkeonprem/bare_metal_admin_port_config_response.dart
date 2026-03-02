@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// BareMetalAdminPortConfig is the specification of load balancer ports.
 class BareMetalAdminPortConfigResponse {
   /// The port that control plane hosted load balancers will listen on.
-  final int controlPlaneLoadBalancerPort;
+  final pulumi.Input<int> controlPlaneLoadBalancerPort;
 
   /// Creates a new [BareMetalAdminPortConfigResponse].
   /// [controlPlaneLoadBalancerPort] The port that control plane hosted load balancers will listen on.
@@ -20,7 +21,7 @@ class BareMetalAdminPortConfigResponse {
 
   factory BareMetalAdminPortConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminPortConfigResponse(
-      controlPlaneLoadBalancerPort: map['controlPlaneLoadBalancerPort'] as int,
+      controlPlaneLoadBalancerPort: (map['controlPlaneLoadBalancerPort'] as int).input(),
     );
   }
 }

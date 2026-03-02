@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of a NotificationHub FcmV1Credential.
 class FcmV1Credential {
   /// Gets or sets client email.
-  final String clientEmail;
+  final pulumi.Input<String> clientEmail;
   /// Gets or sets private key.
-  final String privateKey;
+  final pulumi.Input<String> privateKey;
   /// Gets or sets project id.
-  final String projectId;
+  final pulumi.Input<String> projectId;
 
   /// Creates a new [FcmV1Credential].
   /// [clientEmail] Gets or sets client email.
@@ -30,9 +31,9 @@ class FcmV1Credential {
 
   factory FcmV1Credential.fromMap(Map<String, dynamic> map) {
     return FcmV1Credential(
-      clientEmail: map['clientEmail'] as String,
-      privateKey: map['privateKey'] as String,
-      projectId: map['projectId'] as String,
+      clientEmail: (map['clientEmail'] as String).input(),
+      privateKey: (map['privateKey'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

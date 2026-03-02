@@ -16,13 +16,10 @@ class RecycleBinState {
   /// [reservedDays] The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
   /// [status] The status of the recycle bin.
   RecycleBinState({
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<int>? reservedDays,
-    pulumi.Output<String>? status,
-  }) :
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      reservedDays = pulumi.Input.asOptionalInput<int>(reservedDays),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.fileSystemId,
+    this.reservedDays,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class RecycleBinState {
 
   factory RecycleBinState.fromMap(Map<String, dynamic> map) {
     return RecycleBinState(
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      reservedDays: map['reservedDays'] == null ? null : pulumi.Output.create<int>(map['reservedDays'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      reservedDays: map['reservedDays'] == null ? null : (map['reservedDays'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

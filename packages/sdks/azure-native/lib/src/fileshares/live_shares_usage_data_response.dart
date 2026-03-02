@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Usage data for live shares.
 class LiveSharesUsageDataResponse {
   /// The number of active file shares.
-  final int fileShareCount;
+  final pulumi.Input<int> fileShareCount;
 
   /// Creates a new [LiveSharesUsageDataResponse].
   /// [fileShareCount] The number of active file shares.
@@ -20,7 +21,7 @@ class LiveSharesUsageDataResponse {
 
   factory LiveSharesUsageDataResponse.fromMap(Map<String, dynamic> map) {
     return LiveSharesUsageDataResponse(
-      fileShareCount: map['fileShareCount'] as int,
+      fileShareCount: (map['fileShareCount'] as int).input(),
     );
   }
 }

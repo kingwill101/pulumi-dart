@@ -22,15 +22,11 @@ class VpcServiceControlsState {
   /// [project] The id of the Google Cloud project containing the consumer network.
   /// [service] The service that is managing peering connectivity for a service
   VpcServiceControlsState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? service,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.enabled,
+    this.network,
+    this.project,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class VpcServiceControlsState {
 
   factory VpcServiceControlsState.fromMap(Map<String, dynamic> map) {
     return VpcServiceControlsState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

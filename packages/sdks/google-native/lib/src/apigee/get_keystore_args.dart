@@ -16,13 +16,10 @@ class GetKeystoreArgs {
   /// [keystoreId] Required.
   /// [organizationId] Required.
   GetKeystoreArgs({
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> keystoreId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      keystoreId = pulumi.Input.asInput<String>(keystoreId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.environmentId,
+    required this.keystoreId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetKeystoreArgs {
 
   factory GetKeystoreArgs.fromMap(Map<String, dynamic> map) {
     return GetKeystoreArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      keystoreId: pulumi.Output.create<String>(map['keystoreId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      keystoreId: (map['keystoreId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

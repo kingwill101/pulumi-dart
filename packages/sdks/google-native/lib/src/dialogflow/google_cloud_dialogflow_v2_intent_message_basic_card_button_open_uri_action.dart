@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Opens the given URI.
 class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
   /// The HTTP or HTTPS scheme URI.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction].
   /// [uri] The HTTP or HTTPS scheme URI.
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
 
   factory GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction(
-      uri: map['uri'] as String,
+      uri: (map['uri'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class DatabaseAccessControlsArgs {
   /// [databaseId] The unique ID of the target database.
   /// [databaseType] The unique type of the target database. (`mysql`, `postgresql`)
   DatabaseAccessControlsArgs({
-    required pulumi.Output<List<String>> allowLists,
-    required pulumi.Output<int> databaseId,
-    required pulumi.Output<String> databaseType,
-  }) :
-      allowLists = pulumi.Input.asInput<List<String>>(allowLists),
-      databaseId = pulumi.Input.asInput<int>(databaseId),
-      databaseType = pulumi.Input.asInput<String>(databaseType);
+    required this.allowLists,
+    required this.databaseId,
+    required this.databaseType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DatabaseAccessControlsArgs {
 
   factory DatabaseAccessControlsArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAccessControlsArgs(
-      allowLists: pulumi.Output.create<List<String>>((map['allowLists'] as List).cast<String>()),
-      databaseId: pulumi.Output.create<int>(map['databaseId'] as int),
-      databaseType: pulumi.Output.create<String>(map['databaseType'] as String),
+      allowLists: ((map['allowLists'] as List).cast<String>()).input(),
+      databaseId: (map['databaseId'] as int).input(),
+      databaseType: (map['databaseType'] as String).input(),
     );
   }
 }

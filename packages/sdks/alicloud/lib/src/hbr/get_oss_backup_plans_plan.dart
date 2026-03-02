@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOssBackupPlansPlan {
   /// Backup type. Valid values: `COMPLETE`.
-  final String backupType;
+  final pulumi.Input<String> backupType;
   /// The name of OSS bucket.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// The creation time of the backup plan. UNIX time in seconds.
-  final String createdTime;
+  final pulumi.Input<String> createdTime;
   /// Whether to be suspended. Valid values: `true`, `false`.
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
   /// The ID of Oss backup plan.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of Oss backup plan.
-  final String ossBackupPlanId;
+  final pulumi.Input<String> ossBackupPlanId;
   /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-  final String ossBackupPlanName;
+  final pulumi.Input<String> ossBackupPlanName;
   /// Backup prefix.
-  final String prefix;
+  final pulumi.Input<String> prefix;
   /// Backup retention days, the minimum is 1.
-  final String retention;
+  final pulumi.Input<String> retention;
   /// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
   /// * `startTime` Backup start time, UNIX time seconds.
-  final String schedule;
+  final pulumi.Input<String> schedule;
   /// The update time of the backup plan. UNIX time in seconds.
-  final String updatedTime;
+  final pulumi.Input<String> updatedTime;
   /// The ID of backup vault.
-  final String vaultId;
+  final pulumi.Input<String> vaultId;
 
   /// Creates a new [GetOssBackupPlansPlan].
   /// [backupType] Backup type. Valid values: `COMPLETE`.
@@ -75,18 +76,18 @@ class GetOssBackupPlansPlan {
 
   factory GetOssBackupPlansPlan.fromMap(Map<String, dynamic> map) {
     return GetOssBackupPlansPlan(
-      backupType: map['backupType'] as String,
-      bucket: map['bucket'] as String,
-      createdTime: map['createdTime'] as String,
-      disabled: map['disabled'] as bool,
-      id: map['id'] as String,
-      ossBackupPlanId: map['ossBackupPlanId'] as String,
-      ossBackupPlanName: map['ossBackupPlanName'] as String,
-      prefix: map['prefix'] as String,
-      retention: map['retention'] as String,
-      schedule: map['schedule'] as String,
-      updatedTime: map['updatedTime'] as String,
-      vaultId: map['vaultId'] as String,
+      backupType: (map['backupType'] as String).input(),
+      bucket: (map['bucket'] as String).input(),
+      createdTime: (map['createdTime'] as String).input(),
+      disabled: (map['disabled'] as bool).input(),
+      id: (map['id'] as String).input(),
+      ossBackupPlanId: (map['ossBackupPlanId'] as String).input(),
+      ossBackupPlanName: (map['ossBackupPlanName'] as String).input(),
+      prefix: (map['prefix'] as String).input(),
+      retention: (map['retention'] as String).input(),
+      schedule: (map['schedule'] as String).input(),
+      updatedTime: (map['updatedTime'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

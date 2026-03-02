@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayTargetTargetConfigurationMcpMcpServer {
   /// Endpoint for the MCP server target configuration.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpMcpServer].
   /// [endpoint] Endpoint for the MCP server target configuration.
@@ -19,7 +20,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpMcpServer {
 
   factory AgentcoreGatewayTargetTargetConfigurationMcpMcpServer.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpMcpServer(
-      endpoint: map['endpoint'] as String,
+      endpoint: (map['endpoint'] as String).input(),
     );
   }
 }

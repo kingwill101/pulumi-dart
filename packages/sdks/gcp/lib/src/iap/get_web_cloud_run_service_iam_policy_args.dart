@@ -22,13 +22,10 @@ class GetWebCloudRunServiceIamPolicyArgs {
   /// [location] The location of a cloud run service. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
   GetWebCloudRunServiceIamPolicyArgs({
-    required pulumi.Output<String> cloudRunServiceName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      cloudRunServiceName = pulumi.Input.asInput<String>(cloudRunServiceName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.cloudRunServiceName,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetWebCloudRunServiceIamPolicyArgs {
 
   factory GetWebCloudRunServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWebCloudRunServiceIamPolicyArgs(
-      cloudRunServiceName: pulumi.Output.create<String>(map['cloudRunServiceName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      cloudRunServiceName: (map['cloudRunServiceName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

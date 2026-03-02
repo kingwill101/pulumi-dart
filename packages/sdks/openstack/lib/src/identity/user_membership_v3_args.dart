@@ -22,13 +22,10 @@ class UserMembershipV3Args {
   /// [region] The region in which to obtain the V3 Identity client.
   /// [userId] The UUID of user to use. Changing this creates a new user membership.
   UserMembershipV3Args({
-    required pulumi.Output<String> groupId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> userId,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.groupId,
+    this.region,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class UserMembershipV3Args {
 
   factory UserMembershipV3Args.fromMap(Map<String, dynamic> map) {
     return UserMembershipV3Args(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      groupId: (map['groupId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

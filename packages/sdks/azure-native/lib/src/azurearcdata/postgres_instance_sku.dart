@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'postgres_instance_sku_tier.dart';
 
 /// The resource model definition representing SKU for Azure Database for PostgresSQL - Azure Arc
 class PostgresInstanceSku {
   /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose.
-  final bool? dev;
+  final pulumi.Input<bool>? dev;
   /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  final String? family;
+  final pulumi.Input<String>? family;
   /// The name of the SKU.  It is typically a letter+number code
-  final String name;
+  final pulumi.Input<String> name;
   /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-  final String? size;
+  final pulumi.Input<String>? size;
   /// This field is required to be implemented by the Resource Provider if the service has more than one tier.
-  final PostgresInstanceSkuTier? tier;
+  final pulumi.Input<PostgresInstanceSkuTier>? tier;
 
   /// Creates a new [PostgresInstanceSku].
   /// [capacity] If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
@@ -40,18 +41,18 @@ class PostgresInstanceSku {
       'family': ?family,
       'name': name,
       'size': ?size,
-      'tier': ?tier == null ? null : tier!.value,
+      'tier': ?pulumi.Input.mapOptionalInputValue<PostgresInstanceSkuTier, String>(tier, (value) => value.value),
     };
   }
 
   factory PostgresInstanceSku.fromMap(Map<String, dynamic> map) {
     return PostgresInstanceSku(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      dev: map['dev'] == null ? null : map['dev'] as bool,
-      family: map['family'] == null ? null : map['family'] as String,
-      name: map['name'] as String,
-      size: map['size'] == null ? null : map['size'] as String,
-      tier: map['tier'] == null ? null : PostgresInstanceSkuTier.fromValue(map['tier'] as String),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      dev: map['dev'] == null ? null : (map['dev'] as bool).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      name: (map['name'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      tier: map['tier'] == null ? null : (PostgresInstanceSkuTier.fromValue(map['tier'] as String)).input(),
     );
   }
 }

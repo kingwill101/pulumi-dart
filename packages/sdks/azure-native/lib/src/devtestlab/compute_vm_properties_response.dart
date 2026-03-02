@@ -7,19 +7,19 @@ import 'compute_vm_instance_view_status_response.dart';
 /// Properties of a virtual machine returned by the Microsoft.Compute API.
 class ComputeVmPropertiesResponse {
   /// Gets data disks blob uri for the virtual machine.
-  final List<String>? dataDiskIds;
+  final pulumi.Input<List<String>>? dataDiskIds;
   /// Gets all data disks attached to the virtual machine.
-  final List<ComputeDataDiskResponse>? dataDisks;
+  final pulumi.Input<List<ComputeDataDiskResponse>>? dataDisks;
   /// Gets the network interface ID of the virtual machine.
-  final String? networkInterfaceId;
+  final pulumi.Input<String>? networkInterfaceId;
   /// Gets OS disk blob uri for the virtual machine.
-  final String? osDiskId;
+  final pulumi.Input<String>? osDiskId;
   /// Gets the OS type of the virtual machine.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// Gets the statuses of the virtual machine.
-  final List<ComputeVmInstanceViewStatusResponse>? statuses;
+  final pulumi.Input<List<ComputeVmInstanceViewStatusResponse>>? statuses;
   /// Gets the size of the virtual machine.
-  final String? vmSize;
+  final pulumi.Input<String>? vmSize;
 
   /// Creates a new [ComputeVmPropertiesResponse].
   /// [dataDiskIds] Gets data disks blob uri for the virtual machine.
@@ -42,24 +42,24 @@ class ComputeVmPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataDiskIds': ?dataDiskIds,
-      'dataDisks': ?dataDisks == null ? null : pulumi.Input.encodeList<ComputeDataDiskResponse, Map<String, dynamic>>(dataDisks!, (value) => value.toMap()),
+      'dataDisks': ?pulumi.Input.mapOptionalInputValue<List<ComputeDataDiskResponse>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<ComputeDataDiskResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'networkInterfaceId': ?networkInterfaceId,
       'osDiskId': ?osDiskId,
       'osType': ?osType,
-      'statuses': ?statuses == null ? null : pulumi.Input.encodeList<ComputeVmInstanceViewStatusResponse, Map<String, dynamic>>(statuses!, (value) => value.toMap()),
+      'statuses': ?pulumi.Input.mapOptionalInputValue<List<ComputeVmInstanceViewStatusResponse>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<ComputeVmInstanceViewStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmSize': ?vmSize,
     };
   }
 
   factory ComputeVmPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ComputeVmPropertiesResponse(
-      dataDiskIds: map['dataDiskIds'] == null ? null : (map['dataDiskIds'] as List).cast<String>(),
-      dataDisks: map['dataDisks'] == null ? null : pulumi.Input.decodeList<ComputeDataDiskResponse>(map['dataDisks'], (value) => ComputeDataDiskResponse.fromMap((value as Map).cast<String, dynamic>())),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
-      osDiskId: map['osDiskId'] == null ? null : map['osDiskId'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      statuses: map['statuses'] == null ? null : pulumi.Input.decodeList<ComputeVmInstanceViewStatusResponse>(map['statuses'], (value) => ComputeVmInstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vmSize: map['vmSize'] == null ? null : map['vmSize'] as String,
+      dataDiskIds: map['dataDiskIds'] == null ? null : ((map['dataDiskIds'] as List).cast<String>()).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<ComputeDataDiskResponse>(map['dataDisks'], (value) => ComputeDataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      osDiskId: map['osDiskId'] == null ? null : (map['osDiskId'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ComputeVmInstanceViewStatusResponse>(map['statuses'], (value) => ComputeVmInstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
     );
   }
 }

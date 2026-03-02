@@ -29,19 +29,13 @@ class NetworkFunctionDefinitionGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   NetworkFunctionDefinitionGroupArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? networkFunctionDefinitionGroupName,
-    pulumi.Output<NetworkFunctionDefinitionGroupPropertiesFormat>? properties,
-    required pulumi.Output<String> publisherName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkFunctionDefinitionGroupName = pulumi.Input.asOptionalInput<String>(networkFunctionDefinitionGroupName),
-      properties = pulumi.Input.asOptionalInput<NetworkFunctionDefinitionGroupPropertiesFormat>(properties),
-      publisherName = pulumi.Input.asInput<String>(publisherName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.networkFunctionDefinitionGroupName,
+    this.properties,
+    required this.publisherName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class NetworkFunctionDefinitionGroupArgs {
 
   factory NetworkFunctionDefinitionGroupArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFunctionDefinitionGroupArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkFunctionDefinitionGroupName: map['networkFunctionDefinitionGroupName'] == null ? null : pulumi.Output.create<String>(map['networkFunctionDefinitionGroupName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<NetworkFunctionDefinitionGroupPropertiesFormat>(NetworkFunctionDefinitionGroupPropertiesFormat.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      publisherName: pulumi.Output.create<String>(map['publisherName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkFunctionDefinitionGroupName: map['networkFunctionDefinitionGroupName'] == null ? null : (map['networkFunctionDefinitionGroupName'] as String).input(),
+      properties: map['properties'] == null ? null : (NetworkFunctionDefinitionGroupPropertiesFormat.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      publisherName: (map['publisherName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_spec_service_cors_allow_origins.dart';
 
 class AppSpecServiceCors {
   /// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
-  final bool? allowCredentials;
+  final pulumi.Input<bool>? allowCredentials;
   /// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
-  final List<String>? allowHeaders;
+  final pulumi.Input<List<String>>? allowHeaders;
   /// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
-  final List<String>? allowMethods;
+  final pulumi.Input<List<String>>? allowMethods;
   /// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
-  final AppSpecServiceCorsAllowOrigins? allowOrigins;
+  final pulumi.Input<AppSpecServiceCorsAllowOrigins>? allowOrigins;
   /// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
-  final List<String>? exposeHeaders;
+  final pulumi.Input<List<String>>? exposeHeaders;
   /// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
-  final String? maxAge;
+  final pulumi.Input<String>? maxAge;
 
   /// Creates a new [AppSpecServiceCors].
   /// [allowCredentials] Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
@@ -37,7 +38,7 @@ class AppSpecServiceCors {
       'allowCredentials': ?allowCredentials,
       'allowHeaders': ?allowHeaders,
       'allowMethods': ?allowMethods,
-      'allowOrigins': ?allowOrigins == null ? null : allowOrigins!.toMap(),
+      'allowOrigins': ?pulumi.Input.mapOptionalInputValue<AppSpecServiceCorsAllowOrigins, Map<String, dynamic>>(allowOrigins, (value) => value.toMap()),
       'exposeHeaders': ?exposeHeaders,
       'maxAge': ?maxAge,
     };
@@ -45,12 +46,12 @@ class AppSpecServiceCors {
 
   factory AppSpecServiceCors.fromMap(Map<String, dynamic> map) {
     return AppSpecServiceCors(
-      allowCredentials: map['allowCredentials'] == null ? null : map['allowCredentials'] as bool,
-      allowHeaders: map['allowHeaders'] == null ? null : (map['allowHeaders'] as List).cast<String>(),
-      allowMethods: map['allowMethods'] == null ? null : (map['allowMethods'] as List).cast<String>(),
-      allowOrigins: map['allowOrigins'] == null ? null : AppSpecServiceCorsAllowOrigins.fromMap((map['allowOrigins'] as Map).cast<String, dynamic>()),
-      exposeHeaders: map['exposeHeaders'] == null ? null : (map['exposeHeaders'] as List).cast<String>(),
-      maxAge: map['maxAge'] == null ? null : map['maxAge'] as String,
+      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
+      allowHeaders: map['allowHeaders'] == null ? null : ((map['allowHeaders'] as List).cast<String>()).input(),
+      allowMethods: map['allowMethods'] == null ? null : ((map['allowMethods'] as List).cast<String>()).input(),
+      allowOrigins: map['allowOrigins'] == null ? null : (AppSpecServiceCorsAllowOrigins.fromMap((map['allowOrigins'] as Map).cast<String, dynamic>())).input(),
+      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders'] as List).cast<String>()).input(),
+      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as String).input(),
     );
   }
 }

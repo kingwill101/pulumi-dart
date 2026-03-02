@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesClusterServicePrincipal {
   /// The Client ID of the user-defined Managed Identity assigned to the Kubelets.
-  final String clientId;
+  final pulumi.Input<String> clientId;
 
   /// Creates a new [GetKubernetesClusterServicePrincipal].
   /// [clientId] The Client ID of the user-defined Managed Identity assigned to the Kubelets.
@@ -19,7 +20,7 @@ class GetKubernetesClusterServicePrincipal {
 
   factory GetKubernetesClusterServicePrincipal.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterServicePrincipal(
-      clientId: map['clientId'] as String,
+      clientId: (map['clientId'] as String).input(),
     );
   }
 }

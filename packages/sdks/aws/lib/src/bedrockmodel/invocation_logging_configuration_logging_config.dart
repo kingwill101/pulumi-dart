@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'invocation_logging_configuration_logging_config_cloudwatch_config.dart';
 import 'invocation_logging_configuration_logging_config_s3_config.dart';
 
 class InvocationLoggingConfigurationLoggingConfig {
   /// CloudWatch logging configuration. See `cloudwatch_config` Block for details.
-  final InvocationLoggingConfigurationLoggingConfigCloudwatchConfig? cloudwatchConfig;
+  final pulumi.Input<InvocationLoggingConfigurationLoggingConfigCloudwatchConfig>? cloudwatchConfig;
   /// Set to include embeddings data in the log delivery. Defaults to `true`.
-  final bool? embeddingDataDeliveryEnabled;
+  final pulumi.Input<bool>? embeddingDataDeliveryEnabled;
   /// Set to include image data in the log delivery. Defaults to `true`.
-  final bool? imageDataDeliveryEnabled;
+  final pulumi.Input<bool>? imageDataDeliveryEnabled;
   /// S3 configuration for storing log data. See `s3_config` Block for details.
-  final InvocationLoggingConfigurationLoggingConfigS3Config? s3Config;
+  final pulumi.Input<InvocationLoggingConfigurationLoggingConfigS3Config>? s3Config;
   /// Set to include text data in the log delivery. Defaults to `true`.
-  final bool? textDataDeliveryEnabled;
+  final pulumi.Input<bool>? textDataDeliveryEnabled;
   /// Set to include text data in the log delivery. Defaults to `true`.
-  final bool? videoDataDeliveryEnabled;
+  final pulumi.Input<bool>? videoDataDeliveryEnabled;
 
   /// Creates a new [InvocationLoggingConfigurationLoggingConfig].
   /// [cloudwatchConfig] CloudWatch logging configuration. See `cloudwatch_config` Block for details.
@@ -35,10 +36,10 @@ class InvocationLoggingConfigurationLoggingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudwatchConfig': ?cloudwatchConfig == null ? null : cloudwatchConfig!.toMap(),
+      'cloudwatchConfig': ?pulumi.Input.mapOptionalInputValue<InvocationLoggingConfigurationLoggingConfigCloudwatchConfig, Map<String, dynamic>>(cloudwatchConfig, (value) => value.toMap()),
       'embeddingDataDeliveryEnabled': ?embeddingDataDeliveryEnabled,
       'imageDataDeliveryEnabled': ?imageDataDeliveryEnabled,
-      's3Config': ?s3Config == null ? null : s3Config!.toMap(),
+      's3Config': ?pulumi.Input.mapOptionalInputValue<InvocationLoggingConfigurationLoggingConfigS3Config, Map<String, dynamic>>(s3Config, (value) => value.toMap()),
       'textDataDeliveryEnabled': ?textDataDeliveryEnabled,
       'videoDataDeliveryEnabled': ?videoDataDeliveryEnabled,
     };
@@ -46,12 +47,12 @@ class InvocationLoggingConfigurationLoggingConfig {
 
   factory InvocationLoggingConfigurationLoggingConfig.fromMap(Map<String, dynamic> map) {
     return InvocationLoggingConfigurationLoggingConfig(
-      cloudwatchConfig: map['cloudwatchConfig'] == null ? null : InvocationLoggingConfigurationLoggingConfigCloudwatchConfig.fromMap((map['cloudwatchConfig'] as Map).cast<String, dynamic>()),
-      embeddingDataDeliveryEnabled: map['embeddingDataDeliveryEnabled'] == null ? null : map['embeddingDataDeliveryEnabled'] as bool,
-      imageDataDeliveryEnabled: map['imageDataDeliveryEnabled'] == null ? null : map['imageDataDeliveryEnabled'] as bool,
-      s3Config: map['s3Config'] == null ? null : InvocationLoggingConfigurationLoggingConfigS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>()),
-      textDataDeliveryEnabled: map['textDataDeliveryEnabled'] == null ? null : map['textDataDeliveryEnabled'] as bool,
-      videoDataDeliveryEnabled: map['videoDataDeliveryEnabled'] == null ? null : map['videoDataDeliveryEnabled'] as bool,
+      cloudwatchConfig: map['cloudwatchConfig'] == null ? null : (InvocationLoggingConfigurationLoggingConfigCloudwatchConfig.fromMap((map['cloudwatchConfig'] as Map).cast<String, dynamic>())).input(),
+      embeddingDataDeliveryEnabled: map['embeddingDataDeliveryEnabled'] == null ? null : (map['embeddingDataDeliveryEnabled'] as bool).input(),
+      imageDataDeliveryEnabled: map['imageDataDeliveryEnabled'] == null ? null : (map['imageDataDeliveryEnabled'] as bool).input(),
+      s3Config: map['s3Config'] == null ? null : (InvocationLoggingConfigurationLoggingConfigS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>())).input(),
+      textDataDeliveryEnabled: map['textDataDeliveryEnabled'] == null ? null : (map['textDataDeliveryEnabled'] as bool).input(),
+      videoDataDeliveryEnabled: map['videoDataDeliveryEnabled'] == null ? null : (map['videoDataDeliveryEnabled'] as bool).input(),
     );
   }
 }

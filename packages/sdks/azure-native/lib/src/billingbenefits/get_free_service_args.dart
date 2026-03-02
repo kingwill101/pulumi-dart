@@ -16,11 +16,9 @@ class GetFreeServiceArgs {
   /// [freeServiceName] Name of the free service
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFreeServiceArgs({
-    required pulumi.Output<String> freeServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      freeServiceName = pulumi.Input.asInput<String>(freeServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.freeServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetFreeServiceArgs {
 
   factory GetFreeServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetFreeServiceArgs(
-      freeServiceName: pulumi.Output.create<String>(map['freeServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      freeServiceName: (map['freeServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

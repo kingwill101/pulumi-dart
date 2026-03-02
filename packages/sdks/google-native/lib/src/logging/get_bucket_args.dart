@@ -16,13 +16,10 @@ class GetBucketArgs {
   /// [location] Required.
   /// [project] Optional.
   GetBucketArgs({
-    required pulumi.Output<String> bucketId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.bucketId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetBucketArgs {
 
   factory GetBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketArgs(
-      bucketId: pulumi.Output.create<String>(map['bucketId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bucketId: (map['bucketId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

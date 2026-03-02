@@ -16,11 +16,9 @@ class GetCustomAssessmentAutomationArgs {
   /// [customAssessmentAutomationName] Name of the Custom Assessment Automation.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetCustomAssessmentAutomationArgs({
-    required pulumi.Output<String> customAssessmentAutomationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      customAssessmentAutomationName = pulumi.Input.asInput<String>(customAssessmentAutomationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.customAssessmentAutomationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCustomAssessmentAutomationArgs {
 
   factory GetCustomAssessmentAutomationArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomAssessmentAutomationArgs(
-      customAssessmentAutomationName: pulumi.Output.create<String>(map['customAssessmentAutomationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      customAssessmentAutomationName: (map['customAssessmentAutomationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

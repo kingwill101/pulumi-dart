@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKeyPairsPair {
   /// The ID of the Key Pair. Its value is same as Queue Name.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Private Key of the Fingerprint.
-  final String keyPairFingerPrint;
+  final pulumi.Input<String> keyPairFingerPrint;
   /// The Key Name.
-  final String keyPairName;
+  final pulumi.Input<String> keyPairName;
 
   /// Creates a new [GetKeyPairsPair].
   /// [id] The ID of the Key Pair. Its value is same as Queue Name.
@@ -29,9 +30,9 @@ class GetKeyPairsPair {
 
   factory GetKeyPairsPair.fromMap(Map<String, dynamic> map) {
     return GetKeyPairsPair(
-      id: map['id'] as String,
-      keyPairFingerPrint: map['keyPairFingerPrint'] as String,
-      keyPairName: map['keyPairName'] as String,
+      id: (map['id'] as String).input(),
+      keyPairFingerPrint: (map['keyPairFingerPrint'] as String).input(),
+      keyPairName: (map['keyPairName'] as String).input(),
     );
   }
 }

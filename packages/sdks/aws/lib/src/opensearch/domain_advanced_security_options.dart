@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_advanced_security_options_master_user_options.dart';
 
 class DomainAdvancedSecurityOptions {
   /// Whether Anonymous auth is enabled. Enables fine-grained access control on an existing domain. Ignored unless `advanced_security_options` are enabled. _Can only be enabled on an existing domain._
-  final bool? anonymousAuthEnabled;
+  final pulumi.Input<bool>? anonymousAuthEnabled;
   /// Whether advanced security is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Whether the internal user database is enabled. Default is `false`.
-  final bool? internalUserDatabaseEnabled;
+  final pulumi.Input<bool>? internalUserDatabaseEnabled;
   /// Configuration block for the main user. Detailed below.
-  final DomainAdvancedSecurityOptionsMasterUserOptions? masterUserOptions;
+  final pulumi.Input<DomainAdvancedSecurityOptionsMasterUserOptions>? masterUserOptions;
 
   /// Creates a new [DomainAdvancedSecurityOptions].
   /// [anonymousAuthEnabled] Whether Anonymous auth is enabled. Enables fine-grained access control on an existing domain. Ignored unless `advanced_security_options` are enabled. _Can only be enabled on an existing domain._
@@ -29,16 +30,16 @@ class DomainAdvancedSecurityOptions {
       'anonymousAuthEnabled': ?anonymousAuthEnabled,
       'enabled': enabled,
       'internalUserDatabaseEnabled': ?internalUserDatabaseEnabled,
-      'masterUserOptions': ?masterUserOptions == null ? null : masterUserOptions!.toMap(),
+      'masterUserOptions': ?pulumi.Input.mapOptionalInputValue<DomainAdvancedSecurityOptionsMasterUserOptions, Map<String, dynamic>>(masterUserOptions, (value) => value.toMap()),
     };
   }
 
   factory DomainAdvancedSecurityOptions.fromMap(Map<String, dynamic> map) {
     return DomainAdvancedSecurityOptions(
-      anonymousAuthEnabled: map['anonymousAuthEnabled'] == null ? null : map['anonymousAuthEnabled'] as bool,
-      enabled: map['enabled'] as bool,
-      internalUserDatabaseEnabled: map['internalUserDatabaseEnabled'] == null ? null : map['internalUserDatabaseEnabled'] as bool,
-      masterUserOptions: map['masterUserOptions'] == null ? null : DomainAdvancedSecurityOptionsMasterUserOptions.fromMap((map['masterUserOptions'] as Map).cast<String, dynamic>()),
+      anonymousAuthEnabled: map['anonymousAuthEnabled'] == null ? null : (map['anonymousAuthEnabled'] as bool).input(),
+      enabled: (map['enabled'] as bool).input(),
+      internalUserDatabaseEnabled: map['internalUserDatabaseEnabled'] == null ? null : (map['internalUserDatabaseEnabled'] as bool).input(),
+      masterUserOptions: map['masterUserOptions'] == null ? null : (DomainAdvancedSecurityOptionsMasterUserOptions.fromMap((map['masterUserOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

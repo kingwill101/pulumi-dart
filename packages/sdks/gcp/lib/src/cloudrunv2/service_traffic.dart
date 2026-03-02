@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTraffic {
   /// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
-  final int? percent;
+  final pulumi.Input<int>? percent;
   /// Revision to which to send this portion of traffic, if traffic allocation is by revision.
-  final String? revision;
+  final pulumi.Input<String>? revision;
   /// Indicates a string to be part of the URI to exclusively reference this target.
-  final String? tag;
+  final pulumi.Input<String>? tag;
   /// The allocation type for this traffic target.
   /// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ServiceTraffic].
   /// [percent] Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
@@ -35,10 +36,10 @@ class ServiceTraffic {
 
   factory ServiceTraffic.fromMap(Map<String, dynamic> map) {
     return ServiceTraffic(
-      percent: map['percent'] == null ? null : map['percent'] as int,
-      revision: map['revision'] == null ? null : map['revision'] as String,
-      tag: map['tag'] == null ? null : map['tag'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

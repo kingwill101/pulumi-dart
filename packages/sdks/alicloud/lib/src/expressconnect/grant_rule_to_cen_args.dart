@@ -19,13 +19,10 @@ class GrantRuleToCenArgs {
   /// [cenOwnerId] The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
   /// [instanceId] The ID of the VBR.
   GrantRuleToCenArgs({
-    required pulumi.Output<String> cenId,
-    required pulumi.Output<String> cenOwnerId,
-    required pulumi.Output<String> instanceId,
-  }) :
-      cenId = pulumi.Input.asInput<String>(cenId),
-      cenOwnerId = pulumi.Input.asInput<String>(cenOwnerId),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    required this.cenId,
+    required this.cenOwnerId,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GrantRuleToCenArgs {
 
   factory GrantRuleToCenArgs.fromMap(Map<String, dynamic> map) {
     return GrantRuleToCenArgs(
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      cenOwnerId: pulumi.Output.create<String>(map['cenOwnerId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      cenId: (map['cenId'] as String).input(),
+      cenOwnerId: (map['cenOwnerId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

@@ -10,26 +10,26 @@ import 'bucket_lifecycle_configuration_rule_transition.dart';
 
 class BucketLifecycleConfigurationRule {
   /// Configuration block that specifies the days since the initiation of an incomplete multipart upload that Amazon S3 will wait before permanently removing all parts of the upload. See below.
-  final BucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload? abortIncompleteMultipartUpload;
+  final pulumi.Input<BucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload>? abortIncompleteMultipartUpload;
   /// Configuration block that specifies the expiration for the lifecycle of the object in the form of date, days and, whether the object has a delete marker. See below.
-  final BucketLifecycleConfigurationRuleExpiration? expiration;
+  final pulumi.Input<BucketLifecycleConfigurationRuleExpiration>? expiration;
   /// Configuration block used to identify objects that a Lifecycle Rule applies to.
   /// See below.
-  final BucketLifecycleConfigurationRuleFilter? filter;
+  final pulumi.Input<BucketLifecycleConfigurationRuleFilter>? filter;
   /// Unique identifier for the rule. The value cannot be longer than 255 characters.
-  final String id;
+  final pulumi.Input<String> id;
   /// Configuration block that specifies when noncurrent object versions expire. See below.
-  final BucketLifecycleConfigurationRuleNoncurrentVersionExpiration? noncurrentVersionExpiration;
+  final pulumi.Input<BucketLifecycleConfigurationRuleNoncurrentVersionExpiration>? noncurrentVersionExpiration;
   /// Set of configuration blocks that specify the transition rule for the lifecycle rule that describes when noncurrent objects transition to a specific storage class. See below.
-  final List<BucketLifecycleConfigurationRuleNoncurrentVersionTransition>? noncurrentVersionTransitions;
+  final pulumi.Input<List<BucketLifecycleConfigurationRuleNoncurrentVersionTransition>>? noncurrentVersionTransitions;
   /// **DEPRECATED** Use `filter` instead.
   /// This has been deprecated by Amazon S3.
   /// Prefix identifying one or more objects to which the rule applies.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// Whether the rule is currently being applied. Valid values: `Enabled` or `Disabled`.
-  final String status;
+  final pulumi.Input<String> status;
   /// Set of configuration blocks that specify when an Amazon S3 object transitions to a specified storage class. See below.
-  final List<BucketLifecycleConfigurationRuleTransition>? transitions;
+  final pulumi.Input<List<BucketLifecycleConfigurationRuleTransition>>? transitions;
 
   /// Creates a new [BucketLifecycleConfigurationRule].
   /// [abortIncompleteMultipartUpload] Configuration block that specifies the days since the initiation of an incomplete multipart upload that Amazon S3 will wait before permanently removing all parts of the upload. See below.
@@ -55,29 +55,29 @@ class BucketLifecycleConfigurationRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abortIncompleteMultipartUpload': ?abortIncompleteMultipartUpload == null ? null : abortIncompleteMultipartUpload!.toMap(),
-      'expiration': ?expiration == null ? null : expiration!.toMap(),
-      'filter': ?filter == null ? null : filter!.toMap(),
+      'abortIncompleteMultipartUpload': ?pulumi.Input.mapOptionalInputValue<BucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload, Map<String, dynamic>>(abortIncompleteMultipartUpload, (value) => value.toMap()),
+      'expiration': ?pulumi.Input.mapOptionalInputValue<BucketLifecycleConfigurationRuleExpiration, Map<String, dynamic>>(expiration, (value) => value.toMap()),
+      'filter': ?pulumi.Input.mapOptionalInputValue<BucketLifecycleConfigurationRuleFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'id': id,
-      'noncurrentVersionExpiration': ?noncurrentVersionExpiration == null ? null : noncurrentVersionExpiration!.toMap(),
-      'noncurrentVersionTransitions': ?noncurrentVersionTransitions == null ? null : pulumi.Input.encodeList<BucketLifecycleConfigurationRuleNoncurrentVersionTransition, Map<String, dynamic>>(noncurrentVersionTransitions!, (value) => value.toMap()),
+      'noncurrentVersionExpiration': ?pulumi.Input.mapOptionalInputValue<BucketLifecycleConfigurationRuleNoncurrentVersionExpiration, Map<String, dynamic>>(noncurrentVersionExpiration, (value) => value.toMap()),
+      'noncurrentVersionTransitions': ?pulumi.Input.mapOptionalInputValue<List<BucketLifecycleConfigurationRuleNoncurrentVersionTransition>, List<Map<String, dynamic>>>(noncurrentVersionTransitions, (value) => pulumi.Input.encodeList<BucketLifecycleConfigurationRuleNoncurrentVersionTransition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'prefix': ?prefix,
       'status': status,
-      'transitions': ?transitions == null ? null : pulumi.Input.encodeList<BucketLifecycleConfigurationRuleTransition, Map<String, dynamic>>(transitions!, (value) => value.toMap()),
+      'transitions': ?pulumi.Input.mapOptionalInputValue<List<BucketLifecycleConfigurationRuleTransition>, List<Map<String, dynamic>>>(transitions, (value) => pulumi.Input.encodeList<BucketLifecycleConfigurationRuleTransition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BucketLifecycleConfigurationRule.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationRule(
-      abortIncompleteMultipartUpload: map['abortIncompleteMultipartUpload'] == null ? null : BucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload.fromMap((map['abortIncompleteMultipartUpload'] as Map).cast<String, dynamic>()),
-      expiration: map['expiration'] == null ? null : BucketLifecycleConfigurationRuleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>()),
-      filter: map['filter'] == null ? null : BucketLifecycleConfigurationRuleFilter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : BucketLifecycleConfigurationRuleNoncurrentVersionExpiration.fromMap((map['noncurrentVersionExpiration'] as Map).cast<String, dynamic>()),
-      noncurrentVersionTransitions: map['noncurrentVersionTransitions'] == null ? null : pulumi.Input.decodeList<BucketLifecycleConfigurationRuleNoncurrentVersionTransition>(map['noncurrentVersionTransitions'], (value) => BucketLifecycleConfigurationRuleNoncurrentVersionTransition.fromMap((value as Map).cast<String, dynamic>())),
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      status: map['status'] as String,
-      transitions: map['transitions'] == null ? null : pulumi.Input.decodeList<BucketLifecycleConfigurationRuleTransition>(map['transitions'], (value) => BucketLifecycleConfigurationRuleTransition.fromMap((value as Map).cast<String, dynamic>())),
+      abortIncompleteMultipartUpload: map['abortIncompleteMultipartUpload'] == null ? null : (BucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload.fromMap((map['abortIncompleteMultipartUpload'] as Map).cast<String, dynamic>())).input(),
+      expiration: map['expiration'] == null ? null : (BucketLifecycleConfigurationRuleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : (BucketLifecycleConfigurationRuleFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : (BucketLifecycleConfigurationRuleNoncurrentVersionExpiration.fromMap((map['noncurrentVersionExpiration'] as Map).cast<String, dynamic>())).input(),
+      noncurrentVersionTransitions: map['noncurrentVersionTransitions'] == null ? null : (pulumi.Input.decodeList<BucketLifecycleConfigurationRuleNoncurrentVersionTransition>(map['noncurrentVersionTransitions'], (value) => BucketLifecycleConfigurationRuleNoncurrentVersionTransition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      status: (map['status'] as String).input(),
+      transitions: map['transitions'] == null ? null : (pulumi.Input.decodeList<BucketLifecycleConfigurationRuleTransition>(map['transitions'], (value) => BucketLifecycleConfigurationRuleTransition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

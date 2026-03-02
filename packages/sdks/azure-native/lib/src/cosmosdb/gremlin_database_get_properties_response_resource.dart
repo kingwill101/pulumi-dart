@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_restore_parameters_response.dart';
 
 class GremlinDatabaseGetPropertiesResponseResource {
   /// Enum to indicate the mode of resource creation.
-  final String? createMode;
+  final pulumi.Input<String>? createMode;
   /// A system generated property representing the resource etag required for optimistic concurrency control.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Name of the Cosmos DB Gremlin database
-  final String id;
+  final pulumi.Input<String> id;
   /// Parameters to indicate the information about the restore
-  final ResourceRestoreParametersResponse? restoreParameters;
+  final pulumi.Input<ResourceRestoreParametersResponse>? restoreParameters;
   /// A system generated property. A unique identifier.
-  final String rid;
+  final pulumi.Input<String> rid;
   /// A system generated property that denotes the last updated timestamp of the resource.
-  final double ts;
+  final pulumi.Input<double> ts;
 
   /// Creates a new [GremlinDatabaseGetPropertiesResponseResource].
   /// [createMode] Enum to indicate the mode of resource creation.
@@ -37,7 +38,7 @@ class GremlinDatabaseGetPropertiesResponseResource {
       'createMode': ?createMode,
       'etag': etag,
       'id': id,
-      'restoreParameters': ?restoreParameters == null ? null : restoreParameters!.toMap(),
+      'restoreParameters': ?pulumi.Input.mapOptionalInputValue<ResourceRestoreParametersResponse, Map<String, dynamic>>(restoreParameters, (value) => value.toMap()),
       'rid': rid,
       'ts': ts,
     };
@@ -45,12 +46,12 @@ class GremlinDatabaseGetPropertiesResponseResource {
 
   factory GremlinDatabaseGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return GremlinDatabaseGetPropertiesResponseResource(
-      createMode: map['createMode'] == null ? null : map['createMode'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      restoreParameters: map['restoreParameters'] == null ? null : ResourceRestoreParametersResponse.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>()),
-      rid: map['rid'] as String,
-      ts: map['ts'] as double,
+      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      id: (map['id'] as String).input(),
+      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParametersResponse.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>())).input(),
+      rid: (map['rid'] as String).input(),
+      ts: (map['ts'] as double).input(),
     );
   }
 }

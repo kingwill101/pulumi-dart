@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableImportTableInputFormatOptionsCsv {
   /// The delimiter used for separating items in the CSV file being imported.
-  final String? delimiter;
+  final pulumi.Input<String>? delimiter;
   /// List of the headers used to specify a common header for all source CSV files being imported.
-  final List<String>? headerLists;
+  final pulumi.Input<List<String>>? headerLists;
 
   /// Creates a new [TableImportTableInputFormatOptionsCsv].
   /// [delimiter] The delimiter used for separating items in the CSV file being imported.
@@ -24,8 +25,8 @@ class TableImportTableInputFormatOptionsCsv {
 
   factory TableImportTableInputFormatOptionsCsv.fromMap(Map<String, dynamic> map) {
     return TableImportTableInputFormatOptionsCsv(
-      delimiter: map['delimiter'] == null ? null : map['delimiter'] as String,
-      headerLists: map['headerLists'] == null ? null : (map['headerLists'] as List).cast<String>(),
+      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
+      headerLists: map['headerLists'] == null ? null : ((map['headerLists'] as List).cast<String>()).input(),
     );
   }
 }

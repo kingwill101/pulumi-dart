@@ -29,19 +29,13 @@ class InternetGatewayRuleArgs {
   /// [ruleProperties] Rules for the InternetGateways
   /// [tags] Resource tags.
   InternetGatewayRuleArgs({
-    pulumi.Output<String>? annotation,
-    pulumi.Output<String>? internetGatewayRuleName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<RuleProperties> ruleProperties,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      internetGatewayRuleName = pulumi.Input.asOptionalInput<String>(internetGatewayRuleName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleProperties = pulumi.Input.asInput<RuleProperties>(ruleProperties),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.annotation,
+    this.internetGatewayRuleName,
+    this.location,
+    required this.resourceGroupName,
+    required this.ruleProperties,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class InternetGatewayRuleArgs {
 
   factory InternetGatewayRuleArgs.fromMap(Map<String, dynamic> map) {
     return InternetGatewayRuleArgs(
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      internetGatewayRuleName: map['internetGatewayRuleName'] == null ? null : pulumi.Output.create<String>(map['internetGatewayRuleName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleProperties: pulumi.Output.create<RuleProperties>(RuleProperties.fromMap((map['ruleProperties'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      internetGatewayRuleName: map['internetGatewayRuleName'] == null ? null : (map['internetGatewayRuleName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleProperties: (RuleProperties.fromMap((map['ruleProperties'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

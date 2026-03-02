@@ -28,19 +28,13 @@ class GetOutpostArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] The Outpost tags.
   GetOutpostArgs({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.arn,
+    this.id,
+    this.name,
+    this.ownerId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetOutpostArgs {
 
   factory GetOutpostArgs.fromMap(Map<String, dynamic> map) {
     return GetOutpostArgs(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

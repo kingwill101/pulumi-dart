@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_byte_match_statement_field_to_match_json_body_match_pattern.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBody {
   /// What to do when JSON parsing fails. Defaults to evaluating up to the first parsing failure. Valid values are `EVALUATE_AS_STRING`, `MATCH` and `NO_MATCH`.
-  final String? invalidFallbackBehavior;
+  final pulumi.Input<String>? invalidFallbackBehavior;
   /// The patterns to look for in the JSON body. You must specify exactly one setting: either `all` or `included_paths`. See [JsonMatchPattern](https://docs.aws.amazon.com/waf/latest/APIReference/API_JsonMatchPattern.html) for details.
-  final WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern matchPattern;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern> matchPattern;
   /// The parts of the JSON to match against using the `match_pattern`. Valid values are `ALL`, `KEY` and `VALUE`.
-  final String matchScope;
+  final pulumi.Input<String> matchScope;
   /// What to do if the body is larger than can be inspected. Valid values are `CONTINUE` (default), `MATCH` and `NO_MATCH`.
-  final String? oversizeHandling;
+  final pulumi.Input<String>? oversizeHandling;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBody].
   /// [invalidFallbackBehavior] What to do when JSON parsing fails. Defaults to evaluating up to the first parsing failure. Valid values are `EVALUATE_AS_STRING`, `MATCH` and `NO_MATCH`.
@@ -27,7 +28,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchSta
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'invalidFallbackBehavior': ?invalidFallbackBehavior,
-      'matchPattern': matchPattern.toMap(),
+      'matchPattern': pulumi.Input.mapInputValue<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern, Map<String, dynamic>>(matchPattern, (value) => value.toMap()),
       'matchScope': matchScope,
       'oversizeHandling': ?oversizeHandling,
     };
@@ -35,10 +36,10 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchSta
 
   factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBody.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBody(
-      invalidFallbackBehavior: map['invalidFallbackBehavior'] == null ? null : map['invalidFallbackBehavior'] as String,
-      matchPattern: WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap((map['matchPattern'] as Map).cast<String, dynamic>()),
-      matchScope: map['matchScope'] as String,
-      oversizeHandling: map['oversizeHandling'] == null ? null : map['oversizeHandling'] as String,
+      invalidFallbackBehavior: map['invalidFallbackBehavior'] == null ? null : (map['invalidFallbackBehavior'] as String).input(),
+      matchPattern: (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap((map['matchPattern'] as Map).cast<String, dynamic>())).input(),
+      matchScope: (map['matchScope'] as String).input(),
+      oversizeHandling: map['oversizeHandling'] == null ? null : (map['oversizeHandling'] as String).input(),
     );
   }
 }

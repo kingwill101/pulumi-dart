@@ -37,25 +37,16 @@ class DeploymentStrategyArgs {
   /// [replicateTo] Where to save the deployment strategy. Valid values: `NONE` and `SSM_DOCUMENT`.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DeploymentStrategyArgs({
-    required pulumi.Output<int> deploymentDurationInMinutes,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? finalBakeTimeInMinutes,
-    required pulumi.Output<double> growthFactor,
-    pulumi.Output<String>? growthType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> replicateTo,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deploymentDurationInMinutes = pulumi.Input.asInput<int>(deploymentDurationInMinutes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      finalBakeTimeInMinutes = pulumi.Input.asOptionalInput<int>(finalBakeTimeInMinutes),
-      growthFactor = pulumi.Input.asInput<double>(growthFactor),
-      growthType = pulumi.Input.asOptionalInput<String>(growthType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicateTo = pulumi.Input.asInput<String>(replicateTo),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.deploymentDurationInMinutes,
+    this.description,
+    this.finalBakeTimeInMinutes,
+    required this.growthFactor,
+    this.growthType,
+    this.name,
+    this.region,
+    required this.replicateTo,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class DeploymentStrategyArgs {
 
   factory DeploymentStrategyArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentStrategyArgs(
-      deploymentDurationInMinutes: pulumi.Output.create<int>(map['deploymentDurationInMinutes'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      finalBakeTimeInMinutes: map['finalBakeTimeInMinutes'] == null ? null : pulumi.Output.create<int>(map['finalBakeTimeInMinutes'] as int),
-      growthFactor: pulumi.Output.create<double>(map['growthFactor'] as double),
-      growthType: map['growthType'] == null ? null : pulumi.Output.create<String>(map['growthType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicateTo: pulumi.Output.create<String>(map['replicateTo'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deploymentDurationInMinutes: (map['deploymentDurationInMinutes'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      finalBakeTimeInMinutes: map['finalBakeTimeInMinutes'] == null ? null : (map['finalBakeTimeInMinutes'] as int).input(),
+      growthFactor: (map['growthFactor'] as double).input(),
+      growthType: map['growthType'] == null ? null : (map['growthType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicateTo: (map['replicateTo'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkgroupEndpointVpcEndpointNetworkInterface {
   /// The availability Zone.
-  final String? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
   /// The unique identifier of the network interface.
-  final String? networkInterfaceId;
+  final pulumi.Input<String>? networkInterfaceId;
   /// The IPv4 address of the network interface within the subnet.
-  final String? privateIpAddress;
+  final pulumi.Input<String>? privateIpAddress;
   /// The unique identifier of the subnet.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Creates a new [WorkgroupEndpointVpcEndpointNetworkInterface].
   /// [availabilityZone] The availability Zone.
@@ -34,10 +35,10 @@ class WorkgroupEndpointVpcEndpointNetworkInterface {
 
   factory WorkgroupEndpointVpcEndpointNetworkInterface.fromMap(Map<String, dynamic> map) {
     return WorkgroupEndpointVpcEndpointNetworkInterface(
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
-      privateIpAddress: map['privateIpAddress'] == null ? null : map['privateIpAddress'] as String,
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

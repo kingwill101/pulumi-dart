@@ -44,27 +44,17 @@ class SnapshotPolicyArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [weeklySchedule] Sets a weekly snapshot schedule. A `weekly_schedule` block as defined below.
   SnapshotPolicyArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<SnapshotPolicyDailySchedule>? dailySchedule,
-    required pulumi.Output<bool> enabled,
-    pulumi.Output<SnapshotPolicyHourlySchedule>? hourlySchedule,
-    pulumi.Output<String>? location,
-    pulumi.Output<SnapshotPolicyMonthlySchedule>? monthlySchedule,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<SnapshotPolicyWeeklySchedule>? weeklySchedule,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      dailySchedule = pulumi.Input.asOptionalInput<SnapshotPolicyDailySchedule>(dailySchedule),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      hourlySchedule = pulumi.Input.asOptionalInput<SnapshotPolicyHourlySchedule>(hourlySchedule),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      monthlySchedule = pulumi.Input.asOptionalInput<SnapshotPolicyMonthlySchedule>(monthlySchedule),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      weeklySchedule = pulumi.Input.asOptionalInput<SnapshotPolicyWeeklySchedule>(weeklySchedule);
+    required this.accountName,
+    this.dailySchedule,
+    required this.enabled,
+    this.hourlySchedule,
+    this.location,
+    this.monthlySchedule,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+    this.weeklySchedule,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class SnapshotPolicyArgs {
 
   factory SnapshotPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotPolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      dailySchedule: map['dailySchedule'] == null ? null : pulumi.Output.create<SnapshotPolicyDailySchedule>(SnapshotPolicyDailySchedule.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>())),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      hourlySchedule: map['hourlySchedule'] == null ? null : pulumi.Output.create<SnapshotPolicyHourlySchedule>(SnapshotPolicyHourlySchedule.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      monthlySchedule: map['monthlySchedule'] == null ? null : pulumi.Output.create<SnapshotPolicyMonthlySchedule>(SnapshotPolicyMonthlySchedule.fromMap((map['monthlySchedule'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      weeklySchedule: map['weeklySchedule'] == null ? null : pulumi.Output.create<SnapshotPolicyWeeklySchedule>(SnapshotPolicyWeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())),
+      accountName: (map['accountName'] as String).input(),
+      dailySchedule: map['dailySchedule'] == null ? null : (SnapshotPolicyDailySchedule.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>())).input(),
+      enabled: (map['enabled'] as bool).input(),
+      hourlySchedule: map['hourlySchedule'] == null ? null : (SnapshotPolicyHourlySchedule.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      monthlySchedule: map['monthlySchedule'] == null ? null : (SnapshotPolicyMonthlySchedule.fromMap((map['monthlySchedule'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (SnapshotPolicyWeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ListConnectedClusterUserCredentialArgs {
   /// [clusterName] The name of the Kubernetes cluster on which get is called.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListConnectedClusterUserCredentialArgs({
-    required pulumi.Output<String> authenticationMethod,
-    required pulumi.Output<bool> clientProxy,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authenticationMethod = pulumi.Input.asInput<String>(authenticationMethod),
-      clientProxy = pulumi.Input.asInput<bool>(clientProxy),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.authenticationMethod,
+    required this.clientProxy,
+    required this.clusterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListConnectedClusterUserCredentialArgs {
 
   factory ListConnectedClusterUserCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ListConnectedClusterUserCredentialArgs(
-      authenticationMethod: pulumi.Output.create<String>(map['authenticationMethod'] as String),
-      clientProxy: pulumi.Output.create<bool>(map['clientProxy'] as bool),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authenticationMethod: (map['authenticationMethod'] as String).input(),
+      clientProxy: (map['clientProxy'] as bool).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

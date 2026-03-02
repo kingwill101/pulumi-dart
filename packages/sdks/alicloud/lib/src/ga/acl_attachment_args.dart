@@ -22,15 +22,11 @@ class AclAttachmentArgs {
   /// [dryRun] The dry run.
   /// [listenerId] The ID of the listener.
   AclAttachmentArgs({
-    required pulumi.Output<String> aclId,
-    required pulumi.Output<String> aclType,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> listenerId,
-  }) :
-      aclId = pulumi.Input.asInput<String>(aclId),
-      aclType = pulumi.Input.asInput<String>(aclType),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      listenerId = pulumi.Input.asInput<String>(listenerId);
+    required this.aclId,
+    required this.aclType,
+    this.dryRun,
+    required this.listenerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AclAttachmentArgs {
 
   factory AclAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AclAttachmentArgs(
-      aclId: pulumi.Output.create<String>(map['aclId'] as String),
-      aclType: pulumi.Output.create<String>(map['aclType'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      listenerId: pulumi.Output.create<String>(map['listenerId'] as String),
+      aclId: (map['aclId'] as String).input(),
+      aclType: (map['aclType'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      listenerId: (map['listenerId'] as String).input(),
     );
   }
 }

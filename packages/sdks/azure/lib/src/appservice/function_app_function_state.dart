@@ -52,35 +52,21 @@ class FunctionAppFunctionState {
   /// [testDataUrl] The Test data URL.
   /// [url] The function URL.
   FunctionAppFunctionState({
-    pulumi.Output<String>? configJson,
-    pulumi.Output<String>? configUrl,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<FunctionAppFunctionFile>>? files,
-    pulumi.Output<String>? functionAppId,
-    pulumi.Output<String>? invocationUrl,
-    pulumi.Output<String>? language,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? scriptRootPathUrl,
-    pulumi.Output<String>? scriptUrl,
-    pulumi.Output<String>? secretsFileUrl,
-    pulumi.Output<String>? testData,
-    pulumi.Output<String>? testDataUrl,
-    pulumi.Output<String>? url,
-  }) :
-      configJson = pulumi.Input.asOptionalInput<String>(configJson),
-      configUrl = pulumi.Input.asOptionalInput<String>(configUrl),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      files = pulumi.Input.asOptionalInput<List<FunctionAppFunctionFile>>(files),
-      functionAppId = pulumi.Input.asOptionalInput<String>(functionAppId),
-      invocationUrl = pulumi.Input.asOptionalInput<String>(invocationUrl),
-      language = pulumi.Input.asOptionalInput<String>(language),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      scriptRootPathUrl = pulumi.Input.asOptionalInput<String>(scriptRootPathUrl),
-      scriptUrl = pulumi.Input.asOptionalInput<String>(scriptUrl),
-      secretsFileUrl = pulumi.Input.asOptionalInput<String>(secretsFileUrl),
-      testData = pulumi.Input.asOptionalInput<String>(testData),
-      testDataUrl = pulumi.Input.asOptionalInput<String>(testDataUrl),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.configJson,
+    this.configUrl,
+    this.enabled,
+    this.files,
+    this.functionAppId,
+    this.invocationUrl,
+    this.language,
+    this.name,
+    this.scriptRootPathUrl,
+    this.scriptUrl,
+    this.secretsFileUrl,
+    this.testData,
+    this.testDataUrl,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class FunctionAppFunctionState {
 
   factory FunctionAppFunctionState.fromMap(Map<String, dynamic> map) {
     return FunctionAppFunctionState(
-      configJson: map['configJson'] == null ? null : pulumi.Output.create<String>(map['configJson'] as String),
-      configUrl: map['configUrl'] == null ? null : pulumi.Output.create<String>(map['configUrl'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      files: map['files'] == null ? null : pulumi.Output.create<List<FunctionAppFunctionFile>>(pulumi.Input.decodeList<FunctionAppFunctionFile>(map['files'], (value) => FunctionAppFunctionFile.fromMap((value as Map).cast<String, dynamic>()))),
-      functionAppId: map['functionAppId'] == null ? null : pulumi.Output.create<String>(map['functionAppId'] as String),
-      invocationUrl: map['invocationUrl'] == null ? null : pulumi.Output.create<String>(map['invocationUrl'] as String),
-      language: map['language'] == null ? null : pulumi.Output.create<String>(map['language'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      scriptRootPathUrl: map['scriptRootPathUrl'] == null ? null : pulumi.Output.create<String>(map['scriptRootPathUrl'] as String),
-      scriptUrl: map['scriptUrl'] == null ? null : pulumi.Output.create<String>(map['scriptUrl'] as String),
-      secretsFileUrl: map['secretsFileUrl'] == null ? null : pulumi.Output.create<String>(map['secretsFileUrl'] as String),
-      testData: map['testData'] == null ? null : pulumi.Output.create<String>(map['testData'] as String),
-      testDataUrl: map['testDataUrl'] == null ? null : pulumi.Output.create<String>(map['testDataUrl'] as String),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      configJson: map['configJson'] == null ? null : (map['configJson'] as String).input(),
+      configUrl: map['configUrl'] == null ? null : (map['configUrl'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      files: map['files'] == null ? null : (pulumi.Input.decodeList<FunctionAppFunctionFile>(map['files'], (value) => FunctionAppFunctionFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      functionAppId: map['functionAppId'] == null ? null : (map['functionAppId'] as String).input(),
+      invocationUrl: map['invocationUrl'] == null ? null : (map['invocationUrl'] as String).input(),
+      language: map['language'] == null ? null : (map['language'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      scriptRootPathUrl: map['scriptRootPathUrl'] == null ? null : (map['scriptRootPathUrl'] as String).input(),
+      scriptUrl: map['scriptUrl'] == null ? null : (map['scriptUrl'] as String).input(),
+      secretsFileUrl: map['secretsFileUrl'] == null ? null : (map['secretsFileUrl'] as String).input(),
+      testData: map['testData'] == null ? null : (map['testData'] as String).input(),
+      testDataUrl: map['testDataUrl'] == null ? null : (map['testDataUrl'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

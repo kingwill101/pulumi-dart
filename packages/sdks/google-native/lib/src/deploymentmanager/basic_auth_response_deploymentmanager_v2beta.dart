@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Basic Auth used as a credential.
 class BasicAuthResponseDeploymentmanagerV2beta {
-  final String password;
-  final String user;
+  final pulumi.Input<String> password;
+  final pulumi.Input<String> user;
 
   /// Creates a new [BasicAuthResponseDeploymentmanagerV2beta].
   /// [password] Required.
@@ -23,8 +24,8 @@ class BasicAuthResponseDeploymentmanagerV2beta {
 
   factory BasicAuthResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return BasicAuthResponseDeploymentmanagerV2beta(
-      password: map['password'] as String,
-      user: map['user'] as String,
+      password: (map['password'] as String).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

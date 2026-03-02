@@ -36,25 +36,16 @@ class TlsRouteNetworkservicesV1beta1Args {
   /// [rules] Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
   /// [tlsRouteId] Required. Short name of the TlsRoute resource to be created.
   TlsRouteNetworkservicesV1beta1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? gateways,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<String>>? meshes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<List<TlsRouteRouteRuleNetworkservicesV1beta1>> rules,
-    required pulumi.Output<String> tlsRouteId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gateways = pulumi.Input.asOptionalInput<List<String>>(gateways),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      meshes = pulumi.Input.asOptionalInput<List<String>>(meshes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rules = pulumi.Input.asInput<List<TlsRouteRouteRuleNetworkservicesV1beta1>>(rules),
-      tlsRouteId = pulumi.Input.asInput<String>(tlsRouteId);
+    this.description,
+    this.gateways,
+    this.labels,
+    this.location,
+    this.meshes,
+    this.name,
+    this.project,
+    required this.rules,
+    required this.tlsRouteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class TlsRouteNetworkservicesV1beta1Args {
 
   factory TlsRouteNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TlsRouteNetworkservicesV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gateways: map['gateways'] == null ? null : pulumi.Output.create<List<String>>((map['gateways'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      meshes: map['meshes'] == null ? null : pulumi.Output.create<List<String>>((map['meshes'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rules: pulumi.Output.create<List<TlsRouteRouteRuleNetworkservicesV1beta1>>(pulumi.Input.decodeList<TlsRouteRouteRuleNetworkservicesV1beta1>(map['rules'], (value) => TlsRouteRouteRuleNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
-      tlsRouteId: pulumi.Output.create<String>(map['tlsRouteId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gateways: map['gateways'] == null ? null : ((map['gateways'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      meshes: map['meshes'] == null ? null : ((map['meshes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rules: (pulumi.Input.decodeList<TlsRouteRouteRuleNetworkservicesV1beta1>(map['rules'], (value) => TlsRouteRouteRuleNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tlsRouteId: (map['tlsRouteId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A message defining the database engine and provider.
 class DatabaseTypeResponse {
   /// The database engine.
-  final String engine;
+  final pulumi.Input<String> engine;
   /// The database provider.
-  final String provider;
+  final pulumi.Input<String> provider;
 
   /// Creates a new [DatabaseTypeResponse].
   /// [engine] The database engine.
@@ -25,8 +26,8 @@ class DatabaseTypeResponse {
 
   factory DatabaseTypeResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseTypeResponse(
-      engine: map['engine'] as String,
-      provider: map['provider'] as String,
+      engine: (map['engine'] as String).input(),
+      provider: (map['provider'] as String).input(),
     );
   }
 }

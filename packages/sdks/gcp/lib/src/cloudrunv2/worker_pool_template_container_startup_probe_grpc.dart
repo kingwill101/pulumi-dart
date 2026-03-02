@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkerPoolTemplateContainerStartupProbeGrpc {
   /// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
-  final String? service;
+  final pulumi.Input<String>? service;
 
   /// Creates a new [WorkerPoolTemplateContainerStartupProbeGrpc].
   /// [port] Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -24,8 +25,8 @@ class WorkerPoolTemplateContainerStartupProbeGrpc {
 
   factory WorkerPoolTemplateContainerStartupProbeGrpc.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainerStartupProbeGrpc(
-      port: map['port'] == null ? null : map['port'] as int,
-      service: map['service'] == null ? null : map['service'] as String,
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

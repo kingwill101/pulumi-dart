@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUsersUserFirewallGrant {
   /// The ID of entity this grant applies to.
-  final int id;
+  final pulumi.Input<int> id;
   /// The current label of the entity this grant applies to, for display purposes.
-  final String label;
+  final pulumi.Input<String> label;
   /// The level of access this User has to this entity. If null, this User has no access.
-  final String permissions;
+  final pulumi.Input<String> permissions;
 
   /// Creates a new [GetUsersUserFirewallGrant].
   /// [id] The ID of entity this grant applies to.
@@ -29,9 +30,9 @@ class GetUsersUserFirewallGrant {
 
   factory GetUsersUserFirewallGrant.fromMap(Map<String, dynamic> map) {
     return GetUsersUserFirewallGrant(
-      id: map['id'] as int,
-      label: map['label'] as String,
-      permissions: map['permissions'] as String,
+      id: (map['id'] as int).input(),
+      label: (map['label'] as String).input(),
+      permissions: (map['permissions'] as String).input(),
     );
   }
 }

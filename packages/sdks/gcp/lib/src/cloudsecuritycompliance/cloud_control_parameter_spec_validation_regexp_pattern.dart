@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudControlParameterSpecValidationRegexpPattern {
   /// Regex Pattern to match the value(s) of parameter.
-  final String pattern;
+  final pulumi.Input<String> pattern;
 
   /// Creates a new [CloudControlParameterSpecValidationRegexpPattern].
   /// [pattern] Regex Pattern to match the value(s) of parameter.
@@ -19,7 +20,7 @@ class CloudControlParameterSpecValidationRegexpPattern {
 
   factory CloudControlParameterSpecValidationRegexpPattern.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecValidationRegexpPattern(
-      pattern: map['pattern'] as String,
+      pattern: (map['pattern'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sole_tenant_node_type_response_migrationcenter_v1alpha1.dart';
 
 /// Represents the assets allocated to a specific Sole-Tenant node type.
 class ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1 {
   /// Count of assets allocated to these nodes
-  final String allocatedAssetCount;
+  final pulumi.Input<String> allocatedAssetCount;
   /// Sole Tenant node type, e.g. "m3-node-128-3904"
-  final SoleTenantNodeTypeResponseMigrationcenterV1alpha1 node;
+  final pulumi.Input<SoleTenantNodeTypeResponseMigrationcenterV1alpha1> node;
   /// Count of this node type to be provisioned
-  final String nodeCount;
+  final pulumi.Input<String> nodeCount;
 
   /// Creates a new [ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1].
   /// [allocatedAssetCount] Count of assets allocated to these nodes
@@ -24,16 +25,16 @@ class ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocatedAssetCount': allocatedAssetCount,
-      'node': node.toMap(),
+      'node': pulumi.Input.mapInputValue<SoleTenantNodeTypeResponseMigrationcenterV1alpha1, Map<String, dynamic>>(node, (value) => value.toMap()),
       'nodeCount': nodeCount,
     };
   }
 
   factory ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1(
-      allocatedAssetCount: map['allocatedAssetCount'] as String,
-      node: SoleTenantNodeTypeResponseMigrationcenterV1alpha1.fromMap((map['node'] as Map).cast<String, dynamic>()),
-      nodeCount: map['nodeCount'] as String,
+      allocatedAssetCount: (map['allocatedAssetCount'] as String).input(),
+      node: (SoleTenantNodeTypeResponseMigrationcenterV1alpha1.fromMap((map['node'] as Map).cast<String, dynamic>())).input(),
+      nodeCount: (map['nodeCount'] as String).input(),
     );
   }
 }

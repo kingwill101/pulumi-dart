@@ -22,15 +22,11 @@ class GetScheduledTriggerArgs {
   /// [shareSubscriptionName] The name of the shareSubscription.
   /// [triggerName] The name of the trigger.
   GetScheduledTriggerArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareSubscriptionName,
-    required pulumi.Output<String> triggerName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareSubscriptionName = pulumi.Input.asInput<String>(shareSubscriptionName),
-      triggerName = pulumi.Input.asInput<String>(triggerName);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.shareSubscriptionName,
+    required this.triggerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetScheduledTriggerArgs {
 
   factory GetScheduledTriggerArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduledTriggerArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareSubscriptionName: pulumi.Output.create<String>(map['shareSubscriptionName'] as String),
-      triggerName: pulumi.Output.create<String>(map['triggerName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
+      triggerName: (map['triggerName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress {
-  final String alias;
-  final String express;
+  final pulumi.Input<String> alias;
+  final pulumi.Input<String> express;
 
   /// Creates a new [GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress].
   /// [alias] Required.
@@ -22,8 +23,8 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress {
 
   factory GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress(
-      alias: map['alias'] as String,
-      express: map['express'] as String,
+      alias: (map['alias'] as String).input(),
+      express: (map['express'] as String).input(),
     );
   }
 }

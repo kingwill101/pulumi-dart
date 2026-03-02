@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_chat_channel_properties.dart';
 
 /// Web Chat channel definition
 class WebChatChannel {
   /// The channel name
   /// Expected value is 'WebChatChannel'.
-  final String channelName;
+  final pulumi.Input<String> channelName;
   /// Entity Tag of the resource
-  final String? etag;
+  final pulumi.Input<String>? etag;
   /// Specifies the location of the resource.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The set of properties specific to Web Chat channel resource
-  final WebChatChannelProperties? properties;
+  final pulumi.Input<WebChatChannelProperties>? properties;
 
   /// Creates a new [WebChatChannel].
   /// [channelName] The channel name
@@ -31,16 +32,16 @@ class WebChatChannel {
       'channelName': channelName,
       'etag': ?etag,
       'location': ?location,
-      'properties': ?properties == null ? null : properties!.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<WebChatChannelProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory WebChatChannel.fromMap(Map<String, dynamic> map) {
     return WebChatChannel(
-      channelName: map['channelName'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      properties: map['properties'] == null ? null : WebChatChannelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      channelName: (map['channelName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (WebChatChannelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

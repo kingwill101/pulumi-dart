@@ -34,23 +34,15 @@ class ConformancePackState {
   /// [templateBody] A string containing full conformance pack template body. Maximum length of 51200. Drift detection is not possible with this argument.
   /// [templateS3Uri] Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The uri must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
   ConformancePackState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? deliveryS3Bucket,
-    pulumi.Output<String>? deliveryS3KeyPrefix,
-    pulumi.Output<List<ConformancePackInputParameter>>? inputParameters,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? templateBody,
-    pulumi.Output<String>? templateS3Uri,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      deliveryS3Bucket = pulumi.Input.asOptionalInput<String>(deliveryS3Bucket),
-      deliveryS3KeyPrefix = pulumi.Input.asOptionalInput<String>(deliveryS3KeyPrefix),
-      inputParameters = pulumi.Input.asOptionalInput<List<ConformancePackInputParameter>>(inputParameters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      templateBody = pulumi.Input.asOptionalInput<String>(templateBody),
-      templateS3Uri = pulumi.Input.asOptionalInput<String>(templateS3Uri);
+    this.arn,
+    this.deliveryS3Bucket,
+    this.deliveryS3KeyPrefix,
+    this.inputParameters,
+    this.name,
+    this.region,
+    this.templateBody,
+    this.templateS3Uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ConformancePackState {
 
   factory ConformancePackState.fromMap(Map<String, dynamic> map) {
     return ConformancePackState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      deliveryS3Bucket: map['deliveryS3Bucket'] == null ? null : pulumi.Output.create<String>(map['deliveryS3Bucket'] as String),
-      deliveryS3KeyPrefix: map['deliveryS3KeyPrefix'] == null ? null : pulumi.Output.create<String>(map['deliveryS3KeyPrefix'] as String),
-      inputParameters: map['inputParameters'] == null ? null : pulumi.Output.create<List<ConformancePackInputParameter>>(pulumi.Input.decodeList<ConformancePackInputParameter>(map['inputParameters'], (value) => ConformancePackInputParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      templateBody: map['templateBody'] == null ? null : pulumi.Output.create<String>(map['templateBody'] as String),
-      templateS3Uri: map['templateS3Uri'] == null ? null : pulumi.Output.create<String>(map['templateS3Uri'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      deliveryS3Bucket: map['deliveryS3Bucket'] == null ? null : (map['deliveryS3Bucket'] as String).input(),
+      deliveryS3KeyPrefix: map['deliveryS3KeyPrefix'] == null ? null : (map['deliveryS3KeyPrefix'] as String).input(),
+      inputParameters: map['inputParameters'] == null ? null : (pulumi.Input.decodeList<ConformancePackInputParameter>(map['inputParameters'], (value) => ConformancePackInputParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      templateBody: map['templateBody'] == null ? null : (map['templateBody'] as String).input(),
+      templateS3Uri: map['templateS3Uri'] == null ? null : (map['templateS3Uri'] as String).input(),
     );
   }
 }

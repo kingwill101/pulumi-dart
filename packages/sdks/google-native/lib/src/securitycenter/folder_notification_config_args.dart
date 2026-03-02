@@ -28,19 +28,13 @@ class FolderNotificationConfigArgs {
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
   /// [streamingConfig] The config for triggering streaming-based notifications.
   FolderNotificationConfigArgs({
-    required pulumi.Output<String> configId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> folderId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pubsubTopic,
-    pulumi.Output<StreamingConfig>? streamingConfig,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pubsubTopic = pulumi.Input.asOptionalInput<String>(pubsubTopic),
-      streamingConfig = pulumi.Input.asOptionalInput<StreamingConfig>(streamingConfig);
+    required this.configId,
+    this.description,
+    required this.folderId,
+    this.name,
+    this.pubsubTopic,
+    this.streamingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class FolderNotificationConfigArgs {
 
   factory FolderNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return FolderNotificationConfigArgs(
-      configId: pulumi.Output.create<String>(map['configId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pubsubTopic: map['pubsubTopic'] == null ? null : pulumi.Output.create<String>(map['pubsubTopic'] as String),
-      streamingConfig: map['streamingConfig'] == null ? null : pulumi.Output.create<StreamingConfig>(StreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())),
+      configId: (map['configId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folderId: (map['folderId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
+      streamingConfig: map['streamingConfig'] == null ? null : (StreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

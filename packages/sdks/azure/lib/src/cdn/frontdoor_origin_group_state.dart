@@ -29,19 +29,13 @@ class FrontdoorOriginGroupState {
   /// [restoreTrafficTimeToHealedOrNewEndpointInMinutes] Specifies the amount of time which should elapse before shifting traffic to another endpoint when a healthy endpoint becomes unhealthy or a new endpoint is added. Possible values are between `0` and `50` minutes (inclusive). Default is `10` minutes.
   /// [sessionAffinityEnabled] Specifies whether session affinity should be enabled on this host. Defaults to `true`.
   FrontdoorOriginGroupState({
-    pulumi.Output<String>? cdnFrontdoorProfileId,
-    pulumi.Output<FrontdoorOriginGroupHealthProbe>? healthProbe,
-    pulumi.Output<FrontdoorOriginGroupLoadBalancing>? loadBalancing,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? restoreTrafficTimeToHealedOrNewEndpointInMinutes,
-    pulumi.Output<bool>? sessionAffinityEnabled,
-  }) :
-      cdnFrontdoorProfileId = pulumi.Input.asOptionalInput<String>(cdnFrontdoorProfileId),
-      healthProbe = pulumi.Input.asOptionalInput<FrontdoorOriginGroupHealthProbe>(healthProbe),
-      loadBalancing = pulumi.Input.asOptionalInput<FrontdoorOriginGroupLoadBalancing>(loadBalancing),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      restoreTrafficTimeToHealedOrNewEndpointInMinutes = pulumi.Input.asOptionalInput<int>(restoreTrafficTimeToHealedOrNewEndpointInMinutes),
-      sessionAffinityEnabled = pulumi.Input.asOptionalInput<bool>(sessionAffinityEnabled);
+    this.cdnFrontdoorProfileId,
+    this.healthProbe,
+    this.loadBalancing,
+    this.name,
+    this.restoreTrafficTimeToHealedOrNewEndpointInMinutes,
+    this.sessionAffinityEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class FrontdoorOriginGroupState {
 
   factory FrontdoorOriginGroupState.fromMap(Map<String, dynamic> map) {
     return FrontdoorOriginGroupState(
-      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : pulumi.Output.create<String>(map['cdnFrontdoorProfileId'] as String),
-      healthProbe: map['healthProbe'] == null ? null : pulumi.Output.create<FrontdoorOriginGroupHealthProbe>(FrontdoorOriginGroupHealthProbe.fromMap((map['healthProbe'] as Map).cast<String, dynamic>())),
-      loadBalancing: map['loadBalancing'] == null ? null : pulumi.Output.create<FrontdoorOriginGroupLoadBalancing>(FrontdoorOriginGroupLoadBalancing.fromMap((map['loadBalancing'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      restoreTrafficTimeToHealedOrNewEndpointInMinutes: map['restoreTrafficTimeToHealedOrNewEndpointInMinutes'] == null ? null : pulumi.Output.create<int>(map['restoreTrafficTimeToHealedOrNewEndpointInMinutes'] as int),
-      sessionAffinityEnabled: map['sessionAffinityEnabled'] == null ? null : pulumi.Output.create<bool>(map['sessionAffinityEnabled'] as bool),
+      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : (map['cdnFrontdoorProfileId'] as String).input(),
+      healthProbe: map['healthProbe'] == null ? null : (FrontdoorOriginGroupHealthProbe.fromMap((map['healthProbe'] as Map).cast<String, dynamic>())).input(),
+      loadBalancing: map['loadBalancing'] == null ? null : (FrontdoorOriginGroupLoadBalancing.fromMap((map['loadBalancing'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      restoreTrafficTimeToHealedOrNewEndpointInMinutes: map['restoreTrafficTimeToHealedOrNewEndpointInMinutes'] == null ? null : (map['restoreTrafficTimeToHealedOrNewEndpointInMinutes'] as int).input(),
+      sessionAffinityEnabled: map['sessionAffinityEnabled'] == null ? null : (map['sessionAffinityEnabled'] as bool).input(),
     );
   }
 }

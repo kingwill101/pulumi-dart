@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'worker_pool_template_container_env_value_source.dart';
 
 class WorkerPoolTemplateContainerEnv {
   /// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
-  final String name;
+  final pulumi.Input<String> name;
   /// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
-  final String? value;
+  final pulumi.Input<String>? value;
   /// Source for the environment variable's value.
   /// Structure is documented below.
-  final WorkerPoolTemplateContainerEnvValueSource? valueSource;
+  final pulumi.Input<WorkerPoolTemplateContainerEnvValueSource>? valueSource;
 
   /// Creates a new [WorkerPoolTemplateContainerEnv].
   /// [name] Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
@@ -25,15 +26,15 @@ class WorkerPoolTemplateContainerEnv {
     return <String, dynamic>{
       'name': name,
       'value': ?value,
-      'valueSource': ?valueSource == null ? null : valueSource!.toMap(),
+      'valueSource': ?pulumi.Input.mapOptionalInputValue<WorkerPoolTemplateContainerEnvValueSource, Map<String, dynamic>>(valueSource, (value) => value.toMap()),
     };
   }
 
   factory WorkerPoolTemplateContainerEnv.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainerEnv(
-      name: map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
-      valueSource: map['valueSource'] == null ? null : WorkerPoolTemplateContainerEnvValueSource.fromMap((map['valueSource'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
+      valueSource: map['valueSource'] == null ? null : (WorkerPoolTemplateContainerEnvValueSource.fromMap((map['valueSource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

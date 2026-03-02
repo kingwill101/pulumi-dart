@@ -16,11 +16,9 @@ class GetUsersArgs {
   /// [identityStoreId] Identity Store ID associated with the Single Sign-On Instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetUsersArgs({
-    required pulumi.Output<String> identityStoreId,
-    pulumi.Output<String>? region,
-  }) :
-      identityStoreId = pulumi.Input.asInput<String>(identityStoreId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.identityStoreId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetUsersArgs {
 
   factory GetUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetUsersArgs(
-      identityStoreId: pulumi.Output.create<String>(map['identityStoreId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      identityStoreId: (map['identityStoreId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

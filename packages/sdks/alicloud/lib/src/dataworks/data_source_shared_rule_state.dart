@@ -25,19 +25,13 @@ class DataSourceSharedRuleState {
   /// [sharedUser] The target user of the data source permission policy, which is null to share to the project.
   /// [targetProjectId] The ID of the project to which the data source is shared.
   DataSourceSharedRuleState({
-    pulumi.Output<int>? createTime,
-    pulumi.Output<int>? dataSourceId,
-    pulumi.Output<String>? dataSourceSharedRuleId,
-    pulumi.Output<String>? envType,
-    pulumi.Output<String>? sharedUser,
-    pulumi.Output<int>? targetProjectId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      dataSourceId = pulumi.Input.asOptionalInput<int>(dataSourceId),
-      dataSourceSharedRuleId = pulumi.Input.asOptionalInput<String>(dataSourceSharedRuleId),
-      envType = pulumi.Input.asOptionalInput<String>(envType),
-      sharedUser = pulumi.Input.asOptionalInput<String>(sharedUser),
-      targetProjectId = pulumi.Input.asOptionalInput<int>(targetProjectId);
+    this.createTime,
+    this.dataSourceId,
+    this.dataSourceSharedRuleId,
+    this.envType,
+    this.sharedUser,
+    this.targetProjectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class DataSourceSharedRuleState {
 
   factory DataSourceSharedRuleState.fromMap(Map<String, dynamic> map) {
     return DataSourceSharedRuleState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      dataSourceId: map['dataSourceId'] == null ? null : pulumi.Output.create<int>(map['dataSourceId'] as int),
-      dataSourceSharedRuleId: map['dataSourceSharedRuleId'] == null ? null : pulumi.Output.create<String>(map['dataSourceSharedRuleId'] as String),
-      envType: map['envType'] == null ? null : pulumi.Output.create<String>(map['envType'] as String),
-      sharedUser: map['sharedUser'] == null ? null : pulumi.Output.create<String>(map['sharedUser'] as String),
-      targetProjectId: map['targetProjectId'] == null ? null : pulumi.Output.create<int>(map['targetProjectId'] as int),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as int).input(),
+      dataSourceSharedRuleId: map['dataSourceSharedRuleId'] == null ? null : (map['dataSourceSharedRuleId'] as String).input(),
+      envType: map['envType'] == null ? null : (map['envType'] as String).input(),
+      sharedUser: map['sharedUser'] == null ? null : (map['sharedUser'] as String).input(),
+      targetProjectId: map['targetProjectId'] == null ? null : (map['targetProjectId'] as int).input(),
     );
   }
 }

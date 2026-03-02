@@ -44,29 +44,18 @@ class ConnectionArgs {
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [type] The type of network connectivity used by the connection.
   ConnectionArgs({
-    required pulumi.Output<ApplicationEndpoint> applicationEndpoint,
-    pulumi.Output<String>? connectionId,
-    pulumi.Output<List<String>>? connectors,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Gateway>? gateway,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<ConnectionType> type,
-  }) :
-      applicationEndpoint = pulumi.Input.asInput<ApplicationEndpoint>(applicationEndpoint),
-      connectionId = pulumi.Input.asOptionalInput<String>(connectionId),
-      connectors = pulumi.Input.asOptionalInput<List<String>>(connectors),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      gateway = pulumi.Input.asOptionalInput<Gateway>(gateway),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      type = pulumi.Input.asInput<ConnectionType>(type);
+    required this.applicationEndpoint,
+    this.connectionId,
+    this.connectors,
+    this.displayName,
+    this.gateway,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.requestId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      applicationEndpoint: pulumi.Output.create<ApplicationEndpoint>(ApplicationEndpoint.fromMap((map['applicationEndpoint'] as Map).cast<String, dynamic>())),
-      connectionId: map['connectionId'] == null ? null : pulumi.Output.create<String>(map['connectionId'] as String),
-      connectors: map['connectors'] == null ? null : pulumi.Output.create<List<String>>((map['connectors'] as List).cast<String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      gateway: map['gateway'] == null ? null : pulumi.Output.create<Gateway>(Gateway.fromMap((map['gateway'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      type: pulumi.Output.create<ConnectionType>(ConnectionType.fromValue(map['type'] as String)),
+      applicationEndpoint: (ApplicationEndpoint.fromMap((map['applicationEndpoint'] as Map).cast<String, dynamic>())).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      connectors: map['connectors'] == null ? null : ((map['connectors'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      gateway: map['gateway'] == null ? null : (Gateway.fromMap((map['gateway'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      type: (ConnectionType.fromValue(map['type'] as String)).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodePoolNodeConfigGcfsConfig {
   /// Whether or not the Google Container Filesystem (GCFS) is enabled
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ClusterNodePoolNodeConfigGcfsConfig].
   /// [enabled] Whether or not the Google Container Filesystem (GCFS) is enabled
@@ -19,7 +20,7 @@ class ClusterNodePoolNodeConfigGcfsConfig {
 
   factory ClusterNodePoolNodeConfigGcfsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigGcfsConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

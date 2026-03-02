@@ -33,21 +33,14 @@ class FolderBucketConfigArgs {
   /// [location] The location of the bucket.
   /// [retentionDays] Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
   FolderBucketConfigArgs({
-    required pulumi.Output<String> bucketId,
-    pulumi.Output<FolderBucketConfigCmekSettings>? cmekSettings,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> folder,
-    pulumi.Output<List<FolderBucketConfigIndexConfig>>? indexConfigs,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? retentionDays,
-  }) :
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      cmekSettings = pulumi.Input.asOptionalInput<FolderBucketConfigCmekSettings>(cmekSettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folder = pulumi.Input.asInput<String>(folder),
-      indexConfigs = pulumi.Input.asOptionalInput<List<FolderBucketConfigIndexConfig>>(indexConfigs),
-      location = pulumi.Input.asInput<String>(location),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays);
+    required this.bucketId,
+    this.cmekSettings,
+    this.description,
+    required this.folder,
+    this.indexConfigs,
+    required this.location,
+    this.retentionDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class FolderBucketConfigArgs {
 
   factory FolderBucketConfigArgs.fromMap(Map<String, dynamic> map) {
     return FolderBucketConfigArgs(
-      bucketId: pulumi.Output.create<String>(map['bucketId'] as String),
-      cmekSettings: map['cmekSettings'] == null ? null : pulumi.Output.create<FolderBucketConfigCmekSettings>(FolderBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folder: pulumi.Output.create<String>(map['folder'] as String),
-      indexConfigs: map['indexConfigs'] == null ? null : pulumi.Output.create<List<FolderBucketConfigIndexConfig>>(pulumi.Input.decodeList<FolderBucketConfigIndexConfig>(map['indexConfigs'], (value) => FolderBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
+      bucketId: (map['bucketId'] as String).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (FolderBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: (map['folder'] as String).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<FolderBucketConfigIndexConfig>(map['indexConfigs'], (value) => FolderBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: (map['location'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
     );
   }
 }

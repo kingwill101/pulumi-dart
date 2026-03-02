@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_file_share_hydration_profile_response.dart';
 
 /// Storage profile for the directory on the target container.
 class TargetStorageProfileResponse {
   /// Azure file share profile for hydration of application folders not mounted on
   /// the container file system.
-  final AzureFileShareHydrationProfileResponse? azureFileShareProfile;
+  final pulumi.Input<AzureFileShareHydrationProfileResponse>? azureFileShareProfile;
   /// Gets or sets the storage provider type on the target.
   /// Applicable when StorageProjectionType is not ContainerFileSystem.
-  final String? hydrationStorageProviderType;
+  final pulumi.Input<String>? hydrationStorageProviderType;
   /// Gets or sets the target persistent volume id.
   /// Applicable when StorageProjectionType is PersistentVolume and on using an
   /// existing PersistentVolume.
-  final String? persistentVolumeId;
+  final pulumi.Input<String>? persistentVolumeId;
   /// Gets or sets the target storage access type.
-  final String? storageAccessType;
+  final pulumi.Input<String>? storageAccessType;
   /// Gets or sets the target projection type.
-  final String? storageProjectionType;
+  final pulumi.Input<String>? storageProjectionType;
   /// Gets or sets the name of the projected volume on the target environment.
-  final String? targetName;
+  final pulumi.Input<String>? targetName;
   /// Gets or sets the storage size on the target.
   /// Applicable when StorageProjectionType is PersistentVolume and on creating a new
   /// PersistentVolume.
-  final String? targetSize;
+  final pulumi.Input<String>? targetSize;
 
   /// Creates a new [TargetStorageProfileResponse].
   /// [azureFileShareProfile] Azure file share profile for hydration of application folders not mounted on
@@ -45,7 +46,7 @@ class TargetStorageProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureFileShareProfile': ?azureFileShareProfile == null ? null : azureFileShareProfile!.toMap(),
+      'azureFileShareProfile': ?pulumi.Input.mapOptionalInputValue<AzureFileShareHydrationProfileResponse, Map<String, dynamic>>(azureFileShareProfile, (value) => value.toMap()),
       'hydrationStorageProviderType': ?hydrationStorageProviderType,
       'persistentVolumeId': ?persistentVolumeId,
       'storageAccessType': ?storageAccessType,
@@ -57,13 +58,13 @@ class TargetStorageProfileResponse {
 
   factory TargetStorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return TargetStorageProfileResponse(
-      azureFileShareProfile: map['azureFileShareProfile'] == null ? null : AzureFileShareHydrationProfileResponse.fromMap((map['azureFileShareProfile'] as Map).cast<String, dynamic>()),
-      hydrationStorageProviderType: map['hydrationStorageProviderType'] == null ? null : map['hydrationStorageProviderType'] as String,
-      persistentVolumeId: map['persistentVolumeId'] == null ? null : map['persistentVolumeId'] as String,
-      storageAccessType: map['storageAccessType'] == null ? null : map['storageAccessType'] as String,
-      storageProjectionType: map['storageProjectionType'] == null ? null : map['storageProjectionType'] as String,
-      targetName: map['targetName'] == null ? null : map['targetName'] as String,
-      targetSize: map['targetSize'] == null ? null : map['targetSize'] as String,
+      azureFileShareProfile: map['azureFileShareProfile'] == null ? null : (AzureFileShareHydrationProfileResponse.fromMap((map['azureFileShareProfile'] as Map).cast<String, dynamic>())).input(),
+      hydrationStorageProviderType: map['hydrationStorageProviderType'] == null ? null : (map['hydrationStorageProviderType'] as String).input(),
+      persistentVolumeId: map['persistentVolumeId'] == null ? null : (map['persistentVolumeId'] as String).input(),
+      storageAccessType: map['storageAccessType'] == null ? null : (map['storageAccessType'] as String).input(),
+      storageProjectionType: map['storageProjectionType'] == null ? null : (map['storageProjectionType'] as String).input(),
+      targetName: map['targetName'] == null ? null : (map['targetName'] as String).input(),
+      targetSize: map['targetSize'] == null ? null : (map['targetSize'] as String).input(),
     );
   }
 }

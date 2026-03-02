@@ -50,33 +50,20 @@ class WatchlistItemArgs {
   /// [watchlistItemType] The type of the watchlist item
   /// [workspaceName] The name of the workspace.
   WatchlistItemArgs({
-    pulumi.Output<String>? created,
-    pulumi.Output<WatchlistUserInfo>? createdBy,
-    pulumi.Output<dynamic>? entityMapping,
-    pulumi.Output<bool>? isDeleted,
-    required pulumi.Output<dynamic> itemsKeyValue,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<String>? updated,
-    pulumi.Output<WatchlistUserInfo>? updatedBy,
-    required pulumi.Output<String> watchlistAlias,
-    pulumi.Output<String>? watchlistItemId,
-    pulumi.Output<String>? watchlistItemType,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      created = pulumi.Input.asOptionalInput<String>(created),
-      createdBy = pulumi.Input.asOptionalInput<WatchlistUserInfo>(createdBy),
-      entityMapping = pulumi.Input.asOptionalInput<dynamic>(entityMapping),
-      isDeleted = pulumi.Input.asOptionalInput<bool>(isDeleted),
-      itemsKeyValue = pulumi.Input.asInput<dynamic>(itemsKeyValue),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      updated = pulumi.Input.asOptionalInput<String>(updated),
-      updatedBy = pulumi.Input.asOptionalInput<WatchlistUserInfo>(updatedBy),
-      watchlistAlias = pulumi.Input.asInput<String>(watchlistAlias),
-      watchlistItemId = pulumi.Input.asOptionalInput<String>(watchlistItemId),
-      watchlistItemType = pulumi.Input.asOptionalInput<String>(watchlistItemType),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.created,
+    this.createdBy,
+    this.entityMapping,
+    this.isDeleted,
+    required this.itemsKeyValue,
+    required this.resourceGroupName,
+    this.tenantId,
+    this.updated,
+    this.updatedBy,
+    required this.watchlistAlias,
+    this.watchlistItemId,
+    this.watchlistItemType,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class WatchlistItemArgs {
 
   factory WatchlistItemArgs.fromMap(Map<String, dynamic> map) {
     return WatchlistItemArgs(
-      created: map['created'] == null ? null : pulumi.Output.create<String>(map['created'] as String),
-      createdBy: map['createdBy'] == null ? null : pulumi.Output.create<WatchlistUserInfo>(WatchlistUserInfo.fromMap((map['createdBy'] as Map).cast<String, dynamic>())),
-      entityMapping: map['entityMapping'] == null ? null : pulumi.Output.create<dynamic>(map['entityMapping']),
-      isDeleted: map['isDeleted'] == null ? null : pulumi.Output.create<bool>(map['isDeleted'] as bool),
-      itemsKeyValue: pulumi.Output.create<dynamic>(map['itemsKeyValue']),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      updated: map['updated'] == null ? null : pulumi.Output.create<String>(map['updated'] as String),
-      updatedBy: map['updatedBy'] == null ? null : pulumi.Output.create<WatchlistUserInfo>(WatchlistUserInfo.fromMap((map['updatedBy'] as Map).cast<String, dynamic>())),
-      watchlistAlias: pulumi.Output.create<String>(map['watchlistAlias'] as String),
-      watchlistItemId: map['watchlistItemId'] == null ? null : pulumi.Output.create<String>(map['watchlistItemId'] as String),
-      watchlistItemType: map['watchlistItemType'] == null ? null : pulumi.Output.create<String>(map['watchlistItemType'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      created: map['created'] == null ? null : (map['created'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (WatchlistUserInfo.fromMap((map['createdBy'] as Map).cast<String, dynamic>())).input(),
+      entityMapping: map['entityMapping'] == null ? null : (map['entityMapping']).input(),
+      isDeleted: map['isDeleted'] == null ? null : (map['isDeleted'] as bool).input(),
+      itemsKeyValue: (map['itemsKeyValue']).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
+      updatedBy: map['updatedBy'] == null ? null : (WatchlistUserInfo.fromMap((map['updatedBy'] as Map).cast<String, dynamic>())).input(),
+      watchlistAlias: (map['watchlistAlias'] as String).input(),
+      watchlistItemId: map['watchlistItemId'] == null ? null : (map['watchlistItemId'] as String).input(),
+      watchlistItemType: map['watchlistItemType'] == null ? null : (map['watchlistItemType'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

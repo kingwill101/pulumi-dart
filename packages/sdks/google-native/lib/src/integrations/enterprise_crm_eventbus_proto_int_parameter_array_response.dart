@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseCrmEventbusProtoIntParameterArrayResponse {
-  final List<String> intValues;
+  final pulumi.Input<List<String>> intValues;
 
   /// Creates a new [EnterpriseCrmEventbusProtoIntParameterArrayResponse].
   /// [intValues] Required.
@@ -18,7 +19,7 @@ class EnterpriseCrmEventbusProtoIntParameterArrayResponse {
 
   factory EnterpriseCrmEventbusProtoIntParameterArrayResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoIntParameterArrayResponse(
-      intValues: (map['intValues'] as List).cast<String>(),
+      intValues: ((map['intValues'] as List).cast<String>()).input(),
     );
   }
 }

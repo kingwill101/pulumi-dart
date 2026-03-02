@@ -27,15 +27,11 @@ class TableIamPolicyArgs {
   /// [project] The project in which the table belongs. If it
   /// [table] The name or relative resource id of the table to manage IAM policies for.
   TableIamPolicyArgs({
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> table,
-  }) :
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      table = pulumi.Input.asInput<String>(table);
+    required this.instanceName,
+    required this.policyData,
+    this.project,
+    required this.table,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class TableIamPolicyArgs {
 
   factory TableIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TableIamPolicyArgs(
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      table: pulumi.Output.create<String>(map['table'] as String),
+      instanceName: (map['instanceName'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      table: (map['table'] as String).input(),
     );
   }
 }

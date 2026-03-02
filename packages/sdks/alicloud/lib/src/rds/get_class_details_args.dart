@@ -34,15 +34,11 @@ class GetClassDetailsArgs {
   /// [engine] Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
   /// [engineVersion] Database version. Value options:
   GetClassDetailsArgs({
-    required pulumi.Output<String> classCode,
-    required pulumi.Output<String> commodityCode,
-    required pulumi.Output<String> engine,
-    required pulumi.Output<String> engineVersion,
-  }) :
-      classCode = pulumi.Input.asInput<String>(classCode),
-      commodityCode = pulumi.Input.asInput<String>(commodityCode),
-      engine = pulumi.Input.asInput<String>(engine),
-      engineVersion = pulumi.Input.asInput<String>(engineVersion);
+    required this.classCode,
+    required this.commodityCode,
+    required this.engine,
+    required this.engineVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,10 +51,10 @@ class GetClassDetailsArgs {
 
   factory GetClassDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetClassDetailsArgs(
-      classCode: pulumi.Output.create<String>(map['classCode'] as String),
-      commodityCode: pulumi.Output.create<String>(map['commodityCode'] as String),
-      engine: pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: pulumi.Output.create<String>(map['engineVersion'] as String),
+      classCode: (map['classCode'] as String).input(),
+      commodityCode: (map['commodityCode'] as String).input(),
+      engine: (map['engine'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
     );
   }
 }

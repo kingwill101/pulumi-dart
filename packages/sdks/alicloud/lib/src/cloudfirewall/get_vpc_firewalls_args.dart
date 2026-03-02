@@ -40,27 +40,17 @@ class GetVpcFirewallsArgs {
   /// [vpcFirewallName] The name of the VPC firewall instance.
   /// [vpcId] The ID of the peer VPC instance.
   GetVpcFirewallsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? memberUid,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? regionNo,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcFirewallId,
-    pulumi.Output<String>? vpcFirewallName,
-    pulumi.Output<String>? vpcId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      memberUid = pulumi.Input.asOptionalInput<String>(memberUid),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      regionNo = pulumi.Input.asOptionalInput<String>(regionNo),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcFirewallId = pulumi.Input.asOptionalInput<String>(vpcFirewallId),
-      vpcFirewallName = pulumi.Input.asOptionalInput<String>(vpcFirewallName),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.ids,
+    this.lang,
+    this.memberUid,
+    this.nameRegex,
+    this.outputFile,
+    this.regionNo,
+    this.status,
+    this.vpcFirewallId,
+    this.vpcFirewallName,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class GetVpcFirewallsArgs {
 
   factory GetVpcFirewallsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      memberUid: map['memberUid'] == null ? null : pulumi.Output.create<String>(map['memberUid'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      regionNo: map['regionNo'] == null ? null : pulumi.Output.create<String>(map['regionNo'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : pulumi.Output.create<String>(map['vpcFirewallId'] as String),
-      vpcFirewallName: map['vpcFirewallName'] == null ? null : pulumi.Output.create<String>(map['vpcFirewallName'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      regionNo: map['regionNo'] == null ? null : (map['regionNo'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId'] as String).input(),
+      vpcFirewallName: map['vpcFirewallName'] == null ? null : (map['vpcFirewallName'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

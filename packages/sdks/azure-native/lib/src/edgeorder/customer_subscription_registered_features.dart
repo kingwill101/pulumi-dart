@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents subscription registered features.
 class CustomerSubscriptionRegisteredFeatures {
   /// Name of subscription registered feature.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// State of subscription registered feature.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [CustomerSubscriptionRegisteredFeatures].
   /// [name] Name of subscription registered feature.
@@ -25,8 +26,8 @@ class CustomerSubscriptionRegisteredFeatures {
 
   factory CustomerSubscriptionRegisteredFeatures.fromMap(Map<String, dynamic> map) {
     return CustomerSubscriptionRegisteredFeatures(
-      name: map['name'] == null ? null : map['name'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -43,27 +43,17 @@ class InstanceArgs {
   /// [target] Defines the Target the Instance will deploy to.
   /// [version] Version of the particular resource.
   InstanceArgs({
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<ReconciliationPolicy>? reconciliationPolicy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scope,
-    pulumi.Output<String>? solution,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<TargetSelectorProperties>? target,
-    pulumi.Output<String>? version,
-  }) :
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      reconciliationPolicy = pulumi.Input.asOptionalInput<ReconciliationPolicy>(reconciliationPolicy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      solution = pulumi.Input.asOptionalInput<String>(solution),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      target = pulumi.Input.asOptionalInput<TargetSelectorProperties>(target),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.extendedLocation,
+    this.location,
+    this.name,
+    this.reconciliationPolicy,
+    required this.resourceGroupName,
+    this.scope,
+    this.solution,
+    this.tags,
+    this.target,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : pulumi.Output.create<ReconciliationPolicy>(ReconciliationPolicy.fromMap((map['reconciliationPolicy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      solution: map['solution'] == null ? null : pulumi.Output.create<String>(map['solution'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      target: map['target'] == null ? null : pulumi.Output.create<TargetSelectorProperties>(TargetSelectorProperties.fromMap((map['target'] as Map).cast<String, dynamic>())),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicy.fromMap((map['reconciliationPolicy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      solution: map['solution'] == null ? null : (map['solution'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      target: map['target'] == null ? null : (TargetSelectorProperties.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesVsockCid {
   /// Defines the address attribute for the CID of the vsock device.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Indicates whether the CID is automatically assigned for the vsock device.
-  final String? auto;
+  final pulumi.Input<String>? auto;
 
   /// Creates a new [DomainDevicesVsockCid].
   /// [address] Defines the address attribute for the CID of the vsock device.
@@ -24,8 +25,8 @@ class DomainDevicesVsockCid {
 
   factory DomainDevicesVsockCid.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVsockCid(
-      address: map['address'] == null ? null : map['address'] as String,
-      auto: map['auto'] == null ? null : map['auto'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      auto: map['auto'] == null ? null : (map['auto'] as String).input(),
     );
   }
 }

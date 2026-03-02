@@ -23,17 +23,12 @@ class UserWorkloadsSecretState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location or Compute Engine region for the environment.
   UserWorkloadsSecretState({
-    pulumi.Output<Map<String, String>>? data,
-    pulumi.Output<String>? environment,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      data = pulumi.Input.asOptionalInput<Map<String, String>>(data),
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.data,
+    this.environment,
+    this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class UserWorkloadsSecretState {
 
   factory UserWorkloadsSecretState.fromMap(Map<String, dynamic> map) {
     return UserWorkloadsSecretState(
-      data: map['data'] == null ? null : pulumi.Output.create<Map<String, String>>((map['data'] as Map).cast<String, String>()),
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      data: map['data'] == null ? null : ((map['data'] as Map).cast<String, String>()).input(),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

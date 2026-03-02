@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackupPoliciesPolicy {
   /// Data backup days. Valid values: `7` to `730`.
-  final int backupRetentionPeriod;
+  final pulumi.Input<int> backupRetentionPeriod;
   /// The db cluster id.
-  final String dbClusterId;
+  final pulumi.Input<String> dbClusterId;
   /// The ID of the Backup Policy.
-  final String id;
+  final pulumi.Input<String> id;
   /// DBCluster Backup period.
-  final List<String> preferredBackupPeriods;
+  final pulumi.Input<List<String>> preferredBackupPeriods;
   /// Backup Time, UTC time.
-  final String preferredBackupTime;
+  final pulumi.Input<String> preferredBackupTime;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBackupPoliciesPolicy].
   /// [backupRetentionPeriod] Data backup days. Valid values: `7` to `730`.
@@ -44,12 +45,12 @@ class GetBackupPoliciesPolicy {
 
   factory GetBackupPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetBackupPoliciesPolicy(
-      backupRetentionPeriod: map['backupRetentionPeriod'] as int,
-      dbClusterId: map['dbClusterId'] as String,
-      id: map['id'] as String,
-      preferredBackupPeriods: (map['preferredBackupPeriods'] as List).cast<String>(),
-      preferredBackupTime: map['preferredBackupTime'] as String,
-      status: map['status'] as String,
+      backupRetentionPeriod: (map['backupRetentionPeriod'] as int).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      id: (map['id'] as String).input(),
+      preferredBackupPeriods: ((map['preferredBackupPeriods'] as List).cast<String>()).input(),
+      preferredBackupTime: (map['preferredBackupTime'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

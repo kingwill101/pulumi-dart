@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersJira {
   /// The base URL of the Jira instance's site to which to connect.
-  final String siteBaseUrl;
+  final pulumi.Input<String> siteBaseUrl;
 
   /// Creates a new [DataSourceParametersJira].
   /// [siteBaseUrl] The base URL of the Jira instance's site to which to connect.
@@ -19,7 +20,7 @@ class DataSourceParametersJira {
 
   factory DataSourceParametersJira.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersJira(
-      siteBaseUrl: map['siteBaseUrl'] as String,
+      siteBaseUrl: (map['siteBaseUrl'] as String).input(),
     );
   }
 }

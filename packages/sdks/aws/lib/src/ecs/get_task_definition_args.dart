@@ -16,11 +16,9 @@ class GetTaskDefinitionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [taskDefinition] Family for the latest ACTIVE revision, family and revision (family:revision) for a specific revision in the family, the ARN of the task definition to access to.
   GetTaskDefinitionArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> taskDefinition,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      taskDefinition = pulumi.Input.asInput<String>(taskDefinition);
+    this.region,
+    required this.taskDefinition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetTaskDefinitionArgs {
 
   factory GetTaskDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetTaskDefinitionArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      taskDefinition: pulumi.Output.create<String>(map['taskDefinition'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      taskDefinition: (map['taskDefinition'] as String).input(),
     );
   }
 }

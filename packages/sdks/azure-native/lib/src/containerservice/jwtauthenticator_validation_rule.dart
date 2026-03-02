@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The validation rule for JWTAuthenticator.
 class JWTAuthenticatorValidationRule {
   /// The CEL expression used to validate the claim or attribute.
-  final String expression;
+  final pulumi.Input<String> expression;
   /// The validation error message.
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [JWTAuthenticatorValidationRule].
   /// [expression] The CEL expression used to validate the claim or attribute.
@@ -25,8 +26,8 @@ class JWTAuthenticatorValidationRule {
 
   factory JWTAuthenticatorValidationRule.fromMap(Map<String, dynamic> map) {
     return JWTAuthenticatorValidationRule(
-      expression: map['expression'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
+      expression: (map['expression'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

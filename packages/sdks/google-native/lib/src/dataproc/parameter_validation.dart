@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'regex_validation.dart';
 import 'value_validation.dart';
 
 /// Configuration for parameter validation.
 class ParameterValidation {
   /// Validation based on regular expressions.
-  final RegexValidation? regex;
+  final pulumi.Input<RegexValidation>? regex;
   /// Validation based on a list of allowed values.
-  final ValueValidation? values;
+  final pulumi.Input<ValueValidation>? values;
 
   /// Creates a new [ParameterValidation].
   /// [regex] Validation based on regular expressions.
@@ -20,15 +21,15 @@ class ParameterValidation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'regex': ?regex == null ? null : regex!.toMap(),
-      'values': ?values == null ? null : values!.toMap(),
+      'regex': ?pulumi.Input.mapOptionalInputValue<RegexValidation, Map<String, dynamic>>(regex, (value) => value.toMap()),
+      'values': ?pulumi.Input.mapOptionalInputValue<ValueValidation, Map<String, dynamic>>(values, (value) => value.toMap()),
     };
   }
 
   factory ParameterValidation.fromMap(Map<String, dynamic> map) {
     return ParameterValidation(
-      regex: map['regex'] == null ? null : RegexValidation.fromMap((map['regex'] as Map).cast<String, dynamic>()),
-      values: map['values'] == null ? null : ValueValidation.fromMap((map['values'] as Map).cast<String, dynamic>()),
+      regex: map['regex'] == null ? null : (RegexValidation.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
+      values: map['values'] == null ? null : (ValueValidation.fromMap((map['values'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

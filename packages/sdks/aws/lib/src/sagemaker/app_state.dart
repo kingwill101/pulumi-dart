@@ -38,27 +38,17 @@ class AppState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [userProfileName] The user profile name. At least one of `user_profile_name` or `space_name` required.
   AppState({
-    pulumi.Output<String>? appName,
-    pulumi.Output<String>? appType,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<String>? region,
-    pulumi.Output<AppResourceSpec>? resourceSpec,
-    pulumi.Output<String>? spaceName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? userProfileName,
-  }) :
-      appName = pulumi.Input.asOptionalInput<String>(appName),
-      appType = pulumi.Input.asOptionalInput<String>(appType),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceSpec = pulumi.Input.asOptionalInput<AppResourceSpec>(resourceSpec),
-      spaceName = pulumi.Input.asOptionalInput<String>(spaceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      userProfileName = pulumi.Input.asOptionalInput<String>(userProfileName);
+    this.appName,
+    this.appType,
+    this.arn,
+    this.domainId,
+    this.region,
+    this.resourceSpec,
+    this.spaceName,
+    this.tags,
+    this.tagsAll,
+    this.userProfileName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class AppState {
 
   factory AppState.fromMap(Map<String, dynamic> map) {
     return AppState(
-      appName: map['appName'] == null ? null : pulumi.Output.create<String>(map['appName'] as String),
-      appType: map['appType'] == null ? null : pulumi.Output.create<String>(map['appType'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceSpec: map['resourceSpec'] == null ? null : pulumi.Output.create<AppResourceSpec>(AppResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())),
-      spaceName: map['spaceName'] == null ? null : pulumi.Output.create<String>(map['spaceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      userProfileName: map['userProfileName'] == null ? null : pulumi.Output.create<String>(map['userProfileName'] as String),
+      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
+      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceSpec: map['resourceSpec'] == null ? null : (AppResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
+      spaceName: map['spaceName'] == null ? null : (map['spaceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      userProfileName: map['userProfileName'] == null ? null : (map['userProfileName'] as String).input(),
     );
   }
 }

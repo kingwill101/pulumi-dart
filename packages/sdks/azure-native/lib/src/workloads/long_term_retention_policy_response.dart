@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'daily_retention_schedule_response.dart';
 import 'monthly_retention_schedule_response.dart';
 import 'weekly_retention_schedule_response.dart';
@@ -8,16 +9,16 @@ import 'yearly_retention_schedule_response.dart';
 /// Long term retention policy.
 class LongTermRetentionPolicyResponse {
   /// Daily retention schedule of the protection policy.
-  final DailyRetentionScheduleResponse? dailySchedule;
+  final pulumi.Input<DailyRetentionScheduleResponse>? dailySchedule;
   /// Monthly retention schedule of the protection policy.
-  final MonthlyRetentionScheduleResponse? monthlySchedule;
+  final pulumi.Input<MonthlyRetentionScheduleResponse>? monthlySchedule;
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'LongTermRetentionPolicy'.
-  final String retentionPolicyType;
+  final pulumi.Input<String> retentionPolicyType;
   /// Weekly retention schedule of the protection policy.
-  final WeeklyRetentionScheduleResponse? weeklySchedule;
+  final pulumi.Input<WeeklyRetentionScheduleResponse>? weeklySchedule;
   /// Yearly retention schedule of the protection policy.
-  final YearlyRetentionScheduleResponse? yearlySchedule;
+  final pulumi.Input<YearlyRetentionScheduleResponse>? yearlySchedule;
 
   /// Creates a new [LongTermRetentionPolicyResponse].
   /// [dailySchedule] Daily retention schedule of the protection policy.
@@ -35,21 +36,21 @@ class LongTermRetentionPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dailySchedule': ?dailySchedule == null ? null : dailySchedule!.toMap(),
-      'monthlySchedule': ?monthlySchedule == null ? null : monthlySchedule!.toMap(),
+      'dailySchedule': ?pulumi.Input.mapOptionalInputValue<DailyRetentionScheduleResponse, Map<String, dynamic>>(dailySchedule, (value) => value.toMap()),
+      'monthlySchedule': ?pulumi.Input.mapOptionalInputValue<MonthlyRetentionScheduleResponse, Map<String, dynamic>>(monthlySchedule, (value) => value.toMap()),
       'retentionPolicyType': retentionPolicyType,
-      'weeklySchedule': ?weeklySchedule == null ? null : weeklySchedule!.toMap(),
-      'yearlySchedule': ?yearlySchedule == null ? null : yearlySchedule!.toMap(),
+      'weeklySchedule': ?pulumi.Input.mapOptionalInputValue<WeeklyRetentionScheduleResponse, Map<String, dynamic>>(weeklySchedule, (value) => value.toMap()),
+      'yearlySchedule': ?pulumi.Input.mapOptionalInputValue<YearlyRetentionScheduleResponse, Map<String, dynamic>>(yearlySchedule, (value) => value.toMap()),
     };
   }
 
   factory LongTermRetentionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return LongTermRetentionPolicyResponse(
-      dailySchedule: map['dailySchedule'] == null ? null : DailyRetentionScheduleResponse.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>()),
-      monthlySchedule: map['monthlySchedule'] == null ? null : MonthlyRetentionScheduleResponse.fromMap((map['monthlySchedule'] as Map).cast<String, dynamic>()),
-      retentionPolicyType: map['retentionPolicyType'] as String,
-      weeklySchedule: map['weeklySchedule'] == null ? null : WeeklyRetentionScheduleResponse.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>()),
-      yearlySchedule: map['yearlySchedule'] == null ? null : YearlyRetentionScheduleResponse.fromMap((map['yearlySchedule'] as Map).cast<String, dynamic>()),
+      dailySchedule: map['dailySchedule'] == null ? null : (DailyRetentionScheduleResponse.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>())).input(),
+      monthlySchedule: map['monthlySchedule'] == null ? null : (MonthlyRetentionScheduleResponse.fromMap((map['monthlySchedule'] as Map).cast<String, dynamic>())).input(),
+      retentionPolicyType: (map['retentionPolicyType'] as String).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (WeeklyRetentionScheduleResponse.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
+      yearlySchedule: map['yearlySchedule'] == null ? null : (YearlyRetentionScheduleResponse.fromMap((map['yearlySchedule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'scheduled_query_last_run_summary_query_insights_response_query_spatial_c
 
 class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage {
   /// Insights into the most sub-optimal performing table on the temporal axis:
-  final List<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis>? maxes;
+  final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis>>? maxes;
 
   /// Creates a new [ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage].
   /// [maxes] Insights into the most sub-optimal performing table on the temporal axis:
@@ -15,13 +15,13 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxes': ?maxes == null ? null : pulumi.Input.encodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis, Map<String, dynamic>>(maxes!, (value) => value.toMap()),
+      'maxes': ?pulumi.Input.mapOptionalInputValue<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis>, List<Map<String, dynamic>>>(maxes, (value) => pulumi.Input.encodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage(
-      maxes: map['maxes'] == null ? null : pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis>(map['maxes'], (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis.fromMap((value as Map).cast<String, dynamic>())),
+      maxes: map['maxes'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis>(map['maxes'], (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

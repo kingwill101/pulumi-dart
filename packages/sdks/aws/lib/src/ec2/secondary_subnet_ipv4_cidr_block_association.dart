@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecondarySubnetIpv4CidrBlockAssociation {
   /// Association ID for the IPv4 CIDR block.
-  final String associationId;
+  final pulumi.Input<String> associationId;
   /// IPv4 CIDR block.
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// State of the IPv4 CIDR block association.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [SecondarySubnetIpv4CidrBlockAssociation].
   /// [associationId] Association ID for the IPv4 CIDR block.
@@ -29,9 +30,9 @@ class SecondarySubnetIpv4CidrBlockAssociation {
 
   factory SecondarySubnetIpv4CidrBlockAssociation.fromMap(Map<String, dynamic> map) {
     return SecondarySubnetIpv4CidrBlockAssociation(
-      associationId: map['associationId'] as String,
-      cidrBlock: map['cidrBlock'] as String,
-      state: map['state'] as String,
+      associationId: (map['associationId'] as String).input(),
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

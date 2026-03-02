@@ -42,25 +42,16 @@ class ServiceGatewayArgs {
   /// [virtualNetwork] Reference to an existing virtual network.
   /// [zones] A list of availability zones denoting the zone in which service gateway should be deployed.
   ServiceGatewayArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<RouteTargetAddressPropertiesFormat>? routeTargetAddress,
-    pulumi.Output<RouteTargetAddressPropertiesFormat>? routeTargetAddressV6,
-    pulumi.Output<String>? serviceGatewayName,
-    pulumi.Output<ServiceGatewaySku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<VirtualNetworkNetwork>? virtualNetwork,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeTargetAddress = pulumi.Input.asOptionalInput<RouteTargetAddressPropertiesFormat>(routeTargetAddress),
-      routeTargetAddressV6 = pulumi.Input.asOptionalInput<RouteTargetAddressPropertiesFormat>(routeTargetAddressV6),
-      serviceGatewayName = pulumi.Input.asOptionalInput<String>(serviceGatewayName),
-      sku = pulumi.Input.asOptionalInput<ServiceGatewaySku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualNetwork = pulumi.Input.asOptionalInput<VirtualNetworkNetwork>(virtualNetwork),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.location,
+    required this.resourceGroupName,
+    this.routeTargetAddress,
+    this.routeTargetAddressV6,
+    this.serviceGatewayName,
+    this.sku,
+    this.tags,
+    this.virtualNetwork,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,15 +69,15 @@ class ServiceGatewayArgs {
 
   factory ServiceGatewayArgs.fromMap(Map<String, dynamic> map) {
     return ServiceGatewayArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeTargetAddress: map['routeTargetAddress'] == null ? null : pulumi.Output.create<RouteTargetAddressPropertiesFormat>(RouteTargetAddressPropertiesFormat.fromMap((map['routeTargetAddress'] as Map).cast<String, dynamic>())),
-      routeTargetAddressV6: map['routeTargetAddressV6'] == null ? null : pulumi.Output.create<RouteTargetAddressPropertiesFormat>(RouteTargetAddressPropertiesFormat.fromMap((map['routeTargetAddressV6'] as Map).cast<String, dynamic>())),
-      serviceGatewayName: map['serviceGatewayName'] == null ? null : pulumi.Output.create<String>(map['serviceGatewayName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<ServiceGatewaySku>(ServiceGatewaySku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualNetwork: map['virtualNetwork'] == null ? null : pulumi.Output.create<VirtualNetworkNetwork>(map['virtualNetwork'] as VirtualNetworkNetwork),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeTargetAddress: map['routeTargetAddress'] == null ? null : (RouteTargetAddressPropertiesFormat.fromMap((map['routeTargetAddress'] as Map).cast<String, dynamic>())).input(),
+      routeTargetAddressV6: map['routeTargetAddressV6'] == null ? null : (RouteTargetAddressPropertiesFormat.fromMap((map['routeTargetAddressV6'] as Map).cast<String, dynamic>())).input(),
+      serviceGatewayName: map['serviceGatewayName'] == null ? null : (map['serviceGatewayName'] as String).input(),
+      sku: map['sku'] == null ? null : (ServiceGatewaySku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualNetwork: map['virtualNetwork'] == null ? null : (map['virtualNetwork'] as VirtualNetworkNetwork).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

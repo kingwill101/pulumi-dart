@@ -26,19 +26,13 @@ class ObjectLambdaAccessPointState {
   /// [name] The name for this Object Lambda Access Point.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ObjectLambdaAccessPointState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? alias,
-    pulumi.Output<String>? arn,
-    pulumi.Output<ObjectLambdaAccessPointConfiguration>? configuration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      configuration = pulumi.Input.asOptionalInput<ObjectLambdaAccessPointConfiguration>(configuration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accountId,
+    this.alias,
+    this.arn,
+    this.configuration,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class ObjectLambdaAccessPointState {
 
   factory ObjectLambdaAccessPointState.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<ObjectLambdaAccessPointConfiguration>(ObjectLambdaAccessPointConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      configuration: map['configuration'] == null ? null : (ObjectLambdaAccessPointConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

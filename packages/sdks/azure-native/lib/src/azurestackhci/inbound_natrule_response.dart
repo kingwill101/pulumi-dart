@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'inbound_natrule_properties_response.dart';
 
 /// Inbound nat rule properties
 class InboundNATRuleResponse {
   /// name of the inbound nat rule
-  final String name;
+  final pulumi.Input<String> name;
   /// properties of the inbound nat rule
-  final InboundNATRulePropertiesResponse properties;
+  final pulumi.Input<InboundNATRulePropertiesResponse> properties;
 
   /// Creates a new [InboundNATRuleResponse].
   /// [name] name of the inbound nat rule
@@ -20,14 +21,14 @@ class InboundNATRuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': properties.toMap(),
+      'properties': pulumi.Input.mapInputValue<InboundNATRulePropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory InboundNATRuleResponse.fromMap(Map<String, dynamic> map) {
     return InboundNATRuleResponse(
-      name: map['name'] as String,
-      properties: InboundNATRulePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      properties: (InboundNATRulePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

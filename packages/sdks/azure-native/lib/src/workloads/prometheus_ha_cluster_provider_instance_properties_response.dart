@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the PrometheusHaCluster provider properties.
 class PrometheusHaClusterProviderInstancePropertiesResponse {
   /// Gets or sets the clusterName.
-  final String? clusterName;
+  final pulumi.Input<String>? clusterName;
   /// Gets or sets the target machine name.
-  final String? hostname;
+  final pulumi.Input<String>? hostname;
   /// URL of the Node Exporter endpoint.
-  final String? prometheusUrl;
+  final pulumi.Input<String>? prometheusUrl;
   /// The provider type. For example, the value can be SapHana.
   /// Expected value is 'PrometheusHaCluster'.
-  final String providerType;
+  final pulumi.Input<String> providerType;
   /// Gets or sets the cluster sid.
-  final String? sid;
+  final pulumi.Input<String>? sid;
   /// Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
-  final String? sslCertificateUri;
+  final pulumi.Input<String>? sslCertificateUri;
   /// Gets or sets certificate preference if secure communication is enabled.
-  final String? sslPreference;
+  final pulumi.Input<String>? sslPreference;
 
   /// Creates a new [PrometheusHaClusterProviderInstancePropertiesResponse].
   /// [clusterName] Gets or sets the clusterName.
@@ -51,13 +52,13 @@ class PrometheusHaClusterProviderInstancePropertiesResponse {
 
   factory PrometheusHaClusterProviderInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PrometheusHaClusterProviderInstancePropertiesResponse(
-      clusterName: map['clusterName'] == null ? null : map['clusterName'] as String,
-      hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      prometheusUrl: map['prometheusUrl'] == null ? null : map['prometheusUrl'] as String,
-      providerType: map['providerType'] as String,
-      sid: map['sid'] == null ? null : map['sid'] as String,
-      sslCertificateUri: map['sslCertificateUri'] == null ? null : map['sslCertificateUri'] as String,
-      sslPreference: map['sslPreference'] == null ? null : map['sslPreference'] as String,
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      prometheusUrl: map['prometheusUrl'] == null ? null : (map['prometheusUrl'] as String).input(),
+      providerType: (map['providerType'] as String).input(),
+      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
+      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri'] as String).input(),
+      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference'] as String).input(),
     );
   }
 }

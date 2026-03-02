@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sasl_remote_broker_basic_authentication_token.dart';
 
 /// Kafka RemoteBrokerConnection Sasl Authentication properties.
 class SaslRemoteBrokerBasicAuthentication {
   /// Sasl Mechanism for remote broker authentication.
-  final String saslType;
+  final pulumi.Input<String> saslType;
   /// Sasl token for remote broker authentication.
-  final SaslRemoteBrokerBasicAuthenticationToken token;
+  final pulumi.Input<SaslRemoteBrokerBasicAuthenticationToken> token;
 
   /// Creates a new [SaslRemoteBrokerBasicAuthentication].
   /// [saslType] Sasl Mechanism for remote broker authentication.
@@ -20,14 +21,14 @@ class SaslRemoteBrokerBasicAuthentication {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'saslType': saslType,
-      'token': token.toMap(),
+      'token': pulumi.Input.mapInputValue<SaslRemoteBrokerBasicAuthenticationToken, Map<String, dynamic>>(token, (value) => value.toMap()),
     };
   }
 
   factory SaslRemoteBrokerBasicAuthentication.fromMap(Map<String, dynamic> map) {
     return SaslRemoteBrokerBasicAuthentication(
-      saslType: map['saslType'] as String,
-      token: SaslRemoteBrokerBasicAuthenticationToken.fromMap((map['token'] as Map).cast<String, dynamic>()),
+      saslType: (map['saslType'] as String).input(),
+      token: (SaslRemoteBrokerBasicAuthenticationToken.fromMap((map['token'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'get_theme_configuration_typography_font_family.dart';
 
 class GetThemeConfigurationTypography {
   /// Determines the list of font families. Maximum number of 5 items. See font_families.
-  final List<GetThemeConfigurationTypographyFontFamily> fontFamilies;
+  final pulumi.Input<List<GetThemeConfigurationTypographyFontFamily>> fontFamilies;
 
   /// Creates a new [GetThemeConfigurationTypography].
   /// [fontFamilies] Determines the list of font families. Maximum number of 5 items. See font_families.
@@ -15,13 +15,13 @@ class GetThemeConfigurationTypography {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fontFamilies': pulumi.Input.encodeList<GetThemeConfigurationTypographyFontFamily, Map<String, dynamic>>(fontFamilies, (value) => value.toMap()),
+      'fontFamilies': pulumi.Input.mapInputValue<List<GetThemeConfigurationTypographyFontFamily>, List<Map<String, dynamic>>>(fontFamilies, (value) => pulumi.Input.encodeList<GetThemeConfigurationTypographyFontFamily, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetThemeConfigurationTypography.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationTypography(
-      fontFamilies: pulumi.Input.decodeList<GetThemeConfigurationTypographyFontFamily>(map['fontFamilies'], (value) => GetThemeConfigurationTypographyFontFamily.fromMap((value as Map).cast<String, dynamic>())),
+      fontFamilies: (pulumi.Input.decodeList<GetThemeConfigurationTypographyFontFamily>(map['fontFamilies'], (value) => GetThemeConfigurationTypographyFontFamily.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -54,35 +54,21 @@ class AFDOriginArgs {
   /// [sharedPrivateLinkResource] The properties of the private link resource for private origin.
   /// [weight] Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
   AFDOriginArgs({
-    pulumi.Output<ResourceReference>? azureOrigin,
-    pulumi.Output<String>? enabledState,
-    pulumi.Output<bool>? enforceCertificateNameCheck,
-    pulumi.Output<String>? hostName,
-    pulumi.Output<int>? httpPort,
-    pulumi.Output<int>? httpsPort,
-    required pulumi.Output<String> originGroupName,
-    pulumi.Output<String>? originHostHeader,
-    pulumi.Output<String>? originName,
-    pulumi.Output<int>? priority,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SharedPrivateLinkResourceProperties>? sharedPrivateLinkResource,
-    pulumi.Output<int>? weight,
-  }) :
-      azureOrigin = pulumi.Input.asOptionalInput<ResourceReference>(azureOrigin),
-      enabledState = pulumi.Input.asOptionalInput<String>(enabledState),
-      enforceCertificateNameCheck = pulumi.Input.asOptionalInput<bool>(enforceCertificateNameCheck),
-      hostName = pulumi.Input.asOptionalInput<String>(hostName),
-      httpPort = pulumi.Input.asOptionalInput<int>(httpPort),
-      httpsPort = pulumi.Input.asOptionalInput<int>(httpsPort),
-      originGroupName = pulumi.Input.asInput<String>(originGroupName),
-      originHostHeader = pulumi.Input.asOptionalInput<String>(originHostHeader),
-      originName = pulumi.Input.asOptionalInput<String>(originName),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sharedPrivateLinkResource = pulumi.Input.asOptionalInput<SharedPrivateLinkResourceProperties>(sharedPrivateLinkResource),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    this.azureOrigin,
+    this.enabledState,
+    this.enforceCertificateNameCheck,
+    this.hostName,
+    this.httpPort,
+    this.httpsPort,
+    required this.originGroupName,
+    this.originHostHeader,
+    this.originName,
+    this.priority,
+    required this.profileName,
+    required this.resourceGroupName,
+    this.sharedPrivateLinkResource,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class AFDOriginArgs {
 
   factory AFDOriginArgs.fromMap(Map<String, dynamic> map) {
     return AFDOriginArgs(
-      azureOrigin: map['azureOrigin'] == null ? null : pulumi.Output.create<ResourceReference>(ResourceReference.fromMap((map['azureOrigin'] as Map).cast<String, dynamic>())),
-      enabledState: map['enabledState'] == null ? null : pulumi.Output.create<String>(map['enabledState'] as String),
-      enforceCertificateNameCheck: map['enforceCertificateNameCheck'] == null ? null : pulumi.Output.create<bool>(map['enforceCertificateNameCheck'] as bool),
-      hostName: map['hostName'] == null ? null : pulumi.Output.create<String>(map['hostName'] as String),
-      httpPort: map['httpPort'] == null ? null : pulumi.Output.create<int>(map['httpPort'] as int),
-      httpsPort: map['httpsPort'] == null ? null : pulumi.Output.create<int>(map['httpsPort'] as int),
-      originGroupName: pulumi.Output.create<String>(map['originGroupName'] as String),
-      originHostHeader: map['originHostHeader'] == null ? null : pulumi.Output.create<String>(map['originHostHeader'] as String),
-      originName: map['originName'] == null ? null : pulumi.Output.create<String>(map['originName'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sharedPrivateLinkResource: map['sharedPrivateLinkResource'] == null ? null : pulumi.Output.create<SharedPrivateLinkResourceProperties>(SharedPrivateLinkResourceProperties.fromMap((map['sharedPrivateLinkResource'] as Map).cast<String, dynamic>())),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      azureOrigin: map['azureOrigin'] == null ? null : (ResourceReference.fromMap((map['azureOrigin'] as Map).cast<String, dynamic>())).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      enforceCertificateNameCheck: map['enforceCertificateNameCheck'] == null ? null : (map['enforceCertificateNameCheck'] as bool).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
+      originGroupName: (map['originGroupName'] as String).input(),
+      originHostHeader: map['originHostHeader'] == null ? null : (map['originHostHeader'] as String).input(),
+      originName: map['originName'] == null ? null : (map['originName'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sharedPrivateLinkResource: map['sharedPrivateLinkResource'] == null ? null : (SharedPrivateLinkResourceProperties.fromMap((map['sharedPrivateLinkResource'] as Map).cast<String, dynamic>())).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

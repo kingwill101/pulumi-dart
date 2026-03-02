@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DeviceAttribute must have exactly one field set.
 class DeviceAttributeResourceK8sIoV1beta1 {
   /// BoolValue is a true/false value.
-  final bool? bool;
+  final pulumi.Input<bool>? bool;
   /// IntValue is a number.
-  final int? int;
+  final pulumi.Input<int>? int;
   /// StringValue is a string. Must not be longer than 64 characters.
-  final String? string;
+  final pulumi.Input<String>? string;
   /// VersionValue is a semantic version according to semver.org spec 2.0.0. Must not be longer than 64 characters.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [DeviceAttributeResourceK8sIoV1beta1].
   /// [bool] BoolValue is a true/false value.
@@ -35,10 +36,10 @@ class DeviceAttributeResourceK8sIoV1beta1 {
 
   factory DeviceAttributeResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return DeviceAttributeResourceK8sIoV1beta1(
-      bool: map['bool'] == null ? null : map['bool'] as bool,
-      int: map['int'] == null ? null : map['int'] as int,
-      string: map['string'] == null ? null : map['string'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      bool: map['bool'] == null ? null : (map['bool'] as bool).input(),
+      int: map['int'] == null ? null : (map['int'] as int).input(),
+      string: map['string'] == null ? null : (map['string'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

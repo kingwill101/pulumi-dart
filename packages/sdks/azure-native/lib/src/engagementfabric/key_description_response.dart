@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The description of the EngagementFabric account key
 class KeyDescriptionResponse {
   /// The name of the key
-  final String name;
+  final pulumi.Input<String> name;
   /// The rank of the key
-  final String rank;
+  final pulumi.Input<String> rank;
   /// The value of the key
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [KeyDescriptionResponse].
   /// [name] The name of the key
@@ -30,9 +31,9 @@ class KeyDescriptionResponse {
 
   factory KeyDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return KeyDescriptionResponse(
-      name: map['name'] as String,
-      rank: map['rank'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      rank: (map['rank'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

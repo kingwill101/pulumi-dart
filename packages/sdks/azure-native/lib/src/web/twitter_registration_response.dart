@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration settings of the app registration for the Twitter provider.
 class TwitterRegistrationResponse {
   /// The OAuth 1.0a consumer key of the Twitter application used for sign-in.
   /// This setting is required for enabling Twitter Sign-In.
   /// Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
-  final String? consumerKey;
+  final pulumi.Input<String>? consumerKey;
   /// The app setting name that contains the OAuth 1.0a consumer secret of the Twitter
   /// application used for sign-in.
-  final String? consumerSecretSettingName;
+  final pulumi.Input<String>? consumerSecretSettingName;
 
   /// Creates a new [TwitterRegistrationResponse].
   /// [consumerKey] The OAuth 1.0a consumer key of the Twitter application used for sign-in.
@@ -28,8 +29,8 @@ class TwitterRegistrationResponse {
 
   factory TwitterRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return TwitterRegistrationResponse(
-      consumerKey: map['consumerKey'] == null ? null : map['consumerKey'] as String,
-      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : map['consumerSecretSettingName'] as String,
+      consumerKey: map['consumerKey'] == null ? null : (map['consumerKey'] as String).input(),
+      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : (map['consumerSecretSettingName'] as String).input(),
     );
   }
 }

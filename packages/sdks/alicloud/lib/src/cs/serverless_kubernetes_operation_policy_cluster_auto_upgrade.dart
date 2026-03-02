@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
   /// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
@@ -13,9 +14,9 @@ class ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
   /// }
   /// }
   /// ```
-  final String? channel;
+  final pulumi.Input<String>? channel;
   /// Whether the RRSA feature has been enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ServerlessKubernetesOperationPolicyClusterAutoUpgrade].
   /// [channel] The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
@@ -34,8 +35,8 @@ class ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
 
   factory ServerlessKubernetesOperationPolicyClusterAutoUpgrade.fromMap(Map<String, dynamic> map) {
     return ServerlessKubernetesOperationPolicyClusterAutoUpgrade(
-      channel: map['channel'] == null ? null : map['channel'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

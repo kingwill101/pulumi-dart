@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesHyperVXmmInput {
   /// Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [DomainFeaturesHyperVXmmInput].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
@@ -19,7 +20,7 @@ class DomainFeaturesHyperVXmmInput {
 
   factory DomainFeaturesHyperVXmmInput.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVXmmInput(
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

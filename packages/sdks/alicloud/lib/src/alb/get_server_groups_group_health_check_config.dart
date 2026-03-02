@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerGroupsGroupHealthCheckConfig {
   /// The status code for a successful health check. Multiple status codes can be specified as a list.
-  final List<String> healthCheckCodes;
+  final pulumi.Input<List<String>> healthCheckCodes;
   /// The port of the backend server that is used for health checks.
-  final int healthCheckConnectPort;
+  final pulumi.Input<int> healthCheckConnectPort;
   /// Indicates whether health checks are enabled.
-  final bool healthCheckEnabled;
+  final pulumi.Input<bool> healthCheckEnabled;
   /// The domain name that is used for health checks.
-  final String healthCheckHost;
+  final pulumi.Input<String> healthCheckHost;
   /// HTTP protocol version.
-  final String healthCheckHttpVersion;
+  final pulumi.Input<String> healthCheckHttpVersion;
   /// The time interval between two consecutive health checks.
-  final int healthCheckInterval;
+  final pulumi.Input<int> healthCheckInterval;
   /// Health check method.
-  final String healthCheckMethod;
+  final pulumi.Input<String> healthCheckMethod;
   /// The forwarding rule path of health checks.
-  final String healthCheckPath;
+  final pulumi.Input<String> healthCheckPath;
   /// Health check protocol.
-  final String healthCheckProtocol;
+  final pulumi.Input<String> healthCheckProtocol;
   /// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy.
-  final int healthCheckTimeout;
+  final pulumi.Input<int> healthCheckTimeout;
   /// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success.
-  final int healthyThreshold;
+  final pulumi.Input<int> healthyThreshold;
   /// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail.
-  final int unhealthyThreshold;
+  final pulumi.Input<int> unhealthyThreshold;
 
   /// Creates a new [GetServerGroupsGroupHealthCheckConfig].
   /// [healthCheckCodes] The status code for a successful health check. Multiple status codes can be specified as a list.
@@ -74,18 +75,18 @@ class GetServerGroupsGroupHealthCheckConfig {
 
   factory GetServerGroupsGroupHealthCheckConfig.fromMap(Map<String, dynamic> map) {
     return GetServerGroupsGroupHealthCheckConfig(
-      healthCheckCodes: (map['healthCheckCodes'] as List).cast<String>(),
-      healthCheckConnectPort: map['healthCheckConnectPort'] as int,
-      healthCheckEnabled: map['healthCheckEnabled'] as bool,
-      healthCheckHost: map['healthCheckHost'] as String,
-      healthCheckHttpVersion: map['healthCheckHttpVersion'] as String,
-      healthCheckInterval: map['healthCheckInterval'] as int,
-      healthCheckMethod: map['healthCheckMethod'] as String,
-      healthCheckPath: map['healthCheckPath'] as String,
-      healthCheckProtocol: map['healthCheckProtocol'] as String,
-      healthCheckTimeout: map['healthCheckTimeout'] as int,
-      healthyThreshold: map['healthyThreshold'] as int,
-      unhealthyThreshold: map['unhealthyThreshold'] as int,
+      healthCheckCodes: ((map['healthCheckCodes'] as List).cast<String>()).input(),
+      healthCheckConnectPort: (map['healthCheckConnectPort'] as int).input(),
+      healthCheckEnabled: (map['healthCheckEnabled'] as bool).input(),
+      healthCheckHost: (map['healthCheckHost'] as String).input(),
+      healthCheckHttpVersion: (map['healthCheckHttpVersion'] as String).input(),
+      healthCheckInterval: (map['healthCheckInterval'] as int).input(),
+      healthCheckMethod: (map['healthCheckMethod'] as String).input(),
+      healthCheckPath: (map['healthCheckPath'] as String).input(),
+      healthCheckProtocol: (map['healthCheckProtocol'] as String).input(),
+      healthCheckTimeout: (map['healthCheckTimeout'] as int).input(),
+      healthyThreshold: (map['healthyThreshold'] as int).input(),
+      unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),
     );
   }
 }

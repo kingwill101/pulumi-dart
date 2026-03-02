@@ -27,19 +27,13 @@ class JobScheduleState {
   /// [startTime] The start time of the schedule. Must be in RFC3339 format.
   /// [type] The type of schedule. Possible values are `Once` and `Recurring`.
   JobScheduleState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? interval,
-    pulumi.Output<String>? jobId,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? type,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      interval = pulumi.Input.asOptionalInput<String>(interval),
-      jobId = pulumi.Input.asOptionalInput<String>(jobId),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.enabled,
+    this.endTime,
+    this.interval,
+    this.jobId,
+    this.startTime,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class JobScheduleState {
 
   factory JobScheduleState.fromMap(Map<String, dynamic> map) {
     return JobScheduleState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      interval: map['interval'] == null ? null : pulumi.Output.create<String>(map['interval'] as String),
-      jobId: map['jobId'] == null ? null : pulumi.Output.create<String>(map['jobId'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CosmosDbSettings {
   /// The throughput of the collections in cosmosdb database
-  final int? collectionsThroughput;
+  final pulumi.Input<int>? collectionsThroughput;
 
   /// Creates a new [CosmosDbSettings].
   /// [collectionsThroughput] The throughput of the collections in cosmosdb database
@@ -19,7 +20,7 @@ class CosmosDbSettings {
 
   factory CosmosDbSettings.fromMap(Map<String, dynamic> map) {
     return CosmosDbSettings(
-      collectionsThroughput: map['collectionsThroughput'] == null ? null : map['collectionsThroughput'] as int,
+      collectionsThroughput: map['collectionsThroughput'] == null ? null : (map['collectionsThroughput'] as int).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class ListIpamPoolAssociatedResourcesArgs {
   /// [poolName] Pool resource name.
   /// [resourceGroupName] The name of the resource group.
   ListIpamPoolAssociatedResourcesArgs({
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkManagerName,
+    required this.poolName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListIpamPoolAssociatedResourcesArgs {
 
   factory ListIpamPoolAssociatedResourcesArgs.fromMap(Map<String, dynamic> map) {
     return ListIpamPoolAssociatedResourcesArgs(
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

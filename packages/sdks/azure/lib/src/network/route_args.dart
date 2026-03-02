@@ -28,19 +28,13 @@ class RouteArgs {
   /// [resourceGroupName] The name of the resource group in which to create the route. Changing this forces a new resource to be created.
   /// [routeTableName] The name of the route table within which create the route. Changing this forces a new resource to be created.
   RouteArgs({
-    required pulumi.Output<String> addressPrefix,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nextHopInIpAddress,
-    required pulumi.Output<String> nextHopType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> routeTableName,
-  }) :
-      addressPrefix = pulumi.Input.asInput<String>(addressPrefix),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nextHopInIpAddress = pulumi.Input.asOptionalInput<String>(nextHopInIpAddress),
-      nextHopType = pulumi.Input.asInput<String>(nextHopType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeTableName = pulumi.Input.asInput<String>(routeTableName);
+    required this.addressPrefix,
+    this.name,
+    this.nextHopInIpAddress,
+    required this.nextHopType,
+    required this.resourceGroupName,
+    required this.routeTableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      addressPrefix: pulumi.Output.create<String>(map['addressPrefix'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nextHopInIpAddress: map['nextHopInIpAddress'] == null ? null : pulumi.Output.create<String>(map['nextHopInIpAddress'] as String),
-      nextHopType: pulumi.Output.create<String>(map['nextHopType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeTableName: pulumi.Output.create<String>(map['routeTableName'] as String),
+      addressPrefix: (map['addressPrefix'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nextHopInIpAddress: map['nextHopInIpAddress'] == null ? null : (map['nextHopInIpAddress'] as String).input(),
+      nextHopType: (map['nextHopType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeTableName: (map['routeTableName'] as String).input(),
     );
   }
 }

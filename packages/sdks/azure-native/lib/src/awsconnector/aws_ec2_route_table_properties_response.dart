@@ -6,11 +6,11 @@ import 'tag_response.dart';
 /// Definition of awsEc2RouteTable
 class AwsEc2RouteTablePropertiesResponse {
   /// Property routeTableId
-  final String? routeTableId;
+  final pulumi.Input<String>? routeTableId;
   /// Any tags assigned to the route table.
-  final List<TagResponse>? tags;
+  final pulumi.Input<List<TagResponse>>? tags;
   /// The ID of the VPC.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [AwsEc2RouteTablePropertiesResponse].
   /// [routeTableId] Property routeTableId
@@ -25,16 +25,16 @@ class AwsEc2RouteTablePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'routeTableId': ?routeTableId,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcId': ?vpcId,
     };
   }
 
   factory AwsEc2RouteTablePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2RouteTablePropertiesResponse(
-      routeTableId: map['routeTableId'] == null ? null : map['routeTableId'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

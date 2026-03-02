@@ -23,15 +23,11 @@ class RegistryModelContainerArgs {
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   RegistryModelContainerArgs({
-    required pulumi.Output<ModelContainerMachinelearningservices> modelContainerProperties,
-    pulumi.Output<String>? modelName,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      modelContainerProperties = pulumi.Input.asInput<ModelContainerMachinelearningservices>(modelContainerProperties),
-      modelName = pulumi.Input.asOptionalInput<String>(modelName),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.modelContainerProperties,
+    this.modelName,
+    required this.registryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class RegistryModelContainerArgs {
 
   factory RegistryModelContainerArgs.fromMap(Map<String, dynamic> map) {
     return RegistryModelContainerArgs(
-      modelContainerProperties: pulumi.Output.create<ModelContainerMachinelearningservices>(map['modelContainerProperties'] as ModelContainerMachinelearningservices),
-      modelName: map['modelName'] == null ? null : pulumi.Output.create<String>(map['modelName'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      modelContainerProperties: (map['modelContainerProperties'] as ModelContainerMachinelearningservices).input(),
+      modelName: map['modelName'] == null ? null : (map['modelName'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

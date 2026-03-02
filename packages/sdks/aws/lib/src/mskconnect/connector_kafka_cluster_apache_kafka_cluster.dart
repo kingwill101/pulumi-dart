@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_kafka_cluster_apache_kafka_cluster_vpc.dart';
 
 class ConnectorKafkaClusterApacheKafkaCluster {
   /// The bootstrap servers of the cluster.
-  final String bootstrapServers;
+  final pulumi.Input<String> bootstrapServers;
   /// Details of an Amazon VPC which has network connectivity to the Apache Kafka cluster. See `vpc` Block for details.
-  final ConnectorKafkaClusterApacheKafkaClusterVpc vpc;
+  final pulumi.Input<ConnectorKafkaClusterApacheKafkaClusterVpc> vpc;
 
   /// Creates a new [ConnectorKafkaClusterApacheKafkaCluster].
   /// [bootstrapServers] The bootstrap servers of the cluster.
@@ -19,14 +20,14 @@ class ConnectorKafkaClusterApacheKafkaCluster {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bootstrapServers': bootstrapServers,
-      'vpc': vpc.toMap(),
+      'vpc': pulumi.Input.mapInputValue<ConnectorKafkaClusterApacheKafkaClusterVpc, Map<String, dynamic>>(vpc, (value) => value.toMap()),
     };
   }
 
   factory ConnectorKafkaClusterApacheKafkaCluster.fromMap(Map<String, dynamic> map) {
     return ConnectorKafkaClusterApacheKafkaCluster(
-      bootstrapServers: map['bootstrapServers'] as String,
-      vpc: ConnectorKafkaClusterApacheKafkaClusterVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>()),
+      bootstrapServers: (map['bootstrapServers'] as String).input(),
+      vpc: (ConnectorKafkaClusterApacheKafkaClusterVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

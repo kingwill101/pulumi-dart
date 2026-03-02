@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TemplateFilterConfigRaiSettingsRaiFilter {
   /// Possible values:
   /// LOW_AND_ABOVE
   /// MEDIUM_AND_ABOVE
   /// HIGH
-  final String? confidenceLevel;
+  final pulumi.Input<String>? confidenceLevel;
   /// Possible values:
   /// SEXUALLY_EXPLICIT
   /// HATE_SPEECH
   /// HARASSMENT
   /// DANGEROUS
-  final String filterType;
+  final pulumi.Input<String> filterType;
 
   /// Creates a new [TemplateFilterConfigRaiSettingsRaiFilter].
   /// [confidenceLevel] Possible values:
@@ -31,8 +32,8 @@ class TemplateFilterConfigRaiSettingsRaiFilter {
 
   factory TemplateFilterConfigRaiSettingsRaiFilter.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfigRaiSettingsRaiFilter(
-      confidenceLevel: map['confidenceLevel'] == null ? null : map['confidenceLevel'] as String,
-      filterType: map['filterType'] as String,
+      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel'] as String).input(),
+      filterType: (map['filterType'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Protected parameters list stored in keyvault.
 class EceDeploymentSecrets {
   /// Secret name expected for Enterprise Cloud Engine (ECE) deployment.
-  final String? eceSecretName;
+  final pulumi.Input<String>? eceSecretName;
   /// Secret URI stored in keyvault.
-  final String? secretLocation;
+  final pulumi.Input<String>? secretLocation;
   /// Secret name stored in keyvault.
-  final String? secretName;
+  final pulumi.Input<String>? secretName;
 
   /// Creates a new [EceDeploymentSecrets].
   /// [eceSecretName] Secret name expected for Enterprise Cloud Engine (ECE) deployment.
@@ -30,9 +31,9 @@ class EceDeploymentSecrets {
 
   factory EceDeploymentSecrets.fromMap(Map<String, dynamic> map) {
     return EceDeploymentSecrets(
-      eceSecretName: map['eceSecretName'] == null ? null : map['eceSecretName'] as String,
-      secretLocation: map['secretLocation'] == null ? null : map['secretLocation'] as String,
-      secretName: map['secretName'] == null ? null : map['secretName'] as String,
+      eceSecretName: map['eceSecretName'] == null ? null : (map['eceSecretName'] as String).input(),
+      secretLocation: map['secretLocation'] == null ? null : (map['secretLocation'] as String).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
     );
   }
 }

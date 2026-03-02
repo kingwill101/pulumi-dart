@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Continuation settings for execute data flow activity.
 class ContinuationSettingsReferenceResponse {
   /// Continuation TTL in minutes.
-  final dynamic continuationTtlInMinutes;
+  final pulumi.Input<dynamic>? continuationTtlInMinutes;
   /// Customized checkpoint key.
-  final dynamic customizedCheckpointKey;
+  final pulumi.Input<dynamic>? customizedCheckpointKey;
   /// Idle condition.
-  final dynamic idleCondition;
+  final pulumi.Input<dynamic>? idleCondition;
 
   /// Creates a new [ContinuationSettingsReferenceResponse].
   /// [continuationTtlInMinutes] Continuation TTL in minutes.
@@ -30,9 +31,9 @@ class ContinuationSettingsReferenceResponse {
 
   factory ContinuationSettingsReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ContinuationSettingsReferenceResponse(
-      continuationTtlInMinutes: map['continuationTtlInMinutes'] == null ? null : map['continuationTtlInMinutes'],
-      customizedCheckpointKey: map['customizedCheckpointKey'] == null ? null : map['customizedCheckpointKey'],
-      idleCondition: map['idleCondition'] == null ? null : map['idleCondition'],
+      continuationTtlInMinutes: map['continuationTtlInMinutes'] == null ? null : (map['continuationTtlInMinutes']).input(),
+      customizedCheckpointKey: map['customizedCheckpointKey'] == null ? null : (map['customizedCheckpointKey']).input(),
+      idleCondition: map['idleCondition'] == null ? null : (map['idleCondition']).input(),
     );
   }
 }

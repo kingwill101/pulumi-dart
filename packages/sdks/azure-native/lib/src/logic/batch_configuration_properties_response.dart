@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'batch_release_criteria_response.dart';
 
 /// The batch configuration properties definition.
 class BatchConfigurationPropertiesResponse {
   /// The name of the batch group.
-  final String batchGroupName;
+  final pulumi.Input<String> batchGroupName;
   /// The artifact changed time.
-  final String? changedTime;
+  final pulumi.Input<String>? changedTime;
   /// The artifact creation time.
-  final String? createdTime;
-  final dynamic metadata;
+  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<dynamic>? metadata;
   /// The batch release criteria.
-  final BatchReleaseCriteriaResponse releaseCriteria;
+  final pulumi.Input<BatchReleaseCriteriaResponse> releaseCriteria;
 
   /// Creates a new [BatchConfigurationPropertiesResponse].
   /// [batchGroupName] The name of the batch group.
@@ -34,17 +35,17 @@ class BatchConfigurationPropertiesResponse {
       'changedTime': ?changedTime,
       'createdTime': ?createdTime,
       'metadata': ?metadata,
-      'releaseCriteria': releaseCriteria.toMap(),
+      'releaseCriteria': pulumi.Input.mapInputValue<BatchReleaseCriteriaResponse, Map<String, dynamic>>(releaseCriteria, (value) => value.toMap()),
     };
   }
 
   factory BatchConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BatchConfigurationPropertiesResponse(
-      batchGroupName: map['batchGroupName'] as String,
-      changedTime: map['changedTime'] == null ? null : map['changedTime'] as String,
-      createdTime: map['createdTime'] == null ? null : map['createdTime'] as String,
-      metadata: map['metadata'] == null ? null : map['metadata'],
-      releaseCriteria: BatchReleaseCriteriaResponse.fromMap((map['releaseCriteria'] as Map).cast<String, dynamic>()),
+      batchGroupName: (map['batchGroupName'] as String).input(),
+      changedTime: map['changedTime'] == null ? null : (map['changedTime'] as String).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      releaseCriteria: (BatchReleaseCriteriaResponse.fromMap((map['releaseCriteria'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

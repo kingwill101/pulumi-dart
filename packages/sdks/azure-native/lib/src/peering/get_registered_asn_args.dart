@@ -19,13 +19,10 @@ class GetRegisteredAsnArgs {
   /// [registeredAsnName] The name of the registered ASN.
   /// [resourceGroupName] The name of the resource group.
   GetRegisteredAsnArgs({
-    required pulumi.Output<String> peeringName,
-    required pulumi.Output<String> registeredAsnName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      peeringName = pulumi.Input.asInput<String>(peeringName),
-      registeredAsnName = pulumi.Input.asInput<String>(registeredAsnName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.peeringName,
+    required this.registeredAsnName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRegisteredAsnArgs {
 
   factory GetRegisteredAsnArgs.fromMap(Map<String, dynamic> map) {
     return GetRegisteredAsnArgs(
-      peeringName: pulumi.Output.create<String>(map['peeringName'] as String),
-      registeredAsnName: pulumi.Output.create<String>(map['registeredAsnName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      peeringName: (map['peeringName'] as String).input(),
+      registeredAsnName: (map['registeredAsnName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

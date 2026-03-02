@@ -9,7 +9,7 @@ class GetWorkloadIdentityPoolProviderX509 {
   /// the incoming end entity certificate. Follow the x509 guidelines to
   /// define those PEM encoded certs. Only 1 trust store is currently
   /// supported.
-  final List<GetWorkloadIdentityPoolProviderX509TrustStore> trustStores;
+  final pulumi.Input<List<GetWorkloadIdentityPoolProviderX509TrustStore>> trustStores;
 
   /// Creates a new [GetWorkloadIdentityPoolProviderX509].
   /// [trustStores] A Trust store, use this trust store as a wrapper to config the trust
@@ -19,13 +19,13 @@ class GetWorkloadIdentityPoolProviderX509 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'trustStores': pulumi.Input.encodeList<GetWorkloadIdentityPoolProviderX509TrustStore, Map<String, dynamic>>(trustStores, (value) => value.toMap()),
+      'trustStores': pulumi.Input.mapInputValue<List<GetWorkloadIdentityPoolProviderX509TrustStore>, List<Map<String, dynamic>>>(trustStores, (value) => pulumi.Input.encodeList<GetWorkloadIdentityPoolProviderX509TrustStore, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetWorkloadIdentityPoolProviderX509.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderX509(
-      trustStores: pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderX509TrustStore>(map['trustStores'], (value) => GetWorkloadIdentityPoolProviderX509TrustStore.fromMap((value as Map).cast<String, dynamic>())),
+      trustStores: (pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderX509TrustStore>(map['trustStores'], (value) => GetWorkloadIdentityPoolProviderX509TrustStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

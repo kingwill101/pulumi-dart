@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxEnvironmentCustomDnsConfiguration {
   /// IP address of the DNS server.
-  final String customDnsServerIp;
+  final pulumi.Input<String> customDnsServerIp;
   /// Name of the DNS server.
-  final String customDnsServerName;
+  final pulumi.Input<String> customDnsServerName;
 
   /// Creates a new [KxEnvironmentCustomDnsConfiguration].
   /// [customDnsServerIp] IP address of the DNS server.
@@ -24,8 +25,8 @@ class KxEnvironmentCustomDnsConfiguration {
 
   factory KxEnvironmentCustomDnsConfiguration.fromMap(Map<String, dynamic> map) {
     return KxEnvironmentCustomDnsConfiguration(
-      customDnsServerIp: map['customDnsServerIp'] as String,
-      customDnsServerName: map['customDnsServerName'] as String,
+      customDnsServerIp: (map['customDnsServerIp'] as String).input(),
+      customDnsServerName: (map['customDnsServerName'] as String).input(),
     );
   }
 }

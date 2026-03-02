@@ -22,19 +22,13 @@ class GetContextDialogflowV2beta1Args {
   /// [sessionId] Required.
   /// [userId] Required.
   GetContextDialogflowV2beta1Args({
-    required pulumi.Output<String> contextId,
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sessionId,
-    required pulumi.Output<String> userId,
-  }) :
-      contextId = pulumi.Input.asInput<String>(contextId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sessionId = pulumi.Input.asInput<String>(sessionId),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.contextId,
+    required this.environmentId,
+    required this.location,
+    this.project,
+    required this.sessionId,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,12 +43,12 @@ class GetContextDialogflowV2beta1Args {
 
   factory GetContextDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return GetContextDialogflowV2beta1Args(
-      contextId: pulumi.Output.create<String>(map['contextId'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sessionId: pulumi.Output.create<String>(map['sessionId'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      contextId: (map['contextId'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sessionId: (map['sessionId'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

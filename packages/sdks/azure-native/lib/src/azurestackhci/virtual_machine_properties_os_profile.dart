@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_properties_linux_configuration.dart';
 import 'virtual_machine_properties_windows_configuration.dart';
 
 /// OsProfile - describes the configuration of the operating system and sets login data
 class VirtualMachinePropertiesOsProfile {
   /// AdminPassword - admin password
-  final String? adminPassword;
+  final pulumi.Input<String>? adminPassword;
   /// AdminUsername - admin username
-  final String? adminUsername;
+  final pulumi.Input<String>? adminUsername;
   /// ComputerName - name of the compute
-  final String? computerName;
+  final pulumi.Input<String>? computerName;
   /// LinuxConfiguration - linux specific configuration values for the virtual machine
-  final VirtualMachinePropertiesLinuxConfiguration? linuxConfiguration;
+  final pulumi.Input<VirtualMachinePropertiesLinuxConfiguration>? linuxConfiguration;
   /// OsType - string specifying whether the OS is Linux or Windows
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// Windows Configuration for the virtual machine
-  final VirtualMachinePropertiesWindowsConfiguration? windowsConfiguration;
+  final pulumi.Input<VirtualMachinePropertiesWindowsConfiguration>? windowsConfiguration;
 
   /// Creates a new [VirtualMachinePropertiesOsProfile].
   /// [adminPassword] AdminPassword - admin password
@@ -39,20 +40,20 @@ class VirtualMachinePropertiesOsProfile {
       'adminPassword': ?adminPassword,
       'adminUsername': ?adminUsername,
       'computerName': ?computerName,
-      'linuxConfiguration': ?linuxConfiguration == null ? null : linuxConfiguration!.toMap(),
+      'linuxConfiguration': ?pulumi.Input.mapOptionalInputValue<VirtualMachinePropertiesLinuxConfiguration, Map<String, dynamic>>(linuxConfiguration, (value) => value.toMap()),
       'osType': ?osType,
-      'windowsConfiguration': ?windowsConfiguration == null ? null : windowsConfiguration!.toMap(),
+      'windowsConfiguration': ?pulumi.Input.mapOptionalInputValue<VirtualMachinePropertiesWindowsConfiguration, Map<String, dynamic>>(windowsConfiguration, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachinePropertiesOsProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesOsProfile(
-      adminPassword: map['adminPassword'] == null ? null : map['adminPassword'] as String,
-      adminUsername: map['adminUsername'] == null ? null : map['adminUsername'] as String,
-      computerName: map['computerName'] == null ? null : map['computerName'] as String,
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : VirtualMachinePropertiesLinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>()),
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : VirtualMachinePropertiesWindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>()),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
+      linuxConfiguration: map['linuxConfiguration'] == null ? null : (VirtualMachinePropertiesLinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>())).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (VirtualMachinePropertiesWindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

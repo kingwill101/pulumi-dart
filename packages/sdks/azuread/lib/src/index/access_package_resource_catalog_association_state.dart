@@ -16,13 +16,10 @@ class AccessPackageResourceCatalogAssociationState {
   /// [resourceOriginId] The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
   /// [resourceOriginSystem] The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
   AccessPackageResourceCatalogAssociationState({
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<String>? resourceOriginId,
-    pulumi.Output<String>? resourceOriginSystem,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      resourceOriginId = pulumi.Input.asOptionalInput<String>(resourceOriginId),
-      resourceOriginSystem = pulumi.Input.asOptionalInput<String>(resourceOriginSystem);
+    this.catalogId,
+    this.resourceOriginId,
+    this.resourceOriginSystem,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AccessPackageResourceCatalogAssociationState {
 
   factory AccessPackageResourceCatalogAssociationState.fromMap(Map<String, dynamic> map) {
     return AccessPackageResourceCatalogAssociationState(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      resourceOriginId: map['resourceOriginId'] == null ? null : pulumi.Output.create<String>(map['resourceOriginId'] as String),
-      resourceOriginSystem: map['resourceOriginSystem'] == null ? null : pulumi.Output.create<String>(map['resourceOriginSystem'] as String),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      resourceOriginId: map['resourceOriginId'] == null ? null : (map['resourceOriginId'] as String).input(),
+      resourceOriginSystem: map['resourceOriginSystem'] == null ? null : (map['resourceOriginSystem'] as String).input(),
     );
   }
 }

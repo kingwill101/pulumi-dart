@@ -6,8 +6,8 @@ import 'token_password.dart';
 
 /// The properties of the credentials that can be used for authenticating the token.
 class TokenCredentialsProperties {
-  final List<TokenCertificate>? certificates;
-  final List<TokenPassword>? passwords;
+  final pulumi.Input<List<TokenCertificate>>? certificates;
+  final pulumi.Input<List<TokenPassword>>? passwords;
 
   /// Creates a new [TokenCredentialsProperties].
   /// [certificates] Optional.
@@ -19,15 +19,15 @@ class TokenCredentialsProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates': ?certificates == null ? null : pulumi.Input.encodeList<TokenCertificate, Map<String, dynamic>>(certificates!, (value) => value.toMap()),
-      'passwords': ?passwords == null ? null : pulumi.Input.encodeList<TokenPassword, Map<String, dynamic>>(passwords!, (value) => value.toMap()),
+      'certificates': ?pulumi.Input.mapOptionalInputValue<List<TokenCertificate>, List<Map<String, dynamic>>>(certificates, (value) => pulumi.Input.encodeList<TokenCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'passwords': ?pulumi.Input.mapOptionalInputValue<List<TokenPassword>, List<Map<String, dynamic>>>(passwords, (value) => pulumi.Input.encodeList<TokenPassword, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TokenCredentialsProperties.fromMap(Map<String, dynamic> map) {
     return TokenCredentialsProperties(
-      certificates: map['certificates'] == null ? null : pulumi.Input.decodeList<TokenCertificate>(map['certificates'], (value) => TokenCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      passwords: map['passwords'] == null ? null : pulumi.Input.decodeList<TokenPassword>(map['passwords'], (value) => TokenPassword.fromMap((value as Map).cast<String, dynamic>())),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<TokenCertificate>(map['certificates'], (value) => TokenCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      passwords: map['passwords'] == null ? null : (pulumi.Input.decodeList<TokenPassword>(map['passwords'], (value) => TokenPassword.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

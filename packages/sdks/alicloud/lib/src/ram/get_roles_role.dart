@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRolesRole {
   /// The Alibaba Cloud Resource Name (ARN) of the RAM role.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// The policy that specifies the trusted entity to assume the RAM role.
-  final String assumeRolePolicyDocument;
+  final pulumi.Input<String> assumeRolePolicyDocument;
   /// The creation time.
-  final String createDate;
+  final pulumi.Input<String> createDate;
   /// The description of the RAM role.
-  final String description;
+  final pulumi.Input<String> description;
   /// The policy that specifies the trusted entity to assume the RAM role.
-  final String document;
+  final pulumi.Input<String> document;
   /// The ID of the RAM role.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the RAM role.
-  final String name;
+  final pulumi.Input<String> name;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The update time.
-  final String updateDate;
+  final pulumi.Input<String> updateDate;
 
   /// Creates a new [GetRolesRole].
   /// [arn] The Alibaba Cloud Resource Name (ARN) of the RAM role.
@@ -59,15 +60,15 @@ class GetRolesRole {
 
   factory GetRolesRole.fromMap(Map<String, dynamic> map) {
     return GetRolesRole(
-      arn: map['arn'] as String,
-      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] as String,
-      createDate: map['createDate'] as String,
-      description: map['description'] as String,
-      document: map['document'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      updateDate: map['updateDate'] as String,
+      arn: (map['arn'] as String).input(),
+      assumeRolePolicyDocument: (map['assumeRolePolicyDocument'] as String).input(),
+      createDate: (map['createDate'] as String).input(),
+      description: (map['description'] as String).input(),
+      document: (map['document'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      updateDate: (map['updateDate'] as String).input(),
     );
   }
 }

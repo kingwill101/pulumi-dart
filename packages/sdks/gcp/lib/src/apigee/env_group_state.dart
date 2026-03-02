@@ -17,13 +17,10 @@ class EnvGroupState {
   /// [name] The resource ID of the environment group.
   /// [orgId] The Apigee Organization associated with the Apigee environment group,
   EnvGroupState({
-    pulumi.Output<List<String>>? hostnames,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? orgId,
-  }) :
-      hostnames = pulumi.Input.asOptionalInput<List<String>>(hostnames),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId);
+    this.hostnames,
+    this.name,
+    this.orgId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class EnvGroupState {
 
   factory EnvGroupState.fromMap(Map<String, dynamic> map) {
     return EnvGroupState(
-      hostnames: map['hostnames'] == null ? null : pulumi.Output.create<List<String>>((map['hostnames'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
+      hostnames: map['hostnames'] == null ? null : ((map['hostnames'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertsAlertConfigurationSinkCms {
   /// Open.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetAlertsAlertConfigurationSinkCms].
   /// [enabled] Open.
@@ -19,7 +20,7 @@ class GetAlertsAlertConfigurationSinkCms {
 
   factory GetAlertsAlertConfigurationSinkCms.fromMap(Map<String, dynamic> map) {
     return GetAlertsAlertConfigurationSinkCms(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

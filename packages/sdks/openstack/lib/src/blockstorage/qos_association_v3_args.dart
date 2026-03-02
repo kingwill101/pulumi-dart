@@ -23,13 +23,10 @@ class QosAssociationV3Args {
   /// [region] The region in which to create the qos association.
   /// [volumeTypeId] ID of the volume_type to associate.
   QosAssociationV3Args({
-    required pulumi.Output<String> qosId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> volumeTypeId,
-  }) :
-      qosId = pulumi.Input.asInput<String>(qosId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      volumeTypeId = pulumi.Input.asInput<String>(volumeTypeId);
+    required this.qosId,
+    this.region,
+    required this.volumeTypeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class QosAssociationV3Args {
 
   factory QosAssociationV3Args.fromMap(Map<String, dynamic> map) {
     return QosAssociationV3Args(
-      qosId: pulumi.Output.create<String>(map['qosId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      volumeTypeId: pulumi.Output.create<String>(map['volumeTypeId'] as String),
+      qosId: (map['qosId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      volumeTypeId: (map['volumeTypeId'] as String).input(),
     );
   }
 }

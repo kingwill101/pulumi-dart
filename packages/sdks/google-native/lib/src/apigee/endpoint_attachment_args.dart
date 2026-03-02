@@ -24,17 +24,12 @@ class EndpointAttachmentArgs {
   /// [organizationId] Required.
   /// [serviceAttachment] Format: projects/*/regions/*/serviceAttachments/*
   EndpointAttachmentArgs({
-    pulumi.Output<String>? endpointAttachmentId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<String>? serviceAttachment,
-  }) :
-      endpointAttachmentId = pulumi.Input.asOptionalInput<String>(endpointAttachmentId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      serviceAttachment = pulumi.Input.asOptionalInput<String>(serviceAttachment);
+    this.endpointAttachmentId,
+    this.location,
+    this.name,
+    required this.organizationId,
+    this.serviceAttachment,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class EndpointAttachmentArgs {
 
   factory EndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAttachmentArgs(
-      endpointAttachmentId: map['endpointAttachmentId'] == null ? null : pulumi.Output.create<String>(map['endpointAttachmentId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      serviceAttachment: map['serviceAttachment'] == null ? null : pulumi.Output.create<String>(map['serviceAttachment'] as String),
+      endpointAttachmentId: map['endpointAttachmentId'] == null ? null : (map['endpointAttachmentId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
     );
   }
 }

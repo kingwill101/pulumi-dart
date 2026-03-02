@@ -45,27 +45,17 @@ class RatePlanInstanceState {
   /// [status] The plan status. , the plan is unavailable.
   /// [type] The DNS setup option for the website. Valid values:
   RatePlanInstanceState({
-    pulumi.Output<bool>? autoPay,
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<String>? coverage,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? instanceStatus,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<int>? period,
-    pulumi.Output<String>? planName,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? type,
-  }) :
-      autoPay = pulumi.Input.asOptionalInput<bool>(autoPay),
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      coverage = pulumi.Input.asOptionalInput<String>(coverage),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      instanceStatus = pulumi.Input.asOptionalInput<String>(instanceStatus),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      planName = pulumi.Input.asOptionalInput<String>(planName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.autoPay,
+    this.autoRenew,
+    this.coverage,
+    this.createTime,
+    this.instanceStatus,
+    this.paymentType,
+    this.period,
+    this.planName,
+    this.status,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class RatePlanInstanceState {
 
   factory RatePlanInstanceState.fromMap(Map<String, dynamic> map) {
     return RatePlanInstanceState(
-      autoPay: map['autoPay'] == null ? null : pulumi.Output.create<bool>(map['autoPay'] as bool),
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      coverage: map['coverage'] == null ? null : pulumi.Output.create<String>(map['coverage'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      instanceStatus: map['instanceStatus'] == null ? null : pulumi.Output.create<String>(map['instanceStatus'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      planName: map['planName'] == null ? null : pulumi.Output.create<String>(map['planName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      coverage: map['coverage'] == null ? null : (map['coverage'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      instanceStatus: map['instanceStatus'] == null ? null : (map['instanceStatus'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

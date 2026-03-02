@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleCriteriaResourceTag {
-  final String comparison;
+  final pulumi.Input<String> comparison;
   /// The key of the map filter.
-  final String key;
-  final String value;
+  final pulumi.Input<String> key;
+  final pulumi.Input<String> value;
 
   /// Creates a new [AutomationRuleCriteriaResourceTag].
   /// [comparison] Required.
@@ -27,9 +28,9 @@ class AutomationRuleCriteriaResourceTag {
 
   factory AutomationRuleCriteriaResourceTag.fromMap(Map<String, dynamic> map) {
     return AutomationRuleCriteriaResourceTag(
-      comparison: map['comparison'] as String,
-      key: map['key'] as String,
-      value: map['value'] as String,
+      comparison: (map['comparison'] as String).input(),
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

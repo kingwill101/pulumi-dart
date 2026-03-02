@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVoicesVoice {
   /// Additional codes for languages available for the specified voice in addition to its default language.
-  final List<String> additionalLanguageCodes;
+  final pulumi.Input<List<String>> additionalLanguageCodes;
   /// Gender of the voice.
-  final String gender;
+  final pulumi.Input<String> gender;
   /// Amazon Polly assigned voice ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Language identification tag for filtering the list of voices returned. If not specified, all available voices are returned.
-  final String languageCode;
+  final pulumi.Input<String> languageCode;
   /// Human readable name of the language in English.
-  final String languageName;
+  final pulumi.Input<String> languageName;
   /// Name of the voice.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies which engines are supported by a given voice.
-  final List<String> supportedEngines;
+  final pulumi.Input<List<String>> supportedEngines;
 
   /// Creates a new [GetVoicesVoice].
   /// [additionalLanguageCodes] Additional codes for languages available for the specified voice in addition to its default language.
@@ -49,13 +50,13 @@ class GetVoicesVoice {
 
   factory GetVoicesVoice.fromMap(Map<String, dynamic> map) {
     return GetVoicesVoice(
-      additionalLanguageCodes: (map['additionalLanguageCodes'] as List).cast<String>(),
-      gender: map['gender'] as String,
-      id: map['id'] as String,
-      languageCode: map['languageCode'] as String,
-      languageName: map['languageName'] as String,
-      name: map['name'] as String,
-      supportedEngines: (map['supportedEngines'] as List).cast<String>(),
+      additionalLanguageCodes: ((map['additionalLanguageCodes'] as List).cast<String>()).input(),
+      gender: (map['gender'] as String).input(),
+      id: (map['id'] as String).input(),
+      languageCode: (map['languageCode'] as String).input(),
+      languageName: (map['languageName'] as String).input(),
+      name: (map['name'] as String).input(),
+      supportedEngines: ((map['supportedEngines'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ngroup_cgproperty_container_response_properties.dart';
 
 /// Container properties that can be provided with NGroups object.
 class NGroupCGPropertyContainerResponse {
   /// container name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// container properties
-  final NGroupCGPropertyContainerResponseProperties? properties;
+  final pulumi.Input<NGroupCGPropertyContainerResponseProperties>? properties;
 
   /// Creates a new [NGroupCGPropertyContainerResponse].
   /// [name] container name
@@ -20,14 +21,14 @@ class NGroupCGPropertyContainerResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'properties': ?properties == null ? null : properties!.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<NGroupCGPropertyContainerResponseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory NGroupCGPropertyContainerResponse.fromMap(Map<String, dynamic> map) {
     return NGroupCGPropertyContainerResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      properties: map['properties'] == null ? null : NGroupCGPropertyContainerResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (NGroupCGPropertyContainerResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

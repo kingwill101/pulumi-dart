@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodePoolNetworkConfigNetworkPerformanceConfig {
   /// Specifies the total network bandwidth tier for NodePools in the cluster.
-  final String totalEgressBandwidthTier;
+  final pulumi.Input<String> totalEgressBandwidthTier;
 
   /// Creates a new [ClusterNodePoolNetworkConfigNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for NodePools in the cluster.
@@ -19,7 +20,7 @@ class ClusterNodePoolNetworkConfigNetworkPerformanceConfig {
 
   factory ClusterNodePoolNetworkConfigNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNetworkConfigNetworkPerformanceConfig(
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] as String,
+      totalEgressBandwidthTier: (map['totalEgressBandwidthTier'] as String).input(),
     );
   }
 }

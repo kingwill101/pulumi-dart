@@ -28,19 +28,13 @@ class GetRouteArgs {
   /// [tags] Map of tags.
   /// [virtualRouterName] Name of the virtual router in which the route exists.
   GetRouteArgs({
-    required pulumi.Output<String> meshName,
-    pulumi.Output<String>? meshOwner,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualRouterName,
-  }) :
-      meshName = pulumi.Input.asInput<String>(meshName),
-      meshOwner = pulumi.Input.asOptionalInput<String>(meshOwner),
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualRouterName = pulumi.Input.asInput<String>(virtualRouterName);
+    required this.meshName,
+    this.meshOwner,
+    required this.name,
+    this.region,
+    this.tags,
+    required this.virtualRouterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetRouteArgs {
 
   factory GetRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteArgs(
-      meshName: pulumi.Output.create<String>(map['meshName'] as String),
-      meshOwner: map['meshOwner'] == null ? null : pulumi.Output.create<String>(map['meshOwner'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualRouterName: pulumi.Output.create<String>(map['virtualRouterName'] as String),
+      meshName: (map['meshName'] as String).input(),
+      meshOwner: map['meshOwner'] == null ? null : (map['meshOwner'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualRouterName: (map['virtualRouterName'] as String).input(),
     );
   }
 }

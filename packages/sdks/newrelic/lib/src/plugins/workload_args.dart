@@ -37,23 +37,15 @@ class WorkloadArgs {
   /// [statusConfigAutomatic] An input object used to represent an automatic status configuration.See Nested status_config_automatic blocks below for details.
   /// [statusConfigStatic] A list of static status configurations. You can only configure one static status for a workload.See Nested status_config_static blocks below for details.
   WorkloadArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? entityGuids,
-    pulumi.Output<List<WorkloadEntitySearchQuery>>? entitySearchQueries,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? scopeAccountIds,
-    pulumi.Output<WorkloadStatusConfigAutomatic>? statusConfigAutomatic,
-    pulumi.Output<WorkloadStatusConfigStatic>? statusConfigStatic,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      entityGuids = pulumi.Input.asOptionalInput<List<String>>(entityGuids),
-      entitySearchQueries = pulumi.Input.asOptionalInput<List<WorkloadEntitySearchQuery>>(entitySearchQueries),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      scopeAccountIds = pulumi.Input.asOptionalInput<List<String>>(scopeAccountIds),
-      statusConfigAutomatic = pulumi.Input.asOptionalInput<WorkloadStatusConfigAutomatic>(statusConfigAutomatic),
-      statusConfigStatic = pulumi.Input.asOptionalInput<WorkloadStatusConfigStatic>(statusConfigStatic);
+    this.accountId,
+    this.description,
+    this.entityGuids,
+    this.entitySearchQueries,
+    this.name,
+    this.scopeAccountIds,
+    this.statusConfigAutomatic,
+    this.statusConfigStatic,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class WorkloadArgs {
 
   factory WorkloadArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      entityGuids: map['entityGuids'] == null ? null : pulumi.Output.create<List<String>>((map['entityGuids'] as List).cast<String>()),
-      entitySearchQueries: map['entitySearchQueries'] == null ? null : pulumi.Output.create<List<WorkloadEntitySearchQuery>>(pulumi.Input.decodeList<WorkloadEntitySearchQuery>(map['entitySearchQueries'], (value) => WorkloadEntitySearchQuery.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      scopeAccountIds: map['scopeAccountIds'] == null ? null : pulumi.Output.create<List<String>>((map['scopeAccountIds'] as List).cast<String>()),
-      statusConfigAutomatic: map['statusConfigAutomatic'] == null ? null : pulumi.Output.create<WorkloadStatusConfigAutomatic>(WorkloadStatusConfigAutomatic.fromMap((map['statusConfigAutomatic'] as Map).cast<String, dynamic>())),
-      statusConfigStatic: map['statusConfigStatic'] == null ? null : pulumi.Output.create<WorkloadStatusConfigStatic>(WorkloadStatusConfigStatic.fromMap((map['statusConfigStatic'] as Map).cast<String, dynamic>())),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      entityGuids: map['entityGuids'] == null ? null : ((map['entityGuids'] as List).cast<String>()).input(),
+      entitySearchQueries: map['entitySearchQueries'] == null ? null : (pulumi.Input.decodeList<WorkloadEntitySearchQuery>(map['entitySearchQueries'], (value) => WorkloadEntitySearchQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      scopeAccountIds: map['scopeAccountIds'] == null ? null : ((map['scopeAccountIds'] as List).cast<String>()).input(),
+      statusConfigAutomatic: map['statusConfigAutomatic'] == null ? null : (WorkloadStatusConfigAutomatic.fromMap((map['statusConfigAutomatic'] as Map).cast<String, dynamic>())).input(),
+      statusConfigStatic: map['statusConfigStatic'] == null ? null : (WorkloadStatusConfigStatic.fromMap((map['statusConfigStatic'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

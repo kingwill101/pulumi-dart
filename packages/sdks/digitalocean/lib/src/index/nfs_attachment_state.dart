@@ -15,13 +15,10 @@ class NfsAttachmentState {
   /// [shareId] The ID of the NFS share to attach.
   /// [vpcId] The ID of the vpc to attach the NFS share to.
   NfsAttachmentState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? shareId,
-    pulumi.Output<String>? vpcId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shareId = pulumi.Input.asOptionalInput<String>(shareId),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.region,
+    this.shareId,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,9 +30,9 @@ class NfsAttachmentState {
 
   factory NfsAttachmentState.fromMap(Map<String, dynamic> map) {
     return NfsAttachmentState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shareId: map['shareId'] == null ? null : pulumi.Output.create<String>(map['shareId'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

@@ -37,21 +37,14 @@ class AutoSnapshotPolicyState {
   /// [status] The status of the automatic snapshot policy.
   /// [timePoints] The point in time at which an auto snapshot is created.
   AutoSnapshotPolicyState({
-    pulumi.Output<String>? autoSnapshotPolicyName,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? fileSystemType,
-    pulumi.Output<List<String>>? repeatWeekdays,
-    pulumi.Output<int>? retentionDays,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? timePoints,
-  }) :
-      autoSnapshotPolicyName = pulumi.Input.asOptionalInput<String>(autoSnapshotPolicyName),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      fileSystemType = pulumi.Input.asOptionalInput<String>(fileSystemType),
-      repeatWeekdays = pulumi.Input.asOptionalInput<List<String>>(repeatWeekdays),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      timePoints = pulumi.Input.asOptionalInput<List<String>>(timePoints);
+    this.autoSnapshotPolicyName,
+    this.createTime,
+    this.fileSystemType,
+    this.repeatWeekdays,
+    this.retentionDays,
+    this.status,
+    this.timePoints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class AutoSnapshotPolicyState {
 
   factory AutoSnapshotPolicyState.fromMap(Map<String, dynamic> map) {
     return AutoSnapshotPolicyState(
-      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : pulumi.Output.create<String>(map['autoSnapshotPolicyName'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      fileSystemType: map['fileSystemType'] == null ? null : pulumi.Output.create<String>(map['fileSystemType'] as String),
-      repeatWeekdays: map['repeatWeekdays'] == null ? null : pulumi.Output.create<List<String>>((map['repeatWeekdays'] as List).cast<String>()),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      timePoints: map['timePoints'] == null ? null : pulumi.Output.create<List<String>>((map['timePoints'] as List).cast<String>()),
+      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : (map['autoSnapshotPolicyName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType'] as String).input(),
+      repeatWeekdays: map['repeatWeekdays'] == null ? null : ((map['repeatWeekdays'] as List).cast<String>()).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      timePoints: map['timePoints'] == null ? null : ((map['timePoints'] as List).cast<String>()).input(),
     );
   }
 }

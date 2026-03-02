@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetByoipPrefixResourcesAddress {
   /// The timestamp when the IP was assigned.
-  final String assignedAt;
+  final pulumi.Input<String> assignedAt;
   /// The unique identifier of the IP address allocation.
-  final int id;
+  final pulumi.Input<int> id;
   /// The IP address.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The region where the IP is allocated.
-  final String region;
+  final pulumi.Input<String> region;
 
   /// Creates a new [GetByoipPrefixResourcesAddress].
   /// [assignedAt] The timestamp when the IP was assigned.
@@ -34,10 +35,10 @@ class GetByoipPrefixResourcesAddress {
 
   factory GetByoipPrefixResourcesAddress.fromMap(Map<String, dynamic> map) {
     return GetByoipPrefixResourcesAddress(
-      assignedAt: map['assignedAt'] as String,
-      id: map['id'] as int,
-      ipAddress: map['ipAddress'] as String,
-      region: map['region'] as String,
+      assignedAt: (map['assignedAt'] as String).input(),
+      id: (map['id'] as int).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

@@ -22,13 +22,10 @@ class EncryptionSpecArgs {
   /// [location] The location in which the encryptionSpec is to be initialized.
   /// [project] The ID of the project in which the resource belongs.
   EncryptionSpecArgs({
-    required pulumi.Output<EncryptionSpecEncryptionSpec> encryptionSpec,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      encryptionSpec = pulumi.Input.asInput<EncryptionSpecEncryptionSpec>(encryptionSpec),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.encryptionSpec,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class EncryptionSpecArgs {
 
   factory EncryptionSpecArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionSpecArgs(
-      encryptionSpec: pulumi.Output.create<EncryptionSpecEncryptionSpec>(EncryptionSpecEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      encryptionSpec: (EncryptionSpecEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

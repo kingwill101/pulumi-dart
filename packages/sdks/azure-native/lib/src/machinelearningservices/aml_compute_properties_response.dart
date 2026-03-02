@@ -11,39 +11,39 @@ import 'virtual_machine_image_response.dart';
 /// AML Compute properties
 class AmlComputePropertiesResponse {
   /// Allocation state of the compute. Possible values are: steady - Indicates that the compute is not resizing. There are no changes to the number of compute nodes in the compute in progress. A compute enters this state when it is created and when no operations are being performed on the compute to change the number of compute nodes. resizing - Indicates that the compute is resizing; that is, compute nodes are being added to or removed from the compute.
-  final String allocationState;
+  final pulumi.Input<String> allocationState;
   /// The time at which the compute entered its current allocation state.
-  final String allocationStateTransitionTime;
+  final pulumi.Input<String> allocationStateTransitionTime;
   /// The number of compute nodes currently assigned to the compute.
-  final int currentNodeCount;
+  final pulumi.Input<int> currentNodeCount;
   /// Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
-  final bool? enableNodePublicIp;
+  final pulumi.Input<bool>? enableNodePublicIp;
   /// Collection of errors encountered by various compute nodes during node setup.
-  final List<ErrorResponseResponse> errors;
+  final pulumi.Input<List<ErrorResponseResponse>> errors;
   /// Network is isolated or not
-  final bool? isolatedNetwork;
+  final pulumi.Input<bool>? isolatedNetwork;
   /// Counts of various node states on the compute.
-  final NodeStateCountsResponse nodeStateCounts;
+  final pulumi.Input<NodeStateCountsResponse> nodeStateCounts;
   /// Compute OS Type
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// A property bag containing additional properties.
-  final dynamic propertyBag;
+  final pulumi.Input<dynamic>? propertyBag;
   /// State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
-  final String? remoteLoginPortPublicAccess;
+  final pulumi.Input<String>? remoteLoginPortPublicAccess;
   /// Scale settings for AML Compute
-  final ScaleSettingsResponse? scaleSettings;
+  final pulumi.Input<ScaleSettingsResponse>? scaleSettings;
   /// Virtual network subnet resource ID the compute nodes belong to.
-  final ResourceIdResponse? subnet;
+  final pulumi.Input<ResourceIdResponse>? subnet;
   /// The target number of compute nodes for the compute. If the allocationState is resizing, this property denotes the target node count for the ongoing resize operation. If the allocationState is steady, this property denotes the target node count for the previous resize operation.
-  final int targetNodeCount;
+  final pulumi.Input<int> targetNodeCount;
   /// Credentials for an administrator user account that will be created on each compute node.
-  final UserAccountCredentialsResponse? userAccountCredentials;
+  final pulumi.Input<UserAccountCredentialsResponse>? userAccountCredentials;
   /// Virtual Machine image for AML Compute - windows only
-  final VirtualMachineImageResponse? virtualMachineImage;
+  final pulumi.Input<VirtualMachineImageResponse>? virtualMachineImage;
   /// Virtual Machine priority
-  final String? vmPriority;
+  final pulumi.Input<String>? vmPriority;
   /// Virtual Machine Size
-  final String? vmSize;
+  final pulumi.Input<String>? vmSize;
 
   /// Creates a new [AmlComputePropertiesResponse].
   /// [allocationState] Allocation state of the compute. Possible values are: steady - Indicates that the compute is not resizing. There are no changes to the number of compute nodes in the compute in progress. A compute enters this state when it is created and when no operations are being performed on the compute to change the number of compute nodes. resizing - Indicates that the compute is resizing; that is, compute nodes are being added to or removed from the compute.
@@ -89,17 +89,17 @@ class AmlComputePropertiesResponse {
       'allocationStateTransitionTime': allocationStateTransitionTime,
       'currentNodeCount': currentNodeCount,
       'enableNodePublicIp': ?enableNodePublicIp,
-      'errors': pulumi.Input.encodeList<ErrorResponseResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'errors': pulumi.Input.mapInputValue<List<ErrorResponseResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ErrorResponseResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isolatedNetwork': ?isolatedNetwork,
-      'nodeStateCounts': nodeStateCounts.toMap(),
+      'nodeStateCounts': pulumi.Input.mapInputValue<NodeStateCountsResponse, Map<String, dynamic>>(nodeStateCounts, (value) => value.toMap()),
       'osType': ?osType,
       'propertyBag': ?propertyBag,
       'remoteLoginPortPublicAccess': ?remoteLoginPortPublicAccess,
-      'scaleSettings': ?scaleSettings == null ? null : scaleSettings!.toMap(),
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'scaleSettings': ?pulumi.Input.mapOptionalInputValue<ScaleSettingsResponse, Map<String, dynamic>>(scaleSettings, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<ResourceIdResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
       'targetNodeCount': targetNodeCount,
-      'userAccountCredentials': ?userAccountCredentials == null ? null : userAccountCredentials!.toMap(),
-      'virtualMachineImage': ?virtualMachineImage == null ? null : virtualMachineImage!.toMap(),
+      'userAccountCredentials': ?pulumi.Input.mapOptionalInputValue<UserAccountCredentialsResponse, Map<String, dynamic>>(userAccountCredentials, (value) => value.toMap()),
+      'virtualMachineImage': ?pulumi.Input.mapOptionalInputValue<VirtualMachineImageResponse, Map<String, dynamic>>(virtualMachineImage, (value) => value.toMap()),
       'vmPriority': ?vmPriority,
       'vmSize': ?vmSize,
     };
@@ -107,23 +107,23 @@ class AmlComputePropertiesResponse {
 
   factory AmlComputePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AmlComputePropertiesResponse(
-      allocationState: map['allocationState'] as String,
-      allocationStateTransitionTime: map['allocationStateTransitionTime'] as String,
-      currentNodeCount: map['currentNodeCount'] as int,
-      enableNodePublicIp: map['enableNodePublicIp'] == null ? null : map['enableNodePublicIp'] as bool,
-      errors: pulumi.Input.decodeList<ErrorResponseResponse>(map['errors'], (value) => ErrorResponseResponse.fromMap((value as Map).cast<String, dynamic>())),
-      isolatedNetwork: map['isolatedNetwork'] == null ? null : map['isolatedNetwork'] as bool,
-      nodeStateCounts: NodeStateCountsResponse.fromMap((map['nodeStateCounts'] as Map).cast<String, dynamic>()),
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      propertyBag: map['propertyBag'] == null ? null : map['propertyBag'],
-      remoteLoginPortPublicAccess: map['remoteLoginPortPublicAccess'] == null ? null : map['remoteLoginPortPublicAccess'] as String,
-      scaleSettings: map['scaleSettings'] == null ? null : ScaleSettingsResponse.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>()),
-      subnet: map['subnet'] == null ? null : ResourceIdResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
-      targetNodeCount: map['targetNodeCount'] as int,
-      userAccountCredentials: map['userAccountCredentials'] == null ? null : UserAccountCredentialsResponse.fromMap((map['userAccountCredentials'] as Map).cast<String, dynamic>()),
-      virtualMachineImage: map['virtualMachineImage'] == null ? null : VirtualMachineImageResponse.fromMap((map['virtualMachineImage'] as Map).cast<String, dynamic>()),
-      vmPriority: map['vmPriority'] == null ? null : map['vmPriority'] as String,
-      vmSize: map['vmSize'] == null ? null : map['vmSize'] as String,
+      allocationState: (map['allocationState'] as String).input(),
+      allocationStateTransitionTime: (map['allocationStateTransitionTime'] as String).input(),
+      currentNodeCount: (map['currentNodeCount'] as int).input(),
+      enableNodePublicIp: map['enableNodePublicIp'] == null ? null : (map['enableNodePublicIp'] as bool).input(),
+      errors: (pulumi.Input.decodeList<ErrorResponseResponse>(map['errors'], (value) => ErrorResponseResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isolatedNetwork: map['isolatedNetwork'] == null ? null : (map['isolatedNetwork'] as bool).input(),
+      nodeStateCounts: (NodeStateCountsResponse.fromMap((map['nodeStateCounts'] as Map).cast<String, dynamic>())).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      propertyBag: map['propertyBag'] == null ? null : (map['propertyBag']).input(),
+      remoteLoginPortPublicAccess: map['remoteLoginPortPublicAccess'] == null ? null : (map['remoteLoginPortPublicAccess'] as String).input(),
+      scaleSettings: map['scaleSettings'] == null ? null : (ScaleSettingsResponse.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (ResourceIdResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      targetNodeCount: (map['targetNodeCount'] as int).input(),
+      userAccountCredentials: map['userAccountCredentials'] == null ? null : (UserAccountCredentialsResponse.fromMap((map['userAccountCredentials'] as Map).cast<String, dynamic>())).input(),
+      virtualMachineImage: map['virtualMachineImage'] == null ? null : (VirtualMachineImageResponse.fromMap((map['virtualMachineImage'] as Map).cast<String, dynamic>())).input(),
+      vmPriority: map['vmPriority'] == null ? null : (map['vmPriority'] as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
     );
   }
 }

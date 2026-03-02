@@ -1,57 +1,58 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetControlPoliciesPolicy {
   /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
-  final String aclAction;
+  final pulumi.Input<String> aclAction;
   /// The unique ID of the access control policy.
-  final String aclUuid;
+  final pulumi.Input<String> aclUuid;
   /// The application ID in the access control policy.
-  final String applicationId;
+  final pulumi.Input<String> applicationId;
   /// The type of the application that the access control policy supports.
-  final String applicationName;
+  final pulumi.Input<String> applicationName;
   /// The description of the access control policy.
-  final String description;
+  final pulumi.Input<String> description;
   /// The destination port in the access control policy.
-  final String destPort;
+  final pulumi.Input<String> destPort;
   /// The name of the destination port address book in the access control policy.
-  final String destPortGroup;
+  final pulumi.Input<String> destPortGroup;
   /// The ports in the destination port address book.
-  final List<String> destPortGroupPorts;
+  final pulumi.Input<List<String>> destPortGroupPorts;
   /// The type of the destination port in the access control policy.
-  final String destPortType;
+  final pulumi.Input<String> destPortType;
   /// The destination address defined in the access control policy.
-  final String destination;
+  final pulumi.Input<String> destination;
   /// The CIDR blocks in the destination address book.
-  final List<String> destinationGroupCidrs;
+  final pulumi.Input<List<String>> destinationGroupCidrs;
   /// The type of the destination address book in the access control policy.
-  final String destinationGroupType;
+  final pulumi.Input<String> destinationGroupType;
   /// The type of the destination address in the access control policy.
-  final String destinationType;
+  final pulumi.Input<String> destinationType;
   /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// The DNS resolution result.
-  final String dnsResult;
+  final pulumi.Input<String> dnsResult;
   /// The timestamp of the DNS resolution result.
-  final String dnsResultTime;
+  final pulumi.Input<String> dnsResultTime;
   /// The number of hits for the access control policy.
-  final String hitTimes;
+  final pulumi.Input<String> hitTimes;
   /// The ID of the Control Policy. It formats as `<acl_uuid>:<direction>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The priority of the access control policy.
-  final int order;
+  final pulumi.Input<int> order;
   /// The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
-  final String proto;
+  final pulumi.Input<String> proto;
   /// Indicates whether the access control policy is enabled.
-  final bool release;
+  final pulumi.Input<bool> release;
   /// The source address in the access control policy.
-  final String source;
+  final pulumi.Input<String> source;
   /// The CIDR blocks in the source address book.
-  final List<String> sourceGroupCidrs;
+  final pulumi.Input<List<String>> sourceGroupCidrs;
   /// The type of the source address book in the access control policy.
-  final String sourceGroupType;
+  final pulumi.Input<String> sourceGroupType;
   /// The type of the source address in the access control policy.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
 
   /// Creates a new [GetControlPoliciesPolicy].
   /// [aclAction] The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -139,31 +140,31 @@ class GetControlPoliciesPolicy {
 
   factory GetControlPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetControlPoliciesPolicy(
-      aclAction: map['aclAction'] as String,
-      aclUuid: map['aclUuid'] as String,
-      applicationId: map['applicationId'] as String,
-      applicationName: map['applicationName'] as String,
-      description: map['description'] as String,
-      destPort: map['destPort'] as String,
-      destPortGroup: map['destPortGroup'] as String,
-      destPortGroupPorts: (map['destPortGroupPorts'] as List).cast<String>(),
-      destPortType: map['destPortType'] as String,
-      destination: map['destination'] as String,
-      destinationGroupCidrs: (map['destinationGroupCidrs'] as List).cast<String>(),
-      destinationGroupType: map['destinationGroupType'] as String,
-      destinationType: map['destinationType'] as String,
-      direction: map['direction'] as String,
-      dnsResult: map['dnsResult'] as String,
-      dnsResultTime: map['dnsResultTime'] as String,
-      hitTimes: map['hitTimes'] as String,
-      id: map['id'] as String,
-      order: map['order'] as int,
-      proto: map['proto'] as String,
-      release: map['release'] as bool,
-      source: map['source'] as String,
-      sourceGroupCidrs: (map['sourceGroupCidrs'] as List).cast<String>(),
-      sourceGroupType: map['sourceGroupType'] as String,
-      sourceType: map['sourceType'] as String,
+      aclAction: (map['aclAction'] as String).input(),
+      aclUuid: (map['aclUuid'] as String).input(),
+      applicationId: (map['applicationId'] as String).input(),
+      applicationName: (map['applicationName'] as String).input(),
+      description: (map['description'] as String).input(),
+      destPort: (map['destPort'] as String).input(),
+      destPortGroup: (map['destPortGroup'] as String).input(),
+      destPortGroupPorts: ((map['destPortGroupPorts'] as List).cast<String>()).input(),
+      destPortType: (map['destPortType'] as String).input(),
+      destination: (map['destination'] as String).input(),
+      destinationGroupCidrs: ((map['destinationGroupCidrs'] as List).cast<String>()).input(),
+      destinationGroupType: (map['destinationGroupType'] as String).input(),
+      destinationType: (map['destinationType'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      dnsResult: (map['dnsResult'] as String).input(),
+      dnsResultTime: (map['dnsResultTime'] as String).input(),
+      hitTimes: (map['hitTimes'] as String).input(),
+      id: (map['id'] as String).input(),
+      order: (map['order'] as int).input(),
+      proto: (map['proto'] as String).input(),
+      release: (map['release'] as bool).input(),
+      source: (map['source'] as String).input(),
+      sourceGroupCidrs: ((map['sourceGroupCidrs'] as List).cast<String>()).input(),
+      sourceGroupType: (map['sourceGroupType'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
     );
   }
 }

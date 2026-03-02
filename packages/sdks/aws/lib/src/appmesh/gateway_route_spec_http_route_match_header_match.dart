@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_route_spec_http_route_match_header_match_range.dart';
 
 class GatewayRouteSpecHttpRouteMatchHeaderMatch {
   /// Header value sent by the client must match the specified value exactly.
-  final String? exact;
+  final pulumi.Input<String>? exact;
   /// Header value sent by the client must begin with the specified characters.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// Object that specifies the range of numbers that the header value sent by the client must be included in.
-  final GatewayRouteSpecHttpRouteMatchHeaderMatchRange? range;
+  final pulumi.Input<GatewayRouteSpecHttpRouteMatchHeaderMatchRange>? range;
   /// Header value sent by the client must include the specified characters.
-  final String? regex;
+  final pulumi.Input<String>? regex;
   /// Header value sent by the client must end with the specified characters.
-  final String? suffix;
+  final pulumi.Input<String>? suffix;
 
   /// Creates a new [GatewayRouteSpecHttpRouteMatchHeaderMatch].
   /// [exact] Header value sent by the client must match the specified value exactly.
@@ -32,7 +33,7 @@ class GatewayRouteSpecHttpRouteMatchHeaderMatch {
     return <String, dynamic>{
       'exact': ?exact,
       'prefix': ?prefix,
-      'range': ?range == null ? null : range!.toMap(),
+      'range': ?pulumi.Input.mapOptionalInputValue<GatewayRouteSpecHttpRouteMatchHeaderMatchRange, Map<String, dynamic>>(range, (value) => value.toMap()),
       'regex': ?regex,
       'suffix': ?suffix,
     };
@@ -40,11 +41,11 @@ class GatewayRouteSpecHttpRouteMatchHeaderMatch {
 
   factory GatewayRouteSpecHttpRouteMatchHeaderMatch.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRouteMatchHeaderMatch(
-      exact: map['exact'] == null ? null : map['exact'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      range: map['range'] == null ? null : GatewayRouteSpecHttpRouteMatchHeaderMatchRange.fromMap((map['range'] as Map).cast<String, dynamic>()),
-      regex: map['regex'] == null ? null : map['regex'] as String,
-      suffix: map['suffix'] == null ? null : map['suffix'] as String,
+      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      range: map['range'] == null ? null : (GatewayRouteSpecHttpRouteMatchHeaderMatchRange.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
+      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
     );
   }
 }

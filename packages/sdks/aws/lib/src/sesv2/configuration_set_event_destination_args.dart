@@ -23,15 +23,11 @@ class ConfigurationSetEventDestinationArgs {
   /// [eventDestinationName] An object that defines the event destination. See `event_destination` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ConfigurationSetEventDestinationArgs({
-    required pulumi.Output<String> configurationSetName,
-    required pulumi.Output<ConfigurationSetEventDestinationEventDestination> eventDestination,
-    required pulumi.Output<String> eventDestinationName,
-    pulumi.Output<String>? region,
-  }) :
-      configurationSetName = pulumi.Input.asInput<String>(configurationSetName),
-      eventDestination = pulumi.Input.asInput<ConfigurationSetEventDestinationEventDestination>(eventDestination),
-      eventDestinationName = pulumi.Input.asInput<String>(eventDestinationName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.configurationSetName,
+    required this.eventDestination,
+    required this.eventDestinationName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ConfigurationSetEventDestinationArgs {
 
   factory ConfigurationSetEventDestinationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetEventDestinationArgs(
-      configurationSetName: pulumi.Output.create<String>(map['configurationSetName'] as String),
-      eventDestination: pulumi.Output.create<ConfigurationSetEventDestinationEventDestination>(ConfigurationSetEventDestinationEventDestination.fromMap((map['eventDestination'] as Map).cast<String, dynamic>())),
-      eventDestinationName: pulumi.Output.create<String>(map['eventDestinationName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      configurationSetName: (map['configurationSetName'] as String).input(),
+      eventDestination: (ConfigurationSetEventDestinationEventDestination.fromMap((map['eventDestination'] as Map).cast<String, dynamic>())).input(),
+      eventDestinationName: (map['eventDestinationName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for MPEG Common Encryption (MPEG-CENC).
 class MpegCommonEncryption {
   /// Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
-  final String scheme;
+  final pulumi.Input<String> scheme;
 
   /// Creates a new [MpegCommonEncryption].
   /// [scheme] Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
@@ -20,7 +21,7 @@ class MpegCommonEncryption {
 
   factory MpegCommonEncryption.fromMap(Map<String, dynamic> map) {
     return MpegCommonEncryption(
-      scheme: map['scheme'] as String,
+      scheme: (map['scheme'] as String).input(),
     );
   }
 }

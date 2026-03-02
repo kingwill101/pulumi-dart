@@ -28,21 +28,14 @@ class LogDestinationState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetArn] The ARN of the target Amazon Kinesis stream resource for the destination.
   LogDestinationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? targetArn,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      targetArn = pulumi.Input.asOptionalInput<String>(targetArn);
+    this.arn,
+    this.name,
+    this.region,
+    this.roleArn,
+    this.tags,
+    this.tagsAll,
+    this.targetArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class LogDestinationState {
 
   factory LogDestinationState.fromMap(Map<String, dynamic> map) {
     return LogDestinationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      targetArn: map['targetArn'] == null ? null : pulumi.Output.create<String>(map['targetArn'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
     );
   }
 }

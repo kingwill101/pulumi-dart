@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_gateway_spec_logging_access_log.dart';
 
 class VirtualGatewaySpecLogging {
   /// Access log configuration for a virtual gateway.
-  final VirtualGatewaySpecLoggingAccessLog? accessLog;
+  final pulumi.Input<VirtualGatewaySpecLoggingAccessLog>? accessLog;
 
   /// Creates a new [VirtualGatewaySpecLogging].
   /// [accessLog] Access log configuration for a virtual gateway.
@@ -14,13 +15,13 @@ class VirtualGatewaySpecLogging {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessLog': ?accessLog == null ? null : accessLog!.toMap(),
+      'accessLog': ?pulumi.Input.mapOptionalInputValue<VirtualGatewaySpecLoggingAccessLog, Map<String, dynamic>>(accessLog, (value) => value.toMap()),
     };
   }
 
   factory VirtualGatewaySpecLogging.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecLogging(
-      accessLog: map['accessLog'] == null ? null : VirtualGatewaySpecLoggingAccessLog.fromMap((map['accessLog'] as Map).cast<String, dynamic>()),
+      accessLog: map['accessLog'] == null ? null : (VirtualGatewaySpecLoggingAccessLog.fromMap((map['accessLog'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

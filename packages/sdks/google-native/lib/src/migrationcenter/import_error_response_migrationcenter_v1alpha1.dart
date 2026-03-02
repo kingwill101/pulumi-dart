@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A resource that reports the errors encountered while processing an import job.
 class ImportErrorResponseMigrationcenterV1alpha1 {
   /// The error information.
-  final String errorDetails;
+  final pulumi.Input<String> errorDetails;
   /// The severity of the error.
-  final String severity;
+  final pulumi.Input<String> severity;
 
   /// Creates a new [ImportErrorResponseMigrationcenterV1alpha1].
   /// [errorDetails] The error information.
@@ -25,8 +26,8 @@ class ImportErrorResponseMigrationcenterV1alpha1 {
 
   factory ImportErrorResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ImportErrorResponseMigrationcenterV1alpha1(
-      errorDetails: map['errorDetails'] as String,
-      severity: map['severity'] as String,
+      errorDetails: (map['errorDetails'] as String).input(),
+      severity: (map['severity'] as String).input(),
     );
   }
 }

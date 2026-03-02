@@ -7,11 +7,11 @@ import 'cluster_node_config_containerd_config_writable_cgroups.dart';
 
 class ClusterNodeConfigContainerdConfig {
   /// Configuration for private container registries. There are two fields in this config:
-  final ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig? privateRegistryAccessConfig;
+  final pulumi.Input<ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig>? privateRegistryAccessConfig;
   /// Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
-  final List<ClusterNodeConfigContainerdConfigRegistryHost>? registryHosts;
+  final pulumi.Input<List<ClusterNodeConfigContainerdConfigRegistryHost>>? registryHosts;
   /// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
-  final ClusterNodeConfigContainerdConfigWritableCgroups? writableCgroups;
+  final pulumi.Input<ClusterNodeConfigContainerdConfigWritableCgroups>? writableCgroups;
 
   /// Creates a new [ClusterNodeConfigContainerdConfig].
   /// [privateRegistryAccessConfig] Configuration for private container registries. There are two fields in this config:
@@ -25,17 +25,17 @@ class ClusterNodeConfigContainerdConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'privateRegistryAccessConfig': ?privateRegistryAccessConfig == null ? null : privateRegistryAccessConfig!.toMap(),
-      'registryHosts': ?registryHosts == null ? null : pulumi.Input.encodeList<ClusterNodeConfigContainerdConfigRegistryHost, Map<String, dynamic>>(registryHosts!, (value) => value.toMap()),
-      'writableCgroups': ?writableCgroups == null ? null : writableCgroups!.toMap(),
+      'privateRegistryAccessConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig, Map<String, dynamic>>(privateRegistryAccessConfig, (value) => value.toMap()),
+      'registryHosts': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodeConfigContainerdConfigRegistryHost>, List<Map<String, dynamic>>>(registryHosts, (value) => pulumi.Input.encodeList<ClusterNodeConfigContainerdConfigRegistryHost, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'writableCgroups': ?pulumi.Input.mapOptionalInputValue<ClusterNodeConfigContainerdConfigWritableCgroups, Map<String, dynamic>>(writableCgroups, (value) => value.toMap()),
     };
   }
 
   factory ClusterNodeConfigContainerdConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigContainerdConfig(
-      privateRegistryAccessConfig: map['privateRegistryAccessConfig'] == null ? null : ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig.fromMap((map['privateRegistryAccessConfig'] as Map).cast<String, dynamic>()),
-      registryHosts: map['registryHosts'] == null ? null : pulumi.Input.decodeList<ClusterNodeConfigContainerdConfigRegistryHost>(map['registryHosts'], (value) => ClusterNodeConfigContainerdConfigRegistryHost.fromMap((value as Map).cast<String, dynamic>())),
-      writableCgroups: map['writableCgroups'] == null ? null : ClusterNodeConfigContainerdConfigWritableCgroups.fromMap((map['writableCgroups'] as Map).cast<String, dynamic>()),
+      privateRegistryAccessConfig: map['privateRegistryAccessConfig'] == null ? null : (ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig.fromMap((map['privateRegistryAccessConfig'] as Map).cast<String, dynamic>())).input(),
+      registryHosts: map['registryHosts'] == null ? null : (pulumi.Input.decodeList<ClusterNodeConfigContainerdConfigRegistryHost>(map['registryHosts'], (value) => ClusterNodeConfigContainerdConfigRegistryHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      writableCgroups: map['writableCgroups'] == null ? null : (ClusterNodeConfigContainerdConfigWritableCgroups.fromMap((map['writableCgroups'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

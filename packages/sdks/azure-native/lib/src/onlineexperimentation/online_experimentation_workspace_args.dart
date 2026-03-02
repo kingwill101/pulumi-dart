@@ -34,21 +34,14 @@ class OnlineExperimentationWorkspaceArgs {
   /// [tags] Resource tags.
   /// [workspaceName] The name of the OnlineExperimentationWorkspace
   OnlineExperimentationWorkspaceArgs({
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<OnlineExperimentationWorkspaceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<OnlineExperimentationWorkspaceSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workspaceName,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<OnlineExperimentationWorkspaceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<OnlineExperimentationWorkspaceSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceName = pulumi.Input.asOptionalInput<String>(workspaceName);
+    this.identity,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+    this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class OnlineExperimentationWorkspaceArgs {
 
   factory OnlineExperimentationWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return OnlineExperimentationWorkspaceArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<OnlineExperimentationWorkspaceProperties>(OnlineExperimentationWorkspaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<OnlineExperimentationWorkspaceSku>(OnlineExperimentationWorkspaceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceName: map['workspaceName'] == null ? null : pulumi.Output.create<String>(map['workspaceName'] as String),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (OnlineExperimentationWorkspaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (OnlineExperimentationWorkspaceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
     );
   }
 }

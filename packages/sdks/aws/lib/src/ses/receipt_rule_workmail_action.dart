@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReceiptRuleWorkmailAction {
   /// The ARN of the WorkMail organization
-  final String organizationArn;
+  final pulumi.Input<String> organizationArn;
   /// The position of the action in the receipt rule
-  final int position;
+  final pulumi.Input<int> position;
   /// The ARN of an SNS topic to notify
-  final String? topicArn;
+  final pulumi.Input<String>? topicArn;
 
   /// Creates a new [ReceiptRuleWorkmailAction].
   /// [organizationArn] The ARN of the WorkMail organization
@@ -29,9 +30,9 @@ class ReceiptRuleWorkmailAction {
 
   factory ReceiptRuleWorkmailAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleWorkmailAction(
-      organizationArn: map['organizationArn'] as String,
-      position: map['position'] as int,
-      topicArn: map['topicArn'] == null ? null : map['topicArn'] as String,
+      organizationArn: (map['organizationArn'] as String).input(),
+      position: (map['position'] as int).input(),
+      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
     );
   }
 }

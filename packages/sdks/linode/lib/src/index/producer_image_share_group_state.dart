@@ -40,27 +40,17 @@ class ProducerImageShareGroupState {
   /// [updated] The date and time the Image Share Group was last updated.
   /// [uuid] The UUID of the Image Share Group.
   ProducerImageShareGroupState({
-    pulumi.Output<String>? created,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expiry,
-    pulumi.Output<List<ProducerImageShareGroupImage>>? images,
-    pulumi.Output<int>? imagesCount,
-    pulumi.Output<bool>? isSuspended,
-    pulumi.Output<String>? label,
-    pulumi.Output<int>? membersCount,
-    pulumi.Output<String>? updated,
-    pulumi.Output<String>? uuid,
-  }) :
-      created = pulumi.Input.asOptionalInput<String>(created),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expiry = pulumi.Input.asOptionalInput<String>(expiry),
-      images = pulumi.Input.asOptionalInput<List<ProducerImageShareGroupImage>>(images),
-      imagesCount = pulumi.Input.asOptionalInput<int>(imagesCount),
-      isSuspended = pulumi.Input.asOptionalInput<bool>(isSuspended),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      membersCount = pulumi.Input.asOptionalInput<int>(membersCount),
-      updated = pulumi.Input.asOptionalInput<String>(updated),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid);
+    this.created,
+    this.description,
+    this.expiry,
+    this.images,
+    this.imagesCount,
+    this.isSuspended,
+    this.label,
+    this.membersCount,
+    this.updated,
+    this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class ProducerImageShareGroupState {
 
   factory ProducerImageShareGroupState.fromMap(Map<String, dynamic> map) {
     return ProducerImageShareGroupState(
-      created: map['created'] == null ? null : pulumi.Output.create<String>(map['created'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expiry: map['expiry'] == null ? null : pulumi.Output.create<String>(map['expiry'] as String),
-      images: map['images'] == null ? null : pulumi.Output.create<List<ProducerImageShareGroupImage>>(pulumi.Input.decodeList<ProducerImageShareGroupImage>(map['images'], (value) => ProducerImageShareGroupImage.fromMap((value as Map).cast<String, dynamic>()))),
-      imagesCount: map['imagesCount'] == null ? null : pulumi.Output.create<int>(map['imagesCount'] as int),
-      isSuspended: map['isSuspended'] == null ? null : pulumi.Output.create<bool>(map['isSuspended'] as bool),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      membersCount: map['membersCount'] == null ? null : pulumi.Output.create<int>(map['membersCount'] as int),
-      updated: map['updated'] == null ? null : pulumi.Output.create<String>(map['updated'] as String),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
+      created: map['created'] == null ? null : (map['created'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
+      images: map['images'] == null ? null : (pulumi.Input.decodeList<ProducerImageShareGroupImage>(map['images'], (value) => ProducerImageShareGroupImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imagesCount: map['imagesCount'] == null ? null : (map['imagesCount'] as int).input(),
+      isSuspended: map['isSuspended'] == null ? null : (map['isSuspended'] as bool).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      membersCount: map['membersCount'] == null ? null : (map['membersCount'] as int).input(),
+      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

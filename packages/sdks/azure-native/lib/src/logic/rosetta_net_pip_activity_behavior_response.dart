@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The integration account RosettaNet ProcessConfiguration activity behavior.
 class RosettaNetPipActivityBehaviorResponse {
   /// The value indicating whether the RosettaNet PIP is used for a single action.
-  final String actionType;
+  final pulumi.Input<String> actionType;
   /// The value indicating whether authorization is required.
-  final bool isAuthorizationRequired;
+  final pulumi.Input<bool> isAuthorizationRequired;
   /// The value indicating whether secured transport is required.
-  final bool isSecuredTransportRequired;
+  final pulumi.Input<bool> isSecuredTransportRequired;
   /// The value indicating whether non-repudiation is for origin and content.
-  final bool nonRepudiationOfOriginAndContent;
+  final pulumi.Input<bool> nonRepudiationOfOriginAndContent;
   /// The persistent confidentiality encryption scope.
-  final String persistentConfidentialityScope;
+  final pulumi.Input<String> persistentConfidentialityScope;
   /// The value indicating whether the RosettaNet PIP communication is synchronous.
-  final String responseType;
+  final pulumi.Input<String> responseType;
   /// The value indicating retry count.
-  final int retryCount;
+  final pulumi.Input<int> retryCount;
   /// The time to perform in seconds.
-  final int timeToPerformInSeconds;
+  final pulumi.Input<int> timeToPerformInSeconds;
 
   /// Creates a new [RosettaNetPipActivityBehaviorResponse].
   /// [actionType] The value indicating whether the RosettaNet PIP is used for a single action.
@@ -55,14 +56,14 @@ class RosettaNetPipActivityBehaviorResponse {
 
   factory RosettaNetPipActivityBehaviorResponse.fromMap(Map<String, dynamic> map) {
     return RosettaNetPipActivityBehaviorResponse(
-      actionType: map['actionType'] as String,
-      isAuthorizationRequired: map['isAuthorizationRequired'] as bool,
-      isSecuredTransportRequired: map['isSecuredTransportRequired'] as bool,
-      nonRepudiationOfOriginAndContent: map['nonRepudiationOfOriginAndContent'] as bool,
-      persistentConfidentialityScope: map['persistentConfidentialityScope'] as String,
-      responseType: map['responseType'] as String,
-      retryCount: map['retryCount'] as int,
-      timeToPerformInSeconds: map['timeToPerformInSeconds'] as int,
+      actionType: (map['actionType'] as String).input(),
+      isAuthorizationRequired: (map['isAuthorizationRequired'] as bool).input(),
+      isSecuredTransportRequired: (map['isSecuredTransportRequired'] as bool).input(),
+      nonRepudiationOfOriginAndContent: (map['nonRepudiationOfOriginAndContent'] as bool).input(),
+      persistentConfidentialityScope: (map['persistentConfidentialityScope'] as String).input(),
+      responseType: (map['responseType'] as String).input(),
+      retryCount: (map['retryCount'] as int).input(),
+      timeToPerformInSeconds: (map['timeToPerformInSeconds'] as int).input(),
     );
   }
 }

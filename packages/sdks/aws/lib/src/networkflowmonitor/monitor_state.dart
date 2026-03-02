@@ -38,25 +38,16 @@ class MonitorState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   MonitorState({
-    pulumi.Output<List<MonitorLocalResource>>? localResources,
-    pulumi.Output<String>? monitorArn,
-    pulumi.Output<String>? monitorName,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<MonitorRemoteResource>>? remoteResources,
-    pulumi.Output<String>? scopeArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<MonitorTimeouts>? timeouts,
-  }) :
-      localResources = pulumi.Input.asOptionalInput<List<MonitorLocalResource>>(localResources),
-      monitorArn = pulumi.Input.asOptionalInput<String>(monitorArn),
-      monitorName = pulumi.Input.asOptionalInput<String>(monitorName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      remoteResources = pulumi.Input.asOptionalInput<List<MonitorRemoteResource>>(remoteResources),
-      scopeArn = pulumi.Input.asOptionalInput<String>(scopeArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<MonitorTimeouts>(timeouts);
+    this.localResources,
+    this.monitorArn,
+    this.monitorName,
+    this.region,
+    this.remoteResources,
+    this.scopeArn,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class MonitorState {
 
   factory MonitorState.fromMap(Map<String, dynamic> map) {
     return MonitorState(
-      localResources: map['localResources'] == null ? null : pulumi.Output.create<List<MonitorLocalResource>>(pulumi.Input.decodeList<MonitorLocalResource>(map['localResources'], (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>()))),
-      monitorArn: map['monitorArn'] == null ? null : pulumi.Output.create<String>(map['monitorArn'] as String),
-      monitorName: map['monitorName'] == null ? null : pulumi.Output.create<String>(map['monitorName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      remoteResources: map['remoteResources'] == null ? null : pulumi.Output.create<List<MonitorRemoteResource>>(pulumi.Input.decodeList<MonitorRemoteResource>(map['remoteResources'], (value) => MonitorRemoteResource.fromMap((value as Map).cast<String, dynamic>()))),
-      scopeArn: map['scopeArn'] == null ? null : pulumi.Output.create<String>(map['scopeArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<MonitorTimeouts>(MonitorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      localResources: map['localResources'] == null ? null : (pulumi.Input.decodeList<MonitorLocalResource>(map['localResources'], (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      monitorArn: map['monitorArn'] == null ? null : (map['monitorArn'] as String).input(),
+      monitorName: map['monitorName'] == null ? null : (map['monitorName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      remoteResources: map['remoteResources'] == null ? null : (pulumi.Input.decodeList<MonitorRemoteResource>(map['remoteResources'], (value) => MonitorRemoteResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopeArn: map['scopeArn'] == null ? null : (map['scopeArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (MonitorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

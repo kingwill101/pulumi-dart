@@ -38,23 +38,15 @@ class AgentcoreBrowserArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   AgentcoreBrowserArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? executionRoleArn,
-    pulumi.Output<String>? name,
-    required pulumi.Output<AgentcoreBrowserNetworkConfiguration> networkConfiguration,
-    pulumi.Output<AgentcoreBrowserRecording>? recording,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<AgentcoreBrowserTimeouts>? timeouts,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      executionRoleArn = pulumi.Input.asOptionalInput<String>(executionRoleArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkConfiguration = pulumi.Input.asInput<AgentcoreBrowserNetworkConfiguration>(networkConfiguration),
-      recording = pulumi.Input.asOptionalInput<AgentcoreBrowserRecording>(recording),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<AgentcoreBrowserTimeouts>(timeouts);
+    this.description,
+    this.executionRoleArn,
+    this.name,
+    required this.networkConfiguration,
+    this.recording,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class AgentcoreBrowserArgs {
 
   factory AgentcoreBrowserArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreBrowserArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      executionRoleArn: map['executionRoleArn'] == null ? null : pulumi.Output.create<String>(map['executionRoleArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkConfiguration: pulumi.Output.create<AgentcoreBrowserNetworkConfiguration>(AgentcoreBrowserNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())),
-      recording: map['recording'] == null ? null : pulumi.Output.create<AgentcoreBrowserRecording>(AgentcoreBrowserRecording.fromMap((map['recording'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentcoreBrowserTimeouts>(AgentcoreBrowserTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkConfiguration: (AgentcoreBrowserNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      recording: map['recording'] == null ? null : (AgentcoreBrowserRecording.fromMap((map['recording'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentcoreBrowserTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

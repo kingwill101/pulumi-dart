@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Scheduler settings for standard environment.
 class StandardSchedulerSettingsResponseAppengineV1beta {
   /// Maximum number of instances to run for this version. Set to zero to disable max_instances configuration.
-  final int maxInstances;
+  final pulumi.Input<int> maxInstances;
   /// Minimum number of instances to run for this version. Set to zero to disable min_instances configuration.
-  final int minInstances;
+  final pulumi.Input<int> minInstances;
   /// Target CPU utilization ratio to maintain when scaling.
-  final double targetCpuUtilization;
+  final pulumi.Input<double> targetCpuUtilization;
   /// Target throughput utilization ratio to maintain when scaling
-  final double targetThroughputUtilization;
+  final pulumi.Input<double> targetThroughputUtilization;
 
   /// Creates a new [StandardSchedulerSettingsResponseAppengineV1beta].
   /// [maxInstances] Maximum number of instances to run for this version. Set to zero to disable max_instances configuration.
@@ -35,10 +36,10 @@ class StandardSchedulerSettingsResponseAppengineV1beta {
 
   factory StandardSchedulerSettingsResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return StandardSchedulerSettingsResponseAppengineV1beta(
-      maxInstances: map['maxInstances'] as int,
-      minInstances: map['minInstances'] as int,
-      targetCpuUtilization: map['targetCpuUtilization'] as double,
-      targetThroughputUtilization: map['targetThroughputUtilization'] as double,
+      maxInstances: (map['maxInstances'] as int).input(),
+      minInstances: (map['minInstances'] as int).input(),
+      targetCpuUtilization: (map['targetCpuUtilization'] as double).input(),
+      targetThroughputUtilization: (map['targetThroughputUtilization'] as double).input(),
     );
   }
 }

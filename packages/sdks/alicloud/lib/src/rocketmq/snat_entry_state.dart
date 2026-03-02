@@ -16,13 +16,10 @@ class SnatEntryState {
   /// [sagId] The ID of the SAG instance.
   /// [snatIp] The public IP address.
   SnatEntryState({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<String>? sagId,
-    pulumi.Output<String>? snatIp,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      sagId = pulumi.Input.asOptionalInput<String>(sagId),
-      snatIp = pulumi.Input.asOptionalInput<String>(snatIp);
+    this.cidrBlock,
+    this.sagId,
+    this.snatIp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class SnatEntryState {
 
   factory SnatEntryState.fromMap(Map<String, dynamic> map) {
     return SnatEntryState(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      sagId: map['sagId'] == null ? null : pulumi.Output.create<String>(map['sagId'] as String),
-      snatIp: map['snatIp'] == null ? null : pulumi.Output.create<String>(map['snatIp'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      sagId: map['sagId'] == null ? null : (map['sagId'] as String).input(),
+      snatIp: map['snatIp'] == null ? null : (map['snatIp'] as String).input(),
     );
   }
 }

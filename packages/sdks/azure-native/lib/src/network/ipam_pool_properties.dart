@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of IpamPool resource properties which are specific to the Pool resource.
 class IpamPoolProperties {
   /// List of IP address prefixes of the resource.
-  final List<String> addressPrefixes;
-  final String? description;
+  final pulumi.Input<List<String>> addressPrefixes;
+  final pulumi.Input<String>? description;
   /// String representing a friendly name for the resource.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// String representing parent IpamPool resource name. If empty the IpamPool will be a root pool.
-  final String? parentPoolName;
+  final pulumi.Input<String>? parentPoolName;
 
   /// Creates a new [IpamPoolProperties].
   /// [addressPrefixes] List of IP address prefixes of the resource.
@@ -34,10 +35,10 @@ class IpamPoolProperties {
 
   factory IpamPoolProperties.fromMap(Map<String, dynamic> map) {
     return IpamPoolProperties(
-      addressPrefixes: (map['addressPrefixes'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      parentPoolName: map['parentPoolName'] == null ? null : map['parentPoolName'] as String,
+      addressPrefixes: ((map['addressPrefixes'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      parentPoolName: map['parentPoolName'] == null ? null : (map['parentPoolName'] as String).input(),
     );
   }
 }

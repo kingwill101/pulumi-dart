@@ -49,29 +49,18 @@ class DistributionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags for the Lightsail Distribution. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DistributionArgs({
-    required pulumi.Output<String> bundleId,
-    pulumi.Output<DistributionCacheBehaviorSettings>? cacheBehaviorSettings,
-    pulumi.Output<List<DistributionCacheBehavior>>? cacheBehaviors,
-    pulumi.Output<String>? certificateName,
-    required pulumi.Output<DistributionDefaultCacheBehavior> defaultCacheBehavior,
-    pulumi.Output<String>? ipAddressType,
-    pulumi.Output<bool>? isEnabled,
-    pulumi.Output<String>? name,
-    required pulumi.Output<DistributionOrigin> origin,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      bundleId = pulumi.Input.asInput<String>(bundleId),
-      cacheBehaviorSettings = pulumi.Input.asOptionalInput<DistributionCacheBehaviorSettings>(cacheBehaviorSettings),
-      cacheBehaviors = pulumi.Input.asOptionalInput<List<DistributionCacheBehavior>>(cacheBehaviors),
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      defaultCacheBehavior = pulumi.Input.asInput<DistributionDefaultCacheBehavior>(defaultCacheBehavior),
-      ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
-      isEnabled = pulumi.Input.asOptionalInput<bool>(isEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      origin = pulumi.Input.asInput<DistributionOrigin>(origin),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.bundleId,
+    this.cacheBehaviorSettings,
+    this.cacheBehaviors,
+    this.certificateName,
+    required this.defaultCacheBehavior,
+    this.ipAddressType,
+    this.isEnabled,
+    this.name,
+    required this.origin,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,17 +80,17 @@ class DistributionArgs {
 
   factory DistributionArgs.fromMap(Map<String, dynamic> map) {
     return DistributionArgs(
-      bundleId: pulumi.Output.create<String>(map['bundleId'] as String),
-      cacheBehaviorSettings: map['cacheBehaviorSettings'] == null ? null : pulumi.Output.create<DistributionCacheBehaviorSettings>(DistributionCacheBehaviorSettings.fromMap((map['cacheBehaviorSettings'] as Map).cast<String, dynamic>())),
-      cacheBehaviors: map['cacheBehaviors'] == null ? null : pulumi.Output.create<List<DistributionCacheBehavior>>(pulumi.Input.decodeList<DistributionCacheBehavior>(map['cacheBehaviors'], (value) => DistributionCacheBehavior.fromMap((value as Map).cast<String, dynamic>()))),
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      defaultCacheBehavior: pulumi.Output.create<DistributionDefaultCacheBehavior>(DistributionDefaultCacheBehavior.fromMap((map['defaultCacheBehavior'] as Map).cast<String, dynamic>())),
-      ipAddressType: map['ipAddressType'] == null ? null : pulumi.Output.create<String>(map['ipAddressType'] as String),
-      isEnabled: map['isEnabled'] == null ? null : pulumi.Output.create<bool>(map['isEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      origin: pulumi.Output.create<DistributionOrigin>(DistributionOrigin.fromMap((map['origin'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      bundleId: (map['bundleId'] as String).input(),
+      cacheBehaviorSettings: map['cacheBehaviorSettings'] == null ? null : (DistributionCacheBehaviorSettings.fromMap((map['cacheBehaviorSettings'] as Map).cast<String, dynamic>())).input(),
+      cacheBehaviors: map['cacheBehaviors'] == null ? null : (pulumi.Input.decodeList<DistributionCacheBehavior>(map['cacheBehaviors'], (value) => DistributionCacheBehavior.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      defaultCacheBehavior: (DistributionDefaultCacheBehavior.fromMap((map['defaultCacheBehavior'] as Map).cast<String, dynamic>())).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      origin: (DistributionOrigin.fromMap((map['origin'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

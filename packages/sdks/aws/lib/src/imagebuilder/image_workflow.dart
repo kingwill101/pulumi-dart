@@ -5,15 +5,15 @@ import 'image_workflow_parameter.dart';
 
 class ImageWorkflow {
   /// The action to take if the workflow fails. Must be one of `CONTINUE` or `ABORT`.
-  final String? onFailure;
+  final pulumi.Input<String>? onFailure;
   /// The parallel group in which to run a test Workflow.
-  final String? parallelGroup;
+  final pulumi.Input<String>? parallelGroup;
   /// Configuration block for the workflow parameters. Detailed below.
-  final List<ImageWorkflowParameter>? parameters;
+  final pulumi.Input<List<ImageWorkflowParameter>>? parameters;
   /// Amazon Resource Name (ARN) of the Image Builder Workflow.
   ///
   /// The following arguments are optional:
-  final String workflowArn;
+  final pulumi.Input<String> workflowArn;
 
   /// Creates a new [ImageWorkflow].
   /// [onFailure] The action to take if the workflow fails. Must be one of `CONTINUE` or `ABORT`.
@@ -31,17 +31,17 @@ class ImageWorkflow {
     return <String, dynamic>{
       'onFailure': ?onFailure,
       'parallelGroup': ?parallelGroup,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<ImageWorkflowParameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ImageWorkflowParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ImageWorkflowParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workflowArn': workflowArn,
     };
   }
 
   factory ImageWorkflow.fromMap(Map<String, dynamic> map) {
     return ImageWorkflow(
-      onFailure: map['onFailure'] == null ? null : map['onFailure'] as String,
-      parallelGroup: map['parallelGroup'] == null ? null : map['parallelGroup'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<ImageWorkflowParameter>(map['parameters'], (value) => ImageWorkflowParameter.fromMap((value as Map).cast<String, dynamic>())),
-      workflowArn: map['workflowArn'] as String,
+      onFailure: map['onFailure'] == null ? null : (map['onFailure'] as String).input(),
+      parallelGroup: map['parallelGroup'] == null ? null : (map['parallelGroup'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ImageWorkflowParameter>(map['parameters'], (value) => ImageWorkflowParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workflowArn: (map['workflowArn'] as String).input(),
     );
   }
 }

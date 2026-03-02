@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VMwareClusterUpgradePolicy {
   /// Controls whether the upgrade applies to the control plane only.
-  final bool? controlPlaneOnly;
+  final pulumi.Input<bool>? controlPlaneOnly;
 
   /// Creates a new [VMwareClusterUpgradePolicy].
   /// [controlPlaneOnly] Controls whether the upgrade applies to the control plane only.
@@ -19,7 +20,7 @@ class VMwareClusterUpgradePolicy {
 
   factory VMwareClusterUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return VMwareClusterUpgradePolicy(
-      controlPlaneOnly: map['controlPlaneOnly'] == null ? null : map['controlPlaneOnly'] as bool,
+      controlPlaneOnly: map['controlPlaneOnly'] == null ? null : (map['controlPlaneOnly'] as bool).input(),
     );
   }
 }

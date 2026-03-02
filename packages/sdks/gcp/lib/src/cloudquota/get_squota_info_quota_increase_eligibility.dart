@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSQuotaInfoQuotaIncreaseEligibility {
   /// The enumeration of reasons when it is ineligible to request increase adjustment.
-  final String ineligibilityReason;
+  final pulumi.Input<String> ineligibilityReason;
   /// Whether a higher quota value can be requested for the quota.
-  final bool isEligible;
+  final pulumi.Input<bool> isEligible;
 
   /// Creates a new [GetSQuotaInfoQuotaIncreaseEligibility].
   /// [ineligibilityReason] The enumeration of reasons when it is ineligible to request increase adjustment.
@@ -24,8 +25,8 @@ class GetSQuotaInfoQuotaIncreaseEligibility {
 
   factory GetSQuotaInfoQuotaIncreaseEligibility.fromMap(Map<String, dynamic> map) {
     return GetSQuotaInfoQuotaIncreaseEligibility(
-      ineligibilityReason: map['ineligibilityReason'] as String,
-      isEligible: map['isEligible'] as bool,
+      ineligibilityReason: (map['ineligibilityReason'] as String).input(),
+      isEligible: (map['isEligible'] as bool).input(),
     );
   }
 }

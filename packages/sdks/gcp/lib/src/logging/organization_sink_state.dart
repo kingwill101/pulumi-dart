@@ -55,29 +55,18 @@ class OrganizationSinkState {
   /// [orgId] The numeric ID of the organization to be exported to the sink.
   /// [writerIdentity] The identity associated with this sink. This identity must be granted write access to the
   OrganizationSinkState({
-    pulumi.Output<OrganizationSinkBigqueryOptions>? bigqueryOptions,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destination,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<List<OrganizationSinkExclusion>>? exclusions,
-    pulumi.Output<String>? filter,
-    pulumi.Output<bool>? includeChildren,
-    pulumi.Output<bool>? interceptChildren,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? writerIdentity,
-  }) :
-      bigqueryOptions = pulumi.Input.asOptionalInput<OrganizationSinkBigqueryOptions>(bigqueryOptions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destination = pulumi.Input.asOptionalInput<String>(destination),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      exclusions = pulumi.Input.asOptionalInput<List<OrganizationSinkExclusion>>(exclusions),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      includeChildren = pulumi.Input.asOptionalInput<bool>(includeChildren),
-      interceptChildren = pulumi.Input.asOptionalInput<bool>(interceptChildren),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      writerIdentity = pulumi.Input.asOptionalInput<String>(writerIdentity);
+    this.bigqueryOptions,
+    this.description,
+    this.destination,
+    this.disabled,
+    this.exclusions,
+    this.filter,
+    this.includeChildren,
+    this.interceptChildren,
+    this.name,
+    this.orgId,
+    this.writerIdentity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,17 +86,17 @@ class OrganizationSinkState {
 
   factory OrganizationSinkState.fromMap(Map<String, dynamic> map) {
     return OrganizationSinkState(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : pulumi.Output.create<OrganizationSinkBigqueryOptions>(OrganizationSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destination: map['destination'] == null ? null : pulumi.Output.create<String>(map['destination'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      exclusions: map['exclusions'] == null ? null : pulumi.Output.create<List<OrganizationSinkExclusion>>(pulumi.Input.decodeList<OrganizationSinkExclusion>(map['exclusions'], (value) => OrganizationSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      includeChildren: map['includeChildren'] == null ? null : pulumi.Output.create<bool>(map['includeChildren'] as bool),
-      interceptChildren: map['interceptChildren'] == null ? null : pulumi.Output.create<bool>(map['interceptChildren'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      writerIdentity: map['writerIdentity'] == null ? null : pulumi.Output.create<String>(map['writerIdentity'] as String),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (OrganizationSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<OrganizationSinkExclusion>(map['exclusions'], (value) => OrganizationSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren'] as bool).input(),
+      interceptChildren: map['interceptChildren'] == null ? null : (map['interceptChildren'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      writerIdentity: map['writerIdentity'] == null ? null : (map['writerIdentity'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetActiveSessionsArgs {
   /// [bastionHostName] The name of the Bastion Host.
   /// [resourceGroupName] The name of the resource group.
   GetActiveSessionsArgs({
-    required pulumi.Output<String> bastionHostName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      bastionHostName = pulumi.Input.asInput<String>(bastionHostName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.bastionHostName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetActiveSessionsArgs {
 
   factory GetActiveSessionsArgs.fromMap(Map<String, dynamic> map) {
     return GetActiveSessionsArgs(
-      bastionHostName: pulumi.Output.create<String>(map['bastionHostName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      bastionHostName: (map['bastionHostName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

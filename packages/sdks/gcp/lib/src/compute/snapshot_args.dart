@@ -79,33 +79,20 @@ class SnapshotArgs {
   /// [storageLocations] Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
   /// [zone] A reference to the zone where the disk is hosted.
   SnapshotArgs({
-    pulumi.Output<String>? chainName,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? guestFlush,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<SnapshotSnapshotEncryptionKey>? snapshotEncryptionKey,
-    pulumi.Output<String>? snapshotType,
-    pulumi.Output<String>? sourceDisk,
-    pulumi.Output<SnapshotSourceDiskEncryptionKey>? sourceDiskEncryptionKey,
-    pulumi.Output<String>? sourceInstantSnapshot,
-    pulumi.Output<List<String>>? storageLocations,
-    pulumi.Output<String>? zone,
-  }) :
-      chainName = pulumi.Input.asOptionalInput<String>(chainName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      guestFlush = pulumi.Input.asOptionalInput<bool>(guestFlush),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      snapshotEncryptionKey = pulumi.Input.asOptionalInput<SnapshotSnapshotEncryptionKey>(snapshotEncryptionKey),
-      snapshotType = pulumi.Input.asOptionalInput<String>(snapshotType),
-      sourceDisk = pulumi.Input.asOptionalInput<String>(sourceDisk),
-      sourceDiskEncryptionKey = pulumi.Input.asOptionalInput<SnapshotSourceDiskEncryptionKey>(sourceDiskEncryptionKey),
-      sourceInstantSnapshot = pulumi.Input.asOptionalInput<String>(sourceInstantSnapshot),
-      storageLocations = pulumi.Input.asOptionalInput<List<String>>(storageLocations),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.chainName,
+    this.description,
+    this.guestFlush,
+    this.labels,
+    this.name,
+    this.project,
+    this.snapshotEncryptionKey,
+    this.snapshotType,
+    this.sourceDisk,
+    this.sourceDiskEncryptionKey,
+    this.sourceInstantSnapshot,
+    this.storageLocations,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -127,19 +114,19 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      chainName: map['chainName'] == null ? null : pulumi.Output.create<String>(map['chainName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      guestFlush: map['guestFlush'] == null ? null : pulumi.Output.create<bool>(map['guestFlush'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      snapshotEncryptionKey: map['snapshotEncryptionKey'] == null ? null : pulumi.Output.create<SnapshotSnapshotEncryptionKey>(SnapshotSnapshotEncryptionKey.fromMap((map['snapshotEncryptionKey'] as Map).cast<String, dynamic>())),
-      snapshotType: map['snapshotType'] == null ? null : pulumi.Output.create<String>(map['snapshotType'] as String),
-      sourceDisk: map['sourceDisk'] == null ? null : pulumi.Output.create<String>(map['sourceDisk'] as String),
-      sourceDiskEncryptionKey: map['sourceDiskEncryptionKey'] == null ? null : pulumi.Output.create<SnapshotSourceDiskEncryptionKey>(SnapshotSourceDiskEncryptionKey.fromMap((map['sourceDiskEncryptionKey'] as Map).cast<String, dynamic>())),
-      sourceInstantSnapshot: map['sourceInstantSnapshot'] == null ? null : pulumi.Output.create<String>(map['sourceInstantSnapshot'] as String),
-      storageLocations: map['storageLocations'] == null ? null : pulumi.Output.create<List<String>>((map['storageLocations'] as List).cast<String>()),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      chainName: map['chainName'] == null ? null : (map['chainName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      snapshotEncryptionKey: map['snapshotEncryptionKey'] == null ? null : (SnapshotSnapshotEncryptionKey.fromMap((map['snapshotEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType'] as String).input(),
+      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk'] as String).input(),
+      sourceDiskEncryptionKey: map['sourceDiskEncryptionKey'] == null ? null : (SnapshotSourceDiskEncryptionKey.fromMap((map['sourceDiskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      sourceInstantSnapshot: map['sourceInstantSnapshot'] == null ? null : (map['sourceInstantSnapshot'] as String).input(),
+      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations'] as List).cast<String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

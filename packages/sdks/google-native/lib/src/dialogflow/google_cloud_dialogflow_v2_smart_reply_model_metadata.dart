@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_smart_reply_model_metadata_training_model_type.dart';
 
 /// Metadata for smart reply models.
 class GoogleCloudDialogflowV2SmartReplyModelMetadata {
   /// Optional. Type of the smart reply model. If not provided, model_type is used.
-  final GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType? trainingModelType;
+  final pulumi.Input<GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType>? trainingModelType;
 
   /// Creates a new [GoogleCloudDialogflowV2SmartReplyModelMetadata].
   /// [trainingModelType] Optional. Type of the smart reply model. If not provided, model_type is used.
@@ -15,13 +16,13 @@ class GoogleCloudDialogflowV2SmartReplyModelMetadata {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'trainingModelType': ?trainingModelType == null ? null : trainingModelType!.value,
+      'trainingModelType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType, String>(trainingModelType, (value) => value.value),
     };
   }
 
   factory GoogleCloudDialogflowV2SmartReplyModelMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2SmartReplyModelMetadata(
-      trainingModelType: map['trainingModelType'] == null ? null : GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType.fromValue(map['trainingModelType'] as String),
+      trainingModelType: map['trainingModelType'] == null ? null : (GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType.fromValue(map['trainingModelType'] as String)).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_api_key.dart';
 
 /// This connection type covers the generic ApiKey auth connection categories, for examples:
@@ -25,21 +26,21 @@ import 'connection_api_key.dart';
 class ApiKeyAuthConnectionProperties {
   /// Authentication type of the connection target
   /// Expected value is 'ApiKey'.
-  final String authType;
+  final pulumi.Input<String> authType;
   /// Category of the connection
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Api key object for connection credential.
-  final ConnectionApiKey? credentials;
-  final String? error;
-  final String? expiryTime;
-  final bool? isSharedToAll;
+  final pulumi.Input<ConnectionApiKey>? credentials;
+  final pulumi.Input<String>? error;
+  final pulumi.Input<String>? expiryTime;
+  final pulumi.Input<bool>? isSharedToAll;
   /// Store user metadata for this connection
-  final Map<String, String>? metadata;
-  final String? peRequirement;
-  final String? peStatus;
-  final List<String>? sharedUserList;
-  final String? target;
-  final bool? useWorkspaceManagedIdentity;
+  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<String>? peRequirement;
+  final pulumi.Input<String>? peStatus;
+  final pulumi.Input<List<String>>? sharedUserList;
+  final pulumi.Input<String>? target;
+  final pulumi.Input<bool>? useWorkspaceManagedIdentity;
 
   /// Creates a new [ApiKeyAuthConnectionProperties].
   /// [authType] Authentication type of the connection target
@@ -73,7 +74,7 @@ class ApiKeyAuthConnectionProperties {
     return <String, dynamic>{
       'authType': authType,
       'category': ?category,
-      'credentials': ?credentials == null ? null : credentials!.toMap(),
+      'credentials': ?pulumi.Input.mapOptionalInputValue<ConnectionApiKey, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'error': ?error,
       'expiryTime': ?expiryTime,
       'isSharedToAll': ?isSharedToAll,
@@ -88,18 +89,18 @@ class ApiKeyAuthConnectionProperties {
 
   factory ApiKeyAuthConnectionProperties.fromMap(Map<String, dynamic> map) {
     return ApiKeyAuthConnectionProperties(
-      authType: map['authType'] as String,
-      category: map['category'] == null ? null : map['category'] as String,
-      credentials: map['credentials'] == null ? null : ConnectionApiKey.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
-      error: map['error'] == null ? null : map['error'] as String,
-      expiryTime: map['expiryTime'] == null ? null : map['expiryTime'] as String,
-      isSharedToAll: map['isSharedToAll'] == null ? null : map['isSharedToAll'] as bool,
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
-      peRequirement: map['peRequirement'] == null ? null : map['peRequirement'] as String,
-      peStatus: map['peStatus'] == null ? null : map['peStatus'] as String,
-      sharedUserList: map['sharedUserList'] == null ? null : (map['sharedUserList'] as List).cast<String>(),
-      target: map['target'] == null ? null : map['target'] as String,
-      useWorkspaceManagedIdentity: map['useWorkspaceManagedIdentity'] == null ? null : map['useWorkspaceManagedIdentity'] as bool,
+      authType: (map['authType'] as String).input(),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      credentials: map['credentials'] == null ? null : (ConnectionApiKey.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (map['error'] as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      isSharedToAll: map['isSharedToAll'] == null ? null : (map['isSharedToAll'] as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      peRequirement: map['peRequirement'] == null ? null : (map['peRequirement'] as String).input(),
+      peStatus: map['peStatus'] == null ? null : (map['peStatus'] as String).input(),
+      sharedUserList: map['sharedUserList'] == null ? null : ((map['sharedUserList'] as List).cast<String>()).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      useWorkspaceManagedIdentity: map['useWorkspaceManagedIdentity'] == null ? null : (map['useWorkspaceManagedIdentity'] as bool).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleHeader {
   /// The name of the query header to inspect. This setting must be provided as lower case characters.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleHeader].
   /// [name] The name of the query header to inspect. This setting must be provided as lower case characters.
@@ -19,7 +20,7 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleHeader {
 
   factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleHeader.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleHeader(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

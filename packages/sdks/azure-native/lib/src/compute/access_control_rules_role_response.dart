@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of an Access Control Rule Role.
 class AccessControlRulesRoleResponse {
   /// The name of the role.
-  final String name;
+  final pulumi.Input<String> name;
   /// A list of privileges needed by this role.
-  final List<String> privileges;
+  final pulumi.Input<List<String>> privileges;
 
   /// Creates a new [AccessControlRulesRoleResponse].
   /// [name] The name of the role.
@@ -25,8 +26,8 @@ class AccessControlRulesRoleResponse {
 
   factory AccessControlRulesRoleResponse.fromMap(Map<String, dynamic> map) {
     return AccessControlRulesRoleResponse(
-      name: map['name'] as String,
-      privileges: (map['privileges'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      privileges: ((map['privileges'] as List).cast<String>()).input(),
     );
   }
 }

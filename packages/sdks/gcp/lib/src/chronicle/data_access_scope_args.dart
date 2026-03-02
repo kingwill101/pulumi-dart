@@ -57,23 +57,15 @@ class DataAccessScopeArgs {
   /// [location] The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   /// [project] The ID of the project in which the resource belongs.
   DataAccessScopeArgs({
-    pulumi.Output<bool>? allowAll,
-    pulumi.Output<List<DataAccessScopeAllowedDataAccessLabel>>? allowedDataAccessLabels,
-    required pulumi.Output<String> dataAccessScopeId,
-    pulumi.Output<List<DataAccessScopeDeniedDataAccessLabel>>? deniedDataAccessLabels,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instance,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      allowAll = pulumi.Input.asOptionalInput<bool>(allowAll),
-      allowedDataAccessLabels = pulumi.Input.asOptionalInput<List<DataAccessScopeAllowedDataAccessLabel>>(allowedDataAccessLabels),
-      dataAccessScopeId = pulumi.Input.asInput<String>(dataAccessScopeId),
-      deniedDataAccessLabels = pulumi.Input.asOptionalInput<List<DataAccessScopeDeniedDataAccessLabel>>(deniedDataAccessLabels),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instance = pulumi.Input.asInput<String>(instance),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.allowAll,
+    this.allowedDataAccessLabels,
+    required this.dataAccessScopeId,
+    this.deniedDataAccessLabels,
+    this.description,
+    required this.instance,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,14 +82,14 @@ class DataAccessScopeArgs {
 
   factory DataAccessScopeArgs.fromMap(Map<String, dynamic> map) {
     return DataAccessScopeArgs(
-      allowAll: map['allowAll'] == null ? null : pulumi.Output.create<bool>(map['allowAll'] as bool),
-      allowedDataAccessLabels: map['allowedDataAccessLabels'] == null ? null : pulumi.Output.create<List<DataAccessScopeAllowedDataAccessLabel>>(pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(map['allowedDataAccessLabels'], (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      dataAccessScopeId: pulumi.Output.create<String>(map['dataAccessScopeId'] as String),
-      deniedDataAccessLabels: map['deniedDataAccessLabels'] == null ? null : pulumi.Output.create<List<DataAccessScopeDeniedDataAccessLabel>>(pulumi.Input.decodeList<DataAccessScopeDeniedDataAccessLabel>(map['deniedDataAccessLabels'], (value) => DataAccessScopeDeniedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      allowAll: map['allowAll'] == null ? null : (map['allowAll'] as bool).input(),
+      allowedDataAccessLabels: map['allowedDataAccessLabels'] == null ? null : (pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(map['allowedDataAccessLabels'], (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataAccessScopeId: (map['dataAccessScopeId'] as String).input(),
+      deniedDataAccessLabels: map['deniedDataAccessLabels'] == null ? null : (pulumi.Input.decodeList<DataAccessScopeDeniedDataAccessLabel>(map['deniedDataAccessLabels'], (value) => DataAccessScopeDeniedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

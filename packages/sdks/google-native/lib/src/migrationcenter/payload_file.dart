@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Payload file for inline import job payload.
 class PayloadFile {
   /// The file data.
-  final String? data;
+  final pulumi.Input<String>? data;
   /// The file name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [PayloadFile].
   /// [data] The file data.
@@ -25,8 +26,8 @@ class PayloadFile {
 
   factory PayloadFile.fromMap(Map<String, dynamic> map) {
     return PayloadFile(
-      data: map['data'] == null ? null : map['data'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

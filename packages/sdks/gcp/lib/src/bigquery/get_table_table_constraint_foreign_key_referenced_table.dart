@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableTableConstraintForeignKeyReferencedTable {
   /// The dataset ID.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
   /// The ID of the project containing this table.
-  final String projectId;
+  final pulumi.Input<String> projectId;
   /// The table ID.
-  final String tableId;
+  final pulumi.Input<String> tableId;
 
   /// Creates a new [GetTableTableConstraintForeignKeyReferencedTable].
   /// [datasetId] The dataset ID.
@@ -29,9 +30,9 @@ class GetTableTableConstraintForeignKeyReferencedTable {
 
   factory GetTableTableConstraintForeignKeyReferencedTable.fromMap(Map<String, dynamic> map) {
     return GetTableTableConstraintForeignKeyReferencedTable(
-      datasetId: map['datasetId'] as String,
-      projectId: map['projectId'] as String,
-      tableId: map['tableId'] as String,
+      datasetId: (map['datasetId'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
+      tableId: (map['tableId'] as String).input(),
     );
   }
 }

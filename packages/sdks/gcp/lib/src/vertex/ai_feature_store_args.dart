@@ -42,23 +42,15 @@ class AiFeatureStoreArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the dataset. eg us-central1
   AiFeatureStoreArgs({
-    pulumi.Output<AiFeatureStoreEncryptionSpec>? encryptionSpec,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<AiFeatureStoreOnlineServingConfig>? onlineServingConfig,
-    pulumi.Output<int>? onlineStorageTtlDays,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      encryptionSpec = pulumi.Input.asOptionalInput<AiFeatureStoreEncryptionSpec>(encryptionSpec),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      onlineServingConfig = pulumi.Input.asOptionalInput<AiFeatureStoreOnlineServingConfig>(onlineServingConfig),
-      onlineStorageTtlDays = pulumi.Input.asOptionalInput<int>(onlineStorageTtlDays),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.encryptionSpec,
+    this.forceDestroy,
+    this.labels,
+    this.name,
+    this.onlineServingConfig,
+    this.onlineStorageTtlDays,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class AiFeatureStoreArgs {
 
   factory AiFeatureStoreArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreArgs(
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<AiFeatureStoreEncryptionSpec>(AiFeatureStoreEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      onlineServingConfig: map['onlineServingConfig'] == null ? null : pulumi.Output.create<AiFeatureStoreOnlineServingConfig>(AiFeatureStoreOnlineServingConfig.fromMap((map['onlineServingConfig'] as Map).cast<String, dynamic>())),
-      onlineStorageTtlDays: map['onlineStorageTtlDays'] == null ? null : pulumi.Output.create<int>(map['onlineStorageTtlDays'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiFeatureStoreEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      onlineServingConfig: map['onlineServingConfig'] == null ? null : (AiFeatureStoreOnlineServingConfig.fromMap((map['onlineServingConfig'] as Map).cast<String, dynamic>())).input(),
+      onlineStorageTtlDays: map['onlineStorageTtlDays'] == null ? null : (map['onlineStorageTtlDays'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

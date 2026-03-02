@@ -6,9 +6,9 @@ import 'principal.dart';
 /// Role assignment item that indicates which principals should be assigned this role definition
 class RoleAssignmentItem {
   /// List of principal IDs to which to assign this role definition
-  final List<Principal>? principals;
+  final pulumi.Input<List<Principal>>? principals;
   /// Role definition identifier
-  final String roleDefinitionId;
+  final pulumi.Input<String> roleDefinitionId;
 
   /// Creates a new [RoleAssignmentItem].
   /// [principals] List of principal IDs to which to assign this role definition
@@ -20,15 +20,15 @@ class RoleAssignmentItem {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'principals': ?principals == null ? null : pulumi.Input.encodeList<Principal, Map<String, dynamic>>(principals!, (value) => value.toMap()),
+      'principals': ?pulumi.Input.mapOptionalInputValue<List<Principal>, List<Map<String, dynamic>>>(principals, (value) => pulumi.Input.encodeList<Principal, Map<String, dynamic>>(value, (value) => value.toMap())),
       'roleDefinitionId': roleDefinitionId,
     };
   }
 
   factory RoleAssignmentItem.fromMap(Map<String, dynamic> map) {
     return RoleAssignmentItem(
-      principals: map['principals'] == null ? null : pulumi.Input.decodeList<Principal>(map['principals'], (value) => Principal.fromMap((value as Map).cast<String, dynamic>())),
-      roleDefinitionId: map['roleDefinitionId'] as String,
+      principals: map['principals'] == null ? null : (pulumi.Input.decodeList<Principal>(map['principals'], (value) => Principal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'sub_resource.dart';
 
 class ResourceSharingProfile {
   /// Specifies an array of subscription resource IDs that capacity reservation group is shared with. Block Capacity Reservations does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
-  final List<SubResource>? subscriptionIds;
+  final pulumi.Input<List<SubResource>>? subscriptionIds;
 
   /// Creates a new [ResourceSharingProfile].
   /// [subscriptionIds] Specifies an array of subscription resource IDs that capacity reservation group is shared with. Block Capacity Reservations does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
@@ -15,13 +15,13 @@ class ResourceSharingProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subscriptionIds': ?subscriptionIds == null ? null : pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(subscriptionIds!, (value) => value.toMap()),
+      'subscriptionIds': ?pulumi.Input.mapOptionalInputValue<List<SubResource>, List<Map<String, dynamic>>>(subscriptionIds, (value) => pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResourceSharingProfile.fromMap(Map<String, dynamic> map) {
     return ResourceSharingProfile(
-      subscriptionIds: map['subscriptionIds'] == null ? null : pulumi.Input.decodeList<SubResource>(map['subscriptionIds'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>())),
+      subscriptionIds: map['subscriptionIds'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['subscriptionIds'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

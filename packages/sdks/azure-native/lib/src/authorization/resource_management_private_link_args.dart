@@ -19,13 +19,10 @@ class ResourceManagementPrivateLinkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [rmplName] The name of the resource management private link.
   ResourceManagementPrivateLinkArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? rmplName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rmplName = pulumi.Input.asOptionalInput<String>(rmplName);
+    this.location,
+    required this.resourceGroupName,
+    this.rmplName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ResourceManagementPrivateLinkArgs {
 
   factory ResourceManagementPrivateLinkArgs.fromMap(Map<String, dynamic> map) {
     return ResourceManagementPrivateLinkArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rmplName: map['rmplName'] == null ? null : pulumi.Output.create<String>(map['rmplName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rmplName: map['rmplName'] == null ? null : (map['rmplName'] as String).input(),
     );
   }
 }

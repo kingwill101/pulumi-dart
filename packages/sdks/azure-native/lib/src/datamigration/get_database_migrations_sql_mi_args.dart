@@ -24,17 +24,12 @@ class GetDatabaseMigrationsSqlMiArgs {
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [targetDbName] The name of the target database.
   GetDatabaseMigrationsSqlMiArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> managedInstanceName,
-    pulumi.Output<String>? migrationOperationId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> targetDbName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      migrationOperationId = pulumi.Input.asOptionalInput<String>(migrationOperationId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetDbName = pulumi.Input.asInput<String>(targetDbName);
+    this.expand,
+    required this.managedInstanceName,
+    this.migrationOperationId,
+    required this.resourceGroupName,
+    required this.targetDbName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class GetDatabaseMigrationsSqlMiArgs {
 
   factory GetDatabaseMigrationsSqlMiArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMigrationsSqlMiArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      migrationOperationId: map['migrationOperationId'] == null ? null : pulumi.Output.create<String>(map['migrationOperationId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetDbName: pulumi.Output.create<String>(map['targetDbName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetDbName: (map['targetDbName'] as String).input(),
     );
   }
 }

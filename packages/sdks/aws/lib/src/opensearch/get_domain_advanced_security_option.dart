@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainAdvancedSecurityOption {
-  final bool anonymousAuthEnabled;
+  final pulumi.Input<bool> anonymousAuthEnabled;
   /// Enabled disabled toggle for off-peak update window
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Whether the internal user database is enabled.
-  final bool internalUserDatabaseEnabled;
+  final pulumi.Input<bool> internalUserDatabaseEnabled;
 
   /// Creates a new [GetDomainAdvancedSecurityOption].
   /// [anonymousAuthEnabled] Required.
@@ -28,9 +29,9 @@ class GetDomainAdvancedSecurityOption {
 
   factory GetDomainAdvancedSecurityOption.fromMap(Map<String, dynamic> map) {
     return GetDomainAdvancedSecurityOption(
-      anonymousAuthEnabled: map['anonymousAuthEnabled'] as bool,
-      enabled: map['enabled'] as bool,
-      internalUserDatabaseEnabled: map['internalUserDatabaseEnabled'] as bool,
+      anonymousAuthEnabled: (map['anonymousAuthEnabled'] as bool).input(),
+      enabled: (map['enabled'] as bool).input(),
+      internalUserDatabaseEnabled: (map['internalUserDatabaseEnabled'] as bool).input(),
     );
   }
 }

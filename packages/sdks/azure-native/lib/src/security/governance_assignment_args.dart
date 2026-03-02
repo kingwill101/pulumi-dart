@@ -40,25 +40,16 @@ class GovernanceAssignmentArgs {
   /// [remediationEta] The ETA (estimated time of arrival) for remediation (optional), see example
   /// [scope] The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   GovernanceAssignmentArgs({
-    pulumi.Output<GovernanceAssignmentAdditionalData>? additionalData,
-    required pulumi.Output<String> assessmentName,
-    pulumi.Output<String>? assignmentKey,
-    pulumi.Output<GovernanceEmailNotification>? governanceEmailNotification,
-    pulumi.Output<bool>? isGracePeriod,
-    pulumi.Output<String>? owner,
-    required pulumi.Output<String> remediationDueDate,
-    pulumi.Output<RemediationEta>? remediationEta,
-    required pulumi.Output<String> scope,
-  }) :
-      additionalData = pulumi.Input.asOptionalInput<GovernanceAssignmentAdditionalData>(additionalData),
-      assessmentName = pulumi.Input.asInput<String>(assessmentName),
-      assignmentKey = pulumi.Input.asOptionalInput<String>(assignmentKey),
-      governanceEmailNotification = pulumi.Input.asOptionalInput<GovernanceEmailNotification>(governanceEmailNotification),
-      isGracePeriod = pulumi.Input.asOptionalInput<bool>(isGracePeriod),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      remediationDueDate = pulumi.Input.asInput<String>(remediationDueDate),
-      remediationEta = pulumi.Input.asOptionalInput<RemediationEta>(remediationEta),
-      scope = pulumi.Input.asInput<String>(scope);
+    this.additionalData,
+    required this.assessmentName,
+    this.assignmentKey,
+    this.governanceEmailNotification,
+    this.isGracePeriod,
+    this.owner,
+    required this.remediationDueDate,
+    this.remediationEta,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class GovernanceAssignmentArgs {
 
   factory GovernanceAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GovernanceAssignmentArgs(
-      additionalData: map['additionalData'] == null ? null : pulumi.Output.create<GovernanceAssignmentAdditionalData>(GovernanceAssignmentAdditionalData.fromMap((map['additionalData'] as Map).cast<String, dynamic>())),
-      assessmentName: pulumi.Output.create<String>(map['assessmentName'] as String),
-      assignmentKey: map['assignmentKey'] == null ? null : pulumi.Output.create<String>(map['assignmentKey'] as String),
-      governanceEmailNotification: map['governanceEmailNotification'] == null ? null : pulumi.Output.create<GovernanceEmailNotification>(GovernanceEmailNotification.fromMap((map['governanceEmailNotification'] as Map).cast<String, dynamic>())),
-      isGracePeriod: map['isGracePeriod'] == null ? null : pulumi.Output.create<bool>(map['isGracePeriod'] as bool),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      remediationDueDate: pulumi.Output.create<String>(map['remediationDueDate'] as String),
-      remediationEta: map['remediationEta'] == null ? null : pulumi.Output.create<RemediationEta>(RemediationEta.fromMap((map['remediationEta'] as Map).cast<String, dynamic>())),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      additionalData: map['additionalData'] == null ? null : (GovernanceAssignmentAdditionalData.fromMap((map['additionalData'] as Map).cast<String, dynamic>())).input(),
+      assessmentName: (map['assessmentName'] as String).input(),
+      assignmentKey: map['assignmentKey'] == null ? null : (map['assignmentKey'] as String).input(),
+      governanceEmailNotification: map['governanceEmailNotification'] == null ? null : (GovernanceEmailNotification.fromMap((map['governanceEmailNotification'] as Map).cast<String, dynamic>())).input(),
+      isGracePeriod: map['isGracePeriod'] == null ? null : (map['isGracePeriod'] as bool).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      remediationDueDate: (map['remediationDueDate'] as String).input(),
+      remediationEta: map['remediationEta'] == null ? null : (RemediationEta.fromMap((map['remediationEta'] as Map).cast<String, dynamic>())).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

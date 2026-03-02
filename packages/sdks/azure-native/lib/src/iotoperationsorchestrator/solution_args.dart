@@ -33,21 +33,14 @@ class SolutionArgs {
   /// [tags] Resource tags.
   /// [version] Version of the particular resource.
   SolutionArgs({
-    pulumi.Output<List<ComponentProperties>>? components,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? version,
-  }) :
-      components = pulumi.Input.asOptionalInput<List<ComponentProperties>>(components),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.components,
+    required this.extendedLocation,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class SolutionArgs {
 
   factory SolutionArgs.fromMap(Map<String, dynamic> map) {
     return SolutionArgs(
-      components: map['components'] == null ? null : pulumi.Output.create<List<ComponentProperties>>(pulumi.Input.decodeList<ComponentProperties>(map['components'], (value) => ComponentProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      components: map['components'] == null ? null : (pulumi.Input.decodeList<ComponentProperties>(map['components'], (value) => ComponentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

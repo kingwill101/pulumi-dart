@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceMetricAlarmRulesRuleLabel {
   /// The subject of the alert notificaThe key of the annotation.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the annotation.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetServiceMetricAlarmRulesRuleLabel].
   /// [key] The subject of the alert notificaThe key of the annotation.
@@ -24,8 +25,8 @@ class GetServiceMetricAlarmRulesRuleLabel {
 
   factory GetServiceMetricAlarmRulesRuleLabel.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesRuleLabel(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

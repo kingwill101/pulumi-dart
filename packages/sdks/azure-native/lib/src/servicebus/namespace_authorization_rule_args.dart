@@ -23,15 +23,11 @@ class NamespaceAuthorizationRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [rights] The rights associated with the rule.
   NamespaceAuthorizationRuleArgs({
-    pulumi.Output<String>? authorizationRuleName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<AccessRights>> rights,
-  }) :
-      authorizationRuleName = pulumi.Input.asOptionalInput<String>(authorizationRuleName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rights = pulumi.Input.asInput<List<AccessRights>>(rights);
+    this.authorizationRuleName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    required this.rights,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class NamespaceAuthorizationRuleArgs {
 
   factory NamespaceAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : pulumi.Output.create<String>(map['authorizationRuleName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rights: pulumi.Output.create<List<AccessRights>>(pulumi.Input.decodeList<AccessRights>(map['rights'], (value) => AccessRights.fromValue(value as String))),
+      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rights: (pulumi.Input.decodeList<AccessRights>(map['rights'], (value) => AccessRights.fromValue(value as String))).input(),
     );
   }
 }

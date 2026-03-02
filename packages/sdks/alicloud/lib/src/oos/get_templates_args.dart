@@ -52,35 +52,21 @@ class GetTemplatesArgs {
   /// [templateFormat] The format of the template. Valid values: `JSON`, `YAML`.
   /// [templateType] The type of OOS Template.
   GetTemplatesArgs({
-    pulumi.Output<String>? category,
-    pulumi.Output<String>? createdBy,
-    pulumi.Output<String>? createdDate,
-    pulumi.Output<String>? createdDateAfter,
-    pulumi.Output<bool>? hasTrigger,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? shareType,
-    pulumi.Output<String>? sortField,
-    pulumi.Output<String>? sortOrder,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? templateFormat,
-    pulumi.Output<String>? templateType,
-  }) :
-      category = pulumi.Input.asOptionalInput<String>(category),
-      createdBy = pulumi.Input.asOptionalInput<String>(createdBy),
-      createdDate = pulumi.Input.asOptionalInput<String>(createdDate),
-      createdDateAfter = pulumi.Input.asOptionalInput<String>(createdDateAfter),
-      hasTrigger = pulumi.Input.asOptionalInput<bool>(hasTrigger),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      shareType = pulumi.Input.asOptionalInput<String>(shareType),
-      sortField = pulumi.Input.asOptionalInput<String>(sortField),
-      sortOrder = pulumi.Input.asOptionalInput<String>(sortOrder),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateFormat = pulumi.Input.asOptionalInput<String>(templateFormat),
-      templateType = pulumi.Input.asOptionalInput<String>(templateType);
+    this.category,
+    this.createdBy,
+    this.createdDate,
+    this.createdDateAfter,
+    this.hasTrigger,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.shareType,
+    this.sortField,
+    this.sortOrder,
+    this.tags,
+    this.templateFormat,
+    this.templateType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class GetTemplatesArgs {
 
   factory GetTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplatesArgs(
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      createdBy: map['createdBy'] == null ? null : pulumi.Output.create<String>(map['createdBy'] as String),
-      createdDate: map['createdDate'] == null ? null : pulumi.Output.create<String>(map['createdDate'] as String),
-      createdDateAfter: map['createdDateAfter'] == null ? null : pulumi.Output.create<String>(map['createdDateAfter'] as String),
-      hasTrigger: map['hasTrigger'] == null ? null : pulumi.Output.create<bool>(map['hasTrigger'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      shareType: map['shareType'] == null ? null : pulumi.Output.create<String>(map['shareType'] as String),
-      sortField: map['sortField'] == null ? null : pulumi.Output.create<String>(map['sortField'] as String),
-      sortOrder: map['sortOrder'] == null ? null : pulumi.Output.create<String>(map['sortOrder'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateFormat: map['templateFormat'] == null ? null : pulumi.Output.create<String>(map['templateFormat'] as String),
-      templateType: map['templateType'] == null ? null : pulumi.Output.create<String>(map['templateType'] as String),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      createdDateAfter: map['createdDateAfter'] == null ? null : (map['createdDateAfter'] as String).input(),
+      hasTrigger: map['hasTrigger'] == null ? null : (map['hasTrigger'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      shareType: map['shareType'] == null ? null : (map['shareType'] as String).input(),
+      sortField: map['sortField'] == null ? null : (map['sortField'] as String).input(),
+      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateFormat: map['templateFormat'] == null ? null : (map['templateFormat'] as String).input(),
+      templateType: map['templateType'] == null ? null : (map['templateType'] as String).input(),
     );
   }
 }

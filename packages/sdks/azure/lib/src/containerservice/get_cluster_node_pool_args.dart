@@ -19,13 +19,10 @@ class GetClusterNodePoolArgs {
   /// [name] The name of this Kubernetes Cluster Node Pool.
   /// [resourceGroupName] The name of the Resource Group where the Kubernetes Cluster exists.
   GetClusterNodePoolArgs({
-    required pulumi.Output<String> kubernetesClusterName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      kubernetesClusterName = pulumi.Input.asInput<String>(kubernetesClusterName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.kubernetesClusterName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetClusterNodePoolArgs {
 
   factory GetClusterNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolArgs(
-      kubernetesClusterName: pulumi.Output.create<String>(map['kubernetesClusterName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      kubernetesClusterName: (map['kubernetesClusterName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

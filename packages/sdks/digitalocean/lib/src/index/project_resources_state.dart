@@ -13,11 +13,9 @@ class ProjectResourcesState {
   /// [project] the ID of the project
   /// [resources] a list of uniform resource names (URNs) for the resources associated with the project
   ProjectResourcesState({
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? resources,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resources = pulumi.Input.asOptionalInput<List<String>>(resources);
+    this.project,
+    this.resources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class ProjectResourcesState {
 
   factory ProjectResourcesState.fromMap(Map<String, dynamic> map) {
     return ProjectResourcesState(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<String>>((map['resources'] as List).cast<String>()),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
     );
   }
 }

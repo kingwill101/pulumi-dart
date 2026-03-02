@@ -16,13 +16,10 @@ class GetEndpointPolicyArgs {
   /// [location] Required.
   /// [project] Optional.
   GetEndpointPolicyArgs({
-    required pulumi.Output<String> endpointPolicyId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      endpointPolicyId = pulumi.Input.asInput<String>(endpointPolicyId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.endpointPolicyId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetEndpointPolicyArgs {
 
   factory GetEndpointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointPolicyArgs(
-      endpointPolicyId: pulumi.Output.create<String>(map['endpointPolicyId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      endpointPolicyId: (map['endpointPolicyId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -28,21 +28,14 @@ class NetworkInterfaceAttachmentState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] The status of the Network Interface Attachment.
   NetworkInterfaceAttachmentState({
-    pulumi.Output<String>? attachmentId,
-    pulumi.Output<int>? deviceIndex,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<int>? networkCardIndex,
-    pulumi.Output<String>? networkInterfaceId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-  }) :
-      attachmentId = pulumi.Input.asOptionalInput<String>(attachmentId),
-      deviceIndex = pulumi.Input.asOptionalInput<int>(deviceIndex),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      networkCardIndex = pulumi.Input.asOptionalInput<int>(networkCardIndex),
-      networkInterfaceId = pulumi.Input.asOptionalInput<String>(networkInterfaceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.attachmentId,
+    this.deviceIndex,
+    this.instanceId,
+    this.networkCardIndex,
+    this.networkInterfaceId,
+    this.region,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class NetworkInterfaceAttachmentState {
 
   factory NetworkInterfaceAttachmentState.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceAttachmentState(
-      attachmentId: map['attachmentId'] == null ? null : pulumi.Output.create<String>(map['attachmentId'] as String),
-      deviceIndex: map['deviceIndex'] == null ? null : pulumi.Output.create<int>(map['deviceIndex'] as int),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      networkCardIndex: map['networkCardIndex'] == null ? null : pulumi.Output.create<int>(map['networkCardIndex'] as int),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
+      deviceIndex: map['deviceIndex'] == null ? null : (map['deviceIndex'] as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

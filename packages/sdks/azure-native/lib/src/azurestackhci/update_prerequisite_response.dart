@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
 class UpdatePrerequisiteResponse {
   /// Friendly name of the prerequisite.
-  final String? packageName;
+  final pulumi.Input<String>? packageName;
   /// Updatable component type.
-  final String? updateType;
+  final pulumi.Input<String>? updateType;
   /// Version of the prerequisite.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [UpdatePrerequisiteResponse].
   /// [packageName] Friendly name of the prerequisite.
@@ -30,9 +31,9 @@ class UpdatePrerequisiteResponse {
 
   factory UpdatePrerequisiteResponse.fromMap(Map<String, dynamic> map) {
     return UpdatePrerequisiteResponse(
-      packageName: map['packageName'] == null ? null : map['packageName'] as String,
-      updateType: map['updateType'] == null ? null : map['updateType'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      updateType: map['updateType'] == null ? null : (map['updateType'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

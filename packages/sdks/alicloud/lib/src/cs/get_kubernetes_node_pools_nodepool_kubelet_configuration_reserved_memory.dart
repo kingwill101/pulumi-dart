@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory {
   /// Memory resource limit.
-  final Map<String, String> limits;
+  final pulumi.Input<Map<String, String>> limits;
   /// The NUMA node.
-  final int numaNode;
+  final pulumi.Input<int> numaNode;
 
   /// Creates a new [GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory].
   /// [limits] Memory resource limit.
@@ -24,8 +25,8 @@ class GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory {
 
   factory GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory.fromMap(Map<String, dynamic> map) {
     return GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory(
-      limits: (map['limits'] as Map).cast<String, String>(),
-      numaNode: map['numaNode'] as int,
+      limits: ((map['limits'] as Map).cast<String, String>()).input(),
+      numaNode: (map['numaNode'] as int).input(),
     );
   }
 }

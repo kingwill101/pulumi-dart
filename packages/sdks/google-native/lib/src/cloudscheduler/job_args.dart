@@ -45,29 +45,18 @@ class JobArgs {
   /// [schedule] Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The schedule can be either of the following types: * [Crontab](https://en.wikipedia.org/wiki/Cron#Overview) * English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled time occurs. If retry_count > 0 and a job attempt fails, the job will be tried a total of retry_count times, with exponential backoff, until the next scheduled start time. If retry_count is 0, a job attempt will not be retried if it fails. Instead the Cloud Scheduler system will wait for the next scheduled execution time. Setting retry_count to 0 does not prevent failed jobs from running according to schedule after the failure.
   /// [timeZone] Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
   JobArgs({
-    pulumi.Output<AppEngineHttpTarget>? appEngineHttpTarget,
-    pulumi.Output<String>? attemptDeadline,
-    pulumi.Output<String>? description,
-    pulumi.Output<HttpTarget>? httpTarget,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<PubsubTarget>? pubsubTarget,
-    pulumi.Output<RetryConfig>? retryConfig,
-    pulumi.Output<String>? schedule,
-    pulumi.Output<String>? timeZone,
-  }) :
-      appEngineHttpTarget = pulumi.Input.asOptionalInput<AppEngineHttpTarget>(appEngineHttpTarget),
-      attemptDeadline = pulumi.Input.asOptionalInput<String>(attemptDeadline),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      httpTarget = pulumi.Input.asOptionalInput<HttpTarget>(httpTarget),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pubsubTarget = pulumi.Input.asOptionalInput<PubsubTarget>(pubsubTarget),
-      retryConfig = pulumi.Input.asOptionalInput<RetryConfig>(retryConfig),
-      schedule = pulumi.Input.asOptionalInput<String>(schedule),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.appEngineHttpTarget,
+    this.attemptDeadline,
+    this.description,
+    this.httpTarget,
+    this.location,
+    this.name,
+    this.project,
+    this.pubsubTarget,
+    this.retryConfig,
+    this.schedule,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      appEngineHttpTarget: map['appEngineHttpTarget'] == null ? null : pulumi.Output.create<AppEngineHttpTarget>(AppEngineHttpTarget.fromMap((map['appEngineHttpTarget'] as Map).cast<String, dynamic>())),
-      attemptDeadline: map['attemptDeadline'] == null ? null : pulumi.Output.create<String>(map['attemptDeadline'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      httpTarget: map['httpTarget'] == null ? null : pulumi.Output.create<HttpTarget>(HttpTarget.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pubsubTarget: map['pubsubTarget'] == null ? null : pulumi.Output.create<PubsubTarget>(PubsubTarget.fromMap((map['pubsubTarget'] as Map).cast<String, dynamic>())),
-      retryConfig: map['retryConfig'] == null ? null : pulumi.Output.create<RetryConfig>(RetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<String>(map['schedule'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      appEngineHttpTarget: map['appEngineHttpTarget'] == null ? null : (AppEngineHttpTarget.fromMap((map['appEngineHttpTarget'] as Map).cast<String, dynamic>())).input(),
+      attemptDeadline: map['attemptDeadline'] == null ? null : (map['attemptDeadline'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpTarget: map['httpTarget'] == null ? null : (HttpTarget.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pubsubTarget: map['pubsubTarget'] == null ? null : (PubsubTarget.fromMap((map['pubsubTarget'] as Map).cast<String, dynamic>())).input(),
+      retryConfig: map['retryConfig'] == null ? null : (RetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

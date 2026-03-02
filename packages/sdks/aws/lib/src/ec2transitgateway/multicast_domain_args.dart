@@ -28,19 +28,13 @@ class MulticastDomainArgs {
   /// [tags] Key-value tags for the EC2 Transit Gateway Multicast Domain. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayId] EC2 Transit Gateway identifier. The EC2 Transit Gateway must have `multicast_support` enabled.
   MulticastDomainArgs({
-    pulumi.Output<String>? autoAcceptSharedAssociations,
-    pulumi.Output<String>? igmpv2Support,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? staticSourcesSupport,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> transitGatewayId,
-  }) :
-      autoAcceptSharedAssociations = pulumi.Input.asOptionalInput<String>(autoAcceptSharedAssociations),
-      igmpv2Support = pulumi.Input.asOptionalInput<String>(igmpv2Support),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      staticSourcesSupport = pulumi.Input.asOptionalInput<String>(staticSourcesSupport),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayId = pulumi.Input.asInput<String>(transitGatewayId);
+    this.autoAcceptSharedAssociations,
+    this.igmpv2Support,
+    this.region,
+    this.staticSourcesSupport,
+    this.tags,
+    required this.transitGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class MulticastDomainArgs {
 
   factory MulticastDomainArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainArgs(
-      autoAcceptSharedAssociations: map['autoAcceptSharedAssociations'] == null ? null : pulumi.Output.create<String>(map['autoAcceptSharedAssociations'] as String),
-      igmpv2Support: map['igmpv2Support'] == null ? null : pulumi.Output.create<String>(map['igmpv2Support'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      staticSourcesSupport: map['staticSourcesSupport'] == null ? null : pulumi.Output.create<String>(map['staticSourcesSupport'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayId: pulumi.Output.create<String>(map['transitGatewayId'] as String),
+      autoAcceptSharedAssociations: map['autoAcceptSharedAssociations'] == null ? null : (map['autoAcceptSharedAssociations'] as String).input(),
+      igmpv2Support: map['igmpv2Support'] == null ? null : (map['igmpv2Support'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      staticSourcesSupport: map['staticSourcesSupport'] == null ? null : (map['staticSourcesSupport'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayId: (map['transitGatewayId'] as String).input(),
     );
   }
 }

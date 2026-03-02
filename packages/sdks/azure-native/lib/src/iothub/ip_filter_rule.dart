@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_filter_action_type.dart';
 
 /// The IP filter rules for the IoT hub.
 class IpFilterRule {
   /// The desired action for requests captured by this rule.
-  final IpFilterActionType action;
+  final pulumi.Input<IpFilterActionType> action;
   /// The name of the IP filter rule.
-  final String filterName;
+  final pulumi.Input<String> filterName;
   /// A string that contains the IP address range in CIDR notation for the rule.
-  final String ipMask;
+  final pulumi.Input<String> ipMask;
 
   /// Creates a new [IpFilterRule].
   /// [action] The desired action for requests captured by this rule.
@@ -23,7 +24,7 @@ class IpFilterRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': action.value,
+      'action': pulumi.Input.mapInputValue<IpFilterActionType, String>(action, (value) => value.value),
       'filterName': filterName,
       'ipMask': ipMask,
     };
@@ -31,9 +32,9 @@ class IpFilterRule {
 
   factory IpFilterRule.fromMap(Map<String, dynamic> map) {
     return IpFilterRule(
-      action: IpFilterActionType.fromValue(map['action'] as String),
-      filterName: map['filterName'] as String,
-      ipMask: map['ipMask'] as String,
+      action: (IpFilterActionType.fromValue(map['action'] as String)).input(),
+      filterName: (map['filterName'] as String).input(),
+      ipMask: (map['ipMask'] as String).input(),
     );
   }
 }

@@ -32,15 +32,11 @@ class TransferAgentPoolArgs {
   /// [name] The ID of the agent pool to create.
   /// [project] The ID of the project in which the resource belongs.
   TransferAgentPoolArgs({
-    pulumi.Output<TransferAgentPoolBandwidthLimit>? bandwidthLimit,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      bandwidthLimit = pulumi.Input.asOptionalInput<TransferAgentPoolBandwidthLimit>(bandwidthLimit),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.bandwidthLimit,
+    this.displayName,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,10 +49,10 @@ class TransferAgentPoolArgs {
 
   factory TransferAgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return TransferAgentPoolArgs(
-      bandwidthLimit: map['bandwidthLimit'] == null ? null : pulumi.Output.create<TransferAgentPoolBandwidthLimit>(TransferAgentPoolBandwidthLimit.fromMap((map['bandwidthLimit'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bandwidthLimit: map['bandwidthLimit'] == null ? null : (TransferAgentPoolBandwidthLimit.fromMap((map['bandwidthLimit'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

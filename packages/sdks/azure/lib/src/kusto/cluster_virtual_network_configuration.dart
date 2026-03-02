@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterVirtualNetworkConfiguration {
-  final String dataManagementPublicIpId;
-  final String enginePublicIpId;
-  final String subnetId;
+  final pulumi.Input<String> dataManagementPublicIpId;
+  final pulumi.Input<String> enginePublicIpId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [ClusterVirtualNetworkConfiguration].
   /// [dataManagementPublicIpId] Required.
@@ -26,9 +27,9 @@ class ClusterVirtualNetworkConfiguration {
 
   factory ClusterVirtualNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualNetworkConfiguration(
-      dataManagementPublicIpId: map['dataManagementPublicIpId'] as String,
-      enginePublicIpId: map['enginePublicIpId'] as String,
-      subnetId: map['subnetId'] as String,
+      dataManagementPublicIpId: (map['dataManagementPublicIpId'] as String).input(),
+      enginePublicIpId: (map['enginePublicIpId'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

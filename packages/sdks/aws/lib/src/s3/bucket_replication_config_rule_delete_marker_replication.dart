@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketReplicationConfigRuleDeleteMarkerReplication {
   /// Whether delete markers should be replicated. Either `"Enabled"` or `"Disabled"`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [BucketReplicationConfigRuleDeleteMarkerReplication].
   /// [status] Whether delete markers should be replicated. Either `"Enabled"` or `"Disabled"`.
@@ -19,7 +20,7 @@ class BucketReplicationConfigRuleDeleteMarkerReplication {
 
   factory BucketReplicationConfigRuleDeleteMarkerReplication.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleDeleteMarkerReplication(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

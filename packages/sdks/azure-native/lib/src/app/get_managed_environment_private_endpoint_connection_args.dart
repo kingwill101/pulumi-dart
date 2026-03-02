@@ -19,13 +19,10 @@ class GetManagedEnvironmentPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetManagedEnvironmentPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> privateEndpointConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      privateEndpointConnectionName = pulumi.Input.asInput<String>(privateEndpointConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentName,
+    required this.privateEndpointConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetManagedEnvironmentPrivateEndpointConnectionArgs {
 
   factory GetManagedEnvironmentPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedEnvironmentPrivateEndpointConnectionArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      privateEndpointConnectionName: pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for the Analytics add-on.
 class GoogleCloudApigeeV1AnalyticsConfigResponse {
   /// Whether the Analytics add-on is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Time at which the Analytics add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
-  final String expireTimeMillis;
+  final pulumi.Input<String> expireTimeMillis;
   /// The state of the Analytics add-on.
-  final String state;
+  final pulumi.Input<String> state;
   /// The latest update time.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GoogleCloudApigeeV1AnalyticsConfigResponse].
   /// [enabled] Whether the Analytics add-on is enabled.
@@ -35,10 +36,10 @@ class GoogleCloudApigeeV1AnalyticsConfigResponse {
 
   factory GoogleCloudApigeeV1AnalyticsConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1AnalyticsConfigResponse(
-      enabled: map['enabled'] as bool,
-      expireTimeMillis: map['expireTimeMillis'] as String,
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      expireTimeMillis: (map['expireTimeMillis'] as String).input(),
+      state: (map['state'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

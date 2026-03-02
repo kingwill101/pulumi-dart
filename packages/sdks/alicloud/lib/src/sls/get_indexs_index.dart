@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_indexs_index_line.dart';
 
 class GetIndexsIndex {
   /// The ID of the resource supplied above.
-  final String id;
+  final pulumi.Input<String> id;
   /// Field index
-  final String keys;
+  final pulumi.Input<String> keys;
   /// Full-text index
-  final GetIndexsIndexLine line;
+  final pulumi.Input<GetIndexsIndexLine> line;
   /// The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
-  final List<String> logReduceBlackLists;
+  final pulumi.Input<List<String>> logReduceBlackLists;
   /// The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
-  final List<String> logReduceWhiteLists;
+  final pulumi.Input<List<String>> logReduceWhiteLists;
   /// Maximum length of statistical field
-  final int maxTextLen;
+  final pulumi.Input<int> maxTextLen;
   /// Log index storage time
-  final int ttl;
+  final pulumi.Input<int> ttl;
 
   /// Creates a new [GetIndexsIndex].
   /// [id] The ID of the resource supplied above.
@@ -40,7 +41,7 @@ class GetIndexsIndex {
     return <String, dynamic>{
       'id': id,
       'keys': keys,
-      'line': line.toMap(),
+      'line': pulumi.Input.mapInputValue<GetIndexsIndexLine, Map<String, dynamic>>(line, (value) => value.toMap()),
       'logReduceBlackLists': logReduceBlackLists,
       'logReduceWhiteLists': logReduceWhiteLists,
       'maxTextLen': maxTextLen,
@@ -50,13 +51,13 @@ class GetIndexsIndex {
 
   factory GetIndexsIndex.fromMap(Map<String, dynamic> map) {
     return GetIndexsIndex(
-      id: map['id'] as String,
-      keys: map['keys'] as String,
-      line: GetIndexsIndexLine.fromMap((map['line'] as Map).cast<String, dynamic>()),
-      logReduceBlackLists: (map['logReduceBlackLists'] as List).cast<String>(),
-      logReduceWhiteLists: (map['logReduceWhiteLists'] as List).cast<String>(),
-      maxTextLen: map['maxTextLen'] as int,
-      ttl: map['ttl'] as int,
+      id: (map['id'] as String).input(),
+      keys: (map['keys'] as String).input(),
+      line: (GetIndexsIndexLine.fromMap((map['line'] as Map).cast<String, dynamic>())).input(),
+      logReduceBlackLists: ((map['logReduceBlackLists'] as List).cast<String>()).input(),
+      logReduceWhiteLists: ((map['logReduceWhiteLists'] as List).cast<String>()).input(),
+      maxTextLen: (map['maxTextLen'] as int).input(),
+      ttl: (map['ttl'] as int).input(),
     );
   }
 }

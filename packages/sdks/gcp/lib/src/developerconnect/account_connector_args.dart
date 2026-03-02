@@ -38,19 +38,13 @@ class AccountConnectorArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [providerOauthConfig] ProviderOAuthConfig is the OAuth config for a provider.
   AccountConnectorArgs({
-    required pulumi.Output<String> accountConnectorId,
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<AccountConnectorProviderOauthConfig>? providerOauthConfig,
-  }) :
-      accountConnectorId = pulumi.Input.asInput<String>(accountConnectorId),
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      providerOauthConfig = pulumi.Input.asOptionalInput<AccountConnectorProviderOauthConfig>(providerOauthConfig);
+    required this.accountConnectorId,
+    this.annotations,
+    this.labels,
+    required this.location,
+    this.project,
+    this.providerOauthConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,12 +59,12 @@ class AccountConnectorArgs {
 
   factory AccountConnectorArgs.fromMap(Map<String, dynamic> map) {
     return AccountConnectorArgs(
-      accountConnectorId: pulumi.Output.create<String>(map['accountConnectorId'] as String),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      providerOauthConfig: map['providerOauthConfig'] == null ? null : pulumi.Output.create<AccountConnectorProviderOauthConfig>(AccountConnectorProviderOauthConfig.fromMap((map['providerOauthConfig'] as Map).cast<String, dynamic>())),
+      accountConnectorId: (map['accountConnectorId'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      providerOauthConfig: map['providerOauthConfig'] == null ? null : (AccountConnectorProviderOauthConfig.fromMap((map['providerOauthConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

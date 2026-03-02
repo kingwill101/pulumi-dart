@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_active_directory_settings_response.dart';
 import 'cache_username_download_settings_response.dart';
 
 /// Cache Directory Services settings.
 class CacheDirectorySettingsResponse {
   /// Specifies settings for joining the HPC Cache to an Active Directory domain.
-  final CacheActiveDirectorySettingsResponse? activeDirectory;
+  final pulumi.Input<CacheActiveDirectorySettingsResponse>? activeDirectory;
   /// Specifies settings for Extended Groups. Extended Groups allows users to be members of more than 16 groups.
-  final CacheUsernameDownloadSettingsResponse? usernameDownload;
+  final pulumi.Input<CacheUsernameDownloadSettingsResponse>? usernameDownload;
 
   /// Creates a new [CacheDirectorySettingsResponse].
   /// [activeDirectory] Specifies settings for joining the HPC Cache to an Active Directory domain.
@@ -20,15 +21,15 @@ class CacheDirectorySettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectory': ?activeDirectory == null ? null : activeDirectory!.toMap(),
-      'usernameDownload': ?usernameDownload == null ? null : usernameDownload!.toMap(),
+      'activeDirectory': ?pulumi.Input.mapOptionalInputValue<CacheActiveDirectorySettingsResponse, Map<String, dynamic>>(activeDirectory, (value) => value.toMap()),
+      'usernameDownload': ?pulumi.Input.mapOptionalInputValue<CacheUsernameDownloadSettingsResponse, Map<String, dynamic>>(usernameDownload, (value) => value.toMap()),
     };
   }
 
   factory CacheDirectorySettingsResponse.fromMap(Map<String, dynamic> map) {
     return CacheDirectorySettingsResponse(
-      activeDirectory: map['activeDirectory'] == null ? null : CacheActiveDirectorySettingsResponse.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>()),
-      usernameDownload: map['usernameDownload'] == null ? null : CacheUsernameDownloadSettingsResponse.fromMap((map['usernameDownload'] as Map).cast<String, dynamic>()),
+      activeDirectory: map['activeDirectory'] == null ? null : (CacheActiveDirectorySettingsResponse.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>())).input(),
+      usernameDownload: map['usernameDownload'] == null ? null : (CacheUsernameDownloadSettingsResponse.fromMap((map['usernameDownload'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

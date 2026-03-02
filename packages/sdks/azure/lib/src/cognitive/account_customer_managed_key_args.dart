@@ -19,13 +19,10 @@ class AccountCustomerManagedKeyArgs {
   /// [identityClientId] The Client ID of the User Assigned Identity that has access to the key. This property only needs to be specified when there're multiple identities attached to the Cognitive Account.
   /// [keyVaultKeyId] The ID of the Key Vault Key which should be used to Encrypt the data in this Cognitive Account.
   AccountCustomerManagedKeyArgs({
-    required pulumi.Output<String> cognitiveAccountId,
-    pulumi.Output<String>? identityClientId,
-    required pulumi.Output<String> keyVaultKeyId,
-  }) :
-      cognitiveAccountId = pulumi.Input.asInput<String>(cognitiveAccountId),
-      identityClientId = pulumi.Input.asOptionalInput<String>(identityClientId),
-      keyVaultKeyId = pulumi.Input.asInput<String>(keyVaultKeyId);
+    required this.cognitiveAccountId,
+    this.identityClientId,
+    required this.keyVaultKeyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AccountCustomerManagedKeyArgs {
 
   factory AccountCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return AccountCustomerManagedKeyArgs(
-      cognitiveAccountId: pulumi.Output.create<String>(map['cognitiveAccountId'] as String),
-      identityClientId: map['identityClientId'] == null ? null : pulumi.Output.create<String>(map['identityClientId'] as String),
-      keyVaultKeyId: pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
+      cognitiveAccountId: (map['cognitiveAccountId'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
     );
   }
 }

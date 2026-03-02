@@ -30,21 +30,14 @@ class MacsecKeyAssociationState {
   /// [startOn] The date in UTC format that the MAC Security (MACsec) secret key takes effect.
   /// [state] The state of the MAC Security (MACsec) secret key. The possible values are: associating, associated, disassociating, disassociated. See [MacSecKey](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_MacSecKey.html#DX-Type-MacSecKey-state) for descriptions of each state.
   MacsecKeyAssociationState({
-    pulumi.Output<String>? cak,
-    pulumi.Output<String>? ckn,
-    pulumi.Output<String>? connectionId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secretArn,
-    pulumi.Output<String>? startOn,
-    pulumi.Output<String>? state,
-  }) :
-      cak = pulumi.Input.asOptionalInput<String>(cak),
-      ckn = pulumi.Input.asOptionalInput<String>(ckn),
-      connectionId = pulumi.Input.asOptionalInput<String>(connectionId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretArn = pulumi.Input.asOptionalInput<String>(secretArn),
-      startOn = pulumi.Input.asOptionalInput<String>(startOn),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.cak,
+    this.ckn,
+    this.connectionId,
+    this.region,
+    this.secretArn,
+    this.startOn,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class MacsecKeyAssociationState {
 
   factory MacsecKeyAssociationState.fromMap(Map<String, dynamic> map) {
     return MacsecKeyAssociationState(
-      cak: map['cak'] == null ? null : pulumi.Output.create<String>(map['cak'] as String),
-      ckn: map['ckn'] == null ? null : pulumi.Output.create<String>(map['ckn'] as String),
-      connectionId: map['connectionId'] == null ? null : pulumi.Output.create<String>(map['connectionId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretArn: map['secretArn'] == null ? null : pulumi.Output.create<String>(map['secretArn'] as String),
-      startOn: map['startOn'] == null ? null : pulumi.Output.create<String>(map['startOn'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      cak: map['cak'] == null ? null : (map['cak'] as String).input(),
+      ckn: map['ckn'] == null ? null : (map['ckn'] as String).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
+      startOn: map['startOn'] == null ? null : (map['startOn'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

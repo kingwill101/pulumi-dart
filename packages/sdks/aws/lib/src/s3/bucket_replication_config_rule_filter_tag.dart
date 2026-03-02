@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketReplicationConfigRuleFilterTag {
   /// Name of the object key.
-  final String key;
+  final pulumi.Input<String> key;
   /// Value of the tag.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [BucketReplicationConfigRuleFilterTag].
   /// [key] Name of the object key.
@@ -24,8 +25,8 @@ class BucketReplicationConfigRuleFilterTag {
 
   factory BucketReplicationConfigRuleFilterTag.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleFilterTag(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

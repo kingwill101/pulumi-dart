@@ -19,15 +19,11 @@ class SpacesBucketLoggingState {
   /// [targetBucket] The name of the bucket which will store the logs.
   /// [targetPrefix] The prefix for the log files.
   SpacesBucketLoggingState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? targetBucket,
-    pulumi.Output<String>? targetPrefix,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetBucket = pulumi.Input.asOptionalInput<String>(targetBucket),
-      targetPrefix = pulumi.Input.asOptionalInput<String>(targetPrefix);
+    this.bucket,
+    this.region,
+    this.targetBucket,
+    this.targetPrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class SpacesBucketLoggingState {
 
   factory SpacesBucketLoggingState.fromMap(Map<String, dynamic> map) {
     return SpacesBucketLoggingState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetBucket: map['targetBucket'] == null ? null : pulumi.Output.create<String>(map['targetBucket'] as String),
-      targetPrefix: map['targetPrefix'] == null ? null : pulumi.Output.create<String>(map['targetPrefix'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetBucket: map['targetBucket'] == null ? null : (map['targetBucket'] as String).input(),
+      targetPrefix: map['targetPrefix'] == null ? null : (map['targetPrefix'] as String).input(),
     );
   }
 }

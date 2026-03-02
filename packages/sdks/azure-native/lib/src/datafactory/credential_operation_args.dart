@@ -23,15 +23,11 @@ class CredentialOperationArgs {
   /// [properties] Properties of credentials.
   /// [resourceGroupName] The resource group name.
   CredentialOperationArgs({
-    pulumi.Output<String>? credentialName,
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<ManagedIdentityCredential> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      credentialName = pulumi.Input.asOptionalInput<String>(credentialName),
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      properties = pulumi.Input.asInput<ManagedIdentityCredential>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.credentialName,
+    required this.factoryName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class CredentialOperationArgs {
 
   factory CredentialOperationArgs.fromMap(Map<String, dynamic> map) {
     return CredentialOperationArgs(
-      credentialName: map['credentialName'] == null ? null : pulumi.Output.create<String>(map['credentialName'] as String),
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      properties: pulumi.Output.create<ManagedIdentityCredential>(ManagedIdentityCredential.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      credentialName: map['credentialName'] == null ? null : (map['credentialName'] as String).input(),
+      factoryName: (map['factoryName'] as String).input(),
+      properties: (ManagedIdentityCredential.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

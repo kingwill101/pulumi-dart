@@ -34,15 +34,11 @@ class FhirStoreIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   FhirStoreIamMemberArgs({
-    pulumi.Output<FhirStoreIamMemberCondition>? condition,
-    required pulumi.Output<String> fhirStoreId,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<FhirStoreIamMemberCondition>(condition),
-      fhirStoreId = pulumi.Input.asInput<String>(fhirStoreId),
-      member = pulumi.Input.asInput<String>(member),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.fhirStoreId,
+    required this.member,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,10 +51,10 @@ class FhirStoreIamMemberArgs {
 
   factory FhirStoreIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return FhirStoreIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<FhirStoreIamMemberCondition>(FhirStoreIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      fhirStoreId: pulumi.Output.create<String>(map['fhirStoreId'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (FhirStoreIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      fhirStoreId: (map['fhirStoreId'] as String).input(),
+      member: (map['member'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

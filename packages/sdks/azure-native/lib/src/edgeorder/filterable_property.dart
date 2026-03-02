@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Different types of filters supported and its values.
 class FilterableProperty {
   /// Values to be filtered.
-  final List<String> supportedValues;
+  final pulumi.Input<List<String>> supportedValues;
   /// Type of product filter.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FilterableProperty].
   /// [supportedValues] Values to be filtered.
@@ -25,8 +26,8 @@ class FilterableProperty {
 
   factory FilterableProperty.fromMap(Map<String, dynamic> map) {
     return FilterableProperty(
-      supportedValues: (map['supportedValues'] as List).cast<String>(),
-      type: map['type'] as String,
+      supportedValues: ((map['supportedValues'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

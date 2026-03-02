@@ -27,19 +27,13 @@ class FeatureOnlineStoreArgs {
   /// [location] Optional.
   /// [project] Optional.
   FeatureOnlineStoreArgs({
-    pulumi.Output<GoogleCloudAiplatformV1FeatureOnlineStoreBigtable>? bigtable,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> featureOnlineStoreId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      bigtable = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1FeatureOnlineStoreBigtable>(bigtable),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featureOnlineStoreId = pulumi.Input.asInput<String>(featureOnlineStoreId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.bigtable,
+    this.etag,
+    required this.featureOnlineStoreId,
+    this.labels,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class FeatureOnlineStoreArgs {
 
   factory FeatureOnlineStoreArgs.fromMap(Map<String, dynamic> map) {
     return FeatureOnlineStoreArgs(
-      bigtable: map['bigtable'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1FeatureOnlineStoreBigtable>(GoogleCloudAiplatformV1FeatureOnlineStoreBigtable.fromMap((map['bigtable'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featureOnlineStoreId: pulumi.Output.create<String>(map['featureOnlineStoreId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bigtable: map['bigtable'] == null ? null : (GoogleCloudAiplatformV1FeatureOnlineStoreBigtable.fromMap((map['bigtable'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featureOnlineStoreId: (map['featureOnlineStoreId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

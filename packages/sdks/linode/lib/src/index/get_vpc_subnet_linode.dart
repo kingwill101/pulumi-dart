@@ -5,9 +5,9 @@ import 'get_vpc_subnet_linode_interface.dart';
 
 class GetVpcSubnetLinode {
   /// The unique id of this VPC subnet.
-  final int id;
+  final pulumi.Input<int> id;
   /// A list of networking interfaces objects.
-  final List<GetVpcSubnetLinodeInterface> interfaces;
+  final pulumi.Input<List<GetVpcSubnetLinodeInterface>> interfaces;
 
   /// Creates a new [GetVpcSubnetLinode].
   /// [id] The unique id of this VPC subnet.
@@ -20,14 +20,14 @@ class GetVpcSubnetLinode {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'interfaces': pulumi.Input.encodeList<GetVpcSubnetLinodeInterface, Map<String, dynamic>>(interfaces, (value) => value.toMap()),
+      'interfaces': pulumi.Input.mapInputValue<List<GetVpcSubnetLinodeInterface>, List<Map<String, dynamic>>>(interfaces, (value) => pulumi.Input.encodeList<GetVpcSubnetLinodeInterface, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetVpcSubnetLinode.fromMap(Map<String, dynamic> map) {
     return GetVpcSubnetLinode(
-      id: map['id'] as int,
-      interfaces: pulumi.Input.decodeList<GetVpcSubnetLinodeInterface>(map['interfaces'], (value) => GetVpcSubnetLinodeInterface.fromMap((value as Map).cast<String, dynamic>())),
+      id: (map['id'] as int).input(),
+      interfaces: (pulumi.Input.decodeList<GetVpcSubnetLinodeInterface>(map['interfaces'], (value) => GetVpcSubnetLinodeInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

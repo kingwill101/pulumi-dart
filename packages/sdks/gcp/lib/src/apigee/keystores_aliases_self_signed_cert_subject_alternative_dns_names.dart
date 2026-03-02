@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames {
   /// Subject Alternative Name
-  final String? subjectAlternativeName;
+  final pulumi.Input<String>? subjectAlternativeName;
 
   /// Creates a new [KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames].
   /// [subjectAlternativeName] Subject Alternative Name
@@ -19,7 +20,7 @@ class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames {
 
   factory KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames(
-      subjectAlternativeName: map['subjectAlternativeName'] == null ? null : map['subjectAlternativeName'] as String,
+      subjectAlternativeName: map['subjectAlternativeName'] == null ? null : (map['subjectAlternativeName'] as String).input(),
     );
   }
 }

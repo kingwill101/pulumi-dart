@@ -31,21 +31,14 @@ class GetOrderableDbInstanceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpc] Enable to show only VPC.
   GetOrderableDbInstanceArgs({
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? engineVersion,
-    pulumi.Output<String>? instanceClass,
-    pulumi.Output<String>? licenseModel,
-    pulumi.Output<List<String>>? preferredInstanceClasses,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? vpc,
-  }) :
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      instanceClass = pulumi.Input.asOptionalInput<String>(instanceClass),
-      licenseModel = pulumi.Input.asOptionalInput<String>(licenseModel),
-      preferredInstanceClasses = pulumi.Input.asOptionalInput<List<String>>(preferredInstanceClasses),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpc = pulumi.Input.asOptionalInput<bool>(vpc);
+    this.engine,
+    this.engineVersion,
+    this.instanceClass,
+    this.licenseModel,
+    this.preferredInstanceClasses,
+    this.region,
+    this.vpc,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetOrderableDbInstanceArgs {
 
   factory GetOrderableDbInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetOrderableDbInstanceArgs(
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      instanceClass: map['instanceClass'] == null ? null : pulumi.Output.create<String>(map['instanceClass'] as String),
-      licenseModel: map['licenseModel'] == null ? null : pulumi.Output.create<String>(map['licenseModel'] as String),
-      preferredInstanceClasses: map['preferredInstanceClasses'] == null ? null : pulumi.Output.create<List<String>>((map['preferredInstanceClasses'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpc: map['vpc'] == null ? null : pulumi.Output.create<bool>(map['vpc'] as bool),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass'] as String).input(),
+      licenseModel: map['licenseModel'] == null ? null : (map['licenseModel'] as String).input(),
+      preferredInstanceClasses: map['preferredInstanceClasses'] == null ? null : ((map['preferredInstanceClasses'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpc: map['vpc'] == null ? null : (map['vpc'] as bool).input(),
     );
   }
 }

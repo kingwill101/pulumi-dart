@@ -26,19 +26,13 @@ class ScopeGkehubV1betaArgs {
   /// [project] Optional.
   /// [scopeId] Required. Client chosen ID for the Scope. `scope_id` must be a ????
   ScopeGkehubV1betaArgs({
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? namespaceLabels,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> scopeId,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceLabels = pulumi.Input.asOptionalInput<Map<String, String>>(namespaceLabels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scopeId = pulumi.Input.asInput<String>(scopeId);
+    this.labels,
+    this.location,
+    this.name,
+    this.namespaceLabels,
+    this.project,
+    required this.scopeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class ScopeGkehubV1betaArgs {
 
   factory ScopeGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ScopeGkehubV1betaArgs(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceLabels: map['namespaceLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['namespaceLabels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scopeId: pulumi.Output.create<String>(map['scopeId'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceLabels: map['namespaceLabels'] == null ? null : ((map['namespaceLabels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
     );
   }
 }

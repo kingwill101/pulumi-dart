@@ -19,13 +19,10 @@ class ListChannelWithKeysArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Bot resource.
   ListChannelWithKeysArgs({
-    required pulumi.Output<String> channelName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      channelName = pulumi.Input.asInput<String>(channelName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.channelName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListChannelWithKeysArgs {
 
   factory ListChannelWithKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListChannelWithKeysArgs(
-      channelName: pulumi.Output.create<String>(map['channelName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      channelName: (map['channelName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

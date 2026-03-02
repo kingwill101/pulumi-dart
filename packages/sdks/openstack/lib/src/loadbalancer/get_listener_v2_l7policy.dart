@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerV2L7policy {
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetListenerV2L7policy].
   /// [id] Required.
@@ -18,7 +19,7 @@ class GetListenerV2L7policy {
 
   factory GetListenerV2L7policy.fromMap(Map<String, dynamic> map) {
     return GetListenerV2L7policy(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

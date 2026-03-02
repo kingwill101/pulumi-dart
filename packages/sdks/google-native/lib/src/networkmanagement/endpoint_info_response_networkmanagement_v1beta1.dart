@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For display only. The specification of the endpoints for the test. EndpointInfo is derived from source and destination Endpoint and validated by the backend data plane model.
 class EndpointInfoResponseNetworkmanagementV1beta1 {
   /// Destination IP address.
-  final String destinationIp;
+  final pulumi.Input<String> destinationIp;
   /// URI of the network where this packet is sent to.
-  final String destinationNetworkUri;
+  final pulumi.Input<String> destinationNetworkUri;
   /// Destination port. Only valid when protocol is TCP or UDP.
-  final int destinationPort;
+  final pulumi.Input<int> destinationPort;
   /// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// URI of the source telemetry agent this packet originates from.
-  final String sourceAgentUri;
+  final pulumi.Input<String> sourceAgentUri;
   /// Source IP address.
-  final String sourceIp;
+  final pulumi.Input<String> sourceIp;
   /// URI of the network where this packet originates from.
-  final String sourceNetworkUri;
+  final pulumi.Input<String> sourceNetworkUri;
   /// Source port. Only valid when protocol is TCP or UDP.
-  final int sourcePort;
+  final pulumi.Input<int> sourcePort;
 
   /// Creates a new [EndpointInfoResponseNetworkmanagementV1beta1].
   /// [destinationIp] Destination IP address.
@@ -55,14 +56,14 @@ class EndpointInfoResponseNetworkmanagementV1beta1 {
 
   factory EndpointInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return EndpointInfoResponseNetworkmanagementV1beta1(
-      destinationIp: map['destinationIp'] as String,
-      destinationNetworkUri: map['destinationNetworkUri'] as String,
-      destinationPort: map['destinationPort'] as int,
-      protocol: map['protocol'] as String,
-      sourceAgentUri: map['sourceAgentUri'] as String,
-      sourceIp: map['sourceIp'] as String,
-      sourceNetworkUri: map['sourceNetworkUri'] as String,
-      sourcePort: map['sourcePort'] as int,
+      destinationIp: (map['destinationIp'] as String).input(),
+      destinationNetworkUri: (map['destinationNetworkUri'] as String).input(),
+      destinationPort: (map['destinationPort'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      sourceAgentUri: (map['sourceAgentUri'] as String).input(),
+      sourceIp: (map['sourceIp'] as String).input(),
+      sourceNetworkUri: (map['sourceNetworkUri'] as String).input(),
+      sourcePort: (map['sourcePort'] as int).input(),
     );
   }
 }

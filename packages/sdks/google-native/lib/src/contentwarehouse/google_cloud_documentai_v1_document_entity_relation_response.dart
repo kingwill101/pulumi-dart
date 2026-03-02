@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Relationship between Entities.
 class GoogleCloudDocumentaiV1DocumentEntityRelationResponse {
   /// Object entity id.
-  final String objectId;
+  final pulumi.Input<String> objectId;
   /// Relationship description.
-  final String relation;
+  final pulumi.Input<String> relation;
   /// Subject entity id.
-  final String subjectId;
+  final pulumi.Input<String> subjectId;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentEntityRelationResponse].
   /// [objectId] Object entity id.
@@ -30,9 +31,9 @@ class GoogleCloudDocumentaiV1DocumentEntityRelationResponse {
 
   factory GoogleCloudDocumentaiV1DocumentEntityRelationResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentEntityRelationResponse(
-      objectId: map['objectId'] as String,
-      relation: map['relation'] as String,
-      subjectId: map['subjectId'] as String,
+      objectId: (map['objectId'] as String).input(),
+      relation: (map['relation'] as String).input(),
+      subjectId: (map['subjectId'] as String).input(),
     );
   }
 }

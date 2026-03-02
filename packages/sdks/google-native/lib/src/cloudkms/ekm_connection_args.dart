@@ -31,21 +31,14 @@ class EkmConnectionArgs {
   /// [project] Optional.
   /// [serviceResolvers] A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
   EkmConnectionArgs({
-    pulumi.Output<String>? cryptoSpacePath,
-    pulumi.Output<String>? ekmConnectionId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<EkmConnectionKeyManagementMode>? keyManagementMode,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<ServiceResolver>>? serviceResolvers,
-  }) :
-      cryptoSpacePath = pulumi.Input.asOptionalInput<String>(cryptoSpacePath),
-      ekmConnectionId = pulumi.Input.asOptionalInput<String>(ekmConnectionId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      keyManagementMode = pulumi.Input.asOptionalInput<EkmConnectionKeyManagementMode>(keyManagementMode),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceResolvers = pulumi.Input.asOptionalInput<List<ServiceResolver>>(serviceResolvers);
+    this.cryptoSpacePath,
+    this.ekmConnectionId,
+    this.etag,
+    this.keyManagementMode,
+    this.location,
+    this.project,
+    this.serviceResolvers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class EkmConnectionArgs {
 
   factory EkmConnectionArgs.fromMap(Map<String, dynamic> map) {
     return EkmConnectionArgs(
-      cryptoSpacePath: map['cryptoSpacePath'] == null ? null : pulumi.Output.create<String>(map['cryptoSpacePath'] as String),
-      ekmConnectionId: map['ekmConnectionId'] == null ? null : pulumi.Output.create<String>(map['ekmConnectionId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      keyManagementMode: map['keyManagementMode'] == null ? null : pulumi.Output.create<EkmConnectionKeyManagementMode>(EkmConnectionKeyManagementMode.fromValue(map['keyManagementMode'] as String)),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceResolvers: map['serviceResolvers'] == null ? null : pulumi.Output.create<List<ServiceResolver>>(pulumi.Input.decodeList<ServiceResolver>(map['serviceResolvers'], (value) => ServiceResolver.fromMap((value as Map).cast<String, dynamic>()))),
+      cryptoSpacePath: map['cryptoSpacePath'] == null ? null : (map['cryptoSpacePath'] as String).input(),
+      ekmConnectionId: map['ekmConnectionId'] == null ? null : (map['ekmConnectionId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      keyManagementMode: map['keyManagementMode'] == null ? null : (EkmConnectionKeyManagementMode.fromValue(map['keyManagementMode'] as String)).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceResolvers: map['serviceResolvers'] == null ? null : (pulumi.Input.decodeList<ServiceResolver>(map['serviceResolvers'], (value) => ServiceResolver.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

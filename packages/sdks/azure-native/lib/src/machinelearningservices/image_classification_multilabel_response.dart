@@ -11,31 +11,31 @@ import 'mltable_job_input_response.dart';
 /// from a set of labels - e.g. an image could be labeled with both 'cat' and 'dog'.
 class ImageClassificationMultilabelResponse {
   /// [Required] Limit settings for the AutoML job.
-  final ImageLimitSettingsResponse limitSettings;
+  final pulumi.Input<ImageLimitSettingsResponse> limitSettings;
   /// Log verbosity for the job.
-  final String? logVerbosity;
+  final pulumi.Input<String>? logVerbosity;
   /// Settings used for training the model.
-  final ImageModelSettingsClassificationResponse? modelSettings;
+  final pulumi.Input<ImageModelSettingsClassificationResponse>? modelSettings;
   /// Primary metric to optimize for this task.
-  final String? primaryMetric;
+  final pulumi.Input<String>? primaryMetric;
   /// Search space for sampling different combinations of models and their hyperparameters.
-  final List<ImageModelDistributionSettingsClassificationResponse>? searchSpace;
+  final pulumi.Input<List<ImageModelDistributionSettingsClassificationResponse>>? searchSpace;
   /// Model sweeping and hyperparameter sweeping related settings.
-  final ImageSweepSettingsResponse? sweepSettings;
+  final pulumi.Input<ImageSweepSettingsResponse>? sweepSettings;
   /// Target column name: This is prediction values column.
   /// Also known as label column name in context of classification tasks.
-  final String? targetColumnName;
+  final pulumi.Input<String>? targetColumnName;
   /// AutoMLJob Task type.
   /// Expected value is 'ImageClassificationMultilabel'.
-  final String taskType;
+  final pulumi.Input<String> taskType;
   /// [Required] Training data input.
-  final MLTableJobInputResponse trainingData;
+  final pulumi.Input<MLTableJobInputResponse> trainingData;
   /// Validation data inputs.
-  final MLTableJobInputResponse? validationData;
+  final pulumi.Input<MLTableJobInputResponse>? validationData;
   /// The fraction of training dataset that needs to be set aside for validation purpose.
   /// Values between (0.0 , 1.0)
   /// Applied when validation dataset is not provided.
-  final double? validationDataSize;
+  final pulumi.Input<double>? validationDataSize;
 
   /// Creates a new [ImageClassificationMultilabelResponse].
   /// [limitSettings] [Required] Limit settings for the AutoML job.
@@ -65,33 +65,33 @@ class ImageClassificationMultilabelResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'limitSettings': limitSettings.toMap(),
+      'limitSettings': pulumi.Input.mapInputValue<ImageLimitSettingsResponse, Map<String, dynamic>>(limitSettings, (value) => value.toMap()),
       'logVerbosity': ?logVerbosity,
-      'modelSettings': ?modelSettings == null ? null : modelSettings!.toMap(),
+      'modelSettings': ?pulumi.Input.mapOptionalInputValue<ImageModelSettingsClassificationResponse, Map<String, dynamic>>(modelSettings, (value) => value.toMap()),
       'primaryMetric': ?primaryMetric,
-      'searchSpace': ?searchSpace == null ? null : pulumi.Input.encodeList<ImageModelDistributionSettingsClassificationResponse, Map<String, dynamic>>(searchSpace!, (value) => value.toMap()),
-      'sweepSettings': ?sweepSettings == null ? null : sweepSettings!.toMap(),
+      'searchSpace': ?pulumi.Input.mapOptionalInputValue<List<ImageModelDistributionSettingsClassificationResponse>, List<Map<String, dynamic>>>(searchSpace, (value) => pulumi.Input.encodeList<ImageModelDistributionSettingsClassificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sweepSettings': ?pulumi.Input.mapOptionalInputValue<ImageSweepSettingsResponse, Map<String, dynamic>>(sweepSettings, (value) => value.toMap()),
       'targetColumnName': ?targetColumnName,
       'taskType': taskType,
-      'trainingData': trainingData.toMap(),
-      'validationData': ?validationData == null ? null : validationData!.toMap(),
+      'trainingData': pulumi.Input.mapInputValue<MLTableJobInputResponse, Map<String, dynamic>>(trainingData, (value) => value.toMap()),
+      'validationData': ?pulumi.Input.mapOptionalInputValue<MLTableJobInputResponse, Map<String, dynamic>>(validationData, (value) => value.toMap()),
       'validationDataSize': ?validationDataSize,
     };
   }
 
   factory ImageClassificationMultilabelResponse.fromMap(Map<String, dynamic> map) {
     return ImageClassificationMultilabelResponse(
-      limitSettings: ImageLimitSettingsResponse.fromMap((map['limitSettings'] as Map).cast<String, dynamic>()),
-      logVerbosity: map['logVerbosity'] == null ? null : map['logVerbosity'] as String,
-      modelSettings: map['modelSettings'] == null ? null : ImageModelSettingsClassificationResponse.fromMap((map['modelSettings'] as Map).cast<String, dynamic>()),
-      primaryMetric: map['primaryMetric'] == null ? null : map['primaryMetric'] as String,
-      searchSpace: map['searchSpace'] == null ? null : pulumi.Input.decodeList<ImageModelDistributionSettingsClassificationResponse>(map['searchSpace'], (value) => ImageModelDistributionSettingsClassificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sweepSettings: map['sweepSettings'] == null ? null : ImageSweepSettingsResponse.fromMap((map['sweepSettings'] as Map).cast<String, dynamic>()),
-      targetColumnName: map['targetColumnName'] == null ? null : map['targetColumnName'] as String,
-      taskType: map['taskType'] as String,
-      trainingData: MLTableJobInputResponse.fromMap((map['trainingData'] as Map).cast<String, dynamic>()),
-      validationData: map['validationData'] == null ? null : MLTableJobInputResponse.fromMap((map['validationData'] as Map).cast<String, dynamic>()),
-      validationDataSize: map['validationDataSize'] == null ? null : map['validationDataSize'] as double,
+      limitSettings: (ImageLimitSettingsResponse.fromMap((map['limitSettings'] as Map).cast<String, dynamic>())).input(),
+      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity'] as String).input(),
+      modelSettings: map['modelSettings'] == null ? null : (ImageModelSettingsClassificationResponse.fromMap((map['modelSettings'] as Map).cast<String, dynamic>())).input(),
+      primaryMetric: map['primaryMetric'] == null ? null : (map['primaryMetric'] as String).input(),
+      searchSpace: map['searchSpace'] == null ? null : (pulumi.Input.decodeList<ImageModelDistributionSettingsClassificationResponse>(map['searchSpace'], (value) => ImageModelDistributionSettingsClassificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sweepSettings: map['sweepSettings'] == null ? null : (ImageSweepSettingsResponse.fromMap((map['sweepSettings'] as Map).cast<String, dynamic>())).input(),
+      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName'] as String).input(),
+      taskType: (map['taskType'] as String).input(),
+      trainingData: (MLTableJobInputResponse.fromMap((map['trainingData'] as Map).cast<String, dynamic>())).input(),
+      validationData: map['validationData'] == null ? null : (MLTableJobInputResponse.fromMap((map['validationData'] as Map).cast<String, dynamic>())).input(),
+      validationDataSize: map['validationDataSize'] == null ? null : (map['validationDataSize'] as double).input(),
     );
   }
 }

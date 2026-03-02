@@ -32,19 +32,13 @@ class V2OrganizationNotificationConfigArgs {
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is
   /// [streamingConfig] The config for triggering streaming-based notifications.
   V2OrganizationNotificationConfigArgs({
-    required pulumi.Output<String> configId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> pubsubTopic,
-    required pulumi.Output<V2OrganizationNotificationConfigStreamingConfig> streamingConfig,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      organization = pulumi.Input.asInput<String>(organization),
-      pubsubTopic = pulumi.Input.asInput<String>(pubsubTopic),
-      streamingConfig = pulumi.Input.asInput<V2OrganizationNotificationConfigStreamingConfig>(streamingConfig);
+    required this.configId,
+    this.description,
+    this.location,
+    required this.organization,
+    required this.pubsubTopic,
+    required this.streamingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class V2OrganizationNotificationConfigArgs {
 
   factory V2OrganizationNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2OrganizationNotificationConfigArgs(
-      configId: pulumi.Output.create<String>(map['configId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      pubsubTopic: pulumi.Output.create<String>(map['pubsubTopic'] as String),
-      streamingConfig: pulumi.Output.create<V2OrganizationNotificationConfigStreamingConfig>(V2OrganizationNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())),
+      configId: (map['configId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      pubsubTopic: (map['pubsubTopic'] as String).input(),
+      streamingConfig: (V2OrganizationNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

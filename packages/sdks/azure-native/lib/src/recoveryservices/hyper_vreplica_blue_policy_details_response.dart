@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Hyper-V Replica Blue specific protection profile details.
 class HyperVReplicaBluePolicyDetailsResponse {
   /// A value indicating the authentication type.
-  final int? allowedAuthenticationType;
+  final pulumi.Input<int>? allowedAuthenticationType;
   /// A value indicating the application consistent frequency.
-  final int? applicationConsistentSnapshotFrequencyInHours;
+  final pulumi.Input<int>? applicationConsistentSnapshotFrequencyInHours;
   /// A value indicating whether compression has to be enabled.
-  final String? compression;
+  final pulumi.Input<String>? compression;
   /// A value indicating whether IR is online.
-  final String? initialReplicationMethod;
+  final pulumi.Input<String>? initialReplicationMethod;
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'HyperVReplica2012R2'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// A value indicating the offline IR export path.
-  final String? offlineReplicationExportPath;
+  final pulumi.Input<String>? offlineReplicationExportPath;
   /// A value indicating the offline IR import path.
-  final String? offlineReplicationImportPath;
+  final pulumi.Input<String>? offlineReplicationImportPath;
   /// A value indicating the online IR start time.
-  final String? onlineReplicationStartTime;
+  final pulumi.Input<String>? onlineReplicationStartTime;
   /// A value indicating the number of recovery points.
-  final int? recoveryPoints;
+  final pulumi.Input<int>? recoveryPoints;
   /// A value indicating whether the VM has to be auto deleted. Supported Values: String.Empty, None, OnRecoveryCloud
-  final String? replicaDeletionOption;
+  final pulumi.Input<String>? replicaDeletionOption;
   /// A value indicating the replication interval.
-  final int? replicationFrequencyInSeconds;
+  final pulumi.Input<int>? replicationFrequencyInSeconds;
   /// A value indicating the recovery HTTPS port.
-  final int? replicationPort;
+  final pulumi.Input<int>? replicationPort;
 
   /// Creates a new [HyperVReplicaBluePolicyDetailsResponse].
   /// [allowedAuthenticationType] A value indicating the authentication type.
@@ -76,18 +77,18 @@ class HyperVReplicaBluePolicyDetailsResponse {
 
   factory HyperVReplicaBluePolicyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaBluePolicyDetailsResponse(
-      allowedAuthenticationType: map['allowedAuthenticationType'] == null ? null : map['allowedAuthenticationType'] as int,
-      applicationConsistentSnapshotFrequencyInHours: map['applicationConsistentSnapshotFrequencyInHours'] == null ? null : map['applicationConsistentSnapshotFrequencyInHours'] as int,
-      compression: map['compression'] == null ? null : map['compression'] as String,
-      initialReplicationMethod: map['initialReplicationMethod'] == null ? null : map['initialReplicationMethod'] as String,
-      instanceType: map['instanceType'] as String,
-      offlineReplicationExportPath: map['offlineReplicationExportPath'] == null ? null : map['offlineReplicationExportPath'] as String,
-      offlineReplicationImportPath: map['offlineReplicationImportPath'] == null ? null : map['offlineReplicationImportPath'] as String,
-      onlineReplicationStartTime: map['onlineReplicationStartTime'] == null ? null : map['onlineReplicationStartTime'] as String,
-      recoveryPoints: map['recoveryPoints'] == null ? null : map['recoveryPoints'] as int,
-      replicaDeletionOption: map['replicaDeletionOption'] == null ? null : map['replicaDeletionOption'] as String,
-      replicationFrequencyInSeconds: map['replicationFrequencyInSeconds'] == null ? null : map['replicationFrequencyInSeconds'] as int,
-      replicationPort: map['replicationPort'] == null ? null : map['replicationPort'] as int,
+      allowedAuthenticationType: map['allowedAuthenticationType'] == null ? null : (map['allowedAuthenticationType'] as int).input(),
+      applicationConsistentSnapshotFrequencyInHours: map['applicationConsistentSnapshotFrequencyInHours'] == null ? null : (map['applicationConsistentSnapshotFrequencyInHours'] as int).input(),
+      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
+      initialReplicationMethod: map['initialReplicationMethod'] == null ? null : (map['initialReplicationMethod'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      offlineReplicationExportPath: map['offlineReplicationExportPath'] == null ? null : (map['offlineReplicationExportPath'] as String).input(),
+      offlineReplicationImportPath: map['offlineReplicationImportPath'] == null ? null : (map['offlineReplicationImportPath'] as String).input(),
+      onlineReplicationStartTime: map['onlineReplicationStartTime'] == null ? null : (map['onlineReplicationStartTime'] as String).input(),
+      recoveryPoints: map['recoveryPoints'] == null ? null : (map['recoveryPoints'] as int).input(),
+      replicaDeletionOption: map['replicaDeletionOption'] == null ? null : (map['replicaDeletionOption'] as String).input(),
+      replicationFrequencyInSeconds: map['replicationFrequencyInSeconds'] == null ? null : (map['replicationFrequencyInSeconds'] as int).input(),
+      replicationPort: map['replicationPort'] == null ? null : (map['replicationPort'] as int).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class ArchiveVersionArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ArchiveVersionArgs({
-    required pulumi.Output<String> archiveName,
-    pulumi.Output<String>? archiveVersionName,
-    required pulumi.Output<String> packageType,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      archiveName = pulumi.Input.asInput<String>(archiveName),
-      archiveVersionName = pulumi.Input.asOptionalInput<String>(archiveVersionName),
-      packageType = pulumi.Input.asInput<String>(packageType),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.archiveName,
+    this.archiveVersionName,
+    required this.packageType,
+    required this.registryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ArchiveVersionArgs {
 
   factory ArchiveVersionArgs.fromMap(Map<String, dynamic> map) {
     return ArchiveVersionArgs(
-      archiveName: pulumi.Output.create<String>(map['archiveName'] as String),
-      archiveVersionName: map['archiveVersionName'] == null ? null : pulumi.Output.create<String>(map['archiveVersionName'] as String),
-      packageType: pulumi.Output.create<String>(map['packageType'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      archiveName: (map['archiveName'] as String).input(),
+      archiveVersionName: map['archiveVersionName'] == null ? null : (map['archiveVersionName'] as String).input(),
+      packageType: (map['packageType'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

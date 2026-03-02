@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
   /// cidr_block must be specified in CIDR notation.
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// display_name is a field for users to identify CIDR blocks.
-  final String displayName;
+  final pulumi.Input<String> displayName;
 
   /// Creates a new [GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock].
   /// [cidrBlock] cidr_block must be specified in CIDR notation.
@@ -24,8 +25,8 @@ class GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
 
   factory GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock(
-      cidrBlock: map['cidrBlock'] as String,
-      displayName: map['displayName'] as String,
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
     );
   }
 }

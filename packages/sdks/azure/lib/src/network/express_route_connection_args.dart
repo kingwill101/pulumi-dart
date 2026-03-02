@@ -37,25 +37,16 @@ class ExpressRouteConnectionArgs {
   /// [routing] A `routing` block as defined below.
   /// [routingWeight] The routing weight associated to the Express Route Connection. Possible value is between `0` and `32000`. Defaults to `0`.
   ExpressRouteConnectionArgs({
-    pulumi.Output<String>? authorizationKey,
-    pulumi.Output<bool>? enableInternetSecurity,
-    required pulumi.Output<String> expressRouteCircuitPeeringId,
-    pulumi.Output<bool>? expressRouteGatewayBypassEnabled,
-    required pulumi.Output<String> expressRouteGatewayId,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? privateLinkFastPathEnabled,
-    pulumi.Output<ExpressRouteConnectionRouting>? routing,
-    pulumi.Output<int>? routingWeight,
-  }) :
-      authorizationKey = pulumi.Input.asOptionalInput<String>(authorizationKey),
-      enableInternetSecurity = pulumi.Input.asOptionalInput<bool>(enableInternetSecurity),
-      expressRouteCircuitPeeringId = pulumi.Input.asInput<String>(expressRouteCircuitPeeringId),
-      expressRouteGatewayBypassEnabled = pulumi.Input.asOptionalInput<bool>(expressRouteGatewayBypassEnabled),
-      expressRouteGatewayId = pulumi.Input.asInput<String>(expressRouteGatewayId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateLinkFastPathEnabled = pulumi.Input.asOptionalInput<bool>(privateLinkFastPathEnabled),
-      routing = pulumi.Input.asOptionalInput<ExpressRouteConnectionRouting>(routing),
-      routingWeight = pulumi.Input.asOptionalInput<int>(routingWeight);
+    this.authorizationKey,
+    this.enableInternetSecurity,
+    required this.expressRouteCircuitPeeringId,
+    this.expressRouteGatewayBypassEnabled,
+    required this.expressRouteGatewayId,
+    this.name,
+    this.privateLinkFastPathEnabled,
+    this.routing,
+    this.routingWeight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ExpressRouteConnectionArgs {
 
   factory ExpressRouteConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteConnectionArgs(
-      authorizationKey: map['authorizationKey'] == null ? null : pulumi.Output.create<String>(map['authorizationKey'] as String),
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : pulumi.Output.create<bool>(map['enableInternetSecurity'] as bool),
-      expressRouteCircuitPeeringId: pulumi.Output.create<String>(map['expressRouteCircuitPeeringId'] as String),
-      expressRouteGatewayBypassEnabled: map['expressRouteGatewayBypassEnabled'] == null ? null : pulumi.Output.create<bool>(map['expressRouteGatewayBypassEnabled'] as bool),
-      expressRouteGatewayId: pulumi.Output.create<String>(map['expressRouteGatewayId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateLinkFastPathEnabled: map['privateLinkFastPathEnabled'] == null ? null : pulumi.Output.create<bool>(map['privateLinkFastPathEnabled'] as bool),
-      routing: map['routing'] == null ? null : pulumi.Output.create<ExpressRouteConnectionRouting>(ExpressRouteConnectionRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())),
-      routingWeight: map['routingWeight'] == null ? null : pulumi.Output.create<int>(map['routingWeight'] as int),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
+      expressRouteCircuitPeeringId: (map['expressRouteCircuitPeeringId'] as String).input(),
+      expressRouteGatewayBypassEnabled: map['expressRouteGatewayBypassEnabled'] == null ? null : (map['expressRouteGatewayBypassEnabled'] as bool).input(),
+      expressRouteGatewayId: (map['expressRouteGatewayId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateLinkFastPathEnabled: map['privateLinkFastPathEnabled'] == null ? null : (map['privateLinkFastPathEnabled'] as bool).input(),
+      routing: map['routing'] == null ? null : (ExpressRouteConnectionRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())).input(),
+      routingWeight: map['routingWeight'] == null ? null : (map['routingWeight'] as int).input(),
     );
   }
 }

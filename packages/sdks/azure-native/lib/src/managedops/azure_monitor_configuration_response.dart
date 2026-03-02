@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for the Azure Monitor Insights service.
 class AzureMonitorConfigurationResponse {
   /// Azure monitor workspace resource ID used by the service.
-  final String azureMonitorWorkspaceId;
+  final pulumi.Input<String> azureMonitorWorkspaceId;
 
   /// Creates a new [AzureMonitorConfigurationResponse].
   /// [azureMonitorWorkspaceId] Azure monitor workspace resource ID used by the service.
@@ -20,7 +21,7 @@ class AzureMonitorConfigurationResponse {
 
   factory AzureMonitorConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AzureMonitorConfigurationResponse(
-      azureMonitorWorkspaceId: map['azureMonitorWorkspaceId'] as String,
+      azureMonitorWorkspaceId: (map['azureMonitorWorkspaceId'] as String).input(),
     );
   }
 }

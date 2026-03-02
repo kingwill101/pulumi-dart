@@ -16,11 +16,9 @@ class GetAccessControlListArgs {
   /// [accessControlListName] Name of the Access Control List.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAccessControlListArgs({
-    required pulumi.Output<String> accessControlListName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accessControlListName = pulumi.Input.asInput<String>(accessControlListName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accessControlListName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAccessControlListArgs {
 
   factory GetAccessControlListArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessControlListArgs(
-      accessControlListName: pulumi.Output.create<String>(map['accessControlListName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accessControlListName: (map['accessControlListName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class StorageSpaceRetrieveArgs {
   /// [storageSpacesName] Parameter for the name of the storage object
   /// [tags] Resource tags.
   StorageSpaceRetrieveArgs({
-    pulumi.Output<StorageSpacesExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? location,
-    pulumi.Output<StorageSpacesProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageSpacesName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      extendedLocation = pulumi.Input.asOptionalInput<StorageSpacesExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<StorageSpacesProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageSpacesName = pulumi.Input.asOptionalInput<String>(storageSpacesName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.extendedLocation,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.storageSpacesName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class StorageSpaceRetrieveArgs {
 
   factory StorageSpaceRetrieveArgs.fromMap(Map<String, dynamic> map) {
     return StorageSpaceRetrieveArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<StorageSpacesExtendedLocation>(StorageSpacesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<StorageSpacesProperties>(StorageSpacesProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageSpacesName: map['storageSpacesName'] == null ? null : pulumi.Output.create<String>(map['storageSpacesName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      extendedLocation: map['extendedLocation'] == null ? null : (StorageSpacesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (StorageSpacesProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageSpacesName: map['storageSpacesName'] == null ? null : (map['storageSpacesName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

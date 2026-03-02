@@ -36,17 +36,12 @@ class KeyRingIAMBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   KeyRingIAMBindingState({
-    pulumi.Output<KeyRingIAMBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? keyRingId,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<KeyRingIAMBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      keyRingId = pulumi.Input.asOptionalInput<String>(keyRingId),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.etag,
+    this.keyRingId,
+    this.members,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,11 +55,11 @@ class KeyRingIAMBindingState {
 
   factory KeyRingIAMBindingState.fromMap(Map<String, dynamic> map) {
     return KeyRingIAMBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<KeyRingIAMBindingCondition>(KeyRingIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      keyRingId: map['keyRingId'] == null ? null : pulumi.Output.create<String>(map['keyRingId'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (KeyRingIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      keyRingId: map['keyRingId'] == null ? null : (map['keyRingId'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

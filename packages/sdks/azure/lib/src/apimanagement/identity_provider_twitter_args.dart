@@ -22,15 +22,11 @@ class IdentityProviderTwitterArgs {
   /// [apiSecretKey] App Consumer API secret key for Twitter.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   IdentityProviderTwitterArgs({
-    required pulumi.Output<String> apiKey,
-    required pulumi.Output<String> apiManagementName,
-    required pulumi.Output<String> apiSecretKey,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      apiKey = pulumi.Input.asInput<String>(apiKey),
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      apiSecretKey = pulumi.Input.asInput<String>(apiSecretKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.apiKey,
+    required this.apiManagementName,
+    required this.apiSecretKey,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class IdentityProviderTwitterArgs {
 
   factory IdentityProviderTwitterArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderTwitterArgs(
-      apiKey: pulumi.Output.create<String>(map['apiKey'] as String),
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      apiSecretKey: pulumi.Output.create<String>(map['apiSecretKey'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      apiKey: (map['apiKey'] as String).input(),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      apiSecretKey: (map['apiSecretKey'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

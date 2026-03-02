@@ -37,27 +37,17 @@ class GetWafSignaturesArgs {
   /// [tag] Optional.
   /// [type] Type of the signature.
   GetWafSignaturesArgs({
-    pulumi.Output<String>? accuracy,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? performStaging,
-    pulumi.Output<String>? risk,
-    required pulumi.Output<int> signatureId,
-    pulumi.Output<String>? systemSignatureId,
-    pulumi.Output<String>? tag,
-    pulumi.Output<String>? type,
-  }) :
-      accuracy = pulumi.Input.asOptionalInput<String>(accuracy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      performStaging = pulumi.Input.asOptionalInput<bool>(performStaging),
-      risk = pulumi.Input.asOptionalInput<String>(risk),
-      signatureId = pulumi.Input.asInput<int>(signatureId),
-      systemSignatureId = pulumi.Input.asOptionalInput<String>(systemSignatureId),
-      tag = pulumi.Input.asOptionalInput<String>(tag),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.accuracy,
+    this.description,
+    this.enabled,
+    this.name,
+    this.performStaging,
+    this.risk,
+    required this.signatureId,
+    this.systemSignatureId,
+    this.tag,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class GetWafSignaturesArgs {
 
   factory GetWafSignaturesArgs.fromMap(Map<String, dynamic> map) {
     return GetWafSignaturesArgs(
-      accuracy: map['accuracy'] == null ? null : pulumi.Output.create<String>(map['accuracy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      performStaging: map['performStaging'] == null ? null : pulumi.Output.create<bool>(map['performStaging'] as bool),
-      risk: map['risk'] == null ? null : pulumi.Output.create<String>(map['risk'] as String),
-      signatureId: pulumi.Output.create<int>(map['signatureId'] as int),
-      systemSignatureId: map['systemSignatureId'] == null ? null : pulumi.Output.create<String>(map['systemSignatureId'] as String),
-      tag: map['tag'] == null ? null : pulumi.Output.create<String>(map['tag'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      accuracy: map['accuracy'] == null ? null : (map['accuracy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      performStaging: map['performStaging'] == null ? null : (map['performStaging'] as bool).input(),
+      risk: map['risk'] == null ? null : (map['risk'] as String).input(),
+      signatureId: (map['signatureId'] as int).input(),
+      systemSignatureId: map['systemSignatureId'] == null ? null : (map['systemSignatureId'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

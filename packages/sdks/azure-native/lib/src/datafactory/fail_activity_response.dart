@@ -7,24 +7,24 @@ import 'user_property_response.dart';
 /// This activity will fail within its own scope and output a custom error message and error code. The error message and code can provided either as a string literal or as an expression that can be evaluated to a string at runtime. The activity scope can be the whole pipeline or a control activity (e.g. foreach, switch, until), if the fail activity is contained in it.
 class FailActivityResponse {
   /// Activity depends on condition.
-  final List<ActivityDependencyResponse>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
   /// Activity description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The error code that categorizes the error type of the Fail activity. It can be dynamic content that's evaluated to a non empty/blank string at runtime. Type: string (or Expression with resultType string).
-  final dynamic errorCode;
+  final pulumi.Input<dynamic> errorCode;
   /// The error message that surfaced in the Fail activity. It can be dynamic content that's evaluated to a non empty/blank string at runtime. Type: string (or Expression with resultType string).
-  final dynamic message;
+  final pulumi.Input<dynamic> message;
   /// Activity name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final String? onInactiveMarkAs;
+  final pulumi.Input<String>? onInactiveMarkAs;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Type of activity.
   /// Expected value is 'Fail'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Activity user properties.
-  final List<UserPropertyResponse>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
 
   /// Creates a new [FailActivityResponse].
   /// [dependsOn] Activity depends on condition.
@@ -50,7 +50,7 @@ class FailActivityResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dependsOn': ?dependsOn == null ? null : pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(dependsOn!, (value) => value.toMap()),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'errorCode': errorCode,
       'message': message,
@@ -58,21 +58,21 @@ class FailActivityResponse {
       'onInactiveMarkAs': ?onInactiveMarkAs,
       'state': ?state,
       'type': type,
-      'userProperties': ?userProperties == null ? null : pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(userProperties!, (value) => value.toMap()),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserPropertyResponse>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory FailActivityResponse.fromMap(Map<String, dynamic> map) {
     return FailActivityResponse(
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      errorCode: map['errorCode'],
-      message: map['message'],
-      name: map['name'] as String,
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : map['onInactiveMarkAs'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      type: map['type'] as String,
-      userProperties: map['userProperties'] == null ? null : pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      errorCode: (map['errorCode']).input(),
+      message: (map['message']).input(),
+      name: (map['name'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

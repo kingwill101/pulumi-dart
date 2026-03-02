@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
 import 'validating_admission_policy_spec_patch_admissionregistration_k8s_io_v1alpha1.dart';
 import 'validating_admission_policy_status_patch_admissionregistration_k8s_io_v1alpha1.dart';
@@ -7,15 +8,15 @@ import 'validating_admission_policy_status_patch_admissionregistration_k8s_io_v1
 /// ValidatingAdmissionPolicy describes the definition of an admission validation policy that accepts or rejects an object without changing it.
 class ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1alpha1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-  final ObjectMetaPatch? metadata;
+  final pulumi.Input<ObjectMetaPatch>? metadata;
   /// Specification of the desired behavior of the ValidatingAdmissionPolicy.
-  final ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1? spec;
+  final pulumi.Input<ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1>? spec;
   /// The status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy behaves in the expected way. Populated by the system. Read-only.
-  final ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1alpha1? status;
+  final pulumi.Input<ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1alpha1>? status;
 
   /// Creates a new [ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1alpha1].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -35,19 +36,19 @@ class ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1alpha1 {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'spec': ?spec == null ? null : spec!.toMap(),
-      'status': ?status == null ? null : status!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1alpha1, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1alpha1(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      spec: map['spec'] == null ? null : ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

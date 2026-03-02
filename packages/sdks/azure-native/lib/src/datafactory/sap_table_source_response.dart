@@ -1,42 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sap_table_partition_settings_response.dart';
 
 /// A copy activity source for SAP Table source.
 class SapTableSourceResponse {
   /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-  final dynamic additionalColumns;
+  final pulumi.Input<dynamic>? additionalColumns;
   /// Specifies the maximum number of rows that will be retrieved at a time when retrieving data from SAP Table. Type: integer (or Expression with resultType integer).
-  final dynamic batchSize;
+  final pulumi.Input<dynamic>? batchSize;
   /// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
-  final dynamic customRfcReadTableFunctionModule;
+  final pulumi.Input<dynamic>? customRfcReadTableFunctionModule;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// The partition mechanism that will be used for SAP table read in parallel. Possible values include: "None", "PartitionOnInt", "PartitionOnCalendarYear", "PartitionOnCalendarMonth", "PartitionOnCalendarDate", "PartitionOnTime".
-  final dynamic partitionOption;
+  final pulumi.Input<dynamic>? partitionOption;
   /// The settings that will be leveraged for SAP table source partitioning.
-  final SapTablePartitionSettingsResponse? partitionSettings;
+  final pulumi.Input<SapTablePartitionSettingsResponse>? partitionSettings;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic queryTimeout;
+  final pulumi.Input<dynamic>? queryTimeout;
   /// The fields of the SAP table that will be retrieved. For example, column0, column1. Type: string (or Expression with resultType string).
-  final dynamic rfcTableFields;
+  final pulumi.Input<dynamic>? rfcTableFields;
   /// The options for the filtering of the SAP Table. For example, COLUMN0 EQ SOME VALUE. Type: string (or Expression with resultType string).
-  final dynamic rfcTableOptions;
+  final pulumi.Input<dynamic>? rfcTableOptions;
   /// The number of rows to be retrieved. Type: integer(or Expression with resultType integer).
-  final dynamic rowCount;
+  final pulumi.Input<dynamic>? rowCount;
   /// The number of rows that will be skipped. Type: integer (or Expression with resultType integer).
-  final dynamic rowSkips;
+  final pulumi.Input<dynamic>? rowSkips;
   /// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
-  final dynamic sapDataColumnDelimiter;
+  final pulumi.Input<dynamic>? sapDataColumnDelimiter;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Copy source type.
   /// Expected value is 'SapTableSource'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SapTableSourceResponse].
   /// [additionalColumns] Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -82,7 +83,7 @@ class SapTableSourceResponse {
       'disableMetricsCollection': ?disableMetricsCollection,
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'partitionOption': ?partitionOption,
-      'partitionSettings': ?partitionSettings == null ? null : partitionSettings!.toMap(),
+      'partitionSettings': ?pulumi.Input.mapOptionalInputValue<SapTablePartitionSettingsResponse, Map<String, dynamic>>(partitionSettings, (value) => value.toMap()),
       'queryTimeout': ?queryTimeout,
       'rfcTableFields': ?rfcTableFields,
       'rfcTableOptions': ?rfcTableOptions,
@@ -97,22 +98,22 @@ class SapTableSourceResponse {
 
   factory SapTableSourceResponse.fromMap(Map<String, dynamic> map) {
     return SapTableSourceResponse(
-      additionalColumns: map['additionalColumns'] == null ? null : map['additionalColumns'],
-      batchSize: map['batchSize'] == null ? null : map['batchSize'],
-      customRfcReadTableFunctionModule: map['customRfcReadTableFunctionModule'] == null ? null : map['customRfcReadTableFunctionModule'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      partitionOption: map['partitionOption'] == null ? null : map['partitionOption'],
-      partitionSettings: map['partitionSettings'] == null ? null : SapTablePartitionSettingsResponse.fromMap((map['partitionSettings'] as Map).cast<String, dynamic>()),
-      queryTimeout: map['queryTimeout'] == null ? null : map['queryTimeout'],
-      rfcTableFields: map['rfcTableFields'] == null ? null : map['rfcTableFields'],
-      rfcTableOptions: map['rfcTableOptions'] == null ? null : map['rfcTableOptions'],
-      rowCount: map['rowCount'] == null ? null : map['rowCount'],
-      rowSkips: map['rowSkips'] == null ? null : map['rowSkips'],
-      sapDataColumnDelimiter: map['sapDataColumnDelimiter'] == null ? null : map['sapDataColumnDelimiter'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      type: map['type'] as String,
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize']).input(),
+      customRfcReadTableFunctionModule: map['customRfcReadTableFunctionModule'] == null ? null : (map['customRfcReadTableFunctionModule']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      partitionOption: map['partitionOption'] == null ? null : (map['partitionOption']).input(),
+      partitionSettings: map['partitionSettings'] == null ? null : (SapTablePartitionSettingsResponse.fromMap((map['partitionSettings'] as Map).cast<String, dynamic>())).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
+      rfcTableFields: map['rfcTableFields'] == null ? null : (map['rfcTableFields']).input(),
+      rfcTableOptions: map['rfcTableOptions'] == null ? null : (map['rfcTableOptions']).input(),
+      rowCount: map['rowCount'] == null ? null : (map['rowCount']).input(),
+      rowSkips: map['rowSkips'] == null ? null : (map['rowSkips']).input(),
+      sapDataColumnDelimiter: map['sapDataColumnDelimiter'] == null ? null : (map['sapDataColumnDelimiter']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -46,31 +46,19 @@ class OtsBackupPlanState {
   /// [schedule] Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// [vaultId] The ID of backup vault.
   OtsBackupPlanState({
-    pulumi.Output<String>? backupType,
-    pulumi.Output<String>? crossAccountRoleName,
-    pulumi.Output<String>? crossAccountType,
-    pulumi.Output<int>? crossAccountUserId,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? otsBackupPlanName,
-    pulumi.Output<List<OtsBackupPlanOtsDetail>>? otsDetails,
-    pulumi.Output<String>? retention,
-    pulumi.Output<List<OtsBackupPlanRule>>? rules,
-    pulumi.Output<String>? schedule,
-    pulumi.Output<String>? vaultId,
-  }) :
-      backupType = pulumi.Input.asOptionalInput<String>(backupType),
-      crossAccountRoleName = pulumi.Input.asOptionalInput<String>(crossAccountRoleName),
-      crossAccountType = pulumi.Input.asOptionalInput<String>(crossAccountType),
-      crossAccountUserId = pulumi.Input.asOptionalInput<int>(crossAccountUserId),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      otsBackupPlanName = pulumi.Input.asOptionalInput<String>(otsBackupPlanName),
-      otsDetails = pulumi.Input.asOptionalInput<List<OtsBackupPlanOtsDetail>>(otsDetails),
-      retention = pulumi.Input.asOptionalInput<String>(retention),
-      rules = pulumi.Input.asOptionalInput<List<OtsBackupPlanRule>>(rules),
-      schedule = pulumi.Input.asOptionalInput<String>(schedule),
-      vaultId = pulumi.Input.asOptionalInput<String>(vaultId);
+    this.backupType,
+    this.crossAccountRoleName,
+    this.crossAccountType,
+    this.crossAccountUserId,
+    this.disabled,
+    this.instanceName,
+    this.otsBackupPlanName,
+    this.otsDetails,
+    this.retention,
+    this.rules,
+    this.schedule,
+    this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class OtsBackupPlanState {
 
   factory OtsBackupPlanState.fromMap(Map<String, dynamic> map) {
     return OtsBackupPlanState(
-      backupType: map['backupType'] == null ? null : pulumi.Output.create<String>(map['backupType'] as String),
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : pulumi.Output.create<String>(map['crossAccountRoleName'] as String),
-      crossAccountType: map['crossAccountType'] == null ? null : pulumi.Output.create<String>(map['crossAccountType'] as String),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : pulumi.Output.create<int>(map['crossAccountUserId'] as int),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      otsBackupPlanName: map['otsBackupPlanName'] == null ? null : pulumi.Output.create<String>(map['otsBackupPlanName'] as String),
-      otsDetails: map['otsDetails'] == null ? null : pulumi.Output.create<List<OtsBackupPlanOtsDetail>>(pulumi.Input.decodeList<OtsBackupPlanOtsDetail>(map['otsDetails'], (value) => OtsBackupPlanOtsDetail.fromMap((value as Map).cast<String, dynamic>()))),
-      retention: map['retention'] == null ? null : pulumi.Output.create<String>(map['retention'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<OtsBackupPlanRule>>(pulumi.Input.decodeList<OtsBackupPlanRule>(map['rules'], (value) => OtsBackupPlanRule.fromMap((value as Map).cast<String, dynamic>()))),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<String>(map['schedule'] as String),
-      vaultId: map['vaultId'] == null ? null : pulumi.Output.create<String>(map['vaultId'] as String),
+      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
+      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName'] as String).input(),
+      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType'] as String).input(),
+      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId'] as int).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      otsBackupPlanName: map['otsBackupPlanName'] == null ? null : (map['otsBackupPlanName'] as String).input(),
+      otsDetails: map['otsDetails'] == null ? null : (pulumi.Input.decodeList<OtsBackupPlanOtsDetail>(map['otsDetails'], (value) => OtsBackupPlanOtsDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      retention: map['retention'] == null ? null : (map['retention'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<OtsBackupPlanRule>(map['rules'], (value) => OtsBackupPlanRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
     );
   }
 }

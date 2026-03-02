@@ -41,29 +41,18 @@ class AssessmentsMetadataSubscriptionArgs {
   /// [threats] Optional.
   /// [userImpact] The user impact of the assessment
   AssessmentsMetadataSubscriptionArgs({
-    pulumi.Output<String>? assessmentMetadataName,
-    required pulumi.Output<String> assessmentType,
-    pulumi.Output<List<String>>? categories,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? implementationEffort,
-    pulumi.Output<bool>? preview,
-    pulumi.Output<String>? remediationDescription,
-    required pulumi.Output<String> severity,
-    pulumi.Output<List<String>>? threats,
-    pulumi.Output<String>? userImpact,
-  }) :
-      assessmentMetadataName = pulumi.Input.asOptionalInput<String>(assessmentMetadataName),
-      assessmentType = pulumi.Input.asInput<String>(assessmentType),
-      categories = pulumi.Input.asOptionalInput<List<String>>(categories),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      implementationEffort = pulumi.Input.asOptionalInput<String>(implementationEffort),
-      preview = pulumi.Input.asOptionalInput<bool>(preview),
-      remediationDescription = pulumi.Input.asOptionalInput<String>(remediationDescription),
-      severity = pulumi.Input.asInput<String>(severity),
-      threats = pulumi.Input.asOptionalInput<List<String>>(threats),
-      userImpact = pulumi.Input.asOptionalInput<String>(userImpact);
+    this.assessmentMetadataName,
+    required this.assessmentType,
+    this.categories,
+    this.description,
+    required this.displayName,
+    this.implementationEffort,
+    this.preview,
+    this.remediationDescription,
+    required this.severity,
+    this.threats,
+    this.userImpact,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class AssessmentsMetadataSubscriptionArgs {
 
   factory AssessmentsMetadataSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentsMetadataSubscriptionArgs(
-      assessmentMetadataName: map['assessmentMetadataName'] == null ? null : pulumi.Output.create<String>(map['assessmentMetadataName'] as String),
-      assessmentType: pulumi.Output.create<String>(map['assessmentType'] as String),
-      categories: map['categories'] == null ? null : pulumi.Output.create<List<String>>((map['categories'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      implementationEffort: map['implementationEffort'] == null ? null : pulumi.Output.create<String>(map['implementationEffort'] as String),
-      preview: map['preview'] == null ? null : pulumi.Output.create<bool>(map['preview'] as bool),
-      remediationDescription: map['remediationDescription'] == null ? null : pulumi.Output.create<String>(map['remediationDescription'] as String),
-      severity: pulumi.Output.create<String>(map['severity'] as String),
-      threats: map['threats'] == null ? null : pulumi.Output.create<List<String>>((map['threats'] as List).cast<String>()),
-      userImpact: map['userImpact'] == null ? null : pulumi.Output.create<String>(map['userImpact'] as String),
+      assessmentMetadataName: map['assessmentMetadataName'] == null ? null : (map['assessmentMetadataName'] as String).input(),
+      assessmentType: (map['assessmentType'] as String).input(),
+      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      implementationEffort: map['implementationEffort'] == null ? null : (map['implementationEffort'] as String).input(),
+      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
+      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      threats: map['threats'] == null ? null : ((map['threats'] as List).cast<String>()).input(),
+      userImpact: map['userImpact'] == null ? null : (map['userImpact'] as String).input(),
     );
   }
 }

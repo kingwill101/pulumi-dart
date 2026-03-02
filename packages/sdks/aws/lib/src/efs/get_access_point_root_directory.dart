@@ -5,9 +5,9 @@ import 'get_access_point_root_directory_creation_info.dart';
 
 class GetAccessPointRootDirectory {
   /// Single element list containing information on the creation permissions of the directory
-  final List<GetAccessPointRootDirectoryCreationInfo> creationInfos;
+  final pulumi.Input<List<GetAccessPointRootDirectoryCreationInfo>> creationInfos;
   /// Path exposed as the root directory
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [GetAccessPointRootDirectory].
   /// [creationInfos] Single element list containing information on the creation permissions of the directory
@@ -19,15 +19,15 @@ class GetAccessPointRootDirectory {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'creationInfos': pulumi.Input.encodeList<GetAccessPointRootDirectoryCreationInfo, Map<String, dynamic>>(creationInfos, (value) => value.toMap()),
+      'creationInfos': pulumi.Input.mapInputValue<List<GetAccessPointRootDirectoryCreationInfo>, List<Map<String, dynamic>>>(creationInfos, (value) => pulumi.Input.encodeList<GetAccessPointRootDirectoryCreationInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'path': path,
     };
   }
 
   factory GetAccessPointRootDirectory.fromMap(Map<String, dynamic> map) {
     return GetAccessPointRootDirectory(
-      creationInfos: pulumi.Input.decodeList<GetAccessPointRootDirectoryCreationInfo>(map['creationInfos'], (value) => GetAccessPointRootDirectoryCreationInfo.fromMap((value as Map).cast<String, dynamic>())),
-      path: map['path'] as String,
+      creationInfos: (pulumi.Input.decodeList<GetAccessPointRootDirectoryCreationInfo>(map['creationInfos'], (value) => GetAccessPointRootDirectoryCreationInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

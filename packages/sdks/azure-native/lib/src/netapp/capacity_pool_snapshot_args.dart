@@ -28,19 +28,13 @@ class CapacityPoolSnapshotArgs {
   /// [snapshotName] The name of the snapshot
   /// [volumeName] The name of the volume
   CapacityPoolSnapshotArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? snapshotName,
-    required pulumi.Output<String> volumeName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName),
-      volumeName = pulumi.Input.asInput<String>(volumeName);
+    required this.accountName,
+    this.location,
+    required this.poolName,
+    required this.resourceGroupName,
+    this.snapshotName,
+    required this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class CapacityPoolSnapshotArgs {
 
   factory CapacityPoolSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolSnapshotArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
-      volumeName: pulumi.Output.create<String>(map['volumeName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      volumeName: (map['volumeName'] as String).input(),
     );
   }
 }

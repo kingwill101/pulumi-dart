@@ -54,31 +54,19 @@ class StreamProcessorArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   StreamProcessorArgs({
-    pulumi.Output<StreamProcessorDataSharingPreference>? dataSharingPreference,
-    required pulumi.Output<StreamProcessorInput> input,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<StreamProcessorNotificationChannel>? notificationChannel,
-    required pulumi.Output<StreamProcessorOutput> output,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<StreamProcessorRegionsOfInterest>>? regionsOfInterests,
-    required pulumi.Output<String> roleArn,
-    required pulumi.Output<StreamProcessorSettings> settings,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<StreamProcessorTimeouts>? timeouts,
-  }) :
-      dataSharingPreference = pulumi.Input.asOptionalInput<StreamProcessorDataSharingPreference>(dataSharingPreference),
-      input = pulumi.Input.asInput<StreamProcessorInput>(input),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationChannel = pulumi.Input.asOptionalInput<StreamProcessorNotificationChannel>(notificationChannel),
-      output = pulumi.Input.asInput<StreamProcessorOutput>(output),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      regionsOfInterests = pulumi.Input.asOptionalInput<List<StreamProcessorRegionsOfInterest>>(regionsOfInterests),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      settings = pulumi.Input.asInput<StreamProcessorSettings>(settings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<StreamProcessorTimeouts>(timeouts);
+    this.dataSharingPreference,
+    required this.input,
+    this.kmsKeyId,
+    this.name,
+    this.notificationChannel,
+    required this.output,
+    this.region,
+    this.regionsOfInterests,
+    required this.roleArn,
+    required this.settings,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,18 +87,18 @@ class StreamProcessorArgs {
 
   factory StreamProcessorArgs.fromMap(Map<String, dynamic> map) {
     return StreamProcessorArgs(
-      dataSharingPreference: map['dataSharingPreference'] == null ? null : pulumi.Output.create<StreamProcessorDataSharingPreference>(StreamProcessorDataSharingPreference.fromMap((map['dataSharingPreference'] as Map).cast<String, dynamic>())),
-      input: pulumi.Output.create<StreamProcessorInput>(StreamProcessorInput.fromMap((map['input'] as Map).cast<String, dynamic>())),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationChannel: map['notificationChannel'] == null ? null : pulumi.Output.create<StreamProcessorNotificationChannel>(StreamProcessorNotificationChannel.fromMap((map['notificationChannel'] as Map).cast<String, dynamic>())),
-      output: pulumi.Output.create<StreamProcessorOutput>(StreamProcessorOutput.fromMap((map['output'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      regionsOfInterests: map['regionsOfInterests'] == null ? null : pulumi.Output.create<List<StreamProcessorRegionsOfInterest>>(pulumi.Input.decodeList<StreamProcessorRegionsOfInterest>(map['regionsOfInterests'], (value) => StreamProcessorRegionsOfInterest.fromMap((value as Map).cast<String, dynamic>()))),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      settings: pulumi.Output.create<StreamProcessorSettings>(StreamProcessorSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<StreamProcessorTimeouts>(StreamProcessorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      dataSharingPreference: map['dataSharingPreference'] == null ? null : (StreamProcessorDataSharingPreference.fromMap((map['dataSharingPreference'] as Map).cast<String, dynamic>())).input(),
+      input: (StreamProcessorInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationChannel: map['notificationChannel'] == null ? null : (StreamProcessorNotificationChannel.fromMap((map['notificationChannel'] as Map).cast<String, dynamic>())).input(),
+      output: (StreamProcessorOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      regionsOfInterests: map['regionsOfInterests'] == null ? null : (pulumi.Input.decodeList<StreamProcessorRegionsOfInterest>(map['regionsOfInterests'], (value) => StreamProcessorRegionsOfInterest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      settings: (StreamProcessorSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (StreamProcessorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

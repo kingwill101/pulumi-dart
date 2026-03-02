@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationAgent {
   /// The Amazon Resource Name (ARN) of the alias of the agent to invoke.
-  final String agentAliasArn;
+  final pulumi.Input<String> agentAliasArn;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationAgent].
   /// [agentAliasArn] The Amazon Resource Name (ARN) of the alias of the agent to invoke.
@@ -19,7 +20,7 @@ class AgentFlowDefinitionNodeConfigurationAgent {
 
   factory AgentFlowDefinitionNodeConfigurationAgent.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationAgent(
-      agentAliasArn: map['agentAliasArn'] as String,
+      agentAliasArn: (map['agentAliasArn'] as String).input(),
     );
   }
 }

@@ -59,33 +59,20 @@ class ExtensionsInstanceState {
   /// [state] The processing state of the extension instance.
   /// [updateTime] The time at which the Extension Instance was updated.
   ExtensionsInstanceState({
-    pulumi.Output<ExtensionsInstanceConfig>? config,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<List<ExtensionsInstanceErrorStatus>>? errorStatuses,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? lastOperationName,
-    pulumi.Output<String>? lastOperationType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<ExtensionsInstanceRuntimeData>>? runtimeDatas,
-    pulumi.Output<String>? serviceAccountEmail,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? updateTime,
-  }) :
-      config = pulumi.Input.asOptionalInput<ExtensionsInstanceConfig>(config),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      errorStatuses = pulumi.Input.asOptionalInput<List<ExtensionsInstanceErrorStatus>>(errorStatuses),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      lastOperationName = pulumi.Input.asOptionalInput<String>(lastOperationName),
-      lastOperationType = pulumi.Input.asOptionalInput<String>(lastOperationType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runtimeDatas = pulumi.Input.asOptionalInput<List<ExtensionsInstanceRuntimeData>>(runtimeDatas),
-      serviceAccountEmail = pulumi.Input.asOptionalInput<String>(serviceAccountEmail),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.config,
+    this.createTime,
+    this.errorStatuses,
+    this.etag,
+    this.instanceId,
+    this.lastOperationName,
+    this.lastOperationType,
+    this.name,
+    this.project,
+    this.runtimeDatas,
+    this.serviceAccountEmail,
+    this.state,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,19 +94,19 @@ class ExtensionsInstanceState {
 
   factory ExtensionsInstanceState.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceState(
-      config: map['config'] == null ? null : pulumi.Output.create<ExtensionsInstanceConfig>(ExtensionsInstanceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      errorStatuses: map['errorStatuses'] == null ? null : pulumi.Output.create<List<ExtensionsInstanceErrorStatus>>(pulumi.Input.decodeList<ExtensionsInstanceErrorStatus>(map['errorStatuses'], (value) => ExtensionsInstanceErrorStatus.fromMap((value as Map).cast<String, dynamic>()))),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      lastOperationName: map['lastOperationName'] == null ? null : pulumi.Output.create<String>(map['lastOperationName'] as String),
-      lastOperationType: map['lastOperationType'] == null ? null : pulumi.Output.create<String>(map['lastOperationType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runtimeDatas: map['runtimeDatas'] == null ? null : pulumi.Output.create<List<ExtensionsInstanceRuntimeData>>(pulumi.Input.decodeList<ExtensionsInstanceRuntimeData>(map['runtimeDatas'], (value) => ExtensionsInstanceRuntimeData.fromMap((value as Map).cast<String, dynamic>()))),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : pulumi.Output.create<String>(map['serviceAccountEmail'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      config: map['config'] == null ? null : (ExtensionsInstanceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      errorStatuses: map['errorStatuses'] == null ? null : (pulumi.Input.decodeList<ExtensionsInstanceErrorStatus>(map['errorStatuses'], (value) => ExtensionsInstanceErrorStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      lastOperationName: map['lastOperationName'] == null ? null : (map['lastOperationName'] as String).input(),
+      lastOperationType: map['lastOperationType'] == null ? null : (map['lastOperationType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runtimeDatas: map['runtimeDatas'] == null ? null : (pulumi.Input.decodeList<ExtensionsInstanceRuntimeData>(map['runtimeDatas'], (value) => ExtensionsInstanceRuntimeData.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

@@ -26,19 +26,13 @@ class SecretRotationState {
   /// [rotationRules] A structure that defines the rotation configuration for this secret. Defined below.
   /// [secretId] Specifies the secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
   SecretRotationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? rotateImmediately,
-    pulumi.Output<bool>? rotationEnabled,
-    pulumi.Output<String>? rotationLambdaArn,
-    pulumi.Output<SecretRotationRotationRules>? rotationRules,
-    pulumi.Output<String>? secretId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rotateImmediately = pulumi.Input.asOptionalInput<bool>(rotateImmediately),
-      rotationEnabled = pulumi.Input.asOptionalInput<bool>(rotationEnabled),
-      rotationLambdaArn = pulumi.Input.asOptionalInput<String>(rotationLambdaArn),
-      rotationRules = pulumi.Input.asOptionalInput<SecretRotationRotationRules>(rotationRules),
-      secretId = pulumi.Input.asOptionalInput<String>(secretId);
+    this.region,
+    this.rotateImmediately,
+    this.rotationEnabled,
+    this.rotationLambdaArn,
+    this.rotationRules,
+    this.secretId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class SecretRotationState {
 
   factory SecretRotationState.fromMap(Map<String, dynamic> map) {
     return SecretRotationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rotateImmediately: map['rotateImmediately'] == null ? null : pulumi.Output.create<bool>(map['rotateImmediately'] as bool),
-      rotationEnabled: map['rotationEnabled'] == null ? null : pulumi.Output.create<bool>(map['rotationEnabled'] as bool),
-      rotationLambdaArn: map['rotationLambdaArn'] == null ? null : pulumi.Output.create<String>(map['rotationLambdaArn'] as String),
-      rotationRules: map['rotationRules'] == null ? null : pulumi.Output.create<SecretRotationRotationRules>(SecretRotationRotationRules.fromMap((map['rotationRules'] as Map).cast<String, dynamic>())),
-      secretId: map['secretId'] == null ? null : pulumi.Output.create<String>(map['secretId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rotateImmediately: map['rotateImmediately'] == null ? null : (map['rotateImmediately'] as bool).input(),
+      rotationEnabled: map['rotationEnabled'] == null ? null : (map['rotationEnabled'] as bool).input(),
+      rotationLambdaArn: map['rotationLambdaArn'] == null ? null : (map['rotationLambdaArn'] as String).input(),
+      rotationRules: map['rotationRules'] == null ? null : (SecretRotationRotationRules.fromMap((map['rotationRules'] as Map).cast<String, dynamic>())).input(),
+      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
     );
   }
 }

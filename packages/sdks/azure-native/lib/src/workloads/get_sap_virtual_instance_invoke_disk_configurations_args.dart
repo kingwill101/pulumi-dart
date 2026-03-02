@@ -31,21 +31,14 @@ class GetSapVirtualInstanceInvokeDiskConfigurationsArgs {
   /// [location] The name of the Azure region.
   /// [sapProduct] Defines the SAP Product type.
   GetSapVirtualInstanceInvokeDiskConfigurationsArgs({
-    required pulumi.Output<String> appLocation,
-    required pulumi.Output<String> databaseType,
-    required pulumi.Output<String> dbVmSku,
-    required pulumi.Output<String> deploymentType,
-    required pulumi.Output<String> environment,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> sapProduct,
-  }) :
-      appLocation = pulumi.Input.asInput<String>(appLocation),
-      databaseType = pulumi.Input.asInput<String>(databaseType),
-      dbVmSku = pulumi.Input.asInput<String>(dbVmSku),
-      deploymentType = pulumi.Input.asInput<String>(deploymentType),
-      environment = pulumi.Input.asInput<String>(environment),
-      location = pulumi.Input.asInput<String>(location),
-      sapProduct = pulumi.Input.asInput<String>(sapProduct);
+    required this.appLocation,
+    required this.databaseType,
+    required this.dbVmSku,
+    required this.deploymentType,
+    required this.environment,
+    required this.location,
+    required this.sapProduct,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetSapVirtualInstanceInvokeDiskConfigurationsArgs {
 
   factory GetSapVirtualInstanceInvokeDiskConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return GetSapVirtualInstanceInvokeDiskConfigurationsArgs(
-      appLocation: pulumi.Output.create<String>(map['appLocation'] as String),
-      databaseType: pulumi.Output.create<String>(map['databaseType'] as String),
-      dbVmSku: pulumi.Output.create<String>(map['dbVmSku'] as String),
-      deploymentType: pulumi.Output.create<String>(map['deploymentType'] as String),
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      sapProduct: pulumi.Output.create<String>(map['sapProduct'] as String),
+      appLocation: (map['appLocation'] as String).input(),
+      databaseType: (map['databaseType'] as String).input(),
+      dbVmSku: (map['dbVmSku'] as String).input(),
+      deploymentType: (map['deploymentType'] as String).input(),
+      environment: (map['environment'] as String).input(),
+      location: (map['location'] as String).input(),
+      sapProduct: (map['sapProduct'] as String).input(),
     );
   }
 }

@@ -51,31 +51,19 @@ class WorkflowArgs {
   /// [tags] The resource tags.
   /// [workflowName] The workflow name.
   WorkflowArgs({
-    pulumi.Output<FlowAccessControlConfiguration>? accessControl,
-    pulumi.Output<dynamic>? definition,
-    pulumi.Output<FlowEndpointsConfiguration>? endpointsConfiguration,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<ResourceReference>? integrationAccount,
-    pulumi.Output<ResourceReference>? integrationServiceEnvironment,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, WorkflowParameter>>? parameters,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workflowName,
-  }) :
-      accessControl = pulumi.Input.asOptionalInput<FlowAccessControlConfiguration>(accessControl),
-      definition = pulumi.Input.asOptionalInput<dynamic>(definition),
-      endpointsConfiguration = pulumi.Input.asOptionalInput<FlowEndpointsConfiguration>(endpointsConfiguration),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      integrationAccount = pulumi.Input.asOptionalInput<ResourceReference>(integrationAccount),
-      integrationServiceEnvironment = pulumi.Input.asOptionalInput<ResourceReference>(integrationServiceEnvironment),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parameters = pulumi.Input.asOptionalInput<Map<String, WorkflowParameter>>(parameters),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workflowName = pulumi.Input.asOptionalInput<String>(workflowName);
+    this.accessControl,
+    this.definition,
+    this.endpointsConfiguration,
+    this.identity,
+    this.integrationAccount,
+    this.integrationServiceEnvironment,
+    this.location,
+    this.parameters,
+    required this.resourceGroupName,
+    this.state,
+    this.tags,
+    this.workflowName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,18 +84,18 @@ class WorkflowArgs {
 
   factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowArgs(
-      accessControl: map['accessControl'] == null ? null : pulumi.Output.create<FlowAccessControlConfiguration>(FlowAccessControlConfiguration.fromMap((map['accessControl'] as Map).cast<String, dynamic>())),
-      definition: map['definition'] == null ? null : pulumi.Output.create<dynamic>(map['definition']),
-      endpointsConfiguration: map['endpointsConfiguration'] == null ? null : pulumi.Output.create<FlowEndpointsConfiguration>(FlowEndpointsConfiguration.fromMap((map['endpointsConfiguration'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      integrationAccount: map['integrationAccount'] == null ? null : pulumi.Output.create<ResourceReference>(ResourceReference.fromMap((map['integrationAccount'] as Map).cast<String, dynamic>())),
-      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : pulumi.Output.create<ResourceReference>(ResourceReference.fromMap((map['integrationServiceEnvironment'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, WorkflowParameter>>(pulumi.Input.decodeMapValues<WorkflowParameter>(map['parameters'], (value) => WorkflowParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workflowName: map['workflowName'] == null ? null : pulumi.Output.create<String>(map['workflowName'] as String),
+      accessControl: map['accessControl'] == null ? null : (FlowAccessControlConfiguration.fromMap((map['accessControl'] as Map).cast<String, dynamic>())).input(),
+      definition: map['definition'] == null ? null : (map['definition']).input(),
+      endpointsConfiguration: map['endpointsConfiguration'] == null ? null : (FlowEndpointsConfiguration.fromMap((map['endpointsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      integrationAccount: map['integrationAccount'] == null ? null : (ResourceReference.fromMap((map['integrationAccount'] as Map).cast<String, dynamic>())).input(),
+      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : (ResourceReference.fromMap((map['integrationServiceEnvironment'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<WorkflowParameter>(map['parameters'], (value) => WorkflowParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workflowName: map['workflowName'] == null ? null : (map['workflowName'] as String).input(),
     );
   }
 }

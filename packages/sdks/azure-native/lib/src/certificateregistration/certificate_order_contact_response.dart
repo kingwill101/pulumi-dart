@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateOrderContactResponse {
-  final String? email;
-  final String? nameFirst;
-  final String? nameLast;
-  final String? phone;
+  final pulumi.Input<String>? email;
+  final pulumi.Input<String>? nameFirst;
+  final pulumi.Input<String>? nameLast;
+  final pulumi.Input<String>? phone;
 
   /// Creates a new [CertificateOrderContactResponse].
   /// [email] Optional.
@@ -30,10 +31,10 @@ class CertificateOrderContactResponse {
 
   factory CertificateOrderContactResponse.fromMap(Map<String, dynamic> map) {
     return CertificateOrderContactResponse(
-      email: map['email'] == null ? null : map['email'] as String,
-      nameFirst: map['nameFirst'] == null ? null : map['nameFirst'] as String,
-      nameLast: map['nameLast'] == null ? null : map['nameLast'] as String,
-      phone: map['phone'] == null ? null : map['phone'] as String,
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      nameFirst: map['nameFirst'] == null ? null : (map['nameFirst'] as String).input(),
+      nameLast: map['nameLast'] == null ? null : (map['nameLast'] as String).input(),
+      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
     );
   }
 }

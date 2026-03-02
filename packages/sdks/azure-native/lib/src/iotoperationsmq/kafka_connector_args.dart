@@ -54,33 +54,20 @@ class KafkaConnectorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   KafkaConnectorArgs({
-    pulumi.Output<String>? clientIdPrefix,
-    required pulumi.Output<ExtendedLocationProperty> extendedLocation,
-    pulumi.Output<ContainerImage>? image,
-    pulumi.Output<int>? instances,
-    required pulumi.Output<KafkaRemoteBrokerConnectionSpec> kafkaConnection,
-    pulumi.Output<String>? kafkaConnectorName,
-    pulumi.Output<LocalBrokerConnectionSpec>? localBrokerConnection,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? logLevel,
-    required pulumi.Output<String> mqName,
-    pulumi.Output<NodeTolerations>? nodeTolerations,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clientIdPrefix = pulumi.Input.asOptionalInput<String>(clientIdPrefix),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocationProperty>(extendedLocation),
-      image = pulumi.Input.asOptionalInput<ContainerImage>(image),
-      instances = pulumi.Input.asOptionalInput<int>(instances),
-      kafkaConnection = pulumi.Input.asInput<KafkaRemoteBrokerConnectionSpec>(kafkaConnection),
-      kafkaConnectorName = pulumi.Input.asOptionalInput<String>(kafkaConnectorName),
-      localBrokerConnection = pulumi.Input.asOptionalInput<LocalBrokerConnectionSpec>(localBrokerConnection),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logLevel = pulumi.Input.asOptionalInput<String>(logLevel),
-      mqName = pulumi.Input.asInput<String>(mqName),
-      nodeTolerations = pulumi.Input.asOptionalInput<NodeTolerations>(nodeTolerations),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.clientIdPrefix,
+    required this.extendedLocation,
+    this.image,
+    this.instances,
+    required this.kafkaConnection,
+    this.kafkaConnectorName,
+    this.localBrokerConnection,
+    this.location,
+    this.logLevel,
+    required this.mqName,
+    this.nodeTolerations,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class KafkaConnectorArgs {
 
   factory KafkaConnectorArgs.fromMap(Map<String, dynamic> map) {
     return KafkaConnectorArgs(
-      clientIdPrefix: map['clientIdPrefix'] == null ? null : pulumi.Output.create<String>(map['clientIdPrefix'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocationProperty>(ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      image: map['image'] == null ? null : pulumi.Output.create<ContainerImage>(ContainerImage.fromMap((map['image'] as Map).cast<String, dynamic>())),
-      instances: map['instances'] == null ? null : pulumi.Output.create<int>(map['instances'] as int),
-      kafkaConnection: pulumi.Output.create<KafkaRemoteBrokerConnectionSpec>(KafkaRemoteBrokerConnectionSpec.fromMap((map['kafkaConnection'] as Map).cast<String, dynamic>())),
-      kafkaConnectorName: map['kafkaConnectorName'] == null ? null : pulumi.Output.create<String>(map['kafkaConnectorName'] as String),
-      localBrokerConnection: map['localBrokerConnection'] == null ? null : pulumi.Output.create<LocalBrokerConnectionSpec>(LocalBrokerConnectionSpec.fromMap((map['localBrokerConnection'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logLevel: map['logLevel'] == null ? null : pulumi.Output.create<String>(map['logLevel'] as String),
-      mqName: pulumi.Output.create<String>(map['mqName'] as String),
-      nodeTolerations: map['nodeTolerations'] == null ? null : pulumi.Output.create<NodeTolerations>(NodeTolerations.fromMap((map['nodeTolerations'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clientIdPrefix: map['clientIdPrefix'] == null ? null : (map['clientIdPrefix'] as String).input(),
+      extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (ContainerImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      instances: map['instances'] == null ? null : (map['instances'] as int).input(),
+      kafkaConnection: (KafkaRemoteBrokerConnectionSpec.fromMap((map['kafkaConnection'] as Map).cast<String, dynamic>())).input(),
+      kafkaConnectorName: map['kafkaConnectorName'] == null ? null : (map['kafkaConnectorName'] as String).input(),
+      localBrokerConnection: map['localBrokerConnection'] == null ? null : (LocalBrokerConnectionSpec.fromMap((map['localBrokerConnection'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      mqName: (map['mqName'] as String).input(),
+      nodeTolerations: map['nodeTolerations'] == null ? null : (NodeTolerations.fromMap((map['nodeTolerations'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

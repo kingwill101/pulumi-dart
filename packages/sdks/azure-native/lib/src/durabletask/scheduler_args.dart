@@ -26,17 +26,12 @@ class SchedulerArgs {
   /// [schedulerName] The name of the Scheduler
   /// [tags] Resource tags.
   SchedulerArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<SchedulerProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? schedulerName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<SchedulerProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schedulerName = pulumi.Input.asOptionalInput<String>(schedulerName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.schedulerName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class SchedulerArgs {
 
   factory SchedulerArgs.fromMap(Map<String, dynamic> map) {
     return SchedulerArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<SchedulerProperties>(SchedulerProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schedulerName: map['schedulerName'] == null ? null : pulumi.Output.create<String>(map['schedulerName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (SchedulerProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schedulerName: map['schedulerName'] == null ? null : (map['schedulerName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

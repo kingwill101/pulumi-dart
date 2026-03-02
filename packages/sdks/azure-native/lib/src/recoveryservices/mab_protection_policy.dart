@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_schedule_policy.dart';
 import 'long_term_retention_policy.dart';
 
@@ -7,15 +8,15 @@ import 'long_term_retention_policy.dart';
 class MabProtectionPolicy {
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'MAB'.
-  final String backupManagementType;
+  final pulumi.Input<String> backupManagementType;
   /// Number of items associated with this policy.
-  final int? protectedItemsCount;
+  final pulumi.Input<int>? protectedItemsCount;
   /// ResourceGuard Operation Requests
-  final List<String>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
   /// Retention policy details.
-  final LongTermRetentionPolicy? retentionPolicy;
+  final pulumi.Input<LongTermRetentionPolicy>? retentionPolicy;
   /// Backup schedule of backup policy.
-  final LogSchedulePolicy? schedulePolicy;
+  final pulumi.Input<LogSchedulePolicy>? schedulePolicy;
 
   /// Creates a new [MabProtectionPolicy].
   /// [backupManagementType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
@@ -36,18 +37,18 @@ class MabProtectionPolicy {
       'backupManagementType': backupManagementType,
       'protectedItemsCount': ?protectedItemsCount,
       'resourceGuardOperationRequests': ?resourceGuardOperationRequests,
-      'retentionPolicy': ?retentionPolicy == null ? null : retentionPolicy!.toMap(),
-      'schedulePolicy': ?schedulePolicy == null ? null : schedulePolicy!.toMap(),
+      'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<LongTermRetentionPolicy, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
+      'schedulePolicy': ?pulumi.Input.mapOptionalInputValue<LogSchedulePolicy, Map<String, dynamic>>(schedulePolicy, (value) => value.toMap()),
     };
   }
 
   factory MabProtectionPolicy.fromMap(Map<String, dynamic> map) {
     return MabProtectionPolicy(
-      backupManagementType: map['backupManagementType'] as String,
-      protectedItemsCount: map['protectedItemsCount'] == null ? null : map['protectedItemsCount'] as int,
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : (map['resourceGuardOperationRequests'] as List).cast<String>(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : LongTermRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>()),
-      schedulePolicy: map['schedulePolicy'] == null ? null : LogSchedulePolicy.fromMap((map['schedulePolicy'] as Map).cast<String, dynamic>()),
+      backupManagementType: (map['backupManagementType'] as String).input(),
+      protectedItemsCount: map['protectedItemsCount'] == null ? null : (map['protectedItemsCount'] as int).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (LongTermRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      schedulePolicy: map['schedulePolicy'] == null ? null : (LogSchedulePolicy.fromMap((map['schedulePolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

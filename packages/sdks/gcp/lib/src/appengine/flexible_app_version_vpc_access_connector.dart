@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleAppVersionVpcAccessConnector {
   /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [FlexibleAppVersionVpcAccessConnector].
   /// [name] Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
@@ -19,7 +20,7 @@ class FlexibleAppVersionVpcAccessConnector {
 
   factory FlexibleAppVersionVpcAccessConnector.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionVpcAccessConnector(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

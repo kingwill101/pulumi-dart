@@ -25,17 +25,12 @@ class V3AliasArgs {
   /// [functionName] Function Name
   /// [versionId] The version that the alias points
   V3AliasArgs({
-    pulumi.Output<Map<String, double>>? additionalVersionWeight,
-    pulumi.Output<String>? aliasName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> functionName,
-    pulumi.Output<String>? versionId,
-  }) :
-      additionalVersionWeight = pulumi.Input.asOptionalInput<Map<String, double>>(additionalVersionWeight),
-      aliasName = pulumi.Input.asOptionalInput<String>(aliasName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      functionName = pulumi.Input.asInput<String>(functionName),
-      versionId = pulumi.Input.asOptionalInput<String>(versionId);
+    this.additionalVersionWeight,
+    this.aliasName,
+    this.description,
+    required this.functionName,
+    this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class V3AliasArgs {
 
   factory V3AliasArgs.fromMap(Map<String, dynamic> map) {
     return V3AliasArgs(
-      additionalVersionWeight: map['additionalVersionWeight'] == null ? null : pulumi.Output.create<Map<String, double>>((map['additionalVersionWeight'] as Map).cast<String, double>()),
-      aliasName: map['aliasName'] == null ? null : pulumi.Output.create<String>(map['aliasName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      versionId: map['versionId'] == null ? null : pulumi.Output.create<String>(map['versionId'] as String),
+      additionalVersionWeight: map['additionalVersionWeight'] == null ? null : ((map['additionalVersionWeight'] as Map).cast<String, double>()).input(),
+      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      functionName: (map['functionName'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
     );
   }
 }

@@ -54,35 +54,21 @@ class ApiDiagnosticArgs {
   /// [serviceName] The name of the API Management service.
   /// [verbosity] The verbosity level applied to traces emitted by trace policies.
   ApiDiagnosticArgs({
-    pulumi.Output<String>? alwaysLog,
-    required pulumi.Output<String> apiId,
-    pulumi.Output<PipelineDiagnosticSettings>? backend,
-    pulumi.Output<String>? diagnosticId,
-    pulumi.Output<PipelineDiagnosticSettings>? frontend,
-    pulumi.Output<String>? httpCorrelationProtocol,
-    pulumi.Output<bool>? logClientIp,
-    required pulumi.Output<String> loggerId,
-    pulumi.Output<bool>? metrics,
-    pulumi.Output<String>? operationNameFormat,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SamplingSettings>? sampling,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? verbosity,
-  }) :
-      alwaysLog = pulumi.Input.asOptionalInput<String>(alwaysLog),
-      apiId = pulumi.Input.asInput<String>(apiId),
-      backend = pulumi.Input.asOptionalInput<PipelineDiagnosticSettings>(backend),
-      diagnosticId = pulumi.Input.asOptionalInput<String>(diagnosticId),
-      frontend = pulumi.Input.asOptionalInput<PipelineDiagnosticSettings>(frontend),
-      httpCorrelationProtocol = pulumi.Input.asOptionalInput<String>(httpCorrelationProtocol),
-      logClientIp = pulumi.Input.asOptionalInput<bool>(logClientIp),
-      loggerId = pulumi.Input.asInput<String>(loggerId),
-      metrics = pulumi.Input.asOptionalInput<bool>(metrics),
-      operationNameFormat = pulumi.Input.asOptionalInput<String>(operationNameFormat),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sampling = pulumi.Input.asOptionalInput<SamplingSettings>(sampling),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      verbosity = pulumi.Input.asOptionalInput<String>(verbosity);
+    this.alwaysLog,
+    required this.apiId,
+    this.backend,
+    this.diagnosticId,
+    this.frontend,
+    this.httpCorrelationProtocol,
+    this.logClientIp,
+    required this.loggerId,
+    this.metrics,
+    this.operationNameFormat,
+    required this.resourceGroupName,
+    this.sampling,
+    required this.serviceName,
+    this.verbosity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class ApiDiagnosticArgs {
 
   factory ApiDiagnosticArgs.fromMap(Map<String, dynamic> map) {
     return ApiDiagnosticArgs(
-      alwaysLog: map['alwaysLog'] == null ? null : pulumi.Output.create<String>(map['alwaysLog'] as String),
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      backend: map['backend'] == null ? null : pulumi.Output.create<PipelineDiagnosticSettings>(PipelineDiagnosticSettings.fromMap((map['backend'] as Map).cast<String, dynamic>())),
-      diagnosticId: map['diagnosticId'] == null ? null : pulumi.Output.create<String>(map['diagnosticId'] as String),
-      frontend: map['frontend'] == null ? null : pulumi.Output.create<PipelineDiagnosticSettings>(PipelineDiagnosticSettings.fromMap((map['frontend'] as Map).cast<String, dynamic>())),
-      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : pulumi.Output.create<String>(map['httpCorrelationProtocol'] as String),
-      logClientIp: map['logClientIp'] == null ? null : pulumi.Output.create<bool>(map['logClientIp'] as bool),
-      loggerId: pulumi.Output.create<String>(map['loggerId'] as String),
-      metrics: map['metrics'] == null ? null : pulumi.Output.create<bool>(map['metrics'] as bool),
-      operationNameFormat: map['operationNameFormat'] == null ? null : pulumi.Output.create<String>(map['operationNameFormat'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sampling: map['sampling'] == null ? null : pulumi.Output.create<SamplingSettings>(SamplingSettings.fromMap((map['sampling'] as Map).cast<String, dynamic>())),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      verbosity: map['verbosity'] == null ? null : pulumi.Output.create<String>(map['verbosity'] as String),
+      alwaysLog: map['alwaysLog'] == null ? null : (map['alwaysLog'] as String).input(),
+      apiId: (map['apiId'] as String).input(),
+      backend: map['backend'] == null ? null : (PipelineDiagnosticSettings.fromMap((map['backend'] as Map).cast<String, dynamic>())).input(),
+      diagnosticId: map['diagnosticId'] == null ? null : (map['diagnosticId'] as String).input(),
+      frontend: map['frontend'] == null ? null : (PipelineDiagnosticSettings.fromMap((map['frontend'] as Map).cast<String, dynamic>())).input(),
+      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : (map['httpCorrelationProtocol'] as String).input(),
+      logClientIp: map['logClientIp'] == null ? null : (map['logClientIp'] as bool).input(),
+      loggerId: (map['loggerId'] as String).input(),
+      metrics: map['metrics'] == null ? null : (map['metrics'] as bool).input(),
+      operationNameFormat: map['operationNameFormat'] == null ? null : (map['operationNameFormat'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sampling: map['sampling'] == null ? null : (SamplingSettings.fromMap((map['sampling'] as Map).cast<String, dynamic>())).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      verbosity: map['verbosity'] == null ? null : (map['verbosity'] as String).input(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'serverless_cache_cache_usage_limits_ecpu_per_second.dart';
 
 class ServerlessCacheCacheUsageLimits {
   /// The maximum data storage limit in the cache, expressed in Gigabytes. See `data_storage` Block for details.
-  final ServerlessCacheCacheUsageLimitsDataStorage? dataStorage;
+  final pulumi.Input<ServerlessCacheCacheUsageLimitsDataStorage>? dataStorage;
   /// The configuration for the number of ElastiCache Processing Units (ECPU) the cache can consume per second. See `ecpu_per_second` Block for details.
-  final List<ServerlessCacheCacheUsageLimitsEcpuPerSecond>? ecpuPerSeconds;
+  final pulumi.Input<List<ServerlessCacheCacheUsageLimitsEcpuPerSecond>>? ecpuPerSeconds;
 
   /// Creates a new [ServerlessCacheCacheUsageLimits].
   /// [dataStorage] The maximum data storage limit in the cache, expressed in Gigabytes. See `data_storage` Block for details.
@@ -20,15 +20,15 @@ class ServerlessCacheCacheUsageLimits {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataStorage': ?dataStorage == null ? null : dataStorage!.toMap(),
-      'ecpuPerSeconds': ?ecpuPerSeconds == null ? null : pulumi.Input.encodeList<ServerlessCacheCacheUsageLimitsEcpuPerSecond, Map<String, dynamic>>(ecpuPerSeconds!, (value) => value.toMap()),
+      'dataStorage': ?pulumi.Input.mapOptionalInputValue<ServerlessCacheCacheUsageLimitsDataStorage, Map<String, dynamic>>(dataStorage, (value) => value.toMap()),
+      'ecpuPerSeconds': ?pulumi.Input.mapOptionalInputValue<List<ServerlessCacheCacheUsageLimitsEcpuPerSecond>, List<Map<String, dynamic>>>(ecpuPerSeconds, (value) => pulumi.Input.encodeList<ServerlessCacheCacheUsageLimitsEcpuPerSecond, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ServerlessCacheCacheUsageLimits.fromMap(Map<String, dynamic> map) {
     return ServerlessCacheCacheUsageLimits(
-      dataStorage: map['dataStorage'] == null ? null : ServerlessCacheCacheUsageLimitsDataStorage.fromMap((map['dataStorage'] as Map).cast<String, dynamic>()),
-      ecpuPerSeconds: map['ecpuPerSeconds'] == null ? null : pulumi.Input.decodeList<ServerlessCacheCacheUsageLimitsEcpuPerSecond>(map['ecpuPerSeconds'], (value) => ServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap((value as Map).cast<String, dynamic>())),
+      dataStorage: map['dataStorage'] == null ? null : (ServerlessCacheCacheUsageLimitsDataStorage.fromMap((map['dataStorage'] as Map).cast<String, dynamic>())).input(),
+      ecpuPerSeconds: map['ecpuPerSeconds'] == null ? null : (pulumi.Input.decodeList<ServerlessCacheCacheUsageLimitsEcpuPerSecond>(map['ecpuPerSeconds'], (value) => ServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

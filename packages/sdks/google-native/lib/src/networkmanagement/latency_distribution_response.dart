@@ -6,7 +6,7 @@ import 'latency_percentile_response.dart';
 /// Describes measured latency distribution.
 class LatencyDistributionResponse {
   /// Representative latency percentiles.
-  final List<LatencyPercentileResponse> latencyPercentiles;
+  final pulumi.Input<List<LatencyPercentileResponse>> latencyPercentiles;
 
   /// Creates a new [LatencyDistributionResponse].
   /// [latencyPercentiles] Representative latency percentiles.
@@ -16,13 +16,13 @@ class LatencyDistributionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'latencyPercentiles': pulumi.Input.encodeList<LatencyPercentileResponse, Map<String, dynamic>>(latencyPercentiles, (value) => value.toMap()),
+      'latencyPercentiles': pulumi.Input.mapInputValue<List<LatencyPercentileResponse>, List<Map<String, dynamic>>>(latencyPercentiles, (value) => pulumi.Input.encodeList<LatencyPercentileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LatencyDistributionResponse.fromMap(Map<String, dynamic> map) {
     return LatencyDistributionResponse(
-      latencyPercentiles: pulumi.Input.decodeList<LatencyPercentileResponse>(map['latencyPercentiles'], (value) => LatencyPercentileResponse.fromMap((value as Map).cast<String, dynamic>())),
+      latencyPercentiles: (pulumi.Input.decodeList<LatencyPercentileResponse>(map['latencyPercentiles'], (value) => LatencyPercentileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

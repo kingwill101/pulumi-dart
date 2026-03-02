@@ -22,15 +22,11 @@ class GetJobTargetGroupArgs {
   /// [serverName] The name of the server.
   /// [targetGroupName] The name of the target group.
   GetJobTargetGroupArgs({
-    required pulumi.Output<String> jobAgentName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> targetGroupName,
-  }) :
-      jobAgentName = pulumi.Input.asInput<String>(jobAgentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      targetGroupName = pulumi.Input.asInput<String>(targetGroupName);
+    required this.jobAgentName,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.targetGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetJobTargetGroupArgs {
 
   factory GetJobTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetJobTargetGroupArgs(
-      jobAgentName: pulumi.Output.create<String>(map['jobAgentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      targetGroupName: pulumi.Output.create<String>(map['targetGroupName'] as String),
+      jobAgentName: (map['jobAgentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      targetGroupName: (map['targetGroupName'] as String).input(),
     );
   }
 }

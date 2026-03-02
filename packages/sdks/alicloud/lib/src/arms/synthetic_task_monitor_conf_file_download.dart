@@ -1,53 +1,54 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SyntheticTaskMonitorConfFileDownload {
   /// Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
-  final int? connectionTimeout;
+  final pulumi.Input<int>? connectionTimeout;
   /// Custom header, in JSON Map format.
-  final Map<String, String>? customHeaderContent;
+  final pulumi.Input<Map<String, String>>? customHeaderContent;
   /// Download the kernel.
   /// - 1:curl
   /// - 0:WinInet
   /// Default 1.
-  final int? downloadKernel;
+  final pulumi.Input<int>? downloadKernel;
   /// Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
-  final int? ignoreCertificateAuthError;
+  final pulumi.Input<int>? ignoreCertificateAuthError;
   /// Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
-  final int? ignoreCertificateCanceledError;
+  final pulumi.Input<int>? ignoreCertificateCanceledError;
   /// Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
-  final int? ignoreCertificateOutOfDateError;
+  final pulumi.Input<int>? ignoreCertificateOutOfDateError;
   /// The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-  final int? ignoreCertificateStatusError;
+  final pulumi.Input<int>? ignoreCertificateStatusError;
   /// The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-  final int? ignoreCertificateUntrustworthyError;
+  final pulumi.Input<int>? ignoreCertificateUntrustworthyError;
   /// Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
-  final int? ignoreCertificateUsingError;
+  final pulumi.Input<int>? ignoreCertificateUsingError;
   /// Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
-  final int? ignoreInvalidHostError;
+  final pulumi.Input<int>? ignoreInvalidHostError;
   /// Monitoring timeout, in ms. Not required, 20000 by default.
-  final int? monitorTimeout;
+  final pulumi.Input<int>? monitorTimeout;
   /// Quick agreement
   /// - 1:http1
   /// - 2:http2
   /// - 3:http3
   /// Default 1.
-  final int? quickProtocol;
+  final pulumi.Input<int>? quickProtocol;
   /// When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-  final int? redirection;
+  final pulumi.Input<int>? redirection;
   /// The target URL.
-  final String targetUrl;
+  final pulumi.Input<String> targetUrl;
   /// The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
-  final int? transmissionSize;
+  final pulumi.Input<int>? transmissionSize;
   /// Verify keywords.
-  final String? validateKeywords;
+  final pulumi.Input<String>? validateKeywords;
   /// The verification method.
   /// - 0: Do not validate
   /// - 1: Validation string
   /// - 2:MD5 validation.
-  final int? verifyWay;
+  final pulumi.Input<int>? verifyWay;
   /// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-  final String? whiteList;
+  final pulumi.Input<String>? whiteList;
 
   /// Creates a new [SyntheticTaskMonitorConfFileDownload].
   /// [connectionTimeout] Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
@@ -114,24 +115,24 @@ class SyntheticTaskMonitorConfFileDownload {
 
   factory SyntheticTaskMonitorConfFileDownload.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskMonitorConfFileDownload(
-      connectionTimeout: map['connectionTimeout'] == null ? null : map['connectionTimeout'] as int,
-      customHeaderContent: map['customHeaderContent'] == null ? null : (map['customHeaderContent'] as Map).cast<String, String>(),
-      downloadKernel: map['downloadKernel'] == null ? null : map['downloadKernel'] as int,
-      ignoreCertificateAuthError: map['ignoreCertificateAuthError'] == null ? null : map['ignoreCertificateAuthError'] as int,
-      ignoreCertificateCanceledError: map['ignoreCertificateCanceledError'] == null ? null : map['ignoreCertificateCanceledError'] as int,
-      ignoreCertificateOutOfDateError: map['ignoreCertificateOutOfDateError'] == null ? null : map['ignoreCertificateOutOfDateError'] as int,
-      ignoreCertificateStatusError: map['ignoreCertificateStatusError'] == null ? null : map['ignoreCertificateStatusError'] as int,
-      ignoreCertificateUntrustworthyError: map['ignoreCertificateUntrustworthyError'] == null ? null : map['ignoreCertificateUntrustworthyError'] as int,
-      ignoreCertificateUsingError: map['ignoreCertificateUsingError'] == null ? null : map['ignoreCertificateUsingError'] as int,
-      ignoreInvalidHostError: map['ignoreInvalidHostError'] == null ? null : map['ignoreInvalidHostError'] as int,
-      monitorTimeout: map['monitorTimeout'] == null ? null : map['monitorTimeout'] as int,
-      quickProtocol: map['quickProtocol'] == null ? null : map['quickProtocol'] as int,
-      redirection: map['redirection'] == null ? null : map['redirection'] as int,
-      targetUrl: map['targetUrl'] as String,
-      transmissionSize: map['transmissionSize'] == null ? null : map['transmissionSize'] as int,
-      validateKeywords: map['validateKeywords'] == null ? null : map['validateKeywords'] as String,
-      verifyWay: map['verifyWay'] == null ? null : map['verifyWay'] as int,
-      whiteList: map['whiteList'] == null ? null : map['whiteList'] as String,
+      connectionTimeout: map['connectionTimeout'] == null ? null : (map['connectionTimeout'] as int).input(),
+      customHeaderContent: map['customHeaderContent'] == null ? null : ((map['customHeaderContent'] as Map).cast<String, String>()).input(),
+      downloadKernel: map['downloadKernel'] == null ? null : (map['downloadKernel'] as int).input(),
+      ignoreCertificateAuthError: map['ignoreCertificateAuthError'] == null ? null : (map['ignoreCertificateAuthError'] as int).input(),
+      ignoreCertificateCanceledError: map['ignoreCertificateCanceledError'] == null ? null : (map['ignoreCertificateCanceledError'] as int).input(),
+      ignoreCertificateOutOfDateError: map['ignoreCertificateOutOfDateError'] == null ? null : (map['ignoreCertificateOutOfDateError'] as int).input(),
+      ignoreCertificateStatusError: map['ignoreCertificateStatusError'] == null ? null : (map['ignoreCertificateStatusError'] as int).input(),
+      ignoreCertificateUntrustworthyError: map['ignoreCertificateUntrustworthyError'] == null ? null : (map['ignoreCertificateUntrustworthyError'] as int).input(),
+      ignoreCertificateUsingError: map['ignoreCertificateUsingError'] == null ? null : (map['ignoreCertificateUsingError'] as int).input(),
+      ignoreInvalidHostError: map['ignoreInvalidHostError'] == null ? null : (map['ignoreInvalidHostError'] as int).input(),
+      monitorTimeout: map['monitorTimeout'] == null ? null : (map['monitorTimeout'] as int).input(),
+      quickProtocol: map['quickProtocol'] == null ? null : (map['quickProtocol'] as int).input(),
+      redirection: map['redirection'] == null ? null : (map['redirection'] as int).input(),
+      targetUrl: (map['targetUrl'] as String).input(),
+      transmissionSize: map['transmissionSize'] == null ? null : (map['transmissionSize'] as int).input(),
+      validateKeywords: map['validateKeywords'] == null ? null : (map['validateKeywords'] as String).input(),
+      verifyWay: map['verifyWay'] == null ? null : (map['verifyWay'] as int).input(),
+      whiteList: map['whiteList'] == null ? null : (map['whiteList'] as String).input(),
     );
   }
 }

@@ -42,21 +42,14 @@ class IpsConfigArgs {
   /// [ruleClass] The IPS rule Group. Value:
   /// [runMode] IPS defense mode. Value:
   IpsConfigArgs({
-    pulumi.Output<int>? basicRules,
-    pulumi.Output<int>? ctiRules,
-    pulumi.Output<String>? lang,
-    pulumi.Output<int>? maxSdl,
-    pulumi.Output<int>? patchRules,
-    pulumi.Output<int>? ruleClass,
-    pulumi.Output<int>? runMode,
-  }) :
-      basicRules = pulumi.Input.asOptionalInput<int>(basicRules),
-      ctiRules = pulumi.Input.asOptionalInput<int>(ctiRules),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      maxSdl = pulumi.Input.asOptionalInput<int>(maxSdl),
-      patchRules = pulumi.Input.asOptionalInput<int>(patchRules),
-      ruleClass = pulumi.Input.asOptionalInput<int>(ruleClass),
-      runMode = pulumi.Input.asOptionalInput<int>(runMode);
+    this.basicRules,
+    this.ctiRules,
+    this.lang,
+    this.maxSdl,
+    this.patchRules,
+    this.ruleClass,
+    this.runMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,13 +65,13 @@ class IpsConfigArgs {
 
   factory IpsConfigArgs.fromMap(Map<String, dynamic> map) {
     return IpsConfigArgs(
-      basicRules: map['basicRules'] == null ? null : pulumi.Output.create<int>(map['basicRules'] as int),
-      ctiRules: map['ctiRules'] == null ? null : pulumi.Output.create<int>(map['ctiRules'] as int),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      maxSdl: map['maxSdl'] == null ? null : pulumi.Output.create<int>(map['maxSdl'] as int),
-      patchRules: map['patchRules'] == null ? null : pulumi.Output.create<int>(map['patchRules'] as int),
-      ruleClass: map['ruleClass'] == null ? null : pulumi.Output.create<int>(map['ruleClass'] as int),
-      runMode: map['runMode'] == null ? null : pulumi.Output.create<int>(map['runMode'] as int),
+      basicRules: map['basicRules'] == null ? null : (map['basicRules'] as int).input(),
+      ctiRules: map['ctiRules'] == null ? null : (map['ctiRules'] as int).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      maxSdl: map['maxSdl'] == null ? null : (map['maxSdl'] as int).input(),
+      patchRules: map['patchRules'] == null ? null : (map['patchRules'] as int).input(),
+      ruleClass: map['ruleClass'] == null ? null : (map['ruleClass'] as int).input(),
+      runMode: map['runMode'] == null ? null : (map['runMode'] as int).input(),
     );
   }
 }

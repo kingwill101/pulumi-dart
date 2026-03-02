@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The identity information with the event subscription.
 class EventSubscriptionIdentity {
   /// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The user identity associated with the resource.
-  final String? userAssignedIdentity;
+  final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [EventSubscriptionIdentity].
   /// [type] The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
@@ -25,8 +26,8 @@ class EventSubscriptionIdentity {
 
   factory EventSubscriptionIdentity.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionIdentity(
-      type: map['type'] == null ? null : map['type'] as String,
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : map['userAssignedIdentity'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn't need to be pre-created.
 class CreateAndMountFileShareConfigurationResponse {
   /// The type of file share config.
   /// Expected value is 'CreateAndMount'.
-  final String configurationType;
+  final pulumi.Input<String> configurationType;
   /// The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
-  final String? resourceGroup;
+  final pulumi.Input<String>? resourceGroup;
   /// The name of file share storage account name . A custom name is used in case of missing input.
-  final String? storageAccountName;
+  final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [CreateAndMountFileShareConfigurationResponse].
   /// [configurationType] The type of file share config.
@@ -31,9 +32,9 @@ class CreateAndMountFileShareConfigurationResponse {
 
   factory CreateAndMountFileShareConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CreateAndMountFileShareConfigurationResponse(
-      configurationType: map['configurationType'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName'] as String,
+      configurationType: (map['configurationType'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
     );
   }
 }

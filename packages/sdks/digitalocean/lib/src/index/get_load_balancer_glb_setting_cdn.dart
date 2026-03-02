@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerGlbSettingCdn {
   /// cache enable flag
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
 
   /// Creates a new [GetLoadBalancerGlbSettingCdn].
   /// [isEnabled] cache enable flag
@@ -19,7 +20,7 @@ class GetLoadBalancerGlbSettingCdn {
 
   factory GetLoadBalancerGlbSettingCdn.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerGlbSettingCdn(
-      isEnabled: map['isEnabled'] as bool,
+      isEnabled: (map['isEnabled'] as bool).input(),
     );
   }
 }

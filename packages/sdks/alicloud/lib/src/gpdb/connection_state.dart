@@ -22,17 +22,12 @@ class ConnectionState {
   /// [ipAddress] The ip address of connection string.
   /// [port] Internet connection port. Valid value: [3200-3999]. Default to 3306.
   ConnectionState({
-    pulumi.Output<String>? connectionPrefix,
-    pulumi.Output<String>? connectionString,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? port,
-  }) :
-      connectionPrefix = pulumi.Input.asOptionalInput<String>(connectionPrefix),
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      port = pulumi.Input.asOptionalInput<String>(port);
+    this.connectionPrefix,
+    this.connectionString,
+    this.instanceId,
+    this.ipAddress,
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      connectionPrefix: map['connectionPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionPrefix'] as String),
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
     );
   }
 }

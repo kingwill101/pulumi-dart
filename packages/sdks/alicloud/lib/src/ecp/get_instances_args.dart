@@ -48,31 +48,19 @@ class GetInstancesArgs {
   /// [status] Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
   /// [zoneId] Optional.
   GetInstancesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? imageId,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? keyPairName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<String>? resolution,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? zoneId,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      imageId = pulumi.Input.asOptionalInput<String>(imageId),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      keyPairName = pulumi.Input.asOptionalInput<String>(keyPairName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      resolution = pulumi.Input.asOptionalInput<String>(resolution),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.enableDetails,
+    this.ids,
+    this.imageId,
+    this.instanceName,
+    this.instanceType,
+    this.keyPairName,
+    this.nameRegex,
+    this.outputFile,
+    this.paymentType,
+    this.resolution,
+    this.status,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      imageId: map['imageId'] == null ? null : pulumi.Output.create<String>(map['imageId'] as String),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      keyPairName: map['keyPairName'] == null ? null : pulumi.Output.create<String>(map['keyPairName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      resolution: map['resolution'] == null ? null : pulumi.Output.create<String>(map['resolution'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      resolution: map['resolution'] == null ? null : (map['resolution'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

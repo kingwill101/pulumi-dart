@@ -22,15 +22,11 @@ class RegisteredPrefixArgs {
   /// [registeredPrefixName] The name of the registered prefix.
   /// [resourceGroupName] The name of the resource group.
   RegisteredPrefixArgs({
-    required pulumi.Output<String> peeringName,
-    pulumi.Output<String>? prefix,
-    pulumi.Output<String>? registeredPrefixName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      peeringName = pulumi.Input.asInput<String>(peeringName),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      registeredPrefixName = pulumi.Input.asOptionalInput<String>(registeredPrefixName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.peeringName,
+    this.prefix,
+    this.registeredPrefixName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class RegisteredPrefixArgs {
 
   factory RegisteredPrefixArgs.fromMap(Map<String, dynamic> map) {
     return RegisteredPrefixArgs(
-      peeringName: pulumi.Output.create<String>(map['peeringName'] as String),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      registeredPrefixName: map['registeredPrefixName'] == null ? null : pulumi.Output.create<String>(map['registeredPrefixName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      peeringName: (map['peeringName'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      registeredPrefixName: map['registeredPrefixName'] == null ? null : (map['registeredPrefixName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

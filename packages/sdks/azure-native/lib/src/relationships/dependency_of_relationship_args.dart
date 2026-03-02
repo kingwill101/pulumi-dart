@@ -20,13 +20,10 @@ class DependencyOfRelationshipArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   DependencyOfRelationshipArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<DependencyOfRelationshipProperties>? properties,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<DependencyOfRelationshipProperties>(properties),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.name,
+    this.properties,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class DependencyOfRelationshipArgs {
 
   factory DependencyOfRelationshipArgs.fromMap(Map<String, dynamic> map) {
     return DependencyOfRelationshipArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DependencyOfRelationshipProperties>(DependencyOfRelationshipProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (DependencyOfRelationshipProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

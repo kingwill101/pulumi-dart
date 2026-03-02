@@ -38,25 +38,16 @@ class RegionNetworkEndpointState {
   /// [region] Region where the containing network endpoint group is located.
   /// [regionNetworkEndpointGroup] The network endpoint group this endpoint is part of.
   RegionNetworkEndpointState({
-    pulumi.Output<int>? clientDestinationPort,
-    pulumi.Output<String>? fqdn,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<int>? networkEndpointId,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? regionNetworkEndpointGroup,
-  }) :
-      clientDestinationPort = pulumi.Input.asOptionalInput<int>(clientDestinationPort),
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      networkEndpointId = pulumi.Input.asOptionalInput<int>(networkEndpointId),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      regionNetworkEndpointGroup = pulumi.Input.asOptionalInput<String>(regionNetworkEndpointGroup);
+    this.clientDestinationPort,
+    this.fqdn,
+    this.instance,
+    this.ipAddress,
+    this.networkEndpointId,
+    this.port,
+    this.project,
+    this.region,
+    this.regionNetworkEndpointGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class RegionNetworkEndpointState {
 
   factory RegionNetworkEndpointState.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointState(
-      clientDestinationPort: map['clientDestinationPort'] == null ? null : pulumi.Output.create<int>(map['clientDestinationPort'] as int),
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<String>(map['fqdn'] as String),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      networkEndpointId: map['networkEndpointId'] == null ? null : pulumi.Output.create<int>(map['networkEndpointId'] as int),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      regionNetworkEndpointGroup: map['regionNetworkEndpointGroup'] == null ? null : pulumi.Output.create<String>(map['regionNetworkEndpointGroup'] as String),
+      clientDestinationPort: map['clientDestinationPort'] == null ? null : (map['clientDestinationPort'] as int).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      networkEndpointId: map['networkEndpointId'] == null ? null : (map['networkEndpointId'] as int).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      regionNetworkEndpointGroup: map['regionNetworkEndpointGroup'] == null ? null : (map['regionNetworkEndpointGroup'] as String).input(),
     );
   }
 }

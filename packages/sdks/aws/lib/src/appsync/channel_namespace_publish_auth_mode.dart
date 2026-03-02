@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelNamespacePublishAuthMode {
   /// Type of authentication. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
-  final String authType;
+  final pulumi.Input<String> authType;
 
   /// Creates a new [ChannelNamespacePublishAuthMode].
   /// [authType] Type of authentication. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
@@ -19,7 +20,7 @@ class ChannelNamespacePublishAuthMode {
 
   factory ChannelNamespacePublishAuthMode.fromMap(Map<String, dynamic> map) {
     return ChannelNamespacePublishAuthMode(
-      authType: map['authType'] as String,
+      authType: (map['authType'] as String).input(),
     );
   }
 }

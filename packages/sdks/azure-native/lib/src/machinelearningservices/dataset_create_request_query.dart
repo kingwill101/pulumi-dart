@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetCreateRequestQuery {
   /// The SQL/PostgreSQL/MySQL datastore name.
-  final String? datastoreName;
+  final pulumi.Input<String>? datastoreName;
   /// SQL Quey.
-  final String? query;
+  final pulumi.Input<String>? query;
 
   /// Creates a new [DatasetCreateRequestQuery].
   /// [datastoreName] The SQL/PostgreSQL/MySQL datastore name.
@@ -24,8 +25,8 @@ class DatasetCreateRequestQuery {
 
   factory DatasetCreateRequestQuery.fromMap(Map<String, dynamic> map) {
     return DatasetCreateRequestQuery(
-      datastoreName: map['datastoreName'] == null ? null : map['datastoreName'] as String,
-      query: map['query'] == null ? null : map['query'] as String,
+      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName'] as String).input(),
+      query: map['query'] == null ? null : (map['query'] as String).input(),
     );
   }
 }

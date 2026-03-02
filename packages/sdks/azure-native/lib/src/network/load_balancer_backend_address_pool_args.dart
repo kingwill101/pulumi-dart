@@ -46,29 +46,18 @@ class LoadBalancerBackendAddressPoolArgs {
   /// [tunnelInterfaces] An array of gateway load balancer tunnel interfaces.
   /// [virtualNetwork] A reference to a virtual network.
   LoadBalancerBackendAddressPoolArgs({
-    pulumi.Output<String>? backendAddressPoolName,
-    pulumi.Output<int>? drainPeriodInSeconds,
-    pulumi.Output<String>? id,
-    pulumi.Output<List<LoadBalancerBackendAddress>>? loadBalancerBackendAddresses,
-    required pulumi.Output<String> loadBalancerName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? syncMode,
-    pulumi.Output<List<GatewayLoadBalancerTunnelInterface>>? tunnelInterfaces,
-    pulumi.Output<SubResource>? virtualNetwork,
-  }) :
-      backendAddressPoolName = pulumi.Input.asOptionalInput<String>(backendAddressPoolName),
-      drainPeriodInSeconds = pulumi.Input.asOptionalInput<int>(drainPeriodInSeconds),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      loadBalancerBackendAddresses = pulumi.Input.asOptionalInput<List<LoadBalancerBackendAddress>>(loadBalancerBackendAddresses),
-      loadBalancerName = pulumi.Input.asInput<String>(loadBalancerName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      syncMode = pulumi.Input.asOptionalInput<String>(syncMode),
-      tunnelInterfaces = pulumi.Input.asOptionalInput<List<GatewayLoadBalancerTunnelInterface>>(tunnelInterfaces),
-      virtualNetwork = pulumi.Input.asOptionalInput<SubResource>(virtualNetwork);
+    this.backendAddressPoolName,
+    this.drainPeriodInSeconds,
+    this.id,
+    this.loadBalancerBackendAddresses,
+    required this.loadBalancerName,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.syncMode,
+    this.tunnelInterfaces,
+    this.virtualNetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class LoadBalancerBackendAddressPoolArgs {
 
   factory LoadBalancerBackendAddressPoolArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressPoolArgs(
-      backendAddressPoolName: map['backendAddressPoolName'] == null ? null : pulumi.Output.create<String>(map['backendAddressPoolName'] as String),
-      drainPeriodInSeconds: map['drainPeriodInSeconds'] == null ? null : pulumi.Output.create<int>(map['drainPeriodInSeconds'] as int),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      loadBalancerBackendAddresses: map['loadBalancerBackendAddresses'] == null ? null : pulumi.Output.create<List<LoadBalancerBackendAddress>>(pulumi.Input.decodeList<LoadBalancerBackendAddress>(map['loadBalancerBackendAddresses'], (value) => LoadBalancerBackendAddress.fromMap((value as Map).cast<String, dynamic>()))),
-      loadBalancerName: pulumi.Output.create<String>(map['loadBalancerName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      syncMode: map['syncMode'] == null ? null : pulumi.Output.create<String>(map['syncMode'] as String),
-      tunnelInterfaces: map['tunnelInterfaces'] == null ? null : pulumi.Output.create<List<GatewayLoadBalancerTunnelInterface>>(pulumi.Input.decodeList<GatewayLoadBalancerTunnelInterface>(map['tunnelInterfaces'], (value) => GatewayLoadBalancerTunnelInterface.fromMap((value as Map).cast<String, dynamic>()))),
-      virtualNetwork: map['virtualNetwork'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())),
+      backendAddressPoolName: map['backendAddressPoolName'] == null ? null : (map['backendAddressPoolName'] as String).input(),
+      drainPeriodInSeconds: map['drainPeriodInSeconds'] == null ? null : (map['drainPeriodInSeconds'] as int).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      loadBalancerBackendAddresses: map['loadBalancerBackendAddresses'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendAddress>(map['loadBalancerBackendAddresses'], (value) => LoadBalancerBackendAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerName: (map['loadBalancerName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      syncMode: map['syncMode'] == null ? null : (map['syncMode'] as String).input(),
+      tunnelInterfaces: map['tunnelInterfaces'] == null ? null : (pulumi.Input.decodeList<GatewayLoadBalancerTunnelInterface>(map['tunnelInterfaces'], (value) => GatewayLoadBalancerTunnelInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetwork: map['virtualNetwork'] == null ? null : (SubResource.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,40 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcIpamPoolsIpamPool {
   /// IP protocol assigned to this pool.
-  final String addressFamily;
+  final pulumi.Input<String> addressFamily;
   /// A default netmask length for allocations added to this pool. If, for example, the CIDR assigned to this pool is `10.0.0.0/8` and you enter 16 here, new allocations will default to `10.0.0.0/16`.
-  final int allocationDefaultNetmaskLength;
+  final pulumi.Input<int> allocationDefaultNetmaskLength;
   /// The maximum netmask length that will be required for CIDR allocations in this pool.
-  final int allocationMaxNetmaskLength;
+  final pulumi.Input<int> allocationMaxNetmaskLength;
   /// The minimum netmask length that will be required for CIDR allocations in this pool.
-  final int allocationMinNetmaskLength;
+  final pulumi.Input<int> allocationMinNetmaskLength;
   /// Tags that are required to create resources in using this pool.
-  final Map<String, String> allocationResourceTags;
+  final pulumi.Input<Map<String, String>> allocationResourceTags;
   /// ARN of the pool
-  final String arn;
+  final pulumi.Input<String> arn;
   /// If enabled, IPAM will continuously look for resources within the CIDR range of this pool and automatically import them as allocations into your IPAM.
-  final bool autoImport;
+  final pulumi.Input<bool> autoImport;
   /// Limits which service in AWS that the pool can be used in. `ec2` for example, allows users to use space for Elastic IP addresses and VPCs.
-  final String awsService;
+  final pulumi.Input<String> awsService;
   /// Description for the IPAM pool.
-  final String description;
+  final pulumi.Input<String> description;
   /// ID of the IPAM pool.
-  final String id;
+  final pulumi.Input<String> id;
   /// ID of the scope the pool belongs to.
-  final String ipamScopeId;
-  final String ipamScopeType;
+  final pulumi.Input<String> ipamScopeId;
+  final pulumi.Input<String> ipamScopeType;
   /// Locale is the Region where your pool is available for allocations. You can only create pools with locales that match the operating Regions of the IPAM. You can only create VPCs from a pool whose locale matches the VPC's Region.
-  final String locale;
-  final int poolDepth;
+  final pulumi.Input<String> locale;
+  final pulumi.Input<int> poolDepth;
   /// Defines whether or not IPv6 pool space is publicly advertisable over the internet.
-  final bool publiclyAdvertisable;
+  final pulumi.Input<bool> publiclyAdvertisable;
   /// ID of the source IPAM pool.
-  final String sourceIpamPoolId;
-  final String state;
+  final pulumi.Input<String> sourceIpamPoolId;
+  final pulumi.Input<String> state;
   /// Map of tags to assigned to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetVpcIpamPoolsIpamPool].
   /// [addressFamily] IP protocol assigned to this pool.
@@ -101,24 +102,24 @@ class GetVpcIpamPoolsIpamPool {
 
   factory GetVpcIpamPoolsIpamPool.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamPoolsIpamPool(
-      addressFamily: map['addressFamily'] as String,
-      allocationDefaultNetmaskLength: map['allocationDefaultNetmaskLength'] as int,
-      allocationMaxNetmaskLength: map['allocationMaxNetmaskLength'] as int,
-      allocationMinNetmaskLength: map['allocationMinNetmaskLength'] as int,
-      allocationResourceTags: (map['allocationResourceTags'] as Map).cast<String, String>(),
-      arn: map['arn'] as String,
-      autoImport: map['autoImport'] as bool,
-      awsService: map['awsService'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      ipamScopeId: map['ipamScopeId'] as String,
-      ipamScopeType: map['ipamScopeType'] as String,
-      locale: map['locale'] as String,
-      poolDepth: map['poolDepth'] as int,
-      publiclyAdvertisable: map['publiclyAdvertisable'] as bool,
-      sourceIpamPoolId: map['sourceIpamPoolId'] as String,
-      state: map['state'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      addressFamily: (map['addressFamily'] as String).input(),
+      allocationDefaultNetmaskLength: (map['allocationDefaultNetmaskLength'] as int).input(),
+      allocationMaxNetmaskLength: (map['allocationMaxNetmaskLength'] as int).input(),
+      allocationMinNetmaskLength: (map['allocationMinNetmaskLength'] as int).input(),
+      allocationResourceTags: ((map['allocationResourceTags'] as Map).cast<String, String>()).input(),
+      arn: (map['arn'] as String).input(),
+      autoImport: (map['autoImport'] as bool).input(),
+      awsService: (map['awsService'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipamScopeId: (map['ipamScopeId'] as String).input(),
+      ipamScopeType: (map['ipamScopeType'] as String).input(),
+      locale: (map['locale'] as String).input(),
+      poolDepth: (map['poolDepth'] as int).input(),
+      publiclyAdvertisable: (map['publiclyAdvertisable'] as bool).input(),
+      sourceIpamPoolId: (map['sourceIpamPoolId'] as String).input(),
+      state: (map['state'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

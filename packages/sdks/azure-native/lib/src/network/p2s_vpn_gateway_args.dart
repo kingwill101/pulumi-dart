@@ -45,29 +45,18 @@ class P2sVpnGatewayArgs {
   /// [vpnGatewayScaleUnit] The scale unit for this p2s vpn gateway.
   /// [vpnServerConfiguration] The VpnServerConfiguration to which the p2sVpnGateway is attached to.
   P2sVpnGatewayArgs({
-    pulumi.Output<List<String>>? customDnsServers,
-    pulumi.Output<String>? gatewayName,
-    pulumi.Output<String>? id,
-    pulumi.Output<bool>? isRoutingPreferenceInternet,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<P2SConnectionConfiguration>>? p2SConnectionConfigurations,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<SubResource>? virtualHub,
-    pulumi.Output<int>? vpnGatewayScaleUnit,
-    pulumi.Output<SubResource>? vpnServerConfiguration,
-  }) :
-      customDnsServers = pulumi.Input.asOptionalInput<List<String>>(customDnsServers),
-      gatewayName = pulumi.Input.asOptionalInput<String>(gatewayName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      isRoutingPreferenceInternet = pulumi.Input.asOptionalInput<bool>(isRoutingPreferenceInternet),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      p2SConnectionConfigurations = pulumi.Input.asOptionalInput<List<P2SConnectionConfiguration>>(p2SConnectionConfigurations),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualHub = pulumi.Input.asOptionalInput<SubResource>(virtualHub),
-      vpnGatewayScaleUnit = pulumi.Input.asOptionalInput<int>(vpnGatewayScaleUnit),
-      vpnServerConfiguration = pulumi.Input.asOptionalInput<SubResource>(vpnServerConfiguration);
+    this.customDnsServers,
+    this.gatewayName,
+    this.id,
+    this.isRoutingPreferenceInternet,
+    this.location,
+    this.p2SConnectionConfigurations,
+    required this.resourceGroupName,
+    this.tags,
+    this.virtualHub,
+    this.vpnGatewayScaleUnit,
+    this.vpnServerConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class P2sVpnGatewayArgs {
 
   factory P2sVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return P2sVpnGatewayArgs(
-      customDnsServers: map['customDnsServers'] == null ? null : pulumi.Output.create<List<String>>((map['customDnsServers'] as List).cast<String>()),
-      gatewayName: map['gatewayName'] == null ? null : pulumi.Output.create<String>(map['gatewayName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      isRoutingPreferenceInternet: map['isRoutingPreferenceInternet'] == null ? null : pulumi.Output.create<bool>(map['isRoutingPreferenceInternet'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      p2SConnectionConfigurations: map['p2SConnectionConfigurations'] == null ? null : pulumi.Output.create<List<P2SConnectionConfiguration>>(pulumi.Input.decodeList<P2SConnectionConfiguration>(map['p2SConnectionConfigurations'], (value) => P2SConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualHub: map['virtualHub'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['virtualHub'] as Map).cast<String, dynamic>())),
-      vpnGatewayScaleUnit: map['vpnGatewayScaleUnit'] == null ? null : pulumi.Output.create<int>(map['vpnGatewayScaleUnit'] as int),
-      vpnServerConfiguration: map['vpnServerConfiguration'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['vpnServerConfiguration'] as Map).cast<String, dynamic>())),
+      customDnsServers: map['customDnsServers'] == null ? null : ((map['customDnsServers'] as List).cast<String>()).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      isRoutingPreferenceInternet: map['isRoutingPreferenceInternet'] == null ? null : (map['isRoutingPreferenceInternet'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      p2SConnectionConfigurations: map['p2SConnectionConfigurations'] == null ? null : (pulumi.Input.decodeList<P2SConnectionConfiguration>(map['p2SConnectionConfigurations'], (value) => P2SConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualHub: map['virtualHub'] == null ? null : (SubResource.fromMap((map['virtualHub'] as Map).cast<String, dynamic>())).input(),
+      vpnGatewayScaleUnit: map['vpnGatewayScaleUnit'] == null ? null : (map['vpnGatewayScaleUnit'] as int).input(),
+      vpnServerConfiguration: map['vpnServerConfiguration'] == null ? null : (SubResource.fromMap((map['vpnServerConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -40,27 +40,17 @@ class StoredIscsiVolumeArgs {
   /// [tags] Key-value mapping of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetName] The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. The target name must be unique across all volumes of a gateway.
   StoredIscsiVolumeArgs({
-    required pulumi.Output<String> diskId,
-    required pulumi.Output<String> gatewayArn,
-    pulumi.Output<bool>? kmsEncrypted,
-    pulumi.Output<String>? kmsKey,
-    required pulumi.Output<String> networkInterfaceId,
-    required pulumi.Output<bool> preserveExistingData,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? snapshotId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetName,
-  }) :
-      diskId = pulumi.Input.asInput<String>(diskId),
-      gatewayArn = pulumi.Input.asInput<String>(gatewayArn),
-      kmsEncrypted = pulumi.Input.asOptionalInput<bool>(kmsEncrypted),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId),
-      preserveExistingData = pulumi.Input.asInput<bool>(preserveExistingData),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotId = pulumi.Input.asOptionalInput<String>(snapshotId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetName = pulumi.Input.asInput<String>(targetName);
+    required this.diskId,
+    required this.gatewayArn,
+    this.kmsEncrypted,
+    this.kmsKey,
+    required this.networkInterfaceId,
+    required this.preserveExistingData,
+    this.region,
+    this.snapshotId,
+    this.tags,
+    required this.targetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class StoredIscsiVolumeArgs {
 
   factory StoredIscsiVolumeArgs.fromMap(Map<String, dynamic> map) {
     return StoredIscsiVolumeArgs(
-      diskId: pulumi.Output.create<String>(map['diskId'] as String),
-      gatewayArn: pulumi.Output.create<String>(map['gatewayArn'] as String),
-      kmsEncrypted: map['kmsEncrypted'] == null ? null : pulumi.Output.create<bool>(map['kmsEncrypted'] as bool),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      networkInterfaceId: pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      preserveExistingData: pulumi.Output.create<bool>(map['preserveExistingData'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotId: map['snapshotId'] == null ? null : pulumi.Output.create<String>(map['snapshotId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetName: pulumi.Output.create<String>(map['targetName'] as String),
+      diskId: (map['diskId'] as String).input(),
+      gatewayArn: (map['gatewayArn'] as String).input(),
+      kmsEncrypted: map['kmsEncrypted'] == null ? null : (map['kmsEncrypted'] as bool).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      preserveExistingData: (map['preserveExistingData'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetName: (map['targetName'] as String).input(),
     );
   }
 }

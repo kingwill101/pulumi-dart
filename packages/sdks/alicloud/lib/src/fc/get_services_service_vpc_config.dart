@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServicesServiceVpcConfig {
   /// Associated security group ID.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// Associated VPC ID.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// Associated vSwitch IDs.
-  final List<String> vswitchIds;
+  final pulumi.Input<List<String>> vswitchIds;
 
   /// Creates a new [GetServicesServiceVpcConfig].
   /// [securityGroupId] Associated security group ID.
@@ -29,9 +30,9 @@ class GetServicesServiceVpcConfig {
 
   factory GetServicesServiceVpcConfig.fromMap(Map<String, dynamic> map) {
     return GetServicesServiceVpcConfig(
-      securityGroupId: map['securityGroupId'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchIds: (map['vswitchIds'] as List).cast<String>(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchIds: ((map['vswitchIds'] as List).cast<String>()).input(),
     );
   }
 }

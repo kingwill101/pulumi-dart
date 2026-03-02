@@ -18,15 +18,11 @@ class GetWorkspaceArgs {
   /// [repositoryId] Required.
   /// [workspaceId] Required.
   GetWorkspaceArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.location,
+    this.project,
+    required this.repositoryId,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetWorkspaceArgs {
 
   factory GetWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

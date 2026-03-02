@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentTargetConfig {
   /// The full YAML contents of your configuration file.
-  final String content;
+  final pulumi.Input<String> content;
 
   /// Creates a new [DeploymentTargetConfig].
   /// [content] The full YAML contents of your configuration file.
@@ -19,7 +20,7 @@ class DeploymentTargetConfig {
 
   factory DeploymentTargetConfig.fromMap(Map<String, dynamic> map) {
     return DeploymentTargetConfig(
-      content: map['content'] as String,
+      content: (map['content'] as String).input(),
     );
   }
 }

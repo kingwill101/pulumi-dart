@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'duration_response.dart';
 
 /// The information about the HTTP Cookie on which the hash function is based for load balancing policies that use a consistent hash.
 class ConsistentHashLoadBalancerSettingsHttpCookieResponse {
   /// Name of the cookie.
-  final String name;
+  final pulumi.Input<String> name;
   /// Path to set for the cookie.
-  final String path;
+  final pulumi.Input<String> path;
   /// Lifetime of the cookie.
-  final DurationResponse ttl;
+  final pulumi.Input<DurationResponse> ttl;
 
   /// Creates a new [ConsistentHashLoadBalancerSettingsHttpCookieResponse].
   /// [name] Name of the cookie.
@@ -25,15 +26,15 @@ class ConsistentHashLoadBalancerSettingsHttpCookieResponse {
     return <String, dynamic>{
       'name': name,
       'path': path,
-      'ttl': ttl.toMap(),
+      'ttl': pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(ttl, (value) => value.toMap()),
     };
   }
 
   factory ConsistentHashLoadBalancerSettingsHttpCookieResponse.fromMap(Map<String, dynamic> map) {
     return ConsistentHashLoadBalancerSettingsHttpCookieResponse(
-      name: map['name'] as String,
-      path: map['path'] as String,
-      ttl: DurationResponse.fromMap((map['ttl'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      path: (map['path'] as String).input(),
+      ttl: (DurationResponse.fromMap((map['ttl'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

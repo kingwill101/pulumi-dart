@@ -22,13 +22,10 @@ class SubAccountArgs {
   /// [displayName] The display name of the billing account.
   /// [masterBillingAccount] The name of the master billing account that the subaccount
   SubAccountArgs({
-    pulumi.Output<String>? deletionPolicy,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> masterBillingAccount,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      masterBillingAccount = pulumi.Input.asInput<String>(masterBillingAccount);
+    this.deletionPolicy,
+    required this.displayName,
+    required this.masterBillingAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class SubAccountArgs {
 
   factory SubAccountArgs.fromMap(Map<String, dynamic> map) {
     return SubAccountArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      masterBillingAccount: pulumi.Output.create<String>(map['masterBillingAccount'] as String),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      masterBillingAccount: (map['masterBillingAccount'] as String).input(),
     );
   }
 }

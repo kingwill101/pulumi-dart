@@ -25,17 +25,12 @@ class HybridIdentityMetadatumArgs {
   /// [resourceUid] The unique identifier for the resource.
   /// [virtualMachineName] Name of the vm.
   HybridIdentityMetadatumArgs({
-    pulumi.Output<String>? metadataName,
-    pulumi.Output<String>? publicKey,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceUid,
-    required pulumi.Output<String> virtualMachineName,
-  }) :
-      metadataName = pulumi.Input.asOptionalInput<String>(metadataName),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceUid = pulumi.Input.asOptionalInput<String>(resourceUid),
-      virtualMachineName = pulumi.Input.asInput<String>(virtualMachineName);
+    this.metadataName,
+    this.publicKey,
+    required this.resourceGroupName,
+    this.resourceUid,
+    required this.virtualMachineName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class HybridIdentityMetadatumArgs {
 
   factory HybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return HybridIdentityMetadatumArgs(
-      metadataName: map['metadataName'] == null ? null : pulumi.Output.create<String>(map['metadataName'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceUid: map['resourceUid'] == null ? null : pulumi.Output.create<String>(map['resourceUid'] as String),
-      virtualMachineName: pulumi.Output.create<String>(map['virtualMachineName'] as String),
+      metadataName: map['metadataName'] == null ? null : (map['metadataName'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid'] as String).input(),
+      virtualMachineName: (map['virtualMachineName'] as String).input(),
     );
   }
 }

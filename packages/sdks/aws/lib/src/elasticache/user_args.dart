@@ -40,25 +40,16 @@ class UserArgs {
   /// [userId] The ID of the user.
   /// [userName] The username of the user.
   UserArgs({
-    required pulumi.Output<String> accessString,
-    pulumi.Output<UserAuthenticationMode>? authenticationMode,
-    required pulumi.Output<String> engine,
-    pulumi.Output<bool>? noPasswordRequired,
-    pulumi.Output<List<String>>? passwords,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> userId,
-    required pulumi.Output<String> userName,
-  }) :
-      accessString = pulumi.Input.asInput<String>(accessString),
-      authenticationMode = pulumi.Input.asOptionalInput<UserAuthenticationMode>(authenticationMode),
-      engine = pulumi.Input.asInput<String>(engine),
-      noPasswordRequired = pulumi.Input.asOptionalInput<bool>(noPasswordRequired),
-      passwords = pulumi.Input.asOptionalInput<List<String>>(passwords),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userId = pulumi.Input.asInput<String>(userId),
-      userName = pulumi.Input.asInput<String>(userName);
+    required this.accessString,
+    this.authenticationMode,
+    required this.engine,
+    this.noPasswordRequired,
+    this.passwords,
+    this.region,
+    this.tags,
+    required this.userId,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      accessString: pulumi.Output.create<String>(map['accessString'] as String),
-      authenticationMode: map['authenticationMode'] == null ? null : pulumi.Output.create<UserAuthenticationMode>(UserAuthenticationMode.fromMap((map['authenticationMode'] as Map).cast<String, dynamic>())),
-      engine: pulumi.Output.create<String>(map['engine'] as String),
-      noPasswordRequired: map['noPasswordRequired'] == null ? null : pulumi.Output.create<bool>(map['noPasswordRequired'] as bool),
-      passwords: map['passwords'] == null ? null : pulumi.Output.create<List<String>>((map['passwords'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      accessString: (map['accessString'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (UserAuthenticationMode.fromMap((map['authenticationMode'] as Map).cast<String, dynamic>())).input(),
+      engine: (map['engine'] as String).input(),
+      noPasswordRequired: map['noPasswordRequired'] == null ? null : (map['noPasswordRequired'] as bool).input(),
+      passwords: map['passwords'] == null ? null : ((map['passwords'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userId: (map['userId'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

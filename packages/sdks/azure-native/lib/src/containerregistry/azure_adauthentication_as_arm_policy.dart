@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The policy for using ARM audience token for a container registry.
 class AzureADAuthenticationAsArmPolicy {
   /// The value that indicates whether the policy is enabled or not.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [AzureADAuthenticationAsArmPolicy].
   /// [status] The value that indicates whether the policy is enabled or not.
@@ -20,7 +21,7 @@ class AzureADAuthenticationAsArmPolicy {
 
   factory AzureADAuthenticationAsArmPolicy.fromMap(Map<String, dynamic> map) {
     return AzureADAuthenticationAsArmPolicy(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

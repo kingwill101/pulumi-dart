@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigDeleteKey {
   /// Specifies the keys to be deleted.
-  final List<String> withKeys;
+  final pulumi.Input<List<String>> withKeys;
 
   /// Creates a new [LogTransformerTransformerConfigDeleteKey].
   /// [withKeys] Specifies the keys to be deleted.
@@ -19,7 +20,7 @@ class LogTransformerTransformerConfigDeleteKey {
 
   factory LogTransformerTransformerConfigDeleteKey.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigDeleteKey(
-      withKeys: (map['withKeys'] as List).cast<String>(),
+      withKeys: ((map['withKeys'] as List).cast<String>()).input(),
     );
   }
 }

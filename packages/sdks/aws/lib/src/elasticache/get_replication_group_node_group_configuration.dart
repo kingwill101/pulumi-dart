@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReplicationGroupNodeGroupConfiguration {
   /// ID of the node group.
-  final String nodeGroupId;
+  final pulumi.Input<String> nodeGroupId;
   /// Availability Zone for the primary node.
-  final String primaryAvailabilityZone;
+  final pulumi.Input<String> primaryAvailabilityZone;
   /// Outpost ARN of the primary node.
-  final String primaryOutpostArn;
+  final pulumi.Input<String> primaryOutpostArn;
   /// List of Availability Zones for the replica nodes.
-  final List<String> replicaAvailabilityZones;
+  final pulumi.Input<List<String>> replicaAvailabilityZones;
   /// Number of replica nodes in this node group.
-  final int replicaCount;
+  final pulumi.Input<int> replicaCount;
   /// List of outpost ARNs for the replica nodes.
-  final List<String> replicaOutpostArns;
+  final pulumi.Input<List<String>> replicaOutpostArns;
   /// Keyspace for this node group (shard).
-  final String slots;
+  final pulumi.Input<String> slots;
 
   /// Creates a new [GetReplicationGroupNodeGroupConfiguration].
   /// [nodeGroupId] ID of the node group.
@@ -49,13 +50,13 @@ class GetReplicationGroupNodeGroupConfiguration {
 
   factory GetReplicationGroupNodeGroupConfiguration.fromMap(Map<String, dynamic> map) {
     return GetReplicationGroupNodeGroupConfiguration(
-      nodeGroupId: map['nodeGroupId'] as String,
-      primaryAvailabilityZone: map['primaryAvailabilityZone'] as String,
-      primaryOutpostArn: map['primaryOutpostArn'] as String,
-      replicaAvailabilityZones: (map['replicaAvailabilityZones'] as List).cast<String>(),
-      replicaCount: map['replicaCount'] as int,
-      replicaOutpostArns: (map['replicaOutpostArns'] as List).cast<String>(),
-      slots: map['slots'] as String,
+      nodeGroupId: (map['nodeGroupId'] as String).input(),
+      primaryAvailabilityZone: (map['primaryAvailabilityZone'] as String).input(),
+      primaryOutpostArn: (map['primaryOutpostArn'] as String).input(),
+      replicaAvailabilityZones: ((map['replicaAvailabilityZones'] as List).cast<String>()).input(),
+      replicaCount: (map['replicaCount'] as int).input(),
+      replicaOutpostArns: ((map['replicaOutpostArns'] as List).cast<String>()).input(),
+      slots: (map['slots'] as String).input(),
     );
   }
 }

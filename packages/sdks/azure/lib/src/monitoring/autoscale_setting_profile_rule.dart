@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autoscale_setting_profile_rule_metric_trigger.dart';
 import 'autoscale_setting_profile_rule_scale_action.dart';
 
 class AutoscaleSettingProfileRule {
   /// A `metric_trigger` block as defined below.
-  final AutoscaleSettingProfileRuleMetricTrigger metricTrigger;
+  final pulumi.Input<AutoscaleSettingProfileRuleMetricTrigger> metricTrigger;
   /// A `scale_action` block as defined below.
-  final AutoscaleSettingProfileRuleScaleAction scaleAction;
+  final pulumi.Input<AutoscaleSettingProfileRuleScaleAction> scaleAction;
 
   /// Creates a new [AutoscaleSettingProfileRule].
   /// [metricTrigger] A `metric_trigger` block as defined below.
@@ -19,15 +20,15 @@ class AutoscaleSettingProfileRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metricTrigger': metricTrigger.toMap(),
-      'scaleAction': scaleAction.toMap(),
+      'metricTrigger': pulumi.Input.mapInputValue<AutoscaleSettingProfileRuleMetricTrigger, Map<String, dynamic>>(metricTrigger, (value) => value.toMap()),
+      'scaleAction': pulumi.Input.mapInputValue<AutoscaleSettingProfileRuleScaleAction, Map<String, dynamic>>(scaleAction, (value) => value.toMap()),
     };
   }
 
   factory AutoscaleSettingProfileRule.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingProfileRule(
-      metricTrigger: AutoscaleSettingProfileRuleMetricTrigger.fromMap((map['metricTrigger'] as Map).cast<String, dynamic>()),
-      scaleAction: AutoscaleSettingProfileRuleScaleAction.fromMap((map['scaleAction'] as Map).cast<String, dynamic>()),
+      metricTrigger: (AutoscaleSettingProfileRuleMetricTrigger.fromMap((map['metricTrigger'] as Map).cast<String, dynamic>())).input(),
+      scaleAction: (AutoscaleSettingProfileRuleScaleAction.fromMap((map['scaleAction'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

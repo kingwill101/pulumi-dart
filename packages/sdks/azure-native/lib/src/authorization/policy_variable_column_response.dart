@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The variable column.
 class PolicyVariableColumnResponse {
   /// The name of this policy variable column.
-  final String columnName;
+  final pulumi.Input<String> columnName;
 
   /// Creates a new [PolicyVariableColumnResponse].
   /// [columnName] The name of this policy variable column.
@@ -20,7 +21,7 @@ class PolicyVariableColumnResponse {
 
   factory PolicyVariableColumnResponse.fromMap(Map<String, dynamic> map) {
     return PolicyVariableColumnResponse(
-      columnName: map['columnName'] as String,
+      columnName: (map['columnName'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetObjectStorageClusterArgs {
   /// Creates a new [GetObjectStorageClusterArgs].
   /// [id] The unique ID of this cluster.
   GetObjectStorageClusterArgs({
-    required pulumi.Output<String> id,
-  }) :
-      id = pulumi.Input.asInput<String>(id);
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetObjectStorageClusterArgs {
 
   factory GetObjectStorageClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectStorageClusterArgs(
-      id: pulumi.Output.create<String>(map['id'] as String),
+      id: (map['id'] as String).input(),
     );
   }
 }

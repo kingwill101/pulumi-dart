@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration {
   /// ARN for KMS Key.
   ///
   /// The following arguments are optional:
-  final String kmsKeyArn;
+  final pulumi.Input<String> kmsKeyArn;
 
   /// Creates a new [SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration].
   /// [kmsKeyArn] ARN for KMS Key.
@@ -21,7 +22,7 @@ class SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration {
 
   factory SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration(
-      kmsKeyArn: map['kmsKeyArn'] as String,
+      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
     );
   }
 }

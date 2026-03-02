@@ -47,31 +47,19 @@ class VpcPeeringConnectionAccepterState {
   /// [vpcId] The ID of the accepter VPC.
   /// [vpcPeeringConnectionId] The VPC Peering Connection ID to manage.
   VpcPeeringConnectionAccepterState({
-    pulumi.Output<String>? acceptStatus,
-    pulumi.Output<VpcPeeringConnectionAccepterAccepter>? accepter,
-    pulumi.Output<bool>? autoAccept,
-    pulumi.Output<String>? peerOwnerId,
-    pulumi.Output<String>? peerRegion,
-    pulumi.Output<String>? peerVpcId,
-    pulumi.Output<String>? region,
-    pulumi.Output<VpcPeeringConnectionAccepterRequester>? requester,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vpcPeeringConnectionId,
-  }) :
-      acceptStatus = pulumi.Input.asOptionalInput<String>(acceptStatus),
-      accepter = pulumi.Input.asOptionalInput<VpcPeeringConnectionAccepterAccepter>(accepter),
-      autoAccept = pulumi.Input.asOptionalInput<bool>(autoAccept),
-      peerOwnerId = pulumi.Input.asOptionalInput<String>(peerOwnerId),
-      peerRegion = pulumi.Input.asOptionalInput<String>(peerRegion),
-      peerVpcId = pulumi.Input.asOptionalInput<String>(peerVpcId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      requester = pulumi.Input.asOptionalInput<VpcPeeringConnectionAccepterRequester>(requester),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vpcPeeringConnectionId = pulumi.Input.asOptionalInput<String>(vpcPeeringConnectionId);
+    this.acceptStatus,
+    this.accepter,
+    this.autoAccept,
+    this.peerOwnerId,
+    this.peerRegion,
+    this.peerVpcId,
+    this.region,
+    this.requester,
+    this.tags,
+    this.tagsAll,
+    this.vpcId,
+    this.vpcPeeringConnectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class VpcPeeringConnectionAccepterState {
 
   factory VpcPeeringConnectionAccepterState.fromMap(Map<String, dynamic> map) {
     return VpcPeeringConnectionAccepterState(
-      acceptStatus: map['acceptStatus'] == null ? null : pulumi.Output.create<String>(map['acceptStatus'] as String),
-      accepter: map['accepter'] == null ? null : pulumi.Output.create<VpcPeeringConnectionAccepterAccepter>(VpcPeeringConnectionAccepterAccepter.fromMap((map['accepter'] as Map).cast<String, dynamic>())),
-      autoAccept: map['autoAccept'] == null ? null : pulumi.Output.create<bool>(map['autoAccept'] as bool),
-      peerOwnerId: map['peerOwnerId'] == null ? null : pulumi.Output.create<String>(map['peerOwnerId'] as String),
-      peerRegion: map['peerRegion'] == null ? null : pulumi.Output.create<String>(map['peerRegion'] as String),
-      peerVpcId: map['peerVpcId'] == null ? null : pulumi.Output.create<String>(map['peerVpcId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      requester: map['requester'] == null ? null : pulumi.Output.create<VpcPeeringConnectionAccepterRequester>(VpcPeeringConnectionAccepterRequester.fromMap((map['requester'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : pulumi.Output.create<String>(map['vpcPeeringConnectionId'] as String),
+      acceptStatus: map['acceptStatus'] == null ? null : (map['acceptStatus'] as String).input(),
+      accepter: map['accepter'] == null ? null : (VpcPeeringConnectionAccepterAccepter.fromMap((map['accepter'] as Map).cast<String, dynamic>())).input(),
+      autoAccept: map['autoAccept'] == null ? null : (map['autoAccept'] as bool).input(),
+      peerOwnerId: map['peerOwnerId'] == null ? null : (map['peerOwnerId'] as String).input(),
+      peerRegion: map['peerRegion'] == null ? null : (map['peerRegion'] as String).input(),
+      peerVpcId: map['peerVpcId'] == null ? null : (map['peerVpcId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      requester: map['requester'] == null ? null : (VpcPeeringConnectionAccepterRequester.fromMap((map['requester'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : (map['vpcPeeringConnectionId'] as String).input(),
     );
   }
 }

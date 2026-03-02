@@ -16,11 +16,9 @@ class GetWafPolicyArgs {
   /// [policyId] ID of the WAF policy deployed in the BIG-IP.
   /// [policyJson] Exported WAF policy JSON
   GetWafPolicyArgs({
-    required pulumi.Output<String> policyId,
-    pulumi.Output<String>? policyJson,
-  }) :
-      policyId = pulumi.Input.asInput<String>(policyId),
-      policyJson = pulumi.Input.asOptionalInput<String>(policyJson);
+    required this.policyId,
+    this.policyJson,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetWafPolicyArgs {
 
   factory GetWafPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWafPolicyArgs(
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
-      policyJson: map['policyJson'] == null ? null : pulumi.Output.create<String>(map['policyJson'] as String),
+      policyId: (map['policyId'] as String).input(),
+      policyJson: map['policyJson'] == null ? null : (map['policyJson'] as String).input(),
     );
   }
 }

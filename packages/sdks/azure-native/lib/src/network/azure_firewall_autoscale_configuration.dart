@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Firewall Autoscale Configuration parameters.
 class AzureFirewallAutoscaleConfiguration {
   /// The maximum number of capacity units for this azure firewall. Use null to reset the value to the service default.
-  final int? maxCapacity;
+  final pulumi.Input<int>? maxCapacity;
   /// The minimum number of capacity units for this azure firewall. Use null to reset the value to the service default.
-  final int? minCapacity;
+  final pulumi.Input<int>? minCapacity;
 
   /// Creates a new [AzureFirewallAutoscaleConfiguration].
   /// [maxCapacity] The maximum number of capacity units for this azure firewall. Use null to reset the value to the service default.
@@ -25,8 +26,8 @@ class AzureFirewallAutoscaleConfiguration {
 
   factory AzureFirewallAutoscaleConfiguration.fromMap(Map<String, dynamic> map) {
     return AzureFirewallAutoscaleConfiguration(
-      maxCapacity: map['maxCapacity'] == null ? null : map['maxCapacity'] as int,
-      minCapacity: map['minCapacity'] == null ? null : map['minCapacity'] as int,
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as int).input(),
     );
   }
 }

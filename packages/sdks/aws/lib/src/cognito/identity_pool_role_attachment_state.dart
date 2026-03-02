@@ -20,15 +20,11 @@ class IdentityPoolRoleAttachmentState {
   /// [roleMappings] A List of Role Mapping.
   /// [roles] The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.
   IdentityPoolRoleAttachmentState({
-    pulumi.Output<String>? identityPoolId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<IdentityPoolRoleAttachmentRoleMapping>>? roleMappings,
-    pulumi.Output<Map<String, String>>? roles,
-  }) :
-      identityPoolId = pulumi.Input.asOptionalInput<String>(identityPoolId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleMappings = pulumi.Input.asOptionalInput<List<IdentityPoolRoleAttachmentRoleMapping>>(roleMappings),
-      roles = pulumi.Input.asOptionalInput<Map<String, String>>(roles);
+    this.identityPoolId,
+    this.region,
+    this.roleMappings,
+    this.roles,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class IdentityPoolRoleAttachmentState {
 
   factory IdentityPoolRoleAttachmentState.fromMap(Map<String, dynamic> map) {
     return IdentityPoolRoleAttachmentState(
-      identityPoolId: map['identityPoolId'] == null ? null : pulumi.Output.create<String>(map['identityPoolId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleMappings: map['roleMappings'] == null ? null : pulumi.Output.create<List<IdentityPoolRoleAttachmentRoleMapping>>(pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(map['roleMappings'], (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      roles: map['roles'] == null ? null : pulumi.Output.create<Map<String, String>>((map['roles'] as Map).cast<String, String>()),
+      identityPoolId: map['identityPoolId'] == null ? null : (map['identityPoolId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleMappings: map['roleMappings'] == null ? null : (pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(map['roleMappings'], (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roles: map['roles'] == null ? null : ((map['roles'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'stage_spec.dart';
 /// Workflow Version Properties
 class WorkflowVersionProperties {
   /// Execution specification
-  final dynamic specification;
+  final pulumi.Input<dynamic>? specification;
   /// A list of stage specs
-  final List<StageSpec> stageSpec;
+  final pulumi.Input<List<StageSpec>> stageSpec;
 
   /// Creates a new [WorkflowVersionProperties].
   /// [specification] Execution specification
@@ -21,14 +21,14 @@ class WorkflowVersionProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'specification': ?specification,
-      'stageSpec': pulumi.Input.encodeList<StageSpec, Map<String, dynamic>>(stageSpec, (value) => value.toMap()),
+      'stageSpec': pulumi.Input.mapInputValue<List<StageSpec>, List<Map<String, dynamic>>>(stageSpec, (value) => pulumi.Input.encodeList<StageSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WorkflowVersionProperties.fromMap(Map<String, dynamic> map) {
     return WorkflowVersionProperties(
-      specification: map['specification'] == null ? null : map['specification'],
-      stageSpec: pulumi.Input.decodeList<StageSpec>(map['stageSpec'], (value) => StageSpec.fromMap((value as Map).cast<String, dynamic>())),
+      specification: map['specification'] == null ? null : (map['specification']).input(),
+      stageSpec: (pulumi.Input.decodeList<StageSpec>(map['stageSpec'], (value) => StageSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -46,23 +46,15 @@ class ExascaleDbStorageVaultArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [properties] The properties of the ExascaleDbStorageVault.
   ExascaleDbStorageVaultArgs({
-    pulumi.Output<bool>? deletionProtection,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> exascaleDbStorageVaultId,
-    pulumi.Output<String>? gcpOracleZone,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<ExascaleDbStorageVaultProperties> properties,
-  }) :
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      exascaleDbStorageVaultId = pulumi.Input.asInput<String>(exascaleDbStorageVaultId),
-      gcpOracleZone = pulumi.Input.asOptionalInput<String>(gcpOracleZone),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      properties = pulumi.Input.asInput<ExascaleDbStorageVaultProperties>(properties);
+    this.deletionProtection,
+    required this.displayName,
+    required this.exascaleDbStorageVaultId,
+    this.gcpOracleZone,
+    this.labels,
+    required this.location,
+    this.project,
+    required this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,14 +71,14 @@ class ExascaleDbStorageVaultArgs {
 
   factory ExascaleDbStorageVaultArgs.fromMap(Map<String, dynamic> map) {
     return ExascaleDbStorageVaultArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      exascaleDbStorageVaultId: pulumi.Output.create<String>(map['exascaleDbStorageVaultId'] as String),
-      gcpOracleZone: map['gcpOracleZone'] == null ? null : pulumi.Output.create<String>(map['gcpOracleZone'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      properties: pulumi.Output.create<ExascaleDbStorageVaultProperties>(ExascaleDbStorageVaultProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      exascaleDbStorageVaultId: (map['exascaleDbStorageVaultId'] as String).input(),
+      gcpOracleZone: map['gcpOracleZone'] == null ? null : (map['gcpOracleZone'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      properties: (ExascaleDbStorageVaultProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

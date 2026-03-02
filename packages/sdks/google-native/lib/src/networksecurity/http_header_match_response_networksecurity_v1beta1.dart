@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification of HTTP header match attributes.
 class HttpHeaderMatchResponseNetworksecurityV1beta1 {
   /// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
-  final String headerName;
+  final pulumi.Input<String> headerName;
   /// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript For matching against a port specified in the HTTP request, use a headerMatch with headerName set to Host and a regular expression that satisfies the RFC2616 Host header's port specifier.
-  final String regexMatch;
+  final pulumi.Input<String> regexMatch;
 
   /// Creates a new [HttpHeaderMatchResponseNetworksecurityV1beta1].
   /// [headerName] The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
@@ -25,8 +26,8 @@ class HttpHeaderMatchResponseNetworksecurityV1beta1 {
 
   factory HttpHeaderMatchResponseNetworksecurityV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpHeaderMatchResponseNetworksecurityV1beta1(
-      headerName: map['headerName'] as String,
-      regexMatch: map['regexMatch'] as String,
+      headerName: (map['headerName'] as String).input(),
+      regexMatch: (map['regexMatch'] as String).input(),
     );
   }
 }

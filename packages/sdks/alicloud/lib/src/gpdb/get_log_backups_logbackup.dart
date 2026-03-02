@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLogBackupsLogbackup {
   /// The ID of the Master node of the instance.
-  final String dbInstanceId;
+  final pulumi.Input<String> dbInstanceId;
   /// The first ID of the resource
-  final String logBackupId;
+  final pulumi.Input<String> logBackupId;
   /// Log file name (OSS path).
-  final String logFileName;
+  final pulumi.Input<String> logFileName;
   /// Size of the backup log file. Unit: Byte.
-  final int logFileSize;
+  final pulumi.Input<int> logFileSize;
   /// The log timestamp.
-  final String logTime;
+  final pulumi.Input<String> logTime;
   /// Total number of records.
-  final int recordTotal;
+  final pulumi.Input<int> recordTotal;
   /// The node name.
-  final String segmentName;
+  final pulumi.Input<String> segmentName;
 
   /// Creates a new [GetLogBackupsLogbackup].
   /// [dbInstanceId] The ID of the Master node of the instance.
@@ -49,13 +50,13 @@ class GetLogBackupsLogbackup {
 
   factory GetLogBackupsLogbackup.fromMap(Map<String, dynamic> map) {
     return GetLogBackupsLogbackup(
-      dbInstanceId: map['dbInstanceId'] as String,
-      logBackupId: map['logBackupId'] as String,
-      logFileName: map['logFileName'] as String,
-      logFileSize: map['logFileSize'] as int,
-      logTime: map['logTime'] as String,
-      recordTotal: map['recordTotal'] as int,
-      segmentName: map['segmentName'] as String,
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      logBackupId: (map['logBackupId'] as String).input(),
+      logFileName: (map['logFileName'] as String).input(),
+      logFileSize: (map['logFileSize'] as int).input(),
+      logTime: (map['logTime'] as String).input(),
+      recordTotal: (map['recordTotal'] as int).input(),
+      segmentName: (map['segmentName'] as String).input(),
     );
   }
 }

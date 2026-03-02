@@ -54,35 +54,21 @@ class TriggerScheduleArgs {
   /// [startTime] The time the Schedule Trigger will start. This defaults to the current time. The time will be represented in UTC.
   /// [timeZone] The timezone of the start/end time.
   TriggerScheduleArgs({
-    pulumi.Output<bool>? activated,
-    pulumi.Output<List<String>>? annotations,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? frequency,
-    pulumi.Output<int>? interval,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pipelineName,
-    pulumi.Output<Map<String, String>>? pipelineParameters,
-    pulumi.Output<List<TriggerSchedulePipeline>>? pipelines,
-    pulumi.Output<TriggerScheduleSchedule>? schedule,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? timeZone,
-  }) :
-      activated = pulumi.Input.asOptionalInput<bool>(activated),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      frequency = pulumi.Input.asOptionalInput<String>(frequency),
-      interval = pulumi.Input.asOptionalInput<int>(interval),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pipelineName = pulumi.Input.asOptionalInput<String>(pipelineName),
-      pipelineParameters = pulumi.Input.asOptionalInput<Map<String, String>>(pipelineParameters),
-      pipelines = pulumi.Input.asOptionalInput<List<TriggerSchedulePipeline>>(pipelines),
-      schedule = pulumi.Input.asOptionalInput<TriggerScheduleSchedule>(schedule),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.activated,
+    this.annotations,
+    required this.dataFactoryId,
+    this.description,
+    this.endTime,
+    this.frequency,
+    this.interval,
+    this.name,
+    this.pipelineName,
+    this.pipelineParameters,
+    this.pipelines,
+    this.schedule,
+    this.startTime,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class TriggerScheduleArgs {
 
   factory TriggerScheduleArgs.fromMap(Map<String, dynamic> map) {
     return TriggerScheduleArgs(
-      activated: map['activated'] == null ? null : pulumi.Output.create<bool>(map['activated'] as bool),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      frequency: map['frequency'] == null ? null : pulumi.Output.create<String>(map['frequency'] as String),
-      interval: map['interval'] == null ? null : pulumi.Output.create<int>(map['interval'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pipelineName: map['pipelineName'] == null ? null : pulumi.Output.create<String>(map['pipelineName'] as String),
-      pipelineParameters: map['pipelineParameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pipelineParameters'] as Map).cast<String, String>()),
-      pipelines: map['pipelines'] == null ? null : pulumi.Output.create<List<TriggerSchedulePipeline>>(pulumi.Input.decodeList<TriggerSchedulePipeline>(map['pipelines'], (value) => TriggerSchedulePipeline.fromMap((value as Map).cast<String, dynamic>()))),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<TriggerScheduleSchedule>(TriggerScheduleSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      activated: map['activated'] == null ? null : (map['activated'] as bool).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pipelineName: map['pipelineName'] == null ? null : (map['pipelineName'] as String).input(),
+      pipelineParameters: map['pipelineParameters'] == null ? null : ((map['pipelineParameters'] as Map).cast<String, String>()).input(),
+      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerSchedulePipeline>(map['pipelines'], (value) => TriggerSchedulePipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schedule: map['schedule'] == null ? null : (TriggerScheduleSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

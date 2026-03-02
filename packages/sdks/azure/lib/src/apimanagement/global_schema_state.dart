@@ -25,19 +25,13 @@ class GlobalSchemaState {
   /// [type] The content type of the Schema. Possible values are `xml` and `json`.
   /// [value] The string defining the document representing the Schema.
   GlobalSchemaState({
-    pulumi.Output<String>? apiManagementName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? schemaId,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? value,
-  }) :
-      apiManagementName = pulumi.Input.asOptionalInput<String>(apiManagementName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      schemaId = pulumi.Input.asOptionalInput<String>(schemaId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.apiManagementName,
+    this.description,
+    this.resourceGroupName,
+    this.schemaId,
+    this.type,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class GlobalSchemaState {
 
   factory GlobalSchemaState.fromMap(Map<String, dynamic> map) {
     return GlobalSchemaState(
-      apiManagementName: map['apiManagementName'] == null ? null : pulumi.Output.create<String>(map['apiManagementName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaId: map['schemaId'] == null ? null : pulumi.Output.create<String>(map['schemaId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

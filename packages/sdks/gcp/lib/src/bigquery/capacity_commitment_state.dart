@@ -48,31 +48,19 @@ class CapacityCommitmentState {
   /// [slotCount] Number of slots in this commitment.
   /// [state] State of the commitment
   CapacityCommitmentState({
-    pulumi.Output<String>? capacityCommitmentId,
-    pulumi.Output<String>? commitmentEndTime,
-    pulumi.Output<String>? commitmentStartTime,
-    pulumi.Output<String>? edition,
-    pulumi.Output<String>? enforceSingleAdminProjectPerOrg,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? plan,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? renewalPlan,
-    pulumi.Output<int>? slotCount,
-    pulumi.Output<String>? state,
-  }) :
-      capacityCommitmentId = pulumi.Input.asOptionalInput<String>(capacityCommitmentId),
-      commitmentEndTime = pulumi.Input.asOptionalInput<String>(commitmentEndTime),
-      commitmentStartTime = pulumi.Input.asOptionalInput<String>(commitmentStartTime),
-      edition = pulumi.Input.asOptionalInput<String>(edition),
-      enforceSingleAdminProjectPerOrg = pulumi.Input.asOptionalInput<String>(enforceSingleAdminProjectPerOrg),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      plan = pulumi.Input.asOptionalInput<String>(plan),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      renewalPlan = pulumi.Input.asOptionalInput<String>(renewalPlan),
-      slotCount = pulumi.Input.asOptionalInput<int>(slotCount),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.capacityCommitmentId,
+    this.commitmentEndTime,
+    this.commitmentStartTime,
+    this.edition,
+    this.enforceSingleAdminProjectPerOrg,
+    this.location,
+    this.name,
+    this.plan,
+    this.project,
+    this.renewalPlan,
+    this.slotCount,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class CapacityCommitmentState {
 
   factory CapacityCommitmentState.fromMap(Map<String, dynamic> map) {
     return CapacityCommitmentState(
-      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : pulumi.Output.create<String>(map['capacityCommitmentId'] as String),
-      commitmentEndTime: map['commitmentEndTime'] == null ? null : pulumi.Output.create<String>(map['commitmentEndTime'] as String),
-      commitmentStartTime: map['commitmentStartTime'] == null ? null : pulumi.Output.create<String>(map['commitmentStartTime'] as String),
-      edition: map['edition'] == null ? null : pulumi.Output.create<String>(map['edition'] as String),
-      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : pulumi.Output.create<String>(map['enforceSingleAdminProjectPerOrg'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<String>(map['plan'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      renewalPlan: map['renewalPlan'] == null ? null : pulumi.Output.create<String>(map['renewalPlan'] as String),
-      slotCount: map['slotCount'] == null ? null : pulumi.Output.create<int>(map['slotCount'] as int),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : (map['capacityCommitmentId'] as String).input(),
+      commitmentEndTime: map['commitmentEndTime'] == null ? null : (map['commitmentEndTime'] as String).input(),
+      commitmentStartTime: map['commitmentStartTime'] == null ? null : (map['commitmentStartTime'] as String).input(),
+      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : (map['enforceSingleAdminProjectPerOrg'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      plan: map['plan'] == null ? null : (map['plan'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      renewalPlan: map['renewalPlan'] == null ? null : (map['renewalPlan'] as String).input(),
+      slotCount: map['slotCount'] == null ? null : (map['slotCount'] as int).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

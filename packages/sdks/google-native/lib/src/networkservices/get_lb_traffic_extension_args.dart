@@ -16,13 +16,10 @@ class GetLbTrafficExtensionArgs {
   /// [location] Required.
   /// [project] Optional.
   GetLbTrafficExtensionArgs({
-    required pulumi.Output<String> lbTrafficExtensionId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      lbTrafficExtensionId = pulumi.Input.asInput<String>(lbTrafficExtensionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.lbTrafficExtensionId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetLbTrafficExtensionArgs {
 
   factory GetLbTrafficExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetLbTrafficExtensionArgs(
-      lbTrafficExtensionId: pulumi.Output.create<String>(map['lbTrafficExtensionId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      lbTrafficExtensionId: (map['lbTrafficExtensionId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

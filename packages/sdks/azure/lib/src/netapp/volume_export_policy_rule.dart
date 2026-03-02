@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeExportPolicyRule {
   /// A list of allowed clients IPv4 addresses.
-  final List<String> allowedClients;
+  final pulumi.Input<List<String>> allowedClients;
   /// Is Kerberos 5 read-only access permitted to this volume?
-  final bool? kerberos5ReadOnlyEnabled;
+  final pulumi.Input<bool>? kerberos5ReadOnlyEnabled;
   /// Is Kerberos 5 read/write permitted to this volume?
-  final bool? kerberos5ReadWriteEnabled;
+  final pulumi.Input<bool>? kerberos5ReadWriteEnabled;
   /// Is Kerberos 5i read-only permitted to this volume?
-  final bool? kerberos5iReadOnlyEnabled;
+  final pulumi.Input<bool>? kerberos5iReadOnlyEnabled;
   /// Is Kerberos 5i read/write permitted to this volume?
-  final bool? kerberos5iReadWriteEnabled;
+  final pulumi.Input<bool>? kerberos5iReadWriteEnabled;
   /// Is Kerberos 5p read-only permitted to this volume?
-  final bool? kerberos5pReadOnlyEnabled;
+  final pulumi.Input<bool>? kerberos5pReadOnlyEnabled;
   /// Is Kerberos 5p read/write permitted to this volume?
-  final bool? kerberos5pReadWriteEnabled;
+  final pulumi.Input<bool>? kerberos5pReadWriteEnabled;
   /// A list of allowed protocols. Valid values include `CIFS`, `NFSv3`, or `NFSv4.1`. Only a single element is supported at this time. This replaces the previous arguments: `cifs_enabled`, `nfsv3_enabled` and `nfsv4_enabled`.
-  final String? protocol;
-  final String? protocolsEnabled;
+  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String>? protocolsEnabled;
   /// Is root access permitted to this volume?
-  final bool? rootAccessEnabled;
+  final pulumi.Input<bool>? rootAccessEnabled;
   /// The index number of the rule.
-  final int ruleIndex;
+  final pulumi.Input<int> ruleIndex;
   /// Is the file system on unix read only?
-  final bool? unixReadOnly;
+  final pulumi.Input<bool>? unixReadOnly;
   /// Is the file system on unix read and write?
-  final bool? unixReadWrite;
+  final pulumi.Input<bool>? unixReadWrite;
 
   /// Creates a new [VolumeExportPolicyRule].
   /// [allowedClients] A list of allowed clients IPv4 addresses.
@@ -78,19 +79,19 @@ class VolumeExportPolicyRule {
 
   factory VolumeExportPolicyRule.fromMap(Map<String, dynamic> map) {
     return VolumeExportPolicyRule(
-      allowedClients: (map['allowedClients'] as List).cast<String>(),
-      kerberos5ReadOnlyEnabled: map['kerberos5ReadOnlyEnabled'] == null ? null : map['kerberos5ReadOnlyEnabled'] as bool,
-      kerberos5ReadWriteEnabled: map['kerberos5ReadWriteEnabled'] == null ? null : map['kerberos5ReadWriteEnabled'] as bool,
-      kerberos5iReadOnlyEnabled: map['kerberos5iReadOnlyEnabled'] == null ? null : map['kerberos5iReadOnlyEnabled'] as bool,
-      kerberos5iReadWriteEnabled: map['kerberos5iReadWriteEnabled'] == null ? null : map['kerberos5iReadWriteEnabled'] as bool,
-      kerberos5pReadOnlyEnabled: map['kerberos5pReadOnlyEnabled'] == null ? null : map['kerberos5pReadOnlyEnabled'] as bool,
-      kerberos5pReadWriteEnabled: map['kerberos5pReadWriteEnabled'] == null ? null : map['kerberos5pReadWriteEnabled'] as bool,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      protocolsEnabled: map['protocolsEnabled'] == null ? null : map['protocolsEnabled'] as String,
-      rootAccessEnabled: map['rootAccessEnabled'] == null ? null : map['rootAccessEnabled'] as bool,
-      ruleIndex: map['ruleIndex'] as int,
-      unixReadOnly: map['unixReadOnly'] == null ? null : map['unixReadOnly'] as bool,
-      unixReadWrite: map['unixReadWrite'] == null ? null : map['unixReadWrite'] as bool,
+      allowedClients: ((map['allowedClients'] as List).cast<String>()).input(),
+      kerberos5ReadOnlyEnabled: map['kerberos5ReadOnlyEnabled'] == null ? null : (map['kerberos5ReadOnlyEnabled'] as bool).input(),
+      kerberos5ReadWriteEnabled: map['kerberos5ReadWriteEnabled'] == null ? null : (map['kerberos5ReadWriteEnabled'] as bool).input(),
+      kerberos5iReadOnlyEnabled: map['kerberos5iReadOnlyEnabled'] == null ? null : (map['kerberos5iReadOnlyEnabled'] as bool).input(),
+      kerberos5iReadWriteEnabled: map['kerberos5iReadWriteEnabled'] == null ? null : (map['kerberos5iReadWriteEnabled'] as bool).input(),
+      kerberos5pReadOnlyEnabled: map['kerberos5pReadOnlyEnabled'] == null ? null : (map['kerberos5pReadOnlyEnabled'] as bool).input(),
+      kerberos5pReadWriteEnabled: map['kerberos5pReadWriteEnabled'] == null ? null : (map['kerberos5pReadWriteEnabled'] as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      protocolsEnabled: map['protocolsEnabled'] == null ? null : (map['protocolsEnabled'] as String).input(),
+      rootAccessEnabled: map['rootAccessEnabled'] == null ? null : (map['rootAccessEnabled'] as bool).input(),
+      ruleIndex: (map['ruleIndex'] as int).input(),
+      unixReadOnly: map['unixReadOnly'] == null ? null : (map['unixReadOnly'] as bool).input(),
+      unixReadWrite: map['unixReadWrite'] == null ? null : (map['unixReadWrite'] as bool).input(),
     );
   }
 }

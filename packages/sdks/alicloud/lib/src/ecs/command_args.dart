@@ -31,21 +31,14 @@ class CommandArgs {
   /// [type] The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
   /// [workingDir] The execution path of the command in the ECS instance.
   CommandArgs({
-    required pulumi.Output<String> commandContent,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enableParameter,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? timeout,
-    required pulumi.Output<String> type,
-    pulumi.Output<String>? workingDir,
-  }) :
-      commandContent = pulumi.Input.asInput<String>(commandContent),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enableParameter = pulumi.Input.asOptionalInput<bool>(enableParameter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      timeout = pulumi.Input.asOptionalInput<int>(timeout),
-      type = pulumi.Input.asInput<String>(type),
-      workingDir = pulumi.Input.asOptionalInput<String>(workingDir);
+    required this.commandContent,
+    this.description,
+    this.enableParameter,
+    this.name,
+    this.timeout,
+    required this.type,
+    this.workingDir,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class CommandArgs {
 
   factory CommandArgs.fromMap(Map<String, dynamic> map) {
     return CommandArgs(
-      commandContent: pulumi.Output.create<String>(map['commandContent'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enableParameter: map['enableParameter'] == null ? null : pulumi.Output.create<bool>(map['enableParameter'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<int>(map['timeout'] as int),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      workingDir: map['workingDir'] == null ? null : pulumi.Output.create<String>(map['workingDir'] as String),
+      commandContent: (map['commandContent'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableParameter: map['enableParameter'] == null ? null : (map['enableParameter'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      type: (map['type'] as String).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
     );
   }
 }

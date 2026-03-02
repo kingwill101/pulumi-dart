@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of QueryLoggingConfig
 class QueryLoggingConfigResponse {
   /// The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 is publishing logs to.
-  final String? cloudWatchLogsLogGroupArn;
+  final pulumi.Input<String>? cloudWatchLogsLogGroupArn;
 
   /// Creates a new [QueryLoggingConfigResponse].
   /// [cloudWatchLogsLogGroupArn] The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 is publishing logs to.
@@ -20,7 +21,7 @@ class QueryLoggingConfigResponse {
 
   factory QueryLoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return QueryLoggingConfigResponse(
-      cloudWatchLogsLogGroupArn: map['cloudWatchLogsLogGroupArn'] == null ? null : map['cloudWatchLogsLogGroupArn'] as String,
+      cloudWatchLogsLogGroupArn: map['cloudWatchLogsLogGroupArn'] == null ? null : (map['cloudWatchLogsLogGroupArn'] as String).input(),
     );
   }
 }

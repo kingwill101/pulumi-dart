@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A context rule provides information about the context for an individual API element.
 class ContextRule {
   /// A list of full type names or extension IDs of extensions allowed in grpc side channel from client to backend.
-  final List<String>? allowedRequestExtensions;
+  final pulumi.Input<List<String>>? allowedRequestExtensions;
   /// A list of full type names or extension IDs of extensions allowed in grpc side channel from backend to client.
-  final List<String>? allowedResponseExtensions;
+  final pulumi.Input<List<String>>? allowedResponseExtensions;
   /// A list of full type names of provided contexts.
-  final List<String>? provided;
+  final pulumi.Input<List<String>>? provided;
   /// A list of full type names of requested contexts.
-  final List<String>? requested;
+  final pulumi.Input<List<String>>? requested;
   /// Selects the methods to which this rule applies. Refer to selector for syntax details.
-  final String? selector;
+  final pulumi.Input<String>? selector;
 
   /// Creates a new [ContextRule].
   /// [allowedRequestExtensions] A list of full type names or extension IDs of extensions allowed in grpc side channel from client to backend.
@@ -40,11 +41,11 @@ class ContextRule {
 
   factory ContextRule.fromMap(Map<String, dynamic> map) {
     return ContextRule(
-      allowedRequestExtensions: map['allowedRequestExtensions'] == null ? null : (map['allowedRequestExtensions'] as List).cast<String>(),
-      allowedResponseExtensions: map['allowedResponseExtensions'] == null ? null : (map['allowedResponseExtensions'] as List).cast<String>(),
-      provided: map['provided'] == null ? null : (map['provided'] as List).cast<String>(),
-      requested: map['requested'] == null ? null : (map['requested'] as List).cast<String>(),
-      selector: map['selector'] == null ? null : map['selector'] as String,
+      allowedRequestExtensions: map['allowedRequestExtensions'] == null ? null : ((map['allowedRequestExtensions'] as List).cast<String>()).input(),
+      allowedResponseExtensions: map['allowedResponseExtensions'] == null ? null : ((map['allowedResponseExtensions'] as List).cast<String>()).input(),
+      provided: map['provided'] == null ? null : ((map['provided'] as List).cast<String>()).input(),
+      requested: map['requested'] == null ? null : ((map['requested'] as List).cast<String>()).input(),
+      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
     );
   }
 }

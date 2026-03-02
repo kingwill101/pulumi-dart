@@ -35,19 +35,13 @@ class PrincipalAccessBoundaryPolicyArgs {
   /// [organization] The parent organization of the principal access boundary policy.
   /// [principalAccessBoundaryPolicyId] The ID to use to create the principal access boundary policy.
   PrincipalAccessBoundaryPolicyArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<PrincipalAccessBoundaryPolicyDetails>? details,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> principalAccessBoundaryPolicyId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      details = pulumi.Input.asOptionalInput<PrincipalAccessBoundaryPolicyDetails>(details),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      organization = pulumi.Input.asInput<String>(organization),
-      principalAccessBoundaryPolicyId = pulumi.Input.asInput<String>(principalAccessBoundaryPolicyId);
+    this.annotations,
+    this.details,
+    this.displayName,
+    required this.location,
+    required this.organization,
+    required this.principalAccessBoundaryPolicyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class PrincipalAccessBoundaryPolicyArgs {
 
   factory PrincipalAccessBoundaryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return PrincipalAccessBoundaryPolicyArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      details: map['details'] == null ? null : pulumi.Output.create<PrincipalAccessBoundaryPolicyDetails>(PrincipalAccessBoundaryPolicyDetails.fromMap((map['details'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      principalAccessBoundaryPolicyId: pulumi.Output.create<String>(map['principalAccessBoundaryPolicyId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      details: map['details'] == null ? null : (PrincipalAccessBoundaryPolicyDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      principalAccessBoundaryPolicyId: (map['principalAccessBoundaryPolicyId'] as String).input(),
     );
   }
 }

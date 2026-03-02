@@ -23,17 +23,12 @@ class NatAddressState {
   /// [name] Resource ID of the NAT address.
   /// [state] State of the NAT IP address.
   NatAddressState({
-    pulumi.Output<bool>? activate,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? state,
-  }) :
-      activate = pulumi.Input.asOptionalInput<bool>(activate),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.activate,
+    this.instanceId,
+    this.ipAddress,
+    this.name,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class NatAddressState {
 
   factory NatAddressState.fromMap(Map<String, dynamic> map) {
     return NatAddressState(
-      activate: map['activate'] == null ? null : pulumi.Output.create<bool>(map['activate'] as bool),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      activate: map['activate'] == null ? null : (map['activate'] as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetTargetServerArgs {
   /// [organizationId] Required.
   /// [targetserverId] Required.
   GetTargetServerArgs({
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> targetserverId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      targetserverId = pulumi.Input.asInput<String>(targetserverId);
+    required this.environmentId,
+    required this.organizationId,
+    required this.targetserverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetTargetServerArgs {
 
   factory GetTargetServerArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetServerArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      targetserverId: pulumi.Output.create<String>(map['targetserverId'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      targetserverId: (map['targetserverId'] as String).input(),
     );
   }
 }

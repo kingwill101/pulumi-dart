@@ -1,55 +1,56 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ldap_search_scope_opt_response.dart';
 
 /// Active Directory
 class ActiveDirectoryResponse {
   /// Id of the Active Directory
-  final String? activeDirectoryId;
+  final pulumi.Input<String>? activeDirectoryId;
   /// Name of the active directory machine. This optional parameter is used only while creating kerberos volume
-  final String? adName;
+  final pulumi.Input<String>? adName;
   /// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
-  final List<String>? administrators;
+  final pulumi.Input<List<String>>? administrators;
   /// If enabled, AES encryption will be enabled for SMB communication.
-  final bool? aesEncryption;
+  final pulumi.Input<bool>? aesEncryption;
   /// If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
-  final bool? allowLocalNfsUsersWithLdap;
+  final pulumi.Input<bool>? allowLocalNfsUsersWithLdap;
   /// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
-  final List<String>? backupOperators;
+  final pulumi.Input<List<String>>? backupOperators;
   /// Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
-  final String? dns;
+  final pulumi.Input<String>? dns;
   /// Name of the Active Directory domain
-  final String? domain;
+  final pulumi.Input<String>? domain;
   /// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
-  final bool? encryptDCConnections;
+  final pulumi.Input<bool>? encryptDCConnections;
   /// kdc server IP address for the active directory machine. This optional parameter is used only while creating kerberos volume.
-  final String? kdcIP;
+  final pulumi.Input<String>? kdcIP;
   /// Specifies whether or not the LDAP traffic needs to be secured via TLS.
-  final bool? ldapOverTLS;
+  final pulumi.Input<bool>? ldapOverTLS;
   /// LDAP Search scope options
-  final LdapSearchScopeOptResponse? ldapSearchScope;
+  final pulumi.Input<LdapSearchScopeOptResponse>? ldapSearchScope;
   /// Specifies whether or not the LDAP traffic needs to be signed.
-  final bool? ldapSigning;
+  final pulumi.Input<bool>? ldapSigning;
   /// The Organizational Unit (OU) within the Windows Active Directory
-  final String? organizationalUnit;
+  final pulumi.Input<String>? organizationalUnit;
   /// Plain text password of Active Directory domain administrator, value is masked in the response
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed.
-  final String? preferredServersForLdapClient;
+  final pulumi.Input<String>? preferredServersForLdapClient;
   /// Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
-  final List<String>? securityOperators;
+  final pulumi.Input<List<String>>? securityOperators;
   /// When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
-  final String? serverRootCACertificate;
+  final pulumi.Input<String>? serverRootCACertificate;
   /// The Active Directory site the service will limit Domain Controller discovery to
-  final String? site;
+  final pulumi.Input<String>? site;
   /// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
-  final String? smbServerName;
+  final pulumi.Input<String>? smbServerName;
   /// Status of the Active Directory
-  final String status;
+  final pulumi.Input<String> status;
   /// Any details in regards to the Status of the Active Directory
-  final String statusDetails;
+  final pulumi.Input<String> statusDetails;
   /// A domain user account with permission to create machine accounts
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [ActiveDirectoryResponse].
   /// [activeDirectoryId] Id of the Active Directory
@@ -114,7 +115,7 @@ class ActiveDirectoryResponse {
       'encryptDCConnections': ?encryptDCConnections,
       'kdcIP': ?kdcIP,
       'ldapOverTLS': ?ldapOverTLS,
-      'ldapSearchScope': ?ldapSearchScope == null ? null : ldapSearchScope!.toMap(),
+      'ldapSearchScope': ?pulumi.Input.mapOptionalInputValue<LdapSearchScopeOptResponse, Map<String, dynamic>>(ldapSearchScope, (value) => value.toMap()),
       'ldapSigning': ?ldapSigning,
       'organizationalUnit': ?organizationalUnit,
       'password': ?password,
@@ -131,29 +132,29 @@ class ActiveDirectoryResponse {
 
   factory ActiveDirectoryResponse.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryResponse(
-      activeDirectoryId: map['activeDirectoryId'] == null ? null : map['activeDirectoryId'] as String,
-      adName: map['adName'] == null ? null : map['adName'] as String,
-      administrators: map['administrators'] == null ? null : (map['administrators'] as List).cast<String>(),
-      aesEncryption: map['aesEncryption'] == null ? null : map['aesEncryption'] as bool,
-      allowLocalNfsUsersWithLdap: map['allowLocalNfsUsersWithLdap'] == null ? null : map['allowLocalNfsUsersWithLdap'] as bool,
-      backupOperators: map['backupOperators'] == null ? null : (map['backupOperators'] as List).cast<String>(),
-      dns: map['dns'] == null ? null : map['dns'] as String,
-      domain: map['domain'] == null ? null : map['domain'] as String,
-      encryptDCConnections: map['encryptDCConnections'] == null ? null : map['encryptDCConnections'] as bool,
-      kdcIP: map['kdcIP'] == null ? null : map['kdcIP'] as String,
-      ldapOverTLS: map['ldapOverTLS'] == null ? null : map['ldapOverTLS'] as bool,
-      ldapSearchScope: map['ldapSearchScope'] == null ? null : LdapSearchScopeOptResponse.fromMap((map['ldapSearchScope'] as Map).cast<String, dynamic>()),
-      ldapSigning: map['ldapSigning'] == null ? null : map['ldapSigning'] as bool,
-      organizationalUnit: map['organizationalUnit'] == null ? null : map['organizationalUnit'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      preferredServersForLdapClient: map['preferredServersForLdapClient'] == null ? null : map['preferredServersForLdapClient'] as String,
-      securityOperators: map['securityOperators'] == null ? null : (map['securityOperators'] as List).cast<String>(),
-      serverRootCACertificate: map['serverRootCACertificate'] == null ? null : map['serverRootCACertificate'] as String,
-      site: map['site'] == null ? null : map['site'] as String,
-      smbServerName: map['smbServerName'] == null ? null : map['smbServerName'] as String,
-      status: map['status'] as String,
-      statusDetails: map['statusDetails'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      activeDirectoryId: map['activeDirectoryId'] == null ? null : (map['activeDirectoryId'] as String).input(),
+      adName: map['adName'] == null ? null : (map['adName'] as String).input(),
+      administrators: map['administrators'] == null ? null : ((map['administrators'] as List).cast<String>()).input(),
+      aesEncryption: map['aesEncryption'] == null ? null : (map['aesEncryption'] as bool).input(),
+      allowLocalNfsUsersWithLdap: map['allowLocalNfsUsersWithLdap'] == null ? null : (map['allowLocalNfsUsersWithLdap'] as bool).input(),
+      backupOperators: map['backupOperators'] == null ? null : ((map['backupOperators'] as List).cast<String>()).input(),
+      dns: map['dns'] == null ? null : (map['dns'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      encryptDCConnections: map['encryptDCConnections'] == null ? null : (map['encryptDCConnections'] as bool).input(),
+      kdcIP: map['kdcIP'] == null ? null : (map['kdcIP'] as String).input(),
+      ldapOverTLS: map['ldapOverTLS'] == null ? null : (map['ldapOverTLS'] as bool).input(),
+      ldapSearchScope: map['ldapSearchScope'] == null ? null : (LdapSearchScopeOptResponse.fromMap((map['ldapSearchScope'] as Map).cast<String, dynamic>())).input(),
+      ldapSigning: map['ldapSigning'] == null ? null : (map['ldapSigning'] as bool).input(),
+      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      preferredServersForLdapClient: map['preferredServersForLdapClient'] == null ? null : (map['preferredServersForLdapClient'] as String).input(),
+      securityOperators: map['securityOperators'] == null ? null : ((map['securityOperators'] as List).cast<String>()).input(),
+      serverRootCACertificate: map['serverRootCACertificate'] == null ? null : (map['serverRootCACertificate'] as String).input(),
+      site: map['site'] == null ? null : (map['site'] as String).input(),
+      smbServerName: map['smbServerName'] == null ? null : (map['smbServerName'] as String).input(),
+      status: (map['status'] as String).input(),
+      statusDetails: (map['statusDetails'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

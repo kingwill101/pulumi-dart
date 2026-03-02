@@ -40,25 +40,16 @@ class RepositoryArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   RepositoryArgs({
-    pulumi.Output<List<pulumi_aws_ecr.RepositoryEncryptionConfiguration>>? encryptionConfigurations,
-    pulumi.Output<bool>? forceDelete,
-    pulumi.Output<pulumi_aws_ecr.RepositoryImageScanningConfiguration>? imageScanningConfiguration,
-    pulumi.Output<String>? imageTagMutability,
-    pulumi.Output<List<pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter>>? imageTagMutabilityExclusionFilters,
-    pulumi.Output<LifecyclePolicy>? lifecyclePolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      encryptionConfigurations = pulumi.Input.asOptionalInput<List<pulumi_aws_ecr.RepositoryEncryptionConfiguration>>(encryptionConfigurations),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      imageScanningConfiguration = pulumi.Input.asOptionalInput<pulumi_aws_ecr.RepositoryImageScanningConfiguration>(imageScanningConfiguration),
-      imageTagMutability = pulumi.Input.asOptionalInput<String>(imageTagMutability),
-      imageTagMutabilityExclusionFilters = pulumi.Input.asOptionalInput<List<pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter>>(imageTagMutabilityExclusionFilters),
-      lifecyclePolicy = pulumi.Input.asOptionalInput<LifecyclePolicy>(lifecyclePolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.encryptionConfigurations,
+    this.forceDelete,
+    this.imageScanningConfiguration,
+    this.imageTagMutability,
+    this.imageTagMutabilityExclusionFilters,
+    this.lifecyclePolicy,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : pulumi.Output.create<List<pulumi_aws_ecr.RepositoryEncryptionConfiguration>>(pulumi.Input.decodeList<pulumi_aws_ecr.RepositoryEncryptionConfiguration>(map['encryptionConfigurations'], (value) => pulumi_aws_ecr.RepositoryEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : pulumi.Output.create<pulumi_aws_ecr.RepositoryImageScanningConfiguration>(pulumi_aws_ecr.RepositoryImageScanningConfiguration.fromMap((map['imageScanningConfiguration'] as Map).cast<String, dynamic>())),
-      imageTagMutability: map['imageTagMutability'] == null ? null : pulumi.Output.create<String>(map['imageTagMutability'] as String),
-      imageTagMutabilityExclusionFilters: map['imageTagMutabilityExclusionFilters'] == null ? null : pulumi.Output.create<List<pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter>>(pulumi.Input.decodeList<pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters'], (value) => pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      lifecyclePolicy: map['lifecyclePolicy'] == null ? null : pulumi.Output.create<LifecyclePolicy>(LifecyclePolicy.fromMap((map['lifecyclePolicy'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ecr.RepositoryEncryptionConfiguration>(map['encryptionConfigurations'], (value) => pulumi_aws_ecr.RepositoryEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : (pulumi_aws_ecr.RepositoryImageScanningConfiguration.fromMap((map['imageScanningConfiguration'] as Map).cast<String, dynamic>())).input(),
+      imageTagMutability: map['imageTagMutability'] == null ? null : (map['imageTagMutability'] as String).input(),
+      imageTagMutabilityExclusionFilters: map['imageTagMutabilityExclusionFilters'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters'], (value) => pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecyclePolicy: map['lifecyclePolicy'] == null ? null : (LifecyclePolicy.fromMap((map['lifecyclePolicy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

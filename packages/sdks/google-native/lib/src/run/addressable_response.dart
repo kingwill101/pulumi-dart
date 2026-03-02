@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information for connecting over HTTP(s).
 class AddressableResponse {
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [AddressableResponse].
   /// [url] Required.
@@ -19,7 +20,7 @@ class AddressableResponse {
 
   factory AddressableResponse.fromMap(Map<String, dynamic> map) {
     return AddressableResponse(
-      url: map['url'] as String,
+      url: (map['url'] as String).input(),
     );
   }
 }

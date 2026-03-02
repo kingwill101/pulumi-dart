@@ -8,17 +8,17 @@ import 'dev_tool_portal_sso_properties_response.dart';
 /// Dev Tool Portal properties payload
 class DevToolPortalPropertiesResponse {
   /// Collection of components belong to Dev Tool Portal.
-  final List<DevToolPortalComponentResponse> components;
+  final pulumi.Input<List<DevToolPortalComponentResponse>> components;
   /// Settings for Dev Tool Portal
-  final DevToolPortalFeatureSettingsResponse? features;
+  final pulumi.Input<DevToolPortalFeatureSettingsResponse>? features;
   /// State of the Dev Tool Portal.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Indicates whether the resource exposes public endpoint
-  final bool? public;
+  final pulumi.Input<bool>? public;
   /// Single sign-on related configuration
-  final DevToolPortalSsoPropertiesResponse? ssoProperties;
+  final pulumi.Input<DevToolPortalSsoPropertiesResponse>? ssoProperties;
   /// URL of the resource, exposed when 'public' is true.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [DevToolPortalPropertiesResponse].
   /// [components] Collection of components belong to Dev Tool Portal.
@@ -38,23 +38,23 @@ class DevToolPortalPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'components': pulumi.Input.encodeList<DevToolPortalComponentResponse, Map<String, dynamic>>(components, (value) => value.toMap()),
-      'features': ?features == null ? null : features!.toMap(),
+      'components': pulumi.Input.mapInputValue<List<DevToolPortalComponentResponse>, List<Map<String, dynamic>>>(components, (value) => pulumi.Input.encodeList<DevToolPortalComponentResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'features': ?pulumi.Input.mapOptionalInputValue<DevToolPortalFeatureSettingsResponse, Map<String, dynamic>>(features, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'public': ?public,
-      'ssoProperties': ?ssoProperties == null ? null : ssoProperties!.toMap(),
+      'ssoProperties': ?pulumi.Input.mapOptionalInputValue<DevToolPortalSsoPropertiesResponse, Map<String, dynamic>>(ssoProperties, (value) => value.toMap()),
       'url': url,
     };
   }
 
   factory DevToolPortalPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DevToolPortalPropertiesResponse(
-      components: pulumi.Input.decodeList<DevToolPortalComponentResponse>(map['components'], (value) => DevToolPortalComponentResponse.fromMap((value as Map).cast<String, dynamic>())),
-      features: map['features'] == null ? null : DevToolPortalFeatureSettingsResponse.fromMap((map['features'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      public: map['public'] == null ? null : map['public'] as bool,
-      ssoProperties: map['ssoProperties'] == null ? null : DevToolPortalSsoPropertiesResponse.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>()),
-      url: map['url'] as String,
+      components: (pulumi.Input.decodeList<DevToolPortalComponentResponse>(map['components'], (value) => DevToolPortalComponentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      features: map['features'] == null ? null : (DevToolPortalFeatureSettingsResponse.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      public: map['public'] == null ? null : (map['public'] as bool).input(),
+      ssoProperties: map['ssoProperties'] == null ? null : (DevToolPortalSsoPropertiesResponse.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>())).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

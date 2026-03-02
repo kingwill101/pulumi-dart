@@ -34,25 +34,16 @@ class VpdState {
   /// [tags] The tag of the resource.
   /// [vpdName] The name of the VPD instance.
   VpdState({
-    pulumi.Output<String>? cidr,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? gmtModified,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<List<String>>? secondaryCidrBlocks,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpdName,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      gmtModified = pulumi.Input.asOptionalInput<String>(gmtModified),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      secondaryCidrBlocks = pulumi.Input.asOptionalInput<List<String>>(secondaryCidrBlocks),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpdName = pulumi.Input.asOptionalInput<String>(vpdName);
+    this.cidr,
+    this.createTime,
+    this.gmtModified,
+    this.regionId,
+    this.resourceGroupId,
+    this.secondaryCidrBlocks,
+    this.status,
+    this.tags,
+    this.vpdName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class VpdState {
 
   factory VpdState.fromMap(Map<String, dynamic> map) {
     return VpdState(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      gmtModified: map['gmtModified'] == null ? null : pulumi.Output.create<String>(map['gmtModified'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      secondaryCidrBlocks: map['secondaryCidrBlocks'] == null ? null : pulumi.Output.create<List<String>>((map['secondaryCidrBlocks'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpdName: map['vpdName'] == null ? null : pulumi.Output.create<String>(map['vpdName'] as String),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      secondaryCidrBlocks: map['secondaryCidrBlocks'] == null ? null : ((map['secondaryCidrBlocks'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpdName: map['vpdName'] == null ? null : (map['vpdName'] as String).input(),
     );
   }
 }

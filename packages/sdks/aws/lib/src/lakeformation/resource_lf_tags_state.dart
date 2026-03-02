@@ -33,19 +33,13 @@ class ResourceLfTagsState {
   /// [table] Configuration block for a table resource. See below.
   /// [tableWithColumns] Configuration block for a table with columns resource. See below.
   ResourceLfTagsState({
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<ResourceLfTagsDatabase>? database,
-    pulumi.Output<List<ResourceLfTagsLfTag>>? lfTags,
-    pulumi.Output<String>? region,
-    pulumi.Output<ResourceLfTagsTable>? table,
-    pulumi.Output<ResourceLfTagsTableWithColumns>? tableWithColumns,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      database = pulumi.Input.asOptionalInput<ResourceLfTagsDatabase>(database),
-      lfTags = pulumi.Input.asOptionalInput<List<ResourceLfTagsLfTag>>(lfTags),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      table = pulumi.Input.asOptionalInput<ResourceLfTagsTable>(table),
-      tableWithColumns = pulumi.Input.asOptionalInput<ResourceLfTagsTableWithColumns>(tableWithColumns);
+    this.catalogId,
+    this.database,
+    this.lfTags,
+    this.region,
+    this.table,
+    this.tableWithColumns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class ResourceLfTagsState {
 
   factory ResourceLfTagsState.fromMap(Map<String, dynamic> map) {
     return ResourceLfTagsState(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      database: map['database'] == null ? null : pulumi.Output.create<ResourceLfTagsDatabase>(ResourceLfTagsDatabase.fromMap((map['database'] as Map).cast<String, dynamic>())),
-      lfTags: map['lfTags'] == null ? null : pulumi.Output.create<List<ResourceLfTagsLfTag>>(pulumi.Input.decodeList<ResourceLfTagsLfTag>(map['lfTags'], (value) => ResourceLfTagsLfTag.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      table: map['table'] == null ? null : pulumi.Output.create<ResourceLfTagsTable>(ResourceLfTagsTable.fromMap((map['table'] as Map).cast<String, dynamic>())),
-      tableWithColumns: map['tableWithColumns'] == null ? null : pulumi.Output.create<ResourceLfTagsTableWithColumns>(ResourceLfTagsTableWithColumns.fromMap((map['tableWithColumns'] as Map).cast<String, dynamic>())),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      database: map['database'] == null ? null : (ResourceLfTagsDatabase.fromMap((map['database'] as Map).cast<String, dynamic>())).input(),
+      lfTags: map['lfTags'] == null ? null : (pulumi.Input.decodeList<ResourceLfTagsLfTag>(map['lfTags'], (value) => ResourceLfTagsLfTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      table: map['table'] == null ? null : (ResourceLfTagsTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
+      tableWithColumns: map['tableWithColumns'] == null ? null : (ResourceLfTagsTableWithColumns.fromMap((map['tableWithColumns'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

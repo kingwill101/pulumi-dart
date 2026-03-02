@@ -32,23 +32,15 @@ class ProjectState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ProjectState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? projectDescription,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? projectName,
-    pulumi.Output<String>? region,
-    pulumi.Output<ProjectServiceCatalogProvisioningDetails>? serviceCatalogProvisioningDetails,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      projectDescription = pulumi.Input.asOptionalInput<String>(projectDescription),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceCatalogProvisioningDetails = pulumi.Input.asOptionalInput<ProjectServiceCatalogProvisioningDetails>(serviceCatalogProvisioningDetails),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.projectDescription,
+    this.projectId,
+    this.projectName,
+    this.region,
+    this.serviceCatalogProvisioningDetails,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      projectDescription: map['projectDescription'] == null ? null : pulumi.Output.create<String>(map['projectDescription'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceCatalogProvisioningDetails: map['serviceCatalogProvisioningDetails'] == null ? null : pulumi.Output.create<ProjectServiceCatalogProvisioningDetails>(ProjectServiceCatalogProvisioningDetails.fromMap((map['serviceCatalogProvisioningDetails'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      projectDescription: map['projectDescription'] == null ? null : (map['projectDescription'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceCatalogProvisioningDetails: map['serviceCatalogProvisioningDetails'] == null ? null : (ProjectServiceCatalogProvisioningDetails.fromMap((map['serviceCatalogProvisioningDetails'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

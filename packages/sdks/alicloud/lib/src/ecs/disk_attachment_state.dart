@@ -23,21 +23,14 @@ class DiskAttachmentState {
   /// [keyPairName] Optional.
   /// [password] Optional.
   DiskAttachmentState({
-    pulumi.Output<bool>? bootable,
-    pulumi.Output<bool>? deleteWithInstance,
-    pulumi.Output<String>? device,
-    pulumi.Output<String>? diskId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? keyPairName,
-    pulumi.Output<String>? password,
-  }) :
-      bootable = pulumi.Input.asOptionalInput<bool>(bootable),
-      deleteWithInstance = pulumi.Input.asOptionalInput<bool>(deleteWithInstance),
-      device = pulumi.Input.asOptionalInput<String>(device),
-      diskId = pulumi.Input.asOptionalInput<String>(diskId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      keyPairName = pulumi.Input.asOptionalInput<String>(keyPairName),
-      password = pulumi.Input.asOptionalInput<String>(password);
+    this.bootable,
+    this.deleteWithInstance,
+    this.device,
+    this.diskId,
+    this.instanceId,
+    this.keyPairName,
+    this.password,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,13 +46,13 @@ class DiskAttachmentState {
 
   factory DiskAttachmentState.fromMap(Map<String, dynamic> map) {
     return DiskAttachmentState(
-      bootable: map['bootable'] == null ? null : pulumi.Output.create<bool>(map['bootable'] as bool),
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : pulumi.Output.create<bool>(map['deleteWithInstance'] as bool),
-      device: map['device'] == null ? null : pulumi.Output.create<String>(map['device'] as String),
-      diskId: map['diskId'] == null ? null : pulumi.Output.create<String>(map['diskId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      keyPairName: map['keyPairName'] == null ? null : pulumi.Output.create<String>(map['keyPairName'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
+      bootable: map['bootable'] == null ? null : (map['bootable'] as bool).input(),
+      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance'] as bool).input(),
+      device: map['device'] == null ? null : (map['device'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
     );
   }
 }

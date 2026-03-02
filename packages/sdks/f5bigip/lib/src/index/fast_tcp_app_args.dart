@@ -58,35 +58,21 @@ class FastTcpAppArgs {
   /// [tenant] Name of the FAST TCP application tenant.
   /// [virtualServer] `virtual_server` block will provide `ip` and `port` options to be used for virtual server.
   FastTcpAppArgs({
-    required pulumi.Output<String> application,
-    pulumi.Output<String>? existingMonitor,
-    pulumi.Output<String>? existingPool,
-    pulumi.Output<String>? existingSnatPool,
-    pulumi.Output<String>? fallbackPersistence,
-    pulumi.Output<String>? loadBalancingMode,
-    pulumi.Output<FastTcpAppMonitor>? monitor,
-    pulumi.Output<String>? persistenceProfile,
-    pulumi.Output<String>? persistenceType,
-    pulumi.Output<List<FastTcpAppPoolMember>>? poolMembers,
-    pulumi.Output<int>? slowRampTime,
-    pulumi.Output<List<String>>? snatPoolAddresses,
-    required pulumi.Output<String> tenant,
-    pulumi.Output<FastTcpAppVirtualServer>? virtualServer,
-  }) :
-      application = pulumi.Input.asInput<String>(application),
-      existingMonitor = pulumi.Input.asOptionalInput<String>(existingMonitor),
-      existingPool = pulumi.Input.asOptionalInput<String>(existingPool),
-      existingSnatPool = pulumi.Input.asOptionalInput<String>(existingSnatPool),
-      fallbackPersistence = pulumi.Input.asOptionalInput<String>(fallbackPersistence),
-      loadBalancingMode = pulumi.Input.asOptionalInput<String>(loadBalancingMode),
-      monitor = pulumi.Input.asOptionalInput<FastTcpAppMonitor>(monitor),
-      persistenceProfile = pulumi.Input.asOptionalInput<String>(persistenceProfile),
-      persistenceType = pulumi.Input.asOptionalInput<String>(persistenceType),
-      poolMembers = pulumi.Input.asOptionalInput<List<FastTcpAppPoolMember>>(poolMembers),
-      slowRampTime = pulumi.Input.asOptionalInput<int>(slowRampTime),
-      snatPoolAddresses = pulumi.Input.asOptionalInput<List<String>>(snatPoolAddresses),
-      tenant = pulumi.Input.asInput<String>(tenant),
-      virtualServer = pulumi.Input.asOptionalInput<FastTcpAppVirtualServer>(virtualServer);
+    required this.application,
+    this.existingMonitor,
+    this.existingPool,
+    this.existingSnatPool,
+    this.fallbackPersistence,
+    this.loadBalancingMode,
+    this.monitor,
+    this.persistenceProfile,
+    this.persistenceType,
+    this.poolMembers,
+    this.slowRampTime,
+    this.snatPoolAddresses,
+    required this.tenant,
+    this.virtualServer,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class FastTcpAppArgs {
 
   factory FastTcpAppArgs.fromMap(Map<String, dynamic> map) {
     return FastTcpAppArgs(
-      application: pulumi.Output.create<String>(map['application'] as String),
-      existingMonitor: map['existingMonitor'] == null ? null : pulumi.Output.create<String>(map['existingMonitor'] as String),
-      existingPool: map['existingPool'] == null ? null : pulumi.Output.create<String>(map['existingPool'] as String),
-      existingSnatPool: map['existingSnatPool'] == null ? null : pulumi.Output.create<String>(map['existingSnatPool'] as String),
-      fallbackPersistence: map['fallbackPersistence'] == null ? null : pulumi.Output.create<String>(map['fallbackPersistence'] as String),
-      loadBalancingMode: map['loadBalancingMode'] == null ? null : pulumi.Output.create<String>(map['loadBalancingMode'] as String),
-      monitor: map['monitor'] == null ? null : pulumi.Output.create<FastTcpAppMonitor>(FastTcpAppMonitor.fromMap((map['monitor'] as Map).cast<String, dynamic>())),
-      persistenceProfile: map['persistenceProfile'] == null ? null : pulumi.Output.create<String>(map['persistenceProfile'] as String),
-      persistenceType: map['persistenceType'] == null ? null : pulumi.Output.create<String>(map['persistenceType'] as String),
-      poolMembers: map['poolMembers'] == null ? null : pulumi.Output.create<List<FastTcpAppPoolMember>>(pulumi.Input.decodeList<FastTcpAppPoolMember>(map['poolMembers'], (value) => FastTcpAppPoolMember.fromMap((value as Map).cast<String, dynamic>()))),
-      slowRampTime: map['slowRampTime'] == null ? null : pulumi.Output.create<int>(map['slowRampTime'] as int),
-      snatPoolAddresses: map['snatPoolAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['snatPoolAddresses'] as List).cast<String>()),
-      tenant: pulumi.Output.create<String>(map['tenant'] as String),
-      virtualServer: map['virtualServer'] == null ? null : pulumi.Output.create<FastTcpAppVirtualServer>(FastTcpAppVirtualServer.fromMap((map['virtualServer'] as Map).cast<String, dynamic>())),
+      application: (map['application'] as String).input(),
+      existingMonitor: map['existingMonitor'] == null ? null : (map['existingMonitor'] as String).input(),
+      existingPool: map['existingPool'] == null ? null : (map['existingPool'] as String).input(),
+      existingSnatPool: map['existingSnatPool'] == null ? null : (map['existingSnatPool'] as String).input(),
+      fallbackPersistence: map['fallbackPersistence'] == null ? null : (map['fallbackPersistence'] as String).input(),
+      loadBalancingMode: map['loadBalancingMode'] == null ? null : (map['loadBalancingMode'] as String).input(),
+      monitor: map['monitor'] == null ? null : (FastTcpAppMonitor.fromMap((map['monitor'] as Map).cast<String, dynamic>())).input(),
+      persistenceProfile: map['persistenceProfile'] == null ? null : (map['persistenceProfile'] as String).input(),
+      persistenceType: map['persistenceType'] == null ? null : (map['persistenceType'] as String).input(),
+      poolMembers: map['poolMembers'] == null ? null : (pulumi.Input.decodeList<FastTcpAppPoolMember>(map['poolMembers'], (value) => FastTcpAppPoolMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slowRampTime: map['slowRampTime'] == null ? null : (map['slowRampTime'] as int).input(),
+      snatPoolAddresses: map['snatPoolAddresses'] == null ? null : ((map['snatPoolAddresses'] as List).cast<String>()).input(),
+      tenant: (map['tenant'] as String).input(),
+      virtualServer: map['virtualServer'] == null ? null : (FastTcpAppVirtualServer.fromMap((map['virtualServer'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

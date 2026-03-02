@@ -25,17 +25,12 @@ class GetAccessPointsArgs {
   /// [dataSourceType] Type of the data source that the access points are attached to. To return all access points set this argument to `ALL`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetAccessPointsArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? dataSourceId,
-    pulumi.Output<String>? dataSourceType,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      dataSourceId = pulumi.Input.asOptionalInput<String>(dataSourceId),
-      dataSourceType = pulumi.Input.asOptionalInput<String>(dataSourceType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accountId,
+    this.bucket,
+    this.dataSourceId,
+    this.dataSourceType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetAccessPointsArgs {
 
   factory GetAccessPointsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPointsArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      dataSourceId: map['dataSourceId'] == null ? null : pulumi.Output.create<String>(map['dataSourceId'] as String),
-      dataSourceType: map['dataSourceType'] == null ? null : pulumi.Output.create<String>(map['dataSourceType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as String).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

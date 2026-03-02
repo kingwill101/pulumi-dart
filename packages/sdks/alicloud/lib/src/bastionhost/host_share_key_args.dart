@@ -22,15 +22,11 @@ class HostShareKeyArgs {
   /// [passPhrase] The password of the private key. The value is a Base64-encoded string.
   /// [privateKey] The private key. The value is a Base64-encoded string.
   HostShareKeyArgs({
-    required pulumi.Output<String> hostShareKeyName,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? passPhrase,
-    required pulumi.Output<String> privateKey,
-  }) :
-      hostShareKeyName = pulumi.Input.asInput<String>(hostShareKeyName),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      passPhrase = pulumi.Input.asOptionalInput<String>(passPhrase),
-      privateKey = pulumi.Input.asInput<String>(privateKey);
+    required this.hostShareKeyName,
+    required this.instanceId,
+    this.passPhrase,
+    required this.privateKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class HostShareKeyArgs {
 
   factory HostShareKeyArgs.fromMap(Map<String, dynamic> map) {
     return HostShareKeyArgs(
-      hostShareKeyName: pulumi.Output.create<String>(map['hostShareKeyName'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      passPhrase: map['passPhrase'] == null ? null : pulumi.Output.create<String>(map['passPhrase'] as String),
-      privateKey: pulumi.Output.create<String>(map['privateKey'] as String),
+      hostShareKeyName: (map['hostShareKeyName'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      passPhrase: map['passPhrase'] == null ? null : (map['passPhrase'] as String).input(),
+      privateKey: (map['privateKey'] as String).input(),
     );
   }
 }

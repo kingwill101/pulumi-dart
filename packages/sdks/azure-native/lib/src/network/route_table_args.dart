@@ -33,21 +33,14 @@ class RouteTableArgs {
   /// [routes] Collection of routes contained within a route table.
   /// [tags] Resource tags.
   RouteTableArgs({
-    pulumi.Output<bool>? disableBgpRoutePropagation,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? routeTableName,
-    pulumi.Output<List<RouteNetwork>>? routes,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      disableBgpRoutePropagation = pulumi.Input.asOptionalInput<bool>(disableBgpRoutePropagation),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeTableName = pulumi.Input.asOptionalInput<String>(routeTableName),
-      routes = pulumi.Input.asOptionalInput<List<RouteNetwork>>(routes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.disableBgpRoutePropagation,
+    this.id,
+    this.location,
+    required this.resourceGroupName,
+    this.routeTableName,
+    this.routes,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class RouteTableArgs {
 
   factory RouteTableArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableArgs(
-      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : pulumi.Output.create<bool>(map['disableBgpRoutePropagation'] as bool),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeTableName: map['routeTableName'] == null ? null : pulumi.Output.create<String>(map['routeTableName'] as String),
-      routes: map['routes'] == null ? null : pulumi.Output.create<List<RouteNetwork>>((map['routes'] as List).cast<RouteNetwork>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : (map['disableBgpRoutePropagation'] as bool).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName'] as String).input(),
+      routes: map['routes'] == null ? null : ((map['routes'] as List).cast<RouteNetwork>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

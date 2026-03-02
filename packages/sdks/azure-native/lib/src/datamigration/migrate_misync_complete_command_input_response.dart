@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input for command that completes online migration for an Azure SQL Database Managed Instance.
 class MigrateMISyncCompleteCommandInputResponse {
   /// Name of managed instance database
-  final String sourceDatabaseName;
+  final pulumi.Input<String> sourceDatabaseName;
 
   /// Creates a new [MigrateMISyncCompleteCommandInputResponse].
   /// [sourceDatabaseName] Name of managed instance database
@@ -20,7 +21,7 @@ class MigrateMISyncCompleteCommandInputResponse {
 
   factory MigrateMISyncCompleteCommandInputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateMISyncCompleteCommandInputResponse(
-      sourceDatabaseName: map['sourceDatabaseName'] as String,
+      sourceDatabaseName: (map['sourceDatabaseName'] as String).input(),
     );
   }
 }

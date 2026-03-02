@@ -45,31 +45,19 @@ class AccessGrantState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   AccessGrantState({
-    pulumi.Output<String>? accessGrantArn,
-    pulumi.Output<String>? accessGrantId,
-    pulumi.Output<AccessGrantAccessGrantsLocationConfiguration>? accessGrantsLocationConfiguration,
-    pulumi.Output<String>? accessGrantsLocationId,
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? grantScope,
-    pulumi.Output<AccessGrantGrantee>? grantee,
-    pulumi.Output<String>? permission,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? s3PrefixType,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      accessGrantArn = pulumi.Input.asOptionalInput<String>(accessGrantArn),
-      accessGrantId = pulumi.Input.asOptionalInput<String>(accessGrantId),
-      accessGrantsLocationConfiguration = pulumi.Input.asOptionalInput<AccessGrantAccessGrantsLocationConfiguration>(accessGrantsLocationConfiguration),
-      accessGrantsLocationId = pulumi.Input.asOptionalInput<String>(accessGrantsLocationId),
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      grantScope = pulumi.Input.asOptionalInput<String>(grantScope),
-      grantee = pulumi.Input.asOptionalInput<AccessGrantGrantee>(grantee),
-      permission = pulumi.Input.asOptionalInput<String>(permission),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3PrefixType = pulumi.Input.asOptionalInput<String>(s3PrefixType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.accessGrantArn,
+    this.accessGrantId,
+    this.accessGrantsLocationConfiguration,
+    this.accessGrantsLocationId,
+    this.accountId,
+    this.grantScope,
+    this.grantee,
+    this.permission,
+    this.region,
+    this.s3PrefixType,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class AccessGrantState {
 
   factory AccessGrantState.fromMap(Map<String, dynamic> map) {
     return AccessGrantState(
-      accessGrantArn: map['accessGrantArn'] == null ? null : pulumi.Output.create<String>(map['accessGrantArn'] as String),
-      accessGrantId: map['accessGrantId'] == null ? null : pulumi.Output.create<String>(map['accessGrantId'] as String),
-      accessGrantsLocationConfiguration: map['accessGrantsLocationConfiguration'] == null ? null : pulumi.Output.create<AccessGrantAccessGrantsLocationConfiguration>(AccessGrantAccessGrantsLocationConfiguration.fromMap((map['accessGrantsLocationConfiguration'] as Map).cast<String, dynamic>())),
-      accessGrantsLocationId: map['accessGrantsLocationId'] == null ? null : pulumi.Output.create<String>(map['accessGrantsLocationId'] as String),
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      grantScope: map['grantScope'] == null ? null : pulumi.Output.create<String>(map['grantScope'] as String),
-      grantee: map['grantee'] == null ? null : pulumi.Output.create<AccessGrantGrantee>(AccessGrantGrantee.fromMap((map['grantee'] as Map).cast<String, dynamic>())),
-      permission: map['permission'] == null ? null : pulumi.Output.create<String>(map['permission'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3PrefixType: map['s3PrefixType'] == null ? null : pulumi.Output.create<String>(map['s3PrefixType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      accessGrantArn: map['accessGrantArn'] == null ? null : (map['accessGrantArn'] as String).input(),
+      accessGrantId: map['accessGrantId'] == null ? null : (map['accessGrantId'] as String).input(),
+      accessGrantsLocationConfiguration: map['accessGrantsLocationConfiguration'] == null ? null : (AccessGrantAccessGrantsLocationConfiguration.fromMap((map['accessGrantsLocationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      accessGrantsLocationId: map['accessGrantsLocationId'] == null ? null : (map['accessGrantsLocationId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      grantScope: map['grantScope'] == null ? null : (map['grantScope'] as String).input(),
+      grantee: map['grantee'] == null ? null : (AccessGrantGrantee.fromMap((map['grantee'] as Map).cast<String, dynamic>())).input(),
+      permission: map['permission'] == null ? null : (map['permission'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3PrefixType: map['s3PrefixType'] == null ? null : (map['s3PrefixType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

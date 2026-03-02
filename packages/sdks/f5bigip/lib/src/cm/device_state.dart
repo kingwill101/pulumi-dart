@@ -19,15 +19,11 @@ class DeviceState {
   /// [mirrorSecondaryIp] Secondary IP address used for state mirroring
   /// [name] Address of the Device which needs to be Deviceensed
   DeviceState({
-    pulumi.Output<String>? configsyncIp,
-    pulumi.Output<String>? mirrorIp,
-    pulumi.Output<String>? mirrorSecondaryIp,
-    pulumi.Output<String>? name,
-  }) :
-      configsyncIp = pulumi.Input.asOptionalInput<String>(configsyncIp),
-      mirrorIp = pulumi.Input.asOptionalInput<String>(mirrorIp),
-      mirrorSecondaryIp = pulumi.Input.asOptionalInput<String>(mirrorSecondaryIp),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.configsyncIp,
+    this.mirrorIp,
+    this.mirrorSecondaryIp,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class DeviceState {
 
   factory DeviceState.fromMap(Map<String, dynamic> map) {
     return DeviceState(
-      configsyncIp: map['configsyncIp'] == null ? null : pulumi.Output.create<String>(map['configsyncIp'] as String),
-      mirrorIp: map['mirrorIp'] == null ? null : pulumi.Output.create<String>(map['mirrorIp'] as String),
-      mirrorSecondaryIp: map['mirrorSecondaryIp'] == null ? null : pulumi.Output.create<String>(map['mirrorSecondaryIp'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      configsyncIp: map['configsyncIp'] == null ? null : (map['configsyncIp'] as String).input(),
+      mirrorIp: map['mirrorIp'] == null ? null : (map['mirrorIp'] as String).input(),
+      mirrorSecondaryIp: map['mirrorSecondaryIp'] == null ? null : (map['mirrorSecondaryIp'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

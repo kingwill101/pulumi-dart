@@ -29,17 +29,12 @@ class SchedulerRuleArgs {
   /// [ruleType] The rule type. Valid values:
   /// [rules] The information about the scheduling rules. See `rules` below.
   SchedulerRuleArgs({
-    pulumi.Output<String>? param,
-    pulumi.Output<String>? resourceGroupId,
-    required pulumi.Output<String> ruleName,
-    required pulumi.Output<int> ruleType,
-    required pulumi.Output<List<SchedulerRuleRule>> rules,
-  }) :
-      param = pulumi.Input.asOptionalInput<String>(param),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      ruleName = pulumi.Input.asInput<String>(ruleName),
-      ruleType = pulumi.Input.asInput<int>(ruleType),
-      rules = pulumi.Input.asInput<List<SchedulerRuleRule>>(rules);
+    this.param,
+    this.resourceGroupId,
+    required this.ruleName,
+    required this.ruleType,
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class SchedulerRuleArgs {
 
   factory SchedulerRuleArgs.fromMap(Map<String, dynamic> map) {
     return SchedulerRuleArgs(
-      param: map['param'] == null ? null : pulumi.Output.create<String>(map['param'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
-      ruleType: pulumi.Output.create<int>(map['ruleType'] as int),
-      rules: pulumi.Output.create<List<SchedulerRuleRule>>(pulumi.Input.decodeList<SchedulerRuleRule>(map['rules'], (value) => SchedulerRuleRule.fromMap((value as Map).cast<String, dynamic>()))),
+      param: map['param'] == null ? null : (map['param'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      ruleType: (map['ruleType'] as int).input(),
+      rules: (pulumi.Input.decodeList<SchedulerRuleRule>(map['rules'], (value) => SchedulerRuleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

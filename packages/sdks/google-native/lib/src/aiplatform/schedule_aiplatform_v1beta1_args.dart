@@ -42,29 +42,18 @@ class ScheduleAiplatformV1beta1Args {
   /// [project] Optional.
   /// [startTime] Optional. Timestamp after which the first run can be scheduled. Default to Schedule create time if not specified.
   ScheduleAiplatformV1beta1Args({
-    pulumi.Output<bool>? allowQueueing,
-    pulumi.Output<GoogleCloudAiplatformV1beta1CreatePipelineJobRequest>? createPipelineJobRequest,
-    pulumi.Output<String>? cron,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> maxConcurrentRunCount,
-    pulumi.Output<String>? maxRunCount,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? startTime,
-  }) :
-      allowQueueing = pulumi.Input.asOptionalInput<bool>(allowQueueing),
-      createPipelineJobRequest = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1CreatePipelineJobRequest>(createPipelineJobRequest),
-      cron = pulumi.Input.asOptionalInput<String>(cron),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maxConcurrentRunCount = pulumi.Input.asInput<String>(maxConcurrentRunCount),
-      maxRunCount = pulumi.Input.asOptionalInput<String>(maxRunCount),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime);
+    this.allowQueueing,
+    this.createPipelineJobRequest,
+    this.cron,
+    required this.displayName,
+    this.endTime,
+    this.location,
+    required this.maxConcurrentRunCount,
+    this.maxRunCount,
+    this.name,
+    this.project,
+    this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class ScheduleAiplatformV1beta1Args {
 
   factory ScheduleAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ScheduleAiplatformV1beta1Args(
-      allowQueueing: map['allowQueueing'] == null ? null : pulumi.Output.create<bool>(map['allowQueueing'] as bool),
-      createPipelineJobRequest: map['createPipelineJobRequest'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1CreatePipelineJobRequest>(GoogleCloudAiplatformV1beta1CreatePipelineJobRequest.fromMap((map['createPipelineJobRequest'] as Map).cast<String, dynamic>())),
-      cron: map['cron'] == null ? null : pulumi.Output.create<String>(map['cron'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maxConcurrentRunCount: pulumi.Output.create<String>(map['maxConcurrentRunCount'] as String),
-      maxRunCount: map['maxRunCount'] == null ? null : pulumi.Output.create<String>(map['maxRunCount'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
+      allowQueueing: map['allowQueueing'] == null ? null : (map['allowQueueing'] as bool).input(),
+      createPipelineJobRequest: map['createPipelineJobRequest'] == null ? null : (GoogleCloudAiplatformV1beta1CreatePipelineJobRequest.fromMap((map['createPipelineJobRequest'] as Map).cast<String, dynamic>())).input(),
+      cron: map['cron'] == null ? null : (map['cron'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maxConcurrentRunCount: (map['maxConcurrentRunCount'] as String).input(),
+      maxRunCount: map['maxRunCount'] == null ? null : (map['maxRunCount'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

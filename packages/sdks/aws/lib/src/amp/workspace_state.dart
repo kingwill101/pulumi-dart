@@ -32,23 +32,15 @@ class WorkspaceState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   WorkspaceState({
-    pulumi.Output<String>? alias,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? kmsKeyArn,
-    pulumi.Output<WorkspaceLoggingConfiguration>? loggingConfiguration,
-    pulumi.Output<String>? prometheusEndpoint,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
-      loggingConfiguration = pulumi.Input.asOptionalInput<WorkspaceLoggingConfiguration>(loggingConfiguration),
-      prometheusEndpoint = pulumi.Input.asOptionalInput<String>(prometheusEndpoint),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.alias,
+    this.arn,
+    this.kmsKeyArn,
+    this.loggingConfiguration,
+    this.prometheusEndpoint,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['kmsKeyArn'] as String),
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : pulumi.Output.create<WorkspaceLoggingConfiguration>(WorkspaceLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())),
-      prometheusEndpoint: map['prometheusEndpoint'] == null ? null : pulumi.Output.create<String>(map['prometheusEndpoint'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      loggingConfiguration: map['loggingConfiguration'] == null ? null : (WorkspaceLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      prometheusEndpoint: map['prometheusEndpoint'] == null ? null : (map['prometheusEndpoint'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

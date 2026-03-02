@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkerPoolInstanceSplitStatus {
   /// (Output)
   /// Specifies percent of the instance split to this Revision.
-  final int? percent;
+  final pulumi.Input<int>? percent;
   /// (Output)
   /// Revision to which this instance split is assigned.
-  final String? revision;
+  final pulumi.Input<String>? revision;
   /// (Output)
   /// The allocation type for this instance split.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [WorkerPoolInstanceSplitStatus].
   /// [percent] (Output)
@@ -32,9 +33,9 @@ class WorkerPoolInstanceSplitStatus {
 
   factory WorkerPoolInstanceSplitStatus.fromMap(Map<String, dynamic> map) {
     return WorkerPoolInstanceSplitStatus(
-      percent: map['percent'] == null ? null : map['percent'] as int,
-      revision: map['revision'] == null ? null : map['revision'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

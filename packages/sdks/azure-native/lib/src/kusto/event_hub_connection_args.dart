@@ -40,27 +40,17 @@ class EventHubConnectionArgs {
   /// [resourceGroupName] The name of the resource group containing the Kusto cluster.
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
   EventHubConnectionArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> consumerGroup,
-    pulumi.Output<String>? dataFormat,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? eventHubConnectionName,
-    required pulumi.Output<String> eventHubResourceId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? mappingRuleName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? tableName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      consumerGroup = pulumi.Input.asInput<String>(consumerGroup),
-      dataFormat = pulumi.Input.asOptionalInput<String>(dataFormat),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      eventHubConnectionName = pulumi.Input.asOptionalInput<String>(eventHubConnectionName),
-      eventHubResourceId = pulumi.Input.asInput<String>(eventHubResourceId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mappingRuleName = pulumi.Input.asOptionalInput<String>(mappingRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName);
+    required this.clusterName,
+    required this.consumerGroup,
+    this.dataFormat,
+    required this.databaseName,
+    this.eventHubConnectionName,
+    required this.eventHubResourceId,
+    this.location,
+    this.mappingRuleName,
+    required this.resourceGroupName,
+    this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class EventHubConnectionArgs {
 
   factory EventHubConnectionArgs.fromMap(Map<String, dynamic> map) {
     return EventHubConnectionArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      consumerGroup: pulumi.Output.create<String>(map['consumerGroup'] as String),
-      dataFormat: map['dataFormat'] == null ? null : pulumi.Output.create<String>(map['dataFormat'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      eventHubConnectionName: map['eventHubConnectionName'] == null ? null : pulumi.Output.create<String>(map['eventHubConnectionName'] as String),
-      eventHubResourceId: pulumi.Output.create<String>(map['eventHubResourceId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mappingRuleName: map['mappingRuleName'] == null ? null : pulumi.Output.create<String>(map['mappingRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      consumerGroup: (map['consumerGroup'] as String).input(),
+      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      eventHubConnectionName: map['eventHubConnectionName'] == null ? null : (map['eventHubConnectionName'] as String).input(),
+      eventHubResourceId: (map['eventHubResourceId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

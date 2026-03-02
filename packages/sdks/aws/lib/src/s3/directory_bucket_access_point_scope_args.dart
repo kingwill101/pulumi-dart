@@ -23,15 +23,11 @@ class DirectoryBucketAccessPointScopeArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scope] . Scope is used to restrict access to specific prefixes, API operations, or a combination of both. To remove the `scope`, set it to `{permissions=[] prefixes=[]}`. The default scope is `{permissions=[] prefixes=[]}`.
   DirectoryBucketAccessPointScopeArgs({
-    required pulumi.Output<String> accountId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<DirectoryBucketAccessPointScopeScope> scope,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scope = pulumi.Input.asInput<DirectoryBucketAccessPointScopeScope>(scope);
+    required this.accountId,
+    this.name,
+    this.region,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class DirectoryBucketAccessPointScopeArgs {
 
   factory DirectoryBucketAccessPointScopeArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryBucketAccessPointScopeArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scope: pulumi.Output.create<DirectoryBucketAccessPointScopeScope>(DirectoryBucketAccessPointScopeScope.fromMap((map['scope'] as Map).cast<String, dynamic>())),
+      accountId: (map['accountId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scope: (DirectoryBucketAccessPointScopeScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

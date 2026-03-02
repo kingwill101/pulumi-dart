@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersDynamodbStreamParametersDeadLetterConfig {
   /// ARN of this pipe.
-  final String? arn;
+  final pulumi.Input<String>? arn;
 
   /// Creates a new [PipeSourceParametersDynamodbStreamParametersDeadLetterConfig].
   /// [arn] ARN of this pipe.
@@ -19,7 +20,7 @@ class PipeSourceParametersDynamodbStreamParametersDeadLetterConfig {
 
   factory PipeSourceParametersDynamodbStreamParametersDeadLetterConfig.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersDynamodbStreamParametersDeadLetterConfig(
-      arn: map['arn'] == null ? null : map['arn'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
     );
   }
 }

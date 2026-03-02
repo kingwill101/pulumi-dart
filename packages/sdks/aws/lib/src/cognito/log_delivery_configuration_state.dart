@@ -19,13 +19,10 @@ class LogDeliveryConfigurationState {
   /// [region] The AWS region.
   /// [userPoolId] The ID of the user pool for which to configure log delivery.
   LogDeliveryConfigurationState({
-    pulumi.Output<List<LogDeliveryConfigurationLogConfiguration>>? logConfigurations,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? userPoolId,
-  }) :
-      logConfigurations = pulumi.Input.asOptionalInput<List<LogDeliveryConfigurationLogConfiguration>>(logConfigurations),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userPoolId = pulumi.Input.asOptionalInput<String>(userPoolId);
+    this.logConfigurations,
+    this.region,
+    this.userPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LogDeliveryConfigurationState {
 
   factory LogDeliveryConfigurationState.fromMap(Map<String, dynamic> map) {
     return LogDeliveryConfigurationState(
-      logConfigurations: map['logConfigurations'] == null ? null : pulumi.Output.create<List<LogDeliveryConfigurationLogConfiguration>>(pulumi.Input.decodeList<LogDeliveryConfigurationLogConfiguration>(map['logConfigurations'], (value) => LogDeliveryConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userPoolId: map['userPoolId'] == null ? null : pulumi.Output.create<String>(map['userPoolId'] as String),
+      logConfigurations: map['logConfigurations'] == null ? null : (pulumi.Input.decodeList<LogDeliveryConfigurationLogConfiguration>(map['logConfigurations'], (value) => LogDeliveryConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
     );
   }
 }

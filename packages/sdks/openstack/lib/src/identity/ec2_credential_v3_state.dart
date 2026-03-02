@@ -32,19 +32,13 @@ class Ec2CredentialV3State {
   /// [trustId] contains an EC2 credential trust ID scope
   /// [userId] The ID of the user the EC2 credential is created for.
   Ec2CredentialV3State({
-    pulumi.Output<String>? access,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secret,
-    pulumi.Output<String>? trustId,
-    pulumi.Output<String>? userId,
-  }) :
-      access = pulumi.Input.asOptionalInput<String>(access),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secret = pulumi.Input.asOptionalInput<String>(secret),
-      trustId = pulumi.Input.asOptionalInput<String>(trustId),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.access,
+    this.projectId,
+    this.region,
+    this.secret,
+    this.trustId,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class Ec2CredentialV3State {
 
   factory Ec2CredentialV3State.fromMap(Map<String, dynamic> map) {
     return Ec2CredentialV3State(
-      access: map['access'] == null ? null : pulumi.Output.create<String>(map['access'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secret: map['secret'] == null ? null : pulumi.Output.create<String>(map['secret'] as String),
-      trustId: map['trustId'] == null ? null : pulumi.Output.create<String>(map['trustId'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      access: map['access'] == null ? null : (map['access'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      trustId: map['trustId'] == null ? null : (map['trustId'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

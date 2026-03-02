@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchGroup {
   /// Specifies the description of the launch group.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Specifies the name of the feature that the launch is using.
-  final String feature;
+  final pulumi.Input<String> feature;
   /// Specifies the name of the lahnch group.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the feature variation to use for this launch group.
-  final String variation;
+  final pulumi.Input<String> variation;
 
   /// Creates a new [LaunchGroup].
   /// [description] Specifies the description of the launch group.
@@ -34,10 +35,10 @@ class LaunchGroup {
 
   factory LaunchGroup.fromMap(Map<String, dynamic> map) {
     return LaunchGroup(
-      description: map['description'] == null ? null : map['description'] as String,
-      feature: map['feature'] as String,
-      name: map['name'] as String,
-      variation: map['variation'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      feature: (map['feature'] as String).input(),
+      name: (map['name'] as String).input(),
+      variation: (map['variation'] as String).input(),
     );
   }
 }

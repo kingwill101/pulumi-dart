@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_key_certificate.dart';
 
 /// A server-stored registry credential used to validate device credentials.
 class RegistryCredential {
   /// A public key certificate used to verify the device credentials.
-  final PublicKeyCertificate? publicKeyCertificate;
+  final pulumi.Input<PublicKeyCertificate>? publicKeyCertificate;
 
   /// Creates a new [RegistryCredential].
   /// [publicKeyCertificate] A public key certificate used to verify the device credentials.
@@ -15,13 +16,13 @@ class RegistryCredential {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicKeyCertificate': ?publicKeyCertificate == null ? null : publicKeyCertificate!.toMap(),
+      'publicKeyCertificate': ?pulumi.Input.mapOptionalInputValue<PublicKeyCertificate, Map<String, dynamic>>(publicKeyCertificate, (value) => value.toMap()),
     };
   }
 
   factory RegistryCredential.fromMap(Map<String, dynamic> map) {
     return RegistryCredential(
-      publicKeyCertificate: map['publicKeyCertificate'] == null ? null : PublicKeyCertificate.fromMap((map['publicKeyCertificate'] as Map).cast<String, dynamic>()),
+      publicKeyCertificate: map['publicKeyCertificate'] == null ? null : (PublicKeyCertificate.fromMap((map['publicKeyCertificate'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

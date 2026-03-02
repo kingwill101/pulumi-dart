@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A match against a collection of headers.
 class GrpcRouteHeaderMatchResponse {
   /// The key of the header.
-  final String key;
+  final pulumi.Input<String> key;
   /// Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
-  final String type;
+  final pulumi.Input<String> type;
   /// The value of the header.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GrpcRouteHeaderMatchResponse].
   /// [key] The key of the header.
@@ -30,9 +31,9 @@ class GrpcRouteHeaderMatchResponse {
 
   factory GrpcRouteHeaderMatchResponse.fromMap(Map<String, dynamic> map) {
     return GrpcRouteHeaderMatchResponse(
-      key: map['key'] as String,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistrationDnsSettingsGlueRecord {
   /// Required. Domain name of the host in Punycode format.
-  final String hostName;
+  final pulumi.Input<String> hostName;
   /// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
   /// At least one of ipv4_address and ipv6_address must be set.
-  final List<String>? ipv4Addresses;
+  final pulumi.Input<List<String>>? ipv4Addresses;
   /// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
   /// At least one of ipv4_address and ipv6_address must be set.
-  final List<String>? ipv6Addresses;
+  final pulumi.Input<List<String>>? ipv6Addresses;
 
   /// Creates a new [RegistrationDnsSettingsGlueRecord].
   /// [hostName] Required. Domain name of the host in Punycode format.
@@ -31,9 +32,9 @@ class RegistrationDnsSettingsGlueRecord {
 
   factory RegistrationDnsSettingsGlueRecord.fromMap(Map<String, dynamic> map) {
     return RegistrationDnsSettingsGlueRecord(
-      hostName: map['hostName'] as String,
-      ipv4Addresses: map['ipv4Addresses'] == null ? null : (map['ipv4Addresses'] as List).cast<String>(),
-      ipv6Addresses: map['ipv6Addresses'] == null ? null : (map['ipv6Addresses'] as List).cast<String>(),
+      hostName: (map['hostName'] as String).input(),
+      ipv4Addresses: map['ipv4Addresses'] == null ? null : ((map['ipv4Addresses'] as List).cast<String>()).input(),
+      ipv6Addresses: map['ipv6Addresses'] == null ? null : ((map['ipv6Addresses'] as List).cast<String>()).input(),
     );
   }
 }

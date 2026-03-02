@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed Identity used for CMK.
 class CMKIdentityDefinitionResponse {
   /// The resource id of the user assigned identity to authenticate to customer's key vault.
-  final String? userAssignedIdentity;
+  final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [CMKIdentityDefinitionResponse].
   /// [userAssignedIdentity] The resource id of the user assigned identity to authenticate to customer's key vault.
@@ -20,7 +21,7 @@ class CMKIdentityDefinitionResponse {
 
   factory CMKIdentityDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return CMKIdentityDefinitionResponse(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : map['userAssignedIdentity'] as String,
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
     );
   }
 }

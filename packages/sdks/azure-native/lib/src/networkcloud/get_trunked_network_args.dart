@@ -16,11 +16,9 @@ class GetTrunkedNetworkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [trunkedNetworkName] The name of the trunked network.
   GetTrunkedNetworkArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> trunkedNetworkName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      trunkedNetworkName = pulumi.Input.asInput<String>(trunkedNetworkName);
+    required this.resourceGroupName,
+    required this.trunkedNetworkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetTrunkedNetworkArgs {
 
   factory GetTrunkedNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetTrunkedNetworkArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      trunkedNetworkName: pulumi.Output.create<String>(map['trunkedNetworkName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      trunkedNetworkName: (map['trunkedNetworkName'] as String).input(),
     );
   }
 }

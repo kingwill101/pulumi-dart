@@ -28,17 +28,12 @@ class RealTimeLogDeliveryState {
   /// [slsRegion] The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
   /// [status] Resource attribute fields that represent the status of the resource.
   RealTimeLogDeliveryState({
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? logstore,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? slsRegion,
-    pulumi.Output<String>? status,
-  }) :
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      logstore = pulumi.Input.asOptionalInput<String>(logstore),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      slsRegion = pulumi.Input.asOptionalInput<String>(slsRegion),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.domain,
+    this.logstore,
+    this.project,
+    this.slsRegion,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class RealTimeLogDeliveryState {
 
   factory RealTimeLogDeliveryState.fromMap(Map<String, dynamic> map) {
     return RealTimeLogDeliveryState(
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      logstore: map['logstore'] == null ? null : pulumi.Output.create<String>(map['logstore'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      slsRegion: map['slsRegion'] == null ? null : pulumi.Output.create<String>(map['slsRegion'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      logstore: map['logstore'] == null ? null : (map['logstore'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      slsRegion: map['slsRegion'] == null ? null : (map['slsRegion'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

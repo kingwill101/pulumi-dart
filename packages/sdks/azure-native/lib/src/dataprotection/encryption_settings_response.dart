@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cmk_kek_identity_response.dart';
 import 'cmk_key_vault_properties_response.dart';
 
 /// Customer Managed Key details of the resource.
 class EncryptionSettingsResponse {
   /// Enabling/Disabling the Double Encryption state
-  final String? infrastructureEncryption;
+  final pulumi.Input<String>? infrastructureEncryption;
   /// The details of the managed identity used for CMK
-  final CmkKekIdentityResponse? kekIdentity;
+  final pulumi.Input<CmkKekIdentityResponse>? kekIdentity;
   /// The properties of the Key Vault which hosts CMK
-  final CmkKeyVaultPropertiesResponse? keyVaultProperties;
+  final pulumi.Input<CmkKeyVaultPropertiesResponse>? keyVaultProperties;
   /// Encryption state of the Backup Vault.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [EncryptionSettingsResponse].
   /// [infrastructureEncryption] Enabling/Disabling the Double Encryption state
@@ -29,18 +30,18 @@ class EncryptionSettingsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'infrastructureEncryption': ?infrastructureEncryption,
-      'kekIdentity': ?kekIdentity == null ? null : kekIdentity!.toMap(),
-      'keyVaultProperties': ?keyVaultProperties == null ? null : keyVaultProperties!.toMap(),
+      'kekIdentity': ?pulumi.Input.mapOptionalInputValue<CmkKekIdentityResponse, Map<String, dynamic>>(kekIdentity, (value) => value.toMap()),
+      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<CmkKeyVaultPropertiesResponse, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
       'state': ?state,
     };
   }
 
   factory EncryptionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionSettingsResponse(
-      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : map['infrastructureEncryption'] as String,
-      kekIdentity: map['kekIdentity'] == null ? null : CmkKekIdentityResponse.fromMap((map['kekIdentity'] as Map).cast<String, dynamic>()),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : CmkKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>()),
-      state: map['state'] == null ? null : map['state'] as String,
+      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : (map['infrastructureEncryption'] as String).input(),
+      kekIdentity: map['kekIdentity'] == null ? null : (CmkKekIdentityResponse.fromMap((map['kekIdentity'] as Map).cast<String, dynamic>())).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (CmkKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

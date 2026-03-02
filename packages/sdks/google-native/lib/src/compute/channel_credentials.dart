@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_credentials_channel_credential_type.dart';
 import 'tls_certificate_paths.dart';
 
 /// [Deprecated] gRPC channel credentials to access the SDS server. gRPC channel credentials to access the SDS server.
 class ChannelCredentials {
   /// The call credentials to access the SDS server.
-  final TlsCertificatePaths? certificates;
+  final pulumi.Input<TlsCertificatePaths>? certificates;
   /// The channel credentials to access the SDS server. This field can be set to one of the following: CERTIFICATES: Use TLS certificates to access the SDS server. GCE_VM: Use local GCE VM credentials to access the SDS server.
-  final ChannelCredentialsChannelCredentialType? channelCredentialType;
+  final pulumi.Input<ChannelCredentialsChannelCredentialType>? channelCredentialType;
 
   /// Creates a new [ChannelCredentials].
   /// [certificates] The call credentials to access the SDS server.
@@ -20,15 +21,15 @@ class ChannelCredentials {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates': ?certificates == null ? null : certificates!.toMap(),
-      'channelCredentialType': ?channelCredentialType == null ? null : channelCredentialType!.value,
+      'certificates': ?pulumi.Input.mapOptionalInputValue<TlsCertificatePaths, Map<String, dynamic>>(certificates, (value) => value.toMap()),
+      'channelCredentialType': ?pulumi.Input.mapOptionalInputValue<ChannelCredentialsChannelCredentialType, String>(channelCredentialType, (value) => value.value),
     };
   }
 
   factory ChannelCredentials.fromMap(Map<String, dynamic> map) {
     return ChannelCredentials(
-      certificates: map['certificates'] == null ? null : TlsCertificatePaths.fromMap((map['certificates'] as Map).cast<String, dynamic>()),
-      channelCredentialType: map['channelCredentialType'] == null ? null : ChannelCredentialsChannelCredentialType.fromValue(map['channelCredentialType'] as String),
+      certificates: map['certificates'] == null ? null : (TlsCertificatePaths.fromMap((map['certificates'] as Map).cast<String, dynamic>())).input(),
+      channelCredentialType: map['channelCredentialType'] == null ? null : (ChannelCredentialsChannelCredentialType.fromValue(map['channelCredentialType'] as String)).input(),
     );
   }
 }

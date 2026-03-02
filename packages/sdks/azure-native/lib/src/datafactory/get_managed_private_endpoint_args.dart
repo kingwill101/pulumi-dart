@@ -22,15 +22,11 @@ class GetManagedPrivateEndpointArgs {
   /// [managedVirtualNetworkName] Managed virtual network name
   /// [resourceGroupName] The resource group name.
   GetManagedPrivateEndpointArgs({
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<String> managedPrivateEndpointName,
-    required pulumi.Output<String> managedVirtualNetworkName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      managedPrivateEndpointName = pulumi.Input.asInput<String>(managedPrivateEndpointName),
-      managedVirtualNetworkName = pulumi.Input.asInput<String>(managedVirtualNetworkName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.factoryName,
+    required this.managedPrivateEndpointName,
+    required this.managedVirtualNetworkName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetManagedPrivateEndpointArgs {
 
   factory GetManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedPrivateEndpointArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      managedPrivateEndpointName: pulumi.Output.create<String>(map['managedPrivateEndpointName'] as String),
-      managedVirtualNetworkName: pulumi.Output.create<String>(map['managedVirtualNetworkName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      managedPrivateEndpointName: (map['managedPrivateEndpointName'] as String).input(),
+      managedVirtualNetworkName: (map['managedVirtualNetworkName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

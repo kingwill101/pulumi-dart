@@ -19,13 +19,10 @@ class GetDistributedAvailabilityGroupArgs {
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   GetDistributedAvailabilityGroupArgs({
-    required pulumi.Output<String> distributedAvailabilityGroupName,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      distributedAvailabilityGroupName = pulumi.Input.asInput<String>(distributedAvailabilityGroupName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.distributedAvailabilityGroupName,
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDistributedAvailabilityGroupArgs {
 
   factory GetDistributedAvailabilityGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDistributedAvailabilityGroupArgs(
-      distributedAvailabilityGroupName: pulumi.Output.create<String>(map['distributedAvailabilityGroupName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      distributedAvailabilityGroupName: (map['distributedAvailabilityGroupName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

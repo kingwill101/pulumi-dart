@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_management_policy_rule_target.dart';
 
 /// The role management policy enablement rule.
 class RoleManagementPolicyEnablementRule {
   /// The list of enabled rules.
-  final List<String>? enabledRules;
+  final pulumi.Input<List<String>>? enabledRules;
   /// The id of the rule.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyEnablementRule'.
-  final String ruleType;
+  final pulumi.Input<String> ruleType;
   /// The target of the current rule.
-  final RoleManagementPolicyRuleTarget? target;
+  final pulumi.Input<RoleManagementPolicyRuleTarget>? target;
 
   /// Creates a new [RoleManagementPolicyEnablementRule].
   /// [enabledRules] The list of enabled rules.
@@ -31,16 +32,16 @@ class RoleManagementPolicyEnablementRule {
       'enabledRules': ?enabledRules,
       'id': ?id,
       'ruleType': ruleType,
-      'target': ?target == null ? null : target!.toMap(),
+      'target': ?pulumi.Input.mapOptionalInputValue<RoleManagementPolicyRuleTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory RoleManagementPolicyEnablementRule.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyEnablementRule(
-      enabledRules: map['enabledRules'] == null ? null : (map['enabledRules'] as List).cast<String>(),
-      id: map['id'] == null ? null : map['id'] as String,
-      ruleType: map['ruleType'] as String,
-      target: map['target'] == null ? null : RoleManagementPolicyRuleTarget.fromMap((map['target'] as Map).cast<String, dynamic>()),
+      enabledRules: map['enabledRules'] == null ? null : ((map['enabledRules'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ruleType: (map['ruleType'] as String).input(),
+      target: map['target'] == null ? null : (RoleManagementPolicyRuleTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

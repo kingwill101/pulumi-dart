@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHavipsHavip {
   /// EIP bound to HaVip.
-  final List<String> associatedEipAddresses;
+  final pulumi.Input<List<String>> associatedEipAddresses;
   /// An ECS instance that is bound to HaVip.
-  final List<String> associatedInstances;
+  final pulumi.Input<List<String>> associatedInstances;
   /// Dependence of a HaVip instance.
-  final String description;
+  final pulumi.Input<String> description;
   /// The  ID of the resource.
-  final String havipId;
+  final pulumi.Input<String> havipId;
   /// The name of the HaVip instance.
-  final String havipName;
+  final pulumi.Input<String> havipName;
   /// The ID of the Ha Vip.
-  final String id;
+  final pulumi.Input<String> id;
   /// IP address of private network.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The primary instance ID bound to HaVip.
-  final String masterInstanceId;
+  final pulumi.Input<String> masterInstanceId;
   /// The status.
-  final String status;
+  final pulumi.Input<String> status;
   /// The VPC ID to which the HaVip instance belongs.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The vswitch id.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetHavipsHavip].
   /// [associatedEipAddresses] EIP bound to HaVip.
@@ -69,17 +70,17 @@ class GetHavipsHavip {
 
   factory GetHavipsHavip.fromMap(Map<String, dynamic> map) {
     return GetHavipsHavip(
-      associatedEipAddresses: (map['associatedEipAddresses'] as List).cast<String>(),
-      associatedInstances: (map['associatedInstances'] as List).cast<String>(),
-      description: map['description'] as String,
-      havipId: map['havipId'] as String,
-      havipName: map['havipName'] as String,
-      id: map['id'] as String,
-      ipAddress: map['ipAddress'] as String,
-      masterInstanceId: map['masterInstanceId'] as String,
-      status: map['status'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      associatedEipAddresses: ((map['associatedEipAddresses'] as List).cast<String>()).input(),
+      associatedInstances: ((map['associatedInstances'] as List).cast<String>()).input(),
+      description: (map['description'] as String).input(),
+      havipId: (map['havipId'] as String).input(),
+      havipName: (map['havipName'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      masterInstanceId: (map['masterInstanceId'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

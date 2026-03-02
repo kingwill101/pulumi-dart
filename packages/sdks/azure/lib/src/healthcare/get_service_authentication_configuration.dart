@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceAuthenticationConfiguration {
   /// The intended audience to receive authentication tokens for the service.
-  final String audience;
+  final pulumi.Input<String> audience;
   /// The Azure Active Directory (tenant) that serves as the authentication authority to access the service.
-  final String authority;
+  final pulumi.Input<String> authority;
   /// Is the 'SMART on FHIR' option for mobile and web implementations enabled?
-  final bool smartProxyEnabled;
+  final pulumi.Input<bool> smartProxyEnabled;
 
   /// Creates a new [GetServiceAuthenticationConfiguration].
   /// [audience] The intended audience to receive authentication tokens for the service.
@@ -29,9 +30,9 @@ class GetServiceAuthenticationConfiguration {
 
   factory GetServiceAuthenticationConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceAuthenticationConfiguration(
-      audience: map['audience'] as String,
-      authority: map['authority'] as String,
-      smartProxyEnabled: map['smartProxyEnabled'] as bool,
+      audience: (map['audience'] as String).input(),
+      authority: (map['authority'] as String).input(),
+      smartProxyEnabled: (map['smartProxyEnabled'] as bool).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayAuthenticationCertificate {
   /// The contents of the Authentication Certificate which should be used.
-  final String data;
+  final pulumi.Input<String> data;
   /// The ID of the Rewrite Rule Set
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The Name of the Authentication Certificate to use.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ApplicationGatewayAuthenticationCertificate].
   /// [data] The contents of the Authentication Certificate which should be used.
@@ -29,9 +30,9 @@ class ApplicationGatewayAuthenticationCertificate {
 
   factory ApplicationGatewayAuthenticationCertificate.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayAuthenticationCertificate(
-      data: map['data'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] as String,
+      data: (map['data'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

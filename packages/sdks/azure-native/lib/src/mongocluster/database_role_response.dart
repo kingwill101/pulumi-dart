@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Database role definition that is assigned to a user.
 class DatabaseRoleResponse {
   /// Database scope that the role is assigned to.
-  final String db;
+  final pulumi.Input<String> db;
   /// The role that is assigned to the user on the database scope.
-  final String role;
+  final pulumi.Input<String> role;
 
   /// Creates a new [DatabaseRoleResponse].
   /// [db] Database scope that the role is assigned to.
@@ -25,8 +26,8 @@ class DatabaseRoleResponse {
 
   factory DatabaseRoleResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseRoleResponse(
-      db: map['db'] as String,
-      role: map['role'] as String,
+      db: (map['db'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

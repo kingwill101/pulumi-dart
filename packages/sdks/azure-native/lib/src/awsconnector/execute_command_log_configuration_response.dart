@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ExecuteCommandLogConfiguration
 class ExecuteCommandLogConfigurationResponse {
   /// Determines whether to use encryption on the CloudWatch logs. If not specified, encryption will be off.
-  final bool? cloudWatchEncryptionEnabled;
+  final pulumi.Input<bool>? cloudWatchEncryptionEnabled;
   /// The name of the CloudWatch log group to send logs to.  The CloudWatch log group must already be created.
-  final String? cloudWatchLogGroupName;
+  final pulumi.Input<String>? cloudWatchLogGroupName;
   /// The name of the S3 bucket to send logs to.  The S3 bucket must already be created.
-  final String? s3BucketName;
+  final pulumi.Input<String>? s3BucketName;
   /// Determines whether to use encryption on the S3 logs. If not specified, encryption is not used.
-  final bool? s3EncryptionEnabled;
+  final pulumi.Input<bool>? s3EncryptionEnabled;
   /// An optional folder in the S3 bucket to place logs in.
-  final String? s3KeyPrefix;
+  final pulumi.Input<String>? s3KeyPrefix;
 
   /// Creates a new [ExecuteCommandLogConfigurationResponse].
   /// [cloudWatchEncryptionEnabled] Determines whether to use encryption on the CloudWatch logs. If not specified, encryption will be off.
@@ -40,11 +41,11 @@ class ExecuteCommandLogConfigurationResponse {
 
   factory ExecuteCommandLogConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ExecuteCommandLogConfigurationResponse(
-      cloudWatchEncryptionEnabled: map['cloudWatchEncryptionEnabled'] == null ? null : map['cloudWatchEncryptionEnabled'] as bool,
-      cloudWatchLogGroupName: map['cloudWatchLogGroupName'] == null ? null : map['cloudWatchLogGroupName'] as String,
-      s3BucketName: map['s3BucketName'] == null ? null : map['s3BucketName'] as String,
-      s3EncryptionEnabled: map['s3EncryptionEnabled'] == null ? null : map['s3EncryptionEnabled'] as bool,
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : map['s3KeyPrefix'] as String,
+      cloudWatchEncryptionEnabled: map['cloudWatchEncryptionEnabled'] == null ? null : (map['cloudWatchEncryptionEnabled'] as bool).input(),
+      cloudWatchLogGroupName: map['cloudWatchLogGroupName'] == null ? null : (map['cloudWatchLogGroupName'] as String).input(),
+      s3BucketName: map['s3BucketName'] == null ? null : (map['s3BucketName'] as String).input(),
+      s3EncryptionEnabled: map['s3EncryptionEnabled'] == null ? null : (map['s3EncryptionEnabled'] as bool).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
     );
   }
 }

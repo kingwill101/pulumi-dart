@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Custom script action to run on HDI ondemand cluster once it's up.
 class ScriptAction {
   /// The user provided name of the script action.
-  final String name;
+  final pulumi.Input<String> name;
   /// The parameters for the script action.
-  final String? parameters;
+  final pulumi.Input<String>? parameters;
   /// The node types on which the script action should be executed.
-  final dynamic roles;
+  final pulumi.Input<dynamic> roles;
   /// The URI for the script action.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [ScriptAction].
   /// [name] The user provided name of the script action.
@@ -35,10 +36,10 @@ class ScriptAction {
 
   factory ScriptAction.fromMap(Map<String, dynamic> map) {
     return ScriptAction(
-      name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : map['parameters'] as String,
-      roles: map['roles'],
-      uri: map['uri'] as String,
+      name: (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      roles: (map['roles']).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

@@ -40,27 +40,17 @@ class FeatureViewArgs {
   /// [runSyncImmediately] Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not.
   /// [syncConfig] Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
   FeatureViewArgs({
-    pulumi.Output<GoogleCloudAiplatformV1FeatureViewBigQuerySource>? bigQuerySource,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> featureOnlineStoreId,
-    pulumi.Output<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource>? featureRegistrySource,
-    required pulumi.Output<String> featureViewId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? runSyncImmediately,
-    pulumi.Output<GoogleCloudAiplatformV1FeatureViewSyncConfig>? syncConfig,
-  }) :
-      bigQuerySource = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1FeatureViewBigQuerySource>(bigQuerySource),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featureOnlineStoreId = pulumi.Input.asInput<String>(featureOnlineStoreId),
-      featureRegistrySource = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource>(featureRegistrySource),
-      featureViewId = pulumi.Input.asInput<String>(featureViewId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runSyncImmediately = pulumi.Input.asOptionalInput<bool>(runSyncImmediately),
-      syncConfig = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1FeatureViewSyncConfig>(syncConfig);
+    this.bigQuerySource,
+    this.etag,
+    required this.featureOnlineStoreId,
+    this.featureRegistrySource,
+    required this.featureViewId,
+    this.labels,
+    this.location,
+    this.project,
+    this.runSyncImmediately,
+    this.syncConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class FeatureViewArgs {
 
   factory FeatureViewArgs.fromMap(Map<String, dynamic> map) {
     return FeatureViewArgs(
-      bigQuerySource: map['bigQuerySource'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1FeatureViewBigQuerySource>(GoogleCloudAiplatformV1FeatureViewBigQuerySource.fromMap((map['bigQuerySource'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featureOnlineStoreId: pulumi.Output.create<String>(map['featureOnlineStoreId'] as String),
-      featureRegistrySource: map['featureRegistrySource'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource>(GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource.fromMap((map['featureRegistrySource'] as Map).cast<String, dynamic>())),
-      featureViewId: pulumi.Output.create<String>(map['featureViewId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runSyncImmediately: map['runSyncImmediately'] == null ? null : pulumi.Output.create<bool>(map['runSyncImmediately'] as bool),
-      syncConfig: map['syncConfig'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1FeatureViewSyncConfig>(GoogleCloudAiplatformV1FeatureViewSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())),
+      bigQuerySource: map['bigQuerySource'] == null ? null : (GoogleCloudAiplatformV1FeatureViewBigQuerySource.fromMap((map['bigQuerySource'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featureOnlineStoreId: (map['featureOnlineStoreId'] as String).input(),
+      featureRegistrySource: map['featureRegistrySource'] == null ? null : (GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource.fromMap((map['featureRegistrySource'] as Map).cast<String, dynamic>())).input(),
+      featureViewId: (map['featureViewId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runSyncImmediately: map['runSyncImmediately'] == null ? null : (map['runSyncImmediately'] as bool).input(),
+      syncConfig: map['syncConfig'] == null ? null : (GoogleCloudAiplatformV1FeatureViewSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

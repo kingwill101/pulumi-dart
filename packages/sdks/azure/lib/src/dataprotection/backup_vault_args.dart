@@ -52,29 +52,18 @@ class BackupVaultArgs {
   /// [softDelete] The state of soft delete for this Backup Vault. Possible values are `AlwaysOn`, `Off`, and `On`. Defaults to `On`.
   /// [tags] A mapping of tags which should be assigned to the Backup Vault.
   BackupVaultArgs({
-    pulumi.Output<bool>? crossRegionRestoreEnabled,
-    required pulumi.Output<String> datastoreType,
-    pulumi.Output<BackupVaultIdentity>? identity,
-    pulumi.Output<String>? immutability,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> redundancy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<double>? retentionDurationInDays,
-    pulumi.Output<String>? softDelete,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      crossRegionRestoreEnabled = pulumi.Input.asOptionalInput<bool>(crossRegionRestoreEnabled),
-      datastoreType = pulumi.Input.asInput<String>(datastoreType),
-      identity = pulumi.Input.asOptionalInput<BackupVaultIdentity>(identity),
-      immutability = pulumi.Input.asOptionalInput<String>(immutability),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      redundancy = pulumi.Input.asInput<String>(redundancy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      retentionDurationInDays = pulumi.Input.asOptionalInput<double>(retentionDurationInDays),
-      softDelete = pulumi.Input.asOptionalInput<String>(softDelete),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.crossRegionRestoreEnabled,
+    required this.datastoreType,
+    this.identity,
+    this.immutability,
+    this.location,
+    this.name,
+    required this.redundancy,
+    required this.resourceGroupName,
+    this.retentionDurationInDays,
+    this.softDelete,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,17 +83,17 @@ class BackupVaultArgs {
 
   factory BackupVaultArgs.fromMap(Map<String, dynamic> map) {
     return BackupVaultArgs(
-      crossRegionRestoreEnabled: map['crossRegionRestoreEnabled'] == null ? null : pulumi.Output.create<bool>(map['crossRegionRestoreEnabled'] as bool),
-      datastoreType: pulumi.Output.create<String>(map['datastoreType'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<BackupVaultIdentity>(BackupVaultIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      immutability: map['immutability'] == null ? null : pulumi.Output.create<String>(map['immutability'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      redundancy: pulumi.Output.create<String>(map['redundancy'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retentionDurationInDays: map['retentionDurationInDays'] == null ? null : pulumi.Output.create<double>(map['retentionDurationInDays'] as double),
-      softDelete: map['softDelete'] == null ? null : pulumi.Output.create<String>(map['softDelete'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      crossRegionRestoreEnabled: map['crossRegionRestoreEnabled'] == null ? null : (map['crossRegionRestoreEnabled'] as bool).input(),
+      datastoreType: (map['datastoreType'] as String).input(),
+      identity: map['identity'] == null ? null : (BackupVaultIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      immutability: map['immutability'] == null ? null : (map['immutability'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      redundancy: (map['redundancy'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      retentionDurationInDays: map['retentionDurationInDays'] == null ? null : (map['retentionDurationInDays'] as double).input(),
+      softDelete: map['softDelete'] == null ? null : (map['softDelete'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

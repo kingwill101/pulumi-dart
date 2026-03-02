@@ -6,11 +6,11 @@ import 'audit_log_config_response.dart';
 /// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 class AuditConfigResponse {
   /// The configuration for logging of each type of permission.
-  final List<AuditLogConfigResponse> auditLogConfigs;
+  final pulumi.Input<List<AuditLogConfigResponse>> auditLogConfigs;
   /// This is deprecated and has no effect. Do not use.
-  final List<String> exemptedMembers;
+  final pulumi.Input<List<String>> exemptedMembers;
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  final String service;
+  final pulumi.Input<String> service;
 
   /// Creates a new [AuditConfigResponse].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
@@ -24,7 +24,7 @@ class AuditConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': pulumi.Input.encodeList<AuditLogConfigResponse, Map<String, dynamic>>(auditLogConfigs, (value) => value.toMap()),
+      'auditLogConfigs': pulumi.Input.mapInputValue<List<AuditLogConfigResponse>, List<Map<String, dynamic>>>(auditLogConfigs, (value) => pulumi.Input.encodeList<AuditLogConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'exemptedMembers': exemptedMembers,
       'service': service,
     };
@@ -32,9 +32,9 @@ class AuditConfigResponse {
 
   factory AuditConfigResponse.fromMap(Map<String, dynamic> map) {
     return AuditConfigResponse(
-      auditLogConfigs: pulumi.Input.decodeList<AuditLogConfigResponse>(map['auditLogConfigs'], (value) => AuditLogConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
-      exemptedMembers: (map['exemptedMembers'] as List).cast<String>(),
-      service: map['service'] as String,
+      auditLogConfigs: (pulumi.Input.decodeList<AuditLogConfigResponse>(map['auditLogConfigs'], (value) => AuditLogConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exemptedMembers: ((map['exemptedMembers'] as List).cast<String>()).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

@@ -22,17 +22,12 @@ class TableBucketReplicationState {
   /// [tableBucketArn] ARN referencing the Table Bucket that owns this replication configuration.
   /// [versionToken] Optional.
   TableBucketReplicationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-    pulumi.Output<TableBucketReplicationRule>? rule,
-    pulumi.Output<String>? tableBucketArn,
-    pulumi.Output<String>? versionToken,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      rule = pulumi.Input.asOptionalInput<TableBucketReplicationRule>(rule),
-      tableBucketArn = pulumi.Input.asOptionalInput<String>(tableBucketArn),
-      versionToken = pulumi.Input.asOptionalInput<String>(versionToken);
+    this.region,
+    this.role,
+    this.rule,
+    this.tableBucketArn,
+    this.versionToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class TableBucketReplicationState {
 
   factory TableBucketReplicationState.fromMap(Map<String, dynamic> map) {
     return TableBucketReplicationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<TableBucketReplicationRule>(TableBucketReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())),
-      tableBucketArn: map['tableBucketArn'] == null ? null : pulumi.Output.create<String>(map['tableBucketArn'] as String),
-      versionToken: map['versionToken'] == null ? null : pulumi.Output.create<String>(map['versionToken'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      rule: map['rule'] == null ? null : (TableBucketReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      tableBucketArn: map['tableBucketArn'] == null ? null : (map['tableBucketArn'] as String).input(),
+      versionToken: map['versionToken'] == null ? null : (map['versionToken'] as String).input(),
     );
   }
 }

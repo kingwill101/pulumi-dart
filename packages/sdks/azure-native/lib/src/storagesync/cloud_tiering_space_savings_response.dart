@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Server endpoint cloud tiering status object.
 class CloudTieringSpaceSavingsResponse {
   /// Cached content size on the server
-  final double cachedSizeBytes;
+  final pulumi.Input<double> cachedSizeBytes;
   /// Last updated timestamp
-  final String lastUpdatedTimestamp;
+  final pulumi.Input<String> lastUpdatedTimestamp;
   /// Count of bytes saved on the server
-  final double spaceSavingsBytes;
+  final pulumi.Input<double> spaceSavingsBytes;
   /// Percentage of cached size over total size
-  final int spaceSavingsPercent;
+  final pulumi.Input<int> spaceSavingsPercent;
   /// Total size of content in the azure file share
-  final double totalSizeCloudBytes;
+  final pulumi.Input<double> totalSizeCloudBytes;
   /// Volume size
-  final double volumeSizeBytes;
+  final pulumi.Input<double> volumeSizeBytes;
 
   /// Creates a new [CloudTieringSpaceSavingsResponse].
   /// [cachedSizeBytes] Cached content size on the server
@@ -45,12 +46,12 @@ class CloudTieringSpaceSavingsResponse {
 
   factory CloudTieringSpaceSavingsResponse.fromMap(Map<String, dynamic> map) {
     return CloudTieringSpaceSavingsResponse(
-      cachedSizeBytes: map['cachedSizeBytes'] as double,
-      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] as String,
-      spaceSavingsBytes: map['spaceSavingsBytes'] as double,
-      spaceSavingsPercent: map['spaceSavingsPercent'] as int,
-      totalSizeCloudBytes: map['totalSizeCloudBytes'] as double,
-      volumeSizeBytes: map['volumeSizeBytes'] as double,
+      cachedSizeBytes: (map['cachedSizeBytes'] as double).input(),
+      lastUpdatedTimestamp: (map['lastUpdatedTimestamp'] as String).input(),
+      spaceSavingsBytes: (map['spaceSavingsBytes'] as double).input(),
+      spaceSavingsPercent: (map['spaceSavingsPercent'] as int).input(),
+      totalSizeCloudBytes: (map['totalSizeCloudBytes'] as double).input(),
+      volumeSizeBytes: (map['volumeSizeBytes'] as double).input(),
     );
   }
 }

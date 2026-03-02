@@ -22,15 +22,11 @@ class GetManagementGroupArgs {
   /// [groupId] Management Group ID.
   /// [recurse] The $recurse=true query string parameter allows clients to request inclusion of entire hierarchy in the response payload. Note that  $expand=children must be passed up if $recurse is set to true.
   GetManagementGroupArgs({
-    pulumi.Output<String>? expand,
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> groupId,
-    pulumi.Output<bool>? recurse,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      recurse = pulumi.Input.asOptionalInput<bool>(recurse);
+    this.expand,
+    this.filter,
+    required this.groupId,
+    this.recurse,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetManagementGroupArgs {
 
   factory GetManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementGroupArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      recurse: map['recurse'] == null ? null : pulumi.Output.create<bool>(map['recurse'] as bool),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      recurse: map['recurse'] == null ? null : (map['recurse'] as bool).input(),
     );
   }
 }

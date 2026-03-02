@@ -7,25 +7,25 @@ import 'tag.dart';
 /// Definition of awsLightsailBucket
 class AwsLightsailBucketProperties {
   /// Indicates whether the bundle that is currently applied to a bucket can be changed to another bundle. You can update a bucket's bundle only one time within a monthly AWS billing cycle.
-  final bool? ableToUpdateBundle;
+  final pulumi.Input<bool>? ableToUpdateBundle;
   /// An object that sets the public accessibility of objects in the specified bucket.
-  final AccessRules? accessRules;
+  final pulumi.Input<AccessRules>? accessRules;
   /// Property bucketArn
-  final String? bucketArn;
+  final pulumi.Input<String>? bucketArn;
   /// The name for the bucket.
-  final String? bucketName;
+  final pulumi.Input<String>? bucketName;
   /// The ID of the bundle to use for the bucket.
-  final String? bundleId;
+  final pulumi.Input<String>? bundleId;
   /// Specifies whether to enable or disable versioning of objects in the bucket.
-  final bool? objectVersioning;
+  final pulumi.Input<bool>? objectVersioning;
   /// An array of strings to specify the AWS account IDs that can access the bucket.
-  final List<String>? readOnlyAccessAccounts;
+  final pulumi.Input<List<String>>? readOnlyAccessAccounts;
   /// The names of the Lightsail resources for which to set bucket access.
-  final List<String>? resourcesReceivingAccess;
+  final pulumi.Input<List<String>>? resourcesReceivingAccess;
   /// An array of key-value pairs to apply to this resource.
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
   /// The URL of the bucket.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [AwsLightsailBucketProperties].
   /// [ableToUpdateBundle] Indicates whether the bundle that is currently applied to a bucket can be changed to another bundle. You can update a bucket's bundle only one time within a monthly AWS billing cycle.
@@ -54,30 +54,30 @@ class AwsLightsailBucketProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'ableToUpdateBundle': ?ableToUpdateBundle,
-      'accessRules': ?accessRules == null ? null : accessRules!.toMap(),
+      'accessRules': ?pulumi.Input.mapOptionalInputValue<AccessRules, Map<String, dynamic>>(accessRules, (value) => value.toMap()),
       'bucketArn': ?bucketArn,
       'bucketName': ?bucketName,
       'bundleId': ?bundleId,
       'objectVersioning': ?objectVersioning,
       'readOnlyAccessAccounts': ?readOnlyAccessAccounts,
       'resourcesReceivingAccess': ?resourcesReceivingAccess,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'url': ?url,
     };
   }
 
   factory AwsLightsailBucketProperties.fromMap(Map<String, dynamic> map) {
     return AwsLightsailBucketProperties(
-      ableToUpdateBundle: map['ableToUpdateBundle'] == null ? null : map['ableToUpdateBundle'] as bool,
-      accessRules: map['accessRules'] == null ? null : AccessRules.fromMap((map['accessRules'] as Map).cast<String, dynamic>()),
-      bucketArn: map['bucketArn'] == null ? null : map['bucketArn'] as String,
-      bucketName: map['bucketName'] == null ? null : map['bucketName'] as String,
-      bundleId: map['bundleId'] == null ? null : map['bundleId'] as String,
-      objectVersioning: map['objectVersioning'] == null ? null : map['objectVersioning'] as bool,
-      readOnlyAccessAccounts: map['readOnlyAccessAccounts'] == null ? null : (map['readOnlyAccessAccounts'] as List).cast<String>(),
-      resourcesReceivingAccess: map['resourcesReceivingAccess'] == null ? null : (map['resourcesReceivingAccess'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
-      url: map['url'] == null ? null : map['url'] as String,
+      ableToUpdateBundle: map['ableToUpdateBundle'] == null ? null : (map['ableToUpdateBundle'] as bool).input(),
+      accessRules: map['accessRules'] == null ? null : (AccessRules.fromMap((map['accessRules'] as Map).cast<String, dynamic>())).input(),
+      bucketArn: map['bucketArn'] == null ? null : (map['bucketArn'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
+      objectVersioning: map['objectVersioning'] == null ? null : (map['objectVersioning'] as bool).input(),
+      readOnlyAccessAccounts: map['readOnlyAccessAccounts'] == null ? null : ((map['readOnlyAccessAccounts'] as List).cast<String>()).input(),
+      resourcesReceivingAccess: map['resourcesReceivingAccess'] == null ? null : ((map['resourcesReceivingAccess'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

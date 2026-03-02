@@ -25,11 +25,9 @@ class TenantRoleUserAttachmentArgs {
   /// [accountId] Account UID
   /// [tenantRole] Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
   TenantRoleUserAttachmentArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? tenantRole,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      tenantRole = pulumi.Input.asOptionalInput<String>(tenantRole);
+    this.accountId,
+    this.tenantRole,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,8 +38,8 @@ class TenantRoleUserAttachmentArgs {
 
   factory TenantRoleUserAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TenantRoleUserAttachmentArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      tenantRole: map['tenantRole'] == null ? null : pulumi.Output.create<String>(map['tenantRole'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      tenantRole: map['tenantRole'] == null ? null : (map['tenantRole'] as String).input(),
     );
   }
 }

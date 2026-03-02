@@ -23,15 +23,11 @@ class UploadedCertificateArgs {
   /// [name] Name of the Certificate.
   /// [privateKey] PEM encoded private key belonging to the certificate.
   UploadedCertificateArgs({
-    required pulumi.Output<String> certificate,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> privateKey,
-  }) :
-      certificate = pulumi.Input.asInput<String>(certificate),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateKey = pulumi.Input.asInput<String>(privateKey);
+    required this.certificate,
+    this.labels,
+    this.name,
+    required this.privateKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class UploadedCertificateArgs {
 
   factory UploadedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return UploadedCertificateArgs(
-      certificate: pulumi.Output.create<String>(map['certificate'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateKey: pulumi.Output.create<String>(map['privateKey'] as String),
+      certificate: (map['certificate'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateKey: (map['privateKey'] as String).input(),
     );
   }
 }

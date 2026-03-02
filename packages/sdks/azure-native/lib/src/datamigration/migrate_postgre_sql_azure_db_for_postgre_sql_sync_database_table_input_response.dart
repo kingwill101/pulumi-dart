@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Selected tables for the migration
 class MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse {
   /// Name of the table to migrate
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse].
   /// [name] Name of the table to migrate
@@ -20,7 +21,7 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse {
 
   factory MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

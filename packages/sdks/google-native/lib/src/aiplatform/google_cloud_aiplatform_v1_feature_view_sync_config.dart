@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoogleCloudAiplatformV1FeatureViewSyncConfig {
   /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
-  final String? cron;
+  final pulumi.Input<String>? cron;
 
   /// Creates a new [GoogleCloudAiplatformV1FeatureViewSyncConfig].
   /// [cron] Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
@@ -19,7 +20,7 @@ class GoogleCloudAiplatformV1FeatureViewSyncConfig {
 
   factory GoogleCloudAiplatformV1FeatureViewSyncConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeatureViewSyncConfig(
-      cron: map['cron'] == null ? null : map['cron'] as String,
+      cron: map['cron'] == null ? null : (map['cron'] as String).input(),
     );
   }
 }

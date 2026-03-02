@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorCount {
-  final int? max;
-  final int? min;
+  final pulumi.Input<int>? max;
+  final pulumi.Input<int>? min;
 
   /// Creates a new [GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorCount].
   /// [max] Optional.
@@ -22,8 +23,8 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceler
 
   factory GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorCount.fromMap(Map<String, dynamic> map) {
     return GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorCount(
-      max: map['max'] == null ? null : map['max'] as int,
-      min: map['min'] == null ? null : map['min'] as int,
+      max: map['max'] == null ? null : (map['max'] as int).input(),
+      min: map['min'] == null ? null : (map['min'] as int).input(),
     );
   }
 }

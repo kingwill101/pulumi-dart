@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTagsSortBy {
   /// key that's used to sort the data. Valid values are: `BlendedCost`,  `UnblendedCost`, `AmortizedCost`, `NetAmortizedCost`, `NetUnblendedCost`, `UsageQuantity`, `NormalizedUsageAmount`.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// order that's used to sort the data. Valid values are: `ASCENDING`,  `DESCENDING`.
-  final String? sortOrder;
+  final pulumi.Input<String>? sortOrder;
 
   /// Creates a new [GetTagsSortBy].
   /// [key] key that's used to sort the data. Valid values are: `BlendedCost`,  `UnblendedCost`, `AmortizedCost`, `NetAmortizedCost`, `NetUnblendedCost`, `UsageQuantity`, `NormalizedUsageAmount`.
@@ -24,8 +25,8 @@ class GetTagsSortBy {
 
   factory GetTagsSortBy.fromMap(Map<String, dynamic> map) {
     return GetTagsSortBy(
-      key: map['key'] == null ? null : map['key'] as String,
-      sortOrder: map['sortOrder'] == null ? null : map['sortOrder'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder'] as String).input(),
     );
   }
 }

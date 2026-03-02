@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'env_var_source_response.dart';
 
 /// EnvVar represents an environment variable present in a Container.
 class EnvVarResponse {
   /// Name of the environment variable.
-  final String name;
+  final pulumi.Input<String> name;
   /// Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
-  final String value;
+  final pulumi.Input<String> value;
   /// Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty.
-  final EnvVarSourceResponse valueFrom;
+  final pulumi.Input<EnvVarSourceResponse> valueFrom;
 
   /// Creates a new [EnvVarResponse].
   /// [name] Name of the environment variable.
@@ -25,15 +26,15 @@ class EnvVarResponse {
     return <String, dynamic>{
       'name': name,
       'value': value,
-      'valueFrom': valueFrom.toMap(),
+      'valueFrom': pulumi.Input.mapInputValue<EnvVarSourceResponse, Map<String, dynamic>>(valueFrom, (value) => value.toMap()),
     };
   }
 
   factory EnvVarResponse.fromMap(Map<String, dynamic> map) {
     return EnvVarResponse(
-      name: map['name'] as String,
-      value: map['value'] as String,
-      valueFrom: EnvVarSourceResponse.fromMap((map['valueFrom'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
+      valueFrom: (EnvVarSourceResponse.fromMap((map['valueFrom'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

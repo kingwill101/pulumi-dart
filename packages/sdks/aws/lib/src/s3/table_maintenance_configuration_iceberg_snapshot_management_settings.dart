@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableMaintenanceConfigurationIcebergSnapshotManagementSettings {
   /// Snapshots older than this will be marked for deletiion.
   /// Must be at least `1`.
-  final int maxSnapshotAgeHours;
+  final pulumi.Input<int> maxSnapshotAgeHours;
   /// Minimum number of snapshots to keep.
   /// Must be at least `1`.
-  final int minSnapshotsToKeep;
+  final pulumi.Input<int> minSnapshotsToKeep;
 
   /// Creates a new [TableMaintenanceConfigurationIcebergSnapshotManagementSettings].
   /// [maxSnapshotAgeHours] Snapshots older than this will be marked for deletiion.
@@ -26,8 +27,8 @@ class TableMaintenanceConfigurationIcebergSnapshotManagementSettings {
 
   factory TableMaintenanceConfigurationIcebergSnapshotManagementSettings.fromMap(Map<String, dynamic> map) {
     return TableMaintenanceConfigurationIcebergSnapshotManagementSettings(
-      maxSnapshotAgeHours: map['maxSnapshotAgeHours'] as int,
-      minSnapshotsToKeep: map['minSnapshotsToKeep'] as int,
+      maxSnapshotAgeHours: (map['maxSnapshotAgeHours'] as int).input(),
+      minSnapshotsToKeep: (map['minSnapshotsToKeep'] as int).input(),
     );
   }
 }

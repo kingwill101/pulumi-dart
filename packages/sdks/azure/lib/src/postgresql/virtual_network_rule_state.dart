@@ -28,17 +28,12 @@ class VirtualNetworkRuleState {
   /// [serverName] The name of the SQL Server to which this PostgreSQL virtual network rule will be applied to. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the subnet that the PostgreSQL server will be connected to.
   VirtualNetworkRuleState({
-    pulumi.Output<bool>? ignoreMissingVnetServiceEndpoint,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? serverName,
-    pulumi.Output<String>? subnetId,
-  }) :
-      ignoreMissingVnetServiceEndpoint = pulumi.Input.asOptionalInput<bool>(ignoreMissingVnetServiceEndpoint),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asOptionalInput<String>(serverName),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
+    this.ignoreMissingVnetServiceEndpoint,
+    this.name,
+    this.resourceGroupName,
+    this.serverName,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class VirtualNetworkRuleState {
 
   factory VirtualNetworkRuleState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleState(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : pulumi.Output.create<bool>(map['ignoreMissingVnetServiceEndpoint'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: map['serverName'] == null ? null : pulumi.Output.create<String>(map['serverName'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

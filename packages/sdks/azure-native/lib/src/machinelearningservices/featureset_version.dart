@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'featureset_specification.dart';
 import 'materialization_settings.dart';
 
 /// DTO object representing feature set version
 class FeaturesetVersion {
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Specifies list of entities
-  final List<String>? entities;
+  final pulumi.Input<List<String>>? entities;
   /// If the name version are system generated (anonymous registration).
-  final bool? isAnonymous;
+  final pulumi.Input<bool>? isAnonymous;
   /// Is the asset archived?
-  final bool? isArchived;
+  final pulumi.Input<bool>? isArchived;
   /// Specifies the materialization settings
-  final MaterializationSettings? materializationSettings;
+  final pulumi.Input<MaterializationSettings>? materializationSettings;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Specifies the feature spec details
-  final FeaturesetSpecification? specification;
+  final pulumi.Input<FeaturesetSpecification>? specification;
   /// Specifies the asset stage
-  final String? stage;
+  final pulumi.Input<String>? stage;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [FeaturesetVersion].
   /// [description] The asset description text.
@@ -52,9 +53,9 @@ class FeaturesetVersion {
       'entities': ?entities,
       'isAnonymous': ?isAnonymous,
       'isArchived': ?isArchived,
-      'materializationSettings': ?materializationSettings == null ? null : materializationSettings!.toMap(),
+      'materializationSettings': ?pulumi.Input.mapOptionalInputValue<MaterializationSettings, Map<String, dynamic>>(materializationSettings, (value) => value.toMap()),
       'properties': ?properties,
-      'specification': ?specification == null ? null : specification!.toMap(),
+      'specification': ?pulumi.Input.mapOptionalInputValue<FeaturesetSpecification, Map<String, dynamic>>(specification, (value) => value.toMap()),
       'stage': ?stage,
       'tags': ?tags,
     };
@@ -62,15 +63,15 @@ class FeaturesetVersion {
 
   factory FeaturesetVersion.fromMap(Map<String, dynamic> map) {
     return FeaturesetVersion(
-      description: map['description'] == null ? null : map['description'] as String,
-      entities: map['entities'] == null ? null : (map['entities'] as List).cast<String>(),
-      isAnonymous: map['isAnonymous'] == null ? null : map['isAnonymous'] as bool,
-      isArchived: map['isArchived'] == null ? null : map['isArchived'] as bool,
-      materializationSettings: map['materializationSettings'] == null ? null : MaterializationSettings.fromMap((map['materializationSettings'] as Map).cast<String, dynamic>()),
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      specification: map['specification'] == null ? null : FeaturesetSpecification.fromMap((map['specification'] as Map).cast<String, dynamic>()),
-      stage: map['stage'] == null ? null : map['stage'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      entities: map['entities'] == null ? null : ((map['entities'] as List).cast<String>()).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
+      materializationSettings: map['materializationSettings'] == null ? null : (MaterializationSettings.fromMap((map['materializationSettings'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      specification: map['specification'] == null ? null : (FeaturesetSpecification.fromMap((map['specification'] as Map).cast<String, dynamic>())).input(),
+      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

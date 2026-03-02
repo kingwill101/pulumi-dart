@@ -23,15 +23,11 @@ class SpringbootappArgs {
   /// [siteName] The springbootsites name.
   /// [springbootappsName] The springbootapps name.
   SpringbootappArgs({
-    pulumi.Output<SpringbootappsProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteName,
-    pulumi.Output<String>? springbootappsName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<SpringbootappsProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asInput<String>(siteName),
-      springbootappsName = pulumi.Input.asOptionalInput<String>(springbootappsName);
+    this.properties,
+    required this.resourceGroupName,
+    required this.siteName,
+    this.springbootappsName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SpringbootappArgs {
 
   factory SpringbootappArgs.fromMap(Map<String, dynamic> map) {
     return SpringbootappArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<SpringbootappsProperties>(SpringbootappsProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
-      springbootappsName: map['springbootappsName'] == null ? null : pulumi.Output.create<String>(map['springbootappsName'] as String),
+      properties: map['properties'] == null ? null : (SpringbootappsProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
+      springbootappsName: map['springbootappsName'] == null ? null : (map['springbootappsName'] as String).input(),
     );
   }
 }

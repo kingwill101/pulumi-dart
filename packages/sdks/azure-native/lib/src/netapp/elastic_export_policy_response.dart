@@ -6,7 +6,7 @@ import 'elastic_export_policy_rule_response.dart';
 /// Set of export policy rules
 class ElasticExportPolicyResponse {
   /// Export policy rule
-  final List<ElasticExportPolicyRuleResponse>? rules;
+  final pulumi.Input<List<ElasticExportPolicyRuleResponse>>? rules;
 
   /// Creates a new [ElasticExportPolicyResponse].
   /// [rules] Export policy rule
@@ -16,13 +16,13 @@ class ElasticExportPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<ElasticExportPolicyRuleResponse, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<ElasticExportPolicyRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ElasticExportPolicyRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ElasticExportPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ElasticExportPolicyResponse(
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<ElasticExportPolicyRuleResponse>(map['rules'], (value) => ElasticExportPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ElasticExportPolicyRuleResponse>(map['rules'], (value) => ElasticExportPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

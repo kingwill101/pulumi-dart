@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a column field within a table schema.
 class GoogleCloudDataplexV1SchemaSchemaFieldResponse {
   /// Optional. User friendly field description. Must be less than or equal to 1024 characters.
-  final String description;
+  final pulumi.Input<String> description;
   /// Optional. Any nested field for complex types.
-  final List<GoogleCloudDataplexV1SchemaSchemaFieldResponse> fields;
+  final pulumi.Input<List<GoogleCloudDataplexV1SchemaSchemaFieldResponse>> fields;
   /// Additional field semantics.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore.
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of field.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleCloudDataplexV1SchemaSchemaFieldResponse].
   /// [description] Optional. User friendly field description. Must be less than or equal to 1024 characters.
@@ -32,7 +32,7 @@ class GoogleCloudDataplexV1SchemaSchemaFieldResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'fields': pulumi.Input.encodeList<GoogleCloudDataplexV1SchemaSchemaFieldResponse, Map<String, dynamic>>(fields, (value) => value.toMap()),
+      'fields': pulumi.Input.mapInputValue<List<GoogleCloudDataplexV1SchemaSchemaFieldResponse>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<GoogleCloudDataplexV1SchemaSchemaFieldResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'mode': mode,
       'name': name,
       'type': type,
@@ -41,11 +41,11 @@ class GoogleCloudDataplexV1SchemaSchemaFieldResponse {
 
   factory GoogleCloudDataplexV1SchemaSchemaFieldResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1SchemaSchemaFieldResponse(
-      description: map['description'] as String,
-      fields: pulumi.Input.decodeList<GoogleCloudDataplexV1SchemaSchemaFieldResponse>(map['fields'], (value) => GoogleCloudDataplexV1SchemaSchemaFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
-      mode: map['mode'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      description: (map['description'] as String).input(),
+      fields: (pulumi.Input.decodeList<GoogleCloudDataplexV1SchemaSchemaFieldResponse>(map['fields'], (value) => GoogleCloudDataplexV1SchemaSchemaFieldResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: (map['mode'] as String).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

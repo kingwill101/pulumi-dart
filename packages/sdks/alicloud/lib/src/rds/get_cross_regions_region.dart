@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCrossRegionsRegion {
   /// ID of the region.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetCrossRegionsRegion].
   /// [id] ID of the region.
@@ -19,7 +20,7 @@ class GetCrossRegionsRegion {
 
   factory GetCrossRegionsRegion.fromMap(Map<String, dynamic> map) {
     return GetCrossRegionsRegion(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

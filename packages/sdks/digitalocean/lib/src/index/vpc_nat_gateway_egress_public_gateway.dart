@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcNatGatewayEgressPublicGateway {
   /// IPv4 address
-  final String? ipv4;
+  final pulumi.Input<String>? ipv4;
 
   /// Creates a new [VpcNatGatewayEgressPublicGateway].
   /// [ipv4] IPv4 address
@@ -19,7 +20,7 @@ class VpcNatGatewayEgressPublicGateway {
 
   factory VpcNatGatewayEgressPublicGateway.fromMap(Map<String, dynamic> map) {
     return VpcNatGatewayEgressPublicGateway(
-      ipv4: map['ipv4'] == null ? null : map['ipv4'] as String,
+      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gpu_resource_response.dart';
 
 /// The resource limits.
 class ResourceLimitsResponse {
   /// The CPU limit of this container instance.
-  final double? cpu;
+  final pulumi.Input<double>? cpu;
   /// The GPU limit of this container instance.
-  final GpuResourceResponse? gpu;
+  final pulumi.Input<GpuResourceResponse>? gpu;
   /// The memory limit in GB of this container instance.
-  final double? memoryInGB;
+  final pulumi.Input<double>? memoryInGB;
 
   /// Creates a new [ResourceLimitsResponse].
   /// [cpu] The CPU limit of this container instance.
@@ -24,16 +25,16 @@ class ResourceLimitsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cpu': ?cpu,
-      'gpu': ?gpu == null ? null : gpu!.toMap(),
+      'gpu': ?pulumi.Input.mapOptionalInputValue<GpuResourceResponse, Map<String, dynamic>>(gpu, (value) => value.toMap()),
       'memoryInGB': ?memoryInGB,
     };
   }
 
   factory ResourceLimitsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceLimitsResponse(
-      cpu: map['cpu'] == null ? null : map['cpu'] as double,
-      gpu: map['gpu'] == null ? null : GpuResourceResponse.fromMap((map['gpu'] as Map).cast<String, dynamic>()),
-      memoryInGB: map['memoryInGB'] == null ? null : map['memoryInGB'] as double,
+      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
+      gpu: map['gpu'] == null ? null : (GpuResourceResponse.fromMap((map['gpu'] as Map).cast<String, dynamic>())).input(),
+      memoryInGB: map['memoryInGB'] == null ? null : (map['memoryInGB'] as double).input(),
     );
   }
 }

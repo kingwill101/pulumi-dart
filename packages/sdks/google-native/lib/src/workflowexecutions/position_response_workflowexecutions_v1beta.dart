@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Position contains source position information about the stack trace element such as line number, column number and length of the code block in bytes.
 class PositionResponseWorkflowexecutionsV1beta {
   /// The source code column position (of the line) the current instruction was generated from.
-  final String column;
+  final pulumi.Input<String> column;
   /// The number of bytes of source code making up this stack trace element.
-  final String length;
+  final pulumi.Input<String> length;
   /// The source code line number the current instruction was generated from.
-  final String line;
+  final pulumi.Input<String> line;
 
   /// Creates a new [PositionResponseWorkflowexecutionsV1beta].
   /// [column] The source code column position (of the line) the current instruction was generated from.
@@ -30,9 +31,9 @@ class PositionResponseWorkflowexecutionsV1beta {
 
   factory PositionResponseWorkflowexecutionsV1beta.fromMap(Map<String, dynamic> map) {
     return PositionResponseWorkflowexecutionsV1beta(
-      column: map['column'] as String,
-      length: map['length'] as String,
-      line: map['line'] as String,
+      column: (map['column'] as String).input(),
+      length: (map['length'] as String).input(),
+      line: (map['line'] as String).input(),
     );
   }
 }

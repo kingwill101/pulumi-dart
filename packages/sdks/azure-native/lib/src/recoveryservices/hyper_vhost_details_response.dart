@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Hyper-V host details.
 class HyperVHostDetailsResponse {
   /// The Hyper-V host Id.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Mars agent version.
-  final String marsAgentVersion;
+  final pulumi.Input<String> marsAgentVersion;
   /// The Hyper-V host name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [HyperVHostDetailsResponse].
   /// [id] The Hyper-V host Id.
@@ -30,9 +31,9 @@ class HyperVHostDetailsResponse {
 
   factory HyperVHostDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HyperVHostDetailsResponse(
-      id: map['id'] as String,
-      marsAgentVersion: map['marsAgentVersion'] as String,
-      name: map['name'] as String,
+      id: (map['id'] as String).input(),
+      marsAgentVersion: (map['marsAgentVersion'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

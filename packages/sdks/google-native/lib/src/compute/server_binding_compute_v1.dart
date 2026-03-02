@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_binding_type_compute_v1.dart';
 
 class ServerBindingComputeV1 {
-  final ServerBindingTypeComputeV1? type;
+  final pulumi.Input<ServerBindingTypeComputeV1>? type;
 
   /// Creates a new [ServerBindingComputeV1].
   /// [type] Optional.
@@ -13,13 +14,13 @@ class ServerBindingComputeV1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<ServerBindingTypeComputeV1, String>(type, (value) => value.value),
     };
   }
 
   factory ServerBindingComputeV1.fromMap(Map<String, dynamic> map) {
     return ServerBindingComputeV1(
-      type: map['type'] == null ? null : ServerBindingTypeComputeV1.fromValue(map['type'] as String),
+      type: map['type'] == null ? null : (ServerBindingTypeComputeV1.fromValue(map['type'] as String)).input(),
     );
   }
 }

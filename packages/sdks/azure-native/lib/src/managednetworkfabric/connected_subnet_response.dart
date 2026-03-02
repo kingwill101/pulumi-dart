@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Connected Subnet properties.
 class ConnectedSubnetResponse {
   /// Switch configuration description.
-  final String? annotation;
+  final pulumi.Input<String>? annotation;
   /// Prefix of the Connected Subnet.
-  final String prefix;
+  final pulumi.Input<String> prefix;
 
   /// Creates a new [ConnectedSubnetResponse].
   /// [annotation] Switch configuration description.
@@ -25,8 +26,8 @@ class ConnectedSubnetResponse {
 
   factory ConnectedSubnetResponse.fromMap(Map<String, dynamic> map) {
     return ConnectedSubnetResponse(
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
-      prefix: map['prefix'] as String,
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      prefix: (map['prefix'] as String).input(),
     );
   }
 }

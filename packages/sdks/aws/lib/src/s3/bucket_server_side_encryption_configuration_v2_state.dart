@@ -20,15 +20,11 @@ class BucketServerSideEncryptionConfigurationV2State {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rules] Set of server-side encryption configuration rules. See below. Currently, only a single rule is supported.
   BucketServerSideEncryptionConfigurationV2State({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? expectedBucketOwner,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<BucketServerSideEncryptionConfigurationV2Rule>>? rules,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rules = pulumi.Input.asOptionalInput<List<BucketServerSideEncryptionConfigurationV2Rule>>(rules);
+    this.bucket,
+    this.expectedBucketOwner,
+    this.region,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class BucketServerSideEncryptionConfigurationV2State {
 
   factory BucketServerSideEncryptionConfigurationV2State.fromMap(Map<String, dynamic> map) {
     return BucketServerSideEncryptionConfigurationV2State(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<BucketServerSideEncryptionConfigurationV2Rule>>(pulumi.Input.decodeList<BucketServerSideEncryptionConfigurationV2Rule>(map['rules'], (value) => BucketServerSideEncryptionConfigurationV2Rule.fromMap((value as Map).cast<String, dynamic>()))),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketServerSideEncryptionConfigurationV2Rule>(map['rules'], (value) => BucketServerSideEncryptionConfigurationV2Rule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

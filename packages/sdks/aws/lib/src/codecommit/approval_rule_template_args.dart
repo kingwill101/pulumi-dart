@@ -22,15 +22,11 @@ class ApprovalRuleTemplateArgs {
   /// [name] The name for the approval rule template. Maximum of 100 characters.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ApprovalRuleTemplateArgs({
-    required pulumi.Output<String> content,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      content = pulumi.Input.asInput<String>(content),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.content,
+    this.description,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ApprovalRuleTemplateArgs {
 
   factory ApprovalRuleTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ApprovalRuleTemplateArgs(
-      content: pulumi.Output.create<String>(map['content'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      content: (map['content'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class SdkvoiceVoiceProfileDomainArgs {
   /// [serverSideEncryptionConfiguration] Configuration for server side encryption.
   /// [tags] Optional.
   SdkvoiceVoiceProfileDomainArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration> serverSideEncryptionConfiguration,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverSideEncryptionConfiguration = pulumi.Input.asInput<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>(serverSideEncryptionConfiguration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.name,
+    this.region,
+    required this.serverSideEncryptionConfiguration,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SdkvoiceVoiceProfileDomainArgs {
 
   factory SdkvoiceVoiceProfileDomainArgs.fromMap(Map<String, dynamic> map) {
     return SdkvoiceVoiceProfileDomainArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverSideEncryptionConfiguration: pulumi.Output.create<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>(SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration.fromMap((map['serverSideEncryptionConfiguration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverSideEncryptionConfiguration: (SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration.fromMap((map['serverSideEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

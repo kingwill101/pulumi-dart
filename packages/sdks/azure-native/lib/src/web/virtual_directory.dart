@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Directory for virtual application.
 class VirtualDirectory {
   /// Physical path.
-  final String? physicalPath;
+  final pulumi.Input<String>? physicalPath;
   /// Path to virtual application.
-  final String? virtualPath;
+  final pulumi.Input<String>? virtualPath;
 
   /// Creates a new [VirtualDirectory].
   /// [physicalPath] Physical path.
@@ -25,8 +26,8 @@ class VirtualDirectory {
 
   factory VirtualDirectory.fromMap(Map<String, dynamic> map) {
     return VirtualDirectory(
-      physicalPath: map['physicalPath'] == null ? null : map['physicalPath'] as String,
-      virtualPath: map['virtualPath'] == null ? null : map['virtualPath'] as String,
+      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath'] as String).input(),
+      virtualPath: map['virtualPath'] == null ? null : (map['virtualPath'] as String).input(),
     );
   }
 }

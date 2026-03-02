@@ -20,15 +20,11 @@ class ChannelDirectLineState {
   /// [resourceGroupName] The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   /// [sites] A site represents a client application that you want to connect to your bot. One or more `site` blocks as defined below.
   ChannelDirectLineState({
-    pulumi.Output<String>? botName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<List<ChannelDirectLineSite>>? sites,
-  }) :
-      botName = pulumi.Input.asOptionalInput<String>(botName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sites = pulumi.Input.asOptionalInput<List<ChannelDirectLineSite>>(sites);
+    this.botName,
+    this.location,
+    this.resourceGroupName,
+    this.sites,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class ChannelDirectLineState {
 
   factory ChannelDirectLineState.fromMap(Map<String, dynamic> map) {
     return ChannelDirectLineState(
-      botName: map['botName'] == null ? null : pulumi.Output.create<String>(map['botName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sites: map['sites'] == null ? null : pulumi.Output.create<List<ChannelDirectLineSite>>(pulumi.Input.decodeList<ChannelDirectLineSite>(map['sites'], (value) => ChannelDirectLineSite.fromMap((value as Map).cast<String, dynamic>()))),
+      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<ChannelDirectLineSite>(map['sites'], (value) => ChannelDirectLineSite.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

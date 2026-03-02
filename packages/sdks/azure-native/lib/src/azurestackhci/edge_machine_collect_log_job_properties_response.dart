@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'edge_machine_collect_log_job_reported_properties_response.dart';
 import 'error_detail_response.dart';
 
 /// Properties for pausing a server in the cluster.
 class EdgeMachineCollectLogJobPropertiesResponse {
   /// Deployment mode to trigger job.
-  final String? deploymentMode;
+  final pulumi.Input<String>? deploymentMode;
   /// The UTC date and time at which the job completed.
-  final String endTimeUtc;
+  final pulumi.Input<String> endTimeUtc;
   /// error details.
-  final ErrorDetailResponse error;
+  final pulumi.Input<ErrorDetailResponse> error;
   /// From date for log collection.
-  final String fromDate;
+  final pulumi.Input<String> fromDate;
   /// Unique, immutable job id.
-  final String jobId;
+  final pulumi.Input<String> jobId;
   /// Job Type supported.
   /// Expected value is 'CollectLog'.
-  final String jobType;
+  final pulumi.Input<String> jobType;
   /// To date for log collection.
-  final String lastLogGenerated;
+  final pulumi.Input<String> lastLogGenerated;
   /// Job provisioning state
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// log collection job reported properties.
-  final EdgeMachineCollectLogJobReportedPropertiesResponse reportedProperties;
+  final pulumi.Input<EdgeMachineCollectLogJobReportedPropertiesResponse> reportedProperties;
   /// The UTC date and time at which the job started.
-  final String startTimeUtc;
+  final pulumi.Input<String> startTimeUtc;
   /// Status of Edge device job.
-  final String status;
+  final pulumi.Input<String> status;
   /// To date for log collection.
-  final String toDate;
+  final pulumi.Input<String> toDate;
 
   /// Creates a new [EdgeMachineCollectLogJobPropertiesResponse].
   /// [deploymentMode] Deployment mode to trigger job.
@@ -63,13 +64,13 @@ class EdgeMachineCollectLogJobPropertiesResponse {
     return <String, dynamic>{
       'deploymentMode': ?deploymentMode,
       'endTimeUtc': endTimeUtc,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'fromDate': fromDate,
       'jobId': jobId,
       'jobType': jobType,
       'lastLogGenerated': lastLogGenerated,
       'provisioningState': provisioningState,
-      'reportedProperties': reportedProperties.toMap(),
+      'reportedProperties': pulumi.Input.mapInputValue<EdgeMachineCollectLogJobReportedPropertiesResponse, Map<String, dynamic>>(reportedProperties, (value) => value.toMap()),
       'startTimeUtc': startTimeUtc,
       'status': status,
       'toDate': toDate,
@@ -78,18 +79,18 @@ class EdgeMachineCollectLogJobPropertiesResponse {
 
   factory EdgeMachineCollectLogJobPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EdgeMachineCollectLogJobPropertiesResponse(
-      deploymentMode: map['deploymentMode'] == null ? null : map['deploymentMode'] as String,
-      endTimeUtc: map['endTimeUtc'] as String,
-      error: ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      fromDate: map['fromDate'] as String,
-      jobId: map['jobId'] as String,
-      jobType: map['jobType'] as String,
-      lastLogGenerated: map['lastLogGenerated'] as String,
-      provisioningState: map['provisioningState'] as String,
-      reportedProperties: EdgeMachineCollectLogJobReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>()),
-      startTimeUtc: map['startTimeUtc'] as String,
-      status: map['status'] as String,
-      toDate: map['toDate'] as String,
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
+      endTimeUtc: (map['endTimeUtc'] as String).input(),
+      error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      fromDate: (map['fromDate'] as String).input(),
+      jobId: (map['jobId'] as String).input(),
+      jobType: (map['jobType'] as String).input(),
+      lastLogGenerated: (map['lastLogGenerated'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      reportedProperties: (EdgeMachineCollectLogJobReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>())).input(),
+      startTimeUtc: (map['startTimeUtc'] as String).input(),
+      status: (map['status'] as String).input(),
+      toDate: (map['toDate'] as String).input(),
     );
   }
 }

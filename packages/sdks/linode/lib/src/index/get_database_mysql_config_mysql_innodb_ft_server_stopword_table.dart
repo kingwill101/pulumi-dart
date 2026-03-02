@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable {
-  final String description;
-  final String example;
-  final int maxLength;
-  final String pattern;
-  final bool requiresRestart;
-  final List<String> types;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> example;
+  final pulumi.Input<int> maxLength;
+  final pulumi.Input<String> pattern;
+  final pulumi.Input<bool> requiresRestart;
+  final pulumi.Input<List<String>> types;
 
   /// Creates a new [GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable].
   /// [description] Required.
@@ -38,12 +39,12 @@ class GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable {
 
   factory GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable(
-      description: map['description'] as String,
-      example: map['example'] as String,
-      maxLength: map['maxLength'] as int,
-      pattern: map['pattern'] as String,
-      requiresRestart: map['requiresRestart'] as bool,
-      types: (map['types'] as List).cast<String>(),
+      description: (map['description'] as String).input(),
+      example: (map['example'] as String).input(),
+      maxLength: (map['maxLength'] as int).input(),
+      pattern: (map['pattern'] as String).input(),
+      requiresRestart: (map['requiresRestart'] as bool).input(),
+      types: ((map['types'] as List).cast<String>()).input(),
     );
   }
 }

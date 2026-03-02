@@ -44,27 +44,17 @@ class ProductArgs {
   /// [subscriptionsLimit] The number of subscriptions a user can have to this Product at the same time.
   /// [terms] The Terms and Conditions for this Product, which must be accepted by Developers before they can begin the Subscription process.
   ProductArgs({
-    required pulumi.Output<String> apiManagementName,
-    pulumi.Output<bool>? approvalRequired,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> productId,
-    required pulumi.Output<bool> published,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? subscriptionRequired,
-    pulumi.Output<int>? subscriptionsLimit,
-    pulumi.Output<String>? terms,
-  }) :
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      approvalRequired = pulumi.Input.asOptionalInput<bool>(approvalRequired),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      productId = pulumi.Input.asInput<String>(productId),
-      published = pulumi.Input.asInput<bool>(published),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionRequired = pulumi.Input.asOptionalInput<bool>(subscriptionRequired),
-      subscriptionsLimit = pulumi.Input.asOptionalInput<int>(subscriptionsLimit),
-      terms = pulumi.Input.asOptionalInput<String>(terms);
+    required this.apiManagementName,
+    this.approvalRequired,
+    this.description,
+    required this.displayName,
+    required this.productId,
+    required this.published,
+    required this.resourceGroupName,
+    this.subscriptionRequired,
+    this.subscriptionsLimit,
+    this.terms,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class ProductArgs {
 
   factory ProductArgs.fromMap(Map<String, dynamic> map) {
     return ProductArgs(
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      approvalRequired: map['approvalRequired'] == null ? null : pulumi.Output.create<bool>(map['approvalRequired'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      published: pulumi.Output.create<bool>(map['published'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionRequired: map['subscriptionRequired'] == null ? null : pulumi.Output.create<bool>(map['subscriptionRequired'] as bool),
-      subscriptionsLimit: map['subscriptionsLimit'] == null ? null : pulumi.Output.create<int>(map['subscriptionsLimit'] as int),
-      terms: map['terms'] == null ? null : pulumi.Output.create<String>(map['terms'] as String),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      published: (map['published'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionRequired: map['subscriptionRequired'] == null ? null : (map['subscriptionRequired'] as bool).input(),
+      subscriptionsLimit: map['subscriptionsLimit'] == null ? null : (map['subscriptionsLimit'] as int).input(),
+      terms: map['terms'] == null ? null : (map['terms'] as String).input(),
     );
   }
 }

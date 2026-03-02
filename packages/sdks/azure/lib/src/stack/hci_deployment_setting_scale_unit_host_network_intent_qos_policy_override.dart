@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride {
   /// Specifies the percentage of the allocated storage traffic bandwidth. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final String? bandwidthPercentageSmb;
+  final pulumi.Input<String>? bandwidthPercentageSmb;
   /// Specifies the Cluster traffic priority. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final String? priorityValue8021ActionCluster;
+  final pulumi.Input<String>? priorityValue8021ActionCluster;
   /// Specifies the Priority Flow Control where Data Center Bridging (DCB) is used. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final String? priorityValue8021ActionSmb;
+  final pulumi.Input<String>? priorityValue8021ActionSmb;
 
   /// Creates a new [HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride].
   /// [bandwidthPercentageSmb] Specifies the percentage of the allocated storage traffic bandwidth. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
@@ -29,9 +30,9 @@ class HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride {
 
   factory HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride.fromMap(Map<String, dynamic> map) {
     return HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride(
-      bandwidthPercentageSmb: map['bandwidthPercentageSmb'] == null ? null : map['bandwidthPercentageSmb'] as String,
-      priorityValue8021ActionCluster: map['priorityValue8021ActionCluster'] == null ? null : map['priorityValue8021ActionCluster'] as String,
-      priorityValue8021ActionSmb: map['priorityValue8021ActionSmb'] == null ? null : map['priorityValue8021ActionSmb'] as String,
+      bandwidthPercentageSmb: map['bandwidthPercentageSmb'] == null ? null : (map['bandwidthPercentageSmb'] as String).input(),
+      priorityValue8021ActionCluster: map['priorityValue8021ActionCluster'] == null ? null : (map['priorityValue8021ActionCluster'] as String).input(),
+      priorityValue8021ActionSmb: map['priorityValue8021ActionSmb'] == null ? null : (map['priorityValue8021ActionSmb'] as String).input(),
     );
   }
 }

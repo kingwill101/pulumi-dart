@@ -22,15 +22,11 @@ class TeamAccessTokenArgs {
   /// [organizationName] The organization's name.
   /// [teamName] The team name.
   TeamAccessTokenArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> organizationName,
-    required pulumi.Output<String> teamName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asInput<String>(name),
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      teamName = pulumi.Input.asInput<String>(teamName);
+    this.description,
+    required this.name,
+    required this.organizationName,
+    required this.teamName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class TeamAccessTokenArgs {
 
   factory TeamAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return TeamAccessTokenArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      teamName: pulumi.Output.create<String>(map['teamName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      organizationName: (map['organizationName'] as String).input(),
+      teamName: (map['teamName'] as String).input(),
     );
   }
 }

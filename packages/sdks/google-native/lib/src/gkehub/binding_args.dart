@@ -28,21 +28,14 @@ class BindingArgs {
   /// [project] Optional.
   /// [scope] A Scope resource name in the format `projects/*/locations/*/scopes/*`.
   BindingArgs({
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> membershipBindingId,
-    required pulumi.Output<String> membershipId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? scope,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      membershipBindingId = pulumi.Input.asInput<String>(membershipBindingId),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    this.labels,
+    this.location,
+    required this.membershipBindingId,
+    required this.membershipId,
+    this.name,
+    this.project,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class BindingArgs {
 
   factory BindingArgs.fromMap(Map<String, dynamic> map) {
     return BindingArgs(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      membershipBindingId: pulumi.Output.create<String>(map['membershipBindingId'] as String),
-      membershipId: pulumi.Output.create<String>(map['membershipId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      membershipBindingId: (map['membershipBindingId'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

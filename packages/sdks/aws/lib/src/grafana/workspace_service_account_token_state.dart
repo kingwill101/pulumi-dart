@@ -34,25 +34,16 @@ class WorkspaceServiceAccountTokenState {
   /// [serviceAccountTokenId] Identifier of the service account token in the given Grafana workspace.
   /// [workspaceId] The Grafana workspace with which the service account token is associated.
   WorkspaceServiceAccountTokenState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? expiresAt,
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? secondsToLive,
-    pulumi.Output<String>? serviceAccountId,
-    pulumi.Output<String>? serviceAccountTokenId,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      expiresAt = pulumi.Input.asOptionalInput<String>(expiresAt),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secondsToLive = pulumi.Input.asOptionalInput<int>(secondsToLive),
-      serviceAccountId = pulumi.Input.asOptionalInput<String>(serviceAccountId),
-      serviceAccountTokenId = pulumi.Input.asOptionalInput<String>(serviceAccountTokenId),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.createdAt,
+    this.expiresAt,
+    this.key,
+    this.name,
+    this.region,
+    this.secondsToLive,
+    this.serviceAccountId,
+    this.serviceAccountTokenId,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class WorkspaceServiceAccountTokenState {
 
   factory WorkspaceServiceAccountTokenState.fromMap(Map<String, dynamic> map) {
     return WorkspaceServiceAccountTokenState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      expiresAt: map['expiresAt'] == null ? null : pulumi.Output.create<String>(map['expiresAt'] as String),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secondsToLive: map['secondsToLive'] == null ? null : pulumi.Output.create<int>(map['secondsToLive'] as int),
-      serviceAccountId: map['serviceAccountId'] == null ? null : pulumi.Output.create<String>(map['serviceAccountId'] as String),
-      serviceAccountTokenId: map['serviceAccountTokenId'] == null ? null : pulumi.Output.create<String>(map['serviceAccountTokenId'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secondsToLive: map['secondsToLive'] == null ? null : (map['secondsToLive'] as int).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
+      serviceAccountTokenId: map['serviceAccountTokenId'] == null ? null : (map['serviceAccountTokenId'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

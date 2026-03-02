@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserProfileDetailSso {
-  final String firstName;
-  final String lastName;
-  final String userName;
+  final pulumi.Input<String> firstName;
+  final pulumi.Input<String> lastName;
+  final pulumi.Input<String> userName;
 
   /// Creates a new [UserProfileDetailSso].
   /// [firstName] Required.
@@ -26,9 +27,9 @@ class UserProfileDetailSso {
 
   factory UserProfileDetailSso.fromMap(Map<String, dynamic> map) {
     return UserProfileDetailSso(
-      firstName: map['firstName'] as String,
-      lastName: map['lastName'] as String,
-      userName: map['userName'] as String,
+      firstName: (map['firstName'] as String).input(),
+      lastName: (map['lastName'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

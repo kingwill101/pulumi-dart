@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PluginInstanceAuthConfigApiKeyConfigApiKey {
   /// The resource name of the secret version in the format,
   /// format as: `projects/*/secrets/*/versions/*`.
   ///
   /// <a name="nested_auth_config_oauth2_client_credentials_config"></a>The `oauth2_client_credentials_config` block supports:
-  final String secretVersion;
+  final pulumi.Input<String> secretVersion;
 
   /// Creates a new [PluginInstanceAuthConfigApiKeyConfigApiKey].
   /// [secretVersion] The resource name of the secret version in the format,
@@ -22,7 +23,7 @@ class PluginInstanceAuthConfigApiKeyConfigApiKey {
 
   factory PluginInstanceAuthConfigApiKeyConfigApiKey.fromMap(Map<String, dynamic> map) {
     return PluginInstanceAuthConfigApiKeyConfigApiKey(
-      secretVersion: map['secretVersion'] as String,
+      secretVersion: (map['secretVersion'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWorkloadIdentityPoolProviderAw {
   /// The AWS account ID.
-  final String accountId;
+  final pulumi.Input<String> accountId;
 
   /// Creates a new [GetWorkloadIdentityPoolProviderAw].
   /// [accountId] The AWS account ID.
@@ -19,7 +20,7 @@ class GetWorkloadIdentityPoolProviderAw {
 
   factory GetWorkloadIdentityPoolProviderAw.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderAw(
-      accountId: map['accountId'] as String,
+      accountId: (map['accountId'] as String).input(),
     );
   }
 }

@@ -40,21 +40,14 @@ class PreventionJobTriggerArgs {
   /// [triggerId] The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// [triggers] What event needs to occur for a new job to be started.
   PreventionJobTriggerArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<PreventionJobTriggerInspectJob>? inspectJob,
-    required pulumi.Output<String> parent,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? triggerId,
-    required pulumi.Output<List<PreventionJobTriggerTrigger>> triggers,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      inspectJob = pulumi.Input.asOptionalInput<PreventionJobTriggerInspectJob>(inspectJob),
-      parent = pulumi.Input.asInput<String>(parent),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      triggerId = pulumi.Input.asOptionalInput<String>(triggerId),
-      triggers = pulumi.Input.asInput<List<PreventionJobTriggerTrigger>>(triggers);
+    this.description,
+    this.displayName,
+    this.inspectJob,
+    required this.parent,
+    this.status,
+    this.triggerId,
+    required this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,13 +63,13 @@ class PreventionJobTriggerArgs {
 
   factory PreventionJobTriggerArgs.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      inspectJob: map['inspectJob'] == null ? null : pulumi.Output.create<PreventionJobTriggerInspectJob>(PreventionJobTriggerInspectJob.fromMap((map['inspectJob'] as Map).cast<String, dynamic>())),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      triggerId: map['triggerId'] == null ? null : pulumi.Output.create<String>(map['triggerId'] as String),
-      triggers: pulumi.Output.create<List<PreventionJobTriggerTrigger>>(pulumi.Input.decodeList<PreventionJobTriggerTrigger>(map['triggers'], (value) => PreventionJobTriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      inspectJob: map['inspectJob'] == null ? null : (PreventionJobTriggerInspectJob.fromMap((map['inspectJob'] as Map).cast<String, dynamic>())).input(),
+      parent: (map['parent'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
+      triggers: (pulumi.Input.decodeList<PreventionJobTriggerTrigger>(map['triggers'], (value) => PreventionJobTriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

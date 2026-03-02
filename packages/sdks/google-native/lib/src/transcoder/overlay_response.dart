@@ -7,9 +7,9 @@ import 'image_response.dart';
 /// Overlay configuration.
 class OverlayResponse {
   /// List of animations. The list should be chronological, without any time overlap.
-  final List<AnimationResponse> animations;
+  final pulumi.Input<List<AnimationResponse>> animations;
   /// Image overlay.
-  final ImageResponse image;
+  final pulumi.Input<ImageResponse> image;
 
   /// Creates a new [OverlayResponse].
   /// [animations] List of animations. The list should be chronological, without any time overlap.
@@ -21,15 +21,15 @@ class OverlayResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'animations': pulumi.Input.encodeList<AnimationResponse, Map<String, dynamic>>(animations, (value) => value.toMap()),
-      'image': image.toMap(),
+      'animations': pulumi.Input.mapInputValue<List<AnimationResponse>, List<Map<String, dynamic>>>(animations, (value) => pulumi.Input.encodeList<AnimationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'image': pulumi.Input.mapInputValue<ImageResponse, Map<String, dynamic>>(image, (value) => value.toMap()),
     };
   }
 
   factory OverlayResponse.fromMap(Map<String, dynamic> map) {
     return OverlayResponse(
-      animations: pulumi.Input.decodeList<AnimationResponse>(map['animations'], (value) => AnimationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      image: ImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
+      animations: (pulumi.Input.decodeList<AnimationResponse>(map['animations'], (value) => AnimationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: (ImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

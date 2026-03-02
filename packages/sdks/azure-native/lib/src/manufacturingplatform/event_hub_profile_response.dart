@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties related to EventHub Resource
 class EventHubProfileResponse {
   /// Resource Id of Adx Instance
-  final String adxInstanceId;
+  final pulumi.Input<String> adxInstanceId;
   /// Host Name
-  final String hostName;
+  final pulumi.Input<String> hostName;
 
   /// Creates a new [EventHubProfileResponse].
   /// [adxInstanceId] Resource Id of Adx Instance
@@ -25,8 +26,8 @@ class EventHubProfileResponse {
 
   factory EventHubProfileResponse.fromMap(Map<String, dynamic> map) {
     return EventHubProfileResponse(
-      adxInstanceId: map['adxInstanceId'] as String,
-      hostName: map['hostName'] as String,
+      adxInstanceId: (map['adxInstanceId'] as String).input(),
+      hostName: (map['hostName'] as String).input(),
     );
   }
 }

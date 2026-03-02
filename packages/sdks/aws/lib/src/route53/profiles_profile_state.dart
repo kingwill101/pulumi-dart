@@ -36,27 +36,17 @@ class ProfilesProfileState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   ProfilesProfileState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? shareStatus,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? statusMessage,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<ProfilesProfileTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shareStatus = pulumi.Input.asOptionalInput<String>(shareStatus),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      statusMessage = pulumi.Input.asOptionalInput<String>(statusMessage),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<ProfilesProfileTimeouts>(timeouts);
+    this.arn,
+    this.name,
+    this.ownerId,
+    this.region,
+    this.shareStatus,
+    this.status,
+    this.statusMessage,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,16 +65,16 @@ class ProfilesProfileState {
 
   factory ProfilesProfileState.fromMap(Map<String, dynamic> map) {
     return ProfilesProfileState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shareStatus: map['shareStatus'] == null ? null : pulumi.Output.create<String>(map['shareStatus'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      statusMessage: map['statusMessage'] == null ? null : pulumi.Output.create<String>(map['statusMessage'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ProfilesProfileTimeouts>(ProfilesProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shareStatus: map['shareStatus'] == null ? null : (map['shareStatus'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ProfilesProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

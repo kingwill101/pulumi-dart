@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuTuneEmulatorPin {
   /// Sets which CPUs the emulator can be pinned to, allowing for controlled CPU allocation and enhanced performance.
-  final String cpuSet;
+  final pulumi.Input<String> cpuSet;
 
   /// Creates a new [DomainCpuTuneEmulatorPin].
   /// [cpuSet] Sets which CPUs the emulator can be pinned to, allowing for controlled CPU allocation and enhanced performance.
@@ -19,7 +20,7 @@ class DomainCpuTuneEmulatorPin {
 
   factory DomainCpuTuneEmulatorPin.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneEmulatorPin(
-      cpuSet: map['cpuSet'] as String,
+      cpuSet: (map['cpuSet'] as String).input(),
     );
   }
 }

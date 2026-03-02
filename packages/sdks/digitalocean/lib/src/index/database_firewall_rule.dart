@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseFirewallRule {
   /// The date and time when the firewall rule was created.
-  final String? createdAt;
+  final pulumi.Input<String>? createdAt;
   /// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
-  final String type;
+  final pulumi.Input<String> type;
   /// A unique identifier for the firewall rule.
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
   /// The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DatabaseFirewallRule].
   /// [createdAt] The date and time when the firewall rule was created.
@@ -34,10 +35,10 @@ class DatabaseFirewallRule {
 
   factory DatabaseFirewallRule.fromMap(Map<String, dynamic> map) {
     return DatabaseFirewallRule(
-      createdAt: map['createdAt'] == null ? null : map['createdAt'] as String,
-      type: map['type'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
-      value: map['value'] as String,
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      type: (map['type'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

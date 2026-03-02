@@ -18,15 +18,11 @@ class GetMetadataImportMetastoreV1alphaArgs {
   /// [project] Optional.
   /// [serviceId] Required.
   GetMetadataImportMetastoreV1alphaArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> metadataImportId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      metadataImportId = pulumi.Input.asInput<String>(metadataImportId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    required this.location,
+    required this.metadataImportId,
+    this.project,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetMetadataImportMetastoreV1alphaArgs {
 
   factory GetMetadataImportMetastoreV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetMetadataImportMetastoreV1alphaArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      metadataImportId: pulumi.Output.create<String>(map['metadataImportId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      location: (map['location'] as String).input(),
+      metadataImportId: (map['metadataImportId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

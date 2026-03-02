@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcFlowLogsLog {
   /// The Description of flow log.
-  final String description;
+  final pulumi.Input<String> description;
   /// The flow log ID.
-  final String flowLogId;
+  final pulumi.Input<String> flowLogId;
   /// The flow log name.
-  final String flowLogName;
+  final pulumi.Input<String> flowLogName;
   /// The ID of the Flow Log.
-  final String id;
+  final pulumi.Input<String> id;
   /// The log store name.
-  final String logStoreName;
+  final pulumi.Input<String> logStoreName;
   /// The project name.
-  final String projectName;
+  final pulumi.Input<String> projectName;
   /// The resource id.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// The resource type.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// The status of flow log.
-  final String status;
+  final pulumi.Input<String> status;
   /// The traffic type.
-  final String trafficType;
+  final pulumi.Input<String> trafficType;
 
   /// Creates a new [GetVpcFlowLogsLog].
   /// [description] The Description of flow log.
@@ -64,16 +65,16 @@ class GetVpcFlowLogsLog {
 
   factory GetVpcFlowLogsLog.fromMap(Map<String, dynamic> map) {
     return GetVpcFlowLogsLog(
-      description: map['description'] as String,
-      flowLogId: map['flowLogId'] as String,
-      flowLogName: map['flowLogName'] as String,
-      id: map['id'] as String,
-      logStoreName: map['logStoreName'] as String,
-      projectName: map['projectName'] as String,
-      resourceId: map['resourceId'] as String,
-      resourceType: map['resourceType'] as String,
-      status: map['status'] as String,
-      trafficType: map['trafficType'] as String,
+      description: (map['description'] as String).input(),
+      flowLogId: (map['flowLogId'] as String).input(),
+      flowLogName: (map['flowLogName'] as String).input(),
+      id: (map['id'] as String).input(),
+      logStoreName: (map['logStoreName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      status: (map['status'] as String).input(),
+      trafficType: (map['trafficType'] as String).input(),
     );
   }
 }

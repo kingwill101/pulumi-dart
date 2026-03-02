@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpnAttachmentFilter {
   /// Name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
-  final String name;
+  final pulumi.Input<String> name;
   /// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetVpnAttachmentFilter].
   /// [name] Name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
@@ -24,8 +25,8 @@ class GetVpnAttachmentFilter {
 
   factory GetVpnAttachmentFilter.fromMap(Map<String, dynamic> map) {
     return GetVpnAttachmentFilter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

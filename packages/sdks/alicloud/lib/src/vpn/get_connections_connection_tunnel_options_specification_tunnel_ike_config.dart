@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig {
   /// IKE auth Algorithm.
-  final String ikeAuthAlg;
+  final pulumi.Input<String> ikeAuthAlg;
   /// IKE encript algorithm.
-  final String ikeEncAlg;
+  final pulumi.Input<String> ikeEncAlg;
   /// IKE lifetime.
-  final int ikeLifetime;
+  final pulumi.Input<int> ikeLifetime;
   /// IKE Mode.
-  final String ikeMode;
+  final pulumi.Input<String> ikeMode;
   /// DH Group.
-  final String ikePfs;
+  final pulumi.Input<String> ikePfs;
   /// IKE Version.
-  final String ikeVersion;
+  final pulumi.Input<String> ikeVersion;
   /// The local Id.
-  final String localId;
+  final pulumi.Input<String> localId;
   /// Preshared secret key.
-  final String psk;
+  final pulumi.Input<String> psk;
   /// Remote ID.
-  final String remoteId;
+  final pulumi.Input<String> remoteId;
 
   /// Creates a new [GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig].
   /// [ikeAuthAlg] IKE auth Algorithm.
@@ -59,15 +60,15 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig {
 
   factory GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig(
-      ikeAuthAlg: map['ikeAuthAlg'] as String,
-      ikeEncAlg: map['ikeEncAlg'] as String,
-      ikeLifetime: map['ikeLifetime'] as int,
-      ikeMode: map['ikeMode'] as String,
-      ikePfs: map['ikePfs'] as String,
-      ikeVersion: map['ikeVersion'] as String,
-      localId: map['localId'] as String,
-      psk: map['psk'] as String,
-      remoteId: map['remoteId'] as String,
+      ikeAuthAlg: (map['ikeAuthAlg'] as String).input(),
+      ikeEncAlg: (map['ikeEncAlg'] as String).input(),
+      ikeLifetime: (map['ikeLifetime'] as int).input(),
+      ikeMode: (map['ikeMode'] as String).input(),
+      ikePfs: (map['ikePfs'] as String).input(),
+      ikeVersion: (map['ikeVersion'] as String).input(),
+      localId: (map['localId'] as String).input(),
+      psk: (map['psk'] as String).input(),
+      remoteId: (map['remoteId'] as String).input(),
     );
   }
 }

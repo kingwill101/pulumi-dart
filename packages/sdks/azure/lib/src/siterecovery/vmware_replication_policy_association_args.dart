@@ -20,13 +20,10 @@ class VmwareReplicationPolicyAssociationArgs {
   /// [policyId] The ID of the VMWare replication policy which to be associated. Changing this forces a new association to be created.
   /// [recoveryVaultId] The ID of the Recovery Service Vault to which the policy should be associated.
   VmwareReplicationPolicyAssociationArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> policyId,
-    required pulumi.Output<String> recoveryVaultId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyId = pulumi.Input.asInput<String>(policyId),
-      recoveryVaultId = pulumi.Input.asInput<String>(recoveryVaultId);
+    this.name,
+    required this.policyId,
+    required this.recoveryVaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class VmwareReplicationPolicyAssociationArgs {
 
   factory VmwareReplicationPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VmwareReplicationPolicyAssociationArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
-      recoveryVaultId: pulumi.Output.create<String>(map['recoveryVaultId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
+      recoveryVaultId: (map['recoveryVaultId'] as String).input(),
     );
   }
 }

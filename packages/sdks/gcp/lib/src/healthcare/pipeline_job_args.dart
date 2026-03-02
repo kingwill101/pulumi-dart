@@ -52,23 +52,15 @@ class PipelineJobArgs {
   /// [name] Specifies the name of the pipeline job. This field is user-assigned.
   /// [reconciliationPipelineJob] Specifies reconciliation configuration.
   PipelineJobArgs({
-    pulumi.Output<PipelineJobBackfillPipelineJob>? backfillPipelineJob,
-    required pulumi.Output<String> dataset,
-    pulumi.Output<bool>? disableLineage,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<PipelineJobMappingPipelineJob>? mappingPipelineJob,
-    pulumi.Output<String>? name,
-    pulumi.Output<PipelineJobReconciliationPipelineJob>? reconciliationPipelineJob,
-  }) :
-      backfillPipelineJob = pulumi.Input.asOptionalInput<PipelineJobBackfillPipelineJob>(backfillPipelineJob),
-      dataset = pulumi.Input.asInput<String>(dataset),
-      disableLineage = pulumi.Input.asOptionalInput<bool>(disableLineage),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      mappingPipelineJob = pulumi.Input.asOptionalInput<PipelineJobMappingPipelineJob>(mappingPipelineJob),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      reconciliationPipelineJob = pulumi.Input.asOptionalInput<PipelineJobReconciliationPipelineJob>(reconciliationPipelineJob);
+    this.backfillPipelineJob,
+    required this.dataset,
+    this.disableLineage,
+    this.labels,
+    required this.location,
+    this.mappingPipelineJob,
+    this.name,
+    this.reconciliationPipelineJob,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,14 +77,14 @@ class PipelineJobArgs {
 
   factory PipelineJobArgs.fromMap(Map<String, dynamic> map) {
     return PipelineJobArgs(
-      backfillPipelineJob: map['backfillPipelineJob'] == null ? null : pulumi.Output.create<PipelineJobBackfillPipelineJob>(PipelineJobBackfillPipelineJob.fromMap((map['backfillPipelineJob'] as Map).cast<String, dynamic>())),
-      dataset: pulumi.Output.create<String>(map['dataset'] as String),
-      disableLineage: map['disableLineage'] == null ? null : pulumi.Output.create<bool>(map['disableLineage'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      mappingPipelineJob: map['mappingPipelineJob'] == null ? null : pulumi.Output.create<PipelineJobMappingPipelineJob>(PipelineJobMappingPipelineJob.fromMap((map['mappingPipelineJob'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      reconciliationPipelineJob: map['reconciliationPipelineJob'] == null ? null : pulumi.Output.create<PipelineJobReconciliationPipelineJob>(PipelineJobReconciliationPipelineJob.fromMap((map['reconciliationPipelineJob'] as Map).cast<String, dynamic>())),
+      backfillPipelineJob: map['backfillPipelineJob'] == null ? null : (PipelineJobBackfillPipelineJob.fromMap((map['backfillPipelineJob'] as Map).cast<String, dynamic>())).input(),
+      dataset: (map['dataset'] as String).input(),
+      disableLineage: map['disableLineage'] == null ? null : (map['disableLineage'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      mappingPipelineJob: map['mappingPipelineJob'] == null ? null : (PipelineJobMappingPipelineJob.fromMap((map['mappingPipelineJob'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      reconciliationPipelineJob: map['reconciliationPipelineJob'] == null ? null : (PipelineJobReconciliationPipelineJob.fromMap((map['reconciliationPipelineJob'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

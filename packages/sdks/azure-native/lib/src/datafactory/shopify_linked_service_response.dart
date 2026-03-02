@@ -8,30 +8,30 @@ import 'parameter_specification_response.dart';
 /// Shopify Service linked service.
 class ShopifyLinkedServiceResponse {
   /// The API access token that can be used to access Shopify’s data. The token won't expire if it is offline mode.
-  final AzureKeyVaultSecretReferenceResponse? accessToken;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? accessToken;
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The endpoint of the Shopify server. (i.e. mystore.myshopify.com)
-  final dynamic host;
+  final pulumi.Input<dynamic> host;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// Type of linked service.
   /// Expected value is 'Shopify'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
-  final dynamic useEncryptedEndpoints;
+  final pulumi.Input<dynamic>? useEncryptedEndpoints;
   /// Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.
-  final dynamic useHostVerification;
+  final pulumi.Input<dynamic>? useHostVerification;
   /// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
-  final dynamic usePeerVerification;
+  final pulumi.Input<dynamic>? usePeerVerification;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ShopifyLinkedServiceResponse].
   /// [accessToken] The API access token that can be used to access Shopify’s data. The token won't expire if it is offline mode.
@@ -63,13 +63,13 @@ class ShopifyLinkedServiceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessToken': ?accessToken == null ? null : accessToken!.toMap(),
+      'accessToken': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(accessToken, (value) => value.toMap()),
       'annotations': ?annotations,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'host': host,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
       'useEncryptedEndpoints': ?useEncryptedEndpoints,
       'useHostVerification': ?useHostVerification,
@@ -80,18 +80,18 @@ class ShopifyLinkedServiceResponse {
 
   factory ShopifyLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return ShopifyLinkedServiceResponse(
-      accessToken: map['accessToken'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['accessToken'] as Map).cast<String, dynamic>()),
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      host: map['host'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : map['useEncryptedEndpoints'],
-      useHostVerification: map['useHostVerification'] == null ? null : map['useHostVerification'],
-      usePeerVerification: map['usePeerVerification'] == null ? null : map['usePeerVerification'],
-      version: map['version'] == null ? null : map['version'] as String,
+      accessToken: map['accessToken'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['accessToken'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      host: (map['host']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : (map['useEncryptedEndpoints']).input(),
+      useHostVerification: map['useHostVerification'] == null ? null : (map['useHostVerification']).input(),
+      usePeerVerification: map['usePeerVerification'] == null ? null : (map['usePeerVerification']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

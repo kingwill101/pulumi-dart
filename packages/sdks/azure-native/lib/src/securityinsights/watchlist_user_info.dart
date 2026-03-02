@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// User information that made some action
 class WatchlistUserInfo {
   /// The object id of the user.
-  final String? objectId;
+  final pulumi.Input<String>? objectId;
 
   /// Creates a new [WatchlistUserInfo].
   /// [objectId] The object id of the user.
@@ -20,7 +21,7 @@ class WatchlistUserInfo {
 
   factory WatchlistUserInfo.fromMap(Map<String, dynamic> map) {
     return WatchlistUserInfo(
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
     );
   }
 }

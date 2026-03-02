@@ -25,19 +25,13 @@ class UserGroupState {
   /// [roleArn] The ARN of the IAM role to be associated with the user group.
   /// [userPoolId] The user pool ID.
   UserGroupState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? precedence,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<String>? userPoolId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      precedence = pulumi.Input.asOptionalInput<int>(precedence),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      userPoolId = pulumi.Input.asOptionalInput<String>(userPoolId);
+    this.description,
+    this.name,
+    this.precedence,
+    this.region,
+    this.roleArn,
+    this.userPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class UserGroupState {
 
   factory UserGroupState.fromMap(Map<String, dynamic> map) {
     return UserGroupState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      precedence: map['precedence'] == null ? null : pulumi.Output.create<int>(map['precedence'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      userPoolId: map['userPoolId'] == null ? null : pulumi.Output.create<String>(map['userPoolId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      precedence: map['precedence'] == null ? null : (map['precedence'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
     );
   }
 }

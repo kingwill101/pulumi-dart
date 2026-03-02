@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigParseRoute53 {
   /// Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  final String? source;
+  final pulumi.Input<String>? source;
 
   /// Creates a new [LogTransformerTransformerConfigParseRoute53].
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
@@ -19,7 +20,7 @@ class LogTransformerTransformerConfigParseRoute53 {
 
   factory LogTransformerTransformerConfigParseRoute53.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigParseRoute53(
-      source: map['source'] == null ? null : map['source'] as String,
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

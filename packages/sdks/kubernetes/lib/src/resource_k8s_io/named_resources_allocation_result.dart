@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NamedResourcesAllocationResult is used in AllocationResultModel.
 class NamedResourcesAllocationResult {
   /// Name is the name of the selected resource instance.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [NamedResourcesAllocationResult].
   /// [name] Name is the name of the selected resource instance.
@@ -20,7 +21,7 @@ class NamedResourcesAllocationResult {
 
   factory NamedResourcesAllocationResult.fromMap(Map<String, dynamic> map) {
     return NamedResourcesAllocationResult(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

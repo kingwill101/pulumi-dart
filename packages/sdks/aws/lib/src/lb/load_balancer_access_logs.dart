@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerAccessLogs {
   /// S3 bucket name to store the logs in.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// Boolean to enable / disable `access_logs`. Defaults to `false`, even when `bucket` is specified.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// S3 bucket prefix. Logs are stored in the root if not configured.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [LoadBalancerAccessLogs].
   /// [bucket] S3 bucket name to store the logs in.
@@ -29,9 +30,9 @@ class LoadBalancerAccessLogs {
 
   factory LoadBalancerAccessLogs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerAccessLogs(
-      bucket: map['bucket'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      bucket: (map['bucket'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

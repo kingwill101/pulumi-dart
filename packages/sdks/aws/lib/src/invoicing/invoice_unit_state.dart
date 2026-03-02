@@ -43,29 +43,18 @@ class InvoiceUnitState {
   /// [taxInheritanceDisabled] Whether tax inheritance is disabled for this invoice unit.
   /// [timeouts] Optional.
   InvoiceUnitState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? invoiceReceiver,
-    pulumi.Output<String>? lastModified,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<InvoiceUnitRule>>? rules,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<bool>? taxInheritanceDisabled,
-    pulumi.Output<InvoiceUnitTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      invoiceReceiver = pulumi.Input.asOptionalInput<String>(invoiceReceiver),
-      lastModified = pulumi.Input.asOptionalInput<String>(lastModified),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rules = pulumi.Input.asOptionalInput<List<InvoiceUnitRule>>(rules),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      taxInheritanceDisabled = pulumi.Input.asOptionalInput<bool>(taxInheritanceDisabled),
-      timeouts = pulumi.Input.asOptionalInput<InvoiceUnitTimeouts>(timeouts);
+    this.arn,
+    this.description,
+    this.invoiceReceiver,
+    this.lastModified,
+    this.name,
+    this.region,
+    this.rules,
+    this.tags,
+    this.tagsAll,
+    this.taxInheritanceDisabled,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class InvoiceUnitState {
 
   factory InvoiceUnitState.fromMap(Map<String, dynamic> map) {
     return InvoiceUnitState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      invoiceReceiver: map['invoiceReceiver'] == null ? null : pulumi.Output.create<String>(map['invoiceReceiver'] as String),
-      lastModified: map['lastModified'] == null ? null : pulumi.Output.create<String>(map['lastModified'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<InvoiceUnitRule>>(pulumi.Input.decodeList<InvoiceUnitRule>(map['rules'], (value) => InvoiceUnitRule.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      taxInheritanceDisabled: map['taxInheritanceDisabled'] == null ? null : pulumi.Output.create<bool>(map['taxInheritanceDisabled'] as bool),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<InvoiceUnitTimeouts>(InvoiceUnitTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      invoiceReceiver: map['invoiceReceiver'] == null ? null : (map['invoiceReceiver'] as String).input(),
+      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<InvoiceUnitRule>(map['rules'], (value) => InvoiceUnitRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      taxInheritanceDisabled: map['taxInheritanceDisabled'] == null ? null : (map['taxInheritanceDisabled'] as bool).input(),
+      timeouts: map['timeouts'] == null ? null : (InvoiceUnitTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

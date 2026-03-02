@@ -10,17 +10,17 @@ import 'hpascaling_policy_patch.dart';
 /// The tolerance is applied to the metric values and prevents scaling too eagerly for small metric variations. (Note that setting a tolerance requires the beta HPAConfigurableTolerance feature gate to be enabled.)
 class HPAScalingRulesPatch {
   /// policies is a list of potential scaling polices which can be used during scaling. If not set, use the default values: - For scale up: allow doubling the number of pods, or an absolute change of 4 pods in a 15s window. - For scale down: allow all pods to be removed in a 15s window.
-  final List<HPAScalingPolicyPatch>? policies;
+  final pulumi.Input<List<HPAScalingPolicyPatch>>? policies;
   /// selectPolicy is used to specify which policy should be used. If not set, the default value Max is used.
-  final String? selectPolicy;
+  final pulumi.Input<String>? selectPolicy;
   /// stabilizationWindowSeconds is the number of seconds for which past recommendations should be considered while scaling up or scaling down. StabilizationWindowSeconds must be greater than or equal to zero and less than or equal to 3600 (one hour). If not set, use the default values: - For scale up: 0 (i.e. no stabilization is done). - For scale down: 300 (i.e. the stabilization window is 300 seconds long).
-  final int? stabilizationWindowSeconds;
+  final pulumi.Input<int>? stabilizationWindowSeconds;
   /// tolerance is the tolerance on the ratio between the current and desired metric value under which no updates are made to the desired number of replicas (e.g. 0.01 for 1%). Must be greater than or equal to zero. If not set, the default cluster-wide tolerance is applied (by default 10%).
   ///
   /// For example, if autoscaling is configured with a memory consumption target of 100Mi, and scale-down and scale-up tolerances of 5% and 1% respectively, scaling will be triggered when the actual consumption falls below 95Mi or exceeds 101Mi.
   ///
   /// This is an beta field and requires the HPAConfigurableTolerance feature gate to be enabled.
-  final String? tolerance;
+  final pulumi.Input<String>? tolerance;
 
   /// Creates a new [HPAScalingRulesPatch].
   /// [policies] policies is a list of potential scaling polices which can be used during scaling. If not set, use the default values: - For scale up: allow doubling the number of pods, or an absolute change of 4 pods in a 15s window. - For scale down: allow all pods to be removed in a 15s window.
@@ -36,7 +36,7 @@ class HPAScalingRulesPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policies': ?policies == null ? null : pulumi.Input.encodeList<HPAScalingPolicyPatch, Map<String, dynamic>>(policies!, (value) => value.toMap()),
+      'policies': ?pulumi.Input.mapOptionalInputValue<List<HPAScalingPolicyPatch>, List<Map<String, dynamic>>>(policies, (value) => pulumi.Input.encodeList<HPAScalingPolicyPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'selectPolicy': ?selectPolicy,
       'stabilizationWindowSeconds': ?stabilizationWindowSeconds,
       'tolerance': ?tolerance,
@@ -45,10 +45,10 @@ class HPAScalingRulesPatch {
 
   factory HPAScalingRulesPatch.fromMap(Map<String, dynamic> map) {
     return HPAScalingRulesPatch(
-      policies: map['policies'] == null ? null : pulumi.Input.decodeList<HPAScalingPolicyPatch>(map['policies'], (value) => HPAScalingPolicyPatch.fromMap((value as Map).cast<String, dynamic>())),
-      selectPolicy: map['selectPolicy'] == null ? null : map['selectPolicy'] as String,
-      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] == null ? null : map['stabilizationWindowSeconds'] as int,
-      tolerance: map['tolerance'] == null ? null : map['tolerance'] as String,
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<HPAScalingPolicyPatch>(map['policies'], (value) => HPAScalingPolicyPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectPolicy: map['selectPolicy'] == null ? null : (map['selectPolicy'] as String).input(),
+      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] == null ? null : (map['stabilizationWindowSeconds'] as int).input(),
+      tolerance: map['tolerance'] == null ? null : (map['tolerance'] as String).input(),
     );
   }
 }

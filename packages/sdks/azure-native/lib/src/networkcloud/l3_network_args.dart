@@ -52,33 +52,20 @@ class L3NetworkArgs {
   /// [tags] Resource tags.
   /// [vlan] The VLAN from the l3IsolationDomain that is used for this network.
   L3NetworkArgs({
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? hybridAksIpamEnabled,
-    pulumi.Output<String>? hybridAksPluginType,
-    pulumi.Output<String>? interfaceName,
-    pulumi.Output<String>? ipAllocationType,
-    pulumi.Output<String>? ipv4ConnectedPrefix,
-    pulumi.Output<String>? ipv6ConnectedPrefix,
-    required pulumi.Output<String> l3IsolationDomainId,
-    pulumi.Output<String>? l3NetworkName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<double> vlan,
-  }) :
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      hybridAksIpamEnabled = pulumi.Input.asOptionalInput<String>(hybridAksIpamEnabled),
-      hybridAksPluginType = pulumi.Input.asOptionalInput<String>(hybridAksPluginType),
-      interfaceName = pulumi.Input.asOptionalInput<String>(interfaceName),
-      ipAllocationType = pulumi.Input.asOptionalInput<String>(ipAllocationType),
-      ipv4ConnectedPrefix = pulumi.Input.asOptionalInput<String>(ipv4ConnectedPrefix),
-      ipv6ConnectedPrefix = pulumi.Input.asOptionalInput<String>(ipv6ConnectedPrefix),
-      l3IsolationDomainId = pulumi.Input.asInput<String>(l3IsolationDomainId),
-      l3NetworkName = pulumi.Input.asOptionalInput<String>(l3NetworkName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vlan = pulumi.Input.asInput<double>(vlan);
+    required this.extendedLocation,
+    this.hybridAksIpamEnabled,
+    this.hybridAksPluginType,
+    this.interfaceName,
+    this.ipAllocationType,
+    this.ipv4ConnectedPrefix,
+    this.ipv6ConnectedPrefix,
+    required this.l3IsolationDomainId,
+    this.l3NetworkName,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    required this.vlan,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,19 +87,19 @@ class L3NetworkArgs {
 
   factory L3NetworkArgs.fromMap(Map<String, dynamic> map) {
     return L3NetworkArgs(
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      hybridAksIpamEnabled: map['hybridAksIpamEnabled'] == null ? null : pulumi.Output.create<String>(map['hybridAksIpamEnabled'] as String),
-      hybridAksPluginType: map['hybridAksPluginType'] == null ? null : pulumi.Output.create<String>(map['hybridAksPluginType'] as String),
-      interfaceName: map['interfaceName'] == null ? null : pulumi.Output.create<String>(map['interfaceName'] as String),
-      ipAllocationType: map['ipAllocationType'] == null ? null : pulumi.Output.create<String>(map['ipAllocationType'] as String),
-      ipv4ConnectedPrefix: map['ipv4ConnectedPrefix'] == null ? null : pulumi.Output.create<String>(map['ipv4ConnectedPrefix'] as String),
-      ipv6ConnectedPrefix: map['ipv6ConnectedPrefix'] == null ? null : pulumi.Output.create<String>(map['ipv6ConnectedPrefix'] as String),
-      l3IsolationDomainId: pulumi.Output.create<String>(map['l3IsolationDomainId'] as String),
-      l3NetworkName: map['l3NetworkName'] == null ? null : pulumi.Output.create<String>(map['l3NetworkName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vlan: pulumi.Output.create<double>(map['vlan'] as double),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      hybridAksIpamEnabled: map['hybridAksIpamEnabled'] == null ? null : (map['hybridAksIpamEnabled'] as String).input(),
+      hybridAksPluginType: map['hybridAksPluginType'] == null ? null : (map['hybridAksPluginType'] as String).input(),
+      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName'] as String).input(),
+      ipAllocationType: map['ipAllocationType'] == null ? null : (map['ipAllocationType'] as String).input(),
+      ipv4ConnectedPrefix: map['ipv4ConnectedPrefix'] == null ? null : (map['ipv4ConnectedPrefix'] as String).input(),
+      ipv6ConnectedPrefix: map['ipv6ConnectedPrefix'] == null ? null : (map['ipv6ConnectedPrefix'] as String).input(),
+      l3IsolationDomainId: (map['l3IsolationDomainId'] as String).input(),
+      l3NetworkName: map['l3NetworkName'] == null ? null : (map['l3NetworkName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vlan: (map['vlan'] as double).input(),
     );
   }
 }

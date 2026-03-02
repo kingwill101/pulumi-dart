@@ -40,27 +40,17 @@ class ManagedPrivateEndpointArgs {
   /// [tags] Resource tags.
   /// [workspaceName] The workspace name of Azure Managed Grafana.
   ManagedPrivateEndpointArgs({
-    pulumi.Output<List<String>>? groupIds,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedPrivateEndpointName,
-    pulumi.Output<String>? privateLinkResourceId,
-    pulumi.Output<String>? privateLinkResourceRegion,
-    pulumi.Output<String>? privateLinkServiceUrl,
-    pulumi.Output<String>? requestMessage,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      groupIds = pulumi.Input.asOptionalInput<List<String>>(groupIds),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedPrivateEndpointName = pulumi.Input.asOptionalInput<String>(managedPrivateEndpointName),
-      privateLinkResourceId = pulumi.Input.asOptionalInput<String>(privateLinkResourceId),
-      privateLinkResourceRegion = pulumi.Input.asOptionalInput<String>(privateLinkResourceRegion),
-      privateLinkServiceUrl = pulumi.Input.asOptionalInput<String>(privateLinkServiceUrl),
-      requestMessage = pulumi.Input.asOptionalInput<String>(requestMessage),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.groupIds,
+    this.location,
+    this.managedPrivateEndpointName,
+    this.privateLinkResourceId,
+    this.privateLinkResourceRegion,
+    this.privateLinkServiceUrl,
+    this.requestMessage,
+    required this.resourceGroupName,
+    this.tags,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class ManagedPrivateEndpointArgs {
 
   factory ManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointArgs(
-      groupIds: map['groupIds'] == null ? null : pulumi.Output.create<List<String>>((map['groupIds'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedPrivateEndpointName: map['managedPrivateEndpointName'] == null ? null : pulumi.Output.create<String>(map['managedPrivateEndpointName'] as String),
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : pulumi.Output.create<String>(map['privateLinkResourceId'] as String),
-      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : pulumi.Output.create<String>(map['privateLinkResourceRegion'] as String),
-      privateLinkServiceUrl: map['privateLinkServiceUrl'] == null ? null : pulumi.Output.create<String>(map['privateLinkServiceUrl'] as String),
-      requestMessage: map['requestMessage'] == null ? null : pulumi.Output.create<String>(map['requestMessage'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedPrivateEndpointName: map['managedPrivateEndpointName'] == null ? null : (map['managedPrivateEndpointName'] as String).input(),
+      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId'] as String).input(),
+      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : (map['privateLinkResourceRegion'] as String).input(),
+      privateLinkServiceUrl: map['privateLinkServiceUrl'] == null ? null : (map['privateLinkServiceUrl'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

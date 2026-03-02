@@ -19,11 +19,9 @@ class ProjectInfoArgs {
   /// [billingAccount] The ID of the billing account associated with the project, if
   /// [project] The ID of the project in which the resource belongs.
   ProjectInfoArgs({
-    required pulumi.Output<String> billingAccount,
-    pulumi.Output<String>? project,
-  }) :
-      billingAccount = pulumi.Input.asInput<String>(billingAccount),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.billingAccount,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,8 +32,8 @@ class ProjectInfoArgs {
 
   factory ProjectInfoArgs.fromMap(Map<String, dynamic> map) {
     return ProjectInfoArgs(
-      billingAccount: pulumi.Output.create<String>(map['billingAccount'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      billingAccount: (map['billingAccount'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

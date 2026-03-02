@@ -20,11 +20,9 @@ class GetImagesArgs {
   /// [filter] Filter for the images to be returned by the data source. Syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
   /// [project] The project in which the resource belongs. If it is not
   GetImagesArgs({
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? project,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.filter,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,8 +33,8 @@ class GetImagesArgs {
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

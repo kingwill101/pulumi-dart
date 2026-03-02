@@ -21,15 +21,11 @@ class SourceSecuritycenterV1beta1Args {
   /// [name] The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
   /// [organizationId] Required.
   SourceSecuritycenterV1beta1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    this.description,
+    this.displayName,
+    this.name,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class SourceSecuritycenterV1beta1Args {
 
   factory SourceSecuritycenterV1beta1Args.fromMap(Map<String, dynamic> map) {
     return SourceSecuritycenterV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

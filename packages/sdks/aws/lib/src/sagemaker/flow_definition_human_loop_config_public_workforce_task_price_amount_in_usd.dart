@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd {
   /// The fractional portion, in cents, of the amount. Valid value range between `0` and `99`.
-  final int? cents;
+  final pulumi.Input<int>? cents;
   /// The whole number of dollars in the amount. Valid value range between `0` and `2`.
-  final int? dollars;
+  final pulumi.Input<int>? dollars;
   /// Fractions of a cent, in tenths. Valid value range between `0` and `9`.
-  final int? tenthFractionsOfACent;
+  final pulumi.Input<int>? tenthFractionsOfACent;
 
   /// Creates a new [FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd].
   /// [cents] The fractional portion, in cents, of the amount. Valid value range between `0` and `99`.
@@ -29,9 +30,9 @@ class FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd {
 
   factory FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd.fromMap(Map<String, dynamic> map) {
     return FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd(
-      cents: map['cents'] == null ? null : map['cents'] as int,
-      dollars: map['dollars'] == null ? null : map['dollars'] as int,
-      tenthFractionsOfACent: map['tenthFractionsOfACent'] == null ? null : map['tenthFractionsOfACent'] as int,
+      cents: map['cents'] == null ? null : (map['cents'] as int).input(),
+      dollars: map['dollars'] == null ? null : (map['dollars'] as int).input(),
+      tenthFractionsOfACent: map['tenthFractionsOfACent'] == null ? null : (map['tenthFractionsOfACent'] as int).input(),
     );
   }
 }

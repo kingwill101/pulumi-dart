@@ -27,15 +27,11 @@ class TaxonomyIamPolicyArgs {
   /// [region] Taxonomy location region.
   /// [taxonomy] Used to find the parent resource to bind the IAM policy to
   TaxonomyIamPolicyArgs({
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> taxonomy,
-  }) :
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      taxonomy = pulumi.Input.asInput<String>(taxonomy);
+    required this.policyData,
+    this.project,
+    this.region,
+    required this.taxonomy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class TaxonomyIamPolicyArgs {
 
   factory TaxonomyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TaxonomyIamPolicyArgs(
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      taxonomy: pulumi.Output.create<String>(map['taxonomy'] as String),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      taxonomy: (map['taxonomy'] as String).input(),
     );
   }
 }

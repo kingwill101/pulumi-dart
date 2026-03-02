@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseSnapshotPolicySchedule {
   /// CronTab expression.
-  final String cronExpression;
+  final pulumi.Input<String> cronExpression;
 
   /// Creates a new [EnterpriseSnapshotPolicySchedule].
   /// [cronExpression] CronTab expression.
@@ -19,7 +20,7 @@ class EnterpriseSnapshotPolicySchedule {
 
   factory EnterpriseSnapshotPolicySchedule.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicySchedule(
-      cronExpression: map['cronExpression'] as String,
+      cronExpression: (map['cronExpression'] as String).input(),
     );
   }
 }

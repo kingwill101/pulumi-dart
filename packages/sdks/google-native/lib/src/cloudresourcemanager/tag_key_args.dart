@@ -32,21 +32,14 @@ class TagKeyArgs {
   /// [purposeData] Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set.
   /// [shortName] Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
   TagKeyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<TagKeyPurpose>? purpose,
-    pulumi.Output<Map<String, String>>? purposeData,
-    required pulumi.Output<String> shortName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      purpose = pulumi.Input.asOptionalInput<TagKeyPurpose>(purpose),
-      purposeData = pulumi.Input.asOptionalInput<Map<String, String>>(purposeData),
-      shortName = pulumi.Input.asInput<String>(shortName);
+    this.description,
+    this.etag,
+    this.name,
+    this.parent,
+    this.purpose,
+    this.purposeData,
+    required this.shortName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class TagKeyArgs {
 
   factory TagKeyArgs.fromMap(Map<String, dynamic> map) {
     return TagKeyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      purpose: map['purpose'] == null ? null : pulumi.Output.create<TagKeyPurpose>(TagKeyPurpose.fromValue(map['purpose'] as String)),
-      purposeData: map['purposeData'] == null ? null : pulumi.Output.create<Map<String, String>>((map['purposeData'] as Map).cast<String, String>()),
-      shortName: pulumi.Output.create<String>(map['shortName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      purpose: map['purpose'] == null ? null : (TagKeyPurpose.fromValue(map['purpose'] as String)).input(),
+      purposeData: map['purposeData'] == null ? null : ((map['purposeData'] as Map).cast<String, String>()).input(),
+      shortName: (map['shortName'] as String).input(),
     );
   }
 }

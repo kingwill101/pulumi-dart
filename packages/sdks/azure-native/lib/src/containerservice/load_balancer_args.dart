@@ -38,25 +38,16 @@ class LoadBalancerArgs {
   /// [serviceLabelSelector] Only services that must match this selector can be placed on this load balancer.
   /// [serviceNamespaceSelector] Services created in namespaces that match the selector can be placed on this load balancer.
   LoadBalancerArgs({
-    pulumi.Output<bool>? allowServicePlacement,
-    pulumi.Output<String>? loadBalancerName,
-    required pulumi.Output<String> name,
-    pulumi.Output<LabelSelector>? nodeSelector,
-    required pulumi.Output<String> primaryAgentPoolName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<LabelSelector>? serviceLabelSelector,
-    pulumi.Output<LabelSelector>? serviceNamespaceSelector,
-  }) :
-      allowServicePlacement = pulumi.Input.asOptionalInput<bool>(allowServicePlacement),
-      loadBalancerName = pulumi.Input.asOptionalInput<String>(loadBalancerName),
-      name = pulumi.Input.asInput<String>(name),
-      nodeSelector = pulumi.Input.asOptionalInput<LabelSelector>(nodeSelector),
-      primaryAgentPoolName = pulumi.Input.asInput<String>(primaryAgentPoolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      serviceLabelSelector = pulumi.Input.asOptionalInput<LabelSelector>(serviceLabelSelector),
-      serviceNamespaceSelector = pulumi.Input.asOptionalInput<LabelSelector>(serviceNamespaceSelector);
+    this.allowServicePlacement,
+    this.loadBalancerName,
+    required this.name,
+    this.nodeSelector,
+    required this.primaryAgentPoolName,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.serviceLabelSelector,
+    this.serviceNamespaceSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class LoadBalancerArgs {
 
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
-      allowServicePlacement: map['allowServicePlacement'] == null ? null : pulumi.Output.create<bool>(map['allowServicePlacement'] as bool),
-      loadBalancerName: map['loadBalancerName'] == null ? null : pulumi.Output.create<String>(map['loadBalancerName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      nodeSelector: map['nodeSelector'] == null ? null : pulumi.Output.create<LabelSelector>(LabelSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())),
-      primaryAgentPoolName: pulumi.Output.create<String>(map['primaryAgentPoolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      serviceLabelSelector: map['serviceLabelSelector'] == null ? null : pulumi.Output.create<LabelSelector>(LabelSelector.fromMap((map['serviceLabelSelector'] as Map).cast<String, dynamic>())),
-      serviceNamespaceSelector: map['serviceNamespaceSelector'] == null ? null : pulumi.Output.create<LabelSelector>(LabelSelector.fromMap((map['serviceNamespaceSelector'] as Map).cast<String, dynamic>())),
+      allowServicePlacement: map['allowServicePlacement'] == null ? null : (map['allowServicePlacement'] as bool).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      name: (map['name'] as String).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (LabelSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
+      primaryAgentPoolName: (map['primaryAgentPoolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      serviceLabelSelector: map['serviceLabelSelector'] == null ? null : (LabelSelector.fromMap((map['serviceLabelSelector'] as Map).cast<String, dynamic>())).input(),
+      serviceNamespaceSelector: map['serviceNamespaceSelector'] == null ? null : (LabelSelector.fromMap((map['serviceNamespaceSelector'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

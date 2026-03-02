@@ -5,9 +5,9 @@ import 'plan_stage_target.dart';
 
 class PlanStage {
   /// The time to wait until beginning the next stage. The duration can only be set to 0 if a target is specified.
-  final int durationInMinutes;
+  final pulumi.Input<int> durationInMinutes;
   /// One or more configuration blocks for specifying the contacts or contact methods that the escalation plan or engagement plan is engaging. See Target below for more details.
-  final List<PlanStageTarget>? targets;
+  final pulumi.Input<List<PlanStageTarget>>? targets;
 
   /// Creates a new [PlanStage].
   /// [durationInMinutes] The time to wait until beginning the next stage. The duration can only be set to 0 if a target is specified.
@@ -20,14 +20,14 @@ class PlanStage {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'durationInMinutes': durationInMinutes,
-      'targets': ?targets == null ? null : pulumi.Input.encodeList<PlanStageTarget, Map<String, dynamic>>(targets!, (value) => value.toMap()),
+      'targets': ?pulumi.Input.mapOptionalInputValue<List<PlanStageTarget>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<PlanStageTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PlanStage.fromMap(Map<String, dynamic> map) {
     return PlanStage(
-      durationInMinutes: map['durationInMinutes'] as int,
-      targets: map['targets'] == null ? null : pulumi.Input.decodeList<PlanStageTarget>(map['targets'], (value) => PlanStageTarget.fromMap((value as Map).cast<String, dynamic>())),
+      durationInMinutes: (map['durationInMinutes'] as int).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<PlanStageTarget>(map['targets'], (value) => PlanStageTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

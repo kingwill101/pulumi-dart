@@ -27,17 +27,12 @@ class FolderMembershipArgs {
   /// [memberType] Type of the member. Valid values are `ANALYSIS`, `DASHBOARD`, and `DATASET`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   FolderMembershipArgs({
-    pulumi.Output<String>? awsAccountId,
-    required pulumi.Output<String> folderId,
-    required pulumi.Output<String> memberId,
-    required pulumi.Output<String> memberType,
-    pulumi.Output<String>? region,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      memberId = pulumi.Input.asInput<String>(memberId),
-      memberType = pulumi.Input.asInput<String>(memberType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.awsAccountId,
+    required this.folderId,
+    required this.memberId,
+    required this.memberType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class FolderMembershipArgs {
 
   factory FolderMembershipArgs.fromMap(Map<String, dynamic> map) {
     return FolderMembershipArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
-      memberId: pulumi.Output.create<String>(map['memberId'] as String),
-      memberType: pulumi.Output.create<String>(map['memberType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      folderId: (map['folderId'] as String).input(),
+      memberId: (map['memberId'] as String).input(),
+      memberType: (map['memberType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

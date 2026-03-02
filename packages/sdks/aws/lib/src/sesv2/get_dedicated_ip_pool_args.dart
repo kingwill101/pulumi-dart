@@ -19,13 +19,10 @@ class GetDedicatedIpPoolArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags attached to the pool.
   GetDedicatedIpPoolArgs({
-    required pulumi.Output<String> poolName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      poolName = pulumi.Input.asInput<String>(poolName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.poolName,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDedicatedIpPoolArgs {
 
   factory GetDedicatedIpPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedIpPoolArgs(
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      poolName: (map['poolName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

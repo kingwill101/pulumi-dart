@@ -19,13 +19,10 @@ class GetTableArgs {
   /// [tableName] The name of the table.
   /// [workspaceName] The name of the workspace.
   GetTableArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> tableName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tableName = pulumi.Input.asInput<String>(tableName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.tableName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTableArgs {
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

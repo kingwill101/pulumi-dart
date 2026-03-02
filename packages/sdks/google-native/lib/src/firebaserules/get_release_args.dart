@@ -14,11 +14,9 @@ class GetReleaseArgs {
   /// [project] Optional.
   /// [releaseId] Required.
   GetReleaseArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> releaseId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      releaseId = pulumi.Input.asInput<String>(releaseId);
+    this.project,
+    required this.releaseId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetReleaseArgs {
 
   factory GetReleaseArgs.fromMap(Map<String, dynamic> map) {
     return GetReleaseArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      releaseId: pulumi.Output.create<String>(map['releaseId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      releaseId: (map['releaseId'] as String).input(),
     );
   }
 }

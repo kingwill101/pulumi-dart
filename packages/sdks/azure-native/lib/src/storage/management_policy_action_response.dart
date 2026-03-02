@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'management_policy_base_blob_response.dart';
 import 'management_policy_snap_shot_response.dart';
 import 'management_policy_version_response.dart';
@@ -7,11 +8,11 @@ import 'management_policy_version_response.dart';
 /// Actions are applied to the filtered blobs when the execution condition is met.
 class ManagementPolicyActionResponse {
   /// The management policy action for base blob
-  final ManagementPolicyBaseBlobResponse? baseBlob;
+  final pulumi.Input<ManagementPolicyBaseBlobResponse>? baseBlob;
   /// The management policy action for snapshot
-  final ManagementPolicySnapShotResponse? snapshot;
+  final pulumi.Input<ManagementPolicySnapShotResponse>? snapshot;
   /// The management policy action for version
-  final ManagementPolicyVersionResponse? version;
+  final pulumi.Input<ManagementPolicyVersionResponse>? version;
 
   /// Creates a new [ManagementPolicyActionResponse].
   /// [baseBlob] The management policy action for base blob
@@ -25,17 +26,17 @@ class ManagementPolicyActionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baseBlob': ?baseBlob == null ? null : baseBlob!.toMap(),
-      'snapshot': ?snapshot == null ? null : snapshot!.toMap(),
-      'version': ?version == null ? null : version!.toMap(),
+      'baseBlob': ?pulumi.Input.mapOptionalInputValue<ManagementPolicyBaseBlobResponse, Map<String, dynamic>>(baseBlob, (value) => value.toMap()),
+      'snapshot': ?pulumi.Input.mapOptionalInputValue<ManagementPolicySnapShotResponse, Map<String, dynamic>>(snapshot, (value) => value.toMap()),
+      'version': ?pulumi.Input.mapOptionalInputValue<ManagementPolicyVersionResponse, Map<String, dynamic>>(version, (value) => value.toMap()),
     };
   }
 
   factory ManagementPolicyActionResponse.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyActionResponse(
-      baseBlob: map['baseBlob'] == null ? null : ManagementPolicyBaseBlobResponse.fromMap((map['baseBlob'] as Map).cast<String, dynamic>()),
-      snapshot: map['snapshot'] == null ? null : ManagementPolicySnapShotResponse.fromMap((map['snapshot'] as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : ManagementPolicyVersionResponse.fromMap((map['version'] as Map).cast<String, dynamic>()),
+      baseBlob: map['baseBlob'] == null ? null : (ManagementPolicyBaseBlobResponse.fromMap((map['baseBlob'] as Map).cast<String, dynamic>())).input(),
+      snapshot: map['snapshot'] == null ? null : (ManagementPolicySnapShotResponse.fromMap((map['snapshot'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (ManagementPolicyVersionResponse.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

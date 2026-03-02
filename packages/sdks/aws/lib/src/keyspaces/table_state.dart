@@ -58,35 +58,21 @@ class TableState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [ttl] Enables Time to Live custom settings for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL.html).
   TableState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<TableCapacitySpecification>? capacitySpecification,
-    pulumi.Output<TableClientSideTimestamps>? clientSideTimestamps,
-    pulumi.Output<TableComment>? comment,
-    pulumi.Output<int>? defaultTimeToLive,
-    pulumi.Output<TableEncryptionSpecification>? encryptionSpecification,
-    pulumi.Output<String>? keyspaceName,
-    pulumi.Output<TablePointInTimeRecovery>? pointInTimeRecovery,
-    pulumi.Output<String>? region,
-    pulumi.Output<TableSchemaDefinition>? schemaDefinition,
-    pulumi.Output<String>? tableName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<TableTtl>? ttl,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      capacitySpecification = pulumi.Input.asOptionalInput<TableCapacitySpecification>(capacitySpecification),
-      clientSideTimestamps = pulumi.Input.asOptionalInput<TableClientSideTimestamps>(clientSideTimestamps),
-      comment = pulumi.Input.asOptionalInput<TableComment>(comment),
-      defaultTimeToLive = pulumi.Input.asOptionalInput<int>(defaultTimeToLive),
-      encryptionSpecification = pulumi.Input.asOptionalInput<TableEncryptionSpecification>(encryptionSpecification),
-      keyspaceName = pulumi.Input.asOptionalInput<String>(keyspaceName),
-      pointInTimeRecovery = pulumi.Input.asOptionalInput<TablePointInTimeRecovery>(pointInTimeRecovery),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      schemaDefinition = pulumi.Input.asOptionalInput<TableSchemaDefinition>(schemaDefinition),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      ttl = pulumi.Input.asOptionalInput<TableTtl>(ttl);
+    this.arn,
+    this.capacitySpecification,
+    this.clientSideTimestamps,
+    this.comment,
+    this.defaultTimeToLive,
+    this.encryptionSpecification,
+    this.keyspaceName,
+    this.pointInTimeRecovery,
+    this.region,
+    this.schemaDefinition,
+    this.tableName,
+    this.tags,
+    this.tagsAll,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class TableState {
 
   factory TableState.fromMap(Map<String, dynamic> map) {
     return TableState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      capacitySpecification: map['capacitySpecification'] == null ? null : pulumi.Output.create<TableCapacitySpecification>(TableCapacitySpecification.fromMap((map['capacitySpecification'] as Map).cast<String, dynamic>())),
-      clientSideTimestamps: map['clientSideTimestamps'] == null ? null : pulumi.Output.create<TableClientSideTimestamps>(TableClientSideTimestamps.fromMap((map['clientSideTimestamps'] as Map).cast<String, dynamic>())),
-      comment: map['comment'] == null ? null : pulumi.Output.create<TableComment>(TableComment.fromMap((map['comment'] as Map).cast<String, dynamic>())),
-      defaultTimeToLive: map['defaultTimeToLive'] == null ? null : pulumi.Output.create<int>(map['defaultTimeToLive'] as int),
-      encryptionSpecification: map['encryptionSpecification'] == null ? null : pulumi.Output.create<TableEncryptionSpecification>(TableEncryptionSpecification.fromMap((map['encryptionSpecification'] as Map).cast<String, dynamic>())),
-      keyspaceName: map['keyspaceName'] == null ? null : pulumi.Output.create<String>(map['keyspaceName'] as String),
-      pointInTimeRecovery: map['pointInTimeRecovery'] == null ? null : pulumi.Output.create<TablePointInTimeRecovery>(TablePointInTimeRecovery.fromMap((map['pointInTimeRecovery'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      schemaDefinition: map['schemaDefinition'] == null ? null : pulumi.Output.create<TableSchemaDefinition>(TableSchemaDefinition.fromMap((map['schemaDefinition'] as Map).cast<String, dynamic>())),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<TableTtl>(TableTtl.fromMap((map['ttl'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      capacitySpecification: map['capacitySpecification'] == null ? null : (TableCapacitySpecification.fromMap((map['capacitySpecification'] as Map).cast<String, dynamic>())).input(),
+      clientSideTimestamps: map['clientSideTimestamps'] == null ? null : (TableClientSideTimestamps.fromMap((map['clientSideTimestamps'] as Map).cast<String, dynamic>())).input(),
+      comment: map['comment'] == null ? null : (TableComment.fromMap((map['comment'] as Map).cast<String, dynamic>())).input(),
+      defaultTimeToLive: map['defaultTimeToLive'] == null ? null : (map['defaultTimeToLive'] as int).input(),
+      encryptionSpecification: map['encryptionSpecification'] == null ? null : (TableEncryptionSpecification.fromMap((map['encryptionSpecification'] as Map).cast<String, dynamic>())).input(),
+      keyspaceName: map['keyspaceName'] == null ? null : (map['keyspaceName'] as String).input(),
+      pointInTimeRecovery: map['pointInTimeRecovery'] == null ? null : (TablePointInTimeRecovery.fromMap((map['pointInTimeRecovery'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      schemaDefinition: map['schemaDefinition'] == null ? null : (TableSchemaDefinition.fromMap((map['schemaDefinition'] as Map).cast<String, dynamic>())).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      ttl: map['ttl'] == null ? null : (TableTtl.fromMap((map['ttl'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

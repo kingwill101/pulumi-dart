@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The value which should be used for this field.
 class WorkspaceCustomBooleanParameterResponse {
   /// The type of variable that this is
-  final String type;
+  final pulumi.Input<String> type;
   /// The value which should be used for this field.
-  final bool value;
+  final pulumi.Input<bool> value;
 
   /// Creates a new [WorkspaceCustomBooleanParameterResponse].
   /// [type] The type of variable that this is
@@ -25,8 +26,8 @@ class WorkspaceCustomBooleanParameterResponse {
 
   factory WorkspaceCustomBooleanParameterResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceCustomBooleanParameterResponse(
-      type: map['type'] as String,
-      value: map['value'] as bool,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as bool).input(),
     );
   }
 }

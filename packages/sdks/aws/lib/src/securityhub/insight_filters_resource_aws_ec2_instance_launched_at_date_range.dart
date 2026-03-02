@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange {
   /// A date range unit for the date filter. Valid values: `DAYS`.
-  final String unit;
+  final pulumi.Input<String> unit;
   /// A date range value for the date filter, provided as an Integer.
-  final int value;
+  final pulumi.Input<int> value;
 
   /// Creates a new [InsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange].
   /// [unit] A date range unit for the date filter. Valid values: `DAYS`.
@@ -24,8 +25,8 @@ class InsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange {
 
   factory InsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange.fromMap(Map<String, dynamic> map) {
     return InsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange(
-      unit: map['unit'] as String,
-      value: map['value'] as int,
+      unit: (map['unit'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

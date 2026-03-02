@@ -30,21 +30,14 @@ class ConnectionGroupArgs {
   /// [timeouts] Optional.
   /// [waitForDeployment] Optional.
   ConnectionGroupArgs({
-    pulumi.Output<String>? anycastIpListId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? ipv6Enabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ConnectionGroupTimeouts>? timeouts,
-    pulumi.Output<bool>? waitForDeployment,
-  }) :
-      anycastIpListId = pulumi.Input.asOptionalInput<String>(anycastIpListId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      ipv6Enabled = pulumi.Input.asOptionalInput<bool>(ipv6Enabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ConnectionGroupTimeouts>(timeouts),
-      waitForDeployment = pulumi.Input.asOptionalInput<bool>(waitForDeployment);
+    this.anycastIpListId,
+    this.enabled,
+    this.ipv6Enabled,
+    this.name,
+    this.tags,
+    this.timeouts,
+    this.waitForDeployment,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ConnectionGroupArgs {
 
   factory ConnectionGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionGroupArgs(
-      anycastIpListId: map['anycastIpListId'] == null ? null : pulumi.Output.create<String>(map['anycastIpListId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      ipv6Enabled: map['ipv6Enabled'] == null ? null : pulumi.Output.create<bool>(map['ipv6Enabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ConnectionGroupTimeouts>(ConnectionGroupTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      waitForDeployment: map['waitForDeployment'] == null ? null : pulumi.Output.create<bool>(map['waitForDeployment'] as bool),
+      anycastIpListId: map['anycastIpListId'] == null ? null : (map['anycastIpListId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      ipv6Enabled: map['ipv6Enabled'] == null ? null : (map['ipv6Enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ConnectionGroupTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      waitForDeployment: map['waitForDeployment'] == null ? null : (map['waitForDeployment'] as bool).input(),
     );
   }
 }

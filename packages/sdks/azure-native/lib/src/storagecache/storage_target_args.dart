@@ -45,27 +45,17 @@ class StorageTargetArgs {
   /// [targetType] Type of the Storage Target.
   /// [unknown] Properties when targetType is unknown.
   StorageTargetArgs({
-    pulumi.Output<BlobNfsTarget>? blobNfs,
-    required pulumi.Output<String> cacheName,
-    pulumi.Output<ClfsTarget>? clfs,
-    pulumi.Output<List<NamespaceJunction>>? junctions,
-    pulumi.Output<Nfs3Target>? nfs3,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? storageTargetName,
-    required pulumi.Output<String> targetType,
-    pulumi.Output<UnknownTarget>? unknown,
-  }) :
-      blobNfs = pulumi.Input.asOptionalInput<BlobNfsTarget>(blobNfs),
-      cacheName = pulumi.Input.asInput<String>(cacheName),
-      clfs = pulumi.Input.asOptionalInput<ClfsTarget>(clfs),
-      junctions = pulumi.Input.asOptionalInput<List<NamespaceJunction>>(junctions),
-      nfs3 = pulumi.Input.asOptionalInput<Nfs3Target>(nfs3),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      storageTargetName = pulumi.Input.asOptionalInput<String>(storageTargetName),
-      targetType = pulumi.Input.asInput<String>(targetType),
-      unknown = pulumi.Input.asOptionalInput<UnknownTarget>(unknown);
+    this.blobNfs,
+    required this.cacheName,
+    this.clfs,
+    this.junctions,
+    this.nfs3,
+    required this.resourceGroupName,
+    this.state,
+    this.storageTargetName,
+    required this.targetType,
+    this.unknown,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class StorageTargetArgs {
 
   factory StorageTargetArgs.fromMap(Map<String, dynamic> map) {
     return StorageTargetArgs(
-      blobNfs: map['blobNfs'] == null ? null : pulumi.Output.create<BlobNfsTarget>(BlobNfsTarget.fromMap((map['blobNfs'] as Map).cast<String, dynamic>())),
-      cacheName: pulumi.Output.create<String>(map['cacheName'] as String),
-      clfs: map['clfs'] == null ? null : pulumi.Output.create<ClfsTarget>(ClfsTarget.fromMap((map['clfs'] as Map).cast<String, dynamic>())),
-      junctions: map['junctions'] == null ? null : pulumi.Output.create<List<NamespaceJunction>>(pulumi.Input.decodeList<NamespaceJunction>(map['junctions'], (value) => NamespaceJunction.fromMap((value as Map).cast<String, dynamic>()))),
-      nfs3: map['nfs3'] == null ? null : pulumi.Output.create<Nfs3Target>(Nfs3Target.fromMap((map['nfs3'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      storageTargetName: map['storageTargetName'] == null ? null : pulumi.Output.create<String>(map['storageTargetName'] as String),
-      targetType: pulumi.Output.create<String>(map['targetType'] as String),
-      unknown: map['unknown'] == null ? null : pulumi.Output.create<UnknownTarget>(UnknownTarget.fromMap((map['unknown'] as Map).cast<String, dynamic>())),
+      blobNfs: map['blobNfs'] == null ? null : (BlobNfsTarget.fromMap((map['blobNfs'] as Map).cast<String, dynamic>())).input(),
+      cacheName: (map['cacheName'] as String).input(),
+      clfs: map['clfs'] == null ? null : (ClfsTarget.fromMap((map['clfs'] as Map).cast<String, dynamic>())).input(),
+      junctions: map['junctions'] == null ? null : (pulumi.Input.decodeList<NamespaceJunction>(map['junctions'], (value) => NamespaceJunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nfs3: map['nfs3'] == null ? null : (Nfs3Target.fromMap((map['nfs3'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      storageTargetName: map['storageTargetName'] == null ? null : (map['storageTargetName'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
+      unknown: map['unknown'] == null ? null : (UnknownTarget.fromMap((map['unknown'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

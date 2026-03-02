@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSnapshotPolicyHourlySchedule {
   /// Minute of the hour that the snapshots will be created.
-  final int minute;
+  final pulumi.Input<int> minute;
   /// How many hourly snapshots to keep.
-  final int snapshotsToKeep;
+  final pulumi.Input<int> snapshotsToKeep;
 
   /// Creates a new [GetSnapshotPolicyHourlySchedule].
   /// [minute] Minute of the hour that the snapshots will be created.
@@ -24,8 +25,8 @@ class GetSnapshotPolicyHourlySchedule {
 
   factory GetSnapshotPolicyHourlySchedule.fromMap(Map<String, dynamic> map) {
     return GetSnapshotPolicyHourlySchedule(
-      minute: map['minute'] as int,
-      snapshotsToKeep: map['snapshotsToKeep'] as int,
+      minute: (map['minute'] as int).input(),
+      snapshotsToKeep: (map['snapshotsToKeep'] as int).input(),
     );
   }
 }

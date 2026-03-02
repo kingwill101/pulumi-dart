@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PluginDocumentation {
   /// The uri of the externally hosted documentation.
-  final String? externalUri;
+  final pulumi.Input<String>? externalUri;
 
   /// Creates a new [PluginDocumentation].
   /// [externalUri] The uri of the externally hosted documentation.
@@ -19,7 +20,7 @@ class PluginDocumentation {
 
   factory PluginDocumentation.fromMap(Map<String, dynamic> map) {
     return PluginDocumentation(
-      externalUri: map['externalUri'] == null ? null : map['externalUri'] as String,
+      externalUri: map['externalUri'] == null ? null : (map['externalUri'] as String).input(),
     );
   }
 }

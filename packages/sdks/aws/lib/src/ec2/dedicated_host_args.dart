@@ -37,25 +37,16 @@ class DedicatedHostArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DedicatedHostArgs({
-    pulumi.Output<String>? assetId,
-    pulumi.Output<String>? autoPlacement,
-    required pulumi.Output<String> availabilityZone,
-    pulumi.Output<String>? hostRecovery,
-    pulumi.Output<String>? instanceFamily,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? outpostArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      assetId = pulumi.Input.asOptionalInput<String>(assetId),
-      autoPlacement = pulumi.Input.asOptionalInput<String>(autoPlacement),
-      availabilityZone = pulumi.Input.asInput<String>(availabilityZone),
-      hostRecovery = pulumi.Input.asOptionalInput<String>(hostRecovery),
-      instanceFamily = pulumi.Input.asOptionalInput<String>(instanceFamily),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      outpostArn = pulumi.Input.asOptionalInput<String>(outpostArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.assetId,
+    this.autoPlacement,
+    required this.availabilityZone,
+    this.hostRecovery,
+    this.instanceFamily,
+    this.instanceType,
+    this.outpostArn,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class DedicatedHostArgs {
 
   factory DedicatedHostArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedHostArgs(
-      assetId: map['assetId'] == null ? null : pulumi.Output.create<String>(map['assetId'] as String),
-      autoPlacement: map['autoPlacement'] == null ? null : pulumi.Output.create<String>(map['autoPlacement'] as String),
-      availabilityZone: pulumi.Output.create<String>(map['availabilityZone'] as String),
-      hostRecovery: map['hostRecovery'] == null ? null : pulumi.Output.create<String>(map['hostRecovery'] as String),
-      instanceFamily: map['instanceFamily'] == null ? null : pulumi.Output.create<String>(map['instanceFamily'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      outpostArn: map['outpostArn'] == null ? null : pulumi.Output.create<String>(map['outpostArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      assetId: map['assetId'] == null ? null : (map['assetId'] as String).input(),
+      autoPlacement: map['autoPlacement'] == null ? null : (map['autoPlacement'] as String).input(),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      hostRecovery: map['hostRecovery'] == null ? null : (map['hostRecovery'] as String).input(),
+      instanceFamily: map['instanceFamily'] == null ? null : (map['instanceFamily'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

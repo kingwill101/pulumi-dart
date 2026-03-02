@@ -33,23 +33,15 @@ class ImageTransformState {
   /// [siteId] The site ID, which can be obtained by calling the ListSites API.
   /// [siteVersion] The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   ImageTransformState({
-    pulumi.Output<int>? configId,
-    pulumi.Output<String>? enable,
-    pulumi.Output<String>? rule,
-    pulumi.Output<String>? ruleEnable,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<int>? sequence,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<int>? siteVersion,
-  }) :
-      configId = pulumi.Input.asOptionalInput<int>(configId),
-      enable = pulumi.Input.asOptionalInput<String>(enable),
-      rule = pulumi.Input.asOptionalInput<String>(rule),
-      ruleEnable = pulumi.Input.asOptionalInput<String>(ruleEnable),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      sequence = pulumi.Input.asOptionalInput<int>(sequence),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      siteVersion = pulumi.Input.asOptionalInput<int>(siteVersion);
+    this.configId,
+    this.enable,
+    this.rule,
+    this.ruleEnable,
+    this.ruleName,
+    this.sequence,
+    this.siteId,
+    this.siteVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ImageTransformState {
 
   factory ImageTransformState.fromMap(Map<String, dynamic> map) {
     return ImageTransformState(
-      configId: map['configId'] == null ? null : pulumi.Output.create<int>(map['configId'] as int),
-      enable: map['enable'] == null ? null : pulumi.Output.create<String>(map['enable'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<String>(map['rule'] as String),
-      ruleEnable: map['ruleEnable'] == null ? null : pulumi.Output.create<String>(map['ruleEnable'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      sequence: map['sequence'] == null ? null : pulumi.Output.create<int>(map['sequence'] as int),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      siteVersion: map['siteVersion'] == null ? null : pulumi.Output.create<int>(map['siteVersion'] as int),
+      configId: map['configId'] == null ? null : (map['configId'] as int).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
     );
   }
 }

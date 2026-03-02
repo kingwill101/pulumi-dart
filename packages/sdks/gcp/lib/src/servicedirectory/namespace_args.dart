@@ -29,15 +29,11 @@ class NamespaceArgs {
   /// [namespaceId] The Resource ID must be 1-63 characters long, including digits,
   /// [project] The ID of the project in which the resource belongs.
   NamespaceArgs({
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> namespaceId,
-    pulumi.Output<String>? project,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.labels,
+    required this.location,
+    required this.namespaceId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,10 +46,10 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

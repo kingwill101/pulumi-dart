@@ -28,19 +28,13 @@ class EndpointAccessArgs {
   /// [vpcSecurityGroupIds] An array of security group IDs to associate with the workgroup.
   /// [workgroupName] The name of the workgroup.
   EndpointAccessArgs({
-    required pulumi.Output<String> endpointName,
-    pulumi.Output<String>? ownerAccount,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> subnetIds,
-    pulumi.Output<List<String>>? vpcSecurityGroupIds,
-    required pulumi.Output<String> workgroupName,
-  }) :
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      ownerAccount = pulumi.Input.asOptionalInput<String>(ownerAccount),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetIds = pulumi.Input.asInput<List<String>>(subnetIds),
-      vpcSecurityGroupIds = pulumi.Input.asOptionalInput<List<String>>(vpcSecurityGroupIds),
-      workgroupName = pulumi.Input.asInput<String>(workgroupName);
+    required this.endpointName,
+    this.ownerAccount,
+    this.region,
+    required this.subnetIds,
+    this.vpcSecurityGroupIds,
+    required this.workgroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class EndpointAccessArgs {
 
   factory EndpointAccessArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAccessArgs(
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      ownerAccount: map['ownerAccount'] == null ? null : pulumi.Output.create<String>(map['ownerAccount'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetIds: pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcSecurityGroupIds'] as List).cast<String>()),
-      workgroupName: pulumi.Output.create<String>(map['workgroupName'] as String),
+      endpointName: (map['endpointName'] as String).input(),
+      ownerAccount: map['ownerAccount'] == null ? null : (map['ownerAccount'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
+      workgroupName: (map['workgroupName'] as String).input(),
     );
   }
 }

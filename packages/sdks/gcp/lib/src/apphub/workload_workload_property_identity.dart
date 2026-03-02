@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadWorkloadPropertyIdentity {
   /// (Output)
   /// The principal of the identity.
-  final String? principal;
+  final pulumi.Input<String>? principal;
 
   /// Creates a new [WorkloadWorkloadPropertyIdentity].
   /// [principal] (Output)
@@ -20,7 +21,7 @@ class WorkloadWorkloadPropertyIdentity {
 
   factory WorkloadWorkloadPropertyIdentity.fromMap(Map<String, dynamic> map) {
     return WorkloadWorkloadPropertyIdentity(
-      principal: map['principal'] == null ? null : map['principal'] as String,
+      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
     );
   }
 }

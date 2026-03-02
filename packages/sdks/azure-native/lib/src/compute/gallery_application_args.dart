@@ -48,31 +48,19 @@ class GalleryApplicationArgs {
   /// [supportedOSType] This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
   /// [tags] Resource tags.
   GalleryApplicationArgs({
-    pulumi.Output<List<GalleryApplicationCustomAction>>? customActions,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? endOfLifeDate,
-    pulumi.Output<String>? eula,
-    pulumi.Output<String>? galleryApplicationName,
-    required pulumi.Output<String> galleryName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? privacyStatementUri,
-    pulumi.Output<String>? releaseNoteUri,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<OperatingSystemTypes> supportedOSType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      customActions = pulumi.Input.asOptionalInput<List<GalleryApplicationCustomAction>>(customActions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endOfLifeDate = pulumi.Input.asOptionalInput<String>(endOfLifeDate),
-      eula = pulumi.Input.asOptionalInput<String>(eula),
-      galleryApplicationName = pulumi.Input.asOptionalInput<String>(galleryApplicationName),
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      privacyStatementUri = pulumi.Input.asOptionalInput<String>(privacyStatementUri),
-      releaseNoteUri = pulumi.Input.asOptionalInput<String>(releaseNoteUri),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      supportedOSType = pulumi.Input.asInput<OperatingSystemTypes>(supportedOSType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.customActions,
+    this.description,
+    this.endOfLifeDate,
+    this.eula,
+    this.galleryApplicationName,
+    required this.galleryName,
+    this.location,
+    this.privacyStatementUri,
+    this.releaseNoteUri,
+    required this.resourceGroupName,
+    required this.supportedOSType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class GalleryApplicationArgs {
 
   factory GalleryApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationArgs(
-      customActions: map['customActions'] == null ? null : pulumi.Output.create<List<GalleryApplicationCustomAction>>(pulumi.Input.decodeList<GalleryApplicationCustomAction>(map['customActions'], (value) => GalleryApplicationCustomAction.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : pulumi.Output.create<String>(map['endOfLifeDate'] as String),
-      eula: map['eula'] == null ? null : pulumi.Output.create<String>(map['eula'] as String),
-      galleryApplicationName: map['galleryApplicationName'] == null ? null : pulumi.Output.create<String>(map['galleryApplicationName'] as String),
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      privacyStatementUri: map['privacyStatementUri'] == null ? null : pulumi.Output.create<String>(map['privacyStatementUri'] as String),
-      releaseNoteUri: map['releaseNoteUri'] == null ? null : pulumi.Output.create<String>(map['releaseNoteUri'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      supportedOSType: pulumi.Output.create<OperatingSystemTypes>(OperatingSystemTypes.fromValue(map['supportedOSType'] as String)),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      customActions: map['customActions'] == null ? null : (pulumi.Input.decodeList<GalleryApplicationCustomAction>(map['customActions'], (value) => GalleryApplicationCustomAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
+      eula: map['eula'] == null ? null : (map['eula'] as String).input(),
+      galleryApplicationName: map['galleryApplicationName'] == null ? null : (map['galleryApplicationName'] as String).input(),
+      galleryName: (map['galleryName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri'] as String).input(),
+      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      supportedOSType: (OperatingSystemTypes.fromValue(map['supportedOSType'] as String)).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

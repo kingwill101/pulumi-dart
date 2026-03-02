@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_config_devices_sda.dart';
 import 'instance_config_devices_sdb.dart';
 import 'instance_config_devices_sdc.dart';
@@ -11,21 +12,21 @@ import 'instance_config_devices_sdh.dart';
 
 class InstanceConfigDevices {
   /// ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
-  final InstanceConfigDevicesSda? sda;
+  final pulumi.Input<InstanceConfigDevicesSda>? sda;
   /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-  final InstanceConfigDevicesSdb? sdb;
+  final pulumi.Input<InstanceConfigDevicesSdb>? sdb;
   /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-  final InstanceConfigDevicesSdc? sdc;
+  final pulumi.Input<InstanceConfigDevicesSdc>? sdc;
   /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-  final InstanceConfigDevicesSdd? sdd;
+  final pulumi.Input<InstanceConfigDevicesSdd>? sdd;
   /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-  final InstanceConfigDevicesSde? sde;
+  final pulumi.Input<InstanceConfigDevicesSde>? sde;
   /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-  final InstanceConfigDevicesSdf? sdf;
+  final pulumi.Input<InstanceConfigDevicesSdf>? sdf;
   /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-  final InstanceConfigDevicesSdg? sdg;
+  final pulumi.Input<InstanceConfigDevicesSdg>? sdg;
   /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-  final InstanceConfigDevicesSdh? sdh;
+  final pulumi.Input<InstanceConfigDevicesSdh>? sdh;
 
   /// Creates a new [InstanceConfigDevices].
   /// [sda] ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
@@ -49,27 +50,27 @@ class InstanceConfigDevices {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sda': ?sda == null ? null : sda!.toMap(),
-      'sdb': ?sdb == null ? null : sdb!.toMap(),
-      'sdc': ?sdc == null ? null : sdc!.toMap(),
-      'sdd': ?sdd == null ? null : sdd!.toMap(),
-      'sde': ?sde == null ? null : sde!.toMap(),
-      'sdf': ?sdf == null ? null : sdf!.toMap(),
-      'sdg': ?sdg == null ? null : sdg!.toMap(),
-      'sdh': ?sdh == null ? null : sdh!.toMap(),
+      'sda': ?pulumi.Input.mapOptionalInputValue<InstanceConfigDevicesSda, Map<String, dynamic>>(sda, (value) => value.toMap()),
+      'sdb': ?pulumi.Input.mapOptionalInputValue<InstanceConfigDevicesSdb, Map<String, dynamic>>(sdb, (value) => value.toMap()),
+      'sdc': ?pulumi.Input.mapOptionalInputValue<InstanceConfigDevicesSdc, Map<String, dynamic>>(sdc, (value) => value.toMap()),
+      'sdd': ?pulumi.Input.mapOptionalInputValue<InstanceConfigDevicesSdd, Map<String, dynamic>>(sdd, (value) => value.toMap()),
+      'sde': ?pulumi.Input.mapOptionalInputValue<InstanceConfigDevicesSde, Map<String, dynamic>>(sde, (value) => value.toMap()),
+      'sdf': ?pulumi.Input.mapOptionalInputValue<InstanceConfigDevicesSdf, Map<String, dynamic>>(sdf, (value) => value.toMap()),
+      'sdg': ?pulumi.Input.mapOptionalInputValue<InstanceConfigDevicesSdg, Map<String, dynamic>>(sdg, (value) => value.toMap()),
+      'sdh': ?pulumi.Input.mapOptionalInputValue<InstanceConfigDevicesSdh, Map<String, dynamic>>(sdh, (value) => value.toMap()),
     };
   }
 
   factory InstanceConfigDevices.fromMap(Map<String, dynamic> map) {
     return InstanceConfigDevices(
-      sda: map['sda'] == null ? null : InstanceConfigDevicesSda.fromMap((map['sda'] as Map).cast<String, dynamic>()),
-      sdb: map['sdb'] == null ? null : InstanceConfigDevicesSdb.fromMap((map['sdb'] as Map).cast<String, dynamic>()),
-      sdc: map['sdc'] == null ? null : InstanceConfigDevicesSdc.fromMap((map['sdc'] as Map).cast<String, dynamic>()),
-      sdd: map['sdd'] == null ? null : InstanceConfigDevicesSdd.fromMap((map['sdd'] as Map).cast<String, dynamic>()),
-      sde: map['sde'] == null ? null : InstanceConfigDevicesSde.fromMap((map['sde'] as Map).cast<String, dynamic>()),
-      sdf: map['sdf'] == null ? null : InstanceConfigDevicesSdf.fromMap((map['sdf'] as Map).cast<String, dynamic>()),
-      sdg: map['sdg'] == null ? null : InstanceConfigDevicesSdg.fromMap((map['sdg'] as Map).cast<String, dynamic>()),
-      sdh: map['sdh'] == null ? null : InstanceConfigDevicesSdh.fromMap((map['sdh'] as Map).cast<String, dynamic>()),
+      sda: map['sda'] == null ? null : (InstanceConfigDevicesSda.fromMap((map['sda'] as Map).cast<String, dynamic>())).input(),
+      sdb: map['sdb'] == null ? null : (InstanceConfigDevicesSdb.fromMap((map['sdb'] as Map).cast<String, dynamic>())).input(),
+      sdc: map['sdc'] == null ? null : (InstanceConfigDevicesSdc.fromMap((map['sdc'] as Map).cast<String, dynamic>())).input(),
+      sdd: map['sdd'] == null ? null : (InstanceConfigDevicesSdd.fromMap((map['sdd'] as Map).cast<String, dynamic>())).input(),
+      sde: map['sde'] == null ? null : (InstanceConfigDevicesSde.fromMap((map['sde'] as Map).cast<String, dynamic>())).input(),
+      sdf: map['sdf'] == null ? null : (InstanceConfigDevicesSdf.fromMap((map['sdf'] as Map).cast<String, dynamic>())).input(),
+      sdg: map['sdg'] == null ? null : (InstanceConfigDevicesSdg.fromMap((map['sdg'] as Map).cast<String, dynamic>())).input(),
+      sdh: map['sdh'] == null ? null : (InstanceConfigDevicesSdh.fromMap((map['sdh'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

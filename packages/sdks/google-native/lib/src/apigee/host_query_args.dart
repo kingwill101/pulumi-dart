@@ -46,31 +46,19 @@ class HostQueryArgs {
   /// [reportDefinitionId] Asynchronous Report ID.
   /// [timeRange] Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
   HostQueryArgs({
-    pulumi.Output<String>? csvDelimiter,
-    pulumi.Output<List<String>>? dimensions,
-    pulumi.Output<String>? envgroupHostname,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? groupByTimeUnit,
-    pulumi.Output<int>? limit,
-    pulumi.Output<List<GoogleCloudApigeeV1QueryMetric>>? metrics,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<String>? outputFormat,
-    pulumi.Output<String>? reportDefinitionId,
-    required pulumi.Output<dynamic> timeRange,
-  }) :
-      csvDelimiter = pulumi.Input.asOptionalInput<String>(csvDelimiter),
-      dimensions = pulumi.Input.asOptionalInput<List<String>>(dimensions),
-      envgroupHostname = pulumi.Input.asOptionalInput<String>(envgroupHostname),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      groupByTimeUnit = pulumi.Input.asOptionalInput<String>(groupByTimeUnit),
-      limit = pulumi.Input.asOptionalInput<int>(limit),
-      metrics = pulumi.Input.asOptionalInput<List<GoogleCloudApigeeV1QueryMetric>>(metrics),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      outputFormat = pulumi.Input.asOptionalInput<String>(outputFormat),
-      reportDefinitionId = pulumi.Input.asOptionalInput<String>(reportDefinitionId),
-      timeRange = pulumi.Input.asInput<dynamic>(timeRange);
+    this.csvDelimiter,
+    this.dimensions,
+    this.envgroupHostname,
+    this.filter,
+    this.groupByTimeUnit,
+    this.limit,
+    this.metrics,
+    this.name,
+    required this.organizationId,
+    this.outputFormat,
+    this.reportDefinitionId,
+    required this.timeRange,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class HostQueryArgs {
 
   factory HostQueryArgs.fromMap(Map<String, dynamic> map) {
     return HostQueryArgs(
-      csvDelimiter: map['csvDelimiter'] == null ? null : pulumi.Output.create<String>(map['csvDelimiter'] as String),
-      dimensions: map['dimensions'] == null ? null : pulumi.Output.create<List<String>>((map['dimensions'] as List).cast<String>()),
-      envgroupHostname: map['envgroupHostname'] == null ? null : pulumi.Output.create<String>(map['envgroupHostname'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      groupByTimeUnit: map['groupByTimeUnit'] == null ? null : pulumi.Output.create<String>(map['groupByTimeUnit'] as String),
-      limit: map['limit'] == null ? null : pulumi.Output.create<int>(map['limit'] as int),
-      metrics: map['metrics'] == null ? null : pulumi.Output.create<List<GoogleCloudApigeeV1QueryMetric>>(pulumi.Input.decodeList<GoogleCloudApigeeV1QueryMetric>(map['metrics'], (value) => GoogleCloudApigeeV1QueryMetric.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      outputFormat: map['outputFormat'] == null ? null : pulumi.Output.create<String>(map['outputFormat'] as String),
-      reportDefinitionId: map['reportDefinitionId'] == null ? null : pulumi.Output.create<String>(map['reportDefinitionId'] as String),
-      timeRange: pulumi.Output.create<dynamic>(map['timeRange']),
+      csvDelimiter: map['csvDelimiter'] == null ? null : (map['csvDelimiter'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as List).cast<String>()).input(),
+      envgroupHostname: map['envgroupHostname'] == null ? null : (map['envgroupHostname'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      groupByTimeUnit: map['groupByTimeUnit'] == null ? null : (map['groupByTimeUnit'] as String).input(),
+      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1QueryMetric>(map['metrics'], (value) => GoogleCloudApigeeV1QueryMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
+      reportDefinitionId: map['reportDefinitionId'] == null ? null : (map['reportDefinitionId'] as String).input(),
+      timeRange: (map['timeRange']).input(),
     );
   }
 }

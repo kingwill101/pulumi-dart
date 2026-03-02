@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the link to a Key Vault.
 class KeyVaultReferenceResponse {
   /// Azure resource ID of the Key Vault.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [KeyVaultReferenceResponse].
   /// [id] Azure resource ID of the Key Vault.
@@ -20,7 +21,7 @@ class KeyVaultReferenceResponse {
 
   factory KeyVaultReferenceResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultReferenceResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

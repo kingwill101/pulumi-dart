@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_monitor_group_instances_instance_instance.dart';
 
 class GetMonitorGroupInstancesInstance {
-  final List<GetMonitorGroupInstancesInstanceInstance> instances;
+  final pulumi.Input<List<GetMonitorGroupInstancesInstanceInstance>> instances;
 
   /// Creates a new [GetMonitorGroupInstancesInstance].
   /// [instances] Required.
@@ -14,13 +14,13 @@ class GetMonitorGroupInstancesInstance {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instances': pulumi.Input.encodeList<GetMonitorGroupInstancesInstanceInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances': pulumi.Input.mapInputValue<List<GetMonitorGroupInstancesInstanceInstance>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<GetMonitorGroupInstancesInstanceInstance, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetMonitorGroupInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetMonitorGroupInstancesInstance(
-      instances: pulumi.Input.decodeList<GetMonitorGroupInstancesInstanceInstance>(map['instances'], (value) => GetMonitorGroupInstancesInstanceInstance.fromMap((value as Map).cast<String, dynamic>())),
+      instances: (pulumi.Input.decodeList<GetMonitorGroupInstancesInstanceInstance>(map['instances'], (value) => GetMonitorGroupInstancesInstanceInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

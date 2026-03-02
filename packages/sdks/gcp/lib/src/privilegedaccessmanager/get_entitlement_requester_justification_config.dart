@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEntitlementRequesterJustificationConfig {
   /// The justification is not mandatory but can be provided in any of the supported formats.
-  final List<Map<String, dynamic>> notMandatories;
+  final pulumi.Input<List<Map<String, dynamic>>> notMandatories;
   /// The requester has to provide a justification in the form of free flowing text.
-  final List<Map<String, dynamic>> unstructureds;
+  final pulumi.Input<List<Map<String, dynamic>>> unstructureds;
 
   /// Creates a new [GetEntitlementRequesterJustificationConfig].
   /// [notMandatories] The justification is not mandatory but can be provided in any of the supported formats.
@@ -24,8 +25,8 @@ class GetEntitlementRequesterJustificationConfig {
 
   factory GetEntitlementRequesterJustificationConfig.fromMap(Map<String, dynamic> map) {
     return GetEntitlementRequesterJustificationConfig(
-      notMandatories: (map['notMandatories'] as List).cast<Map<String, dynamic>>(),
-      unstructureds: (map['unstructureds'] as List).cast<Map<String, dynamic>>(),
+      notMandatories: ((map['notMandatories'] as List).cast<Map<String, dynamic>>()).input(),
+      unstructureds: ((map['unstructureds'] as List).cast<Map<String, dynamic>>()).input(),
     );
   }
 }

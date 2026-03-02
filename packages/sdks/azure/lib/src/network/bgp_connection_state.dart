@@ -22,17 +22,12 @@ class BgpConnectionState {
   /// [virtualHubId] The ID of the Virtual Hub within which this Bgp connection should be created. Changing this forces a new resource to be created.
   /// [virtualNetworkConnectionId] The ID of virtual network connection.
   BgpConnectionState({
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? peerAsn,
-    pulumi.Output<String>? peerIp,
-    pulumi.Output<String>? virtualHubId,
-    pulumi.Output<String>? virtualNetworkConnectionId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peerAsn = pulumi.Input.asOptionalInput<int>(peerAsn),
-      peerIp = pulumi.Input.asOptionalInput<String>(peerIp),
-      virtualHubId = pulumi.Input.asOptionalInput<String>(virtualHubId),
-      virtualNetworkConnectionId = pulumi.Input.asOptionalInput<String>(virtualNetworkConnectionId);
+    this.name,
+    this.peerAsn,
+    this.peerIp,
+    this.virtualHubId,
+    this.virtualNetworkConnectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class BgpConnectionState {
 
   factory BgpConnectionState.fromMap(Map<String, dynamic> map) {
     return BgpConnectionState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peerAsn: map['peerAsn'] == null ? null : pulumi.Output.create<int>(map['peerAsn'] as int),
-      peerIp: map['peerIp'] == null ? null : pulumi.Output.create<String>(map['peerIp'] as String),
-      virtualHubId: map['virtualHubId'] == null ? null : pulumi.Output.create<String>(map['virtualHubId'] as String),
-      virtualNetworkConnectionId: map['virtualNetworkConnectionId'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkConnectionId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
+      peerIp: map['peerIp'] == null ? null : (map['peerIp'] as String).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
+      virtualNetworkConnectionId: map['virtualNetworkConnectionId'] == null ? null : (map['virtualNetworkConnectionId'] as String).input(),
     );
   }
 }

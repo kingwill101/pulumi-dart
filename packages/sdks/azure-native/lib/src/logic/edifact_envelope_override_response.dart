@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Edifact envelope override settings.
 class EdifactEnvelopeOverrideResponse {
   /// The application password.
-  final String? applicationPassword;
+  final pulumi.Input<String>? applicationPassword;
   /// The association assigned code.
-  final String? associationAssignedCode;
+  final pulumi.Input<String>? associationAssignedCode;
   /// The controlling agency code.
-  final String? controllingAgencyCode;
+  final pulumi.Input<String>? controllingAgencyCode;
   /// The functional group id.
-  final String? functionalGroupId;
+  final pulumi.Input<String>? functionalGroupId;
   /// The group header message release.
-  final String? groupHeaderMessageRelease;
+  final pulumi.Input<String>? groupHeaderMessageRelease;
   /// The group header message version.
-  final String? groupHeaderMessageVersion;
+  final pulumi.Input<String>? groupHeaderMessageVersion;
   /// The message association assigned code.
-  final String? messageAssociationAssignedCode;
+  final pulumi.Input<String>? messageAssociationAssignedCode;
   /// The message id on which this envelope settings has to be applied.
-  final String? messageId;
+  final pulumi.Input<String>? messageId;
   /// The message release version on which this envelope settings has to be applied.
-  final String? messageRelease;
+  final pulumi.Input<String>? messageRelease;
   /// The message version on which this envelope settings has to be applied.
-  final String? messageVersion;
+  final pulumi.Input<String>? messageVersion;
   /// The receiver application id.
-  final String? receiverApplicationId;
+  final pulumi.Input<String>? receiverApplicationId;
   /// The receiver application qualifier.
-  final String? receiverApplicationQualifier;
+  final pulumi.Input<String>? receiverApplicationQualifier;
   /// The sender application id.
-  final String? senderApplicationId;
+  final pulumi.Input<String>? senderApplicationId;
   /// The sender application qualifier.
-  final String? senderApplicationQualifier;
+  final pulumi.Input<String>? senderApplicationQualifier;
   /// The target namespace on which this envelope settings has to be applied.
-  final String? targetNamespace;
+  final pulumi.Input<String>? targetNamespace;
 
   /// Creates a new [EdifactEnvelopeOverrideResponse].
   /// [applicationPassword] The application password.
@@ -90,21 +91,21 @@ class EdifactEnvelopeOverrideResponse {
 
   factory EdifactEnvelopeOverrideResponse.fromMap(Map<String, dynamic> map) {
     return EdifactEnvelopeOverrideResponse(
-      applicationPassword: map['applicationPassword'] == null ? null : map['applicationPassword'] as String,
-      associationAssignedCode: map['associationAssignedCode'] == null ? null : map['associationAssignedCode'] as String,
-      controllingAgencyCode: map['controllingAgencyCode'] == null ? null : map['controllingAgencyCode'] as String,
-      functionalGroupId: map['functionalGroupId'] == null ? null : map['functionalGroupId'] as String,
-      groupHeaderMessageRelease: map['groupHeaderMessageRelease'] == null ? null : map['groupHeaderMessageRelease'] as String,
-      groupHeaderMessageVersion: map['groupHeaderMessageVersion'] == null ? null : map['groupHeaderMessageVersion'] as String,
-      messageAssociationAssignedCode: map['messageAssociationAssignedCode'] == null ? null : map['messageAssociationAssignedCode'] as String,
-      messageId: map['messageId'] == null ? null : map['messageId'] as String,
-      messageRelease: map['messageRelease'] == null ? null : map['messageRelease'] as String,
-      messageVersion: map['messageVersion'] == null ? null : map['messageVersion'] as String,
-      receiverApplicationId: map['receiverApplicationId'] == null ? null : map['receiverApplicationId'] as String,
-      receiverApplicationQualifier: map['receiverApplicationQualifier'] == null ? null : map['receiverApplicationQualifier'] as String,
-      senderApplicationId: map['senderApplicationId'] == null ? null : map['senderApplicationId'] as String,
-      senderApplicationQualifier: map['senderApplicationQualifier'] == null ? null : map['senderApplicationQualifier'] as String,
-      targetNamespace: map['targetNamespace'] == null ? null : map['targetNamespace'] as String,
+      applicationPassword: map['applicationPassword'] == null ? null : (map['applicationPassword'] as String).input(),
+      associationAssignedCode: map['associationAssignedCode'] == null ? null : (map['associationAssignedCode'] as String).input(),
+      controllingAgencyCode: map['controllingAgencyCode'] == null ? null : (map['controllingAgencyCode'] as String).input(),
+      functionalGroupId: map['functionalGroupId'] == null ? null : (map['functionalGroupId'] as String).input(),
+      groupHeaderMessageRelease: map['groupHeaderMessageRelease'] == null ? null : (map['groupHeaderMessageRelease'] as String).input(),
+      groupHeaderMessageVersion: map['groupHeaderMessageVersion'] == null ? null : (map['groupHeaderMessageVersion'] as String).input(),
+      messageAssociationAssignedCode: map['messageAssociationAssignedCode'] == null ? null : (map['messageAssociationAssignedCode'] as String).input(),
+      messageId: map['messageId'] == null ? null : (map['messageId'] as String).input(),
+      messageRelease: map['messageRelease'] == null ? null : (map['messageRelease'] as String).input(),
+      messageVersion: map['messageVersion'] == null ? null : (map['messageVersion'] as String).input(),
+      receiverApplicationId: map['receiverApplicationId'] == null ? null : (map['receiverApplicationId'] as String).input(),
+      receiverApplicationQualifier: map['receiverApplicationQualifier'] == null ? null : (map['receiverApplicationQualifier'] as String).input(),
+      senderApplicationId: map['senderApplicationId'] == null ? null : (map['senderApplicationId'] as String).input(),
+      senderApplicationQualifier: map['senderApplicationQualifier'] == null ? null : (map['senderApplicationQualifier'] as String).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
     );
   }
 }

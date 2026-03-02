@@ -17,11 +17,9 @@ class GetAppArgs {
   /// [appId] The ID of the app to retrieve information about.
   /// [dedicatedIps] A list of dedicated egress IP addresses associated with the app.
   GetAppArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<List<GetAppDedicatedIp>>? dedicatedIps,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      dedicatedIps = pulumi.Input.asOptionalInput<List<GetAppDedicatedIp>>(dedicatedIps);
+    required this.appId,
+    this.dedicatedIps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetAppArgs {
 
   factory GetAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAppArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      dedicatedIps: map['dedicatedIps'] == null ? null : pulumi.Output.create<List<GetAppDedicatedIp>>(pulumi.Input.decodeList<GetAppDedicatedIp>(map['dedicatedIps'], (value) => GetAppDedicatedIp.fromMap((value as Map).cast<String, dynamic>()))),
+      appId: (map['appId'] as String).input(),
+      dedicatedIps: map['dedicatedIps'] == null ? null : (pulumi.Input.decodeList<GetAppDedicatedIp>(map['dedicatedIps'], (value) => GetAppDedicatedIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

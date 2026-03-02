@@ -6,23 +6,23 @@ import 'connection_setting_parameter.dart';
 /// Properties for a Connection Setting Item
 class ConnectionSettingProperties {
   /// Client Id associated with the Connection Setting.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Client Secret associated with the Connection Setting
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// Id of the Connection Setting.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of the Connection Setting.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Service Provider Parameters associated with the Connection Setting
-  final List<ConnectionSettingParameter>? parameters;
+  final pulumi.Input<List<ConnectionSettingParameter>>? parameters;
   /// Provisioning state of the resource
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// Scopes associated with the Connection Setting
-  final String? scopes;
+  final pulumi.Input<String>? scopes;
   /// Service Provider Display Name associated with the Connection Setting
-  final String? serviceProviderDisplayName;
+  final pulumi.Input<String>? serviceProviderDisplayName;
   /// Service Provider Id associated with the Connection Setting
-  final String? serviceProviderId;
+  final pulumi.Input<String>? serviceProviderId;
 
   /// Creates a new [ConnectionSettingProperties].
   /// [clientId] Client Id associated with the Connection Setting.
@@ -52,7 +52,7 @@ class ConnectionSettingProperties {
       'clientSecret': ?clientSecret,
       'id': ?id,
       'name': ?name,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<ConnectionSettingParameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ConnectionSettingParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ConnectionSettingParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': ?provisioningState,
       'scopes': ?scopes,
       'serviceProviderDisplayName': ?serviceProviderDisplayName,
@@ -62,15 +62,15 @@ class ConnectionSettingProperties {
 
   factory ConnectionSettingProperties.fromMap(Map<String, dynamic> map) {
     return ConnectionSettingProperties(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<ConnectionSettingParameter>(map['parameters'], (value) => ConnectionSettingParameter.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      scopes: map['scopes'] == null ? null : map['scopes'] as String,
-      serviceProviderDisplayName: map['serviceProviderDisplayName'] == null ? null : map['serviceProviderDisplayName'] as String,
-      serviceProviderId: map['serviceProviderId'] == null ? null : map['serviceProviderId'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ConnectionSettingParameter>(map['parameters'], (value) => ConnectionSettingParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
+      serviceProviderDisplayName: map['serviceProviderDisplayName'] == null ? null : (map['serviceProviderDisplayName'] as String).input(),
+      serviceProviderId: map['serviceProviderId'] == null ? null : (map['serviceProviderId'] as String).input(),
     );
   }
 }

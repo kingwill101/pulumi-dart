@@ -5,26 +5,26 @@ import 'reportable_exception_response.dart';
 
 class MigrateSsisTaskOutputProjectLevelResponse {
   /// Migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Migration exceptions and warnings
-  final List<ReportableExceptionResponse> exceptionsAndWarnings;
+  final pulumi.Input<List<ReportableExceptionResponse>> exceptionsAndWarnings;
   /// Name of the folder
-  final String folderName;
+  final pulumi.Input<String> folderName;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Migration progress message
-  final String message;
+  final pulumi.Input<String> message;
   /// Name of the project
-  final String projectName;
+  final pulumi.Input<String> projectName;
   /// Result type
   /// Expected value is 'SsisProjectLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Stage of SSIS migration.
-  final String stage;
+  final pulumi.Input<String> stage;
   /// Migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Current state of migration
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [MigrateSsisTaskOutputProjectLevelResponse].
   /// [endedOn] Migration end time
@@ -53,7 +53,7 @@ class MigrateSsisTaskOutputProjectLevelResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endedOn': endedOn,
-      'exceptionsAndWarnings': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(exceptionsAndWarnings, (value) => value.toMap()),
+      'exceptionsAndWarnings': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(exceptionsAndWarnings, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'folderName': folderName,
       'id': id,
       'message': message,
@@ -67,16 +67,16 @@ class MigrateSsisTaskOutputProjectLevelResponse {
 
   factory MigrateSsisTaskOutputProjectLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSsisTaskOutputProjectLevelResponse(
-      endedOn: map['endedOn'] as String,
-      exceptionsAndWarnings: pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      folderName: map['folderName'] as String,
-      id: map['id'] as String,
-      message: map['message'] as String,
-      projectName: map['projectName'] as String,
-      resultType: map['resultType'] as String,
-      stage: map['stage'] as String,
-      startedOn: map['startedOn'] as String,
-      state: map['state'] as String,
+      endedOn: (map['endedOn'] as String).input(),
+      exceptionsAndWarnings: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      folderName: (map['folderName'] as String).input(),
+      id: (map['id'] as String).input(),
+      message: (map['message'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
+      stage: (map['stage'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

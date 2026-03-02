@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterOperationPolicyClusterAutoUpgrade {
   /// Cluster automatic upgrade frequency.
-  final String channel;
+  final pulumi.Input<String> channel;
   /// Whether to enable cluster automatic upgrade.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetClustersClusterOperationPolicyClusterAutoUpgrade].
   /// [channel] Cluster automatic upgrade frequency.
@@ -24,8 +25,8 @@ class GetClustersClusterOperationPolicyClusterAutoUpgrade {
 
   factory GetClustersClusterOperationPolicyClusterAutoUpgrade.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterOperationPolicyClusterAutoUpgrade(
-      channel: map['channel'] as String,
-      enabled: map['enabled'] as bool,
+      channel: (map['channel'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

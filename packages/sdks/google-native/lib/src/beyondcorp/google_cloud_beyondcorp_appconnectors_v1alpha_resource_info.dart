@@ -6,15 +6,15 @@ import 'google_cloud_beyondcorp_appconnectors_v1alpha_resource_info_status.dart'
 /// ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
 class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo {
   /// Unique Id for the resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specific details for the resource. This is for internal use only.
-  final Map<String, String>? resource;
+  final pulumi.Input<Map<String, String>>? resource;
   /// Overall health status. Overall status is derived based on the status of each sub level resources.
-  final GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus? status;
+  final pulumi.Input<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus>? status;
   /// List of Info for the sub level resources.
-  final List<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo>? sub;
+  final pulumi.Input<List<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo>>? sub;
   /// The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
-  final String? time;
+  final pulumi.Input<String>? time;
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo].
   /// [id] Unique Id for the resource.
@@ -34,19 +34,19 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo {
     return <String, dynamic>{
       'id': id,
       'resource': ?resource,
-      'status': ?status == null ? null : status!.value,
-      'sub': ?sub == null ? null : pulumi.Input.encodeList<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo, Map<String, dynamic>>(sub!, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus, String>(status, (value) => value.value),
+      'sub': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo>, List<Map<String, dynamic>>>(sub, (value) => pulumi.Input.encodeList<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'time': ?time,
     };
   }
 
   factory GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo(
-      id: map['id'] as String,
-      resource: map['resource'] == null ? null : (map['resource'] as Map).cast<String, String>(),
-      status: map['status'] == null ? null : GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus.fromValue(map['status'] as String),
-      sub: map['sub'] == null ? null : pulumi.Input.decodeList<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo>(map['sub'], (value) => GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo.fromMap((value as Map).cast<String, dynamic>())),
-      time: map['time'] == null ? null : map['time'] as String,
+      id: (map['id'] as String).input(),
+      resource: map['resource'] == null ? null : ((map['resource'] as Map).cast<String, String>()).input(),
+      status: map['status'] == null ? null : (GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus.fromValue(map['status'] as String)).input(),
+      sub: map['sub'] == null ? null : (pulumi.Input.decodeList<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo>(map['sub'], (value) => GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      time: map['time'] == null ? null : (map['time'] as String).input(),
     );
   }
 }

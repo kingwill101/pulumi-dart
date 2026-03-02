@@ -19,13 +19,10 @@ class AccessPackageCatalogRoleAssignmentArgs {
   /// [principalObjectId] The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   /// [roleId] The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
   AccessPackageCatalogRoleAssignmentArgs({
-    required pulumi.Output<String> catalogId,
-    required pulumi.Output<String> principalObjectId,
-    required pulumi.Output<String> roleId,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      principalObjectId = pulumi.Input.asInput<String>(principalObjectId),
-      roleId = pulumi.Input.asInput<String>(roleId);
+    required this.catalogId,
+    required this.principalObjectId,
+    required this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AccessPackageCatalogRoleAssignmentArgs {
 
   factory AccessPackageCatalogRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AccessPackageCatalogRoleAssignmentArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      principalObjectId: pulumi.Output.create<String>(map['principalObjectId'] as String),
-      roleId: pulumi.Output.create<String>(map['roleId'] as String),
+      catalogId: (map['catalogId'] as String).input(),
+      principalObjectId: (map['principalObjectId'] as String).input(),
+      roleId: (map['roleId'] as String).input(),
     );
   }
 }

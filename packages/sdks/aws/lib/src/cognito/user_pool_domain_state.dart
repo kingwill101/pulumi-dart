@@ -40,29 +40,18 @@ class UserPoolDomainState {
   /// [userPoolId] The user pool ID.
   /// [version] The app version.
   UserPoolDomainState({
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? certificateArn,
-    pulumi.Output<String>? cloudfrontDistribution,
-    pulumi.Output<String>? cloudfrontDistributionArn,
-    pulumi.Output<String>? cloudfrontDistributionZoneId,
-    pulumi.Output<String>? domain,
-    pulumi.Output<int>? managedLoginVersion,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? s3Bucket,
-    pulumi.Output<String>? userPoolId,
-    pulumi.Output<String>? version,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      certificateArn = pulumi.Input.asOptionalInput<String>(certificateArn),
-      cloudfrontDistribution = pulumi.Input.asOptionalInput<String>(cloudfrontDistribution),
-      cloudfrontDistributionArn = pulumi.Input.asOptionalInput<String>(cloudfrontDistributionArn),
-      cloudfrontDistributionZoneId = pulumi.Input.asOptionalInput<String>(cloudfrontDistributionZoneId),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      managedLoginVersion = pulumi.Input.asOptionalInput<int>(managedLoginVersion),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3Bucket = pulumi.Input.asOptionalInput<String>(s3Bucket),
-      userPoolId = pulumi.Input.asOptionalInput<String>(userPoolId),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.awsAccountId,
+    this.certificateArn,
+    this.cloudfrontDistribution,
+    this.cloudfrontDistributionArn,
+    this.cloudfrontDistributionZoneId,
+    this.domain,
+    this.managedLoginVersion,
+    this.region,
+    this.s3Bucket,
+    this.userPoolId,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class UserPoolDomainState {
 
   factory UserPoolDomainState.fromMap(Map<String, dynamic> map) {
     return UserPoolDomainState(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      certificateArn: map['certificateArn'] == null ? null : pulumi.Output.create<String>(map['certificateArn'] as String),
-      cloudfrontDistribution: map['cloudfrontDistribution'] == null ? null : pulumi.Output.create<String>(map['cloudfrontDistribution'] as String),
-      cloudfrontDistributionArn: map['cloudfrontDistributionArn'] == null ? null : pulumi.Output.create<String>(map['cloudfrontDistributionArn'] as String),
-      cloudfrontDistributionZoneId: map['cloudfrontDistributionZoneId'] == null ? null : pulumi.Output.create<String>(map['cloudfrontDistributionZoneId'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      managedLoginVersion: map['managedLoginVersion'] == null ? null : pulumi.Output.create<int>(map['managedLoginVersion'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3Bucket: map['s3Bucket'] == null ? null : pulumi.Output.create<String>(map['s3Bucket'] as String),
-      userPoolId: map['userPoolId'] == null ? null : pulumi.Output.create<String>(map['userPoolId'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
+      cloudfrontDistribution: map['cloudfrontDistribution'] == null ? null : (map['cloudfrontDistribution'] as String).input(),
+      cloudfrontDistributionArn: map['cloudfrontDistributionArn'] == null ? null : (map['cloudfrontDistributionArn'] as String).input(),
+      cloudfrontDistributionZoneId: map['cloudfrontDistributionZoneId'] == null ? null : (map['cloudfrontDistributionZoneId'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      managedLoginVersion: map['managedLoginVersion'] == null ? null : (map['managedLoginVersion'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket'] as String).input(),
+      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

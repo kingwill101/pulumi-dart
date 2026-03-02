@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The resource group properties.
 class ResourceGroupPropertiesResponse {
   /// The provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [ResourceGroupPropertiesResponse].
   /// [provisioningState] The provisioning state.
@@ -20,7 +21,7 @@ class ResourceGroupPropertiesResponse {
 
   factory ResourceGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ResourceGroupPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

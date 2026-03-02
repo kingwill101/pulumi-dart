@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_oauth_settings_response.dart';
 
 /// Connection provider parameters
 class ConnectionParameterResponse {
   /// OAuth settings for the connection provider
-  final ApiOAuthSettingsResponse? oAuthSettings;
+  final pulumi.Input<ApiOAuthSettingsResponse>? oAuthSettings;
   /// Type of the parameter
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ConnectionParameterResponse].
   /// [oAuthSettings] OAuth settings for the connection provider
@@ -19,15 +20,15 @@ class ConnectionParameterResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oAuthSettings': ?oAuthSettings == null ? null : oAuthSettings!.toMap(),
+      'oAuthSettings': ?pulumi.Input.mapOptionalInputValue<ApiOAuthSettingsResponse, Map<String, dynamic>>(oAuthSettings, (value) => value.toMap()),
       'type': ?type,
     };
   }
 
   factory ConnectionParameterResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionParameterResponse(
-      oAuthSettings: map['oAuthSettings'] == null ? null : ApiOAuthSettingsResponse.fromMap((map['oAuthSettings'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : map['type'] as String,
+      oAuthSettings: map['oAuthSettings'] == null ? null : (ApiOAuthSettingsResponse.fromMap((map['oAuthSettings'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of LoggingProperties
 class LoggingProperties {
   /// Property bucketName
-  final String? bucketName;
+  final pulumi.Input<String>? bucketName;
   /// Property s3KeyPrefix
-  final String? s3KeyPrefix;
+  final pulumi.Input<String>? s3KeyPrefix;
 
   /// Creates a new [LoggingProperties].
   /// [bucketName] Property bucketName
@@ -25,8 +26,8 @@ class LoggingProperties {
 
   factory LoggingProperties.fromMap(Map<String, dynamic> map) {
     return LoggingProperties(
-      bucketName: map['bucketName'] == null ? null : map['bucketName'] as String,
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : map['s3KeyPrefix'] as String,
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
     );
   }
 }

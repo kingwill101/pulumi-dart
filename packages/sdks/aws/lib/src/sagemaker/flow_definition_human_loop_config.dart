@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_definition_human_loop_config_public_workforce_task_price.dart';
 
 class FlowDefinitionHumanLoopConfig {
   /// The Amazon Resource Name (ARN) of the human task user interface.
-  final String humanTaskUiArn;
+  final pulumi.Input<String> humanTaskUiArn;
   /// Defines the amount of money paid to an Amazon Mechanical Turk worker for each task performed. See Public Workforce Task Price details below.
-  final FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice? publicWorkforceTaskPrice;
+  final pulumi.Input<FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice>? publicWorkforceTaskPrice;
   /// The length of time that a task remains available for review by human workers. Valid value range between `1` and `864000`.
-  final int? taskAvailabilityLifetimeInSeconds;
+  final pulumi.Input<int>? taskAvailabilityLifetimeInSeconds;
   /// The number of distinct workers who will perform the same task on each object. Valid value range between `1` and `3`.
-  final int taskCount;
+  final pulumi.Input<int> taskCount;
   /// A description for the human worker task.
-  final String taskDescription;
+  final pulumi.Input<String> taskDescription;
   /// An array of keywords used to describe the task so that workers can discover the task.
-  final List<String>? taskKeywords;
+  final pulumi.Input<List<String>>? taskKeywords;
   /// The amount of time that a worker has to complete a task. The default value is `3600` seconds.
-  final int? taskTimeLimitInSeconds;
+  final pulumi.Input<int>? taskTimeLimitInSeconds;
   /// A title for the human worker task.
-  final String taskTitle;
+  final pulumi.Input<String> taskTitle;
   /// The Amazon Resource Name (ARN) of the human task user interface. Amazon Resource Name (ARN) of a team of workers. For Public workforces see [AWS Docs](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management-public.html).
-  final String workteamArn;
+  final pulumi.Input<String> workteamArn;
 
   /// Creates a new [FlowDefinitionHumanLoopConfig].
   /// [humanTaskUiArn] The Amazon Resource Name (ARN) of the human task user interface.
@@ -47,7 +48,7 @@ class FlowDefinitionHumanLoopConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'humanTaskUiArn': humanTaskUiArn,
-      'publicWorkforceTaskPrice': ?publicWorkforceTaskPrice == null ? null : publicWorkforceTaskPrice!.toMap(),
+      'publicWorkforceTaskPrice': ?pulumi.Input.mapOptionalInputValue<FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice, Map<String, dynamic>>(publicWorkforceTaskPrice, (value) => value.toMap()),
       'taskAvailabilityLifetimeInSeconds': ?taskAvailabilityLifetimeInSeconds,
       'taskCount': taskCount,
       'taskDescription': taskDescription,
@@ -60,15 +61,15 @@ class FlowDefinitionHumanLoopConfig {
 
   factory FlowDefinitionHumanLoopConfig.fromMap(Map<String, dynamic> map) {
     return FlowDefinitionHumanLoopConfig(
-      humanTaskUiArn: map['humanTaskUiArn'] as String,
-      publicWorkforceTaskPrice: map['publicWorkforceTaskPrice'] == null ? null : FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice.fromMap((map['publicWorkforceTaskPrice'] as Map).cast<String, dynamic>()),
-      taskAvailabilityLifetimeInSeconds: map['taskAvailabilityLifetimeInSeconds'] == null ? null : map['taskAvailabilityLifetimeInSeconds'] as int,
-      taskCount: map['taskCount'] as int,
-      taskDescription: map['taskDescription'] as String,
-      taskKeywords: map['taskKeywords'] == null ? null : (map['taskKeywords'] as List).cast<String>(),
-      taskTimeLimitInSeconds: map['taskTimeLimitInSeconds'] == null ? null : map['taskTimeLimitInSeconds'] as int,
-      taskTitle: map['taskTitle'] as String,
-      workteamArn: map['workteamArn'] as String,
+      humanTaskUiArn: (map['humanTaskUiArn'] as String).input(),
+      publicWorkforceTaskPrice: map['publicWorkforceTaskPrice'] == null ? null : (FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice.fromMap((map['publicWorkforceTaskPrice'] as Map).cast<String, dynamic>())).input(),
+      taskAvailabilityLifetimeInSeconds: map['taskAvailabilityLifetimeInSeconds'] == null ? null : (map['taskAvailabilityLifetimeInSeconds'] as int).input(),
+      taskCount: (map['taskCount'] as int).input(),
+      taskDescription: (map['taskDescription'] as String).input(),
+      taskKeywords: map['taskKeywords'] == null ? null : ((map['taskKeywords'] as List).cast<String>()).input(),
+      taskTimeLimitInSeconds: map['taskTimeLimitInSeconds'] == null ? null : (map['taskTimeLimitInSeconds'] as int).input(),
+      taskTitle: (map['taskTitle'] as String).input(),
+      workteamArn: (map['workteamArn'] as String).input(),
     );
   }
 }

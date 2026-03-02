@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The authentication info when authType is EasyAuth Microsoft Entra ID
 class EasyAuthMicrosoftEntraIDAuthInfo {
   /// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
-  final String? authMode;
+  final pulumi.Input<String>? authMode;
   /// The authentication type.
   /// Expected value is 'easyAuthMicrosoftEntraID'.
-  final String authType;
+  final pulumi.Input<String> authType;
   /// Application clientId for EasyAuth Microsoft Entra ID.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Indicates whether to clean up previous operation when Linker is updating or deleting
-  final String? deleteOrUpdateBehavior;
+  final pulumi.Input<String>? deleteOrUpdateBehavior;
   /// Application Secret for EasyAuth Microsoft Entra ID.
-  final String? secret;
+  final pulumi.Input<String>? secret;
 
   /// Creates a new [EasyAuthMicrosoftEntraIDAuthInfo].
   /// [authMode] Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
@@ -41,11 +42,11 @@ class EasyAuthMicrosoftEntraIDAuthInfo {
 
   factory EasyAuthMicrosoftEntraIDAuthInfo.fromMap(Map<String, dynamic> map) {
     return EasyAuthMicrosoftEntraIDAuthInfo(
-      authMode: map['authMode'] == null ? null : map['authMode'] as String,
-      authType: map['authType'] as String,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : map['deleteOrUpdateBehavior'] as String,
-      secret: map['secret'] == null ? null : map['secret'] as String,
+      authMode: map['authMode'] == null ? null : (map['authMode'] as String).input(),
+      authType: (map['authType'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
     );
   }
 }

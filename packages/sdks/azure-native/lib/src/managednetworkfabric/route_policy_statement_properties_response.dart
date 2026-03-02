@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'statement_action_properties_response.dart';
 import 'statement_condition_properties_response.dart';
 
 /// Route Policy Statement properties.
 class RoutePolicyStatementPropertiesResponse {
   /// Route policy action properties.
-  final StatementActionPropertiesResponse action;
+  final pulumi.Input<StatementActionPropertiesResponse> action;
   /// Switch configuration description.
-  final String? annotation;
+  final pulumi.Input<String>? annotation;
   /// Route policy condition properties.
-  final StatementConditionPropertiesResponse condition;
+  final pulumi.Input<StatementConditionPropertiesResponse> condition;
   /// Sequence to insert to/delete from existing route.
-  final double sequenceNumber;
+  final pulumi.Input<double> sequenceNumber;
 
   /// Creates a new [RoutePolicyStatementPropertiesResponse].
   /// [action] Route policy action properties.
@@ -28,19 +29,19 @@ class RoutePolicyStatementPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': action.toMap(),
+      'action': pulumi.Input.mapInputValue<StatementActionPropertiesResponse, Map<String, dynamic>>(action, (value) => value.toMap()),
       'annotation': ?annotation,
-      'condition': condition.toMap(),
+      'condition': pulumi.Input.mapInputValue<StatementConditionPropertiesResponse, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'sequenceNumber': sequenceNumber,
     };
   }
 
   factory RoutePolicyStatementPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RoutePolicyStatementPropertiesResponse(
-      action: StatementActionPropertiesResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
-      condition: StatementConditionPropertiesResponse.fromMap((map['condition'] as Map).cast<String, dynamic>()),
-      sequenceNumber: map['sequenceNumber'] as double,
+      action: (StatementActionPropertiesResponse.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      condition: (StatementConditionPropertiesResponse.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      sequenceNumber: (map['sequenceNumber'] as double).input(),
     );
   }
 }

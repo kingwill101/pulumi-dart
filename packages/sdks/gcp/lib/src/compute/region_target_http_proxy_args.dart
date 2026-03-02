@@ -41,19 +41,13 @@ class RegionTargetHttpProxyArgs {
   /// [region] The Region in which the created target https proxy should reside.
   /// [urlMap] A reference to the RegionUrlMap resource that defines the mapping from URL
   RegionTargetHttpProxyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? httpKeepAliveTimeoutSec,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> urlMap,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      httpKeepAliveTimeoutSec = pulumi.Input.asOptionalInput<int>(httpKeepAliveTimeoutSec),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      urlMap = pulumi.Input.asInput<String>(urlMap);
+    this.description,
+    this.httpKeepAliveTimeoutSec,
+    this.name,
+    this.project,
+    this.region,
+    required this.urlMap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,12 +62,12 @@ class RegionTargetHttpProxyArgs {
 
   factory RegionTargetHttpProxyArgs.fromMap(Map<String, dynamic> map) {
     return RegionTargetHttpProxyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : pulumi.Output.create<int>(map['httpKeepAliveTimeoutSec'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      urlMap: pulumi.Output.create<String>(map['urlMap'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      urlMap: (map['urlMap'] as String).input(),
     );
   }
 }

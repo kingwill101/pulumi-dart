@@ -46,31 +46,19 @@ class NetworkWatcherFlowLogState {
   /// [trafficAnalytics] A `traffic_analytics` block as documented below.
   /// [version] The version (revision) of the flow log. Possible values are `1` and `2`. Defaults to `1`.
   NetworkWatcherFlowLogState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkSecurityGroupId,
-    pulumi.Output<String>? networkWatcherName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<NetworkWatcherFlowLogRetentionPolicy>? retentionPolicy,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? targetResourceId,
-    pulumi.Output<NetworkWatcherFlowLogTrafficAnalytics>? trafficAnalytics,
-    pulumi.Output<int>? version,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkSecurityGroupId = pulumi.Input.asOptionalInput<String>(networkSecurityGroupId),
-      networkWatcherName = pulumi.Input.asOptionalInput<String>(networkWatcherName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      retentionPolicy = pulumi.Input.asOptionalInput<NetworkWatcherFlowLogRetentionPolicy>(retentionPolicy),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId),
-      trafficAnalytics = pulumi.Input.asOptionalInput<NetworkWatcherFlowLogTrafficAnalytics>(trafficAnalytics),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.enabled,
+    this.location,
+    this.name,
+    this.networkSecurityGroupId,
+    this.networkWatcherName,
+    this.resourceGroupName,
+    this.retentionPolicy,
+    this.storageAccountId,
+    this.tags,
+    this.targetResourceId,
+    this.trafficAnalytics,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class NetworkWatcherFlowLogState {
 
   factory NetworkWatcherFlowLogState.fromMap(Map<String, dynamic> map) {
     return NetworkWatcherFlowLogState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : pulumi.Output.create<String>(map['networkSecurityGroupId'] as String),
-      networkWatcherName: map['networkWatcherName'] == null ? null : pulumi.Output.create<String>(map['networkWatcherName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retentionPolicy: map['retentionPolicy'] == null ? null : pulumi.Output.create<NetworkWatcherFlowLogRetentionPolicy>(NetworkWatcherFlowLogRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
-      trafficAnalytics: map['trafficAnalytics'] == null ? null : pulumi.Output.create<NetworkWatcherFlowLogTrafficAnalytics>(NetworkWatcherFlowLogTrafficAnalytics.fromMap((map['trafficAnalytics'] as Map).cast<String, dynamic>())),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId'] as String).input(),
+      networkWatcherName: map['networkWatcherName'] == null ? null : (map['networkWatcherName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (NetworkWatcherFlowLogRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      trafficAnalytics: map['trafficAnalytics'] == null ? null : (NetworkWatcherFlowLogTrafficAnalytics.fromMap((map['trafficAnalytics'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

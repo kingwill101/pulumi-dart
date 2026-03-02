@@ -14,11 +14,9 @@ class BucketOverwriteConfigState {
   /// [bucket] The name of the bucket
   /// [rules] Forbid overwrite rule See `rule` below.
   BucketOverwriteConfigState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<List<BucketOverwriteConfigRule>>? rules,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      rules = pulumi.Input.asOptionalInput<List<BucketOverwriteConfigRule>>(rules);
+    this.bucket,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class BucketOverwriteConfigState {
 
   factory BucketOverwriteConfigState.fromMap(Map<String, dynamic> map) {
     return BucketOverwriteConfigState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<BucketOverwriteConfigRule>>(pulumi.Input.decodeList<BucketOverwriteConfigRule>(map['rules'], (value) => BucketOverwriteConfigRule.fromMap((value as Map).cast<String, dynamic>()))),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketOverwriteConfigRule>(map['rules'], (value) => BucketOverwriteConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

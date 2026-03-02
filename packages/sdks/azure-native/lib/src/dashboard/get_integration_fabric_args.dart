@@ -19,13 +19,10 @@ class GetIntegrationFabricArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The workspace name of Azure Managed Grafana.
   GetIntegrationFabricArgs({
-    required pulumi.Output<String> integrationFabricName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      integrationFabricName = pulumi.Input.asInput<String>(integrationFabricName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.integrationFabricName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIntegrationFabricArgs {
 
   factory GetIntegrationFabricArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationFabricArgs(
-      integrationFabricName: pulumi.Output.create<String>(map['integrationFabricName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      integrationFabricName: (map['integrationFabricName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

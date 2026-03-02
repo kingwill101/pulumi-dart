@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_node_spec_listener_tls_validation_trust_file.dart';
 import 'virtual_node_spec_listener_tls_validation_trust_sds.dart';
 
 class VirtualNodeSpecListenerTlsValidationTrust {
   /// TLS validation context trust for a local file certificate.
-  final VirtualNodeSpecListenerTlsValidationTrustFile? file;
+  final pulumi.Input<VirtualNodeSpecListenerTlsValidationTrustFile>? file;
   /// TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
-  final VirtualNodeSpecListenerTlsValidationTrustSds? sds;
+  final pulumi.Input<VirtualNodeSpecListenerTlsValidationTrustSds>? sds;
 
   /// Creates a new [VirtualNodeSpecListenerTlsValidationTrust].
   /// [file] TLS validation context trust for a local file certificate.
@@ -19,15 +20,15 @@ class VirtualNodeSpecListenerTlsValidationTrust {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'file': ?file == null ? null : file!.toMap(),
-      'sds': ?sds == null ? null : sds!.toMap(),
+      'file': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecListenerTlsValidationTrustFile, Map<String, dynamic>>(file, (value) => value.toMap()),
+      'sds': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecListenerTlsValidationTrustSds, Map<String, dynamic>>(sds, (value) => value.toMap()),
     };
   }
 
   factory VirtualNodeSpecListenerTlsValidationTrust.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsValidationTrust(
-      file: map['file'] == null ? null : VirtualNodeSpecListenerTlsValidationTrustFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
-      sds: map['sds'] == null ? null : VirtualNodeSpecListenerTlsValidationTrustSds.fromMap((map['sds'] as Map).cast<String, dynamic>()),
+      file: map['file'] == null ? null : (VirtualNodeSpecListenerTlsValidationTrustFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      sds: map['sds'] == null ? null : (VirtualNodeSpecListenerTlsValidationTrustSds.fromMap((map['sds'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

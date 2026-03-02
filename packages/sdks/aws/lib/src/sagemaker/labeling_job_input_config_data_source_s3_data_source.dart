@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LabelingJobInputConfigDataSourceS3DataSource {
   /// S3 location of the manifest file that describes the input data objects.
-  final String manifestS3Uri;
+  final pulumi.Input<String> manifestS3Uri;
 
   /// Creates a new [LabelingJobInputConfigDataSourceS3DataSource].
   /// [manifestS3Uri] S3 location of the manifest file that describes the input data objects.
@@ -19,7 +20,7 @@ class LabelingJobInputConfigDataSourceS3DataSource {
 
   factory LabelingJobInputConfigDataSourceS3DataSource.fromMap(Map<String, dynamic> map) {
     return LabelingJobInputConfigDataSourceS3DataSource(
-      manifestS3Uri: map['manifestS3Uri'] as String,
+      manifestS3Uri: (map['manifestS3Uri'] as String).input(),
     );
   }
 }

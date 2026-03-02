@@ -40,27 +40,17 @@ class GetApplicationsArgs {
   /// [reverse] The reverse.
   /// [status] The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
   GetApplicationsArgs({
-    pulumi.Output<String>? appName,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<String>? fieldType,
-    pulumi.Output<String>? fieldValue,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? namespaceId,
-    pulumi.Output<String>? orderBy,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<bool>? reverse,
-    pulumi.Output<String>? status,
-  }) :
-      appName = pulumi.Input.asOptionalInput<String>(appName),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      fieldType = pulumi.Input.asOptionalInput<String>(fieldType),
-      fieldValue = pulumi.Input.asOptionalInput<String>(fieldValue),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      namespaceId = pulumi.Input.asOptionalInput<String>(namespaceId),
-      orderBy = pulumi.Input.asOptionalInput<String>(orderBy),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      reverse = pulumi.Input.asOptionalInput<bool>(reverse),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.appName,
+    this.enableDetails,
+    this.fieldType,
+    this.fieldValue,
+    this.ids,
+    this.namespaceId,
+    this.orderBy,
+    this.outputFile,
+    this.reverse,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class GetApplicationsArgs {
 
   factory GetApplicationsArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationsArgs(
-      appName: map['appName'] == null ? null : pulumi.Output.create<String>(map['appName'] as String),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      fieldType: map['fieldType'] == null ? null : pulumi.Output.create<String>(map['fieldType'] as String),
-      fieldValue: map['fieldValue'] == null ? null : pulumi.Output.create<String>(map['fieldValue'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      namespaceId: map['namespaceId'] == null ? null : pulumi.Output.create<String>(map['namespaceId'] as String),
-      orderBy: map['orderBy'] == null ? null : pulumi.Output.create<String>(map['orderBy'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      reverse: map['reverse'] == null ? null : pulumi.Output.create<bool>(map['reverse'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      fieldType: map['fieldType'] == null ? null : (map['fieldType'] as String).input(),
+      fieldValue: map['fieldValue'] == null ? null : (map['fieldValue'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      reverse: map['reverse'] == null ? null : (map['reverse'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

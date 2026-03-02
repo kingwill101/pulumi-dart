@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the properties of a remote support job for HCI.
 class HciRemoteSupportJobProperties {
   /// Remote support access level.
-  final String accessLevel;
+  final pulumi.Input<String> accessLevel;
   /// Deployment mode to trigger job.
-  final String? deploymentMode;
+  final pulumi.Input<String>? deploymentMode;
   /// Remote support expiration timestamp.
-  final String expirationTimestamp;
+  final pulumi.Input<String> expirationTimestamp;
   /// Job Type supported.
   /// Expected value is 'RemoteSupport'.
-  final String jobType;
+  final pulumi.Input<String> jobType;
   /// Remote support type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [HciRemoteSupportJobProperties].
   /// [accessLevel] Remote support access level.
@@ -41,11 +42,11 @@ class HciRemoteSupportJobProperties {
 
   factory HciRemoteSupportJobProperties.fromMap(Map<String, dynamic> map) {
     return HciRemoteSupportJobProperties(
-      accessLevel: map['accessLevel'] as String,
-      deploymentMode: map['deploymentMode'] == null ? null : map['deploymentMode'] as String,
-      expirationTimestamp: map['expirationTimestamp'] as String,
-      jobType: map['jobType'] as String,
-      type: map['type'] as String,
+      accessLevel: (map['accessLevel'] as String).input(),
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
+      expirationTimestamp: (map['expirationTimestamp'] as String).input(),
+      jobType: (map['jobType'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

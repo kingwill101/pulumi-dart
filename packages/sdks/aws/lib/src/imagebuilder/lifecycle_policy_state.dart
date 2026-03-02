@@ -44,29 +44,18 @@ class LifecyclePolicyState {
   /// [tags] Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   LifecyclePolicyState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? executionRole,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<LifecyclePolicyPolicyDetail>>? policyDetails,
-    pulumi.Output<String>? region,
-    pulumi.Output<LifecyclePolicyResourceSelection>? resourceSelection,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      executionRole = pulumi.Input.asOptionalInput<String>(executionRole),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyDetails = pulumi.Input.asOptionalInput<List<LifecyclePolicyPolicyDetail>>(policyDetails),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceSelection = pulumi.Input.asOptionalInput<LifecyclePolicyResourceSelection>(resourceSelection),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.executionRole,
+    this.name,
+    this.policyDetails,
+    this.region,
+    this.resourceSelection,
+    this.resourceType,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class LifecyclePolicyState {
 
   factory LifecyclePolicyState.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      executionRole: map['executionRole'] == null ? null : pulumi.Output.create<String>(map['executionRole'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyDetails: map['policyDetails'] == null ? null : pulumi.Output.create<List<LifecyclePolicyPolicyDetail>>(pulumi.Input.decodeList<LifecyclePolicyPolicyDetail>(map['policyDetails'], (value) => LifecyclePolicyPolicyDetail.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceSelection: map['resourceSelection'] == null ? null : pulumi.Output.create<LifecyclePolicyResourceSelection>(LifecyclePolicyResourceSelection.fromMap((map['resourceSelection'] as Map).cast<String, dynamic>())),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      executionRole: map['executionRole'] == null ? null : (map['executionRole'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyDetails: map['policyDetails'] == null ? null : (pulumi.Input.decodeList<LifecyclePolicyPolicyDetail>(map['policyDetails'], (value) => LifecyclePolicyPolicyDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceSelection: map['resourceSelection'] == null ? null : (LifecyclePolicyResourceSelection.fromMap((map['resourceSelection'] as Map).cast<String, dynamic>())).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sub_resource_response.dart';
 
 /// IP configuration.
 class IpConfigurationResponse {
   /// Private IP address of the IP configuration.
-  final String? privateIpAddress;
+  final pulumi.Input<String>? privateIpAddress;
   /// Private IP address allocation method.
-  final String? privateIpAllocationMethod;
+  final pulumi.Input<String>? privateIpAllocationMethod;
   /// The reference to the subnet bound to the IP configuration.
-  final SubResourceResponse subnet;
+  final pulumi.Input<SubResourceResponse> subnet;
 
   /// Creates a new [IpConfigurationResponse].
   /// [privateIpAddress] Private IP address of the IP configuration.
@@ -25,15 +26,15 @@ class IpConfigurationResponse {
     return <String, dynamic>{
       'privateIpAddress': ?privateIpAddress,
       'privateIpAllocationMethod': ?privateIpAllocationMethod,
-      'subnet': subnet.toMap(),
+      'subnet': pulumi.Input.mapInputValue<SubResourceResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
   factory IpConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return IpConfigurationResponse(
-      privateIpAddress: map['privateIpAddress'] == null ? null : map['privateIpAddress'] as String,
-      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : map['privateIpAllocationMethod'] as String,
-      subnet: SubResourceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : (map['privateIpAllocationMethod'] as String).input(),
+      subnet: (SubResourceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

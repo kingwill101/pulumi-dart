@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gallery information for a workbook template.
 class WorkbookTemplateGalleryResponse {
   /// Category for the gallery.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Name of the workbook template in the gallery.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Order of the template within the gallery.
-  final int? order;
+  final pulumi.Input<int>? order;
   /// Azure resource type supported by the gallery.
-  final String? resourceType;
+  final pulumi.Input<String>? resourceType;
   /// Type of workbook supported by the workbook template.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [WorkbookTemplateGalleryResponse].
   /// [category] Category for the gallery.
@@ -40,11 +41,11 @@ class WorkbookTemplateGalleryResponse {
 
   factory WorkbookTemplateGalleryResponse.fromMap(Map<String, dynamic> map) {
     return WorkbookTemplateGalleryResponse(
-      category: map['category'] == null ? null : map['category'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      order: map['order'] == null ? null : map['order'] as int,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as int).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

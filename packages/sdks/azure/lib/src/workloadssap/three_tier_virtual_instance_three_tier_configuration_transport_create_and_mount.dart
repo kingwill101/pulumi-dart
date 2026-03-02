@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount {
   /// The ID of the Resource Group of the transport File Share. Changing this forces a new resource to be created.
-  final String? resourceGroupId;
+  final pulumi.Input<String>? resourceGroupId;
   /// The name of the Storage Account of the File Share. Changing this forces a new resource to be created.
-  final String? storageAccountName;
+  final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount].
   /// [resourceGroupId] The ID of the Resource Group of the transport File Share. Changing this forces a new resource to be created.
@@ -24,8 +25,8 @@ class ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount {
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount(
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName'] as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
     );
   }
 }

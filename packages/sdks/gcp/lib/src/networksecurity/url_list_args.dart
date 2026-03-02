@@ -27,17 +27,12 @@ class UrlListArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [values] FQDNs and URLs.
   UrlListArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<List<String>> values,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      values = pulumi.Input.asInput<List<String>>(values);
+    this.description,
+    required this.location,
+    this.name,
+    this.project,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class UrlListArgs {
 
   factory UrlListArgs.fromMap(Map<String, dynamic> map) {
     return UrlListArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      values: pulumi.Output.create<List<String>>((map['values'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

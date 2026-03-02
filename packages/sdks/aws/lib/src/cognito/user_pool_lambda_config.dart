@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_pool_lambda_config_custom_email_sender.dart';
 import 'user_pool_lambda_config_custom_sms_sender.dart';
 import 'user_pool_lambda_config_pre_token_generation_config.dart';
 
 class UserPoolLambdaConfig {
   /// ARN of the lambda creating an authentication challenge.
-  final String? createAuthChallenge;
+  final pulumi.Input<String>? createAuthChallenge;
   /// A custom email sender AWS Lambda trigger. See custom_email_sender Below.
-  final UserPoolLambdaConfigCustomEmailSender? customEmailSender;
+  final pulumi.Input<UserPoolLambdaConfigCustomEmailSender>? customEmailSender;
   /// Custom Message AWS Lambda trigger.
-  final String? customMessage;
+  final pulumi.Input<String>? customMessage;
   /// A custom SMS sender AWS Lambda trigger. See custom_sms_sender Below.
-  final UserPoolLambdaConfigCustomSmsSender? customSmsSender;
+  final pulumi.Input<UserPoolLambdaConfigCustomSmsSender>? customSmsSender;
   /// Defines the authentication challenge.
-  final String? defineAuthChallenge;
+  final pulumi.Input<String>? defineAuthChallenge;
   /// The Amazon Resource Name of Key Management Service Customer master keys. Amazon Cognito uses the key to encrypt codes and temporary passwords sent to CustomEmailSender and CustomSMSSender.
-  final String? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
   /// Post-authentication AWS Lambda trigger.
-  final String? postAuthentication;
+  final pulumi.Input<String>? postAuthentication;
   /// Post-confirmation AWS Lambda trigger.
-  final String? postConfirmation;
+  final pulumi.Input<String>? postConfirmation;
   /// Pre-authentication AWS Lambda trigger.
-  final String? preAuthentication;
+  final pulumi.Input<String>? preAuthentication;
   /// Pre-registration AWS Lambda trigger.
-  final String? preSignUp;
+  final pulumi.Input<String>? preSignUp;
   /// Allow to customize identity token claims before token generation. Set this parameter for legacy purposes; for new instances of pre token generation triggers, set the lambda_arn of `pre_token_generation_config`.
-  final String? preTokenGeneration;
+  final pulumi.Input<String>? preTokenGeneration;
   /// Allow to customize access tokens. See pre_token_configuration_type
-  final UserPoolLambdaConfigPreTokenGenerationConfig? preTokenGenerationConfig;
+  final pulumi.Input<UserPoolLambdaConfigPreTokenGenerationConfig>? preTokenGenerationConfig;
   /// User migration Lambda config type.
-  final String? userMigration;
+  final pulumi.Input<String>? userMigration;
   /// Verifies the authentication challenge response.
-  final String? verifyAuthChallengeResponse;
+  final pulumi.Input<String>? verifyAuthChallengeResponse;
 
   /// Creates a new [UserPoolLambdaConfig].
   /// [createAuthChallenge] ARN of the lambda creating an authentication challenge.
@@ -69,9 +70,9 @@ class UserPoolLambdaConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createAuthChallenge': ?createAuthChallenge,
-      'customEmailSender': ?customEmailSender == null ? null : customEmailSender!.toMap(),
+      'customEmailSender': ?pulumi.Input.mapOptionalInputValue<UserPoolLambdaConfigCustomEmailSender, Map<String, dynamic>>(customEmailSender, (value) => value.toMap()),
       'customMessage': ?customMessage,
-      'customSmsSender': ?customSmsSender == null ? null : customSmsSender!.toMap(),
+      'customSmsSender': ?pulumi.Input.mapOptionalInputValue<UserPoolLambdaConfigCustomSmsSender, Map<String, dynamic>>(customSmsSender, (value) => value.toMap()),
       'defineAuthChallenge': ?defineAuthChallenge,
       'kmsKeyId': ?kmsKeyId,
       'postAuthentication': ?postAuthentication,
@@ -79,7 +80,7 @@ class UserPoolLambdaConfig {
       'preAuthentication': ?preAuthentication,
       'preSignUp': ?preSignUp,
       'preTokenGeneration': ?preTokenGeneration,
-      'preTokenGenerationConfig': ?preTokenGenerationConfig == null ? null : preTokenGenerationConfig!.toMap(),
+      'preTokenGenerationConfig': ?pulumi.Input.mapOptionalInputValue<UserPoolLambdaConfigPreTokenGenerationConfig, Map<String, dynamic>>(preTokenGenerationConfig, (value) => value.toMap()),
       'userMigration': ?userMigration,
       'verifyAuthChallengeResponse': ?verifyAuthChallengeResponse,
     };
@@ -87,20 +88,20 @@ class UserPoolLambdaConfig {
 
   factory UserPoolLambdaConfig.fromMap(Map<String, dynamic> map) {
     return UserPoolLambdaConfig(
-      createAuthChallenge: map['createAuthChallenge'] == null ? null : map['createAuthChallenge'] as String,
-      customEmailSender: map['customEmailSender'] == null ? null : UserPoolLambdaConfigCustomEmailSender.fromMap((map['customEmailSender'] as Map).cast<String, dynamic>()),
-      customMessage: map['customMessage'] == null ? null : map['customMessage'] as String,
-      customSmsSender: map['customSmsSender'] == null ? null : UserPoolLambdaConfigCustomSmsSender.fromMap((map['customSmsSender'] as Map).cast<String, dynamic>()),
-      defineAuthChallenge: map['defineAuthChallenge'] == null ? null : map['defineAuthChallenge'] as String,
-      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      postAuthentication: map['postAuthentication'] == null ? null : map['postAuthentication'] as String,
-      postConfirmation: map['postConfirmation'] == null ? null : map['postConfirmation'] as String,
-      preAuthentication: map['preAuthentication'] == null ? null : map['preAuthentication'] as String,
-      preSignUp: map['preSignUp'] == null ? null : map['preSignUp'] as String,
-      preTokenGeneration: map['preTokenGeneration'] == null ? null : map['preTokenGeneration'] as String,
-      preTokenGenerationConfig: map['preTokenGenerationConfig'] == null ? null : UserPoolLambdaConfigPreTokenGenerationConfig.fromMap((map['preTokenGenerationConfig'] as Map).cast<String, dynamic>()),
-      userMigration: map['userMigration'] == null ? null : map['userMigration'] as String,
-      verifyAuthChallengeResponse: map['verifyAuthChallengeResponse'] == null ? null : map['verifyAuthChallengeResponse'] as String,
+      createAuthChallenge: map['createAuthChallenge'] == null ? null : (map['createAuthChallenge'] as String).input(),
+      customEmailSender: map['customEmailSender'] == null ? null : (UserPoolLambdaConfigCustomEmailSender.fromMap((map['customEmailSender'] as Map).cast<String, dynamic>())).input(),
+      customMessage: map['customMessage'] == null ? null : (map['customMessage'] as String).input(),
+      customSmsSender: map['customSmsSender'] == null ? null : (UserPoolLambdaConfigCustomSmsSender.fromMap((map['customSmsSender'] as Map).cast<String, dynamic>())).input(),
+      defineAuthChallenge: map['defineAuthChallenge'] == null ? null : (map['defineAuthChallenge'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      postAuthentication: map['postAuthentication'] == null ? null : (map['postAuthentication'] as String).input(),
+      postConfirmation: map['postConfirmation'] == null ? null : (map['postConfirmation'] as String).input(),
+      preAuthentication: map['preAuthentication'] == null ? null : (map['preAuthentication'] as String).input(),
+      preSignUp: map['preSignUp'] == null ? null : (map['preSignUp'] as String).input(),
+      preTokenGeneration: map['preTokenGeneration'] == null ? null : (map['preTokenGeneration'] as String).input(),
+      preTokenGenerationConfig: map['preTokenGenerationConfig'] == null ? null : (UserPoolLambdaConfigPreTokenGenerationConfig.fromMap((map['preTokenGenerationConfig'] as Map).cast<String, dynamic>())).input(),
+      userMigration: map['userMigration'] == null ? null : (map['userMigration'] as String).input(),
+      verifyAuthChallengeResponse: map['verifyAuthChallengeResponse'] == null ? null : (map['verifyAuthChallengeResponse'] as String).input(),
     );
   }
 }

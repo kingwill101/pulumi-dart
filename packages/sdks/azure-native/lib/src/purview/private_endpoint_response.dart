@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A private endpoint class.
 class PrivateEndpointResponse {
   /// The private endpoint identifier.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [PrivateEndpointResponse].
   /// [id] The private endpoint identifier.
@@ -20,7 +21,7 @@ class PrivateEndpointResponse {
 
   factory PrivateEndpointResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy {
   /// Time in seconds to wait after cordoning the blue pool before draining the nodes.
-  final String? waitForDrainDuration;
+  final pulumi.Input<String>? waitForDrainDuration;
 
   /// Creates a new [ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy].
   /// [waitForDrainDuration] Time in seconds to wait after cordoning the blue pool before draining the nodes.
@@ -19,7 +20,7 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy {
 
   factory ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy(
-      waitForDrainDuration: map['waitForDrainDuration'] == null ? null : map['waitForDrainDuration'] as String,
+      waitForDrainDuration: map['waitForDrainDuration'] == null ? null : (map['waitForDrainDuration'] as String).input(),
     );
   }
 }

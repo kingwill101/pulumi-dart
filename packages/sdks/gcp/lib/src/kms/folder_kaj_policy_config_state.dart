@@ -17,11 +17,9 @@ class FolderKajPolicyConfigState {
   /// [defaultKeyAccessJustificationPolicy] The default key access justification policy used when a CryptoKey is
   /// [folder] The numeric folder number for which to retrieve config.
   FolderKajPolicyConfigState({
-    pulumi.Output<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>? defaultKeyAccessJustificationPolicy,
-    pulumi.Output<String>? folder,
-  }) :
-      defaultKeyAccessJustificationPolicy = pulumi.Input.asOptionalInput<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>(defaultKeyAccessJustificationPolicy),
-      folder = pulumi.Input.asOptionalInput<String>(folder);
+    this.defaultKeyAccessJustificationPolicy,
+    this.folder,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class FolderKajPolicyConfigState {
 
   factory FolderKajPolicyConfigState.fromMap(Map<String, dynamic> map) {
     return FolderKajPolicyConfigState(
-      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : pulumi.Output.create<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>(FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy'] as Map).cast<String, dynamic>())),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
+      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : (FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy'] as Map).cast<String, dynamic>())).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
     );
   }
 }

@@ -1,45 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDbServersDbServer {
   /// The list of [OCIDs](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the Autonomous Virtual Machines associated with the DB Server.
-  final List<String> autonomousVirtualMachineDs;
+  final pulumi.Input<List<String>> autonomousVirtualMachineDs;
   /// The list of [OCIDs](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the Autonomous VM Clusters associated with the DB Server.
-  final List<String> autonomousVmClusterIds;
+  final pulumi.Input<List<String>> autonomousVmClusterIds;
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the compartment.
-  final String compartmentId;
+  final pulumi.Input<String> compartmentId;
   /// The compute model of the Exadata Infrastructure.
-  final String computeModel;
+  final pulumi.Input<String> computeModel;
   /// The number of CPU cores enabled on the DB Server.
-  final int cpuCoreCount;
+  final pulumi.Input<int> cpuCoreCount;
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the Db nodes associated with the DB Server.
-  final List<String> dbNodeIds;
+  final pulumi.Input<List<String>> dbNodeIds;
   /// The allocated local node storage in GBs on the DB Server.
-  final int dbNodeStorageSizeInGbs;
+  final pulumi.Input<int> dbNodeStorageSizeInGbs;
   /// The user-friendly name for the DB Server. The name does not need to be unique.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the Exadata infrastructure.
-  final String exadataInfrastructureId;
+  final pulumi.Input<String> exadataInfrastructureId;
   /// Additional information about the current lifecycle state.
-  final String lifecycleDetails;
+  final pulumi.Input<String> lifecycleDetails;
   /// The current state of the DB Server.
-  final String lifecycleState;
+  final pulumi.Input<String> lifecycleState;
   /// The total number of CPU cores available.
-  final int maxCpuCount;
+  final pulumi.Input<int> maxCpuCount;
   /// The total local node storage available in GBs.
-  final int maxDbNodeStorageInGbs;
+  final pulumi.Input<int> maxDbNodeStorageInGbs;
   /// The total memory available in GBs.
-  final int maxMemoryInGbs;
+  final pulumi.Input<int> maxMemoryInGbs;
   /// The allocated memory in GBs on the DB Server.
-  final int memorySizeInGbs;
+  final pulumi.Input<int> memorySizeInGbs;
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the DB Server.
-  final String ocid;
+  final pulumi.Input<String> ocid;
   /// The shape of the DB Server. The shape determines the amount of CPU, storage, and memory resources available.
-  final String shape;
+  final pulumi.Input<String> shape;
   /// The date and time that the DB Server was created.
-  final String timeCreated;
+  final pulumi.Input<String> timeCreated;
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the VM Clusters associated with the DB Server.
-  final List<String> vmClusterIds;
+  final pulumi.Input<List<String>> vmClusterIds;
 
   /// Creates a new [GetDbServersDbServer].
   /// [autonomousVirtualMachineDs] The list of [OCIDs](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the Autonomous Virtual Machines associated with the DB Server.
@@ -109,25 +110,25 @@ class GetDbServersDbServer {
 
   factory GetDbServersDbServer.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServer(
-      autonomousVirtualMachineDs: (map['autonomousVirtualMachineDs'] as List).cast<String>(),
-      autonomousVmClusterIds: (map['autonomousVmClusterIds'] as List).cast<String>(),
-      compartmentId: map['compartmentId'] as String,
-      computeModel: map['computeModel'] as String,
-      cpuCoreCount: map['cpuCoreCount'] as int,
-      dbNodeIds: (map['dbNodeIds'] as List).cast<String>(),
-      dbNodeStorageSizeInGbs: map['dbNodeStorageSizeInGbs'] as int,
-      displayName: map['displayName'] as String,
-      exadataInfrastructureId: map['exadataInfrastructureId'] as String,
-      lifecycleDetails: map['lifecycleDetails'] as String,
-      lifecycleState: map['lifecycleState'] as String,
-      maxCpuCount: map['maxCpuCount'] as int,
-      maxDbNodeStorageInGbs: map['maxDbNodeStorageInGbs'] as int,
-      maxMemoryInGbs: map['maxMemoryInGbs'] as int,
-      memorySizeInGbs: map['memorySizeInGbs'] as int,
-      ocid: map['ocid'] as String,
-      shape: map['shape'] as String,
-      timeCreated: map['timeCreated'] as String,
-      vmClusterIds: (map['vmClusterIds'] as List).cast<String>(),
+      autonomousVirtualMachineDs: ((map['autonomousVirtualMachineDs'] as List).cast<String>()).input(),
+      autonomousVmClusterIds: ((map['autonomousVmClusterIds'] as List).cast<String>()).input(),
+      compartmentId: (map['compartmentId'] as String).input(),
+      computeModel: (map['computeModel'] as String).input(),
+      cpuCoreCount: (map['cpuCoreCount'] as int).input(),
+      dbNodeIds: ((map['dbNodeIds'] as List).cast<String>()).input(),
+      dbNodeStorageSizeInGbs: (map['dbNodeStorageSizeInGbs'] as int).input(),
+      displayName: (map['displayName'] as String).input(),
+      exadataInfrastructureId: (map['exadataInfrastructureId'] as String).input(),
+      lifecycleDetails: (map['lifecycleDetails'] as String).input(),
+      lifecycleState: (map['lifecycleState'] as String).input(),
+      maxCpuCount: (map['maxCpuCount'] as int).input(),
+      maxDbNodeStorageInGbs: (map['maxDbNodeStorageInGbs'] as int).input(),
+      maxMemoryInGbs: (map['maxMemoryInGbs'] as int).input(),
+      memorySizeInGbs: (map['memorySizeInGbs'] as int).input(),
+      ocid: (map['ocid'] as String).input(),
+      shape: (map['shape'] as String).input(),
+      timeCreated: (map['timeCreated'] as String).input(),
+      vmClusterIds: ((map['vmClusterIds'] as List).cast<String>()).input(),
     );
   }
 }

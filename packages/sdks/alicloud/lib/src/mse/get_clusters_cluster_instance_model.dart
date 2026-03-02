@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterInstanceModel {
   /// The health status of the instance.
-  final String healthStatus;
+  final pulumi.Input<String> healthStatus;
   /// (Deprecated from version 1.232.0)
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The public IP address.
-  final String internetIp;
+  final pulumi.Input<String> internetIp;
   /// The IP address of the instance.
-  final String ip;
+  final pulumi.Input<String> ip;
   /// The name of the pod.
-  final String podName;
+  final pulumi.Input<String> podName;
   /// The role.
-  final String role;
+  final pulumi.Input<String> role;
   /// The single-thread IP address.
-  final String singleTunnelVip;
+  final pulumi.Input<String> singleTunnelVip;
   /// (Deprecated from version 1.232.0)
-  final String vip;
+  final pulumi.Input<String> vip;
 
   /// Creates a new [GetClustersClusterInstanceModel].
   /// [healthStatus] The health status of the instance.
@@ -54,14 +55,14 @@ class GetClustersClusterInstanceModel {
 
   factory GetClustersClusterInstanceModel.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterInstanceModel(
-      healthStatus: map['healthStatus'] as String,
-      instanceType: map['instanceType'] as String,
-      internetIp: map['internetIp'] as String,
-      ip: map['ip'] as String,
-      podName: map['podName'] as String,
-      role: map['role'] as String,
-      singleTunnelVip: map['singleTunnelVip'] as String,
-      vip: map['vip'] as String,
+      healthStatus: (map['healthStatus'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      internetIp: (map['internetIp'] as String).input(),
+      ip: (map['ip'] as String).input(),
+      podName: (map['podName'] as String).input(),
+      role: (map['role'] as String).input(),
+      singleTunnelVip: (map['singleTunnelVip'] as String).input(),
+      vip: (map['vip'] as String).input(),
     );
   }
 }

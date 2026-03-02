@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the required information to reference a compute gallery application
 /// version
 class VMGalleryApplicationResponse {
   /// Optional, Specifies the uri to an azure blob that will replace the default
   /// configuration for the package if provided
-  final String? configurationReference;
+  final pulumi.Input<String>? configurationReference;
   /// If set to true, when a new Gallery Application version is available in PIR/SIG,
   /// it will be automatically updated for the VM/VMSS
-  final bool? enableAutomaticUpgrade;
+  final pulumi.Input<bool>? enableAutomaticUpgrade;
   /// Optional, Specifies the order in which the packages have to be installed
-  final int? order;
+  final pulumi.Input<int>? order;
   /// Specifies the GalleryApplicationVersion resource id on the form of
   /// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
-  final String packageReferenceId;
+  final pulumi.Input<String> packageReferenceId;
   /// Optional, Specifies a passthrough value for more generic context.
-  final String? tags;
+  final pulumi.Input<String>? tags;
   /// Optional, If true, any failure for any operation in the VmApplication will fail
   /// the deployment
-  final bool? treatFailureAsDeploymentFailure;
+  final pulumi.Input<bool>? treatFailureAsDeploymentFailure;
 
   /// Creates a new [VMGalleryApplicationResponse].
   /// [configurationReference] Optional, Specifies the uri to an azure blob that will replace the default
@@ -50,12 +51,12 @@ class VMGalleryApplicationResponse {
 
   factory VMGalleryApplicationResponse.fromMap(Map<String, dynamic> map) {
     return VMGalleryApplicationResponse(
-      configurationReference: map['configurationReference'] == null ? null : map['configurationReference'] as String,
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : map['enableAutomaticUpgrade'] as bool,
-      order: map['order'] == null ? null : map['order'] as int,
-      packageReferenceId: map['packageReferenceId'] as String,
-      tags: map['tags'] == null ? null : map['tags'] as String,
-      treatFailureAsDeploymentFailure: map['treatFailureAsDeploymentFailure'] == null ? null : map['treatFailureAsDeploymentFailure'] as bool,
+      configurationReference: map['configurationReference'] == null ? null : (map['configurationReference'] as String).input(),
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade'] as bool).input(),
+      order: map['order'] == null ? null : (map['order'] as int).input(),
+      packageReferenceId: (map['packageReferenceId'] as String).input(),
+      tags: map['tags'] == null ? null : (map['tags'] as String).input(),
+      treatFailureAsDeploymentFailure: map['treatFailureAsDeploymentFailure'] == null ? null : (map['treatFailureAsDeploymentFailure'] as bool).input(),
     );
   }
 }

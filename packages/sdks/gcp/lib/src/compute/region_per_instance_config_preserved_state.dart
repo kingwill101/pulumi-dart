@@ -8,15 +8,15 @@ import 'region_per_instance_config_preserved_state_internal_ip.dart';
 class RegionPerInstanceConfigPreservedState {
   /// Stateful disks for the instance.
   /// Structure is documented below.
-  final List<RegionPerInstanceConfigPreservedStateDisk>? disks;
+  final pulumi.Input<List<RegionPerInstanceConfigPreservedStateDisk>>? disks;
   /// Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
   /// Structure is documented below.
-  final List<RegionPerInstanceConfigPreservedStateExternalIp>? externalIps;
+  final pulumi.Input<List<RegionPerInstanceConfigPreservedStateExternalIp>>? externalIps;
   /// Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
   /// Structure is documented below.
-  final List<RegionPerInstanceConfigPreservedStateInternalIp>? internalIps;
+  final pulumi.Input<List<RegionPerInstanceConfigPreservedStateInternalIp>>? internalIps;
   /// Preserved metadata defined for this instance. This is a list of key->value pairs.
-  final Map<String, String>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
 
   /// Creates a new [RegionPerInstanceConfigPreservedState].
   /// [disks] Stateful disks for the instance.
@@ -32,19 +32,19 @@ class RegionPerInstanceConfigPreservedState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks': ?disks == null ? null : pulumi.Input.encodeList<RegionPerInstanceConfigPreservedStateDisk, Map<String, dynamic>>(disks!, (value) => value.toMap()),
-      'externalIps': ?externalIps == null ? null : pulumi.Input.encodeList<RegionPerInstanceConfigPreservedStateExternalIp, Map<String, dynamic>>(externalIps!, (value) => value.toMap()),
-      'internalIps': ?internalIps == null ? null : pulumi.Input.encodeList<RegionPerInstanceConfigPreservedStateInternalIp, Map<String, dynamic>>(internalIps!, (value) => value.toMap()),
+      'disks': ?pulumi.Input.mapOptionalInputValue<List<RegionPerInstanceConfigPreservedStateDisk>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<RegionPerInstanceConfigPreservedStateDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'externalIps': ?pulumi.Input.mapOptionalInputValue<List<RegionPerInstanceConfigPreservedStateExternalIp>, List<Map<String, dynamic>>>(externalIps, (value) => pulumi.Input.encodeList<RegionPerInstanceConfigPreservedStateExternalIp, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'internalIps': ?pulumi.Input.mapOptionalInputValue<List<RegionPerInstanceConfigPreservedStateInternalIp>, List<Map<String, dynamic>>>(internalIps, (value) => pulumi.Input.encodeList<RegionPerInstanceConfigPreservedStateInternalIp, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metadata': ?metadata,
     };
   }
 
   factory RegionPerInstanceConfigPreservedState.fromMap(Map<String, dynamic> map) {
     return RegionPerInstanceConfigPreservedState(
-      disks: map['disks'] == null ? null : pulumi.Input.decodeList<RegionPerInstanceConfigPreservedStateDisk>(map['disks'], (value) => RegionPerInstanceConfigPreservedStateDisk.fromMap((value as Map).cast<String, dynamic>())),
-      externalIps: map['externalIps'] == null ? null : pulumi.Input.decodeList<RegionPerInstanceConfigPreservedStateExternalIp>(map['externalIps'], (value) => RegionPerInstanceConfigPreservedStateExternalIp.fromMap((value as Map).cast<String, dynamic>())),
-      internalIps: map['internalIps'] == null ? null : pulumi.Input.decodeList<RegionPerInstanceConfigPreservedStateInternalIp>(map['internalIps'], (value) => RegionPerInstanceConfigPreservedStateInternalIp.fromMap((value as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<RegionPerInstanceConfigPreservedStateDisk>(map['disks'], (value) => RegionPerInstanceConfigPreservedStateDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      externalIps: map['externalIps'] == null ? null : (pulumi.Input.decodeList<RegionPerInstanceConfigPreservedStateExternalIp>(map['externalIps'], (value) => RegionPerInstanceConfigPreservedStateExternalIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      internalIps: map['internalIps'] == null ? null : (pulumi.Input.decodeList<RegionPerInstanceConfigPreservedStateInternalIp>(map['internalIps'], (value) => RegionPerInstanceConfigPreservedStateInternalIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
     );
   }
 }

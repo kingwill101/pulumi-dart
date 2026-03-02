@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BgpvpnPortAssociateV2Route {
   /// The ID of the BGP VPN to be advertised. Required
   /// if `type` is `bgpvpn`. Conflicts with `prefix`.
-  final String? bgpvpnId;
+  final pulumi.Input<String>? bgpvpnId;
   /// The BGP LOCAL\_PREF value of the routes that will
   /// be advertised.
-  final int? localPref;
+  final pulumi.Input<int>? localPref;
   /// The CIDR prefix (v4 or v6) to be advertised. Required
   /// if `type` is `prefix`. Conflicts with `bgpvpn_id`.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// Can be `prefix` or `bgpvpn`. For the `prefix` type, the
   /// CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
   /// `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [BgpvpnPortAssociateV2Route].
   /// [bgpvpnId] The ID of the BGP VPN to be advertised. Required
@@ -39,10 +40,10 @@ class BgpvpnPortAssociateV2Route {
 
   factory BgpvpnPortAssociateV2Route.fromMap(Map<String, dynamic> map) {
     return BgpvpnPortAssociateV2Route(
-      bgpvpnId: map['bgpvpnId'] == null ? null : map['bgpvpnId'] as String,
-      localPref: map['localPref'] == null ? null : map['localPref'] as int,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      type: map['type'] as String,
+      bgpvpnId: map['bgpvpnId'] == null ? null : (map['bgpvpnId'] as String).input(),
+      localPref: map['localPref'] == null ? null : (map['localPref'] as int).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

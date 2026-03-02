@@ -5,9 +5,9 @@ import 'node_ip_allocation_policy_machine_type_policy_bond.dart';
 
 class NodeIpAllocationPolicyMachineTypePolicy {
   /// Bond information See `bonds` below.
-  final List<NodeIpAllocationPolicyMachineTypePolicyBond>? bonds;
+  final pulumi.Input<List<NodeIpAllocationPolicyMachineTypePolicyBond>>? bonds;
   /// Model
-  final String? machineType;
+  final pulumi.Input<String>? machineType;
 
   /// Creates a new [NodeIpAllocationPolicyMachineTypePolicy].
   /// [bonds] Bond information See `bonds` below.
@@ -19,15 +19,15 @@ class NodeIpAllocationPolicyMachineTypePolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bonds': ?bonds == null ? null : pulumi.Input.encodeList<NodeIpAllocationPolicyMachineTypePolicyBond, Map<String, dynamic>>(bonds!, (value) => value.toMap()),
+      'bonds': ?pulumi.Input.mapOptionalInputValue<List<NodeIpAllocationPolicyMachineTypePolicyBond>, List<Map<String, dynamic>>>(bonds, (value) => pulumi.Input.encodeList<NodeIpAllocationPolicyMachineTypePolicyBond, Map<String, dynamic>>(value, (value) => value.toMap())),
       'machineType': ?machineType,
     };
   }
 
   factory NodeIpAllocationPolicyMachineTypePolicy.fromMap(Map<String, dynamic> map) {
     return NodeIpAllocationPolicyMachineTypePolicy(
-      bonds: map['bonds'] == null ? null : pulumi.Input.decodeList<NodeIpAllocationPolicyMachineTypePolicyBond>(map['bonds'], (value) => NodeIpAllocationPolicyMachineTypePolicyBond.fromMap((value as Map).cast<String, dynamic>())),
-      machineType: map['machineType'] == null ? null : map['machineType'] as String,
+      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<NodeIpAllocationPolicyMachineTypePolicyBond>(map['bonds'], (value) => NodeIpAllocationPolicyMachineTypePolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
     );
   }
 }

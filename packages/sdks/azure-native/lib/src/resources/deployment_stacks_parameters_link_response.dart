@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Entity representing the reference to the deployment parameters.
 class DeploymentStacksParametersLinkResponse {
   /// If included, must match the ContentVersion in the template.
-  final String? contentVersion;
+  final pulumi.Input<String>? contentVersion;
   /// The URI of the parameters file.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [DeploymentStacksParametersLinkResponse].
   /// [contentVersion] If included, must match the ContentVersion in the template.
@@ -25,8 +26,8 @@ class DeploymentStacksParametersLinkResponse {
 
   factory DeploymentStacksParametersLinkResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksParametersLinkResponse(
-      contentVersion: map['contentVersion'] == null ? null : map['contentVersion'] as String,
-      uri: map['uri'] as String,
+      contentVersion: map['contentVersion'] == null ? null : (map['contentVersion'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

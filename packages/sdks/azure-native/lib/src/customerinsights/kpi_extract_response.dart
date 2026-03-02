@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The KPI extract.
 class KpiExtractResponse {
   /// The expression.
-  final String expression;
+  final pulumi.Input<String> expression;
   /// KPI extract name.
-  final String extractName;
+  final pulumi.Input<String> extractName;
 
   /// Creates a new [KpiExtractResponse].
   /// [expression] The expression.
@@ -25,8 +26,8 @@ class KpiExtractResponse {
 
   factory KpiExtractResponse.fromMap(Map<String, dynamic> map) {
     return KpiExtractResponse(
-      expression: map['expression'] as String,
-      extractName: map['extractName'] as String,
+      expression: (map['expression'] as String).input(),
+      extractName: (map['extractName'] as String).input(),
     );
   }
 }

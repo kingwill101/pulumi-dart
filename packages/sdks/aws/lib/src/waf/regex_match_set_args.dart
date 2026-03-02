@@ -17,11 +17,9 @@ class RegexMatchSetArgs {
   /// [name] The name or description of the Regex Match Set.
   /// [regexMatchTuples] The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. See below.
   RegexMatchSetArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<List<RegexMatchSetRegexMatchTuple>>? regexMatchTuples,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      regexMatchTuples = pulumi.Input.asOptionalInput<List<RegexMatchSetRegexMatchTuple>>(regexMatchTuples);
+    this.name,
+    this.regexMatchTuples,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class RegexMatchSetArgs {
 
   factory RegexMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return RegexMatchSetArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      regexMatchTuples: map['regexMatchTuples'] == null ? null : pulumi.Output.create<List<RegexMatchSetRegexMatchTuple>>(pulumi.Input.decodeList<RegexMatchSetRegexMatchTuple>(map['regexMatchTuples'], (value) => RegexMatchSetRegexMatchTuple.fromMap((value as Map).cast<String, dynamic>()))),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      regexMatchTuples: map['regexMatchTuples'] == null ? null : (pulumi.Input.decodeList<RegexMatchSetRegexMatchTuple>(map['regexMatchTuples'], (value) => RegexMatchSetRegexMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

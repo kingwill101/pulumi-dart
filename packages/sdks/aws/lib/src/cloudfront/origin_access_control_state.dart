@@ -28,21 +28,14 @@ class OriginAccessControlState {
   /// [signingBehavior] Specifies which requests CloudFront signs. Specify `always` for the most common use case. Allowed values: `always`, `never`, and `no-override`.
   /// [signingProtocol] Determines how CloudFront signs (authenticates) requests. The only valid value is `sigv4`.
   OriginAccessControlState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? originAccessControlOriginType,
-    pulumi.Output<String>? signingBehavior,
-    pulumi.Output<String>? signingProtocol,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      originAccessControlOriginType = pulumi.Input.asOptionalInput<String>(originAccessControlOriginType),
-      signingBehavior = pulumi.Input.asOptionalInput<String>(signingBehavior),
-      signingProtocol = pulumi.Input.asOptionalInput<String>(signingProtocol);
+    this.arn,
+    this.description,
+    this.etag,
+    this.name,
+    this.originAccessControlOriginType,
+    this.signingBehavior,
+    this.signingProtocol,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class OriginAccessControlState {
 
   factory OriginAccessControlState.fromMap(Map<String, dynamic> map) {
     return OriginAccessControlState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      originAccessControlOriginType: map['originAccessControlOriginType'] == null ? null : pulumi.Output.create<String>(map['originAccessControlOriginType'] as String),
-      signingBehavior: map['signingBehavior'] == null ? null : pulumi.Output.create<String>(map['signingBehavior'] as String),
-      signingProtocol: map['signingProtocol'] == null ? null : pulumi.Output.create<String>(map['signingProtocol'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      originAccessControlOriginType: map['originAccessControlOriginType'] == null ? null : (map['originAccessControlOriginType'] as String).input(),
+      signingBehavior: map['signingBehavior'] == null ? null : (map['signingBehavior'] as String).input(),
+      signingProtocol: map['signingProtocol'] == null ? null : (map['signingProtocol'] as String).input(),
     );
   }
 }

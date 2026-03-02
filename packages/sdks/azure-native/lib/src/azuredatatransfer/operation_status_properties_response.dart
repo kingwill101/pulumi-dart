@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Operation status associated with the last patch request
 class OperationStatusPropertiesResponse {
   /// Operation status ID of the last patch request for this connection.
-  final String id;
+  final pulumi.Input<String> id;
   /// Message for the operation for the last patch request for this connection.
-  final String message;
+  final pulumi.Input<String> message;
   /// Operation status for the last patch request for this connection.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [OperationStatusPropertiesResponse].
   /// [id] Operation status ID of the last patch request for this connection.
@@ -30,9 +31,9 @@ class OperationStatusPropertiesResponse {
 
   factory OperationStatusPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OperationStatusPropertiesResponse(
-      id: map['id'] as String,
-      message: map['message'] as String,
-      status: map['status'] as String,
+      id: (map['id'] as String).input(),
+      message: (map['message'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

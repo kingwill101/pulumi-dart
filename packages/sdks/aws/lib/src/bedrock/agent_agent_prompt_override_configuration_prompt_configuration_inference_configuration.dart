@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration {
   /// Maximum number of tokens to allow in the generated response.
-  final int maxLength;
+  final pulumi.Input<int> maxLength;
   /// List of stop sequences. A stop sequence is a sequence of characters that causes the model to stop generating the response.
-  final List<String> stopSequences;
+  final pulumi.Input<List<String>> stopSequences;
   /// Likelihood of the model selecting higher-probability options while generating a response. A lower value makes the model more likely to choose higher-probability options, while a higher value makes the model more likely to choose lower-probability options.
-  final double temperature;
+  final pulumi.Input<double> temperature;
   /// Number of top most-likely candidates, between 0 and 500, from which the model chooses the next token in the sequence.
-  final int topK;
+  final pulumi.Input<int> topK;
   /// Top percentage of the probability distribution of next tokens, between 0 and 1 (denoting 0% and 100%), from which the model chooses the next token in the sequence.
-  final double topP;
+  final pulumi.Input<double> topP;
 
   /// Creates a new [AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration].
   /// [maxLength] Maximum number of tokens to allow in the generated response.
@@ -39,11 +40,11 @@ class AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfigura
 
   factory AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration(
-      maxLength: map['maxLength'] as int,
-      stopSequences: (map['stopSequences'] as List).cast<String>(),
-      temperature: map['temperature'] as double,
-      topK: map['topK'] as int,
-      topP: map['topP'] as double,
+      maxLength: (map['maxLength'] as int).input(),
+      stopSequences: ((map['stopSequences'] as List).cast<String>()).input(),
+      temperature: (map['temperature'] as double).input(),
+      topK: (map['topK'] as int).input(),
+      topP: (map['topP'] as double).input(),
     );
   }
 }

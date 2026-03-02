@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'geo_filter_actions.dart';
 
 /// Rules defining user's geo access within a CDN endpoint.
 class GeoFilter {
   /// Action of the geo filter, i.e. allow or block access.
-  final GeoFilterActions action;
+  final pulumi.Input<GeoFilterActions> action;
   /// Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US.
-  final List<String> countryCodes;
+  final pulumi.Input<List<String>> countryCodes;
   /// Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)
-  final String relativePath;
+  final pulumi.Input<String> relativePath;
 
   /// Creates a new [GeoFilter].
   /// [action] Action of the geo filter, i.e. allow or block access.
@@ -23,7 +24,7 @@ class GeoFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': action.value,
+      'action': pulumi.Input.mapInputValue<GeoFilterActions, String>(action, (value) => value.value),
       'countryCodes': countryCodes,
       'relativePath': relativePath,
     };
@@ -31,9 +32,9 @@ class GeoFilter {
 
   factory GeoFilter.fromMap(Map<String, dynamic> map) {
     return GeoFilter(
-      action: GeoFilterActions.fromValue(map['action'] as String),
-      countryCodes: (map['countryCodes'] as List).cast<String>(),
-      relativePath: map['relativePath'] as String,
+      action: (GeoFilterActions.fromValue(map['action'] as String)).input(),
+      countryCodes: ((map['countryCodes'] as List).cast<String>()).input(),
+      relativePath: (map['relativePath'] as String).input(),
     );
   }
 }

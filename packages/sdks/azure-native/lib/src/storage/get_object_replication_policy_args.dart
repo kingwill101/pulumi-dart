@@ -19,13 +19,10 @@ class GetObjectReplicationPolicyArgs {
   /// [objectReplicationPolicyId] For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetObjectReplicationPolicyArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> objectReplicationPolicyId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      objectReplicationPolicyId = pulumi.Input.asInput<String>(objectReplicationPolicyId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.objectReplicationPolicyId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetObjectReplicationPolicyArgs {
 
   factory GetObjectReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectReplicationPolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      objectReplicationPolicyId: pulumi.Output.create<String>(map['objectReplicationPolicyId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      objectReplicationPolicyId: (map['objectReplicationPolicyId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

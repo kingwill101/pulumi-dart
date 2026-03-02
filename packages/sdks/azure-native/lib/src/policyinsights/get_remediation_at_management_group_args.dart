@@ -19,13 +19,10 @@ class GetRemediationAtManagementGroupArgs {
   /// [managementGroupsNamespace] The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
   /// [remediationName] The name of the remediation.
   GetRemediationAtManagementGroupArgs({
-    required pulumi.Output<String> managementGroupId,
-    required pulumi.Output<String> managementGroupsNamespace,
-    required pulumi.Output<String> remediationName,
-  }) :
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      managementGroupsNamespace = pulumi.Input.asInput<String>(managementGroupsNamespace),
-      remediationName = pulumi.Input.asInput<String>(remediationName);
+    required this.managementGroupId,
+    required this.managementGroupsNamespace,
+    required this.remediationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRemediationAtManagementGroupArgs {
 
   factory GetRemediationAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetRemediationAtManagementGroupArgs(
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      managementGroupsNamespace: pulumi.Output.create<String>(map['managementGroupsNamespace'] as String),
-      remediationName: pulumi.Output.create<String>(map['remediationName'] as String),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      managementGroupsNamespace: (map['managementGroupsNamespace'] as String).input(),
+      remediationName: (map['remediationName'] as String).input(),
     );
   }
 }

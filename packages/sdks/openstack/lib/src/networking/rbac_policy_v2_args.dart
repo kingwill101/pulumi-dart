@@ -34,17 +34,12 @@ class RbacPolicyV2Args {
   /// [region] The region in which to obtain the V2 networking client.
   /// [targetTenant] The ID of the tenant to which the RBAC policy
   RbacPolicyV2Args({
-    required pulumi.Output<String> action,
-    required pulumi.Output<String> objectId,
-    required pulumi.Output<String> objectType,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> targetTenant,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      objectId = pulumi.Input.asInput<String>(objectId),
-      objectType = pulumi.Input.asInput<String>(objectType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetTenant = pulumi.Input.asInput<String>(targetTenant);
+    required this.action,
+    required this.objectId,
+    required this.objectType,
+    this.region,
+    required this.targetTenant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,11 +53,11 @@ class RbacPolicyV2Args {
 
   factory RbacPolicyV2Args.fromMap(Map<String, dynamic> map) {
     return RbacPolicyV2Args(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      objectId: pulumi.Output.create<String>(map['objectId'] as String),
-      objectType: pulumi.Output.create<String>(map['objectType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetTenant: pulumi.Output.create<String>(map['targetTenant'] as String),
+      action: (map['action'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetTenant: (map['targetTenant'] as String).input(),
     );
   }
 }

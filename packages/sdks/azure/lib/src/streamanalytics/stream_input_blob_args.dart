@@ -44,29 +44,18 @@ class StreamInputBlobArgs {
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   /// [timeFormat] The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
   StreamInputBlobArgs({
-    pulumi.Output<String>? authenticationMode,
-    required pulumi.Output<String> dateFormat,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> pathPattern,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<StreamInputBlobSerialization> serialization,
-    required pulumi.Output<String> storageAccountKey,
-    required pulumi.Output<String> storageAccountName,
-    required pulumi.Output<String> storageContainerName,
-    required pulumi.Output<String> streamAnalyticsJobName,
-    required pulumi.Output<String> timeFormat,
-  }) :
-      authenticationMode = pulumi.Input.asOptionalInput<String>(authenticationMode),
-      dateFormat = pulumi.Input.asInput<String>(dateFormat),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pathPattern = pulumi.Input.asInput<String>(pathPattern),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serialization = pulumi.Input.asInput<StreamInputBlobSerialization>(serialization),
-      storageAccountKey = pulumi.Input.asInput<String>(storageAccountKey),
-      storageAccountName = pulumi.Input.asInput<String>(storageAccountName),
-      storageContainerName = pulumi.Input.asInput<String>(storageContainerName),
-      streamAnalyticsJobName = pulumi.Input.asInput<String>(streamAnalyticsJobName),
-      timeFormat = pulumi.Input.asInput<String>(timeFormat);
+    this.authenticationMode,
+    required this.dateFormat,
+    this.name,
+    required this.pathPattern,
+    required this.resourceGroupName,
+    required this.serialization,
+    required this.storageAccountKey,
+    required this.storageAccountName,
+    required this.storageContainerName,
+    required this.streamAnalyticsJobName,
+    required this.timeFormat,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class StreamInputBlobArgs {
 
   factory StreamInputBlobArgs.fromMap(Map<String, dynamic> map) {
     return StreamInputBlobArgs(
-      authenticationMode: map['authenticationMode'] == null ? null : pulumi.Output.create<String>(map['authenticationMode'] as String),
-      dateFormat: pulumi.Output.create<String>(map['dateFormat'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pathPattern: pulumi.Output.create<String>(map['pathPattern'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serialization: pulumi.Output.create<StreamInputBlobSerialization>(StreamInputBlobSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())),
-      storageAccountKey: pulumi.Output.create<String>(map['storageAccountKey'] as String),
-      storageAccountName: pulumi.Output.create<String>(map['storageAccountName'] as String),
-      storageContainerName: pulumi.Output.create<String>(map['storageContainerName'] as String),
-      streamAnalyticsJobName: pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
-      timeFormat: pulumi.Output.create<String>(map['timeFormat'] as String),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      dateFormat: (map['dateFormat'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pathPattern: (map['pathPattern'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serialization: (StreamInputBlobSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
+      storageAccountKey: (map['storageAccountKey'] as String).input(),
+      storageAccountName: (map['storageAccountName'] as String).input(),
+      storageContainerName: (map['storageContainerName'] as String).input(),
+      streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
+      timeFormat: (map['timeFormat'] as String).input(),
     );
   }
 }

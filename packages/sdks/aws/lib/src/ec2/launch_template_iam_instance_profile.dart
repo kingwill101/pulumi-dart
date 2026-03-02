@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateIamInstanceProfile {
   /// The Amazon Resource Name (ARN) of the instance profile. Conflicts with `name`.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// The name of the instance profile.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [LaunchTemplateIamInstanceProfile].
   /// [arn] The Amazon Resource Name (ARN) of the instance profile. Conflicts with `name`.
@@ -24,8 +25,8 @@ class LaunchTemplateIamInstanceProfile {
 
   factory LaunchTemplateIamInstanceProfile.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateIamInstanceProfile(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

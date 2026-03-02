@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterPscServiceAttachment {
   /// Type of a PSC connection targeting this service attachment.
-  final String connectionType;
+  final pulumi.Input<String> connectionType;
   /// Service attachment URI which your self-created PscConnection should use as
-  final String serviceAttachment;
+  final pulumi.Input<String> serviceAttachment;
 
   /// Creates a new [GetClusterPscServiceAttachment].
   /// [connectionType] Type of a PSC connection targeting this service attachment.
@@ -24,8 +25,8 @@ class GetClusterPscServiceAttachment {
 
   factory GetClusterPscServiceAttachment.fromMap(Map<String, dynamic> map) {
     return GetClusterPscServiceAttachment(
-      connectionType: map['connectionType'] as String,
-      serviceAttachment: map['serviceAttachment'] as String,
+      connectionType: (map['connectionType'] as String).input(),
+      serviceAttachment: (map['serviceAttachment'] as String).input(),
     );
   }
 }

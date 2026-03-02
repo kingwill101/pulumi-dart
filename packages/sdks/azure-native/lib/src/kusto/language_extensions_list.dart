@@ -6,7 +6,7 @@ import 'language_extension.dart';
 /// The list of language extension objects.
 class LanguageExtensionsList {
   /// The list of language extensions.
-  final List<LanguageExtension>? value;
+  final pulumi.Input<List<LanguageExtension>>? value;
 
   /// Creates a new [LanguageExtensionsList].
   /// [value] The list of language extensions.
@@ -16,13 +16,13 @@ class LanguageExtensionsList {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': ?value == null ? null : pulumi.Input.encodeList<LanguageExtension, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?pulumi.Input.mapOptionalInputValue<List<LanguageExtension>, List<Map<String, dynamic>>>(value, (value) => pulumi.Input.encodeList<LanguageExtension, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LanguageExtensionsList.fromMap(Map<String, dynamic> map) {
     return LanguageExtensionsList(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<LanguageExtension>(map['value'], (value) => LanguageExtension.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : (pulumi.Input.decodeList<LanguageExtension>(map['value'], (value) => LanguageExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

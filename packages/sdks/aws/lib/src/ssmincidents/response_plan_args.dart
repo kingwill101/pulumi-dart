@@ -40,25 +40,16 @@ class ResponsePlanArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] The tags applied to the response plan.
   ResponsePlanArgs({
-    pulumi.Output<ResponsePlanAction>? action,
-    pulumi.Output<List<String>>? chatChannels,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<String>>? engagements,
-    required pulumi.Output<ResponsePlanIncidentTemplate> incidentTemplate,
-    pulumi.Output<ResponsePlanIntegration>? integration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      action = pulumi.Input.asOptionalInput<ResponsePlanAction>(action),
-      chatChannels = pulumi.Input.asOptionalInput<List<String>>(chatChannels),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      engagements = pulumi.Input.asOptionalInput<List<String>>(engagements),
-      incidentTemplate = pulumi.Input.asInput<ResponsePlanIncidentTemplate>(incidentTemplate),
-      integration = pulumi.Input.asOptionalInput<ResponsePlanIntegration>(integration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.action,
+    this.chatChannels,
+    this.displayName,
+    this.engagements,
+    required this.incidentTemplate,
+    this.integration,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class ResponsePlanArgs {
 
   factory ResponsePlanArgs.fromMap(Map<String, dynamic> map) {
     return ResponsePlanArgs(
-      action: map['action'] == null ? null : pulumi.Output.create<ResponsePlanAction>(ResponsePlanAction.fromMap((map['action'] as Map).cast<String, dynamic>())),
-      chatChannels: map['chatChannels'] == null ? null : pulumi.Output.create<List<String>>((map['chatChannels'] as List).cast<String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      engagements: map['engagements'] == null ? null : pulumi.Output.create<List<String>>((map['engagements'] as List).cast<String>()),
-      incidentTemplate: pulumi.Output.create<ResponsePlanIncidentTemplate>(ResponsePlanIncidentTemplate.fromMap((map['incidentTemplate'] as Map).cast<String, dynamic>())),
-      integration: map['integration'] == null ? null : pulumi.Output.create<ResponsePlanIntegration>(ResponsePlanIntegration.fromMap((map['integration'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      action: map['action'] == null ? null : (ResponsePlanAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      chatChannels: map['chatChannels'] == null ? null : ((map['chatChannels'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      engagements: map['engagements'] == null ? null : ((map['engagements'] as List).cast<String>()).input(),
+      incidentTemplate: (ResponsePlanIncidentTemplate.fromMap((map['incidentTemplate'] as Map).cast<String, dynamic>())).input(),
+      integration: map['integration'] == null ? null : (ResponsePlanIntegration.fromMap((map['integration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

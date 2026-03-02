@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InvoiceUnitRule {
   /// Set of AWS account IDs included in this invoice unit.
-  final List<String> linkedAccounts;
+  final pulumi.Input<List<String>> linkedAccounts;
 
   /// Creates a new [InvoiceUnitRule].
   /// [linkedAccounts] Set of AWS account IDs included in this invoice unit.
@@ -19,7 +20,7 @@ class InvoiceUnitRule {
 
   factory InvoiceUnitRule.fromMap(Map<String, dynamic> map) {
     return InvoiceUnitRule(
-      linkedAccounts: (map['linkedAccounts'] as List).cast<String>(),
+      linkedAccounts: ((map['linkedAccounts'] as List).cast<String>()).input(),
     );
   }
 }

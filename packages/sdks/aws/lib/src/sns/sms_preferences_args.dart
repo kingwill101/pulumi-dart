@@ -31,21 +31,14 @@ class SmsPreferencesArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [usageReportS3Bucket] The name of the Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS.
   SmsPreferencesArgs({
-    pulumi.Output<String>? defaultSenderId,
-    pulumi.Output<String>? defaultSmsType,
-    pulumi.Output<String>? deliveryStatusIamRoleArn,
-    pulumi.Output<String>? deliveryStatusSuccessSamplingRate,
-    pulumi.Output<int>? monthlySpendLimit,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? usageReportS3Bucket,
-  }) :
-      defaultSenderId = pulumi.Input.asOptionalInput<String>(defaultSenderId),
-      defaultSmsType = pulumi.Input.asOptionalInput<String>(defaultSmsType),
-      deliveryStatusIamRoleArn = pulumi.Input.asOptionalInput<String>(deliveryStatusIamRoleArn),
-      deliveryStatusSuccessSamplingRate = pulumi.Input.asOptionalInput<String>(deliveryStatusSuccessSamplingRate),
-      monthlySpendLimit = pulumi.Input.asOptionalInput<int>(monthlySpendLimit),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      usageReportS3Bucket = pulumi.Input.asOptionalInput<String>(usageReportS3Bucket);
+    this.defaultSenderId,
+    this.defaultSmsType,
+    this.deliveryStatusIamRoleArn,
+    this.deliveryStatusSuccessSamplingRate,
+    this.monthlySpendLimit,
+    this.region,
+    this.usageReportS3Bucket,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class SmsPreferencesArgs {
 
   factory SmsPreferencesArgs.fromMap(Map<String, dynamic> map) {
     return SmsPreferencesArgs(
-      defaultSenderId: map['defaultSenderId'] == null ? null : pulumi.Output.create<String>(map['defaultSenderId'] as String),
-      defaultSmsType: map['defaultSmsType'] == null ? null : pulumi.Output.create<String>(map['defaultSmsType'] as String),
-      deliveryStatusIamRoleArn: map['deliveryStatusIamRoleArn'] == null ? null : pulumi.Output.create<String>(map['deliveryStatusIamRoleArn'] as String),
-      deliveryStatusSuccessSamplingRate: map['deliveryStatusSuccessSamplingRate'] == null ? null : pulumi.Output.create<String>(map['deliveryStatusSuccessSamplingRate'] as String),
-      monthlySpendLimit: map['monthlySpendLimit'] == null ? null : pulumi.Output.create<int>(map['monthlySpendLimit'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      usageReportS3Bucket: map['usageReportS3Bucket'] == null ? null : pulumi.Output.create<String>(map['usageReportS3Bucket'] as String),
+      defaultSenderId: map['defaultSenderId'] == null ? null : (map['defaultSenderId'] as String).input(),
+      defaultSmsType: map['defaultSmsType'] == null ? null : (map['defaultSmsType'] as String).input(),
+      deliveryStatusIamRoleArn: map['deliveryStatusIamRoleArn'] == null ? null : (map['deliveryStatusIamRoleArn'] as String).input(),
+      deliveryStatusSuccessSamplingRate: map['deliveryStatusSuccessSamplingRate'] == null ? null : (map['deliveryStatusSuccessSamplingRate'] as String).input(),
+      monthlySpendLimit: map['monthlySpendLimit'] == null ? null : (map['monthlySpendLimit'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      usageReportS3Bucket: map['usageReportS3Bucket'] == null ? null : (map['usageReportS3Bucket'] as String).input(),
     );
   }
 }

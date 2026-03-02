@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Secret definition.
 class SecretResponse {
   /// Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
-  final String? identity;
+  final pulumi.Input<String>? identity;
   /// Azure Key Vault URL pointing to the secret referenced by the container app.
-  final String? keyVaultUrl;
+  final pulumi.Input<String>? keyVaultUrl;
   /// Secret Name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [SecretResponse].
   /// [identity] Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
@@ -30,9 +31,9 @@ class SecretResponse {
 
   factory SecretResponse.fromMap(Map<String, dynamic> map) {
     return SecretResponse(
-      identity: map['identity'] == null ? null : map['identity'] as String,
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : map['keyVaultUrl'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

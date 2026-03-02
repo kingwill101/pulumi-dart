@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'query_parameter_type_response.dart';
 import 'query_parameter_value_response.dart';
 
 class QueryParameterResponse {
   /// [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
-  final String name;
+  final pulumi.Input<String> name;
   /// [Required] The type of this parameter.
-  final QueryParameterTypeResponse parameterType;
+  final pulumi.Input<QueryParameterTypeResponse> parameterType;
   /// [Required] The value of this parameter.
-  final QueryParameterValueResponse parameterValue;
+  final pulumi.Input<QueryParameterValueResponse> parameterValue;
 
   /// Creates a new [QueryParameterResponse].
   /// [name] [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
@@ -24,16 +25,16 @@ class QueryParameterResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameterType': parameterType.toMap(),
-      'parameterValue': parameterValue.toMap(),
+      'parameterType': pulumi.Input.mapInputValue<QueryParameterTypeResponse, Map<String, dynamic>>(parameterType, (value) => value.toMap()),
+      'parameterValue': pulumi.Input.mapInputValue<QueryParameterValueResponse, Map<String, dynamic>>(parameterValue, (value) => value.toMap()),
     };
   }
 
   factory QueryParameterResponse.fromMap(Map<String, dynamic> map) {
     return QueryParameterResponse(
-      name: map['name'] as String,
-      parameterType: QueryParameterTypeResponse.fromMap((map['parameterType'] as Map).cast<String, dynamic>()),
-      parameterValue: QueryParameterValueResponse.fromMap((map['parameterValue'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameterType: (QueryParameterTypeResponse.fromMap((map['parameterType'] as Map).cast<String, dynamic>())).input(),
+      parameterValue: (QueryParameterValueResponse.fromMap((map['parameterValue'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEtlsEtlConfigurationSink {
   /// Write Result Set.
-  final List<String> datasets;
+  final pulumi.Input<List<String>> datasets;
   /// The endpoint of the region where the target Project is located.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// Source Logstore Name.
-  final String logstore;
+  final pulumi.Input<String> logstore;
   /// Output Destination Name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Project Name
-  final String project;
+  final pulumi.Input<String> project;
   /// The ARN role that authorizes writing to the target Logstore.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [GetEtlsEtlConfigurationSink].
   /// [datasets] Write Result Set.
@@ -44,12 +45,12 @@ class GetEtlsEtlConfigurationSink {
 
   factory GetEtlsEtlConfigurationSink.fromMap(Map<String, dynamic> map) {
     return GetEtlsEtlConfigurationSink(
-      datasets: (map['datasets'] as List).cast<String>(),
-      endpoint: map['endpoint'] as String,
-      logstore: map['logstore'] as String,
-      name: map['name'] as String,
-      project: map['project'] as String,
-      roleArn: map['roleArn'] as String,
+      datasets: ((map['datasets'] as List).cast<String>()).input(),
+      endpoint: (map['endpoint'] as String).input(),
+      logstore: (map['logstore'] as String).input(),
+      name: (map['name'] as String).input(),
+      project: (map['project'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

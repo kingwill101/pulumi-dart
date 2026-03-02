@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointLoadBalancerOptionsPortRange {
-  final int fromPort;
-  final int toPort;
+  final pulumi.Input<int> fromPort;
+  final pulumi.Input<int> toPort;
 
   /// Creates a new [EndpointLoadBalancerOptionsPortRange].
   /// [fromPort] Required.
@@ -22,8 +23,8 @@ class EndpointLoadBalancerOptionsPortRange {
 
   factory EndpointLoadBalancerOptionsPortRange.fromMap(Map<String, dynamic> map) {
     return EndpointLoadBalancerOptionsPortRange(
-      fromPort: map['fromPort'] as int,
-      toPort: map['toPort'] as int,
+      fromPort: (map['fromPort'] as int).input(),
+      toPort: (map['toPort'] as int).input(),
     );
   }
 }

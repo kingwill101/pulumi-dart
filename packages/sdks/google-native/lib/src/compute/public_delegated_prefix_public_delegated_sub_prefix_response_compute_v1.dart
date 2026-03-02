@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a sub PublicDelegatedPrefix.
 class PublicDelegatedPrefixPublicDelegatedSubPrefixResponseComputeV1 {
   /// Name of the project scoping this PublicDelegatedSubPrefix.
-  final String delegateeProject;
+  final pulumi.Input<String> delegateeProject;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final String description;
+  final pulumi.Input<String> description;
   /// The IP address range, in CIDR format, represented by this sub public delegated prefix.
-  final String ipCidrRange;
+  final pulumi.Input<String> ipCidrRange;
   /// Whether the sub prefix is delegated to create Address resources in the delegatee project.
-  final bool isAddress;
+  final pulumi.Input<bool> isAddress;
   /// The name of the sub public delegated prefix.
-  final String name;
+  final pulumi.Input<String> name;
   /// The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
-  final String region;
+  final pulumi.Input<String> region;
   /// The status of the sub public delegated prefix.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [PublicDelegatedPrefixPublicDelegatedSubPrefixResponseComputeV1].
   /// [delegateeProject] Name of the project scoping this PublicDelegatedSubPrefix.
@@ -50,13 +51,13 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponseComputeV1 {
 
   factory PublicDelegatedPrefixPublicDelegatedSubPrefixResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixPublicDelegatedSubPrefixResponseComputeV1(
-      delegateeProject: map['delegateeProject'] as String,
-      description: map['description'] as String,
-      ipCidrRange: map['ipCidrRange'] as String,
-      isAddress: map['isAddress'] as bool,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      status: map['status'] as String,
+      delegateeProject: (map['delegateeProject'] as String).input(),
+      description: (map['description'] as String).input(),
+      ipCidrRange: (map['ipCidrRange'] as String).input(),
+      isAddress: (map['isAddress'] as bool).input(),
+      name: (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

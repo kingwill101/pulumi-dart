@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'postdeploy.dart';
 import 'predeploy.dart';
 
 /// Standard represents the standard deployment strategy.
 class Standard {
   /// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
-  final Postdeploy? postdeploy;
+  final pulumi.Input<Postdeploy>? postdeploy;
   /// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
-  final Predeploy? predeploy;
+  final pulumi.Input<Predeploy>? predeploy;
   /// Whether to verify a deployment.
-  final bool? verify;
+  final pulumi.Input<bool>? verify;
 
   /// Creates a new [Standard].
   /// [postdeploy] Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
@@ -24,17 +25,17 @@ class Standard {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postdeploy': ?postdeploy == null ? null : postdeploy!.toMap(),
-      'predeploy': ?predeploy == null ? null : predeploy!.toMap(),
+      'postdeploy': ?pulumi.Input.mapOptionalInputValue<Postdeploy, Map<String, dynamic>>(postdeploy, (value) => value.toMap()),
+      'predeploy': ?pulumi.Input.mapOptionalInputValue<Predeploy, Map<String, dynamic>>(predeploy, (value) => value.toMap()),
       'verify': ?verify,
     };
   }
 
   factory Standard.fromMap(Map<String, dynamic> map) {
     return Standard(
-      postdeploy: map['postdeploy'] == null ? null : Postdeploy.fromMap((map['postdeploy'] as Map).cast<String, dynamic>()),
-      predeploy: map['predeploy'] == null ? null : Predeploy.fromMap((map['predeploy'] as Map).cast<String, dynamic>()),
-      verify: map['verify'] == null ? null : map['verify'] as bool,
+      postdeploy: map['postdeploy'] == null ? null : (Postdeploy.fromMap((map['postdeploy'] as Map).cast<String, dynamic>())).input(),
+      predeploy: map['predeploy'] == null ? null : (Predeploy.fromMap((map['predeploy'] as Map).cast<String, dynamic>())).input(),
+      verify: map['verify'] == null ? null : (map['verify'] as bool).input(),
     );
   }
 }

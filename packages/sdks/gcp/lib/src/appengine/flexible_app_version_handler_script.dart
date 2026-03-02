@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleAppVersionHandlerScript {
   /// Path to the script from the application root directory.
-  final String scriptPath;
+  final pulumi.Input<String> scriptPath;
 
   /// Creates a new [FlexibleAppVersionHandlerScript].
   /// [scriptPath] Path to the script from the application root directory.
@@ -19,7 +20,7 @@ class FlexibleAppVersionHandlerScript {
 
   factory FlexibleAppVersionHandlerScript.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionHandlerScript(
-      scriptPath: map['scriptPath'] as String,
+      scriptPath: (map['scriptPath'] as String).input(),
     );
   }
 }

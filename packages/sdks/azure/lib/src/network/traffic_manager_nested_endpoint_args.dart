@@ -53,33 +53,20 @@ class TrafficManagerNestedEndpointArgs {
   /// [targetResourceId] The resource id of an Azure resource to target.
   /// [weight] Specifies how much traffic should be distributed to this endpoint, this must be specified for Profiles using the Weighted traffic routing method. Valid values are between `1` and `1000`. Defaults to `1`.
   TrafficManagerNestedEndpointArgs({
-    pulumi.Output<List<TrafficManagerNestedEndpointCustomHeader>>? customHeaders,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? endpointLocation,
-    pulumi.Output<List<String>>? geoMappings,
-    required pulumi.Output<int> minimumChildEndpoints,
-    pulumi.Output<int>? minimumRequiredChildEndpointsIpv4,
-    pulumi.Output<int>? minimumRequiredChildEndpointsIpv6,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    required pulumi.Output<String> profileId,
-    pulumi.Output<List<TrafficManagerNestedEndpointSubnet>>? subnets,
-    required pulumi.Output<String> targetResourceId,
-    pulumi.Output<int>? weight,
-  }) :
-      customHeaders = pulumi.Input.asOptionalInput<List<TrafficManagerNestedEndpointCustomHeader>>(customHeaders),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      endpointLocation = pulumi.Input.asOptionalInput<String>(endpointLocation),
-      geoMappings = pulumi.Input.asOptionalInput<List<String>>(geoMappings),
-      minimumChildEndpoints = pulumi.Input.asInput<int>(minimumChildEndpoints),
-      minimumRequiredChildEndpointsIpv4 = pulumi.Input.asOptionalInput<int>(minimumRequiredChildEndpointsIpv4),
-      minimumRequiredChildEndpointsIpv6 = pulumi.Input.asOptionalInput<int>(minimumRequiredChildEndpointsIpv6),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      profileId = pulumi.Input.asInput<String>(profileId),
-      subnets = pulumi.Input.asOptionalInput<List<TrafficManagerNestedEndpointSubnet>>(subnets),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    this.customHeaders,
+    this.enabled,
+    this.endpointLocation,
+    this.geoMappings,
+    required this.minimumChildEndpoints,
+    this.minimumRequiredChildEndpointsIpv4,
+    this.minimumRequiredChildEndpointsIpv6,
+    this.name,
+    this.priority,
+    required this.profileId,
+    this.subnets,
+    required this.targetResourceId,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class TrafficManagerNestedEndpointArgs {
 
   factory TrafficManagerNestedEndpointArgs.fromMap(Map<String, dynamic> map) {
     return TrafficManagerNestedEndpointArgs(
-      customHeaders: map['customHeaders'] == null ? null : pulumi.Output.create<List<TrafficManagerNestedEndpointCustomHeader>>(pulumi.Input.decodeList<TrafficManagerNestedEndpointCustomHeader>(map['customHeaders'], (value) => TrafficManagerNestedEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>()))),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      endpointLocation: map['endpointLocation'] == null ? null : pulumi.Output.create<String>(map['endpointLocation'] as String),
-      geoMappings: map['geoMappings'] == null ? null : pulumi.Output.create<List<String>>((map['geoMappings'] as List).cast<String>()),
-      minimumChildEndpoints: pulumi.Output.create<int>(map['minimumChildEndpoints'] as int),
-      minimumRequiredChildEndpointsIpv4: map['minimumRequiredChildEndpointsIpv4'] == null ? null : pulumi.Output.create<int>(map['minimumRequiredChildEndpointsIpv4'] as int),
-      minimumRequiredChildEndpointsIpv6: map['minimumRequiredChildEndpointsIpv6'] == null ? null : pulumi.Output.create<int>(map['minimumRequiredChildEndpointsIpv6'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      profileId: pulumi.Output.create<String>(map['profileId'] as String),
-      subnets: map['subnets'] == null ? null : pulumi.Output.create<List<TrafficManagerNestedEndpointSubnet>>(pulumi.Input.decodeList<TrafficManagerNestedEndpointSubnet>(map['subnets'], (value) => TrafficManagerNestedEndpointSubnet.fromMap((value as Map).cast<String, dynamic>()))),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<TrafficManagerNestedEndpointCustomHeader>(map['customHeaders'], (value) => TrafficManagerNestedEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      endpointLocation: map['endpointLocation'] == null ? null : (map['endpointLocation'] as String).input(),
+      geoMappings: map['geoMappings'] == null ? null : ((map['geoMappings'] as List).cast<String>()).input(),
+      minimumChildEndpoints: (map['minimumChildEndpoints'] as int).input(),
+      minimumRequiredChildEndpointsIpv4: map['minimumRequiredChildEndpointsIpv4'] == null ? null : (map['minimumRequiredChildEndpointsIpv4'] as int).input(),
+      minimumRequiredChildEndpointsIpv6: map['minimumRequiredChildEndpointsIpv6'] == null ? null : (map['minimumRequiredChildEndpointsIpv6'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      profileId: (map['profileId'] as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<TrafficManagerNestedEndpointSubnet>(map['subnets'], (value) => TrafficManagerNestedEndpointSubnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

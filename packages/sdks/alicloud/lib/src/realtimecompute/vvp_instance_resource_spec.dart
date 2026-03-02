@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VvpInstanceResourceSpec {
   /// CPU number.
-  final int? cpu;
+  final pulumi.Input<int>? cpu;
   /// Memory size.
-  final int? memoryGb;
+  final pulumi.Input<int>? memoryGb;
 
   /// Creates a new [VvpInstanceResourceSpec].
   /// [cpu] CPU number.
@@ -24,8 +25,8 @@ class VvpInstanceResourceSpec {
 
   factory VvpInstanceResourceSpec.fromMap(Map<String, dynamic> map) {
     return VvpInstanceResourceSpec(
-      cpu: map['cpu'] == null ? null : map['cpu'] as int,
-      memoryGb: map['memoryGb'] == null ? null : map['memoryGb'] as int,
+      cpu: map['cpu'] == null ? null : (map['cpu'] as int).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as int).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskGeometry {
   /// Specifies the number of cylinders in the disk geometry, affecting how the disk's storage is organized.
-  final double cylinders;
+  final pulumi.Input<double> cylinders;
   /// Sets the number of headers in the disk geometry, impacting data accessibility and organization.
-  final double headers;
+  final pulumi.Input<double> headers;
   /// Configures the number of sectors per track in the disk's geometry, influencing data density and performance.
-  final double sectors;
+  final pulumi.Input<double> sectors;
   /// Indicates the type of translation used for the disk geometry, affecting how it maps its virtual space to physical storage.
-  final String? trans;
+  final pulumi.Input<String>? trans;
 
   /// Creates a new [DomainDevicesDiskGeometry].
   /// [cylinders] Specifies the number of cylinders in the disk geometry, affecting how the disk's storage is organized.
@@ -34,10 +35,10 @@ class DomainDevicesDiskGeometry {
 
   factory DomainDevicesDiskGeometry.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskGeometry(
-      cylinders: map['cylinders'] as double,
-      headers: map['headers'] as double,
-      sectors: map['sectors'] as double,
-      trans: map['trans'] == null ? null : map['trans'] as String,
+      cylinders: (map['cylinders'] as double).input(),
+      headers: (map['headers'] as double).input(),
+      sectors: (map['sectors'] as double).input(),
+      trans: map['trans'] == null ? null : (map['trans'] as String).input(),
     );
   }
 }

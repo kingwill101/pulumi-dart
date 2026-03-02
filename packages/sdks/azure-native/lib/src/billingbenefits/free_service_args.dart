@@ -55,35 +55,21 @@ class FreeServiceArgs {
   /// [systemId] This is the globally unique identifier of the free services which will not change for its lifetime.
   /// [tags] Resource tags.
   FreeServiceArgs({
-    pulumi.Output<String>? endAt,
-    pulumi.Output<String>? freeServiceName,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedBy,
-    pulumi.Output<Plan>? plan,
-    pulumi.Output<String>? productCode,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<String>? startAt,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? systemId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      endAt = pulumi.Input.asOptionalInput<String>(endAt),
-      freeServiceName = pulumi.Input.asOptionalInput<String>(freeServiceName),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedBy = pulumi.Input.asOptionalInput<String>(managedBy),
-      plan = pulumi.Input.asOptionalInput<Plan>(plan),
-      productCode = pulumi.Input.asOptionalInput<String>(productCode),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      startAt = pulumi.Input.asOptionalInput<String>(startAt),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      systemId = pulumi.Input.asOptionalInput<String>(systemId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.endAt,
+    this.freeServiceName,
+    this.identity,
+    this.kind,
+    this.location,
+    this.managedBy,
+    this.plan,
+    this.productCode,
+    required this.resourceGroupName,
+    this.sku,
+    this.startAt,
+    this.status,
+    this.systemId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,20 +92,20 @@ class FreeServiceArgs {
 
   factory FreeServiceArgs.fromMap(Map<String, dynamic> map) {
     return FreeServiceArgs(
-      endAt: map['endAt'] == null ? null : pulumi.Output.create<String>(map['endAt'] as String),
-      freeServiceName: map['freeServiceName'] == null ? null : pulumi.Output.create<String>(map['freeServiceName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedBy: map['managedBy'] == null ? null : pulumi.Output.create<String>(map['managedBy'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<Plan>(Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      productCode: map['productCode'] == null ? null : pulumi.Output.create<String>(map['productCode'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      startAt: map['startAt'] == null ? null : pulumi.Output.create<String>(map['startAt'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      systemId: map['systemId'] == null ? null : pulumi.Output.create<String>(map['systemId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      endAt: map['endAt'] == null ? null : (map['endAt'] as String).input(),
+      freeServiceName: map['freeServiceName'] == null ? null : (map['freeServiceName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      startAt: map['startAt'] == null ? null : (map['startAt'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      systemId: map['systemId'] == null ? null : (map['systemId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

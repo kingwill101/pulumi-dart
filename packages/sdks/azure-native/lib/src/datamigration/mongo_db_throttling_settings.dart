@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies resource limits for the migration
 class MongoDbThrottlingSettings {
   /// The maximum number of work items (e.g. collection copies) that will be processed in parallel
-  final int? maxParallelism;
+  final pulumi.Input<int>? maxParallelism;
   /// The percentage of CPU time that the migrator will try to avoid using, from 0 to 100
-  final int? minFreeCpu;
+  final pulumi.Input<int>? minFreeCpu;
   /// The number of megabytes of RAM that the migrator will try to avoid using
-  final int? minFreeMemoryMb;
+  final pulumi.Input<int>? minFreeMemoryMb;
 
   /// Creates a new [MongoDbThrottlingSettings].
   /// [maxParallelism] The maximum number of work items (e.g. collection copies) that will be processed in parallel
@@ -30,9 +31,9 @@ class MongoDbThrottlingSettings {
 
   factory MongoDbThrottlingSettings.fromMap(Map<String, dynamic> map) {
     return MongoDbThrottlingSettings(
-      maxParallelism: map['maxParallelism'] == null ? null : map['maxParallelism'] as int,
-      minFreeCpu: map['minFreeCpu'] == null ? null : map['minFreeCpu'] as int,
-      minFreeMemoryMb: map['minFreeMemoryMb'] == null ? null : map['minFreeMemoryMb'] as int,
+      maxParallelism: map['maxParallelism'] == null ? null : (map['maxParallelism'] as int).input(),
+      minFreeCpu: map['minFreeCpu'] == null ? null : (map['minFreeCpu'] as int).input(),
+      minFreeMemoryMb: map['minFreeMemoryMb'] == null ? null : (map['minFreeMemoryMb'] as int).input(),
     );
   }
 }

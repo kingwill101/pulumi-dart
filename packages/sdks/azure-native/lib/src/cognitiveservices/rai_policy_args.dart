@@ -26,17 +26,12 @@ class RaiPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   RaiPolicyArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<RaiPolicyProperties>? properties,
-    pulumi.Output<String>? raiPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      properties = pulumi.Input.asOptionalInput<RaiPolicyProperties>(properties),
-      raiPolicyName = pulumi.Input.asOptionalInput<String>(raiPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    this.properties,
+    this.raiPolicyName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RaiPolicyArgs {
 
   factory RaiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RaiPolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<RaiPolicyProperties>(RaiPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      raiPolicyName: map['raiPolicyName'] == null ? null : pulumi.Output.create<String>(map['raiPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      properties: map['properties'] == null ? null : (RaiPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -42,27 +42,17 @@ class StandardArgs {
   /// [supportedClouds] List of all standard supported clouds.
   /// [tags] A list of key value pairs that describe the resource.
   StandardArgs({
-    pulumi.Output<String>? category,
-    pulumi.Output<List<StandardComponentProperties>>? components,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? standardId,
-    pulumi.Output<List<StandardSupportedClouds>>? supportedClouds,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      category = pulumi.Input.asOptionalInput<String>(category),
-      components = pulumi.Input.asOptionalInput<List<StandardComponentProperties>>(components),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      standardId = pulumi.Input.asOptionalInput<String>(standardId),
-      supportedClouds = pulumi.Input.asOptionalInput<List<StandardSupportedClouds>>(supportedClouds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.category,
+    this.components,
+    this.description,
+    this.displayName,
+    this.kind,
+    this.location,
+    required this.resourceGroupName,
+    this.standardId,
+    this.supportedClouds,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class StandardArgs {
 
   factory StandardArgs.fromMap(Map<String, dynamic> map) {
     return StandardArgs(
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      components: map['components'] == null ? null : pulumi.Output.create<List<StandardComponentProperties>>(pulumi.Input.decodeList<StandardComponentProperties>(map['components'], (value) => StandardComponentProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      standardId: map['standardId'] == null ? null : pulumi.Output.create<String>(map['standardId'] as String),
-      supportedClouds: map['supportedClouds'] == null ? null : pulumi.Output.create<List<StandardSupportedClouds>>(pulumi.Input.decodeList<StandardSupportedClouds>(map['supportedClouds'], (value) => StandardSupportedClouds.fromValue(value as String))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      components: map['components'] == null ? null : (pulumi.Input.decodeList<StandardComponentProperties>(map['components'], (value) => StandardComponentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      standardId: map['standardId'] == null ? null : (map['standardId'] as String).input(),
+      supportedClouds: map['supportedClouds'] == null ? null : (pulumi.Input.decodeList<StandardSupportedClouds>(map['supportedClouds'], (value) => StandardSupportedClouds.fromValue(value as String))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

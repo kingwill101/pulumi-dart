@@ -6,27 +6,27 @@ import 'sub_resource_response.dart';
 /// Outbound rule of the load balancer.
 class OutboundRuleResponse {
   /// The number of outbound ports to be used for NAT.
-  final int? allocatedOutboundPorts;
+  final pulumi.Input<int>? allocatedOutboundPorts;
   /// A reference to a pool of DIPs. Outbound traffic is randomly load balanced across IPs in the backend IPs.
-  final SubResourceResponse backendAddressPool;
+  final pulumi.Input<SubResourceResponse> backendAddressPool;
   /// Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-  final bool? enableTcpReset;
+  final pulumi.Input<bool>? enableTcpReset;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// The Frontend IP addresses of the load balancer.
-  final List<SubResourceResponse> frontendIPConfigurations;
+  final pulumi.Input<List<SubResourceResponse>> frontendIPConfigurations;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The timeout for the TCP idle connection.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// The name of the resource that is unique within the set of outbound rules used by the load balancer. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The protocol for the outbound rule in load balancer.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The provisioning state of the outbound rule resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Type of the resource.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [OutboundRuleResponse].
   /// [allocatedOutboundPorts] The number of outbound ports to be used for NAT.
@@ -57,10 +57,10 @@ class OutboundRuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocatedOutboundPorts': ?allocatedOutboundPorts,
-      'backendAddressPool': backendAddressPool.toMap(),
+      'backendAddressPool': pulumi.Input.mapInputValue<SubResourceResponse, Map<String, dynamic>>(backendAddressPool, (value) => value.toMap()),
       'enableTcpReset': ?enableTcpReset,
       'etag': etag,
-      'frontendIPConfigurations': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(frontendIPConfigurations, (value) => value.toMap()),
+      'frontendIPConfigurations': pulumi.Input.mapInputValue<List<SubResourceResponse>, List<Map<String, dynamic>>>(frontendIPConfigurations, (value) => pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
       'name': ?name,
@@ -72,17 +72,17 @@ class OutboundRuleResponse {
 
   factory OutboundRuleResponse.fromMap(Map<String, dynamic> map) {
     return OutboundRuleResponse(
-      allocatedOutboundPorts: map['allocatedOutboundPorts'] == null ? null : map['allocatedOutboundPorts'] as int,
-      backendAddressPool: SubResourceResponse.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>()),
-      enableTcpReset: map['enableTcpReset'] == null ? null : map['enableTcpReset'] as bool,
-      etag: map['etag'] as String,
-      frontendIPConfigurations: pulumi.Input.decodeList<SubResourceResponse>(map['frontendIPConfigurations'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      protocol: map['protocol'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      allocatedOutboundPorts: map['allocatedOutboundPorts'] == null ? null : (map['allocatedOutboundPorts'] as int).input(),
+      backendAddressPool: (SubResourceResponse.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
+      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset'] as bool).input(),
+      etag: (map['etag'] as String).input(),
+      frontendIPConfigurations: (pulumi.Input.decodeList<SubResourceResponse>(map['frontendIPConfigurations'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

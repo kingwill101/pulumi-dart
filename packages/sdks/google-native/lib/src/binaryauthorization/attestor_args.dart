@@ -28,19 +28,13 @@ class AttestorArgs {
   /// [project] Optional.
   /// [userOwnedGrafeasNote] This specifies how an attestation will be read, and how it will be used during policy enforcement.
   AttestorArgs({
-    required pulumi.Output<String> attestorId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<UserOwnedGrafeasNote>? userOwnedGrafeasNote,
-  }) :
-      attestorId = pulumi.Input.asInput<String>(attestorId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      userOwnedGrafeasNote = pulumi.Input.asOptionalInput<UserOwnedGrafeasNote>(userOwnedGrafeasNote);
+    required this.attestorId,
+    this.description,
+    this.etag,
+    this.name,
+    this.project,
+    this.userOwnedGrafeasNote,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class AttestorArgs {
 
   factory AttestorArgs.fromMap(Map<String, dynamic> map) {
     return AttestorArgs(
-      attestorId: pulumi.Output.create<String>(map['attestorId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      userOwnedGrafeasNote: map['userOwnedGrafeasNote'] == null ? null : pulumi.Output.create<UserOwnedGrafeasNote>(UserOwnedGrafeasNote.fromMap((map['userOwnedGrafeasNote'] as Map).cast<String, dynamic>())),
+      attestorId: (map['attestorId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      userOwnedGrafeasNote: map['userOwnedGrafeasNote'] == null ? null : (UserOwnedGrafeasNote.fromMap((map['userOwnedGrafeasNote'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

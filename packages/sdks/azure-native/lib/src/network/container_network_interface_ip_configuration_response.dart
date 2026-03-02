@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The ip configuration for a container network interface.
 class ContainerNetworkInterfaceIpConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// The name of the resource. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the container network interface IP configuration resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Sub Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ContainerNetworkInterfaceIpConfigurationResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.
@@ -35,10 +36,10 @@ class ContainerNetworkInterfaceIpConfigurationResponse {
 
   factory ContainerNetworkInterfaceIpConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ContainerNetworkInterfaceIpConfigurationResponse(
-      etag: map['etag'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      etag: (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

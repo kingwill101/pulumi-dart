@@ -31,21 +31,14 @@ class GetManagedDatabaseSensitivityLabelArgs {
   /// [sensitivityLabelSource] The source of the sensitivity label.
   /// [tableName] The name of the table.
   GetManagedDatabaseSensitivityLabelArgs({
-    required pulumi.Output<String> columnName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaName,
-    required pulumi.Output<String> sensitivityLabelSource,
-    required pulumi.Output<String> tableName,
-  }) :
-      columnName = pulumi.Input.asInput<String>(columnName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asInput<String>(schemaName),
-      sensitivityLabelSource = pulumi.Input.asInput<String>(sensitivityLabelSource),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    required this.columnName,
+    required this.databaseName,
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+    required this.schemaName,
+    required this.sensitivityLabelSource,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetManagedDatabaseSensitivityLabelArgs {
 
   factory GetManagedDatabaseSensitivityLabelArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedDatabaseSensitivityLabelArgs(
-      columnName: pulumi.Output.create<String>(map['columnName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
-      sensitivityLabelSource: pulumi.Output.create<String>(map['sensitivityLabelSource'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      columnName: (map['columnName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      sensitivityLabelSource: (map['sensitivityLabelSource'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

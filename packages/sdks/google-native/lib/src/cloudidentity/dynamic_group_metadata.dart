@@ -6,7 +6,7 @@ import 'dynamic_group_query.dart';
 /// Dynamic group metadata like queries and status.
 class DynamicGroupMetadata {
   /// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
-  final List<DynamicGroupQuery>? queries;
+  final pulumi.Input<List<DynamicGroupQuery>>? queries;
 
   /// Creates a new [DynamicGroupMetadata].
   /// [queries] Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
@@ -16,13 +16,13 @@ class DynamicGroupMetadata {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'queries': ?queries == null ? null : pulumi.Input.encodeList<DynamicGroupQuery, Map<String, dynamic>>(queries!, (value) => value.toMap()),
+      'queries': ?pulumi.Input.mapOptionalInputValue<List<DynamicGroupQuery>, List<Map<String, dynamic>>>(queries, (value) => pulumi.Input.encodeList<DynamicGroupQuery, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DynamicGroupMetadata.fromMap(Map<String, dynamic> map) {
     return DynamicGroupMetadata(
-      queries: map['queries'] == null ? null : pulumi.Input.decodeList<DynamicGroupQuery>(map['queries'], (value) => DynamicGroupQuery.fromMap((value as Map).cast<String, dynamic>())),
+      queries: map['queries'] == null ? null : (pulumi.Input.decodeList<DynamicGroupQuery>(map['queries'], (value) => DynamicGroupQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

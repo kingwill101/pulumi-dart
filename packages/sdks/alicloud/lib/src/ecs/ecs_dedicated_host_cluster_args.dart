@@ -25,17 +25,12 @@ class EcsDedicatedHostClusterArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneId] The ID of the zone in which to create the dedicated host cluster.
   EcsDedicatedHostClusterArgs({
-    pulumi.Output<String>? dedicatedHostClusterName,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> zoneId,
-  }) :
-      dedicatedHostClusterName = pulumi.Input.asOptionalInput<String>(dedicatedHostClusterName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.dedicatedHostClusterName,
+    this.description,
+    this.dryRun,
+    this.tags,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EcsDedicatedHostClusterArgs {
 
   factory EcsDedicatedHostClusterArgs.fromMap(Map<String, dynamic> map) {
     return EcsDedicatedHostClusterArgs(
-      dedicatedHostClusterName: map['dedicatedHostClusterName'] == null ? null : pulumi.Output.create<String>(map['dedicatedHostClusterName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      dedicatedHostClusterName: map['dedicatedHostClusterName'] == null ? null : (map['dedicatedHostClusterName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

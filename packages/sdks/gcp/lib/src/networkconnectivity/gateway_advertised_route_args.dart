@@ -43,25 +43,16 @@ class GatewayAdvertisedRouteArgs {
   /// [recipient] the recipient of this advertised route
   /// [spoke] The name of the spoke
   GatewayAdvertisedRouteArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ipRange,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? recipient,
-    required pulumi.Output<String> spoke,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipRange = pulumi.Input.asOptionalInput<String>(ipRange),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      recipient = pulumi.Input.asOptionalInput<String>(recipient),
-      spoke = pulumi.Input.asInput<String>(spoke);
+    this.description,
+    this.ipRange,
+    this.labels,
+    required this.location,
+    this.name,
+    this.priority,
+    this.project,
+    this.recipient,
+    required this.spoke,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class GatewayAdvertisedRouteArgs {
 
   factory GatewayAdvertisedRouteArgs.fromMap(Map<String, dynamic> map) {
     return GatewayAdvertisedRouteArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipRange: map['ipRange'] == null ? null : pulumi.Output.create<String>(map['ipRange'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      recipient: map['recipient'] == null ? null : pulumi.Output.create<String>(map['recipient'] as String),
-      spoke: pulumi.Output.create<String>(map['spoke'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      recipient: map['recipient'] == null ? null : (map['recipient'] as String).input(),
+      spoke: (map['spoke'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ContainerResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.  Only one "target" type should be set.
 class ContainerResourceMetricSourcePatchAutoscalingV2beta1 {
   /// container is the name of the container in the pods of the scaling target
-  final String? container;
+  final pulumi.Input<String>? container;
   /// name is the name of the resource in question.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.
-  final int? targetAverageUtilization;
+  final pulumi.Input<int>? targetAverageUtilization;
   /// targetAverageValue is the target value of the average of the resource metric across all relevant pods, as a raw value (instead of as a percentage of the request), similar to the "pods" metric source type.
-  final String? targetAverageValue;
+  final pulumi.Input<String>? targetAverageValue;
 
   /// Creates a new [ContainerResourceMetricSourcePatchAutoscalingV2beta1].
   /// [container] container is the name of the container in the pods of the scaling target
@@ -35,10 +36,10 @@ class ContainerResourceMetricSourcePatchAutoscalingV2beta1 {
 
   factory ContainerResourceMetricSourcePatchAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return ContainerResourceMetricSourcePatchAutoscalingV2beta1(
-      container: map['container'] == null ? null : map['container'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      targetAverageUtilization: map['targetAverageUtilization'] == null ? null : map['targetAverageUtilization'] as int,
-      targetAverageValue: map['targetAverageValue'] == null ? null : map['targetAverageValue'] as String,
+      container: map['container'] == null ? null : (map['container'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      targetAverageUtilization: map['targetAverageUtilization'] == null ? null : (map['targetAverageUtilization'] as int).input(),
+      targetAverageValue: map['targetAverageValue'] == null ? null : (map['targetAverageValue'] as String).input(),
     );
   }
 }

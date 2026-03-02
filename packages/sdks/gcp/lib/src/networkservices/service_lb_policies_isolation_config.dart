@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceLbPoliciesIsolationConfig {
   /// The isolation granularity of the load balancer.
   /// Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
-  final String? isolationGranularity;
+  final pulumi.Input<String>? isolationGranularity;
   /// The isolation mode of the load balancer.
   /// Default value is `NEAREST`.
   /// Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
-  final String? isolationMode;
+  final pulumi.Input<String>? isolationMode;
 
   /// Creates a new [ServiceLbPoliciesIsolationConfig].
   /// [isolationGranularity] The isolation granularity of the load balancer.
@@ -27,8 +28,8 @@ class ServiceLbPoliciesIsolationConfig {
 
   factory ServiceLbPoliciesIsolationConfig.fromMap(Map<String, dynamic> map) {
     return ServiceLbPoliciesIsolationConfig(
-      isolationGranularity: map['isolationGranularity'] == null ? null : map['isolationGranularity'] as String,
-      isolationMode: map['isolationMode'] == null ? null : map['isolationMode'] as String,
+      isolationGranularity: map['isolationGranularity'] == null ? null : (map['isolationGranularity'] as String).input(),
+      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode'] as String).input(),
     );
   }
 }

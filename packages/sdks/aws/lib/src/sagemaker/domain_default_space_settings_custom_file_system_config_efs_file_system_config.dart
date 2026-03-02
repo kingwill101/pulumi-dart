@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDefaultSpaceSettingsCustomFileSystemConfigEfsFileSystemConfig {
   /// The ID of your Amazon EFS file system.
-  final String fileSystemId;
+  final pulumi.Input<String> fileSystemId;
   /// The path to the file system directory that is accessible in Amazon SageMaker AI Studio. Permitted users can access only this directory and below.
-  final String fileSystemPath;
+  final pulumi.Input<String> fileSystemPath;
 
   /// Creates a new [DomainDefaultSpaceSettingsCustomFileSystemConfigEfsFileSystemConfig].
   /// [fileSystemId] The ID of your Amazon EFS file system.
@@ -24,8 +25,8 @@ class DomainDefaultSpaceSettingsCustomFileSystemConfigEfsFileSystemConfig {
 
   factory DomainDefaultSpaceSettingsCustomFileSystemConfigEfsFileSystemConfig.fromMap(Map<String, dynamic> map) {
     return DomainDefaultSpaceSettingsCustomFileSystemConfigEfsFileSystemConfig(
-      fileSystemId: map['fileSystemId'] as String,
-      fileSystemPath: map['fileSystemPath'] as String,
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      fileSystemPath: (map['fileSystemPath'] as String).input(),
     );
   }
 }

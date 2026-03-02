@@ -24,15 +24,11 @@ class NotificationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [topicArn] Topic ARN for notifications to be sent through
   NotificationArgs({
-    required pulumi.Output<List<String>> groupNames,
-    required pulumi.Output<List<NotificationType>> notifications,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> topicArn,
-  }) :
-      groupNames = pulumi.Input.asInput<List<String>>(groupNames),
-      notifications = pulumi.Input.asInput<List<NotificationType>>(notifications),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      topicArn = pulumi.Input.asInput<String>(topicArn);
+    required this.groupNames,
+    required this.notifications,
+    this.region,
+    required this.topicArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class NotificationArgs {
 
   factory NotificationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationArgs(
-      groupNames: pulumi.Output.create<List<String>>((map['groupNames'] as List).cast<String>()),
-      notifications: pulumi.Output.create<List<NotificationType>>(pulumi.Input.decodeList<NotificationType>(map['notifications'], (value) => NotificationType.fromValue(value as String))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      topicArn: pulumi.Output.create<String>(map['topicArn'] as String),
+      groupNames: ((map['groupNames'] as List).cast<String>()).input(),
+      notifications: (pulumi.Input.decodeList<NotificationType>(map['notifications'], (value) => NotificationType.fromValue(value as String))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      topicArn: (map['topicArn'] as String).input(),
     );
   }
 }

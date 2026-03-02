@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskSparkInfrastructureSpecVpcNetwork {
   /// The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
-  final String? network;
+  final pulumi.Input<String>? network;
   /// List of network tags to apply to the job.
-  final List<String>? networkTags;
+  final pulumi.Input<List<String>>? networkTags;
   /// The Cloud VPC sub-network in which the job is run.
-  final String? subNetwork;
+  final pulumi.Input<String>? subNetwork;
 
   /// Creates a new [TaskSparkInfrastructureSpecVpcNetwork].
   /// [network] The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
@@ -29,9 +30,9 @@ class TaskSparkInfrastructureSpecVpcNetwork {
 
   factory TaskSparkInfrastructureSpecVpcNetwork.fromMap(Map<String, dynamic> map) {
     return TaskSparkInfrastructureSpecVpcNetwork(
-      network: map['network'] == null ? null : map['network'] as String,
-      networkTags: map['networkTags'] == null ? null : (map['networkTags'] as List).cast<String>(),
-      subNetwork: map['subNetwork'] == null ? null : map['subNetwork'] as String,
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      networkTags: map['networkTags'] == null ? null : ((map['networkTags'] as List).cast<String>()).input(),
+      subNetwork: map['subNetwork'] == null ? null : (map['subNetwork'] as String).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_saml_options_saml_options_idp.dart';
 
 class DomainSamlOptionsSamlOptions {
   /// Whether SAML authentication is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Information from your identity provider.
-  final DomainSamlOptionsSamlOptionsIdp? idp;
+  final pulumi.Input<DomainSamlOptionsSamlOptionsIdp>? idp;
   /// This backend role from the SAML IdP receives full permissions to the cluster, equivalent to a new master user.
-  final String? masterBackendRole;
+  final pulumi.Input<String>? masterBackendRole;
   /// This username from the SAML IdP receives full permissions to the cluster, equivalent to a new master user.
-  final String? masterUserName;
+  final pulumi.Input<String>? masterUserName;
   /// Element of the SAML assertion to use for backend roles. Default is roles.
-  final String? rolesKey;
+  final pulumi.Input<String>? rolesKey;
   /// Duration of a session in minutes after a user logs in. Default is 60. Maximum value is 1,440.
-  final int? sessionTimeoutMinutes;
+  final pulumi.Input<int>? sessionTimeoutMinutes;
   /// Custom SAML attribute to use for user names. Default is an empty string - `""`. This will cause Elasticsearch to use the `NameID` element of the `Subject`, which is the default location for name identifiers in the SAML specification.
-  final String? subjectKey;
+  final pulumi.Input<String>? subjectKey;
 
   /// Creates a new [DomainSamlOptionsSamlOptions].
   /// [enabled] Whether SAML authentication is enabled.
@@ -39,7 +40,7 @@ class DomainSamlOptionsSamlOptions {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'idp': ?idp == null ? null : idp!.toMap(),
+      'idp': ?pulumi.Input.mapOptionalInputValue<DomainSamlOptionsSamlOptionsIdp, Map<String, dynamic>>(idp, (value) => value.toMap()),
       'masterBackendRole': ?masterBackendRole,
       'masterUserName': ?masterUserName,
       'rolesKey': ?rolesKey,
@@ -50,13 +51,13 @@ class DomainSamlOptionsSamlOptions {
 
   factory DomainSamlOptionsSamlOptions.fromMap(Map<String, dynamic> map) {
     return DomainSamlOptionsSamlOptions(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      idp: map['idp'] == null ? null : DomainSamlOptionsSamlOptionsIdp.fromMap((map['idp'] as Map).cast<String, dynamic>()),
-      masterBackendRole: map['masterBackendRole'] == null ? null : map['masterBackendRole'] as String,
-      masterUserName: map['masterUserName'] == null ? null : map['masterUserName'] as String,
-      rolesKey: map['rolesKey'] == null ? null : map['rolesKey'] as String,
-      sessionTimeoutMinutes: map['sessionTimeoutMinutes'] == null ? null : map['sessionTimeoutMinutes'] as int,
-      subjectKey: map['subjectKey'] == null ? null : map['subjectKey'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      idp: map['idp'] == null ? null : (DomainSamlOptionsSamlOptionsIdp.fromMap((map['idp'] as Map).cast<String, dynamic>())).input(),
+      masterBackendRole: map['masterBackendRole'] == null ? null : (map['masterBackendRole'] as String).input(),
+      masterUserName: map['masterUserName'] == null ? null : (map['masterUserName'] as String).input(),
+      rolesKey: map['rolesKey'] == null ? null : (map['rolesKey'] as String).input(),
+      sessionTimeoutMinutes: map['sessionTimeoutMinutes'] == null ? null : (map['sessionTimeoutMinutes'] as int).input(),
+      subjectKey: map['subjectKey'] == null ? null : (map['subjectKey'] as String).input(),
     );
   }
 }

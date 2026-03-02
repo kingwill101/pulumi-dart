@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'python_repository_public_repository.dart';
 
 /// Configuration for a Python remote repository.
 class PythonRepository {
   /// One of the publicly available Python repositories supported by Artifact Registry.
-  final PythonRepositoryPublicRepository? publicRepository;
+  final pulumi.Input<PythonRepositoryPublicRepository>? publicRepository;
 
   /// Creates a new [PythonRepository].
   /// [publicRepository] One of the publicly available Python repositories supported by Artifact Registry.
@@ -15,13 +16,13 @@ class PythonRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicRepository': ?publicRepository == null ? null : publicRepository!.value,
+      'publicRepository': ?pulumi.Input.mapOptionalInputValue<PythonRepositoryPublicRepository, String>(publicRepository, (value) => value.value),
     };
   }
 
   factory PythonRepository.fromMap(Map<String, dynamic> map) {
     return PythonRepository(
-      publicRepository: map['publicRepository'] == null ? null : PythonRepositoryPublicRepository.fromValue(map['publicRepository'] as String),
+      publicRepository: map['publicRepository'] == null ? null : (PythonRepositoryPublicRepository.fromValue(map['publicRepository'] as String)).input(),
     );
   }
 }

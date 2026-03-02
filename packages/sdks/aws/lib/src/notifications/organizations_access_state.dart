@@ -13,11 +13,9 @@ class OrganizationsAccessState {
   /// [enabled] Whether to enable organizations access for AWS User Notifications in AWS Organizations. When set to `true`, enables organizations access. When set to `false`, disables organizations access.
   /// [timeouts] Optional.
   OrganizationsAccessState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<OrganizationsAccessTimeouts>? timeouts,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      timeouts = pulumi.Input.asOptionalInput<OrganizationsAccessTimeouts>(timeouts);
+    this.enabled,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class OrganizationsAccessState {
 
   factory OrganizationsAccessState.fromMap(Map<String, dynamic> map) {
     return OrganizationsAccessState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<OrganizationsAccessTimeouts>(OrganizationsAccessTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      timeouts: map['timeouts'] == null ? null : (OrganizationsAccessTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

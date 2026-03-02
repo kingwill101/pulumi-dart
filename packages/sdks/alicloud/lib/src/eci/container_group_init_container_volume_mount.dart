@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerGroupInitContainerVolumeMount {
-  final String? mountPath;
-  final String? name;
-  final bool? readOnly;
+  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<bool>? readOnly;
 
   /// Creates a new [ContainerGroupInitContainerVolumeMount].
   /// [mountPath] Optional.
@@ -26,9 +27,9 @@ class ContainerGroupInitContainerVolumeMount {
 
   factory ContainerGroupInitContainerVolumeMount.fromMap(Map<String, dynamic> map) {
     return ContainerGroupInitContainerVolumeMount(
-      mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
+      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Wraps data-residency related information for edge-resource and this should be used with ARM layer.
 class DataResidency {
   /// DataResidencyType enum
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DataResidency].
   /// [type] DataResidencyType enum
@@ -20,7 +21,7 @@ class DataResidency {
 
   factory DataResidency.fromMap(Map<String, dynamic> map) {
     return DataResidency(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

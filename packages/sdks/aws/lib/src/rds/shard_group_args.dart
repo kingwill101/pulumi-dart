@@ -39,25 +39,16 @@ class ShardGroupArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   ShardGroupArgs({
-    pulumi.Output<int>? computeRedundancy,
-    required pulumi.Output<String> dbClusterIdentifier,
-    required pulumi.Output<String> dbShardGroupIdentifier,
-    required pulumi.Output<double> maxAcu,
-    pulumi.Output<double>? minAcu,
-    pulumi.Output<bool>? publiclyAccessible,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ShardGroupTimeouts>? timeouts,
-  }) :
-      computeRedundancy = pulumi.Input.asOptionalInput<int>(computeRedundancy),
-      dbClusterIdentifier = pulumi.Input.asInput<String>(dbClusterIdentifier),
-      dbShardGroupIdentifier = pulumi.Input.asInput<String>(dbShardGroupIdentifier),
-      maxAcu = pulumi.Input.asInput<double>(maxAcu),
-      minAcu = pulumi.Input.asOptionalInput<double>(minAcu),
-      publiclyAccessible = pulumi.Input.asOptionalInput<bool>(publiclyAccessible),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ShardGroupTimeouts>(timeouts);
+    this.computeRedundancy,
+    required this.dbClusterIdentifier,
+    required this.dbShardGroupIdentifier,
+    required this.maxAcu,
+    this.minAcu,
+    this.publiclyAccessible,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ShardGroupArgs {
 
   factory ShardGroupArgs.fromMap(Map<String, dynamic> map) {
     return ShardGroupArgs(
-      computeRedundancy: map['computeRedundancy'] == null ? null : pulumi.Output.create<int>(map['computeRedundancy'] as int),
-      dbClusterIdentifier: pulumi.Output.create<String>(map['dbClusterIdentifier'] as String),
-      dbShardGroupIdentifier: pulumi.Output.create<String>(map['dbShardGroupIdentifier'] as String),
-      maxAcu: pulumi.Output.create<double>(map['maxAcu'] as double),
-      minAcu: map['minAcu'] == null ? null : pulumi.Output.create<double>(map['minAcu'] as double),
-      publiclyAccessible: map['publiclyAccessible'] == null ? null : pulumi.Output.create<bool>(map['publiclyAccessible'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ShardGroupTimeouts>(ShardGroupTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      computeRedundancy: map['computeRedundancy'] == null ? null : (map['computeRedundancy'] as int).input(),
+      dbClusterIdentifier: (map['dbClusterIdentifier'] as String).input(),
+      dbShardGroupIdentifier: (map['dbShardGroupIdentifier'] as String).input(),
+      maxAcu: (map['maxAcu'] as double).input(),
+      minAcu: map['minAcu'] == null ? null : (map['minAcu'] as double).input(),
+      publiclyAccessible: map['publiclyAccessible'] == null ? null : (map['publiclyAccessible'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ShardGroupTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

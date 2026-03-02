@@ -22,17 +22,12 @@ class MemberAssociationState {
   /// [relationshipStatus] Status of the member relationship
   /// [updatedAt] Date and time of the last update of the relationship
   MemberAssociationState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? delegatedAdminAccountId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? relationshipStatus,
-    pulumi.Output<String>? updatedAt,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      delegatedAdminAccountId = pulumi.Input.asOptionalInput<String>(delegatedAdminAccountId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      relationshipStatus = pulumi.Input.asOptionalInput<String>(relationshipStatus),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt);
+    this.accountId,
+    this.delegatedAdminAccountId,
+    this.region,
+    this.relationshipStatus,
+    this.updatedAt,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class MemberAssociationState {
 
   factory MemberAssociationState.fromMap(Map<String, dynamic> map) {
     return MemberAssociationState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      delegatedAdminAccountId: map['delegatedAdminAccountId'] == null ? null : pulumi.Output.create<String>(map['delegatedAdminAccountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      relationshipStatus: map['relationshipStatus'] == null ? null : pulumi.Output.create<String>(map['relationshipStatus'] as String),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      delegatedAdminAccountId: map['delegatedAdminAccountId'] == null ? null : (map['delegatedAdminAccountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      relationshipStatus: map['relationshipStatus'] == null ? null : (map['relationshipStatus'] as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
     );
   }
 }

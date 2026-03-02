@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A policy violation reported against a gallery artifact.
 class PolicyViolationResponse {
   /// Describes the nature of the policy violation.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Describes specific details about why this policy violation was reported.
-  final String? details;
+  final pulumi.Input<String>? details;
 
   /// Creates a new [PolicyViolationResponse].
   /// [category] Describes the nature of the policy violation.
@@ -25,8 +26,8 @@ class PolicyViolationResponse {
 
   factory PolicyViolationResponse.fromMap(Map<String, dynamic> map) {
     return PolicyViolationResponse(
-      category: map['category'] == null ? null : map['category'] as String,
-      details: map['details'] == null ? null : map['details'] as String,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      details: map['details'] == null ? null : (map['details'] as String).input(),
     );
   }
 }

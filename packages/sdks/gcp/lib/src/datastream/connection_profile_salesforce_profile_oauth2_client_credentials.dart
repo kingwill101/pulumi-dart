@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileSalesforceProfileOauth2ClientCredentials {
   /// Client ID to use for authentication.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Client secret to use for authentication.
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// A reference to a Secret Manager resource name storing the client secret.
-  final String? secretManagerStoredClientSecret;
+  final pulumi.Input<String>? secretManagerStoredClientSecret;
 
   /// Creates a new [ConnectionProfileSalesforceProfileOauth2ClientCredentials].
   /// [clientId] Client ID to use for authentication.
@@ -29,9 +30,9 @@ class ConnectionProfileSalesforceProfileOauth2ClientCredentials {
 
   factory ConnectionProfileSalesforceProfileOauth2ClientCredentials.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileSalesforceProfileOauth2ClientCredentials(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      secretManagerStoredClientSecret: map['secretManagerStoredClientSecret'] == null ? null : map['secretManagerStoredClientSecret'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      secretManagerStoredClientSecret: map['secretManagerStoredClientSecret'] == null ? null : (map['secretManagerStoredClientSecret'] as String).input(),
     );
   }
 }

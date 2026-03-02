@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU for the resource.
 class SkuName {
   /// SKU name for this resource.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [SkuName].
   /// [name] SKU name for this resource.
@@ -20,7 +21,7 @@ class SkuName {
 
   factory SkuName.fromMap(Map<String, dynamic> map) {
     return SkuName(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

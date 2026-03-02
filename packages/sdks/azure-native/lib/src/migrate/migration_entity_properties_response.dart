@@ -1,45 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_migration_specific_properties_response.dart';
 
 /// Migration Entity Properties class.
 class MigrationEntityPropertiesResponse {
   /// Assessed Entity ARM Id
-  final String? assessedEntityArmId;
+  final pulumi.Input<String>? assessedEntityArmId;
   /// Associated Assessment Id
-  final String? associatedAssessmentId;
+  final pulumi.Input<String>? associatedAssessmentId;
   /// inventory resource id
-  final String associatedInventoryResourceId;
+  final pulumi.Input<String> associatedInventoryResourceId;
   /// associated Migration Entity Group Id
-  final List<String>? associatedMigrationEntityGroupIds;
+  final pulumi.Input<List<String>>? associatedMigrationEntityGroupIds;
   /// associated Wave Id
-  final String? associatedWaveId;
+  final pulumi.Input<String>? associatedWaveId;
   /// Execution Readiness of Migration Entity.
-  final String executionReadiness;
+  final pulumi.Input<String> executionReadiness;
   /// Execution Stage of Migration Entity.
-  final String executionStage;
+  final pulumi.Input<String> executionStage;
   /// Execution start date for Migration Entity.
-  final String executionStartDate;
+  final pulumi.Input<String> executionStartDate;
   /// Execution Status of Migration Entity.
-  final String executionStatus;
+  final pulumi.Input<String> executionStatus;
   /// Display Name of the Workload.
-  final String inventoryDisplayName;
+  final pulumi.Input<String> inventoryDisplayName;
   /// Migration path
-  final String? migrationPath;
+  final pulumi.Input<String>? migrationPath;
   /// Migration specific properties for the entity.
-  final ServerMigrationSpecificPropertiesResponse? migrationSpecificProperties;
+  final pulumi.Input<ServerMigrationSpecificPropertiesResponse>? migrationSpecificProperties;
   /// Strategy of Migration Entity.
-  final String migrationStrategy;
+  final pulumi.Input<String> migrationStrategy;
   /// Migration Tool of the Migration Entity.
-  final String? migrationTool;
+  final pulumi.Input<String>? migrationTool;
   /// ARM Resource Identifier for the partner resource.
-  final String? partnerResourceArmId;
+  final pulumi.Input<String>? partnerResourceArmId;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Target of the Migration Entity.
-  final String? target;
+  final pulumi.Input<String>? target;
   /// target Azure Resource ARM Id.
-  final String? targetAzureResourceArmId;
+  final pulumi.Input<String>? targetAzureResourceArmId;
 
   /// Creates a new [MigrationEntityPropertiesResponse].
   /// [assessedEntityArmId] Assessed Entity ARM Id
@@ -94,7 +95,7 @@ class MigrationEntityPropertiesResponse {
       'executionStatus': executionStatus,
       'inventoryDisplayName': inventoryDisplayName,
       'migrationPath': ?migrationPath,
-      'migrationSpecificProperties': ?migrationSpecificProperties == null ? null : migrationSpecificProperties!.toMap(),
+      'migrationSpecificProperties': ?pulumi.Input.mapOptionalInputValue<ServerMigrationSpecificPropertiesResponse, Map<String, dynamic>>(migrationSpecificProperties, (value) => value.toMap()),
       'migrationStrategy': migrationStrategy,
       'migrationTool': ?migrationTool,
       'partnerResourceArmId': ?partnerResourceArmId,
@@ -106,24 +107,24 @@ class MigrationEntityPropertiesResponse {
 
   factory MigrationEntityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrationEntityPropertiesResponse(
-      assessedEntityArmId: map['assessedEntityArmId'] == null ? null : map['assessedEntityArmId'] as String,
-      associatedAssessmentId: map['associatedAssessmentId'] == null ? null : map['associatedAssessmentId'] as String,
-      associatedInventoryResourceId: map['associatedInventoryResourceId'] as String,
-      associatedMigrationEntityGroupIds: map['associatedMigrationEntityGroupIds'] == null ? null : (map['associatedMigrationEntityGroupIds'] as List).cast<String>(),
-      associatedWaveId: map['associatedWaveId'] == null ? null : map['associatedWaveId'] as String,
-      executionReadiness: map['executionReadiness'] as String,
-      executionStage: map['executionStage'] as String,
-      executionStartDate: map['executionStartDate'] as String,
-      executionStatus: map['executionStatus'] as String,
-      inventoryDisplayName: map['inventoryDisplayName'] as String,
-      migrationPath: map['migrationPath'] == null ? null : map['migrationPath'] as String,
-      migrationSpecificProperties: map['migrationSpecificProperties'] == null ? null : ServerMigrationSpecificPropertiesResponse.fromMap((map['migrationSpecificProperties'] as Map).cast<String, dynamic>()),
-      migrationStrategy: map['migrationStrategy'] as String,
-      migrationTool: map['migrationTool'] == null ? null : map['migrationTool'] as String,
-      partnerResourceArmId: map['partnerResourceArmId'] == null ? null : map['partnerResourceArmId'] as String,
-      provisioningState: map['provisioningState'] as String,
-      target: map['target'] == null ? null : map['target'] as String,
-      targetAzureResourceArmId: map['targetAzureResourceArmId'] == null ? null : map['targetAzureResourceArmId'] as String,
+      assessedEntityArmId: map['assessedEntityArmId'] == null ? null : (map['assessedEntityArmId'] as String).input(),
+      associatedAssessmentId: map['associatedAssessmentId'] == null ? null : (map['associatedAssessmentId'] as String).input(),
+      associatedInventoryResourceId: (map['associatedInventoryResourceId'] as String).input(),
+      associatedMigrationEntityGroupIds: map['associatedMigrationEntityGroupIds'] == null ? null : ((map['associatedMigrationEntityGroupIds'] as List).cast<String>()).input(),
+      associatedWaveId: map['associatedWaveId'] == null ? null : (map['associatedWaveId'] as String).input(),
+      executionReadiness: (map['executionReadiness'] as String).input(),
+      executionStage: (map['executionStage'] as String).input(),
+      executionStartDate: (map['executionStartDate'] as String).input(),
+      executionStatus: (map['executionStatus'] as String).input(),
+      inventoryDisplayName: (map['inventoryDisplayName'] as String).input(),
+      migrationPath: map['migrationPath'] == null ? null : (map['migrationPath'] as String).input(),
+      migrationSpecificProperties: map['migrationSpecificProperties'] == null ? null : (ServerMigrationSpecificPropertiesResponse.fromMap((map['migrationSpecificProperties'] as Map).cast<String, dynamic>())).input(),
+      migrationStrategy: (map['migrationStrategy'] as String).input(),
+      migrationTool: map['migrationTool'] == null ? null : (map['migrationTool'] as String).input(),
+      partnerResourceArmId: map['partnerResourceArmId'] == null ? null : (map['partnerResourceArmId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      targetAzureResourceArmId: map['targetAzureResourceArmId'] == null ? null : (map['targetAzureResourceArmId'] as String).input(),
     );
   }
 }

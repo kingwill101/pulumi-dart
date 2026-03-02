@@ -28,19 +28,13 @@ class GetPeerConnectionsArgs {
   /// [status] The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
   /// [vpcId] The ID of the requester VPC.
   GetPeerConnectionsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? peerConnectionName,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      peerConnectionName = pulumi.Input.asOptionalInput<String>(peerConnectionName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.peerConnectionName,
+    this.status,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetPeerConnectionsArgs {
 
   factory GetPeerConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetPeerConnectionsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      peerConnectionName: map['peerConnectionName'] == null ? null : pulumi.Output.create<String>(map['peerConnectionName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      peerConnectionName: map['peerConnectionName'] == null ? null : (map['peerConnectionName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Windows Server licensing settings.
 class WindowsServerLicensingSettings {
   /// Licence Cost.
-  final double licenseCost;
+  final pulumi.Input<double> licenseCost;
   /// Licenses per core.
-  final int licensesPerCore;
+  final pulumi.Input<int> licensesPerCore;
   /// Software assurance (SA) cost.
-  final double softwareAssuranceCost;
+  final pulumi.Input<double> softwareAssuranceCost;
 
   /// Creates a new [WindowsServerLicensingSettings].
   /// [licenseCost] Licence Cost.
@@ -30,9 +31,9 @@ class WindowsServerLicensingSettings {
 
   factory WindowsServerLicensingSettings.fromMap(Map<String, dynamic> map) {
     return WindowsServerLicensingSettings(
-      licenseCost: map['licenseCost'] as double,
-      licensesPerCore: map['licensesPerCore'] as int,
-      softwareAssuranceCost: map['softwareAssuranceCost'] as double,
+      licenseCost: (map['licenseCost'] as double).input(),
+      licensesPerCore: (map['licensesPerCore'] as int).input(),
+      softwareAssuranceCost: (map['softwareAssuranceCost'] as double).input(),
     );
   }
 }

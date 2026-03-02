@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An HTTP header.
 class GoogleCloudApigeeV1SecurityActionHttpHeader {
   /// The header name to be sent to the target.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The header value to be sent to the target.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [GoogleCloudApigeeV1SecurityActionHttpHeader].
   /// [name] The header name to be sent to the target.
@@ -25,8 +26,8 @@ class GoogleCloudApigeeV1SecurityActionHttpHeader {
 
   factory GoogleCloudApigeeV1SecurityActionHttpHeader.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityActionHttpHeader(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

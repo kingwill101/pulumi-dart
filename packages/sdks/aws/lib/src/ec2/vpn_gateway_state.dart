@@ -28,21 +28,14 @@ class VpnGatewayState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] The VPC ID to create in.
   VpnGatewayState({
-    pulumi.Output<String>? amazonSideAsn,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? availabilityZone,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vpcId,
-  }) :
-      amazonSideAsn = pulumi.Input.asOptionalInput<String>(amazonSideAsn),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.amazonSideAsn,
+    this.arn,
+    this.availabilityZone,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class VpnGatewayState {
 
   factory VpnGatewayState.fromMap(Map<String, dynamic> map) {
     return VpnGatewayState(
-      amazonSideAsn: map['amazonSideAsn'] == null ? null : pulumi.Output.create<String>(map['amazonSideAsn'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      amazonSideAsn: map['amazonSideAsn'] == null ? null : (map['amazonSideAsn'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

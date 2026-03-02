@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents an integer value range.
 class HttpRouteHeaderMatchIntegerRangeResponseNetworkservicesV1beta1 {
   /// End of the range (exclusive)
-  final int end;
+  final pulumi.Input<int> end;
   /// Start of the range (inclusive)
-  final int start;
+  final pulumi.Input<int> start;
 
   /// Creates a new [HttpRouteHeaderMatchIntegerRangeResponseNetworkservicesV1beta1].
   /// [end] End of the range (exclusive)
@@ -25,8 +26,8 @@ class HttpRouteHeaderMatchIntegerRangeResponseNetworkservicesV1beta1 {
 
   factory HttpRouteHeaderMatchIntegerRangeResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteHeaderMatchIntegerRangeResponseNetworkservicesV1beta1(
-      end: map['end'] as int,
-      start: map['start'] as int,
+      end: (map['end'] as int).input(),
+      start: (map['start'] as int).input(),
     );
   }
 }

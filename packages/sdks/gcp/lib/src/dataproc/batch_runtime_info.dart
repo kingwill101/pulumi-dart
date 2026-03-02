@@ -8,20 +8,20 @@ class BatchRuntimeInfo {
   /// (Output)
   /// Approximate workload resource usage, calculated when the workload completes(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
   /// Structure is documented below.
-  final List<BatchRuntimeInfoApproximateUsage>? approximateUsages;
+  final pulumi.Input<List<BatchRuntimeInfoApproximateUsage>>? approximateUsages;
   /// (Output)
   /// Snapshot of current workload resource usage(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
   /// Structure is documented below.
-  final List<BatchRuntimeInfoCurrentUsage>? currentUsages;
+  final pulumi.Input<List<BatchRuntimeInfoCurrentUsage>>? currentUsages;
   /// (Output)
   /// A URI pointing to the location of the diagnostics tarball.
-  final String? diagnosticOutputUri;
+  final pulumi.Input<String>? diagnosticOutputUri;
   /// (Output)
   /// Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
-  final Map<String, String>? endpoints;
+  final pulumi.Input<Map<String, String>>? endpoints;
   /// (Output)
   /// A URI pointing to the location of the stdout and stderr of the workload.
-  final String? outputUri;
+  final pulumi.Input<String>? outputUri;
 
   /// Creates a new [BatchRuntimeInfo].
   /// [approximateUsages] (Output)
@@ -39,8 +39,8 @@ class BatchRuntimeInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'approximateUsages': ?approximateUsages == null ? null : pulumi.Input.encodeList<BatchRuntimeInfoApproximateUsage, Map<String, dynamic>>(approximateUsages!, (value) => value.toMap()),
-      'currentUsages': ?currentUsages == null ? null : pulumi.Input.encodeList<BatchRuntimeInfoCurrentUsage, Map<String, dynamic>>(currentUsages!, (value) => value.toMap()),
+      'approximateUsages': ?pulumi.Input.mapOptionalInputValue<List<BatchRuntimeInfoApproximateUsage>, List<Map<String, dynamic>>>(approximateUsages, (value) => pulumi.Input.encodeList<BatchRuntimeInfoApproximateUsage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'currentUsages': ?pulumi.Input.mapOptionalInputValue<List<BatchRuntimeInfoCurrentUsage>, List<Map<String, dynamic>>>(currentUsages, (value) => pulumi.Input.encodeList<BatchRuntimeInfoCurrentUsage, Map<String, dynamic>>(value, (value) => value.toMap())),
       'diagnosticOutputUri': ?diagnosticOutputUri,
       'endpoints': ?endpoints,
       'outputUri': ?outputUri,
@@ -49,11 +49,11 @@ class BatchRuntimeInfo {
 
   factory BatchRuntimeInfo.fromMap(Map<String, dynamic> map) {
     return BatchRuntimeInfo(
-      approximateUsages: map['approximateUsages'] == null ? null : pulumi.Input.decodeList<BatchRuntimeInfoApproximateUsage>(map['approximateUsages'], (value) => BatchRuntimeInfoApproximateUsage.fromMap((value as Map).cast<String, dynamic>())),
-      currentUsages: map['currentUsages'] == null ? null : pulumi.Input.decodeList<BatchRuntimeInfoCurrentUsage>(map['currentUsages'], (value) => BatchRuntimeInfoCurrentUsage.fromMap((value as Map).cast<String, dynamic>())),
-      diagnosticOutputUri: map['diagnosticOutputUri'] == null ? null : map['diagnosticOutputUri'] as String,
-      endpoints: map['endpoints'] == null ? null : (map['endpoints'] as Map).cast<String, String>(),
-      outputUri: map['outputUri'] == null ? null : map['outputUri'] as String,
+      approximateUsages: map['approximateUsages'] == null ? null : (pulumi.Input.decodeList<BatchRuntimeInfoApproximateUsage>(map['approximateUsages'], (value) => BatchRuntimeInfoApproximateUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentUsages: map['currentUsages'] == null ? null : (pulumi.Input.decodeList<BatchRuntimeInfoCurrentUsage>(map['currentUsages'], (value) => BatchRuntimeInfoCurrentUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diagnosticOutputUri: map['diagnosticOutputUri'] == null ? null : (map['diagnosticOutputUri'] as String).input(),
+      endpoints: map['endpoints'] == null ? null : ((map['endpoints'] as Map).cast<String, String>()).input(),
+      outputUri: map['outputUri'] == null ? null : (map['outputUri'] as String).input(),
     );
   }
 }

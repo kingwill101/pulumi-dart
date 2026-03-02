@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The node image upgrade to be applied to the target clusters in auto upgrade.
 class AutoUpgradeNodeImageSelectionResponse {
   /// The node image upgrade type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AutoUpgradeNodeImageSelectionResponse].
   /// [type] The node image upgrade type.
@@ -20,7 +21,7 @@ class AutoUpgradeNodeImageSelectionResponse {
 
   factory AutoUpgradeNodeImageSelectionResponse.fromMap(Map<String, dynamic> map) {
     return AutoUpgradeNodeImageSelectionResponse(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

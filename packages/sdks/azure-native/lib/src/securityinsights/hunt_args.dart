@@ -44,29 +44,18 @@ class HuntArgs {
   /// [status] The status of the hunt.
   /// [workspaceName] The name of the workspace.
   HuntArgs({
-    pulumi.Output<List<String>>? attackTactics,
-    pulumi.Output<List<String>>? attackTechniques,
-    required pulumi.Output<String> description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? huntId,
-    pulumi.Output<String>? hypothesisStatus,
-    pulumi.Output<List<String>>? labels,
-    pulumi.Output<HuntOwner>? owner,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      attackTactics = pulumi.Input.asOptionalInput<List<String>>(attackTactics),
-      attackTechniques = pulumi.Input.asOptionalInput<List<String>>(attackTechniques),
-      description = pulumi.Input.asInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      huntId = pulumi.Input.asOptionalInput<String>(huntId),
-      hypothesisStatus = pulumi.Input.asOptionalInput<String>(hypothesisStatus),
-      labels = pulumi.Input.asOptionalInput<List<String>>(labels),
-      owner = pulumi.Input.asOptionalInput<HuntOwner>(owner),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.attackTactics,
+    this.attackTechniques,
+    required this.description,
+    required this.displayName,
+    this.huntId,
+    this.hypothesisStatus,
+    this.labels,
+    this.owner,
+    required this.resourceGroupName,
+    this.status,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class HuntArgs {
 
   factory HuntArgs.fromMap(Map<String, dynamic> map) {
     return HuntArgs(
-      attackTactics: map['attackTactics'] == null ? null : pulumi.Output.create<List<String>>((map['attackTactics'] as List).cast<String>()),
-      attackTechniques: map['attackTechniques'] == null ? null : pulumi.Output.create<List<String>>((map['attackTechniques'] as List).cast<String>()),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      huntId: map['huntId'] == null ? null : pulumi.Output.create<String>(map['huntId'] as String),
-      hypothesisStatus: map['hypothesisStatus'] == null ? null : pulumi.Output.create<String>(map['hypothesisStatus'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<String>>((map['labels'] as List).cast<String>()),
-      owner: map['owner'] == null ? null : pulumi.Output.create<HuntOwner>(HuntOwner.fromMap((map['owner'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      attackTactics: map['attackTactics'] == null ? null : ((map['attackTactics'] as List).cast<String>()).input(),
+      attackTechniques: map['attackTechniques'] == null ? null : ((map['attackTechniques'] as List).cast<String>()).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      huntId: map['huntId'] == null ? null : (map['huntId'] as String).input(),
+      hypothesisStatus: map['hypothesisStatus'] == null ? null : (map['hypothesisStatus'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      owner: map['owner'] == null ? null : (HuntOwner.fromMap((map['owner'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

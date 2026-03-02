@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSubscriptionDeadLetterPolicy {
   /// The name of the topic to which dead letter messages should be published.
@@ -13,7 +14,7 @@ class GetSubscriptionDeadLetterPolicy {
   /// The operation will fail if the topic does not exist.
   /// Users should ensure that there is a subscription attached to this topic
   /// since messages published to a topic with no subscriptions are lost.
-  final String deadLetterTopic;
+  final pulumi.Input<String> deadLetterTopic;
   /// The maximum number of delivery attempts for any message. The value must be
   /// between 5 and 100.
   ///
@@ -26,7 +27,7 @@ class GetSubscriptionDeadLetterPolicy {
   /// This field will be honored on a best effort basis.
   ///
   /// If this parameter is 0, a default value of 5 is used.
-  final int maxDeliveryAttempts;
+  final pulumi.Input<int> maxDeliveryAttempts;
 
   /// Creates a new [GetSubscriptionDeadLetterPolicy].
   /// [deadLetterTopic] The name of the topic to which dead letter messages should be published.
@@ -45,8 +46,8 @@ class GetSubscriptionDeadLetterPolicy {
 
   factory GetSubscriptionDeadLetterPolicy.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionDeadLetterPolicy(
-      deadLetterTopic: map['deadLetterTopic'] as String,
-      maxDeliveryAttempts: map['maxDeliveryAttempts'] as int,
+      deadLetterTopic: (map['deadLetterTopic'] as String).input(),
+      maxDeliveryAttempts: (map['maxDeliveryAttempts'] as int).input(),
     );
   }
 }

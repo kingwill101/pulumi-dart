@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Timestamps about this resource according to a particular system.
 class GoogleCloudDatacatalogV1beta1SystemTimestampsResponse {
   /// The creation time of the resource within the given system.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The expiration time of the resource within the given system. Currently only apllicable to BigQuery resources.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
   /// The last-modified time of the resource within the given system.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GoogleCloudDatacatalogV1beta1SystemTimestampsResponse].
   /// [createTime] The creation time of the resource within the given system.
@@ -30,9 +31,9 @@ class GoogleCloudDatacatalogV1beta1SystemTimestampsResponse {
 
   factory GoogleCloudDatacatalogV1beta1SystemTimestampsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1beta1SystemTimestampsResponse(
-      createTime: map['createTime'] as String,
-      expireTime: map['expireTime'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (map['createTime'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

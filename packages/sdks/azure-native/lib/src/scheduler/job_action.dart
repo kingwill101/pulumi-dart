@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_request.dart';
 import 'job_action_type.dart';
 import 'job_error_action.dart';
@@ -10,19 +11,19 @@ import 'storage_queue_message.dart';
 
 class JobAction {
   /// Gets or sets the error action.
-  final JobErrorAction? errorAction;
+  final pulumi.Input<JobErrorAction>? errorAction;
   /// Gets or sets the storage queue message.
-  final StorageQueueMessage? queueMessage;
+  final pulumi.Input<StorageQueueMessage>? queueMessage;
   /// Gets or sets the http requests.
-  final HttpRequest? request;
+  final pulumi.Input<HttpRequest>? request;
   /// Gets or sets the retry policy.
-  final RetryPolicy? retryPolicy;
+  final pulumi.Input<RetryPolicy>? retryPolicy;
   /// Gets or sets the service bus queue message.
-  final ServiceBusQueueMessage? serviceBusQueueMessage;
+  final pulumi.Input<ServiceBusQueueMessage>? serviceBusQueueMessage;
   /// Gets or sets the service bus topic message.
-  final ServiceBusTopicMessage? serviceBusTopicMessage;
+  final pulumi.Input<ServiceBusTopicMessage>? serviceBusTopicMessage;
   /// Gets or sets the job action type.
-  final JobActionType? type;
+  final pulumi.Input<JobActionType>? type;
 
   /// Creates a new [JobAction].
   /// [errorAction] Gets or sets the error action.
@@ -44,25 +45,25 @@ class JobAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorAction': ?errorAction == null ? null : errorAction!.toMap(),
-      'queueMessage': ?queueMessage == null ? null : queueMessage!.toMap(),
-      'request': ?request == null ? null : request!.toMap(),
-      'retryPolicy': ?retryPolicy == null ? null : retryPolicy!.toMap(),
-      'serviceBusQueueMessage': ?serviceBusQueueMessage == null ? null : serviceBusQueueMessage!.toMap(),
-      'serviceBusTopicMessage': ?serviceBusTopicMessage == null ? null : serviceBusTopicMessage!.toMap(),
-      'type': ?type == null ? null : type!.value,
+      'errorAction': ?pulumi.Input.mapOptionalInputValue<JobErrorAction, Map<String, dynamic>>(errorAction, (value) => value.toMap()),
+      'queueMessage': ?pulumi.Input.mapOptionalInputValue<StorageQueueMessage, Map<String, dynamic>>(queueMessage, (value) => value.toMap()),
+      'request': ?pulumi.Input.mapOptionalInputValue<HttpRequest, Map<String, dynamic>>(request, (value) => value.toMap()),
+      'retryPolicy': ?pulumi.Input.mapOptionalInputValue<RetryPolicy, Map<String, dynamic>>(retryPolicy, (value) => value.toMap()),
+      'serviceBusQueueMessage': ?pulumi.Input.mapOptionalInputValue<ServiceBusQueueMessage, Map<String, dynamic>>(serviceBusQueueMessage, (value) => value.toMap()),
+      'serviceBusTopicMessage': ?pulumi.Input.mapOptionalInputValue<ServiceBusTopicMessage, Map<String, dynamic>>(serviceBusTopicMessage, (value) => value.toMap()),
+      'type': ?pulumi.Input.mapOptionalInputValue<JobActionType, String>(type, (value) => value.value),
     };
   }
 
   factory JobAction.fromMap(Map<String, dynamic> map) {
     return JobAction(
-      errorAction: map['errorAction'] == null ? null : JobErrorAction.fromMap((map['errorAction'] as Map).cast<String, dynamic>()),
-      queueMessage: map['queueMessage'] == null ? null : StorageQueueMessage.fromMap((map['queueMessage'] as Map).cast<String, dynamic>()),
-      request: map['request'] == null ? null : HttpRequest.fromMap((map['request'] as Map).cast<String, dynamic>()),
-      retryPolicy: map['retryPolicy'] == null ? null : RetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>()),
-      serviceBusQueueMessage: map['serviceBusQueueMessage'] == null ? null : ServiceBusQueueMessage.fromMap((map['serviceBusQueueMessage'] as Map).cast<String, dynamic>()),
-      serviceBusTopicMessage: map['serviceBusTopicMessage'] == null ? null : ServiceBusTopicMessage.fromMap((map['serviceBusTopicMessage'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : JobActionType.fromValue(map['type'] as String),
+      errorAction: map['errorAction'] == null ? null : (JobErrorAction.fromMap((map['errorAction'] as Map).cast<String, dynamic>())).input(),
+      queueMessage: map['queueMessage'] == null ? null : (StorageQueueMessage.fromMap((map['queueMessage'] as Map).cast<String, dynamic>())).input(),
+      request: map['request'] == null ? null : (HttpRequest.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
+      serviceBusQueueMessage: map['serviceBusQueueMessage'] == null ? null : (ServiceBusQueueMessage.fromMap((map['serviceBusQueueMessage'] as Map).cast<String, dynamic>())).input(),
+      serviceBusTopicMessage: map['serviceBusTopicMessage'] == null ? null : (ServiceBusTopicMessage.fromMap((map['serviceBusTopicMessage'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (JobActionType.fromValue(map['type'] as String)).input(),
     );
   }
 }

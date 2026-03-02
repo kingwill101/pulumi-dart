@@ -20,13 +20,10 @@ class CxVersionArgs {
   /// [displayName] The human-readable name of the version. Limit of 64 characters.
   /// [parent] The Flow to create an Version for.
   CxVersionArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? parent,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      parent = pulumi.Input.asOptionalInput<String>(parent);
+    this.description,
+    required this.displayName,
+    this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class CxVersionArgs {
 
   factory CxVersionArgs.fromMap(Map<String, dynamic> map) {
     return CxVersionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
     );
   }
 }

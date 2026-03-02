@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'signing_job_signed_object_s3.dart';
 
 class SigningJobSignedObject {
-  final List<SigningJobSignedObjectS3>? s3s;
+  final pulumi.Input<List<SigningJobSignedObjectS3>>? s3s;
 
   /// Creates a new [SigningJobSignedObject].
   /// [s3s] Optional.
@@ -14,13 +14,13 @@ class SigningJobSignedObject {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3s': ?s3s == null ? null : pulumi.Input.encodeList<SigningJobSignedObjectS3, Map<String, dynamic>>(s3s!, (value) => value.toMap()),
+      's3s': ?pulumi.Input.mapOptionalInputValue<List<SigningJobSignedObjectS3>, List<Map<String, dynamic>>>(s3s, (value) => pulumi.Input.encodeList<SigningJobSignedObjectS3, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SigningJobSignedObject.fromMap(Map<String, dynamic> map) {
     return SigningJobSignedObject(
-      s3s: map['s3s'] == null ? null : pulumi.Input.decodeList<SigningJobSignedObjectS3>(map['s3s'], (value) => SigningJobSignedObjectS3.fromMap((value as Map).cast<String, dynamic>())),
+      s3s: map['s3s'] == null ? null : (pulumi.Input.decodeList<SigningJobSignedObjectS3>(map['s3s'], (value) => SigningJobSignedObjectS3.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

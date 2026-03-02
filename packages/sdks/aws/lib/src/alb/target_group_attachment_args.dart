@@ -30,19 +30,13 @@ class TargetGroupAttachmentArgs {
   /// [targetGroupArn] The ARN of the target group with which to register targets.
   /// [targetId] The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is `ip`, specify an IP address. If the target type is `lambda`, specify the Lambda function ARN. If the target type is `alb`, specify the ALB ARN.
   TargetGroupAttachmentArgs({
-    pulumi.Output<String>? availabilityZone,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? quicServerId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> targetGroupArn,
-    required pulumi.Output<String> targetId,
-  }) :
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      quicServerId = pulumi.Input.asOptionalInput<String>(quicServerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetGroupArn = pulumi.Input.asInput<String>(targetGroupArn),
-      targetId = pulumi.Input.asInput<String>(targetId);
+    this.availabilityZone,
+    this.port,
+    this.quicServerId,
+    this.region,
+    required this.targetGroupArn,
+    required this.targetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class TargetGroupAttachmentArgs {
 
   factory TargetGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TargetGroupAttachmentArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      quicServerId: map['quicServerId'] == null ? null : pulumi.Output.create<String>(map['quicServerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetGroupArn: pulumi.Output.create<String>(map['targetGroupArn'] as String),
-      targetId: pulumi.Output.create<String>(map['targetId'] as String),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      quicServerId: map['quicServerId'] == null ? null : (map['quicServerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetGroupArn: (map['targetGroupArn'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
     );
   }
 }

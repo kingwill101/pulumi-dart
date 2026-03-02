@@ -16,11 +16,9 @@ class GetSshKeysArgs {
   /// [id] The ID of this resource.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   GetSshKeysArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? withSelector,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector);
+    this.id,
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSshKeysArgs {
 
   factory GetSshKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetSshKeysArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
     );
   }
 }

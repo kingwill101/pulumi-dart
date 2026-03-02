@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Task properties of the software update configuration.
 class TaskPropertiesResponse {
   /// Gets or sets the parameters of the task.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
   /// Gets or sets the name of the runbook.
-  final String? source;
+  final pulumi.Input<String>? source;
 
   /// Creates a new [TaskPropertiesResponse].
   /// [parameters] Gets or sets the parameters of the task.
@@ -25,8 +26,8 @@ class TaskPropertiesResponse {
 
   factory TaskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TaskPropertiesResponse(
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      source: map['source'] == null ? null : map['source'] as String,
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

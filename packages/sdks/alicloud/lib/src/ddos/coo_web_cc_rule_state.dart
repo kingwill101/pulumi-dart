@@ -19,13 +19,10 @@ class CooWebCcRuleState {
   /// [name] Rule name.
   /// [ruleDetail] Rule details.   See `rule_detail` below.
   CooWebCcRuleState({
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? name,
-    pulumi.Output<CooWebCcRuleRuleDetail>? ruleDetail,
-  }) :
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ruleDetail = pulumi.Input.asOptionalInput<CooWebCcRuleRuleDetail>(ruleDetail);
+    this.domain,
+    this.name,
+    this.ruleDetail,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class CooWebCcRuleState {
 
   factory CooWebCcRuleState.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleState(
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ruleDetail: map['ruleDetail'] == null ? null : pulumi.Output.create<CooWebCcRuleRuleDetail>(CooWebCcRuleRuleDetail.fromMap((map['ruleDetail'] as Map).cast<String, dynamic>())),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ruleDetail: map['ruleDetail'] == null ? null : (CooWebCcRuleRuleDetail.fromMap((map['ruleDetail'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

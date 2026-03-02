@@ -30,23 +30,15 @@ class ReplicationSubnetGroupState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] The ID of the VPC the subnet group is in.
   ReplicationSubnetGroupState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? replicationSubnetGroupArn,
-    pulumi.Output<String>? replicationSubnetGroupDescription,
-    pulumi.Output<String>? replicationSubnetGroupId,
-    pulumi.Output<List<String>>? subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vpcId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationSubnetGroupArn = pulumi.Input.asOptionalInput<String>(replicationSubnetGroupArn),
-      replicationSubnetGroupDescription = pulumi.Input.asOptionalInput<String>(replicationSubnetGroupDescription),
-      replicationSubnetGroupId = pulumi.Input.asOptionalInput<String>(replicationSubnetGroupId),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.region,
+    this.replicationSubnetGroupArn,
+    this.replicationSubnetGroupDescription,
+    this.replicationSubnetGroupId,
+    this.subnetIds,
+    this.tags,
+    this.tagsAll,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,14 +55,14 @@ class ReplicationSubnetGroupState {
 
   factory ReplicationSubnetGroupState.fromMap(Map<String, dynamic> map) {
     return ReplicationSubnetGroupState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicationSubnetGroupArn: map['replicationSubnetGroupArn'] == null ? null : pulumi.Output.create<String>(map['replicationSubnetGroupArn'] as String),
-      replicationSubnetGroupDescription: map['replicationSubnetGroupDescription'] == null ? null : pulumi.Output.create<String>(map['replicationSubnetGroupDescription'] as String),
-      replicationSubnetGroupId: map['replicationSubnetGroupId'] == null ? null : pulumi.Output.create<String>(map['replicationSubnetGroupId'] as String),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicationSubnetGroupArn: map['replicationSubnetGroupArn'] == null ? null : (map['replicationSubnetGroupArn'] as String).input(),
+      replicationSubnetGroupDescription: map['replicationSubnetGroupDescription'] == null ? null : (map['replicationSubnetGroupDescription'] as String).input(),
+      replicationSubnetGroupId: map['replicationSubnetGroupId'] == null ? null : (map['replicationSubnetGroupId'] as String).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

@@ -33,19 +33,13 @@ class DnsThreatDetectorArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [threatDetectorProvider] DNS Threat Detection provider. The only supported value is `INFOBLOX`.
   DnsThreatDetectorArgs({
-    pulumi.Output<List<String>>? excludedNetworks,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? threatDetectorProvider,
-  }) :
-      excludedNetworks = pulumi.Input.asOptionalInput<List<String>>(excludedNetworks),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      threatDetectorProvider = pulumi.Input.asOptionalInput<String>(threatDetectorProvider);
+    this.excludedNetworks,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.threatDetectorProvider,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class DnsThreatDetectorArgs {
 
   factory DnsThreatDetectorArgs.fromMap(Map<String, dynamic> map) {
     return DnsThreatDetectorArgs(
-      excludedNetworks: map['excludedNetworks'] == null ? null : pulumi.Output.create<List<String>>((map['excludedNetworks'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      threatDetectorProvider: map['threatDetectorProvider'] == null ? null : pulumi.Output.create<String>(map['threatDetectorProvider'] as String),
+      excludedNetworks: map['excludedNetworks'] == null ? null : ((map['excludedNetworks'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      threatDetectorProvider: map['threatDetectorProvider'] == null ? null : (map['threatDetectorProvider'] as String).input(),
     );
   }
 }

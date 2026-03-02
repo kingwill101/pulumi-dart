@@ -32,21 +32,14 @@ class ConnectionArgs {
   /// [name] Gets or sets the name of the connection.
   /// [resourceGroupName] Name of an Azure Resource group.
   ConnectionArgs({
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<String>? connectionName,
-    required pulumi.Output<ConnectionTypeAssociationProperty> connectionType,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? fieldDefinitionValues,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      connectionName = pulumi.Input.asOptionalInput<String>(connectionName),
-      connectionType = pulumi.Input.asInput<ConnectionTypeAssociationProperty>(connectionType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fieldDefinitionValues = pulumi.Input.asOptionalInput<Map<String, String>>(fieldDefinitionValues),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    this.connectionName,
+    required this.connectionType,
+    this.description,
+    this.fieldDefinitionValues,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      connectionName: map['connectionName'] == null ? null : pulumi.Output.create<String>(map['connectionName'] as String),
-      connectionType: pulumi.Output.create<ConnectionTypeAssociationProperty>(ConnectionTypeAssociationProperty.fromMap((map['connectionType'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fieldDefinitionValues: map['fieldDefinitionValues'] == null ? null : pulumi.Output.create<Map<String, String>>((map['fieldDefinitionValues'] as Map).cast<String, String>()),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      connectionType: (ConnectionTypeAssociationProperty.fromMap((map['connectionType'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fieldDefinitionValues: map['fieldDefinitionValues'] == null ? null : ((map['fieldDefinitionValues'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

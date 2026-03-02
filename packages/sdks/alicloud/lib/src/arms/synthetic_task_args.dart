@@ -51,31 +51,19 @@ class SyntheticTaskArgs {
   /// [tags] The list of tags.
   /// [taskType] The type of synthetic task.
   SyntheticTaskArgs({
-    pulumi.Output<List<SyntheticTaskAvailableAssertion>>? availableAssertions,
-    pulumi.Output<SyntheticTaskCommonSetting>? commonSetting,
-    pulumi.Output<SyntheticTaskCustomPeriod>? customPeriod,
-    required pulumi.Output<String> frequency,
-    required pulumi.Output<int> monitorCategory,
-    required pulumi.Output<SyntheticTaskMonitorConf> monitorConf,
-    required pulumi.Output<List<SyntheticTaskMonitor>> monitors,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> syntheticTaskName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<int> taskType,
-  }) :
-      availableAssertions = pulumi.Input.asOptionalInput<List<SyntheticTaskAvailableAssertion>>(availableAssertions),
-      commonSetting = pulumi.Input.asOptionalInput<SyntheticTaskCommonSetting>(commonSetting),
-      customPeriod = pulumi.Input.asOptionalInput<SyntheticTaskCustomPeriod>(customPeriod),
-      frequency = pulumi.Input.asInput<String>(frequency),
-      monitorCategory = pulumi.Input.asInput<int>(monitorCategory),
-      monitorConf = pulumi.Input.asInput<SyntheticTaskMonitorConf>(monitorConf),
-      monitors = pulumi.Input.asInput<List<SyntheticTaskMonitor>>(monitors),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      syntheticTaskName = pulumi.Input.asInput<String>(syntheticTaskName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      taskType = pulumi.Input.asInput<int>(taskType);
+    this.availableAssertions,
+    this.commonSetting,
+    this.customPeriod,
+    required this.frequency,
+    required this.monitorCategory,
+    required this.monitorConf,
+    required this.monitors,
+    this.resourceGroupId,
+    this.status,
+    required this.syntheticTaskName,
+    this.tags,
+    required this.taskType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,18 +84,18 @@ class SyntheticTaskArgs {
 
   factory SyntheticTaskArgs.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskArgs(
-      availableAssertions: map['availableAssertions'] == null ? null : pulumi.Output.create<List<SyntheticTaskAvailableAssertion>>(pulumi.Input.decodeList<SyntheticTaskAvailableAssertion>(map['availableAssertions'], (value) => SyntheticTaskAvailableAssertion.fromMap((value as Map).cast<String, dynamic>()))),
-      commonSetting: map['commonSetting'] == null ? null : pulumi.Output.create<SyntheticTaskCommonSetting>(SyntheticTaskCommonSetting.fromMap((map['commonSetting'] as Map).cast<String, dynamic>())),
-      customPeriod: map['customPeriod'] == null ? null : pulumi.Output.create<SyntheticTaskCustomPeriod>(SyntheticTaskCustomPeriod.fromMap((map['customPeriod'] as Map).cast<String, dynamic>())),
-      frequency: pulumi.Output.create<String>(map['frequency'] as String),
-      monitorCategory: pulumi.Output.create<int>(map['monitorCategory'] as int),
-      monitorConf: pulumi.Output.create<SyntheticTaskMonitorConf>(SyntheticTaskMonitorConf.fromMap((map['monitorConf'] as Map).cast<String, dynamic>())),
-      monitors: pulumi.Output.create<List<SyntheticTaskMonitor>>(pulumi.Input.decodeList<SyntheticTaskMonitor>(map['monitors'], (value) => SyntheticTaskMonitor.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      syntheticTaskName: pulumi.Output.create<String>(map['syntheticTaskName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      taskType: pulumi.Output.create<int>(map['taskType'] as int),
+      availableAssertions: map['availableAssertions'] == null ? null : (pulumi.Input.decodeList<SyntheticTaskAvailableAssertion>(map['availableAssertions'], (value) => SyntheticTaskAvailableAssertion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commonSetting: map['commonSetting'] == null ? null : (SyntheticTaskCommonSetting.fromMap((map['commonSetting'] as Map).cast<String, dynamic>())).input(),
+      customPeriod: map['customPeriod'] == null ? null : (SyntheticTaskCustomPeriod.fromMap((map['customPeriod'] as Map).cast<String, dynamic>())).input(),
+      frequency: (map['frequency'] as String).input(),
+      monitorCategory: (map['monitorCategory'] as int).input(),
+      monitorConf: (SyntheticTaskMonitorConf.fromMap((map['monitorConf'] as Map).cast<String, dynamic>())).input(),
+      monitors: (pulumi.Input.decodeList<SyntheticTaskMonitor>(map['monitors'], (value) => SyntheticTaskMonitor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      syntheticTaskName: (map['syntheticTaskName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      taskType: (map['taskType'] as int).input(),
     );
   }
 }

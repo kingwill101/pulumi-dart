@@ -16,11 +16,9 @@ class UserGroupMembershipArgs {
   /// [groups] A list of IAM Groups to add the user to
   /// [user] The name of the IAM User to add to groups
   UserGroupMembershipArgs({
-    required pulumi.Output<List<String>> groups,
-    required pulumi.Output<String> user,
-  }) :
-      groups = pulumi.Input.asInput<List<String>>(groups),
-      user = pulumi.Input.asInput<String>(user);
+    required this.groups,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class UserGroupMembershipArgs {
 
   factory UserGroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupMembershipArgs(
-      groups: pulumi.Output.create<List<String>>((map['groups'] as List).cast<String>()),
-      user: pulumi.Output.create<String>(map['user'] as String),
+      groups: ((map['groups'] as List).cast<String>()).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

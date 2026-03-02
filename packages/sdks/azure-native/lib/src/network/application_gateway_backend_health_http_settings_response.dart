@@ -7,9 +7,9 @@ import 'application_gateway_backend_http_settings_response.dart';
 /// Application gateway BackendHealthHttp settings.
 class ApplicationGatewayBackendHealthHttpSettingsResponse {
   /// Reference to an ApplicationGatewayBackendHttpSettings resource.
-  final ApplicationGatewayBackendHttpSettingsResponse? backendHttpSettings;
+  final pulumi.Input<ApplicationGatewayBackendHttpSettingsResponse>? backendHttpSettings;
   /// List of ApplicationGatewayBackendHealthServer resources.
-  final List<ApplicationGatewayBackendHealthServerResponse>? servers;
+  final pulumi.Input<List<ApplicationGatewayBackendHealthServerResponse>>? servers;
 
   /// Creates a new [ApplicationGatewayBackendHealthHttpSettingsResponse].
   /// [backendHttpSettings] Reference to an ApplicationGatewayBackendHttpSettings resource.
@@ -21,15 +21,15 @@ class ApplicationGatewayBackendHealthHttpSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendHttpSettings': ?backendHttpSettings == null ? null : backendHttpSettings!.toMap(),
-      'servers': ?servers == null ? null : pulumi.Input.encodeList<ApplicationGatewayBackendHealthServerResponse, Map<String, dynamic>>(servers!, (value) => value.toMap()),
+      'backendHttpSettings': ?pulumi.Input.mapOptionalInputValue<ApplicationGatewayBackendHttpSettingsResponse, Map<String, dynamic>>(backendHttpSettings, (value) => value.toMap()),
+      'servers': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayBackendHealthServerResponse>, List<Map<String, dynamic>>>(servers, (value) => pulumi.Input.encodeList<ApplicationGatewayBackendHealthServerResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ApplicationGatewayBackendHealthHttpSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendHealthHttpSettingsResponse(
-      backendHttpSettings: map['backendHttpSettings'] == null ? null : ApplicationGatewayBackendHttpSettingsResponse.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>()),
-      servers: map['servers'] == null ? null : pulumi.Input.decodeList<ApplicationGatewayBackendHealthServerResponse>(map['servers'], (value) => ApplicationGatewayBackendHealthServerResponse.fromMap((value as Map).cast<String, dynamic>())),
+      backendHttpSettings: map['backendHttpSettings'] == null ? null : (ApplicationGatewayBackendHttpSettingsResponse.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>())).input(),
+      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendHealthServerResponse>(map['servers'], (value) => ApplicationGatewayBackendHealthServerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

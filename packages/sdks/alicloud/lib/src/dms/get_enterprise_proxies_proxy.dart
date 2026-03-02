@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnterpriseProxiesProxy {
   /// The ID of the user who enabled the secure access proxy feature.
-  final String creatorId;
+  final pulumi.Input<String> creatorId;
   /// The nickname of the user who enabled the secure access proxy feature.
-  final String creatorName;
+  final pulumi.Input<String> creatorName;
   /// The port that was used by HTTPS clients to connect to the database instance.
-  final int httpsPort;
+  final pulumi.Input<int> httpsPort;
   /// The ID of the Proxy.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the database instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Indicates whether the internal endpoint is enabled. Default value: true.
-  final bool privateEnable;
+  final pulumi.Input<bool> privateEnable;
   /// The internal endpoint.
-  final String privateHost;
+  final pulumi.Input<String> privateHost;
   /// Database protocol connection port number.
-  final int protocolPort;
+  final pulumi.Input<int> protocolPort;
   /// Database protocol type, for example, MYSQL.
-  final String protocolType;
+  final pulumi.Input<String> protocolType;
   /// The ID of the secure access proxy.
-  final String proxyId;
+  final pulumi.Input<String> proxyId;
   /// Indicates whether the public endpoint is enabled.
-  final bool publicEnable;
+  final pulumi.Input<bool> publicEnable;
   /// The public endpoint. A public endpoint is returned no matter whether the public endpoint is enabled or disabled. **Note:** When the public network address is in the **true** state, the returned public network address is a valid address with DNS resolution capability. When the public address is in the **false** state, the returned Public address is an invalid address without DNS resolution.
-  final String publicHost;
+  final pulumi.Input<String> publicHost;
 
   /// Creates a new [GetEnterpriseProxiesProxy].
   /// [creatorId] The ID of the user who enabled the secure access proxy feature.
@@ -74,18 +75,18 @@ class GetEnterpriseProxiesProxy {
 
   factory GetEnterpriseProxiesProxy.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseProxiesProxy(
-      creatorId: map['creatorId'] as String,
-      creatorName: map['creatorName'] as String,
-      httpsPort: map['httpsPort'] as int,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      privateEnable: map['privateEnable'] as bool,
-      privateHost: map['privateHost'] as String,
-      protocolPort: map['protocolPort'] as int,
-      protocolType: map['protocolType'] as String,
-      proxyId: map['proxyId'] as String,
-      publicEnable: map['publicEnable'] as bool,
-      publicHost: map['publicHost'] as String,
+      creatorId: (map['creatorId'] as String).input(),
+      creatorName: (map['creatorName'] as String).input(),
+      httpsPort: (map['httpsPort'] as int).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      privateEnable: (map['privateEnable'] as bool).input(),
+      privateHost: (map['privateHost'] as String).input(),
+      protocolPort: (map['protocolPort'] as int).input(),
+      protocolType: (map['protocolType'] as String).input(),
+      proxyId: (map['proxyId'] as String).input(),
+      publicEnable: (map['publicEnable'] as bool).input(),
+      publicHost: (map['publicHost'] as String).input(),
     );
   }
 }

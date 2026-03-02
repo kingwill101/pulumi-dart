@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolSoftwareTokenMfaConfiguration {
   /// Boolean whether to enable software token Multi-Factor (MFA) tokens, such as Time-based One-Time Password (TOTP). To disable software token MFA When `sms_configuration` is not present, the `mfa_configuration` argument must be set to `OFF` and the `software_token_mfa_configuration` configuration block must be fully removed.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [UserPoolSoftwareTokenMfaConfiguration].
   /// [enabled] Boolean whether to enable software token Multi-Factor (MFA) tokens, such as Time-based One-Time Password (TOTP). To disable software token MFA When `sms_configuration` is not present, the `mfa_configuration` argument must be set to `OFF` and the `software_token_mfa_configuration` configuration block must be fully removed.
@@ -19,7 +20,7 @@ class UserPoolSoftwareTokenMfaConfiguration {
 
   factory UserPoolSoftwareTokenMfaConfiguration.fromMap(Map<String, dynamic> map) {
     return UserPoolSoftwareTokenMfaConfiguration(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

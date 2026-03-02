@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicySetDefinitionPolicyDefinitionReference {
   /// The parameter values for the referenced policy rule. This field is a JSON object.
-  final String parameterValues;
+  final pulumi.Input<String> parameterValues;
   /// The mapping of the parameter values for the referenced policy rule. The keys are the parameter names.
-  final Map<String, String> parameters;
+  final pulumi.Input<Map<String, String>> parameters;
   /// The ID of the policy definition or policy set definition that is included in this policy set definition.
-  final String policyDefinitionId;
+  final pulumi.Input<String> policyDefinitionId;
   /// The list of names of the policy definition groups that this policy definition reference belongs to.
-  final List<String> policyGroupNames;
+  final pulumi.Input<List<String>> policyGroupNames;
   /// The unique ID within this policy set definition for this policy definition reference.
-  final String referenceId;
+  final pulumi.Input<String> referenceId;
 
   /// Creates a new [GetPolicySetDefinitionPolicyDefinitionReference].
   /// [parameterValues] The parameter values for the referenced policy rule. This field is a JSON object.
@@ -39,11 +40,11 @@ class GetPolicySetDefinitionPolicyDefinitionReference {
 
   factory GetPolicySetDefinitionPolicyDefinitionReference.fromMap(Map<String, dynamic> map) {
     return GetPolicySetDefinitionPolicyDefinitionReference(
-      parameterValues: map['parameterValues'] as String,
-      parameters: (map['parameters'] as Map).cast<String, String>(),
-      policyDefinitionId: map['policyDefinitionId'] as String,
-      policyGroupNames: (map['policyGroupNames'] as List).cast<String>(),
-      referenceId: map['referenceId'] as String,
+      parameterValues: (map['parameterValues'] as String).input(),
+      parameters: ((map['parameters'] as Map).cast<String, String>()).input(),
+      policyDefinitionId: (map['policyDefinitionId'] as String).input(),
+      policyGroupNames: ((map['policyGroupNames'] as List).cast<String>()).input(),
+      referenceId: (map['referenceId'] as String).input(),
     );
   }
 }

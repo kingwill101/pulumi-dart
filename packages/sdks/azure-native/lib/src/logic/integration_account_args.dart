@@ -33,21 +33,14 @@ class IntegrationAccountArgs {
   /// [state] The workflow state.
   /// [tags] The resource tags.
   IntegrationAccountArgs({
-    pulumi.Output<String>? integrationAccountName,
-    pulumi.Output<ResourceReference>? integrationServiceEnvironment,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<IntegrationAccountSku>? sku,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      integrationAccountName = pulumi.Input.asOptionalInput<String>(integrationAccountName),
-      integrationServiceEnvironment = pulumi.Input.asOptionalInput<ResourceReference>(integrationServiceEnvironment),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<IntegrationAccountSku>(sku),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.integrationAccountName,
+    this.integrationServiceEnvironment,
+    this.location,
+    required this.resourceGroupName,
+    this.sku,
+    this.state,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class IntegrationAccountArgs {
 
   factory IntegrationAccountArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountArgs(
-      integrationAccountName: map['integrationAccountName'] == null ? null : pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : pulumi.Output.create<ResourceReference>(ResourceReference.fromMap((map['integrationServiceEnvironment'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<IntegrationAccountSku>(IntegrationAccountSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName'] as String).input(),
+      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : (ResourceReference.fromMap((map['integrationServiceEnvironment'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (IntegrationAccountSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

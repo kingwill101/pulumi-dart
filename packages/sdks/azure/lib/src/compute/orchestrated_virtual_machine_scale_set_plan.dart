@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrchestratedVirtualMachineScaleSetPlan {
   /// Specifies the name of the image from the marketplace. Changing this forces a new resource to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the product of the image from the marketplace. Changing this forces a new resource to be created.
-  final String product;
+  final pulumi.Input<String> product;
   /// Specifies the publisher of the image. Changing this forces a new resource to be created.
-  final String publisher;
+  final pulumi.Input<String> publisher;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetPlan].
   /// [name] Specifies the name of the image from the marketplace. Changing this forces a new resource to be created.
@@ -29,9 +30,9 @@ class OrchestratedVirtualMachineScaleSetPlan {
 
   factory OrchestratedVirtualMachineScaleSetPlan.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetPlan(
-      name: map['name'] as String,
-      product: map['product'] as String,
-      publisher: map['publisher'] as String,
+      name: (map['name'] as String).input(),
+      product: (map['product'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountAvailabilitiesAvailability {
   /// A set of services which are available for the given region.
-  final List<String> availables;
+  final pulumi.Input<List<String>> availables;
   /// The region this availability entry refers to.
-  final String region;
+  final pulumi.Input<String> region;
   /// A set of services that are unavailable for the given region.
-  final List<String> unavailables;
+  final pulumi.Input<List<String>> unavailables;
 
   /// Creates a new [GetAccountAvailabilitiesAvailability].
   /// [availables] A set of services which are available for the given region.
@@ -29,9 +30,9 @@ class GetAccountAvailabilitiesAvailability {
 
   factory GetAccountAvailabilitiesAvailability.fromMap(Map<String, dynamic> map) {
     return GetAccountAvailabilitiesAvailability(
-      availables: (map['availables'] as List).cast<String>(),
-      region: map['region'] as String,
-      unavailables: (map['unavailables'] as List).cast<String>(),
+      availables: ((map['availables'] as List).cast<String>()).input(),
+      region: (map['region'] as String).input(),
+      unavailables: ((map['unavailables'] as List).cast<String>()).input(),
     );
   }
 }

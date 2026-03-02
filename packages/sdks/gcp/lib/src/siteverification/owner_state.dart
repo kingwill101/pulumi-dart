@@ -16,11 +16,9 @@ class OwnerState {
   /// [email] The email of the user to be added as an owner.
   /// [webResourceId] The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
   OwnerState({
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? webResourceId,
-  }) :
-      email = pulumi.Input.asOptionalInput<String>(email),
-      webResourceId = pulumi.Input.asOptionalInput<String>(webResourceId);
+    this.email,
+    this.webResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class OwnerState {
 
   factory OwnerState.fromMap(Map<String, dynamic> map) {
     return OwnerState(
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      webResourceId: map['webResourceId'] == null ? null : pulumi.Output.create<String>(map['webResourceId'] as String),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      webResourceId: map['webResourceId'] == null ? null : (map['webResourceId'] as String).input(),
     );
   }
 }

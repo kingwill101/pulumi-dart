@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UriFolderJobOutput {
   /// Description for the output.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Enum to determine the Job Output Type.
   /// Expected value is 'uri_folder'.
-  final String jobOutputType;
+  final pulumi.Input<String> jobOutputType;
   /// Output Asset Delivery Mode.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Output Asset URI.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [UriFolderJobOutput].
   /// [description] Description for the output.
@@ -35,10 +36,10 @@ class UriFolderJobOutput {
 
   factory UriFolderJobOutput.fromMap(Map<String, dynamic> map) {
     return UriFolderJobOutput(
-      description: map['description'] == null ? null : map['description'] as String,
-      jobOutputType: map['jobOutputType'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      jobOutputType: (map['jobOutputType'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

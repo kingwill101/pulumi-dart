@@ -25,17 +25,12 @@ class WorkspaceNotificationRecipientUserArgs {
   /// [userId] User identifier. Must be unique in the current API Management service instance.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   WorkspaceNotificationRecipientUserArgs({
-    required pulumi.Output<String> notificationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? userId,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      notificationName = pulumi.Input.asInput<String>(notificationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      userId = pulumi.Input.asOptionalInput<String>(userId),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.notificationName,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.userId,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class WorkspaceNotificationRecipientUserArgs {
 
   factory WorkspaceNotificationRecipientUserArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceNotificationRecipientUserArgs(
-      notificationName: pulumi.Output.create<String>(map['notificationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      notificationName: (map['notificationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

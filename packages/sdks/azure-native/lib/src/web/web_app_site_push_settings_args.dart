@@ -34,21 +34,14 @@ class WebAppSitePushSettingsArgs {
   /// [tagWhitelistJson] Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
   /// [tagsRequiringAuth] Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
   WebAppSitePushSettingsArgs({
-    pulumi.Output<String>? dynamicTagsJson,
-    required pulumi.Output<bool> isPushEnabled,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? tagWhitelistJson,
-    pulumi.Output<String>? tagsRequiringAuth,
-  }) :
-      dynamicTagsJson = pulumi.Input.asOptionalInput<String>(dynamicTagsJson),
-      isPushEnabled = pulumi.Input.asInput<bool>(isPushEnabled),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tagWhitelistJson = pulumi.Input.asOptionalInput<String>(tagWhitelistJson),
-      tagsRequiringAuth = pulumi.Input.asOptionalInput<String>(tagsRequiringAuth);
+    this.dynamicTagsJson,
+    required this.isPushEnabled,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+    this.tagWhitelistJson,
+    this.tagsRequiringAuth,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class WebAppSitePushSettingsArgs {
 
   factory WebAppSitePushSettingsArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSitePushSettingsArgs(
-      dynamicTagsJson: map['dynamicTagsJson'] == null ? null : pulumi.Output.create<String>(map['dynamicTagsJson'] as String),
-      isPushEnabled: pulumi.Output.create<bool>(map['isPushEnabled'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tagWhitelistJson: map['tagWhitelistJson'] == null ? null : pulumi.Output.create<String>(map['tagWhitelistJson'] as String),
-      tagsRequiringAuth: map['tagsRequiringAuth'] == null ? null : pulumi.Output.create<String>(map['tagsRequiringAuth'] as String),
+      dynamicTagsJson: map['dynamicTagsJson'] == null ? null : (map['dynamicTagsJson'] as String).input(),
+      isPushEnabled: (map['isPushEnabled'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tagWhitelistJson: map['tagWhitelistJson'] == null ? null : (map['tagWhitelistJson'] as String).input(),
+      tagsRequiringAuth: map['tagsRequiringAuth'] == null ? null : (map['tagsRequiringAuth'] as String).input(),
     );
   }
 }

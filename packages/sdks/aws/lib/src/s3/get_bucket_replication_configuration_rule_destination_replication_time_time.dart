@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime {
-  final int minutes;
+  final pulumi.Input<int> minutes;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime].
   /// [minutes] Required.
@@ -18,7 +19,7 @@ class GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime {
 
   factory GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime(
-      minutes: map['minutes'] as int,
+      minutes: (map['minutes'] as int).input(),
     );
   }
 }

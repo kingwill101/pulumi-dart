@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryAssociationRepositoryBitbucket {
   /// The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection.
-  final String connectionArn;
+  final pulumi.Input<String> connectionArn;
   /// The name of the third party source repository.
-  final String name;
+  final pulumi.Input<String> name;
   /// The username for the account that owns the repository.
-  final String owner;
+  final pulumi.Input<String> owner;
 
   /// Creates a new [RepositoryAssociationRepositoryBitbucket].
   /// [connectionArn] The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection.
@@ -29,9 +30,9 @@ class RepositoryAssociationRepositoryBitbucket {
 
   factory RepositoryAssociationRepositoryBitbucket.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationRepositoryBitbucket(
-      connectionArn: map['connectionArn'] as String,
-      name: map['name'] as String,
-      owner: map['owner'] as String,
+      connectionArn: (map['connectionArn'] as String).input(),
+      name: (map['name'] as String).input(),
+      owner: (map['owner'] as String).input(),
     );
   }
 }

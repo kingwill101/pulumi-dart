@@ -19,15 +19,11 @@ class KinesisStreamingDestinationState {
   /// [streamArn] The ARN for a Kinesis data stream. This must exist in the same account and region as the DynamoDB table.
   /// [tableName] The name of the DynamoDB table. There can only be one Kinesis streaming destination for a given DynamoDB table.
   KinesisStreamingDestinationState({
-    pulumi.Output<String>? approximateCreationDateTimePrecision,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? streamArn,
-    pulumi.Output<String>? tableName,
-  }) :
-      approximateCreationDateTimePrecision = pulumi.Input.asOptionalInput<String>(approximateCreationDateTimePrecision),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      streamArn = pulumi.Input.asOptionalInput<String>(streamArn),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName);
+    this.approximateCreationDateTimePrecision,
+    this.region,
+    this.streamArn,
+    this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class KinesisStreamingDestinationState {
 
   factory KinesisStreamingDestinationState.fromMap(Map<String, dynamic> map) {
     return KinesisStreamingDestinationState(
-      approximateCreationDateTimePrecision: map['approximateCreationDateTimePrecision'] == null ? null : pulumi.Output.create<String>(map['approximateCreationDateTimePrecision'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      streamArn: map['streamArn'] == null ? null : pulumi.Output.create<String>(map['streamArn'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
+      approximateCreationDateTimePrecision: map['approximateCreationDateTimePrecision'] == null ? null : (map['approximateCreationDateTimePrecision'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      streamArn: map['streamArn'] == null ? null : (map['streamArn'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

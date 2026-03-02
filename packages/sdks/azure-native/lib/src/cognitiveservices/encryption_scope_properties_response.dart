@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_vault_properties_response.dart';
 
 /// Properties to EncryptionScope
 class EncryptionScopePropertiesResponse {
   /// Enumerates the possible value of keySource for Encryption
-  final String? keySource;
+  final pulumi.Input<String>? keySource;
   /// Properties of KeyVault
-  final KeyVaultPropertiesResponse? keyVaultProperties;
+  final pulumi.Input<KeyVaultPropertiesResponse>? keyVaultProperties;
   /// Gets the status of the resource at the time the operation was called.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The encryptionScope state.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [EncryptionScopePropertiesResponse].
   /// [keySource] Enumerates the possible value of keySource for Encryption
@@ -28,7 +29,7 @@ class EncryptionScopePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keySource': ?keySource,
-      'keyVaultProperties': ?keyVaultProperties == null ? null : keyVaultProperties!.toMap(),
+      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<KeyVaultPropertiesResponse, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'state': ?state,
     };
@@ -36,10 +37,10 @@ class EncryptionScopePropertiesResponse {
 
   factory EncryptionScopePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionScopePropertiesResponse(
-      keySource: map['keySource'] == null ? null : map['keySource'] as String,
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : KeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      keySource: map['keySource'] == null ? null : (map['keySource'] as String).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

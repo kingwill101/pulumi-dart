@@ -26,17 +26,12 @@ class PartitionIndexArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] Name of the table. For Hive compatibility, this must be entirely lowercase.
   PartitionIndexArgs({
-    pulumi.Output<String>? catalogId,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<PartitionIndexPartitionIndex> partitionIndex,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> tableName,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      partitionIndex = pulumi.Input.asInput<PartitionIndexPartitionIndex>(partitionIndex),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    this.catalogId,
+    required this.databaseName,
+    required this.partitionIndex,
+    this.region,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PartitionIndexArgs {
 
   factory PartitionIndexArgs.fromMap(Map<String, dynamic> map) {
     return PartitionIndexArgs(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      partitionIndex: pulumi.Output.create<PartitionIndexPartitionIndex>(PartitionIndexPartitionIndex.fromMap((map['partitionIndex'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      partitionIndex: (PartitionIndexPartitionIndex.fromMap((map['partitionIndex'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

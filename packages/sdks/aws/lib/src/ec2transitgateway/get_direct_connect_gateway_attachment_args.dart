@@ -26,17 +26,12 @@ class GetDirectConnectGatewayAttachmentArgs {
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired Transit Gateway Direct Connect Gateway Attachment.
   /// [transitGatewayId] Identifier of the EC2 Transit Gateway.
   GetDirectConnectGatewayAttachmentArgs({
-    pulumi.Output<String>? dxGatewayId,
-    pulumi.Output<List<GetDirectConnectGatewayAttachmentFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitGatewayId,
-  }) :
-      dxGatewayId = pulumi.Input.asOptionalInput<String>(dxGatewayId),
-      filters = pulumi.Input.asOptionalInput<List<GetDirectConnectGatewayAttachmentFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayId = pulumi.Input.asOptionalInput<String>(transitGatewayId);
+    this.dxGatewayId,
+    this.filters,
+    this.region,
+    this.tags,
+    this.transitGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GetDirectConnectGatewayAttachmentArgs {
 
   factory GetDirectConnectGatewayAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetDirectConnectGatewayAttachmentArgs(
-      dxGatewayId: map['dxGatewayId'] == null ? null : pulumi.Output.create<String>(map['dxGatewayId'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetDirectConnectGatewayAttachmentFilter>>(pulumi.Input.decodeList<GetDirectConnectGatewayAttachmentFilter>(map['filters'], (value) => GetDirectConnectGatewayAttachmentFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayId: map['transitGatewayId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayId'] as String),
+      dxGatewayId: map['dxGatewayId'] == null ? null : (map['dxGatewayId'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDirectConnectGatewayAttachmentFilter>(map['filters'], (value) => GetDirectConnectGatewayAttachmentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information specifying where to deploy a Cloud Run Service.
 class CloudRunLocationResponse {
   /// The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
-  final String location;
+  final pulumi.Input<String> location;
 
   /// Creates a new [CloudRunLocationResponse].
   /// [location] The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
@@ -20,7 +21,7 @@ class CloudRunLocationResponse {
 
   factory CloudRunLocationResponse.fromMap(Map<String, dynamic> map) {
     return CloudRunLocationResponse(
-      location: map['location'] as String,
+      location: (map['location'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel {
-  final int gain;
-  final int inputChannel;
+  final pulumi.Input<int> gain;
+  final pulumi.Input<int> inputChannel;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel].
   /// [gain] Required.
@@ -22,8 +23,8 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChan
 
   factory ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel(
-      gain: map['gain'] as int,
-      inputChannel: map['inputChannel'] as int,
+      gain: (map['gain'] as int).input(),
+      inputChannel: (map['inputChannel'] as int).input(),
     );
   }
 }

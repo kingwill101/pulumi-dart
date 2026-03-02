@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointModelSkuRateLimitRulePatternPropertiesResponse {
-  final String? method;
-  final String? path;
+  final pulumi.Input<String>? method;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [EndpointModelSkuRateLimitRulePatternPropertiesResponse].
   /// [method] Optional.
@@ -22,8 +23,8 @@ class EndpointModelSkuRateLimitRulePatternPropertiesResponse {
 
   factory EndpointModelSkuRateLimitRulePatternPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointModelSkuRateLimitRulePatternPropertiesResponse(
-      method: map['method'] == null ? null : map['method'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

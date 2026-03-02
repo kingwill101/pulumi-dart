@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cache configurations.
 class CacheConfigurationResponse {
   /// Max storage usage in megabytes.
-  final int? maxStorageUsage;
+  final pulumi.Input<int>? maxStorageUsage;
   /// Retention period in minutes.
-  final int? retentionPeriod;
+  final pulumi.Input<int>? retentionPeriod;
 
   /// Creates a new [CacheConfigurationResponse].
   /// [maxStorageUsage] Max storage usage in megabytes.
@@ -25,8 +26,8 @@ class CacheConfigurationResponse {
 
   factory CacheConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CacheConfigurationResponse(
-      maxStorageUsage: map['maxStorageUsage'] == null ? null : map['maxStorageUsage'] as int,
-      retentionPeriod: map['retentionPeriod'] == null ? null : map['retentionPeriod'] as int,
+      maxStorageUsage: map['maxStorageUsage'] == null ? null : (map['maxStorageUsage'] as int).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
     );
   }
 }

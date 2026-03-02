@@ -25,17 +25,12 @@ class HAVipAttachmentArgs {
   /// [instanceId] The ID of the ECS instance bound to the HaVip instance.
   /// [instanceType] The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
   HAVipAttachmentArgs({
-    pulumi.Output<bool>? force,
-    pulumi.Output<String>? haVipId,
-    pulumi.Output<String>? havipId,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? instanceType,
-  }) :
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      haVipId = pulumi.Input.asOptionalInput<String>(haVipId),
-      havipId = pulumi.Input.asOptionalInput<String>(havipId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType);
+    this.force,
+    this.haVipId,
+    this.havipId,
+    required this.instanceId,
+    this.instanceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class HAVipAttachmentArgs {
 
   factory HAVipAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return HAVipAttachmentArgs(
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      haVipId: map['haVipId'] == null ? null : pulumi.Output.create<String>(map['haVipId'] as String),
-      havipId: map['havipId'] == null ? null : pulumi.Output.create<String>(map['havipId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      haVipId: map['haVipId'] == null ? null : (map['haVipId'] as String).input(),
+      havipId: map['havipId'] == null ? null : (map['havipId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
     );
   }
 }

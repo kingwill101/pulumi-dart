@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GdcServiceInstanceGdceCluster {
   /// Gdce cluster resource id.
-  final String gdceCluster;
+  final pulumi.Input<String> gdceCluster;
 
   /// Creates a new [GdcServiceInstanceGdceCluster].
   /// [gdceCluster] Gdce cluster resource id.
@@ -19,7 +20,7 @@ class GdcServiceInstanceGdceCluster {
 
   factory GdcServiceInstanceGdceCluster.fromMap(Map<String, dynamic> map) {
     return GdcServiceInstanceGdceCluster(
-      gdceCluster: map['gdceCluster'] as String,
+      gdceCluster: (map['gdceCluster'] as String).input(),
     );
   }
 }

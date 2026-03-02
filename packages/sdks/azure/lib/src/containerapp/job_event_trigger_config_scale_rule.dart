@@ -5,13 +5,13 @@ import 'job_event_trigger_config_scale_rule_authentication.dart';
 
 class JobEventTriggerConfigScaleRule {
   /// A `authentication` block as defined below.
-  final List<JobEventTriggerConfigScaleRuleAuthentication>? authentications;
+  final pulumi.Input<List<JobEventTriggerConfigScaleRuleAuthentication>>? authentications;
   /// Type of the scale rule. Possible values are `activemq`, `artemis-queue`, `kafka`, `pulsar`, `aws-cloudwatch`, `aws-dynamodb`, `aws-dynamodb-streams`, `aws-kinesis-stream`, `aws-sqs-queue`, `azure-app-insights`, `azure-blob`, `azure-data-explorer`, `azure-eventhub`, `azure-log-analytics`, `azure-monitor`, `azure-pipelines`, `azure-servicebus`, `azure-queue`, `cassandra`, `cpu`, `cron`, `datadog`, `elasticsearch`, `external`, `external-push`, `gcp-stackdriver`, `gcp-storage`, `gcp-pubsub`, `graphite`, `http`, `huawei-cloudeye`, `ibmmq`, `influxdb`, `kubernetes-workload`, `liiklus`, `memory`, `metrics-api`, `mongodb`, `mssql`, `mysql`, `nats-jetstream`, `stan`, `tcp`, `new-relic`, `openstack-metric`, `openstack-swift`, `postgresql`, `predictkube`, `prometheus`, `rabbitmq`, `redis`, `redis-cluster`, `redis-sentinel`, `redis-streams`, `redis-cluster-streams`, `redis-sentinel-streams`, `selenium-grid`, `solace-event-queue` and `github-runner`.
-  final String customRuleType;
+  final pulumi.Input<String> customRuleType;
   /// Metadata properties to describe the scale rule.
-  final Map<String, String> metadata;
+  final pulumi.Input<Map<String, String>> metadata;
   /// Name of the scale rule.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [JobEventTriggerConfigScaleRule].
   /// [authentications] A `authentication` block as defined below.
@@ -27,7 +27,7 @@ class JobEventTriggerConfigScaleRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentications': ?authentications == null ? null : pulumi.Input.encodeList<JobEventTriggerConfigScaleRuleAuthentication, Map<String, dynamic>>(authentications!, (value) => value.toMap()),
+      'authentications': ?pulumi.Input.mapOptionalInputValue<List<JobEventTriggerConfigScaleRuleAuthentication>, List<Map<String, dynamic>>>(authentications, (value) => pulumi.Input.encodeList<JobEventTriggerConfigScaleRuleAuthentication, Map<String, dynamic>>(value, (value) => value.toMap())),
       'customRuleType': customRuleType,
       'metadata': metadata,
       'name': name,
@@ -36,10 +36,10 @@ class JobEventTriggerConfigScaleRule {
 
   factory JobEventTriggerConfigScaleRule.fromMap(Map<String, dynamic> map) {
     return JobEventTriggerConfigScaleRule(
-      authentications: map['authentications'] == null ? null : pulumi.Input.decodeList<JobEventTriggerConfigScaleRuleAuthentication>(map['authentications'], (value) => JobEventTriggerConfigScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>())),
-      customRuleType: map['customRuleType'] as String,
-      metadata: (map['metadata'] as Map).cast<String, String>(),
-      name: map['name'] as String,
+      authentications: map['authentications'] == null ? null : (pulumi.Input.decodeList<JobEventTriggerConfigScaleRuleAuthentication>(map['authentications'], (value) => JobEventTriggerConfigScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customRuleType: (map['customRuleType'] as String).input(),
+      metadata: ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

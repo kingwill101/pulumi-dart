@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ops_analytics_query_response.dart';
 import 'time_series_filter_ratio_response.dart';
 import 'time_series_filter_response.dart';
@@ -7,19 +8,19 @@ import 'time_series_filter_response.dart';
 /// TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
 class TimeSeriesQueryResponse {
   /// Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
-  final OpsAnalyticsQueryResponse opsAnalyticsQuery;
+  final pulumi.Input<OpsAnalyticsQueryResponse> opsAnalyticsQuery;
   /// Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart
-  final bool outputFullDuration;
+  final pulumi.Input<bool> outputFullDuration;
   /// A query used to fetch time series with PromQL.
-  final String prometheusQuery;
+  final pulumi.Input<String> prometheusQuery;
   /// Filter parameters to fetch time series.
-  final TimeSeriesFilterResponse timeSeriesFilter;
+  final pulumi.Input<TimeSeriesFilterResponse> timeSeriesFilter;
   /// Parameters to fetch a ratio between two time series filters.
-  final TimeSeriesFilterRatioResponse timeSeriesFilterRatio;
+  final pulumi.Input<TimeSeriesFilterRatioResponse> timeSeriesFilterRatio;
   /// A query used to fetch time series with MQL.
-  final String timeSeriesQueryLanguage;
+  final pulumi.Input<String> timeSeriesQueryLanguage;
   /// The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor.
-  final String unitOverride;
+  final pulumi.Input<String> unitOverride;
 
   /// Creates a new [TimeSeriesQueryResponse].
   /// [opsAnalyticsQuery] Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
@@ -41,11 +42,11 @@ class TimeSeriesQueryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'opsAnalyticsQuery': opsAnalyticsQuery.toMap(),
+      'opsAnalyticsQuery': pulumi.Input.mapInputValue<OpsAnalyticsQueryResponse, Map<String, dynamic>>(opsAnalyticsQuery, (value) => value.toMap()),
       'outputFullDuration': outputFullDuration,
       'prometheusQuery': prometheusQuery,
-      'timeSeriesFilter': timeSeriesFilter.toMap(),
-      'timeSeriesFilterRatio': timeSeriesFilterRatio.toMap(),
+      'timeSeriesFilter': pulumi.Input.mapInputValue<TimeSeriesFilterResponse, Map<String, dynamic>>(timeSeriesFilter, (value) => value.toMap()),
+      'timeSeriesFilterRatio': pulumi.Input.mapInputValue<TimeSeriesFilterRatioResponse, Map<String, dynamic>>(timeSeriesFilterRatio, (value) => value.toMap()),
       'timeSeriesQueryLanguage': timeSeriesQueryLanguage,
       'unitOverride': unitOverride,
     };
@@ -53,13 +54,13 @@ class TimeSeriesQueryResponse {
 
   factory TimeSeriesQueryResponse.fromMap(Map<String, dynamic> map) {
     return TimeSeriesQueryResponse(
-      opsAnalyticsQuery: OpsAnalyticsQueryResponse.fromMap((map['opsAnalyticsQuery'] as Map).cast<String, dynamic>()),
-      outputFullDuration: map['outputFullDuration'] as bool,
-      prometheusQuery: map['prometheusQuery'] as String,
-      timeSeriesFilter: TimeSeriesFilterResponse.fromMap((map['timeSeriesFilter'] as Map).cast<String, dynamic>()),
-      timeSeriesFilterRatio: TimeSeriesFilterRatioResponse.fromMap((map['timeSeriesFilterRatio'] as Map).cast<String, dynamic>()),
-      timeSeriesQueryLanguage: map['timeSeriesQueryLanguage'] as String,
-      unitOverride: map['unitOverride'] as String,
+      opsAnalyticsQuery: (OpsAnalyticsQueryResponse.fromMap((map['opsAnalyticsQuery'] as Map).cast<String, dynamic>())).input(),
+      outputFullDuration: (map['outputFullDuration'] as bool).input(),
+      prometheusQuery: (map['prometheusQuery'] as String).input(),
+      timeSeriesFilter: (TimeSeriesFilterResponse.fromMap((map['timeSeriesFilter'] as Map).cast<String, dynamic>())).input(),
+      timeSeriesFilterRatio: (TimeSeriesFilterRatioResponse.fromMap((map['timeSeriesFilterRatio'] as Map).cast<String, dynamic>())).input(),
+      timeSeriesQueryLanguage: (map['timeSeriesQueryLanguage'] as String).input(),
+      unitOverride: (map['unitOverride'] as String).input(),
     );
   }
 }

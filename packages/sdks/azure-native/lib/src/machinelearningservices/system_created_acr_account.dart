@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'arm_resource_id.dart';
 
 class SystemCreatedAcrAccount {
   /// Name of the ACR account
-  final String? acrAccountName;
+  final pulumi.Input<String>? acrAccountName;
   /// SKU of the ACR account
-  final String? acrAccountSku;
+  final pulumi.Input<String>? acrAccountSku;
   /// This is populated once the ACR account is created.
-  final ArmResourceId? armResourceId;
+  final pulumi.Input<ArmResourceId>? armResourceId;
 
   /// Creates a new [SystemCreatedAcrAccount].
   /// [acrAccountName] Name of the ACR account
@@ -24,15 +25,15 @@ class SystemCreatedAcrAccount {
     return <String, dynamic>{
       'acrAccountName': ?acrAccountName,
       'acrAccountSku': ?acrAccountSku,
-      'armResourceId': ?armResourceId == null ? null : armResourceId!.toMap(),
+      'armResourceId': ?pulumi.Input.mapOptionalInputValue<ArmResourceId, Map<String, dynamic>>(armResourceId, (value) => value.toMap()),
     };
   }
 
   factory SystemCreatedAcrAccount.fromMap(Map<String, dynamic> map) {
     return SystemCreatedAcrAccount(
-      acrAccountName: map['acrAccountName'] == null ? null : map['acrAccountName'] as String,
-      acrAccountSku: map['acrAccountSku'] == null ? null : map['acrAccountSku'] as String,
-      armResourceId: map['armResourceId'] == null ? null : ArmResourceId.fromMap((map['armResourceId'] as Map).cast<String, dynamic>()),
+      acrAccountName: map['acrAccountName'] == null ? null : (map['acrAccountName'] as String).input(),
+      acrAccountSku: map['acrAccountSku'] == null ? null : (map['acrAccountSku'] as String).input(),
+      armResourceId: map['armResourceId'] == null ? null : (ArmResourceId.fromMap((map['armResourceId'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

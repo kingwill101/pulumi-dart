@@ -37,27 +37,17 @@ class KeyPairState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   KeyPairState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<String>? keyName,
-    pulumi.Output<String>? keyNamePrefix,
-    pulumi.Output<String>? keyPairId,
-    pulumi.Output<String>? keyType,
-    pulumi.Output<String>? publicKey,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      keyName = pulumi.Input.asOptionalInput<String>(keyName),
-      keyNamePrefix = pulumi.Input.asOptionalInput<String>(keyNamePrefix),
-      keyPairId = pulumi.Input.asOptionalInput<String>(keyPairId),
-      keyType = pulumi.Input.asOptionalInput<String>(keyType),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.fingerprint,
+    this.keyName,
+    this.keyNamePrefix,
+    this.keyPairId,
+    this.keyType,
+    this.publicKey,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class KeyPairState {
 
   factory KeyPairState.fromMap(Map<String, dynamic> map) {
     return KeyPairState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      keyName: map['keyName'] == null ? null : pulumi.Output.create<String>(map['keyName'] as String),
-      keyNamePrefix: map['keyNamePrefix'] == null ? null : pulumi.Output.create<String>(map['keyNamePrefix'] as String),
-      keyPairId: map['keyPairId'] == null ? null : pulumi.Output.create<String>(map['keyPairId'] as String),
-      keyType: map['keyType'] == null ? null : pulumi.Output.create<String>(map['keyType'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyNamePrefix: map['keyNamePrefix'] == null ? null : (map['keyNamePrefix'] as String).input(),
+      keyPairId: map['keyPairId'] == null ? null : (map['keyPairId'] as String).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

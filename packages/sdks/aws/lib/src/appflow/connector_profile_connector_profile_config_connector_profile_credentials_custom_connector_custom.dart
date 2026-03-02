@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom {
   /// A map that holds custom authentication credentials.
-  final Map<String, String>? credentialsMap;
+  final pulumi.Input<Map<String, String>>? credentialsMap;
   /// The custom authentication type that the connector uses.
-  final String customAuthenticationType;
+  final pulumi.Input<String> customAuthenticationType;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom].
   /// [credentialsMap] A map that holds custom authentication credentials.
@@ -24,8 +25,8 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom(
-      credentialsMap: map['credentialsMap'] == null ? null : (map['credentialsMap'] as Map).cast<String, String>(),
-      customAuthenticationType: map['customAuthenticationType'] as String,
+      credentialsMap: map['credentialsMap'] == null ? null : ((map['credentialsMap'] as Map).cast<String, String>()).input(),
+      customAuthenticationType: (map['customAuthenticationType'] as String).input(),
     );
   }
 }

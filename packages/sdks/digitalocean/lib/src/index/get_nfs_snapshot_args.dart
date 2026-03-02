@@ -19,15 +19,11 @@ class GetNfsSnapshotArgs {
   /// [region] The region where the NFS snapshot is located.
   /// [shareId] Required.
   GetNfsSnapshotArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> shareId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shareId = pulumi.Input.asInput<String>(shareId);
+    this.name,
+    this.nameRegex,
+    this.region,
+    required this.shareId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class GetNfsSnapshotArgs {
 
   factory GetNfsSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetNfsSnapshotArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shareId: pulumi.Output.create<String>(map['shareId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shareId: (map['shareId'] as String).input(),
     );
   }
 }

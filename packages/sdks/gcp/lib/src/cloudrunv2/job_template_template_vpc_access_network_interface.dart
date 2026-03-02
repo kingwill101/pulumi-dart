@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateTemplateVpcAccessNetworkInterface {
   /// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
   /// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
   /// looked up from the subnetwork.
-  final String? network;
+  final pulumi.Input<String>? network;
   /// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
   /// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
   /// subnetwork with the same name with the network will be used.
-  final String? subnetwork;
+  final pulumi.Input<String>? subnetwork;
   /// Network tags applied to this Cloud Run job.
-  final List<String>? tags;
+  final pulumi.Input<List<String>>? tags;
 
   /// Creates a new [JobTemplateTemplateVpcAccessNetworkInterface].
   /// [network] The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
@@ -33,9 +34,9 @@ class JobTemplateTemplateVpcAccessNetworkInterface {
 
   factory JobTemplateTemplateVpcAccessNetworkInterface.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateVpcAccessNetworkInterface(
-      network: map['network'] == null ? null : map['network'] as String,
-      subnetwork: map['subnetwork'] == null ? null : map['subnetwork'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

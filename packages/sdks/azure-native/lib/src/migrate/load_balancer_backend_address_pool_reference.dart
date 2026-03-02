@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines reference to load balancer backend address pools.
 class LoadBalancerBackendAddressPoolReference {
   /// Gets the name of the proxy resource on the target side.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Gets the ARM resource ID of the tracked resource being referenced.
-  final String sourceArmResourceId;
+  final pulumi.Input<String> sourceArmResourceId;
 
   /// Creates a new [LoadBalancerBackendAddressPoolReference].
   /// [name] Gets the name of the proxy resource on the target side.
@@ -25,8 +26,8 @@ class LoadBalancerBackendAddressPoolReference {
 
   factory LoadBalancerBackendAddressPoolReference.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressPoolReference(
-      name: map['name'] == null ? null : map['name'] as String,
-      sourceArmResourceId: map['sourceArmResourceId'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sourceArmResourceId: (map['sourceArmResourceId'] as String).input(),
     );
   }
 }

@@ -20,13 +20,10 @@ class GetElasticsearchArgs {
   /// [name] The name of the Elasticsearch resource.
   /// [resourceGroupName] The name of the resource group in which the Elasticsearch exists.
   GetElasticsearchArgs({
-    pulumi.Output<List<GetElasticsearchLog>>? logs,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      logs = pulumi.Input.asOptionalInput<List<GetElasticsearchLog>>(logs),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.logs,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetElasticsearchArgs {
 
   factory GetElasticsearchArgs.fromMap(Map<String, dynamic> map) {
     return GetElasticsearchArgs(
-      logs: map['logs'] == null ? null : pulumi.Output.create<List<GetElasticsearchLog>>(pulumi.Input.decodeList<GetElasticsearchLog>(map['logs'], (value) => GetElasticsearchLog.fromMap((value as Map).cast<String, dynamic>()))),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      logs: map['logs'] == null ? null : (pulumi.Input.decodeList<GetElasticsearchLog>(map['logs'], (value) => GetElasticsearchLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

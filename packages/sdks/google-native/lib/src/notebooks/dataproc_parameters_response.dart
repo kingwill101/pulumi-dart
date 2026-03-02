@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parameters used in Dataproc JobType executions.
 class DataprocParametersResponse {
   /// URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
-  final String cluster;
+  final pulumi.Input<String> cluster;
 
   /// Creates a new [DataprocParametersResponse].
   /// [cluster] URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
@@ -20,7 +21,7 @@ class DataprocParametersResponse {
 
   factory DataprocParametersResponse.fromMap(Map<String, dynamic> map) {
     return DataprocParametersResponse(
-      cluster: map['cluster'] as String,
+      cluster: (map['cluster'] as String).input(),
     );
   }
 }

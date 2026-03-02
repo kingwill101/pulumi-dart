@@ -6,13 +6,13 @@ import 'config_diagnostics_validator_result_issue_response.dart';
 /// Config Diagnostics validator result data
 class ConfigDiagnosticsValidatorResultResponse {
   /// List of resource config validation issues.
-  final List<ConfigDiagnosticsValidatorResultIssueResponse>? issues;
+  final pulumi.Input<List<ConfigDiagnosticsValidatorResultIssueResponse>>? issues;
   /// Replica set location and subnet name
-  final String? replicaSetSubnetDisplayName;
+  final pulumi.Input<String>? replicaSetSubnetDisplayName;
   /// Status for individual validator after running diagnostics.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Validator identifier
-  final String? validatorId;
+  final pulumi.Input<String>? validatorId;
 
   /// Creates a new [ConfigDiagnosticsValidatorResultResponse].
   /// [issues] List of resource config validation issues.
@@ -28,7 +28,7 @@ class ConfigDiagnosticsValidatorResultResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'issues': ?issues == null ? null : pulumi.Input.encodeList<ConfigDiagnosticsValidatorResultIssueResponse, Map<String, dynamic>>(issues!, (value) => value.toMap()),
+      'issues': ?pulumi.Input.mapOptionalInputValue<List<ConfigDiagnosticsValidatorResultIssueResponse>, List<Map<String, dynamic>>>(issues, (value) => pulumi.Input.encodeList<ConfigDiagnosticsValidatorResultIssueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'replicaSetSubnetDisplayName': ?replicaSetSubnetDisplayName,
       'status': ?status,
       'validatorId': ?validatorId,
@@ -37,10 +37,10 @@ class ConfigDiagnosticsValidatorResultResponse {
 
   factory ConfigDiagnosticsValidatorResultResponse.fromMap(Map<String, dynamic> map) {
     return ConfigDiagnosticsValidatorResultResponse(
-      issues: map['issues'] == null ? null : pulumi.Input.decodeList<ConfigDiagnosticsValidatorResultIssueResponse>(map['issues'], (value) => ConfigDiagnosticsValidatorResultIssueResponse.fromMap((value as Map).cast<String, dynamic>())),
-      replicaSetSubnetDisplayName: map['replicaSetSubnetDisplayName'] == null ? null : map['replicaSetSubnetDisplayName'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      validatorId: map['validatorId'] == null ? null : map['validatorId'] as String,
+      issues: map['issues'] == null ? null : (pulumi.Input.decodeList<ConfigDiagnosticsValidatorResultIssueResponse>(map['issues'], (value) => ConfigDiagnosticsValidatorResultIssueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicaSetSubnetDisplayName: map['replicaSetSubnetDisplayName'] == null ? null : (map['replicaSetSubnetDisplayName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      validatorId: map['validatorId'] == null ? null : (map['validatorId'] as String).input(),
     );
   }
 }

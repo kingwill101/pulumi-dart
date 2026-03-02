@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationConditionCondition {
-  final String? expression;
+  final pulumi.Input<String>? expression;
   /// A name for the flow.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationConditionCondition].
   /// [expression] Optional.
@@ -23,8 +24,8 @@ class AgentFlowDefinitionNodeConfigurationConditionCondition {
 
   factory AgentFlowDefinitionNodeConfigurationConditionCondition.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationConditionCondition(
-      expression: map['expression'] == null ? null : map['expression'] as String,
-      name: map['name'] as String,
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

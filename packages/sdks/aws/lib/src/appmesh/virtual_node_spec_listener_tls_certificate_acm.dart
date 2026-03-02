@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNodeSpecListenerTlsCertificateAcm {
   /// ARN for the certificate.
-  final String certificateArn;
+  final pulumi.Input<String> certificateArn;
 
   /// Creates a new [VirtualNodeSpecListenerTlsCertificateAcm].
   /// [certificateArn] ARN for the certificate.
@@ -19,7 +20,7 @@ class VirtualNodeSpecListenerTlsCertificateAcm {
 
   factory VirtualNodeSpecListenerTlsCertificateAcm.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsCertificateAcm(
-      certificateArn: map['certificateArn'] as String,
+      certificateArn: (map['certificateArn'] as String).input(),
     );
   }
 }

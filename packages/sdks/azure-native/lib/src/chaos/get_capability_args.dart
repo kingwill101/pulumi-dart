@@ -28,19 +28,13 @@ class GetCapabilityArgs {
   /// [resourceGroupName] String that represents an Azure resource group.
   /// [targetName] String that represents a Target resource name.
   GetCapabilityArgs({
-    required pulumi.Output<String> capabilityName,
-    required pulumi.Output<String> parentProviderNamespace,
-    required pulumi.Output<String> parentResourceName,
-    required pulumi.Output<String> parentResourceType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> targetName,
-  }) :
-      capabilityName = pulumi.Input.asInput<String>(capabilityName),
-      parentProviderNamespace = pulumi.Input.asInput<String>(parentProviderNamespace),
-      parentResourceName = pulumi.Input.asInput<String>(parentResourceName),
-      parentResourceType = pulumi.Input.asInput<String>(parentResourceType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetName = pulumi.Input.asInput<String>(targetName);
+    required this.capabilityName,
+    required this.parentProviderNamespace,
+    required this.parentResourceName,
+    required this.parentResourceType,
+    required this.resourceGroupName,
+    required this.targetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetCapabilityArgs {
 
   factory GetCapabilityArgs.fromMap(Map<String, dynamic> map) {
     return GetCapabilityArgs(
-      capabilityName: pulumi.Output.create<String>(map['capabilityName'] as String),
-      parentProviderNamespace: pulumi.Output.create<String>(map['parentProviderNamespace'] as String),
-      parentResourceName: pulumi.Output.create<String>(map['parentResourceName'] as String),
-      parentResourceType: pulumi.Output.create<String>(map['parentResourceType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetName: pulumi.Output.create<String>(map['targetName'] as String),
+      capabilityName: (map['capabilityName'] as String).input(),
+      parentProviderNamespace: (map['parentProviderNamespace'] as String).input(),
+      parentResourceName: (map['parentResourceName'] as String).input(),
+      parentResourceType: (map['parentResourceType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetName: (map['targetName'] as String).input(),
     );
   }
 }

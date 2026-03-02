@@ -29,19 +29,13 @@ class QuickConnectArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the Quick Connect. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   QuickConnectArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<QuickConnectQuickConnectConfig> quickConnectConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      quickConnectConfig = pulumi.Input.asInput<QuickConnectQuickConnectConfig>(quickConnectConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.instanceId,
+    this.name,
+    required this.quickConnectConfig,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class QuickConnectArgs {
 
   factory QuickConnectArgs.fromMap(Map<String, dynamic> map) {
     return QuickConnectArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      quickConnectConfig: pulumi.Output.create<QuickConnectQuickConnectConfig>(QuickConnectQuickConnectConfig.fromMap((map['quickConnectConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      quickConnectConfig: (QuickConnectQuickConnectConfig.fromMap((map['quickConnectConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

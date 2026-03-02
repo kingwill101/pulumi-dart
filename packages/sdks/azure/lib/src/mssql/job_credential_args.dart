@@ -25,17 +25,12 @@ class JobCredentialArgs {
   /// [passwordWoVersion] An integer value used to trigger an update for `password_wo`. This property should be incremented when updating `password_wo`.
   /// [username] The username to use for this Elastic Job credential.
   JobCredentialArgs({
-    required pulumi.Output<String> jobAgentId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<int>? passwordWoVersion,
-    required pulumi.Output<String> username,
-  }) :
-      jobAgentId = pulumi.Input.asInput<String>(jobAgentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      passwordWoVersion = pulumi.Input.asOptionalInput<int>(passwordWoVersion),
-      username = pulumi.Input.asInput<String>(username);
+    required this.jobAgentId,
+    this.name,
+    this.password,
+    this.passwordWoVersion,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class JobCredentialArgs {
 
   factory JobCredentialArgs.fromMap(Map<String, dynamic> map) {
     return JobCredentialArgs(
-      jobAgentId: pulumi.Output.create<String>(map['jobAgentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      passwordWoVersion: map['passwordWoVersion'] == null ? null : pulumi.Output.create<int>(map['passwordWoVersion'] as int),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      jobAgentId: (map['jobAgentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion'] as int).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

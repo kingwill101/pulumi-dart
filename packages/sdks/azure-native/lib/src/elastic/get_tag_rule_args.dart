@@ -19,13 +19,10 @@ class GetTagRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleSetName] Tag Rule Set resource name
   GetTagRuleArgs({
-    required pulumi.Output<String> monitorName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleSetName,
-  }) :
-      monitorName = pulumi.Input.asInput<String>(monitorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleSetName = pulumi.Input.asInput<String>(ruleSetName);
+    required this.monitorName,
+    required this.resourceGroupName,
+    required this.ruleSetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTagRuleArgs {
 
   factory GetTagRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetTagRuleArgs(
-      monitorName: pulumi.Output.create<String>(map['monitorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleSetName: pulumi.Output.create<String>(map['ruleSetName'] as String),
+      monitorName: (map['monitorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleSetName: (map['ruleSetName'] as String).input(),
     );
   }
 }

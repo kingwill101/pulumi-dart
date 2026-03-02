@@ -52,23 +52,15 @@ class RuleArgs {
   /// [scope] Resource name of the DataAccessScope bound to this rule.
   /// [text] The YARA-L content of the rule.
   RuleArgs({
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> instance,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? ruleId,
-    pulumi.Output<String>? scope,
-    pulumi.Output<String>? text,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      instance = pulumi.Input.asInput<String>(instance),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      ruleId = pulumi.Input.asOptionalInput<String>(ruleId),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      text = pulumi.Input.asOptionalInput<String>(text);
+    this.deletionPolicy,
+    this.etag,
+    required this.instance,
+    required this.location,
+    this.project,
+    this.ruleId,
+    this.scope,
+    this.text,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,14 +77,14 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      ruleId: map['ruleId'] == null ? null : pulumi.Output.create<String>(map['ruleId'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      text: map['text'] == null ? null : pulumi.Output.create<String>(map['text'] as String),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
     );
   }
 }

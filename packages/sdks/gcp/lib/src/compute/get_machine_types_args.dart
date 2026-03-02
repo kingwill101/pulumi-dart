@@ -19,13 +19,10 @@ class GetMachineTypesArgs {
   /// [project] Project from which to list available zones. Defaults to project declared in the provider.
   /// [zone] Zone from which to list machine types.
   GetMachineTypesArgs({
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.filter,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMachineTypesArgs {
 
   factory GetMachineTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

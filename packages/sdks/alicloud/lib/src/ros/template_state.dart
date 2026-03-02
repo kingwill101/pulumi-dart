@@ -22,17 +22,12 @@ class TemplateState {
   /// [templateName] The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
   /// [templateUrl] The template url.
   TemplateState({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? templateBody,
-    pulumi.Output<String>? templateName,
-    pulumi.Output<String>? templateUrl,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateBody = pulumi.Input.asOptionalInput<String>(templateBody),
-      templateName = pulumi.Input.asOptionalInput<String>(templateName),
-      templateUrl = pulumi.Input.asOptionalInput<String>(templateUrl);
+    this.description,
+    this.tags,
+    this.templateBody,
+    this.templateName,
+    this.templateUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class TemplateState {
 
   factory TemplateState.fromMap(Map<String, dynamic> map) {
     return TemplateState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateBody: map['templateBody'] == null ? null : pulumi.Output.create<String>(map['templateBody'] as String),
-      templateName: map['templateName'] == null ? null : pulumi.Output.create<String>(map['templateName'] as String),
-      templateUrl: map['templateUrl'] == null ? null : pulumi.Output.create<String>(map['templateUrl'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateBody: map['templateBody'] == null ? null : (map['templateBody'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl'] as String).input(),
     );
   }
 }

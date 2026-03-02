@@ -30,19 +30,13 @@ class ServiceNetworkResourceAssociationArgs {
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   ServiceNetworkResourceAssociationArgs({
-    pulumi.Output<bool>? privateDnsEnabled,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceConfigurationIdentifier,
-    required pulumi.Output<String> serviceNetworkIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ServiceNetworkResourceAssociationTimeouts>? timeouts,
-  }) :
-      privateDnsEnabled = pulumi.Input.asOptionalInput<bool>(privateDnsEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceConfigurationIdentifier = pulumi.Input.asInput<String>(resourceConfigurationIdentifier),
-      serviceNetworkIdentifier = pulumi.Input.asInput<String>(serviceNetworkIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ServiceNetworkResourceAssociationTimeouts>(timeouts);
+    this.privateDnsEnabled,
+    this.region,
+    required this.resourceConfigurationIdentifier,
+    required this.serviceNetworkIdentifier,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class ServiceNetworkResourceAssociationArgs {
 
   factory ServiceNetworkResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkResourceAssociationArgs(
-      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : pulumi.Output.create<bool>(map['privateDnsEnabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceConfigurationIdentifier: pulumi.Output.create<String>(map['resourceConfigurationIdentifier'] as String),
-      serviceNetworkIdentifier: pulumi.Output.create<String>(map['serviceNetworkIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ServiceNetworkResourceAssociationTimeouts>(ServiceNetworkResourceAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceConfigurationIdentifier: (map['resourceConfigurationIdentifier'] as String).input(),
+      serviceNetworkIdentifier: (map['serviceNetworkIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ServiceNetworkResourceAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetAssessmentProjectsOperationArgs {
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAssessmentProjectsOperationArgs({
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAssessmentProjectsOperationArgs {
 
   factory GetAssessmentProjectsOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetAssessmentProjectsOperationArgs(
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

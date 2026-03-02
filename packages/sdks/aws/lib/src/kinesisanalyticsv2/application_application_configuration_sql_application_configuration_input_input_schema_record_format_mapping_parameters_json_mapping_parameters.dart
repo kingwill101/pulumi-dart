@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters {
   /// The path to the top-level parent that contains the records.
-  final String recordRowPath;
+  final pulumi.Input<String> recordRowPath;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters].
   /// [recordRowPath] The path to the top-level parent that contains the records.
@@ -19,7 +20,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters(
-      recordRowPath: map['recordRowPath'] as String,
+      recordRowPath: (map['recordRowPath'] as String).input(),
     );
   }
 }

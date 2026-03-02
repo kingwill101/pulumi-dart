@@ -32,21 +32,14 @@ class ReadOnlyFollowingDatabaseArgs {
   /// [location] Resource location.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ReadOnlyFollowingDatabaseArgs({
-    pulumi.Output<String>? callerRole,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? hotCachePeriod,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      callerRole = pulumi.Input.asOptionalInput<String>(callerRole),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      hotCachePeriod = pulumi.Input.asOptionalInput<String>(hotCachePeriod),
-      kind = pulumi.Input.asInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.callerRole,
+    required this.clusterName,
+    this.databaseName,
+    this.hotCachePeriod,
+    required this.kind,
+    this.location,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ReadOnlyFollowingDatabaseArgs {
 
   factory ReadOnlyFollowingDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return ReadOnlyFollowingDatabaseArgs(
-      callerRole: map['callerRole'] == null ? null : pulumi.Output.create<String>(map['callerRole'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      hotCachePeriod: map['hotCachePeriod'] == null ? null : pulumi.Output.create<String>(map['hotCachePeriod'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      callerRole: map['callerRole'] == null ? null : (map['callerRole'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

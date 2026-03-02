@@ -6,45 +6,45 @@ import 'get_resource_types_type_info.dart';
 
 class GetResourceTypesType {
   /// Create an operation private parameter collection. The attributes are not returned in the resource query operation, but the parameters are required in the creation operation.
-  final List<String> createOnlyProperties;
+  final pulumi.Input<List<String>> createOnlyProperties;
   /// Delete operation private parameter collection. The attribute is not returned in the resource query operation, but the parameter is required in the delete operation.
-  final List<String> deleteOnlyProperties;
+  final pulumi.Input<List<String>> deleteOnlyProperties;
   /// A collection of attributes that can be used as the filter parameter during the list operation.
-  final List<String> filterProperties;
+  final pulumi.Input<List<String>> filterProperties;
   /// Query operation private parameter collection. The attribute is not returned in the resource query operation, but the input parameter is required in the query operation.
-  final List<String> getOnlyProperties;
+  final pulumi.Input<List<String>> getOnlyProperties;
   /// The collection of properties returned by the query.
-  final List<String> getResponseProperties;
+  final pulumi.Input<List<String>> getResponseProperties;
   /// Supported resource operation information (including RAM permissions).
-  final GetResourceTypesTypeHandlers handlers;
+  final pulumi.Input<GetResourceTypesTypeHandlers> handlers;
   /// The ID of the resource supplied above.
-  final String id;
+  final pulumi.Input<String> id;
   /// Basic information about the resource type.
-  final List<GetResourceTypesTypeInfo> infos;
+  final pulumi.Input<List<GetResourceTypesTypeInfo>> infos;
   /// Enumerate the operation private parameter collection. The attributes are not returned in the resource query operation, but the parameters that need to be passed in the enumeration operation.
-  final List<String> listOnlyProperties;
+  final pulumi.Input<List<String>> listOnlyProperties;
   /// Enumerates the returned property collection.
-  final List<String> listResponseProperties;
+  final pulumi.Input<List<String>> listResponseProperties;
   /// Resource ID
-  final String primaryIdentifier;
+  final pulumi.Input<String> primaryIdentifier;
   /// Product Code.
-  final String product;
+  final pulumi.Input<String> product;
   /// Resource attribute definition, where key is the attribute name and value is the attribute details.
-  final String properties;
+  final pulumi.Input<String> properties;
   /// A collection of public attributes, which are the basic attributes of the resource. Non-Operation private parameters.
-  final List<String> publicProperties;
+  final pulumi.Input<List<String>> publicProperties;
   /// A set of read-only parameters. It is returned only in the list or get Operation. It is not used as an input parameter during creation and change.
-  final List<String> readOnlyProperties;
+  final pulumi.Input<List<String>> readOnlyProperties;
   /// Resource creation required parameter collection.
-  final List<String> requireds;
+  final pulumi.Input<List<String>> requireds;
   /// The resource type.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// A collection of sensitive attributes, such as passwords.
-  final List<String> sensitiveInfoProperties;
+  final pulumi.Input<List<String>> sensitiveInfoProperties;
   /// Update operation private parameter collection. The attributes are not returned in the resource query operation, but the parameters are required in the update operation.
-  final List<String> updateOnlyProperties;
+  final pulumi.Input<List<String>> updateOnlyProperties;
   /// A collection of properties that can be modified.
-  final List<String> updateTypeProperties;
+  final pulumi.Input<List<String>> updateTypeProperties;
 
   /// Creates a new [GetResourceTypesType].
   /// [createOnlyProperties] Create an operation private parameter collection. The attributes are not returned in the resource query operation, but the parameters are required in the creation operation.
@@ -97,9 +97,9 @@ class GetResourceTypesType {
       'filterProperties': filterProperties,
       'getOnlyProperties': getOnlyProperties,
       'getResponseProperties': getResponseProperties,
-      'handlers': handlers.toMap(),
+      'handlers': pulumi.Input.mapInputValue<GetResourceTypesTypeHandlers, Map<String, dynamic>>(handlers, (value) => value.toMap()),
       'id': id,
-      'infos': pulumi.Input.encodeList<GetResourceTypesTypeInfo, Map<String, dynamic>>(infos, (value) => value.toMap()),
+      'infos': pulumi.Input.mapInputValue<List<GetResourceTypesTypeInfo>, List<Map<String, dynamic>>>(infos, (value) => pulumi.Input.encodeList<GetResourceTypesTypeInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'listOnlyProperties': listOnlyProperties,
       'listResponseProperties': listResponseProperties,
       'primaryIdentifier': primaryIdentifier,
@@ -117,26 +117,26 @@ class GetResourceTypesType {
 
   factory GetResourceTypesType.fromMap(Map<String, dynamic> map) {
     return GetResourceTypesType(
-      createOnlyProperties: (map['createOnlyProperties'] as List).cast<String>(),
-      deleteOnlyProperties: (map['deleteOnlyProperties'] as List).cast<String>(),
-      filterProperties: (map['filterProperties'] as List).cast<String>(),
-      getOnlyProperties: (map['getOnlyProperties'] as List).cast<String>(),
-      getResponseProperties: (map['getResponseProperties'] as List).cast<String>(),
-      handlers: GetResourceTypesTypeHandlers.fromMap((map['handlers'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      infos: pulumi.Input.decodeList<GetResourceTypesTypeInfo>(map['infos'], (value) => GetResourceTypesTypeInfo.fromMap((value as Map).cast<String, dynamic>())),
-      listOnlyProperties: (map['listOnlyProperties'] as List).cast<String>(),
-      listResponseProperties: (map['listResponseProperties'] as List).cast<String>(),
-      primaryIdentifier: map['primaryIdentifier'] as String,
-      product: map['product'] as String,
-      properties: map['properties'] as String,
-      publicProperties: (map['publicProperties'] as List).cast<String>(),
-      readOnlyProperties: (map['readOnlyProperties'] as List).cast<String>(),
-      requireds: (map['requireds'] as List).cast<String>(),
-      resourceType: map['resourceType'] as String,
-      sensitiveInfoProperties: (map['sensitiveInfoProperties'] as List).cast<String>(),
-      updateOnlyProperties: (map['updateOnlyProperties'] as List).cast<String>(),
-      updateTypeProperties: (map['updateTypeProperties'] as List).cast<String>(),
+      createOnlyProperties: ((map['createOnlyProperties'] as List).cast<String>()).input(),
+      deleteOnlyProperties: ((map['deleteOnlyProperties'] as List).cast<String>()).input(),
+      filterProperties: ((map['filterProperties'] as List).cast<String>()).input(),
+      getOnlyProperties: ((map['getOnlyProperties'] as List).cast<String>()).input(),
+      getResponseProperties: ((map['getResponseProperties'] as List).cast<String>()).input(),
+      handlers: (GetResourceTypesTypeHandlers.fromMap((map['handlers'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      infos: (pulumi.Input.decodeList<GetResourceTypesTypeInfo>(map['infos'], (value) => GetResourceTypesTypeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      listOnlyProperties: ((map['listOnlyProperties'] as List).cast<String>()).input(),
+      listResponseProperties: ((map['listResponseProperties'] as List).cast<String>()).input(),
+      primaryIdentifier: (map['primaryIdentifier'] as String).input(),
+      product: (map['product'] as String).input(),
+      properties: (map['properties'] as String).input(),
+      publicProperties: ((map['publicProperties'] as List).cast<String>()).input(),
+      readOnlyProperties: ((map['readOnlyProperties'] as List).cast<String>()).input(),
+      requireds: ((map['requireds'] as List).cast<String>()).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      sensitiveInfoProperties: ((map['sensitiveInfoProperties'] as List).cast<String>()).input(),
+      updateOnlyProperties: ((map['updateOnlyProperties'] as List).cast<String>()).input(),
+      updateTypeProperties: ((map['updateTypeProperties'] as List).cast<String>()).input(),
     );
   }
 }

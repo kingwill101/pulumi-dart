@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountsAccount {
   /// The name of the account.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// The privilege of account access database.
-  final String accountPrivilege;
+  final pulumi.Input<String> accountPrivilege;
   /// Privilege type of account.
-  final String accountType;
+  final pulumi.Input<String> accountType;
   /// The description of account.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Account.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Id of instance in which account belongs.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The status of account.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetAccountsAccount].
   /// [accountName] The name of the account.
@@ -49,13 +50,13 @@ class GetAccountsAccount {
 
   factory GetAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetAccountsAccount(
-      accountName: map['accountName'] as String,
-      accountPrivilege: map['accountPrivilege'] as String,
-      accountType: map['accountType'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      status: map['status'] as String,
+      accountName: (map['accountName'] as String).input(),
+      accountPrivilege: (map['accountPrivilege'] as String).input(),
+      accountType: (map['accountType'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

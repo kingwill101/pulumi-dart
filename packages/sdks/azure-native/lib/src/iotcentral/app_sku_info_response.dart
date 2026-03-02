@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about the SKU of the IoT Central application.
 class AppSkuInfoResponse {
   /// The name of the SKU.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [AppSkuInfoResponse].
   /// [name] The name of the SKU.
@@ -20,7 +21,7 @@ class AppSkuInfoResponse {
 
   factory AppSkuInfoResponse.fromMap(Map<String, dynamic> map) {
     return AppSkuInfoResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

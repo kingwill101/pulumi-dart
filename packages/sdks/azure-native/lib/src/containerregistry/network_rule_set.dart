@@ -6,9 +6,9 @@ import 'iprule.dart';
 /// The network rule set for a container registry.
 class NetworkRuleSet {
   /// The default action of allow or deny when no other rules match.
-  final String defaultAction;
+  final pulumi.Input<String> defaultAction;
   /// The IP ACL rules.
-  final List<IPRule>? ipRules;
+  final pulumi.Input<List<IPRule>>? ipRules;
 
   /// Creates a new [NetworkRuleSet].
   /// [defaultAction] The default action of allow or deny when no other rules match.
@@ -21,14 +21,14 @@ class NetworkRuleSet {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultAction': defaultAction,
-      'ipRules': ?ipRules == null ? null : pulumi.Input.encodeList<IPRule, Map<String, dynamic>>(ipRules!, (value) => value.toMap()),
+      'ipRules': ?pulumi.Input.mapOptionalInputValue<List<IPRule>, List<Map<String, dynamic>>>(ipRules, (value) => pulumi.Input.encodeList<IPRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkRuleSet.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSet(
-      defaultAction: map['defaultAction'] as String,
-      ipRules: map['ipRules'] == null ? null : pulumi.Input.decodeList<IPRule>(map['ipRules'], (value) => IPRule.fromMap((value as Map).cast<String, dynamic>())),
+      defaultAction: (map['defaultAction'] as String).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRule>(map['ipRules'], (value) => IPRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

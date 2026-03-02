@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BrokerMaintenanceWindowStartTime {
   /// Day of the week, e.g., `MONDAY`, `TUESDAY`, or `WEDNESDAY`.
-  final String dayOfWeek;
+  final pulumi.Input<String> dayOfWeek;
   /// Time, in 24-hour format, e.g., `02:00`.
-  final String timeOfDay;
+  final pulumi.Input<String> timeOfDay;
   /// Time zone in either the Country/City format or the UTC offset format, e.g., `CET`.
-  final String timeZone;
+  final pulumi.Input<String> timeZone;
 
   /// Creates a new [BrokerMaintenanceWindowStartTime].
   /// [dayOfWeek] Day of the week, e.g., `MONDAY`, `TUESDAY`, or `WEDNESDAY`.
@@ -29,9 +30,9 @@ class BrokerMaintenanceWindowStartTime {
 
   factory BrokerMaintenanceWindowStartTime.fromMap(Map<String, dynamic> map) {
     return BrokerMaintenanceWindowStartTime(
-      dayOfWeek: map['dayOfWeek'] as String,
-      timeOfDay: map['timeOfDay'] as String,
-      timeZone: map['timeZone'] as String,
+      dayOfWeek: (map['dayOfWeek'] as String).input(),
+      timeOfDay: (map['timeOfDay'] as String).input(),
+      timeZone: (map['timeZone'] as String).input(),
     );
   }
 }

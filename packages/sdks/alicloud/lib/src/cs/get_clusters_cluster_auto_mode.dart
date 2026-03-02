@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterAutoMode {
   /// Whether to enable cluster automatic upgrade.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetClustersClusterAutoMode].
   /// [enabled] Whether to enable cluster automatic upgrade.
@@ -19,7 +20,7 @@ class GetClustersClusterAutoMode {
 
   factory GetClustersClusterAutoMode.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterAutoMode(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

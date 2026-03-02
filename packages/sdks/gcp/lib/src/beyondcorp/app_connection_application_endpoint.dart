@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppConnectionApplicationEndpoint {
   /// Hostname or IP address of the remote application endpoint.
-  final String host;
+  final pulumi.Input<String> host;
   /// Port of the remote application endpoint.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [AppConnectionApplicationEndpoint].
   /// [host] Hostname or IP address of the remote application endpoint.
@@ -24,8 +25,8 @@ class AppConnectionApplicationEndpoint {
 
   factory AppConnectionApplicationEndpoint.fromMap(Map<String, dynamic> map) {
     return AppConnectionApplicationEndpoint(
-      host: map['host'] as String,
-      port: map['port'] as int,
+      host: (map['host'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

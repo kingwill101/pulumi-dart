@@ -31,21 +31,14 @@ class JdbcDataSourceArgs {
   /// [jdbcPassword] The password of the database account.
   /// [jdbcUserName] The name of the database account.
   JdbcDataSourceArgs({
-    pulumi.Output<String>? dataSourceDescription,
-    pulumi.Output<String>? dataSourceName,
-    pulumi.Output<String>? dataSourceType,
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<String>? jdbcConnectionString,
-    pulumi.Output<String>? jdbcPassword,
-    required pulumi.Output<String> jdbcUserName,
-  }) :
-      dataSourceDescription = pulumi.Input.asOptionalInput<String>(dataSourceDescription),
-      dataSourceName = pulumi.Input.asOptionalInput<String>(dataSourceName),
-      dataSourceType = pulumi.Input.asOptionalInput<String>(dataSourceType),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      jdbcConnectionString = pulumi.Input.asOptionalInput<String>(jdbcConnectionString),
-      jdbcPassword = pulumi.Input.asOptionalInput<String>(jdbcPassword),
-      jdbcUserName = pulumi.Input.asInput<String>(jdbcUserName);
+    this.dataSourceDescription,
+    this.dataSourceName,
+    this.dataSourceType,
+    required this.dbInstanceId,
+    this.jdbcConnectionString,
+    this.jdbcPassword,
+    required this.jdbcUserName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class JdbcDataSourceArgs {
 
   factory JdbcDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return JdbcDataSourceArgs(
-      dataSourceDescription: map['dataSourceDescription'] == null ? null : pulumi.Output.create<String>(map['dataSourceDescription'] as String),
-      dataSourceName: map['dataSourceName'] == null ? null : pulumi.Output.create<String>(map['dataSourceName'] as String),
-      dataSourceType: map['dataSourceType'] == null ? null : pulumi.Output.create<String>(map['dataSourceType'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      jdbcConnectionString: map['jdbcConnectionString'] == null ? null : pulumi.Output.create<String>(map['jdbcConnectionString'] as String),
-      jdbcPassword: map['jdbcPassword'] == null ? null : pulumi.Output.create<String>(map['jdbcPassword'] as String),
-      jdbcUserName: pulumi.Output.create<String>(map['jdbcUserName'] as String),
+      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription'] as String).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      jdbcConnectionString: map['jdbcConnectionString'] == null ? null : (map['jdbcConnectionString'] as String).input(),
+      jdbcPassword: map['jdbcPassword'] == null ? null : (map['jdbcPassword'] as String).input(),
+      jdbcUserName: (map['jdbcUserName'] as String).input(),
     );
   }
 }

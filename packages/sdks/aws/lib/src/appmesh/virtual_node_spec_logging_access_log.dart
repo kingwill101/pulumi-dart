@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_node_spec_logging_access_log_file.dart';
 
 class VirtualNodeSpecLoggingAccessLog {
   /// File object to send virtual node access logs to.
-  final VirtualNodeSpecLoggingAccessLogFile? file;
+  final pulumi.Input<VirtualNodeSpecLoggingAccessLogFile>? file;
 
   /// Creates a new [VirtualNodeSpecLoggingAccessLog].
   /// [file] File object to send virtual node access logs to.
@@ -14,13 +15,13 @@ class VirtualNodeSpecLoggingAccessLog {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'file': ?file == null ? null : file!.toMap(),
+      'file': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecLoggingAccessLogFile, Map<String, dynamic>>(file, (value) => value.toMap()),
     };
   }
 
   factory VirtualNodeSpecLoggingAccessLog.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecLoggingAccessLog(
-      file: map['file'] == null ? null : VirtualNodeSpecLoggingAccessLogFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
+      file: map['file'] == null ? null : (VirtualNodeSpecLoggingAccessLogFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

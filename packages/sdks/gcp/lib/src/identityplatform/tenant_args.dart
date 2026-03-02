@@ -33,19 +33,13 @@ class TenantArgs {
   /// [enableEmailLinkSignin] Whether to enable email link user authentication.
   /// [project] The ID of the project in which the resource belongs.
   TenantArgs({
-    pulumi.Output<bool>? allowPasswordSignup,
-    pulumi.Output<TenantClient>? client,
-    pulumi.Output<bool>? disableAuth,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enableEmailLinkSignin,
-    pulumi.Output<String>? project,
-  }) :
-      allowPasswordSignup = pulumi.Input.asOptionalInput<bool>(allowPasswordSignup),
-      client = pulumi.Input.asOptionalInput<TenantClient>(client),
-      disableAuth = pulumi.Input.asOptionalInput<bool>(disableAuth),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enableEmailLinkSignin = pulumi.Input.asOptionalInput<bool>(enableEmailLinkSignin),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.allowPasswordSignup,
+    this.client,
+    this.disableAuth,
+    required this.displayName,
+    this.enableEmailLinkSignin,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class TenantArgs {
 
   factory TenantArgs.fromMap(Map<String, dynamic> map) {
     return TenantArgs(
-      allowPasswordSignup: map['allowPasswordSignup'] == null ? null : pulumi.Output.create<bool>(map['allowPasswordSignup'] as bool),
-      client: map['client'] == null ? null : pulumi.Output.create<TenantClient>(TenantClient.fromMap((map['client'] as Map).cast<String, dynamic>())),
-      disableAuth: map['disableAuth'] == null ? null : pulumi.Output.create<bool>(map['disableAuth'] as bool),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enableEmailLinkSignin: map['enableEmailLinkSignin'] == null ? null : pulumi.Output.create<bool>(map['enableEmailLinkSignin'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      allowPasswordSignup: map['allowPasswordSignup'] == null ? null : (map['allowPasswordSignup'] as bool).input(),
+      client: map['client'] == null ? null : (TenantClient.fromMap((map['client'] as Map).cast<String, dynamic>())).input(),
+      disableAuth: map['disableAuth'] == null ? null : (map['disableAuth'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      enableEmailLinkSignin: map['enableEmailLinkSignin'] == null ? null : (map['enableEmailLinkSignin'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

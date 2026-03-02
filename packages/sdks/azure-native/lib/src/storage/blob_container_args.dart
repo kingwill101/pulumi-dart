@@ -42,27 +42,17 @@ class BlobContainerArgs {
   /// [publicAccess] Specifies whether data in the container may be accessed publicly and the level of access.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   BlobContainerArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? containerName,
-    pulumi.Output<String>? defaultEncryptionScope,
-    pulumi.Output<bool>? denyEncryptionScopeOverride,
-    pulumi.Output<bool>? enableNfsV3AllSquash,
-    pulumi.Output<bool>? enableNfsV3RootSquash,
-    pulumi.Output<ImmutableStorageWithVersioning>? immutableStorageWithVersioning,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<PublicAccess>? publicAccess,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      containerName = pulumi.Input.asOptionalInput<String>(containerName),
-      defaultEncryptionScope = pulumi.Input.asOptionalInput<String>(defaultEncryptionScope),
-      denyEncryptionScopeOverride = pulumi.Input.asOptionalInput<bool>(denyEncryptionScopeOverride),
-      enableNfsV3AllSquash = pulumi.Input.asOptionalInput<bool>(enableNfsV3AllSquash),
-      enableNfsV3RootSquash = pulumi.Input.asOptionalInput<bool>(enableNfsV3RootSquash),
-      immutableStorageWithVersioning = pulumi.Input.asOptionalInput<ImmutableStorageWithVersioning>(immutableStorageWithVersioning),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      publicAccess = pulumi.Input.asOptionalInput<PublicAccess>(publicAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.containerName,
+    this.defaultEncryptionScope,
+    this.denyEncryptionScopeOverride,
+    this.enableNfsV3AllSquash,
+    this.enableNfsV3RootSquash,
+    this.immutableStorageWithVersioning,
+    this.metadata,
+    this.publicAccess,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class BlobContainerArgs {
 
   factory BlobContainerArgs.fromMap(Map<String, dynamic> map) {
     return BlobContainerArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      containerName: map['containerName'] == null ? null : pulumi.Output.create<String>(map['containerName'] as String),
-      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : pulumi.Output.create<String>(map['defaultEncryptionScope'] as String),
-      denyEncryptionScopeOverride: map['denyEncryptionScopeOverride'] == null ? null : pulumi.Output.create<bool>(map['denyEncryptionScopeOverride'] as bool),
-      enableNfsV3AllSquash: map['enableNfsV3AllSquash'] == null ? null : pulumi.Output.create<bool>(map['enableNfsV3AllSquash'] as bool),
-      enableNfsV3RootSquash: map['enableNfsV3RootSquash'] == null ? null : pulumi.Output.create<bool>(map['enableNfsV3RootSquash'] as bool),
-      immutableStorageWithVersioning: map['immutableStorageWithVersioning'] == null ? null : pulumi.Output.create<ImmutableStorageWithVersioning>(ImmutableStorageWithVersioning.fromMap((map['immutableStorageWithVersioning'] as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      publicAccess: map['publicAccess'] == null ? null : pulumi.Output.create<PublicAccess>(PublicAccess.fromValue(map['publicAccess'] as String)),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : (map['defaultEncryptionScope'] as String).input(),
+      denyEncryptionScopeOverride: map['denyEncryptionScopeOverride'] == null ? null : (map['denyEncryptionScopeOverride'] as bool).input(),
+      enableNfsV3AllSquash: map['enableNfsV3AllSquash'] == null ? null : (map['enableNfsV3AllSquash'] as bool).input(),
+      enableNfsV3RootSquash: map['enableNfsV3RootSquash'] == null ? null : (map['enableNfsV3RootSquash'] as bool).input(),
+      immutableStorageWithVersioning: map['immutableStorageWithVersioning'] == null ? null : (ImmutableStorageWithVersioning.fromMap((map['immutableStorageWithVersioning'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      publicAccess: map['publicAccess'] == null ? null : (PublicAccess.fromValue(map['publicAccess'] as String)).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

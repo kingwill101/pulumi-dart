@@ -58,35 +58,21 @@ class DeploymentArgs {
   /// [resourceId] Workspace resource ID
   /// [streamingResourceSetting] Resource settings for streaming mode See `streaming_resource_setting` below.
   DeploymentArgs({
-    required pulumi.Output<DeploymentArtifact> artifact,
-    pulumi.Output<DeploymentBatchResourceSetting>? batchResourceSetting,
-    required pulumi.Output<String> deploymentName,
-    required pulumi.Output<DeploymentDeploymentTarget> deploymentTarget,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? engineVersion,
-    required pulumi.Output<String> executionMode,
-    pulumi.Output<Map<String, String>>? flinkConf,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<List<DeploymentLocalVariable>>? localVariables,
-    pulumi.Output<DeploymentLogging>? logging,
-    required pulumi.Output<String> namespace,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<DeploymentStreamingResourceSetting>? streamingResourceSetting,
-  }) :
-      artifact = pulumi.Input.asInput<DeploymentArtifact>(artifact),
-      batchResourceSetting = pulumi.Input.asOptionalInput<DeploymentBatchResourceSetting>(batchResourceSetting),
-      deploymentName = pulumi.Input.asInput<String>(deploymentName),
-      deploymentTarget = pulumi.Input.asInput<DeploymentDeploymentTarget>(deploymentTarget),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      executionMode = pulumi.Input.asInput<String>(executionMode),
-      flinkConf = pulumi.Input.asOptionalInput<Map<String, String>>(flinkConf),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      localVariables = pulumi.Input.asOptionalInput<List<DeploymentLocalVariable>>(localVariables),
-      logging = pulumi.Input.asOptionalInput<DeploymentLogging>(logging),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      streamingResourceSetting = pulumi.Input.asOptionalInput<DeploymentStreamingResourceSetting>(streamingResourceSetting);
+    required this.artifact,
+    this.batchResourceSetting,
+    required this.deploymentName,
+    required this.deploymentTarget,
+    this.description,
+    this.engineVersion,
+    required this.executionMode,
+    this.flinkConf,
+    this.labels,
+    this.localVariables,
+    this.logging,
+    required this.namespace,
+    this.resourceId,
+    this.streamingResourceSetting,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      artifact: pulumi.Output.create<DeploymentArtifact>(DeploymentArtifact.fromMap((map['artifact'] as Map).cast<String, dynamic>())),
-      batchResourceSetting: map['batchResourceSetting'] == null ? null : pulumi.Output.create<DeploymentBatchResourceSetting>(DeploymentBatchResourceSetting.fromMap((map['batchResourceSetting'] as Map).cast<String, dynamic>())),
-      deploymentName: pulumi.Output.create<String>(map['deploymentName'] as String),
-      deploymentTarget: pulumi.Output.create<DeploymentDeploymentTarget>(DeploymentDeploymentTarget.fromMap((map['deploymentTarget'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      executionMode: pulumi.Output.create<String>(map['executionMode'] as String),
-      flinkConf: map['flinkConf'] == null ? null : pulumi.Output.create<Map<String, String>>((map['flinkConf'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      localVariables: map['localVariables'] == null ? null : pulumi.Output.create<List<DeploymentLocalVariable>>(pulumi.Input.decodeList<DeploymentLocalVariable>(map['localVariables'], (value) => DeploymentLocalVariable.fromMap((value as Map).cast<String, dynamic>()))),
-      logging: map['logging'] == null ? null : pulumi.Output.create<DeploymentLogging>(DeploymentLogging.fromMap((map['logging'] as Map).cast<String, dynamic>())),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      streamingResourceSetting: map['streamingResourceSetting'] == null ? null : pulumi.Output.create<DeploymentStreamingResourceSetting>(DeploymentStreamingResourceSetting.fromMap((map['streamingResourceSetting'] as Map).cast<String, dynamic>())),
+      artifact: (DeploymentArtifact.fromMap((map['artifact'] as Map).cast<String, dynamic>())).input(),
+      batchResourceSetting: map['batchResourceSetting'] == null ? null : (DeploymentBatchResourceSetting.fromMap((map['batchResourceSetting'] as Map).cast<String, dynamic>())).input(),
+      deploymentName: (map['deploymentName'] as String).input(),
+      deploymentTarget: (DeploymentDeploymentTarget.fromMap((map['deploymentTarget'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      executionMode: (map['executionMode'] as String).input(),
+      flinkConf: map['flinkConf'] == null ? null : ((map['flinkConf'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      localVariables: map['localVariables'] == null ? null : (pulumi.Input.decodeList<DeploymentLocalVariable>(map['localVariables'], (value) => DeploymentLocalVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logging: map['logging'] == null ? null : (DeploymentLogging.fromMap((map['logging'] as Map).cast<String, dynamic>())).input(),
+      namespace: (map['namespace'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      streamingResourceSetting: map['streamingResourceSetting'] == null ? null : (DeploymentStreamingResourceSetting.fromMap((map['streamingResourceSetting'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

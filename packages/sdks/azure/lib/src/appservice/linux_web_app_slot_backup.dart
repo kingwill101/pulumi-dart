@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linux_web_app_slot_backup_schedule.dart';
 
 class LinuxWebAppSlotBackup {
   /// Should this backup job be enabled? Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The name which should be used for this Backup.
-  final String name;
+  final pulumi.Input<String> name;
   /// An `schedule` block as defined below.
-  final LinuxWebAppSlotBackupSchedule schedule;
+  final pulumi.Input<LinuxWebAppSlotBackupSchedule> schedule;
   /// The SAS URL to the container.
-  final String storageAccountUrl;
+  final pulumi.Input<String> storageAccountUrl;
 
   /// Creates a new [LinuxWebAppSlotBackup].
   /// [enabled] Should this backup job be enabled? Defaults to `true`.
@@ -28,17 +29,17 @@ class LinuxWebAppSlotBackup {
     return <String, dynamic>{
       'enabled': ?enabled,
       'name': name,
-      'schedule': schedule.toMap(),
+      'schedule': pulumi.Input.mapInputValue<LinuxWebAppSlotBackupSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
       'storageAccountUrl': storageAccountUrl,
     };
   }
 
   factory LinuxWebAppSlotBackup.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSlotBackup(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      name: map['name'] as String,
-      schedule: LinuxWebAppSlotBackupSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
-      storageAccountUrl: map['storageAccountUrl'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      schedule: (LinuxWebAppSlotBackupSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      storageAccountUrl: (map['storageAccountUrl'] as String).input(),
     );
   }
 }

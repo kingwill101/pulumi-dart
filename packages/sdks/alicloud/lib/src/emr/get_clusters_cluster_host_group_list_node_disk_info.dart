@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterHostGroupListNodeDiskInfo {
   /// The disk name.
-  final String device;
+  final pulumi.Input<String> device;
   /// The ID of the disk.
-  final String diskId;
+  final pulumi.Input<String> diskId;
   /// The disk name.
-  final String diskName;
+  final pulumi.Input<String> diskName;
   /// Disk capacity.
-  final int size;
+  final pulumi.Input<int> size;
   /// Disk type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetClustersClusterHostGroupListNodeDiskInfo].
   /// [device] The disk name.
@@ -39,11 +40,11 @@ class GetClustersClusterHostGroupListNodeDiskInfo {
 
   factory GetClustersClusterHostGroupListNodeDiskInfo.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterHostGroupListNodeDiskInfo(
-      device: map['device'] as String,
-      diskId: map['diskId'] as String,
-      diskName: map['diskName'] as String,
-      size: map['size'] as int,
-      type: map['type'] as String,
+      device: (map['device'] as String).input(),
+      diskId: (map['diskId'] as String).input(),
+      diskName: (map['diskName'] as String).input(),
+      size: (map['size'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

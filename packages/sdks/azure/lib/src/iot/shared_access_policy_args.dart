@@ -35,21 +35,14 @@ class SharedAccessPolicyArgs {
   /// [resourceGroupName] The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   /// [serviceConnect] Adds `ServiceConnect` permission to this Shared Access Account. It allows sending and receiving on the cloud-side endpoints.
   SharedAccessPolicyArgs({
-    pulumi.Output<bool>? deviceConnect,
-    required pulumi.Output<String> iothubName,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? registryRead,
-    pulumi.Output<bool>? registryWrite,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? serviceConnect,
-  }) :
-      deviceConnect = pulumi.Input.asOptionalInput<bool>(deviceConnect),
-      iothubName = pulumi.Input.asInput<String>(iothubName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      registryRead = pulumi.Input.asOptionalInput<bool>(registryRead),
-      registryWrite = pulumi.Input.asOptionalInput<bool>(registryWrite),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceConnect = pulumi.Input.asOptionalInput<bool>(serviceConnect);
+    this.deviceConnect,
+    required this.iothubName,
+    this.name,
+    this.registryRead,
+    this.registryWrite,
+    required this.resourceGroupName,
+    this.serviceConnect,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class SharedAccessPolicyArgs {
 
   factory SharedAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SharedAccessPolicyArgs(
-      deviceConnect: map['deviceConnect'] == null ? null : pulumi.Output.create<bool>(map['deviceConnect'] as bool),
-      iothubName: pulumi.Output.create<String>(map['iothubName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      registryRead: map['registryRead'] == null ? null : pulumi.Output.create<bool>(map['registryRead'] as bool),
-      registryWrite: map['registryWrite'] == null ? null : pulumi.Output.create<bool>(map['registryWrite'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceConnect: map['serviceConnect'] == null ? null : pulumi.Output.create<bool>(map['serviceConnect'] as bool),
+      deviceConnect: map['deviceConnect'] == null ? null : (map['deviceConnect'] as bool).input(),
+      iothubName: (map['iothubName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      registryRead: map['registryRead'] == null ? null : (map['registryRead'] as bool).input(),
+      registryWrite: map['registryWrite'] == null ? null : (map['registryWrite'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceConnect: map['serviceConnect'] == null ? null : (map['serviceConnect'] as bool).input(),
     );
   }
 }

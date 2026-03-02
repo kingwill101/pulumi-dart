@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlobalSecondaryIndexOnDemandThroughput {
   /// Maximum number of read request units for this index.
-  final int? maxReadRequestUnits;
+  final pulumi.Input<int>? maxReadRequestUnits;
   /// Maximum number of write request units for this index.
-  final int? maxWriteRequestUnits;
+  final pulumi.Input<int>? maxWriteRequestUnits;
 
   /// Creates a new [GlobalSecondaryIndexOnDemandThroughput].
   /// [maxReadRequestUnits] Maximum number of read request units for this index.
@@ -24,8 +25,8 @@ class GlobalSecondaryIndexOnDemandThroughput {
 
   factory GlobalSecondaryIndexOnDemandThroughput.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexOnDemandThroughput(
-      maxReadRequestUnits: map['maxReadRequestUnits'] == null ? null : map['maxReadRequestUnits'] as int,
-      maxWriteRequestUnits: map['maxWriteRequestUnits'] == null ? null : map['maxWriteRequestUnits'] as int,
+      maxReadRequestUnits: map['maxReadRequestUnits'] == null ? null : (map['maxReadRequestUnits'] as int).input(),
+      maxWriteRequestUnits: map['maxWriteRequestUnits'] == null ? null : (map['maxWriteRequestUnits'] as int).input(),
     );
   }
 }

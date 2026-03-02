@@ -7,13 +7,13 @@ import 'validating_webhook.dart';
 /// ValidatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and object without changing it.
 class ValidatingWebhookConfiguration {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-  final ObjectMeta? metadata;
+  final pulumi.Input<ObjectMeta>? metadata;
   /// Webhooks is a list of webhooks and the affected resources and operations.
-  final List<ValidatingWebhook>? webhooks;
+  final pulumi.Input<List<ValidatingWebhook>>? webhooks;
 
   /// Creates a new [ValidatingWebhookConfiguration].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -31,17 +31,17 @@ class ValidatingWebhookConfiguration {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'webhooks': ?webhooks == null ? null : pulumi.Input.encodeList<ValidatingWebhook, Map<String, dynamic>>(webhooks!, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'webhooks': ?pulumi.Input.mapOptionalInputValue<List<ValidatingWebhook>, List<Map<String, dynamic>>>(webhooks, (value) => pulumi.Input.encodeList<ValidatingWebhook, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ValidatingWebhookConfiguration.fromMap(Map<String, dynamic> map) {
     return ValidatingWebhookConfiguration(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      webhooks: map['webhooks'] == null ? null : pulumi.Input.decodeList<ValidatingWebhook>(map['webhooks'], (value) => ValidatingWebhook.fromMap((value as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      webhooks: map['webhooks'] == null ? null : (pulumi.Input.decodeList<ValidatingWebhook>(map['webhooks'], (value) => ValidatingWebhook.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

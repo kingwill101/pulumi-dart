@@ -16,11 +16,9 @@ class GetBudgetResourceGroupArgs {
   /// [name] The name of this Consumption Budget.
   /// [resourceGroupId] The ID of the subscription.
   GetBudgetResourceGroupArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupId = pulumi.Input.asInput<String>(resourceGroupId);
+    required this.name,
+    required this.resourceGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBudgetResourceGroupArgs {
 
   factory GetBudgetResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetBudgetResourceGroupArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupId: pulumi.Output.create<String>(map['resourceGroupId'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
     );
   }
 }

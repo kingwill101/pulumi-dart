@@ -19,13 +19,10 @@ class SigningCertificateArgs {
   /// [status] The status you want to assign to the certificate. `Active` means that the certificate can be used for programmatic calls to Amazon Web Services `Inactive` means that the certificate cannot be used.
   /// [userName] The name of the user the signing certificate is for.
   SigningCertificateArgs({
-    required pulumi.Output<String> certificateBody,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> userName,
-  }) :
-      certificateBody = pulumi.Input.asInput<String>(certificateBody),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      userName = pulumi.Input.asInput<String>(userName);
+    required this.certificateBody,
+    this.status,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SigningCertificateArgs {
 
   factory SigningCertificateArgs.fromMap(Map<String, dynamic> map) {
     return SigningCertificateArgs(
-      certificateBody: pulumi.Output.create<String>(map['certificateBody'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      certificateBody: (map['certificateBody'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

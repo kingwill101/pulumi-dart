@@ -43,31 +43,19 @@ class MlflowTrackingServerState {
   /// [trackingServerUrl] The URL to connect to the MLflow user interface for the described tracking server.
   /// [weeklyMaintenanceWindowStart] The day and time of the week in Coordinated Universal Time (UTC) 24-hour standard time that weekly maintenance updates are scheduled. For example: TUE:03:30.
   MlflowTrackingServerState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? artifactStoreUri,
-    pulumi.Output<bool>? automaticModelRegistration,
-    pulumi.Output<String>? mlflowVersion,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? trackingServerName,
-    pulumi.Output<String>? trackingServerSize,
-    pulumi.Output<String>? trackingServerUrl,
-    pulumi.Output<String>? weeklyMaintenanceWindowStart,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      artifactStoreUri = pulumi.Input.asOptionalInput<String>(artifactStoreUri),
-      automaticModelRegistration = pulumi.Input.asOptionalInput<bool>(automaticModelRegistration),
-      mlflowVersion = pulumi.Input.asOptionalInput<String>(mlflowVersion),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      trackingServerName = pulumi.Input.asOptionalInput<String>(trackingServerName),
-      trackingServerSize = pulumi.Input.asOptionalInput<String>(trackingServerSize),
-      trackingServerUrl = pulumi.Input.asOptionalInput<String>(trackingServerUrl),
-      weeklyMaintenanceWindowStart = pulumi.Input.asOptionalInput<String>(weeklyMaintenanceWindowStart);
+    this.arn,
+    this.artifactStoreUri,
+    this.automaticModelRegistration,
+    this.mlflowVersion,
+    this.region,
+    this.roleArn,
+    this.tags,
+    this.tagsAll,
+    this.trackingServerName,
+    this.trackingServerSize,
+    this.trackingServerUrl,
+    this.weeklyMaintenanceWindowStart,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class MlflowTrackingServerState {
 
   factory MlflowTrackingServerState.fromMap(Map<String, dynamic> map) {
     return MlflowTrackingServerState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      artifactStoreUri: map['artifactStoreUri'] == null ? null : pulumi.Output.create<String>(map['artifactStoreUri'] as String),
-      automaticModelRegistration: map['automaticModelRegistration'] == null ? null : pulumi.Output.create<bool>(map['automaticModelRegistration'] as bool),
-      mlflowVersion: map['mlflowVersion'] == null ? null : pulumi.Output.create<String>(map['mlflowVersion'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      trackingServerName: map['trackingServerName'] == null ? null : pulumi.Output.create<String>(map['trackingServerName'] as String),
-      trackingServerSize: map['trackingServerSize'] == null ? null : pulumi.Output.create<String>(map['trackingServerSize'] as String),
-      trackingServerUrl: map['trackingServerUrl'] == null ? null : pulumi.Output.create<String>(map['trackingServerUrl'] as String),
-      weeklyMaintenanceWindowStart: map['weeklyMaintenanceWindowStart'] == null ? null : pulumi.Output.create<String>(map['weeklyMaintenanceWindowStart'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      artifactStoreUri: map['artifactStoreUri'] == null ? null : (map['artifactStoreUri'] as String).input(),
+      automaticModelRegistration: map['automaticModelRegistration'] == null ? null : (map['automaticModelRegistration'] as bool).input(),
+      mlflowVersion: map['mlflowVersion'] == null ? null : (map['mlflowVersion'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      trackingServerName: map['trackingServerName'] == null ? null : (map['trackingServerName'] as String).input(),
+      trackingServerSize: map['trackingServerSize'] == null ? null : (map['trackingServerSize'] as String).input(),
+      trackingServerUrl: map['trackingServerUrl'] == null ? null : (map['trackingServerUrl'] as String).input(),
+      weeklyMaintenanceWindowStart: map['weeklyMaintenanceWindowStart'] == null ? null : (map['weeklyMaintenanceWindowStart'] as String).input(),
     );
   }
 }

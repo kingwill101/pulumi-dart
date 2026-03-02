@@ -44,21 +44,14 @@ class FunctionIamMemberState {
   /// [region] The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [role] The role that should be applied. Only one
   FunctionIamMemberState({
-    pulumi.Output<String>? cloudFunction,
-    pulumi.Output<FunctionIamMemberCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-  }) :
-      cloudFunction = pulumi.Input.asOptionalInput<String>(cloudFunction),
-      condition = pulumi.Input.asOptionalInput<FunctionIamMemberCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.cloudFunction,
+    this.condition,
+    this.etag,
+    this.member,
+    this.project,
+    this.region,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,13 +67,13 @@ class FunctionIamMemberState {
 
   factory FunctionIamMemberState.fromMap(Map<String, dynamic> map) {
     return FunctionIamMemberState(
-      cloudFunction: map['cloudFunction'] == null ? null : pulumi.Output.create<String>(map['cloudFunction'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<FunctionIamMemberCondition>(FunctionIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      cloudFunction: map['cloudFunction'] == null ? null : (map['cloudFunction'] as String).input(),
+      condition: map['condition'] == null ? null : (FunctionIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

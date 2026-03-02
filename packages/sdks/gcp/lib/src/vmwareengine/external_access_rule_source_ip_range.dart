@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExternalAccessRuleSourceIpRange {
   /// A single IP address.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// An IP address range in the CIDR format.
-  final String? ipAddressRange;
+  final pulumi.Input<String>? ipAddressRange;
 
   /// Creates a new [ExternalAccessRuleSourceIpRange].
   /// [ipAddress] A single IP address.
@@ -24,8 +25,8 @@ class ExternalAccessRuleSourceIpRange {
 
   factory ExternalAccessRuleSourceIpRange.fromMap(Map<String, dynamic> map) {
     return ExternalAccessRuleSourceIpRange(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      ipAddressRange: map['ipAddressRange'] == null ? null : map['ipAddressRange'] as String,
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipAddressRange: map['ipAddressRange'] == null ? null : (map['ipAddressRange'] as String).input(),
     );
   }
 }

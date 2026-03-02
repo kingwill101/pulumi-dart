@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataflow_endpoint_authentication_access_token.dart';
 import 'dataflow_endpoint_authentication_system_assigned_managed_identity.dart';
 import 'dataflow_endpoint_authentication_user_assigned_managed_identity.dart';
@@ -7,13 +8,13 @@ import 'dataflow_endpoint_authentication_user_assigned_managed_identity.dart';
 /// Azure Data Lake endpoint Authentication properties.  NOTE Enum - Only one method is supported for one entry
 class DataflowEndpointDataLakeStorageAuthentication {
   /// SAS token authentication.
-  final DataflowEndpointAuthenticationAccessToken? accessTokenSettings;
+  final pulumi.Input<DataflowEndpointAuthenticationAccessToken>? accessTokenSettings;
   /// Mode of Authentication.
-  final String method;
+  final pulumi.Input<String> method;
   /// System-assigned managed identity authentication.
-  final DataflowEndpointAuthenticationSystemAssignedManagedIdentity? systemAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentity>? systemAssignedManagedIdentitySettings;
   /// User-assigned managed identity authentication.
-  final DataflowEndpointAuthenticationUserAssignedManagedIdentity? userAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentity>? userAssignedManagedIdentitySettings;
 
   /// Creates a new [DataflowEndpointDataLakeStorageAuthentication].
   /// [accessTokenSettings] SAS token authentication.
@@ -29,19 +30,19 @@ class DataflowEndpointDataLakeStorageAuthentication {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessTokenSettings': ?accessTokenSettings == null ? null : accessTokenSettings!.toMap(),
+      'accessTokenSettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointAuthenticationAccessToken, Map<String, dynamic>>(accessTokenSettings, (value) => value.toMap()),
       'method': method,
-      'systemAssignedManagedIdentitySettings': ?systemAssignedManagedIdentitySettings == null ? null : systemAssignedManagedIdentitySettings!.toMap(),
-      'userAssignedManagedIdentitySettings': ?userAssignedManagedIdentitySettings == null ? null : userAssignedManagedIdentitySettings!.toMap(),
+      'systemAssignedManagedIdentitySettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointAuthenticationSystemAssignedManagedIdentity, Map<String, dynamic>>(systemAssignedManagedIdentitySettings, (value) => value.toMap()),
+      'userAssignedManagedIdentitySettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointAuthenticationUserAssignedManagedIdentity, Map<String, dynamic>>(userAssignedManagedIdentitySettings, (value) => value.toMap()),
     };
   }
 
   factory DataflowEndpointDataLakeStorageAuthentication.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointDataLakeStorageAuthentication(
-      accessTokenSettings: map['accessTokenSettings'] == null ? null : DataflowEndpointAuthenticationAccessToken.fromMap((map['accessTokenSettings'] as Map).cast<String, dynamic>()),
-      method: map['method'] as String,
-      systemAssignedManagedIdentitySettings: map['systemAssignedManagedIdentitySettings'] == null ? null : DataflowEndpointAuthenticationSystemAssignedManagedIdentity.fromMap((map['systemAssignedManagedIdentitySettings'] as Map).cast<String, dynamic>()),
-      userAssignedManagedIdentitySettings: map['userAssignedManagedIdentitySettings'] == null ? null : DataflowEndpointAuthenticationUserAssignedManagedIdentity.fromMap((map['userAssignedManagedIdentitySettings'] as Map).cast<String, dynamic>()),
+      accessTokenSettings: map['accessTokenSettings'] == null ? null : (DataflowEndpointAuthenticationAccessToken.fromMap((map['accessTokenSettings'] as Map).cast<String, dynamic>())).input(),
+      method: (map['method'] as String).input(),
+      systemAssignedManagedIdentitySettings: map['systemAssignedManagedIdentitySettings'] == null ? null : (DataflowEndpointAuthenticationSystemAssignedManagedIdentity.fromMap((map['systemAssignedManagedIdentitySettings'] as Map).cast<String, dynamic>())).input(),
+      userAssignedManagedIdentitySettings: map['userAssignedManagedIdentitySettings'] == null ? null : (DataflowEndpointAuthenticationUserAssignedManagedIdentity.fromMap((map['userAssignedManagedIdentitySettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetIpSetArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scope] Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
   GetIpSetArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> scope,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.name,
+    this.region,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIpSetArgs {
 
   factory GetIpSetArgs.fromMap(Map<String, dynamic> map) {
     return GetIpSetArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

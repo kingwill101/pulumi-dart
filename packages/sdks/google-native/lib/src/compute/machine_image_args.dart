@@ -42,27 +42,17 @@ class MachineImageArgs {
   /// [sourceInstance] The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
   /// [storageLocations] The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
   MachineImageArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? guestFlush,
-    pulumi.Output<CustomerEncryptionKey>? machineImageEncryptionKey,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<List<SavedDisk>>? savedDisks,
-    pulumi.Output<List<SourceDiskEncryptionKey>>? sourceDiskEncryptionKeys,
-    required pulumi.Output<String> sourceInstance,
-    pulumi.Output<List<String>>? storageLocations,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      guestFlush = pulumi.Input.asOptionalInput<bool>(guestFlush),
-      machineImageEncryptionKey = pulumi.Input.asOptionalInput<CustomerEncryptionKey>(machineImageEncryptionKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      savedDisks = pulumi.Input.asOptionalInput<List<SavedDisk>>(savedDisks),
-      sourceDiskEncryptionKeys = pulumi.Input.asOptionalInput<List<SourceDiskEncryptionKey>>(sourceDiskEncryptionKeys),
-      sourceInstance = pulumi.Input.asInput<String>(sourceInstance),
-      storageLocations = pulumi.Input.asOptionalInput<List<String>>(storageLocations);
+    this.description,
+    this.guestFlush,
+    this.machineImageEncryptionKey,
+    this.name,
+    this.project,
+    this.requestId,
+    this.savedDisks,
+    this.sourceDiskEncryptionKeys,
+    required this.sourceInstance,
+    this.storageLocations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class MachineImageArgs {
 
   factory MachineImageArgs.fromMap(Map<String, dynamic> map) {
     return MachineImageArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      guestFlush: map['guestFlush'] == null ? null : pulumi.Output.create<bool>(map['guestFlush'] as bool),
-      machineImageEncryptionKey: map['machineImageEncryptionKey'] == null ? null : pulumi.Output.create<CustomerEncryptionKey>(CustomerEncryptionKey.fromMap((map['machineImageEncryptionKey'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      savedDisks: map['savedDisks'] == null ? null : pulumi.Output.create<List<SavedDisk>>(pulumi.Input.decodeList<SavedDisk>(map['savedDisks'], (value) => SavedDisk.fromMap((value as Map).cast<String, dynamic>()))),
-      sourceDiskEncryptionKeys: map['sourceDiskEncryptionKeys'] == null ? null : pulumi.Output.create<List<SourceDiskEncryptionKey>>(pulumi.Input.decodeList<SourceDiskEncryptionKey>(map['sourceDiskEncryptionKeys'], (value) => SourceDiskEncryptionKey.fromMap((value as Map).cast<String, dynamic>()))),
-      sourceInstance: pulumi.Output.create<String>(map['sourceInstance'] as String),
-      storageLocations: map['storageLocations'] == null ? null : pulumi.Output.create<List<String>>((map['storageLocations'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush'] as bool).input(),
+      machineImageEncryptionKey: map['machineImageEncryptionKey'] == null ? null : (CustomerEncryptionKey.fromMap((map['machineImageEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      savedDisks: map['savedDisks'] == null ? null : (pulumi.Input.decodeList<SavedDisk>(map['savedDisks'], (value) => SavedDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceDiskEncryptionKeys: map['sourceDiskEncryptionKeys'] == null ? null : (pulumi.Input.decodeList<SourceDiskEncryptionKey>(map['sourceDiskEncryptionKeys'], (value) => SourceDiskEncryptionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceInstance: (map['sourceInstance'] as String).input(),
+      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations'] as List).cast<String>()).input(),
     );
   }
 }

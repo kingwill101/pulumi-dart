@@ -5,11 +5,11 @@ import 'get_catalog_table_storage_descriptor_schema_reference_schema_id.dart';
 
 class GetCatalogTableStorageDescriptorSchemaReference {
   /// Configuration block that contains schema identity fields. See `schema_id` below.
-  final List<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId> schemaIds;
+  final pulumi.Input<List<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId>> schemaIds;
   /// Unique ID assigned to a version of the schema.
-  final String schemaVersionId;
+  final pulumi.Input<String> schemaVersionId;
   /// Version number of the schema.
-  final int schemaVersionNumber;
+  final pulumi.Input<int> schemaVersionNumber;
 
   /// Creates a new [GetCatalogTableStorageDescriptorSchemaReference].
   /// [schemaIds] Configuration block that contains schema identity fields. See `schema_id` below.
@@ -23,7 +23,7 @@ class GetCatalogTableStorageDescriptorSchemaReference {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schemaIds': pulumi.Input.encodeList<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId, Map<String, dynamic>>(schemaIds, (value) => value.toMap()),
+      'schemaIds': pulumi.Input.mapInputValue<List<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId>, List<Map<String, dynamic>>>(schemaIds, (value) => pulumi.Input.encodeList<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schemaVersionId': schemaVersionId,
       'schemaVersionNumber': schemaVersionNumber,
     };
@@ -31,9 +31,9 @@ class GetCatalogTableStorageDescriptorSchemaReference {
 
   factory GetCatalogTableStorageDescriptorSchemaReference.fromMap(Map<String, dynamic> map) {
     return GetCatalogTableStorageDescriptorSchemaReference(
-      schemaIds: pulumi.Input.decodeList<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId>(map['schemaIds'], (value) => GetCatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap((value as Map).cast<String, dynamic>())),
-      schemaVersionId: map['schemaVersionId'] as String,
-      schemaVersionNumber: map['schemaVersionNumber'] as int,
+      schemaIds: (pulumi.Input.decodeList<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId>(map['schemaIds'], (value) => GetCatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schemaVersionId: (map['schemaVersionId'] as String).input(),
+      schemaVersionNumber: (map['schemaVersionNumber'] as int).input(),
     );
   }
 }

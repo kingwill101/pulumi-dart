@@ -25,17 +25,12 @@ class StudioLifecycleConfigArgs {
   /// [studioLifecycleConfigName] The name of the Studio Lifecycle Configuration to create.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   StudioLifecycleConfigArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> studioLifecycleConfigAppType,
-    required pulumi.Output<String> studioLifecycleConfigContent,
-    required pulumi.Output<String> studioLifecycleConfigName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      studioLifecycleConfigAppType = pulumi.Input.asInput<String>(studioLifecycleConfigAppType),
-      studioLifecycleConfigContent = pulumi.Input.asInput<String>(studioLifecycleConfigContent),
-      studioLifecycleConfigName = pulumi.Input.asInput<String>(studioLifecycleConfigName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.region,
+    required this.studioLifecycleConfigAppType,
+    required this.studioLifecycleConfigContent,
+    required this.studioLifecycleConfigName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class StudioLifecycleConfigArgs {
 
   factory StudioLifecycleConfigArgs.fromMap(Map<String, dynamic> map) {
     return StudioLifecycleConfigArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      studioLifecycleConfigAppType: pulumi.Output.create<String>(map['studioLifecycleConfigAppType'] as String),
-      studioLifecycleConfigContent: pulumi.Output.create<String>(map['studioLifecycleConfigContent'] as String),
-      studioLifecycleConfigName: pulumi.Output.create<String>(map['studioLifecycleConfigName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      studioLifecycleConfigAppType: (map['studioLifecycleConfigAppType'] as String).input(),
+      studioLifecycleConfigContent: (map['studioLifecycleConfigContent'] as String).input(),
+      studioLifecycleConfigName: (map['studioLifecycleConfigName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

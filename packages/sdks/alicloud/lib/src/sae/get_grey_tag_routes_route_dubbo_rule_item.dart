@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGreyTagRoutesRouteDubboRuleItem {
   /// The comparison operator.
-  final String cond;
+  final pulumi.Input<String> cond;
   /// The parameter value gets the expression.
-  final String expr;
+  final pulumi.Input<String> expr;
   /// The parameter number.
-  final int index;
+  final pulumi.Input<int> index;
   /// The operator.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// The value of the parameter.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetGreyTagRoutesRouteDubboRuleItem].
   /// [cond] The comparison operator.
@@ -39,11 +40,11 @@ class GetGreyTagRoutesRouteDubboRuleItem {
 
   factory GetGreyTagRoutesRouteDubboRuleItem.fromMap(Map<String, dynamic> map) {
     return GetGreyTagRoutesRouteDubboRuleItem(
-      cond: map['cond'] as String,
-      expr: map['expr'] as String,
-      index: map['index'] as int,
-      operator: map['operator'] as String,
-      value: map['value'] as String,
+      cond: (map['cond'] as String).input(),
+      expr: (map['expr'] as String).input(),
+      index: (map['index'] as int).input(),
+      operator: (map['operator'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

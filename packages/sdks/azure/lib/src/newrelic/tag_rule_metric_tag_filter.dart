@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TagRuleMetricTagFilter {
   /// Valid actions for a filtering tag. Possible values are `Exclude` and `Include`. Exclusion takes priority over inclusion.
-  final String action;
+  final pulumi.Input<String> action;
   /// Specifies the name (also known as the key) of the tag.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the value of the tag.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [TagRuleMetricTagFilter].
   /// [action] Valid actions for a filtering tag. Possible values are `Exclude` and `Include`. Exclusion takes priority over inclusion.
@@ -29,9 +30,9 @@ class TagRuleMetricTagFilter {
 
   factory TagRuleMetricTagFilter.fromMap(Map<String, dynamic> map) {
     return TagRuleMetricTagFilter(
-      action: map['action'] as String,
-      name: map['name'] as String,
-      value: map['value'] as String,
+      action: (map['action'] as String).input(),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

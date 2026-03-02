@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of IPConfigurationBgpPeeringAddress.
 class IPConfigurationBgpPeeringAddressResponse {
   /// The list of custom BGP peering addresses which belong to IP configuration.
-  final List<String>? customBgpIpAddresses;
+  final pulumi.Input<List<String>>? customBgpIpAddresses;
   /// The list of default BGP peering addresses which belong to IP configuration.
-  final List<String> defaultBgpIpAddresses;
+  final pulumi.Input<List<String>> defaultBgpIpAddresses;
   /// The ID of IP configuration which belongs to gateway.
-  final String? ipconfigurationId;
+  final pulumi.Input<String>? ipconfigurationId;
   /// The list of tunnel public IP addresses which belong to IP configuration.
-  final List<String> tunnelIpAddresses;
+  final pulumi.Input<List<String>> tunnelIpAddresses;
 
   /// Creates a new [IPConfigurationBgpPeeringAddressResponse].
   /// [customBgpIpAddresses] The list of custom BGP peering addresses which belong to IP configuration.
@@ -35,10 +36,10 @@ class IPConfigurationBgpPeeringAddressResponse {
 
   factory IPConfigurationBgpPeeringAddressResponse.fromMap(Map<String, dynamic> map) {
     return IPConfigurationBgpPeeringAddressResponse(
-      customBgpIpAddresses: map['customBgpIpAddresses'] == null ? null : (map['customBgpIpAddresses'] as List).cast<String>(),
-      defaultBgpIpAddresses: (map['defaultBgpIpAddresses'] as List).cast<String>(),
-      ipconfigurationId: map['ipconfigurationId'] == null ? null : map['ipconfigurationId'] as String,
-      tunnelIpAddresses: (map['tunnelIpAddresses'] as List).cast<String>(),
+      customBgpIpAddresses: map['customBgpIpAddresses'] == null ? null : ((map['customBgpIpAddresses'] as List).cast<String>()).input(),
+      defaultBgpIpAddresses: ((map['defaultBgpIpAddresses'] as List).cast<String>()).input(),
+      ipconfigurationId: map['ipconfigurationId'] == null ? null : (map['ipconfigurationId'] as String).input(),
+      tunnelIpAddresses: ((map['tunnelIpAddresses'] as List).cast<String>()).input(),
     );
   }
 }

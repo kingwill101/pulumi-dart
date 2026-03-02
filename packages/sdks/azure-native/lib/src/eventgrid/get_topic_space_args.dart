@@ -19,13 +19,10 @@ class GetTopicSpaceArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicSpaceName] Name of the Topic space.
   GetTopicSpaceArgs({
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> topicSpaceName,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      topicSpaceName = pulumi.Input.asInput<String>(topicSpaceName);
+    required this.namespaceName,
+    required this.resourceGroupName,
+    required this.topicSpaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTopicSpaceArgs {
 
   factory GetTopicSpaceArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicSpaceArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topicSpaceName: pulumi.Output.create<String>(map['topicSpaceName'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      topicSpaceName: (map['topicSpaceName'] as String).input(),
     );
   }
 }

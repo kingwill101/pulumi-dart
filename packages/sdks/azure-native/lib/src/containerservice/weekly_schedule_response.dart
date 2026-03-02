@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
 class WeeklyScheduleResponse {
   /// Specifies on which day of the week the maintenance occurs.
-  final String dayOfWeek;
+  final pulumi.Input<String> dayOfWeek;
   /// Specifies the number of weeks between each set of occurrences.
-  final int intervalWeeks;
+  final pulumi.Input<int> intervalWeeks;
 
   /// Creates a new [WeeklyScheduleResponse].
   /// [dayOfWeek] Specifies on which day of the week the maintenance occurs.
@@ -25,8 +26,8 @@ class WeeklyScheduleResponse {
 
   factory WeeklyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return WeeklyScheduleResponse(
-      dayOfWeek: map['dayOfWeek'] as String,
-      intervalWeeks: map['intervalWeeks'] as int,
+      dayOfWeek: (map['dayOfWeek'] as String).input(),
+      intervalWeeks: (map['intervalWeeks'] as int).input(),
     );
   }
 }

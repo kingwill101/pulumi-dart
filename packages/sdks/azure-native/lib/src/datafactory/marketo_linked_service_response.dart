@@ -8,32 +8,32 @@ import 'parameter_specification_response.dart';
 /// Marketo server linked service.
 class MarketoLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The client Id of your Marketo service.
-  final dynamic clientId;
+  final pulumi.Input<dynamic> clientId;
   /// The client secret of your Marketo service.
-  final AzureKeyVaultSecretReferenceResponse? clientSecret;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? clientSecret;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The endpoint of the Marketo server. (i.e. 123-ABC-321.mktorest.com)
-  final dynamic endpoint;
+  final pulumi.Input<dynamic> endpoint;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// Type of linked service.
   /// Expected value is 'Marketo'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
-  final dynamic useEncryptedEndpoints;
+  final pulumi.Input<dynamic>? useEncryptedEndpoints;
   /// Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.
-  final dynamic useHostVerification;
+  final pulumi.Input<dynamic>? useHostVerification;
   /// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
-  final dynamic usePeerVerification;
+  final pulumi.Input<dynamic>? usePeerVerification;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [MarketoLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -69,12 +69,12 @@ class MarketoLinkedServiceResponse {
     return <String, dynamic>{
       'annotations': ?annotations,
       'clientId': clientId,
-      'clientSecret': ?clientSecret == null ? null : clientSecret!.toMap(),
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'clientSecret': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'endpoint': endpoint,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
       'useEncryptedEndpoints': ?useEncryptedEndpoints,
       'useHostVerification': ?useHostVerification,
@@ -85,19 +85,19 @@ class MarketoLinkedServiceResponse {
 
   factory MarketoLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return MarketoLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      clientId: map['clientId'],
-      clientSecret: map['clientSecret'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      endpoint: map['endpoint'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : map['useEncryptedEndpoints'],
-      useHostVerification: map['useHostVerification'] == null ? null : map['useHostVerification'],
-      usePeerVerification: map['usePeerVerification'] == null ? null : map['usePeerVerification'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      clientId: (map['clientId']).input(),
+      clientSecret: map['clientSecret'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      endpoint: (map['endpoint']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : (map['useEncryptedEndpoints']).input(),
+      useHostVerification: map['useHostVerification'] == null ? null : (map['useHostVerification']).input(),
+      usePeerVerification: map['usePeerVerification'] == null ? null : (map['usePeerVerification']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

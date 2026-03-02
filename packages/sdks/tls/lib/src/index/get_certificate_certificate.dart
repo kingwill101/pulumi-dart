@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificateCertificate {
   /// Certificate data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using `trimspace()`.
-  final String certPem;
+  final pulumi.Input<String> certPem;
   /// `true` if the certificate is of a CA (Certificate Authority).
-  final bool isCa;
+  final pulumi.Input<bool> isCa;
   /// Who verified and signed the certificate, roughly following [RFC2253](https://tools.ietf.org/html/rfc2253).
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// The maximum number of intermediate certificates that can follow this certificate in a valid certification path. If `is_ca` is `false`, this value is `-1`.
-  final int maxPathLength;
+  final pulumi.Input<int> maxPathLength;
   /// The time until which the certificate is invalid, as an [RFC3339](https://tools.ietf.org/html/rfc3339) timestamp.
-  final String notAfter;
+  final pulumi.Input<String> notAfter;
   /// The time after which the certificate is valid, as an [RFC3339](https://tools.ietf.org/html/rfc3339) timestamp.
-  final String notBefore;
+  final pulumi.Input<String> notBefore;
   /// The key algorithm used to create the certificate.
-  final String publicKeyAlgorithm;
+  final pulumi.Input<String> publicKeyAlgorithm;
   /// Number that uniquely identifies the certificate with the CA's system.
   /// The `format` function can be used to convert this *base 10* number into other bases, such as hex.
-  final String serialNumber;
+  final pulumi.Input<String> serialNumber;
   /// The SHA1 fingerprint of the public key of the certificate.
-  final String sha1Fingerprint;
+  final pulumi.Input<String> sha1Fingerprint;
   /// The algorithm used to sign the certificate.
-  final String signatureAlgorithm;
+  final pulumi.Input<String> signatureAlgorithm;
   /// The entity the certificate belongs to, roughly following [RFC2253](https://tools.ietf.org/html/rfc2253).
-  final String subject;
+  final pulumi.Input<String> subject;
   /// The version the certificate is in.
-  final int version;
+  final pulumi.Input<int> version;
 
   /// Creates a new [GetCertificateCertificate].
   /// [certPem] Certificate data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using `trimspace()`.
@@ -75,18 +76,18 @@ class GetCertificateCertificate {
 
   factory GetCertificateCertificate.fromMap(Map<String, dynamic> map) {
     return GetCertificateCertificate(
-      certPem: map['certPem'] as String,
-      isCa: map['isCa'] as bool,
-      issuer: map['issuer'] as String,
-      maxPathLength: map['maxPathLength'] as int,
-      notAfter: map['notAfter'] as String,
-      notBefore: map['notBefore'] as String,
-      publicKeyAlgorithm: map['publicKeyAlgorithm'] as String,
-      serialNumber: map['serialNumber'] as String,
-      sha1Fingerprint: map['sha1Fingerprint'] as String,
-      signatureAlgorithm: map['signatureAlgorithm'] as String,
-      subject: map['subject'] as String,
-      version: map['version'] as int,
+      certPem: (map['certPem'] as String).input(),
+      isCa: (map['isCa'] as bool).input(),
+      issuer: (map['issuer'] as String).input(),
+      maxPathLength: (map['maxPathLength'] as int).input(),
+      notAfter: (map['notAfter'] as String).input(),
+      notBefore: (map['notBefore'] as String).input(),
+      publicKeyAlgorithm: (map['publicKeyAlgorithm'] as String).input(),
+      serialNumber: (map['serialNumber'] as String).input(),
+      sha1Fingerprint: (map['sha1Fingerprint'] as String).input(),
+      signatureAlgorithm: (map['signatureAlgorithm'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      version: (map['version'] as int).input(),
     );
   }
 }

@@ -6,21 +6,21 @@ import 'condition_response.dart';
 /// Definition of Filter
 class FilterResponse {
   /// How to handle logs that satisfy the filter's conditions and requirement.
-  final String? behavior;
+  final pulumi.Input<String>? behavior;
   /// Match conditions for the filter.
-  final List<ConditionResponse>? conditions;
+  final pulumi.Input<List<ConditionResponse>>? conditions;
   /// Property contains
-  final List<String>? contains;
+  final pulumi.Input<List<String>>? contains;
   /// Property eq
-  final List<String>? eq;
+  final pulumi.Input<List<String>>? eq;
   /// Property exists
-  final bool? exists;
+  final pulumi.Input<bool>? exists;
   /// Property neq
-  final List<String>? neq;
+  final pulumi.Input<List<String>>? neq;
   /// Property property
-  final String? property;
+  final pulumi.Input<String>? property;
   /// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
-  final String? requirement;
+  final pulumi.Input<String>? requirement;
 
   /// Creates a new [FilterResponse].
   /// [behavior] How to handle logs that satisfy the filter's conditions and requirement.
@@ -45,7 +45,7 @@ class FilterResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'behavior': ?behavior,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<ConditionResponse, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ConditionResponse>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ConditionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'contains': ?contains,
       'eq': ?eq,
       'exists': ?exists,
@@ -57,14 +57,14 @@ class FilterResponse {
 
   factory FilterResponse.fromMap(Map<String, dynamic> map) {
     return FilterResponse(
-      behavior: map['behavior'] == null ? null : map['behavior'] as String,
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<ConditionResponse>(map['conditions'], (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      contains: map['contains'] == null ? null : (map['contains'] as List).cast<String>(),
-      eq: map['eq'] == null ? null : (map['eq'] as List).cast<String>(),
-      exists: map['exists'] == null ? null : map['exists'] as bool,
-      neq: map['neq'] == null ? null : (map['neq'] as List).cast<String>(),
-      property: map['property'] == null ? null : map['property'] as String,
-      requirement: map['requirement'] == null ? null : map['requirement'] as String,
+      behavior: map['behavior'] == null ? null : (map['behavior'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionResponse>(map['conditions'], (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contains: map['contains'] == null ? null : ((map['contains'] as List).cast<String>()).input(),
+      eq: map['eq'] == null ? null : ((map['eq'] as List).cast<String>()).input(),
+      exists: map['exists'] == null ? null : (map['exists'] as bool).input(),
+      neq: map['neq'] == null ? null : ((map['neq'] as List).cast<String>()).input(),
+      property: map['property'] == null ? null : (map['property'] as String).input(),
+      requirement: map['requirement'] == null ? null : (map['requirement'] as String).input(),
     );
   }
 }

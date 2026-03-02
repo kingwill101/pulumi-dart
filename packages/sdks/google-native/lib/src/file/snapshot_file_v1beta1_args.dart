@@ -25,19 +25,13 @@ class SnapshotFileV1beta1Args {
   /// [project] Optional.
   /// [snapshotId] Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
   SnapshotFileV1beta1Args({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> snapshotId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      snapshotId = pulumi.Input.asInput<String>(snapshotId);
+    this.description,
+    required this.instanceId,
+    this.labels,
+    this.location,
+    this.project,
+    required this.snapshotId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SnapshotFileV1beta1Args {
 
   factory SnapshotFileV1beta1Args.fromMap(Map<String, dynamic> map) {
     return SnapshotFileV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      snapshotId: pulumi.Output.create<String>(map['snapshotId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
     );
   }
 }

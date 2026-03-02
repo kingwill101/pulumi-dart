@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultitenantDistributionOriginGroupFailoverCriteria {
   /// List of HTTP status codes that trigger a failover to the secondary origin.
-  final List<int> statusCodes;
+  final pulumi.Input<List<int>> statusCodes;
 
   /// Creates a new [MultitenantDistributionOriginGroupFailoverCriteria].
   /// [statusCodes] List of HTTP status codes that trigger a failover to the secondary origin.
@@ -19,7 +20,7 @@ class MultitenantDistributionOriginGroupFailoverCriteria {
 
   factory MultitenantDistributionOriginGroupFailoverCriteria.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginGroupFailoverCriteria(
-      statusCodes: (map['statusCodes'] as List).cast<int>(),
+      statusCodes: ((map['statusCodes'] as List).cast<int>()).input(),
     );
   }
 }

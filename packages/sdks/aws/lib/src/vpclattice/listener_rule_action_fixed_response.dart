@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleActionFixedResponse {
   /// The HTTP response code.
-  final int statusCode;
+  final pulumi.Input<int> statusCode;
 
   /// Creates a new [ListenerRuleActionFixedResponse].
   /// [statusCode] The HTTP response code.
@@ -19,7 +20,7 @@ class ListenerRuleActionFixedResponse {
 
   factory ListenerRuleActionFixedResponse.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionFixedResponse(
-      statusCode: map['statusCode'] as int,
+      statusCode: (map['statusCode'] as int).input(),
     );
   }
 }

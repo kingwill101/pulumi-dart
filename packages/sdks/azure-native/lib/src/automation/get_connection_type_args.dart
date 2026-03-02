@@ -19,13 +19,10 @@ class GetConnectionTypeArgs {
   /// [connectionTypeName] The name of connection type.
   /// [resourceGroupName] Name of an Azure Resource group.
   GetConnectionTypeArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> connectionTypeName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      connectionTypeName = pulumi.Input.asInput<String>(connectionTypeName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.connectionTypeName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConnectionTypeArgs {
 
   factory GetConnectionTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionTypeArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      connectionTypeName: pulumi.Output.create<String>(map['connectionTypeName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      connectionTypeName: (map['connectionTypeName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

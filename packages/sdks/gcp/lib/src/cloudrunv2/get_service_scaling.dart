@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceScaling {
   /// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
-  final int manualInstanceCount;
+  final pulumi.Input<int> manualInstanceCount;
   /// Combined maximum number of instances for all revisions receiving traffic.
-  final int maxInstanceCount;
+  final pulumi.Input<int> maxInstanceCount;
   /// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
-  final int minInstanceCount;
+  final pulumi.Input<int> minInstanceCount;
   /// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: ["AUTOMATIC", "MANUAL"]
-  final String scalingMode;
+  final pulumi.Input<String> scalingMode;
 
   /// Creates a new [GetServiceScaling].
   /// [manualInstanceCount] Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
@@ -34,10 +35,10 @@ class GetServiceScaling {
 
   factory GetServiceScaling.fromMap(Map<String, dynamic> map) {
     return GetServiceScaling(
-      manualInstanceCount: map['manualInstanceCount'] as int,
-      maxInstanceCount: map['maxInstanceCount'] as int,
-      minInstanceCount: map['minInstanceCount'] as int,
-      scalingMode: map['scalingMode'] as String,
+      manualInstanceCount: (map['manualInstanceCount'] as int).input(),
+      maxInstanceCount: (map['maxInstanceCount'] as int).input(),
+      minInstanceCount: (map['minInstanceCount'] as int).input(),
+      scalingMode: (map['scalingMode'] as String).input(),
     );
   }
 }

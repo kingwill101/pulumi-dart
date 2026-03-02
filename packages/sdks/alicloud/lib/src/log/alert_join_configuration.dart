@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertJoinConfiguration {
   /// Join condition.
-  final String condition;
+  final pulumi.Input<String> condition;
   /// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AlertJoinConfiguration].
   /// [condition] Join condition.
@@ -24,8 +25,8 @@ class AlertJoinConfiguration {
 
   factory AlertJoinConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertJoinConfiguration(
-      condition: map['condition'] as String,
-      type: map['type'] as String,
+      condition: (map['condition'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

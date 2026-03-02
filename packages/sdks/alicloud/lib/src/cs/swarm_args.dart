@@ -38,35 +38,21 @@ class SwarmArgs {
   /// [size] Optional.
   /// [vswitchId] Required.
   SwarmArgs({
-    required pulumi.Output<String> cidrBlock,
-    pulumi.Output<String>? diskCategory,
-    pulumi.Output<int>? diskSize,
-    pulumi.Output<String>? imageId,
-    required pulumi.Output<String> instanceType,
-    pulumi.Output<bool>? isOutdated,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<bool>? needSlb,
-    pulumi.Output<int>? nodeNumber,
-    required pulumi.Output<String> password,
-    pulumi.Output<bool>? releaseEip,
-    pulumi.Output<int>? size,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      cidrBlock = pulumi.Input.asInput<String>(cidrBlock),
-      diskCategory = pulumi.Input.asOptionalInput<String>(diskCategory),
-      diskSize = pulumi.Input.asOptionalInput<int>(diskSize),
-      imageId = pulumi.Input.asOptionalInput<String>(imageId),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      isOutdated = pulumi.Input.asOptionalInput<bool>(isOutdated),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      needSlb = pulumi.Input.asOptionalInput<bool>(needSlb),
-      nodeNumber = pulumi.Input.asOptionalInput<int>(nodeNumber),
-      password = pulumi.Input.asInput<String>(password),
-      releaseEip = pulumi.Input.asOptionalInput<bool>(releaseEip),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    required this.cidrBlock,
+    this.diskCategory,
+    this.diskSize,
+    this.imageId,
+    required this.instanceType,
+    this.isOutdated,
+    this.name,
+    this.namePrefix,
+    this.needSlb,
+    this.nodeNumber,
+    required this.password,
+    this.releaseEip,
+    this.size,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,20 +75,20 @@ class SwarmArgs {
 
   factory SwarmArgs.fromMap(Map<String, dynamic> map) {
     return SwarmArgs(
-      cidrBlock: pulumi.Output.create<String>(map['cidrBlock'] as String),
-      diskCategory: map['diskCategory'] == null ? null : pulumi.Output.create<String>(map['diskCategory'] as String),
-      diskSize: map['diskSize'] == null ? null : pulumi.Output.create<int>(map['diskSize'] as int),
-      imageId: map['imageId'] == null ? null : pulumi.Output.create<String>(map['imageId'] as String),
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
-      isOutdated: map['isOutdated'] == null ? null : pulumi.Output.create<bool>(map['isOutdated'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      needSlb: map['needSlb'] == null ? null : pulumi.Output.create<bool>(map['needSlb'] as bool),
-      nodeNumber: map['nodeNumber'] == null ? null : pulumi.Output.create<int>(map['nodeNumber'] as int),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      releaseEip: map['releaseEip'] == null ? null : pulumi.Output.create<bool>(map['releaseEip'] as bool),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      diskCategory: map['diskCategory'] == null ? null : (map['diskCategory'] as String).input(),
+      diskSize: map['diskSize'] == null ? null : (map['diskSize'] as int).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      isOutdated: map['isOutdated'] == null ? null : (map['isOutdated'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      needSlb: map['needSlb'] == null ? null : (map['needSlb'] as bool).input(),
+      nodeNumber: map['nodeNumber'] == null ? null : (map['nodeNumber'] as int).input(),
+      password: (map['password'] as String).input(),
+      releaseEip: map['releaseEip'] == null ? null : (map['releaseEip'] as bool).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

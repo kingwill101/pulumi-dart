@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SqlServerDatabaseResourcePropertiesResponseBackupInformation {
   /// Date time of last full backup.
-  final String? lastFullBackup;
+  final pulumi.Input<String>? lastFullBackup;
   /// Date time of last log backup.
-  final String? lastLogBackup;
+  final pulumi.Input<String>? lastLogBackup;
 
   /// Creates a new [SqlServerDatabaseResourcePropertiesResponseBackupInformation].
   /// [lastFullBackup] Date time of last full backup.
@@ -24,8 +25,8 @@ class SqlServerDatabaseResourcePropertiesResponseBackupInformation {
 
   factory SqlServerDatabaseResourcePropertiesResponseBackupInformation.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseResourcePropertiesResponseBackupInformation(
-      lastFullBackup: map['lastFullBackup'] == null ? null : map['lastFullBackup'] as String,
-      lastLogBackup: map['lastLogBackup'] == null ? null : map['lastLogBackup'] as String,
+      lastFullBackup: map['lastFullBackup'] == null ? null : (map['lastFullBackup'] as String).input(),
+      lastLogBackup: map['lastLogBackup'] == null ? null : (map['lastLogBackup'] as String).input(),
     );
   }
 }

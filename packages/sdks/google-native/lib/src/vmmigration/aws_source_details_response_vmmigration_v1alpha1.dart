@@ -8,21 +8,21 @@ import 'tag_response_vmmigration_v1alpha1.dart';
 /// AwsSourceDetails message describes a specific source details for the AWS source type.
 class AwsSourceDetailsResponseVmmigrationV1alpha1 {
   /// AWS Credentials using access key id and secret.
-  final AccessKeyCredentialsResponseVmmigrationV1alpha1 accessKeyCreds;
+  final pulumi.Input<AccessKeyCredentialsResponseVmmigrationV1alpha1> accessKeyCreds;
   /// Immutable. The AWS region that the source VMs will be migrated from.
-  final String awsRegion;
+  final pulumi.Input<String> awsRegion;
   /// Provides details on the state of the Source in case of an error.
-  final StatusResponseVmmigrationV1alpha1 error;
+  final pulumi.Input<StatusResponseVmmigrationV1alpha1> error;
   /// AWS security group names to limit the scope of the source inventory.
-  final List<String> inventorySecurityGroupNames;
+  final pulumi.Input<List<String>> inventorySecurityGroupNames;
   /// AWS resource tags to limit the scope of the source inventory.
-  final List<TagResponseVmmigrationV1alpha1> inventoryTagList;
+  final pulumi.Input<List<TagResponseVmmigrationV1alpha1>> inventoryTagList;
   /// User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
-  final Map<String, String> migrationResourcesUserTags;
+  final pulumi.Input<Map<String, String>> migrationResourcesUserTags;
   /// The source's public IP. All communication initiated by this source will originate from this IP.
-  final String publicIp;
+  final pulumi.Input<String> publicIp;
   /// State of the source as determined by the health check.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [AwsSourceDetailsResponseVmmigrationV1alpha1].
   /// [accessKeyCreds] AWS Credentials using access key id and secret.
@@ -46,11 +46,11 @@ class AwsSourceDetailsResponseVmmigrationV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessKeyCreds': accessKeyCreds.toMap(),
+      'accessKeyCreds': pulumi.Input.mapInputValue<AccessKeyCredentialsResponseVmmigrationV1alpha1, Map<String, dynamic>>(accessKeyCreds, (value) => value.toMap()),
       'awsRegion': awsRegion,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<StatusResponseVmmigrationV1alpha1, Map<String, dynamic>>(error, (value) => value.toMap()),
       'inventorySecurityGroupNames': inventorySecurityGroupNames,
-      'inventoryTagList': pulumi.Input.encodeList<TagResponseVmmigrationV1alpha1, Map<String, dynamic>>(inventoryTagList, (value) => value.toMap()),
+      'inventoryTagList': pulumi.Input.mapInputValue<List<TagResponseVmmigrationV1alpha1>, List<Map<String, dynamic>>>(inventoryTagList, (value) => pulumi.Input.encodeList<TagResponseVmmigrationV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'migrationResourcesUserTags': migrationResourcesUserTags,
       'publicIp': publicIp,
       'state': state,
@@ -59,14 +59,14 @@ class AwsSourceDetailsResponseVmmigrationV1alpha1 {
 
   factory AwsSourceDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return AwsSourceDetailsResponseVmmigrationV1alpha1(
-      accessKeyCreds: AccessKeyCredentialsResponseVmmigrationV1alpha1.fromMap((map['accessKeyCreds'] as Map).cast<String, dynamic>()),
-      awsRegion: map['awsRegion'] as String,
-      error: StatusResponseVmmigrationV1alpha1.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      inventorySecurityGroupNames: (map['inventorySecurityGroupNames'] as List).cast<String>(),
-      inventoryTagList: pulumi.Input.decodeList<TagResponseVmmigrationV1alpha1>(map['inventoryTagList'], (value) => TagResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
-      migrationResourcesUserTags: (map['migrationResourcesUserTags'] as Map).cast<String, String>(),
-      publicIp: map['publicIp'] as String,
-      state: map['state'] as String,
+      accessKeyCreds: (AccessKeyCredentialsResponseVmmigrationV1alpha1.fromMap((map['accessKeyCreds'] as Map).cast<String, dynamic>())).input(),
+      awsRegion: (map['awsRegion'] as String).input(),
+      error: (StatusResponseVmmigrationV1alpha1.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      inventorySecurityGroupNames: ((map['inventorySecurityGroupNames'] as List).cast<String>()).input(),
+      inventoryTagList: (pulumi.Input.decodeList<TagResponseVmmigrationV1alpha1>(map['inventoryTagList'], (value) => TagResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      migrationResourcesUserTags: ((map['migrationResourcesUserTags'] as Map).cast<String, String>()).input(),
+      publicIp: (map['publicIp'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

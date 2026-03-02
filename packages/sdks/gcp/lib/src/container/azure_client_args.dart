@@ -29,17 +29,12 @@ class AzureClientArgs {
   /// [project] The project for the resource
   /// [tenantId] The Azure Active Directory Tenant ID.
   AzureClientArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tenantId,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    required this.applicationId,
+    required this.location,
+    this.name,
+    this.project,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class AzureClientArgs {
 
   factory AzureClientArgs.fromMap(Map<String, dynamic> map) {
     return AzureClientArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

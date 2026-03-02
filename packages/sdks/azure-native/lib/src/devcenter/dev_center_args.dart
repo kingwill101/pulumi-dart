@@ -37,23 +37,15 @@ class DevCenterArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   DevCenterArgs({
-    pulumi.Output<String>? devCenterName,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Encryption>? encryption,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<DevCenterProjectCatalogSettings>? projectCatalogSettings,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      devCenterName = pulumi.Input.asOptionalInput<String>(devCenterName),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      encryption = pulumi.Input.asOptionalInput<Encryption>(encryption),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      projectCatalogSettings = pulumi.Input.asOptionalInput<DevCenterProjectCatalogSettings>(projectCatalogSettings),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.devCenterName,
+    this.displayName,
+    this.encryption,
+    this.identity,
+    this.location,
+    this.projectCatalogSettings,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class DevCenterArgs {
 
   factory DevCenterArgs.fromMap(Map<String, dynamic> map) {
     return DevCenterArgs(
-      devCenterName: map['devCenterName'] == null ? null : pulumi.Output.create<String>(map['devCenterName'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<Encryption>(Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      projectCatalogSettings: map['projectCatalogSettings'] == null ? null : pulumi.Output.create<DevCenterProjectCatalogSettings>(DevCenterProjectCatalogSettings.fromMap((map['projectCatalogSettings'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      devCenterName: map['devCenterName'] == null ? null : (map['devCenterName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      projectCatalogSettings: map['projectCatalogSettings'] == null ? null : (DevCenterProjectCatalogSettings.fromMap((map['projectCatalogSettings'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

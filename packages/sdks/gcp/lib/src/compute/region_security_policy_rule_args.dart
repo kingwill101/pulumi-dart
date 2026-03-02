@@ -68,29 +68,18 @@ class RegionSecurityPolicyRuleArgs {
   /// [region] The Region in which the created Region Security Policy rule should reside.
   /// [securityPolicy] The name of the security policy this rule belongs to.
   RegionSecurityPolicyRuleArgs({
-    required pulumi.Output<String> action,
-    pulumi.Output<String>? description,
-    pulumi.Output<RegionSecurityPolicyRuleMatch>? match,
-    pulumi.Output<RegionSecurityPolicyRuleNetworkMatch>? networkMatch,
-    pulumi.Output<RegionSecurityPolicyRulePreconfiguredWafConfig>? preconfiguredWafConfig,
-    pulumi.Output<bool>? preview,
-    required pulumi.Output<int> priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<RegionSecurityPolicyRuleRateLimitOptions>? rateLimitOptions,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> securityPolicy,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      match = pulumi.Input.asOptionalInput<RegionSecurityPolicyRuleMatch>(match),
-      networkMatch = pulumi.Input.asOptionalInput<RegionSecurityPolicyRuleNetworkMatch>(networkMatch),
-      preconfiguredWafConfig = pulumi.Input.asOptionalInput<RegionSecurityPolicyRulePreconfiguredWafConfig>(preconfiguredWafConfig),
-      preview = pulumi.Input.asOptionalInput<bool>(preview),
-      priority = pulumi.Input.asInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rateLimitOptions = pulumi.Input.asOptionalInput<RegionSecurityPolicyRuleRateLimitOptions>(rateLimitOptions),
-      region = pulumi.Input.asInput<String>(region),
-      securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
+    required this.action,
+    this.description,
+    this.match,
+    this.networkMatch,
+    this.preconfiguredWafConfig,
+    this.preview,
+    required this.priority,
+    this.project,
+    this.rateLimitOptions,
+    required this.region,
+    required this.securityPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -110,17 +99,17 @@ class RegionSecurityPolicyRuleArgs {
 
   factory RegionSecurityPolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyRuleArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      match: map['match'] == null ? null : pulumi.Output.create<RegionSecurityPolicyRuleMatch>(RegionSecurityPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())),
-      networkMatch: map['networkMatch'] == null ? null : pulumi.Output.create<RegionSecurityPolicyRuleNetworkMatch>(RegionSecurityPolicyRuleNetworkMatch.fromMap((map['networkMatch'] as Map).cast<String, dynamic>())),
-      preconfiguredWafConfig: map['preconfiguredWafConfig'] == null ? null : pulumi.Output.create<RegionSecurityPolicyRulePreconfiguredWafConfig>(RegionSecurityPolicyRulePreconfiguredWafConfig.fromMap((map['preconfiguredWafConfig'] as Map).cast<String, dynamic>())),
-      preview: map['preview'] == null ? null : pulumi.Output.create<bool>(map['preview'] as bool),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rateLimitOptions: map['rateLimitOptions'] == null ? null : pulumi.Output.create<RegionSecurityPolicyRuleRateLimitOptions>(RegionSecurityPolicyRuleRateLimitOptions.fromMap((map['rateLimitOptions'] as Map).cast<String, dynamic>())),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      securityPolicy: pulumi.Output.create<String>(map['securityPolicy'] as String),
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      match: map['match'] == null ? null : (RegionSecurityPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      networkMatch: map['networkMatch'] == null ? null : (RegionSecurityPolicyRuleNetworkMatch.fromMap((map['networkMatch'] as Map).cast<String, dynamic>())).input(),
+      preconfiguredWafConfig: map['preconfiguredWafConfig'] == null ? null : (RegionSecurityPolicyRulePreconfiguredWafConfig.fromMap((map['preconfiguredWafConfig'] as Map).cast<String, dynamic>())).input(),
+      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
+      priority: (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rateLimitOptions: map['rateLimitOptions'] == null ? null : (RegionSecurityPolicyRuleRateLimitOptions.fromMap((map['rateLimitOptions'] as Map).cast<String, dynamic>())).input(),
+      region: (map['region'] as String).input(),
+      securityPolicy: (map['securityPolicy'] as String).input(),
     );
   }
 }

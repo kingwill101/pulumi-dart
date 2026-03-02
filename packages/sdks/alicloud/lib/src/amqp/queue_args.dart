@@ -40,27 +40,17 @@ class QueueArgs {
   /// [queueName] The name of the queue to create.
   /// [virtualHostName] The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
   QueueArgs({
-    pulumi.Output<bool>? autoDeleteState,
-    pulumi.Output<String>? autoExpireState,
-    pulumi.Output<String>? deadLetterExchange,
-    pulumi.Output<String>? deadLetterRoutingKey,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? maxLength,
-    pulumi.Output<int>? maximumPriority,
-    pulumi.Output<String>? messageTtl,
-    required pulumi.Output<String> queueName,
-    required pulumi.Output<String> virtualHostName,
-  }) :
-      autoDeleteState = pulumi.Input.asOptionalInput<bool>(autoDeleteState),
-      autoExpireState = pulumi.Input.asOptionalInput<String>(autoExpireState),
-      deadLetterExchange = pulumi.Input.asOptionalInput<String>(deadLetterExchange),
-      deadLetterRoutingKey = pulumi.Input.asOptionalInput<String>(deadLetterRoutingKey),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      maxLength = pulumi.Input.asOptionalInput<String>(maxLength),
-      maximumPriority = pulumi.Input.asOptionalInput<int>(maximumPriority),
-      messageTtl = pulumi.Input.asOptionalInput<String>(messageTtl),
-      queueName = pulumi.Input.asInput<String>(queueName),
-      virtualHostName = pulumi.Input.asInput<String>(virtualHostName);
+    this.autoDeleteState,
+    this.autoExpireState,
+    this.deadLetterExchange,
+    this.deadLetterRoutingKey,
+    required this.instanceId,
+    this.maxLength,
+    this.maximumPriority,
+    this.messageTtl,
+    required this.queueName,
+    required this.virtualHostName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      autoDeleteState: map['autoDeleteState'] == null ? null : pulumi.Output.create<bool>(map['autoDeleteState'] as bool),
-      autoExpireState: map['autoExpireState'] == null ? null : pulumi.Output.create<String>(map['autoExpireState'] as String),
-      deadLetterExchange: map['deadLetterExchange'] == null ? null : pulumi.Output.create<String>(map['deadLetterExchange'] as String),
-      deadLetterRoutingKey: map['deadLetterRoutingKey'] == null ? null : pulumi.Output.create<String>(map['deadLetterRoutingKey'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      maxLength: map['maxLength'] == null ? null : pulumi.Output.create<String>(map['maxLength'] as String),
-      maximumPriority: map['maximumPriority'] == null ? null : pulumi.Output.create<int>(map['maximumPriority'] as int),
-      messageTtl: map['messageTtl'] == null ? null : pulumi.Output.create<String>(map['messageTtl'] as String),
-      queueName: pulumi.Output.create<String>(map['queueName'] as String),
-      virtualHostName: pulumi.Output.create<String>(map['virtualHostName'] as String),
+      autoDeleteState: map['autoDeleteState'] == null ? null : (map['autoDeleteState'] as bool).input(),
+      autoExpireState: map['autoExpireState'] == null ? null : (map['autoExpireState'] as String).input(),
+      deadLetterExchange: map['deadLetterExchange'] == null ? null : (map['deadLetterExchange'] as String).input(),
+      deadLetterRoutingKey: map['deadLetterRoutingKey'] == null ? null : (map['deadLetterRoutingKey'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      maxLength: map['maxLength'] == null ? null : (map['maxLength'] as String).input(),
+      maximumPriority: map['maximumPriority'] == null ? null : (map['maximumPriority'] as int).input(),
+      messageTtl: map['messageTtl'] == null ? null : (map['messageTtl'] as String).input(),
+      queueName: (map['queueName'] as String).input(),
+      virtualHostName: (map['virtualHostName'] as String).input(),
     );
   }
 }

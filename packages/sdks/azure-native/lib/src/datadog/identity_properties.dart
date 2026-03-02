@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentityProperties {
   /// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [IdentityProperties].
   /// [type] Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
@@ -19,7 +20,7 @@ class IdentityProperties {
 
   factory IdentityProperties.fromMap(Map<String, dynamic> map) {
     return IdentityProperties(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

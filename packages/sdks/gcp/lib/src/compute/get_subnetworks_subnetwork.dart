@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSubnetworksSubnetwork {
   /// Description of the subnetwork.
-  final String description;
+  final pulumi.Input<String> description;
   /// The IP address range represented as a CIDR block.
-  final String ipCidrRange;
+  final pulumi.Input<String> ipCidrRange;
   /// The name of the subnetwork.
-  final String name;
+  final pulumi.Input<String> name;
   /// The self link of the parent network.
-  final String network;
+  final pulumi.Input<String> network;
   /// The name of the parent network computed from `network` attribute.
-  final String networkName;
+  final pulumi.Input<String> networkName;
   /// (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `network_name` instead.)
-  final String networkSelfLink;
+  final pulumi.Input<String> networkSelfLink;
   /// Whether the VMs in the subnet can access Google services without assigned external IP addresses.
-  final bool privateIpGoogleAccess;
+  final pulumi.Input<bool> privateIpGoogleAccess;
   /// The self link of the subnetwork.
-  final String selfLink;
+  final pulumi.Input<String> selfLink;
 
   /// Creates a new [GetSubnetworksSubnetwork].
   /// [description] Description of the subnetwork.
@@ -54,14 +55,14 @@ class GetSubnetworksSubnetwork {
 
   factory GetSubnetworksSubnetwork.fromMap(Map<String, dynamic> map) {
     return GetSubnetworksSubnetwork(
-      description: map['description'] as String,
-      ipCidrRange: map['ipCidrRange'] as String,
-      name: map['name'] as String,
-      network: map['network'] as String,
-      networkName: map['networkName'] as String,
-      networkSelfLink: map['networkSelfLink'] as String,
-      privateIpGoogleAccess: map['privateIpGoogleAccess'] as bool,
-      selfLink: map['selfLink'] as String,
+      description: (map['description'] as String).input(),
+      ipCidrRange: (map['ipCidrRange'] as String).input(),
+      name: (map['name'] as String).input(),
+      network: (map['network'] as String).input(),
+      networkName: (map['networkName'] as String).input(),
+      networkSelfLink: (map['networkSelfLink'] as String).input(),
+      privateIpGoogleAccess: (map['privateIpGoogleAccess'] as bool).input(),
+      selfLink: (map['selfLink'] as String).input(),
     );
   }
 }

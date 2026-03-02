@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties corresponding to a line channel registration
 class LineRegistrationResponse {
   /// Access token for the line channel registration
-  final String? channelAccessToken;
+  final pulumi.Input<String>? channelAccessToken;
   /// Secret for the line channel registration
-  final String? channelSecret;
+  final pulumi.Input<String>? channelSecret;
   /// Id generated for the line channel registration
-  final String generatedId;
+  final pulumi.Input<String> generatedId;
 
   /// Creates a new [LineRegistrationResponse].
   /// [channelAccessToken] Access token for the line channel registration
@@ -30,9 +31,9 @@ class LineRegistrationResponse {
 
   factory LineRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return LineRegistrationResponse(
-      channelAccessToken: map['channelAccessToken'] == null ? null : map['channelAccessToken'] as String,
-      channelSecret: map['channelSecret'] == null ? null : map['channelSecret'] as String,
-      generatedId: map['generatedId'] as String,
+      channelAccessToken: map['channelAccessToken'] == null ? null : (map['channelAccessToken'] as String).input(),
+      channelSecret: map['channelSecret'] == null ? null : (map['channelSecret'] as String).input(),
+      generatedId: (map['generatedId'] as String).input(),
     );
   }
 }

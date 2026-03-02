@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseClusterBackupRestore {
   /// The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
   ///
   /// This resource supports customized create timeouts. The default timeout is 30 minutes.
-  final String? backupCreatedAt;
+  final pulumi.Input<String>? backupCreatedAt;
   /// The name of an existing database cluster from which the backup will be restored.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
 
   /// Creates a new [DatabaseClusterBackupRestore].
   /// [backupCreatedAt] The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
@@ -26,8 +27,8 @@ class DatabaseClusterBackupRestore {
 
   factory DatabaseClusterBackupRestore.fromMap(Map<String, dynamic> map) {
     return DatabaseClusterBackupRestore(
-      backupCreatedAt: map['backupCreatedAt'] == null ? null : map['backupCreatedAt'] as String,
-      databaseName: map['databaseName'] as String,
+      backupCreatedAt: map['backupCreatedAt'] == null ? null : (map['backupCreatedAt'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
     );
   }
 }

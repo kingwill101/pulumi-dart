@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The location of SFTP dataset.
 class SftpLocationResponse {
   /// Specify the file name of dataset. Type: string (or Expression with resultType string).
-  final dynamic fileName;
+  final pulumi.Input<dynamic>? fileName;
   /// Specify the folder path of dataset. Type: string (or Expression with resultType string)
-  final dynamic folderPath;
+  final pulumi.Input<dynamic>? folderPath;
   /// Type of dataset storage location.
   /// Expected value is 'SftpLocation'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SftpLocationResponse].
   /// [fileName] Specify the file name of dataset. Type: string (or Expression with resultType string).
@@ -31,9 +32,9 @@ class SftpLocationResponse {
 
   factory SftpLocationResponse.fromMap(Map<String, dynamic> map) {
     return SftpLocationResponse(
-      fileName: map['fileName'] == null ? null : map['fileName'],
-      folderPath: map['folderPath'] == null ? null : map['folderPath'],
-      type: map['type'] as String,
+      fileName: map['fileName'] == null ? null : (map['fileName']).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

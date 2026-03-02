@@ -36,27 +36,17 @@ class EndpointServicedirectoryV1beta1Args {
   /// [project] Optional.
   /// [serviceId] Required.
   EndpointServicedirectoryV1beta1Args({
-    pulumi.Output<String>? address,
-    required pulumi.Output<String> endpointId,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespaceId,
-    pulumi.Output<String>? network,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceId,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      endpointId = pulumi.Input.asInput<String>(endpointId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    this.address,
+    required this.endpointId,
+    this.location,
+    this.metadata,
+    this.name,
+    required this.namespaceId,
+    this.network,
+    this.port,
+    this.project,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,16 +65,16 @@ class EndpointServicedirectoryV1beta1Args {
 
   factory EndpointServicedirectoryV1beta1Args.fromMap(Map<String, dynamic> map) {
     return EndpointServicedirectoryV1beta1Args(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      endpointId: pulumi.Output.create<String>(map['endpointId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      endpointId: (map['endpointId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

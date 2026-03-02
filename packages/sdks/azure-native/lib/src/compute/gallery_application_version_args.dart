@@ -36,23 +36,15 @@ class GalleryApplicationVersionArgs {
   /// [safetyProfile] The safety profile of the Gallery Application Version.
   /// [tags] Resource tags.
   GalleryApplicationVersionArgs({
-    required pulumi.Output<String> galleryApplicationName,
-    pulumi.Output<String>? galleryApplicationVersionName,
-    required pulumi.Output<String> galleryName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<GalleryApplicationVersionPublishingProfile> publishingProfile,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<GalleryApplicationVersionSafetyProfile>? safetyProfile,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      galleryApplicationName = pulumi.Input.asInput<String>(galleryApplicationName),
-      galleryApplicationVersionName = pulumi.Input.asOptionalInput<String>(galleryApplicationVersionName),
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      publishingProfile = pulumi.Input.asInput<GalleryApplicationVersionPublishingProfile>(publishingProfile),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      safetyProfile = pulumi.Input.asOptionalInput<GalleryApplicationVersionSafetyProfile>(safetyProfile),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.galleryApplicationName,
+    this.galleryApplicationVersionName,
+    required this.galleryName,
+    this.location,
+    required this.publishingProfile,
+    required this.resourceGroupName,
+    this.safetyProfile,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class GalleryApplicationVersionArgs {
 
   factory GalleryApplicationVersionArgs.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationVersionArgs(
-      galleryApplicationName: pulumi.Output.create<String>(map['galleryApplicationName'] as String),
-      galleryApplicationVersionName: map['galleryApplicationVersionName'] == null ? null : pulumi.Output.create<String>(map['galleryApplicationVersionName'] as String),
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      publishingProfile: pulumi.Output.create<GalleryApplicationVersionPublishingProfile>(GalleryApplicationVersionPublishingProfile.fromMap((map['publishingProfile'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      safetyProfile: map['safetyProfile'] == null ? null : pulumi.Output.create<GalleryApplicationVersionSafetyProfile>(GalleryApplicationVersionSafetyProfile.fromMap((map['safetyProfile'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      galleryApplicationName: (map['galleryApplicationName'] as String).input(),
+      galleryApplicationVersionName: map['galleryApplicationVersionName'] == null ? null : (map['galleryApplicationVersionName'] as String).input(),
+      galleryName: (map['galleryName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publishingProfile: (GalleryApplicationVersionPublishingProfile.fromMap((map['publishingProfile'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      safetyProfile: map['safetyProfile'] == null ? null : (GalleryApplicationVersionSafetyProfile.fromMap((map['safetyProfile'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

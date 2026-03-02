@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAssociationCertificateSettings {
   /// DNS records for certificate verification in a space-delimited format (`<record> CNAME <target>`).
-  final String? certificateVerificationDnsRecord;
+  final pulumi.Input<String>? certificateVerificationDnsRecord;
   /// The Amazon resource name (ARN) for the custom certificate.
   /// Required when `type` is `CUSTOM`.
-  final String? customCertificateArn;
+  final pulumi.Input<String>? customCertificateArn;
   /// The certificate type.
   /// Valid values are `AMPLIFY_MANAGED` and `CUSTOM`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DomainAssociationCertificateSettings].
   /// [certificateVerificationDnsRecord] DNS records for certificate verification in a space-delimited format (`<record> CNAME <target>`).
@@ -31,9 +32,9 @@ class DomainAssociationCertificateSettings {
 
   factory DomainAssociationCertificateSettings.fromMap(Map<String, dynamic> map) {
     return DomainAssociationCertificateSettings(
-      certificateVerificationDnsRecord: map['certificateVerificationDnsRecord'] == null ? null : map['certificateVerificationDnsRecord'] as String,
-      customCertificateArn: map['customCertificateArn'] == null ? null : map['customCertificateArn'] as String,
-      type: map['type'] as String,
+      certificateVerificationDnsRecord: map['certificateVerificationDnsRecord'] == null ? null : (map['certificateVerificationDnsRecord'] as String).input(),
+      customCertificateArn: map['customCertificateArn'] == null ? null : (map['customCertificateArn'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

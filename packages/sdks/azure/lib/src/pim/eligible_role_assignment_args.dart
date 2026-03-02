@@ -38,23 +38,15 @@ class EligibleRoleAssignmentArgs {
   /// [scope] The scope for this eligible role assignment, should be a valid resource ID. Changing this forces a new resource to be created.
   /// [ticket] A `ticket` block as defined below. Changing this forces a new resource to be created.
   EligibleRoleAssignmentArgs({
-    pulumi.Output<String>? condition,
-    pulumi.Output<String>? conditionVersion,
-    pulumi.Output<String>? justification,
-    required pulumi.Output<String> principalId,
-    required pulumi.Output<String> roleDefinitionId,
-    pulumi.Output<EligibleRoleAssignmentSchedule>? schedule,
-    required pulumi.Output<String> scope,
-    pulumi.Output<EligibleRoleAssignmentTicket>? ticket,
-  }) :
-      condition = pulumi.Input.asOptionalInput<String>(condition),
-      conditionVersion = pulumi.Input.asOptionalInput<String>(conditionVersion),
-      justification = pulumi.Input.asOptionalInput<String>(justification),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      roleDefinitionId = pulumi.Input.asInput<String>(roleDefinitionId),
-      schedule = pulumi.Input.asOptionalInput<EligibleRoleAssignmentSchedule>(schedule),
-      scope = pulumi.Input.asInput<String>(scope),
-      ticket = pulumi.Input.asOptionalInput<EligibleRoleAssignmentTicket>(ticket);
+    this.condition,
+    this.conditionVersion,
+    this.justification,
+    required this.principalId,
+    required this.roleDefinitionId,
+    this.schedule,
+    required this.scope,
+    this.ticket,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class EligibleRoleAssignmentArgs {
 
   factory EligibleRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return EligibleRoleAssignmentArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<String>(map['condition'] as String),
-      conditionVersion: map['conditionVersion'] == null ? null : pulumi.Output.create<String>(map['conditionVersion'] as String),
-      justification: map['justification'] == null ? null : pulumi.Output.create<String>(map['justification'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      roleDefinitionId: pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<EligibleRoleAssignmentSchedule>(EligibleRoleAssignmentSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      ticket: map['ticket'] == null ? null : pulumi.Output.create<EligibleRoleAssignmentTicket>(EligibleRoleAssignmentTicket.fromMap((map['ticket'] as Map).cast<String, dynamic>())),
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion'] as String).input(),
+      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
+      schedule: map['schedule'] == null ? null : (EligibleRoleAssignmentSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      scope: (map['scope'] as String).input(),
+      ticket: map['ticket'] == null ? null : (EligibleRoleAssignmentTicket.fromMap((map['ticket'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

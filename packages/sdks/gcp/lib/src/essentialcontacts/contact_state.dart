@@ -22,17 +22,12 @@ class ContactState {
   /// [notificationCategorySubscriptions] The categories of notifications that the contact will receive communications for.
   /// [parent] The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
   ContactState({
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? languageTag,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? notificationCategorySubscriptions,
-    pulumi.Output<String>? parent,
-  }) :
-      email = pulumi.Input.asOptionalInput<String>(email),
-      languageTag = pulumi.Input.asOptionalInput<String>(languageTag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationCategorySubscriptions = pulumi.Input.asOptionalInput<List<String>>(notificationCategorySubscriptions),
-      parent = pulumi.Input.asOptionalInput<String>(parent);
+    this.email,
+    this.languageTag,
+    this.name,
+    this.notificationCategorySubscriptions,
+    this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ContactState {
 
   factory ContactState.fromMap(Map<String, dynamic> map) {
     return ContactState(
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      languageTag: map['languageTag'] == null ? null : pulumi.Output.create<String>(map['languageTag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationCategorySubscriptions: map['notificationCategorySubscriptions'] == null ? null : pulumi.Output.create<List<String>>((map['notificationCategorySubscriptions'] as List).cast<String>()),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      languageTag: map['languageTag'] == null ? null : (map['languageTag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationCategorySubscriptions: map['notificationCategorySubscriptions'] == null ? null : ((map['notificationCategorySubscriptions'] as List).cast<String>()).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
     );
   }
 }

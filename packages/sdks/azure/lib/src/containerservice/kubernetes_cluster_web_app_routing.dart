@@ -5,11 +5,11 @@ import 'kubernetes_cluster_web_app_routing_web_app_routing_identity.dart';
 
 class KubernetesClusterWebAppRouting {
   /// Specifies the ingress type for the default `NginxIngressController` custom resource. The allowed values are `None`, `Internal`, `External` and `AnnotationControlled`. Defaults to `AnnotationControlled`.
-  final String? defaultNginxController;
+  final pulumi.Input<String>? defaultNginxController;
   /// Specifies the list of the DNS Zone IDs in which DNS entries are created for applications deployed to the cluster when Web App Routing is enabled. If not using Bring-Your-Own DNS zones this property should be set to an empty list.
-  final List<String> dnsZoneIds;
+  final pulumi.Input<List<String>> dnsZoneIds;
   /// A `web_app_routing_identity` block is exported. The exported attributes are defined below.
-  final List<KubernetesClusterWebAppRoutingWebAppRoutingIdentity>? webAppRoutingIdentities;
+  final pulumi.Input<List<KubernetesClusterWebAppRoutingWebAppRoutingIdentity>>? webAppRoutingIdentities;
 
   /// Creates a new [KubernetesClusterWebAppRouting].
   /// [defaultNginxController] Specifies the ingress type for the default `NginxIngressController` custom resource. The allowed values are `None`, `Internal`, `External` and `AnnotationControlled`. Defaults to `AnnotationControlled`.
@@ -25,15 +25,15 @@ class KubernetesClusterWebAppRouting {
     return <String, dynamic>{
       'defaultNginxController': ?defaultNginxController,
       'dnsZoneIds': dnsZoneIds,
-      'webAppRoutingIdentities': ?webAppRoutingIdentities == null ? null : pulumi.Input.encodeList<KubernetesClusterWebAppRoutingWebAppRoutingIdentity, Map<String, dynamic>>(webAppRoutingIdentities!, (value) => value.toMap()),
+      'webAppRoutingIdentities': ?pulumi.Input.mapOptionalInputValue<List<KubernetesClusterWebAppRoutingWebAppRoutingIdentity>, List<Map<String, dynamic>>>(webAppRoutingIdentities, (value) => pulumi.Input.encodeList<KubernetesClusterWebAppRoutingWebAppRoutingIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory KubernetesClusterWebAppRouting.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterWebAppRouting(
-      defaultNginxController: map['defaultNginxController'] == null ? null : map['defaultNginxController'] as String,
-      dnsZoneIds: (map['dnsZoneIds'] as List).cast<String>(),
-      webAppRoutingIdentities: map['webAppRoutingIdentities'] == null ? null : pulumi.Input.decodeList<KubernetesClusterWebAppRoutingWebAppRoutingIdentity>(map['webAppRoutingIdentities'], (value) => KubernetesClusterWebAppRoutingWebAppRoutingIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      defaultNginxController: map['defaultNginxController'] == null ? null : (map['defaultNginxController'] as String).input(),
+      dnsZoneIds: ((map['dnsZoneIds'] as List).cast<String>()).input(),
+      webAppRoutingIdentities: map['webAppRoutingIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterWebAppRoutingWebAppRoutingIdentity>(map['webAppRoutingIdentities'], (value) => KubernetesClusterWebAppRoutingWebAppRoutingIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

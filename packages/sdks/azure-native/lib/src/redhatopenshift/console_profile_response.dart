@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ConsoleProfile represents a console profile.
 class ConsoleProfileResponse {
   /// The URL to access the cluster console.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [ConsoleProfileResponse].
   /// [url] The URL to access the cluster console.
@@ -20,7 +21,7 @@ class ConsoleProfileResponse {
 
   factory ConsoleProfileResponse.fromMap(Map<String, dynamic> map) {
     return ConsoleProfileResponse(
-      url: map['url'] as String,
+      url: (map['url'] as String).input(),
     );
   }
 }

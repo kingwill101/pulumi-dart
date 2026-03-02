@@ -28,19 +28,13 @@ class SecurityPolicyArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [tlsVersions] The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
   SecurityPolicyArgs({
-    required pulumi.Output<List<String>> ciphers,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? resourceGroupId,
-    required pulumi.Output<String> securityPolicyName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<List<String>> tlsVersions,
-  }) :
-      ciphers = pulumi.Input.asInput<List<String>>(ciphers),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      securityPolicyName = pulumi.Input.asInput<String>(securityPolicyName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tlsVersions = pulumi.Input.asInput<List<String>>(tlsVersions);
+    required this.ciphers,
+    this.dryRun,
+    this.resourceGroupId,
+    required this.securityPolicyName,
+    this.tags,
+    required this.tlsVersions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SecurityPolicyArgs {
 
   factory SecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyArgs(
-      ciphers: pulumi.Output.create<List<String>>((map['ciphers'] as List).cast<String>()),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      securityPolicyName: pulumi.Output.create<String>(map['securityPolicyName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tlsVersions: pulumi.Output.create<List<String>>((map['tlsVersions'] as List).cast<String>()),
+      ciphers: ((map['ciphers'] as List).cast<String>()).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      securityPolicyName: (map['securityPolicyName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tlsVersions: ((map['tlsVersions'] as List).cast<String>()).input(),
     );
   }
 }

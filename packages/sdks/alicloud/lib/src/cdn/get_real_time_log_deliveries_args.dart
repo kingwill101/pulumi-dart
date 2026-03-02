@@ -18,13 +18,10 @@ class GetRealTimeLogDeliveriesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
   GetRealTimeLogDeliveriesArgs({
-    required pulumi.Output<String> domain,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      domain = pulumi.Input.asInput<String>(domain),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.domain,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetRealTimeLogDeliveriesArgs {
 
   factory GetRealTimeLogDeliveriesArgs.fromMap(Map<String, dynamic> map) {
     return GetRealTimeLogDeliveriesArgs(
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      domain: (map['domain'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

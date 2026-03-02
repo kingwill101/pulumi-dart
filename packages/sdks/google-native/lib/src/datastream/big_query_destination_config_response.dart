@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'single_target_dataset_response.dart';
 import 'source_hierarchy_datasets_response.dart';
 
 /// BigQuery destination configuration
 class BigQueryDestinationConfigResponse {
   /// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
-  final String dataFreshness;
+  final pulumi.Input<String> dataFreshness;
   /// Single destination dataset.
-  final SingleTargetDatasetResponse singleTargetDataset;
+  final pulumi.Input<SingleTargetDatasetResponse> singleTargetDataset;
   /// Source hierarchy datasets.
-  final SourceHierarchyDatasetsResponse sourceHierarchyDatasets;
+  final pulumi.Input<SourceHierarchyDatasetsResponse> sourceHierarchyDatasets;
 
   /// Creates a new [BigQueryDestinationConfigResponse].
   /// [dataFreshness] The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
@@ -25,16 +26,16 @@ class BigQueryDestinationConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataFreshness': dataFreshness,
-      'singleTargetDataset': singleTargetDataset.toMap(),
-      'sourceHierarchyDatasets': sourceHierarchyDatasets.toMap(),
+      'singleTargetDataset': pulumi.Input.mapInputValue<SingleTargetDatasetResponse, Map<String, dynamic>>(singleTargetDataset, (value) => value.toMap()),
+      'sourceHierarchyDatasets': pulumi.Input.mapInputValue<SourceHierarchyDatasetsResponse, Map<String, dynamic>>(sourceHierarchyDatasets, (value) => value.toMap()),
     };
   }
 
   factory BigQueryDestinationConfigResponse.fromMap(Map<String, dynamic> map) {
     return BigQueryDestinationConfigResponse(
-      dataFreshness: map['dataFreshness'] as String,
-      singleTargetDataset: SingleTargetDatasetResponse.fromMap((map['singleTargetDataset'] as Map).cast<String, dynamic>()),
-      sourceHierarchyDatasets: SourceHierarchyDatasetsResponse.fromMap((map['sourceHierarchyDatasets'] as Map).cast<String, dynamic>()),
+      dataFreshness: (map['dataFreshness'] as String).input(),
+      singleTargetDataset: (SingleTargetDatasetResponse.fromMap((map['singleTargetDataset'] as Map).cast<String, dynamic>())).input(),
+      sourceHierarchyDatasets: (SourceHierarchyDatasetsResponse.fromMap((map['sourceHierarchyDatasets'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

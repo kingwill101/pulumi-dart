@@ -28,19 +28,13 @@ class DataSourceArgs {
   /// [tags] Resource tags.
   /// [workspaceName] The name of the workspace.
   DataSourceArgs({
-    pulumi.Output<String>? dataSourceName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<dynamic> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      dataSourceName = pulumi.Input.asOptionalInput<String>(dataSourceName),
-      kind = pulumi.Input.asInput<String>(kind),
-      properties = pulumi.Input.asInput<dynamic>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.dataSourceName,
+    required this.kind,
+    required this.properties,
+    required this.resourceGroupName,
+    this.tags,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class DataSourceArgs {
 
   factory DataSourceArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceArgs(
-      dataSourceName: map['dataSourceName'] == null ? null : pulumi.Output.create<String>(map['dataSourceName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      properties: pulumi.Output.create<dynamic>(map['properties']),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      properties: (map['properties']).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

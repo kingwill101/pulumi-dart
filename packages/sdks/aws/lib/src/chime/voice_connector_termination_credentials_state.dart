@@ -17,13 +17,10 @@ class VoiceConnectorTerminationCredentialsState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [voiceConnectorId] Amazon Chime Voice Connector ID.
   VoiceConnectorTerminationCredentialsState({
-    pulumi.Output<List<VoiceConnectorTerminationCredentialsCredential>>? credentials,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? voiceConnectorId,
-  }) :
-      credentials = pulumi.Input.asOptionalInput<List<VoiceConnectorTerminationCredentialsCredential>>(credentials),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      voiceConnectorId = pulumi.Input.asOptionalInput<String>(voiceConnectorId);
+    this.credentials,
+    this.region,
+    this.voiceConnectorId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class VoiceConnectorTerminationCredentialsState {
 
   factory VoiceConnectorTerminationCredentialsState.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorTerminationCredentialsState(
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<List<VoiceConnectorTerminationCredentialsCredential>>(pulumi.Input.decodeList<VoiceConnectorTerminationCredentialsCredential>(map['credentials'], (value) => VoiceConnectorTerminationCredentialsCredential.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      voiceConnectorId: map['voiceConnectorId'] == null ? null : pulumi.Output.create<String>(map['voiceConnectorId'] as String),
+      credentials: map['credentials'] == null ? null : (pulumi.Input.decodeList<VoiceConnectorTerminationCredentialsCredential>(map['credentials'], (value) => VoiceConnectorTerminationCredentialsCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      voiceConnectorId: map['voiceConnectorId'] == null ? null : (map['voiceConnectorId'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class StaticSiteDatabaseConnectionArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [resourceId] The resource id of the database.
   StaticSiteDatabaseConnectionArgs({
-    pulumi.Output<String>? connectionIdentity,
-    pulumi.Output<String>? connectionString,
-    pulumi.Output<String>? databaseConnectionName,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceId,
-  }) :
-      connectionIdentity = pulumi.Input.asOptionalInput<String>(connectionIdentity),
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      databaseConnectionName = pulumi.Input.asOptionalInput<String>(databaseConnectionName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asInput<String>(region),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+    this.connectionIdentity,
+    this.connectionString,
+    this.databaseConnectionName,
+    this.kind,
+    required this.name,
+    required this.region,
+    required this.resourceGroupName,
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class StaticSiteDatabaseConnectionArgs {
 
   factory StaticSiteDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteDatabaseConnectionArgs(
-      connectionIdentity: map['connectionIdentity'] == null ? null : pulumi.Output.create<String>(map['connectionIdentity'] as String),
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      databaseConnectionName: map['databaseConnectionName'] == null ? null : pulumi.Output.create<String>(map['databaseConnectionName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
+      connectionIdentity: map['connectionIdentity'] == null ? null : (map['connectionIdentity'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      databaseConnectionName: map['databaseConnectionName'] == null ? null : (map['databaseConnectionName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketWebsiteErrorDocument {
   /// The HTTP status code when the error page is returned. The default 404.
-  final int? httpStatus;
+  final pulumi.Input<int>? httpStatus;
   /// The error page file. If the Object accessed does not exist, this error page is returned.
-  final String? key;
+  final pulumi.Input<String>? key;
 
   /// Creates a new [BucketWebsiteErrorDocument].
   /// [httpStatus] The HTTP status code when the error page is returned. The default 404.
@@ -24,8 +25,8 @@ class BucketWebsiteErrorDocument {
 
   factory BucketWebsiteErrorDocument.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteErrorDocument(
-      httpStatus: map['httpStatus'] == null ? null : map['httpStatus'] as int,
-      key: map['key'] == null ? null : map['key'] as String,
+      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus'] as int).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
     );
   }
 }

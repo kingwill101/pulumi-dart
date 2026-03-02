@@ -16,11 +16,9 @@ class GetNetworkExperimentProfileArgs {
   /// [profileName] The Profile identifier associated with the Tenant and Partner
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   GetNetworkExperimentProfileArgs({
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.profileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkExperimentProfileArgs {
 
   factory GetNetworkExperimentProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkExperimentProfileArgs(
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

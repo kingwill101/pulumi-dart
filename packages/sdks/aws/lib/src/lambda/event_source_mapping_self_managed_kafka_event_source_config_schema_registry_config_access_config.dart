@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig {
   /// Authentication type Lambda uses to access the schema registry.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// URI of the secret (Secrets Manager secret ARN) used to authenticate with the schema registry.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig].
   /// [type] Authentication type Lambda uses to access the schema registry.
@@ -24,8 +25,8 @@ class EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigAcc
 
   factory EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig(
-      type: map['type'] == null ? null : map['type'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

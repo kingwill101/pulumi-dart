@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'batching_configuration_response.dart';
 import 'dataflow_endpoint_data_explorer_authentication_response.dart';
 
 /// Azure Data Explorer endpoint properties
 class DataflowEndpointDataExplorerResponse {
   /// Authentication configuration. NOTE - only authentication property is allowed per entry.
-  final DataflowEndpointDataExplorerAuthenticationResponse authentication;
+  final pulumi.Input<DataflowEndpointDataExplorerAuthenticationResponse> authentication;
   /// Azure Data Explorer endpoint batching configuration.
-  final BatchingConfigurationResponse? batching;
+  final pulumi.Input<BatchingConfigurationResponse>? batching;
   /// Database name.
-  final String database;
+  final pulumi.Input<String> database;
   /// Host of the Azure Data Explorer in the form of <cluster>.<region>.kusto.windows.net .
-  final String host;
+  final pulumi.Input<String> host;
 
   /// Creates a new [DataflowEndpointDataExplorerResponse].
   /// [authentication] Authentication configuration. NOTE - only authentication property is allowed per entry.
@@ -28,8 +29,8 @@ class DataflowEndpointDataExplorerResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': authentication.toMap(),
-      'batching': ?batching == null ? null : batching!.toMap(),
+      'authentication': pulumi.Input.mapInputValue<DataflowEndpointDataExplorerAuthenticationResponse, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'batching': ?pulumi.Input.mapOptionalInputValue<BatchingConfigurationResponse, Map<String, dynamic>>(batching, (value) => value.toMap()),
       'database': database,
       'host': host,
     };
@@ -37,10 +38,10 @@ class DataflowEndpointDataExplorerResponse {
 
   factory DataflowEndpointDataExplorerResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointDataExplorerResponse(
-      authentication: DataflowEndpointDataExplorerAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      batching: map['batching'] == null ? null : BatchingConfigurationResponse.fromMap((map['batching'] as Map).cast<String, dynamic>()),
-      database: map['database'] as String,
-      host: map['host'] as String,
+      authentication: (DataflowEndpointDataExplorerAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      batching: map['batching'] == null ? null : (BatchingConfigurationResponse.fromMap((map['batching'] as Map).cast<String, dynamic>())).input(),
+      database: (map['database'] as String).input(),
+      host: (map['host'] as String).input(),
     );
   }
 }

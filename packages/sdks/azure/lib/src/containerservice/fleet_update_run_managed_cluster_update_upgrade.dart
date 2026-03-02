@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetUpdateRunManagedClusterUpdateUpgrade {
   /// Specifies the Kubernetes version to upgrade the member clusters to. This is required if `type` is set to `Full`.
-  final String? kubernetesVersion;
+  final pulumi.Input<String>? kubernetesVersion;
   /// Specifies the type of upgrade to perform. Possible values are `Full` and `NodeImageOnly`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FleetUpdateRunManagedClusterUpdateUpgrade].
   /// [kubernetesVersion] Specifies the Kubernetes version to upgrade the member clusters to. This is required if `type` is set to `Full`.
@@ -24,8 +25,8 @@ class FleetUpdateRunManagedClusterUpdateUpgrade {
 
   factory FleetUpdateRunManagedClusterUpdateUpgrade.fromMap(Map<String, dynamic> map) {
     return FleetUpdateRunManagedClusterUpdateUpgrade(
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : map['kubernetesVersion'] as String,
-      type: map['type'] as String,
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

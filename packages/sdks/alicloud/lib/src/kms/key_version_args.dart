@@ -15,9 +15,8 @@ class KeyVersionArgs {
   /// Creates a new [KeyVersionArgs].
   /// [keyId] The id of the master key (CMK).
   KeyVersionArgs({
-    required pulumi.Output<String> keyId,
-  }) :
-      keyId = pulumi.Input.asInput<String>(keyId);
+    required this.keyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +26,7 @@ class KeyVersionArgs {
 
   factory KeyVersionArgs.fromMap(Map<String, dynamic> map) {
     return KeyVersionArgs(
-      keyId: pulumi.Output.create<String>(map['keyId'] as String),
+      keyId: (map['keyId'] as String).input(),
     );
   }
 }

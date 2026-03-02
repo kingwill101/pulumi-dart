@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSlotTypeEnumerationValue {
-  final List<String> synonyms;
-  final String value;
+  final pulumi.Input<List<String>> synonyms;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetSlotTypeEnumerationValue].
   /// [synonyms] Required.
@@ -22,8 +23,8 @@ class GetSlotTypeEnumerationValue {
 
   factory GetSlotTypeEnumerationValue.fromMap(Map<String, dynamic> map) {
     return GetSlotTypeEnumerationValue(
-      synonyms: (map['synonyms'] as List).cast<String>(),
-      value: map['value'] as String,
+      synonyms: ((map['synonyms'] as List).cast<String>()).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

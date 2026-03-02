@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings concerning key vault encryption for a configuration store.
 class KeyVaultProperties {
   /// The name of key used to encrypt data.
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
   /// The key version of the key used to encrypt data.
-  final String? keyVersion;
+  final pulumi.Input<String>? keyVersion;
   /// The URI of the key vault key used to encrypt data.
-  final String? keyvaultUri;
+  final pulumi.Input<String>? keyvaultUri;
 
   /// Creates a new [KeyVaultProperties].
   /// [keyName] The name of key used to encrypt data.
@@ -30,9 +31,9 @@ class KeyVaultProperties {
 
   factory KeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultProperties(
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      keyVersion: map['keyVersion'] == null ? null : map['keyVersion'] as String,
-      keyvaultUri: map['keyvaultUri'] == null ? null : map['keyvaultUri'] as String,
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      keyvaultUri: map['keyvaultUri'] == null ? null : (map['keyvaultUri'] as String).input(),
     );
   }
 }

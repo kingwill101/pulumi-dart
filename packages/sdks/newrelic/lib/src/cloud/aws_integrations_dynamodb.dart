@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsIntegrationsDynamodb {
   /// Specify each AWS region that includes the resources that you want to monitor.
-  final List<String>? awsRegions;
+  final pulumi.Input<List<String>>? awsRegions;
   /// Determine if extra inventory data be collected or not. May affect total data collection time and contribute to the Cloud provider API rate limit.
-  final bool? fetchExtendedInventory;
+  final pulumi.Input<bool>? fetchExtendedInventory;
   /// Specify if tags and the extended inventory should be collected. May affect total data collection time and contribute to the Cloud provider API rate limit.
-  final bool? fetchTags;
+  final pulumi.Input<bool>? fetchTags;
   /// The data polling interval in seconds.
-  final int? metricsPollingInterval;
+  final pulumi.Input<int>? metricsPollingInterval;
   /// Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
-  final String? tagKey;
+  final pulumi.Input<String>? tagKey;
   /// Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
-  final String? tagValue;
+  final pulumi.Input<String>? tagValue;
 
   /// Creates a new [AwsIntegrationsDynamodb].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
@@ -44,12 +45,12 @@ class AwsIntegrationsDynamodb {
 
   factory AwsIntegrationsDynamodb.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsDynamodb(
-      awsRegions: map['awsRegions'] == null ? null : (map['awsRegions'] as List).cast<String>(),
-      fetchExtendedInventory: map['fetchExtendedInventory'] == null ? null : map['fetchExtendedInventory'] as bool,
-      fetchTags: map['fetchTags'] == null ? null : map['fetchTags'] as bool,
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : map['metricsPollingInterval'] as int,
-      tagKey: map['tagKey'] == null ? null : map['tagKey'] as String,
-      tagValue: map['tagValue'] == null ? null : map['tagValue'] as String,
+      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions'] as List).cast<String>()).input(),
+      fetchExtendedInventory: map['fetchExtendedInventory'] == null ? null : (map['fetchExtendedInventory'] as bool).input(),
+      fetchTags: map['fetchTags'] == null ? null : (map['fetchTags'] as bool).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
     );
   }
 }

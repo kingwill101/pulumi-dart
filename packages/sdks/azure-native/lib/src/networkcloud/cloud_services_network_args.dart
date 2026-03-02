@@ -33,21 +33,14 @@ class CloudServicesNetworkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   CloudServicesNetworkArgs({
-    pulumi.Output<List<EgressEndpoint>>? additionalEgressEndpoints,
-    pulumi.Output<String>? cloudServicesNetworkName,
-    pulumi.Output<String>? enableDefaultEgressEndpoints,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      additionalEgressEndpoints = pulumi.Input.asOptionalInput<List<EgressEndpoint>>(additionalEgressEndpoints),
-      cloudServicesNetworkName = pulumi.Input.asOptionalInput<String>(cloudServicesNetworkName),
-      enableDefaultEgressEndpoints = pulumi.Input.asOptionalInput<String>(enableDefaultEgressEndpoints),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.additionalEgressEndpoints,
+    this.cloudServicesNetworkName,
+    this.enableDefaultEgressEndpoints,
+    required this.extendedLocation,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class CloudServicesNetworkArgs {
 
   factory CloudServicesNetworkArgs.fromMap(Map<String, dynamic> map) {
     return CloudServicesNetworkArgs(
-      additionalEgressEndpoints: map['additionalEgressEndpoints'] == null ? null : pulumi.Output.create<List<EgressEndpoint>>(pulumi.Input.decodeList<EgressEndpoint>(map['additionalEgressEndpoints'], (value) => EgressEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      cloudServicesNetworkName: map['cloudServicesNetworkName'] == null ? null : pulumi.Output.create<String>(map['cloudServicesNetworkName'] as String),
-      enableDefaultEgressEndpoints: map['enableDefaultEgressEndpoints'] == null ? null : pulumi.Output.create<String>(map['enableDefaultEgressEndpoints'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      additionalEgressEndpoints: map['additionalEgressEndpoints'] == null ? null : (pulumi.Input.decodeList<EgressEndpoint>(map['additionalEgressEndpoints'], (value) => EgressEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudServicesNetworkName: map['cloudServicesNetworkName'] == null ? null : (map['cloudServicesNetworkName'] as String).input(),
+      enableDefaultEgressEndpoints: map['enableDefaultEgressEndpoints'] == null ? null : (map['enableDefaultEgressEndpoints'] as String).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

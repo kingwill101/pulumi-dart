@@ -28,19 +28,13 @@ class HostedConfigurationVersionArgs {
   /// [description] Description of the configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   HostedConfigurationVersionArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> configurationProfileId,
-    required pulumi.Output<String> content,
-    required pulumi.Output<String> contentType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      configurationProfileId = pulumi.Input.asInput<String>(configurationProfileId),
-      content = pulumi.Input.asInput<String>(content),
-      contentType = pulumi.Input.asInput<String>(contentType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.applicationId,
+    required this.configurationProfileId,
+    required this.content,
+    required this.contentType,
+    this.description,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class HostedConfigurationVersionArgs {
 
   factory HostedConfigurationVersionArgs.fromMap(Map<String, dynamic> map) {
     return HostedConfigurationVersionArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      configurationProfileId: pulumi.Output.create<String>(map['configurationProfileId'] as String),
-      content: pulumi.Output.create<String>(map['content'] as String),
-      contentType: pulumi.Output.create<String>(map['contentType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      configurationProfileId: (map['configurationProfileId'] as String).input(),
+      content: (map['content'] as String).input(),
+      contentType: (map['contentType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

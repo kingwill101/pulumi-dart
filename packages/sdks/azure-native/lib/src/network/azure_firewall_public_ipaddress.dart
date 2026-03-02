@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Public IP Address associated with azure firewall.
 class AzureFirewallPublicIPAddress {
   /// Public IP Address value.
-  final String? address;
+  final pulumi.Input<String>? address;
 
   /// Creates a new [AzureFirewallPublicIPAddress].
   /// [address] Public IP Address value.
@@ -20,7 +21,7 @@ class AzureFirewallPublicIPAddress {
 
   factory AzureFirewallPublicIPAddress.fromMap(Map<String, dynamic> map) {
     return AzureFirewallPublicIPAddress(
-      address: map['address'] == null ? null : map['address'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
     );
   }
 }

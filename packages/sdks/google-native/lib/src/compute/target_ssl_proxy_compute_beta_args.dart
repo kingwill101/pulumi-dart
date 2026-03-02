@@ -37,25 +37,16 @@ class TargetSslProxyComputeBetaArgs {
   /// [sslCertificates] URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
   /// [sslPolicy] URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
   TargetSslProxyComputeBetaArgs({
-    pulumi.Output<String>? certificateMap,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<TargetSslProxyProxyHeaderComputeBeta>? proxyHeader,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? service,
-    pulumi.Output<List<String>>? sslCertificates,
-    pulumi.Output<String>? sslPolicy,
-  }) :
-      certificateMap = pulumi.Input.asOptionalInput<String>(certificateMap),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      proxyHeader = pulumi.Input.asOptionalInput<TargetSslProxyProxyHeaderComputeBeta>(proxyHeader),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      service = pulumi.Input.asOptionalInput<String>(service),
-      sslCertificates = pulumi.Input.asOptionalInput<List<String>>(sslCertificates),
-      sslPolicy = pulumi.Input.asOptionalInput<String>(sslPolicy);
+    this.certificateMap,
+    this.description,
+    this.name,
+    this.project,
+    this.proxyHeader,
+    this.requestId,
+    this.service,
+    this.sslCertificates,
+    this.sslPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class TargetSslProxyComputeBetaArgs {
 
   factory TargetSslProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return TargetSslProxyComputeBetaArgs(
-      certificateMap: map['certificateMap'] == null ? null : pulumi.Output.create<String>(map['certificateMap'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      proxyHeader: map['proxyHeader'] == null ? null : pulumi.Output.create<TargetSslProxyProxyHeaderComputeBeta>(TargetSslProxyProxyHeaderComputeBeta.fromValue(map['proxyHeader'] as String)),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
-      sslCertificates: map['sslCertificates'] == null ? null : pulumi.Output.create<List<String>>((map['sslCertificates'] as List).cast<String>()),
-      sslPolicy: map['sslPolicy'] == null ? null : pulumi.Output.create<String>(map['sslPolicy'] as String),
+      certificateMap: map['certificateMap'] == null ? null : (map['certificateMap'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      proxyHeader: map['proxyHeader'] == null ? null : (TargetSslProxyProxyHeaderComputeBeta.fromValue(map['proxyHeader'] as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
+      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates'] as List).cast<String>()).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
     );
   }
 }

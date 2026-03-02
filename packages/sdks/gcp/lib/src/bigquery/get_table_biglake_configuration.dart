@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableBiglakeConfiguration {
   /// The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connection_id can have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or "projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
-  final String connectionId;
+  final pulumi.Input<String> connectionId;
   /// The file format the data is stored in.
-  final String fileFormat;
+  final pulumi.Input<String> fileFormat;
   /// The fully qualified location prefix of the external folder where table data is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
-  final String storageUri;
+  final pulumi.Input<String> storageUri;
   /// The table format the metadata only snapshots are stored in.
-  final String tableFormat;
+  final pulumi.Input<String> tableFormat;
 
   /// Creates a new [GetTableBiglakeConfiguration].
   /// [connectionId] The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connection_id can have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or "projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
@@ -34,10 +35,10 @@ class GetTableBiglakeConfiguration {
 
   factory GetTableBiglakeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetTableBiglakeConfiguration(
-      connectionId: map['connectionId'] as String,
-      fileFormat: map['fileFormat'] as String,
-      storageUri: map['storageUri'] as String,
-      tableFormat: map['tableFormat'] as String,
+      connectionId: (map['connectionId'] as String).input(),
+      fileFormat: (map['fileFormat'] as String).input(),
+      storageUri: (map['storageUri'] as String).input(),
+      tableFormat: (map['tableFormat'] as String).input(),
     );
   }
 }

@@ -42,31 +42,19 @@ class CertificateState {
   /// [tagsAll] Optional.
   /// [usage] Specifies if a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
   CertificateState({
-    pulumi.Output<String>? activeDate,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? certificate,
-    pulumi.Output<String>? certificateChain,
-    pulumi.Output<String>? certificateId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? inactiveDate,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? usage,
-  }) :
-      activeDate = pulumi.Input.asOptionalInput<String>(activeDate),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      certificate = pulumi.Input.asOptionalInput<String>(certificate),
-      certificateChain = pulumi.Input.asOptionalInput<String>(certificateChain),
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      inactiveDate = pulumi.Input.asOptionalInput<String>(inactiveDate),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      usage = pulumi.Input.asOptionalInput<String>(usage);
+    this.activeDate,
+    this.arn,
+    this.certificate,
+    this.certificateChain,
+    this.certificateId,
+    this.description,
+    this.inactiveDate,
+    this.privateKey,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.usage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,18 +75,18 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      activeDate: map['activeDate'] == null ? null : pulumi.Output.create<String>(map['activeDate'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<String>(map['certificate'] as String),
-      certificateChain: map['certificateChain'] == null ? null : pulumi.Output.create<String>(map['certificateChain'] as String),
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      inactiveDate: map['inactiveDate'] == null ? null : pulumi.Output.create<String>(map['inactiveDate'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      usage: map['usage'] == null ? null : pulumi.Output.create<String>(map['usage'] as String),
+      activeDate: map['activeDate'] == null ? null : (map['activeDate'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      inactiveDate: map['inactiveDate'] == null ? null : (map['inactiveDate'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      usage: map['usage'] == null ? null : (map['usage'] as String).input(),
     );
   }
 }

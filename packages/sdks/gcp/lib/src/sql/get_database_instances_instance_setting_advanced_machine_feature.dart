@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseInstancesInstanceSettingAdvancedMachineFeature {
   /// The number of threads per physical core. Can be 1 or 2.
-  final int threadsPerCore;
+  final pulumi.Input<int> threadsPerCore;
 
   /// Creates a new [GetDatabaseInstancesInstanceSettingAdvancedMachineFeature].
   /// [threadsPerCore] The number of threads per physical core. Can be 1 or 2.
@@ -19,7 +20,7 @@ class GetDatabaseInstancesInstanceSettingAdvancedMachineFeature {
 
   factory GetDatabaseInstancesInstanceSettingAdvancedMachineFeature.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingAdvancedMachineFeature(
-      threadsPerCore: map['threadsPerCore'] as int,
+      threadsPerCore: (map['threadsPerCore'] as int).input(),
     );
   }
 }

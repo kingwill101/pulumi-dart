@@ -30,23 +30,15 @@ class LanguageModelState {
   /// [tags] Optional.
   /// [tagsAll] Optional.
   LanguageModelState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? baseModelName,
-    pulumi.Output<LanguageModelInputDataConfig>? inputDataConfig,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? modelName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      baseModelName = pulumi.Input.asOptionalInput<String>(baseModelName),
-      inputDataConfig = pulumi.Input.asOptionalInput<LanguageModelInputDataConfig>(inputDataConfig),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      modelName = pulumi.Input.asOptionalInput<String>(modelName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.baseModelName,
+    this.inputDataConfig,
+    this.languageCode,
+    this.modelName,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,14 +55,14 @@ class LanguageModelState {
 
   factory LanguageModelState.fromMap(Map<String, dynamic> map) {
     return LanguageModelState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      baseModelName: map['baseModelName'] == null ? null : pulumi.Output.create<String>(map['baseModelName'] as String),
-      inputDataConfig: map['inputDataConfig'] == null ? null : pulumi.Output.create<LanguageModelInputDataConfig>(LanguageModelInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      modelName: map['modelName'] == null ? null : pulumi.Output.create<String>(map['modelName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      baseModelName: map['baseModelName'] == null ? null : (map['baseModelName'] as String).input(),
+      inputDataConfig: map['inputDataConfig'] == null ? null : (LanguageModelInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      modelName: map['modelName'] == null ? null : (map['modelName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

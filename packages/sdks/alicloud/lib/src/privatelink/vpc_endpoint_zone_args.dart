@@ -25,17 +25,12 @@ class VpcEndpointZoneArgs {
   /// [vswitchId] The ID of the vSwitch in the zone.
   /// [zoneId] The zone ID.
   VpcEndpointZoneArgs({
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> endpointId,
-    pulumi.Output<String>? eniIp,
-    required pulumi.Output<String> vswitchId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      endpointId = pulumi.Input.asInput<String>(endpointId),
-      eniIp = pulumi.Input.asOptionalInput<String>(eniIp),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.dryRun,
+    required this.endpointId,
+    this.eniIp,
+    required this.vswitchId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class VpcEndpointZoneArgs {
 
   factory VpcEndpointZoneArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointZoneArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      endpointId: pulumi.Output.create<String>(map['endpointId'] as String),
-      eniIp: map['eniIp'] == null ? null : pulumi.Output.create<String>(map['eniIp'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      endpointId: (map['endpointId'] as String).input(),
+      eniIp: map['eniIp'] == null ? null : (map['eniIp'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

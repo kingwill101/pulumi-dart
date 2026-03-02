@@ -32,21 +32,14 @@ class GatewayRouteArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [virtualGatewayName] Name of the virtual gateway to associate the gateway route with. Must be between 1 and 255 characters in length.
   GatewayRouteArgs({
-    required pulumi.Output<String> meshName,
-    pulumi.Output<String>? meshOwner,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<GatewayRouteSpec> spec,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualGatewayName,
-  }) :
-      meshName = pulumi.Input.asInput<String>(meshName),
-      meshOwner = pulumi.Input.asOptionalInput<String>(meshOwner),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      spec = pulumi.Input.asInput<GatewayRouteSpec>(spec),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualGatewayName = pulumi.Input.asInput<String>(virtualGatewayName);
+    required this.meshName,
+    this.meshOwner,
+    this.name,
+    this.region,
+    required this.spec,
+    this.tags,
+    required this.virtualGatewayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class GatewayRouteArgs {
 
   factory GatewayRouteArgs.fromMap(Map<String, dynamic> map) {
     return GatewayRouteArgs(
-      meshName: pulumi.Output.create<String>(map['meshName'] as String),
-      meshOwner: map['meshOwner'] == null ? null : pulumi.Output.create<String>(map['meshOwner'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      spec: pulumi.Output.create<GatewayRouteSpec>(GatewayRouteSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualGatewayName: pulumi.Output.create<String>(map['virtualGatewayName'] as String),
+      meshName: (map['meshName'] as String).input(),
+      meshOwner: map['meshOwner'] == null ? null : (map['meshOwner'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      spec: (GatewayRouteSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualGatewayName: (map['virtualGatewayName'] as String).input(),
     );
   }
 }

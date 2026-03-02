@@ -42,29 +42,18 @@ class UserState {
   /// [userId] The ID of the user.
   /// [userName] The username of the user.
   UserState({
-    pulumi.Output<String>? accessString,
-    pulumi.Output<String>? arn,
-    pulumi.Output<UserAuthenticationMode>? authenticationMode,
-    pulumi.Output<String>? engine,
-    pulumi.Output<bool>? noPasswordRequired,
-    pulumi.Output<List<String>>? passwords,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? userId,
-    pulumi.Output<String>? userName,
-  }) :
-      accessString = pulumi.Input.asOptionalInput<String>(accessString),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      authenticationMode = pulumi.Input.asOptionalInput<UserAuthenticationMode>(authenticationMode),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      noPasswordRequired = pulumi.Input.asOptionalInput<bool>(noPasswordRequired),
-      passwords = pulumi.Input.asOptionalInput<List<String>>(passwords),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      userId = pulumi.Input.asOptionalInput<String>(userId),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.accessString,
+    this.arn,
+    this.authenticationMode,
+    this.engine,
+    this.noPasswordRequired,
+    this.passwords,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.userId,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      accessString: map['accessString'] == null ? null : pulumi.Output.create<String>(map['accessString'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      authenticationMode: map['authenticationMode'] == null ? null : pulumi.Output.create<UserAuthenticationMode>(UserAuthenticationMode.fromMap((map['authenticationMode'] as Map).cast<String, dynamic>())),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      noPasswordRequired: map['noPasswordRequired'] == null ? null : pulumi.Output.create<bool>(map['noPasswordRequired'] as bool),
-      passwords: map['passwords'] == null ? null : pulumi.Output.create<List<String>>((map['passwords'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      accessString: map['accessString'] == null ? null : (map['accessString'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (UserAuthenticationMode.fromMap((map['authenticationMode'] as Map).cast<String, dynamic>())).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      noPasswordRequired: map['noPasswordRequired'] == null ? null : (map['noPasswordRequired'] as bool).input(),
+      passwords: map['passwords'] == null ? null : ((map['passwords'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

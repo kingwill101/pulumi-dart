@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data encryption properties of a server.
 class DataEncryptionResponse {
   /// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
-  final String geoBackupEncryptionKeyStatus;
+  final pulumi.Input<String> geoBackupEncryptionKeyStatus;
   /// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
-  final String? geoBackupKeyURI;
+  final pulumi.Input<String>? geoBackupKeyURI;
   /// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
-  final String? geoBackupUserAssignedIdentityId;
+  final pulumi.Input<String>? geoBackupUserAssignedIdentityId;
   /// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
-  final String primaryEncryptionKeyStatus;
+  final pulumi.Input<String> primaryEncryptionKeyStatus;
   /// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a server.
-  final String? primaryKeyURI;
+  final pulumi.Input<String>? primaryKeyURI;
   /// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a server.
-  final String? primaryUserAssignedIdentityId;
+  final pulumi.Input<String>? primaryUserAssignedIdentityId;
   /// Data encryption type used by a server.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DataEncryptionResponse].
   /// [geoBackupEncryptionKeyStatus] Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
@@ -50,13 +51,13 @@ class DataEncryptionResponse {
 
   factory DataEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return DataEncryptionResponse(
-      geoBackupEncryptionKeyStatus: map['geoBackupEncryptionKeyStatus'] as String,
-      geoBackupKeyURI: map['geoBackupKeyURI'] == null ? null : map['geoBackupKeyURI'] as String,
-      geoBackupUserAssignedIdentityId: map['geoBackupUserAssignedIdentityId'] == null ? null : map['geoBackupUserAssignedIdentityId'] as String,
-      primaryEncryptionKeyStatus: map['primaryEncryptionKeyStatus'] as String,
-      primaryKeyURI: map['primaryKeyURI'] == null ? null : map['primaryKeyURI'] as String,
-      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : map['primaryUserAssignedIdentityId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      geoBackupEncryptionKeyStatus: (map['geoBackupEncryptionKeyStatus'] as String).input(),
+      geoBackupKeyURI: map['geoBackupKeyURI'] == null ? null : (map['geoBackupKeyURI'] as String).input(),
+      geoBackupUserAssignedIdentityId: map['geoBackupUserAssignedIdentityId'] == null ? null : (map['geoBackupUserAssignedIdentityId'] as String).input(),
+      primaryEncryptionKeyStatus: (map['primaryEncryptionKeyStatus'] as String).input(),
+      primaryKeyURI: map['primaryKeyURI'] == null ? null : (map['primaryKeyURI'] as String).input(),
+      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

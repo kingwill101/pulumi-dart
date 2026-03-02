@@ -47,23 +47,15 @@ class MulticastDomainActivationArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [trafficSpec] Specifies the traffic volume and multicast group scale parameters that are
   MulticastDomainActivationArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disablePlacementPolicy,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> multicastDomain,
-    required pulumi.Output<String> multicastDomainActivationId,
-    pulumi.Output<String>? project,
-    pulumi.Output<MulticastDomainActivationTrafficSpec>? trafficSpec,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disablePlacementPolicy = pulumi.Input.asOptionalInput<bool>(disablePlacementPolicy),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      multicastDomain = pulumi.Input.asInput<String>(multicastDomain),
-      multicastDomainActivationId = pulumi.Input.asInput<String>(multicastDomainActivationId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      trafficSpec = pulumi.Input.asOptionalInput<MulticastDomainActivationTrafficSpec>(trafficSpec);
+    this.description,
+    this.disablePlacementPolicy,
+    this.labels,
+    required this.location,
+    required this.multicastDomain,
+    required this.multicastDomainActivationId,
+    this.project,
+    this.trafficSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,14 +72,14 @@ class MulticastDomainActivationArgs {
 
   factory MulticastDomainActivationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainActivationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disablePlacementPolicy: map['disablePlacementPolicy'] == null ? null : pulumi.Output.create<bool>(map['disablePlacementPolicy'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      multicastDomain: pulumi.Output.create<String>(map['multicastDomain'] as String),
-      multicastDomainActivationId: pulumi.Output.create<String>(map['multicastDomainActivationId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      trafficSpec: map['trafficSpec'] == null ? null : pulumi.Output.create<MulticastDomainActivationTrafficSpec>(MulticastDomainActivationTrafficSpec.fromMap((map['trafficSpec'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disablePlacementPolicy: map['disablePlacementPolicy'] == null ? null : (map['disablePlacementPolicy'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      multicastDomain: (map['multicastDomain'] as String).input(),
+      multicastDomainActivationId: (map['multicastDomainActivationId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      trafficSpec: map['trafficSpec'] == null ? null : (MulticastDomainActivationTrafficSpec.fromMap((map['trafficSpec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetQueueArgs {
   /// [queueName] A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetQueueArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> queueName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      queueName = pulumi.Input.asInput<String>(queueName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.queueName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetQueueArgs {
 
   factory GetQueueArgs.fromMap(Map<String, dynamic> map) {
     return GetQueueArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      queueName: pulumi.Output.create<String>(map['queueName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      queueName: (map['queueName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

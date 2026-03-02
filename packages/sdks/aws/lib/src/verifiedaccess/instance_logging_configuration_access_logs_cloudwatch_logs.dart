@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceLoggingConfigurationAccessLogsCloudwatchLogs {
   /// Indicates whether logging is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The name of the CloudWatch Logs Log Group.
-  final String? logGroup;
+  final pulumi.Input<String>? logGroup;
 
   /// Creates a new [InstanceLoggingConfigurationAccessLogsCloudwatchLogs].
   /// [enabled] Indicates whether logging is enabled.
@@ -24,8 +25,8 @@ class InstanceLoggingConfigurationAccessLogsCloudwatchLogs {
 
   factory InstanceLoggingConfigurationAccessLogsCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return InstanceLoggingConfigurationAccessLogsCloudwatchLogs(
-      enabled: map['enabled'] as bool,
-      logGroup: map['logGroup'] == null ? null : map['logGroup'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
     );
   }
 }

@@ -20,17 +20,12 @@ class GetIntentArgs {
   /// [location] Required.
   /// [project] Optional.
   GetIntentArgs({
-    required pulumi.Output<String> intentId,
-    pulumi.Output<String>? intentView,
-    pulumi.Output<String>? languageCode,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      intentId = pulumi.Input.asInput<String>(intentId),
-      intentView = pulumi.Input.asOptionalInput<String>(intentView),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.intentId,
+    this.intentView,
+    this.languageCode,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetIntentArgs {
 
   factory GetIntentArgs.fromMap(Map<String, dynamic> map) {
     return GetIntentArgs(
-      intentId: pulumi.Output.create<String>(map['intentId'] as String),
-      intentView: map['intentView'] == null ? null : pulumi.Output.create<String>(map['intentView'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      intentId: (map['intentId'] as String).input(),
+      intentView: map['intentView'] == null ? null : (map['intentView'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

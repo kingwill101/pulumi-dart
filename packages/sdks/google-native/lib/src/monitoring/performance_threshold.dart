@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'basic_sli.dart';
 import 'request_based_sli.dart';
 
 /// A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance.
 class PerformanceThreshold {
   /// BasicSli to evaluate to judge window quality.
-  final BasicSli? basicSliPerformance;
+  final pulumi.Input<BasicSli>? basicSliPerformance;
   /// RequestBasedSli to evaluate to judge window quality.
-  final RequestBasedSli? performance;
+  final pulumi.Input<RequestBasedSli>? performance;
   /// If window performance >= threshold, the window is counted as good.
-  final double? threshold;
+  final pulumi.Input<double>? threshold;
 
   /// Creates a new [PerformanceThreshold].
   /// [basicSliPerformance] BasicSli to evaluate to judge window quality.
@@ -24,17 +25,17 @@ class PerformanceThreshold {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicSliPerformance': ?basicSliPerformance == null ? null : basicSliPerformance!.toMap(),
-      'performance': ?performance == null ? null : performance!.toMap(),
+      'basicSliPerformance': ?pulumi.Input.mapOptionalInputValue<BasicSli, Map<String, dynamic>>(basicSliPerformance, (value) => value.toMap()),
+      'performance': ?pulumi.Input.mapOptionalInputValue<RequestBasedSli, Map<String, dynamic>>(performance, (value) => value.toMap()),
       'threshold': ?threshold,
     };
   }
 
   factory PerformanceThreshold.fromMap(Map<String, dynamic> map) {
     return PerformanceThreshold(
-      basicSliPerformance: map['basicSliPerformance'] == null ? null : BasicSli.fromMap((map['basicSliPerformance'] as Map).cast<String, dynamic>()),
-      performance: map['performance'] == null ? null : RequestBasedSli.fromMap((map['performance'] as Map).cast<String, dynamic>()),
-      threshold: map['threshold'] == null ? null : map['threshold'] as double,
+      basicSliPerformance: map['basicSliPerformance'] == null ? null : (BasicSli.fromMap((map['basicSliPerformance'] as Map).cast<String, dynamic>())).input(),
+      performance: map['performance'] == null ? null : (RequestBasedSli.fromMap((map['performance'] as Map).cast<String, dynamic>())).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold'] as double).input(),
     );
   }
 }

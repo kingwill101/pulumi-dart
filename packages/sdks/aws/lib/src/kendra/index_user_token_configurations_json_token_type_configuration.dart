@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexUserTokenConfigurationsJsonTokenTypeConfiguration {
   /// The group attribute field. Minimum length of 1. Maximum length of 2048.
-  final String groupAttributeField;
+  final pulumi.Input<String> groupAttributeField;
   /// The user name attribute field. Minimum length of 1. Maximum length of 2048.
-  final String userNameAttributeField;
+  final pulumi.Input<String> userNameAttributeField;
 
   /// Creates a new [IndexUserTokenConfigurationsJsonTokenTypeConfiguration].
   /// [groupAttributeField] The group attribute field. Minimum length of 1. Maximum length of 2048.
@@ -24,8 +25,8 @@ class IndexUserTokenConfigurationsJsonTokenTypeConfiguration {
 
   factory IndexUserTokenConfigurationsJsonTokenTypeConfiguration.fromMap(Map<String, dynamic> map) {
     return IndexUserTokenConfigurationsJsonTokenTypeConfiguration(
-      groupAttributeField: map['groupAttributeField'] as String,
-      userNameAttributeField: map['userNameAttributeField'] as String,
+      groupAttributeField: (map['groupAttributeField'] as String).input(),
+      userNameAttributeField: (map['userNameAttributeField'] as String).input(),
     );
   }
 }

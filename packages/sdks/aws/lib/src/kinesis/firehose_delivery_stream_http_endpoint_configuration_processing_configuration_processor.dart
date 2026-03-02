@@ -5,9 +5,9 @@ import 'firehose_delivery_stream_http_endpoint_configuration_processing_configur
 
 class FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessor {
   /// Specifies the processor parameters as multiple blocks. See `parameters` block below for details.
-  final List<FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessorParameter>? parameters;
+  final pulumi.Input<List<FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessorParameter>>? parameters;
   /// The type of processor. Valid Values: `RecordDeAggregation`, `Lambda`, `MetadataExtraction`, `AppendDelimiterToRecord`, `Decompression`, `CloudWatchLogProcessing`. Validation is done against [AWS SDK constants](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/firehose/types#ProcessorType); so values not explicitly listed may also work.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessor].
   /// [parameters] Specifies the processor parameters as multiple blocks. See `parameters` block below for details.
@@ -19,15 +19,15 @@ class FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProc
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessorParameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessorParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessorParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessor.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessor(
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessorParameter>(map['parameters'], (value) => FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessorParameter.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessorParameter>(map['parameters'], (value) => FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessorParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

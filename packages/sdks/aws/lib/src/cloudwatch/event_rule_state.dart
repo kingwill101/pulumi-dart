@@ -51,35 +51,21 @@ class EventRuleState {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   EventRuleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? eventBusName,
-    pulumi.Output<String>? eventPattern,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<bool>? isEnabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<String>? scheduleExpression,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventBusName = pulumi.Input.asOptionalInput<String>(eventBusName),
-      eventPattern = pulumi.Input.asOptionalInput<String>(eventPattern),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      isEnabled = pulumi.Input.asOptionalInput<bool>(isEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      scheduleExpression = pulumi.Input.asOptionalInput<String>(scheduleExpression),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.eventBusName,
+    this.eventPattern,
+    this.forceDestroy,
+    this.isEnabled,
+    this.name,
+    this.namePrefix,
+    this.region,
+    this.roleArn,
+    this.scheduleExpression,
+    this.state,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class EventRuleState {
 
   factory EventRuleState.fromMap(Map<String, dynamic> map) {
     return EventRuleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventBusName: map['eventBusName'] == null ? null : pulumi.Output.create<String>(map['eventBusName'] as String),
-      eventPattern: map['eventPattern'] == null ? null : pulumi.Output.create<String>(map['eventPattern'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      isEnabled: map['isEnabled'] == null ? null : pulumi.Output.create<bool>(map['isEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      scheduleExpression: map['scheduleExpression'] == null ? null : pulumi.Output.create<String>(map['scheduleExpression'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName'] as String).input(),
+      eventPattern: map['eventPattern'] == null ? null : (map['eventPattern'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      scheduleExpression: map['scheduleExpression'] == null ? null : (map['scheduleExpression'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

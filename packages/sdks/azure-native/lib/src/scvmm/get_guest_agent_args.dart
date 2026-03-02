@@ -19,13 +19,10 @@ class GetGuestAgentArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [virtualMachineName] Name of the vm.
   GetGuestAgentArgs({
-    required pulumi.Output<String> guestAgentName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualMachineName,
-  }) :
-      guestAgentName = pulumi.Input.asInput<String>(guestAgentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualMachineName = pulumi.Input.asInput<String>(virtualMachineName);
+    required this.guestAgentName,
+    required this.resourceGroupName,
+    required this.virtualMachineName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGuestAgentArgs {
 
   factory GetGuestAgentArgs.fromMap(Map<String, dynamic> map) {
     return GetGuestAgentArgs(
-      guestAgentName: pulumi.Output.create<String>(map['guestAgentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualMachineName: pulumi.Output.create<String>(map['virtualMachineName'] as String),
+      guestAgentName: (map['guestAgentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualMachineName: (map['virtualMachineName'] as String).input(),
     );
   }
 }

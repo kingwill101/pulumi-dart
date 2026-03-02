@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iptraffic.dart';
 
 /// Represents the Reachability Analysis Intent properties.
 class ReachabilityAnalysisIntentProperties {
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Destination resource id to verify the reachability path of.
-  final String destinationResourceId;
+  final pulumi.Input<String> destinationResourceId;
   /// IP traffic information.
-  final IPTraffic ipTraffic;
+  final pulumi.Input<IPTraffic> ipTraffic;
   /// Source resource id to verify the reachability path of.
-  final String sourceResourceId;
+  final pulumi.Input<String> sourceResourceId;
 
   /// Creates a new [ReachabilityAnalysisIntentProperties].
   /// [description] Optional.
@@ -28,17 +29,17 @@ class ReachabilityAnalysisIntentProperties {
     return <String, dynamic>{
       'description': ?description,
       'destinationResourceId': destinationResourceId,
-      'ipTraffic': ipTraffic.toMap(),
+      'ipTraffic': pulumi.Input.mapInputValue<IPTraffic, Map<String, dynamic>>(ipTraffic, (value) => value.toMap()),
       'sourceResourceId': sourceResourceId,
     };
   }
 
   factory ReachabilityAnalysisIntentProperties.fromMap(Map<String, dynamic> map) {
     return ReachabilityAnalysisIntentProperties(
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationResourceId: map['destinationResourceId'] as String,
-      ipTraffic: IPTraffic.fromMap((map['ipTraffic'] as Map).cast<String, dynamic>()),
-      sourceResourceId: map['sourceResourceId'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationResourceId: (map['destinationResourceId'] as String).input(),
+      ipTraffic: (IPTraffic.fromMap((map['ipTraffic'] as Map).cast<String, dynamic>())).input(),
+      sourceResourceId: (map['sourceResourceId'] as String).input(),
     );
   }
 }

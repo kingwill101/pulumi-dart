@@ -41,19 +41,13 @@ class MachineImageIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   MachineImageIamBindingState({
-    pulumi.Output<MachineImageIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? machineImage,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<MachineImageIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      machineImage = pulumi.Input.asOptionalInput<String>(machineImage),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.etag,
+    this.machineImage,
+    this.members,
+    this.project,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,12 +62,12 @@ class MachineImageIamBindingState {
 
   factory MachineImageIamBindingState.fromMap(Map<String, dynamic> map) {
     return MachineImageIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<MachineImageIamBindingCondition>(MachineImageIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      machineImage: map['machineImage'] == null ? null : pulumi.Output.create<String>(map['machineImage'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (MachineImageIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      machineImage: map['machineImage'] == null ? null : (map['machineImage'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

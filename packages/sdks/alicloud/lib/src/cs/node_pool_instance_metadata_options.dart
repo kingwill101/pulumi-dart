@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolInstanceMetadataOptions {
   /// ECS instance metadata access mode configuration. Value range:
@@ -10,7 +11,7 @@ class NodePoolInstanceMetadataOptions {
   /// Default value: 'optional '.
   ///
   /// This parameter is only supported for ACK-managed clusters of 1.28 or later versions.
-  final String? httpTokens;
+  final pulumi.Input<String>? httpTokens;
 
   /// Creates a new [NodePoolInstanceMetadataOptions].
   /// [httpTokens] ECS instance metadata access mode configuration. Value range:
@@ -26,7 +27,7 @@ class NodePoolInstanceMetadataOptions {
 
   factory NodePoolInstanceMetadataOptions.fromMap(Map<String, dynamic> map) {
     return NodePoolInstanceMetadataOptions(
-      httpTokens: map['httpTokens'] == null ? null : map['httpTokens'] as String,
+      httpTokens: map['httpTokens'] == null ? null : (map['httpTokens'] as String).input(),
     );
   }
 }

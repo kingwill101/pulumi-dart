@@ -39,27 +39,17 @@ class NamespaceState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   NamespaceState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? capacityRegion,
-    pulumi.Output<String>? creationStatus,
-    pulumi.Output<String>? identityStore,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<NamespaceTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      capacityRegion = pulumi.Input.asOptionalInput<String>(capacityRegion),
-      creationStatus = pulumi.Input.asOptionalInput<String>(creationStatus),
-      identityStore = pulumi.Input.asOptionalInput<String>(identityStore),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<NamespaceTimeouts>(timeouts);
+    this.arn,
+    this.awsAccountId,
+    this.capacityRegion,
+    this.creationStatus,
+    this.identityStore,
+    this.namespace,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      capacityRegion: map['capacityRegion'] == null ? null : pulumi.Output.create<String>(map['capacityRegion'] as String),
-      creationStatus: map['creationStatus'] == null ? null : pulumi.Output.create<String>(map['creationStatus'] as String),
-      identityStore: map['identityStore'] == null ? null : pulumi.Output.create<String>(map['identityStore'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<NamespaceTimeouts>(NamespaceTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      capacityRegion: map['capacityRegion'] == null ? null : (map['capacityRegion'] as String).input(),
+      creationStatus: map['creationStatus'] == null ? null : (map['creationStatus'] as String).input(),
+      identityStore: map['identityStore'] == null ? null : (map['identityStore'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (NamespaceTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

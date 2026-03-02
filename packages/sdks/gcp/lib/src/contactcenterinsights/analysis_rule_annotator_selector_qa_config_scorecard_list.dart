@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalysisRuleAnnotatorSelectorQaConfigScorecardList {
   /// List of QaScorecardRevisions.
-  final List<String>? qaScorecardRevisions;
+  final pulumi.Input<List<String>>? qaScorecardRevisions;
 
   /// Creates a new [AnalysisRuleAnnotatorSelectorQaConfigScorecardList].
   /// [qaScorecardRevisions] List of QaScorecardRevisions.
@@ -19,7 +20,7 @@ class AnalysisRuleAnnotatorSelectorQaConfigScorecardList {
 
   factory AnalysisRuleAnnotatorSelectorQaConfigScorecardList.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleAnnotatorSelectorQaConfigScorecardList(
-      qaScorecardRevisions: map['qaScorecardRevisions'] == null ? null : (map['qaScorecardRevisions'] as List).cast<String>(),
+      qaScorecardRevisions: map['qaScorecardRevisions'] == null ? null : ((map['qaScorecardRevisions'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCryptoKeysKeyPrimary {
   /// The resource name for this CryptoKeyVersion.
-  final String name;
+  final pulumi.Input<String> name;
   /// The current state of the CryptoKeyVersion.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GetCryptoKeysKeyPrimary].
   /// [name] The resource name for this CryptoKeyVersion.
@@ -24,8 +25,8 @@ class GetCryptoKeysKeyPrimary {
 
   factory GetCryptoKeysKeyPrimary.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeysKeyPrimary(
-      name: map['name'] as String,
-      state: map['state'] as String,
+      name: (map['name'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

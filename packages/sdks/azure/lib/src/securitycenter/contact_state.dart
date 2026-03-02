@@ -22,17 +22,12 @@ class ContactState {
   /// [name] The name of the Security Center Contact. Changing this forces a new Security Center Contact to be created.
   /// [phone] The phone number of the Security Center Contact.
   ContactState({
-    pulumi.Output<bool>? alertNotifications,
-    pulumi.Output<bool>? alertsToAdmins,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? phone,
-  }) :
-      alertNotifications = pulumi.Input.asOptionalInput<bool>(alertNotifications),
-      alertsToAdmins = pulumi.Input.asOptionalInput<bool>(alertsToAdmins),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      phone = pulumi.Input.asOptionalInput<String>(phone);
+    this.alertNotifications,
+    this.alertsToAdmins,
+    this.email,
+    this.name,
+    this.phone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ContactState {
 
   factory ContactState.fromMap(Map<String, dynamic> map) {
     return ContactState(
-      alertNotifications: map['alertNotifications'] == null ? null : pulumi.Output.create<bool>(map['alertNotifications'] as bool),
-      alertsToAdmins: map['alertsToAdmins'] == null ? null : pulumi.Output.create<bool>(map['alertsToAdmins'] as bool),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      phone: map['phone'] == null ? null : pulumi.Output.create<String>(map['phone'] as String),
+      alertNotifications: map['alertNotifications'] == null ? null : (map['alertNotifications'] as bool).input(),
+      alertsToAdmins: map['alertsToAdmins'] == null ? null : (map['alertsToAdmins'] as bool).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
     );
   }
 }

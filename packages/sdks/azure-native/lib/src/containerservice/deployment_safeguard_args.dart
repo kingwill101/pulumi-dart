@@ -19,13 +19,10 @@ class DeploymentSafeguardArgs {
   /// [level] The deployment safeguards level. Possible values are Warn and Enforce
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   DeploymentSafeguardArgs({
-    pulumi.Output<List<String>>? excludedNamespaces,
-    required pulumi.Output<String> level,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      excludedNamespaces = pulumi.Input.asOptionalInput<List<String>>(excludedNamespaces),
-      level = pulumi.Input.asInput<String>(level),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.excludedNamespaces,
+    required this.level,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DeploymentSafeguardArgs {
 
   factory DeploymentSafeguardArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentSafeguardArgs(
-      excludedNamespaces: map['excludedNamespaces'] == null ? null : pulumi.Output.create<List<String>>((map['excludedNamespaces'] as List).cast<String>()),
-      level: pulumi.Output.create<String>(map['level'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      excludedNamespaces: map['excludedNamespaces'] == null ? null : ((map['excludedNamespaces'] as List).cast<String>()).input(),
+      level: (map['level'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

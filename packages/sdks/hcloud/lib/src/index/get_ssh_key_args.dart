@@ -25,17 +25,12 @@ class GetSshKeyArgs {
   /// [selector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   GetSshKeyArgs({
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<int>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? selector,
-    pulumi.Output<String>? withSelector,
-  }) :
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      id = pulumi.Input.asOptionalInput<int>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      selector = pulumi.Input.asOptionalInput<String>(selector),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector);
+    this.fingerprint,
+    this.id,
+    this.name,
+    this.selector,
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSshKeyArgs {
 
   factory GetSshKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetSshKeyArgs(
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      selector: map['selector'] == null ? null : pulumi.Output.create<String>(map['selector'] as String),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'create_option.dart';
 import 'credentials.dart';
 import 'enable_state.dart';
@@ -10,21 +11,21 @@ import 'virtual_machine_additional_capabilities.dart';
 /// The base virtual machine configuration for a lab.
 class VirtualMachineProfile {
   /// Additional VM capabilities.
-  final VirtualMachineAdditionalCapabilities? additionalCapabilities;
+  final pulumi.Input<VirtualMachineAdditionalCapabilities>? additionalCapabilities;
   /// Credentials for the admin user on the VM.
-  final Credentials adminUser;
+  final pulumi.Input<Credentials> adminUser;
   /// Indicates what lab virtual machines are created from.
-  final CreateOption createOption;
+  final pulumi.Input<CreateOption> createOption;
   /// The image configuration for lab virtual machines.
-  final ImageReference imageReference;
+  final pulumi.Input<ImageReference> imageReference;
   /// Credentials for the non-admin user on the VM, if one exists.
-  final Credentials? nonAdminUser;
+  final pulumi.Input<Credentials>? nonAdminUser;
   /// The SKU for the lab. Defines the type of virtual machines used in the lab.
-  final Sku sku;
+  final pulumi.Input<Sku> sku;
   /// The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  final String usageQuota;
+  final pulumi.Input<String> usageQuota;
   /// Enabling this option will use the same password for all user VMs.
-  final EnableState? useSharedPassword;
+  final pulumi.Input<EnableState>? useSharedPassword;
 
   /// Creates a new [VirtualMachineProfile].
   /// [additionalCapabilities] Additional VM capabilities.
@@ -48,27 +49,27 @@ class VirtualMachineProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalCapabilities': ?additionalCapabilities == null ? null : additionalCapabilities!.toMap(),
-      'adminUser': adminUser.toMap(),
-      'createOption': createOption.value,
-      'imageReference': imageReference.toMap(),
-      'nonAdminUser': ?nonAdminUser == null ? null : nonAdminUser!.toMap(),
-      'sku': sku.toMap(),
+      'additionalCapabilities': ?pulumi.Input.mapOptionalInputValue<VirtualMachineAdditionalCapabilities, Map<String, dynamic>>(additionalCapabilities, (value) => value.toMap()),
+      'adminUser': pulumi.Input.mapInputValue<Credentials, Map<String, dynamic>>(adminUser, (value) => value.toMap()),
+      'createOption': pulumi.Input.mapInputValue<CreateOption, String>(createOption, (value) => value.value),
+      'imageReference': pulumi.Input.mapInputValue<ImageReference, Map<String, dynamic>>(imageReference, (value) => value.toMap()),
+      'nonAdminUser': ?pulumi.Input.mapOptionalInputValue<Credentials, Map<String, dynamic>>(nonAdminUser, (value) => value.toMap()),
+      'sku': pulumi.Input.mapInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'usageQuota': usageQuota,
-      'useSharedPassword': ?useSharedPassword == null ? null : useSharedPassword!.value,
+      'useSharedPassword': ?pulumi.Input.mapOptionalInputValue<EnableState, String>(useSharedPassword, (value) => value.value),
     };
   }
 
   factory VirtualMachineProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachineProfile(
-      additionalCapabilities: map['additionalCapabilities'] == null ? null : VirtualMachineAdditionalCapabilities.fromMap((map['additionalCapabilities'] as Map).cast<String, dynamic>()),
-      adminUser: Credentials.fromMap((map['adminUser'] as Map).cast<String, dynamic>()),
-      createOption: CreateOption.fromValue(map['createOption'] as String),
-      imageReference: ImageReference.fromMap((map['imageReference'] as Map).cast<String, dynamic>()),
-      nonAdminUser: map['nonAdminUser'] == null ? null : Credentials.fromMap((map['nonAdminUser'] as Map).cast<String, dynamic>()),
-      sku: Sku.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      usageQuota: map['usageQuota'] as String,
-      useSharedPassword: map['useSharedPassword'] == null ? null : EnableState.fromValue(map['useSharedPassword'] as String),
+      additionalCapabilities: map['additionalCapabilities'] == null ? null : (VirtualMachineAdditionalCapabilities.fromMap((map['additionalCapabilities'] as Map).cast<String, dynamic>())).input(),
+      adminUser: (Credentials.fromMap((map['adminUser'] as Map).cast<String, dynamic>())).input(),
+      createOption: (CreateOption.fromValue(map['createOption'] as String)).input(),
+      imageReference: (ImageReference.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
+      nonAdminUser: map['nonAdminUser'] == null ? null : (Credentials.fromMap((map['nonAdminUser'] as Map).cast<String, dynamic>())).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      usageQuota: (map['usageQuota'] as String).input(),
+      useSharedPassword: map['useSharedPassword'] == null ? null : (EnableState.fromValue(map['useSharedPassword'] as String)).input(),
     );
   }
 }

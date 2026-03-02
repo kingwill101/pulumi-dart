@@ -10,37 +10,37 @@ import 'sku_response.dart';
 class VaultPropertiesResponse {
   /// An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final List<AccessPolicyEntryResponse>? accessPolicies;
+  final pulumi.Input<List<AccessPolicyEntryResponse>>? accessPolicies;
   /// Property specifying whether protection against purge is enabled for this vault. Setting this property to true activates protection against purge for this vault and its content - only the Key Vault service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible - that is, the property does not accept false as its value.
-  final bool? enablePurgeProtection;
+  final pulumi.Input<bool>? enablePurgeProtection;
   /// Property that controls how data actions are authorized. When true, the key vault will use Role Based Access Control (RBAC) for authorization of data actions, and the access policies specified in vault properties will be  ignored. When false, the key vault will use the access policies specified in vault properties, and any policy stored on Azure Resource Manager will be ignored. If null or not specified, the vault is created with the default value of false. Note that management actions are always authorized with RBAC.
-  final bool? enableRbacAuthorization;
+  final pulumi.Input<bool>? enableRbacAuthorization;
   /// Property to specify whether the 'soft delete' functionality is enabled for this key vault. If it's not set to any value(true or false) when creating new key vault, it will be set to true by default. Once set to true, it cannot be reverted to false.
-  final bool? enableSoftDelete;
+  final pulumi.Input<bool>? enableSoftDelete;
   /// Property to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault.
-  final bool? enabledForDeployment;
+  final pulumi.Input<bool>? enabledForDeployment;
   /// Property to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys.
-  final bool? enabledForDiskEncryption;
+  final pulumi.Input<bool>? enabledForDiskEncryption;
   /// Property to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault.
-  final bool? enabledForTemplateDeployment;
+  final pulumi.Input<bool>? enabledForTemplateDeployment;
   /// The resource id of HSM Pool.
-  final String hsmPoolResourceId;
+  final pulumi.Input<String> hsmPoolResourceId;
   /// Rules governing the accessibility of the key vault from specific network locations.
-  final NetworkRuleSetResponse? networkAcls;
+  final pulumi.Input<NetworkRuleSetResponse>? networkAcls;
   /// List of private endpoint connections associated with the key vault.
-  final List<PrivateEndpointConnectionItemResponse> privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionItemResponse>> privateEndpointConnections;
   /// Provisioning state of the vault.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
   /// SKU details
-  final SkuResponse sku;
+  final pulumi.Input<SkuResponse> sku;
   /// softDelete data retention days. It accepts >=7 and <=90.
-  final int? softDeleteRetentionInDays;
+  final pulumi.Input<int>? softDeleteRetentionInDays;
   /// The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The URI of the vault for performing operations on keys and secrets.
-  final String vaultUri;
+  final pulumi.Input<String> vaultUri;
 
   /// Creates a new [VaultPropertiesResponse].
   /// [accessPolicies] An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
@@ -80,7 +80,7 @@ class VaultPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessPolicies': ?accessPolicies == null ? null : pulumi.Input.encodeList<AccessPolicyEntryResponse, Map<String, dynamic>>(accessPolicies!, (value) => value.toMap()),
+      'accessPolicies': ?pulumi.Input.mapOptionalInputValue<List<AccessPolicyEntryResponse>, List<Map<String, dynamic>>>(accessPolicies, (value) => pulumi.Input.encodeList<AccessPolicyEntryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enablePurgeProtection': ?enablePurgeProtection,
       'enableRbacAuthorization': ?enableRbacAuthorization,
       'enableSoftDelete': ?enableSoftDelete,
@@ -88,11 +88,11 @@ class VaultPropertiesResponse {
       'enabledForDiskEncryption': ?enabledForDiskEncryption,
       'enabledForTemplateDeployment': ?enabledForTemplateDeployment,
       'hsmPoolResourceId': hsmPoolResourceId,
-      'networkAcls': ?networkAcls == null ? null : networkAcls!.toMap(),
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionItemResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'networkAcls': ?pulumi.Input.mapOptionalInputValue<NetworkRuleSetResponse, Map<String, dynamic>>(networkAcls, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionItemResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
-      'sku': sku.toMap(),
+      'sku': pulumi.Input.mapInputValue<SkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'softDeleteRetentionInDays': ?softDeleteRetentionInDays,
       'tenantId': tenantId,
       'vaultUri': vaultUri,
@@ -101,22 +101,22 @@ class VaultPropertiesResponse {
 
   factory VaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VaultPropertiesResponse(
-      accessPolicies: map['accessPolicies'] == null ? null : pulumi.Input.decodeList<AccessPolicyEntryResponse>(map['accessPolicies'], (value) => AccessPolicyEntryResponse.fromMap((value as Map).cast<String, dynamic>())),
-      enablePurgeProtection: map['enablePurgeProtection'] == null ? null : map['enablePurgeProtection'] as bool,
-      enableRbacAuthorization: map['enableRbacAuthorization'] == null ? null : map['enableRbacAuthorization'] as bool,
-      enableSoftDelete: map['enableSoftDelete'] == null ? null : map['enableSoftDelete'] as bool,
-      enabledForDeployment: map['enabledForDeployment'] == null ? null : map['enabledForDeployment'] as bool,
-      enabledForDiskEncryption: map['enabledForDiskEncryption'] == null ? null : map['enabledForDiskEncryption'] as bool,
-      enabledForTemplateDeployment: map['enabledForTemplateDeployment'] == null ? null : map['enabledForTemplateDeployment'] as bool,
-      hsmPoolResourceId: map['hsmPoolResourceId'] as String,
-      networkAcls: map['networkAcls'] == null ? null : NetworkRuleSetResponse.fromMap((map['networkAcls'] as Map).cast<String, dynamic>()),
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionItemResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
-      sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      softDeleteRetentionInDays: map['softDeleteRetentionInDays'] == null ? null : map['softDeleteRetentionInDays'] as int,
-      tenantId: map['tenantId'] as String,
-      vaultUri: map['vaultUri'] as String,
+      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<AccessPolicyEntryResponse>(map['accessPolicies'], (value) => AccessPolicyEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enablePurgeProtection: map['enablePurgeProtection'] == null ? null : (map['enablePurgeProtection'] as bool).input(),
+      enableRbacAuthorization: map['enableRbacAuthorization'] == null ? null : (map['enableRbacAuthorization'] as bool).input(),
+      enableSoftDelete: map['enableSoftDelete'] == null ? null : (map['enableSoftDelete'] as bool).input(),
+      enabledForDeployment: map['enabledForDeployment'] == null ? null : (map['enabledForDeployment'] as bool).input(),
+      enabledForDiskEncryption: map['enabledForDiskEncryption'] == null ? null : (map['enabledForDiskEncryption'] as bool).input(),
+      enabledForTemplateDeployment: map['enabledForTemplateDeployment'] == null ? null : (map['enabledForTemplateDeployment'] as bool).input(),
+      hsmPoolResourceId: (map['hsmPoolResourceId'] as String).input(),
+      networkAcls: map['networkAcls'] == null ? null : (NetworkRuleSetResponse.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
+      privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionItemResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      sku: (SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      softDeleteRetentionInDays: map['softDeleteRetentionInDays'] == null ? null : (map['softDeleteRetentionInDays'] as int).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      vaultUri: (map['vaultUri'] as String).input(),
     );
   }
 }

@@ -37,21 +37,14 @@ class WebAppArgs {
   /// [webAppEndpointPolicy] Type of endpoint policy for the web app. Valid values are: `STANDARD`(default) or `FIPS`.
   /// [webAppUnits] Block for number of concurrent connections or the user sessions on the web app.
   WebAppArgs({
-    pulumi.Output<String>? accessEndpoint,
-    pulumi.Output<WebAppEndpointDetails>? endpointDetails,
-    required pulumi.Output<WebAppIdentityProviderDetails> identityProviderDetails,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? webAppEndpointPolicy,
-    pulumi.Output<List<WebAppWebAppUnit>>? webAppUnits,
-  }) :
-      accessEndpoint = pulumi.Input.asOptionalInput<String>(accessEndpoint),
-      endpointDetails = pulumi.Input.asOptionalInput<WebAppEndpointDetails>(endpointDetails),
-      identityProviderDetails = pulumi.Input.asInput<WebAppIdentityProviderDetails>(identityProviderDetails),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      webAppEndpointPolicy = pulumi.Input.asOptionalInput<String>(webAppEndpointPolicy),
-      webAppUnits = pulumi.Input.asOptionalInput<List<WebAppWebAppUnit>>(webAppUnits);
+    this.accessEndpoint,
+    this.endpointDetails,
+    required this.identityProviderDetails,
+    this.region,
+    this.tags,
+    this.webAppEndpointPolicy,
+    this.webAppUnits,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class WebAppArgs {
 
   factory WebAppArgs.fromMap(Map<String, dynamic> map) {
     return WebAppArgs(
-      accessEndpoint: map['accessEndpoint'] == null ? null : pulumi.Output.create<String>(map['accessEndpoint'] as String),
-      endpointDetails: map['endpointDetails'] == null ? null : pulumi.Output.create<WebAppEndpointDetails>(WebAppEndpointDetails.fromMap((map['endpointDetails'] as Map).cast<String, dynamic>())),
-      identityProviderDetails: pulumi.Output.create<WebAppIdentityProviderDetails>(WebAppIdentityProviderDetails.fromMap((map['identityProviderDetails'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      webAppEndpointPolicy: map['webAppEndpointPolicy'] == null ? null : pulumi.Output.create<String>(map['webAppEndpointPolicy'] as String),
-      webAppUnits: map['webAppUnits'] == null ? null : pulumi.Output.create<List<WebAppWebAppUnit>>(pulumi.Input.decodeList<WebAppWebAppUnit>(map['webAppUnits'], (value) => WebAppWebAppUnit.fromMap((value as Map).cast<String, dynamic>()))),
+      accessEndpoint: map['accessEndpoint'] == null ? null : (map['accessEndpoint'] as String).input(),
+      endpointDetails: map['endpointDetails'] == null ? null : (WebAppEndpointDetails.fromMap((map['endpointDetails'] as Map).cast<String, dynamic>())).input(),
+      identityProviderDetails: (WebAppIdentityProviderDetails.fromMap((map['identityProviderDetails'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      webAppEndpointPolicy: map['webAppEndpointPolicy'] == null ? null : (map['webAppEndpointPolicy'] as String).input(),
+      webAppUnits: map['webAppUnits'] == null ? null : (pulumi.Input.decodeList<WebAppWebAppUnit>(map['webAppUnits'], (value) => WebAppWebAppUnit.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

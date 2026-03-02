@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The tracking event definition.
 class TrackingEventDefinitionResponse {
   /// The operation name.
-  final String? operationName;
+  final pulumi.Input<String>? operationName;
   /// The operation type.
-  final String? operationType;
+  final pulumi.Input<String>? operationType;
   /// The properties to be collected for event.
-  final Map<String, dynamic>? properties;
+  final pulumi.Input<Map<String, dynamic>>? properties;
 
   /// Creates a new [TrackingEventDefinitionResponse].
   /// [operationName] The operation name.
@@ -30,9 +31,9 @@ class TrackingEventDefinitionResponse {
 
   factory TrackingEventDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return TrackingEventDefinitionResponse(
-      operationName: map['operationName'] == null ? null : map['operationName'] as String,
-      operationType: map['operationType'] == null ? null : map['operationType'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, dynamic>(),
+      operationName: map['operationName'] == null ? null : (map['operationName'] as String).input(),
+      operationType: map['operationType'] == null ? null : (map['operationType'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

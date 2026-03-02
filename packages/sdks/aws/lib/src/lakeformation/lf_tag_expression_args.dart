@@ -28,17 +28,12 @@ class LfTagExpressionArgs {
   /// [name] Name of the LF-Tag Expression.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LfTagExpressionArgs({
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<LfTagExpressionExpression>> expressions,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expressions = pulumi.Input.asInput<List<LfTagExpressionExpression>>(expressions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.catalogId,
+    this.description,
+    required this.expressions,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class LfTagExpressionArgs {
 
   factory LfTagExpressionArgs.fromMap(Map<String, dynamic> map) {
     return LfTagExpressionArgs(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expressions: pulumi.Output.create<List<LfTagExpressionExpression>>(pulumi.Input.decodeList<LfTagExpressionExpression>(map['expressions'], (value) => LfTagExpressionExpression.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expressions: (pulumi.Input.decodeList<LfTagExpressionExpression>(map['expressions'], (value) => LfTagExpressionExpression.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

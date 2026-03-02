@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the status of a trigger
 class TriggerStatusResponse {
   /// The status code.
-  final String code;
+  final pulumi.Input<String> code;
   /// The detailed status message, including for alerts and error messages.
-  final String message;
+  final pulumi.Input<String> message;
   /// The time of the status.
-  final String time;
+  final pulumi.Input<String> time;
 
   /// Creates a new [TriggerStatusResponse].
   /// [code] The status code.
@@ -30,9 +31,9 @@ class TriggerStatusResponse {
 
   factory TriggerStatusResponse.fromMap(Map<String, dynamic> map) {
     return TriggerStatusResponse(
-      code: map['code'] as String,
-      message: map['message'] as String,
-      time: map['time'] as String,
+      code: (map['code'] as String).input(),
+      message: (map['message'] as String).input(),
+      time: (map['time'] as String).input(),
     );
   }
 }

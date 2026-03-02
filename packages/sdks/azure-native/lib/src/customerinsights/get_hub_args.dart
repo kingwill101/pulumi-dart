@@ -16,11 +16,9 @@ class GetHubArgs {
   /// [hubName] The name of the hub.
   /// [resourceGroupName] The name of the resource group.
   GetHubArgs({
-    required pulumi.Output<String> hubName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hubName = pulumi.Input.asInput<String>(hubName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hubName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetHubArgs {
 
   factory GetHubArgs.fromMap(Map<String, dynamic> map) {
     return GetHubArgs(
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hubName: (map['hubName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

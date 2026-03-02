@@ -22,15 +22,11 @@ class WorkspaceUserConfigArgs {
   /// [configValue] The value of the configuration.
   /// [scope] The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
   WorkspaceUserConfigArgs({
-    required pulumi.Output<String> categoryName,
-    required pulumi.Output<String> configKey,
-    required pulumi.Output<String> configValue,
-    pulumi.Output<String>? scope,
-  }) :
-      categoryName = pulumi.Input.asInput<String>(categoryName),
-      configKey = pulumi.Input.asInput<String>(configKey),
-      configValue = pulumi.Input.asInput<String>(configValue),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    required this.categoryName,
+    required this.configKey,
+    required this.configValue,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class WorkspaceUserConfigArgs {
 
   factory WorkspaceUserConfigArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceUserConfigArgs(
-      categoryName: pulumi.Output.create<String>(map['categoryName'] as String),
-      configKey: pulumi.Output.create<String>(map['configKey'] as String),
-      configValue: pulumi.Output.create<String>(map['configValue'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      categoryName: (map['categoryName'] as String).input(),
+      configKey: (map['configKey'] as String).input(),
+      configValue: (map['configValue'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

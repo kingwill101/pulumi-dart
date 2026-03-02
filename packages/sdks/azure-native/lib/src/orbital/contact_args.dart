@@ -32,21 +32,14 @@ class ContactArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spacecraftName] Spacecraft ID.
   ContactArgs({
-    pulumi.Output<String>? contactName,
-    required pulumi.Output<ContactsPropertiesContactProfile> contactProfile,
-    required pulumi.Output<String> groundStationName,
-    required pulumi.Output<String> reservationEndTime,
-    required pulumi.Output<String> reservationStartTime,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> spacecraftName,
-  }) :
-      contactName = pulumi.Input.asOptionalInput<String>(contactName),
-      contactProfile = pulumi.Input.asInput<ContactsPropertiesContactProfile>(contactProfile),
-      groundStationName = pulumi.Input.asInput<String>(groundStationName),
-      reservationEndTime = pulumi.Input.asInput<String>(reservationEndTime),
-      reservationStartTime = pulumi.Input.asInput<String>(reservationStartTime),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      spacecraftName = pulumi.Input.asInput<String>(spacecraftName);
+    this.contactName,
+    required this.contactProfile,
+    required this.groundStationName,
+    required this.reservationEndTime,
+    required this.reservationStartTime,
+    required this.resourceGroupName,
+    required this.spacecraftName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ContactArgs {
 
   factory ContactArgs.fromMap(Map<String, dynamic> map) {
     return ContactArgs(
-      contactName: map['contactName'] == null ? null : pulumi.Output.create<String>(map['contactName'] as String),
-      contactProfile: pulumi.Output.create<ContactsPropertiesContactProfile>(ContactsPropertiesContactProfile.fromMap((map['contactProfile'] as Map).cast<String, dynamic>())),
-      groundStationName: pulumi.Output.create<String>(map['groundStationName'] as String),
-      reservationEndTime: pulumi.Output.create<String>(map['reservationEndTime'] as String),
-      reservationStartTime: pulumi.Output.create<String>(map['reservationStartTime'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      spacecraftName: pulumi.Output.create<String>(map['spacecraftName'] as String),
+      contactName: map['contactName'] == null ? null : (map['contactName'] as String).input(),
+      contactProfile: (ContactsPropertiesContactProfile.fromMap((map['contactProfile'] as Map).cast<String, dynamic>())).input(),
+      groundStationName: (map['groundStationName'] as String).input(),
+      reservationEndTime: (map['reservationEndTime'] as String).input(),
+      reservationStartTime: (map['reservationStartTime'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      spacecraftName: (map['spacecraftName'] as String).input(),
     );
   }
 }

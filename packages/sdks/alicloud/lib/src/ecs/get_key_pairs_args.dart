@@ -28,19 +28,13 @@ class GetKeyPairsArgs {
   /// [resourceGroupId] The Id of resource group which the key pair belongs.
   /// [tags] A mapping of tags to assign to the resource.
   GetKeyPairsArgs({
-    pulumi.Output<String>? fingerPrint,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      fingerPrint = pulumi.Input.asOptionalInput<String>(fingerPrint),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.fingerPrint,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetKeyPairsArgs {
 
   factory GetKeyPairsArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyPairsArgs(
-      fingerPrint: map['fingerPrint'] == null ? null : pulumi.Output.create<String>(map['fingerPrint'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      fingerPrint: map['fingerPrint'] == null ? null : (map['fingerPrint'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

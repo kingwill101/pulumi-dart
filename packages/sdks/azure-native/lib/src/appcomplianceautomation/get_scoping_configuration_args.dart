@@ -16,11 +16,9 @@ class GetScopingConfigurationArgs {
   /// [reportName] Report Name.
   /// [scopingConfigurationName] The scoping configuration of the specific report.
   GetScopingConfigurationArgs({
-    required pulumi.Output<String> reportName,
-    required pulumi.Output<String> scopingConfigurationName,
-  }) :
-      reportName = pulumi.Input.asInput<String>(reportName),
-      scopingConfigurationName = pulumi.Input.asInput<String>(scopingConfigurationName);
+    required this.reportName,
+    required this.scopingConfigurationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetScopingConfigurationArgs {
 
   factory GetScopingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetScopingConfigurationArgs(
-      reportName: pulumi.Output.create<String>(map['reportName'] as String),
-      scopingConfigurationName: pulumi.Output.create<String>(map['scopingConfigurationName'] as String),
+      reportName: (map['reportName'] as String).input(),
+      scopingConfigurationName: (map['scopingConfigurationName'] as String).input(),
     );
   }
 }

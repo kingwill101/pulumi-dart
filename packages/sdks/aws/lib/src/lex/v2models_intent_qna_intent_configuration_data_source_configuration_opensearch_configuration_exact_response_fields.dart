@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields {
   /// Field name for the answer.
-  final String answerField;
+  final pulumi.Input<String> answerField;
   /// Field name for the question.
-  final String questionField;
+  final pulumi.Input<String> questionField;
 
   /// Creates a new [V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields].
   /// [answerField] Field name for the answer.
@@ -24,8 +25,8 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfi
 
   factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields(
-      answerField: map['answerField'] as String,
-      questionField: map['questionField'] as String,
+      answerField: (map['answerField'] as String).input(),
+      questionField: (map['questionField'] as String).input(),
     );
   }
 }

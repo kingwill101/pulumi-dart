@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// StringNotContains Filter.
 class StringNotContainsFilter {
   /// The field/property in the event based on which you want to filter.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// Expected value is 'StringNotContains'.
-  final String operatorType;
+  final pulumi.Input<String> operatorType;
   /// The set of filter values.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [StringNotContainsFilter].
   /// [key] The field/property in the event based on which you want to filter.
@@ -31,9 +32,9 @@ class StringNotContainsFilter {
 
   factory StringNotContainsFilter.fromMap(Map<String, dynamic> map) {
     return StringNotContainsFilter(
-      key: map['key'] == null ? null : map['key'] as String,
-      operatorType: map['operatorType'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      operatorType: (map['operatorType'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

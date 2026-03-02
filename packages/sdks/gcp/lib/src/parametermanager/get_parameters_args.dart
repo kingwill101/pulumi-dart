@@ -16,11 +16,9 @@ class GetParametersArgs {
   /// [filter] Filter string, adhering to the rules in List-operation filtering. List only parameters matching the filter. If filter is empty, all parameters are listed.
   /// [project] The ID of the project.
   GetParametersArgs({
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? project,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.filter,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetParametersArgs {
 
   factory GetParametersArgs.fromMap(Map<String, dynamic> map) {
     return GetParametersArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

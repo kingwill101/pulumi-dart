@@ -49,33 +49,20 @@ class ResourceGroupArgs {
   /// [nodeNum] The number of nodes.
   /// [users] The database accounts with which to associate the resource group.
   ResourceGroupArgs({
-    pulumi.Output<String>? clusterMode,
-    pulumi.Output<String>? clusterSizeResource,
-    required pulumi.Output<String> dbClusterId,
-    pulumi.Output<String>? engine,
-    pulumi.Output<Map<String, String>>? engineParams,
-    required pulumi.Output<String> groupName,
-    pulumi.Output<String>? groupType,
-    pulumi.Output<int>? maxClusterCount,
-    pulumi.Output<String>? maxComputeResource,
-    pulumi.Output<int>? minClusterCount,
-    pulumi.Output<String>? minComputeResource,
-    pulumi.Output<int>? nodeNum,
-    pulumi.Output<List<String>>? users,
-  }) :
-      clusterMode = pulumi.Input.asOptionalInput<String>(clusterMode),
-      clusterSizeResource = pulumi.Input.asOptionalInput<String>(clusterSizeResource),
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineParams = pulumi.Input.asOptionalInput<Map<String, String>>(engineParams),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      groupType = pulumi.Input.asOptionalInput<String>(groupType),
-      maxClusterCount = pulumi.Input.asOptionalInput<int>(maxClusterCount),
-      maxComputeResource = pulumi.Input.asOptionalInput<String>(maxComputeResource),
-      minClusterCount = pulumi.Input.asOptionalInput<int>(minClusterCount),
-      minComputeResource = pulumi.Input.asOptionalInput<String>(minComputeResource),
-      nodeNum = pulumi.Input.asOptionalInput<int>(nodeNum),
-      users = pulumi.Input.asOptionalInput<List<String>>(users);
+    this.clusterMode,
+    this.clusterSizeResource,
+    required this.dbClusterId,
+    this.engine,
+    this.engineParams,
+    required this.groupName,
+    this.groupType,
+    this.maxClusterCount,
+    this.maxComputeResource,
+    this.minClusterCount,
+    this.minComputeResource,
+    this.nodeNum,
+    this.users,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class ResourceGroupArgs {
 
   factory ResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGroupArgs(
-      clusterMode: map['clusterMode'] == null ? null : pulumi.Output.create<String>(map['clusterMode'] as String),
-      clusterSizeResource: map['clusterSizeResource'] == null ? null : pulumi.Output.create<String>(map['clusterSizeResource'] as String),
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      engineParams: map['engineParams'] == null ? null : pulumi.Output.create<Map<String, String>>((map['engineParams'] as Map).cast<String, String>()),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      groupType: map['groupType'] == null ? null : pulumi.Output.create<String>(map['groupType'] as String),
-      maxClusterCount: map['maxClusterCount'] == null ? null : pulumi.Output.create<int>(map['maxClusterCount'] as int),
-      maxComputeResource: map['maxComputeResource'] == null ? null : pulumi.Output.create<String>(map['maxComputeResource'] as String),
-      minClusterCount: map['minClusterCount'] == null ? null : pulumi.Output.create<int>(map['minClusterCount'] as int),
-      minComputeResource: map['minComputeResource'] == null ? null : pulumi.Output.create<String>(map['minComputeResource'] as String),
-      nodeNum: map['nodeNum'] == null ? null : pulumi.Output.create<int>(map['nodeNum'] as int),
-      users: map['users'] == null ? null : pulumi.Output.create<List<String>>((map['users'] as List).cast<String>()),
+      clusterMode: map['clusterMode'] == null ? null : (map['clusterMode'] as String).input(),
+      clusterSizeResource: map['clusterSizeResource'] == null ? null : (map['clusterSizeResource'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineParams: map['engineParams'] == null ? null : ((map['engineParams'] as Map).cast<String, String>()).input(),
+      groupName: (map['groupName'] as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
+      maxClusterCount: map['maxClusterCount'] == null ? null : (map['maxClusterCount'] as int).input(),
+      maxComputeResource: map['maxComputeResource'] == null ? null : (map['maxComputeResource'] as String).input(),
+      minClusterCount: map['minClusterCount'] == null ? null : (map['minClusterCount'] as int).input(),
+      minComputeResource: map['minComputeResource'] == null ? null : (map['minComputeResource'] as String).input(),
+      nodeNum: map['nodeNum'] == null ? null : (map['nodeNum'] as int).input(),
+      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
     );
   }
 }

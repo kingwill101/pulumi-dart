@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata for a File connector used by the job.
 class FileIODetailsResponse {
   /// File Pattern used to access files by the connector.
-  final String filePattern;
+  final pulumi.Input<String> filePattern;
 
   /// Creates a new [FileIODetailsResponse].
   /// [filePattern] File Pattern used to access files by the connector.
@@ -20,7 +21,7 @@ class FileIODetailsResponse {
 
   factory FileIODetailsResponse.fromMap(Map<String, dynamic> map) {
     return FileIODetailsResponse(
-      filePattern: map['filePattern'] as String,
+      filePattern: (map['filePattern'] as String).input(),
     );
   }
 }

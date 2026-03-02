@@ -29,21 +29,14 @@ class TagTemplateArgs {
   /// [project] Optional.
   /// [tagTemplateId] Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
   TagTemplateArgs({
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<Map<String, String>> fields,
-    pulumi.Output<bool>? isPubliclyReadable,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tagTemplateId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      fields = pulumi.Input.asInput<Map<String, String>>(fields),
-      isPubliclyReadable = pulumi.Input.asOptionalInput<bool>(isPubliclyReadable),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tagTemplateId = pulumi.Input.asInput<String>(tagTemplateId);
+    this.displayName,
+    required this.fields,
+    this.isPubliclyReadable,
+    this.location,
+    this.name,
+    this.project,
+    required this.tagTemplateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class TagTemplateArgs {
 
   factory TagTemplateArgs.fromMap(Map<String, dynamic> map) {
     return TagTemplateArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      fields: pulumi.Output.create<Map<String, String>>((map['fields'] as Map).cast<String, String>()),
-      isPubliclyReadable: map['isPubliclyReadable'] == null ? null : pulumi.Output.create<bool>(map['isPubliclyReadable'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tagTemplateId: pulumi.Output.create<String>(map['tagTemplateId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      fields: ((map['fields'] as Map).cast<String, String>()).input(),
+      isPubliclyReadable: map['isPubliclyReadable'] == null ? null : (map['isPubliclyReadable'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tagTemplateId: (map['tagTemplateId'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class ApiDeploymentState {
   /// [proxyId] The Apigee API associated with the Apigee API deployment.
   /// [revision] The revision of the API proxy to be deployed.
   ApiDeploymentState({
-    pulumi.Output<String>? environment,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? proxyId,
-    pulumi.Output<String>? revision,
-  }) :
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      proxyId = pulumi.Input.asOptionalInput<String>(proxyId),
-      revision = pulumi.Input.asOptionalInput<String>(revision);
+    this.environment,
+    this.orgId,
+    this.proxyId,
+    this.revision,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ApiDeploymentState {
 
   factory ApiDeploymentState.fromMap(Map<String, dynamic> map) {
     return ApiDeploymentState(
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      proxyId: map['proxyId'] == null ? null : pulumi.Output.create<String>(map['proxyId'] as String),
-      revision: map['revision'] == null ? null : pulumi.Output.create<String>(map['revision'] as String),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      proxyId: map['proxyId'] == null ? null : (map['proxyId'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
     );
   }
 }

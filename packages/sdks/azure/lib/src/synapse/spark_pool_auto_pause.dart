@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SparkPoolAutoPause {
   /// Number of minutes of idle time before the Spark Pool is automatically paused. Must be between `5` and `10080`.
-  final int delayInMinutes;
+  final pulumi.Input<int> delayInMinutes;
 
   /// Creates a new [SparkPoolAutoPause].
   /// [delayInMinutes] Number of minutes of idle time before the Spark Pool is automatically paused. Must be between `5` and `10080`.
@@ -19,7 +20,7 @@ class SparkPoolAutoPause {
 
   factory SparkPoolAutoPause.fromMap(Map<String, dynamic> map) {
     return SparkPoolAutoPause(
-      delayInMinutes: map['delayInMinutes'] as int,
+      delayInMinutes: (map['delayInMinutes'] as int).input(),
     );
   }
 }

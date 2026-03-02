@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig {
   /// ARN of the Capacity Provider.
-  final String capacityProviderArn;
+  final pulumi.Input<String> capacityProviderArn;
   /// Memory GiB per vCPU for the execution environment.
-  final double executionEnvironmentMemoryGibPerVcpu;
+  final pulumi.Input<double> executionEnvironmentMemoryGibPerVcpu;
   /// Maximum concurrency per execution environment.
-  final int perExecutionEnvironmentMaxConcurrency;
+  final pulumi.Input<int> perExecutionEnvironmentMaxConcurrency;
 
   /// Creates a new [GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig].
   /// [capacityProviderArn] ARN of the Capacity Provider.
@@ -29,9 +30,9 @@ class GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderCon
 
   factory GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig(
-      capacityProviderArn: map['capacityProviderArn'] as String,
-      executionEnvironmentMemoryGibPerVcpu: map['executionEnvironmentMemoryGibPerVcpu'] as double,
-      perExecutionEnvironmentMaxConcurrency: map['perExecutionEnvironmentMaxConcurrency'] as int,
+      capacityProviderArn: (map['capacityProviderArn'] as String).input(),
+      executionEnvironmentMemoryGibPerVcpu: (map['executionEnvironmentMemoryGibPerVcpu'] as double).input(),
+      perExecutionEnvironmentMaxConcurrency: (map['perExecutionEnvironmentMaxConcurrency'] as int).input(),
     );
   }
 }

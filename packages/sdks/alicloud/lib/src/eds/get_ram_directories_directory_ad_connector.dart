@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRamDirectoriesDirectoryAdConnector {
   /// The address of AD connector.
-  final String adConnectorAddress;
+  final pulumi.Input<String> adConnectorAddress;
   /// The status of connector.
-  final String connectorStatus;
+  final pulumi.Input<String> connectorStatus;
   /// The ID of the network interface.
-  final String networkInterfaceId;
+  final pulumi.Input<String> networkInterfaceId;
   /// The ID of vSwitch.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetRamDirectoriesDirectoryAdConnector].
   /// [adConnectorAddress] The address of AD connector.
@@ -34,10 +35,10 @@ class GetRamDirectoriesDirectoryAdConnector {
 
   factory GetRamDirectoriesDirectoryAdConnector.fromMap(Map<String, dynamic> map) {
     return GetRamDirectoriesDirectoryAdConnector(
-      adConnectorAddress: map['adConnectorAddress'] as String,
-      connectorStatus: map['connectorStatus'] as String,
-      networkInterfaceId: map['networkInterfaceId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      adConnectorAddress: (map['adConnectorAddress'] as String).input(),
+      connectorStatus: (map['connectorStatus'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

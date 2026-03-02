@@ -35,25 +35,16 @@ class ConnectorProfileState {
   /// [name] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ConnectorProfileState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? connectionMode,
-    pulumi.Output<String>? connectorLabel,
-    pulumi.Output<ConnectorProfileConnectorProfileConfig>? connectorProfileConfig,
-    pulumi.Output<String>? connectorType,
-    pulumi.Output<String>? credentialsArn,
-    pulumi.Output<String>? kmsArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      connectionMode = pulumi.Input.asOptionalInput<String>(connectionMode),
-      connectorLabel = pulumi.Input.asOptionalInput<String>(connectorLabel),
-      connectorProfileConfig = pulumi.Input.asOptionalInput<ConnectorProfileConnectorProfileConfig>(connectorProfileConfig),
-      connectorType = pulumi.Input.asOptionalInput<String>(connectorType),
-      credentialsArn = pulumi.Input.asOptionalInput<String>(credentialsArn),
-      kmsArn = pulumi.Input.asOptionalInput<String>(kmsArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.arn,
+    this.connectionMode,
+    this.connectorLabel,
+    this.connectorProfileConfig,
+    this.connectorType,
+    this.credentialsArn,
+    this.kmsArn,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class ConnectorProfileState {
 
   factory ConnectorProfileState.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      connectionMode: map['connectionMode'] == null ? null : pulumi.Output.create<String>(map['connectionMode'] as String),
-      connectorLabel: map['connectorLabel'] == null ? null : pulumi.Output.create<String>(map['connectorLabel'] as String),
-      connectorProfileConfig: map['connectorProfileConfig'] == null ? null : pulumi.Output.create<ConnectorProfileConnectorProfileConfig>(ConnectorProfileConnectorProfileConfig.fromMap((map['connectorProfileConfig'] as Map).cast<String, dynamic>())),
-      connectorType: map['connectorType'] == null ? null : pulumi.Output.create<String>(map['connectorType'] as String),
-      credentialsArn: map['credentialsArn'] == null ? null : pulumi.Output.create<String>(map['credentialsArn'] as String),
-      kmsArn: map['kmsArn'] == null ? null : pulumi.Output.create<String>(map['kmsArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      connectionMode: map['connectionMode'] == null ? null : (map['connectionMode'] as String).input(),
+      connectorLabel: map['connectorLabel'] == null ? null : (map['connectorLabel'] as String).input(),
+      connectorProfileConfig: map['connectorProfileConfig'] == null ? null : (ConnectorProfileConnectorProfileConfig.fromMap((map['connectorProfileConfig'] as Map).cast<String, dynamic>())).input(),
+      connectorType: map['connectorType'] == null ? null : (map['connectorType'] as String).input(),
+      credentialsArn: map['credentialsArn'] == null ? null : (map['credentialsArn'] as String).input(),
+      kmsArn: map['kmsArn'] == null ? null : (map['kmsArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

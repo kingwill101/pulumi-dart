@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of CidrRoutingConfig
 class CidrRoutingConfigResponse {
   /// <p>The CIDR collection ID.</p>
-  final String? collectionId;
+  final pulumi.Input<String>? collectionId;
   /// <p>The CIDR collection location name.</p>
-  final String? locationName;
+  final pulumi.Input<String>? locationName;
 
   /// Creates a new [CidrRoutingConfigResponse].
   /// [collectionId] <p>The CIDR collection ID.</p>
@@ -25,8 +26,8 @@ class CidrRoutingConfigResponse {
 
   factory CidrRoutingConfigResponse.fromMap(Map<String, dynamic> map) {
     return CidrRoutingConfigResponse(
-      collectionId: map['collectionId'] == null ? null : map['collectionId'] as String,
-      locationName: map['locationName'] == null ? null : map['locationName'] as String,
+      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
+      locationName: map['locationName'] == null ? null : (map['locationName'] as String).input(),
     );
   }
 }

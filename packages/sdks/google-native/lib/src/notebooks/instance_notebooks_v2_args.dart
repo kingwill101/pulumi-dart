@@ -33,23 +33,15 @@ class InstanceNotebooksV2Args {
   /// [project] Optional.
   /// [requestId] Optional. Idempotent request UUID.
   InstanceNotebooksV2Args({
-    pulumi.Output<bool>? disableProxyAccess,
-    pulumi.Output<GceSetup>? gceSetup,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<List<String>>? instanceOwners,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-  }) :
-      disableProxyAccess = pulumi.Input.asOptionalInput<bool>(disableProxyAccess),
-      gceSetup = pulumi.Input.asOptionalInput<GceSetup>(gceSetup),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      instanceOwners = pulumi.Input.asOptionalInput<List<String>>(instanceOwners),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    this.disableProxyAccess,
+    this.gceSetup,
+    required this.instanceId,
+    this.instanceOwners,
+    this.labels,
+    this.location,
+    this.project,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class InstanceNotebooksV2Args {
 
   factory InstanceNotebooksV2Args.fromMap(Map<String, dynamic> map) {
     return InstanceNotebooksV2Args(
-      disableProxyAccess: map['disableProxyAccess'] == null ? null : pulumi.Output.create<bool>(map['disableProxyAccess'] as bool),
-      gceSetup: map['gceSetup'] == null ? null : pulumi.Output.create<GceSetup>(GceSetup.fromMap((map['gceSetup'] as Map).cast<String, dynamic>())),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceOwners: map['instanceOwners'] == null ? null : pulumi.Output.create<List<String>>((map['instanceOwners'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      disableProxyAccess: map['disableProxyAccess'] == null ? null : (map['disableProxyAccess'] as bool).input(),
+      gceSetup: map['gceSetup'] == null ? null : (GceSetup.fromMap((map['gceSetup'] as Map).cast<String, dynamic>())).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceOwners: map['instanceOwners'] == null ? null : ((map['instanceOwners'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

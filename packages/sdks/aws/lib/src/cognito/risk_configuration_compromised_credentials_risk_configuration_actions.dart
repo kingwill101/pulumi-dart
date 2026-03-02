@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RiskConfigurationCompromisedCredentialsRiskConfigurationActions {
   /// The event action. Valid values are `BLOCK` or `NO_ACTION`.
-  final String eventAction;
+  final pulumi.Input<String> eventAction;
 
   /// Creates a new [RiskConfigurationCompromisedCredentialsRiskConfigurationActions].
   /// [eventAction] The event action. Valid values are `BLOCK` or `NO_ACTION`.
@@ -19,7 +20,7 @@ class RiskConfigurationCompromisedCredentialsRiskConfigurationActions {
 
   factory RiskConfigurationCompromisedCredentialsRiskConfigurationActions.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationCompromisedCredentialsRiskConfigurationActions(
-      eventAction: map['eventAction'] as String,
+      eventAction: (map['eventAction'] as String).input(),
     );
   }
 }

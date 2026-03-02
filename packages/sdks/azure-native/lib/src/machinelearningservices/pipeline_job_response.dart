@@ -10,44 +10,44 @@ import 'notification_setting_response.dart';
 /// Pipeline Job definition: defines generic to MFE attributes.
 class PipelineJobResponse {
   /// ARM resource ID of the component resource.
-  final String? componentId;
+  final pulumi.Input<String>? componentId;
   /// ARM resource ID of the compute resource.
-  final String? computeId;
+  final pulumi.Input<String>? computeId;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Display name of job.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-  final String? experimentName;
+  final pulumi.Input<String>? experimentName;
   /// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
   /// Defaults to AmlToken if null.
-  final AmlTokenResponse? identity;
+  final pulumi.Input<AmlTokenResponse>? identity;
   /// Inputs for the pipeline job.
-  final Map<String, CustomModelJobInputResponse>? inputs;
+  final pulumi.Input<Map<String, CustomModelJobInputResponse>>? inputs;
   /// Is the asset archived?
-  final bool? isArchived;
+  final pulumi.Input<bool>? isArchived;
   /// Enum to determine the type of job.
   /// Expected value is 'Pipeline'.
-  final String jobType;
+  final pulumi.Input<String> jobType;
   /// Jobs construct the Pipeline Job.
-  final Map<String, dynamic>? jobs;
+  final pulumi.Input<Map<String, dynamic>>? jobs;
   /// Notification setting for the job
-  final NotificationSettingResponse? notificationSetting;
+  final pulumi.Input<NotificationSettingResponse>? notificationSetting;
   /// Outputs for the pipeline job
-  final Map<String, CustomModelJobOutputResponse>? outputs;
+  final pulumi.Input<Map<String, CustomModelJobOutputResponse>>? outputs;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// List of JobEndpoints.
   /// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-  final Map<String, JobServiceResponse>? services;
+  final pulumi.Input<Map<String, JobServiceResponse>>? services;
   /// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-  final dynamic settings;
+  final pulumi.Input<dynamic>? settings;
   /// ARM resource ID of source job.
-  final String? sourceJobId;
+  final pulumi.Input<String>? sourceJobId;
   /// Status of the job.
-  final String status;
+  final pulumi.Input<String> status;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [PipelineJobResponse].
   /// [componentId] ARM resource ID of the component resource.
@@ -96,15 +96,15 @@ class PipelineJobResponse {
       'description': ?description,
       'displayName': ?displayName,
       'experimentName': ?experimentName,
-      'identity': ?identity == null ? null : identity!.toMap(),
-      'inputs': ?inputs == null ? null : pulumi.Input.encodeMapValues<CustomModelJobInputResponse, Map<String, dynamic>>(inputs!, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<AmlTokenResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'inputs': ?pulumi.Input.mapOptionalInputValue<Map<String, CustomModelJobInputResponse>, Map<String, Map<String, dynamic>>>(inputs, (value) => pulumi.Input.encodeMapValues<CustomModelJobInputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isArchived': ?isArchived,
       'jobType': jobType,
       'jobs': ?jobs,
-      'notificationSetting': ?notificationSetting == null ? null : notificationSetting!.toMap(),
-      'outputs': ?outputs == null ? null : pulumi.Input.encodeMapValues<CustomModelJobOutputResponse, Map<String, dynamic>>(outputs!, (value) => value.toMap()),
+      'notificationSetting': ?pulumi.Input.mapOptionalInputValue<NotificationSettingResponse, Map<String, dynamic>>(notificationSetting, (value) => value.toMap()),
+      'outputs': ?pulumi.Input.mapOptionalInputValue<Map<String, CustomModelJobOutputResponse>, Map<String, Map<String, dynamic>>>(outputs, (value) => pulumi.Input.encodeMapValues<CustomModelJobOutputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'properties': ?properties,
-      'services': ?services == null ? null : pulumi.Input.encodeMapValues<JobServiceResponse, Map<String, dynamic>>(services!, (value) => value.toMap()),
+      'services': ?pulumi.Input.mapOptionalInputValue<Map<String, JobServiceResponse>, Map<String, Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeMapValues<JobServiceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'settings': ?settings,
       'sourceJobId': ?sourceJobId,
       'status': status,
@@ -114,24 +114,24 @@ class PipelineJobResponse {
 
   factory PipelineJobResponse.fromMap(Map<String, dynamic> map) {
     return PipelineJobResponse(
-      componentId: map['componentId'] == null ? null : map['componentId'] as String,
-      computeId: map['computeId'] == null ? null : map['computeId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      experimentName: map['experimentName'] == null ? null : map['experimentName'] as String,
-      identity: map['identity'] == null ? null : AmlTokenResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      inputs: map['inputs'] == null ? null : pulumi.Input.decodeMapValues<CustomModelJobInputResponse>(map['inputs'], (value) => CustomModelJobInputResponse.fromMap((value as Map).cast<String, dynamic>())),
-      isArchived: map['isArchived'] == null ? null : map['isArchived'] as bool,
-      jobType: map['jobType'] as String,
-      jobs: map['jobs'] == null ? null : (map['jobs'] as Map).cast<String, dynamic>(),
-      notificationSetting: map['notificationSetting'] == null ? null : NotificationSettingResponse.fromMap((map['notificationSetting'] as Map).cast<String, dynamic>()),
-      outputs: map['outputs'] == null ? null : pulumi.Input.decodeMapValues<CustomModelJobOutputResponse>(map['outputs'], (value) => CustomModelJobOutputResponse.fromMap((value as Map).cast<String, dynamic>())),
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      services: map['services'] == null ? null : pulumi.Input.decodeMapValues<JobServiceResponse>(map['services'], (value) => JobServiceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      settings: map['settings'] == null ? null : map['settings'],
-      sourceJobId: map['sourceJobId'] == null ? null : map['sourceJobId'] as String,
-      status: map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      componentId: map['componentId'] == null ? null : (map['componentId'] as String).input(),
+      computeId: map['computeId'] == null ? null : (map['computeId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      experimentName: map['experimentName'] == null ? null : (map['experimentName'] as String).input(),
+      identity: map['identity'] == null ? null : (AmlTokenResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeMapValues<CustomModelJobInputResponse>(map['inputs'], (value) => CustomModelJobInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
+      jobType: (map['jobType'] as String).input(),
+      jobs: map['jobs'] == null ? null : ((map['jobs'] as Map).cast<String, dynamic>()).input(),
+      notificationSetting: map['notificationSetting'] == null ? null : (NotificationSettingResponse.fromMap((map['notificationSetting'] as Map).cast<String, dynamic>())).input(),
+      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeMapValues<CustomModelJobOutputResponse>(map['outputs'], (value) => CustomModelJobOutputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeMapValues<JobServiceResponse>(map['services'], (value) => JobServiceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      settings: map['settings'] == null ? null : (map['settings']).input(),
+      sourceJobId: map['sourceJobId'] == null ? null : (map['sourceJobId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

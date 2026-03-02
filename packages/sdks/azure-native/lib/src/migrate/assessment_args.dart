@@ -29,19 +29,13 @@ class AssessmentArgs {
   /// [properties] Properties of the assessment.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   AssessmentArgs({
-    pulumi.Output<String>? assessmentName,
-    pulumi.Output<String>? eTag,
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<AssessmentProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      assessmentName = pulumi.Input.asOptionalInput<String>(assessmentName),
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asInput<AssessmentProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.assessmentName,
+    this.eTag,
+    required this.groupName,
+    required this.projectName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class AssessmentArgs {
 
   factory AssessmentArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentArgs(
-      assessmentName: map['assessmentName'] == null ? null : pulumi.Output.create<String>(map['assessmentName'] as String),
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: pulumi.Output.create<AssessmentProperties>(AssessmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName'] as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: (AssessmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

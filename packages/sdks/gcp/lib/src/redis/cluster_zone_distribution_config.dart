@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterZoneDistributionConfig {
   /// Immutable. The mode for zone distribution for Memorystore Redis cluster.
   /// If not provided, MULTI_ZONE will be used as default
   /// Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Immutable. The zone for single zone Memorystore Redis cluster.
-  final String? zone;
+  final pulumi.Input<String>? zone;
 
   /// Creates a new [ClusterZoneDistributionConfig].
   /// [mode] Immutable. The mode for zone distribution for Memorystore Redis cluster.
@@ -26,8 +27,8 @@ class ClusterZoneDistributionConfig {
 
   factory ClusterZoneDistributionConfig.fromMap(Map<String, dynamic> map) {
     return ClusterZoneDistributionConfig(
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

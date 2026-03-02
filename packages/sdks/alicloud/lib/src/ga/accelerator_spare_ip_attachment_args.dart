@@ -19,13 +19,10 @@ class AcceleratorSpareIpAttachmentArgs {
   /// [dryRun] The dry run.
   /// [spareIp] The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
   AcceleratorSpareIpAttachmentArgs({
-    required pulumi.Output<String> acceleratorId,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> spareIp,
-  }) :
-      acceleratorId = pulumi.Input.asInput<String>(acceleratorId),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      spareIp = pulumi.Input.asInput<String>(spareIp);
+    required this.acceleratorId,
+    this.dryRun,
+    required this.spareIp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AcceleratorSpareIpAttachmentArgs {
 
   factory AcceleratorSpareIpAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AcceleratorSpareIpAttachmentArgs(
-      acceleratorId: pulumi.Output.create<String>(map['acceleratorId'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      spareIp: pulumi.Output.create<String>(map['spareIp'] as String),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      spareIp: (map['spareIp'] as String).input(),
     );
   }
 }

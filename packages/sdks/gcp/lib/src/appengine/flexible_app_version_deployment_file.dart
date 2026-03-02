@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleAppVersionDeploymentFile {
   /// The identifier for this object. Format specified above.
-  final String name;
+  final pulumi.Input<String> name;
   /// SHA1 checksum of the file
-  final String? sha1Sum;
+  final pulumi.Input<String>? sha1Sum;
   /// Source URL
-  final String sourceUrl;
+  final pulumi.Input<String> sourceUrl;
 
   /// Creates a new [FlexibleAppVersionDeploymentFile].
   /// [name] The identifier for this object. Format specified above.
@@ -29,9 +30,9 @@ class FlexibleAppVersionDeploymentFile {
 
   factory FlexibleAppVersionDeploymentFile.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionDeploymentFile(
-      name: map['name'] as String,
-      sha1Sum: map['sha1Sum'] == null ? null : map['sha1Sum'] as String,
-      sourceUrl: map['sourceUrl'] as String,
+      name: (map['name'] as String).input(),
+      sha1Sum: map['sha1Sum'] == null ? null : (map['sha1Sum'] as String).input(),
+      sourceUrl: (map['sourceUrl'] as String).input(),
     );
   }
 }

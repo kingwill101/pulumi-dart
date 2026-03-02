@@ -56,31 +56,19 @@ class SecretVersionState {
   /// [secretDataWoVersion] Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// [version] The version of the Secret.
   SecretVersionState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? destroyTime,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? isSecretDataBase64,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? secret,
-    pulumi.Output<String>? secretData,
-    pulumi.Output<String>? secretDataWo,
-    pulumi.Output<int>? secretDataWoVersion,
-    pulumi.Output<String>? version,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      destroyTime = pulumi.Input.asOptionalInput<String>(destroyTime),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      isSecretDataBase64 = pulumi.Input.asOptionalInput<bool>(isSecretDataBase64),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secret = pulumi.Input.asOptionalInput<String>(secret),
-      secretData = pulumi.Input.asOptionalInput<String>(secretData),
-      secretDataWo = pulumi.Input.asOptionalInput<String>(secretDataWo),
-      secretDataWoVersion = pulumi.Input.asOptionalInput<int>(secretDataWoVersion),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.createTime,
+    this.deletionPolicy,
+    this.destroyTime,
+    this.enabled,
+    this.isSecretDataBase64,
+    this.name,
+    this.project,
+    this.secret,
+    this.secretData,
+    this.secretDataWo,
+    this.secretDataWoVersion,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,18 +89,18 @@ class SecretVersionState {
 
   factory SecretVersionState.fromMap(Map<String, dynamic> map) {
     return SecretVersionState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      destroyTime: map['destroyTime'] == null ? null : pulumi.Output.create<String>(map['destroyTime'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : pulumi.Output.create<bool>(map['isSecretDataBase64'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secret: map['secret'] == null ? null : pulumi.Output.create<String>(map['secret'] as String),
-      secretData: map['secretData'] == null ? null : pulumi.Output.create<String>(map['secretData'] as String),
-      secretDataWo: map['secretDataWo'] == null ? null : pulumi.Output.create<String>(map['secretDataWo'] as String),
-      secretDataWoVersion: map['secretDataWoVersion'] == null ? null : pulumi.Output.create<int>(map['secretDataWoVersion'] as int),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      destroyTime: map['destroyTime'] == null ? null : (map['destroyTime'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      secretData: map['secretData'] == null ? null : (map['secretData'] as String).input(),
+      secretDataWo: map['secretDataWo'] == null ? null : (map['secretDataWo'] as String).input(),
+      secretDataWoVersion: map['secretDataWoVersion'] == null ? null : (map['secretDataWoVersion'] as int).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

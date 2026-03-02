@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolMountNfsMount {
   /// Additional command line options to pass to the mount command. These are 'net use' options in Windows and 'mount' options in Linux.
-  final String? mountOptions;
+  final pulumi.Input<String>? mountOptions;
   /// The relative path on compute node where the file system will be mounted All file systems are mounted relative to the Batch mounts directory, accessible via the `AZ_BATCH_NODE_MOUNTS_DIR` environment variable.
-  final String relativeMountPath;
+  final pulumi.Input<String> relativeMountPath;
   /// The URI of the file system to mount.
-  final String source;
+  final pulumi.Input<String> source;
 
   /// Creates a new [PoolMountNfsMount].
   /// [mountOptions] Additional command line options to pass to the mount command. These are 'net use' options in Windows and 'mount' options in Linux.
@@ -29,9 +30,9 @@ class PoolMountNfsMount {
 
   factory PoolMountNfsMount.fromMap(Map<String, dynamic> map) {
     return PoolMountNfsMount(
-      mountOptions: map['mountOptions'] == null ? null : map['mountOptions'] as String,
-      relativeMountPath: map['relativeMountPath'] as String,
-      source: map['source'] as String,
+      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as String).input(),
+      relativeMountPath: (map['relativeMountPath'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

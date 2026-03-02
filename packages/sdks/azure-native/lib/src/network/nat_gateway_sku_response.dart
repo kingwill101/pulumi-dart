@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU of nat gateway.
 class NatGatewaySkuResponse {
   /// Name of Nat Gateway SKU.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [NatGatewaySkuResponse].
   /// [name] Name of Nat Gateway SKU.
@@ -20,7 +21,7 @@ class NatGatewaySkuResponse {
 
   factory NatGatewaySkuResponse.fromMap(Map<String, dynamic> map) {
     return NatGatewaySkuResponse(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

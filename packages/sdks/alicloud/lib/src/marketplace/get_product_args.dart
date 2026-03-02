@@ -16,11 +16,9 @@ class GetProductArgs {
   /// [availableRegion] A available region id used to filter market place Ecs images.
   /// [productCode] The product code of the market product.
   GetProductArgs({
-    pulumi.Output<String>? availableRegion,
-    required pulumi.Output<String> productCode,
-  }) :
-      availableRegion = pulumi.Input.asOptionalInput<String>(availableRegion),
-      productCode = pulumi.Input.asInput<String>(productCode);
+    this.availableRegion,
+    required this.productCode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetProductArgs {
 
   factory GetProductArgs.fromMap(Map<String, dynamic> map) {
     return GetProductArgs(
-      availableRegion: map['availableRegion'] == null ? null : pulumi.Output.create<String>(map['availableRegion'] as String),
-      productCode: pulumi.Output.create<String>(map['productCode'] as String),
+      availableRegion: map['availableRegion'] == null ? null : (map['availableRegion'] as String).input(),
+      productCode: (map['productCode'] as String).input(),
     );
   }
 }

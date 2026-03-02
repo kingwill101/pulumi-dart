@@ -7,17 +7,17 @@ class InstanceAccessRulesOptions {
   /// An array of access rule exceptions. Each rule defines IP address ranges
   /// that should have different squash behavior than the default.
   /// Structure is documented below.
-  final List<InstanceAccessRulesOptionsAccessRule>? accessRules;
+  final pulumi.Input<List<InstanceAccessRulesOptionsAccessRule>>? accessRules;
   /// The GID to map the root user to when root squashing is enabled
   /// (e.g., 65534 for nobody).
-  final int? defaultSquashGid;
+  final pulumi.Input<int>? defaultSquashGid;
   /// Set to "ROOT_SQUASH" to enable root squashing by default.
   /// Other values include "NO_SQUASH".
   /// Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
-  final String defaultSquashMode;
+  final pulumi.Input<String> defaultSquashMode;
   /// The UID to map the root user to when root squashing is enabled
   /// (e.g., 65534 for nobody).
-  final int? defaultSquashUid;
+  final pulumi.Input<int>? defaultSquashUid;
 
   /// Creates a new [InstanceAccessRulesOptions].
   /// [accessRules] An array of access rule exceptions. Each rule defines IP address ranges
@@ -33,7 +33,7 @@ class InstanceAccessRulesOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessRules': ?accessRules == null ? null : pulumi.Input.encodeList<InstanceAccessRulesOptionsAccessRule, Map<String, dynamic>>(accessRules!, (value) => value.toMap()),
+      'accessRules': ?pulumi.Input.mapOptionalInputValue<List<InstanceAccessRulesOptionsAccessRule>, List<Map<String, dynamic>>>(accessRules, (value) => pulumi.Input.encodeList<InstanceAccessRulesOptionsAccessRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'defaultSquashGid': ?defaultSquashGid,
       'defaultSquashMode': defaultSquashMode,
       'defaultSquashUid': ?defaultSquashUid,
@@ -42,10 +42,10 @@ class InstanceAccessRulesOptions {
 
   factory InstanceAccessRulesOptions.fromMap(Map<String, dynamic> map) {
     return InstanceAccessRulesOptions(
-      accessRules: map['accessRules'] == null ? null : pulumi.Input.decodeList<InstanceAccessRulesOptionsAccessRule>(map['accessRules'], (value) => InstanceAccessRulesOptionsAccessRule.fromMap((value as Map).cast<String, dynamic>())),
-      defaultSquashGid: map['defaultSquashGid'] == null ? null : map['defaultSquashGid'] as int,
-      defaultSquashMode: map['defaultSquashMode'] as String,
-      defaultSquashUid: map['defaultSquashUid'] == null ? null : map['defaultSquashUid'] as int,
+      accessRules: map['accessRules'] == null ? null : (pulumi.Input.decodeList<InstanceAccessRulesOptionsAccessRule>(map['accessRules'], (value) => InstanceAccessRulesOptionsAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultSquashGid: map['defaultSquashGid'] == null ? null : (map['defaultSquashGid'] as int).input(),
+      defaultSquashMode: (map['defaultSquashMode'] as String).input(),
+      defaultSquashUid: map['defaultSquashUid'] == null ? null : (map['defaultSquashUid'] as int).input(),
     );
   }
 }

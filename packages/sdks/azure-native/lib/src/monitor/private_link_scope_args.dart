@@ -26,17 +26,12 @@ class PrivateLinkScopeArgs {
   /// [scopeName] The name of the Azure Monitor PrivateLinkScope resource.
   /// [tags] Resource tags.
   PrivateLinkScopeArgs({
-    required pulumi.Output<AccessModeSettings> accessModeSettings,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scopeName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accessModeSettings = pulumi.Input.asInput<AccessModeSettings>(accessModeSettings),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopeName = pulumi.Input.asOptionalInput<String>(scopeName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accessModeSettings,
+    this.location,
+    required this.resourceGroupName,
+    this.scopeName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PrivateLinkScopeArgs {
 
   factory PrivateLinkScopeArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopeArgs(
-      accessModeSettings: pulumi.Output.create<AccessModeSettings>(AccessModeSettings.fromMap((map['accessModeSettings'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopeName: map['scopeName'] == null ? null : pulumi.Output.create<String>(map['scopeName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accessModeSettings: (AccessModeSettings.fromMap((map['accessModeSettings'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopeName: map['scopeName'] == null ? null : (map['scopeName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

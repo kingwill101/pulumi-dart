@@ -1,47 +1,48 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserProvisioningEventsEvent {
   /// Event content
-  final String content;
+  final pulumi.Input<String> content;
   /// The creation time of the resource
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Processing policy when you delete a RAM user
-  final String deletionStrategy;
+  final pulumi.Input<String> deletionStrategy;
   /// Directory ID
-  final String directoryId;
+  final pulumi.Input<String> directoryId;
   /// Conflict strategy
-  final String duplicationStrategy;
+  final pulumi.Input<String> duplicationStrategy;
   /// Number of manual retry failures
-  final double errorCount;
+  final pulumi.Input<double> errorCount;
   /// Error message for last failure
-  final String errorInfo;
+  final pulumi.Input<String> errorInfo;
   /// Dead letter event ID
-  final String eventId;
+  final pulumi.Input<String> eventId;
   /// The ID of the resource supplied above.
-  final String id;
+  final pulumi.Input<String> id;
   /// Last synchronization time
-  final String lastSyncTime;
+  final pulumi.Input<String> lastSyncTime;
   /// User Provisioning body ID
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// User Provisioning body name
-  final String principalName;
+  final pulumi.Input<String> principalName;
   /// User Provisioning body type
-  final String principalType;
+  final pulumi.Input<String> principalType;
   /// The type of the source action that triggered the event.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
   /// User Provisioning target ID
-  final String targetId;
+  final pulumi.Input<String> targetId;
   /// User Provisioning target name
-  final String targetName;
+  final pulumi.Input<String> targetName;
   /// RD path of User Provisioning target
-  final String targetPath;
+  final pulumi.Input<String> targetPath;
   /// User Provisioning target type
-  final String targetType;
+  final pulumi.Input<String> targetType;
   /// Event update time
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
   /// The ID of the User Provisioning.
-  final String userProvisioningId;
+  final pulumi.Input<String> userProvisioningId;
 
   /// Creates a new [GetUserProvisioningEventsEvent].
   /// [content] Event content
@@ -114,26 +115,26 @@ class GetUserProvisioningEventsEvent {
 
   factory GetUserProvisioningEventsEvent.fromMap(Map<String, dynamic> map) {
     return GetUserProvisioningEventsEvent(
-      content: map['content'] as String,
-      createTime: map['createTime'] as String,
-      deletionStrategy: map['deletionStrategy'] as String,
-      directoryId: map['directoryId'] as String,
-      duplicationStrategy: map['duplicationStrategy'] as String,
-      errorCount: map['errorCount'] as double,
-      errorInfo: map['errorInfo'] as String,
-      eventId: map['eventId'] as String,
-      id: map['id'] as String,
-      lastSyncTime: map['lastSyncTime'] as String,
-      principalId: map['principalId'] as String,
-      principalName: map['principalName'] as String,
-      principalType: map['principalType'] as String,
-      sourceType: map['sourceType'] as String,
-      targetId: map['targetId'] as String,
-      targetName: map['targetName'] as String,
-      targetPath: map['targetPath'] as String,
-      targetType: map['targetType'] as String,
-      updateTime: map['updateTime'] as String,
-      userProvisioningId: map['userProvisioningId'] as String,
+      content: (map['content'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      deletionStrategy: (map['deletionStrategy'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      duplicationStrategy: (map['duplicationStrategy'] as String).input(),
+      errorCount: (map['errorCount'] as double).input(),
+      errorInfo: (map['errorInfo'] as String).input(),
+      eventId: (map['eventId'] as String).input(),
+      id: (map['id'] as String).input(),
+      lastSyncTime: (map['lastSyncTime'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      principalName: (map['principalName'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
+      targetName: (map['targetName'] as String).input(),
+      targetPath: (map['targetPath'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
+      userProvisioningId: (map['userProvisioningId'] as String).input(),
     );
   }
 }

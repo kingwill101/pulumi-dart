@@ -6,7 +6,7 @@ import 'filter_rule.dart';
 /// Definition of S3KeyFilter
 class S3KeyFilter {
   /// A list of containers for the key-value pair that defines the criteria for the filter rule.
-  final List<FilterRule>? rules;
+  final pulumi.Input<List<FilterRule>>? rules;
 
   /// Creates a new [S3KeyFilter].
   /// [rules] A list of containers for the key-value pair that defines the criteria for the filter rule.
@@ -16,13 +16,13 @@ class S3KeyFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<FilterRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<FilterRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<FilterRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory S3KeyFilter.fromMap(Map<String, dynamic> map) {
     return S3KeyFilter(
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<FilterRule>(map['rules'], (value) => FilterRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FilterRule>(map['rules'], (value) => FilterRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

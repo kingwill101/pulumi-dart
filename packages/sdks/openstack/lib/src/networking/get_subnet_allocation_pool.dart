@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSubnetAllocationPool {
-  final String end;
-  final String start;
+  final pulumi.Input<String> end;
+  final pulumi.Input<String> start;
 
   /// Creates a new [GetSubnetAllocationPool].
   /// [end] Required.
@@ -22,8 +23,8 @@ class GetSubnetAllocationPool {
 
   factory GetSubnetAllocationPool.fromMap(Map<String, dynamic> map) {
     return GetSubnetAllocationPool(
-      end: map['end'] as String,
-      start: map['start'] as String,
+      end: (map['end'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

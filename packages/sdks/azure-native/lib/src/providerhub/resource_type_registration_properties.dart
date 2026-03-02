@@ -48,153 +48,153 @@ import 'token_auth_configuration.dart';
 
 class ResourceTypeRegistrationProperties {
   /// Add resource list target locations?
-  final bool? addResourceListTargetLocations;
+  final pulumi.Input<bool>? addResourceListTargetLocations;
   /// The additional options.
-  final String? additionalOptions;
+  final pulumi.Input<String>? additionalOptions;
   /// The allow empty role assignments.
-  final bool? allowEmptyRoleAssignments;
+  final pulumi.Input<bool>? allowEmptyRoleAssignments;
   /// The allowed resource names.
-  final List<AllowedResourceName>? allowedResourceNames;
+  final pulumi.Input<List<AllowedResourceName>>? allowedResourceNames;
   /// Allowed template deployment reference actions.
-  final List<String>? allowedTemplateDeploymentReferenceActions;
+  final pulumi.Input<List<String>>? allowedTemplateDeploymentReferenceActions;
   /// The allowed unauthorized actions.
-  final List<String>? allowedUnauthorizedActions;
+  final pulumi.Input<List<String>>? allowedUnauthorizedActions;
   /// The allowed unauthorized actions extensions.
-  final List<AllowedUnauthorizedActionsExtension>? allowedUnauthorizedActionsExtensions;
+  final pulumi.Input<List<AllowedUnauthorizedActionsExtension>>? allowedUnauthorizedActionsExtensions;
   /// The api profiles.
-  final List<ApiProfile>? apiProfiles;
+  final pulumi.Input<List<ApiProfile>>? apiProfiles;
   /// The async operation resource type name.
-  final String? asyncOperationResourceTypeName;
+  final pulumi.Input<String>? asyncOperationResourceTypeName;
   /// Async timeout rules
-  final List<AsyncTimeoutRule>? asyncTimeoutRules;
+  final pulumi.Input<List<AsyncTimeoutRule>>? asyncTimeoutRules;
   /// The authorization action mappings
-  final List<AuthorizationActionMapping>? authorizationActionMappings;
+  final pulumi.Input<List<AuthorizationActionMapping>>? authorizationActionMappings;
   /// The availability zone rule.
-  final ResourceTypeRegistrationPropertiesAvailabilityZoneRule? availabilityZoneRule;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesAvailabilityZoneRule>? availabilityZoneRule;
   /// Capacity rule.
-  final ResourceTypeRegistrationPropertiesCapacityRule? capacityRule;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesCapacityRule>? capacityRule;
   /// The category.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// The check name availability specifications.
-  final ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications? checkNameAvailabilitySpecifications;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications>? checkNameAvailabilitySpecifications;
   /// Common API versions for the resource type.
-  final List<String>? commonApiVersions;
+  final pulumi.Input<List<String>>? commonApiVersions;
   /// The cross tenant token validation.
-  final String? crossTenantTokenValidation;
+  final pulumi.Input<String>? crossTenantTokenValidation;
   /// The default api version.
-  final String? defaultApiVersion;
+  final pulumi.Input<String>? defaultApiVersion;
   /// The disallowed action verbs.
-  final List<String>? disallowedActionVerbs;
+  final pulumi.Input<List<String>>? disallowedActionVerbs;
   /// The disallowed end user operations.
-  final List<String>? disallowedEndUserOperations;
+  final pulumi.Input<List<String>>? disallowedEndUserOperations;
   /// The dsts configuration.
-  final ResourceTypeRegistrationPropertiesDstsConfiguration? dstsConfiguration;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesDstsConfiguration>? dstsConfiguration;
   /// Whether async operation is enabled.
-  final bool? enableAsyncOperation;
+  final pulumi.Input<bool>? enableAsyncOperation;
   /// Whether third party S2S is enabled.
-  final bool? enableThirdPartyS2S;
+  final pulumi.Input<bool>? enableThirdPartyS2S;
   /// The extensions.
-  final List<ResourceTypeEndpoint>? endpoints;
+  final pulumi.Input<List<ResourceTypeEndpoint>>? endpoints;
   /// The extended locations.
-  final List<ExtendedLocationOptions>? extendedLocations;
+  final pulumi.Input<List<ExtendedLocationOptions>>? extendedLocations;
   /// The extension options.
-  final ResourceTypeRegistrationPropertiesExtensionOptions? extensionOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesExtensionOptions>? extensionOptions;
   /// The features rule.
-  final ResourceTypeRegistrationPropertiesFeaturesRule? featuresRule;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesFeaturesRule>? featuresRule;
   /// The frontdoor request mode.
-  final String? frontdoorRequestMode;
+  final pulumi.Input<String>? frontdoorRequestMode;
   /// Grouping tag.
-  final String? groupingTag;
+  final pulumi.Input<String>? groupingTag;
   /// The identity management.
-  final ResourceTypeRegistrationPropertiesIdentityManagement? identityManagement;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesIdentityManagement>? identityManagement;
   /// Whether it is pure proxy.
-  final bool? isPureProxy;
+  final pulumi.Input<bool>? isPureProxy;
   /// The legacy name.
-  final String? legacyName;
+  final pulumi.Input<String>? legacyName;
   /// The legacy names.
-  final List<String>? legacyNames;
+  final pulumi.Input<List<String>>? legacyNames;
   /// The legacy policy.
-  final ResourceTypeRegistrationPropertiesLegacyPolicy? legacyPolicy;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesLegacyPolicy>? legacyPolicy;
   /// The linked access checks.
-  final List<LinkedAccessCheck>? linkedAccessChecks;
+  final pulumi.Input<List<LinkedAccessCheck>>? linkedAccessChecks;
   /// The linked notification rules.
-  final List<LinkedNotificationRule>? linkedNotificationRules;
+  final pulumi.Input<List<LinkedNotificationRule>>? linkedNotificationRules;
   /// The linked operation rules.
-  final List<LinkedOperationRule>? linkedOperationRules;
+  final pulumi.Input<List<LinkedOperationRule>>? linkedOperationRules;
   /// The logging rules.
-  final List<LoggingRule>? loggingRules;
+  final pulumi.Input<List<LoggingRule>>? loggingRules;
   /// The resource provider management.
-  final ResourceTypeRegistrationPropertiesManagement? management;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesManagement>? management;
   /// Manifest link.
-  final String? manifestLink;
+  final pulumi.Input<String>? manifestLink;
   /// Marketplace options.
-  final ResourceTypeRegistrationPropertiesMarketplaceOptions? marketplaceOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesMarketplaceOptions>? marketplaceOptions;
   /// The marketplace type.
-  final MarketplaceType? marketplaceType;
+  final pulumi.Input<MarketplaceType>? marketplaceType;
   /// The metadata.
-  final dynamic metadata;
+  final pulumi.Input<dynamic>? metadata;
   /// The notifications.
-  final List<Notification>? notifications;
+  final pulumi.Input<List<Notification>>? notifications;
   /// The on behalf of tokens.
-  final ResourceTypeOnBehalfOfToken? onBehalfOfTokens;
+  final pulumi.Input<ResourceTypeOnBehalfOfToken>? onBehalfOfTokens;
   /// The open api configuration.
-  final OpenApiConfiguration? openApiConfiguration;
+  final pulumi.Input<OpenApiConfiguration>? openApiConfiguration;
   /// The policy execution type.
-  final String? policyExecutionType;
+  final pulumi.Input<String>? policyExecutionType;
   /// The quota rule.
-  final QuotaRule? quotaRule;
+  final pulumi.Input<QuotaRule>? quotaRule;
   /// The regionality.
-  final String? regionality;
+  final pulumi.Input<String>? regionality;
   /// The request header options.
-  final ResourceTypeRegistrationPropertiesRequestHeaderOptions? requestHeaderOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesRequestHeaderOptions>? requestHeaderOptions;
   /// The required features.
-  final List<String>? requiredFeatures;
+  final pulumi.Input<List<String>>? requiredFeatures;
   /// Resource cache options.
-  final ResourceTypeRegistrationPropertiesResourceCache? resourceCache;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceCache>? resourceCache;
   /// The resource concurrency control options.
-  final Map<String, ResourceConcurrencyControlOption>? resourceConcurrencyControlOptions;
+  final pulumi.Input<Map<String, ResourceConcurrencyControlOption>>? resourceConcurrencyControlOptions;
   /// The resource deletion policy.
-  final String? resourceDeletionPolicy;
+  final pulumi.Input<String>? resourceDeletionPolicy;
   /// The resource graph configuration.
-  final ResourceTypeRegistrationPropertiesResourceGraphConfiguration? resourceGraphConfiguration;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceGraphConfiguration>? resourceGraphConfiguration;
   /// Resource management options.
-  final ResourceTypeRegistrationPropertiesResourceManagementOptions? resourceManagementOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptions>? resourceManagementOptions;
   /// The resource move policy.
-  final ResourceTypeRegistrationPropertiesResourceMovePolicy? resourceMovePolicy;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceMovePolicy>? resourceMovePolicy;
   /// The resource provider authorization rules.
-  final ResourceProviderAuthorizationRules? resourceProviderAuthorizationRules;
+  final pulumi.Input<ResourceProviderAuthorizationRules>? resourceProviderAuthorizationRules;
   /// Resource query management options.
-  final ResourceTypeRegistrationPropertiesResourceQueryManagement? resourceQueryManagement;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceQueryManagement>? resourceQueryManagement;
   /// The resource sub type.
-  final String? resourceSubType;
+  final pulumi.Input<String>? resourceSubType;
   /// Resource type common attribute management.
-  final ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement? resourceTypeCommonAttributeManagement;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement>? resourceTypeCommonAttributeManagement;
   /// The resource validation.
-  final String? resourceValidation;
+  final pulumi.Input<String>? resourceValidation;
   /// Routing rule.
-  final ResourceTypeRegistrationPropertiesRoutingRule? routingRule;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesRoutingRule>? routingRule;
   /// The resource routing type.
-  final String? routingType;
+  final pulumi.Input<String>? routingType;
   /// The service tree infos.
-  final List<ServiceTreeInfo>? serviceTreeInfos;
+  final pulumi.Input<List<ServiceTreeInfo>>? serviceTreeInfos;
   /// The sku link.
-  final String? skuLink;
+  final pulumi.Input<String>? skuLink;
   /// The subscription lifecycle notification specifications.
-  final ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications? subscriptionLifecycleNotificationSpecifications;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications>? subscriptionLifecycleNotificationSpecifications;
   /// The subscription state rules.
-  final List<SubscriptionStateRule>? subscriptionStateRules;
+  final pulumi.Input<List<SubscriptionStateRule>>? subscriptionStateRules;
   /// Whether tags are supported.
-  final bool? supportsTags;
+  final pulumi.Input<bool>? supportsTags;
   /// The swagger specifications.
-  final List<SwaggerSpecification>? swaggerSpecifications;
+  final pulumi.Input<List<SwaggerSpecification>>? swaggerSpecifications;
   /// The template deployment options.
-  final ResourceTypeRegistrationPropertiesTemplateDeploymentOptions? templateDeploymentOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentOptions>? templateDeploymentOptions;
   /// The template deployment policy.
-  final ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy? templateDeploymentPolicy;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy>? templateDeploymentPolicy;
   /// The throttling rules.
-  final List<ThrottlingRule>? throttlingRules;
+  final pulumi.Input<List<ThrottlingRule>>? throttlingRules;
   /// The token auth configuration.
-  final TokenAuthConfiguration? tokenAuthConfiguration;
+  final pulumi.Input<TokenAuthConfiguration>? tokenAuthConfiguration;
 
   /// Creates a new [ResourceTypeRegistrationProperties].
   /// [addResourceListTargetLocations] Add resource list target locations?
@@ -353,156 +353,156 @@ class ResourceTypeRegistrationProperties {
       'addResourceListTargetLocations': ?addResourceListTargetLocations,
       'additionalOptions': ?additionalOptions,
       'allowEmptyRoleAssignments': ?allowEmptyRoleAssignments,
-      'allowedResourceNames': ?allowedResourceNames == null ? null : pulumi.Input.encodeList<AllowedResourceName, Map<String, dynamic>>(allowedResourceNames!, (value) => value.toMap()),
+      'allowedResourceNames': ?pulumi.Input.mapOptionalInputValue<List<AllowedResourceName>, List<Map<String, dynamic>>>(allowedResourceNames, (value) => pulumi.Input.encodeList<AllowedResourceName, Map<String, dynamic>>(value, (value) => value.toMap())),
       'allowedTemplateDeploymentReferenceActions': ?allowedTemplateDeploymentReferenceActions,
       'allowedUnauthorizedActions': ?allowedUnauthorizedActions,
-      'allowedUnauthorizedActionsExtensions': ?allowedUnauthorizedActionsExtensions == null ? null : pulumi.Input.encodeList<AllowedUnauthorizedActionsExtension, Map<String, dynamic>>(allowedUnauthorizedActionsExtensions!, (value) => value.toMap()),
-      'apiProfiles': ?apiProfiles == null ? null : pulumi.Input.encodeList<ApiProfile, Map<String, dynamic>>(apiProfiles!, (value) => value.toMap()),
+      'allowedUnauthorizedActionsExtensions': ?pulumi.Input.mapOptionalInputValue<List<AllowedUnauthorizedActionsExtension>, List<Map<String, dynamic>>>(allowedUnauthorizedActionsExtensions, (value) => pulumi.Input.encodeList<AllowedUnauthorizedActionsExtension, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'apiProfiles': ?pulumi.Input.mapOptionalInputValue<List<ApiProfile>, List<Map<String, dynamic>>>(apiProfiles, (value) => pulumi.Input.encodeList<ApiProfile, Map<String, dynamic>>(value, (value) => value.toMap())),
       'asyncOperationResourceTypeName': ?asyncOperationResourceTypeName,
-      'asyncTimeoutRules': ?asyncTimeoutRules == null ? null : pulumi.Input.encodeList<AsyncTimeoutRule, Map<String, dynamic>>(asyncTimeoutRules!, (value) => value.toMap()),
-      'authorizationActionMappings': ?authorizationActionMappings == null ? null : pulumi.Input.encodeList<AuthorizationActionMapping, Map<String, dynamic>>(authorizationActionMappings!, (value) => value.toMap()),
-      'availabilityZoneRule': ?availabilityZoneRule == null ? null : availabilityZoneRule!.toMap(),
-      'capacityRule': ?capacityRule == null ? null : capacityRule!.toMap(),
+      'asyncTimeoutRules': ?pulumi.Input.mapOptionalInputValue<List<AsyncTimeoutRule>, List<Map<String, dynamic>>>(asyncTimeoutRules, (value) => pulumi.Input.encodeList<AsyncTimeoutRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'authorizationActionMappings': ?pulumi.Input.mapOptionalInputValue<List<AuthorizationActionMapping>, List<Map<String, dynamic>>>(authorizationActionMappings, (value) => pulumi.Input.encodeList<AuthorizationActionMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'availabilityZoneRule': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesAvailabilityZoneRule, Map<String, dynamic>>(availabilityZoneRule, (value) => value.toMap()),
+      'capacityRule': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesCapacityRule, Map<String, dynamic>>(capacityRule, (value) => value.toMap()),
       'category': ?category,
-      'checkNameAvailabilitySpecifications': ?checkNameAvailabilitySpecifications == null ? null : checkNameAvailabilitySpecifications!.toMap(),
+      'checkNameAvailabilitySpecifications': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications, Map<String, dynamic>>(checkNameAvailabilitySpecifications, (value) => value.toMap()),
       'commonApiVersions': ?commonApiVersions,
       'crossTenantTokenValidation': ?crossTenantTokenValidation,
       'defaultApiVersion': ?defaultApiVersion,
       'disallowedActionVerbs': ?disallowedActionVerbs,
       'disallowedEndUserOperations': ?disallowedEndUserOperations,
-      'dstsConfiguration': ?dstsConfiguration == null ? null : dstsConfiguration!.toMap(),
+      'dstsConfiguration': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesDstsConfiguration, Map<String, dynamic>>(dstsConfiguration, (value) => value.toMap()),
       'enableAsyncOperation': ?enableAsyncOperation,
       'enableThirdPartyS2S': ?enableThirdPartyS2S,
-      'endpoints': ?endpoints == null ? null : pulumi.Input.encodeList<ResourceTypeEndpoint, Map<String, dynamic>>(endpoints!, (value) => value.toMap()),
-      'extendedLocations': ?extendedLocations == null ? null : pulumi.Input.encodeList<ExtendedLocationOptions, Map<String, dynamic>>(extendedLocations!, (value) => value.toMap()),
-      'extensionOptions': ?extensionOptions == null ? null : extensionOptions!.toMap(),
-      'featuresRule': ?featuresRule == null ? null : featuresRule!.toMap(),
+      'endpoints': ?pulumi.Input.mapOptionalInputValue<List<ResourceTypeEndpoint>, List<Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeList<ResourceTypeEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'extendedLocations': ?pulumi.Input.mapOptionalInputValue<List<ExtendedLocationOptions>, List<Map<String, dynamic>>>(extendedLocations, (value) => pulumi.Input.encodeList<ExtendedLocationOptions, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'extensionOptions': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesExtensionOptions, Map<String, dynamic>>(extensionOptions, (value) => value.toMap()),
+      'featuresRule': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesFeaturesRule, Map<String, dynamic>>(featuresRule, (value) => value.toMap()),
       'frontdoorRequestMode': ?frontdoorRequestMode,
       'groupingTag': ?groupingTag,
-      'identityManagement': ?identityManagement == null ? null : identityManagement!.toMap(),
+      'identityManagement': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesIdentityManagement, Map<String, dynamic>>(identityManagement, (value) => value.toMap()),
       'isPureProxy': ?isPureProxy,
       'legacyName': ?legacyName,
       'legacyNames': ?legacyNames,
-      'legacyPolicy': ?legacyPolicy == null ? null : legacyPolicy!.toMap(),
-      'linkedAccessChecks': ?linkedAccessChecks == null ? null : pulumi.Input.encodeList<LinkedAccessCheck, Map<String, dynamic>>(linkedAccessChecks!, (value) => value.toMap()),
-      'linkedNotificationRules': ?linkedNotificationRules == null ? null : pulumi.Input.encodeList<LinkedNotificationRule, Map<String, dynamic>>(linkedNotificationRules!, (value) => value.toMap()),
-      'linkedOperationRules': ?linkedOperationRules == null ? null : pulumi.Input.encodeList<LinkedOperationRule, Map<String, dynamic>>(linkedOperationRules!, (value) => value.toMap()),
-      'loggingRules': ?loggingRules == null ? null : pulumi.Input.encodeList<LoggingRule, Map<String, dynamic>>(loggingRules!, (value) => value.toMap()),
-      'management': ?management == null ? null : management!.toMap(),
+      'legacyPolicy': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesLegacyPolicy, Map<String, dynamic>>(legacyPolicy, (value) => value.toMap()),
+      'linkedAccessChecks': ?pulumi.Input.mapOptionalInputValue<List<LinkedAccessCheck>, List<Map<String, dynamic>>>(linkedAccessChecks, (value) => pulumi.Input.encodeList<LinkedAccessCheck, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'linkedNotificationRules': ?pulumi.Input.mapOptionalInputValue<List<LinkedNotificationRule>, List<Map<String, dynamic>>>(linkedNotificationRules, (value) => pulumi.Input.encodeList<LinkedNotificationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'linkedOperationRules': ?pulumi.Input.mapOptionalInputValue<List<LinkedOperationRule>, List<Map<String, dynamic>>>(linkedOperationRules, (value) => pulumi.Input.encodeList<LinkedOperationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loggingRules': ?pulumi.Input.mapOptionalInputValue<List<LoggingRule>, List<Map<String, dynamic>>>(loggingRules, (value) => pulumi.Input.encodeList<LoggingRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'management': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesManagement, Map<String, dynamic>>(management, (value) => value.toMap()),
       'manifestLink': ?manifestLink,
-      'marketplaceOptions': ?marketplaceOptions == null ? null : marketplaceOptions!.toMap(),
-      'marketplaceType': ?marketplaceType == null ? null : marketplaceType!.value,
+      'marketplaceOptions': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesMarketplaceOptions, Map<String, dynamic>>(marketplaceOptions, (value) => value.toMap()),
+      'marketplaceType': ?pulumi.Input.mapOptionalInputValue<MarketplaceType, String>(marketplaceType, (value) => value.value),
       'metadata': ?metadata,
-      'notifications': ?notifications == null ? null : pulumi.Input.encodeList<Notification, Map<String, dynamic>>(notifications!, (value) => value.toMap()),
-      'onBehalfOfTokens': ?onBehalfOfTokens == null ? null : onBehalfOfTokens!.toMap(),
-      'openApiConfiguration': ?openApiConfiguration == null ? null : openApiConfiguration!.toMap(),
+      'notifications': ?pulumi.Input.mapOptionalInputValue<List<Notification>, List<Map<String, dynamic>>>(notifications, (value) => pulumi.Input.encodeList<Notification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'onBehalfOfTokens': ?pulumi.Input.mapOptionalInputValue<ResourceTypeOnBehalfOfToken, Map<String, dynamic>>(onBehalfOfTokens, (value) => value.toMap()),
+      'openApiConfiguration': ?pulumi.Input.mapOptionalInputValue<OpenApiConfiguration, Map<String, dynamic>>(openApiConfiguration, (value) => value.toMap()),
       'policyExecutionType': ?policyExecutionType,
-      'quotaRule': ?quotaRule == null ? null : quotaRule!.toMap(),
+      'quotaRule': ?pulumi.Input.mapOptionalInputValue<QuotaRule, Map<String, dynamic>>(quotaRule, (value) => value.toMap()),
       'regionality': ?regionality,
-      'requestHeaderOptions': ?requestHeaderOptions == null ? null : requestHeaderOptions!.toMap(),
+      'requestHeaderOptions': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesRequestHeaderOptions, Map<String, dynamic>>(requestHeaderOptions, (value) => value.toMap()),
       'requiredFeatures': ?requiredFeatures,
-      'resourceCache': ?resourceCache == null ? null : resourceCache!.toMap(),
-      'resourceConcurrencyControlOptions': ?resourceConcurrencyControlOptions == null ? null : pulumi.Input.encodeMapValues<ResourceConcurrencyControlOption, Map<String, dynamic>>(resourceConcurrencyControlOptions!, (value) => value.toMap()),
+      'resourceCache': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesResourceCache, Map<String, dynamic>>(resourceCache, (value) => value.toMap()),
+      'resourceConcurrencyControlOptions': ?pulumi.Input.mapOptionalInputValue<Map<String, ResourceConcurrencyControlOption>, Map<String, Map<String, dynamic>>>(resourceConcurrencyControlOptions, (value) => pulumi.Input.encodeMapValues<ResourceConcurrencyControlOption, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceDeletionPolicy': ?resourceDeletionPolicy,
-      'resourceGraphConfiguration': ?resourceGraphConfiguration == null ? null : resourceGraphConfiguration!.toMap(),
-      'resourceManagementOptions': ?resourceManagementOptions == null ? null : resourceManagementOptions!.toMap(),
-      'resourceMovePolicy': ?resourceMovePolicy == null ? null : resourceMovePolicy!.toMap(),
-      'resourceProviderAuthorizationRules': ?resourceProviderAuthorizationRules == null ? null : resourceProviderAuthorizationRules!.toMap(),
-      'resourceQueryManagement': ?resourceQueryManagement == null ? null : resourceQueryManagement!.toMap(),
+      'resourceGraphConfiguration': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesResourceGraphConfiguration, Map<String, dynamic>>(resourceGraphConfiguration, (value) => value.toMap()),
+      'resourceManagementOptions': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesResourceManagementOptions, Map<String, dynamic>>(resourceManagementOptions, (value) => value.toMap()),
+      'resourceMovePolicy': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesResourceMovePolicy, Map<String, dynamic>>(resourceMovePolicy, (value) => value.toMap()),
+      'resourceProviderAuthorizationRules': ?pulumi.Input.mapOptionalInputValue<ResourceProviderAuthorizationRules, Map<String, dynamic>>(resourceProviderAuthorizationRules, (value) => value.toMap()),
+      'resourceQueryManagement': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesResourceQueryManagement, Map<String, dynamic>>(resourceQueryManagement, (value) => value.toMap()),
       'resourceSubType': ?resourceSubType,
-      'resourceTypeCommonAttributeManagement': ?resourceTypeCommonAttributeManagement == null ? null : resourceTypeCommonAttributeManagement!.toMap(),
+      'resourceTypeCommonAttributeManagement': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement, Map<String, dynamic>>(resourceTypeCommonAttributeManagement, (value) => value.toMap()),
       'resourceValidation': ?resourceValidation,
-      'routingRule': ?routingRule == null ? null : routingRule!.toMap(),
+      'routingRule': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesRoutingRule, Map<String, dynamic>>(routingRule, (value) => value.toMap()),
       'routingType': ?routingType,
-      'serviceTreeInfos': ?serviceTreeInfos == null ? null : pulumi.Input.encodeList<ServiceTreeInfo, Map<String, dynamic>>(serviceTreeInfos!, (value) => value.toMap()),
+      'serviceTreeInfos': ?pulumi.Input.mapOptionalInputValue<List<ServiceTreeInfo>, List<Map<String, dynamic>>>(serviceTreeInfos, (value) => pulumi.Input.encodeList<ServiceTreeInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'skuLink': ?skuLink,
-      'subscriptionLifecycleNotificationSpecifications': ?subscriptionLifecycleNotificationSpecifications == null ? null : subscriptionLifecycleNotificationSpecifications!.toMap(),
-      'subscriptionStateRules': ?subscriptionStateRules == null ? null : pulumi.Input.encodeList<SubscriptionStateRule, Map<String, dynamic>>(subscriptionStateRules!, (value) => value.toMap()),
+      'subscriptionLifecycleNotificationSpecifications': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications, Map<String, dynamic>>(subscriptionLifecycleNotificationSpecifications, (value) => value.toMap()),
+      'subscriptionStateRules': ?pulumi.Input.mapOptionalInputValue<List<SubscriptionStateRule>, List<Map<String, dynamic>>>(subscriptionStateRules, (value) => pulumi.Input.encodeList<SubscriptionStateRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'supportsTags': ?supportsTags,
-      'swaggerSpecifications': ?swaggerSpecifications == null ? null : pulumi.Input.encodeList<SwaggerSpecification, Map<String, dynamic>>(swaggerSpecifications!, (value) => value.toMap()),
-      'templateDeploymentOptions': ?templateDeploymentOptions == null ? null : templateDeploymentOptions!.toMap(),
-      'templateDeploymentPolicy': ?templateDeploymentPolicy == null ? null : templateDeploymentPolicy!.toMap(),
-      'throttlingRules': ?throttlingRules == null ? null : pulumi.Input.encodeList<ThrottlingRule, Map<String, dynamic>>(throttlingRules!, (value) => value.toMap()),
-      'tokenAuthConfiguration': ?tokenAuthConfiguration == null ? null : tokenAuthConfiguration!.toMap(),
+      'swaggerSpecifications': ?pulumi.Input.mapOptionalInputValue<List<SwaggerSpecification>, List<Map<String, dynamic>>>(swaggerSpecifications, (value) => pulumi.Input.encodeList<SwaggerSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'templateDeploymentOptions': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesTemplateDeploymentOptions, Map<String, dynamic>>(templateDeploymentOptions, (value) => value.toMap()),
+      'templateDeploymentPolicy': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy, Map<String, dynamic>>(templateDeploymentPolicy, (value) => value.toMap()),
+      'throttlingRules': ?pulumi.Input.mapOptionalInputValue<List<ThrottlingRule>, List<Map<String, dynamic>>>(throttlingRules, (value) => pulumi.Input.encodeList<ThrottlingRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tokenAuthConfiguration': ?pulumi.Input.mapOptionalInputValue<TokenAuthConfiguration, Map<String, dynamic>>(tokenAuthConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ResourceTypeRegistrationProperties.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationProperties(
-      addResourceListTargetLocations: map['addResourceListTargetLocations'] == null ? null : map['addResourceListTargetLocations'] as bool,
-      additionalOptions: map['additionalOptions'] == null ? null : map['additionalOptions'] as String,
-      allowEmptyRoleAssignments: map['allowEmptyRoleAssignments'] == null ? null : map['allowEmptyRoleAssignments'] as bool,
-      allowedResourceNames: map['allowedResourceNames'] == null ? null : pulumi.Input.decodeList<AllowedResourceName>(map['allowedResourceNames'], (value) => AllowedResourceName.fromMap((value as Map).cast<String, dynamic>())),
-      allowedTemplateDeploymentReferenceActions: map['allowedTemplateDeploymentReferenceActions'] == null ? null : (map['allowedTemplateDeploymentReferenceActions'] as List).cast<String>(),
-      allowedUnauthorizedActions: map['allowedUnauthorizedActions'] == null ? null : (map['allowedUnauthorizedActions'] as List).cast<String>(),
-      allowedUnauthorizedActionsExtensions: map['allowedUnauthorizedActionsExtensions'] == null ? null : pulumi.Input.decodeList<AllowedUnauthorizedActionsExtension>(map['allowedUnauthorizedActionsExtensions'], (value) => AllowedUnauthorizedActionsExtension.fromMap((value as Map).cast<String, dynamic>())),
-      apiProfiles: map['apiProfiles'] == null ? null : pulumi.Input.decodeList<ApiProfile>(map['apiProfiles'], (value) => ApiProfile.fromMap((value as Map).cast<String, dynamic>())),
-      asyncOperationResourceTypeName: map['asyncOperationResourceTypeName'] == null ? null : map['asyncOperationResourceTypeName'] as String,
-      asyncTimeoutRules: map['asyncTimeoutRules'] == null ? null : pulumi.Input.decodeList<AsyncTimeoutRule>(map['asyncTimeoutRules'], (value) => AsyncTimeoutRule.fromMap((value as Map).cast<String, dynamic>())),
-      authorizationActionMappings: map['authorizationActionMappings'] == null ? null : pulumi.Input.decodeList<AuthorizationActionMapping>(map['authorizationActionMappings'], (value) => AuthorizationActionMapping.fromMap((value as Map).cast<String, dynamic>())),
-      availabilityZoneRule: map['availabilityZoneRule'] == null ? null : ResourceTypeRegistrationPropertiesAvailabilityZoneRule.fromMap((map['availabilityZoneRule'] as Map).cast<String, dynamic>()),
-      capacityRule: map['capacityRule'] == null ? null : ResourceTypeRegistrationPropertiesCapacityRule.fromMap((map['capacityRule'] as Map).cast<String, dynamic>()),
-      category: map['category'] == null ? null : map['category'] as String,
-      checkNameAvailabilitySpecifications: map['checkNameAvailabilitySpecifications'] == null ? null : ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications.fromMap((map['checkNameAvailabilitySpecifications'] as Map).cast<String, dynamic>()),
-      commonApiVersions: map['commonApiVersions'] == null ? null : (map['commonApiVersions'] as List).cast<String>(),
-      crossTenantTokenValidation: map['crossTenantTokenValidation'] == null ? null : map['crossTenantTokenValidation'] as String,
-      defaultApiVersion: map['defaultApiVersion'] == null ? null : map['defaultApiVersion'] as String,
-      disallowedActionVerbs: map['disallowedActionVerbs'] == null ? null : (map['disallowedActionVerbs'] as List).cast<String>(),
-      disallowedEndUserOperations: map['disallowedEndUserOperations'] == null ? null : (map['disallowedEndUserOperations'] as List).cast<String>(),
-      dstsConfiguration: map['dstsConfiguration'] == null ? null : ResourceTypeRegistrationPropertiesDstsConfiguration.fromMap((map['dstsConfiguration'] as Map).cast<String, dynamic>()),
-      enableAsyncOperation: map['enableAsyncOperation'] == null ? null : map['enableAsyncOperation'] as bool,
-      enableThirdPartyS2S: map['enableThirdPartyS2S'] == null ? null : map['enableThirdPartyS2S'] as bool,
-      endpoints: map['endpoints'] == null ? null : pulumi.Input.decodeList<ResourceTypeEndpoint>(map['endpoints'], (value) => ResourceTypeEndpoint.fromMap((value as Map).cast<String, dynamic>())),
-      extendedLocations: map['extendedLocations'] == null ? null : pulumi.Input.decodeList<ExtendedLocationOptions>(map['extendedLocations'], (value) => ExtendedLocationOptions.fromMap((value as Map).cast<String, dynamic>())),
-      extensionOptions: map['extensionOptions'] == null ? null : ResourceTypeRegistrationPropertiesExtensionOptions.fromMap((map['extensionOptions'] as Map).cast<String, dynamic>()),
-      featuresRule: map['featuresRule'] == null ? null : ResourceTypeRegistrationPropertiesFeaturesRule.fromMap((map['featuresRule'] as Map).cast<String, dynamic>()),
-      frontdoorRequestMode: map['frontdoorRequestMode'] == null ? null : map['frontdoorRequestMode'] as String,
-      groupingTag: map['groupingTag'] == null ? null : map['groupingTag'] as String,
-      identityManagement: map['identityManagement'] == null ? null : ResourceTypeRegistrationPropertiesIdentityManagement.fromMap((map['identityManagement'] as Map).cast<String, dynamic>()),
-      isPureProxy: map['isPureProxy'] == null ? null : map['isPureProxy'] as bool,
-      legacyName: map['legacyName'] == null ? null : map['legacyName'] as String,
-      legacyNames: map['legacyNames'] == null ? null : (map['legacyNames'] as List).cast<String>(),
-      legacyPolicy: map['legacyPolicy'] == null ? null : ResourceTypeRegistrationPropertiesLegacyPolicy.fromMap((map['legacyPolicy'] as Map).cast<String, dynamic>()),
-      linkedAccessChecks: map['linkedAccessChecks'] == null ? null : pulumi.Input.decodeList<LinkedAccessCheck>(map['linkedAccessChecks'], (value) => LinkedAccessCheck.fromMap((value as Map).cast<String, dynamic>())),
-      linkedNotificationRules: map['linkedNotificationRules'] == null ? null : pulumi.Input.decodeList<LinkedNotificationRule>(map['linkedNotificationRules'], (value) => LinkedNotificationRule.fromMap((value as Map).cast<String, dynamic>())),
-      linkedOperationRules: map['linkedOperationRules'] == null ? null : pulumi.Input.decodeList<LinkedOperationRule>(map['linkedOperationRules'], (value) => LinkedOperationRule.fromMap((value as Map).cast<String, dynamic>())),
-      loggingRules: map['loggingRules'] == null ? null : pulumi.Input.decodeList<LoggingRule>(map['loggingRules'], (value) => LoggingRule.fromMap((value as Map).cast<String, dynamic>())),
-      management: map['management'] == null ? null : ResourceTypeRegistrationPropertiesManagement.fromMap((map['management'] as Map).cast<String, dynamic>()),
-      manifestLink: map['manifestLink'] == null ? null : map['manifestLink'] as String,
-      marketplaceOptions: map['marketplaceOptions'] == null ? null : ResourceTypeRegistrationPropertiesMarketplaceOptions.fromMap((map['marketplaceOptions'] as Map).cast<String, dynamic>()),
-      marketplaceType: map['marketplaceType'] == null ? null : MarketplaceType.fromValue(map['marketplaceType'] as String),
-      metadata: map['metadata'] == null ? null : map['metadata'],
-      notifications: map['notifications'] == null ? null : pulumi.Input.decodeList<Notification>(map['notifications'], (value) => Notification.fromMap((value as Map).cast<String, dynamic>())),
-      onBehalfOfTokens: map['onBehalfOfTokens'] == null ? null : ResourceTypeOnBehalfOfToken.fromMap((map['onBehalfOfTokens'] as Map).cast<String, dynamic>()),
-      openApiConfiguration: map['openApiConfiguration'] == null ? null : OpenApiConfiguration.fromMap((map['openApiConfiguration'] as Map).cast<String, dynamic>()),
-      policyExecutionType: map['policyExecutionType'] == null ? null : map['policyExecutionType'] as String,
-      quotaRule: map['quotaRule'] == null ? null : QuotaRule.fromMap((map['quotaRule'] as Map).cast<String, dynamic>()),
-      regionality: map['regionality'] == null ? null : map['regionality'] as String,
-      requestHeaderOptions: map['requestHeaderOptions'] == null ? null : ResourceTypeRegistrationPropertiesRequestHeaderOptions.fromMap((map['requestHeaderOptions'] as Map).cast<String, dynamic>()),
-      requiredFeatures: map['requiredFeatures'] == null ? null : (map['requiredFeatures'] as List).cast<String>(),
-      resourceCache: map['resourceCache'] == null ? null : ResourceTypeRegistrationPropertiesResourceCache.fromMap((map['resourceCache'] as Map).cast<String, dynamic>()),
-      resourceConcurrencyControlOptions: map['resourceConcurrencyControlOptions'] == null ? null : pulumi.Input.decodeMapValues<ResourceConcurrencyControlOption>(map['resourceConcurrencyControlOptions'], (value) => ResourceConcurrencyControlOption.fromMap((value as Map).cast<String, dynamic>())),
-      resourceDeletionPolicy: map['resourceDeletionPolicy'] == null ? null : map['resourceDeletionPolicy'] as String,
-      resourceGraphConfiguration: map['resourceGraphConfiguration'] == null ? null : ResourceTypeRegistrationPropertiesResourceGraphConfiguration.fromMap((map['resourceGraphConfiguration'] as Map).cast<String, dynamic>()),
-      resourceManagementOptions: map['resourceManagementOptions'] == null ? null : ResourceTypeRegistrationPropertiesResourceManagementOptions.fromMap((map['resourceManagementOptions'] as Map).cast<String, dynamic>()),
-      resourceMovePolicy: map['resourceMovePolicy'] == null ? null : ResourceTypeRegistrationPropertiesResourceMovePolicy.fromMap((map['resourceMovePolicy'] as Map).cast<String, dynamic>()),
-      resourceProviderAuthorizationRules: map['resourceProviderAuthorizationRules'] == null ? null : ResourceProviderAuthorizationRules.fromMap((map['resourceProviderAuthorizationRules'] as Map).cast<String, dynamic>()),
-      resourceQueryManagement: map['resourceQueryManagement'] == null ? null : ResourceTypeRegistrationPropertiesResourceQueryManagement.fromMap((map['resourceQueryManagement'] as Map).cast<String, dynamic>()),
-      resourceSubType: map['resourceSubType'] == null ? null : map['resourceSubType'] as String,
-      resourceTypeCommonAttributeManagement: map['resourceTypeCommonAttributeManagement'] == null ? null : ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement.fromMap((map['resourceTypeCommonAttributeManagement'] as Map).cast<String, dynamic>()),
-      resourceValidation: map['resourceValidation'] == null ? null : map['resourceValidation'] as String,
-      routingRule: map['routingRule'] == null ? null : ResourceTypeRegistrationPropertiesRoutingRule.fromMap((map['routingRule'] as Map).cast<String, dynamic>()),
-      routingType: map['routingType'] == null ? null : map['routingType'] as String,
-      serviceTreeInfos: map['serviceTreeInfos'] == null ? null : pulumi.Input.decodeList<ServiceTreeInfo>(map['serviceTreeInfos'], (value) => ServiceTreeInfo.fromMap((value as Map).cast<String, dynamic>())),
-      skuLink: map['skuLink'] == null ? null : map['skuLink'] as String,
-      subscriptionLifecycleNotificationSpecifications: map['subscriptionLifecycleNotificationSpecifications'] == null ? null : ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications.fromMap((map['subscriptionLifecycleNotificationSpecifications'] as Map).cast<String, dynamic>()),
-      subscriptionStateRules: map['subscriptionStateRules'] == null ? null : pulumi.Input.decodeList<SubscriptionStateRule>(map['subscriptionStateRules'], (value) => SubscriptionStateRule.fromMap((value as Map).cast<String, dynamic>())),
-      supportsTags: map['supportsTags'] == null ? null : map['supportsTags'] as bool,
-      swaggerSpecifications: map['swaggerSpecifications'] == null ? null : pulumi.Input.decodeList<SwaggerSpecification>(map['swaggerSpecifications'], (value) => SwaggerSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      templateDeploymentOptions: map['templateDeploymentOptions'] == null ? null : ResourceTypeRegistrationPropertiesTemplateDeploymentOptions.fromMap((map['templateDeploymentOptions'] as Map).cast<String, dynamic>()),
-      templateDeploymentPolicy: map['templateDeploymentPolicy'] == null ? null : ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy.fromMap((map['templateDeploymentPolicy'] as Map).cast<String, dynamic>()),
-      throttlingRules: map['throttlingRules'] == null ? null : pulumi.Input.decodeList<ThrottlingRule>(map['throttlingRules'], (value) => ThrottlingRule.fromMap((value as Map).cast<String, dynamic>())),
-      tokenAuthConfiguration: map['tokenAuthConfiguration'] == null ? null : TokenAuthConfiguration.fromMap((map['tokenAuthConfiguration'] as Map).cast<String, dynamic>()),
+      addResourceListTargetLocations: map['addResourceListTargetLocations'] == null ? null : (map['addResourceListTargetLocations'] as bool).input(),
+      additionalOptions: map['additionalOptions'] == null ? null : (map['additionalOptions'] as String).input(),
+      allowEmptyRoleAssignments: map['allowEmptyRoleAssignments'] == null ? null : (map['allowEmptyRoleAssignments'] as bool).input(),
+      allowedResourceNames: map['allowedResourceNames'] == null ? null : (pulumi.Input.decodeList<AllowedResourceName>(map['allowedResourceNames'], (value) => AllowedResourceName.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedTemplateDeploymentReferenceActions: map['allowedTemplateDeploymentReferenceActions'] == null ? null : ((map['allowedTemplateDeploymentReferenceActions'] as List).cast<String>()).input(),
+      allowedUnauthorizedActions: map['allowedUnauthorizedActions'] == null ? null : ((map['allowedUnauthorizedActions'] as List).cast<String>()).input(),
+      allowedUnauthorizedActionsExtensions: map['allowedUnauthorizedActionsExtensions'] == null ? null : (pulumi.Input.decodeList<AllowedUnauthorizedActionsExtension>(map['allowedUnauthorizedActionsExtensions'], (value) => AllowedUnauthorizedActionsExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiProfiles: map['apiProfiles'] == null ? null : (pulumi.Input.decodeList<ApiProfile>(map['apiProfiles'], (value) => ApiProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      asyncOperationResourceTypeName: map['asyncOperationResourceTypeName'] == null ? null : (map['asyncOperationResourceTypeName'] as String).input(),
+      asyncTimeoutRules: map['asyncTimeoutRules'] == null ? null : (pulumi.Input.decodeList<AsyncTimeoutRule>(map['asyncTimeoutRules'], (value) => AsyncTimeoutRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authorizationActionMappings: map['authorizationActionMappings'] == null ? null : (pulumi.Input.decodeList<AuthorizationActionMapping>(map['authorizationActionMappings'], (value) => AuthorizationActionMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      availabilityZoneRule: map['availabilityZoneRule'] == null ? null : (ResourceTypeRegistrationPropertiesAvailabilityZoneRule.fromMap((map['availabilityZoneRule'] as Map).cast<String, dynamic>())).input(),
+      capacityRule: map['capacityRule'] == null ? null : (ResourceTypeRegistrationPropertiesCapacityRule.fromMap((map['capacityRule'] as Map).cast<String, dynamic>())).input(),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      checkNameAvailabilitySpecifications: map['checkNameAvailabilitySpecifications'] == null ? null : (ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications.fromMap((map['checkNameAvailabilitySpecifications'] as Map).cast<String, dynamic>())).input(),
+      commonApiVersions: map['commonApiVersions'] == null ? null : ((map['commonApiVersions'] as List).cast<String>()).input(),
+      crossTenantTokenValidation: map['crossTenantTokenValidation'] == null ? null : (map['crossTenantTokenValidation'] as String).input(),
+      defaultApiVersion: map['defaultApiVersion'] == null ? null : (map['defaultApiVersion'] as String).input(),
+      disallowedActionVerbs: map['disallowedActionVerbs'] == null ? null : ((map['disallowedActionVerbs'] as List).cast<String>()).input(),
+      disallowedEndUserOperations: map['disallowedEndUserOperations'] == null ? null : ((map['disallowedEndUserOperations'] as List).cast<String>()).input(),
+      dstsConfiguration: map['dstsConfiguration'] == null ? null : (ResourceTypeRegistrationPropertiesDstsConfiguration.fromMap((map['dstsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      enableAsyncOperation: map['enableAsyncOperation'] == null ? null : (map['enableAsyncOperation'] as bool).input(),
+      enableThirdPartyS2S: map['enableThirdPartyS2S'] == null ? null : (map['enableThirdPartyS2S'] as bool).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<ResourceTypeEndpoint>(map['endpoints'], (value) => ResourceTypeEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extendedLocations: map['extendedLocations'] == null ? null : (pulumi.Input.decodeList<ExtendedLocationOptions>(map['extendedLocations'], (value) => ExtendedLocationOptions.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extensionOptions: map['extensionOptions'] == null ? null : (ResourceTypeRegistrationPropertiesExtensionOptions.fromMap((map['extensionOptions'] as Map).cast<String, dynamic>())).input(),
+      featuresRule: map['featuresRule'] == null ? null : (ResourceTypeRegistrationPropertiesFeaturesRule.fromMap((map['featuresRule'] as Map).cast<String, dynamic>())).input(),
+      frontdoorRequestMode: map['frontdoorRequestMode'] == null ? null : (map['frontdoorRequestMode'] as String).input(),
+      groupingTag: map['groupingTag'] == null ? null : (map['groupingTag'] as String).input(),
+      identityManagement: map['identityManagement'] == null ? null : (ResourceTypeRegistrationPropertiesIdentityManagement.fromMap((map['identityManagement'] as Map).cast<String, dynamic>())).input(),
+      isPureProxy: map['isPureProxy'] == null ? null : (map['isPureProxy'] as bool).input(),
+      legacyName: map['legacyName'] == null ? null : (map['legacyName'] as String).input(),
+      legacyNames: map['legacyNames'] == null ? null : ((map['legacyNames'] as List).cast<String>()).input(),
+      legacyPolicy: map['legacyPolicy'] == null ? null : (ResourceTypeRegistrationPropertiesLegacyPolicy.fromMap((map['legacyPolicy'] as Map).cast<String, dynamic>())).input(),
+      linkedAccessChecks: map['linkedAccessChecks'] == null ? null : (pulumi.Input.decodeList<LinkedAccessCheck>(map['linkedAccessChecks'], (value) => LinkedAccessCheck.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linkedNotificationRules: map['linkedNotificationRules'] == null ? null : (pulumi.Input.decodeList<LinkedNotificationRule>(map['linkedNotificationRules'], (value) => LinkedNotificationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linkedOperationRules: map['linkedOperationRules'] == null ? null : (pulumi.Input.decodeList<LinkedOperationRule>(map['linkedOperationRules'], (value) => LinkedOperationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loggingRules: map['loggingRules'] == null ? null : (pulumi.Input.decodeList<LoggingRule>(map['loggingRules'], (value) => LoggingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      management: map['management'] == null ? null : (ResourceTypeRegistrationPropertiesManagement.fromMap((map['management'] as Map).cast<String, dynamic>())).input(),
+      manifestLink: map['manifestLink'] == null ? null : (map['manifestLink'] as String).input(),
+      marketplaceOptions: map['marketplaceOptions'] == null ? null : (ResourceTypeRegistrationPropertiesMarketplaceOptions.fromMap((map['marketplaceOptions'] as Map).cast<String, dynamic>())).input(),
+      marketplaceType: map['marketplaceType'] == null ? null : (MarketplaceType.fromValue(map['marketplaceType'] as String)).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<Notification>(map['notifications'], (value) => Notification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onBehalfOfTokens: map['onBehalfOfTokens'] == null ? null : (ResourceTypeOnBehalfOfToken.fromMap((map['onBehalfOfTokens'] as Map).cast<String, dynamic>())).input(),
+      openApiConfiguration: map['openApiConfiguration'] == null ? null : (OpenApiConfiguration.fromMap((map['openApiConfiguration'] as Map).cast<String, dynamic>())).input(),
+      policyExecutionType: map['policyExecutionType'] == null ? null : (map['policyExecutionType'] as String).input(),
+      quotaRule: map['quotaRule'] == null ? null : (QuotaRule.fromMap((map['quotaRule'] as Map).cast<String, dynamic>())).input(),
+      regionality: map['regionality'] == null ? null : (map['regionality'] as String).input(),
+      requestHeaderOptions: map['requestHeaderOptions'] == null ? null : (ResourceTypeRegistrationPropertiesRequestHeaderOptions.fromMap((map['requestHeaderOptions'] as Map).cast<String, dynamic>())).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
+      resourceCache: map['resourceCache'] == null ? null : (ResourceTypeRegistrationPropertiesResourceCache.fromMap((map['resourceCache'] as Map).cast<String, dynamic>())).input(),
+      resourceConcurrencyControlOptions: map['resourceConcurrencyControlOptions'] == null ? null : (pulumi.Input.decodeMapValues<ResourceConcurrencyControlOption>(map['resourceConcurrencyControlOptions'], (value) => ResourceConcurrencyControlOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceDeletionPolicy: map['resourceDeletionPolicy'] == null ? null : (map['resourceDeletionPolicy'] as String).input(),
+      resourceGraphConfiguration: map['resourceGraphConfiguration'] == null ? null : (ResourceTypeRegistrationPropertiesResourceGraphConfiguration.fromMap((map['resourceGraphConfiguration'] as Map).cast<String, dynamic>())).input(),
+      resourceManagementOptions: map['resourceManagementOptions'] == null ? null : (ResourceTypeRegistrationPropertiesResourceManagementOptions.fromMap((map['resourceManagementOptions'] as Map).cast<String, dynamic>())).input(),
+      resourceMovePolicy: map['resourceMovePolicy'] == null ? null : (ResourceTypeRegistrationPropertiesResourceMovePolicy.fromMap((map['resourceMovePolicy'] as Map).cast<String, dynamic>())).input(),
+      resourceProviderAuthorizationRules: map['resourceProviderAuthorizationRules'] == null ? null : (ResourceProviderAuthorizationRules.fromMap((map['resourceProviderAuthorizationRules'] as Map).cast<String, dynamic>())).input(),
+      resourceQueryManagement: map['resourceQueryManagement'] == null ? null : (ResourceTypeRegistrationPropertiesResourceQueryManagement.fromMap((map['resourceQueryManagement'] as Map).cast<String, dynamic>())).input(),
+      resourceSubType: map['resourceSubType'] == null ? null : (map['resourceSubType'] as String).input(),
+      resourceTypeCommonAttributeManagement: map['resourceTypeCommonAttributeManagement'] == null ? null : (ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement.fromMap((map['resourceTypeCommonAttributeManagement'] as Map).cast<String, dynamic>())).input(),
+      resourceValidation: map['resourceValidation'] == null ? null : (map['resourceValidation'] as String).input(),
+      routingRule: map['routingRule'] == null ? null : (ResourceTypeRegistrationPropertiesRoutingRule.fromMap((map['routingRule'] as Map).cast<String, dynamic>())).input(),
+      routingType: map['routingType'] == null ? null : (map['routingType'] as String).input(),
+      serviceTreeInfos: map['serviceTreeInfos'] == null ? null : (pulumi.Input.decodeList<ServiceTreeInfo>(map['serviceTreeInfos'], (value) => ServiceTreeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      skuLink: map['skuLink'] == null ? null : (map['skuLink'] as String).input(),
+      subscriptionLifecycleNotificationSpecifications: map['subscriptionLifecycleNotificationSpecifications'] == null ? null : (ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications.fromMap((map['subscriptionLifecycleNotificationSpecifications'] as Map).cast<String, dynamic>())).input(),
+      subscriptionStateRules: map['subscriptionStateRules'] == null ? null : (pulumi.Input.decodeList<SubscriptionStateRule>(map['subscriptionStateRules'], (value) => SubscriptionStateRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      supportsTags: map['supportsTags'] == null ? null : (map['supportsTags'] as bool).input(),
+      swaggerSpecifications: map['swaggerSpecifications'] == null ? null : (pulumi.Input.decodeList<SwaggerSpecification>(map['swaggerSpecifications'], (value) => SwaggerSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateDeploymentOptions: map['templateDeploymentOptions'] == null ? null : (ResourceTypeRegistrationPropertiesTemplateDeploymentOptions.fromMap((map['templateDeploymentOptions'] as Map).cast<String, dynamic>())).input(),
+      templateDeploymentPolicy: map['templateDeploymentPolicy'] == null ? null : (ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy.fromMap((map['templateDeploymentPolicy'] as Map).cast<String, dynamic>())).input(),
+      throttlingRules: map['throttlingRules'] == null ? null : (pulumi.Input.decodeList<ThrottlingRule>(map['throttlingRules'], (value) => ThrottlingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tokenAuthConfiguration: map['tokenAuthConfiguration'] == null ? null : (TokenAuthConfiguration.fromMap((map['tokenAuthConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

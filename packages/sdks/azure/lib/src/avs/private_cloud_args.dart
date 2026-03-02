@@ -43,27 +43,17 @@ class PrivateCloudArgs {
   /// [tags] A mapping of tags which should be assigned to the Azure VMware Solution Private Cloud.
   /// [vcenterPassword] The password of the VMware vCenter Server cloudadmin. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   PrivateCloudArgs({
-    pulumi.Output<bool>? internetConnectionEnabled,
-    pulumi.Output<String>? location,
-    required pulumi.Output<PrivateCloudManagementCluster> managementCluster,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkSubnetCidr,
-    pulumi.Output<String>? nsxtPassword,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> skuName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vcenterPassword,
-  }) :
-      internetConnectionEnabled = pulumi.Input.asOptionalInput<bool>(internetConnectionEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managementCluster = pulumi.Input.asInput<PrivateCloudManagementCluster>(managementCluster),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkSubnetCidr = pulumi.Input.asInput<String>(networkSubnetCidr),
-      nsxtPassword = pulumi.Input.asOptionalInput<String>(nsxtPassword),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vcenterPassword = pulumi.Input.asOptionalInput<String>(vcenterPassword);
+    this.internetConnectionEnabled,
+    this.location,
+    required this.managementCluster,
+    this.name,
+    required this.networkSubnetCidr,
+    this.nsxtPassword,
+    required this.resourceGroupName,
+    required this.skuName,
+    this.tags,
+    this.vcenterPassword,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class PrivateCloudArgs {
 
   factory PrivateCloudArgs.fromMap(Map<String, dynamic> map) {
     return PrivateCloudArgs(
-      internetConnectionEnabled: map['internetConnectionEnabled'] == null ? null : pulumi.Output.create<bool>(map['internetConnectionEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managementCluster: pulumi.Output.create<PrivateCloudManagementCluster>(PrivateCloudManagementCluster.fromMap((map['managementCluster'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkSubnetCidr: pulumi.Output.create<String>(map['networkSubnetCidr'] as String),
-      nsxtPassword: map['nsxtPassword'] == null ? null : pulumi.Output.create<String>(map['nsxtPassword'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vcenterPassword: map['vcenterPassword'] == null ? null : pulumi.Output.create<String>(map['vcenterPassword'] as String),
+      internetConnectionEnabled: map['internetConnectionEnabled'] == null ? null : (map['internetConnectionEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managementCluster: (PrivateCloudManagementCluster.fromMap((map['managementCluster'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkSubnetCidr: (map['networkSubnetCidr'] as String).input(),
+      nsxtPassword: map['nsxtPassword'] == null ? null : (map['nsxtPassword'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skuName: (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vcenterPassword: map['vcenterPassword'] == null ? null : (map['vcenterPassword'] as String).input(),
     );
   }
 }

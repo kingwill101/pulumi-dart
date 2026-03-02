@@ -33,21 +33,14 @@ class IngestionDestinationArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   IngestionDestinationArgs({
-    required pulumi.Output<String> appBundleArn,
-    required pulumi.Output<IngestionDestinationDestinationConfiguration> destinationConfiguration,
-    required pulumi.Output<String> ingestionArn,
-    required pulumi.Output<IngestionDestinationProcessingConfiguration> processingConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<IngestionDestinationTimeouts>? timeouts,
-  }) :
-      appBundleArn = pulumi.Input.asInput<String>(appBundleArn),
-      destinationConfiguration = pulumi.Input.asInput<IngestionDestinationDestinationConfiguration>(destinationConfiguration),
-      ingestionArn = pulumi.Input.asInput<String>(ingestionArn),
-      processingConfiguration = pulumi.Input.asInput<IngestionDestinationProcessingConfiguration>(processingConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<IngestionDestinationTimeouts>(timeouts);
+    required this.appBundleArn,
+    required this.destinationConfiguration,
+    required this.ingestionArn,
+    required this.processingConfiguration,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class IngestionDestinationArgs {
 
   factory IngestionDestinationArgs.fromMap(Map<String, dynamic> map) {
     return IngestionDestinationArgs(
-      appBundleArn: pulumi.Output.create<String>(map['appBundleArn'] as String),
-      destinationConfiguration: pulumi.Output.create<IngestionDestinationDestinationConfiguration>(IngestionDestinationDestinationConfiguration.fromMap((map['destinationConfiguration'] as Map).cast<String, dynamic>())),
-      ingestionArn: pulumi.Output.create<String>(map['ingestionArn'] as String),
-      processingConfiguration: pulumi.Output.create<IngestionDestinationProcessingConfiguration>(IngestionDestinationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<IngestionDestinationTimeouts>(IngestionDestinationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      appBundleArn: (map['appBundleArn'] as String).input(),
+      destinationConfiguration: (IngestionDestinationDestinationConfiguration.fromMap((map['destinationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      ingestionArn: (map['ingestionArn'] as String).input(),
+      processingConfiguration: (IngestionDestinationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (IngestionDestinationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -6,11 +6,11 @@ import 'component_status_response.dart';
 /// Target Status
 class TargetStatusResponse {
   /// Component statuses
-  final List<ComponentStatusResponse>? componentStatuses;
+  final pulumi.Input<List<ComponentStatusResponse>>? componentStatuses;
   /// Target name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Target status
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [TargetStatusResponse].
   /// [componentStatuses] Component statuses
@@ -24,7 +24,7 @@ class TargetStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentStatuses': ?componentStatuses == null ? null : pulumi.Input.encodeList<ComponentStatusResponse, Map<String, dynamic>>(componentStatuses!, (value) => value.toMap()),
+      'componentStatuses': ?pulumi.Input.mapOptionalInputValue<List<ComponentStatusResponse>, List<Map<String, dynamic>>>(componentStatuses, (value) => pulumi.Input.encodeList<ComponentStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'status': ?status,
     };
@@ -32,9 +32,9 @@ class TargetStatusResponse {
 
   factory TargetStatusResponse.fromMap(Map<String, dynamic> map) {
     return TargetStatusResponse(
-      componentStatuses: map['componentStatuses'] == null ? null : pulumi.Input.decodeList<ComponentStatusResponse>(map['componentStatuses'], (value) => ComponentStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      componentStatuses: map['componentStatuses'] == null ? null : (pulumi.Input.decodeList<ComponentStatusResponse>(map['componentStatuses'], (value) => ComponentStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsNodePoolConfigTaint {
   /// The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
-  final String effect;
+  final pulumi.Input<String> effect;
   /// Key for the taint.
-  final String key;
+  final pulumi.Input<String> key;
   /// Value for the taint.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [AwsNodePoolConfigTaint].
   /// [effect] The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
@@ -29,9 +30,9 @@ class AwsNodePoolConfigTaint {
 
   factory AwsNodePoolConfigTaint.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolConfigTaint(
-      effect: map['effect'] as String,
-      key: map['key'] as String,
-      value: map['value'] as String,
+      effect: (map['effect'] as String).input(),
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

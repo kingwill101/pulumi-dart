@@ -19,13 +19,10 @@ class GetPrivateEndpointConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopeName] The name of the Azure Monitor PrivateLinkScope resource.
   GetPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> privateEndpointConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scopeName,
-  }) :
-      privateEndpointConnectionName = pulumi.Input.asInput<String>(privateEndpointConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopeName = pulumi.Input.asInput<String>(scopeName);
+    required this.privateEndpointConnectionName,
+    required this.resourceGroupName,
+    required this.scopeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPrivateEndpointConnectionArgs {
 
   factory GetPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionArgs(
-      privateEndpointConnectionName: pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopeName: pulumi.Output.create<String>(map['scopeName'] as String),
+      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopeName: (map['scopeName'] as String).input(),
     );
   }
 }

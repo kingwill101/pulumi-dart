@@ -16,13 +16,10 @@ class EndpointPrivateDnsState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcEndpointId] VPC endpoint identifier.
   EndpointPrivateDnsState({
-    pulumi.Output<bool>? privateDnsEnabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? vpcEndpointId,
-  }) :
-      privateDnsEnabled = pulumi.Input.asOptionalInput<bool>(privateDnsEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcEndpointId = pulumi.Input.asOptionalInput<String>(vpcEndpointId);
+    this.privateDnsEnabled,
+    this.region,
+    this.vpcEndpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class EndpointPrivateDnsState {
 
   factory EndpointPrivateDnsState.fromMap(Map<String, dynamic> map) {
     return EndpointPrivateDnsState(
-      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : pulumi.Output.create<bool>(map['privateDnsEnabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointId'] as String),
+      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
     );
   }
 }

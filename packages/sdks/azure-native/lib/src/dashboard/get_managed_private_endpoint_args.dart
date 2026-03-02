@@ -19,13 +19,10 @@ class GetManagedPrivateEndpointArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The workspace name of Azure Managed Grafana.
   GetManagedPrivateEndpointArgs({
-    required pulumi.Output<String> managedPrivateEndpointName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      managedPrivateEndpointName = pulumi.Input.asInput<String>(managedPrivateEndpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.managedPrivateEndpointName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetManagedPrivateEndpointArgs {
 
   factory GetManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedPrivateEndpointArgs(
-      managedPrivateEndpointName: pulumi.Output.create<String>(map['managedPrivateEndpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      managedPrivateEndpointName: (map['managedPrivateEndpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

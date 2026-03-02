@@ -25,17 +25,12 @@ class EditingProjectArgs {
   /// [timeline] The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/basic-structures). If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
   /// [title] The title of the online editing project.
   EditingProjectArgs({
-    pulumi.Output<String>? coverUrl,
-    pulumi.Output<String>? division,
-    pulumi.Output<String>? editingProjectName,
-    pulumi.Output<String>? timeline,
-    required pulumi.Output<String> title,
-  }) :
-      coverUrl = pulumi.Input.asOptionalInput<String>(coverUrl),
-      division = pulumi.Input.asOptionalInput<String>(division),
-      editingProjectName = pulumi.Input.asOptionalInput<String>(editingProjectName),
-      timeline = pulumi.Input.asOptionalInput<String>(timeline),
-      title = pulumi.Input.asInput<String>(title);
+    this.coverUrl,
+    this.division,
+    this.editingProjectName,
+    this.timeline,
+    required this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EditingProjectArgs {
 
   factory EditingProjectArgs.fromMap(Map<String, dynamic> map) {
     return EditingProjectArgs(
-      coverUrl: map['coverUrl'] == null ? null : pulumi.Output.create<String>(map['coverUrl'] as String),
-      division: map['division'] == null ? null : pulumi.Output.create<String>(map['division'] as String),
-      editingProjectName: map['editingProjectName'] == null ? null : pulumi.Output.create<String>(map['editingProjectName'] as String),
-      timeline: map['timeline'] == null ? null : pulumi.Output.create<String>(map['timeline'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
+      coverUrl: map['coverUrl'] == null ? null : (map['coverUrl'] as String).input(),
+      division: map['division'] == null ? null : (map['division'] as String).input(),
+      editingProjectName: map['editingProjectName'] == null ? null : (map['editingProjectName'] as String).input(),
+      timeline: map['timeline'] == null ? null : (map['timeline'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

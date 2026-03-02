@@ -31,27 +31,17 @@ class OpenApiImageCacheArgs {
   /// [vswitchId] Required.
   /// [zoneId] Optional.
   OpenApiImageCacheArgs({
-    pulumi.Output<String>? eipInstanceId,
-    required pulumi.Output<String> imageCacheName,
-    pulumi.Output<int>? imageCacheSize,
-    pulumi.Output<List<OpenApiImageCacheImageRegistryCredential>>? imageRegistryCredentials,
-    required pulumi.Output<List<String>> images,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<int>? retentionDays,
-    required pulumi.Output<String> securityGroupId,
-    required pulumi.Output<String> vswitchId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      eipInstanceId = pulumi.Input.asOptionalInput<String>(eipInstanceId),
-      imageCacheName = pulumi.Input.asInput<String>(imageCacheName),
-      imageCacheSize = pulumi.Input.asOptionalInput<int>(imageCacheSize),
-      imageRegistryCredentials = pulumi.Input.asOptionalInput<List<OpenApiImageCacheImageRegistryCredential>>(imageRegistryCredentials),
-      images = pulumi.Input.asInput<List<String>>(images),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.eipInstanceId,
+    required this.imageCacheName,
+    this.imageCacheSize,
+    this.imageRegistryCredentials,
+    required this.images,
+    this.resourceGroupId,
+    this.retentionDays,
+    required this.securityGroupId,
+    required this.vswitchId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,16 +60,16 @@ class OpenApiImageCacheArgs {
 
   factory OpenApiImageCacheArgs.fromMap(Map<String, dynamic> map) {
     return OpenApiImageCacheArgs(
-      eipInstanceId: map['eipInstanceId'] == null ? null : pulumi.Output.create<String>(map['eipInstanceId'] as String),
-      imageCacheName: pulumi.Output.create<String>(map['imageCacheName'] as String),
-      imageCacheSize: map['imageCacheSize'] == null ? null : pulumi.Output.create<int>(map['imageCacheSize'] as int),
-      imageRegistryCredentials: map['imageRegistryCredentials'] == null ? null : pulumi.Output.create<List<OpenApiImageCacheImageRegistryCredential>>(pulumi.Input.decodeList<OpenApiImageCacheImageRegistryCredential>(map['imageRegistryCredentials'], (value) => OpenApiImageCacheImageRegistryCredential.fromMap((value as Map).cast<String, dynamic>()))),
-      images: pulumi.Output.create<List<String>>((map['images'] as List).cast<String>()),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      securityGroupId: pulumi.Output.create<String>(map['securityGroupId'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      eipInstanceId: map['eipInstanceId'] == null ? null : (map['eipInstanceId'] as String).input(),
+      imageCacheName: (map['imageCacheName'] as String).input(),
+      imageCacheSize: map['imageCacheSize'] == null ? null : (map['imageCacheSize'] as int).input(),
+      imageRegistryCredentials: map['imageRegistryCredentials'] == null ? null : (pulumi.Input.decodeList<OpenApiImageCacheImageRegistryCredential>(map['imageRegistryCredentials'], (value) => OpenApiImageCacheImageRegistryCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      images: ((map['images'] as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

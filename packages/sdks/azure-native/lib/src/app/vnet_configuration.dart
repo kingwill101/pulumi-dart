@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration properties for apps environment to join a Virtual Network
 class VnetConfiguration {
   /// CIDR notation IP range assigned to the Docker bridge, network. Must not overlap with any other provided IP ranges.
-  final String? dockerBridgeCidr;
+  final pulumi.Input<String>? dockerBridgeCidr;
   /// Resource ID of a subnet for infrastructure components. Must not overlap with any other provided IP ranges.
-  final String? infrastructureSubnetId;
+  final pulumi.Input<String>? infrastructureSubnetId;
   /// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide infrastructureSubnetId if enabling this property
-  final bool? internal;
+  final pulumi.Input<bool>? internal;
   /// IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. Must not overlap with any other provided IP ranges.
-  final String? platformReservedCidr;
+  final pulumi.Input<String>? platformReservedCidr;
   /// An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
-  final String? platformReservedDnsIP;
+  final pulumi.Input<String>? platformReservedDnsIP;
 
   /// Creates a new [VnetConfiguration].
   /// [dockerBridgeCidr] CIDR notation IP range assigned to the Docker bridge, network. Must not overlap with any other provided IP ranges.
@@ -40,11 +41,11 @@ class VnetConfiguration {
 
   factory VnetConfiguration.fromMap(Map<String, dynamic> map) {
     return VnetConfiguration(
-      dockerBridgeCidr: map['dockerBridgeCidr'] == null ? null : map['dockerBridgeCidr'] as String,
-      infrastructureSubnetId: map['infrastructureSubnetId'] == null ? null : map['infrastructureSubnetId'] as String,
-      internal: map['internal'] == null ? null : map['internal'] as bool,
-      platformReservedCidr: map['platformReservedCidr'] == null ? null : map['platformReservedCidr'] as String,
-      platformReservedDnsIP: map['platformReservedDnsIP'] == null ? null : map['platformReservedDnsIP'] as String,
+      dockerBridgeCidr: map['dockerBridgeCidr'] == null ? null : (map['dockerBridgeCidr'] as String).input(),
+      infrastructureSubnetId: map['infrastructureSubnetId'] == null ? null : (map['infrastructureSubnetId'] as String).input(),
+      internal: map['internal'] == null ? null : (map['internal'] as bool).input(),
+      platformReservedCidr: map['platformReservedCidr'] == null ? null : (map['platformReservedCidr'] as String).input(),
+      platformReservedDnsIP: map['platformReservedDnsIP'] == null ? null : (map['platformReservedDnsIP'] as String).input(),
     );
   }
 }

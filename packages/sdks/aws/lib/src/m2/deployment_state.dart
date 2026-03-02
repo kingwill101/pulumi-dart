@@ -29,23 +29,15 @@ class DeploymentState {
   /// [start] Start the application once deployed.
   /// [timeouts] Optional.
   DeploymentState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<int>? applicationVersion,
-    pulumi.Output<String>? deploymentId,
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<bool>? forceStop,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? start,
-    pulumi.Output<DeploymentTimeouts>? timeouts,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      applicationVersion = pulumi.Input.asOptionalInput<int>(applicationVersion),
-      deploymentId = pulumi.Input.asOptionalInput<String>(deploymentId),
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      forceStop = pulumi.Input.asOptionalInput<bool>(forceStop),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      start = pulumi.Input.asOptionalInput<bool>(start),
-      timeouts = pulumi.Input.asOptionalInput<DeploymentTimeouts>(timeouts);
+    this.applicationId,
+    this.applicationVersion,
+    this.deploymentId,
+    this.environmentId,
+    this.forceStop,
+    this.region,
+    this.start,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,14 +54,14 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      applicationVersion: map['applicationVersion'] == null ? null : pulumi.Output.create<int>(map['applicationVersion'] as int),
-      deploymentId: map['deploymentId'] == null ? null : pulumi.Output.create<String>(map['deploymentId'] as String),
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      forceStop: map['forceStop'] == null ? null : pulumi.Output.create<bool>(map['forceStop'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      start: map['start'] == null ? null : pulumi.Output.create<bool>(map['start'] as bool),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DeploymentTimeouts>(DeploymentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      applicationVersion: map['applicationVersion'] == null ? null : (map['applicationVersion'] as int).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      forceStop: map['forceStop'] == null ? null : (map['forceStop'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      start: map['start'] == null ? null : (map['start'] as bool).input(),
+      timeouts: map['timeouts'] == null ? null : (DeploymentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

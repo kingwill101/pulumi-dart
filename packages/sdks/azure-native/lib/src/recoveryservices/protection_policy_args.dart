@@ -32,21 +32,14 @@ class ProtectionPolicyArgs {
   /// [tags] Resource tags.
   /// [vaultName] The name of the recovery services vault.
   ProtectionPolicyArgs({
-    pulumi.Output<String>? eTag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? policyName,
-    pulumi.Output<AzureFileShareProtectionPolicy>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vaultName,
-  }) :
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      properties = pulumi.Input.asOptionalInput<AzureFileShareProtectionPolicy>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    this.eTag,
+    this.location,
+    this.policyName,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ProtectionPolicyArgs {
 
   factory ProtectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionPolicyArgs(
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<AzureFileShareProtectionPolicy>(AzureFileShareProtectionPolicy.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      properties: map['properties'] == null ? null : (AzureFileShareProtectionPolicy.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

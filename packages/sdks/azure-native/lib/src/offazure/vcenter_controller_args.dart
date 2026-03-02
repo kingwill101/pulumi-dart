@@ -34,23 +34,15 @@ class VcenterControllerArgs {
   /// [siteName] Site name
   /// [vcenterName] VCenters name
   VcenterControllerArgs({
-    pulumi.Output<String>? fqdn,
-    pulumi.Output<String>? friendlyName,
-    pulumi.Output<String>? port,
-    pulumi.Output<String>? provisioningState,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? runAsAccountId,
-    required pulumi.Output<String> siteName,
-    pulumi.Output<String>? vcenterName,
-  }) :
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      port = pulumi.Input.asOptionalInput<String>(port),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runAsAccountId = pulumi.Input.asOptionalInput<String>(runAsAccountId),
-      siteName = pulumi.Input.asInput<String>(siteName),
-      vcenterName = pulumi.Input.asOptionalInput<String>(vcenterName);
+    this.fqdn,
+    this.friendlyName,
+    this.port,
+    this.provisioningState,
+    required this.resourceGroupName,
+    this.runAsAccountId,
+    required this.siteName,
+    this.vcenterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class VcenterControllerArgs {
 
   factory VcenterControllerArgs.fromMap(Map<String, dynamic> map) {
     return VcenterControllerArgs(
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<String>(map['fqdn'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runAsAccountId: map['runAsAccountId'] == null ? null : pulumi.Output.create<String>(map['runAsAccountId'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
-      vcenterName: map['vcenterName'] == null ? null : pulumi.Output.create<String>(map['vcenterName'] as String),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
+      vcenterName: map['vcenterName'] == null ? null : (map['vcenterName'] as String).input(),
     );
   }
 }

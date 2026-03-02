@@ -16,35 +16,35 @@ import 'software_config_dataproc_v1beta2.dart';
 /// The cluster config.
 class ClusterConfigDataprocV1beta2 {
   /// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
-  final AutoscalingConfigDataprocV1beta2? autoscalingConfig;
+  final pulumi.Input<AutoscalingConfigDataprocV1beta2>? autoscalingConfig;
   /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
-  final String? configBucket;
+  final pulumi.Input<String>? configBucket;
   /// Optional. Encryption settings for the cluster.
-  final EncryptionConfigDataprocV1beta2? encryptionConfig;
+  final pulumi.Input<EncryptionConfigDataprocV1beta2>? encryptionConfig;
   /// Optional. Port/endpoint configuration for this cluster
-  final EndpointConfigDataprocV1beta2? endpointConfig;
+  final pulumi.Input<EndpointConfigDataprocV1beta2>? endpointConfig;
   /// Optional. The shared Compute Engine config settings for all instances in a cluster.
-  final GceClusterConfigDataprocV1beta2? gceClusterConfig;
+  final pulumi.Input<GceClusterConfigDataprocV1beta2>? gceClusterConfig;
   /// Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
-  final GkeClusterConfigDataprocV1beta2? gkeClusterConfig;
+  final pulumi.Input<GkeClusterConfigDataprocV1beta2>? gkeClusterConfig;
   /// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1beta2/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
-  final List<NodeInitializationActionDataprocV1beta2>? initializationActions;
+  final pulumi.Input<List<NodeInitializationActionDataprocV1beta2>>? initializationActions;
   /// Optional. The config setting for auto delete cluster schedule.
-  final LifecycleConfigDataprocV1beta2? lifecycleConfig;
+  final pulumi.Input<LifecycleConfigDataprocV1beta2>? lifecycleConfig;
   /// Optional. The Compute Engine config settings for the master instance in a cluster.
-  final InstanceGroupConfigDataprocV1beta2? masterConfig;
+  final pulumi.Input<InstanceGroupConfigDataprocV1beta2>? masterConfig;
   /// Optional. Metastore configuration.
-  final MetastoreConfigDataprocV1beta2? metastoreConfig;
+  final pulumi.Input<MetastoreConfigDataprocV1beta2>? metastoreConfig;
   /// Optional. The Compute Engine config settings for additional worker instances in a cluster.
-  final InstanceGroupConfigDataprocV1beta2? secondaryWorkerConfig;
+  final pulumi.Input<InstanceGroupConfigDataprocV1beta2>? secondaryWorkerConfig;
   /// Optional. Security related configuration.
-  final SecurityConfigDataprocV1beta2? securityConfig;
+  final pulumi.Input<SecurityConfigDataprocV1beta2>? securityConfig;
   /// Optional. The config settings for software inside the cluster.
-  final SoftwareConfigDataprocV1beta2? softwareConfig;
+  final pulumi.Input<SoftwareConfigDataprocV1beta2>? softwareConfig;
   /// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
-  final String? tempBucket;
+  final pulumi.Input<String>? tempBucket;
   /// Optional. The Compute Engine config settings for worker instances in a cluster.
-  final InstanceGroupConfigDataprocV1beta2? workerConfig;
+  final pulumi.Input<InstanceGroupConfigDataprocV1beta2>? workerConfig;
 
   /// Creates a new [ClusterConfigDataprocV1beta2].
   /// [autoscalingConfig] Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
@@ -82,41 +82,41 @@ class ClusterConfigDataprocV1beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingConfig': ?autoscalingConfig == null ? null : autoscalingConfig!.toMap(),
+      'autoscalingConfig': ?pulumi.Input.mapOptionalInputValue<AutoscalingConfigDataprocV1beta2, Map<String, dynamic>>(autoscalingConfig, (value) => value.toMap()),
       'configBucket': ?configBucket,
-      'encryptionConfig': ?encryptionConfig == null ? null : encryptionConfig!.toMap(),
-      'endpointConfig': ?endpointConfig == null ? null : endpointConfig!.toMap(),
-      'gceClusterConfig': ?gceClusterConfig == null ? null : gceClusterConfig!.toMap(),
-      'gkeClusterConfig': ?gkeClusterConfig == null ? null : gkeClusterConfig!.toMap(),
-      'initializationActions': ?initializationActions == null ? null : pulumi.Input.encodeList<NodeInitializationActionDataprocV1beta2, Map<String, dynamic>>(initializationActions!, (value) => value.toMap()),
-      'lifecycleConfig': ?lifecycleConfig == null ? null : lifecycleConfig!.toMap(),
-      'masterConfig': ?masterConfig == null ? null : masterConfig!.toMap(),
-      'metastoreConfig': ?metastoreConfig == null ? null : metastoreConfig!.toMap(),
-      'secondaryWorkerConfig': ?secondaryWorkerConfig == null ? null : secondaryWorkerConfig!.toMap(),
-      'securityConfig': ?securityConfig == null ? null : securityConfig!.toMap(),
-      'softwareConfig': ?softwareConfig == null ? null : softwareConfig!.toMap(),
+      'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<EncryptionConfigDataprocV1beta2, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
+      'endpointConfig': ?pulumi.Input.mapOptionalInputValue<EndpointConfigDataprocV1beta2, Map<String, dynamic>>(endpointConfig, (value) => value.toMap()),
+      'gceClusterConfig': ?pulumi.Input.mapOptionalInputValue<GceClusterConfigDataprocV1beta2, Map<String, dynamic>>(gceClusterConfig, (value) => value.toMap()),
+      'gkeClusterConfig': ?pulumi.Input.mapOptionalInputValue<GkeClusterConfigDataprocV1beta2, Map<String, dynamic>>(gkeClusterConfig, (value) => value.toMap()),
+      'initializationActions': ?pulumi.Input.mapOptionalInputValue<List<NodeInitializationActionDataprocV1beta2>, List<Map<String, dynamic>>>(initializationActions, (value) => pulumi.Input.encodeList<NodeInitializationActionDataprocV1beta2, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lifecycleConfig': ?pulumi.Input.mapOptionalInputValue<LifecycleConfigDataprocV1beta2, Map<String, dynamic>>(lifecycleConfig, (value) => value.toMap()),
+      'masterConfig': ?pulumi.Input.mapOptionalInputValue<InstanceGroupConfigDataprocV1beta2, Map<String, dynamic>>(masterConfig, (value) => value.toMap()),
+      'metastoreConfig': ?pulumi.Input.mapOptionalInputValue<MetastoreConfigDataprocV1beta2, Map<String, dynamic>>(metastoreConfig, (value) => value.toMap()),
+      'secondaryWorkerConfig': ?pulumi.Input.mapOptionalInputValue<InstanceGroupConfigDataprocV1beta2, Map<String, dynamic>>(secondaryWorkerConfig, (value) => value.toMap()),
+      'securityConfig': ?pulumi.Input.mapOptionalInputValue<SecurityConfigDataprocV1beta2, Map<String, dynamic>>(securityConfig, (value) => value.toMap()),
+      'softwareConfig': ?pulumi.Input.mapOptionalInputValue<SoftwareConfigDataprocV1beta2, Map<String, dynamic>>(softwareConfig, (value) => value.toMap()),
       'tempBucket': ?tempBucket,
-      'workerConfig': ?workerConfig == null ? null : workerConfig!.toMap(),
+      'workerConfig': ?pulumi.Input.mapOptionalInputValue<InstanceGroupConfigDataprocV1beta2, Map<String, dynamic>>(workerConfig, (value) => value.toMap()),
     };
   }
 
   factory ClusterConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return ClusterConfigDataprocV1beta2(
-      autoscalingConfig: map['autoscalingConfig'] == null ? null : AutoscalingConfigDataprocV1beta2.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>()),
-      configBucket: map['configBucket'] == null ? null : map['configBucket'] as String,
-      encryptionConfig: map['encryptionConfig'] == null ? null : EncryptionConfigDataprocV1beta2.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
-      endpointConfig: map['endpointConfig'] == null ? null : EndpointConfigDataprocV1beta2.fromMap((map['endpointConfig'] as Map).cast<String, dynamic>()),
-      gceClusterConfig: map['gceClusterConfig'] == null ? null : GceClusterConfigDataprocV1beta2.fromMap((map['gceClusterConfig'] as Map).cast<String, dynamic>()),
-      gkeClusterConfig: map['gkeClusterConfig'] == null ? null : GkeClusterConfigDataprocV1beta2.fromMap((map['gkeClusterConfig'] as Map).cast<String, dynamic>()),
-      initializationActions: map['initializationActions'] == null ? null : pulumi.Input.decodeList<NodeInitializationActionDataprocV1beta2>(map['initializationActions'], (value) => NodeInitializationActionDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>())),
-      lifecycleConfig: map['lifecycleConfig'] == null ? null : LifecycleConfigDataprocV1beta2.fromMap((map['lifecycleConfig'] as Map).cast<String, dynamic>()),
-      masterConfig: map['masterConfig'] == null ? null : InstanceGroupConfigDataprocV1beta2.fromMap((map['masterConfig'] as Map).cast<String, dynamic>()),
-      metastoreConfig: map['metastoreConfig'] == null ? null : MetastoreConfigDataprocV1beta2.fromMap((map['metastoreConfig'] as Map).cast<String, dynamic>()),
-      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : InstanceGroupConfigDataprocV1beta2.fromMap((map['secondaryWorkerConfig'] as Map).cast<String, dynamic>()),
-      securityConfig: map['securityConfig'] == null ? null : SecurityConfigDataprocV1beta2.fromMap((map['securityConfig'] as Map).cast<String, dynamic>()),
-      softwareConfig: map['softwareConfig'] == null ? null : SoftwareConfigDataprocV1beta2.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>()),
-      tempBucket: map['tempBucket'] == null ? null : map['tempBucket'] as String,
-      workerConfig: map['workerConfig'] == null ? null : InstanceGroupConfigDataprocV1beta2.fromMap((map['workerConfig'] as Map).cast<String, dynamic>()),
+      autoscalingConfig: map['autoscalingConfig'] == null ? null : (AutoscalingConfigDataprocV1beta2.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>())).input(),
+      configBucket: map['configBucket'] == null ? null : (map['configBucket'] as String).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigDataprocV1beta2.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      endpointConfig: map['endpointConfig'] == null ? null : (EndpointConfigDataprocV1beta2.fromMap((map['endpointConfig'] as Map).cast<String, dynamic>())).input(),
+      gceClusterConfig: map['gceClusterConfig'] == null ? null : (GceClusterConfigDataprocV1beta2.fromMap((map['gceClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      gkeClusterConfig: map['gkeClusterConfig'] == null ? null : (GkeClusterConfigDataprocV1beta2.fromMap((map['gkeClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      initializationActions: map['initializationActions'] == null ? null : (pulumi.Input.decodeList<NodeInitializationActionDataprocV1beta2>(map['initializationActions'], (value) => NodeInitializationActionDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecycleConfig: map['lifecycleConfig'] == null ? null : (LifecycleConfigDataprocV1beta2.fromMap((map['lifecycleConfig'] as Map).cast<String, dynamic>())).input(),
+      masterConfig: map['masterConfig'] == null ? null : (InstanceGroupConfigDataprocV1beta2.fromMap((map['masterConfig'] as Map).cast<String, dynamic>())).input(),
+      metastoreConfig: map['metastoreConfig'] == null ? null : (MetastoreConfigDataprocV1beta2.fromMap((map['metastoreConfig'] as Map).cast<String, dynamic>())).input(),
+      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : (InstanceGroupConfigDataprocV1beta2.fromMap((map['secondaryWorkerConfig'] as Map).cast<String, dynamic>())).input(),
+      securityConfig: map['securityConfig'] == null ? null : (SecurityConfigDataprocV1beta2.fromMap((map['securityConfig'] as Map).cast<String, dynamic>())).input(),
+      softwareConfig: map['softwareConfig'] == null ? null : (SoftwareConfigDataprocV1beta2.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>())).input(),
+      tempBucket: map['tempBucket'] == null ? null : (map['tempBucket'] as String).input(),
+      workerConfig: map['workerConfig'] == null ? null : (InstanceGroupConfigDataprocV1beta2.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

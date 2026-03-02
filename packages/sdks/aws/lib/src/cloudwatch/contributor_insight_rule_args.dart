@@ -26,17 +26,12 @@ class ContributorInsightRuleArgs {
   /// [ruleState] State of the rule. Valid values are `ENABLED` and `DISABLED`.
   /// [tags] Optional.
   ContributorInsightRuleArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> ruleDefinition,
-    required pulumi.Output<String> ruleName,
-    pulumi.Output<String>? ruleState,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleDefinition = pulumi.Input.asInput<String>(ruleDefinition),
-      ruleName = pulumi.Input.asInput<String>(ruleName),
-      ruleState = pulumi.Input.asOptionalInput<String>(ruleState),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.region,
+    required this.ruleDefinition,
+    required this.ruleName,
+    this.ruleState,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ContributorInsightRuleArgs {
 
   factory ContributorInsightRuleArgs.fromMap(Map<String, dynamic> map) {
     return ContributorInsightRuleArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleDefinition: pulumi.Output.create<String>(map['ruleDefinition'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
-      ruleState: map['ruleState'] == null ? null : pulumi.Output.create<String>(map['ruleState'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleDefinition: (map['ruleDefinition'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      ruleState: map['ruleState'] == null ? null : (map['ruleState'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

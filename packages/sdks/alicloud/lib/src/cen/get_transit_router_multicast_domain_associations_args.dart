@@ -34,23 +34,15 @@ class GetTransitRouterMulticastDomainAssociationsArgs {
   /// [transitRouterMulticastDomainId] The ID of the multicast domain.
   /// [vswitchId] The ID of the vSwitch.
   GetTransitRouterMulticastDomainAssociationsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transitRouterAttachmentId,
-    required pulumi.Output<String> transitRouterMulticastDomainId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouterAttachmentId = pulumi.Input.asOptionalInput<String>(transitRouterAttachmentId),
-      transitRouterMulticastDomainId = pulumi.Input.asInput<String>(transitRouterMulticastDomainId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.ids,
+    this.outputFile,
+    this.resourceId,
+    this.resourceType,
+    this.status,
+    this.transitRouterAttachmentId,
+    required this.transitRouterMulticastDomainId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetTransitRouterMulticastDomainAssociationsArgs {
 
   factory GetTransitRouterMulticastDomainAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterMulticastDomainAssociationsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
-      transitRouterMulticastDomainId: pulumi.Output.create<String>(map['transitRouterMulticastDomainId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A set of Compute Engine Confidential VM instance options.
 class GceConfidentialInstanceConfigWorkstationsV1beta {
   /// Optional. Whether the instance has confidential compute enabled.
-  final bool? enableConfidentialCompute;
+  final pulumi.Input<bool>? enableConfidentialCompute;
 
   /// Creates a new [GceConfidentialInstanceConfigWorkstationsV1beta].
   /// [enableConfidentialCompute] Optional. Whether the instance has confidential compute enabled.
@@ -20,7 +21,7 @@ class GceConfidentialInstanceConfigWorkstationsV1beta {
 
   factory GceConfidentialInstanceConfigWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return GceConfidentialInstanceConfigWorkstationsV1beta(
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : map['enableConfidentialCompute'] as bool,
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
     );
   }
 }

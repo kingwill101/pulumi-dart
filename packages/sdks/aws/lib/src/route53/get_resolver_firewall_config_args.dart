@@ -16,11 +16,9 @@ class GetResolverFirewallConfigArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceId] The ID of the VPC from Amazon VPC that the configuration is for.
   GetResolverFirewallConfigArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+    this.region,
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResolverFirewallConfigArgs {
 
   factory GetResolverFirewallConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallConfigArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

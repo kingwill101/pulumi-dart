@@ -28,19 +28,13 @@ class OrganizationsDeidentifyTemplateArgs {
   /// [organizationId] Required.
   /// [templateId] The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
   OrganizationsDeidentifyTemplateArgs({
-    pulumi.Output<GooglePrivacyDlpV2DeidentifyConfig>? deidentifyConfig,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<String>? templateId,
-  }) :
-      deidentifyConfig = pulumi.Input.asOptionalInput<GooglePrivacyDlpV2DeidentifyConfig>(deidentifyConfig),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId);
+    this.deidentifyConfig,
+    this.description,
+    this.displayName,
+    this.location,
+    required this.organizationId,
+    this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class OrganizationsDeidentifyTemplateArgs {
 
   factory OrganizationsDeidentifyTemplateArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationsDeidentifyTemplateArgs(
-      deidentifyConfig: map['deidentifyConfig'] == null ? null : pulumi.Output.create<GooglePrivacyDlpV2DeidentifyConfig>(GooglePrivacyDlpV2DeidentifyConfig.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
+      deidentifyConfig: map['deidentifyConfig'] == null ? null : (GooglePrivacyDlpV2DeidentifyConfig.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
     );
   }
 }

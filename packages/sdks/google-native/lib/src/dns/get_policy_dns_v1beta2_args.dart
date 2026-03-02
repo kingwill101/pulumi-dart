@@ -16,13 +16,10 @@ class GetPolicyDnsV1beta2Args {
   /// [policy] Required.
   /// [project] Optional.
   GetPolicyDnsV1beta2Args({
-    pulumi.Output<String>? clientOperationId,
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? project,
-  }) :
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      policy = pulumi.Input.asInput<String>(policy),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.clientOperationId,
+    required this.policy,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetPolicyDnsV1beta2Args {
 
   factory GetPolicyDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetPolicyDnsV1beta2Args(
-      clientOperationId: map['clientOperationId'] == null ? null : pulumi.Output.create<String>(map['clientOperationId'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

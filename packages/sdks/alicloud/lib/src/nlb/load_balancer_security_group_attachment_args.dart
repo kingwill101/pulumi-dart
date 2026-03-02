@@ -19,13 +19,10 @@ class LoadBalancerSecurityGroupAttachmentArgs {
   /// [loadBalancerId] The ID of the NLB instance to be associated with the security group.
   /// [securityGroupId] The ID of the security group to be disassociated.
   LoadBalancerSecurityGroupAttachmentArgs({
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> loadBalancerId,
-    required pulumi.Output<String> securityGroupId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      securityGroupId = pulumi.Input.asInput<String>(securityGroupId);
+    this.dryRun,
+    required this.loadBalancerId,
+    required this.securityGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LoadBalancerSecurityGroupAttachmentArgs {
 
   factory LoadBalancerSecurityGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerSecurityGroupAttachmentArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      securityGroupId: pulumi.Output.create<String>(map['securityGroupId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
     );
   }
 }

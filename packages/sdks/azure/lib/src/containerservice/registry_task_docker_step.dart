@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryTaskDockerStep {
   /// Specifies a map of arguments to be used when executing this step.
-  final Map<String, String>? arguments;
+  final pulumi.Input<Map<String, String>>? arguments;
   /// Should the image cache be enabled? Defaults to `true`.
-  final bool? cacheEnabled;
+  final pulumi.Input<bool>? cacheEnabled;
   /// The token (Git PAT or SAS token of storage account blob) associated with the context for this step.
-  final String contextAccessToken;
+  final pulumi.Input<String> contextAccessToken;
   /// The URL (absolute or relative) of the source context for this step. If the context is an url you can reference a specific branch or folder via `#branch:folder`.
-  final String contextPath;
+  final pulumi.Input<String> contextPath;
   /// The Dockerfile path relative to the source context.
-  final String dockerfilePath;
+  final pulumi.Input<String> dockerfilePath;
   /// Specifies a list of fully qualified image names including the repository and tag.
-  final List<String>? imageNames;
+  final pulumi.Input<List<String>>? imageNames;
   /// Should the image built be pushed to the registry or not? Defaults to `true`.
-  final bool? pushEnabled;
+  final pulumi.Input<bool>? pushEnabled;
   /// Specifies a map of *secret* arguments to be used when executing this step.
-  final Map<String, String>? secretArguments;
+  final pulumi.Input<Map<String, String>>? secretArguments;
   /// The name of the target build stage for the docker build.
-  final String? target;
+  final pulumi.Input<String>? target;
 
   /// Creates a new [RegistryTaskDockerStep].
   /// [arguments] Specifies a map of arguments to be used when executing this step.
@@ -59,15 +60,15 @@ class RegistryTaskDockerStep {
 
   factory RegistryTaskDockerStep.fromMap(Map<String, dynamic> map) {
     return RegistryTaskDockerStep(
-      arguments: map['arguments'] == null ? null : (map['arguments'] as Map).cast<String, String>(),
-      cacheEnabled: map['cacheEnabled'] == null ? null : map['cacheEnabled'] as bool,
-      contextAccessToken: map['contextAccessToken'] as String,
-      contextPath: map['contextPath'] as String,
-      dockerfilePath: map['dockerfilePath'] as String,
-      imageNames: map['imageNames'] == null ? null : (map['imageNames'] as List).cast<String>(),
-      pushEnabled: map['pushEnabled'] == null ? null : map['pushEnabled'] as bool,
-      secretArguments: map['secretArguments'] == null ? null : (map['secretArguments'] as Map).cast<String, String>(),
-      target: map['target'] == null ? null : map['target'] as String,
+      arguments: map['arguments'] == null ? null : ((map['arguments'] as Map).cast<String, String>()).input(),
+      cacheEnabled: map['cacheEnabled'] == null ? null : (map['cacheEnabled'] as bool).input(),
+      contextAccessToken: (map['contextAccessToken'] as String).input(),
+      contextPath: (map['contextPath'] as String).input(),
+      dockerfilePath: (map['dockerfilePath'] as String).input(),
+      imageNames: map['imageNames'] == null ? null : ((map['imageNames'] as List).cast<String>()).input(),
+      pushEnabled: map['pushEnabled'] == null ? null : (map['pushEnabled'] as bool).input(),
+      secretArguments: map['secretArguments'] == null ? null : ((map['secretArguments'] as Map).cast<String, String>()).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

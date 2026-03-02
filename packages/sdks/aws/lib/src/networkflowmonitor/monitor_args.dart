@@ -35,21 +35,14 @@ class MonitorArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   MonitorArgs({
-    required pulumi.Output<List<MonitorLocalResource>> localResources,
-    required pulumi.Output<String> monitorName,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<MonitorRemoteResource>>? remoteResources,
-    required pulumi.Output<String> scopeArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<MonitorTimeouts>? timeouts,
-  }) :
-      localResources = pulumi.Input.asInput<List<MonitorLocalResource>>(localResources),
-      monitorName = pulumi.Input.asInput<String>(monitorName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      remoteResources = pulumi.Input.asOptionalInput<List<MonitorRemoteResource>>(remoteResources),
-      scopeArn = pulumi.Input.asInput<String>(scopeArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<MonitorTimeouts>(timeouts);
+    required this.localResources,
+    required this.monitorName,
+    this.region,
+    this.remoteResources,
+    required this.scopeArn,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class MonitorArgs {
 
   factory MonitorArgs.fromMap(Map<String, dynamic> map) {
     return MonitorArgs(
-      localResources: pulumi.Output.create<List<MonitorLocalResource>>(pulumi.Input.decodeList<MonitorLocalResource>(map['localResources'], (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>()))),
-      monitorName: pulumi.Output.create<String>(map['monitorName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      remoteResources: map['remoteResources'] == null ? null : pulumi.Output.create<List<MonitorRemoteResource>>(pulumi.Input.decodeList<MonitorRemoteResource>(map['remoteResources'], (value) => MonitorRemoteResource.fromMap((value as Map).cast<String, dynamic>()))),
-      scopeArn: pulumi.Output.create<String>(map['scopeArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<MonitorTimeouts>(MonitorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      localResources: (pulumi.Input.decodeList<MonitorLocalResource>(map['localResources'], (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      monitorName: (map['monitorName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      remoteResources: map['remoteResources'] == null ? null : (pulumi.Input.decodeList<MonitorRemoteResource>(map['remoteResources'], (value) => MonitorRemoteResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopeArn: (map['scopeArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (MonitorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

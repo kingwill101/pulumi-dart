@@ -19,13 +19,10 @@ class GetLinkArgs {
   /// [linkId] ID of the specific link to retrieve.
   /// [tags] Key-value tags for the link.
   GetLinkArgs({
-    required pulumi.Output<String> globalNetworkId,
-    required pulumi.Output<String> linkId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      linkId = pulumi.Input.asInput<String>(linkId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.globalNetworkId,
+    required this.linkId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLinkArgs {
 
   factory GetLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetLinkArgs(
-      globalNetworkId: pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      linkId: pulumi.Output.create<String>(map['linkId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      globalNetworkId: (map['globalNetworkId'] as String).input(),
+      linkId: (map['linkId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

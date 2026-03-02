@@ -22,15 +22,11 @@ class ResourceGroupArgs {
   /// [resourceGroupName] The name of the resource group to create or update. Can include alphanumeric, underscore, parentheses, hyphen, period (except at end), and Unicode characters that match the allowed characters.
   /// [tags] The tags attached to the resource group.
   ResourceGroupArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedBy,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedBy = pulumi.Input.asOptionalInput<String>(managedBy),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.managedBy,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ResourceGroupArgs {
 
   factory ResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGroupArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedBy: map['managedBy'] == null ? null : pulumi.Output.create<String>(map['managedBy'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

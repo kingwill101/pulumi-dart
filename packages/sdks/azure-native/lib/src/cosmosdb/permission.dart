@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of data plane operations permitted through this Role Definition.
 class Permission {
   /// An array of data actions that are allowed.
-  final List<String>? dataActions;
+  final pulumi.Input<List<String>>? dataActions;
   /// The id for the permission.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// An array of data actions that are denied.
-  final List<String>? notDataActions;
+  final pulumi.Input<List<String>>? notDataActions;
 
   /// Creates a new [Permission].
   /// [dataActions] An array of data actions that are allowed.
@@ -30,9 +31,9 @@ class Permission {
 
   factory Permission.fromMap(Map<String, dynamic> map) {
     return Permission(
-      dataActions: map['dataActions'] == null ? null : (map['dataActions'] as List).cast<String>(),
-      id: map['id'] == null ? null : map['id'] as String,
-      notDataActions: map['notDataActions'] == null ? null : (map['notDataActions'] as List).cast<String>(),
+      dataActions: map['dataActions'] == null ? null : ((map['dataActions'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      notDataActions: map['notDataActions'] == null ? null : ((map['notDataActions'] as List).cast<String>()).input(),
     );
   }
 }

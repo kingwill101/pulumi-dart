@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The user object receiver value.
 class DistributionGroupListReceiverValue {
   /// The list of distribution groups.
-  final List<String>? distributionGroups;
+  final pulumi.Input<List<String>>? distributionGroups;
 
   /// Creates a new [DistributionGroupListReceiverValue].
   /// [distributionGroups] The list of distribution groups.
@@ -20,7 +21,7 @@ class DistributionGroupListReceiverValue {
 
   factory DistributionGroupListReceiverValue.fromMap(Map<String, dynamic> map) {
     return DistributionGroupListReceiverValue(
-      distributionGroups: map['distributionGroups'] == null ? null : (map['distributionGroups'] as List).cast<String>(),
+      distributionGroups: map['distributionGroups'] == null ? null : ((map['distributionGroups'] as List).cast<String>()).input(),
     );
   }
 }

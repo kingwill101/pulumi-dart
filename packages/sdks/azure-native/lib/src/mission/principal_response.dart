@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Principal for maintenance mode or role assignments
 class PrincipalResponse {
   /// The object id associated with the principal
-  final String id;
+  final pulumi.Input<String> id;
   /// The type of the object id. We currently allow users, groups, and service principals
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PrincipalResponse].
   /// [id] The object id associated with the principal
@@ -25,8 +26,8 @@ class PrincipalResponse {
 
   factory PrincipalResponse.fromMap(Map<String, dynamic> map) {
     return PrincipalResponse(
-      id: map['id'] as String,
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

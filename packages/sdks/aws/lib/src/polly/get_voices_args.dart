@@ -26,17 +26,12 @@ class GetVoicesArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [voices] List of voices with their properties. See `voices` Attribute Reference below.
   GetVoicesArgs({
-    pulumi.Output<String>? engine,
-    pulumi.Output<bool>? includeAdditionalLanguageCodes,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<GetVoicesVoice>>? voices,
-  }) :
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      includeAdditionalLanguageCodes = pulumi.Input.asOptionalInput<bool>(includeAdditionalLanguageCodes),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      voices = pulumi.Input.asOptionalInput<List<GetVoicesVoice>>(voices);
+    this.engine,
+    this.includeAdditionalLanguageCodes,
+    this.languageCode,
+    this.region,
+    this.voices,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GetVoicesArgs {
 
   factory GetVoicesArgs.fromMap(Map<String, dynamic> map) {
     return GetVoicesArgs(
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      includeAdditionalLanguageCodes: map['includeAdditionalLanguageCodes'] == null ? null : pulumi.Output.create<bool>(map['includeAdditionalLanguageCodes'] as bool),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      voices: map['voices'] == null ? null : pulumi.Output.create<List<GetVoicesVoice>>(pulumi.Input.decodeList<GetVoicesVoice>(map['voices'], (value) => GetVoicesVoice.fromMap((value as Map).cast<String, dynamic>()))),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      includeAdditionalLanguageCodes: map['includeAdditionalLanguageCodes'] == null ? null : (map['includeAdditionalLanguageCodes'] as bool).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      voices: map['voices'] == null ? null : (pulumi.Input.decodeList<GetVoicesVoice>(map['voices'], (value) => GetVoicesVoice.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

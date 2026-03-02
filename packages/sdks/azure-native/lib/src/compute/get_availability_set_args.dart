@@ -16,11 +16,9 @@ class GetAvailabilitySetArgs {
   /// [availabilitySetName] The name of the availability set.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAvailabilitySetArgs({
-    required pulumi.Output<String> availabilitySetName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      availabilitySetName = pulumi.Input.asInput<String>(availabilitySetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.availabilitySetName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAvailabilitySetArgs {
 
   factory GetAvailabilitySetArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailabilitySetArgs(
-      availabilitySetName: pulumi.Output.create<String>(map['availabilitySetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      availabilitySetName: (map['availabilitySetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

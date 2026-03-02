@@ -37,25 +37,16 @@ class RouteArgs {
   /// [routeTableName] The name of the route table.
   /// [type] The type of the resource.
   RouteArgs({
-    pulumi.Output<String>? addressPrefix,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nextHopIpAddress,
-    required pulumi.Output<String> nextHopType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? routeName,
-    required pulumi.Output<String> routeTableName,
-    pulumi.Output<String>? type,
-  }) :
-      addressPrefix = pulumi.Input.asOptionalInput<String>(addressPrefix),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nextHopIpAddress = pulumi.Input.asOptionalInput<String>(nextHopIpAddress),
-      nextHopType = pulumi.Input.asInput<String>(nextHopType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeName = pulumi.Input.asOptionalInput<String>(routeName),
-      routeTableName = pulumi.Input.asInput<String>(routeTableName),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.addressPrefix,
+    this.id,
+    this.name,
+    this.nextHopIpAddress,
+    required this.nextHopType,
+    required this.resourceGroupName,
+    this.routeName,
+    required this.routeTableName,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      addressPrefix: map['addressPrefix'] == null ? null : pulumi.Output.create<String>(map['addressPrefix'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : pulumi.Output.create<String>(map['nextHopIpAddress'] as String),
-      nextHopType: pulumi.Output.create<String>(map['nextHopType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeName: map['routeName'] == null ? null : pulumi.Output.create<String>(map['routeName'] as String),
-      routeTableName: pulumi.Output.create<String>(map['routeTableName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress'] as String).input(),
+      nextHopType: (map['nextHopType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
+      routeTableName: (map['routeTableName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -31,23 +31,15 @@ class GroupPolicyRemediationState {
   /// [policyDefinitionReferenceId] The unique ID for the policy definition reference within the policy set definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
   /// [resourceCount] Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
   GroupPolicyRemediationState({
-    pulumi.Output<double>? failurePercentage,
-    pulumi.Output<List<String>>? locationFilters,
-    pulumi.Output<String>? managementGroupId,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? parallelDeployments,
-    pulumi.Output<String>? policyAssignmentId,
-    pulumi.Output<String>? policyDefinitionReferenceId,
-    pulumi.Output<int>? resourceCount,
-  }) :
-      failurePercentage = pulumi.Input.asOptionalInput<double>(failurePercentage),
-      locationFilters = pulumi.Input.asOptionalInput<List<String>>(locationFilters),
-      managementGroupId = pulumi.Input.asOptionalInput<String>(managementGroupId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parallelDeployments = pulumi.Input.asOptionalInput<int>(parallelDeployments),
-      policyAssignmentId = pulumi.Input.asOptionalInput<String>(policyAssignmentId),
-      policyDefinitionReferenceId = pulumi.Input.asOptionalInput<String>(policyDefinitionReferenceId),
-      resourceCount = pulumi.Input.asOptionalInput<int>(resourceCount);
+    this.failurePercentage,
+    this.locationFilters,
+    this.managementGroupId,
+    this.name,
+    this.parallelDeployments,
+    this.policyAssignmentId,
+    this.policyDefinitionReferenceId,
+    this.resourceCount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class GroupPolicyRemediationState {
 
   factory GroupPolicyRemediationState.fromMap(Map<String, dynamic> map) {
     return GroupPolicyRemediationState(
-      failurePercentage: map['failurePercentage'] == null ? null : pulumi.Output.create<double>(map['failurePercentage'] as double),
-      locationFilters: map['locationFilters'] == null ? null : pulumi.Output.create<List<String>>((map['locationFilters'] as List).cast<String>()),
-      managementGroupId: map['managementGroupId'] == null ? null : pulumi.Output.create<String>(map['managementGroupId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parallelDeployments: map['parallelDeployments'] == null ? null : pulumi.Output.create<int>(map['parallelDeployments'] as int),
-      policyAssignmentId: map['policyAssignmentId'] == null ? null : pulumi.Output.create<String>(map['policyAssignmentId'] as String),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : pulumi.Output.create<String>(map['policyDefinitionReferenceId'] as String),
-      resourceCount: map['resourceCount'] == null ? null : pulumi.Output.create<int>(map['resourceCount'] as int),
+      failurePercentage: map['failurePercentage'] == null ? null : (map['failurePercentage'] as double).input(),
+      locationFilters: map['locationFilters'] == null ? null : ((map['locationFilters'] as List).cast<String>()).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parallelDeployments: map['parallelDeployments'] == null ? null : (map['parallelDeployments'] as int).input(),
+      policyAssignmentId: map['policyAssignmentId'] == null ? null : (map['policyAssignmentId'] as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
+      resourceCount: map['resourceCount'] == null ? null : (map['resourceCount'] as int).input(),
     );
   }
 }

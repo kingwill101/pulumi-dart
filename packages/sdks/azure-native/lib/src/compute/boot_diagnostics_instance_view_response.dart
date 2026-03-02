@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_view_status_response.dart';
 
 /// The instance view of a virtual machine boot diagnostics.
 class BootDiagnosticsInstanceViewResponse {
   /// The console screenshot blob URI. **Note:** This will **not** be set if boot diagnostics is currently enabled with managed storage.
-  final String consoleScreenshotBlobUri;
+  final pulumi.Input<String> consoleScreenshotBlobUri;
   /// The serial console log blob Uri. **Note:** This will **not** be set if boot diagnostics is currently enabled with managed storage.
-  final String serialConsoleLogBlobUri;
+  final pulumi.Input<String> serialConsoleLogBlobUri;
   /// The boot diagnostics status information for the VM. **Note:** It will be set only if there are errors encountered in enabling boot diagnostics.
-  final InstanceViewStatusResponse status;
+  final pulumi.Input<InstanceViewStatusResponse> status;
 
   /// Creates a new [BootDiagnosticsInstanceViewResponse].
   /// [consoleScreenshotBlobUri] The console screenshot blob URI. **Note:** This will **not** be set if boot diagnostics is currently enabled with managed storage.
@@ -25,15 +26,15 @@ class BootDiagnosticsInstanceViewResponse {
     return <String, dynamic>{
       'consoleScreenshotBlobUri': consoleScreenshotBlobUri,
       'serialConsoleLogBlobUri': serialConsoleLogBlobUri,
-      'status': status.toMap(),
+      'status': pulumi.Input.mapInputValue<InstanceViewStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory BootDiagnosticsInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return BootDiagnosticsInstanceViewResponse(
-      consoleScreenshotBlobUri: map['consoleScreenshotBlobUri'] as String,
-      serialConsoleLogBlobUri: map['serialConsoleLogBlobUri'] as String,
-      status: InstanceViewStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      consoleScreenshotBlobUri: (map['consoleScreenshotBlobUri'] as String).input(),
+      serialConsoleLogBlobUri: (map['serialConsoleLogBlobUri'] as String).input(),
+      status: (InstanceViewStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

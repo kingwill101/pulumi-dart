@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of DeadLetterConfig
 class DeadLetterConfig {
   /// The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.
-  final String? targetArn;
+  final pulumi.Input<String>? targetArn;
 
   /// Creates a new [DeadLetterConfig].
   /// [targetArn] The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.
@@ -20,7 +21,7 @@ class DeadLetterConfig {
 
   factory DeadLetterConfig.fromMap(Map<String, dynamic> map) {
     return DeadLetterConfig(
-      targetArn: map['targetArn'] == null ? null : map['targetArn'] as String,
+      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
     );
   }
 }

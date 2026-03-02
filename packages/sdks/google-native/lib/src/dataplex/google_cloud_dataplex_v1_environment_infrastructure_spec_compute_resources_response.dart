@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Compute resources associated with the analyze interactive workloads.
 class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse {
   /// Optional. Size in GB of the disk. Default is 100 GB.
-  final int diskSizeGb;
+  final pulumi.Input<int> diskSizeGb;
   /// Optional. Max configurable nodes. If max_node_count > node_count, then auto-scaling is enabled.
-  final int maxNodeCount;
+  final pulumi.Input<int> maxNodeCount;
   /// Optional. Total number of nodes in the sessions created for this environment.
-  final int nodeCount;
+  final pulumi.Input<int> nodeCount;
 
   /// Creates a new [GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse].
   /// [diskSizeGb] Optional. Size in GB of the disk. Default is 100 GB.
@@ -30,9 +31,9 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse
 
   factory GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse(
-      diskSizeGb: map['diskSizeGb'] as int,
-      maxNodeCount: map['maxNodeCount'] as int,
-      nodeCount: map['nodeCount'] as int,
+      diskSizeGb: (map['diskSizeGb'] as int).input(),
+      maxNodeCount: (map['maxNodeCount'] as int).input(),
+      nodeCount: (map['nodeCount'] as int).input(),
     );
   }
 }

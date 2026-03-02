@@ -13,9 +13,8 @@ class GetFirewallArgs {
   /// Creates a new [GetFirewallArgs].
   /// [id] The Firewall's ID.
   GetFirewallArgs({
-    required pulumi.Output<int> id,
-  }) :
-      id = pulumi.Input.asInput<int>(id);
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetFirewallArgs {
 
   factory GetFirewallArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallArgs(
-      id: pulumi.Output.create<int>(map['id'] as int),
+      id: (map['id'] as int).input(),
     );
   }
 }

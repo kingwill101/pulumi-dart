@@ -19,15 +19,11 @@ class ExpressRouteAuthorizationState {
   /// [name] The name which should be used for this Azure VMware Solution ExpressRoute Circuit Authorization. Changing this forces a new Azure VMware Solution ExpressRoute Circuit Authorization to be created.
   /// [privateCloudId] The ID of the Azure VMware Solution Private Cloud in which to create this Azure VMware Solution ExpressRoute Circuit Authorization. Changing this forces a new Azure VMware Solution ExpressRoute Circuit Authorization to be created.
   ExpressRouteAuthorizationState({
-    pulumi.Output<String>? expressRouteAuthorizationId,
-    pulumi.Output<String>? expressRouteAuthorizationKey,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateCloudId,
-  }) :
-      expressRouteAuthorizationId = pulumi.Input.asOptionalInput<String>(expressRouteAuthorizationId),
-      expressRouteAuthorizationKey = pulumi.Input.asOptionalInput<String>(expressRouteAuthorizationKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateCloudId = pulumi.Input.asOptionalInput<String>(privateCloudId);
+    this.expressRouteAuthorizationId,
+    this.expressRouteAuthorizationKey,
+    this.name,
+    this.privateCloudId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ExpressRouteAuthorizationState {
 
   factory ExpressRouteAuthorizationState.fromMap(Map<String, dynamic> map) {
     return ExpressRouteAuthorizationState(
-      expressRouteAuthorizationId: map['expressRouteAuthorizationId'] == null ? null : pulumi.Output.create<String>(map['expressRouteAuthorizationId'] as String),
-      expressRouteAuthorizationKey: map['expressRouteAuthorizationKey'] == null ? null : pulumi.Output.create<String>(map['expressRouteAuthorizationKey'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateCloudId: map['privateCloudId'] == null ? null : pulumi.Output.create<String>(map['privateCloudId'] as String),
+      expressRouteAuthorizationId: map['expressRouteAuthorizationId'] == null ? null : (map['expressRouteAuthorizationId'] as String).input(),
+      expressRouteAuthorizationKey: map['expressRouteAuthorizationKey'] == null ? null : (map['expressRouteAuthorizationKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateCloudId: map['privateCloudId'] == null ? null : (map['privateCloudId'] as String).input(),
     );
   }
 }

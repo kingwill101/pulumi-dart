@@ -19,13 +19,10 @@ class GetFhirServiceArgs {
   /// [tags] The map of tags assigned to the Healthcare FHIR Service.
   /// [workspaceId] The id of the Healthcare Workspace in which the Healthcare FHIR Service exists.
   GetFhirServiceArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.name,
+    this.tags,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFhirServiceArgs {
 
   factory GetFhirServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetFhirServiceArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      name: (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

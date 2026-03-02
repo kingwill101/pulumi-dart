@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the Threshold Values for Top Metrics Health.
 class SapLandscapeMonitorMetricThresholds {
   /// Gets or sets the threshold value for Green.
-  final double? green;
+  final pulumi.Input<double>? green;
   /// Gets or sets the name of the threshold.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Gets or sets the threshold value for Red.
-  final double? red;
+  final pulumi.Input<double>? red;
   /// Gets or sets the threshold value for Yellow.
-  final double? yellow;
+  final pulumi.Input<double>? yellow;
 
   /// Creates a new [SapLandscapeMonitorMetricThresholds].
   /// [green] Gets or sets the threshold value for Green.
@@ -35,10 +36,10 @@ class SapLandscapeMonitorMetricThresholds {
 
   factory SapLandscapeMonitorMetricThresholds.fromMap(Map<String, dynamic> map) {
     return SapLandscapeMonitorMetricThresholds(
-      green: map['green'] == null ? null : map['green'] as double,
-      name: map['name'] == null ? null : map['name'] as String,
-      red: map['red'] == null ? null : map['red'] as double,
-      yellow: map['yellow'] == null ? null : map['yellow'] as double,
+      green: map['green'] == null ? null : (map['green'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      red: map['red'] == null ? null : (map['red'] as double).input(),
+      yellow: map['yellow'] == null ? null : (map['yellow'] as double).input(),
     );
   }
 }

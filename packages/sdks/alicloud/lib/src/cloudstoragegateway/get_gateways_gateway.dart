@@ -1,57 +1,58 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGatewaysGateway {
   /// gateway .
-  final String activatedTime;
-  final String buyUrl;
+  final pulumi.Input<String> activatedTime;
+  final pulumi.Input<String> buyUrl;
   /// gateway category.
-  final String category;
+  final pulumi.Input<String> category;
   /// gateway created timestamp in second format.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// gateway description.
-  final String description;
+  final pulumi.Input<String> description;
   /// gateway ecs instance id.
-  final String ecsInstanceId;
+  final pulumi.Input<String> ecsInstanceId;
   /// gateway expiration status.
-  final int expireStatus;
+  final pulumi.Input<int> expireStatus;
   /// gateway expiration timestamp in second format.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// gateway class.
-  final String gatewayClass;
+  final pulumi.Input<String> gatewayClass;
   /// gateway id.
-  final String gatewayId;
+  final pulumi.Input<String> gatewayId;
   /// gateway name.
-  final String gatewayName;
+  final pulumi.Input<String> gatewayName;
   /// gateway version.
-  final String gatewayVersion;
+  final pulumi.Input<String> gatewayVersion;
   /// The ID of the Gateway.
-  final String id;
+  final pulumi.Input<String> id;
   /// gateway service ip.
-  final String innerIp;
+  final pulumi.Input<String> innerIp;
   /// gateway public ip.
-  final String ip;
+  final pulumi.Input<String> ip;
   /// whether subscription gateway is released after expiration or not.
-  final bool isReleaseAfterExpiration;
+  final pulumi.Input<bool> isReleaseAfterExpiration;
   /// gateway location.
-  final String location;
+  final pulumi.Input<String> location;
   /// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// gateway public network bandwidth.
-  final int publicNetworkBandwidth;
-  final String renewUrl;
+  final pulumi.Input<int> publicNetworkBandwidth;
+  final pulumi.Input<String> renewUrl;
   /// gateway status.
-  final String status;
+  final pulumi.Input<String> status;
   /// storage bundle id.
-  final String storageBundleId;
+  final pulumi.Input<String> storageBundleId;
   /// gateway task id.
-  final String taskId;
+  final pulumi.Input<String> taskId;
   /// gateway type.
-  final String type;
+  final pulumi.Input<String> type;
   /// gateway vpc id.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The vswitch id.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetGatewaysGateway].
   /// [activatedTime] gateway .
@@ -142,32 +143,32 @@ class GetGatewaysGateway {
 
   factory GetGatewaysGateway.fromMap(Map<String, dynamic> map) {
     return GetGatewaysGateway(
-      activatedTime: map['activatedTime'] as String,
-      buyUrl: map['buyUrl'] as String,
-      category: map['category'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      ecsInstanceId: map['ecsInstanceId'] as String,
-      expireStatus: map['expireStatus'] as int,
-      expiredTime: map['expiredTime'] as String,
-      gatewayClass: map['gatewayClass'] as String,
-      gatewayId: map['gatewayId'] as String,
-      gatewayName: map['gatewayName'] as String,
-      gatewayVersion: map['gatewayVersion'] as String,
-      id: map['id'] as String,
-      innerIp: map['innerIp'] as String,
-      ip: map['ip'] as String,
-      isReleaseAfterExpiration: map['isReleaseAfterExpiration'] as bool,
-      location: map['location'] as String,
-      paymentType: map['paymentType'] as String,
-      publicNetworkBandwidth: map['publicNetworkBandwidth'] as int,
-      renewUrl: map['renewUrl'] as String,
-      status: map['status'] as String,
-      storageBundleId: map['storageBundleId'] as String,
-      taskId: map['taskId'] as String,
-      type: map['type'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      activatedTime: (map['activatedTime'] as String).input(),
+      buyUrl: (map['buyUrl'] as String).input(),
+      category: (map['category'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      ecsInstanceId: (map['ecsInstanceId'] as String).input(),
+      expireStatus: (map['expireStatus'] as int).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      gatewayClass: (map['gatewayClass'] as String).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
+      gatewayName: (map['gatewayName'] as String).input(),
+      gatewayVersion: (map['gatewayVersion'] as String).input(),
+      id: (map['id'] as String).input(),
+      innerIp: (map['innerIp'] as String).input(),
+      ip: (map['ip'] as String).input(),
+      isReleaseAfterExpiration: (map['isReleaseAfterExpiration'] as bool).input(),
+      location: (map['location'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      publicNetworkBandwidth: (map['publicNetworkBandwidth'] as int).input(),
+      renewUrl: (map['renewUrl'] as String).input(),
+      status: (map['status'] as String).input(),
+      storageBundleId: (map['storageBundleId'] as String).input(),
+      taskId: (map['taskId'] as String).input(),
+      type: (map['type'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

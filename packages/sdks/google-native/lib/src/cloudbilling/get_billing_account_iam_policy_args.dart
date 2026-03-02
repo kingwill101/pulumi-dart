@@ -14,11 +14,9 @@ class GetBillingAccountIamPolicyArgs {
   /// [billingAccountId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   GetBillingAccountIamPolicyArgs({
-    required pulumi.Output<String> billingAccountId,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion);
+    required this.billingAccountId,
+    this.optionsRequestedPolicyVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetBillingAccountIamPolicyArgs {
 
   factory GetBillingAccountIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountIamPolicyArgs(
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
     );
   }
 }

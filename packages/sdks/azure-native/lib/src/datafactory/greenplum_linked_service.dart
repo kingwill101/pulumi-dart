@@ -8,40 +8,40 @@ import 'parameter_specification.dart';
 /// Greenplum Database linked service.
 class GreenplumLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The authentication type to use. Type: string. Only used for V2.
-  final String? authenticationType;
+  final pulumi.Input<String>? authenticationType;
   /// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer. Only used for V2.
-  final dynamic commandTimeout;
+  final pulumi.Input<dynamic>? commandTimeout;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
-  final dynamic connectionString;
+  final pulumi.Input<dynamic>? connectionString;
   /// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer. Only used for V2.
-  final dynamic connectionTimeout;
+  final pulumi.Input<dynamic>? connectionTimeout;
   /// Database name for connection. Type: string. Only used for V2.
-  final dynamic database;
+  final pulumi.Input<dynamic>? database;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// Host name for connection. Type: string. Only used for V2.
-  final dynamic host;
+  final pulumi.Input<dynamic>? host;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The port for the connection. Type: integer. Only used for V2.
-  final dynamic port;
+  final pulumi.Input<dynamic>? port;
   /// The Azure key vault secret reference of password in connection string.
-  final AzureKeyVaultSecretReference? pwd;
+  final pulumi.Input<AzureKeyVaultSecretReference>? pwd;
   /// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer. Only used for V2.
-  final dynamic sslMode;
+  final pulumi.Input<dynamic>? sslMode;
   /// Type of linked service.
   /// Expected value is 'Greenplum'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Username for authentication. Type: string. Only used for V2.
-  final dynamic username;
+  final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [GreenplumLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -86,16 +86,16 @@ class GreenplumLinkedService {
       'annotations': ?annotations,
       'authenticationType': ?authenticationType,
       'commandTimeout': ?commandTimeout,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionString': ?connectionString,
       'connectionTimeout': ?connectionTimeout,
       'database': ?database,
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'host': ?host,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'port': ?port,
-      'pwd': ?pwd == null ? null : pwd!.toMap(),
+      'pwd': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(pwd, (value) => value.toMap()),
       'sslMode': ?sslMode,
       'type': type,
       'username': ?username,
@@ -105,23 +105,23 @@ class GreenplumLinkedService {
 
   factory GreenplumLinkedService.fromMap(Map<String, dynamic> map) {
     return GreenplumLinkedService(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      authenticationType: map['authenticationType'] == null ? null : map['authenticationType'] as String,
-      commandTimeout: map['commandTimeout'] == null ? null : map['commandTimeout'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      connectionString: map['connectionString'] == null ? null : map['connectionString'],
-      connectionTimeout: map['connectionTimeout'] == null ? null : map['connectionTimeout'],
-      database: map['database'] == null ? null : map['database'],
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      host: map['host'] == null ? null : map['host'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      port: map['port'] == null ? null : map['port'],
-      pwd: map['pwd'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['pwd'] as Map).cast<String, dynamic>()),
-      sslMode: map['sslMode'] == null ? null : map['sslMode'],
-      type: map['type'] as String,
-      username: map['username'] == null ? null : map['username'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      commandTimeout: map['commandTimeout'] == null ? null : (map['commandTimeout']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']).input(),
+      connectionTimeout: map['connectionTimeout'] == null ? null : (map['connectionTimeout']).input(),
+      database: map['database'] == null ? null : (map['database']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      host: map['host'] == null ? null : (map['host']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      port: map['port'] == null ? null : (map['port']).input(),
+      pwd: map['pwd'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['pwd'] as Map).cast<String, dynamic>())).input(),
+      sslMode: map['sslMode'] == null ? null : (map['sslMode']).input(),
+      type: (map['type'] as String).input(),
+      username: map['username'] == null ? null : (map['username']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

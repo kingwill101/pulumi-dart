@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The contact detail class.
 class ContactDetail {
   /// The e-mail address of the contact.
-  final String? email;
+  final pulumi.Input<String>? email;
   /// The phone number of the contact.
-  final String? phone;
+  final pulumi.Input<String>? phone;
   /// The role of the contact.
-  final String? role;
+  final pulumi.Input<String>? role;
 
   /// Creates a new [ContactDetail].
   /// [email] The e-mail address of the contact.
@@ -30,9 +31,9 @@ class ContactDetail {
 
   factory ContactDetail.fromMap(Map<String, dynamic> map) {
     return ContactDetail(
-      email: map['email'] == null ? null : map['email'] as String,
-      phone: map['phone'] == null ? null : map['phone'] as String,
-      role: map['role'] == null ? null : map['role'] as String,
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

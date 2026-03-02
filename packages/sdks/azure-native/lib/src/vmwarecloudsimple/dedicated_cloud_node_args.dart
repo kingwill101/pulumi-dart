@@ -44,29 +44,18 @@ class DedicatedCloudNodeArgs {
   /// [sku] Dedicated Cloud Nodes SKU
   /// [tags] Dedicated Cloud Nodes tags
   DedicatedCloudNodeArgs({
-    required pulumi.Output<String> availabilityZoneId,
-    pulumi.Output<String>? dedicatedCloudNodeName,
-    required pulumi.Output<String> id,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> name,
-    required pulumi.Output<int> nodesCount,
-    required pulumi.Output<String> placementGroupId,
-    required pulumi.Output<String> purchaseId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      availabilityZoneId = pulumi.Input.asInput<String>(availabilityZoneId),
-      dedicatedCloudNodeName = pulumi.Input.asOptionalInput<String>(dedicatedCloudNodeName),
-      id = pulumi.Input.asInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asInput<String>(name),
-      nodesCount = pulumi.Input.asInput<int>(nodesCount),
-      placementGroupId = pulumi.Input.asInput<String>(placementGroupId),
-      purchaseId = pulumi.Input.asInput<String>(purchaseId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.availabilityZoneId,
+    this.dedicatedCloudNodeName,
+    required this.id,
+    this.location,
+    required this.name,
+    required this.nodesCount,
+    required this.placementGroupId,
+    required this.purchaseId,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class DedicatedCloudNodeArgs {
 
   factory DedicatedCloudNodeArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedCloudNodeArgs(
-      availabilityZoneId: pulumi.Output.create<String>(map['availabilityZoneId'] as String),
-      dedicatedCloudNodeName: map['dedicatedCloudNodeName'] == null ? null : pulumi.Output.create<String>(map['dedicatedCloudNodeName'] as String),
-      id: pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      nodesCount: pulumi.Output.create<int>(map['nodesCount'] as int),
-      placementGroupId: pulumi.Output.create<String>(map['placementGroupId'] as String),
-      purchaseId: pulumi.Output.create<String>(map['purchaseId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      availabilityZoneId: (map['availabilityZoneId'] as String).input(),
+      dedicatedCloudNodeName: map['dedicatedCloudNodeName'] == null ? null : (map['dedicatedCloudNodeName'] as String).input(),
+      id: (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      nodesCount: (map['nodesCount'] as int).input(),
+      placementGroupId: (map['placementGroupId'] as String).input(),
+      purchaseId: (map['purchaseId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

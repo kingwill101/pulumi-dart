@@ -31,21 +31,14 @@ class NatIpArgs {
   /// [natIpDescription] NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
   /// [natIpName] NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
   NatIpArgs({
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> natGatewayId,
-    pulumi.Output<String>? natIp,
-    pulumi.Output<String>? natIpCidr,
-    pulumi.Output<String>? natIpCidrId,
-    pulumi.Output<String>? natIpDescription,
-    pulumi.Output<String>? natIpName,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      natGatewayId = pulumi.Input.asInput<String>(natGatewayId),
-      natIp = pulumi.Input.asOptionalInput<String>(natIp),
-      natIpCidr = pulumi.Input.asOptionalInput<String>(natIpCidr),
-      natIpCidrId = pulumi.Input.asOptionalInput<String>(natIpCidrId),
-      natIpDescription = pulumi.Input.asOptionalInput<String>(natIpDescription),
-      natIpName = pulumi.Input.asOptionalInput<String>(natIpName);
+    this.dryRun,
+    required this.natGatewayId,
+    this.natIp,
+    this.natIpCidr,
+    this.natIpCidrId,
+    this.natIpDescription,
+    this.natIpName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class NatIpArgs {
 
   factory NatIpArgs.fromMap(Map<String, dynamic> map) {
     return NatIpArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      natGatewayId: pulumi.Output.create<String>(map['natGatewayId'] as String),
-      natIp: map['natIp'] == null ? null : pulumi.Output.create<String>(map['natIp'] as String),
-      natIpCidr: map['natIpCidr'] == null ? null : pulumi.Output.create<String>(map['natIpCidr'] as String),
-      natIpCidrId: map['natIpCidrId'] == null ? null : pulumi.Output.create<String>(map['natIpCidrId'] as String),
-      natIpDescription: map['natIpDescription'] == null ? null : pulumi.Output.create<String>(map['natIpDescription'] as String),
-      natIpName: map['natIpName'] == null ? null : pulumi.Output.create<String>(map['natIpName'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      natGatewayId: (map['natGatewayId'] as String).input(),
+      natIp: map['natIp'] == null ? null : (map['natIp'] as String).input(),
+      natIpCidr: map['natIpCidr'] == null ? null : (map['natIpCidr'] as String).input(),
+      natIpCidrId: map['natIpCidrId'] == null ? null : (map['natIpCidrId'] as String).input(),
+      natIpDescription: map['natIpDescription'] == null ? null : (map['natIpDescription'] as String).input(),
+      natIpName: map['natIpName'] == null ? null : (map['natIpName'] as String).input(),
     );
   }
 }

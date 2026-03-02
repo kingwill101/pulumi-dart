@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Certificate {
   /// PEM formatted public key.
-  final String? pem;
+  final pulumi.Input<String>? pem;
 
   /// Creates a new [Certificate].
   /// [pem] PEM formatted public key.
@@ -19,7 +20,7 @@ class Certificate {
 
   factory Certificate.fromMap(Map<String, dynamic> map) {
     return Certificate(
-      pem: map['pem'] == null ? null : map['pem'] as String,
+      pem: map['pem'] == null ? null : (map['pem'] as String).input(),
     );
   }
 }

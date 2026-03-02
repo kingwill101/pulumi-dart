@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceAutoscalingConfigAutoscalingLimits {
   /// The maximum number of nodes for this specific replica.
-  final int? maxNodes;
+  final pulumi.Input<int>? maxNodes;
   /// Specifies maximum number of processing units allocated to the instance.
   /// If set, this number should be multiples of 1000 and be greater than or equal to
   /// min_processing_units.
-  final int? maxProcessingUnits;
+  final pulumi.Input<int>? maxProcessingUnits;
   /// The minimum number of nodes for this specific replica.
-  final int? minNodes;
+  final pulumi.Input<int>? minNodes;
   /// Specifies minimum number of processing units allocated to the instance.
   /// If set, this number should be multiples of 1000.
-  final int? minProcessingUnits;
+  final pulumi.Input<int>? minProcessingUnits;
 
   /// Creates a new [InstanceAutoscalingConfigAutoscalingLimits].
   /// [maxNodes] The maximum number of nodes for this specific replica.
@@ -37,10 +38,10 @@ class InstanceAutoscalingConfigAutoscalingLimits {
 
   factory InstanceAutoscalingConfigAutoscalingLimits.fromMap(Map<String, dynamic> map) {
     return InstanceAutoscalingConfigAutoscalingLimits(
-      maxNodes: map['maxNodes'] == null ? null : map['maxNodes'] as int,
-      maxProcessingUnits: map['maxProcessingUnits'] == null ? null : map['maxProcessingUnits'] as int,
-      minNodes: map['minNodes'] == null ? null : map['minNodes'] as int,
-      minProcessingUnits: map['minProcessingUnits'] == null ? null : map['minProcessingUnits'] as int,
+      maxNodes: map['maxNodes'] == null ? null : (map['maxNodes'] as int).input(),
+      maxProcessingUnits: map['maxProcessingUnits'] == null ? null : (map['maxProcessingUnits'] as int).input(),
+      minNodes: map['minNodes'] == null ? null : (map['minNodes'] as int).input(),
+      minProcessingUnits: map['minProcessingUnits'] == null ? null : (map['minProcessingUnits'] as int).input(),
     );
   }
 }

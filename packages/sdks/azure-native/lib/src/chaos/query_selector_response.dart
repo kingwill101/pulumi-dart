@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'simple_filter_response.dart';
 
 /// Model that represents a query selector.
 class QuerySelectorResponse {
   /// Model that represents available filter types that can be applied to a targets list.
-  final SimpleFilterResponse? filter;
+  final pulumi.Input<SimpleFilterResponse>? filter;
   /// String of the selector ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Azure Resource Graph (ARG) Query Language query for target resources.
-  final String queryString;
+  final pulumi.Input<String> queryString;
   /// Subscription id list to scope resource query.
-  final List<String> subscriptionIds;
+  final pulumi.Input<List<String>> subscriptionIds;
   /// Enum of the selector type.
   /// Expected value is 'Query'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [QuerySelectorResponse].
   /// [filter] Model that represents available filter types that can be applied to a targets list.
@@ -32,7 +33,7 @@ class QuerySelectorResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filter': ?filter == null ? null : filter!.toMap(),
+      'filter': ?pulumi.Input.mapOptionalInputValue<SimpleFilterResponse, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'id': id,
       'queryString': queryString,
       'subscriptionIds': subscriptionIds,
@@ -42,11 +43,11 @@ class QuerySelectorResponse {
 
   factory QuerySelectorResponse.fromMap(Map<String, dynamic> map) {
     return QuerySelectorResponse(
-      filter: map['filter'] == null ? null : SimpleFilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      queryString: map['queryString'] as String,
-      subscriptionIds: (map['subscriptionIds'] as List).cast<String>(),
-      type: map['type'] as String,
+      filter: map['filter'] == null ? null : (SimpleFilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      queryString: (map['queryString'] as String).input(),
+      subscriptionIds: ((map['subscriptionIds'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

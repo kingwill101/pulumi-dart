@@ -13,9 +13,8 @@ class GlobalEventsStorageRegionArgs {
   /// Creates a new [GlobalEventsStorageRegionArgs].
   /// [storageRegion] Global Events Storage Region.
   GlobalEventsStorageRegionArgs({
-    pulumi.Output<String>? storageRegion,
-  }) :
-      storageRegion = pulumi.Input.asOptionalInput<String>(storageRegion);
+    this.storageRegion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GlobalEventsStorageRegionArgs {
 
   factory GlobalEventsStorageRegionArgs.fromMap(Map<String, dynamic> map) {
     return GlobalEventsStorageRegionArgs(
-      storageRegion: map['storageRegion'] == null ? null : pulumi.Output.create<String>(map['storageRegion'] as String),
+      storageRegion: map['storageRegion'] == null ? null : (map['storageRegion'] as String).input(),
     );
   }
 }

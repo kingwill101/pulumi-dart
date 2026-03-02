@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSinkExclusion {
   /// A description of this exclusion.
-  final String description;
+  final pulumi.Input<String> description;
   /// Whether this exclusion is disabled and it does not exclude any log entries.
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
   /// An advanced logs filter that matches the log entries to be excluded.
-  final String filter;
+  final pulumi.Input<String> filter;
   /// A client-assigned identifier, such as `load-balancer-exclusion`.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetSinkExclusion].
   /// [description] A description of this exclusion.
@@ -34,10 +35,10 @@ class GetSinkExclusion {
 
   factory GetSinkExclusion.fromMap(Map<String, dynamic> map) {
     return GetSinkExclusion(
-      description: map['description'] as String,
-      disabled: map['disabled'] as bool,
-      filter: map['filter'] as String,
-      name: map['name'] as String,
+      description: (map['description'] as String).input(),
+      disabled: (map['disabled'] as bool).input(),
+      filter: (map['filter'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

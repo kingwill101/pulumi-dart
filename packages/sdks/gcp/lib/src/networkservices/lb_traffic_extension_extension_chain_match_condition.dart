@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LbTrafficExtensionExtensionChainMatchCondition {
   /// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
-  final String celExpression;
+  final pulumi.Input<String> celExpression;
 
   /// Creates a new [LbTrafficExtensionExtensionChainMatchCondition].
   /// [celExpression] A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
@@ -19,7 +20,7 @@ class LbTrafficExtensionExtensionChainMatchCondition {
 
   factory LbTrafficExtensionExtensionChainMatchCondition.fromMap(Map<String, dynamic> map) {
     return LbTrafficExtensionExtensionChainMatchCondition(
-      celExpression: map['celExpression'] as String,
+      celExpression: (map['celExpression'] as String).input(),
     );
   }
 }

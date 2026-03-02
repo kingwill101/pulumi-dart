@@ -7,13 +7,13 @@ import 'service_connect_service.dart';
 /// Definition of ServiceConnectConfiguration
 class ServiceConnectConfiguration {
   /// Specifies whether to use Service Connect with this service.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--log-driver`` option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--log-driver`` option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
-  final LogConfiguration? logConfiguration;
+  final pulumi.Input<LogConfiguration>? logConfiguration;
   /// The namespace name or full Amazon Resource Name (ARN) of the CMAPlong namespace for use with Service Connect. The namespace must be in the same AWS Region as the Amazon ECS service and cluster. The type of namespace doesn't affect Service Connect. For more information about CMAPlong, see [Working with Services](https://docs.aws.amazon.com/cloud-map/latest/dg/working-with-services.html) in the *Developer Guide*.
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
   /// The list of Service Connect service objects. These are names and aliases (also known as endpoints) that are used by other Amazon ECS services to connect to this service.  This field is not required for a 'client' Amazon ECS service that's a member of a namespace only to connect to other services within the namespace. An example of this would be a frontend application that accepts incoming requests from either a load balancer that's attached to the service or by other means. An object selects a port from the task definition, assigns a name for the CMAPlong service, and a list of aliases (endpoints) and ports for client applications to refer to this service.
-  final List<ServiceConnectService>? services;
+  final pulumi.Input<List<ServiceConnectService>>? services;
 
   /// Creates a new [ServiceConnectConfiguration].
   /// [enabled] Specifies whether to use Service Connect with this service.
@@ -30,18 +30,18 @@ class ServiceConnectConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'logConfiguration': ?logConfiguration == null ? null : logConfiguration!.toMap(),
+      'logConfiguration': ?pulumi.Input.mapOptionalInputValue<LogConfiguration, Map<String, dynamic>>(logConfiguration, (value) => value.toMap()),
       'namespace': ?namespace,
-      'services': ?services == null ? null : pulumi.Input.encodeList<ServiceConnectService, Map<String, dynamic>>(services!, (value) => value.toMap()),
+      'services': ?pulumi.Input.mapOptionalInputValue<List<ServiceConnectService>, List<Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeList<ServiceConnectService, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ServiceConnectConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceConnectConfiguration(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      logConfiguration: map['logConfiguration'] == null ? null : LogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>()),
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      services: map['services'] == null ? null : pulumi.Input.decodeList<ServiceConnectService>(map['services'], (value) => ServiceConnectService.fromMap((value as Map).cast<String, dynamic>())),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      logConfiguration: map['logConfiguration'] == null ? null : (LogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>())).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<ServiceConnectService>(map['services'], (value) => ServiceConnectService.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'data_masking_entity_response.dart';
 
 class DataMaskingResponse {
   /// Masking settings for headers
-  final List<DataMaskingEntityResponse>? headers;
+  final pulumi.Input<List<DataMaskingEntityResponse>>? headers;
   /// Masking settings for Url query parameters
-  final List<DataMaskingEntityResponse>? queryParams;
+  final pulumi.Input<List<DataMaskingEntityResponse>>? queryParams;
 
   /// Creates a new [DataMaskingResponse].
   /// [headers] Masking settings for headers
@@ -19,15 +19,15 @@ class DataMaskingResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<DataMaskingEntityResponse, Map<String, dynamic>>(headers!, (value) => value.toMap()),
-      'queryParams': ?queryParams == null ? null : pulumi.Input.encodeList<DataMaskingEntityResponse, Map<String, dynamic>>(queryParams!, (value) => value.toMap()),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<DataMaskingEntityResponse>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<DataMaskingEntityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'queryParams': ?pulumi.Input.mapOptionalInputValue<List<DataMaskingEntityResponse>, List<Map<String, dynamic>>>(queryParams, (value) => pulumi.Input.encodeList<DataMaskingEntityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DataMaskingResponse.fromMap(Map<String, dynamic> map) {
     return DataMaskingResponse(
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<DataMaskingEntityResponse>(map['headers'], (value) => DataMaskingEntityResponse.fromMap((value as Map).cast<String, dynamic>())),
-      queryParams: map['queryParams'] == null ? null : pulumi.Input.decodeList<DataMaskingEntityResponse>(map['queryParams'], (value) => DataMaskingEntityResponse.fromMap((value as Map).cast<String, dynamic>())),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<DataMaskingEntityResponse>(map['headers'], (value) => DataMaskingEntityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryParams: map['queryParams'] == null ? null : (pulumi.Input.decodeList<DataMaskingEntityResponse>(map['queryParams'], (value) => DataMaskingEntityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

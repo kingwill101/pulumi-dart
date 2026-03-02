@@ -6,15 +6,15 @@ import 'get_firewall_templates_firewall_template_outbound.dart';
 
 class GetFirewallTemplatesFirewallTemplate {
   /// The default behavior for inbound traffic.
-  final String inboundPolicy;
+  final pulumi.Input<String> inboundPolicy;
   /// A list of firewall rules specifying allowed inbound network traffic.
-  final List<GetFirewallTemplatesFirewallTemplateInbound> inbounds;
+  final pulumi.Input<List<GetFirewallTemplatesFirewallTemplateInbound>> inbounds;
   /// The default behavior for outbound traffic.
-  final String outboundPolicy;
+  final pulumi.Input<String> outboundPolicy;
   /// A list of firewall rules specifying allowed outbound network traffic.
-  final List<GetFirewallTemplatesFirewallTemplateOutbound> outbounds;
+  final pulumi.Input<List<GetFirewallTemplatesFirewallTemplateOutbound>> outbounds;
   /// The slug of the firewall template.
-  final String slug;
+  final pulumi.Input<String> slug;
 
   /// Creates a new [GetFirewallTemplatesFirewallTemplate].
   /// [inboundPolicy] The default behavior for inbound traffic.
@@ -33,20 +33,20 @@ class GetFirewallTemplatesFirewallTemplate {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'inboundPolicy': inboundPolicy,
-      'inbounds': pulumi.Input.encodeList<GetFirewallTemplatesFirewallTemplateInbound, Map<String, dynamic>>(inbounds, (value) => value.toMap()),
+      'inbounds': pulumi.Input.mapInputValue<List<GetFirewallTemplatesFirewallTemplateInbound>, List<Map<String, dynamic>>>(inbounds, (value) => pulumi.Input.encodeList<GetFirewallTemplatesFirewallTemplateInbound, Map<String, dynamic>>(value, (value) => value.toMap())),
       'outboundPolicy': outboundPolicy,
-      'outbounds': pulumi.Input.encodeList<GetFirewallTemplatesFirewallTemplateOutbound, Map<String, dynamic>>(outbounds, (value) => value.toMap()),
+      'outbounds': pulumi.Input.mapInputValue<List<GetFirewallTemplatesFirewallTemplateOutbound>, List<Map<String, dynamic>>>(outbounds, (value) => pulumi.Input.encodeList<GetFirewallTemplatesFirewallTemplateOutbound, Map<String, dynamic>>(value, (value) => value.toMap())),
       'slug': slug,
     };
   }
 
   factory GetFirewallTemplatesFirewallTemplate.fromMap(Map<String, dynamic> map) {
     return GetFirewallTemplatesFirewallTemplate(
-      inboundPolicy: map['inboundPolicy'] as String,
-      inbounds: pulumi.Input.decodeList<GetFirewallTemplatesFirewallTemplateInbound>(map['inbounds'], (value) => GetFirewallTemplatesFirewallTemplateInbound.fromMap((value as Map).cast<String, dynamic>())),
-      outboundPolicy: map['outboundPolicy'] as String,
-      outbounds: pulumi.Input.decodeList<GetFirewallTemplatesFirewallTemplateOutbound>(map['outbounds'], (value) => GetFirewallTemplatesFirewallTemplateOutbound.fromMap((value as Map).cast<String, dynamic>())),
-      slug: map['slug'] as String,
+      inboundPolicy: (map['inboundPolicy'] as String).input(),
+      inbounds: (pulumi.Input.decodeList<GetFirewallTemplatesFirewallTemplateInbound>(map['inbounds'], (value) => GetFirewallTemplatesFirewallTemplateInbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outboundPolicy: (map['outboundPolicy'] as String).input(),
+      outbounds: (pulumi.Input.decodeList<GetFirewallTemplatesFirewallTemplateOutbound>(map['outbounds'], (value) => GetFirewallTemplatesFirewallTemplateOutbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slug: (map['slug'] as String).input(),
     );
   }
 }

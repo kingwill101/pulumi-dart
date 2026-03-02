@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTablePointInTimeRecovery {
-  final bool enabled;
-  final int recoveryPeriodInDays;
+  final pulumi.Input<bool> enabled;
+  final pulumi.Input<int> recoveryPeriodInDays;
 
   /// Creates a new [GetTablePointInTimeRecovery].
   /// [enabled] Required.
@@ -22,8 +23,8 @@ class GetTablePointInTimeRecovery {
 
   factory GetTablePointInTimeRecovery.fromMap(Map<String, dynamic> map) {
     return GetTablePointInTimeRecovery(
-      enabled: map['enabled'] as bool,
-      recoveryPeriodInDays: map['recoveryPeriodInDays'] as int,
+      enabled: (map['enabled'] as bool).input(),
+      recoveryPeriodInDays: (map['recoveryPeriodInDays'] as int).input(),
     );
   }
 }

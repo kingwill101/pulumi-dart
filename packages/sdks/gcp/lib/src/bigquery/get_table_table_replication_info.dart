@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableTableReplicationInfo {
   /// The interval at which the source materialized view is polled for updates. The default is 300000.
-  final int replicationIntervalMs;
+  final pulumi.Input<int> replicationIntervalMs;
   /// The ID of the source dataset.
-  final String sourceDatasetId;
+  final pulumi.Input<String> sourceDatasetId;
   /// The ID of the source project.
-  final String sourceProjectId;
+  final pulumi.Input<String> sourceProjectId;
   /// The ID of the source materialized view.
-  final String sourceTableId;
+  final pulumi.Input<String> sourceTableId;
 
   /// Creates a new [GetTableTableReplicationInfo].
   /// [replicationIntervalMs] The interval at which the source materialized view is polled for updates. The default is 300000.
@@ -34,10 +35,10 @@ class GetTableTableReplicationInfo {
 
   factory GetTableTableReplicationInfo.fromMap(Map<String, dynamic> map) {
     return GetTableTableReplicationInfo(
-      replicationIntervalMs: map['replicationIntervalMs'] as int,
-      sourceDatasetId: map['sourceDatasetId'] as String,
-      sourceProjectId: map['sourceProjectId'] as String,
-      sourceTableId: map['sourceTableId'] as String,
+      replicationIntervalMs: (map['replicationIntervalMs'] as int).input(),
+      sourceDatasetId: (map['sourceDatasetId'] as String).input(),
+      sourceProjectId: (map['sourceProjectId'] as String).input(),
+      sourceTableId: (map['sourceTableId'] as String).input(),
     );
   }
 }

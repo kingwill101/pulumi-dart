@@ -36,23 +36,15 @@ class MECRoleArgs {
   /// [resourceUniqueId] Unique Id of the Resource.
   /// [roleStatus] Role status.
   MECRoleArgs({
-    pulumi.Output<AsymmetricEncryptedSecret>? connectionString,
-    pulumi.Output<String>? controllerEndpoint,
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceUniqueId,
-    required pulumi.Output<String> roleStatus,
-  }) :
-      connectionString = pulumi.Input.asOptionalInput<AsymmetricEncryptedSecret>(connectionString),
-      controllerEndpoint = pulumi.Input.asOptionalInput<String>(controllerEndpoint),
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      kind = pulumi.Input.asInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceUniqueId = pulumi.Input.asOptionalInput<String>(resourceUniqueId),
-      roleStatus = pulumi.Input.asInput<String>(roleStatus);
+    this.connectionString,
+    this.controllerEndpoint,
+    required this.deviceName,
+    required this.kind,
+    this.name,
+    required this.resourceGroupName,
+    this.resourceUniqueId,
+    required this.roleStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class MECRoleArgs {
 
   factory MECRoleArgs.fromMap(Map<String, dynamic> map) {
     return MECRoleArgs(
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<AsymmetricEncryptedSecret>(AsymmetricEncryptedSecret.fromMap((map['connectionString'] as Map).cast<String, dynamic>())),
-      controllerEndpoint: map['controllerEndpoint'] == null ? null : pulumi.Output.create<String>(map['controllerEndpoint'] as String),
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceUniqueId: map['resourceUniqueId'] == null ? null : pulumi.Output.create<String>(map['resourceUniqueId'] as String),
-      roleStatus: pulumi.Output.create<String>(map['roleStatus'] as String),
+      connectionString: map['connectionString'] == null ? null : (AsymmetricEncryptedSecret.fromMap((map['connectionString'] as Map).cast<String, dynamic>())).input(),
+      controllerEndpoint: map['controllerEndpoint'] == null ? null : (map['controllerEndpoint'] as String).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceUniqueId: map['resourceUniqueId'] == null ? null : (map['resourceUniqueId'] as String).input(),
+      roleStatus: (map['roleStatus'] as String).input(),
     );
   }
 }

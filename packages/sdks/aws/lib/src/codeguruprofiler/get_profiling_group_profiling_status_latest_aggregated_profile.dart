@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProfilingGroupProfilingStatusLatestAggregatedProfile {
-  final String period;
-  final String start;
+  final pulumi.Input<String> period;
+  final pulumi.Input<String> start;
 
   /// Creates a new [GetProfilingGroupProfilingStatusLatestAggregatedProfile].
   /// [period] Required.
@@ -22,8 +23,8 @@ class GetProfilingGroupProfilingStatusLatestAggregatedProfile {
 
   factory GetProfilingGroupProfilingStatusLatestAggregatedProfile.fromMap(Map<String, dynamic> map) {
     return GetProfilingGroupProfilingStatusLatestAggregatedProfile(
-      period: map['period'] as String,
-      start: map['start'] as String,
+      period: (map['period'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

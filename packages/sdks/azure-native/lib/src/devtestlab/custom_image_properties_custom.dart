@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties for creating a custom image from a VHD.
 class CustomImagePropertiesCustom {
   /// The image name.
-  final String? imageName;
+  final pulumi.Input<String>? imageName;
   /// The OS type of the custom image (i.e. Windows, Linux)
-  final String osType;
+  final pulumi.Input<String> osType;
   /// Indicates whether sysprep has been run on the VHD.
-  final bool? sysPrep;
+  final pulumi.Input<bool>? sysPrep;
 
   /// Creates a new [CustomImagePropertiesCustom].
   /// [imageName] The image name.
@@ -30,9 +31,9 @@ class CustomImagePropertiesCustom {
 
   factory CustomImagePropertiesCustom.fromMap(Map<String, dynamic> map) {
     return CustomImagePropertiesCustom(
-      imageName: map['imageName'] == null ? null : map['imageName'] as String,
-      osType: map['osType'] as String,
-      sysPrep: map['sysPrep'] == null ? null : map['sysPrep'] as bool,
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      sysPrep: map['sysPrep'] == null ? null : (map['sysPrep'] as bool).input(),
     );
   }
 }

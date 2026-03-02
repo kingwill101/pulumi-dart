@@ -19,13 +19,10 @@ class GetTableEntitiesArgs {
   /// [selects] A list of properties to select from the returned Storage Table Entities.
   /// [storageTableId] The Storage Table ID where the entities exist.
   GetTableEntitiesArgs({
-    required pulumi.Output<String> filter,
-    pulumi.Output<List<String>>? selects,
-    required pulumi.Output<String> storageTableId,
-  }) :
-      filter = pulumi.Input.asInput<String>(filter),
-      selects = pulumi.Input.asOptionalInput<List<String>>(selects),
-      storageTableId = pulumi.Input.asInput<String>(storageTableId);
+    required this.filter,
+    this.selects,
+    required this.storageTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTableEntitiesArgs {
 
   factory GetTableEntitiesArgs.fromMap(Map<String, dynamic> map) {
     return GetTableEntitiesArgs(
-      filter: pulumi.Output.create<String>(map['filter'] as String),
-      selects: map['selects'] == null ? null : pulumi.Output.create<List<String>>((map['selects'] as List).cast<String>()),
-      storageTableId: pulumi.Output.create<String>(map['storageTableId'] as String),
+      filter: (map['filter'] as String).input(),
+      selects: map['selects'] == null ? null : ((map['selects'] as List).cast<String>()).input(),
+      storageTableId: (map['storageTableId'] as String).input(),
     );
   }
 }

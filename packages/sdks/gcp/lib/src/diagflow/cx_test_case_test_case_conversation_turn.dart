@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_test_case_test_case_conversation_turn_user_input.dart';
 import 'cx_test_case_test_case_conversation_turn_virtual_agent_output.dart';
 
 class CxTestCaseTestCaseConversationTurn {
   /// The user input.
   /// Structure is documented below.
-  final CxTestCaseTestCaseConversationTurnUserInput? userInput;
+  final pulumi.Input<CxTestCaseTestCaseConversationTurnUserInput>? userInput;
   /// The virtual agent output.
   /// Structure is documented below.
-  final CxTestCaseTestCaseConversationTurnVirtualAgentOutput? virtualAgentOutput;
+  final pulumi.Input<CxTestCaseTestCaseConversationTurnVirtualAgentOutput>? virtualAgentOutput;
 
   /// Creates a new [CxTestCaseTestCaseConversationTurn].
   /// [userInput] The user input.
@@ -21,15 +22,15 @@ class CxTestCaseTestCaseConversationTurn {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'userInput': ?userInput == null ? null : userInput!.toMap(),
-      'virtualAgentOutput': ?virtualAgentOutput == null ? null : virtualAgentOutput!.toMap(),
+      'userInput': ?pulumi.Input.mapOptionalInputValue<CxTestCaseTestCaseConversationTurnUserInput, Map<String, dynamic>>(userInput, (value) => value.toMap()),
+      'virtualAgentOutput': ?pulumi.Input.mapOptionalInputValue<CxTestCaseTestCaseConversationTurnVirtualAgentOutput, Map<String, dynamic>>(virtualAgentOutput, (value) => value.toMap()),
     };
   }
 
   factory CxTestCaseTestCaseConversationTurn.fromMap(Map<String, dynamic> map) {
     return CxTestCaseTestCaseConversationTurn(
-      userInput: map['userInput'] == null ? null : CxTestCaseTestCaseConversationTurnUserInput.fromMap((map['userInput'] as Map).cast<String, dynamic>()),
-      virtualAgentOutput: map['virtualAgentOutput'] == null ? null : CxTestCaseTestCaseConversationTurnVirtualAgentOutput.fromMap((map['virtualAgentOutput'] as Map).cast<String, dynamic>()),
+      userInput: map['userInput'] == null ? null : (CxTestCaseTestCaseConversationTurnUserInput.fromMap((map['userInput'] as Map).cast<String, dynamic>())).input(),
+      virtualAgentOutput: map['virtualAgentOutput'] == null ? null : (CxTestCaseTestCaseConversationTurnVirtualAgentOutput.fromMap((map['virtualAgentOutput'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

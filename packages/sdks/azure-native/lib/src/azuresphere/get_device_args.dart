@@ -25,17 +25,12 @@ class GetDeviceArgs {
   /// [productName] Name of product.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDeviceArgs({
-    required pulumi.Output<String> catalogName,
-    required pulumi.Output<String> deviceGroupName,
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> productName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      catalogName = pulumi.Input.asInput<String>(catalogName),
-      deviceGroupName = pulumi.Input.asInput<String>(deviceGroupName),
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      productName = pulumi.Input.asInput<String>(productName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.catalogName,
+    required this.deviceGroupName,
+    required this.deviceName,
+    required this.productName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetDeviceArgs {
 
   factory GetDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceArgs(
-      catalogName: pulumi.Output.create<String>(map['catalogName'] as String),
-      deviceGroupName: pulumi.Output.create<String>(map['deviceGroupName'] as String),
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      productName: pulumi.Output.create<String>(map['productName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      catalogName: (map['catalogName'] as String).input(),
+      deviceGroupName: (map['deviceGroupName'] as String).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      productName: (map['productName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

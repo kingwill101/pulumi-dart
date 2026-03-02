@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBgpGroupsGroup {
   /// The key used by the BGP group.
-  final String authKey;
+  final pulumi.Input<String> authKey;
   /// The name of the BGP group.
-  final String bgpGroupName;
+  final pulumi.Input<String> bgpGroupName;
   /// Description of the BGP group.
-  final String description;
+  final pulumi.Input<String> description;
   /// The hold time to wait for the incoming BGP message. If no message has been passed in after the hold time, the BGP neighbor is considered disconnected.
-  final String hold;
+  final pulumi.Input<String> hold;
   /// The ID of the Bgp Group.
-  final String id;
+  final pulumi.Input<String> id;
   /// IP version.
-  final String ipVersion;
+  final pulumi.Input<String> ipVersion;
   /// Whether the AS number is false.
-  final bool isFakeAsn;
+  final pulumi.Input<bool> isFakeAsn;
   /// The keepalive time.
-  final String keepalive;
+  final pulumi.Input<String> keepalive;
   /// The local AS number.
-  final int localAsn;
+  final pulumi.Input<int> localAsn;
   /// The autonomous system (AS) number of the BGP peer.
-  final int peerAsn;
+  final pulumi.Input<int> peerAsn;
   /// Routing limits.
-  final String routeLimit;
+  final pulumi.Input<String> routeLimit;
   /// The ID of the VBR.
-  final String routerId;
+  final pulumi.Input<String> routerId;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBgpGroupsGroup].
   /// [authKey] The key used by the BGP group.
@@ -79,19 +80,19 @@ class GetBgpGroupsGroup {
 
   factory GetBgpGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetBgpGroupsGroup(
-      authKey: map['authKey'] as String,
-      bgpGroupName: map['bgpGroupName'] as String,
-      description: map['description'] as String,
-      hold: map['hold'] as String,
-      id: map['id'] as String,
-      ipVersion: map['ipVersion'] as String,
-      isFakeAsn: map['isFakeAsn'] as bool,
-      keepalive: map['keepalive'] as String,
-      localAsn: map['localAsn'] as int,
-      peerAsn: map['peerAsn'] as int,
-      routeLimit: map['routeLimit'] as String,
-      routerId: map['routerId'] as String,
-      status: map['status'] as String,
+      authKey: (map['authKey'] as String).input(),
+      bgpGroupName: (map['bgpGroupName'] as String).input(),
+      description: (map['description'] as String).input(),
+      hold: (map['hold'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipVersion: (map['ipVersion'] as String).input(),
+      isFakeAsn: (map['isFakeAsn'] as bool).input(),
+      keepalive: (map['keepalive'] as String).input(),
+      localAsn: (map['localAsn'] as int).input(),
+      peerAsn: (map['peerAsn'] as int).input(),
+      routeLimit: (map['routeLimit'] as String).input(),
+      routerId: (map['routerId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

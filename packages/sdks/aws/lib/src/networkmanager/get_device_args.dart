@@ -19,13 +19,10 @@ class GetDeviceArgs {
   /// [globalNetworkId] ID of the global network.
   /// [tags] Key-value tags for the device.
   GetDeviceArgs({
-    required pulumi.Output<String> deviceId,
-    required pulumi.Output<String> globalNetworkId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deviceId = pulumi.Input.asInput<String>(deviceId),
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.deviceId,
+    required this.globalNetworkId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDeviceArgs {
 
   factory GetDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceArgs(
-      deviceId: pulumi.Output.create<String>(map['deviceId'] as String),
-      globalNetworkId: pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deviceId: (map['deviceId'] as String).input(),
+      globalNetworkId: (map['globalNetworkId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

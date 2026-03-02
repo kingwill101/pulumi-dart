@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InventoryFilter {
   /// Prefix that an object must have to be included in the inventory results.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [InventoryFilter].
   /// [prefix] Prefix that an object must have to be included in the inventory results.
@@ -19,7 +20,7 @@ class InventoryFilter {
 
   factory InventoryFilter.fromMap(Map<String, dynamic> map) {
     return InventoryFilter(
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetPrivateEndpointConnectionProxyArgs {
   /// [privateEndpointConnectionProxyId] The ID of the private endpoint connection proxy object.
   /// [resourceGroupName] The resource group name.
   GetPrivateEndpointConnectionProxyArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> privateEndpointConnectionProxyId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      privateEndpointConnectionProxyId = pulumi.Input.asInput<String>(privateEndpointConnectionProxyId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.privateEndpointConnectionProxyId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPrivateEndpointConnectionProxyArgs {
 
   factory GetPrivateEndpointConnectionProxyArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionProxyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      privateEndpointConnectionProxyId: pulumi.Output.create<String>(map['privateEndpointConnectionProxyId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      privateEndpointConnectionProxyId: (map['privateEndpointConnectionProxyId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

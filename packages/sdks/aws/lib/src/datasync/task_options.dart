@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskOptions {
   /// A file metadata that shows the last time a file was accessed (that is when the file was read or written to). If set to `BEST_EFFORT`, the DataSync Task attempts to preserve the original (that is, the version before sync `PREPARING` phase) `atime` attribute on all source files. Valid values: `BEST_EFFORT`, `NONE`. Default: `BEST_EFFORT`.
-  final String? atime;
+  final pulumi.Input<String>? atime;
   /// Limits the bandwidth utilized. For example, to set a maximum of 1 MB, set this value to `1048576`. Value values: `-1` or greater. Default: `-1` (unlimited).
-  final int? bytesPerSecond;
+  final pulumi.Input<int>? bytesPerSecond;
   /// Group identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
-  final String? gid;
+  final pulumi.Input<String>? gid;
   /// Determines the type of logs that DataSync publishes to a log stream in the Amazon CloudWatch log group that you provide. Valid values: `OFF`, `BASIC`, `TRANSFER`. Default: `OFF`.
-  final String? logLevel;
+  final pulumi.Input<String>? logLevel;
   /// A file metadata that indicates the last time a file was modified (written to) before the sync `PREPARING` phase. Value values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
-  final String? mtime;
+  final pulumi.Input<String>? mtime;
   /// Specifies whether object tags are maintained when transferring between object storage systems. If you want your DataSync task to ignore object tags, specify the NONE value. Valid values: `PRESERVE`, `NONE`. Default value: `PRESERVE`.
-  final String? objectTags;
+  final pulumi.Input<String>? objectTags;
   /// Determines whether files at the destination should be overwritten or preserved when copying files. Valid values: `ALWAYS`, `NEVER`. Default: `ALWAYS`.
-  final String? overwriteMode;
+  final pulumi.Input<String>? overwriteMode;
   /// Determines which users or groups can access a file for a specific purpose such as reading, writing, or execution of the file. Valid values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
-  final String? posixPermissions;
+  final pulumi.Input<String>? posixPermissions;
   /// Whether files deleted in the source should be removed or preserved in the destination file system. Valid values: `PRESERVE`, `REMOVE`. Default: `PRESERVE`.
-  final String? preserveDeletedFiles;
+  final pulumi.Input<String>? preserveDeletedFiles;
   /// Whether the DataSync Task should preserve the metadata of block and character devices in the source files system, and recreate the files with that device name and metadata on the destination. The DataSync Task can’t sync the actual contents of such devices, because many of the devices are non-terminal and don’t return an end of file (EOF) marker. Valid values: `NONE`, `PRESERVE`. Default: `NONE` (ignore special devices).
-  final String? preserveDevices;
+  final pulumi.Input<String>? preserveDevices;
   /// Determines which components of the SMB security descriptor are copied from source to destination objects. This value is only used for transfers between SMB and Amazon FSx for Windows File Server locations, or between two Amazon FSx for Windows File Server locations. Valid values: `NONE`, `OWNER_DACL`, `OWNER_DACL_SACL`. Default: `OWNER_DACL`.
-  final String? securityDescriptorCopyFlags;
+  final pulumi.Input<String>? securityDescriptorCopyFlags;
   /// Determines whether tasks should be queued before executing the tasks. Valid values: `ENABLED`, `DISABLED`. Default `ENABLED`.
-  final String? taskQueueing;
+  final pulumi.Input<String>? taskQueueing;
   /// Determines whether DataSync transfers only the data and metadata that differ between the source and the destination location, or whether DataSync transfers all the content from the source, without comparing to the destination location. Valid values: `CHANGED`, `ALL`. Default: `CHANGED`
-  final String? transferMode;
+  final pulumi.Input<String>? transferMode;
   /// User identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
-  final String? uid;
+  final pulumi.Input<String>? uid;
   /// Whether a data integrity verification should be performed at the end of a task execution after all data and metadata have been transferred. Valid values: `NONE`, `POINT_IN_TIME_CONSISTENT`, `ONLY_FILES_TRANSFERRED`. Default: `POINT_IN_TIME_CONSISTENT`.
-  final String? verifyMode;
+  final pulumi.Input<String>? verifyMode;
 
   /// Creates a new [TaskOptions].
   /// [atime] A file metadata that shows the last time a file was accessed (that is when the file was read or written to). If set to `BEST_EFFORT`, the DataSync Task attempts to preserve the original (that is, the version before sync `PREPARING` phase) `atime` attribute on all source files. Valid values: `BEST_EFFORT`, `NONE`. Default: `BEST_EFFORT`.
@@ -89,21 +90,21 @@ class TaskOptions {
 
   factory TaskOptions.fromMap(Map<String, dynamic> map) {
     return TaskOptions(
-      atime: map['atime'] == null ? null : map['atime'] as String,
-      bytesPerSecond: map['bytesPerSecond'] == null ? null : map['bytesPerSecond'] as int,
-      gid: map['gid'] == null ? null : map['gid'] as String,
-      logLevel: map['logLevel'] == null ? null : map['logLevel'] as String,
-      mtime: map['mtime'] == null ? null : map['mtime'] as String,
-      objectTags: map['objectTags'] == null ? null : map['objectTags'] as String,
-      overwriteMode: map['overwriteMode'] == null ? null : map['overwriteMode'] as String,
-      posixPermissions: map['posixPermissions'] == null ? null : map['posixPermissions'] as String,
-      preserveDeletedFiles: map['preserveDeletedFiles'] == null ? null : map['preserveDeletedFiles'] as String,
-      preserveDevices: map['preserveDevices'] == null ? null : map['preserveDevices'] as String,
-      securityDescriptorCopyFlags: map['securityDescriptorCopyFlags'] == null ? null : map['securityDescriptorCopyFlags'] as String,
-      taskQueueing: map['taskQueueing'] == null ? null : map['taskQueueing'] as String,
-      transferMode: map['transferMode'] == null ? null : map['transferMode'] as String,
-      uid: map['uid'] == null ? null : map['uid'] as String,
-      verifyMode: map['verifyMode'] == null ? null : map['verifyMode'] as String,
+      atime: map['atime'] == null ? null : (map['atime'] as String).input(),
+      bytesPerSecond: map['bytesPerSecond'] == null ? null : (map['bytesPerSecond'] as int).input(),
+      gid: map['gid'] == null ? null : (map['gid'] as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      mtime: map['mtime'] == null ? null : (map['mtime'] as String).input(),
+      objectTags: map['objectTags'] == null ? null : (map['objectTags'] as String).input(),
+      overwriteMode: map['overwriteMode'] == null ? null : (map['overwriteMode'] as String).input(),
+      posixPermissions: map['posixPermissions'] == null ? null : (map['posixPermissions'] as String).input(),
+      preserveDeletedFiles: map['preserveDeletedFiles'] == null ? null : (map['preserveDeletedFiles'] as String).input(),
+      preserveDevices: map['preserveDevices'] == null ? null : (map['preserveDevices'] as String).input(),
+      securityDescriptorCopyFlags: map['securityDescriptorCopyFlags'] == null ? null : (map['securityDescriptorCopyFlags'] as String).input(),
+      taskQueueing: map['taskQueueing'] == null ? null : (map['taskQueueing'] as String).input(),
+      transferMode: map['transferMode'] == null ? null : (map['transferMode'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      verifyMode: map['verifyMode'] == null ? null : (map['verifyMode'] as String).input(),
     );
   }
 }

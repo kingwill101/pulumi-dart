@@ -37,21 +37,14 @@ class ScheduledSqlArgs {
   /// [scheduledSqlName] The job name. The naming rules are as follows:
   /// [status] The status of the scheduled SQL job.
   ScheduledSqlArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> project,
-    required pulumi.Output<ScheduledSqlSchedule> schedule,
-    required pulumi.Output<ScheduledSqlScheduledSqlConfiguration> scheduledSqlConfiguration,
-    required pulumi.Output<String> scheduledSqlName,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      project = pulumi.Input.asInput<String>(project),
-      schedule = pulumi.Input.asInput<ScheduledSqlSchedule>(schedule),
-      scheduledSqlConfiguration = pulumi.Input.asInput<ScheduledSqlScheduledSqlConfiguration>(scheduledSqlConfiguration),
-      scheduledSqlName = pulumi.Input.asInput<String>(scheduledSqlName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    required this.displayName,
+    required this.project,
+    required this.schedule,
+    required this.scheduledSqlConfiguration,
+    required this.scheduledSqlName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class ScheduledSqlArgs {
 
   factory ScheduledSqlArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledSqlArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      schedule: pulumi.Output.create<ScheduledSqlSchedule>(ScheduledSqlSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      scheduledSqlConfiguration: pulumi.Output.create<ScheduledSqlScheduledSqlConfiguration>(ScheduledSqlScheduledSqlConfiguration.fromMap((map['scheduledSqlConfiguration'] as Map).cast<String, dynamic>())),
-      scheduledSqlName: pulumi.Output.create<String>(map['scheduledSqlName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      project: (map['project'] as String).input(),
+      schedule: (ScheduledSqlSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      scheduledSqlConfiguration: (ScheduledSqlScheduledSqlConfiguration.fromMap((map['scheduledSqlConfiguration'] as Map).cast<String, dynamic>())).input(),
+      scheduledSqlName: (map['scheduledSqlName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

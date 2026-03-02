@@ -26,17 +26,12 @@ class EndpointCustomDomainState {
   /// [name] The name which should be used for this CDN Endpoint Custom Domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
   /// [userManagedHttps] A `user_managed_https` block as defined below.
   EndpointCustomDomainState({
-    pulumi.Output<String>? cdnEndpointId,
-    pulumi.Output<EndpointCustomDomainCdnManagedHttps>? cdnManagedHttps,
-    pulumi.Output<String>? hostName,
-    pulumi.Output<String>? name,
-    pulumi.Output<EndpointCustomDomainUserManagedHttps>? userManagedHttps,
-  }) :
-      cdnEndpointId = pulumi.Input.asOptionalInput<String>(cdnEndpointId),
-      cdnManagedHttps = pulumi.Input.asOptionalInput<EndpointCustomDomainCdnManagedHttps>(cdnManagedHttps),
-      hostName = pulumi.Input.asOptionalInput<String>(hostName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      userManagedHttps = pulumi.Input.asOptionalInput<EndpointCustomDomainUserManagedHttps>(userManagedHttps);
+    this.cdnEndpointId,
+    this.cdnManagedHttps,
+    this.hostName,
+    this.name,
+    this.userManagedHttps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class EndpointCustomDomainState {
 
   factory EndpointCustomDomainState.fromMap(Map<String, dynamic> map) {
     return EndpointCustomDomainState(
-      cdnEndpointId: map['cdnEndpointId'] == null ? null : pulumi.Output.create<String>(map['cdnEndpointId'] as String),
-      cdnManagedHttps: map['cdnManagedHttps'] == null ? null : pulumi.Output.create<EndpointCustomDomainCdnManagedHttps>(EndpointCustomDomainCdnManagedHttps.fromMap((map['cdnManagedHttps'] as Map).cast<String, dynamic>())),
-      hostName: map['hostName'] == null ? null : pulumi.Output.create<String>(map['hostName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      userManagedHttps: map['userManagedHttps'] == null ? null : pulumi.Output.create<EndpointCustomDomainUserManagedHttps>(EndpointCustomDomainUserManagedHttps.fromMap((map['userManagedHttps'] as Map).cast<String, dynamic>())),
+      cdnEndpointId: map['cdnEndpointId'] == null ? null : (map['cdnEndpointId'] as String).input(),
+      cdnManagedHttps: map['cdnManagedHttps'] == null ? null : (EndpointCustomDomainCdnManagedHttps.fromMap((map['cdnManagedHttps'] as Map).cast<String, dynamic>())).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      userManagedHttps: map['userManagedHttps'] == null ? null : (EndpointCustomDomainUserManagedHttps.fromMap((map['userManagedHttps'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

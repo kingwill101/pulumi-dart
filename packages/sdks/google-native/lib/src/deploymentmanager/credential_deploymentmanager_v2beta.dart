@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'basic_auth_deploymentmanager_v2beta.dart';
 import 'service_account_deploymentmanager_v2beta.dart';
 
 /// The credential used by Deployment Manager and TypeProvider. Only one of the options is permitted.
 class CredentialDeploymentmanagerV2beta {
   /// Basic Auth Credential, only used by TypeProvider.
-  final BasicAuthDeploymentmanagerV2beta? basicAuth;
+  final pulumi.Input<BasicAuthDeploymentmanagerV2beta>? basicAuth;
   /// Service Account Credential, only used by Deployment.
-  final ServiceAccountDeploymentmanagerV2beta? serviceAccount;
+  final pulumi.Input<ServiceAccountDeploymentmanagerV2beta>? serviceAccount;
   /// Specify to use the project default credential, only supported by Deployment.
-  final bool? useProjectDefault;
+  final pulumi.Input<bool>? useProjectDefault;
 
   /// Creates a new [CredentialDeploymentmanagerV2beta].
   /// [basicAuth] Basic Auth Credential, only used by TypeProvider.
@@ -24,17 +25,17 @@ class CredentialDeploymentmanagerV2beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicAuth': ?basicAuth == null ? null : basicAuth!.toMap(),
-      'serviceAccount': ?serviceAccount == null ? null : serviceAccount!.toMap(),
+      'basicAuth': ?pulumi.Input.mapOptionalInputValue<BasicAuthDeploymentmanagerV2beta, Map<String, dynamic>>(basicAuth, (value) => value.toMap()),
+      'serviceAccount': ?pulumi.Input.mapOptionalInputValue<ServiceAccountDeploymentmanagerV2beta, Map<String, dynamic>>(serviceAccount, (value) => value.toMap()),
       'useProjectDefault': ?useProjectDefault,
     };
   }
 
   factory CredentialDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return CredentialDeploymentmanagerV2beta(
-      basicAuth: map['basicAuth'] == null ? null : BasicAuthDeploymentmanagerV2beta.fromMap((map['basicAuth'] as Map).cast<String, dynamic>()),
-      serviceAccount: map['serviceAccount'] == null ? null : ServiceAccountDeploymentmanagerV2beta.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>()),
-      useProjectDefault: map['useProjectDefault'] == null ? null : map['useProjectDefault'] as bool,
+      basicAuth: map['basicAuth'] == null ? null : (BasicAuthDeploymentmanagerV2beta.fromMap((map['basicAuth'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccountDeploymentmanagerV2beta.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
+      useProjectDefault: map['useProjectDefault'] == null ? null : (map['useProjectDefault'] as bool).input(),
     );
   }
 }

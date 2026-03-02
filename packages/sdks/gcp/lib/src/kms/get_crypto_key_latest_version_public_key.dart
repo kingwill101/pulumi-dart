@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCryptoKeyLatestVersionPublicKey {
   /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-  final String algorithm;
+  final pulumi.Input<String> algorithm;
   /// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
-  final String pem;
+  final pulumi.Input<String> pem;
 
   /// Creates a new [GetCryptoKeyLatestVersionPublicKey].
   /// [algorithm] The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
@@ -24,8 +25,8 @@ class GetCryptoKeyLatestVersionPublicKey {
 
   factory GetCryptoKeyLatestVersionPublicKey.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyLatestVersionPublicKey(
-      algorithm: map['algorithm'] as String,
-      pem: map['pem'] as String,
+      algorithm: (map['algorithm'] as String).input(),
+      pem: (map['pem'] as String).input(),
     );
   }
 }

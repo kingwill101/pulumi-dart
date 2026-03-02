@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a server to forward the DNS queries to.
 class TargetDnsServerResponse {
   /// DNS server IP address.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// DNS server port.
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [TargetDnsServerResponse].
   /// [ipAddress] DNS server IP address.
@@ -25,8 +26,8 @@ class TargetDnsServerResponse {
 
   factory TargetDnsServerResponse.fromMap(Map<String, dynamic> map) {
     return TargetDnsServerResponse(
-      ipAddress: map['ipAddress'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      ipAddress: (map['ipAddress'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

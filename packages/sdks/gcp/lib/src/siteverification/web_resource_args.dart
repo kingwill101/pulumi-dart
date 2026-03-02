@@ -20,11 +20,9 @@ class WebResourceArgs {
   /// [site] Container for the address and type of a site for which a verification token will be verified.
   /// [verificationMethod] The verification method for the Site Verification system to use to verify
   WebResourceArgs({
-    required pulumi.Output<WebResourceSite> site,
-    required pulumi.Output<String> verificationMethod,
-  }) :
-      site = pulumi.Input.asInput<WebResourceSite>(site),
-      verificationMethod = pulumi.Input.asInput<String>(verificationMethod);
+    required this.site,
+    required this.verificationMethod,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,8 +33,8 @@ class WebResourceArgs {
 
   factory WebResourceArgs.fromMap(Map<String, dynamic> map) {
     return WebResourceArgs(
-      site: pulumi.Output.create<WebResourceSite>(WebResourceSite.fromMap((map['site'] as Map).cast<String, dynamic>())),
-      verificationMethod: pulumi.Output.create<String>(map['verificationMethod'] as String),
+      site: (WebResourceSite.fromMap((map['site'] as Map).cast<String, dynamic>())).input(),
+      verificationMethod: (map['verificationMethod'] as String).input(),
     );
   }
 }

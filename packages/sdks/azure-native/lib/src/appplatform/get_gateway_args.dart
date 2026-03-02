@@ -19,13 +19,10 @@ class GetGatewayArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   GetGatewayArgs({
-    required pulumi.Output<String> gatewayName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.gatewayName,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGatewayArgs {
 
   factory GetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayArgs(
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      gatewayName: (map['gatewayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

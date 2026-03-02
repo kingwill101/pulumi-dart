@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationInstallPatchesWindow {
   /// List of Classification category of patches to be patched. Possible values are `Critical`, `Security`, `UpdateRollup`, `FeaturePack`, `ServicePack`, `Definition`, `Tools` and `Updates`.
-  final List<String>? classificationsToIncludes;
+  final pulumi.Input<List<String>>? classificationsToIncludes;
   /// List of KB numbers to be excluded from patching.
-  final List<String>? kbNumbersToExcludes;
+  final pulumi.Input<List<String>>? kbNumbersToExcludes;
   /// List of KB numbers to be included for patching.
-  final List<String>? kbNumbersToIncludes;
+  final pulumi.Input<List<String>>? kbNumbersToIncludes;
 
   /// Creates a new [ConfigurationInstallPatchesWindow].
   /// [classificationsToIncludes] List of Classification category of patches to be patched. Possible values are `Critical`, `Security`, `UpdateRollup`, `FeaturePack`, `ServicePack`, `Definition`, `Tools` and `Updates`.
@@ -29,9 +30,9 @@ class ConfigurationInstallPatchesWindow {
 
   factory ConfigurationInstallPatchesWindow.fromMap(Map<String, dynamic> map) {
     return ConfigurationInstallPatchesWindow(
-      classificationsToIncludes: map['classificationsToIncludes'] == null ? null : (map['classificationsToIncludes'] as List).cast<String>(),
-      kbNumbersToExcludes: map['kbNumbersToExcludes'] == null ? null : (map['kbNumbersToExcludes'] as List).cast<String>(),
-      kbNumbersToIncludes: map['kbNumbersToIncludes'] == null ? null : (map['kbNumbersToIncludes'] as List).cast<String>(),
+      classificationsToIncludes: map['classificationsToIncludes'] == null ? null : ((map['classificationsToIncludes'] as List).cast<String>()).input(),
+      kbNumbersToExcludes: map['kbNumbersToExcludes'] == null ? null : ((map['kbNumbersToExcludes'] as List).cast<String>()).input(),
+      kbNumbersToIncludes: map['kbNumbersToIncludes'] == null ? null : ((map['kbNumbersToIncludes'] as List).cast<String>()).input(),
     );
   }
 }

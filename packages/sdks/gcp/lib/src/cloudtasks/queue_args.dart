@@ -58,25 +58,16 @@ class QueueArgs {
   /// [retryConfig] Settings that determine the retry behavior.
   /// [stackdriverLoggingConfig] Configuration options for writing logs to Stackdriver Logging.
   QueueArgs({
-    pulumi.Output<QueueAppEngineRoutingOverride>? appEngineRoutingOverride,
-    pulumi.Output<String>? desiredState,
-    pulumi.Output<QueueHttpTarget>? httpTarget,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<QueueRateLimits>? rateLimits,
-    pulumi.Output<QueueRetryConfig>? retryConfig,
-    pulumi.Output<QueueStackdriverLoggingConfig>? stackdriverLoggingConfig,
-  }) :
-      appEngineRoutingOverride = pulumi.Input.asOptionalInput<QueueAppEngineRoutingOverride>(appEngineRoutingOverride),
-      desiredState = pulumi.Input.asOptionalInput<String>(desiredState),
-      httpTarget = pulumi.Input.asOptionalInput<QueueHttpTarget>(httpTarget),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rateLimits = pulumi.Input.asOptionalInput<QueueRateLimits>(rateLimits),
-      retryConfig = pulumi.Input.asOptionalInput<QueueRetryConfig>(retryConfig),
-      stackdriverLoggingConfig = pulumi.Input.asOptionalInput<QueueStackdriverLoggingConfig>(stackdriverLoggingConfig);
+    this.appEngineRoutingOverride,
+    this.desiredState,
+    this.httpTarget,
+    required this.location,
+    this.name,
+    this.project,
+    this.rateLimits,
+    this.retryConfig,
+    this.stackdriverLoggingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,15 +85,15 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      appEngineRoutingOverride: map['appEngineRoutingOverride'] == null ? null : pulumi.Output.create<QueueAppEngineRoutingOverride>(QueueAppEngineRoutingOverride.fromMap((map['appEngineRoutingOverride'] as Map).cast<String, dynamic>())),
-      desiredState: map['desiredState'] == null ? null : pulumi.Output.create<String>(map['desiredState'] as String),
-      httpTarget: map['httpTarget'] == null ? null : pulumi.Output.create<QueueHttpTarget>(QueueHttpTarget.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rateLimits: map['rateLimits'] == null ? null : pulumi.Output.create<QueueRateLimits>(QueueRateLimits.fromMap((map['rateLimits'] as Map).cast<String, dynamic>())),
-      retryConfig: map['retryConfig'] == null ? null : pulumi.Output.create<QueueRetryConfig>(QueueRetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())),
-      stackdriverLoggingConfig: map['stackdriverLoggingConfig'] == null ? null : pulumi.Output.create<QueueStackdriverLoggingConfig>(QueueStackdriverLoggingConfig.fromMap((map['stackdriverLoggingConfig'] as Map).cast<String, dynamic>())),
+      appEngineRoutingOverride: map['appEngineRoutingOverride'] == null ? null : (QueueAppEngineRoutingOverride.fromMap((map['appEngineRoutingOverride'] as Map).cast<String, dynamic>())).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      httpTarget: map['httpTarget'] == null ? null : (QueueHttpTarget.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rateLimits: map['rateLimits'] == null ? null : (QueueRateLimits.fromMap((map['rateLimits'] as Map).cast<String, dynamic>())).input(),
+      retryConfig: map['retryConfig'] == null ? null : (QueueRetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())).input(),
+      stackdriverLoggingConfig: map['stackdriverLoggingConfig'] == null ? null : (QueueStackdriverLoggingConfig.fromMap((map['stackdriverLoggingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

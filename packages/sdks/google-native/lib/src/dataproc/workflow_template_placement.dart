@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_selector.dart';
 import 'managed_cluster.dart';
 
 /// Specifies workflow execution target.Either managed_cluster or cluster_selector is required.
 class WorkflowTemplatePlacement {
   /// Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
-  final ClusterSelector? clusterSelector;
+  final pulumi.Input<ClusterSelector>? clusterSelector;
   /// A cluster that is managed by the workflow.
-  final ManagedCluster? managedCluster;
+  final pulumi.Input<ManagedCluster>? managedCluster;
 
   /// Creates a new [WorkflowTemplatePlacement].
   /// [clusterSelector] Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
@@ -20,15 +21,15 @@ class WorkflowTemplatePlacement {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterSelector': ?clusterSelector == null ? null : clusterSelector!.toMap(),
-      'managedCluster': ?managedCluster == null ? null : managedCluster!.toMap(),
+      'clusterSelector': ?pulumi.Input.mapOptionalInputValue<ClusterSelector, Map<String, dynamic>>(clusterSelector, (value) => value.toMap()),
+      'managedCluster': ?pulumi.Input.mapOptionalInputValue<ManagedCluster, Map<String, dynamic>>(managedCluster, (value) => value.toMap()),
     };
   }
 
   factory WorkflowTemplatePlacement.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacement(
-      clusterSelector: map['clusterSelector'] == null ? null : ClusterSelector.fromMap((map['clusterSelector'] as Map).cast<String, dynamic>()),
-      managedCluster: map['managedCluster'] == null ? null : ManagedCluster.fromMap((map['managedCluster'] as Map).cast<String, dynamic>()),
+      clusterSelector: map['clusterSelector'] == null ? null : (ClusterSelector.fromMap((map['clusterSelector'] as Map).cast<String, dynamic>())).input(),
+      managedCluster: map['managedCluster'] == null ? null : (ManagedCluster.fromMap((map['managedCluster'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class ProtectionGroupArgs {
   /// [resourceType] The resource type to include in the protection group. You must set this when you set `pattern` to BY_RESOURCE_TYPE and you must not set it for any other `pattern` setting.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ProtectionGroupArgs({
-    required pulumi.Output<String> aggregation,
-    pulumi.Output<List<String>>? members,
-    required pulumi.Output<String> pattern,
-    required pulumi.Output<String> protectionGroupId,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      aggregation = pulumi.Input.asInput<String>(aggregation),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      pattern = pulumi.Input.asInput<String>(pattern),
-      protectionGroupId = pulumi.Input.asInput<String>(protectionGroupId),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.aggregation,
+    this.members,
+    required this.pattern,
+    required this.protectionGroupId,
+    this.resourceType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ProtectionGroupArgs {
 
   factory ProtectionGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionGroupArgs(
-      aggregation: pulumi.Output.create<String>(map['aggregation'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      pattern: pulumi.Output.create<String>(map['pattern'] as String),
-      protectionGroupId: pulumi.Output.create<String>(map['protectionGroupId'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      aggregation: (map['aggregation'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      pattern: (map['pattern'] as String).input(),
+      protectionGroupId: (map['protectionGroupId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -35,19 +35,13 @@ class MachineImageArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [sourceInstance] The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
   MachineImageArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? guestFlush,
-    pulumi.Output<MachineImageMachineImageEncryptionKey>? machineImageEncryptionKey,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sourceInstance,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      guestFlush = pulumi.Input.asOptionalInput<bool>(guestFlush),
-      machineImageEncryptionKey = pulumi.Input.asOptionalInput<MachineImageMachineImageEncryptionKey>(machineImageEncryptionKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceInstance = pulumi.Input.asInput<String>(sourceInstance);
+    this.description,
+    this.guestFlush,
+    this.machineImageEncryptionKey,
+    this.name,
+    this.project,
+    required this.sourceInstance,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class MachineImageArgs {
 
   factory MachineImageArgs.fromMap(Map<String, dynamic> map) {
     return MachineImageArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      guestFlush: map['guestFlush'] == null ? null : pulumi.Output.create<bool>(map['guestFlush'] as bool),
-      machineImageEncryptionKey: map['machineImageEncryptionKey'] == null ? null : pulumi.Output.create<MachineImageMachineImageEncryptionKey>(MachineImageMachineImageEncryptionKey.fromMap((map['machineImageEncryptionKey'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sourceInstance: pulumi.Output.create<String>(map['sourceInstance'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush'] as bool).input(),
+      machineImageEncryptionKey: map['machineImageEncryptionKey'] == null ? null : (MachineImageMachineImageEncryptionKey.fromMap((map['machineImageEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sourceInstance: (map['sourceInstance'] as String).input(),
     );
   }
 }

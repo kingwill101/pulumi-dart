@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
 class TolerationPatch {
   /// Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
-  final String? effect;
+  final pulumi.Input<String>? effect;
   /// Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Operator represents a key's relationship to the value. Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category. Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).
-  final String? operator;
+  final pulumi.Input<String>? operator;
   /// TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
-  final int? tolerationSeconds;
+  final pulumi.Input<int>? tolerationSeconds;
   /// Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [TolerationPatch].
   /// [effect] Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
@@ -40,11 +41,11 @@ class TolerationPatch {
 
   factory TolerationPatch.fromMap(Map<String, dynamic> map) {
     return TolerationPatch(
-      effect: map['effect'] == null ? null : map['effect'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      operator: map['operator'] == null ? null : map['operator'] as String,
-      tolerationSeconds: map['tolerationSeconds'] == null ? null : map['tolerationSeconds'] as int,
-      value: map['value'] == null ? null : map['value'] as String,
+      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      tolerationSeconds: map['tolerationSeconds'] == null ? null : (map['tolerationSeconds'] as int).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

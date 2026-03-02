@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Rolls back a `Rollout`.
 class Rollback {
   /// Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
-  final String? destinationPhase;
+  final pulumi.Input<String>? destinationPhase;
 
   /// Creates a new [Rollback].
   /// [destinationPhase] Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
@@ -20,7 +21,7 @@ class Rollback {
 
   factory Rollback.fromMap(Map<String, dynamic> map) {
     return Rollback(
-      destinationPhase: map['destinationPhase'] == null ? null : map['destinationPhase'] as String,
+      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase'] as String).input(),
     );
   }
 }

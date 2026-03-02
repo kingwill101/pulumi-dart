@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mysql_source_config.dart';
 import 'oracle_source_config.dart';
 import 'postgresql_source_config.dart';
@@ -7,13 +8,13 @@ import 'postgresql_source_config.dart';
 /// The configuration of the stream source.
 class SourceConfig {
   /// MySQL data source configuration.
-  final MysqlSourceConfig? mysqlSourceConfig;
+  final pulumi.Input<MysqlSourceConfig>? mysqlSourceConfig;
   /// Oracle data source configuration.
-  final OracleSourceConfig? oracleSourceConfig;
+  final pulumi.Input<OracleSourceConfig>? oracleSourceConfig;
   /// PostgreSQL data source configuration.
-  final PostgresqlSourceConfig? postgresqlSourceConfig;
+  final pulumi.Input<PostgresqlSourceConfig>? postgresqlSourceConfig;
   /// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
-  final String sourceConnectionProfile;
+  final pulumi.Input<String> sourceConnectionProfile;
 
   /// Creates a new [SourceConfig].
   /// [mysqlSourceConfig] MySQL data source configuration.
@@ -29,19 +30,19 @@ class SourceConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlSourceConfig': ?mysqlSourceConfig == null ? null : mysqlSourceConfig!.toMap(),
-      'oracleSourceConfig': ?oracleSourceConfig == null ? null : oracleSourceConfig!.toMap(),
-      'postgresqlSourceConfig': ?postgresqlSourceConfig == null ? null : postgresqlSourceConfig!.toMap(),
+      'mysqlSourceConfig': ?pulumi.Input.mapOptionalInputValue<MysqlSourceConfig, Map<String, dynamic>>(mysqlSourceConfig, (value) => value.toMap()),
+      'oracleSourceConfig': ?pulumi.Input.mapOptionalInputValue<OracleSourceConfig, Map<String, dynamic>>(oracleSourceConfig, (value) => value.toMap()),
+      'postgresqlSourceConfig': ?pulumi.Input.mapOptionalInputValue<PostgresqlSourceConfig, Map<String, dynamic>>(postgresqlSourceConfig, (value) => value.toMap()),
       'sourceConnectionProfile': sourceConnectionProfile,
     };
   }
 
   factory SourceConfig.fromMap(Map<String, dynamic> map) {
     return SourceConfig(
-      mysqlSourceConfig: map['mysqlSourceConfig'] == null ? null : MysqlSourceConfig.fromMap((map['mysqlSourceConfig'] as Map).cast<String, dynamic>()),
-      oracleSourceConfig: map['oracleSourceConfig'] == null ? null : OracleSourceConfig.fromMap((map['oracleSourceConfig'] as Map).cast<String, dynamic>()),
-      postgresqlSourceConfig: map['postgresqlSourceConfig'] == null ? null : PostgresqlSourceConfig.fromMap((map['postgresqlSourceConfig'] as Map).cast<String, dynamic>()),
-      sourceConnectionProfile: map['sourceConnectionProfile'] as String,
+      mysqlSourceConfig: map['mysqlSourceConfig'] == null ? null : (MysqlSourceConfig.fromMap((map['mysqlSourceConfig'] as Map).cast<String, dynamic>())).input(),
+      oracleSourceConfig: map['oracleSourceConfig'] == null ? null : (OracleSourceConfig.fromMap((map['oracleSourceConfig'] as Map).cast<String, dynamic>())).input(),
+      postgresqlSourceConfig: map['postgresqlSourceConfig'] == null ? null : (PostgresqlSourceConfig.fromMap((map['postgresqlSourceConfig'] as Map).cast<String, dynamic>())).input(),
+      sourceConnectionProfile: (map['sourceConnectionProfile'] as String).input(),
     );
   }
 }

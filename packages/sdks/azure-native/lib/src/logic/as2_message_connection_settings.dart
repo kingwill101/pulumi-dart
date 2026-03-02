@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The AS2 agreement message connection settings.
 class AS2MessageConnectionSettings {
   /// The value indicating whether to ignore mismatch in certificate name.
-  final bool ignoreCertificateNameMismatch;
+  final pulumi.Input<bool> ignoreCertificateNameMismatch;
   /// The value indicating whether to keep the connection alive.
-  final bool keepHttpConnectionAlive;
+  final pulumi.Input<bool> keepHttpConnectionAlive;
   /// The value indicating whether to support HTTP status code 'CONTINUE'.
-  final bool supportHttpStatusCodeContinue;
+  final pulumi.Input<bool> supportHttpStatusCodeContinue;
   /// The value indicating whether to unfold the HTTP headers.
-  final bool unfoldHttpHeaders;
+  final pulumi.Input<bool> unfoldHttpHeaders;
 
   /// Creates a new [AS2MessageConnectionSettings].
   /// [ignoreCertificateNameMismatch] The value indicating whether to ignore mismatch in certificate name.
@@ -35,10 +36,10 @@ class AS2MessageConnectionSettings {
 
   factory AS2MessageConnectionSettings.fromMap(Map<String, dynamic> map) {
     return AS2MessageConnectionSettings(
-      ignoreCertificateNameMismatch: map['ignoreCertificateNameMismatch'] as bool,
-      keepHttpConnectionAlive: map['keepHttpConnectionAlive'] as bool,
-      supportHttpStatusCodeContinue: map['supportHttpStatusCodeContinue'] as bool,
-      unfoldHttpHeaders: map['unfoldHttpHeaders'] as bool,
+      ignoreCertificateNameMismatch: (map['ignoreCertificateNameMismatch'] as bool).input(),
+      keepHttpConnectionAlive: (map['keepHttpConnectionAlive'] as bool).input(),
+      supportHttpStatusCodeContinue: (map['supportHttpStatusCodeContinue'] as bool).input(),
+      unfoldHttpHeaders: (map['unfoldHttpHeaders'] as bool).input(),
     );
   }
 }

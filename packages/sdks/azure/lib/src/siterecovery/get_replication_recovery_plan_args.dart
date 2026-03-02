@@ -16,11 +16,9 @@ class GetReplicationRecoveryPlanArgs {
   /// [name] The name of the Replication Plan.
   /// [recoveryVaultId] The ID of the vault that should be updated.
   GetReplicationRecoveryPlanArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> recoveryVaultId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      recoveryVaultId = pulumi.Input.asInput<String>(recoveryVaultId);
+    required this.name,
+    required this.recoveryVaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetReplicationRecoveryPlanArgs {
 
   factory GetReplicationRecoveryPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationRecoveryPlanArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      recoveryVaultId: pulumi.Output.create<String>(map['recoveryVaultId'] as String),
+      name: (map['name'] as String).input(),
+      recoveryVaultId: (map['recoveryVaultId'] as String).input(),
     );
   }
 }

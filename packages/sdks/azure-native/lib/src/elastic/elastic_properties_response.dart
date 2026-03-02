@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'elastic_cloud_deployment_response.dart';
 import 'elastic_cloud_user_response.dart';
 
 /// Elastic Resource Properties.
 class ElasticPropertiesResponse {
   /// Details of the elastic cloud deployment.
-  final ElasticCloudDeploymentResponse? elasticCloudDeployment;
+  final pulumi.Input<ElasticCloudDeploymentResponse>? elasticCloudDeployment;
   /// Details of the user's elastic account.
-  final ElasticCloudUserResponse? elasticCloudUser;
+  final pulumi.Input<ElasticCloudUserResponse>? elasticCloudUser;
 
   /// Creates a new [ElasticPropertiesResponse].
   /// [elasticCloudDeployment] Details of the elastic cloud deployment.
@@ -20,15 +21,15 @@ class ElasticPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'elasticCloudDeployment': ?elasticCloudDeployment == null ? null : elasticCloudDeployment!.toMap(),
-      'elasticCloudUser': ?elasticCloudUser == null ? null : elasticCloudUser!.toMap(),
+      'elasticCloudDeployment': ?pulumi.Input.mapOptionalInputValue<ElasticCloudDeploymentResponse, Map<String, dynamic>>(elasticCloudDeployment, (value) => value.toMap()),
+      'elasticCloudUser': ?pulumi.Input.mapOptionalInputValue<ElasticCloudUserResponse, Map<String, dynamic>>(elasticCloudUser, (value) => value.toMap()),
     };
   }
 
   factory ElasticPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticPropertiesResponse(
-      elasticCloudDeployment: map['elasticCloudDeployment'] == null ? null : ElasticCloudDeploymentResponse.fromMap((map['elasticCloudDeployment'] as Map).cast<String, dynamic>()),
-      elasticCloudUser: map['elasticCloudUser'] == null ? null : ElasticCloudUserResponse.fromMap((map['elasticCloudUser'] as Map).cast<String, dynamic>()),
+      elasticCloudDeployment: map['elasticCloudDeployment'] == null ? null : (ElasticCloudDeploymentResponse.fromMap((map['elasticCloudDeployment'] as Map).cast<String, dynamic>())).input(),
+      elasticCloudUser: map['elasticCloudUser'] == null ? null : (ElasticCloudUserResponse.fromMap((map['elasticCloudUser'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

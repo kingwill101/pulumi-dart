@@ -28,21 +28,14 @@ class NetworkMappingState {
   /// [targetNetworkId] The id of the recovery network. Changing this forces a new resource to be created.
   /// [targetRecoveryFabricName] The Azure Site Recovery fabric object corresponding to the recovery Azure region. Changing this forces a new resource to be created.
   NetworkMappingState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? recoveryVaultName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? sourceNetworkId,
-    pulumi.Output<String>? sourceRecoveryFabricName,
-    pulumi.Output<String>? targetNetworkId,
-    pulumi.Output<String>? targetRecoveryFabricName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryVaultName = pulumi.Input.asOptionalInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sourceNetworkId = pulumi.Input.asOptionalInput<String>(sourceNetworkId),
-      sourceRecoveryFabricName = pulumi.Input.asOptionalInput<String>(sourceRecoveryFabricName),
-      targetNetworkId = pulumi.Input.asOptionalInput<String>(targetNetworkId),
-      targetRecoveryFabricName = pulumi.Input.asOptionalInput<String>(targetRecoveryFabricName);
+    this.name,
+    this.recoveryVaultName,
+    this.resourceGroupName,
+    this.sourceNetworkId,
+    this.sourceRecoveryFabricName,
+    this.targetNetworkId,
+    this.targetRecoveryFabricName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class NetworkMappingState {
 
   factory NetworkMappingState.fromMap(Map<String, dynamic> map) {
     return NetworkMappingState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceNetworkId: map['sourceNetworkId'] == null ? null : pulumi.Output.create<String>(map['sourceNetworkId'] as String),
-      sourceRecoveryFabricName: map['sourceRecoveryFabricName'] == null ? null : pulumi.Output.create<String>(map['sourceRecoveryFabricName'] as String),
-      targetNetworkId: map['targetNetworkId'] == null ? null : pulumi.Output.create<String>(map['targetNetworkId'] as String),
-      targetRecoveryFabricName: map['targetRecoveryFabricName'] == null ? null : pulumi.Output.create<String>(map['targetRecoveryFabricName'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sourceNetworkId: map['sourceNetworkId'] == null ? null : (map['sourceNetworkId'] as String).input(),
+      sourceRecoveryFabricName: map['sourceRecoveryFabricName'] == null ? null : (map['sourceRecoveryFabricName'] as String).input(),
+      targetNetworkId: map['targetNetworkId'] == null ? null : (map['targetNetworkId'] as String).input(),
+      targetRecoveryFabricName: map['targetRecoveryFabricName'] == null ? null : (map['targetRecoveryFabricName'] as String).input(),
     );
   }
 }

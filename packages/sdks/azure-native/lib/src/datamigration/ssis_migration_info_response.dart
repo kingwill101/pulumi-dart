@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SSIS migration info with SSIS store type, overwrite policy.
 class SsisMigrationInfoResponse {
   /// The overwrite option for the SSIS environment migration
-  final String? environmentOverwriteOption;
+  final pulumi.Input<String>? environmentOverwriteOption;
   /// The overwrite option for the SSIS project migration
-  final String? projectOverwriteOption;
+  final pulumi.Input<String>? projectOverwriteOption;
   /// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
-  final String? ssisStoreType;
+  final pulumi.Input<String>? ssisStoreType;
 
   /// Creates a new [SsisMigrationInfoResponse].
   /// [environmentOverwriteOption] The overwrite option for the SSIS environment migration
@@ -30,9 +31,9 @@ class SsisMigrationInfoResponse {
 
   factory SsisMigrationInfoResponse.fromMap(Map<String, dynamic> map) {
     return SsisMigrationInfoResponse(
-      environmentOverwriteOption: map['environmentOverwriteOption'] == null ? null : map['environmentOverwriteOption'] as String,
-      projectOverwriteOption: map['projectOverwriteOption'] == null ? null : map['projectOverwriteOption'] as String,
-      ssisStoreType: map['ssisStoreType'] == null ? null : map['ssisStoreType'] as String,
+      environmentOverwriteOption: map['environmentOverwriteOption'] == null ? null : (map['environmentOverwriteOption'] as String).input(),
+      projectOverwriteOption: map['projectOverwriteOption'] == null ? null : (map['projectOverwriteOption'] as String).input(),
+      ssisStoreType: map['ssisStoreType'] == null ? null : (map['ssisStoreType'] as String).input(),
     );
   }
 }

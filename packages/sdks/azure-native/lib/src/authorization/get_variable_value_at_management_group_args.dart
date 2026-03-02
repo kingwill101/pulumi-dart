@@ -19,13 +19,10 @@ class GetVariableValueAtManagementGroupArgs {
   /// [variableName] The name of the variable to operate on.
   /// [variableValueName] The name of the variable value to operate on.
   GetVariableValueAtManagementGroupArgs({
-    required pulumi.Output<String> managementGroupId,
-    required pulumi.Output<String> variableName,
-    required pulumi.Output<String> variableValueName,
-  }) :
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      variableName = pulumi.Input.asInput<String>(variableName),
-      variableValueName = pulumi.Input.asInput<String>(variableValueName);
+    required this.managementGroupId,
+    required this.variableName,
+    required this.variableValueName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVariableValueAtManagementGroupArgs {
 
   factory GetVariableValueAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetVariableValueAtManagementGroupArgs(
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      variableName: pulumi.Output.create<String>(map['variableName'] as String),
-      variableValueName: pulumi.Output.create<String>(map['variableValueName'] as String),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      variableName: (map['variableName'] as String).input(),
+      variableValueName: (map['variableValueName'] as String).input(),
     );
   }
 }

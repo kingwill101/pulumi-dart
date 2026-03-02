@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The access token represents the authorization of a specific application to access specific parts of a user’s data.
 class GoogleCloudIntegrationsV1alphaAccessToken {
   /// The access token encapsulating the security identity of a process or thread.
-  final String? accessToken;
+  final pulumi.Input<String>? accessToken;
   /// The approximate time until the access token retrieved is valid.
-  final String accessTokenExpireTime;
+  final pulumi.Input<String> accessTokenExpireTime;
   /// If the access token will expire, use the refresh token to obtain another access token.
-  final String? refreshToken;
+  final pulumi.Input<String>? refreshToken;
   /// The approximate time until the refresh token retrieved is valid.
-  final String? refreshTokenExpireTime;
+  final pulumi.Input<String>? refreshTokenExpireTime;
   /// Only support "bearer" token in v1 as bearer token is the predominant type used with OAuth 2.0.
-  final String? tokenType;
+  final pulumi.Input<String>? tokenType;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaAccessToken].
   /// [accessToken] The access token encapsulating the security identity of a process or thread.
@@ -40,11 +41,11 @@ class GoogleCloudIntegrationsV1alphaAccessToken {
 
   factory GoogleCloudIntegrationsV1alphaAccessToken.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaAccessToken(
-      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
-      accessTokenExpireTime: map['accessTokenExpireTime'] as String,
-      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
-      refreshTokenExpireTime: map['refreshTokenExpireTime'] == null ? null : map['refreshTokenExpireTime'] as String,
-      tokenType: map['tokenType'] == null ? null : map['tokenType'] as String,
+      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
+      accessTokenExpireTime: (map['accessTokenExpireTime'] as String).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
+      refreshTokenExpireTime: map['refreshTokenExpireTime'] == null ? null : (map['refreshTokenExpireTime'] as String).input(),
+      tokenType: map['tokenType'] == null ? null : (map['tokenType'] as String).input(),
     );
   }
 }

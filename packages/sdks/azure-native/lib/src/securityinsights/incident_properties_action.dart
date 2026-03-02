@@ -6,19 +6,19 @@ import 'incident_owner_info.dart';
 
 class IncidentPropertiesAction {
   /// The reason the incident was closed
-  final String? classification;
+  final pulumi.Input<String>? classification;
   /// Describes the reason the incident was closed.
-  final String? classificationComment;
+  final pulumi.Input<String>? classificationComment;
   /// The classification reason the incident was closed with
-  final String? classificationReason;
+  final pulumi.Input<String>? classificationReason;
   /// List of labels to add to the incident.
-  final List<IncidentLabel>? labels;
+  final pulumi.Input<List<IncidentLabel>>? labels;
   /// Information on the user an incident is assigned to
-  final IncidentOwnerInfo? owner;
+  final pulumi.Input<IncidentOwnerInfo>? owner;
   /// The severity of the incident
-  final String? severity;
+  final pulumi.Input<String>? severity;
   /// The status of the incident
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [IncidentPropertiesAction].
   /// [classification] The reason the incident was closed
@@ -43,8 +43,8 @@ class IncidentPropertiesAction {
       'classification': ?classification,
       'classificationComment': ?classificationComment,
       'classificationReason': ?classificationReason,
-      'labels': ?labels == null ? null : pulumi.Input.encodeList<IncidentLabel, Map<String, dynamic>>(labels!, (value) => value.toMap()),
-      'owner': ?owner == null ? null : owner!.toMap(),
+      'labels': ?pulumi.Input.mapOptionalInputValue<List<IncidentLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<IncidentLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'owner': ?pulumi.Input.mapOptionalInputValue<IncidentOwnerInfo, Map<String, dynamic>>(owner, (value) => value.toMap()),
       'severity': ?severity,
       'status': ?status,
     };
@@ -52,13 +52,13 @@ class IncidentPropertiesAction {
 
   factory IncidentPropertiesAction.fromMap(Map<String, dynamic> map) {
     return IncidentPropertiesAction(
-      classification: map['classification'] == null ? null : map['classification'] as String,
-      classificationComment: map['classificationComment'] == null ? null : map['classificationComment'] as String,
-      classificationReason: map['classificationReason'] == null ? null : map['classificationReason'] as String,
-      labels: map['labels'] == null ? null : pulumi.Input.decodeList<IncidentLabel>(map['labels'], (value) => IncidentLabel.fromMap((value as Map).cast<String, dynamic>())),
-      owner: map['owner'] == null ? null : IncidentOwnerInfo.fromMap((map['owner'] as Map).cast<String, dynamic>()),
-      severity: map['severity'] == null ? null : map['severity'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      classification: map['classification'] == null ? null : (map['classification'] as String).input(),
+      classificationComment: map['classificationComment'] == null ? null : (map['classificationComment'] as String).input(),
+      classificationReason: map['classificationReason'] == null ? null : (map['classificationReason'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<IncidentLabel>(map['labels'], (value) => IncidentLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      owner: map['owner'] == null ? null : (IncidentOwnerInfo.fromMap((map['owner'] as Map).cast<String, dynamic>())).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

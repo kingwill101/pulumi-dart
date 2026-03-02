@@ -49,31 +49,19 @@ class DatabaseArgs {
   /// [port] TCP port of the database endpoint. Specified at create time. Defaults to an available port.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   DatabaseArgs({
-    pulumi.Output<String>? accessKeysAuthentication,
-    pulumi.Output<String>? clientProtocol,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? clusteringPolicy,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? deferUpgrade,
-    pulumi.Output<String>? evictionPolicy,
-    pulumi.Output<DatabasePropertiesGeoReplication>? geoReplication,
-    pulumi.Output<List<Module>>? modules,
-    pulumi.Output<Persistence>? persistence,
-    pulumi.Output<int>? port,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accessKeysAuthentication = pulumi.Input.asOptionalInput<String>(accessKeysAuthentication),
-      clientProtocol = pulumi.Input.asOptionalInput<String>(clientProtocol),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      clusteringPolicy = pulumi.Input.asOptionalInput<String>(clusteringPolicy),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      deferUpgrade = pulumi.Input.asOptionalInput<String>(deferUpgrade),
-      evictionPolicy = pulumi.Input.asOptionalInput<String>(evictionPolicy),
-      geoReplication = pulumi.Input.asOptionalInput<DatabasePropertiesGeoReplication>(geoReplication),
-      modules = pulumi.Input.asOptionalInput<List<Module>>(modules),
-      persistence = pulumi.Input.asOptionalInput<Persistence>(persistence),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.accessKeysAuthentication,
+    this.clientProtocol,
+    required this.clusterName,
+    this.clusteringPolicy,
+    this.databaseName,
+    this.deferUpgrade,
+    this.evictionPolicy,
+    this.geoReplication,
+    this.modules,
+    this.persistence,
+    this.port,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      accessKeysAuthentication: map['accessKeysAuthentication'] == null ? null : pulumi.Output.create<String>(map['accessKeysAuthentication'] as String),
-      clientProtocol: map['clientProtocol'] == null ? null : pulumi.Output.create<String>(map['clientProtocol'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      clusteringPolicy: map['clusteringPolicy'] == null ? null : pulumi.Output.create<String>(map['clusteringPolicy'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      deferUpgrade: map['deferUpgrade'] == null ? null : pulumi.Output.create<String>(map['deferUpgrade'] as String),
-      evictionPolicy: map['evictionPolicy'] == null ? null : pulumi.Output.create<String>(map['evictionPolicy'] as String),
-      geoReplication: map['geoReplication'] == null ? null : pulumi.Output.create<DatabasePropertiesGeoReplication>(DatabasePropertiesGeoReplication.fromMap((map['geoReplication'] as Map).cast<String, dynamic>())),
-      modules: map['modules'] == null ? null : pulumi.Output.create<List<Module>>(pulumi.Input.decodeList<Module>(map['modules'], (value) => Module.fromMap((value as Map).cast<String, dynamic>()))),
-      persistence: map['persistence'] == null ? null : pulumi.Output.create<Persistence>(Persistence.fromMap((map['persistence'] as Map).cast<String, dynamic>())),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accessKeysAuthentication: map['accessKeysAuthentication'] == null ? null : (map['accessKeysAuthentication'] as String).input(),
+      clientProtocol: map['clientProtocol'] == null ? null : (map['clientProtocol'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      clusteringPolicy: map['clusteringPolicy'] == null ? null : (map['clusteringPolicy'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      deferUpgrade: map['deferUpgrade'] == null ? null : (map['deferUpgrade'] as String).input(),
+      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy'] as String).input(),
+      geoReplication: map['geoReplication'] == null ? null : (DatabasePropertiesGeoReplication.fromMap((map['geoReplication'] as Map).cast<String, dynamic>())).input(),
+      modules: map['modules'] == null ? null : (pulumi.Input.decodeList<Module>(map['modules'], (value) => Module.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      persistence: map['persistence'] == null ? null : (Persistence.fromMap((map['persistence'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

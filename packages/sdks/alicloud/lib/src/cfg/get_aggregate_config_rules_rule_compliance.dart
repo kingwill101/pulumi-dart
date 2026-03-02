@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAggregateConfigRulesRuleCompliance {
   /// The Compliance Type.
-  final String complianceType;
+  final pulumi.Input<String> complianceType;
   /// The Count.
-  final int count;
+  final pulumi.Input<int> count;
 
   /// Creates a new [GetAggregateConfigRulesRuleCompliance].
   /// [complianceType] The Compliance Type.
@@ -24,8 +25,8 @@ class GetAggregateConfigRulesRuleCompliance {
 
   factory GetAggregateConfigRulesRuleCompliance.fromMap(Map<String, dynamic> map) {
     return GetAggregateConfigRulesRuleCompliance(
-      complianceType: map['complianceType'] as String,
-      count: map['count'] as int,
+      complianceType: (map['complianceType'] as String).input(),
+      count: (map['count'] as int).input(),
     );
   }
 }

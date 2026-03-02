@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnGatewayConnectionRoutingPropagatedRouteTable {
   /// A list of labels to assign to this route table.
-  final List<String>? labels;
+  final pulumi.Input<List<String>>? labels;
   /// A list of Route Table IDs to associated with this VPN Gateway Connection.
-  final List<String> routeTableIds;
+  final pulumi.Input<List<String>> routeTableIds;
 
   /// Creates a new [VpnGatewayConnectionRoutingPropagatedRouteTable].
   /// [labels] A list of labels to assign to this route table.
@@ -24,8 +25,8 @@ class VpnGatewayConnectionRoutingPropagatedRouteTable {
 
   factory VpnGatewayConnectionRoutingPropagatedRouteTable.fromMap(Map<String, dynamic> map) {
     return VpnGatewayConnectionRoutingPropagatedRouteTable(
-      labels: map['labels'] == null ? null : (map['labels'] as List).cast<String>(),
-      routeTableIds: (map['routeTableIds'] as List).cast<String>(),
+      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      routeTableIds: ((map['routeTableIds'] as List).cast<String>()).input(),
     );
   }
 }

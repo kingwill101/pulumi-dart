@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CustomResourceDefinitionCondition contains details for the current condition of this pod.
 class CustomResourceDefinitionConditionPatch {
   /// lastTransitionTime last time the condition transitioned from one status to another.
-  final String? lastTransitionTime;
+  final pulumi.Input<String>? lastTransitionTime;
   /// message is a human-readable message indicating details about last transition.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// observedGeneration represents the .metadata.generation that the condition was set based upon. For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date with respect to the current state of the instance.
-  final int? observedGeneration;
+  final pulumi.Input<int>? observedGeneration;
   /// reason is a unique, one-word, CamelCase reason for the condition's last transition.
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// status is the status of the condition. Can be True, False, Unknown.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// type is the type of the condition. Types include Established, NamesAccepted and Terminating.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [CustomResourceDefinitionConditionPatch].
   /// [lastTransitionTime] lastTransitionTime last time the condition transitioned from one status to another.
@@ -45,12 +46,12 @@ class CustomResourceDefinitionConditionPatch {
 
   factory CustomResourceDefinitionConditionPatch.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionConditionPatch(
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : map['lastTransitionTime'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      observedGeneration: map['observedGeneration'] == null ? null : map['observedGeneration'] as int,
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

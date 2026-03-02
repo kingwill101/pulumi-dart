@@ -1,42 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseLevelResponse {
   /// Number of applied changes
-  final double appliedChanges;
+  final pulumi.Input<double> appliedChanges;
   /// Number of cdc deletes
-  final double cdcDeleteCounter;
+  final pulumi.Input<double> cdcDeleteCounter;
   /// Number of cdc inserts
-  final double cdcInsertCounter;
+  final pulumi.Input<double> cdcInsertCounter;
   /// Number of cdc updates
-  final double cdcUpdateCounter;
+  final pulumi.Input<double> cdcUpdateCounter;
   /// Name of the database
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// Migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Number of tables completed in full load
-  final double fullLoadCompletedTables;
+  final pulumi.Input<double> fullLoadCompletedTables;
   /// Number of tables errored in full load
-  final double fullLoadErroredTables;
+  final pulumi.Input<double> fullLoadErroredTables;
   /// Number of tables loading in full load
-  final double fullLoadLoadingTables;
+  final pulumi.Input<double> fullLoadLoadingTables;
   /// Number of tables queued in full load
-  final double fullLoadQueuedTables;
+  final pulumi.Input<double> fullLoadQueuedTables;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Number of incoming changes
-  final double incomingChanges;
+  final pulumi.Input<double> incomingChanges;
   /// Indicates if initial load (full load) has been completed
-  final bool initializationCompleted;
+  final pulumi.Input<bool> initializationCompleted;
   /// CDC apply latency
-  final double latency;
+  final pulumi.Input<double> latency;
   /// Migration state that this database is in
-  final String migrationState;
+  final pulumi.Input<String> migrationState;
   /// Result type
   /// Expected value is 'DatabaseLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
 
   /// Creates a new [MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseLevelResponse].
   /// [appliedChanges] Number of applied changes
@@ -100,23 +101,23 @@ class MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseLevelResponse {
 
   factory MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseLevelResponse(
-      appliedChanges: map['appliedChanges'] as double,
-      cdcDeleteCounter: map['cdcDeleteCounter'] as double,
-      cdcInsertCounter: map['cdcInsertCounter'] as double,
-      cdcUpdateCounter: map['cdcUpdateCounter'] as double,
-      databaseName: map['databaseName'] as String,
-      endedOn: map['endedOn'] as String,
-      fullLoadCompletedTables: map['fullLoadCompletedTables'] as double,
-      fullLoadErroredTables: map['fullLoadErroredTables'] as double,
-      fullLoadLoadingTables: map['fullLoadLoadingTables'] as double,
-      fullLoadQueuedTables: map['fullLoadQueuedTables'] as double,
-      id: map['id'] as String,
-      incomingChanges: map['incomingChanges'] as double,
-      initializationCompleted: map['initializationCompleted'] as bool,
-      latency: map['latency'] as double,
-      migrationState: map['migrationState'] as String,
-      resultType: map['resultType'] as String,
-      startedOn: map['startedOn'] as String,
+      appliedChanges: (map['appliedChanges'] as double).input(),
+      cdcDeleteCounter: (map['cdcDeleteCounter'] as double).input(),
+      cdcInsertCounter: (map['cdcInsertCounter'] as double).input(),
+      cdcUpdateCounter: (map['cdcUpdateCounter'] as double).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      endedOn: (map['endedOn'] as String).input(),
+      fullLoadCompletedTables: (map['fullLoadCompletedTables'] as double).input(),
+      fullLoadErroredTables: (map['fullLoadErroredTables'] as double).input(),
+      fullLoadLoadingTables: (map['fullLoadLoadingTables'] as double).input(),
+      fullLoadQueuedTables: (map['fullLoadQueuedTables'] as double).input(),
+      id: (map['id'] as String).input(),
+      incomingChanges: (map['incomingChanges'] as double).input(),
+      initializationCompleted: (map['initializationCompleted'] as bool).input(),
+      latency: (map['latency'] as double).input(),
+      migrationState: (map['migrationState'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3beta1_query_input_response.dart';
 
 /// The input from the human user.
 class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse {
   /// Whether sentiment analysis is enabled.
-  final bool enableSentimentAnalysis;
+  final pulumi.Input<bool> enableSentimentAnalysis;
   /// Parameters that need to be injected into the conversation during intent detection.
-  final Map<String, String> injectedParameters;
+  final pulumi.Input<Map<String, String>> injectedParameters;
   /// Supports text input, event input, dtmf input in the test case.
-  final GoogleCloudDialogflowCxV3beta1QueryInputResponse input;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1QueryInputResponse> input;
   /// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
-  final bool isWebhookEnabled;
+  final pulumi.Input<bool> isWebhookEnabled;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse].
   /// [enableSentimentAnalysis] Whether sentiment analysis is enabled.
@@ -29,17 +30,17 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse {
     return <String, dynamic>{
       'enableSentimentAnalysis': enableSentimentAnalysis,
       'injectedParameters': injectedParameters,
-      'input': input.toMap(),
+      'input': pulumi.Input.mapInputValue<GoogleCloudDialogflowCxV3beta1QueryInputResponse, Map<String, dynamic>>(input, (value) => value.toMap()),
       'isWebhookEnabled': isWebhookEnabled,
     };
   }
 
   factory GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse(
-      enableSentimentAnalysis: map['enableSentimentAnalysis'] as bool,
-      injectedParameters: (map['injectedParameters'] as Map).cast<String, String>(),
-      input: GoogleCloudDialogflowCxV3beta1QueryInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>()),
-      isWebhookEnabled: map['isWebhookEnabled'] as bool,
+      enableSentimentAnalysis: (map['enableSentimentAnalysis'] as bool).input(),
+      injectedParameters: ((map['injectedParameters'] as Map).cast<String, String>()).input(),
+      input: (GoogleCloudDialogflowCxV3beta1QueryInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      isWebhookEnabled: (map['isWebhookEnabled'] as bool).input(),
     );
   }
 }

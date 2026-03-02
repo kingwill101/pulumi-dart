@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VectorsIndexMetadataConfiguration {
   /// List of non-filterable metadata keys.
-  final List<String> nonFilterableMetadataKeys;
+  final pulumi.Input<List<String>> nonFilterableMetadataKeys;
 
   /// Creates a new [VectorsIndexMetadataConfiguration].
   /// [nonFilterableMetadataKeys] List of non-filterable metadata keys.
@@ -19,7 +20,7 @@ class VectorsIndexMetadataConfiguration {
 
   factory VectorsIndexMetadataConfiguration.fromMap(Map<String, dynamic> map) {
     return VectorsIndexMetadataConfiguration(
-      nonFilterableMetadataKeys: (map['nonFilterableMetadataKeys'] as List).cast<String>(),
+      nonFilterableMetadataKeys: ((map['nonFilterableMetadataKeys'] as List).cast<String>()).input(),
     );
   }
 }

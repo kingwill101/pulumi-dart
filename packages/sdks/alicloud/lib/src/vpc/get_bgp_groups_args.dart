@@ -25,17 +25,12 @@ class GetBgpGroupsArgs {
   /// [routerId] The ID of the virtual border router (VBR) that is associated with the BGP group.
   /// [status] The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
   GetBgpGroupsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? routerId,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      routerId = pulumi.Input.asOptionalInput<String>(routerId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.routerId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetBgpGroupsArgs {
 
   factory GetBgpGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetBgpGroupsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

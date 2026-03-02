@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo {
   /// The comparison operator of the threshold for info-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-  final String comparisonOperator;
+  final pulumi.Input<String> comparisonOperator;
   /// The statistical aggregation method for info-level alerts.
-  final String statistics;
+  final pulumi.Input<String> statistics;
   /// The threshold for info-level alerts.
-  final String threshold;
+  final pulumi.Input<String> threshold;
   /// The consecutive number of times for which the metric value is measured before an info-level
   /// alert is triggered.
-  final String times;
+  final pulumi.Input<String> times;
 
   /// Creates a new [GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo].
   /// [comparisonOperator] The comparison operator of the threshold for info-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
@@ -35,10 +36,10 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo {
 
   factory GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo.fromMap(Map<String, dynamic> map) {
     return GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo(
-      comparisonOperator: map['comparisonOperator'] as String,
-      statistics: map['statistics'] as String,
-      threshold: map['threshold'] as String,
-      times: map['times'] as String,
+      comparisonOperator: (map['comparisonOperator'] as String).input(),
+      statistics: (map['statistics'] as String).input(),
+      threshold: (map['threshold'] as String).input(),
+      times: (map['times'] as String).input(),
     );
   }
 }

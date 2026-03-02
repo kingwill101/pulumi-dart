@@ -30,19 +30,13 @@ class ServicePerimeterDryRunEgressPolicyState {
   /// [perimeter] The name of the Service Perimeter to add this resource to.
   /// [title] Human readable title. Must be unique within the perimeter. Does not affect behavior.
   ServicePerimeterDryRunEgressPolicyState({
-    pulumi.Output<String>? accessPolicyId,
-    pulumi.Output<ServicePerimeterDryRunEgressPolicyEgressFrom>? egressFrom,
-    pulumi.Output<ServicePerimeterDryRunEgressPolicyEgressTo>? egressTo,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? perimeter,
-    pulumi.Output<String>? title,
-  }) :
-      accessPolicyId = pulumi.Input.asOptionalInput<String>(accessPolicyId),
-      egressFrom = pulumi.Input.asOptionalInput<ServicePerimeterDryRunEgressPolicyEgressFrom>(egressFrom),
-      egressTo = pulumi.Input.asOptionalInput<ServicePerimeterDryRunEgressPolicyEgressTo>(egressTo),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      perimeter = pulumi.Input.asOptionalInput<String>(perimeter),
-      title = pulumi.Input.asOptionalInput<String>(title);
+    this.accessPolicyId,
+    this.egressFrom,
+    this.egressTo,
+    this.etag,
+    this.perimeter,
+    this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class ServicePerimeterDryRunEgressPolicyState {
 
   factory ServicePerimeterDryRunEgressPolicyState.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterDryRunEgressPolicyState(
-      accessPolicyId: map['accessPolicyId'] == null ? null : pulumi.Output.create<String>(map['accessPolicyId'] as String),
-      egressFrom: map['egressFrom'] == null ? null : pulumi.Output.create<ServicePerimeterDryRunEgressPolicyEgressFrom>(ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((map['egressFrom'] as Map).cast<String, dynamic>())),
-      egressTo: map['egressTo'] == null ? null : pulumi.Output.create<ServicePerimeterDryRunEgressPolicyEgressTo>(ServicePerimeterDryRunEgressPolicyEgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      perimeter: map['perimeter'] == null ? null : pulumi.Output.create<String>(map['perimeter'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
+      accessPolicyId: map['accessPolicyId'] == null ? null : (map['accessPolicyId'] as String).input(),
+      egressFrom: map['egressFrom'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((map['egressFrom'] as Map).cast<String, dynamic>())).input(),
+      egressTo: map['egressTo'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      perimeter: map['perimeter'] == null ? null : (map['perimeter'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

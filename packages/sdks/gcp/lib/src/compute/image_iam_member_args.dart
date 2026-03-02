@@ -41,17 +41,12 @@ class ImageIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   ImageIamMemberArgs({
-    pulumi.Output<ImageIamMemberCondition>? condition,
-    required pulumi.Output<String> image,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ImageIamMemberCondition>(condition),
-      image = pulumi.Input.asInput<String>(image),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.image,
+    required this.member,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,11 +60,11 @@ class ImageIamMemberArgs {
 
   factory ImageIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ImageIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<ImageIamMemberCondition>(ImageIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      image: pulumi.Output.create<String>(map['image'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (ImageIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      image: (map['image'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

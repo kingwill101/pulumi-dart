@@ -26,15 +26,11 @@ class GetInstanceArgs {
   /// [location] (optional)
   /// [project] (optional)
   GetInstanceArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.clusterId,
+    required this.instanceId,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

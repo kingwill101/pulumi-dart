@@ -22,15 +22,11 @@ class HostingVersionState {
   /// [siteId] Required. The ID of the site in which to create this Version.
   /// [versionId] The ID for the version as in sites/SITE_ID/versions/VERSION_ID
   HostingVersionState({
-    pulumi.Output<HostingVersionConfig>? config,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<String>? versionId,
-  }) :
-      config = pulumi.Input.asOptionalInput<HostingVersionConfig>(config),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      versionId = pulumi.Input.asOptionalInput<String>(versionId);
+    this.config,
+    this.name,
+    this.siteId,
+    this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class HostingVersionState {
 
   factory HostingVersionState.fromMap(Map<String, dynamic> map) {
     return HostingVersionState(
-      config: map['config'] == null ? null : pulumi.Output.create<HostingVersionConfig>(HostingVersionConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      versionId: map['versionId'] == null ? null : pulumi.Output.create<String>(map['versionId'] as String),
+      config: map['config'] == null ? null : (HostingVersionConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
     );
   }
 }

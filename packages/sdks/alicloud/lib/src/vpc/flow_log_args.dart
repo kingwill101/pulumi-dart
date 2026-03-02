@@ -57,33 +57,20 @@ class FlowLogArgs {
   /// [trafficPaths] The collected flow path. Value:
   /// [trafficType] The type of traffic collected. Valid values:
   FlowLogArgs({
-    pulumi.Output<String>? aggregationInterval,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? flowLogName,
-    pulumi.Output<String>? ipVersion,
-    required pulumi.Output<String> logStoreName,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<String>? resourceGroupId,
-    required pulumi.Output<String> resourceId,
-    required pulumi.Output<String> resourceType,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? trafficPaths,
-    required pulumi.Output<String> trafficType,
-  }) :
-      aggregationInterval = pulumi.Input.asOptionalInput<String>(aggregationInterval),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      flowLogName = pulumi.Input.asOptionalInput<String>(flowLogName),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      logStoreName = pulumi.Input.asInput<String>(logStoreName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trafficPaths = pulumi.Input.asOptionalInput<List<String>>(trafficPaths),
-      trafficType = pulumi.Input.asInput<String>(trafficType);
+    this.aggregationInterval,
+    this.description,
+    this.flowLogName,
+    this.ipVersion,
+    required this.logStoreName,
+    required this.projectName,
+    this.resourceGroupId,
+    required this.resourceId,
+    required this.resourceType,
+    this.status,
+    this.tags,
+    this.trafficPaths,
+    required this.trafficType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,19 +92,19 @@ class FlowLogArgs {
 
   factory FlowLogArgs.fromMap(Map<String, dynamic> map) {
     return FlowLogArgs(
-      aggregationInterval: map['aggregationInterval'] == null ? null : pulumi.Output.create<String>(map['aggregationInterval'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      flowLogName: map['flowLogName'] == null ? null : pulumi.Output.create<String>(map['flowLogName'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      logStoreName: pulumi.Output.create<String>(map['logStoreName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trafficPaths: map['trafficPaths'] == null ? null : pulumi.Output.create<List<String>>((map['trafficPaths'] as List).cast<String>()),
-      trafficType: pulumi.Output.create<String>(map['trafficType'] as String),
+      aggregationInterval: map['aggregationInterval'] == null ? null : (map['aggregationInterval'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      logStoreName: (map['logStoreName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trafficPaths: map['trafficPaths'] == null ? null : ((map['trafficPaths'] as List).cast<String>()).input(),
+      trafficType: (map['trafficType'] as String).input(),
     );
   }
 }

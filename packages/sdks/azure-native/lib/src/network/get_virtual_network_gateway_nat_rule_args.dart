@@ -19,13 +19,10 @@ class GetVirtualNetworkGatewayNatRuleArgs {
   /// [resourceGroupName] The resource group name of the Virtual Network Gateway.
   /// [virtualNetworkGatewayName] The name of the gateway.
   GetVirtualNetworkGatewayNatRuleArgs({
-    required pulumi.Output<String> natRuleName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualNetworkGatewayName,
-  }) :
-      natRuleName = pulumi.Input.asInput<String>(natRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualNetworkGatewayName = pulumi.Input.asInput<String>(virtualNetworkGatewayName);
+    required this.natRuleName,
+    required this.resourceGroupName,
+    required this.virtualNetworkGatewayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVirtualNetworkGatewayNatRuleArgs {
 
   factory GetVirtualNetworkGatewayNatRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayNatRuleArgs(
-      natRuleName: pulumi.Output.create<String>(map['natRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualNetworkGatewayName: pulumi.Output.create<String>(map['virtualNetworkGatewayName'] as String),
+      natRuleName: (map['natRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualNetworkGatewayName: (map['virtualNetworkGatewayName'] as String).input(),
     );
   }
 }

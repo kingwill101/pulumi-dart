@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceFromTemplateInstanceEncryptionKey {
   /// The self link of the encryption key that is stored in Google Cloud KMS.
-  final String? kmsKeySelfLink;
+  final pulumi.Input<String>? kmsKeySelfLink;
   /// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
-  final String? kmsKeyServiceAccount;
+  final pulumi.Input<String>? kmsKeyServiceAccount;
   /// The SHA256 hash of the customer's encryption key.
-  final String? sha256;
+  final pulumi.Input<String>? sha256;
 
   /// Creates a new [InstanceFromTemplateInstanceEncryptionKey].
   /// [kmsKeySelfLink] The self link of the encryption key that is stored in Google Cloud KMS.
@@ -29,9 +30,9 @@ class InstanceFromTemplateInstanceEncryptionKey {
 
   factory InstanceFromTemplateInstanceEncryptionKey.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateInstanceEncryptionKey(
-      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : map['kmsKeySelfLink'] as String,
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : map['kmsKeyServiceAccount'] as String,
-      sha256: map['sha256'] == null ? null : map['sha256'] as String,
+      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink'] as String).input(),
+      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount'] as String).input(),
+      sha256: map['sha256'] == null ? null : (map['sha256'] as String).input(),
     );
   }
 }

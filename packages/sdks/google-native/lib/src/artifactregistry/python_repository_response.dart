@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for a Python remote repository.
 class PythonRepositoryResponse {
   /// One of the publicly available Python repositories supported by Artifact Registry.
-  final String publicRepository;
+  final pulumi.Input<String> publicRepository;
 
   /// Creates a new [PythonRepositoryResponse].
   /// [publicRepository] One of the publicly available Python repositories supported by Artifact Registry.
@@ -20,7 +21,7 @@ class PythonRepositoryResponse {
 
   factory PythonRepositoryResponse.fromMap(Map<String, dynamic> map) {
     return PythonRepositoryResponse(
-      publicRepository: map['publicRepository'] as String,
+      publicRepository: (map['publicRepository'] as String).input(),
     );
   }
 }

@@ -47,31 +47,19 @@ class DeploymentArgs {
   /// [title] API deployment title
   /// [workspaceName] The name of the workspace.
   DeploymentArgs({
-    required pulumi.Output<String> apiName,
-    pulumi.Output<dynamic>? customProperties,
-    pulumi.Output<String>? definitionId,
-    pulumi.Output<String>? deploymentName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? environmentId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<DeploymentServer>? server,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? title,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      apiName = pulumi.Input.asInput<String>(apiName),
-      customProperties = pulumi.Input.asOptionalInput<dynamic>(customProperties),
-      definitionId = pulumi.Input.asOptionalInput<String>(definitionId),
-      deploymentName = pulumi.Input.asOptionalInput<String>(deploymentName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      server = pulumi.Input.asOptionalInput<DeploymentServer>(server),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      title = pulumi.Input.asOptionalInput<String>(title),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.apiName,
+    this.customProperties,
+    this.definitionId,
+    this.deploymentName,
+    this.description,
+    this.environmentId,
+    required this.resourceGroupName,
+    this.server,
+    required this.serviceName,
+    this.state,
+    this.title,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      apiName: pulumi.Output.create<String>(map['apiName'] as String),
-      customProperties: map['customProperties'] == null ? null : pulumi.Output.create<dynamic>(map['customProperties']),
-      definitionId: map['definitionId'] == null ? null : pulumi.Output.create<String>(map['definitionId'] as String),
-      deploymentName: map['deploymentName'] == null ? null : pulumi.Output.create<String>(map['deploymentName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      server: map['server'] == null ? null : pulumi.Output.create<DeploymentServer>(DeploymentServer.fromMap((map['server'] as Map).cast<String, dynamic>())),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      apiName: (map['apiName'] as String).input(),
+      customProperties: map['customProperties'] == null ? null : (map['customProperties']).input(),
+      definitionId: map['definitionId'] == null ? null : (map['definitionId'] as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      server: map['server'] == null ? null : (DeploymentServer.fromMap((map['server'] as Map).cast<String, dynamic>())).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

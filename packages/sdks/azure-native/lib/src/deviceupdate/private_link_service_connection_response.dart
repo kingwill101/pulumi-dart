@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Private link service connection details.
 class PrivateLinkServiceConnectionResponse {
   /// List of group IDs.
-  final List<String>? groupIds;
+  final pulumi.Input<List<String>>? groupIds;
   /// Private link service connection name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Request message.
-  final String? requestMessage;
+  final pulumi.Input<String>? requestMessage;
 
   /// Creates a new [PrivateLinkServiceConnectionResponse].
   /// [groupIds] List of group IDs.
@@ -30,9 +31,9 @@ class PrivateLinkServiceConnectionResponse {
 
   factory PrivateLinkServiceConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionResponse(
-      groupIds: map['groupIds'] == null ? null : (map['groupIds'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      requestMessage: map['requestMessage'] == null ? null : map['requestMessage'] as String,
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
     );
   }
 }

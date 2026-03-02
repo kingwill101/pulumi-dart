@@ -33,23 +33,15 @@ class VirtualNetworkGatewayNatRuleState {
   /// [type] The type of the Virtual Network Gateway Nat Rule. Possible values are `Dynamic` and `Static`. Defaults to `Static`. Changing this forces a new resource to be created.
   /// [virtualNetworkGatewayId] The ID of the Virtual Network Gateway that this Virtual Network Gateway Nat Rule belongs to. Changing this forces a new resource to be created.
   VirtualNetworkGatewayNatRuleState({
-    pulumi.Output<List<VirtualNetworkGatewayNatRuleExternalMapping>>? externalMappings,
-    pulumi.Output<List<VirtualNetworkGatewayNatRuleInternalMapping>>? internalMappings,
-    pulumi.Output<String>? ipConfigurationId,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? virtualNetworkGatewayId,
-  }) :
-      externalMappings = pulumi.Input.asOptionalInput<List<VirtualNetworkGatewayNatRuleExternalMapping>>(externalMappings),
-      internalMappings = pulumi.Input.asOptionalInput<List<VirtualNetworkGatewayNatRuleInternalMapping>>(internalMappings),
-      ipConfigurationId = pulumi.Input.asOptionalInput<String>(ipConfigurationId),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      virtualNetworkGatewayId = pulumi.Input.asOptionalInput<String>(virtualNetworkGatewayId);
+    this.externalMappings,
+    this.internalMappings,
+    this.ipConfigurationId,
+    this.mode,
+    this.name,
+    this.resourceGroupName,
+    this.type,
+    this.virtualNetworkGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class VirtualNetworkGatewayNatRuleState {
 
   factory VirtualNetworkGatewayNatRuleState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayNatRuleState(
-      externalMappings: map['externalMappings'] == null ? null : pulumi.Output.create<List<VirtualNetworkGatewayNatRuleExternalMapping>>(pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleExternalMapping>(map['externalMappings'], (value) => VirtualNetworkGatewayNatRuleExternalMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      internalMappings: map['internalMappings'] == null ? null : pulumi.Output.create<List<VirtualNetworkGatewayNatRuleInternalMapping>>(pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleInternalMapping>(map['internalMappings'], (value) => VirtualNetworkGatewayNatRuleInternalMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      ipConfigurationId: map['ipConfigurationId'] == null ? null : pulumi.Output.create<String>(map['ipConfigurationId'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      virtualNetworkGatewayId: map['virtualNetworkGatewayId'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkGatewayId'] as String),
+      externalMappings: map['externalMappings'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleExternalMapping>(map['externalMappings'], (value) => VirtualNetworkGatewayNatRuleExternalMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      internalMappings: map['internalMappings'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleInternalMapping>(map['internalMappings'], (value) => VirtualNetworkGatewayNatRuleInternalMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipConfigurationId: map['ipConfigurationId'] == null ? null : (map['ipConfigurationId'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      virtualNetworkGatewayId: map['virtualNetworkGatewayId'] == null ? null : (map['virtualNetworkGatewayId'] as String).input(),
     );
   }
 }

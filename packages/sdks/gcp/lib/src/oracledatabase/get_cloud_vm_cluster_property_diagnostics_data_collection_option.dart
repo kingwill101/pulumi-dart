@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudVmClusterPropertyDiagnosticsDataCollectionOption {
   /// Indicates whether diagnostic collection is enabled for the VM cluster
-  final bool diagnosticsEventsEnabled;
+  final pulumi.Input<bool> diagnosticsEventsEnabled;
   /// Indicates whether health monitoring is enabled for the VM cluster
-  final bool healthMonitoringEnabled;
+  final pulumi.Input<bool> healthMonitoringEnabled;
   /// Indicates whether incident logs and trace collection are enabled for the VM
   /// cluster
-  final bool incidentLogsEnabled;
+  final pulumi.Input<bool> incidentLogsEnabled;
 
   /// Creates a new [GetCloudVmClusterPropertyDiagnosticsDataCollectionOption].
   /// [diagnosticsEventsEnabled] Indicates whether diagnostic collection is enabled for the VM cluster
@@ -30,9 +31,9 @@ class GetCloudVmClusterPropertyDiagnosticsDataCollectionOption {
 
   factory GetCloudVmClusterPropertyDiagnosticsDataCollectionOption.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterPropertyDiagnosticsDataCollectionOption(
-      diagnosticsEventsEnabled: map['diagnosticsEventsEnabled'] as bool,
-      healthMonitoringEnabled: map['healthMonitoringEnabled'] as bool,
-      incidentLogsEnabled: map['incidentLogsEnabled'] as bool,
+      diagnosticsEventsEnabled: (map['diagnosticsEventsEnabled'] as bool).input(),
+      healthMonitoringEnabled: (map['healthMonitoringEnabled'] as bool).input(),
+      incidentLogsEnabled: (map['incidentLogsEnabled'] as bool).input(),
     );
   }
 }

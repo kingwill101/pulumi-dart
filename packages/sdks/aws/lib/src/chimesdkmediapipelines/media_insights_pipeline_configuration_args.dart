@@ -30,19 +30,13 @@ class MediaInsightsPipelineConfigurationArgs {
   /// [resourceAccessRoleArn] ARN of IAM Role used by service to invoke processors and sinks specified by configuration elements.
   /// [tags] Key-value map of tags for the resource.
   MediaInsightsPipelineConfigurationArgs({
-    required pulumi.Output<List<MediaInsightsPipelineConfigurationElement>> elements,
-    pulumi.Output<String>? name,
-    pulumi.Output<MediaInsightsPipelineConfigurationRealTimeAlertConfiguration>? realTimeAlertConfiguration,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceAccessRoleArn,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      elements = pulumi.Input.asInput<List<MediaInsightsPipelineConfigurationElement>>(elements),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      realTimeAlertConfiguration = pulumi.Input.asOptionalInput<MediaInsightsPipelineConfigurationRealTimeAlertConfiguration>(realTimeAlertConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceAccessRoleArn = pulumi.Input.asInput<String>(resourceAccessRoleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.elements,
+    this.name,
+    this.realTimeAlertConfiguration,
+    this.region,
+    required this.resourceAccessRoleArn,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class MediaInsightsPipelineConfigurationArgs {
 
   factory MediaInsightsPipelineConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationArgs(
-      elements: pulumi.Output.create<List<MediaInsightsPipelineConfigurationElement>>(pulumi.Input.decodeList<MediaInsightsPipelineConfigurationElement>(map['elements'], (value) => MediaInsightsPipelineConfigurationElement.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      realTimeAlertConfiguration: map['realTimeAlertConfiguration'] == null ? null : pulumi.Output.create<MediaInsightsPipelineConfigurationRealTimeAlertConfiguration>(MediaInsightsPipelineConfigurationRealTimeAlertConfiguration.fromMap((map['realTimeAlertConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceAccessRoleArn: pulumi.Output.create<String>(map['resourceAccessRoleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      elements: (pulumi.Input.decodeList<MediaInsightsPipelineConfigurationElement>(map['elements'], (value) => MediaInsightsPipelineConfigurationElement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      realTimeAlertConfiguration: map['realTimeAlertConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationRealTimeAlertConfiguration.fromMap((map['realTimeAlertConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceAccessRoleArn: (map['resourceAccessRoleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

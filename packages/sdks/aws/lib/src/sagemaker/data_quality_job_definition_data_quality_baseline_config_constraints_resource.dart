@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource {
   /// The Amazon S3 URI for the constraints resource.
-  final String? s3Uri;
+  final pulumi.Input<String>? s3Uri;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource].
   /// [s3Uri] The Amazon S3 URI for the constraints resource.
@@ -19,7 +20,7 @@ class DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource {
 
   factory DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource(
-      s3Uri: map['s3Uri'] == null ? null : map['s3Uri'] as String,
+      s3Uri: map['s3Uri'] == null ? null : (map['s3Uri'] as String).input(),
     );
   }
 }

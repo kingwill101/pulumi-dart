@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolNodePlacement {
   /// The placement policy for allocating nodes in the pool.
-  final String policy;
+  final pulumi.Input<String> policy;
 
   /// Creates a new [GetPoolNodePlacement].
   /// [policy] The placement policy for allocating nodes in the pool.
@@ -19,7 +20,7 @@ class GetPoolNodePlacement {
 
   factory GetPoolNodePlacement.fromMap(Map<String, dynamic> map) {
     return GetPoolNodePlacement(
-      policy: map['policy'] as String,
+      policy: (map['policy'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetDatabasePostgresqlArgs {
   /// [databaseId] The ID of the PostgreSQL database. Deprecated: Use id instead.
   /// [id] The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
   GetDatabasePostgresqlArgs({
-    pulumi.Output<int>? databaseId,
-    pulumi.Output<int>? id,
-  }) :
-      databaseId = pulumi.Input.asOptionalInput<int>(databaseId),
-      id = pulumi.Input.asOptionalInput<int>(id);
+    this.databaseId,
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDatabasePostgresqlArgs {
 
   factory GetDatabasePostgresqlArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabasePostgresqlArgs(
-      databaseId: map['databaseId'] == null ? null : pulumi.Output.create<int>(map['databaseId'] as int),
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as int).input(),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
     );
   }
 }

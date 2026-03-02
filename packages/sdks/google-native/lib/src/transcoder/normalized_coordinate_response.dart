@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// 2D normalized coordinates. Default: `{0.0, 0.0}`
 class NormalizedCoordinateResponse {
   /// Normalized x coordinate.
-  final double x;
+  final pulumi.Input<double> x;
   /// Normalized y coordinate.
-  final double y;
+  final pulumi.Input<double> y;
 
   /// Creates a new [NormalizedCoordinateResponse].
   /// [x] Normalized x coordinate.
@@ -25,8 +26,8 @@ class NormalizedCoordinateResponse {
 
   factory NormalizedCoordinateResponse.fromMap(Map<String, dynamic> map) {
     return NormalizedCoordinateResponse(
-      x: map['x'] as double,
-      y: map['y'] as double,
+      x: (map['x'] as double).input(),
+      y: (map['y'] as double).input(),
     );
   }
 }

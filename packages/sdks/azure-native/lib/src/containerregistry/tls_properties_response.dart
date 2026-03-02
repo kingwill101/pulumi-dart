@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tls_certificate_properties_response.dart';
 
 /// The TLS properties of the connected registry login server.
 class TlsPropertiesResponse {
   /// The certificate used to configure HTTPS for the login server.
-  final TlsCertificatePropertiesResponse certificate;
+  final pulumi.Input<TlsCertificatePropertiesResponse> certificate;
   /// Indicates whether HTTPS is enabled for the login server.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [TlsPropertiesResponse].
   /// [certificate] The certificate used to configure HTTPS for the login server.
@@ -19,15 +20,15 @@ class TlsPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificate': certificate.toMap(),
+      'certificate': pulumi.Input.mapInputValue<TlsCertificatePropertiesResponse, Map<String, dynamic>>(certificate, (value) => value.toMap()),
       'status': status,
     };
   }
 
   factory TlsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TlsPropertiesResponse(
-      certificate: TlsCertificatePropertiesResponse.fromMap((map['certificate'] as Map).cast<String, dynamic>()),
-      status: map['status'] as String,
+      certificate: (TlsCertificatePropertiesResponse.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

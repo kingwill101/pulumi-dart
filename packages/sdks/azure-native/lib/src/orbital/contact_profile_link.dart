@@ -6,17 +6,17 @@ import 'contact_profile_link_channel.dart';
 /// Contact Profile Link.
 class ContactProfileLink {
   /// Contact Profile Link Channel.
-  final List<ContactProfileLinkChannel> channels;
+  final pulumi.Input<List<ContactProfileLinkChannel>> channels;
   /// Direction (Uplink or Downlink).
-  final String direction;
+  final pulumi.Input<String> direction;
   /// Effective Isotropic Radiated Power (EIRP) in dBW. It is the required EIRP by the customer. Not used yet.
-  final double? eirpdBW;
+  final pulumi.Input<double>? eirpdBW;
   /// Gain to noise temperature in db/K. It is the required G/T by the customer. Not used yet.
-  final double? gainOverTemperature;
+  final pulumi.Input<double>? gainOverTemperature;
   /// Link name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Polarization. e.g. (RHCP, LHCP).
-  final String polarization;
+  final pulumi.Input<String> polarization;
 
   /// Creates a new [ContactProfileLink].
   /// [channels] Contact Profile Link Channel.
@@ -36,7 +36,7 @@ class ContactProfileLink {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channels': pulumi.Input.encodeList<ContactProfileLinkChannel, Map<String, dynamic>>(channels, (value) => value.toMap()),
+      'channels': pulumi.Input.mapInputValue<List<ContactProfileLinkChannel>, List<Map<String, dynamic>>>(channels, (value) => pulumi.Input.encodeList<ContactProfileLinkChannel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'direction': direction,
       'eirpdBW': ?eirpdBW,
       'gainOverTemperature': ?gainOverTemperature,
@@ -47,12 +47,12 @@ class ContactProfileLink {
 
   factory ContactProfileLink.fromMap(Map<String, dynamic> map) {
     return ContactProfileLink(
-      channels: pulumi.Input.decodeList<ContactProfileLinkChannel>(map['channels'], (value) => ContactProfileLinkChannel.fromMap((value as Map).cast<String, dynamic>())),
-      direction: map['direction'] as String,
-      eirpdBW: map['eirpdBW'] == null ? null : map['eirpdBW'] as double,
-      gainOverTemperature: map['gainOverTemperature'] == null ? null : map['gainOverTemperature'] as double,
-      name: map['name'] as String,
-      polarization: map['polarization'] as String,
+      channels: (pulumi.Input.decodeList<ContactProfileLinkChannel>(map['channels'], (value) => ContactProfileLinkChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      direction: (map['direction'] as String).input(),
+      eirpdBW: map['eirpdBW'] == null ? null : (map['eirpdBW'] as double).input(),
+      gainOverTemperature: map['gainOverTemperature'] == null ? null : (map['gainOverTemperature'] as double).input(),
+      name: (map['name'] as String).input(),
+      polarization: (map['polarization'] as String).input(),
     );
   }
 }

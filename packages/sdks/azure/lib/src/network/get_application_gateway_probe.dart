@@ -5,29 +5,29 @@ import 'get_application_gateway_probe_match.dart';
 
 class GetApplicationGatewayProbe {
   /// The Hostname used for this Probe.
-  final String host;
+  final pulumi.Input<String> host;
   /// The ID of the Rewrite Rule Set
-  final String id;
+  final pulumi.Input<String> id;
   /// The Interval between two consecutive probes in seconds.
-  final int interval;
+  final pulumi.Input<int> interval;
   /// A `match` block as defined above.
-  final List<GetApplicationGatewayProbeMatch> matches;
+  final pulumi.Input<List<GetApplicationGatewayProbeMatch>> matches;
   /// The minimum number of servers that are always marked as healthy.
-  final int minimumServers;
+  final pulumi.Input<int> minimumServers;
   /// The name of this Application Gateway.
-  final String name;
+  final pulumi.Input<String> name;
   /// The URL path to rewrite.
-  final String path;
+  final pulumi.Input<String> path;
   /// Whether the host header is picked from the backend HTTP settings.
-  final bool pickHostNameFromBackendHttpSettings;
+  final pulumi.Input<bool> pickHostNameFromBackendHttpSettings;
   /// Custom port which is used for probing the backend servers.
-  final int port;
+  final pulumi.Input<int> port;
   /// The Protocol used for this Probe.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The Timeout used for this Probe, indicating when a probe becomes unhealthy.
-  final int timeout;
+  final pulumi.Input<int> timeout;
   /// The Unhealthy Threshold for this Probe, which indicates the amount of retries which will be attempted before a node is deemed unhealthy.
-  final int unhealthyThreshold;
+  final pulumi.Input<int> unhealthyThreshold;
 
   /// Creates a new [GetApplicationGatewayProbe].
   /// [host] The Hostname used for this Probe.
@@ -62,7 +62,7 @@ class GetApplicationGatewayProbe {
       'host': host,
       'id': id,
       'interval': interval,
-      'matches': pulumi.Input.encodeList<GetApplicationGatewayProbeMatch, Map<String, dynamic>>(matches, (value) => value.toMap()),
+      'matches': pulumi.Input.mapInputValue<List<GetApplicationGatewayProbeMatch>, List<Map<String, dynamic>>>(matches, (value) => pulumi.Input.encodeList<GetApplicationGatewayProbeMatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'minimumServers': minimumServers,
       'name': name,
       'path': path,
@@ -76,18 +76,18 @@ class GetApplicationGatewayProbe {
 
   factory GetApplicationGatewayProbe.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayProbe(
-      host: map['host'] as String,
-      id: map['id'] as String,
-      interval: map['interval'] as int,
-      matches: pulumi.Input.decodeList<GetApplicationGatewayProbeMatch>(map['matches'], (value) => GetApplicationGatewayProbeMatch.fromMap((value as Map).cast<String, dynamic>())),
-      minimumServers: map['minimumServers'] as int,
-      name: map['name'] as String,
-      path: map['path'] as String,
-      pickHostNameFromBackendHttpSettings: map['pickHostNameFromBackendHttpSettings'] as bool,
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
-      timeout: map['timeout'] as int,
-      unhealthyThreshold: map['unhealthyThreshold'] as int,
+      host: (map['host'] as String).input(),
+      id: (map['id'] as String).input(),
+      interval: (map['interval'] as int).input(),
+      matches: (pulumi.Input.decodeList<GetApplicationGatewayProbeMatch>(map['matches'], (value) => GetApplicationGatewayProbeMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      minimumServers: (map['minimumServers'] as int).input(),
+      name: (map['name'] as String).input(),
+      path: (map['path'] as String).input(),
+      pickHostNameFromBackendHttpSettings: (map['pickHostNameFromBackendHttpSettings'] as bool).input(),
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      timeout: (map['timeout'] as int).input(),
+      unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),
     );
   }
 }

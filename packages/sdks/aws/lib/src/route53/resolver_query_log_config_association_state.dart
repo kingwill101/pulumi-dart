@@ -16,13 +16,10 @@ class ResolverQueryLogConfigAssociationState {
   /// [resolverQueryLogConfigId] The ID of the Route 53 Resolver query logging configuration that you want to associate a VPC with.
   /// [resourceId] The ID of a VPC that you want this query logging configuration to log queries for.
   ResolverQueryLogConfigAssociationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resolverQueryLogConfigId,
-    pulumi.Output<String>? resourceId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resolverQueryLogConfigId = pulumi.Input.asOptionalInput<String>(resolverQueryLogConfigId),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId);
+    this.region,
+    this.resolverQueryLogConfigId,
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ResolverQueryLogConfigAssociationState {
 
   factory ResolverQueryLogConfigAssociationState.fromMap(Map<String, dynamic> map) {
     return ResolverQueryLogConfigAssociationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resolverQueryLogConfigId: map['resolverQueryLogConfigId'] == null ? null : pulumi.Output.create<String>(map['resolverQueryLogConfigId'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resolverQueryLogConfigId: map['resolverQueryLogConfigId'] == null ? null : (map['resolverQueryLogConfigId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

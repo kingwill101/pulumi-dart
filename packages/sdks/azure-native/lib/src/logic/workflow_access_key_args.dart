@@ -28,19 +28,13 @@ class WorkflowAccessKeyArgs {
   /// [resourceGroupName] The resource group name.
   /// [workflowName] The workflow name.
   WorkflowAccessKeyArgs({
-    pulumi.Output<String>? accessKeyName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? notAfter,
-    pulumi.Output<String>? notBefore,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workflowName,
-  }) :
-      accessKeyName = pulumi.Input.asOptionalInput<String>(accessKeyName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      notAfter = pulumi.Input.asOptionalInput<String>(notAfter),
-      notBefore = pulumi.Input.asOptionalInput<String>(notBefore),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workflowName = pulumi.Input.asInput<String>(workflowName);
+    this.accessKeyName,
+    this.id,
+    this.notAfter,
+    this.notBefore,
+    required this.resourceGroupName,
+    required this.workflowName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class WorkflowAccessKeyArgs {
 
   factory WorkflowAccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowAccessKeyArgs(
-      accessKeyName: map['accessKeyName'] == null ? null : pulumi.Output.create<String>(map['accessKeyName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      notAfter: map['notAfter'] == null ? null : pulumi.Output.create<String>(map['notAfter'] as String),
-      notBefore: map['notBefore'] == null ? null : pulumi.Output.create<String>(map['notBefore'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workflowName: pulumi.Output.create<String>(map['workflowName'] as String),
+      accessKeyName: map['accessKeyName'] == null ? null : (map['accessKeyName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workflowName: (map['workflowName'] as String).input(),
     );
   }
 }

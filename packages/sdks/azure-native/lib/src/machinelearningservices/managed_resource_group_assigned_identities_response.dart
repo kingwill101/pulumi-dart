@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details for managed resource group assigned identities.
 class ManagedResourceGroupAssignedIdentitiesResponse {
   /// Identity principal Id
-  final String principalId;
+  final pulumi.Input<String> principalId;
 
   /// Creates a new [ManagedResourceGroupAssignedIdentitiesResponse].
   /// [principalId] Identity principal Id
@@ -20,7 +21,7 @@ class ManagedResourceGroupAssignedIdentitiesResponse {
 
   factory ManagedResourceGroupAssignedIdentitiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedResourceGroupAssignedIdentitiesResponse(
-      principalId: map['principalId'] as String,
+      principalId: (map['principalId'] as String).input(),
     );
   }
 }

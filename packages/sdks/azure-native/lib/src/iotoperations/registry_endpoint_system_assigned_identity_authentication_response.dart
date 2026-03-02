@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'registry_endpoint_system_assigned_managed_identity_settings_response.dart';
 
 /// System assigned identity authentication
 class RegistryEndpointSystemAssignedIdentityAuthenticationResponse {
   /// The authentication method.
   /// Expected value is 'SystemAssignedManagedIdentity'.
-  final String method;
+  final pulumi.Input<String> method;
   /// System assigned managed identity properties
-  final RegistryEndpointSystemAssignedManagedIdentitySettingsResponse systemAssignedManagedIdentitySettings;
+  final pulumi.Input<RegistryEndpointSystemAssignedManagedIdentitySettingsResponse> systemAssignedManagedIdentitySettings;
 
   /// Creates a new [RegistryEndpointSystemAssignedIdentityAuthenticationResponse].
   /// [method] The authentication method.
@@ -21,14 +22,14 @@ class RegistryEndpointSystemAssignedIdentityAuthenticationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'method': method,
-      'systemAssignedManagedIdentitySettings': systemAssignedManagedIdentitySettings.toMap(),
+      'systemAssignedManagedIdentitySettings': pulumi.Input.mapInputValue<RegistryEndpointSystemAssignedManagedIdentitySettingsResponse, Map<String, dynamic>>(systemAssignedManagedIdentitySettings, (value) => value.toMap()),
     };
   }
 
   factory RegistryEndpointSystemAssignedIdentityAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointSystemAssignedIdentityAuthenticationResponse(
-      method: map['method'] as String,
-      systemAssignedManagedIdentitySettings: RegistryEndpointSystemAssignedManagedIdentitySettingsResponse.fromMap((map['systemAssignedManagedIdentitySettings'] as Map).cast<String, dynamic>()),
+      method: (map['method'] as String).input(),
+      systemAssignedManagedIdentitySettings: (RegistryEndpointSystemAssignedManagedIdentitySettingsResponse.fromMap((map['systemAssignedManagedIdentitySettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

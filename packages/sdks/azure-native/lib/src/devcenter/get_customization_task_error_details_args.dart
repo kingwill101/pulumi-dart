@@ -22,15 +22,11 @@ class GetCustomizationTaskErrorDetailsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [taskName] The name of the Task.
   GetCustomizationTaskErrorDetailsArgs({
-    required pulumi.Output<String> catalogName,
-    required pulumi.Output<String> devCenterName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> taskName,
-  }) :
-      catalogName = pulumi.Input.asInput<String>(catalogName),
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      taskName = pulumi.Input.asInput<String>(taskName);
+    required this.catalogName,
+    required this.devCenterName,
+    required this.resourceGroupName,
+    required this.taskName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetCustomizationTaskErrorDetailsArgs {
 
   factory GetCustomizationTaskErrorDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomizationTaskErrorDetailsArgs(
-      catalogName: pulumi.Output.create<String>(map['catalogName'] as String),
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      taskName: pulumi.Output.create<String>(map['taskName'] as String),
+      catalogName: (map['catalogName'] as String).input(),
+      devCenterName: (map['devCenterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      taskName: (map['taskName'] as String).input(),
     );
   }
 }

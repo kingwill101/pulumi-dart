@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolSystemTool {
   /// (Output)
   /// The description of the system tool.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// (Output)
   /// The name of the system tool.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ToolSystemTool].
   /// [description] (Output)
@@ -26,8 +27,8 @@ class ToolSystemTool {
 
   factory ToolSystemTool.fromMap(Map<String, dynamic> map) {
     return ToolSystemTool(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

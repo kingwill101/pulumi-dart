@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Overhead structure represents the resource overhead associated with running a pod.
 class OverheadNodeK8sIoV1alpha1 {
   /// PodFixed represents the fixed resource overhead associated with running a pod.
-  final Map<String, String>? podFixed;
+  final pulumi.Input<Map<String, String>>? podFixed;
 
   /// Creates a new [OverheadNodeK8sIoV1alpha1].
   /// [podFixed] PodFixed represents the fixed resource overhead associated with running a pod.
@@ -20,7 +21,7 @@ class OverheadNodeK8sIoV1alpha1 {
 
   factory OverheadNodeK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return OverheadNodeK8sIoV1alpha1(
-      podFixed: map['podFixed'] == null ? null : (map['podFixed'] as Map).cast<String, String>(),
+      podFixed: map['podFixed'] == null ? null : ((map['podFixed'] as Map).cast<String, String>()).input(),
     );
   }
 }

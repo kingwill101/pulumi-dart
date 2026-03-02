@@ -22,13 +22,10 @@ class AiRagEngineConfigArgs {
   /// [ragManagedDbConfig] Required. The config of the RagManagedDb used by RagEngine.
   /// [region] The region of the RagEngineConfig. eg us-central1
   AiRagEngineConfigArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<AiRagEngineConfigRagManagedDbConfig> ragManagedDbConfig,
-    pulumi.Output<String>? region,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      ragManagedDbConfig = pulumi.Input.asInput<AiRagEngineConfigRagManagedDbConfig>(ragManagedDbConfig),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.project,
+    required this.ragManagedDbConfig,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class AiRagEngineConfigArgs {
 
   factory AiRagEngineConfigArgs.fromMap(Map<String, dynamic> map) {
     return AiRagEngineConfigArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      ragManagedDbConfig: pulumi.Output.create<AiRagEngineConfigRagManagedDbConfig>(AiRagEngineConfigRagManagedDbConfig.fromMap((map['ragManagedDbConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      ragManagedDbConfig: (AiRagEngineConfigRagManagedDbConfig.fromMap((map['ragManagedDbConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

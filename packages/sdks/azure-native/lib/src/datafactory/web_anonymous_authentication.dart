@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A WebLinkedService that uses anonymous authentication to communicate with an HTTP endpoint.
 class WebAnonymousAuthentication {
   /// Type of authentication used to connect to the web table source.
   /// Expected value is 'Anonymous'.
-  final String authenticationType;
+  final pulumi.Input<String> authenticationType;
   /// The URL of the web service endpoint, e.g. https://www.microsoft.com . Type: string (or Expression with resultType string).
-  final dynamic url;
+  final pulumi.Input<dynamic> url;
 
   /// Creates a new [WebAnonymousAuthentication].
   /// [authenticationType] Type of authentication used to connect to the web table source.
@@ -26,8 +27,8 @@ class WebAnonymousAuthentication {
 
   factory WebAnonymousAuthentication.fromMap(Map<String, dynamic> map) {
     return WebAnonymousAuthentication(
-      authenticationType: map['authenticationType'] as String,
-      url: map['url'],
+      authenticationType: (map['authenticationType'] as String).input(),
+      url: (map['url']).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Serverless settings.
 class ServerlessSettingsResponse {
@@ -11,7 +12,7 @@ class ServerlessSettingsResponse {
   /// You can set the timeout to a longer period if messages are expected to be sent in longer intervals,
   /// and they want to keep the same client connection alive during this session.
   /// The service considers the client disconnected if it hasn't received a message (including keep-alive) in this interval.
-  final int? connectionTimeoutInSeconds;
+  final pulumi.Input<int>? connectionTimeoutInSeconds;
 
   /// Creates a new [ServerlessSettingsResponse].
   /// [connectionTimeoutInSeconds] Gets or sets Client Connection Timeout. Optional to be set.
@@ -27,7 +28,7 @@ class ServerlessSettingsResponse {
 
   factory ServerlessSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ServerlessSettingsResponse(
-      connectionTimeoutInSeconds: map['connectionTimeoutInSeconds'] == null ? null : map['connectionTimeoutInSeconds'] as int,
+      connectionTimeoutInSeconds: map['connectionTimeoutInSeconds'] == null ? null : (map['connectionTimeoutInSeconds'] as int).input(),
     );
   }
 }

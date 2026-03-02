@@ -19,15 +19,11 @@ class ReceiversState {
   /// [receiversName] The name of the resource. The length that cannot be repeated is 1-30 characters.
   /// [status] The status of the resource. `0` means uploading, `1` means upload completed.
   ReceiversState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? receiversAlias,
-    pulumi.Output<String>? receiversName,
-    pulumi.Output<int>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      receiversAlias = pulumi.Input.asOptionalInput<String>(receiversAlias),
-      receiversName = pulumi.Input.asOptionalInput<String>(receiversName),
-      status = pulumi.Input.asOptionalInput<int>(status);
+    this.description,
+    this.receiversAlias,
+    this.receiversName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ReceiversState {
 
   factory ReceiversState.fromMap(Map<String, dynamic> map) {
     return ReceiversState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      receiversAlias: map['receiversAlias'] == null ? null : pulumi.Output.create<String>(map['receiversAlias'] as String),
-      receiversName: map['receiversName'] == null ? null : pulumi.Output.create<String>(map['receiversName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      receiversAlias: map['receiversAlias'] == null ? null : (map['receiversAlias'] as String).input(),
+      receiversName: map['receiversName'] == null ? null : (map['receiversName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
     );
   }
 }

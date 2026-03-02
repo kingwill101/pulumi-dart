@@ -42,29 +42,18 @@ class PrivilegedAccessGroupAssignmentScheduleState {
   /// [ticketNumber] The ticket number in the ticket system approving this assignment. May be required by the role policy.
   /// [ticketSystem] The ticket system containing the ticket number approving this assignment. May be required by the role policy.
   PrivilegedAccessGroupAssignmentScheduleState({
-    pulumi.Output<String>? assignmentType,
-    pulumi.Output<String>? duration,
-    pulumi.Output<String>? expirationDate,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? justification,
-    pulumi.Output<bool>? permanentAssignment,
-    pulumi.Output<String>? principalId,
-    pulumi.Output<String>? startDate,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? ticketNumber,
-    pulumi.Output<String>? ticketSystem,
-  }) :
-      assignmentType = pulumi.Input.asOptionalInput<String>(assignmentType),
-      duration = pulumi.Input.asOptionalInput<String>(duration),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      justification = pulumi.Input.asOptionalInput<String>(justification),
-      permanentAssignment = pulumi.Input.asOptionalInput<bool>(permanentAssignment),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      startDate = pulumi.Input.asOptionalInput<String>(startDate),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      ticketNumber = pulumi.Input.asOptionalInput<String>(ticketNumber),
-      ticketSystem = pulumi.Input.asOptionalInput<String>(ticketSystem);
+    this.assignmentType,
+    this.duration,
+    this.expirationDate,
+    this.groupId,
+    this.justification,
+    this.permanentAssignment,
+    this.principalId,
+    this.startDate,
+    this.status,
+    this.ticketNumber,
+    this.ticketSystem,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class PrivilegedAccessGroupAssignmentScheduleState {
 
   factory PrivilegedAccessGroupAssignmentScheduleState.fromMap(Map<String, dynamic> map) {
     return PrivilegedAccessGroupAssignmentScheduleState(
-      assignmentType: map['assignmentType'] == null ? null : pulumi.Output.create<String>(map['assignmentType'] as String),
-      duration: map['duration'] == null ? null : pulumi.Output.create<String>(map['duration'] as String),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      justification: map['justification'] == null ? null : pulumi.Output.create<String>(map['justification'] as String),
-      permanentAssignment: map['permanentAssignment'] == null ? null : pulumi.Output.create<bool>(map['permanentAssignment'] as bool),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      startDate: map['startDate'] == null ? null : pulumi.Output.create<String>(map['startDate'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      ticketNumber: map['ticketNumber'] == null ? null : pulumi.Output.create<String>(map['ticketNumber'] as String),
-      ticketSystem: map['ticketSystem'] == null ? null : pulumi.Output.create<String>(map['ticketSystem'] as String),
+      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      permanentAssignment: map['permanentAssignment'] == null ? null : (map['permanentAssignment'] as bool).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ticketNumber: map['ticketNumber'] == null ? null : (map['ticketNumber'] as String).input(),
+      ticketSystem: map['ticketSystem'] == null ? null : (map['ticketSystem'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetCustomerSubscriptionArgs {
   /// [registrationName] Name of the Azure Stack registration.
   /// [resourceGroup] Name of the resource group.
   GetCustomerSubscriptionArgs({
-    required pulumi.Output<String> customerSubscriptionName,
-    required pulumi.Output<String> registrationName,
-    required pulumi.Output<String> resourceGroup,
-  }) :
-      customerSubscriptionName = pulumi.Input.asInput<String>(customerSubscriptionName),
-      registrationName = pulumi.Input.asInput<String>(registrationName),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup);
+    required this.customerSubscriptionName,
+    required this.registrationName,
+    required this.resourceGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCustomerSubscriptionArgs {
 
   factory GetCustomerSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomerSubscriptionArgs(
-      customerSubscriptionName: pulumi.Output.create<String>(map['customerSubscriptionName'] as String),
-      registrationName: pulumi.Output.create<String>(map['registrationName'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
+      customerSubscriptionName: (map['customerSubscriptionName'] as String).input(),
+      registrationName: (map['registrationName'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
     );
   }
 }

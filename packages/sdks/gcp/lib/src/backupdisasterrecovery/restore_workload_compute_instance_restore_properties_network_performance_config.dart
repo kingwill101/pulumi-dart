@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig {
   /// Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.
-  final String? totalEgressBandwidthTier;
+  final pulumi.Input<String>? totalEgressBandwidthTier;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.
@@ -19,7 +20,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig(
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : map['totalEgressBandwidthTier'] as String,
+      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (map['totalEgressBandwidthTier'] as String).input(),
     );
   }
 }

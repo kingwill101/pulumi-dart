@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerlessKubernetesClustersClusterConnections {
   /// API Server Internet endpoint.
-  final String apiServerInternet;
+  final pulumi.Input<String> apiServerInternet;
   /// API Server Intranet endpoint.
-  final String apiServerIntranet;
+  final pulumi.Input<String> apiServerIntranet;
   /// Master node SSH IP address.
-  final String masterPublicIp;
+  final pulumi.Input<String> masterPublicIp;
 
   /// Creates a new [GetServerlessKubernetesClustersClusterConnections].
   /// [apiServerInternet] API Server Internet endpoint.
@@ -29,9 +30,9 @@ class GetServerlessKubernetesClustersClusterConnections {
 
   factory GetServerlessKubernetesClustersClusterConnections.fromMap(Map<String, dynamic> map) {
     return GetServerlessKubernetesClustersClusterConnections(
-      apiServerInternet: map['apiServerInternet'] as String,
-      apiServerIntranet: map['apiServerIntranet'] as String,
-      masterPublicIp: map['masterPublicIp'] as String,
+      apiServerInternet: (map['apiServerInternet'] as String).input(),
+      apiServerIntranet: (map['apiServerIntranet'] as String).input(),
+      masterPublicIp: (map['masterPublicIp'] as String).input(),
     );
   }
 }

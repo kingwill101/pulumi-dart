@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterApplication {
   /// Application Tags.
-  final String tag;
+  final pulumi.Input<String> tag;
 
   /// Creates a new [GetClustersClusterApplication].
   /// [tag] Application Tags.
@@ -19,7 +20,7 @@ class GetClustersClusterApplication {
 
   factory GetClustersClusterApplication.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterApplication(
-      tag: map['tag'] as String,
+      tag: (map['tag'] as String).input(),
     );
   }
 }

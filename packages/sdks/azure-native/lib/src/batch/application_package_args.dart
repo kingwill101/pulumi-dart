@@ -25,17 +25,12 @@ class ApplicationPackageArgs {
   /// [tags] The tags of the resource.
   /// [versionName] The version of the application.
   ApplicationPackageArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> applicationName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? versionName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      versionName = pulumi.Input.asOptionalInput<String>(versionName);
+    required this.accountName,
+    required this.applicationName,
+    required this.resourceGroupName,
+    this.tags,
+    this.versionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ApplicationPackageArgs {
 
   factory ApplicationPackageArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationPackageArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      versionName: map['versionName'] == null ? null : pulumi.Output.create<String>(map['versionName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      applicationName: (map['applicationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
     );
   }
 }

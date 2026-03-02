@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autoscale_settings_response.dart';
 
 class SqlDatabaseGetPropertiesResponseOptions {
   /// Specifies the Autoscale settings.
-  final AutoscaleSettingsResponse? autoscaleSettings;
+  final pulumi.Input<AutoscaleSettingsResponse>? autoscaleSettings;
   /// Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
-  final int? throughput;
+  final pulumi.Input<int>? throughput;
 
   /// Creates a new [SqlDatabaseGetPropertiesResponseOptions].
   /// [autoscaleSettings] Specifies the Autoscale settings.
@@ -18,15 +19,15 @@ class SqlDatabaseGetPropertiesResponseOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscaleSettings': ?autoscaleSettings == null ? null : autoscaleSettings!.toMap(),
+      'autoscaleSettings': ?pulumi.Input.mapOptionalInputValue<AutoscaleSettingsResponse, Map<String, dynamic>>(autoscaleSettings, (value) => value.toMap()),
       'throughput': ?throughput,
     };
   }
 
   factory SqlDatabaseGetPropertiesResponseOptions.fromMap(Map<String, dynamic> map) {
     return SqlDatabaseGetPropertiesResponseOptions(
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : AutoscaleSettingsResponse.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>()),
-      throughput: map['throughput'] == null ? null : map['throughput'] as int,
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (AutoscaleSettingsResponse.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
     );
   }
 }

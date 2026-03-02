@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_assignment_properties_response_policy.dart';
 import 'policy_assignment_properties_response_role_definition.dart';
 import 'policy_assignment_properties_response_scope.dart';
@@ -7,11 +8,11 @@ import 'policy_assignment_properties_response_scope.dart';
 /// Expanded info of resource scope, role definition and policy
 class PolicyAssignmentPropertiesResponse {
   /// Details of the policy
-  final PolicyAssignmentPropertiesResponsePolicy? policy;
+  final pulumi.Input<PolicyAssignmentPropertiesResponsePolicy>? policy;
   /// Details of role definition
-  final PolicyAssignmentPropertiesResponseRoleDefinition? roleDefinition;
+  final pulumi.Input<PolicyAssignmentPropertiesResponseRoleDefinition>? roleDefinition;
   /// Details of the resource scope
-  final PolicyAssignmentPropertiesResponseScope? scope;
+  final pulumi.Input<PolicyAssignmentPropertiesResponseScope>? scope;
 
   /// Creates a new [PolicyAssignmentPropertiesResponse].
   /// [policy] Details of the policy
@@ -25,17 +26,17 @@ class PolicyAssignmentPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policy': ?policy == null ? null : policy!.toMap(),
-      'roleDefinition': ?roleDefinition == null ? null : roleDefinition!.toMap(),
-      'scope': ?scope == null ? null : scope!.toMap(),
+      'policy': ?pulumi.Input.mapOptionalInputValue<PolicyAssignmentPropertiesResponsePolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
+      'roleDefinition': ?pulumi.Input.mapOptionalInputValue<PolicyAssignmentPropertiesResponseRoleDefinition, Map<String, dynamic>>(roleDefinition, (value) => value.toMap()),
+      'scope': ?pulumi.Input.mapOptionalInputValue<PolicyAssignmentPropertiesResponseScope, Map<String, dynamic>>(scope, (value) => value.toMap()),
     };
   }
 
   factory PolicyAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PolicyAssignmentPropertiesResponse(
-      policy: map['policy'] == null ? null : PolicyAssignmentPropertiesResponsePolicy.fromMap((map['policy'] as Map).cast<String, dynamic>()),
-      roleDefinition: map['roleDefinition'] == null ? null : PolicyAssignmentPropertiesResponseRoleDefinition.fromMap((map['roleDefinition'] as Map).cast<String, dynamic>()),
-      scope: map['scope'] == null ? null : PolicyAssignmentPropertiesResponseScope.fromMap((map['scope'] as Map).cast<String, dynamic>()),
+      policy: map['policy'] == null ? null : (PolicyAssignmentPropertiesResponsePolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      roleDefinition: map['roleDefinition'] == null ? null : (PolicyAssignmentPropertiesResponseRoleDefinition.fromMap((map['roleDefinition'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (PolicyAssignmentPropertiesResponseScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

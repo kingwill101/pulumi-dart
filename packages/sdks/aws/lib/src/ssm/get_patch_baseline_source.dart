@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPatchBaselineSource {
   /// Value of the yum repo configuration.
-  final String configuration;
+  final pulumi.Input<String> configuration;
   /// Name specified to identify the patch source.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specific operating system versions a patch repository applies to.
-  final List<String> products;
+  final pulumi.Input<List<String>> products;
 
   /// Creates a new [GetPatchBaselineSource].
   /// [configuration] Value of the yum repo configuration.
@@ -29,9 +30,9 @@ class GetPatchBaselineSource {
 
   factory GetPatchBaselineSource.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselineSource(
-      configuration: map['configuration'] as String,
-      name: map['name'] as String,
-      products: (map['products'] as List).cast<String>(),
+      configuration: (map['configuration'] as String).input(),
+      name: (map['name'] as String).input(),
+      products: ((map['products'] as List).cast<String>()).input(),
     );
   }
 }

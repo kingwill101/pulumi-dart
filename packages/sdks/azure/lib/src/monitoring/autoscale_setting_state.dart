@@ -37,25 +37,16 @@ class AutoscaleSettingState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [targetResourceId] Specifies the resource ID of the resource that the autoscale setting should be added to. Changing this forces a new resource to be created.
   AutoscaleSettingState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<AutoscaleSettingNotification>? notification,
-    pulumi.Output<AutoscaleSettingPredictive>? predictive,
-    pulumi.Output<List<AutoscaleSettingProfile>>? profiles,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? targetResourceId,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notification = pulumi.Input.asOptionalInput<AutoscaleSettingNotification>(notification),
-      predictive = pulumi.Input.asOptionalInput<AutoscaleSettingPredictive>(predictive),
-      profiles = pulumi.Input.asOptionalInput<List<AutoscaleSettingProfile>>(profiles),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId);
+    this.enabled,
+    this.location,
+    this.name,
+    this.notification,
+    this.predictive,
+    this.profiles,
+    this.resourceGroupName,
+    this.tags,
+    this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class AutoscaleSettingState {
 
   factory AutoscaleSettingState.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notification: map['notification'] == null ? null : pulumi.Output.create<AutoscaleSettingNotification>(AutoscaleSettingNotification.fromMap((map['notification'] as Map).cast<String, dynamic>())),
-      predictive: map['predictive'] == null ? null : pulumi.Output.create<AutoscaleSettingPredictive>(AutoscaleSettingPredictive.fromMap((map['predictive'] as Map).cast<String, dynamic>())),
-      profiles: map['profiles'] == null ? null : pulumi.Output.create<List<AutoscaleSettingProfile>>(pulumi.Input.decodeList<AutoscaleSettingProfile>(map['profiles'], (value) => AutoscaleSettingProfile.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notification: map['notification'] == null ? null : (AutoscaleSettingNotification.fromMap((map['notification'] as Map).cast<String, dynamic>())).input(),
+      predictive: map['predictive'] == null ? null : (AutoscaleSettingPredictive.fromMap((map['predictive'] as Map).cast<String, dynamic>())).input(),
+      profiles: map['profiles'] == null ? null : (pulumi.Input.decodeList<AutoscaleSettingProfile>(map['profiles'], (value) => AutoscaleSettingProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
     );
   }
 }

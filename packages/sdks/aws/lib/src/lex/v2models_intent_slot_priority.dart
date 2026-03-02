@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentSlotPriority {
   /// Priority that Amazon Lex should apply to the slot.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// Unique identifier of the slot.
-  final String slotId;
+  final pulumi.Input<String> slotId;
 
   /// Creates a new [V2modelsIntentSlotPriority].
   /// [priority] Priority that Amazon Lex should apply to the slot.
@@ -24,8 +25,8 @@ class V2modelsIntentSlotPriority {
 
   factory V2modelsIntentSlotPriority.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentSlotPriority(
-      priority: map['priority'] as int,
-      slotId: map['slotId'] as String,
+      priority: (map['priority'] as int).input(),
+      slotId: (map['slotId'] as String).input(),
     );
   }
 }

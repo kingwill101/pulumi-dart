@@ -23,15 +23,11 @@ class WorkflowWorkflowV2Args {
   /// [projectId] The id of the project to retrieve the workflow.
   /// [region] The region in which to obtain the V2 Workflow client.
   WorkflowWorkflowV2Args({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.name,
+    this.namespace,
+    this.projectId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class WorkflowWorkflowV2Args {
 
   factory WorkflowWorkflowV2Args.fromMap(Map<String, dynamic> map) {
     return WorkflowWorkflowV2Args(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

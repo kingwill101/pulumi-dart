@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Set tempDb storage settings for SQL Server.
 class SQLTempDbSettingsResponse {
   /// SQL Server tempdb data file count
-  final int? dataFileCount;
+  final pulumi.Input<int>? dataFileCount;
   /// SQL Server tempdb data file size
-  final int? dataFileSize;
+  final pulumi.Input<int>? dataFileSize;
   /// SQL Server tempdb data file autoGrowth size
-  final int? dataGrowth;
+  final pulumi.Input<int>? dataGrowth;
   /// SQL Server default file path
-  final String? defaultFilePath;
+  final pulumi.Input<String>? defaultFilePath;
   /// SQL Server tempdb log file size
-  final int? logFileSize;
+  final pulumi.Input<int>? logFileSize;
   /// SQL Server tempdb log file autoGrowth size
-  final int? logGrowth;
+  final pulumi.Input<int>? logGrowth;
   /// Logical Unit Numbers for the disks.
-  final List<int>? luns;
+  final pulumi.Input<List<int>>? luns;
   /// SQL Server tempdb persist folder choice
-  final bool? persistFolder;
+  final pulumi.Input<bool>? persistFolder;
   /// SQL Server tempdb persist folder location
-  final String? persistFolderPath;
+  final pulumi.Input<String>? persistFolderPath;
   /// Use storage pool to build a drive if true or not provided
-  final bool? useStoragePool;
+  final pulumi.Input<bool>? useStoragePool;
 
   /// Creates a new [SQLTempDbSettingsResponse].
   /// [dataFileCount] SQL Server tempdb data file count
@@ -65,16 +66,16 @@ class SQLTempDbSettingsResponse {
 
   factory SQLTempDbSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SQLTempDbSettingsResponse(
-      dataFileCount: map['dataFileCount'] == null ? null : map['dataFileCount'] as int,
-      dataFileSize: map['dataFileSize'] == null ? null : map['dataFileSize'] as int,
-      dataGrowth: map['dataGrowth'] == null ? null : map['dataGrowth'] as int,
-      defaultFilePath: map['defaultFilePath'] == null ? null : map['defaultFilePath'] as String,
-      logFileSize: map['logFileSize'] == null ? null : map['logFileSize'] as int,
-      logGrowth: map['logGrowth'] == null ? null : map['logGrowth'] as int,
-      luns: map['luns'] == null ? null : (map['luns'] as List).cast<int>(),
-      persistFolder: map['persistFolder'] == null ? null : map['persistFolder'] as bool,
-      persistFolderPath: map['persistFolderPath'] == null ? null : map['persistFolderPath'] as String,
-      useStoragePool: map['useStoragePool'] == null ? null : map['useStoragePool'] as bool,
+      dataFileCount: map['dataFileCount'] == null ? null : (map['dataFileCount'] as int).input(),
+      dataFileSize: map['dataFileSize'] == null ? null : (map['dataFileSize'] as int).input(),
+      dataGrowth: map['dataGrowth'] == null ? null : (map['dataGrowth'] as int).input(),
+      defaultFilePath: map['defaultFilePath'] == null ? null : (map['defaultFilePath'] as String).input(),
+      logFileSize: map['logFileSize'] == null ? null : (map['logFileSize'] as int).input(),
+      logGrowth: map['logGrowth'] == null ? null : (map['logGrowth'] as int).input(),
+      luns: map['luns'] == null ? null : ((map['luns'] as List).cast<int>()).input(),
+      persistFolder: map['persistFolder'] == null ? null : (map['persistFolder'] as bool).input(),
+      persistFolderPath: map['persistFolderPath'] == null ? null : (map['persistFolderPath'] as String).input(),
+      useStoragePool: map['useStoragePool'] == null ? null : (map['useStoragePool'] as bool).input(),
     );
   }
 }

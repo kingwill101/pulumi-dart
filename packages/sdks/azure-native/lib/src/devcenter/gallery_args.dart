@@ -22,15 +22,11 @@ class GalleryArgs {
   /// [galleryResourceId] The resource ID of the backing Azure Compute Gallery.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GalleryArgs({
-    required pulumi.Output<String> devCenterName,
-    pulumi.Output<String>? galleryName,
-    required pulumi.Output<String> galleryResourceId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      galleryName = pulumi.Input.asOptionalInput<String>(galleryName),
-      galleryResourceId = pulumi.Input.asInput<String>(galleryResourceId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.devCenterName,
+    this.galleryName,
+    required this.galleryResourceId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GalleryArgs {
 
   factory GalleryArgs.fromMap(Map<String, dynamic> map) {
     return GalleryArgs(
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      galleryName: map['galleryName'] == null ? null : pulumi.Output.create<String>(map['galleryName'] as String),
-      galleryResourceId: pulumi.Output.create<String>(map['galleryResourceId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      devCenterName: (map['devCenterName'] as String).input(),
+      galleryName: map['galleryName'] == null ? null : (map['galleryName'] as String).input(),
+      galleryResourceId: (map['galleryResourceId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

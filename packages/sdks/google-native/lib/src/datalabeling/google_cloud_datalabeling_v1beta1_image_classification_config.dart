@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datalabeling_v1beta1_image_classification_config_answer_aggregation_type.dart';
 
 /// Config for image classification human labeling task.
 class GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
   /// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
-  final bool? allowMultiLabel;
+  final pulumi.Input<bool>? allowMultiLabel;
   /// Annotation spec set resource name.
-  final String annotationSpecSet;
+  final pulumi.Input<String> annotationSpecSet;
   /// Optional. The type of how to aggregate answers.
-  final GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType? answerAggregationType;
+  final pulumi.Input<GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType>? answerAggregationType;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1ImageClassificationConfig].
   /// [allowMultiLabel] Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
@@ -25,15 +26,15 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
     return <String, dynamic>{
       'allowMultiLabel': ?allowMultiLabel,
       'annotationSpecSet': annotationSpecSet,
-      'answerAggregationType': ?answerAggregationType == null ? null : answerAggregationType!.value,
+      'answerAggregationType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType, String>(answerAggregationType, (value) => value.value),
     };
   }
 
   factory GoogleCloudDatalabelingV1beta1ImageClassificationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1ImageClassificationConfig(
-      allowMultiLabel: map['allowMultiLabel'] == null ? null : map['allowMultiLabel'] as bool,
-      annotationSpecSet: map['annotationSpecSet'] as String,
-      answerAggregationType: map['answerAggregationType'] == null ? null : GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType.fromValue(map['answerAggregationType'] as String),
+      allowMultiLabel: map['allowMultiLabel'] == null ? null : (map['allowMultiLabel'] as bool).input(),
+      annotationSpecSet: (map['annotationSpecSet'] as String).input(),
+      answerAggregationType: map['answerAggregationType'] == null ? null : (GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType.fromValue(map['answerAggregationType'] as String)).input(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'example_message_chunk.dart';
 class ExampleMessage {
   /// Content of the message as a series of chunks.
   /// Structure is documented below.
-  final List<ExampleMessageChunk>? chunks;
+  final pulumi.Input<List<ExampleMessageChunk>>? chunks;
   /// The role within the conversation, e.g., user, agent.
-  final String? role;
+  final pulumi.Input<String>? role;
 
   /// Creates a new [ExampleMessage].
   /// [chunks] Content of the message as a series of chunks.
@@ -20,15 +20,15 @@ class ExampleMessage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'chunks': ?chunks == null ? null : pulumi.Input.encodeList<ExampleMessageChunk, Map<String, dynamic>>(chunks!, (value) => value.toMap()),
+      'chunks': ?pulumi.Input.mapOptionalInputValue<List<ExampleMessageChunk>, List<Map<String, dynamic>>>(chunks, (value) => pulumi.Input.encodeList<ExampleMessageChunk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'role': ?role,
     };
   }
 
   factory ExampleMessage.fromMap(Map<String, dynamic> map) {
     return ExampleMessage(
-      chunks: map['chunks'] == null ? null : pulumi.Input.decodeList<ExampleMessageChunk>(map['chunks'], (value) => ExampleMessageChunk.fromMap((value as Map).cast<String, dynamic>())),
-      role: map['role'] == null ? null : map['role'] as String,
+      chunks: map['chunks'] == null ? null : (pulumi.Input.decodeList<ExampleMessageChunk>(map['chunks'], (value) => ExampleMessageChunk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

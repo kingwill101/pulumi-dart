@@ -22,15 +22,11 @@ class GetWatchlistItemArgs {
   /// [watchlistItemId] The watchlist item id (GUID)
   /// [workspaceName] The name of the workspace.
   GetWatchlistItemArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> watchlistAlias,
-    required pulumi.Output<String> watchlistItemId,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      watchlistAlias = pulumi.Input.asInput<String>(watchlistAlias),
-      watchlistItemId = pulumi.Input.asInput<String>(watchlistItemId),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.watchlistAlias,
+    required this.watchlistItemId,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWatchlistItemArgs {
 
   factory GetWatchlistItemArgs.fromMap(Map<String, dynamic> map) {
     return GetWatchlistItemArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      watchlistAlias: pulumi.Output.create<String>(map['watchlistAlias'] as String),
-      watchlistItemId: pulumi.Output.create<String>(map['watchlistItemId'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      watchlistAlias: (map['watchlistAlias'] as String).input(),
+      watchlistItemId: (map['watchlistItemId'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

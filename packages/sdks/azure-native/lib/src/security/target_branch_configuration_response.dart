@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Repository branch configuration for PR Annotations.
 class TargetBranchConfigurationResponse {
@@ -7,9 +8,9 @@ class TargetBranchConfigurationResponse {
   ///
   /// Enabled - PR Annotations are enabled on the resource's default branch.
   /// Disabled - PR Annotations are disabled on the resource's default branch.
-  final String? annotateDefaultBranch;
+  final pulumi.Input<String>? annotateDefaultBranch;
   /// Gets or sets branches that should have annotations.
-  final List<String>? branchNames;
+  final pulumi.Input<List<String>>? branchNames;
 
   /// Creates a new [TargetBranchConfigurationResponse].
   /// [annotateDefaultBranch] Configuration of PR Annotations on default branch.
@@ -28,8 +29,8 @@ class TargetBranchConfigurationResponse {
 
   factory TargetBranchConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TargetBranchConfigurationResponse(
-      annotateDefaultBranch: map['annotateDefaultBranch'] == null ? null : map['annotateDefaultBranch'] as String,
-      branchNames: map['branchNames'] == null ? null : (map['branchNames'] as List).cast<String>(),
+      annotateDefaultBranch: map['annotateDefaultBranch'] == null ? null : (map['annotateDefaultBranch'] as String).input(),
+      branchNames: map['branchNames'] == null ? null : ((map['branchNames'] as List).cast<String>()).input(),
     );
   }
 }

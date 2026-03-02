@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResolutionLinesLine {
-  final String lineCode;
+  final pulumi.Input<String> lineCode;
   /// Line display name.
-  final String lineDisplayName;
+  final pulumi.Input<String> lineDisplayName;
   /// Line name.
-  final String lineName;
+  final pulumi.Input<String> lineName;
 
   /// Creates a new [GetResolutionLinesLine].
   /// [lineCode] Required.
@@ -28,9 +29,9 @@ class GetResolutionLinesLine {
 
   factory GetResolutionLinesLine.fromMap(Map<String, dynamic> map) {
     return GetResolutionLinesLine(
-      lineCode: map['lineCode'] as String,
-      lineDisplayName: map['lineDisplayName'] as String,
-      lineName: map['lineName'] as String,
+      lineCode: (map['lineCode'] as String).input(),
+      lineDisplayName: (map['lineDisplayName'] as String).input(),
+      lineName: (map['lineName'] as String).input(),
     );
   }
 }

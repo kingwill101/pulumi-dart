@@ -30,21 +30,14 @@ class WebAppPrivateEndpointConnectionSlotArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Required.
   WebAppPrivateEndpointConnectionSlotArgs({
-    pulumi.Output<List<String>>? ipAddresses,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? privateEndpointConnectionName,
-    pulumi.Output<PrivateLinkConnectionState>? privateLinkServiceConnectionState,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> slot,
-  }) :
-      ipAddresses = pulumi.Input.asOptionalInput<List<String>>(ipAddresses),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      privateEndpointConnectionName = pulumi.Input.asOptionalInput<String>(privateEndpointConnectionName),
-      privateLinkServiceConnectionState = pulumi.Input.asOptionalInput<PrivateLinkConnectionState>(privateLinkServiceConnectionState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      slot = pulumi.Input.asInput<String>(slot);
+    this.ipAddresses,
+    this.kind,
+    required this.name,
+    this.privateEndpointConnectionName,
+    this.privateLinkServiceConnectionState,
+    required this.resourceGroupName,
+    required this.slot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class WebAppPrivateEndpointConnectionSlotArgs {
 
   factory WebAppPrivateEndpointConnectionSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppPrivateEndpointConnectionSlotArgs(
-      ipAddresses: map['ipAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['ipAddresses'] as List).cast<String>()),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : pulumi.Output.create<PrivateLinkConnectionState>(PrivateLinkConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      slot: (map['slot'] as String).input(),
     );
   }
 }

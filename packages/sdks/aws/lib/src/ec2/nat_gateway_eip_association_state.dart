@@ -23,17 +23,12 @@ class NatGatewayEipAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   NatGatewayEipAssociationState({
-    pulumi.Output<String>? allocationId,
-    pulumi.Output<String>? associationId,
-    pulumi.Output<String>? natGatewayId,
-    pulumi.Output<String>? region,
-    pulumi.Output<NatGatewayEipAssociationTimeouts>? timeouts,
-  }) :
-      allocationId = pulumi.Input.asOptionalInput<String>(allocationId),
-      associationId = pulumi.Input.asOptionalInput<String>(associationId),
-      natGatewayId = pulumi.Input.asOptionalInput<String>(natGatewayId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<NatGatewayEipAssociationTimeouts>(timeouts);
+    this.allocationId,
+    this.associationId,
+    this.natGatewayId,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class NatGatewayEipAssociationState {
 
   factory NatGatewayEipAssociationState.fromMap(Map<String, dynamic> map) {
     return NatGatewayEipAssociationState(
-      allocationId: map['allocationId'] == null ? null : pulumi.Output.create<String>(map['allocationId'] as String),
-      associationId: map['associationId'] == null ? null : pulumi.Output.create<String>(map['associationId'] as String),
-      natGatewayId: map['natGatewayId'] == null ? null : pulumi.Output.create<String>(map['natGatewayId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<NatGatewayEipAssociationTimeouts>(NatGatewayEipAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
+      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
+      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (NatGatewayEipAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

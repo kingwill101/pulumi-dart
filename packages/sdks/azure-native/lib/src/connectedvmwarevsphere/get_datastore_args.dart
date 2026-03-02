@@ -16,11 +16,9 @@ class GetDatastoreArgs {
   /// [datastoreName] Name of the datastore.
   /// [resourceGroupName] The Resource Group Name.
   GetDatastoreArgs({
-    required pulumi.Output<String> datastoreName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      datastoreName = pulumi.Input.asInput<String>(datastoreName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.datastoreName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDatastoreArgs {
 
   factory GetDatastoreArgs.fromMap(Map<String, dynamic> map) {
     return GetDatastoreArgs(
-      datastoreName: pulumi.Output.create<String>(map['datastoreName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      datastoreName: (map['datastoreName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

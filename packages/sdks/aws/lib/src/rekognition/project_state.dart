@@ -33,23 +33,15 @@ class ProjectState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   ProjectState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? autoUpdate,
-    pulumi.Output<String>? feature,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<ProjectTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      autoUpdate = pulumi.Input.asOptionalInput<String>(autoUpdate),
-      feature = pulumi.Input.asOptionalInput<String>(feature),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<ProjectTimeouts>(timeouts);
+    this.arn,
+    this.autoUpdate,
+    this.feature,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      autoUpdate: map['autoUpdate'] == null ? null : pulumi.Output.create<String>(map['autoUpdate'] as String),
-      feature: map['feature'] == null ? null : pulumi.Output.create<String>(map['feature'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ProjectTimeouts>(ProjectTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      autoUpdate: map['autoUpdate'] == null ? null : (map['autoUpdate'] as String).input(),
+      feature: map['feature'] == null ? null : (map['feature'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ProjectTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

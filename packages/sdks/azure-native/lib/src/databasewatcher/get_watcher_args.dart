@@ -16,11 +16,9 @@ class GetWatcherArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [watcherName] The database watcher name.
   GetWatcherArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> watcherName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      watcherName = pulumi.Input.asInput<String>(watcherName);
+    required this.resourceGroupName,
+    required this.watcherName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetWatcherArgs {
 
   factory GetWatcherArgs.fromMap(Map<String, dynamic> map) {
     return GetWatcherArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      watcherName: pulumi.Output.create<String>(map['watcherName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      watcherName: (map['watcherName'] as String).input(),
     );
   }
 }

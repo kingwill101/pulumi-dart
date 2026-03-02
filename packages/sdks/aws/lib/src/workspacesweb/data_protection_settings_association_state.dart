@@ -18,13 +18,10 @@ class DataProtectionSettingsAssociationState {
   /// [portalArn] ARN of the portal to associate with the data protection settings. Forces replacement if changed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DataProtectionSettingsAssociationState({
-    pulumi.Output<String>? dataProtectionSettingsArn,
-    pulumi.Output<String>? portalArn,
-    pulumi.Output<String>? region,
-  }) :
-      dataProtectionSettingsArn = pulumi.Input.asOptionalInput<String>(dataProtectionSettingsArn),
-      portalArn = pulumi.Input.asOptionalInput<String>(portalArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.dataProtectionSettingsArn,
+    this.portalArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class DataProtectionSettingsAssociationState {
 
   factory DataProtectionSettingsAssociationState.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsAssociationState(
-      dataProtectionSettingsArn: map['dataProtectionSettingsArn'] == null ? null : pulumi.Output.create<String>(map['dataProtectionSettingsArn'] as String),
-      portalArn: map['portalArn'] == null ? null : pulumi.Output.create<String>(map['portalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      dataProtectionSettingsArn: map['dataProtectionSettingsArn'] == null ? null : (map['dataProtectionSettingsArn'] as String).input(),
+      portalArn: map['portalArn'] == null ? null : (map['portalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

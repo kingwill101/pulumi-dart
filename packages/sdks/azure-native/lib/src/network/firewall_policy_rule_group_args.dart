@@ -32,21 +32,14 @@ class FirewallPolicyRuleGroupArgs {
   /// [ruleGroupName] The name of the FirewallPolicyRuleGroup.
   /// [rules] Group of Firewall Policy rules.
   FirewallPolicyRuleGroupArgs({
-    required pulumi.Output<String> firewallPolicyName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? ruleGroupName,
-    pulumi.Output<List<FirewallPolicyFilterRule>>? rules,
-  }) :
-      firewallPolicyName = pulumi.Input.asInput<String>(firewallPolicyName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleGroupName = pulumi.Input.asOptionalInput<String>(ruleGroupName),
-      rules = pulumi.Input.asOptionalInput<List<FirewallPolicyFilterRule>>(rules);
+    required this.firewallPolicyName,
+    this.id,
+    this.name,
+    this.priority,
+    required this.resourceGroupName,
+    this.ruleGroupName,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class FirewallPolicyRuleGroupArgs {
 
   factory FirewallPolicyRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleGroupArgs(
-      firewallPolicyName: pulumi.Output.create<String>(map['firewallPolicyName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleGroupName: map['ruleGroupName'] == null ? null : pulumi.Output.create<String>(map['ruleGroupName'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<FirewallPolicyFilterRule>>(pulumi.Input.decodeList<FirewallPolicyFilterRule>(map['rules'], (value) => FirewallPolicyFilterRule.fromMap((value as Map).cast<String, dynamic>()))),
+      firewallPolicyName: (map['firewallPolicyName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleGroupName: map['ruleGroupName'] == null ? null : (map['ruleGroupName'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyFilterRule>(map['rules'], (value) => FirewallPolicyFilterRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VMM fabric specific details.
 class VmmDetailsResponse {
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'VMM'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Creates a new [VmmDetailsResponse].
   /// [instanceType] Gets the class type. Overridden in derived classes.
@@ -21,7 +22,7 @@ class VmmDetailsResponse {
 
   factory VmmDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VmmDetailsResponse(
-      instanceType: map['instanceType'] as String,
+      instanceType: (map['instanceType'] as String).input(),
     );
   }
 }

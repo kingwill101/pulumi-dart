@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Vhd artifact profile.
 class VhdImageArtifactProfileResponse {
   /// Vhd name.
-  final String? vhdName;
+  final pulumi.Input<String>? vhdName;
   /// Vhd version.
-  final String? vhdVersion;
+  final pulumi.Input<String>? vhdVersion;
 
   /// Creates a new [VhdImageArtifactProfileResponse].
   /// [vhdName] Vhd name.
@@ -25,8 +26,8 @@ class VhdImageArtifactProfileResponse {
 
   factory VhdImageArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
     return VhdImageArtifactProfileResponse(
-      vhdName: map['vhdName'] == null ? null : map['vhdName'] as String,
-      vhdVersion: map['vhdVersion'] == null ? null : map['vhdVersion'] as String,
+      vhdName: map['vhdName'] == null ? null : (map['vhdName'] as String).input(),
+      vhdVersion: map['vhdVersion'] == null ? null : (map['vhdVersion'] as String).input(),
     );
   }
 }

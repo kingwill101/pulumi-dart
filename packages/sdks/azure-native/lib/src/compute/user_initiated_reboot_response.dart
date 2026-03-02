@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies Reboot related Scheduled Event related configurations.
 class UserInitiatedRebootResponse {
   /// Specifies Reboot Scheduled Event related configurations.
-  final bool? automaticallyApprove;
+  final pulumi.Input<bool>? automaticallyApprove;
 
   /// Creates a new [UserInitiatedRebootResponse].
   /// [automaticallyApprove] Specifies Reboot Scheduled Event related configurations.
@@ -20,7 +21,7 @@ class UserInitiatedRebootResponse {
 
   factory UserInitiatedRebootResponse.fromMap(Map<String, dynamic> map) {
     return UserInitiatedRebootResponse(
-      automaticallyApprove: map['automaticallyApprove'] == null ? null : map['automaticallyApprove'] as bool,
+      automaticallyApprove: map['automaticallyApprove'] == null ? null : (map['automaticallyApprove'] as bool).input(),
     );
   }
 }

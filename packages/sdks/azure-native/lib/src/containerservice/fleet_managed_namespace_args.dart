@@ -29,19 +29,13 @@ class FleetManagedNamespaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   FleetManagedNamespaceArgs({
-    required pulumi.Output<String> fleetName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedNamespaceName,
-    pulumi.Output<FleetManagedNamespaceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedNamespaceName = pulumi.Input.asOptionalInput<String>(managedNamespaceName),
-      properties = pulumi.Input.asOptionalInput<FleetManagedNamespaceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.fleetName,
+    this.location,
+    this.managedNamespaceName,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class FleetManagedNamespaceArgs {
 
   factory FleetManagedNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return FleetManagedNamespaceArgs(
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedNamespaceName: map['managedNamespaceName'] == null ? null : pulumi.Output.create<String>(map['managedNamespaceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<FleetManagedNamespaceProperties>(FleetManagedNamespaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      fleetName: (map['fleetName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedNamespaceName: map['managedNamespaceName'] == null ? null : (map['managedNamespaceName'] as String).input(),
+      properties: map['properties'] == null ? null : (FleetManagedNamespaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

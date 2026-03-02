@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_config_entity_response.dart';
 import 'sccluster_byok_entity_response.dart';
 import 'sccluster_network_environment_entity_response.dart';
@@ -7,31 +8,31 @@ import 'sccluster_network_environment_entity_response.dart';
 /// Spec of the cluster record
 class SCClusterSpecEntityResponse {
   /// The Kafka API cluster endpoint
-  final String? apiEndpoint;
+  final pulumi.Input<String>? apiEndpoint;
   /// The availability zone configuration of the cluster
-  final String? availability;
+  final pulumi.Input<String>? availability;
   /// Specification of the cluster byok
-  final SCClusterByokEntityResponse? byok;
+  final pulumi.Input<SCClusterByokEntityResponse>? byok;
   /// The cloud service provider
-  final String? cloud;
+  final pulumi.Input<String>? cloud;
   /// Specification of the cluster configuration
-  final ClusterConfigEntityResponse? config;
+  final pulumi.Input<ClusterConfigEntityResponse>? config;
   /// Specification of the cluster environment
-  final SCClusterNetworkEnvironmentEntityResponse? environment;
+  final pulumi.Input<SCClusterNetworkEnvironmentEntityResponse>? environment;
   /// The cluster HTTP request URL.
-  final String? httpEndpoint;
+  final pulumi.Input<String>? httpEndpoint;
   /// The bootstrap endpoint used by Kafka clients to connect to the cluster
-  final String? kafkaBootstrapEndpoint;
+  final pulumi.Input<String>? kafkaBootstrapEndpoint;
   /// The name of the cluster
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Specification of the cluster network
-  final SCClusterNetworkEnvironmentEntityResponse? network;
+  final pulumi.Input<SCClusterNetworkEnvironmentEntityResponse>? network;
   /// Stream governance configuration
-  final String? package;
+  final pulumi.Input<String>? package;
   /// The cloud service provider region
-  final String? region;
+  final pulumi.Input<String>? region;
   /// type of zone availability
-  final String? zone;
+  final pulumi.Input<String>? zone;
 
   /// Creates a new [SCClusterSpecEntityResponse].
   /// [apiEndpoint] The Kafka API cluster endpoint
@@ -67,14 +68,14 @@ class SCClusterSpecEntityResponse {
     return <String, dynamic>{
       'apiEndpoint': ?apiEndpoint,
       'availability': ?availability,
-      'byok': ?byok == null ? null : byok!.toMap(),
+      'byok': ?pulumi.Input.mapOptionalInputValue<SCClusterByokEntityResponse, Map<String, dynamic>>(byok, (value) => value.toMap()),
       'cloud': ?cloud,
-      'config': ?config == null ? null : config!.toMap(),
-      'environment': ?environment == null ? null : environment!.toMap(),
+      'config': ?pulumi.Input.mapOptionalInputValue<ClusterConfigEntityResponse, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'environment': ?pulumi.Input.mapOptionalInputValue<SCClusterNetworkEnvironmentEntityResponse, Map<String, dynamic>>(environment, (value) => value.toMap()),
       'httpEndpoint': ?httpEndpoint,
       'kafkaBootstrapEndpoint': ?kafkaBootstrapEndpoint,
       'name': ?name,
-      'network': ?network == null ? null : network!.toMap(),
+      'network': ?pulumi.Input.mapOptionalInputValue<SCClusterNetworkEnvironmentEntityResponse, Map<String, dynamic>>(network, (value) => value.toMap()),
       'package': ?package,
       'region': ?region,
       'zone': ?zone,
@@ -83,19 +84,19 @@ class SCClusterSpecEntityResponse {
 
   factory SCClusterSpecEntityResponse.fromMap(Map<String, dynamic> map) {
     return SCClusterSpecEntityResponse(
-      apiEndpoint: map['apiEndpoint'] == null ? null : map['apiEndpoint'] as String,
-      availability: map['availability'] == null ? null : map['availability'] as String,
-      byok: map['byok'] == null ? null : SCClusterByokEntityResponse.fromMap((map['byok'] as Map).cast<String, dynamic>()),
-      cloud: map['cloud'] == null ? null : map['cloud'] as String,
-      config: map['config'] == null ? null : ClusterConfigEntityResponse.fromMap((map['config'] as Map).cast<String, dynamic>()),
-      environment: map['environment'] == null ? null : SCClusterNetworkEnvironmentEntityResponse.fromMap((map['environment'] as Map).cast<String, dynamic>()),
-      httpEndpoint: map['httpEndpoint'] == null ? null : map['httpEndpoint'] as String,
-      kafkaBootstrapEndpoint: map['kafkaBootstrapEndpoint'] == null ? null : map['kafkaBootstrapEndpoint'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      network: map['network'] == null ? null : SCClusterNetworkEnvironmentEntityResponse.fromMap((map['network'] as Map).cast<String, dynamic>()),
-      package: map['package'] == null ? null : map['package'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      apiEndpoint: map['apiEndpoint'] == null ? null : (map['apiEndpoint'] as String).input(),
+      availability: map['availability'] == null ? null : (map['availability'] as String).input(),
+      byok: map['byok'] == null ? null : (SCClusterByokEntityResponse.fromMap((map['byok'] as Map).cast<String, dynamic>())).input(),
+      cloud: map['cloud'] == null ? null : (map['cloud'] as String).input(),
+      config: map['config'] == null ? null : (ClusterConfigEntityResponse.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      environment: map['environment'] == null ? null : (SCClusterNetworkEnvironmentEntityResponse.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
+      httpEndpoint: map['httpEndpoint'] == null ? null : (map['httpEndpoint'] as String).input(),
+      kafkaBootstrapEndpoint: map['kafkaBootstrapEndpoint'] == null ? null : (map['kafkaBootstrapEndpoint'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (SCClusterNetworkEnvironmentEntityResponse.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
+      package: map['package'] == null ? null : (map['package'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

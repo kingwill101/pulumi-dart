@@ -26,19 +26,13 @@ class ReleaseArgs {
   /// [type] Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
   /// [versionName] The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in the `parent` parameter. This query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
   ReleaseArgs({
-    required pulumi.Output<String> channelId,
-    pulumi.Output<String>? message,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<ReleaseType>? type,
-    pulumi.Output<String>? versionName,
-  }) :
-      channelId = pulumi.Input.asInput<String>(channelId),
-      message = pulumi.Input.asOptionalInput<String>(message),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      type = pulumi.Input.asOptionalInput<ReleaseType>(type),
-      versionName = pulumi.Input.asOptionalInput<String>(versionName);
+    required this.channelId,
+    this.message,
+    this.project,
+    required this.siteId,
+    this.type,
+    this.versionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class ReleaseArgs {
 
   factory ReleaseArgs.fromMap(Map<String, dynamic> map) {
     return ReleaseArgs(
-      channelId: pulumi.Output.create<String>(map['channelId'] as String),
-      message: map['message'] == null ? null : pulumi.Output.create<String>(map['message'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<ReleaseType>(ReleaseType.fromValue(map['type'] as String)),
-      versionName: map['versionName'] == null ? null : pulumi.Output.create<String>(map['versionName'] as String),
+      channelId: (map['channelId'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      type: map['type'] == null ? null : (ReleaseType.fromValue(map['type'] as String)).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
     );
   }
 }

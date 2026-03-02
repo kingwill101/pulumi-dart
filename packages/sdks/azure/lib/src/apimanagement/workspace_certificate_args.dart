@@ -32,19 +32,13 @@ class WorkspaceCertificateArgs {
   /// [password] Specifies the password used to access the `certificate_data_base64`.
   /// [userAssignedIdentityClientId] Specifies the client ID of user-assigned identity to be used for accessing the `key_vault_secret_id`.
   WorkspaceCertificateArgs({
-    required pulumi.Output<String> apiManagementWorkspaceId,
-    pulumi.Output<String>? certificateDataBase64,
-    pulumi.Output<String>? keyVaultSecretId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? userAssignedIdentityClientId,
-  }) :
-      apiManagementWorkspaceId = pulumi.Input.asInput<String>(apiManagementWorkspaceId),
-      certificateDataBase64 = pulumi.Input.asOptionalInput<String>(certificateDataBase64),
-      keyVaultSecretId = pulumi.Input.asOptionalInput<String>(keyVaultSecretId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      userAssignedIdentityClientId = pulumi.Input.asOptionalInput<String>(userAssignedIdentityClientId);
+    required this.apiManagementWorkspaceId,
+    this.certificateDataBase64,
+    this.keyVaultSecretId,
+    this.name,
+    this.password,
+    this.userAssignedIdentityClientId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class WorkspaceCertificateArgs {
 
   factory WorkspaceCertificateArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceCertificateArgs(
-      apiManagementWorkspaceId: pulumi.Output.create<String>(map['apiManagementWorkspaceId'] as String),
-      certificateDataBase64: map['certificateDataBase64'] == null ? null : pulumi.Output.create<String>(map['certificateDataBase64'] as String),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : pulumi.Output.create<String>(map['keyVaultSecretId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      userAssignedIdentityClientId: map['userAssignedIdentityClientId'] == null ? null : pulumi.Output.create<String>(map['userAssignedIdentityClientId'] as String),
+      apiManagementWorkspaceId: (map['apiManagementWorkspaceId'] as String).input(),
+      certificateDataBase64: map['certificateDataBase64'] == null ? null : (map['certificateDataBase64'] as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      userAssignedIdentityClientId: map['userAssignedIdentityClientId'] == null ? null : (map['userAssignedIdentityClientId'] as String).input(),
     );
   }
 }

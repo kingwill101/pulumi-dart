@@ -16,11 +16,9 @@ class ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdArgs {
   /// [eventTrackingId] Event Id which uniquely identifies ServiceHealth event.
   /// [filter] The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
   ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdArgs({
-    required pulumi.Output<String> eventTrackingId,
-    pulumi.Output<String>? filter,
-  }) :
-      eventTrackingId = pulumi.Input.asInput<String>(eventTrackingId),
-      filter = pulumi.Input.asOptionalInput<String>(filter);
+    required this.eventTrackingId,
+    this.filter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdArgs {
 
   factory ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdArgs.fromMap(Map<String, dynamic> map) {
     return ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdArgs(
-      eventTrackingId: pulumi.Output.create<String>(map['eventTrackingId'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
+      eventTrackingId: (map['eventTrackingId'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
     );
   }
 }

@@ -46,19 +46,13 @@ class InstantSnapshotIamBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [zone] A reference to the zone where the disk is located. Used to find the parent resource to bind the IAM policy to. If not specified,
   InstantSnapshotIamBindingArgs({
-    pulumi.Output<InstantSnapshotIamBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    pulumi.Output<String>? zone,
-  }) :
-      condition = pulumi.Input.asOptionalInput<InstantSnapshotIamBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.condition,
+    required this.members,
+    this.name,
+    this.project,
+    required this.role,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,12 +67,12 @@ class InstantSnapshotIamBindingArgs {
 
   factory InstantSnapshotIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return InstantSnapshotIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<InstantSnapshotIamBindingCondition>(InstantSnapshotIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      condition: map['condition'] == null ? null : (InstantSnapshotIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

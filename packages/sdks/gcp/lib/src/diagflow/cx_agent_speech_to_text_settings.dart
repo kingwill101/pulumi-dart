@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxAgentSpeechToTextSettings {
   /// Whether to use speech adaptation for speech recognition.
-  final bool? enableSpeechAdaptation;
+  final pulumi.Input<bool>? enableSpeechAdaptation;
 
   /// Creates a new [CxAgentSpeechToTextSettings].
   /// [enableSpeechAdaptation] Whether to use speech adaptation for speech recognition.
@@ -19,7 +20,7 @@ class CxAgentSpeechToTextSettings {
 
   factory CxAgentSpeechToTextSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentSpeechToTextSettings(
-      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null ? null : map['enableSpeechAdaptation'] as bool,
+      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null ? null : (map['enableSpeechAdaptation'] as bool).input(),
     );
   }
 }

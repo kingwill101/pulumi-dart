@@ -47,29 +47,18 @@ class DistributionTenantArgs {
   /// [timeouts] Optional.
   /// [waitForDeployment] If enabled, the resource will wait for the distribution tenant status to change from `InProgress` to `Deployed`. Setting this to `false` will skip the process. Default: `true`.
   DistributionTenantArgs({
-    pulumi.Output<String>? connectionGroupId,
-    pulumi.Output<DistributionTenantCustomizations>? customizations,
-    required pulumi.Output<String> distributionId,
-    pulumi.Output<List<DistributionTenantDomain>>? domains,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<DistributionTenantManagedCertificateRequest>? managedCertificateRequest,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<DistributionTenantParameter>>? parameters,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<DistributionTenantTimeouts>? timeouts,
-    pulumi.Output<bool>? waitForDeployment,
-  }) :
-      connectionGroupId = pulumi.Input.asOptionalInput<String>(connectionGroupId),
-      customizations = pulumi.Input.asOptionalInput<DistributionTenantCustomizations>(customizations),
-      distributionId = pulumi.Input.asInput<String>(distributionId),
-      domains = pulumi.Input.asOptionalInput<List<DistributionTenantDomain>>(domains),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      managedCertificateRequest = pulumi.Input.asOptionalInput<DistributionTenantManagedCertificateRequest>(managedCertificateRequest),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<List<DistributionTenantParameter>>(parameters),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<DistributionTenantTimeouts>(timeouts),
-      waitForDeployment = pulumi.Input.asOptionalInput<bool>(waitForDeployment);
+    this.connectionGroupId,
+    this.customizations,
+    required this.distributionId,
+    this.domains,
+    this.enabled,
+    this.managedCertificateRequest,
+    this.name,
+    this.parameters,
+    this.tags,
+    this.timeouts,
+    this.waitForDeployment,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class DistributionTenantArgs {
 
   factory DistributionTenantArgs.fromMap(Map<String, dynamic> map) {
     return DistributionTenantArgs(
-      connectionGroupId: map['connectionGroupId'] == null ? null : pulumi.Output.create<String>(map['connectionGroupId'] as String),
-      customizations: map['customizations'] == null ? null : pulumi.Output.create<DistributionTenantCustomizations>(DistributionTenantCustomizations.fromMap((map['customizations'] as Map).cast<String, dynamic>())),
-      distributionId: pulumi.Output.create<String>(map['distributionId'] as String),
-      domains: map['domains'] == null ? null : pulumi.Output.create<List<DistributionTenantDomain>>(pulumi.Input.decodeList<DistributionTenantDomain>(map['domains'], (value) => DistributionTenantDomain.fromMap((value as Map).cast<String, dynamic>()))),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      managedCertificateRequest: map['managedCertificateRequest'] == null ? null : pulumi.Output.create<DistributionTenantManagedCertificateRequest>(DistributionTenantManagedCertificateRequest.fromMap((map['managedCertificateRequest'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<DistributionTenantParameter>>(pulumi.Input.decodeList<DistributionTenantParameter>(map['parameters'], (value) => DistributionTenantParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DistributionTenantTimeouts>(DistributionTenantTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      waitForDeployment: map['waitForDeployment'] == null ? null : pulumi.Output.create<bool>(map['waitForDeployment'] as bool),
+      connectionGroupId: map['connectionGroupId'] == null ? null : (map['connectionGroupId'] as String).input(),
+      customizations: map['customizations'] == null ? null : (DistributionTenantCustomizations.fromMap((map['customizations'] as Map).cast<String, dynamic>())).input(),
+      distributionId: (map['distributionId'] as String).input(),
+      domains: map['domains'] == null ? null : (pulumi.Input.decodeList<DistributionTenantDomain>(map['domains'], (value) => DistributionTenantDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      managedCertificateRequest: map['managedCertificateRequest'] == null ? null : (DistributionTenantManagedCertificateRequest.fromMap((map['managedCertificateRequest'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<DistributionTenantParameter>(map['parameters'], (value) => DistributionTenantParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (DistributionTenantTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      waitForDeployment: map['waitForDeployment'] == null ? null : (map['waitForDeployment'] as bool).input(),
     );
   }
 }

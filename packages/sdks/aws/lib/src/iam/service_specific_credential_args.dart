@@ -22,15 +22,11 @@ class ServiceSpecificCredentialArgs {
   /// [status] The status to be assigned to the service-specific credential. Valid values are `Active`, `Inactive`, and `Expired`. Default value is `Active`. Note that `Expired` is only used for read operations and cannot be set manually.
   /// [userName] The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service.
   ServiceSpecificCredentialArgs({
-    pulumi.Output<int>? credentialAgeDays,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> userName,
-  }) :
-      credentialAgeDays = pulumi.Input.asOptionalInput<int>(credentialAgeDays),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      userName = pulumi.Input.asInput<String>(userName);
+    this.credentialAgeDays,
+    required this.serviceName,
+    this.status,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ServiceSpecificCredentialArgs {
 
   factory ServiceSpecificCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ServiceSpecificCredentialArgs(
-      credentialAgeDays: map['credentialAgeDays'] == null ? null : pulumi.Output.create<int>(map['credentialAgeDays'] as int),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      credentialAgeDays: map['credentialAgeDays'] == null ? null : (map['credentialAgeDays'] as int).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersSelfManagedKafkaParametersCredentials {
   /// The ARN of the Secrets Manager secret containing the credentials.
-  final String? basicAuth;
+  final pulumi.Input<String>? basicAuth;
   /// The ARN of the Secrets Manager secret containing the credentials.
-  final String? clientCertificateTlsAuth;
+  final pulumi.Input<String>? clientCertificateTlsAuth;
   /// The ARN of the Secrets Manager secret containing the credentials.
-  final String? saslScram256Auth;
+  final pulumi.Input<String>? saslScram256Auth;
   /// The ARN of the Secrets Manager secret containing the credentials.
-  final String? saslScram512Auth;
+  final pulumi.Input<String>? saslScram512Auth;
 
   /// Creates a new [PipeSourceParametersSelfManagedKafkaParametersCredentials].
   /// [basicAuth] The ARN of the Secrets Manager secret containing the credentials.
@@ -34,10 +35,10 @@ class PipeSourceParametersSelfManagedKafkaParametersCredentials {
 
   factory PipeSourceParametersSelfManagedKafkaParametersCredentials.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSelfManagedKafkaParametersCredentials(
-      basicAuth: map['basicAuth'] == null ? null : map['basicAuth'] as String,
-      clientCertificateTlsAuth: map['clientCertificateTlsAuth'] == null ? null : map['clientCertificateTlsAuth'] as String,
-      saslScram256Auth: map['saslScram256Auth'] == null ? null : map['saslScram256Auth'] as String,
-      saslScram512Auth: map['saslScram512Auth'] == null ? null : map['saslScram512Auth'] as String,
+      basicAuth: map['basicAuth'] == null ? null : (map['basicAuth'] as String).input(),
+      clientCertificateTlsAuth: map['clientCertificateTlsAuth'] == null ? null : (map['clientCertificateTlsAuth'] as String).input(),
+      saslScram256Auth: map['saslScram256Auth'] == null ? null : (map['saslScram256Auth'] as String).input(),
+      saslScram512Auth: map['saslScram512Auth'] == null ? null : (map['saslScram512Auth'] as String).input(),
     );
   }
 }

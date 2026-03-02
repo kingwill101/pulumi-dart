@@ -43,31 +43,19 @@ class SmartagFlowLogState {
   /// [slsRegionId] The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
   /// [status] The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
   SmartagFlowLogState({
-    pulumi.Output<int>? activeAging,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? flowLogName,
-    pulumi.Output<int>? inactiveAging,
-    pulumi.Output<String>? logstoreName,
-    pulumi.Output<String>? netflowServerIp,
-    pulumi.Output<int>? netflowServerPort,
-    pulumi.Output<String>? netflowVersion,
-    pulumi.Output<String>? outputType,
-    pulumi.Output<String>? projectName,
-    pulumi.Output<String>? slsRegionId,
-    pulumi.Output<String>? status,
-  }) :
-      activeAging = pulumi.Input.asOptionalInput<int>(activeAging),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      flowLogName = pulumi.Input.asOptionalInput<String>(flowLogName),
-      inactiveAging = pulumi.Input.asOptionalInput<int>(inactiveAging),
-      logstoreName = pulumi.Input.asOptionalInput<String>(logstoreName),
-      netflowServerIp = pulumi.Input.asOptionalInput<String>(netflowServerIp),
-      netflowServerPort = pulumi.Input.asOptionalInput<int>(netflowServerPort),
-      netflowVersion = pulumi.Input.asOptionalInput<String>(netflowVersion),
-      outputType = pulumi.Input.asOptionalInput<String>(outputType),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      slsRegionId = pulumi.Input.asOptionalInput<String>(slsRegionId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.activeAging,
+    this.description,
+    this.flowLogName,
+    this.inactiveAging,
+    this.logstoreName,
+    this.netflowServerIp,
+    this.netflowServerPort,
+    this.netflowVersion,
+    this.outputType,
+    this.projectName,
+    this.slsRegionId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class SmartagFlowLogState {
 
   factory SmartagFlowLogState.fromMap(Map<String, dynamic> map) {
     return SmartagFlowLogState(
-      activeAging: map['activeAging'] == null ? null : pulumi.Output.create<int>(map['activeAging'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      flowLogName: map['flowLogName'] == null ? null : pulumi.Output.create<String>(map['flowLogName'] as String),
-      inactiveAging: map['inactiveAging'] == null ? null : pulumi.Output.create<int>(map['inactiveAging'] as int),
-      logstoreName: map['logstoreName'] == null ? null : pulumi.Output.create<String>(map['logstoreName'] as String),
-      netflowServerIp: map['netflowServerIp'] == null ? null : pulumi.Output.create<String>(map['netflowServerIp'] as String),
-      netflowServerPort: map['netflowServerPort'] == null ? null : pulumi.Output.create<int>(map['netflowServerPort'] as int),
-      netflowVersion: map['netflowVersion'] == null ? null : pulumi.Output.create<String>(map['netflowVersion'] as String),
-      outputType: map['outputType'] == null ? null : pulumi.Output.create<String>(map['outputType'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      slsRegionId: map['slsRegionId'] == null ? null : pulumi.Output.create<String>(map['slsRegionId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      activeAging: map['activeAging'] == null ? null : (map['activeAging'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName'] as String).input(),
+      inactiveAging: map['inactiveAging'] == null ? null : (map['inactiveAging'] as int).input(),
+      logstoreName: map['logstoreName'] == null ? null : (map['logstoreName'] as String).input(),
+      netflowServerIp: map['netflowServerIp'] == null ? null : (map['netflowServerIp'] as String).input(),
+      netflowServerPort: map['netflowServerPort'] == null ? null : (map['netflowServerPort'] as int).input(),
+      netflowVersion: map['netflowVersion'] == null ? null : (map['netflowVersion'] as String).input(),
+      outputType: map['outputType'] == null ? null : (map['outputType'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      slsRegionId: map['slsRegionId'] == null ? null : (map['slsRegionId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

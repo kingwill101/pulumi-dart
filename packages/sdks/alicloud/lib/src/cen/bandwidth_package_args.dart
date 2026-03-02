@@ -48,29 +48,18 @@ class BandwidthPackageArgs {
   /// [paymentType] The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
   /// [period] The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
   BandwidthPackageArgs({
-    pulumi.Output<bool>? autoRenew,
-    required pulumi.Output<int> bandwidth,
-    pulumi.Output<String>? cenBandwidthPackageName,
-    pulumi.Output<String>? chargeType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? geographicRegionAId,
-    pulumi.Output<String>? geographicRegionBId,
-    pulumi.Output<List<String>>? geographicRegionIds,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<int>? period,
-  }) :
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      bandwidth = pulumi.Input.asInput<int>(bandwidth),
-      cenBandwidthPackageName = pulumi.Input.asOptionalInput<String>(cenBandwidthPackageName),
-      chargeType = pulumi.Input.asOptionalInput<String>(chargeType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      geographicRegionAId = pulumi.Input.asOptionalInput<String>(geographicRegionAId),
-      geographicRegionBId = pulumi.Input.asOptionalInput<String>(geographicRegionBId),
-      geographicRegionIds = pulumi.Input.asOptionalInput<List<String>>(geographicRegionIds),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      period = pulumi.Input.asOptionalInput<int>(period);
+    this.autoRenew,
+    required this.bandwidth,
+    this.cenBandwidthPackageName,
+    this.chargeType,
+    this.description,
+    this.geographicRegionAId,
+    this.geographicRegionBId,
+    this.geographicRegionIds,
+    this.name,
+    this.paymentType,
+    this.period,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,17 +79,17 @@ class BandwidthPackageArgs {
 
   factory BandwidthPackageArgs.fromMap(Map<String, dynamic> map) {
     return BandwidthPackageArgs(
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      bandwidth: pulumi.Output.create<int>(map['bandwidth'] as int),
-      cenBandwidthPackageName: map['cenBandwidthPackageName'] == null ? null : pulumi.Output.create<String>(map['cenBandwidthPackageName'] as String),
-      chargeType: map['chargeType'] == null ? null : pulumi.Output.create<String>(map['chargeType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      geographicRegionAId: map['geographicRegionAId'] == null ? null : pulumi.Output.create<String>(map['geographicRegionAId'] as String),
-      geographicRegionBId: map['geographicRegionBId'] == null ? null : pulumi.Output.create<String>(map['geographicRegionBId'] as String),
-      geographicRegionIds: map['geographicRegionIds'] == null ? null : pulumi.Output.create<List<String>>((map['geographicRegionIds'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      bandwidth: (map['bandwidth'] as int).input(),
+      cenBandwidthPackageName: map['cenBandwidthPackageName'] == null ? null : (map['cenBandwidthPackageName'] as String).input(),
+      chargeType: map['chargeType'] == null ? null : (map['chargeType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      geographicRegionAId: map['geographicRegionAId'] == null ? null : (map['geographicRegionAId'] as String).input(),
+      geographicRegionBId: map['geographicRegionBId'] == null ? null : (map['geographicRegionBId'] as String).input(),
+      geographicRegionIds: map['geographicRegionIds'] == null ? null : ((map['geographicRegionIds'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
     );
   }
 }

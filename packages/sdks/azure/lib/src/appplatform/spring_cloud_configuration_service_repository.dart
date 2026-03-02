@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudConfigurationServiceRepository {
   /// Specifies the ID of the Certificate Authority used when retrieving the Git Repository via HTTPS.
-  final String? caCertificateId;
+  final pulumi.Input<String>? caCertificateId;
   /// Specifies the SSH public key of git repository.
-  final String? hostKey;
+  final pulumi.Input<String>? hostKey;
   /// Specifies the SSH key algorithm of git repository.
-  final String? hostKeyAlgorithm;
+  final pulumi.Input<String>? hostKeyAlgorithm;
   /// Specifies the label of the repository.
-  final String label;
+  final pulumi.Input<String> label;
   /// Specifies the name which should be used for this repository.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the password of git repository basic auth.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Specifies the collection of patterns of the repository.
-  final List<String> patterns;
+  final pulumi.Input<List<String>> patterns;
   /// Specifies the SSH private key of git repository.
-  final String? privateKey;
+  final pulumi.Input<String>? privateKey;
   /// Specifies a list of searching path of the repository
-  final List<String>? searchPaths;
+  final pulumi.Input<List<String>>? searchPaths;
   /// Specifies whether enable the strict host key checking.
-  final bool? strictHostKeyChecking;
+  final pulumi.Input<bool>? strictHostKeyChecking;
   /// Specifies the URI of the repository.
-  final String uri;
+  final pulumi.Input<String> uri;
   /// Specifies the username of git repository basic auth.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [SpringCloudConfigurationServiceRepository].
   /// [caCertificateId] Specifies the ID of the Certificate Authority used when retrieving the Git Repository via HTTPS.
@@ -74,18 +75,18 @@ class SpringCloudConfigurationServiceRepository {
 
   factory SpringCloudConfigurationServiceRepository.fromMap(Map<String, dynamic> map) {
     return SpringCloudConfigurationServiceRepository(
-      caCertificateId: map['caCertificateId'] == null ? null : map['caCertificateId'] as String,
-      hostKey: map['hostKey'] == null ? null : map['hostKey'] as String,
-      hostKeyAlgorithm: map['hostKeyAlgorithm'] == null ? null : map['hostKeyAlgorithm'] as String,
-      label: map['label'] as String,
-      name: map['name'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      patterns: (map['patterns'] as List).cast<String>(),
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
-      searchPaths: map['searchPaths'] == null ? null : (map['searchPaths'] as List).cast<String>(),
-      strictHostKeyChecking: map['strictHostKeyChecking'] == null ? null : map['strictHostKeyChecking'] as bool,
-      uri: map['uri'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      caCertificateId: map['caCertificateId'] == null ? null : (map['caCertificateId'] as String).input(),
+      hostKey: map['hostKey'] == null ? null : (map['hostKey'] as String).input(),
+      hostKeyAlgorithm: map['hostKeyAlgorithm'] == null ? null : (map['hostKeyAlgorithm'] as String).input(),
+      label: (map['label'] as String).input(),
+      name: (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      patterns: ((map['patterns'] as List).cast<String>()).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      searchPaths: map['searchPaths'] == null ? null : ((map['searchPaths'] as List).cast<String>()).input(),
+      strictHostKeyChecking: map['strictHostKeyChecking'] == null ? null : (map['strictHostKeyChecking'] as bool).input(),
+      uri: (map['uri'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

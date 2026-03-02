@@ -19,13 +19,10 @@ class GetRunbookArgs {
   /// [name] The name of the Automation Runbook.
   /// [resourceGroupName] The name of the Resource Group where the Automation exists.
   GetRunbookArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRunbookArgs {
 
   factory GetRunbookArgs.fromMap(Map<String, dynamic> map) {
     return GetRunbookArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

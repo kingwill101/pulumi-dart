@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PacketMirroringForwardingRuleInfoResponseComputeV1 {
   /// Unique identifier for the forwarding rule; defined by the server.
-  final String canonicalUrl;
+  final pulumi.Input<String> canonicalUrl;
   /// Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [PacketMirroringForwardingRuleInfoResponseComputeV1].
   /// [canonicalUrl] Unique identifier for the forwarding rule; defined by the server.
@@ -24,8 +25,8 @@ class PacketMirroringForwardingRuleInfoResponseComputeV1 {
 
   factory PacketMirroringForwardingRuleInfoResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return PacketMirroringForwardingRuleInfoResponseComputeV1(
-      canonicalUrl: map['canonicalUrl'] as String,
-      url: map['url'] as String,
+      canonicalUrl: (map['canonicalUrl'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

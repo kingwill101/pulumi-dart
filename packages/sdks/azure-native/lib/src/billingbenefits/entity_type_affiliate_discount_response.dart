@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Entity type for affiliate discounts
 class EntityTypeAffiliateDiscountResponse {
   /// List of applied scopes supported for discounts.
-  final String? appliedScopeType;
+  final pulumi.Input<String>? appliedScopeType;
   /// Fully-qualified identifier of the benefit under applicable benefit list.
-  final String benefitResourceId;
+  final pulumi.Input<String> benefitResourceId;
   /// Billing account resource id where the discount metadata is present.
-  final String billingAccountResourceId;
+  final pulumi.Input<String> billingAccountResourceId;
   /// Billing profile resource id where the discount is scoped to.
-  final String billingProfileResourceId;
+  final pulumi.Input<String> billingProfileResourceId;
   /// Customer resource id where the discount is scoped to.
-  final String customerResourceId;
+  final pulumi.Input<String> customerResourceId;
   /// This defines a user friendly display name for the discount.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
-  final String endAt;
+  final pulumi.Input<String> endAt;
   /// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
   /// Expected value is 'Affiliate'.
-  final String entityType;
+  final pulumi.Input<String> entityType;
   /// This will be present in the response if the primary has a resource ID
-  final String primaryResourceId;
+  final pulumi.Input<String> primaryResourceId;
   /// This is the catalog UPN for the product.
-  final String productCode;
+  final pulumi.Input<String> productCode;
   /// The state of the resource. Supported values are Pending, Failed, Succeeded, Canceled.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Start date of the discount. Value is the date the discount started or will start in the future.
-  final String startAt;
+  final pulumi.Input<String> startAt;
   /// Represents the current status of the discount.
-  final String status;
+  final pulumi.Input<String> status;
   /// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
-  final String? systemId;
+  final pulumi.Input<String>? systemId;
 
   /// Creates a new [EntityTypeAffiliateDiscountResponse].
   /// [appliedScopeType] List of applied scopes supported for discounts.
@@ -86,20 +87,20 @@ class EntityTypeAffiliateDiscountResponse {
 
   factory EntityTypeAffiliateDiscountResponse.fromMap(Map<String, dynamic> map) {
     return EntityTypeAffiliateDiscountResponse(
-      appliedScopeType: map['appliedScopeType'] == null ? null : map['appliedScopeType'] as String,
-      benefitResourceId: map['benefitResourceId'] as String,
-      billingAccountResourceId: map['billingAccountResourceId'] as String,
-      billingProfileResourceId: map['billingProfileResourceId'] as String,
-      customerResourceId: map['customerResourceId'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      endAt: map['endAt'] as String,
-      entityType: map['entityType'] as String,
-      primaryResourceId: map['primaryResourceId'] as String,
-      productCode: map['productCode'] as String,
-      provisioningState: map['provisioningState'] as String,
-      startAt: map['startAt'] as String,
-      status: map['status'] as String,
-      systemId: map['systemId'] == null ? null : map['systemId'] as String,
+      appliedScopeType: map['appliedScopeType'] == null ? null : (map['appliedScopeType'] as String).input(),
+      benefitResourceId: (map['benefitResourceId'] as String).input(),
+      billingAccountResourceId: (map['billingAccountResourceId'] as String).input(),
+      billingProfileResourceId: (map['billingProfileResourceId'] as String).input(),
+      customerResourceId: (map['customerResourceId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      endAt: (map['endAt'] as String).input(),
+      entityType: (map['entityType'] as String).input(),
+      primaryResourceId: (map['primaryResourceId'] as String).input(),
+      productCode: (map['productCode'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      startAt: (map['startAt'] as String).input(),
+      status: (map['status'] as String).input(),
+      systemId: map['systemId'] == null ? null : (map['systemId'] as String).input(),
     );
   }
 }

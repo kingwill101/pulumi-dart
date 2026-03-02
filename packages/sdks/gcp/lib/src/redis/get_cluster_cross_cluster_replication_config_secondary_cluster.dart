@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterCrossClusterReplicationConfigSecondaryCluster {
   /// The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
-  final String cluster;
+  final pulumi.Input<String> cluster;
   /// The unique id of the secondary cluster.
-  final String uid;
+  final pulumi.Input<String> uid;
 
   /// Creates a new [GetClusterCrossClusterReplicationConfigSecondaryCluster].
   /// [cluster] The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
@@ -24,8 +25,8 @@ class GetClusterCrossClusterReplicationConfigSecondaryCluster {
 
   factory GetClusterCrossClusterReplicationConfigSecondaryCluster.fromMap(Map<String, dynamic> map) {
     return GetClusterCrossClusterReplicationConfigSecondaryCluster(
-      cluster: map['cluster'] as String,
-      uid: map['uid'] as String,
+      cluster: (map['cluster'] as String).input(),
+      uid: (map['uid'] as String).input(),
     );
   }
 }

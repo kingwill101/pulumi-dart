@@ -16,13 +16,10 @@ class AuthenticationStrengthPolicyState {
   /// [description] The description for this authentication strength policy.
   /// [displayName] The friendly name for this authentication strength policy.
   AuthenticationStrengthPolicyState({
-    pulumi.Output<List<String>>? allowedCombinations,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-  }) :
-      allowedCombinations = pulumi.Input.asOptionalInput<List<String>>(allowedCombinations),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName);
+    this.allowedCombinations,
+    this.description,
+    this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AuthenticationStrengthPolicyState {
 
   factory AuthenticationStrengthPolicyState.fromMap(Map<String, dynamic> map) {
     return AuthenticationStrengthPolicyState(
-      allowedCombinations: map['allowedCombinations'] == null ? null : pulumi.Output.create<List<String>>((map['allowedCombinations'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
+      allowedCombinations: map['allowedCombinations'] == null ? null : ((map['allowedCombinations'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
     );
   }
 }

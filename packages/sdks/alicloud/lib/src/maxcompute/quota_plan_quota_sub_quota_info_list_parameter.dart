@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QuotaPlanQuotaSubQuotaInfoListParameter {
   /// The value of elastic Reserved CUs.
   ///
   /// > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
-  final int elasticReservedCu;
+  final pulumi.Input<int> elasticReservedCu;
   /// The value of maxCU in Reserved CUs.
-  final int maxCu;
+  final pulumi.Input<int> maxCu;
   /// The value of minCU in Reserved CUs.
-  final int minCu;
+  final pulumi.Input<int> minCu;
 
   /// Creates a new [QuotaPlanQuotaSubQuotaInfoListParameter].
   /// [elasticReservedCu] The value of elastic Reserved CUs.
@@ -31,9 +32,9 @@ class QuotaPlanQuotaSubQuotaInfoListParameter {
 
   factory QuotaPlanQuotaSubQuotaInfoListParameter.fromMap(Map<String, dynamic> map) {
     return QuotaPlanQuotaSubQuotaInfoListParameter(
-      elasticReservedCu: map['elasticReservedCu'] as int,
-      maxCu: map['maxCu'] as int,
-      minCu: map['minCu'] as int,
+      elasticReservedCu: (map['elasticReservedCu'] as int).input(),
+      maxCu: (map['maxCu'] as int).input(),
+      minCu: (map['minCu'] as int).input(),
     );
   }
 }

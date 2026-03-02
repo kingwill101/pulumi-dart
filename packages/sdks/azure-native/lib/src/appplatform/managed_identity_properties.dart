@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed identity properties retrieved from ARM request headers.
 class ManagedIdentityProperties {
   /// Principal Id of system-assigned managed identity.
-  final String? principalId;
+  final pulumi.Input<String>? principalId;
   /// Tenant Id of system-assigned managed identity.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// Type of the managed identity
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Properties of user-assigned managed identities
-  final List<String>? userAssignedIdentities;
+  final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [ManagedIdentityProperties].
   /// [principalId] Principal Id of system-assigned managed identity.
@@ -35,10 +36,10 @@ class ManagedIdentityProperties {
 
   factory ManagedIdentityProperties.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityProperties(
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (map['userAssignedIdentities'] as List).cast<String>(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
     );
   }
 }

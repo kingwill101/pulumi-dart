@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AttachedClusterAuthorization {
   /// Groups that can perform operations as a cluster admin. A managed
@@ -7,13 +8,13 @@ class AttachedClusterAuthorization {
   /// to the groups. Up to ten admin groups can be provided.
   /// For more info on RBAC, see
   /// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
-  final List<String>? adminGroups;
+  final pulumi.Input<List<String>>? adminGroups;
   /// Users that can perform operations as a cluster admin. A managed
   /// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
   /// to the users. Up to ten admin users can be provided.
   /// For more info on RBAC, see
   /// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
-  final List<String>? adminUsers;
+  final pulumi.Input<List<String>>? adminUsers;
 
   /// Creates a new [AttachedClusterAuthorization].
   /// [adminGroups] Groups that can perform operations as a cluster admin. A managed
@@ -32,8 +33,8 @@ class AttachedClusterAuthorization {
 
   factory AttachedClusterAuthorization.fromMap(Map<String, dynamic> map) {
     return AttachedClusterAuthorization(
-      adminGroups: map['adminGroups'] == null ? null : (map['adminGroups'] as List).cast<String>(),
-      adminUsers: map['adminUsers'] == null ? null : (map['adminUsers'] as List).cast<String>(),
+      adminGroups: map['adminGroups'] == null ? null : ((map['adminGroups'] as List).cast<String>()).input(),
+      adminUsers: map['adminUsers'] == null ? null : ((map['adminUsers'] as List).cast<String>()).input(),
     );
   }
 }

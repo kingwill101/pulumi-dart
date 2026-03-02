@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identifies the cloud resource that is referenced by this asset.
 class GoogleCloudDataplexV1AssetResourceSpecResponse {
   /// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
-  final String name;
+  final pulumi.Input<String> name;
   /// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
-  final String readAccessMode;
+  final pulumi.Input<String> readAccessMode;
   /// Immutable. Type of resource.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleCloudDataplexV1AssetResourceSpecResponse].
   /// [name] Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
@@ -30,9 +31,9 @@ class GoogleCloudDataplexV1AssetResourceSpecResponse {
 
   factory GoogleCloudDataplexV1AssetResourceSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1AssetResourceSpecResponse(
-      name: map['name'] as String,
-      readAccessMode: map['readAccessMode'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      readAccessMode: (map['readAccessMode'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

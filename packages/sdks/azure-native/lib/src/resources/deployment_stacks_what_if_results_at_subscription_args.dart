@@ -23,15 +23,11 @@ class DeploymentStacksWhatIfResultsAtSubscriptionArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [tags] Resource tags.
   DeploymentStacksWhatIfResultsAtSubscriptionArgs({
-    pulumi.Output<String>? deploymentStacksWhatIfResultName,
-    pulumi.Output<String>? location,
-    pulumi.Output<DeploymentStacksWhatIfResultProperties>? properties,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deploymentStacksWhatIfResultName = pulumi.Input.asOptionalInput<String>(deploymentStacksWhatIfResultName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<DeploymentStacksWhatIfResultProperties>(properties),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deploymentStacksWhatIfResultName,
+    this.location,
+    this.properties,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class DeploymentStacksWhatIfResultsAtSubscriptionArgs {
 
   factory DeploymentStacksWhatIfResultsAtSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksWhatIfResultsAtSubscriptionArgs(
-      deploymentStacksWhatIfResultName: map['deploymentStacksWhatIfResultName'] == null ? null : pulumi.Output.create<String>(map['deploymentStacksWhatIfResultName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DeploymentStacksWhatIfResultProperties>(DeploymentStacksWhatIfResultProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deploymentStacksWhatIfResultName: map['deploymentStacksWhatIfResultName'] == null ? null : (map['deploymentStacksWhatIfResultName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (DeploymentStacksWhatIfResultProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

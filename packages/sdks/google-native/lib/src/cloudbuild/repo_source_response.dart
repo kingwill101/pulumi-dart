@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Location of the source in a Google Cloud Source Repository.
 class RepoSourceResponse {
   /// Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-  final String branchName;
+  final pulumi.Input<String> branchName;
   /// Explicit commit SHA to build.
-  final String commitSha;
+  final pulumi.Input<String> commitSha;
   /// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
-  final String dir;
+  final pulumi.Input<String> dir;
   /// Only trigger a build if the revision regex does NOT match the revision regex.
-  final bool invertRegex;
+  final pulumi.Input<bool> invertRegex;
   /// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
-  final String project;
+  final pulumi.Input<String> project;
   /// Name of the Cloud Source Repository.
-  final String repoName;
+  final pulumi.Input<String> repoName;
   /// Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
-  final Map<String, String> substitutions;
+  final pulumi.Input<Map<String, String>> substitutions;
   /// Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-  final String tagName;
+  final pulumi.Input<String> tagName;
 
   /// Creates a new [RepoSourceResponse].
   /// [branchName] Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -55,14 +56,14 @@ class RepoSourceResponse {
 
   factory RepoSourceResponse.fromMap(Map<String, dynamic> map) {
     return RepoSourceResponse(
-      branchName: map['branchName'] as String,
-      commitSha: map['commitSha'] as String,
-      dir: map['dir'] as String,
-      invertRegex: map['invertRegex'] as bool,
-      project: map['project'] as String,
-      repoName: map['repoName'] as String,
-      substitutions: (map['substitutions'] as Map).cast<String, String>(),
-      tagName: map['tagName'] as String,
+      branchName: (map['branchName'] as String).input(),
+      commitSha: (map['commitSha'] as String).input(),
+      dir: (map['dir'] as String).input(),
+      invertRegex: (map['invertRegex'] as bool).input(),
+      project: (map['project'] as String).input(),
+      repoName: (map['repoName'] as String).input(),
+      substitutions: ((map['substitutions'] as Map).cast<String, String>()).input(),
+      tagName: (map['tagName'] as String).input(),
     );
   }
 }

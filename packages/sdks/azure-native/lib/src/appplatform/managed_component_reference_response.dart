@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A reference to the managed component like Config Server.
 class ManagedComponentReferenceResponse {
   /// Resource Id of the managed component
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [ManagedComponentReferenceResponse].
   /// [resourceId] Resource Id of the managed component
@@ -20,7 +21,7 @@ class ManagedComponentReferenceResponse {
 
   factory ManagedComponentReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ManagedComponentReferenceResponse(
-      resourceId: map['resourceId'] as String,
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

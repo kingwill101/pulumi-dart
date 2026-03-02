@@ -31,23 +31,15 @@ class HoneyPotState {
   /// [states] Honeypot status.
   /// [status] The status of the resource.
   HoneyPotState({
-    pulumi.Output<String>? honeypotId,
-    pulumi.Output<String>? honeypotImageId,
-    pulumi.Output<String>? honeypotImageName,
-    pulumi.Output<String>? honeypotName,
-    pulumi.Output<String>? nodeId,
-    pulumi.Output<String>? presetId,
-    pulumi.Output<List<String>>? states,
-    pulumi.Output<String>? status,
-  }) :
-      honeypotId = pulumi.Input.asOptionalInput<String>(honeypotId),
-      honeypotImageId = pulumi.Input.asOptionalInput<String>(honeypotImageId),
-      honeypotImageName = pulumi.Input.asOptionalInput<String>(honeypotImageName),
-      honeypotName = pulumi.Input.asOptionalInput<String>(honeypotName),
-      nodeId = pulumi.Input.asOptionalInput<String>(nodeId),
-      presetId = pulumi.Input.asOptionalInput<String>(presetId),
-      states = pulumi.Input.asOptionalInput<List<String>>(states),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.honeypotId,
+    this.honeypotImageId,
+    this.honeypotImageName,
+    this.honeypotName,
+    this.nodeId,
+    this.presetId,
+    this.states,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class HoneyPotState {
 
   factory HoneyPotState.fromMap(Map<String, dynamic> map) {
     return HoneyPotState(
-      honeypotId: map['honeypotId'] == null ? null : pulumi.Output.create<String>(map['honeypotId'] as String),
-      honeypotImageId: map['honeypotImageId'] == null ? null : pulumi.Output.create<String>(map['honeypotImageId'] as String),
-      honeypotImageName: map['honeypotImageName'] == null ? null : pulumi.Output.create<String>(map['honeypotImageName'] as String),
-      honeypotName: map['honeypotName'] == null ? null : pulumi.Output.create<String>(map['honeypotName'] as String),
-      nodeId: map['nodeId'] == null ? null : pulumi.Output.create<String>(map['nodeId'] as String),
-      presetId: map['presetId'] == null ? null : pulumi.Output.create<String>(map['presetId'] as String),
-      states: map['states'] == null ? null : pulumi.Output.create<List<String>>((map['states'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      honeypotId: map['honeypotId'] == null ? null : (map['honeypotId'] as String).input(),
+      honeypotImageId: map['honeypotImageId'] == null ? null : (map['honeypotImageId'] as String).input(),
+      honeypotImageName: map['honeypotImageName'] == null ? null : (map['honeypotImageName'] as String).input(),
+      honeypotName: map['honeypotName'] == null ? null : (map['honeypotName'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      presetId: map['presetId'] == null ? null : (map['presetId'] as String).input(),
+      states: map['states'] == null ? null : ((map['states'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

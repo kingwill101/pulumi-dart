@@ -22,17 +22,12 @@ class ZoneRecordState {
   /// [value] Value of the Zone Record.
   /// [zone] ID or Name of the parent Zone.
   ZoneRecordState({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? value,
-    pulumi.Output<String>? zone,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      value = pulumi.Input.asOptionalInput<String>(value),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.comment,
+    this.name,
+    this.type,
+    this.value,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ZoneRecordState {
 
   factory ZoneRecordState.fromMap(Map<String, dynamic> map) {
     return ZoneRecordState(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

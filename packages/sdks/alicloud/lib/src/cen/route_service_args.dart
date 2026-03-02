@@ -30,19 +30,13 @@ class RouteServiceArgs {
   /// [hostRegionId] The region of the cloud service.
   /// [hostVpcId] The VPC associated with the cloud service.
   RouteServiceArgs({
-    required pulumi.Output<String> accessRegionId,
-    required pulumi.Output<String> cenId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> host,
-    required pulumi.Output<String> hostRegionId,
-    required pulumi.Output<String> hostVpcId,
-  }) :
-      accessRegionId = pulumi.Input.asInput<String>(accessRegionId),
-      cenId = pulumi.Input.asInput<String>(cenId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      host = pulumi.Input.asInput<String>(host),
-      hostRegionId = pulumi.Input.asInput<String>(hostRegionId),
-      hostVpcId = pulumi.Input.asInput<String>(hostVpcId);
+    required this.accessRegionId,
+    required this.cenId,
+    this.description,
+    required this.host,
+    required this.hostRegionId,
+    required this.hostVpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class RouteServiceArgs {
 
   factory RouteServiceArgs.fromMap(Map<String, dynamic> map) {
     return RouteServiceArgs(
-      accessRegionId: pulumi.Output.create<String>(map['accessRegionId'] as String),
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      host: pulumi.Output.create<String>(map['host'] as String),
-      hostRegionId: pulumi.Output.create<String>(map['hostRegionId'] as String),
-      hostVpcId: pulumi.Output.create<String>(map['hostVpcId'] as String),
+      accessRegionId: (map['accessRegionId'] as String).input(),
+      cenId: (map['cenId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      host: (map['host'] as String).input(),
+      hostRegionId: (map['hostRegionId'] as String).input(),
+      hostVpcId: (map['hostVpcId'] as String).input(),
     );
   }
 }

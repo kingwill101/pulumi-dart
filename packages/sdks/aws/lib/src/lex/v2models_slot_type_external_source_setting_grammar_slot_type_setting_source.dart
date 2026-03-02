@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource {
   /// KMS key required to decrypt the contents of the grammar, if any.
-  final String kmsKeyArn;
+  final pulumi.Input<String> kmsKeyArn;
   /// Name of the Amazon S3 bucket that contains the grammar source.
-  final String s3BucketName;
+  final pulumi.Input<String> s3BucketName;
   /// Path to the grammar in the Amazon S3 bucket.
-  final String s3ObjectKey;
+  final pulumi.Input<String> s3ObjectKey;
 
   /// Creates a new [V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource].
   /// [kmsKeyArn] KMS key required to decrypt the contents of the grammar, if any.
@@ -29,9 +30,9 @@ class V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource {
 
   factory V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource(
-      kmsKeyArn: map['kmsKeyArn'] as String,
-      s3BucketName: map['s3BucketName'] as String,
-      s3ObjectKey: map['s3ObjectKey'] as String,
+      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
+      s3BucketName: (map['s3BucketName'] as String).input(),
+      s3ObjectKey: (map['s3ObjectKey'] as String).input(),
     );
   }
 }

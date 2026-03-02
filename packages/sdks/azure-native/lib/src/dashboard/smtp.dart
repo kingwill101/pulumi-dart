@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Email server settings.
 /// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
 class Smtp {
   /// Enable this to allow Grafana to send email. Default is false
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Address used when sending out emails
   /// https://pkg.go.dev/net/mail#Address
-  final String? fromAddress;
+  final pulumi.Input<String>? fromAddress;
   /// Name to be used when sending out emails. Default is "Azure Managed Grafana Notification"
   /// https://pkg.go.dev/net/mail#Address
-  final String? fromName;
+  final pulumi.Input<String>? fromName;
   /// SMTP server hostname with port, e.g. test.email.net:587
-  final String? host;
+  final pulumi.Input<String>? host;
   /// Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Verify SSL for SMTP server. Default is false
   /// https://pkg.go.dev/crypto/tls#Config
-  final bool? skipVerify;
+  final pulumi.Input<bool>? skipVerify;
   /// The StartTLSPolicy setting of the SMTP configuration
   /// https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
-  final String? startTLSPolicy;
+  final pulumi.Input<String>? startTLSPolicy;
   /// User of SMTP auth
-  final String? user;
+  final pulumi.Input<String>? user;
 
   /// Creates a new [Smtp].
   /// [enabled] Enable this to allow Grafana to send email. Default is false
@@ -60,14 +61,14 @@ class Smtp {
 
   factory Smtp.fromMap(Map<String, dynamic> map) {
     return Smtp(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      fromAddress: map['fromAddress'] == null ? null : map['fromAddress'] as String,
-      fromName: map['fromName'] == null ? null : map['fromName'] as String,
-      host: map['host'] == null ? null : map['host'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      skipVerify: map['skipVerify'] == null ? null : map['skipVerify'] as bool,
-      startTLSPolicy: map['startTLSPolicy'] == null ? null : map['startTLSPolicy'] as String,
-      user: map['user'] == null ? null : map['user'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      fromAddress: map['fromAddress'] == null ? null : (map['fromAddress'] as String).input(),
+      fromName: map['fromName'] == null ? null : (map['fromName'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      skipVerify: map['skipVerify'] == null ? null : (map['skipVerify'] as bool).input(),
+      startTLSPolicy: map['startTLSPolicy'] == null ? null : (map['startTLSPolicy'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apt_repository.dart';
 import 'goo_repository.dart';
 import 'yum_repository.dart';
@@ -8,13 +9,13 @@ import 'zypper_repository.dart';
 /// A package repository.
 class PackageRepository {
   /// An Apt Repository.
-  final AptRepository? apt;
+  final pulumi.Input<AptRepository>? apt;
   /// A Goo Repository.
-  final GooRepository? goo;
+  final pulumi.Input<GooRepository>? goo;
   /// A Yum Repository.
-  final YumRepository? yum;
+  final pulumi.Input<YumRepository>? yum;
   /// A Zypper Repository.
-  final ZypperRepository? zypper;
+  final pulumi.Input<ZypperRepository>? zypper;
 
   /// Creates a new [PackageRepository].
   /// [apt] An Apt Repository.
@@ -30,19 +31,19 @@ class PackageRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apt': ?apt == null ? null : apt!.toMap(),
-      'goo': ?goo == null ? null : goo!.toMap(),
-      'yum': ?yum == null ? null : yum!.toMap(),
-      'zypper': ?zypper == null ? null : zypper!.toMap(),
+      'apt': ?pulumi.Input.mapOptionalInputValue<AptRepository, Map<String, dynamic>>(apt, (value) => value.toMap()),
+      'goo': ?pulumi.Input.mapOptionalInputValue<GooRepository, Map<String, dynamic>>(goo, (value) => value.toMap()),
+      'yum': ?pulumi.Input.mapOptionalInputValue<YumRepository, Map<String, dynamic>>(yum, (value) => value.toMap()),
+      'zypper': ?pulumi.Input.mapOptionalInputValue<ZypperRepository, Map<String, dynamic>>(zypper, (value) => value.toMap()),
     };
   }
 
   factory PackageRepository.fromMap(Map<String, dynamic> map) {
     return PackageRepository(
-      apt: map['apt'] == null ? null : AptRepository.fromMap((map['apt'] as Map).cast<String, dynamic>()),
-      goo: map['goo'] == null ? null : GooRepository.fromMap((map['goo'] as Map).cast<String, dynamic>()),
-      yum: map['yum'] == null ? null : YumRepository.fromMap((map['yum'] as Map).cast<String, dynamic>()),
-      zypper: map['zypper'] == null ? null : ZypperRepository.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
+      apt: map['apt'] == null ? null : (AptRepository.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
+      goo: map['goo'] == null ? null : (GooRepository.fromMap((map['goo'] as Map).cast<String, dynamic>())).input(),
+      yum: map['yum'] == null ? null : (YumRepository.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
+      zypper: map['zypper'] == null ? null : (ZypperRepository.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

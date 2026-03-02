@@ -19,13 +19,10 @@ class GetCertificateProfileArgs {
   /// [profileName] Certificate profile name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCertificateProfileArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.profileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCertificateProfileArgs {
 
   factory GetCertificateProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateProfileArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

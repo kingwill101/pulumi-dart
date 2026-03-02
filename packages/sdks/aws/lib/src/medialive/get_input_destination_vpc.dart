@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInputDestinationVpc {
-  final String availabilityZone;
-  final String networkInterfaceId;
+  final pulumi.Input<String> availabilityZone;
+  final pulumi.Input<String> networkInterfaceId;
 
   /// Creates a new [GetInputDestinationVpc].
   /// [availabilityZone] Required.
@@ -22,8 +23,8 @@ class GetInputDestinationVpc {
 
   factory GetInputDestinationVpc.fromMap(Map<String, dynamic> map) {
     return GetInputDestinationVpc(
-      availabilityZone: map['availabilityZone'] as String,
-      networkInterfaceId: map['networkInterfaceId'] as String,
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
     );
   }
 }

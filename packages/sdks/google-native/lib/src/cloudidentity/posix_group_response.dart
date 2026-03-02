@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// POSIX Group definition to represent a group in a POSIX compliant system.
 class PosixGroupResponse {
   /// GID of the POSIX group.
-  final String gid;
+  final pulumi.Input<String> gid;
   /// Name of the POSIX group.
-  final String name;
+  final pulumi.Input<String> name;
   /// System identifier for which group name and gid apply to. If not specified it will default to empty value.
-  final String systemId;
+  final pulumi.Input<String> systemId;
 
   /// Creates a new [PosixGroupResponse].
   /// [gid] GID of the POSIX group.
@@ -30,9 +31,9 @@ class PosixGroupResponse {
 
   factory PosixGroupResponse.fromMap(Map<String, dynamic> map) {
     return PosixGroupResponse(
-      gid: map['gid'] as String,
-      name: map['name'] as String,
-      systemId: map['systemId'] as String,
+      gid: (map['gid'] as String).input(),
+      name: (map['name'] as String).input(),
+      systemId: (map['systemId'] as String).input(),
     );
   }
 }

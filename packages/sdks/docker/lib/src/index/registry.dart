@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a Docker container registry
 class Registry {
   /// The password to authenticate to the registry. Does not cause image rebuild when changed.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The URL of the Docker registry server
-  final String? server;
+  final pulumi.Input<String>? server;
   /// The username to authenticate to the registry. Does not cause image rebuild when changed.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [Registry].
   /// [password] The password to authenticate to the registry. Does not cause image rebuild when changed.
@@ -30,9 +31,9 @@ class Registry {
 
   factory Registry.fromMap(Map<String, dynamic> map) {
     return Registry(
-      password: map['password'] == null ? null : map['password'] as String,
-      server: map['server'] == null ? null : map['server'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      server: map['server'] == null ? null : (map['server'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

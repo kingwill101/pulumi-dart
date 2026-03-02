@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RdsDbProxyReadOnlyInstanceWeight {
   /// The Id of the instance and its read-only instances that can run database.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
-  final String weight;
+  final pulumi.Input<String> weight;
 
   /// Creates a new [RdsDbProxyReadOnlyInstanceWeight].
   /// [instanceId] The Id of the instance and its read-only instances that can run database.
@@ -24,8 +25,8 @@ class RdsDbProxyReadOnlyInstanceWeight {
 
   factory RdsDbProxyReadOnlyInstanceWeight.fromMap(Map<String, dynamic> map) {
     return RdsDbProxyReadOnlyInstanceWeight(
-      instanceId: map['instanceId'] as String,
-      weight: map['weight'] as String,
+      instanceId: (map['instanceId'] as String).input(),
+      weight: (map['weight'] as String).input(),
     );
   }
 }

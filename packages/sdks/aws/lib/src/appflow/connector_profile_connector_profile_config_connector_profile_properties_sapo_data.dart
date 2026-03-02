@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_profile_connector_profile_config_connector_profile_properties_sapo_data_oauth_properties.dart';
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData {
   /// The location of the SAPOData resource.
-  final String applicationHostUrl;
+  final pulumi.Input<String> applicationHostUrl;
   /// The application path to catalog service.
-  final String applicationServicePath;
+  final pulumi.Input<String> applicationServicePath;
   /// The client number for the client creating the connection.
-  final String clientNumber;
+  final pulumi.Input<String> clientNumber;
   /// The logon language of SAPOData instance.
-  final String? logonLanguage;
+  final pulumi.Input<String>? logonLanguage;
   /// The SAPOData OAuth properties required for OAuth type authentication.
-  final ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties? oauthProperties;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties>? oauthProperties;
   /// The port number of the SAPOData instance.
-  final int portNumber;
-  final String? privateLinkServiceName;
+  final pulumi.Input<int> portNumber;
+  final pulumi.Input<String>? privateLinkServiceName;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData].
   /// [applicationHostUrl] The location of the SAPOData resource.
@@ -41,7 +42,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData {
       'applicationServicePath': applicationServicePath,
       'clientNumber': clientNumber,
       'logonLanguage': ?logonLanguage,
-      'oauthProperties': ?oauthProperties == null ? null : oauthProperties!.toMap(),
+      'oauthProperties': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties, Map<String, dynamic>>(oauthProperties, (value) => value.toMap()),
       'portNumber': portNumber,
       'privateLinkServiceName': ?privateLinkServiceName,
     };
@@ -49,13 +50,13 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData {
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData(
-      applicationHostUrl: map['applicationHostUrl'] as String,
-      applicationServicePath: map['applicationServicePath'] as String,
-      clientNumber: map['clientNumber'] as String,
-      logonLanguage: map['logonLanguage'] == null ? null : map['logonLanguage'] as String,
-      oauthProperties: map['oauthProperties'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap((map['oauthProperties'] as Map).cast<String, dynamic>()),
-      portNumber: map['portNumber'] as int,
-      privateLinkServiceName: map['privateLinkServiceName'] == null ? null : map['privateLinkServiceName'] as String,
+      applicationHostUrl: (map['applicationHostUrl'] as String).input(),
+      applicationServicePath: (map['applicationServicePath'] as String).input(),
+      clientNumber: (map['clientNumber'] as String).input(),
+      logonLanguage: map['logonLanguage'] == null ? null : (map['logonLanguage'] as String).input(),
+      oauthProperties: map['oauthProperties'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap((map['oauthProperties'] as Map).cast<String, dynamic>())).input(),
+      portNumber: (map['portNumber'] as int).input(),
+      privateLinkServiceName: map['privateLinkServiceName'] == null ? null : (map['privateLinkServiceName'] as String).input(),
     );
   }
 }

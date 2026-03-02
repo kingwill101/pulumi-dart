@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPackageAssignmentPolicyQuestionTextLocalizedText {
   /// The localized content of this question
-  final String content;
+  final pulumi.Input<String> content;
   /// The language code of this question content
-  final String languageCode;
+  final pulumi.Input<String> languageCode;
 
   /// Creates a new [AccessPackageAssignmentPolicyQuestionTextLocalizedText].
   /// [content] The localized content of this question
@@ -24,8 +25,8 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedText {
 
   factory AccessPackageAssignmentPolicyQuestionTextLocalizedText.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyQuestionTextLocalizedText(
-      content: map['content'] as String,
-      languageCode: map['languageCode'] as String,
+      content: (map['content'] as String).input(),
+      languageCode: (map['languageCode'] as String).input(),
     );
   }
 }

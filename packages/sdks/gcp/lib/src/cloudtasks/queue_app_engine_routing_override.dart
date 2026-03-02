@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueueAppEngineRoutingOverride {
   /// (Output)
   /// The host that the task is sent to.
-  final String? host;
+  final pulumi.Input<String>? host;
   /// App instance.
   /// By default, the task is sent to an instance which is available when the task is attempted.
-  final String? instance;
+  final pulumi.Input<String>? instance;
   /// App service.
   /// By default, the task is sent to the service which is the default service when the task is attempted.
-  final String? service;
+  final pulumi.Input<String>? service;
   /// App version.
   /// By default, the task is sent to the version which is the default version when the task is attempted.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [QueueAppEngineRoutingOverride].
   /// [host] (Output)
@@ -38,10 +39,10 @@ class QueueAppEngineRoutingOverride {
 
   factory QueueAppEngineRoutingOverride.fromMap(Map<String, dynamic> map) {
     return QueueAppEngineRoutingOverride(
-      host: map['host'] == null ? null : map['host'] as String,
-      instance: map['instance'] == null ? null : map['instance'] as String,
-      service: map['service'] == null ? null : map['service'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

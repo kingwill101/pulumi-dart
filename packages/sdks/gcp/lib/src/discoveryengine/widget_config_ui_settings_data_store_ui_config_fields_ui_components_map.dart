@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap {
   /// Each value may be one of: `MOBILE`, `DESKTOP`.
-  final List<String>? deviceVisibilities;
+  final pulumi.Input<List<String>>? deviceVisibilities;
   /// The template to customize how the field is displayed.
   /// An example value would be a string that looks like: "Price: {value}".
-  final String? displayTemplate;
+  final pulumi.Input<String>? displayTemplate;
   /// Registered field name. The format is `field.abc`.
-  final String field;
+  final pulumi.Input<String> field;
   /// The identifier for this object. Format specified above.
-  final String uiComponent;
+  final pulumi.Input<String> uiComponent;
 
   /// Creates a new [WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap].
   /// [deviceVisibilities] Each value may be one of: `MOBILE`, `DESKTOP`.
@@ -35,10 +36,10 @@ class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap {
 
   factory WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap(
-      deviceVisibilities: map['deviceVisibilities'] == null ? null : (map['deviceVisibilities'] as List).cast<String>(),
-      displayTemplate: map['displayTemplate'] == null ? null : map['displayTemplate'] as String,
-      field: map['field'] as String,
-      uiComponent: map['uiComponent'] as String,
+      deviceVisibilities: map['deviceVisibilities'] == null ? null : ((map['deviceVisibilities'] as List).cast<String>()).input(),
+      displayTemplate: map['displayTemplate'] == null ? null : (map['displayTemplate'] as String).input(),
+      field: (map['field'] as String).input(),
+      uiComponent: (map['uiComponent'] as String).input(),
     );
   }
 }

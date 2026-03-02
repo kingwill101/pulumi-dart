@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure OpenAI Content Filter.
 class RaiPolicyContentFilter {
   /// Level at which content is filtered.
-  final String? allowedContentLevel;
+  final pulumi.Input<String>? allowedContentLevel;
   /// If blocking would occur.
-  final bool? blocking;
+  final pulumi.Input<bool>? blocking;
   /// If the ContentFilter is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Name of ContentFilter.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Content source to apply the Content Filters.
-  final String? source;
+  final pulumi.Input<String>? source;
 
   /// Creates a new [RaiPolicyContentFilter].
   /// [allowedContentLevel] Level at which content is filtered.
@@ -40,11 +41,11 @@ class RaiPolicyContentFilter {
 
   factory RaiPolicyContentFilter.fromMap(Map<String, dynamic> map) {
     return RaiPolicyContentFilter(
-      allowedContentLevel: map['allowedContentLevel'] == null ? null : map['allowedContentLevel'] as String,
-      blocking: map['blocking'] == null ? null : map['blocking'] as bool,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      allowedContentLevel: map['allowedContentLevel'] == null ? null : (map['allowedContentLevel'] as String).input(),
+      blocking: map['blocking'] == null ? null : (map['blocking'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

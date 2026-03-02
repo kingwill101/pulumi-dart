@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details for ownership voucher.
 class OwnershipVoucherDetailsResponse {
   /// Owner key type
-  final String ownerKeyType;
+  final pulumi.Input<String> ownerKeyType;
   /// Ownership voucher in base64 encoded format
-  final String ownershipVoucher;
+  final pulumi.Input<String> ownershipVoucher;
 
   /// Creates a new [OwnershipVoucherDetailsResponse].
   /// [ownerKeyType] Owner key type
@@ -25,8 +26,8 @@ class OwnershipVoucherDetailsResponse {
 
   factory OwnershipVoucherDetailsResponse.fromMap(Map<String, dynamic> map) {
     return OwnershipVoucherDetailsResponse(
-      ownerKeyType: map['ownerKeyType'] as String,
-      ownershipVoucher: map['ownershipVoucher'] as String,
+      ownerKeyType: (map['ownerKeyType'] as String).input(),
+      ownershipVoucher: (map['ownershipVoucher'] as String).input(),
     );
   }
 }

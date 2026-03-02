@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerFirewallRulesRule {
   /// The ID of the firewall rule.
-  final String firewallRuleId;
+  final pulumi.Input<String> firewallRuleId;
   /// The ID of the Firewall Rule. The value formats as `<instance_id>:<firewall_rule_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// Alibaba Cloud simple application server instance ID.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The port range of the firewall rule.
-  final String port;
+  final pulumi.Input<String> port;
   /// The remarks of the firewall rule.
-  final String remark;
+  final pulumi.Input<String> remark;
   /// The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
-  final String ruleProtocol;
+  final pulumi.Input<String> ruleProtocol;
 
   /// Creates a new [GetServerFirewallRulesRule].
   /// [firewallRuleId] The ID of the firewall rule.
@@ -44,12 +45,12 @@ class GetServerFirewallRulesRule {
 
   factory GetServerFirewallRulesRule.fromMap(Map<String, dynamic> map) {
     return GetServerFirewallRulesRule(
-      firewallRuleId: map['firewallRuleId'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      port: map['port'] as String,
-      remark: map['remark'] as String,
-      ruleProtocol: map['ruleProtocol'] as String,
+      firewallRuleId: (map['firewallRuleId'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      port: (map['port'] as String).input(),
+      remark: (map['remark'] as String).input(),
+      ruleProtocol: (map['ruleProtocol'] as String).input(),
     );
   }
 }

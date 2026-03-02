@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesCryptoBackend {
   /// Configures the built-in backend type for the crypto device.
-  final bool? builtIn;
+  final pulumi.Input<bool>? builtIn;
   /// Configures the LKCF backend option for the crypto device.
-  final bool? lkcf;
+  final pulumi.Input<bool>? lkcf;
   /// Sets the number of queues available in the backend for the crypto device.
-  final double? queues;
+  final pulumi.Input<double>? queues;
 
   /// Creates a new [DomainDevicesCryptoBackend].
   /// [builtIn] Configures the built-in backend type for the crypto device.
@@ -29,9 +30,9 @@ class DomainDevicesCryptoBackend {
 
   factory DomainDevicesCryptoBackend.fromMap(Map<String, dynamic> map) {
     return DomainDevicesCryptoBackend(
-      builtIn: map['builtIn'] == null ? null : map['builtIn'] as bool,
-      lkcf: map['lkcf'] == null ? null : map['lkcf'] as bool,
-      queues: map['queues'] == null ? null : map['queues'] as double,
+      builtIn: map['builtIn'] == null ? null : (map['builtIn'] as bool).input(),
+      lkcf: map['lkcf'] == null ? null : (map['lkcf'] as bool).input(),
+      queues: map['queues'] == null ? null : (map['queues'] as double).input(),
     );
   }
 }

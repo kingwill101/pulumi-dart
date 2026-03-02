@@ -46,21 +46,14 @@ class SecurityGatewayArgs {
   /// [securityGatewayId] Optional. User-settable SecurityGateway resource ID.
   /// [serviceDiscovery] Settings related to the Service Discovery.
   SecurityGatewayArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<SecurityGatewayHub>>? hubs,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<SecurityGatewayProxyProtocolConfig>? proxyProtocolConfig,
-    required pulumi.Output<String> securityGatewayId,
-    pulumi.Output<SecurityGatewayServiceDiscovery>? serviceDiscovery,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      hubs = pulumi.Input.asOptionalInput<List<SecurityGatewayHub>>(hubs),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      proxyProtocolConfig = pulumi.Input.asOptionalInput<SecurityGatewayProxyProtocolConfig>(proxyProtocolConfig),
-      securityGatewayId = pulumi.Input.asInput<String>(securityGatewayId),
-      serviceDiscovery = pulumi.Input.asOptionalInput<SecurityGatewayServiceDiscovery>(serviceDiscovery);
+    this.displayName,
+    this.hubs,
+    this.location,
+    this.project,
+    this.proxyProtocolConfig,
+    required this.securityGatewayId,
+    this.serviceDiscovery,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,13 +69,13 @@ class SecurityGatewayArgs {
 
   factory SecurityGatewayArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      hubs: map['hubs'] == null ? null : pulumi.Output.create<List<SecurityGatewayHub>>(pulumi.Input.decodeList<SecurityGatewayHub>(map['hubs'], (value) => SecurityGatewayHub.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      proxyProtocolConfig: map['proxyProtocolConfig'] == null ? null : pulumi.Output.create<SecurityGatewayProxyProtocolConfig>(SecurityGatewayProxyProtocolConfig.fromMap((map['proxyProtocolConfig'] as Map).cast<String, dynamic>())),
-      securityGatewayId: pulumi.Output.create<String>(map['securityGatewayId'] as String),
-      serviceDiscovery: map['serviceDiscovery'] == null ? null : pulumi.Output.create<SecurityGatewayServiceDiscovery>(SecurityGatewayServiceDiscovery.fromMap((map['serviceDiscovery'] as Map).cast<String, dynamic>())),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      hubs: map['hubs'] == null ? null : (pulumi.Input.decodeList<SecurityGatewayHub>(map['hubs'], (value) => SecurityGatewayHub.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      proxyProtocolConfig: map['proxyProtocolConfig'] == null ? null : (SecurityGatewayProxyProtocolConfig.fromMap((map['proxyProtocolConfig'] as Map).cast<String, dynamic>())).input(),
+      securityGatewayId: (map['securityGatewayId'] as String).input(),
+      serviceDiscovery: map['serviceDiscovery'] == null ? null : (SecurityGatewayServiceDiscovery.fromMap((map['serviceDiscovery'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

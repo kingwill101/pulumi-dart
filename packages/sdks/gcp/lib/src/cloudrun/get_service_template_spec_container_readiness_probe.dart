@@ -7,20 +7,20 @@ import 'get_service_template_spec_container_readiness_probe_http_get.dart';
 class GetServiceTemplateSpecContainerReadinessProbe {
   /// Minimum consecutive failures for the probe to be considered failed after
   /// having succeeded. Defaults to 3.
-  final int failureThreshold;
+  final pulumi.Input<int> failureThreshold;
   /// GRPC specifies an action involving a GRPC port.
-  final List<GetServiceTemplateSpecContainerReadinessProbeGrpc> grpcs;
+  final pulumi.Input<List<GetServiceTemplateSpecContainerReadinessProbeGrpc>> grpcs;
   /// HttpGet specifies the http request to perform.
-  final List<GetServiceTemplateSpecContainerReadinessProbeHttpGet> httpGets;
+  final pulumi.Input<List<GetServiceTemplateSpecContainerReadinessProbeHttpGet>> httpGets;
   /// How often (in seconds) to perform the probe.
   /// Default to 10 seconds.
-  final int periodSeconds;
+  final pulumi.Input<int> periodSeconds;
   /// Minimum consecutive successes for the probe to be considered successful after having failed.
   /// Defaults to 2.
-  final int successThreshold;
+  final pulumi.Input<int> successThreshold;
   /// Number of seconds after which the probe times out.
   /// Defaults to 1 second. Must be smaller than period_seconds.
-  final int timeoutSeconds;
+  final pulumi.Input<int> timeoutSeconds;
 
   /// Creates a new [GetServiceTemplateSpecContainerReadinessProbe].
   /// [failureThreshold] Minimum consecutive failures for the probe to be considered failed after
@@ -41,8 +41,8 @@ class GetServiceTemplateSpecContainerReadinessProbe {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'failureThreshold': failureThreshold,
-      'grpcs': pulumi.Input.encodeList<GetServiceTemplateSpecContainerReadinessProbeGrpc, Map<String, dynamic>>(grpcs, (value) => value.toMap()),
-      'httpGets': pulumi.Input.encodeList<GetServiceTemplateSpecContainerReadinessProbeHttpGet, Map<String, dynamic>>(httpGets, (value) => value.toMap()),
+      'grpcs': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerReadinessProbeGrpc>, List<Map<String, dynamic>>>(grpcs, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerReadinessProbeGrpc, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'httpGets': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerReadinessProbeHttpGet>, List<Map<String, dynamic>>>(httpGets, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerReadinessProbeHttpGet, Map<String, dynamic>>(value, (value) => value.toMap())),
       'periodSeconds': periodSeconds,
       'successThreshold': successThreshold,
       'timeoutSeconds': timeoutSeconds,
@@ -51,12 +51,12 @@ class GetServiceTemplateSpecContainerReadinessProbe {
 
   factory GetServiceTemplateSpecContainerReadinessProbe.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerReadinessProbe(
-      failureThreshold: map['failureThreshold'] as int,
-      grpcs: pulumi.Input.decodeList<GetServiceTemplateSpecContainerReadinessProbeGrpc>(map['grpcs'], (value) => GetServiceTemplateSpecContainerReadinessProbeGrpc.fromMap((value as Map).cast<String, dynamic>())),
-      httpGets: pulumi.Input.decodeList<GetServiceTemplateSpecContainerReadinessProbeHttpGet>(map['httpGets'], (value) => GetServiceTemplateSpecContainerReadinessProbeHttpGet.fromMap((value as Map).cast<String, dynamic>())),
-      periodSeconds: map['periodSeconds'] as int,
-      successThreshold: map['successThreshold'] as int,
-      timeoutSeconds: map['timeoutSeconds'] as int,
+      failureThreshold: (map['failureThreshold'] as int).input(),
+      grpcs: (pulumi.Input.decodeList<GetServiceTemplateSpecContainerReadinessProbeGrpc>(map['grpcs'], (value) => GetServiceTemplateSpecContainerReadinessProbeGrpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpGets: (pulumi.Input.decodeList<GetServiceTemplateSpecContainerReadinessProbeHttpGet>(map['httpGets'], (value) => GetServiceTemplateSpecContainerReadinessProbeHttpGet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      periodSeconds: (map['periodSeconds'] as int).input(),
+      successThreshold: (map['successThreshold'] as int).input(),
+      timeoutSeconds: (map['timeoutSeconds'] as int).input(),
     );
   }
 }

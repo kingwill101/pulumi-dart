@@ -19,13 +19,10 @@ class GetForwardingRuleArgs {
   /// [forwardingRuleName] The name of the forwarding rule.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetForwardingRuleArgs({
-    required pulumi.Output<String> dnsForwardingRulesetName,
-    required pulumi.Output<String> forwardingRuleName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dnsForwardingRulesetName = pulumi.Input.asInput<String>(dnsForwardingRulesetName),
-      forwardingRuleName = pulumi.Input.asInput<String>(forwardingRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dnsForwardingRulesetName,
+    required this.forwardingRuleName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetForwardingRuleArgs {
 
   factory GetForwardingRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetForwardingRuleArgs(
-      dnsForwardingRulesetName: pulumi.Output.create<String>(map['dnsForwardingRulesetName'] as String),
-      forwardingRuleName: pulumi.Output.create<String>(map['forwardingRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dnsForwardingRulesetName: (map['dnsForwardingRulesetName'] as String).input(),
+      forwardingRuleName: (map['forwardingRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

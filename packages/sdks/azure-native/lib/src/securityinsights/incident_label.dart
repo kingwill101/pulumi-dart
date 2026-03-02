@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents an incident label
 class IncidentLabel {
   /// The name of the label
-  final String labelName;
+  final pulumi.Input<String> labelName;
 
   /// Creates a new [IncidentLabel].
   /// [labelName] The name of the label
@@ -20,7 +21,7 @@ class IncidentLabel {
 
   factory IncidentLabel.fromMap(Map<String, dynamic> map) {
     return IncidentLabel(
-      labelName: map['labelName'] as String,
+      labelName: (map['labelName'] as String).input(),
     );
   }
 }

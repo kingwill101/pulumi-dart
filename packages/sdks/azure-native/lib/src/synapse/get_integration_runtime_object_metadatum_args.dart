@@ -22,15 +22,11 @@ class GetIntegrationRuntimeObjectMetadatumArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   GetIntegrationRuntimeObjectMetadatumArgs({
-    required pulumi.Output<String> integrationRuntimeName,
-    pulumi.Output<String>? metadataPath,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      integrationRuntimeName = pulumi.Input.asInput<String>(integrationRuntimeName),
-      metadataPath = pulumi.Input.asOptionalInput<String>(metadataPath),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.integrationRuntimeName,
+    this.metadataPath,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetIntegrationRuntimeObjectMetadatumArgs {
 
   factory GetIntegrationRuntimeObjectMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationRuntimeObjectMetadatumArgs(
-      integrationRuntimeName: pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      metadataPath: map['metadataPath'] == null ? null : pulumi.Output.create<String>(map['metadataPath'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      integrationRuntimeName: (map['integrationRuntimeName'] as String).input(),
+      metadataPath: map['metadataPath'] == null ? null : (map['metadataPath'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

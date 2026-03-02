@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetPermission {
-  final List<String> actions;
-  final String principal;
+  final pulumi.Input<List<String>> actions;
+  final pulumi.Input<String> principal;
 
   /// Creates a new [GetDataSetPermission].
   /// [actions] Required.
@@ -22,8 +23,8 @@ class GetDataSetPermission {
 
   factory GetDataSetPermission.fromMap(Map<String, dynamic> map) {
     return GetDataSetPermission(
-      actions: (map['actions'] as List).cast<String>(),
-      principal: map['principal'] as String,
+      actions: ((map['actions'] as List).cast<String>()).input(),
+      principal: (map['principal'] as String).input(),
     );
   }
 }

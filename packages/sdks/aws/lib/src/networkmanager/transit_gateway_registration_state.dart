@@ -13,11 +13,9 @@ class TransitGatewayRegistrationState {
   /// [globalNetworkId] ID of the Global Network to register to.
   /// [transitGatewayArn] ARN of the Transit Gateway to register.
   TransitGatewayRegistrationState({
-    pulumi.Output<String>? globalNetworkId,
-    pulumi.Output<String>? transitGatewayArn,
-  }) :
-      globalNetworkId = pulumi.Input.asOptionalInput<String>(globalNetworkId),
-      transitGatewayArn = pulumi.Input.asOptionalInput<String>(transitGatewayArn);
+    this.globalNetworkId,
+    this.transitGatewayArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class TransitGatewayRegistrationState {
 
   factory TransitGatewayRegistrationState.fromMap(Map<String, dynamic> map) {
     return TransitGatewayRegistrationState(
-      globalNetworkId: map['globalNetworkId'] == null ? null : pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      transitGatewayArn: map['transitGatewayArn'] == null ? null : pulumi.Output.create<String>(map['transitGatewayArn'] as String),
+      globalNetworkId: map['globalNetworkId'] == null ? null : (map['globalNetworkId'] as String).input(),
+      transitGatewayArn: map['transitGatewayArn'] == null ? null : (map['transitGatewayArn'] as String).input(),
     );
   }
 }

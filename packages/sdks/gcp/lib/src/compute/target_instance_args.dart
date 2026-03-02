@@ -49,23 +49,15 @@ class TargetInstanceArgs {
   /// [securityPolicy] The resource URL for the security policy associated with this target instance.
   /// [zone] URL of the zone where the target instance resides.
   TargetInstanceArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? natPolicy,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? securityPolicy,
-    pulumi.Output<String>? zone,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instance = pulumi.Input.asInput<String>(instance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      natPolicy = pulumi.Input.asOptionalInput<String>(natPolicy),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      securityPolicy = pulumi.Input.asOptionalInput<String>(securityPolicy),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.description,
+    required this.instance,
+    this.name,
+    this.natPolicy,
+    this.network,
+    this.project,
+    this.securityPolicy,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,14 +74,14 @@ class TargetInstanceArgs {
 
   factory TargetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return TargetInstanceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      natPolicy: map['natPolicy'] == null ? null : pulumi.Output.create<String>(map['natPolicy'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      securityPolicy: map['securityPolicy'] == null ? null : pulumi.Output.create<String>(map['securityPolicy'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      natPolicy: map['natPolicy'] == null ? null : (map['natPolicy'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

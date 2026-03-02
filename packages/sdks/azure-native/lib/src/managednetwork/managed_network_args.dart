@@ -26,17 +26,12 @@ class ManagedNetworkArgs {
   /// [scope] The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network
   /// [tags] Resource tags
   ManagedNetworkArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedNetworkName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Scope>? scope,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedNetworkName = pulumi.Input.asOptionalInput<String>(managedNetworkName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asOptionalInput<Scope>(scope),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.managedNetworkName,
+    required this.resourceGroupName,
+    this.scope,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ManagedNetworkArgs {
 
   factory ManagedNetworkArgs.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedNetworkName: map['managedNetworkName'] == null ? null : pulumi.Output.create<String>(map['managedNetworkName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<Scope>(Scope.fromMap((map['scope'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedNetworkName: map['managedNetworkName'] == null ? null : (map['managedNetworkName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

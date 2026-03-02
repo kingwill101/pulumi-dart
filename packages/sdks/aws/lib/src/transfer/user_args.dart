@@ -42,27 +42,17 @@ class UserArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block, tags with matching keys will overwrite those defined at the provider-level.
   /// [userName] The name used for log in to your SFTP server.
   UserArgs({
-    pulumi.Output<String>? homeDirectory,
-    pulumi.Output<List<UserHomeDirectoryMapping>>? homeDirectoryMappings,
-    pulumi.Output<String>? homeDirectoryType,
-    pulumi.Output<String>? policy,
-    pulumi.Output<UserPosixProfile>? posixProfile,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> serverId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> userName,
-  }) :
-      homeDirectory = pulumi.Input.asOptionalInput<String>(homeDirectory),
-      homeDirectoryMappings = pulumi.Input.asOptionalInput<List<UserHomeDirectoryMapping>>(homeDirectoryMappings),
-      homeDirectoryType = pulumi.Input.asOptionalInput<String>(homeDirectoryType),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      posixProfile = pulumi.Input.asOptionalInput<UserPosixProfile>(posixProfile),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role),
-      serverId = pulumi.Input.asInput<String>(serverId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userName = pulumi.Input.asInput<String>(userName);
+    this.homeDirectory,
+    this.homeDirectoryMappings,
+    this.homeDirectoryType,
+    this.policy,
+    this.posixProfile,
+    this.region,
+    required this.role,
+    required this.serverId,
+    this.tags,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      homeDirectory: map['homeDirectory'] == null ? null : pulumi.Output.create<String>(map['homeDirectory'] as String),
-      homeDirectoryMappings: map['homeDirectoryMappings'] == null ? null : pulumi.Output.create<List<UserHomeDirectoryMapping>>(pulumi.Input.decodeList<UserHomeDirectoryMapping>(map['homeDirectoryMappings'], (value) => UserHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      homeDirectoryType: map['homeDirectoryType'] == null ? null : pulumi.Output.create<String>(map['homeDirectoryType'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      posixProfile: map['posixProfile'] == null ? null : pulumi.Output.create<UserPosixProfile>(UserPosixProfile.fromMap((map['posixProfile'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory'] as String).input(),
+      homeDirectoryMappings: map['homeDirectoryMappings'] == null ? null : (pulumi.Input.decodeList<UserHomeDirectoryMapping>(map['homeDirectoryMappings'], (value) => UserHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      homeDirectoryType: map['homeDirectoryType'] == null ? null : (map['homeDirectoryType'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      posixProfile: map['posixProfile'] == null ? null : (UserPosixProfile.fromMap((map['posixProfile'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

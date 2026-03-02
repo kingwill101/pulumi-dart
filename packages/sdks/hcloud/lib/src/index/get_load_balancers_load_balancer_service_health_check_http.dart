@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancersLoadBalancerServiceHealthCheckHttp {
-  final String domain;
-  final String path;
-  final String response;
-  final List<int> statusCodes;
-  final bool tls;
+  final pulumi.Input<String> domain;
+  final pulumi.Input<String> path;
+  final pulumi.Input<String> response;
+  final pulumi.Input<List<int>> statusCodes;
+  final pulumi.Input<bool> tls;
 
   /// Creates a new [GetLoadBalancersLoadBalancerServiceHealthCheckHttp].
   /// [domain] Required.
@@ -34,11 +35,11 @@ class GetLoadBalancersLoadBalancerServiceHealthCheckHttp {
 
   factory GetLoadBalancersLoadBalancerServiceHealthCheckHttp.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersLoadBalancerServiceHealthCheckHttp(
-      domain: map['domain'] as String,
-      path: map['path'] as String,
-      response: map['response'] as String,
-      statusCodes: (map['statusCodes'] as List).cast<int>(),
-      tls: map['tls'] as bool,
+      domain: (map['domain'] as String).input(),
+      path: (map['path'] as String).input(),
+      response: (map['response'] as String).input(),
+      statusCodes: ((map['statusCodes'] as List).cast<int>()).input(),
+      tls: (map['tls'] as bool).input(),
     );
   }
 }

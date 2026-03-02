@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auto_storage_authentication_mode.dart';
 import 'compute_node_identity_reference.dart';
 
 /// The properties related to the auto-storage account.
 class AutoStorageBaseProperties {
   /// The authentication mode which the Batch service will use to manage the auto-storage account.
-  final AutoStorageAuthenticationMode? authenticationMode;
+  final pulumi.Input<AutoStorageAuthenticationMode>? authenticationMode;
   /// The identity referenced here must be assigned to pools which have compute nodes that need access to auto-storage.
-  final ComputeNodeIdentityReference? nodeIdentityReference;
+  final pulumi.Input<ComputeNodeIdentityReference>? nodeIdentityReference;
   /// The resource ID of the storage account to be used for auto-storage account.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
 
   /// Creates a new [AutoStorageBaseProperties].
   /// [authenticationMode] The authentication mode which the Batch service will use to manage the auto-storage account.
@@ -24,17 +25,17 @@ class AutoStorageBaseProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticationMode': ?authenticationMode == null ? null : authenticationMode!.value,
-      'nodeIdentityReference': ?nodeIdentityReference == null ? null : nodeIdentityReference!.toMap(),
+      'authenticationMode': ?pulumi.Input.mapOptionalInputValue<AutoStorageAuthenticationMode, String>(authenticationMode, (value) => value.value),
+      'nodeIdentityReference': ?pulumi.Input.mapOptionalInputValue<ComputeNodeIdentityReference, Map<String, dynamic>>(nodeIdentityReference, (value) => value.toMap()),
       'storageAccountId': storageAccountId,
     };
   }
 
   factory AutoStorageBaseProperties.fromMap(Map<String, dynamic> map) {
     return AutoStorageBaseProperties(
-      authenticationMode: map['authenticationMode'] == null ? null : AutoStorageAuthenticationMode.fromValue(map['authenticationMode'] as String),
-      nodeIdentityReference: map['nodeIdentityReference'] == null ? null : ComputeNodeIdentityReference.fromMap((map['nodeIdentityReference'] as Map).cast<String, dynamic>()),
-      storageAccountId: map['storageAccountId'] as String,
+      authenticationMode: map['authenticationMode'] == null ? null : (AutoStorageAuthenticationMode.fromValue(map['authenticationMode'] as String)).input(),
+      nodeIdentityReference: map['nodeIdentityReference'] == null ? null : (ComputeNodeIdentityReference.fromMap((map['nodeIdentityReference'] as Map).cast<String, dynamic>())).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

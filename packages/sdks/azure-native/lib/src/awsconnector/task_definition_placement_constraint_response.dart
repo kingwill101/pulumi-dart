@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of TaskDefinitionPlacementConstraint
 class TaskDefinitionPlacementConstraintResponse {
   /// A cluster query language expression to apply to the constraint. For more information, see [Cluster query language](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html) in the *Amazon Elastic Container Service Developer Guide*.
-  final String? expression;
+  final pulumi.Input<String>? expression;
   /// The type of constraint. The ``MemberOf`` constraint restricts selection to be from a group of valid candidates.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [TaskDefinitionPlacementConstraintResponse].
   /// [expression] A cluster query language expression to apply to the constraint. For more information, see [Cluster query language](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html) in the *Amazon Elastic Container Service Developer Guide*.
@@ -25,8 +26,8 @@ class TaskDefinitionPlacementConstraintResponse {
 
   factory TaskDefinitionPlacementConstraintResponse.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionPlacementConstraintResponse(
-      expression: map['expression'] == null ? null : map['expression'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

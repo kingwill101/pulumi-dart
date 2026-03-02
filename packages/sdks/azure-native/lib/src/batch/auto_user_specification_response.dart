@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the parameters for the auto user that runs a task on the Batch service.
 class AutoUserSpecificationResponse {
   /// The default value is nonAdmin.
-  final String? elevationLevel;
+  final pulumi.Input<String>? elevationLevel;
   /// The default value is Pool. If the pool is running Windows a value of Task should be specified if stricter isolation between tasks is required. For example, if the task mutates the registry in a way which could impact other tasks, or if certificates have been specified on the pool which should not be accessible by normal tasks but should be accessible by start tasks.
-  final String? scope;
+  final pulumi.Input<String>? scope;
 
   /// Creates a new [AutoUserSpecificationResponse].
   /// [elevationLevel] The default value is nonAdmin.
@@ -25,8 +26,8 @@ class AutoUserSpecificationResponse {
 
   factory AutoUserSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return AutoUserSpecificationResponse(
-      elevationLevel: map['elevationLevel'] == null ? null : map['elevationLevel'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      elevationLevel: map['elevationLevel'] == null ? null : (map['elevationLevel'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

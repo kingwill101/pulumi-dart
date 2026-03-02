@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerCustomImagesImage {
   /// The first ID of the resource.
-  final String customImageId;
+  final pulumi.Input<String> customImageId;
   /// The name of the resource.
-  final String customImageName;
+  final pulumi.Input<String> customImageName;
   /// Image description information.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Custom Image.
-  final String id;
+  final pulumi.Input<String> id;
   /// The type of operating system used by the Mirror. Valid values: `Linux`, `Windows`.
-  final String platform;
+  final pulumi.Input<String> platform;
 
   /// Creates a new [GetServerCustomImagesImage].
   /// [customImageId] The first ID of the resource.
@@ -39,11 +40,11 @@ class GetServerCustomImagesImage {
 
   factory GetServerCustomImagesImage.fromMap(Map<String, dynamic> map) {
     return GetServerCustomImagesImage(
-      customImageId: map['customImageId'] as String,
-      customImageName: map['customImageName'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      platform: map['platform'] as String,
+      customImageId: (map['customImageId'] as String).input(),
+      customImageName: (map['customImageName'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      platform: (map['platform'] as String).input(),
     );
   }
 }

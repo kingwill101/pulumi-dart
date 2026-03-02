@@ -59,33 +59,20 @@ class RegionNetworkFirewallPolicyWithRulesState {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   RegionNetworkFirewallPolicyWithRulesState({
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkFirewallPolicyId,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<List<RegionNetworkFirewallPolicyWithRulesPredefinedRule>>? predefinedRules,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? ruleTupleCount,
-    pulumi.Output<List<RegionNetworkFirewallPolicyWithRulesRule>>? rules,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? selfLinkWithId,
-  }) :
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkFirewallPolicyId = pulumi.Input.asOptionalInput<String>(networkFirewallPolicyId),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      predefinedRules = pulumi.Input.asOptionalInput<List<RegionNetworkFirewallPolicyWithRulesPredefinedRule>>(predefinedRules),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleTupleCount = pulumi.Input.asOptionalInput<int>(ruleTupleCount),
-      rules = pulumi.Input.asOptionalInput<List<RegionNetworkFirewallPolicyWithRulesRule>>(rules),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      selfLinkWithId = pulumi.Input.asOptionalInput<String>(selfLinkWithId);
+    this.creationTimestamp,
+    this.description,
+    this.fingerprint,
+    this.name,
+    this.networkFirewallPolicyId,
+    this.policyType,
+    this.predefinedRules,
+    this.project,
+    this.region,
+    this.ruleTupleCount,
+    this.rules,
+    this.selfLink,
+    this.selfLinkWithId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,19 +94,19 @@ class RegionNetworkFirewallPolicyWithRulesState {
 
   factory RegionNetworkFirewallPolicyWithRulesState.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyWithRulesState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkFirewallPolicyId: map['networkFirewallPolicyId'] == null ? null : pulumi.Output.create<String>(map['networkFirewallPolicyId'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      predefinedRules: map['predefinedRules'] == null ? null : pulumi.Output.create<List<RegionNetworkFirewallPolicyWithRulesPredefinedRule>>(pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesPredefinedRule>(map['predefinedRules'], (value) => RegionNetworkFirewallPolicyWithRulesPredefinedRule.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleTupleCount: map['ruleTupleCount'] == null ? null : pulumi.Output.create<int>(map['ruleTupleCount'] as int),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<RegionNetworkFirewallPolicyWithRulesRule>>(pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesRule>(map['rules'], (value) => RegionNetworkFirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>()))),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      selfLinkWithId: map['selfLinkWithId'] == null ? null : pulumi.Output.create<String>(map['selfLinkWithId'] as String),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkFirewallPolicyId: map['networkFirewallPolicyId'] == null ? null : (map['networkFirewallPolicyId'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      predefinedRules: map['predefinedRules'] == null ? null : (pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesPredefinedRule>(map['predefinedRules'], (value) => RegionNetworkFirewallPolicyWithRulesPredefinedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleTupleCount: map['ruleTupleCount'] == null ? null : (map['ruleTupleCount'] as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesRule>(map['rules'], (value) => RegionNetworkFirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId'] as String).input(),
     );
   }
 }

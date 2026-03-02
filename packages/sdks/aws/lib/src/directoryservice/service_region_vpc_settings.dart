@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceRegionVpcSettings {
   /// The identifiers of the subnets for the directory servers.
-  final List<String> subnetIds;
+  final pulumi.Input<List<String>> subnetIds;
   /// The identifier of the VPC in which to create the directory.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [ServiceRegionVpcSettings].
   /// [subnetIds] The identifiers of the subnets for the directory servers.
@@ -24,8 +25,8 @@ class ServiceRegionVpcSettings {
 
   factory ServiceRegionVpcSettings.fromMap(Map<String, dynamic> map) {
     return ServiceRegionVpcSettings(
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
-      vpcId: map['vpcId'] as String,
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

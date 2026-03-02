@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataQualityRulesRuleRegexExpectation {
   /// A regular expression the column value is expected to match.
-  final String regex;
+  final pulumi.Input<String> regex;
 
   /// Creates a new [GetDataQualityRulesRuleRegexExpectation].
   /// [regex] A regular expression the column value is expected to match.
@@ -19,7 +20,7 @@ class GetDataQualityRulesRuleRegexExpectation {
 
   factory GetDataQualityRulesRuleRegexExpectation.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesRuleRegexExpectation(
-      regex: map['regex'] as String,
+      regex: (map['regex'] as String).input(),
     );
   }
 }

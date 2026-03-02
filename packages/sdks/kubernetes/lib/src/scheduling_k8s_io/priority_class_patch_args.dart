@@ -32,21 +32,14 @@ class PriorityClassPatchArgs {
   /// [preemptionPolicy] preemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset.
   /// [value] value represents the integer value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec.
   PriorityClassPatchArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? globalDefault,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<String>? preemptionPolicy,
-    pulumi.Output<int>? value,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      globalDefault = pulumi.Input.asOptionalInput<bool>(globalDefault),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      preemptionPolicy = pulumi.Input.asOptionalInput<String>(preemptionPolicy),
-      value = pulumi.Input.asOptionalInput<int>(value);
+    this.apiVersion,
+    this.description,
+    this.globalDefault,
+    this.kind,
+    this.metadata,
+    this.preemptionPolicy,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class PriorityClassPatchArgs {
 
   factory PriorityClassPatchArgs.fromMap(Map<String, dynamic> map) {
     return PriorityClassPatchArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      globalDefault: map['globalDefault'] == null ? null : pulumi.Output.create<bool>(map['globalDefault'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      preemptionPolicy: map['preemptionPolicy'] == null ? null : pulumi.Output.create<String>(map['preemptionPolicy'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<int>(map['value'] as int),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      globalDefault: map['globalDefault'] == null ? null : (map['globalDefault'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      preemptionPolicy: map['preemptionPolicy'] == null ? null : (map['preemptionPolicy'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as int).input(),
     );
   }
 }

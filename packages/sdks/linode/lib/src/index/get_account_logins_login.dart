@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountLoginsLogin {
   /// When the login was initiated.
-  final String datetime;
+  final pulumi.Input<String> datetime;
   /// The unique ID of this login object.
-  final int id;
+  final pulumi.Input<int> id;
   /// The remote IP address that requested the login.
-  final String ip;
+  final pulumi.Input<String> ip;
   /// True if the User that was logged into was a restricted User, false otherwise.
-  final bool restricted;
+  final pulumi.Input<bool> restricted;
   /// Whether the login attempt succeeded or failed.
-  final String status;
+  final pulumi.Input<String> status;
   /// The username of the User that was logged into.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GetAccountLoginsLogin].
   /// [datetime] When the login was initiated.
@@ -44,12 +45,12 @@ class GetAccountLoginsLogin {
 
   factory GetAccountLoginsLogin.fromMap(Map<String, dynamic> map) {
     return GetAccountLoginsLogin(
-      datetime: map['datetime'] as String,
-      id: map['id'] as int,
-      ip: map['ip'] as String,
-      restricted: map['restricted'] as bool,
-      status: map['status'] as String,
-      username: map['username'] as String,
+      datetime: (map['datetime'] as String).input(),
+      id: (map['id'] as int).input(),
+      ip: (map['ip'] as String).input(),
+      restricted: (map['restricted'] as bool).input(),
+      status: (map['status'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

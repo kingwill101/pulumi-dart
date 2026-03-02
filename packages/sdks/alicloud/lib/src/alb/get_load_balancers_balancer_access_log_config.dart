@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancersBalancerAccessLogConfig {
   /// The log service that access logs are shipped to.
-  final String logProject;
+  final pulumi.Input<String> logProject;
   /// The logstore that access logs are shipped to.
-  final String logStore;
+  final pulumi.Input<String> logStore;
 
   /// Creates a new [GetLoadBalancersBalancerAccessLogConfig].
   /// [logProject] The log service that access logs are shipped to.
@@ -24,8 +25,8 @@ class GetLoadBalancersBalancerAccessLogConfig {
 
   factory GetLoadBalancersBalancerAccessLogConfig.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerAccessLogConfig(
-      logProject: map['logProject'] as String,
-      logStore: map['logStore'] as String,
+      logProject: (map['logProject'] as String).input(),
+      logStore: (map['logStore'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The dnsServers of a device.
 class IpPoolsResponse {
   /// Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
-  final String? endingAddress;
+  final pulumi.Input<String>? endingAddress;
   /// Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
-  final String? startingAddress;
+  final pulumi.Input<String>? startingAddress;
 
   /// Creates a new [IpPoolsResponse].
   /// [endingAddress] Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
@@ -25,8 +26,8 @@ class IpPoolsResponse {
 
   factory IpPoolsResponse.fromMap(Map<String, dynamic> map) {
     return IpPoolsResponse(
-      endingAddress: map['endingAddress'] == null ? null : map['endingAddress'] as String,
-      startingAddress: map['startingAddress'] == null ? null : map['startingAddress'] as String,
+      endingAddress: map['endingAddress'] == null ? null : (map['endingAddress'] as String).input(),
+      startingAddress: map['startingAddress'] == null ? null : (map['startingAddress'] as String).input(),
     );
   }
 }

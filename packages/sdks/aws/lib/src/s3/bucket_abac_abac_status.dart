@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketAbacAbacStatus {
   /// ABAC status of the general purpose bucket.
   /// Valid values are `Enabled` and `Disabled`.
   /// By default, ABAC is disabled for all Amazon S3 general purpose buckets.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [BucketAbacAbacStatus].
   /// [status] ABAC status of the general purpose bucket.
@@ -21,7 +22,7 @@ class BucketAbacAbacStatus {
 
   factory BucketAbacAbacStatus.fromMap(Map<String, dynamic> map) {
     return BucketAbacAbacStatus(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

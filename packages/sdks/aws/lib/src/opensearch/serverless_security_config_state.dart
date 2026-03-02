@@ -28,19 +28,13 @@ class ServerlessSecurityConfigState {
   /// [samlOptions] Configuration block for SAML options.
   /// [type] Type of configuration. Must be `saml`.
   ServerlessSecurityConfigState({
-    pulumi.Output<String>? configVersion,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<ServerlessSecurityConfigSamlOptions>? samlOptions,
-    pulumi.Output<String>? type,
-  }) :
-      configVersion = pulumi.Input.asOptionalInput<String>(configVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      samlOptions = pulumi.Input.asOptionalInput<ServerlessSecurityConfigSamlOptions>(samlOptions),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.configVersion,
+    this.description,
+    this.name,
+    this.region,
+    this.samlOptions,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ServerlessSecurityConfigState {
 
   factory ServerlessSecurityConfigState.fromMap(Map<String, dynamic> map) {
     return ServerlessSecurityConfigState(
-      configVersion: map['configVersion'] == null ? null : pulumi.Output.create<String>(map['configVersion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      samlOptions: map['samlOptions'] == null ? null : pulumi.Output.create<ServerlessSecurityConfigSamlOptions>(ServerlessSecurityConfigSamlOptions.fromMap((map['samlOptions'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      configVersion: map['configVersion'] == null ? null : (map['configVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      samlOptions: map['samlOptions'] == null ? null : (ServerlessSecurityConfigSamlOptions.fromMap((map['samlOptions'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

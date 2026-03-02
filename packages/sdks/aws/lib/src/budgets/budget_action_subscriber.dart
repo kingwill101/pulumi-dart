@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetActionSubscriber {
   /// The address that AWS sends budget notifications to, either an SNS topic or an email.
-  final String address;
+  final pulumi.Input<String> address;
   /// The type of notification that AWS sends to a subscriber. Valid values are `SNS` or `EMAIL`.
-  final String subscriptionType;
+  final pulumi.Input<String> subscriptionType;
 
   /// Creates a new [BudgetActionSubscriber].
   /// [address] The address that AWS sends budget notifications to, either an SNS topic or an email.
@@ -24,8 +25,8 @@ class BudgetActionSubscriber {
 
   factory BudgetActionSubscriber.fromMap(Map<String, dynamic> map) {
     return BudgetActionSubscriber(
-      address: map['address'] as String,
-      subscriptionType: map['subscriptionType'] as String,
+      address: (map['address'] as String).input(),
+      subscriptionType: (map['subscriptionType'] as String).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class RouteServerEndpointArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   RouteServerEndpointArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> routeServerId,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<RouteServerEndpointTimeouts>? timeouts,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeServerId = pulumi.Input.asInput<String>(routeServerId),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<RouteServerEndpointTimeouts>(timeouts);
+    this.region,
+    required this.routeServerId,
+    required this.subnetId,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class RouteServerEndpointArgs {
 
   factory RouteServerEndpointArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerEndpointArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeServerId: pulumi.Output.create<String>(map['routeServerId'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<RouteServerEndpointTimeouts>(RouteServerEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeServerId: (map['routeServerId'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (RouteServerEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

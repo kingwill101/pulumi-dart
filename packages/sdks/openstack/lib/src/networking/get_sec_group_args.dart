@@ -33,21 +33,14 @@ class GetSecGroupArgs {
   /// [tags] The list of security group tags to filter.
   /// [tenantId] The owner of the security group.
   GetSecGroupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secgroupId,
-    pulumi.Output<bool>? stateful,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? tenantId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secgroupId = pulumi.Input.asOptionalInput<String>(secgroupId),
-      stateful = pulumi.Input.asOptionalInput<bool>(stateful),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.description,
+    this.name,
+    this.region,
+    this.secgroupId,
+    this.stateful,
+    this.tags,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class GetSecGroupArgs {
 
   factory GetSecGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSecGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secgroupId: map['secgroupId'] == null ? null : pulumi.Output.create<String>(map['secgroupId'] as String),
-      stateful: map['stateful'] == null ? null : pulumi.Output.create<bool>(map['stateful'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secgroupId: map['secgroupId'] == null ? null : (map['secgroupId'] as String).input(),
+      stateful: map['stateful'] == null ? null : (map['stateful'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -42,29 +42,18 @@ class ApplicationVersionState {
   /// [tags] Key-value map of tags for the Elastic Beanstalk Application Version. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ApplicationVersionState({
-    pulumi.Output<String>? application,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? forceDelete,
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? process,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      application = pulumi.Input.asOptionalInput<String>(application),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      process = pulumi.Input.asOptionalInput<bool>(process),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.application,
+    this.arn,
+    this.bucket,
+    this.description,
+    this.forceDelete,
+    this.key,
+    this.name,
+    this.process,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class ApplicationVersionState {
 
   factory ApplicationVersionState.fromMap(Map<String, dynamic> map) {
     return ApplicationVersionState(
-      application: map['application'] == null ? null : pulumi.Output.create<String>(map['application'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      process: map['process'] == null ? null : pulumi.Output.create<bool>(map['process'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      application: map['application'] == null ? null : (map['application'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      process: map['process'] == null ? null : (map['process'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

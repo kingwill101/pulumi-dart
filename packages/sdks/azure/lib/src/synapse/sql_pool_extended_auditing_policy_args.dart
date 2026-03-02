@@ -28,19 +28,13 @@ class SqlPoolExtendedAuditingPolicyArgs {
   /// [storageAccountAccessKeyIsSecondary] Is `storage_account_access_key` value the storage's secondary key?
   /// [storageEndpoint] The blob storage endpoint (e.g. <https://example.blob.core.windows.net>). This blob storage will hold all extended auditing logs.
   SqlPoolExtendedAuditingPolicyArgs({
-    pulumi.Output<bool>? logMonitoringEnabled,
-    pulumi.Output<int>? retentionInDays,
-    required pulumi.Output<String> sqlPoolId,
-    pulumi.Output<String>? storageAccountAccessKey,
-    pulumi.Output<bool>? storageAccountAccessKeyIsSecondary,
-    pulumi.Output<String>? storageEndpoint,
-  }) :
-      logMonitoringEnabled = pulumi.Input.asOptionalInput<bool>(logMonitoringEnabled),
-      retentionInDays = pulumi.Input.asOptionalInput<int>(retentionInDays),
-      sqlPoolId = pulumi.Input.asInput<String>(sqlPoolId),
-      storageAccountAccessKey = pulumi.Input.asOptionalInput<String>(storageAccountAccessKey),
-      storageAccountAccessKeyIsSecondary = pulumi.Input.asOptionalInput<bool>(storageAccountAccessKeyIsSecondary),
-      storageEndpoint = pulumi.Input.asOptionalInput<String>(storageEndpoint);
+    this.logMonitoringEnabled,
+    this.retentionInDays,
+    required this.sqlPoolId,
+    this.storageAccountAccessKey,
+    this.storageAccountAccessKeyIsSecondary,
+    this.storageEndpoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SqlPoolExtendedAuditingPolicyArgs {
 
   factory SqlPoolExtendedAuditingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolExtendedAuditingPolicyArgs(
-      logMonitoringEnabled: map['logMonitoringEnabled'] == null ? null : pulumi.Output.create<bool>(map['logMonitoringEnabled'] as bool),
-      retentionInDays: map['retentionInDays'] == null ? null : pulumi.Output.create<int>(map['retentionInDays'] as int),
-      sqlPoolId: pulumi.Output.create<String>(map['sqlPoolId'] as String),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountAccessKey'] as String),
-      storageAccountAccessKeyIsSecondary: map['storageAccountAccessKeyIsSecondary'] == null ? null : pulumi.Output.create<bool>(map['storageAccountAccessKeyIsSecondary'] as bool),
-      storageEndpoint: map['storageEndpoint'] == null ? null : pulumi.Output.create<String>(map['storageEndpoint'] as String),
+      logMonitoringEnabled: map['logMonitoringEnabled'] == null ? null : (map['logMonitoringEnabled'] as bool).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
+      sqlPoolId: (map['sqlPoolId'] as String).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
+      storageAccountAccessKeyIsSecondary: map['storageAccountAccessKeyIsSecondary'] == null ? null : (map['storageAccountAccessKeyIsSecondary'] as bool).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
     );
   }
 }

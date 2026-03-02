@@ -16,11 +16,9 @@ class ListTopicSharedAccessKeysArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicName] Name of the topic.
   ListTopicSharedAccessKeysArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> topicName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    required this.resourceGroupName,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListTopicSharedAccessKeysArgs {
 
   factory ListTopicSharedAccessKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListTopicSharedAccessKeysArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

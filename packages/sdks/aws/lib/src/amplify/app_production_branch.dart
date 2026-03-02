@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppProductionBranch {
   /// Branch name for the production branch.
-  final String? branchName;
+  final pulumi.Input<String>? branchName;
   /// Last deploy time of the production branch.
-  final String? lastDeployTime;
+  final pulumi.Input<String>? lastDeployTime;
   /// Status of the production branch.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Thumbnail URL for the production branch.
-  final String? thumbnailUrl;
+  final pulumi.Input<String>? thumbnailUrl;
 
   /// Creates a new [AppProductionBranch].
   /// [branchName] Branch name for the production branch.
@@ -34,10 +35,10 @@ class AppProductionBranch {
 
   factory AppProductionBranch.fromMap(Map<String, dynamic> map) {
     return AppProductionBranch(
-      branchName: map['branchName'] == null ? null : map['branchName'] as String,
-      lastDeployTime: map['lastDeployTime'] == null ? null : map['lastDeployTime'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      thumbnailUrl: map['thumbnailUrl'] == null ? null : map['thumbnailUrl'] as String,
+      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
+      lastDeployTime: map['lastDeployTime'] == null ? null : (map['lastDeployTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      thumbnailUrl: map['thumbnailUrl'] == null ? null : (map['thumbnailUrl'] as String).input(),
     );
   }
 }

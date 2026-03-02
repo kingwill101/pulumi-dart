@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subscription_push_config_no_wrapper.dart';
 import 'subscription_push_config_oidc_token.dart';
 
@@ -22,19 +23,19 @@ class SubscriptionPushConfig {
   /// The possible values for this attribute are:
   /// - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
   /// - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
-  final Map<String, String>? attributes;
+  final pulumi.Input<Map<String, String>>? attributes;
   /// When set, the payload to the push endpoint is not wrapped.Sets the
   /// `data` field as the HTTP body for delivery.
   /// Structure is documented below.
-  final SubscriptionPushConfigNoWrapper? noWrapper;
+  final pulumi.Input<SubscriptionPushConfigNoWrapper>? noWrapper;
   /// If specified, Pub/Sub will generate and attach an OIDC JWT token as
   /// an Authorization header in the HTTP request for every pushed message.
   /// Structure is documented below.
-  final SubscriptionPushConfigOidcToken? oidcToken;
+  final pulumi.Input<SubscriptionPushConfigOidcToken>? oidcToken;
   /// A URL locating the endpoint to which messages should be pushed.
   /// For example, a Webhook endpoint might use
   /// "https://example.com/push".
-  final String pushEndpoint;
+  final pulumi.Input<String> pushEndpoint;
 
   /// Creates a new [SubscriptionPushConfig].
   /// [attributes] Endpoint configuration attributes.
@@ -51,18 +52,18 @@ class SubscriptionPushConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attributes': ?attributes,
-      'noWrapper': ?noWrapper == null ? null : noWrapper!.toMap(),
-      'oidcToken': ?oidcToken == null ? null : oidcToken!.toMap(),
+      'noWrapper': ?pulumi.Input.mapOptionalInputValue<SubscriptionPushConfigNoWrapper, Map<String, dynamic>>(noWrapper, (value) => value.toMap()),
+      'oidcToken': ?pulumi.Input.mapOptionalInputValue<SubscriptionPushConfigOidcToken, Map<String, dynamic>>(oidcToken, (value) => value.toMap()),
       'pushEndpoint': pushEndpoint,
     };
   }
 
   factory SubscriptionPushConfig.fromMap(Map<String, dynamic> map) {
     return SubscriptionPushConfig(
-      attributes: map['attributes'] == null ? null : (map['attributes'] as Map).cast<String, String>(),
-      noWrapper: map['noWrapper'] == null ? null : SubscriptionPushConfigNoWrapper.fromMap((map['noWrapper'] as Map).cast<String, dynamic>()),
-      oidcToken: map['oidcToken'] == null ? null : SubscriptionPushConfigOidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>()),
-      pushEndpoint: map['pushEndpoint'] as String,
+      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
+      noWrapper: map['noWrapper'] == null ? null : (SubscriptionPushConfigNoWrapper.fromMap((map['noWrapper'] as Map).cast<String, dynamic>())).input(),
+      oidcToken: map['oidcToken'] == null ? null : (SubscriptionPushConfigOidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
+      pushEndpoint: (map['pushEndpoint'] as String).input(),
     );
   }
 }

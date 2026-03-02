@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SSL configuration.
 class SslConfigResponse {
   /// Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
-  final String caSource;
+  final pulumi.Input<String> caSource;
   /// Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.
-  final String sslMode;
+  final pulumi.Input<String> sslMode;
 
   /// Creates a new [SslConfigResponse].
   /// [caSource] Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
@@ -25,8 +26,8 @@ class SslConfigResponse {
 
   factory SslConfigResponse.fromMap(Map<String, dynamic> map) {
     return SslConfigResponse(
-      caSource: map['caSource'] as String,
-      sslMode: map['sslMode'] as String,
+      caSource: (map['caSource'] as String).input(),
+      sslMode: (map['sslMode'] as String).input(),
     );
   }
 }

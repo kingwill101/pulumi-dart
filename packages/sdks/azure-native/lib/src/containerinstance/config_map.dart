@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The container config map.
 class ConfigMap {
   /// The key value pairs dictionary in the config map.
-  final Map<String, String>? keyValuePairs;
+  final pulumi.Input<Map<String, String>>? keyValuePairs;
 
   /// Creates a new [ConfigMap].
   /// [keyValuePairs] The key value pairs dictionary in the config map.
@@ -20,7 +21,7 @@ class ConfigMap {
 
   factory ConfigMap.fromMap(Map<String, dynamic> map) {
     return ConfigMap(
-      keyValuePairs: map['keyValuePairs'] == null ? null : (map['keyValuePairs'] as Map).cast<String, String>(),
+      keyValuePairs: map['keyValuePairs'] == null ? null : ((map['keyValuePairs'] as Map).cast<String, String>()).input(),
     );
   }
 }

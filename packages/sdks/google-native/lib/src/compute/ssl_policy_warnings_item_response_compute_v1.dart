@@ -5,11 +5,11 @@ import 'ssl_policy_warnings_item_data_item_response_compute_v1.dart';
 
 class SslPolicyWarningsItemResponseComputeV1 {
   /// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-  final String code;
+  final pulumi.Input<String> code;
   /// Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-  final List<SslPolicyWarningsItemDataItemResponseComputeV1> data;
+  final pulumi.Input<List<SslPolicyWarningsItemDataItemResponseComputeV1>> data;
   /// A human-readable description of the warning code.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [SslPolicyWarningsItemResponseComputeV1].
   /// [code] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
@@ -24,16 +24,16 @@ class SslPolicyWarningsItemResponseComputeV1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'data': pulumi.Input.encodeList<SslPolicyWarningsItemDataItemResponseComputeV1, Map<String, dynamic>>(data, (value) => value.toMap()),
+      'data': pulumi.Input.mapInputValue<List<SslPolicyWarningsItemDataItemResponseComputeV1>, List<Map<String, dynamic>>>(data, (value) => pulumi.Input.encodeList<SslPolicyWarningsItemDataItemResponseComputeV1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'message': message,
     };
   }
 
   factory SslPolicyWarningsItemResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return SslPolicyWarningsItemResponseComputeV1(
-      code: map['code'] as String,
-      data: pulumi.Input.decodeList<SslPolicyWarningsItemDataItemResponseComputeV1>(map['data'], (value) => SslPolicyWarningsItemDataItemResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())),
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      data: (pulumi.Input.decodeList<SslPolicyWarningsItemDataItemResponseComputeV1>(map['data'], (value) => SslPolicyWarningsItemDataItemResponseComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

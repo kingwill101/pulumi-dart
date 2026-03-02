@@ -27,17 +27,12 @@ class KeyTransactionArgs {
   /// [metricName] The name of the underlying metric monitored by the key transaction to be created.
   /// [name] The name of the key transaction.
   KeyTransactionArgs({
-    required pulumi.Output<double> apdexIndex,
-    required pulumi.Output<String> applicationGuid,
-    required pulumi.Output<double> browserApdexTarget,
-    required pulumi.Output<String> metricName,
-    pulumi.Output<String>? name,
-  }) :
-      apdexIndex = pulumi.Input.asInput<double>(apdexIndex),
-      applicationGuid = pulumi.Input.asInput<String>(applicationGuid),
-      browserApdexTarget = pulumi.Input.asInput<double>(browserApdexTarget),
-      metricName = pulumi.Input.asInput<String>(metricName),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.apdexIndex,
+    required this.applicationGuid,
+    required this.browserApdexTarget,
+    required this.metricName,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class KeyTransactionArgs {
 
   factory KeyTransactionArgs.fromMap(Map<String, dynamic> map) {
     return KeyTransactionArgs(
-      apdexIndex: pulumi.Output.create<double>(map['apdexIndex'] as double),
-      applicationGuid: pulumi.Output.create<String>(map['applicationGuid'] as String),
-      browserApdexTarget: pulumi.Output.create<double>(map['browserApdexTarget'] as double),
-      metricName: pulumi.Output.create<String>(map['metricName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      apdexIndex: (map['apdexIndex'] as double).input(),
+      applicationGuid: (map['applicationGuid'] as String).input(),
+      browserApdexTarget: (map['browserApdexTarget'] as double).input(),
+      metricName: (map['metricName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

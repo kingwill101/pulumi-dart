@@ -31,23 +31,15 @@ class SlbAttachmentState {
   /// [vserverGroupId] The ID of the virtual server (VServer) group associated with the intranet SLB instance.
   /// [vswitchId] VPC related vswitch ID.
   SlbAttachmentState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<int>? listenerPort,
-    pulumi.Output<String>? slbId,
-    pulumi.Output<String>? slbIp,
-    pulumi.Output<String>? slbStatus,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? vserverGroupId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      listenerPort = pulumi.Input.asOptionalInput<int>(listenerPort),
-      slbId = pulumi.Input.asOptionalInput<String>(slbId),
-      slbIp = pulumi.Input.asOptionalInput<String>(slbIp),
-      slbStatus = pulumi.Input.asOptionalInput<String>(slbStatus),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vserverGroupId = pulumi.Input.asOptionalInput<String>(vserverGroupId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.appId,
+    this.listenerPort,
+    this.slbId,
+    this.slbIp,
+    this.slbStatus,
+    this.type,
+    this.vserverGroupId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class SlbAttachmentState {
 
   factory SlbAttachmentState.fromMap(Map<String, dynamic> map) {
     return SlbAttachmentState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      listenerPort: map['listenerPort'] == null ? null : pulumi.Output.create<int>(map['listenerPort'] as int),
-      slbId: map['slbId'] == null ? null : pulumi.Output.create<String>(map['slbId'] as String),
-      slbIp: map['slbIp'] == null ? null : pulumi.Output.create<String>(map['slbIp'] as String),
-      slbStatus: map['slbStatus'] == null ? null : pulumi.Output.create<String>(map['slbStatus'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vserverGroupId: map['vserverGroupId'] == null ? null : pulumi.Output.create<String>(map['vserverGroupId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      listenerPort: map['listenerPort'] == null ? null : (map['listenerPort'] as int).input(),
+      slbId: map['slbId'] == null ? null : (map['slbId'] as String).input(),
+      slbIp: map['slbIp'] == null ? null : (map['slbIp'] as String).input(),
+      slbStatus: map['slbStatus'] == null ? null : (map['slbStatus'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vserverGroupId: map['vserverGroupId'] == null ? null : (map['vserverGroupId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

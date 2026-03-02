@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ForZone provides information about which zones should consume this endpoint.
 class ForZonePatch {
   /// name represents the name of the zone.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ForZonePatch].
   /// [name] name represents the name of the zone.
@@ -20,7 +21,7 @@ class ForZonePatch {
 
   factory ForZonePatch.fromMap(Map<String, dynamic> map) {
     return ForZonePatch(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

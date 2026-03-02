@@ -19,15 +19,11 @@ class SizeConstraintSetState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sizeConstraints] Specifies the parts of web requests that you want to inspect the size of.
   SizeConstraintSetState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<SizeConstraintSetSizeConstraint>>? sizeConstraints,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sizeConstraints = pulumi.Input.asOptionalInput<List<SizeConstraintSetSizeConstraint>>(sizeConstraints);
+    this.arn,
+    this.name,
+    this.region,
+    this.sizeConstraints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class SizeConstraintSetState {
 
   factory SizeConstraintSetState.fromMap(Map<String, dynamic> map) {
     return SizeConstraintSetState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sizeConstraints: map['sizeConstraints'] == null ? null : pulumi.Output.create<List<SizeConstraintSetSizeConstraint>>(pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(map['sizeConstraints'], (value) => SizeConstraintSetSizeConstraint.fromMap((value as Map).cast<String, dynamic>()))),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sizeConstraints: map['sizeConstraints'] == null ? null : (pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(map['sizeConstraints'], (value) => SizeConstraintSetSizeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

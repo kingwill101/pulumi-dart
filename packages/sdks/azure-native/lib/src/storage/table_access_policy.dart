@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Table Access Policy Properties Object.
 class TableAccessPolicy {
   /// Expiry time of the access policy
-  final String? expiryTime;
+  final pulumi.Input<String>? expiryTime;
   /// Required. List of abbreviated permissions. Supported permission values include 'r','a','u','d'
-  final String permission;
+  final pulumi.Input<String> permission;
   /// Start time of the access policy
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [TableAccessPolicy].
   /// [expiryTime] Expiry time of the access policy
@@ -30,9 +31,9 @@ class TableAccessPolicy {
 
   factory TableAccessPolicy.fromMap(Map<String, dynamic> map) {
     return TableAccessPolicy(
-      expiryTime: map['expiryTime'] == null ? null : map['expiryTime'] as String,
-      permission: map['permission'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      permission: (map['permission'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

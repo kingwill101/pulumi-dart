@@ -55,33 +55,20 @@ class DeploymentStackAtSubscriptionArgs {
   /// [template] The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
   /// [templateLink] The URI of the template. Use either the templateLink property or the template property, but not both.
   DeploymentStackAtSubscriptionArgs({
-    required pulumi.Output<ActionOnUnmanage> actionOnUnmanage,
-    pulumi.Output<bool>? bypassStackOutOfSyncError,
-    pulumi.Output<DeploymentStacksDebugSetting>? debugSetting,
-    required pulumi.Output<DenySettings> denySettings,
-    pulumi.Output<String>? deploymentScope,
-    pulumi.Output<String>? deploymentStackName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, DeploymentParameter>>? parameters,
-    pulumi.Output<DeploymentStacksParametersLink>? parametersLink,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<dynamic>? template,
-    pulumi.Output<DeploymentStacksTemplateLink>? templateLink,
-  }) :
-      actionOnUnmanage = pulumi.Input.asInput<ActionOnUnmanage>(actionOnUnmanage),
-      bypassStackOutOfSyncError = pulumi.Input.asOptionalInput<bool>(bypassStackOutOfSyncError),
-      debugSetting = pulumi.Input.asOptionalInput<DeploymentStacksDebugSetting>(debugSetting),
-      denySettings = pulumi.Input.asInput<DenySettings>(denySettings),
-      deploymentScope = pulumi.Input.asOptionalInput<String>(deploymentScope),
-      deploymentStackName = pulumi.Input.asOptionalInput<String>(deploymentStackName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parameters = pulumi.Input.asOptionalInput<Map<String, DeploymentParameter>>(parameters),
-      parametersLink = pulumi.Input.asOptionalInput<DeploymentStacksParametersLink>(parametersLink),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      template = pulumi.Input.asOptionalInput<dynamic>(template),
-      templateLink = pulumi.Input.asOptionalInput<DeploymentStacksTemplateLink>(templateLink);
+    required this.actionOnUnmanage,
+    this.bypassStackOutOfSyncError,
+    this.debugSetting,
+    required this.denySettings,
+    this.deploymentScope,
+    this.deploymentStackName,
+    this.description,
+    this.location,
+    this.parameters,
+    this.parametersLink,
+    this.tags,
+    this.template,
+    this.templateLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,19 +90,19 @@ class DeploymentStackAtSubscriptionArgs {
 
   factory DeploymentStackAtSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentStackAtSubscriptionArgs(
-      actionOnUnmanage: pulumi.Output.create<ActionOnUnmanage>(ActionOnUnmanage.fromMap((map['actionOnUnmanage'] as Map).cast<String, dynamic>())),
-      bypassStackOutOfSyncError: map['bypassStackOutOfSyncError'] == null ? null : pulumi.Output.create<bool>(map['bypassStackOutOfSyncError'] as bool),
-      debugSetting: map['debugSetting'] == null ? null : pulumi.Output.create<DeploymentStacksDebugSetting>(DeploymentStacksDebugSetting.fromMap((map['debugSetting'] as Map).cast<String, dynamic>())),
-      denySettings: pulumi.Output.create<DenySettings>(DenySettings.fromMap((map['denySettings'] as Map).cast<String, dynamic>())),
-      deploymentScope: map['deploymentScope'] == null ? null : pulumi.Output.create<String>(map['deploymentScope'] as String),
-      deploymentStackName: map['deploymentStackName'] == null ? null : pulumi.Output.create<String>(map['deploymentStackName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, DeploymentParameter>>(pulumi.Input.decodeMapValues<DeploymentParameter>(map['parameters'], (value) => DeploymentParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      parametersLink: map['parametersLink'] == null ? null : pulumi.Output.create<DeploymentStacksParametersLink>(DeploymentStacksParametersLink.fromMap((map['parametersLink'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      template: map['template'] == null ? null : pulumi.Output.create<dynamic>(map['template']),
-      templateLink: map['templateLink'] == null ? null : pulumi.Output.create<DeploymentStacksTemplateLink>(DeploymentStacksTemplateLink.fromMap((map['templateLink'] as Map).cast<String, dynamic>())),
+      actionOnUnmanage: (ActionOnUnmanage.fromMap((map['actionOnUnmanage'] as Map).cast<String, dynamic>())).input(),
+      bypassStackOutOfSyncError: map['bypassStackOutOfSyncError'] == null ? null : (map['bypassStackOutOfSyncError'] as bool).input(),
+      debugSetting: map['debugSetting'] == null ? null : (DeploymentStacksDebugSetting.fromMap((map['debugSetting'] as Map).cast<String, dynamic>())).input(),
+      denySettings: (DenySettings.fromMap((map['denySettings'] as Map).cast<String, dynamic>())).input(),
+      deploymentScope: map['deploymentScope'] == null ? null : (map['deploymentScope'] as String).input(),
+      deploymentStackName: map['deploymentStackName'] == null ? null : (map['deploymentStackName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentParameter>(map['parameters'], (value) => DeploymentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parametersLink: map['parametersLink'] == null ? null : (DeploymentStacksParametersLink.fromMap((map['parametersLink'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      template: map['template'] == null ? null : (map['template']).input(),
+      templateLink: map['templateLink'] == null ? null : (DeploymentStacksTemplateLink.fromMap((map['templateLink'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

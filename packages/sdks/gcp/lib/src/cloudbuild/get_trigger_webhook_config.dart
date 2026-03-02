@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTriggerWebhookConfig {
   /// Resource name for the secret required as a URL parameter.
-  final String secret;
+  final pulumi.Input<String> secret;
   /// Potential issues with the underlying Pub/Sub subscription configuration.
   /// Only populated on get requests.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GetTriggerWebhookConfig].
   /// [secret] Resource name for the secret required as a URL parameter.
@@ -25,8 +26,8 @@ class GetTriggerWebhookConfig {
 
   factory GetTriggerWebhookConfig.fromMap(Map<String, dynamic> map) {
     return GetTriggerWebhookConfig(
-      secret: map['secret'] as String,
-      state: map['state'] as String,
+      secret: (map['secret'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

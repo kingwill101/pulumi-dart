@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Transparent Data Encryption properties.
 class TransparentDataEncryption {
   /// Enable key auto rotation
-  final bool? enableAutoRotation;
+  final pulumi.Input<bool>? enableAutoRotation;
   /// Customer Managed Key (CMK) Uri.
-  final String? keyUri;
+  final pulumi.Input<String>? keyUri;
   /// Additional Keys
-  final List<String>? keys;
+  final pulumi.Input<List<String>>? keys;
 
   /// Creates a new [TransparentDataEncryption].
   /// [enableAutoRotation] Enable key auto rotation
@@ -30,9 +31,9 @@ class TransparentDataEncryption {
 
   factory TransparentDataEncryption.fromMap(Map<String, dynamic> map) {
     return TransparentDataEncryption(
-      enableAutoRotation: map['enableAutoRotation'] == null ? null : map['enableAutoRotation'] as bool,
-      keyUri: map['keyUri'] == null ? null : map['keyUri'] as String,
-      keys: map['keys'] == null ? null : (map['keys'] as List).cast<String>(),
+      enableAutoRotation: map['enableAutoRotation'] == null ? null : (map['enableAutoRotation'] as bool).input(),
+      keyUri: map['keyUri'] == null ? null : (map['keyUri'] as String).input(),
+      keys: map['keys'] == null ? null : ((map['keys'] as List).cast<String>()).input(),
     );
   }
 }

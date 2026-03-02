@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetState {
   /// (Output)
   /// Describes the state of a Fleet resource.
-  final String? code;
+  final pulumi.Input<String>? code;
 
   /// Creates a new [FleetState].
   /// [code] (Output)
@@ -20,7 +21,7 @@ class FleetState {
 
   factory FleetState.fromMap(Map<String, dynamic> map) {
     return FleetState(
-      code: map['code'] == null ? null : map['code'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
     );
   }
 }

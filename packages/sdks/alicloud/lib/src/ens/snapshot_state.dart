@@ -25,19 +25,13 @@ class SnapshotState {
   /// [snapshotName] Name of the snapshot instance.
   /// [status] Snapshot Status. Valid values: creating, available, deleting, error.
   SnapshotState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? diskId,
-    pulumi.Output<String>? ensRegionId,
-    pulumi.Output<String>? snapshotName,
-    pulumi.Output<String>? status,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskId = pulumi.Input.asOptionalInput<String>(diskId),
-      ensRegionId = pulumi.Input.asOptionalInput<String>(ensRegionId),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createTime,
+    this.description,
+    this.diskId,
+    this.ensRegionId,
+    this.snapshotName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskId: map['diskId'] == null ? null : pulumi.Output.create<String>(map['diskId'] as String),
-      ensRegionId: map['ensRegionId'] == null ? null : pulumi.Output.create<String>(map['ensRegionId'] as String),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

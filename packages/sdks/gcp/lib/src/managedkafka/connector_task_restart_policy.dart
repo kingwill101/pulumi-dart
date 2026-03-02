@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorTaskRestartPolicy {
   /// The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final String? maximumBackoff;
+  final pulumi.Input<String>? maximumBackoff;
   /// The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final String? minimumBackoff;
+  final pulumi.Input<String>? minimumBackoff;
 
   /// Creates a new [ConnectorTaskRestartPolicy].
   /// [maximumBackoff] The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
@@ -26,8 +27,8 @@ class ConnectorTaskRestartPolicy {
 
   factory ConnectorTaskRestartPolicy.fromMap(Map<String, dynamic> map) {
     return ConnectorTaskRestartPolicy(
-      maximumBackoff: map['maximumBackoff'] == null ? null : map['maximumBackoff'] as String,
-      minimumBackoff: map['minimumBackoff'] == null ? null : map['minimumBackoff'] as String,
+      maximumBackoff: map['maximumBackoff'] == null ? null : (map['maximumBackoff'] as String).input(),
+      minimumBackoff: map['minimumBackoff'] == null ? null : (map['minimumBackoff'] as String).input(),
     );
   }
 }

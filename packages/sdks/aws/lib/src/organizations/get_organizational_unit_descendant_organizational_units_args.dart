@@ -13,9 +13,8 @@ class GetOrganizationalUnitDescendantOrganizationalUnitsArgs {
   /// Creates a new [GetOrganizationalUnitDescendantOrganizationalUnitsArgs].
   /// [parentId] Parent ID of the organizational unit.
   GetOrganizationalUnitDescendantOrganizationalUnitsArgs({
-    required pulumi.Output<String> parentId,
-  }) :
-      parentId = pulumi.Input.asInput<String>(parentId);
+    required this.parentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetOrganizationalUnitDescendantOrganizationalUnitsArgs {
 
   factory GetOrganizationalUnitDescendantOrganizationalUnitsArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitDescendantOrganizationalUnitsArgs(
-      parentId: pulumi.Output.create<String>(map['parentId'] as String),
+      parentId: (map['parentId'] as String).input(),
     );
   }
 }

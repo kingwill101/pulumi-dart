@@ -22,15 +22,11 @@ class ApiKeyArgs {
   /// [nginxDeploymentId] The ID of the NGINX Deployment that the API key is associated with. Changing this forces a new resource to be created.
   /// [secretText] The value used as the Dataplane API Key. The API key requirements can be found in the [NGINXaaS Documentation](https://docs.nginx.com/nginxaas/azure/quickstart/loadbalancer-kubernetes/#create-an-nginxaas-data-plane-api-key).
   ApiKeyArgs({
-    required pulumi.Output<String> endDateTime,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> nginxDeploymentId,
-    required pulumi.Output<String> secretText,
-  }) :
-      endDateTime = pulumi.Input.asInput<String>(endDateTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nginxDeploymentId = pulumi.Input.asInput<String>(nginxDeploymentId),
-      secretText = pulumi.Input.asInput<String>(secretText);
+    required this.endDateTime,
+    this.name,
+    required this.nginxDeploymentId,
+    required this.secretText,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ApiKeyArgs {
 
   factory ApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiKeyArgs(
-      endDateTime: pulumi.Output.create<String>(map['endDateTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nginxDeploymentId: pulumi.Output.create<String>(map['nginxDeploymentId'] as String),
-      secretText: pulumi.Output.create<String>(map['secretText'] as String),
+      endDateTime: (map['endDateTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nginxDeploymentId: (map['nginxDeploymentId'] as String).input(),
+      secretText: (map['secretText'] as String).input(),
     );
   }
 }

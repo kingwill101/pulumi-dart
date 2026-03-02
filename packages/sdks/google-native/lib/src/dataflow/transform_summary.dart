@@ -7,17 +7,17 @@ import 'transform_summary_kind.dart';
 /// Description of the type, names/ids, and input/outputs for a transform.
 class TransformSummary {
   /// Transform-specific display data.
-  final List<DisplayData>? displayData;
+  final pulumi.Input<List<DisplayData>>? displayData;
   /// SDK generated id of this transform instance.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// User names for all collection inputs to this transform.
-  final List<String>? inputCollectionName;
+  final pulumi.Input<List<String>>? inputCollectionName;
   /// Type of transform.
-  final TransformSummaryKind? kind;
+  final pulumi.Input<TransformSummaryKind>? kind;
   /// User provided name for this transform instance.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// User names for all collection outputs to this transform.
-  final List<String>? outputCollectionName;
+  final pulumi.Input<List<String>>? outputCollectionName;
 
   /// Creates a new [TransformSummary].
   /// [displayData] Transform-specific display data.
@@ -37,10 +37,10 @@ class TransformSummary {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'displayData': ?displayData == null ? null : pulumi.Input.encodeList<DisplayData, Map<String, dynamic>>(displayData!, (value) => value.toMap()),
+      'displayData': ?pulumi.Input.mapOptionalInputValue<List<DisplayData>, List<Map<String, dynamic>>>(displayData, (value) => pulumi.Input.encodeList<DisplayData, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'inputCollectionName': ?inputCollectionName,
-      'kind': ?kind == null ? null : kind!.value,
+      'kind': ?pulumi.Input.mapOptionalInputValue<TransformSummaryKind, String>(kind, (value) => value.value),
       'name': ?name,
       'outputCollectionName': ?outputCollectionName,
     };
@@ -48,12 +48,12 @@ class TransformSummary {
 
   factory TransformSummary.fromMap(Map<String, dynamic> map) {
     return TransformSummary(
-      displayData: map['displayData'] == null ? null : pulumi.Input.decodeList<DisplayData>(map['displayData'], (value) => DisplayData.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      inputCollectionName: map['inputCollectionName'] == null ? null : (map['inputCollectionName'] as List).cast<String>(),
-      kind: map['kind'] == null ? null : TransformSummaryKind.fromValue(map['kind'] as String),
-      name: map['name'] == null ? null : map['name'] as String,
-      outputCollectionName: map['outputCollectionName'] == null ? null : (map['outputCollectionName'] as List).cast<String>(),
+      displayData: map['displayData'] == null ? null : (pulumi.Input.decodeList<DisplayData>(map['displayData'], (value) => DisplayData.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      inputCollectionName: map['inputCollectionName'] == null ? null : ((map['inputCollectionName'] as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (TransformSummaryKind.fromValue(map['kind'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputCollectionName: map['outputCollectionName'] == null ? null : ((map['outputCollectionName'] as List).cast<String>()).input(),
     );
   }
 }

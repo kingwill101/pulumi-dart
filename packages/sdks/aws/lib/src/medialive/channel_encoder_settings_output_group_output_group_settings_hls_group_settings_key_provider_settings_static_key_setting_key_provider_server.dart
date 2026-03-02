@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySettingKeyProviderServer {
-  final String? passwordParam;
-  final String uri;
-  final String? username;
+  final pulumi.Input<String>? passwordParam;
+  final pulumi.Input<String> uri;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySettingKeyProviderServer].
   /// [passwordParam] Optional.
@@ -26,9 +27,9 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyPro
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySettingKeyProviderServer.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySettingKeyProviderServer(
-      passwordParam: map['passwordParam'] == null ? null : map['passwordParam'] as String,
-      uri: map['uri'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      passwordParam: map['passwordParam'] == null ? null : (map['passwordParam'] as String).input(),
+      uri: (map['uri'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

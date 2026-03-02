@@ -19,13 +19,10 @@ class ResolverConfigArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceId] The ID of the VPC that the configuration is for.
   ResolverConfigArgs({
-    required pulumi.Output<String> autodefinedReverseFlag,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceId,
-  }) :
-      autodefinedReverseFlag = pulumi.Input.asInput<String>(autodefinedReverseFlag),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+    required this.autodefinedReverseFlag,
+    this.region,
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ResolverConfigArgs {
 
   factory ResolverConfigArgs.fromMap(Map<String, dynamic> map) {
     return ResolverConfigArgs(
-      autodefinedReverseFlag: pulumi.Output.create<String>(map['autodefinedReverseFlag'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
+      autodefinedReverseFlag: (map['autodefinedReverseFlag'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

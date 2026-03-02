@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy {
   /// Should automatic rollbacks be disabled?
-  final bool disableAutomaticRollback;
+  final pulumi.Input<bool> disableAutomaticRollback;
   /// Should OS Upgrades automatically be applied to Scale Set instances in a rolling fashion when a newer version of the OS Image becomes available?
-  final bool enableAutomaticOsUpgrade;
+  final pulumi.Input<bool> enableAutomaticOsUpgrade;
 
   /// Creates a new [LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy].
   /// [disableAutomaticRollback] Should automatic rollbacks be disabled?
@@ -24,8 +25,8 @@ class LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy {
 
   factory LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy(
-      disableAutomaticRollback: map['disableAutomaticRollback'] as bool,
-      enableAutomaticOsUpgrade: map['enableAutomaticOsUpgrade'] as bool,
+      disableAutomaticRollback: (map['disableAutomaticRollback'] as bool).input(),
+      enableAutomaticOsUpgrade: (map['enableAutomaticOsUpgrade'] as bool).input(),
     );
   }
 }

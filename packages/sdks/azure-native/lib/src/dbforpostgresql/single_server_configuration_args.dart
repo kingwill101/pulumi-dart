@@ -25,17 +25,12 @@ class SingleServerConfigurationArgs {
   /// [source] Source of the configuration.
   /// [value] Value of the configuration.
   SingleServerConfigurationArgs({
-    pulumi.Output<String>? configurationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? source,
-    pulumi.Output<String>? value,
-  }) :
-      configurationName = pulumi.Input.asOptionalInput<String>(configurationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.configurationName,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.source,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SingleServerConfigurationArgs {
 
   factory SingleServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SingleServerConfigurationArgs(
-      configurationName: map['configurationName'] == null ? null : pulumi.Output.create<String>(map['configurationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

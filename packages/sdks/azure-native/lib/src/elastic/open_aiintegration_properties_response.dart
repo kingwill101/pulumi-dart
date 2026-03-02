@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Open AI Integration details.
 class OpenAIIntegrationPropertiesResponse {
   /// Value of API key for Open AI resource
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Last Update Timestamp for key updation
-  final String lastRefreshAt;
+  final pulumi.Input<String> lastRefreshAt;
   /// The API endpoint for Open AI resource
-  final String? openAIResourceEndpoint;
+  final pulumi.Input<String>? openAIResourceEndpoint;
   /// The resource name of Open AI resource
-  final String? openAIResourceId;
+  final pulumi.Input<String>? openAIResourceId;
 
   /// Creates a new [OpenAIIntegrationPropertiesResponse].
   /// [key] Value of API key for Open AI resource
@@ -35,10 +36,10 @@ class OpenAIIntegrationPropertiesResponse {
 
   factory OpenAIIntegrationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OpenAIIntegrationPropertiesResponse(
-      key: map['key'] == null ? null : map['key'] as String,
-      lastRefreshAt: map['lastRefreshAt'] as String,
-      openAIResourceEndpoint: map['openAIResourceEndpoint'] == null ? null : map['openAIResourceEndpoint'] as String,
-      openAIResourceId: map['openAIResourceId'] == null ? null : map['openAIResourceId'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      lastRefreshAt: (map['lastRefreshAt'] as String).input(),
+      openAIResourceEndpoint: map['openAIResourceEndpoint'] == null ? null : (map['openAIResourceEndpoint'] as String).input(),
+      openAIResourceId: map['openAIResourceId'] == null ? null : (map['openAIResourceId'] as String).input(),
     );
   }
 }

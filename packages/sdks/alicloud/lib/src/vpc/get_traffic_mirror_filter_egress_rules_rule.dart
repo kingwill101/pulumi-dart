@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTrafficMirrorFilterEgressRulesRule {
   /// The destination CIDR block of the outbound traffic.
-  final String destinationCidrBlock;
+  final pulumi.Input<String> destinationCidrBlock;
   /// The destination port range of the outbound traffic.
-  final String destinationPortRange;
+  final pulumi.Input<String> destinationPortRange;
   /// The ID of the Traffic Mirror Filter Egress Rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// The priority of the outbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The transport protocol used by outbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
-  final String ruleAction;
+  final pulumi.Input<String> ruleAction;
   /// The source CIDR block of the outbound traffic.
-  final String sourceCidrBlock;
+  final pulumi.Input<String> sourceCidrBlock;
   /// The source port range of the outbound traffic.
-  final String sourcePortRange;
+  final pulumi.Input<String> sourcePortRange;
   /// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the filter associated with the outbound rule.
-  final String trafficMirrorFilterId;
+  final pulumi.Input<String> trafficMirrorFilterId;
   /// The first ID of the resource.
-  final String trafficMirrorFilterRuleId;
+  final pulumi.Input<String> trafficMirrorFilterRuleId;
 
   /// Creates a new [GetTrafficMirrorFilterEgressRulesRule].
   /// [destinationCidrBlock] The destination CIDR block of the outbound traffic.
@@ -69,17 +70,17 @@ class GetTrafficMirrorFilterEgressRulesRule {
 
   factory GetTrafficMirrorFilterEgressRulesRule.fromMap(Map<String, dynamic> map) {
     return GetTrafficMirrorFilterEgressRulesRule(
-      destinationCidrBlock: map['destinationCidrBlock'] as String,
-      destinationPortRange: map['destinationPortRange'] as String,
-      id: map['id'] as String,
-      priority: map['priority'] as int,
-      protocol: map['protocol'] as String,
-      ruleAction: map['ruleAction'] as String,
-      sourceCidrBlock: map['sourceCidrBlock'] as String,
-      sourcePortRange: map['sourcePortRange'] as String,
-      status: map['status'] as String,
-      trafficMirrorFilterId: map['trafficMirrorFilterId'] as String,
-      trafficMirrorFilterRuleId: map['trafficMirrorFilterRuleId'] as String,
+      destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
+      destinationPortRange: (map['destinationPortRange'] as String).input(),
+      id: (map['id'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      ruleAction: (map['ruleAction'] as String).input(),
+      sourceCidrBlock: (map['sourceCidrBlock'] as String).input(),
+      sourcePortRange: (map['sourcePortRange'] as String).input(),
+      status: (map['status'] as String).input(),
+      trafficMirrorFilterId: (map['trafficMirrorFilterId'] as String).input(),
+      trafficMirrorFilterRuleId: (map['trafficMirrorFilterRuleId'] as String).input(),
     );
   }
 }

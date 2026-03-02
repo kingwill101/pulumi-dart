@@ -46,31 +46,19 @@ class ExportConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
   ExportConfigurationArgs({
-    pulumi.Output<String>? destinationAccountId,
-    pulumi.Output<String>? destinationAddress,
-    pulumi.Output<String>? destinationStorageLocationId,
-    pulumi.Output<String>? destinationStorageSubscriptionId,
-    pulumi.Output<String>? destinationType,
-    pulumi.Output<String>? exportId,
-    pulumi.Output<String>? isEnabled,
-    pulumi.Output<String>? notificationQueueEnabled,
-    pulumi.Output<String>? notificationQueueUri,
-    pulumi.Output<String>? recordTypes,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      destinationAccountId = pulumi.Input.asOptionalInput<String>(destinationAccountId),
-      destinationAddress = pulumi.Input.asOptionalInput<String>(destinationAddress),
-      destinationStorageLocationId = pulumi.Input.asOptionalInput<String>(destinationStorageLocationId),
-      destinationStorageSubscriptionId = pulumi.Input.asOptionalInput<String>(destinationStorageSubscriptionId),
-      destinationType = pulumi.Input.asOptionalInput<String>(destinationType),
-      exportId = pulumi.Input.asOptionalInput<String>(exportId),
-      isEnabled = pulumi.Input.asOptionalInput<String>(isEnabled),
-      notificationQueueEnabled = pulumi.Input.asOptionalInput<String>(notificationQueueEnabled),
-      notificationQueueUri = pulumi.Input.asOptionalInput<String>(notificationQueueUri),
-      recordTypes = pulumi.Input.asOptionalInput<String>(recordTypes),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    this.destinationAccountId,
+    this.destinationAddress,
+    this.destinationStorageLocationId,
+    this.destinationStorageSubscriptionId,
+    this.destinationType,
+    this.exportId,
+    this.isEnabled,
+    this.notificationQueueEnabled,
+    this.notificationQueueUri,
+    this.recordTypes,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class ExportConfigurationArgs {
 
   factory ExportConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ExportConfigurationArgs(
-      destinationAccountId: map['destinationAccountId'] == null ? null : pulumi.Output.create<String>(map['destinationAccountId'] as String),
-      destinationAddress: map['destinationAddress'] == null ? null : pulumi.Output.create<String>(map['destinationAddress'] as String),
-      destinationStorageLocationId: map['destinationStorageLocationId'] == null ? null : pulumi.Output.create<String>(map['destinationStorageLocationId'] as String),
-      destinationStorageSubscriptionId: map['destinationStorageSubscriptionId'] == null ? null : pulumi.Output.create<String>(map['destinationStorageSubscriptionId'] as String),
-      destinationType: map['destinationType'] == null ? null : pulumi.Output.create<String>(map['destinationType'] as String),
-      exportId: map['exportId'] == null ? null : pulumi.Output.create<String>(map['exportId'] as String),
-      isEnabled: map['isEnabled'] == null ? null : pulumi.Output.create<String>(map['isEnabled'] as String),
-      notificationQueueEnabled: map['notificationQueueEnabled'] == null ? null : pulumi.Output.create<String>(map['notificationQueueEnabled'] as String),
-      notificationQueueUri: map['notificationQueueUri'] == null ? null : pulumi.Output.create<String>(map['notificationQueueUri'] as String),
-      recordTypes: map['recordTypes'] == null ? null : pulumi.Output.create<String>(map['recordTypes'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      destinationAccountId: map['destinationAccountId'] == null ? null : (map['destinationAccountId'] as String).input(),
+      destinationAddress: map['destinationAddress'] == null ? null : (map['destinationAddress'] as String).input(),
+      destinationStorageLocationId: map['destinationStorageLocationId'] == null ? null : (map['destinationStorageLocationId'] as String).input(),
+      destinationStorageSubscriptionId: map['destinationStorageSubscriptionId'] == null ? null : (map['destinationStorageSubscriptionId'] as String).input(),
+      destinationType: map['destinationType'] == null ? null : (map['destinationType'] as String).input(),
+      exportId: map['exportId'] == null ? null : (map['exportId'] as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as String).input(),
+      notificationQueueEnabled: map['notificationQueueEnabled'] == null ? null : (map['notificationQueueEnabled'] as String).input(),
+      notificationQueueUri: map['notificationQueueUri'] == null ? null : (map['notificationQueueUri'] as String).input(),
+      recordTypes: map['recordTypes'] == null ? null : (map['recordTypes'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

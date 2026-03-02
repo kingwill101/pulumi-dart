@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'request_scheme_match_condition_parameters_response.dart';
 
 /// Defines the RequestScheme condition for the delivery rule.
 class DeliveryRuleRequestSchemeConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'RequestScheme'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the condition.
-  final RequestSchemeMatchConditionParametersResponse parameters;
+  final pulumi.Input<RequestSchemeMatchConditionParametersResponse> parameters;
 
   /// Creates a new [DeliveryRuleRequestSchemeConditionResponse].
   /// [name] Request variable to compare with.
@@ -21,14 +22,14 @@ class DeliveryRuleRequestSchemeConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<RequestSchemeMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleRequestSchemeConditionResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleRequestSchemeConditionResponse(
-      name: map['name'] as String,
-      parameters: RequestSchemeMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (RequestSchemeMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

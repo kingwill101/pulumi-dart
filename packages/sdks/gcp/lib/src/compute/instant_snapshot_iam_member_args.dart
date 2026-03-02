@@ -46,19 +46,13 @@ class InstantSnapshotIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [zone] A reference to the zone where the disk is located. Used to find the parent resource to bind the IAM policy to. If not specified,
   InstantSnapshotIamMemberArgs({
-    pulumi.Output<InstantSnapshotIamMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    pulumi.Output<String>? zone,
-  }) :
-      condition = pulumi.Input.asOptionalInput<InstantSnapshotIamMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.condition,
+    required this.member,
+    this.name,
+    this.project,
+    required this.role,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,12 +67,12 @@ class InstantSnapshotIamMemberArgs {
 
   factory InstantSnapshotIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return InstantSnapshotIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<InstantSnapshotIamMemberCondition>(InstantSnapshotIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      condition: map['condition'] == null ? null : (InstantSnapshotIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

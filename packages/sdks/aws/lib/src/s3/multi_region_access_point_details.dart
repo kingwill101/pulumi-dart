@@ -5,10 +5,10 @@ import 'multi_region_access_point_details_public_access_block.dart';
 import 'multi_region_access_point_details_region.dart';
 
 class MultiRegionAccessPointDetails {
-  final String name;
-  final MultiRegionAccessPointDetailsPublicAccessBlock? publicAccessBlock;
+  final pulumi.Input<String> name;
+  final pulumi.Input<MultiRegionAccessPointDetailsPublicAccessBlock>? publicAccessBlock;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final List<MultiRegionAccessPointDetailsRegion> regions;
+  final pulumi.Input<List<MultiRegionAccessPointDetailsRegion>> regions;
 
   /// Creates a new [MultiRegionAccessPointDetails].
   /// [name] Required.
@@ -23,16 +23,16 @@ class MultiRegionAccessPointDetails {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'publicAccessBlock': ?publicAccessBlock == null ? null : publicAccessBlock!.toMap(),
-      'regions': pulumi.Input.encodeList<MultiRegionAccessPointDetailsRegion, Map<String, dynamic>>(regions, (value) => value.toMap()),
+      'publicAccessBlock': ?pulumi.Input.mapOptionalInputValue<MultiRegionAccessPointDetailsPublicAccessBlock, Map<String, dynamic>>(publicAccessBlock, (value) => value.toMap()),
+      'regions': pulumi.Input.mapInputValue<List<MultiRegionAccessPointDetailsRegion>, List<Map<String, dynamic>>>(regions, (value) => pulumi.Input.encodeList<MultiRegionAccessPointDetailsRegion, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MultiRegionAccessPointDetails.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointDetails(
-      name: map['name'] as String,
-      publicAccessBlock: map['publicAccessBlock'] == null ? null : MultiRegionAccessPointDetailsPublicAccessBlock.fromMap((map['publicAccessBlock'] as Map).cast<String, dynamic>()),
-      regions: pulumi.Input.decodeList<MultiRegionAccessPointDetailsRegion>(map['regions'], (value) => MultiRegionAccessPointDetailsRegion.fromMap((value as Map).cast<String, dynamic>())),
+      name: (map['name'] as String).input(),
+      publicAccessBlock: map['publicAccessBlock'] == null ? null : (MultiRegionAccessPointDetailsPublicAccessBlock.fromMap((map['publicAccessBlock'] as Map).cast<String, dynamic>())).input(),
+      regions: (pulumi.Input.decodeList<MultiRegionAccessPointDetailsRegion>(map['regions'], (value) => MultiRegionAccessPointDetailsRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

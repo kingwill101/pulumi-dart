@@ -19,15 +19,11 @@ class FabricState {
   /// [recoveryVaultName] The name of the vault that should be updated. Changing this forces a new resource to be created.
   /// [resourceGroupName] Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   FabricState({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? recoveryVaultName,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryVaultName = pulumi.Input.asOptionalInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.location,
+    this.name,
+    this.recoveryVaultName,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class FabricState {
 
   factory FabricState.fromMap(Map<String, dynamic> map) {
     return FabricState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

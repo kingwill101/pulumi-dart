@@ -34,25 +34,16 @@ class ClusterSnapshotState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ClusterSnapshotState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? clusterIdentifier,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<int>? manualSnapshotRetentionPeriod,
-    pulumi.Output<String>? ownerAccount,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? snapshotIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      clusterIdentifier = pulumi.Input.asOptionalInput<String>(clusterIdentifier),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      manualSnapshotRetentionPeriod = pulumi.Input.asOptionalInput<int>(manualSnapshotRetentionPeriod),
-      ownerAccount = pulumi.Input.asOptionalInput<String>(ownerAccount),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotIdentifier = pulumi.Input.asOptionalInput<String>(snapshotIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.clusterIdentifier,
+    this.kmsKeyId,
+    this.manualSnapshotRetentionPeriod,
+    this.ownerAccount,
+    this.region,
+    this.snapshotIdentifier,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class ClusterSnapshotState {
 
   factory ClusterSnapshotState.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : pulumi.Output.create<int>(map['manualSnapshotRetentionPeriod'] as int),
-      ownerAccount: map['ownerAccount'] == null ? null : pulumi.Output.create<String>(map['ownerAccount'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotIdentifier: map['snapshotIdentifier'] == null ? null : pulumi.Output.create<String>(map['snapshotIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : (map['manualSnapshotRetentionPeriod'] as int).input(),
+      ownerAccount: map['ownerAccount'] == null ? null : (map['ownerAccount'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotIdentifier: map['snapshotIdentifier'] == null ? null : (map['snapshotIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

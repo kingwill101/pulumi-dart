@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Create keyVault contract details.
 class KeyVaultContractCreateProperties {
   /// Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity , which will be used to access key vault secret.
-  final String? identityClientId;
+  final pulumi.Input<String>? identityClientId;
   /// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
-  final String? secretIdentifier;
+  final pulumi.Input<String>? secretIdentifier;
 
   /// Creates a new [KeyVaultContractCreateProperties].
   /// [identityClientId] Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity , which will be used to access key vault secret.
@@ -25,8 +26,8 @@ class KeyVaultContractCreateProperties {
 
   factory KeyVaultContractCreateProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultContractCreateProperties(
-      identityClientId: map['identityClientId'] == null ? null : map['identityClientId'] as String,
-      secretIdentifier: map['secretIdentifier'] == null ? null : map['secretIdentifier'] as String,
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier'] as String).input(),
     );
   }
 }

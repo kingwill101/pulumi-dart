@@ -37,19 +37,13 @@ class InstantSnapshotArgs {
   /// [sourceDisk] A reference to the disk used to create this instant snapshot.
   /// [zone] A reference to the zone where the disk is located.
   InstantSnapshotArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sourceDisk,
-    pulumi.Output<String>? zone,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceDisk = pulumi.Input.asInput<String>(sourceDisk),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.description,
+    this.labels,
+    this.name,
+    this.project,
+    required this.sourceDisk,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,12 +58,12 @@ class InstantSnapshotArgs {
 
   factory InstantSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return InstantSnapshotArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sourceDisk: pulumi.Output.create<String>(map['sourceDisk'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sourceDisk: (map['sourceDisk'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

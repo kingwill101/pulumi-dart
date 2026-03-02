@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An NS record.
 class NsRecord {
   /// The name server name for this NS record.
-  final String? nsdname;
+  final pulumi.Input<String>? nsdname;
 
   /// Creates a new [NsRecord].
   /// [nsdname] The name server name for this NS record.
@@ -20,7 +21,7 @@ class NsRecord {
 
   factory NsRecord.fromMap(Map<String, dynamic> map) {
     return NsRecord(
-      nsdname: map['nsdname'] == null ? null : map['nsdname'] as String,
+      nsdname: map['nsdname'] == null ? null : (map['nsdname'] as String).input(),
     );
   }
 }

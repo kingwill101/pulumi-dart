@@ -38,23 +38,15 @@ class EventBusArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   EventBusArgs({
-    pulumi.Output<EventBusDeadLetterConfig>? deadLetterConfig,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? eventSourceName,
-    pulumi.Output<String>? kmsKeyIdentifier,
-    pulumi.Output<EventBusLogConfig>? logConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deadLetterConfig = pulumi.Input.asOptionalInput<EventBusDeadLetterConfig>(deadLetterConfig),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventSourceName = pulumi.Input.asOptionalInput<String>(eventSourceName),
-      kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(kmsKeyIdentifier),
-      logConfig = pulumi.Input.asOptionalInput<EventBusLogConfig>(logConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deadLetterConfig,
+    this.description,
+    this.eventSourceName,
+    this.kmsKeyIdentifier,
+    this.logConfig,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class EventBusArgs {
 
   factory EventBusArgs.fromMap(Map<String, dynamic> map) {
     return EventBusArgs(
-      deadLetterConfig: map['deadLetterConfig'] == null ? null : pulumi.Output.create<EventBusDeadLetterConfig>(EventBusDeadLetterConfig.fromMap((map['deadLetterConfig'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventSourceName: map['eventSourceName'] == null ? null : pulumi.Output.create<String>(map['eventSourceName'] as String),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : pulumi.Output.create<String>(map['kmsKeyIdentifier'] as String),
-      logConfig: map['logConfig'] == null ? null : pulumi.Output.create<EventBusLogConfig>(EventBusLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deadLetterConfig: map['deadLetterConfig'] == null ? null : (EventBusDeadLetterConfig.fromMap((map['deadLetterConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventSourceName: map['eventSourceName'] == null ? null : (map['eventSourceName'] as String).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
+      logConfig: map['logConfig'] == null ? null : (EventBusLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

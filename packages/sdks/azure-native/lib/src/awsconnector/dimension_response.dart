@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Dimension
 class DimensionResponse {
   /// The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [DimensionResponse].
   /// [key] The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
@@ -30,9 +31,9 @@ class DimensionResponse {
 
   factory DimensionResponse.fromMap(Map<String, dynamic> map) {
     return DimensionResponse(
-      key: map['key'] == null ? null : map['key'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

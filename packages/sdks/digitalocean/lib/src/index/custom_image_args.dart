@@ -28,19 +28,13 @@ class CustomImageArgs {
   /// [tags] A list of optional tags for the image.
   /// [url] A URL from which the custom Linux virtual machine image may be retrieved.
   CustomImageArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? distribution,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<String>> regions,
-    pulumi.Output<List<String>>? tags,
-    required pulumi.Output<String> url,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      distribution = pulumi.Input.asOptionalInput<String>(distribution),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      regions = pulumi.Input.asInput<List<String>>(regions),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      url = pulumi.Input.asInput<String>(url);
+    this.description,
+    this.distribution,
+    this.name,
+    required this.regions,
+    this.tags,
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class CustomImageArgs {
 
   factory CustomImageArgs.fromMap(Map<String, dynamic> map) {
     return CustomImageArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      distribution: map['distribution'] == null ? null : pulumi.Output.create<String>(map['distribution'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      regions: pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      url: pulumi.Output.create<String>(map['url'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      distribution: map['distribution'] == null ? null : (map['distribution'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      regions: ((map['regions'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

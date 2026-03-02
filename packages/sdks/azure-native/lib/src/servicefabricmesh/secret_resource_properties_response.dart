@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the properties of a secret resource.
 class SecretResourcePropertiesResponse {
   /// The type of the content stored in the secret value. The value of this property is opaque to Service Fabric. Once set, the value of this property cannot be changed.
-  final String? contentType;
+  final pulumi.Input<String>? contentType;
   /// User readable description of the secret.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Describes the kind of secret.
   /// Expected value is 'SecretResourceProperties'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// State of the resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// Gives additional information about the current status of the secret.
-  final String statusDetails;
+  final pulumi.Input<String> statusDetails;
 
   /// Creates a new [SecretResourcePropertiesResponse].
   /// [contentType] The type of the content stored in the secret value. The value of this property is opaque to Service Fabric. Once set, the value of this property cannot be changed.
@@ -46,12 +47,12 @@ class SecretResourcePropertiesResponse {
 
   factory SecretResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SecretResourcePropertiesResponse(
-      contentType: map['contentType'] == null ? null : map['contentType'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      kind: map['kind'] as String,
-      provisioningState: map['provisioningState'] as String,
-      status: map['status'] as String,
-      statusDetails: map['statusDetails'] as String,
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      status: (map['status'] as String).input(),
+      statusDetails: (map['statusDetails'] as String).input(),
     );
   }
 }

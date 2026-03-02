@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// EnterpriseConfig is the cluster enterprise configuration.
 class EnterpriseConfigResponse {
   /// [Output only] cluster_tier specifies the premium tier of the cluster.
-  final String clusterTier;
+  final pulumi.Input<String> clusterTier;
 
   /// Creates a new [EnterpriseConfigResponse].
   /// [clusterTier] [Output only] cluster_tier specifies the premium tier of the cluster.
@@ -20,7 +21,7 @@ class EnterpriseConfigResponse {
 
   factory EnterpriseConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseConfigResponse(
-      clusterTier: map['clusterTier'] as String,
+      clusterTier: (map['clusterTier'] as String).input(),
     );
   }
 }

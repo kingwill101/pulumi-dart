@@ -22,15 +22,11 @@ class GetConnectorDryrunArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subscriptionId] The ID of the target subscription.
   GetConnectorDryrunArgs({
-    required pulumi.Output<String> dryrunName,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      dryrunName = pulumi.Input.asInput<String>(dryrunName),
-      location = pulumi.Input.asInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    required this.dryrunName,
+    required this.location,
+    required this.resourceGroupName,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetConnectorDryrunArgs {
 
   factory GetConnectorDryrunArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectorDryrunArgs(
-      dryrunName: pulumi.Output.create<String>(map['dryrunName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      dryrunName: (map['dryrunName'] as String).input(),
+      location: (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionInstanceTemplateSchedulingNodeAffinity {
   /// The key for the node affinity label.
-  final String key;
+  final pulumi.Input<String> key;
   /// The operator. Can be `IN` for node-affinities
   /// or `NOT_IN` for anti-affinities.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Corresponds to the label values of a reservation resource.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [RegionInstanceTemplateSchedulingNodeAffinity].
   /// [key] The key for the node affinity label.
@@ -30,9 +31,9 @@ class RegionInstanceTemplateSchedulingNodeAffinity {
 
   factory RegionInstanceTemplateSchedulingNodeAffinity.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateSchedulingNodeAffinity(
-      key: map['key'] as String,
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

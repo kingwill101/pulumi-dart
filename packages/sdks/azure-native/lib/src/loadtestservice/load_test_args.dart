@@ -33,21 +33,14 @@ class LoadTestArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   LoadTestArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<EncryptionProperties>? encryption,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? loadTestName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryption = pulumi.Input.asOptionalInput<EncryptionProperties>(encryption),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      loadTestName = pulumi.Input.asOptionalInput<String>(loadTestName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.encryption,
+    this.identity,
+    this.loadTestName,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class LoadTestArgs {
 
   factory LoadTestArgs.fromMap(Map<String, dynamic> map) {
     return LoadTestArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<EncryptionProperties>(EncryptionProperties.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      loadTestName: map['loadTestName'] == null ? null : pulumi.Output.create<String>(map['loadTestName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionProperties.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      loadTestName: map['loadTestName'] == null ? null : (map['loadTestName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

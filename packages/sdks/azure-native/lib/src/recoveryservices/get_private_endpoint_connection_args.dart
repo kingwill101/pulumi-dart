@@ -19,13 +19,10 @@ class GetPrivateEndpointConnectionArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [vaultName] The name of the recovery services vault.
   GetPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> privateEndpointConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      privateEndpointConnectionName = pulumi.Input.asInput<String>(privateEndpointConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.privateEndpointConnectionName,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPrivateEndpointConnectionArgs {
 
   factory GetPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionArgs(
-      privateEndpointConnectionName: pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

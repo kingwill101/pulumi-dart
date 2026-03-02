@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information of community gallery if current gallery is shared to community
 class CommunityGalleryInfo {
   /// End-user license agreement for community gallery image.
-  final String? eula;
+  final pulumi.Input<String>? eula;
   /// The prefix of the gallery name that will be displayed publicly. Visible to all users.
-  final String? publicNamePrefix;
+  final pulumi.Input<String>? publicNamePrefix;
   /// Community gallery publisher support email. The email address of the publisher. Visible to all users.
-  final String? publisherContact;
+  final pulumi.Input<String>? publisherContact;
   /// The link to the publisher website. Visible to all users.
-  final String? publisherUri;
+  final pulumi.Input<String>? publisherUri;
 
   /// Creates a new [CommunityGalleryInfo].
   /// [eula] End-user license agreement for community gallery image.
@@ -35,10 +36,10 @@ class CommunityGalleryInfo {
 
   factory CommunityGalleryInfo.fromMap(Map<String, dynamic> map) {
     return CommunityGalleryInfo(
-      eula: map['eula'] == null ? null : map['eula'] as String,
-      publicNamePrefix: map['publicNamePrefix'] == null ? null : map['publicNamePrefix'] as String,
-      publisherContact: map['publisherContact'] == null ? null : map['publisherContact'] as String,
-      publisherUri: map['publisherUri'] == null ? null : map['publisherUri'] as String,
+      eula: map['eula'] == null ? null : (map['eula'] as String).input(),
+      publicNamePrefix: map['publicNamePrefix'] == null ? null : (map['publicNamePrefix'] as String).input(),
+      publisherContact: map['publisherContact'] == null ? null : (map['publisherContact'] as String).input(),
+      publisherUri: map['publisherUri'] == null ? null : (map['publisherUri'] as String).input(),
     );
   }
 }

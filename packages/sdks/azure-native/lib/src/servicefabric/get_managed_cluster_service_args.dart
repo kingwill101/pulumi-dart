@@ -22,15 +22,11 @@ class GetManagedClusterServiceArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [serviceName] The name of the service resource in the format of {applicationName}~{serviceName}.
   GetManagedClusterServiceArgs({
-    required pulumi.Output<String> applicationName,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.applicationName,
+    required this.clusterName,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetManagedClusterServiceArgs {
 
   factory GetManagedClusterServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedClusterServiceArgs(
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      applicationName: (map['applicationName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

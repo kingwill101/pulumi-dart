@@ -29,19 +29,13 @@ class IntegrationAccountBatchConfigurationArgs {
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
   IntegrationAccountBatchConfigurationArgs({
-    pulumi.Output<String>? batchConfigurationName,
-    required pulumi.Output<String> integrationAccountName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<BatchConfigurationProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      batchConfigurationName = pulumi.Input.asOptionalInput<String>(batchConfigurationName),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<BatchConfigurationProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.batchConfigurationName,
+    required this.integrationAccountName,
+    this.location,
+    required this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class IntegrationAccountBatchConfigurationArgs {
 
   factory IntegrationAccountBatchConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountBatchConfigurationArgs(
-      batchConfigurationName: map['batchConfigurationName'] == null ? null : pulumi.Output.create<String>(map['batchConfigurationName'] as String),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<BatchConfigurationProperties>(BatchConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      batchConfigurationName: map['batchConfigurationName'] == null ? null : (map['batchConfigurationName'] as String).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (BatchConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

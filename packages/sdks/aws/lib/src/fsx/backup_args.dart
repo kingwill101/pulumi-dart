@@ -24,15 +24,11 @@ class BackupArgs {
   /// [tags] A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
   /// [volumeId] The ID of the volume to back up. Required if backing up a ONTAP Volume.
   BackupArgs({
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? volumeId,
-  }) :
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      volumeId = pulumi.Input.asOptionalInput<String>(volumeId);
+    this.fileSystemId,
+    this.region,
+    this.tags,
+    this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      volumeId: map['volumeId'] == null ? null : pulumi.Output.create<String>(map['volumeId'] as String),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
     );
   }
 }

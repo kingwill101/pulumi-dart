@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capability_configuration_argo_cd.dart';
 
 class CapabilityConfiguration {
   /// ArgoCD configuration. See `argo_cd` below.
-  final CapabilityConfigurationArgoCd? argoCd;
+  final pulumi.Input<CapabilityConfigurationArgoCd>? argoCd;
 
   /// Creates a new [CapabilityConfiguration].
   /// [argoCd] ArgoCD configuration. See `argo_cd` below.
@@ -14,13 +15,13 @@ class CapabilityConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'argoCd': ?argoCd == null ? null : argoCd!.toMap(),
+      'argoCd': ?pulumi.Input.mapOptionalInputValue<CapabilityConfigurationArgoCd, Map<String, dynamic>>(argoCd, (value) => value.toMap()),
     };
   }
 
   factory CapabilityConfiguration.fromMap(Map<String, dynamic> map) {
     return CapabilityConfiguration(
-      argoCd: map['argoCd'] == null ? null : CapabilityConfigurationArgoCd.fromMap((map['argoCd'] as Map).cast<String, dynamic>()),
+      argoCd: map['argoCd'] == null ? null : (CapabilityConfigurationArgoCd.fromMap((map['argoCd'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

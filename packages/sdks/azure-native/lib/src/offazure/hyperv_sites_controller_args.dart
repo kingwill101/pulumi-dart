@@ -41,25 +41,16 @@ class HypervSitesControllerArgs {
   /// [siteName] Site name
   /// [tags] Resource tags.
   HypervSitesControllerArgs({
-    pulumi.Output<SiteAgentProperties>? agentDetails,
-    pulumi.Output<String>? applianceName,
-    pulumi.Output<String>? discoverySolutionId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? provisioningState,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SiteSpnProperties>? servicePrincipalIdentityDetails,
-    pulumi.Output<String>? siteName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      agentDetails = pulumi.Input.asOptionalInput<SiteAgentProperties>(agentDetails),
-      applianceName = pulumi.Input.asOptionalInput<String>(applianceName),
-      discoverySolutionId = pulumi.Input.asOptionalInput<String>(discoverySolutionId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      servicePrincipalIdentityDetails = pulumi.Input.asOptionalInput<SiteSpnProperties>(servicePrincipalIdentityDetails),
-      siteName = pulumi.Input.asOptionalInput<String>(siteName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.agentDetails,
+    this.applianceName,
+    this.discoverySolutionId,
+    this.location,
+    this.provisioningState,
+    required this.resourceGroupName,
+    this.servicePrincipalIdentityDetails,
+    this.siteName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class HypervSitesControllerArgs {
 
   factory HypervSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return HypervSitesControllerArgs(
-      agentDetails: map['agentDetails'] == null ? null : pulumi.Output.create<SiteAgentProperties>(SiteAgentProperties.fromMap((map['agentDetails'] as Map).cast<String, dynamic>())),
-      applianceName: map['applianceName'] == null ? null : pulumi.Output.create<String>(map['applianceName'] as String),
-      discoverySolutionId: map['discoverySolutionId'] == null ? null : pulumi.Output.create<String>(map['discoverySolutionId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      servicePrincipalIdentityDetails: map['servicePrincipalIdentityDetails'] == null ? null : pulumi.Output.create<SiteSpnProperties>(SiteSpnProperties.fromMap((map['servicePrincipalIdentityDetails'] as Map).cast<String, dynamic>())),
-      siteName: map['siteName'] == null ? null : pulumi.Output.create<String>(map['siteName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      agentDetails: map['agentDetails'] == null ? null : (SiteAgentProperties.fromMap((map['agentDetails'] as Map).cast<String, dynamic>())).input(),
+      applianceName: map['applianceName'] == null ? null : (map['applianceName'] as String).input(),
+      discoverySolutionId: map['discoverySolutionId'] == null ? null : (map['discoverySolutionId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      servicePrincipalIdentityDetails: map['servicePrincipalIdentityDetails'] == null ? null : (SiteSpnProperties.fromMap((map['servicePrincipalIdentityDetails'] as Map).cast<String, dynamic>())).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

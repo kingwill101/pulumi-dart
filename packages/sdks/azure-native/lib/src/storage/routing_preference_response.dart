@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Routing preference defines the type of network, either microsoft or internet routing to be used to deliver the user data, the default option is microsoft routing
 class RoutingPreferenceResponse {
   /// A boolean flag which indicates whether internet routing storage endpoints are to be published
-  final bool? publishInternetEndpoints;
+  final pulumi.Input<bool>? publishInternetEndpoints;
   /// A boolean flag which indicates whether microsoft routing storage endpoints are to be published
-  final bool? publishMicrosoftEndpoints;
+  final pulumi.Input<bool>? publishMicrosoftEndpoints;
   /// Routing Choice defines the kind of network routing opted by the user.
-  final String? routingChoice;
+  final pulumi.Input<String>? routingChoice;
 
   /// Creates a new [RoutingPreferenceResponse].
   /// [publishInternetEndpoints] A boolean flag which indicates whether internet routing storage endpoints are to be published
@@ -30,9 +31,9 @@ class RoutingPreferenceResponse {
 
   factory RoutingPreferenceResponse.fromMap(Map<String, dynamic> map) {
     return RoutingPreferenceResponse(
-      publishInternetEndpoints: map['publishInternetEndpoints'] == null ? null : map['publishInternetEndpoints'] as bool,
-      publishMicrosoftEndpoints: map['publishMicrosoftEndpoints'] == null ? null : map['publishMicrosoftEndpoints'] as bool,
-      routingChoice: map['routingChoice'] == null ? null : map['routingChoice'] as String,
+      publishInternetEndpoints: map['publishInternetEndpoints'] == null ? null : (map['publishInternetEndpoints'] as bool).input(),
+      publishMicrosoftEndpoints: map['publishMicrosoftEndpoints'] == null ? null : (map['publishMicrosoftEndpoints'] as bool).input(),
+      routingChoice: map['routingChoice'] == null ? null : (map['routingChoice'] as String).input(),
     );
   }
 }

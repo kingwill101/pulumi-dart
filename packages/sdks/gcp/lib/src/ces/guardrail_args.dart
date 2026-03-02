@@ -69,33 +69,20 @@ class GuardrailArgs {
   /// [modelSafety] Model safety settings overrides. When this is set, it will override the
   /// [project] The ID of the project in which the resource belongs.
   GuardrailArgs({
-    pulumi.Output<GuardrailAction>? action,
-    required pulumi.Output<String> app,
-    pulumi.Output<GuardrailCodeCallback>? codeCallback,
-    pulumi.Output<GuardrailContentFilter>? contentFilter,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> guardrailId,
-    pulumi.Output<GuardrailLlmPolicy>? llmPolicy,
-    pulumi.Output<GuardrailLlmPromptSecurity>? llmPromptSecurity,
-    required pulumi.Output<String> location,
-    pulumi.Output<GuardrailModelSafety>? modelSafety,
-    pulumi.Output<String>? project,
-  }) :
-      action = pulumi.Input.asOptionalInput<GuardrailAction>(action),
-      app = pulumi.Input.asInput<String>(app),
-      codeCallback = pulumi.Input.asOptionalInput<GuardrailCodeCallback>(codeCallback),
-      contentFilter = pulumi.Input.asOptionalInput<GuardrailContentFilter>(contentFilter),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      guardrailId = pulumi.Input.asInput<String>(guardrailId),
-      llmPolicy = pulumi.Input.asOptionalInput<GuardrailLlmPolicy>(llmPolicy),
-      llmPromptSecurity = pulumi.Input.asOptionalInput<GuardrailLlmPromptSecurity>(llmPromptSecurity),
-      location = pulumi.Input.asInput<String>(location),
-      modelSafety = pulumi.Input.asOptionalInput<GuardrailModelSafety>(modelSafety),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.action,
+    required this.app,
+    this.codeCallback,
+    this.contentFilter,
+    this.description,
+    required this.displayName,
+    this.enabled,
+    required this.guardrailId,
+    this.llmPolicy,
+    this.llmPromptSecurity,
+    required this.location,
+    this.modelSafety,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -117,19 +104,19 @@ class GuardrailArgs {
 
   factory GuardrailArgs.fromMap(Map<String, dynamic> map) {
     return GuardrailArgs(
-      action: map['action'] == null ? null : pulumi.Output.create<GuardrailAction>(GuardrailAction.fromMap((map['action'] as Map).cast<String, dynamic>())),
-      app: pulumi.Output.create<String>(map['app'] as String),
-      codeCallback: map['codeCallback'] == null ? null : pulumi.Output.create<GuardrailCodeCallback>(GuardrailCodeCallback.fromMap((map['codeCallback'] as Map).cast<String, dynamic>())),
-      contentFilter: map['contentFilter'] == null ? null : pulumi.Output.create<GuardrailContentFilter>(GuardrailContentFilter.fromMap((map['contentFilter'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      guardrailId: pulumi.Output.create<String>(map['guardrailId'] as String),
-      llmPolicy: map['llmPolicy'] == null ? null : pulumi.Output.create<GuardrailLlmPolicy>(GuardrailLlmPolicy.fromMap((map['llmPolicy'] as Map).cast<String, dynamic>())),
-      llmPromptSecurity: map['llmPromptSecurity'] == null ? null : pulumi.Output.create<GuardrailLlmPromptSecurity>(GuardrailLlmPromptSecurity.fromMap((map['llmPromptSecurity'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      modelSafety: map['modelSafety'] == null ? null : pulumi.Output.create<GuardrailModelSafety>(GuardrailModelSafety.fromMap((map['modelSafety'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      action: map['action'] == null ? null : (GuardrailAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      app: (map['app'] as String).input(),
+      codeCallback: map['codeCallback'] == null ? null : (GuardrailCodeCallback.fromMap((map['codeCallback'] as Map).cast<String, dynamic>())).input(),
+      contentFilter: map['contentFilter'] == null ? null : (GuardrailContentFilter.fromMap((map['contentFilter'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      guardrailId: (map['guardrailId'] as String).input(),
+      llmPolicy: map['llmPolicy'] == null ? null : (GuardrailLlmPolicy.fromMap((map['llmPolicy'] as Map).cast<String, dynamic>())).input(),
+      llmPromptSecurity: map['llmPromptSecurity'] == null ? null : (GuardrailLlmPromptSecurity.fromMap((map['llmPromptSecurity'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      modelSafety: map['modelSafety'] == null ? null : (GuardrailModelSafety.fromMap((map['modelSafety'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

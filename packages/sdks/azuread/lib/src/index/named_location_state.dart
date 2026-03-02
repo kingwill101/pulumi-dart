@@ -23,15 +23,11 @@ class NamedLocationState {
   /// [ip] An `ip` block as documented below, which configures an IP-based named location.
   /// [objectId] The object ID of the named location.
   NamedLocationState({
-    pulumi.Output<NamedLocationCountry>? country,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<NamedLocationIp>? ip,
-    pulumi.Output<String>? objectId,
-  }) :
-      country = pulumi.Input.asOptionalInput<NamedLocationCountry>(country),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      ip = pulumi.Input.asOptionalInput<NamedLocationIp>(ip),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId);
+    this.country,
+    this.displayName,
+    this.ip,
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class NamedLocationState {
 
   factory NamedLocationState.fromMap(Map<String, dynamic> map) {
     return NamedLocationState(
-      country: map['country'] == null ? null : pulumi.Output.create<NamedLocationCountry>(NamedLocationCountry.fromMap((map['country'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      ip: map['ip'] == null ? null : pulumi.Output.create<NamedLocationIp>(NamedLocationIp.fromMap((map['ip'] as Map).cast<String, dynamic>())),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
+      country: map['country'] == null ? null : (NamedLocationCountry.fromMap((map['country'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      ip: map['ip'] == null ? null : (NamedLocationIp.fromMap((map['ip'] as Map).cast<String, dynamic>())).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
     );
   }
 }

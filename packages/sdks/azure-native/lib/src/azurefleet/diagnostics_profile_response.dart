@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'boot_diagnostics_response.dart';
 
 /// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
@@ -9,7 +10,7 @@ class DiagnosticsProfileResponse {
   /// specified then ensure that the storage account is in the same region and
   /// subscription as the VM. You can easily view the output of your console log.
   /// Azure also enables you to see a screenshot of the VM from the hypervisor.
-  final BootDiagnosticsResponse? bootDiagnostics;
+  final pulumi.Input<BootDiagnosticsResponse>? bootDiagnostics;
 
   /// Creates a new [DiagnosticsProfileResponse].
   /// [bootDiagnostics] Boot Diagnostics is a debugging feature which allows you to view Console Output
@@ -19,13 +20,13 @@ class DiagnosticsProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bootDiagnostics': ?bootDiagnostics == null ? null : bootDiagnostics!.toMap(),
+      'bootDiagnostics': ?pulumi.Input.mapOptionalInputValue<BootDiagnosticsResponse, Map<String, dynamic>>(bootDiagnostics, (value) => value.toMap()),
     };
   }
 
   factory DiagnosticsProfileResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticsProfileResponse(
-      bootDiagnostics: map['bootDiagnostics'] == null ? null : BootDiagnosticsResponse.fromMap((map['bootDiagnostics'] as Map).cast<String, dynamic>()),
+      bootDiagnostics: map['bootDiagnostics'] == null ? null : (BootDiagnosticsResponse.fromMap((map['bootDiagnostics'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

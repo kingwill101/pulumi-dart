@@ -44,27 +44,17 @@ class NetworkInterfaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   NetworkInterfaceArgs({
-    pulumi.Output<bool>? createFromLocal,
-    pulumi.Output<InterfaceDNSSettings>? dnsSettings,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<List<IPConfiguration>>? ipConfigurations,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? macAddress,
-    pulumi.Output<String>? networkInterfaceName,
-    pulumi.Output<NetworkSecurityGroupArmReference>? networkSecurityGroup,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      createFromLocal = pulumi.Input.asOptionalInput<bool>(createFromLocal),
-      dnsSettings = pulumi.Input.asOptionalInput<InterfaceDNSSettings>(dnsSettings),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      ipConfigurations = pulumi.Input.asOptionalInput<List<IPConfiguration>>(ipConfigurations),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      macAddress = pulumi.Input.asOptionalInput<String>(macAddress),
-      networkInterfaceName = pulumi.Input.asOptionalInput<String>(networkInterfaceName),
-      networkSecurityGroup = pulumi.Input.asOptionalInput<NetworkSecurityGroupArmReference>(networkSecurityGroup),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.createFromLocal,
+    this.dnsSettings,
+    this.extendedLocation,
+    this.ipConfigurations,
+    this.location,
+    this.macAddress,
+    this.networkInterfaceName,
+    this.networkSecurityGroup,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class NetworkInterfaceArgs {
 
   factory NetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceArgs(
-      createFromLocal: map['createFromLocal'] == null ? null : pulumi.Output.create<bool>(map['createFromLocal'] as bool),
-      dnsSettings: map['dnsSettings'] == null ? null : pulumi.Output.create<InterfaceDNSSettings>(InterfaceDNSSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Output.create<List<IPConfiguration>>(pulumi.Input.decodeList<IPConfiguration>(map['ipConfigurations'], (value) => IPConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      macAddress: map['macAddress'] == null ? null : pulumi.Output.create<String>(map['macAddress'] as String),
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceName'] as String),
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : pulumi.Output.create<NetworkSecurityGroupArmReference>(NetworkSecurityGroupArmReference.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      createFromLocal: map['createFromLocal'] == null ? null : (map['createFromLocal'] as bool).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (InterfaceDNSSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<IPConfiguration>(map['ipConfigurations'], (value) => IPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
+      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName'] as String).input(),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NetworkSecurityGroupArmReference.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

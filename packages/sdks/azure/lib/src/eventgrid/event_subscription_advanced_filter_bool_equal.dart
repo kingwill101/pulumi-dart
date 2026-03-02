@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSubscriptionAdvancedFilterBoolEqual {
   /// Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-  final String key;
-  final bool value;
+  final pulumi.Input<String> key;
+  final pulumi.Input<bool> value;
 
   /// Creates a new [EventSubscriptionAdvancedFilterBoolEqual].
   /// [key] Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
@@ -23,8 +24,8 @@ class EventSubscriptionAdvancedFilterBoolEqual {
 
   factory EventSubscriptionAdvancedFilterBoolEqual.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionAdvancedFilterBoolEqual(
-      key: map['key'] as String,
-      value: map['value'] as bool,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as bool).input(),
     );
   }
 }

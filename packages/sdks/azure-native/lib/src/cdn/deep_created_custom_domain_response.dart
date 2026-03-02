@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Custom domains created on the CDN endpoint.
 class DeepCreatedCustomDomainResponse {
   /// The host name of the custom domain. Must be a domain name.
-  final String hostName;
+  final pulumi.Input<String> hostName;
   /// Custom domain name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Special validation or data may be required when delivering CDN to some regions due to local compliance reasons. E.g. ICP license number of a custom domain is required to deliver content in China.
-  final String? validationData;
+  final pulumi.Input<String>? validationData;
 
   /// Creates a new [DeepCreatedCustomDomainResponse].
   /// [hostName] The host name of the custom domain. Must be a domain name.
@@ -30,9 +31,9 @@ class DeepCreatedCustomDomainResponse {
 
   factory DeepCreatedCustomDomainResponse.fromMap(Map<String, dynamic> map) {
     return DeepCreatedCustomDomainResponse(
-      hostName: map['hostName'] as String,
-      name: map['name'] as String,
-      validationData: map['validationData'] == null ? null : map['validationData'] as String,
+      hostName: (map['hostName'] as String).input(),
+      name: (map['name'] as String).input(),
+      validationData: map['validationData'] == null ? null : (map['validationData'] as String).input(),
     );
   }
 }

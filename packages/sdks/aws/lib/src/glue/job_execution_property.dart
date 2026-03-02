@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobExecutionProperty {
   /// The maximum number of concurrent runs allowed for a job. The default is 1.
-  final int? maxConcurrentRuns;
+  final pulumi.Input<int>? maxConcurrentRuns;
 
   /// Creates a new [JobExecutionProperty].
   /// [maxConcurrentRuns] The maximum number of concurrent runs allowed for a job. The default is 1.
@@ -19,7 +20,7 @@ class JobExecutionProperty {
 
   factory JobExecutionProperty.fromMap(Map<String, dynamic> map) {
     return JobExecutionProperty(
-      maxConcurrentRuns: map['maxConcurrentRuns'] == null ? null : map['maxConcurrentRuns'] as int,
+      maxConcurrentRuns: map['maxConcurrentRuns'] == null ? null : (map['maxConcurrentRuns'] as int).input(),
     );
   }
 }

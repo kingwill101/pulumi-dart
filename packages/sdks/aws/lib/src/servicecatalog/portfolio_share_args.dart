@@ -36,23 +36,15 @@ class PortfolioShareArgs {
   /// [type] Type of portfolio share. Valid values are `ACCOUNT` (an external account), `ORGANIZATION` (a share to every account in an organization), `ORGANIZATIONAL_UNIT`, `ORGANIZATION_MEMBER_ACCOUNT` (a share to an account in an organization).
   /// [waitForAcceptance] Whether to wait (up to the timeout) for the share to be accepted. Organizational shares are automatically accepted.
   PortfolioShareArgs({
-    pulumi.Output<String>? acceptLanguage,
-    required pulumi.Output<String> portfolioId,
-    required pulumi.Output<String> principalId,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? sharePrincipals,
-    pulumi.Output<bool>? shareTagOptions,
-    required pulumi.Output<String> type,
-    pulumi.Output<bool>? waitForAcceptance,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      portfolioId = pulumi.Input.asInput<String>(portfolioId),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sharePrincipals = pulumi.Input.asOptionalInput<bool>(sharePrincipals),
-      shareTagOptions = pulumi.Input.asOptionalInput<bool>(shareTagOptions),
-      type = pulumi.Input.asInput<String>(type),
-      waitForAcceptance = pulumi.Input.asOptionalInput<bool>(waitForAcceptance);
+    this.acceptLanguage,
+    required this.portfolioId,
+    required this.principalId,
+    this.region,
+    this.sharePrincipals,
+    this.shareTagOptions,
+    required this.type,
+    this.waitForAcceptance,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class PortfolioShareArgs {
 
   factory PortfolioShareArgs.fromMap(Map<String, dynamic> map) {
     return PortfolioShareArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      portfolioId: pulumi.Output.create<String>(map['portfolioId'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sharePrincipals: map['sharePrincipals'] == null ? null : pulumi.Output.create<bool>(map['sharePrincipals'] as bool),
-      shareTagOptions: map['shareTagOptions'] == null ? null : pulumi.Output.create<bool>(map['shareTagOptions'] as bool),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      waitForAcceptance: map['waitForAcceptance'] == null ? null : pulumi.Output.create<bool>(map['waitForAcceptance'] as bool),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      portfolioId: (map['portfolioId'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sharePrincipals: map['sharePrincipals'] == null ? null : (map['sharePrincipals'] as bool).input(),
+      shareTagOptions: map['shareTagOptions'] == null ? null : (map['shareTagOptions'] as bool).input(),
+      type: (map['type'] as String).input(),
+      waitForAcceptance: map['waitForAcceptance'] == null ? null : (map['waitForAcceptance'] as bool).input(),
     );
   }
 }

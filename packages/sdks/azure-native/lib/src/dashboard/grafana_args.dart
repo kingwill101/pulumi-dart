@@ -34,21 +34,14 @@ class GrafanaArgs {
   /// [tags] The tags for grafana resource.
   /// [workspaceName] The workspace name of Azure Managed Grafana.
   GrafanaArgs({
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<ManagedGrafanaProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<ResourceSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workspaceName,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<ManagedGrafanaProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<ResourceSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceName = pulumi.Input.asOptionalInput<String>(workspaceName);
+    this.identity,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+    this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class GrafanaArgs {
 
   factory GrafanaArgs.fromMap(Map<String, dynamic> map) {
     return GrafanaArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ManagedGrafanaProperties>(ManagedGrafanaProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<ResourceSku>(ResourceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceName: map['workspaceName'] == null ? null : pulumi.Output.create<String>(map['workspaceName'] as String),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (ManagedGrafanaProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (ResourceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
     );
   }
 }

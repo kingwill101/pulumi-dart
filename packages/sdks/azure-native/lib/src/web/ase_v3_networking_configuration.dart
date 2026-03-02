@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Full view of networking configuration for an ASE.
 class AseV3NetworkingConfiguration {
   /// Property to enable and disable new private endpoint connection creation on ASE
-  final bool? allowNewPrivateEndpointConnections;
+  final pulumi.Input<bool>? allowNewPrivateEndpointConnections;
   /// Property to enable and disable FTP on ASEV3
-  final bool? ftpEnabled;
+  final pulumi.Input<bool>? ftpEnabled;
   /// Customer provided Inbound IP Address. Only able to be set on Ase create.
-  final String? inboundIpAddressOverride;
+  final pulumi.Input<String>? inboundIpAddressOverride;
   /// Kind of resource.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Property to enable and disable Remote Debug on ASEV3
-  final bool? remoteDebugEnabled;
+  final pulumi.Input<bool>? remoteDebugEnabled;
 
   /// Creates a new [AseV3NetworkingConfiguration].
   /// [allowNewPrivateEndpointConnections] Property to enable and disable new private endpoint connection creation on ASE
@@ -40,11 +41,11 @@ class AseV3NetworkingConfiguration {
 
   factory AseV3NetworkingConfiguration.fromMap(Map<String, dynamic> map) {
     return AseV3NetworkingConfiguration(
-      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] == null ? null : map['allowNewPrivateEndpointConnections'] as bool,
-      ftpEnabled: map['ftpEnabled'] == null ? null : map['ftpEnabled'] as bool,
-      inboundIpAddressOverride: map['inboundIpAddressOverride'] == null ? null : map['inboundIpAddressOverride'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      remoteDebugEnabled: map['remoteDebugEnabled'] == null ? null : map['remoteDebugEnabled'] as bool,
+      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] == null ? null : (map['allowNewPrivateEndpointConnections'] as bool).input(),
+      ftpEnabled: map['ftpEnabled'] == null ? null : (map['ftpEnabled'] as bool).input(),
+      inboundIpAddressOverride: map['inboundIpAddressOverride'] == null ? null : (map['inboundIpAddressOverride'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      remoteDebugEnabled: map['remoteDebugEnabled'] == null ? null : (map['remoteDebugEnabled'] as bool).input(),
     );
   }
 }

@@ -6,11 +6,11 @@ import 'url_signing_param_identifier.dart';
 /// Defines the parameters for the Url Signing action.
 class UrlSigningActionParameters {
   /// Algorithm to use for URL signing
-  final String? algorithm;
+  final pulumi.Input<String>? algorithm;
   /// Defines which query string parameters in the url to be considered for expires, key id etc.
-  final List<UrlSigningParamIdentifier>? parameterNameOverride;
+  final pulumi.Input<List<UrlSigningParamIdentifier>>? parameterNameOverride;
   /// Expected value is 'DeliveryRuleUrlSigningActionParameters'.
-  final String typeName;
+  final pulumi.Input<String> typeName;
 
   /// Creates a new [UrlSigningActionParameters].
   /// [algorithm] Algorithm to use for URL signing
@@ -25,16 +25,16 @@ class UrlSigningActionParameters {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'algorithm': ?algorithm,
-      'parameterNameOverride': ?parameterNameOverride == null ? null : pulumi.Input.encodeList<UrlSigningParamIdentifier, Map<String, dynamic>>(parameterNameOverride!, (value) => value.toMap()),
+      'parameterNameOverride': ?pulumi.Input.mapOptionalInputValue<List<UrlSigningParamIdentifier>, List<Map<String, dynamic>>>(parameterNameOverride, (value) => pulumi.Input.encodeList<UrlSigningParamIdentifier, Map<String, dynamic>>(value, (value) => value.toMap())),
       'typeName': typeName,
     };
   }
 
   factory UrlSigningActionParameters.fromMap(Map<String, dynamic> map) {
     return UrlSigningActionParameters(
-      algorithm: map['algorithm'] == null ? null : map['algorithm'] as String,
-      parameterNameOverride: map['parameterNameOverride'] == null ? null : pulumi.Input.decodeList<UrlSigningParamIdentifier>(map['parameterNameOverride'], (value) => UrlSigningParamIdentifier.fromMap((value as Map).cast<String, dynamic>())),
-      typeName: map['typeName'] as String,
+      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
+      parameterNameOverride: map['parameterNameOverride'] == null ? null : (pulumi.Input.decodeList<UrlSigningParamIdentifier>(map['parameterNameOverride'], (value) => UrlSigningParamIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      typeName: (map['typeName'] as String).input(),
     );
   }
 }

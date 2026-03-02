@@ -26,17 +26,12 @@ class AttestationProviderArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The tags that will be assigned to the attestation provider.
   AttestationProviderArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<AttestationServiceCreationSpecificParams> properties,
-    pulumi.Output<String>? providerName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<AttestationServiceCreationSpecificParams>(properties),
-      providerName = pulumi.Input.asOptionalInput<String>(providerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    required this.properties,
+    this.providerName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AttestationProviderArgs {
 
   factory AttestationProviderArgs.fromMap(Map<String, dynamic> map) {
     return AttestationProviderArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<AttestationServiceCreationSpecificParams>(AttestationServiceCreationSpecificParams.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      providerName: map['providerName'] == null ? null : pulumi.Output.create<String>(map['providerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (AttestationServiceCreationSpecificParams.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

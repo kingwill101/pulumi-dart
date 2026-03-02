@@ -19,13 +19,10 @@ class NetworkInterfaceNatRuleAssociationArgs {
   /// [natRuleId] The ID of the Load Balancer NAT Rule which this Network Interface which should be connected to. Changing this forces a new resource to be created.
   /// [networkInterfaceId] The ID of the Network Interface. Changing this forces a new resource to be created.
   NetworkInterfaceNatRuleAssociationArgs({
-    required pulumi.Output<String> ipConfigurationName,
-    required pulumi.Output<String> natRuleId,
-    required pulumi.Output<String> networkInterfaceId,
-  }) :
-      ipConfigurationName = pulumi.Input.asInput<String>(ipConfigurationName),
-      natRuleId = pulumi.Input.asInput<String>(natRuleId),
-      networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId);
+    required this.ipConfigurationName,
+    required this.natRuleId,
+    required this.networkInterfaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class NetworkInterfaceNatRuleAssociationArgs {
 
   factory NetworkInterfaceNatRuleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceNatRuleAssociationArgs(
-      ipConfigurationName: pulumi.Output.create<String>(map['ipConfigurationName'] as String),
-      natRuleId: pulumi.Output.create<String>(map['natRuleId'] as String),
-      networkInterfaceId: pulumi.Output.create<String>(map['networkInterfaceId'] as String),
+      ipConfigurationName: (map['ipConfigurationName'] as String).input(),
+      natRuleId: (map['natRuleId'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class ExpressRouteCircuitAuthorizationArgs {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [resourceGroupName] The name of the resource group.
   ExpressRouteCircuitAuthorizationArgs({
-    pulumi.Output<String>? authorizationKey,
-    pulumi.Output<String>? authorizationName,
-    pulumi.Output<String>? authorizationUseStatus,
-    required pulumi.Output<String> circuitName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authorizationKey = pulumi.Input.asOptionalInput<String>(authorizationKey),
-      authorizationName = pulumi.Input.asOptionalInput<String>(authorizationName),
-      authorizationUseStatus = pulumi.Input.asOptionalInput<String>(authorizationUseStatus),
-      circuitName = pulumi.Input.asInput<String>(circuitName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.authorizationKey,
+    this.authorizationName,
+    this.authorizationUseStatus,
+    required this.circuitName,
+    this.id,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ExpressRouteCircuitAuthorizationArgs {
 
   factory ExpressRouteCircuitAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitAuthorizationArgs(
-      authorizationKey: map['authorizationKey'] == null ? null : pulumi.Output.create<String>(map['authorizationKey'] as String),
-      authorizationName: map['authorizationName'] == null ? null : pulumi.Output.create<String>(map['authorizationName'] as String),
-      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : pulumi.Output.create<String>(map['authorizationUseStatus'] as String),
-      circuitName: pulumi.Output.create<String>(map['circuitName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
+      authorizationName: map['authorizationName'] == null ? null : (map['authorizationName'] as String).input(),
+      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : (map['authorizationUseStatus'] as String).input(),
+      circuitName: (map['circuitName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationKafkaConfigsKafkaConfig {
   /// The topic of the Kafka.
-  final String? kafkaTopic;
+  final pulumi.Input<String>? kafkaTopic;
   /// The path in which logs are stored.
-  final String? logDir;
+  final pulumi.Input<String>? logDir;
   /// The type of the log.
-  final String? logType;
+  final pulumi.Input<String>? logType;
 
   /// Creates a new [ApplicationKafkaConfigsKafkaConfig].
   /// [kafkaTopic] The topic of the Kafka.
@@ -29,9 +30,9 @@ class ApplicationKafkaConfigsKafkaConfig {
 
   factory ApplicationKafkaConfigsKafkaConfig.fromMap(Map<String, dynamic> map) {
     return ApplicationKafkaConfigsKafkaConfig(
-      kafkaTopic: map['kafkaTopic'] == null ? null : map['kafkaTopic'] as String,
-      logDir: map['logDir'] == null ? null : map['logDir'] as String,
-      logType: map['logType'] == null ? null : map['logType'] as String,
+      kafkaTopic: map['kafkaTopic'] == null ? null : (map['kafkaTopic'] as String).input(),
+      logDir: map['logDir'] == null ? null : (map['logDir'] as String).input(),
+      logType: map['logType'] == null ? null : (map['logType'] as String).input(),
     );
   }
 }

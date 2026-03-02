@@ -22,15 +22,11 @@ class SolutionConfigurationArgs {
   /// [solutionSettings] Solution settings
   /// [solutionType] The type of the solution
   SolutionConfigurationArgs({
-    required pulumi.Output<String> resourceUri,
-    pulumi.Output<String>? solutionConfiguration,
-    pulumi.Output<Map<String, String>>? solutionSettings,
-    required pulumi.Output<String> solutionType,
-  }) :
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      solutionConfiguration = pulumi.Input.asOptionalInput<String>(solutionConfiguration),
-      solutionSettings = pulumi.Input.asOptionalInput<Map<String, String>>(solutionSettings),
-      solutionType = pulumi.Input.asInput<String>(solutionType);
+    required this.resourceUri,
+    this.solutionConfiguration,
+    this.solutionSettings,
+    required this.solutionType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SolutionConfigurationArgs {
 
   factory SolutionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SolutionConfigurationArgs(
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      solutionConfiguration: map['solutionConfiguration'] == null ? null : pulumi.Output.create<String>(map['solutionConfiguration'] as String),
-      solutionSettings: map['solutionSettings'] == null ? null : pulumi.Output.create<Map<String, String>>((map['solutionSettings'] as Map).cast<String, String>()),
-      solutionType: pulumi.Output.create<String>(map['solutionType'] as String),
+      resourceUri: (map['resourceUri'] as String).input(),
+      solutionConfiguration: map['solutionConfiguration'] == null ? null : (map['solutionConfiguration'] as String).input(),
+      solutionSettings: map['solutionSettings'] == null ? null : ((map['solutionSettings'] as Map).cast<String, String>()).input(),
+      solutionType: (map['solutionType'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defender for Servers service information.
 class DefenderForServersInformationResponse {
   /// Indicates whether the service is enabled.
-  final String enablementStatus;
+  final pulumi.Input<String> enablementStatus;
 
   /// Creates a new [DefenderForServersInformationResponse].
   /// [enablementStatus] Indicates whether the service is enabled.
@@ -20,7 +21,7 @@ class DefenderForServersInformationResponse {
 
   factory DefenderForServersInformationResponse.fromMap(Map<String, dynamic> map) {
     return DefenderForServersInformationResponse(
-      enablementStatus: map['enablementStatus'] as String,
+      enablementStatus: (map['enablementStatus'] as String).input(),
     );
   }
 }

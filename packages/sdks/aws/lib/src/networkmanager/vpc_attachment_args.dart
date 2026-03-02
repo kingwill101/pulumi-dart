@@ -31,19 +31,13 @@ class VpcAttachmentArgs {
   /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcArn] ARN of the VPC.
   VpcAttachmentArgs({
-    required pulumi.Output<String> coreNetworkId,
-    pulumi.Output<VpcAttachmentOptions>? options,
-    pulumi.Output<String>? routingPolicyLabel,
-    required pulumi.Output<List<String>> subnetArns,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcArn,
-  }) :
-      coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
-      options = pulumi.Input.asOptionalInput<VpcAttachmentOptions>(options),
-      routingPolicyLabel = pulumi.Input.asOptionalInput<String>(routingPolicyLabel),
-      subnetArns = pulumi.Input.asInput<List<String>>(subnetArns),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcArn = pulumi.Input.asInput<String>(vpcArn);
+    required this.coreNetworkId,
+    this.options,
+    this.routingPolicyLabel,
+    required this.subnetArns,
+    this.tags,
+    required this.vpcArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class VpcAttachmentArgs {
 
   factory VpcAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentArgs(
-      coreNetworkId: pulumi.Output.create<String>(map['coreNetworkId'] as String),
-      options: map['options'] == null ? null : pulumi.Output.create<VpcAttachmentOptions>(VpcAttachmentOptions.fromMap((map['options'] as Map).cast<String, dynamic>())),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : pulumi.Output.create<String>(map['routingPolicyLabel'] as String),
-      subnetArns: pulumi.Output.create<List<String>>((map['subnetArns'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcArn: pulumi.Output.create<String>(map['vpcArn'] as String),
+      coreNetworkId: (map['coreNetworkId'] as String).input(),
+      options: map['options'] == null ? null : (VpcAttachmentOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
+      subnetArns: ((map['subnetArns'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcArn: (map['vpcArn'] as String).input(),
     );
   }
 }

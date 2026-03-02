@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadWorkloadReference {
   /// (Output)
   /// Output only. The underlying compute resource uri.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [WorkloadWorkloadReference].
   /// [uri] (Output)
@@ -20,7 +21,7 @@ class WorkloadWorkloadReference {
 
   factory WorkloadWorkloadReference.fromMap(Map<String, dynamic> map) {
     return WorkloadWorkloadReference(
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

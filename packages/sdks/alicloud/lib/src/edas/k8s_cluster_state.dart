@@ -32,21 +32,14 @@ class K8sClusterState {
   /// [networkMode] The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
   /// [vpcId] The ID of the Virtual Private Cloud (VPC) for the cluster.
   K8sClusterState({
-    pulumi.Output<int>? clusterImportStatus,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<int>? clusterType,
-    pulumi.Output<String>? csClusterId,
-    pulumi.Output<String>? namespaceId,
-    pulumi.Output<int>? networkMode,
-    pulumi.Output<String>? vpcId,
-  }) :
-      clusterImportStatus = pulumi.Input.asOptionalInput<int>(clusterImportStatus),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      clusterType = pulumi.Input.asOptionalInput<int>(clusterType),
-      csClusterId = pulumi.Input.asOptionalInput<String>(csClusterId),
-      namespaceId = pulumi.Input.asOptionalInput<String>(namespaceId),
-      networkMode = pulumi.Input.asOptionalInput<int>(networkMode),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.clusterImportStatus,
+    this.clusterName,
+    this.clusterType,
+    this.csClusterId,
+    this.namespaceId,
+    this.networkMode,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class K8sClusterState {
 
   factory K8sClusterState.fromMap(Map<String, dynamic> map) {
     return K8sClusterState(
-      clusterImportStatus: map['clusterImportStatus'] == null ? null : pulumi.Output.create<int>(map['clusterImportStatus'] as int),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      clusterType: map['clusterType'] == null ? null : pulumi.Output.create<int>(map['clusterType'] as int),
-      csClusterId: map['csClusterId'] == null ? null : pulumi.Output.create<String>(map['csClusterId'] as String),
-      namespaceId: map['namespaceId'] == null ? null : pulumi.Output.create<String>(map['namespaceId'] as String),
-      networkMode: map['networkMode'] == null ? null : pulumi.Output.create<int>(map['networkMode'] as int),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      clusterImportStatus: map['clusterImportStatus'] == null ? null : (map['clusterImportStatus'] as int).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as int).input(),
+      csClusterId: map['csClusterId'] == null ? null : (map['csClusterId'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      networkMode: map['networkMode'] == null ? null : (map['networkMode'] as int).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

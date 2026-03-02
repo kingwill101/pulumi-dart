@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringbootappsPropertiesResponseApplicationConfigurations {
   /// The application config file name.
-  final String key;
+  final pulumi.Input<String> key;
   /// The application config file content, only contains config keys.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [SpringbootappsPropertiesResponseApplicationConfigurations].
   /// [key] The application config file name.
@@ -24,8 +25,8 @@ class SpringbootappsPropertiesResponseApplicationConfigurations {
 
   factory SpringbootappsPropertiesResponseApplicationConfigurations.fromMap(Map<String, dynamic> map) {
     return SpringbootappsPropertiesResponseApplicationConfigurations(
-      key: map['key'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

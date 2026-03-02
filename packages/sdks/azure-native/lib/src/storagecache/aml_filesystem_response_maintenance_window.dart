@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Start time of a 30-minute weekly maintenance window.
 class AmlFilesystemResponseMaintenanceWindow {
   /// Day of the week on which the maintenance window will occur.
-  final String? dayOfWeek;
+  final pulumi.Input<String>? dayOfWeek;
   /// The time of day (in UTC) to start the maintenance window.
-  final String? timeOfDayUTC;
+  final pulumi.Input<String>? timeOfDayUTC;
 
   /// Creates a new [AmlFilesystemResponseMaintenanceWindow].
   /// [dayOfWeek] Day of the week on which the maintenance window will occur.
@@ -25,8 +26,8 @@ class AmlFilesystemResponseMaintenanceWindow {
 
   factory AmlFilesystemResponseMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemResponseMaintenanceWindow(
-      dayOfWeek: map['dayOfWeek'] == null ? null : map['dayOfWeek'] as String,
-      timeOfDayUTC: map['timeOfDayUTC'] == null ? null : map['timeOfDayUTC'] as String,
+      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as String).input(),
+      timeOfDayUTC: map['timeOfDayUTC'] == null ? null : (map['timeOfDayUTC'] as String).input(),
     );
   }
 }

@@ -17,11 +17,9 @@ class GetProductArgs {
   /// [filters] List of filters. Passed directly to the API (see GetProducts API reference). These filters must describe a single product, this resource will fail if more than one product is returned by the API.
   /// [serviceCode] Code of the service. Available service codes can be fetched using the DescribeServices pricing API call.
   GetProductArgs({
-    required pulumi.Output<List<GetProductFilter>> filters,
-    required pulumi.Output<String> serviceCode,
-  }) :
-      filters = pulumi.Input.asInput<List<GetProductFilter>>(filters),
-      serviceCode = pulumi.Input.asInput<String>(serviceCode);
+    required this.filters,
+    required this.serviceCode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetProductArgs {
 
   factory GetProductArgs.fromMap(Map<String, dynamic> map) {
     return GetProductArgs(
-      filters: pulumi.Output.create<List<GetProductFilter>>(pulumi.Input.decodeList<GetProductFilter>(map['filters'], (value) => GetProductFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      serviceCode: pulumi.Output.create<String>(map['serviceCode'] as String),
+      filters: (pulumi.Input.decodeList<GetProductFilter>(map['filters'], (value) => GetProductFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceCode: (map['serviceCode'] as String).input(),
     );
   }
 }

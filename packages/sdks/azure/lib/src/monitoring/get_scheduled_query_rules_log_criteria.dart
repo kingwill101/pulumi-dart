@@ -5,9 +5,9 @@ import 'get_scheduled_query_rules_log_criteria_dimension.dart';
 
 class GetScheduledQueryRulesLogCriteria {
   /// A `dimension` block as defined below.
-  final List<GetScheduledQueryRulesLogCriteriaDimension> dimensions;
+  final pulumi.Input<List<GetScheduledQueryRulesLogCriteriaDimension>> dimensions;
   /// Name of the metric.
-  final String metricName;
+  final pulumi.Input<String> metricName;
 
   /// Creates a new [GetScheduledQueryRulesLogCriteria].
   /// [dimensions] A `dimension` block as defined below.
@@ -19,15 +19,15 @@ class GetScheduledQueryRulesLogCriteria {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': pulumi.Input.encodeList<GetScheduledQueryRulesLogCriteriaDimension, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
+      'dimensions': pulumi.Input.mapInputValue<List<GetScheduledQueryRulesLogCriteriaDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<GetScheduledQueryRulesLogCriteriaDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metricName': metricName,
     };
   }
 
   factory GetScheduledQueryRulesLogCriteria.fromMap(Map<String, dynamic> map) {
     return GetScheduledQueryRulesLogCriteria(
-      dimensions: pulumi.Input.decodeList<GetScheduledQueryRulesLogCriteriaDimension>(map['dimensions'], (value) => GetScheduledQueryRulesLogCriteriaDimension.fromMap((value as Map).cast<String, dynamic>())),
-      metricName: map['metricName'] as String,
+      dimensions: (pulumi.Input.decodeList<GetScheduledQueryRulesLogCriteriaDimension>(map['dimensions'], (value) => GetScheduledQueryRulesLogCriteriaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricName: (map['metricName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specify the name and value of custom metadata item.
 class MetadataItem {
   /// Metadata item key name. Type: string (or Expression with resultType string).
-  final dynamic name;
+  final pulumi.Input<dynamic>? name;
   /// Metadata item value. Type: string (or Expression with resultType string).
-  final dynamic value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [MetadataItem].
   /// [name] Metadata item key name. Type: string (or Expression with resultType string).
@@ -25,8 +26,8 @@ class MetadataItem {
 
   factory MetadataItem.fromMap(Map<String, dynamic> map) {
     return MetadataItem(
-      name: map['name'] == null ? null : map['name'],
-      value: map['value'] == null ? null : map['value'],
+      name: map['name'] == null ? null : (map['name']).input(),
+      value: map['value'] == null ? null : (map['value']).input(),
     );
   }
 }

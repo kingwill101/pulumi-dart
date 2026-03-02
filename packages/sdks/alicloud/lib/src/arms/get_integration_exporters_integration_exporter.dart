@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIntegrationExportersIntegrationExporter {
   /// The ID of the Prometheus instance.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// Integration Exporter Type.
-  final String exporterType;
+  final pulumi.Input<String> exporterType;
   /// The ID of the Integration Exporter. It formats as `<cluster_id>:<integration_type>:<instance_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the Integration Exporter instance.
-  final int instanceId;
+  final pulumi.Input<int> instanceId;
   /// The name of the instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The type of prometheus integration.
-  final String integrationType;
+  final pulumi.Input<String> integrationType;
   /// Exporter configuration parameter json string.
-  final String param;
+  final pulumi.Input<String> param;
   /// Monitor the target address.
-  final String target;
+  final pulumi.Input<String> target;
   /// The version information.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetIntegrationExportersIntegrationExporter].
   /// [clusterId] The ID of the Prometheus instance.
@@ -59,15 +60,15 @@ class GetIntegrationExportersIntegrationExporter {
 
   factory GetIntegrationExportersIntegrationExporter.fromMap(Map<String, dynamic> map) {
     return GetIntegrationExportersIntegrationExporter(
-      clusterId: map['clusterId'] as String,
-      exporterType: map['exporterType'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as int,
-      instanceName: map['instanceName'] as String,
-      integrationType: map['integrationType'] as String,
-      param: map['param'] as String,
-      target: map['target'] as String,
-      version: map['version'] as String,
+      clusterId: (map['clusterId'] as String).input(),
+      exporterType: (map['exporterType'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as int).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      integrationType: (map['integrationType'] as String).input(),
+      param: (map['param'] as String).input(),
+      target: (map['target'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

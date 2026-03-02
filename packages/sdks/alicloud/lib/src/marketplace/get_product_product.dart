@@ -5,13 +5,13 @@ import 'get_product_product_skus.dart';
 
 class GetProductProduct {
   /// The code of the product.
-  final String code;
+  final pulumi.Input<String> code;
   /// The description of the product.
-  final String description;
+  final pulumi.Input<String> description;
   /// The name of the product.
-  final String name;
+  final pulumi.Input<String> name;
   /// A list of one element containing sku attributes of an object. Each element contains the following attributes:
-  final List<GetProductProductSkus> skuses;
+  final pulumi.Input<List<GetProductProductSkus>> skuses;
 
   /// Creates a new [GetProductProduct].
   /// [code] The code of the product.
@@ -30,16 +30,16 @@ class GetProductProduct {
       'code': code,
       'description': description,
       'name': name,
-      'skuses': pulumi.Input.encodeList<GetProductProductSkus, Map<String, dynamic>>(skuses, (value) => value.toMap()),
+      'skuses': pulumi.Input.mapInputValue<List<GetProductProductSkus>, List<Map<String, dynamic>>>(skuses, (value) => pulumi.Input.encodeList<GetProductProductSkus, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetProductProduct.fromMap(Map<String, dynamic> map) {
     return GetProductProduct(
-      code: map['code'] as String,
-      description: map['description'] as String,
-      name: map['name'] as String,
-      skuses: pulumi.Input.decodeList<GetProductProductSkus>(map['skuses'], (value) => GetProductProductSkus.fromMap((value as Map).cast<String, dynamic>())),
+      code: (map['code'] as String).input(),
+      description: (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      skuses: (pulumi.Input.decodeList<GetProductProductSkus>(map['skuses'], (value) => GetProductProductSkus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

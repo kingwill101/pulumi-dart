@@ -6,59 +6,59 @@ import 'get_ram_directories_directory_log.dart';
 
 class GetRamDirectoriesDirectory {
   /// The AD connectors.
-  final List<GetRamDirectoriesDirectoryAdConnector> adConnectors;
+  final pulumi.Input<List<GetRamDirectoriesDirectoryAdConnector>> adConnectors;
   /// The CreateTime of resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The id of the custom security group.
-  final String customSecurityGroupId;
+  final pulumi.Input<String> customSecurityGroupId;
   /// The desktop access type.
-  final String desktopAccessType;
+  final pulumi.Input<String> desktopAccessType;
   /// The desktop vpc endpoint.
-  final String desktopVpcEndpoint;
+  final pulumi.Input<String> desktopVpcEndpoint;
   /// The directory type.
-  final String directoryType;
+  final pulumi.Input<String> directoryType;
   /// The address of DNSAddress.
-  final List<String> dnsAddresses;
+  final pulumi.Input<List<String>> dnsAddresses;
   /// The username of DNS.
-  final String dnsUserName;
+  final pulumi.Input<String> dnsUserName;
   /// The name of the domain.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The domain password.
-  final String domainPassword;
+  final pulumi.Input<String> domainPassword;
   /// The username of the domain.
-  final String domainUserName;
+  final pulumi.Input<String> domainUserName;
   /// Whether to enable admin access.
-  final bool enableAdminAccess;
+  final pulumi.Input<bool> enableAdminAccess;
   /// Whether to enable cross desktop access.
-  final bool enableCrossDesktopAccess;
+  final pulumi.Input<bool> enableCrossDesktopAccess;
   /// Whether enable internet access.
-  final bool enableInternetAccess;
+  final pulumi.Input<bool> enableInternetAccess;
   /// The ids of filesystem.
-  final List<String> fileSystemIds;
+  final pulumi.Input<List<String>> fileSystemIds;
   /// The ID of the Ram Directory.
-  final String id;
+  final pulumi.Input<String> id;
   /// The register log information.
-  final List<GetRamDirectoriesDirectoryLog> logs;
+  final pulumi.Input<List<GetRamDirectoriesDirectoryLog>> logs;
   /// Whether to enable MFA.
-  final bool mfaEnabled;
+  final pulumi.Input<bool> mfaEnabled;
   /// The ID of ram directory.
-  final String ramDirectoryId;
+  final pulumi.Input<String> ramDirectoryId;
   /// The name of directory.
-  final String ramDirectoryName;
+  final pulumi.Input<String> ramDirectoryName;
   /// Whether to enable SSO.
-  final bool ssoEnabled;
+  final pulumi.Input<bool> ssoEnabled;
   /// The status of directory.
-  final String status;
+  final pulumi.Input<String> status;
   /// The address of sub DNS.
-  final List<String> subDnsAddresses;
+  final pulumi.Input<List<String>> subDnsAddresses;
   /// The Name of the sub-domain.
-  final String subDomainName;
+  final pulumi.Input<String> subDomainName;
   /// The trust password.
-  final String trustPassword;
+  final pulumi.Input<String> trustPassword;
   /// The ID of the vpc.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// List of vSwitch IDs in the directory.
-  final List<String> vswitchIds;
+  final pulumi.Input<List<String>> vswitchIds;
 
   /// Creates a new [GetRamDirectoriesDirectory].
   /// [adConnectors] The AD connectors.
@@ -120,7 +120,7 @@ class GetRamDirectoriesDirectory {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adConnectors': pulumi.Input.encodeList<GetRamDirectoriesDirectoryAdConnector, Map<String, dynamic>>(adConnectors, (value) => value.toMap()),
+      'adConnectors': pulumi.Input.mapInputValue<List<GetRamDirectoriesDirectoryAdConnector>, List<Map<String, dynamic>>>(adConnectors, (value) => pulumi.Input.encodeList<GetRamDirectoriesDirectoryAdConnector, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': createTime,
       'customSecurityGroupId': customSecurityGroupId,
       'desktopAccessType': desktopAccessType,
@@ -136,7 +136,7 @@ class GetRamDirectoriesDirectory {
       'enableInternetAccess': enableInternetAccess,
       'fileSystemIds': fileSystemIds,
       'id': id,
-      'logs': pulumi.Input.encodeList<GetRamDirectoriesDirectoryLog, Map<String, dynamic>>(logs, (value) => value.toMap()),
+      'logs': pulumi.Input.mapInputValue<List<GetRamDirectoriesDirectoryLog>, List<Map<String, dynamic>>>(logs, (value) => pulumi.Input.encodeList<GetRamDirectoriesDirectoryLog, Map<String, dynamic>>(value, (value) => value.toMap())),
       'mfaEnabled': mfaEnabled,
       'ramDirectoryId': ramDirectoryId,
       'ramDirectoryName': ramDirectoryName,
@@ -152,33 +152,33 @@ class GetRamDirectoriesDirectory {
 
   factory GetRamDirectoriesDirectory.fromMap(Map<String, dynamic> map) {
     return GetRamDirectoriesDirectory(
-      adConnectors: pulumi.Input.decodeList<GetRamDirectoriesDirectoryAdConnector>(map['adConnectors'], (value) => GetRamDirectoriesDirectoryAdConnector.fromMap((value as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] as String,
-      customSecurityGroupId: map['customSecurityGroupId'] as String,
-      desktopAccessType: map['desktopAccessType'] as String,
-      desktopVpcEndpoint: map['desktopVpcEndpoint'] as String,
-      directoryType: map['directoryType'] as String,
-      dnsAddresses: (map['dnsAddresses'] as List).cast<String>(),
-      dnsUserName: map['dnsUserName'] as String,
-      domainName: map['domainName'] as String,
-      domainPassword: map['domainPassword'] as String,
-      domainUserName: map['domainUserName'] as String,
-      enableAdminAccess: map['enableAdminAccess'] as bool,
-      enableCrossDesktopAccess: map['enableCrossDesktopAccess'] as bool,
-      enableInternetAccess: map['enableInternetAccess'] as bool,
-      fileSystemIds: (map['fileSystemIds'] as List).cast<String>(),
-      id: map['id'] as String,
-      logs: pulumi.Input.decodeList<GetRamDirectoriesDirectoryLog>(map['logs'], (value) => GetRamDirectoriesDirectoryLog.fromMap((value as Map).cast<String, dynamic>())),
-      mfaEnabled: map['mfaEnabled'] as bool,
-      ramDirectoryId: map['ramDirectoryId'] as String,
-      ramDirectoryName: map['ramDirectoryName'] as String,
-      ssoEnabled: map['ssoEnabled'] as bool,
-      status: map['status'] as String,
-      subDnsAddresses: (map['subDnsAddresses'] as List).cast<String>(),
-      subDomainName: map['subDomainName'] as String,
-      trustPassword: map['trustPassword'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchIds: (map['vswitchIds'] as List).cast<String>(),
+      adConnectors: (pulumi.Input.decodeList<GetRamDirectoriesDirectoryAdConnector>(map['adConnectors'], (value) => GetRamDirectoriesDirectoryAdConnector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: (map['createTime'] as String).input(),
+      customSecurityGroupId: (map['customSecurityGroupId'] as String).input(),
+      desktopAccessType: (map['desktopAccessType'] as String).input(),
+      desktopVpcEndpoint: (map['desktopVpcEndpoint'] as String).input(),
+      directoryType: (map['directoryType'] as String).input(),
+      dnsAddresses: ((map['dnsAddresses'] as List).cast<String>()).input(),
+      dnsUserName: (map['dnsUserName'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      domainPassword: (map['domainPassword'] as String).input(),
+      domainUserName: (map['domainUserName'] as String).input(),
+      enableAdminAccess: (map['enableAdminAccess'] as bool).input(),
+      enableCrossDesktopAccess: (map['enableCrossDesktopAccess'] as bool).input(),
+      enableInternetAccess: (map['enableInternetAccess'] as bool).input(),
+      fileSystemIds: ((map['fileSystemIds'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      logs: (pulumi.Input.decodeList<GetRamDirectoriesDirectoryLog>(map['logs'], (value) => GetRamDirectoriesDirectoryLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mfaEnabled: (map['mfaEnabled'] as bool).input(),
+      ramDirectoryId: (map['ramDirectoryId'] as String).input(),
+      ramDirectoryName: (map['ramDirectoryName'] as String).input(),
+      ssoEnabled: (map['ssoEnabled'] as bool).input(),
+      status: (map['status'] as String).input(),
+      subDnsAddresses: ((map['subDnsAddresses'] as List).cast<String>()).input(),
+      subDomainName: (map['subDomainName'] as String).input(),
+      trustPassword: (map['trustPassword'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchIds: ((map['vswitchIds'] as List).cast<String>()).input(),
     );
   }
 }

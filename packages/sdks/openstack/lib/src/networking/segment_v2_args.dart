@@ -39,21 +39,14 @@ class SegmentV2Args {
   /// [region] The region in which to obtain the V2 Networking client.
   /// [segmentationId] A segmentation identifier. Changing is allowed
   SegmentV2Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkId,
-    required pulumi.Output<String> networkType,
-    pulumi.Output<String>? physicalNetwork,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? segmentationId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkId = pulumi.Input.asInput<String>(networkId),
-      networkType = pulumi.Input.asInput<String>(networkType),
-      physicalNetwork = pulumi.Input.asOptionalInput<String>(physicalNetwork),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      segmentationId = pulumi.Input.asOptionalInput<int>(segmentationId);
+    this.description,
+    this.name,
+    required this.networkId,
+    required this.networkType,
+    this.physicalNetwork,
+    this.region,
+    this.segmentationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,13 +62,13 @@ class SegmentV2Args {
 
   factory SegmentV2Args.fromMap(Map<String, dynamic> map) {
     return SegmentV2Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkId: pulumi.Output.create<String>(map['networkId'] as String),
-      networkType: pulumi.Output.create<String>(map['networkType'] as String),
-      physicalNetwork: map['physicalNetwork'] == null ? null : pulumi.Output.create<String>(map['physicalNetwork'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      segmentationId: map['segmentationId'] == null ? null : pulumi.Output.create<int>(map['segmentationId'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkId: (map['networkId'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      physicalNetwork: map['physicalNetwork'] == null ? null : (map['physicalNetwork'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId'] as int).input(),
     );
   }
 }

@@ -6,41 +6,41 @@ import 'network_attachment_response.dart';
 
 class KubernetesClusterNodeResponse {
   /// The resource ID of the agent pool that this node belongs to. This value is not represented on control plane nodes.
-  final String agentPoolId;
+  final pulumi.Input<String> agentPoolId;
   /// The availability zone this node is running within.
-  final String availabilityZone;
+  final pulumi.Input<String> availabilityZone;
   /// The resource ID of the bare metal machine that hosts this node.
-  final String bareMetalMachineId;
+  final pulumi.Input<String> bareMetalMachineId;
   /// The number of CPU cores configured for this node, derived from the VM SKU specified.
-  final double cpuCores;
+  final pulumi.Input<double> cpuCores;
   /// The detailed state of this node.
-  final String detailedStatus;
+  final pulumi.Input<String> detailedStatus;
   /// The descriptive message about the current detailed status.
-  final String detailedStatusMessage;
+  final pulumi.Input<String> detailedStatusMessage;
   /// The size of the disk configured for this node. Allocations are measured in gibibytes.
-  final double diskSizeGB;
+  final pulumi.Input<double> diskSizeGB;
   /// The machine image used to deploy this node.
-  final String image;
+  final pulumi.Input<String> image;
   /// The currently running version of Kubernetes and bundled features running on this node.
-  final String kubernetesVersion;
+  final pulumi.Input<String> kubernetesVersion;
   /// The list of labels on this node that have been assigned to the agent pool containing this node.
-  final List<KubernetesLabelResponse> labels;
+  final pulumi.Input<List<KubernetesLabelResponse>> labels;
   /// The amount of memory configured for this node, derived from the vm SKU specified. Allocations are measured in gibibytes.
-  final double memorySizeGB;
+  final pulumi.Input<double> memorySizeGB;
   /// The mode of the agent pool containing this node. Not applicable for control plane nodes.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// The name of this node, as realized in the Kubernetes cluster.
-  final String name;
+  final pulumi.Input<String> name;
   /// The NetworkAttachments made to this node.
-  final List<NetworkAttachmentResponse> networkAttachments;
+  final pulumi.Input<List<NetworkAttachmentResponse>> networkAttachments;
   /// The power state of this node.
-  final String powerState;
+  final pulumi.Input<String> powerState;
   /// The role of this node in the cluster.
-  final String role;
+  final pulumi.Input<String> role;
   /// The list of taints that have been assigned to the agent pool containing this node.
-  final List<KubernetesLabelResponse> taints;
+  final pulumi.Input<List<KubernetesLabelResponse>> taints;
   /// The VM SKU name that was used to create this cluster node.
-  final String vmSkuName;
+  final pulumi.Input<String> vmSkuName;
 
   /// Creates a new [KubernetesClusterNodeResponse].
   /// [agentPoolId] The resource ID of the agent pool that this node belongs to. This value is not represented on control plane nodes.
@@ -93,38 +93,38 @@ class KubernetesClusterNodeResponse {
       'diskSizeGB': diskSizeGB,
       'image': image,
       'kubernetesVersion': kubernetesVersion,
-      'labels': pulumi.Input.encodeList<KubernetesLabelResponse, Map<String, dynamic>>(labels, (value) => value.toMap()),
+      'labels': pulumi.Input.mapInputValue<List<KubernetesLabelResponse>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<KubernetesLabelResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'memorySizeGB': memorySizeGB,
       'mode': mode,
       'name': name,
-      'networkAttachments': pulumi.Input.encodeList<NetworkAttachmentResponse, Map<String, dynamic>>(networkAttachments, (value) => value.toMap()),
+      'networkAttachments': pulumi.Input.mapInputValue<List<NetworkAttachmentResponse>, List<Map<String, dynamic>>>(networkAttachments, (value) => pulumi.Input.encodeList<NetworkAttachmentResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'powerState': powerState,
       'role': role,
-      'taints': pulumi.Input.encodeList<KubernetesLabelResponse, Map<String, dynamic>>(taints, (value) => value.toMap()),
+      'taints': pulumi.Input.mapInputValue<List<KubernetesLabelResponse>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<KubernetesLabelResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmSkuName': vmSkuName,
     };
   }
 
   factory KubernetesClusterNodeResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNodeResponse(
-      agentPoolId: map['agentPoolId'] as String,
-      availabilityZone: map['availabilityZone'] as String,
-      bareMetalMachineId: map['bareMetalMachineId'] as String,
-      cpuCores: map['cpuCores'] as double,
-      detailedStatus: map['detailedStatus'] as String,
-      detailedStatusMessage: map['detailedStatusMessage'] as String,
-      diskSizeGB: map['diskSizeGB'] as double,
-      image: map['image'] as String,
-      kubernetesVersion: map['kubernetesVersion'] as String,
-      labels: pulumi.Input.decodeList<KubernetesLabelResponse>(map['labels'], (value) => KubernetesLabelResponse.fromMap((value as Map).cast<String, dynamic>())),
-      memorySizeGB: map['memorySizeGB'] as double,
-      mode: map['mode'] as String,
-      name: map['name'] as String,
-      networkAttachments: pulumi.Input.decodeList<NetworkAttachmentResponse>(map['networkAttachments'], (value) => NetworkAttachmentResponse.fromMap((value as Map).cast<String, dynamic>())),
-      powerState: map['powerState'] as String,
-      role: map['role'] as String,
-      taints: pulumi.Input.decodeList<KubernetesLabelResponse>(map['taints'], (value) => KubernetesLabelResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vmSkuName: map['vmSkuName'] as String,
+      agentPoolId: (map['agentPoolId'] as String).input(),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      bareMetalMachineId: (map['bareMetalMachineId'] as String).input(),
+      cpuCores: (map['cpuCores'] as double).input(),
+      detailedStatus: (map['detailedStatus'] as String).input(),
+      detailedStatusMessage: (map['detailedStatusMessage'] as String).input(),
+      diskSizeGB: (map['diskSizeGB'] as double).input(),
+      image: (map['image'] as String).input(),
+      kubernetesVersion: (map['kubernetesVersion'] as String).input(),
+      labels: (pulumi.Input.decodeList<KubernetesLabelResponse>(map['labels'], (value) => KubernetesLabelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      memorySizeGB: (map['memorySizeGB'] as double).input(),
+      mode: (map['mode'] as String).input(),
+      name: (map['name'] as String).input(),
+      networkAttachments: (pulumi.Input.decodeList<NetworkAttachmentResponse>(map['networkAttachments'], (value) => NetworkAttachmentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      powerState: (map['powerState'] as String).input(),
+      role: (map['role'] as String).input(),
+      taints: (pulumi.Input.decodeList<KubernetesLabelResponse>(map['taints'], (value) => KubernetesLabelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmSkuName: (map['vmSkuName'] as String).input(),
     );
   }
 }

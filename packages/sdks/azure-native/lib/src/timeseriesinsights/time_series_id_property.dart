@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The structure of the property that a time series id can have. An environment can have multiple such properties.
 class TimeSeriesIdProperty {
   /// The name of the property.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The type of the property.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [TimeSeriesIdProperty].
   /// [name] The name of the property.
@@ -25,8 +26,8 @@ class TimeSeriesIdProperty {
 
   factory TimeSeriesIdProperty.fromMap(Map<String, dynamic> map) {
     return TimeSeriesIdProperty(
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

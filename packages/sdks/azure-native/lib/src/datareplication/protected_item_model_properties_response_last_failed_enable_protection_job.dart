@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProtectedItemModelPropertiesResponseLastFailedEnableProtectionJob {
   /// Gets or sets the workflow friendly display name.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Gets or sets end time of the workflow.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Gets or sets workflow Id.
-  final String id;
+  final pulumi.Input<String> id;
   /// Gets or sets workflow name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Gets or sets protection scenario name.
-  final String scenarioName;
+  final pulumi.Input<String> scenarioName;
   /// Gets or sets start time of the workflow.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Gets or sets workflow state.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [ProtectedItemModelPropertiesResponseLastFailedEnableProtectionJob].
   /// [displayName] Gets or sets the workflow friendly display name.
@@ -49,13 +50,13 @@ class ProtectedItemModelPropertiesResponseLastFailedEnableProtectionJob {
 
   factory ProtectedItemModelPropertiesResponseLastFailedEnableProtectionJob.fromMap(Map<String, dynamic> map) {
     return ProtectedItemModelPropertiesResponseLastFailedEnableProtectionJob(
-      displayName: map['displayName'] as String,
-      endTime: map['endTime'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      scenarioName: map['scenarioName'] as String,
-      startTime: map['startTime'] as String,
-      state: map['state'] as String,
+      displayName: (map['displayName'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      scenarioName: (map['scenarioName'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

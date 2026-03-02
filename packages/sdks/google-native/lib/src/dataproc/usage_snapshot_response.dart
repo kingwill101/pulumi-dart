@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The usage snapshot represents the resources consumed by a workload at a specified time.
 class UsageSnapshotResponse {
   /// Optional. Accelerator type being used, if any
-  final String acceleratorType;
+  final pulumi.Input<String> acceleratorType;
   /// Optional. Milli (one-thousandth) accelerator. (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
-  final String milliAccelerator;
+  final pulumi.Input<String> milliAccelerator;
   /// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
-  final String milliDcu;
+  final pulumi.Input<String> milliDcu;
   /// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
-  final String milliDcuPremium;
+  final pulumi.Input<String> milliDcuPremium;
   /// Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
-  final String shuffleStorageGb;
+  final pulumi.Input<String> shuffleStorageGb;
   /// Optional. Shuffle Storage in gigabytes (GB) charged at premium tier. (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
-  final String shuffleStorageGbPremium;
+  final pulumi.Input<String> shuffleStorageGbPremium;
   /// Optional. The timestamp of the usage snapshot.
-  final String snapshotTime;
+  final pulumi.Input<String> snapshotTime;
 
   /// Creates a new [UsageSnapshotResponse].
   /// [acceleratorType] Optional. Accelerator type being used, if any
@@ -50,13 +51,13 @@ class UsageSnapshotResponse {
 
   factory UsageSnapshotResponse.fromMap(Map<String, dynamic> map) {
     return UsageSnapshotResponse(
-      acceleratorType: map['acceleratorType'] as String,
-      milliAccelerator: map['milliAccelerator'] as String,
-      milliDcu: map['milliDcu'] as String,
-      milliDcuPremium: map['milliDcuPremium'] as String,
-      shuffleStorageGb: map['shuffleStorageGb'] as String,
-      shuffleStorageGbPremium: map['shuffleStorageGbPremium'] as String,
-      snapshotTime: map['snapshotTime'] as String,
+      acceleratorType: (map['acceleratorType'] as String).input(),
+      milliAccelerator: (map['milliAccelerator'] as String).input(),
+      milliDcu: (map['milliDcu'] as String).input(),
+      milliDcuPremium: (map['milliDcuPremium'] as String).input(),
+      shuffleStorageGb: (map['shuffleStorageGb'] as String).input(),
+      shuffleStorageGbPremium: (map['shuffleStorageGbPremium'] as String).input(),
+      snapshotTime: (map['snapshotTime'] as String).input(),
     );
   }
 }

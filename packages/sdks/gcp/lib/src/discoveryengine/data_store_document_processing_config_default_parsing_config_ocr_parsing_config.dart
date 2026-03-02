@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig {
   /// If true, will use native text instead of OCR text on pages containing native text.
-  final bool? useNativeText;
+  final pulumi.Input<bool>? useNativeText;
 
   /// Creates a new [DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig].
   /// [useNativeText] If true, will use native text instead of OCR text on pages containing native text.
@@ -19,7 +20,7 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig {
 
   factory DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig(
-      useNativeText: map['useNativeText'] == null ? null : map['useNativeText'] as bool,
+      useNativeText: map['useNativeText'] == null ? null : (map['useNativeText'] as bool).input(),
     );
   }
 }

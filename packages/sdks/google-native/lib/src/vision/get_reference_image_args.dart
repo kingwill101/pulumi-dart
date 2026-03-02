@@ -18,15 +18,11 @@ class GetReferenceImageArgs {
   /// [project] Optional.
   /// [referenceImageId] Required.
   GetReferenceImageArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> productId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> referenceImageId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      referenceImageId = pulumi.Input.asInput<String>(referenceImageId);
+    required this.location,
+    required this.productId,
+    this.project,
+    required this.referenceImageId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetReferenceImageArgs {
 
   factory GetReferenceImageArgs.fromMap(Map<String, dynamic> map) {
     return GetReferenceImageArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      referenceImageId: pulumi.Output.create<String>(map['referenceImageId'] as String),
+      location: (map['location'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      referenceImageId: (map['referenceImageId'] as String).input(),
     );
   }
 }

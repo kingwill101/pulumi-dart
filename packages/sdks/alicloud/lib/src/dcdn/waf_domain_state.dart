@@ -13,11 +13,9 @@ class WafDomainState {
   /// [clientIpTag] The client ip tag.
   /// [domainName] The accelerated domain name.
   WafDomainState({
-    pulumi.Output<String>? clientIpTag,
-    pulumi.Output<String>? domainName,
-  }) :
-      clientIpTag = pulumi.Input.asOptionalInput<String>(clientIpTag),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName);
+    this.clientIpTag,
+    this.domainName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class WafDomainState {
 
   factory WafDomainState.fromMap(Map<String, dynamic> map) {
     return WafDomainState(
-      clientIpTag: map['clientIpTag'] == null ? null : pulumi.Output.create<String>(map['clientIpTag'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
+      clientIpTag: map['clientIpTag'] == null ? null : (map['clientIpTag'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
     );
   }
 }

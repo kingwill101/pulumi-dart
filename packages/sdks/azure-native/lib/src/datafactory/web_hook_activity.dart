@@ -9,36 +9,36 @@ import 'web_activity_authentication.dart';
 /// WebHook activity.
 class WebHookActivity {
   /// Authentication method used for calling the endpoint.
-  final WebActivityAuthentication? authentication;
+  final pulumi.Input<WebActivityAuthentication>? authentication;
   /// Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not allowed for GET method Type: string (or Expression with resultType string).
-  final dynamic body;
+  final pulumi.Input<dynamic>? body;
   /// Activity depends on condition.
-  final List<ActivityDependency>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>>? dependsOn;
   /// Activity description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-  final Map<String, dynamic>? headers;
+  final pulumi.Input<Map<String, dynamic>>? headers;
   /// Rest API method for target endpoint.
-  final String method;
+  final pulumi.Input<String> method;
   /// Activity name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final String? onInactiveMarkAs;
+  final pulumi.Input<String>? onInactiveMarkAs;
   /// Activity policy.
-  final SecureInputOutputPolicy? policy;
+  final pulumi.Input<SecureInputOutputPolicy>? policy;
   /// When set to true, statusCode, output and error in callback request body will be consumed by activity. The activity can be marked as failed by setting statusCode >= 400 in callback request. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic reportStatusOnCallBack;
+  final pulumi.Input<dynamic>? reportStatusOnCallBack;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// The timeout within which the webhook should be called back. If there is no value specified, it defaults to 10 minutes. Type: string. Pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
   /// Type of activity.
   /// Expected value is 'WebHook'.
-  final String type;
+  final pulumi.Input<String> type;
   /// WebHook activity target endpoint and path. Type: string (or Expression with resultType string).
-  final dynamic url;
+  final pulumi.Input<dynamic> url;
   /// Activity user properties.
-  final List<UserProperty>? userProperties;
+  final pulumi.Input<List<UserProperty>>? userProperties;
 
   /// Creates a new [WebHookActivity].
   /// [authentication] Authentication method used for calling the endpoint.
@@ -76,41 +76,41 @@ class WebHookActivity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': ?authentication == null ? null : authentication!.toMap(),
+      'authentication': ?pulumi.Input.mapOptionalInputValue<WebActivityAuthentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
       'body': ?body,
-      'dependsOn': ?dependsOn == null ? null : pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(dependsOn!, (value) => value.toMap()),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'headers': ?headers,
       'method': method,
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'policy': ?policy == null ? null : policy!.toMap(),
+      'policy': ?pulumi.Input.mapOptionalInputValue<SecureInputOutputPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'reportStatusOnCallBack': ?reportStatusOnCallBack,
       'state': ?state,
       'timeout': ?timeout,
       'type': type,
       'url': url,
-      'userProperties': ?userProperties == null ? null : pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(userProperties!, (value) => value.toMap()),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserProperty>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WebHookActivity.fromMap(Map<String, dynamic> map) {
     return WebHookActivity(
-      authentication: map['authentication'] == null ? null : WebActivityAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      body: map['body'] == null ? null : map['body'],
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      headers: map['headers'] == null ? null : (map['headers'] as Map).cast<String, dynamic>(),
-      method: map['method'] as String,
-      name: map['name'] as String,
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : map['onInactiveMarkAs'] as String,
-      policy: map['policy'] == null ? null : SecureInputOutputPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>()),
-      reportStatusOnCallBack: map['reportStatusOnCallBack'] == null ? null : map['reportStatusOnCallBack'],
-      state: map['state'] == null ? null : map['state'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
-      type: map['type'] as String,
-      url: map['url'],
-      userProperties: map['userProperties'] == null ? null : pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>())),
+      authentication: map['authentication'] == null ? null : (WebActivityAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      body: map['body'] == null ? null : (map['body']).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, dynamic>()).input(),
+      method: (map['method'] as String).input(),
+      name: (map['name'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
+      policy: map['policy'] == null ? null : (SecureInputOutputPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      reportStatusOnCallBack: map['reportStatusOnCallBack'] == null ? null : (map['reportStatusOnCallBack']).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      type: (map['type'] as String).input(),
+      url: (map['url']).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

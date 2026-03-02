@@ -25,17 +25,12 @@ class GetWebAppHybridConnectionSlotArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] The name of the slot for the web app.
   GetWebAppHybridConnectionSlotArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> relayName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> slot,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      relayName = pulumi.Input.asInput<String>(relayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      slot = pulumi.Input.asInput<String>(slot);
+    required this.name,
+    required this.namespaceName,
+    required this.relayName,
+    required this.resourceGroupName,
+    required this.slot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetWebAppHybridConnectionSlotArgs {
 
   factory GetWebAppHybridConnectionSlotArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppHybridConnectionSlotArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      relayName: pulumi.Output.create<String>(map['relayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
+      name: (map['name'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      relayName: (map['relayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      slot: (map['slot'] as String).input(),
     );
   }
 }

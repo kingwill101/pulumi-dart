@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Base exporter using TCP as transport protocol.
 class TcpExporter {
   /// TCP url to export.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [TcpExporter].
   /// [url] TCP url to export.
@@ -20,7 +21,7 @@ class TcpExporter {
 
   factory TcpExporter.fromMap(Map<String, dynamic> map) {
     return TcpExporter(
-      url: map['url'] as String,
+      url: (map['url'] as String).input(),
     );
   }
 }

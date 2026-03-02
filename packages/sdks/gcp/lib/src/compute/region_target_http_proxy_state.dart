@@ -47,25 +47,16 @@ class RegionTargetHttpProxyState {
   /// [selfLink] The URI of the created resource.
   /// [urlMap] A reference to the RegionUrlMap resource that defines the mapping from URL
   RegionTargetHttpProxyState({
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? httpKeepAliveTimeoutSec,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<int>? proxyId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? urlMap,
-  }) :
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      httpKeepAliveTimeoutSec = pulumi.Input.asOptionalInput<int>(httpKeepAliveTimeoutSec),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      proxyId = pulumi.Input.asOptionalInput<int>(proxyId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      urlMap = pulumi.Input.asOptionalInput<String>(urlMap);
+    this.creationTimestamp,
+    this.description,
+    this.httpKeepAliveTimeoutSec,
+    this.name,
+    this.project,
+    this.proxyId,
+    this.region,
+    this.selfLink,
+    this.urlMap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,15 +74,15 @@ class RegionTargetHttpProxyState {
 
   factory RegionTargetHttpProxyState.fromMap(Map<String, dynamic> map) {
     return RegionTargetHttpProxyState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : pulumi.Output.create<int>(map['httpKeepAliveTimeoutSec'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      proxyId: map['proxyId'] == null ? null : pulumi.Output.create<int>(map['proxyId'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      urlMap: map['urlMap'] == null ? null : pulumi.Output.create<String>(map['urlMap'] as String),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      proxyId: map['proxyId'] == null ? null : (map['proxyId'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      urlMap: map['urlMap'] == null ? null : (map['urlMap'] as String).input(),
     );
   }
 }

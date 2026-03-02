@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the ICMP configuration.
 class ConnectionMonitorIcmpConfiguration {
   /// Value indicating whether path evaluation with trace route should be disabled.
-  final bool? disableTraceRoute;
+  final pulumi.Input<bool>? disableTraceRoute;
 
   /// Creates a new [ConnectionMonitorIcmpConfiguration].
   /// [disableTraceRoute] Value indicating whether path evaluation with trace route should be disabled.
@@ -20,7 +21,7 @@ class ConnectionMonitorIcmpConfiguration {
 
   factory ConnectionMonitorIcmpConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorIcmpConfiguration(
-      disableTraceRoute: map['disableTraceRoute'] == null ? null : map['disableTraceRoute'] as bool,
+      disableTraceRoute: map['disableTraceRoute'] == null ? null : (map['disableTraceRoute'] as bool).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVolumeGroupNetworkRule {
   /// The action to take when an access attempt to this Elastic SAN Volume Group from this Subnet is made.
-  final String action;
+  final pulumi.Input<String> action;
   /// The ID of the Subnet from which access to this Elastic SAN Volume Group is allowed.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetVolumeGroupNetworkRule].
   /// [action] The action to take when an access attempt to this Elastic SAN Volume Group from this Subnet is made.
@@ -24,8 +25,8 @@ class GetVolumeGroupNetworkRule {
 
   factory GetVolumeGroupNetworkRule.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupNetworkRule(
-      action: map['action'] as String,
-      subnetId: map['subnetId'] as String,
+      action: (map['action'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

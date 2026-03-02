@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
   /// A number that CloudFront uses as the value for the max-age directive in the Strict-Transport-Security HTTP response header.
-  final int accessControlMaxAgeSec;
+  final pulumi.Input<int> accessControlMaxAgeSec;
   /// Whether CloudFront includes the includeSubDomains directive in the Strict-Transport-Security HTTP response header.
-  final bool includeSubdomains;
+  final pulumi.Input<bool> includeSubdomains;
   /// Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
-  final bool override;
+  final pulumi.Input<bool> override;
   /// Whether CloudFront includes the preload directive in the Strict-Transport-Security HTTP response header.
-  final bool preload;
+  final pulumi.Input<bool> preload;
 
   /// Creates a new [GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity].
   /// [accessControlMaxAgeSec] A number that CloudFront uses as the value for the max-age directive in the Strict-Transport-Security HTTP response header.
@@ -34,10 +35,10 @@ class GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
 
   factory GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity.fromMap(Map<String, dynamic> map) {
     return GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity(
-      accessControlMaxAgeSec: map['accessControlMaxAgeSec'] as int,
-      includeSubdomains: map['includeSubdomains'] as bool,
-      override: map['override'] as bool,
-      preload: map['preload'] as bool,
+      accessControlMaxAgeSec: (map['accessControlMaxAgeSec'] as int).input(),
+      includeSubdomains: (map['includeSubdomains'] as bool).input(),
+      override: (map['override'] as bool).input(),
+      preload: (map['preload'] as bool).input(),
     );
   }
 }

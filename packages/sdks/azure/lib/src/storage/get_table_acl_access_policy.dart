@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableAclAccessPolicy {
-  final String expiry;
-  final String permissions;
-  final String start;
+  final pulumi.Input<String> expiry;
+  final pulumi.Input<String> permissions;
+  final pulumi.Input<String> start;
 
   /// Creates a new [GetTableAclAccessPolicy].
   /// [expiry] Required.
@@ -26,9 +27,9 @@ class GetTableAclAccessPolicy {
 
   factory GetTableAclAccessPolicy.fromMap(Map<String, dynamic> map) {
     return GetTableAclAccessPolicy(
-      expiry: map['expiry'] as String,
-      permissions: map['permissions'] as String,
-      start: map['start'] as String,
+      expiry: (map['expiry'] as String).input(),
+      permissions: (map['permissions'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

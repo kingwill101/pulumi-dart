@@ -6,7 +6,7 @@ import 'vector_embedding.dart';
 /// Cosmos DB Vector Embedding Policy
 class VectorEmbeddingPolicy {
   /// List of vector embeddings
-  final List<VectorEmbedding>? vectorEmbeddings;
+  final pulumi.Input<List<VectorEmbedding>>? vectorEmbeddings;
 
   /// Creates a new [VectorEmbeddingPolicy].
   /// [vectorEmbeddings] List of vector embeddings
@@ -16,13 +16,13 @@ class VectorEmbeddingPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vectorEmbeddings': ?vectorEmbeddings == null ? null : pulumi.Input.encodeList<VectorEmbedding, Map<String, dynamic>>(vectorEmbeddings!, (value) => value.toMap()),
+      'vectorEmbeddings': ?pulumi.Input.mapOptionalInputValue<List<VectorEmbedding>, List<Map<String, dynamic>>>(vectorEmbeddings, (value) => pulumi.Input.encodeList<VectorEmbedding, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VectorEmbeddingPolicy.fromMap(Map<String, dynamic> map) {
     return VectorEmbeddingPolicy(
-      vectorEmbeddings: map['vectorEmbeddings'] == null ? null : pulumi.Input.decodeList<VectorEmbedding>(map['vectorEmbeddings'], (value) => VectorEmbedding.fromMap((value as Map).cast<String, dynamic>())),
+      vectorEmbeddings: map['vectorEmbeddings'] == null ? null : (pulumi.Input.decodeList<VectorEmbedding>(map['vectorEmbeddings'], (value) => VectorEmbedding.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

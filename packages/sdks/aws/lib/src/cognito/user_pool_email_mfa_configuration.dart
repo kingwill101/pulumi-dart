@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolEmailMfaConfiguration {
   /// The template for the email messages that your user pool sends to users with codes for MFA and sign-in with email OTPs. The message must contain the {####} placeholder. In the message, Amazon Cognito replaces this placeholder with the code. If you don't provide this parameter, Amazon Cognito sends messages in the default format.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// The subject of the email messages that your user pool sends to users with codes for MFA and email OTP sign-in.
-  final String? subject;
+  final pulumi.Input<String>? subject;
 
   /// Creates a new [UserPoolEmailMfaConfiguration].
   /// [message] The template for the email messages that your user pool sends to users with codes for MFA and sign-in with email OTPs. The message must contain the {####} placeholder. In the message, Amazon Cognito replaces this placeholder with the code. If you don't provide this parameter, Amazon Cognito sends messages in the default format.
@@ -24,8 +25,8 @@ class UserPoolEmailMfaConfiguration {
 
   factory UserPoolEmailMfaConfiguration.fromMap(Map<String, dynamic> map) {
     return UserPoolEmailMfaConfiguration(
-      message: map['message'] == null ? null : map['message'] as String,
-      subject: map['subject'] == null ? null : map['subject'] as String,
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
     );
   }
 }

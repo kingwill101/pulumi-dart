@@ -34,23 +34,15 @@ class NetworkDeviceArgs {
   /// [serialNumber] Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
   /// [tags] Resource tags.
   NetworkDeviceArgs({
-    pulumi.Output<String>? annotation,
-    pulumi.Output<String>? hostName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? networkDeviceName,
-    pulumi.Output<String>? networkDeviceSku,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serialNumber,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      hostName = pulumi.Input.asOptionalInput<String>(hostName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkDeviceName = pulumi.Input.asOptionalInput<String>(networkDeviceName),
-      networkDeviceSku = pulumi.Input.asOptionalInput<String>(networkDeviceSku),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serialNumber = pulumi.Input.asInput<String>(serialNumber),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.annotation,
+    this.hostName,
+    this.location,
+    this.networkDeviceName,
+    this.networkDeviceSku,
+    required this.resourceGroupName,
+    required this.serialNumber,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class NetworkDeviceArgs {
 
   factory NetworkDeviceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkDeviceArgs(
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      hostName: map['hostName'] == null ? null : pulumi.Output.create<String>(map['hostName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkDeviceName: map['networkDeviceName'] == null ? null : pulumi.Output.create<String>(map['networkDeviceName'] as String),
-      networkDeviceSku: map['networkDeviceSku'] == null ? null : pulumi.Output.create<String>(map['networkDeviceSku'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serialNumber: pulumi.Output.create<String>(map['serialNumber'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkDeviceName: map['networkDeviceName'] == null ? null : (map['networkDeviceName'] as String).input(),
+      networkDeviceSku: map['networkDeviceSku'] == null ? null : (map['networkDeviceSku'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serialNumber: (map['serialNumber'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

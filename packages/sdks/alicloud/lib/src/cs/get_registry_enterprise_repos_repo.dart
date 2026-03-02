@@ -5,19 +5,19 @@ import 'get_registry_enterprise_repos_repo_tag.dart';
 
 class GetRegistryEnterpriseReposRepo {
   /// The ID of the Repository.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the Container Registry instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The name of the Repository.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the namespace to which the Repository belongs.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// The type of the Repository.
-  final String repoType;
+  final pulumi.Input<String> repoType;
   /// The summary of the Repository.
-  final String summary;
+  final pulumi.Input<String> summary;
   /// A list of image tags belong to this Repository. **Note:** `tags` takes effect only if `enable_details` is set to `true`.
-  final List<GetRegistryEnterpriseReposRepoTag> tags;
+  final pulumi.Input<List<GetRegistryEnterpriseReposRepoTag>> tags;
 
   /// Creates a new [GetRegistryEnterpriseReposRepo].
   /// [id] The ID of the Repository.
@@ -45,19 +45,19 @@ class GetRegistryEnterpriseReposRepo {
       'namespace': namespace,
       'repoType': repoType,
       'summary': summary,
-      'tags': pulumi.Input.encodeList<GetRegistryEnterpriseReposRepoTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
+      'tags': pulumi.Input.mapInputValue<List<GetRegistryEnterpriseReposRepoTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<GetRegistryEnterpriseReposRepoTag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRegistryEnterpriseReposRepo.fromMap(Map<String, dynamic> map) {
     return GetRegistryEnterpriseReposRepo(
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      name: map['name'] as String,
-      namespace: map['namespace'] as String,
-      repoType: map['repoType'] as String,
-      summary: map['summary'] as String,
-      tags: pulumi.Input.decodeList<GetRegistryEnterpriseReposRepoTag>(map['tags'], (value) => GetRegistryEnterpriseReposRepoTag.fromMap((value as Map).cast<String, dynamic>())),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      name: (map['name'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      repoType: (map['repoType'] as String).input(),
+      summary: (map['summary'] as String).input(),
+      tags: (pulumi.Input.decodeList<GetRegistryEnterpriseReposRepoTag>(map['tags'], (value) => GetRegistryEnterpriseReposRepoTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The UiConfig for 'Customizable' connector definition kind.
 class CustomizableConnectionsConfig {
   /// Gets or sets the template name. The template includes ARM templates that can be created by the connector, usually it will be the dataConnectors ARM templates.
-  final String templateSpecName;
+  final pulumi.Input<String> templateSpecName;
   /// Gets or sets the template version.
-  final String templateSpecVersion;
+  final pulumi.Input<String> templateSpecVersion;
 
   /// Creates a new [CustomizableConnectionsConfig].
   /// [templateSpecName] Gets or sets the template name. The template includes ARM templates that can be created by the connector, usually it will be the dataConnectors ARM templates.
@@ -25,8 +26,8 @@ class CustomizableConnectionsConfig {
 
   factory CustomizableConnectionsConfig.fromMap(Map<String, dynamic> map) {
     return CustomizableConnectionsConfig(
-      templateSpecName: map['templateSpecName'] as String,
-      templateSpecVersion: map['templateSpecVersion'] as String,
+      templateSpecName: (map['templateSpecName'] as String).input(),
+      templateSpecVersion: (map['templateSpecVersion'] as String).input(),
     );
   }
 }

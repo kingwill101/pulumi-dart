@@ -26,19 +26,13 @@ class EvaluationArgs {
   /// [name] The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
   /// [project] Optional.
   EvaluationArgs({
-    required pulumi.Output<String> conversationModelId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GoogleCloudDialogflowV2EvaluationConfig>? evaluationConfig,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      conversationModelId = pulumi.Input.asInput<String>(conversationModelId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      evaluationConfig = pulumi.Input.asOptionalInput<GoogleCloudDialogflowV2EvaluationConfig>(evaluationConfig),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.conversationModelId,
+    this.displayName,
+    this.evaluationConfig,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class EvaluationArgs {
 
   factory EvaluationArgs.fromMap(Map<String, dynamic> map) {
     return EvaluationArgs(
-      conversationModelId: pulumi.Output.create<String>(map['conversationModelId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      evaluationConfig: map['evaluationConfig'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowV2EvaluationConfig>(GoogleCloudDialogflowV2EvaluationConfig.fromMap((map['evaluationConfig'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      conversationModelId: (map['conversationModelId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      evaluationConfig: map['evaluationConfig'] == null ? null : (GoogleCloudDialogflowV2EvaluationConfig.fromMap((map['evaluationConfig'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

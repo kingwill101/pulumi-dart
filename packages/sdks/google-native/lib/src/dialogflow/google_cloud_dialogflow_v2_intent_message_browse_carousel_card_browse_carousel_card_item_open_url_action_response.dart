@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Actions on Google action to open a given url.
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse {
   /// URL
-  final String url;
+  final pulumi.Input<String> url;
   /// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-  final String urlTypeHint;
+  final pulumi.Input<String> urlTypeHint;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse].
   /// [url] URL
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
 
   factory GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse(
-      url: map['url'] as String,
-      urlTypeHint: map['urlTypeHint'] as String,
+      url: (map['url'] as String).input(),
+      urlTypeHint: (map['urlTypeHint'] as String).input(),
     );
   }
 }

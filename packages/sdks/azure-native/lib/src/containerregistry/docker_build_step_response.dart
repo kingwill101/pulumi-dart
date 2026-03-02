@@ -7,26 +7,26 @@ import 'base_image_dependency_response.dart';
 /// The Docker build step.
 class DockerBuildStepResponse {
   /// The collection of override arguments to be used when executing this build step.
-  final List<ArgumentResponse>? arguments;
+  final pulumi.Input<List<ArgumentResponse>>? arguments;
   /// List of base image dependencies for a step.
-  final List<BaseImageDependencyResponse> baseImageDependencies;
+  final pulumi.Input<List<BaseImageDependencyResponse>> baseImageDependencies;
   /// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
-  final String? contextAccessToken;
+  final pulumi.Input<String>? contextAccessToken;
   /// The URL(absolute or relative) of the source context for the task step.
-  final String? contextPath;
+  final pulumi.Input<String>? contextPath;
   /// The Docker file path relative to the source context.
-  final String dockerFilePath;
+  final pulumi.Input<String> dockerFilePath;
   /// The fully qualified image names including the repository and tag.
-  final List<String>? imageNames;
+  final pulumi.Input<List<String>>? imageNames;
   /// The value of this property indicates whether the image built should be pushed to the registry or not.
-  final bool? isPushEnabled;
+  final pulumi.Input<bool>? isPushEnabled;
   /// The value of this property indicates whether the image cache is enabled or not.
-  final bool? noCache;
+  final pulumi.Input<bool>? noCache;
   /// The name of the target build stage for the docker build.
-  final String? target;
+  final pulumi.Input<String>? target;
   /// The type of the step.
   /// Expected value is 'Docker'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DockerBuildStepResponse].
   /// [arguments] The collection of override arguments to be used when executing this build step.
@@ -54,8 +54,8 @@ class DockerBuildStepResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arguments': ?arguments == null ? null : pulumi.Input.encodeList<ArgumentResponse, Map<String, dynamic>>(arguments!, (value) => value.toMap()),
-      'baseImageDependencies': pulumi.Input.encodeList<BaseImageDependencyResponse, Map<String, dynamic>>(baseImageDependencies, (value) => value.toMap()),
+      'arguments': ?pulumi.Input.mapOptionalInputValue<List<ArgumentResponse>, List<Map<String, dynamic>>>(arguments, (value) => pulumi.Input.encodeList<ArgumentResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'baseImageDependencies': pulumi.Input.mapInputValue<List<BaseImageDependencyResponse>, List<Map<String, dynamic>>>(baseImageDependencies, (value) => pulumi.Input.encodeList<BaseImageDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'contextAccessToken': ?contextAccessToken,
       'contextPath': ?contextPath,
       'dockerFilePath': dockerFilePath,
@@ -69,16 +69,16 @@ class DockerBuildStepResponse {
 
   factory DockerBuildStepResponse.fromMap(Map<String, dynamic> map) {
     return DockerBuildStepResponse(
-      arguments: map['arguments'] == null ? null : pulumi.Input.decodeList<ArgumentResponse>(map['arguments'], (value) => ArgumentResponse.fromMap((value as Map).cast<String, dynamic>())),
-      baseImageDependencies: pulumi.Input.decodeList<BaseImageDependencyResponse>(map['baseImageDependencies'], (value) => BaseImageDependencyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      contextAccessToken: map['contextAccessToken'] == null ? null : map['contextAccessToken'] as String,
-      contextPath: map['contextPath'] == null ? null : map['contextPath'] as String,
-      dockerFilePath: map['dockerFilePath'] as String,
-      imageNames: map['imageNames'] == null ? null : (map['imageNames'] as List).cast<String>(),
-      isPushEnabled: map['isPushEnabled'] == null ? null : map['isPushEnabled'] as bool,
-      noCache: map['noCache'] == null ? null : map['noCache'] as bool,
-      target: map['target'] == null ? null : map['target'] as String,
-      type: map['type'] as String,
+      arguments: map['arguments'] == null ? null : (pulumi.Input.decodeList<ArgumentResponse>(map['arguments'], (value) => ArgumentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      baseImageDependencies: (pulumi.Input.decodeList<BaseImageDependencyResponse>(map['baseImageDependencies'], (value) => BaseImageDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken'] as String).input(),
+      contextPath: map['contextPath'] == null ? null : (map['contextPath'] as String).input(),
+      dockerFilePath: (map['dockerFilePath'] as String).input(),
+      imageNames: map['imageNames'] == null ? null : ((map['imageNames'] as List).cast<String>()).input(),
+      isPushEnabled: map['isPushEnabled'] == null ? null : (map['isPushEnabled'] as bool).input(),
+      noCache: map['noCache'] == null ? null : (map['noCache'] as bool).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

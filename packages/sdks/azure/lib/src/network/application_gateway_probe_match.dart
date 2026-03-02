@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayProbeMatch {
   /// A snippet from the Response Body which must be present in the Response.
-  final String? body;
+  final pulumi.Input<String>? body;
   /// A list of allowed status codes for this Health Probe.
-  final List<String> statusCodes;
+  final pulumi.Input<List<String>> statusCodes;
 
   /// Creates a new [ApplicationGatewayProbeMatch].
   /// [body] A snippet from the Response Body which must be present in the Response.
@@ -24,8 +25,8 @@ class ApplicationGatewayProbeMatch {
 
   factory ApplicationGatewayProbeMatch.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayProbeMatch(
-      body: map['body'] == null ? null : map['body'] as String,
-      statusCodes: (map['statusCodes'] as List).cast<String>(),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      statusCodes: ((map['statusCodes'] as List).cast<String>()).input(),
     );
   }
 }

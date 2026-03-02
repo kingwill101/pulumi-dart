@@ -31,23 +31,15 @@ class RuntimeEnvironmentState {
   /// [runtimeVersion] The version of the runtime environment. Changing this forces a new Automation Runtime Environment to be created.
   /// [tags] A mapping of tags which should be assigned to the Automation Runtime Environment.
   RuntimeEnvironmentState({
-    pulumi.Output<String>? automationAccountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? runtimeDefaultPackages,
-    pulumi.Output<String>? runtimeLanguage,
-    pulumi.Output<String>? runtimeVersion,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      automationAccountId = pulumi.Input.asOptionalInput<String>(automationAccountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      runtimeDefaultPackages = pulumi.Input.asOptionalInput<Map<String, String>>(runtimeDefaultPackages),
-      runtimeLanguage = pulumi.Input.asOptionalInput<String>(runtimeLanguage),
-      runtimeVersion = pulumi.Input.asOptionalInput<String>(runtimeVersion),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.automationAccountId,
+    this.description,
+    this.location,
+    this.name,
+    this.runtimeDefaultPackages,
+    this.runtimeLanguage,
+    this.runtimeVersion,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class RuntimeEnvironmentState {
 
   factory RuntimeEnvironmentState.fromMap(Map<String, dynamic> map) {
     return RuntimeEnvironmentState(
-      automationAccountId: map['automationAccountId'] == null ? null : pulumi.Output.create<String>(map['automationAccountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      runtimeDefaultPackages: map['runtimeDefaultPackages'] == null ? null : pulumi.Output.create<Map<String, String>>((map['runtimeDefaultPackages'] as Map).cast<String, String>()),
-      runtimeLanguage: map['runtimeLanguage'] == null ? null : pulumi.Output.create<String>(map['runtimeLanguage'] as String),
-      runtimeVersion: map['runtimeVersion'] == null ? null : pulumi.Output.create<String>(map['runtimeVersion'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      automationAccountId: map['automationAccountId'] == null ? null : (map['automationAccountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      runtimeDefaultPackages: map['runtimeDefaultPackages'] == null ? null : ((map['runtimeDefaultPackages'] as Map).cast<String, String>()).input(),
+      runtimeLanguage: map['runtimeLanguage'] == null ? null : (map['runtimeLanguage'] as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

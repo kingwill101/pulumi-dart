@@ -7,10 +7,10 @@ import 'stream_rule_set_object_filter.dart';
 class StreamRuleSet {
   /// List of customization rules to apply.
   /// Structure is documented below.
-  final List<StreamRuleSetCustomizationRule> customizationRules;
+  final pulumi.Input<List<StreamRuleSetCustomizationRule>> customizationRules;
   /// Object filter to apply the customization rules to.
   /// Structure is documented below.
-  final StreamRuleSetObjectFilter objectFilter;
+  final pulumi.Input<StreamRuleSetObjectFilter> objectFilter;
 
   /// Creates a new [StreamRuleSet].
   /// [customizationRules] List of customization rules to apply.
@@ -22,15 +22,15 @@ class StreamRuleSet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customizationRules': pulumi.Input.encodeList<StreamRuleSetCustomizationRule, Map<String, dynamic>>(customizationRules, (value) => value.toMap()),
-      'objectFilter': objectFilter.toMap(),
+      'customizationRules': pulumi.Input.mapInputValue<List<StreamRuleSetCustomizationRule>, List<Map<String, dynamic>>>(customizationRules, (value) => pulumi.Input.encodeList<StreamRuleSetCustomizationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'objectFilter': pulumi.Input.mapInputValue<StreamRuleSetObjectFilter, Map<String, dynamic>>(objectFilter, (value) => value.toMap()),
     };
   }
 
   factory StreamRuleSet.fromMap(Map<String, dynamic> map) {
     return StreamRuleSet(
-      customizationRules: pulumi.Input.decodeList<StreamRuleSetCustomizationRule>(map['customizationRules'], (value) => StreamRuleSetCustomizationRule.fromMap((value as Map).cast<String, dynamic>())),
-      objectFilter: StreamRuleSetObjectFilter.fromMap((map['objectFilter'] as Map).cast<String, dynamic>()),
+      customizationRules: (pulumi.Input.decodeList<StreamRuleSetCustomizationRule>(map['customizationRules'], (value) => StreamRuleSetCustomizationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      objectFilter: (StreamRuleSetObjectFilter.fromMap((map['objectFilter'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

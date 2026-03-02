@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AkriConnectorsImagePullSecret properties.
 class AkriConnectorsImagePullSecretResponse {
   /// The name of the image pull secret.
-  final String secretRef;
+  final pulumi.Input<String> secretRef;
 
   /// Creates a new [AkriConnectorsImagePullSecretResponse].
   /// [secretRef] The name of the image pull secret.
@@ -20,7 +21,7 @@ class AkriConnectorsImagePullSecretResponse {
 
   factory AkriConnectorsImagePullSecretResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorsImagePullSecretResponse(
-      secretRef: map['secretRef'] as String,
+      secretRef: (map['secretRef'] as String).input(),
     );
   }
 }

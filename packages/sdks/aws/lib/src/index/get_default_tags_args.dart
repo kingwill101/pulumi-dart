@@ -12,9 +12,8 @@ class GetDefaultTagsArgs {
   /// Creates a new [GetDefaultTagsArgs].
   /// [id] Optional.
   GetDefaultTagsArgs({
-    pulumi.Output<String>? id,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id);
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetDefaultTagsArgs {
 
   factory GetDefaultTagsArgs.fromMap(Map<String, dynamic> map) {
     return GetDefaultTagsArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

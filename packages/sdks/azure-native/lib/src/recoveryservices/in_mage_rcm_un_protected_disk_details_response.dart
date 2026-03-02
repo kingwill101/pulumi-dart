@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InMageRcm un-protected disk details.
 class InMageRcmUnProtectedDiskDetailsResponse {
   /// The disk capacity in bytes.
-  final double capacityInBytes;
+  final pulumi.Input<double> capacityInBytes;
   /// The disk Id.
-  final String diskId;
+  final pulumi.Input<String> diskId;
   /// The disk name.
-  final String diskName;
+  final pulumi.Input<String> diskName;
 
   /// Creates a new [InMageRcmUnProtectedDiskDetailsResponse].
   /// [capacityInBytes] The disk capacity in bytes.
@@ -30,9 +31,9 @@ class InMageRcmUnProtectedDiskDetailsResponse {
 
   factory InMageRcmUnProtectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmUnProtectedDiskDetailsResponse(
-      capacityInBytes: map['capacityInBytes'] as double,
-      diskId: map['diskId'] as String,
-      diskName: map['diskName'] as String,
+      capacityInBytes: (map['capacityInBytes'] as double).input(),
+      diskId: (map['diskId'] as String).input(),
+      diskName: (map['diskName'] as String).input(),
     );
   }
 }

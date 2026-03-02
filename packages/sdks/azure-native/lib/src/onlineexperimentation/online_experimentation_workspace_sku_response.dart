@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SKU (Stock Keeping Unit) assigned to this resource.
 class OnlineExperimentationWorkspaceSkuResponse {
   /// The name of the SKU. Ex - F0, P0. It is typically a letter+number code
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the SKU tier
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [OnlineExperimentationWorkspaceSkuResponse].
   /// [name] The name of the SKU. Ex - F0, P0. It is typically a letter+number code
@@ -25,8 +26,8 @@ class OnlineExperimentationWorkspaceSkuResponse {
 
   factory OnlineExperimentationWorkspaceSkuResponse.fromMap(Map<String, dynamic> map) {
     return OnlineExperimentationWorkspaceSkuResponse(
-      name: map['name'] as String,
-      tier: map['tier'] as String,
+      name: (map['name'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Event Hub ingestion endpoint configuration
 class IotEventHubIngestionEndpointConfiguration {
   /// Consumer group of the event hub to connected to.
-  final String? consumerGroup;
+  final pulumi.Input<String>? consumerGroup;
   /// Event Hub name to connect to.
-  final String? eventHubName;
+  final pulumi.Input<String>? eventHubName;
   /// Fully qualified namespace of the Event Hub to connect to.
-  final String? fullyQualifiedEventHubNamespace;
+  final pulumi.Input<String>? fullyQualifiedEventHubNamespace;
 
   /// Creates a new [IotEventHubIngestionEndpointConfiguration].
   /// [consumerGroup] Consumer group of the event hub to connected to.
@@ -30,9 +31,9 @@ class IotEventHubIngestionEndpointConfiguration {
 
   factory IotEventHubIngestionEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return IotEventHubIngestionEndpointConfiguration(
-      consumerGroup: map['consumerGroup'] == null ? null : map['consumerGroup'] as String,
-      eventHubName: map['eventHubName'] == null ? null : map['eventHubName'] as String,
-      fullyQualifiedEventHubNamespace: map['fullyQualifiedEventHubNamespace'] == null ? null : map['fullyQualifiedEventHubNamespace'] as String,
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
+      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName'] as String).input(),
+      fullyQualifiedEventHubNamespace: map['fullyQualifiedEventHubNamespace'] == null ? null : (map['fullyQualifiedEventHubNamespace'] as String).input(),
     );
   }
 }

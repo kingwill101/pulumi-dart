@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes an Event Hub output data source.
 class EventHubV2OutputDataSourceResponse {
   /// Authentication Mode.
-  final String? authenticationMode;
+  final pulumi.Input<String>? authenticationMode;
   /// The name of the Event Hub. Required on PUT (CreateOrReplace) requests.
-  final String? eventHubName;
+  final pulumi.Input<String>? eventHubName;
   /// The key/column that is used to determine to which partition to send event data.
-  final String? partitionKey;
+  final pulumi.Input<String>? partitionKey;
   /// The properties associated with this Event Hub output.
-  final List<String>? propertyColumns;
+  final pulumi.Input<List<String>>? propertyColumns;
   /// The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
-  final String? serviceBusNamespace;
+  final pulumi.Input<String>? serviceBusNamespace;
   /// The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
-  final String? sharedAccessPolicyKey;
+  final pulumi.Input<String>? sharedAccessPolicyKey;
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
-  final String? sharedAccessPolicyName;
+  final pulumi.Input<String>? sharedAccessPolicyName;
   /// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Microsoft.EventHub/EventHub'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [EventHubV2OutputDataSourceResponse].
   /// [authenticationMode] Authentication Mode.
@@ -56,14 +57,14 @@ class EventHubV2OutputDataSourceResponse {
 
   factory EventHubV2OutputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return EventHubV2OutputDataSourceResponse(
-      authenticationMode: map['authenticationMode'] == null ? null : map['authenticationMode'] as String,
-      eventHubName: map['eventHubName'] == null ? null : map['eventHubName'] as String,
-      partitionKey: map['partitionKey'] == null ? null : map['partitionKey'] as String,
-      propertyColumns: map['propertyColumns'] == null ? null : (map['propertyColumns'] as List).cast<String>(),
-      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : map['serviceBusNamespace'] as String,
-      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : map['sharedAccessPolicyKey'] as String,
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : map['sharedAccessPolicyName'] as String,
-      type: map['type'] as String,
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName'] as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
+      propertyColumns: map['propertyColumns'] == null ? null : ((map['propertyColumns'] as List).cast<String>()).input(),
+      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : (map['serviceBusNamespace'] as String).input(),
+      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey'] as String).input(),
+      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

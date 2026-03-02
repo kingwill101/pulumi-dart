@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConnection {
   /// A list of address prefixes for P2S VPN Client.
-  final List<String> addressPrefixes;
+  final pulumi.Input<List<String>> addressPrefixes;
   /// The name of the Virtual Network Gateway Client Connection.
-  final String name;
+  final pulumi.Input<String> name;
   /// A list of names of Virtual Network Gateway Policy Groups.
-  final List<String> policyGroupNames;
+  final pulumi.Input<List<String>> policyGroupNames;
 
   /// Creates a new [VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConnection].
   /// [addressPrefixes] A list of address prefixes for P2S VPN Client.
@@ -29,9 +30,9 @@ class VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConn
 
   factory VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConnection.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConnection(
-      addressPrefixes: (map['addressPrefixes'] as List).cast<String>(),
-      name: map['name'] as String,
-      policyGroupNames: (map['policyGroupNames'] as List).cast<String>(),
+      addressPrefixes: ((map['addressPrefixes'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      policyGroupNames: ((map['policyGroupNames'] as List).cast<String>()).input(),
     );
   }
 }

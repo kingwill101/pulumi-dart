@@ -52,35 +52,21 @@ class InstanceArgs {
   /// [udCbool] Whether to use OSS. Valid values: `yes`,`no`.
   /// [udc] OSS Size.
   InstanceArgs({
-    pulumi.Output<String>? dataphin,
-    pulumi.Output<String>? dataphinCount,
-    pulumi.Output<String>? logistics,
-    pulumi.Output<String>? modifyType,
-    pulumi.Output<String>? ossSize,
-    required pulumi.Output<String> paymentType,
-    required pulumi.Output<int> period,
-    pulumi.Output<int>? renewPeriod,
-    pulumi.Output<String>? renewalStatus,
-    required pulumi.Output<String> sdCbool,
-    required pulumi.Output<String> sdc,
-    required pulumi.Output<String> sddpVersion,
-    required pulumi.Output<String> udCbool,
-    required pulumi.Output<String> udc,
-  }) :
-      dataphin = pulumi.Input.asOptionalInput<String>(dataphin),
-      dataphinCount = pulumi.Input.asOptionalInput<String>(dataphinCount),
-      logistics = pulumi.Input.asOptionalInput<String>(logistics),
-      modifyType = pulumi.Input.asOptionalInput<String>(modifyType),
-      ossSize = pulumi.Input.asOptionalInput<String>(ossSize),
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      period = pulumi.Input.asInput<int>(period),
-      renewPeriod = pulumi.Input.asOptionalInput<int>(renewPeriod),
-      renewalStatus = pulumi.Input.asOptionalInput<String>(renewalStatus),
-      sdCbool = pulumi.Input.asInput<String>(sdCbool),
-      sdc = pulumi.Input.asInput<String>(sdc),
-      sddpVersion = pulumi.Input.asInput<String>(sddpVersion),
-      udCbool = pulumi.Input.asInput<String>(udCbool),
-      udc = pulumi.Input.asInput<String>(udc);
+    this.dataphin,
+    this.dataphinCount,
+    this.logistics,
+    this.modifyType,
+    this.ossSize,
+    required this.paymentType,
+    required this.period,
+    this.renewPeriod,
+    this.renewalStatus,
+    required this.sdCbool,
+    required this.sdc,
+    required this.sddpVersion,
+    required this.udCbool,
+    required this.udc,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      dataphin: map['dataphin'] == null ? null : pulumi.Output.create<String>(map['dataphin'] as String),
-      dataphinCount: map['dataphinCount'] == null ? null : pulumi.Output.create<String>(map['dataphinCount'] as String),
-      logistics: map['logistics'] == null ? null : pulumi.Output.create<String>(map['logistics'] as String),
-      modifyType: map['modifyType'] == null ? null : pulumi.Output.create<String>(map['modifyType'] as String),
-      ossSize: map['ossSize'] == null ? null : pulumi.Output.create<String>(map['ossSize'] as String),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      period: pulumi.Output.create<int>(map['period'] as int),
-      renewPeriod: map['renewPeriod'] == null ? null : pulumi.Output.create<int>(map['renewPeriod'] as int),
-      renewalStatus: map['renewalStatus'] == null ? null : pulumi.Output.create<String>(map['renewalStatus'] as String),
-      sdCbool: pulumi.Output.create<String>(map['sdCbool'] as String),
-      sdc: pulumi.Output.create<String>(map['sdc'] as String),
-      sddpVersion: pulumi.Output.create<String>(map['sddpVersion'] as String),
-      udCbool: pulumi.Output.create<String>(map['udCbool'] as String),
-      udc: pulumi.Output.create<String>(map['udc'] as String),
+      dataphin: map['dataphin'] == null ? null : (map['dataphin'] as String).input(),
+      dataphinCount: map['dataphinCount'] == null ? null : (map['dataphinCount'] as String).input(),
+      logistics: map['logistics'] == null ? null : (map['logistics'] as String).input(),
+      modifyType: map['modifyType'] == null ? null : (map['modifyType'] as String).input(),
+      ossSize: map['ossSize'] == null ? null : (map['ossSize'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      period: (map['period'] as int).input(),
+      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod'] as int).input(),
+      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus'] as String).input(),
+      sdCbool: (map['sdCbool'] as String).input(),
+      sdc: (map['sdc'] as String).input(),
+      sddpVersion: (map['sddpVersion'] as String).input(),
+      udCbool: (map['udCbool'] as String).input(),
+      udc: (map['udc'] as String).input(),
     );
   }
 }

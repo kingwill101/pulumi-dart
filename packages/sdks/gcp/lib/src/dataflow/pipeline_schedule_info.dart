@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineScheduleInfo {
   /// (Output)
   /// When the next Scheduler job is going to run.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final String? nextJobTime;
+  final pulumi.Input<String>? nextJobTime;
   /// Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
-  final String? schedule;
+  final pulumi.Input<String>? schedule;
   /// Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [PipelineScheduleInfo].
   /// [nextJobTime] (Output)
@@ -31,9 +32,9 @@ class PipelineScheduleInfo {
 
   factory PipelineScheduleInfo.fromMap(Map<String, dynamic> map) {
     return PipelineScheduleInfo(
-      nextJobTime: map['nextJobTime'] == null ? null : map['nextJobTime'] as String,
-      schedule: map['schedule'] == null ? null : map['schedule'] as String,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      nextJobTime: map['nextJobTime'] == null ? null : (map['nextJobTime'] as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

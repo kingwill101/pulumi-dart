@@ -8,13 +8,13 @@ import 'deployment_web_application_firewall_status_threat_campaigns_package.dart
 
 class DeploymentWebApplicationFirewallStatus {
   /// One or more `attack_signatures_package` blocks as defined below.
-  final List<DeploymentWebApplicationFirewallStatusAttackSignaturesPackage>? attackSignaturesPackages;
+  final pulumi.Input<List<DeploymentWebApplicationFirewallStatusAttackSignaturesPackage>>? attackSignaturesPackages;
   /// One or more `bot_signatures_package` blocks as defined below.
-  final List<DeploymentWebApplicationFirewallStatusBotSignaturesPackage>? botSignaturesPackages;
+  final pulumi.Input<List<DeploymentWebApplicationFirewallStatusBotSignaturesPackage>>? botSignaturesPackages;
   /// One or more `component_versions` blocks as defined below.
-  final List<DeploymentWebApplicationFirewallStatusComponentVersion>? componentVersions;
+  final pulumi.Input<List<DeploymentWebApplicationFirewallStatusComponentVersion>>? componentVersions;
   /// One or more `threat_campaigns_package` blocks as defined below.
-  final List<DeploymentWebApplicationFirewallStatusThreatCampaignsPackage>? threatCampaignsPackages;
+  final pulumi.Input<List<DeploymentWebApplicationFirewallStatusThreatCampaignsPackage>>? threatCampaignsPackages;
 
   /// Creates a new [DeploymentWebApplicationFirewallStatus].
   /// [attackSignaturesPackages] One or more `attack_signatures_package` blocks as defined below.
@@ -30,19 +30,19 @@ class DeploymentWebApplicationFirewallStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attackSignaturesPackages': ?attackSignaturesPackages == null ? null : pulumi.Input.encodeList<DeploymentWebApplicationFirewallStatusAttackSignaturesPackage, Map<String, dynamic>>(attackSignaturesPackages!, (value) => value.toMap()),
-      'botSignaturesPackages': ?botSignaturesPackages == null ? null : pulumi.Input.encodeList<DeploymentWebApplicationFirewallStatusBotSignaturesPackage, Map<String, dynamic>>(botSignaturesPackages!, (value) => value.toMap()),
-      'componentVersions': ?componentVersions == null ? null : pulumi.Input.encodeList<DeploymentWebApplicationFirewallStatusComponentVersion, Map<String, dynamic>>(componentVersions!, (value) => value.toMap()),
-      'threatCampaignsPackages': ?threatCampaignsPackages == null ? null : pulumi.Input.encodeList<DeploymentWebApplicationFirewallStatusThreatCampaignsPackage, Map<String, dynamic>>(threatCampaignsPackages!, (value) => value.toMap()),
+      'attackSignaturesPackages': ?pulumi.Input.mapOptionalInputValue<List<DeploymentWebApplicationFirewallStatusAttackSignaturesPackage>, List<Map<String, dynamic>>>(attackSignaturesPackages, (value) => pulumi.Input.encodeList<DeploymentWebApplicationFirewallStatusAttackSignaturesPackage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'botSignaturesPackages': ?pulumi.Input.mapOptionalInputValue<List<DeploymentWebApplicationFirewallStatusBotSignaturesPackage>, List<Map<String, dynamic>>>(botSignaturesPackages, (value) => pulumi.Input.encodeList<DeploymentWebApplicationFirewallStatusBotSignaturesPackage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'componentVersions': ?pulumi.Input.mapOptionalInputValue<List<DeploymentWebApplicationFirewallStatusComponentVersion>, List<Map<String, dynamic>>>(componentVersions, (value) => pulumi.Input.encodeList<DeploymentWebApplicationFirewallStatusComponentVersion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'threatCampaignsPackages': ?pulumi.Input.mapOptionalInputValue<List<DeploymentWebApplicationFirewallStatusThreatCampaignsPackage>, List<Map<String, dynamic>>>(threatCampaignsPackages, (value) => pulumi.Input.encodeList<DeploymentWebApplicationFirewallStatusThreatCampaignsPackage, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DeploymentWebApplicationFirewallStatus.fromMap(Map<String, dynamic> map) {
     return DeploymentWebApplicationFirewallStatus(
-      attackSignaturesPackages: map['attackSignaturesPackages'] == null ? null : pulumi.Input.decodeList<DeploymentWebApplicationFirewallStatusAttackSignaturesPackage>(map['attackSignaturesPackages'], (value) => DeploymentWebApplicationFirewallStatusAttackSignaturesPackage.fromMap((value as Map).cast<String, dynamic>())),
-      botSignaturesPackages: map['botSignaturesPackages'] == null ? null : pulumi.Input.decodeList<DeploymentWebApplicationFirewallStatusBotSignaturesPackage>(map['botSignaturesPackages'], (value) => DeploymentWebApplicationFirewallStatusBotSignaturesPackage.fromMap((value as Map).cast<String, dynamic>())),
-      componentVersions: map['componentVersions'] == null ? null : pulumi.Input.decodeList<DeploymentWebApplicationFirewallStatusComponentVersion>(map['componentVersions'], (value) => DeploymentWebApplicationFirewallStatusComponentVersion.fromMap((value as Map).cast<String, dynamic>())),
-      threatCampaignsPackages: map['threatCampaignsPackages'] == null ? null : pulumi.Input.decodeList<DeploymentWebApplicationFirewallStatusThreatCampaignsPackage>(map['threatCampaignsPackages'], (value) => DeploymentWebApplicationFirewallStatusThreatCampaignsPackage.fromMap((value as Map).cast<String, dynamic>())),
+      attackSignaturesPackages: map['attackSignaturesPackages'] == null ? null : (pulumi.Input.decodeList<DeploymentWebApplicationFirewallStatusAttackSignaturesPackage>(map['attackSignaturesPackages'], (value) => DeploymentWebApplicationFirewallStatusAttackSignaturesPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      botSignaturesPackages: map['botSignaturesPackages'] == null ? null : (pulumi.Input.decodeList<DeploymentWebApplicationFirewallStatusBotSignaturesPackage>(map['botSignaturesPackages'], (value) => DeploymentWebApplicationFirewallStatusBotSignaturesPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      componentVersions: map['componentVersions'] == null ? null : (pulumi.Input.decodeList<DeploymentWebApplicationFirewallStatusComponentVersion>(map['componentVersions'], (value) => DeploymentWebApplicationFirewallStatusComponentVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      threatCampaignsPackages: map['threatCampaignsPackages'] == null ? null : (pulumi.Input.decodeList<DeploymentWebApplicationFirewallStatusThreatCampaignsPackage>(map['threatCampaignsPackages'], (value) => DeploymentWebApplicationFirewallStatusThreatCampaignsPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

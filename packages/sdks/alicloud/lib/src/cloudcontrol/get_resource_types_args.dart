@@ -19,13 +19,10 @@ class GetResourceTypesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [product] Product Code.
   GetResourceTypesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> product,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      product = pulumi.Input.asInput<String>(product);
+    this.ids,
+    this.outputFile,
+    required this.product,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetResourceTypesArgs {
 
   factory GetResourceTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceTypesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      product: pulumi.Output.create<String>(map['product'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      product: (map['product'] as String).input(),
     );
   }
 }

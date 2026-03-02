@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountAzureFilesAuthenticationActiveDirectory {
   /// The domain GUID.
-  final String domainGuid;
+  final pulumi.Input<String> domainGuid;
   /// The primary domain that the AD DNS server is authoritative for.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The domain security identifier.
-  final String domainSid;
+  final pulumi.Input<String> domainSid;
   /// The name of the Active Directory forest.
-  final String forestName;
+  final pulumi.Input<String> forestName;
   /// The NetBIOS domain name.
-  final String netbiosDomainName;
+  final pulumi.Input<String> netbiosDomainName;
   /// The security identifier for Azure Storage.
-  final String storageSid;
+  final pulumi.Input<String> storageSid;
 
   /// Creates a new [GetAccountAzureFilesAuthenticationActiveDirectory].
   /// [domainGuid] The domain GUID.
@@ -44,12 +45,12 @@ class GetAccountAzureFilesAuthenticationActiveDirectory {
 
   factory GetAccountAzureFilesAuthenticationActiveDirectory.fromMap(Map<String, dynamic> map) {
     return GetAccountAzureFilesAuthenticationActiveDirectory(
-      domainGuid: map['domainGuid'] as String,
-      domainName: map['domainName'] as String,
-      domainSid: map['domainSid'] as String,
-      forestName: map['forestName'] as String,
-      netbiosDomainName: map['netbiosDomainName'] as String,
-      storageSid: map['storageSid'] as String,
+      domainGuid: (map['domainGuid'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      domainSid: (map['domainSid'] as String).input(),
+      forestName: (map['forestName'] as String).input(),
+      netbiosDomainName: (map['netbiosDomainName'] as String).input(),
+      storageSid: (map['storageSid'] as String).input(),
     );
   }
 }

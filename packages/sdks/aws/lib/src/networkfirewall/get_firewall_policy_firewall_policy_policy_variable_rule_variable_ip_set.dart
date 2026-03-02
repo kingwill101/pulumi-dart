@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariableIpSet {
-  final List<String> definitions;
+  final pulumi.Input<List<String>> definitions;
 
   /// Creates a new [GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariableIpSet].
   /// [definitions] Required.
@@ -18,7 +19,7 @@ class GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariableIpSet {
 
   factory GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariableIpSet.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariableIpSet(
-      definitions: (map['definitions'] as List).cast<String>(),
+      definitions: ((map['definitions'] as List).cast<String>()).input(),
     );
   }
 }

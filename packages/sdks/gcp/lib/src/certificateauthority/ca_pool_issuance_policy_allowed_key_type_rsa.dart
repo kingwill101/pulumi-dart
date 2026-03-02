@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CaPoolIssuancePolicyAllowedKeyTypeRsa {
   /// The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
   /// service will not enforce an explicit upper bound on RSA modulus sizes.
-  final String? maxModulusSize;
+  final pulumi.Input<String>? maxModulusSize;
   /// The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
   /// service-level min RSA modulus size will continue to apply.
-  final String? minModulusSize;
+  final pulumi.Input<String>? minModulusSize;
 
   /// Creates a new [CaPoolIssuancePolicyAllowedKeyTypeRsa].
   /// [maxModulusSize] The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
@@ -26,8 +27,8 @@ class CaPoolIssuancePolicyAllowedKeyTypeRsa {
 
   factory CaPoolIssuancePolicyAllowedKeyTypeRsa.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicyAllowedKeyTypeRsa(
-      maxModulusSize: map['maxModulusSize'] == null ? null : map['maxModulusSize'] as String,
-      minModulusSize: map['minModulusSize'] == null ? null : map['minModulusSize'] as String,
+      maxModulusSize: map['maxModulusSize'] == null ? null : (map['maxModulusSize'] as String).input(),
+      minModulusSize: map['minModulusSize'] == null ? null : (map['minModulusSize'] as String).input(),
     );
   }
 }

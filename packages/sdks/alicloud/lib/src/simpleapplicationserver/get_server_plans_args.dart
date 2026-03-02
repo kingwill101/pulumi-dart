@@ -34,23 +34,15 @@ class GetServerPlansArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [platform] The platform of Plan supported. Valid values: ["Linux", "Windows"].
   GetServerPlansArgs({
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<int>? core,
-    pulumi.Output<int>? diskSize,
-    pulumi.Output<int>? flow,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<double>? memory,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? platform,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      core = pulumi.Input.asOptionalInput<int>(core),
-      diskSize = pulumi.Input.asOptionalInput<int>(diskSize),
-      flow = pulumi.Input.asOptionalInput<int>(flow),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      memory = pulumi.Input.asOptionalInput<double>(memory),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      platform = pulumi.Input.asOptionalInput<String>(platform);
+    this.bandwidth,
+    this.core,
+    this.diskSize,
+    this.flow,
+    this.ids,
+    this.memory,
+    this.outputFile,
+    this.platform,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetServerPlansArgs {
 
   factory GetServerPlansArgs.fromMap(Map<String, dynamic> map) {
     return GetServerPlansArgs(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      core: map['core'] == null ? null : pulumi.Output.create<int>(map['core'] as int),
-      diskSize: map['diskSize'] == null ? null : pulumi.Output.create<int>(map['diskSize'] as int),
-      flow: map['flow'] == null ? null : pulumi.Output.create<int>(map['flow'] as int),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      memory: map['memory'] == null ? null : pulumi.Output.create<double>(map['memory'] as double),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      platform: map['platform'] == null ? null : pulumi.Output.create<String>(map['platform'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      core: map['core'] == null ? null : (map['core'] as int).input(),
+      diskSize: map['diskSize'] == null ? null : (map['diskSize'] as int).input(),
+      flow: map['flow'] == null ? null : (map['flow'] as int).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      memory: map['memory'] == null ? null : (map['memory'] as double).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
     );
   }
 }

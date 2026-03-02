@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader {
   /// The header field name.
   /// This will be canonicalized upon output, so case-variant names will be
   /// understood as the same header.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The header field value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader].
   /// [name] The header field name.
@@ -26,8 +27,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
 
   factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

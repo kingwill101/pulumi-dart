@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMxRecordRecord {
   /// The mail server responsible for the domain covered by the MX record.
-  final String exchange;
+  final pulumi.Input<String> exchange;
   /// String representing the "preference” value of the MX records. Records with lower preference value take priority.
-  final String preference;
+  final pulumi.Input<String> preference;
 
   /// Creates a new [GetMxRecordRecord].
   /// [exchange] The mail server responsible for the domain covered by the MX record.
@@ -24,8 +25,8 @@ class GetMxRecordRecord {
 
   factory GetMxRecordRecord.fromMap(Map<String, dynamic> map) {
     return GetMxRecordRecord(
-      exchange: map['exchange'] as String,
-      preference: map['preference'] as String,
+      exchange: (map['exchange'] as String).input(),
+      preference: (map['preference'] as String).input(),
     );
   }
 }

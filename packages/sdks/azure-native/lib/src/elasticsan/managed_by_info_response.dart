@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parent resource information.
 class ManagedByInfoResponse {
   /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [ManagedByInfoResponse].
   /// [resourceId] Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
@@ -20,7 +21,7 @@ class ManagedByInfoResponse {
 
   factory ManagedByInfoResponse.fromMap(Map<String, dynamic> map) {
     return ManagedByInfoResponse(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

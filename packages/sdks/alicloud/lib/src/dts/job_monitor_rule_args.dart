@@ -25,17 +25,12 @@ class JobMonitorRuleArgs {
   /// [state] Whether to enable monitoring rules, valid values: `Y`, `N`.
   /// [type] Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
   JobMonitorRuleArgs({
-    pulumi.Output<String>? delayRuleTime,
-    required pulumi.Output<String> dtsJobId,
-    pulumi.Output<String>? phone,
-    pulumi.Output<String>? state,
-    required pulumi.Output<String> type,
-  }) :
-      delayRuleTime = pulumi.Input.asOptionalInput<String>(delayRuleTime),
-      dtsJobId = pulumi.Input.asInput<String>(dtsJobId),
-      phone = pulumi.Input.asOptionalInput<String>(phone),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      type = pulumi.Input.asInput<String>(type);
+    this.delayRuleTime,
+    required this.dtsJobId,
+    this.phone,
+    this.state,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class JobMonitorRuleArgs {
 
   factory JobMonitorRuleArgs.fromMap(Map<String, dynamic> map) {
     return JobMonitorRuleArgs(
-      delayRuleTime: map['delayRuleTime'] == null ? null : pulumi.Output.create<String>(map['delayRuleTime'] as String),
-      dtsJobId: pulumi.Output.create<String>(map['dtsJobId'] as String),
-      phone: map['phone'] == null ? null : pulumi.Output.create<String>(map['phone'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      delayRuleTime: map['delayRuleTime'] == null ? null : (map['delayRuleTime'] as String).input(),
+      dtsJobId: (map['dtsJobId'] as String).input(),
+      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

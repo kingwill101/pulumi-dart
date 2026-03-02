@@ -6,11 +6,11 @@ import 'google_cloud_dialogflow_v2_intent_message_list_select_item_response.dart
 /// The card for presenting a list of options to select from.
 class GoogleCloudDialogflowV2IntentMessageListSelectResponse {
   /// List items.
-  final List<GoogleCloudDialogflowV2IntentMessageListSelectItemResponse> items;
+  final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageListSelectItemResponse>> items;
   /// Optional. Subtitle of the list.
-  final String subtitle;
+  final pulumi.Input<String> subtitle;
   /// Optional. The overall title of the list.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageListSelectResponse].
   /// [items] List items.
@@ -24,7 +24,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelectResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': pulumi.Input.encodeList<GoogleCloudDialogflowV2IntentMessageListSelectItemResponse, Map<String, dynamic>>(items, (value) => value.toMap()),
+      'items': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowV2IntentMessageListSelectItemResponse>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowV2IntentMessageListSelectItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'subtitle': subtitle,
       'title': title,
     };
@@ -32,9 +32,9 @@ class GoogleCloudDialogflowV2IntentMessageListSelectResponse {
 
   factory GoogleCloudDialogflowV2IntentMessageListSelectResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageListSelectResponse(
-      items: pulumi.Input.decodeList<GoogleCloudDialogflowV2IntentMessageListSelectItemResponse>(map['items'], (value) => GoogleCloudDialogflowV2IntentMessageListSelectItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      subtitle: map['subtitle'] as String,
-      title: map['title'] as String,
+      items: (pulumi.Input.decodeList<GoogleCloudDialogflowV2IntentMessageListSelectItemResponse>(map['items'], (value) => GoogleCloudDialogflowV2IntentMessageListSelectItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subtitle: (map['subtitle'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

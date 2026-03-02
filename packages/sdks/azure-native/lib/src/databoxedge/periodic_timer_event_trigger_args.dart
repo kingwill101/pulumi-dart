@@ -34,21 +34,14 @@ class PeriodicTimerEventTriggerArgs {
   /// [sinkInfo] Role Sink information.
   /// [sourceInfo] Periodic timer details.
   PeriodicTimerEventTriggerArgs({
-    pulumi.Output<String>? customContextTag,
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<RoleSinkInfo> sinkInfo,
-    required pulumi.Output<PeriodicTimerSourceInfo> sourceInfo,
-  }) :
-      customContextTag = pulumi.Input.asOptionalInput<String>(customContextTag),
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      kind = pulumi.Input.asInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sinkInfo = pulumi.Input.asInput<RoleSinkInfo>(sinkInfo),
-      sourceInfo = pulumi.Input.asInput<PeriodicTimerSourceInfo>(sourceInfo);
+    this.customContextTag,
+    required this.deviceName,
+    required this.kind,
+    this.name,
+    required this.resourceGroupName,
+    required this.sinkInfo,
+    required this.sourceInfo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class PeriodicTimerEventTriggerArgs {
 
   factory PeriodicTimerEventTriggerArgs.fromMap(Map<String, dynamic> map) {
     return PeriodicTimerEventTriggerArgs(
-      customContextTag: map['customContextTag'] == null ? null : pulumi.Output.create<String>(map['customContextTag'] as String),
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sinkInfo: pulumi.Output.create<RoleSinkInfo>(RoleSinkInfo.fromMap((map['sinkInfo'] as Map).cast<String, dynamic>())),
-      sourceInfo: pulumi.Output.create<PeriodicTimerSourceInfo>(PeriodicTimerSourceInfo.fromMap((map['sourceInfo'] as Map).cast<String, dynamic>())),
+      customContextTag: map['customContextTag'] == null ? null : (map['customContextTag'] as String).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sinkInfo: (RoleSinkInfo.fromMap((map['sinkInfo'] as Map).cast<String, dynamic>())).input(),
+      sourceInfo: (PeriodicTimerSourceInfo.fromMap((map['sourceInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

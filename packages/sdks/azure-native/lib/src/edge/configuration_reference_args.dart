@@ -20,13 +20,10 @@ class ConfigurationReferenceArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   ConfigurationReferenceArgs({
-    pulumi.Output<String>? configurationReferenceName,
-    pulumi.Output<ConfigurationReferenceProperties>? properties,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      configurationReferenceName = pulumi.Input.asOptionalInput<String>(configurationReferenceName),
-      properties = pulumi.Input.asOptionalInput<ConfigurationReferenceProperties>(properties),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.configurationReferenceName,
+    this.properties,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class ConfigurationReferenceArgs {
 
   factory ConfigurationReferenceArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationReferenceArgs(
-      configurationReferenceName: map['configurationReferenceName'] == null ? null : pulumi.Output.create<String>(map['configurationReferenceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ConfigurationReferenceProperties>(ConfigurationReferenceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      configurationReferenceName: map['configurationReferenceName'] == null ? null : (map['configurationReferenceName'] as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationReferenceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

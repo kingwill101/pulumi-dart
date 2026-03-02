@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the metric alert rule criteria for a web test resource.
 class WebtestLocationAvailabilityCriteria {
   /// The Application Insights resource Id.
-  final String componentId;
+  final pulumi.Input<String> componentId;
   /// The number of failed locations.
-  final double failedLocationCount;
+  final pulumi.Input<double> failedLocationCount;
   /// specifies the type of the alert criteria.
   /// Expected value is 'Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria'.
-  final String odataType;
+  final pulumi.Input<String> odataType;
   /// The Application Insights web test Id.
-  final String webTestId;
+  final pulumi.Input<String> webTestId;
 
   /// Creates a new [WebtestLocationAvailabilityCriteria].
   /// [componentId] The Application Insights resource Id.
@@ -36,10 +37,10 @@ class WebtestLocationAvailabilityCriteria {
 
   factory WebtestLocationAvailabilityCriteria.fromMap(Map<String, dynamic> map) {
     return WebtestLocationAvailabilityCriteria(
-      componentId: map['componentId'] as String,
-      failedLocationCount: map['failedLocationCount'] as double,
-      odataType: map['odataType'] as String,
-      webTestId: map['webTestId'] as String,
+      componentId: (map['componentId'] as String).input(),
+      failedLocationCount: (map['failedLocationCount'] as double).input(),
+      odataType: (map['odataType'] as String).input(),
+      webTestId: (map['webTestId'] as String).input(),
     );
   }
 }

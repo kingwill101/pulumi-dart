@@ -66,27 +66,17 @@ class RolloutKindArgs {
   /// [unitKind] UnitKind that this rollout kind corresponds to. Rollouts stemming from this
   /// [updateUnitKindStrategy] The config for updating the unit kind. By default, the unit kind will be
   RolloutKindArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<RolloutKindErrorBudget>? errorBudget,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> rolloutKindId,
-    pulumi.Output<String>? rolloutOrchestrationStrategy,
-    pulumi.Output<String>? unitFilter,
-    required pulumi.Output<String> unitKind,
-    pulumi.Output<String>? updateUnitKindStrategy,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      errorBudget = pulumi.Input.asOptionalInput<RolloutKindErrorBudget>(errorBudget),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rolloutKindId = pulumi.Input.asInput<String>(rolloutKindId),
-      rolloutOrchestrationStrategy = pulumi.Input.asOptionalInput<String>(rolloutOrchestrationStrategy),
-      unitFilter = pulumi.Input.asOptionalInput<String>(unitFilter),
-      unitKind = pulumi.Input.asInput<String>(unitKind),
-      updateUnitKindStrategy = pulumi.Input.asOptionalInput<String>(updateUnitKindStrategy);
+    this.annotations,
+    this.errorBudget,
+    this.labels,
+    required this.location,
+    this.project,
+    required this.rolloutKindId,
+    this.rolloutOrchestrationStrategy,
+    this.unitFilter,
+    required this.unitKind,
+    this.updateUnitKindStrategy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,16 +95,16 @@ class RolloutKindArgs {
 
   factory RolloutKindArgs.fromMap(Map<String, dynamic> map) {
     return RolloutKindArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      errorBudget: map['errorBudget'] == null ? null : pulumi.Output.create<RolloutKindErrorBudget>(RolloutKindErrorBudget.fromMap((map['errorBudget'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rolloutKindId: pulumi.Output.create<String>(map['rolloutKindId'] as String),
-      rolloutOrchestrationStrategy: map['rolloutOrchestrationStrategy'] == null ? null : pulumi.Output.create<String>(map['rolloutOrchestrationStrategy'] as String),
-      unitFilter: map['unitFilter'] == null ? null : pulumi.Output.create<String>(map['unitFilter'] as String),
-      unitKind: pulumi.Output.create<String>(map['unitKind'] as String),
-      updateUnitKindStrategy: map['updateUnitKindStrategy'] == null ? null : pulumi.Output.create<String>(map['updateUnitKindStrategy'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      errorBudget: map['errorBudget'] == null ? null : (RolloutKindErrorBudget.fromMap((map['errorBudget'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rolloutKindId: (map['rolloutKindId'] as String).input(),
+      rolloutOrchestrationStrategy: map['rolloutOrchestrationStrategy'] == null ? null : (map['rolloutOrchestrationStrategy'] as String).input(),
+      unitFilter: map['unitFilter'] == null ? null : (map['unitFilter'] as String).input(),
+      unitKind: (map['unitKind'] as String).input(),
+      updateUnitKindStrategy: map['updateUnitKindStrategy'] == null ? null : (map['updateUnitKindStrategy'] as String).input(),
     );
   }
 }

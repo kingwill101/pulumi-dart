@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BillingHubExecutionUsageDetailResponse {
-  final String? applicationName;
-  final String? applicationVersion;
-  final double? billedCharges;
-  final String? endTimeStamp;
-  final String? executionRequestId;
-  final String? meterId;
-  final String? osBuild;
-  final String? release;
-  final String? sku;
-  final String? startTimeStamp;
-  final String? testType;
-  final String? updateType;
-  final double? usedBillableHours;
-  final double? usedFreeHours;
+  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String>? applicationVersion;
+  final pulumi.Input<double>? billedCharges;
+  final pulumi.Input<String>? endTimeStamp;
+  final pulumi.Input<String>? executionRequestId;
+  final pulumi.Input<String>? meterId;
+  final pulumi.Input<String>? osBuild;
+  final pulumi.Input<String>? release;
+  final pulumi.Input<String>? sku;
+  final pulumi.Input<String>? startTimeStamp;
+  final pulumi.Input<String>? testType;
+  final pulumi.Input<String>? updateType;
+  final pulumi.Input<double>? usedBillableHours;
+  final pulumi.Input<double>? usedFreeHours;
 
   /// Creates a new [BillingHubExecutionUsageDetailResponse].
   /// [applicationName] Optional.
@@ -70,20 +71,20 @@ class BillingHubExecutionUsageDetailResponse {
 
   factory BillingHubExecutionUsageDetailResponse.fromMap(Map<String, dynamic> map) {
     return BillingHubExecutionUsageDetailResponse(
-      applicationName: map['applicationName'] == null ? null : map['applicationName'] as String,
-      applicationVersion: map['applicationVersion'] == null ? null : map['applicationVersion'] as String,
-      billedCharges: map['billedCharges'] == null ? null : map['billedCharges'] as double,
-      endTimeStamp: map['endTimeStamp'] == null ? null : map['endTimeStamp'] as String,
-      executionRequestId: map['executionRequestId'] == null ? null : map['executionRequestId'] as String,
-      meterId: map['meterId'] == null ? null : map['meterId'] as String,
-      osBuild: map['osBuild'] == null ? null : map['osBuild'] as String,
-      release: map['release'] == null ? null : map['release'] as String,
-      sku: map['sku'] == null ? null : map['sku'] as String,
-      startTimeStamp: map['startTimeStamp'] == null ? null : map['startTimeStamp'] as String,
-      testType: map['testType'] == null ? null : map['testType'] as String,
-      updateType: map['updateType'] == null ? null : map['updateType'] as String,
-      usedBillableHours: map['usedBillableHours'] == null ? null : map['usedBillableHours'] as double,
-      usedFreeHours: map['usedFreeHours'] == null ? null : map['usedFreeHours'] as double,
+      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
+      applicationVersion: map['applicationVersion'] == null ? null : (map['applicationVersion'] as String).input(),
+      billedCharges: map['billedCharges'] == null ? null : (map['billedCharges'] as double).input(),
+      endTimeStamp: map['endTimeStamp'] == null ? null : (map['endTimeStamp'] as String).input(),
+      executionRequestId: map['executionRequestId'] == null ? null : (map['executionRequestId'] as String).input(),
+      meterId: map['meterId'] == null ? null : (map['meterId'] as String).input(),
+      osBuild: map['osBuild'] == null ? null : (map['osBuild'] as String).input(),
+      release: map['release'] == null ? null : (map['release'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      startTimeStamp: map['startTimeStamp'] == null ? null : (map['startTimeStamp'] as String).input(),
+      testType: map['testType'] == null ? null : (map['testType'] as String).input(),
+      updateType: map['updateType'] == null ? null : (map['updateType'] as String).input(),
+      usedBillableHours: map['usedBillableHours'] == null ? null : (map['usedBillableHours'] as double).input(),
+      usedFreeHours: map['usedFreeHours'] == null ? null : (map['usedFreeHours'] as double).input(),
     );
   }
 }

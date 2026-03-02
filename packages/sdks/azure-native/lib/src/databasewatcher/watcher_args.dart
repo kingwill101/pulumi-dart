@@ -33,21 +33,14 @@ class WatcherArgs {
   /// [tags] Resource tags.
   /// [watcherName] The database watcher name.
   WatcherArgs({
-    pulumi.Output<Datastore>? datastore,
-    pulumi.Output<String>? defaultAlertRuleIdentityResourceId,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? watcherName,
-  }) :
-      datastore = pulumi.Input.asOptionalInput<Datastore>(datastore),
-      defaultAlertRuleIdentityResourceId = pulumi.Input.asOptionalInput<String>(defaultAlertRuleIdentityResourceId),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      watcherName = pulumi.Input.asOptionalInput<String>(watcherName);
+    this.datastore,
+    this.defaultAlertRuleIdentityResourceId,
+    this.identity,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    this.watcherName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class WatcherArgs {
 
   factory WatcherArgs.fromMap(Map<String, dynamic> map) {
     return WatcherArgs(
-      datastore: map['datastore'] == null ? null : pulumi.Output.create<Datastore>(Datastore.fromMap((map['datastore'] as Map).cast<String, dynamic>())),
-      defaultAlertRuleIdentityResourceId: map['defaultAlertRuleIdentityResourceId'] == null ? null : pulumi.Output.create<String>(map['defaultAlertRuleIdentityResourceId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      watcherName: map['watcherName'] == null ? null : pulumi.Output.create<String>(map['watcherName'] as String),
+      datastore: map['datastore'] == null ? null : (Datastore.fromMap((map['datastore'] as Map).cast<String, dynamic>())).input(),
+      defaultAlertRuleIdentityResourceId: map['defaultAlertRuleIdentityResourceId'] == null ? null : (map['defaultAlertRuleIdentityResourceId'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      watcherName: map['watcherName'] == null ? null : (map['watcherName'] as String).input(),
     );
   }
 }

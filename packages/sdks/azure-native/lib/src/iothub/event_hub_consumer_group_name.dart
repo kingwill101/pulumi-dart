@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The EventHub consumer group name.
 class EventHubConsumerGroupName {
   /// EventHub consumer group name
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [EventHubConsumerGroupName].
   /// [name] EventHub consumer group name
@@ -20,7 +21,7 @@ class EventHubConsumerGroupName {
 
   factory EventHubConsumerGroupName.fromMap(Map<String, dynamic> map) {
     return EventHubConsumerGroupName(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

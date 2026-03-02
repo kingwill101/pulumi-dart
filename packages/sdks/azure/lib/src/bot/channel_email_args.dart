@@ -28,19 +28,13 @@ class ChannelEmailArgs {
   /// [magicCode] The magic code used to set up OAUTH authentication.
   /// [resourceGroupName] The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   ChannelEmailArgs({
-    required pulumi.Output<String> botName,
-    required pulumi.Output<String> emailAddress,
-    pulumi.Output<String>? emailPassword,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? magicCode,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      botName = pulumi.Input.asInput<String>(botName),
-      emailAddress = pulumi.Input.asInput<String>(emailAddress),
-      emailPassword = pulumi.Input.asOptionalInput<String>(emailPassword),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      magicCode = pulumi.Input.asOptionalInput<String>(magicCode),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.botName,
+    required this.emailAddress,
+    this.emailPassword,
+    this.location,
+    this.magicCode,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ChannelEmailArgs {
 
   factory ChannelEmailArgs.fromMap(Map<String, dynamic> map) {
     return ChannelEmailArgs(
-      botName: pulumi.Output.create<String>(map['botName'] as String),
-      emailAddress: pulumi.Output.create<String>(map['emailAddress'] as String),
-      emailPassword: map['emailPassword'] == null ? null : pulumi.Output.create<String>(map['emailPassword'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      magicCode: map['magicCode'] == null ? null : pulumi.Output.create<String>(map['magicCode'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      botName: (map['botName'] as String).input(),
+      emailAddress: (map['emailAddress'] as String).input(),
+      emailPassword: map['emailPassword'] == null ? null : (map['emailPassword'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      magicCode: map['magicCode'] == null ? null : (map['magicCode'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

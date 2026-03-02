@@ -44,29 +44,18 @@ class ImageArgs {
   /// [repositoryUrl] Url of the repository
   /// [target] The target of the dockerfile to build
   ImageArgs({
-    pulumi.Output<Map<String, String>>? args,
-    pulumi.Output<BuilderVersion>? builderVersion,
-    pulumi.Output<List<String>>? cacheFrom,
-    pulumi.Output<String>? context,
-    pulumi.Output<String>? dockerfile,
-    pulumi.Output<String>? imageName,
-    pulumi.Output<String>? imageTag,
-    pulumi.Output<String>? platform,
-    pulumi.Output<String>? registryId,
-    required pulumi.Output<String> repositoryUrl,
-    pulumi.Output<String>? target,
-  }) :
-      args = pulumi.Input.asOptionalInput<Map<String, String>>(args),
-      builderVersion = pulumi.Input.asOptionalInput<BuilderVersion>(builderVersion),
-      cacheFrom = pulumi.Input.asOptionalInput<List<String>>(cacheFrom),
-      context = pulumi.Input.asOptionalInput<String>(context),
-      dockerfile = pulumi.Input.asOptionalInput<String>(dockerfile),
-      imageName = pulumi.Input.asOptionalInput<String>(imageName),
-      imageTag = pulumi.Input.asOptionalInput<String>(imageTag),
-      platform = pulumi.Input.asOptionalInput<String>(platform),
-      registryId = pulumi.Input.asOptionalInput<String>(registryId),
-      repositoryUrl = pulumi.Input.asInput<String>(repositoryUrl),
-      target = pulumi.Input.asOptionalInput<String>(target);
+    this.args,
+    this.builderVersion,
+    this.cacheFrom,
+    this.context,
+    this.dockerfile,
+    this.imageName,
+    this.imageTag,
+    this.platform,
+    this.registryId,
+    required this.repositoryUrl,
+    this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      args: map['args'] == null ? null : pulumi.Output.create<Map<String, String>>((map['args'] as Map).cast<String, String>()),
-      builderVersion: map['builderVersion'] == null ? null : pulumi.Output.create<BuilderVersion>(BuilderVersion.fromValue(map['builderVersion'] as String)),
-      cacheFrom: map['cacheFrom'] == null ? null : pulumi.Output.create<List<String>>((map['cacheFrom'] as List).cast<String>()),
-      context: map['context'] == null ? null : pulumi.Output.create<String>(map['context'] as String),
-      dockerfile: map['dockerfile'] == null ? null : pulumi.Output.create<String>(map['dockerfile'] as String),
-      imageName: map['imageName'] == null ? null : pulumi.Output.create<String>(map['imageName'] as String),
-      imageTag: map['imageTag'] == null ? null : pulumi.Output.create<String>(map['imageTag'] as String),
-      platform: map['platform'] == null ? null : pulumi.Output.create<String>(map['platform'] as String),
-      registryId: map['registryId'] == null ? null : pulumi.Output.create<String>(map['registryId'] as String),
-      repositoryUrl: pulumi.Output.create<String>(map['repositoryUrl'] as String),
-      target: map['target'] == null ? null : pulumi.Output.create<String>(map['target'] as String),
+      args: map['args'] == null ? null : ((map['args'] as Map).cast<String, String>()).input(),
+      builderVersion: map['builderVersion'] == null ? null : (BuilderVersion.fromValue(map['builderVersion'] as String)).input(),
+      cacheFrom: map['cacheFrom'] == null ? null : ((map['cacheFrom'] as List).cast<String>()).input(),
+      context: map['context'] == null ? null : (map['context'] as String).input(),
+      dockerfile: map['dockerfile'] == null ? null : (map['dockerfile'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      imageTag: map['imageTag'] == null ? null : (map['imageTag'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      repositoryUrl: (map['repositoryUrl'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

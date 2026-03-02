@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLinuxWebAppSiteConfigAutoHealSettingAction {
   /// The predefined action to be taken to an Auto Heal trigger.
-  final String actionType;
+  final pulumi.Input<String> actionType;
   /// The minimum amount of time in `hh:mm:ss` the Linux Web App must have been running before the defined action will be run in the event of a trigger.
-  final String minimumProcessExecutionTime;
+  final pulumi.Input<String> minimumProcessExecutionTime;
 
   /// Creates a new [GetLinuxWebAppSiteConfigAutoHealSettingAction].
   /// [actionType] The predefined action to be taken to an Auto Heal trigger.
@@ -24,8 +25,8 @@ class GetLinuxWebAppSiteConfigAutoHealSettingAction {
 
   factory GetLinuxWebAppSiteConfigAutoHealSettingAction.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppSiteConfigAutoHealSettingAction(
-      actionType: map['actionType'] as String,
-      minimumProcessExecutionTime: map['minimumProcessExecutionTime'] as String,
+      actionType: (map['actionType'] as String).input(),
+      minimumProcessExecutionTime: (map['minimumProcessExecutionTime'] as String).input(),
     );
   }
 }

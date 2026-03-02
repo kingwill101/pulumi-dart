@@ -78,33 +78,20 @@ class IntentArgs {
   /// [sampleUtterances] An array of utterances (strings) that a user might say to signal
   /// [slots] An list of intent slots. At runtime, Amazon Lex elicits required slot values
   IntentArgs({
-    pulumi.Output<IntentConclusionStatement>? conclusionStatement,
-    pulumi.Output<IntentConfirmationPrompt>? confirmationPrompt,
-    pulumi.Output<bool>? createVersion,
-    pulumi.Output<String>? description,
-    pulumi.Output<IntentDialogCodeHook>? dialogCodeHook,
-    pulumi.Output<IntentFollowUpPrompt>? followUpPrompt,
-    required pulumi.Output<IntentFulfillmentActivity> fulfillmentActivity,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentIntentSignature,
-    pulumi.Output<String>? region,
-    pulumi.Output<IntentRejectionStatement>? rejectionStatement,
-    pulumi.Output<List<String>>? sampleUtterances,
-    pulumi.Output<List<IntentSlot>>? slots,
-  }) :
-      conclusionStatement = pulumi.Input.asOptionalInput<IntentConclusionStatement>(conclusionStatement),
-      confirmationPrompt = pulumi.Input.asOptionalInput<IntentConfirmationPrompt>(confirmationPrompt),
-      createVersion = pulumi.Input.asOptionalInput<bool>(createVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dialogCodeHook = pulumi.Input.asOptionalInput<IntentDialogCodeHook>(dialogCodeHook),
-      followUpPrompt = pulumi.Input.asOptionalInput<IntentFollowUpPrompt>(followUpPrompt),
-      fulfillmentActivity = pulumi.Input.asInput<IntentFulfillmentActivity>(fulfillmentActivity),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentIntentSignature = pulumi.Input.asOptionalInput<String>(parentIntentSignature),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rejectionStatement = pulumi.Input.asOptionalInput<IntentRejectionStatement>(rejectionStatement),
-      sampleUtterances = pulumi.Input.asOptionalInput<List<String>>(sampleUtterances),
-      slots = pulumi.Input.asOptionalInput<List<IntentSlot>>(slots);
+    this.conclusionStatement,
+    this.confirmationPrompt,
+    this.createVersion,
+    this.description,
+    this.dialogCodeHook,
+    this.followUpPrompt,
+    required this.fulfillmentActivity,
+    this.name,
+    this.parentIntentSignature,
+    this.region,
+    this.rejectionStatement,
+    this.sampleUtterances,
+    this.slots,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -126,19 +113,19 @@ class IntentArgs {
 
   factory IntentArgs.fromMap(Map<String, dynamic> map) {
     return IntentArgs(
-      conclusionStatement: map['conclusionStatement'] == null ? null : pulumi.Output.create<IntentConclusionStatement>(IntentConclusionStatement.fromMap((map['conclusionStatement'] as Map).cast<String, dynamic>())),
-      confirmationPrompt: map['confirmationPrompt'] == null ? null : pulumi.Output.create<IntentConfirmationPrompt>(IntentConfirmationPrompt.fromMap((map['confirmationPrompt'] as Map).cast<String, dynamic>())),
-      createVersion: map['createVersion'] == null ? null : pulumi.Output.create<bool>(map['createVersion'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dialogCodeHook: map['dialogCodeHook'] == null ? null : pulumi.Output.create<IntentDialogCodeHook>(IntentDialogCodeHook.fromMap((map['dialogCodeHook'] as Map).cast<String, dynamic>())),
-      followUpPrompt: map['followUpPrompt'] == null ? null : pulumi.Output.create<IntentFollowUpPrompt>(IntentFollowUpPrompt.fromMap((map['followUpPrompt'] as Map).cast<String, dynamic>())),
-      fulfillmentActivity: pulumi.Output.create<IntentFulfillmentActivity>(IntentFulfillmentActivity.fromMap((map['fulfillmentActivity'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentIntentSignature: map['parentIntentSignature'] == null ? null : pulumi.Output.create<String>(map['parentIntentSignature'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rejectionStatement: map['rejectionStatement'] == null ? null : pulumi.Output.create<IntentRejectionStatement>(IntentRejectionStatement.fromMap((map['rejectionStatement'] as Map).cast<String, dynamic>())),
-      sampleUtterances: map['sampleUtterances'] == null ? null : pulumi.Output.create<List<String>>((map['sampleUtterances'] as List).cast<String>()),
-      slots: map['slots'] == null ? null : pulumi.Output.create<List<IntentSlot>>(pulumi.Input.decodeList<IntentSlot>(map['slots'], (value) => IntentSlot.fromMap((value as Map).cast<String, dynamic>()))),
+      conclusionStatement: map['conclusionStatement'] == null ? null : (IntentConclusionStatement.fromMap((map['conclusionStatement'] as Map).cast<String, dynamic>())).input(),
+      confirmationPrompt: map['confirmationPrompt'] == null ? null : (IntentConfirmationPrompt.fromMap((map['confirmationPrompt'] as Map).cast<String, dynamic>())).input(),
+      createVersion: map['createVersion'] == null ? null : (map['createVersion'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dialogCodeHook: map['dialogCodeHook'] == null ? null : (IntentDialogCodeHook.fromMap((map['dialogCodeHook'] as Map).cast<String, dynamic>())).input(),
+      followUpPrompt: map['followUpPrompt'] == null ? null : (IntentFollowUpPrompt.fromMap((map['followUpPrompt'] as Map).cast<String, dynamic>())).input(),
+      fulfillmentActivity: (IntentFulfillmentActivity.fromMap((map['fulfillmentActivity'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentIntentSignature: map['parentIntentSignature'] == null ? null : (map['parentIntentSignature'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rejectionStatement: map['rejectionStatement'] == null ? null : (IntentRejectionStatement.fromMap((map['rejectionStatement'] as Map).cast<String, dynamic>())).input(),
+      sampleUtterances: map['sampleUtterances'] == null ? null : ((map['sampleUtterances'] as List).cast<String>()).input(),
+      slots: map['slots'] == null ? null : (pulumi.Input.decodeList<IntentSlot>(map['slots'], (value) => IntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

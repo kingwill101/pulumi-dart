@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_boolean_parameter_array_response.dart';
 import 'google_cloud_integrations_v1alpha_double_parameter_array_response.dart';
 import 'google_cloud_integrations_v1alpha_int_parameter_array_response.dart';
@@ -8,23 +9,23 @@ import 'google_cloud_integrations_v1alpha_string_parameter_array_response.dart';
 /// The type of the parameter.
 class GoogleCloudIntegrationsV1alphaValueTypeResponse {
   /// Boolean Array.
-  final GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse booleanArray;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse> booleanArray;
   /// Boolean.
-  final bool booleanValue;
+  final pulumi.Input<bool> booleanValue;
   /// Double Number Array.
-  final GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse doubleArray;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse> doubleArray;
   /// Double Number.
-  final double doubleValue;
+  final pulumi.Input<double> doubleValue;
   /// Integer Array.
-  final GoogleCloudIntegrationsV1alphaIntParameterArrayResponse intArray;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaIntParameterArrayResponse> intArray;
   /// Integer.
-  final String intValue;
+  final pulumi.Input<String> intValue;
   /// Json.
-  final String jsonValue;
+  final pulumi.Input<String> jsonValue;
   /// String Array.
-  final GoogleCloudIntegrationsV1alphaStringParameterArrayResponse stringArray;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaStringParameterArrayResponse> stringArray;
   /// String.
-  final String stringValue;
+  final pulumi.Input<String> stringValue;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaValueTypeResponse].
   /// [booleanArray] Boolean Array.
@@ -50,29 +51,29 @@ class GoogleCloudIntegrationsV1alphaValueTypeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'booleanArray': booleanArray.toMap(),
+      'booleanArray': pulumi.Input.mapInputValue<GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse, Map<String, dynamic>>(booleanArray, (value) => value.toMap()),
       'booleanValue': booleanValue,
-      'doubleArray': doubleArray.toMap(),
+      'doubleArray': pulumi.Input.mapInputValue<GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse, Map<String, dynamic>>(doubleArray, (value) => value.toMap()),
       'doubleValue': doubleValue,
-      'intArray': intArray.toMap(),
+      'intArray': pulumi.Input.mapInputValue<GoogleCloudIntegrationsV1alphaIntParameterArrayResponse, Map<String, dynamic>>(intArray, (value) => value.toMap()),
       'intValue': intValue,
       'jsonValue': jsonValue,
-      'stringArray': stringArray.toMap(),
+      'stringArray': pulumi.Input.mapInputValue<GoogleCloudIntegrationsV1alphaStringParameterArrayResponse, Map<String, dynamic>>(stringArray, (value) => value.toMap()),
       'stringValue': stringValue,
     };
   }
 
   factory GoogleCloudIntegrationsV1alphaValueTypeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaValueTypeResponse(
-      booleanArray: GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse.fromMap((map['booleanArray'] as Map).cast<String, dynamic>()),
-      booleanValue: map['booleanValue'] as bool,
-      doubleArray: GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse.fromMap((map['doubleArray'] as Map).cast<String, dynamic>()),
-      doubleValue: map['doubleValue'] as double,
-      intArray: GoogleCloudIntegrationsV1alphaIntParameterArrayResponse.fromMap((map['intArray'] as Map).cast<String, dynamic>()),
-      intValue: map['intValue'] as String,
-      jsonValue: map['jsonValue'] as String,
-      stringArray: GoogleCloudIntegrationsV1alphaStringParameterArrayResponse.fromMap((map['stringArray'] as Map).cast<String, dynamic>()),
-      stringValue: map['stringValue'] as String,
+      booleanArray: (GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse.fromMap((map['booleanArray'] as Map).cast<String, dynamic>())).input(),
+      booleanValue: (map['booleanValue'] as bool).input(),
+      doubleArray: (GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse.fromMap((map['doubleArray'] as Map).cast<String, dynamic>())).input(),
+      doubleValue: (map['doubleValue'] as double).input(),
+      intArray: (GoogleCloudIntegrationsV1alphaIntParameterArrayResponse.fromMap((map['intArray'] as Map).cast<String, dynamic>())).input(),
+      intValue: (map['intValue'] as String).input(),
+      jsonValue: (map['jsonValue'] as String).input(),
+      stringArray: (GoogleCloudIntegrationsV1alphaStringParameterArrayResponse.fromMap((map['stringArray'] as Map).cast<String, dynamic>())).input(),
+      stringValue: (map['stringValue'] as String).input(),
     );
   }
 }

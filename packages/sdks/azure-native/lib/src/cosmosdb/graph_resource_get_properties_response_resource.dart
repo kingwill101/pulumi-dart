@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GraphResourceGetPropertiesResponseResource {
   /// Name of the Cosmos DB Graph
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GraphResourceGetPropertiesResponseResource].
   /// [id] Name of the Cosmos DB Graph
@@ -19,7 +20,7 @@ class GraphResourceGetPropertiesResponseResource {
 
   factory GraphResourceGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return GraphResourceGetPropertiesResponseResource(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

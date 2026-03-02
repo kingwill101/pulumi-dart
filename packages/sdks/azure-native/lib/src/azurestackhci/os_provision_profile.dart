@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Operating system profile.
 class OsProvisionProfile {
   /// GPG Public Key used for package verification
-  final String? gpgPubKey;
+  final pulumi.Input<String>? gpgPubKey;
   /// Hash of the OS package downloaded
-  final String? imageHash;
+  final pulumi.Input<String>? imageHash;
   /// Operation sub type of OS Provisioning
-  final String? operationType;
+  final pulumi.Input<String>? operationType;
   /// Location of the operating system image.
-  final String? osImageLocation;
+  final pulumi.Input<String>? osImageLocation;
   /// Name of the operating system.
-  final String? osName;
+  final pulumi.Input<String>? osName;
   /// Type of the operating system.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// Version of the operating system.
-  final String? osVersion;
+  final pulumi.Input<String>? osVersion;
   /// Validated Solution Recipe version to be used for the job
-  final String? vsrVersion;
+  final pulumi.Input<String>? vsrVersion;
 
   /// Creates a new [OsProvisionProfile].
   /// [gpgPubKey] GPG Public Key used for package verification
@@ -55,14 +56,14 @@ class OsProvisionProfile {
 
   factory OsProvisionProfile.fromMap(Map<String, dynamic> map) {
     return OsProvisionProfile(
-      gpgPubKey: map['gpgPubKey'] == null ? null : map['gpgPubKey'] as String,
-      imageHash: map['imageHash'] == null ? null : map['imageHash'] as String,
-      operationType: map['operationType'] == null ? null : map['operationType'] as String,
-      osImageLocation: map['osImageLocation'] == null ? null : map['osImageLocation'] as String,
-      osName: map['osName'] == null ? null : map['osName'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      osVersion: map['osVersion'] == null ? null : map['osVersion'] as String,
-      vsrVersion: map['vsrVersion'] == null ? null : map['vsrVersion'] as String,
+      gpgPubKey: map['gpgPubKey'] == null ? null : (map['gpgPubKey'] as String).input(),
+      imageHash: map['imageHash'] == null ? null : (map['imageHash'] as String).input(),
+      operationType: map['operationType'] == null ? null : (map['operationType'] as String).input(),
+      osImageLocation: map['osImageLocation'] == null ? null : (map['osImageLocation'] as String).input(),
+      osName: map['osName'] == null ? null : (map['osName'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
+      vsrVersion: map['vsrVersion'] == null ? null : (map['vsrVersion'] as String).input(),
     );
   }
 }

@@ -35,25 +35,16 @@ class ScheduledQueryRulesLogState {
   /// [resourceGroupName] The name of the resource group in which to create the scheduled query rule instance. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   ScheduledQueryRulesLogState({
-    pulumi.Output<List<String>>? authorizedResourceIds,
-    pulumi.Output<ScheduledQueryRulesLogCriteria>? criteria,
-    pulumi.Output<String>? dataSourceId,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      authorizedResourceIds = pulumi.Input.asOptionalInput<List<String>>(authorizedResourceIds),
-      criteria = pulumi.Input.asOptionalInput<ScheduledQueryRulesLogCriteria>(criteria),
-      dataSourceId = pulumi.Input.asOptionalInput<String>(dataSourceId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.authorizedResourceIds,
+    this.criteria,
+    this.dataSourceId,
+    this.description,
+    this.enabled,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class ScheduledQueryRulesLogState {
 
   factory ScheduledQueryRulesLogState.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesLogState(
-      authorizedResourceIds: map['authorizedResourceIds'] == null ? null : pulumi.Output.create<List<String>>((map['authorizedResourceIds'] as List).cast<String>()),
-      criteria: map['criteria'] == null ? null : pulumi.Output.create<ScheduledQueryRulesLogCriteria>(ScheduledQueryRulesLogCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())),
-      dataSourceId: map['dataSourceId'] == null ? null : pulumi.Output.create<String>(map['dataSourceId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      authorizedResourceIds: map['authorizedResourceIds'] == null ? null : ((map['authorizedResourceIds'] as List).cast<String>()).input(),
+      criteria: map['criteria'] == null ? null : (ScheduledQueryRulesLogCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

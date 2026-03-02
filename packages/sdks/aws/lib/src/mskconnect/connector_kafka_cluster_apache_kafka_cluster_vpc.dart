@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorKafkaClusterApacheKafkaClusterVpc {
   /// The security groups for the connector.
-  final List<String> securityGroups;
+  final pulumi.Input<List<String>> securityGroups;
   /// The subnets for the connector.
-  final List<String> subnets;
+  final pulumi.Input<List<String>> subnets;
 
   /// Creates a new [ConnectorKafkaClusterApacheKafkaClusterVpc].
   /// [securityGroups] The security groups for the connector.
@@ -24,8 +25,8 @@ class ConnectorKafkaClusterApacheKafkaClusterVpc {
 
   factory ConnectorKafkaClusterApacheKafkaClusterVpc.fromMap(Map<String, dynamic> map) {
     return ConnectorKafkaClusterApacheKafkaClusterVpc(
-      securityGroups: (map['securityGroups'] as List).cast<String>(),
-      subnets: (map['subnets'] as List).cast<String>(),
+      securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
+      subnets: ((map['subnets'] as List).cast<String>()).input(),
     );
   }
 }

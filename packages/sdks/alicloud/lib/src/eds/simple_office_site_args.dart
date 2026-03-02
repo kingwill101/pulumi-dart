@@ -43,29 +43,18 @@ class SimpleOfficeSiteArgs {
   /// [officeSiteName] The office site name.
   /// [ssoEnabled] Whether to Enable Single Sign-on (SSO) for User-Based SSO.
   SimpleOfficeSiteArgs({
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<String>? cenId,
-    pulumi.Output<String>? cenOwnerId,
-    required pulumi.Output<String> cidrBlock,
-    pulumi.Output<String>? desktopAccessType,
-    pulumi.Output<bool>? enableAdminAccess,
-    pulumi.Output<bool>? enableCrossDesktopAccess,
-    pulumi.Output<bool>? enableInternetAccess,
-    pulumi.Output<bool>? mfaEnabled,
-    pulumi.Output<String>? officeSiteName,
-    pulumi.Output<bool>? ssoEnabled,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      cenOwnerId = pulumi.Input.asOptionalInput<String>(cenOwnerId),
-      cidrBlock = pulumi.Input.asInput<String>(cidrBlock),
-      desktopAccessType = pulumi.Input.asOptionalInput<String>(desktopAccessType),
-      enableAdminAccess = pulumi.Input.asOptionalInput<bool>(enableAdminAccess),
-      enableCrossDesktopAccess = pulumi.Input.asOptionalInput<bool>(enableCrossDesktopAccess),
-      enableInternetAccess = pulumi.Input.asOptionalInput<bool>(enableInternetAccess),
-      mfaEnabled = pulumi.Input.asOptionalInput<bool>(mfaEnabled),
-      officeSiteName = pulumi.Input.asOptionalInput<String>(officeSiteName),
-      ssoEnabled = pulumi.Input.asOptionalInput<bool>(ssoEnabled);
+    this.bandwidth,
+    this.cenId,
+    this.cenOwnerId,
+    required this.cidrBlock,
+    this.desktopAccessType,
+    this.enableAdminAccess,
+    this.enableCrossDesktopAccess,
+    this.enableInternetAccess,
+    this.mfaEnabled,
+    this.officeSiteName,
+    this.ssoEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class SimpleOfficeSiteArgs {
 
   factory SimpleOfficeSiteArgs.fromMap(Map<String, dynamic> map) {
     return SimpleOfficeSiteArgs(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      cenOwnerId: map['cenOwnerId'] == null ? null : pulumi.Output.create<String>(map['cenOwnerId'] as String),
-      cidrBlock: pulumi.Output.create<String>(map['cidrBlock'] as String),
-      desktopAccessType: map['desktopAccessType'] == null ? null : pulumi.Output.create<String>(map['desktopAccessType'] as String),
-      enableAdminAccess: map['enableAdminAccess'] == null ? null : pulumi.Output.create<bool>(map['enableAdminAccess'] as bool),
-      enableCrossDesktopAccess: map['enableCrossDesktopAccess'] == null ? null : pulumi.Output.create<bool>(map['enableCrossDesktopAccess'] as bool),
-      enableInternetAccess: map['enableInternetAccess'] == null ? null : pulumi.Output.create<bool>(map['enableInternetAccess'] as bool),
-      mfaEnabled: map['mfaEnabled'] == null ? null : pulumi.Output.create<bool>(map['mfaEnabled'] as bool),
-      officeSiteName: map['officeSiteName'] == null ? null : pulumi.Output.create<String>(map['officeSiteName'] as String),
-      ssoEnabled: map['ssoEnabled'] == null ? null : pulumi.Output.create<bool>(map['ssoEnabled'] as bool),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId'] as String).input(),
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      desktopAccessType: map['desktopAccessType'] == null ? null : (map['desktopAccessType'] as String).input(),
+      enableAdminAccess: map['enableAdminAccess'] == null ? null : (map['enableAdminAccess'] as bool).input(),
+      enableCrossDesktopAccess: map['enableCrossDesktopAccess'] == null ? null : (map['enableCrossDesktopAccess'] as bool).input(),
+      enableInternetAccess: map['enableInternetAccess'] == null ? null : (map['enableInternetAccess'] as bool).input(),
+      mfaEnabled: map['mfaEnabled'] == null ? null : (map['mfaEnabled'] as bool).input(),
+      officeSiteName: map['officeSiteName'] == null ? null : (map['officeSiteName'] as String).input(),
+      ssoEnabled: map['ssoEnabled'] == null ? null : (map['ssoEnabled'] as bool).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceZoneInfo {
   /// The ID of the node.
-  final String? insName;
+  final pulumi.Input<String>? insName;
   /// The type of the node.
-  final String? nodeType;
+  final pulumi.Input<String>? nodeType;
   /// The id of the role.
-  final String? roleId;
+  final pulumi.Input<String>? roleId;
   /// The role of the node.
-  final String? roleType;
+  final pulumi.Input<String>? roleType;
   /// The Zone to launch the DB instance. it supports multiple zone.
   /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
   /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
-  final String? zoneId;
+  final pulumi.Input<String>? zoneId;
 
   /// Creates a new [InstanceZoneInfo].
   /// [insName] The ID of the node.
@@ -41,11 +42,11 @@ class InstanceZoneInfo {
 
   factory InstanceZoneInfo.fromMap(Map<String, dynamic> map) {
     return InstanceZoneInfo(
-      insName: map['insName'] == null ? null : map['insName'] as String,
-      nodeType: map['nodeType'] == null ? null : map['nodeType'] as String,
-      roleId: map['roleId'] == null ? null : map['roleId'] as String,
-      roleType: map['roleType'] == null ? null : map['roleType'] as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      insName: map['insName'] == null ? null : (map['insName'] as String).input(),
+      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      roleType: map['roleType'] == null ? null : (map['roleType'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

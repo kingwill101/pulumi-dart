@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_namespace_handler_configs_on_publish_integration.dart';
 
 class ChannelNamespaceHandlerConfigsOnPublish {
   /// Behavior for the handler. Valid values: `CODE`, `DIRECT`.
-  final String behavior;
+  final pulumi.Input<String> behavior;
   /// Integration data source configuration for the handler. See Integration below.
-  final ChannelNamespaceHandlerConfigsOnPublishIntegration integration;
+  final pulumi.Input<ChannelNamespaceHandlerConfigsOnPublishIntegration> integration;
 
   /// Creates a new [ChannelNamespaceHandlerConfigsOnPublish].
   /// [behavior] Behavior for the handler. Valid values: `CODE`, `DIRECT`.
@@ -19,14 +20,14 @@ class ChannelNamespaceHandlerConfigsOnPublish {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'behavior': behavior,
-      'integration': integration.toMap(),
+      'integration': pulumi.Input.mapInputValue<ChannelNamespaceHandlerConfigsOnPublishIntegration, Map<String, dynamic>>(integration, (value) => value.toMap()),
     };
   }
 
   factory ChannelNamespaceHandlerConfigsOnPublish.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigsOnPublish(
-      behavior: map['behavior'] as String,
-      integration: ChannelNamespaceHandlerConfigsOnPublishIntegration.fromMap((map['integration'] as Map).cast<String, dynamic>()),
+      behavior: (map['behavior'] as String).input(),
+      integration: (ChannelNamespaceHandlerConfigsOnPublishIntegration.fromMap((map['integration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

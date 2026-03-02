@@ -19,13 +19,10 @@ class AccessKeyArgs {
   /// [status] Access key status to apply. Defaults to `Active`. Valid values are `Active` and `Inactive`.
   /// [user] IAM user to associate with this access key.
   AccessKeyArgs({
-    pulumi.Output<String>? pgpKey,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> user,
-  }) :
-      pgpKey = pulumi.Input.asOptionalInput<String>(pgpKey),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      user = pulumi.Input.asInput<String>(user);
+    this.pgpKey,
+    this.status,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AccessKeyArgs {
 
   factory AccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return AccessKeyArgs(
-      pgpKey: map['pgpKey'] == null ? null : pulumi.Output.create<String>(map['pgpKey'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      user: pulumi.Output.create<String>(map['user'] as String),
+      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

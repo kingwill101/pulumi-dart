@@ -49,35 +49,21 @@ class EcsSnapshotState {
   /// [status] The status of the Snapshot.
   /// [tags] A mapping of tags to assign to the resource.
   EcsSnapshotState({
-    pulumi.Output<String>? category,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? diskId,
-    pulumi.Output<bool>? force,
-    pulumi.Output<bool>? instantAccess,
-    pulumi.Output<int>? instantAccessRetentionDays,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<int>? retentionDays,
-    pulumi.Output<String>? snapshotName,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      category = pulumi.Input.asOptionalInput<String>(category),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskId = pulumi.Input.asOptionalInput<String>(diskId),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      instantAccess = pulumi.Input.asOptionalInput<bool>(instantAccess),
-      instantAccessRetentionDays = pulumi.Input.asOptionalInput<int>(instantAccessRetentionDays),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.category,
+    this.createTime,
+    this.description,
+    this.diskId,
+    this.force,
+    this.instantAccess,
+    this.instantAccessRetentionDays,
+    this.name,
+    this.regionId,
+    this.resourceGroupId,
+    this.retentionDays,
+    this.snapshotName,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,20 +86,20 @@ class EcsSnapshotState {
 
   factory EcsSnapshotState.fromMap(Map<String, dynamic> map) {
     return EcsSnapshotState(
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskId: map['diskId'] == null ? null : pulumi.Output.create<String>(map['diskId'] as String),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      instantAccess: map['instantAccess'] == null ? null : pulumi.Output.create<bool>(map['instantAccess'] as bool),
-      instantAccessRetentionDays: map['instantAccessRetentionDays'] == null ? null : pulumi.Output.create<int>(map['instantAccessRetentionDays'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      instantAccess: map['instantAccess'] == null ? null : (map['instantAccess'] as bool).input(),
+      instantAccessRetentionDays: map['instantAccessRetentionDays'] == null ? null : (map['instantAccessRetentionDays'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetIpPrefixArgs {
   /// [ipPrefixName] Name of the IP Prefix.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetIpPrefixArgs({
-    required pulumi.Output<String> ipPrefixName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      ipPrefixName = pulumi.Input.asInput<String>(ipPrefixName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.ipPrefixName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetIpPrefixArgs {
 
   factory GetIpPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GetIpPrefixArgs(
-      ipPrefixName: pulumi.Output.create<String>(map['ipPrefixName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      ipPrefixName: (map['ipPrefixName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

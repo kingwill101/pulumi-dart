@@ -25,19 +25,13 @@ class SpringCloudElasticApplicationPerformanceMonitoringState {
   /// [serviceName] Specifies the service name which is used to keep all the errors and transactions of your service together and is the primary filter in the Elastic APM user interface.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   SpringCloudElasticApplicationPerformanceMonitoringState({
-    pulumi.Output<List<String>>? applicationPackages,
-    pulumi.Output<bool>? globallyEnabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? serverUrl,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<String>? springCloudServiceId,
-  }) :
-      applicationPackages = pulumi.Input.asOptionalInput<List<String>>(applicationPackages),
-      globallyEnabled = pulumi.Input.asOptionalInput<bool>(globallyEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverUrl = pulumi.Input.asOptionalInput<String>(serverUrl),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      springCloudServiceId = pulumi.Input.asOptionalInput<String>(springCloudServiceId);
+    this.applicationPackages,
+    this.globallyEnabled,
+    this.name,
+    this.serverUrl,
+    this.serviceName,
+    this.springCloudServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SpringCloudElasticApplicationPerformanceMonitoringState {
 
   factory SpringCloudElasticApplicationPerformanceMonitoringState.fromMap(Map<String, dynamic> map) {
     return SpringCloudElasticApplicationPerformanceMonitoringState(
-      applicationPackages: map['applicationPackages'] == null ? null : pulumi.Output.create<List<String>>((map['applicationPackages'] as List).cast<String>()),
-      globallyEnabled: map['globallyEnabled'] == null ? null : pulumi.Output.create<bool>(map['globallyEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverUrl: map['serverUrl'] == null ? null : pulumi.Output.create<String>(map['serverUrl'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : pulumi.Output.create<String>(map['springCloudServiceId'] as String),
+      applicationPackages: map['applicationPackages'] == null ? null : ((map['applicationPackages'] as List).cast<String>()).input(),
+      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
     );
   }
 }

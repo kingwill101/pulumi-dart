@@ -28,19 +28,13 @@ class CxEnvironmentState {
   /// [updateTime] Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   /// [versionConfigs] A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
   CxEnvironmentState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<List<CxEnvironmentVersionConfig>>? versionConfigs,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      versionConfigs = pulumi.Input.asOptionalInput<List<CxEnvironmentVersionConfig>>(versionConfigs);
+    this.description,
+    this.displayName,
+    this.name,
+    this.parent,
+    this.updateTime,
+    this.versionConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class CxEnvironmentState {
 
   factory CxEnvironmentState.fromMap(Map<String, dynamic> map) {
     return CxEnvironmentState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      versionConfigs: map['versionConfigs'] == null ? null : pulumi.Output.create<List<CxEnvironmentVersionConfig>>(pulumi.Input.decodeList<CxEnvironmentVersionConfig>(map['versionConfigs'], (value) => CxEnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      versionConfigs: map['versionConfigs'] == null ? null : (pulumi.Input.decodeList<CxEnvironmentVersionConfig>(map['versionConfigs'], (value) => CxEnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

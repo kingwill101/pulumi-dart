@@ -35,35 +35,21 @@ class SubnetState {
   /// [vswitchName] Optional.
   /// [zoneId] Optional.
   SubnetState({
-    pulumi.Output<String>? availabilityZone,
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enableIpv6,
-    pulumi.Output<String>? ipv6CidrBlock,
-    pulumi.Output<int>? ipv6CidrBlockMask,
-    pulumi.Output<bool>? isDefault,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchName,
-    pulumi.Output<String>? zoneId,
-  }) :
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enableIpv6 = pulumi.Input.asOptionalInput<bool>(enableIpv6),
-      ipv6CidrBlock = pulumi.Input.asOptionalInput<String>(ipv6CidrBlock),
-      ipv6CidrBlockMask = pulumi.Input.asOptionalInput<int>(ipv6CidrBlockMask),
-      isDefault = pulumi.Input.asOptionalInput<bool>(isDefault),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchName = pulumi.Input.asOptionalInput<String>(vswitchName),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.availabilityZone,
+    this.cidrBlock,
+    this.createTime,
+    this.description,
+    this.enableIpv6,
+    this.ipv6CidrBlock,
+    this.ipv6CidrBlockMask,
+    this.isDefault,
+    this.name,
+    this.status,
+    this.tags,
+    this.vpcId,
+    this.vswitchName,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,20 +72,20 @@ class SubnetState {
 
   factory SubnetState.fromMap(Map<String, dynamic> map) {
     return SubnetState(
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enableIpv6: map['enableIpv6'] == null ? null : pulumi.Output.create<bool>(map['enableIpv6'] as bool),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : pulumi.Output.create<String>(map['ipv6CidrBlock'] as String),
-      ipv6CidrBlockMask: map['ipv6CidrBlockMask'] == null ? null : pulumi.Output.create<int>(map['ipv6CidrBlockMask'] as int),
-      isDefault: map['isDefault'] == null ? null : pulumi.Output.create<bool>(map['isDefault'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchName: map['vswitchName'] == null ? null : pulumi.Output.create<String>(map['vswitchName'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableIpv6: map['enableIpv6'] == null ? null : (map['enableIpv6'] as bool).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      ipv6CidrBlockMask: map['ipv6CidrBlockMask'] == null ? null : (map['ipv6CidrBlockMask'] as int).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchName: map['vswitchName'] == null ? null : (map['vswitchName'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

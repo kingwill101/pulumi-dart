@@ -44,29 +44,18 @@ class JobArgs {
   /// [project] Optional.
   /// [template] The template used to create executions for this Job.
   JobArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<GoogleCloudRunV2BinaryAuthorization>? binaryAuthorization,
-    pulumi.Output<String>? client,
-    pulumi.Output<String>? clientVersion,
-    required pulumi.Output<String> jobId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<JobLaunchStage>? launchStage,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<GoogleCloudRunV2ExecutionTemplate> template,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      binaryAuthorization = pulumi.Input.asOptionalInput<GoogleCloudRunV2BinaryAuthorization>(binaryAuthorization),
-      client = pulumi.Input.asOptionalInput<String>(client),
-      clientVersion = pulumi.Input.asOptionalInput<String>(clientVersion),
-      jobId = pulumi.Input.asInput<String>(jobId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      launchStage = pulumi.Input.asOptionalInput<JobLaunchStage>(launchStage),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      template = pulumi.Input.asInput<GoogleCloudRunV2ExecutionTemplate>(template);
+    this.annotations,
+    this.binaryAuthorization,
+    this.client,
+    this.clientVersion,
+    required this.jobId,
+    this.labels,
+    this.launchStage,
+    this.location,
+    this.name,
+    this.project,
+    required this.template,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      binaryAuthorization: map['binaryAuthorization'] == null ? null : pulumi.Output.create<GoogleCloudRunV2BinaryAuthorization>(GoogleCloudRunV2BinaryAuthorization.fromMap((map['binaryAuthorization'] as Map).cast<String, dynamic>())),
-      client: map['client'] == null ? null : pulumi.Output.create<String>(map['client'] as String),
-      clientVersion: map['clientVersion'] == null ? null : pulumi.Output.create<String>(map['clientVersion'] as String),
-      jobId: pulumi.Output.create<String>(map['jobId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      launchStage: map['launchStage'] == null ? null : pulumi.Output.create<JobLaunchStage>(JobLaunchStage.fromValue(map['launchStage'] as String)),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      template: pulumi.Output.create<GoogleCloudRunV2ExecutionTemplate>(GoogleCloudRunV2ExecutionTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      binaryAuthorization: map['binaryAuthorization'] == null ? null : (GoogleCloudRunV2BinaryAuthorization.fromMap((map['binaryAuthorization'] as Map).cast<String, dynamic>())).input(),
+      client: map['client'] == null ? null : (map['client'] as String).input(),
+      clientVersion: map['clientVersion'] == null ? null : (map['clientVersion'] as String).input(),
+      jobId: (map['jobId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      launchStage: map['launchStage'] == null ? null : (JobLaunchStage.fromValue(map['launchStage'] as String)).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      template: (GoogleCloudRunV2ExecutionTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

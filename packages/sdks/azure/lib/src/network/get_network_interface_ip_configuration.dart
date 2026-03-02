@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkInterfaceIpConfiguration {
   /// A list of Backend Address Pool IDs within a Application Gateway that this Network Interface is connected to.
-  final List<String> applicationGatewayBackendAddressPoolsIds;
-  final List<String> applicationSecurityGroupIds;
+  final pulumi.Input<List<String>> applicationGatewayBackendAddressPoolsIds;
+  final pulumi.Input<List<String>> applicationSecurityGroupIds;
   /// The Frontend IP Configuration ID of a Gateway SKU Load Balancer the Network Interface is consuming.
-  final String gatewayLoadBalancerFrontendIpConfigurationId;
+  final pulumi.Input<String> gatewayLoadBalancerFrontendIpConfigurationId;
   /// A list of Backend Address Pool IDs within a Load Balancer that this Network Interface is connected to.
-  final List<String> loadBalancerBackendAddressPoolsIds;
+  final pulumi.Input<List<String>> loadBalancerBackendAddressPoolsIds;
   /// A list of Inbound NAT Rule IDs within a Load Balancer that this Network Interface is connected to.
-  final List<String> loadBalancerInboundNatRulesIds;
+  final pulumi.Input<List<String>> loadBalancerInboundNatRulesIds;
   /// Specifies the name of the Network Interface.
-  final String name;
+  final pulumi.Input<String> name;
   /// is this the Primary IP Configuration for this Network Interface?
-  final bool primary;
+  final pulumi.Input<bool> primary;
   /// The Private IP Address assigned to this Network Interface.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// The IP Address allocation type for the Private address, such as `Dynamic` or `Static`.
-  final String privateIpAddressAllocation;
-  final String privateIpAddressVersion;
+  final pulumi.Input<String> privateIpAddressAllocation;
+  final pulumi.Input<String> privateIpAddressVersion;
   /// The ID of the Public IP Address which is connected to this Network Interface.
-  final String publicIpAddressId;
+  final pulumi.Input<String> publicIpAddressId;
   /// The ID of the Subnet which the Network Interface is connected to.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetNetworkInterfaceIpConfiguration].
   /// [applicationGatewayBackendAddressPoolsIds] A list of Backend Address Pool IDs within a Application Gateway that this Network Interface is connected to.
@@ -72,18 +73,18 @@ class GetNetworkInterfaceIpConfiguration {
 
   factory GetNetworkInterfaceIpConfiguration.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceIpConfiguration(
-      applicationGatewayBackendAddressPoolsIds: (map['applicationGatewayBackendAddressPoolsIds'] as List).cast<String>(),
-      applicationSecurityGroupIds: (map['applicationSecurityGroupIds'] as List).cast<String>(),
-      gatewayLoadBalancerFrontendIpConfigurationId: map['gatewayLoadBalancerFrontendIpConfigurationId'] as String,
-      loadBalancerBackendAddressPoolsIds: (map['loadBalancerBackendAddressPoolsIds'] as List).cast<String>(),
-      loadBalancerInboundNatRulesIds: (map['loadBalancerInboundNatRulesIds'] as List).cast<String>(),
-      name: map['name'] as String,
-      primary: map['primary'] as bool,
-      privateIpAddress: map['privateIpAddress'] as String,
-      privateIpAddressAllocation: map['privateIpAddressAllocation'] as String,
-      privateIpAddressVersion: map['privateIpAddressVersion'] as String,
-      publicIpAddressId: map['publicIpAddressId'] as String,
-      subnetId: map['subnetId'] as String,
+      applicationGatewayBackendAddressPoolsIds: ((map['applicationGatewayBackendAddressPoolsIds'] as List).cast<String>()).input(),
+      applicationSecurityGroupIds: ((map['applicationSecurityGroupIds'] as List).cast<String>()).input(),
+      gatewayLoadBalancerFrontendIpConfigurationId: (map['gatewayLoadBalancerFrontendIpConfigurationId'] as String).input(),
+      loadBalancerBackendAddressPoolsIds: ((map['loadBalancerBackendAddressPoolsIds'] as List).cast<String>()).input(),
+      loadBalancerInboundNatRulesIds: ((map['loadBalancerInboundNatRulesIds'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      primary: (map['primary'] as bool).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      privateIpAddressAllocation: (map['privateIpAddressAllocation'] as String).input(),
+      privateIpAddressVersion: (map['privateIpAddressVersion'] as String).input(),
+      publicIpAddressId: (map['publicIpAddressId'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

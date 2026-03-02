@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_pipeline_job.dart';
 
 /// Request message for PipelineService.CreatePipelineJob.
 class GoogleCloudAiplatformV1beta1CreatePipelineJobRequest {
   /// The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
-  final String parent;
+  final pulumi.Input<String> parent;
   /// The PipelineJob to create.
-  final GoogleCloudAiplatformV1beta1PipelineJob pipelineJob;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1PipelineJob> pipelineJob;
   /// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
-  final String? pipelineJobId;
+  final pulumi.Input<String>? pipelineJobId;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1CreatePipelineJobRequest].
   /// [parent] The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
@@ -24,16 +25,16 @@ class GoogleCloudAiplatformV1beta1CreatePipelineJobRequest {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'parent': parent,
-      'pipelineJob': pipelineJob.toMap(),
+      'pipelineJob': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1PipelineJob, Map<String, dynamic>>(pipelineJob, (value) => value.toMap()),
       'pipelineJobId': ?pipelineJobId,
     };
   }
 
   factory GoogleCloudAiplatformV1beta1CreatePipelineJobRequest.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1CreatePipelineJobRequest(
-      parent: map['parent'] as String,
-      pipelineJob: GoogleCloudAiplatformV1beta1PipelineJob.fromMap((map['pipelineJob'] as Map).cast<String, dynamic>()),
-      pipelineJobId: map['pipelineJobId'] == null ? null : map['pipelineJobId'] as String,
+      parent: (map['parent'] as String).input(),
+      pipelineJob: (GoogleCloudAiplatformV1beta1PipelineJob.fromMap((map['pipelineJob'] as Map).cast<String, dynamic>())).input(),
+      pipelineJobId: map['pipelineJobId'] == null ? null : (map['pipelineJobId'] as String).input(),
     );
   }
 }

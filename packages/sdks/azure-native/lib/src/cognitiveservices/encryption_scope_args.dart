@@ -26,17 +26,12 @@ class EncryptionScopeArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   EncryptionScopeArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? encryptionScopeName,
-    pulumi.Output<EncryptionScopeProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      encryptionScopeName = pulumi.Input.asOptionalInput<String>(encryptionScopeName),
-      properties = pulumi.Input.asOptionalInput<EncryptionScopeProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    this.encryptionScopeName,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class EncryptionScopeArgs {
 
   factory EncryptionScopeArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionScopeArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      encryptionScopeName: map['encryptionScopeName'] == null ? null : pulumi.Output.create<String>(map['encryptionScopeName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<EncryptionScopeProperties>(EncryptionScopeProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      encryptionScopeName: map['encryptionScopeName'] == null ? null : (map['encryptionScopeName'] as String).input(),
+      properties: map['properties'] == null ? null : (EncryptionScopeProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

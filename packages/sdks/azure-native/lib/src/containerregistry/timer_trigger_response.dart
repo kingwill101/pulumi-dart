@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of a timer trigger.
 class TimerTriggerResponse {
   /// The name of the trigger.
-  final String name;
+  final pulumi.Input<String> name;
   /// The CRON expression for the task schedule
-  final String schedule;
+  final pulumi.Input<String> schedule;
   /// The current status of trigger.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [TimerTriggerResponse].
   /// [name] The name of the trigger.
@@ -30,9 +31,9 @@ class TimerTriggerResponse {
 
   factory TimerTriggerResponse.fromMap(Map<String, dynamic> map) {
     return TimerTriggerResponse(
-      name: map['name'] as String,
-      schedule: map['schedule'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      name: (map['name'] as String).input(),
+      schedule: (map['schedule'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

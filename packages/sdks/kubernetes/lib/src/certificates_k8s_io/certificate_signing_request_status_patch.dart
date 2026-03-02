@@ -27,9 +27,9 @@ class CertificateSigningRequestStatusPatch {
   /// ...
   /// -----END CERTIFICATE-----
   /// )
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".
-  final List<CertificateSigningRequestConditionPatch>? conditions;
+  final pulumi.Input<List<CertificateSigningRequestConditionPatch>>? conditions;
 
   /// Creates a new [CertificateSigningRequestStatusPatch].
   /// [certificate] certificate is populated with an issued certificate by the signer after an Approved condition is present. This field is set via the /status subresource. Once populated, this field is immutable.
@@ -42,14 +42,14 @@ class CertificateSigningRequestStatusPatch {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificate': ?certificate,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<CertificateSigningRequestConditionPatch, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<CertificateSigningRequestConditionPatch>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<CertificateSigningRequestConditionPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CertificateSigningRequestStatusPatch.fromMap(Map<String, dynamic> map) {
     return CertificateSigningRequestStatusPatch(
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<CertificateSigningRequestConditionPatch>(map['conditions'], (value) => CertificateSigningRequestConditionPatch.fromMap((value as Map).cast<String, dynamic>())),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CertificateSigningRequestConditionPatch>(map['conditions'], (value) => CertificateSigningRequestConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

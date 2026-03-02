@@ -67,33 +67,20 @@ class InstanceArgs {
   /// [placementPolicy] The placement policy name for the instance in the format of
   /// [project] The ID of the project in which the resource belongs.
   InstanceArgs({
-    pulumi.Output<InstanceAccessRulesOptions>? accessRulesOptions,
-    required pulumi.Output<String> capacityGib,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> filesystem,
-    pulumi.Output<bool>? gkeSupportEnabled,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> network,
-    required pulumi.Output<String> perUnitStorageThroughput,
-    pulumi.Output<String>? placementPolicy,
-    pulumi.Output<String>? project,
-  }) :
-      accessRulesOptions = pulumi.Input.asOptionalInput<InstanceAccessRulesOptions>(accessRulesOptions),
-      capacityGib = pulumi.Input.asInput<String>(capacityGib),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filesystem = pulumi.Input.asInput<String>(filesystem),
-      gkeSupportEnabled = pulumi.Input.asOptionalInput<bool>(gkeSupportEnabled),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      network = pulumi.Input.asInput<String>(network),
-      perUnitStorageThroughput = pulumi.Input.asInput<String>(perUnitStorageThroughput),
-      placementPolicy = pulumi.Input.asOptionalInput<String>(placementPolicy),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.accessRulesOptions,
+    required this.capacityGib,
+    this.description,
+    required this.filesystem,
+    this.gkeSupportEnabled,
+    required this.instanceId,
+    this.kmsKey,
+    this.labels,
+    required this.location,
+    required this.network,
+    required this.perUnitStorageThroughput,
+    this.placementPolicy,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -115,19 +102,19 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      accessRulesOptions: map['accessRulesOptions'] == null ? null : pulumi.Output.create<InstanceAccessRulesOptions>(InstanceAccessRulesOptions.fromMap((map['accessRulesOptions'] as Map).cast<String, dynamic>())),
-      capacityGib: pulumi.Output.create<String>(map['capacityGib'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filesystem: pulumi.Output.create<String>(map['filesystem'] as String),
-      gkeSupportEnabled: map['gkeSupportEnabled'] == null ? null : pulumi.Output.create<bool>(map['gkeSupportEnabled'] as bool),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      perUnitStorageThroughput: pulumi.Output.create<String>(map['perUnitStorageThroughput'] as String),
-      placementPolicy: map['placementPolicy'] == null ? null : pulumi.Output.create<String>(map['placementPolicy'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      accessRulesOptions: map['accessRulesOptions'] == null ? null : (InstanceAccessRulesOptions.fromMap((map['accessRulesOptions'] as Map).cast<String, dynamic>())).input(),
+      capacityGib: (map['capacityGib'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filesystem: (map['filesystem'] as String).input(),
+      gkeSupportEnabled: map['gkeSupportEnabled'] == null ? null : (map['gkeSupportEnabled'] as bool).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      network: (map['network'] as String).input(),
+      perUnitStorageThroughput: (map['perUnitStorageThroughput'] as String).input(),
+      placementPolicy: map['placementPolicy'] == null ? null : (map['placementPolicy'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -30,19 +30,13 @@ class RepositoryState {
   /// [size] The disk usage of the repo, in bytes.
   /// [url] URL to clone the repository from Google Cloud Source Repositories.
   RepositoryState({
-    pulumi.Output<bool>? createIgnoreAlreadyExists,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<RepositoryPubsubConfig>>? pubsubConfigs,
-    pulumi.Output<int>? size,
-    pulumi.Output<String>? url,
-  }) :
-      createIgnoreAlreadyExists = pulumi.Input.asOptionalInput<bool>(createIgnoreAlreadyExists),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pubsubConfigs = pulumi.Input.asOptionalInput<List<RepositoryPubsubConfig>>(pubsubConfigs),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.createIgnoreAlreadyExists,
+    this.name,
+    this.project,
+    this.pubsubConfigs,
+    this.size,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class RepositoryState {
 
   factory RepositoryState.fromMap(Map<String, dynamic> map) {
     return RepositoryState(
-      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : pulumi.Output.create<bool>(map['createIgnoreAlreadyExists'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pubsubConfigs: map['pubsubConfigs'] == null ? null : pulumi.Output.create<List<RepositoryPubsubConfig>>(pulumi.Input.decodeList<RepositoryPubsubConfig>(map['pubsubConfigs'], (value) => RepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pubsubConfigs: map['pubsubConfigs'] == null ? null : (pulumi.Input.decodeList<RepositoryPubsubConfig>(map['pubsubConfigs'], (value) => RepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

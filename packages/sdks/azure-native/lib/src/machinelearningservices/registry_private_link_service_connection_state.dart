@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The connection state.
 class RegistryPrivateLinkServiceConnectionState {
   /// Some RP chose "None". Other RPs use this for region expansion.
-  final String? actionsRequired;
+  final pulumi.Input<String>? actionsRequired;
   /// User-defined message that, per NRP doc, may be used for approval-related message.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Connection status of the service consumer with the service provider
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [RegistryPrivateLinkServiceConnectionState].
   /// [actionsRequired] Some RP chose "None". Other RPs use this for region expansion.
@@ -30,9 +31,9 @@ class RegistryPrivateLinkServiceConnectionState {
 
   factory RegistryPrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
     return RegistryPrivateLinkServiceConnectionState(
-      actionsRequired: map['actionsRequired'] == null ? null : map['actionsRequired'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      actionsRequired: map['actionsRequired'] == null ? null : (map['actionsRequired'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

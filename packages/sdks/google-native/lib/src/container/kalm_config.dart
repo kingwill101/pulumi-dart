@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration options for the KALM addon.
 class KalmConfig {
   /// Whether KALM is enabled for this cluster.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [KalmConfig].
   /// [enabled] Whether KALM is enabled for this cluster.
@@ -20,7 +21,7 @@ class KalmConfig {
 
   factory KalmConfig.fromMap(Map<String, dynamic> map) {
     return KalmConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

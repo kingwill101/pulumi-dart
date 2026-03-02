@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistrationManagementSettings {
   /// The desired renewal method for this Registration. The actual renewalMethod is automatically updated to reflect this choice.
@@ -9,15 +10,15 @@ class RegistrationManagementSettings {
   /// When preferredRenewalMethod is set to AUTOMATIC_RENEWAL, the actual renewalMethod can be set to RENEWAL_DISABLED in case of
   /// problems with the billing account or reported domain abuse. In such cases, check the issues field on the Registration. After
   /// the problem is resolved, the renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
-  final String? preferredRenewalMethod;
+  final pulumi.Input<String>? preferredRenewalMethod;
   /// (Output)
   /// Output only. The actual renewal method for this Registration. When preferredRenewalMethod is set to AUTOMATIC_RENEWAL,
   /// the actual renewalMethod can be equal to RENEWAL_DISABLED—for example, when there are problems with the billing account
   /// or reported domain abuse. In such cases, check the issues field on the Registration. After the problem is resolved, the
   /// renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
-  final String? renewalMethod;
+  final pulumi.Input<String>? renewalMethod;
   /// Controls whether the domain can be transferred to another registrar. Values are UNLOCKED or LOCKED.
-  final String? transferLockState;
+  final pulumi.Input<String>? transferLockState;
 
   /// Creates a new [RegistrationManagementSettings].
   /// [preferredRenewalMethod] The desired renewal method for this Registration. The actual renewalMethod is automatically updated to reflect this choice.
@@ -39,9 +40,9 @@ class RegistrationManagementSettings {
 
   factory RegistrationManagementSettings.fromMap(Map<String, dynamic> map) {
     return RegistrationManagementSettings(
-      preferredRenewalMethod: map['preferredRenewalMethod'] == null ? null : map['preferredRenewalMethod'] as String,
-      renewalMethod: map['renewalMethod'] == null ? null : map['renewalMethod'] as String,
-      transferLockState: map['transferLockState'] == null ? null : map['transferLockState'] as String,
+      preferredRenewalMethod: map['preferredRenewalMethod'] == null ? null : (map['preferredRenewalMethod'] as String).input(),
+      renewalMethod: map['renewalMethod'] == null ? null : (map['renewalMethod'] as String).input(),
+      transferLockState: map['transferLockState'] == null ? null : (map['transferLockState'] as String).input(),
     );
   }
 }

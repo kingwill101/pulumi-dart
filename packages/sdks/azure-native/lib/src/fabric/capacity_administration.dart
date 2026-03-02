@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The administration properties of the Fabric capacity resource
 class CapacityAdministration {
   /// An array of administrator user identities.
-  final List<String> members;
+  final pulumi.Input<List<String>> members;
 
   /// Creates a new [CapacityAdministration].
   /// [members] An array of administrator user identities.
@@ -20,7 +21,7 @@ class CapacityAdministration {
 
   factory CapacityAdministration.fromMap(Map<String, dynamic> map) {
     return CapacityAdministration(
-      members: (map['members'] as List).cast<String>(),
+      members: ((map['members'] as List).cast<String>()).input(),
     );
   }
 }

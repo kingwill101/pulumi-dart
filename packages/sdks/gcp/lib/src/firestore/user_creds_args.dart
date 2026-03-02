@@ -24,13 +24,10 @@ class UserCredsArgs {
   /// [name] The ID to use for the user creds, which will become the final component
   /// [project] The ID of the project in which the resource belongs.
   UserCredsArgs({
-    required pulumi.Output<String> database,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      database = pulumi.Input.asInput<String>(database),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.database,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,9 +39,9 @@ class UserCredsArgs {
 
   factory UserCredsArgs.fromMap(Map<String, dynamic> map) {
     return UserCredsArgs(
-      database: pulumi.Output.create<String>(map['database'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      database: (map['database'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

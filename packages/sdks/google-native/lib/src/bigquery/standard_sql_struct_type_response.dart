@@ -6,7 +6,7 @@ import 'standard_sql_field_response.dart';
 /// The representation of a SQL STRUCT type.
 class StandardSqlStructTypeResponse {
   /// Fields within the struct.
-  final List<StandardSqlFieldResponse> fields;
+  final pulumi.Input<List<StandardSqlFieldResponse>> fields;
 
   /// Creates a new [StandardSqlStructTypeResponse].
   /// [fields] Fields within the struct.
@@ -16,13 +16,13 @@ class StandardSqlStructTypeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields': pulumi.Input.encodeList<StandardSqlFieldResponse, Map<String, dynamic>>(fields, (value) => value.toMap()),
+      'fields': pulumi.Input.mapInputValue<List<StandardSqlFieldResponse>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<StandardSqlFieldResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StandardSqlStructTypeResponse.fromMap(Map<String, dynamic> map) {
     return StandardSqlStructTypeResponse(
-      fields: pulumi.Input.decodeList<StandardSqlFieldResponse>(map['fields'], (value) => StandardSqlFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
+      fields: (pulumi.Input.decodeList<StandardSqlFieldResponse>(map['fields'], (value) => StandardSqlFieldResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

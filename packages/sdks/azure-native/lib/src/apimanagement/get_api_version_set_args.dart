@@ -19,13 +19,10 @@ class GetApiVersionSetArgs {
   /// [serviceName] The name of the API Management service.
   /// [versionSetId] Api Version Set identifier. Must be unique in the current API Management service instance.
   GetApiVersionSetArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> versionSetId,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      versionSetId = pulumi.Input.asInput<String>(versionSetId);
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.versionSetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetApiVersionSetArgs {
 
   factory GetApiVersionSetArgs.fromMap(Map<String, dynamic> map) {
     return GetApiVersionSetArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      versionSetId: pulumi.Output.create<String>(map['versionSetId'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      versionSetId: (map['versionSetId'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Plan for the resource.
 class Plan {
   /// A user defined name of the 3rd Party Artifact that is being procured.
-  final String name;
+  final pulumi.Input<String> name;
   /// The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
-  final String product;
+  final pulumi.Input<String> product;
   /// A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
-  final String? promotionCode;
+  final pulumi.Input<String>? promotionCode;
   /// The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// The version of the desired product/artifact.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [Plan].
   /// [name] A user defined name of the 3rd Party Artifact that is being procured.
@@ -40,11 +41,11 @@ class Plan {
 
   factory Plan.fromMap(Map<String, dynamic> map) {
     return Plan(
-      name: map['name'] as String,
-      product: map['product'] as String,
-      promotionCode: map['promotionCode'] == null ? null : map['promotionCode'] as String,
-      publisher: map['publisher'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      name: (map['name'] as String).input(),
+      product: (map['product'] as String).input(),
+      promotionCode: map['promotionCode'] == null ? null : (map['promotionCode'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

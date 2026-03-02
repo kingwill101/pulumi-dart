@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterMaintenanceWindowNotAllowed {
   /// The end of a time span, formatted as an RFC3339 string.
-  final String end;
+  final pulumi.Input<String> end;
   /// The start of a time span, formatted as an RFC3339 string.
-  final String start;
+  final pulumi.Input<String> start;
 
   /// Creates a new [KubernetesClusterMaintenanceWindowNotAllowed].
   /// [end] The end of a time span, formatted as an RFC3339 string.
@@ -24,8 +25,8 @@ class KubernetesClusterMaintenanceWindowNotAllowed {
 
   factory KubernetesClusterMaintenanceWindowNotAllowed.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterMaintenanceWindowNotAllowed(
-      end: map['end'] as String,
-      start: map['start'] as String,
+      end: (map['end'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

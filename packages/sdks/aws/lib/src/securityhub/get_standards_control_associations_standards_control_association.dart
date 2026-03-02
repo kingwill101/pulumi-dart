@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStandardsControlAssociationsStandardsControlAssociation {
   /// Enablement status of a control in a specific standard.
-  final String associationStatus;
+  final pulumi.Input<String> associationStatus;
   /// List of underlying requirements in the compliance framework related to the standard.
-  final List<String> relatedRequirements;
+  final pulumi.Input<List<String>> relatedRequirements;
   /// ARN of the security control.
-  final String securityControlArn;
+  final pulumi.Input<String> securityControlArn;
   /// The identifier of the control (identified with `SecurityControlId`, `SecurityControlArn`, or a mix of both parameters).
-  final String securityControlId;
+  final pulumi.Input<String> securityControlId;
   /// ARN of the standard.
-  final String standardsArn;
+  final pulumi.Input<String> standardsArn;
   /// Description of the standard.
-  final String standardsControlDescription;
+  final pulumi.Input<String> standardsControlDescription;
   /// Title of the standard.
-  final String standardsControlTitle;
+  final pulumi.Input<String> standardsControlTitle;
   /// Last time that a control's enablement status in a specified standard was updated.
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
   /// Reason for updating a control's enablement status in a specified standard.
-  final String updatedReason;
+  final pulumi.Input<String> updatedReason;
 
   /// Creates a new [GetStandardsControlAssociationsStandardsControlAssociation].
   /// [associationStatus] Enablement status of a control in a specific standard.
@@ -59,15 +60,15 @@ class GetStandardsControlAssociationsStandardsControlAssociation {
 
   factory GetStandardsControlAssociationsStandardsControlAssociation.fromMap(Map<String, dynamic> map) {
     return GetStandardsControlAssociationsStandardsControlAssociation(
-      associationStatus: map['associationStatus'] as String,
-      relatedRequirements: (map['relatedRequirements'] as List).cast<String>(),
-      securityControlArn: map['securityControlArn'] as String,
-      securityControlId: map['securityControlId'] as String,
-      standardsArn: map['standardsArn'] as String,
-      standardsControlDescription: map['standardsControlDescription'] as String,
-      standardsControlTitle: map['standardsControlTitle'] as String,
-      updatedAt: map['updatedAt'] as String,
-      updatedReason: map['updatedReason'] as String,
+      associationStatus: (map['associationStatus'] as String).input(),
+      relatedRequirements: ((map['relatedRequirements'] as List).cast<String>()).input(),
+      securityControlArn: (map['securityControlArn'] as String).input(),
+      securityControlId: (map['securityControlId'] as String).input(),
+      standardsArn: (map['standardsArn'] as String).input(),
+      standardsControlDescription: (map['standardsControlDescription'] as String).input(),
+      standardsControlTitle: (map['standardsControlTitle'] as String).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      updatedReason: (map['updatedReason'] as String).input(),
     );
   }
 }

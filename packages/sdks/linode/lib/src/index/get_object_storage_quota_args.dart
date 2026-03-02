@@ -13,9 +13,8 @@ class GetObjectStorageQuotaArgs {
   /// Creates a new [GetObjectStorageQuotaArgs].
   /// [quotaId] The Object Storage quota ID.
   GetObjectStorageQuotaArgs({
-    required pulumi.Output<String> quotaId,
-  }) :
-      quotaId = pulumi.Input.asInput<String>(quotaId);
+    required this.quotaId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetObjectStorageQuotaArgs {
 
   factory GetObjectStorageQuotaArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectStorageQuotaArgs(
-      quotaId: pulumi.Output.create<String>(map['quotaId'] as String),
+      quotaId: (map['quotaId'] as String).input(),
     );
   }
 }

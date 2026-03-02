@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EncryptionControlResourceExclusionsNatGateway {
   /// The current state of the VPC Encryption Control.
-  final String state;
+  final pulumi.Input<String> state;
   /// A message providing additional information about the state of the VPC Encryption Control.
-  final String stateMessage;
+  final pulumi.Input<String> stateMessage;
 
   /// Creates a new [EncryptionControlResourceExclusionsNatGateway].
   /// [state] The current state of the VPC Encryption Control.
@@ -24,8 +25,8 @@ class EncryptionControlResourceExclusionsNatGateway {
 
   factory EncryptionControlResourceExclusionsNatGateway.fromMap(Map<String, dynamic> map) {
     return EncryptionControlResourceExclusionsNatGateway(
-      state: map['state'] as String,
-      stateMessage: map['stateMessage'] as String,
+      state: (map['state'] as String).input(),
+      stateMessage: (map['stateMessage'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsClusterControlPlaneRootVolume {
   /// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
-  final int? iops;
+  final pulumi.Input<int>? iops;
   /// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
-  final String? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
   /// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
-  final int? sizeGib;
+  final pulumi.Input<int>? sizeGib;
   /// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
-  final int? throughput;
+  final pulumi.Input<int>? throughput;
   /// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
-  final String? volumeType;
+  final pulumi.Input<String>? volumeType;
 
   /// Creates a new [AwsClusterControlPlaneRootVolume].
   /// [iops] Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
@@ -39,11 +40,11 @@ class AwsClusterControlPlaneRootVolume {
 
   factory AwsClusterControlPlaneRootVolume.fromMap(Map<String, dynamic> map) {
     return AwsClusterControlPlaneRootVolume(
-      iops: map['iops'] == null ? null : map['iops'] as int,
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
-      sizeGib: map['sizeGib'] == null ? null : map['sizeGib'] as int,
-      throughput: map['throughput'] == null ? null : map['throughput'] as int,
-      volumeType: map['volumeType'] == null ? null : map['volumeType'] as String,
+      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      sizeGib: map['sizeGib'] == null ? null : (map['sizeGib'] as int).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
     );
   }
 }

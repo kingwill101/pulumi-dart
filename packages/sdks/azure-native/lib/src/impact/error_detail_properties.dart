@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ARM error code and error message associated with the impact
 class ErrorDetailProperties {
   /// ARM Error code associated with the impact.
-  final String? errorCode;
+  final pulumi.Input<String>? errorCode;
   /// ARM Error Message associated with the impact
-  final String? errorMessage;
+  final pulumi.Input<String>? errorMessage;
 
   /// Creates a new [ErrorDetailProperties].
   /// [errorCode] ARM Error code associated with the impact.
@@ -25,8 +26,8 @@ class ErrorDetailProperties {
 
   factory ErrorDetailProperties.fromMap(Map<String, dynamic> map) {
     return ErrorDetailProperties(
-      errorCode: map['errorCode'] == null ? null : map['errorCode'] as String,
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
+      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
     );
   }
 }

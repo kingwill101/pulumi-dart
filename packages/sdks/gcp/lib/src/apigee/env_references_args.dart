@@ -26,17 +26,12 @@ class EnvReferencesArgs {
   /// [refers] Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
   /// [resourceType] The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
   EnvReferencesArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> envId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> refers,
-    required pulumi.Output<String> resourceType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      envId = pulumi.Input.asInput<String>(envId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      refers = pulumi.Input.asInput<String>(refers),
-      resourceType = pulumi.Input.asInput<String>(resourceType);
+    this.description,
+    required this.envId,
+    this.name,
+    required this.refers,
+    required this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class EnvReferencesArgs {
 
   factory EnvReferencesArgs.fromMap(Map<String, dynamic> map) {
     return EnvReferencesArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      envId: pulumi.Output.create<String>(map['envId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      refers: pulumi.Output.create<String>(map['refers'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      envId: (map['envId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      refers: (map['refers'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

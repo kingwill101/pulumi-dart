@@ -37,23 +37,15 @@ class DoArgs {
   /// [tenantName] unique identifier for DO resource
   /// [timeout] DO json
   DoArgs({
-    pulumi.Output<String>? bigipAddress,
-    pulumi.Output<String>? bigipPassword,
-    pulumi.Output<String>? bigipPort,
-    pulumi.Output<bool>? bigipTokenAuth,
-    pulumi.Output<String>? bigipUser,
-    required pulumi.Output<String> doJson,
-    pulumi.Output<String>? tenantName,
-    pulumi.Output<int>? timeout,
-  }) :
-      bigipAddress = pulumi.Input.asOptionalInput<String>(bigipAddress),
-      bigipPassword = pulumi.Input.asOptionalInput<String>(bigipPassword),
-      bigipPort = pulumi.Input.asOptionalInput<String>(bigipPort),
-      bigipTokenAuth = pulumi.Input.asOptionalInput<bool>(bigipTokenAuth),
-      bigipUser = pulumi.Input.asOptionalInput<String>(bigipUser),
-      doJson = pulumi.Input.asInput<String>(doJson),
-      tenantName = pulumi.Input.asOptionalInput<String>(tenantName),
-      timeout = pulumi.Input.asOptionalInput<int>(timeout);
+    this.bigipAddress,
+    this.bigipPassword,
+    this.bigipPort,
+    this.bigipTokenAuth,
+    this.bigipUser,
+    required this.doJson,
+    this.tenantName,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class DoArgs {
 
   factory DoArgs.fromMap(Map<String, dynamic> map) {
     return DoArgs(
-      bigipAddress: map['bigipAddress'] == null ? null : pulumi.Output.create<String>(map['bigipAddress'] as String),
-      bigipPassword: map['bigipPassword'] == null ? null : pulumi.Output.create<String>(map['bigipPassword'] as String),
-      bigipPort: map['bigipPort'] == null ? null : pulumi.Output.create<String>(map['bigipPort'] as String),
-      bigipTokenAuth: map['bigipTokenAuth'] == null ? null : pulumi.Output.create<bool>(map['bigipTokenAuth'] as bool),
-      bigipUser: map['bigipUser'] == null ? null : pulumi.Output.create<String>(map['bigipUser'] as String),
-      doJson: pulumi.Output.create<String>(map['doJson'] as String),
-      tenantName: map['tenantName'] == null ? null : pulumi.Output.create<String>(map['tenantName'] as String),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<int>(map['timeout'] as int),
+      bigipAddress: map['bigipAddress'] == null ? null : (map['bigipAddress'] as String).input(),
+      bigipPassword: map['bigipPassword'] == null ? null : (map['bigipPassword'] as String).input(),
+      bigipPort: map['bigipPort'] == null ? null : (map['bigipPort'] as String).input(),
+      bigipTokenAuth: map['bigipTokenAuth'] == null ? null : (map['bigipTokenAuth'] as bool).input(),
+      bigipUser: map['bigipUser'] == null ? null : (map['bigipUser'] as String).input(),
+      doJson: (map['doJson'] as String).input(),
+      tenantName: map['tenantName'] == null ? null : (map['tenantName'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
     );
   }
 }

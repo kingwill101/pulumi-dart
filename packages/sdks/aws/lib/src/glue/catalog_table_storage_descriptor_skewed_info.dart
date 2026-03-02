@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogTableStorageDescriptorSkewedInfo {
   /// List of names of columns that contain skewed values.
-  final List<String>? skewedColumnNames;
+  final pulumi.Input<List<String>>? skewedColumnNames;
   /// List of values that appear so frequently as to be considered skewed.
-  final Map<String, String>? skewedColumnValueLocationMaps;
+  final pulumi.Input<Map<String, String>>? skewedColumnValueLocationMaps;
   /// Map of skewed values to the columns that contain them.
-  final List<String>? skewedColumnValues;
+  final pulumi.Input<List<String>>? skewedColumnValues;
 
   /// Creates a new [CatalogTableStorageDescriptorSkewedInfo].
   /// [skewedColumnNames] List of names of columns that contain skewed values.
@@ -29,9 +30,9 @@ class CatalogTableStorageDescriptorSkewedInfo {
 
   factory CatalogTableStorageDescriptorSkewedInfo.fromMap(Map<String, dynamic> map) {
     return CatalogTableStorageDescriptorSkewedInfo(
-      skewedColumnNames: map['skewedColumnNames'] == null ? null : (map['skewedColumnNames'] as List).cast<String>(),
-      skewedColumnValueLocationMaps: map['skewedColumnValueLocationMaps'] == null ? null : (map['skewedColumnValueLocationMaps'] as Map).cast<String, String>(),
-      skewedColumnValues: map['skewedColumnValues'] == null ? null : (map['skewedColumnValues'] as List).cast<String>(),
+      skewedColumnNames: map['skewedColumnNames'] == null ? null : ((map['skewedColumnNames'] as List).cast<String>()).input(),
+      skewedColumnValueLocationMaps: map['skewedColumnValueLocationMaps'] == null ? null : ((map['skewedColumnValueLocationMaps'] as Map).cast<String, String>()).input(),
+      skewedColumnValues: map['skewedColumnValues'] == null ? null : ((map['skewedColumnValues'] as List).cast<String>()).input(),
     );
   }
 }

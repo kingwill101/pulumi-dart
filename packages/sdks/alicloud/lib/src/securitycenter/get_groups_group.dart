@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupsGroup {
   /// GroupFlag, '0' mean default group(created by system), '1' means customer defined group.
-  final int groupFlag;
+  final pulumi.Input<int> groupFlag;
   /// The ID of Group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The name of Group.
-  final String groupName;
+  final pulumi.Input<String> groupName;
   /// The ID of the Group(same as the group_id).
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetGroupsGroup].
   /// [groupFlag] GroupFlag, '0' mean default group(created by system), '1' means customer defined group.
@@ -34,10 +35,10 @@ class GetGroupsGroup {
 
   factory GetGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetGroupsGroup(
-      groupFlag: map['groupFlag'] as int,
-      groupId: map['groupId'] as String,
-      groupName: map['groupName'] as String,
-      id: map['id'] as String,
+      groupFlag: (map['groupFlag'] as int).input(),
+      groupId: (map['groupId'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

@@ -40,29 +40,18 @@ class VpcIpamResourceDiscoveryAssociationState {
   /// [tags] A map of tags to add to the IPAM resource discovery association resource.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   VpcIpamResourceDiscoveryAssociationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? ipamArn,
-    pulumi.Output<String>? ipamId,
-    pulumi.Output<String>? ipamRegion,
-    pulumi.Output<String>? ipamResourceDiscoveryId,
-    pulumi.Output<bool>? isDefault,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      ipamArn = pulumi.Input.asOptionalInput<String>(ipamArn),
-      ipamId = pulumi.Input.asOptionalInput<String>(ipamId),
-      ipamRegion = pulumi.Input.asOptionalInput<String>(ipamRegion),
-      ipamResourceDiscoveryId = pulumi.Input.asOptionalInput<String>(ipamResourceDiscoveryId),
-      isDefault = pulumi.Input.asOptionalInput<bool>(isDefault),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.ipamArn,
+    this.ipamId,
+    this.ipamRegion,
+    this.ipamResourceDiscoveryId,
+    this.isDefault,
+    this.ownerId,
+    this.region,
+    this.state,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class VpcIpamResourceDiscoveryAssociationState {
 
   factory VpcIpamResourceDiscoveryAssociationState.fromMap(Map<String, dynamic> map) {
     return VpcIpamResourceDiscoveryAssociationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      ipamArn: map['ipamArn'] == null ? null : pulumi.Output.create<String>(map['ipamArn'] as String),
-      ipamId: map['ipamId'] == null ? null : pulumi.Output.create<String>(map['ipamId'] as String),
-      ipamRegion: map['ipamRegion'] == null ? null : pulumi.Output.create<String>(map['ipamRegion'] as String),
-      ipamResourceDiscoveryId: map['ipamResourceDiscoveryId'] == null ? null : pulumi.Output.create<String>(map['ipamResourceDiscoveryId'] as String),
-      isDefault: map['isDefault'] == null ? null : pulumi.Output.create<bool>(map['isDefault'] as bool),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      ipamArn: map['ipamArn'] == null ? null : (map['ipamArn'] as String).input(),
+      ipamId: map['ipamId'] == null ? null : (map['ipamId'] as String).input(),
+      ipamRegion: map['ipamRegion'] == null ? null : (map['ipamRegion'] as String).input(),
+      ipamResourceDiscoveryId: map['ipamResourceDiscoveryId'] == null ? null : (map['ipamResourceDiscoveryId'] as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

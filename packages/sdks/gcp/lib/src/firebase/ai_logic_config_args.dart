@@ -32,15 +32,11 @@ class AiLogicConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [telemetryConfig] Configuration for telemetry.
   AiLogicConfigArgs({
-    pulumi.Output<AiLogicConfigGenerativeLanguageConfig>? generativeLanguageConfig,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<AiLogicConfigTelemetryConfig>? telemetryConfig,
-  }) :
-      generativeLanguageConfig = pulumi.Input.asOptionalInput<AiLogicConfigGenerativeLanguageConfig>(generativeLanguageConfig),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      telemetryConfig = pulumi.Input.asOptionalInput<AiLogicConfigTelemetryConfig>(telemetryConfig);
+    this.generativeLanguageConfig,
+    this.location,
+    this.project,
+    this.telemetryConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,10 +49,10 @@ class AiLogicConfigArgs {
 
   factory AiLogicConfigArgs.fromMap(Map<String, dynamic> map) {
     return AiLogicConfigArgs(
-      generativeLanguageConfig: map['generativeLanguageConfig'] == null ? null : pulumi.Output.create<AiLogicConfigGenerativeLanguageConfig>(AiLogicConfigGenerativeLanguageConfig.fromMap((map['generativeLanguageConfig'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      telemetryConfig: map['telemetryConfig'] == null ? null : pulumi.Output.create<AiLogicConfigTelemetryConfig>(AiLogicConfigTelemetryConfig.fromMap((map['telemetryConfig'] as Map).cast<String, dynamic>())),
+      generativeLanguageConfig: map['generativeLanguageConfig'] == null ? null : (AiLogicConfigGenerativeLanguageConfig.fromMap((map['generativeLanguageConfig'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      telemetryConfig: map['telemetryConfig'] == null ? null : (AiLogicConfigTelemetryConfig.fromMap((map['telemetryConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

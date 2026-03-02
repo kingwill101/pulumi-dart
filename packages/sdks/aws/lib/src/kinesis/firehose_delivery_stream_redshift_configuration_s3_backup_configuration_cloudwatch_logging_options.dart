@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions {
   /// Enables or disables the logging. Defaults to `false`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The CloudWatch group name for logging. This value is required if `enabled` is true.
-  final String? logGroupName;
+  final pulumi.Input<String>? logGroupName;
   /// The CloudWatch log stream name for logging. This value is required if `enabled` is true.
-  final String? logStreamName;
+  final pulumi.Input<String>? logStreamName;
 
   /// Creates a new [FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions].
   /// [enabled] Enables or disables the logging. Defaults to `false`.
@@ -29,9 +30,9 @@ class FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatch
 
   factory FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      logGroupName: map['logGroupName'] == null ? null : map['logGroupName'] as String,
-      logStreamName: map['logStreamName'] == null ? null : map['logStreamName'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
+      logStreamName: map['logStreamName'] == null ? null : (map['logStreamName'] as String).input(),
     );
   }
 }

@@ -6,13 +6,13 @@ import 'jit_approver_definition_response.dart';
 /// Managed application Jit access policy.
 class ApplicationJitAccessPolicyResponse {
   /// Whether the JIT access is enabled.
-  final bool jitAccessEnabled;
+  final pulumi.Input<bool> jitAccessEnabled;
   /// JIT approval mode.
-  final String? jitApprovalMode;
+  final pulumi.Input<String>? jitApprovalMode;
   /// The JIT approvers
-  final List<JitApproverDefinitionResponse>? jitApprovers;
+  final pulumi.Input<List<JitApproverDefinitionResponse>>? jitApprovers;
   /// The maximum duration JIT access is granted. This is an ISO8601 time period value.
-  final String? maximumJitAccessDuration;
+  final pulumi.Input<String>? maximumJitAccessDuration;
 
   /// Creates a new [ApplicationJitAccessPolicyResponse].
   /// [jitAccessEnabled] Whether the JIT access is enabled.
@@ -30,17 +30,17 @@ class ApplicationJitAccessPolicyResponse {
     return <String, dynamic>{
       'jitAccessEnabled': jitAccessEnabled,
       'jitApprovalMode': ?jitApprovalMode,
-      'jitApprovers': ?jitApprovers == null ? null : pulumi.Input.encodeList<JitApproverDefinitionResponse, Map<String, dynamic>>(jitApprovers!, (value) => value.toMap()),
+      'jitApprovers': ?pulumi.Input.mapOptionalInputValue<List<JitApproverDefinitionResponse>, List<Map<String, dynamic>>>(jitApprovers, (value) => pulumi.Input.encodeList<JitApproverDefinitionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'maximumJitAccessDuration': ?maximumJitAccessDuration,
     };
   }
 
   factory ApplicationJitAccessPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationJitAccessPolicyResponse(
-      jitAccessEnabled: map['jitAccessEnabled'] as bool,
-      jitApprovalMode: map['jitApprovalMode'] == null ? null : map['jitApprovalMode'] as String,
-      jitApprovers: map['jitApprovers'] == null ? null : pulumi.Input.decodeList<JitApproverDefinitionResponse>(map['jitApprovers'], (value) => JitApproverDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      maximumJitAccessDuration: map['maximumJitAccessDuration'] == null ? null : map['maximumJitAccessDuration'] as String,
+      jitAccessEnabled: (map['jitAccessEnabled'] as bool).input(),
+      jitApprovalMode: map['jitApprovalMode'] == null ? null : (map['jitApprovalMode'] as String).input(),
+      jitApprovers: map['jitApprovers'] == null ? null : (pulumi.Input.decodeList<JitApproverDefinitionResponse>(map['jitApprovers'], (value) => JitApproverDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maximumJitAccessDuration: map['maximumJitAccessDuration'] == null ? null : (map['maximumJitAccessDuration'] as String).input(),
     );
   }
 }

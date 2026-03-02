@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_endpoint_handler_response.dart';
 import 'script_handler_response.dart';
 import 'static_files_handler_response.dart';
@@ -7,21 +8,21 @@ import 'static_files_handler_response.dart';
 /// URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript.
 class UrlMapResponse {
   /// Uses API Endpoints to handle requests.
-  final ApiEndpointHandlerResponse apiEndpoint;
+  final pulumi.Input<ApiEndpointHandlerResponse> apiEndpoint;
   /// Action to take when users access resources that require authentication. Defaults to redirect.
-  final String authFailAction;
+  final pulumi.Input<String> authFailAction;
   /// Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
-  final String login;
+  final pulumi.Input<String> login;
   /// 30x code to use when performing redirects for the secure field. Defaults to 302.
-  final String redirectHttpResponseCode;
+  final pulumi.Input<String> redirectHttpResponseCode;
   /// Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
-  final ScriptHandlerResponse script;
+  final pulumi.Input<ScriptHandlerResponse> script;
   /// Security (HTTPS) enforcement for this URL.
-  final String securityLevel;
+  final pulumi.Input<String> securityLevel;
   /// Returns the contents of a file, such as an image, as the response.
-  final StaticFilesHandlerResponse staticFiles;
+  final pulumi.Input<StaticFilesHandlerResponse> staticFiles;
   /// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
-  final String urlRegex;
+  final pulumi.Input<String> urlRegex;
 
   /// Creates a new [UrlMapResponse].
   /// [apiEndpoint] Uses API Endpoints to handle requests.
@@ -45,27 +46,27 @@ class UrlMapResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiEndpoint': apiEndpoint.toMap(),
+      'apiEndpoint': pulumi.Input.mapInputValue<ApiEndpointHandlerResponse, Map<String, dynamic>>(apiEndpoint, (value) => value.toMap()),
       'authFailAction': authFailAction,
       'login': login,
       'redirectHttpResponseCode': redirectHttpResponseCode,
-      'script': script.toMap(),
+      'script': pulumi.Input.mapInputValue<ScriptHandlerResponse, Map<String, dynamic>>(script, (value) => value.toMap()),
       'securityLevel': securityLevel,
-      'staticFiles': staticFiles.toMap(),
+      'staticFiles': pulumi.Input.mapInputValue<StaticFilesHandlerResponse, Map<String, dynamic>>(staticFiles, (value) => value.toMap()),
       'urlRegex': urlRegex,
     };
   }
 
   factory UrlMapResponse.fromMap(Map<String, dynamic> map) {
     return UrlMapResponse(
-      apiEndpoint: ApiEndpointHandlerResponse.fromMap((map['apiEndpoint'] as Map).cast<String, dynamic>()),
-      authFailAction: map['authFailAction'] as String,
-      login: map['login'] as String,
-      redirectHttpResponseCode: map['redirectHttpResponseCode'] as String,
-      script: ScriptHandlerResponse.fromMap((map['script'] as Map).cast<String, dynamic>()),
-      securityLevel: map['securityLevel'] as String,
-      staticFiles: StaticFilesHandlerResponse.fromMap((map['staticFiles'] as Map).cast<String, dynamic>()),
-      urlRegex: map['urlRegex'] as String,
+      apiEndpoint: (ApiEndpointHandlerResponse.fromMap((map['apiEndpoint'] as Map).cast<String, dynamic>())).input(),
+      authFailAction: (map['authFailAction'] as String).input(),
+      login: (map['login'] as String).input(),
+      redirectHttpResponseCode: (map['redirectHttpResponseCode'] as String).input(),
+      script: (ScriptHandlerResponse.fromMap((map['script'] as Map).cast<String, dynamic>())).input(),
+      securityLevel: (map['securityLevel'] as String).input(),
+      staticFiles: (StaticFilesHandlerResponse.fromMap((map['staticFiles'] as Map).cast<String, dynamic>())).input(),
+      urlRegex: (map['urlRegex'] as String).input(),
     );
   }
 }

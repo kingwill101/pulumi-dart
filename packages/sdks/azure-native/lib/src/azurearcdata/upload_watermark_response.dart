@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties on upload watermark.  Mostly timestamp for each upload data type
 class UploadWatermarkResponse {
   /// Last uploaded date for logs from kubernetes cluster. Defaults to current date time
-  final String? logs;
+  final pulumi.Input<String>? logs;
   /// Last uploaded date for metrics from kubernetes cluster. Defaults to current date time
-  final String? metrics;
+  final pulumi.Input<String>? metrics;
   /// Last uploaded date for usages from kubernetes cluster. Defaults to current date time
-  final String? usages;
+  final pulumi.Input<String>? usages;
 
   /// Creates a new [UploadWatermarkResponse].
   /// [logs] Last uploaded date for logs from kubernetes cluster. Defaults to current date time
@@ -30,9 +31,9 @@ class UploadWatermarkResponse {
 
   factory UploadWatermarkResponse.fromMap(Map<String, dynamic> map) {
     return UploadWatermarkResponse(
-      logs: map['logs'] == null ? null : map['logs'] as String,
-      metrics: map['metrics'] == null ? null : map['metrics'] as String,
-      usages: map['usages'] == null ? null : map['usages'] as String,
+      logs: map['logs'] == null ? null : (map['logs'] as String).input(),
+      metrics: map['metrics'] == null ? null : (map['metrics'] as String).input(),
+      usages: map['usages'] == null ? null : (map['usages'] as String).input(),
     );
   }
 }

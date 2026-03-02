@@ -19,13 +19,10 @@ class GetSuppressionArgs {
   /// [recommendationId] The recommendation ID.
   /// [resourceUri] The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   GetSuppressionArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> recommendationId,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      recommendationId = pulumi.Input.asInput<String>(recommendationId),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.name,
+    required this.recommendationId,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSuppressionArgs {
 
   factory GetSuppressionArgs.fromMap(Map<String, dynamic> map) {
     return GetSuppressionArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      recommendationId: pulumi.Output.create<String>(map['recommendationId'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      name: (map['name'] as String).input(),
+      recommendationId: (map['recommendationId'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

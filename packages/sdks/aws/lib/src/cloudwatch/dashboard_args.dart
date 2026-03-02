@@ -19,13 +19,10 @@ class DashboardArgs {
   /// [dashboardName] The name of the dashboard.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DashboardArgs({
-    required pulumi.Output<String> dashboardBody,
-    required pulumi.Output<String> dashboardName,
-    pulumi.Output<String>? region,
-  }) :
-      dashboardBody = pulumi.Input.asInput<String>(dashboardBody),
-      dashboardName = pulumi.Input.asInput<String>(dashboardName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.dashboardBody,
+    required this.dashboardName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DashboardArgs {
 
   factory DashboardArgs.fromMap(Map<String, dynamic> map) {
     return DashboardArgs(
-      dashboardBody: pulumi.Output.create<String>(map['dashboardBody'] as String),
-      dashboardName: pulumi.Output.create<String>(map['dashboardName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      dashboardBody: (map['dashboardBody'] as String).input(),
+      dashboardName: (map['dashboardName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

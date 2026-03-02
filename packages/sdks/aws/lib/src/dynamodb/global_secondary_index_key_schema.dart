@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlobalSecondaryIndexKeySchema {
   /// Name of the attribute.
-  final String attributeName;
+  final pulumi.Input<String> attributeName;
   /// Type of the attribute in the index.
   /// Valid values are `S` (string), `N` (number), or `B` (binary).
-  final String attributeType;
+  final pulumi.Input<String> attributeType;
   /// Key type.
   /// Valid values are `HASH` or `RANGE`.
-  final String keyType;
+  final pulumi.Input<String> keyType;
 
   /// Creates a new [GlobalSecondaryIndexKeySchema].
   /// [attributeName] Name of the attribute.
@@ -31,9 +32,9 @@ class GlobalSecondaryIndexKeySchema {
 
   factory GlobalSecondaryIndexKeySchema.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexKeySchema(
-      attributeName: map['attributeName'] as String,
-      attributeType: map['attributeType'] as String,
-      keyType: map['keyType'] as String,
+      attributeName: (map['attributeName'] as String).input(),
+      attributeType: (map['attributeType'] as String).input(),
+      keyType: (map['keyType'] as String).input(),
     );
   }
 }

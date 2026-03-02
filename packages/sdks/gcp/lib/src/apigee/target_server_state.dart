@@ -35,23 +35,15 @@ class TargetServerState {
   /// [protocol] Immutable. The protocol used by this TargetServer.
   /// [sSlInfo] Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
   TargetServerState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? envId,
-    pulumi.Output<String>? host,
-    pulumi.Output<bool>? isEnabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<TargetServerSSlInfo>? sSlInfo,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      envId = pulumi.Input.asOptionalInput<String>(envId),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      isEnabled = pulumi.Input.asOptionalInput<bool>(isEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      sSlInfo = pulumi.Input.asOptionalInput<TargetServerSSlInfo>(sSlInfo);
+    this.description,
+    this.envId,
+    this.host,
+    this.isEnabled,
+    this.name,
+    this.port,
+    this.protocol,
+    this.sSlInfo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class TargetServerState {
 
   factory TargetServerState.fromMap(Map<String, dynamic> map) {
     return TargetServerState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      envId: map['envId'] == null ? null : pulumi.Output.create<String>(map['envId'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      isEnabled: map['isEnabled'] == null ? null : pulumi.Output.create<bool>(map['isEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      sSlInfo: map['sSlInfo'] == null ? null : pulumi.Output.create<TargetServerSSlInfo>(TargetServerSSlInfo.fromMap((map['sSlInfo'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      envId: map['envId'] == null ? null : (map['envId'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      sSlInfo: map['sSlInfo'] == null ? null : (TargetServerSSlInfo.fromMap((map['sSlInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

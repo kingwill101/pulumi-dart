@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Elastic Volume Backup Properties
 class ElasticVolumeBackupProperties {
   /// ResourceId used to identify Elastic Backup Policy
-  final String? elasticBackupPolicyResourceId;
+  final pulumi.Input<String>? elasticBackupPolicyResourceId;
   /// ResourceId used to identify Elastic Backup Vault
-  final String? elasticBackupVaultResourceId;
+  final pulumi.Input<String>? elasticBackupVaultResourceId;
   /// The property to decide policy is enforced or not on the volume
-  final String? policyEnforcement;
+  final pulumi.Input<String>? policyEnforcement;
 
   /// Creates a new [ElasticVolumeBackupProperties].
   /// [elasticBackupPolicyResourceId] ResourceId used to identify Elastic Backup Policy
@@ -30,9 +31,9 @@ class ElasticVolumeBackupProperties {
 
   factory ElasticVolumeBackupProperties.fromMap(Map<String, dynamic> map) {
     return ElasticVolumeBackupProperties(
-      elasticBackupPolicyResourceId: map['elasticBackupPolicyResourceId'] == null ? null : map['elasticBackupPolicyResourceId'] as String,
-      elasticBackupVaultResourceId: map['elasticBackupVaultResourceId'] == null ? null : map['elasticBackupVaultResourceId'] as String,
-      policyEnforcement: map['policyEnforcement'] == null ? null : map['policyEnforcement'] as String,
+      elasticBackupPolicyResourceId: map['elasticBackupPolicyResourceId'] == null ? null : (map['elasticBackupPolicyResourceId'] as String).input(),
+      elasticBackupVaultResourceId: map['elasticBackupVaultResourceId'] == null ? null : (map['elasticBackupVaultResourceId'] as String).input(),
+      policyEnforcement: map['policyEnforcement'] == null ? null : (map['policyEnforcement'] as String).input(),
     );
   }
 }

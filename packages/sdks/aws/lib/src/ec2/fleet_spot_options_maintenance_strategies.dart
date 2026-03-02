@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fleet_spot_options_maintenance_strategies_capacity_rebalance.dart';
 
 class FleetSpotOptionsMaintenanceStrategies {
   /// Nested argument containing the capacity rebalance for your fleet request. Defined below.
-  final FleetSpotOptionsMaintenanceStrategiesCapacityRebalance? capacityRebalance;
+  final pulumi.Input<FleetSpotOptionsMaintenanceStrategiesCapacityRebalance>? capacityRebalance;
 
   /// Creates a new [FleetSpotOptionsMaintenanceStrategies].
   /// [capacityRebalance] Nested argument containing the capacity rebalance for your fleet request. Defined below.
@@ -14,13 +15,13 @@ class FleetSpotOptionsMaintenanceStrategies {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capacityRebalance': ?capacityRebalance == null ? null : capacityRebalance!.toMap(),
+      'capacityRebalance': ?pulumi.Input.mapOptionalInputValue<FleetSpotOptionsMaintenanceStrategiesCapacityRebalance, Map<String, dynamic>>(capacityRebalance, (value) => value.toMap()),
     };
   }
 
   factory FleetSpotOptionsMaintenanceStrategies.fromMap(Map<String, dynamic> map) {
     return FleetSpotOptionsMaintenanceStrategies(
-      capacityRebalance: map['capacityRebalance'] == null ? null : FleetSpotOptionsMaintenanceStrategiesCapacityRebalance.fromMap((map['capacityRebalance'] as Map).cast<String, dynamic>()),
+      capacityRebalance: map['capacityRebalance'] == null ? null : (FleetSpotOptionsMaintenanceStrategiesCapacityRebalance.fromMap((map['capacityRebalance'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

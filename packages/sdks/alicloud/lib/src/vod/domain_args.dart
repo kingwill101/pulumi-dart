@@ -31,19 +31,13 @@ class DomainArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [topLevelDomain] The top-level domain name.
   DomainArgs({
-    pulumi.Output<String>? checkUrl,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? scope,
-    required pulumi.Output<List<DomainSource>> sources,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? topLevelDomain,
-  }) :
-      checkUrl = pulumi.Input.asOptionalInput<String>(checkUrl),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      sources = pulumi.Input.asInput<List<DomainSource>>(sources),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      topLevelDomain = pulumi.Input.asOptionalInput<String>(topLevelDomain);
+    this.checkUrl,
+    required this.domainName,
+    this.scope,
+    required this.sources,
+    this.tags,
+    this.topLevelDomain,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      checkUrl: map['checkUrl'] == null ? null : pulumi.Output.create<String>(map['checkUrl'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      sources: pulumi.Output.create<List<DomainSource>>(pulumi.Input.decodeList<DomainSource>(map['sources'], (value) => DomainSource.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      topLevelDomain: map['topLevelDomain'] == null ? null : pulumi.Output.create<String>(map['topLevelDomain'] as String),
+      checkUrl: map['checkUrl'] == null ? null : (map['checkUrl'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      sources: (pulumi.Input.decodeList<DomainSource>(map['sources'], (value) => DomainSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      topLevelDomain: map['topLevelDomain'] == null ? null : (map['topLevelDomain'] as String).input(),
     );
   }
 }

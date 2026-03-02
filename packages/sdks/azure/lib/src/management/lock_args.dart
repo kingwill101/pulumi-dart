@@ -24,15 +24,11 @@ class LockArgs {
   /// [notes] Specifies some notes about the lock. Maximum of 512 characters. Changing this forces a new resource to be created.
   /// [scope] Specifies the scope at which the Management Lock should be created. Changing this forces a new resource to be created.
   LockArgs({
-    required pulumi.Output<String> lockLevel,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notes,
-    required pulumi.Output<String> scope,
-  }) :
-      lockLevel = pulumi.Input.asInput<String>(lockLevel),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.lockLevel,
+    this.name,
+    this.notes,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class LockArgs {
 
   factory LockArgs.fromMap(Map<String, dynamic> map) {
     return LockArgs(
-      lockLevel: pulumi.Output.create<String>(map['lockLevel'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      lockLevel: (map['lockLevel'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

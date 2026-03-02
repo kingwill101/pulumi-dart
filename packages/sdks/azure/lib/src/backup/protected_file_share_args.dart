@@ -27,17 +27,12 @@ class ProtectedFileShareArgs {
   /// [sourceFileShareName] Specifies the name of the file share to backup. Changing this forces a new resource to be created.
   /// [sourceStorageAccountId] Specifies the ID of the storage account of the file share to backup. Changing this forces a new resource to be created.
   ProtectedFileShareArgs({
-    required pulumi.Output<String> backupPolicyId,
-    required pulumi.Output<String> recoveryVaultName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sourceFileShareName,
-    required pulumi.Output<String> sourceStorageAccountId,
-  }) :
-      backupPolicyId = pulumi.Input.asInput<String>(backupPolicyId),
-      recoveryVaultName = pulumi.Input.asInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceFileShareName = pulumi.Input.asInput<String>(sourceFileShareName),
-      sourceStorageAccountId = pulumi.Input.asInput<String>(sourceStorageAccountId);
+    required this.backupPolicyId,
+    required this.recoveryVaultName,
+    required this.resourceGroupName,
+    required this.sourceFileShareName,
+    required this.sourceStorageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ProtectedFileShareArgs {
 
   factory ProtectedFileShareArgs.fromMap(Map<String, dynamic> map) {
     return ProtectedFileShareArgs(
-      backupPolicyId: pulumi.Output.create<String>(map['backupPolicyId'] as String),
-      recoveryVaultName: pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceFileShareName: pulumi.Output.create<String>(map['sourceFileShareName'] as String),
-      sourceStorageAccountId: pulumi.Output.create<String>(map['sourceStorageAccountId'] as String),
+      backupPolicyId: (map['backupPolicyId'] as String).input(),
+      recoveryVaultName: (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceFileShareName: (map['sourceFileShareName'] as String).input(),
+      sourceStorageAccountId: (map['sourceStorageAccountId'] as String).input(),
     );
   }
 }

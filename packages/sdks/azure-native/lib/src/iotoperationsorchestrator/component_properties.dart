@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a desired runtime component.
 class ComponentProperties {
   /// Component dependencies.
-  final List<String>? dependencies;
+  final pulumi.Input<List<String>>? dependencies;
   /// Name of the component.
-  final String name;
+  final pulumi.Input<String> name;
   /// Properties of the component.
-  final dynamic properties;
+  final pulumi.Input<dynamic>? properties;
   /// Component type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ComponentProperties].
   /// [dependencies] Component dependencies.
@@ -35,10 +36,10 @@ class ComponentProperties {
 
   factory ComponentProperties.fromMap(Map<String, dynamic> map) {
     return ComponentProperties(
-      dependencies: map['dependencies'] == null ? null : (map['dependencies'] as List).cast<String>(),
-      name: map['name'] as String,
-      properties: map['properties'] == null ? null : map['properties'],
-      type: map['type'] as String,
+      dependencies: map['dependencies'] == null ? null : ((map['dependencies'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (map['properties']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

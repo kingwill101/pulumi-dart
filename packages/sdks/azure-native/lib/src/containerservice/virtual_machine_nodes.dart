@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Current status on a group of nodes of the same vm size.
 class VirtualMachineNodes {
   /// Number of nodes.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// The VM size of the agents used to host this group of nodes.
-  final String? size;
+  final pulumi.Input<String>? size;
 
   /// Creates a new [VirtualMachineNodes].
   /// [count] Number of nodes.
@@ -25,8 +26,8 @@ class VirtualMachineNodes {
 
   factory VirtualMachineNodes.fromMap(Map<String, dynamic> map) {
     return VirtualMachineNodes(
-      count: map['count'] == null ? null : map['count'] as int,
-      size: map['size'] == null ? null : map['size'] as String,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
     );
   }
 }

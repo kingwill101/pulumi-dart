@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_account.dart';
 
 /// PrincipalInfo represents an Identity oneof.
 class PrincipalInfo {
   /// A GCP service account.
-  final ServiceAccount? serviceAccount;
+  final pulumi.Input<ServiceAccount>? serviceAccount;
 
   /// Creates a new [PrincipalInfo].
   /// [serviceAccount] A GCP service account.
@@ -15,13 +16,13 @@ class PrincipalInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serviceAccount': ?serviceAccount == null ? null : serviceAccount!.toMap(),
+      'serviceAccount': ?pulumi.Input.mapOptionalInputValue<ServiceAccount, Map<String, dynamic>>(serviceAccount, (value) => value.toMap()),
     };
   }
 
   factory PrincipalInfo.fromMap(Map<String, dynamic> map) {
     return PrincipalInfo(
-      serviceAccount: map['serviceAccount'] == null ? null : ServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>()),
+      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

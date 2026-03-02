@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DbSystemPropertiesTimeZone {
   /// IANA Time Zone Database time zone. For example "America/New_York".
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [DbSystemPropertiesTimeZone].
   /// [id] IANA Time Zone Database time zone. For example "America/New_York".
@@ -19,7 +20,7 @@ class DbSystemPropertiesTimeZone {
 
   factory DbSystemPropertiesTimeZone.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesTimeZone(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

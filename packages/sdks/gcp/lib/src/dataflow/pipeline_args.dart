@@ -55,27 +55,17 @@ class PipelineArgs {
   /// [type] The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
   /// [workload] Workload information for creating new jobs.
   PipelineArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? pipelineSources,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<PipelineScheduleInfo>? scheduleInfo,
-    pulumi.Output<String>? schedulerServiceAccountEmail,
-    required pulumi.Output<String> state,
-    required pulumi.Output<String> type,
-    pulumi.Output<PipelineWorkload>? workload,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pipelineSources = pulumi.Input.asOptionalInput<Map<String, String>>(pipelineSources),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scheduleInfo = pulumi.Input.asOptionalInput<PipelineScheduleInfo>(scheduleInfo),
-      schedulerServiceAccountEmail = pulumi.Input.asOptionalInput<String>(schedulerServiceAccountEmail),
-      state = pulumi.Input.asInput<String>(state),
-      type = pulumi.Input.asInput<String>(type),
-      workload = pulumi.Input.asOptionalInput<PipelineWorkload>(workload);
+    this.displayName,
+    this.name,
+    this.pipelineSources,
+    this.project,
+    this.region,
+    this.scheduleInfo,
+    this.schedulerServiceAccountEmail,
+    required this.state,
+    required this.type,
+    this.workload,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,16 +84,16 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pipelineSources: map['pipelineSources'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pipelineSources'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scheduleInfo: map['scheduleInfo'] == null ? null : pulumi.Output.create<PipelineScheduleInfo>(PipelineScheduleInfo.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>())),
-      schedulerServiceAccountEmail: map['schedulerServiceAccountEmail'] == null ? null : pulumi.Output.create<String>(map['schedulerServiceAccountEmail'] as String),
-      state: pulumi.Output.create<String>(map['state'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      workload: map['workload'] == null ? null : pulumi.Output.create<PipelineWorkload>(PipelineWorkload.fromMap((map['workload'] as Map).cast<String, dynamic>())),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pipelineSources: map['pipelineSources'] == null ? null : ((map['pipelineSources'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scheduleInfo: map['scheduleInfo'] == null ? null : (PipelineScheduleInfo.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>())).input(),
+      schedulerServiceAccountEmail: map['schedulerServiceAccountEmail'] == null ? null : (map['schedulerServiceAccountEmail'] as String).input(),
+      state: (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
+      workload: map['workload'] == null ? null : (PipelineWorkload.fromMap((map['workload'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

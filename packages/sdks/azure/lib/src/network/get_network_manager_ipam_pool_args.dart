@@ -16,11 +16,9 @@ class GetNetworkManagerIpamPoolArgs {
   /// [name] The name of this Network Manager IPAM Pool.
   /// [networkManagerId] The ID of the parent Network Manager.
   GetNetworkManagerIpamPoolArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> networkManagerId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      networkManagerId = pulumi.Input.asInput<String>(networkManagerId);
+    required this.name,
+    required this.networkManagerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkManagerIpamPoolArgs {
 
   factory GetNetworkManagerIpamPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerIpamPoolArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      networkManagerId: pulumi.Output.create<String>(map['networkManagerId'] as String),
+      name: (map['name'] as String).input(),
+      networkManagerId: (map['networkManagerId'] as String).input(),
     );
   }
 }

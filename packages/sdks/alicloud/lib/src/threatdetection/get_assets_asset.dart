@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAssetsAsset {
   /// The ID of the cluster.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The name of the cluster.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
   /// The creation time of the resource
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The UUID of the asset.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the asset.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The name of the asset.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The public IP address of the asset.
-  final String internetIp;
+  final pulumi.Input<String> internetIp;
   /// The private IP address of the asset.
-  final String intranetIp;
+  final pulumi.Input<String> intranetIp;
   /// The status of the asset. Valid values:
   /// - **Running**: running
   /// - **notRunning**: stopped
-  final String status;
+  final pulumi.Input<String> status;
   /// The UUID of the asset. Same as `id`.
-  final String uuid;
+  final pulumi.Input<String> uuid;
   /// The ID of the VPC to which the asset belongs.
-  final String vpcInstanceId;
+  final pulumi.Input<String> vpcInstanceId;
 
   /// Creates a new [GetAssetsAsset].
   /// [clusterId] The ID of the cluster.
@@ -71,17 +72,17 @@ class GetAssetsAsset {
 
   factory GetAssetsAsset.fromMap(Map<String, dynamic> map) {
     return GetAssetsAsset(
-      clusterId: map['clusterId'] as String,
-      clusterName: map['clusterName'] as String,
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      internetIp: map['internetIp'] as String,
-      intranetIp: map['intranetIp'] as String,
-      status: map['status'] as String,
-      uuid: map['uuid'] as String,
-      vpcInstanceId: map['vpcInstanceId'] as String,
+      clusterId: (map['clusterId'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      internetIp: (map['internetIp'] as String).input(),
+      intranetIp: (map['intranetIp'] as String).input(),
+      status: (map['status'] as String).input(),
+      uuid: (map['uuid'] as String).input(),
+      vpcInstanceId: (map['vpcInstanceId'] as String).input(),
     );
   }
 }

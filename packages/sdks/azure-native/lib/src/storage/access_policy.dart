@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPolicy {
   /// Expiry time of the access policy
-  final String? expiryTime;
+  final pulumi.Input<String>? expiryTime;
   /// List of abbreviated permissions.
-  final String? permission;
+  final pulumi.Input<String>? permission;
   /// Start time of the access policy
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [AccessPolicy].
   /// [expiryTime] Expiry time of the access policy
@@ -29,9 +30,9 @@ class AccessPolicy {
 
   factory AccessPolicy.fromMap(Map<String, dynamic> map) {
     return AccessPolicy(
-      expiryTime: map['expiryTime'] == null ? null : map['expiryTime'] as String,
-      permission: map['permission'] == null ? null : map['permission'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      permission: map['permission'] == null ? null : (map['permission'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

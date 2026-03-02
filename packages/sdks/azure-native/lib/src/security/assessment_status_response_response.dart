@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The result of the assessment
 class AssessmentStatusResponseResponse {
   /// Programmatic code for the cause of the assessment status
-  final String? cause;
+  final pulumi.Input<String>? cause;
   /// Programmatic code for the status of the assessment
-  final String code;
+  final pulumi.Input<String> code;
   /// Human readable description of the assessment status
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The time that the assessment was created and first evaluated. Returned as UTC time in ISO 8601 format
-  final String firstEvaluationDate;
+  final pulumi.Input<String> firstEvaluationDate;
   /// The time that the status of the assessment last changed. Returned as UTC time in ISO 8601 format
-  final String statusChangeDate;
+  final pulumi.Input<String> statusChangeDate;
 
   /// Creates a new [AssessmentStatusResponseResponse].
   /// [cause] Programmatic code for the cause of the assessment status
@@ -40,11 +41,11 @@ class AssessmentStatusResponseResponse {
 
   factory AssessmentStatusResponseResponse.fromMap(Map<String, dynamic> map) {
     return AssessmentStatusResponseResponse(
-      cause: map['cause'] == null ? null : map['cause'] as String,
-      code: map['code'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      firstEvaluationDate: map['firstEvaluationDate'] as String,
-      statusChangeDate: map['statusChangeDate'] as String,
+      cause: map['cause'] == null ? null : (map['cause'] as String).input(),
+      code: (map['code'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      firstEvaluationDate: (map['firstEvaluationDate'] as String).input(),
+      statusChangeDate: (map['statusChangeDate'] as String).input(),
     );
   }
 }

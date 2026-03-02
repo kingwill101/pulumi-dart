@@ -14,11 +14,9 @@ class GetOrganizationBigQueryExportArgs {
   /// [bigQueryExportId] Required.
   /// [organizationId] Required.
   GetOrganizationBigQueryExportArgs({
-    required pulumi.Output<String> bigQueryExportId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.bigQueryExportId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetOrganizationBigQueryExportArgs {
 
   factory GetOrganizationBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationBigQueryExportArgs(
-      bigQueryExportId: pulumi.Output.create<String>(map['bigQueryExportId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      bigQueryExportId: (map['bigQueryExportId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

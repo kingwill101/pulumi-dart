@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeDataDisk {
   /// Data disk type
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Performance level
-  final String? performanceLevel;
+  final pulumi.Input<String>? performanceLevel;
   /// Data disk size
-  final int? size;
+  final pulumi.Input<int>? size;
 
   /// Creates a new [NodeDataDisk].
   /// [category] Data disk type
@@ -29,9 +30,9 @@ class NodeDataDisk {
 
   factory NodeDataDisk.fromMap(Map<String, dynamic> map) {
     return NodeDataDisk(
-      category: map['category'] == null ? null : map['category'] as String,
-      performanceLevel: map['performanceLevel'] == null ? null : map['performanceLevel'] as String,
-      size: map['size'] == null ? null : map['size'] as int,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

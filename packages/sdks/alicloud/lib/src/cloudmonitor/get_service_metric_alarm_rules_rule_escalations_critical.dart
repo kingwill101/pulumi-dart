@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceMetricAlarmRulesRuleEscalationsCritical {
   /// The comparison operator that is used to compare the metric value with the threshold.
-  final String comparisonOperator;
+  final pulumi.Input<String> comparisonOperator;
   /// The additional conditions for triggering Warn-level alerts.
-  final String preCondition;
+  final pulumi.Input<String> preCondition;
   /// The statistical methods for Warn-level alerts.
-  final String statistics;
+  final pulumi.Input<String> statistics;
   /// The threshold for Warn-level alerts.
-  final String threshold;
+  final pulumi.Input<String> threshold;
   /// The number of consecutive triggers.
-  final int times;
+  final pulumi.Input<int> times;
 
   /// Creates a new [GetServiceMetricAlarmRulesRuleEscalationsCritical].
   /// [comparisonOperator] The comparison operator that is used to compare the metric value with the threshold.
@@ -39,11 +40,11 @@ class GetServiceMetricAlarmRulesRuleEscalationsCritical {
 
   factory GetServiceMetricAlarmRulesRuleEscalationsCritical.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesRuleEscalationsCritical(
-      comparisonOperator: map['comparisonOperator'] as String,
-      preCondition: map['preCondition'] as String,
-      statistics: map['statistics'] as String,
-      threshold: map['threshold'] as String,
-      times: map['times'] as int,
+      comparisonOperator: (map['comparisonOperator'] as String).input(),
+      preCondition: (map['preCondition'] as String).input(),
+      statistics: (map['statistics'] as String).input(),
+      threshold: (map['threshold'] as String).input(),
+      times: (map['times'] as int).input(),
     );
   }
 }

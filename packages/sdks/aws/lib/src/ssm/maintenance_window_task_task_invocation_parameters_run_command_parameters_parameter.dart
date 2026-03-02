@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter {
   /// The parameter name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The array of strings.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter].
   /// [name] The parameter name.
@@ -24,8 +25,8 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter
 
   factory MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

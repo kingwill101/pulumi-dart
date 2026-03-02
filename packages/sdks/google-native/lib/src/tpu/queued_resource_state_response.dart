@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'failed_data_response.dart';
 
 /// QueuedResourceState defines the details of the QueuedResource request.
 class QueuedResourceStateResponse {
   /// Further data for the accepted state.
-  final Map<String, dynamic> acceptedData;
+  final pulumi.Input<Map<String, dynamic>> acceptedData;
   /// Further data for the active state.
-  final Map<String, dynamic> activeData;
+  final pulumi.Input<Map<String, dynamic>> activeData;
   /// Further data for the creating state.
-  final Map<String, dynamic> creatingData;
+  final pulumi.Input<Map<String, dynamic>> creatingData;
   /// Further data for the deleting state.
-  final Map<String, dynamic> deletingData;
+  final pulumi.Input<Map<String, dynamic>> deletingData;
   /// Further data for the failed state.
-  final FailedDataResponse failedData;
+  final pulumi.Input<FailedDataResponse> failedData;
   /// Further data for the provisioning state.
-  final Map<String, dynamic> provisioningData;
+  final pulumi.Input<Map<String, dynamic>> provisioningData;
   /// State of the QueuedResource request.
-  final String state;
+  final pulumi.Input<String> state;
   /// The initiator of the QueuedResources's current state.
-  final String stateInitiator;
+  final pulumi.Input<String> stateInitiator;
   /// Further data for the suspended state.
-  final Map<String, dynamic> suspendedData;
+  final pulumi.Input<Map<String, dynamic>> suspendedData;
   /// Further data for the suspending state.
-  final Map<String, dynamic> suspendingData;
+  final pulumi.Input<Map<String, dynamic>> suspendingData;
 
   /// Creates a new [QueuedResourceStateResponse].
   /// [acceptedData] Further data for the accepted state.
@@ -55,7 +56,7 @@ class QueuedResourceStateResponse {
       'activeData': activeData,
       'creatingData': creatingData,
       'deletingData': deletingData,
-      'failedData': failedData.toMap(),
+      'failedData': pulumi.Input.mapInputValue<FailedDataResponse, Map<String, dynamic>>(failedData, (value) => value.toMap()),
       'provisioningData': provisioningData,
       'state': state,
       'stateInitiator': stateInitiator,
@@ -66,16 +67,16 @@ class QueuedResourceStateResponse {
 
   factory QueuedResourceStateResponse.fromMap(Map<String, dynamic> map) {
     return QueuedResourceStateResponse(
-      acceptedData: (map['acceptedData'] as Map).cast<String, dynamic>(),
-      activeData: (map['activeData'] as Map).cast<String, dynamic>(),
-      creatingData: (map['creatingData'] as Map).cast<String, dynamic>(),
-      deletingData: (map['deletingData'] as Map).cast<String, dynamic>(),
-      failedData: FailedDataResponse.fromMap((map['failedData'] as Map).cast<String, dynamic>()),
-      provisioningData: (map['provisioningData'] as Map).cast<String, dynamic>(),
-      state: map['state'] as String,
-      stateInitiator: map['stateInitiator'] as String,
-      suspendedData: (map['suspendedData'] as Map).cast<String, dynamic>(),
-      suspendingData: (map['suspendingData'] as Map).cast<String, dynamic>(),
+      acceptedData: ((map['acceptedData'] as Map).cast<String, dynamic>()).input(),
+      activeData: ((map['activeData'] as Map).cast<String, dynamic>()).input(),
+      creatingData: ((map['creatingData'] as Map).cast<String, dynamic>()).input(),
+      deletingData: ((map['deletingData'] as Map).cast<String, dynamic>()).input(),
+      failedData: (FailedDataResponse.fromMap((map['failedData'] as Map).cast<String, dynamic>())).input(),
+      provisioningData: ((map['provisioningData'] as Map).cast<String, dynamic>()).input(),
+      state: (map['state'] as String).input(),
+      stateInitiator: (map['stateInitiator'] as String).input(),
+      suspendedData: ((map['suspendedData'] as Map).cast<String, dynamic>()).input(),
+      suspendingData: ((map['suspendingData'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

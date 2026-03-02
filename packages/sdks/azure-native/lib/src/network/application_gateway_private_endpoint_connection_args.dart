@@ -29,19 +29,13 @@ class ApplicationGatewayPrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group.
   ApplicationGatewayPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> applicationGatewayName,
-    pulumi.Output<String>? connectionName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<PrivateLinkServiceConnectionState>? privateLinkServiceConnectionState,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      applicationGatewayName = pulumi.Input.asInput<String>(applicationGatewayName),
-      connectionName = pulumi.Input.asOptionalInput<String>(connectionName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateLinkServiceConnectionState = pulumi.Input.asOptionalInput<PrivateLinkServiceConnectionState>(privateLinkServiceConnectionState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.applicationGatewayName,
+    this.connectionName,
+    this.id,
+    this.name,
+    this.privateLinkServiceConnectionState,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ApplicationGatewayPrivateEndpointConnectionArgs {
 
   factory ApplicationGatewayPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayPrivateEndpointConnectionArgs(
-      applicationGatewayName: pulumi.Output.create<String>(map['applicationGatewayName'] as String),
-      connectionName: map['connectionName'] == null ? null : pulumi.Output.create<String>(map['connectionName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : pulumi.Output.create<PrivateLinkServiceConnectionState>(PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      applicationGatewayName: (map['applicationGatewayName'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -43,29 +43,18 @@ class SslKeyCertArgs {
   /// [partition] Partition on to SSL certificate and key to be imported.
   /// [passphrase] Passphrase on the SSL key.
   SslKeyCertArgs({
-    required pulumi.Output<String> certContent,
-    pulumi.Output<String>? certFullPath,
-    pulumi.Output<String>? certMonitoringType,
-    required pulumi.Output<String> certName,
-    pulumi.Output<String>? certOcsp,
-    pulumi.Output<String>? issuerCert,
-    required pulumi.Output<String> keyContent,
-    pulumi.Output<String>? keyFullPath,
-    required pulumi.Output<String> keyName,
-    pulumi.Output<String>? partition,
-    pulumi.Output<String>? passphrase,
-  }) :
-      certContent = pulumi.Input.asInput<String>(certContent),
-      certFullPath = pulumi.Input.asOptionalInput<String>(certFullPath),
-      certMonitoringType = pulumi.Input.asOptionalInput<String>(certMonitoringType),
-      certName = pulumi.Input.asInput<String>(certName),
-      certOcsp = pulumi.Input.asOptionalInput<String>(certOcsp),
-      issuerCert = pulumi.Input.asOptionalInput<String>(issuerCert),
-      keyContent = pulumi.Input.asInput<String>(keyContent),
-      keyFullPath = pulumi.Input.asOptionalInput<String>(keyFullPath),
-      keyName = pulumi.Input.asInput<String>(keyName),
-      partition = pulumi.Input.asOptionalInput<String>(partition),
-      passphrase = pulumi.Input.asOptionalInput<String>(passphrase);
+    required this.certContent,
+    this.certFullPath,
+    this.certMonitoringType,
+    required this.certName,
+    this.certOcsp,
+    this.issuerCert,
+    required this.keyContent,
+    this.keyFullPath,
+    required this.keyName,
+    this.partition,
+    this.passphrase,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class SslKeyCertArgs {
 
   factory SslKeyCertArgs.fromMap(Map<String, dynamic> map) {
     return SslKeyCertArgs(
-      certContent: pulumi.Output.create<String>(map['certContent'] as String),
-      certFullPath: map['certFullPath'] == null ? null : pulumi.Output.create<String>(map['certFullPath'] as String),
-      certMonitoringType: map['certMonitoringType'] == null ? null : pulumi.Output.create<String>(map['certMonitoringType'] as String),
-      certName: pulumi.Output.create<String>(map['certName'] as String),
-      certOcsp: map['certOcsp'] == null ? null : pulumi.Output.create<String>(map['certOcsp'] as String),
-      issuerCert: map['issuerCert'] == null ? null : pulumi.Output.create<String>(map['issuerCert'] as String),
-      keyContent: pulumi.Output.create<String>(map['keyContent'] as String),
-      keyFullPath: map['keyFullPath'] == null ? null : pulumi.Output.create<String>(map['keyFullPath'] as String),
-      keyName: pulumi.Output.create<String>(map['keyName'] as String),
-      partition: map['partition'] == null ? null : pulumi.Output.create<String>(map['partition'] as String),
-      passphrase: map['passphrase'] == null ? null : pulumi.Output.create<String>(map['passphrase'] as String),
+      certContent: (map['certContent'] as String).input(),
+      certFullPath: map['certFullPath'] == null ? null : (map['certFullPath'] as String).input(),
+      certMonitoringType: map['certMonitoringType'] == null ? null : (map['certMonitoringType'] as String).input(),
+      certName: (map['certName'] as String).input(),
+      certOcsp: map['certOcsp'] == null ? null : (map['certOcsp'] as String).input(),
+      issuerCert: map['issuerCert'] == null ? null : (map['issuerCert'] as String).input(),
+      keyContent: (map['keyContent'] as String).input(),
+      keyFullPath: map['keyFullPath'] == null ? null : (map['keyFullPath'] as String).input(),
+      keyName: (map['keyName'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
     );
   }
 }

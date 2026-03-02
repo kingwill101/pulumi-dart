@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Region spec details
 class RegionSpecEntityResponse {
   /// Cloud provider name
-  final String? cloud;
+  final pulumi.Input<String>? cloud;
   /// Display Name of the region
-  final String? name;
-  final List<String>? packages;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<List<String>>? packages;
   /// Region name
-  final String? regionName;
+  final pulumi.Input<String>? regionName;
 
   /// Creates a new [RegionSpecEntityResponse].
   /// [cloud] Cloud provider name
@@ -34,10 +35,10 @@ class RegionSpecEntityResponse {
 
   factory RegionSpecEntityResponse.fromMap(Map<String, dynamic> map) {
     return RegionSpecEntityResponse(
-      cloud: map['cloud'] == null ? null : map['cloud'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      packages: map['packages'] == null ? null : (map['packages'] as List).cast<String>(),
-      regionName: map['regionName'] == null ? null : map['regionName'] as String,
+      cloud: map['cloud'] == null ? null : (map['cloud'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      packages: map['packages'] == null ? null : ((map['packages'] as List).cast<String>()).input(),
+      regionName: map['regionName'] == null ? null : (map['regionName'] as String).input(),
     );
   }
 }

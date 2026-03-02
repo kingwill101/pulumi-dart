@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeReplicationHybridPeeringDetail {
   /// (Output)
   /// Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
-  final String? command;
+  final pulumi.Input<String>? command;
   /// (Output)
   /// Optional. Expiration time for the peering command to be executed on user's ONTAP.
   /// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
-  final String? commandExpiryTime;
+  final pulumi.Input<String>? commandExpiryTime;
   /// (Output)
   /// Optional. Temporary passphrase generated to accept cluster peering command.
-  final String? passphrase;
+  final pulumi.Input<String>? passphrase;
   /// (Output)
   /// Optional. Name of the user's local source cluster to be peered with the destination cluster.
-  final String? peerClusterName;
+  final pulumi.Input<String>? peerClusterName;
   /// (Output)
   /// Optional. Name of the user's local source vserver svm to be peered with the destination vserver svm.
-  final String? peerSvmName;
+  final pulumi.Input<String>? peerSvmName;
   /// (Output)
   /// Optional. Name of the user's local source volume to be peered with the destination volume.
-  final String? peerVolumeName;
+  final pulumi.Input<String>? peerVolumeName;
   /// (Output)
   /// Optional. IP address of the subnet.
-  final String? subnetIp;
+  final pulumi.Input<String>? subnetIp;
 
   /// Creates a new [VolumeReplicationHybridPeeringDetail].
   /// [command] (Output)
@@ -57,13 +58,13 @@ class VolumeReplicationHybridPeeringDetail {
 
   factory VolumeReplicationHybridPeeringDetail.fromMap(Map<String, dynamic> map) {
     return VolumeReplicationHybridPeeringDetail(
-      command: map['command'] == null ? null : map['command'] as String,
-      commandExpiryTime: map['commandExpiryTime'] == null ? null : map['commandExpiryTime'] as String,
-      passphrase: map['passphrase'] == null ? null : map['passphrase'] as String,
-      peerClusterName: map['peerClusterName'] == null ? null : map['peerClusterName'] as String,
-      peerSvmName: map['peerSvmName'] == null ? null : map['peerSvmName'] as String,
-      peerVolumeName: map['peerVolumeName'] == null ? null : map['peerVolumeName'] as String,
-      subnetIp: map['subnetIp'] == null ? null : map['subnetIp'] as String,
+      command: map['command'] == null ? null : (map['command'] as String).input(),
+      commandExpiryTime: map['commandExpiryTime'] == null ? null : (map['commandExpiryTime'] as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
+      peerClusterName: map['peerClusterName'] == null ? null : (map['peerClusterName'] as String).input(),
+      peerSvmName: map['peerSvmName'] == null ? null : (map['peerSvmName'] as String).input(),
+      peerVolumeName: map['peerVolumeName'] == null ? null : (map['peerVolumeName'] as String).input(),
+      subnetIp: map['subnetIp'] == null ? null : (map['subnetIp'] as String).input(),
     );
   }
 }

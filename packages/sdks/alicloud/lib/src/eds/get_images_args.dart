@@ -31,21 +31,14 @@ class GetImagesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
   GetImagesArgs({
-    pulumi.Output<String>? desktopInstanceType,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? imageType,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? osType,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      desktopInstanceType = pulumi.Input.asOptionalInput<String>(desktopInstanceType),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      imageType = pulumi.Input.asOptionalInput<String>(imageType),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      osType = pulumi.Input.asOptionalInput<String>(osType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.desktopInstanceType,
+    this.ids,
+    this.imageType,
+    this.nameRegex,
+    this.osType,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetImagesArgs {
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      desktopInstanceType: map['desktopInstanceType'] == null ? null : pulumi.Output.create<String>(map['desktopInstanceType'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      imageType: map['imageType'] == null ? null : pulumi.Output.create<String>(map['imageType'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      osType: map['osType'] == null ? null : pulumi.Output.create<String>(map['osType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      desktopInstanceType: map['desktopInstanceType'] == null ? null : (map['desktopInstanceType'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      imageType: map['imageType'] == null ? null : (map['imageType'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

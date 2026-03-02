@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionBitbucketDataCenterConfigServiceDirectoryConfig {
   /// Required. The Service Directory service name.
   /// Format:
   /// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-  final String service;
+  final pulumi.Input<String> service;
 
   /// Creates a new [ConnectionBitbucketDataCenterConfigServiceDirectoryConfig].
   /// [service] Required. The Service Directory service name.
@@ -21,7 +22,7 @@ class ConnectionBitbucketDataCenterConfigServiceDirectoryConfig {
 
   factory ConnectionBitbucketDataCenterConfigServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionBitbucketDataCenterConfigServiceDirectoryConfig(
-      service: map['service'] as String,
+      service: (map['service'] as String).input(),
     );
   }
 }

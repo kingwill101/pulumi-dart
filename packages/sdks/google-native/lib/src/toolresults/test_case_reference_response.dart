@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A reference to a test case. Test case references are canonically ordered lexicographically by these three factors: * First, by test_suite_name. * Second, by class_name. * Third, by name.
 class TestCaseReferenceResponse {
   /// The name of the class.
-  final String className;
+  final pulumi.Input<String> className;
   /// The name of the test case. Required.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the test suite to which this test case belongs.
-  final String testSuiteName;
+  final pulumi.Input<String> testSuiteName;
 
   /// Creates a new [TestCaseReferenceResponse].
   /// [className] The name of the class.
@@ -30,9 +31,9 @@ class TestCaseReferenceResponse {
 
   factory TestCaseReferenceResponse.fromMap(Map<String, dynamic> map) {
     return TestCaseReferenceResponse(
-      className: map['className'] as String,
-      name: map['name'] as String,
-      testSuiteName: map['testSuiteName'] as String,
+      className: (map['className'] as String).input(),
+      name: (map['name'] as String).input(),
+      testSuiteName: (map['testSuiteName'] as String).input(),
     );
   }
 }

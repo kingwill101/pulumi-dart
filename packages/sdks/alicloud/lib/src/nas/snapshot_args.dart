@@ -23,15 +23,11 @@ class SnapshotArgs {
   /// [retentionDays] The retention period of the snapshot. Unit: days. Valid values:
   /// [snapshotName] SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
   SnapshotArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> fileSystemId,
-    pulumi.Output<int>? retentionDays,
-    pulumi.Output<String>? snapshotName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName);
+    this.description,
+    required this.fileSystemId,
+    this.retentionDays,
+    this.snapshotName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
     );
   }
 }

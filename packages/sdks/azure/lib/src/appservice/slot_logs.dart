@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'slot_logs_application_logs.dart';
 import 'slot_logs_http_logs.dart';
 
 class SlotLogs {
   /// An `application_logs` block as defined below.
-  final SlotLogsApplicationLogs? applicationLogs;
+  final pulumi.Input<SlotLogsApplicationLogs>? applicationLogs;
   /// Should `Detailed error messages` be enabled on this App Service slot? Defaults to `false`.
-  final bool? detailedErrorMessagesEnabled;
+  final pulumi.Input<bool>? detailedErrorMessagesEnabled;
   /// Should `Failed request tracing` be enabled on this App Service slot? Defaults to `false`.
-  final bool? failedRequestTracingEnabled;
+  final pulumi.Input<bool>? failedRequestTracingEnabled;
   /// An `http_logs` block as defined below.
-  final SlotLogsHttpLogs? httpLogs;
+  final pulumi.Input<SlotLogsHttpLogs>? httpLogs;
 
   /// Creates a new [SlotLogs].
   /// [applicationLogs] An `application_logs` block as defined below.
@@ -27,19 +28,19 @@ class SlotLogs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationLogs': ?applicationLogs == null ? null : applicationLogs!.toMap(),
+      'applicationLogs': ?pulumi.Input.mapOptionalInputValue<SlotLogsApplicationLogs, Map<String, dynamic>>(applicationLogs, (value) => value.toMap()),
       'detailedErrorMessagesEnabled': ?detailedErrorMessagesEnabled,
       'failedRequestTracingEnabled': ?failedRequestTracingEnabled,
-      'httpLogs': ?httpLogs == null ? null : httpLogs!.toMap(),
+      'httpLogs': ?pulumi.Input.mapOptionalInputValue<SlotLogsHttpLogs, Map<String, dynamic>>(httpLogs, (value) => value.toMap()),
     };
   }
 
   factory SlotLogs.fromMap(Map<String, dynamic> map) {
     return SlotLogs(
-      applicationLogs: map['applicationLogs'] == null ? null : SlotLogsApplicationLogs.fromMap((map['applicationLogs'] as Map).cast<String, dynamic>()),
-      detailedErrorMessagesEnabled: map['detailedErrorMessagesEnabled'] == null ? null : map['detailedErrorMessagesEnabled'] as bool,
-      failedRequestTracingEnabled: map['failedRequestTracingEnabled'] == null ? null : map['failedRequestTracingEnabled'] as bool,
-      httpLogs: map['httpLogs'] == null ? null : SlotLogsHttpLogs.fromMap((map['httpLogs'] as Map).cast<String, dynamic>()),
+      applicationLogs: map['applicationLogs'] == null ? null : (SlotLogsApplicationLogs.fromMap((map['applicationLogs'] as Map).cast<String, dynamic>())).input(),
+      detailedErrorMessagesEnabled: map['detailedErrorMessagesEnabled'] == null ? null : (map['detailedErrorMessagesEnabled'] as bool).input(),
+      failedRequestTracingEnabled: map['failedRequestTracingEnabled'] == null ? null : (map['failedRequestTracingEnabled'] as bool).input(),
+      httpLogs: map['httpLogs'] == null ? null : (SlotLogsHttpLogs.fromMap((map['httpLogs'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

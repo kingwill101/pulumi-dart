@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventPermissionCondition {
   /// Key for the condition. Valid values: `aws:PrincipalOrgID`.
-  final String key;
+  final pulumi.Input<String> key;
   /// Type of condition. Value values: `StringEquals`.
-  final String type;
+  final pulumi.Input<String> type;
   /// Value for the key.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [EventPermissionCondition].
   /// [key] Key for the condition. Valid values: `aws:PrincipalOrgID`.
@@ -29,9 +30,9 @@ class EventPermissionCondition {
 
   factory EventPermissionCondition.fromMap(Map<String, dynamic> map) {
     return EventPermissionCondition(
-      key: map['key'] as String,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

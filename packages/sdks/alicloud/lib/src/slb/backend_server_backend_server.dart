@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendServerBackendServer {
-  final String serverId;
-  final String? serverIp;
-  final String? type;
-  final int weight;
+  final pulumi.Input<String> serverId;
+  final pulumi.Input<String>? serverIp;
+  final pulumi.Input<String>? type;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [BackendServerBackendServer].
   /// [serverId] Required.
@@ -30,10 +31,10 @@ class BackendServerBackendServer {
 
   factory BackendServerBackendServer.fromMap(Map<String, dynamic> map) {
     return BackendServerBackendServer(
-      serverId: map['serverId'] as String,
-      serverIp: map['serverIp'] == null ? null : map['serverIp'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      weight: map['weight'] as int,
+      serverId: (map['serverId'] as String).input(),
+      serverIp: map['serverIp'] == null ? null : (map['serverIp'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

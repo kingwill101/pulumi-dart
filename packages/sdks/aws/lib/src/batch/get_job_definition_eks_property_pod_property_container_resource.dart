@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionEksPropertyPodPropertyContainerResource {
   /// The type and quantity of the resources to reserve for the container.
-  final Map<String, String> limits;
+  final pulumi.Input<Map<String, String>> limits;
   /// The type and quantity of the resources to request for the container.
-  final Map<String, String> requests;
+  final pulumi.Input<Map<String, String>> requests;
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyContainerResource].
   /// [limits] The type and quantity of the resources to reserve for the container.
@@ -24,8 +25,8 @@ class GetJobDefinitionEksPropertyPodPropertyContainerResource {
 
   factory GetJobDefinitionEksPropertyPodPropertyContainerResource.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionEksPropertyPodPropertyContainerResource(
-      limits: (map['limits'] as Map).cast<String, String>(),
-      requests: (map['requests'] as Map).cast<String, String>(),
+      limits: ((map['limits'] as Map).cast<String, String>()).input(),
+      requests: ((map['requests'] as Map).cast<String, String>()).input(),
     );
   }
 }

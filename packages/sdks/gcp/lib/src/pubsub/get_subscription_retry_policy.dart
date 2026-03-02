@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSubscriptionRetryPolicy {
   /// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final String maximumBackoff;
+  final pulumi.Input<String> maximumBackoff;
   /// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final String minimumBackoff;
+  final pulumi.Input<String> minimumBackoff;
 
   /// Creates a new [GetSubscriptionRetryPolicy].
   /// [maximumBackoff] The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
@@ -26,8 +27,8 @@ class GetSubscriptionRetryPolicy {
 
   factory GetSubscriptionRetryPolicy.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionRetryPolicy(
-      maximumBackoff: map['maximumBackoff'] as String,
-      minimumBackoff: map['minimumBackoff'] as String,
+      maximumBackoff: (map['maximumBackoff'] as String).input(),
+      minimumBackoff: (map['minimumBackoff'] as String).input(),
     );
   }
 }

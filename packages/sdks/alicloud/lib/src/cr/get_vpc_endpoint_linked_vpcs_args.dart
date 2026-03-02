@@ -27,17 +27,12 @@ class GetVpcEndpointLinkedVpcsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
   GetVpcEndpointLinkedVpcsArgs({
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> moduleName,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      moduleName = pulumi.Input.asInput<String>(moduleName),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    required this.instanceId,
+    required this.moduleName,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GetVpcEndpointLinkedVpcsArgs {
 
   factory GetVpcEndpointLinkedVpcsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointLinkedVpcsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      moduleName: pulumi.Output.create<String>(map['moduleName'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      moduleName: (map['moduleName'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

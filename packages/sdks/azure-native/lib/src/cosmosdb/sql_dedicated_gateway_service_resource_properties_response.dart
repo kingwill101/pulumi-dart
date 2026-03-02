@@ -6,22 +6,22 @@ import 'sql_dedicated_gateway_regional_service_resource_response.dart';
 /// Properties for SqlDedicatedGatewayServiceResource.
 class SqlDedicatedGatewayServiceResourcePropertiesResponse {
   /// Time of the last state change (ISO-8601 format).
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// DedicatedGatewayType for the service.
-  final String? dedicatedGatewayType;
+  final pulumi.Input<String>? dedicatedGatewayType;
   /// Instance count for the service.
-  final int? instanceCount;
+  final pulumi.Input<int>? instanceCount;
   /// Instance type for the service.
-  final String? instanceSize;
+  final pulumi.Input<String>? instanceSize;
   /// An array that contains all of the locations for the service.
-  final List<SqlDedicatedGatewayRegionalServiceResourceResponse> locations;
+  final pulumi.Input<List<SqlDedicatedGatewayRegionalServiceResourceResponse>> locations;
   /// ServiceType for the service.
   /// Expected value is 'SqlDedicatedGateway'.
-  final String serviceType;
+  final pulumi.Input<String> serviceType;
   /// SqlDedicatedGateway endpoint for the service.
-  final String? sqlDedicatedGatewayEndpoint;
+  final pulumi.Input<String>? sqlDedicatedGatewayEndpoint;
   /// Describes the status of a service.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [SqlDedicatedGatewayServiceResourcePropertiesResponse].
   /// [creationTime] Time of the last state change (ISO-8601 format).
@@ -49,7 +49,7 @@ class SqlDedicatedGatewayServiceResourcePropertiesResponse {
       'dedicatedGatewayType': ?dedicatedGatewayType,
       'instanceCount': ?instanceCount,
       'instanceSize': ?instanceSize,
-      'locations': pulumi.Input.encodeList<SqlDedicatedGatewayRegionalServiceResourceResponse, Map<String, dynamic>>(locations, (value) => value.toMap()),
+      'locations': pulumi.Input.mapInputValue<List<SqlDedicatedGatewayRegionalServiceResourceResponse>, List<Map<String, dynamic>>>(locations, (value) => pulumi.Input.encodeList<SqlDedicatedGatewayRegionalServiceResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceType': serviceType,
       'sqlDedicatedGatewayEndpoint': ?sqlDedicatedGatewayEndpoint,
       'status': status,
@@ -58,14 +58,14 @@ class SqlDedicatedGatewayServiceResourcePropertiesResponse {
 
   factory SqlDedicatedGatewayServiceResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlDedicatedGatewayServiceResourcePropertiesResponse(
-      creationTime: map['creationTime'] as String,
-      dedicatedGatewayType: map['dedicatedGatewayType'] == null ? null : map['dedicatedGatewayType'] as String,
-      instanceCount: map['instanceCount'] == null ? null : map['instanceCount'] as int,
-      instanceSize: map['instanceSize'] == null ? null : map['instanceSize'] as String,
-      locations: pulumi.Input.decodeList<SqlDedicatedGatewayRegionalServiceResourceResponse>(map['locations'], (value) => SqlDedicatedGatewayRegionalServiceResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      serviceType: map['serviceType'] as String,
-      sqlDedicatedGatewayEndpoint: map['sqlDedicatedGatewayEndpoint'] == null ? null : map['sqlDedicatedGatewayEndpoint'] as String,
-      status: map['status'] as String,
+      creationTime: (map['creationTime'] as String).input(),
+      dedicatedGatewayType: map['dedicatedGatewayType'] == null ? null : (map['dedicatedGatewayType'] as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize'] as String).input(),
+      locations: (pulumi.Input.decodeList<SqlDedicatedGatewayRegionalServiceResourceResponse>(map['locations'], (value) => SqlDedicatedGatewayRegionalServiceResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceType: (map['serviceType'] as String).input(),
+      sqlDedicatedGatewayEndpoint: map['sqlDedicatedGatewayEndpoint'] == null ? null : (map['sqlDedicatedGatewayEndpoint'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

@@ -40,25 +40,16 @@ class TlsRouteState {
   /// [selfLink] Server-defined URL of this resource.
   /// [updateTime] Time the TlsRoute was updated in UTC.
   TlsRouteState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? gateways,
-    pulumi.Output<List<String>>? meshes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<TlsRouteRule>>? rules,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gateways = pulumi.Input.asOptionalInput<List<String>>(gateways),
-      meshes = pulumi.Input.asOptionalInput<List<String>>(meshes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rules = pulumi.Input.asOptionalInput<List<TlsRouteRule>>(rules),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.gateways,
+    this.meshes,
+    this.name,
+    this.project,
+    this.rules,
+    this.selfLink,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class TlsRouteState {
 
   factory TlsRouteState.fromMap(Map<String, dynamic> map) {
     return TlsRouteState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gateways: map['gateways'] == null ? null : pulumi.Output.create<List<String>>((map['gateways'] as List).cast<String>()),
-      meshes: map['meshes'] == null ? null : pulumi.Output.create<List<String>>((map['meshes'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<TlsRouteRule>>(pulumi.Input.decodeList<TlsRouteRule>(map['rules'], (value) => TlsRouteRule.fromMap((value as Map).cast<String, dynamic>()))),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gateways: map['gateways'] == null ? null : ((map['gateways'] as List).cast<String>()).input(),
+      meshes: map['meshes'] == null ? null : ((map['meshes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<TlsRouteRule>(map['rules'], (value) => TlsRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

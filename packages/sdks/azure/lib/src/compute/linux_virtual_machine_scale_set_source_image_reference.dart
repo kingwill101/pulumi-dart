@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxVirtualMachineScaleSetSourceImageReference {
   /// Specifies the offer of the image used to create the virtual machines. Changing this forces a new resource to be created.
-  final String offer;
+  final pulumi.Input<String> offer;
   /// Specifies the publisher of the image used to create the virtual machines. Changing this forces a new resource to be created.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// Specifies the SKU of the image used to create the virtual machines.
-  final String sku;
+  final pulumi.Input<String> sku;
   /// Specifies the version of the image used to create the virtual machines.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [LinuxVirtualMachineScaleSetSourceImageReference].
   /// [offer] Specifies the offer of the image used to create the virtual machines. Changing this forces a new resource to be created.
@@ -34,10 +35,10 @@ class LinuxVirtualMachineScaleSetSourceImageReference {
 
   factory LinuxVirtualMachineScaleSetSourceImageReference.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineScaleSetSourceImageReference(
-      offer: map['offer'] as String,
-      publisher: map['publisher'] as String,
-      sku: map['sku'] as String,
-      version: map['version'] as String,
+      offer: (map['offer'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      sku: (map['sku'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

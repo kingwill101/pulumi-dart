@@ -17,11 +17,9 @@ class GetRepositoryIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [repository] Used to find the parent resource to bind the IAM policy to
   GetRepositoryIamPolicyArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repository,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repository = pulumi.Input.asInput<String>(repository);
+    this.project,
+    required this.repository,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetRepositoryIamPolicyArgs {
 
   factory GetRepositoryIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryIamPolicyArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repository: pulumi.Output.create<String>(map['repository'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repository: (map['repository'] as String).input(),
     );
   }
 }

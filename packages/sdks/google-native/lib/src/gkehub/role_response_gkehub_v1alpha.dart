@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Role is the type for Kubernetes roles
 class RoleResponseGkehubV1alpha {
   /// predefined_role is the Kubernetes default role to use
-  final String predefinedRole;
+  final pulumi.Input<String> predefinedRole;
 
   /// Creates a new [RoleResponseGkehubV1alpha].
   /// [predefinedRole] predefined_role is the Kubernetes default role to use
@@ -20,7 +21,7 @@ class RoleResponseGkehubV1alpha {
 
   factory RoleResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return RoleResponseGkehubV1alpha(
-      predefinedRole: map['predefinedRole'] as String,
+      predefinedRole: (map['predefinedRole'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetIspCacheNodesOperationBgpCidrsArgs {
   /// [customerResourceName] Name of the Customer resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetIspCacheNodesOperationBgpCidrsArgs({
-    required pulumi.Output<String> cacheNodeResourceName,
-    required pulumi.Output<String> customerResourceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      cacheNodeResourceName = pulumi.Input.asInput<String>(cacheNodeResourceName),
-      customerResourceName = pulumi.Input.asInput<String>(customerResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.cacheNodeResourceName,
+    required this.customerResourceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIspCacheNodesOperationBgpCidrsArgs {
 
   factory GetIspCacheNodesOperationBgpCidrsArgs.fromMap(Map<String, dynamic> map) {
     return GetIspCacheNodesOperationBgpCidrsArgs(
-      cacheNodeResourceName: pulumi.Output.create<String>(map['cacheNodeResourceName'] as String),
-      customerResourceName: pulumi.Output.create<String>(map['customerResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      cacheNodeResourceName: (map['cacheNodeResourceName'] as String).input(),
+      customerResourceName: (map['customerResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReleaseBlueprint {
-  final String? engine;
+  final pulumi.Input<String>? engine;
   /// URI to a blueprint used by the Unit (required unless unitKind or release is
   /// set).
-  final String? package;
+  final pulumi.Input<String>? package;
   /// (Output)
   /// Version metadata if present on the blueprint.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ReleaseBlueprint].
   /// [engine] Optional.
@@ -30,9 +31,9 @@ class ReleaseBlueprint {
 
   factory ReleaseBlueprint.fromMap(Map<String, dynamic> map) {
     return ReleaseBlueprint(
-      engine: map['engine'] == null ? null : map['engine'] as String,
-      package: map['package'] == null ? null : map['package'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      package: map['package'] == null ? null : (map['package'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -42,27 +42,17 @@ class JobArgs {
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [taskGroups] TaskGroups in the Job. Only one TaskGroup is supported now.
   JobArgs({
-    pulumi.Output<AllocationPolicy>? allocationPolicy,
-    pulumi.Output<String>? jobId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<LogsPolicy>? logsPolicy,
-    pulumi.Output<List<JobNotification>>? notifications,
-    pulumi.Output<String>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<List<TaskGroup>> taskGroups,
-  }) :
-      allocationPolicy = pulumi.Input.asOptionalInput<AllocationPolicy>(allocationPolicy),
-      jobId = pulumi.Input.asOptionalInput<String>(jobId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logsPolicy = pulumi.Input.asOptionalInput<LogsPolicy>(logsPolicy),
-      notifications = pulumi.Input.asOptionalInput<List<JobNotification>>(notifications),
-      priority = pulumi.Input.asOptionalInput<String>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      taskGroups = pulumi.Input.asInput<List<TaskGroup>>(taskGroups);
+    this.allocationPolicy,
+    this.jobId,
+    this.labels,
+    this.location,
+    this.logsPolicy,
+    this.notifications,
+    this.priority,
+    this.project,
+    this.requestId,
+    required this.taskGroups,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      allocationPolicy: map['allocationPolicy'] == null ? null : pulumi.Output.create<AllocationPolicy>(AllocationPolicy.fromMap((map['allocationPolicy'] as Map).cast<String, dynamic>())),
-      jobId: map['jobId'] == null ? null : pulumi.Output.create<String>(map['jobId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logsPolicy: map['logsPolicy'] == null ? null : pulumi.Output.create<LogsPolicy>(LogsPolicy.fromMap((map['logsPolicy'] as Map).cast<String, dynamic>())),
-      notifications: map['notifications'] == null ? null : pulumi.Output.create<List<JobNotification>>(pulumi.Input.decodeList<JobNotification>(map['notifications'], (value) => JobNotification.fromMap((value as Map).cast<String, dynamic>()))),
-      priority: map['priority'] == null ? null : pulumi.Output.create<String>(map['priority'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      taskGroups: pulumi.Output.create<List<TaskGroup>>(pulumi.Input.decodeList<TaskGroup>(map['taskGroups'], (value) => TaskGroup.fromMap((value as Map).cast<String, dynamic>()))),
+      allocationPolicy: map['allocationPolicy'] == null ? null : (AllocationPolicy.fromMap((map['allocationPolicy'] as Map).cast<String, dynamic>())).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logsPolicy: map['logsPolicy'] == null ? null : (LogsPolicy.fromMap((map['logsPolicy'] as Map).cast<String, dynamic>())).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<JobNotification>(map['notifications'], (value) => JobNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      taskGroups: (pulumi.Input.decodeList<TaskGroup>(map['taskGroups'], (value) => TaskGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

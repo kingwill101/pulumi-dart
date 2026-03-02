@@ -20,13 +20,10 @@ class RaiExternalSafetyProviderArgs {
   /// [safetyProviderName] The name of the Rai External Safety Provider associated with the Cognitive Services Account
   /// [tags] Resource tags.
   RaiExternalSafetyProviderArgs({
-    pulumi.Output<RaiExternalSafetyProviderSchemaProperties>? properties,
-    pulumi.Output<String>? safetyProviderName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      properties = pulumi.Input.asOptionalInput<RaiExternalSafetyProviderSchemaProperties>(properties),
-      safetyProviderName = pulumi.Input.asOptionalInput<String>(safetyProviderName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.properties,
+    this.safetyProviderName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class RaiExternalSafetyProviderArgs {
 
   factory RaiExternalSafetyProviderArgs.fromMap(Map<String, dynamic> map) {
     return RaiExternalSafetyProviderArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<RaiExternalSafetyProviderSchemaProperties>(RaiExternalSafetyProviderSchemaProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      safetyProviderName: map['safetyProviderName'] == null ? null : pulumi.Output.create<String>(map['safetyProviderName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      properties: map['properties'] == null ? null : (RaiExternalSafetyProviderSchemaProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      safetyProviderName: map['safetyProviderName'] == null ? null : (map['safetyProviderName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Conditions for actions to deal with task failures.
 class ActionConditionResponse {
   /// Exit codes of a task execution. If there are more than 1 exit codes, when task executes with any of the exit code in the list, the condition is met and the action will be executed.
-  final List<int> exitCodes;
+  final pulumi.Input<List<int>> exitCodes;
 
   /// Creates a new [ActionConditionResponse].
   /// [exitCodes] Exit codes of a task execution. If there are more than 1 exit codes, when task executes with any of the exit code in the list, the condition is met and the action will be executed.
@@ -20,7 +21,7 @@ class ActionConditionResponse {
 
   factory ActionConditionResponse.fromMap(Map<String, dynamic> map) {
     return ActionConditionResponse(
-      exitCodes: (map['exitCodes'] as List).cast<int>(),
+      exitCodes: ((map['exitCodes'] as List).cast<int>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The daily volume cap for ingestion.
 class WorkspaceCapping {
   /// The workspace daily quota for ingestion.
-  final double? dailyQuotaGb;
+  final pulumi.Input<double>? dailyQuotaGb;
 
   /// Creates a new [WorkspaceCapping].
   /// [dailyQuotaGb] The workspace daily quota for ingestion.
@@ -20,7 +21,7 @@ class WorkspaceCapping {
 
   factory WorkspaceCapping.fromMap(Map<String, dynamic> map) {
     return WorkspaceCapping(
-      dailyQuotaGb: map['dailyQuotaGb'] == null ? null : map['dailyQuotaGb'] as double,
+      dailyQuotaGb: map['dailyQuotaGb'] == null ? null : (map['dailyQuotaGb'] as double).input(),
     );
   }
 }

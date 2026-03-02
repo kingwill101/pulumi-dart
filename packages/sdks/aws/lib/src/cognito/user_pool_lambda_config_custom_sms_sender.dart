@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolLambdaConfigCustomSmsSender {
   /// The Lambda Amazon Resource Name of the Lambda function that Amazon Cognito triggers to send SMS notifications to users.
-  final String lambdaArn;
+  final pulumi.Input<String> lambdaArn;
   /// The Lambda version represents the signature of the "request" attribute in the "event" information Amazon Cognito passes to your custom SMS Lambda function. The only supported value is `V1_0`.
-  final String lambdaVersion;
+  final pulumi.Input<String> lambdaVersion;
 
   /// Creates a new [UserPoolLambdaConfigCustomSmsSender].
   /// [lambdaArn] The Lambda Amazon Resource Name of the Lambda function that Amazon Cognito triggers to send SMS notifications to users.
@@ -24,8 +25,8 @@ class UserPoolLambdaConfigCustomSmsSender {
 
   factory UserPoolLambdaConfigCustomSmsSender.fromMap(Map<String, dynamic> map) {
     return UserPoolLambdaConfigCustomSmsSender(
-      lambdaArn: map['lambdaArn'] as String,
-      lambdaVersion: map['lambdaVersion'] as String,
+      lambdaArn: (map['lambdaArn'] as String).input(),
+      lambdaVersion: (map['lambdaVersion'] as String).input(),
     );
   }
 }

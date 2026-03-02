@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EcsInstanceSetExcludeInstanceFilter {
   /// The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [EcsInstanceSetExcludeInstanceFilter].
   /// [key] The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
@@ -24,8 +25,8 @@ class EcsInstanceSetExcludeInstanceFilter {
 
   factory EcsInstanceSetExcludeInstanceFilter.fromMap(Map<String, dynamic> map) {
     return EcsInstanceSetExcludeInstanceFilter(
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

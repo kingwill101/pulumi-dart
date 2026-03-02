@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction {
-  final String eventAction;
+  final pulumi.Input<String> eventAction;
   /// Whether to send a notification.
-  final bool notify;
+  final pulumi.Input<bool> notify;
 
   /// Creates a new [RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction].
   /// [eventAction] Required.
@@ -23,8 +24,8 @@ class RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction {
 
   factory RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction(
-      eventAction: map['eventAction'] as String,
-      notify: map['notify'] as bool,
+      eventAction: (map['eventAction'] as String).input(),
+      notify: (map['notify'] as bool).input(),
     );
   }
 }

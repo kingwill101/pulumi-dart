@@ -19,13 +19,10 @@ class BgpNetworkArgs {
   /// [routerId] The region ID of the virtual border router (VBR) group.
   /// [vpcId] The ID of the VPC.
   BgpNetworkArgs({
-    required pulumi.Output<String> dstCidrBlock,
-    required pulumi.Output<String> routerId,
-    pulumi.Output<String>? vpcId,
-  }) :
-      dstCidrBlock = pulumi.Input.asInput<String>(dstCidrBlock),
-      routerId = pulumi.Input.asInput<String>(routerId),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    required this.dstCidrBlock,
+    required this.routerId,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class BgpNetworkArgs {
 
   factory BgpNetworkArgs.fromMap(Map<String, dynamic> map) {
     return BgpNetworkArgs(
-      dstCidrBlock: pulumi.Output.create<String>(map['dstCidrBlock'] as String),
-      routerId: pulumi.Output.create<String>(map['routerId'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      dstCidrBlock: (map['dstCidrBlock'] as String).input(),
+      routerId: (map['routerId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

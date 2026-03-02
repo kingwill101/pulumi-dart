@@ -19,13 +19,10 @@ class GetSmartDetectorAlertRuleArgs {
   /// [expandDetector] Indicates if Smart Detector should be expanded.
   /// [resourceGroupName] The name of the resource group.
   GetSmartDetectorAlertRuleArgs({
-    required pulumi.Output<String> alertRuleName,
-    pulumi.Output<bool>? expandDetector,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      alertRuleName = pulumi.Input.asInput<String>(alertRuleName),
-      expandDetector = pulumi.Input.asOptionalInput<bool>(expandDetector),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.alertRuleName,
+    this.expandDetector,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSmartDetectorAlertRuleArgs {
 
   factory GetSmartDetectorAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetSmartDetectorAlertRuleArgs(
-      alertRuleName: pulumi.Output.create<String>(map['alertRuleName'] as String),
-      expandDetector: map['expandDetector'] == null ? null : pulumi.Output.create<bool>(map['expandDetector'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      alertRuleName: (map['alertRuleName'] as String).input(),
+      expandDetector: map['expandDetector'] == null ? null : (map['expandDetector'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

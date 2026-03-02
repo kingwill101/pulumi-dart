@@ -24,17 +24,12 @@ class OverrideArgs {
   /// [organizationId] Required.
   /// [samplingConfig] Trace configuration to override.
   OverrideArgs({
-    pulumi.Output<String>? apiProxy,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<GoogleCloudApigeeV1TraceSamplingConfig>? samplingConfig,
-  }) :
-      apiProxy = pulumi.Input.asOptionalInput<String>(apiProxy),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      samplingConfig = pulumi.Input.asOptionalInput<GoogleCloudApigeeV1TraceSamplingConfig>(samplingConfig);
+    this.apiProxy,
+    required this.environmentId,
+    this.name,
+    required this.organizationId,
+    this.samplingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class OverrideArgs {
 
   factory OverrideArgs.fromMap(Map<String, dynamic> map) {
     return OverrideArgs(
-      apiProxy: map['apiProxy'] == null ? null : pulumi.Output.create<String>(map['apiProxy'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      samplingConfig: map['samplingConfig'] == null ? null : pulumi.Output.create<GoogleCloudApigeeV1TraceSamplingConfig>(GoogleCloudApigeeV1TraceSamplingConfig.fromMap((map['samplingConfig'] as Map).cast<String, dynamic>())),
+      apiProxy: map['apiProxy'] == null ? null : (map['apiProxy'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      samplingConfig: map['samplingConfig'] == null ? null : (GoogleCloudApigeeV1TraceSamplingConfig.fromMap((map['samplingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

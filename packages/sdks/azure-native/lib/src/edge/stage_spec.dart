@@ -7,13 +7,13 @@ import 'task_spec.dart';
 /// Stage Properties
 class StageSpec {
   /// Name of Stage
-  final String name;
+  final pulumi.Input<String> name;
   /// Stage specification
-  final dynamic specification;
+  final pulumi.Input<dynamic>? specification;
   /// Task option for the stage
-  final TaskOption? taskOption;
+  final pulumi.Input<TaskOption>? taskOption;
   /// List of tasks in the stage
-  final List<TaskSpec>? tasks;
+  final pulumi.Input<List<TaskSpec>>? tasks;
 
   /// Creates a new [StageSpec].
   /// [name] Name of Stage
@@ -31,17 +31,17 @@ class StageSpec {
     return <String, dynamic>{
       'name': name,
       'specification': ?specification,
-      'taskOption': ?taskOption == null ? null : taskOption!.toMap(),
-      'tasks': ?tasks == null ? null : pulumi.Input.encodeList<TaskSpec, Map<String, dynamic>>(tasks!, (value) => value.toMap()),
+      'taskOption': ?pulumi.Input.mapOptionalInputValue<TaskOption, Map<String, dynamic>>(taskOption, (value) => value.toMap()),
+      'tasks': ?pulumi.Input.mapOptionalInputValue<List<TaskSpec>, List<Map<String, dynamic>>>(tasks, (value) => pulumi.Input.encodeList<TaskSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StageSpec.fromMap(Map<String, dynamic> map) {
     return StageSpec(
-      name: map['name'] as String,
-      specification: map['specification'] == null ? null : map['specification'],
-      taskOption: map['taskOption'] == null ? null : TaskOption.fromMap((map['taskOption'] as Map).cast<String, dynamic>()),
-      tasks: map['tasks'] == null ? null : pulumi.Input.decodeList<TaskSpec>(map['tasks'], (value) => TaskSpec.fromMap((value as Map).cast<String, dynamic>())),
+      name: (map['name'] as String).input(),
+      specification: map['specification'] == null ? null : (map['specification']).input(),
+      taskOption: map['taskOption'] == null ? null : (TaskOption.fromMap((map['taskOption'] as Map).cast<String, dynamic>())).input(),
+      tasks: map['tasks'] == null ? null : (pulumi.Input.decodeList<TaskSpec>(map['tasks'], (value) => TaskSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

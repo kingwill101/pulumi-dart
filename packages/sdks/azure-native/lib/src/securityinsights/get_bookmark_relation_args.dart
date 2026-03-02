@@ -22,15 +22,11 @@ class GetBookmarkRelationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   GetBookmarkRelationArgs({
-    required pulumi.Output<String> bookmarkId,
-    required pulumi.Output<String> relationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      bookmarkId = pulumi.Input.asInput<String>(bookmarkId),
-      relationName = pulumi.Input.asInput<String>(relationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.bookmarkId,
+    required this.relationName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetBookmarkRelationArgs {
 
   factory GetBookmarkRelationArgs.fromMap(Map<String, dynamic> map) {
     return GetBookmarkRelationArgs(
-      bookmarkId: pulumi.Output.create<String>(map['bookmarkId'] as String),
-      relationName: pulumi.Output.create<String>(map['relationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      bookmarkId: (map['bookmarkId'] as String).input(),
+      relationName: (map['relationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

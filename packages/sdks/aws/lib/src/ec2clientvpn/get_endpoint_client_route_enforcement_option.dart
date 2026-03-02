@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointClientRouteEnforcementOption {
-  final bool enforced;
+  final pulumi.Input<bool> enforced;
 
   /// Creates a new [GetEndpointClientRouteEnforcementOption].
   /// [enforced] Required.
@@ -18,7 +19,7 @@ class GetEndpointClientRouteEnforcementOption {
 
   factory GetEndpointClientRouteEnforcementOption.fromMap(Map<String, dynamic> map) {
     return GetEndpointClientRouteEnforcementOption(
-      enforced: map['enforced'] as bool,
+      enforced: (map['enforced'] as bool).input(),
     );
   }
 }

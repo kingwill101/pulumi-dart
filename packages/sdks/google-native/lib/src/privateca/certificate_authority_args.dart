@@ -47,31 +47,19 @@ class CertificateAuthorityArgs {
   /// [subordinateConfig] Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
   /// [type] Immutable. The Type of this CertificateAuthority.
   CertificateAuthorityArgs({
-    required pulumi.Output<String> caPoolId,
-    required pulumi.Output<String> certificateAuthorityId,
-    required pulumi.Output<CertificateConfig> config,
-    pulumi.Output<String>? gcsBucket,
-    required pulumi.Output<KeyVersionSpec> keySpec,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> lifetime,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<SubordinateConfig>? subordinateConfig,
-    required pulumi.Output<CertificateAuthorityType> type,
-  }) :
-      caPoolId = pulumi.Input.asInput<String>(caPoolId),
-      certificateAuthorityId = pulumi.Input.asInput<String>(certificateAuthorityId),
-      config = pulumi.Input.asInput<CertificateConfig>(config),
-      gcsBucket = pulumi.Input.asOptionalInput<String>(gcsBucket),
-      keySpec = pulumi.Input.asInput<KeyVersionSpec>(keySpec),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      lifetime = pulumi.Input.asInput<String>(lifetime),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      subordinateConfig = pulumi.Input.asOptionalInput<SubordinateConfig>(subordinateConfig),
-      type = pulumi.Input.asInput<CertificateAuthorityType>(type);
+    required this.caPoolId,
+    required this.certificateAuthorityId,
+    required this.config,
+    this.gcsBucket,
+    required this.keySpec,
+    this.labels,
+    required this.lifetime,
+    this.location,
+    this.project,
+    this.requestId,
+    this.subordinateConfig,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class CertificateAuthorityArgs {
 
   factory CertificateAuthorityArgs.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityArgs(
-      caPoolId: pulumi.Output.create<String>(map['caPoolId'] as String),
-      certificateAuthorityId: pulumi.Output.create<String>(map['certificateAuthorityId'] as String),
-      config: pulumi.Output.create<CertificateConfig>(CertificateConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      gcsBucket: map['gcsBucket'] == null ? null : pulumi.Output.create<String>(map['gcsBucket'] as String),
-      keySpec: pulumi.Output.create<KeyVersionSpec>(KeyVersionSpec.fromMap((map['keySpec'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      lifetime: pulumi.Output.create<String>(map['lifetime'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      subordinateConfig: map['subordinateConfig'] == null ? null : pulumi.Output.create<SubordinateConfig>(SubordinateConfig.fromMap((map['subordinateConfig'] as Map).cast<String, dynamic>())),
-      type: pulumi.Output.create<CertificateAuthorityType>(CertificateAuthorityType.fromValue(map['type'] as String)),
+      caPoolId: (map['caPoolId'] as String).input(),
+      certificateAuthorityId: (map['certificateAuthorityId'] as String).input(),
+      config: (CertificateConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      gcsBucket: map['gcsBucket'] == null ? null : (map['gcsBucket'] as String).input(),
+      keySpec: (KeyVersionSpec.fromMap((map['keySpec'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      lifetime: (map['lifetime'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      subordinateConfig: map['subordinateConfig'] == null ? null : (SubordinateConfig.fromMap((map['subordinateConfig'] as Map).cast<String, dynamic>())).input(),
+      type: (CertificateAuthorityType.fromValue(map['type'] as String)).input(),
     );
   }
 }

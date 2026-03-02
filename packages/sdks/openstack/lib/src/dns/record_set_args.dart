@@ -50,27 +50,17 @@ class RecordSetArgs {
   /// [valueSpecs] Map of additional options. Changing this creates a
   /// [zoneId] The ID of the zone in which to create the record set.
   RecordSetArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disableStatusCheck,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectId,
-    required pulumi.Output<List<String>> records,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? ttl,
-    pulumi.Output<String>? type,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-    required pulumi.Output<String> zoneId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disableStatusCheck = pulumi.Input.asOptionalInput<bool>(disableStatusCheck),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      records = pulumi.Input.asInput<List<String>>(records),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.description,
+    this.disableStatusCheck,
+    this.name,
+    this.projectId,
+    required this.records,
+    this.region,
+    this.ttl,
+    this.type,
+    this.valueSpecs,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,16 +79,16 @@ class RecordSetArgs {
 
   factory RecordSetArgs.fromMap(Map<String, dynamic> map) {
     return RecordSetArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disableStatusCheck: map['disableStatusCheck'] == null ? null : pulumi.Output.create<bool>(map['disableStatusCheck'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      records: pulumi.Output.create<List<String>>((map['records'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableStatusCheck: map['disableStatusCheck'] == null ? null : (map['disableStatusCheck'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      records: ((map['records'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

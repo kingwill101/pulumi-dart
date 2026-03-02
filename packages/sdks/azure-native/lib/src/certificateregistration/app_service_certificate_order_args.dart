@@ -48,31 +48,19 @@ class AppServiceCertificateOrderArgs {
   /// [tags] Resource tags.
   /// [validityInYears] Duration in years (must be 1).
   AppServiceCertificateOrderArgs({
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<String>? certificateOrderName,
-    pulumi.Output<Map<String, AppServiceCertificate>>? certificates,
-    pulumi.Output<String>? csr,
-    pulumi.Output<String>? distinguishedName,
-    pulumi.Output<int>? keySize,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    required pulumi.Output<CertificateProductType> productType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? validityInYears,
-  }) :
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      certificateOrderName = pulumi.Input.asOptionalInput<String>(certificateOrderName),
-      certificates = pulumi.Input.asOptionalInput<Map<String, AppServiceCertificate>>(certificates),
-      csr = pulumi.Input.asOptionalInput<String>(csr),
-      distinguishedName = pulumi.Input.asOptionalInput<String>(distinguishedName),
-      keySize = pulumi.Input.asOptionalInput<int>(keySize),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      productType = pulumi.Input.asInput<CertificateProductType>(productType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      validityInYears = pulumi.Input.asOptionalInput<int>(validityInYears);
+    this.autoRenew,
+    this.certificateOrderName,
+    this.certificates,
+    this.csr,
+    this.distinguishedName,
+    this.keySize,
+    this.kind,
+    this.location,
+    required this.productType,
+    required this.resourceGroupName,
+    this.tags,
+    this.validityInYears,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class AppServiceCertificateOrderArgs {
 
   factory AppServiceCertificateOrderArgs.fromMap(Map<String, dynamic> map) {
     return AppServiceCertificateOrderArgs(
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      certificateOrderName: map['certificateOrderName'] == null ? null : pulumi.Output.create<String>(map['certificateOrderName'] as String),
-      certificates: map['certificates'] == null ? null : pulumi.Output.create<Map<String, AppServiceCertificate>>(pulumi.Input.decodeMapValues<AppServiceCertificate>(map['certificates'], (value) => AppServiceCertificate.fromMap((value as Map).cast<String, dynamic>()))),
-      csr: map['csr'] == null ? null : pulumi.Output.create<String>(map['csr'] as String),
-      distinguishedName: map['distinguishedName'] == null ? null : pulumi.Output.create<String>(map['distinguishedName'] as String),
-      keySize: map['keySize'] == null ? null : pulumi.Output.create<int>(map['keySize'] as int),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      productType: pulumi.Output.create<CertificateProductType>(CertificateProductType.fromValue(map['productType'] as String)),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      validityInYears: map['validityInYears'] == null ? null : pulumi.Output.create<int>(map['validityInYears'] as int),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      certificateOrderName: map['certificateOrderName'] == null ? null : (map['certificateOrderName'] as String).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeMapValues<AppServiceCertificate>(map['certificates'], (value) => AppServiceCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      csr: map['csr'] == null ? null : (map['csr'] as String).input(),
+      distinguishedName: map['distinguishedName'] == null ? null : (map['distinguishedName'] as String).input(),
+      keySize: map['keySize'] == null ? null : (map['keySize'] as int).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      productType: (CertificateProductType.fromValue(map['productType'] as String)).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      validityInYears: map['validityInYears'] == null ? null : (map['validityInYears'] as int).input(),
     );
   }
 }

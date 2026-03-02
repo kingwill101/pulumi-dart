@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Grafana users settings
 class Users {
   /// Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.
-  final bool? viewersCanEdit;
+  final pulumi.Input<bool>? viewersCanEdit;
 
   /// Creates a new [Users].
   /// [viewersCanEdit] Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.
@@ -20,7 +21,7 @@ class Users {
 
   factory Users.fromMap(Map<String, dynamic> map) {
     return Users(
-      viewersCanEdit: map['viewersCanEdit'] == null ? null : map['viewersCanEdit'] as bool,
+      viewersCanEdit: map['viewersCanEdit'] == null ? null : (map['viewersCanEdit'] as bool).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetBackendServersArgs {
   /// [loadBalancerId] ID of the SLB with attachments.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetBackendServersArgs({
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> loadBalancerId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.ids,
+    required this.loadBalancerId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBackendServersArgs {
 
   factory GetBackendServersArgs.fromMap(Map<String, dynamic> map) {
     return GetBackendServersArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

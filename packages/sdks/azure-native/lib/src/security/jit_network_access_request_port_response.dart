@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JitNetworkAccessRequestPortResponse {
   /// Mutually exclusive with the "allowedSourceAddressPrefixes" parameter. Should be an IP address or CIDR, for example "192.168.0.3" or "192.168.0.0/16".
-  final String? allowedSourceAddressPrefix;
+  final pulumi.Input<String>? allowedSourceAddressPrefix;
   /// Mutually exclusive with the "allowedSourceAddressPrefix" parameter.
-  final List<String>? allowedSourceAddressPrefixes;
+  final pulumi.Input<List<String>>? allowedSourceAddressPrefixes;
   /// The date & time at which the request ends in UTC
-  final String endTimeUtc;
+  final pulumi.Input<String> endTimeUtc;
   /// The port which is mapped to this port's `number` in the Azure Firewall, if applicable
-  final int? mappedPort;
-  final int number;
+  final pulumi.Input<int>? mappedPort;
+  final pulumi.Input<int> number;
   /// The status of the port
-  final String status;
+  final pulumi.Input<String> status;
   /// A description of why the `status` has its value
-  final String statusReason;
+  final pulumi.Input<String> statusReason;
 
   /// Creates a new [JitNetworkAccessRequestPortResponse].
   /// [allowedSourceAddressPrefix] Mutually exclusive with the "allowedSourceAddressPrefixes" parameter. Should be an IP address or CIDR, for example "192.168.0.3" or "192.168.0.0/16".
@@ -48,13 +49,13 @@ class JitNetworkAccessRequestPortResponse {
 
   factory JitNetworkAccessRequestPortResponse.fromMap(Map<String, dynamic> map) {
     return JitNetworkAccessRequestPortResponse(
-      allowedSourceAddressPrefix: map['allowedSourceAddressPrefix'] == null ? null : map['allowedSourceAddressPrefix'] as String,
-      allowedSourceAddressPrefixes: map['allowedSourceAddressPrefixes'] == null ? null : (map['allowedSourceAddressPrefixes'] as List).cast<String>(),
-      endTimeUtc: map['endTimeUtc'] as String,
-      mappedPort: map['mappedPort'] == null ? null : map['mappedPort'] as int,
-      number: map['number'] as int,
-      status: map['status'] as String,
-      statusReason: map['statusReason'] as String,
+      allowedSourceAddressPrefix: map['allowedSourceAddressPrefix'] == null ? null : (map['allowedSourceAddressPrefix'] as String).input(),
+      allowedSourceAddressPrefixes: map['allowedSourceAddressPrefixes'] == null ? null : ((map['allowedSourceAddressPrefixes'] as List).cast<String>()).input(),
+      endTimeUtc: (map['endTimeUtc'] as String).input(),
+      mappedPort: map['mappedPort'] == null ? null : (map['mappedPort'] as int).input(),
+      number: (map['number'] as int).input(),
+      status: (map['status'] as String).input(),
+      statusReason: (map['statusReason'] as String).input(),
     );
   }
 }

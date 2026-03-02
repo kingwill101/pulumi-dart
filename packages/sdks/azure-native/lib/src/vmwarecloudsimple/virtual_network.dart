@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Virtual network model
 class VirtualNetwork {
   /// virtual network id (privateCloudId:vsphereId)
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [VirtualNetwork].
   /// [id] virtual network id (privateCloudId:vsphereId)
@@ -20,7 +21,7 @@ class VirtualNetwork {
 
   factory VirtualNetwork.fromMap(Map<String, dynamic> map) {
     return VirtualNetwork(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

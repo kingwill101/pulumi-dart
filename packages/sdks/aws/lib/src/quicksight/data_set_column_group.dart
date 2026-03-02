@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_set_column_group_geo_spatial_column_group.dart';
 
 class DataSetColumnGroup {
   /// Geospatial column group that denotes a hierarchy. See geo_spatial_column_group.
-  final DataSetColumnGroupGeoSpatialColumnGroup? geoSpatialColumnGroup;
+  final pulumi.Input<DataSetColumnGroupGeoSpatialColumnGroup>? geoSpatialColumnGroup;
 
   /// Creates a new [DataSetColumnGroup].
   /// [geoSpatialColumnGroup] Geospatial column group that denotes a hierarchy. See geo_spatial_column_group.
@@ -14,13 +15,13 @@ class DataSetColumnGroup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'geoSpatialColumnGroup': ?geoSpatialColumnGroup == null ? null : geoSpatialColumnGroup!.toMap(),
+      'geoSpatialColumnGroup': ?pulumi.Input.mapOptionalInputValue<DataSetColumnGroupGeoSpatialColumnGroup, Map<String, dynamic>>(geoSpatialColumnGroup, (value) => value.toMap()),
     };
   }
 
   factory DataSetColumnGroup.fromMap(Map<String, dynamic> map) {
     return DataSetColumnGroup(
-      geoSpatialColumnGroup: map['geoSpatialColumnGroup'] == null ? null : DataSetColumnGroupGeoSpatialColumnGroup.fromMap((map['geoSpatialColumnGroup'] as Map).cast<String, dynamic>()),
+      geoSpatialColumnGroup: map['geoSpatialColumnGroup'] == null ? null : (DataSetColumnGroupGeoSpatialColumnGroup.fromMap((map['geoSpatialColumnGroup'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

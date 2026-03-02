@@ -19,13 +19,10 @@ class GetVpcLinkArgs {
   /// [tags] VPC Link Tags.
   /// [vpcLinkId] VPC Link ID
   GetVpcLinkArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcLinkId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcLinkId = pulumi.Input.asInput<String>(vpcLinkId);
+    this.region,
+    this.tags,
+    required this.vpcLinkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVpcLinkArgs {
 
   factory GetVpcLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcLinkArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcLinkId: pulumi.Output.create<String>(map['vpcLinkId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcLinkId: (map['vpcLinkId'] as String).input(),
     );
   }
 }

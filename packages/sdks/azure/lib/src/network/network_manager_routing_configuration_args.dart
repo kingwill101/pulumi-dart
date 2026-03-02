@@ -22,15 +22,11 @@ class NetworkManagerRoutingConfigurationArgs {
   /// [networkManagerId] The ID of the Network Manager. Changing this forces a new Network Manager Routing Configuration to be created.
   /// [routeTableUsageMode] The route table usage mode for the Network Manager Routing Configuration. Possible values are `ManagedOnly` and `UseExisting`. Defaults to `ManagedOnly`.
   NetworkManagerRoutingConfigurationArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkManagerId,
-    pulumi.Output<String>? routeTableUsageMode,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkManagerId = pulumi.Input.asInput<String>(networkManagerId),
-      routeTableUsageMode = pulumi.Input.asOptionalInput<String>(routeTableUsageMode);
+    this.description,
+    this.name,
+    required this.networkManagerId,
+    this.routeTableUsageMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class NetworkManagerRoutingConfigurationArgs {
 
   factory NetworkManagerRoutingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingConfigurationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkManagerId: pulumi.Output.create<String>(map['networkManagerId'] as String),
-      routeTableUsageMode: map['routeTableUsageMode'] == null ? null : pulumi.Output.create<String>(map['routeTableUsageMode'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkManagerId: (map['networkManagerId'] as String).input(),
+      routeTableUsageMode: map['routeTableUsageMode'] == null ? null : (map['routeTableUsageMode'] as String).input(),
     );
   }
 }

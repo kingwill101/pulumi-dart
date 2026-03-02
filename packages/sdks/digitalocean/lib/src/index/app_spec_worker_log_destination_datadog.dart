@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecWorkerLogDestinationDatadog {
   /// Datadog API key.
-  final String apiKey;
+  final pulumi.Input<String> apiKey;
   /// Datadog HTTP log intake endpoint.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
 
   /// Creates a new [AppSpecWorkerLogDestinationDatadog].
   /// [apiKey] Datadog API key.
@@ -24,8 +25,8 @@ class AppSpecWorkerLogDestinationDatadog {
 
   factory AppSpecWorkerLogDestinationDatadog.fromMap(Map<String, dynamic> map) {
     return AppSpecWorkerLogDestinationDatadog(
-      apiKey: map['apiKey'] as String,
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
+      apiKey: (map['apiKey'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
     );
   }
 }

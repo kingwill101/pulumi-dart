@@ -22,15 +22,11 @@ class ObjectLambdaAccessPointPolicyArgs {
   /// [policy] The Object Lambda Access Point resource policy document.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ObjectLambdaAccessPointPolicyArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accountId,
+    this.name,
+    required this.policy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ObjectLambdaAccessPointPolicyArgs {
 
   factory ObjectLambdaAccessPointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointPolicyArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

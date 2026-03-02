@@ -8,13 +8,13 @@ import 'virtual_machine_properties_response_os_disk.dart';
 /// StorageProfile - contains information about the disks and storage information for the virtual machine
 class VirtualMachinePropertiesResponseStorageProfile {
   /// adds data disks to the virtual machine
-  final List<VirtualMachinePropertiesResponseDataDisks>? dataDisks;
+  final pulumi.Input<List<VirtualMachinePropertiesResponseDataDisks>>? dataDisks;
   /// Which Image to use for the virtual machine
-  final VirtualMachinePropertiesResponseImageReference? imageReference;
+  final pulumi.Input<VirtualMachinePropertiesResponseImageReference>? imageReference;
   /// VHD to attach as OS disk
-  final VirtualMachinePropertiesResponseOsDisk? osDisk;
+  final pulumi.Input<VirtualMachinePropertiesResponseOsDisk>? osDisk;
   /// Id of the storage container that hosts the VM configuration file
-  final String? vmConfigStoragePathId;
+  final pulumi.Input<String>? vmConfigStoragePathId;
 
   /// Creates a new [VirtualMachinePropertiesResponseStorageProfile].
   /// [dataDisks] adds data disks to the virtual machine
@@ -30,19 +30,19 @@ class VirtualMachinePropertiesResponseStorageProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataDisks': ?dataDisks == null ? null : pulumi.Input.encodeList<VirtualMachinePropertiesResponseDataDisks, Map<String, dynamic>>(dataDisks!, (value) => value.toMap()),
-      'imageReference': ?imageReference == null ? null : imageReference!.toMap(),
-      'osDisk': ?osDisk == null ? null : osDisk!.toMap(),
+      'dataDisks': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachinePropertiesResponseDataDisks>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<VirtualMachinePropertiesResponseDataDisks, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'imageReference': ?pulumi.Input.mapOptionalInputValue<VirtualMachinePropertiesResponseImageReference, Map<String, dynamic>>(imageReference, (value) => value.toMap()),
+      'osDisk': ?pulumi.Input.mapOptionalInputValue<VirtualMachinePropertiesResponseOsDisk, Map<String, dynamic>>(osDisk, (value) => value.toMap()),
       'vmConfigStoragePathId': ?vmConfigStoragePathId,
     };
   }
 
   factory VirtualMachinePropertiesResponseStorageProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponseStorageProfile(
-      dataDisks: map['dataDisks'] == null ? null : pulumi.Input.decodeList<VirtualMachinePropertiesResponseDataDisks>(map['dataDisks'], (value) => VirtualMachinePropertiesResponseDataDisks.fromMap((value as Map).cast<String, dynamic>())),
-      imageReference: map['imageReference'] == null ? null : VirtualMachinePropertiesResponseImageReference.fromMap((map['imageReference'] as Map).cast<String, dynamic>()),
-      osDisk: map['osDisk'] == null ? null : VirtualMachinePropertiesResponseOsDisk.fromMap((map['osDisk'] as Map).cast<String, dynamic>()),
-      vmConfigStoragePathId: map['vmConfigStoragePathId'] == null ? null : map['vmConfigStoragePathId'] as String,
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<VirtualMachinePropertiesResponseDataDisks>(map['dataDisks'], (value) => VirtualMachinePropertiesResponseDataDisks.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageReference: map['imageReference'] == null ? null : (VirtualMachinePropertiesResponseImageReference.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
+      osDisk: map['osDisk'] == null ? null : (VirtualMachinePropertiesResponseOsDisk.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
+      vmConfigStoragePathId: map['vmConfigStoragePathId'] == null ? null : (map['vmConfigStoragePathId'] as String).input(),
     );
   }
 }

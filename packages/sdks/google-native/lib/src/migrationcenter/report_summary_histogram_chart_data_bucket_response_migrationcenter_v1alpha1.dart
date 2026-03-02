@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A histogram bucket with a lower and upper bound, and a count of items with a field value between those bounds. The lower bound is inclusive and the upper bound is exclusive. Lower bound may be -infinity and upper bound may be infinity.
 class ReportSummaryHistogramChartDataBucketResponseMigrationcenterV1alpha1 {
   /// Count of items in the bucket.
-  final String count;
+  final pulumi.Input<String> count;
   /// Lower bound - inclusive.
-  final String lowerBound;
+  final pulumi.Input<String> lowerBound;
   /// Upper bound - exclusive.
-  final String upperBound;
+  final pulumi.Input<String> upperBound;
 
   /// Creates a new [ReportSummaryHistogramChartDataBucketResponseMigrationcenterV1alpha1].
   /// [count] Count of items in the bucket.
@@ -30,9 +31,9 @@ class ReportSummaryHistogramChartDataBucketResponseMigrationcenterV1alpha1 {
 
   factory ReportSummaryHistogramChartDataBucketResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ReportSummaryHistogramChartDataBucketResponseMigrationcenterV1alpha1(
-      count: map['count'] as String,
-      lowerBound: map['lowerBound'] as String,
-      upperBound: map['upperBound'] as String,
+      count: (map['count'] as String).input(),
+      lowerBound: (map['lowerBound'] as String).input(),
+      upperBound: (map['upperBound'] as String).input(),
     );
   }
 }

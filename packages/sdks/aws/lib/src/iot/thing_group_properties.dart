@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'thing_group_properties_attribute_payload.dart';
 
 class ThingGroupProperties {
   /// The Thing Group attributes. Defined below.
-  final ThingGroupPropertiesAttributePayload? attributePayload;
+  final pulumi.Input<ThingGroupPropertiesAttributePayload>? attributePayload;
   /// A description of the Thing Group.
-  final String? description;
+  final pulumi.Input<String>? description;
 
   /// Creates a new [ThingGroupProperties].
   /// [attributePayload] The Thing Group attributes. Defined below.
@@ -18,15 +19,15 @@ class ThingGroupProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributePayload': ?attributePayload == null ? null : attributePayload!.toMap(),
+      'attributePayload': ?pulumi.Input.mapOptionalInputValue<ThingGroupPropertiesAttributePayload, Map<String, dynamic>>(attributePayload, (value) => value.toMap()),
       'description': ?description,
     };
   }
 
   factory ThingGroupProperties.fromMap(Map<String, dynamic> map) {
     return ThingGroupProperties(
-      attributePayload: map['attributePayload'] == null ? null : ThingGroupPropertiesAttributePayload.fromMap((map['attributePayload'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
+      attributePayload: map['attributePayload'] == null ? null : (ThingGroupPropertiesAttributePayload.fromMap((map['attributePayload'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
     );
   }
 }

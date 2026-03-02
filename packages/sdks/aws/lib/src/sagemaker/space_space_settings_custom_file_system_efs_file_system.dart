@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpaceSpaceSettingsCustomFileSystemEfsFileSystem {
   /// The ID of your Amazon EFS file system.
-  final String fileSystemId;
+  final pulumi.Input<String> fileSystemId;
 
   /// Creates a new [SpaceSpaceSettingsCustomFileSystemEfsFileSystem].
   /// [fileSystemId] The ID of your Amazon EFS file system.
@@ -19,7 +20,7 @@ class SpaceSpaceSettingsCustomFileSystemEfsFileSystem {
 
   factory SpaceSpaceSettingsCustomFileSystemEfsFileSystem.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsCustomFileSystemEfsFileSystem(
-      fileSystemId: map['fileSystemId'] as String,
+      fileSystemId: (map['fileSystemId'] as String).input(),
     );
   }
 }

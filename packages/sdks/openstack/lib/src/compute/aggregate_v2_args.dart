@@ -30,17 +30,12 @@ class AggregateV2Args {
   /// [region] The region in which to create the Host Aggregate. If
   /// [zone] The name of the Availability Zone to use. If ommited, it will take the default
   AggregateV2Args({
-    pulumi.Output<List<String>>? hosts,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? zone,
-  }) :
-      hosts = pulumi.Input.asOptionalInput<List<String>>(hosts),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.hosts,
+    this.metadata,
+    this.name,
+    this.region,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class AggregateV2Args {
 
   factory AggregateV2Args.fromMap(Map<String, dynamic> map) {
     return AggregateV2Args(
-      hosts: map['hosts'] == null ? null : pulumi.Output.create<List<String>>((map['hosts'] as List).cast<String>()),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

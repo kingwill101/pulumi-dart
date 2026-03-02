@@ -26,17 +26,12 @@ class DatabaseAccountCassandraKeyspaceArgs {
   /// [resource] The standard JSON format of a Cassandra keyspace
   /// [resourceGroupName] Name of an Azure resource group.
   DatabaseAccountCassandraKeyspaceArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? keyspaceName,
-    required pulumi.Output<Map<String, String>> options,
-    required pulumi.Output<CassandraKeyspaceResource> resource,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      keyspaceName = pulumi.Input.asOptionalInput<String>(keyspaceName),
-      options = pulumi.Input.asInput<Map<String, String>>(options),
-      resource = pulumi.Input.asInput<CassandraKeyspaceResource>(resource),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.keyspaceName,
+    required this.options,
+    required this.resource,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DatabaseAccountCassandraKeyspaceArgs {
 
   factory DatabaseAccountCassandraKeyspaceArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAccountCassandraKeyspaceArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      keyspaceName: map['keyspaceName'] == null ? null : pulumi.Output.create<String>(map['keyspaceName'] as String),
-      options: pulumi.Output.create<Map<String, String>>((map['options'] as Map).cast<String, String>()),
-      resource: pulumi.Output.create<CassandraKeyspaceResource>(CassandraKeyspaceResource.fromMap((map['resource'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      keyspaceName: map['keyspaceName'] == null ? null : (map['keyspaceName'] as String).input(),
+      options: ((map['options'] as Map).cast<String, String>()).input(),
+      resource: (CassandraKeyspaceResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

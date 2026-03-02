@@ -24,15 +24,11 @@ class EndpointServicePrivateDnsVerificationArgs {
   /// [timeouts] Optional.
   /// [waitForVerification] Whether to wait until the endpoint service returns a `Verified` status for the configured private DNS name.
   EndpointServicePrivateDnsVerificationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceId,
-    pulumi.Output<EndpointServicePrivateDnsVerificationTimeouts>? timeouts,
-    pulumi.Output<bool>? waitForVerification,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      timeouts = pulumi.Input.asOptionalInput<EndpointServicePrivateDnsVerificationTimeouts>(timeouts),
-      waitForVerification = pulumi.Input.asOptionalInput<bool>(waitForVerification);
+    this.region,
+    required this.serviceId,
+    this.timeouts,
+    this.waitForVerification,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class EndpointServicePrivateDnsVerificationArgs {
 
   factory EndpointServicePrivateDnsVerificationArgs.fromMap(Map<String, dynamic> map) {
     return EndpointServicePrivateDnsVerificationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<EndpointServicePrivateDnsVerificationTimeouts>(EndpointServicePrivateDnsVerificationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      waitForVerification: map['waitForVerification'] == null ? null : pulumi.Output.create<bool>(map['waitForVerification'] as bool),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (EndpointServicePrivateDnsVerificationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      waitForVerification: map['waitForVerification'] == null ? null : (map['waitForVerification'] as bool).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class ListAdminKeyArgs {
   /// [resourceGroupName] The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [searchServiceName] The name of the Azure AI Search service associated with the specified resource group.
   ListAdminKeyArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> searchServiceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      searchServiceName = pulumi.Input.asInput<String>(searchServiceName);
+    required this.resourceGroupName,
+    required this.searchServiceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListAdminKeyArgs {
 
   factory ListAdminKeyArgs.fromMap(Map<String, dynamic> map) {
     return ListAdminKeyArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      searchServiceName: pulumi.Output.create<String>(map['searchServiceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      searchServiceName: (map['searchServiceName'] as String).input(),
     );
   }
 }

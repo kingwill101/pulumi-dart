@@ -8,22 +8,22 @@ import 'parameter_specification_response.dart';
 /// Azure Key Vault linked service.
 class AzureKeyVaultLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The base URL of the Azure Key Vault. e.g. https://myakv.vault.azure.net Type: string (or Expression with resultType string).
-  final dynamic baseUrl;
+  final pulumi.Input<dynamic> baseUrl;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// The credential reference containing authentication information.
-  final CredentialReferenceResponse? credential;
+  final pulumi.Input<CredentialReferenceResponse>? credential;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// Type of linked service.
   /// Expected value is 'AzureKeyVault'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [AzureKeyVaultLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -49,10 +49,10 @@ class AzureKeyVaultLinkedServiceResponse {
     return <String, dynamic>{
       'annotations': ?annotations,
       'baseUrl': baseUrl,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
-      'credential': ?credential == null ? null : credential!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReferenceResponse, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'description': ?description,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
       'version': ?version,
     };
@@ -60,14 +60,14 @@ class AzureKeyVaultLinkedServiceResponse {
 
   factory AzureKeyVaultLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return AzureKeyVaultLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      baseUrl: map['baseUrl'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      credential: map['credential'] == null ? null : CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      baseUrl: (map['baseUrl']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetAuthorizationTokenArgs {
   /// [durationSeconds] Time, in seconds, that the generated authorization token is valid. Valid values are `0` and between `900` and `43200`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetAuthorizationTokenArgs({
-    required pulumi.Output<String> domain,
-    pulumi.Output<String>? domainOwner,
-    pulumi.Output<int>? durationSeconds,
-    pulumi.Output<String>? region,
-  }) :
-      domain = pulumi.Input.asInput<String>(domain),
-      domainOwner = pulumi.Input.asOptionalInput<String>(domainOwner),
-      durationSeconds = pulumi.Input.asOptionalInput<int>(durationSeconds),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.domain,
+    this.domainOwner,
+    this.durationSeconds,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetAuthorizationTokenArgs {
 
   factory GetAuthorizationTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationTokenArgs(
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      domainOwner: map['domainOwner'] == null ? null : pulumi.Output.create<String>(map['domainOwner'] as String),
-      durationSeconds: map['durationSeconds'] == null ? null : pulumi.Output.create<int>(map['durationSeconds'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      domain: (map['domain'] as String).input(),
+      domainOwner: map['domainOwner'] == null ? null : (map['domainOwner'] as String).input(),
+      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryEncryption {
   /// The client ID of the managed identity associated with the encryption key.
-  final String identityClientId;
+  final pulumi.Input<String> identityClientId;
   /// The ID of the Key Vault Key.
-  final String keyVaultKeyId;
+  final pulumi.Input<String> keyVaultKeyId;
 
   /// Creates a new [RegistryEncryption].
   /// [identityClientId] The client ID of the managed identity associated with the encryption key.
@@ -24,8 +25,8 @@ class RegistryEncryption {
 
   factory RegistryEncryption.fromMap(Map<String, dynamic> map) {
     return RegistryEncryption(
-      identityClientId: map['identityClientId'] as String,
-      keyVaultKeyId: map['keyVaultKeyId'] as String,
+      identityClientId: (map['identityClientId'] as String).input(),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
     );
   }
 }

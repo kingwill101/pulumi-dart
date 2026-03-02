@@ -19,15 +19,11 @@ class AccessPackageState {
   /// [displayName] The display name of the access package.
   /// [hidden] Whether the access package is hidden from the requestor.
   AccessPackageState({
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? hidden,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      hidden = pulumi.Input.asOptionalInput<bool>(hidden);
+    this.catalogId,
+    this.description,
+    this.displayName,
+    this.hidden,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AccessPackageState {
 
   factory AccessPackageState.fromMap(Map<String, dynamic> map) {
     return AccessPackageState(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      hidden: map['hidden'] == null ? null : pulumi.Output.create<bool>(map['hidden'] as bool),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      hidden: map['hidden'] == null ? null : (map['hidden'] as bool).input(),
     );
   }
 }

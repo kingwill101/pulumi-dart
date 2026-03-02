@@ -25,17 +25,12 @@ class VpcIpv4CidrBlockAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcId] The ID of the VPC to make the association with.
   VpcIpv4CidrBlockAssociationArgs({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<String>? ipv4IpamPoolId,
-    pulumi.Output<int>? ipv4NetmaskLength,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> vpcId,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      ipv4IpamPoolId = pulumi.Input.asOptionalInput<String>(ipv4IpamPoolId),
-      ipv4NetmaskLength = pulumi.Input.asOptionalInput<int>(ipv4NetmaskLength),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.cidrBlock,
+    this.ipv4IpamPoolId,
+    this.ipv4NetmaskLength,
+    this.region,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class VpcIpv4CidrBlockAssociationArgs {
 
   factory VpcIpv4CidrBlockAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpv4CidrBlockAssociationArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipv4IpamPoolId'] as String),
-      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : pulumi.Output.create<int>(map['ipv4NetmaskLength'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : (map['ipv4IpamPoolId'] as String).input(),
+      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : (map['ipv4NetmaskLength'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

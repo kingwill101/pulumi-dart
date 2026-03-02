@@ -16,11 +16,9 @@ class GetRecordArgs {
   /// [domain] The domain name of the record.
   /// [name] The name of the record.
   GetRecordArgs({
-    required pulumi.Output<String> domain,
-    required pulumi.Output<String> name,
-  }) :
-      domain = pulumi.Input.asInput<String>(domain),
-      name = pulumi.Input.asInput<String>(name);
+    required this.domain,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRecordArgs {
 
   factory GetRecordArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordArgs(
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      domain: (map['domain'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

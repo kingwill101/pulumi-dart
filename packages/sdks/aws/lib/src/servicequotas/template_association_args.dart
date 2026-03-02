@@ -16,11 +16,9 @@ class TemplateAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipDestroy] Skip disassociating the quota increase template upon destruction. This will remove the resource from Terraform state, but leave the remote association in place.
   TemplateAssociationArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? skipDestroy,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy);
+    this.region,
+    this.skipDestroy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class TemplateAssociationArgs {
 
   factory TemplateAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TemplateAssociationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
     );
   }
 }

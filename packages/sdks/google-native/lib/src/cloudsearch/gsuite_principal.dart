@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GSuitePrincipal {
   /// This principal represents all users of the Google Workspace domain of the customer.
-  final bool? gsuiteDomain;
+  final pulumi.Input<bool>? gsuiteDomain;
   /// This principal references a Google Workspace group name.
-  final String? gsuiteGroupEmail;
+  final pulumi.Input<String>? gsuiteGroupEmail;
   /// This principal references a Google Workspace user account.
-  final String? gsuiteUserEmail;
+  final pulumi.Input<String>? gsuiteUserEmail;
 
   /// Creates a new [GSuitePrincipal].
   /// [gsuiteDomain] This principal represents all users of the Google Workspace domain of the customer.
@@ -29,9 +30,9 @@ class GSuitePrincipal {
 
   factory GSuitePrincipal.fromMap(Map<String, dynamic> map) {
     return GSuitePrincipal(
-      gsuiteDomain: map['gsuiteDomain'] == null ? null : map['gsuiteDomain'] as bool,
-      gsuiteGroupEmail: map['gsuiteGroupEmail'] == null ? null : map['gsuiteGroupEmail'] as String,
-      gsuiteUserEmail: map['gsuiteUserEmail'] == null ? null : map['gsuiteUserEmail'] as String,
+      gsuiteDomain: map['gsuiteDomain'] == null ? null : (map['gsuiteDomain'] as bool).input(),
+      gsuiteGroupEmail: map['gsuiteGroupEmail'] == null ? null : (map['gsuiteGroupEmail'] as String).input(),
+      gsuiteUserEmail: map['gsuiteUserEmail'] == null ? null : (map['gsuiteUserEmail'] as String).input(),
     );
   }
 }

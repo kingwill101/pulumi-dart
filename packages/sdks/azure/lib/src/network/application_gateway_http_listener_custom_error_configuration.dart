@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayHttpListenerCustomErrorConfiguration {
   /// Error page URL of the application gateway customer error.
-  final String customErrorPageUrl;
+  final pulumi.Input<String> customErrorPageUrl;
   /// The ID of the Rewrite Rule Set
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Status code of the application gateway customer error. Possible values are `HttpStatus400`, `HttpStatus403`, `HttpStatus404`, `HttpStatus405`, `HttpStatus408`, `HttpStatus500`, `HttpStatus502`, `HttpStatus503` and `HttpStatus504`
-  final String statusCode;
+  final pulumi.Input<String> statusCode;
 
   /// Creates a new [ApplicationGatewayHttpListenerCustomErrorConfiguration].
   /// [customErrorPageUrl] Error page URL of the application gateway customer error.
@@ -29,9 +30,9 @@ class ApplicationGatewayHttpListenerCustomErrorConfiguration {
 
   factory ApplicationGatewayHttpListenerCustomErrorConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayHttpListenerCustomErrorConfiguration(
-      customErrorPageUrl: map['customErrorPageUrl'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      statusCode: map['statusCode'] as String,
+      customErrorPageUrl: (map['customErrorPageUrl'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      statusCode: (map['statusCode'] as String).input(),
     );
   }
 }

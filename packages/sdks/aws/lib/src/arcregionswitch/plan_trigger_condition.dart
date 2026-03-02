@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanTriggerCondition {
   /// Name of the associated alarm.
-  final String associatedAlarmName;
+  final pulumi.Input<String> associatedAlarmName;
   /// Condition to check. Valid values: `red`, `green`.
-  final String condition;
+  final pulumi.Input<String> condition;
 
   /// Creates a new [PlanTriggerCondition].
   /// [associatedAlarmName] Name of the associated alarm.
@@ -24,8 +25,8 @@ class PlanTriggerCondition {
 
   factory PlanTriggerCondition.fromMap(Map<String, dynamic> map) {
     return PlanTriggerCondition(
-      associatedAlarmName: map['associatedAlarmName'] as String,
-      condition: map['condition'] as String,
+      associatedAlarmName: (map['associatedAlarmName'] as String).input(),
+      condition: (map['condition'] as String).input(),
     );
   }
 }

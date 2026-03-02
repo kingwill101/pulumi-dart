@@ -23,15 +23,11 @@ class GetLocalGatewayVirtualInterfaceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags, each pair of which must exactly match a pair on the desired local gateway route table.
   GetLocalGatewayVirtualInterfaceArgs({
-    pulumi.Output<List<GetLocalGatewayVirtualInterfaceFilter>>? filters,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetLocalGatewayVirtualInterfaceFilter>>(filters),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.id,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetLocalGatewayVirtualInterfaceArgs {
 
   factory GetLocalGatewayVirtualInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayVirtualInterfaceArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetLocalGatewayVirtualInterfaceFilter>>(pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceFilter>(map['filters'], (value) => GetLocalGatewayVirtualInterfaceFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceFilter>(map['filters'], (value) => GetLocalGatewayVirtualInterfaceFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

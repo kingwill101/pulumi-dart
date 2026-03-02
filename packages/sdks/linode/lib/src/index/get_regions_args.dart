@@ -13,9 +13,8 @@ class GetRegionsArgs {
   /// Creates a new [GetRegionsArgs].
   /// [filters] Optional.
   GetRegionsArgs({
-    pulumi.Output<List<GetRegionsFilter>>? filters,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetRegionsFilter>>(filters);
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetRegionsFilter>>(pulumi.Input.decodeList<GetRegionsFilter>(map['filters'], (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetRegionsFilter>(map['filters'], (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

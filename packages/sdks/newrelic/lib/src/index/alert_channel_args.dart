@@ -23,15 +23,11 @@ class AlertChannelArgs {
   /// [name] The name of the channel.
   /// [type] The type of channel.  One of: `email`, `slack`, `opsgenie`, `pagerduty`, `victorops`, or `webhook`.
   AlertChannelArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<AlertChannelConfig>? config,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> type,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      config = pulumi.Input.asOptionalInput<AlertChannelConfig>(config),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      type = pulumi.Input.asInput<String>(type);
+    this.accountId,
+    this.config,
+    this.name,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class AlertChannelArgs {
 
   factory AlertChannelArgs.fromMap(Map<String, dynamic> map) {
     return AlertChannelArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      config: map['config'] == null ? null : pulumi.Output.create<AlertChannelConfig>(AlertChannelConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      config: map['config'] == null ? null : (AlertChannelConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

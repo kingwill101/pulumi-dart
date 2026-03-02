@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'header_action_parameters.dart';
 
 /// Defines the request header action for the delivery rule.
 class DeliveryRuleRequestHeaderAction {
   /// The name of the action for the delivery rule.
   /// Expected value is 'ModifyRequestHeader'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the action.
-  final HeaderActionParameters parameters;
+  final pulumi.Input<HeaderActionParameters> parameters;
 
   /// Creates a new [DeliveryRuleRequestHeaderAction].
   /// [name] The name of the action for the delivery rule.
@@ -21,14 +22,14 @@ class DeliveryRuleRequestHeaderAction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<HeaderActionParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleRequestHeaderAction.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleRequestHeaderAction(
-      name: map['name'] as String,
-      parameters: HeaderActionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (HeaderActionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

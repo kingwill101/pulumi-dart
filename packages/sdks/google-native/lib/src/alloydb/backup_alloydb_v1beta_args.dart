@@ -46,31 +46,19 @@ class BackupAlloydbV1betaArgs {
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [type] The backup type, which suggests the trigger for the backup.
   BackupAlloydbV1betaArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> backupId,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<EncryptionConfigAlloydbV1beta>? encryptionConfig,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<BackupTypeAlloydbV1beta>? type,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      backupId = pulumi.Input.asInput<String>(backupId),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      encryptionConfig = pulumi.Input.asOptionalInput<EncryptionConfigAlloydbV1beta>(encryptionConfig),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      type = pulumi.Input.asOptionalInput<BackupTypeAlloydbV1beta>(type);
+    this.annotations,
+    required this.backupId,
+    required this.clusterName,
+    this.description,
+    this.displayName,
+    this.encryptionConfig,
+    this.etag,
+    this.labels,
+    this.location,
+    this.project,
+    this.requestId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class BackupAlloydbV1betaArgs {
 
   factory BackupAlloydbV1betaArgs.fromMap(Map<String, dynamic> map) {
     return BackupAlloydbV1betaArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      backupId: pulumi.Output.create<String>(map['backupId'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionConfig: map['encryptionConfig'] == null ? null : pulumi.Output.create<EncryptionConfigAlloydbV1beta>(EncryptionConfigAlloydbV1beta.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<BackupTypeAlloydbV1beta>(BackupTypeAlloydbV1beta.fromValue(map['type'] as String)),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      backupId: (map['backupId'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigAlloydbV1beta.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      type: map['type'] == null ? null : (BackupTypeAlloydbV1beta.fromValue(map['type'] as String)).input(),
     );
   }
 }

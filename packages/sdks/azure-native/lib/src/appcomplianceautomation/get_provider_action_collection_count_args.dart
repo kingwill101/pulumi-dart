@@ -13,9 +13,8 @@ class GetProviderActionCollectionCountArgs {
   /// Creates a new [GetProviderActionCollectionCountArgs].
   /// [type] The resource type.
   GetProviderActionCollectionCountArgs({
-    pulumi.Output<String>? type,
-  }) :
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetProviderActionCollectionCountArgs {
 
   factory GetProviderActionCollectionCountArgs.fromMap(Map<String, dynamic> map) {
     return GetProviderActionCollectionCountArgs(
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

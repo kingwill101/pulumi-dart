@@ -26,17 +26,12 @@ class CurationProfileArgs {
   /// [resourcePolicies] Resource policies that are a part of this curation profile.
   /// [scopes] Resources that have access to the shared resources that are a part of this curation profile.
   CurationProfileArgs({
-    pulumi.Output<String>? curationProfileName,
-    required pulumi.Output<String> devCenterName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<ResourcePolicy>>? resourcePolicies,
-    pulumi.Output<List<String>>? scopes,
-  }) :
-      curationProfileName = pulumi.Input.asOptionalInput<String>(curationProfileName),
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourcePolicies = pulumi.Input.asOptionalInput<List<ResourcePolicy>>(resourcePolicies),
-      scopes = pulumi.Input.asOptionalInput<List<String>>(scopes);
+    this.curationProfileName,
+    required this.devCenterName,
+    required this.resourceGroupName,
+    this.resourcePolicies,
+    this.scopes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class CurationProfileArgs {
 
   factory CurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return CurationProfileArgs(
-      curationProfileName: map['curationProfileName'] == null ? null : pulumi.Output.create<String>(map['curationProfileName'] as String),
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourcePolicies: map['resourcePolicies'] == null ? null : pulumi.Output.create<List<ResourcePolicy>>(pulumi.Input.decodeList<ResourcePolicy>(map['resourcePolicies'], (value) => ResourcePolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
+      curationProfileName: map['curationProfileName'] == null ? null : (map['curationProfileName'] as String).input(),
+      devCenterName: (map['devCenterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourcePolicies: map['resourcePolicies'] == null ? null : (pulumi.Input.decodeList<ResourcePolicy>(map['resourcePolicies'], (value) => ResourcePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

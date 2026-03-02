@@ -16,11 +16,9 @@ class GetDeviceExtendedInformationArgs {
   /// [deviceName] The device name.
   /// [resourceGroupName] The resource group name.
   GetDeviceExtendedInformationArgs({
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.deviceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDeviceExtendedInformationArgs {
 
   factory GetDeviceExtendedInformationArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceExtendedInformationArgs(
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      deviceName: (map['deviceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

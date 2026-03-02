@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_lifecycle_rule_item_action_response.dart';
 import 'bucket_lifecycle_rule_item_condition_response.dart';
 
 class BucketLifecycleRuleItemResponse {
   /// The action to take.
-  final BucketLifecycleRuleItemActionResponse action;
+  final pulumi.Input<BucketLifecycleRuleItemActionResponse> action;
   /// The condition(s) under which the action will be taken.
-  final BucketLifecycleRuleItemConditionResponse condition;
+  final pulumi.Input<BucketLifecycleRuleItemConditionResponse> condition;
 
   /// Creates a new [BucketLifecycleRuleItemResponse].
   /// [action] The action to take.
@@ -19,15 +20,15 @@ class BucketLifecycleRuleItemResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': action.toMap(),
-      'condition': condition.toMap(),
+      'action': pulumi.Input.mapInputValue<BucketLifecycleRuleItemActionResponse, Map<String, dynamic>>(action, (value) => value.toMap()),
+      'condition': pulumi.Input.mapInputValue<BucketLifecycleRuleItemConditionResponse, Map<String, dynamic>>(condition, (value) => value.toMap()),
     };
   }
 
   factory BucketLifecycleRuleItemResponse.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleItemResponse(
-      action: BucketLifecycleRuleItemActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      condition: BucketLifecycleRuleItemConditionResponse.fromMap((map['condition'] as Map).cast<String, dynamic>()),
+      action: (BucketLifecycleRuleItemActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      condition: (BucketLifecycleRuleItemConditionResponse.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

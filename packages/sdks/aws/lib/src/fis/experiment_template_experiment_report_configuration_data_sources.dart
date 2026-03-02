@@ -5,7 +5,7 @@ import 'experiment_template_experiment_report_configuration_data_sources_cloudwa
 
 class ExperimentTemplateExperimentReportConfigurationDataSources {
   /// The data sources for the experiment report. See below.
-  final List<ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>? cloudwatchDashboards;
+  final pulumi.Input<List<ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>>? cloudwatchDashboards;
 
   /// Creates a new [ExperimentTemplateExperimentReportConfigurationDataSources].
   /// [cloudwatchDashboards] The data sources for the experiment report. See below.
@@ -15,13 +15,13 @@ class ExperimentTemplateExperimentReportConfigurationDataSources {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudwatchDashboards': ?cloudwatchDashboards == null ? null : pulumi.Input.encodeList<ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard, Map<String, dynamic>>(cloudwatchDashboards!, (value) => value.toMap()),
+      'cloudwatchDashboards': ?pulumi.Input.mapOptionalInputValue<List<ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>, List<Map<String, dynamic>>>(cloudwatchDashboards, (value) => pulumi.Input.encodeList<ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ExperimentTemplateExperimentReportConfigurationDataSources.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateExperimentReportConfigurationDataSources(
-      cloudwatchDashboards: map['cloudwatchDashboards'] == null ? null : pulumi.Input.decodeList<ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>(map['cloudwatchDashboards'], (value) => ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard.fromMap((value as Map).cast<String, dynamic>())),
+      cloudwatchDashboards: map['cloudwatchDashboards'] == null ? null : (pulumi.Input.decodeList<ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>(map['cloudwatchDashboards'], (value) => ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

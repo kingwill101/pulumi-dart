@@ -47,31 +47,19 @@ class BgpGroupState {
   /// [routerId] The ID of the virtual border router (VBR) that is associated with the BGP group.
   /// [status] The status of the resource
   BgpGroupState({
-    pulumi.Output<String>? authKey,
-    pulumi.Output<String>? bgpGroupName,
-    pulumi.Output<bool>? clearAuthKey,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<bool>? isFakeAsn,
-    pulumi.Output<int>? localAsn,
-    pulumi.Output<int>? peerAsn,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<int>? routeLimit,
-    pulumi.Output<String>? routerId,
-    pulumi.Output<String>? status,
-  }) :
-      authKey = pulumi.Input.asOptionalInput<String>(authKey),
-      bgpGroupName = pulumi.Input.asOptionalInput<String>(bgpGroupName),
-      clearAuthKey = pulumi.Input.asOptionalInput<bool>(clearAuthKey),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      isFakeAsn = pulumi.Input.asOptionalInput<bool>(isFakeAsn),
-      localAsn = pulumi.Input.asOptionalInput<int>(localAsn),
-      peerAsn = pulumi.Input.asOptionalInput<int>(peerAsn),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      routeLimit = pulumi.Input.asOptionalInput<int>(routeLimit),
-      routerId = pulumi.Input.asOptionalInput<String>(routerId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.authKey,
+    this.bgpGroupName,
+    this.clearAuthKey,
+    this.description,
+    this.ipVersion,
+    this.isFakeAsn,
+    this.localAsn,
+    this.peerAsn,
+    this.regionId,
+    this.routeLimit,
+    this.routerId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class BgpGroupState {
 
   factory BgpGroupState.fromMap(Map<String, dynamic> map) {
     return BgpGroupState(
-      authKey: map['authKey'] == null ? null : pulumi.Output.create<String>(map['authKey'] as String),
-      bgpGroupName: map['bgpGroupName'] == null ? null : pulumi.Output.create<String>(map['bgpGroupName'] as String),
-      clearAuthKey: map['clearAuthKey'] == null ? null : pulumi.Output.create<bool>(map['clearAuthKey'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      isFakeAsn: map['isFakeAsn'] == null ? null : pulumi.Output.create<bool>(map['isFakeAsn'] as bool),
-      localAsn: map['localAsn'] == null ? null : pulumi.Output.create<int>(map['localAsn'] as int),
-      peerAsn: map['peerAsn'] == null ? null : pulumi.Output.create<int>(map['peerAsn'] as int),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      routeLimit: map['routeLimit'] == null ? null : pulumi.Output.create<int>(map['routeLimit'] as int),
-      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      authKey: map['authKey'] == null ? null : (map['authKey'] as String).input(),
+      bgpGroupName: map['bgpGroupName'] == null ? null : (map['bgpGroupName'] as String).input(),
+      clearAuthKey: map['clearAuthKey'] == null ? null : (map['clearAuthKey'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      isFakeAsn: map['isFakeAsn'] == null ? null : (map['isFakeAsn'] as bool).input(),
+      localAsn: map['localAsn'] == null ? null : (map['localAsn'] as int).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      routeLimit: map['routeLimit'] == null ? null : (map['routeLimit'] as int).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesRedirFilterUsb {
   /// Controls whether the USB device is allowed for redirection.
-  final String allow;
+  final pulumi.Input<String> allow;
   /// Specifies the USB class type for the redirection filter.
-  final double? class_;
+  final pulumi.Input<double>? class_;
   /// Sets the product ID of the USB device for the redirection filter.
-  final double? product;
+  final pulumi.Input<double>? product;
   /// Specifies the vendor ID of the USB device for the redirection filter.
-  final double? vendor;
+  final pulumi.Input<double>? vendor;
   /// Sets the version of the USB device for the redirection filter.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [DomainDevicesRedirFilterUsb].
   /// [allow] Controls whether the USB device is allowed for redirection.
@@ -39,11 +40,11 @@ class DomainDevicesRedirFilterUsb {
 
   factory DomainDevicesRedirFilterUsb.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRedirFilterUsb(
-      allow: map['allow'] as String,
-      class_: map['class'] == null ? null : map['class'] as double,
-      product: map['product'] == null ? null : map['product'] as double,
-      vendor: map['vendor'] == null ? null : map['vendor'] as double,
-      version: map['version'] == null ? null : map['version'] as String,
+      allow: (map['allow'] as String).input(),
+      class_: map['class'] == null ? null : (map['class'] as double).input(),
+      product: map['product'] == null ? null : (map['product'] as double).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor'] as double).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

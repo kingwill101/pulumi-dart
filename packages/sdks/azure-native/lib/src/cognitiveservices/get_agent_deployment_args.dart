@@ -25,17 +25,12 @@ class GetAgentDeploymentArgs {
   /// [projectName] The name of Cognitive Services account's project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAgentDeploymentArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> appName,
-    required pulumi.Output<String> deploymentName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      appName = pulumi.Input.asInput<String>(appName),
-      deploymentName = pulumi.Input.asInput<String>(deploymentName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.appName,
+    required this.deploymentName,
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetAgentDeploymentArgs {
 
   factory GetAgentDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentDeploymentArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      appName: pulumi.Output.create<String>(map['appName'] as String),
-      deploymentName: pulumi.Output.create<String>(map['deploymentName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      appName: (map['appName'] as String).input(),
+      deploymentName: (map['deploymentName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

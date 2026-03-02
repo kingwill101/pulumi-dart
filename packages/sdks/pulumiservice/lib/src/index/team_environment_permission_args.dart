@@ -29,19 +29,13 @@ class TeamEnvironmentPermissionArgs {
   /// [project] Project name.
   /// [team] Team name.
   TeamEnvironmentPermissionArgs({
-    required pulumi.Output<String> environment,
-    pulumi.Output<String>? maxOpenDuration,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<EnvironmentPermission> permission,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> team,
-  }) :
-      environment = pulumi.Input.asInput<String>(environment),
-      maxOpenDuration = pulumi.Input.asOptionalInput<String>(maxOpenDuration),
-      organization = pulumi.Input.asInput<String>(organization),
-      permission = pulumi.Input.asInput<EnvironmentPermission>(permission),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      team = pulumi.Input.asInput<String>(team);
+    required this.environment,
+    this.maxOpenDuration,
+    required this.organization,
+    required this.permission,
+    this.project,
+    required this.team,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class TeamEnvironmentPermissionArgs {
 
   factory TeamEnvironmentPermissionArgs.fromMap(Map<String, dynamic> map) {
     return TeamEnvironmentPermissionArgs(
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      maxOpenDuration: map['maxOpenDuration'] == null ? null : pulumi.Output.create<String>(map['maxOpenDuration'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      permission: pulumi.Output.create<EnvironmentPermission>(EnvironmentPermission.fromValue(map['permission'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      team: pulumi.Output.create<String>(map['team'] as String),
+      environment: (map['environment'] as String).input(),
+      maxOpenDuration: map['maxOpenDuration'] == null ? null : (map['maxOpenDuration'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      permission: (EnvironmentPermission.fromValue(map['permission'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      team: (map['team'] as String).input(),
     );
   }
 }

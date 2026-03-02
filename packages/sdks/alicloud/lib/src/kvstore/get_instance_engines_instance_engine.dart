@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceEnginesInstanceEngine {
   /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-  final String engine;
+  final pulumi.Input<String> engine;
   /// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
-  final String engineVersion;
+  final pulumi.Input<String> engineVersion;
   /// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetInstanceEnginesInstanceEngine].
   /// [engine] Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
@@ -29,9 +30,9 @@ class GetInstanceEnginesInstanceEngine {
 
   factory GetInstanceEnginesInstanceEngine.fromMap(Map<String, dynamic> map) {
     return GetInstanceEnginesInstanceEngine(
-      engine: map['engine'] as String,
-      engineVersion: map['engineVersion'] as String,
-      zoneId: map['zoneId'] as String,
+      engine: (map['engine'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

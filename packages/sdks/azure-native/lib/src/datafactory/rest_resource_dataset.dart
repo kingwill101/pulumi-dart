@@ -8,32 +8,32 @@ import 'parameter_specification.dart';
 /// A Rest service dataset.
 class RestResourceDataset {
   /// The additional HTTP headers in the request to the RESTful API.
-  final Map<String, dynamic>? additionalHeaders;
+  final pulumi.Input<Map<String, dynamic>>? additionalHeaders;
   /// List of tags that can be used for describing the Dataset.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// Dataset description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final DatasetFolder? folder;
+  final pulumi.Input<DatasetFolder>? folder;
   /// Linked service reference.
-  final LinkedServiceReference linkedServiceName;
+  final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// The pagination rules to compose next page requests.
-  final Map<String, dynamic>? paginationRules;
+  final pulumi.Input<Map<String, dynamic>>? paginationRules;
   /// Parameters for dataset.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The relative URL to the resource that the RESTful API provides. Type: string (or Expression with resultType string).
-  final dynamic relativeUrl;
+  final pulumi.Input<dynamic>? relativeUrl;
   /// The HTTP request body to the RESTful API if requestMethod is POST. Type: string (or Expression with resultType string).
-  final dynamic requestBody;
+  final pulumi.Input<dynamic>? requestBody;
   /// The HTTP method used to call the RESTful API. The default is GET. Type: string (or Expression with resultType string).
-  final dynamic requestMethod;
+  final pulumi.Input<dynamic>? requestMethod;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-  final dynamic schema;
+  final pulumi.Input<dynamic>? schema;
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-  final dynamic structure;
+  final pulumi.Input<dynamic>? structure;
   /// Type of dataset.
   /// Expected value is 'RestResource'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RestResourceDataset].
   /// [additionalHeaders] The additional HTTP headers in the request to the RESTful API.
@@ -70,10 +70,10 @@ class RestResourceDataset {
       'additionalHeaders': ?additionalHeaders,
       'annotations': ?annotations,
       'description': ?description,
-      'folder': ?folder == null ? null : folder!.toMap(),
-      'linkedServiceName': linkedServiceName.toMap(),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'paginationRules': ?paginationRules,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'relativeUrl': ?relativeUrl,
       'requestBody': ?requestBody,
       'requestMethod': ?requestMethod,
@@ -85,19 +85,19 @@ class RestResourceDataset {
 
   factory RestResourceDataset.fromMap(Map<String, dynamic> map) {
     return RestResourceDataset(
-      additionalHeaders: map['additionalHeaders'] == null ? null : (map['additionalHeaders'] as Map).cast<String, dynamic>(),
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      folder: map['folder'] == null ? null : DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>()),
-      linkedServiceName: LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      paginationRules: map['paginationRules'] == null ? null : (map['paginationRules'] as Map).cast<String, dynamic>(),
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      relativeUrl: map['relativeUrl'] == null ? null : map['relativeUrl'],
-      requestBody: map['requestBody'] == null ? null : map['requestBody'],
-      requestMethod: map['requestMethod'] == null ? null : map['requestMethod'],
-      schema: map['schema'] == null ? null : map['schema'],
-      structure: map['structure'] == null ? null : map['structure'],
-      type: map['type'] as String,
+      additionalHeaders: map['additionalHeaders'] == null ? null : ((map['additionalHeaders'] as Map).cast<String, dynamic>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      paginationRules: map['paginationRules'] == null ? null : ((map['paginationRules'] as Map).cast<String, dynamic>()).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl']).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody']).input(),
+      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']).input(),
+      schema: map['schema'] == null ? null : (map['schema']).input(),
+      structure: map['structure'] == null ? null : (map['structure']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

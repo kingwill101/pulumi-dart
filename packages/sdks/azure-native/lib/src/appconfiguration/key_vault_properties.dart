@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings concerning key vault encryption for a configuration store.
 class KeyVaultProperties {
   /// The client id of the identity which will be used to access key vault.
-  final String? identityClientId;
+  final pulumi.Input<String>? identityClientId;
   /// The URI of the key vault key used to encrypt data.
-  final String? keyIdentifier;
+  final pulumi.Input<String>? keyIdentifier;
 
   /// Creates a new [KeyVaultProperties].
   /// [identityClientId] The client id of the identity which will be used to access key vault.
@@ -25,8 +26,8 @@ class KeyVaultProperties {
 
   factory KeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultProperties(
-      identityClientId: map['identityClientId'] == null ? null : map['identityClientId'] as String,
-      keyIdentifier: map['keyIdentifier'] == null ? null : map['keyIdentifier'] as String,
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier'] as String).input(),
     );
   }
 }

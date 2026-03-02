@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The status of the archive
 class AmlFilesystemArchiveResponseStatus {
   /// Server-defined error code for the archive operation
-  final String errorCode;
+  final pulumi.Input<String> errorCode;
   /// Server-defined error message for the archive operation
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// The time of the last completed archive operation
-  final String lastCompletionTime;
+  final pulumi.Input<String> lastCompletionTime;
   /// The time the latest archive operation started
-  final String lastStartedTime;
+  final pulumi.Input<String> lastStartedTime;
   /// The completion percentage of the archive operation
-  final int percentComplete;
+  final pulumi.Input<int> percentComplete;
   /// The state of the archive operation
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [AmlFilesystemArchiveResponseStatus].
   /// [errorCode] Server-defined error code for the archive operation
@@ -45,12 +46,12 @@ class AmlFilesystemArchiveResponseStatus {
 
   factory AmlFilesystemArchiveResponseStatus.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemArchiveResponseStatus(
-      errorCode: map['errorCode'] as String,
-      errorMessage: map['errorMessage'] as String,
-      lastCompletionTime: map['lastCompletionTime'] as String,
-      lastStartedTime: map['lastStartedTime'] as String,
-      percentComplete: map['percentComplete'] as int,
-      state: map['state'] as String,
+      errorCode: (map['errorCode'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      lastCompletionTime: (map['lastCompletionTime'] as String).input(),
+      lastStartedTime: (map['lastStartedTime'] as String).input(),
+      percentComplete: (map['percentComplete'] as int).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

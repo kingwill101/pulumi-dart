@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionBuildConfigSourceStorageSource {
   /// Google Cloud Storage bucket containing the source
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// Google Cloud Storage generation for the object. If the generation
   /// is omitted, the latest generation will be used.
-  final int generation;
+  final pulumi.Input<int> generation;
   /// Google Cloud Storage object containing the source.
-  final String object;
+  final pulumi.Input<String> object;
 
   /// Creates a new [GetFunctionBuildConfigSourceStorageSource].
   /// [bucket] Google Cloud Storage bucket containing the source
@@ -30,9 +31,9 @@ class GetFunctionBuildConfigSourceStorageSource {
 
   factory GetFunctionBuildConfigSourceStorageSource.fromMap(Map<String, dynamic> map) {
     return GetFunctionBuildConfigSourceStorageSource(
-      bucket: map['bucket'] as String,
-      generation: map['generation'] as int,
-      object: map['object'] as String,
+      bucket: (map['bucket'] as String).input(),
+      generation: (map['generation'] as int).input(),
+      object: (map['object'] as String).input(),
     );
   }
 }

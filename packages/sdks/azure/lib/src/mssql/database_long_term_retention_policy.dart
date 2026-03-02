@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseLongTermRetentionPolicy {
   /// Specifies if the backups are immutable. Defaults to `false`.
-  final bool? immutableBackupsEnabled;
+  final pulumi.Input<bool>? immutableBackupsEnabled;
   /// The monthly retention policy for an LTR backup in an ISO 8601 format. Valid value is between 1 to 120 months. e.g. `P1Y`, `P1M`, `P4W` or `P30D`. Defaults to `PT0S`.
-  final String? monthlyRetention;
+  final pulumi.Input<String>? monthlyRetention;
   /// The week of year to take the yearly backup. Value has to be between `1` and `52`.
-  final int? weekOfYear;
+  final pulumi.Input<int>? weekOfYear;
   /// The weekly retention policy for an LTR backup in an ISO 8601 format. Valid value is between 1 to 520 weeks. e.g. `P1Y`, `P1M`, `P1W` or `P7D`. Defaults to `PT0S`.
-  final String? weeklyRetention;
+  final pulumi.Input<String>? weeklyRetention;
   /// The yearly retention policy for an LTR backup in an ISO 8601 format. Valid value is between 1 to 10 years. e.g. `P1Y`, `P12M`, `P52W` or `P365D`. Defaults to `PT0S`.
-  final String? yearlyRetention;
+  final pulumi.Input<String>? yearlyRetention;
 
   /// Creates a new [DatabaseLongTermRetentionPolicy].
   /// [immutableBackupsEnabled] Specifies if the backups are immutable. Defaults to `false`.
@@ -39,11 +40,11 @@ class DatabaseLongTermRetentionPolicy {
 
   factory DatabaseLongTermRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DatabaseLongTermRetentionPolicy(
-      immutableBackupsEnabled: map['immutableBackupsEnabled'] == null ? null : map['immutableBackupsEnabled'] as bool,
-      monthlyRetention: map['monthlyRetention'] == null ? null : map['monthlyRetention'] as String,
-      weekOfYear: map['weekOfYear'] == null ? null : map['weekOfYear'] as int,
-      weeklyRetention: map['weeklyRetention'] == null ? null : map['weeklyRetention'] as String,
-      yearlyRetention: map['yearlyRetention'] == null ? null : map['yearlyRetention'] as String,
+      immutableBackupsEnabled: map['immutableBackupsEnabled'] == null ? null : (map['immutableBackupsEnabled'] as bool).input(),
+      monthlyRetention: map['monthlyRetention'] == null ? null : (map['monthlyRetention'] as String).input(),
+      weekOfYear: map['weekOfYear'] == null ? null : (map['weekOfYear'] as int).input(),
+      weeklyRetention: map['weeklyRetention'] == null ? null : (map['weeklyRetention'] as String).input(),
+      yearlyRetention: map['yearlyRetention'] == null ? null : (map['yearlyRetention'] as String).input(),
     );
   }
 }

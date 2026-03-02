@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTemplatesTemplate {
   /// The category of template.
-  final String category;
+  final pulumi.Input<String> category;
   /// The creator of the template.
-  final String createdBy;
+  final pulumi.Input<String> createdBy;
   /// The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.
-  final String createdDate;
+  final pulumi.Input<String> createdDate;
   /// Description of the OOS Template.
-  final String description;
+  final pulumi.Input<String> description;
   /// Is it triggered successfully.
-  final bool hasTrigger;
+  final pulumi.Input<bool> hasTrigger;
   /// ID of the OOS Template. The value is same as template_name.
-  final String id;
+  final pulumi.Input<String> id;
   /// The sharing type of the template. Valid values: `Private`, `Public`.
-  final String shareType;
+  final pulumi.Input<String> shareType;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The format of the template. Valid values: `JSON`, `YAML`.
-  final String templateFormat;
+  final pulumi.Input<String> templateFormat;
   /// ID of the OOS Template resource.
-  final String templateId;
+  final pulumi.Input<String> templateId;
   /// Name of the OOS Template.
-  final String templateName;
+  final pulumi.Input<String> templateName;
   /// The type of OOS Template.
-  final String templateType;
+  final pulumi.Input<String> templateType;
   /// Version of the OOS Template.
-  final String templateVersion;
+  final pulumi.Input<String> templateVersion;
   /// The user who updated the template.
-  final String updatedBy;
+  final pulumi.Input<String> updatedBy;
   /// The time when the template was updated.
-  final String updatedDate;
+  final pulumi.Input<String> updatedDate;
 
   /// Creates a new [GetTemplatesTemplate].
   /// [category] The category of template.
@@ -89,21 +90,21 @@ class GetTemplatesTemplate {
 
   factory GetTemplatesTemplate.fromMap(Map<String, dynamic> map) {
     return GetTemplatesTemplate(
-      category: map['category'] as String,
-      createdBy: map['createdBy'] as String,
-      createdDate: map['createdDate'] as String,
-      description: map['description'] as String,
-      hasTrigger: map['hasTrigger'] as bool,
-      id: map['id'] as String,
-      shareType: map['shareType'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      templateFormat: map['templateFormat'] as String,
-      templateId: map['templateId'] as String,
-      templateName: map['templateName'] as String,
-      templateType: map['templateType'] as String,
-      templateVersion: map['templateVersion'] as String,
-      updatedBy: map['updatedBy'] as String,
-      updatedDate: map['updatedDate'] as String,
+      category: (map['category'] as String).input(),
+      createdBy: (map['createdBy'] as String).input(),
+      createdDate: (map['createdDate'] as String).input(),
+      description: (map['description'] as String).input(),
+      hasTrigger: (map['hasTrigger'] as bool).input(),
+      id: (map['id'] as String).input(),
+      shareType: (map['shareType'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      templateFormat: (map['templateFormat'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
+      templateName: (map['templateName'] as String).input(),
+      templateType: (map['templateType'] as String).input(),
+      templateVersion: (map['templateVersion'] as String).input(),
+      updatedBy: (map['updatedBy'] as String).input(),
+      updatedDate: (map['updatedDate'] as String).input(),
     );
   }
 }

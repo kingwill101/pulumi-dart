@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiJobTransformationRule {
   /// Action type, optional enumeration value:
@@ -13,19 +14,19 @@ class DiJobTransformationRule {
   /// HandleDml(DML handling)
   ///
   /// DefineIncrementalCondition
-  final String? ruleActionType;
+  final pulumi.Input<String>? ruleActionType;
   /// Regular expression, in json string format.
   ///
   /// Example renaming rule (Rename): {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
-  final String? ruleExpression;
+  final pulumi.Input<String>? ruleExpression;
   /// Rule Name
-  final String? ruleName;
+  final pulumi.Input<String>? ruleName;
   /// Target type of action, optional enumeration value:
   ///
   /// Table (Table)
   ///
   /// Schema(schema)
-  final String? ruleTargetType;
+  final pulumi.Input<String>? ruleTargetType;
 
   /// Creates a new [DiJobTransformationRule].
   /// [ruleActionType] Action type, optional enumeration value:
@@ -50,10 +51,10 @@ class DiJobTransformationRule {
 
   factory DiJobTransformationRule.fromMap(Map<String, dynamic> map) {
     return DiJobTransformationRule(
-      ruleActionType: map['ruleActionType'] == null ? null : map['ruleActionType'] as String,
-      ruleExpression: map['ruleExpression'] == null ? null : map['ruleExpression'] as String,
-      ruleName: map['ruleName'] == null ? null : map['ruleName'] as String,
-      ruleTargetType: map['ruleTargetType'] == null ? null : map['ruleTargetType'] as String,
+      ruleActionType: map['ruleActionType'] == null ? null : (map['ruleActionType'] as String).input(),
+      ruleExpression: map['ruleExpression'] == null ? null : (map['ruleExpression'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      ruleTargetType: map['ruleTargetType'] == null ? null : (map['ruleTargetType'] as String).input(),
     );
   }
 }

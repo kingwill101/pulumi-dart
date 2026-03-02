@@ -11,47 +11,47 @@ import 'get_table_external_data_configuration_parquet_option.dart';
 
 class GetTableExternalDataConfiguration {
   /// Let BigQuery try to autodetect the schema and format of the table.
-  final bool autodetect;
+  final pulumi.Input<bool> autodetect;
   /// Additional options if source_format is set to "AVRO"
-  final List<GetTableExternalDataConfigurationAvroOption> avroOptions;
+  final pulumi.Input<List<GetTableExternalDataConfigurationAvroOption>> avroOptions;
   /// Additional options if sourceFormat is set to BIGTABLE.
-  final List<GetTableExternalDataConfigurationBigtableOption> bigtableOptions;
+  final pulumi.Input<List<GetTableExternalDataConfigurationBigtableOption>> bigtableOptions;
   /// The compression type of the data source. Valid values are "NONE" or "GZIP".
-  final String compression;
+  final pulumi.Input<String> compression;
   /// The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connectionId can have the form "<project>.<location>.<connection_id>" or "projects/<project>/locations/<location>/connections/<connection_id>".
-  final String connectionId;
+  final pulumi.Input<String> connectionId;
   /// Additional properties to set if source_format is set to "CSV".
-  final List<GetTableExternalDataConfigurationCsvOption> csvOptions;
+  final pulumi.Input<List<GetTableExternalDataConfigurationCsvOption>> csvOptions;
   /// The data types that could be used as a target type when converting decimal values.
-  final List<String> decimalTargetTypes;
+  final pulumi.Input<List<String>> decimalTargetTypes;
   /// Specifies how source URIs are interpreted for constructing the file set to load.  By default source URIs are expanded against the underlying storage.  Other options include specifying manifest files. Only applicable to object storage systems.
-  final String fileSetSpecType;
+  final pulumi.Input<String> fileSetSpecType;
   /// Additional options if source_format is set to "GOOGLE_SHEETS".
-  final List<GetTableExternalDataConfigurationGoogleSheetsOption> googleSheetsOptions;
+  final pulumi.Input<List<GetTableExternalDataConfigurationGoogleSheetsOption>> googleSheetsOptions;
   /// When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
-  final List<GetTableExternalDataConfigurationHivePartitioningOption> hivePartitioningOptions;
+  final pulumi.Input<List<GetTableExternalDataConfigurationHivePartitioningOption>> hivePartitioningOptions;
   /// Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
-  final bool ignoreUnknownValues;
+  final pulumi.Input<bool> ignoreUnknownValues;
   /// Load option to be used together with sourceFormat newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and sourceFormat must be set to NEWLINE_DELIMITED_JSON).
-  final String jsonExtension;
+  final pulumi.Input<String> jsonExtension;
   /// Additional properties to set if sourceFormat is set to JSON.
-  final List<GetTableExternalDataConfigurationJsonOption> jsonOptions;
+  final pulumi.Input<List<GetTableExternalDataConfigurationJsonOption>> jsonOptions;
   /// The maximum number of bad records that BigQuery can ignore when reading data.
-  final int maxBadRecords;
+  final pulumi.Input<int> maxBadRecords;
   /// Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
-  final String metadataCacheMode;
+  final pulumi.Input<String> metadataCacheMode;
   /// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If ObjectMetadata is set, sourceFormat should be omitted.
-  final String objectMetadata;
+  final pulumi.Input<String> objectMetadata;
   /// Additional properties to set if sourceFormat is set to PARQUET.
-  final List<GetTableExternalDataConfigurationParquetOption> parquetOptions;
+  final pulumi.Input<List<GetTableExternalDataConfigurationParquetOption>> parquetOptions;
   /// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
-  final String referenceFileSchemaUri;
+  final pulumi.Input<String> referenceFileSchemaUri;
   /// A JSON schema for the external table. Schema is required for CSV and JSON formats and is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats when using external tables.
-  final String schema;
+  final pulumi.Input<String> schema;
   /// Please see sourceFormat under ExternalDataConfiguration in Bigquery's public API documentation (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration) for supported formats. To use "GOOGLE_SHEETS" the scopes must include "googleapis.com/auth/drive.readonly".
-  final String sourceFormat;
+  final pulumi.Input<String> sourceFormat;
   /// A list of the fully-qualified URIs that point to your data in Google Cloud.
-  final List<String> sourceUris;
+  final pulumi.Input<List<String>> sourceUris;
 
   /// Creates a new [GetTableExternalDataConfiguration].
   /// [autodetect] Let BigQuery try to autodetect the schema and format of the table.
@@ -102,22 +102,22 @@ class GetTableExternalDataConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autodetect': autodetect,
-      'avroOptions': pulumi.Input.encodeList<GetTableExternalDataConfigurationAvroOption, Map<String, dynamic>>(avroOptions, (value) => value.toMap()),
-      'bigtableOptions': pulumi.Input.encodeList<GetTableExternalDataConfigurationBigtableOption, Map<String, dynamic>>(bigtableOptions, (value) => value.toMap()),
+      'avroOptions': pulumi.Input.mapInputValue<List<GetTableExternalDataConfigurationAvroOption>, List<Map<String, dynamic>>>(avroOptions, (value) => pulumi.Input.encodeList<GetTableExternalDataConfigurationAvroOption, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bigtableOptions': pulumi.Input.mapInputValue<List<GetTableExternalDataConfigurationBigtableOption>, List<Map<String, dynamic>>>(bigtableOptions, (value) => pulumi.Input.encodeList<GetTableExternalDataConfigurationBigtableOption, Map<String, dynamic>>(value, (value) => value.toMap())),
       'compression': compression,
       'connectionId': connectionId,
-      'csvOptions': pulumi.Input.encodeList<GetTableExternalDataConfigurationCsvOption, Map<String, dynamic>>(csvOptions, (value) => value.toMap()),
+      'csvOptions': pulumi.Input.mapInputValue<List<GetTableExternalDataConfigurationCsvOption>, List<Map<String, dynamic>>>(csvOptions, (value) => pulumi.Input.encodeList<GetTableExternalDataConfigurationCsvOption, Map<String, dynamic>>(value, (value) => value.toMap())),
       'decimalTargetTypes': decimalTargetTypes,
       'fileSetSpecType': fileSetSpecType,
-      'googleSheetsOptions': pulumi.Input.encodeList<GetTableExternalDataConfigurationGoogleSheetsOption, Map<String, dynamic>>(googleSheetsOptions, (value) => value.toMap()),
-      'hivePartitioningOptions': pulumi.Input.encodeList<GetTableExternalDataConfigurationHivePartitioningOption, Map<String, dynamic>>(hivePartitioningOptions, (value) => value.toMap()),
+      'googleSheetsOptions': pulumi.Input.mapInputValue<List<GetTableExternalDataConfigurationGoogleSheetsOption>, List<Map<String, dynamic>>>(googleSheetsOptions, (value) => pulumi.Input.encodeList<GetTableExternalDataConfigurationGoogleSheetsOption, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'hivePartitioningOptions': pulumi.Input.mapInputValue<List<GetTableExternalDataConfigurationHivePartitioningOption>, List<Map<String, dynamic>>>(hivePartitioningOptions, (value) => pulumi.Input.encodeList<GetTableExternalDataConfigurationHivePartitioningOption, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ignoreUnknownValues': ignoreUnknownValues,
       'jsonExtension': jsonExtension,
-      'jsonOptions': pulumi.Input.encodeList<GetTableExternalDataConfigurationJsonOption, Map<String, dynamic>>(jsonOptions, (value) => value.toMap()),
+      'jsonOptions': pulumi.Input.mapInputValue<List<GetTableExternalDataConfigurationJsonOption>, List<Map<String, dynamic>>>(jsonOptions, (value) => pulumi.Input.encodeList<GetTableExternalDataConfigurationJsonOption, Map<String, dynamic>>(value, (value) => value.toMap())),
       'maxBadRecords': maxBadRecords,
       'metadataCacheMode': metadataCacheMode,
       'objectMetadata': objectMetadata,
-      'parquetOptions': pulumi.Input.encodeList<GetTableExternalDataConfigurationParquetOption, Map<String, dynamic>>(parquetOptions, (value) => value.toMap()),
+      'parquetOptions': pulumi.Input.mapInputValue<List<GetTableExternalDataConfigurationParquetOption>, List<Map<String, dynamic>>>(parquetOptions, (value) => pulumi.Input.encodeList<GetTableExternalDataConfigurationParquetOption, Map<String, dynamic>>(value, (value) => value.toMap())),
       'referenceFileSchemaUri': referenceFileSchemaUri,
       'schema': schema,
       'sourceFormat': sourceFormat,
@@ -127,27 +127,27 @@ class GetTableExternalDataConfiguration {
 
   factory GetTableExternalDataConfiguration.fromMap(Map<String, dynamic> map) {
     return GetTableExternalDataConfiguration(
-      autodetect: map['autodetect'] as bool,
-      avroOptions: pulumi.Input.decodeList<GetTableExternalDataConfigurationAvroOption>(map['avroOptions'], (value) => GetTableExternalDataConfigurationAvroOption.fromMap((value as Map).cast<String, dynamic>())),
-      bigtableOptions: pulumi.Input.decodeList<GetTableExternalDataConfigurationBigtableOption>(map['bigtableOptions'], (value) => GetTableExternalDataConfigurationBigtableOption.fromMap((value as Map).cast<String, dynamic>())),
-      compression: map['compression'] as String,
-      connectionId: map['connectionId'] as String,
-      csvOptions: pulumi.Input.decodeList<GetTableExternalDataConfigurationCsvOption>(map['csvOptions'], (value) => GetTableExternalDataConfigurationCsvOption.fromMap((value as Map).cast<String, dynamic>())),
-      decimalTargetTypes: (map['decimalTargetTypes'] as List).cast<String>(),
-      fileSetSpecType: map['fileSetSpecType'] as String,
-      googleSheetsOptions: pulumi.Input.decodeList<GetTableExternalDataConfigurationGoogleSheetsOption>(map['googleSheetsOptions'], (value) => GetTableExternalDataConfigurationGoogleSheetsOption.fromMap((value as Map).cast<String, dynamic>())),
-      hivePartitioningOptions: pulumi.Input.decodeList<GetTableExternalDataConfigurationHivePartitioningOption>(map['hivePartitioningOptions'], (value) => GetTableExternalDataConfigurationHivePartitioningOption.fromMap((value as Map).cast<String, dynamic>())),
-      ignoreUnknownValues: map['ignoreUnknownValues'] as bool,
-      jsonExtension: map['jsonExtension'] as String,
-      jsonOptions: pulumi.Input.decodeList<GetTableExternalDataConfigurationJsonOption>(map['jsonOptions'], (value) => GetTableExternalDataConfigurationJsonOption.fromMap((value as Map).cast<String, dynamic>())),
-      maxBadRecords: map['maxBadRecords'] as int,
-      metadataCacheMode: map['metadataCacheMode'] as String,
-      objectMetadata: map['objectMetadata'] as String,
-      parquetOptions: pulumi.Input.decodeList<GetTableExternalDataConfigurationParquetOption>(map['parquetOptions'], (value) => GetTableExternalDataConfigurationParquetOption.fromMap((value as Map).cast<String, dynamic>())),
-      referenceFileSchemaUri: map['referenceFileSchemaUri'] as String,
-      schema: map['schema'] as String,
-      sourceFormat: map['sourceFormat'] as String,
-      sourceUris: (map['sourceUris'] as List).cast<String>(),
+      autodetect: (map['autodetect'] as bool).input(),
+      avroOptions: (pulumi.Input.decodeList<GetTableExternalDataConfigurationAvroOption>(map['avroOptions'], (value) => GetTableExternalDataConfigurationAvroOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bigtableOptions: (pulumi.Input.decodeList<GetTableExternalDataConfigurationBigtableOption>(map['bigtableOptions'], (value) => GetTableExternalDataConfigurationBigtableOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      compression: (map['compression'] as String).input(),
+      connectionId: (map['connectionId'] as String).input(),
+      csvOptions: (pulumi.Input.decodeList<GetTableExternalDataConfigurationCsvOption>(map['csvOptions'], (value) => GetTableExternalDataConfigurationCsvOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      decimalTargetTypes: ((map['decimalTargetTypes'] as List).cast<String>()).input(),
+      fileSetSpecType: (map['fileSetSpecType'] as String).input(),
+      googleSheetsOptions: (pulumi.Input.decodeList<GetTableExternalDataConfigurationGoogleSheetsOption>(map['googleSheetsOptions'], (value) => GetTableExternalDataConfigurationGoogleSheetsOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hivePartitioningOptions: (pulumi.Input.decodeList<GetTableExternalDataConfigurationHivePartitioningOption>(map['hivePartitioningOptions'], (value) => GetTableExternalDataConfigurationHivePartitioningOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ignoreUnknownValues: (map['ignoreUnknownValues'] as bool).input(),
+      jsonExtension: (map['jsonExtension'] as String).input(),
+      jsonOptions: (pulumi.Input.decodeList<GetTableExternalDataConfigurationJsonOption>(map['jsonOptions'], (value) => GetTableExternalDataConfigurationJsonOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxBadRecords: (map['maxBadRecords'] as int).input(),
+      metadataCacheMode: (map['metadataCacheMode'] as String).input(),
+      objectMetadata: (map['objectMetadata'] as String).input(),
+      parquetOptions: (pulumi.Input.decodeList<GetTableExternalDataConfigurationParquetOption>(map['parquetOptions'], (value) => GetTableExternalDataConfigurationParquetOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      referenceFileSchemaUri: (map['referenceFileSchemaUri'] as String).input(),
+      schema: (map['schema'] as String).input(),
+      sourceFormat: (map['sourceFormat'] as String).input(),
+      sourceUris: ((map['sourceUris'] as List).cast<String>()).input(),
     );
   }
 }

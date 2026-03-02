@@ -23,15 +23,11 @@ class EnvironmentContainerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   EnvironmentContainerArgs({
-    required pulumi.Output<EnvironmentContainerMachinelearningservices> environmentContainerProperties,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      environmentContainerProperties = pulumi.Input.asInput<EnvironmentContainerMachinelearningservices>(environmentContainerProperties),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.environmentContainerProperties,
+    this.name,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class EnvironmentContainerArgs {
 
   factory EnvironmentContainerArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentContainerArgs(
-      environmentContainerProperties: pulumi.Output.create<EnvironmentContainerMachinelearningservices>(map['environmentContainerProperties'] as EnvironmentContainerMachinelearningservices),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      environmentContainerProperties: (map['environmentContainerProperties'] as EnvironmentContainerMachinelearningservices).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

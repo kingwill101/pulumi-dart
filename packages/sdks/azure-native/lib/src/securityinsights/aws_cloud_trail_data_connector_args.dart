@@ -30,19 +30,13 @@ class AwsCloudTrailDataConnectorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   AwsCloudTrailDataConnectorArgs({
-    pulumi.Output<String>? awsRoleArn,
-    pulumi.Output<String>? dataConnectorId,
-    required pulumi.Output<AwsCloudTrailDataConnectorDataTypes> dataTypes,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      awsRoleArn = pulumi.Input.asOptionalInput<String>(awsRoleArn),
-      dataConnectorId = pulumi.Input.asOptionalInput<String>(dataConnectorId),
-      dataTypes = pulumi.Input.asInput<AwsCloudTrailDataConnectorDataTypes>(dataTypes),
-      kind = pulumi.Input.asInput<String>(kind),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.awsRoleArn,
+    this.dataConnectorId,
+    required this.dataTypes,
+    required this.kind,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class AwsCloudTrailDataConnectorArgs {
 
   factory AwsCloudTrailDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return AwsCloudTrailDataConnectorArgs(
-      awsRoleArn: map['awsRoleArn'] == null ? null : pulumi.Output.create<String>(map['awsRoleArn'] as String),
-      dataConnectorId: map['dataConnectorId'] == null ? null : pulumi.Output.create<String>(map['dataConnectorId'] as String),
-      dataTypes: pulumi.Output.create<AwsCloudTrailDataConnectorDataTypes>(AwsCloudTrailDataConnectorDataTypes.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      awsRoleArn: map['awsRoleArn'] == null ? null : (map['awsRoleArn'] as String).input(),
+      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId'] as String).input(),
+      dataTypes: (AwsCloudTrailDataConnectorDataTypes.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

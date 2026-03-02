@@ -18,13 +18,10 @@ class FlexibleServerConfigurationState {
   /// [serverId] The ID of the PostgreSQL Flexible Server where we want to change configuration. Changing this forces a new PostgreSQL Flexible Server Configuration resource.
   /// [value] Specifies the value of the PostgreSQL Configuration. See the PostgreSQL documentation for valid values.
   FlexibleServerConfigurationState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? serverId,
-    pulumi.Output<String>? value,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.name,
+    this.serverId,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class FlexibleServerConfigurationState {
 
   factory FlexibleServerConfigurationState.fromMap(Map<String, dynamic> map) {
     return FlexibleServerConfigurationState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

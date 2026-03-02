@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOrganizationalUnitDescendantOrganizationalUnitsChildren {
   /// ARN of the organizational unit
-  final String arn;
+  final pulumi.Input<String> arn;
   /// Parent identifier of the organizational units.
-  final String id;
+  final pulumi.Input<String> id;
   /// Name of the organizational unit
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetOrganizationalUnitDescendantOrganizationalUnitsChildren].
   /// [arn] ARN of the organizational unit
@@ -29,9 +30,9 @@ class GetOrganizationalUnitDescendantOrganizationalUnitsChildren {
 
   factory GetOrganizationalUnitDescendantOrganizationalUnitsChildren.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitDescendantOrganizationalUnitsChildren(
-      arn: map['arn'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      arn: (map['arn'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

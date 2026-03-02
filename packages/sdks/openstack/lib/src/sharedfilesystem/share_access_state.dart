@@ -33,21 +33,14 @@ class ShareAccessState {
   /// [shareId] The UUID of the share to which you are granted access.
   /// [state] The share access state.
   ShareAccessState({
-    pulumi.Output<String>? accessKey,
-    pulumi.Output<String>? accessLevel,
-    pulumi.Output<String>? accessTo,
-    pulumi.Output<String>? accessType,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? shareId,
-    pulumi.Output<String>? state,
-  }) :
-      accessKey = pulumi.Input.asOptionalInput<String>(accessKey),
-      accessLevel = pulumi.Input.asOptionalInput<String>(accessLevel),
-      accessTo = pulumi.Input.asOptionalInput<String>(accessTo),
-      accessType = pulumi.Input.asOptionalInput<String>(accessType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shareId = pulumi.Input.asOptionalInput<String>(shareId),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.accessKey,
+    this.accessLevel,
+    this.accessTo,
+    this.accessType,
+    this.region,
+    this.shareId,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ShareAccessState {
 
   factory ShareAccessState.fromMap(Map<String, dynamic> map) {
     return ShareAccessState(
-      accessKey: map['accessKey'] == null ? null : pulumi.Output.create<String>(map['accessKey'] as String),
-      accessLevel: map['accessLevel'] == null ? null : pulumi.Output.create<String>(map['accessLevel'] as String),
-      accessTo: map['accessTo'] == null ? null : pulumi.Output.create<String>(map['accessTo'] as String),
-      accessType: map['accessType'] == null ? null : pulumi.Output.create<String>(map['accessType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shareId: map['shareId'] == null ? null : pulumi.Output.create<String>(map['shareId'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
+      accessLevel: map['accessLevel'] == null ? null : (map['accessLevel'] as String).input(),
+      accessTo: map['accessTo'] == null ? null : (map['accessTo'] as String).input(),
+      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

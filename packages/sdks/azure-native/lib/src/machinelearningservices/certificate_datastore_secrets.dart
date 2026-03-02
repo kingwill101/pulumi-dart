@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Datastore certificate secrets.
 class CertificateDatastoreSecrets {
   /// Service principal certificate.
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// Enum to determine the datastore secrets type.
   /// Expected value is 'Certificate'.
-  final String secretsType;
+  final pulumi.Input<String> secretsType;
 
   /// Creates a new [CertificateDatastoreSecrets].
   /// [certificate] Service principal certificate.
@@ -26,8 +27,8 @@ class CertificateDatastoreSecrets {
 
   factory CertificateDatastoreSecrets.fromMap(Map<String, dynamic> map) {
     return CertificateDatastoreSecrets(
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      secretsType: map['secretsType'] as String,
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      secretsType: (map['secretsType'] as String).input(),
     );
   }
 }

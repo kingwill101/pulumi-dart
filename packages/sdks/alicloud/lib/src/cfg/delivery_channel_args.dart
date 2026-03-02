@@ -34,21 +34,14 @@ class DeliveryChannelArgs {
   /// [description] The description of the delivery method.
   /// [status] The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
   DeliveryChannelArgs({
-    required pulumi.Output<String> deliveryChannelAssumeRoleArn,
-    pulumi.Output<String>? deliveryChannelCondition,
-    pulumi.Output<String>? deliveryChannelName,
-    required pulumi.Output<String> deliveryChannelTargetArn,
-    required pulumi.Output<String> deliveryChannelType,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? status,
-  }) :
-      deliveryChannelAssumeRoleArn = pulumi.Input.asInput<String>(deliveryChannelAssumeRoleArn),
-      deliveryChannelCondition = pulumi.Input.asOptionalInput<String>(deliveryChannelCondition),
-      deliveryChannelName = pulumi.Input.asOptionalInput<String>(deliveryChannelName),
-      deliveryChannelTargetArn = pulumi.Input.asInput<String>(deliveryChannelTargetArn),
-      deliveryChannelType = pulumi.Input.asInput<String>(deliveryChannelType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      status = pulumi.Input.asOptionalInput<int>(status);
+    required this.deliveryChannelAssumeRoleArn,
+    this.deliveryChannelCondition,
+    this.deliveryChannelName,
+    required this.deliveryChannelTargetArn,
+    required this.deliveryChannelType,
+    this.description,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class DeliveryChannelArgs {
 
   factory DeliveryChannelArgs.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelArgs(
-      deliveryChannelAssumeRoleArn: pulumi.Output.create<String>(map['deliveryChannelAssumeRoleArn'] as String),
-      deliveryChannelCondition: map['deliveryChannelCondition'] == null ? null : pulumi.Output.create<String>(map['deliveryChannelCondition'] as String),
-      deliveryChannelName: map['deliveryChannelName'] == null ? null : pulumi.Output.create<String>(map['deliveryChannelName'] as String),
-      deliveryChannelTargetArn: pulumi.Output.create<String>(map['deliveryChannelTargetArn'] as String),
-      deliveryChannelType: pulumi.Output.create<String>(map['deliveryChannelType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
+      deliveryChannelAssumeRoleArn: (map['deliveryChannelAssumeRoleArn'] as String).input(),
+      deliveryChannelCondition: map['deliveryChannelCondition'] == null ? null : (map['deliveryChannelCondition'] as String).input(),
+      deliveryChannelName: map['deliveryChannelName'] == null ? null : (map['deliveryChannelName'] as String).input(),
+      deliveryChannelTargetArn: (map['deliveryChannelTargetArn'] as String).input(),
+      deliveryChannelType: (map['deliveryChannelType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
     );
   }
 }

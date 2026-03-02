@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ospolicy_resource_repository_resource_apt_repository_response.dart';
 import 'ospolicy_resource_repository_resource_goo_repository_response.dart';
 import 'ospolicy_resource_repository_resource_yum_repository_response.dart';
@@ -8,13 +9,13 @@ import 'ospolicy_resource_repository_resource_zypper_repository_response.dart';
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResourceResponse {
   /// An Apt Repository.
-  final OSPolicyResourceRepositoryResourceAptRepositoryResponse apt;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceAptRepositoryResponse> apt;
   /// A Goo Repository.
-  final OSPolicyResourceRepositoryResourceGooRepositoryResponse goo;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceGooRepositoryResponse> goo;
   /// A Yum Repository.
-  final OSPolicyResourceRepositoryResourceYumRepositoryResponse yum;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceYumRepositoryResponse> yum;
   /// A Zypper Repository.
-  final OSPolicyResourceRepositoryResourceZypperRepositoryResponse zypper;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceZypperRepositoryResponse> zypper;
 
   /// Creates a new [OSPolicyResourceRepositoryResourceResponse].
   /// [apt] An Apt Repository.
@@ -30,19 +31,19 @@ class OSPolicyResourceRepositoryResourceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apt': apt.toMap(),
-      'goo': goo.toMap(),
-      'yum': yum.toMap(),
-      'zypper': zypper.toMap(),
+      'apt': pulumi.Input.mapInputValue<OSPolicyResourceRepositoryResourceAptRepositoryResponse, Map<String, dynamic>>(apt, (value) => value.toMap()),
+      'goo': pulumi.Input.mapInputValue<OSPolicyResourceRepositoryResourceGooRepositoryResponse, Map<String, dynamic>>(goo, (value) => value.toMap()),
+      'yum': pulumi.Input.mapInputValue<OSPolicyResourceRepositoryResourceYumRepositoryResponse, Map<String, dynamic>>(yum, (value) => value.toMap()),
+      'zypper': pulumi.Input.mapInputValue<OSPolicyResourceRepositoryResourceZypperRepositoryResponse, Map<String, dynamic>>(zypper, (value) => value.toMap()),
     };
   }
 
   factory OSPolicyResourceRepositoryResourceResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceRepositoryResourceResponse(
-      apt: OSPolicyResourceRepositoryResourceAptRepositoryResponse.fromMap((map['apt'] as Map).cast<String, dynamic>()),
-      goo: OSPolicyResourceRepositoryResourceGooRepositoryResponse.fromMap((map['goo'] as Map).cast<String, dynamic>()),
-      yum: OSPolicyResourceRepositoryResourceYumRepositoryResponse.fromMap((map['yum'] as Map).cast<String, dynamic>()),
-      zypper: OSPolicyResourceRepositoryResourceZypperRepositoryResponse.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
+      apt: (OSPolicyResourceRepositoryResourceAptRepositoryResponse.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
+      goo: (OSPolicyResourceRepositoryResourceGooRepositoryResponse.fromMap((map['goo'] as Map).cast<String, dynamic>())).input(),
+      yum: (OSPolicyResourceRepositoryResourceYumRepositoryResponse.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
+      zypper: (OSPolicyResourceRepositoryResourceZypperRepositoryResponse.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

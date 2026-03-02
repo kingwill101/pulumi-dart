@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectionPhysicalConnectionRequirement {
-  final String availabilityZone;
-  final List<String> securityGroupIdLists;
-  final String subnetId;
+  final pulumi.Input<String> availabilityZone;
+  final pulumi.Input<List<String>> securityGroupIdLists;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetConnectionPhysicalConnectionRequirement].
   /// [availabilityZone] Required.
@@ -26,9 +27,9 @@ class GetConnectionPhysicalConnectionRequirement {
 
   factory GetConnectionPhysicalConnectionRequirement.fromMap(Map<String, dynamic> map) {
     return GetConnectionPhysicalConnectionRequirement(
-      availabilityZone: map['availabilityZone'] as String,
-      securityGroupIdLists: (map['securityGroupIdLists'] as List).cast<String>(),
-      subnetId: map['subnetId'] as String,
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      securityGroupIdLists: ((map['securityGroupIdLists'] as List).cast<String>()).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

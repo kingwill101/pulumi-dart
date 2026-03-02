@@ -24,15 +24,11 @@ class FlowSchemaListArgs {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] `metadata` is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   FlowSchemaListArgs({
-    pulumi.Output<String>? apiVersion,
-    required pulumi.Output<List<FlowSchemaFlowcontrolApiserverK8sIoV1>> items,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ListMeta>? metadata,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      items = pulumi.Input.asInput<List<FlowSchemaFlowcontrolApiserverK8sIoV1>>(items),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ListMeta>(metadata);
+    this.apiVersion,
+    required this.items,
+    this.kind,
+    this.metadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class FlowSchemaListArgs {
 
   factory FlowSchemaListArgs.fromMap(Map<String, dynamic> map) {
     return FlowSchemaListArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      items: pulumi.Output.create<List<FlowSchemaFlowcontrolApiserverK8sIoV1>>((map['items'] as List).cast<FlowSchemaFlowcontrolApiserverK8sIoV1>()),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ListMeta>(ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      items: ((map['items'] as List).cast<FlowSchemaFlowcontrolApiserverK8sIoV1>()).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

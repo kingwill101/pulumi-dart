@@ -39,25 +39,16 @@ class EventDestinationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snsDestination] Send the events to an SNS Topic destination
   EventDestinationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<EventDestinationCloudwatchDestination>>? cloudwatchDestinations,
-    pulumi.Output<String>? configurationSetName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<EventDestinationKinesisDestination>? kinesisDestination,
-    pulumi.Output<List<String>>? matchingTypes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<EventDestinationSnsDestination>? snsDestination,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      cloudwatchDestinations = pulumi.Input.asOptionalInput<List<EventDestinationCloudwatchDestination>>(cloudwatchDestinations),
-      configurationSetName = pulumi.Input.asOptionalInput<String>(configurationSetName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      kinesisDestination = pulumi.Input.asOptionalInput<EventDestinationKinesisDestination>(kinesisDestination),
-      matchingTypes = pulumi.Input.asOptionalInput<List<String>>(matchingTypes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snsDestination = pulumi.Input.asOptionalInput<EventDestinationSnsDestination>(snsDestination);
+    this.arn,
+    this.cloudwatchDestinations,
+    this.configurationSetName,
+    this.enabled,
+    this.kinesisDestination,
+    this.matchingTypes,
+    this.name,
+    this.region,
+    this.snsDestination,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class EventDestinationState {
 
   factory EventDestinationState.fromMap(Map<String, dynamic> map) {
     return EventDestinationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      cloudwatchDestinations: map['cloudwatchDestinations'] == null ? null : pulumi.Output.create<List<EventDestinationCloudwatchDestination>>(pulumi.Input.decodeList<EventDestinationCloudwatchDestination>(map['cloudwatchDestinations'], (value) => EventDestinationCloudwatchDestination.fromMap((value as Map).cast<String, dynamic>()))),
-      configurationSetName: map['configurationSetName'] == null ? null : pulumi.Output.create<String>(map['configurationSetName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      kinesisDestination: map['kinesisDestination'] == null ? null : pulumi.Output.create<EventDestinationKinesisDestination>(EventDestinationKinesisDestination.fromMap((map['kinesisDestination'] as Map).cast<String, dynamic>())),
-      matchingTypes: map['matchingTypes'] == null ? null : pulumi.Output.create<List<String>>((map['matchingTypes'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snsDestination: map['snsDestination'] == null ? null : pulumi.Output.create<EventDestinationSnsDestination>(EventDestinationSnsDestination.fromMap((map['snsDestination'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      cloudwatchDestinations: map['cloudwatchDestinations'] == null ? null : (pulumi.Input.decodeList<EventDestinationCloudwatchDestination>(map['cloudwatchDestinations'], (value) => EventDestinationCloudwatchDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationSetName: map['configurationSetName'] == null ? null : (map['configurationSetName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      kinesisDestination: map['kinesisDestination'] == null ? null : (EventDestinationKinesisDestination.fromMap((map['kinesisDestination'] as Map).cast<String, dynamic>())).input(),
+      matchingTypes: map['matchingTypes'] == null ? null : ((map['matchingTypes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snsDestination: map['snsDestination'] == null ? null : (EventDestinationSnsDestination.fromMap((map['snsDestination'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

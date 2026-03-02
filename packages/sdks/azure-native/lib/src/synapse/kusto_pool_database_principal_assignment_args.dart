@@ -37,25 +37,16 @@ class KustoPoolDatabasePrincipalAssignmentArgs {
   /// [tenantId] The tenant id of the principal
   /// [workspaceName] The name of the workspace.
   KustoPoolDatabasePrincipalAssignmentArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> kustoPoolName,
-    pulumi.Output<String>? principalAssignmentName,
-    required pulumi.Output<String> principalId,
-    required pulumi.Output<String> principalType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> role,
-    pulumi.Output<String>? tenantId,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      kustoPoolName = pulumi.Input.asInput<String>(kustoPoolName),
-      principalAssignmentName = pulumi.Input.asOptionalInput<String>(principalAssignmentName),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      principalType = pulumi.Input.asInput<String>(principalType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      role = pulumi.Input.asInput<String>(role),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.databaseName,
+    required this.kustoPoolName,
+    this.principalAssignmentName,
+    required this.principalId,
+    required this.principalType,
+    required this.resourceGroupName,
+    required this.role,
+    this.tenantId,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class KustoPoolDatabasePrincipalAssignmentArgs {
 
   factory KustoPoolDatabasePrincipalAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return KustoPoolDatabasePrincipalAssignmentArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      kustoPoolName: pulumi.Output.create<String>(map['kustoPoolName'] as String),
-      principalAssignmentName: map['principalAssignmentName'] == null ? null : pulumi.Output.create<String>(map['principalAssignmentName'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: pulumi.Output.create<String>(map['principalType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      kustoPoolName: (map['kustoPoolName'] as String).input(),
+      principalAssignmentName: map['principalAssignmentName'] == null ? null : (map['principalAssignmentName'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      role: (map['role'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Required Edu Attributes
 class GoogleCloudChannelV1EduDataResponse {
   /// Size of the institute.
-  final String instituteSize;
+  final pulumi.Input<String> instituteSize;
   /// Designated institute type of customer.
-  final String instituteType;
+  final pulumi.Input<String> instituteType;
   /// Web address for the edu customer's institution.
-  final String website;
+  final pulumi.Input<String> website;
 
   /// Creates a new [GoogleCloudChannelV1EduDataResponse].
   /// [instituteSize] Size of the institute.
@@ -30,9 +31,9 @@ class GoogleCloudChannelV1EduDataResponse {
 
   factory GoogleCloudChannelV1EduDataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1EduDataResponse(
-      instituteSize: map['instituteSize'] as String,
-      instituteType: map['instituteType'] as String,
-      website: map['website'] as String,
+      instituteSize: (map['instituteSize'] as String).input(),
+      instituteType: (map['instituteType'] as String).input(),
+      website: (map['website'] as String).input(),
     );
   }
 }

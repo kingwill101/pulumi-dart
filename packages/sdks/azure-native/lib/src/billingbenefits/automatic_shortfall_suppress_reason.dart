@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Optional field to record suppression reason for automatic shortfall.
 class AutomaticShortfallSuppressReason {
   /// Code for the suppression reason.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// Message for suppression reason.
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [AutomaticShortfallSuppressReason].
   /// [code] Code for the suppression reason.
@@ -25,8 +26,8 @@ class AutomaticShortfallSuppressReason {
 
   factory AutomaticShortfallSuppressReason.fromMap(Map<String, dynamic> map) {
     return AutomaticShortfallSuppressReason(
-      code: map['code'] == null ? null : map['code'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

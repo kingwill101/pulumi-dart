@@ -17,13 +17,10 @@ class DataCatalogEncryptionSettingsState {
   /// [dataCatalogEncryptionSettings] The security configuration to set. see Data Catalog Encryption Settings.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DataCatalogEncryptionSettingsState({
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>? dataCatalogEncryptionSettings,
-    pulumi.Output<String>? region,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      dataCatalogEncryptionSettings = pulumi.Input.asOptionalInput<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>(dataCatalogEncryptionSettings),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.catalogId,
+    this.dataCatalogEncryptionSettings,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class DataCatalogEncryptionSettingsState {
 
   factory DataCatalogEncryptionSettingsState.fromMap(Map<String, dynamic> map) {
     return DataCatalogEncryptionSettingsState(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      dataCatalogEncryptionSettings: map['dataCatalogEncryptionSettings'] == null ? null : pulumi.Output.create<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>(DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((map['dataCatalogEncryptionSettings'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      dataCatalogEncryptionSettings: map['dataCatalogEncryptionSettings'] == null ? null : (DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((map['dataCatalogEncryptionSettings'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketVersioning {
   /// While set to true, versioning is fully enabled for this bucket.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetBucketVersioning].
   /// [enabled] While set to true, versioning is fully enabled for this bucket.
@@ -19,7 +20,7 @@ class GetBucketVersioning {
 
   factory GetBucketVersioning.fromMap(Map<String, dynamic> map) {
     return GetBucketVersioning(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

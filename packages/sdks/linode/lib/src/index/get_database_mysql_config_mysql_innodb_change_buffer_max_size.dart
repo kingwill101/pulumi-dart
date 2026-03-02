@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize {
-  final String description;
-  final int example;
-  final int maximum;
-  final int minimum;
-  final bool requiresRestart;
-  final String type;
+  final pulumi.Input<String> description;
+  final pulumi.Input<int> example;
+  final pulumi.Input<int> maximum;
+  final pulumi.Input<int> minimum;
+  final pulumi.Input<bool> requiresRestart;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize].
   /// [description] Required.
@@ -38,12 +39,12 @@ class GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize {
 
   factory GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize(
-      description: map['description'] as String,
-      example: map['example'] as int,
-      maximum: map['maximum'] as int,
-      minimum: map['minimum'] as int,
-      requiresRestart: map['requiresRestart'] as bool,
-      type: map['type'] as String,
+      description: (map['description'] as String).input(),
+      example: (map['example'] as int).input(),
+      maximum: (map['maximum'] as int).input(),
+      minimum: (map['minimum'] as int).input(),
+      requiresRestart: (map['requiresRestart'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

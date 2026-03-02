@@ -21,15 +21,11 @@ class ServiceNetworkAclState {
   /// [publicNetwork] A `public_network` block as defined below.
   /// [signalrServiceId] The ID of the SignalR service. Changing this forces a new resource to be created.
   ServiceNetworkAclState({
-    pulumi.Output<String>? defaultAction,
-    pulumi.Output<List<ServiceNetworkAclPrivateEndpoint>>? privateEndpoints,
-    pulumi.Output<ServiceNetworkAclPublicNetwork>? publicNetwork,
-    pulumi.Output<String>? signalrServiceId,
-  }) :
-      defaultAction = pulumi.Input.asOptionalInput<String>(defaultAction),
-      privateEndpoints = pulumi.Input.asOptionalInput<List<ServiceNetworkAclPrivateEndpoint>>(privateEndpoints),
-      publicNetwork = pulumi.Input.asOptionalInput<ServiceNetworkAclPublicNetwork>(publicNetwork),
-      signalrServiceId = pulumi.Input.asOptionalInput<String>(signalrServiceId);
+    this.defaultAction,
+    this.privateEndpoints,
+    this.publicNetwork,
+    this.signalrServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class ServiceNetworkAclState {
 
   factory ServiceNetworkAclState.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkAclState(
-      defaultAction: map['defaultAction'] == null ? null : pulumi.Output.create<String>(map['defaultAction'] as String),
-      privateEndpoints: map['privateEndpoints'] == null ? null : pulumi.Output.create<List<ServiceNetworkAclPrivateEndpoint>>(pulumi.Input.decodeList<ServiceNetworkAclPrivateEndpoint>(map['privateEndpoints'], (value) => ServiceNetworkAclPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      publicNetwork: map['publicNetwork'] == null ? null : pulumi.Output.create<ServiceNetworkAclPublicNetwork>(ServiceNetworkAclPublicNetwork.fromMap((map['publicNetwork'] as Map).cast<String, dynamic>())),
-      signalrServiceId: map['signalrServiceId'] == null ? null : pulumi.Output.create<String>(map['signalrServiceId'] as String),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
+      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<ServiceNetworkAclPrivateEndpoint>(map['privateEndpoints'], (value) => ServiceNetworkAclPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetwork: map['publicNetwork'] == null ? null : (ServiceNetworkAclPublicNetwork.fromMap((map['publicNetwork'] as Map).cast<String, dynamic>())).input(),
+      signalrServiceId: map['signalrServiceId'] == null ? null : (map['signalrServiceId'] as String).input(),
     );
   }
 }

@@ -29,17 +29,12 @@ class GetInstanceTemplateArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLinkUnique] The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
   GetInstanceTemplateArgs({
-    pulumi.Output<String>? filter,
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLinkUnique,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLinkUnique = pulumi.Input.asOptionalInput<String>(selfLinkUnique);
+    this.filter,
+    this.mostRecent,
+    this.name,
+    this.project,
+    this.selfLinkUnique,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class GetInstanceTemplateArgs {
 
   factory GetInstanceTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTemplateArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLinkUnique: map['selfLinkUnique'] == null ? null : pulumi.Output.create<String>(map['selfLinkUnique'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLinkUnique: map['selfLinkUnique'] == null ? null : (map['selfLinkUnique'] as String).input(),
     );
   }
 }

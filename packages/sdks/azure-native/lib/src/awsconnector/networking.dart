@@ -7,9 +7,9 @@ import 'port.dart';
 /// Definition of Networking
 class Networking {
   /// Monthly Transfer of the Instance.
-  final MonthlyTransfer? monthlyTransfer;
+  final pulumi.Input<MonthlyTransfer>? monthlyTransfer;
   /// Ports to the Instance.
-  final List<Port>? ports;
+  final pulumi.Input<List<Port>>? ports;
 
   /// Creates a new [Networking].
   /// [monthlyTransfer] Monthly Transfer of the Instance.
@@ -21,15 +21,15 @@ class Networking {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'monthlyTransfer': ?monthlyTransfer == null ? null : monthlyTransfer!.toMap(),
-      'ports': ?ports == null ? null : pulumi.Input.encodeList<Port, Map<String, dynamic>>(ports!, (value) => value.toMap()),
+      'monthlyTransfer': ?pulumi.Input.mapOptionalInputValue<MonthlyTransfer, Map<String, dynamic>>(monthlyTransfer, (value) => value.toMap()),
+      'ports': ?pulumi.Input.mapOptionalInputValue<List<Port>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<Port, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Networking.fromMap(Map<String, dynamic> map) {
     return Networking(
-      monthlyTransfer: map['monthlyTransfer'] == null ? null : MonthlyTransfer.fromMap((map['monthlyTransfer'] as Map).cast<String, dynamic>()),
-      ports: map['ports'] == null ? null : pulumi.Input.decodeList<Port>(map['ports'], (value) => Port.fromMap((value as Map).cast<String, dynamic>())),
+      monthlyTransfer: map['monthlyTransfer'] == null ? null : (MonthlyTransfer.fromMap((map['monthlyTransfer'] as Map).cast<String, dynamic>())).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<Port>(map['ports'], (value) => Port.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

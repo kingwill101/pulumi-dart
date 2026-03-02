@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiContact {
   /// The email address of the contact person/organization.
-  final String? email;
+  final pulumi.Input<String>? email;
   /// The name of the contact person/organization.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Absolute URL of the contact information.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [ApiContact].
   /// [email] The email address of the contact person/organization.
@@ -29,9 +30,9 @@ class ApiContact {
 
   factory ApiContact.fromMap(Map<String, dynamic> map) {
     return ApiContact(
-      email: map['email'] == null ? null : map['email'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

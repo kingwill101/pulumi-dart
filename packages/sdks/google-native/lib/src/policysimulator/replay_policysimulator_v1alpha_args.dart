@@ -18,13 +18,10 @@ class ReplayPolicysimulatorV1alphaArgs {
   /// [location] Optional.
   /// [project] Optional.
   ReplayPolicysimulatorV1alphaArgs({
-    required pulumi.Output<GoogleCloudPolicysimulatorV1alphaReplayConfig> config,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      config = pulumi.Input.asInput<GoogleCloudPolicysimulatorV1alphaReplayConfig>(config),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.config,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class ReplayPolicysimulatorV1alphaArgs {
 
   factory ReplayPolicysimulatorV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return ReplayPolicysimulatorV1alphaArgs(
-      config: pulumi.Output.create<GoogleCloudPolicysimulatorV1alphaReplayConfig>(GoogleCloudPolicysimulatorV1alphaReplayConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      config: (GoogleCloudPolicysimulatorV1alphaReplayConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

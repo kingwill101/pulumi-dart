@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGlobalDatabaseNetworksNetworkDbCluster {
   /// The ID of the cluster.
-  final String dbClusterId;
+  final pulumi.Input<String> dbClusterId;
   /// The region ID of the cluster.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The role of the cluster.
-  final String role;
+  final pulumi.Input<String> role;
 
   /// Creates a new [GetGlobalDatabaseNetworksNetworkDbCluster].
   /// [dbClusterId] The ID of the cluster.
@@ -29,9 +30,9 @@ class GetGlobalDatabaseNetworksNetworkDbCluster {
 
   factory GetGlobalDatabaseNetworksNetworkDbCluster.fromMap(Map<String, dynamic> map) {
     return GetGlobalDatabaseNetworksNetworkDbCluster(
-      dbClusterId: map['dbClusterId'] as String,
-      regionId: map['regionId'] as String,
-      role: map['role'] as String,
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagesImageId {
   /// Digest of the image manifest.
-  final String? imageDigest;
+  final pulumi.Input<String>? imageDigest;
   /// Tag used for the image.
-  final String? imageTag;
+  final pulumi.Input<String>? imageTag;
 
   /// Creates a new [GetImagesImageId].
   /// [imageDigest] Digest of the image manifest.
@@ -24,8 +25,8 @@ class GetImagesImageId {
 
   factory GetImagesImageId.fromMap(Map<String, dynamic> map) {
     return GetImagesImageId(
-      imageDigest: map['imageDigest'] == null ? null : map['imageDigest'] as String,
-      imageTag: map['imageTag'] == null ? null : map['imageTag'] as String,
+      imageDigest: map['imageDigest'] == null ? null : (map['imageDigest'] as String).input(),
+      imageTag: map['imageTag'] == null ? null : (map['imageTag'] as String).input(),
     );
   }
 }

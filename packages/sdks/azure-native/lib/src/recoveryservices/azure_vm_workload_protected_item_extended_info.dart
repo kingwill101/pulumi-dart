@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional information on Azure Workload for SQL specific backup item.
 class AzureVmWorkloadProtectedItemExtendedInfo {
   /// The latest backup copy available for this backup item in archive tier
-  final String? newestRecoveryPointInArchive;
+  final pulumi.Input<String>? newestRecoveryPointInArchive;
   /// The oldest backup copy available for this backup item across all tiers.
-  final String? oldestRecoveryPoint;
+  final pulumi.Input<String>? oldestRecoveryPoint;
   /// The oldest backup copy available for this backup item in archive tier
-  final String? oldestRecoveryPointInArchive;
+  final pulumi.Input<String>? oldestRecoveryPointInArchive;
   /// The oldest backup copy available for this backup item in vault tier
-  final String? oldestRecoveryPointInVault;
+  final pulumi.Input<String>? oldestRecoveryPointInVault;
   /// Indicates consistency of policy object and policy applied to this backup item.
-  final String? policyState;
+  final pulumi.Input<String>? policyState;
   /// Indicates consistency of policy object and policy applied to this backup item.
-  final String? recoveryModel;
+  final pulumi.Input<String>? recoveryModel;
   /// Number of backup copies available for this backup item.
-  final int? recoveryPointCount;
+  final pulumi.Input<int>? recoveryPointCount;
 
   /// Creates a new [AzureVmWorkloadProtectedItemExtendedInfo].
   /// [newestRecoveryPointInArchive] The latest backup copy available for this backup item in archive tier
@@ -50,13 +51,13 @@ class AzureVmWorkloadProtectedItemExtendedInfo {
 
   factory AzureVmWorkloadProtectedItemExtendedInfo.fromMap(Map<String, dynamic> map) {
     return AzureVmWorkloadProtectedItemExtendedInfo(
-      newestRecoveryPointInArchive: map['newestRecoveryPointInArchive'] == null ? null : map['newestRecoveryPointInArchive'] as String,
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : map['oldestRecoveryPoint'] as String,
-      oldestRecoveryPointInArchive: map['oldestRecoveryPointInArchive'] == null ? null : map['oldestRecoveryPointInArchive'] as String,
-      oldestRecoveryPointInVault: map['oldestRecoveryPointInVault'] == null ? null : map['oldestRecoveryPointInVault'] as String,
-      policyState: map['policyState'] == null ? null : map['policyState'] as String,
-      recoveryModel: map['recoveryModel'] == null ? null : map['recoveryModel'] as String,
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : map['recoveryPointCount'] as int,
+      newestRecoveryPointInArchive: map['newestRecoveryPointInArchive'] == null ? null : (map['newestRecoveryPointInArchive'] as String).input(),
+      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint'] as String).input(),
+      oldestRecoveryPointInArchive: map['oldestRecoveryPointInArchive'] == null ? null : (map['oldestRecoveryPointInArchive'] as String).input(),
+      oldestRecoveryPointInVault: map['oldestRecoveryPointInVault'] == null ? null : (map['oldestRecoveryPointInVault'] as String).input(),
+      policyState: map['policyState'] == null ? null : (map['policyState'] as String).input(),
+      recoveryModel: map['recoveryModel'] == null ? null : (map['recoveryModel'] as String).input(),
+      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount'] as int).input(),
     );
   }
 }

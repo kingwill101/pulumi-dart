@@ -33,19 +33,13 @@ class GetZoneArgs {
   /// [vpcId] Filter to private Hosted Zones associated with the specified `vpc_id`.
   /// [zoneId] and `name` are mutually exclusive.
   GetZoneArgs({
-    pulumi.Output<bool>? enableAcceleratedRecovery,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? privateZone,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      enableAcceleratedRecovery = pulumi.Input.asOptionalInput<bool>(enableAcceleratedRecovery),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateZone = pulumi.Input.asOptionalInput<bool>(privateZone),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.enableAcceleratedRecovery,
+    this.name,
+    this.privateZone,
+    this.tags,
+    this.vpcId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class GetZoneArgs {
 
   factory GetZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneArgs(
-      enableAcceleratedRecovery: map['enableAcceleratedRecovery'] == null ? null : pulumi.Output.create<bool>(map['enableAcceleratedRecovery'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateZone: map['privateZone'] == null ? null : pulumi.Output.create<bool>(map['privateZone'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      enableAcceleratedRecovery: map['enableAcceleratedRecovery'] == null ? null : (map['enableAcceleratedRecovery'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateZone: map['privateZone'] == null ? null : (map['privateZone'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

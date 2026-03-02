@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource requests of the API portal
 class ApiPortalResourceRequestsResponse {
   /// Cpu allocated to each API portal instance
-  final String cpu;
+  final pulumi.Input<String> cpu;
   /// Memory allocated to each API portal instance
-  final String memory;
+  final pulumi.Input<String> memory;
 
   /// Creates a new [ApiPortalResourceRequestsResponse].
   /// [cpu] Cpu allocated to each API portal instance
@@ -25,8 +26,8 @@ class ApiPortalResourceRequestsResponse {
 
   factory ApiPortalResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
     return ApiPortalResourceRequestsResponse(
-      cpu: map['cpu'] as String,
-      memory: map['memory'] as String,
+      cpu: (map['cpu'] as String).input(),
+      memory: (map['memory'] as String).input(),
     );
   }
 }

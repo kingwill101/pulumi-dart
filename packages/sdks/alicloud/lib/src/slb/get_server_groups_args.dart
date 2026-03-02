@@ -22,15 +22,11 @@ class GetServerGroupsArgs {
   /// [nameRegex] A regex string to filter results by VServer group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetServerGroupsArgs({
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> loadBalancerId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.ids,
+    required this.loadBalancerId,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetServerGroupsArgs {
 
   factory GetServerGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetServerGroupsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

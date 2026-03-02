@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_encryption_configuration_response_auth.dart';
 
 /// The Key Vault that contains your key to use for disk encryption. The Key Vault must be in the same region as the Managed Environment.
 class DiskEncryptionConfigurationResponseKeyVaultConfiguration {
   /// Configuration properties for the authentication to the Key Vault
-  final DiskEncryptionConfigurationResponseAuth? auth;
+  final pulumi.Input<DiskEncryptionConfigurationResponseAuth>? auth;
   /// Key URL pointing to a key in KeyVault. Version segment of the Url is required.
-  final String? keyUrl;
+  final pulumi.Input<String>? keyUrl;
 
   /// Creates a new [DiskEncryptionConfigurationResponseKeyVaultConfiguration].
   /// [auth] Configuration properties for the authentication to the Key Vault
@@ -19,15 +20,15 @@ class DiskEncryptionConfigurationResponseKeyVaultConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auth': ?auth == null ? null : auth!.toMap(),
+      'auth': ?pulumi.Input.mapOptionalInputValue<DiskEncryptionConfigurationResponseAuth, Map<String, dynamic>>(auth, (value) => value.toMap()),
       'keyUrl': ?keyUrl,
     };
   }
 
   factory DiskEncryptionConfigurationResponseKeyVaultConfiguration.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionConfigurationResponseKeyVaultConfiguration(
-      auth: map['auth'] == null ? null : DiskEncryptionConfigurationResponseAuth.fromMap((map['auth'] as Map).cast<String, dynamic>()),
-      keyUrl: map['keyUrl'] == null ? null : map['keyUrl'] as String,
+      auth: map['auth'] == null ? null : (DiskEncryptionConfigurationResponseAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
+      keyUrl: map['keyUrl'] == null ? null : (map['keyUrl'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MembershipBindingLifecycleState describes the state of a Binding resource.
 class MembershipBindingLifecycleStateResponseGkehubV1alpha {
   /// The current state of the MembershipBinding resource.
-  final String code;
+  final pulumi.Input<String> code;
 
   /// Creates a new [MembershipBindingLifecycleStateResponseGkehubV1alpha].
   /// [code] The current state of the MembershipBinding resource.
@@ -20,7 +21,7 @@ class MembershipBindingLifecycleStateResponseGkehubV1alpha {
 
   factory MembershipBindingLifecycleStateResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return MembershipBindingLifecycleStateResponseGkehubV1alpha(
-      code: map['code'] as String,
+      code: (map['code'] as String).input(),
     );
   }
 }

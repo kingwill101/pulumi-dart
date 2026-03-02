@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_destination_configuration.dart';
 
 /// The type for a storage destination.
 class DatasetStorageDestination {
   /// The storage destination configuration.
-  final StorageDestinationConfiguration configuration;
+  final pulumi.Input<StorageDestinationConfiguration> configuration;
   /// The set of supported dataset destinations for an asset.
   /// Expected value is 'Storage'.
-  final String target;
+  final pulumi.Input<String> target;
 
   /// Creates a new [DatasetStorageDestination].
   /// [configuration] The storage destination configuration.
@@ -20,15 +21,15 @@ class DatasetStorageDestination {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': configuration.toMap(),
+      'configuration': pulumi.Input.mapInputValue<StorageDestinationConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'target': target,
     };
   }
 
   factory DatasetStorageDestination.fromMap(Map<String, dynamic> map) {
     return DatasetStorageDestination(
-      configuration: StorageDestinationConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
-      target: map['target'] as String,
+      configuration: (StorageDestinationConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

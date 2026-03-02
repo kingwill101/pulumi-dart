@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetColumnLevelPermissionRule {
   /// An array of column names.
-  final List<String>? columnNames;
+  final pulumi.Input<List<String>>? columnNames;
   /// An array of ARNs for Amazon QuickSight users or groups.
-  final List<String>? principals;
+  final pulumi.Input<List<String>>? principals;
 
   /// Creates a new [DataSetColumnLevelPermissionRule].
   /// [columnNames] An array of column names.
@@ -24,8 +25,8 @@ class DataSetColumnLevelPermissionRule {
 
   factory DataSetColumnLevelPermissionRule.fromMap(Map<String, dynamic> map) {
     return DataSetColumnLevelPermissionRule(
-      columnNames: map['columnNames'] == null ? null : (map['columnNames'] as List).cast<String>(),
-      principals: map['principals'] == null ? null : (map['principals'] as List).cast<String>(),
+      columnNames: map['columnNames'] == null ? null : ((map['columnNames'] as List).cast<String>()).input(),
+      principals: map['principals'] == null ? null : ((map['principals'] as List).cast<String>()).input(),
     );
   }
 }

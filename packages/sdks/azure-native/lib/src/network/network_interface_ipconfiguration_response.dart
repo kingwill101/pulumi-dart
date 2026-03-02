@@ -14,43 +14,43 @@ import 'virtual_network_tap_response.dart';
 /// IPConfiguration in a network interface.
 class NetworkInterfaceIPConfigurationResponse {
   /// The reference to ApplicationGatewayBackendAddressPool resource.
-  final List<ApplicationGatewayBackendAddressPoolResponse>? applicationGatewayBackendAddressPools;
+  final pulumi.Input<List<ApplicationGatewayBackendAddressPoolResponse>>? applicationGatewayBackendAddressPools;
   /// Application security groups in which the IP configuration is included.
-  final List<ApplicationSecurityGroupResponse>? applicationSecurityGroups;
+  final pulumi.Input<List<ApplicationSecurityGroupResponse>>? applicationSecurityGroups;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// The reference to gateway load balancer frontend IP.
-  final SubResourceResponse? gatewayLoadBalancer;
+  final pulumi.Input<SubResourceResponse>? gatewayLoadBalancer;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The reference to LoadBalancerBackendAddressPool resource.
-  final List<BackendAddressPoolResponse>? loadBalancerBackendAddressPools;
+  final pulumi.Input<List<BackendAddressPoolResponse>>? loadBalancerBackendAddressPools;
   /// A list of references of LoadBalancerInboundNatRules.
-  final List<InboundNatRuleResponse>? loadBalancerInboundNatRules;
+  final pulumi.Input<List<InboundNatRuleResponse>>? loadBalancerInboundNatRules;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Whether this is a primary customer address on the network interface.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// Private IP address of the IP configuration. It can be a single IP address or a CIDR block in the format <address>/<prefix-length>.
-  final String? privateIPAddress;
+  final pulumi.Input<String>? privateIPAddress;
   /// The private IP address prefix length. If specified and the allocation method is dynamic, the service will allocate a CIDR block instead of a single IP address.
-  final int? privateIPAddressPrefixLength;
+  final pulumi.Input<int>? privateIPAddressPrefixLength;
   /// Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
-  final String? privateIPAddressVersion;
+  final pulumi.Input<String>? privateIPAddressVersion;
   /// The private IP address allocation method.
-  final String? privateIPAllocationMethod;
+  final pulumi.Input<String>? privateIPAllocationMethod;
   /// PrivateLinkConnection properties for the network interface.
-  final NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse privateLinkConnectionProperties;
+  final pulumi.Input<NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse> privateLinkConnectionProperties;
   /// The provisioning state of the network interface IP configuration.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Public IP address bound to the IP configuration.
-  final PublicIPAddressResponse? publicIPAddress;
+  final pulumi.Input<PublicIPAddressResponse>? publicIPAddress;
   /// Subnet bound to the IP configuration.
-  final SubnetResponse? subnet;
+  final pulumi.Input<SubnetResponse>? subnet;
   /// Resource type.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The reference to Virtual Network Taps.
-  final List<VirtualNetworkTapResponse>? virtualNetworkTaps;
+  final pulumi.Input<List<VirtualNetworkTapResponse>>? virtualNetworkTaps;
 
   /// Creates a new [NetworkInterfaceIPConfigurationResponse].
   /// [applicationGatewayBackendAddressPools] The reference to ApplicationGatewayBackendAddressPool resource.
@@ -96,49 +96,49 @@ class NetworkInterfaceIPConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationGatewayBackendAddressPools': ?applicationGatewayBackendAddressPools == null ? null : pulumi.Input.encodeList<ApplicationGatewayBackendAddressPoolResponse, Map<String, dynamic>>(applicationGatewayBackendAddressPools!, (value) => value.toMap()),
-      'applicationSecurityGroups': ?applicationSecurityGroups == null ? null : pulumi.Input.encodeList<ApplicationSecurityGroupResponse, Map<String, dynamic>>(applicationSecurityGroups!, (value) => value.toMap()),
+      'applicationGatewayBackendAddressPools': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayBackendAddressPoolResponse>, List<Map<String, dynamic>>>(applicationGatewayBackendAddressPools, (value) => pulumi.Input.encodeList<ApplicationGatewayBackendAddressPoolResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'applicationSecurityGroups': ?pulumi.Input.mapOptionalInputValue<List<ApplicationSecurityGroupResponse>, List<Map<String, dynamic>>>(applicationSecurityGroups, (value) => pulumi.Input.encodeList<ApplicationSecurityGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'etag': etag,
-      'gatewayLoadBalancer': ?gatewayLoadBalancer == null ? null : gatewayLoadBalancer!.toMap(),
+      'gatewayLoadBalancer': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(gatewayLoadBalancer, (value) => value.toMap()),
       'id': ?id,
-      'loadBalancerBackendAddressPools': ?loadBalancerBackendAddressPools == null ? null : pulumi.Input.encodeList<BackendAddressPoolResponse, Map<String, dynamic>>(loadBalancerBackendAddressPools!, (value) => value.toMap()),
-      'loadBalancerInboundNatRules': ?loadBalancerInboundNatRules == null ? null : pulumi.Input.encodeList<InboundNatRuleResponse, Map<String, dynamic>>(loadBalancerInboundNatRules!, (value) => value.toMap()),
+      'loadBalancerBackendAddressPools': ?pulumi.Input.mapOptionalInputValue<List<BackendAddressPoolResponse>, List<Map<String, dynamic>>>(loadBalancerBackendAddressPools, (value) => pulumi.Input.encodeList<BackendAddressPoolResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loadBalancerInboundNatRules': ?pulumi.Input.mapOptionalInputValue<List<InboundNatRuleResponse>, List<Map<String, dynamic>>>(loadBalancerInboundNatRules, (value) => pulumi.Input.encodeList<InboundNatRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'primary': ?primary,
       'privateIPAddress': ?privateIPAddress,
       'privateIPAddressPrefixLength': ?privateIPAddressPrefixLength,
       'privateIPAddressVersion': ?privateIPAddressVersion,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
-      'privateLinkConnectionProperties': privateLinkConnectionProperties.toMap(),
+      'privateLinkConnectionProperties': pulumi.Input.mapInputValue<NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse, Map<String, dynamic>>(privateLinkConnectionProperties, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'publicIPAddress': ?publicIPAddress == null ? null : publicIPAddress!.toMap(),
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'publicIPAddress': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressResponse, Map<String, dynamic>>(publicIPAddress, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<SubnetResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
       'type': ?type,
-      'virtualNetworkTaps': ?virtualNetworkTaps == null ? null : pulumi.Input.encodeList<VirtualNetworkTapResponse, Map<String, dynamic>>(virtualNetworkTaps!, (value) => value.toMap()),
+      'virtualNetworkTaps': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworkTapResponse>, List<Map<String, dynamic>>>(virtualNetworkTaps, (value) => pulumi.Input.encodeList<VirtualNetworkTapResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkInterfaceIPConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceIPConfigurationResponse(
-      applicationGatewayBackendAddressPools: map['applicationGatewayBackendAddressPools'] == null ? null : pulumi.Input.decodeList<ApplicationGatewayBackendAddressPoolResponse>(map['applicationGatewayBackendAddressPools'], (value) => ApplicationGatewayBackendAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>())),
-      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(map['applicationSecurityGroups'], (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
-      etag: map['etag'] as String,
-      gatewayLoadBalancer: map['gatewayLoadBalancer'] == null ? null : SubResourceResponse.fromMap((map['gatewayLoadBalancer'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      loadBalancerBackendAddressPools: map['loadBalancerBackendAddressPools'] == null ? null : pulumi.Input.decodeList<BackendAddressPoolResponse>(map['loadBalancerBackendAddressPools'], (value) => BackendAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancerInboundNatRules: map['loadBalancerInboundNatRules'] == null ? null : pulumi.Input.decodeList<InboundNatRuleResponse>(map['loadBalancerInboundNatRules'], (value) => InboundNatRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      privateIPAddress: map['privateIPAddress'] == null ? null : map['privateIPAddress'] as String,
-      privateIPAddressPrefixLength: map['privateIPAddressPrefixLength'] == null ? null : map['privateIPAddressPrefixLength'] as int,
-      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : map['privateIPAddressVersion'] as String,
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : map['privateIPAllocationMethod'] as String,
-      privateLinkConnectionProperties: NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse.fromMap((map['privateLinkConnectionProperties'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      publicIPAddress: map['publicIPAddress'] == null ? null : PublicIPAddressResponse.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>()),
-      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : map['type'] as String,
-      virtualNetworkTaps: map['virtualNetworkTaps'] == null ? null : pulumi.Input.decodeList<VirtualNetworkTapResponse>(map['virtualNetworkTaps'], (value) => VirtualNetworkTapResponse.fromMap((value as Map).cast<String, dynamic>())),
+      applicationGatewayBackendAddressPools: map['applicationGatewayBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendAddressPoolResponse>(map['applicationGatewayBackendAddressPools'], (value) => ApplicationGatewayBackendAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : (pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(map['applicationSecurityGroups'], (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: (map['etag'] as String).input(),
+      gatewayLoadBalancer: map['gatewayLoadBalancer'] == null ? null : (SubResourceResponse.fromMap((map['gatewayLoadBalancer'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      loadBalancerBackendAddressPools: map['loadBalancerBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<BackendAddressPoolResponse>(map['loadBalancerBackendAddressPools'], (value) => BackendAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerInboundNatRules: map['loadBalancerInboundNatRules'] == null ? null : (pulumi.Input.decodeList<InboundNatRuleResponse>(map['loadBalancerInboundNatRules'], (value) => InboundNatRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      privateIPAddressPrefixLength: map['privateIPAddressPrefixLength'] == null ? null : (map['privateIPAddressPrefixLength'] as int).input(),
+      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : (map['privateIPAddressVersion'] as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
+      privateLinkConnectionProperties: (NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse.fromMap((map['privateLinkConnectionProperties'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (PublicIPAddressResponse.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      virtualNetworkTaps: map['virtualNetworkTaps'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkTapResponse>(map['virtualNetworkTaps'], (value) => VirtualNetworkTapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'batching_configuration.dart';
 import 'dataflow_endpoint_data_explorer_authentication.dart';
 
 /// Azure Data Explorer endpoint properties
 class DataflowEndpointDataExplorer {
   /// Authentication configuration. NOTE - only authentication property is allowed per entry.
-  final DataflowEndpointDataExplorerAuthentication authentication;
+  final pulumi.Input<DataflowEndpointDataExplorerAuthentication> authentication;
   /// Azure Data Explorer endpoint batching configuration.
-  final BatchingConfiguration? batching;
+  final pulumi.Input<BatchingConfiguration>? batching;
   /// Database name.
-  final String database;
+  final pulumi.Input<String> database;
   /// Host of the Azure Data Explorer in the form of <cluster>.<region>.kusto.windows.net .
-  final String host;
+  final pulumi.Input<String> host;
 
   /// Creates a new [DataflowEndpointDataExplorer].
   /// [authentication] Authentication configuration. NOTE - only authentication property is allowed per entry.
@@ -28,8 +29,8 @@ class DataflowEndpointDataExplorer {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': authentication.toMap(),
-      'batching': ?batching == null ? null : batching!.toMap(),
+      'authentication': pulumi.Input.mapInputValue<DataflowEndpointDataExplorerAuthentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'batching': ?pulumi.Input.mapOptionalInputValue<BatchingConfiguration, Map<String, dynamic>>(batching, (value) => value.toMap()),
       'database': database,
       'host': host,
     };
@@ -37,10 +38,10 @@ class DataflowEndpointDataExplorer {
 
   factory DataflowEndpointDataExplorer.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointDataExplorer(
-      authentication: DataflowEndpointDataExplorerAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      batching: map['batching'] == null ? null : BatchingConfiguration.fromMap((map['batching'] as Map).cast<String, dynamic>()),
-      database: map['database'] as String,
-      host: map['host'] as String,
+      authentication: (DataflowEndpointDataExplorerAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      batching: map['batching'] == null ? null : (BatchingConfiguration.fromMap((map['batching'] as Map).cast<String, dynamic>())).input(),
+      database: (map['database'] as String).input(),
+      host: (map['host'] as String).input(),
     );
   }
 }

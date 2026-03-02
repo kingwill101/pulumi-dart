@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMetaStoreConf {
   /// Custom rds database password.
-  final String dbPassword;
+  final pulumi.Input<String> dbPassword;
   /// Custom rds database connection url.
-  final String dbUrl;
+  final pulumi.Input<String> dbUrl;
   /// Custom rds database user name.
-  final String dbUserName;
+  final pulumi.Input<String> dbUserName;
 
   /// Creates a new [ClusterMetaStoreConf].
   /// [dbPassword] Custom rds database password.
@@ -29,9 +30,9 @@ class ClusterMetaStoreConf {
 
   factory ClusterMetaStoreConf.fromMap(Map<String, dynamic> map) {
     return ClusterMetaStoreConf(
-      dbPassword: map['dbPassword'] as String,
-      dbUrl: map['dbUrl'] as String,
-      dbUserName: map['dbUserName'] as String,
+      dbPassword: (map['dbPassword'] as String).input(),
+      dbUrl: (map['dbUrl'] as String).input(),
+      dbUserName: (map['dbUserName'] as String).input(),
     );
   }
 }

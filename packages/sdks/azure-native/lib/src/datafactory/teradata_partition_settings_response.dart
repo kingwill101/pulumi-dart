@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The settings that will be leveraged for teradata source partitioning.
 class TeradataPartitionSettingsResponse {
   /// The name of the column that will be used for proceeding range or hash partitioning. Type: string (or Expression with resultType string).
-  final dynamic partitionColumnName;
+  final pulumi.Input<dynamic>? partitionColumnName;
   /// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  final dynamic partitionLowerBound;
+  final pulumi.Input<dynamic>? partitionLowerBound;
   /// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  final dynamic partitionUpperBound;
+  final pulumi.Input<dynamic>? partitionUpperBound;
 
   /// Creates a new [TeradataPartitionSettingsResponse].
   /// [partitionColumnName] The name of the column that will be used for proceeding range or hash partitioning. Type: string (or Expression with resultType string).
@@ -30,9 +31,9 @@ class TeradataPartitionSettingsResponse {
 
   factory TeradataPartitionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return TeradataPartitionSettingsResponse(
-      partitionColumnName: map['partitionColumnName'] == null ? null : map['partitionColumnName'],
-      partitionLowerBound: map['partitionLowerBound'] == null ? null : map['partitionLowerBound'],
-      partitionUpperBound: map['partitionUpperBound'] == null ? null : map['partitionUpperBound'],
+      partitionColumnName: map['partitionColumnName'] == null ? null : (map['partitionColumnName']).input(),
+      partitionLowerBound: map['partitionLowerBound'] == null ? null : (map['partitionLowerBound']).input(),
+      partitionUpperBound: map['partitionUpperBound'] == null ? null : (map['partitionUpperBound']).input(),
     );
   }
 }

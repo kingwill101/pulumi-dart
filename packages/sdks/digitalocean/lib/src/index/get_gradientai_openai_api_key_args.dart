@@ -12,9 +12,8 @@ class GetGradientaiOpenaiApiKeyArgs {
   /// Creates a new [GetGradientaiOpenaiApiKeyArgs].
   /// [uuid] Required.
   GetGradientaiOpenaiApiKeyArgs({
-    required pulumi.Output<String> uuid,
-  }) :
-      uuid = pulumi.Input.asInput<String>(uuid);
+    required this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetGradientaiOpenaiApiKeyArgs {
 
   factory GetGradientaiOpenaiApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiOpenaiApiKeyArgs(
-      uuid: pulumi.Output.create<String>(map['uuid'] as String),
+      uuid: (map['uuid'] as String).input(),
     );
   }
 }

@@ -38,25 +38,16 @@ class PeeringServiceArgs {
   /// [sku] The SKU that defines the type of the peering service.
   /// [tags] The resource tags.
   PeeringServiceArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? peeringServiceLocation,
-    pulumi.Output<String>? peeringServiceName,
-    pulumi.Output<String>? peeringServiceProvider,
-    pulumi.Output<String>? providerBackupPeeringLocation,
-    pulumi.Output<String>? providerPrimaryPeeringLocation,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<PeeringServiceSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      peeringServiceLocation = pulumi.Input.asOptionalInput<String>(peeringServiceLocation),
-      peeringServiceName = pulumi.Input.asOptionalInput<String>(peeringServiceName),
-      peeringServiceProvider = pulumi.Input.asOptionalInput<String>(peeringServiceProvider),
-      providerBackupPeeringLocation = pulumi.Input.asOptionalInput<String>(providerBackupPeeringLocation),
-      providerPrimaryPeeringLocation = pulumi.Input.asOptionalInput<String>(providerPrimaryPeeringLocation),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<PeeringServiceSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.peeringServiceLocation,
+    this.peeringServiceName,
+    this.peeringServiceProvider,
+    this.providerBackupPeeringLocation,
+    this.providerPrimaryPeeringLocation,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class PeeringServiceArgs {
 
   factory PeeringServiceArgs.fromMap(Map<String, dynamic> map) {
     return PeeringServiceArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      peeringServiceLocation: map['peeringServiceLocation'] == null ? null : pulumi.Output.create<String>(map['peeringServiceLocation'] as String),
-      peeringServiceName: map['peeringServiceName'] == null ? null : pulumi.Output.create<String>(map['peeringServiceName'] as String),
-      peeringServiceProvider: map['peeringServiceProvider'] == null ? null : pulumi.Output.create<String>(map['peeringServiceProvider'] as String),
-      providerBackupPeeringLocation: map['providerBackupPeeringLocation'] == null ? null : pulumi.Output.create<String>(map['providerBackupPeeringLocation'] as String),
-      providerPrimaryPeeringLocation: map['providerPrimaryPeeringLocation'] == null ? null : pulumi.Output.create<String>(map['providerPrimaryPeeringLocation'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<PeeringServiceSku>(PeeringServiceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      peeringServiceLocation: map['peeringServiceLocation'] == null ? null : (map['peeringServiceLocation'] as String).input(),
+      peeringServiceName: map['peeringServiceName'] == null ? null : (map['peeringServiceName'] as String).input(),
+      peeringServiceProvider: map['peeringServiceProvider'] == null ? null : (map['peeringServiceProvider'] as String).input(),
+      providerBackupPeeringLocation: map['providerBackupPeeringLocation'] == null ? null : (map['providerBackupPeeringLocation'] as String).input(),
+      providerPrimaryPeeringLocation: map['providerPrimaryPeeringLocation'] == null ? null : (map['providerPrimaryPeeringLocation'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (PeeringServiceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

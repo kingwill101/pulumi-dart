@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_rule_condition_response.dart';
 import 'firewall_policy_nat_rule_action_response.dart';
 
 /// Firewall Policy NAT Rule.
 class FirewallPolicyNatRuleResponse {
   /// The action type of a Nat rule.
-  final FirewallPolicyNatRuleActionResponse? action;
+  final pulumi.Input<FirewallPolicyNatRuleActionResponse>? action;
   /// The name of the rule.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Priority of the Firewall Policy Rule resource.
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// The match conditions for incoming traffic.
-  final ApplicationRuleConditionResponse? ruleCondition;
+  final pulumi.Input<ApplicationRuleConditionResponse>? ruleCondition;
   /// The type of the rule.
   /// Expected value is 'FirewallPolicyNatRule'.
-  final String ruleType;
+  final pulumi.Input<String> ruleType;
   /// The translated address for this NAT rule.
-  final String? translatedAddress;
+  final pulumi.Input<String>? translatedAddress;
   /// The translated port for this NAT rule.
-  final String? translatedPort;
+  final pulumi.Input<String>? translatedPort;
 
   /// Creates a new [FirewallPolicyNatRuleResponse].
   /// [action] The action type of a Nat rule.
@@ -41,10 +42,10 @@ class FirewallPolicyNatRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?action == null ? null : action!.toMap(),
+      'action': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyNatRuleActionResponse, Map<String, dynamic>>(action, (value) => value.toMap()),
       'name': ?name,
       'priority': ?priority,
-      'ruleCondition': ?ruleCondition == null ? null : ruleCondition!.toMap(),
+      'ruleCondition': ?pulumi.Input.mapOptionalInputValue<ApplicationRuleConditionResponse, Map<String, dynamic>>(ruleCondition, (value) => value.toMap()),
       'ruleType': ruleType,
       'translatedAddress': ?translatedAddress,
       'translatedPort': ?translatedPort,
@@ -53,13 +54,13 @@ class FirewallPolicyNatRuleResponse {
 
   factory FirewallPolicyNatRuleResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyNatRuleResponse(
-      action: map['action'] == null ? null : FirewallPolicyNatRuleActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      ruleCondition: map['ruleCondition'] == null ? null : ApplicationRuleConditionResponse.fromMap((map['ruleCondition'] as Map).cast<String, dynamic>()),
-      ruleType: map['ruleType'] as String,
-      translatedAddress: map['translatedAddress'] == null ? null : map['translatedAddress'] as String,
-      translatedPort: map['translatedPort'] == null ? null : map['translatedPort'] as String,
+      action: map['action'] == null ? null : (FirewallPolicyNatRuleActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      ruleCondition: map['ruleCondition'] == null ? null : (ApplicationRuleConditionResponse.fromMap((map['ruleCondition'] as Map).cast<String, dynamic>())).input(),
+      ruleType: (map['ruleType'] as String).input(),
+      translatedAddress: map['translatedAddress'] == null ? null : (map['translatedAddress'] as String).input(),
+      translatedPort: map['translatedPort'] == null ? null : (map['translatedPort'] as String).input(),
     );
   }
 }

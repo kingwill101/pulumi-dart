@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'function_async_invoke_config_destination_config_on_failure.dart';
 import 'function_async_invoke_config_destination_config_on_success.dart';
 
 class FunctionAsyncInvokeConfigDestinationConfig {
   /// Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
-  final FunctionAsyncInvokeConfigDestinationConfigOnFailure? onFailure;
+  final pulumi.Input<FunctionAsyncInvokeConfigDestinationConfigOnFailure>? onFailure;
   /// Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
-  final FunctionAsyncInvokeConfigDestinationConfigOnSuccess? onSuccess;
+  final pulumi.Input<FunctionAsyncInvokeConfigDestinationConfigOnSuccess>? onSuccess;
 
   /// Creates a new [FunctionAsyncInvokeConfigDestinationConfig].
   /// [onFailure] Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
@@ -19,15 +20,15 @@ class FunctionAsyncInvokeConfigDestinationConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'onFailure': ?onFailure == null ? null : onFailure!.toMap(),
-      'onSuccess': ?onSuccess == null ? null : onSuccess!.toMap(),
+      'onFailure': ?pulumi.Input.mapOptionalInputValue<FunctionAsyncInvokeConfigDestinationConfigOnFailure, Map<String, dynamic>>(onFailure, (value) => value.toMap()),
+      'onSuccess': ?pulumi.Input.mapOptionalInputValue<FunctionAsyncInvokeConfigDestinationConfigOnSuccess, Map<String, dynamic>>(onSuccess, (value) => value.toMap()),
     };
   }
 
   factory FunctionAsyncInvokeConfigDestinationConfig.fromMap(Map<String, dynamic> map) {
     return FunctionAsyncInvokeConfigDestinationConfig(
-      onFailure: map['onFailure'] == null ? null : FunctionAsyncInvokeConfigDestinationConfigOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>()),
-      onSuccess: map['onSuccess'] == null ? null : FunctionAsyncInvokeConfigDestinationConfigOnSuccess.fromMap((map['onSuccess'] as Map).cast<String, dynamic>()),
+      onFailure: map['onFailure'] == null ? null : (FunctionAsyncInvokeConfigDestinationConfigOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>())).input(),
+      onSuccess: map['onSuccess'] == null ? null : (FunctionAsyncInvokeConfigDestinationConfigOnSuccess.fromMap((map['onSuccess'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

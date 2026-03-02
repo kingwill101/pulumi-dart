@@ -42,21 +42,14 @@ class ConsentStoreState {
   /// [name] The name of this ConsentStore, for example:
   /// [pulumiLabels] The combination of labels configured directly on the resource
   ConsentStoreState({
-    pulumi.Output<String>? dataset,
-    pulumi.Output<String>? defaultConsentTtl,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<bool>? enableConsentCreateOnUpdate,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-  }) :
-      dataset = pulumi.Input.asOptionalInput<String>(dataset),
-      defaultConsentTtl = pulumi.Input.asOptionalInput<String>(defaultConsentTtl),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      enableConsentCreateOnUpdate = pulumi.Input.asOptionalInput<bool>(enableConsentCreateOnUpdate),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels);
+    this.dataset,
+    this.defaultConsentTtl,
+    this.effectiveLabels,
+    this.enableConsentCreateOnUpdate,
+    this.labels,
+    this.name,
+    this.pulumiLabels,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,13 +65,13 @@ class ConsentStoreState {
 
   factory ConsentStoreState.fromMap(Map<String, dynamic> map) {
     return ConsentStoreState(
-      dataset: map['dataset'] == null ? null : pulumi.Output.create<String>(map['dataset'] as String),
-      defaultConsentTtl: map['defaultConsentTtl'] == null ? null : pulumi.Output.create<String>(map['defaultConsentTtl'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      enableConsentCreateOnUpdate: map['enableConsentCreateOnUpdate'] == null ? null : pulumi.Output.create<bool>(map['enableConsentCreateOnUpdate'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
+      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      defaultConsentTtl: map['defaultConsentTtl'] == null ? null : (map['defaultConsentTtl'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      enableConsentCreateOnUpdate: map['enableConsentCreateOnUpdate'] == null ? null : (map['enableConsentCreateOnUpdate'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
     );
   }
 }

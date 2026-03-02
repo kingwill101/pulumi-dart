@@ -6,13 +6,13 @@ import 'report_summary_machine_series_allocation_response_migrationcenter_v1alph
 /// A set of findings that applies to assets of type Virtual/Physical Machine.
 class ReportSummaryMachineFindingResponse {
   /// Count of assets which were allocated.
-  final String allocatedAssetCount;
+  final pulumi.Input<String> allocatedAssetCount;
   /// Set of disk types allocated to assets.
-  final List<String> allocatedDiskTypes;
+  final pulumi.Input<List<String>> allocatedDiskTypes;
   /// Set of regions in which the assets were allocated.
-  final List<String> allocatedRegions;
+  final pulumi.Input<List<String>> allocatedRegions;
   /// Distribution of assets based on the Machine Series.
-  final List<ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1> machineSeriesAllocations;
+  final pulumi.Input<List<ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1>> machineSeriesAllocations;
 
   /// Creates a new [ReportSummaryMachineFindingResponse].
   /// [allocatedAssetCount] Count of assets which were allocated.
@@ -31,16 +31,16 @@ class ReportSummaryMachineFindingResponse {
       'allocatedAssetCount': allocatedAssetCount,
       'allocatedDiskTypes': allocatedDiskTypes,
       'allocatedRegions': allocatedRegions,
-      'machineSeriesAllocations': pulumi.Input.encodeList<ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1, Map<String, dynamic>>(machineSeriesAllocations, (value) => value.toMap()),
+      'machineSeriesAllocations': pulumi.Input.mapInputValue<List<ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1>, List<Map<String, dynamic>>>(machineSeriesAllocations, (value) => pulumi.Input.encodeList<ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ReportSummaryMachineFindingResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryMachineFindingResponse(
-      allocatedAssetCount: map['allocatedAssetCount'] as String,
-      allocatedDiskTypes: (map['allocatedDiskTypes'] as List).cast<String>(),
-      allocatedRegions: (map['allocatedRegions'] as List).cast<String>(),
-      machineSeriesAllocations: pulumi.Input.decodeList<ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1>(map['machineSeriesAllocations'], (value) => ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      allocatedAssetCount: (map['allocatedAssetCount'] as String).input(),
+      allocatedDiskTypes: ((map['allocatedDiskTypes'] as List).cast<String>()).input(),
+      allocatedRegions: ((map['allocatedRegions'] as List).cast<String>()).input(),
+      machineSeriesAllocations: (pulumi.Input.decodeList<ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1>(map['machineSeriesAllocations'], (value) => ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

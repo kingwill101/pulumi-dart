@@ -20,15 +20,11 @@ class LoggingConfigurationState {
   /// [loggingConfiguration] A configuration block describing how AWS Network Firewall performs logging for a firewall. See Logging Configuration below for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LoggingConfigurationState({
-    pulumi.Output<bool>? enableMonitoringDashboard,
-    pulumi.Output<String>? firewallArn,
-    pulumi.Output<LoggingConfigurationLoggingConfiguration>? loggingConfiguration,
-    pulumi.Output<String>? region,
-  }) :
-      enableMonitoringDashboard = pulumi.Input.asOptionalInput<bool>(enableMonitoringDashboard),
-      firewallArn = pulumi.Input.asOptionalInput<String>(firewallArn),
-      loggingConfiguration = pulumi.Input.asOptionalInput<LoggingConfigurationLoggingConfiguration>(loggingConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.enableMonitoringDashboard,
+    this.firewallArn,
+    this.loggingConfiguration,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class LoggingConfigurationState {
 
   factory LoggingConfigurationState.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationState(
-      enableMonitoringDashboard: map['enableMonitoringDashboard'] == null ? null : pulumi.Output.create<bool>(map['enableMonitoringDashboard'] as bool),
-      firewallArn: map['firewallArn'] == null ? null : pulumi.Output.create<String>(map['firewallArn'] as String),
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : pulumi.Output.create<LoggingConfigurationLoggingConfiguration>(LoggingConfigurationLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      enableMonitoringDashboard: map['enableMonitoringDashboard'] == null ? null : (map['enableMonitoringDashboard'] as bool).input(),
+      firewallArn: map['firewallArn'] == null ? null : (map['firewallArn'] as String).input(),
+      loggingConfiguration: map['loggingConfiguration'] == null ? null : (LoggingConfigurationLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

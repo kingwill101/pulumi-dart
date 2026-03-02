@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Pipeline ElapsedTime Metric Policy.
 class PipelineElapsedTimeMetricPolicyResponse {
   /// TimeSpan value, after which an Azure Monitoring Metric is fired.
-  final dynamic duration;
+  final pulumi.Input<dynamic>? duration;
 
   /// Creates a new [PipelineElapsedTimeMetricPolicyResponse].
   /// [duration] TimeSpan value, after which an Azure Monitoring Metric is fired.
@@ -20,7 +21,7 @@ class PipelineElapsedTimeMetricPolicyResponse {
 
   factory PipelineElapsedTimeMetricPolicyResponse.fromMap(Map<String, dynamic> map) {
     return PipelineElapsedTimeMetricPolicyResponse(
-      duration: map['duration'] == null ? null : map['duration'],
+      duration: map['duration'] == null ? null : (map['duration']).input(),
     );
   }
 }

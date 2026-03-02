@@ -16,11 +16,9 @@ class GetResourceTagsArgs {
   /// [resourceId] ID of the resource with the tags to list. See details below.
   /// [tags] Map of key=value pairs for each tag set on the resource.
   GetResourceTagsArgs({
-    required pulumi.Output<String> resourceId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.resourceId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResourceTagsArgs {
 
   factory GetResourceTagsArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceTagsArgs(
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      resourceId: (map['resourceId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

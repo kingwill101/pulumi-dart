@@ -35,19 +35,13 @@ class TaxonomyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Taxonomy location region.
   TaxonomyState({
-    pulumi.Output<List<String>>? activatedPolicyTypes,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      activatedPolicyTypes = pulumi.Input.asOptionalInput<List<String>>(activatedPolicyTypes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.activatedPolicyTypes,
+    this.description,
+    this.displayName,
+    this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class TaxonomyState {
 
   factory TaxonomyState.fromMap(Map<String, dynamic> map) {
     return TaxonomyState(
-      activatedPolicyTypes: map['activatedPolicyTypes'] == null ? null : pulumi.Output.create<List<String>>((map['activatedPolicyTypes'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      activatedPolicyTypes: map['activatedPolicyTypes'] == null ? null : ((map['activatedPolicyTypes'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

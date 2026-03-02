@@ -18,15 +18,11 @@ class GetDatasetAiplatformV1beta1Args {
   /// [project] Optional.
   /// [readMask] Optional.
   GetDatasetAiplatformV1beta1Args({
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? readMask,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      readMask = pulumi.Input.asOptionalInput<String>(readMask);
+    required this.datasetId,
+    required this.location,
+    this.project,
+    this.readMask,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetDatasetAiplatformV1beta1Args {
 
   factory GetDatasetAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDatasetAiplatformV1beta1Args(
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      readMask: map['readMask'] == null ? null : pulumi.Output.create<String>(map['readMask'] as String),
+      datasetId: (map['datasetId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      readMask: map['readMask'] == null ? null : (map['readMask'] as String).input(),
     );
   }
 }

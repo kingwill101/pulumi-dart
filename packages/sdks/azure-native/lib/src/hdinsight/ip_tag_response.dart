@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains the IpTag associated with the public IP address
 class IpTagResponse {
   /// Gets or sets the ipTag type: Example FirstPartyUsage.
-  final String ipTagType;
+  final pulumi.Input<String> ipTagType;
   /// Gets or sets value of the IpTag associated with the public IP. Example HDInsight, SQL, Storage etc
-  final String tag;
+  final pulumi.Input<String> tag;
 
   /// Creates a new [IpTagResponse].
   /// [ipTagType] Gets or sets the ipTag type: Example FirstPartyUsage.
@@ -25,8 +26,8 @@ class IpTagResponse {
 
   factory IpTagResponse.fromMap(Map<String, dynamic> map) {
     return IpTagResponse(
-      ipTagType: map['ipTagType'] as String,
-      tag: map['tag'] as String,
+      ipTagType: (map['ipTagType'] as String).input(),
+      tag: (map['tag'] as String).input(),
     );
   }
 }

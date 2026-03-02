@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains stats associated with the peering.
 class ExpressRouteCircuitStatsResponse {
   /// The Primary BytesIn of the peering.
-  final double? primarybytesIn;
+  final pulumi.Input<double>? primarybytesIn;
   /// The primary BytesOut of the peering.
-  final double? primarybytesOut;
+  final pulumi.Input<double>? primarybytesOut;
   /// The secondary BytesIn of the peering.
-  final double? secondarybytesIn;
+  final pulumi.Input<double>? secondarybytesIn;
   /// The secondary BytesOut of the peering.
-  final double? secondarybytesOut;
+  final pulumi.Input<double>? secondarybytesOut;
 
   /// Creates a new [ExpressRouteCircuitStatsResponse].
   /// [primarybytesIn] The Primary BytesIn of the peering.
@@ -35,10 +36,10 @@ class ExpressRouteCircuitStatsResponse {
 
   factory ExpressRouteCircuitStatsResponse.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitStatsResponse(
-      primarybytesIn: map['primarybytesIn'] == null ? null : map['primarybytesIn'] as double,
-      primarybytesOut: map['primarybytesOut'] == null ? null : map['primarybytesOut'] as double,
-      secondarybytesIn: map['secondarybytesIn'] == null ? null : map['secondarybytesIn'] as double,
-      secondarybytesOut: map['secondarybytesOut'] == null ? null : map['secondarybytesOut'] as double,
+      primarybytesIn: map['primarybytesIn'] == null ? null : (map['primarybytesIn'] as double).input(),
+      primarybytesOut: map['primarybytesOut'] == null ? null : (map['primarybytesOut'] as double).input(),
+      secondarybytesIn: map['secondarybytesIn'] == null ? null : (map['secondarybytesIn'] as double).input(),
+      secondarybytesOut: map['secondarybytesOut'] == null ? null : (map['secondarybytesOut'] as double).input(),
     );
   }
 }

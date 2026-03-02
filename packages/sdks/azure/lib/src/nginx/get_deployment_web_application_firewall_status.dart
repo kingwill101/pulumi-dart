@@ -8,13 +8,13 @@ import 'get_deployment_web_application_firewall_status_threat_campaigns_package.
 
 class GetDeploymentWebApplicationFirewallStatus {
   /// Indicates the version of the attack signatures package used by NGINX App Protect.
-  final List<GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage> attackSignaturesPackages;
+  final pulumi.Input<List<GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage>> attackSignaturesPackages;
   /// Indicates the version of the bot signatures package used by NGINX App Protect.
-  final List<GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage> botSignaturesPackages;
+  final pulumi.Input<List<GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage>> botSignaturesPackages;
   /// Indicates the version of the WAF Engine and Nginx WAF Module used by NGINX App Protect.
-  final List<GetDeploymentWebApplicationFirewallStatusComponentVersion> componentVersions;
+  final pulumi.Input<List<GetDeploymentWebApplicationFirewallStatusComponentVersion>> componentVersions;
   /// Indicates the version of the threat campaigns package used by NGINX App Protect.
-  final List<GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage> threatCampaignsPackages;
+  final pulumi.Input<List<GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage>> threatCampaignsPackages;
 
   /// Creates a new [GetDeploymentWebApplicationFirewallStatus].
   /// [attackSignaturesPackages] Indicates the version of the attack signatures package used by NGINX App Protect.
@@ -30,19 +30,19 @@ class GetDeploymentWebApplicationFirewallStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attackSignaturesPackages': pulumi.Input.encodeList<GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage, Map<String, dynamic>>(attackSignaturesPackages, (value) => value.toMap()),
-      'botSignaturesPackages': pulumi.Input.encodeList<GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage, Map<String, dynamic>>(botSignaturesPackages, (value) => value.toMap()),
-      'componentVersions': pulumi.Input.encodeList<GetDeploymentWebApplicationFirewallStatusComponentVersion, Map<String, dynamic>>(componentVersions, (value) => value.toMap()),
-      'threatCampaignsPackages': pulumi.Input.encodeList<GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage, Map<String, dynamic>>(threatCampaignsPackages, (value) => value.toMap()),
+      'attackSignaturesPackages': pulumi.Input.mapInputValue<List<GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage>, List<Map<String, dynamic>>>(attackSignaturesPackages, (value) => pulumi.Input.encodeList<GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'botSignaturesPackages': pulumi.Input.mapInputValue<List<GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage>, List<Map<String, dynamic>>>(botSignaturesPackages, (value) => pulumi.Input.encodeList<GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'componentVersions': pulumi.Input.mapInputValue<List<GetDeploymentWebApplicationFirewallStatusComponentVersion>, List<Map<String, dynamic>>>(componentVersions, (value) => pulumi.Input.encodeList<GetDeploymentWebApplicationFirewallStatusComponentVersion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'threatCampaignsPackages': pulumi.Input.mapInputValue<List<GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage>, List<Map<String, dynamic>>>(threatCampaignsPackages, (value) => pulumi.Input.encodeList<GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetDeploymentWebApplicationFirewallStatus.fromMap(Map<String, dynamic> map) {
     return GetDeploymentWebApplicationFirewallStatus(
-      attackSignaturesPackages: pulumi.Input.decodeList<GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage>(map['attackSignaturesPackages'], (value) => GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage.fromMap((value as Map).cast<String, dynamic>())),
-      botSignaturesPackages: pulumi.Input.decodeList<GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage>(map['botSignaturesPackages'], (value) => GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage.fromMap((value as Map).cast<String, dynamic>())),
-      componentVersions: pulumi.Input.decodeList<GetDeploymentWebApplicationFirewallStatusComponentVersion>(map['componentVersions'], (value) => GetDeploymentWebApplicationFirewallStatusComponentVersion.fromMap((value as Map).cast<String, dynamic>())),
-      threatCampaignsPackages: pulumi.Input.decodeList<GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage>(map['threatCampaignsPackages'], (value) => GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage.fromMap((value as Map).cast<String, dynamic>())),
+      attackSignaturesPackages: (pulumi.Input.decodeList<GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage>(map['attackSignaturesPackages'], (value) => GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      botSignaturesPackages: (pulumi.Input.decodeList<GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage>(map['botSignaturesPackages'], (value) => GetDeploymentWebApplicationFirewallStatusBotSignaturesPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      componentVersions: (pulumi.Input.decodeList<GetDeploymentWebApplicationFirewallStatusComponentVersion>(map['componentVersions'], (value) => GetDeploymentWebApplicationFirewallStatusComponentVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      threatCampaignsPackages: (pulumi.Input.decodeList<GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage>(map['threatCampaignsPackages'], (value) => GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

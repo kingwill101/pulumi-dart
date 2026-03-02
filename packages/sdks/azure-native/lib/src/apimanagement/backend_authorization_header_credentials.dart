@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authorization header information.
 class BackendAuthorizationHeaderCredentials {
   /// Authentication Parameter value.
-  final String parameter;
+  final pulumi.Input<String> parameter;
   /// Authentication Scheme name.
-  final String scheme;
+  final pulumi.Input<String> scheme;
 
   /// Creates a new [BackendAuthorizationHeaderCredentials].
   /// [parameter] Authentication Parameter value.
@@ -25,8 +26,8 @@ class BackendAuthorizationHeaderCredentials {
 
   factory BackendAuthorizationHeaderCredentials.fromMap(Map<String, dynamic> map) {
     return BackendAuthorizationHeaderCredentials(
-      parameter: map['parameter'] as String,
-      scheme: map['scheme'] as String,
+      parameter: (map['parameter'] as String).input(),
+      scheme: (map['scheme'] as String).input(),
     );
   }
 }

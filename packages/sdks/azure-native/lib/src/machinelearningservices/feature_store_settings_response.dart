@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compute_runtime_dto_response.dart';
 
 /// Settings for feature store type workspace.
 class FeatureStoreSettingsResponse {
   /// Compute runtime config for feature store type workspace.
-  final ComputeRuntimeDtoResponse? computeRuntime;
-  final String? offlineStoreConnectionName;
-  final String? onlineStoreConnectionName;
+  final pulumi.Input<ComputeRuntimeDtoResponse>? computeRuntime;
+  final pulumi.Input<String>? offlineStoreConnectionName;
+  final pulumi.Input<String>? onlineStoreConnectionName;
 
   /// Creates a new [FeatureStoreSettingsResponse].
   /// [computeRuntime] Compute runtime config for feature store type workspace.
@@ -21,7 +22,7 @@ class FeatureStoreSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeRuntime': ?computeRuntime == null ? null : computeRuntime!.toMap(),
+      'computeRuntime': ?pulumi.Input.mapOptionalInputValue<ComputeRuntimeDtoResponse, Map<String, dynamic>>(computeRuntime, (value) => value.toMap()),
       'offlineStoreConnectionName': ?offlineStoreConnectionName,
       'onlineStoreConnectionName': ?onlineStoreConnectionName,
     };
@@ -29,9 +30,9 @@ class FeatureStoreSettingsResponse {
 
   factory FeatureStoreSettingsResponse.fromMap(Map<String, dynamic> map) {
     return FeatureStoreSettingsResponse(
-      computeRuntime: map['computeRuntime'] == null ? null : ComputeRuntimeDtoResponse.fromMap((map['computeRuntime'] as Map).cast<String, dynamic>()),
-      offlineStoreConnectionName: map['offlineStoreConnectionName'] == null ? null : map['offlineStoreConnectionName'] as String,
-      onlineStoreConnectionName: map['onlineStoreConnectionName'] == null ? null : map['onlineStoreConnectionName'] as String,
+      computeRuntime: map['computeRuntime'] == null ? null : (ComputeRuntimeDtoResponse.fromMap((map['computeRuntime'] as Map).cast<String, dynamic>())).input(),
+      offlineStoreConnectionName: map['offlineStoreConnectionName'] == null ? null : (map['offlineStoreConnectionName'] as String).input(),
+      onlineStoreConnectionName: map['onlineStoreConnectionName'] == null ? null : (map['onlineStoreConnectionName'] as String).input(),
     );
   }
 }

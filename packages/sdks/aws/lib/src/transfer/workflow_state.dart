@@ -30,21 +30,14 @@ class WorkflowState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   WorkflowState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<WorkflowOnExceptionStep>>? onExceptionSteps,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<WorkflowStep>>? steps,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      onExceptionSteps = pulumi.Input.asOptionalInput<List<WorkflowOnExceptionStep>>(onExceptionSteps),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      steps = pulumi.Input.asOptionalInput<List<WorkflowStep>>(steps),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.onExceptionSteps,
+    this.region,
+    this.steps,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class WorkflowState {
 
   factory WorkflowState.fromMap(Map<String, dynamic> map) {
     return WorkflowState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      onExceptionSteps: map['onExceptionSteps'] == null ? null : pulumi.Output.create<List<WorkflowOnExceptionStep>>(pulumi.Input.decodeList<WorkflowOnExceptionStep>(map['onExceptionSteps'], (value) => WorkflowOnExceptionStep.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      steps: map['steps'] == null ? null : pulumi.Output.create<List<WorkflowStep>>(pulumi.Input.decodeList<WorkflowStep>(map['steps'], (value) => WorkflowStep.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      onExceptionSteps: map['onExceptionSteps'] == null ? null : (pulumi.Input.decodeList<WorkflowOnExceptionStep>(map['onExceptionSteps'], (value) => WorkflowOnExceptionStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      steps: map['steps'] == null ? null : (pulumi.Input.decodeList<WorkflowStep>(map['steps'], (value) => WorkflowStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

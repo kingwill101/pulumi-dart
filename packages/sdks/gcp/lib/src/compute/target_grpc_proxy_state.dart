@@ -58,25 +58,16 @@ class TargetGrpcProxyState {
   /// [urlMap] URL to the UrlMap resource that defines the mapping from URL to
   /// [validateForProxyless] If true, indicates that the BackendServices referenced by
   TargetGrpcProxyState({
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? selfLinkWithId,
-    pulumi.Output<String>? urlMap,
-    pulumi.Output<bool>? validateForProxyless,
-  }) :
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      selfLinkWithId = pulumi.Input.asOptionalInput<String>(selfLinkWithId),
-      urlMap = pulumi.Input.asOptionalInput<String>(urlMap),
-      validateForProxyless = pulumi.Input.asOptionalInput<bool>(validateForProxyless);
+    this.creationTimestamp,
+    this.description,
+    this.fingerprint,
+    this.name,
+    this.project,
+    this.selfLink,
+    this.selfLinkWithId,
+    this.urlMap,
+    this.validateForProxyless,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,15 +85,15 @@ class TargetGrpcProxyState {
 
   factory TargetGrpcProxyState.fromMap(Map<String, dynamic> map) {
     return TargetGrpcProxyState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      selfLinkWithId: map['selfLinkWithId'] == null ? null : pulumi.Output.create<String>(map['selfLinkWithId'] as String),
-      urlMap: map['urlMap'] == null ? null : pulumi.Output.create<String>(map['urlMap'] as String),
-      validateForProxyless: map['validateForProxyless'] == null ? null : pulumi.Output.create<bool>(map['validateForProxyless'] as bool),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId'] as String).input(),
+      urlMap: map['urlMap'] == null ? null : (map['urlMap'] as String).input(),
+      validateForProxyless: map['validateForProxyless'] == null ? null : (map['validateForProxyless'] as bool).input(),
     );
   }
 }

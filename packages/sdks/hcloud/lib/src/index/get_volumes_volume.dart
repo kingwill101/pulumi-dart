@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVolumesVolume {
-  final bool deleteProtection;
-  final int id;
-  final Map<String, String> labels;
-  final String linuxDevice;
-  final String? location;
-  final String name;
-  final int? serverId;
-  final int size;
+  final pulumi.Input<bool> deleteProtection;
+  final pulumi.Input<int> id;
+  final pulumi.Input<Map<String, String>> labels;
+  final pulumi.Input<String> linuxDevice;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String> name;
+  final pulumi.Input<int>? serverId;
+  final pulumi.Input<int> size;
 
   /// Creates a new [GetVolumesVolume].
   /// [deleteProtection] Required.
@@ -46,14 +47,14 @@ class GetVolumesVolume {
 
   factory GetVolumesVolume.fromMap(Map<String, dynamic> map) {
     return GetVolumesVolume(
-      deleteProtection: map['deleteProtection'] as bool,
-      id: map['id'] as int,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      linuxDevice: map['linuxDevice'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] as String,
-      serverId: map['serverId'] == null ? null : map['serverId'] as int,
-      size: map['size'] as int,
+      deleteProtection: (map['deleteProtection'] as bool).input(),
+      id: (map['id'] as int).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      linuxDevice: (map['linuxDevice'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      size: (map['size'] as int).input(),
     );
   }
 }

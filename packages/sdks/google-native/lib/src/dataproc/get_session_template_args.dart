@@ -16,13 +16,10 @@ class GetSessionTemplateArgs {
   /// [project] Optional.
   /// [sessionTemplateId] Required.
   GetSessionTemplateArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sessionTemplateId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sessionTemplateId = pulumi.Input.asInput<String>(sessionTemplateId);
+    required this.location,
+    this.project,
+    required this.sessionTemplateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetSessionTemplateArgs {
 
   factory GetSessionTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetSessionTemplateArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sessionTemplateId: pulumi.Output.create<String>(map['sessionTemplateId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sessionTemplateId: (map['sessionTemplateId'] as String).input(),
     );
   }
 }

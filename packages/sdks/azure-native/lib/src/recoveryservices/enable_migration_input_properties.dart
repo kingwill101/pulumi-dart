@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vmware_cbt_enable_migration_input.dart';
 
 /// Enable migration input properties.
 class EnableMigrationInputProperties {
   /// The policy Id.
-  final String policyId;
+  final pulumi.Input<String> policyId;
   /// The provider specific details.
-  final VMwareCbtEnableMigrationInput providerSpecificDetails;
+  final pulumi.Input<VMwareCbtEnableMigrationInput> providerSpecificDetails;
 
   /// Creates a new [EnableMigrationInputProperties].
   /// [policyId] The policy Id.
@@ -20,14 +21,14 @@ class EnableMigrationInputProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'policyId': policyId,
-      'providerSpecificDetails': providerSpecificDetails.toMap(),
+      'providerSpecificDetails': pulumi.Input.mapInputValue<VMwareCbtEnableMigrationInput, Map<String, dynamic>>(providerSpecificDetails, (value) => value.toMap()),
     };
   }
 
   factory EnableMigrationInputProperties.fromMap(Map<String, dynamic> map) {
     return EnableMigrationInputProperties(
-      policyId: map['policyId'] as String,
-      providerSpecificDetails: VMwareCbtEnableMigrationInput.fromMap((map['providerSpecificDetails'] as Map).cast<String, dynamic>()),
+      policyId: (map['policyId'] as String).input(),
+      providerSpecificDetails: (VMwareCbtEnableMigrationInput.fromMap((map['providerSpecificDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

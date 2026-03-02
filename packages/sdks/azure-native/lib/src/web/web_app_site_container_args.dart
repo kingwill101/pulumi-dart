@@ -55,35 +55,21 @@ class WebAppSiteContainerArgs {
   /// [userName] User Name
   /// [volumeMounts] List of volume mounts
   WebAppSiteContainerArgs({
-    pulumi.Output<AuthType>? authType,
-    pulumi.Output<String>? containerName,
-    pulumi.Output<List<EnvironmentVariable>>? environmentVariables,
-    required pulumi.Output<String> image,
-    required pulumi.Output<bool> isMain,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? passwordSecret,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? startUpCommand,
-    pulumi.Output<String>? targetPort,
-    pulumi.Output<String>? userManagedIdentityClientId,
-    pulumi.Output<String>? userName,
-    pulumi.Output<List<VolumeMount>>? volumeMounts,
-  }) :
-      authType = pulumi.Input.asOptionalInput<AuthType>(authType),
-      containerName = pulumi.Input.asOptionalInput<String>(containerName),
-      environmentVariables = pulumi.Input.asOptionalInput<List<EnvironmentVariable>>(environmentVariables),
-      image = pulumi.Input.asInput<String>(image),
-      isMain = pulumi.Input.asInput<bool>(isMain),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      passwordSecret = pulumi.Input.asOptionalInput<String>(passwordSecret),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      startUpCommand = pulumi.Input.asOptionalInput<String>(startUpCommand),
-      targetPort = pulumi.Input.asOptionalInput<String>(targetPort),
-      userManagedIdentityClientId = pulumi.Input.asOptionalInput<String>(userManagedIdentityClientId),
-      userName = pulumi.Input.asOptionalInput<String>(userName),
-      volumeMounts = pulumi.Input.asOptionalInput<List<VolumeMount>>(volumeMounts);
+    this.authType,
+    this.containerName,
+    this.environmentVariables,
+    required this.image,
+    required this.isMain,
+    this.kind,
+    required this.name,
+    this.passwordSecret,
+    required this.resourceGroupName,
+    this.startUpCommand,
+    this.targetPort,
+    this.userManagedIdentityClientId,
+    this.userName,
+    this.volumeMounts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,20 +92,20 @@ class WebAppSiteContainerArgs {
 
   factory WebAppSiteContainerArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSiteContainerArgs(
-      authType: map['authType'] == null ? null : pulumi.Output.create<AuthType>(AuthType.fromValue(map['authType'] as String)),
-      containerName: map['containerName'] == null ? null : pulumi.Output.create<String>(map['containerName'] as String),
-      environmentVariables: map['environmentVariables'] == null ? null : pulumi.Output.create<List<EnvironmentVariable>>(pulumi.Input.decodeList<EnvironmentVariable>(map['environmentVariables'], (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))),
-      image: pulumi.Output.create<String>(map['image'] as String),
-      isMain: pulumi.Output.create<bool>(map['isMain'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      passwordSecret: map['passwordSecret'] == null ? null : pulumi.Output.create<String>(map['passwordSecret'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startUpCommand: map['startUpCommand'] == null ? null : pulumi.Output.create<String>(map['startUpCommand'] as String),
-      targetPort: map['targetPort'] == null ? null : pulumi.Output.create<String>(map['targetPort'] as String),
-      userManagedIdentityClientId: map['userManagedIdentityClientId'] == null ? null : pulumi.Output.create<String>(map['userManagedIdentityClientId'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
-      volumeMounts: map['volumeMounts'] == null ? null : pulumi.Output.create<List<VolumeMount>>(pulumi.Input.decodeList<VolumeMount>(map['volumeMounts'], (value) => VolumeMount.fromMap((value as Map).cast<String, dynamic>()))),
+      authType: map['authType'] == null ? null : (AuthType.fromValue(map['authType'] as String)).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['environmentVariables'], (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: (map['image'] as String).input(),
+      isMain: (map['isMain'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      passwordSecret: map['passwordSecret'] == null ? null : (map['passwordSecret'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      startUpCommand: map['startUpCommand'] == null ? null : (map['startUpCommand'] as String).input(),
+      targetPort: map['targetPort'] == null ? null : (map['targetPort'] as String).input(),
+      userManagedIdentityClientId: map['userManagedIdentityClientId'] == null ? null : (map['userManagedIdentityClientId'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMount>(map['volumeMounts'], (value) => VolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

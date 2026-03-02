@@ -20,13 +20,10 @@ class AiLogicPromptTemplateLockArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [templateId] The ID of the prompt template.
   AiLogicPromptTemplateLockArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> templateId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      templateId = pulumi.Input.asInput<String>(templateId);
+    required this.location,
+    this.project,
+    required this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class AiLogicPromptTemplateLockArgs {
 
   factory AiLogicPromptTemplateLockArgs.fromMap(Map<String, dynamic> map) {
     return AiLogicPromptTemplateLockArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      templateId: pulumi.Output.create<String>(map['templateId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
     );
   }
 }

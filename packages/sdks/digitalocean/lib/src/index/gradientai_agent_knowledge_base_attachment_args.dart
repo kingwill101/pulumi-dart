@@ -16,11 +16,9 @@ class GradientaiAgentKnowledgeBaseAttachmentArgs {
   /// [agentUuid] A unique identifier for an agent.
   /// [knowledgeBaseUuid] A unique identifier for a knowledge base.
   GradientaiAgentKnowledgeBaseAttachmentArgs({
-    required pulumi.Output<String> agentUuid,
-    required pulumi.Output<String> knowledgeBaseUuid,
-  }) :
-      agentUuid = pulumi.Input.asInput<String>(agentUuid),
-      knowledgeBaseUuid = pulumi.Input.asInput<String>(knowledgeBaseUuid);
+    required this.agentUuid,
+    required this.knowledgeBaseUuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GradientaiAgentKnowledgeBaseAttachmentArgs {
 
   factory GradientaiAgentKnowledgeBaseAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GradientaiAgentKnowledgeBaseAttachmentArgs(
-      agentUuid: pulumi.Output.create<String>(map['agentUuid'] as String),
-      knowledgeBaseUuid: pulumi.Output.create<String>(map['knowledgeBaseUuid'] as String),
+      agentUuid: (map['agentUuid'] as String).input(),
+      knowledgeBaseUuid: (map['knowledgeBaseUuid'] as String).input(),
     );
   }
 }

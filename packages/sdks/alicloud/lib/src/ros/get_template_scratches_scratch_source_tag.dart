@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTemplateScratchesScratchSourceTag {
   /// Source label.
-  final Map<String, String> resourceTags;
+  final pulumi.Input<Map<String, String>> resourceTags;
   /// Source resource type filter list.
-  final List<String> resourceTypeFilters;
+  final pulumi.Input<List<String>> resourceTypeFilters;
 
   /// Creates a new [GetTemplateScratchesScratchSourceTag].
   /// [resourceTags] Source label.
@@ -24,8 +25,8 @@ class GetTemplateScratchesScratchSourceTag {
 
   factory GetTemplateScratchesScratchSourceTag.fromMap(Map<String, dynamic> map) {
     return GetTemplateScratchesScratchSourceTag(
-      resourceTags: (map['resourceTags'] as Map).cast<String, String>(),
-      resourceTypeFilters: (map['resourceTypeFilters'] as List).cast<String>(),
+      resourceTags: ((map['resourceTags'] as Map).cast<String, String>()).input(),
+      resourceTypeFilters: ((map['resourceTypeFilters'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A reference to a policy pack within a policy group.
 class PolicyGroupPolicyPackReference {
   /// Optional configuration for the policy pack.
-  final Map<String, dynamic>? config;
+  final pulumi.Input<Map<String, dynamic>>? config;
   /// The display name of the policy pack.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The name of the policy pack.
-  final String name;
+  final pulumi.Input<String> name;
   /// The version of the policy pack.
-  final double? version;
+  final pulumi.Input<double>? version;
   /// The version tag of the policy pack.
-  final String? versionTag;
+  final pulumi.Input<String>? versionTag;
 
   /// Creates a new [PolicyGroupPolicyPackReference].
   /// [config] Optional configuration for the policy pack.
@@ -40,11 +41,11 @@ class PolicyGroupPolicyPackReference {
 
   factory PolicyGroupPolicyPackReference.fromMap(Map<String, dynamic> map) {
     return PolicyGroupPolicyPackReference(
-      config: map['config'] == null ? null : (map['config'] as Map).cast<String, dynamic>(),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      name: map['name'] as String,
-      version: map['version'] == null ? null : map['version'] as double,
-      versionTag: map['versionTag'] == null ? null : map['versionTag'] as String,
+      config: map['config'] == null ? null : ((map['config'] as Map).cast<String, dynamic>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: (map['name'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as double).input(),
+      versionTag: map['versionTag'] == null ? null : (map['versionTag'] as String).input(),
     );
   }
 }

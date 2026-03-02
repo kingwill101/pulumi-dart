@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserHierarchyGroupHierarchyPathLevelFife {
   /// The Amazon Resource Name (ARN) of the hierarchy group.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// The identifier of the hierarchy group.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the user hierarchy group. Must not be more than 100 characters.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [UserHierarchyGroupHierarchyPathLevelFife].
   /// [arn] The Amazon Resource Name (ARN) of the hierarchy group.
@@ -29,9 +30,9 @@ class UserHierarchyGroupHierarchyPathLevelFife {
 
   factory UserHierarchyGroupHierarchyPathLevelFife.fromMap(Map<String, dynamic> map) {
     return UserHierarchyGroupHierarchyPathLevelFife(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

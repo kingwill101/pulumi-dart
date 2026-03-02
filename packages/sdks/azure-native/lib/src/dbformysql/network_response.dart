@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network related properties of a server
 class NetworkResponse {
   /// Delegated subnet resource id used to setup vnet for a server.
-  final String? delegatedSubnetResourceId;
+  final pulumi.Input<String>? delegatedSubnetResourceId;
   /// Private DNS zone resource id.
-  final String? privateDnsZoneResourceId;
+  final pulumi.Input<String>? privateDnsZoneResourceId;
   /// Whether or not public network access is allowed for this server. Value is 'Disabled' when server has VNet integration.
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
 
   /// Creates a new [NetworkResponse].
   /// [delegatedSubnetResourceId] Delegated subnet resource id used to setup vnet for a server.
@@ -30,9 +31,9 @@ class NetworkResponse {
 
   factory NetworkResponse.fromMap(Map<String, dynamic> map) {
     return NetworkResponse(
-      delegatedSubnetResourceId: map['delegatedSubnetResourceId'] == null ? null : map['delegatedSubnetResourceId'] as String,
-      privateDnsZoneResourceId: map['privateDnsZoneResourceId'] == null ? null : map['privateDnsZoneResourceId'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
+      delegatedSubnetResourceId: map['delegatedSubnetResourceId'] == null ? null : (map['delegatedSubnetResourceId'] as String).input(),
+      privateDnsZoneResourceId: map['privateDnsZoneResourceId'] == null ? null : (map['privateDnsZoneResourceId'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
     );
   }
 }

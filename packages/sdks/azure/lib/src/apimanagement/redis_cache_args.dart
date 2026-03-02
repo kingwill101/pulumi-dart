@@ -28,19 +28,13 @@ class RedisCacheArgs {
   /// [name] The name which should be used for this API Management Redis Cache. Changing this forces a new API Management Redis Cache to be created.
   /// [redisCacheId] The resource ID of the Cache for Redis.
   RedisCacheArgs({
-    required pulumi.Output<String> apiManagementId,
-    pulumi.Output<String>? cacheLocation,
-    required pulumi.Output<String> connectionString,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? redisCacheId,
-  }) :
-      apiManagementId = pulumi.Input.asInput<String>(apiManagementId),
-      cacheLocation = pulumi.Input.asOptionalInput<String>(cacheLocation),
-      connectionString = pulumi.Input.asInput<String>(connectionString),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      redisCacheId = pulumi.Input.asOptionalInput<String>(redisCacheId);
+    required this.apiManagementId,
+    this.cacheLocation,
+    required this.connectionString,
+    this.description,
+    this.name,
+    this.redisCacheId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class RedisCacheArgs {
 
   factory RedisCacheArgs.fromMap(Map<String, dynamic> map) {
     return RedisCacheArgs(
-      apiManagementId: pulumi.Output.create<String>(map['apiManagementId'] as String),
-      cacheLocation: map['cacheLocation'] == null ? null : pulumi.Output.create<String>(map['cacheLocation'] as String),
-      connectionString: pulumi.Output.create<String>(map['connectionString'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      redisCacheId: map['redisCacheId'] == null ? null : pulumi.Output.create<String>(map['redisCacheId'] as String),
+      apiManagementId: (map['apiManagementId'] as String).input(),
+      cacheLocation: map['cacheLocation'] == null ? null : (map['cacheLocation'] as String).input(),
+      connectionString: (map['connectionString'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      redisCacheId: map['redisCacheId'] == null ? null : (map['redisCacheId'] as String).input(),
     );
   }
 }

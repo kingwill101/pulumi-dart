@@ -32,21 +32,14 @@ class VolumeArgs {
   /// [tags] Resource tags.
   /// [volumeResourceName] The identity of the volume.
   VolumeArgs({
-    pulumi.Output<VolumeProviderParametersAzureFile>? azureFileParameters,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> provider,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? volumeResourceName,
-  }) :
-      azureFileParameters = pulumi.Input.asOptionalInput<VolumeProviderParametersAzureFile>(azureFileParameters),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      provider = pulumi.Input.asInput<String>(provider),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      volumeResourceName = pulumi.Input.asOptionalInput<String>(volumeResourceName);
+    this.azureFileParameters,
+    this.description,
+    this.location,
+    required this.provider,
+    required this.resourceGroupName,
+    this.tags,
+    this.volumeResourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      azureFileParameters: map['azureFileParameters'] == null ? null : pulumi.Output.create<VolumeProviderParametersAzureFile>(VolumeProviderParametersAzureFile.fromMap((map['azureFileParameters'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      provider: pulumi.Output.create<String>(map['provider'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      volumeResourceName: map['volumeResourceName'] == null ? null : pulumi.Output.create<String>(map['volumeResourceName'] as String),
+      azureFileParameters: map['azureFileParameters'] == null ? null : (VolumeProviderParametersAzureFile.fromMap((map['azureFileParameters'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      provider: (map['provider'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      volumeResourceName: map['volumeResourceName'] == null ? null : (map['volumeResourceName'] as String).input(),
     );
   }
 }

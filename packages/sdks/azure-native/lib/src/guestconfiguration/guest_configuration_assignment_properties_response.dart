@@ -8,29 +8,29 @@ import 'vmssvminfo_response.dart';
 /// Guest configuration assignment properties.
 class GuestConfigurationAssignmentPropertiesResponse {
   /// Combined hash of the configuration package and parameters.
-  final String assignmentHash;
+  final pulumi.Input<String> assignmentHash;
   /// A value indicating compliance status of the machine for the assigned guest configuration.
-  final String complianceStatus;
+  final pulumi.Input<String> complianceStatus;
   /// The source which initiated the guest configuration assignment. Ex: Azure Policy
-  final String? context;
+  final pulumi.Input<String>? context;
   /// The guest configuration to assign.
-  final GuestConfigurationNavigationResponse? guestConfiguration;
+  final pulumi.Input<GuestConfigurationNavigationResponse>? guestConfiguration;
   /// Date and time when last compliance status was checked.
-  final String lastComplianceStatusChecked;
+  final pulumi.Input<String> lastComplianceStatusChecked;
   /// Last reported guest configuration assignment report.
-  final AssignmentReportResponse? latestAssignmentReport;
+  final pulumi.Input<AssignmentReportResponse>? latestAssignmentReport;
   /// Id of the latest report for the guest configuration assignment.
-  final String latestReportId;
+  final pulumi.Input<String> latestReportId;
   /// parameter hash for the guest configuration assignment.
-  final String parameterHash;
+  final pulumi.Input<String> parameterHash;
   /// The provisioning state, which only appears in the response.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Type of the resource - VMSS / VM
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// VM resource Id.
-  final String targetResourceId;
+  final pulumi.Input<String> targetResourceId;
   /// The list of VM Compliance data for VMSS
-  final List<VMSSVMInfoResponse>? vmssVMList;
+  final pulumi.Input<List<VMSSVMInfoResponse>>? vmssVMList;
 
   /// Creates a new [GuestConfigurationAssignmentPropertiesResponse].
   /// [assignmentHash] Combined hash of the configuration package and parameters.
@@ -65,32 +65,32 @@ class GuestConfigurationAssignmentPropertiesResponse {
       'assignmentHash': assignmentHash,
       'complianceStatus': complianceStatus,
       'context': ?context,
-      'guestConfiguration': ?guestConfiguration == null ? null : guestConfiguration!.toMap(),
+      'guestConfiguration': ?pulumi.Input.mapOptionalInputValue<GuestConfigurationNavigationResponse, Map<String, dynamic>>(guestConfiguration, (value) => value.toMap()),
       'lastComplianceStatusChecked': lastComplianceStatusChecked,
-      'latestAssignmentReport': ?latestAssignmentReport == null ? null : latestAssignmentReport!.toMap(),
+      'latestAssignmentReport': ?pulumi.Input.mapOptionalInputValue<AssignmentReportResponse, Map<String, dynamic>>(latestAssignmentReport, (value) => value.toMap()),
       'latestReportId': latestReportId,
       'parameterHash': parameterHash,
       'provisioningState': provisioningState,
       'resourceType': resourceType,
       'targetResourceId': targetResourceId,
-      'vmssVMList': ?vmssVMList == null ? null : pulumi.Input.encodeList<VMSSVMInfoResponse, Map<String, dynamic>>(vmssVMList!, (value) => value.toMap()),
+      'vmssVMList': ?pulumi.Input.mapOptionalInputValue<List<VMSSVMInfoResponse>, List<Map<String, dynamic>>>(vmssVMList, (value) => pulumi.Input.encodeList<VMSSVMInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GuestConfigurationAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GuestConfigurationAssignmentPropertiesResponse(
-      assignmentHash: map['assignmentHash'] as String,
-      complianceStatus: map['complianceStatus'] as String,
-      context: map['context'] == null ? null : map['context'] as String,
-      guestConfiguration: map['guestConfiguration'] == null ? null : GuestConfigurationNavigationResponse.fromMap((map['guestConfiguration'] as Map).cast<String, dynamic>()),
-      lastComplianceStatusChecked: map['lastComplianceStatusChecked'] as String,
-      latestAssignmentReport: map['latestAssignmentReport'] == null ? null : AssignmentReportResponse.fromMap((map['latestAssignmentReport'] as Map).cast<String, dynamic>()),
-      latestReportId: map['latestReportId'] as String,
-      parameterHash: map['parameterHash'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceType: map['resourceType'] as String,
-      targetResourceId: map['targetResourceId'] as String,
-      vmssVMList: map['vmssVMList'] == null ? null : pulumi.Input.decodeList<VMSSVMInfoResponse>(map['vmssVMList'], (value) => VMSSVMInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      assignmentHash: (map['assignmentHash'] as String).input(),
+      complianceStatus: (map['complianceStatus'] as String).input(),
+      context: map['context'] == null ? null : (map['context'] as String).input(),
+      guestConfiguration: map['guestConfiguration'] == null ? null : (GuestConfigurationNavigationResponse.fromMap((map['guestConfiguration'] as Map).cast<String, dynamic>())).input(),
+      lastComplianceStatusChecked: (map['lastComplianceStatusChecked'] as String).input(),
+      latestAssignmentReport: map['latestAssignmentReport'] == null ? null : (AssignmentReportResponse.fromMap((map['latestAssignmentReport'] as Map).cast<String, dynamic>())).input(),
+      latestReportId: (map['latestReportId'] as String).input(),
+      parameterHash: (map['parameterHash'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
+      vmssVMList: map['vmssVMList'] == null ? null : (pulumi.Input.decodeList<VMSSVMInfoResponse>(map['vmssVMList'], (value) => VMSSVMInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

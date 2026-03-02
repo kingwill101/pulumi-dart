@@ -28,19 +28,13 @@ class SharedDirectoryState {
   /// [sharedDirectoryId] Identifier of the directory that is stored in the directory consumer account that corresponds to the shared directory in the owner account.
   /// [target] Identifier for the directory consumer account with whom the directory is to be shared. See below.
   SharedDirectoryState({
-    pulumi.Output<String>? directoryId,
-    pulumi.Output<String>? method,
-    pulumi.Output<String>? notes,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sharedDirectoryId,
-    pulumi.Output<SharedDirectoryTarget>? target,
-  }) :
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      method = pulumi.Input.asOptionalInput<String>(method),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sharedDirectoryId = pulumi.Input.asOptionalInput<String>(sharedDirectoryId),
-      target = pulumi.Input.asOptionalInput<SharedDirectoryTarget>(target);
+    this.directoryId,
+    this.method,
+    this.notes,
+    this.region,
+    this.sharedDirectoryId,
+    this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SharedDirectoryState {
 
   factory SharedDirectoryState.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryState(
-      directoryId: map['directoryId'] == null ? null : pulumi.Output.create<String>(map['directoryId'] as String),
-      method: map['method'] == null ? null : pulumi.Output.create<String>(map['method'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sharedDirectoryId: map['sharedDirectoryId'] == null ? null : pulumi.Output.create<String>(map['sharedDirectoryId'] as String),
-      target: map['target'] == null ? null : pulumi.Output.create<SharedDirectoryTarget>(SharedDirectoryTarget.fromMap((map['target'] as Map).cast<String, dynamic>())),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sharedDirectoryId: map['sharedDirectoryId'] == null ? null : (map['sharedDirectoryId'] as String).input(),
+      target: map['target'] == null ? null : (SharedDirectoryTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

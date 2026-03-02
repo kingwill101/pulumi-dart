@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DeploymentCondition describes the state of a deployment at a certain point.
 class DeploymentConditionPatch {
   /// Last time the condition transitioned from one status to another.
-  final String? lastTransitionTime;
+  final pulumi.Input<String>? lastTransitionTime;
   /// The last time this condition was updated.
-  final String? lastUpdateTime;
+  final pulumi.Input<String>? lastUpdateTime;
   /// A human readable message indicating details about the transition.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// The reason for the condition's last transition.
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// Status of the condition, one of True, False, Unknown.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Type of deployment condition.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DeploymentConditionPatch].
   /// [lastTransitionTime] Last time the condition transitioned from one status to another.
@@ -45,12 +46,12 @@ class DeploymentConditionPatch {
 
   factory DeploymentConditionPatch.fromMap(Map<String, dynamic> map) {
     return DeploymentConditionPatch(
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : map['lastTransitionTime'] as String,
-      lastUpdateTime: map['lastUpdateTime'] == null ? null : map['lastUpdateTime'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime'] as String).input(),
+      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

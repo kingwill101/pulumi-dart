@@ -19,13 +19,10 @@ class LogicAppArgs {
   /// [logicAppName] Name of the Logic App, the extension resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   LogicAppArgs({
-    required pulumi.Output<String> containerAppName,
-    pulumi.Output<String>? logicAppName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      containerAppName = pulumi.Input.asInput<String>(containerAppName),
-      logicAppName = pulumi.Input.asOptionalInput<String>(logicAppName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.containerAppName,
+    this.logicAppName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LogicAppArgs {
 
   factory LogicAppArgs.fromMap(Map<String, dynamic> map) {
     return LogicAppArgs(
-      containerAppName: pulumi.Output.create<String>(map['containerAppName'] as String),
-      logicAppName: map['logicAppName'] == null ? null : pulumi.Output.create<String>(map['logicAppName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      containerAppName: (map['containerAppName'] as String).input(),
+      logicAppName: map['logicAppName'] == null ? null : (map['logicAppName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

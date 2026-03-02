@@ -24,15 +24,11 @@ class AccessBoundaryPolicyArgs {
   /// [parent] The attachment point is identified by its URL-encoded full resource name.
   /// [rules] Rules to be applied.
   AccessBoundaryPolicyArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<List<AccessBoundaryPolicyRule>> rules,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent),
-      rules = pulumi.Input.asInput<List<AccessBoundaryPolicyRule>>(rules);
+    this.displayName,
+    this.name,
+    required this.parent,
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class AccessBoundaryPolicyArgs {
 
   factory AccessBoundaryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessBoundaryPolicyArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      rules: pulumi.Output.create<List<AccessBoundaryPolicyRule>>(pulumi.Input.decodeList<AccessBoundaryPolicyRule>(map['rules'], (value) => AccessBoundaryPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      rules: (pulumi.Input.decodeList<AccessBoundaryPolicyRule>(map['rules'], (value) => AccessBoundaryPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

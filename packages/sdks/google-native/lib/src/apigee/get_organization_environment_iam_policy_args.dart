@@ -16,13 +16,10 @@ class GetOrganizationEnvironmentIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [organizationId] Required.
   GetOrganizationEnvironmentIamPolicyArgs({
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    required pulumi.Output<String> organizationId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.environmentId,
+    this.optionsRequestedPolicyVersion,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetOrganizationEnvironmentIamPolicyArgs {
 
   factory GetOrganizationEnvironmentIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationEnvironmentIamPolicyArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

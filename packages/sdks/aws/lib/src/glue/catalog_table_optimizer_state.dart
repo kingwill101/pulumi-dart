@@ -26,19 +26,13 @@ class CatalogTableOptimizerState {
   /// [tableName] The name of the table.
   /// [type] The type of table optimizer. Valid values are `compaction`, `retention`, and `orphan_file_deletion`.
   CatalogTableOptimizerState({
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<CatalogTableOptimizerConfiguration>? configuration,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tableName,
-    pulumi.Output<String>? type,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      configuration = pulumi.Input.asOptionalInput<CatalogTableOptimizerConfiguration>(configuration),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.catalogId,
+    this.configuration,
+    this.databaseName,
+    this.region,
+    this.tableName,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class CatalogTableOptimizerState {
 
   factory CatalogTableOptimizerState.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerState(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<CatalogTableOptimizerConfiguration>(CatalogTableOptimizerConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      configuration: map['configuration'] == null ? null : (CatalogTableOptimizerConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

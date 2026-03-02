@@ -19,13 +19,10 @@ class ListStorageAccountKeysArgs {
   /// [expand] Specifies type of the key to be listed. Possible value is kerb.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   ListStorageAccountKeysArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.expand,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListStorageAccountKeysArgs {
 
   factory ListStorageAccountKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListStorageAccountKeysArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -25,15 +25,11 @@ class RouterRouteState {
   /// [region] The region in which to obtain the V2 networking client.
   /// [routerId] ID of the router this routing entry belongs to. Changing
   RouterRouteState({
-    pulumi.Output<String>? destinationCidr,
-    pulumi.Output<String>? nextHop,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routerId,
-  }) :
-      destinationCidr = pulumi.Input.asOptionalInput<String>(destinationCidr),
-      nextHop = pulumi.Input.asOptionalInput<String>(nextHop),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routerId = pulumi.Input.asOptionalInput<String>(routerId);
+    this.destinationCidr,
+    this.nextHop,
+    this.region,
+    this.routerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class RouterRouteState {
 
   factory RouterRouteState.fromMap(Map<String, dynamic> map) {
     return RouterRouteState(
-      destinationCidr: map['destinationCidr'] == null ? null : pulumi.Output.create<String>(map['destinationCidr'] as String),
-      nextHop: map['nextHop'] == null ? null : pulumi.Output.create<String>(map['nextHop'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
+      destinationCidr: map['destinationCidr'] == null ? null : (map['destinationCidr'] as String).input(),
+      nextHop: map['nextHop'] == null ? null : (map['nextHop'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
     );
   }
 }

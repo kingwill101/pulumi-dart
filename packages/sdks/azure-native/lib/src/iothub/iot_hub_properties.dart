@@ -14,45 +14,45 @@ import 'storage_endpoint_properties.dart';
 /// The properties of an IoT hub.
 class IotHubProperties {
   /// List of allowed FQDNs(Fully Qualified Domain Name) for egress from Iot Hub.
-  final List<String>? allowedFqdnList;
+  final pulumi.Input<List<String>>? allowedFqdnList;
   /// The shared access policies you can use to secure a connection to the IoT hub.
-  final List<SharedAccessSignatureAuthorizationRule>? authorizationPolicies;
+  final pulumi.Input<List<SharedAccessSignatureAuthorizationRule>>? authorizationPolicies;
   /// The IoT hub cloud-to-device messaging properties.
-  final CloudToDeviceProperties? cloudToDevice;
+  final pulumi.Input<CloudToDeviceProperties>? cloudToDevice;
   /// IoT hub comments.
-  final String? comments;
+  final pulumi.Input<String>? comments;
   /// If true, all device(including Edge devices but excluding modules) scoped SAS keys cannot be used for authentication.
-  final bool? disableDeviceSAS;
+  final pulumi.Input<bool>? disableDeviceSAS;
   /// If true, SAS tokens with Iot hub scoped SAS keys cannot be used for authentication.
-  final bool? disableLocalAuth;
+  final pulumi.Input<bool>? disableLocalAuth;
   /// If true, all module scoped SAS keys cannot be used for authentication.
-  final bool? disableModuleSAS;
+  final pulumi.Input<bool>? disableModuleSAS;
   /// This property when set to true, will enable data residency, thus, disabling disaster recovery.
-  final bool? enableDataResidency;
+  final pulumi.Input<bool>? enableDataResidency;
   /// If True, file upload notifications are enabled.
-  final bool? enableFileUploadNotifications;
+  final pulumi.Input<bool>? enableFileUploadNotifications;
   /// The Event Hub-compatible endpoint properties. The only possible keys to this dictionary is events. This key has to be present in the dictionary while making create or update calls for the IoT hub.
-  final Map<String, EventHubProperties>? eventHubEndpoints;
+  final pulumi.Input<Map<String, EventHubProperties>>? eventHubEndpoints;
   /// The capabilities and features enabled for the IoT hub.
-  final String? features;
+  final pulumi.Input<String>? features;
   /// The IP filter rules.
-  final List<IpFilterRule>? ipFilterRules;
+  final pulumi.Input<List<IpFilterRule>>? ipFilterRules;
   /// The messaging endpoint properties for the file upload notification queue.
-  final Map<String, MessagingEndpointProperties>? messagingEndpoints;
+  final pulumi.Input<Map<String, MessagingEndpointProperties>>? messagingEndpoints;
   /// Specifies the minimum TLS version to support for this hub. Can be set to "1.2" to have clients that use a TLS version below 1.2 to be rejected.
-  final String? minTlsVersion;
+  final pulumi.Input<String>? minTlsVersion;
   /// Network Rule Set Properties of IotHub
-  final NetworkRuleSetProperties? networkRuleSets;
+  final pulumi.Input<NetworkRuleSetProperties>? networkRuleSets;
   /// Private endpoint connections created on this IotHub
-  final List<PrivateEndpointConnection>? privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnection>>? privateEndpointConnections;
   /// Whether requests from Public Network are allowed
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
   /// If true, egress from IotHub will be restricted to only the allowed FQDNs that are configured via allowedFqdnList.
-  final bool? restrictOutboundNetworkAccess;
+  final pulumi.Input<bool>? restrictOutboundNetworkAccess;
   /// The routing related properties of the IoT hub. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging
-  final RoutingProperties? routing;
+  final pulumi.Input<RoutingProperties>? routing;
   /// The list of Azure Storage endpoints where you can upload files. Currently you can configure only one Azure Storage account and that MUST have its key as $default. Specifying more than one storage account causes an error to be thrown. Not specifying a value for this property when the enableFileUploadNotifications property is set to True, causes an error to be thrown.
-  final Map<String, StorageEndpointProperties>? storageEndpoints;
+  final pulumi.Input<Map<String, StorageEndpointProperties>>? storageEndpoints;
 
   /// Creates a new [IotHubProperties].
   /// [allowedFqdnList] List of allowed FQDNs(Fully Qualified Domain Name) for egress from Iot Hub.
@@ -101,50 +101,50 @@ class IotHubProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedFqdnList': ?allowedFqdnList,
-      'authorizationPolicies': ?authorizationPolicies == null ? null : pulumi.Input.encodeList<SharedAccessSignatureAuthorizationRule, Map<String, dynamic>>(authorizationPolicies!, (value) => value.toMap()),
-      'cloudToDevice': ?cloudToDevice == null ? null : cloudToDevice!.toMap(),
+      'authorizationPolicies': ?pulumi.Input.mapOptionalInputValue<List<SharedAccessSignatureAuthorizationRule>, List<Map<String, dynamic>>>(authorizationPolicies, (value) => pulumi.Input.encodeList<SharedAccessSignatureAuthorizationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cloudToDevice': ?pulumi.Input.mapOptionalInputValue<CloudToDeviceProperties, Map<String, dynamic>>(cloudToDevice, (value) => value.toMap()),
       'comments': ?comments,
       'disableDeviceSAS': ?disableDeviceSAS,
       'disableLocalAuth': ?disableLocalAuth,
       'disableModuleSAS': ?disableModuleSAS,
       'enableDataResidency': ?enableDataResidency,
       'enableFileUploadNotifications': ?enableFileUploadNotifications,
-      'eventHubEndpoints': ?eventHubEndpoints == null ? null : pulumi.Input.encodeMapValues<EventHubProperties, Map<String, dynamic>>(eventHubEndpoints!, (value) => value.toMap()),
+      'eventHubEndpoints': ?pulumi.Input.mapOptionalInputValue<Map<String, EventHubProperties>, Map<String, Map<String, dynamic>>>(eventHubEndpoints, (value) => pulumi.Input.encodeMapValues<EventHubProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
       'features': ?features,
-      'ipFilterRules': ?ipFilterRules == null ? null : pulumi.Input.encodeList<IpFilterRule, Map<String, dynamic>>(ipFilterRules!, (value) => value.toMap()),
-      'messagingEndpoints': ?messagingEndpoints == null ? null : pulumi.Input.encodeMapValues<MessagingEndpointProperties, Map<String, dynamic>>(messagingEndpoints!, (value) => value.toMap()),
+      'ipFilterRules': ?pulumi.Input.mapOptionalInputValue<List<IpFilterRule>, List<Map<String, dynamic>>>(ipFilterRules, (value) => pulumi.Input.encodeList<IpFilterRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'messagingEndpoints': ?pulumi.Input.mapOptionalInputValue<Map<String, MessagingEndpointProperties>, Map<String, Map<String, dynamic>>>(messagingEndpoints, (value) => pulumi.Input.encodeMapValues<MessagingEndpointProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
       'minTlsVersion': ?minTlsVersion,
-      'networkRuleSets': ?networkRuleSets == null ? null : networkRuleSets!.toMap(),
-      'privateEndpointConnections': ?privateEndpointConnections == null ? null : pulumi.Input.encodeList<PrivateEndpointConnection, Map<String, dynamic>>(privateEndpointConnections!, (value) => value.toMap()),
+      'networkRuleSets': ?pulumi.Input.mapOptionalInputValue<NetworkRuleSetProperties, Map<String, dynamic>>(networkRuleSets, (value) => value.toMap()),
+      'privateEndpointConnections': ?pulumi.Input.mapOptionalInputValue<List<PrivateEndpointConnection>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
       'publicNetworkAccess': ?publicNetworkAccess,
       'restrictOutboundNetworkAccess': ?restrictOutboundNetworkAccess,
-      'routing': ?routing == null ? null : routing!.toMap(),
-      'storageEndpoints': ?storageEndpoints == null ? null : pulumi.Input.encodeMapValues<StorageEndpointProperties, Map<String, dynamic>>(storageEndpoints!, (value) => value.toMap()),
+      'routing': ?pulumi.Input.mapOptionalInputValue<RoutingProperties, Map<String, dynamic>>(routing, (value) => value.toMap()),
+      'storageEndpoints': ?pulumi.Input.mapOptionalInputValue<Map<String, StorageEndpointProperties>, Map<String, Map<String, dynamic>>>(storageEndpoints, (value) => pulumi.Input.encodeMapValues<StorageEndpointProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory IotHubProperties.fromMap(Map<String, dynamic> map) {
     return IotHubProperties(
-      allowedFqdnList: map['allowedFqdnList'] == null ? null : (map['allowedFqdnList'] as List).cast<String>(),
-      authorizationPolicies: map['authorizationPolicies'] == null ? null : pulumi.Input.decodeList<SharedAccessSignatureAuthorizationRule>(map['authorizationPolicies'], (value) => SharedAccessSignatureAuthorizationRule.fromMap((value as Map).cast<String, dynamic>())),
-      cloudToDevice: map['cloudToDevice'] == null ? null : CloudToDeviceProperties.fromMap((map['cloudToDevice'] as Map).cast<String, dynamic>()),
-      comments: map['comments'] == null ? null : map['comments'] as String,
-      disableDeviceSAS: map['disableDeviceSAS'] == null ? null : map['disableDeviceSAS'] as bool,
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : map['disableLocalAuth'] as bool,
-      disableModuleSAS: map['disableModuleSAS'] == null ? null : map['disableModuleSAS'] as bool,
-      enableDataResidency: map['enableDataResidency'] == null ? null : map['enableDataResidency'] as bool,
-      enableFileUploadNotifications: map['enableFileUploadNotifications'] == null ? null : map['enableFileUploadNotifications'] as bool,
-      eventHubEndpoints: map['eventHubEndpoints'] == null ? null : pulumi.Input.decodeMapValues<EventHubProperties>(map['eventHubEndpoints'], (value) => EventHubProperties.fromMap((value as Map).cast<String, dynamic>())),
-      features: map['features'] == null ? null : map['features'] as String,
-      ipFilterRules: map['ipFilterRules'] == null ? null : pulumi.Input.decodeList<IpFilterRule>(map['ipFilterRules'], (value) => IpFilterRule.fromMap((value as Map).cast<String, dynamic>())),
-      messagingEndpoints: map['messagingEndpoints'] == null ? null : pulumi.Input.decodeMapValues<MessagingEndpointProperties>(map['messagingEndpoints'], (value) => MessagingEndpointProperties.fromMap((value as Map).cast<String, dynamic>())),
-      minTlsVersion: map['minTlsVersion'] == null ? null : map['minTlsVersion'] as String,
-      networkRuleSets: map['networkRuleSets'] == null ? null : NetworkRuleSetProperties.fromMap((map['networkRuleSets'] as Map).cast<String, dynamic>()),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : pulumi.Input.decodeList<PrivateEndpointConnection>(map['privateEndpointConnections'], (value) => PrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>())),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
-      restrictOutboundNetworkAccess: map['restrictOutboundNetworkAccess'] == null ? null : map['restrictOutboundNetworkAccess'] as bool,
-      routing: map['routing'] == null ? null : RoutingProperties.fromMap((map['routing'] as Map).cast<String, dynamic>()),
-      storageEndpoints: map['storageEndpoints'] == null ? null : pulumi.Input.decodeMapValues<StorageEndpointProperties>(map['storageEndpoints'], (value) => StorageEndpointProperties.fromMap((value as Map).cast<String, dynamic>())),
+      allowedFqdnList: map['allowedFqdnList'] == null ? null : ((map['allowedFqdnList'] as List).cast<String>()).input(),
+      authorizationPolicies: map['authorizationPolicies'] == null ? null : (pulumi.Input.decodeList<SharedAccessSignatureAuthorizationRule>(map['authorizationPolicies'], (value) => SharedAccessSignatureAuthorizationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudToDevice: map['cloudToDevice'] == null ? null : (CloudToDeviceProperties.fromMap((map['cloudToDevice'] as Map).cast<String, dynamic>())).input(),
+      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
+      disableDeviceSAS: map['disableDeviceSAS'] == null ? null : (map['disableDeviceSAS'] as bool).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
+      disableModuleSAS: map['disableModuleSAS'] == null ? null : (map['disableModuleSAS'] as bool).input(),
+      enableDataResidency: map['enableDataResidency'] == null ? null : (map['enableDataResidency'] as bool).input(),
+      enableFileUploadNotifications: map['enableFileUploadNotifications'] == null ? null : (map['enableFileUploadNotifications'] as bool).input(),
+      eventHubEndpoints: map['eventHubEndpoints'] == null ? null : (pulumi.Input.decodeMapValues<EventHubProperties>(map['eventHubEndpoints'], (value) => EventHubProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      features: map['features'] == null ? null : (map['features'] as String).input(),
+      ipFilterRules: map['ipFilterRules'] == null ? null : (pulumi.Input.decodeList<IpFilterRule>(map['ipFilterRules'], (value) => IpFilterRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      messagingEndpoints: map['messagingEndpoints'] == null ? null : (pulumi.Input.decodeMapValues<MessagingEndpointProperties>(map['messagingEndpoints'], (value) => MessagingEndpointProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion'] as String).input(),
+      networkRuleSets: map['networkRuleSets'] == null ? null : (NetworkRuleSetProperties.fromMap((map['networkRuleSets'] as Map).cast<String, dynamic>())).input(),
+      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : (pulumi.Input.decodeList<PrivateEndpointConnection>(map['privateEndpointConnections'], (value) => PrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      restrictOutboundNetworkAccess: map['restrictOutboundNetworkAccess'] == null ? null : (map['restrictOutboundNetworkAccess'] as bool).input(),
+      routing: map['routing'] == null ? null : (RoutingProperties.fromMap((map['routing'] as Map).cast<String, dynamic>())).input(),
+      storageEndpoints: map['storageEndpoints'] == null ? null : (pulumi.Input.decodeMapValues<StorageEndpointProperties>(map['storageEndpoints'], (value) => StorageEndpointProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

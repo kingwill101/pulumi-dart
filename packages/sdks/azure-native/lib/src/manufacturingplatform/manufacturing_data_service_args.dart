@@ -34,21 +34,14 @@ class ManufacturingDataServiceArgs {
   /// [sku] The SKU (Stock Keeping Unit) assigned to this resource.
   /// [tags] Resource tags.
   ManufacturingDataServiceArgs({
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? mdsResourceName,
-    pulumi.Output<MdsResourceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mdsResourceName = pulumi.Input.asOptionalInput<String>(mdsResourceName),
-      properties = pulumi.Input.asOptionalInput<MdsResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.identity,
+    this.location,
+    this.mdsResourceName,
+    this.properties,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class ManufacturingDataServiceArgs {
 
   factory ManufacturingDataServiceArgs.fromMap(Map<String, dynamic> map) {
     return ManufacturingDataServiceArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mdsResourceName: map['mdsResourceName'] == null ? null : pulumi.Output.create<String>(map['mdsResourceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<MdsResourceProperties>(MdsResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mdsResourceName: map['mdsResourceName'] == null ? null : (map['mdsResourceName'] as String).input(),
+      properties: map['properties'] == null ? null : (MdsResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

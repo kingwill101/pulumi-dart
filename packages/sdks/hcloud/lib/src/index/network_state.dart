@@ -22,17 +22,12 @@ class NetworkState {
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [name] Name of the Network to create (must be unique per project).
   NetworkState({
-    pulumi.Output<bool>? deleteProtection,
-    pulumi.Output<bool>? exposeRoutesToVswitch,
-    pulumi.Output<String>? ipRange,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-  }) :
-      deleteProtection = pulumi.Input.asOptionalInput<bool>(deleteProtection),
-      exposeRoutesToVswitch = pulumi.Input.asOptionalInput<bool>(exposeRoutesToVswitch),
-      ipRange = pulumi.Input.asOptionalInput<String>(ipRange),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.deleteProtection,
+    this.exposeRoutesToVswitch,
+    this.ipRange,
+    this.labels,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class NetworkState {
 
   factory NetworkState.fromMap(Map<String, dynamic> map) {
     return NetworkState(
-      deleteProtection: map['deleteProtection'] == null ? null : pulumi.Output.create<bool>(map['deleteProtection'] as bool),
-      exposeRoutesToVswitch: map['exposeRoutesToVswitch'] == null ? null : pulumi.Output.create<bool>(map['exposeRoutesToVswitch'] as bool),
-      ipRange: map['ipRange'] == null ? null : pulumi.Output.create<String>(map['ipRange'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
+      exposeRoutesToVswitch: map['exposeRoutesToVswitch'] == null ? null : (map['exposeRoutesToVswitch'] as bool).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

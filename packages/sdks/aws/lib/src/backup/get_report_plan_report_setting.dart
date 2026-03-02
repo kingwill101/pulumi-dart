@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReportPlanReportSetting {
   /// (Optional) Specifies the list of accounts a report covers.
-  final List<String> accounts;
+  final pulumi.Input<List<String>> accounts;
   /// ARNs of the frameworks a report covers.
-  final List<String> frameworkArns;
+  final pulumi.Input<List<String>> frameworkArns;
   /// Specifies the number of frameworks a report covers.
-  final int numberOfFrameworks;
+  final pulumi.Input<int> numberOfFrameworks;
   /// (Optional) Specifies the list of Organizational Units a report covers.
-  final List<String> organizationUnits;
+  final pulumi.Input<List<String>> organizationUnits;
   /// (Optional) Specifies the list of regions a report covers.
-  final List<String> regions;
+  final pulumi.Input<List<String>> regions;
   /// Identifies the report template for the report. Reports are built using a report template.
-  final String reportTemplate;
+  final pulumi.Input<String> reportTemplate;
 
   /// Creates a new [GetReportPlanReportSetting].
   /// [accounts] (Optional) Specifies the list of accounts a report covers.
@@ -44,12 +45,12 @@ class GetReportPlanReportSetting {
 
   factory GetReportPlanReportSetting.fromMap(Map<String, dynamic> map) {
     return GetReportPlanReportSetting(
-      accounts: (map['accounts'] as List).cast<String>(),
-      frameworkArns: (map['frameworkArns'] as List).cast<String>(),
-      numberOfFrameworks: map['numberOfFrameworks'] as int,
-      organizationUnits: (map['organizationUnits'] as List).cast<String>(),
-      regions: (map['regions'] as List).cast<String>(),
-      reportTemplate: map['reportTemplate'] as String,
+      accounts: ((map['accounts'] as List).cast<String>()).input(),
+      frameworkArns: ((map['frameworkArns'] as List).cast<String>()).input(),
+      numberOfFrameworks: (map['numberOfFrameworks'] as int).input(),
+      organizationUnits: ((map['organizationUnits'] as List).cast<String>()).input(),
+      regions: ((map['regions'] as List).cast<String>()).input(),
+      reportTemplate: (map['reportTemplate'] as String).input(),
     );
   }
 }

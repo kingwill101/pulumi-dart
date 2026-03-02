@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecWorkerEnv {
   /// The name of the environment variable.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-  final String? scope;
+  final pulumi.Input<String>? scope;
   /// The type of the environment variable, `GENERAL` or `SECRET`.
-  final String type;
+  final pulumi.Input<String> type;
   /// The threshold for the type of the warning.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [GetAppSpecWorkerEnv].
   /// [key] The name of the environment variable.
@@ -34,10 +35,10 @@ class GetAppSpecWorkerEnv {
 
   factory GetAppSpecWorkerEnv.fromMap(Map<String, dynamic> map) {
     return GetAppSpecWorkerEnv(
-      key: map['key'] == null ? null : map['key'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      type: map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

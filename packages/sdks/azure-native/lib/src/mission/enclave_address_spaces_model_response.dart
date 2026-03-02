@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Enclave Address Spaces
 class EnclaveAddressSpacesModelResponse {
   /// Enclave Address Space
-  final String? enclaveAddressSpace;
+  final pulumi.Input<String>? enclaveAddressSpace;
   /// Managed Address Space
-  final String? managedAddressSpace;
+  final pulumi.Input<String>? managedAddressSpace;
 
   /// Creates a new [EnclaveAddressSpacesModelResponse].
   /// [enclaveAddressSpace] Enclave Address Space
@@ -25,8 +26,8 @@ class EnclaveAddressSpacesModelResponse {
 
   factory EnclaveAddressSpacesModelResponse.fromMap(Map<String, dynamic> map) {
     return EnclaveAddressSpacesModelResponse(
-      enclaveAddressSpace: map['enclaveAddressSpace'] == null ? null : map['enclaveAddressSpace'] as String,
-      managedAddressSpace: map['managedAddressSpace'] == null ? null : map['managedAddressSpace'] as String,
+      enclaveAddressSpace: map['enclaveAddressSpace'] == null ? null : (map['enclaveAddressSpace'] as String).input(),
+      managedAddressSpace: map['managedAddressSpace'] == null ? null : (map['managedAddressSpace'] as String).input(),
     );
   }
 }

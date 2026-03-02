@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/label_selector.dart';
 import '../meta/object_meta.dart';
 
@@ -14,27 +15,27 @@ import '../meta/object_meta.dart';
 /// They are consumed by the kube-scheduler when a CSI driver opts into capacity-aware scheduling with CSIDriverSpec.StorageCapacity. The scheduler compares the MaximumVolumeSize against the requested size of pending volumes to filter out unsuitable nodes. If MaximumVolumeSize is unset, it falls back to a comparison against the less precise Capacity. If that is also unset, the scheduler assumes that capacity is insufficient and tries some other node.
 class CSIStorageCapacity {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// capacity is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
   ///
   /// The semantic is currently (CSI spec 1.2) defined as: The available capacity, in bytes, of the storage that can be used to provision volumes. If not set, that information is currently unavailable.
-  final String? capacity;
+  final pulumi.Input<String>? capacity;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// maximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
   ///
   /// This is defined since CSI spec 1.4.0 as the largest size that may be used in a CreateVolumeRequest.capacity_range.required_bytes field to create a volume with the same parameters as those in GetCapacityRequest. The corresponding value in the Kubernetes API is ResourceRequirements.Requests in a volume claim.
-  final String? maximumVolumeSize;
+  final pulumi.Input<String>? maximumVolumeSize;
   /// Standard object's metadata. The name has no particular meaning. It must be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
   ///
   /// Objects are namespaced.
   ///
   /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final ObjectMeta? metadata;
+  final pulumi.Input<ObjectMeta>? metadata;
   /// nodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
-  final LabelSelector? nodeTopology;
+  final pulumi.Input<LabelSelector>? nodeTopology;
   /// storageClassName represents the name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
-  final String storageClassName;
+  final pulumi.Input<String> storageClassName;
 
   /// Creates a new [CSIStorageCapacity].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -60,21 +61,21 @@ class CSIStorageCapacity {
       'capacity': ?capacity,
       'kind': ?kind,
       'maximumVolumeSize': ?maximumVolumeSize,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'nodeTopology': ?nodeTopology == null ? null : nodeTopology!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'nodeTopology': ?pulumi.Input.mapOptionalInputValue<LabelSelector, Map<String, dynamic>>(nodeTopology, (value) => value.toMap()),
       'storageClassName': storageClassName,
     };
   }
 
   factory CSIStorageCapacity.fromMap(Map<String, dynamic> map) {
     return CSIStorageCapacity(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      capacity: map['capacity'] == null ? null : map['capacity'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      maximumVolumeSize: map['maximumVolumeSize'] == null ? null : map['maximumVolumeSize'] as String,
-      metadata: map['metadata'] == null ? null : ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      nodeTopology: map['nodeTopology'] == null ? null : LabelSelector.fromMap((map['nodeTopology'] as Map).cast<String, dynamic>()),
-      storageClassName: map['storageClassName'] as String,
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      maximumVolumeSize: map['maximumVolumeSize'] == null ? null : (map['maximumVolumeSize'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      nodeTopology: map['nodeTopology'] == null ? null : (LabelSelector.fromMap((map['nodeTopology'] as Map).cast<String, dynamic>())).input(),
+      storageClassName: (map['storageClassName'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class LogAccountPolicyArgs {
   /// [scope] Currently defaults to and only accepts the value: `ALL`.
   /// [selectionCriteria] Criteria for applying a subscription filter policy to a selection of log groups. The only allowable criteria selector is `LogGroupName NOT IN []`.
   LogAccountPolicyArgs({
-    required pulumi.Output<String> policyDocument,
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<String> policyType,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? scope,
-    pulumi.Output<String>? selectionCriteria,
-  }) :
-      policyDocument = pulumi.Input.asInput<String>(policyDocument),
-      policyName = pulumi.Input.asInput<String>(policyName),
-      policyType = pulumi.Input.asInput<String>(policyType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      selectionCriteria = pulumi.Input.asOptionalInput<String>(selectionCriteria);
+    required this.policyDocument,
+    required this.policyName,
+    required this.policyType,
+    this.region,
+    this.scope,
+    this.selectionCriteria,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class LogAccountPolicyArgs {
 
   factory LogAccountPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LogAccountPolicyArgs(
-      policyDocument: pulumi.Output.create<String>(map['policyDocument'] as String),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      policyType: pulumi.Output.create<String>(map['policyType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      selectionCriteria: map['selectionCriteria'] == null ? null : pulumi.Output.create<String>(map['selectionCriteria'] as String),
+      policyDocument: (map['policyDocument'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      policyType: (map['policyType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      selectionCriteria: map['selectionCriteria'] == null ? null : (map['selectionCriteria'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTaskExecutionOverridesContainerOverrideEnvironment {
   /// The name of the key-value pair. For environment variables, this is the name of the environment variable.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the key-value pair. For environment variables, this is the value of the environment variable.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetTaskExecutionOverridesContainerOverrideEnvironment].
   /// [key] The name of the key-value pair. For environment variables, this is the name of the environment variable.
@@ -24,8 +25,8 @@ class GetTaskExecutionOverridesContainerOverrideEnvironment {
 
   factory GetTaskExecutionOverridesContainerOverrideEnvironment.fromMap(Map<String, dynamic> map) {
     return GetTaskExecutionOverridesContainerOverrideEnvironment(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

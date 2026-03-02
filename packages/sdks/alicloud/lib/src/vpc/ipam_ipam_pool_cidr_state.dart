@@ -18,13 +18,10 @@ class IpamIpamPoolCidrState {
   /// [ipamPoolId] The ID of the IPAM pool instance.
   /// [status] The status of the resource
   IpamIpamPoolCidrState({
-    pulumi.Output<String>? cidr,
-    pulumi.Output<String>? ipamPoolId,
-    pulumi.Output<String>? status,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      ipamPoolId = pulumi.Input.asOptionalInput<String>(ipamPoolId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.cidr,
+    this.ipamPoolId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class IpamIpamPoolCidrState {
 
   factory IpamIpamPoolCidrState.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolCidrState(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      ipamPoolId: map['ipamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipamPoolId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

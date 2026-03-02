@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMasterUserSecret {
   /// The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
-  final String? kmsKeyId;
-  final String? secretArn;
-  final String? secretStatus;
+  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String>? secretArn;
+  final pulumi.Input<String>? secretStatus;
 
   /// Creates a new [ClusterMasterUserSecret].
   /// [kmsKeyId] The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
@@ -27,9 +28,9 @@ class ClusterMasterUserSecret {
 
   factory ClusterMasterUserSecret.fromMap(Map<String, dynamic> map) {
     return ClusterMasterUserSecret(
-      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      secretArn: map['secretArn'] == null ? null : map['secretArn'] as String,
-      secretStatus: map['secretStatus'] == null ? null : map['secretStatus'] as String,
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
+      secretStatus: map['secretStatus'] == null ? null : (map['secretStatus'] as String).input(),
     );
   }
 }

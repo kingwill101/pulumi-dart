@@ -6,7 +6,7 @@ import 'network_interface.dart';
 /// NetworkPolicy describes VM instance network configurations.
 class NetworkPolicy {
   /// Network configurations.
-  final List<NetworkInterface>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterface>>? networkInterfaces;
 
   /// Creates a new [NetworkPolicy].
   /// [networkInterfaces] Network configurations.
@@ -16,13 +16,13 @@ class NetworkPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkInterfaces': ?networkInterfaces == null ? null : pulumi.Input.encodeList<NetworkInterface, Map<String, dynamic>>(networkInterfaces!, (value) => value.toMap()),
+      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterface>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterface, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkPolicy.fromMap(Map<String, dynamic> map) {
     return NetworkPolicy(
-      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces'], (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces'], (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ApiKeyArgs {
   /// [expires] RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ApiKeyArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expires,
-    pulumi.Output<String>? region,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expires = pulumi.Input.asOptionalInput<String>(expires),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.apiId,
+    this.description,
+    this.expires,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ApiKeyArgs {
 
   factory ApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiKeyArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expires: map['expires'] == null ? null : pulumi.Output.create<String>(map['expires'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      apiId: (map['apiId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expires: map['expires'] == null ? null : (map['expires'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualHubPanoramaDestinationNatBackendConfig {
   /// The port number to send traffic to.
-  final int port;
+  final pulumi.Input<int> port;
   /// The Public IP Address to send the traffic to.
-  final String publicIpAddress;
+  final pulumi.Input<String> publicIpAddress;
 
   /// Creates a new [NextGenerationFirewallVirtualHubPanoramaDestinationNatBackendConfig].
   /// [port] The port number to send traffic to.
@@ -24,8 +25,8 @@ class NextGenerationFirewallVirtualHubPanoramaDestinationNatBackendConfig {
 
   factory NextGenerationFirewallVirtualHubPanoramaDestinationNatBackendConfig.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubPanoramaDestinationNatBackendConfig(
-      port: map['port'] as int,
-      publicIpAddress: map['publicIpAddress'] as String,
+      port: (map['port'] as int).input(),
+      publicIpAddress: (map['publicIpAddress'] as String).input(),
     );
   }
 }

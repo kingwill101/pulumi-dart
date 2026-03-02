@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkForwardPf {
   /// Specifies the device to be used for per-packet forwarding service.
-  final String dev;
+  final pulumi.Input<String> dev;
 
   /// Creates a new [NetworkForwardPf].
   /// [dev] Specifies the device to be used for per-packet forwarding service.
@@ -19,7 +20,7 @@ class NetworkForwardPf {
 
   factory NetworkForwardPf.fromMap(Map<String, dynamic> map) {
     return NetworkForwardPf(
-      dev: map['dev'] as String,
+      dev: (map['dev'] as String).input(),
     );
   }
 }

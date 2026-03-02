@@ -47,31 +47,19 @@ class VectorsIndexState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vectorBucketName] Name of the vector bucket for the vector index.
   VectorsIndexState({
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<String>? dataType,
-    pulumi.Output<int>? dimension,
-    pulumi.Output<String>? distanceMetric,
-    pulumi.Output<List<VectorsIndexEncryptionConfiguration>>? encryptionConfigurations,
-    pulumi.Output<String>? indexArn,
-    pulumi.Output<String>? indexName,
-    pulumi.Output<VectorsIndexMetadataConfiguration>? metadataConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vectorBucketName,
-  }) :
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      dataType = pulumi.Input.asOptionalInput<String>(dataType),
-      dimension = pulumi.Input.asOptionalInput<int>(dimension),
-      distanceMetric = pulumi.Input.asOptionalInput<String>(distanceMetric),
-      encryptionConfigurations = pulumi.Input.asOptionalInput<List<VectorsIndexEncryptionConfiguration>>(encryptionConfigurations),
-      indexArn = pulumi.Input.asOptionalInput<String>(indexArn),
-      indexName = pulumi.Input.asOptionalInput<String>(indexName),
-      metadataConfiguration = pulumi.Input.asOptionalInput<VectorsIndexMetadataConfiguration>(metadataConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vectorBucketName = pulumi.Input.asOptionalInput<String>(vectorBucketName);
+    this.creationTime,
+    this.dataType,
+    this.dimension,
+    this.distanceMetric,
+    this.encryptionConfigurations,
+    this.indexArn,
+    this.indexName,
+    this.metadataConfiguration,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.vectorBucketName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class VectorsIndexState {
 
   factory VectorsIndexState.fromMap(Map<String, dynamic> map) {
     return VectorsIndexState(
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      dataType: map['dataType'] == null ? null : pulumi.Output.create<String>(map['dataType'] as String),
-      dimension: map['dimension'] == null ? null : pulumi.Output.create<int>(map['dimension'] as int),
-      distanceMetric: map['distanceMetric'] == null ? null : pulumi.Output.create<String>(map['distanceMetric'] as String),
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : pulumi.Output.create<List<VectorsIndexEncryptionConfiguration>>(pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(map['encryptionConfigurations'], (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      indexArn: map['indexArn'] == null ? null : pulumi.Output.create<String>(map['indexArn'] as String),
-      indexName: map['indexName'] == null ? null : pulumi.Output.create<String>(map['indexName'] as String),
-      metadataConfiguration: map['metadataConfiguration'] == null ? null : pulumi.Output.create<VectorsIndexMetadataConfiguration>(VectorsIndexMetadataConfiguration.fromMap((map['metadataConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vectorBucketName: map['vectorBucketName'] == null ? null : pulumi.Output.create<String>(map['vectorBucketName'] as String),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      dimension: map['dimension'] == null ? null : (map['dimension'] as int).input(),
+      distanceMetric: map['distanceMetric'] == null ? null : (map['distanceMetric'] as String).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(map['encryptionConfigurations'], (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      indexArn: map['indexArn'] == null ? null : (map['indexArn'] as String).input(),
+      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
+      metadataConfiguration: map['metadataConfiguration'] == null ? null : (VectorsIndexMetadataConfiguration.fromMap((map['metadataConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vectorBucketName: map['vectorBucketName'] == null ? null : (map['vectorBucketName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Interactive authoring capability type properties.
 class InteractiveQueryPropertiesResponse {
   /// The allowed idle time for interactive authoring.
-  final int autoTerminationMinutes;
+  final pulumi.Input<int> autoTerminationMinutes;
   /// The interactive authoring capability status. Must be one of InteractiveCapabilityStatus. The default value is 'Enabling'.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [InteractiveQueryPropertiesResponse].
   /// [autoTerminationMinutes] The allowed idle time for interactive authoring.
@@ -25,8 +26,8 @@ class InteractiveQueryPropertiesResponse {
 
   factory InteractiveQueryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryPropertiesResponse(
-      autoTerminationMinutes: map['autoTerminationMinutes'] as int,
-      status: map['status'] as String,
+      autoTerminationMinutes: (map['autoTerminationMinutes'] as int).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

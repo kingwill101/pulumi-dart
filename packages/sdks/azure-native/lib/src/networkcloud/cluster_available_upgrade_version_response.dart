@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterAvailableUpgradeVersionResponse {
   /// The indicator of whether the control plane will be impacted during the upgrade.
-  final String controlImpact;
+  final pulumi.Input<String> controlImpact;
   /// The expected duration needed for this upgrade.
-  final String expectedDuration;
+  final pulumi.Input<String> expectedDuration;
   /// The impact description including the specific details and release notes.
-  final String impactDescription;
+  final pulumi.Input<String> impactDescription;
   /// The last date the version of the platform is supported.
-  final String supportExpiryDate;
+  final pulumi.Input<String> supportExpiryDate;
   /// The target version this cluster will be upgraded to.
-  final String targetClusterVersion;
+  final pulumi.Input<String> targetClusterVersion;
   /// The indicator of whether the workload will be impacted during the upgrade.
-  final String workloadImpact;
+  final pulumi.Input<String> workloadImpact;
 
   /// Creates a new [ClusterAvailableUpgradeVersionResponse].
   /// [controlImpact] The indicator of whether the control plane will be impacted during the upgrade.
@@ -44,12 +45,12 @@ class ClusterAvailableUpgradeVersionResponse {
 
   factory ClusterAvailableUpgradeVersionResponse.fromMap(Map<String, dynamic> map) {
     return ClusterAvailableUpgradeVersionResponse(
-      controlImpact: map['controlImpact'] as String,
-      expectedDuration: map['expectedDuration'] as String,
-      impactDescription: map['impactDescription'] as String,
-      supportExpiryDate: map['supportExpiryDate'] as String,
-      targetClusterVersion: map['targetClusterVersion'] as String,
-      workloadImpact: map['workloadImpact'] as String,
+      controlImpact: (map['controlImpact'] as String).input(),
+      expectedDuration: (map['expectedDuration'] as String).input(),
+      impactDescription: (map['impactDescription'] as String).input(),
+      supportExpiryDate: (map['supportExpiryDate'] as String).input(),
+      targetClusterVersion: (map['targetClusterVersion'] as String).input(),
+      workloadImpact: (map['workloadImpact'] as String).input(),
     );
   }
 }

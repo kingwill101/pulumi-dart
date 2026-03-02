@@ -1,44 +1,45 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_error_response.dart';
 
 /// Copy progress.
 class CopyProgressResponse {
   /// Id of the account where the data needs to be uploaded.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// Available actions on the job.
-  final List<String> actions;
+  final pulumi.Input<List<String>> actions;
   /// To indicate bytes transferred.
-  final double bytesProcessed;
+  final pulumi.Input<double> bytesProcessed;
   /// Data Account Type.
-  final String dataAccountType;
+  final pulumi.Input<String> dataAccountType;
   /// To indicate directories errored out in the job.
-  final double directoriesErroredOut;
+  final pulumi.Input<double> directoriesErroredOut;
   /// Error, if any, in the stage
-  final CloudErrorResponse error;
+  final pulumi.Input<CloudErrorResponse> error;
   /// Number of files which could not be copied
-  final double filesErroredOut;
+  final pulumi.Input<double> filesErroredOut;
   /// Number of files processed
-  final double filesProcessed;
+  final pulumi.Input<double> filesProcessed;
   /// To indicate directories renamed
-  final double invalidDirectoriesProcessed;
+  final pulumi.Input<double> invalidDirectoriesProcessed;
   /// Total amount of data not adhering to azure naming conventions which were processed by automatic renaming
-  final double invalidFileBytesUploaded;
+  final pulumi.Input<double> invalidFileBytesUploaded;
   /// Number of files not adhering to azure naming conventions which were processed by automatic renaming
-  final double invalidFilesProcessed;
+  final pulumi.Input<double> invalidFilesProcessed;
   /// To indicate if enumeration of data is in progress.
   /// Until this is true, the TotalBytesToProcess may not be valid.
-  final bool isEnumerationInProgress;
+  final pulumi.Input<bool> isEnumerationInProgress;
   /// Number of folders not adhering to azure naming conventions which were processed by automatic renaming
-  final double renamedContainerCount;
+  final pulumi.Input<double> renamedContainerCount;
   /// Name of the storage account. This will be empty for data account types other than storage account.
-  final String storageAccountName;
+  final pulumi.Input<String> storageAccountName;
   /// Total amount of data to be processed by the job.
-  final double totalBytesToProcess;
+  final pulumi.Input<double> totalBytesToProcess;
   /// Total files to process
-  final double totalFilesToProcess;
+  final pulumi.Input<double> totalFilesToProcess;
   /// Transfer type of data
-  final String transferType;
+  final pulumi.Input<String> transferType;
 
   /// Creates a new [CopyProgressResponse].
   /// [accountId] Id of the account where the data needs to be uploaded.
@@ -85,7 +86,7 @@ class CopyProgressResponse {
       'bytesProcessed': bytesProcessed,
       'dataAccountType': dataAccountType,
       'directoriesErroredOut': directoriesErroredOut,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<CloudErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'filesErroredOut': filesErroredOut,
       'filesProcessed': filesProcessed,
       'invalidDirectoriesProcessed': invalidDirectoriesProcessed,
@@ -102,23 +103,23 @@ class CopyProgressResponse {
 
   factory CopyProgressResponse.fromMap(Map<String, dynamic> map) {
     return CopyProgressResponse(
-      accountId: map['accountId'] as String,
-      actions: (map['actions'] as List).cast<String>(),
-      bytesProcessed: map['bytesProcessed'] as double,
-      dataAccountType: map['dataAccountType'] as String,
-      directoriesErroredOut: map['directoriesErroredOut'] as double,
-      error: CloudErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      filesErroredOut: map['filesErroredOut'] as double,
-      filesProcessed: map['filesProcessed'] as double,
-      invalidDirectoriesProcessed: map['invalidDirectoriesProcessed'] as double,
-      invalidFileBytesUploaded: map['invalidFileBytesUploaded'] as double,
-      invalidFilesProcessed: map['invalidFilesProcessed'] as double,
-      isEnumerationInProgress: map['isEnumerationInProgress'] as bool,
-      renamedContainerCount: map['renamedContainerCount'] as double,
-      storageAccountName: map['storageAccountName'] as String,
-      totalBytesToProcess: map['totalBytesToProcess'] as double,
-      totalFilesToProcess: map['totalFilesToProcess'] as double,
-      transferType: map['transferType'] as String,
+      accountId: (map['accountId'] as String).input(),
+      actions: ((map['actions'] as List).cast<String>()).input(),
+      bytesProcessed: (map['bytesProcessed'] as double).input(),
+      dataAccountType: (map['dataAccountType'] as String).input(),
+      directoriesErroredOut: (map['directoriesErroredOut'] as double).input(),
+      error: (CloudErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      filesErroredOut: (map['filesErroredOut'] as double).input(),
+      filesProcessed: (map['filesProcessed'] as double).input(),
+      invalidDirectoriesProcessed: (map['invalidDirectoriesProcessed'] as double).input(),
+      invalidFileBytesUploaded: (map['invalidFileBytesUploaded'] as double).input(),
+      invalidFilesProcessed: (map['invalidFilesProcessed'] as double).input(),
+      isEnumerationInProgress: (map['isEnumerationInProgress'] as bool).input(),
+      renamedContainerCount: (map['renamedContainerCount'] as double).input(),
+      storageAccountName: (map['storageAccountName'] as String).input(),
+      totalBytesToProcess: (map['totalBytesToProcess'] as double).input(),
+      totalFilesToProcess: (map['totalFilesToProcess'] as double).input(),
+      transferType: (map['transferType'] as String).input(),
     );
   }
 }

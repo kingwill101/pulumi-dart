@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Sku change info of account.
 class SkuChangeInfoResponse {
   /// Gets the count of downgrades.
-  final double? countOfDowngrades;
+  final pulumi.Input<double>? countOfDowngrades;
   /// Gets the count of upgrades after downgrades.
-  final double? countOfUpgradesAfterDowngrades;
+  final pulumi.Input<double>? countOfUpgradesAfterDowngrades;
   /// Gets the last change date.
-  final String? lastChangeDate;
+  final pulumi.Input<String>? lastChangeDate;
 
   /// Creates a new [SkuChangeInfoResponse].
   /// [countOfDowngrades] Gets the count of downgrades.
@@ -30,9 +31,9 @@ class SkuChangeInfoResponse {
 
   factory SkuChangeInfoResponse.fromMap(Map<String, dynamic> map) {
     return SkuChangeInfoResponse(
-      countOfDowngrades: map['countOfDowngrades'] == null ? null : map['countOfDowngrades'] as double,
-      countOfUpgradesAfterDowngrades: map['countOfUpgradesAfterDowngrades'] == null ? null : map['countOfUpgradesAfterDowngrades'] as double,
-      lastChangeDate: map['lastChangeDate'] == null ? null : map['lastChangeDate'] as String,
+      countOfDowngrades: map['countOfDowngrades'] == null ? null : (map['countOfDowngrades'] as double).input(),
+      countOfUpgradesAfterDowngrades: map['countOfUpgradesAfterDowngrades'] == null ? null : (map['countOfUpgradesAfterDowngrades'] as double).input(),
+      lastChangeDate: map['lastChangeDate'] == null ? null : (map['lastChangeDate'] as String).input(),
     );
   }
 }

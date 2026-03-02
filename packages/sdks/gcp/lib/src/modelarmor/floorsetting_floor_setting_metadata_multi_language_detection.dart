@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FloorsettingFloorSettingMetadataMultiLanguageDetection {
   /// If true, multi language detection will be enabled.
-  final bool enableMultiLanguageDetection;
+  final pulumi.Input<bool> enableMultiLanguageDetection;
 
   /// Creates a new [FloorsettingFloorSettingMetadataMultiLanguageDetection].
   /// [enableMultiLanguageDetection] If true, multi language detection will be enabled.
@@ -19,7 +20,7 @@ class FloorsettingFloorSettingMetadataMultiLanguageDetection {
 
   factory FloorsettingFloorSettingMetadataMultiLanguageDetection.fromMap(Map<String, dynamic> map) {
     return FloorsettingFloorSettingMetadataMultiLanguageDetection(
-      enableMultiLanguageDetection: map['enableMultiLanguageDetection'] as bool,
+      enableMultiLanguageDetection: (map['enableMultiLanguageDetection'] as bool).input(),
     );
   }
 }

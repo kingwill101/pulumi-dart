@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineArtifactStoreEncryptionKey {
   /// The KMS key ARN or ID
-  final String id;
+  final pulumi.Input<String> id;
   /// The type of key; currently only `KMS` is supported
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PipelineArtifactStoreEncryptionKey].
   /// [id] The KMS key ARN or ID
@@ -24,8 +25,8 @@ class PipelineArtifactStoreEncryptionKey {
 
   factory PipelineArtifactStoreEncryptionKey.fromMap(Map<String, dynamic> map) {
     return PipelineArtifactStoreEncryptionKey(
-      id: map['id'] as String,
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -45,19 +45,13 @@ class TargetHttpProxyArgs {
   /// [proxyBind] This field only applies when the forwarding rule that references
   /// [urlMap] A reference to the UrlMap resource that defines the mapping from URL
   TargetHttpProxyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? httpKeepAliveTimeoutSec,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? proxyBind,
-    required pulumi.Output<String> urlMap,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      httpKeepAliveTimeoutSec = pulumi.Input.asOptionalInput<int>(httpKeepAliveTimeoutSec),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      proxyBind = pulumi.Input.asOptionalInput<bool>(proxyBind),
-      urlMap = pulumi.Input.asInput<String>(urlMap);
+    this.description,
+    this.httpKeepAliveTimeoutSec,
+    this.name,
+    this.project,
+    this.proxyBind,
+    required this.urlMap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,12 +66,12 @@ class TargetHttpProxyArgs {
 
   factory TargetHttpProxyArgs.fromMap(Map<String, dynamic> map) {
     return TargetHttpProxyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : pulumi.Output.create<int>(map['httpKeepAliveTimeoutSec'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      proxyBind: map['proxyBind'] == null ? null : pulumi.Output.create<bool>(map['proxyBind'] as bool),
-      urlMap: pulumi.Output.create<String>(map['urlMap'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
+      urlMap: (map['urlMap'] as String).input(),
     );
   }
 }

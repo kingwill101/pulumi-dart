@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'long_term_retention_policy.dart';
 
 /// Azure SQL workload-specific backup policy.
 class AzureSqlProtectionPolicy {
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'AzureSql'.
-  final String backupManagementType;
+  final pulumi.Input<String> backupManagementType;
   /// Number of items associated with this policy.
-  final int? protectedItemsCount;
+  final pulumi.Input<int>? protectedItemsCount;
   /// ResourceGuard Operation Requests
-  final List<String>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
   /// Retention policy details.
-  final LongTermRetentionPolicy? retentionPolicy;
+  final pulumi.Input<LongTermRetentionPolicy>? retentionPolicy;
 
   /// Creates a new [AzureSqlProtectionPolicy].
   /// [backupManagementType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
@@ -31,16 +32,16 @@ class AzureSqlProtectionPolicy {
       'backupManagementType': backupManagementType,
       'protectedItemsCount': ?protectedItemsCount,
       'resourceGuardOperationRequests': ?resourceGuardOperationRequests,
-      'retentionPolicy': ?retentionPolicy == null ? null : retentionPolicy!.toMap(),
+      'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<LongTermRetentionPolicy, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
     };
   }
 
   factory AzureSqlProtectionPolicy.fromMap(Map<String, dynamic> map) {
     return AzureSqlProtectionPolicy(
-      backupManagementType: map['backupManagementType'] as String,
-      protectedItemsCount: map['protectedItemsCount'] == null ? null : map['protectedItemsCount'] as int,
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : (map['resourceGuardOperationRequests'] as List).cast<String>(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : LongTermRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>()),
+      backupManagementType: (map['backupManagementType'] as String).input(),
+      protectedItemsCount: map['protectedItemsCount'] == null ? null : (map['protectedItemsCount'] as int).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (LongTermRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

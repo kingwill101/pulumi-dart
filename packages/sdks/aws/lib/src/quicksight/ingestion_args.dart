@@ -27,17 +27,12 @@ class IngestionArgs {
   /// [ingestionType] Type of ingestion to be created. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   IngestionArgs({
-    pulumi.Output<String>? awsAccountId,
-    required pulumi.Output<String> dataSetId,
-    required pulumi.Output<String> ingestionId,
-    required pulumi.Output<String> ingestionType,
-    pulumi.Output<String>? region,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      dataSetId = pulumi.Input.asInput<String>(dataSetId),
-      ingestionId = pulumi.Input.asInput<String>(ingestionId),
-      ingestionType = pulumi.Input.asInput<String>(ingestionType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.awsAccountId,
+    required this.dataSetId,
+    required this.ingestionId,
+    required this.ingestionType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class IngestionArgs {
 
   factory IngestionArgs.fromMap(Map<String, dynamic> map) {
     return IngestionArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      dataSetId: pulumi.Output.create<String>(map['dataSetId'] as String),
-      ingestionId: pulumi.Output.create<String>(map['ingestionId'] as String),
-      ingestionType: pulumi.Output.create<String>(map['ingestionType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      dataSetId: (map['dataSetId'] as String).input(),
+      ingestionId: (map['ingestionId'] as String).input(),
+      ingestionType: (map['ingestionType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

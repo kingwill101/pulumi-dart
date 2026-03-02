@@ -17,13 +17,10 @@ class BucketCorsState {
   /// [corsRules] The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
   /// [responseVary] Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
   BucketCorsState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<List<BucketCorsCorsRule>>? corsRules,
-    pulumi.Output<bool>? responseVary,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      corsRules = pulumi.Input.asOptionalInput<List<BucketCorsCorsRule>>(corsRules),
-      responseVary = pulumi.Input.asOptionalInput<bool>(responseVary);
+    this.bucket,
+    this.corsRules,
+    this.responseVary,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class BucketCorsState {
 
   factory BucketCorsState.fromMap(Map<String, dynamic> map) {
     return BucketCorsState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      corsRules: map['corsRules'] == null ? null : pulumi.Output.create<List<BucketCorsCorsRule>>(pulumi.Input.decodeList<BucketCorsCorsRule>(map['corsRules'], (value) => BucketCorsCorsRule.fromMap((value as Map).cast<String, dynamic>()))),
-      responseVary: map['responseVary'] == null ? null : pulumi.Output.create<bool>(map['responseVary'] as bool),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<BucketCorsCorsRule>(map['corsRules'], (value) => BucketCorsCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseVary: map['responseVary'] == null ? null : (map['responseVary'] as bool).input(),
     );
   }
 }

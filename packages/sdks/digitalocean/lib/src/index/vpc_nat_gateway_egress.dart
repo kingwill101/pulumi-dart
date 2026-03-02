@@ -5,7 +5,7 @@ import 'vpc_nat_gateway_egress_public_gateway.dart';
 
 class VpcNatGatewayEgress {
   /// List of public gateway IPs
-  final List<VpcNatGatewayEgressPublicGateway>? publicGateways;
+  final pulumi.Input<List<VpcNatGatewayEgressPublicGateway>>? publicGateways;
 
   /// Creates a new [VpcNatGatewayEgress].
   /// [publicGateways] List of public gateway IPs
@@ -15,13 +15,13 @@ class VpcNatGatewayEgress {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicGateways': ?publicGateways == null ? null : pulumi.Input.encodeList<VpcNatGatewayEgressPublicGateway, Map<String, dynamic>>(publicGateways!, (value) => value.toMap()),
+      'publicGateways': ?pulumi.Input.mapOptionalInputValue<List<VpcNatGatewayEgressPublicGateway>, List<Map<String, dynamic>>>(publicGateways, (value) => pulumi.Input.encodeList<VpcNatGatewayEgressPublicGateway, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VpcNatGatewayEgress.fromMap(Map<String, dynamic> map) {
     return VpcNatGatewayEgress(
-      publicGateways: map['publicGateways'] == null ? null : pulumi.Input.decodeList<VpcNatGatewayEgressPublicGateway>(map['publicGateways'], (value) => VpcNatGatewayEgressPublicGateway.fromMap((value as Map).cast<String, dynamic>())),
+      publicGateways: map['publicGateways'] == null ? null : (pulumi.Input.decodeList<VpcNatGatewayEgressPublicGateway>(map['publicGateways'], (value) => VpcNatGatewayEgressPublicGateway.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

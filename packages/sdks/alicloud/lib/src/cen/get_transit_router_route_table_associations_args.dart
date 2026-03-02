@@ -35,21 +35,14 @@ class GetTransitRouterRouteTableAssociationsArgs {
   /// [transitRouterAttachmentResourceType] The type of next hop. Valid values:
   /// [transitRouterRouteTableId] The ID of the route table of the Enterprise Edition transit router.
   GetTransitRouterRouteTableAssociationsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transitRouterAttachmentId,
-    pulumi.Output<String>? transitRouterAttachmentResourceId,
-    pulumi.Output<String>? transitRouterAttachmentResourceType,
-    pulumi.Output<String>? transitRouterRouteTableId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouterAttachmentId = pulumi.Input.asOptionalInput<String>(transitRouterAttachmentId),
-      transitRouterAttachmentResourceId = pulumi.Input.asOptionalInput<String>(transitRouterAttachmentResourceId),
-      transitRouterAttachmentResourceType = pulumi.Input.asOptionalInput<String>(transitRouterAttachmentResourceType),
-      transitRouterRouteTableId = pulumi.Input.asOptionalInput<String>(transitRouterRouteTableId);
+    this.ids,
+    this.outputFile,
+    this.status,
+    this.transitRouterAttachmentId,
+    this.transitRouterAttachmentResourceId,
+    this.transitRouterAttachmentResourceType,
+    this.transitRouterRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class GetTransitRouterRouteTableAssociationsArgs {
 
   factory GetTransitRouterRouteTableAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterRouteTableAssociationsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
-      transitRouterAttachmentResourceId: map['transitRouterAttachmentResourceId'] == null ? null : pulumi.Output.create<String>(map['transitRouterAttachmentResourceId'] as String),
-      transitRouterAttachmentResourceType: map['transitRouterAttachmentResourceType'] == null ? null : pulumi.Output.create<String>(map['transitRouterAttachmentResourceType'] as String),
-      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteTableId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterAttachmentResourceId: map['transitRouterAttachmentResourceId'] == null ? null : (map['transitRouterAttachmentResourceId'] as String).input(),
+      transitRouterAttachmentResourceType: map['transitRouterAttachmentResourceType'] == null ? null : (map['transitRouterAttachmentResourceType'] as String).input(),
+      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : (map['transitRouterRouteTableId'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class InstanceMemberArgs {
   /// [memberDesc] Remarks of cloud firewall member accounts.
   /// [memberUid] The UID of the cloud firewall member account.
   InstanceMemberArgs({
-    pulumi.Output<String>? memberDesc,
-    required pulumi.Output<String> memberUid,
-  }) :
-      memberDesc = pulumi.Input.asOptionalInput<String>(memberDesc),
-      memberUid = pulumi.Input.asInput<String>(memberUid);
+    this.memberDesc,
+    required this.memberUid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class InstanceMemberArgs {
 
   factory InstanceMemberArgs.fromMap(Map<String, dynamic> map) {
     return InstanceMemberArgs(
-      memberDesc: map['memberDesc'] == null ? null : pulumi.Output.create<String>(map['memberDesc'] as String),
-      memberUid: pulumi.Output.create<String>(map['memberUid'] as String),
+      memberDesc: map['memberDesc'] == null ? null : (map['memberDesc'] as String).input(),
+      memberUid: (map['memberUid'] as String).input(),
     );
   }
 }

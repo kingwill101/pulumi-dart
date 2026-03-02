@@ -32,19 +32,13 @@ class V2ProjectNotificationConfigArgs {
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is
   /// [streamingConfig] The config for triggering streaming-based notifications.
   V2ProjectNotificationConfigArgs({
-    required pulumi.Output<String> configId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? pubsubTopic,
-    required pulumi.Output<V2ProjectNotificationConfigStreamingConfig> streamingConfig,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pubsubTopic = pulumi.Input.asOptionalInput<String>(pubsubTopic),
-      streamingConfig = pulumi.Input.asInput<V2ProjectNotificationConfigStreamingConfig>(streamingConfig);
+    required this.configId,
+    this.description,
+    this.location,
+    this.project,
+    this.pubsubTopic,
+    required this.streamingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class V2ProjectNotificationConfigArgs {
 
   factory V2ProjectNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2ProjectNotificationConfigArgs(
-      configId: pulumi.Output.create<String>(map['configId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pubsubTopic: map['pubsubTopic'] == null ? null : pulumi.Output.create<String>(map['pubsubTopic'] as String),
-      streamingConfig: pulumi.Output.create<V2ProjectNotificationConfigStreamingConfig>(V2ProjectNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())),
+      configId: (map['configId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
+      streamingConfig: (V2ProjectNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The bucket's billing configuration.
 class BucketBillingResponse {
   /// When set to true, Requester Pays is enabled for this bucket.
-  final bool requesterPays;
+  final pulumi.Input<bool> requesterPays;
 
   /// Creates a new [BucketBillingResponse].
   /// [requesterPays] When set to true, Requester Pays is enabled for this bucket.
@@ -20,7 +21,7 @@ class BucketBillingResponse {
 
   factory BucketBillingResponse.fromMap(Map<String, dynamic> map) {
     return BucketBillingResponse(
-      requesterPays: map['requesterPays'] as bool,
+      requesterPays: (map['requesterPays'] as bool).input(),
     );
   }
 }

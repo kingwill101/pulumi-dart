@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegistryEnterpriseSyncRulesRule {
   /// ID of Container Registry Enterprise Edition sync rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// ID of Container Registry Enterprise Edition local instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Name of Container Registry Enterprise Edition sync rule.
-  final String name;
+  final pulumi.Input<String> name;
   /// Name of Container Registry Enterprise Edition local namespace.
-  final String namespaceName;
+  final pulumi.Input<String> namespaceName;
   /// Region of Container Registry Enterprise Edition local instance.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// Name of Container Registry Enterprise Edition local repo.
-  final String repoName;
+  final pulumi.Input<String> repoName;
   /// `FROM` or `TO`, the direction of synchronization. `FROM` indicates that the local instance is the source instance. `TO` indicates that the local instance is the target instance to be synchronized.
-  final String syncDirection;
+  final pulumi.Input<String> syncDirection;
   /// `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
-  final String syncScope;
+  final pulumi.Input<String> syncScope;
   /// `PASSIVE` or `INITIATIVE`, the policy configured to trigger the synchronization rule.
-  final String syncTrigger;
+  final pulumi.Input<String> syncTrigger;
   /// The regular expression used to filter image tags for synchronization in the source repository.
-  final String tagFilter;
+  final pulumi.Input<String> tagFilter;
   /// ID of Container Registry Enterprise Edition target instance.
-  final String targetInstanceId;
+  final pulumi.Input<String> targetInstanceId;
   /// Name of Container Registry Enterprise Edition target namespace.
-  final String targetNamespaceName;
+  final pulumi.Input<String> targetNamespaceName;
   /// Region of Container Registry Enterprise Edition target instance.
-  final String targetRegionId;
+  final pulumi.Input<String> targetRegionId;
   /// Name of Container Registry Enterprise Edition target repo.
-  final String targetRepoName;
+  final pulumi.Input<String> targetRepoName;
 
   /// Creates a new [GetRegistryEnterpriseSyncRulesRule].
   /// [id] ID of Container Registry Enterprise Edition sync rule.
@@ -84,20 +85,20 @@ class GetRegistryEnterpriseSyncRulesRule {
 
   factory GetRegistryEnterpriseSyncRulesRule.fromMap(Map<String, dynamic> map) {
     return GetRegistryEnterpriseSyncRulesRule(
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      name: map['name'] as String,
-      namespaceName: map['namespaceName'] as String,
-      regionId: map['regionId'] as String,
-      repoName: map['repoName'] as String,
-      syncDirection: map['syncDirection'] as String,
-      syncScope: map['syncScope'] as String,
-      syncTrigger: map['syncTrigger'] as String,
-      tagFilter: map['tagFilter'] as String,
-      targetInstanceId: map['targetInstanceId'] as String,
-      targetNamespaceName: map['targetNamespaceName'] as String,
-      targetRegionId: map['targetRegionId'] as String,
-      targetRepoName: map['targetRepoName'] as String,
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      name: (map['name'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      repoName: (map['repoName'] as String).input(),
+      syncDirection: (map['syncDirection'] as String).input(),
+      syncScope: (map['syncScope'] as String).input(),
+      syncTrigger: (map['syncTrigger'] as String).input(),
+      tagFilter: (map['tagFilter'] as String).input(),
+      targetInstanceId: (map['targetInstanceId'] as String).input(),
+      targetNamespaceName: (map['targetNamespaceName'] as String).input(),
+      targetRegionId: (map['targetRegionId'] as String).input(),
+      targetRepoName: (map['targetRepoName'] as String).input(),
     );
   }
 }

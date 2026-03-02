@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
 class IapTestServiceAccountInfoWebsecurityscannerV1beta {
   /// Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP).
-  final String targetAudienceClientId;
+  final pulumi.Input<String> targetAudienceClientId;
 
   /// Creates a new [IapTestServiceAccountInfoWebsecurityscannerV1beta].
   /// [targetAudienceClientId] Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP).
@@ -20,7 +21,7 @@ class IapTestServiceAccountInfoWebsecurityscannerV1beta {
 
   factory IapTestServiceAccountInfoWebsecurityscannerV1beta.fromMap(Map<String, dynamic> map) {
     return IapTestServiceAccountInfoWebsecurityscannerV1beta(
-      targetAudienceClientId: map['targetAudienceClientId'] as String,
+      targetAudienceClientId: (map['targetAudienceClientId'] as String).input(),
     );
   }
 }

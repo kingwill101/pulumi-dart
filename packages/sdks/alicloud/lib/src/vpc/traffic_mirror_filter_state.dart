@@ -35,23 +35,15 @@ class TrafficMirrorFilterState {
   /// [trafficMirrorFilterDescription] The description of the TrafficMirrorFilter.
   /// [trafficMirrorFilterName] The name of the TrafficMirrorFilter.
   TrafficMirrorFilterState({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<List<TrafficMirrorFilterEgressRule>>? egressRules,
-    pulumi.Output<List<TrafficMirrorFilterIngressRule>>? ingressRules,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? trafficMirrorFilterDescription,
-    pulumi.Output<String>? trafficMirrorFilterName,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      egressRules = pulumi.Input.asOptionalInput<List<TrafficMirrorFilterEgressRule>>(egressRules),
-      ingressRules = pulumi.Input.asOptionalInput<List<TrafficMirrorFilterIngressRule>>(ingressRules),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trafficMirrorFilterDescription = pulumi.Input.asOptionalInput<String>(trafficMirrorFilterDescription),
-      trafficMirrorFilterName = pulumi.Input.asOptionalInput<String>(trafficMirrorFilterName);
+    this.dryRun,
+    this.egressRules,
+    this.ingressRules,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+    this.trafficMirrorFilterDescription,
+    this.trafficMirrorFilterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class TrafficMirrorFilterState {
 
   factory TrafficMirrorFilterState.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorFilterState(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      egressRules: map['egressRules'] == null ? null : pulumi.Output.create<List<TrafficMirrorFilterEgressRule>>(pulumi.Input.decodeList<TrafficMirrorFilterEgressRule>(map['egressRules'], (value) => TrafficMirrorFilterEgressRule.fromMap((value as Map).cast<String, dynamic>()))),
-      ingressRules: map['ingressRules'] == null ? null : pulumi.Output.create<List<TrafficMirrorFilterIngressRule>>(pulumi.Input.decodeList<TrafficMirrorFilterIngressRule>(map['ingressRules'], (value) => TrafficMirrorFilterIngressRule.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trafficMirrorFilterDescription: map['trafficMirrorFilterDescription'] == null ? null : pulumi.Output.create<String>(map['trafficMirrorFilterDescription'] as String),
-      trafficMirrorFilterName: map['trafficMirrorFilterName'] == null ? null : pulumi.Output.create<String>(map['trafficMirrorFilterName'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      egressRules: map['egressRules'] == null ? null : (pulumi.Input.decodeList<TrafficMirrorFilterEgressRule>(map['egressRules'], (value) => TrafficMirrorFilterEgressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingressRules: map['ingressRules'] == null ? null : (pulumi.Input.decodeList<TrafficMirrorFilterIngressRule>(map['ingressRules'], (value) => TrafficMirrorFilterIngressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trafficMirrorFilterDescription: map['trafficMirrorFilterDescription'] == null ? null : (map['trafficMirrorFilterDescription'] as String).input(),
+      trafficMirrorFilterName: map['trafficMirrorFilterName'] == null ? null : (map['trafficMirrorFilterName'] as String).input(),
     );
   }
 }

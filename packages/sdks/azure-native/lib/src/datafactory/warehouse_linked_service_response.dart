@@ -9,40 +9,40 @@ import 'parameter_specification_response.dart';
 /// Microsoft Fabric Warehouse linked service.
 class WarehouseLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
-  final dynamic artifactId;
+  final pulumi.Input<dynamic> artifactId;
   /// The authentication type to use.
-  final String? authenticationType;
+  final pulumi.Input<String>? authenticationType;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// The credential reference containing authentication information.
-  final CredentialReferenceResponse? credential;
+  final pulumi.Input<CredentialReferenceResponse>? credential;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The endpoint of Microsoft Fabric Warehouse server. Type: string (or Expression with resultType string).
-  final dynamic endpoint;
+  final pulumi.Input<dynamic> endpoint;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
-  final AzureKeyVaultSecretReferenceResponse? servicePrincipalCredential;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? servicePrincipalCredential;
   /// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
-  final dynamic servicePrincipalCredentialType;
+  final pulumi.Input<dynamic>? servicePrincipalCredentialType;
   /// The ID of the application used to authenticate against Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
-  final dynamic servicePrincipalId;
+  final pulumi.Input<dynamic>? servicePrincipalId;
   /// The Key of the application used to authenticate against Microsoft Fabric Warehouse.
-  final AzureKeyVaultSecretReferenceResponse? servicePrincipalKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? servicePrincipalKey;
   /// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
-  final dynamic tenant;
+  final pulumi.Input<dynamic>? tenant;
   /// Type of linked service.
   /// Expected value is 'Warehouse'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
   /// The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
-  final dynamic workspaceId;
+  final pulumi.Input<dynamic>? workspaceId;
 
   /// Creates a new [WarehouseLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -87,16 +87,16 @@ class WarehouseLinkedServiceResponse {
       'annotations': ?annotations,
       'artifactId': artifactId,
       'authenticationType': ?authenticationType,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
-      'credential': ?credential == null ? null : credential!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReferenceResponse, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'endpoint': endpoint,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'servicePrincipalCredential': ?servicePrincipalCredential == null ? null : servicePrincipalCredential!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'servicePrincipalCredential': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(servicePrincipalCredential, (value) => value.toMap()),
       'servicePrincipalCredentialType': ?servicePrincipalCredentialType,
       'servicePrincipalId': ?servicePrincipalId,
-      'servicePrincipalKey': ?servicePrincipalKey == null ? null : servicePrincipalKey!.toMap(),
+      'servicePrincipalKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
       'tenant': ?tenant,
       'type': type,
       'version': ?version,
@@ -106,23 +106,23 @@ class WarehouseLinkedServiceResponse {
 
   factory WarehouseLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return WarehouseLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      artifactId: map['artifactId'],
-      authenticationType: map['authenticationType'] == null ? null : map['authenticationType'] as String,
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      credential: map['credential'] == null ? null : CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      endpoint: map['endpoint'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      servicePrincipalCredential: map['servicePrincipalCredential'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalCredential'] as Map).cast<String, dynamic>()),
-      servicePrincipalCredentialType: map['servicePrincipalCredentialType'] == null ? null : map['servicePrincipalCredentialType'],
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : map['servicePrincipalId'],
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>()),
-      tenant: map['tenant'] == null ? null : map['tenant'],
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
-      workspaceId: map['workspaceId'] == null ? null : map['workspaceId'],
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      artifactId: (map['artifactId']).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      endpoint: (map['endpoint']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servicePrincipalCredential: map['servicePrincipalCredential'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalCredential'] as Map).cast<String, dynamic>())).input(),
+      servicePrincipalCredentialType: map['servicePrincipalCredentialType'] == null ? null : (map['servicePrincipalCredentialType']).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>())).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']).input(),
     );
   }
 }

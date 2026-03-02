@@ -31,21 +31,14 @@ class IssueModelArgs {
   /// [name] Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
   /// [project] Optional.
   IssueModelArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig>? inputDataConfig,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? location,
-    pulumi.Output<IssueModelModelType>? modelType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      inputDataConfig = pulumi.Input.asOptionalInput<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig>(inputDataConfig),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      modelType = pulumi.Input.asOptionalInput<IssueModelModelType>(modelType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.displayName,
+    this.inputDataConfig,
+    this.languageCode,
+    this.location,
+    this.modelType,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class IssueModelArgs {
 
   factory IssueModelArgs.fromMap(Map<String, dynamic> map) {
     return IssueModelArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      inputDataConfig: map['inputDataConfig'] == null ? null : pulumi.Output.create<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig>(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      modelType: map['modelType'] == null ? null : pulumi.Output.create<IssueModelModelType>(IssueModelModelType.fromValue(map['modelType'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      inputDataConfig: map['inputDataConfig'] == null ? null : (GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      modelType: map['modelType'] == null ? null : (IssueModelModelType.fromValue(map['modelType'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

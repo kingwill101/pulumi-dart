@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of the delegation.
 class DelegationProperties {
   /// The service name to which the NVA is delegated.
-  final String? serviceName;
+  final pulumi.Input<String>? serviceName;
 
   /// Creates a new [DelegationProperties].
   /// [serviceName] The service name to which the NVA is delegated.
@@ -20,7 +21,7 @@ class DelegationProperties {
 
   factory DelegationProperties.fromMap(Map<String, dynamic> map) {
     return DelegationProperties(
-      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
     );
   }
 }

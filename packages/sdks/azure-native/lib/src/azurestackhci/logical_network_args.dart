@@ -37,23 +37,15 @@ class LogicalNetworkArgs {
   /// [tags] Resource tags.
   /// [vmSwitchName] name of the network switch to be used for VMs
   LogicalNetworkArgs({
-    pulumi.Output<LogicalNetworkPropertiesDhcpOptions>? dhcpOptions,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? logicalNetworkName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<Subnet>>? subnets,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vmSwitchName,
-  }) :
-      dhcpOptions = pulumi.Input.asOptionalInput<LogicalNetworkPropertiesDhcpOptions>(dhcpOptions),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logicalNetworkName = pulumi.Input.asOptionalInput<String>(logicalNetworkName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnets = pulumi.Input.asOptionalInput<List<Subnet>>(subnets),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vmSwitchName = pulumi.Input.asOptionalInput<String>(vmSwitchName);
+    this.dhcpOptions,
+    this.extendedLocation,
+    this.location,
+    this.logicalNetworkName,
+    required this.resourceGroupName,
+    this.subnets,
+    this.tags,
+    this.vmSwitchName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class LogicalNetworkArgs {
 
   factory LogicalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return LogicalNetworkArgs(
-      dhcpOptions: map['dhcpOptions'] == null ? null : pulumi.Output.create<LogicalNetworkPropertiesDhcpOptions>(LogicalNetworkPropertiesDhcpOptions.fromMap((map['dhcpOptions'] as Map).cast<String, dynamic>())),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logicalNetworkName: map['logicalNetworkName'] == null ? null : pulumi.Output.create<String>(map['logicalNetworkName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnets: map['subnets'] == null ? null : pulumi.Output.create<List<Subnet>>(pulumi.Input.decodeList<Subnet>(map['subnets'], (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vmSwitchName: map['vmSwitchName'] == null ? null : pulumi.Output.create<String>(map['vmSwitchName'] as String),
+      dhcpOptions: map['dhcpOptions'] == null ? null : (LogicalNetworkPropertiesDhcpOptions.fromMap((map['dhcpOptions'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logicalNetworkName: map['logicalNetworkName'] == null ? null : (map['logicalNetworkName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<Subnet>(map['subnets'], (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vmSwitchName: map['vmSwitchName'] == null ? null : (map['vmSwitchName'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_destination_response.dart';
 
 /// Describes the tcp configuration for external connectivity for this network.
 class TcpConfigResponse {
   /// Describes destination endpoint for routing traffic.
-  final GatewayDestinationResponse destination;
+  final pulumi.Input<GatewayDestinationResponse> destination;
   /// tcp gateway config name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the port at which the service endpoint below needs to be exposed.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [TcpConfigResponse].
   /// [destination] Describes destination endpoint for routing traffic.
@@ -23,7 +24,7 @@ class TcpConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination': destination.toMap(),
+      'destination': pulumi.Input.mapInputValue<GatewayDestinationResponse, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'name': name,
       'port': port,
     };
@@ -31,9 +32,9 @@ class TcpConfigResponse {
 
   factory TcpConfigResponse.fromMap(Map<String, dynamic> map) {
     return TcpConfigResponse(
-      destination: GatewayDestinationResponse.fromMap((map['destination'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      port: map['port'] as int,
+      destination: (GatewayDestinationResponse.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

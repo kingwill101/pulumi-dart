@@ -19,15 +19,11 @@ class HostGroupAccountUserAttachmentState {
   /// [instanceId] The ID of the Bastionhost instance where you want to authorize the user to manage the specified hosts and host accounts.
   /// [userId] The ID of the user that you want to authorize to manage the specified hosts and host accounts.
   HostGroupAccountUserAttachmentState({
-    pulumi.Output<List<String>>? hostAccountNames,
-    pulumi.Output<String>? hostGroupId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? userId,
-  }) :
-      hostAccountNames = pulumi.Input.asOptionalInput<List<String>>(hostAccountNames),
-      hostGroupId = pulumi.Input.asOptionalInput<String>(hostGroupId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.hostAccountNames,
+    this.hostGroupId,
+    this.instanceId,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class HostGroupAccountUserAttachmentState {
 
   factory HostGroupAccountUserAttachmentState.fromMap(Map<String, dynamic> map) {
     return HostGroupAccountUserAttachmentState(
-      hostAccountNames: map['hostAccountNames'] == null ? null : pulumi.Output.create<List<String>>((map['hostAccountNames'] as List).cast<String>()),
-      hostGroupId: map['hostGroupId'] == null ? null : pulumi.Output.create<String>(map['hostGroupId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      hostAccountNames: map['hostAccountNames'] == null ? null : ((map['hostAccountNames'] as List).cast<String>()).input(),
+      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

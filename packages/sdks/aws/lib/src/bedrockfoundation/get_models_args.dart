@@ -25,17 +25,12 @@ class GetModelsArgs {
   /// [byProvider] Model provider to filter on.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetModelsArgs({
-    pulumi.Output<String>? byCustomizationType,
-    pulumi.Output<String>? byInferenceType,
-    pulumi.Output<String>? byOutputModality,
-    pulumi.Output<String>? byProvider,
-    pulumi.Output<String>? region,
-  }) :
-      byCustomizationType = pulumi.Input.asOptionalInput<String>(byCustomizationType),
-      byInferenceType = pulumi.Input.asOptionalInput<String>(byInferenceType),
-      byOutputModality = pulumi.Input.asOptionalInput<String>(byOutputModality),
-      byProvider = pulumi.Input.asOptionalInput<String>(byProvider),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.byCustomizationType,
+    this.byInferenceType,
+    this.byOutputModality,
+    this.byProvider,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetModelsArgs {
 
   factory GetModelsArgs.fromMap(Map<String, dynamic> map) {
     return GetModelsArgs(
-      byCustomizationType: map['byCustomizationType'] == null ? null : pulumi.Output.create<String>(map['byCustomizationType'] as String),
-      byInferenceType: map['byInferenceType'] == null ? null : pulumi.Output.create<String>(map['byInferenceType'] as String),
-      byOutputModality: map['byOutputModality'] == null ? null : pulumi.Output.create<String>(map['byOutputModality'] as String),
-      byProvider: map['byProvider'] == null ? null : pulumi.Output.create<String>(map['byProvider'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      byCustomizationType: map['byCustomizationType'] == null ? null : (map['byCustomizationType'] as String).input(),
+      byInferenceType: map['byInferenceType'] == null ? null : (map['byInferenceType'] as String).input(),
+      byOutputModality: map['byOutputModality'] == null ? null : (map['byOutputModality'] as String).input(),
+      byProvider: map['byProvider'] == null ? null : (map['byProvider'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

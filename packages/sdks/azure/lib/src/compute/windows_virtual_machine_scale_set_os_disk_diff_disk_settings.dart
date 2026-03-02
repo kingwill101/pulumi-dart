@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsVirtualMachineScaleSetOsDiskDiffDiskSettings {
   /// Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is `Local`. Changing this forces a new resource to be created.
-  final String option;
+  final pulumi.Input<String> option;
   /// Specifies where to store the Ephemeral Disk. Possible values are `CacheDisk` and `ResourceDisk`. Defaults to `CacheDisk`. Changing this forces a new resource to be created.
-  final String? placement;
+  final pulumi.Input<String>? placement;
 
   /// Creates a new [WindowsVirtualMachineScaleSetOsDiskDiffDiskSettings].
   /// [option] Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is `Local`. Changing this forces a new resource to be created.
@@ -24,8 +25,8 @@ class WindowsVirtualMachineScaleSetOsDiskDiffDiskSettings {
 
   factory WindowsVirtualMachineScaleSetOsDiskDiffDiskSettings.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineScaleSetOsDiskDiffDiskSettings(
-      option: map['option'] as String,
-      placement: map['placement'] == null ? null : map['placement'] as String,
+      option: (map['option'] as String).input(),
+      placement: map['placement'] == null ? null : (map['placement'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'exec_step_config.dart';
 
 /// A step that runs an executable for a PatchJob.
 class ExecStep {
   /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-  final ExecStepConfig? linuxExecStepConfig;
+  final pulumi.Input<ExecStepConfig>? linuxExecStepConfig;
   /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-  final ExecStepConfig? windowsExecStepConfig;
+  final pulumi.Input<ExecStepConfig>? windowsExecStepConfig;
 
   /// Creates a new [ExecStep].
   /// [linuxExecStepConfig] The ExecStepConfig for all Linux VMs targeted by the PatchJob.
@@ -19,15 +20,15 @@ class ExecStep {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'linuxExecStepConfig': ?linuxExecStepConfig == null ? null : linuxExecStepConfig!.toMap(),
-      'windowsExecStepConfig': ?windowsExecStepConfig == null ? null : windowsExecStepConfig!.toMap(),
+      'linuxExecStepConfig': ?pulumi.Input.mapOptionalInputValue<ExecStepConfig, Map<String, dynamic>>(linuxExecStepConfig, (value) => value.toMap()),
+      'windowsExecStepConfig': ?pulumi.Input.mapOptionalInputValue<ExecStepConfig, Map<String, dynamic>>(windowsExecStepConfig, (value) => value.toMap()),
     };
   }
 
   factory ExecStep.fromMap(Map<String, dynamic> map) {
     return ExecStep(
-      linuxExecStepConfig: map['linuxExecStepConfig'] == null ? null : ExecStepConfig.fromMap((map['linuxExecStepConfig'] as Map).cast<String, dynamic>()),
-      windowsExecStepConfig: map['windowsExecStepConfig'] == null ? null : ExecStepConfig.fromMap((map['windowsExecStepConfig'] as Map).cast<String, dynamic>()),
+      linuxExecStepConfig: map['linuxExecStepConfig'] == null ? null : (ExecStepConfig.fromMap((map['linuxExecStepConfig'] as Map).cast<String, dynamic>())).input(),
+      windowsExecStepConfig: map['windowsExecStepConfig'] == null ? null : (ExecStepConfig.fromMap((map['windowsExecStepConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

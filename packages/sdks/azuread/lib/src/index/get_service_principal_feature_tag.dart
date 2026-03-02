@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServicePrincipalFeatureTag {
   /// Whether this service principal represents a custom SAML application
-  final bool customSingleSignOn;
+  final pulumi.Input<bool> customSingleSignOn;
   /// Whether this service principal represents an Enterprise Application
-  final bool enterprise;
+  final pulumi.Input<bool> enterprise;
   /// Whether this service principal represents a gallery application
-  final bool gallery;
+  final pulumi.Input<bool> gallery;
   /// Whether this app is invisible to users in My Apps and Office 365 Launcher
-  final bool hide;
+  final pulumi.Input<bool> hide;
 
   /// Creates a new [GetServicePrincipalFeatureTag].
   /// [customSingleSignOn] Whether this service principal represents a custom SAML application
@@ -34,10 +35,10 @@ class GetServicePrincipalFeatureTag {
 
   factory GetServicePrincipalFeatureTag.fromMap(Map<String, dynamic> map) {
     return GetServicePrincipalFeatureTag(
-      customSingleSignOn: map['customSingleSignOn'] as bool,
-      enterprise: map['enterprise'] as bool,
-      gallery: map['gallery'] as bool,
-      hide: map['hide'] as bool,
+      customSingleSignOn: (map['customSingleSignOn'] as bool).input(),
+      enterprise: (map['enterprise'] as bool).input(),
+      gallery: (map['gallery'] as bool).input(),
+      hide: (map['hide'] as bool).input(),
     );
   }
 }

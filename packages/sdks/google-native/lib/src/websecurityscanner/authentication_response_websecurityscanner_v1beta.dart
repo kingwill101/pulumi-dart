@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_account_response_websecurityscanner_v1beta.dart';
 import 'google_account_response_websecurityscanner_v1beta.dart';
 import 'iap_credential_response_websecurityscanner_v1beta.dart';
@@ -7,11 +8,11 @@ import 'iap_credential_response_websecurityscanner_v1beta.dart';
 /// Scan authentication configuration.
 class AuthenticationResponseWebsecurityscannerV1beta {
   /// Authentication using a custom account.
-  final CustomAccountResponseWebsecurityscannerV1beta customAccount;
+  final pulumi.Input<CustomAccountResponseWebsecurityscannerV1beta> customAccount;
   /// Authentication using a Google account.
-  final GoogleAccountResponseWebsecurityscannerV1beta googleAccount;
+  final pulumi.Input<GoogleAccountResponseWebsecurityscannerV1beta> googleAccount;
   /// Authentication using Identity-Aware-Proxy (IAP).
-  final IapCredentialResponseWebsecurityscannerV1beta iapCredential;
+  final pulumi.Input<IapCredentialResponseWebsecurityscannerV1beta> iapCredential;
 
   /// Creates a new [AuthenticationResponseWebsecurityscannerV1beta].
   /// [customAccount] Authentication using a custom account.
@@ -25,17 +26,17 @@ class AuthenticationResponseWebsecurityscannerV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customAccount': customAccount.toMap(),
-      'googleAccount': googleAccount.toMap(),
-      'iapCredential': iapCredential.toMap(),
+      'customAccount': pulumi.Input.mapInputValue<CustomAccountResponseWebsecurityscannerV1beta, Map<String, dynamic>>(customAccount, (value) => value.toMap()),
+      'googleAccount': pulumi.Input.mapInputValue<GoogleAccountResponseWebsecurityscannerV1beta, Map<String, dynamic>>(googleAccount, (value) => value.toMap()),
+      'iapCredential': pulumi.Input.mapInputValue<IapCredentialResponseWebsecurityscannerV1beta, Map<String, dynamic>>(iapCredential, (value) => value.toMap()),
     };
   }
 
   factory AuthenticationResponseWebsecurityscannerV1beta.fromMap(Map<String, dynamic> map) {
     return AuthenticationResponseWebsecurityscannerV1beta(
-      customAccount: CustomAccountResponseWebsecurityscannerV1beta.fromMap((map['customAccount'] as Map).cast<String, dynamic>()),
-      googleAccount: GoogleAccountResponseWebsecurityscannerV1beta.fromMap((map['googleAccount'] as Map).cast<String, dynamic>()),
-      iapCredential: IapCredentialResponseWebsecurityscannerV1beta.fromMap((map['iapCredential'] as Map).cast<String, dynamic>()),
+      customAccount: (CustomAccountResponseWebsecurityscannerV1beta.fromMap((map['customAccount'] as Map).cast<String, dynamic>())).input(),
+      googleAccount: (GoogleAccountResponseWebsecurityscannerV1beta.fromMap((map['googleAccount'] as Map).cast<String, dynamic>())).input(),
+      iapCredential: (IapCredentialResponseWebsecurityscannerV1beta.fromMap((map['iapCredential'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

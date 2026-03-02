@@ -8,15 +8,15 @@ import 'coo_web_cc_rule_rule_detail_status_code.dart';
 
 class CooWebCcRuleRuleDetail {
   /// The action to take when a match occurs. Valid values:
-  final String action;
+  final pulumi.Input<String> action;
   /// List of matching conditions.   See `condition` below.
-  final List<CooWebCcRuleRuleDetailCondition> conditions;
+  final pulumi.Input<List<CooWebCcRuleRuleDetailCondition>> conditions;
   /// Rate limiting statistics. See `rate_limit` below.
-  final CooWebCcRuleRuleDetailRateLimit rateLimit;
+  final pulumi.Input<CooWebCcRuleRuleDetailRateLimit> rateLimit;
   /// Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
-  final CooWebCcRuleRuleDetailStatistics? statistics;
+  final pulumi.Input<CooWebCcRuleRuleDetailStatistics>? statistics;
   /// The HTTP status code. See `status_code` below.
-  final CooWebCcRuleRuleDetailStatusCode? statusCode;
+  final pulumi.Input<CooWebCcRuleRuleDetailStatusCode>? statusCode;
 
   /// Creates a new [CooWebCcRuleRuleDetail].
   /// [action] The action to take when a match occurs. Valid values:
@@ -35,20 +35,20 @@ class CooWebCcRuleRuleDetail {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
-      'conditions': pulumi.Input.encodeList<CooWebCcRuleRuleDetailCondition, Map<String, dynamic>>(conditions, (value) => value.toMap()),
-      'rateLimit': rateLimit.toMap(),
-      'statistics': ?statistics == null ? null : statistics!.toMap(),
-      'statusCode': ?statusCode == null ? null : statusCode!.toMap(),
+      'conditions': pulumi.Input.mapInputValue<List<CooWebCcRuleRuleDetailCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<CooWebCcRuleRuleDetailCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rateLimit': pulumi.Input.mapInputValue<CooWebCcRuleRuleDetailRateLimit, Map<String, dynamic>>(rateLimit, (value) => value.toMap()),
+      'statistics': ?pulumi.Input.mapOptionalInputValue<CooWebCcRuleRuleDetailStatistics, Map<String, dynamic>>(statistics, (value) => value.toMap()),
+      'statusCode': ?pulumi.Input.mapOptionalInputValue<CooWebCcRuleRuleDetailStatusCode, Map<String, dynamic>>(statusCode, (value) => value.toMap()),
     };
   }
 
   factory CooWebCcRuleRuleDetail.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleRuleDetail(
-      action: map['action'] as String,
-      conditions: pulumi.Input.decodeList<CooWebCcRuleRuleDetailCondition>(map['conditions'], (value) => CooWebCcRuleRuleDetailCondition.fromMap((value as Map).cast<String, dynamic>())),
-      rateLimit: CooWebCcRuleRuleDetailRateLimit.fromMap((map['rateLimit'] as Map).cast<String, dynamic>()),
-      statistics: map['statistics'] == null ? null : CooWebCcRuleRuleDetailStatistics.fromMap((map['statistics'] as Map).cast<String, dynamic>()),
-      statusCode: map['statusCode'] == null ? null : CooWebCcRuleRuleDetailStatusCode.fromMap((map['statusCode'] as Map).cast<String, dynamic>()),
+      action: (map['action'] as String).input(),
+      conditions: (pulumi.Input.decodeList<CooWebCcRuleRuleDetailCondition>(map['conditions'], (value) => CooWebCcRuleRuleDetailCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rateLimit: (CooWebCcRuleRuleDetailRateLimit.fromMap((map['rateLimit'] as Map).cast<String, dynamic>())).input(),
+      statistics: map['statistics'] == null ? null : (CooWebCcRuleRuleDetailStatistics.fromMap((map['statistics'] as Map).cast<String, dynamic>())).input(),
+      statusCode: map['statusCode'] == null ? null : (CooWebCcRuleRuleDetailStatusCode.fromMap((map['statusCode'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

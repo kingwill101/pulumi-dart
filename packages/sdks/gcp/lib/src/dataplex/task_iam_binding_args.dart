@@ -49,21 +49,14 @@ class TaskIamBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [taskId] Used to find the parent resource to bind the IAM policy to
   TaskIamBindingArgs({
-    pulumi.Output<TaskIamBindingCondition>? condition,
-    required pulumi.Output<String> lake,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> taskId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<TaskIamBindingCondition>(condition),
-      lake = pulumi.Input.asInput<String>(lake),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      taskId = pulumi.Input.asInput<String>(taskId);
+    this.condition,
+    required this.lake,
+    this.location,
+    required this.members,
+    this.project,
+    required this.role,
+    required this.taskId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,13 +72,13 @@ class TaskIamBindingArgs {
 
   factory TaskIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return TaskIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<TaskIamBindingCondition>(TaskIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      lake: pulumi.Output.create<String>(map['lake'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      taskId: pulumi.Output.create<String>(map['taskId'] as String),
+      condition: map['condition'] == null ? null : (TaskIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      lake: (map['lake'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      taskId: (map['taskId'] as String).input(),
     );
   }
 }

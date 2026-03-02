@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Site address properties
 class SiteAddressProperties {
   /// City of the address
-  final String? city;
+  final pulumi.Input<String>? city;
   /// Country of the address
-  final String? country;
+  final pulumi.Input<String>? country;
   /// Postal or ZIP code of the address
-  final String? postalCode;
+  final pulumi.Input<String>? postalCode;
   /// State or province of the address
-  final String? stateOrProvince;
+  final pulumi.Input<String>? stateOrProvince;
   /// First line of the street address
-  final String? streetAddress1;
+  final pulumi.Input<String>? streetAddress1;
   /// Second line of the street address
-  final String? streetAddress2;
+  final pulumi.Input<String>? streetAddress2;
 
   /// Creates a new [SiteAddressProperties].
   /// [city] City of the address
@@ -45,12 +46,12 @@ class SiteAddressProperties {
 
   factory SiteAddressProperties.fromMap(Map<String, dynamic> map) {
     return SiteAddressProperties(
-      city: map['city'] == null ? null : map['city'] as String,
-      country: map['country'] == null ? null : map['country'] as String,
-      postalCode: map['postalCode'] == null ? null : map['postalCode'] as String,
-      stateOrProvince: map['stateOrProvince'] == null ? null : map['stateOrProvince'] as String,
-      streetAddress1: map['streetAddress1'] == null ? null : map['streetAddress1'] as String,
-      streetAddress2: map['streetAddress2'] == null ? null : map['streetAddress2'] as String,
+      city: map['city'] == null ? null : (map['city'] as String).input(),
+      country: map['country'] == null ? null : (map['country'] as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
+      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince'] as String).input(),
+      streetAddress1: map['streetAddress1'] == null ? null : (map['streetAddress1'] as String).input(),
+      streetAddress2: map['streetAddress2'] == null ? null : (map['streetAddress2'] as String).input(),
     );
   }
 }

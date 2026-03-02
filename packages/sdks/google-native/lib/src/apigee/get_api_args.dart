@@ -14,11 +14,9 @@ class GetApiArgs {
   /// [apiId] Required.
   /// [organizationId] Required.
   GetApiArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.apiId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetApiArgs {
 
   factory GetApiArgs.fromMap(Map<String, dynamic> map) {
     return GetApiArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      apiId: (map['apiId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

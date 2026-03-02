@@ -26,13 +26,10 @@ class GetTokenArgs {
   /// [type] The type of resource to be verified, either a domain or a web site.
   /// [verificationMethod] The verification method for the Site Verification system to use to verify
   GetTokenArgs({
-    required pulumi.Output<String> identifier,
-    required pulumi.Output<String> type,
-    required pulumi.Output<String> verificationMethod,
-  }) :
-      identifier = pulumi.Input.asInput<String>(identifier),
-      type = pulumi.Input.asInput<String>(type),
-      verificationMethod = pulumi.Input.asInput<String>(verificationMethod);
+    required this.identifier,
+    required this.type,
+    required this.verificationMethod,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,9 +41,9 @@ class GetTokenArgs {
 
   factory GetTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetTokenArgs(
-      identifier: pulumi.Output.create<String>(map['identifier'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      verificationMethod: pulumi.Output.create<String>(map['verificationMethod'] as String),
+      identifier: (map['identifier'] as String).input(),
+      type: (map['type'] as String).input(),
+      verificationMethod: (map['verificationMethod'] as String).input(),
     );
   }
 }

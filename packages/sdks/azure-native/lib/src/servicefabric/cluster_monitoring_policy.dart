@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the monitoring policies for the cluster upgrade.
 class ClusterMonitoringPolicy {
   /// The amount of time to retry health evaluation when the application or cluster is unhealthy before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-  final String healthCheckRetryTimeout;
+  final pulumi.Input<String> healthCheckRetryTimeout;
   /// The amount of time that the application or cluster must remain healthy before the upgrade proceeds to the next upgrade domain. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-  final String healthCheckStableDuration;
+  final pulumi.Input<String> healthCheckStableDuration;
   /// The length of time to wait after completing an upgrade domain before performing health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-  final String healthCheckWaitDuration;
+  final pulumi.Input<String> healthCheckWaitDuration;
   /// The amount of time each upgrade domain has to complete before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-  final String upgradeDomainTimeout;
+  final pulumi.Input<String> upgradeDomainTimeout;
   /// The amount of time the overall upgrade has to complete before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-  final String upgradeTimeout;
+  final pulumi.Input<String> upgradeTimeout;
 
   /// Creates a new [ClusterMonitoringPolicy].
   /// [healthCheckRetryTimeout] The amount of time to retry health evaluation when the application or cluster is unhealthy before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
@@ -40,11 +41,11 @@ class ClusterMonitoringPolicy {
 
   factory ClusterMonitoringPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterMonitoringPolicy(
-      healthCheckRetryTimeout: map['healthCheckRetryTimeout'] as String,
-      healthCheckStableDuration: map['healthCheckStableDuration'] as String,
-      healthCheckWaitDuration: map['healthCheckWaitDuration'] as String,
-      upgradeDomainTimeout: map['upgradeDomainTimeout'] as String,
-      upgradeTimeout: map['upgradeTimeout'] as String,
+      healthCheckRetryTimeout: (map['healthCheckRetryTimeout'] as String).input(),
+      healthCheckStableDuration: (map['healthCheckStableDuration'] as String).input(),
+      healthCheckWaitDuration: (map['healthCheckWaitDuration'] as String).input(),
+      upgradeDomainTimeout: (map['upgradeDomainTimeout'] as String).input(),
+      upgradeTimeout: (map['upgradeTimeout'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ARM IDs of the target assessments.
 class TargetAssessmentArmIds {
   /// ARM ID for Azure Kubernetes Service assessment.
-  final String? aks;
+  final pulumi.Input<String>? aks;
   /// ARM ID for Azure App Service assessment.
-  final String? azureAppService;
+  final pulumi.Input<String>? azureAppService;
   /// ARM ID for Azure App Service Container assessment.
-  final String? azureAppServiceContainer;
+  final pulumi.Input<String>? azureAppServiceContainer;
 
   /// Creates a new [TargetAssessmentArmIds].
   /// [aks] ARM ID for Azure Kubernetes Service assessment.
@@ -30,9 +31,9 @@ class TargetAssessmentArmIds {
 
   factory TargetAssessmentArmIds.fromMap(Map<String, dynamic> map) {
     return TargetAssessmentArmIds(
-      aks: map['aks'] == null ? null : map['aks'] as String,
-      azureAppService: map['azureAppService'] == null ? null : map['azureAppService'] as String,
-      azureAppServiceContainer: map['azureAppServiceContainer'] == null ? null : map['azureAppServiceContainer'] as String,
+      aks: map['aks'] == null ? null : (map['aks'] as String).input(),
+      azureAppService: map['azureAppService'] == null ? null : (map['azureAppService'] as String).input(),
+      azureAppServiceContainer: map['azureAppServiceContainer'] == null ? null : (map['azureAppServiceContainer'] as String).input(),
     );
   }
 }

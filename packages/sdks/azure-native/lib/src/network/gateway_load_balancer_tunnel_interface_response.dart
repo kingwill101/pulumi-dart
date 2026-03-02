@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gateway load balancer tunnel interface of a load balancer backend address pool.
 class GatewayLoadBalancerTunnelInterfaceResponse {
   /// Identifier of gateway load balancer tunnel interface.
-  final int? identifier;
+  final pulumi.Input<int>? identifier;
   /// Port of gateway load balancer tunnel interface.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Protocol of gateway load balancer tunnel interface.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Traffic type of gateway load balancer tunnel interface.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [GatewayLoadBalancerTunnelInterfaceResponse].
   /// [identifier] Identifier of gateway load balancer tunnel interface.
@@ -35,10 +36,10 @@ class GatewayLoadBalancerTunnelInterfaceResponse {
 
   factory GatewayLoadBalancerTunnelInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return GatewayLoadBalancerTunnelInterfaceResponse(
-      identifier: map['identifier'] == null ? null : map['identifier'] as int,
-      port: map['port'] == null ? null : map['port'] as int,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      identifier: map['identifier'] == null ? null : (map['identifier'] as int).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

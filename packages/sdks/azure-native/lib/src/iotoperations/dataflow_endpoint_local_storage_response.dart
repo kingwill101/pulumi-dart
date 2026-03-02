@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Local persistent volume endpoint properties
 class DataflowEndpointLocalStorageResponse {
   /// Persistent volume claim name.
-  final String persistentVolumeClaimRef;
+  final pulumi.Input<String> persistentVolumeClaimRef;
 
   /// Creates a new [DataflowEndpointLocalStorageResponse].
   /// [persistentVolumeClaimRef] Persistent volume claim name.
@@ -20,7 +21,7 @@ class DataflowEndpointLocalStorageResponse {
 
   factory DataflowEndpointLocalStorageResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointLocalStorageResponse(
-      persistentVolumeClaimRef: map['persistentVolumeClaimRef'] as String,
+      persistentVolumeClaimRef: (map['persistentVolumeClaimRef'] as String).input(),
     );
   }
 }

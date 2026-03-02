@@ -6,13 +6,13 @@ import 'share_credential_details_response.dart';
 /// Credential details of the account.
 class AccountCredentialDetailsResponse {
   /// Connection string of the account endpoint to use the account as a storage endpoint on the device.
-  final String accountConnectionString;
+  final pulumi.Input<String> accountConnectionString;
   /// Name of the account.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// Type of the account.
-  final String dataAccountType;
+  final pulumi.Input<String> dataAccountType;
   /// Per share level unencrypted access credentials.
-  final List<ShareCredentialDetailsResponse> shareCredentialDetails;
+  final pulumi.Input<List<ShareCredentialDetailsResponse>> shareCredentialDetails;
 
   /// Creates a new [AccountCredentialDetailsResponse].
   /// [accountConnectionString] Connection string of the account endpoint to use the account as a storage endpoint on the device.
@@ -31,16 +31,16 @@ class AccountCredentialDetailsResponse {
       'accountConnectionString': accountConnectionString,
       'accountName': accountName,
       'dataAccountType': dataAccountType,
-      'shareCredentialDetails': pulumi.Input.encodeList<ShareCredentialDetailsResponse, Map<String, dynamic>>(shareCredentialDetails, (value) => value.toMap()),
+      'shareCredentialDetails': pulumi.Input.mapInputValue<List<ShareCredentialDetailsResponse>, List<Map<String, dynamic>>>(shareCredentialDetails, (value) => pulumi.Input.encodeList<ShareCredentialDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AccountCredentialDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AccountCredentialDetailsResponse(
-      accountConnectionString: map['accountConnectionString'] as String,
-      accountName: map['accountName'] as String,
-      dataAccountType: map['dataAccountType'] as String,
-      shareCredentialDetails: pulumi.Input.decodeList<ShareCredentialDetailsResponse>(map['shareCredentialDetails'], (value) => ShareCredentialDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      accountConnectionString: (map['accountConnectionString'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      dataAccountType: (map['dataAccountType'] as String).input(),
+      shareCredentialDetails: (pulumi.Input.decodeList<ShareCredentialDetailsResponse>(map['shareCredentialDetails'], (value) => ShareCredentialDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

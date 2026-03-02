@@ -46,23 +46,15 @@ class MulticastDomainArgs {
   /// [multicastDomainId] A unique name for the multicast domain.
   /// [project] The ID of the project in which the resource belongs.
   MulticastDomainArgs({
-    required pulumi.Output<String> adminNetwork,
-    required pulumi.Output<MulticastDomainConnectionConfig> connectionConfig,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? multicastDomainGroup,
-    required pulumi.Output<String> multicastDomainId,
-    pulumi.Output<String>? project,
-  }) :
-      adminNetwork = pulumi.Input.asInput<String>(adminNetwork),
-      connectionConfig = pulumi.Input.asInput<MulticastDomainConnectionConfig>(connectionConfig),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      multicastDomainGroup = pulumi.Input.asOptionalInput<String>(multicastDomainGroup),
-      multicastDomainId = pulumi.Input.asInput<String>(multicastDomainId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.adminNetwork,
+    required this.connectionConfig,
+    this.description,
+    this.labels,
+    required this.location,
+    this.multicastDomainGroup,
+    required this.multicastDomainId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,14 +71,14 @@ class MulticastDomainArgs {
 
   factory MulticastDomainArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainArgs(
-      adminNetwork: pulumi.Output.create<String>(map['adminNetwork'] as String),
-      connectionConfig: pulumi.Output.create<MulticastDomainConnectionConfig>(MulticastDomainConnectionConfig.fromMap((map['connectionConfig'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      multicastDomainGroup: map['multicastDomainGroup'] == null ? null : pulumi.Output.create<String>(map['multicastDomainGroup'] as String),
-      multicastDomainId: pulumi.Output.create<String>(map['multicastDomainId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      adminNetwork: (map['adminNetwork'] as String).input(),
+      connectionConfig: (MulticastDomainConnectionConfig.fromMap((map['connectionConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      multicastDomainGroup: map['multicastDomainGroup'] == null ? null : (map['multicastDomainGroup'] as String).input(),
+      multicastDomainId: (map['multicastDomainId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

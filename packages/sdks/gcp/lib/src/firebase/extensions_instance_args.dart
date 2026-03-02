@@ -23,13 +23,10 @@ class ExtensionsInstanceArgs {
   /// [instanceId] The ID to use for the Extension Instance, which will become the final
   /// [project] The ID of the project in which the resource belongs.
   ExtensionsInstanceArgs({
-    required pulumi.Output<ExtensionsInstanceConfig> config,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? project,
-  }) :
-      config = pulumi.Input.asInput<ExtensionsInstanceConfig>(config),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.config,
+    required this.instanceId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class ExtensionsInstanceArgs {
 
   factory ExtensionsInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceArgs(
-      config: pulumi.Output.create<ExtensionsInstanceConfig>(ExtensionsInstanceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      config: (ExtensionsInstanceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

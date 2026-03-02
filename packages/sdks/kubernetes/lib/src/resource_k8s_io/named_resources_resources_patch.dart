@@ -6,7 +6,7 @@ import 'named_resources_instance_patch.dart';
 /// NamedResourcesResources is used in ResourceModel.
 class NamedResourcesResourcesPatch {
   /// The list of all individual resources instances currently available.
-  final List<NamedResourcesInstancePatch>? instances;
+  final pulumi.Input<List<NamedResourcesInstancePatch>>? instances;
 
   /// Creates a new [NamedResourcesResourcesPatch].
   /// [instances] The list of all individual resources instances currently available.
@@ -16,13 +16,13 @@ class NamedResourcesResourcesPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instances': ?instances == null ? null : pulumi.Input.encodeList<NamedResourcesInstancePatch, Map<String, dynamic>>(instances!, (value) => value.toMap()),
+      'instances': ?pulumi.Input.mapOptionalInputValue<List<NamedResourcesInstancePatch>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<NamedResourcesInstancePatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NamedResourcesResourcesPatch.fromMap(Map<String, dynamic> map) {
     return NamedResourcesResourcesPatch(
-      instances: map['instances'] == null ? null : pulumi.Input.decodeList<NamedResourcesInstancePatch>(map['instances'], (value) => NamedResourcesInstancePatch.fromMap((value as Map).cast<String, dynamic>())),
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<NamedResourcesInstancePatch>(map['instances'], (value) => NamedResourcesInstancePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

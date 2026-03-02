@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule {
-  final String? description;
-  final List<String>? destinationAddresses;
-  final List<String>? destinationFqdns;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<List<String>>? destinationAddresses;
+  final pulumi.Input<List<String>>? destinationFqdns;
   /// Specifies a list of destination IP groups.
-  final List<String>? destinationIpGroups;
-  final List<String> destinationPorts;
+  final pulumi.Input<List<String>>? destinationIpGroups;
+  final pulumi.Input<List<String>> destinationPorts;
   /// The name which should be used for this Firewall Policy Rule Collection Group. Changing this forces a new Firewall Policy Rule Collection Group to be created.
-  final String name;
-  final List<String> protocols;
-  final List<String>? sourceAddresses;
-  final List<String>? sourceIpGroups;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<String>> protocols;
+  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>>? sourceIpGroups;
 
   /// Creates a new [FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule].
   /// [description] Optional.
@@ -52,15 +53,15 @@ class FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule {
 
   factory FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule(
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationAddresses: map['destinationAddresses'] == null ? null : (map['destinationAddresses'] as List).cast<String>(),
-      destinationFqdns: map['destinationFqdns'] == null ? null : (map['destinationFqdns'] as List).cast<String>(),
-      destinationIpGroups: map['destinationIpGroups'] == null ? null : (map['destinationIpGroups'] as List).cast<String>(),
-      destinationPorts: (map['destinationPorts'] as List).cast<String>(),
-      name: map['name'] as String,
-      protocols: (map['protocols'] as List).cast<String>(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : (map['sourceAddresses'] as List).cast<String>(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : (map['sourceIpGroups'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses'] as List).cast<String>()).input(),
+      destinationFqdns: map['destinationFqdns'] == null ? null : ((map['destinationFqdns'] as List).cast<String>()).input(),
+      destinationIpGroups: map['destinationIpGroups'] == null ? null : ((map['destinationIpGroups'] as List).cast<String>()).input(),
+      destinationPorts: ((map['destinationPorts'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      protocols: ((map['protocols'] as List).cast<String>()).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
     );
   }
 }

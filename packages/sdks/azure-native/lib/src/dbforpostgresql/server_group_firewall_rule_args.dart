@@ -25,17 +25,12 @@ class ServerGroupFirewallRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [startIpAddress] The start IP address of the cluster firewall rule. Must be IPv4 format.
   ServerGroupFirewallRuleArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> endIpAddress,
-    pulumi.Output<String>? firewallRuleName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> startIpAddress,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      endIpAddress = pulumi.Input.asInput<String>(endIpAddress),
-      firewallRuleName = pulumi.Input.asOptionalInput<String>(firewallRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      startIpAddress = pulumi.Input.asInput<String>(startIpAddress);
+    required this.clusterName,
+    required this.endIpAddress,
+    this.firewallRuleName,
+    required this.resourceGroupName,
+    required this.startIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ServerGroupFirewallRuleArgs {
 
   factory ServerGroupFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupFirewallRuleArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      endIpAddress: pulumi.Output.create<String>(map['endIpAddress'] as String),
-      firewallRuleName: map['firewallRuleName'] == null ? null : pulumi.Output.create<String>(map['firewallRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startIpAddress: pulumi.Output.create<String>(map['startIpAddress'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      endIpAddress: (map['endIpAddress'] as String).input(),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      startIpAddress: (map['startIpAddress'] as String).input(),
     );
   }
 }

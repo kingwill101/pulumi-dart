@@ -22,15 +22,11 @@ class EnvironmentCustomDomainArgs {
   /// [containerAppEnvironmentId] The ID of the Container Apps Managed Environment. Changing this forces a new resource to be created.
   /// [dnsSuffix] Custom DNS Suffix for the Container App Environment.
   EnvironmentCustomDomainArgs({
-    required pulumi.Output<String> certificateBlobBase64,
-    required pulumi.Output<String> certificatePassword,
-    required pulumi.Output<String> containerAppEnvironmentId,
-    required pulumi.Output<String> dnsSuffix,
-  }) :
-      certificateBlobBase64 = pulumi.Input.asInput<String>(certificateBlobBase64),
-      certificatePassword = pulumi.Input.asInput<String>(certificatePassword),
-      containerAppEnvironmentId = pulumi.Input.asInput<String>(containerAppEnvironmentId),
-      dnsSuffix = pulumi.Input.asInput<String>(dnsSuffix);
+    required this.certificateBlobBase64,
+    required this.certificatePassword,
+    required this.containerAppEnvironmentId,
+    required this.dnsSuffix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class EnvironmentCustomDomainArgs {
 
   factory EnvironmentCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentCustomDomainArgs(
-      certificateBlobBase64: pulumi.Output.create<String>(map['certificateBlobBase64'] as String),
-      certificatePassword: pulumi.Output.create<String>(map['certificatePassword'] as String),
-      containerAppEnvironmentId: pulumi.Output.create<String>(map['containerAppEnvironmentId'] as String),
-      dnsSuffix: pulumi.Output.create<String>(map['dnsSuffix'] as String),
+      certificateBlobBase64: (map['certificateBlobBase64'] as String).input(),
+      certificatePassword: (map['certificatePassword'] as String).input(),
+      containerAppEnvironmentId: (map['containerAppEnvironmentId'] as String).input(),
+      dnsSuffix: (map['dnsSuffix'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class VaultLockArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vaultName] The name of the Glacier Vault.
   VaultLockArgs({
-    required pulumi.Output<bool> completeLock,
-    pulumi.Output<bool>? ignoreDeletionError,
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> vaultName,
-  }) :
-      completeLock = pulumi.Input.asInput<bool>(completeLock),
-      ignoreDeletionError = pulumi.Input.asOptionalInput<bool>(ignoreDeletionError),
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.completeLock,
+    this.ignoreDeletionError,
+    required this.policy,
+    this.region,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class VaultLockArgs {
 
   factory VaultLockArgs.fromMap(Map<String, dynamic> map) {
     return VaultLockArgs(
-      completeLock: pulumi.Output.create<bool>(map['completeLock'] as bool),
-      ignoreDeletionError: map['ignoreDeletionError'] == null ? null : pulumi.Output.create<bool>(map['ignoreDeletionError'] as bool),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      completeLock: (map['completeLock'] as bool).input(),
+      ignoreDeletionError: map['ignoreDeletionError'] == null ? null : (map['ignoreDeletionError'] as bool).input(),
+      policy: (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

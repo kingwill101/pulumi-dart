@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// EventSubscription Status denotes the status of the EventSubscription resource.
 class EventSubscriptionStatusResponse {
   /// Description of the state.
-  final String description;
+  final pulumi.Input<String> description;
   /// State of Event Subscription resource.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [EventSubscriptionStatusResponse].
   /// [description] Description of the state.
@@ -25,8 +26,8 @@ class EventSubscriptionStatusResponse {
 
   factory EventSubscriptionStatusResponse.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionStatusResponse(
-      description: map['description'] as String,
-      state: map['state'] as String,
+      description: (map['description'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

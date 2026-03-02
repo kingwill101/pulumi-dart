@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceVmImage {
   /// Use this VM image family to find the image; the newest image in this family will be used.
-  final String? imageFamily;
+  final pulumi.Input<String>? imageFamily;
   /// Use VM image name to find the image.
-  final String? imageName;
+  final pulumi.Input<String>? imageName;
   /// The name of the Google Cloud project that this VM image belongs to.
   /// Format: projects/{project_id}
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [InstanceVmImage].
   /// [imageFamily] Use this VM image family to find the image; the newest image in this family will be used.
@@ -30,9 +31,9 @@ class InstanceVmImage {
 
   factory InstanceVmImage.fromMap(Map<String, dynamic> map) {
     return InstanceVmImage(
-      imageFamily: map['imageFamily'] == null ? null : map['imageFamily'] as String,
-      imageName: map['imageName'] == null ? null : map['imageName'] as String,
-      project: map['project'] as String,
+      imageFamily: map['imageFamily'] == null ? null : (map['imageFamily'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

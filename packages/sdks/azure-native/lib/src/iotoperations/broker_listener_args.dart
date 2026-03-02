@@ -30,19 +30,13 @@ class BrokerListenerArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   BrokerListenerArgs({
-    required pulumi.Output<String> brokerName,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<String>? listenerName,
-    pulumi.Output<BrokerListenerProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      brokerName = pulumi.Input.asInput<String>(brokerName),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      listenerName = pulumi.Input.asOptionalInput<String>(listenerName),
-      properties = pulumi.Input.asOptionalInput<BrokerListenerProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.brokerName,
+    required this.extendedLocation,
+    required this.instanceName,
+    this.listenerName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class BrokerListenerArgs {
 
   factory BrokerListenerArgs.fromMap(Map<String, dynamic> map) {
     return BrokerListenerArgs(
-      brokerName: pulumi.Output.create<String>(map['brokerName'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      listenerName: map['listenerName'] == null ? null : pulumi.Output.create<String>(map['listenerName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<BrokerListenerProperties>(BrokerListenerProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      brokerName: (map['brokerName'] as String).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      listenerName: map['listenerName'] == null ? null : (map['listenerName'] as String).input(),
+      properties: map['properties'] == null ? null : (BrokerListenerProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

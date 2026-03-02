@@ -22,17 +22,12 @@ class ApplicationDeploymentState {
   /// [packageVersion] The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
   /// [warUrl] The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
   ApplicationDeploymentState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? lastPackageVersion,
-    pulumi.Output<String>? packageVersion,
-    pulumi.Output<String>? warUrl,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      lastPackageVersion = pulumi.Input.asOptionalInput<String>(lastPackageVersion),
-      packageVersion = pulumi.Input.asOptionalInput<String>(packageVersion),
-      warUrl = pulumi.Input.asOptionalInput<String>(warUrl);
+    this.appId,
+    this.groupId,
+    this.lastPackageVersion,
+    this.packageVersion,
+    this.warUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ApplicationDeploymentState {
 
   factory ApplicationDeploymentState.fromMap(Map<String, dynamic> map) {
     return ApplicationDeploymentState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      lastPackageVersion: map['lastPackageVersion'] == null ? null : pulumi.Output.create<String>(map['lastPackageVersion'] as String),
-      packageVersion: map['packageVersion'] == null ? null : pulumi.Output.create<String>(map['packageVersion'] as String),
-      warUrl: map['warUrl'] == null ? null : pulumi.Output.create<String>(map['warUrl'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      lastPackageVersion: map['lastPackageVersion'] == null ? null : (map['lastPackageVersion'] as String).input(),
+      packageVersion: map['packageVersion'] == null ? null : (map['packageVersion'] as String).input(),
+      warUrl: map['warUrl'] == null ? null : (map['warUrl'] as String).input(),
     );
   }
 }

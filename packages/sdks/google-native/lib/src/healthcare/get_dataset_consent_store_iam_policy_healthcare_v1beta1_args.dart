@@ -20,17 +20,12 @@ class GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args({
-    required pulumi.Output<String> consentStoreId,
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-  }) :
-      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.consentStoreId,
+    required this.datasetId,
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args {
 
   factory GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args(
-      consentStoreId: pulumi.Output.create<String>(map['consentStoreId'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      consentStoreId: (map['consentStoreId'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendServiceUsedByComputeBeta {
-  final String? reference;
+  final pulumi.Input<String>? reference;
 
   /// Creates a new [BackendServiceUsedByComputeBeta].
   /// [reference] Optional.
@@ -18,7 +19,7 @@ class BackendServiceUsedByComputeBeta {
 
   factory BackendServiceUsedByComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendServiceUsedByComputeBeta(
-      reference: map['reference'] == null ? null : map['reference'] as String,
+      reference: map['reference'] == null ? null : (map['reference'] as String).input(),
     );
   }
 }

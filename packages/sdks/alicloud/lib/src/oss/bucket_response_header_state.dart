@@ -14,11 +14,9 @@ class BucketResponseHeaderState {
   /// [bucket] The name of the bucket
   /// [rules] The container that holds the response header rules. See `rule` below.
   BucketResponseHeaderState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<List<BucketResponseHeaderRule>>? rules,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      rules = pulumi.Input.asOptionalInput<List<BucketResponseHeaderRule>>(rules);
+    this.bucket,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class BucketResponseHeaderState {
 
   factory BucketResponseHeaderState.fromMap(Map<String, dynamic> map) {
     return BucketResponseHeaderState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<BucketResponseHeaderRule>>(pulumi.Input.decodeList<BucketResponseHeaderRule>(map['rules'], (value) => BucketResponseHeaderRule.fromMap((value as Map).cast<String, dynamic>()))),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketResponseHeaderRule>(map['rules'], (value) => BucketResponseHeaderRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

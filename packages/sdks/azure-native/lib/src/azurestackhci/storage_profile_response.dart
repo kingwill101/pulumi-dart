@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// StorageProfile of edge machine.
 class StorageProfileResponse {
   /// Number of storage disks in the device with $CanPool as true.
-  final double poolableDisksCount;
+  final pulumi.Input<double> poolableDisksCount;
 
   /// Creates a new [StorageProfileResponse].
   /// [poolableDisksCount] Number of storage disks in the device with $CanPool as true.
@@ -20,7 +21,7 @@ class StorageProfileResponse {
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      poolableDisksCount: map['poolableDisksCount'] as double,
+      poolableDisksCount: (map['poolableDisksCount'] as double).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRulesRuleTarget {
   /// The endpoint.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// The id of target.
-  final String targetId;
+  final pulumi.Input<String> targetId;
   /// The type of target.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetRulesRuleTarget].
   /// [endpoint] The endpoint.
@@ -29,9 +30,9 @@ class GetRulesRuleTarget {
 
   factory GetRulesRuleTarget.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleTarget(
-      endpoint: map['endpoint'] as String,
-      targetId: map['targetId'] as String,
-      type: map['type'] as String,
+      endpoint: (map['endpoint'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

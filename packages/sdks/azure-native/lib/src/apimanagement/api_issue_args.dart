@@ -37,25 +37,16 @@ class ApiIssueArgs {
   /// [title] The issue title.
   /// [userId] A resource identifier for the user created the issue.
   ApiIssueArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? createdDate,
-    required pulumi.Output<String> description,
-    pulumi.Output<String>? issueId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? state,
-    required pulumi.Output<String> title,
-    required pulumi.Output<String> userId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      createdDate = pulumi.Input.asOptionalInput<String>(createdDate),
-      description = pulumi.Input.asInput<String>(description),
-      issueId = pulumi.Input.asOptionalInput<String>(issueId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      title = pulumi.Input.asInput<String>(title),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.apiId,
+    this.createdDate,
+    required this.description,
+    this.issueId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.state,
+    required this.title,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ApiIssueArgs {
 
   factory ApiIssueArgs.fromMap(Map<String, dynamic> map) {
     return ApiIssueArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      createdDate: map['createdDate'] == null ? null : pulumi.Output.create<String>(map['createdDate'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      issueId: map['issueId'] == null ? null : pulumi.Output.create<String>(map['issueId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      apiId: (map['apiId'] as String).input(),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      description: (map['description'] as String).input(),
+      issueId: map['issueId'] == null ? null : (map['issueId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      title: (map['title'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

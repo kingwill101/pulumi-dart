@@ -26,17 +26,12 @@ class ApiGatewayHostnameBindingArgs {
   /// [keyVault] The link to the API Management service workspace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ApiGatewayHostnameBindingArgs({
-    required pulumi.Output<String> gatewayName,
-    required pulumi.Output<String> hostname,
-    pulumi.Output<String>? hostnameBindingName,
-    required pulumi.Output<GatewayHostnameBindingKeyVault> keyVault,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      hostname = pulumi.Input.asInput<String>(hostname),
-      hostnameBindingName = pulumi.Input.asOptionalInput<String>(hostnameBindingName),
-      keyVault = pulumi.Input.asInput<GatewayHostnameBindingKeyVault>(keyVault),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.gatewayName,
+    required this.hostname,
+    this.hostnameBindingName,
+    required this.keyVault,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ApiGatewayHostnameBindingArgs {
 
   factory ApiGatewayHostnameBindingArgs.fromMap(Map<String, dynamic> map) {
     return ApiGatewayHostnameBindingArgs(
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      hostname: pulumi.Output.create<String>(map['hostname'] as String),
-      hostnameBindingName: map['hostnameBindingName'] == null ? null : pulumi.Output.create<String>(map['hostnameBindingName'] as String),
-      keyVault: pulumi.Output.create<GatewayHostnameBindingKeyVault>(GatewayHostnameBindingKeyVault.fromMap((map['keyVault'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      gatewayName: (map['gatewayName'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      hostnameBindingName: map['hostnameBindingName'] == null ? null : (map['hostnameBindingName'] as String).input(),
+      keyVault: (GatewayHostnameBindingKeyVault.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

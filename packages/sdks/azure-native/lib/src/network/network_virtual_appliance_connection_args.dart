@@ -29,19 +29,13 @@ class NetworkVirtualApplianceConnectionArgs {
   /// [properties] Properties of the express route connection.
   /// [resourceGroupName] The name of the resource group.
   NetworkVirtualApplianceConnectionArgs({
-    pulumi.Output<String>? connectionName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkVirtualApplianceName,
-    pulumi.Output<NetworkVirtualApplianceConnectionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      connectionName = pulumi.Input.asOptionalInput<String>(connectionName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkVirtualApplianceName = pulumi.Input.asInput<String>(networkVirtualApplianceName),
-      properties = pulumi.Input.asOptionalInput<NetworkVirtualApplianceConnectionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.connectionName,
+    this.id,
+    this.name,
+    required this.networkVirtualApplianceName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class NetworkVirtualApplianceConnectionArgs {
 
   factory NetworkVirtualApplianceConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkVirtualApplianceConnectionArgs(
-      connectionName: map['connectionName'] == null ? null : pulumi.Output.create<String>(map['connectionName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkVirtualApplianceName: pulumi.Output.create<String>(map['networkVirtualApplianceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<NetworkVirtualApplianceConnectionProperties>(NetworkVirtualApplianceConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkVirtualApplianceName: (map['networkVirtualApplianceName'] as String).input(),
+      properties: map['properties'] == null ? null : (NetworkVirtualApplianceConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

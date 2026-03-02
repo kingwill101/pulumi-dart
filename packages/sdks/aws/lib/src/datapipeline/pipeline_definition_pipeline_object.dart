@@ -5,11 +5,11 @@ import 'pipeline_definition_pipeline_object_field.dart';
 
 class PipelineDefinitionPipelineObject {
   /// Configuration block for Key-value pairs that define the properties of the object. See below
-  final List<PipelineDefinitionPipelineObjectField>? fields;
+  final pulumi.Input<List<PipelineDefinitionPipelineObjectField>>? fields;
   /// ID of the object.
-  final String id;
+  final pulumi.Input<String> id;
   /// ARN of the storage connector.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [PipelineDefinitionPipelineObject].
   /// [fields] Configuration block for Key-value pairs that define the properties of the object. See below
@@ -23,7 +23,7 @@ class PipelineDefinitionPipelineObject {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields': ?fields == null ? null : pulumi.Input.encodeList<PipelineDefinitionPipelineObjectField, Map<String, dynamic>>(fields!, (value) => value.toMap()),
+      'fields': ?pulumi.Input.mapOptionalInputValue<List<PipelineDefinitionPipelineObjectField>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<PipelineDefinitionPipelineObjectField, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'name': name,
     };
@@ -31,9 +31,9 @@ class PipelineDefinitionPipelineObject {
 
   factory PipelineDefinitionPipelineObject.fromMap(Map<String, dynamic> map) {
     return PipelineDefinitionPipelineObject(
-      fields: map['fields'] == null ? null : pulumi.Input.decodeList<PipelineDefinitionPipelineObjectField>(map['fields'], (value) => PipelineDefinitionPipelineObjectField.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<PipelineDefinitionPipelineObjectField>(map['fields'], (value) => PipelineDefinitionPipelineObjectField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

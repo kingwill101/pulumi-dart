@@ -5,7 +5,7 @@ import 'scope_element_response.dart';
 
 class SuppressionAlertsScopeResponse {
   /// All the conditions inside need to be true in order to suppress the alert
-  final List<ScopeElementResponse> allOf;
+  final pulumi.Input<List<ScopeElementResponse>> allOf;
 
   /// Creates a new [SuppressionAlertsScopeResponse].
   /// [allOf] All the conditions inside need to be true in order to suppress the alert
@@ -15,13 +15,13 @@ class SuppressionAlertsScopeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allOf': pulumi.Input.encodeList<ScopeElementResponse, Map<String, dynamic>>(allOf, (value) => value.toMap()),
+      'allOf': pulumi.Input.mapInputValue<List<ScopeElementResponse>, List<Map<String, dynamic>>>(allOf, (value) => pulumi.Input.encodeList<ScopeElementResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SuppressionAlertsScopeResponse.fromMap(Map<String, dynamic> map) {
     return SuppressionAlertsScopeResponse(
-      allOf: pulumi.Input.decodeList<ScopeElementResponse>(map['allOf'], (value) => ScopeElementResponse.fromMap((value as Map).cast<String, dynamic>())),
+      allOf: (pulumi.Input.decodeList<ScopeElementResponse>(map['allOf'], (value) => ScopeElementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

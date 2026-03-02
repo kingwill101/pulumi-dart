@@ -63,29 +63,18 @@ class AppHostingBackendArgs {
   /// [serviceAccount] The name of the service account used for Cloud Build and Cloud Run.
   /// [servingLocality] Immutable. Specifies how App Hosting will serve the content for this backend. It will
   AppHostingBackendArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> backendId,
-    pulumi.Output<AppHostingBackendCodebase>? codebase,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? environment,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceAccount,
-    required pulumi.Output<String> servingLocality,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      appId = pulumi.Input.asInput<String>(appId),
-      backendId = pulumi.Input.asInput<String>(backendId),
-      codebase = pulumi.Input.asOptionalInput<AppHostingBackendCodebase>(codebase),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceAccount = pulumi.Input.asInput<String>(serviceAccount),
-      servingLocality = pulumi.Input.asInput<String>(servingLocality);
+    this.annotations,
+    required this.appId,
+    required this.backendId,
+    this.codebase,
+    this.displayName,
+    this.environment,
+    this.labels,
+    required this.location,
+    this.project,
+    required this.serviceAccount,
+    required this.servingLocality,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,17 +94,17 @@ class AppHostingBackendArgs {
 
   factory AppHostingBackendArgs.fromMap(Map<String, dynamic> map) {
     return AppHostingBackendArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      backendId: pulumi.Output.create<String>(map['backendId'] as String),
-      codebase: map['codebase'] == null ? null : pulumi.Output.create<AppHostingBackendCodebase>(AppHostingBackendCodebase.fromMap((map['codebase'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceAccount: pulumi.Output.create<String>(map['serviceAccount'] as String),
-      servingLocality: pulumi.Output.create<String>(map['servingLocality'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      appId: (map['appId'] as String).input(),
+      backendId: (map['backendId'] as String).input(),
+      codebase: map['codebase'] == null ? null : (AppHostingBackendCodebase.fromMap((map['codebase'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceAccount: (map['serviceAccount'] as String).input(),
+      servingLocality: (map['servingLocality'] as String).input(),
     );
   }
 }

@@ -39,23 +39,15 @@ class AccountArgs {
   /// [resourceGroupName] The name of the Resource Group where the Purview Account should exist. Changing this forces a new Purview Account to be created.
   /// [tags] A mapping of tags which should be assigned to the Purview Account.
   AccountArgs({
-    required pulumi.Output<AccountIdentity> identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? managedEventHubEnabled,
-    pulumi.Output<String>? managedResourceGroupName,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publicNetworkEnabled,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asInput<AccountIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedEventHubEnabled = pulumi.Input.asOptionalInput<bool>(managedEventHubEnabled),
-      managedResourceGroupName = pulumi.Input.asOptionalInput<String>(managedResourceGroupName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkEnabled),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.identity,
+    this.location,
+    this.managedEventHubEnabled,
+    this.managedResourceGroupName,
+    this.name,
+    this.publicNetworkEnabled,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      identity: pulumi.Output.create<AccountIdentity>(AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedEventHubEnabled: map['managedEventHubEnabled'] == null ? null : pulumi.Output.create<bool>(map['managedEventHubEnabled'] as bool),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : pulumi.Output.create<String>(map['managedResourceGroupName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkEnabled: map['publicNetworkEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkEnabled'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: (AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedEventHubEnabled: map['managedEventHubEnabled'] == null ? null : (map['managedEventHubEnabled'] as bool).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkEnabled: map['publicNetworkEnabled'] == null ? null : (map['publicNetworkEnabled'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

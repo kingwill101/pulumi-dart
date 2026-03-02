@@ -43,23 +43,15 @@ class BackendAuthenticationConfigArgs {
   /// [trustConfig] Reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace.
   /// [wellKnownRoots] Well known roots to use for server certificate validation. If set to NONE, the BackendService will only validate server certificates against roots specified in TrustConfig.
   BackendAuthenticationConfigArgs({
-    pulumi.Output<String>? clientCertificate,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? trustConfig,
-    pulumi.Output<String>? wellKnownRoots,
-  }) :
-      clientCertificate = pulumi.Input.asOptionalInput<String>(clientCertificate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      trustConfig = pulumi.Input.asOptionalInput<String>(trustConfig),
-      wellKnownRoots = pulumi.Input.asOptionalInput<String>(wellKnownRoots);
+    this.clientCertificate,
+    this.description,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.trustConfig,
+    this.wellKnownRoots,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,14 +68,14 @@ class BackendAuthenticationConfigArgs {
 
   factory BackendAuthenticationConfigArgs.fromMap(Map<String, dynamic> map) {
     return BackendAuthenticationConfigArgs(
-      clientCertificate: map['clientCertificate'] == null ? null : pulumi.Output.create<String>(map['clientCertificate'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      trustConfig: map['trustConfig'] == null ? null : pulumi.Output.create<String>(map['trustConfig'] as String),
-      wellKnownRoots: map['wellKnownRoots'] == null ? null : pulumi.Output.create<String>(map['wellKnownRoots'] as String),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      trustConfig: map['trustConfig'] == null ? null : (map['trustConfig'] as String).input(),
+      wellKnownRoots: map['wellKnownRoots'] == null ? null : (map['wellKnownRoots'] as String).input(),
     );
   }
 }

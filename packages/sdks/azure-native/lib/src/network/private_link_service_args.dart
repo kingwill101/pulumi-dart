@@ -54,33 +54,20 @@ class PrivateLinkServiceArgs {
   /// [tags] Resource tags.
   /// [visibility] The visibility list of the private link service.
   PrivateLinkServiceArgs({
-    pulumi.Output<PrivateLinkServicePropertiesAutoApproval>? autoApproval,
-    pulumi.Output<String>? destinationIPAddress,
-    pulumi.Output<bool>? enableProxyProtocol,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<List<String>>? fqdns,
-    pulumi.Output<String>? id,
-    pulumi.Output<List<PrivateLinkServiceIpConfiguration>>? ipConfigurations,
-    pulumi.Output<List<FrontendIPConfiguration>>? loadBalancerFrontendIpConfigurations,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<PrivateLinkServicePropertiesVisibility>? visibility,
-  }) :
-      autoApproval = pulumi.Input.asOptionalInput<PrivateLinkServicePropertiesAutoApproval>(autoApproval),
-      destinationIPAddress = pulumi.Input.asOptionalInput<String>(destinationIPAddress),
-      enableProxyProtocol = pulumi.Input.asOptionalInput<bool>(enableProxyProtocol),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      fqdns = pulumi.Input.asOptionalInput<List<String>>(fqdns),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      ipConfigurations = pulumi.Input.asOptionalInput<List<PrivateLinkServiceIpConfiguration>>(ipConfigurations),
-      loadBalancerFrontendIpConfigurations = pulumi.Input.asOptionalInput<List<FrontendIPConfiguration>>(loadBalancerFrontendIpConfigurations),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      visibility = pulumi.Input.asOptionalInput<PrivateLinkServicePropertiesVisibility>(visibility);
+    this.autoApproval,
+    this.destinationIPAddress,
+    this.enableProxyProtocol,
+    this.extendedLocation,
+    this.fqdns,
+    this.id,
+    this.ipConfigurations,
+    this.loadBalancerFrontendIpConfigurations,
+    this.location,
+    required this.resourceGroupName,
+    this.serviceName,
+    this.tags,
+    this.visibility,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class PrivateLinkServiceArgs {
 
   factory PrivateLinkServiceArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceArgs(
-      autoApproval: map['autoApproval'] == null ? null : pulumi.Output.create<PrivateLinkServicePropertiesAutoApproval>(PrivateLinkServicePropertiesAutoApproval.fromMap((map['autoApproval'] as Map).cast<String, dynamic>())),
-      destinationIPAddress: map['destinationIPAddress'] == null ? null : pulumi.Output.create<String>(map['destinationIPAddress'] as String),
-      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : pulumi.Output.create<bool>(map['enableProxyProtocol'] as bool),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      fqdns: map['fqdns'] == null ? null : pulumi.Output.create<List<String>>((map['fqdns'] as List).cast<String>()),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Output.create<List<PrivateLinkServiceIpConfiguration>>(pulumi.Input.decodeList<PrivateLinkServiceIpConfiguration>(map['ipConfigurations'], (value) => PrivateLinkServiceIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      loadBalancerFrontendIpConfigurations: map['loadBalancerFrontendIpConfigurations'] == null ? null : pulumi.Output.create<List<FrontendIPConfiguration>>(pulumi.Input.decodeList<FrontendIPConfiguration>(map['loadBalancerFrontendIpConfigurations'], (value) => FrontendIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      visibility: map['visibility'] == null ? null : pulumi.Output.create<PrivateLinkServicePropertiesVisibility>(PrivateLinkServicePropertiesVisibility.fromMap((map['visibility'] as Map).cast<String, dynamic>())),
+      autoApproval: map['autoApproval'] == null ? null : (PrivateLinkServicePropertiesAutoApproval.fromMap((map['autoApproval'] as Map).cast<String, dynamic>())).input(),
+      destinationIPAddress: map['destinationIPAddress'] == null ? null : (map['destinationIPAddress'] as String).input(),
+      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol'] as bool).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceIpConfiguration>(map['ipConfigurations'], (value) => PrivateLinkServiceIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerFrontendIpConfigurations: map['loadBalancerFrontendIpConfigurations'] == null ? null : (pulumi.Input.decodeList<FrontendIPConfiguration>(map['loadBalancerFrontendIpConfigurations'], (value) => FrontendIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      visibility: map['visibility'] == null ? null : (PrivateLinkServicePropertiesVisibility.fromMap((map['visibility'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

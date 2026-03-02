@@ -45,33 +45,20 @@ class GatewayState {
   /// [type] The type of the gateway. Valid values: `File`, `Iscsi`.
   /// [vswitchId] The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
   GatewayState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? gatewayClass,
-    pulumi.Output<String>? gatewayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<int>? publicNetworkBandwidth,
-    pulumi.Output<String>? reasonDetail,
-    pulumi.Output<String>? reasonType,
-    pulumi.Output<bool>? releaseAfterExpiration,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? storageBundleId,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gatewayClass = pulumi.Input.asOptionalInput<String>(gatewayClass),
-      gatewayName = pulumi.Input.asOptionalInput<String>(gatewayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      publicNetworkBandwidth = pulumi.Input.asOptionalInput<int>(publicNetworkBandwidth),
-      reasonDetail = pulumi.Input.asOptionalInput<String>(reasonDetail),
-      reasonType = pulumi.Input.asOptionalInput<String>(reasonType),
-      releaseAfterExpiration = pulumi.Input.asOptionalInput<bool>(releaseAfterExpiration),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      storageBundleId = pulumi.Input.asOptionalInput<String>(storageBundleId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.description,
+    this.gatewayClass,
+    this.gatewayName,
+    this.location,
+    this.paymentType,
+    this.publicNetworkBandwidth,
+    this.reasonDetail,
+    this.reasonType,
+    this.releaseAfterExpiration,
+    this.status,
+    this.storageBundleId,
+    this.type,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,19 +80,19 @@ class GatewayState {
 
   factory GatewayState.fromMap(Map<String, dynamic> map) {
     return GatewayState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gatewayClass: map['gatewayClass'] == null ? null : pulumi.Output.create<String>(map['gatewayClass'] as String),
-      gatewayName: map['gatewayName'] == null ? null : pulumi.Output.create<String>(map['gatewayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      publicNetworkBandwidth: map['publicNetworkBandwidth'] == null ? null : pulumi.Output.create<int>(map['publicNetworkBandwidth'] as int),
-      reasonDetail: map['reasonDetail'] == null ? null : pulumi.Output.create<String>(map['reasonDetail'] as String),
-      reasonType: map['reasonType'] == null ? null : pulumi.Output.create<String>(map['reasonType'] as String),
-      releaseAfterExpiration: map['releaseAfterExpiration'] == null ? null : pulumi.Output.create<bool>(map['releaseAfterExpiration'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      storageBundleId: map['storageBundleId'] == null ? null : pulumi.Output.create<String>(map['storageBundleId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gatewayClass: map['gatewayClass'] == null ? null : (map['gatewayClass'] as String).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      publicNetworkBandwidth: map['publicNetworkBandwidth'] == null ? null : (map['publicNetworkBandwidth'] as int).input(),
+      reasonDetail: map['reasonDetail'] == null ? null : (map['reasonDetail'] as String).input(),
+      reasonType: map['reasonType'] == null ? null : (map['reasonType'] as String).input(),
+      releaseAfterExpiration: map['releaseAfterExpiration'] == null ? null : (map['releaseAfterExpiration'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      storageBundleId: map['storageBundleId'] == null ? null : (map['storageBundleId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

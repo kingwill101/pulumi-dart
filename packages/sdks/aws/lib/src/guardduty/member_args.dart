@@ -31,21 +31,14 @@ class MemberArgs {
   /// [invite] Boolean whether to invite the account to GuardDuty as a member. Defaults to `false`. To detect if an invitation needs to be (re-)sent, the this provider state value is `true` based on a `relationship_status` of `Disabled`, `Enabled`, `Invited`, or `EmailVerificationInProgress`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   MemberArgs({
-    required pulumi.Output<String> accountId,
-    required pulumi.Output<String> detectorId,
-    pulumi.Output<bool>? disableEmailNotification,
-    required pulumi.Output<String> email,
-    pulumi.Output<String>? invitationMessage,
-    pulumi.Output<bool>? invite,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      detectorId = pulumi.Input.asInput<String>(detectorId),
-      disableEmailNotification = pulumi.Input.asOptionalInput<bool>(disableEmailNotification),
-      email = pulumi.Input.asInput<String>(email),
-      invitationMessage = pulumi.Input.asOptionalInput<String>(invitationMessage),
-      invite = pulumi.Input.asOptionalInput<bool>(invite),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.accountId,
+    required this.detectorId,
+    this.disableEmailNotification,
+    required this.email,
+    this.invitationMessage,
+    this.invite,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class MemberArgs {
 
   factory MemberArgs.fromMap(Map<String, dynamic> map) {
     return MemberArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      detectorId: pulumi.Output.create<String>(map['detectorId'] as String),
-      disableEmailNotification: map['disableEmailNotification'] == null ? null : pulumi.Output.create<bool>(map['disableEmailNotification'] as bool),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      invitationMessage: map['invitationMessage'] == null ? null : pulumi.Output.create<String>(map['invitationMessage'] as String),
-      invite: map['invite'] == null ? null : pulumi.Output.create<bool>(map['invite'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: (map['accountId'] as String).input(),
+      detectorId: (map['detectorId'] as String).input(),
+      disableEmailNotification: map['disableEmailNotification'] == null ? null : (map['disableEmailNotification'] as bool).input(),
+      email: (map['email'] as String).input(),
+      invitationMessage: map['invitationMessage'] == null ? null : (map['invitationMessage'] as String).input(),
+      invite: map['invite'] == null ? null : (map['invite'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

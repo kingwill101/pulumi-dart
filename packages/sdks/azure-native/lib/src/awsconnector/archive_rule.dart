@@ -6,9 +6,9 @@ import 'filter.dart';
 /// Definition of ArchiveRule
 class ArchiveRule {
   /// Property filter
-  final List<Filter>? filter;
+  final pulumi.Input<List<Filter>>? filter;
   /// The archive rule name
-  final String? ruleName;
+  final pulumi.Input<String>? ruleName;
 
   /// Creates a new [ArchiveRule].
   /// [filter] Property filter
@@ -20,15 +20,15 @@ class ArchiveRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filter': ?filter == null ? null : pulumi.Input.encodeList<Filter, Map<String, dynamic>>(filter!, (value) => value.toMap()),
+      'filter': ?pulumi.Input.mapOptionalInputValue<List<Filter>, List<Map<String, dynamic>>>(filter, (value) => pulumi.Input.encodeList<Filter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ruleName': ?ruleName,
     };
   }
 
   factory ArchiveRule.fromMap(Map<String, dynamic> map) {
     return ArchiveRule(
-      filter: map['filter'] == null ? null : pulumi.Input.decodeList<Filter>(map['filter'], (value) => Filter.fromMap((value as Map).cast<String, dynamic>())),
-      ruleName: map['ruleName'] == null ? null : map['ruleName'] as String,
+      filter: map['filter'] == null ? null : (pulumi.Input.decodeList<Filter>(map['filter'], (value) => Filter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HealthCheckGrpcTlsHealthCheck {
   /// The gRPC service name for the health check.
@@ -7,10 +8,10 @@ class HealthCheckGrpcTlsHealthCheck {
   /// - Empty serviceName means the overall status of all services at the backend.
   /// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
   /// The grpcServiceName can only be ASCII.
-  final String? grpcServiceName;
+  final pulumi.Input<String>? grpcServiceName;
   /// The port number for the health check request.
   /// Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   /// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
@@ -21,7 +22,7 @@ class HealthCheckGrpcTlsHealthCheck {
   /// checking.
   /// If not specified, gRPC with TLS health check follows behavior specified in the `port` field.
   /// Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
-  final String? portSpecification;
+  final pulumi.Input<String>? portSpecification;
 
   /// Creates a new [HealthCheckGrpcTlsHealthCheck].
   /// [grpcServiceName] The gRPC service name for the health check.
@@ -43,9 +44,9 @@ class HealthCheckGrpcTlsHealthCheck {
 
   factory HealthCheckGrpcTlsHealthCheck.fromMap(Map<String, dynamic> map) {
     return HealthCheckGrpcTlsHealthCheck(
-      grpcServiceName: map['grpcServiceName'] == null ? null : map['grpcServiceName'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      portSpecification: map['portSpecification'] == null ? null : map['portSpecification'] as String,
+      grpcServiceName: map['grpcServiceName'] == null ? null : (map['grpcServiceName'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      portSpecification: map['portSpecification'] == null ? null : (map['portSpecification'] as String).input(),
     );
   }
 }

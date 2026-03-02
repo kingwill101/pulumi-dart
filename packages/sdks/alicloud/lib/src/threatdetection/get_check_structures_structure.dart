@@ -5,9 +5,9 @@ import 'get_check_structures_structure_standard.dart';
 
 class GetCheckStructuresStructure {
   /// The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
-  final String standardType;
+  final pulumi.Input<String> standardType;
   /// The structure information about the check items of the business type.
-  final List<GetCheckStructuresStructureStandard> standards;
+  final pulumi.Input<List<GetCheckStructuresStructureStandard>> standards;
 
   /// Creates a new [GetCheckStructuresStructure].
   /// [standardType] The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
@@ -20,14 +20,14 @@ class GetCheckStructuresStructure {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'standardType': standardType,
-      'standards': pulumi.Input.encodeList<GetCheckStructuresStructureStandard, Map<String, dynamic>>(standards, (value) => value.toMap()),
+      'standards': pulumi.Input.mapInputValue<List<GetCheckStructuresStructureStandard>, List<Map<String, dynamic>>>(standards, (value) => pulumi.Input.encodeList<GetCheckStructuresStructureStandard, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetCheckStructuresStructure.fromMap(Map<String, dynamic> map) {
     return GetCheckStructuresStructure(
-      standardType: map['standardType'] as String,
-      standards: pulumi.Input.decodeList<GetCheckStructuresStructureStandard>(map['standards'], (value) => GetCheckStructuresStructureStandard.fromMap((value as Map).cast<String, dynamic>())),
+      standardType: (map['standardType'] as String).input(),
+      standards: (pulumi.Input.decodeList<GetCheckStructuresStructureStandard>(map['standards'], (value) => GetCheckStructuresStructureStandard.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

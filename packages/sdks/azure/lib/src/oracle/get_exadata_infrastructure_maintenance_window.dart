@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetExadataInfrastructureMaintenanceWindow {
   /// If true, enables the configuration of a custom action timeout (waiting period) between database servers patching operations.
-  final bool customActionTimeoutEnabled;
-  final int customActionTimeoutInMins;
+  final pulumi.Input<bool> customActionTimeoutEnabled;
+  final pulumi.Input<int> customActionTimeoutInMins;
   /// Days during the week when maintenance should be performed.
-  final List<String> daysOfWeeks;
+  final pulumi.Input<List<String>> daysOfWeeks;
   /// The window of hours during the day when maintenance should be performed.
-  final List<int> hoursOfDays;
+  final pulumi.Input<List<int>> hoursOfDays;
   /// Lead time window allows user to set a lead time to prepare for a down time.
-  final int leadTimeInWeeks;
+  final pulumi.Input<int> leadTimeInWeeks;
   /// If true, enables the monthly patching option.
-  final bool monthlyPatchingEnabled;
+  final pulumi.Input<bool> monthlyPatchingEnabled;
   /// A `months` block as defined below.
-  final List<String> months;
+  final pulumi.Input<List<String>> months;
   /// Cloud Exadata Infrastructure node patching method.
-  final String patchingMode;
+  final pulumi.Input<String> patchingMode;
   /// The maintenance window scheduling preference.
-  final String preference;
+  final pulumi.Input<String> preference;
   /// Weeks during the month when maintenance should be performed.
-  final List<int> weeksOfMonths;
+  final pulumi.Input<List<int>> weeksOfMonths;
 
   /// Creates a new [GetExadataInfrastructureMaintenanceWindow].
   /// [customActionTimeoutEnabled] If true, enables the configuration of a custom action timeout (waiting period) between database servers patching operations.
@@ -63,16 +64,16 @@ class GetExadataInfrastructureMaintenanceWindow {
 
   factory GetExadataInfrastructureMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetExadataInfrastructureMaintenanceWindow(
-      customActionTimeoutEnabled: map['customActionTimeoutEnabled'] as bool,
-      customActionTimeoutInMins: map['customActionTimeoutInMins'] as int,
-      daysOfWeeks: (map['daysOfWeeks'] as List).cast<String>(),
-      hoursOfDays: (map['hoursOfDays'] as List).cast<int>(),
-      leadTimeInWeeks: map['leadTimeInWeeks'] as int,
-      monthlyPatchingEnabled: map['monthlyPatchingEnabled'] as bool,
-      months: (map['months'] as List).cast<String>(),
-      patchingMode: map['patchingMode'] as String,
-      preference: map['preference'] as String,
-      weeksOfMonths: (map['weeksOfMonths'] as List).cast<int>(),
+      customActionTimeoutEnabled: (map['customActionTimeoutEnabled'] as bool).input(),
+      customActionTimeoutInMins: (map['customActionTimeoutInMins'] as int).input(),
+      daysOfWeeks: ((map['daysOfWeeks'] as List).cast<String>()).input(),
+      hoursOfDays: ((map['hoursOfDays'] as List).cast<int>()).input(),
+      leadTimeInWeeks: (map['leadTimeInWeeks'] as int).input(),
+      monthlyPatchingEnabled: (map['monthlyPatchingEnabled'] as bool).input(),
+      months: ((map['months'] as List).cast<String>()).input(),
+      patchingMode: (map['patchingMode'] as String).input(),
+      preference: (map['preference'] as String).input(),
+      weeksOfMonths: ((map['weeksOfMonths'] as List).cast<int>()).input(),
     );
   }
 }

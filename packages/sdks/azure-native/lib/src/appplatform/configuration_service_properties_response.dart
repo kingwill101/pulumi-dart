@@ -8,15 +8,15 @@ import 'configuration_service_settings_response.dart';
 /// Application Configuration Service properties payload
 class ConfigurationServicePropertiesResponse {
   /// The generation of the Application Configuration Service.
-  final String? generation;
+  final pulumi.Input<String>? generation;
   /// Collection of instances belong to Application Configuration Service.
-  final List<ConfigurationServiceInstanceResponse> instances;
+  final pulumi.Input<List<ConfigurationServiceInstanceResponse>> instances;
   /// State of the Application Configuration Service.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The requested resource quantity for required CPU and Memory.
-  final ConfigurationServiceResourceRequestsResponse resourceRequests;
+  final pulumi.Input<ConfigurationServiceResourceRequestsResponse> resourceRequests;
   /// The settings of Application Configuration Service.
-  final ConfigurationServiceSettingsResponse? settings;
+  final pulumi.Input<ConfigurationServiceSettingsResponse>? settings;
 
   /// Creates a new [ConfigurationServicePropertiesResponse].
   /// [generation] The generation of the Application Configuration Service.
@@ -35,20 +35,20 @@ class ConfigurationServicePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'generation': ?generation,
-      'instances': pulumi.Input.encodeList<ConfigurationServiceInstanceResponse, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances': pulumi.Input.mapInputValue<List<ConfigurationServiceInstanceResponse>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<ConfigurationServiceInstanceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
-      'resourceRequests': resourceRequests.toMap(),
-      'settings': ?settings == null ? null : settings!.toMap(),
+      'resourceRequests': pulumi.Input.mapInputValue<ConfigurationServiceResourceRequestsResponse, Map<String, dynamic>>(resourceRequests, (value) => value.toMap()),
+      'settings': ?pulumi.Input.mapOptionalInputValue<ConfigurationServiceSettingsResponse, Map<String, dynamic>>(settings, (value) => value.toMap()),
     };
   }
 
   factory ConfigurationServicePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationServicePropertiesResponse(
-      generation: map['generation'] == null ? null : map['generation'] as String,
-      instances: pulumi.Input.decodeList<ConfigurationServiceInstanceResponse>(map['instances'], (value) => ConfigurationServiceInstanceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      resourceRequests: ConfigurationServiceResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>()),
-      settings: map['settings'] == null ? null : ConfigurationServiceSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      instances: (pulumi.Input.decodeList<ConfigurationServiceInstanceResponse>(map['instances'], (value) => ConfigurationServiceInstanceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceRequests: (ConfigurationServiceResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (ConfigurationServiceSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

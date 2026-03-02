@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ErrorDetail
 class ErrorDetailResponse {
   /// <p>The name or code associated with the error.</p>
-  final String? errorCode;
+  final pulumi.Input<String>? errorCode;
   /// <p>A list of key value pairs that provides contextual information about why an error occured.</p>
-  final List<dynamic>? errorData;
+  final pulumi.Input<List<dynamic>>? errorData;
   /// <p>A message that describes the error.</p>
-  final String? errorMessage;
+  final pulumi.Input<String>? errorMessage;
 
   /// Creates a new [ErrorDetailResponse].
   /// [errorCode] <p>The name or code associated with the error.</p>
@@ -30,9 +31,9 @@ class ErrorDetailResponse {
 
   factory ErrorDetailResponse.fromMap(Map<String, dynamic> map) {
     return ErrorDetailResponse(
-      errorCode: map['errorCode'] == null ? null : map['errorCode'] as String,
-      errorData: map['errorData'] == null ? null : (map['errorData'] as List).cast<dynamic>(),
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
+      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
+      errorData: map['errorData'] == null ? null : ((map['errorData'] as List).cast<dynamic>()).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
     );
   }
 }

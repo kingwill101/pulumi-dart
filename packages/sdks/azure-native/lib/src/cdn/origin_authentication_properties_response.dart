@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_reference_response.dart';
 
 /// The JSON object that contains the properties of the origin authentication settings.
 class OriginAuthenticationPropertiesResponse {
   /// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
-  final String? scope;
+  final pulumi.Input<String>? scope;
   /// The type of the authentication for the origin.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
-  final ResourceReferenceResponse? userAssignedIdentity;
+  final pulumi.Input<ResourceReferenceResponse>? userAssignedIdentity;
 
   /// Creates a new [OriginAuthenticationPropertiesResponse].
   /// [scope] The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
@@ -25,15 +26,15 @@ class OriginAuthenticationPropertiesResponse {
     return <String, dynamic>{
       'scope': ?scope,
       'type': ?type,
-      'userAssignedIdentity': ?userAssignedIdentity == null ? null : userAssignedIdentity!.toMap(),
+      'userAssignedIdentity': ?pulumi.Input.mapOptionalInputValue<ResourceReferenceResponse, Map<String, dynamic>>(userAssignedIdentity, (value) => value.toMap()),
     };
   }
 
   factory OriginAuthenticationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OriginAuthenticationPropertiesResponse(
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : ResourceReferenceResponse.fromMap((map['userAssignedIdentity'] as Map).cast<String, dynamic>()),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (ResourceReferenceResponse.fromMap((map['userAssignedIdentity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

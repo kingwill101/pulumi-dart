@@ -38,27 +38,17 @@ class QueueState {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   QueueState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<int>? concurrentJobs,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pricingPlan,
-    pulumi.Output<String>? region,
-    pulumi.Output<QueueReservationPlanSettings>? reservationPlanSettings,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      concurrentJobs = pulumi.Input.asOptionalInput<int>(concurrentJobs),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pricingPlan = pulumi.Input.asOptionalInput<String>(pricingPlan),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reservationPlanSettings = pulumi.Input.asOptionalInput<QueueReservationPlanSettings>(reservationPlanSettings),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.concurrentJobs,
+    this.description,
+    this.name,
+    this.pricingPlan,
+    this.region,
+    this.reservationPlanSettings,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class QueueState {
 
   factory QueueState.fromMap(Map<String, dynamic> map) {
     return QueueState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      concurrentJobs: map['concurrentJobs'] == null ? null : pulumi.Output.create<int>(map['concurrentJobs'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pricingPlan: map['pricingPlan'] == null ? null : pulumi.Output.create<String>(map['pricingPlan'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reservationPlanSettings: map['reservationPlanSettings'] == null ? null : pulumi.Output.create<QueueReservationPlanSettings>(QueueReservationPlanSettings.fromMap((map['reservationPlanSettings'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      concurrentJobs: map['concurrentJobs'] == null ? null : (map['concurrentJobs'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pricingPlan: map['pricingPlan'] == null ? null : (map['pricingPlan'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reservationPlanSettings: map['reservationPlanSettings'] == null ? null : (QueueReservationPlanSettings.fromMap((map['reservationPlanSettings'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

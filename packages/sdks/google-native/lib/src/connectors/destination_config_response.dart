@@ -6,9 +6,9 @@ import 'destination_response.dart';
 /// Define the Connectors target endpoint.
 class DestinationConfigResponse {
   /// The destinations for the key.
-  final List<DestinationResponse> destinations;
+  final pulumi.Input<List<DestinationResponse>> destinations;
   /// The key is the destination identifier that is supported by the Connector.
-  final String key;
+  final pulumi.Input<String> key;
 
   /// Creates a new [DestinationConfigResponse].
   /// [destinations] The destinations for the key.
@@ -20,15 +20,15 @@ class DestinationConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations': pulumi.Input.encodeList<DestinationResponse, Map<String, dynamic>>(destinations, (value) => value.toMap()),
+      'destinations': pulumi.Input.mapInputValue<List<DestinationResponse>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<DestinationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'key': key,
     };
   }
 
   factory DestinationConfigResponse.fromMap(Map<String, dynamic> map) {
     return DestinationConfigResponse(
-      destinations: pulumi.Input.decodeList<DestinationResponse>(map['destinations'], (value) => DestinationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      key: map['key'] as String,
+      destinations: (pulumi.Input.decodeList<DestinationResponse>(map['destinations'], (value) => DestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      key: (map['key'] as String).input(),
     );
   }
 }

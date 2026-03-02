@@ -38,25 +38,16 @@ class EligibleRoleAssignmentState {
   /// [scope] The scope for this eligible role assignment, should be a valid resource ID. Changing this forces a new resource to be created.
   /// [ticket] A `ticket` block as defined below. Changing this forces a new resource to be created.
   EligibleRoleAssignmentState({
-    pulumi.Output<String>? condition,
-    pulumi.Output<String>? conditionVersion,
-    pulumi.Output<String>? justification,
-    pulumi.Output<String>? principalId,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? roleDefinitionId,
-    pulumi.Output<EligibleRoleAssignmentSchedule>? schedule,
-    pulumi.Output<String>? scope,
-    pulumi.Output<EligibleRoleAssignmentTicket>? ticket,
-  }) :
-      condition = pulumi.Input.asOptionalInput<String>(condition),
-      conditionVersion = pulumi.Input.asOptionalInput<String>(conditionVersion),
-      justification = pulumi.Input.asOptionalInput<String>(justification),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      roleDefinitionId = pulumi.Input.asOptionalInput<String>(roleDefinitionId),
-      schedule = pulumi.Input.asOptionalInput<EligibleRoleAssignmentSchedule>(schedule),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      ticket = pulumi.Input.asOptionalInput<EligibleRoleAssignmentTicket>(ticket);
+    this.condition,
+    this.conditionVersion,
+    this.justification,
+    this.principalId,
+    this.principalType,
+    this.roleDefinitionId,
+    this.schedule,
+    this.scope,
+    this.ticket,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class EligibleRoleAssignmentState {
 
   factory EligibleRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return EligibleRoleAssignmentState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<String>(map['condition'] as String),
-      conditionVersion: map['conditionVersion'] == null ? null : pulumi.Output.create<String>(map['conditionVersion'] as String),
-      justification: map['justification'] == null ? null : pulumi.Output.create<String>(map['justification'] as String),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<EligibleRoleAssignmentSchedule>(EligibleRoleAssignmentSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      ticket: map['ticket'] == null ? null : pulumi.Output.create<EligibleRoleAssignmentTicket>(EligibleRoleAssignmentTicket.fromMap((map['ticket'] as Map).cast<String, dynamic>())),
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion'] as String).input(),
+      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      schedule: map['schedule'] == null ? null : (EligibleRoleAssignmentSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      ticket: map['ticket'] == null ? null : (EligibleRoleAssignmentTicket.fromMap((map['ticket'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetPluginArgs {
   /// [alias] The alias of the Docker plugin. If the tag is omitted, `:latest` is complemented to the attribute value.
   /// [id] The ID of the plugin, which has precedence over the `alias` of both are given
   GetPluginArgs({
-    pulumi.Output<String>? alias,
-    pulumi.Output<String>? id,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      id = pulumi.Input.asOptionalInput<String>(id);
+    this.alias,
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPluginArgs {
 
   factory GetPluginArgs.fromMap(Map<String, dynamic> map) {
     return GetPluginArgs(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

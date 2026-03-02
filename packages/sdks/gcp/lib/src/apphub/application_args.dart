@@ -36,21 +36,14 @@ class ApplicationArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [scope] Scope of an application.
   ApplicationArgs({
-    required pulumi.Output<String> applicationId,
-    pulumi.Output<ApplicationAttributes>? attributes,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<ApplicationScope> scope,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      attributes = pulumi.Input.asOptionalInput<ApplicationAttributes>(attributes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scope = pulumi.Input.asInput<ApplicationScope>(scope);
+    required this.applicationId,
+    this.attributes,
+    this.description,
+    this.displayName,
+    required this.location,
+    this.project,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<ApplicationAttributes>(ApplicationAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scope: pulumi.Output.create<ApplicationScope>(ApplicationScope.fromMap((map['scope'] as Map).cast<String, dynamic>())),
+      applicationId: (map['applicationId'] as String).input(),
+      attributes: map['attributes'] == null ? null : (ApplicationAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scope: (ApplicationScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

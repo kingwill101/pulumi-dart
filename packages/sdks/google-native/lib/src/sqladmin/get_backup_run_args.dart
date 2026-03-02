@@ -16,13 +16,10 @@ class GetBackupRunArgs {
   /// [instance] Required.
   /// [project] Optional.
   GetBackupRunArgs({
-    required pulumi.Output<String> id,
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? project,
-  }) :
-      id = pulumi.Input.asInput<String>(id),
-      instance = pulumi.Input.asInput<String>(instance),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.id,
+    required this.instance,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetBackupRunArgs {
 
   factory GetBackupRunArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupRunArgs(
-      id: pulumi.Output.create<String>(map['id'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      id: (map['id'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

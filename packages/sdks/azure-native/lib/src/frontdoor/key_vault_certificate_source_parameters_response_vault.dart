@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Key Vault containing the SSL certificate
 class KeyVaultCertificateSourceParametersResponseVault {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [KeyVaultCertificateSourceParametersResponseVault].
   /// [id] Resource ID.
@@ -20,7 +21,7 @@ class KeyVaultCertificateSourceParametersResponseVault {
 
   factory KeyVaultCertificateSourceParametersResponseVault.fromMap(Map<String, dynamic> map) {
     return KeyVaultCertificateSourceParametersResponseVault(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

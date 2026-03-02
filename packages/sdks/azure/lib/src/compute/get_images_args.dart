@@ -16,11 +16,9 @@ class GetImagesArgs {
   /// [resourceGroupName] The name of the Resource Group in which the Image exists.
   /// [tagsFilter] A mapping of tags to filter the list of images against.
   GetImagesArgs({
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tagsFilter,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tagsFilter = pulumi.Input.asOptionalInput<Map<String, String>>(tagsFilter);
+    required this.resourceGroupName,
+    this.tagsFilter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetImagesArgs {
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tagsFilter: map['tagsFilter'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsFilter'] as Map).cast<String, String>()),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tagsFilter: map['tagsFilter'] == null ? null : ((map['tagsFilter'] as Map).cast<String, String>()).input(),
     );
   }
 }

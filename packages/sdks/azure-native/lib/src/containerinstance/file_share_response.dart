@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_share_response_properties.dart';
 
 /// File shares that can be mounted on container groups.
 class FileShareResponse {
-  final String? name;
-  final FileShareResponseProperties? properties;
-  final String? resourceGroupName;
-  final String? storageAccountName;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<FileShareResponseProperties>? properties;
+  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [FileShareResponse].
   /// [name] Optional.
@@ -24,7 +25,7 @@ class FileShareResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'properties': ?properties == null ? null : properties!.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<FileShareResponseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': ?resourceGroupName,
       'storageAccountName': ?storageAccountName,
     };
@@ -32,10 +33,10 @@ class FileShareResponse {
 
   factory FileShareResponse.fromMap(Map<String, dynamic> map) {
     return FileShareResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      properties: map['properties'] == null ? null : FileShareResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      resourceGroupName: map['resourceGroupName'] == null ? null : map['resourceGroupName'] as String,
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (FileShareResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
     );
   }
 }

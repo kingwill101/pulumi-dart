@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetExadataInfrastructureEstimatedPatchingTime {
   /// The estimated time required in minutes for database server patching.
-  final int estimatedDbServerPatchingTime;
+  final pulumi.Input<int> estimatedDbServerPatchingTime;
   /// The estimated time required in minutes for network switch patching.
-  final int estimatedNetworkSwitchesPatchingTime;
+  final pulumi.Input<int> estimatedNetworkSwitchesPatchingTime;
   /// The estimated time required in minutes for storage server patching.
-  final int estimatedStorageServerPatchingTime;
+  final pulumi.Input<int> estimatedStorageServerPatchingTime;
   /// The estimated total time required in minutes for all patching operations.
-  final int totalEstimatedPatchingTime;
+  final pulumi.Input<int> totalEstimatedPatchingTime;
 
   /// Creates a new [GetExadataInfrastructureEstimatedPatchingTime].
   /// [estimatedDbServerPatchingTime] The estimated time required in minutes for database server patching.
@@ -34,10 +35,10 @@ class GetExadataInfrastructureEstimatedPatchingTime {
 
   factory GetExadataInfrastructureEstimatedPatchingTime.fromMap(Map<String, dynamic> map) {
     return GetExadataInfrastructureEstimatedPatchingTime(
-      estimatedDbServerPatchingTime: map['estimatedDbServerPatchingTime'] as int,
-      estimatedNetworkSwitchesPatchingTime: map['estimatedNetworkSwitchesPatchingTime'] as int,
-      estimatedStorageServerPatchingTime: map['estimatedStorageServerPatchingTime'] as int,
-      totalEstimatedPatchingTime: map['totalEstimatedPatchingTime'] as int,
+      estimatedDbServerPatchingTime: (map['estimatedDbServerPatchingTime'] as int).input(),
+      estimatedNetworkSwitchesPatchingTime: (map['estimatedNetworkSwitchesPatchingTime'] as int).input(),
+      estimatedStorageServerPatchingTime: (map['estimatedStorageServerPatchingTime'] as int).input(),
+      totalEstimatedPatchingTime: (map['totalEstimatedPatchingTime'] as int).input(),
     );
   }
 }

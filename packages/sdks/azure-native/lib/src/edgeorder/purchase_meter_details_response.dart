@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Billing type Purchase meter details.
 class PurchaseMeterDetailsResponse {
   /// Represents billing type.
   /// Expected value is 'Purchase'.
-  final String billingType;
+  final pulumi.Input<String> billingType;
   /// Charging type.
-  final String chargingType;
+  final pulumi.Input<String> chargingType;
   /// Billing unit applicable for Pav2 billing.
-  final double multiplier;
+  final pulumi.Input<double> multiplier;
   /// Product Id.
-  final String productId;
+  final pulumi.Input<String> productId;
   /// Sku Id.
-  final String skuId;
+  final pulumi.Input<String> skuId;
   /// Term Id.
-  final String termId;
+  final pulumi.Input<String> termId;
 
   /// Creates a new [PurchaseMeterDetailsResponse].
   /// [billingType] Represents billing type.
@@ -46,12 +47,12 @@ class PurchaseMeterDetailsResponse {
 
   factory PurchaseMeterDetailsResponse.fromMap(Map<String, dynamic> map) {
     return PurchaseMeterDetailsResponse(
-      billingType: map['billingType'] as String,
-      chargingType: map['chargingType'] as String,
-      multiplier: map['multiplier'] as double,
-      productId: map['productId'] as String,
-      skuId: map['skuId'] as String,
-      termId: map['termId'] as String,
+      billingType: (map['billingType'] as String).input(),
+      chargingType: (map['chargingType'] as String).input(),
+      multiplier: (map['multiplier'] as double).input(),
+      productId: (map['productId'] as String).input(),
+      skuId: (map['skuId'] as String).input(),
+      termId: (map['termId'] as String).input(),
     );
   }
 }

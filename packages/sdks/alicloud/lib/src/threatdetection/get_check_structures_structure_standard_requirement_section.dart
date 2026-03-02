@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCheckStructuresStructureStandardRequirementSection {
   /// The ID of the section for the check item.
-  final int id;
+  final pulumi.Input<int> id;
   /// The display name of the standard for the check item.
-  final String showName;
+  final pulumi.Input<String> showName;
 
   /// Creates a new [GetCheckStructuresStructureStandardRequirementSection].
   /// [id] The ID of the section for the check item.
@@ -24,8 +25,8 @@ class GetCheckStructuresStructureStandardRequirementSection {
 
   factory GetCheckStructuresStructureStandardRequirementSection.fromMap(Map<String, dynamic> map) {
     return GetCheckStructuresStructureStandardRequirementSection(
-      id: map['id'] as int,
-      showName: map['showName'] as String,
+      id: (map['id'] as int).input(),
+      showName: (map['showName'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackendServiceCdnPolicyCacheKeyPolicy {
   /// If true requests to different hosts will be cached separately.
-  final bool includeHost;
+  final pulumi.Input<bool> includeHost;
   /// Allows HTTP request headers (by name) to be used in the
   /// cache key.
-  final List<String> includeHttpHeaders;
+  final pulumi.Input<List<String>> includeHttpHeaders;
   /// Names of cookies to include in cache keys.
-  final List<String> includeNamedCookies;
+  final pulumi.Input<List<String>> includeNamedCookies;
   /// If true, http and https requests will be cached separately.
-  final bool includeProtocol;
+  final pulumi.Input<bool> includeProtocol;
   /// If true, include query string parameters in the cache key
   /// according to query_string_whitelist and
   /// query_string_blacklist. If neither is set, the entire query
@@ -18,21 +19,21 @@ class GetBackendServiceCdnPolicyCacheKeyPolicy {
   ///
   /// If false, the query string will be excluded from the cache
   /// key entirely.
-  final bool includeQueryString;
+  final pulumi.Input<bool> includeQueryString;
   /// Names of query string parameters to exclude in cache keys.
   ///
   /// All other parameters will be included. Either specify
   /// query_string_whitelist or query_string_blacklist, not both.
   /// '&' and '=' will be percent encoded and not treated as
   /// delimiters.
-  final List<String> queryStringBlacklists;
+  final pulumi.Input<List<String>> queryStringBlacklists;
   /// Names of query string parameters to include in cache keys.
   ///
   /// All other parameters will be excluded. Either specify
   /// query_string_whitelist or query_string_blacklist, not both.
   /// '&' and '=' will be percent encoded and not treated as
   /// delimiters.
-  final List<String> queryStringWhitelists;
+  final pulumi.Input<List<String>> queryStringWhitelists;
 
   /// Creates a new [GetBackendServiceCdnPolicyCacheKeyPolicy].
   /// [includeHost] If true requests to different hosts will be cached separately.
@@ -66,13 +67,13 @@ class GetBackendServiceCdnPolicyCacheKeyPolicy {
 
   factory GetBackendServiceCdnPolicyCacheKeyPolicy.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceCdnPolicyCacheKeyPolicy(
-      includeHost: map['includeHost'] as bool,
-      includeHttpHeaders: (map['includeHttpHeaders'] as List).cast<String>(),
-      includeNamedCookies: (map['includeNamedCookies'] as List).cast<String>(),
-      includeProtocol: map['includeProtocol'] as bool,
-      includeQueryString: map['includeQueryString'] as bool,
-      queryStringBlacklists: (map['queryStringBlacklists'] as List).cast<String>(),
-      queryStringWhitelists: (map['queryStringWhitelists'] as List).cast<String>(),
+      includeHost: (map['includeHost'] as bool).input(),
+      includeHttpHeaders: ((map['includeHttpHeaders'] as List).cast<String>()).input(),
+      includeNamedCookies: ((map['includeNamedCookies'] as List).cast<String>()).input(),
+      includeProtocol: (map['includeProtocol'] as bool).input(),
+      includeQueryString: (map['includeQueryString'] as bool).input(),
+      queryStringBlacklists: ((map['queryStringBlacklists'] as List).cast<String>()).input(),
+      queryStringWhitelists: ((map['queryStringWhitelists'] as List).cast<String>()).input(),
     );
   }
 }

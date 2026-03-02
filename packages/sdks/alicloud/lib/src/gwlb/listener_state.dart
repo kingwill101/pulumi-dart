@@ -30,21 +30,14 @@ class ListenerState {
   /// [status] The status of the listener.
   /// [tags] The tags. You can specify at most 20 tags in each call.
   ListenerState({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? listenerDescription,
-    pulumi.Output<String>? loadBalancerId,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? serverGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      listenerDescription = pulumi.Input.asOptionalInput<String>(listenerDescription),
-      loadBalancerId = pulumi.Input.asOptionalInput<String>(loadBalancerId),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      serverGroupId = pulumi.Input.asOptionalInput<String>(serverGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dryRun,
+    this.listenerDescription,
+    this.loadBalancerId,
+    this.regionId,
+    this.serverGroupId,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ListenerState {
 
   factory ListenerState.fromMap(Map<String, dynamic> map) {
     return ListenerState(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      listenerDescription: map['listenerDescription'] == null ? null : pulumi.Output.create<String>(map['listenerDescription'] as String),
-      loadBalancerId: map['loadBalancerId'] == null ? null : pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      serverGroupId: map['serverGroupId'] == null ? null : pulumi.Output.create<String>(map['serverGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      listenerDescription: map['listenerDescription'] == null ? null : (map['listenerDescription'] as String).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

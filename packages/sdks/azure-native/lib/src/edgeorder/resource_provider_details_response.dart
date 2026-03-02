@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Management RP details.
 class ResourceProviderDetailsResponse {
   /// Resource provider namespace.
-  final String resourceProviderNamespace;
+  final pulumi.Input<String> resourceProviderNamespace;
 
   /// Creates a new [ResourceProviderDetailsResponse].
   /// [resourceProviderNamespace] Resource provider namespace.
@@ -20,7 +21,7 @@ class ResourceProviderDetailsResponse {
 
   factory ResourceProviderDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceProviderDetailsResponse(
-      resourceProviderNamespace: map['resourceProviderNamespace'] as String,
+      resourceProviderNamespace: (map['resourceProviderNamespace'] as String).input(),
     );
   }
 }

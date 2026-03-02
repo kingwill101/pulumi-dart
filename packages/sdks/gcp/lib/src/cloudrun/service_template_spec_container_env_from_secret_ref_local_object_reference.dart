@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
   /// Name of the referent.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference].
   /// [name] Name of the referent.
@@ -19,7 +20,7 @@ class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
 
   factory ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

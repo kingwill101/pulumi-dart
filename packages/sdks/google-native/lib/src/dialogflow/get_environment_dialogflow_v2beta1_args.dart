@@ -16,13 +16,10 @@ class GetEnvironmentDialogflowV2beta1Args {
   /// [location] Required.
   /// [project] Optional.
   GetEnvironmentDialogflowV2beta1Args({
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.environmentId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetEnvironmentDialogflowV2beta1Args {
 
   factory GetEnvironmentDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentDialogflowV2beta1Args(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

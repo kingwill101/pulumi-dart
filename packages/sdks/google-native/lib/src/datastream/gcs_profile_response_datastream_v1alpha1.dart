@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cloud Storage bucket profile.
 class GcsProfileResponseDatastreamV1alpha1 {
   /// The full project and resource path for Cloud Storage bucket including the name.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// The root path inside the Cloud Storage bucket.
-  final String rootPath;
+  final pulumi.Input<String> rootPath;
 
   /// Creates a new [GcsProfileResponseDatastreamV1alpha1].
   /// [bucketName] The full project and resource path for Cloud Storage bucket including the name.
@@ -25,8 +26,8 @@ class GcsProfileResponseDatastreamV1alpha1 {
 
   factory GcsProfileResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return GcsProfileResponseDatastreamV1alpha1(
-      bucketName: map['bucketName'] as String,
-      rootPath: map['rootPath'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      rootPath: (map['rootPath'] as String).input(),
     );
   }
 }

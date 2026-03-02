@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LbCertificateDomainValidationRecord {
   /// Domain name (e.g., example.com) for your SSL/TLS certificate.
-  final String? domainName;
-  final String? resourceRecordName;
-  final String? resourceRecordType;
-  final String? resourceRecordValue;
+  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String>? resourceRecordName;
+  final pulumi.Input<String>? resourceRecordType;
+  final pulumi.Input<String>? resourceRecordValue;
 
   /// Creates a new [LbCertificateDomainValidationRecord].
   /// [domainName] Domain name (e.g., example.com) for your SSL/TLS certificate.
@@ -31,10 +32,10 @@ class LbCertificateDomainValidationRecord {
 
   factory LbCertificateDomainValidationRecord.fromMap(Map<String, dynamic> map) {
     return LbCertificateDomainValidationRecord(
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      resourceRecordName: map['resourceRecordName'] == null ? null : map['resourceRecordName'] as String,
-      resourceRecordType: map['resourceRecordType'] == null ? null : map['resourceRecordType'] as String,
-      resourceRecordValue: map['resourceRecordValue'] == null ? null : map['resourceRecordValue'] as String,
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      resourceRecordName: map['resourceRecordName'] == null ? null : (map['resourceRecordName'] as String).input(),
+      resourceRecordType: map['resourceRecordType'] == null ? null : (map['resourceRecordType'] as String).input(),
+      resourceRecordValue: map['resourceRecordValue'] == null ? null : (map['resourceRecordValue'] as String).input(),
     );
   }
 }

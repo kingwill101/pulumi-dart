@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationPortalOptionSignInOption {
-  final String applicationUrl;
-  final String origin;
+  final pulumi.Input<String> applicationUrl;
+  final pulumi.Input<String> origin;
 
   /// Creates a new [GetApplicationPortalOptionSignInOption].
   /// [applicationUrl] Required.
@@ -22,8 +23,8 @@ class GetApplicationPortalOptionSignInOption {
 
   factory GetApplicationPortalOptionSignInOption.fromMap(Map<String, dynamic> map) {
     return GetApplicationPortalOptionSignInOption(
-      applicationUrl: map['applicationUrl'] as String,
-      origin: map['origin'] as String,
+      applicationUrl: (map['applicationUrl'] as String).input(),
+      origin: (map['origin'] as String).input(),
     );
   }
 }

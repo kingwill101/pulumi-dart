@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainNumaTuneMemory {
   /// Sets the allocation mode for NUMA memory, influencing how memory is distributed across nodes.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Specifies the nodeset for memory allocation for the NUMA settings, allowing for tailored memory configurations.
-  final String? nodeset;
+  final pulumi.Input<String>? nodeset;
   /// Defines the placement strategy for NUMA memory, orienting memory allocation toward specific nodes.
-  final String? placement;
+  final pulumi.Input<String>? placement;
 
   /// Creates a new [DomainNumaTuneMemory].
   /// [mode] Sets the allocation mode for NUMA memory, influencing how memory is distributed across nodes.
@@ -29,9 +30,9 @@ class DomainNumaTuneMemory {
 
   factory DomainNumaTuneMemory.fromMap(Map<String, dynamic> map) {
     return DomainNumaTuneMemory(
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      nodeset: map['nodeset'] == null ? null : map['nodeset'] as String,
-      placement: map['placement'] == null ? null : map['placement'] as String,
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      nodeset: map['nodeset'] == null ? null : (map['nodeset'] as String).input(),
+      placement: map['placement'] == null ? null : (map['placement'] as String).input(),
     );
   }
 }

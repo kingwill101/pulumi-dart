@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VHD to attach as OS disk
 class VirtualMachinePropertiesOsDisk {
   /// Resource ID of the OS disk
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [VirtualMachinePropertiesOsDisk].
   /// [id] Resource ID of the OS disk
@@ -20,7 +21,7 @@ class VirtualMachinePropertiesOsDisk {
 
   factory VirtualMachinePropertiesOsDisk.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesOsDisk(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

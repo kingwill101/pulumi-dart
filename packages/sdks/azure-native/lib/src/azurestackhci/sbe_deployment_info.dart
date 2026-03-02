@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Solution builder extension (SBE) package and manifest information for the solution builder extension staged for AzureStackHCI cluster deployment.
 class SbeDeploymentInfo {
   /// SBE family name.
-  final String? family;
+  final pulumi.Input<String>? family;
   /// SBE manifest publisher.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// SBE Manifest Creation Date.
-  final String? sbeManifestCreationDate;
+  final pulumi.Input<String>? sbeManifestCreationDate;
   /// SBE Manifest Source.
-  final String? sbeManifestSource;
+  final pulumi.Input<String>? sbeManifestSource;
   /// SBE package version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [SbeDeploymentInfo].
   /// [family] SBE family name.
@@ -40,11 +41,11 @@ class SbeDeploymentInfo {
 
   factory SbeDeploymentInfo.fromMap(Map<String, dynamic> map) {
     return SbeDeploymentInfo(
-      family: map['family'] == null ? null : map['family'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      sbeManifestCreationDate: map['sbeManifestCreationDate'] == null ? null : map['sbeManifestCreationDate'] as String,
-      sbeManifestSource: map['sbeManifestSource'] == null ? null : map['sbeManifestSource'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      sbeManifestCreationDate: map['sbeManifestCreationDate'] == null ? null : (map['sbeManifestCreationDate'] as String).input(),
+      sbeManifestSource: map['sbeManifestSource'] == null ? null : (map['sbeManifestSource'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -33,23 +33,15 @@ class AddressBookState {
   /// [lang] The language of the content within the request and response. Valid values: `zh`, `en`.
   /// [tagRelation] The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
   AddressBookState({
-    pulumi.Output<List<String>>? addressLists,
-    pulumi.Output<int>? autoAddTagEcs,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<AddressBookEcsTag>>? ecsTags,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? groupType,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? tagRelation,
-  }) :
-      addressLists = pulumi.Input.asOptionalInput<List<String>>(addressLists),
-      autoAddTagEcs = pulumi.Input.asOptionalInput<int>(autoAddTagEcs),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ecsTags = pulumi.Input.asOptionalInput<List<AddressBookEcsTag>>(ecsTags),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      groupType = pulumi.Input.asOptionalInput<String>(groupType),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      tagRelation = pulumi.Input.asOptionalInput<String>(tagRelation);
+    this.addressLists,
+    this.autoAddTagEcs,
+    this.description,
+    this.ecsTags,
+    this.groupName,
+    this.groupType,
+    this.lang,
+    this.tagRelation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class AddressBookState {
 
   factory AddressBookState.fromMap(Map<String, dynamic> map) {
     return AddressBookState(
-      addressLists: map['addressLists'] == null ? null : pulumi.Output.create<List<String>>((map['addressLists'] as List).cast<String>()),
-      autoAddTagEcs: map['autoAddTagEcs'] == null ? null : pulumi.Output.create<int>(map['autoAddTagEcs'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ecsTags: map['ecsTags'] == null ? null : pulumi.Output.create<List<AddressBookEcsTag>>(pulumi.Input.decodeList<AddressBookEcsTag>(map['ecsTags'], (value) => AddressBookEcsTag.fromMap((value as Map).cast<String, dynamic>()))),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      groupType: map['groupType'] == null ? null : pulumi.Output.create<String>(map['groupType'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      tagRelation: map['tagRelation'] == null ? null : pulumi.Output.create<String>(map['tagRelation'] as String),
+      addressLists: map['addressLists'] == null ? null : ((map['addressLists'] as List).cast<String>()).input(),
+      autoAddTagEcs: map['autoAddTagEcs'] == null ? null : (map['autoAddTagEcs'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ecsTags: map['ecsTags'] == null ? null : (pulumi.Input.decodeList<AddressBookEcsTag>(map['ecsTags'], (value) => AddressBookEcsTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      tagRelation: map['tagRelation'] == null ? null : (map['tagRelation'] as String).input(),
     );
   }
 }

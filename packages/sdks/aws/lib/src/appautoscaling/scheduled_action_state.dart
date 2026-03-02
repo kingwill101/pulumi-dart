@@ -41,29 +41,18 @@ class ScheduledActionState {
   /// [startTime] Date and time for the scheduled action to start in RFC 3339 format. The timezone is not affected by the setting of `timezone`.
   /// [timezone] Time zone used when setting a scheduled action by using an at or cron expression. Does not affect timezone for `start_time` and `end_time`. Valid values are the [canonical names of the IANA time zones supported by Joda-Time](https://www.joda.org/joda-time/timezones.html), such as `Etc/GMT+9` or `Pacific/Tahiti`. Default is `UTC`.
   ScheduledActionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? scalableDimension,
-    pulumi.Output<ScheduledActionScalableTargetAction>? scalableTargetAction,
-    pulumi.Output<String>? schedule,
-    pulumi.Output<String>? serviceNamespace,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? timezone,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      scalableDimension = pulumi.Input.asOptionalInput<String>(scalableDimension),
-      scalableTargetAction = pulumi.Input.asOptionalInput<ScheduledActionScalableTargetAction>(scalableTargetAction),
-      schedule = pulumi.Input.asOptionalInput<String>(schedule),
-      serviceNamespace = pulumi.Input.asOptionalInput<String>(serviceNamespace),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      timezone = pulumi.Input.asOptionalInput<String>(timezone);
+    this.arn,
+    this.endTime,
+    this.name,
+    this.region,
+    this.resourceId,
+    this.scalableDimension,
+    this.scalableTargetAction,
+    this.schedule,
+    this.serviceNamespace,
+    this.startTime,
+    this.timezone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class ScheduledActionState {
 
   factory ScheduledActionState.fromMap(Map<String, dynamic> map) {
     return ScheduledActionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      scalableDimension: map['scalableDimension'] == null ? null : pulumi.Output.create<String>(map['scalableDimension'] as String),
-      scalableTargetAction: map['scalableTargetAction'] == null ? null : pulumi.Output.create<ScheduledActionScalableTargetAction>(ScheduledActionScalableTargetAction.fromMap((map['scalableTargetAction'] as Map).cast<String, dynamic>())),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<String>(map['schedule'] as String),
-      serviceNamespace: map['serviceNamespace'] == null ? null : pulumi.Output.create<String>(map['serviceNamespace'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      timezone: map['timezone'] == null ? null : pulumi.Output.create<String>(map['timezone'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      scalableDimension: map['scalableDimension'] == null ? null : (map['scalableDimension'] as String).input(),
+      scalableTargetAction: map['scalableTargetAction'] == null ? null : (ScheduledActionScalableTargetAction.fromMap((map['scalableTargetAction'] as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      serviceNamespace: map['serviceNamespace'] == null ? null : (map['serviceNamespace'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
     );
   }
 }

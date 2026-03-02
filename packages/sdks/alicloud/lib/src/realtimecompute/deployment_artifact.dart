@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_artifact_jar_artifact.dart';
 import 'deployment_artifact_python_artifact.dart';
 import 'deployment_artifact_sql_artifact.dart';
 
 class DeploymentArtifact {
   /// JarArtifact See `jar_artifact` below.
-  final DeploymentArtifactJarArtifact? jarArtifact;
+  final pulumi.Input<DeploymentArtifactJarArtifact>? jarArtifact;
   /// Artifact type
-  final String kind;
+  final pulumi.Input<String> kind;
   /// PythonArtifact See `python_artifact` below.
-  final DeploymentArtifactPythonArtifact? pythonArtifact;
+  final pulumi.Input<DeploymentArtifactPythonArtifact>? pythonArtifact;
   /// SqlArtifact See `sql_artifact` below.
-  final DeploymentArtifactSqlArtifact? sqlArtifact;
+  final pulumi.Input<DeploymentArtifactSqlArtifact>? sqlArtifact;
 
   /// Creates a new [DeploymentArtifact].
   /// [jarArtifact] JarArtifact See `jar_artifact` below.
@@ -28,19 +29,19 @@ class DeploymentArtifact {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jarArtifact': ?jarArtifact == null ? null : jarArtifact!.toMap(),
+      'jarArtifact': ?pulumi.Input.mapOptionalInputValue<DeploymentArtifactJarArtifact, Map<String, dynamic>>(jarArtifact, (value) => value.toMap()),
       'kind': kind,
-      'pythonArtifact': ?pythonArtifact == null ? null : pythonArtifact!.toMap(),
-      'sqlArtifact': ?sqlArtifact == null ? null : sqlArtifact!.toMap(),
+      'pythonArtifact': ?pulumi.Input.mapOptionalInputValue<DeploymentArtifactPythonArtifact, Map<String, dynamic>>(pythonArtifact, (value) => value.toMap()),
+      'sqlArtifact': ?pulumi.Input.mapOptionalInputValue<DeploymentArtifactSqlArtifact, Map<String, dynamic>>(sqlArtifact, (value) => value.toMap()),
     };
   }
 
   factory DeploymentArtifact.fromMap(Map<String, dynamic> map) {
     return DeploymentArtifact(
-      jarArtifact: map['jarArtifact'] == null ? null : DeploymentArtifactJarArtifact.fromMap((map['jarArtifact'] as Map).cast<String, dynamic>()),
-      kind: map['kind'] as String,
-      pythonArtifact: map['pythonArtifact'] == null ? null : DeploymentArtifactPythonArtifact.fromMap((map['pythonArtifact'] as Map).cast<String, dynamic>()),
-      sqlArtifact: map['sqlArtifact'] == null ? null : DeploymentArtifactSqlArtifact.fromMap((map['sqlArtifact'] as Map).cast<String, dynamic>()),
+      jarArtifact: map['jarArtifact'] == null ? null : (DeploymentArtifactJarArtifact.fromMap((map['jarArtifact'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      pythonArtifact: map['pythonArtifact'] == null ? null : (DeploymentArtifactPythonArtifact.fromMap((map['pythonArtifact'] as Map).cast<String, dynamic>())).input(),
+      sqlArtifact: map['sqlArtifact'] == null ? null : (DeploymentArtifactSqlArtifact.fromMap((map['sqlArtifact'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A pointer to an Azure Action Group.
 class ActionGroupResponse {
   /// The resource ID of the Action Group. This cannot be null or empty.
-  final String actionGroupId;
+  final pulumi.Input<String> actionGroupId;
   /// the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
-  final Map<String, String>? webhookProperties;
+  final pulumi.Input<Map<String, String>>? webhookProperties;
 
   /// Creates a new [ActionGroupResponse].
   /// [actionGroupId] The resource ID of the Action Group. This cannot be null or empty.
@@ -25,8 +26,8 @@ class ActionGroupResponse {
 
   factory ActionGroupResponse.fromMap(Map<String, dynamic> map) {
     return ActionGroupResponse(
-      actionGroupId: map['actionGroupId'] as String,
-      webhookProperties: map['webhookProperties'] == null ? null : (map['webhookProperties'] as Map).cast<String, String>(),
+      actionGroupId: (map['actionGroupId'] as String).input(),
+      webhookProperties: map['webhookProperties'] == null ? null : ((map['webhookProperties'] as Map).cast<String, String>()).input(),
     );
   }
 }

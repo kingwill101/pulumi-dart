@@ -5,7 +5,7 @@ import 'container_group_security_context_sysctl.dart';
 
 class ContainerGroupSecurityContext {
   /// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
-  final List<ContainerGroupSecurityContextSysctl>? sysctls;
+  final pulumi.Input<List<ContainerGroupSecurityContextSysctl>>? sysctls;
 
   /// Creates a new [ContainerGroupSecurityContext].
   /// [sysctls] Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
@@ -15,13 +15,13 @@ class ContainerGroupSecurityContext {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sysctls': ?sysctls == null ? null : pulumi.Input.encodeList<ContainerGroupSecurityContextSysctl, Map<String, dynamic>>(sysctls!, (value) => value.toMap()),
+      'sysctls': ?pulumi.Input.mapOptionalInputValue<List<ContainerGroupSecurityContextSysctl>, List<Map<String, dynamic>>>(sysctls, (value) => pulumi.Input.encodeList<ContainerGroupSecurityContextSysctl, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ContainerGroupSecurityContext.fromMap(Map<String, dynamic> map) {
     return ContainerGroupSecurityContext(
-      sysctls: map['sysctls'] == null ? null : pulumi.Input.decodeList<ContainerGroupSecurityContextSysctl>(map['sysctls'], (value) => ContainerGroupSecurityContextSysctl.fromMap((value as Map).cast<String, dynamic>())),
+      sysctls: map['sysctls'] == null ? null : (pulumi.Input.decodeList<ContainerGroupSecurityContextSysctl>(map['sysctls'], (value) => ContainerGroupSecurityContextSysctl.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

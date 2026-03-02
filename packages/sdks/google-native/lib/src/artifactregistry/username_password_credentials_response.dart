@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Username and password credentials.
 class UsernamePasswordCredentialsResponse {
   /// The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
-  final String passwordSecretVersion;
+  final pulumi.Input<String> passwordSecretVersion;
   /// The username to access the remote repository.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [UsernamePasswordCredentialsResponse].
   /// [passwordSecretVersion] The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
@@ -25,8 +26,8 @@ class UsernamePasswordCredentialsResponse {
 
   factory UsernamePasswordCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return UsernamePasswordCredentialsResponse(
-      passwordSecretVersion: map['passwordSecretVersion'] as String,
-      username: map['username'] as String,
+      passwordSecretVersion: (map['passwordSecretVersion'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

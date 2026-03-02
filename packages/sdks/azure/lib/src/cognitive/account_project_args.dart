@@ -32,21 +32,14 @@ class AccountProjectArgs {
   /// [name] The name of the Cognitive Account Project. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   AccountProjectArgs({
-    required pulumi.Output<String> cognitiveAccountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<AccountProjectIdentity> identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      cognitiveAccountId = pulumi.Input.asInput<String>(cognitiveAccountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      identity = pulumi.Input.asInput<AccountProjectIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.cognitiveAccountId,
+    this.description,
+    this.displayName,
+    required this.identity,
+    this.location,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class AccountProjectArgs {
 
   factory AccountProjectArgs.fromMap(Map<String, dynamic> map) {
     return AccountProjectArgs(
-      cognitiveAccountId: pulumi.Output.create<String>(map['cognitiveAccountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      identity: pulumi.Output.create<AccountProjectIdentity>(AccountProjectIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      cognitiveAccountId: (map['cognitiveAccountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      identity: (AccountProjectIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

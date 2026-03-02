@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Options to configure rule type EntityMove. The rule is used to move an entity to a new schema. The rule filter field can refer to one or more entities. The rule scope can be one of: Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
 class EntityMove {
   /// The new schema
-  final String newSchema;
+  final pulumi.Input<String> newSchema;
 
   /// Creates a new [EntityMove].
   /// [newSchema] The new schema
@@ -20,7 +21,7 @@ class EntityMove {
 
   factory EntityMove.fromMap(Map<String, dynamic> map) {
     return EntityMove(
-      newSchema: map['newSchema'] as String,
+      newSchema: (map['newSchema'] as String).input(),
     );
   }
 }

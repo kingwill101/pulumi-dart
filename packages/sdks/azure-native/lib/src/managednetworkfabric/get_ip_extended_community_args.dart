@@ -16,11 +16,9 @@ class GetIpExtendedCommunityArgs {
   /// [ipExtendedCommunityName] Name of the IP Extended Community.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetIpExtendedCommunityArgs({
-    required pulumi.Output<String> ipExtendedCommunityName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      ipExtendedCommunityName = pulumi.Input.asInput<String>(ipExtendedCommunityName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.ipExtendedCommunityName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetIpExtendedCommunityArgs {
 
   factory GetIpExtendedCommunityArgs.fromMap(Map<String, dynamic> map) {
     return GetIpExtendedCommunityArgs(
-      ipExtendedCommunityName: pulumi.Output.create<String>(map['ipExtendedCommunityName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      ipExtendedCommunityName: (map['ipExtendedCommunityName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

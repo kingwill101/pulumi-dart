@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2models_intent_qna_intent_configuration_bedrock_model_configuration_guardrail.dart';
 
 class V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration {
   /// Custom prompt to use for the Bedrock model.
-  final String? customPrompt;
+  final pulumi.Input<String>? customPrompt;
   /// Configuration block for the guardrail to use with the Bedrock model. See `guardrail`.
-  final V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail? guardrail;
+  final pulumi.Input<V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail>? guardrail;
   /// ARN of the Bedrock model to use.
-  final String modelArn;
+  final pulumi.Input<String> modelArn;
   /// Whether to enable tracing for the Bedrock model. Valid values are `ENABLED` and `DISABLED`.
-  final String? traceStatus;
+  final pulumi.Input<String>? traceStatus;
 
   /// Creates a new [V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration].
   /// [customPrompt] Custom prompt to use for the Bedrock model.
@@ -27,7 +28,7 @@ class V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customPrompt': ?customPrompt,
-      'guardrail': ?guardrail == null ? null : guardrail!.toMap(),
+      'guardrail': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail, Map<String, dynamic>>(guardrail, (value) => value.toMap()),
       'modelArn': modelArn,
       'traceStatus': ?traceStatus,
     };
@@ -35,10 +36,10 @@ class V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration {
 
   factory V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration(
-      customPrompt: map['customPrompt'] == null ? null : map['customPrompt'] as String,
-      guardrail: map['guardrail'] == null ? null : V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail.fromMap((map['guardrail'] as Map).cast<String, dynamic>()),
-      modelArn: map['modelArn'] as String,
-      traceStatus: map['traceStatus'] == null ? null : map['traceStatus'] as String,
+      customPrompt: map['customPrompt'] == null ? null : (map['customPrompt'] as String).input(),
+      guardrail: map['guardrail'] == null ? null : (V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail.fromMap((map['guardrail'] as Map).cast<String, dynamic>())).input(),
+      modelArn: (map['modelArn'] as String).input(),
+      traceStatus: map['traceStatus'] == null ? null : (map['traceStatus'] as String).input(),
     );
   }
 }

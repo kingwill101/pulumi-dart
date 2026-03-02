@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'time_span_response.dart';
 
 /// An image built by the pipeline.
 class BuiltImageResponse {
   /// Docker Registry 2.0 digest.
-  final String digest;
+  final pulumi.Input<String> digest;
   /// Name used to push the container image to Google Container Registry, as presented to `docker push`.
-  final String name;
+  final pulumi.Input<String> name;
   /// Stores timing information for pushing the specified image.
-  final TimeSpanResponse pushTiming;
+  final pulumi.Input<TimeSpanResponse> pushTiming;
 
   /// Creates a new [BuiltImageResponse].
   /// [digest] Docker Registry 2.0 digest.
@@ -25,15 +26,15 @@ class BuiltImageResponse {
     return <String, dynamic>{
       'digest': digest,
       'name': name,
-      'pushTiming': pushTiming.toMap(),
+      'pushTiming': pulumi.Input.mapInputValue<TimeSpanResponse, Map<String, dynamic>>(pushTiming, (value) => value.toMap()),
     };
   }
 
   factory BuiltImageResponse.fromMap(Map<String, dynamic> map) {
     return BuiltImageResponse(
-      digest: map['digest'] as String,
-      name: map['name'] as String,
-      pushTiming: TimeSpanResponse.fromMap((map['pushTiming'] as Map).cast<String, dynamic>()),
+      digest: (map['digest'] as String).input(),
+      name: (map['name'] as String).input(),
+      pushTiming: (TimeSpanResponse.fromMap((map['pushTiming'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

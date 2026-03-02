@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'duration_response.dart';
 import 'ios_app_info_response.dart';
 import 'ios_test_loop_response.dart';
@@ -8,15 +9,15 @@ import 'ios_xc_test_response.dart';
 /// A iOS mobile test specification
 class IosTestResponse {
   /// Information about the application under test.
-  final IosAppInfoResponse iosAppInfo;
+  final pulumi.Input<IosAppInfoResponse> iosAppInfo;
   /// An iOS Robo test.
-  final Map<String, dynamic> iosRoboTest;
+  final pulumi.Input<Map<String, dynamic>> iosRoboTest;
   /// An iOS test loop.
-  final IosTestLoopResponse iosTestLoop;
+  final pulumi.Input<IosTestLoopResponse> iosTestLoop;
   /// An iOS XCTest.
-  final IosXcTestResponse iosXcTest;
+  final pulumi.Input<IosXcTestResponse> iosXcTest;
   /// Max time a test is allowed to run before it is automatically cancelled.
-  final DurationResponse testTimeout;
+  final pulumi.Input<DurationResponse> testTimeout;
 
   /// Creates a new [IosTestResponse].
   /// [iosAppInfo] Information about the application under test.
@@ -34,21 +35,21 @@ class IosTestResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iosAppInfo': iosAppInfo.toMap(),
+      'iosAppInfo': pulumi.Input.mapInputValue<IosAppInfoResponse, Map<String, dynamic>>(iosAppInfo, (value) => value.toMap()),
       'iosRoboTest': iosRoboTest,
-      'iosTestLoop': iosTestLoop.toMap(),
-      'iosXcTest': iosXcTest.toMap(),
-      'testTimeout': testTimeout.toMap(),
+      'iosTestLoop': pulumi.Input.mapInputValue<IosTestLoopResponse, Map<String, dynamic>>(iosTestLoop, (value) => value.toMap()),
+      'iosXcTest': pulumi.Input.mapInputValue<IosXcTestResponse, Map<String, dynamic>>(iosXcTest, (value) => value.toMap()),
+      'testTimeout': pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(testTimeout, (value) => value.toMap()),
     };
   }
 
   factory IosTestResponse.fromMap(Map<String, dynamic> map) {
     return IosTestResponse(
-      iosAppInfo: IosAppInfoResponse.fromMap((map['iosAppInfo'] as Map).cast<String, dynamic>()),
-      iosRoboTest: (map['iosRoboTest'] as Map).cast<String, dynamic>(),
-      iosTestLoop: IosTestLoopResponse.fromMap((map['iosTestLoop'] as Map).cast<String, dynamic>()),
-      iosXcTest: IosXcTestResponse.fromMap((map['iosXcTest'] as Map).cast<String, dynamic>()),
-      testTimeout: DurationResponse.fromMap((map['testTimeout'] as Map).cast<String, dynamic>()),
+      iosAppInfo: (IosAppInfoResponse.fromMap((map['iosAppInfo'] as Map).cast<String, dynamic>())).input(),
+      iosRoboTest: ((map['iosRoboTest'] as Map).cast<String, dynamic>()).input(),
+      iosTestLoop: (IosTestLoopResponse.fromMap((map['iosTestLoop'] as Map).cast<String, dynamic>())).input(),
+      iosXcTest: (IosXcTestResponse.fromMap((map['iosXcTest'] as Map).cast<String, dynamic>())).input(),
+      testTimeout: (DurationResponse.fromMap((map['testTimeout'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

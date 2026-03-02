@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// OffAzure discovery source resource properties
 class OffAzureDiscoverySourceResourceProperties {
   /// Source ArmId of Discovery Source resource
-  final String sourceId;
+  final pulumi.Input<String> sourceId;
   /// Source type of the discoverySource
   /// Expected value is 'OffAzure'.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
 
   /// Creates a new [OffAzureDiscoverySourceResourceProperties].
   /// [sourceId] Source ArmId of Discovery Source resource
@@ -26,8 +27,8 @@ class OffAzureDiscoverySourceResourceProperties {
 
   factory OffAzureDiscoverySourceResourceProperties.fromMap(Map<String, dynamic> map) {
     return OffAzureDiscoverySourceResourceProperties(
-      sourceId: map['sourceId'] as String,
-      sourceType: map['sourceType'] as String,
+      sourceId: (map['sourceId'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
     );
   }
 }

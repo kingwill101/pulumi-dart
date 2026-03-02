@@ -28,17 +28,12 @@ class CustomPermissionsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   CustomPermissionsArgs({
-    pulumi.Output<String>? awsAccountId,
-    required pulumi.Output<CustomPermissionsCapabilities> capabilities,
-    required pulumi.Output<String> customPermissionsName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      capabilities = pulumi.Input.asInput<CustomPermissionsCapabilities>(capabilities),
-      customPermissionsName = pulumi.Input.asInput<String>(customPermissionsName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.awsAccountId,
+    required this.capabilities,
+    required this.customPermissionsName,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class CustomPermissionsArgs {
 
   factory CustomPermissionsArgs.fromMap(Map<String, dynamic> map) {
     return CustomPermissionsArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      capabilities: pulumi.Output.create<CustomPermissionsCapabilities>(CustomPermissionsCapabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>())),
-      customPermissionsName: pulumi.Output.create<String>(map['customPermissionsName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      capabilities: (CustomPermissionsCapabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>())).input(),
+      customPermissionsName: (map['customPermissionsName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

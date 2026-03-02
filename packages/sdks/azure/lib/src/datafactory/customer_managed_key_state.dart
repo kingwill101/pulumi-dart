@@ -16,13 +16,10 @@ class CustomerManagedKeyState {
   /// [dataFactoryId] The ID of the Data Factory Resource the Customer Managed Key will be associated with. Changing this forces a new resource to be created.
   /// [userAssignedIdentityId] The User Assigned Identity ID that will be used to access Key Vaults that contain the encryption keys.
   CustomerManagedKeyState({
-    pulumi.Output<String>? customerManagedKeyId,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? userAssignedIdentityId,
-  }) :
-      customerManagedKeyId = pulumi.Input.asOptionalInput<String>(customerManagedKeyId),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      userAssignedIdentityId = pulumi.Input.asOptionalInput<String>(userAssignedIdentityId);
+    this.customerManagedKeyId,
+    this.dataFactoryId,
+    this.userAssignedIdentityId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class CustomerManagedKeyState {
 
   factory CustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyState(
-      customerManagedKeyId: map['customerManagedKeyId'] == null ? null : pulumi.Output.create<String>(map['customerManagedKeyId'] as String),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : pulumi.Output.create<String>(map['userAssignedIdentityId'] as String),
+      customerManagedKeyId: map['customerManagedKeyId'] == null ? null : (map['customerManagedKeyId'] as String).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
     );
   }
 }

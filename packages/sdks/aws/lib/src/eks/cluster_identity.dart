@@ -5,7 +5,7 @@ import 'cluster_identity_oidc.dart';
 
 class ClusterIdentity {
   /// Nested block containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster. Detailed below.
-  final List<ClusterIdentityOidc>? oidcs;
+  final pulumi.Input<List<ClusterIdentityOidc>>? oidcs;
 
   /// Creates a new [ClusterIdentity].
   /// [oidcs] Nested block containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster. Detailed below.
@@ -15,13 +15,13 @@ class ClusterIdentity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oidcs': ?oidcs == null ? null : pulumi.Input.encodeList<ClusterIdentityOidc, Map<String, dynamic>>(oidcs!, (value) => value.toMap()),
+      'oidcs': ?pulumi.Input.mapOptionalInputValue<List<ClusterIdentityOidc>, List<Map<String, dynamic>>>(oidcs, (value) => pulumi.Input.encodeList<ClusterIdentityOidc, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ClusterIdentity.fromMap(Map<String, dynamic> map) {
     return ClusterIdentity(
-      oidcs: map['oidcs'] == null ? null : pulumi.Input.decodeList<ClusterIdentityOidc>(map['oidcs'], (value) => ClusterIdentityOidc.fromMap((value as Map).cast<String, dynamic>())),
+      oidcs: map['oidcs'] == null ? null : (pulumi.Input.decodeList<ClusterIdentityOidc>(map['oidcs'], (value) => ClusterIdentityOidc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

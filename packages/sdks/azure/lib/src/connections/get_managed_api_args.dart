@@ -16,11 +16,9 @@ class GetManagedApiArgs {
   /// [location] The Azure location for this Managed API.
   /// [name] Specifies the name of the Managed API.
   GetManagedApiArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> name,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asInput<String>(name);
+    required this.location,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetManagedApiArgs {
 
   factory GetManagedApiArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedApiArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      location: (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

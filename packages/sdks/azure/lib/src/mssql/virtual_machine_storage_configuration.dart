@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_storage_configuration_data_settings.dart';
 import 'virtual_machine_storage_configuration_log_settings.dart';
 import 'virtual_machine_storage_configuration_temp_db_settings.dart';
 
 class VirtualMachineStorageConfiguration {
   /// A `storage_settings` block as defined below.
-  final VirtualMachineStorageConfigurationDataSettings? dataSettings;
+  final pulumi.Input<VirtualMachineStorageConfigurationDataSettings>? dataSettings;
   /// The type of disk configuration to apply to the SQL Server. Valid values include `NEW`, `EXTEND`, or `ADD`.
-  final String diskType;
+  final pulumi.Input<String> diskType;
   /// A `storage_settings` block as defined below.
-  final VirtualMachineStorageConfigurationLogSettings? logSettings;
+  final pulumi.Input<VirtualMachineStorageConfigurationLogSettings>? logSettings;
   /// The type of storage workload. Valid values include `GENERAL`, `OLTP`, or `DW`.
-  final String storageWorkloadType;
+  final pulumi.Input<String> storageWorkloadType;
   /// Specifies whether to set system databases (except tempDb) location to newly created data storage. Possible values are `true` and `false`. Defaults to `false`.
-  final bool? systemDbOnDataDiskEnabled;
+  final pulumi.Input<bool>? systemDbOnDataDiskEnabled;
   /// An `temp_db_settings` block as defined below.
-  final VirtualMachineStorageConfigurationTempDbSettings? tempDbSettings;
+  final pulumi.Input<VirtualMachineStorageConfigurationTempDbSettings>? tempDbSettings;
 
   /// Creates a new [VirtualMachineStorageConfiguration].
   /// [dataSettings] A `storage_settings` block as defined below.
@@ -36,23 +37,23 @@ class VirtualMachineStorageConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataSettings': ?dataSettings == null ? null : dataSettings!.toMap(),
+      'dataSettings': ?pulumi.Input.mapOptionalInputValue<VirtualMachineStorageConfigurationDataSettings, Map<String, dynamic>>(dataSettings, (value) => value.toMap()),
       'diskType': diskType,
-      'logSettings': ?logSettings == null ? null : logSettings!.toMap(),
+      'logSettings': ?pulumi.Input.mapOptionalInputValue<VirtualMachineStorageConfigurationLogSettings, Map<String, dynamic>>(logSettings, (value) => value.toMap()),
       'storageWorkloadType': storageWorkloadType,
       'systemDbOnDataDiskEnabled': ?systemDbOnDataDiskEnabled,
-      'tempDbSettings': ?tempDbSettings == null ? null : tempDbSettings!.toMap(),
+      'tempDbSettings': ?pulumi.Input.mapOptionalInputValue<VirtualMachineStorageConfigurationTempDbSettings, Map<String, dynamic>>(tempDbSettings, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineStorageConfiguration(
-      dataSettings: map['dataSettings'] == null ? null : VirtualMachineStorageConfigurationDataSettings.fromMap((map['dataSettings'] as Map).cast<String, dynamic>()),
-      diskType: map['diskType'] as String,
-      logSettings: map['logSettings'] == null ? null : VirtualMachineStorageConfigurationLogSettings.fromMap((map['logSettings'] as Map).cast<String, dynamic>()),
-      storageWorkloadType: map['storageWorkloadType'] as String,
-      systemDbOnDataDiskEnabled: map['systemDbOnDataDiskEnabled'] == null ? null : map['systemDbOnDataDiskEnabled'] as bool,
-      tempDbSettings: map['tempDbSettings'] == null ? null : VirtualMachineStorageConfigurationTempDbSettings.fromMap((map['tempDbSettings'] as Map).cast<String, dynamic>()),
+      dataSettings: map['dataSettings'] == null ? null : (VirtualMachineStorageConfigurationDataSettings.fromMap((map['dataSettings'] as Map).cast<String, dynamic>())).input(),
+      diskType: (map['diskType'] as String).input(),
+      logSettings: map['logSettings'] == null ? null : (VirtualMachineStorageConfigurationLogSettings.fromMap((map['logSettings'] as Map).cast<String, dynamic>())).input(),
+      storageWorkloadType: (map['storageWorkloadType'] as String).input(),
+      systemDbOnDataDiskEnabled: map['systemDbOnDataDiskEnabled'] == null ? null : (map['systemDbOnDataDiskEnabled'] as bool).input(),
+      tempDbSettings: map['tempDbSettings'] == null ? null : (VirtualMachineStorageConfigurationTempDbSettings.fromMap((map['tempDbSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

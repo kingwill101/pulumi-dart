@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableTtl {
   /// Name of the table attribute to store the TTL timestamp in.
   /// Required if `enabled` is `true`, must not be set otherwise.
-  final String? attributeName;
+  final pulumi.Input<String>? attributeName;
   /// Whether TTL is enabled.
   /// Default value is `false`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [TableTtl].
   /// [attributeName] Name of the table attribute to store the TTL timestamp in.
@@ -26,8 +27,8 @@ class TableTtl {
 
   factory TableTtl.fromMap(Map<String, dynamic> map) {
     return TableTtl(
-      attributeName: map['attributeName'] == null ? null : map['attributeName'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      attributeName: map['attributeName'] == null ? null : (map['attributeName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

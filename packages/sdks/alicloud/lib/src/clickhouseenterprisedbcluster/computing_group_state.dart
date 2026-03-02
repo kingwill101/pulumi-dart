@@ -40,29 +40,18 @@ class ComputingGroupState {
   /// [nodeScaleMax] Computing group node elasticity upper limit
   /// [nodeScaleMin] Lower limit of computing group node elasticity
   ComputingGroupState({
-    pulumi.Output<String>? computingGroupDescription,
-    pulumi.Output<List<String>>? computingGroupEndpointNames,
-    pulumi.Output<List<String>>? computingGroupEndpoints,
-    pulumi.Output<String>? computingGroupId,
-    pulumi.Output<List<String>>? computingGroupPublicEndpoints,
-    pulumi.Output<String>? computingGroupStatus,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<bool>? isReadonly,
-    pulumi.Output<int>? nodeCount,
-    pulumi.Output<int>? nodeScaleMax,
-    pulumi.Output<int>? nodeScaleMin,
-  }) :
-      computingGroupDescription = pulumi.Input.asOptionalInput<String>(computingGroupDescription),
-      computingGroupEndpointNames = pulumi.Input.asOptionalInput<List<String>>(computingGroupEndpointNames),
-      computingGroupEndpoints = pulumi.Input.asOptionalInput<List<String>>(computingGroupEndpoints),
-      computingGroupId = pulumi.Input.asOptionalInput<String>(computingGroupId),
-      computingGroupPublicEndpoints = pulumi.Input.asOptionalInput<List<String>>(computingGroupPublicEndpoints),
-      computingGroupStatus = pulumi.Input.asOptionalInput<String>(computingGroupStatus),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      isReadonly = pulumi.Input.asOptionalInput<bool>(isReadonly),
-      nodeCount = pulumi.Input.asOptionalInput<int>(nodeCount),
-      nodeScaleMax = pulumi.Input.asOptionalInput<int>(nodeScaleMax),
-      nodeScaleMin = pulumi.Input.asOptionalInput<int>(nodeScaleMin);
+    this.computingGroupDescription,
+    this.computingGroupEndpointNames,
+    this.computingGroupEndpoints,
+    this.computingGroupId,
+    this.computingGroupPublicEndpoints,
+    this.computingGroupStatus,
+    this.dbInstanceId,
+    this.isReadonly,
+    this.nodeCount,
+    this.nodeScaleMax,
+    this.nodeScaleMin,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class ComputingGroupState {
 
   factory ComputingGroupState.fromMap(Map<String, dynamic> map) {
     return ComputingGroupState(
-      computingGroupDescription: map['computingGroupDescription'] == null ? null : pulumi.Output.create<String>(map['computingGroupDescription'] as String),
-      computingGroupEndpointNames: map['computingGroupEndpointNames'] == null ? null : pulumi.Output.create<List<String>>((map['computingGroupEndpointNames'] as List).cast<String>()),
-      computingGroupEndpoints: map['computingGroupEndpoints'] == null ? null : pulumi.Output.create<List<String>>((map['computingGroupEndpoints'] as List).cast<String>()),
-      computingGroupId: map['computingGroupId'] == null ? null : pulumi.Output.create<String>(map['computingGroupId'] as String),
-      computingGroupPublicEndpoints: map['computingGroupPublicEndpoints'] == null ? null : pulumi.Output.create<List<String>>((map['computingGroupPublicEndpoints'] as List).cast<String>()),
-      computingGroupStatus: map['computingGroupStatus'] == null ? null : pulumi.Output.create<String>(map['computingGroupStatus'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      isReadonly: map['isReadonly'] == null ? null : pulumi.Output.create<bool>(map['isReadonly'] as bool),
-      nodeCount: map['nodeCount'] == null ? null : pulumi.Output.create<int>(map['nodeCount'] as int),
-      nodeScaleMax: map['nodeScaleMax'] == null ? null : pulumi.Output.create<int>(map['nodeScaleMax'] as int),
-      nodeScaleMin: map['nodeScaleMin'] == null ? null : pulumi.Output.create<int>(map['nodeScaleMin'] as int),
+      computingGroupDescription: map['computingGroupDescription'] == null ? null : (map['computingGroupDescription'] as String).input(),
+      computingGroupEndpointNames: map['computingGroupEndpointNames'] == null ? null : ((map['computingGroupEndpointNames'] as List).cast<String>()).input(),
+      computingGroupEndpoints: map['computingGroupEndpoints'] == null ? null : ((map['computingGroupEndpoints'] as List).cast<String>()).input(),
+      computingGroupId: map['computingGroupId'] == null ? null : (map['computingGroupId'] as String).input(),
+      computingGroupPublicEndpoints: map['computingGroupPublicEndpoints'] == null ? null : ((map['computingGroupPublicEndpoints'] as List).cast<String>()).input(),
+      computingGroupStatus: map['computingGroupStatus'] == null ? null : (map['computingGroupStatus'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      isReadonly: map['isReadonly'] == null ? null : (map['isReadonly'] as bool).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      nodeScaleMax: map['nodeScaleMax'] == null ? null : (map['nodeScaleMax'] as int).input(),
+      nodeScaleMin: map['nodeScaleMin'] == null ? null : (map['nodeScaleMin'] as int).input(),
     );
   }
 }

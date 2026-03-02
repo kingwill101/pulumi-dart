@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedKubernetesAuditLogConfig {
   /// Whether to enable audit logging. Valid values: `true`, `false`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The SLS project to which the Logstore storing the cluster audit logs belongs.
-  final String? slsProjectName;
+  final pulumi.Input<String>? slsProjectName;
 
   /// Creates a new [ManagedKubernetesAuditLogConfig].
   /// [enabled] Whether to enable audit logging. Valid values: `true`, `false`.
@@ -24,8 +25,8 @@ class ManagedKubernetesAuditLogConfig {
 
   factory ManagedKubernetesAuditLogConfig.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesAuditLogConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      slsProjectName: map['slsProjectName'] == null ? null : map['slsProjectName'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      slsProjectName: map['slsProjectName'] == null ? null : (map['slsProjectName'] as String).input(),
     );
   }
 }

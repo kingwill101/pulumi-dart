@@ -55,19 +55,13 @@ class CoreNetworkArgs {
   /// [globalNetworkId] ID of the global network that a core network will be a part of.
   /// [tags] Key-value tags for the Core Network. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   CoreNetworkArgs({
-    pulumi.Output<String>? basePolicyDocument,
-    pulumi.Output<List<String>>? basePolicyRegions,
-    pulumi.Output<bool>? createBasePolicy,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> globalNetworkId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      basePolicyDocument = pulumi.Input.asOptionalInput<String>(basePolicyDocument),
-      basePolicyRegions = pulumi.Input.asOptionalInput<List<String>>(basePolicyRegions),
-      createBasePolicy = pulumi.Input.asOptionalInput<bool>(createBasePolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.basePolicyDocument,
+    this.basePolicyRegions,
+    this.createBasePolicy,
+    this.description,
+    required this.globalNetworkId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,12 +76,12 @@ class CoreNetworkArgs {
 
   factory CoreNetworkArgs.fromMap(Map<String, dynamic> map) {
     return CoreNetworkArgs(
-      basePolicyDocument: map['basePolicyDocument'] == null ? null : pulumi.Output.create<String>(map['basePolicyDocument'] as String),
-      basePolicyRegions: map['basePolicyRegions'] == null ? null : pulumi.Output.create<List<String>>((map['basePolicyRegions'] as List).cast<String>()),
-      createBasePolicy: map['createBasePolicy'] == null ? null : pulumi.Output.create<bool>(map['createBasePolicy'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      globalNetworkId: pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      basePolicyDocument: map['basePolicyDocument'] == null ? null : (map['basePolicyDocument'] as String).input(),
+      basePolicyRegions: map['basePolicyRegions'] == null ? null : ((map['basePolicyRegions'] as List).cast<String>()).input(),
+      createBasePolicy: map['createBasePolicy'] == null ? null : (map['createBasePolicy'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      globalNetworkId: (map['globalNetworkId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

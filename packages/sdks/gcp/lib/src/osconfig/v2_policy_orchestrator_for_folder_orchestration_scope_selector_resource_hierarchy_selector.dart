@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector {
   /// Names of the folders in scope.
   /// Format: `folders/{folder_id}`
-  final List<String>? includedFolders;
+  final pulumi.Input<List<String>>? includedFolders;
   /// Names of the projects in scope.
   /// Format: `projects/{project_number}`
-  final List<String>? includedProjects;
+  final pulumi.Input<List<String>>? includedProjects;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector].
   /// [includedFolders] Names of the folders in scope.
@@ -26,8 +27,8 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySe
 
   factory V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector(
-      includedFolders: map['includedFolders'] == null ? null : (map['includedFolders'] as List).cast<String>(),
-      includedProjects: map['includedProjects'] == null ? null : (map['includedProjects'] as List).cast<String>(),
+      includedFolders: map['includedFolders'] == null ? null : ((map['includedFolders'] as List).cast<String>()).input(),
+      includedProjects: map['includedProjects'] == null ? null : ((map['includedProjects'] as List).cast<String>()).input(),
     );
   }
 }

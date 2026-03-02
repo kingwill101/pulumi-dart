@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'recurrence_schedule_response.dart';
 
 class RecurrenceTriggerResponse {
   /// Specifies end time of schedule in ISO 8601, but without a UTC offset. Refer https://en.wikipedia.org/wiki/ISO_8601.
   /// Recommented format would be "2022-06-01T00:00:01"
   /// If not present, the schedule will run indefinitely
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// [Required] The frequency to trigger schedule.
-  final String frequency;
+  final pulumi.Input<String> frequency;
   /// [Required] Specifies schedule interval in conjunction with frequency
-  final int interval;
+  final pulumi.Input<int> interval;
   /// The recurrence schedule.
-  final RecurrenceScheduleResponse? schedule;
+  final pulumi.Input<RecurrenceScheduleResponse>? schedule;
   /// Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// Specifies time zone in which the schedule runs.
   /// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
   /// Expected value is 'Recurrence'.
-  final String triggerType;
+  final pulumi.Input<String> triggerType;
 
   /// Creates a new [RecurrenceTriggerResponse].
   /// [endTime] Specifies end time of schedule in ISO 8601, but without a UTC offset. Refer https://en.wikipedia.org/wiki/ISO_8601.
@@ -44,7 +45,7 @@ class RecurrenceTriggerResponse {
       'endTime': ?endTime,
       'frequency': frequency,
       'interval': interval,
-      'schedule': ?schedule == null ? null : schedule!.toMap(),
+      'schedule': ?pulumi.Input.mapOptionalInputValue<RecurrenceScheduleResponse, Map<String, dynamic>>(schedule, (value) => value.toMap()),
       'startTime': ?startTime,
       'timeZone': ?timeZone,
       'triggerType': triggerType,
@@ -53,13 +54,13 @@ class RecurrenceTriggerResponse {
 
   factory RecurrenceTriggerResponse.fromMap(Map<String, dynamic> map) {
     return RecurrenceTriggerResponse(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      frequency: map['frequency'] as String,
-      interval: map['interval'] as int,
-      schedule: map['schedule'] == null ? null : RecurrenceScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
-      triggerType: map['triggerType'] as String,
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      frequency: (map['frequency'] as String).input(),
+      interval: (map['interval'] as int).input(),
+      schedule: map['schedule'] == null ? null : (RecurrenceScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      triggerType: (map['triggerType'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class AccessRuleArgs {
   /// [priority] Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
   /// [rwAccessType] The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
   AccessRuleArgs({
-    required pulumi.Output<String> accessGroupId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> networkSegment,
-    required pulumi.Output<int> priority,
-    required pulumi.Output<String> rwAccessType,
-  }) :
-      accessGroupId = pulumi.Input.asInput<String>(accessGroupId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      networkSegment = pulumi.Input.asInput<String>(networkSegment),
-      priority = pulumi.Input.asInput<int>(priority),
-      rwAccessType = pulumi.Input.asInput<String>(rwAccessType);
+    required this.accessGroupId,
+    this.description,
+    required this.networkSegment,
+    required this.priority,
+    required this.rwAccessType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class AccessRuleArgs {
 
   factory AccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return AccessRuleArgs(
-      accessGroupId: pulumi.Output.create<String>(map['accessGroupId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      networkSegment: pulumi.Output.create<String>(map['networkSegment'] as String),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      rwAccessType: pulumi.Output.create<String>(map['rwAccessType'] as String),
+      accessGroupId: (map['accessGroupId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkSegment: (map['networkSegment'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      rwAccessType: (map['rwAccessType'] as String).input(),
     );
   }
 }

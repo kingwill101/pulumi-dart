@@ -14,11 +14,9 @@ class GetIosAppArgs {
   /// [iosAppId] Required.
   /// [project] Optional.
   GetIosAppArgs({
-    required pulumi.Output<String> iosAppId,
-    pulumi.Output<String>? project,
-  }) :
-      iosAppId = pulumi.Input.asInput<String>(iosAppId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.iosAppId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetIosAppArgs {
 
   factory GetIosAppArgs.fromMap(Map<String, dynamic> map) {
     return GetIosAppArgs(
-      iosAppId: pulumi.Output.create<String>(map['iosAppId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      iosAppId: (map['iosAppId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

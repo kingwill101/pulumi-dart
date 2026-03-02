@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GetInsights Query Errors.
 class GetInsightsErrorKindResponse {
   /// the error message
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// the query kind
-  final String kind;
+  final pulumi.Input<String> kind;
   /// the query id
-  final String? queryId;
+  final pulumi.Input<String>? queryId;
 
   /// Creates a new [GetInsightsErrorKindResponse].
   /// [errorMessage] the error message
@@ -30,9 +31,9 @@ class GetInsightsErrorKindResponse {
 
   factory GetInsightsErrorKindResponse.fromMap(Map<String, dynamic> map) {
     return GetInsightsErrorKindResponse(
-      errorMessage: map['errorMessage'] as String,
-      kind: map['kind'] as String,
-      queryId: map['queryId'] == null ? null : map['queryId'] as String,
+      errorMessage: (map['errorMessage'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      queryId: map['queryId'] == null ? null : (map['queryId'] as String).input(),
     );
   }
 }

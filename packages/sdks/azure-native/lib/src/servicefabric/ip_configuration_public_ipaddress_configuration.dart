@@ -6,11 +6,11 @@ import 'ip_tag.dart';
 /// The public IP address configuration of the network interface.
 class IpConfigurationPublicIPAddressConfiguration {
   /// Specifies the list of IP tags associated with the public IP address.
-  final List<IpTag>? ipTags;
+  final pulumi.Input<List<IpTag>>? ipTags;
   /// Name of the network interface.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
-  final String? publicIPAddressVersion;
+  final pulumi.Input<String>? publicIPAddressVersion;
 
   /// Creates a new [IpConfigurationPublicIPAddressConfiguration].
   /// [ipTags] Specifies the list of IP tags associated with the public IP address.
@@ -24,7 +24,7 @@ class IpConfigurationPublicIPAddressConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipTags': ?ipTags == null ? null : pulumi.Input.encodeList<IpTag, Map<String, dynamic>>(ipTags!, (value) => value.toMap()),
+      'ipTags': ?pulumi.Input.mapOptionalInputValue<List<IpTag>, List<Map<String, dynamic>>>(ipTags, (value) => pulumi.Input.encodeList<IpTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'publicIPAddressVersion': ?publicIPAddressVersion,
     };
@@ -32,9 +32,9 @@ class IpConfigurationPublicIPAddressConfiguration {
 
   factory IpConfigurationPublicIPAddressConfiguration.fromMap(Map<String, dynamic> map) {
     return IpConfigurationPublicIPAddressConfiguration(
-      ipTags: map['ipTags'] == null ? null : pulumi.Input.decodeList<IpTag>(map['ipTags'], (value) => IpTag.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : map['publicIPAddressVersion'] as String,
+      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<IpTag>(map['ipTags'], (value) => IpTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion'] as String).input(),
     );
   }
 }

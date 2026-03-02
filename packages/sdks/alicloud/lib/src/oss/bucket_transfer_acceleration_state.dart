@@ -13,11 +13,9 @@ class BucketTransferAccelerationState {
   /// [bucket] The name of the Bucket.
   /// [enabled] Specifies whether to enable transfer acceleration for the bucket. Valid values: true: transfer acceleration for the bucket is enabled. false: transfer acceleration for the bucket is disabled.
   BucketTransferAccelerationState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<bool>? enabled,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled);
+    this.bucket,
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class BucketTransferAccelerationState {
 
   factory BucketTransferAccelerationState.fromMap(Map<String, dynamic> map) {
     return BucketTransferAccelerationState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

@@ -48,31 +48,19 @@ class CassandraDatacenterArgs {
   /// [nodeCount] The number of nodes the Cassandra Datacenter should have. The number should be equal or greater than `3`. Defaults to `3`.
   /// [skuName] Determines the selected sku. Defaults to `Standard_E16s_v5`.
   CassandraDatacenterArgs({
-    pulumi.Output<bool>? availabilityZonesEnabled,
-    pulumi.Output<String>? backupStorageCustomerKeyUri,
-    pulumi.Output<String>? base64EncodedYamlFragment,
-    required pulumi.Output<String> cassandraClusterId,
-    required pulumi.Output<String> delegatedManagementSubnetId,
-    pulumi.Output<int>? diskCount,
-    pulumi.Output<String>? diskSku,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedDiskCustomerKeyUri,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? nodeCount,
-    pulumi.Output<String>? skuName,
-  }) :
-      availabilityZonesEnabled = pulumi.Input.asOptionalInput<bool>(availabilityZonesEnabled),
-      backupStorageCustomerKeyUri = pulumi.Input.asOptionalInput<String>(backupStorageCustomerKeyUri),
-      base64EncodedYamlFragment = pulumi.Input.asOptionalInput<String>(base64EncodedYamlFragment),
-      cassandraClusterId = pulumi.Input.asInput<String>(cassandraClusterId),
-      delegatedManagementSubnetId = pulumi.Input.asInput<String>(delegatedManagementSubnetId),
-      diskCount = pulumi.Input.asOptionalInput<int>(diskCount),
-      diskSku = pulumi.Input.asOptionalInput<String>(diskSku),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedDiskCustomerKeyUri = pulumi.Input.asOptionalInput<String>(managedDiskCustomerKeyUri),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeCount = pulumi.Input.asOptionalInput<int>(nodeCount),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName);
+    this.availabilityZonesEnabled,
+    this.backupStorageCustomerKeyUri,
+    this.base64EncodedYamlFragment,
+    required this.cassandraClusterId,
+    required this.delegatedManagementSubnetId,
+    this.diskCount,
+    this.diskSku,
+    this.location,
+    this.managedDiskCustomerKeyUri,
+    this.name,
+    this.nodeCount,
+    this.skuName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class CassandraDatacenterArgs {
 
   factory CassandraDatacenterArgs.fromMap(Map<String, dynamic> map) {
     return CassandraDatacenterArgs(
-      availabilityZonesEnabled: map['availabilityZonesEnabled'] == null ? null : pulumi.Output.create<bool>(map['availabilityZonesEnabled'] as bool),
-      backupStorageCustomerKeyUri: map['backupStorageCustomerKeyUri'] == null ? null : pulumi.Output.create<String>(map['backupStorageCustomerKeyUri'] as String),
-      base64EncodedYamlFragment: map['base64EncodedYamlFragment'] == null ? null : pulumi.Output.create<String>(map['base64EncodedYamlFragment'] as String),
-      cassandraClusterId: pulumi.Output.create<String>(map['cassandraClusterId'] as String),
-      delegatedManagementSubnetId: pulumi.Output.create<String>(map['delegatedManagementSubnetId'] as String),
-      diskCount: map['diskCount'] == null ? null : pulumi.Output.create<int>(map['diskCount'] as int),
-      diskSku: map['diskSku'] == null ? null : pulumi.Output.create<String>(map['diskSku'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedDiskCustomerKeyUri: map['managedDiskCustomerKeyUri'] == null ? null : pulumi.Output.create<String>(map['managedDiskCustomerKeyUri'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeCount: map['nodeCount'] == null ? null : pulumi.Output.create<int>(map['nodeCount'] as int),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
+      availabilityZonesEnabled: map['availabilityZonesEnabled'] == null ? null : (map['availabilityZonesEnabled'] as bool).input(),
+      backupStorageCustomerKeyUri: map['backupStorageCustomerKeyUri'] == null ? null : (map['backupStorageCustomerKeyUri'] as String).input(),
+      base64EncodedYamlFragment: map['base64EncodedYamlFragment'] == null ? null : (map['base64EncodedYamlFragment'] as String).input(),
+      cassandraClusterId: (map['cassandraClusterId'] as String).input(),
+      delegatedManagementSubnetId: (map['delegatedManagementSubnetId'] as String).input(),
+      diskCount: map['diskCount'] == null ? null : (map['diskCount'] as int).input(),
+      diskSku: map['diskSku'] == null ? null : (map['diskSku'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedDiskCustomerKeyUri: map['managedDiskCustomerKeyUri'] == null ? null : (map['managedDiskCustomerKeyUri'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
     );
   }
 }

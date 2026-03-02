@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule {
   /// The action that should be taken for a specified IP address, subnet range or tag. Acceptable values are `Allow` and `Deny`. Changing this forces a new resource to be created.
-  final String access;
+  final pulumi.Input<String> access;
   /// The priority for this rule. The value must be at least `150`. Changing this forces a new resource to be created.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The source address prefix or tag to match for the rule. Changing this forces a new resource to be created.
-  final String sourceAddressPrefix;
+  final pulumi.Input<String> sourceAddressPrefix;
   /// The source port ranges to match for the rule. Valid values are `*` (for all ports 0 - 65535) or arrays of ports or port ranges (i.e. `100-200`). The ports should in the range of 0 to 65535 and the port ranges or ports can't overlap. If any other values are provided the request fails with HTTP status code 400. Default value will be `*`. Changing this forces a new resource to be created.
-  final List<String>? sourcePortRanges;
+  final pulumi.Input<List<String>>? sourcePortRanges;
 
   /// Creates a new [PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule].
   /// [access] The action that should be taken for a specified IP address, subnet range or tag. Acceptable values are `Allow` and `Deny`. Changing this forces a new resource to be created.
@@ -34,10 +35,10 @@ class PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule {
 
   factory PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule.fromMap(Map<String, dynamic> map) {
     return PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule(
-      access: map['access'] as String,
-      priority: map['priority'] as int,
-      sourceAddressPrefix: map['sourceAddressPrefix'] as String,
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : (map['sourcePortRanges'] as List).cast<String>(),
+      access: (map['access'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      sourceAddressPrefix: (map['sourceAddressPrefix'] as String).input(),
+      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges'] as List).cast<String>()).input(),
     );
   }
 }

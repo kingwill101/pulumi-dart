@@ -31,21 +31,14 @@ class NspLinkArgs {
   /// [remoteInboundProfiles] Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
   /// [resourceGroupName] The name of the resource group.
   NspLinkArgs({
-    pulumi.Output<String>? autoApprovedRemotePerimeterResourceId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? linkName,
-    pulumi.Output<List<String>>? localInboundProfiles,
-    required pulumi.Output<String> networkSecurityPerimeterName,
-    pulumi.Output<List<String>>? remoteInboundProfiles,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      autoApprovedRemotePerimeterResourceId = pulumi.Input.asOptionalInput<String>(autoApprovedRemotePerimeterResourceId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      linkName = pulumi.Input.asOptionalInput<String>(linkName),
-      localInboundProfiles = pulumi.Input.asOptionalInput<List<String>>(localInboundProfiles),
-      networkSecurityPerimeterName = pulumi.Input.asInput<String>(networkSecurityPerimeterName),
-      remoteInboundProfiles = pulumi.Input.asOptionalInput<List<String>>(remoteInboundProfiles),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.autoApprovedRemotePerimeterResourceId,
+    this.description,
+    this.linkName,
+    this.localInboundProfiles,
+    required this.networkSecurityPerimeterName,
+    this.remoteInboundProfiles,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class NspLinkArgs {
 
   factory NspLinkArgs.fromMap(Map<String, dynamic> map) {
     return NspLinkArgs(
-      autoApprovedRemotePerimeterResourceId: map['autoApprovedRemotePerimeterResourceId'] == null ? null : pulumi.Output.create<String>(map['autoApprovedRemotePerimeterResourceId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      linkName: map['linkName'] == null ? null : pulumi.Output.create<String>(map['linkName'] as String),
-      localInboundProfiles: map['localInboundProfiles'] == null ? null : pulumi.Output.create<List<String>>((map['localInboundProfiles'] as List).cast<String>()),
-      networkSecurityPerimeterName: pulumi.Output.create<String>(map['networkSecurityPerimeterName'] as String),
-      remoteInboundProfiles: map['remoteInboundProfiles'] == null ? null : pulumi.Output.create<List<String>>((map['remoteInboundProfiles'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      autoApprovedRemotePerimeterResourceId: map['autoApprovedRemotePerimeterResourceId'] == null ? null : (map['autoApprovedRemotePerimeterResourceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      linkName: map['linkName'] == null ? null : (map['linkName'] as String).input(),
+      localInboundProfiles: map['localInboundProfiles'] == null ? null : ((map['localInboundProfiles'] as List).cast<String>()).input(),
+      networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
+      remoteInboundProfiles: map['remoteInboundProfiles'] == null ? null : ((map['remoteInboundProfiles'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

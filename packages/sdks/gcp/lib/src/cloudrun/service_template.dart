@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_template_metadata.dart';
 import 'service_template_spec.dart';
 
@@ -12,10 +13,10 @@ class ServiceTemplate {
   /// connections for the revision, use the "run.googleapis.com/cloudsql-instances"
   /// annotation key.
   /// Structure is documented below.
-  final ServiceTemplateMetadata? metadata;
+  final pulumi.Input<ServiceTemplateMetadata>? metadata;
   /// RevisionSpec holds the desired state of the Revision (from the client).
   /// Structure is documented below.
-  final ServiceTemplateSpec? spec;
+  final pulumi.Input<ServiceTemplateSpec>? spec;
 
   /// Creates a new [ServiceTemplate].
   /// [metadata] Optional metadata for this Revision, including labels and annotations.
@@ -27,15 +28,15 @@ class ServiceTemplate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'spec': ?spec == null ? null : spec!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
   factory ServiceTemplate.fromMap(Map<String, dynamic> map) {
     return ServiceTemplate(
-      metadata: map['metadata'] == null ? null : ServiceTemplateMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      spec: map['spec'] == null ? null : ServiceTemplateSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      metadata: map['metadata'] == null ? null : (ServiceTemplateMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ServiceTemplateSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

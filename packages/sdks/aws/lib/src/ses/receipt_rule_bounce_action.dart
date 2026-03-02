@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReceiptRuleBounceAction {
   /// The message to send
-  final String message;
+  final pulumi.Input<String> message;
   /// The position of the action in the receipt rule
-  final int position;
+  final pulumi.Input<int> position;
   /// The email address of the sender
-  final String sender;
+  final pulumi.Input<String> sender;
   /// The RFC 5321 SMTP reply code
-  final String smtpReplyCode;
+  final pulumi.Input<String> smtpReplyCode;
   /// The RFC 3463 SMTP enhanced status code
-  final String? statusCode;
+  final pulumi.Input<String>? statusCode;
   /// The ARN of an SNS topic to notify
-  final String? topicArn;
+  final pulumi.Input<String>? topicArn;
 
   /// Creates a new [ReceiptRuleBounceAction].
   /// [message] The message to send
@@ -44,12 +45,12 @@ class ReceiptRuleBounceAction {
 
   factory ReceiptRuleBounceAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleBounceAction(
-      message: map['message'] as String,
-      position: map['position'] as int,
-      sender: map['sender'] as String,
-      smtpReplyCode: map['smtpReplyCode'] as String,
-      statusCode: map['statusCode'] == null ? null : map['statusCode'] as String,
-      topicArn: map['topicArn'] == null ? null : map['topicArn'] as String,
+      message: (map['message'] as String).input(),
+      position: (map['position'] as int).input(),
+      sender: (map['sender'] as String).input(),
+      smtpReplyCode: (map['smtpReplyCode'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
     );
   }
 }

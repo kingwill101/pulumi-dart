@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reconciliation_policy_properties.dart';
 
 /// Instance Properties
 class InstanceProperties {
   /// State of instance
-  final String? activeState;
+  final pulumi.Input<String>? activeState;
   /// Reconciliation policy of instance
-  final ReconciliationPolicyProperties? reconciliationPolicy;
+  final pulumi.Input<ReconciliationPolicyProperties>? reconciliationPolicy;
   /// Scope of instance
-  final String? solutionScope;
+  final pulumi.Input<String>? solutionScope;
   /// Solution version of instance
-  final String solutionVersionId;
+  final pulumi.Input<String> solutionVersionId;
   /// Target of instance
-  final String targetId;
+  final pulumi.Input<String> targetId;
 
   /// Creates a new [InstanceProperties].
   /// [activeState] State of instance
@@ -32,7 +33,7 @@ class InstanceProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'activeState': ?activeState,
-      'reconciliationPolicy': ?reconciliationPolicy == null ? null : reconciliationPolicy!.toMap(),
+      'reconciliationPolicy': ?pulumi.Input.mapOptionalInputValue<ReconciliationPolicyProperties, Map<String, dynamic>>(reconciliationPolicy, (value) => value.toMap()),
       'solutionScope': ?solutionScope,
       'solutionVersionId': solutionVersionId,
       'targetId': targetId,
@@ -41,11 +42,11 @@ class InstanceProperties {
 
   factory InstanceProperties.fromMap(Map<String, dynamic> map) {
     return InstanceProperties(
-      activeState: map['activeState'] == null ? null : map['activeState'] as String,
-      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : ReconciliationPolicyProperties.fromMap((map['reconciliationPolicy'] as Map).cast<String, dynamic>()),
-      solutionScope: map['solutionScope'] == null ? null : map['solutionScope'] as String,
-      solutionVersionId: map['solutionVersionId'] as String,
-      targetId: map['targetId'] as String,
+      activeState: map['activeState'] == null ? null : (map['activeState'] as String).input(),
+      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicyProperties.fromMap((map['reconciliationPolicy'] as Map).cast<String, dynamic>())).input(),
+      solutionScope: map['solutionScope'] == null ? null : (map['solutionScope'] as String).input(),
+      solutionVersionId: (map['solutionVersionId'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
     );
   }
 }

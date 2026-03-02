@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessApprovalSettingsEnrolledService {
   /// The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
@@ -13,11 +14,11 @@ class AccessApprovalSettingsEnrolledService {
   /// iam.googleapis.com
   /// pubsub.googleapis.com
   /// storage.googleapis.com
-  final String cloudProduct;
+  final pulumi.Input<String> cloudProduct;
   /// The enrollment level of the service.
   /// Default value is `BLOCK_ALL`.
   /// Possible values are: `BLOCK_ALL`.
-  final String? enrollmentLevel;
+  final pulumi.Input<String>? enrollmentLevel;
 
   /// Creates a new [AccessApprovalSettingsEnrolledService].
   /// [cloudProduct] The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
@@ -36,8 +37,8 @@ class AccessApprovalSettingsEnrolledService {
 
   factory AccessApprovalSettingsEnrolledService.fromMap(Map<String, dynamic> map) {
     return AccessApprovalSettingsEnrolledService(
-      cloudProduct: map['cloudProduct'] as String,
-      enrollmentLevel: map['enrollmentLevel'] == null ? null : map['enrollmentLevel'] as String,
+      cloudProduct: (map['cloudProduct'] as String).input(),
+      enrollmentLevel: map['enrollmentLevel'] == null ? null : (map['enrollmentLevel'] as String).input(),
     );
   }
 }

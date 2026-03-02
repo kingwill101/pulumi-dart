@@ -20,17 +20,12 @@ class GetDeviceArgs {
   /// [project] Optional.
   /// [registryId] Required.
   GetDeviceArgs({
-    required pulumi.Output<String> deviceId,
-    pulumi.Output<String>? fieldMask,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> registryId,
-  }) :
-      deviceId = pulumi.Input.asInput<String>(deviceId),
-      fieldMask = pulumi.Input.asOptionalInput<String>(fieldMask),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      registryId = pulumi.Input.asInput<String>(registryId);
+    required this.deviceId,
+    this.fieldMask,
+    required this.location,
+    this.project,
+    required this.registryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetDeviceArgs {
 
   factory GetDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceArgs(
-      deviceId: pulumi.Output.create<String>(map['deviceId'] as String),
-      fieldMask: map['fieldMask'] == null ? null : pulumi.Output.create<String>(map['fieldMask'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      registryId: pulumi.Output.create<String>(map['registryId'] as String),
+      deviceId: (map['deviceId'] as String).input(),
+      fieldMask: map['fieldMask'] == null ? null : (map['fieldMask'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      registryId: (map['registryId'] as String).input(),
     );
   }
 }

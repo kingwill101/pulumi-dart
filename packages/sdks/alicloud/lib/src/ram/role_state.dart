@@ -49,35 +49,21 @@ class RoleState {
   /// [tags] The list of tags for the role.
   /// [version] Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
   RoleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? assumeRolePolicyDocument,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? document,
-    pulumi.Output<bool>? force,
-    pulumi.Output<int>? maxSessionDuration,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? ramUsers,
-    pulumi.Output<String>? roleId,
-    pulumi.Output<String>? roleName,
-    pulumi.Output<List<String>>? services,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? version,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      assumeRolePolicyDocument = pulumi.Input.asOptionalInput<String>(assumeRolePolicyDocument),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      document = pulumi.Input.asOptionalInput<String>(document),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      maxSessionDuration = pulumi.Input.asOptionalInput<int>(maxSessionDuration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ramUsers = pulumi.Input.asOptionalInput<List<String>>(ramUsers),
-      roleId = pulumi.Input.asOptionalInput<String>(roleId),
-      roleName = pulumi.Input.asOptionalInput<String>(roleName),
-      services = pulumi.Input.asOptionalInput<List<String>>(services),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.arn,
+    this.assumeRolePolicyDocument,
+    this.createTime,
+    this.description,
+    this.document,
+    this.force,
+    this.maxSessionDuration,
+    this.name,
+    this.ramUsers,
+    this.roleId,
+    this.roleName,
+    this.services,
+    this.tags,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,20 +86,20 @@ class RoleState {
 
   factory RoleState.fromMap(Map<String, dynamic> map) {
     return RoleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] == null ? null : pulumi.Output.create<String>(map['assumeRolePolicyDocument'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      document: map['document'] == null ? null : pulumi.Output.create<String>(map['document'] as String),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      maxSessionDuration: map['maxSessionDuration'] == null ? null : pulumi.Output.create<int>(map['maxSessionDuration'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ramUsers: map['ramUsers'] == null ? null : pulumi.Output.create<List<String>>((map['ramUsers'] as List).cast<String>()),
-      roleId: map['roleId'] == null ? null : pulumi.Output.create<String>(map['roleId'] as String),
-      roleName: map['roleName'] == null ? null : pulumi.Output.create<String>(map['roleName'] as String),
-      services: map['services'] == null ? null : pulumi.Output.create<List<String>>((map['services'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] == null ? null : (map['assumeRolePolicyDocument'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      document: map['document'] == null ? null : (map['document'] as String).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ramUsers: map['ramUsers'] == null ? null : ((map['ramUsers'] as List).cast<String>()).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      services: map['services'] == null ? null : ((map['services'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesStorage {
-  final bool? dataPlaneAvailable;
+  final pulumi.Input<bool>? dataPlaneAvailable;
 
   /// Creates a new [FeaturesStorage].
   /// [dataPlaneAvailable] Optional.
@@ -18,7 +19,7 @@ class FeaturesStorage {
 
   factory FeaturesStorage.fromMap(Map<String, dynamic> map) {
     return FeaturesStorage(
-      dataPlaneAvailable: map['dataPlaneAvailable'] == null ? null : map['dataPlaneAvailable'] as bool,
+      dataPlaneAvailable: map['dataPlaneAvailable'] == null ? null : (map['dataPlaneAvailable'] as bool).input(),
     );
   }
 }

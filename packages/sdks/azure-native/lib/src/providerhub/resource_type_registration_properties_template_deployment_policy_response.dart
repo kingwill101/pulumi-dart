@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The template deployment policy.
 class ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse {
   /// The capabilities.
-  final String capabilities;
+  final pulumi.Input<String> capabilities;
   /// The preflight notifications.
-  final String? preflightNotifications;
+  final pulumi.Input<String>? preflightNotifications;
   /// The preflight options.
-  final String preflightOptions;
+  final pulumi.Input<String> preflightOptions;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse].
   /// [capabilities] The capabilities.
@@ -30,9 +31,9 @@ class ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse {
 
   factory ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse(
-      capabilities: map['capabilities'] as String,
-      preflightNotifications: map['preflightNotifications'] == null ? null : map['preflightNotifications'] as String,
-      preflightOptions: map['preflightOptions'] as String,
+      capabilities: (map['capabilities'] as String).input(),
+      preflightNotifications: map['preflightNotifications'] == null ? null : (map['preflightNotifications'] as String).input(),
+      preflightOptions: (map['preflightOptions'] as String).input(),
     );
   }
 }

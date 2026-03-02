@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier {
   /// The MongoDB collection name.
-  final String collection;
+  final pulumi.Input<String> collection;
   /// The MongoDB database name.
-  final String database;
+  final pulumi.Input<String> database;
 
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier].
   /// [collection] The MongoDB collection name.
@@ -24,8 +25,8 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier {
 
   factory StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier(
-      collection: map['collection'] as String,
-      database: map['database'] as String,
+      collection: (map['collection'] as String).input(),
+      database: (map['database'] as String).input(),
     );
   }
 }

@@ -45,29 +45,18 @@ class LinkedServiceSqlServerArgs {
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service SQL Server.
   /// [userName] The on-premises Windows authentication user name.
   LinkedServiceSqlServerArgs({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? connectionString,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? integrationRuntimeName,
-    pulumi.Output<LinkedServiceSqlServerKeyVaultConnectionString>? keyVaultConnectionString,
-    pulumi.Output<LinkedServiceSqlServerKeyVaultPassword>? keyVaultPassword,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? userName,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      integrationRuntimeName = pulumi.Input.asOptionalInput<String>(integrationRuntimeName),
-      keyVaultConnectionString = pulumi.Input.asOptionalInput<LinkedServiceSqlServerKeyVaultConnectionString>(keyVaultConnectionString),
-      keyVaultPassword = pulumi.Input.asOptionalInput<LinkedServiceSqlServerKeyVaultPassword>(keyVaultPassword),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.additionalProperties,
+    this.annotations,
+    this.connectionString,
+    required this.dataFactoryId,
+    this.description,
+    this.integrationRuntimeName,
+    this.keyVaultConnectionString,
+    this.keyVaultPassword,
+    this.name,
+    this.parameters,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class LinkedServiceSqlServerArgs {
 
   factory LinkedServiceSqlServerArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceSqlServerArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      keyVaultConnectionString: map['keyVaultConnectionString'] == null ? null : pulumi.Output.create<LinkedServiceSqlServerKeyVaultConnectionString>(LinkedServiceSqlServerKeyVaultConnectionString.fromMap((map['keyVaultConnectionString'] as Map).cast<String, dynamic>())),
-      keyVaultPassword: map['keyVaultPassword'] == null ? null : pulumi.Output.create<LinkedServiceSqlServerKeyVaultPassword>(LinkedServiceSqlServerKeyVaultPassword.fromMap((map['keyVaultPassword'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
+      keyVaultConnectionString: map['keyVaultConnectionString'] == null ? null : (LinkedServiceSqlServerKeyVaultConnectionString.fromMap((map['keyVaultConnectionString'] as Map).cast<String, dynamic>())).input(),
+      keyVaultPassword: map['keyVaultPassword'] == null ? null : (LinkedServiceSqlServerKeyVaultPassword.fromMap((map['keyVaultPassword'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

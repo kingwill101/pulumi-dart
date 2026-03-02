@@ -52,33 +52,20 @@ class DataExchangeState {
   /// [project] The ID of the project in which the resource belongs.
   /// [sharingEnvironmentConfig] Configurable data sharing environment option for a data exchange.
   DataExchangeState({
-    pulumi.Output<String>? dataExchangeId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? discoveryType,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? documentation,
-    pulumi.Output<String>? icon,
-    pulumi.Output<int>? listingCount,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? logLinkedDatasetQueryUserEmail,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? primaryContact,
-    pulumi.Output<String>? project,
-    pulumi.Output<DataExchangeSharingEnvironmentConfig>? sharingEnvironmentConfig,
-  }) :
-      dataExchangeId = pulumi.Input.asOptionalInput<String>(dataExchangeId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      discoveryType = pulumi.Input.asOptionalInput<String>(discoveryType),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      documentation = pulumi.Input.asOptionalInput<String>(documentation),
-      icon = pulumi.Input.asOptionalInput<String>(icon),
-      listingCount = pulumi.Input.asOptionalInput<int>(listingCount),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logLinkedDatasetQueryUserEmail = pulumi.Input.asOptionalInput<bool>(logLinkedDatasetQueryUserEmail),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryContact = pulumi.Input.asOptionalInput<String>(primaryContact),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sharingEnvironmentConfig = pulumi.Input.asOptionalInput<DataExchangeSharingEnvironmentConfig>(sharingEnvironmentConfig);
+    this.dataExchangeId,
+    this.description,
+    this.discoveryType,
+    this.displayName,
+    this.documentation,
+    this.icon,
+    this.listingCount,
+    this.location,
+    this.logLinkedDatasetQueryUserEmail,
+    this.name,
+    this.primaryContact,
+    this.project,
+    this.sharingEnvironmentConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,19 +87,19 @@ class DataExchangeState {
 
   factory DataExchangeState.fromMap(Map<String, dynamic> map) {
     return DataExchangeState(
-      dataExchangeId: map['dataExchangeId'] == null ? null : pulumi.Output.create<String>(map['dataExchangeId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      discoveryType: map['discoveryType'] == null ? null : pulumi.Output.create<String>(map['discoveryType'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      documentation: map['documentation'] == null ? null : pulumi.Output.create<String>(map['documentation'] as String),
-      icon: map['icon'] == null ? null : pulumi.Output.create<String>(map['icon'] as String),
-      listingCount: map['listingCount'] == null ? null : pulumi.Output.create<int>(map['listingCount'] as int),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logLinkedDatasetQueryUserEmail: map['logLinkedDatasetQueryUserEmail'] == null ? null : pulumi.Output.create<bool>(map['logLinkedDatasetQueryUserEmail'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryContact: map['primaryContact'] == null ? null : pulumi.Output.create<String>(map['primaryContact'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sharingEnvironmentConfig: map['sharingEnvironmentConfig'] == null ? null : pulumi.Output.create<DataExchangeSharingEnvironmentConfig>(DataExchangeSharingEnvironmentConfig.fromMap((map['sharingEnvironmentConfig'] as Map).cast<String, dynamic>())),
+      dataExchangeId: map['dataExchangeId'] == null ? null : (map['dataExchangeId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      discoveryType: map['discoveryType'] == null ? null : (map['discoveryType'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      documentation: map['documentation'] == null ? null : (map['documentation'] as String).input(),
+      icon: map['icon'] == null ? null : (map['icon'] as String).input(),
+      listingCount: map['listingCount'] == null ? null : (map['listingCount'] as int).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logLinkedDatasetQueryUserEmail: map['logLinkedDatasetQueryUserEmail'] == null ? null : (map['logLinkedDatasetQueryUserEmail'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sharingEnvironmentConfig: map['sharingEnvironmentConfig'] == null ? null : (DataExchangeSharingEnvironmentConfig.fromMap((map['sharingEnvironmentConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

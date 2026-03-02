@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMulticastDomainSource {
   /// The IP address assigned to the transit gateway multicast group.
-  final String groupIpAddress;
+  final pulumi.Input<String> groupIpAddress;
   /// The group members' network interface ID.
-  final String networkInterfaceId;
+  final pulumi.Input<String> networkInterfaceId;
 
   /// Creates a new [GetMulticastDomainSource].
   /// [groupIpAddress] The IP address assigned to the transit gateway multicast group.
@@ -24,8 +25,8 @@ class GetMulticastDomainSource {
 
   factory GetMulticastDomainSource.fromMap(Map<String, dynamic> map) {
     return GetMulticastDomainSource(
-      groupIpAddress: map['groupIpAddress'] as String,
-      networkInterfaceId: map['networkInterfaceId'] as String,
+      groupIpAddress: (map['groupIpAddress'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
     );
   }
 }

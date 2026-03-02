@@ -18,13 +18,10 @@ class PlacementGroupAssignmentArgs {
   /// [linodeId] The unique ID of the Linode to assign.
   /// [placementGroupId] The unique ID of the target Placement Group.
   PlacementGroupAssignmentArgs({
-    pulumi.Output<bool>? compliantOnly,
-    required pulumi.Output<int> linodeId,
-    required pulumi.Output<int> placementGroupId,
-  }) :
-      compliantOnly = pulumi.Input.asOptionalInput<bool>(compliantOnly),
-      linodeId = pulumi.Input.asInput<int>(linodeId),
-      placementGroupId = pulumi.Input.asInput<int>(placementGroupId);
+    this.compliantOnly,
+    required this.linodeId,
+    required this.placementGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class PlacementGroupAssignmentArgs {
 
   factory PlacementGroupAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return PlacementGroupAssignmentArgs(
-      compliantOnly: map['compliantOnly'] == null ? null : pulumi.Output.create<bool>(map['compliantOnly'] as bool),
-      linodeId: pulumi.Output.create<int>(map['linodeId'] as int),
-      placementGroupId: pulumi.Output.create<int>(map['placementGroupId'] as int),
+      compliantOnly: map['compliantOnly'] == null ? null : (map['compliantOnly'] as bool).input(),
+      linodeId: (map['linodeId'] as int).input(),
+      placementGroupId: (map['placementGroupId'] as int).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Single status.
 class StatusItemResponse {
   /// Status name - e.g. "Active", "Failed".
-  final String? statusName;
+  final pulumi.Input<String>? statusName;
   /// Status value. e.g. "100", or "100%".
-  final String? statusValue;
+  final pulumi.Input<String>? statusValue;
 
   /// Creates a new [StatusItemResponse].
   /// [statusName] Status name - e.g. "Active", "Failed".
@@ -25,8 +26,8 @@ class StatusItemResponse {
 
   factory StatusItemResponse.fromMap(Map<String, dynamic> map) {
     return StatusItemResponse(
-      statusName: map['statusName'] == null ? null : map['statusName'] as String,
-      statusValue: map['statusValue'] == null ? null : map['statusValue'] as String,
+      statusName: map['statusName'] == null ? null : (map['statusName'] as String).input(),
+      statusValue: map['statusValue'] == null ? null : (map['statusValue'] as String).input(),
     );
   }
 }

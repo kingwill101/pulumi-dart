@@ -33,21 +33,14 @@ class AlertMutingRuleArgs {
   /// [name] The name of the MutingRule.
   /// [schedule] Specify a schedule for enabling the MutingRule. See Schedule below for details
   AlertMutingRuleArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? actionOnMutingRuleWindowEnded,
-    required pulumi.Output<AlertMutingRuleCondition> condition,
-    pulumi.Output<String>? description,
-    required pulumi.Output<bool> enabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<AlertMutingRuleSchedule>? schedule,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      actionOnMutingRuleWindowEnded = pulumi.Input.asOptionalInput<String>(actionOnMutingRuleWindowEnded),
-      condition = pulumi.Input.asInput<AlertMutingRuleCondition>(condition),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      schedule = pulumi.Input.asOptionalInput<AlertMutingRuleSchedule>(schedule);
+    this.accountId,
+    this.actionOnMutingRuleWindowEnded,
+    required this.condition,
+    this.description,
+    required this.enabled,
+    this.name,
+    this.schedule,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AlertMutingRuleArgs {
 
   factory AlertMutingRuleArgs.fromMap(Map<String, dynamic> map) {
     return AlertMutingRuleArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      actionOnMutingRuleWindowEnded: map['actionOnMutingRuleWindowEnded'] == null ? null : pulumi.Output.create<String>(map['actionOnMutingRuleWindowEnded'] as String),
-      condition: pulumi.Output.create<AlertMutingRuleCondition>(AlertMutingRuleCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<AlertMutingRuleSchedule>(AlertMutingRuleSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      actionOnMutingRuleWindowEnded: map['actionOnMutingRuleWindowEnded'] == null ? null : (map['actionOnMutingRuleWindowEnded'] as String).input(),
+      condition: (AlertMutingRuleCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      schedule: map['schedule'] == null ? null : (AlertMutingRuleSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

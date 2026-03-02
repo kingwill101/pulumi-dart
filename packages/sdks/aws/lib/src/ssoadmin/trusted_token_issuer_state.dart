@@ -37,25 +37,16 @@ class TrustedTokenIssuerState {
   /// [trustedTokenIssuerConfiguration] A block that specifies settings that apply to the trusted token issuer, these change depending on the type you specify in `trusted_token_issuer_type`. Documented below.
   /// [trustedTokenIssuerType] Specifies the type of the trusted token issuer. Valid values are `OIDC_JWT`
   TrustedTokenIssuerState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? clientToken,
-    pulumi.Output<String>? instanceArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<TrustedTokenIssuerTrustedTokenIssuerConfiguration>? trustedTokenIssuerConfiguration,
-    pulumi.Output<String>? trustedTokenIssuerType,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      clientToken = pulumi.Input.asOptionalInput<String>(clientToken),
-      instanceArn = pulumi.Input.asOptionalInput<String>(instanceArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      trustedTokenIssuerConfiguration = pulumi.Input.asOptionalInput<TrustedTokenIssuerTrustedTokenIssuerConfiguration>(trustedTokenIssuerConfiguration),
-      trustedTokenIssuerType = pulumi.Input.asOptionalInput<String>(trustedTokenIssuerType);
+    this.arn,
+    this.clientToken,
+    this.instanceArn,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.trustedTokenIssuerConfiguration,
+    this.trustedTokenIssuerType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class TrustedTokenIssuerState {
 
   factory TrustedTokenIssuerState.fromMap(Map<String, dynamic> map) {
     return TrustedTokenIssuerState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      clientToken: map['clientToken'] == null ? null : pulumi.Output.create<String>(map['clientToken'] as String),
-      instanceArn: map['instanceArn'] == null ? null : pulumi.Output.create<String>(map['instanceArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      trustedTokenIssuerConfiguration: map['trustedTokenIssuerConfiguration'] == null ? null : pulumi.Output.create<TrustedTokenIssuerTrustedTokenIssuerConfiguration>(TrustedTokenIssuerTrustedTokenIssuerConfiguration.fromMap((map['trustedTokenIssuerConfiguration'] as Map).cast<String, dynamic>())),
-      trustedTokenIssuerType: map['trustedTokenIssuerType'] == null ? null : pulumi.Output.create<String>(map['trustedTokenIssuerType'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      clientToken: map['clientToken'] == null ? null : (map['clientToken'] as String).input(),
+      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      trustedTokenIssuerConfiguration: map['trustedTokenIssuerConfiguration'] == null ? null : (TrustedTokenIssuerTrustedTokenIssuerConfiguration.fromMap((map['trustedTokenIssuerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      trustedTokenIssuerType: map['trustedTokenIssuerType'] == null ? null : (map['trustedTokenIssuerType'] as String).input(),
     );
   }
 }

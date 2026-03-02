@@ -7,23 +7,23 @@ import 'metric_dimension_response.dart';
 class MetricCriteriaResponse {
   /// Specifies the type of threshold criteria
   /// Expected value is 'StaticThresholdCriterion'.
-  final String criterionType;
+  final pulumi.Input<String> criterionType;
   /// List of dimension conditions.
-  final List<MetricDimensionResponse>? dimensions;
+  final pulumi.Input<List<MetricDimensionResponse>>? dimensions;
   /// Name of the metric.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// Namespace of the metric.
-  final String? metricNamespace;
+  final pulumi.Input<String>? metricNamespace;
   /// Name of the criteria.
-  final String name;
+  final pulumi.Input<String> name;
   /// the criteria operator.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
-  final bool? skipMetricValidation;
+  final pulumi.Input<bool>? skipMetricValidation;
   /// the criteria threshold value that activates the alert.
-  final double threshold;
+  final pulumi.Input<double> threshold;
   /// the criteria time aggregation types.
-  final String timeAggregation;
+  final pulumi.Input<String> timeAggregation;
 
   /// Creates a new [MetricCriteriaResponse].
   /// [criterionType] Specifies the type of threshold criteria
@@ -50,7 +50,7 @@ class MetricCriteriaResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'criterionType': criterionType,
-      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<MetricDimensionResponse, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<MetricDimensionResponse>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<MetricDimensionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metricName': metricName,
       'metricNamespace': ?metricNamespace,
       'name': name,
@@ -63,15 +63,15 @@ class MetricCriteriaResponse {
 
   factory MetricCriteriaResponse.fromMap(Map<String, dynamic> map) {
     return MetricCriteriaResponse(
-      criterionType: map['criterionType'] as String,
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<MetricDimensionResponse>(map['dimensions'], (value) => MetricDimensionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      metricName: map['metricName'] as String,
-      metricNamespace: map['metricNamespace'] == null ? null : map['metricNamespace'] as String,
-      name: map['name'] as String,
-      operator: map['operator'] as String,
-      skipMetricValidation: map['skipMetricValidation'] == null ? null : map['skipMetricValidation'] as bool,
-      threshold: map['threshold'] as double,
-      timeAggregation: map['timeAggregation'] as String,
+      criterionType: (map['criterionType'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<MetricDimensionResponse>(map['dimensions'], (value) => MetricDimensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricName: (map['metricName'] as String).input(),
+      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace'] as String).input(),
+      name: (map['name'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      skipMetricValidation: map['skipMetricValidation'] == null ? null : (map['skipMetricValidation'] as bool).input(),
+      threshold: (map['threshold'] as double).input(),
+      timeAggregation: (map['timeAggregation'] as String).input(),
     );
   }
 }

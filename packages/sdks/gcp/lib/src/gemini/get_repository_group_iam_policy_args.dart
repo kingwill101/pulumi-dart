@@ -25,15 +25,11 @@ class GetRepositoryGroupIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [repositoryGroupId] Used to find the parent resource to bind the IAM policy to
   GetRepositoryGroupIamPolicyArgs({
-    required pulumi.Output<String> codeRepositoryIndex,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryGroupId,
-  }) :
-      codeRepositoryIndex = pulumi.Input.asInput<String>(codeRepositoryIndex),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryGroupId = pulumi.Input.asInput<String>(repositoryGroupId);
+    required this.codeRepositoryIndex,
+    this.location,
+    this.project,
+    required this.repositoryGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class GetRepositoryGroupIamPolicyArgs {
 
   factory GetRepositoryGroupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryGroupIamPolicyArgs(
-      codeRepositoryIndex: pulumi.Output.create<String>(map['codeRepositoryIndex'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryGroupId: pulumi.Output.create<String>(map['repositoryGroupId'] as String),
+      codeRepositoryIndex: (map['codeRepositoryIndex'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryGroupId: (map['repositoryGroupId'] as String).input(),
     );
   }
 }

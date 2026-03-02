@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceRefreshDesiredConfigurationContainerEnvironmentVar {
   /// This parameter is not available for use.
-  final String? fieldRefFieldPath;
+  final pulumi.Input<String>? fieldRefFieldPath;
   /// The name of the environment variable.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The value of the environment variable.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [InstanceRefreshDesiredConfigurationContainerEnvironmentVar].
   /// [fieldRefFieldPath] This parameter is not available for use.
@@ -29,9 +30,9 @@ class InstanceRefreshDesiredConfigurationContainerEnvironmentVar {
 
   factory InstanceRefreshDesiredConfigurationContainerEnvironmentVar.fromMap(Map<String, dynamic> map) {
     return InstanceRefreshDesiredConfigurationContainerEnvironmentVar(
-      fieldRefFieldPath: map['fieldRefFieldPath'] == null ? null : map['fieldRefFieldPath'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      fieldRefFieldPath: map['fieldRefFieldPath'] == null ? null : (map['fieldRefFieldPath'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

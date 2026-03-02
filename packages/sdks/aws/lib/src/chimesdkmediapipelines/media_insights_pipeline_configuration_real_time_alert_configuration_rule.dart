@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'media_insights_pipeline_configuration_real_time_alert_configuration_rule_issue_detection_configuration.dart';
 import 'media_insights_pipeline_configuration_real_time_alert_configuration_rule_keyword_match_configuration.dart';
 import 'media_insights_pipeline_configuration_real_time_alert_configuration_rule_sentiment_configuration.dart';
 
 class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule {
   /// Configuration for an issue detection rule.
-  final MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration? issueDetectionConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration>? issueDetectionConfiguration;
   /// Configuration for a keyword match rule.
-  final MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration? keywordMatchConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration>? keywordMatchConfiguration;
   /// Configuration for a sentiment rule.
-  final MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration? sentimentConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration>? sentimentConfiguration;
   /// Rule type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule].
   /// [issueDetectionConfiguration] Configuration for an issue detection rule.
@@ -28,19 +29,19 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'issueDetectionConfiguration': ?issueDetectionConfiguration == null ? null : issueDetectionConfiguration!.toMap(),
-      'keywordMatchConfiguration': ?keywordMatchConfiguration == null ? null : keywordMatchConfiguration!.toMap(),
-      'sentimentConfiguration': ?sentimentConfiguration == null ? null : sentimentConfiguration!.toMap(),
+      'issueDetectionConfiguration': ?pulumi.Input.mapOptionalInputValue<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration, Map<String, dynamic>>(issueDetectionConfiguration, (value) => value.toMap()),
+      'keywordMatchConfiguration': ?pulumi.Input.mapOptionalInputValue<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration, Map<String, dynamic>>(keywordMatchConfiguration, (value) => value.toMap()),
+      'sentimentConfiguration': ?pulumi.Input.mapOptionalInputValue<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration, Map<String, dynamic>>(sentimentConfiguration, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule(
-      issueDetectionConfiguration: map['issueDetectionConfiguration'] == null ? null : MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration.fromMap((map['issueDetectionConfiguration'] as Map).cast<String, dynamic>()),
-      keywordMatchConfiguration: map['keywordMatchConfiguration'] == null ? null : MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration.fromMap((map['keywordMatchConfiguration'] as Map).cast<String, dynamic>()),
-      sentimentConfiguration: map['sentimentConfiguration'] == null ? null : MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration.fromMap((map['sentimentConfiguration'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      issueDetectionConfiguration: map['issueDetectionConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration.fromMap((map['issueDetectionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      keywordMatchConfiguration: map['keywordMatchConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration.fromMap((map['keywordMatchConfiguration'] as Map).cast<String, dynamic>())).input(),
+      sentimentConfiguration: map['sentimentConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration.fromMap((map['sentimentConfiguration'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

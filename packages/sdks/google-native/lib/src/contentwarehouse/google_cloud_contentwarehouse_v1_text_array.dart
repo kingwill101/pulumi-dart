@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// String/text values.
 class GoogleCloudContentwarehouseV1TextArray {
   /// List of text values.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [GoogleCloudContentwarehouseV1TextArray].
   /// [values] List of text values.
@@ -20,7 +21,7 @@ class GoogleCloudContentwarehouseV1TextArray {
 
   factory GoogleCloudContentwarehouseV1TextArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1TextArray(
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -37,25 +37,16 @@ class InstanceArgs {
   /// [organizationId] Required.
   /// [peeringCidrRange] Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
   InstanceArgs({
-    pulumi.Output<List<String>>? consumerAcceptList,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? diskEncryptionKeyName,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? ipRange,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<InstancePeeringCidrRange>? peeringCidrRange,
-  }) :
-      consumerAcceptList = pulumi.Input.asOptionalInput<List<String>>(consumerAcceptList),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskEncryptionKeyName = pulumi.Input.asOptionalInput<String>(diskEncryptionKeyName),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      ipRange = pulumi.Input.asOptionalInput<String>(ipRange),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      peeringCidrRange = pulumi.Input.asOptionalInput<InstancePeeringCidrRange>(peeringCidrRange);
+    this.consumerAcceptList,
+    this.description,
+    this.diskEncryptionKeyName,
+    this.displayName,
+    this.ipRange,
+    this.location,
+    this.name,
+    required this.organizationId,
+    this.peeringCidrRange,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      consumerAcceptList: map['consumerAcceptList'] == null ? null : pulumi.Output.create<List<String>>((map['consumerAcceptList'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskEncryptionKeyName: map['diskEncryptionKeyName'] == null ? null : pulumi.Output.create<String>(map['diskEncryptionKeyName'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      ipRange: map['ipRange'] == null ? null : pulumi.Output.create<String>(map['ipRange'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      peeringCidrRange: map['peeringCidrRange'] == null ? null : pulumi.Output.create<InstancePeeringCidrRange>(InstancePeeringCidrRange.fromValue(map['peeringCidrRange'] as String)),
+      consumerAcceptList: map['consumerAcceptList'] == null ? null : ((map['consumerAcceptList'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskEncryptionKeyName: map['diskEncryptionKeyName'] == null ? null : (map['diskEncryptionKeyName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      peeringCidrRange: map['peeringCidrRange'] == null ? null : (InstancePeeringCidrRange.fromValue(map['peeringCidrRange'] as String)).input(),
     );
   }
 }

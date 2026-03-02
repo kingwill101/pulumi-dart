@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for automatically discovering entities for the health model.
 class ModelDiscoverySettings {
   /// Whether to add all recommended signals to the discovered entities.
-  final String addRecommendedSignals;
+  final pulumi.Input<String> addRecommendedSignals;
   /// Which Managed Identity of the health model to use for discovery. Defaults to SystemAssigned, if not set. Can be set to 'SystemAssigned' or to the resource id of a user-assigned managed identity which is linked to the health model.
-  final String? identity;
+  final pulumi.Input<String>? identity;
   /// The scope from which entities should be automatically discovered. For example, the resource id of a Service Group.
-  final String scope;
+  final pulumi.Input<String> scope;
 
   /// Creates a new [ModelDiscoverySettings].
   /// [addRecommendedSignals] Whether to add all recommended signals to the discovered entities.
@@ -30,9 +31,9 @@ class ModelDiscoverySettings {
 
   factory ModelDiscoverySettings.fromMap(Map<String, dynamic> map) {
     return ModelDiscoverySettings(
-      addRecommendedSignals: map['addRecommendedSignals'] as String,
-      identity: map['identity'] == null ? null : map['identity'] as String,
-      scope: map['scope'] as String,
+      addRecommendedSignals: (map['addRecommendedSignals'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ACL for a private endpoint
 class PrivateEndpointACLResponse {
   /// Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  final List<String>? allow;
+  final pulumi.Input<List<String>>? allow;
   /// Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  final List<String>? deny;
+  final pulumi.Input<List<String>>? deny;
   /// Name of the private endpoint connection
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [PrivateEndpointACLResponse].
   /// [allow] Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
@@ -30,9 +31,9 @@ class PrivateEndpointACLResponse {
 
   factory PrivateEndpointACLResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointACLResponse(
-      allow: map['allow'] == null ? null : (map['allow'] as List).cast<String>(),
-      deny: map['deny'] == null ? null : (map['deny'] as List).cast<String>(),
-      name: map['name'] as String,
+      allow: map['allow'] == null ? null : ((map['allow'] as List).cast<String>()).input(),
+      deny: map['deny'] == null ? null : ((map['deny'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConsumerGroupConsumeRetryPolicy {
   /// The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
-  final String? deadLetterTargetTopic;
+  final pulumi.Input<String>? deadLetterTargetTopic;
   /// Maximum number of retries.
-  final int? maxRetryTimes;
+  final pulumi.Input<int>? maxRetryTimes;
   /// Consume retry policy.
-  final String? retryPolicy;
+  final pulumi.Input<String>? retryPolicy;
 
   /// Creates a new [ConsumerGroupConsumeRetryPolicy].
   /// [deadLetterTargetTopic] The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
@@ -29,9 +30,9 @@ class ConsumerGroupConsumeRetryPolicy {
 
   factory ConsumerGroupConsumeRetryPolicy.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupConsumeRetryPolicy(
-      deadLetterTargetTopic: map['deadLetterTargetTopic'] == null ? null : map['deadLetterTargetTopic'] as String,
-      maxRetryTimes: map['maxRetryTimes'] == null ? null : map['maxRetryTimes'] as int,
-      retryPolicy: map['retryPolicy'] == null ? null : map['retryPolicy'] as String,
+      deadLetterTargetTopic: map['deadLetterTargetTopic'] == null ? null : (map['deadLetterTargetTopic'] as String).input(),
+      maxRetryTimes: map['maxRetryTimes'] == null ? null : (map['maxRetryTimes'] as int).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (map['retryPolicy'] as String).input(),
     );
   }
 }

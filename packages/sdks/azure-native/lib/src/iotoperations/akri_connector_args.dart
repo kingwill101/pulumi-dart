@@ -26,17 +26,12 @@ class AkriConnectorArgs {
   /// [instanceName] Name of instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   AkriConnectorArgs({
-    required pulumi.Output<String> akriConnectorTemplateName,
-    pulumi.Output<String>? connectorName,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      akriConnectorTemplateName = pulumi.Input.asInput<String>(akriConnectorTemplateName),
-      connectorName = pulumi.Input.asOptionalInput<String>(connectorName),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.akriConnectorTemplateName,
+    this.connectorName,
+    this.extendedLocation,
+    required this.instanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AkriConnectorArgs {
 
   factory AkriConnectorArgs.fromMap(Map<String, dynamic> map) {
     return AkriConnectorArgs(
-      akriConnectorTemplateName: pulumi.Output.create<String>(map['akriConnectorTemplateName'] as String),
-      connectorName: map['connectorName'] == null ? null : pulumi.Output.create<String>(map['connectorName'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      akriConnectorTemplateName: (map['akriConnectorTemplateName'] as String).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

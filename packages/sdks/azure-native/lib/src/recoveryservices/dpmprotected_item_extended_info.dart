@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional information of DPM Protected item.
 class DPMProtectedItemExtendedInfo {
   /// Used Disk storage in bytes.
-  final String? diskStorageUsedInBytes;
+  final pulumi.Input<String>? diskStorageUsedInBytes;
   /// To check if backup item is collocated.
-  final bool? isCollocated;
+  final pulumi.Input<bool>? isCollocated;
   /// To check if backup item is cloud protected.
-  final bool? isPresentOnCloud;
+  final pulumi.Input<bool>? isPresentOnCloud;
   /// Last backup status information on backup item.
-  final String? lastBackupStatus;
+  final pulumi.Input<String>? lastBackupStatus;
   /// Last refresh time on backup item.
-  final String? lastRefreshedAt;
+  final pulumi.Input<String>? lastRefreshedAt;
   /// Oldest cloud recovery point time.
-  final String? oldestRecoveryPoint;
+  final pulumi.Input<String>? oldestRecoveryPoint;
   /// latest disk recovery point time.
-  final String? onPremiseLatestRecoveryPoint;
+  final pulumi.Input<String>? onPremiseLatestRecoveryPoint;
   /// Oldest disk recovery point time.
-  final String? onPremiseOldestRecoveryPoint;
+  final pulumi.Input<String>? onPremiseOldestRecoveryPoint;
   /// disk recovery point count.
-  final int? onPremiseRecoveryPointCount;
+  final pulumi.Input<int>? onPremiseRecoveryPointCount;
   /// Attribute to provide information on various DBs.
-  final Map<String, String>? protectableObjectLoadPath;
+  final pulumi.Input<Map<String, String>>? protectableObjectLoadPath;
   /// To check if backup item is disk protected.
-  final bool? protected;
+  final pulumi.Input<bool>? protected;
   /// Protection group name of the backup item.
-  final String? protectionGroupName;
+  final pulumi.Input<String>? protectionGroupName;
   /// cloud recovery point count.
-  final int? recoveryPointCount;
+  final pulumi.Input<int>? recoveryPointCount;
   /// total Disk storage in bytes.
-  final String? totalDiskStorageSizeInBytes;
+  final pulumi.Input<String>? totalDiskStorageSizeInBytes;
 
   /// Creates a new [DPMProtectedItemExtendedInfo].
   /// [diskStorageUsedInBytes] Used Disk storage in bytes.
@@ -85,20 +86,20 @@ class DPMProtectedItemExtendedInfo {
 
   factory DPMProtectedItemExtendedInfo.fromMap(Map<String, dynamic> map) {
     return DPMProtectedItemExtendedInfo(
-      diskStorageUsedInBytes: map['diskStorageUsedInBytes'] == null ? null : map['diskStorageUsedInBytes'] as String,
-      isCollocated: map['isCollocated'] == null ? null : map['isCollocated'] as bool,
-      isPresentOnCloud: map['isPresentOnCloud'] == null ? null : map['isPresentOnCloud'] as bool,
-      lastBackupStatus: map['lastBackupStatus'] == null ? null : map['lastBackupStatus'] as String,
-      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : map['lastRefreshedAt'] as String,
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : map['oldestRecoveryPoint'] as String,
-      onPremiseLatestRecoveryPoint: map['onPremiseLatestRecoveryPoint'] == null ? null : map['onPremiseLatestRecoveryPoint'] as String,
-      onPremiseOldestRecoveryPoint: map['onPremiseOldestRecoveryPoint'] == null ? null : map['onPremiseOldestRecoveryPoint'] as String,
-      onPremiseRecoveryPointCount: map['onPremiseRecoveryPointCount'] == null ? null : map['onPremiseRecoveryPointCount'] as int,
-      protectableObjectLoadPath: map['protectableObjectLoadPath'] == null ? null : (map['protectableObjectLoadPath'] as Map).cast<String, String>(),
-      protected: map['protected'] == null ? null : map['protected'] as bool,
-      protectionGroupName: map['protectionGroupName'] == null ? null : map['protectionGroupName'] as String,
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : map['recoveryPointCount'] as int,
-      totalDiskStorageSizeInBytes: map['totalDiskStorageSizeInBytes'] == null ? null : map['totalDiskStorageSizeInBytes'] as String,
+      diskStorageUsedInBytes: map['diskStorageUsedInBytes'] == null ? null : (map['diskStorageUsedInBytes'] as String).input(),
+      isCollocated: map['isCollocated'] == null ? null : (map['isCollocated'] as bool).input(),
+      isPresentOnCloud: map['isPresentOnCloud'] == null ? null : (map['isPresentOnCloud'] as bool).input(),
+      lastBackupStatus: map['lastBackupStatus'] == null ? null : (map['lastBackupStatus'] as String).input(),
+      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt'] as String).input(),
+      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint'] as String).input(),
+      onPremiseLatestRecoveryPoint: map['onPremiseLatestRecoveryPoint'] == null ? null : (map['onPremiseLatestRecoveryPoint'] as String).input(),
+      onPremiseOldestRecoveryPoint: map['onPremiseOldestRecoveryPoint'] == null ? null : (map['onPremiseOldestRecoveryPoint'] as String).input(),
+      onPremiseRecoveryPointCount: map['onPremiseRecoveryPointCount'] == null ? null : (map['onPremiseRecoveryPointCount'] as int).input(),
+      protectableObjectLoadPath: map['protectableObjectLoadPath'] == null ? null : ((map['protectableObjectLoadPath'] as Map).cast<String, String>()).input(),
+      protected: map['protected'] == null ? null : (map['protected'] as bool).input(),
+      protectionGroupName: map['protectionGroupName'] == null ? null : (map['protectionGroupName'] as String).input(),
+      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount'] as int).input(),
+      totalDiskStorageSizeInBytes: map['totalDiskStorageSizeInBytes'] == null ? null : (map['totalDiskStorageSizeInBytes'] as String).input(),
     );
   }
 }

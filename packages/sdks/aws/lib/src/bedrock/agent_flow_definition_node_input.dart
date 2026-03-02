@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeInput {
   /// How input data flows between iterations in a DoWhile loop.
-  final String? category;
-  final String expression;
+  final pulumi.Input<String>? category;
+  final pulumi.Input<String> expression;
   /// A name for the flow.
-  final String name;
-  final String type;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AgentFlowDefinitionNodeInput].
   /// [category] How input data flows between iterations in a DoWhile loop.
@@ -32,10 +33,10 @@ class AgentFlowDefinitionNodeInput {
 
   factory AgentFlowDefinitionNodeInput.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeInput(
-      category: map['category'] == null ? null : map['category'] as String,
-      expression: map['expression'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      expression: (map['expression'] as String).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

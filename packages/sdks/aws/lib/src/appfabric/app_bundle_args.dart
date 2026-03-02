@@ -19,13 +19,10 @@ class AppBundleArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AppBundleArgs({
-    pulumi.Output<String>? customerManagedKeyArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      customerManagedKeyArn = pulumi.Input.asOptionalInput<String>(customerManagedKeyArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.customerManagedKeyArn,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AppBundleArgs {
 
   factory AppBundleArgs.fromMap(Map<String, dynamic> map) {
     return AppBundleArgs(
-      customerManagedKeyArn: map['customerManagedKeyArn'] == null ? null : pulumi.Output.create<String>(map['customerManagedKeyArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      customerManagedKeyArn: map['customerManagedKeyArn'] == null ? null : (map['customerManagedKeyArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

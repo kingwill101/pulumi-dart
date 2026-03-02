@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information of the backup file
 class BackupFileInfoResponse {
   /// Sequence number of the backup file in the backup set
-  final int? familySequenceNumber;
+  final pulumi.Input<int>? familySequenceNumber;
   /// Location of the backup file in shared folder
-  final String? fileLocation;
+  final pulumi.Input<String>? fileLocation;
   /// Status of the backup file during migration
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [BackupFileInfoResponse].
   /// [familySequenceNumber] Sequence number of the backup file in the backup set
@@ -30,9 +31,9 @@ class BackupFileInfoResponse {
 
   factory BackupFileInfoResponse.fromMap(Map<String, dynamic> map) {
     return BackupFileInfoResponse(
-      familySequenceNumber: map['familySequenceNumber'] == null ? null : map['familySequenceNumber'] as int,
-      fileLocation: map['fileLocation'] == null ? null : map['fileLocation'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      familySequenceNumber: map['familySequenceNumber'] == null ? null : (map['familySequenceNumber'] as int).input(),
+      fileLocation: map['fileLocation'] == null ? null : (map['fileLocation'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterDbNode {
   /// The create_time of the db_nodes.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The db_node_class of the db_nodes.
-  final String dbNodeClass;
+  final pulumi.Input<String> dbNodeClass;
   /// The db_node_id of the db_nodes.
-  final String dbNodeId;
+  final pulumi.Input<String> dbNodeId;
   /// The db_node_role of the db_nodes.
-  final String dbNodeRole;
+  final pulumi.Input<String> dbNodeRole;
   /// The db_node_status of the db_nodes.
-  final String dbNodeStatus;
+  final pulumi.Input<String> dbNodeStatus;
   /// The max_connections of the db_nodes.
-  final int maxConnections;
+  final pulumi.Input<int> maxConnections;
   /// The max_iops of the db_nodes.
-  final int maxIops;
+  final pulumi.Input<int> maxIops;
   /// The region_id of the db_nodes.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The zone_id of the db_nodes.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetClustersClusterDbNode].
   /// [createTime] The create_time of the db_nodes.
@@ -59,15 +60,15 @@ class GetClustersClusterDbNode {
 
   factory GetClustersClusterDbNode.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterDbNode(
-      createTime: map['createTime'] as String,
-      dbNodeClass: map['dbNodeClass'] as String,
-      dbNodeId: map['dbNodeId'] as String,
-      dbNodeRole: map['dbNodeRole'] as String,
-      dbNodeStatus: map['dbNodeStatus'] as String,
-      maxConnections: map['maxConnections'] as int,
-      maxIops: map['maxIops'] as int,
-      regionId: map['regionId'] as String,
-      zoneId: map['zoneId'] as String,
+      createTime: (map['createTime'] as String).input(),
+      dbNodeClass: (map['dbNodeClass'] as String).input(),
+      dbNodeId: (map['dbNodeId'] as String).input(),
+      dbNodeRole: (map['dbNodeRole'] as String).input(),
+      dbNodeStatus: (map['dbNodeStatus'] as String).input(),
+      maxConnections: (map['maxConnections'] as int).input(),
+      maxIops: (map['maxIops'] as int).input(),
+      regionId: (map['regionId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

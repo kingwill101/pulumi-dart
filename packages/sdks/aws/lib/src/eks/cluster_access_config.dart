@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterAccessConfig {
   /// The authentication mode for the cluster. Valid values are `CONFIG_MAP`, `API` or `API_AND_CONFIG_MAP`
-  final String? authenticationMode;
+  final pulumi.Input<String>? authenticationMode;
   /// Whether or not to bootstrap the access config values to the cluster. Default is `true`.
-  final bool? bootstrapClusterCreatorAdminPermissions;
+  final pulumi.Input<bool>? bootstrapClusterCreatorAdminPermissions;
 
   /// Creates a new [ClusterAccessConfig].
   /// [authenticationMode] The authentication mode for the cluster. Valid values are `CONFIG_MAP`, `API` or `API_AND_CONFIG_MAP`
@@ -24,8 +25,8 @@ class ClusterAccessConfig {
 
   factory ClusterAccessConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAccessConfig(
-      authenticationMode: map['authenticationMode'] == null ? null : map['authenticationMode'] as String,
-      bootstrapClusterCreatorAdminPermissions: map['bootstrapClusterCreatorAdminPermissions'] == null ? null : map['bootstrapClusterCreatorAdminPermissions'] as bool,
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      bootstrapClusterCreatorAdminPermissions: map['bootstrapClusterCreatorAdminPermissions'] == null ? null : (map['bootstrapClusterCreatorAdminPermissions'] as bool).input(),
     );
   }
 }

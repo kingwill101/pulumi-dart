@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_mapping_type.dart';
 
 /// Database instance IP mapping
 class IpMapping {
   /// The IP address assigned.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`. This field is only available when the IP is scheduled to be retired.
-  final String? timeToRetire;
+  final pulumi.Input<String>? timeToRetire;
   /// The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
-  final IpMappingType? type;
+  final pulumi.Input<IpMappingType>? type;
 
   /// Creates a new [IpMapping].
   /// [ipAddress] The IP address assigned.
@@ -25,15 +26,15 @@ class IpMapping {
     return <String, dynamic>{
       'ipAddress': ?ipAddress,
       'timeToRetire': ?timeToRetire,
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<IpMappingType, String>(type, (value) => value.value),
     };
   }
 
   factory IpMapping.fromMap(Map<String, dynamic> map) {
     return IpMapping(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      timeToRetire: map['timeToRetire'] == null ? null : map['timeToRetire'] as String,
-      type: map['type'] == null ? null : IpMappingType.fromValue(map['type'] as String),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      timeToRetire: map['timeToRetire'] == null ? null : (map['timeToRetire'] as String).input(),
+      type: map['type'] == null ? null : (IpMappingType.fromValue(map['type'] as String)).input(),
     );
   }
 }

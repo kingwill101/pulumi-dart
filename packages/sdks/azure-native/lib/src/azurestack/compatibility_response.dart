@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Product compatibility
 class CompatibilityResponse {
   /// Full error message if any compatibility issues are found
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Tells if product is compatible with current device
-  final bool? isCompatible;
+  final pulumi.Input<bool>? isCompatible;
   /// List of all issues found
-  final List<String>? issues;
+  final pulumi.Input<List<String>>? issues;
   /// Short error message if any compatibility issues are found
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [CompatibilityResponse].
   /// [description] Full error message if any compatibility issues are found
@@ -35,10 +36,10 @@ class CompatibilityResponse {
 
   factory CompatibilityResponse.fromMap(Map<String, dynamic> map) {
     return CompatibilityResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      isCompatible: map['isCompatible'] == null ? null : map['isCompatible'] as bool,
-      issues: map['issues'] == null ? null : (map['issues'] as List).cast<String>(),
-      message: map['message'] == null ? null : map['message'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isCompatible: map['isCompatible'] == null ? null : (map['isCompatible'] as bool).input(),
+      issues: map['issues'] == null ? null : ((map['issues'] as List).cast<String>()).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

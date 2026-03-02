@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of a scheduled run.
 class GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse {
   /// The response of the scheduled run.
-  final String runResponse;
+  final pulumi.Input<String> runResponse;
   /// The scheduled run time based on the user-specified schedule.
-  final String scheduledRunTime;
+  final pulumi.Input<String> scheduledRunTime;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse].
   /// [runResponse] The response of the scheduled run.
@@ -25,8 +26,8 @@ class GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse {
 
   factory GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse(
-      runResponse: map['runResponse'] as String,
-      scheduledRunTime: map['scheduledRunTime'] as String,
+      runResponse: (map['runResponse'] as String).input(),
+      scheduledRunTime: (map['scheduledRunTime'] as String).input(),
     );
   }
 }

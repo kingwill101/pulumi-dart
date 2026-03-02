@@ -33,21 +33,14 @@ class ApiKeyState {
   /// [serviceAccountEmail] The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
   /// [uid] Output only. Unique id in UUID4 format.
   ApiKeyState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? keyString,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ApiKeyRestrictions>? restrictions,
-    pulumi.Output<String>? serviceAccountEmail,
-    pulumi.Output<String>? uid,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      keyString = pulumi.Input.asOptionalInput<String>(keyString),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      restrictions = pulumi.Input.asOptionalInput<ApiKeyRestrictions>(restrictions),
-      serviceAccountEmail = pulumi.Input.asOptionalInput<String>(serviceAccountEmail),
-      uid = pulumi.Input.asOptionalInput<String>(uid);
+    this.displayName,
+    this.keyString,
+    this.name,
+    this.project,
+    this.restrictions,
+    this.serviceAccountEmail,
+    this.uid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ApiKeyState {
 
   factory ApiKeyState.fromMap(Map<String, dynamic> map) {
     return ApiKeyState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      keyString: map['keyString'] == null ? null : pulumi.Output.create<String>(map['keyString'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      restrictions: map['restrictions'] == null ? null : pulumi.Output.create<ApiKeyRestrictions>(ApiKeyRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>())),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : pulumi.Output.create<String>(map['serviceAccountEmail'] as String),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      keyString: map['keyString'] == null ? null : (map['keyString'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      restrictions: map['restrictions'] == null ? null : (ApiKeyRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>())).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
     );
   }
 }

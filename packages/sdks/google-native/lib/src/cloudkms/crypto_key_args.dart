@@ -48,33 +48,20 @@ class CryptoKeyArgs {
   /// [skipInitialVersionCreation] If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
   /// [versionTemplate] A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
   CryptoKeyArgs({
-    pulumi.Output<String>? cryptoKeyBackend,
-    pulumi.Output<String>? cryptoKeyId,
-    pulumi.Output<String>? destroyScheduledDuration,
-    pulumi.Output<bool>? importOnly,
-    required pulumi.Output<String> keyRingId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? nextRotationTime,
-    pulumi.Output<String>? project,
-    pulumi.Output<CryptoKeyPurpose>? purpose,
-    pulumi.Output<String>? rotationPeriod,
-    pulumi.Output<bool>? skipInitialVersionCreation,
-    pulumi.Output<CryptoKeyVersionTemplate>? versionTemplate,
-  }) :
-      cryptoKeyBackend = pulumi.Input.asOptionalInput<String>(cryptoKeyBackend),
-      cryptoKeyId = pulumi.Input.asOptionalInput<String>(cryptoKeyId),
-      destroyScheduledDuration = pulumi.Input.asOptionalInput<String>(destroyScheduledDuration),
-      importOnly = pulumi.Input.asOptionalInput<bool>(importOnly),
-      keyRingId = pulumi.Input.asInput<String>(keyRingId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      nextRotationTime = pulumi.Input.asOptionalInput<String>(nextRotationTime),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      purpose = pulumi.Input.asOptionalInput<CryptoKeyPurpose>(purpose),
-      rotationPeriod = pulumi.Input.asOptionalInput<String>(rotationPeriod),
-      skipInitialVersionCreation = pulumi.Input.asOptionalInput<bool>(skipInitialVersionCreation),
-      versionTemplate = pulumi.Input.asOptionalInput<CryptoKeyVersionTemplate>(versionTemplate);
+    this.cryptoKeyBackend,
+    this.cryptoKeyId,
+    this.destroyScheduledDuration,
+    this.importOnly,
+    required this.keyRingId,
+    this.labels,
+    this.location,
+    this.nextRotationTime,
+    this.project,
+    this.purpose,
+    this.rotationPeriod,
+    this.skipInitialVersionCreation,
+    this.versionTemplate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class CryptoKeyArgs {
 
   factory CryptoKeyArgs.fromMap(Map<String, dynamic> map) {
     return CryptoKeyArgs(
-      cryptoKeyBackend: map['cryptoKeyBackend'] == null ? null : pulumi.Output.create<String>(map['cryptoKeyBackend'] as String),
-      cryptoKeyId: map['cryptoKeyId'] == null ? null : pulumi.Output.create<String>(map['cryptoKeyId'] as String),
-      destroyScheduledDuration: map['destroyScheduledDuration'] == null ? null : pulumi.Output.create<String>(map['destroyScheduledDuration'] as String),
-      importOnly: map['importOnly'] == null ? null : pulumi.Output.create<bool>(map['importOnly'] as bool),
-      keyRingId: pulumi.Output.create<String>(map['keyRingId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      nextRotationTime: map['nextRotationTime'] == null ? null : pulumi.Output.create<String>(map['nextRotationTime'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      purpose: map['purpose'] == null ? null : pulumi.Output.create<CryptoKeyPurpose>(CryptoKeyPurpose.fromValue(map['purpose'] as String)),
-      rotationPeriod: map['rotationPeriod'] == null ? null : pulumi.Output.create<String>(map['rotationPeriod'] as String),
-      skipInitialVersionCreation: map['skipInitialVersionCreation'] == null ? null : pulumi.Output.create<bool>(map['skipInitialVersionCreation'] as bool),
-      versionTemplate: map['versionTemplate'] == null ? null : pulumi.Output.create<CryptoKeyVersionTemplate>(CryptoKeyVersionTemplate.fromMap((map['versionTemplate'] as Map).cast<String, dynamic>())),
+      cryptoKeyBackend: map['cryptoKeyBackend'] == null ? null : (map['cryptoKeyBackend'] as String).input(),
+      cryptoKeyId: map['cryptoKeyId'] == null ? null : (map['cryptoKeyId'] as String).input(),
+      destroyScheduledDuration: map['destroyScheduledDuration'] == null ? null : (map['destroyScheduledDuration'] as String).input(),
+      importOnly: map['importOnly'] == null ? null : (map['importOnly'] as bool).input(),
+      keyRingId: (map['keyRingId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      nextRotationTime: map['nextRotationTime'] == null ? null : (map['nextRotationTime'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      purpose: map['purpose'] == null ? null : (CryptoKeyPurpose.fromValue(map['purpose'] as String)).input(),
+      rotationPeriod: map['rotationPeriod'] == null ? null : (map['rotationPeriod'] as String).input(),
+      skipInitialVersionCreation: map['skipInitialVersionCreation'] == null ? null : (map['skipInitialVersionCreation'] as bool).input(),
+      versionTemplate: map['versionTemplate'] == null ? null : (CryptoKeyVersionTemplate.fromMap((map['versionTemplate'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

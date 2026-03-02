@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorWorkerConfiguration {
   /// The Amazon Resource Name (ARN) of the worker configuration.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// The revision of the worker configuration.
-  final int revision;
+  final pulumi.Input<int> revision;
 
   /// Creates a new [ConnectorWorkerConfiguration].
   /// [arn] The Amazon Resource Name (ARN) of the worker configuration.
@@ -24,8 +25,8 @@ class ConnectorWorkerConfiguration {
 
   factory ConnectorWorkerConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectorWorkerConfiguration(
-      arn: map['arn'] as String,
-      revision: map['revision'] as int,
+      arn: (map['arn'] as String).input(),
+      revision: (map['revision'] as int).input(),
     );
   }
 }

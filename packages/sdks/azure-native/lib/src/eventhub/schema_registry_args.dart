@@ -26,19 +26,13 @@ class SchemaRegistryArgs {
   /// [schemaGroupName] The Schema Group name
   /// [schemaType] Optional.
   SchemaRegistryArgs({
-    pulumi.Output<Map<String, String>>? groupProperties,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? schemaCompatibility,
-    pulumi.Output<String>? schemaGroupName,
-    pulumi.Output<String>? schemaType,
-  }) :
-      groupProperties = pulumi.Input.asOptionalInput<Map<String, String>>(groupProperties),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaCompatibility = pulumi.Input.asOptionalInput<String>(schemaCompatibility),
-      schemaGroupName = pulumi.Input.asOptionalInput<String>(schemaGroupName),
-      schemaType = pulumi.Input.asOptionalInput<String>(schemaType);
+    this.groupProperties,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    this.schemaCompatibility,
+    this.schemaGroupName,
+    this.schemaType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class SchemaRegistryArgs {
 
   factory SchemaRegistryArgs.fromMap(Map<String, dynamic> map) {
     return SchemaRegistryArgs(
-      groupProperties: map['groupProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['groupProperties'] as Map).cast<String, String>()),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaCompatibility: map['schemaCompatibility'] == null ? null : pulumi.Output.create<String>(map['schemaCompatibility'] as String),
-      schemaGroupName: map['schemaGroupName'] == null ? null : pulumi.Output.create<String>(map['schemaGroupName'] as String),
-      schemaType: map['schemaType'] == null ? null : pulumi.Output.create<String>(map['schemaType'] as String),
+      groupProperties: map['groupProperties'] == null ? null : ((map['groupProperties'] as Map).cast<String, String>()).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaCompatibility: map['schemaCompatibility'] == null ? null : (map['schemaCompatibility'] as String).input(),
+      schemaGroupName: map['schemaGroupName'] == null ? null : (map['schemaGroupName'] as String).input(),
+      schemaType: map['schemaType'] == null ? null : (map['schemaType'] as String).input(),
     );
   }
 }

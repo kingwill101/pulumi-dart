@@ -26,17 +26,12 @@ class ManagementLockAtResourceGroupLevelArgs {
   /// [owners] The owners of the lock.
   /// [resourceGroupName] The name of the resource group to lock.
   ManagementLockAtResourceGroupLevelArgs({
-    required pulumi.Output<String> level,
-    pulumi.Output<String>? lockName,
-    pulumi.Output<String>? notes,
-    pulumi.Output<List<ManagementLockOwner>>? owners,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      level = pulumi.Input.asInput<String>(level),
-      lockName = pulumi.Input.asOptionalInput<String>(lockName),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      owners = pulumi.Input.asOptionalInput<List<ManagementLockOwner>>(owners),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.level,
+    this.lockName,
+    this.notes,
+    this.owners,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ManagementLockAtResourceGroupLevelArgs {
 
   factory ManagementLockAtResourceGroupLevelArgs.fromMap(Map<String, dynamic> map) {
     return ManagementLockAtResourceGroupLevelArgs(
-      level: pulumi.Output.create<String>(map['level'] as String),
-      lockName: map['lockName'] == null ? null : pulumi.Output.create<String>(map['lockName'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      owners: map['owners'] == null ? null : pulumi.Output.create<List<ManagementLockOwner>>(pulumi.Input.decodeList<ManagementLockOwner>(map['owners'], (value) => ManagementLockOwner.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      level: (map['level'] as String).input(),
+      lockName: map['lockName'] == null ? null : (map['lockName'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      owners: map['owners'] == null ? null : (pulumi.Input.decodeList<ManagementLockOwner>(map['owners'], (value) => ManagementLockOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

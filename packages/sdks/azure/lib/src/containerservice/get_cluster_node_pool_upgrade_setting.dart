@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolUpgradeSetting {
   /// The amount of time in minutes to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails.
-  final int drainTimeoutInMinutes;
+  final pulumi.Input<int> drainTimeoutInMinutes;
   /// The maximum number or percentage of nodes which will be added to the Node Pool size during an upgrade.
-  final String maxSurge;
+  final pulumi.Input<String> maxSurge;
   /// The maximum number or percentage of nodes which can be unavailable during the upgrade.
-  final String maxUnavailable;
+  final pulumi.Input<String> maxUnavailable;
   /// The amount of time in minutes to wait after draining a node and before reimaging it and moving on to next node.
-  final int nodeSoakDurationInMinutes;
+  final pulumi.Input<int> nodeSoakDurationInMinutes;
   /// The action when a node is undrainable during upgrade. Possible values are `Cordon` and `Schedule`.
-  final String undrainableNodeBehavior;
+  final pulumi.Input<String> undrainableNodeBehavior;
 
   /// Creates a new [GetClusterNodePoolUpgradeSetting].
   /// [drainTimeoutInMinutes] The amount of time in minutes to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails.
@@ -39,11 +40,11 @@ class GetClusterNodePoolUpgradeSetting {
 
   factory GetClusterNodePoolUpgradeSetting.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolUpgradeSetting(
-      drainTimeoutInMinutes: map['drainTimeoutInMinutes'] as int,
-      maxSurge: map['maxSurge'] as String,
-      maxUnavailable: map['maxUnavailable'] as String,
-      nodeSoakDurationInMinutes: map['nodeSoakDurationInMinutes'] as int,
-      undrainableNodeBehavior: map['undrainableNodeBehavior'] as String,
+      drainTimeoutInMinutes: (map['drainTimeoutInMinutes'] as int).input(),
+      maxSurge: (map['maxSurge'] as String).input(),
+      maxUnavailable: (map['maxUnavailable'] as String).input(),
+      nodeSoakDurationInMinutes: (map['nodeSoakDurationInMinutes'] as int).input(),
+      undrainableNodeBehavior: (map['undrainableNodeBehavior'] as String).input(),
     );
   }
 }

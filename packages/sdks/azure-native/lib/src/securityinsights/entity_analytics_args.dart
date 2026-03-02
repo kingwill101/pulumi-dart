@@ -26,17 +26,12 @@ class EntityAnalyticsArgs {
   /// [settingsName] The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
   /// [workspaceName] The name of the workspace.
   EntityAnalyticsArgs({
-    pulumi.Output<List<String>>? entityProviders,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? settingsName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      entityProviders = pulumi.Input.asOptionalInput<List<String>>(entityProviders),
-      kind = pulumi.Input.asInput<String>(kind),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      settingsName = pulumi.Input.asOptionalInput<String>(settingsName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.entityProviders,
+    required this.kind,
+    required this.resourceGroupName,
+    this.settingsName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class EntityAnalyticsArgs {
 
   factory EntityAnalyticsArgs.fromMap(Map<String, dynamic> map) {
     return EntityAnalyticsArgs(
-      entityProviders: map['entityProviders'] == null ? null : pulumi.Output.create<List<String>>((map['entityProviders'] as List).cast<String>()),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      settingsName: map['settingsName'] == null ? null : pulumi.Output.create<String>(map['settingsName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      entityProviders: map['entityProviders'] == null ? null : ((map['entityProviders'] as List).cast<String>()).input(),
+      kind: (map['kind'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      settingsName: map['settingsName'] == null ? null : (map['settingsName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An SRV record.
 class SrvRecord {
   /// The port value for this SRV record.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The priority value for this SRV record.
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// The target domain name for this SRV record.
-  final String? target;
+  final pulumi.Input<String>? target;
   /// The weight value for this SRV record.
-  final int? weight;
+  final pulumi.Input<int>? weight;
 
   /// Creates a new [SrvRecord].
   /// [port] The port value for this SRV record.
@@ -35,10 +36,10 @@ class SrvRecord {
 
   factory SrvRecord.fromMap(Map<String, dynamic> map) {
     return SrvRecord(
-      port: map['port'] == null ? null : map['port'] as int,
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      target: map['target'] == null ? null : map['target'] as String,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

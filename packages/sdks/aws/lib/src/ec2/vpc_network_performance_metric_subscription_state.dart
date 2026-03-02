@@ -25,19 +25,13 @@ class VpcNetworkPerformanceMetricSubscriptionState {
   /// [source] The source Region or Availability Zone that the metric subscription is enabled for. For example, `us-east-1`.
   /// [statistic] The statistic used for the enabled subscription. Valid values: `p50`. Default: `p50`.
   VpcNetworkPerformanceMetricSubscriptionState({
-    pulumi.Output<String>? destination,
-    pulumi.Output<String>? metric,
-    pulumi.Output<String>? period,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? source,
-    pulumi.Output<String>? statistic,
-  }) :
-      destination = pulumi.Input.asOptionalInput<String>(destination),
-      metric = pulumi.Input.asOptionalInput<String>(metric),
-      period = pulumi.Input.asOptionalInput<String>(period),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      statistic = pulumi.Input.asOptionalInput<String>(statistic);
+    this.destination,
+    this.metric,
+    this.period,
+    this.region,
+    this.source,
+    this.statistic,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class VpcNetworkPerformanceMetricSubscriptionState {
 
   factory VpcNetworkPerformanceMetricSubscriptionState.fromMap(Map<String, dynamic> map) {
     return VpcNetworkPerformanceMetricSubscriptionState(
-      destination: map['destination'] == null ? null : pulumi.Output.create<String>(map['destination'] as String),
-      metric: map['metric'] == null ? null : pulumi.Output.create<String>(map['metric'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<String>(map['period'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      statistic: map['statistic'] == null ? null : pulumi.Output.create<String>(map['statistic'] as String),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      statistic: map['statistic'] == null ? null : (map['statistic'] as String).input(),
     );
   }
 }

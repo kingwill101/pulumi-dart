@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagesImage {
   /// The creation time of the image.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The size of data disk of the image.
-  final int dataDiskSize;
+  final pulumi.Input<int> dataDiskSize;
   /// The description of the image.
-  final String description;
+  final pulumi.Input<String> description;
   /// The Gpu Category of the image.
-  final bool gpuCategory;
+  final pulumi.Input<bool> gpuCategory;
   /// The ID of the Image.
-  final String id;
+  final pulumi.Input<String> id;
   /// The image id of the image.
-  final String imageId;
+  final pulumi.Input<String> imageId;
   /// The image name.
-  final String imageName;
+  final pulumi.Input<String> imageName;
   /// The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
-  final String imageType;
+  final pulumi.Input<String> imageType;
   /// The os type of the image.
-  final String osType;
+  final pulumi.Input<String> osType;
   /// The progress of the image.
-  final String progress;
+  final pulumi.Input<String> progress;
   /// The size of the image.
-  final int size;
+  final pulumi.Input<int> size;
   /// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetImagesImage].
   /// [createTime] The creation time of the image.
@@ -74,18 +75,18 @@ class GetImagesImage {
 
   factory GetImagesImage.fromMap(Map<String, dynamic> map) {
     return GetImagesImage(
-      createTime: map['createTime'] as String,
-      dataDiskSize: map['dataDiskSize'] as int,
-      description: map['description'] as String,
-      gpuCategory: map['gpuCategory'] as bool,
-      id: map['id'] as String,
-      imageId: map['imageId'] as String,
-      imageName: map['imageName'] as String,
-      imageType: map['imageType'] as String,
-      osType: map['osType'] as String,
-      progress: map['progress'] as String,
-      size: map['size'] as int,
-      status: map['status'] as String,
+      createTime: (map['createTime'] as String).input(),
+      dataDiskSize: (map['dataDiskSize'] as int).input(),
+      description: (map['description'] as String).input(),
+      gpuCategory: (map['gpuCategory'] as bool).input(),
+      id: (map['id'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      imageName: (map['imageName'] as String).input(),
+      imageType: (map['imageType'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      progress: (map['progress'] as String).input(),
+      size: (map['size'] as int).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

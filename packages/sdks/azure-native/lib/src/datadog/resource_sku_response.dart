@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceSkuResponse {
   /// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ResourceSkuResponse].
   /// [name] Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
@@ -19,7 +20,7 @@ class ResourceSkuResponse {
 
   factory ResourceSkuResponse.fromMap(Map<String, dynamic> map) {
     return ResourceSkuResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

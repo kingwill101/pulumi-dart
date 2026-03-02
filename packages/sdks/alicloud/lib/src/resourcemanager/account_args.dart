@@ -50,27 +50,17 @@ class AccountArgs {
   /// [tags] The tag of the resource
   /// [type] Member type. The value of ResourceAccount indicates the resource account
   AccountArgs({
-    pulumi.Output<List<String>>? abandonAbleCheckIds,
-    pulumi.Output<List<String>>? abandonableCheckIds,
-    pulumi.Output<String>? accountNamePrefix,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? folderId,
-    pulumi.Output<bool>? forceDelete,
-    pulumi.Output<String>? payerAccountId,
-    pulumi.Output<String>? resellAccountType,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-  }) :
-      abandonAbleCheckIds = pulumi.Input.asOptionalInput<List<String>>(abandonAbleCheckIds),
-      abandonableCheckIds = pulumi.Input.asOptionalInput<List<String>>(abandonableCheckIds),
-      accountNamePrefix = pulumi.Input.asOptionalInput<String>(accountNamePrefix),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      folderId = pulumi.Input.asOptionalInput<String>(folderId),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      payerAccountId = pulumi.Input.asOptionalInput<String>(payerAccountId),
-      resellAccountType = pulumi.Input.asOptionalInput<String>(resellAccountType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.abandonAbleCheckIds,
+    this.abandonableCheckIds,
+    this.accountNamePrefix,
+    required this.displayName,
+    this.folderId,
+    this.forceDelete,
+    this.payerAccountId,
+    this.resellAccountType,
+    this.tags,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,16 +79,16 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      abandonAbleCheckIds: map['abandonAbleCheckIds'] == null ? null : pulumi.Output.create<List<String>>((map['abandonAbleCheckIds'] as List).cast<String>()),
-      abandonableCheckIds: map['abandonableCheckIds'] == null ? null : pulumi.Output.create<List<String>>((map['abandonableCheckIds'] as List).cast<String>()),
-      accountNamePrefix: map['accountNamePrefix'] == null ? null : pulumi.Output.create<String>(map['accountNamePrefix'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      folderId: map['folderId'] == null ? null : pulumi.Output.create<String>(map['folderId'] as String),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      payerAccountId: map['payerAccountId'] == null ? null : pulumi.Output.create<String>(map['payerAccountId'] as String),
-      resellAccountType: map['resellAccountType'] == null ? null : pulumi.Output.create<String>(map['resellAccountType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      abandonAbleCheckIds: map['abandonAbleCheckIds'] == null ? null : ((map['abandonAbleCheckIds'] as List).cast<String>()).input(),
+      abandonableCheckIds: map['abandonableCheckIds'] == null ? null : ((map['abandonableCheckIds'] as List).cast<String>()).input(),
+      accountNamePrefix: map['accountNamePrefix'] == null ? null : (map['accountNamePrefix'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      payerAccountId: map['payerAccountId'] == null ? null : (map['payerAccountId'] as String).input(),
+      resellAccountType: map['resellAccountType'] == null ? null : (map['resellAccountType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

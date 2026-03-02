@@ -6,11 +6,11 @@ import 'dashboard_lens_response.dart';
 /// Dashboard Properties with Provisioning state
 class DashboardPropertiesWithProvisioningStateResponse {
   /// The dashboard lenses.
-  final List<DashboardLensResponse>? lenses;
+  final pulumi.Input<List<DashboardLensResponse>>? lenses;
   /// The dashboard metadata.
-  final dynamic metadata;
+  final pulumi.Input<dynamic>? metadata;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [DashboardPropertiesWithProvisioningStateResponse].
   /// [lenses] The dashboard lenses.
@@ -24,7 +24,7 @@ class DashboardPropertiesWithProvisioningStateResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lenses': ?lenses == null ? null : pulumi.Input.encodeList<DashboardLensResponse, Map<String, dynamic>>(lenses!, (value) => value.toMap()),
+      'lenses': ?pulumi.Input.mapOptionalInputValue<List<DashboardLensResponse>, List<Map<String, dynamic>>>(lenses, (value) => pulumi.Input.encodeList<DashboardLensResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metadata': ?metadata,
       'provisioningState': provisioningState,
     };
@@ -32,9 +32,9 @@ class DashboardPropertiesWithProvisioningStateResponse {
 
   factory DashboardPropertiesWithProvisioningStateResponse.fromMap(Map<String, dynamic> map) {
     return DashboardPropertiesWithProvisioningStateResponse(
-      lenses: map['lenses'] == null ? null : pulumi.Input.decodeList<DashboardLensResponse>(map['lenses'], (value) => DashboardLensResponse.fromMap((value as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null ? null : map['metadata'],
-      provisioningState: map['provisioningState'] as String,
+      lenses: map['lenses'] == null ? null : (pulumi.Input.decodeList<DashboardLensResponse>(map['lenses'], (value) => DashboardLensResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

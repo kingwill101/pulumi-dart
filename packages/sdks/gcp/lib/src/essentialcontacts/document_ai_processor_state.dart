@@ -26,19 +26,13 @@ class DocumentAiProcessorState {
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of processor. For possible types see the [official list](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations/fetchProcessorTypes#google.cloud.documentai.v1.DocumentProcessorService.FetchProcessorTypes)
   DocumentAiProcessorState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? kmsKeyName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? type,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.displayName,
+    this.kmsKeyName,
+    this.location,
+    this.name,
+    this.project,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class DocumentAiProcessorState {
 
   factory DocumentAiProcessorState.fromMap(Map<String, dynamic> map) {
     return DocumentAiProcessorState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

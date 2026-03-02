@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSOrganization {
   /// The Google for Work customer ID of the Organization.
-  final String directoryCustomerId;
+  final pulumi.Input<String> directoryCustomerId;
   /// A human-readable string that refers to the Organization in the Google Cloud console. The string will be set to the primary domain (for example, `"google.com"`) of the G Suite customer that owns the organization.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The Organization's current lifecycle state.
-  final String lifecycleState;
+  final pulumi.Input<String> lifecycleState;
   /// The resource name of the Organization in the form `organizations/{organization_id}`.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Organization ID.
-  final String orgId;
+  final pulumi.Input<String> orgId;
 
   /// Creates a new [GetSOrganization].
   /// [directoryCustomerId] The Google for Work customer ID of the Organization.
@@ -39,11 +40,11 @@ class GetSOrganization {
 
   factory GetSOrganization.fromMap(Map<String, dynamic> map) {
     return GetSOrganization(
-      directoryCustomerId: map['directoryCustomerId'] as String,
-      displayName: map['displayName'] as String,
-      lifecycleState: map['lifecycleState'] as String,
-      name: map['name'] as String,
-      orgId: map['orgId'] as String,
+      directoryCustomerId: (map['directoryCustomerId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      lifecycleState: (map['lifecycleState'] as String).input(),
+      name: (map['name'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
     );
   }
 }

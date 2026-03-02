@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainClusterConfigZoneAwarenessConfig {
   /// Number of Availability Zones for the domain to use with `zone_awareness_enabled`. Defaults to `2`. Valid values: `2` or `3`.
-  final int? availabilityZoneCount;
+  final pulumi.Input<int>? availabilityZoneCount;
 
   /// Creates a new [DomainClusterConfigZoneAwarenessConfig].
   /// [availabilityZoneCount] Number of Availability Zones for the domain to use with `zone_awareness_enabled`. Defaults to `2`. Valid values: `2` or `3`.
@@ -19,7 +20,7 @@ class DomainClusterConfigZoneAwarenessConfig {
 
   factory DomainClusterConfigZoneAwarenessConfig.fromMap(Map<String, dynamic> map) {
     return DomainClusterConfigZoneAwarenessConfig(
-      availabilityZoneCount: map['availabilityZoneCount'] == null ? null : map['availabilityZoneCount'] as int,
+      availabilityZoneCount: map['availabilityZoneCount'] == null ? null : (map['availabilityZoneCount'] as int).input(),
     );
   }
 }

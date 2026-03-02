@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An array of administrator user identities
 class DedicatedCapacityAdministratorsResponse {
   /// An array of administrator user identities.
-  final List<String>? members;
+  final pulumi.Input<List<String>>? members;
 
   /// Creates a new [DedicatedCapacityAdministratorsResponse].
   /// [members] An array of administrator user identities.
@@ -20,7 +21,7 @@ class DedicatedCapacityAdministratorsResponse {
 
   factory DedicatedCapacityAdministratorsResponse.fromMap(Map<String, dynamic> map) {
     return DedicatedCapacityAdministratorsResponse(
-      members: map['members'] == null ? null : (map['members'] as List).cast<String>(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
     );
   }
 }

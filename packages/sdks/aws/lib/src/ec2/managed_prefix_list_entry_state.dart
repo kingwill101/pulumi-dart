@@ -19,15 +19,11 @@ class ManagedPrefixListEntryState {
   /// [prefixListId] The ID of the prefix list.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ManagedPrefixListEntryState({
-    pulumi.Output<String>? cidr,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? prefixListId,
-    pulumi.Output<String>? region,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      prefixListId = pulumi.Input.asOptionalInput<String>(prefixListId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.cidr,
+    this.description,
+    this.prefixListId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ManagedPrefixListEntryState {
 
   factory ManagedPrefixListEntryState.fromMap(Map<String, dynamic> map) {
     return ManagedPrefixListEntryState(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      prefixListId: map['prefixListId'] == null ? null : pulumi.Output.create<String>(map['prefixListId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

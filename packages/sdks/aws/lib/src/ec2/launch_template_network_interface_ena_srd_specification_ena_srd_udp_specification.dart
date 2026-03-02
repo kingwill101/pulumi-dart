@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification {
   /// Whether to enable UDP traffic optimization through ENA Express. Requires `ena_srd_enabled` to be `true`.
   ///
   /// NOTE: ENA Express requires [specific instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking-ena-express.html#ena-express-requirements) and minimum bandwidth of 25 Gbps.
-  final bool? enaSrdUdpEnabled;
+  final pulumi.Input<bool>? enaSrdUdpEnabled;
 
   /// Creates a new [LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification].
   /// [enaSrdUdpEnabled] Whether to enable UDP traffic optimization through ENA Express. Requires `ena_srd_enabled` to be `true`.
@@ -21,7 +22,7 @@ class LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification {
 
   factory LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification(
-      enaSrdUdpEnabled: map['enaSrdUdpEnabled'] == null ? null : map['enaSrdUdpEnabled'] as bool,
+      enaSrdUdpEnabled: map['enaSrdUdpEnabled'] == null ? null : (map['enaSrdUdpEnabled'] as bool).input(),
     );
   }
 }

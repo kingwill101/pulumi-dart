@@ -12,9 +12,8 @@ class GetInboundSsoAssignmentCloudidentityV1beta1Args {
   /// Creates a new [GetInboundSsoAssignmentCloudidentityV1beta1Args].
   /// [inboundSsoAssignmentId] Required.
   GetInboundSsoAssignmentCloudidentityV1beta1Args({
-    required pulumi.Output<String> inboundSsoAssignmentId,
-  }) :
-      inboundSsoAssignmentId = pulumi.Input.asInput<String>(inboundSsoAssignmentId);
+    required this.inboundSsoAssignmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetInboundSsoAssignmentCloudidentityV1beta1Args {
 
   factory GetInboundSsoAssignmentCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetInboundSsoAssignmentCloudidentityV1beta1Args(
-      inboundSsoAssignmentId: pulumi.Output.create<String>(map['inboundSsoAssignmentId'] as String),
+      inboundSsoAssignmentId: (map['inboundSsoAssignmentId'] as String).input(),
     );
   }
 }

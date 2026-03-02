@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_rule_scheduled_incident_grouping.dart';
 
 class AlertRuleScheduledIncident {
   /// Whether to create an incident from alerts triggered by this Sentinel Scheduled Alert Rule?
-  final bool createIncidentEnabled;
+  final pulumi.Input<bool> createIncidentEnabled;
   /// A `grouping` block as defined below.
-  final AlertRuleScheduledIncidentGrouping grouping;
+  final pulumi.Input<AlertRuleScheduledIncidentGrouping> grouping;
 
   /// Creates a new [AlertRuleScheduledIncident].
   /// [createIncidentEnabled] Whether to create an incident from alerts triggered by this Sentinel Scheduled Alert Rule?
@@ -19,14 +20,14 @@ class AlertRuleScheduledIncident {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createIncidentEnabled': createIncidentEnabled,
-      'grouping': grouping.toMap(),
+      'grouping': pulumi.Input.mapInputValue<AlertRuleScheduledIncidentGrouping, Map<String, dynamic>>(grouping, (value) => value.toMap()),
     };
   }
 
   factory AlertRuleScheduledIncident.fromMap(Map<String, dynamic> map) {
     return AlertRuleScheduledIncident(
-      createIncidentEnabled: map['createIncidentEnabled'] as bool,
-      grouping: AlertRuleScheduledIncidentGrouping.fromMap((map['grouping'] as Map).cast<String, dynamic>()),
+      createIncidentEnabled: (map['createIncidentEnabled'] as bool).input(),
+      grouping: (AlertRuleScheduledIncidentGrouping.fromMap((map['grouping'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

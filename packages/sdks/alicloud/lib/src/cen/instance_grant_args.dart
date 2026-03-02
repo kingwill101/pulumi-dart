@@ -19,13 +19,10 @@ class InstanceGrantArgs {
   /// [cenOwnerId] The owner UID of the  CEN which the child instance granted to.
   /// [childInstanceId] The ID of the child instance to grant.
   InstanceGrantArgs({
-    required pulumi.Output<String> cenId,
-    required pulumi.Output<String> cenOwnerId,
-    required pulumi.Output<String> childInstanceId,
-  }) :
-      cenId = pulumi.Input.asInput<String>(cenId),
-      cenOwnerId = pulumi.Input.asInput<String>(cenOwnerId),
-      childInstanceId = pulumi.Input.asInput<String>(childInstanceId);
+    required this.cenId,
+    required this.cenOwnerId,
+    required this.childInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class InstanceGrantArgs {
 
   factory InstanceGrantArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGrantArgs(
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      cenOwnerId: pulumi.Output.create<String>(map['cenOwnerId'] as String),
-      childInstanceId: pulumi.Output.create<String>(map['childInstanceId'] as String),
+      cenId: (map['cenId'] as String).input(),
+      cenOwnerId: (map['cenOwnerId'] as String).input(),
+      childInstanceId: (map['childInstanceId'] as String).input(),
     );
   }
 }

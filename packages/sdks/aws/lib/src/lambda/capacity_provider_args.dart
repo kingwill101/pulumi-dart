@@ -42,25 +42,16 @@ class CapacityProviderArgs {
   /// [timeouts] Optional.
   /// [vpcConfig] Configuration block for VPC settings. See VPC Config below.
   CapacityProviderArgs({
-    pulumi.Output<List<CapacityProviderCapacityProviderScalingConfig>>? capacityProviderScalingConfigs,
-    pulumi.Output<List<CapacityProviderInstanceRequirement>>? instanceRequirements,
-    pulumi.Output<String>? kmsKeyArn,
-    pulumi.Output<String>? name,
-    required pulumi.Output<CapacityProviderPermissionsConfig> permissionsConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<CapacityProviderTimeouts>? timeouts,
-    required pulumi.Output<CapacityProviderVpcConfig> vpcConfig,
-  }) :
-      capacityProviderScalingConfigs = pulumi.Input.asOptionalInput<List<CapacityProviderCapacityProviderScalingConfig>>(capacityProviderScalingConfigs),
-      instanceRequirements = pulumi.Input.asOptionalInput<List<CapacityProviderInstanceRequirement>>(instanceRequirements),
-      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      permissionsConfig = pulumi.Input.asInput<CapacityProviderPermissionsConfig>(permissionsConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<CapacityProviderTimeouts>(timeouts),
-      vpcConfig = pulumi.Input.asInput<CapacityProviderVpcConfig>(vpcConfig);
+    this.capacityProviderScalingConfigs,
+    this.instanceRequirements,
+    this.kmsKeyArn,
+    this.name,
+    required this.permissionsConfig,
+    this.region,
+    this.tags,
+    this.timeouts,
+    required this.vpcConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,15 +69,15 @@ class CapacityProviderArgs {
 
   factory CapacityProviderArgs.fromMap(Map<String, dynamic> map) {
     return CapacityProviderArgs(
-      capacityProviderScalingConfigs: map['capacityProviderScalingConfigs'] == null ? null : pulumi.Output.create<List<CapacityProviderCapacityProviderScalingConfig>>(pulumi.Input.decodeList<CapacityProviderCapacityProviderScalingConfig>(map['capacityProviderScalingConfigs'], (value) => CapacityProviderCapacityProviderScalingConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      instanceRequirements: map['instanceRequirements'] == null ? null : pulumi.Output.create<List<CapacityProviderInstanceRequirement>>(pulumi.Input.decodeList<CapacityProviderInstanceRequirement>(map['instanceRequirements'], (value) => CapacityProviderInstanceRequirement.fromMap((value as Map).cast<String, dynamic>()))),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['kmsKeyArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      permissionsConfig: pulumi.Output.create<CapacityProviderPermissionsConfig>(CapacityProviderPermissionsConfig.fromMap((map['permissionsConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<CapacityProviderTimeouts>(CapacityProviderTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcConfig: pulumi.Output.create<CapacityProviderVpcConfig>(CapacityProviderVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())),
+      capacityProviderScalingConfigs: map['capacityProviderScalingConfigs'] == null ? null : (pulumi.Input.decodeList<CapacityProviderCapacityProviderScalingConfig>(map['capacityProviderScalingConfigs'], (value) => CapacityProviderCapacityProviderScalingConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceRequirements: map['instanceRequirements'] == null ? null : (pulumi.Input.decodeList<CapacityProviderInstanceRequirement>(map['instanceRequirements'], (value) => CapacityProviderInstanceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      permissionsConfig: (CapacityProviderPermissionsConfig.fromMap((map['permissionsConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (CapacityProviderTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcConfig: (CapacityProviderVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

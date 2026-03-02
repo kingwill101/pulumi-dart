@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of the Radius client root certificate of VpnServerConfiguration.
 class VpnServerConfigRadiusClientRootCertificateResponse {
   /// The certificate name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The Radius client root certificate thumbprint.
-  final String? thumbprint;
+  final pulumi.Input<String>? thumbprint;
 
   /// Creates a new [VpnServerConfigRadiusClientRootCertificateResponse].
   /// [name] The certificate name.
@@ -25,8 +26,8 @@ class VpnServerConfigRadiusClientRootCertificateResponse {
 
   factory VpnServerConfigRadiusClientRootCertificateResponse.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigRadiusClientRootCertificateResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      thumbprint: map['thumbprint'] == null ? null : map['thumbprint'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

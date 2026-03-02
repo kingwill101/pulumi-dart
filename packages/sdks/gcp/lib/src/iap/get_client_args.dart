@@ -16,11 +16,9 @@ class GetClientArgs {
   /// [brand] The name of the brand.
   /// [clientId] The client_id of the brand.
   GetClientArgs({
-    required pulumi.Output<String> brand,
-    required pulumi.Output<String> clientId,
-  }) :
-      brand = pulumi.Input.asInput<String>(brand),
-      clientId = pulumi.Input.asInput<String>(clientId);
+    required this.brand,
+    required this.clientId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetClientArgs {
 
   factory GetClientArgs.fromMap(Map<String, dynamic> map) {
     return GetClientArgs(
-      brand: pulumi.Output.create<String>(map['brand'] as String),
-      clientId: pulumi.Output.create<String>(map['clientId'] as String),
+      brand: (map['brand'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
     );
   }
 }

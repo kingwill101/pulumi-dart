@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VolumeMount describes a mounting of a Volume within a container.
 class VolumeMount {
   /// Path within the container at which the volume should be mounted.  Must not contain ':'.
-  final String mountPath;
+  final pulumi.Input<String> mountPath;
   /// mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10. When RecursiveReadOnly is set to IfPossible or to Enabled, MountPropagation must be None or unspecified (which defaults to None).
-  final String? mountPropagation;
+  final pulumi.Input<String>? mountPropagation;
   /// This must match the Name of a Volume.
-  final String name;
+  final pulumi.Input<String> name;
   /// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// RecursiveReadOnly specifies whether read-only mounts should be handled recursively.
   ///
   /// If ReadOnly is false, this field has no meaning and must be unspecified.
@@ -20,11 +21,11 @@ class VolumeMount {
   /// If this field is set to IfPossible or Enabled, MountPropagation must be set to None (or be unspecified, which defaults to None).
   ///
   /// If this field is not specified, it is treated as an equivalent of Disabled.
-  final String? recursiveReadOnly;
+  final pulumi.Input<String>? recursiveReadOnly;
   /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
-  final String? subPath;
+  final pulumi.Input<String>? subPath;
   /// Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.
-  final String? subPathExpr;
+  final pulumi.Input<String>? subPathExpr;
 
   /// Creates a new [VolumeMount].
   /// [mountPath] Path within the container at which the volume should be mounted.  Must not contain ':'.
@@ -58,13 +59,13 @@ class VolumeMount {
 
   factory VolumeMount.fromMap(Map<String, dynamic> map) {
     return VolumeMount(
-      mountPath: map['mountPath'] as String,
-      mountPropagation: map['mountPropagation'] == null ? null : map['mountPropagation'] as String,
-      name: map['name'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      recursiveReadOnly: map['recursiveReadOnly'] == null ? null : map['recursiveReadOnly'] as String,
-      subPath: map['subPath'] == null ? null : map['subPath'] as String,
-      subPathExpr: map['subPathExpr'] == null ? null : map['subPathExpr'] as String,
+      mountPath: (map['mountPath'] as String).input(),
+      mountPropagation: map['mountPropagation'] == null ? null : (map['mountPropagation'] as String).input(),
+      name: (map['name'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      recursiveReadOnly: map['recursiveReadOnly'] == null ? null : (map['recursiveReadOnly'] as String).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
+      subPathExpr: map['subPathExpr'] == null ? null : (map['subPathExpr'] as String).input(),
     );
   }
 }

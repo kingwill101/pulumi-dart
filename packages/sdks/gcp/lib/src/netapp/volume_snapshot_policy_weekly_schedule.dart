@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeSnapshotPolicyWeeklySchedule {
   /// Set the day or days of the week to make a snapshot. Accepts a comma separated days of the week. Defaults to 'Sunday'.
-  final String? day;
+  final pulumi.Input<String>? day;
   /// Set the hour to create the snapshot (0-23), defaults to midnight (0).
-  final int? hour;
+  final pulumi.Input<int>? hour;
   /// Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
-  final int? minute;
+  final pulumi.Input<int>? minute;
   /// The maximum number of snapshots to keep for the weekly schedule.
-  final int snapshotsToKeep;
+  final pulumi.Input<int> snapshotsToKeep;
 
   /// Creates a new [VolumeSnapshotPolicyWeeklySchedule].
   /// [day] Set the day or days of the week to make a snapshot. Accepts a comma separated days of the week. Defaults to 'Sunday'.
@@ -34,10 +35,10 @@ class VolumeSnapshotPolicyWeeklySchedule {
 
   factory VolumeSnapshotPolicyWeeklySchedule.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotPolicyWeeklySchedule(
-      day: map['day'] == null ? null : map['day'] as String,
-      hour: map['hour'] == null ? null : map['hour'] as int,
-      minute: map['minute'] == null ? null : map['minute'] as int,
-      snapshotsToKeep: map['snapshotsToKeep'] as int,
+      day: map['day'] == null ? null : (map['day'] as String).input(),
+      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
+      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
+      snapshotsToKeep: (map['snapshotsToKeep'] as int).input(),
     );
   }
 }

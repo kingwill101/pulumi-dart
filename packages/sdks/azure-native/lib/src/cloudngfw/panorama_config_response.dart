@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Panorama Config
 class PanoramaConfigResponse {
   /// Panorama Collector Group to join - (Once configured we can not edit the value)
-  final String cgName;
+  final pulumi.Input<String> cgName;
   /// Base64 encoded string representing Panorama parameters to be used by Firewall to connect to Panorama. This string is generated via azure plugin in Panorama
-  final String configString;
+  final pulumi.Input<String> configString;
   /// Panorama Device Group to join
-  final String dgName;
+  final pulumi.Input<String> dgName;
   /// Resource name(may be unique) for PN admin
-  final String hostName;
+  final pulumi.Input<String> hostName;
   /// Primary Panorama Server IP address value in dotted format for IPv4
-  final String panoramaServer;
+  final pulumi.Input<String> panoramaServer;
   /// Secondary Panorama Server IP address value in dotted format for IPv4
-  final String panoramaServer2;
+  final pulumi.Input<String> panoramaServer2;
   /// Panorama Template Stack to join - (Once configured we can not edit the value)
-  final String tplName;
+  final pulumi.Input<String> tplName;
   /// VM auth key for panorama connectivity
-  final String vmAuthKey;
+  final pulumi.Input<String> vmAuthKey;
 
   /// Creates a new [PanoramaConfigResponse].
   /// [cgName] Panorama Collector Group to join - (Once configured we can not edit the value)
@@ -55,14 +56,14 @@ class PanoramaConfigResponse {
 
   factory PanoramaConfigResponse.fromMap(Map<String, dynamic> map) {
     return PanoramaConfigResponse(
-      cgName: map['cgName'] as String,
-      configString: map['configString'] as String,
-      dgName: map['dgName'] as String,
-      hostName: map['hostName'] as String,
-      panoramaServer: map['panoramaServer'] as String,
-      panoramaServer2: map['panoramaServer2'] as String,
-      tplName: map['tplName'] as String,
-      vmAuthKey: map['vmAuthKey'] as String,
+      cgName: (map['cgName'] as String).input(),
+      configString: (map['configString'] as String).input(),
+      dgName: (map['dgName'] as String).input(),
+      hostName: (map['hostName'] as String).input(),
+      panoramaServer: (map['panoramaServer'] as String).input(),
+      panoramaServer2: (map['panoramaServer2'] as String).input(),
+      tplName: (map['tplName'] as String).input(),
+      vmAuthKey: (map['vmAuthKey'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger {
   /// The end time for this scaling rule specific metrics trigger.
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
-  final int? launchExpirationTime;
+  final pulumi.Input<int>? launchExpirationTime;
   /// The launch time for this scaling rule specific time trigger.
-  final String launchTime;
+  final pulumi.Input<String> launchTime;
   /// The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
-  final String? recurrenceType;
+  final pulumi.Input<String>? recurrenceType;
   /// The recurrence value for this scaling rule specific time trigger.
-  final String? recurrenceValue;
+  final pulumi.Input<String>? recurrenceValue;
   /// The start time for this scaling rule specific metrics trigger.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger].
   /// [endTime] The end time for this scaling rule specific metrics trigger.
@@ -44,12 +45,12 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger {
 
   factory ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      launchExpirationTime: map['launchExpirationTime'] == null ? null : map['launchExpirationTime'] as int,
-      launchTime: map['launchTime'] as String,
-      recurrenceType: map['recurrenceType'] == null ? null : map['recurrenceType'] as String,
-      recurrenceValue: map['recurrenceValue'] == null ? null : map['recurrenceValue'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      launchExpirationTime: map['launchExpirationTime'] == null ? null : (map['launchExpirationTime'] as int).input(),
+      launchTime: (map['launchTime'] as String).input(),
+      recurrenceType: map['recurrenceType'] == null ? null : (map['recurrenceType'] as String).input(),
+      recurrenceValue: map['recurrenceValue'] == null ? null : (map['recurrenceValue'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

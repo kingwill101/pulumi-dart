@@ -59,11 +59,9 @@ class EventServiceDiscoveryState {
   /// [nodes] Map of node which will be added to pool which will be having node name(id),node address(ip) and node port(port)
   /// [taskid] servicediscovery endpoint ( Below example shows how to create endpoing using AS3 )
   EventServiceDiscoveryState({
-    pulumi.Output<List<EventServiceDiscoveryNode>>? nodes,
-    pulumi.Output<String>? taskid,
-  }) :
-      nodes = pulumi.Input.asOptionalInput<List<EventServiceDiscoveryNode>>(nodes),
-      taskid = pulumi.Input.asOptionalInput<String>(taskid);
+    this.nodes,
+    this.taskid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,8 +72,8 @@ class EventServiceDiscoveryState {
 
   factory EventServiceDiscoveryState.fromMap(Map<String, dynamic> map) {
     return EventServiceDiscoveryState(
-      nodes: map['nodes'] == null ? null : pulumi.Output.create<List<EventServiceDiscoveryNode>>(pulumi.Input.decodeList<EventServiceDiscoveryNode>(map['nodes'], (value) => EventServiceDiscoveryNode.fromMap((value as Map).cast<String, dynamic>()))),
-      taskid: map['taskid'] == null ? null : pulumi.Output.create<String>(map['taskid'] as String),
+      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<EventServiceDiscoveryNode>(map['nodes'], (value) => EventServiceDiscoveryNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      taskid: map['taskid'] == null ? null : (map['taskid'] as String).input(),
     );
   }
 }

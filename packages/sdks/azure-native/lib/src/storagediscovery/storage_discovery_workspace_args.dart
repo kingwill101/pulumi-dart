@@ -26,17 +26,12 @@ class StorageDiscoveryWorkspaceArgs {
   /// [storageDiscoveryWorkspaceName] The name of the StorageDiscoveryWorkspace
   /// [tags] Resource tags.
   StorageDiscoveryWorkspaceArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<StorageDiscoveryWorkspaceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageDiscoveryWorkspaceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<StorageDiscoveryWorkspaceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageDiscoveryWorkspaceName = pulumi.Input.asOptionalInput<String>(storageDiscoveryWorkspaceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.storageDiscoveryWorkspaceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class StorageDiscoveryWorkspaceArgs {
 
   factory StorageDiscoveryWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return StorageDiscoveryWorkspaceArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<StorageDiscoveryWorkspaceProperties>(StorageDiscoveryWorkspaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageDiscoveryWorkspaceName: map['storageDiscoveryWorkspaceName'] == null ? null : pulumi.Output.create<String>(map['storageDiscoveryWorkspaceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (StorageDiscoveryWorkspaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageDiscoveryWorkspaceName: map['storageDiscoveryWorkspaceName'] == null ? null : (map['storageDiscoveryWorkspaceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

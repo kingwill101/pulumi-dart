@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describe a container image
 class ContainerImage {
   /// Names by which this image is known. e.g. ["kubernetes.example/hyperkube:v1.0.7", "cloud-vendor.registry.example/cloud-vendor/hyperkube:v1.0.7"]
-  final List<String> names;
+  final pulumi.Input<List<String>> names;
   /// The size of the image in bytes.
-  final int? sizeBytes;
+  final pulumi.Input<int>? sizeBytes;
 
   /// Creates a new [ContainerImage].
   /// [names] Names by which this image is known. e.g. ["kubernetes.example/hyperkube:v1.0.7", "cloud-vendor.registry.example/cloud-vendor/hyperkube:v1.0.7"]
@@ -25,8 +26,8 @@ class ContainerImage {
 
   factory ContainerImage.fromMap(Map<String, dynamic> map) {
     return ContainerImage(
-      names: (map['names'] as List).cast<String>(),
-      sizeBytes: map['sizeBytes'] == null ? null : map['sizeBytes'] as int,
+      names: ((map['names'] as List).cast<String>()).input(),
+      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes'] as int).input(),
     );
   }
 }

@@ -33,21 +33,14 @@ class ReplicatorArgs {
   /// [serviceExecutionRoleArn] The ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters).
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ReplicatorArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<ReplicatorKafkaCluster>> kafkaClusters,
-    pulumi.Output<String>? region,
-    required pulumi.Output<ReplicatorReplicationInfoList> replicationInfoList,
-    required pulumi.Output<String> replicatorName,
-    required pulumi.Output<String> serviceExecutionRoleArn,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kafkaClusters = pulumi.Input.asInput<List<ReplicatorKafkaCluster>>(kafkaClusters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationInfoList = pulumi.Input.asInput<ReplicatorReplicationInfoList>(replicationInfoList),
-      replicatorName = pulumi.Input.asInput<String>(replicatorName),
-      serviceExecutionRoleArn = pulumi.Input.asInput<String>(serviceExecutionRoleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.kafkaClusters,
+    this.region,
+    required this.replicationInfoList,
+    required this.replicatorName,
+    required this.serviceExecutionRoleArn,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ReplicatorArgs {
 
   factory ReplicatorArgs.fromMap(Map<String, dynamic> map) {
     return ReplicatorArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kafkaClusters: pulumi.Output.create<List<ReplicatorKafkaCluster>>(pulumi.Input.decodeList<ReplicatorKafkaCluster>(map['kafkaClusters'], (value) => ReplicatorKafkaCluster.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicationInfoList: pulumi.Output.create<ReplicatorReplicationInfoList>(ReplicatorReplicationInfoList.fromMap((map['replicationInfoList'] as Map).cast<String, dynamic>())),
-      replicatorName: pulumi.Output.create<String>(map['replicatorName'] as String),
-      serviceExecutionRoleArn: pulumi.Output.create<String>(map['serviceExecutionRoleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kafkaClusters: (pulumi.Input.decodeList<ReplicatorKafkaCluster>(map['kafkaClusters'], (value) => ReplicatorKafkaCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicationInfoList: (ReplicatorReplicationInfoList.fromMap((map['replicationInfoList'] as Map).cast<String, dynamic>())).input(),
+      replicatorName: (map['replicatorName'] as String).input(),
+      serviceExecutionRoleArn: (map['serviceExecutionRoleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

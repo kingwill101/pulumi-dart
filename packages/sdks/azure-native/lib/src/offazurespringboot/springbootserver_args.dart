@@ -23,15 +23,11 @@ class SpringbootserverArgs {
   /// [siteName] The springbootsites name.
   /// [springbootserversName] The springbootservers name.
   SpringbootserverArgs({
-    pulumi.Output<SpringbootserversProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteName,
-    pulumi.Output<String>? springbootserversName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<SpringbootserversProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asInput<String>(siteName),
-      springbootserversName = pulumi.Input.asOptionalInput<String>(springbootserversName);
+    this.properties,
+    required this.resourceGroupName,
+    required this.siteName,
+    this.springbootserversName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SpringbootserverArgs {
 
   factory SpringbootserverArgs.fromMap(Map<String, dynamic> map) {
     return SpringbootserverArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<SpringbootserversProperties>(SpringbootserversProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
-      springbootserversName: map['springbootserversName'] == null ? null : pulumi.Output.create<String>(map['springbootserversName'] as String),
+      properties: map['properties'] == null ? null : (SpringbootserversProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
+      springbootserversName: map['springbootserversName'] == null ? null : (map['springbootserversName'] as String).input(),
     );
   }
 }

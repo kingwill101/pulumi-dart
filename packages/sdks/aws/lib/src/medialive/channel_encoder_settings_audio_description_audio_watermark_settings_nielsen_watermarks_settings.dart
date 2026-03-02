@@ -6,11 +6,11 @@ import 'channel_encoder_settings_audio_description_audio_watermark_settings_niel
 
 class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings {
   /// Used to insert watermarks of type Nielsen CBET. See Nielsen CBET Settings for more details.
-  final ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings? nielsenCbetSettings;
+  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings>? nielsenCbetSettings;
   /// Distribution types to assign to the watermarks. Options are `PROGRAM_CONTENT` and `FINAL_DISTRIBUTOR`.
-  final String? nielsenDistributionType;
+  final pulumi.Input<String>? nielsenDistributionType;
   /// Used to insert watermarks of type Nielsen NAES, II (N2) and Nielsen NAES VI (NW). See Nielsen NAES II NW Settings for more details.
-  final List<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting>? nielsenNaesIiNwSettings;
+  final pulumi.Input<List<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting>>? nielsenNaesIiNwSettings;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings].
   /// [nielsenCbetSettings] Used to insert watermarks of type Nielsen CBET. See Nielsen CBET Settings for more details.
@@ -24,17 +24,17 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWaterma
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nielsenCbetSettings': ?nielsenCbetSettings == null ? null : nielsenCbetSettings!.toMap(),
+      'nielsenCbetSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings, Map<String, dynamic>>(nielsenCbetSettings, (value) => value.toMap()),
       'nielsenDistributionType': ?nielsenDistributionType,
-      'nielsenNaesIiNwSettings': ?nielsenNaesIiNwSettings == null ? null : pulumi.Input.encodeList<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting, Map<String, dynamic>>(nielsenNaesIiNwSettings!, (value) => value.toMap()),
+      'nielsenNaesIiNwSettings': ?pulumi.Input.mapOptionalInputValue<List<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting>, List<Map<String, dynamic>>>(nielsenNaesIiNwSettings, (value) => pulumi.Input.encodeList<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings(
-      nielsenCbetSettings: map['nielsenCbetSettings'] == null ? null : ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings.fromMap((map['nielsenCbetSettings'] as Map).cast<String, dynamic>()),
-      nielsenDistributionType: map['nielsenDistributionType'] == null ? null : map['nielsenDistributionType'] as String,
-      nielsenNaesIiNwSettings: map['nielsenNaesIiNwSettings'] == null ? null : pulumi.Input.decodeList<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting>(map['nielsenNaesIiNwSettings'], (value) => ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting.fromMap((value as Map).cast<String, dynamic>())),
+      nielsenCbetSettings: map['nielsenCbetSettings'] == null ? null : (ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings.fromMap((map['nielsenCbetSettings'] as Map).cast<String, dynamic>())).input(),
+      nielsenDistributionType: map['nielsenDistributionType'] == null ? null : (map['nielsenDistributionType'] as String).input(),
+      nielsenNaesIiNwSettings: map['nielsenNaesIiNwSettings'] == null ? null : (pulumi.Input.decodeList<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting>(map['nielsenNaesIiNwSettings'], (value) => ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

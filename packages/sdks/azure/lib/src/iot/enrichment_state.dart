@@ -22,17 +22,12 @@ class EnrichmentState {
   /// [resourceGroupName] The name of the resource group under which the IoTHub resource is created. Changing this forces a new resource to be created.
   /// [value] The value of the enrichment. Value can be any static string, the name of the IoT hub sending the message (use `$iothubname`) or information from the device twin (ex: `$twin.tags.latitude`)
   EnrichmentState({
-    pulumi.Output<List<String>>? endpointNames,
-    pulumi.Output<String>? iothubName,
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? value,
-  }) :
-      endpointNames = pulumi.Input.asOptionalInput<List<String>>(endpointNames),
-      iothubName = pulumi.Input.asOptionalInput<String>(iothubName),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.endpointNames,
+    this.iothubName,
+    this.key,
+    this.resourceGroupName,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class EnrichmentState {
 
   factory EnrichmentState.fromMap(Map<String, dynamic> map) {
     return EnrichmentState(
-      endpointNames: map['endpointNames'] == null ? null : pulumi.Output.create<List<String>>((map['endpointNames'] as List).cast<String>()),
-      iothubName: map['iothubName'] == null ? null : pulumi.Output.create<String>(map['iothubName'] as String),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      endpointNames: map['endpointNames'] == null ? null : ((map['endpointNames'] as List).cast<String>()).input(),
+      iothubName: map['iothubName'] == null ? null : (map['iothubName'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

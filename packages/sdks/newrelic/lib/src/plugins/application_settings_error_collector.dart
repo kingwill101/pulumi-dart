@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationSettingsErrorCollector {
   /// A list of expected error classes.
-  final List<String>? expectedErrorClasses;
+  final pulumi.Input<List<String>>? expectedErrorClasses;
   /// A list of expected error codes(any status code between 100-900).
-  final List<String>? expectedErrorCodes;
+  final pulumi.Input<List<String>>? expectedErrorCodes;
   /// A list of ignored error classes.
-  final List<String>? ignoredErrorClasses;
+  final pulumi.Input<List<String>>? ignoredErrorClasses;
   /// A list of ignored error codes(any status code between 100-900).
-  final List<String>? ignoredErrorCodes;
+  final pulumi.Input<List<String>>? ignoredErrorCodes;
 
   /// Creates a new [ApplicationSettingsErrorCollector].
   /// [expectedErrorClasses] A list of expected error classes.
@@ -34,10 +35,10 @@ class ApplicationSettingsErrorCollector {
 
   factory ApplicationSettingsErrorCollector.fromMap(Map<String, dynamic> map) {
     return ApplicationSettingsErrorCollector(
-      expectedErrorClasses: map['expectedErrorClasses'] == null ? null : (map['expectedErrorClasses'] as List).cast<String>(),
-      expectedErrorCodes: map['expectedErrorCodes'] == null ? null : (map['expectedErrorCodes'] as List).cast<String>(),
-      ignoredErrorClasses: map['ignoredErrorClasses'] == null ? null : (map['ignoredErrorClasses'] as List).cast<String>(),
-      ignoredErrorCodes: map['ignoredErrorCodes'] == null ? null : (map['ignoredErrorCodes'] as List).cast<String>(),
+      expectedErrorClasses: map['expectedErrorClasses'] == null ? null : ((map['expectedErrorClasses'] as List).cast<String>()).input(),
+      expectedErrorCodes: map['expectedErrorCodes'] == null ? null : ((map['expectedErrorCodes'] as List).cast<String>()).input(),
+      ignoredErrorClasses: map['ignoredErrorClasses'] == null ? null : ((map['ignoredErrorClasses'] as List).cast<String>()).input(),
+      ignoredErrorCodes: map['ignoredErrorCodes'] == null ? null : ((map['ignoredErrorCodes'] as List).cast<String>()).input(),
     );
   }
 }

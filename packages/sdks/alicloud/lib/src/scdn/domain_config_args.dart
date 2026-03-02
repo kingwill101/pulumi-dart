@@ -20,13 +20,10 @@ class DomainConfigArgs {
   /// [functionArgs] The args of the domain config.
   /// [functionName] The name of the domain config.
   DomainConfigArgs({
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<List<DomainConfigFunctionArg>> functionArgs,
-    required pulumi.Output<String> functionName,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      functionArgs = pulumi.Input.asInput<List<DomainConfigFunctionArg>>(functionArgs),
-      functionName = pulumi.Input.asInput<String>(functionName);
+    required this.domainName,
+    required this.functionArgs,
+    required this.functionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class DomainConfigArgs {
 
   factory DomainConfigArgs.fromMap(Map<String, dynamic> map) {
     return DomainConfigArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      functionArgs: pulumi.Output.create<List<DomainConfigFunctionArg>>(pulumi.Input.decodeList<DomainConfigFunctionArg>(map['functionArgs'], (value) => DomainConfigFunctionArg.fromMap((value as Map).cast<String, dynamic>()))),
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
+      domainName: (map['domainName'] as String).input(),
+      functionArgs: (pulumi.Input.decodeList<DomainConfigFunctionArg>(map['functionArgs'], (value) => DomainConfigFunctionArg.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      functionName: (map['functionName'] as String).input(),
     );
   }
 }

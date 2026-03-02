@@ -33,19 +33,13 @@ class V2FolderMuteConfigArgs {
   /// [muteConfigId] Unique identifier provided by the client within the parent scope.
   /// [type] The type of the mute config.
   V2FolderMuteConfigArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> filter,
-    required pulumi.Output<String> folder,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> muteConfigId,
-    required pulumi.Output<String> type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filter = pulumi.Input.asInput<String>(filter),
-      folder = pulumi.Input.asInput<String>(folder),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      muteConfigId = pulumi.Input.asInput<String>(muteConfigId),
-      type = pulumi.Input.asInput<String>(type);
+    this.description,
+    required this.filter,
+    required this.folder,
+    this.location,
+    required this.muteConfigId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class V2FolderMuteConfigArgs {
 
   factory V2FolderMuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2FolderMuteConfigArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filter: pulumi.Output.create<String>(map['filter'] as String),
-      folder: pulumi.Output.create<String>(map['folder'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      muteConfigId: pulumi.Output.create<String>(map['muteConfigId'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filter: (map['filter'] as String).input(),
+      folder: (map['folder'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      muteConfigId: (map['muteConfigId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

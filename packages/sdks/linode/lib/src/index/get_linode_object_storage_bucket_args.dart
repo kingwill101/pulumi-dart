@@ -19,13 +19,10 @@ class GetLinodeObjectStorageBucketArgs {
   /// [label] The name of this bucket.
   /// [region] The ID of the region this bucket is in. Required if `cluster` is not configured.
   GetLinodeObjectStorageBucketArgs({
-    pulumi.Output<String>? cluster,
-    required pulumi.Output<String> label,
-    pulumi.Output<String>? region,
-  }) :
-      cluster = pulumi.Input.asOptionalInput<String>(cluster),
-      label = pulumi.Input.asInput<String>(label),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.cluster,
+    required this.label,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLinodeObjectStorageBucketArgs {
 
   factory GetLinodeObjectStorageBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetLinodeObjectStorageBucketArgs(
-      cluster: map['cluster'] == null ? null : pulumi.Output.create<String>(map['cluster'] as String),
-      label: pulumi.Output.create<String>(map['label'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
+      label: (map['label'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

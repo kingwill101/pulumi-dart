@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'waf_rule_rate_limit_status.dart';
 
 class WafRuleRateLimit {
   /// Statistical duration, 5-1800.
-  final int? interval;
+  final pulumi.Input<int>? interval;
   /// Response code statistics. See `status` below.
-  final WafRuleRateLimitStatus? status;
+  final pulumi.Input<WafRuleRateLimitStatus>? status;
   /// The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
-  final String? subKey;
+  final pulumi.Input<String>? subKey;
   /// The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
-  final String? target;
+  final pulumi.Input<String>? target;
   /// The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
-  final int? threshold;
+  final pulumi.Input<int>? threshold;
   /// The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
-  final int? ttl;
+  final pulumi.Input<int>? ttl;
 
   /// Creates a new [WafRuleRateLimit].
   /// [interval] Statistical duration, 5-1800.
@@ -35,7 +36,7 @@ class WafRuleRateLimit {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'interval': ?interval,
-      'status': ?status == null ? null : status!.toMap(),
+      'status': ?pulumi.Input.mapOptionalInputValue<WafRuleRateLimitStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
       'subKey': ?subKey,
       'target': ?target,
       'threshold': ?threshold,
@@ -45,12 +46,12 @@ class WafRuleRateLimit {
 
   factory WafRuleRateLimit.fromMap(Map<String, dynamic> map) {
     return WafRuleRateLimit(
-      interval: map['interval'] == null ? null : map['interval'] as int,
-      status: map['status'] == null ? null : WafRuleRateLimitStatus.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      subKey: map['subKey'] == null ? null : map['subKey'] as String,
-      target: map['target'] == null ? null : map['target'] as String,
-      threshold: map['threshold'] == null ? null : map['threshold'] as int,
-      ttl: map['ttl'] == null ? null : map['ttl'] as int,
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      status: map['status'] == null ? null : (WafRuleRateLimitStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      subKey: map['subKey'] == null ? null : (map['subKey'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold'] as int).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
     );
   }
 }

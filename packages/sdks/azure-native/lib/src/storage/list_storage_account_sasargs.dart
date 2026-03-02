@@ -41,27 +41,17 @@ class ListStorageAccountSASArgs {
   /// [sharedAccessExpiryTime] The time at which the shared access signature becomes invalid.
   /// [sharedAccessStartTime] The time at which the SAS becomes valid.
   ListStorageAccountSASArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? iPAddressOrRange,
-    pulumi.Output<String>? keyToSign,
-    required pulumi.Output<String> permissions,
-    pulumi.Output<HttpProtocol>? protocols,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceTypes,
-    required pulumi.Output<String> services,
-    required pulumi.Output<String> sharedAccessExpiryTime,
-    pulumi.Output<String>? sharedAccessStartTime,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      iPAddressOrRange = pulumi.Input.asOptionalInput<String>(iPAddressOrRange),
-      keyToSign = pulumi.Input.asOptionalInput<String>(keyToSign),
-      permissions = pulumi.Input.asInput<String>(permissions),
-      protocols = pulumi.Input.asOptionalInput<HttpProtocol>(protocols),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceTypes = pulumi.Input.asInput<String>(resourceTypes),
-      services = pulumi.Input.asInput<String>(services),
-      sharedAccessExpiryTime = pulumi.Input.asInput<String>(sharedAccessExpiryTime),
-      sharedAccessStartTime = pulumi.Input.asOptionalInput<String>(sharedAccessStartTime);
+    required this.accountName,
+    this.iPAddressOrRange,
+    this.keyToSign,
+    required this.permissions,
+    this.protocols,
+    required this.resourceGroupName,
+    required this.resourceTypes,
+    required this.services,
+    required this.sharedAccessExpiryTime,
+    this.sharedAccessStartTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class ListStorageAccountSASArgs {
 
   factory ListStorageAccountSASArgs.fromMap(Map<String, dynamic> map) {
     return ListStorageAccountSASArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      iPAddressOrRange: map['iPAddressOrRange'] == null ? null : pulumi.Output.create<String>(map['iPAddressOrRange'] as String),
-      keyToSign: map['keyToSign'] == null ? null : pulumi.Output.create<String>(map['keyToSign'] as String),
-      permissions: pulumi.Output.create<String>(map['permissions'] as String),
-      protocols: map['protocols'] == null ? null : pulumi.Output.create<HttpProtocol>(HttpProtocol.fromValue(map['protocols'] as String)),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceTypes: pulumi.Output.create<String>(map['resourceTypes'] as String),
-      services: pulumi.Output.create<String>(map['services'] as String),
-      sharedAccessExpiryTime: pulumi.Output.create<String>(map['sharedAccessExpiryTime'] as String),
-      sharedAccessStartTime: map['sharedAccessStartTime'] == null ? null : pulumi.Output.create<String>(map['sharedAccessStartTime'] as String),
+      accountName: (map['accountName'] as String).input(),
+      iPAddressOrRange: map['iPAddressOrRange'] == null ? null : (map['iPAddressOrRange'] as String).input(),
+      keyToSign: map['keyToSign'] == null ? null : (map['keyToSign'] as String).input(),
+      permissions: (map['permissions'] as String).input(),
+      protocols: map['protocols'] == null ? null : (HttpProtocol.fromValue(map['protocols'] as String)).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceTypes: (map['resourceTypes'] as String).input(),
+      services: (map['services'] as String).input(),
+      sharedAccessExpiryTime: (map['sharedAccessExpiryTime'] as String).input(),
+      sharedAccessStartTime: map['sharedAccessStartTime'] == null ? null : (map['sharedAccessStartTime'] as String).input(),
     );
   }
 }

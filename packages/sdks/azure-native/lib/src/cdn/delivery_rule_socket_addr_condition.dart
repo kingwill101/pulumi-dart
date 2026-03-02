@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'socket_addr_match_condition_parameters.dart';
 
 /// Defines the SocketAddress condition for the delivery rule.
 class DeliveryRuleSocketAddrCondition {
   /// Request variable to compare with.
   /// Expected value is 'SocketAddr'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the condition.
-  final SocketAddrMatchConditionParameters parameters;
+  final pulumi.Input<SocketAddrMatchConditionParameters> parameters;
 
   /// Creates a new [DeliveryRuleSocketAddrCondition].
   /// [name] Request variable to compare with.
@@ -21,14 +22,14 @@ class DeliveryRuleSocketAddrCondition {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<SocketAddrMatchConditionParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleSocketAddrCondition.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleSocketAddrCondition(
-      name: map['name'] as String,
-      parameters: SocketAddrMatchConditionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (SocketAddrMatchConditionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

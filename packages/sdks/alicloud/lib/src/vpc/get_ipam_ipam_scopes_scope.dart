@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIpamIpamScopesScope {
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the resource supplied above.
-  final String id;
+  final pulumi.Input<String> id;
   /// The id of the Ipam instance.
-  final String ipamId;
+  final pulumi.Input<String> ipamId;
   /// The description of the IPAM's scope of action.It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
-  final String ipamScopeDescription;
+  final pulumi.Input<String> ipamScopeDescription;
   /// The first ID of the resource.
-  final String ipamScopeId;
+  final pulumi.Input<String> ipamScopeId;
   /// The name of the resource.
-  final String ipamScopeName;
+  final pulumi.Input<String> ipamScopeName;
   /// IPAM scope of action type:**private**.> Currently, only the role scope of the private network is supported.
-  final String ipamScopeType;
+  final pulumi.Input<String> ipamScopeType;
   /// The region ID of the resource.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// The tag of the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetIpamIpamScopesScope].
   /// [createTime] The creation time of the resource.
@@ -69,17 +70,17 @@ class GetIpamIpamScopesScope {
 
   factory GetIpamIpamScopesScope.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamScopesScope(
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      ipamId: map['ipamId'] as String,
-      ipamScopeDescription: map['ipamScopeDescription'] as String,
-      ipamScopeId: map['ipamScopeId'] as String,
-      ipamScopeName: map['ipamScopeName'] as String,
-      ipamScopeType: map['ipamScopeType'] as String,
-      regionId: map['regionId'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipamId: (map['ipamId'] as String).input(),
+      ipamScopeDescription: (map['ipamScopeDescription'] as String).input(),
+      ipamScopeId: (map['ipamScopeId'] as String).input(),
+      ipamScopeName: (map['ipamScopeName'] as String).input(),
+      ipamScopeType: (map['ipamScopeType'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -51,35 +51,21 @@ class Smsvoicev2PhoneNumberArgs {
   /// [twoWayChannelEnabled] By default this is set to `false`. When set to `true` you can receive incoming text messages from your end recipients.
   /// [twoWayChannelRole] IAM Role ARN for a service to assume, to be able to post inbound SMS messages.
   Smsvoicev2PhoneNumberArgs({
-    pulumi.Output<bool>? deletionProtectionEnabled,
-    required pulumi.Output<String> isoCountryCode,
-    required pulumi.Output<String> messageType,
-    required pulumi.Output<List<String>> numberCapabilities,
-    required pulumi.Output<String> numberType,
-    pulumi.Output<String>? optOutListName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registrationId,
-    pulumi.Output<bool>? selfManagedOptOutsEnabled,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Smsvoicev2PhoneNumberTimeouts>? timeouts,
-    pulumi.Output<String>? twoWayChannelArn,
-    pulumi.Output<bool>? twoWayChannelEnabled,
-    pulumi.Output<String>? twoWayChannelRole,
-  }) :
-      deletionProtectionEnabled = pulumi.Input.asOptionalInput<bool>(deletionProtectionEnabled),
-      isoCountryCode = pulumi.Input.asInput<String>(isoCountryCode),
-      messageType = pulumi.Input.asInput<String>(messageType),
-      numberCapabilities = pulumi.Input.asInput<List<String>>(numberCapabilities),
-      numberType = pulumi.Input.asInput<String>(numberType),
-      optOutListName = pulumi.Input.asOptionalInput<String>(optOutListName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registrationId = pulumi.Input.asOptionalInput<String>(registrationId),
-      selfManagedOptOutsEnabled = pulumi.Input.asOptionalInput<bool>(selfManagedOptOutsEnabled),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<Smsvoicev2PhoneNumberTimeouts>(timeouts),
-      twoWayChannelArn = pulumi.Input.asOptionalInput<String>(twoWayChannelArn),
-      twoWayChannelEnabled = pulumi.Input.asOptionalInput<bool>(twoWayChannelEnabled),
-      twoWayChannelRole = pulumi.Input.asOptionalInput<String>(twoWayChannelRole);
+    this.deletionProtectionEnabled,
+    required this.isoCountryCode,
+    required this.messageType,
+    required this.numberCapabilities,
+    required this.numberType,
+    this.optOutListName,
+    this.region,
+    this.registrationId,
+    this.selfManagedOptOutsEnabled,
+    this.tags,
+    this.timeouts,
+    this.twoWayChannelArn,
+    this.twoWayChannelEnabled,
+    this.twoWayChannelRole,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class Smsvoicev2PhoneNumberArgs {
 
   factory Smsvoicev2PhoneNumberArgs.fromMap(Map<String, dynamic> map) {
     return Smsvoicev2PhoneNumberArgs(
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : pulumi.Output.create<bool>(map['deletionProtectionEnabled'] as bool),
-      isoCountryCode: pulumi.Output.create<String>(map['isoCountryCode'] as String),
-      messageType: pulumi.Output.create<String>(map['messageType'] as String),
-      numberCapabilities: pulumi.Output.create<List<String>>((map['numberCapabilities'] as List).cast<String>()),
-      numberType: pulumi.Output.create<String>(map['numberType'] as String),
-      optOutListName: map['optOutListName'] == null ? null : pulumi.Output.create<String>(map['optOutListName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registrationId: map['registrationId'] == null ? null : pulumi.Output.create<String>(map['registrationId'] as String),
-      selfManagedOptOutsEnabled: map['selfManagedOptOutsEnabled'] == null ? null : pulumi.Output.create<bool>(map['selfManagedOptOutsEnabled'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<Smsvoicev2PhoneNumberTimeouts>(Smsvoicev2PhoneNumberTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      twoWayChannelArn: map['twoWayChannelArn'] == null ? null : pulumi.Output.create<String>(map['twoWayChannelArn'] as String),
-      twoWayChannelEnabled: map['twoWayChannelEnabled'] == null ? null : pulumi.Output.create<bool>(map['twoWayChannelEnabled'] as bool),
-      twoWayChannelRole: map['twoWayChannelRole'] == null ? null : pulumi.Output.create<String>(map['twoWayChannelRole'] as String),
+      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled'] as bool).input(),
+      isoCountryCode: (map['isoCountryCode'] as String).input(),
+      messageType: (map['messageType'] as String).input(),
+      numberCapabilities: ((map['numberCapabilities'] as List).cast<String>()).input(),
+      numberType: (map['numberType'] as String).input(),
+      optOutListName: map['optOutListName'] == null ? null : (map['optOutListName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registrationId: map['registrationId'] == null ? null : (map['registrationId'] as String).input(),
+      selfManagedOptOutsEnabled: map['selfManagedOptOutsEnabled'] == null ? null : (map['selfManagedOptOutsEnabled'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (Smsvoicev2PhoneNumberTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      twoWayChannelArn: map['twoWayChannelArn'] == null ? null : (map['twoWayChannelArn'] as String).input(),
+      twoWayChannelEnabled: map['twoWayChannelEnabled'] == null ? null : (map['twoWayChannelEnabled'] as bool).input(),
+      twoWayChannelRole: map['twoWayChannelRole'] == null ? null : (map['twoWayChannelRole'] as String).input(),
     );
   }
 }

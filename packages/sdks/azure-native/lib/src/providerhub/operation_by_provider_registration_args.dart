@@ -13,9 +13,8 @@ class OperationByProviderRegistrationArgs {
   /// Creates a new [OperationByProviderRegistrationArgs].
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   OperationByProviderRegistrationArgs({
-    required pulumi.Output<String> providerNamespace,
-  }) :
-      providerNamespace = pulumi.Input.asInput<String>(providerNamespace);
+    required this.providerNamespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class OperationByProviderRegistrationArgs {
 
   factory OperationByProviderRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return OperationByProviderRegistrationArgs(
-      providerNamespace: pulumi.Output.create<String>(map['providerNamespace'] as String),
+      providerNamespace: (map['providerNamespace'] as String).input(),
     );
   }
 }

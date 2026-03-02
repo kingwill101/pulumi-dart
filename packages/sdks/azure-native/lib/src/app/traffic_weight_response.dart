@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Traffic weight assigned to a revision
 class TrafficWeightResponse {
   /// Associates a traffic label with a revision
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Indicates that the traffic weight belongs to a latest stable revision
-  final bool? latestRevision;
+  final pulumi.Input<bool>? latestRevision;
   /// Name of a revision
-  final String? revisionName;
+  final pulumi.Input<String>? revisionName;
   /// Traffic weight assigned to a revision
-  final int? weight;
+  final pulumi.Input<int>? weight;
 
   /// Creates a new [TrafficWeightResponse].
   /// [label] Associates a traffic label with a revision
@@ -35,10 +36,10 @@ class TrafficWeightResponse {
 
   factory TrafficWeightResponse.fromMap(Map<String, dynamic> map) {
     return TrafficWeightResponse(
-      label: map['label'] == null ? null : map['label'] as String,
-      latestRevision: map['latestRevision'] == null ? null : map['latestRevision'] as bool,
-      revisionName: map['revisionName'] == null ? null : map['revisionName'] as String,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      latestRevision: map['latestRevision'] == null ? null : (map['latestRevision'] as bool).input(),
+      revisionName: map['revisionName'] == null ? null : (map['revisionName'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

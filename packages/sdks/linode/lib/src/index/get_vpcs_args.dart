@@ -13,9 +13,8 @@ class GetVpcsArgs {
   /// Creates a new [GetVpcsArgs].
   /// [filters] Optional.
   GetVpcsArgs({
-    pulumi.Output<List<GetVpcsFilter>>? filters,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetVpcsFilter>>(filters);
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetVpcsArgs {
 
   factory GetVpcsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpcsFilter>>(pulumi.Input.decodeList<GetVpcsFilter>(map['filters'], (value) => GetVpcsFilter.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcsFilter>(map['filters'], (value) => GetVpcsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

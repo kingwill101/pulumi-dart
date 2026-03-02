@@ -16,11 +16,9 @@ class GetElasticSanArgs {
   /// [elasticSanName] The name of the ElasticSan.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetElasticSanArgs({
-    required pulumi.Output<String> elasticSanName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      elasticSanName = pulumi.Input.asInput<String>(elasticSanName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.elasticSanName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetElasticSanArgs {
 
   factory GetElasticSanArgs.fromMap(Map<String, dynamic> map) {
     return GetElasticSanArgs(
-      elasticSanName: pulumi.Output.create<String>(map['elasticSanName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      elasticSanName: (map['elasticSanName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

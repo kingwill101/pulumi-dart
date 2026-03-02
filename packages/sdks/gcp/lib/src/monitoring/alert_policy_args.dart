@@ -72,27 +72,17 @@ class AlertPolicyArgs {
   /// [severity] The severity of an alert policy indicates how important incidents generated
   /// [userLabels] This field is intended to be used for organizing and identifying the AlertPolicy
   AlertPolicyArgs({
-    pulumi.Output<AlertPolicyAlertStrategy>? alertStrategy,
-    required pulumi.Output<String> combiner,
-    required pulumi.Output<List<AlertPolicyCondition>> conditions,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<AlertPolicyDocumentation>? documentation,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<String>>? notificationChannels,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? severity,
-    pulumi.Output<Map<String, String>>? userLabels,
-  }) :
-      alertStrategy = pulumi.Input.asOptionalInput<AlertPolicyAlertStrategy>(alertStrategy),
-      combiner = pulumi.Input.asInput<String>(combiner),
-      conditions = pulumi.Input.asInput<List<AlertPolicyCondition>>(conditions),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      documentation = pulumi.Input.asOptionalInput<AlertPolicyDocumentation>(documentation),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      notificationChannels = pulumi.Input.asOptionalInput<List<String>>(notificationChannels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      severity = pulumi.Input.asOptionalInput<String>(severity),
-      userLabels = pulumi.Input.asOptionalInput<Map<String, String>>(userLabels);
+    this.alertStrategy,
+    required this.combiner,
+    required this.conditions,
+    required this.displayName,
+    this.documentation,
+    this.enabled,
+    this.notificationChannels,
+    this.project,
+    this.severity,
+    this.userLabels,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -111,16 +101,16 @@ class AlertPolicyArgs {
 
   factory AlertPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AlertPolicyArgs(
-      alertStrategy: map['alertStrategy'] == null ? null : pulumi.Output.create<AlertPolicyAlertStrategy>(AlertPolicyAlertStrategy.fromMap((map['alertStrategy'] as Map).cast<String, dynamic>())),
-      combiner: pulumi.Output.create<String>(map['combiner'] as String),
-      conditions: pulumi.Output.create<List<AlertPolicyCondition>>(pulumi.Input.decodeList<AlertPolicyCondition>(map['conditions'], (value) => AlertPolicyCondition.fromMap((value as Map).cast<String, dynamic>()))),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      documentation: map['documentation'] == null ? null : pulumi.Output.create<AlertPolicyDocumentation>(AlertPolicyDocumentation.fromMap((map['documentation'] as Map).cast<String, dynamic>())),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      notificationChannels: map['notificationChannels'] == null ? null : pulumi.Output.create<List<String>>((map['notificationChannels'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      severity: map['severity'] == null ? null : pulumi.Output.create<String>(map['severity'] as String),
-      userLabels: map['userLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['userLabels'] as Map).cast<String, String>()),
+      alertStrategy: map['alertStrategy'] == null ? null : (AlertPolicyAlertStrategy.fromMap((map['alertStrategy'] as Map).cast<String, dynamic>())).input(),
+      combiner: (map['combiner'] as String).input(),
+      conditions: (pulumi.Input.decodeList<AlertPolicyCondition>(map['conditions'], (value) => AlertPolicyCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: (map['displayName'] as String).input(),
+      documentation: map['documentation'] == null ? null : (AlertPolicyDocumentation.fromMap((map['documentation'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      notificationChannels: map['notificationChannels'] == null ? null : ((map['notificationChannels'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
     );
   }
 }

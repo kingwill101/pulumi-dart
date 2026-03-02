@@ -20,13 +20,10 @@ class ScalingGroupVServerGroupsArgs {
   /// [scalingGroupId] ID of the scaling group.
   /// [vserverGroups] A list of vserver groups attached on scaling group. See `vserver_groups` below.
   ScalingGroupVServerGroupsArgs({
-    pulumi.Output<bool>? force,
-    required pulumi.Output<String> scalingGroupId,
-    required pulumi.Output<List<ScalingGroupVServerGroupsVserverGroup>> vserverGroups,
-  }) :
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      scalingGroupId = pulumi.Input.asInput<String>(scalingGroupId),
-      vserverGroups = pulumi.Input.asInput<List<ScalingGroupVServerGroupsVserverGroup>>(vserverGroups);
+    this.force,
+    required this.scalingGroupId,
+    required this.vserverGroups,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class ScalingGroupVServerGroupsArgs {
 
   factory ScalingGroupVServerGroupsArgs.fromMap(Map<String, dynamic> map) {
     return ScalingGroupVServerGroupsArgs(
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      scalingGroupId: pulumi.Output.create<String>(map['scalingGroupId'] as String),
-      vserverGroups: pulumi.Output.create<List<ScalingGroupVServerGroupsVserverGroup>>(pulumi.Input.decodeList<ScalingGroupVServerGroupsVserverGroup>(map['vserverGroups'], (value) => ScalingGroupVServerGroupsVserverGroup.fromMap((value as Map).cast<String, dynamic>()))),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      scalingGroupId: (map['scalingGroupId'] as String).input(),
+      vserverGroups: (pulumi.Input.decodeList<ScalingGroupVServerGroupsVserverGroup>(map['vserverGroups'], (value) => ScalingGroupVServerGroupsVserverGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

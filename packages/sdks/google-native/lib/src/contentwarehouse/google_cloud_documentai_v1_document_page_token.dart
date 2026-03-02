@@ -10,15 +10,15 @@ import 'google_cloud_documentai_v1_document_provenance.dart';
 /// A detected token.
 class GoogleCloudDocumentaiV1DocumentPageToken {
   /// Detected break at the end of a Token.
-  final GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak? detectedBreak;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak>? detectedBreak;
   /// A list of detected languages together with confidence.
-  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>? detectedLanguages;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>? detectedLanguages;
   /// Layout for Token.
-  final GoogleCloudDocumentaiV1DocumentPageLayout? layout;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout>? layout;
   /// The history of this annotation.
-  final GoogleCloudDocumentaiV1DocumentProvenance? provenance;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance>? provenance;
   /// Text style attributes.
-  final GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo? styleInfo;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo>? styleInfo;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageToken].
   /// [detectedBreak] Detected break at the end of a Token.
@@ -36,21 +36,21 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'detectedBreak': ?detectedBreak == null ? null : detectedBreak!.toMap(),
-      'detectedLanguages': ?detectedLanguages == null ? null : pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage, Map<String, dynamic>>(detectedLanguages!, (value) => value.toMap()),
-      'layout': ?layout == null ? null : layout!.toMap(),
-      'provenance': ?provenance == null ? null : provenance!.toMap(),
-      'styleInfo': ?styleInfo == null ? null : styleInfo!.toMap(),
+      'detectedBreak': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak, Map<String, dynamic>>(detectedBreak, (value) => value.toMap()),
+      'detectedLanguages': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>, List<Map<String, dynamic>>>(detectedLanguages, (value) => pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'layout': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDocumentaiV1DocumentPageLayout, Map<String, dynamic>>(layout, (value) => value.toMap()),
+      'provenance': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDocumentaiV1DocumentProvenance, Map<String, dynamic>>(provenance, (value) => value.toMap()),
+      'styleInfo': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo, Map<String, dynamic>>(styleInfo, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDocumentaiV1DocumentPageToken.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageToken(
-      detectedBreak: map['detectedBreak'] == null ? null : GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromMap((map['detectedBreak'] as Map).cast<String, dynamic>()),
-      detectedLanguages: map['detectedLanguages'] == null ? null : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(map['detectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>())),
-      layout: map['layout'] == null ? null : GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['layout'] as Map).cast<String, dynamic>()),
-      provenance: map['provenance'] == null ? null : GoogleCloudDocumentaiV1DocumentProvenance.fromMap((map['provenance'] as Map).cast<String, dynamic>()),
-      styleInfo: map['styleInfo'] == null ? null : GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromMap((map['styleInfo'] as Map).cast<String, dynamic>()),
+      detectedBreak: map['detectedBreak'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromMap((map['detectedBreak'] as Map).cast<String, dynamic>())).input(),
+      detectedLanguages: map['detectedLanguages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(map['detectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      layout: map['layout'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['layout'] as Map).cast<String, dynamic>())).input(),
+      provenance: map['provenance'] == null ? null : (GoogleCloudDocumentaiV1DocumentProvenance.fromMap((map['provenance'] as Map).cast<String, dynamic>())).input(),
+      styleInfo: map['styleInfo'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromMap((map['styleInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

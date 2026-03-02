@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertContactsContact {
   /// Contact ID.
-  final String alertContactId;
+  final pulumi.Input<String> alertContactId;
   /// The name of the alert contact.
-  final String alertContactName;
+  final pulumi.Input<String> alertContactName;
   /// The Creation Time Timestamp.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The webhook URL of the DingTalk chatbot.
-  final String dingRobotWebhookUrl;
+  final pulumi.Input<String> dingRobotWebhookUrl;
   /// The email address of the alert contact.
-  final String email;
+  final pulumi.Input<String> email;
   /// The ID of the Alert Contact.
-  final String id;
+  final pulumi.Input<String> id;
   /// The mobile number of the alert contact.
-  final String phoneNum;
+  final pulumi.Input<String> phoneNum;
   /// Specifies whether the alert contact receives system notifications.
-  final bool systemNoc;
+  final pulumi.Input<bool> systemNoc;
   /// Webhook Information.
-  final String webhook;
+  final pulumi.Input<String> webhook;
 
   /// Creates a new [GetAlertContactsContact].
   /// [alertContactId] Contact ID.
@@ -59,15 +60,15 @@ class GetAlertContactsContact {
 
   factory GetAlertContactsContact.fromMap(Map<String, dynamic> map) {
     return GetAlertContactsContact(
-      alertContactId: map['alertContactId'] as String,
-      alertContactName: map['alertContactName'] as String,
-      createTime: map['createTime'] as String,
-      dingRobotWebhookUrl: map['dingRobotWebhookUrl'] as String,
-      email: map['email'] as String,
-      id: map['id'] as String,
-      phoneNum: map['phoneNum'] as String,
-      systemNoc: map['systemNoc'] as bool,
-      webhook: map['webhook'] as String,
+      alertContactId: (map['alertContactId'] as String).input(),
+      alertContactName: (map['alertContactName'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      dingRobotWebhookUrl: (map['dingRobotWebhookUrl'] as String).input(),
+      email: (map['email'] as String).input(),
+      id: (map['id'] as String).input(),
+      phoneNum: (map['phoneNum'] as String).input(),
+      systemNoc: (map['systemNoc'] as bool).input(),
+      webhook: (map['webhook'] as String).input(),
     );
   }
 }

@@ -6,13 +6,13 @@ import 'policy_security_service_policy_data_policy_option_network_acl_common_pol
 
 class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet {
   /// The rules that you want to run first in the Firewall Manager managed network ACLs. Firewall manager creates entries with ID value between 1 and 5000. See the `first_entry` block.
-  final List<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry>? firstEntries;
+  final pulumi.Input<List<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry>>? firstEntries;
   /// A boolean value, if true Firewall Manager uses this setting when it finds policy violations that involve conflicts between the custom entries and the policy entries. If false Firewall Manager marks the network ACL as noncompliant and does not try to remediate.
-  final bool forceRemediateForFirstEntries;
+  final pulumi.Input<bool> forceRemediateForFirstEntries;
   /// A boolean value, if true Firewall Manager uses this setting when it finds policy violations that involve conflicts between the custom entries and the policy entries. If false Firewall Manager marks the network ACL as noncompliant and does not try to remediate.
-  final bool forceRemediateForLastEntries;
+  final pulumi.Input<bool> forceRemediateForLastEntries;
   /// The rules that you want to run last in the Firewall Manager managed network ACLs. Firewall manager creates entries with ID value between 32000 and 32766. See the `last_entry` block.
-  final List<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry>? lastEntries;
+  final pulumi.Input<List<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry>>? lastEntries;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet].
   /// [firstEntries] The rules that you want to run first in the Firewall Manager managed network ACLs. Firewall manager creates entries with ID value between 1 and 5000. See the `first_entry` block.
@@ -28,19 +28,19 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'firstEntries': ?firstEntries == null ? null : pulumi.Input.encodeList<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry, Map<String, dynamic>>(firstEntries!, (value) => value.toMap()),
+      'firstEntries': ?pulumi.Input.mapOptionalInputValue<List<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry>, List<Map<String, dynamic>>>(firstEntries, (value) => pulumi.Input.encodeList<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
       'forceRemediateForFirstEntries': forceRemediateForFirstEntries,
       'forceRemediateForLastEntries': forceRemediateForLastEntries,
-      'lastEntries': ?lastEntries == null ? null : pulumi.Input.encodeList<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry, Map<String, dynamic>>(lastEntries!, (value) => value.toMap()),
+      'lastEntries': ?pulumi.Input.mapOptionalInputValue<List<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry>, List<Map<String, dynamic>>>(lastEntries, (value) => pulumi.Input.encodeList<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet.fromMap(Map<String, dynamic> map) {
     return PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet(
-      firstEntries: map['firstEntries'] == null ? null : pulumi.Input.decodeList<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry>(map['firstEntries'], (value) => PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry.fromMap((value as Map).cast<String, dynamic>())),
-      forceRemediateForFirstEntries: map['forceRemediateForFirstEntries'] as bool,
-      forceRemediateForLastEntries: map['forceRemediateForLastEntries'] as bool,
-      lastEntries: map['lastEntries'] == null ? null : pulumi.Input.decodeList<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry>(map['lastEntries'], (value) => PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry.fromMap((value as Map).cast<String, dynamic>())),
+      firstEntries: map['firstEntries'] == null ? null : (pulumi.Input.decodeList<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry>(map['firstEntries'], (value) => PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forceRemediateForFirstEntries: (map['forceRemediateForFirstEntries'] as bool).input(),
+      forceRemediateForLastEntries: (map['forceRemediateForLastEntries'] as bool).input(),
+      lastEntries: map['lastEntries'] == null ? null : (pulumi.Input.decodeList<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry>(map['lastEntries'], (value) => PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

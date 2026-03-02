@@ -28,19 +28,13 @@ class TemplateArgs {
   /// [templateName] The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
   /// [versionName] The name of template version.
   TemplateArgs({
-    pulumi.Output<bool>? autoDeleteExecutions,
-    required pulumi.Output<String> content,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> templateName,
-    pulumi.Output<String>? versionName,
-  }) :
-      autoDeleteExecutions = pulumi.Input.asOptionalInput<bool>(autoDeleteExecutions),
-      content = pulumi.Input.asInput<String>(content),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateName = pulumi.Input.asInput<String>(templateName),
-      versionName = pulumi.Input.asOptionalInput<String>(versionName);
+    this.autoDeleteExecutions,
+    required this.content,
+    this.resourceGroupId,
+    this.tags,
+    required this.templateName,
+    this.versionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      autoDeleteExecutions: map['autoDeleteExecutions'] == null ? null : pulumi.Output.create<bool>(map['autoDeleteExecutions'] as bool),
-      content: pulumi.Output.create<String>(map['content'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateName: pulumi.Output.create<String>(map['templateName'] as String),
-      versionName: map['versionName'] == null ? null : pulumi.Output.create<String>(map['versionName'] as String),
+      autoDeleteExecutions: map['autoDeleteExecutions'] == null ? null : (map['autoDeleteExecutions'] as bool).input(),
+      content: (map['content'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateName: (map['templateName'] as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
     );
   }
 }

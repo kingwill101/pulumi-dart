@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter {
-  final List<String>? exclusionFilters;
-  final List<String>? inclusionFilters;
+  final pulumi.Input<List<String>>? exclusionFilters;
+  final pulumi.Input<List<String>>? inclusionFilters;
   /// The supported object type or content type of the data source.
-  final String objectType;
+  final pulumi.Input<String> objectType;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter].
   /// [exclusionFilters] Optional.
@@ -27,9 +28,9 @@ class AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfig
 
   factory AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter(
-      exclusionFilters: map['exclusionFilters'] == null ? null : (map['exclusionFilters'] as List).cast<String>(),
-      inclusionFilters: map['inclusionFilters'] == null ? null : (map['inclusionFilters'] as List).cast<String>(),
-      objectType: map['objectType'] as String,
+      exclusionFilters: map['exclusionFilters'] == null ? null : ((map['exclusionFilters'] as List).cast<String>()).input(),
+      inclusionFilters: map['inclusionFilters'] == null ? null : ((map['inclusionFilters'] as List).cast<String>()).input(),
+      objectType: (map['objectType'] as String).input(),
     );
   }
 }

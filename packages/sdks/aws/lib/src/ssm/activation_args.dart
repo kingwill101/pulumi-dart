@@ -31,21 +31,14 @@ class ActivationArgs {
   /// [registrationLimit] The maximum number of managed instances you want to register. The default value is 1 instance.
   /// [tags] A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ActivationArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expirationDate,
-    required pulumi.Output<String> iamRole,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? registrationLimit,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      iamRole = pulumi.Input.asInput<String>(iamRole),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registrationLimit = pulumi.Input.asOptionalInput<int>(registrationLimit),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.expirationDate,
+    required this.iamRole,
+    this.name,
+    this.region,
+    this.registrationLimit,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ActivationArgs {
 
   factory ActivationArgs.fromMap(Map<String, dynamic> map) {
     return ActivationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      iamRole: pulumi.Output.create<String>(map['iamRole'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registrationLimit: map['registrationLimit'] == null ? null : pulumi.Output.create<int>(map['registrationLimit'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      iamRole: (map['iamRole'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registrationLimit: map['registrationLimit'] == null ? null : (map['registrationLimit'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

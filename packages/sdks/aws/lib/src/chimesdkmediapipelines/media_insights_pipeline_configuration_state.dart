@@ -32,23 +32,15 @@ class MediaInsightsPipelineConfigurationState {
   /// [tags] Key-value map of tags for the resource.
   /// [tagsAll] Optional.
   MediaInsightsPipelineConfigurationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<MediaInsightsPipelineConfigurationElement>>? elements,
-    pulumi.Output<String>? name,
-    pulumi.Output<MediaInsightsPipelineConfigurationRealTimeAlertConfiguration>? realTimeAlertConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceAccessRoleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      elements = pulumi.Input.asOptionalInput<List<MediaInsightsPipelineConfigurationElement>>(elements),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      realTimeAlertConfiguration = pulumi.Input.asOptionalInput<MediaInsightsPipelineConfigurationRealTimeAlertConfiguration>(realTimeAlertConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceAccessRoleArn = pulumi.Input.asOptionalInput<String>(resourceAccessRoleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.elements,
+    this.name,
+    this.realTimeAlertConfiguration,
+    this.region,
+    this.resourceAccessRoleArn,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class MediaInsightsPipelineConfigurationState {
 
   factory MediaInsightsPipelineConfigurationState.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      elements: map['elements'] == null ? null : pulumi.Output.create<List<MediaInsightsPipelineConfigurationElement>>(pulumi.Input.decodeList<MediaInsightsPipelineConfigurationElement>(map['elements'], (value) => MediaInsightsPipelineConfigurationElement.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      realTimeAlertConfiguration: map['realTimeAlertConfiguration'] == null ? null : pulumi.Output.create<MediaInsightsPipelineConfigurationRealTimeAlertConfiguration>(MediaInsightsPipelineConfigurationRealTimeAlertConfiguration.fromMap((map['realTimeAlertConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceAccessRoleArn: map['resourceAccessRoleArn'] == null ? null : pulumi.Output.create<String>(map['resourceAccessRoleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      elements: map['elements'] == null ? null : (pulumi.Input.decodeList<MediaInsightsPipelineConfigurationElement>(map['elements'], (value) => MediaInsightsPipelineConfigurationElement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      realTimeAlertConfiguration: map['realTimeAlertConfiguration'] == null ? null : (MediaInsightsPipelineConfigurationRealTimeAlertConfiguration.fromMap((map['realTimeAlertConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceAccessRoleArn: map['resourceAccessRoleArn'] == null ? null : (map['resourceAccessRoleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

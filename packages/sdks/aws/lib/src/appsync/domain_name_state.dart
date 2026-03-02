@@ -25,19 +25,13 @@ class DomainNameState {
   /// [hostedZoneId] ID of your Amazon Route 53 hosted zone.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DomainNameState({
-    pulumi.Output<String>? appsyncDomainName,
-    pulumi.Output<String>? certificateArn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? hostedZoneId,
-    pulumi.Output<String>? region,
-  }) :
-      appsyncDomainName = pulumi.Input.asOptionalInput<String>(appsyncDomainName),
-      certificateArn = pulumi.Input.asOptionalInput<String>(certificateArn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      hostedZoneId = pulumi.Input.asOptionalInput<String>(hostedZoneId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.appsyncDomainName,
+    this.certificateArn,
+    this.description,
+    this.domainName,
+    this.hostedZoneId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class DomainNameState {
 
   factory DomainNameState.fromMap(Map<String, dynamic> map) {
     return DomainNameState(
-      appsyncDomainName: map['appsyncDomainName'] == null ? null : pulumi.Output.create<String>(map['appsyncDomainName'] as String),
-      certificateArn: map['certificateArn'] == null ? null : pulumi.Output.create<String>(map['certificateArn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      hostedZoneId: map['hostedZoneId'] == null ? null : pulumi.Output.create<String>(map['hostedZoneId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      appsyncDomainName: map['appsyncDomainName'] == null ? null : (map['appsyncDomainName'] as String).input(),
+      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

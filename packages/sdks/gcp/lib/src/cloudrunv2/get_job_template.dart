@@ -10,20 +10,20 @@ class GetJobTemplate {
   /// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
   ///
   /// This field follows Kubernetes annotations' namespacing, limits, and rules.
-  final Map<String, String> annotations;
+  final pulumi.Input<Map<String, String>> annotations;
   /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
   /// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
   /// https://cloud.google.com/run/docs/configuring/labels.
   ///
   /// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
   /// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
-  final int parallelism;
+  final pulumi.Input<int> parallelism;
   /// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
-  final int taskCount;
+  final pulumi.Input<int> taskCount;
   /// Describes the task(s) that will be created when executing an execution
-  final List<GetJobTemplateTemplate> templates;
+  final pulumi.Input<List<GetJobTemplateTemplate>> templates;
 
   /// Creates a new [GetJobTemplate].
   /// [annotations] Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -45,17 +45,17 @@ class GetJobTemplate {
       'labels': labels,
       'parallelism': parallelism,
       'taskCount': taskCount,
-      'templates': pulumi.Input.encodeList<GetJobTemplateTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
+      'templates': pulumi.Input.mapInputValue<List<GetJobTemplateTemplate>, List<Map<String, dynamic>>>(templates, (value) => pulumi.Input.encodeList<GetJobTemplateTemplate, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetJobTemplate.fromMap(Map<String, dynamic> map) {
     return GetJobTemplate(
-      annotations: (map['annotations'] as Map).cast<String, String>(),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      parallelism: map['parallelism'] as int,
-      taskCount: map['taskCount'] as int,
-      templates: pulumi.Input.decodeList<GetJobTemplateTemplate>(map['templates'], (value) => GetJobTemplateTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      annotations: ((map['annotations'] as Map).cast<String, String>()).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      parallelism: (map['parallelism'] as int).input(),
+      taskCount: (map['taskCount'] as int).input(),
+      templates: (pulumi.Input.decodeList<GetJobTemplateTemplate>(map['templates'], (value) => GetJobTemplateTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

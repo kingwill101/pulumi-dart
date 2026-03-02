@@ -7,14 +7,14 @@ import 'generator_summarization_context_summarization_section.dart';
 class GeneratorSummarizationContext {
   /// Optional. List of few shot examples.
   /// Structure is documented below.
-  final List<GeneratorSummarizationContextFewShotExample>? fewShotExamples;
+  final pulumi.Input<List<GeneratorSummarizationContextFewShotExample>>? fewShotExamples;
   /// Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
-  final String? outputLanguageCode;
+  final pulumi.Input<String>? outputLanguageCode;
   /// Optional. List of sections. Note it contains both predefined section sand customer defined sections.
   /// Structure is documented below.
-  final List<GeneratorSummarizationContextSummarizationSection>? summarizationSections;
+  final pulumi.Input<List<GeneratorSummarizationContextSummarizationSection>>? summarizationSections;
   /// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [GeneratorSummarizationContext].
   /// [fewShotExamples] Optional. List of few shot examples.
@@ -30,19 +30,19 @@ class GeneratorSummarizationContext {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fewShotExamples': ?fewShotExamples == null ? null : pulumi.Input.encodeList<GeneratorSummarizationContextFewShotExample, Map<String, dynamic>>(fewShotExamples!, (value) => value.toMap()),
+      'fewShotExamples': ?pulumi.Input.mapOptionalInputValue<List<GeneratorSummarizationContextFewShotExample>, List<Map<String, dynamic>>>(fewShotExamples, (value) => pulumi.Input.encodeList<GeneratorSummarizationContextFewShotExample, Map<String, dynamic>>(value, (value) => value.toMap())),
       'outputLanguageCode': ?outputLanguageCode,
-      'summarizationSections': ?summarizationSections == null ? null : pulumi.Input.encodeList<GeneratorSummarizationContextSummarizationSection, Map<String, dynamic>>(summarizationSections!, (value) => value.toMap()),
+      'summarizationSections': ?pulumi.Input.mapOptionalInputValue<List<GeneratorSummarizationContextSummarizationSection>, List<Map<String, dynamic>>>(summarizationSections, (value) => pulumi.Input.encodeList<GeneratorSummarizationContextSummarizationSection, Map<String, dynamic>>(value, (value) => value.toMap())),
       'version': ?version,
     };
   }
 
   factory GeneratorSummarizationContext.fromMap(Map<String, dynamic> map) {
     return GeneratorSummarizationContext(
-      fewShotExamples: map['fewShotExamples'] == null ? null : pulumi.Input.decodeList<GeneratorSummarizationContextFewShotExample>(map['fewShotExamples'], (value) => GeneratorSummarizationContextFewShotExample.fromMap((value as Map).cast<String, dynamic>())),
-      outputLanguageCode: map['outputLanguageCode'] == null ? null : map['outputLanguageCode'] as String,
-      summarizationSections: map['summarizationSections'] == null ? null : pulumi.Input.decodeList<GeneratorSummarizationContextSummarizationSection>(map['summarizationSections'], (value) => GeneratorSummarizationContextSummarizationSection.fromMap((value as Map).cast<String, dynamic>())),
-      version: map['version'] == null ? null : map['version'] as String,
+      fewShotExamples: map['fewShotExamples'] == null ? null : (pulumi.Input.decodeList<GeneratorSummarizationContextFewShotExample>(map['fewShotExamples'], (value) => GeneratorSummarizationContextFewShotExample.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outputLanguageCode: map['outputLanguageCode'] == null ? null : (map['outputLanguageCode'] as String).input(),
+      summarizationSections: map['summarizationSections'] == null ? null : (pulumi.Input.decodeList<GeneratorSummarizationContextSummarizationSection>(map['summarizationSections'], (value) => GeneratorSummarizationContextSummarizationSection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

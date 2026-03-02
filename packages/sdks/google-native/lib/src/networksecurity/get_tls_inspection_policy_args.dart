@@ -16,13 +16,10 @@ class GetTlsInspectionPolicyArgs {
   /// [project] Optional.
   /// [tlsInspectionPolicyId] Required.
   GetTlsInspectionPolicyArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tlsInspectionPolicyId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tlsInspectionPolicyId = pulumi.Input.asInput<String>(tlsInspectionPolicyId);
+    required this.location,
+    this.project,
+    required this.tlsInspectionPolicyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetTlsInspectionPolicyArgs {
 
   factory GetTlsInspectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTlsInspectionPolicyArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tlsInspectionPolicyId: pulumi.Output.create<String>(map['tlsInspectionPolicyId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tlsInspectionPolicyId: (map['tlsInspectionPolicyId'] as String).input(),
     );
   }
 }

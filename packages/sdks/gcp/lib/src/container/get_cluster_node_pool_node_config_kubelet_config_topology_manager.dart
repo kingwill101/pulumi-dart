@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolNodeConfigKubeletConfigTopologyManager {
   /// The Topology Manager policy to use. This policy dictates how resource alignment is handled on the node.
-  final String policy;
+  final pulumi.Input<String> policy;
   /// The Topology Manager scope, defining the granularity at which policy decisions are applied. Valid values are "container" (resources are aligned per container within a pod) or "pod" (resources are aligned for the entire pod).
-  final String scope;
+  final pulumi.Input<String> scope;
 
   /// Creates a new [GetClusterNodePoolNodeConfigKubeletConfigTopologyManager].
   /// [policy] The Topology Manager policy to use. This policy dictates how resource alignment is handled on the node.
@@ -24,8 +25,8 @@ class GetClusterNodePoolNodeConfigKubeletConfigTopologyManager {
 
   factory GetClusterNodePoolNodeConfigKubeletConfigTopologyManager.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigKubeletConfigTopologyManager(
-      policy: map['policy'] as String,
-      scope: map['scope'] as String,
+      policy: (map['policy'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

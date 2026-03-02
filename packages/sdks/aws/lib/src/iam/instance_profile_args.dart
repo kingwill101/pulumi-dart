@@ -25,17 +25,12 @@ class InstanceProfileArgs {
   /// [role] Name of the role to add to the profile.
   /// [tags] Map of resource tags for the IAM Instance Profile. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   InstanceProfileArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? role,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.name,
+    this.namePrefix,
+    this.path,
+    this.role,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class InstanceProfileArgs {
 
   factory InstanceProfileArgs.fromMap(Map<String, dynamic> map) {
     return InstanceProfileArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

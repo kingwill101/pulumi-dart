@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndSimpleCriterion {
   /// The operator to use in a condition. Valid combination of values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator)
-  final String? comparator;
+  final pulumi.Input<String>? comparator;
   /// The object property to use in the condition. Valid combination of values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-simplecriterionkeyforjob)
-  final String? key;
+  final pulumi.Input<String>? key;
   /// An array that lists the values to use in the condition. Valid combination of values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-simplecriterionforjob)
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndSimpleCriterion].
   /// [comparator] The operator to use in a condition. Valid combination of values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator)
@@ -29,9 +30,9 @@ class ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndSimpleCriterion {
 
   factory ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndSimpleCriterion.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndSimpleCriterion(
-      comparator: map['comparator'] == null ? null : map['comparator'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      comparator: map['comparator'] == null ? null : (map['comparator'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

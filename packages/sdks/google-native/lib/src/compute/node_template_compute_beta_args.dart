@@ -47,31 +47,19 @@ class NodeTemplateComputeBetaArgs {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [serverBinding] Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
   NodeTemplateComputeBetaArgs({
-    pulumi.Output<List<AcceleratorConfigComputeBeta>>? accelerators,
-    pulumi.Output<NodeTemplateCpuOvercommitTypeComputeBeta>? cpuOvercommitType,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<LocalDiskComputeBeta>>? disks,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? nodeAffinityLabels,
-    pulumi.Output<String>? nodeType,
-    pulumi.Output<NodeTemplateNodeTypeFlexibilityComputeBeta>? nodeTypeFlexibility,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<ServerBindingComputeBeta>? serverBinding,
-  }) :
-      accelerators = pulumi.Input.asOptionalInput<List<AcceleratorConfigComputeBeta>>(accelerators),
-      cpuOvercommitType = pulumi.Input.asOptionalInput<NodeTemplateCpuOvercommitTypeComputeBeta>(cpuOvercommitType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disks = pulumi.Input.asOptionalInput<List<LocalDiskComputeBeta>>(disks),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeAffinityLabels = pulumi.Input.asOptionalInput<Map<String, String>>(nodeAffinityLabels),
-      nodeType = pulumi.Input.asOptionalInput<String>(nodeType),
-      nodeTypeFlexibility = pulumi.Input.asOptionalInput<NodeTemplateNodeTypeFlexibilityComputeBeta>(nodeTypeFlexibility),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      serverBinding = pulumi.Input.asOptionalInput<ServerBindingComputeBeta>(serverBinding);
+    this.accelerators,
+    this.cpuOvercommitType,
+    this.description,
+    this.disks,
+    this.name,
+    this.nodeAffinityLabels,
+    this.nodeType,
+    this.nodeTypeFlexibility,
+    this.project,
+    required this.region,
+    this.requestId,
+    this.serverBinding,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class NodeTemplateComputeBetaArgs {
 
   factory NodeTemplateComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return NodeTemplateComputeBetaArgs(
-      accelerators: map['accelerators'] == null ? null : pulumi.Output.create<List<AcceleratorConfigComputeBeta>>(pulumi.Input.decodeList<AcceleratorConfigComputeBeta>(map['accelerators'], (value) => AcceleratorConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
-      cpuOvercommitType: map['cpuOvercommitType'] == null ? null : pulumi.Output.create<NodeTemplateCpuOvercommitTypeComputeBeta>(NodeTemplateCpuOvercommitTypeComputeBeta.fromValue(map['cpuOvercommitType'] as String)),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disks: map['disks'] == null ? null : pulumi.Output.create<List<LocalDiskComputeBeta>>(pulumi.Input.decodeList<LocalDiskComputeBeta>(map['disks'], (value) => LocalDiskComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeAffinityLabels: map['nodeAffinityLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['nodeAffinityLabels'] as Map).cast<String, String>()),
-      nodeType: map['nodeType'] == null ? null : pulumi.Output.create<String>(map['nodeType'] as String),
-      nodeTypeFlexibility: map['nodeTypeFlexibility'] == null ? null : pulumi.Output.create<NodeTemplateNodeTypeFlexibilityComputeBeta>(NodeTemplateNodeTypeFlexibilityComputeBeta.fromMap((map['nodeTypeFlexibility'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      serverBinding: map['serverBinding'] == null ? null : pulumi.Output.create<ServerBindingComputeBeta>(ServerBindingComputeBeta.fromMap((map['serverBinding'] as Map).cast<String, dynamic>())),
+      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfigComputeBeta>(map['accelerators'], (value) => AcceleratorConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpuOvercommitType: map['cpuOvercommitType'] == null ? null : (NodeTemplateCpuOvercommitTypeComputeBeta.fromValue(map['cpuOvercommitType'] as String)).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<LocalDiskComputeBeta>(map['disks'], (value) => LocalDiskComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeAffinityLabels: map['nodeAffinityLabels'] == null ? null : ((map['nodeAffinityLabels'] as Map).cast<String, String>()).input(),
+      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
+      nodeTypeFlexibility: map['nodeTypeFlexibility'] == null ? null : (NodeTemplateNodeTypeFlexibilityComputeBeta.fromMap((map['nodeTypeFlexibility'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      serverBinding: map['serverBinding'] == null ? null : (ServerBindingComputeBeta.fromMap((map['serverBinding'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

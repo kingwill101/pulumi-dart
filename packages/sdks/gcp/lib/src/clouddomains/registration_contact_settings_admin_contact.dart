@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'registration_contact_settings_admin_contact_postal_address.dart';
 
 class RegistrationContactSettingsAdminContact {
   /// Required. Email address of the contact.
-  final String email;
+  final pulumi.Input<String> email;
   /// Fax number of the contact in international format. For example, "+1-800-555-0123".
-  final String? faxNumber;
+  final pulumi.Input<String>? faxNumber;
   /// Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
-  final String phoneNumber;
+  final pulumi.Input<String> phoneNumber;
   /// Required. Postal address of the contact.
   /// Structure is documented below.
-  final RegistrationContactSettingsAdminContactPostalAddress postalAddress;
+  final pulumi.Input<RegistrationContactSettingsAdminContactPostalAddress> postalAddress;
 
   /// Creates a new [RegistrationContactSettingsAdminContact].
   /// [email] Required. Email address of the contact.
@@ -30,16 +31,16 @@ class RegistrationContactSettingsAdminContact {
       'email': email,
       'faxNumber': ?faxNumber,
       'phoneNumber': phoneNumber,
-      'postalAddress': postalAddress.toMap(),
+      'postalAddress': pulumi.Input.mapInputValue<RegistrationContactSettingsAdminContactPostalAddress, Map<String, dynamic>>(postalAddress, (value) => value.toMap()),
     };
   }
 
   factory RegistrationContactSettingsAdminContact.fromMap(Map<String, dynamic> map) {
     return RegistrationContactSettingsAdminContact(
-      email: map['email'] as String,
-      faxNumber: map['faxNumber'] == null ? null : map['faxNumber'] as String,
-      phoneNumber: map['phoneNumber'] as String,
-      postalAddress: RegistrationContactSettingsAdminContactPostalAddress.fromMap((map['postalAddress'] as Map).cast<String, dynamic>()),
+      email: (map['email'] as String).input(),
+      faxNumber: map['faxNumber'] == null ? null : (map['faxNumber'] as String).input(),
+      phoneNumber: (map['phoneNumber'] as String).input(),
+      postalAddress: (RegistrationContactSettingsAdminContactPostalAddress.fromMap((map['postalAddress'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetContainerAppsSessionPoolArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sessionPoolName] Name of the session pool.
   GetContainerAppsSessionPoolArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sessionPoolName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sessionPoolName = pulumi.Input.asInput<String>(sessionPoolName);
+    required this.resourceGroupName,
+    required this.sessionPoolName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetContainerAppsSessionPoolArgs {
 
   factory GetContainerAppsSessionPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerAppsSessionPoolArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sessionPoolName: pulumi.Output.create<String>(map['sessionPoolName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sessionPoolName: (map['sessionPoolName'] as String).input(),
     );
   }
 }

@@ -18,11 +18,9 @@ class DirectoryRoleArgs {
   /// [displayName] The display name of the directory role to activate. Changing this forces a new resource to be created.
   /// [templateId] The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
   DirectoryRoleArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? templateId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId);
+    this.displayName,
+    this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class DirectoryRoleArgs {
 
   factory DirectoryRoleArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryRoleArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
     );
   }
 }

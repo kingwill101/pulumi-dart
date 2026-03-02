@@ -51,27 +51,17 @@ class AiEndpointWithModelGardenDeploymentState {
   /// [project] The ID of the project in which the resource belongs.
   /// [publisherModelName] The Model Garden model to deploy.
   AiEndpointWithModelGardenDeploymentState({
-    pulumi.Output<AiEndpointWithModelGardenDeploymentDeployConfig>? deployConfig,
-    pulumi.Output<String>? deployedModelDisplayName,
-    pulumi.Output<String>? deployedModelId,
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<AiEndpointWithModelGardenDeploymentEndpointConfig>? endpointConfig,
-    pulumi.Output<String>? huggingFaceModelId,
-    pulumi.Output<String>? location,
-    pulumi.Output<AiEndpointWithModelGardenDeploymentModelConfig>? modelConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? publisherModelName,
-  }) :
-      deployConfig = pulumi.Input.asOptionalInput<AiEndpointWithModelGardenDeploymentDeployConfig>(deployConfig),
-      deployedModelDisplayName = pulumi.Input.asOptionalInput<String>(deployedModelDisplayName),
-      deployedModelId = pulumi.Input.asOptionalInput<String>(deployedModelId),
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      endpointConfig = pulumi.Input.asOptionalInput<AiEndpointWithModelGardenDeploymentEndpointConfig>(endpointConfig),
-      huggingFaceModelId = pulumi.Input.asOptionalInput<String>(huggingFaceModelId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      modelConfig = pulumi.Input.asOptionalInput<AiEndpointWithModelGardenDeploymentModelConfig>(modelConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publisherModelName = pulumi.Input.asOptionalInput<String>(publisherModelName);
+    this.deployConfig,
+    this.deployedModelDisplayName,
+    this.deployedModelId,
+    this.endpoint,
+    this.endpointConfig,
+    this.huggingFaceModelId,
+    this.location,
+    this.modelConfig,
+    this.project,
+    this.publisherModelName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,16 +80,16 @@ class AiEndpointWithModelGardenDeploymentState {
 
   factory AiEndpointWithModelGardenDeploymentState.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentState(
-      deployConfig: map['deployConfig'] == null ? null : pulumi.Output.create<AiEndpointWithModelGardenDeploymentDeployConfig>(AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((map['deployConfig'] as Map).cast<String, dynamic>())),
-      deployedModelDisplayName: map['deployedModelDisplayName'] == null ? null : pulumi.Output.create<String>(map['deployedModelDisplayName'] as String),
-      deployedModelId: map['deployedModelId'] == null ? null : pulumi.Output.create<String>(map['deployedModelId'] as String),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      endpointConfig: map['endpointConfig'] == null ? null : pulumi.Output.create<AiEndpointWithModelGardenDeploymentEndpointConfig>(AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap((map['endpointConfig'] as Map).cast<String, dynamic>())),
-      huggingFaceModelId: map['huggingFaceModelId'] == null ? null : pulumi.Output.create<String>(map['huggingFaceModelId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      modelConfig: map['modelConfig'] == null ? null : pulumi.Output.create<AiEndpointWithModelGardenDeploymentModelConfig>(AiEndpointWithModelGardenDeploymentModelConfig.fromMap((map['modelConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      publisherModelName: map['publisherModelName'] == null ? null : pulumi.Output.create<String>(map['publisherModelName'] as String),
+      deployConfig: map['deployConfig'] == null ? null : (AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((map['deployConfig'] as Map).cast<String, dynamic>())).input(),
+      deployedModelDisplayName: map['deployedModelDisplayName'] == null ? null : (map['deployedModelDisplayName'] as String).input(),
+      deployedModelId: map['deployedModelId'] == null ? null : (map['deployedModelId'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      endpointConfig: map['endpointConfig'] == null ? null : (AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap((map['endpointConfig'] as Map).cast<String, dynamic>())).input(),
+      huggingFaceModelId: map['huggingFaceModelId'] == null ? null : (map['huggingFaceModelId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      modelConfig: map['modelConfig'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfig.fromMap((map['modelConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      publisherModelName: map['publisherModelName'] == null ? null : (map['publisherModelName'] as String).input(),
     );
   }
 }

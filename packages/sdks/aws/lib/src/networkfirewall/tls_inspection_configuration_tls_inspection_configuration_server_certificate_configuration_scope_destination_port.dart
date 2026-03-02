@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort {
   /// The lower limit of the port range. This must be less than or equal to the `to_port`.
-  final int fromPort;
+  final pulumi.Input<int> fromPort;
   /// The upper limit of the port range. This must be greater than or equal to the `from_port`.
-  final int toPort;
+  final pulumi.Input<int> toPort;
 
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort].
   /// [fromPort] The lower limit of the port range. This must be less than or equal to the `to_port`.
@@ -24,8 +25,8 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
 
   factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort(
-      fromPort: map['fromPort'] as int,
-      toPort: map['toPort'] as int,
+      fromPort: (map['fromPort'] as int).input(),
+      toPort: (map['toPort'] as int).input(),
     );
   }
 }

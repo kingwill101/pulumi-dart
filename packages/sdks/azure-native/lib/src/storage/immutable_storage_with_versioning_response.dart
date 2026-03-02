@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Object level immutability properties of the container.
 class ImmutableStorageWithVersioningResponse {
   /// This is an immutable property, when set to true it enables object level immutability at the container level.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// This property denotes the container level immutability to object level immutability migration state.
-  final String migrationState;
+  final pulumi.Input<String> migrationState;
   /// Returns the date and time the object level immutability was enabled.
-  final String timeStamp;
+  final pulumi.Input<String> timeStamp;
 
   /// Creates a new [ImmutableStorageWithVersioningResponse].
   /// [enabled] This is an immutable property, when set to true it enables object level immutability at the container level.
@@ -30,9 +31,9 @@ class ImmutableStorageWithVersioningResponse {
 
   factory ImmutableStorageWithVersioningResponse.fromMap(Map<String, dynamic> map) {
     return ImmutableStorageWithVersioningResponse(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      migrationState: map['migrationState'] as String,
-      timeStamp: map['timeStamp'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      migrationState: (map['migrationState'] as String).input(),
+      timeStamp: (map['timeStamp'] as String).input(),
     );
   }
 }

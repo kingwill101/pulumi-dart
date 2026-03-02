@@ -39,21 +39,14 @@ class AppGatewayArgs {
   /// [region] The region of the AppGateway.
   /// [type] The type of network connectivity used by the AppGateway.
   AppGatewayArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? hostType,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? type,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      hostType = pulumi.Input.asOptionalInput<String>(hostType),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.displayName,
+    this.hostType,
+    this.labels,
+    this.name,
+    this.project,
+    this.region,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,13 +62,13 @@ class AppGatewayArgs {
 
   factory AppGatewayArgs.fromMap(Map<String, dynamic> map) {
     return AppGatewayArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      hostType: map['hostType'] == null ? null : pulumi.Output.create<String>(map['hostType'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      hostType: map['hostType'] == null ? null : (map['hostType'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

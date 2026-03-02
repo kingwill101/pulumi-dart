@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SslNegotiationPolicyAttribute {
   /// The name of the attribute
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the attribute
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [SslNegotiationPolicyAttribute].
   /// [name] The name of the attribute
@@ -24,8 +25,8 @@ class SslNegotiationPolicyAttribute {
 
   factory SslNegotiationPolicyAttribute.fromMap(Map<String, dynamic> map) {
     return SslNegotiationPolicyAttribute(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

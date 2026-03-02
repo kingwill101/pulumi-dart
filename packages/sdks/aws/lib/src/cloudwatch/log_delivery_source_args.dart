@@ -25,17 +25,12 @@ class LogDeliverySourceArgs {
   /// [resourceArn] The ARN of the AWS resource that is generating and sending logs.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   LogDeliverySourceArgs({
-    required pulumi.Output<String> logType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceArn,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      logType = pulumi.Input.asInput<String>(logType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.logType,
+    this.name,
+    this.region,
+    required this.resourceArn,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class LogDeliverySourceArgs {
 
   factory LogDeliverySourceArgs.fromMap(Map<String, dynamic> map) {
     return LogDeliverySourceArgs(
-      logType: pulumi.Output.create<String>(map['logType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      logType: (map['logType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

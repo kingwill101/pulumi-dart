@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class S3AccessPointAttachmentS3AccessPointVpcConfiguration {
   /// VPC ID.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [S3AccessPointAttachmentS3AccessPointVpcConfiguration].
   /// [vpcId] VPC ID.
@@ -19,7 +20,7 @@ class S3AccessPointAttachmentS3AccessPointVpcConfiguration {
 
   factory S3AccessPointAttachmentS3AccessPointVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return S3AccessPointAttachmentS3AccessPointVpcConfiguration(
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

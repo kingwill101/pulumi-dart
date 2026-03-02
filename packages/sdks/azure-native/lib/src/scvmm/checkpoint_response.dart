@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the resource properties.
 class CheckpointResponse {
   /// Gets ID of the checkpoint.
-  final String? checkpointID;
+  final pulumi.Input<String>? checkpointID;
   /// Gets description of the checkpoint.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Gets name of the checkpoint.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Gets ID of parent of the checkpoint.
-  final String? parentCheckpointID;
+  final pulumi.Input<String>? parentCheckpointID;
 
   /// Creates a new [CheckpointResponse].
   /// [checkpointID] Gets ID of the checkpoint.
@@ -35,10 +36,10 @@ class CheckpointResponse {
 
   factory CheckpointResponse.fromMap(Map<String, dynamic> map) {
     return CheckpointResponse(
-      checkpointID: map['checkpointID'] == null ? null : map['checkpointID'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      parentCheckpointID: map['parentCheckpointID'] == null ? null : map['parentCheckpointID'] as String,
+      checkpointID: map['checkpointID'] == null ? null : (map['checkpointID'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentCheckpointID: map['parentCheckpointID'] == null ? null : (map['parentCheckpointID'] as String).input(),
     );
   }
 }

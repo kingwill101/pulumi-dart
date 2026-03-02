@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parameters used for replica operations.
 class MongoClusterReplicaParameters {
   /// The location of the source cluster
-  final String sourceLocation;
+  final pulumi.Input<String> sourceLocation;
   /// The id of the replication source cluster.
-  final String sourceResourceId;
+  final pulumi.Input<String> sourceResourceId;
 
   /// Creates a new [MongoClusterReplicaParameters].
   /// [sourceLocation] The location of the source cluster
@@ -25,8 +26,8 @@ class MongoClusterReplicaParameters {
 
   factory MongoClusterReplicaParameters.fromMap(Map<String, dynamic> map) {
     return MongoClusterReplicaParameters(
-      sourceLocation: map['sourceLocation'] as String,
-      sourceResourceId: map['sourceResourceId'] as String,
+      sourceLocation: (map['sourceLocation'] as String).input(),
+      sourceResourceId: (map['sourceResourceId'] as String).input(),
     );
   }
 }

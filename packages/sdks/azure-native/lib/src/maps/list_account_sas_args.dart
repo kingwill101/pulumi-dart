@@ -34,23 +34,15 @@ class ListAccountSasArgs {
   /// [signingKey] The Maps account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Maps account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS.
   /// [start] The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`.
   ListAccountSasArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> expiry,
-    required pulumi.Output<int> maxRatePerSecond,
-    required pulumi.Output<String> principalId,
-    pulumi.Output<List<String>>? regions,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> signingKey,
-    required pulumi.Output<String> start,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      expiry = pulumi.Input.asInput<String>(expiry),
-      maxRatePerSecond = pulumi.Input.asInput<int>(maxRatePerSecond),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      regions = pulumi.Input.asOptionalInput<List<String>>(regions),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      signingKey = pulumi.Input.asInput<String>(signingKey),
-      start = pulumi.Input.asInput<String>(start);
+    required this.accountName,
+    required this.expiry,
+    required this.maxRatePerSecond,
+    required this.principalId,
+    this.regions,
+    required this.resourceGroupName,
+    required this.signingKey,
+    required this.start,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ListAccountSasArgs {
 
   factory ListAccountSasArgs.fromMap(Map<String, dynamic> map) {
     return ListAccountSasArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      expiry: pulumi.Output.create<String>(map['expiry'] as String),
-      maxRatePerSecond: pulumi.Output.create<int>(map['maxRatePerSecond'] as int),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      signingKey: pulumi.Output.create<String>(map['signingKey'] as String),
-      start: pulumi.Output.create<String>(map['start'] as String),
+      accountName: (map['accountName'] as String).input(),
+      expiry: (map['expiry'] as String).input(),
+      maxRatePerSecond: (map['maxRatePerSecond'] as int).input(),
+      principalId: (map['principalId'] as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      signingKey: (map['signingKey'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

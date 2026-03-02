@@ -9,13 +9,13 @@ import 'google_privacy_dlp_v2_record_condition_response.dart';
 /// The transformation to apply to the field.
 class GooglePrivacyDlpV2FieldTransformationResponse {
   /// Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
-  final GooglePrivacyDlpV2RecordConditionResponse condition;
+  final pulumi.Input<GooglePrivacyDlpV2RecordConditionResponse> condition;
   /// Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
-  final List<GooglePrivacyDlpV2FieldIdResponse> fields;
+  final pulumi.Input<List<GooglePrivacyDlpV2FieldIdResponse>> fields;
   /// Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
-  final GooglePrivacyDlpV2InfoTypeTransformationsResponse infoTypeTransformations;
+  final pulumi.Input<GooglePrivacyDlpV2InfoTypeTransformationsResponse> infoTypeTransformations;
   /// Apply the transformation to the entire field.
-  final GooglePrivacyDlpV2PrimitiveTransformationResponse primitiveTransformation;
+  final pulumi.Input<GooglePrivacyDlpV2PrimitiveTransformationResponse> primitiveTransformation;
 
   /// Creates a new [GooglePrivacyDlpV2FieldTransformationResponse].
   /// [condition] Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
@@ -31,19 +31,19 @@ class GooglePrivacyDlpV2FieldTransformationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': condition.toMap(),
-      'fields': pulumi.Input.encodeList<GooglePrivacyDlpV2FieldIdResponse, Map<String, dynamic>>(fields, (value) => value.toMap()),
-      'infoTypeTransformations': infoTypeTransformations.toMap(),
-      'primitiveTransformation': primitiveTransformation.toMap(),
+      'condition': pulumi.Input.mapInputValue<GooglePrivacyDlpV2RecordConditionResponse, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'fields': pulumi.Input.mapInputValue<List<GooglePrivacyDlpV2FieldIdResponse>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2FieldIdResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'infoTypeTransformations': pulumi.Input.mapInputValue<GooglePrivacyDlpV2InfoTypeTransformationsResponse, Map<String, dynamic>>(infoTypeTransformations, (value) => value.toMap()),
+      'primitiveTransformation': pulumi.Input.mapInputValue<GooglePrivacyDlpV2PrimitiveTransformationResponse, Map<String, dynamic>>(primitiveTransformation, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2FieldTransformationResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2FieldTransformationResponse(
-      condition: GooglePrivacyDlpV2RecordConditionResponse.fromMap((map['condition'] as Map).cast<String, dynamic>()),
-      fields: pulumi.Input.decodeList<GooglePrivacyDlpV2FieldIdResponse>(map['fields'], (value) => GooglePrivacyDlpV2FieldIdResponse.fromMap((value as Map).cast<String, dynamic>())),
-      infoTypeTransformations: GooglePrivacyDlpV2InfoTypeTransformationsResponse.fromMap((map['infoTypeTransformations'] as Map).cast<String, dynamic>()),
-      primitiveTransformation: GooglePrivacyDlpV2PrimitiveTransformationResponse.fromMap((map['primitiveTransformation'] as Map).cast<String, dynamic>()),
+      condition: (GooglePrivacyDlpV2RecordConditionResponse.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      fields: (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldIdResponse>(map['fields'], (value) => GooglePrivacyDlpV2FieldIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      infoTypeTransformations: (GooglePrivacyDlpV2InfoTypeTransformationsResponse.fromMap((map['infoTypeTransformations'] as Map).cast<String, dynamic>())).input(),
+      primitiveTransformation: (GooglePrivacyDlpV2PrimitiveTransformationResponse.fromMap((map['primitiveTransformation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

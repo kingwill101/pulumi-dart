@@ -52,27 +52,17 @@ class OrganizationSecurityPolicyRuleArgs {
   /// [targetResources] A list of network resource URLs to which this rule applies.
   /// [targetServiceAccounts] A list of service accounts indicating the sets of
   OrganizationSecurityPolicyRuleArgs({
-    required pulumi.Output<String> action,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? direction,
-    pulumi.Output<bool>? enableLogging,
-    required pulumi.Output<OrganizationSecurityPolicyRuleMatch> match,
-    required pulumi.Output<String> policyId,
-    pulumi.Output<bool>? preview,
-    required pulumi.Output<int> priority,
-    pulumi.Output<List<String>>? targetResources,
-    pulumi.Output<List<String>>? targetServiceAccounts,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      direction = pulumi.Input.asOptionalInput<String>(direction),
-      enableLogging = pulumi.Input.asOptionalInput<bool>(enableLogging),
-      match = pulumi.Input.asInput<OrganizationSecurityPolicyRuleMatch>(match),
-      policyId = pulumi.Input.asInput<String>(policyId),
-      preview = pulumi.Input.asOptionalInput<bool>(preview),
-      priority = pulumi.Input.asInput<int>(priority),
-      targetResources = pulumi.Input.asOptionalInput<List<String>>(targetResources),
-      targetServiceAccounts = pulumi.Input.asOptionalInput<List<String>>(targetServiceAccounts);
+    required this.action,
+    this.description,
+    this.direction,
+    this.enableLogging,
+    required this.match,
+    required this.policyId,
+    this.preview,
+    required this.priority,
+    this.targetResources,
+    this.targetServiceAccounts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,16 +81,16 @@ class OrganizationSecurityPolicyRuleArgs {
 
   factory OrganizationSecurityPolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyRuleArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
-      enableLogging: map['enableLogging'] == null ? null : pulumi.Output.create<bool>(map['enableLogging'] as bool),
-      match: pulumi.Output.create<OrganizationSecurityPolicyRuleMatch>(OrganizationSecurityPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
-      preview: map['preview'] == null ? null : pulumi.Output.create<bool>(map['preview'] as bool),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      targetResources: map['targetResources'] == null ? null : pulumi.Output.create<List<String>>((map['targetResources'] as List).cast<String>()),
-      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : pulumi.Output.create<List<String>>((map['targetServiceAccounts'] as List).cast<String>()),
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
+      match: (OrganizationSecurityPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      policyId: (map['policyId'] as String).input(),
+      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
+      priority: (map['priority'] as int).input(),
+      targetResources: map['targetResources'] == null ? null : ((map['targetResources'] as List).cast<String>()).input(),
+      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts'] as List).cast<String>()).input(),
     );
   }
 }

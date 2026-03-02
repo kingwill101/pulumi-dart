@@ -34,25 +34,16 @@ class AccountPasswordPolicyState {
   /// [requireSymbols] Specifies if the occurrence of a special character in the password is mandatory. Default to true.
   /// [requireUppercaseCharacters] Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
   AccountPasswordPolicyState({
-    pulumi.Output<bool>? hardExpiry,
-    pulumi.Output<int>? maxLoginAttempts,
-    pulumi.Output<int>? maxPasswordAge,
-    pulumi.Output<int>? minimumPasswordLength,
-    pulumi.Output<int>? passwordReusePrevention,
-    pulumi.Output<bool>? requireLowercaseCharacters,
-    pulumi.Output<bool>? requireNumbers,
-    pulumi.Output<bool>? requireSymbols,
-    pulumi.Output<bool>? requireUppercaseCharacters,
-  }) :
-      hardExpiry = pulumi.Input.asOptionalInput<bool>(hardExpiry),
-      maxLoginAttempts = pulumi.Input.asOptionalInput<int>(maxLoginAttempts),
-      maxPasswordAge = pulumi.Input.asOptionalInput<int>(maxPasswordAge),
-      minimumPasswordLength = pulumi.Input.asOptionalInput<int>(minimumPasswordLength),
-      passwordReusePrevention = pulumi.Input.asOptionalInput<int>(passwordReusePrevention),
-      requireLowercaseCharacters = pulumi.Input.asOptionalInput<bool>(requireLowercaseCharacters),
-      requireNumbers = pulumi.Input.asOptionalInput<bool>(requireNumbers),
-      requireSymbols = pulumi.Input.asOptionalInput<bool>(requireSymbols),
-      requireUppercaseCharacters = pulumi.Input.asOptionalInput<bool>(requireUppercaseCharacters);
+    this.hardExpiry,
+    this.maxLoginAttempts,
+    this.maxPasswordAge,
+    this.minimumPasswordLength,
+    this.passwordReusePrevention,
+    this.requireLowercaseCharacters,
+    this.requireNumbers,
+    this.requireSymbols,
+    this.requireUppercaseCharacters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class AccountPasswordPolicyState {
 
   factory AccountPasswordPolicyState.fromMap(Map<String, dynamic> map) {
     return AccountPasswordPolicyState(
-      hardExpiry: map['hardExpiry'] == null ? null : pulumi.Output.create<bool>(map['hardExpiry'] as bool),
-      maxLoginAttempts: map['maxLoginAttempts'] == null ? null : pulumi.Output.create<int>(map['maxLoginAttempts'] as int),
-      maxPasswordAge: map['maxPasswordAge'] == null ? null : pulumi.Output.create<int>(map['maxPasswordAge'] as int),
-      minimumPasswordLength: map['minimumPasswordLength'] == null ? null : pulumi.Output.create<int>(map['minimumPasswordLength'] as int),
-      passwordReusePrevention: map['passwordReusePrevention'] == null ? null : pulumi.Output.create<int>(map['passwordReusePrevention'] as int),
-      requireLowercaseCharacters: map['requireLowercaseCharacters'] == null ? null : pulumi.Output.create<bool>(map['requireLowercaseCharacters'] as bool),
-      requireNumbers: map['requireNumbers'] == null ? null : pulumi.Output.create<bool>(map['requireNumbers'] as bool),
-      requireSymbols: map['requireSymbols'] == null ? null : pulumi.Output.create<bool>(map['requireSymbols'] as bool),
-      requireUppercaseCharacters: map['requireUppercaseCharacters'] == null ? null : pulumi.Output.create<bool>(map['requireUppercaseCharacters'] as bool),
+      hardExpiry: map['hardExpiry'] == null ? null : (map['hardExpiry'] as bool).input(),
+      maxLoginAttempts: map['maxLoginAttempts'] == null ? null : (map['maxLoginAttempts'] as int).input(),
+      maxPasswordAge: map['maxPasswordAge'] == null ? null : (map['maxPasswordAge'] as int).input(),
+      minimumPasswordLength: map['minimumPasswordLength'] == null ? null : (map['minimumPasswordLength'] as int).input(),
+      passwordReusePrevention: map['passwordReusePrevention'] == null ? null : (map['passwordReusePrevention'] as int).input(),
+      requireLowercaseCharacters: map['requireLowercaseCharacters'] == null ? null : (map['requireLowercaseCharacters'] as bool).input(),
+      requireNumbers: map['requireNumbers'] == null ? null : (map['requireNumbers'] as bool).input(),
+      requireSymbols: map['requireSymbols'] == null ? null : (map['requireSymbols'] as bool).input(),
+      requireUppercaseCharacters: map['requireUppercaseCharacters'] == null ? null : (map['requireUppercaseCharacters'] as bool).input(),
     );
   }
 }

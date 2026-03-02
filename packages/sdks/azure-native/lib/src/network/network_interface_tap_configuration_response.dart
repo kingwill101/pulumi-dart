@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_network_tap_response.dart';
 
 /// Tap configuration in a Network Interface.
 class NetworkInterfaceTapConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the network interface tap configuration resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Sub Resource type.
-  final String type;
+  final pulumi.Input<String> type;
   /// The reference to the Virtual Network Tap resource.
-  final VirtualNetworkTapResponse? virtualNetworkTap;
+  final pulumi.Input<VirtualNetworkTapResponse>? virtualNetworkTap;
 
   /// Creates a new [NetworkInterfaceTapConfigurationResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.
@@ -40,18 +41,18 @@ class NetworkInterfaceTapConfigurationResponse {
       'name': ?name,
       'provisioningState': provisioningState,
       'type': type,
-      'virtualNetworkTap': ?virtualNetworkTap == null ? null : virtualNetworkTap!.toMap(),
+      'virtualNetworkTap': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkTapResponse, Map<String, dynamic>>(virtualNetworkTap, (value) => value.toMap()),
     };
   }
 
   factory NetworkInterfaceTapConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceTapConfigurationResponse(
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
-      virtualNetworkTap: map['virtualNetworkTap'] == null ? null : VirtualNetworkTapResponse.fromMap((map['virtualNetworkTap'] as Map).cast<String, dynamic>()),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
+      virtualNetworkTap: map['virtualNetworkTap'] == null ? null : (VirtualNetworkTapResponse.fromMap((map['virtualNetworkTap'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

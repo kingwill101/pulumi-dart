@@ -19,13 +19,10 @@ class GetGovernanceAssignmentArgs {
   /// [assignmentKey] The governance assignment key - the assessment key of the required governance assignment
   /// [scope] The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   GetGovernanceAssignmentArgs({
-    required pulumi.Output<String> assessmentName,
-    required pulumi.Output<String> assignmentKey,
-    required pulumi.Output<String> scope,
-  }) :
-      assessmentName = pulumi.Input.asInput<String>(assessmentName),
-      assignmentKey = pulumi.Input.asInput<String>(assignmentKey),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.assessmentName,
+    required this.assignmentKey,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGovernanceAssignmentArgs {
 
   factory GetGovernanceAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetGovernanceAssignmentArgs(
-      assessmentName: pulumi.Output.create<String>(map['assessmentName'] as String),
-      assignmentKey: pulumi.Output.create<String>(map['assignmentKey'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      assessmentName: (map['assessmentName'] as String).input(),
+      assignmentKey: (map['assignmentKey'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

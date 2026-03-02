@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomServiceTelemetry {
   /// The full name of the resource that defines this service.
   /// Formatted as described in
   /// https://cloud.google.com/apis/design/resource_names.
-  final String? resourceName;
+  final pulumi.Input<String>? resourceName;
 
   /// Creates a new [CustomServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
@@ -21,7 +22,7 @@ class CustomServiceTelemetry {
 
   factory CustomServiceTelemetry.fromMap(Map<String, dynamic> map) {
     return CustomServiceTelemetry(
-      resourceName: map['resourceName'] == null ? null : map['resourceName'] as String,
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
     );
   }
 }

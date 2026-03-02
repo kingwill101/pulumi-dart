@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Preferences related to the double encryption.
 class EncryptionPreferencesResponse {
   /// Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
-  final String? doubleEncryptionStatus;
+  final pulumi.Input<String>? doubleEncryptionStatus;
 
   /// Creates a new [EncryptionPreferencesResponse].
   /// [doubleEncryptionStatus] Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
@@ -20,7 +21,7 @@ class EncryptionPreferencesResponse {
 
   factory EncryptionPreferencesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionPreferencesResponse(
-      doubleEncryptionStatus: map['doubleEncryptionStatus'] == null ? null : map['doubleEncryptionStatus'] as String,
+      doubleEncryptionStatus: map['doubleEncryptionStatus'] == null ? null : (map['doubleEncryptionStatus'] as String).input(),
     );
   }
 }

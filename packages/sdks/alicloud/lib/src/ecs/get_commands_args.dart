@@ -34,23 +34,15 @@ class GetCommandsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [type] The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
   GetCommandsArgs({
-    pulumi.Output<String>? commandProvider,
-    pulumi.Output<String>? contentEncoding,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? type,
-  }) :
-      commandProvider = pulumi.Input.asOptionalInput<String>(commandProvider),
-      contentEncoding = pulumi.Input.asOptionalInput<String>(contentEncoding),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.commandProvider,
+    this.contentEncoding,
+    this.description,
+    this.ids,
+    this.name,
+    this.nameRegex,
+    this.outputFile,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetCommandsArgs {
 
   factory GetCommandsArgs.fromMap(Map<String, dynamic> map) {
     return GetCommandsArgs(
-      commandProvider: map['commandProvider'] == null ? null : pulumi.Output.create<String>(map['commandProvider'] as String),
-      contentEncoding: map['contentEncoding'] == null ? null : pulumi.Output.create<String>(map['contentEncoding'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      commandProvider: map['commandProvider'] == null ? null : (map['commandProvider'] as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

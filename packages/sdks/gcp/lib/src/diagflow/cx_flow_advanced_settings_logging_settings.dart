@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxFlowAdvancedSettingsLoggingSettings {
   /// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
-  final bool? enableConsentBasedRedaction;
+  final pulumi.Input<bool>? enableConsentBasedRedaction;
   /// Enables DF Interaction logging.
-  final bool? enableInteractionLogging;
+  final pulumi.Input<bool>? enableInteractionLogging;
   /// Enables Google Cloud Logging.
-  final bool? enableStackdriverLogging;
+  final pulumi.Input<bool>? enableStackdriverLogging;
 
   /// Creates a new [CxFlowAdvancedSettingsLoggingSettings].
   /// [enableConsentBasedRedaction] Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
@@ -29,9 +30,9 @@ class CxFlowAdvancedSettingsLoggingSettings {
 
   factory CxFlowAdvancedSettingsLoggingSettings.fromMap(Map<String, dynamic> map) {
     return CxFlowAdvancedSettingsLoggingSettings(
-      enableConsentBasedRedaction: map['enableConsentBasedRedaction'] == null ? null : map['enableConsentBasedRedaction'] as bool,
-      enableInteractionLogging: map['enableInteractionLogging'] == null ? null : map['enableInteractionLogging'] as bool,
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : map['enableStackdriverLogging'] as bool,
+      enableConsentBasedRedaction: map['enableConsentBasedRedaction'] == null ? null : (map['enableConsentBasedRedaction'] as bool).input(),
+      enableInteractionLogging: map['enableInteractionLogging'] == null ? null : (map['enableInteractionLogging'] as bool).input(),
+      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging'] as bool).input(),
     );
   }
 }

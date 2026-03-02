@@ -22,15 +22,11 @@ class GetFoldersArgs {
   /// [parentFolderPath] The parent folder path.
   /// [projectId] The ID of the project.
   GetFoldersArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> parentFolderPath,
-    required pulumi.Output<String> projectId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      parentFolderPath = pulumi.Input.asInput<String>(parentFolderPath),
-      projectId = pulumi.Input.asInput<String>(projectId);
+    this.ids,
+    this.outputFile,
+    required this.parentFolderPath,
+    required this.projectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetFoldersArgs {
 
   factory GetFoldersArgs.fromMap(Map<String, dynamic> map) {
     return GetFoldersArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      parentFolderPath: pulumi.Output.create<String>(map['parentFolderPath'] as String),
-      projectId: pulumi.Output.create<String>(map['projectId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      parentFolderPath: (map['parentFolderPath'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

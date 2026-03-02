@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ModelCardExportJobOutputConfig {
   /// Amazon S3 output path.
-  final String s3OutputPath;
+  final pulumi.Input<String> s3OutputPath;
 
   /// Creates a new [ModelCardExportJobOutputConfig].
   /// [s3OutputPath] Amazon S3 output path.
@@ -19,7 +20,7 @@ class ModelCardExportJobOutputConfig {
 
   factory ModelCardExportJobOutputConfig.fromMap(Map<String, dynamic> map) {
     return ModelCardExportJobOutputConfig(
-      s3OutputPath: map['s3OutputPath'] as String,
+      s3OutputPath: (map['s3OutputPath'] as String).input(),
     );
   }
 }

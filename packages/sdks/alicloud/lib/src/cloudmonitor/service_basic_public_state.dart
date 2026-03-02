@@ -10,9 +10,8 @@ class ServiceBasicPublicState {
   /// Creates a new [ServiceBasicPublicState].
   /// [createTime] The creation time of the resource.
   ServiceBasicPublicState({
-    pulumi.Output<String>? createTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime);
+    this.createTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class ServiceBasicPublicState {
 
   factory ServiceBasicPublicState.fromMap(Map<String, dynamic> map) {
     return ServiceBasicPublicState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
     );
   }
 }

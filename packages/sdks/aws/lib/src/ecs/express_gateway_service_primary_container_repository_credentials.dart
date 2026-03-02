@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExpressGatewayServicePrimaryContainerRepositoryCredentials {
   /// ARN of the AWS Systems Manager parameter containing the repository credentials.
-  final String credentialsParameter;
+  final pulumi.Input<String> credentialsParameter;
 
   /// Creates a new [ExpressGatewayServicePrimaryContainerRepositoryCredentials].
   /// [credentialsParameter] ARN of the AWS Systems Manager parameter containing the repository credentials.
@@ -19,7 +20,7 @@ class ExpressGatewayServicePrimaryContainerRepositoryCredentials {
 
   factory ExpressGatewayServicePrimaryContainerRepositoryCredentials.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServicePrimaryContainerRepositoryCredentials(
-      credentialsParameter: map['credentialsParameter'] as String,
+      credentialsParameter: (map['credentialsParameter'] as String).input(),
     );
   }
 }

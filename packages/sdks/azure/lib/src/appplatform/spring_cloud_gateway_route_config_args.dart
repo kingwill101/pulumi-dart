@@ -41,25 +41,16 @@ class SpringCloudGatewayRouteConfigArgs {
   /// [springCloudGatewayId] The ID of the Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway Route Config to be created.
   /// [ssoValidationEnabled] Should the sso validation be enabled in app level?
   SpringCloudGatewayRouteConfigArgs({
-    pulumi.Output<List<String>>? filters,
-    pulumi.Output<String>? name,
-    pulumi.Output<SpringCloudGatewayRouteConfigOpenApi>? openApi,
-    pulumi.Output<List<String>>? predicates,
-    required pulumi.Output<String> protocol,
-    pulumi.Output<List<SpringCloudGatewayRouteConfigRoute>>? routes,
-    pulumi.Output<String>? springCloudAppId,
-    required pulumi.Output<String> springCloudGatewayId,
-    pulumi.Output<bool>? ssoValidationEnabled,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<String>>(filters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      openApi = pulumi.Input.asOptionalInput<SpringCloudGatewayRouteConfigOpenApi>(openApi),
-      predicates = pulumi.Input.asOptionalInput<List<String>>(predicates),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      routes = pulumi.Input.asOptionalInput<List<SpringCloudGatewayRouteConfigRoute>>(routes),
-      springCloudAppId = pulumi.Input.asOptionalInput<String>(springCloudAppId),
-      springCloudGatewayId = pulumi.Input.asInput<String>(springCloudGatewayId),
-      ssoValidationEnabled = pulumi.Input.asOptionalInput<bool>(ssoValidationEnabled);
+    this.filters,
+    this.name,
+    this.openApi,
+    this.predicates,
+    required this.protocol,
+    this.routes,
+    this.springCloudAppId,
+    required this.springCloudGatewayId,
+    this.ssoValidationEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class SpringCloudGatewayRouteConfigArgs {
 
   factory SpringCloudGatewayRouteConfigArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayRouteConfigArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<String>>((map['filters'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      openApi: map['openApi'] == null ? null : pulumi.Output.create<SpringCloudGatewayRouteConfigOpenApi>(SpringCloudGatewayRouteConfigOpenApi.fromMap((map['openApi'] as Map).cast<String, dynamic>())),
-      predicates: map['predicates'] == null ? null : pulumi.Output.create<List<String>>((map['predicates'] as List).cast<String>()),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      routes: map['routes'] == null ? null : pulumi.Output.create<List<SpringCloudGatewayRouteConfigRoute>>(pulumi.Input.decodeList<SpringCloudGatewayRouteConfigRoute>(map['routes'], (value) => SpringCloudGatewayRouteConfigRoute.fromMap((value as Map).cast<String, dynamic>()))),
-      springCloudAppId: map['springCloudAppId'] == null ? null : pulumi.Output.create<String>(map['springCloudAppId'] as String),
-      springCloudGatewayId: pulumi.Output.create<String>(map['springCloudGatewayId'] as String),
-      ssoValidationEnabled: map['ssoValidationEnabled'] == null ? null : pulumi.Output.create<bool>(map['ssoValidationEnabled'] as bool),
+      filters: map['filters'] == null ? null : ((map['filters'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      openApi: map['openApi'] == null ? null : (SpringCloudGatewayRouteConfigOpenApi.fromMap((map['openApi'] as Map).cast<String, dynamic>())).input(),
+      predicates: map['predicates'] == null ? null : ((map['predicates'] as List).cast<String>()).input(),
+      protocol: (map['protocol'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<SpringCloudGatewayRouteConfigRoute>(map['routes'], (value) => SpringCloudGatewayRouteConfigRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId'] as String).input(),
+      springCloudGatewayId: (map['springCloudGatewayId'] as String).input(),
+      ssoValidationEnabled: map['ssoValidationEnabled'] == null ? null : (map['ssoValidationEnabled'] as bool).input(),
     );
   }
 }

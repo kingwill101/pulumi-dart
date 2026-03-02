@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WafRuleConfigManagedRulesetManagedRule {
-  final String? action;
+  final pulumi.Input<String>? action;
   /// The internal unique ID of the WAF rule.
-  final int? id;
+  final pulumi.Input<int>? id;
   /// The status of the managed rule: whether it is enabled or disabled.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [WafRuleConfigManagedRulesetManagedRule].
   /// [action] Optional.
@@ -28,9 +29,9 @@ class WafRuleConfigManagedRulesetManagedRule {
 
   factory WafRuleConfigManagedRulesetManagedRule.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigManagedRulesetManagedRule(
-      action: map['action'] == null ? null : map['action'] as String,
-      id: map['id'] == null ? null : map['id'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

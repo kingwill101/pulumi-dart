@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// System generated entities.
 class PredictionResponseSystemGeneratedEntities {
   /// Generated interaction types.
-  final List<String>? generatedInteractionTypes;
+  final pulumi.Input<List<String>>? generatedInteractionTypes;
   /// Generated KPIs.
-  final Map<String, String>? generatedKpis;
+  final pulumi.Input<Map<String, String>>? generatedKpis;
   /// Generated links.
-  final List<String>? generatedLinks;
+  final pulumi.Input<List<String>>? generatedLinks;
 
   /// Creates a new [PredictionResponseSystemGeneratedEntities].
   /// [generatedInteractionTypes] Generated interaction types.
@@ -30,9 +31,9 @@ class PredictionResponseSystemGeneratedEntities {
 
   factory PredictionResponseSystemGeneratedEntities.fromMap(Map<String, dynamic> map) {
     return PredictionResponseSystemGeneratedEntities(
-      generatedInteractionTypes: map['generatedInteractionTypes'] == null ? null : (map['generatedInteractionTypes'] as List).cast<String>(),
-      generatedKpis: map['generatedKpis'] == null ? null : (map['generatedKpis'] as Map).cast<String, String>(),
-      generatedLinks: map['generatedLinks'] == null ? null : (map['generatedLinks'] as List).cast<String>(),
+      generatedInteractionTypes: map['generatedInteractionTypes'] == null ? null : ((map['generatedInteractionTypes'] as List).cast<String>()).input(),
+      generatedKpis: map['generatedKpis'] == null ? null : ((map['generatedKpis'] as Map).cast<String, String>()).input(),
+      generatedLinks: map['generatedLinks'] == null ? null : ((map['generatedLinks'] as List).cast<String>()).input(),
     );
   }
 }

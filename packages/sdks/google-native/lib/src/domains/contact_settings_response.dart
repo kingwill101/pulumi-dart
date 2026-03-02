@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'contact_response.dart';
 
 /// Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
 class ContactSettingsResponse {
   /// The administrative contact for the `Registration`.
-  final ContactResponse adminContact;
+  final pulumi.Input<ContactResponse> adminContact;
   /// Privacy setting for the contacts associated with the `Registration`.
-  final String privacy;
+  final pulumi.Input<String> privacy;
   /// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.*
-  final ContactResponse registrantContact;
+  final pulumi.Input<ContactResponse> registrantContact;
   /// The technical contact for the `Registration`.
-  final ContactResponse technicalContact;
+  final pulumi.Input<ContactResponse> technicalContact;
 
   /// Creates a new [ContactSettingsResponse].
   /// [adminContact] The administrative contact for the `Registration`.
@@ -27,19 +28,19 @@ class ContactSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminContact': adminContact.toMap(),
+      'adminContact': pulumi.Input.mapInputValue<ContactResponse, Map<String, dynamic>>(adminContact, (value) => value.toMap()),
       'privacy': privacy,
-      'registrantContact': registrantContact.toMap(),
-      'technicalContact': technicalContact.toMap(),
+      'registrantContact': pulumi.Input.mapInputValue<ContactResponse, Map<String, dynamic>>(registrantContact, (value) => value.toMap()),
+      'technicalContact': pulumi.Input.mapInputValue<ContactResponse, Map<String, dynamic>>(technicalContact, (value) => value.toMap()),
     };
   }
 
   factory ContactSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ContactSettingsResponse(
-      adminContact: ContactResponse.fromMap((map['adminContact'] as Map).cast<String, dynamic>()),
-      privacy: map['privacy'] as String,
-      registrantContact: ContactResponse.fromMap((map['registrantContact'] as Map).cast<String, dynamic>()),
-      technicalContact: ContactResponse.fromMap((map['technicalContact'] as Map).cast<String, dynamic>()),
+      adminContact: (ContactResponse.fromMap((map['adminContact'] as Map).cast<String, dynamic>())).input(),
+      privacy: (map['privacy'] as String).input(),
+      registrantContact: (ContactResponse.fromMap((map['registrantContact'] as Map).cast<String, dynamic>())).input(),
+      technicalContact: (ContactResponse.fromMap((map['technicalContact'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data used when creating a target resource from a source resource.
 class CreationData {
   /// This is the ARM ID of the source object to be used to create the target object.
-  final String? sourceResourceId;
+  final pulumi.Input<String>? sourceResourceId;
 
   /// Creates a new [CreationData].
   /// [sourceResourceId] This is the ARM ID of the source object to be used to create the target object.
@@ -20,7 +21,7 @@ class CreationData {
 
   factory CreationData.fromMap(Map<String, dynamic> map) {
     return CreationData(
-      sourceResourceId: map['sourceResourceId'] == null ? null : map['sourceResourceId'] as String,
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
     );
   }
 }

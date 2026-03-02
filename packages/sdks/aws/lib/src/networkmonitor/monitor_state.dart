@@ -27,19 +27,13 @@ class MonitorState {
   /// [tags] Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   MonitorState({
-    pulumi.Output<int>? aggregationPeriod,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? monitorName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      aggregationPeriod = pulumi.Input.asOptionalInput<int>(aggregationPeriod),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      monitorName = pulumi.Input.asOptionalInput<String>(monitorName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.aggregationPeriod,
+    this.arn,
+    this.monitorName,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class MonitorState {
 
   factory MonitorState.fromMap(Map<String, dynamic> map) {
     return MonitorState(
-      aggregationPeriod: map['aggregationPeriod'] == null ? null : pulumi.Output.create<int>(map['aggregationPeriod'] as int),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      monitorName: map['monitorName'] == null ? null : pulumi.Output.create<String>(map['monitorName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      aggregationPeriod: map['aggregationPeriod'] == null ? null : (map['aggregationPeriod'] as int).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      monitorName: map['monitorName'] == null ? null : (map['monitorName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

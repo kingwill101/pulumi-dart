@@ -41,27 +41,17 @@ class ExascaleDatabaseStorageVaultArgs {
   /// [timeZone] The time zone that you want to use for the Exadata Database Storage Vault. Changing this forces a new Exadata Database Storage Vault to be created. For details, see [Time Zones](https://docs.oracle.com/en/cloud/paas/base-database/time-zone/).
   /// [zones] Exadata Database Storage Vault zones. Changing this forces a new Exadata Database Storage Vault to be created.
   ExascaleDatabaseStorageVaultArgs({
-    required pulumi.Output<int> additionalFlashCachePercentage,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage> highCapacityDatabaseStorage,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? timeZone,
-    required pulumi.Output<List<String>> zones,
-  }) :
-      additionalFlashCachePercentage = pulumi.Input.asInput<int>(additionalFlashCachePercentage),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      highCapacityDatabaseStorage = pulumi.Input.asInput<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>(highCapacityDatabaseStorage),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone),
-      zones = pulumi.Input.asInput<List<String>>(zones);
+    required this.additionalFlashCachePercentage,
+    this.description,
+    required this.displayName,
+    required this.highCapacityDatabaseStorage,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+    this.timeZone,
+    required this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class ExascaleDatabaseStorageVaultArgs {
 
   factory ExascaleDatabaseStorageVaultArgs.fromMap(Map<String, dynamic> map) {
     return ExascaleDatabaseStorageVaultArgs(
-      additionalFlashCachePercentage: pulumi.Output.create<int>(map['additionalFlashCachePercentage'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      highCapacityDatabaseStorage: pulumi.Output.create<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>(ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((map['highCapacityDatabaseStorage'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
-      zones: pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      additionalFlashCachePercentage: (map['additionalFlashCachePercentage'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      highCapacityDatabaseStorage: (ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((map['highCapacityDatabaseStorage'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      zones: ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

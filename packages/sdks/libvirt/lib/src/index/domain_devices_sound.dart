@@ -9,23 +9,23 @@ import 'domain_devices_sound_driver.dart';
 
 class DomainDevicesSound {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final DomainDevicesSoundAcpi? acpi;
+  final pulumi.Input<DomainDevicesSoundAcpi>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final Map<String, dynamic>? address;
+  final pulumi.Input<Map<String, dynamic>>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final DomainDevicesSoundAlias? alias;
+  final pulumi.Input<DomainDevicesSoundAlias>? alias;
   /// This field specifies the audio configuration for the sound device in the guest domain.
-  final DomainDevicesSoundAudio? audio;
+  final pulumi.Input<DomainDevicesSoundAudio>? audio;
   /// This field configures the codec settings for the audio device in the domain.
-  final List<DomainDevicesSoundCodec>? codecs;
+  final pulumi.Input<List<DomainDevicesSoundCodec>>? codecs;
   /// This field sets the driver configuration for the sound device in the domain.
-  final DomainDevicesSoundDriver? driver;
+  final pulumi.Input<DomainDevicesSoundDriver>? driver;
   /// This field specifies the model of the sound device in the guest domain configuration.
-  final String model;
+  final pulumi.Input<String> model;
   /// Configures whether the sound device supports multi-channel audio output.
-  final String? multiChannel;
+  final pulumi.Input<String>? multiChannel;
   /// Sets the number of audio streams supported by the sound device.
-  final double? streams;
+  final pulumi.Input<double>? streams;
 
   /// Creates a new [DomainDevicesSound].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
@@ -51,12 +51,12 @@ class DomainDevicesSound {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acpi': ?acpi == null ? null : acpi!.toMap(),
+      'acpi': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSoundAcpi, Map<String, dynamic>>(acpi, (value) => value.toMap()),
       'address': ?address,
-      'alias': ?alias == null ? null : alias!.toMap(),
-      'audio': ?audio == null ? null : audio!.toMap(),
-      'codecs': ?codecs == null ? null : pulumi.Input.encodeList<DomainDevicesSoundCodec, Map<String, dynamic>>(codecs!, (value) => value.toMap()),
-      'driver': ?driver == null ? null : driver!.toMap(),
+      'alias': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSoundAlias, Map<String, dynamic>>(alias, (value) => value.toMap()),
+      'audio': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSoundAudio, Map<String, dynamic>>(audio, (value) => value.toMap()),
+      'codecs': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesSoundCodec>, List<Map<String, dynamic>>>(codecs, (value) => pulumi.Input.encodeList<DomainDevicesSoundCodec, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'driver': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSoundDriver, Map<String, dynamic>>(driver, (value) => value.toMap()),
       'model': model,
       'multiChannel': ?multiChannel,
       'streams': ?streams,
@@ -65,15 +65,15 @@ class DomainDevicesSound {
 
   factory DomainDevicesSound.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSound(
-      acpi: map['acpi'] == null ? null : DomainDevicesSoundAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>()),
-      address: map['address'] == null ? null : (map['address'] as Map).cast<String, dynamic>(),
-      alias: map['alias'] == null ? null : DomainDevicesSoundAlias.fromMap((map['alias'] as Map).cast<String, dynamic>()),
-      audio: map['audio'] == null ? null : DomainDevicesSoundAudio.fromMap((map['audio'] as Map).cast<String, dynamic>()),
-      codecs: map['codecs'] == null ? null : pulumi.Input.decodeList<DomainDevicesSoundCodec>(map['codecs'], (value) => DomainDevicesSoundCodec.fromMap((value as Map).cast<String, dynamic>())),
-      driver: map['driver'] == null ? null : DomainDevicesSoundDriver.fromMap((map['driver'] as Map).cast<String, dynamic>()),
-      model: map['model'] as String,
-      multiChannel: map['multiChannel'] == null ? null : map['multiChannel'] as String,
-      streams: map['streams'] == null ? null : map['streams'] as double,
+      acpi: map['acpi'] == null ? null : (DomainDevicesSoundAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesSoundAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
+      audio: map['audio'] == null ? null : (DomainDevicesSoundAudio.fromMap((map['audio'] as Map).cast<String, dynamic>())).input(),
+      codecs: map['codecs'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSoundCodec>(map['codecs'], (value) => DomainDevicesSoundCodec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      driver: map['driver'] == null ? null : (DomainDevicesSoundDriver.fromMap((map['driver'] as Map).cast<String, dynamic>())).input(),
+      model: (map['model'] as String).input(),
+      multiChannel: map['multiChannel'] == null ? null : (map['multiChannel'] as String).input(),
+      streams: map['streams'] == null ? null : (map['streams'] as double).input(),
     );
   }
 }

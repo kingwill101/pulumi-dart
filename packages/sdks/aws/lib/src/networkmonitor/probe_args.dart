@@ -34,23 +34,15 @@ class ProbeArgs {
   /// [sourceArn] The ARN of the subnet.
   /// [tags] Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ProbeArgs({
-    required pulumi.Output<String> destination,
-    pulumi.Output<int>? destinationPort,
-    required pulumi.Output<String> monitorName,
-    pulumi.Output<int>? packetSize,
-    required pulumi.Output<String> protocol,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> sourceArn,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      destination = pulumi.Input.asInput<String>(destination),
-      destinationPort = pulumi.Input.asOptionalInput<int>(destinationPort),
-      monitorName = pulumi.Input.asInput<String>(monitorName),
-      packetSize = pulumi.Input.asOptionalInput<int>(packetSize),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceArn = pulumi.Input.asInput<String>(sourceArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.destination,
+    this.destinationPort,
+    required this.monitorName,
+    this.packetSize,
+    required this.protocol,
+    this.region,
+    required this.sourceArn,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ProbeArgs {
 
   factory ProbeArgs.fromMap(Map<String, dynamic> map) {
     return ProbeArgs(
-      destination: pulumi.Output.create<String>(map['destination'] as String),
-      destinationPort: map['destinationPort'] == null ? null : pulumi.Output.create<int>(map['destinationPort'] as int),
-      monitorName: pulumi.Output.create<String>(map['monitorName'] as String),
-      packetSize: map['packetSize'] == null ? null : pulumi.Output.create<int>(map['packetSize'] as int),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceArn: pulumi.Output.create<String>(map['sourceArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      destination: (map['destination'] as String).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      monitorName: (map['monitorName'] as String).input(),
+      packetSize: map['packetSize'] == null ? null : (map['packetSize'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceArn: (map['sourceArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

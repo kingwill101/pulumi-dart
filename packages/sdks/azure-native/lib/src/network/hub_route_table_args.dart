@@ -32,21 +32,14 @@ class HubRouteTableArgs {
   /// [routes] List of all routes.
   /// [virtualHubName] The name of the VirtualHub.
   HubRouteTableArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<List<String>>? labels,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? routeTableName,
-    pulumi.Output<List<HubRoute>>? routes,
-    required pulumi.Output<String> virtualHubName,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      labels = pulumi.Input.asOptionalInput<List<String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeTableName = pulumi.Input.asOptionalInput<String>(routeTableName),
-      routes = pulumi.Input.asOptionalInput<List<HubRoute>>(routes),
-      virtualHubName = pulumi.Input.asInput<String>(virtualHubName);
+    this.id,
+    this.labels,
+    this.name,
+    required this.resourceGroupName,
+    this.routeTableName,
+    this.routes,
+    required this.virtualHubName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class HubRouteTableArgs {
 
   factory HubRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return HubRouteTableArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<String>>((map['labels'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeTableName: map['routeTableName'] == null ? null : pulumi.Output.create<String>(map['routeTableName'] as String),
-      routes: map['routes'] == null ? null : pulumi.Output.create<List<HubRoute>>(pulumi.Input.decodeList<HubRoute>(map['routes'], (value) => HubRoute.fromMap((value as Map).cast<String, dynamic>()))),
-      virtualHubName: pulumi.Output.create<String>(map['virtualHubName'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<HubRoute>(map['routes'], (value) => HubRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }
 }

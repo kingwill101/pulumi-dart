@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'content_hash_response.dart';
 
 /// The content link.
 class ContentLinkResponse {
   /// The content hash.
-  final ContentHashResponse contentHash;
+  final pulumi.Input<ContentHashResponse> contentHash;
   /// The content size.
-  final double contentSize;
+  final pulumi.Input<double> contentSize;
   /// The content version.
-  final String contentVersion;
+  final pulumi.Input<String> contentVersion;
   /// The metadata.
-  final dynamic metadata;
+  final pulumi.Input<dynamic> metadata;
   /// The content link URI.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [ContentLinkResponse].
   /// [contentHash] The content hash.
@@ -31,7 +32,7 @@ class ContentLinkResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contentHash': contentHash.toMap(),
+      'contentHash': pulumi.Input.mapInputValue<ContentHashResponse, Map<String, dynamic>>(contentHash, (value) => value.toMap()),
       'contentSize': contentSize,
       'contentVersion': contentVersion,
       'metadata': metadata,
@@ -41,11 +42,11 @@ class ContentLinkResponse {
 
   factory ContentLinkResponse.fromMap(Map<String, dynamic> map) {
     return ContentLinkResponse(
-      contentHash: ContentHashResponse.fromMap((map['contentHash'] as Map).cast<String, dynamic>()),
-      contentSize: map['contentSize'] as double,
-      contentVersion: map['contentVersion'] as String,
-      metadata: map['metadata'],
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      contentHash: (ContentHashResponse.fromMap((map['contentHash'] as Map).cast<String, dynamic>())).input(),
+      contentSize: (map['contentSize'] as double).input(),
+      contentVersion: (map['contentVersion'] as String).input(),
+      metadata: (map['metadata']).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

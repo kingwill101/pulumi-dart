@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Value.
 class WorkspaceCustomStringParameterResponse {
   /// The type of variable that this is
-  final String type;
+  final pulumi.Input<String> type;
   /// The value which should be used for this field.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [WorkspaceCustomStringParameterResponse].
   /// [type] The type of variable that this is
@@ -25,8 +26,8 @@ class WorkspaceCustomStringParameterResponse {
 
   factory WorkspaceCustomStringParameterResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceCustomStringParameterResponse(
-      type: map['type'] as String,
-      value: map['value'] as String,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

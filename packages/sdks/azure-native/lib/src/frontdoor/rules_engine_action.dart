@@ -7,11 +7,11 @@ import 'header_action.dart';
 /// One or more actions that will execute, modifying the request and/or response.
 class RulesEngineAction {
   /// A list of header actions to apply from the request from AFD to the origin.
-  final List<HeaderAction>? requestHeaderActions;
+  final pulumi.Input<List<HeaderAction>>? requestHeaderActions;
   /// A list of header actions to apply from the response from AFD to the client.
-  final List<HeaderAction>? responseHeaderActions;
+  final pulumi.Input<List<HeaderAction>>? responseHeaderActions;
   /// Override the route configuration.
-  final ForwardingConfiguration? routeConfigurationOverride;
+  final pulumi.Input<ForwardingConfiguration>? routeConfigurationOverride;
 
   /// Creates a new [RulesEngineAction].
   /// [requestHeaderActions] A list of header actions to apply from the request from AFD to the origin.
@@ -25,17 +25,17 @@ class RulesEngineAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestHeaderActions': ?requestHeaderActions == null ? null : pulumi.Input.encodeList<HeaderAction, Map<String, dynamic>>(requestHeaderActions!, (value) => value.toMap()),
-      'responseHeaderActions': ?responseHeaderActions == null ? null : pulumi.Input.encodeList<HeaderAction, Map<String, dynamic>>(responseHeaderActions!, (value) => value.toMap()),
-      'routeConfigurationOverride': ?routeConfigurationOverride == null ? null : routeConfigurationOverride!.toMap(),
+      'requestHeaderActions': ?pulumi.Input.mapOptionalInputValue<List<HeaderAction>, List<Map<String, dynamic>>>(requestHeaderActions, (value) => pulumi.Input.encodeList<HeaderAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'responseHeaderActions': ?pulumi.Input.mapOptionalInputValue<List<HeaderAction>, List<Map<String, dynamic>>>(responseHeaderActions, (value) => pulumi.Input.encodeList<HeaderAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routeConfigurationOverride': ?pulumi.Input.mapOptionalInputValue<ForwardingConfiguration, Map<String, dynamic>>(routeConfigurationOverride, (value) => value.toMap()),
     };
   }
 
   factory RulesEngineAction.fromMap(Map<String, dynamic> map) {
     return RulesEngineAction(
-      requestHeaderActions: map['requestHeaderActions'] == null ? null : pulumi.Input.decodeList<HeaderAction>(map['requestHeaderActions'], (value) => HeaderAction.fromMap((value as Map).cast<String, dynamic>())),
-      responseHeaderActions: map['responseHeaderActions'] == null ? null : pulumi.Input.decodeList<HeaderAction>(map['responseHeaderActions'], (value) => HeaderAction.fromMap((value as Map).cast<String, dynamic>())),
-      routeConfigurationOverride: map['routeConfigurationOverride'] == null ? null : ForwardingConfiguration.fromMap((map['routeConfigurationOverride'] as Map).cast<String, dynamic>()),
+      requestHeaderActions: map['requestHeaderActions'] == null ? null : (pulumi.Input.decodeList<HeaderAction>(map['requestHeaderActions'], (value) => HeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeaderActions: map['responseHeaderActions'] == null ? null : (pulumi.Input.decodeList<HeaderAction>(map['responseHeaderActions'], (value) => HeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeConfigurationOverride: map['routeConfigurationOverride'] == null ? null : (ForwardingConfiguration.fromMap((map['routeConfigurationOverride'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

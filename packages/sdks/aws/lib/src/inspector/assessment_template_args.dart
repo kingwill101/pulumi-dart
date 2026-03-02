@@ -32,21 +32,14 @@ class AssessmentTemplateArgs {
   /// [tags] Key-value map of tags for the Inspector assessment template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetArn] The assessment target ARN to attach the template to.
   AssessmentTemplateArgs({
-    required pulumi.Output<int> duration,
-    pulumi.Output<List<AssessmentTemplateEventSubscription>>? eventSubscriptions,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> rulesPackageArns,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetArn,
-  }) :
-      duration = pulumi.Input.asInput<int>(duration),
-      eventSubscriptions = pulumi.Input.asOptionalInput<List<AssessmentTemplateEventSubscription>>(eventSubscriptions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rulesPackageArns = pulumi.Input.asInput<List<String>>(rulesPackageArns),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetArn = pulumi.Input.asInput<String>(targetArn);
+    required this.duration,
+    this.eventSubscriptions,
+    this.name,
+    this.region,
+    required this.rulesPackageArns,
+    this.tags,
+    required this.targetArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class AssessmentTemplateArgs {
 
   factory AssessmentTemplateArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentTemplateArgs(
-      duration: pulumi.Output.create<int>(map['duration'] as int),
-      eventSubscriptions: map['eventSubscriptions'] == null ? null : pulumi.Output.create<List<AssessmentTemplateEventSubscription>>(pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(map['eventSubscriptions'], (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rulesPackageArns: pulumi.Output.create<List<String>>((map['rulesPackageArns'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetArn: pulumi.Output.create<String>(map['targetArn'] as String),
+      duration: (map['duration'] as int).input(),
+      eventSubscriptions: map['eventSubscriptions'] == null ? null : (pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(map['eventSubscriptions'], (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rulesPackageArns: ((map['rulesPackageArns'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetArn: (map['targetArn'] as String).input(),
     );
   }
 }

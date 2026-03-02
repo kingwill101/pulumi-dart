@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVolumeGroupEncryption {
   /// The timestamp of the expiration time for the current version of the Customer Managed Key.
-  final String currentVersionedKeyExpirationTimestamp;
+  final pulumi.Input<String> currentVersionedKeyExpirationTimestamp;
   /// The ID of the current versioned Key Vault Key in use.
-  final String currentVersionedKeyId;
+  final pulumi.Input<String> currentVersionedKeyId;
   /// The Key Vault Key URI for Customer Managed Key encryption, which can be either a full URI or a versionless URI.
-  final String keyVaultKeyId;
+  final pulumi.Input<String> keyVaultKeyId;
   /// The timestamp of the last rotation of the Key Vault Key.
-  final String lastKeyRotationTimestamp;
+  final pulumi.Input<String> lastKeyRotationTimestamp;
   /// The ID of the User Assigned Identity used by this Elastic SAN Volume Group.
-  final String userAssignedIdentityId;
+  final pulumi.Input<String> userAssignedIdentityId;
 
   /// Creates a new [GetVolumeGroupEncryption].
   /// [currentVersionedKeyExpirationTimestamp] The timestamp of the expiration time for the current version of the Customer Managed Key.
@@ -39,11 +40,11 @@ class GetVolumeGroupEncryption {
 
   factory GetVolumeGroupEncryption.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupEncryption(
-      currentVersionedKeyExpirationTimestamp: map['currentVersionedKeyExpirationTimestamp'] as String,
-      currentVersionedKeyId: map['currentVersionedKeyId'] as String,
-      keyVaultKeyId: map['keyVaultKeyId'] as String,
-      lastKeyRotationTimestamp: map['lastKeyRotationTimestamp'] as String,
-      userAssignedIdentityId: map['userAssignedIdentityId'] as String,
+      currentVersionedKeyExpirationTimestamp: (map['currentVersionedKeyExpirationTimestamp'] as String).input(),
+      currentVersionedKeyId: (map['currentVersionedKeyId'] as String).input(),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
+      lastKeyRotationTimestamp: (map['lastKeyRotationTimestamp'] as String).input(),
+      userAssignedIdentityId: (map['userAssignedIdentityId'] as String).input(),
     );
   }
 }

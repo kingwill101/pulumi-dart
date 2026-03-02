@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes threat kill chain phase entity
 class ThreatIntelligenceKillChainPhase {
   /// Kill chainName name
-  final String? killChainName;
+  final pulumi.Input<String>? killChainName;
   /// Phase name
-  final String? phaseName;
+  final pulumi.Input<String>? phaseName;
 
   /// Creates a new [ThreatIntelligenceKillChainPhase].
   /// [killChainName] Kill chainName name
@@ -25,8 +26,8 @@ class ThreatIntelligenceKillChainPhase {
 
   factory ThreatIntelligenceKillChainPhase.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceKillChainPhase(
-      killChainName: map['killChainName'] == null ? null : map['killChainName'] as String,
-      phaseName: map['phaseName'] == null ? null : map['phaseName'] as String,
+      killChainName: map['killChainName'] == null ? null : (map['killChainName'] as String).input(),
+      phaseName: map['phaseName'] == null ? null : (map['phaseName'] as String).input(),
     );
   }
 }

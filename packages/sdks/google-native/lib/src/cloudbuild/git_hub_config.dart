@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'oauth_credential.dart';
 
 /// Configuration for connections to github.com.
 class GitHubConfig {
   /// GitHub App installation id.
-  final String? appInstallationId;
+  final pulumi.Input<String>? appInstallationId;
   /// OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
-  final OAuthCredential? authorizerCredential;
+  final pulumi.Input<OAuthCredential>? authorizerCredential;
 
   /// Creates a new [GitHubConfig].
   /// [appInstallationId] GitHub App installation id.
@@ -20,14 +21,14 @@ class GitHubConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appInstallationId': ?appInstallationId,
-      'authorizerCredential': ?authorizerCredential == null ? null : authorizerCredential!.toMap(),
+      'authorizerCredential': ?pulumi.Input.mapOptionalInputValue<OAuthCredential, Map<String, dynamic>>(authorizerCredential, (value) => value.toMap()),
     };
   }
 
   factory GitHubConfig.fromMap(Map<String, dynamic> map) {
     return GitHubConfig(
-      appInstallationId: map['appInstallationId'] == null ? null : map['appInstallationId'] as String,
-      authorizerCredential: map['authorizerCredential'] == null ? null : OAuthCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>()),
+      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId'] as String).input(),
+      authorizerCredential: map['authorizerCredential'] == null ? null : (OAuthCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

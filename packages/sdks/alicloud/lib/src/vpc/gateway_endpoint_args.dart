@@ -35,23 +35,15 @@ class GatewayEndpointArgs {
   /// [tags] The tags of the resource.
   /// [vpcId] The ID of the VPC.
   GatewayEndpointArgs({
-    pulumi.Output<String>? gatewayEndpointDescrption,
-    pulumi.Output<String>? gatewayEndpointName,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<List<String>>? routeTables,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      gatewayEndpointDescrption = pulumi.Input.asOptionalInput<String>(gatewayEndpointDescrption),
-      gatewayEndpointName = pulumi.Input.asOptionalInput<String>(gatewayEndpointName),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      routeTables = pulumi.Input.asOptionalInput<List<String>>(routeTables),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.gatewayEndpointDescrption,
+    this.gatewayEndpointName,
+    this.policyDocument,
+    this.resourceGroupId,
+    this.routeTables,
+    required this.serviceName,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class GatewayEndpointArgs {
 
   factory GatewayEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GatewayEndpointArgs(
-      gatewayEndpointDescrption: map['gatewayEndpointDescrption'] == null ? null : pulumi.Output.create<String>(map['gatewayEndpointDescrption'] as String),
-      gatewayEndpointName: map['gatewayEndpointName'] == null ? null : pulumi.Output.create<String>(map['gatewayEndpointName'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      routeTables: map['routeTables'] == null ? null : pulumi.Output.create<List<String>>((map['routeTables'] as List).cast<String>()),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      gatewayEndpointDescrption: map['gatewayEndpointDescrption'] == null ? null : (map['gatewayEndpointDescrption'] as String).input(),
+      gatewayEndpointName: map['gatewayEndpointName'] == null ? null : (map['gatewayEndpointName'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      routeTables: map['routeTables'] == null ? null : ((map['routeTables'] as List).cast<String>()).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

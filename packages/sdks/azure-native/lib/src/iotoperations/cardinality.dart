@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_chain.dart';
 import 'frontend.dart';
 
 /// Cardinality properties
 class Cardinality {
   /// The backend broker desired properties
-  final BackendChain backendChain;
+  final pulumi.Input<BackendChain> backendChain;
   /// The frontend desired properties
-  final Frontend frontend;
+  final pulumi.Input<Frontend> frontend;
 
   /// Creates a new [Cardinality].
   /// [backendChain] The backend broker desired properties
@@ -20,15 +21,15 @@ class Cardinality {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendChain': backendChain.toMap(),
-      'frontend': frontend.toMap(),
+      'backendChain': pulumi.Input.mapInputValue<BackendChain, Map<String, dynamic>>(backendChain, (value) => value.toMap()),
+      'frontend': pulumi.Input.mapInputValue<Frontend, Map<String, dynamic>>(frontend, (value) => value.toMap()),
     };
   }
 
   factory Cardinality.fromMap(Map<String, dynamic> map) {
     return Cardinality(
-      backendChain: BackendChain.fromMap((map['backendChain'] as Map).cast<String, dynamic>()),
-      frontend: Frontend.fromMap((map['frontend'] as Map).cast<String, dynamic>()),
+      backendChain: (BackendChain.fromMap((map['backendChain'] as Map).cast<String, dynamic>())).input(),
+      frontend: (Frontend.fromMap((map['frontend'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

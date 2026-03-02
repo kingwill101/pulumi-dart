@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_source_configuration_image_repository_image_configuration.dart';
 
 class ServiceSourceConfigurationImageRepository {
   /// Configuration for running the identified image. See Image Configuration below for more details.
-  final ServiceSourceConfigurationImageRepositoryImageConfiguration? imageConfiguration;
+  final pulumi.Input<ServiceSourceConfigurationImageRepositoryImageConfiguration>? imageConfiguration;
   /// Identifier of an image. For an image in Amazon Elastic Container Registry (Amazon ECR), this is an image name. For the
   /// image name format, see Pulling an image in the Amazon ECR User Guide.
-  final String imageIdentifier;
+  final pulumi.Input<String> imageIdentifier;
   /// Type of the image repository. This reflects the repository provider and whether the repository is private or public. Valid values: `ECR` , `ECR_PUBLIC`.
-  final String imageRepositoryType;
+  final pulumi.Input<String> imageRepositoryType;
 
   /// Creates a new [ServiceSourceConfigurationImageRepository].
   /// [imageConfiguration] Configuration for running the identified image. See Image Configuration below for more details.
@@ -23,7 +24,7 @@ class ServiceSourceConfigurationImageRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imageConfiguration': ?imageConfiguration == null ? null : imageConfiguration!.toMap(),
+      'imageConfiguration': ?pulumi.Input.mapOptionalInputValue<ServiceSourceConfigurationImageRepositoryImageConfiguration, Map<String, dynamic>>(imageConfiguration, (value) => value.toMap()),
       'imageIdentifier': imageIdentifier,
       'imageRepositoryType': imageRepositoryType,
     };
@@ -31,9 +32,9 @@ class ServiceSourceConfigurationImageRepository {
 
   factory ServiceSourceConfigurationImageRepository.fromMap(Map<String, dynamic> map) {
     return ServiceSourceConfigurationImageRepository(
-      imageConfiguration: map['imageConfiguration'] == null ? null : ServiceSourceConfigurationImageRepositoryImageConfiguration.fromMap((map['imageConfiguration'] as Map).cast<String, dynamic>()),
-      imageIdentifier: map['imageIdentifier'] as String,
-      imageRepositoryType: map['imageRepositoryType'] as String,
+      imageConfiguration: map['imageConfiguration'] == null ? null : (ServiceSourceConfigurationImageRepositoryImageConfiguration.fromMap((map['imageConfiguration'] as Map).cast<String, dynamic>())).input(),
+      imageIdentifier: (map['imageIdentifier'] as String).input(),
+      imageRepositoryType: (map['imageRepositoryType'] as String).input(),
     );
   }
 }

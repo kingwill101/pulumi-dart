@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerGroupsGroupHealthCheck {
   /// The backend port that is used for health checks.
-  final int healthCheckConnectPort;
+  final pulumi.Input<int> healthCheckConnectPort;
   /// The maximum timeout period of a health check response.
-  final int healthCheckConnectTimeout;
+  final pulumi.Input<int> healthCheckConnectTimeout;
   /// The domain name that is used for health checks.
-  final String healthCheckDomain;
+  final pulumi.Input<String> healthCheckDomain;
   /// Specifies whether to enable health checks.
-  final bool healthCheckEnabled;
+  final pulumi.Input<bool> healthCheckEnabled;
   /// The HTTP status codes returned for health checks.
-  final List<String> healthCheckHttpCodes;
+  final pulumi.Input<List<String>> healthCheckHttpCodes;
   /// The interval between two consecutive health checks.
-  final int healthCheckInterval;
+  final pulumi.Input<int> healthCheckInterval;
   /// The protocol that is used for health checks.
-  final String healthCheckType;
+  final pulumi.Input<String> healthCheckType;
   /// The path to which health check requests are sent.
-  final String healthCheckUrl;
+  final pulumi.Input<String> healthCheckUrl;
   /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy.
-  final int healthyThreshold;
+  final pulumi.Input<int> healthyThreshold;
   /// The HTTP method that is used for health checks.
-  final String httpCheckMethod;
+  final pulumi.Input<String> httpCheckMethod;
   /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy.
-  final int unhealthyThreshold;
+  final pulumi.Input<int> unhealthyThreshold;
 
   /// Creates a new [GetServerGroupsGroupHealthCheck].
   /// [healthCheckConnectPort] The backend port that is used for health checks.
@@ -69,17 +70,17 @@ class GetServerGroupsGroupHealthCheck {
 
   factory GetServerGroupsGroupHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetServerGroupsGroupHealthCheck(
-      healthCheckConnectPort: map['healthCheckConnectPort'] as int,
-      healthCheckConnectTimeout: map['healthCheckConnectTimeout'] as int,
-      healthCheckDomain: map['healthCheckDomain'] as String,
-      healthCheckEnabled: map['healthCheckEnabled'] as bool,
-      healthCheckHttpCodes: (map['healthCheckHttpCodes'] as List).cast<String>(),
-      healthCheckInterval: map['healthCheckInterval'] as int,
-      healthCheckType: map['healthCheckType'] as String,
-      healthCheckUrl: map['healthCheckUrl'] as String,
-      healthyThreshold: map['healthyThreshold'] as int,
-      httpCheckMethod: map['httpCheckMethod'] as String,
-      unhealthyThreshold: map['unhealthyThreshold'] as int,
+      healthCheckConnectPort: (map['healthCheckConnectPort'] as int).input(),
+      healthCheckConnectTimeout: (map['healthCheckConnectTimeout'] as int).input(),
+      healthCheckDomain: (map['healthCheckDomain'] as String).input(),
+      healthCheckEnabled: (map['healthCheckEnabled'] as bool).input(),
+      healthCheckHttpCodes: ((map['healthCheckHttpCodes'] as List).cast<String>()).input(),
+      healthCheckInterval: (map['healthCheckInterval'] as int).input(),
+      healthCheckType: (map['healthCheckType'] as String).input(),
+      healthCheckUrl: (map['healthCheckUrl'] as String).input(),
+      healthyThreshold: (map['healthyThreshold'] as int).input(),
+      httpCheckMethod: (map['httpCheckMethod'] as String).input(),
+      unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),
     );
   }
 }

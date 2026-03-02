@@ -16,11 +16,9 @@ class GetBlueprintArgs {
   /// [blueprintName] Name of the blueprint definition.
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   GetBlueprintArgs({
-    required pulumi.Output<String> blueprintName,
-    required pulumi.Output<String> resourceScope,
-  }) :
-      blueprintName = pulumi.Input.asInput<String>(blueprintName),
-      resourceScope = pulumi.Input.asInput<String>(resourceScope);
+    required this.blueprintName,
+    required this.resourceScope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBlueprintArgs {
 
   factory GetBlueprintArgs.fromMap(Map<String, dynamic> map) {
     return GetBlueprintArgs(
-      blueprintName: pulumi.Output.create<String>(map['blueprintName'] as String),
-      resourceScope: pulumi.Output.create<String>(map['resourceScope'] as String),
+      blueprintName: (map['blueprintName'] as String).input(),
+      resourceScope: (map['resourceScope'] as String).input(),
     );
   }
 }

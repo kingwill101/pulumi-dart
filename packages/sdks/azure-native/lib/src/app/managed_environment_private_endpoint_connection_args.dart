@@ -23,15 +23,11 @@ class ManagedEnvironmentPrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ManagedEnvironmentPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> environmentName,
-    pulumi.Output<String>? privateEndpointConnectionName,
-    required pulumi.Output<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      privateEndpointConnectionName = pulumi.Input.asOptionalInput<String>(privateEndpointConnectionName),
-      privateLinkServiceConnectionState = pulumi.Input.asInput<PrivateLinkServiceConnectionState>(privateLinkServiceConnectionState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentName,
+    this.privateEndpointConnectionName,
+    required this.privateLinkServiceConnectionState,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ManagedEnvironmentPrivateEndpointConnectionArgs {
 
   factory ManagedEnvironmentPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ManagedEnvironmentPrivateEndpointConnectionArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      privateLinkServiceConnectionState: pulumi.Output.create<PrivateLinkServiceConnectionState>(PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
+      privateLinkServiceConnectionState: (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

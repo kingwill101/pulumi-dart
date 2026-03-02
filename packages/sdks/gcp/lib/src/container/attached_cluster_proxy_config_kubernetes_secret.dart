@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AttachedClusterProxyConfigKubernetesSecret {
   /// Name of the kubernetes secret containing the proxy config.
-  final String name;
+  final pulumi.Input<String> name;
   /// Namespace of the kubernetes secret containing the proxy config.
-  final String namespace;
+  final pulumi.Input<String> namespace;
 
   /// Creates a new [AttachedClusterProxyConfigKubernetesSecret].
   /// [name] Name of the kubernetes secret containing the proxy config.
@@ -24,8 +25,8 @@ class AttachedClusterProxyConfigKubernetesSecret {
 
   factory AttachedClusterProxyConfigKubernetesSecret.fromMap(Map<String, dynamic> map) {
     return AttachedClusterProxyConfigKubernetesSecret(
-      name: map['name'] as String,
-      namespace: map['namespace'] as String,
+      name: (map['name'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
     );
   }
 }

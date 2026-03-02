@@ -118,25 +118,16 @@ class RunArgs {
   /// [logging] If the command's stdout and stderr should be logged. This doesn't affect the capturing of
   /// [stdin] Pass a string to the command's process as standard in
   RunArgs({
-    pulumi.Output<bool>? addPreviousOutputInEnv,
-    pulumi.Output<List<String>>? archivePaths,
-    pulumi.Output<List<String>>? assetPaths,
-    required pulumi.Output<String> command,
-    pulumi.Output<String>? dir,
-    pulumi.Output<Map<String, String>>? environment,
-    pulumi.Output<List<String>>? interpreter,
-    pulumi.Output<Logging>? logging,
-    pulumi.Output<String>? stdin,
-  }) :
-      addPreviousOutputInEnv = pulumi.Input.asOptionalInput<bool>(addPreviousOutputInEnv),
-      archivePaths = pulumi.Input.asOptionalInput<List<String>>(archivePaths),
-      assetPaths = pulumi.Input.asOptionalInput<List<String>>(assetPaths),
-      command = pulumi.Input.asInput<String>(command),
-      dir = pulumi.Input.asOptionalInput<String>(dir),
-      environment = pulumi.Input.asOptionalInput<Map<String, String>>(environment),
-      interpreter = pulumi.Input.asOptionalInput<List<String>>(interpreter),
-      logging = pulumi.Input.asOptionalInput<Logging>(logging),
-      stdin = pulumi.Input.asOptionalInput<String>(stdin);
+    this.addPreviousOutputInEnv,
+    this.archivePaths,
+    this.assetPaths,
+    required this.command,
+    this.dir,
+    this.environment,
+    this.interpreter,
+    this.logging,
+    this.stdin,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -154,15 +145,15 @@ class RunArgs {
 
   factory RunArgs.fromMap(Map<String, dynamic> map) {
     return RunArgs(
-      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : pulumi.Output.create<bool>(map['addPreviousOutputInEnv'] as bool),
-      archivePaths: map['archivePaths'] == null ? null : pulumi.Output.create<List<String>>((map['archivePaths'] as List).cast<String>()),
-      assetPaths: map['assetPaths'] == null ? null : pulumi.Output.create<List<String>>((map['assetPaths'] as List).cast<String>()),
-      command: pulumi.Output.create<String>(map['command'] as String),
-      dir: map['dir'] == null ? null : pulumi.Output.create<String>(map['dir'] as String),
-      environment: map['environment'] == null ? null : pulumi.Output.create<Map<String, String>>((map['environment'] as Map).cast<String, String>()),
-      interpreter: map['interpreter'] == null ? null : pulumi.Output.create<List<String>>((map['interpreter'] as List).cast<String>()),
-      logging: map['logging'] == null ? null : pulumi.Output.create<Logging>(Logging.fromValue(map['logging'] as String)),
-      stdin: map['stdin'] == null ? null : pulumi.Output.create<String>(map['stdin'] as String),
+      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : (map['addPreviousOutputInEnv'] as bool).input(),
+      archivePaths: map['archivePaths'] == null ? null : ((map['archivePaths'] as List).cast<String>()).input(),
+      assetPaths: map['assetPaths'] == null ? null : ((map['assetPaths'] as List).cast<String>()).input(),
+      command: (map['command'] as String).input(),
+      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
+      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
+      interpreter: map['interpreter'] == null ? null : ((map['interpreter'] as List).cast<String>()).input(),
+      logging: map['logging'] == null ? null : (Logging.fromValue(map['logging'] as String)).input(),
+      stdin: map['stdin'] == null ? null : (map['stdin'] as String).input(),
     );
   }
 }

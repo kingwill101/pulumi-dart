@@ -14,11 +14,9 @@ class GetServicePerimeterArgs {
   /// [accessPolicyId] Required.
   /// [servicePerimeterId] Required.
   GetServicePerimeterArgs({
-    required pulumi.Output<String> accessPolicyId,
-    required pulumi.Output<String> servicePerimeterId,
-  }) :
-      accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId),
-      servicePerimeterId = pulumi.Input.asInput<String>(servicePerimeterId);
+    required this.accessPolicyId,
+    required this.servicePerimeterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetServicePerimeterArgs {
 
   factory GetServicePerimeterArgs.fromMap(Map<String, dynamic> map) {
     return GetServicePerimeterArgs(
-      accessPolicyId: pulumi.Output.create<String>(map['accessPolicyId'] as String),
-      servicePerimeterId: pulumi.Output.create<String>(map['servicePerimeterId'] as String),
+      accessPolicyId: (map['accessPolicyId'] as String).input(),
+      servicePerimeterId: (map['servicePerimeterId'] as String).input(),
     );
   }
 }

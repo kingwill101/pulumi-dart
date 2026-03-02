@@ -25,13 +25,10 @@ class ContactsEmailContactArgs {
   /// [name] Name of the email contact. Must be between 1 and 64 characters and can contain alphanumeric
   /// [tags] Map of tags to assign to the resource. If configured with a provider
   ContactsEmailContactArgs({
-    required pulumi.Output<String> emailAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      emailAddress = pulumi.Input.asInput<String>(emailAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.emailAddress,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,9 +40,9 @@ class ContactsEmailContactArgs {
 
   factory ContactsEmailContactArgs.fromMap(Map<String, dynamic> map) {
     return ContactsEmailContactArgs(
-      emailAddress: pulumi.Output.create<String>(map['emailAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      emailAddress: (map['emailAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

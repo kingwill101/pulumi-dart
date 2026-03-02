@@ -27,19 +27,13 @@ class InstanceIamMemberArgs {
   /// [region] The region of the Data Fusion instance.
   /// [role] Required.
   InstanceIamMemberArgs({
-    pulumi.Output<InstanceIamMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<InstanceIamMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.member,
+    this.name,
+    this.project,
+    this.region,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class InstanceIamMemberArgs {
 
   factory InstanceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<InstanceIamMemberCondition>(InstanceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (InstanceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

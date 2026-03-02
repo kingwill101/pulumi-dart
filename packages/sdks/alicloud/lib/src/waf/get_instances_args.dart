@@ -25,17 +25,12 @@ class GetInstancesArgs {
   /// [resourceGroupId] The ID of resource group to which WAF instance belongs.
   /// [status] The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
   GetInstancesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? instanceSource,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<int>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceSource = pulumi.Input.asOptionalInput<String>(instanceSource),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<int>(status);
+    this.ids,
+    this.instanceSource,
+    this.outputFile,
+    this.resourceGroupId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceSource: map['instanceSource'] == null ? null : pulumi.Output.create<String>(map['instanceSource'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceSource: map['instanceSource'] == null ? null : (map['instanceSource'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
     );
   }
 }

@@ -12,9 +12,8 @@ class GetAccessPolicyAccesscontextmanagerV1betaArgs {
   /// Creates a new [GetAccessPolicyAccesscontextmanagerV1betaArgs].
   /// [accessPolicyId] Required.
   GetAccessPolicyAccesscontextmanagerV1betaArgs({
-    required pulumi.Output<String> accessPolicyId,
-  }) :
-      accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId);
+    required this.accessPolicyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetAccessPolicyAccesscontextmanagerV1betaArgs {
 
   factory GetAccessPolicyAccesscontextmanagerV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyAccesscontextmanagerV1betaArgs(
-      accessPolicyId: pulumi.Output.create<String>(map['accessPolicyId'] as String),
+      accessPolicyId: (map['accessPolicyId'] as String).input(),
     );
   }
 }

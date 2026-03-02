@@ -16,13 +16,10 @@ class LogIndexPolicyState {
   /// [policyDocument] JSON policy document. This is a JSON formatted string.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LogIndexPolicyState({
-    pulumi.Output<String>? logGroupName,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? region,
-  }) :
-      logGroupName = pulumi.Input.asOptionalInput<String>(logGroupName),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.logGroupName,
+    this.policyDocument,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class LogIndexPolicyState {
 
   factory LogIndexPolicyState.fromMap(Map<String, dynamic> map) {
     return LogIndexPolicyState(
-      logGroupName: map['logGroupName'] == null ? null : pulumi.Output.create<String>(map['logGroupName'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetApiSourceArgs {
   /// [serviceName] The name of Azure API Center service.
   /// [workspaceName] The name of the workspace.
   GetApiSourceArgs({
-    required pulumi.Output<String> apiSourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      apiSourceName = pulumi.Input.asInput<String>(apiSourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.apiSourceName,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetApiSourceArgs {
 
   factory GetApiSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetApiSourceArgs(
-      apiSourceName: pulumi.Output.create<String>(map['apiSourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      apiSourceName: (map['apiSourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

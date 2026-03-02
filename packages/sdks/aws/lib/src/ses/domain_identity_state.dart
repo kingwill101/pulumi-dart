@@ -19,15 +19,11 @@ class DomainIdentityState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [verificationToken] A code which when added to the domain as a TXT record will signal to SES that the owner of the domain has authorized SES to act on their behalf. The domain identity will be in state "verification pending" until this is done. See the With Route53 Record example for how this might be achieved when the domain is hosted in Route 53 and managed by this provider.  Find out more about verifying domains in Amazon SES in the [AWS SES docs](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.html).
   DomainIdentityState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? verificationToken,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      verificationToken = pulumi.Input.asOptionalInput<String>(verificationToken);
+    this.arn,
+    this.domain,
+    this.region,
+    this.verificationToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class DomainIdentityState {
 
   factory DomainIdentityState.fromMap(Map<String, dynamic> map) {
     return DomainIdentityState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      verificationToken: map['verificationToken'] == null ? null : pulumi.Output.create<String>(map['verificationToken'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      verificationToken: map['verificationToken'] == null ? null : (map['verificationToken'] as String).input(),
     );
   }
 }

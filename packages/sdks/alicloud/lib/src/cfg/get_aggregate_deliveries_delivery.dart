@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAggregateDeliveriesDelivery {
   /// The Aliyun User Id.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// The ID of the Aggregator.
-  final String aggregatorId;
+  final pulumi.Input<String> aggregatorId;
   /// Open or close delivery configuration change history.
-  final bool configurationItemChangeNotification;
+  final pulumi.Input<bool> configurationItemChangeNotification;
   /// Open or close timed snapshot of shipping resources.
-  final bool configurationSnapshot;
+  final pulumi.Input<bool> configurationSnapshot;
   /// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
-  final String deliveryChannelAssumeRoleArn;
+  final pulumi.Input<String> deliveryChannelAssumeRoleArn;
   /// The rule attached to the delivery method.
-  final String deliveryChannelCondition;
+  final pulumi.Input<String> deliveryChannelCondition;
   /// The ID of the delivery method.
-  final String deliveryChannelId;
+  final pulumi.Input<String> deliveryChannelId;
   /// The name of the delivery method.
-  final String deliveryChannelName;
+  final pulumi.Input<String> deliveryChannelName;
   /// The ARN of the delivery destination.
-  final String deliveryChannelTargetArn;
+  final pulumi.Input<String> deliveryChannelTargetArn;
   /// The type of the delivery method.
-  final String deliveryChannelType;
+  final pulumi.Input<String> deliveryChannelType;
   /// The description of the delivery method.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Aggregate Delivery.
-  final String id;
+  final pulumi.Input<String> id;
   /// Open or close non-compliance events of delivery resources.
-  final bool nonCompliantNotification;
+  final pulumi.Input<bool> nonCompliantNotification;
   /// The oss ARN of the delivery channel when the value data oversized limit.
-  final String oversizedDataOssTargetArn;
+  final pulumi.Input<String> oversizedDataOssTargetArn;
   /// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
-  final int status;
+  final pulumi.Input<int> status;
 
   /// Creates a new [GetAggregateDeliveriesDelivery].
   /// [accountId] The Aliyun User Id.
@@ -89,21 +90,21 @@ class GetAggregateDeliveriesDelivery {
 
   factory GetAggregateDeliveriesDelivery.fromMap(Map<String, dynamic> map) {
     return GetAggregateDeliveriesDelivery(
-      accountId: map['accountId'] as String,
-      aggregatorId: map['aggregatorId'] as String,
-      configurationItemChangeNotification: map['configurationItemChangeNotification'] as bool,
-      configurationSnapshot: map['configurationSnapshot'] as bool,
-      deliveryChannelAssumeRoleArn: map['deliveryChannelAssumeRoleArn'] as String,
-      deliveryChannelCondition: map['deliveryChannelCondition'] as String,
-      deliveryChannelId: map['deliveryChannelId'] as String,
-      deliveryChannelName: map['deliveryChannelName'] as String,
-      deliveryChannelTargetArn: map['deliveryChannelTargetArn'] as String,
-      deliveryChannelType: map['deliveryChannelType'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      nonCompliantNotification: map['nonCompliantNotification'] as bool,
-      oversizedDataOssTargetArn: map['oversizedDataOssTargetArn'] as String,
-      status: map['status'] as int,
+      accountId: (map['accountId'] as String).input(),
+      aggregatorId: (map['aggregatorId'] as String).input(),
+      configurationItemChangeNotification: (map['configurationItemChangeNotification'] as bool).input(),
+      configurationSnapshot: (map['configurationSnapshot'] as bool).input(),
+      deliveryChannelAssumeRoleArn: (map['deliveryChannelAssumeRoleArn'] as String).input(),
+      deliveryChannelCondition: (map['deliveryChannelCondition'] as String).input(),
+      deliveryChannelId: (map['deliveryChannelId'] as String).input(),
+      deliveryChannelName: (map['deliveryChannelName'] as String).input(),
+      deliveryChannelTargetArn: (map['deliveryChannelTargetArn'] as String).input(),
+      deliveryChannelType: (map['deliveryChannelType'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      nonCompliantNotification: (map['nonCompliantNotification'] as bool).input(),
+      oversizedDataOssTargetArn: (map['oversizedDataOssTargetArn'] as String).input(),
+      status: (map['status'] as int).input(),
     );
   }
 }

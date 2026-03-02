@@ -9,15 +9,15 @@ import 'odata_error_response.dart';
 class MigrateMISyncCompleteCommandPropertiesResponse {
   /// Command type.
   /// Expected value is 'Migrate.SqlServer.AzureDbSqlMi.Complete'.
-  final String commandType;
+  final pulumi.Input<String> commandType;
   /// Array of errors. This is ignored if submitted.
-  final List<ODataErrorResponse> errors;
+  final pulumi.Input<List<ODataErrorResponse>> errors;
   /// Command input
-  final MigrateMISyncCompleteCommandInputResponse? input;
+  final pulumi.Input<MigrateMISyncCompleteCommandInputResponse>? input;
   /// Command output. This is ignored if submitted.
-  final MigrateMISyncCompleteCommandOutputResponse output;
+  final pulumi.Input<MigrateMISyncCompleteCommandOutputResponse> output;
   /// The state of the command. This is ignored if submitted.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [MigrateMISyncCompleteCommandPropertiesResponse].
   /// [commandType] Command type.
@@ -36,20 +36,20 @@ class MigrateMISyncCompleteCommandPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'commandType': commandType,
-      'errors': pulumi.Input.encodeList<ODataErrorResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
-      'input': ?input == null ? null : input!.toMap(),
-      'output': output.toMap(),
+      'errors': pulumi.Input.mapInputValue<List<ODataErrorResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ODataErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'input': ?pulumi.Input.mapOptionalInputValue<MigrateMISyncCompleteCommandInputResponse, Map<String, dynamic>>(input, (value) => value.toMap()),
+      'output': pulumi.Input.mapInputValue<MigrateMISyncCompleteCommandOutputResponse, Map<String, dynamic>>(output, (value) => value.toMap()),
       'state': state,
     };
   }
 
   factory MigrateMISyncCompleteCommandPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrateMISyncCompleteCommandPropertiesResponse(
-      commandType: map['commandType'] as String,
-      errors: pulumi.Input.decodeList<ODataErrorResponse>(map['errors'], (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      input: map['input'] == null ? null : MigrateMISyncCompleteCommandInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>()),
-      output: MigrateMISyncCompleteCommandOutputResponse.fromMap((map['output'] as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
+      commandType: (map['commandType'] as String).input(),
+      errors: (pulumi.Input.decodeList<ODataErrorResponse>(map['errors'], (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      input: map['input'] == null ? null : (MigrateMISyncCompleteCommandInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      output: (MigrateMISyncCompleteCommandOutputResponse.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

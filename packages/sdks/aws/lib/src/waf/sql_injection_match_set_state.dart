@@ -17,13 +17,10 @@ class SqlInjectionMatchSetState {
   /// [name] The name or description of the SQL Injection Match Set.
   /// [sqlInjectionMatchTuples] The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
   SqlInjectionMatchSetState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<SqlInjectionMatchSetSqlInjectionMatchTuple>>? sqlInjectionMatchTuples,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sqlInjectionMatchTuples = pulumi.Input.asOptionalInput<List<SqlInjectionMatchSetSqlInjectionMatchTuple>>(sqlInjectionMatchTuples);
+    this.arn,
+    this.name,
+    this.sqlInjectionMatchTuples,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class SqlInjectionMatchSetState {
 
   factory SqlInjectionMatchSetState.fromMap(Map<String, dynamic> map) {
     return SqlInjectionMatchSetState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sqlInjectionMatchTuples: map['sqlInjectionMatchTuples'] == null ? null : pulumi.Output.create<List<SqlInjectionMatchSetSqlInjectionMatchTuple>>(pulumi.Input.decodeList<SqlInjectionMatchSetSqlInjectionMatchTuple>(map['sqlInjectionMatchTuples'], (value) => SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap((value as Map).cast<String, dynamic>()))),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sqlInjectionMatchTuples: map['sqlInjectionMatchTuples'] == null ? null : (pulumi.Input.decodeList<SqlInjectionMatchSetSqlInjectionMatchTuple>(map['sqlInjectionMatchTuples'], (value) => SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

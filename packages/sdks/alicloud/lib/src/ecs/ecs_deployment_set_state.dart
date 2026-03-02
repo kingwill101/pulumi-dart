@@ -27,19 +27,13 @@ class EcsDeploymentSetState {
   /// [onUnableToRedeployFailedInstance] The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
   /// [strategy] The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
   EcsDeploymentSetState({
-    pulumi.Output<String>? deploymentSetName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? granularity,
-    pulumi.Output<String>? onUnableToRedeployFailedInstance,
-    pulumi.Output<String>? strategy,
-  }) :
-      deploymentSetName = pulumi.Input.asOptionalInput<String>(deploymentSetName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      granularity = pulumi.Input.asOptionalInput<String>(granularity),
-      onUnableToRedeployFailedInstance = pulumi.Input.asOptionalInput<String>(onUnableToRedeployFailedInstance),
-      strategy = pulumi.Input.asOptionalInput<String>(strategy);
+    this.deploymentSetName,
+    this.description,
+    this.domain,
+    this.granularity,
+    this.onUnableToRedeployFailedInstance,
+    this.strategy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class EcsDeploymentSetState {
 
   factory EcsDeploymentSetState.fromMap(Map<String, dynamic> map) {
     return EcsDeploymentSetState(
-      deploymentSetName: map['deploymentSetName'] == null ? null : pulumi.Output.create<String>(map['deploymentSetName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      granularity: map['granularity'] == null ? null : pulumi.Output.create<String>(map['granularity'] as String),
-      onUnableToRedeployFailedInstance: map['onUnableToRedeployFailedInstance'] == null ? null : pulumi.Output.create<String>(map['onUnableToRedeployFailedInstance'] as String),
-      strategy: map['strategy'] == null ? null : pulumi.Output.create<String>(map['strategy'] as String),
+      deploymentSetName: map['deploymentSetName'] == null ? null : (map['deploymentSetName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      granularity: map['granularity'] == null ? null : (map['granularity'] as String).input(),
+      onUnableToRedeployFailedInstance: map['onUnableToRedeployFailedInstance'] == null ? null : (map['onUnableToRedeployFailedInstance'] as String).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
     );
   }
 }

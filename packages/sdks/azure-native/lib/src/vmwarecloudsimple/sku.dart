@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The purchase SKU for CloudSimple paid resources
 class Sku {
   /// The capacity of the SKU
-  final String? capacity;
+  final pulumi.Input<String>? capacity;
   /// dedicatedCloudNode example: 8 x Ten-Core Intel® Xeon® Processor E5-2640 v4 2.40GHz 25MB Cache (90W); 12 x 64GB PC4-19200 2400MHz DDR4 ECC Registered DIMM, ...
-  final String? description;
+  final pulumi.Input<String>? description;
   /// If the service has different generations of hardware, for the same SKU, then that can be captured here
-  final String? family;
+  final pulumi.Input<String>? family;
   /// The name of the SKU for VMWare CloudSimple Node
-  final String name;
+  final pulumi.Input<String> name;
   /// The tier of the SKU
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [Sku].
   /// [capacity] The capacity of the SKU
@@ -40,11 +41,11 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      capacity: map['capacity'] == null ? null : map['capacity'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      family: map['family'] == null ? null : map['family'] as String,
-      name: map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      name: (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

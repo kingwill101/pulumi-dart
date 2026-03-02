@@ -39,27 +39,17 @@ class GetCapacityReservationsArgs {
   /// [status] The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
   /// [tags] The tag of the resource.
   GetCapacityReservationsArgs({
-    pulumi.Output<List<String>>? capacityReservationIds,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<String>? platform,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      capacityReservationIds = pulumi.Input.asOptionalInput<List<String>>(capacityReservationIds),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      platform = pulumi.Input.asOptionalInput<String>(platform),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.capacityReservationIds,
+    this.ids,
+    this.instanceType,
+    this.nameRegex,
+    this.outputFile,
+    this.paymentType,
+    this.platform,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class GetCapacityReservationsArgs {
 
   factory GetCapacityReservationsArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityReservationsArgs(
-      capacityReservationIds: map['capacityReservationIds'] == null ? null : pulumi.Output.create<List<String>>((map['capacityReservationIds'] as List).cast<String>()),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      platform: map['platform'] == null ? null : pulumi.Output.create<String>(map['platform'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      capacityReservationIds: map['capacityReservationIds'] == null ? null : ((map['capacityReservationIds'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

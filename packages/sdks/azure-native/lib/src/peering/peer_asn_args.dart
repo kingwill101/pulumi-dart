@@ -23,15 +23,11 @@ class PeerAsnArgs {
   /// [peerContactDetail] The contact details of the peer.
   /// [peerName] The name of the peer.
   PeerAsnArgs({
-    pulumi.Output<int>? peerAsn,
-    pulumi.Output<String>? peerAsnName,
-    pulumi.Output<List<ContactDetail>>? peerContactDetail,
-    pulumi.Output<String>? peerName,
-  }) :
-      peerAsn = pulumi.Input.asOptionalInput<int>(peerAsn),
-      peerAsnName = pulumi.Input.asOptionalInput<String>(peerAsnName),
-      peerContactDetail = pulumi.Input.asOptionalInput<List<ContactDetail>>(peerContactDetail),
-      peerName = pulumi.Input.asOptionalInput<String>(peerName);
+    this.peerAsn,
+    this.peerAsnName,
+    this.peerContactDetail,
+    this.peerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class PeerAsnArgs {
 
   factory PeerAsnArgs.fromMap(Map<String, dynamic> map) {
     return PeerAsnArgs(
-      peerAsn: map['peerAsn'] == null ? null : pulumi.Output.create<int>(map['peerAsn'] as int),
-      peerAsnName: map['peerAsnName'] == null ? null : pulumi.Output.create<String>(map['peerAsnName'] as String),
-      peerContactDetail: map['peerContactDetail'] == null ? null : pulumi.Output.create<List<ContactDetail>>(pulumi.Input.decodeList<ContactDetail>(map['peerContactDetail'], (value) => ContactDetail.fromMap((value as Map).cast<String, dynamic>()))),
-      peerName: map['peerName'] == null ? null : pulumi.Output.create<String>(map['peerName'] as String),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
+      peerAsnName: map['peerAsnName'] == null ? null : (map['peerAsnName'] as String).input(),
+      peerContactDetail: map['peerContactDetail'] == null ? null : (pulumi.Input.decodeList<ContactDetail>(map['peerContactDetail'], (value) => ContactDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      peerName: map['peerName'] == null ? null : (map['peerName'] as String).input(),
     );
   }
 }

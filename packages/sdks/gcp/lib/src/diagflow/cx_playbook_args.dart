@@ -37,21 +37,14 @@ class CxPlaybookArgs {
   /// [playbookType] Type of the playbook.
   /// [referencedTools] The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
   CxPlaybookArgs({
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> goal,
-    pulumi.Output<CxPlaybookInstruction>? instruction,
-    pulumi.Output<CxPlaybookLlmModelSettings>? llmModelSettings,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? playbookType,
-    pulumi.Output<List<String>>? referencedTools,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      goal = pulumi.Input.asInput<String>(goal),
-      instruction = pulumi.Input.asOptionalInput<CxPlaybookInstruction>(instruction),
-      llmModelSettings = pulumi.Input.asOptionalInput<CxPlaybookLlmModelSettings>(llmModelSettings),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      playbookType = pulumi.Input.asOptionalInput<String>(playbookType),
-      referencedTools = pulumi.Input.asOptionalInput<List<String>>(referencedTools);
+    required this.displayName,
+    required this.goal,
+    this.instruction,
+    this.llmModelSettings,
+    this.parent,
+    this.playbookType,
+    this.referencedTools,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class CxPlaybookArgs {
 
   factory CxPlaybookArgs.fromMap(Map<String, dynamic> map) {
     return CxPlaybookArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      goal: pulumi.Output.create<String>(map['goal'] as String),
-      instruction: map['instruction'] == null ? null : pulumi.Output.create<CxPlaybookInstruction>(CxPlaybookInstruction.fromMap((map['instruction'] as Map).cast<String, dynamic>())),
-      llmModelSettings: map['llmModelSettings'] == null ? null : pulumi.Output.create<CxPlaybookLlmModelSettings>(CxPlaybookLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      playbookType: map['playbookType'] == null ? null : pulumi.Output.create<String>(map['playbookType'] as String),
-      referencedTools: map['referencedTools'] == null ? null : pulumi.Output.create<List<String>>((map['referencedTools'] as List).cast<String>()),
+      displayName: (map['displayName'] as String).input(),
+      goal: (map['goal'] as String).input(),
+      instruction: map['instruction'] == null ? null : (CxPlaybookInstruction.fromMap((map['instruction'] as Map).cast<String, dynamic>())).input(),
+      llmModelSettings: map['llmModelSettings'] == null ? null : (CxPlaybookLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      playbookType: map['playbookType'] == null ? null : (map['playbookType'] as String).input(),
+      referencedTools: map['referencedTools'] == null ? null : ((map['referencedTools'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetControlProjectIntelligenceConfigTrialConfig {
   /// The time at which the trial expires.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
 
   /// Creates a new [GetControlProjectIntelligenceConfigTrialConfig].
   /// [expireTime] The time at which the trial expires.
@@ -19,7 +20,7 @@ class GetControlProjectIntelligenceConfigTrialConfig {
 
   factory GetControlProjectIntelligenceConfigTrialConfig.fromMap(Map<String, dynamic> map) {
     return GetControlProjectIntelligenceConfigTrialConfig(
-      expireTime: map['expireTime'] as String,
+      expireTime: (map['expireTime'] as String).input(),
     );
   }
 }

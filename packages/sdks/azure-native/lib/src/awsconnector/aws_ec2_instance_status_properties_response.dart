@@ -8,19 +8,19 @@ import 'instance_status_summary_response.dart';
 /// Definition of awsEc2InstanceStatus
 class AwsEc2InstanceStatusPropertiesResponse {
   /// <p>The Availability Zone of the instance.</p>
-  final String? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
   /// <p>Any scheduled events associated with the instance.</p>
-  final List<InstanceStatusEventResponse>? events;
+  final pulumi.Input<List<InstanceStatusEventResponse>>? events;
   /// <p>The ID of the instance.</p>
-  final String? instanceId;
+  final pulumi.Input<String>? instanceId;
   /// <p>The intended state of the instance. <a>DescribeInstanceStatus</a> requires that an instance be in the <code>running</code> state.</p>
-  final InstanceStateResponse? instanceState;
+  final pulumi.Input<InstanceStateResponse>? instanceState;
   /// <p>Reports impaired functionality that stems from issues internal to the instance, such as impaired reachability.</p>
-  final InstanceStatusSummaryResponse? instanceStatus;
+  final pulumi.Input<InstanceStatusSummaryResponse>? instanceStatus;
   /// <p>The Amazon Resource Name (ARN) of the Outpost.</p>
-  final String? outpostArn;
+  final pulumi.Input<String>? outpostArn;
   /// <p>Reports impaired functionality that stems from issues related to the systems that support an instance, such as hardware failures and network connectivity problems.</p>
-  final InstanceStatusSummaryResponse? systemStatus;
+  final pulumi.Input<InstanceStatusSummaryResponse>? systemStatus;
 
   /// Creates a new [AwsEc2InstanceStatusPropertiesResponse].
   /// [availabilityZone] <p>The Availability Zone of the instance.</p>
@@ -43,24 +43,24 @@ class AwsEc2InstanceStatusPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilityZone': ?availabilityZone,
-      'events': ?events == null ? null : pulumi.Input.encodeList<InstanceStatusEventResponse, Map<String, dynamic>>(events!, (value) => value.toMap()),
+      'events': ?pulumi.Input.mapOptionalInputValue<List<InstanceStatusEventResponse>, List<Map<String, dynamic>>>(events, (value) => pulumi.Input.encodeList<InstanceStatusEventResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'instanceId': ?instanceId,
-      'instanceState': ?instanceState == null ? null : instanceState!.toMap(),
-      'instanceStatus': ?instanceStatus == null ? null : instanceStatus!.toMap(),
+      'instanceState': ?pulumi.Input.mapOptionalInputValue<InstanceStateResponse, Map<String, dynamic>>(instanceState, (value) => value.toMap()),
+      'instanceStatus': ?pulumi.Input.mapOptionalInputValue<InstanceStatusSummaryResponse, Map<String, dynamic>>(instanceStatus, (value) => value.toMap()),
       'outpostArn': ?outpostArn,
-      'systemStatus': ?systemStatus == null ? null : systemStatus!.toMap(),
+      'systemStatus': ?pulumi.Input.mapOptionalInputValue<InstanceStatusSummaryResponse, Map<String, dynamic>>(systemStatus, (value) => value.toMap()),
     };
   }
 
   factory AwsEc2InstanceStatusPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2InstanceStatusPropertiesResponse(
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      events: map['events'] == null ? null : pulumi.Input.decodeList<InstanceStatusEventResponse>(map['events'], (value) => InstanceStatusEventResponse.fromMap((value as Map).cast<String, dynamic>())),
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      instanceState: map['instanceState'] == null ? null : InstanceStateResponse.fromMap((map['instanceState'] as Map).cast<String, dynamic>()),
-      instanceStatus: map['instanceStatus'] == null ? null : InstanceStatusSummaryResponse.fromMap((map['instanceStatus'] as Map).cast<String, dynamic>()),
-      outpostArn: map['outpostArn'] == null ? null : map['outpostArn'] as String,
-      systemStatus: map['systemStatus'] == null ? null : InstanceStatusSummaryResponse.fromMap((map['systemStatus'] as Map).cast<String, dynamic>()),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      events: map['events'] == null ? null : (pulumi.Input.decodeList<InstanceStatusEventResponse>(map['events'], (value) => InstanceStatusEventResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceState: map['instanceState'] == null ? null : (InstanceStateResponse.fromMap((map['instanceState'] as Map).cast<String, dynamic>())).input(),
+      instanceStatus: map['instanceStatus'] == null ? null : (InstanceStatusSummaryResponse.fromMap((map['instanceStatus'] as Map).cast<String, dynamic>())).input(),
+      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
+      systemStatus: map['systemStatus'] == null ? null : (InstanceStatusSummaryResponse.fromMap((map['systemStatus'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolSourceDir {
   /// Provides the path to the directory that serves as a source for the storage pool.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [PoolSourceDir].
   /// [path] Provides the path to the directory that serves as a source for the storage pool.
@@ -19,7 +20,7 @@ class PoolSourceDir {
 
   factory PoolSourceDir.fromMap(Map<String, dynamic> map) {
     return PoolSourceDir(
-      path: map['path'] as String,
+      path: (map['path'] as String).input(),
     );
   }
 }

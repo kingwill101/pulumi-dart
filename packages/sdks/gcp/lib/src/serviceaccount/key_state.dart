@@ -50,29 +50,18 @@ class KeyState {
   /// [validAfter] The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   /// [validBefore] The key can be used before this timestamp.
   KeyState({
-    pulumi.Output<Map<String, String>>? keepers,
-    pulumi.Output<String>? keyAlgorithm,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? privateKeyType,
-    pulumi.Output<String>? publicKey,
-    pulumi.Output<String>? publicKeyData,
-    pulumi.Output<String>? publicKeyType,
-    pulumi.Output<String>? serviceAccountId,
-    pulumi.Output<String>? validAfter,
-    pulumi.Output<String>? validBefore,
-  }) :
-      keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
-      keyAlgorithm = pulumi.Input.asOptionalInput<String>(keyAlgorithm),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      privateKeyType = pulumi.Input.asOptionalInput<String>(privateKeyType),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      publicKeyData = pulumi.Input.asOptionalInput<String>(publicKeyData),
-      publicKeyType = pulumi.Input.asOptionalInput<String>(publicKeyType),
-      serviceAccountId = pulumi.Input.asOptionalInput<String>(serviceAccountId),
-      validAfter = pulumi.Input.asOptionalInput<String>(validAfter),
-      validBefore = pulumi.Input.asOptionalInput<String>(validBefore);
+    this.keepers,
+    this.keyAlgorithm,
+    this.name,
+    this.privateKey,
+    this.privateKeyType,
+    this.publicKey,
+    this.publicKeyData,
+    this.publicKeyType,
+    this.serviceAccountId,
+    this.validAfter,
+    this.validBefore,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,17 +81,17 @@ class KeyState {
 
   factory KeyState.fromMap(Map<String, dynamic> map) {
     return KeyState(
-      keepers: map['keepers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['keepers'] as Map).cast<String, String>()),
-      keyAlgorithm: map['keyAlgorithm'] == null ? null : pulumi.Output.create<String>(map['keyAlgorithm'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      privateKeyType: map['privateKeyType'] == null ? null : pulumi.Output.create<String>(map['privateKeyType'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      publicKeyData: map['publicKeyData'] == null ? null : pulumi.Output.create<String>(map['publicKeyData'] as String),
-      publicKeyType: map['publicKeyType'] == null ? null : pulumi.Output.create<String>(map['publicKeyType'] as String),
-      serviceAccountId: map['serviceAccountId'] == null ? null : pulumi.Output.create<String>(map['serviceAccountId'] as String),
-      validAfter: map['validAfter'] == null ? null : pulumi.Output.create<String>(map['validAfter'] as String),
-      validBefore: map['validBefore'] == null ? null : pulumi.Output.create<String>(map['validBefore'] as String),
+      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      privateKeyType: map['privateKeyType'] == null ? null : (map['privateKeyType'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      publicKeyData: map['publicKeyData'] == null ? null : (map['publicKeyData'] as String).input(),
+      publicKeyType: map['publicKeyType'] == null ? null : (map['publicKeyType'] as String).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
+      validAfter: map['validAfter'] == null ? null : (map['validAfter'] as String).input(),
+      validBefore: map['validBefore'] == null ? null : (map['validBefore'] as String).input(),
     );
   }
 }

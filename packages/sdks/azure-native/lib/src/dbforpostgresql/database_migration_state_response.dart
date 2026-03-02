@@ -1,40 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Migration state of a database.
 class DatabaseMigrationStateResponse {
   /// Change Data Capture applied changes counter.
-  final int? appliedChanges;
+  final pulumi.Input<int>? appliedChanges;
   /// Change Data Capture delete counter.
-  final int? cdcDeleteCounter;
+  final pulumi.Input<int>? cdcDeleteCounter;
   /// Change Data Capture insert counter.
-  final int? cdcInsertCounter;
+  final pulumi.Input<int>? cdcInsertCounter;
   /// Change Data Capture update counter.
-  final int? cdcUpdateCounter;
+  final pulumi.Input<int>? cdcUpdateCounter;
   /// Name of database.
-  final String? databaseName;
+  final pulumi.Input<String>? databaseName;
   /// End time of a migration state.
-  final String? endedOn;
+  final pulumi.Input<String>? endedOn;
   /// Number of tables loaded during the migration of a database.
-  final int? fullLoadCompletedTables;
+  final pulumi.Input<int>? fullLoadCompletedTables;
   /// Number of tables encountering errors during the migration of a database.
-  final int? fullLoadErroredTables;
+  final pulumi.Input<int>? fullLoadErroredTables;
   /// Number of tables loading during the migration of a database.
-  final int? fullLoadLoadingTables;
+  final pulumi.Input<int>? fullLoadLoadingTables;
   /// Number of tables queued for the migration of a database.
-  final int? fullLoadQueuedTables;
+  final pulumi.Input<int>? fullLoadQueuedTables;
   /// Change Data Capture incoming changes counter.
-  final int? incomingChanges;
+  final pulumi.Input<int>? incomingChanges;
   /// Lag in seconds between source and target during online phase.
-  final int? latency;
+  final pulumi.Input<int>? latency;
   /// Error message, if any, for the migration state.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Migration operation of a database.
-  final String? migrationOperation;
+  final pulumi.Input<String>? migrationOperation;
   /// Migration state of a database.
-  final String? migrationState;
+  final pulumi.Input<String>? migrationState;
   /// Start time of a migration state.
-  final String? startedOn;
+  final pulumi.Input<String>? startedOn;
 
   /// Creates a new [DatabaseMigrationStateResponse].
   /// [appliedChanges] Change Data Capture applied changes counter.
@@ -95,22 +96,22 @@ class DatabaseMigrationStateResponse {
 
   factory DatabaseMigrationStateResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationStateResponse(
-      appliedChanges: map['appliedChanges'] == null ? null : map['appliedChanges'] as int,
-      cdcDeleteCounter: map['cdcDeleteCounter'] == null ? null : map['cdcDeleteCounter'] as int,
-      cdcInsertCounter: map['cdcInsertCounter'] == null ? null : map['cdcInsertCounter'] as int,
-      cdcUpdateCounter: map['cdcUpdateCounter'] == null ? null : map['cdcUpdateCounter'] as int,
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
-      endedOn: map['endedOn'] == null ? null : map['endedOn'] as String,
-      fullLoadCompletedTables: map['fullLoadCompletedTables'] == null ? null : map['fullLoadCompletedTables'] as int,
-      fullLoadErroredTables: map['fullLoadErroredTables'] == null ? null : map['fullLoadErroredTables'] as int,
-      fullLoadLoadingTables: map['fullLoadLoadingTables'] == null ? null : map['fullLoadLoadingTables'] as int,
-      fullLoadQueuedTables: map['fullLoadQueuedTables'] == null ? null : map['fullLoadQueuedTables'] as int,
-      incomingChanges: map['incomingChanges'] == null ? null : map['incomingChanges'] as int,
-      latency: map['latency'] == null ? null : map['latency'] as int,
-      message: map['message'] == null ? null : map['message'] as String,
-      migrationOperation: map['migrationOperation'] == null ? null : map['migrationOperation'] as String,
-      migrationState: map['migrationState'] == null ? null : map['migrationState'] as String,
-      startedOn: map['startedOn'] == null ? null : map['startedOn'] as String,
+      appliedChanges: map['appliedChanges'] == null ? null : (map['appliedChanges'] as int).input(),
+      cdcDeleteCounter: map['cdcDeleteCounter'] == null ? null : (map['cdcDeleteCounter'] as int).input(),
+      cdcInsertCounter: map['cdcInsertCounter'] == null ? null : (map['cdcInsertCounter'] as int).input(),
+      cdcUpdateCounter: map['cdcUpdateCounter'] == null ? null : (map['cdcUpdateCounter'] as int).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      endedOn: map['endedOn'] == null ? null : (map['endedOn'] as String).input(),
+      fullLoadCompletedTables: map['fullLoadCompletedTables'] == null ? null : (map['fullLoadCompletedTables'] as int).input(),
+      fullLoadErroredTables: map['fullLoadErroredTables'] == null ? null : (map['fullLoadErroredTables'] as int).input(),
+      fullLoadLoadingTables: map['fullLoadLoadingTables'] == null ? null : (map['fullLoadLoadingTables'] as int).input(),
+      fullLoadQueuedTables: map['fullLoadQueuedTables'] == null ? null : (map['fullLoadQueuedTables'] as int).input(),
+      incomingChanges: map['incomingChanges'] == null ? null : (map['incomingChanges'] as int).input(),
+      latency: map['latency'] == null ? null : (map['latency'] as int).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      migrationOperation: map['migrationOperation'] == null ? null : (map['migrationOperation'] as String).input(),
+      migrationState: map['migrationState'] == null ? null : (map['migrationState'] as String).input(),
+      startedOn: map['startedOn'] == null ? null : (map['startedOn'] as String).input(),
     );
   }
 }

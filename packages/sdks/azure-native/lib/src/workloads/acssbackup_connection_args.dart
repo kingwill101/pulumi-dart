@@ -29,19 +29,13 @@ class ACSSBackupConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   ACSSBackupConnectionArgs({
-    pulumi.Output<HanaBackupData>? backupData,
-    pulumi.Output<String>? backupName,
-    required pulumi.Output<String> connectorName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      backupData = pulumi.Input.asOptionalInput<HanaBackupData>(backupData),
-      backupName = pulumi.Input.asOptionalInput<String>(backupName),
-      connectorName = pulumi.Input.asInput<String>(connectorName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.backupData,
+    this.backupName,
+    required this.connectorName,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ACSSBackupConnectionArgs {
 
   factory ACSSBackupConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ACSSBackupConnectionArgs(
-      backupData: map['backupData'] == null ? null : pulumi.Output.create<HanaBackupData>(HanaBackupData.fromMap((map['backupData'] as Map).cast<String, dynamic>())),
-      backupName: map['backupName'] == null ? null : pulumi.Output.create<String>(map['backupName'] as String),
-      connectorName: pulumi.Output.create<String>(map['connectorName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      backupData: map['backupData'] == null ? null : (HanaBackupData.fromMap((map['backupData'] as Map).cast<String, dynamic>())).input(),
+      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
+      connectorName: (map['connectorName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

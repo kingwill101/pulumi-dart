@@ -21,13 +21,10 @@ class TrafficPolicyArgs {
   /// [document] Policy document. This is a JSON formatted string. For more information about building Route53 traffic policy documents, see the [AWS Route53 Traffic Policy document format](https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html)
   /// [name] Name of the traffic policy.
   TrafficPolicyArgs({
-    pulumi.Output<String>? comment,
-    required pulumi.Output<String> document,
-    pulumi.Output<String>? name,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      document = pulumi.Input.asInput<String>(document),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.comment,
+    required this.document,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class TrafficPolicyArgs {
 
   factory TrafficPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TrafficPolicyArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      document: pulumi.Output.create<String>(map['document'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      document: (map['document'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

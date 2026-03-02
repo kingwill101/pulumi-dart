@@ -26,17 +26,12 @@ class DataLakeArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   DataLakeArgs({
-    required pulumi.Output<DataLakeConfiguration> configuration,
-    required pulumi.Output<String> metaStoreManagerRoleArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<DataLakeTimeouts>? timeouts,
-  }) :
-      configuration = pulumi.Input.asInput<DataLakeConfiguration>(configuration),
-      metaStoreManagerRoleArn = pulumi.Input.asInput<String>(metaStoreManagerRoleArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<DataLakeTimeouts>(timeouts);
+    required this.configuration,
+    required this.metaStoreManagerRoleArn,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DataLakeArgs {
 
   factory DataLakeArgs.fromMap(Map<String, dynamic> map) {
     return DataLakeArgs(
-      configuration: pulumi.Output.create<DataLakeConfiguration>(DataLakeConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      metaStoreManagerRoleArn: pulumi.Output.create<String>(map['metaStoreManagerRoleArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DataLakeTimeouts>(DataLakeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      configuration: (DataLakeConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      metaStoreManagerRoleArn: (map['metaStoreManagerRoleArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (DataLakeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

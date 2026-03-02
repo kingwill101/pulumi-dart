@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'akri_connector_template_device_inbound_endpoint_configuration_schema_refs_response.dart';
 
 /// AkriConnectorTemplateDeviceInboundEndpointType properties.
 class AkriConnectorTemplateDeviceInboundEndpointTypeResponse {
   /// The configuration schema references for the device inbound endpoint.
-  final AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse? configurationSchemaRefs;
+  final pulumi.Input<AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse>? configurationSchemaRefs;
   /// A description of the device inbound endpoint.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The type of the device inbound endpoint.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// The version of the device inbound endpoint.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [AkriConnectorTemplateDeviceInboundEndpointTypeResponse].
   /// [configurationSchemaRefs] The configuration schema references for the device inbound endpoint.
@@ -27,7 +28,7 @@ class AkriConnectorTemplateDeviceInboundEndpointTypeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configurationSchemaRefs': ?configurationSchemaRefs == null ? null : configurationSchemaRefs!.toMap(),
+      'configurationSchemaRefs': ?pulumi.Input.mapOptionalInputValue<AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse, Map<String, dynamic>>(configurationSchemaRefs, (value) => value.toMap()),
       'description': ?description,
       'endpointType': endpointType,
       'version': ?version,
@@ -36,10 +37,10 @@ class AkriConnectorTemplateDeviceInboundEndpointTypeResponse {
 
   factory AkriConnectorTemplateDeviceInboundEndpointTypeResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateDeviceInboundEndpointTypeResponse(
-      configurationSchemaRefs: map['configurationSchemaRefs'] == null ? null : AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse.fromMap((map['configurationSchemaRefs'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      endpointType: map['endpointType'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      configurationSchemaRefs: map['configurationSchemaRefs'] == null ? null : (AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse.fromMap((map['configurationSchemaRefs'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

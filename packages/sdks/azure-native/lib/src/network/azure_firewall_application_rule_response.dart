@@ -6,19 +6,19 @@ import 'azure_firewall_application_rule_protocol_response.dart';
 /// Properties of an application rule.
 class AzureFirewallApplicationRuleResponse {
   /// Description of the rule.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// List of FQDN Tags for this rule.
-  final List<String>? fqdnTags;
+  final pulumi.Input<List<String>>? fqdnTags;
   /// Name of the application rule.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Array of ApplicationRuleProtocols.
-  final List<AzureFirewallApplicationRuleProtocolResponse>? protocols;
+  final pulumi.Input<List<AzureFirewallApplicationRuleProtocolResponse>>? protocols;
   /// List of source IP addresses for this rule.
-  final List<String>? sourceAddresses;
+  final pulumi.Input<List<String>>? sourceAddresses;
   /// List of source IpGroups for this rule.
-  final List<String>? sourceIpGroups;
+  final pulumi.Input<List<String>>? sourceIpGroups;
   /// List of FQDNs for this rule.
-  final List<String>? targetFqdns;
+  final pulumi.Input<List<String>>? targetFqdns;
 
   /// Creates a new [AzureFirewallApplicationRuleResponse].
   /// [description] Description of the rule.
@@ -43,7 +43,7 @@ class AzureFirewallApplicationRuleResponse {
       'description': ?description,
       'fqdnTags': ?fqdnTags,
       'name': ?name,
-      'protocols': ?protocols == null ? null : pulumi.Input.encodeList<AzureFirewallApplicationRuleProtocolResponse, Map<String, dynamic>>(protocols!, (value) => value.toMap()),
+      'protocols': ?pulumi.Input.mapOptionalInputValue<List<AzureFirewallApplicationRuleProtocolResponse>, List<Map<String, dynamic>>>(protocols, (value) => pulumi.Input.encodeList<AzureFirewallApplicationRuleProtocolResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sourceAddresses': ?sourceAddresses,
       'sourceIpGroups': ?sourceIpGroups,
       'targetFqdns': ?targetFqdns,
@@ -52,13 +52,13 @@ class AzureFirewallApplicationRuleResponse {
 
   factory AzureFirewallApplicationRuleResponse.fromMap(Map<String, dynamic> map) {
     return AzureFirewallApplicationRuleResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      fqdnTags: map['fqdnTags'] == null ? null : (map['fqdnTags'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      protocols: map['protocols'] == null ? null : pulumi.Input.decodeList<AzureFirewallApplicationRuleProtocolResponse>(map['protocols'], (value) => AzureFirewallApplicationRuleProtocolResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sourceAddresses: map['sourceAddresses'] == null ? null : (map['sourceAddresses'] as List).cast<String>(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : (map['sourceIpGroups'] as List).cast<String>(),
-      targetFqdns: map['targetFqdns'] == null ? null : (map['targetFqdns'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fqdnTags: map['fqdnTags'] == null ? null : ((map['fqdnTags'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<AzureFirewallApplicationRuleProtocolResponse>(map['protocols'], (value) => AzureFirewallApplicationRuleProtocolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
+      targetFqdns: map['targetFqdns'] == null ? null : ((map['targetFqdns'] as List).cast<String>()).input(),
     );
   }
 }

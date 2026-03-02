@@ -23,13 +23,10 @@ class GetAspectTypeIamPolicyArgs {
   /// [location] The location where aspect type will be created in.
   /// [project] The ID of the project in which the resource belongs.
   GetAspectTypeIamPolicyArgs({
-    required pulumi.Output<String> aspectTypeId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      aspectTypeId = pulumi.Input.asInput<String>(aspectTypeId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.aspectTypeId,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetAspectTypeIamPolicyArgs {
 
   factory GetAspectTypeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAspectTypeIamPolicyArgs(
-      aspectTypeId: pulumi.Output.create<String>(map['aspectTypeId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      aspectTypeId: (map['aspectTypeId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

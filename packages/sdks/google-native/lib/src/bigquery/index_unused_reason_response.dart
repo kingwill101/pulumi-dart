@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_reference_response.dart';
 
 class IndexUnusedReasonResponse {
   /// Specifies the base table involved in the reason that no search index was used.
-  final TableReferenceResponse baseTable;
+  final pulumi.Input<TableReferenceResponse> baseTable;
   /// Specifies the high-level reason for the scenario when no search index was used.
-  final String code;
+  final pulumi.Input<String> code;
   /// Specifies the name of the unused search index, if available.
-  final String indexName;
+  final pulumi.Input<String> indexName;
   /// Free form human-readable reason for the scenario when no search index was used.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [IndexUnusedReasonResponse].
   /// [baseTable] Specifies the base table involved in the reason that no search index was used.
@@ -26,7 +27,7 @@ class IndexUnusedReasonResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baseTable': baseTable.toMap(),
+      'baseTable': pulumi.Input.mapInputValue<TableReferenceResponse, Map<String, dynamic>>(baseTable, (value) => value.toMap()),
       'code': code,
       'indexName': indexName,
       'message': message,
@@ -35,10 +36,10 @@ class IndexUnusedReasonResponse {
 
   factory IndexUnusedReasonResponse.fromMap(Map<String, dynamic> map) {
     return IndexUnusedReasonResponse(
-      baseTable: TableReferenceResponse.fromMap((map['baseTable'] as Map).cast<String, dynamic>()),
-      code: map['code'] as String,
-      indexName: map['indexName'] as String,
-      message: map['message'] as String,
+      baseTable: (TableReferenceResponse.fromMap((map['baseTable'] as Map).cast<String, dynamic>())).input(),
+      code: (map['code'] as String).input(),
+      indexName: (map['indexName'] as String).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

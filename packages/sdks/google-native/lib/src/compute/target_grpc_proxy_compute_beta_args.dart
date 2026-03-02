@@ -27,19 +27,13 @@ class TargetGrpcProxyComputeBetaArgs {
   /// [urlMap] URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
   /// [validateForProxyless] If true, indicates that the BackendServices referenced by the urlMap may be accessed by gRPC applications without using a sidecar proxy. This will enable configuration checks on urlMap and its referenced BackendServices to not allow unsupported features. A gRPC application must use "xds:///" scheme in the target URI of the service it is connecting to. If false, indicates that the BackendServices referenced by the urlMap will be accessed by gRPC applications via a sidecar proxy. In this case, a gRPC application must not use "xds:///" scheme in the target URI of the service it is connecting to
   TargetGrpcProxyComputeBetaArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? urlMap,
-    pulumi.Output<bool>? validateForProxyless,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      urlMap = pulumi.Input.asOptionalInput<String>(urlMap),
-      validateForProxyless = pulumi.Input.asOptionalInput<bool>(validateForProxyless);
+    this.description,
+    this.name,
+    this.project,
+    this.requestId,
+    this.urlMap,
+    this.validateForProxyless,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class TargetGrpcProxyComputeBetaArgs {
 
   factory TargetGrpcProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return TargetGrpcProxyComputeBetaArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      urlMap: map['urlMap'] == null ? null : pulumi.Output.create<String>(map['urlMap'] as String),
-      validateForProxyless: map['validateForProxyless'] == null ? null : pulumi.Output.create<bool>(map['validateForProxyless'] as bool),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      urlMap: map['urlMap'] == null ? null : (map['urlMap'] as String).input(),
+      validateForProxyless: map['validateForProxyless'] == null ? null : (map['validateForProxyless'] as bool).input(),
     );
   }
 }

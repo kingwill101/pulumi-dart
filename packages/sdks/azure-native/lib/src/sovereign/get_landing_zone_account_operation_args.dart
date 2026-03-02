@@ -16,11 +16,9 @@ class GetLandingZoneAccountOperationArgs {
   /// [landingZoneAccountName] The landing zone account.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetLandingZoneAccountOperationArgs({
-    required pulumi.Output<String> landingZoneAccountName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      landingZoneAccountName = pulumi.Input.asInput<String>(landingZoneAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.landingZoneAccountName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLandingZoneAccountOperationArgs {
 
   factory GetLandingZoneAccountOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetLandingZoneAccountOperationArgs(
-      landingZoneAccountName: pulumi.Output.create<String>(map['landingZoneAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      landingZoneAccountName: (map['landingZoneAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

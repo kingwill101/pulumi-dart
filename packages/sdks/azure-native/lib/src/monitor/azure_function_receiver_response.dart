@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An azure function receiver.
 class AzureFunctionReceiverResponse {
   /// The azure resource id of the function app.
-  final String functionAppResourceId;
+  final pulumi.Input<String> functionAppResourceId;
   /// The function name in the function app.
-  final String functionName;
+  final pulumi.Input<String> functionName;
   /// The http trigger url where http request sent to.
-  final String httpTriggerUrl;
+  final pulumi.Input<String> httpTriggerUrl;
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
-  final String? managedIdentity;
+  final pulumi.Input<String>? managedIdentity;
   /// The name of the azure function receiver. Names must be unique across all receivers within an action group.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates whether to use common alert schema.
-  final bool? useCommonAlertSchema;
+  final pulumi.Input<bool>? useCommonAlertSchema;
 
   /// Creates a new [AzureFunctionReceiverResponse].
   /// [functionAppResourceId] The azure resource id of the function app.
@@ -45,12 +46,12 @@ class AzureFunctionReceiverResponse {
 
   factory AzureFunctionReceiverResponse.fromMap(Map<String, dynamic> map) {
     return AzureFunctionReceiverResponse(
-      functionAppResourceId: map['functionAppResourceId'] as String,
-      functionName: map['functionName'] as String,
-      httpTriggerUrl: map['httpTriggerUrl'] as String,
-      managedIdentity: map['managedIdentity'] == null ? null : map['managedIdentity'] as String,
-      name: map['name'] as String,
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : map['useCommonAlertSchema'] as bool,
+      functionAppResourceId: (map['functionAppResourceId'] as String).input(),
+      functionName: (map['functionName'] as String).input(),
+      httpTriggerUrl: (map['httpTriggerUrl'] as String).input(),
+      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity'] as String).input(),
+      name: (map['name'] as String).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
     );
   }
 }

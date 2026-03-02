@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateMapGclbTargetIpConfig {
   /// An external IP address
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// A list of ports
-  final List<int>? ports;
+  final pulumi.Input<List<int>>? ports;
 
   /// Creates a new [CertificateMapGclbTargetIpConfig].
   /// [ipAddress] An external IP address
@@ -24,8 +25,8 @@ class CertificateMapGclbTargetIpConfig {
 
   factory CertificateMapGclbTargetIpConfig.fromMap(Map<String, dynamic> map) {
     return CertificateMapGclbTargetIpConfig(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      ports: map['ports'] == null ? null : (map['ports'] as List).cast<int>(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<int>()).input(),
     );
   }
 }

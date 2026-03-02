@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineStageOnSuccessConditionRuleRuleTypeId {
   /// A category defines what kind of rule can be run in the stage, and constrains the provider type for the rule. The valid category is `Rule`.
-  final String category;
+  final pulumi.Input<String> category;
   /// The creator of the rule being called. The valid value for the Owner field in the rule category is `AWS`.
-  final String? owner;
+  final pulumi.Input<String>? owner;
   /// The rule provider, such as the DeploymentWindow rule. For a list of rule provider names, see the rules listed in the [AWS CodePipeline rule reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html).
-  final String provider;
+  final pulumi.Input<String> provider;
   /// A string that describes the rule version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [PipelineStageOnSuccessConditionRuleRuleTypeId].
   /// [category] A category defines what kind of rule can be run in the stage, and constrains the provider type for the rule. The valid category is `Rule`.
@@ -34,10 +35,10 @@ class PipelineStageOnSuccessConditionRuleRuleTypeId {
 
   factory PipelineStageOnSuccessConditionRuleRuleTypeId.fromMap(Map<String, dynamic> map) {
     return PipelineStageOnSuccessConditionRuleRuleTypeId(
-      category: map['category'] as String,
-      owner: map['owner'] == null ? null : map['owner'] as String,
-      provider: map['provider'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      category: (map['category'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      provider: (map['provider'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

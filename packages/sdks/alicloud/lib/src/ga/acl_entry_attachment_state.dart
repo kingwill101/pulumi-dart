@@ -19,15 +19,11 @@ class AclEntryAttachmentState {
   /// [entryDescription] The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
   /// [status] The status of the Acl Entry Attachment.
   AclEntryAttachmentState({
-    pulumi.Output<String>? aclId,
-    pulumi.Output<String>? entry,
-    pulumi.Output<String>? entryDescription,
-    pulumi.Output<String>? status,
-  }) :
-      aclId = pulumi.Input.asOptionalInput<String>(aclId),
-      entry = pulumi.Input.asOptionalInput<String>(entry),
-      entryDescription = pulumi.Input.asOptionalInput<String>(entryDescription),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.aclId,
+    this.entry,
+    this.entryDescription,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AclEntryAttachmentState {
 
   factory AclEntryAttachmentState.fromMap(Map<String, dynamic> map) {
     return AclEntryAttachmentState(
-      aclId: map['aclId'] == null ? null : pulumi.Output.create<String>(map['aclId'] as String),
-      entry: map['entry'] == null ? null : pulumi.Output.create<String>(map['entry'] as String),
-      entryDescription: map['entryDescription'] == null ? null : pulumi.Output.create<String>(map['entryDescription'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      aclId: map['aclId'] == null ? null : (map['aclId'] as String).input(),
+      entry: map['entry'] == null ? null : (map['entry'] as String).input(),
+      entryDescription: map['entryDescription'] == null ? null : (map['entryDescription'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

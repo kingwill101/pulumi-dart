@@ -39,25 +39,16 @@ class OrganizationJobTriggerArgs {
   /// [triggerId] The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
   /// [triggers] A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
   OrganizationJobTriggerArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GooglePrivacyDlpV2InspectJobConfig>? inspectJob,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<OrganizationJobTriggerStatus> status,
-    pulumi.Output<String>? triggerId,
-    pulumi.Output<List<GooglePrivacyDlpV2Trigger>>? triggers,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      inspectJob = pulumi.Input.asOptionalInput<GooglePrivacyDlpV2InspectJobConfig>(inspectJob),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      status = pulumi.Input.asInput<OrganizationJobTriggerStatus>(status),
-      triggerId = pulumi.Input.asOptionalInput<String>(triggerId),
-      triggers = pulumi.Input.asOptionalInput<List<GooglePrivacyDlpV2Trigger>>(triggers);
+    this.description,
+    this.displayName,
+    this.inspectJob,
+    this.location,
+    this.name,
+    required this.organizationId,
+    required this.status,
+    this.triggerId,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class OrganizationJobTriggerArgs {
 
   factory OrganizationJobTriggerArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationJobTriggerArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      inspectJob: map['inspectJob'] == null ? null : pulumi.Output.create<GooglePrivacyDlpV2InspectJobConfig>(GooglePrivacyDlpV2InspectJobConfig.fromMap((map['inspectJob'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      status: pulumi.Output.create<OrganizationJobTriggerStatus>(OrganizationJobTriggerStatus.fromValue(map['status'] as String)),
-      triggerId: map['triggerId'] == null ? null : pulumi.Output.create<String>(map['triggerId'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<List<GooglePrivacyDlpV2Trigger>>(pulumi.Input.decodeList<GooglePrivacyDlpV2Trigger>(map['triggers'], (value) => GooglePrivacyDlpV2Trigger.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      inspectJob: map['inspectJob'] == null ? null : (GooglePrivacyDlpV2InspectJobConfig.fromMap((map['inspectJob'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      status: (OrganizationJobTriggerStatus.fromValue(map['status'] as String)).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
+      triggers: map['triggers'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2Trigger>(map['triggers'], (value) => GooglePrivacyDlpV2Trigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

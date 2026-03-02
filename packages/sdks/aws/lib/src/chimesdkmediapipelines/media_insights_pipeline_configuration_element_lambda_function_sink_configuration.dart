@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration {
   /// Lambda Function to deliver results.
-  final String insightsTarget;
+  final pulumi.Input<String> insightsTarget;
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration].
   /// [insightsTarget] Lambda Function to deliver results.
@@ -19,7 +20,7 @@ class MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration {
 
   factory MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration(
-      insightsTarget: map['insightsTarget'] as String,
+      insightsTarget: (map['insightsTarget'] as String).input(),
     );
   }
 }

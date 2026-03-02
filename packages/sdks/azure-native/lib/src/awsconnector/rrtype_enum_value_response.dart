@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of RRTypeEnumValue
 class RRTypeEnumValueResponse {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [RRTypeEnumValueResponse].
   /// [value] Property value
@@ -20,7 +21,7 @@ class RRTypeEnumValueResponse {
 
   factory RRTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return RRTypeEnumValueResponse(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

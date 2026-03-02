@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Wiki documentation details.
 class WikiDocumentationContract {
   /// Documentation Identifier
-  final String? documentationId;
+  final pulumi.Input<String>? documentationId;
 
   /// Creates a new [WikiDocumentationContract].
   /// [documentationId] Documentation Identifier
@@ -20,7 +21,7 @@ class WikiDocumentationContract {
 
   factory WikiDocumentationContract.fromMap(Map<String, dynamic> map) {
     return WikiDocumentationContract(
-      documentationId: map['documentationId'] == null ? null : map['documentationId'] as String,
+      documentationId: map['documentationId'] == null ? null : (map['documentationId'] as String).input(),
     );
   }
 }

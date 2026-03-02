@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecNetworksAdvanced {
   /// The network aliases of the container in the specific network.
-  final List<String>? aliases;
+  final pulumi.Input<List<String>>? aliases;
   /// An array of driver options for the network, e.g. `opts1=value`
-  final List<String>? driverOpts;
+  final pulumi.Input<List<String>>? driverOpts;
   /// The name/id of the network.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ServiceTaskSpecNetworksAdvanced].
   /// [aliases] The network aliases of the container in the specific network.
@@ -29,9 +30,9 @@ class ServiceTaskSpecNetworksAdvanced {
 
   factory ServiceTaskSpecNetworksAdvanced.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecNetworksAdvanced(
-      aliases: map['aliases'] == null ? null : (map['aliases'] as List).cast<String>(),
-      driverOpts: map['driverOpts'] == null ? null : (map['driverOpts'] as List).cast<String>(),
-      name: map['name'] as String,
+      aliases: map['aliases'] == null ? null : ((map['aliases'] as List).cast<String>()).input(),
+      driverOpts: map['driverOpts'] == null ? null : ((map['driverOpts'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

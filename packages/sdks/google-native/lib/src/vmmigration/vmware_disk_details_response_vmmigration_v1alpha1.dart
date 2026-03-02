@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The details of a Vmware VM disk.
 class VmwareDiskDetailsResponseVmmigrationV1alpha1 {
   /// The ordinal number of the disk.
-  final int diskNumber;
+  final pulumi.Input<int> diskNumber;
   /// The disk label.
-  final String label;
+  final pulumi.Input<String> label;
   /// Size in GB.
-  final String sizeGb;
+  final pulumi.Input<String> sizeGb;
 
   /// Creates a new [VmwareDiskDetailsResponseVmmigrationV1alpha1].
   /// [diskNumber] The ordinal number of the disk.
@@ -30,9 +31,9 @@ class VmwareDiskDetailsResponseVmmigrationV1alpha1 {
 
   factory VmwareDiskDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return VmwareDiskDetailsResponseVmmigrationV1alpha1(
-      diskNumber: map['diskNumber'] as int,
-      label: map['label'] as String,
-      sizeGb: map['sizeGb'] as String,
+      diskNumber: (map['diskNumber'] as int).input(),
+      label: (map['label'] as String).input(),
+      sizeGb: (map['sizeGb'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Intrusion detection signatures specification states.
 class FirewallPolicyIntrusionDetectionSignatureSpecificationResponse {
   /// Signature id.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The signature state.
-  final String? mode;
+  final pulumi.Input<String>? mode;
 
   /// Creates a new [FirewallPolicyIntrusionDetectionSignatureSpecificationResponse].
   /// [id] Signature id.
@@ -25,8 +26,8 @@ class FirewallPolicyIntrusionDetectionSignatureSpecificationResponse {
 
   factory FirewallPolicyIntrusionDetectionSignatureSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyIntrusionDetectionSignatureSpecificationResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
     );
   }
 }

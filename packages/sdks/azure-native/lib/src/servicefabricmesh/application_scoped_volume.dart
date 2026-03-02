@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_scoped_volume_creation_parameters_service_fabric_volume_disk.dart';
 
 /// Describes a volume whose lifetime is scoped to the application's lifetime.
 class ApplicationScopedVolume {
   /// Describes parameters for creating application-scoped volumes.
-  final ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk creationParameters;
+  final pulumi.Input<ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk> creationParameters;
   /// The path within the container at which the volume should be mounted. Only valid path characters are allowed.
-  final String destinationPath;
+  final pulumi.Input<String> destinationPath;
   /// Name of the volume being referenced.
-  final String name;
+  final pulumi.Input<String> name;
   /// The flag indicating whether the volume is read only. Default is 'false'.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
 
   /// Creates a new [ApplicationScopedVolume].
   /// [creationParameters] Describes parameters for creating application-scoped volumes.
@@ -27,7 +28,7 @@ class ApplicationScopedVolume {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'creationParameters': creationParameters.toMap(),
+      'creationParameters': pulumi.Input.mapInputValue<ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk, Map<String, dynamic>>(creationParameters, (value) => value.toMap()),
       'destinationPath': destinationPath,
       'name': name,
       'readOnly': ?readOnly,
@@ -36,10 +37,10 @@ class ApplicationScopedVolume {
 
   factory ApplicationScopedVolume.fromMap(Map<String, dynamic> map) {
     return ApplicationScopedVolume(
-      creationParameters: ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk.fromMap((map['creationParameters'] as Map).cast<String, dynamic>()),
-      destinationPath: map['destinationPath'] as String,
-      name: map['name'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
+      creationParameters: (ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk.fromMap((map['creationParameters'] as Map).cast<String, dynamic>())).input(),
+      destinationPath: (map['destinationPath'] as String).input(),
+      name: (map['name'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
     );
   }
 }

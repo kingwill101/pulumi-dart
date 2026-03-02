@@ -16,11 +16,9 @@ class ListDnsResolverPolicyByVirtualNetworkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualNetworkName] The name of the virtual network.
   ListDnsResolverPolicyByVirtualNetworkArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualNetworkName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualNetworkName = pulumi.Input.asInput<String>(virtualNetworkName);
+    required this.resourceGroupName,
+    required this.virtualNetworkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListDnsResolverPolicyByVirtualNetworkArgs {
 
   factory ListDnsResolverPolicyByVirtualNetworkArgs.fromMap(Map<String, dynamic> map) {
     return ListDnsResolverPolicyByVirtualNetworkArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualNetworkName: pulumi.Output.create<String>(map['virtualNetworkName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }
 }

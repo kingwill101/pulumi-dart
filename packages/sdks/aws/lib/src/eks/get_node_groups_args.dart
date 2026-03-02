@@ -16,11 +16,9 @@ class GetNodeGroupsArgs {
   /// [clusterName] Name of the cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetNodeGroupsArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? region,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.clusterName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNodeGroupsArgs {
 
   factory GetNodeGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupsArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

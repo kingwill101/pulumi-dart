@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_action_allow.dart';
 import 'rule_group_rule_action_block.dart';
 import 'rule_group_rule_action_captcha.dart';
@@ -8,15 +9,15 @@ import 'rule_group_rule_action_count.dart';
 
 class RuleGroupRuleAction {
   /// Instructs AWS WAF to allow the web request. See Allow below for details.
-  final RuleGroupRuleActionAllow? allow;
+  final pulumi.Input<RuleGroupRuleActionAllow>? allow;
   /// Instructs AWS WAF to block the web request. See Block below for details.
-  final RuleGroupRuleActionBlock? block;
+  final pulumi.Input<RuleGroupRuleActionBlock>? block;
   /// Instructs AWS WAF to run a `CAPTCHA` check against the web request. See Captcha below for details.
-  final RuleGroupRuleActionCaptcha? captcha;
+  final pulumi.Input<RuleGroupRuleActionCaptcha>? captcha;
   /// Instructs AWS WAF to run a check against the request to verify that the request is coming from a legitimate client session. See Challenge below for details.
-  final RuleGroupRuleActionChallenge? challenge;
+  final pulumi.Input<RuleGroupRuleActionChallenge>? challenge;
   /// Instructs AWS WAF to count the web request and allow it. See Count below for details.
-  final RuleGroupRuleActionCount? count;
+  final pulumi.Input<RuleGroupRuleActionCount>? count;
 
   /// Creates a new [RuleGroupRuleAction].
   /// [allow] Instructs AWS WAF to allow the web request. See Allow below for details.
@@ -34,21 +35,21 @@ class RuleGroupRuleAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allow': ?allow == null ? null : allow!.toMap(),
-      'block': ?block == null ? null : block!.toMap(),
-      'captcha': ?captcha == null ? null : captcha!.toMap(),
-      'challenge': ?challenge == null ? null : challenge!.toMap(),
-      'count': ?count == null ? null : count!.toMap(),
+      'allow': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleActionAllow, Map<String, dynamic>>(allow, (value) => value.toMap()),
+      'block': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleActionBlock, Map<String, dynamic>>(block, (value) => value.toMap()),
+      'captcha': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleActionCaptcha, Map<String, dynamic>>(captcha, (value) => value.toMap()),
+      'challenge': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleActionChallenge, Map<String, dynamic>>(challenge, (value) => value.toMap()),
+      'count': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleActionCount, Map<String, dynamic>>(count, (value) => value.toMap()),
     };
   }
 
   factory RuleGroupRuleAction.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleAction(
-      allow: map['allow'] == null ? null : RuleGroupRuleActionAllow.fromMap((map['allow'] as Map).cast<String, dynamic>()),
-      block: map['block'] == null ? null : RuleGroupRuleActionBlock.fromMap((map['block'] as Map).cast<String, dynamic>()),
-      captcha: map['captcha'] == null ? null : RuleGroupRuleActionCaptcha.fromMap((map['captcha'] as Map).cast<String, dynamic>()),
-      challenge: map['challenge'] == null ? null : RuleGroupRuleActionChallenge.fromMap((map['challenge'] as Map).cast<String, dynamic>()),
-      count: map['count'] == null ? null : RuleGroupRuleActionCount.fromMap((map['count'] as Map).cast<String, dynamic>()),
+      allow: map['allow'] == null ? null : (RuleGroupRuleActionAllow.fromMap((map['allow'] as Map).cast<String, dynamic>())).input(),
+      block: map['block'] == null ? null : (RuleGroupRuleActionBlock.fromMap((map['block'] as Map).cast<String, dynamic>())).input(),
+      captcha: map['captcha'] == null ? null : (RuleGroupRuleActionCaptcha.fromMap((map['captcha'] as Map).cast<String, dynamic>())).input(),
+      challenge: map['challenge'] == null ? null : (RuleGroupRuleActionChallenge.fromMap((map['challenge'] as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (RuleGroupRuleActionCount.fromMap((map['count'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

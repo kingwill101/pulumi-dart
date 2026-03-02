@@ -40,27 +40,17 @@ class GetGroupMetricRulesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of Group Metric Rule.
   GetGroupMetricRulesArgs({
-    pulumi.Output<String>? dimensions,
-    pulumi.Output<bool>? enableState,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? groupMetricRuleName,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? metricName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      dimensions = pulumi.Input.asOptionalInput<String>(dimensions),
-      enableState = pulumi.Input.asOptionalInput<bool>(enableState),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      groupMetricRuleName = pulumi.Input.asOptionalInput<String>(groupMetricRuleName),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      metricName = pulumi.Input.asOptionalInput<String>(metricName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.dimensions,
+    this.enableState,
+    this.groupId,
+    this.groupMetricRuleName,
+    this.ids,
+    this.metricName,
+    this.nameRegex,
+    this.namespace,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class GetGroupMetricRulesArgs {
 
   factory GetGroupMetricRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupMetricRulesArgs(
-      dimensions: map['dimensions'] == null ? null : pulumi.Output.create<String>(map['dimensions'] as String),
-      enableState: map['enableState'] == null ? null : pulumi.Output.create<bool>(map['enableState'] as bool),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      groupMetricRuleName: map['groupMetricRuleName'] == null ? null : pulumi.Output.create<String>(map['groupMetricRuleName'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      metricName: map['metricName'] == null ? null : pulumi.Output.create<String>(map['metricName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      dimensions: map['dimensions'] == null ? null : (map['dimensions'] as String).input(),
+      enableState: map['enableState'] == null ? null : (map['enableState'] as bool).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      groupMetricRuleName: map['groupMetricRuleName'] == null ? null : (map['groupMetricRuleName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

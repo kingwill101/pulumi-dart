@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketNotificationLambdaFunction {
   /// [Event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
-  final List<String> events;
+  final pulumi.Input<List<String>> events;
   /// Object key name prefix.
-  final String? filterPrefix;
+  final pulumi.Input<String>? filterPrefix;
   /// Object key name suffix.
-  final String? filterSuffix;
+  final pulumi.Input<String>? filterSuffix;
   /// Unique identifier for each of the notification configurations.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Lambda function ARN.
-  final String? lambdaFunctionArn;
+  final pulumi.Input<String>? lambdaFunctionArn;
 
   /// Creates a new [BucketNotificationLambdaFunction].
   /// [events] [Event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
@@ -39,11 +40,11 @@ class BucketNotificationLambdaFunction {
 
   factory BucketNotificationLambdaFunction.fromMap(Map<String, dynamic> map) {
     return BucketNotificationLambdaFunction(
-      events: (map['events'] as List).cast<String>(),
-      filterPrefix: map['filterPrefix'] == null ? null : map['filterPrefix'] as String,
-      filterSuffix: map['filterSuffix'] == null ? null : map['filterSuffix'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      lambdaFunctionArn: map['lambdaFunctionArn'] == null ? null : map['lambdaFunctionArn'] as String,
+      events: ((map['events'] as List).cast<String>()).input(),
+      filterPrefix: map['filterPrefix'] == null ? null : (map['filterPrefix'] as String).input(),
+      filterSuffix: map['filterSuffix'] == null ? null : (map['filterSuffix'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      lambdaFunctionArn: map['lambdaFunctionArn'] == null ? null : (map['lambdaFunctionArn'] as String).input(),
     );
   }
 }

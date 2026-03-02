@@ -28,19 +28,13 @@ class ExperimentState {
   /// [selectors] One or more `selectors` blocks as defined below.
   /// [steps] One or more `steps` blocks as defined below.
   ExperimentState({
-    pulumi.Output<ExperimentIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<List<ExperimentSelector>>? selectors,
-    pulumi.Output<List<ExperimentStep>>? steps,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ExperimentIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      selectors = pulumi.Input.asOptionalInput<List<ExperimentSelector>>(selectors),
-      steps = pulumi.Input.asOptionalInput<List<ExperimentStep>>(steps);
+    this.identity,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.selectors,
+    this.steps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ExperimentState {
 
   factory ExperimentState.fromMap(Map<String, dynamic> map) {
     return ExperimentState(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ExperimentIdentity>(ExperimentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      selectors: map['selectors'] == null ? null : pulumi.Output.create<List<ExperimentSelector>>(pulumi.Input.decodeList<ExperimentSelector>(map['selectors'], (value) => ExperimentSelector.fromMap((value as Map).cast<String, dynamic>()))),
-      steps: map['steps'] == null ? null : pulumi.Output.create<List<ExperimentStep>>(pulumi.Input.decodeList<ExperimentStep>(map['steps'], (value) => ExperimentStep.fromMap((value as Map).cast<String, dynamic>()))),
+      identity: map['identity'] == null ? null : (ExperimentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<ExperimentSelector>(map['selectors'], (value) => ExperimentSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      steps: map['steps'] == null ? null : (pulumi.Input.decodeList<ExperimentStep>(map['steps'], (value) => ExperimentStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

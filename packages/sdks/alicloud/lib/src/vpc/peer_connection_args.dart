@@ -67,33 +67,20 @@ class PeerConnectionArgs {
   /// [tags] The tags of VpcPeer.
   /// [vpcId] The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
   PeerConnectionArgs({
-    pulumi.Output<int>? acceptingAliUid,
-    required pulumi.Output<String> acceptingRegionId,
-    required pulumi.Output<String> acceptingVpcId,
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<bool>? forceDelete,
-    pulumi.Output<String>? linkType,
-    pulumi.Output<String>? peerConnectionName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      acceptingAliUid = pulumi.Input.asOptionalInput<int>(acceptingAliUid),
-      acceptingRegionId = pulumi.Input.asInput<String>(acceptingRegionId),
-      acceptingVpcId = pulumi.Input.asInput<String>(acceptingVpcId),
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      linkType = pulumi.Input.asOptionalInput<String>(linkType),
-      peerConnectionName = pulumi.Input.asOptionalInput<String>(peerConnectionName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.acceptingAliUid,
+    required this.acceptingRegionId,
+    required this.acceptingVpcId,
+    this.bandwidth,
+    this.description,
+    this.dryRun,
+    this.forceDelete,
+    this.linkType,
+    this.peerConnectionName,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -115,19 +102,19 @@ class PeerConnectionArgs {
 
   factory PeerConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PeerConnectionArgs(
-      acceptingAliUid: map['acceptingAliUid'] == null ? null : pulumi.Output.create<int>(map['acceptingAliUid'] as int),
-      acceptingRegionId: pulumi.Output.create<String>(map['acceptingRegionId'] as String),
-      acceptingVpcId: pulumi.Output.create<String>(map['acceptingVpcId'] as String),
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      linkType: map['linkType'] == null ? null : pulumi.Output.create<String>(map['linkType'] as String),
-      peerConnectionName: map['peerConnectionName'] == null ? null : pulumi.Output.create<String>(map['peerConnectionName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      acceptingAliUid: map['acceptingAliUid'] == null ? null : (map['acceptingAliUid'] as int).input(),
+      acceptingRegionId: (map['acceptingRegionId'] as String).input(),
+      acceptingVpcId: (map['acceptingVpcId'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      linkType: map['linkType'] == null ? null : (map['linkType'] as String).input(),
+      peerConnectionName: map['peerConnectionName'] == null ? null : (map['peerConnectionName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

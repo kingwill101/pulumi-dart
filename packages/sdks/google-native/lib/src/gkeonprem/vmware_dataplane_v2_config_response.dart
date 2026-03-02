@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains configurations for Dataplane V2, which is optimized dataplane for Kubernetes networking. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2
 class VmwareDataplaneV2ConfigResponse {
   /// Enable advanced networking which requires dataplane_v2_enabled to be set true.
-  final bool advancedNetworking;
+  final pulumi.Input<bool> advancedNetworking;
   /// Enables Dataplane V2.
-  final bool dataplaneV2Enabled;
+  final pulumi.Input<bool> dataplaneV2Enabled;
   /// Enable Dataplane V2 for clusters with Windows nodes.
-  final bool windowsDataplaneV2Enabled;
+  final pulumi.Input<bool> windowsDataplaneV2Enabled;
 
   /// Creates a new [VmwareDataplaneV2ConfigResponse].
   /// [advancedNetworking] Enable advanced networking which requires dataplane_v2_enabled to be set true.
@@ -30,9 +31,9 @@ class VmwareDataplaneV2ConfigResponse {
 
   factory VmwareDataplaneV2ConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareDataplaneV2ConfigResponse(
-      advancedNetworking: map['advancedNetworking'] as bool,
-      dataplaneV2Enabled: map['dataplaneV2Enabled'] as bool,
-      windowsDataplaneV2Enabled: map['windowsDataplaneV2Enabled'] as bool,
+      advancedNetworking: (map['advancedNetworking'] as bool).input(),
+      dataplaneV2Enabled: (map['dataplaneV2Enabled'] as bool).input(),
+      windowsDataplaneV2Enabled: (map['windowsDataplaneV2Enabled'] as bool).input(),
     );
   }
 }

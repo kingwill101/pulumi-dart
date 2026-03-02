@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'function_build_config_on_deploy_update_policy.dart';
 import 'function_build_config_source.dart';
 
 class FunctionBuildConfig {
   /// Security patches are applied automatically to the runtime without requiring
   /// the function to be redeployed.
-  final Map<String, dynamic>? automaticUpdatePolicy;
+  final pulumi.Input<Map<String, dynamic>>? automaticUpdatePolicy;
   /// (Output)
   /// The Cloud Build name of the latest successful
   /// deployment of the function.
-  final String? build;
+  final pulumi.Input<String>? build;
   /// User managed repository created in Artifact Registry optionally with a customer managed encryption key.
-  final String? dockerRepository;
+  final pulumi.Input<String>? dockerRepository;
   /// The name of the function (as defined in source code) that will be executed.
   /// Defaults to the resource name suffix, if not specified. For backward
   /// compatibility, if function with given name is not found, then the system
   /// will try to use function named "function". For Node.js this is name of a
   /// function exported by the module specified in source_location.
-  final String? entryPoint;
+  final pulumi.Input<String>? entryPoint;
   /// User-provided build-time environment variables for the function.
-  final Map<String, String>? environmentVariables;
+  final pulumi.Input<Map<String, String>>? environmentVariables;
   /// Security patches are only applied when a function is redeployed.
   /// Structure is documented below.
-  final FunctionBuildConfigOnDeployUpdatePolicy? onDeployUpdatePolicy;
+  final pulumi.Input<FunctionBuildConfigOnDeployUpdatePolicy>? onDeployUpdatePolicy;
   /// The runtime in which to run the function. Required when deploying a new
   /// function, optional when updating an existing function.
-  final String? runtime;
+  final pulumi.Input<String>? runtime;
   /// The fully-qualified name of the service account to be used for building the container.
-  final String? serviceAccount;
+  final pulumi.Input<String>? serviceAccount;
   /// The location of the function source code.
   /// Structure is documented below.
-  final FunctionBuildConfigSource? source;
+  final pulumi.Input<FunctionBuildConfigSource>? source;
   /// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
-  final String? workerPool;
+  final pulumi.Input<String>? workerPool;
 
   /// Creates a new [FunctionBuildConfig].
   /// [automaticUpdatePolicy] Security patches are applied automatically to the runtime without requiring
@@ -66,26 +67,26 @@ class FunctionBuildConfig {
       'dockerRepository': ?dockerRepository,
       'entryPoint': ?entryPoint,
       'environmentVariables': ?environmentVariables,
-      'onDeployUpdatePolicy': ?onDeployUpdatePolicy == null ? null : onDeployUpdatePolicy!.toMap(),
+      'onDeployUpdatePolicy': ?pulumi.Input.mapOptionalInputValue<FunctionBuildConfigOnDeployUpdatePolicy, Map<String, dynamic>>(onDeployUpdatePolicy, (value) => value.toMap()),
       'runtime': ?runtime,
       'serviceAccount': ?serviceAccount,
-      'source': ?source == null ? null : source!.toMap(),
+      'source': ?pulumi.Input.mapOptionalInputValue<FunctionBuildConfigSource, Map<String, dynamic>>(source, (value) => value.toMap()),
       'workerPool': ?workerPool,
     };
   }
 
   factory FunctionBuildConfig.fromMap(Map<String, dynamic> map) {
     return FunctionBuildConfig(
-      automaticUpdatePolicy: map['automaticUpdatePolicy'] == null ? null : (map['automaticUpdatePolicy'] as Map).cast<String, dynamic>(),
-      build: map['build'] == null ? null : map['build'] as String,
-      dockerRepository: map['dockerRepository'] == null ? null : map['dockerRepository'] as String,
-      entryPoint: map['entryPoint'] == null ? null : map['entryPoint'] as String,
-      environmentVariables: map['environmentVariables'] == null ? null : (map['environmentVariables'] as Map).cast<String, String>(),
-      onDeployUpdatePolicy: map['onDeployUpdatePolicy'] == null ? null : FunctionBuildConfigOnDeployUpdatePolicy.fromMap((map['onDeployUpdatePolicy'] as Map).cast<String, dynamic>()),
-      runtime: map['runtime'] == null ? null : map['runtime'] as String,
-      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
-      source: map['source'] == null ? null : FunctionBuildConfigSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
-      workerPool: map['workerPool'] == null ? null : map['workerPool'] as String,
+      automaticUpdatePolicy: map['automaticUpdatePolicy'] == null ? null : ((map['automaticUpdatePolicy'] as Map).cast<String, dynamic>()).input(),
+      build: map['build'] == null ? null : (map['build'] as String).input(),
+      dockerRepository: map['dockerRepository'] == null ? null : (map['dockerRepository'] as String).input(),
+      entryPoint: map['entryPoint'] == null ? null : (map['entryPoint'] as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
+      onDeployUpdatePolicy: map['onDeployUpdatePolicy'] == null ? null : (FunctionBuildConfigOnDeployUpdatePolicy.fromMap((map['onDeployUpdatePolicy'] as Map).cast<String, dynamic>())).input(),
+      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      source: map['source'] == null ? null : (FunctionBuildConfigSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      workerPool: map['workerPool'] == null ? null : (map['workerPool'] as String).input(),
     );
   }
 }

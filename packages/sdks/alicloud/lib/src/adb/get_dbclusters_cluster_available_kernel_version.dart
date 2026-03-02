@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDBClustersClusterAvailableKernelVersion {
   /// The maintenance expiration time of the version
-  final String expireDate;
+  final pulumi.Input<String> expireDate;
   /// The minor version. Example: 3.1.9.
-  final String kernelVersion;
+  final pulumi.Input<String> kernelVersion;
   /// The time when the minor version was released.
-  final String releaseDate;
+  final pulumi.Input<String> releaseDate;
 
   /// Creates a new [GetDBClustersClusterAvailableKernelVersion].
   /// [expireDate] The maintenance expiration time of the version
@@ -29,9 +30,9 @@ class GetDBClustersClusterAvailableKernelVersion {
 
   factory GetDBClustersClusterAvailableKernelVersion.fromMap(Map<String, dynamic> map) {
     return GetDBClustersClusterAvailableKernelVersion(
-      expireDate: map['expireDate'] as String,
-      kernelVersion: map['kernelVersion'] as String,
-      releaseDate: map['releaseDate'] as String,
+      expireDate: (map['expireDate'] as String).input(),
+      kernelVersion: (map['kernelVersion'] as String).input(),
+      releaseDate: (map['releaseDate'] as String).input(),
     );
   }
 }

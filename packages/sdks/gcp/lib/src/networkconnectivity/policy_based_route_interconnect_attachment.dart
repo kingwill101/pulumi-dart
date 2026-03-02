@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyBasedRouteInterconnectAttachment {
   /// Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
-  final String region;
+  final pulumi.Input<String> region;
 
   /// Creates a new [PolicyBasedRouteInterconnectAttachment].
   /// [region] Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
@@ -19,7 +20,7 @@ class PolicyBasedRouteInterconnectAttachment {
 
   factory PolicyBasedRouteInterconnectAttachment.fromMap(Map<String, dynamic> map) {
     return PolicyBasedRouteInterconnectAttachment(
-      region: map['region'] as String,
+      region: (map['region'] as String).input(),
     );
   }
 }

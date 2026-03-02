@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the appliance resource.
 class DataStoreUtilizationDetailsResponse {
   /// The datastore name.
-  final String dataStoreName;
+  final pulumi.Input<String> dataStoreName;
   /// The total snapshots created for server migration in the datastore.
-  final double totalSnapshotsCreated;
+  final pulumi.Input<double> totalSnapshotsCreated;
   /// The total count of snapshots supported by the datastore.
-  final double totalSnapshotsSupported;
+  final pulumi.Input<double> totalSnapshotsSupported;
 
   /// Creates a new [DataStoreUtilizationDetailsResponse].
   /// [dataStoreName] The datastore name.
@@ -30,9 +31,9 @@ class DataStoreUtilizationDetailsResponse {
 
   factory DataStoreUtilizationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DataStoreUtilizationDetailsResponse(
-      dataStoreName: map['dataStoreName'] as String,
-      totalSnapshotsCreated: map['totalSnapshotsCreated'] as double,
-      totalSnapshotsSupported: map['totalSnapshotsSupported'] as double,
+      dataStoreName: (map['dataStoreName'] as String).input(),
+      totalSnapshotsCreated: (map['totalSnapshotsCreated'] as double).input(),
+      totalSnapshotsSupported: (map['totalSnapshotsSupported'] as double).input(),
     );
   }
 }

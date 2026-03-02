@@ -19,13 +19,10 @@ class GetJitNetworkAccessPolicyArgs {
   /// [jitNetworkAccessPolicyName] Name of a Just-in-Time access configuration policy.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetJitNetworkAccessPolicyArgs({
-    required pulumi.Output<String> ascLocation,
-    required pulumi.Output<String> jitNetworkAccessPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      ascLocation = pulumi.Input.asInput<String>(ascLocation),
-      jitNetworkAccessPolicyName = pulumi.Input.asInput<String>(jitNetworkAccessPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.ascLocation,
+    required this.jitNetworkAccessPolicyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetJitNetworkAccessPolicyArgs {
 
   factory GetJitNetworkAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetJitNetworkAccessPolicyArgs(
-      ascLocation: pulumi.Output.create<String>(map['ascLocation'] as String),
-      jitNetworkAccessPolicyName: pulumi.Output.create<String>(map['jitNetworkAccessPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      ascLocation: (map['ascLocation'] as String).input(),
+      jitNetworkAccessPolicyName: (map['jitNetworkAccessPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

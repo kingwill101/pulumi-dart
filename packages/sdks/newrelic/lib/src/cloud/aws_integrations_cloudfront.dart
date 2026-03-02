@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsIntegrationsCloudfront {
   /// Specify if Lambdas@Edge should be monitored. May affect total data collection time and contribute to the Cloud provider API rate limit.
-  final bool? fetchLambdasAtEdge;
+  final pulumi.Input<bool>? fetchLambdasAtEdge;
   /// Specify if tags should be collected. May affect total data collection time and contribute to the Cloud provider API rate limit.
-  final bool? fetchTags;
+  final pulumi.Input<bool>? fetchTags;
   /// The data polling interval in seconds.
-  final int? metricsPollingInterval;
+  final pulumi.Input<int>? metricsPollingInterval;
   /// Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
-  final String? tagKey;
+  final pulumi.Input<String>? tagKey;
   /// Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
-  final String? tagValue;
+  final pulumi.Input<String>? tagValue;
 
   /// Creates a new [AwsIntegrationsCloudfront].
   /// [fetchLambdasAtEdge] Specify if Lambdas@Edge should be monitored. May affect total data collection time and contribute to the Cloud provider API rate limit.
@@ -39,11 +40,11 @@ class AwsIntegrationsCloudfront {
 
   factory AwsIntegrationsCloudfront.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsCloudfront(
-      fetchLambdasAtEdge: map['fetchLambdasAtEdge'] == null ? null : map['fetchLambdasAtEdge'] as bool,
-      fetchTags: map['fetchTags'] == null ? null : map['fetchTags'] as bool,
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : map['metricsPollingInterval'] as int,
-      tagKey: map['tagKey'] == null ? null : map['tagKey'] as String,
-      tagValue: map['tagValue'] == null ? null : map['tagValue'] as String,
+      fetchLambdasAtEdge: map['fetchLambdasAtEdge'] == null ? null : (map['fetchLambdasAtEdge'] as bool).input(),
+      fetchTags: map['fetchTags'] == null ? null : (map['fetchTags'] as bool).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
     );
   }
 }

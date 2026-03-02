@@ -16,11 +16,9 @@ class GetSubscriptionFeatureRegistrationArgs {
   /// [featureName] The feature name.
   /// [providerNamespace] The provider namespace.
   GetSubscriptionFeatureRegistrationArgs({
-    required pulumi.Output<String> featureName,
-    required pulumi.Output<String> providerNamespace,
-  }) :
-      featureName = pulumi.Input.asInput<String>(featureName),
-      providerNamespace = pulumi.Input.asInput<String>(providerNamespace);
+    required this.featureName,
+    required this.providerNamespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSubscriptionFeatureRegistrationArgs {
 
   factory GetSubscriptionFeatureRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionFeatureRegistrationArgs(
-      featureName: pulumi.Output.create<String>(map['featureName'] as String),
-      providerNamespace: pulumi.Output.create<String>(map['providerNamespace'] as String),
+      featureName: (map['featureName'] as String).input(),
+      providerNamespace: (map['providerNamespace'] as String).input(),
     );
   }
 }

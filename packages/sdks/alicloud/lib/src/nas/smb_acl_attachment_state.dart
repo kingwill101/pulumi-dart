@@ -53,27 +53,17 @@ class SmbAclAttachmentState {
   /// [rejectUnencryptedAccess] Specifies whether to deny access from non-encrypted clients. Valid values:
   /// [superAdminSid] The ID of a super admin. The ID must meet the following requirements:
   SmbAclAttachmentState({
-    pulumi.Output<String>? authMethod,
-    pulumi.Output<bool>? enableAnonymousAccess,
-    pulumi.Output<String>? enabled,
-    pulumi.Output<bool>? encryptData,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? homeDirPath,
-    pulumi.Output<String>? keytab,
-    pulumi.Output<String>? keytabMd5,
-    pulumi.Output<bool>? rejectUnencryptedAccess,
-    pulumi.Output<String>? superAdminSid,
-  }) :
-      authMethod = pulumi.Input.asOptionalInput<String>(authMethod),
-      enableAnonymousAccess = pulumi.Input.asOptionalInput<bool>(enableAnonymousAccess),
-      enabled = pulumi.Input.asOptionalInput<String>(enabled),
-      encryptData = pulumi.Input.asOptionalInput<bool>(encryptData),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      homeDirPath = pulumi.Input.asOptionalInput<String>(homeDirPath),
-      keytab = pulumi.Input.asOptionalInput<String>(keytab),
-      keytabMd5 = pulumi.Input.asOptionalInput<String>(keytabMd5),
-      rejectUnencryptedAccess = pulumi.Input.asOptionalInput<bool>(rejectUnencryptedAccess),
-      superAdminSid = pulumi.Input.asOptionalInput<String>(superAdminSid);
+    this.authMethod,
+    this.enableAnonymousAccess,
+    this.enabled,
+    this.encryptData,
+    this.fileSystemId,
+    this.homeDirPath,
+    this.keytab,
+    this.keytabMd5,
+    this.rejectUnencryptedAccess,
+    this.superAdminSid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,16 +82,16 @@ class SmbAclAttachmentState {
 
   factory SmbAclAttachmentState.fromMap(Map<String, dynamic> map) {
     return SmbAclAttachmentState(
-      authMethod: map['authMethod'] == null ? null : pulumi.Output.create<String>(map['authMethod'] as String),
-      enableAnonymousAccess: map['enableAnonymousAccess'] == null ? null : pulumi.Output.create<bool>(map['enableAnonymousAccess'] as bool),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<String>(map['enabled'] as String),
-      encryptData: map['encryptData'] == null ? null : pulumi.Output.create<bool>(map['encryptData'] as bool),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      homeDirPath: map['homeDirPath'] == null ? null : pulumi.Output.create<String>(map['homeDirPath'] as String),
-      keytab: map['keytab'] == null ? null : pulumi.Output.create<String>(map['keytab'] as String),
-      keytabMd5: map['keytabMd5'] == null ? null : pulumi.Output.create<String>(map['keytabMd5'] as String),
-      rejectUnencryptedAccess: map['rejectUnencryptedAccess'] == null ? null : pulumi.Output.create<bool>(map['rejectUnencryptedAccess'] as bool),
-      superAdminSid: map['superAdminSid'] == null ? null : pulumi.Output.create<String>(map['superAdminSid'] as String),
+      authMethod: map['authMethod'] == null ? null : (map['authMethod'] as String).input(),
+      enableAnonymousAccess: map['enableAnonymousAccess'] == null ? null : (map['enableAnonymousAccess'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
+      encryptData: map['encryptData'] == null ? null : (map['encryptData'] as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      homeDirPath: map['homeDirPath'] == null ? null : (map['homeDirPath'] as String).input(),
+      keytab: map['keytab'] == null ? null : (map['keytab'] as String).input(),
+      keytabMd5: map['keytabMd5'] == null ? null : (map['keytabMd5'] as String).input(),
+      rejectUnencryptedAccess: map['rejectUnencryptedAccess'] == null ? null : (map['rejectUnencryptedAccess'] as bool).input(),
+      superAdminSid: map['superAdminSid'] == null ? null : (map['superAdminSid'] as String).input(),
     );
   }
 }

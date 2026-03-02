@@ -22,15 +22,11 @@ class ListWebAppHybridConnectionKeysArgs {
   /// [relayName] The relay name for this hybrid connection.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   ListWebAppHybridConnectionKeysArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> relayName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      relayName = pulumi.Input.asInput<String>(relayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.namespaceName,
+    required this.relayName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListWebAppHybridConnectionKeysArgs {
 
   factory ListWebAppHybridConnectionKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListWebAppHybridConnectionKeysArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      relayName: pulumi.Output.create<String>(map['relayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      relayName: (map['relayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

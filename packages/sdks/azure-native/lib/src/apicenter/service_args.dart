@@ -29,19 +29,13 @@ class ServiceArgs {
   /// [serviceName] The name of Azure API Center service.
   /// [tags] Resource tags.
   ServiceArgs({
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? restore,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      restore = pulumi.Input.asOptionalInput<bool>(restore),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.identity,
+    this.location,
+    required this.resourceGroupName,
+    this.restore,
+    this.serviceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      restore: map['restore'] == null ? null : pulumi.Output.create<bool>(map['restore'] as bool),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      restore: map['restore'] == null ? null : (map['restore'] as bool).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

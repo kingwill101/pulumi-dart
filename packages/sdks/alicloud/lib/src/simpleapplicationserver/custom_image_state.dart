@@ -24,17 +24,12 @@ class CustomImageState {
   /// [status] The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
   /// [systemSnapshotId] The ID of the system snapshot.
   CustomImageState({
-    pulumi.Output<String>? customImageName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? systemSnapshotId,
-  }) :
-      customImageName = pulumi.Input.asOptionalInput<String>(customImageName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      systemSnapshotId = pulumi.Input.asOptionalInput<String>(systemSnapshotId);
+    this.customImageName,
+    this.description,
+    this.instanceId,
+    this.status,
+    this.systemSnapshotId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class CustomImageState {
 
   factory CustomImageState.fromMap(Map<String, dynamic> map) {
     return CustomImageState(
-      customImageName: map['customImageName'] == null ? null : pulumi.Output.create<String>(map['customImageName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      systemSnapshotId: map['systemSnapshotId'] == null ? null : pulumi.Output.create<String>(map['systemSnapshotId'] as String),
+      customImageName: map['customImageName'] == null ? null : (map['customImageName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      systemSnapshotId: map['systemSnapshotId'] == null ? null : (map['systemSnapshotId'] as String).input(),
     );
   }
 }

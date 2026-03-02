@@ -7,15 +7,15 @@ import 'reportable_exception_response.dart';
 /// Output for the task that validates connection to Azure Database for PostgreSQL and target server requirements for Oracle source.
 class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse {
   /// Mapping of schemas per database
-  final List<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap>? databaseSchemaMap;
+  final pulumi.Input<List<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap>>? databaseSchemaMap;
   /// List of databases on target server
-  final List<String> databases;
+  final pulumi.Input<List<String>> databases;
   /// Target server brand version
-  final String targetServerBrandVersion;
+  final pulumi.Input<String> targetServerBrandVersion;
   /// Version of the target server
-  final String targetServerVersion;
+  final pulumi.Input<String> targetServerVersion;
   /// Validation errors associated with the task
-  final List<ReportableExceptionResponse> validationErrors;
+  final pulumi.Input<List<ReportableExceptionResponse>> validationErrors;
 
   /// Creates a new [ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse].
   /// [databaseSchemaMap] Mapping of schemas per database
@@ -33,21 +33,21 @@ class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databaseSchemaMap': ?databaseSchemaMap == null ? null : pulumi.Input.encodeList<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap, Map<String, dynamic>>(databaseSchemaMap!, (value) => value.toMap()),
+      'databaseSchemaMap': ?pulumi.Input.mapOptionalInputValue<List<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap>, List<Map<String, dynamic>>>(databaseSchemaMap, (value) => pulumi.Input.encodeList<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap, Map<String, dynamic>>(value, (value) => value.toMap())),
       'databases': databases,
       'targetServerBrandVersion': targetServerBrandVersion,
       'targetServerVersion': targetServerVersion,
-      'validationErrors': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(validationErrors, (value) => value.toMap()),
+      'validationErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse(
-      databaseSchemaMap: map['databaseSchemaMap'] == null ? null : pulumi.Input.decodeList<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap>(map['databaseSchemaMap'], (value) => ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap.fromMap((value as Map).cast<String, dynamic>())),
-      databases: (map['databases'] as List).cast<String>(),
-      targetServerBrandVersion: map['targetServerBrandVersion'] as String,
-      targetServerVersion: map['targetServerVersion'] as String,
-      validationErrors: pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      databaseSchemaMap: map['databaseSchemaMap'] == null ? null : (pulumi.Input.decodeList<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap>(map['databaseSchemaMap'], (value) => ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databases: ((map['databases'] as List).cast<String>()).input(),
+      targetServerBrandVersion: (map['targetServerBrandVersion'] as String).input(),
+      targetServerVersion: (map['targetServerVersion'] as String).input(),
+      validationErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

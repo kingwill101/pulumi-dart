@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInResourceDataCatalog {
   /// Identifier for the catalog resource.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [OptInResourceDataCatalog].
   /// [id] Identifier for the catalog resource.
@@ -19,7 +20,7 @@ class OptInResourceDataCatalog {
 
   factory OptInResourceDataCatalog.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataCatalog(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

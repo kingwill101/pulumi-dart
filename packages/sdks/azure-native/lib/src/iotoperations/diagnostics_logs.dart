@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Diagnostic Log properties
 class DiagnosticsLogs {
   /// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-  final String? level;
+  final pulumi.Input<String>? level;
 
   /// Creates a new [DiagnosticsLogs].
   /// [level] The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
@@ -20,7 +21,7 @@ class DiagnosticsLogs {
 
   factory DiagnosticsLogs.fromMap(Map<String, dynamic> map) {
     return DiagnosticsLogs(
-      level: map['level'] == null ? null : map['level'] as String,
+      level: map['level'] == null ? null : (map['level'] as String).input(),
     );
   }
 }

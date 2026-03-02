@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'profile_diagnostics_response.dart';
 
 /// DataflowProfile Resource properties
 class DataflowProfilePropertiesResponse {
   /// Spec defines the desired identities of NBC diagnostics settings.
-  final ProfileDiagnosticsResponse? diagnostics;
+  final pulumi.Input<ProfileDiagnosticsResponse>? diagnostics;
   /// To manually scale the dataflow profile, specify the maximum number of instances you want to run.
-  final int? instanceCount;
+  final pulumi.Input<int>? instanceCount;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [DataflowProfilePropertiesResponse].
   /// [diagnostics] Spec defines the desired identities of NBC diagnostics settings.
@@ -23,7 +24,7 @@ class DataflowProfilePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diagnostics': ?diagnostics == null ? null : diagnostics!.toMap(),
+      'diagnostics': ?pulumi.Input.mapOptionalInputValue<ProfileDiagnosticsResponse, Map<String, dynamic>>(diagnostics, (value) => value.toMap()),
       'instanceCount': ?instanceCount,
       'provisioningState': provisioningState,
     };
@@ -31,9 +32,9 @@ class DataflowProfilePropertiesResponse {
 
   factory DataflowProfilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataflowProfilePropertiesResponse(
-      diagnostics: map['diagnostics'] == null ? null : ProfileDiagnosticsResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>()),
-      instanceCount: map['instanceCount'] == null ? null : map['instanceCount'] as int,
-      provisioningState: map['provisioningState'] as String,
+      diagnostics: map['diagnostics'] == null ? null : (ProfileDiagnosticsResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

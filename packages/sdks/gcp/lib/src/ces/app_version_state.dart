@@ -52,29 +52,18 @@ class AppVersionState {
   /// [project] The ID of the project in which the resource belongs.
   /// [snapshots] A snapshot of the app.
   AppVersionState({
-    pulumi.Output<String>? app,
-    pulumi.Output<String>? appVersionId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? creator,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<AppVersionSnapshot>>? snapshots,
-  }) :
-      app = pulumi.Input.asOptionalInput<String>(app),
-      appVersionId = pulumi.Input.asOptionalInput<String>(appVersionId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      creator = pulumi.Input.asOptionalInput<String>(creator),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      snapshots = pulumi.Input.asOptionalInput<List<AppVersionSnapshot>>(snapshots);
+    this.app,
+    this.appVersionId,
+    this.createTime,
+    this.creator,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.location,
+    this.name,
+    this.project,
+    this.snapshots,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,17 +83,17 @@ class AppVersionState {
 
   factory AppVersionState.fromMap(Map<String, dynamic> map) {
     return AppVersionState(
-      app: map['app'] == null ? null : pulumi.Output.create<String>(map['app'] as String),
-      appVersionId: map['appVersionId'] == null ? null : pulumi.Output.create<String>(map['appVersionId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      creator: map['creator'] == null ? null : pulumi.Output.create<String>(map['creator'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      snapshots: map['snapshots'] == null ? null : pulumi.Output.create<List<AppVersionSnapshot>>(pulumi.Input.decodeList<AppVersionSnapshot>(map['snapshots'], (value) => AppVersionSnapshot.fromMap((value as Map).cast<String, dynamic>()))),
+      app: map['app'] == null ? null : (map['app'] as String).input(),
+      appVersionId: map['appVersionId'] == null ? null : (map['appVersionId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      creator: map['creator'] == null ? null : (map['creator'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      snapshots: map['snapshots'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshot>(map['snapshots'], (value) => AppVersionSnapshot.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'export_policy_rule.dart';
 /// Set of export policy rules
 class CachePropertiesExportPolicy {
   /// Export policy rule
-  final List<ExportPolicyRule>? rules;
+  final pulumi.Input<List<ExportPolicyRule>>? rules;
 
   /// Creates a new [CachePropertiesExportPolicy].
   /// [rules] Export policy rule
@@ -16,13 +16,13 @@ class CachePropertiesExportPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<ExportPolicyRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<ExportPolicyRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ExportPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CachePropertiesExportPolicy.fromMap(Map<String, dynamic> map) {
     return CachePropertiesExportPolicy(
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<ExportPolicyRule>(map['rules'], (value) => ExportPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ExportPolicyRule>(map['rules'], (value) => ExportPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

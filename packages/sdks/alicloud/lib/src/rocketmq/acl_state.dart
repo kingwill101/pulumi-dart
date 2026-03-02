@@ -30,21 +30,14 @@ class AclState {
   /// [resourceType] The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
   /// [username] The username of the account.
   AclState({
-    pulumi.Output<List<String>>? actions,
-    pulumi.Output<String>? decision,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<List<String>>? ipWhitelists,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? username,
-  }) :
-      actions = pulumi.Input.asOptionalInput<List<String>>(actions),
-      decision = pulumi.Input.asOptionalInput<String>(decision),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      ipWhitelists = pulumi.Input.asOptionalInput<List<String>>(ipWhitelists),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.actions,
+    this.decision,
+    this.instanceId,
+    this.ipWhitelists,
+    this.resourceName,
+    this.resourceType,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class AclState {
 
   factory AclState.fromMap(Map<String, dynamic> map) {
     return AclState(
-      actions: map['actions'] == null ? null : pulumi.Output.create<List<String>>((map['actions'] as List).cast<String>()),
-      decision: map['decision'] == null ? null : pulumi.Output.create<String>(map['decision'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      ipWhitelists: map['ipWhitelists'] == null ? null : pulumi.Output.create<List<String>>((map['ipWhitelists'] as List).cast<String>()),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      decision: map['decision'] == null ? null : (map['decision'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      ipWhitelists: map['ipWhitelists'] == null ? null : ((map['ipWhitelists'] as List).cast<String>()).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

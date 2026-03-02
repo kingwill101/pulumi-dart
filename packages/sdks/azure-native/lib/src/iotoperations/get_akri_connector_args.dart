@@ -22,15 +22,11 @@ class GetAkriConnectorArgs {
   /// [instanceName] Name of instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAkriConnectorArgs({
-    required pulumi.Output<String> akriConnectorTemplateName,
-    required pulumi.Output<String> connectorName,
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      akriConnectorTemplateName = pulumi.Input.asInput<String>(akriConnectorTemplateName),
-      connectorName = pulumi.Input.asInput<String>(connectorName),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.akriConnectorTemplateName,
+    required this.connectorName,
+    required this.instanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetAkriConnectorArgs {
 
   factory GetAkriConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetAkriConnectorArgs(
-      akriConnectorTemplateName: pulumi.Output.create<String>(map['akriConnectorTemplateName'] as String),
-      connectorName: pulumi.Output.create<String>(map['connectorName'] as String),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      akriConnectorTemplateName: (map['akriConnectorTemplateName'] as String).input(),
+      connectorName: (map['connectorName'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

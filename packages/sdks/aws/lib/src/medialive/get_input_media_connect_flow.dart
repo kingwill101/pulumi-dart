@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInputMediaConnectFlow {
-  final String flowArn;
+  final pulumi.Input<String> flowArn;
 
   /// Creates a new [GetInputMediaConnectFlow].
   /// [flowArn] Required.
@@ -18,7 +19,7 @@ class GetInputMediaConnectFlow {
 
   factory GetInputMediaConnectFlow.fromMap(Map<String, dynamic> map) {
     return GetInputMediaConnectFlow(
-      flowArn: map['flowArn'] as String,
+      flowArn: (map['flowArn'] as String).input(),
     );
   }
 }

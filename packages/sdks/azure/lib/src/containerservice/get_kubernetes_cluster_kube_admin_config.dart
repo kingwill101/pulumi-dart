@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesClusterKubeAdminConfig {
   /// Base64 encoded public certificate used by clients to authenticate to the Kubernetes cluster.
-  final String clientCertificate;
+  final pulumi.Input<String> clientCertificate;
   /// Base64 encoded private key used by clients to authenticate to the Kubernetes cluster.
-  final String clientKey;
+  final pulumi.Input<String> clientKey;
   /// Base64 encoded public CA certificate used as the root of trust for the Kubernetes cluster.
-  final String clusterCaCertificate;
+  final pulumi.Input<String> clusterCaCertificate;
   /// The Kubernetes cluster server host.
-  final String host;
+  final pulumi.Input<String> host;
   /// A password or token used to authenticate to the Kubernetes cluster.
-  final String password;
+  final pulumi.Input<String> password;
   /// A username used to authenticate to the Kubernetes cluster.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GetKubernetesClusterKubeAdminConfig].
   /// [clientCertificate] Base64 encoded public certificate used by clients to authenticate to the Kubernetes cluster.
@@ -44,12 +45,12 @@ class GetKubernetesClusterKubeAdminConfig {
 
   factory GetKubernetesClusterKubeAdminConfig.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterKubeAdminConfig(
-      clientCertificate: map['clientCertificate'] as String,
-      clientKey: map['clientKey'] as String,
-      clusterCaCertificate: map['clusterCaCertificate'] as String,
-      host: map['host'] as String,
-      password: map['password'] as String,
-      username: map['username'] as String,
+      clientCertificate: (map['clientCertificate'] as String).input(),
+      clientKey: (map['clientKey'] as String).input(),
+      clusterCaCertificate: (map['clusterCaCertificate'] as String).input(),
+      host: (map['host'] as String).input(),
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

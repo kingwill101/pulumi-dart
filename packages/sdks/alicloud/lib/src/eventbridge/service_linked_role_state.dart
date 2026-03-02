@@ -10,9 +10,8 @@ class ServiceLinkedRoleState {
   /// Creates a new [ServiceLinkedRoleState].
   /// [productName] The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
   ServiceLinkedRoleState({
-    pulumi.Output<String>? productName,
-  }) :
-      productName = pulumi.Input.asOptionalInput<String>(productName);
+    this.productName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class ServiceLinkedRoleState {
 
   factory ServiceLinkedRoleState.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleState(
-      productName: map['productName'] == null ? null : pulumi.Output.create<String>(map['productName'] as String),
+      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
     );
   }
 }

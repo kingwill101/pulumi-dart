@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeNotebookRuntimeTemplateRef {
   /// The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
-  final String notebookRuntimeTemplate;
+  final pulumi.Input<String> notebookRuntimeTemplate;
 
   /// Creates a new [RuntimeNotebookRuntimeTemplateRef].
   /// [notebookRuntimeTemplate] The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
@@ -19,7 +20,7 @@ class RuntimeNotebookRuntimeTemplateRef {
 
   factory RuntimeNotebookRuntimeTemplateRef.fromMap(Map<String, dynamic> map) {
     return RuntimeNotebookRuntimeTemplateRef(
-      notebookRuntimeTemplate: map['notebookRuntimeTemplate'] as String,
+      notebookRuntimeTemplate: (map['notebookRuntimeTemplate'] as String).input(),
     );
   }
 }

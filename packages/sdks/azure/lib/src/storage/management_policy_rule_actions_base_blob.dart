@@ -1,47 +1,48 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagementPolicyRuleActionsBaseBlob {
   /// Whether a blob should automatically be tiered from cool back to hot if it's accessed again after being tiered to cool. Defaults to `false`.
   ///
   /// > **Note:** The `auto_tier_to_hot_from_cool_enabled` must be used together with `tier_to_cool_after_days_since_last_access_time_greater_than`.
-  final bool? autoTierToHotFromCoolEnabled;
+  final pulumi.Input<bool>? autoTierToHotFromCoolEnabled;
   /// The age in days after creation to delete the blob. Must be between `0` and `99999`. Defaults to `-1`.
   ///
   /// > **Note:** The `delete_after_days_since_modification_greater_than`, `delete_after_days_since_last_access_time_greater_than` and `delete_after_days_since_creation_greater_than` can not be set at the same time.
   ///
   /// > **Note:** The `last_access_time_enabled` must be set to `true` in the `azure.storage.Account` in order to use `tier_to_cool_after_days_since_last_access_time_greater_than`, `tier_to_archive_after_days_since_last_access_time_greater_than` and `delete_after_days_since_last_access_time_greater_than`.
-  final int? deleteAfterDaysSinceCreationGreaterThan;
+  final pulumi.Input<int>? deleteAfterDaysSinceCreationGreaterThan;
   /// The age in days after last access time to delete the blob. Must be between `0` and `99999`. Defaults to `-1`.
-  final int? deleteAfterDaysSinceLastAccessTimeGreaterThan;
+  final pulumi.Input<int>? deleteAfterDaysSinceLastAccessTimeGreaterThan;
   /// The age in days after last modification to delete the blob. Must be between `0` and `99999`. Defaults to `-1`.
-  final int? deleteAfterDaysSinceModificationGreaterThan;
+  final pulumi.Input<int>? deleteAfterDaysSinceModificationGreaterThan;
   /// The age in days after creation to archive storage. Supports blob currently at Hot or Cool tier. Must be between `0` and `99999`. Defaults to `-1`.
   ///
   /// > **Note:** The `tier_to_archive_after_days_since_modification_greater_than`, `tier_to_archive_after_days_since_last_access_time_greater_than` and `tier_to_archive_after_days_since_creation_greater_than` can not be set at the same time.
-  final int? tierToArchiveAfterDaysSinceCreationGreaterThan;
+  final pulumi.Input<int>? tierToArchiveAfterDaysSinceCreationGreaterThan;
   /// The age in days after last access time to tier blobs to archive storage. Supports blob currently at Hot or Cool tier. Must be between `0` and `99999`. Defaults to `-1`.
-  final int? tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan;
+  final pulumi.Input<int>? tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan;
   /// The age in days after last tier change to the blobs to skip to be archived. Must be between `0` and `99999`. Defaults to `-1`.
-  final int? tierToArchiveAfterDaysSinceLastTierChangeGreaterThan;
+  final pulumi.Input<int>? tierToArchiveAfterDaysSinceLastTierChangeGreaterThan;
   /// The age in days after last modification to tier blobs to archive storage. Supports blob currently at Hot or Cool tier. Must be between `0` and `99999`. Defaults to `-1`.
-  final int? tierToArchiveAfterDaysSinceModificationGreaterThan;
+  final pulumi.Input<int>? tierToArchiveAfterDaysSinceModificationGreaterThan;
   /// The age in days after creation to cold storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
   ///
   /// > **Note:** The `tier_to_cool_after_days_since_modification_greater_than`, `tier_to_cool_after_days_since_last_access_time_greater_than` and `tier_to_cool_after_days_since_creation_greater_than` can not be set at the same time.
-  final int? tierToColdAfterDaysSinceCreationGreaterThan;
+  final pulumi.Input<int>? tierToColdAfterDaysSinceCreationGreaterThan;
   /// The age in days after last access time to tier blobs to cold storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
-  final int? tierToColdAfterDaysSinceLastAccessTimeGreaterThan;
+  final pulumi.Input<int>? tierToColdAfterDaysSinceLastAccessTimeGreaterThan;
   /// The age in days after last modification to tier blobs to cold storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
-  final int? tierToColdAfterDaysSinceModificationGreaterThan;
+  final pulumi.Input<int>? tierToColdAfterDaysSinceModificationGreaterThan;
   /// The age in days after creation to cool storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
   ///
   /// > **Note:** The `tier_to_cool_after_days_since_modification_greater_than`, `tier_to_cool_after_days_since_last_access_time_greater_than` and `tier_to_cool_after_days_since_creation_greater_than` can not be set at the same time.
-  final int? tierToCoolAfterDaysSinceCreationGreaterThan;
+  final pulumi.Input<int>? tierToCoolAfterDaysSinceCreationGreaterThan;
   /// The age in days after last access time to tier blobs to cool storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
-  final int? tierToCoolAfterDaysSinceLastAccessTimeGreaterThan;
+  final pulumi.Input<int>? tierToCoolAfterDaysSinceLastAccessTimeGreaterThan;
   /// The age in days after last modification to tier blobs to cool storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
-  final int? tierToCoolAfterDaysSinceModificationGreaterThan;
+  final pulumi.Input<int>? tierToCoolAfterDaysSinceModificationGreaterThan;
 
   /// Creates a new [ManagementPolicyRuleActionsBaseBlob].
   /// [autoTierToHotFromCoolEnabled] Whether a blob should automatically be tiered from cool back to hot if it's accessed again after being tiered to cool. Defaults to `false`.
@@ -96,20 +97,20 @@ class ManagementPolicyRuleActionsBaseBlob {
 
   factory ManagementPolicyRuleActionsBaseBlob.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyRuleActionsBaseBlob(
-      autoTierToHotFromCoolEnabled: map['autoTierToHotFromCoolEnabled'] == null ? null : map['autoTierToHotFromCoolEnabled'] as bool,
-      deleteAfterDaysSinceCreationGreaterThan: map['deleteAfterDaysSinceCreationGreaterThan'] == null ? null : map['deleteAfterDaysSinceCreationGreaterThan'] as int,
-      deleteAfterDaysSinceLastAccessTimeGreaterThan: map['deleteAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : map['deleteAfterDaysSinceLastAccessTimeGreaterThan'] as int,
-      deleteAfterDaysSinceModificationGreaterThan: map['deleteAfterDaysSinceModificationGreaterThan'] == null ? null : map['deleteAfterDaysSinceModificationGreaterThan'] as int,
-      tierToArchiveAfterDaysSinceCreationGreaterThan: map['tierToArchiveAfterDaysSinceCreationGreaterThan'] == null ? null : map['tierToArchiveAfterDaysSinceCreationGreaterThan'] as int,
-      tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan: map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan'] as int,
-      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] == null ? null : map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as int,
-      tierToArchiveAfterDaysSinceModificationGreaterThan: map['tierToArchiveAfterDaysSinceModificationGreaterThan'] == null ? null : map['tierToArchiveAfterDaysSinceModificationGreaterThan'] as int,
-      tierToColdAfterDaysSinceCreationGreaterThan: map['tierToColdAfterDaysSinceCreationGreaterThan'] == null ? null : map['tierToColdAfterDaysSinceCreationGreaterThan'] as int,
-      tierToColdAfterDaysSinceLastAccessTimeGreaterThan: map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan'] as int,
-      tierToColdAfterDaysSinceModificationGreaterThan: map['tierToColdAfterDaysSinceModificationGreaterThan'] == null ? null : map['tierToColdAfterDaysSinceModificationGreaterThan'] as int,
-      tierToCoolAfterDaysSinceCreationGreaterThan: map['tierToCoolAfterDaysSinceCreationGreaterThan'] == null ? null : map['tierToCoolAfterDaysSinceCreationGreaterThan'] as int,
-      tierToCoolAfterDaysSinceLastAccessTimeGreaterThan: map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan'] as int,
-      tierToCoolAfterDaysSinceModificationGreaterThan: map['tierToCoolAfterDaysSinceModificationGreaterThan'] == null ? null : map['tierToCoolAfterDaysSinceModificationGreaterThan'] as int,
+      autoTierToHotFromCoolEnabled: map['autoTierToHotFromCoolEnabled'] == null ? null : (map['autoTierToHotFromCoolEnabled'] as bool).input(),
+      deleteAfterDaysSinceCreationGreaterThan: map['deleteAfterDaysSinceCreationGreaterThan'] == null ? null : (map['deleteAfterDaysSinceCreationGreaterThan'] as int).input(),
+      deleteAfterDaysSinceLastAccessTimeGreaterThan: map['deleteAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : (map['deleteAfterDaysSinceLastAccessTimeGreaterThan'] as int).input(),
+      deleteAfterDaysSinceModificationGreaterThan: map['deleteAfterDaysSinceModificationGreaterThan'] == null ? null : (map['deleteAfterDaysSinceModificationGreaterThan'] as int).input(),
+      tierToArchiveAfterDaysSinceCreationGreaterThan: map['tierToArchiveAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceCreationGreaterThan'] as int).input(),
+      tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan: map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan'] as int).input(),
+      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as int).input(),
+      tierToArchiveAfterDaysSinceModificationGreaterThan: map['tierToArchiveAfterDaysSinceModificationGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceModificationGreaterThan'] as int).input(),
+      tierToColdAfterDaysSinceCreationGreaterThan: map['tierToColdAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceCreationGreaterThan'] as int).input(),
+      tierToColdAfterDaysSinceLastAccessTimeGreaterThan: map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan'] as int).input(),
+      tierToColdAfterDaysSinceModificationGreaterThan: map['tierToColdAfterDaysSinceModificationGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceModificationGreaterThan'] as int).input(),
+      tierToCoolAfterDaysSinceCreationGreaterThan: map['tierToCoolAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToCoolAfterDaysSinceCreationGreaterThan'] as int).input(),
+      tierToCoolAfterDaysSinceLastAccessTimeGreaterThan: map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : (map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan'] as int).input(),
+      tierToCoolAfterDaysSinceModificationGreaterThan: map['tierToCoolAfterDaysSinceModificationGreaterThan'] == null ? null : (map['tierToCoolAfterDaysSinceModificationGreaterThan'] as int).input(),
     );
   }
 }

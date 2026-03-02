@@ -6,11 +6,11 @@ import 'deployment_stacks_what_if_property_change_response.dart';
 /// The predicted changes to the resource configuration.
 class DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges {
   /// The predicted value after the deployment is executed.
-  final dynamic after;
+  final pulumi.Input<dynamic>? after;
   /// The predicted value before the deployment is executed.
-  final dynamic before;
+  final pulumi.Input<dynamic>? before;
   /// The predicted changes to the properties."
-  final List<DeploymentStacksWhatIfPropertyChangeResponse>? delta;
+  final pulumi.Input<List<DeploymentStacksWhatIfPropertyChangeResponse>>? delta;
 
   /// Creates a new [DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges].
   /// [after] The predicted value after the deployment is executed.
@@ -26,15 +26,15 @@ class DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges {
     return <String, dynamic>{
       'after': ?after,
       'before': ?before,
-      'delta': ?delta == null ? null : pulumi.Input.encodeList<DeploymentStacksWhatIfPropertyChangeResponse, Map<String, dynamic>>(delta!, (value) => value.toMap()),
+      'delta': ?pulumi.Input.mapOptionalInputValue<List<DeploymentStacksWhatIfPropertyChangeResponse>, List<Map<String, dynamic>>>(delta, (value) => pulumi.Input.encodeList<DeploymentStacksWhatIfPropertyChangeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges(
-      after: map['after'] == null ? null : map['after'],
-      before: map['before'] == null ? null : map['before'],
-      delta: map['delta'] == null ? null : pulumi.Input.decodeList<DeploymentStacksWhatIfPropertyChangeResponse>(map['delta'], (value) => DeploymentStacksWhatIfPropertyChangeResponse.fromMap((value as Map).cast<String, dynamic>())),
+      after: map['after'] == null ? null : (map['after']).input(),
+      before: map['before'] == null ? null : (map['before']).input(),
+      delta: map['delta'] == null ? null : (pulumi.Input.decodeList<DeploymentStacksWhatIfPropertyChangeResponse>(map['delta'], (value) => DeploymentStacksWhatIfPropertyChangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

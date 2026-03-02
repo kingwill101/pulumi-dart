@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VvpInstanceStorageOss {
   /// OSS Bucket name.
-  final String bucket;
+  final pulumi.Input<String> bucket;
 
   /// Creates a new [VvpInstanceStorageOss].
   /// [bucket] OSS Bucket name.
@@ -19,7 +20,7 @@ class VvpInstanceStorageOss {
 
   factory VvpInstanceStorageOss.fromMap(Map<String, dynamic> map) {
     return VvpInstanceStorageOss(
-      bucket: map['bucket'] as String,
+      bucket: (map['bucket'] as String).input(),
     );
   }
 }

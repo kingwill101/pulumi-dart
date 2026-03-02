@@ -5,39 +5,39 @@ import 'get_gtm_instances_instance_alert_config.dart';
 
 class GetGtmInstancesInstance {
   /// The alert notification methods.
-  final List<GetGtmInstancesInstanceAlertConfig> alertConfigs;
+  final pulumi.Input<List<GetGtmInstancesInstanceAlertConfig>> alertConfigs;
   /// The alert group.
-  final List<String> alertGroups;
+  final pulumi.Input<List<String>> alertGroups;
   /// The access type of the CNAME domain name.
-  final String cnameType;
+  final pulumi.Input<String> cnameType;
   /// The CreateTime of the Gtm Instance.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ExpireTime of the Gtm Instance.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
   /// The ID of the Gtm Instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the Gtm Instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The name of the Gtm Instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The version of the instance.
-  final String packageEdition;
+  final pulumi.Input<String> packageEdition;
   /// The paymentype of the resource.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The Public Network domain name access method.
-  final String publicCnameMode;
+  final pulumi.Input<String> publicCnameMode;
   /// The CNAME access domain name.
-  final String publicRr;
+  final pulumi.Input<String> publicRr;
   /// The website domain name that the user uses on the Internet.
-  final String publicUserDomainName;
+  final pulumi.Input<String> publicUserDomainName;
   /// The domain name that is used to access GTM over the Internet.
-  final String publicZoneName;
+  final pulumi.Input<String> publicZoneName;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The type of the access policy.
-  final String strategyMode;
+  final pulumi.Input<String> strategyMode;
   /// The global time to live.
-  final int ttl;
+  final pulumi.Input<int> ttl;
 
   /// Creates a new [GetGtmInstancesInstance].
   /// [alertConfigs] The alert notification methods.
@@ -79,7 +79,7 @@ class GetGtmInstancesInstance {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alertConfigs': pulumi.Input.encodeList<GetGtmInstancesInstanceAlertConfig, Map<String, dynamic>>(alertConfigs, (value) => value.toMap()),
+      'alertConfigs': pulumi.Input.mapInputValue<List<GetGtmInstancesInstanceAlertConfig>, List<Map<String, dynamic>>>(alertConfigs, (value) => pulumi.Input.encodeList<GetGtmInstancesInstanceAlertConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'alertGroups': alertGroups,
       'cnameType': cnameType,
       'createTime': createTime,
@@ -101,23 +101,23 @@ class GetGtmInstancesInstance {
 
   factory GetGtmInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetGtmInstancesInstance(
-      alertConfigs: pulumi.Input.decodeList<GetGtmInstancesInstanceAlertConfig>(map['alertConfigs'], (value) => GetGtmInstancesInstanceAlertConfig.fromMap((value as Map).cast<String, dynamic>())),
-      alertGroups: (map['alertGroups'] as List).cast<String>(),
-      cnameType: map['cnameType'] as String,
-      createTime: map['createTime'] as String,
-      expireTime: map['expireTime'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      packageEdition: map['packageEdition'] as String,
-      paymentType: map['paymentType'] as String,
-      publicCnameMode: map['publicCnameMode'] as String,
-      publicRr: map['publicRr'] as String,
-      publicUserDomainName: map['publicUserDomainName'] as String,
-      publicZoneName: map['publicZoneName'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      strategyMode: map['strategyMode'] as String,
-      ttl: map['ttl'] as int,
+      alertConfigs: (pulumi.Input.decodeList<GetGtmInstancesInstanceAlertConfig>(map['alertConfigs'], (value) => GetGtmInstancesInstanceAlertConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alertGroups: ((map['alertGroups'] as List).cast<String>()).input(),
+      cnameType: (map['cnameType'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      packageEdition: (map['packageEdition'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      publicCnameMode: (map['publicCnameMode'] as String).input(),
+      publicRr: (map['publicRr'] as String).input(),
+      publicUserDomainName: (map['publicUserDomainName'] as String).input(),
+      publicZoneName: (map['publicZoneName'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      strategyMode: (map['strategyMode'] as String).input(),
+      ttl: (map['ttl'] as int).input(),
     );
   }
 }

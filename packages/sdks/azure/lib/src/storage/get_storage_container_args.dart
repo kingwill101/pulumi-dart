@@ -24,15 +24,11 @@ class GetStorageContainerArgs {
   /// [storageAccountId] The id of the Storage Account where the Container exists. This property will become Required in version 5.0 of the Provider.
   /// [storageAccountName] The name of the Storage Account where the Container exists. This property is deprecated in favour of `storage_account_id`.
   GetStorageContainerArgs({
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? storageAccountName,
-  }) :
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asInput<String>(name),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      storageAccountName = pulumi.Input.asOptionalInput<String>(storageAccountName);
+    this.metadata,
+    required this.name,
+    this.storageAccountId,
+    this.storageAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetStorageContainerArgs {
 
   factory GetStorageContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageContainerArgs(
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      storageAccountName: map['storageAccountName'] == null ? null : pulumi.Output.create<String>(map['storageAccountName'] as String),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
     );
   }
 }

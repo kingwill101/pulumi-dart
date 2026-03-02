@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a network security rule.
 class NetworkSecurityRuleResponse {
   /// The network traffic is allowed or denied.
-  final String access;
+  final pulumi.Input<String> access;
   /// Network security rule description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-  final String? destinationAddressPrefix;
+  final pulumi.Input<String>? destinationAddressPrefix;
   /// The destination address prefixes. CIDR or destination IP ranges.
-  final List<String>? destinationAddressPrefixes;
+  final pulumi.Input<List<String>>? destinationAddressPrefixes;
   /// he destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-  final String? destinationPortRange;
+  final pulumi.Input<String>? destinationPortRange;
   /// The destination port ranges.
-  final List<String>? destinationPortRanges;
+  final pulumi.Input<List<String>>? destinationPortRanges;
   /// Network security rule direction.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// Network security rule name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The priority of the rule. The value can be in the range 1000 to 3000. Values outside this range are reserved for Service Fabric ManagerCluster Resource Provider. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// Network protocol this rule applies to.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
-  final String? sourceAddressPrefix;
+  final pulumi.Input<String>? sourceAddressPrefix;
   /// The CIDR or source IP ranges.
-  final List<String>? sourceAddressPrefixes;
+  final pulumi.Input<List<String>>? sourceAddressPrefixes;
   /// The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-  final String? sourcePortRange;
+  final pulumi.Input<String>? sourcePortRange;
   /// The source port ranges.
-  final List<String>? sourcePortRanges;
+  final pulumi.Input<List<String>>? sourcePortRanges;
 
   /// Creates a new [NetworkSecurityRuleResponse].
   /// [access] The network traffic is allowed or denied.
@@ -85,20 +86,20 @@ class NetworkSecurityRuleResponse {
 
   factory NetworkSecurityRuleResponse.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityRuleResponse(
-      access: map['access'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationAddressPrefix: map['destinationAddressPrefix'] == null ? null : map['destinationAddressPrefix'] as String,
-      destinationAddressPrefixes: map['destinationAddressPrefixes'] == null ? null : (map['destinationAddressPrefixes'] as List).cast<String>(),
-      destinationPortRange: map['destinationPortRange'] == null ? null : map['destinationPortRange'] as String,
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : (map['destinationPortRanges'] as List).cast<String>(),
-      direction: map['direction'] as String,
-      name: map['name'] as String,
-      priority: map['priority'] as int,
-      protocol: map['protocol'] as String,
-      sourceAddressPrefix: map['sourceAddressPrefix'] == null ? null : map['sourceAddressPrefix'] as String,
-      sourceAddressPrefixes: map['sourceAddressPrefixes'] == null ? null : (map['sourceAddressPrefixes'] as List).cast<String>(),
-      sourcePortRange: map['sourcePortRange'] == null ? null : map['sourcePortRange'] as String,
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : (map['sourcePortRanges'] as List).cast<String>(),
+      access: (map['access'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationAddressPrefix: map['destinationAddressPrefix'] == null ? null : (map['destinationAddressPrefix'] as String).input(),
+      destinationAddressPrefixes: map['destinationAddressPrefixes'] == null ? null : ((map['destinationAddressPrefixes'] as List).cast<String>()).input(),
+      destinationPortRange: map['destinationPortRange'] == null ? null : (map['destinationPortRange'] as String).input(),
+      destinationPortRanges: map['destinationPortRanges'] == null ? null : ((map['destinationPortRanges'] as List).cast<String>()).input(),
+      direction: (map['direction'] as String).input(),
+      name: (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      sourceAddressPrefix: map['sourceAddressPrefix'] == null ? null : (map['sourceAddressPrefix'] as String).input(),
+      sourceAddressPrefixes: map['sourceAddressPrefixes'] == null ? null : ((map['sourceAddressPrefixes'] as List).cast<String>()).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange'] as String).input(),
+      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges'] as List).cast<String>()).input(),
     );
   }
 }

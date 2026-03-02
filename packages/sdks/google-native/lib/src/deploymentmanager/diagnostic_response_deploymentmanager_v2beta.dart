@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiagnosticResponseDeploymentmanagerV2beta {
   /// JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic.
-  final String field;
+  final pulumi.Input<String> field;
   /// Level to record this diagnostic.
-  final String level;
+  final pulumi.Input<String> level;
 
   /// Creates a new [DiagnosticResponseDeploymentmanagerV2beta].
   /// [field] JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic.
@@ -24,8 +25,8 @@ class DiagnosticResponseDeploymentmanagerV2beta {
 
   factory DiagnosticResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return DiagnosticResponseDeploymentmanagerV2beta(
-      field: map['field'] as String,
-      level: map['level'] as String,
+      field: (map['field'] as String).input(),
+      level: (map['level'] as String).input(),
     );
   }
 }

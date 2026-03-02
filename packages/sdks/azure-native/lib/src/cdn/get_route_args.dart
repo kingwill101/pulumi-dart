@@ -22,15 +22,11 @@ class GetRouteArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [routeName] Name of the routing rule.
   GetRouteArgs({
-    required pulumi.Output<String> endpointName,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> routeName,
-  }) :
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeName = pulumi.Input.asInput<String>(routeName);
+    required this.endpointName,
+    required this.profileName,
+    required this.resourceGroupName,
+    required this.routeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetRouteArgs {
 
   factory GetRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteArgs(
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeName: pulumi.Output.create<String>(map['routeName'] as String),
+      endpointName: (map['endpointName'] as String).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeName: (map['routeName'] as String).input(),
     );
   }
 }

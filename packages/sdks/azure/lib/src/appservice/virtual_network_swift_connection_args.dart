@@ -16,11 +16,9 @@ class VirtualNetworkSwiftConnectionArgs {
   /// [appServiceId] The ID of the App Service or Function App to associate to the VNet. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the subnet the app service will be associated to (the subnet must have a `service_delegation` configured for `Microsoft.Web/serverFarms`).
   VirtualNetworkSwiftConnectionArgs({
-    required pulumi.Output<String> appServiceId,
-    required pulumi.Output<String> subnetId,
-  }) :
-      appServiceId = pulumi.Input.asInput<String>(appServiceId),
-      subnetId = pulumi.Input.asInput<String>(subnetId);
+    required this.appServiceId,
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class VirtualNetworkSwiftConnectionArgs {
 
   factory VirtualNetworkSwiftConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSwiftConnectionArgs(
-      appServiceId: pulumi.Output.create<String>(map['appServiceId'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
+      appServiceId: (map['appServiceId'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

@@ -21,13 +21,10 @@ class GetNodeGroupArgs {
   /// [name] The name of the node group.
   /// [region] The region in which to obtain the V1 Container Infra
   GetNodeGroupArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.clusterId,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetNodeGroupArgs {
 
   factory GetNodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

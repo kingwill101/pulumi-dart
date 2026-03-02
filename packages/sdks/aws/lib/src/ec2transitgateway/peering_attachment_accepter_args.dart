@@ -19,13 +19,10 @@ class PeeringAttachmentAccepterArgs {
   /// [tags] Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayAttachmentId] The ID of the EC2 Transit Gateway Peering Attachment to manage.
   PeeringAttachmentAccepterArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> transitGatewayAttachmentId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayAttachmentId = pulumi.Input.asInput<String>(transitGatewayAttachmentId);
+    this.region,
+    this.tags,
+    required this.transitGatewayAttachmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PeeringAttachmentAccepterArgs {
 
   factory PeeringAttachmentAccepterArgs.fromMap(Map<String, dynamic> map) {
     return PeeringAttachmentAccepterArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayAttachmentId: pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
     );
   }
 }

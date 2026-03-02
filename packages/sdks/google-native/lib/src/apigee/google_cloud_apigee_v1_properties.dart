@@ -6,7 +6,7 @@ import 'google_cloud_apigee_v1_property.dart';
 /// Message for compatibility with legacy Edge specification for Java Properties object in JSON.
 class GoogleCloudApigeeV1Properties {
   /// List of all properties in the object
-  final List<GoogleCloudApigeeV1Property>? property;
+  final pulumi.Input<List<GoogleCloudApigeeV1Property>>? property;
 
   /// Creates a new [GoogleCloudApigeeV1Properties].
   /// [property] List of all properties in the object
@@ -16,13 +16,13 @@ class GoogleCloudApigeeV1Properties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'property': ?property == null ? null : pulumi.Input.encodeList<GoogleCloudApigeeV1Property, Map<String, dynamic>>(property!, (value) => value.toMap()),
+      'property': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudApigeeV1Property>, List<Map<String, dynamic>>>(property, (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1Property, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GoogleCloudApigeeV1Properties.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1Properties(
-      property: map['property'] == null ? null : pulumi.Input.decodeList<GoogleCloudApigeeV1Property>(map['property'], (value) => GoogleCloudApigeeV1Property.fromMap((value as Map).cast<String, dynamic>())),
+      property: map['property'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Property>(map['property'], (value) => GoogleCloudApigeeV1Property.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

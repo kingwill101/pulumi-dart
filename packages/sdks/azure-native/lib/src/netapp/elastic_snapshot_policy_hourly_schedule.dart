@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Hourly Schedule properties used to create NetApp snapshot policy
 class ElasticSnapshotPolicyHourlySchedule {
   /// Indicates which minute snapshot should be taken
-  final int? minute;
+  final pulumi.Input<int>? minute;
   /// Hourly snapshot count to keep
-  final int? snapshotsToKeep;
+  final pulumi.Input<int>? snapshotsToKeep;
 
   /// Creates a new [ElasticSnapshotPolicyHourlySchedule].
   /// [minute] Indicates which minute snapshot should be taken
@@ -25,8 +26,8 @@ class ElasticSnapshotPolicyHourlySchedule {
 
   factory ElasticSnapshotPolicyHourlySchedule.fromMap(Map<String, dynamic> map) {
     return ElasticSnapshotPolicyHourlySchedule(
-      minute: map['minute'] == null ? null : map['minute'] as int,
-      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : map['snapshotsToKeep'] as int,
+      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
+      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep'] as int).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class ListContainerAppCustomHostNameAnalysisArgs {
   /// [customHostname] Custom hostname.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListContainerAppCustomHostNameAnalysisArgs({
-    required pulumi.Output<String> containerAppName,
-    pulumi.Output<String>? customHostname,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      containerAppName = pulumi.Input.asInput<String>(containerAppName),
-      customHostname = pulumi.Input.asOptionalInput<String>(customHostname),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.containerAppName,
+    this.customHostname,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListContainerAppCustomHostNameAnalysisArgs {
 
   factory ListContainerAppCustomHostNameAnalysisArgs.fromMap(Map<String, dynamic> map) {
     return ListContainerAppCustomHostNameAnalysisArgs(
-      containerAppName: pulumi.Output.create<String>(map['containerAppName'] as String),
-      customHostname: map['customHostname'] == null ? null : pulumi.Output.create<String>(map['customHostname'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      containerAppName: (map['containerAppName'] as String).input(),
+      customHostname: map['customHostname'] == null ? null : (map['customHostname'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class ExperimentPlanTemplateState {
   /// [templateName] Help users identify and select specific templates.
   /// [templatePipelines] Representative Template Pipeline. See `template_pipeline` below.
   ExperimentPlanTemplateState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? privacyLevel,
-    pulumi.Output<String>? templateDescription,
-    pulumi.Output<String>? templateId,
-    pulumi.Output<String>? templateName,
-    pulumi.Output<List<ExperimentPlanTemplateTemplatePipeline>>? templatePipelines,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      privacyLevel = pulumi.Input.asOptionalInput<String>(privacyLevel),
-      templateDescription = pulumi.Input.asOptionalInput<String>(templateDescription),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId),
-      templateName = pulumi.Input.asOptionalInput<String>(templateName),
-      templatePipelines = pulumi.Input.asOptionalInput<List<ExperimentPlanTemplateTemplatePipeline>>(templatePipelines);
+    this.createTime,
+    this.privacyLevel,
+    this.templateDescription,
+    this.templateId,
+    this.templateName,
+    this.templatePipelines,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ExperimentPlanTemplateState {
 
   factory ExperimentPlanTemplateState.fromMap(Map<String, dynamic> map) {
     return ExperimentPlanTemplateState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      privacyLevel: map['privacyLevel'] == null ? null : pulumi.Output.create<String>(map['privacyLevel'] as String),
-      templateDescription: map['templateDescription'] == null ? null : pulumi.Output.create<String>(map['templateDescription'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
-      templateName: map['templateName'] == null ? null : pulumi.Output.create<String>(map['templateName'] as String),
-      templatePipelines: map['templatePipelines'] == null ? null : pulumi.Output.create<List<ExperimentPlanTemplateTemplatePipeline>>(pulumi.Input.decodeList<ExperimentPlanTemplateTemplatePipeline>(map['templatePipelines'], (value) => ExperimentPlanTemplateTemplatePipeline.fromMap((value as Map).cast<String, dynamic>()))),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      privacyLevel: map['privacyLevel'] == null ? null : (map['privacyLevel'] as String).input(),
+      templateDescription: map['templateDescription'] == null ? null : (map['templateDescription'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      templatePipelines: map['templatePipelines'] == null ? null : (pulumi.Input.decodeList<ExperimentPlanTemplateTemplatePipeline>(map['templatePipelines'], (value) => ExperimentPlanTemplateTemplatePipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

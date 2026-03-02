@@ -36,25 +36,16 @@ class ConversionWorkspaceArgs {
   /// [requestId] A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
   /// [source] The source engine details.
   ConversionWorkspaceArgs({
-    required pulumi.Output<String> conversionWorkspaceId,
-    required pulumi.Output<DatabaseEngineInfo> destination,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? globalSettings,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<DatabaseEngineInfo> source,
-  }) :
-      conversionWorkspaceId = pulumi.Input.asInput<String>(conversionWorkspaceId),
-      destination = pulumi.Input.asInput<DatabaseEngineInfo>(destination),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      globalSettings = pulumi.Input.asOptionalInput<Map<String, String>>(globalSettings),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      source = pulumi.Input.asInput<DatabaseEngineInfo>(source);
+    required this.conversionWorkspaceId,
+    required this.destination,
+    this.displayName,
+    this.globalSettings,
+    this.location,
+    this.name,
+    this.project,
+    this.requestId,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class ConversionWorkspaceArgs {
 
   factory ConversionWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return ConversionWorkspaceArgs(
-      conversionWorkspaceId: pulumi.Output.create<String>(map['conversionWorkspaceId'] as String),
-      destination: pulumi.Output.create<DatabaseEngineInfo>(DatabaseEngineInfo.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      globalSettings: map['globalSettings'] == null ? null : pulumi.Output.create<Map<String, String>>((map['globalSettings'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      source: pulumi.Output.create<DatabaseEngineInfo>(DatabaseEngineInfo.fromMap((map['source'] as Map).cast<String, dynamic>())),
+      conversionWorkspaceId: (map['conversionWorkspaceId'] as String).input(),
+      destination: (DatabaseEngineInfo.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      globalSettings: map['globalSettings'] == null ? null : ((map['globalSettings'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      source: (DatabaseEngineInfo.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

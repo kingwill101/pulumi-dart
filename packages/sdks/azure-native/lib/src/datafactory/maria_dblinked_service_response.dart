@@ -8,38 +8,38 @@ import 'parameter_specification_response.dart';
 /// MariaDB server linked service.
 class MariaDBLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
-  final dynamic connectionString;
+  final pulumi.Input<dynamic>? connectionString;
   /// Database name for connection. Type: string.
-  final dynamic database;
+  final pulumi.Input<dynamic>? database;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The version of the MariaDB driver. Type: string. V1 or empty for legacy driver, V2 for new driver. V1 can support connection string and property bag, V2 can only support connection string. The legacy driver is scheduled for deprecation by October 2024.
-  final dynamic driverVersion;
+  final pulumi.Input<dynamic>? driverVersion;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// The Azure key vault secret reference of password in connection string.
-  final AzureKeyVaultSecretReferenceResponse? password;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
   /// The port for the connection. Type: integer.
-  final dynamic port;
+  final pulumi.Input<dynamic>? port;
   /// Server name for connection. Type: string.
-  final dynamic server;
+  final pulumi.Input<dynamic>? server;
   /// This option specifies whether the driver uses TLS encryption and verification when connecting to MariaDB. E.g., SSLMode=<0/1/2/3/4>. Options: DISABLED (0) / PREFERRED (1) (Default) / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4), REQUIRED (2) is recommended to only allow connections encrypted with SSL/TLS.
-  final dynamic sslMode;
+  final pulumi.Input<dynamic>? sslMode;
   /// Type of linked service.
   /// Expected value is 'MariaDB'.
-  final String type;
+  final pulumi.Input<String> type;
   /// This option specifies whether to use a CA certificate from the system trust store, or from a specified PEM file. E.g. UseSystemTrustStore=<0/1>; Options: Enabled (1) / Disabled (0) (Default)
-  final dynamic useSystemTrustStore;
+  final pulumi.Input<dynamic>? useSystemTrustStore;
   /// Username for authentication. Type: string.
-  final dynamic username;
+  final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [MariaDBLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -80,14 +80,14 @@ class MariaDBLinkedServiceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionString': ?connectionString,
       'database': ?database,
       'description': ?description,
       'driverVersion': ?driverVersion,
       'encryptedCredential': ?encryptedCredential,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
       'port': ?port,
       'server': ?server,
       'sslMode': ?sslMode,
@@ -100,22 +100,22 @@ class MariaDBLinkedServiceResponse {
 
   factory MariaDBLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return MariaDBLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      connectionString: map['connectionString'] == null ? null : map['connectionString'],
-      database: map['database'] == null ? null : map['database'],
-      description: map['description'] == null ? null : map['description'] as String,
-      driverVersion: map['driverVersion'] == null ? null : map['driverVersion'],
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      port: map['port'] == null ? null : map['port'],
-      server: map['server'] == null ? null : map['server'],
-      sslMode: map['sslMode'] == null ? null : map['sslMode'],
-      type: map['type'] as String,
-      useSystemTrustStore: map['useSystemTrustStore'] == null ? null : map['useSystemTrustStore'],
-      username: map['username'] == null ? null : map['username'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']).input(),
+      database: map['database'] == null ? null : (map['database']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      driverVersion: map['driverVersion'] == null ? null : (map['driverVersion']).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']).input(),
+      server: map['server'] == null ? null : (map['server']).input(),
+      sslMode: map['sslMode'] == null ? null : (map['sslMode']).input(),
+      type: (map['type'] as String).input(),
+      useSystemTrustStore: map['useSystemTrustStore'] == null ? null : (map['useSystemTrustStore']).input(),
+      username: map['username'] == null ? null : (map['username']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

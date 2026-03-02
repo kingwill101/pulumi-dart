@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An option to store configuration into different place
 class ConfigurationStoreResponse {
   /// The app configuration id to store configuration
-  final String? appConfigurationId;
+  final pulumi.Input<String>? appConfigurationId;
 
   /// Creates a new [ConfigurationStoreResponse].
   /// [appConfigurationId] The app configuration id to store configuration
@@ -20,7 +21,7 @@ class ConfigurationStoreResponse {
 
   factory ConfigurationStoreResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationStoreResponse(
-      appConfigurationId: map['appConfigurationId'] == null ? null : map['appConfigurationId'] as String,
+      appConfigurationId: map['appConfigurationId'] == null ? null : (map['appConfigurationId'] as String).input(),
     );
   }
 }

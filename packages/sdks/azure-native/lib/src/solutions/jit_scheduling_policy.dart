@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The JIT scheduling policies.
 class JitSchedulingPolicy {
-  final String duration;
+  final pulumi.Input<String> duration;
   /// The start time of the request.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The type of JIT schedule.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [JitSchedulingPolicy].
   /// [duration] Required.
@@ -29,9 +30,9 @@ class JitSchedulingPolicy {
 
   factory JitSchedulingPolicy.fromMap(Map<String, dynamic> map) {
     return JitSchedulingPolicy(
-      duration: map['duration'] as String,
-      startTime: map['startTime'] as String,
-      type: map['type'] as String,
+      duration: (map['duration'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

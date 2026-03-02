@@ -29,21 +29,14 @@ class InvitationState {
   /// [userId] Object ID of the invited user.
   /// [userType] The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
   InvitationState({
-    pulumi.Output<InvitationMessage>? message,
-    pulumi.Output<String>? redeemUrl,
-    pulumi.Output<String>? redirectUrl,
-    pulumi.Output<String>? userDisplayName,
-    pulumi.Output<String>? userEmailAddress,
-    pulumi.Output<String>? userId,
-    pulumi.Output<String>? userType,
-  }) :
-      message = pulumi.Input.asOptionalInput<InvitationMessage>(message),
-      redeemUrl = pulumi.Input.asOptionalInput<String>(redeemUrl),
-      redirectUrl = pulumi.Input.asOptionalInput<String>(redirectUrl),
-      userDisplayName = pulumi.Input.asOptionalInput<String>(userDisplayName),
-      userEmailAddress = pulumi.Input.asOptionalInput<String>(userEmailAddress),
-      userId = pulumi.Input.asOptionalInput<String>(userId),
-      userType = pulumi.Input.asOptionalInput<String>(userType);
+    this.message,
+    this.redeemUrl,
+    this.redirectUrl,
+    this.userDisplayName,
+    this.userEmailAddress,
+    this.userId,
+    this.userType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class InvitationState {
 
   factory InvitationState.fromMap(Map<String, dynamic> map) {
     return InvitationState(
-      message: map['message'] == null ? null : pulumi.Output.create<InvitationMessage>(InvitationMessage.fromMap((map['message'] as Map).cast<String, dynamic>())),
-      redeemUrl: map['redeemUrl'] == null ? null : pulumi.Output.create<String>(map['redeemUrl'] as String),
-      redirectUrl: map['redirectUrl'] == null ? null : pulumi.Output.create<String>(map['redirectUrl'] as String),
-      userDisplayName: map['userDisplayName'] == null ? null : pulumi.Output.create<String>(map['userDisplayName'] as String),
-      userEmailAddress: map['userEmailAddress'] == null ? null : pulumi.Output.create<String>(map['userEmailAddress'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
-      userType: map['userType'] == null ? null : pulumi.Output.create<String>(map['userType'] as String),
+      message: map['message'] == null ? null : (InvitationMessage.fromMap((map['message'] as Map).cast<String, dynamic>())).input(),
+      redeemUrl: map['redeemUrl'] == null ? null : (map['redeemUrl'] as String).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
+      userDisplayName: map['userDisplayName'] == null ? null : (map['userDisplayName'] as String).input(),
+      userEmailAddress: map['userEmailAddress'] == null ? null : (map['userEmailAddress'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
     );
   }
 }

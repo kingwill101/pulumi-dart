@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Proof of possession details.
 class DevicePresenceVerificationDetailsResponse {
   /// Insights on current status.
-  final String message;
+  final pulumi.Input<String> message;
   /// Proof of possession status.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [DevicePresenceVerificationDetailsResponse].
   /// [message] Insights on current status.
@@ -25,8 +26,8 @@ class DevicePresenceVerificationDetailsResponse {
 
   factory DevicePresenceVerificationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DevicePresenceVerificationDetailsResponse(
-      message: map['message'] as String,
-      status: map['status'] as String,
+      message: (map['message'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

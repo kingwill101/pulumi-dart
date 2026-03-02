@@ -33,23 +33,15 @@ class FilesetState {
   /// [filesetId] Fileset ID
   /// [status] The status of Fileset. Includes:
   FilesetState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? fileSystemPath,
-    pulumi.Output<String>? filesetId,
-    pulumi.Output<String>? status,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      fileSystemPath = pulumi.Input.asOptionalInput<String>(fileSystemPath),
-      filesetId = pulumi.Input.asOptionalInput<String>(filesetId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createTime,
+    this.deletionProtection,
+    this.description,
+    this.dryRun,
+    this.fileSystemId,
+    this.fileSystemPath,
+    this.filesetId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class FilesetState {
 
   factory FilesetState.fromMap(Map<String, dynamic> map) {
     return FilesetState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      fileSystemPath: map['fileSystemPath'] == null ? null : pulumi.Output.create<String>(map['fileSystemPath'] as String),
-      filesetId: map['filesetId'] == null ? null : pulumi.Output.create<String>(map['filesetId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      fileSystemPath: map['fileSystemPath'] == null ? null : (map['fileSystemPath'] as String).input(),
+      filesetId: map['filesetId'] == null ? null : (map['filesetId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

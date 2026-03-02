@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterPscConfig {
   /// Required. The consumer network where the network address of
   /// the discovery endpoint will be reserved, in the form of
   /// projects/{network_project_id_or_number}/global/networks/{network_id}.
-  final String network;
+  final pulumi.Input<String> network;
 
   /// Creates a new [GetClusterPscConfig].
   /// [network] Required. The consumer network where the network address of
@@ -21,7 +22,7 @@ class GetClusterPscConfig {
 
   factory GetClusterPscConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterPscConfig(
-      network: map['network'] as String,
+      network: (map['network'] as String).input(),
     );
   }
 }

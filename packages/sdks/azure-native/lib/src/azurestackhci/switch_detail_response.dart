@@ -6,11 +6,11 @@ import 'switch_extension_response.dart';
 /// List of switch details for edge device.
 class SwitchDetailResponse {
   /// This represents extensions installed on virtualSwitch.
-  final List<SwitchExtensionResponse> extensions;
+  final pulumi.Input<List<SwitchExtensionResponse>> extensions;
   /// The name of the switch.
-  final String switchName;
+  final pulumi.Input<String> switchName;
   /// The type of the switch. e.g. external, internal.
-  final String switchType;
+  final pulumi.Input<String> switchType;
 
   /// Creates a new [SwitchDetailResponse].
   /// [extensions] This represents extensions installed on virtualSwitch.
@@ -24,7 +24,7 @@ class SwitchDetailResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extensions': pulumi.Input.encodeList<SwitchExtensionResponse, Map<String, dynamic>>(extensions, (value) => value.toMap()),
+      'extensions': pulumi.Input.mapInputValue<List<SwitchExtensionResponse>, List<Map<String, dynamic>>>(extensions, (value) => pulumi.Input.encodeList<SwitchExtensionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'switchName': switchName,
       'switchType': switchType,
     };
@@ -32,9 +32,9 @@ class SwitchDetailResponse {
 
   factory SwitchDetailResponse.fromMap(Map<String, dynamic> map) {
     return SwitchDetailResponse(
-      extensions: pulumi.Input.decodeList<SwitchExtensionResponse>(map['extensions'], (value) => SwitchExtensionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      switchName: map['switchName'] as String,
-      switchType: map['switchType'] as String,
+      extensions: (pulumi.Input.decodeList<SwitchExtensionResponse>(map['extensions'], (value) => SwitchExtensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      switchName: (map['switchName'] as String).input(),
+      switchType: (map['switchType'] as String).input(),
     );
   }
 }

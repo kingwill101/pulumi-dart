@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataLakeAnalyticsSchemaResponseProperties {
   /// DataLake Store Account Name
-  final String? dataLakeStoreAccountName;
+  final pulumi.Input<String>? dataLakeStoreAccountName;
 
   /// Creates a new [DataLakeAnalyticsSchemaResponseProperties].
   /// [dataLakeStoreAccountName] DataLake Store Account Name
@@ -19,7 +20,7 @@ class DataLakeAnalyticsSchemaResponseProperties {
 
   factory DataLakeAnalyticsSchemaResponseProperties.fromMap(Map<String, dynamic> map) {
     return DataLakeAnalyticsSchemaResponseProperties(
-      dataLakeStoreAccountName: map['dataLakeStoreAccountName'] == null ? null : map['dataLakeStoreAccountName'] as String,
+      dataLakeStoreAccountName: map['dataLakeStoreAccountName'] == null ? null : (map['dataLakeStoreAccountName'] as String).input(),
     );
   }
 }

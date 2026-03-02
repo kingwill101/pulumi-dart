@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AzureFirewall NAT Rule Collection Action.
 class AzureFirewallNatRCAction {
   /// The type of action.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [AzureFirewallNatRCAction].
   /// [type] The type of action.
@@ -20,7 +21,7 @@ class AzureFirewallNatRCAction {
 
   factory AzureFirewallNatRCAction.fromMap(Map<String, dynamic> map) {
     return AzureFirewallNatRCAction(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetDynamicConfigurationVersionArgs {
   /// [dynamicConfigurationVersionName] The name of the DynamicConfigurationVersion
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDynamicConfigurationVersionArgs({
-    required pulumi.Output<String> configurationName,
-    required pulumi.Output<String> dynamicConfigurationName,
-    required pulumi.Output<String> dynamicConfigurationVersionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      dynamicConfigurationName = pulumi.Input.asInput<String>(dynamicConfigurationName),
-      dynamicConfigurationVersionName = pulumi.Input.asInput<String>(dynamicConfigurationVersionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.configurationName,
+    required this.dynamicConfigurationName,
+    required this.dynamicConfigurationVersionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDynamicConfigurationVersionArgs {
 
   factory GetDynamicConfigurationVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetDynamicConfigurationVersionArgs(
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      dynamicConfigurationName: pulumi.Output.create<String>(map['dynamicConfigurationName'] as String),
-      dynamicConfigurationVersionName: pulumi.Output.create<String>(map['dynamicConfigurationVersionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configurationName: (map['configurationName'] as String).input(),
+      dynamicConfigurationName: (map['dynamicConfigurationName'] as String).input(),
+      dynamicConfigurationVersionName: (map['dynamicConfigurationVersionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

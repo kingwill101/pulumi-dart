@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThreatIntelligenceIndicatorGranularMarking {
   /// The language of granular marking of the Threat Intelligence Indicator.
-  final String? language;
+  final pulumi.Input<String>? language;
   /// The reference of the granular marking of the Threat Intelligence Indicator.
-  final String? markingRef;
+  final pulumi.Input<String>? markingRef;
   /// A list of selectors of the granular marking of the Threat Intelligence Indicator.
-  final List<String>? selectors;
+  final pulumi.Input<List<String>>? selectors;
 
   /// Creates a new [ThreatIntelligenceIndicatorGranularMarking].
   /// [language] The language of granular marking of the Threat Intelligence Indicator.
@@ -29,9 +30,9 @@ class ThreatIntelligenceIndicatorGranularMarking {
 
   factory ThreatIntelligenceIndicatorGranularMarking.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceIndicatorGranularMarking(
-      language: map['language'] == null ? null : map['language'] as String,
-      markingRef: map['markingRef'] == null ? null : map['markingRef'] as String,
-      selectors: map['selectors'] == null ? null : (map['selectors'] as List).cast<String>(),
+      language: map['language'] == null ? null : (map['language'] as String).input(),
+      markingRef: map['markingRef'] == null ? null : (map['markingRef'] as String).input(),
+      selectors: map['selectors'] == null ? null : ((map['selectors'] as List).cast<String>()).input(),
     );
   }
 }

@@ -31,19 +31,13 @@ class AppVersionArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
   AppVersionArgs({
-    required pulumi.Output<String> app,
-    required pulumi.Output<String> appVersionId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      app = pulumi.Input.asInput<String>(app),
-      appVersionId = pulumi.Input.asInput<String>(appVersionId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.app,
+    required this.appVersionId,
+    this.description,
+    this.displayName,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class AppVersionArgs {
 
   factory AppVersionArgs.fromMap(Map<String, dynamic> map) {
     return AppVersionArgs(
-      app: pulumi.Output.create<String>(map['app'] as String),
-      appVersionId: pulumi.Output.create<String>(map['appVersionId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      app: (map['app'] as String).input(),
+      appVersionId: (map['appVersionId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class HypervClusterControllerClusterArgs {
   /// [runAsAccountId] Gets or sets Run as account ID of the Hyper-V cluster.
   /// [siteName] Site name
   HypervClusterControllerClusterArgs({
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? fqdn,
-    pulumi.Output<List<String>>? hostFqdnList,
-    pulumi.Output<String>? provisioningState,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? runAsAccountId,
-    required pulumi.Output<String> siteName,
-  }) :
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      hostFqdnList = pulumi.Input.asOptionalInput<List<String>>(hostFqdnList),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runAsAccountId = pulumi.Input.asOptionalInput<String>(runAsAccountId),
-      siteName = pulumi.Input.asInput<String>(siteName);
+    this.clusterName,
+    this.fqdn,
+    this.hostFqdnList,
+    this.provisioningState,
+    required this.resourceGroupName,
+    this.runAsAccountId,
+    required this.siteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class HypervClusterControllerClusterArgs {
 
   factory HypervClusterControllerClusterArgs.fromMap(Map<String, dynamic> map) {
     return HypervClusterControllerClusterArgs(
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<String>(map['fqdn'] as String),
-      hostFqdnList: map['hostFqdnList'] == null ? null : pulumi.Output.create<List<String>>((map['hostFqdnList'] as List).cast<String>()),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runAsAccountId: map['runAsAccountId'] == null ? null : pulumi.Output.create<String>(map['runAsAccountId'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      hostFqdnList: map['hostFqdnList'] == null ? null : ((map['hostFqdnList'] as List).cast<String>()).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
     );
   }
 }

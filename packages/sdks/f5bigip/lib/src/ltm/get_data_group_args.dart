@@ -23,15 +23,11 @@ class GetDataGroupArgs {
   /// [records] Specifies record of type (string/ip/integer)
   /// [type] The Data Group type (string, ip, integer)"
   GetDataGroupArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> partition,
-    pulumi.Output<List<GetDataGroupRecord>>? records,
-    pulumi.Output<String>? type,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      partition = pulumi.Input.asInput<String>(partition),
-      records = pulumi.Input.asOptionalInput<List<GetDataGroupRecord>>(records),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    required this.name,
+    required this.partition,
+    this.records,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetDataGroupArgs {
 
   factory GetDataGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDataGroupArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      partition: pulumi.Output.create<String>(map['partition'] as String),
-      records: map['records'] == null ? null : pulumi.Output.create<List<GetDataGroupRecord>>(pulumi.Input.decodeList<GetDataGroupRecord>(map['records'], (value) => GetDataGroupRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      name: (map['name'] as String).input(),
+      partition: (map['partition'] as String).input(),
+      records: map['records'] == null ? null : (pulumi.Input.decodeList<GetDataGroupRecord>(map['records'], (value) => GetDataGroupRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

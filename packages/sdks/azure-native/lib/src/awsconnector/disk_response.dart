@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Disk
 class DiskResponse {
   /// Instance attached to the disk.
-  final String? attachedTo;
+  final pulumi.Input<String>? attachedTo;
   /// Attachment state of the disk.
-  final String? attachmentState;
+  final pulumi.Input<String>? attachmentState;
   /// The names to use for your new Lightsail disk.
-  final String? diskName;
+  final pulumi.Input<String>? diskName;
   /// IOPS of disk.
-  final int? iops;
+  final pulumi.Input<int>? iops;
   /// Is the Attached disk is the system disk of the Instance.
-  final bool? isSystemDisk;
+  final pulumi.Input<bool>? isSystemDisk;
   /// Path of the disk attached to the instance.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Size of the disk attached to the Instance.
-  final String? sizeInGb;
+  final pulumi.Input<String>? sizeInGb;
 
   /// Creates a new [DiskResponse].
   /// [attachedTo] Instance attached to the disk.
@@ -50,13 +51,13 @@ class DiskResponse {
 
   factory DiskResponse.fromMap(Map<String, dynamic> map) {
     return DiskResponse(
-      attachedTo: map['attachedTo'] == null ? null : map['attachedTo'] as String,
-      attachmentState: map['attachmentState'] == null ? null : map['attachmentState'] as String,
-      diskName: map['diskName'] == null ? null : map['diskName'] as String,
-      iops: map['iops'] == null ? null : map['iops'] as int,
-      isSystemDisk: map['isSystemDisk'] == null ? null : map['isSystemDisk'] as bool,
-      path: map['path'] == null ? null : map['path'] as String,
-      sizeInGb: map['sizeInGb'] == null ? null : map['sizeInGb'] as String,
+      attachedTo: map['attachedTo'] == null ? null : (map['attachedTo'] as String).input(),
+      attachmentState: map['attachmentState'] == null ? null : (map['attachmentState'] as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
+      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
+      isSystemDisk: map['isSystemDisk'] == null ? null : (map['isSystemDisk'] as bool).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      sizeInGb: map['sizeInGb'] == null ? null : (map['sizeInGb'] as String).input(),
     );
   }
 }

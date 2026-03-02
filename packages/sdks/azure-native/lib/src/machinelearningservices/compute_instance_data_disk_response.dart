@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines an Aml Instance DataDisk.
 class ComputeInstanceDataDiskResponse {
   /// Caching type of Data Disk.
-  final String? caching;
+  final pulumi.Input<String>? caching;
   /// The initial disk size in gigabytes.
-  final int? diskSizeGB;
+  final pulumi.Input<int>? diskSizeGB;
   /// The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun.
-  final int? lun;
+  final pulumi.Input<int>? lun;
   /// type of this storage account.
-  final String? storageAccountType;
+  final pulumi.Input<String>? storageAccountType;
 
   /// Creates a new [ComputeInstanceDataDiskResponse].
   /// [caching] Caching type of Data Disk.
@@ -35,10 +36,10 @@ class ComputeInstanceDataDiskResponse {
 
   factory ComputeInstanceDataDiskResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceDataDiskResponse(
-      caching: map['caching'] == null ? null : map['caching'] as String,
-      diskSizeGB: map['diskSizeGB'] == null ? null : map['diskSizeGB'] as int,
-      lun: map['lun'] == null ? null : map['lun'] as int,
-      storageAccountType: map['storageAccountType'] == null ? null : map['storageAccountType'] as String,
+      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
+      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
     );
   }
 }

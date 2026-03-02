@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RouteTable route.
 class HubRoute {
   /// The type of destinations (eg: CIDR, ResourceId, Service).
-  final String destinationType;
+  final pulumi.Input<String> destinationType;
   /// List of all destinations.
-  final List<String> destinations;
+  final pulumi.Input<List<String>> destinations;
   /// The name of the Route that is unique within a RouteTable. This name can be used to access this route.
-  final String name;
+  final pulumi.Input<String> name;
   /// NextHop resource ID.
-  final String nextHop;
+  final pulumi.Input<String> nextHop;
   /// The type of next hop (eg: ResourceId).
-  final String nextHopType;
+  final pulumi.Input<String> nextHopType;
 
   /// Creates a new [HubRoute].
   /// [destinationType] The type of destinations (eg: CIDR, ResourceId, Service).
@@ -40,11 +41,11 @@ class HubRoute {
 
   factory HubRoute.fromMap(Map<String, dynamic> map) {
     return HubRoute(
-      destinationType: map['destinationType'] as String,
-      destinations: (map['destinations'] as List).cast<String>(),
-      name: map['name'] as String,
-      nextHop: map['nextHop'] as String,
-      nextHopType: map['nextHopType'] as String,
+      destinationType: (map['destinationType'] as String).input(),
+      destinations: ((map['destinations'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      nextHop: (map['nextHop'] as String).input(),
+      nextHopType: (map['nextHopType'] as String).input(),
     );
   }
 }

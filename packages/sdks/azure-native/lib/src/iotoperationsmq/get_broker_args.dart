@@ -19,13 +19,10 @@ class GetBrokerArgs {
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetBrokerArgs({
-    required pulumi.Output<String> brokerName,
-    required pulumi.Output<String> mqName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      brokerName = pulumi.Input.asInput<String>(brokerName),
-      mqName = pulumi.Input.asInput<String>(mqName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.brokerName,
+    required this.mqName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBrokerArgs {
 
   factory GetBrokerArgs.fromMap(Map<String, dynamic> map) {
     return GetBrokerArgs(
-      brokerName: pulumi.Output.create<String>(map['brokerName'] as String),
-      mqName: pulumi.Output.create<String>(map['mqName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      brokerName: (map['brokerName'] as String).input(),
+      mqName: (map['mqName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

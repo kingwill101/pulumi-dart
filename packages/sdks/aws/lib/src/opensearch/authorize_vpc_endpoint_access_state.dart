@@ -20,15 +20,11 @@ class AuthorizeVpcEndpointAccessState {
   /// [domainName] Name of OpenSearch Service domain to provide access to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AuthorizeVpcEndpointAccessState({
-    pulumi.Output<String>? account,
-    pulumi.Output<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>? authorizedPrincipals,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? region,
-  }) :
-      account = pulumi.Input.asOptionalInput<String>(account),
-      authorizedPrincipals = pulumi.Input.asOptionalInput<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>(authorizedPrincipals),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.account,
+    this.authorizedPrincipals,
+    this.domainName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class AuthorizeVpcEndpointAccessState {
 
   factory AuthorizeVpcEndpointAccessState.fromMap(Map<String, dynamic> map) {
     return AuthorizeVpcEndpointAccessState(
-      account: map['account'] == null ? null : pulumi.Output.create<String>(map['account'] as String),
-      authorizedPrincipals: map['authorizedPrincipals'] == null ? null : pulumi.Output.create<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>(pulumi.Input.decodeList<AuthorizeVpcEndpointAccessAuthorizedPrincipal>(map['authorizedPrincipals'], (value) => AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap((value as Map).cast<String, dynamic>()))),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      account: map['account'] == null ? null : (map['account'] as String).input(),
+      authorizedPrincipals: map['authorizedPrincipals'] == null ? null : (pulumi.Input.decodeList<AuthorizeVpcEndpointAccessAuthorizedPrincipal>(map['authorizedPrincipals'], (value) => AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

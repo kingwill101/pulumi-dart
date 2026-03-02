@@ -39,27 +39,17 @@ class AgentcoreMemoryStrategyState {
   /// [timeouts] Optional.
   /// [type] Type of memory strategy. Valid values: `SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `CUSTOM`. Changing this forces a new resource. Note that only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`) can exist per memory.
   AgentcoreMemoryStrategyState({
-    pulumi.Output<AgentcoreMemoryStrategyConfiguration>? configuration,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? memoryExecutionRoleArn,
-    pulumi.Output<String>? memoryId,
-    pulumi.Output<String>? memoryStrategyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? namespaces,
-    pulumi.Output<String>? region,
-    pulumi.Output<AgentcoreMemoryStrategyTimeouts>? timeouts,
-    pulumi.Output<String>? type,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<AgentcoreMemoryStrategyConfiguration>(configuration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      memoryExecutionRoleArn = pulumi.Input.asOptionalInput<String>(memoryExecutionRoleArn),
-      memoryId = pulumi.Input.asOptionalInput<String>(memoryId),
-      memoryStrategyId = pulumi.Input.asOptionalInput<String>(memoryStrategyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaces = pulumi.Input.asOptionalInput<List<String>>(namespaces),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<AgentcoreMemoryStrategyTimeouts>(timeouts),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.configuration,
+    this.description,
+    this.memoryExecutionRoleArn,
+    this.memoryId,
+    this.memoryStrategyId,
+    this.name,
+    this.namespaces,
+    this.region,
+    this.timeouts,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class AgentcoreMemoryStrategyState {
 
   factory AgentcoreMemoryStrategyState.fromMap(Map<String, dynamic> map) {
     return AgentcoreMemoryStrategyState(
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<AgentcoreMemoryStrategyConfiguration>(AgentcoreMemoryStrategyConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      memoryExecutionRoleArn: map['memoryExecutionRoleArn'] == null ? null : pulumi.Output.create<String>(map['memoryExecutionRoleArn'] as String),
-      memoryId: map['memoryId'] == null ? null : pulumi.Output.create<String>(map['memoryId'] as String),
-      memoryStrategyId: map['memoryStrategyId'] == null ? null : pulumi.Output.create<String>(map['memoryStrategyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaces: map['namespaces'] == null ? null : pulumi.Output.create<List<String>>((map['namespaces'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentcoreMemoryStrategyTimeouts>(AgentcoreMemoryStrategyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      configuration: map['configuration'] == null ? null : (AgentcoreMemoryStrategyConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      memoryExecutionRoleArn: map['memoryExecutionRoleArn'] == null ? null : (map['memoryExecutionRoleArn'] as String).input(),
+      memoryId: map['memoryId'] == null ? null : (map['memoryId'] as String).input(),
+      memoryStrategyId: map['memoryStrategyId'] == null ? null : (map['memoryStrategyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentcoreMemoryStrategyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

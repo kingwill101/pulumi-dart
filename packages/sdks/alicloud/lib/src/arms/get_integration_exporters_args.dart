@@ -22,15 +22,11 @@ class GetIntegrationExportersArgs {
   /// [integrationType] The type of prometheus integration.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetIntegrationExportersArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> integrationType,
-    pulumi.Output<String>? outputFile,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      integrationType = pulumi.Input.asInput<String>(integrationType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.clusterId,
+    this.ids,
+    required this.integrationType,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetIntegrationExportersArgs {
 
   factory GetIntegrationExportersArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationExportersArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      integrationType: pulumi.Output.create<String>(map['integrationType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      integrationType: (map['integrationType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

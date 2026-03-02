@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointKafkaSetting {
-  final String broker;
-  final bool includeControlDetails;
-  final bool includeNullAndEmpty;
-  final bool includePartitionValue;
-  final bool includeTableAlterOperations;
-  final bool includeTransactionDetails;
-  final String messageFormat;
-  final int messageMaxBytes;
-  final bool noHexPrefix;
-  final bool partitionIncludeSchemaTable;
-  final String saslMechanism;
-  final String saslPassword;
-  final String saslUsername;
-  final String securityProtocol;
-  final String sslCaCertificateArn;
-  final String sslClientCertificateArn;
-  final String sslClientKeyArn;
-  final String sslClientKeyPassword;
-  final String topic;
+  final pulumi.Input<String> broker;
+  final pulumi.Input<bool> includeControlDetails;
+  final pulumi.Input<bool> includeNullAndEmpty;
+  final pulumi.Input<bool> includePartitionValue;
+  final pulumi.Input<bool> includeTableAlterOperations;
+  final pulumi.Input<bool> includeTransactionDetails;
+  final pulumi.Input<String> messageFormat;
+  final pulumi.Input<int> messageMaxBytes;
+  final pulumi.Input<bool> noHexPrefix;
+  final pulumi.Input<bool> partitionIncludeSchemaTable;
+  final pulumi.Input<String> saslMechanism;
+  final pulumi.Input<String> saslPassword;
+  final pulumi.Input<String> saslUsername;
+  final pulumi.Input<String> securityProtocol;
+  final pulumi.Input<String> sslCaCertificateArn;
+  final pulumi.Input<String> sslClientCertificateArn;
+  final pulumi.Input<String> sslClientKeyArn;
+  final pulumi.Input<String> sslClientKeyPassword;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [GetEndpointKafkaSetting].
   /// [broker] Required.
@@ -90,25 +91,25 @@ class GetEndpointKafkaSetting {
 
   factory GetEndpointKafkaSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointKafkaSetting(
-      broker: map['broker'] as String,
-      includeControlDetails: map['includeControlDetails'] as bool,
-      includeNullAndEmpty: map['includeNullAndEmpty'] as bool,
-      includePartitionValue: map['includePartitionValue'] as bool,
-      includeTableAlterOperations: map['includeTableAlterOperations'] as bool,
-      includeTransactionDetails: map['includeTransactionDetails'] as bool,
-      messageFormat: map['messageFormat'] as String,
-      messageMaxBytes: map['messageMaxBytes'] as int,
-      noHexPrefix: map['noHexPrefix'] as bool,
-      partitionIncludeSchemaTable: map['partitionIncludeSchemaTable'] as bool,
-      saslMechanism: map['saslMechanism'] as String,
-      saslPassword: map['saslPassword'] as String,
-      saslUsername: map['saslUsername'] as String,
-      securityProtocol: map['securityProtocol'] as String,
-      sslCaCertificateArn: map['sslCaCertificateArn'] as String,
-      sslClientCertificateArn: map['sslClientCertificateArn'] as String,
-      sslClientKeyArn: map['sslClientKeyArn'] as String,
-      sslClientKeyPassword: map['sslClientKeyPassword'] as String,
-      topic: map['topic'] as String,
+      broker: (map['broker'] as String).input(),
+      includeControlDetails: (map['includeControlDetails'] as bool).input(),
+      includeNullAndEmpty: (map['includeNullAndEmpty'] as bool).input(),
+      includePartitionValue: (map['includePartitionValue'] as bool).input(),
+      includeTableAlterOperations: (map['includeTableAlterOperations'] as bool).input(),
+      includeTransactionDetails: (map['includeTransactionDetails'] as bool).input(),
+      messageFormat: (map['messageFormat'] as String).input(),
+      messageMaxBytes: (map['messageMaxBytes'] as int).input(),
+      noHexPrefix: (map['noHexPrefix'] as bool).input(),
+      partitionIncludeSchemaTable: (map['partitionIncludeSchemaTable'] as bool).input(),
+      saslMechanism: (map['saslMechanism'] as String).input(),
+      saslPassword: (map['saslPassword'] as String).input(),
+      saslUsername: (map['saslUsername'] as String).input(),
+      securityProtocol: (map['securityProtocol'] as String).input(),
+      sslCaCertificateArn: (map['sslCaCertificateArn'] as String).input(),
+      sslClientCertificateArn: (map['sslClientCertificateArn'] as String).input(),
+      sslClientKeyArn: (map['sslClientKeyArn'] as String).input(),
+      sslClientKeyPassword: (map['sslClientKeyPassword'] as String).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

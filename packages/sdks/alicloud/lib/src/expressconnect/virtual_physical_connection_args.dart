@@ -42,27 +42,17 @@ class VirtualPhysicalConnectionArgs {
   /// [vlanId] The VLAN ID of the shared leased line. Valid values: `0` to `2999`.
   /// [vpconnAliUid] The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
   VirtualPhysicalConnectionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? expectSpec,
-    required pulumi.Output<String> orderMode,
-    required pulumi.Output<String> parentPhysicalConnectionId,
-    pulumi.Output<String>? resourceGroupId,
-    required pulumi.Output<String> spec,
-    pulumi.Output<String>? virtualPhysicalConnectionName,
-    required pulumi.Output<int> vlanId,
-    required pulumi.Output<String> vpconnAliUid,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      expectSpec = pulumi.Input.asOptionalInput<String>(expectSpec),
-      orderMode = pulumi.Input.asInput<String>(orderMode),
-      parentPhysicalConnectionId = pulumi.Input.asInput<String>(parentPhysicalConnectionId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      spec = pulumi.Input.asInput<String>(spec),
-      virtualPhysicalConnectionName = pulumi.Input.asOptionalInput<String>(virtualPhysicalConnectionName),
-      vlanId = pulumi.Input.asInput<int>(vlanId),
-      vpconnAliUid = pulumi.Input.asInput<String>(vpconnAliUid);
+    this.description,
+    this.dryRun,
+    this.expectSpec,
+    required this.orderMode,
+    required this.parentPhysicalConnectionId,
+    this.resourceGroupId,
+    required this.spec,
+    this.virtualPhysicalConnectionName,
+    required this.vlanId,
+    required this.vpconnAliUid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class VirtualPhysicalConnectionArgs {
 
   factory VirtualPhysicalConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VirtualPhysicalConnectionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      expectSpec: map['expectSpec'] == null ? null : pulumi.Output.create<String>(map['expectSpec'] as String),
-      orderMode: pulumi.Output.create<String>(map['orderMode'] as String),
-      parentPhysicalConnectionId: pulumi.Output.create<String>(map['parentPhysicalConnectionId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      spec: pulumi.Output.create<String>(map['spec'] as String),
-      virtualPhysicalConnectionName: map['virtualPhysicalConnectionName'] == null ? null : pulumi.Output.create<String>(map['virtualPhysicalConnectionName'] as String),
-      vlanId: pulumi.Output.create<int>(map['vlanId'] as int),
-      vpconnAliUid: pulumi.Output.create<String>(map['vpconnAliUid'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      expectSpec: map['expectSpec'] == null ? null : (map['expectSpec'] as String).input(),
+      orderMode: (map['orderMode'] as String).input(),
+      parentPhysicalConnectionId: (map['parentPhysicalConnectionId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      spec: (map['spec'] as String).input(),
+      virtualPhysicalConnectionName: map['virtualPhysicalConnectionName'] == null ? null : (map['virtualPhysicalConnectionName'] as String).input(),
+      vlanId: (map['vlanId'] as int).input(),
+      vpconnAliUid: (map['vpconnAliUid'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_service_fabric_cluster_properties_response.dart';
 
 /// Properties specific to the Backend Type.
 class BackendPropertiesResponse {
   /// Backend Service Fabric Cluster Properties
-  final BackendServiceFabricClusterPropertiesResponse? serviceFabricCluster;
+  final pulumi.Input<BackendServiceFabricClusterPropertiesResponse>? serviceFabricCluster;
 
   /// Creates a new [BackendPropertiesResponse].
   /// [serviceFabricCluster] Backend Service Fabric Cluster Properties
@@ -15,13 +16,13 @@ class BackendPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serviceFabricCluster': ?serviceFabricCluster == null ? null : serviceFabricCluster!.toMap(),
+      'serviceFabricCluster': ?pulumi.Input.mapOptionalInputValue<BackendServiceFabricClusterPropertiesResponse, Map<String, dynamic>>(serviceFabricCluster, (value) => value.toMap()),
     };
   }
 
   factory BackendPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BackendPropertiesResponse(
-      serviceFabricCluster: map['serviceFabricCluster'] == null ? null : BackendServiceFabricClusterPropertiesResponse.fromMap((map['serviceFabricCluster'] as Map).cast<String, dynamic>()),
+      serviceFabricCluster: map['serviceFabricCluster'] == null ? null : (BackendServiceFabricClusterPropertiesResponse.fromMap((map['serviceFabricCluster'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

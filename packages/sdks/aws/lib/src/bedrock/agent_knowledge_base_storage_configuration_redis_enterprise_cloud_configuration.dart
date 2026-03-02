@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_knowledge_base_storage_configuration_redis_enterprise_cloud_configuration_field_mapping.dart';
 
 class AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration {
   /// ARN of the secret that you created in AWS Secrets Manager that is linked to your Redis Enterprise Cloud database.
-  final String credentialsSecretArn;
+  final pulumi.Input<String> credentialsSecretArn;
   /// Endpoint URL of the Redis Enterprise Cloud database.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// The names of the fields to which to map information about the vector store. This block supports the following arguments:
-  final AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping fieldMapping;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping> fieldMapping;
   /// Name of the vector index.
-  final String vectorIndexName;
+  final pulumi.Input<String> vectorIndexName;
 
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration].
   /// [credentialsSecretArn] ARN of the secret that you created in AWS Secrets Manager that is linked to your Redis Enterprise Cloud database.
@@ -28,17 +29,17 @@ class AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration {
     return <String, dynamic>{
       'credentialsSecretArn': credentialsSecretArn,
       'endpoint': endpoint,
-      'fieldMapping': fieldMapping.toMap(),
+      'fieldMapping': pulumi.Input.mapInputValue<AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping, Map<String, dynamic>>(fieldMapping, (value) => value.toMap()),
       'vectorIndexName': vectorIndexName,
     };
   }
 
   factory AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration(
-      credentialsSecretArn: map['credentialsSecretArn'] as String,
-      endpoint: map['endpoint'] as String,
-      fieldMapping: AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>()),
-      vectorIndexName: map['vectorIndexName'] as String,
+      credentialsSecretArn: (map['credentialsSecretArn'] as String).input(),
+      endpoint: (map['endpoint'] as String).input(),
+      fieldMapping: (AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>())).input(),
+      vectorIndexName: (map['vectorIndexName'] as String).input(),
     );
   }
 }

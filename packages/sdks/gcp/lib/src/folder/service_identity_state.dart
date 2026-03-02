@@ -21,15 +21,11 @@ class ServiceIdentityState {
   /// [member] The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
   /// [service] The service to generate identity for.
   ServiceIdentityState({
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? folder,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? service,
-  }) :
-      email = pulumi.Input.asOptionalInput<String>(email),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.email,
+    this.folder,
+    this.member,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class ServiceIdentityState {
 
   factory ServiceIdentityState.fromMap(Map<String, dynamic> map) {
     return ServiceIdentityState(
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

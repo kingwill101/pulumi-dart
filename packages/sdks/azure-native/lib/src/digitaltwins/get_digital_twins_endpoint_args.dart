@@ -19,13 +19,10 @@ class GetDigitalTwinsEndpointArgs {
   /// [resourceGroupName] The name of the resource group that contains the DigitalTwinsInstance.
   /// [resourceName] The name of the DigitalTwinsInstance.
   GetDigitalTwinsEndpointArgs({
-    required pulumi.Output<String> endpointName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.endpointName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDigitalTwinsEndpointArgs {
 
   factory GetDigitalTwinsEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetDigitalTwinsEndpointArgs(
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      endpointName: (map['endpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

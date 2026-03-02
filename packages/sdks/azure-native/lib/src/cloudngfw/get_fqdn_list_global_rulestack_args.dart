@@ -16,11 +16,9 @@ class GetFqdnListGlobalRulestackArgs {
   /// [globalRulestackName] GlobalRulestack resource name
   /// [name] fqdn list name
   GetFqdnListGlobalRulestackArgs({
-    required pulumi.Output<String> globalRulestackName,
-    required pulumi.Output<String> name,
-  }) :
-      globalRulestackName = pulumi.Input.asInput<String>(globalRulestackName),
-      name = pulumi.Input.asInput<String>(name);
+    required this.globalRulestackName,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetFqdnListGlobalRulestackArgs {
 
   factory GetFqdnListGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GetFqdnListGlobalRulestackArgs(
-      globalRulestackName: pulumi.Output.create<String>(map['globalRulestackName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      globalRulestackName: (map['globalRulestackName'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

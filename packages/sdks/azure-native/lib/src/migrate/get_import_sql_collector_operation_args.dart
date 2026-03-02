@@ -19,13 +19,10 @@ class GetImportSqlCollectorOperationArgs {
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetImportSqlCollectorOperationArgs({
-    required pulumi.Output<String> importSqlCollectorsName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      importSqlCollectorsName = pulumi.Input.asInput<String>(importSqlCollectorsName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.importSqlCollectorsName,
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetImportSqlCollectorOperationArgs {
 
   factory GetImportSqlCollectorOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetImportSqlCollectorOperationArgs(
-      importSqlCollectorsName: pulumi.Output.create<String>(map['importSqlCollectorsName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      importSqlCollectorsName: (map['importSqlCollectorsName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

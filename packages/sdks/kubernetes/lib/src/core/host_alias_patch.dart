@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the pod's hosts file.
 class HostAliasPatch {
   /// Hostnames for the above IP address.
-  final List<String>? hostnames;
+  final pulumi.Input<List<String>>? hostnames;
   /// IP address of the host file entry.
-  final String? ip;
+  final pulumi.Input<String>? ip;
 
   /// Creates a new [HostAliasPatch].
   /// [hostnames] Hostnames for the above IP address.
@@ -25,8 +26,8 @@ class HostAliasPatch {
 
   factory HostAliasPatch.fromMap(Map<String, dynamic> map) {
     return HostAliasPatch(
-      hostnames: map['hostnames'] == null ? null : (map['hostnames'] as List).cast<String>(),
-      ip: map['ip'] == null ? null : map['ip'] as String,
+      hostnames: map['hostnames'] == null ? null : ((map['hostnames'] as List).cast<String>()).input(),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class GetCommandsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
   GetCommandsArgs({
-    pulumi.Output<String>? commandType,
-    pulumi.Output<String>? contentEncoding,
-    pulumi.Output<String>? desktopId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      commandType = pulumi.Input.asOptionalInput<String>(commandType),
-      contentEncoding = pulumi.Input.asOptionalInput<String>(contentEncoding),
-      desktopId = pulumi.Input.asOptionalInput<String>(desktopId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.commandType,
+    this.contentEncoding,
+    this.desktopId,
+    this.ids,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetCommandsArgs {
 
   factory GetCommandsArgs.fromMap(Map<String, dynamic> map) {
     return GetCommandsArgs(
-      commandType: map['commandType'] == null ? null : pulumi.Output.create<String>(map['commandType'] as String),
-      contentEncoding: map['contentEncoding'] == null ? null : pulumi.Output.create<String>(map['contentEncoding'] as String),
-      desktopId: map['desktopId'] == null ? null : pulumi.Output.create<String>(map['desktopId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      commandType: map['commandType'] == null ? null : (map['commandType'] as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
+      desktopId: map['desktopId'] == null ? null : (map['desktopId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

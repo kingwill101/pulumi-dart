@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The details of the InMage agent.
 class InMageAgentDetailsResponse {
   /// Agent expiry date.
-  final String? agentExpiryDate;
+  final pulumi.Input<String>? agentExpiryDate;
   /// A value indicating whether installed agent needs to be updated.
-  final String? agentUpdateStatus;
+  final pulumi.Input<String>? agentUpdateStatus;
   /// The agent version.
-  final String? agentVersion;
+  final pulumi.Input<String>? agentVersion;
   /// A value indicating whether reboot is required after update is applied.
-  final String? postUpdateRebootStatus;
+  final pulumi.Input<String>? postUpdateRebootStatus;
 
   /// Creates a new [InMageAgentDetailsResponse].
   /// [agentExpiryDate] Agent expiry date.
@@ -35,10 +36,10 @@ class InMageAgentDetailsResponse {
 
   factory InMageAgentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageAgentDetailsResponse(
-      agentExpiryDate: map['agentExpiryDate'] == null ? null : map['agentExpiryDate'] as String,
-      agentUpdateStatus: map['agentUpdateStatus'] == null ? null : map['agentUpdateStatus'] as String,
-      agentVersion: map['agentVersion'] == null ? null : map['agentVersion'] as String,
-      postUpdateRebootStatus: map['postUpdateRebootStatus'] == null ? null : map['postUpdateRebootStatus'] as String,
+      agentExpiryDate: map['agentExpiryDate'] == null ? null : (map['agentExpiryDate'] as String).input(),
+      agentUpdateStatus: map['agentUpdateStatus'] == null ? null : (map['agentUpdateStatus'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      postUpdateRebootStatus: map['postUpdateRebootStatus'] == null ? null : (map['postUpdateRebootStatus'] as String).input(),
     );
   }
 }

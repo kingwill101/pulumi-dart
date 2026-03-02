@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Exact product price.
 class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse {
   /// Optional. Display price of the product.
-  final double displayPrice;
+  final pulumi.Input<double> displayPrice;
   /// Optional. Price of the product without any discount. If zero, by default set to be the 'displayPrice'.
-  final double originalPrice;
+  final pulumi.Input<double> originalPrice;
 
   /// Creates a new [GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse].
   /// [displayPrice] Optional. Display price of the product.
@@ -25,8 +26,8 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse
 
   factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse(
-      displayPrice: map['displayPrice'] as double,
-      originalPrice: map['originalPrice'] as double,
+      displayPrice: (map['displayPrice'] as double).input(),
+      originalPrice: (map['originalPrice'] as double).input(),
     );
   }
 }

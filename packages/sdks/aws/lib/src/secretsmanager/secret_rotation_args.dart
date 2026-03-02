@@ -26,17 +26,12 @@ class SecretRotationArgs {
   /// [rotationRules] A structure that defines the rotation configuration for this secret. Defined below.
   /// [secretId] Specifies the secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
   SecretRotationArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? rotateImmediately,
-    pulumi.Output<String>? rotationLambdaArn,
-    required pulumi.Output<SecretRotationRotationRules> rotationRules,
-    required pulumi.Output<String> secretId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rotateImmediately = pulumi.Input.asOptionalInput<bool>(rotateImmediately),
-      rotationLambdaArn = pulumi.Input.asOptionalInput<String>(rotationLambdaArn),
-      rotationRules = pulumi.Input.asInput<SecretRotationRotationRules>(rotationRules),
-      secretId = pulumi.Input.asInput<String>(secretId);
+    this.region,
+    this.rotateImmediately,
+    this.rotationLambdaArn,
+    required this.rotationRules,
+    required this.secretId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class SecretRotationArgs {
 
   factory SecretRotationArgs.fromMap(Map<String, dynamic> map) {
     return SecretRotationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rotateImmediately: map['rotateImmediately'] == null ? null : pulumi.Output.create<bool>(map['rotateImmediately'] as bool),
-      rotationLambdaArn: map['rotationLambdaArn'] == null ? null : pulumi.Output.create<String>(map['rotationLambdaArn'] as String),
-      rotationRules: pulumi.Output.create<SecretRotationRotationRules>(SecretRotationRotationRules.fromMap((map['rotationRules'] as Map).cast<String, dynamic>())),
-      secretId: pulumi.Output.create<String>(map['secretId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rotateImmediately: map['rotateImmediately'] == null ? null : (map['rotateImmediately'] as bool).input(),
+      rotationLambdaArn: map['rotationLambdaArn'] == null ? null : (map['rotationLambdaArn'] as String).input(),
+      rotationRules: (SecretRotationRotationRules.fromMap((map['rotationRules'] as Map).cast<String, dynamic>())).input(),
+      secretId: (map['secretId'] as String).input(),
     );
   }
 }

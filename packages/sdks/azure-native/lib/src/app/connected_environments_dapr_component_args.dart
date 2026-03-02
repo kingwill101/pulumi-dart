@@ -49,31 +49,19 @@ class ConnectedEnvironmentsDaprComponentArgs {
   /// [serviceComponentBind] List of container app services that are bound to the Dapr component
   /// [version] Component version
   ConnectedEnvironmentsDaprComponentArgs({
-    pulumi.Output<String>? componentName,
-    pulumi.Output<String>? componentType,
-    required pulumi.Output<String> connectedEnvironmentName,
-    pulumi.Output<bool>? ignoreErrors,
-    pulumi.Output<String>? initTimeout,
-    pulumi.Output<List<DaprMetadata>>? metadata,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<String>>? scopes,
-    pulumi.Output<String>? secretStoreComponent,
-    pulumi.Output<List<Secret>>? secrets,
-    pulumi.Output<List<DaprComponentServiceBinding>>? serviceComponentBind,
-    pulumi.Output<String>? version,
-  }) :
-      componentName = pulumi.Input.asOptionalInput<String>(componentName),
-      componentType = pulumi.Input.asOptionalInput<String>(componentType),
-      connectedEnvironmentName = pulumi.Input.asInput<String>(connectedEnvironmentName),
-      ignoreErrors = pulumi.Input.asOptionalInput<bool>(ignoreErrors),
-      initTimeout = pulumi.Input.asOptionalInput<String>(initTimeout),
-      metadata = pulumi.Input.asOptionalInput<List<DaprMetadata>>(metadata),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopes = pulumi.Input.asOptionalInput<List<String>>(scopes),
-      secretStoreComponent = pulumi.Input.asOptionalInput<String>(secretStoreComponent),
-      secrets = pulumi.Input.asOptionalInput<List<Secret>>(secrets),
-      serviceComponentBind = pulumi.Input.asOptionalInput<List<DaprComponentServiceBinding>>(serviceComponentBind),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.componentName,
+    this.componentType,
+    required this.connectedEnvironmentName,
+    this.ignoreErrors,
+    this.initTimeout,
+    this.metadata,
+    required this.resourceGroupName,
+    this.scopes,
+    this.secretStoreComponent,
+    this.secrets,
+    this.serviceComponentBind,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class ConnectedEnvironmentsDaprComponentArgs {
 
   factory ConnectedEnvironmentsDaprComponentArgs.fromMap(Map<String, dynamic> map) {
     return ConnectedEnvironmentsDaprComponentArgs(
-      componentName: map['componentName'] == null ? null : pulumi.Output.create<String>(map['componentName'] as String),
-      componentType: map['componentType'] == null ? null : pulumi.Output.create<String>(map['componentType'] as String),
-      connectedEnvironmentName: pulumi.Output.create<String>(map['connectedEnvironmentName'] as String),
-      ignoreErrors: map['ignoreErrors'] == null ? null : pulumi.Output.create<bool>(map['ignoreErrors'] as bool),
-      initTimeout: map['initTimeout'] == null ? null : pulumi.Output.create<String>(map['initTimeout'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<List<DaprMetadata>>(pulumi.Input.decodeList<DaprMetadata>(map['metadata'], (value) => DaprMetadata.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
-      secretStoreComponent: map['secretStoreComponent'] == null ? null : pulumi.Output.create<String>(map['secretStoreComponent'] as String),
-      secrets: map['secrets'] == null ? null : pulumi.Output.create<List<Secret>>(pulumi.Input.decodeList<Secret>(map['secrets'], (value) => Secret.fromMap((value as Map).cast<String, dynamic>()))),
-      serviceComponentBind: map['serviceComponentBind'] == null ? null : pulumi.Output.create<List<DaprComponentServiceBinding>>(pulumi.Input.decodeList<DaprComponentServiceBinding>(map['serviceComponentBind'], (value) => DaprComponentServiceBinding.fromMap((value as Map).cast<String, dynamic>()))),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      componentName: map['componentName'] == null ? null : (map['componentName'] as String).input(),
+      componentType: map['componentType'] == null ? null : (map['componentType'] as String).input(),
+      connectedEnvironmentName: (map['connectedEnvironmentName'] as String).input(),
+      ignoreErrors: map['ignoreErrors'] == null ? null : (map['ignoreErrors'] as bool).input(),
+      initTimeout: map['initTimeout'] == null ? null : (map['initTimeout'] as String).input(),
+      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<DaprMetadata>(map['metadata'], (value) => DaprMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      secretStoreComponent: map['secretStoreComponent'] == null ? null : (map['secretStoreComponent'] as String).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<Secret>(map['secrets'], (value) => Secret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceComponentBind: map['serviceComponentBind'] == null ? null : (pulumi.Input.decodeList<DaprComponentServiceBinding>(map['serviceComponentBind'], (value) => DaprComponentServiceBinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

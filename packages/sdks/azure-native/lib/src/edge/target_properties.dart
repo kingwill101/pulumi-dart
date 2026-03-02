@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Target Properties
 class TargetProperties {
   /// List of capabilities
-  final List<String> capabilities;
+  final pulumi.Input<List<String>> capabilities;
   /// ArmId of Context
-  final String contextId;
+  final pulumi.Input<String> contextId;
   /// Description of target
-  final String description;
+  final pulumi.Input<String> description;
   /// Display name of target
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Hierarchy Level
-  final String hierarchyLevel;
+  final pulumi.Input<String> hierarchyLevel;
   /// Scope of the target resource
-  final String? solutionScope;
+  final pulumi.Input<String>? solutionScope;
   /// State of resource
-  final String? state;
+  final pulumi.Input<String>? state;
   /// target spec
-  final dynamic targetSpecification;
+  final pulumi.Input<dynamic> targetSpecification;
 
   /// Creates a new [TargetProperties].
   /// [capabilities] List of capabilities
@@ -55,14 +56,14 @@ class TargetProperties {
 
   factory TargetProperties.fromMap(Map<String, dynamic> map) {
     return TargetProperties(
-      capabilities: (map['capabilities'] as List).cast<String>(),
-      contextId: map['contextId'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      hierarchyLevel: map['hierarchyLevel'] as String,
-      solutionScope: map['solutionScope'] == null ? null : map['solutionScope'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      targetSpecification: map['targetSpecification'],
+      capabilities: ((map['capabilities'] as List).cast<String>()).input(),
+      contextId: (map['contextId'] as String).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      hierarchyLevel: (map['hierarchyLevel'] as String).input(),
+      solutionScope: map['solutionScope'] == null ? null : (map['solutionScope'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      targetSpecification: (map['targetSpecification']).input(),
     );
   }
 }

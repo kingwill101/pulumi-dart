@@ -33,23 +33,15 @@ class UtilizationReportVmmigrationV1alpha1Args {
   /// [utilizationReportId] Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen.
   /// [vms] List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored.
   UtilizationReportVmmigrationV1alpha1Args({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> sourceId,
-    pulumi.Output<UtilizationReportTimeFrameVmmigrationV1alpha1>? timeFrame,
-    required pulumi.Output<String> utilizationReportId,
-    pulumi.Output<List<VmUtilizationInfoVmmigrationV1alpha1>>? vms,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      sourceId = pulumi.Input.asInput<String>(sourceId),
-      timeFrame = pulumi.Input.asOptionalInput<UtilizationReportTimeFrameVmmigrationV1alpha1>(timeFrame),
-      utilizationReportId = pulumi.Input.asInput<String>(utilizationReportId),
-      vms = pulumi.Input.asOptionalInput<List<VmUtilizationInfoVmmigrationV1alpha1>>(vms);
+    this.displayName,
+    this.location,
+    this.project,
+    this.requestId,
+    required this.sourceId,
+    this.timeFrame,
+    required this.utilizationReportId,
+    this.vms,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class UtilizationReportVmmigrationV1alpha1Args {
 
   factory UtilizationReportVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return UtilizationReportVmmigrationV1alpha1Args(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      sourceId: pulumi.Output.create<String>(map['sourceId'] as String),
-      timeFrame: map['timeFrame'] == null ? null : pulumi.Output.create<UtilizationReportTimeFrameVmmigrationV1alpha1>(UtilizationReportTimeFrameVmmigrationV1alpha1.fromValue(map['timeFrame'] as String)),
-      utilizationReportId: pulumi.Output.create<String>(map['utilizationReportId'] as String),
-      vms: map['vms'] == null ? null : pulumi.Output.create<List<VmUtilizationInfoVmmigrationV1alpha1>>(pulumi.Input.decodeList<VmUtilizationInfoVmmigrationV1alpha1>(map['vms'], (value) => VmUtilizationInfoVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      sourceId: (map['sourceId'] as String).input(),
+      timeFrame: map['timeFrame'] == null ? null : (UtilizationReportTimeFrameVmmigrationV1alpha1.fromValue(map['timeFrame'] as String)).input(),
+      utilizationReportId: (map['utilizationReportId'] as String).input(),
+      vms: map['vms'] == null ? null : (pulumi.Input.decodeList<VmUtilizationInfoVmmigrationV1alpha1>(map['vms'], (value) => VmUtilizationInfoVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

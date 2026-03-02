@@ -8,17 +8,17 @@ import 'unused_access_configuration_response.dart';
 /// Definition of awsAccessAnalyzerAnalyzer
 class AwsAccessAnalyzerAnalyzerPropertiesResponse {
   /// The configuration for the analyzer
-  final UnusedAccessConfigurationResponse? analyzerConfiguration;
+  final pulumi.Input<UnusedAccessConfigurationResponse>? analyzerConfiguration;
   /// Analyzer name
-  final String? analyzerName;
+  final pulumi.Input<String>? analyzerName;
   /// Property archiveRules
-  final List<ArchiveRuleResponse>? archiveRules;
+  final pulumi.Input<List<ArchiveRuleResponse>>? archiveRules;
   /// Amazon Resource Name (ARN) of the analyzer
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// An array of key-value pairs to apply to this resource.
-  final List<TagResponse>? tags;
+  final pulumi.Input<List<TagResponse>>? tags;
   /// The type of the analyzer, must be one of ACCOUNT, ORGANIZATION, ACCOUNT_UNUSED_ACCESS or ORGANIZATION_UNUSED_ACCESS
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [AwsAccessAnalyzerAnalyzerPropertiesResponse].
   /// [analyzerConfiguration] The configuration for the analyzer
@@ -38,23 +38,23 @@ class AwsAccessAnalyzerAnalyzerPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'analyzerConfiguration': ?analyzerConfiguration == null ? null : analyzerConfiguration!.toMap(),
+      'analyzerConfiguration': ?pulumi.Input.mapOptionalInputValue<UnusedAccessConfigurationResponse, Map<String, dynamic>>(analyzerConfiguration, (value) => value.toMap()),
       'analyzerName': ?analyzerName,
-      'archiveRules': ?archiveRules == null ? null : pulumi.Input.encodeList<ArchiveRuleResponse, Map<String, dynamic>>(archiveRules!, (value) => value.toMap()),
+      'archiveRules': ?pulumi.Input.mapOptionalInputValue<List<ArchiveRuleResponse>, List<Map<String, dynamic>>>(archiveRules, (value) => pulumi.Input.encodeList<ArchiveRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'arn': ?arn,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': ?type,
     };
   }
 
   factory AwsAccessAnalyzerAnalyzerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsAccessAnalyzerAnalyzerPropertiesResponse(
-      analyzerConfiguration: map['analyzerConfiguration'] == null ? null : UnusedAccessConfigurationResponse.fromMap((map['analyzerConfiguration'] as Map).cast<String, dynamic>()),
-      analyzerName: map['analyzerName'] == null ? null : map['analyzerName'] as String,
-      archiveRules: map['archiveRules'] == null ? null : pulumi.Input.decodeList<ArchiveRuleResponse>(map['archiveRules'], (value) => ArchiveRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : map['type'] as String,
+      analyzerConfiguration: map['analyzerConfiguration'] == null ? null : (UnusedAccessConfigurationResponse.fromMap((map['analyzerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      analyzerName: map['analyzerName'] == null ? null : (map['analyzerName'] as String).input(),
+      archiveRules: map['archiveRules'] == null ? null : (pulumi.Input.decodeList<ArchiveRuleResponse>(map['archiveRules'], (value) => ArchiveRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

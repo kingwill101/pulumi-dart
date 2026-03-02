@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn {
   /// Sets the name for the iSCSI initiator's IQN.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn].
   /// [name] Sets the name for the iSCSI initiator's IQN.
@@ -19,7 +20,7 @@ class DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn {
 
   factory DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

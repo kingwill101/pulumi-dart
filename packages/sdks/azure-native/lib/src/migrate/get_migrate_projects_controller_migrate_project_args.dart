@@ -16,11 +16,9 @@ class GetMigrateProjectsControllerMigrateProjectArgs {
   /// [migrateProjectName] Migrate project name.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   GetMigrateProjectsControllerMigrateProjectArgs({
-    required pulumi.Output<String> migrateProjectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      migrateProjectName = pulumi.Input.asInput<String>(migrateProjectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.migrateProjectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMigrateProjectsControllerMigrateProjectArgs {
 
   factory GetMigrateProjectsControllerMigrateProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetMigrateProjectsControllerMigrateProjectArgs(
-      migrateProjectName: pulumi.Output.create<String>(map['migrateProjectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      migrateProjectName: (map['migrateProjectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

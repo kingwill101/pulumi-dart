@@ -25,11 +25,9 @@ class GetAccountArgs {
   /// [accountId] The Google service account ID. This be one of:
   /// [project] The ID of the project that the service account is present in.
   GetAccountArgs({
-    required pulumi.Output<String> accountId,
-    pulumi.Output<String>? project,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.accountId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,8 +38,8 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      accountId: (map['accountId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

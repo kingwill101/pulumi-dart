@@ -22,15 +22,11 @@ class GetSqlServerArgs {
   /// [sqlServerName] Name of the SQL Server.
   /// [sqlServerRegistrationName] Name of the SQL Server registration.
   GetSqlServerArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlServerName,
-    required pulumi.Output<String> sqlServerRegistrationName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlServerName = pulumi.Input.asInput<String>(sqlServerName),
-      sqlServerRegistrationName = pulumi.Input.asInput<String>(sqlServerRegistrationName);
+    this.expand,
+    required this.resourceGroupName,
+    required this.sqlServerName,
+    required this.sqlServerRegistrationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSqlServerArgs {
 
   factory GetSqlServerArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlServerName: pulumi.Output.create<String>(map['sqlServerName'] as String),
-      sqlServerRegistrationName: pulumi.Output.create<String>(map['sqlServerRegistrationName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlServerName: (map['sqlServerName'] as String).input(),
+      sqlServerRegistrationName: (map['sqlServerRegistrationName'] as String).input(),
     );
   }
 }

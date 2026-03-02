@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The detail of a user.
 class UserSet {
   /// The description of the user.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The object id of the user.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The value indicating whether the user is a backup fallback approver
-  final bool? isBackup;
+  final pulumi.Input<bool>? isBackup;
   /// The type of user.
-  final String? userType;
+  final pulumi.Input<String>? userType;
 
   /// Creates a new [UserSet].
   /// [description] The description of the user.
@@ -35,10 +36,10 @@ class UserSet {
 
   factory UserSet.fromMap(Map<String, dynamic> map) {
     return UserSet(
-      description: map['description'] == null ? null : map['description'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      isBackup: map['isBackup'] == null ? null : map['isBackup'] as bool,
-      userType: map['userType'] == null ? null : map['userType'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      isBackup: map['isBackup'] == null ? null : (map['isBackup'] as bool).input(),
+      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
     );
   }
 }

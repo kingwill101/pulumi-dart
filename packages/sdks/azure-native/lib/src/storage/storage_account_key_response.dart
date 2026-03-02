@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An access key for the storage account.
 class StorageAccountKeyResponse {
   /// Creation time of the key, in round trip date format.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// Name of the key.
-  final String keyName;
+  final pulumi.Input<String> keyName;
   /// Permissions for the key -- read-only or full permissions.
-  final String permissions;
+  final pulumi.Input<String> permissions;
   /// Base 64-encoded value of the key.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [StorageAccountKeyResponse].
   /// [creationTime] Creation time of the key, in round trip date format.
@@ -35,10 +36,10 @@ class StorageAccountKeyResponse {
 
   factory StorageAccountKeyResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountKeyResponse(
-      creationTime: map['creationTime'] as String,
-      keyName: map['keyName'] as String,
-      permissions: map['permissions'] as String,
-      value: map['value'] as String,
+      creationTime: (map['creationTime'] as String).input(),
+      keyName: (map['keyName'] as String).input(),
+      permissions: (map['permissions'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

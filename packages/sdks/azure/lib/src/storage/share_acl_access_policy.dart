@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ShareAclAccessPolicy {
   /// The time at which this Access Policy should be valid untilWhen using `storage_account_id` this should be in RFC3339 format. If using the deprecated `storage_account_name` property, this uses the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-  final String? expiry;
+  final pulumi.Input<String>? expiry;
   /// The permissions which should be associated with this Shared Identifier. Possible value is combination of `r` (read), `w` (write), `d` (delete), and `l` (list).
   ///
   /// > **Note:** Permission order is strict at the service side, and permissions need to be listed in the order above.
-  final String permissions;
+  final pulumi.Input<String> permissions;
   /// The time at which this Access Policy should be valid from. When using `storage_account_id` this should be in RFC3339 format. If using the deprecated `storage_account_name` property, this uses the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-  final String? start;
+  final pulumi.Input<String>? start;
 
   /// Creates a new [ShareAclAccessPolicy].
   /// [expiry] The time at which this Access Policy should be valid untilWhen using `storage_account_id` this should be in RFC3339 format. If using the deprecated `storage_account_name` property, this uses the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format.
@@ -31,9 +32,9 @@ class ShareAclAccessPolicy {
 
   factory ShareAclAccessPolicy.fromMap(Map<String, dynamic> map) {
     return ShareAclAccessPolicy(
-      expiry: map['expiry'] == null ? null : map['expiry'] as String,
-      permissions: map['permissions'] as String,
-      start: map['start'] == null ? null : map['start'] as String,
+      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
+      permissions: (map['permissions'] as String).input(),
+      start: map['start'] == null ? null : (map['start'] as String).input(),
     );
   }
 }

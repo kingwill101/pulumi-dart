@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image.
 class VertexResponse {
   /// X coordinate.
-  final int x;
+  final pulumi.Input<int> x;
   /// Y coordinate.
-  final int y;
+  final pulumi.Input<int> y;
 
   /// Creates a new [VertexResponse].
   /// [x] X coordinate.
@@ -25,8 +26,8 @@ class VertexResponse {
 
   factory VertexResponse.fromMap(Map<String, dynamic> map) {
     return VertexResponse(
-      x: map['x'] as int,
-      y: map['y'] as int,
+      x: (map['x'] as int).input(),
+      y: (map['y'] as int).input(),
     );
   }
 }

@@ -42,23 +42,15 @@ class InstancePartitionState {
   /// [project] The ID of the project in which the resource belongs.
   /// [state] The current instance partition state. Possible values are:
   InstancePartitionState({
-    pulumi.Output<String>? config,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? nodeCount,
-    pulumi.Output<int>? processingUnits,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? state,
-  }) :
-      config = pulumi.Input.asOptionalInput<String>(config),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeCount = pulumi.Input.asOptionalInput<int>(nodeCount),
-      processingUnits = pulumi.Input.asOptionalInput<int>(processingUnits),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.config,
+    this.displayName,
+    this.instance,
+    this.name,
+    this.nodeCount,
+    this.processingUnits,
+    this.project,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class InstancePartitionState {
 
   factory InstancePartitionState.fromMap(Map<String, dynamic> map) {
     return InstancePartitionState(
-      config: map['config'] == null ? null : pulumi.Output.create<String>(map['config'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeCount: map['nodeCount'] == null ? null : pulumi.Output.create<int>(map['nodeCount'] as int),
-      processingUnits: map['processingUnits'] == null ? null : pulumi.Output.create<int>(map['processingUnits'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

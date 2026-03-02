@@ -24,15 +24,11 @@ class GetApplicationArgs {
   /// [identifierUri] Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
   /// [objectId] Specifies the Object ID of the application.
   GetApplicationArgs({
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? identifierUri,
-    pulumi.Output<String>? objectId,
-  }) :
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      identifierUri = pulumi.Input.asOptionalInput<String>(identifierUri),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId);
+    this.clientId,
+    this.displayName,
+    this.identifierUri,
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetApplicationArgs {
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      identifierUri: map['identifierUri'] == null ? null : pulumi.Output.create<String>(map['identifierUri'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
     );
   }
 }

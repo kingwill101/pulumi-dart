@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A resource policy.
 class ResourcePolicyResponse {
   /// Optional. When specified, this expression is used to filter the resources.
-  final String? filter;
+  final pulumi.Input<String>? filter;
   /// Resources that are included and shared as a part of a project policy.
-  final String? resources;
+  final pulumi.Input<String>? resources;
 
   /// Creates a new [ResourcePolicyResponse].
   /// [filter] Optional. When specified, this expression is used to filter the resources.
@@ -25,8 +26,8 @@ class ResourcePolicyResponse {
 
   factory ResourcePolicyResponse.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyResponse(
-      filter: map['filter'] == null ? null : map['filter'] as String,
-      resources: map['resources'] == null ? null : map['resources'] as String,
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      resources: map['resources'] == null ? null : (map['resources'] as String).input(),
     );
   }
 }

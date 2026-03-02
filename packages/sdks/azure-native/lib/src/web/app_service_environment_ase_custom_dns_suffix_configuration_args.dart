@@ -28,19 +28,13 @@ class AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs {
   /// [name] Name of the App Service Environment.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs({
-    pulumi.Output<String>? certificateUrl,
-    pulumi.Output<String>? dnsSuffix,
-    pulumi.Output<String>? keyVaultReferenceIdentity,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      certificateUrl = pulumi.Input.asOptionalInput<String>(certificateUrl),
-      dnsSuffix = pulumi.Input.asOptionalInput<String>(dnsSuffix),
-      keyVaultReferenceIdentity = pulumi.Input.asOptionalInput<String>(keyVaultReferenceIdentity),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.certificateUrl,
+    this.dnsSuffix,
+    this.keyVaultReferenceIdentity,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs {
 
   factory AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs(
-      certificateUrl: map['certificateUrl'] == null ? null : pulumi.Output.create<String>(map['certificateUrl'] as String),
-      dnsSuffix: map['dnsSuffix'] == null ? null : pulumi.Output.create<String>(map['dnsSuffix'] as String),
-      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : pulumi.Output.create<String>(map['keyVaultReferenceIdentity'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
+      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
+      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : (map['keyVaultReferenceIdentity'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCachePatchSchedule {
   /// the Weekday name for the patch item
-  final String dayOfWeek;
+  final pulumi.Input<String> dayOfWeek;
   /// The ISO 8601 timespan which specifies the amount of time the Redis Cache can be updated.
-  final String maintenanceWindow;
+  final pulumi.Input<String> maintenanceWindow;
   /// The Start Hour for maintenance in UTC
-  final int startHourUtc;
+  final pulumi.Input<int> startHourUtc;
 
   /// Creates a new [GetCachePatchSchedule].
   /// [dayOfWeek] the Weekday name for the patch item
@@ -29,9 +30,9 @@ class GetCachePatchSchedule {
 
   factory GetCachePatchSchedule.fromMap(Map<String, dynamic> map) {
     return GetCachePatchSchedule(
-      dayOfWeek: map['dayOfWeek'] as String,
-      maintenanceWindow: map['maintenanceWindow'] as String,
-      startHourUtc: map['startHourUtc'] as int,
+      dayOfWeek: (map['dayOfWeek'] as String).input(),
+      maintenanceWindow: (map['maintenanceWindow'] as String).input(),
+      startHourUtc: (map['startHourUtc'] as int).input(),
     );
   }
 }

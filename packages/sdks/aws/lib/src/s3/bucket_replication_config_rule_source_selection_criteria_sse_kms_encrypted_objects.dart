@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects {
   /// Whether the existing objects should be replicated. Either `"Enabled"` or `"Disabled"`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects].
   /// [status] Whether the existing objects should be replicated. Either `"Enabled"` or `"Disabled"`.
@@ -19,7 +20,7 @@ class BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects {
 
   factory BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

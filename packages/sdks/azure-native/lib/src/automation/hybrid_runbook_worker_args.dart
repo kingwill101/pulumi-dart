@@ -28,19 +28,13 @@ class HybridRunbookWorkerArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [vmResourceId] Azure Resource Manager Id for a virtual machine.
   HybridRunbookWorkerArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> hybridRunbookWorkerGroupName,
-    pulumi.Output<String>? hybridRunbookWorkerId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? vmResourceId,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      hybridRunbookWorkerGroupName = pulumi.Input.asInput<String>(hybridRunbookWorkerGroupName),
-      hybridRunbookWorkerId = pulumi.Input.asOptionalInput<String>(hybridRunbookWorkerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmResourceId = pulumi.Input.asOptionalInput<String>(vmResourceId);
+    required this.automationAccountName,
+    required this.hybridRunbookWorkerGroupName,
+    this.hybridRunbookWorkerId,
+    this.name,
+    required this.resourceGroupName,
+    this.vmResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class HybridRunbookWorkerArgs {
 
   factory HybridRunbookWorkerArgs.fromMap(Map<String, dynamic> map) {
     return HybridRunbookWorkerArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      hybridRunbookWorkerGroupName: pulumi.Output.create<String>(map['hybridRunbookWorkerGroupName'] as String),
-      hybridRunbookWorkerId: map['hybridRunbookWorkerId'] == null ? null : pulumi.Output.create<String>(map['hybridRunbookWorkerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmResourceId: map['vmResourceId'] == null ? null : pulumi.Output.create<String>(map['vmResourceId'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      hybridRunbookWorkerGroupName: (map['hybridRunbookWorkerGroupName'] as String).input(),
+      hybridRunbookWorkerId: map['hybridRunbookWorkerId'] == null ? null : (map['hybridRunbookWorkerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmResourceId: map['vmResourceId'] == null ? null : (map['vmResourceId'] as String).input(),
     );
   }
 }

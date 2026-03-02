@@ -34,19 +34,13 @@ class HostingCustomDomainArgs {
   /// [siteId] The ID of the site in which to create this custom domain association.
   /// [waitDnsVerification] Optional.
   HostingCustomDomainArgs({
-    pulumi.Output<String>? certPreference,
-    required pulumi.Output<String> customDomain,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? redirectTarget,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<bool>? waitDnsVerification,
-  }) :
-      certPreference = pulumi.Input.asOptionalInput<String>(certPreference),
-      customDomain = pulumi.Input.asInput<String>(customDomain),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      redirectTarget = pulumi.Input.asOptionalInput<String>(redirectTarget),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      waitDnsVerification = pulumi.Input.asOptionalInput<bool>(waitDnsVerification);
+    this.certPreference,
+    required this.customDomain,
+    this.project,
+    this.redirectTarget,
+    required this.siteId,
+    this.waitDnsVerification,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class HostingCustomDomainArgs {
 
   factory HostingCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainArgs(
-      certPreference: map['certPreference'] == null ? null : pulumi.Output.create<String>(map['certPreference'] as String),
-      customDomain: pulumi.Output.create<String>(map['customDomain'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      redirectTarget: map['redirectTarget'] == null ? null : pulumi.Output.create<String>(map['redirectTarget'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      waitDnsVerification: map['waitDnsVerification'] == null ? null : pulumi.Output.create<bool>(map['waitDnsVerification'] as bool),
+      certPreference: map['certPreference'] == null ? null : (map['certPreference'] as String).input(),
+      customDomain: (map['customDomain'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      redirectTarget: map['redirectTarget'] == null ? null : (map['redirectTarget'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      waitDnsVerification: map['waitDnsVerification'] == null ? null : (map['waitDnsVerification'] as bool).input(),
     );
   }
 }

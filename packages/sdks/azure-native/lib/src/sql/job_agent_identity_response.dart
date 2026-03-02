@@ -6,11 +6,11 @@ import 'job_agent_user_assigned_identity_response.dart';
 /// Azure Active Directory identity configuration for a resource.
 class JobAgentIdentityResponse {
   /// The job agent identity tenant id
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// The job agent identity type
-  final String type;
+  final pulumi.Input<String> type;
   /// The resource ids of the user assigned identities to use
-  final Map<String, JobAgentUserAssignedIdentityResponse>? userAssignedIdentities;
+  final pulumi.Input<Map<String, JobAgentUserAssignedIdentityResponse>>? userAssignedIdentities;
 
   /// Creates a new [JobAgentIdentityResponse].
   /// [tenantId] The job agent identity tenant id
@@ -26,15 +26,15 @@ class JobAgentIdentityResponse {
     return <String, dynamic>{
       'tenantId': ?tenantId,
       'type': type,
-      'userAssignedIdentities': ?userAssignedIdentities == null ? null : pulumi.Input.encodeMapValues<JobAgentUserAssignedIdentityResponse, Map<String, dynamic>>(userAssignedIdentities!, (value) => value.toMap()),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, JobAgentUserAssignedIdentityResponse>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<JobAgentUserAssignedIdentityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory JobAgentIdentityResponse.fromMap(Map<String, dynamic> map) {
     return JobAgentIdentityResponse(
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : pulumi.Input.decodeMapValues<JobAgentUserAssignedIdentityResponse>(map['userAssignedIdentities'], (value) => JobAgentUserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<JobAgentUserAssignedIdentityResponse>(map['userAssignedIdentities'], (value) => JobAgentUserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

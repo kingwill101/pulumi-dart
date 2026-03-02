@@ -27,19 +27,13 @@ class OrganizationBigQueryExportArgs {
   /// [name] The relative resource name of this export. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format: "organizations/{organization_id}/bigQueryExports/{export_id}" Example format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format: "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is ignored when provided in create requests.
   /// [organizationId] Required.
   OrganizationBigQueryExportArgs({
-    required pulumi.Output<String> bigQueryExportId,
-    pulumi.Output<String>? dataset,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-  }) :
-      bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
-      dataset = pulumi.Input.asOptionalInput<String>(dataset),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.bigQueryExportId,
+    this.dataset,
+    this.description,
+    this.filter,
+    this.name,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class OrganizationBigQueryExportArgs {
 
   factory OrganizationBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationBigQueryExportArgs(
-      bigQueryExportId: pulumi.Output.create<String>(map['bigQueryExportId'] as String),
-      dataset: map['dataset'] == null ? null : pulumi.Output.create<String>(map['dataset'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      bigQueryExportId: (map['bigQueryExportId'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

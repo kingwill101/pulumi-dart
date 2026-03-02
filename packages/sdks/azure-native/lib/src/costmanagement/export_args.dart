@@ -44,27 +44,17 @@ class ExportArgs {
   /// [schedule] Has schedule information for the export.
   /// [scope] The scope associated with export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
   ExportArgs({
-    required pulumi.Output<ExportDefinition> definition,
-    required pulumi.Output<ExportDeliveryInfo> deliveryInfo,
-    pulumi.Output<String>? eTag,
-    pulumi.Output<String>? exportName,
-    pulumi.Output<String>? format,
-    pulumi.Output<SystemAssignedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? partitionData,
-    pulumi.Output<ExportSchedule>? schedule,
-    required pulumi.Output<String> scope,
-  }) :
-      definition = pulumi.Input.asInput<ExportDefinition>(definition),
-      deliveryInfo = pulumi.Input.asInput<ExportDeliveryInfo>(deliveryInfo),
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      exportName = pulumi.Input.asOptionalInput<String>(exportName),
-      format = pulumi.Input.asOptionalInput<String>(format),
-      identity = pulumi.Input.asOptionalInput<SystemAssignedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      partitionData = pulumi.Input.asOptionalInput<bool>(partitionData),
-      schedule = pulumi.Input.asOptionalInput<ExportSchedule>(schedule),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.definition,
+    required this.deliveryInfo,
+    this.eTag,
+    this.exportName,
+    this.format,
+    this.identity,
+    this.location,
+    this.partitionData,
+    this.schedule,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class ExportArgs {
 
   factory ExportArgs.fromMap(Map<String, dynamic> map) {
     return ExportArgs(
-      definition: pulumi.Output.create<ExportDefinition>(ExportDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())),
-      deliveryInfo: pulumi.Output.create<ExportDeliveryInfo>(ExportDeliveryInfo.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>())),
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      exportName: map['exportName'] == null ? null : pulumi.Output.create<String>(map['exportName'] as String),
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<SystemAssignedServiceIdentity>(SystemAssignedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      partitionData: map['partitionData'] == null ? null : pulumi.Output.create<bool>(map['partitionData'] as bool),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<ExportSchedule>(ExportSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      definition: (ExportDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      deliveryInfo: (ExportDeliveryInfo.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>())).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      exportName: map['exportName'] == null ? null : (map['exportName'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      partitionData: map['partitionData'] == null ? null : (map['partitionData'] as bool).input(),
+      schedule: map['schedule'] == null ? null : (ExportSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

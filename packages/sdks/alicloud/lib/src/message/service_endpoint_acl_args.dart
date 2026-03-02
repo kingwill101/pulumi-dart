@@ -20,13 +20,10 @@ class ServiceEndpointAclArgs {
   /// [cidr] Required.
   /// [endpointType] Access point type. Value:
   ServiceEndpointAclArgs({
-    required pulumi.Output<String> aclStrategy,
-    required pulumi.Output<String> cidr,
-    required pulumi.Output<String> endpointType,
-  }) :
-      aclStrategy = pulumi.Input.asInput<String>(aclStrategy),
-      cidr = pulumi.Input.asInput<String>(cidr),
-      endpointType = pulumi.Input.asInput<String>(endpointType);
+    required this.aclStrategy,
+    required this.cidr,
+    required this.endpointType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class ServiceEndpointAclArgs {
 
   factory ServiceEndpointAclArgs.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointAclArgs(
-      aclStrategy: pulumi.Output.create<String>(map['aclStrategy'] as String),
-      cidr: pulumi.Output.create<String>(map['cidr'] as String),
-      endpointType: pulumi.Output.create<String>(map['endpointType'] as String),
+      aclStrategy: (map['aclStrategy'] as String).input(),
+      cidr: (map['cidr'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
     );
   }
 }

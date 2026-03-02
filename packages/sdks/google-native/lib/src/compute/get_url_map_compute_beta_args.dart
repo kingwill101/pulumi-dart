@@ -14,11 +14,9 @@ class GetUrlMapComputeBetaArgs {
   /// [project] Optional.
   /// [urlMap] Required.
   GetUrlMapComputeBetaArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> urlMap,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      urlMap = pulumi.Input.asInput<String>(urlMap);
+    this.project,
+    required this.urlMap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetUrlMapComputeBetaArgs {
 
   factory GetUrlMapComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetUrlMapComputeBetaArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      urlMap: pulumi.Output.create<String>(map['urlMap'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      urlMap: (map['urlMap'] as String).input(),
     );
   }
 }

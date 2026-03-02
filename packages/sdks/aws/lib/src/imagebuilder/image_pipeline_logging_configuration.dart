@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImagePipelineLoggingConfiguration {
   /// Name of the CloudWatch Log Group to send image logs to.
-  final String? imageLogGroupName;
+  final pulumi.Input<String>? imageLogGroupName;
   /// Name of the CloudWatch Log Group to send pipeline logs to.
-  final String? pipelineLogGroupName;
+  final pulumi.Input<String>? pipelineLogGroupName;
 
   /// Creates a new [ImagePipelineLoggingConfiguration].
   /// [imageLogGroupName] Name of the CloudWatch Log Group to send image logs to.
@@ -24,8 +25,8 @@ class ImagePipelineLoggingConfiguration {
 
   factory ImagePipelineLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return ImagePipelineLoggingConfiguration(
-      imageLogGroupName: map['imageLogGroupName'] == null ? null : map['imageLogGroupName'] as String,
-      pipelineLogGroupName: map['pipelineLogGroupName'] == null ? null : map['pipelineLogGroupName'] as String,
+      imageLogGroupName: map['imageLogGroupName'] == null ? null : (map['imageLogGroupName'] as String).input(),
+      pipelineLogGroupName: map['pipelineLogGroupName'] == null ? null : (map['pipelineLogGroupName'] as String).input(),
     );
   }
 }

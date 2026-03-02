@@ -38,25 +38,16 @@ class StreamInputIotHubArgs {
   /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   StreamInputIotHubArgs({
-    required pulumi.Output<String> endpoint,
-    required pulumi.Output<String> eventhubConsumerGroupName,
-    required pulumi.Output<String> iothubNamespace,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<StreamInputIotHubSerialization> serialization,
-    required pulumi.Output<String> sharedAccessPolicyKey,
-    required pulumi.Output<String> sharedAccessPolicyName,
-    required pulumi.Output<String> streamAnalyticsJobName,
-  }) :
-      endpoint = pulumi.Input.asInput<String>(endpoint),
-      eventhubConsumerGroupName = pulumi.Input.asInput<String>(eventhubConsumerGroupName),
-      iothubNamespace = pulumi.Input.asInput<String>(iothubNamespace),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serialization = pulumi.Input.asInput<StreamInputIotHubSerialization>(serialization),
-      sharedAccessPolicyKey = pulumi.Input.asInput<String>(sharedAccessPolicyKey),
-      sharedAccessPolicyName = pulumi.Input.asInput<String>(sharedAccessPolicyName),
-      streamAnalyticsJobName = pulumi.Input.asInput<String>(streamAnalyticsJobName);
+    required this.endpoint,
+    required this.eventhubConsumerGroupName,
+    required this.iothubNamespace,
+    this.name,
+    required this.resourceGroupName,
+    required this.serialization,
+    required this.sharedAccessPolicyKey,
+    required this.sharedAccessPolicyName,
+    required this.streamAnalyticsJobName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class StreamInputIotHubArgs {
 
   factory StreamInputIotHubArgs.fromMap(Map<String, dynamic> map) {
     return StreamInputIotHubArgs(
-      endpoint: pulumi.Output.create<String>(map['endpoint'] as String),
-      eventhubConsumerGroupName: pulumi.Output.create<String>(map['eventhubConsumerGroupName'] as String),
-      iothubNamespace: pulumi.Output.create<String>(map['iothubNamespace'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serialization: pulumi.Output.create<StreamInputIotHubSerialization>(StreamInputIotHubSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())),
-      sharedAccessPolicyKey: pulumi.Output.create<String>(map['sharedAccessPolicyKey'] as String),
-      sharedAccessPolicyName: pulumi.Output.create<String>(map['sharedAccessPolicyName'] as String),
-      streamAnalyticsJobName: pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
+      endpoint: (map['endpoint'] as String).input(),
+      eventhubConsumerGroupName: (map['eventhubConsumerGroupName'] as String).input(),
+      iothubNamespace: (map['iothubNamespace'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serialization: (StreamInputIotHubSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
+      sharedAccessPolicyKey: (map['sharedAccessPolicyKey'] as String).input(),
+      sharedAccessPolicyName: (map['sharedAccessPolicyName'] as String).input(),
+      streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
     );
   }
 }

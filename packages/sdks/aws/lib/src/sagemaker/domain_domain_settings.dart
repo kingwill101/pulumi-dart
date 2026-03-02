@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_domain_settings_docker_settings.dart';
 import 'domain_domain_settings_rstudio_server_pro_domain_settings.dart';
 import 'domain_domain_settings_trusted_identity_propagation_settings.dart';
 
 class DomainDomainSettings {
   /// A collection of settings that configure the domain’s Docker interaction. see `docker_settings` Block below.
-  final DomainDomainSettingsDockerSettings? dockerSettings;
+  final pulumi.Input<DomainDomainSettingsDockerSettings>? dockerSettings;
   /// The configuration for attaching a SageMaker AI user profile name to the execution role as a sts:SourceIdentity key [AWS Docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_monitor.html). Valid values are `USER_PROFILE_NAME` and `DISABLED`.
-  final String? executionRoleIdentityConfig;
+  final pulumi.Input<String>? executionRoleIdentityConfig;
   /// A collection of settings that configure the RStudioServerPro Domain-level app. see `r_studio_server_pro_domain_settings` Block below.
-  final DomainDomainSettingsRStudioServerProDomainSettings? rStudioServerProDomainSettings;
+  final pulumi.Input<DomainDomainSettingsRStudioServerProDomainSettings>? rStudioServerProDomainSettings;
   /// The security groups for the Amazon Virtual Private Cloud that the Domain uses for communication between Domain-level apps and user apps.
-  final List<String>? securityGroupIds;
+  final pulumi.Input<List<String>>? securityGroupIds;
   /// Configuration for trusted identity propagation. See the `trusted_identity_propagation_settings` Block below.
-  final DomainDomainSettingsTrustedIdentityPropagationSettings? trustedIdentityPropagationSettings;
+  final pulumi.Input<DomainDomainSettingsTrustedIdentityPropagationSettings>? trustedIdentityPropagationSettings;
 
   /// Creates a new [DomainDomainSettings].
   /// [dockerSettings] A collection of settings that configure the domain’s Docker interaction. see `docker_settings` Block below.
@@ -32,21 +33,21 @@ class DomainDomainSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dockerSettings': ?dockerSettings == null ? null : dockerSettings!.toMap(),
+      'dockerSettings': ?pulumi.Input.mapOptionalInputValue<DomainDomainSettingsDockerSettings, Map<String, dynamic>>(dockerSettings, (value) => value.toMap()),
       'executionRoleIdentityConfig': ?executionRoleIdentityConfig,
-      'rStudioServerProDomainSettings': ?rStudioServerProDomainSettings == null ? null : rStudioServerProDomainSettings!.toMap(),
+      'rStudioServerProDomainSettings': ?pulumi.Input.mapOptionalInputValue<DomainDomainSettingsRStudioServerProDomainSettings, Map<String, dynamic>>(rStudioServerProDomainSettings, (value) => value.toMap()),
       'securityGroupIds': ?securityGroupIds,
-      'trustedIdentityPropagationSettings': ?trustedIdentityPropagationSettings == null ? null : trustedIdentityPropagationSettings!.toMap(),
+      'trustedIdentityPropagationSettings': ?pulumi.Input.mapOptionalInputValue<DomainDomainSettingsTrustedIdentityPropagationSettings, Map<String, dynamic>>(trustedIdentityPropagationSettings, (value) => value.toMap()),
     };
   }
 
   factory DomainDomainSettings.fromMap(Map<String, dynamic> map) {
     return DomainDomainSettings(
-      dockerSettings: map['dockerSettings'] == null ? null : DomainDomainSettingsDockerSettings.fromMap((map['dockerSettings'] as Map).cast<String, dynamic>()),
-      executionRoleIdentityConfig: map['executionRoleIdentityConfig'] == null ? null : map['executionRoleIdentityConfig'] as String,
-      rStudioServerProDomainSettings: map['rStudioServerProDomainSettings'] == null ? null : DomainDomainSettingsRStudioServerProDomainSettings.fromMap((map['rStudioServerProDomainSettings'] as Map).cast<String, dynamic>()),
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
-      trustedIdentityPropagationSettings: map['trustedIdentityPropagationSettings'] == null ? null : DomainDomainSettingsTrustedIdentityPropagationSettings.fromMap((map['trustedIdentityPropagationSettings'] as Map).cast<String, dynamic>()),
+      dockerSettings: map['dockerSettings'] == null ? null : (DomainDomainSettingsDockerSettings.fromMap((map['dockerSettings'] as Map).cast<String, dynamic>())).input(),
+      executionRoleIdentityConfig: map['executionRoleIdentityConfig'] == null ? null : (map['executionRoleIdentityConfig'] as String).input(),
+      rStudioServerProDomainSettings: map['rStudioServerProDomainSettings'] == null ? null : (DomainDomainSettingsRStudioServerProDomainSettings.fromMap((map['rStudioServerProDomainSettings'] as Map).cast<String, dynamic>())).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      trustedIdentityPropagationSettings: map['trustedIdentityPropagationSettings'] == null ? null : (DomainDomainSettingsTrustedIdentityPropagationSettings.fromMap((map['trustedIdentityPropagationSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

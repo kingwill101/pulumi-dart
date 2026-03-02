@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_identity_type.dart';
 
 /// Identity for the Provisioned cluster.
 class ProvisionedClusterIdentity {
   /// The type of identity used for the provisioned cluster. The type SystemAssigned, includes a system created identity. The type None means no identity is assigned to the provisioned cluster.
-  final ResourceIdentityType type;
+  final pulumi.Input<ResourceIdentityType> type;
 
   /// Creates a new [ProvisionedClusterIdentity].
   /// [type] The type of identity used for the provisioned cluster. The type SystemAssigned, includes a system created identity. The type None means no identity is assigned to the provisioned cluster.
@@ -15,13 +16,13 @@ class ProvisionedClusterIdentity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': type.value,
+      'type': pulumi.Input.mapInputValue<ResourceIdentityType, String>(type, (value) => value.value),
     };
   }
 
   factory ProvisionedClusterIdentity.fromMap(Map<String, dynamic> map) {
     return ProvisionedClusterIdentity(
-      type: ResourceIdentityType.fromValue(map['type'] as String),
+      type: (ResourceIdentityType.fromValue(map['type'] as String)).input(),
     );
   }
 }

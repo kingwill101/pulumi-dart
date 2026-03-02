@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImportCollectorPropertiesResponse {
-  final String createdTimestamp;
-  final String? discoverySiteId;
-  final String updatedTimestamp;
+  final pulumi.Input<String> createdTimestamp;
+  final pulumi.Input<String>? discoverySiteId;
+  final pulumi.Input<String> updatedTimestamp;
 
   /// Creates a new [ImportCollectorPropertiesResponse].
   /// [createdTimestamp] Required.
@@ -26,9 +27,9 @@ class ImportCollectorPropertiesResponse {
 
   factory ImportCollectorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ImportCollectorPropertiesResponse(
-      createdTimestamp: map['createdTimestamp'] as String,
-      discoverySiteId: map['discoverySiteId'] == null ? null : map['discoverySiteId'] as String,
-      updatedTimestamp: map['updatedTimestamp'] as String,
+      createdTimestamp: (map['createdTimestamp'] as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      updatedTimestamp: (map['updatedTimestamp'] as String).input(),
     );
   }
 }

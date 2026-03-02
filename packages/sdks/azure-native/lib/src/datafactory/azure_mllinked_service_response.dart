@@ -8,34 +8,34 @@ import 'parameter_specification_response.dart';
 /// Azure ML Studio Web Service linked service.
 class AzureMLLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The API key for accessing the Azure ML model endpoint.
-  final AzureKeyVaultSecretReferenceResponse apiKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse> apiKey;
   /// Type of authentication (Required to specify MSI) used to connect to AzureML. Type: string (or Expression with resultType string).
-  final dynamic authentication;
+  final pulumi.Input<dynamic>? authentication;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The Batch Execution REST URL for an Azure ML Studio Web Service endpoint. Type: string (or Expression with resultType string).
-  final dynamic mlEndpoint;
+  final pulumi.Input<dynamic> mlEndpoint;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// The ID of the service principal used to authenticate against the ARM-based updateResourceEndpoint of an Azure ML Studio web service. Type: string (or Expression with resultType string).
-  final dynamic servicePrincipalId;
+  final pulumi.Input<dynamic>? servicePrincipalId;
   /// The key of the service principal used to authenticate against the ARM-based updateResourceEndpoint of an Azure ML Studio web service.
-  final AzureKeyVaultSecretReferenceResponse? servicePrincipalKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? servicePrincipalKey;
   /// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
-  final dynamic tenant;
+  final pulumi.Input<dynamic>? tenant;
   /// Type of linked service.
   /// Expected value is 'AzureML'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The Update Resource REST URL for an Azure ML Studio Web Service endpoint. Type: string (or Expression with resultType string).
-  final dynamic updateResourceEndpoint;
+  final pulumi.Input<dynamic>? updateResourceEndpoint;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [AzureMLLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -72,15 +72,15 @@ class AzureMLLinkedServiceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'apiKey': apiKey.toMap(),
+      'apiKey': pulumi.Input.mapInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(apiKey, (value) => value.toMap()),
       'authentication': ?authentication,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'mlEndpoint': mlEndpoint,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'servicePrincipalId': ?servicePrincipalId,
-      'servicePrincipalKey': ?servicePrincipalKey == null ? null : servicePrincipalKey!.toMap(),
+      'servicePrincipalKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
       'tenant': ?tenant,
       'type': type,
       'updateResourceEndpoint': ?updateResourceEndpoint,
@@ -90,20 +90,20 @@ class AzureMLLinkedServiceResponse {
 
   factory AzureMLLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return AzureMLLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      apiKey: AzureKeyVaultSecretReferenceResponse.fromMap((map['apiKey'] as Map).cast<String, dynamic>()),
-      authentication: map['authentication'] == null ? null : map['authentication'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      mlEndpoint: map['mlEndpoint'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : map['servicePrincipalId'],
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>()),
-      tenant: map['tenant'] == null ? null : map['tenant'],
-      type: map['type'] as String,
-      updateResourceEndpoint: map['updateResourceEndpoint'] == null ? null : map['updateResourceEndpoint'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      apiKey: (AzureKeyVaultSecretReferenceResponse.fromMap((map['apiKey'] as Map).cast<String, dynamic>())).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      mlEndpoint: (map['mlEndpoint']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>())).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']).input(),
+      type: (map['type'] as String).input(),
+      updateResourceEndpoint: map['updateResourceEndpoint'] == null ? null : (map['updateResourceEndpoint']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

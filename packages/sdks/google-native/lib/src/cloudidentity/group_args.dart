@@ -33,21 +33,14 @@ class GroupArgs {
   /// [labels] One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value.
   /// [parent] Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source}` for external [identity-mapped groups](https://support.google.com/a/answer/9039510) or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn'). [Find your customer ID.] (https://support.google.com/cloudidentity/answer/10070793)
   GroupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<DynamicGroupMetadata>? dynamicGroupMetadata,
-    required pulumi.Output<EntityKey> groupKey,
-    pulumi.Output<String>? initialGroupConfig,
-    required pulumi.Output<Map<String, String>> labels,
-    required pulumi.Output<String> parent,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      dynamicGroupMetadata = pulumi.Input.asOptionalInput<DynamicGroupMetadata>(dynamicGroupMetadata),
-      groupKey = pulumi.Input.asInput<EntityKey>(groupKey),
-      initialGroupConfig = pulumi.Input.asOptionalInput<String>(initialGroupConfig),
-      labels = pulumi.Input.asInput<Map<String, String>>(labels),
-      parent = pulumi.Input.asInput<String>(parent);
+    this.description,
+    this.displayName,
+    this.dynamicGroupMetadata,
+    required this.groupKey,
+    this.initialGroupConfig,
+    required this.labels,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      dynamicGroupMetadata: map['dynamicGroupMetadata'] == null ? null : pulumi.Output.create<DynamicGroupMetadata>(DynamicGroupMetadata.fromMap((map['dynamicGroupMetadata'] as Map).cast<String, dynamic>())),
-      groupKey: pulumi.Output.create<EntityKey>(EntityKey.fromMap((map['groupKey'] as Map).cast<String, dynamic>())),
-      initialGroupConfig: map['initialGroupConfig'] == null ? null : pulumi.Output.create<String>(map['initialGroupConfig'] as String),
-      labels: pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      dynamicGroupMetadata: map['dynamicGroupMetadata'] == null ? null : (DynamicGroupMetadata.fromMap((map['dynamicGroupMetadata'] as Map).cast<String, dynamic>())).input(),
+      groupKey: (EntityKey.fromMap((map['groupKey'] as Map).cast<String, dynamic>())).input(),
+      initialGroupConfig: map['initialGroupConfig'] == null ? null : (map['initialGroupConfig'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

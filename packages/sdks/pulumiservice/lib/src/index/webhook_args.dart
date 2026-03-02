@@ -46,29 +46,18 @@ class WebhookArgs {
   /// [secret] Optional. secret used as the HMAC key. See [webhook docs](https://www.pulumi.com/docs/intro/pulumi-service/webhooks/#headers) for more information.
   /// [stackName] Name of the stack. Only needed if this is a stack webhook.
   WebhookArgs({
-    required pulumi.Output<bool> active,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? environmentName,
-    pulumi.Output<List<WebhookFilters>>? filters,
-    pulumi.Output<WebhookFormat>? format,
-    pulumi.Output<List<WebhookGroup>>? groups,
-    required pulumi.Output<String> organizationName,
-    required pulumi.Output<String> payloadUrl,
-    pulumi.Output<String>? projectName,
-    pulumi.Output<String>? secret,
-    pulumi.Output<String>? stackName,
-  }) :
-      active = pulumi.Input.asInput<bool>(active),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      environmentName = pulumi.Input.asOptionalInput<String>(environmentName),
-      filters = pulumi.Input.asOptionalInput<List<WebhookFilters>>(filters),
-      format = pulumi.Input.asOptionalInput<WebhookFormat>(format),
-      groups = pulumi.Input.asOptionalInput<List<WebhookGroup>>(groups),
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      payloadUrl = pulumi.Input.asInput<String>(payloadUrl),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      secret = pulumi.Input.asOptionalInput<String>(secret),
-      stackName = pulumi.Input.asOptionalInput<String>(stackName);
+    required this.active,
+    required this.displayName,
+    this.environmentName,
+    this.filters,
+    this.format,
+    this.groups,
+    required this.organizationName,
+    required this.payloadUrl,
+    this.projectName,
+    this.secret,
+    this.stackName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      active: pulumi.Output.create<bool>(map['active'] as bool),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      environmentName: map['environmentName'] == null ? null : pulumi.Output.create<String>(map['environmentName'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<WebhookFilters>>(pulumi.Input.decodeList<WebhookFilters>(map['filters'], (value) => WebhookFilters.fromValue(value as String))),
-      format: map['format'] == null ? null : pulumi.Output.create<WebhookFormat>(WebhookFormat.fromValue(map['format'] as String)),
-      groups: map['groups'] == null ? null : pulumi.Output.create<List<WebhookGroup>>(pulumi.Input.decodeList<WebhookGroup>(map['groups'], (value) => WebhookGroup.fromValue(value as String))),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      payloadUrl: pulumi.Output.create<String>(map['payloadUrl'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      secret: map['secret'] == null ? null : pulumi.Output.create<String>(map['secret'] as String),
-      stackName: map['stackName'] == null ? null : pulumi.Output.create<String>(map['stackName'] as String),
+      active: (map['active'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<WebhookFilters>(map['filters'], (value) => WebhookFilters.fromValue(value as String))).input(),
+      format: map['format'] == null ? null : (WebhookFormat.fromValue(map['format'] as String)).input(),
+      groups: map['groups'] == null ? null : (pulumi.Input.decodeList<WebhookGroup>(map['groups'], (value) => WebhookGroup.fromValue(value as String))).input(),
+      organizationName: (map['organizationName'] as String).input(),
+      payloadUrl: (map['payloadUrl'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      stackName: map['stackName'] == null ? null : (map['stackName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleScheduledSentinelEntityMapping {
   /// The column name to be mapped to the identifier.
-  final String columnName;
+  final pulumi.Input<String> columnName;
 
   /// Creates a new [AlertRuleScheduledSentinelEntityMapping].
   /// [columnName] The column name to be mapped to the identifier.
@@ -19,7 +20,7 @@ class AlertRuleScheduledSentinelEntityMapping {
 
   factory AlertRuleScheduledSentinelEntityMapping.fromMap(Map<String, dynamic> map) {
     return AlertRuleScheduledSentinelEntityMapping(
-      columnName: map['columnName'] as String,
+      columnName: (map['columnName'] as String).input(),
     );
   }
 }

@@ -1,44 +1,45 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouterInterfacesInterface {
   /// ID of the access point used by the VBR.
-  final String accessPointId;
+  final pulumi.Input<String> accessPointId;
   /// Router interface creation time.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// Router interface description.
-  final String description;
+  final pulumi.Input<String> description;
   /// Source IP address used to perform health check on the physical connection.
-  final String healthCheckSourceIp;
+  final pulumi.Input<String> healthCheckSourceIp;
   /// Destination IP address used to perform health check on the physical connection.
-  final String healthCheckTargetIp;
+  final pulumi.Input<String> healthCheckTargetIp;
   /// Router interface ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Router interface name.
-  final String name;
+  final pulumi.Input<String> name;
   /// ID of the peer router interface.
-  final String oppositeInterfaceId;
+  final pulumi.Input<String> oppositeInterfaceId;
   /// Account ID of the owner of the peer router interface.
-  final String oppositeInterfaceOwnerId;
+  final pulumi.Input<String> oppositeInterfaceOwnerId;
   /// Peer router region ID.
-  final String oppositeRegionId;
+  final pulumi.Input<String> oppositeRegionId;
   /// Peer router ID.
-  final String oppositeRouterId;
+  final pulumi.Input<String> oppositeRouterId;
   /// Router type in the peer region. Possible values: `VRouter` and `VBR`.
-  final String oppositeRouterType;
+  final pulumi.Input<String> oppositeRouterType;
   /// Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
   /// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
-  final String role;
+  final pulumi.Input<String> role;
   /// ID of the VRouter located in the local region.
-  final String routerId;
+  final pulumi.Input<String> routerId;
   /// Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
-  final String routerType;
+  final pulumi.Input<String> routerType;
   /// Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
-  final String specification;
+  final pulumi.Input<String> specification;
   /// Expected status. Valid values are `Active`, `Inactive` and `Idle`.
-  final String status;
+  final pulumi.Input<String> status;
   /// ID of the VPC that owns the router in the local region.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetRouterInterfacesInterface].
   /// [accessPointId] ID of the access point used by the VBR.
@@ -105,24 +106,24 @@ class GetRouterInterfacesInterface {
 
   factory GetRouterInterfacesInterface.fromMap(Map<String, dynamic> map) {
     return GetRouterInterfacesInterface(
-      accessPointId: map['accessPointId'] as String,
-      creationTime: map['creationTime'] as String,
-      description: map['description'] as String,
-      healthCheckSourceIp: map['healthCheckSourceIp'] as String,
-      healthCheckTargetIp: map['healthCheckTargetIp'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      oppositeInterfaceId: map['oppositeInterfaceId'] as String,
-      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] as String,
-      oppositeRegionId: map['oppositeRegionId'] as String,
-      oppositeRouterId: map['oppositeRouterId'] as String,
-      oppositeRouterType: map['oppositeRouterType'] as String,
-      role: map['role'] as String,
-      routerId: map['routerId'] as String,
-      routerType: map['routerType'] as String,
-      specification: map['specification'] as String,
-      status: map['status'] as String,
-      vpcId: map['vpcId'] as String,
+      accessPointId: (map['accessPointId'] as String).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      healthCheckSourceIp: (map['healthCheckSourceIp'] as String).input(),
+      healthCheckTargetIp: (map['healthCheckTargetIp'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      oppositeInterfaceId: (map['oppositeInterfaceId'] as String).input(),
+      oppositeInterfaceOwnerId: (map['oppositeInterfaceOwnerId'] as String).input(),
+      oppositeRegionId: (map['oppositeRegionId'] as String).input(),
+      oppositeRouterId: (map['oppositeRouterId'] as String).input(),
+      oppositeRouterType: (map['oppositeRouterType'] as String).input(),
+      role: (map['role'] as String).input(),
+      routerId: (map['routerId'] as String).input(),
+      routerType: (map['routerType'] as String).input(),
+      specification: (map['specification'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

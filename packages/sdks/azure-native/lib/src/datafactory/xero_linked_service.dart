@@ -8,35 +8,35 @@ import 'parameter_specification.dart';
 /// Xero Service linked service.
 class XeroLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// Properties used to connect to Xero. It is mutually exclusive with any other properties in the linked service. Type: object.
-  final dynamic connectionProperties;
+  final pulumi.Input<dynamic>? connectionProperties;
   /// The consumer key associated with the Xero application.
-  final AzureKeyVaultSecretReference? consumerKey;
+  final pulumi.Input<AzureKeyVaultSecretReference>? consumerKey;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The endpoint of the Xero server. (i.e. api.xero.com)
-  final dynamic host;
+  final pulumi.Input<dynamic>? host;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The private key from the .pem file that was generated for your Xero private application. You must include all the text from the .pem file, including the Unix line endings(
   /// ).
-  final AzureKeyVaultSecretReference? privateKey;
+  final pulumi.Input<AzureKeyVaultSecretReference>? privateKey;
   /// Type of linked service.
   /// Expected value is 'Xero'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
-  final dynamic useEncryptedEndpoints;
+  final pulumi.Input<dynamic>? useEncryptedEndpoints;
   /// Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.
-  final dynamic useHostVerification;
+  final pulumi.Input<dynamic>? useHostVerification;
   /// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
-  final dynamic usePeerVerification;
+  final pulumi.Input<dynamic>? usePeerVerification;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [XeroLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -73,14 +73,14 @@ class XeroLinkedService {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionProperties': ?connectionProperties,
-      'consumerKey': ?consumerKey == null ? null : consumerKey!.toMap(),
+      'consumerKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(consumerKey, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'host': ?host,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'privateKey': ?privateKey == null ? null : privateKey!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'privateKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(privateKey, (value) => value.toMap()),
       'type': type,
       'useEncryptedEndpoints': ?useEncryptedEndpoints,
       'useHostVerification': ?useHostVerification,
@@ -91,20 +91,20 @@ class XeroLinkedService {
 
   factory XeroLinkedService.fromMap(Map<String, dynamic> map) {
     return XeroLinkedService(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      connectionProperties: map['connectionProperties'] == null ? null : map['connectionProperties'],
-      consumerKey: map['consumerKey'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['consumerKey'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      host: map['host'] == null ? null : map['host'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      privateKey: map['privateKey'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['privateKey'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : map['useEncryptedEndpoints'],
-      useHostVerification: map['useHostVerification'] == null ? null : map['useHostVerification'],
-      usePeerVerification: map['usePeerVerification'] == null ? null : map['usePeerVerification'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      connectionProperties: map['connectionProperties'] == null ? null : (map['connectionProperties']).input(),
+      consumerKey: map['consumerKey'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['consumerKey'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      host: map['host'] == null ? null : (map['host']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateKey: map['privateKey'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['privateKey'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : (map['useEncryptedEndpoints']).input(),
+      useHostVerification: map['useHostVerification'] == null ? null : (map['useHostVerification']).input(),
+      usePeerVerification: map['usePeerVerification'] == null ? null : (map['usePeerVerification']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

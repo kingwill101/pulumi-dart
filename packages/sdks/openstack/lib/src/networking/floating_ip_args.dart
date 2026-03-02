@@ -72,33 +72,20 @@ class FloatingIpArgs {
   /// [tenantId] The target tenant ID in which to allocate the floating
   /// [valueSpecs] Map of additional options.
   FloatingIpArgs({
-    pulumi.Output<String>? address,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? dnsDomain,
-    pulumi.Output<String>? dnsName,
-    pulumi.Output<String>? fixedIp,
-    pulumi.Output<String>? pool,
-    pulumi.Output<String>? portId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<List<String>>? subnetIds,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dnsDomain = pulumi.Input.asOptionalInput<String>(dnsDomain),
-      dnsName = pulumi.Input.asOptionalInput<String>(dnsName),
-      fixedIp = pulumi.Input.asOptionalInput<String>(fixedIp),
-      pool = pulumi.Input.asOptionalInput<String>(pool),
-      portId = pulumi.Input.asOptionalInput<String>(portId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs);
+    this.address,
+    this.description,
+    this.dnsDomain,
+    this.dnsName,
+    this.fixedIp,
+    this.pool,
+    this.portId,
+    this.region,
+    this.subnetId,
+    this.subnetIds,
+    this.tags,
+    this.tenantId,
+    this.valueSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -120,19 +107,19 @@ class FloatingIpArgs {
 
   factory FloatingIpArgs.fromMap(Map<String, dynamic> map) {
     return FloatingIpArgs(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dnsDomain: map['dnsDomain'] == null ? null : pulumi.Output.create<String>(map['dnsDomain'] as String),
-      dnsName: map['dnsName'] == null ? null : pulumi.Output.create<String>(map['dnsName'] as String),
-      fixedIp: map['fixedIp'] == null ? null : pulumi.Output.create<String>(map['fixedIp'] as String),
-      pool: map['pool'] == null ? null : pulumi.Output.create<String>(map['pool'] as String),
-      portId: map['portId'] == null ? null : pulumi.Output.create<String>(map['portId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dnsDomain: map['dnsDomain'] == null ? null : (map['dnsDomain'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
+      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp'] as String).input(),
+      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
+      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
     );
   }
 }

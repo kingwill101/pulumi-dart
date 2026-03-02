@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grantee.dart';
 import 'permission_enum_value.dart';
 
 /// Definition of Grant
 class Grant {
   /// <p>The person being granted permissions.</p>
-  final Grantee? grantee;
+  final pulumi.Input<Grantee>? grantee;
   /// <p>Specifies the permission given to the grantee.</p>
-  final PermissionEnumValue? permission;
+  final pulumi.Input<PermissionEnumValue>? permission;
 
   /// Creates a new [Grant].
   /// [grantee] <p>The person being granted permissions.</p>
@@ -20,15 +21,15 @@ class Grant {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'grantee': ?grantee == null ? null : grantee!.toMap(),
-      'permission': ?permission == null ? null : permission!.toMap(),
+      'grantee': ?pulumi.Input.mapOptionalInputValue<Grantee, Map<String, dynamic>>(grantee, (value) => value.toMap()),
+      'permission': ?pulumi.Input.mapOptionalInputValue<PermissionEnumValue, Map<String, dynamic>>(permission, (value) => value.toMap()),
     };
   }
 
   factory Grant.fromMap(Map<String, dynamic> map) {
     return Grant(
-      grantee: map['grantee'] == null ? null : Grantee.fromMap((map['grantee'] as Map).cast<String, dynamic>()),
-      permission: map['permission'] == null ? null : PermissionEnumValue.fromMap((map['permission'] as Map).cast<String, dynamic>()),
+      grantee: map['grantee'] == null ? null : (Grantee.fromMap((map['grantee'] as Map).cast<String, dynamic>())).input(),
+      permission: map['permission'] == null ? null : (PermissionEnumValue.fromMap((map['permission'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

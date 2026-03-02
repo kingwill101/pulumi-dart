@@ -25,17 +25,12 @@ class AuditCallbackArgs {
   /// [cryptType] The encryption algorithm is used to verify that the callback request is sent by the content security service to your business service. The value is SHA256:SHA256 encryption algorithm and SM3: SM3 encryption algorithm.
   /// [url] The detection result will be called back to the url.
   AuditCallbackArgs({
-    required pulumi.Output<String> auditCallbackName,
-    required pulumi.Output<List<String>> callbackSuggestions,
-    required pulumi.Output<List<String>> callbackTypes,
-    required pulumi.Output<String> cryptType,
-    required pulumi.Output<String> url,
-  }) :
-      auditCallbackName = pulumi.Input.asInput<String>(auditCallbackName),
-      callbackSuggestions = pulumi.Input.asInput<List<String>>(callbackSuggestions),
-      callbackTypes = pulumi.Input.asInput<List<String>>(callbackTypes),
-      cryptType = pulumi.Input.asInput<String>(cryptType),
-      url = pulumi.Input.asInput<String>(url);
+    required this.auditCallbackName,
+    required this.callbackSuggestions,
+    required this.callbackTypes,
+    required this.cryptType,
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class AuditCallbackArgs {
 
   factory AuditCallbackArgs.fromMap(Map<String, dynamic> map) {
     return AuditCallbackArgs(
-      auditCallbackName: pulumi.Output.create<String>(map['auditCallbackName'] as String),
-      callbackSuggestions: pulumi.Output.create<List<String>>((map['callbackSuggestions'] as List).cast<String>()),
-      callbackTypes: pulumi.Output.create<List<String>>((map['callbackTypes'] as List).cast<String>()),
-      cryptType: pulumi.Output.create<String>(map['cryptType'] as String),
-      url: pulumi.Output.create<String>(map['url'] as String),
+      auditCallbackName: (map['auditCallbackName'] as String).input(),
+      callbackSuggestions: ((map['callbackSuggestions'] as List).cast<String>()).input(),
+      callbackTypes: ((map['callbackTypes'] as List).cast<String>()).input(),
+      cryptType: (map['cryptType'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

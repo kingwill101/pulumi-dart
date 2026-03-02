@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Built-in authorization policy scoped to organization/tenant.
 class OrganizationSharedBuiltInAuthorizationPolicyResponse {
   /// Authorization scheme type.
   /// Expected value is 'OrganizationScope'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [OrganizationSharedBuiltInAuthorizationPolicyResponse].
   /// [type] Authorization scheme type.
@@ -21,7 +22,7 @@ class OrganizationSharedBuiltInAuthorizationPolicyResponse {
 
   factory OrganizationSharedBuiltInAuthorizationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return OrganizationSharedBuiltInAuthorizationPolicyResponse(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

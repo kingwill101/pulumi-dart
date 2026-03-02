@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'time_span_response.dart';
 
 /// Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
 class ArtifactObjectsResponse {
   /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
-  final String location;
+  final pulumi.Input<String> location;
   /// Path globs used to match files in the build's workspace.
-  final List<String> paths;
+  final pulumi.Input<List<String>> paths;
   /// Stores timing information for pushing all artifact objects.
-  final TimeSpanResponse timing;
+  final pulumi.Input<TimeSpanResponse> timing;
 
   /// Creates a new [ArtifactObjectsResponse].
   /// [location] Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
@@ -25,15 +26,15 @@ class ArtifactObjectsResponse {
     return <String, dynamic>{
       'location': location,
       'paths': paths,
-      'timing': timing.toMap(),
+      'timing': pulumi.Input.mapInputValue<TimeSpanResponse, Map<String, dynamic>>(timing, (value) => value.toMap()),
     };
   }
 
   factory ArtifactObjectsResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactObjectsResponse(
-      location: map['location'] as String,
-      paths: (map['paths'] as List).cast<String>(),
-      timing: TimeSpanResponse.fromMap((map['timing'] as Map).cast<String, dynamic>()),
+      location: (map['location'] as String).input(),
+      paths: ((map['paths'] as List).cast<String>()).input(),
+      timing: (TimeSpanResponse.fromMap((map['timing'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

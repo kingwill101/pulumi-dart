@@ -16,11 +16,9 @@ class GetGuestSubscriptionArgs {
   /// [guestSubscriptionId] The name of the GuestSubscription
   /// [location] The name of the Azure region.
   GetGuestSubscriptionArgs({
-    required pulumi.Output<String> guestSubscriptionId,
-    required pulumi.Output<String> location,
-  }) :
-      guestSubscriptionId = pulumi.Input.asInput<String>(guestSubscriptionId),
-      location = pulumi.Input.asInput<String>(location);
+    required this.guestSubscriptionId,
+    required this.location,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetGuestSubscriptionArgs {
 
   factory GetGuestSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetGuestSubscriptionArgs(
-      guestSubscriptionId: pulumi.Output.create<String>(map['guestSubscriptionId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
+      guestSubscriptionId: (map['guestSubscriptionId'] as String).input(),
+      location: (map['location'] as String).input(),
     );
   }
 }

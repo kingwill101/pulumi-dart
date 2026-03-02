@@ -19,13 +19,10 @@ class GroupArgs {
   /// [directoryId] The ID of the Directory.
   /// [groupName] The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
   GroupArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> directoryId,
-    required pulumi.Output<String> groupName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      groupName = pulumi.Input.asInput<String>(groupName);
+    this.description,
+    required this.directoryId,
+    required this.groupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
     );
   }
 }

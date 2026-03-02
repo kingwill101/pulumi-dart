@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The CORS policy for the Cosmos DB database account.
 class CorsPolicyResponse {
   /// The request headers that the origin domain may specify on the CORS request.
-  final String? allowedHeaders;
+  final pulumi.Input<String>? allowedHeaders;
   /// The methods (HTTP request verbs) that the origin domain may use for a CORS request.
-  final String? allowedMethods;
+  final pulumi.Input<String>? allowedMethods;
   /// The origin domains that are permitted to make a request against the service via CORS.
-  final String allowedOrigins;
+  final pulumi.Input<String> allowedOrigins;
   /// The response headers that may be sent in the response to the CORS request and exposed by the browser to the request issuer.
-  final String? exposedHeaders;
+  final pulumi.Input<String>? exposedHeaders;
   /// The maximum amount time that a browser should cache the preflight OPTIONS request.
-  final double? maxAgeInSeconds;
+  final pulumi.Input<double>? maxAgeInSeconds;
 
   /// Creates a new [CorsPolicyResponse].
   /// [allowedHeaders] The request headers that the origin domain may specify on the CORS request.
@@ -40,11 +41,11 @@ class CorsPolicyResponse {
 
   factory CorsPolicyResponse.fromMap(Map<String, dynamic> map) {
     return CorsPolicyResponse(
-      allowedHeaders: map['allowedHeaders'] == null ? null : map['allowedHeaders'] as String,
-      allowedMethods: map['allowedMethods'] == null ? null : map['allowedMethods'] as String,
-      allowedOrigins: map['allowedOrigins'] as String,
-      exposedHeaders: map['exposedHeaders'] == null ? null : map['exposedHeaders'] as String,
-      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : map['maxAgeInSeconds'] as double,
+      allowedHeaders: map['allowedHeaders'] == null ? null : (map['allowedHeaders'] as String).input(),
+      allowedMethods: map['allowedMethods'] == null ? null : (map['allowedMethods'] as String).input(),
+      allowedOrigins: (map['allowedOrigins'] as String).input(),
+      exposedHeaders: map['exposedHeaders'] == null ? null : (map['exposedHeaders'] as String).input(),
+      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : (map['maxAgeInSeconds'] as double).input(),
     );
   }
 }

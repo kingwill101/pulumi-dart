@@ -17,11 +17,9 @@ class NetworkingIpAssignmentArgs {
   /// [assignments] A list of IP/Linode assignments to apply.
   /// [region] The region where the IP addresses will be assigned.
   NetworkingIpAssignmentArgs({
-    pulumi.Output<List<NetworkingIpAssignmentAssignment>>? assignments,
-    required pulumi.Output<String> region,
-  }) :
-      assignments = pulumi.Input.asOptionalInput<List<NetworkingIpAssignmentAssignment>>(assignments),
-      region = pulumi.Input.asInput<String>(region);
+    this.assignments,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class NetworkingIpAssignmentArgs {
 
   factory NetworkingIpAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkingIpAssignmentArgs(
-      assignments: map['assignments'] == null ? null : pulumi.Output.create<List<NetworkingIpAssignmentAssignment>>(pulumi.Input.decodeList<NetworkingIpAssignmentAssignment>(map['assignments'], (value) => NetworkingIpAssignmentAssignment.fromMap((value as Map).cast<String, dynamic>()))),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      assignments: map['assignments'] == null ? null : (pulumi.Input.decodeList<NetworkingIpAssignmentAssignment>(map['assignments'], (value) => NetworkingIpAssignmentAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

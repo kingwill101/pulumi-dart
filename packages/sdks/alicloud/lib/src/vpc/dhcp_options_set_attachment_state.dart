@@ -19,15 +19,11 @@ class DhcpOptionsSetAttachmentState {
   /// [status] The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
   /// [vpcId] The ID of the VPC network that is to be associated with the DHCP options set..
   DhcpOptionsSetAttachmentState({
-    pulumi.Output<String>? dhcpOptionsSetId,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-  }) :
-      dhcpOptionsSetId = pulumi.Input.asOptionalInput<String>(dhcpOptionsSetId),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.dhcpOptionsSetId,
+    this.dryRun,
+    this.status,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class DhcpOptionsSetAttachmentState {
 
   factory DhcpOptionsSetAttachmentState.fromMap(Map<String, dynamic> map) {
     return DhcpOptionsSetAttachmentState(
-      dhcpOptionsSetId: map['dhcpOptionsSetId'] == null ? null : pulumi.Output.create<String>(map['dhcpOptionsSetId'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      dhcpOptionsSetId: map['dhcpOptionsSetId'] == null ? null : (map['dhcpOptionsSetId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

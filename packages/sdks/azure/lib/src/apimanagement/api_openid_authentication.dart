@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiOpenidAuthentication {
   /// How to send token to the server. A list of zero or more methods. Valid values are `authorizationHeader` and `query`.
-  final List<String>? bearerTokenSendingMethods;
+  final pulumi.Input<List<String>>? bearerTokenSendingMethods;
   /// OpenID Connect provider identifier. The name of an OpenID Connect Provider.
-  final String openidProviderName;
+  final pulumi.Input<String> openidProviderName;
 
   /// Creates a new [ApiOpenidAuthentication].
   /// [bearerTokenSendingMethods] How to send token to the server. A list of zero or more methods. Valid values are `authorizationHeader` and `query`.
@@ -24,8 +25,8 @@ class ApiOpenidAuthentication {
 
   factory ApiOpenidAuthentication.fromMap(Map<String, dynamic> map) {
     return ApiOpenidAuthentication(
-      bearerTokenSendingMethods: map['bearerTokenSendingMethods'] == null ? null : (map['bearerTokenSendingMethods'] as List).cast<String>(),
-      openidProviderName: map['openidProviderName'] as String,
+      bearerTokenSendingMethods: map['bearerTokenSendingMethods'] == null ? null : ((map['bearerTokenSendingMethods'] as List).cast<String>()).input(),
+      openidProviderName: (map['openidProviderName'] as String).input(),
     );
   }
 }

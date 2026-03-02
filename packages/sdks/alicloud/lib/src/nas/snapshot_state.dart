@@ -23,17 +23,12 @@ class SnapshotState {
   /// [snapshotName] SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
   /// [status] The status of the snapshot.
   SnapshotState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<int>? retentionDays,
-    pulumi.Output<String>? snapshotName,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    this.fileSystemId,
+    this.retentionDays,
+    this.snapshotName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

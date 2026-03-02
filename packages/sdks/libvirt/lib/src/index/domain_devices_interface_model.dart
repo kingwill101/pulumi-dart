@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceModel {
   /// Sets the specific type of the network interface model.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DomainDevicesInterfaceModel].
   /// [type] Sets the specific type of the network interface model.
@@ -19,7 +20,7 @@ class DomainDevicesInterfaceModel {
 
   factory DomainDevicesInterfaceModel.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceModel(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

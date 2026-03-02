@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_key_vault_secret_reference.dart';
 import 'credential_reference.dart';
 
 /// Sql always encrypted properties.
 class SqlAlwaysEncryptedProperties {
   /// Sql always encrypted AKV authentication type. Type: string.
-  final String alwaysEncryptedAkvAuthType;
+  final pulumi.Input<String> alwaysEncryptedAkvAuthType;
   /// The credential reference containing authentication information.
-  final CredentialReference? credential;
+  final pulumi.Input<CredentialReference>? credential;
   /// The client ID of the application in Azure Active Directory used for Azure Key Vault authentication. Type: string (or Expression with resultType string).
-  final dynamic servicePrincipalId;
+  final pulumi.Input<dynamic>? servicePrincipalId;
   /// The key of the service principal used to authenticate against Azure Key Vault.
-  final AzureKeyVaultSecretReference? servicePrincipalKey;
+  final pulumi.Input<AzureKeyVaultSecretReference>? servicePrincipalKey;
 
   /// Creates a new [SqlAlwaysEncryptedProperties].
   /// [alwaysEncryptedAkvAuthType] Sql always encrypted AKV authentication type. Type: string.
@@ -29,18 +30,18 @@ class SqlAlwaysEncryptedProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alwaysEncryptedAkvAuthType': alwaysEncryptedAkvAuthType,
-      'credential': ?credential == null ? null : credential!.toMap(),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReference, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'servicePrincipalId': ?servicePrincipalId,
-      'servicePrincipalKey': ?servicePrincipalKey == null ? null : servicePrincipalKey!.toMap(),
+      'servicePrincipalKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
     };
   }
 
   factory SqlAlwaysEncryptedProperties.fromMap(Map<String, dynamic> map) {
     return SqlAlwaysEncryptedProperties(
-      alwaysEncryptedAkvAuthType: map['alwaysEncryptedAkvAuthType'] as String,
-      credential: map['credential'] == null ? null : CredentialReference.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : map['servicePrincipalId'],
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>()),
+      alwaysEncryptedAkvAuthType: (map['alwaysEncryptedAkvAuthType'] as String).input(),
+      credential: map['credential'] == null ? null : (CredentialReference.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

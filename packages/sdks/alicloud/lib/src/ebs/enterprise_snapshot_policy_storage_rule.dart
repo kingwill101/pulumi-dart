@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseSnapshotPolicyStorageRule {
   /// Snapshot speed available.
-  final bool? enableImmediateAccess;
+  final pulumi.Input<bool>? enableImmediateAccess;
 
   /// Creates a new [EnterpriseSnapshotPolicyStorageRule].
   /// [enableImmediateAccess] Snapshot speed available.
@@ -19,7 +20,7 @@ class EnterpriseSnapshotPolicyStorageRule {
 
   factory EnterpriseSnapshotPolicyStorageRule.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyStorageRule(
-      enableImmediateAccess: map['enableImmediateAccess'] == null ? null : map['enableImmediateAccess'] as bool,
+      enableImmediateAccess: map['enableImmediateAccess'] == null ? null : (map['enableImmediateAccess'] as bool).input(),
     );
   }
 }

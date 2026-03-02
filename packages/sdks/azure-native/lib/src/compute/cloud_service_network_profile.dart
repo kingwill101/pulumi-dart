@@ -7,13 +7,13 @@ import 'sub_resource.dart';
 /// Network Profile for the cloud service.
 class CloudServiceNetworkProfile {
   /// List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
-  final List<LoadBalancerConfiguration>? loadBalancerConfigurations;
+  final pulumi.Input<List<LoadBalancerConfiguration>>? loadBalancerConfigurations;
   /// Slot type for the cloud service.
   /// Possible values are <br /><br />**Production**<br /><br />**Staging**<br /><br />
   /// If not specified, the default value is Production.
-  final String? slotType;
+  final pulumi.Input<String>? slotType;
   /// The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
-  final SubResource? swappableCloudService;
+  final pulumi.Input<SubResource>? swappableCloudService;
 
   /// Creates a new [CloudServiceNetworkProfile].
   /// [loadBalancerConfigurations] List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
@@ -27,17 +27,17 @@ class CloudServiceNetworkProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'loadBalancerConfigurations': ?loadBalancerConfigurations == null ? null : pulumi.Input.encodeList<LoadBalancerConfiguration, Map<String, dynamic>>(loadBalancerConfigurations!, (value) => value.toMap()),
+      'loadBalancerConfigurations': ?pulumi.Input.mapOptionalInputValue<List<LoadBalancerConfiguration>, List<Map<String, dynamic>>>(loadBalancerConfigurations, (value) => pulumi.Input.encodeList<LoadBalancerConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'slotType': ?slotType,
-      'swappableCloudService': ?swappableCloudService == null ? null : swappableCloudService!.toMap(),
+      'swappableCloudService': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(swappableCloudService, (value) => value.toMap()),
     };
   }
 
   factory CloudServiceNetworkProfile.fromMap(Map<String, dynamic> map) {
     return CloudServiceNetworkProfile(
-      loadBalancerConfigurations: map['loadBalancerConfigurations'] == null ? null : pulumi.Input.decodeList<LoadBalancerConfiguration>(map['loadBalancerConfigurations'], (value) => LoadBalancerConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      slotType: map['slotType'] == null ? null : map['slotType'] as String,
-      swappableCloudService: map['swappableCloudService'] == null ? null : SubResource.fromMap((map['swappableCloudService'] as Map).cast<String, dynamic>()),
+      loadBalancerConfigurations: map['loadBalancerConfigurations'] == null ? null : (pulumi.Input.decodeList<LoadBalancerConfiguration>(map['loadBalancerConfigurations'], (value) => LoadBalancerConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slotType: map['slotType'] == null ? null : (map['slotType'] as String).input(),
+      swappableCloudService: map['swappableCloudService'] == null ? null : (SubResource.fromMap((map['swappableCloudService'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

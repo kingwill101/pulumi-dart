@@ -19,13 +19,10 @@ class UserAttachmentArgs {
   /// [userGroupId] Specifies the user group to which you want to add the user ID.
   /// [userId] Specify that you want to add to the policy attached to the user group ID. This includes response parameters in a Json-formatted string supports up to set up 100 USER ID.
   UserAttachmentArgs({
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> userGroupId,
-    required pulumi.Output<String> userId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      userGroupId = pulumi.Input.asInput<String>(userGroupId),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.instanceId,
+    required this.userGroupId,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class UserAttachmentArgs {
 
   factory UserAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return UserAttachmentArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      userGroupId: pulumi.Output.create<String>(map['userGroupId'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      userGroupId: (map['userGroupId'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

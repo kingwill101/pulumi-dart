@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RocketMQInstanceNetworkInfoEndpoint {
   /// Access point type.
-  final String? endpointType;
+  final pulumi.Input<String>? endpointType;
   /// Access point address.
-  final String? endpointUrl;
+  final pulumi.Input<String>? endpointUrl;
   /// White list of access addresses.
-  final List<String>? ipWhiteLists;
+  final pulumi.Input<List<String>>? ipWhiteLists;
 
   /// Creates a new [RocketMQInstanceNetworkInfoEndpoint].
   /// [endpointType] Access point type.
@@ -29,9 +30,9 @@ class RocketMQInstanceNetworkInfoEndpoint {
 
   factory RocketMQInstanceNetworkInfoEndpoint.fromMap(Map<String, dynamic> map) {
     return RocketMQInstanceNetworkInfoEndpoint(
-      endpointType: map['endpointType'] == null ? null : map['endpointType'] as String,
-      endpointUrl: map['endpointUrl'] == null ? null : map['endpointUrl'] as String,
-      ipWhiteLists: map['ipWhiteLists'] == null ? null : (map['ipWhiteLists'] as List).cast<String>(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl'] as String).input(),
+      ipWhiteLists: map['ipWhiteLists'] == null ? null : ((map['ipWhiteLists'] as List).cast<String>()).input(),
     );
   }
 }

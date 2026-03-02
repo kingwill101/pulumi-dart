@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyVMWorkloadProtectionPolicyRetentionDaily {
   /// The number of daily backups to keep. Possible values are between `7` and `9999`.
-  final int count;
+  final pulumi.Input<int> count;
 
   /// Creates a new [PolicyVMWorkloadProtectionPolicyRetentionDaily].
   /// [count] The number of daily backups to keep. Possible values are between `7` and `9999`.
@@ -19,7 +20,7 @@ class PolicyVMWorkloadProtectionPolicyRetentionDaily {
 
   factory PolicyVMWorkloadProtectionPolicyRetentionDaily.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadProtectionPolicyRetentionDaily(
-      count: map['count'] as int,
+      count: (map['count'] as int).input(),
     );
   }
 }

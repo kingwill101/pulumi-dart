@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourceDirectoriesDirectory {
   /// The ID of resource directory.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the master account.
-  final String masterAccountId;
+  final pulumi.Input<String> masterAccountId;
   /// The name of the master account.
-  final String masterAccountName;
+  final pulumi.Input<String> masterAccountName;
   /// The ID of the resource directory.
-  final String resourceDirectoryId;
+  final pulumi.Input<String> resourceDirectoryId;
   /// The ID of the root folder.
-  final String rootFolderId;
+  final pulumi.Input<String> rootFolderId;
   /// (Available in 1.120.0+.) The status of the control policy.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetResourceDirectoriesDirectory].
   /// [id] The ID of resource directory.
@@ -44,12 +45,12 @@ class GetResourceDirectoriesDirectory {
 
   factory GetResourceDirectoriesDirectory.fromMap(Map<String, dynamic> map) {
     return GetResourceDirectoriesDirectory(
-      id: map['id'] as String,
-      masterAccountId: map['masterAccountId'] as String,
-      masterAccountName: map['masterAccountName'] as String,
-      resourceDirectoryId: map['resourceDirectoryId'] as String,
-      rootFolderId: map['rootFolderId'] as String,
-      status: map['status'] as String,
+      id: (map['id'] as String).input(),
+      masterAccountId: (map['masterAccountId'] as String).input(),
+      masterAccountName: (map['masterAccountName'] as String).input(),
+      resourceDirectoryId: (map['resourceDirectoryId'] as String).input(),
+      rootFolderId: (map['rootFolderId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

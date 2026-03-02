@@ -47,29 +47,18 @@ class AiDatasetState {
   /// [region] The region of the dataset. eg us-central1
   /// [updateTime] The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   AiDatasetState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<AiDatasetEncryptionSpec>? encryptionSpec,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? metadataSchemaUri,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      encryptionSpec = pulumi.Input.asOptionalInput<AiDatasetEncryptionSpec>(encryptionSpec),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      metadataSchemaUri = pulumi.Input.asOptionalInput<String>(metadataSchemaUri),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.displayName,
+    this.effectiveLabels,
+    this.encryptionSpec,
+    this.labels,
+    this.metadataSchemaUri,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.region,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class AiDatasetState {
 
   factory AiDatasetState.fromMap(Map<String, dynamic> map) {
     return AiDatasetState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<AiDatasetEncryptionSpec>(AiDatasetEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      metadataSchemaUri: map['metadataSchemaUri'] == null ? null : pulumi.Output.create<String>(map['metadataSchemaUri'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiDatasetEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      metadataSchemaUri: map['metadataSchemaUri'] == null ? null : (map['metadataSchemaUri'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

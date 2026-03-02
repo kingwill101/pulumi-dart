@@ -40,17 +40,12 @@ class EnvironmentIamBindingArgs {
   /// [orgId] The Apigee Organization associated with the Apigee environment,
   /// [role] The role that should be applied. Only one
   EnvironmentIamBindingArgs({
-    pulumi.Output<EnvironmentIamBindingCondition>? condition,
-    required pulumi.Output<String> envId,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<EnvironmentIamBindingCondition>(condition),
-      envId = pulumi.Input.asInput<String>(envId),
-      members = pulumi.Input.asInput<List<String>>(members),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.envId,
+    required this.members,
+    required this.orgId,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,11 +59,11 @@ class EnvironmentIamBindingArgs {
 
   factory EnvironmentIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<EnvironmentIamBindingCondition>(EnvironmentIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      envId: pulumi.Output.create<String>(map['envId'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (EnvironmentIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      envId: (map['envId'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      orgId: (map['orgId'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

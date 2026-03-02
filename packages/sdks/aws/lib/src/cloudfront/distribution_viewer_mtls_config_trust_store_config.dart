@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionViewerMtlsConfigTrustStoreConfig {
   /// Whether to advertise the trust store CA names to clients. Defaults to `false`.
-  final bool? advertiseTrustStoreCaNames;
+  final pulumi.Input<bool>? advertiseTrustStoreCaNames;
   /// Whether to ignore certificate expiry for viewer mTLS. Defaults to `false`.
-  final bool? ignoreCertificateExpiry;
+  final pulumi.Input<bool>? ignoreCertificateExpiry;
   /// Identifier of the trust store to use for viewer mTLS.
-  final String trustStoreId;
+  final pulumi.Input<String> trustStoreId;
 
   /// Creates a new [DistributionViewerMtlsConfigTrustStoreConfig].
   /// [advertiseTrustStoreCaNames] Whether to advertise the trust store CA names to clients. Defaults to `false`.
@@ -29,9 +30,9 @@ class DistributionViewerMtlsConfigTrustStoreConfig {
 
   factory DistributionViewerMtlsConfigTrustStoreConfig.fromMap(Map<String, dynamic> map) {
     return DistributionViewerMtlsConfigTrustStoreConfig(
-      advertiseTrustStoreCaNames: map['advertiseTrustStoreCaNames'] == null ? null : map['advertiseTrustStoreCaNames'] as bool,
-      ignoreCertificateExpiry: map['ignoreCertificateExpiry'] == null ? null : map['ignoreCertificateExpiry'] as bool,
-      trustStoreId: map['trustStoreId'] as String,
+      advertiseTrustStoreCaNames: map['advertiseTrustStoreCaNames'] == null ? null : (map['advertiseTrustStoreCaNames'] as bool).input(),
+      ignoreCertificateExpiry: map['ignoreCertificateExpiry'] == null ? null : (map['ignoreCertificateExpiry'] as bool).input(),
+      trustStoreId: (map['trustStoreId'] as String).input(),
     );
   }
 }

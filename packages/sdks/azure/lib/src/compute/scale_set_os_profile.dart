@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScaleSetOsProfile {
   /// Specifies the administrator password to use for all the instances of virtual machines in a scale set.
-  final String? adminPassword;
+  final pulumi.Input<String>? adminPassword;
   /// Specifies the administrator account name to use for all the instances of virtual machines in the scale set.
-  final String adminUsername;
+  final pulumi.Input<String> adminUsername;
   /// Specifies the computer name prefix for all of the virtual machines in the scale set. Computer name prefixes must be 1 to 9 characters long for windows images and 1 - 58 for Linux. Changing this forces a new resource to be created.
-  final String computerNamePrefix;
+  final pulumi.Input<String> computerNamePrefix;
   /// Specifies custom data to supply to the machine. On Linux-based systems, this can be used as a cloud-init script. On other systems, this will be copied as a file on disk. Internally, this provider will base64 encode this value before sending it to the API. The maximum length of the binary array is 65535 bytes.
-  final String? customData;
+  final pulumi.Input<String>? customData;
 
   /// Creates a new [ScaleSetOsProfile].
   /// [adminPassword] Specifies the administrator password to use for all the instances of virtual machines in a scale set.
@@ -34,10 +35,10 @@ class ScaleSetOsProfile {
 
   factory ScaleSetOsProfile.fromMap(Map<String, dynamic> map) {
     return ScaleSetOsProfile(
-      adminPassword: map['adminPassword'] == null ? null : map['adminPassword'] as String,
-      adminUsername: map['adminUsername'] as String,
-      computerNamePrefix: map['computerNamePrefix'] as String,
-      customData: map['customData'] == null ? null : map['customData'] as String,
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
+      adminUsername: (map['adminUsername'] as String).input(),
+      computerNamePrefix: (map['computerNamePrefix'] as String).input(),
+      customData: map['customData'] == null ? null : (map['customData'] as String).input(),
     );
   }
 }

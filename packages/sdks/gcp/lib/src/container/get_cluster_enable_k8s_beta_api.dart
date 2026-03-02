@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterEnableK8sBetaApi {
   /// Enabled Kubernetes Beta APIs.
-  final List<String> enabledApis;
+  final pulumi.Input<List<String>> enabledApis;
 
   /// Creates a new [GetClusterEnableK8sBetaApi].
   /// [enabledApis] Enabled Kubernetes Beta APIs.
@@ -19,7 +20,7 @@ class GetClusterEnableK8sBetaApi {
 
   factory GetClusterEnableK8sBetaApi.fromMap(Map<String, dynamic> map) {
     return GetClusterEnableK8sBetaApi(
-      enabledApis: (map['enabledApis'] as List).cast<String>(),
+      enabledApis: ((map['enabledApis'] as List).cast<String>()).input(),
     );
   }
 }

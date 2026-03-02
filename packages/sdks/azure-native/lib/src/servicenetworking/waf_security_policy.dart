@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Web Application Firewall Security Policy
 class WafSecurityPolicy {
   /// Resource ID of the Waf Security Policy
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [WafSecurityPolicy].
   /// [id] Resource ID of the Waf Security Policy
@@ -20,7 +21,7 @@ class WafSecurityPolicy {
 
   factory WafSecurityPolicy.fromMap(Map<String, dynamic> map) {
     return WafSecurityPolicy(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

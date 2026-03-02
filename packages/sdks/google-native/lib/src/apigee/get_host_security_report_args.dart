@@ -14,11 +14,9 @@ class GetHostSecurityReportArgs {
   /// [hostSecurityReportId] Required.
   /// [organizationId] Required.
   GetHostSecurityReportArgs({
-    required pulumi.Output<String> hostSecurityReportId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      hostSecurityReportId = pulumi.Input.asInput<String>(hostSecurityReportId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.hostSecurityReportId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetHostSecurityReportArgs {
 
   factory GetHostSecurityReportArgs.fromMap(Map<String, dynamic> map) {
     return GetHostSecurityReportArgs(
-      hostSecurityReportId: pulumi.Output.create<String>(map['hostSecurityReportId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      hostSecurityReportId: (map['hostSecurityReportId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

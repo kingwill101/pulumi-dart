@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Active Directory identity configuration for a resource.
 class JobAgentIdentity {
   /// The job agent identity tenant id
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// The job agent identity type
-  final String type;
+  final pulumi.Input<String> type;
   /// The resource ids of the user assigned identities to use
-  final List<String>? userAssignedIdentities;
+  final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [JobAgentIdentity].
   /// [tenantId] The job agent identity tenant id
@@ -30,9 +31,9 @@ class JobAgentIdentity {
 
   factory JobAgentIdentity.fromMap(Map<String, dynamic> map) {
     return JobAgentIdentity(
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (map['userAssignedIdentities'] as List).cast<String>(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
     );
   }
 }

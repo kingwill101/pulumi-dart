@@ -19,13 +19,10 @@ class GetServerGroupRoleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [roleName] The name of the cluster role.
   GetServerGroupRoleArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> roleName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleName = pulumi.Input.asInput<String>(roleName);
+    required this.clusterName,
+    required this.resourceGroupName,
+    required this.roleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetServerGroupRoleArgs {
 
   factory GetServerGroupRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetServerGroupRoleArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleName: pulumi.Output.create<String>(map['roleName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleName: (map['roleName'] as String).input(),
     );
   }
 }

@@ -36,25 +36,16 @@ class NetworkAclState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] The ID of the associated VPC.
   NetworkAclState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<NetworkAclEgress>>? egress,
-    pulumi.Output<List<NetworkAclIngress>>? ingress,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vpcId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      egress = pulumi.Input.asOptionalInput<List<NetworkAclEgress>>(egress),
-      ingress = pulumi.Input.asOptionalInput<List<NetworkAclIngress>>(ingress),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.arn,
+    this.egress,
+    this.ingress,
+    this.ownerId,
+    this.region,
+    this.subnetIds,
+    this.tags,
+    this.tagsAll,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class NetworkAclState {
 
   factory NetworkAclState.fromMap(Map<String, dynamic> map) {
     return NetworkAclState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      egress: map['egress'] == null ? null : pulumi.Output.create<List<NetworkAclEgress>>(pulumi.Input.decodeList<NetworkAclEgress>(map['egress'], (value) => NetworkAclEgress.fromMap((value as Map).cast<String, dynamic>()))),
-      ingress: map['ingress'] == null ? null : pulumi.Output.create<List<NetworkAclIngress>>(pulumi.Input.decodeList<NetworkAclIngress>(map['ingress'], (value) => NetworkAclIngress.fromMap((value as Map).cast<String, dynamic>()))),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      egress: map['egress'] == null ? null : (pulumi.Input.decodeList<NetworkAclEgress>(map['egress'], (value) => NetworkAclEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<NetworkAclIngress>(map['ingress'], (value) => NetworkAclIngress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

@@ -18,15 +18,11 @@ class GetBastionHostInstancesArgs {
   /// [outputFile] Optional.
   /// [tags] Optional.
   GetBastionHostInstancesArgs({
-    pulumi.Output<String>? descriptionRegex,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      descriptionRegex = pulumi.Input.asOptionalInput<String>(descriptionRegex),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.descriptionRegex,
+    this.ids,
+    this.outputFile,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetBastionHostInstancesArgs {
 
   factory GetBastionHostInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetBastionHostInstancesArgs(
-      descriptionRegex: map['descriptionRegex'] == null ? null : pulumi.Output.create<String>(map['descriptionRegex'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      descriptionRegex: map['descriptionRegex'] == null ? null : (map['descriptionRegex'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

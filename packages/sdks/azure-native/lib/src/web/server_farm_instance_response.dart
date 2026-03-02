@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents details of a single instance in a server farm.
 class ServerFarmInstanceResponse {
   /// The instance name.
-  final String? instanceName;
+  final pulumi.Input<String>? instanceName;
   /// The instance IP address.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The instance status.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [ServerFarmInstanceResponse].
   /// [instanceName] The instance name.
@@ -30,9 +31,9 @@ class ServerFarmInstanceResponse {
 
   factory ServerFarmInstanceResponse.fromMap(Map<String, dynamic> map) {
     return ServerFarmInstanceResponse(
-      instanceName: map['instanceName'] == null ? null : map['instanceName'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

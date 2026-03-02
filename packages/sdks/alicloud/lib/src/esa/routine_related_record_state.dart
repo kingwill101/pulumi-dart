@@ -19,15 +19,11 @@ class RoutineRelatedRecordState {
   /// [recordName] The record name.
   /// [siteId] The website ID.
   RoutineRelatedRecordState({
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? recordId,
-    pulumi.Output<String>? recordName,
-    pulumi.Output<String>? siteId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recordId = pulumi.Input.asOptionalInput<int>(recordId),
-      recordName = pulumi.Input.asOptionalInput<String>(recordName),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId);
+    this.name,
+    this.recordId,
+    this.recordName,
+    this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class RoutineRelatedRecordState {
 
   factory RoutineRelatedRecordState.fromMap(Map<String, dynamic> map) {
     return RoutineRelatedRecordState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recordId: map['recordId'] == null ? null : pulumi.Output.create<int>(map['recordId'] as int),
-      recordName: map['recordName'] == null ? null : pulumi.Output.create<String>(map['recordName'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recordId: map['recordId'] == null ? null : (map['recordId'] as int).input(),
+      recordName: map['recordName'] == null ? null : (map['recordName'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
     );
   }
 }

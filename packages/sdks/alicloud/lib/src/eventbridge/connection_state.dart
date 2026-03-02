@@ -24,17 +24,12 @@ class ConnectionState {
   /// [description] The description of the connection.
   /// [networkParameters] The parameters that are configured for the network. See `network_parameters` below.
   ConnectionState({
-    pulumi.Output<ConnectionAuthParameters>? authParameters,
-    pulumi.Output<String>? connectionName,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<ConnectionNetworkParameters>? networkParameters,
-  }) :
-      authParameters = pulumi.Input.asOptionalInput<ConnectionAuthParameters>(authParameters),
-      connectionName = pulumi.Input.asOptionalInput<String>(connectionName),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      networkParameters = pulumi.Input.asOptionalInput<ConnectionNetworkParameters>(networkParameters);
+    this.authParameters,
+    this.connectionName,
+    this.createTime,
+    this.description,
+    this.networkParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      authParameters: map['authParameters'] == null ? null : pulumi.Output.create<ConnectionAuthParameters>(ConnectionAuthParameters.fromMap((map['authParameters'] as Map).cast<String, dynamic>())),
-      connectionName: map['connectionName'] == null ? null : pulumi.Output.create<String>(map['connectionName'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      networkParameters: map['networkParameters'] == null ? null : pulumi.Output.create<ConnectionNetworkParameters>(ConnectionNetworkParameters.fromMap((map['networkParameters'] as Map).cast<String, dynamic>())),
+      authParameters: map['authParameters'] == null ? null : (ConnectionAuthParameters.fromMap((map['authParameters'] as Map).cast<String, dynamic>())).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkParameters: map['networkParameters'] == null ? null : (ConnectionNetworkParameters.fromMap((map['networkParameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -38,25 +38,16 @@ class DatastoreArgs {
   /// [tags] Gets or sets the Resource tags.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this datastore resides.
   DatastoreArgs({
-    pulumi.Output<String>? datastoreName,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? inventoryItemId,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? moRefId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vCenterId,
-  }) :
-      datastoreName = pulumi.Input.asOptionalInput<String>(datastoreName),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      inventoryItemId = pulumi.Input.asOptionalInput<String>(inventoryItemId),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      moRefId = pulumi.Input.asOptionalInput<String>(moRefId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vCenterId = pulumi.Input.asOptionalInput<String>(vCenterId);
+    this.datastoreName,
+    this.extendedLocation,
+    this.inventoryItemId,
+    this.kind,
+    this.location,
+    this.moRefId,
+    required this.resourceGroupName,
+    this.tags,
+    this.vCenterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class DatastoreArgs {
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
-      datastoreName: map['datastoreName'] == null ? null : pulumi.Output.create<String>(map['datastoreName'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      inventoryItemId: map['inventoryItemId'] == null ? null : pulumi.Output.create<String>(map['inventoryItemId'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      moRefId: map['moRefId'] == null ? null : pulumi.Output.create<String>(map['moRefId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vCenterId: map['vCenterId'] == null ? null : pulumi.Output.create<String>(map['vCenterId'] as String),
+      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      moRefId: map['moRefId'] == null ? null : (map['moRefId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vCenterId: map['vCenterId'] == null ? null : (map['vCenterId'] as String).input(),
     );
   }
 }

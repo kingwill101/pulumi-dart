@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ZoneVpc {
   /// ID of the VPC to associate.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// Region of the VPC to associate. Defaults to AWS provider region.
-  final String? vpcRegion;
+  final pulumi.Input<String>? vpcRegion;
 
   /// Creates a new [ZoneVpc].
   /// [vpcId] ID of the VPC to associate.
@@ -24,8 +25,8 @@ class ZoneVpc {
 
   factory ZoneVpc.fromMap(Map<String, dynamic> map) {
     return ZoneVpc(
-      vpcId: map['vpcId'] as String,
-      vpcRegion: map['vpcRegion'] == null ? null : map['vpcRegion'] as String,
+      vpcId: (map['vpcId'] as String).input(),
+      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetDatabaseAccountTableArgs {
   /// [resourceGroupName] Name of an Azure resource group.
   /// [tableName] Cosmos DB table name.
   GetDatabaseAccountTableArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> tableName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDatabaseAccountTableArgs {
 
   factory GetDatabaseAccountTableArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseAccountTableArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

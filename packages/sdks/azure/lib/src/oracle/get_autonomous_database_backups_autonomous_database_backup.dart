@@ -1,40 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAutonomousDatabaseBackupsAutonomousDatabaseBackup {
   /// Indicates whether the backup is user-initiated or automatic.
-  final bool automatic;
+  final pulumi.Input<bool> automatic;
   /// The backup OCID.
-  final String autonomousDatabaseBackupOcid;
+  final pulumi.Input<String> autonomousDatabaseBackupOcid;
   /// The OCID of the Autonomous Database OCID.
-  final String autonomousDatabaseOcid;
-  final double databaseBackupSizeInTbs;
+  final pulumi.Input<String> autonomousDatabaseOcid;
+  final pulumi.Input<double> databaseBackupSizeInTbs;
   /// The Oracle Database version of the Autonomous Database at the time the backup was taken.
-  final String databaseVersion;
+  final pulumi.Input<String> databaseVersion;
   /// The user-friendly name of the backup.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The ID of the Autonomous Database Backup.
-  final String id;
+  final pulumi.Input<String> id;
   /// Information about the current lifecycle state of the backup.
-  final String lifecycleDetails;
+  final pulumi.Input<String> lifecycleDetails;
   /// The current state of the backup.
-  final String lifecycleState;
+  final pulumi.Input<String> lifecycleState;
   /// `- The Azure Region where the Autonomous Database Backup exists.
-  final String location;
+  final pulumi.Input<String> location;
   /// The current provisioning state of the Autonomous Database Backup.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Indicates whether the backup can be used to restore the Autonomous Database.
-  final bool restorable;
+  final pulumi.Input<bool> restorable;
   /// The retention period in days for the Autonomous Database Backup.
-  final int retentionPeriodInDays;
+  final pulumi.Input<int> retentionPeriodInDays;
   /// The date and time the backup will become unusable.
-  final String timeAvailableTil;
+  final pulumi.Input<String> timeAvailableTil;
   /// The date and time the backup was completed.
-  final String timeEnded;
+  final pulumi.Input<String> timeEnded;
   /// The date and time the backup started.
-  final String timeStarted;
+  final pulumi.Input<String> timeStarted;
   /// The type of backup.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetAutonomousDatabaseBackupsAutonomousDatabaseBackup].
   /// [automatic] Indicates whether the backup is user-initiated or automatic.
@@ -98,23 +99,23 @@ class GetAutonomousDatabaseBackupsAutonomousDatabaseBackup {
 
   factory GetAutonomousDatabaseBackupsAutonomousDatabaseBackup.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabaseBackupsAutonomousDatabaseBackup(
-      automatic: map['automatic'] as bool,
-      autonomousDatabaseBackupOcid: map['autonomousDatabaseBackupOcid'] as String,
-      autonomousDatabaseOcid: map['autonomousDatabaseOcid'] as String,
-      databaseBackupSizeInTbs: map['databaseBackupSizeInTbs'] as double,
-      databaseVersion: map['databaseVersion'] as String,
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
-      lifecycleDetails: map['lifecycleDetails'] as String,
-      lifecycleState: map['lifecycleState'] as String,
-      location: map['location'] as String,
-      provisioningState: map['provisioningState'] as String,
-      restorable: map['restorable'] as bool,
-      retentionPeriodInDays: map['retentionPeriodInDays'] as int,
-      timeAvailableTil: map['timeAvailableTil'] as String,
-      timeEnded: map['timeEnded'] as String,
-      timeStarted: map['timeStarted'] as String,
-      type: map['type'] as String,
+      automatic: (map['automatic'] as bool).input(),
+      autonomousDatabaseBackupOcid: (map['autonomousDatabaseBackupOcid'] as String).input(),
+      autonomousDatabaseOcid: (map['autonomousDatabaseOcid'] as String).input(),
+      databaseBackupSizeInTbs: (map['databaseBackupSizeInTbs'] as double).input(),
+      databaseVersion: (map['databaseVersion'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      id: (map['id'] as String).input(),
+      lifecycleDetails: (map['lifecycleDetails'] as String).input(),
+      lifecycleState: (map['lifecycleState'] as String).input(),
+      location: (map['location'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      restorable: (map['restorable'] as bool).input(),
+      retentionPeriodInDays: (map['retentionPeriodInDays'] as int).input(),
+      timeAvailableTil: (map['timeAvailableTil'] as String).input(),
+      timeEnded: (map['timeEnded'] as String).input(),
+      timeStarted: (map['timeStarted'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLoadBalancer {
   /// A list of Backend Pool names for the Load Balancer. Changing this forces a new resource to be created.
-  final List<String>? backendPoolNames;
+  final pulumi.Input<List<String>>? backendPoolNames;
   /// A list of Frontend IP Configuration names. Changing this forces a new resource to be created.
-  final List<String>? frontendIpConfigurationNames;
+  final pulumi.Input<List<String>>? frontendIpConfigurationNames;
   /// A list of Health Probe names. Changing this forces a new resource to be created.
-  final List<String>? healthProbeNames;
+  final pulumi.Input<List<String>>? healthProbeNames;
   /// The full resource name of the Load Balancer. Changing this forces a new resource to be created.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLoadBalancer].
   /// [backendPoolNames] A list of Backend Pool names for the Load Balancer. Changing this forces a new resource to be created.
@@ -34,10 +35,10 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLo
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLoadBalancer.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLoadBalancer(
-      backendPoolNames: map['backendPoolNames'] == null ? null : (map['backendPoolNames'] as List).cast<String>(),
-      frontendIpConfigurationNames: map['frontendIpConfigurationNames'] == null ? null : (map['frontendIpConfigurationNames'] as List).cast<String>(),
-      healthProbeNames: map['healthProbeNames'] == null ? null : (map['healthProbeNames'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
+      backendPoolNames: map['backendPoolNames'] == null ? null : ((map['backendPoolNames'] as List).cast<String>()).input(),
+      frontendIpConfigurationNames: map['frontendIpConfigurationNames'] == null ? null : ((map['frontendIpConfigurationNames'] as List).cast<String>()).input(),
+      healthProbeNames: map['healthProbeNames'] == null ? null : ((map['healthProbeNames'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

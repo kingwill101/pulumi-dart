@@ -33,15 +33,11 @@ class AccountIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   AccountIamMemberArgs({
-    required pulumi.Output<String> billingAccountId,
-    pulumi.Output<AccountIamMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> role,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      condition = pulumi.Input.asOptionalInput<AccountIamMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      role = pulumi.Input.asInput<String>(role);
+    required this.billingAccountId,
+    this.condition,
+    required this.member,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,10 +50,10 @@ class AccountIamMemberArgs {
 
   factory AccountIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return AccountIamMemberArgs(
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<AccountIamMemberCondition>(AccountIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      condition: map['condition'] == null ? null : (AccountIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

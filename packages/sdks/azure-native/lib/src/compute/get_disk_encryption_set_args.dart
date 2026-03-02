@@ -16,11 +16,9 @@ class GetDiskEncryptionSetArgs {
   /// [diskEncryptionSetName] The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDiskEncryptionSetArgs({
-    required pulumi.Output<String> diskEncryptionSetName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      diskEncryptionSetName = pulumi.Input.asInput<String>(diskEncryptionSetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.diskEncryptionSetName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDiskEncryptionSetArgs {
 
   factory GetDiskEncryptionSetArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskEncryptionSetArgs(
-      diskEncryptionSetName: pulumi.Output.create<String>(map['diskEncryptionSetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      diskEncryptionSetName: (map['diskEncryptionSetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

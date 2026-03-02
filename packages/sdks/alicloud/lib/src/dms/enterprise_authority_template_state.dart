@@ -22,17 +22,12 @@ class EnterpriseAuthorityTemplateState {
   /// [description] Permission template description information.
   /// [tid] Tenant ID.
   EnterpriseAuthorityTemplateState({
-    pulumi.Output<int>? authorityTemplateId,
-    pulumi.Output<String>? authorityTemplateName,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? tid,
-  }) :
-      authorityTemplateId = pulumi.Input.asOptionalInput<int>(authorityTemplateId),
-      authorityTemplateName = pulumi.Input.asOptionalInput<String>(authorityTemplateName),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      tid = pulumi.Input.asOptionalInput<int>(tid);
+    this.authorityTemplateId,
+    this.authorityTemplateName,
+    this.createTime,
+    this.description,
+    this.tid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class EnterpriseAuthorityTemplateState {
 
   factory EnterpriseAuthorityTemplateState.fromMap(Map<String, dynamic> map) {
     return EnterpriseAuthorityTemplateState(
-      authorityTemplateId: map['authorityTemplateId'] == null ? null : pulumi.Output.create<int>(map['authorityTemplateId'] as int),
-      authorityTemplateName: map['authorityTemplateName'] == null ? null : pulumi.Output.create<String>(map['authorityTemplateName'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      tid: map['tid'] == null ? null : pulumi.Output.create<int>(map['tid'] as int),
+      authorityTemplateId: map['authorityTemplateId'] == null ? null : (map['authorityTemplateId'] as int).input(),
+      authorityTemplateName: map['authorityTemplateName'] == null ? null : (map['authorityTemplateName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      tid: map['tid'] == null ? null : (map['tid'] as int).input(),
     );
   }
 }

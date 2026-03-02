@@ -25,17 +25,12 @@ class VpdArgs {
   /// [tags] The tag of the resource.
   /// [vpdName] The name of the VPD instance.
   VpdArgs({
-    required pulumi.Output<String> cidr,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<List<String>>? secondaryCidrBlocks,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpdName,
-  }) :
-      cidr = pulumi.Input.asInput<String>(cidr),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      secondaryCidrBlocks = pulumi.Input.asOptionalInput<List<String>>(secondaryCidrBlocks),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpdName = pulumi.Input.asInput<String>(vpdName);
+    required this.cidr,
+    this.resourceGroupId,
+    this.secondaryCidrBlocks,
+    this.tags,
+    required this.vpdName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class VpdArgs {
 
   factory VpdArgs.fromMap(Map<String, dynamic> map) {
     return VpdArgs(
-      cidr: pulumi.Output.create<String>(map['cidr'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      secondaryCidrBlocks: map['secondaryCidrBlocks'] == null ? null : pulumi.Output.create<List<String>>((map['secondaryCidrBlocks'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpdName: pulumi.Output.create<String>(map['vpdName'] as String),
+      cidr: (map['cidr'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      secondaryCidrBlocks: map['secondaryCidrBlocks'] == null ? null : ((map['secondaryCidrBlocks'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpdName: (map['vpdName'] as String).input(),
     );
   }
 }

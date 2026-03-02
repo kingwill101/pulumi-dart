@@ -7,7 +7,7 @@ class KeystoresAliasesSelfSignedCertCertsInfo {
   /// (Output)
   /// List of all properties in the object.
   /// Structure is documented below.
-  final List<KeystoresAliasesSelfSignedCertCertsInfoCertInfo>? certInfos;
+  final pulumi.Input<List<KeystoresAliasesSelfSignedCertCertsInfoCertInfo>>? certInfos;
 
   /// Creates a new [KeystoresAliasesSelfSignedCertCertsInfo].
   /// [certInfos] (Output)
@@ -17,13 +17,13 @@ class KeystoresAliasesSelfSignedCertCertsInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certInfos': ?certInfos == null ? null : pulumi.Input.encodeList<KeystoresAliasesSelfSignedCertCertsInfoCertInfo, Map<String, dynamic>>(certInfos!, (value) => value.toMap()),
+      'certInfos': ?pulumi.Input.mapOptionalInputValue<List<KeystoresAliasesSelfSignedCertCertsInfoCertInfo>, List<Map<String, dynamic>>>(certInfos, (value) => pulumi.Input.encodeList<KeystoresAliasesSelfSignedCertCertsInfoCertInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory KeystoresAliasesSelfSignedCertCertsInfo.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertCertsInfo(
-      certInfos: map['certInfos'] == null ? null : pulumi.Input.decodeList<KeystoresAliasesSelfSignedCertCertsInfoCertInfo>(map['certInfos'], (value) => KeystoresAliasesSelfSignedCertCertsInfoCertInfo.fromMap((value as Map).cast<String, dynamic>())),
+      certInfos: map['certInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesSelfSignedCertCertsInfoCertInfo>(map['certInfos'], (value) => KeystoresAliasesSelfSignedCertCertsInfoCertInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

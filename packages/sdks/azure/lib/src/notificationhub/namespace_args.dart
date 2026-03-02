@@ -37,25 +37,16 @@ class NamespaceArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneRedundancyEnabled] Is Zone Redundancy Enabled for the Notification Hub Namespace. Defaults to `false`. Changing this forces a new resource to be created.
   NamespaceArgs({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespaceType,
-    pulumi.Output<String>? replicationRegion,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> skuName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? zoneRedundancyEnabled,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceType = pulumi.Input.asInput<String>(namespaceType),
-      replicationRegion = pulumi.Input.asOptionalInput<String>(replicationRegion),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneRedundancyEnabled = pulumi.Input.asOptionalInput<bool>(zoneRedundancyEnabled);
+    this.enabled,
+    this.location,
+    this.name,
+    required this.namespaceType,
+    this.replicationRegion,
+    required this.resourceGroupName,
+    required this.skuName,
+    this.tags,
+    this.zoneRedundancyEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceType: pulumi.Output.create<String>(map['namespaceType'] as String),
-      replicationRegion: map['replicationRegion'] == null ? null : pulumi.Output.create<String>(map['replicationRegion'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneRedundancyEnabled: map['zoneRedundancyEnabled'] == null ? null : pulumi.Output.create<bool>(map['zoneRedundancyEnabled'] as bool),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceType: (map['namespaceType'] as String).input(),
+      replicationRegion: map['replicationRegion'] == null ? null : (map['replicationRegion'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skuName: (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneRedundancyEnabled: map['zoneRedundancyEnabled'] == null ? null : (map['zoneRedundancyEnabled'] as bool).input(),
     );
   }
 }

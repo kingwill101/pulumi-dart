@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A property containing information about the blobs to be exported for an export job. This property is required for export jobs, but must not be specified for import jobs.
 class ExportResponse {
   /// The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root.
-  final String? blobListBlobPath;
+  final pulumi.Input<String>? blobListBlobPath;
   /// A collection of blob-path strings.
-  final List<String>? blobPath;
+  final pulumi.Input<List<String>>? blobPath;
   /// A collection of blob-prefix strings.
-  final List<String>? blobPathPrefix;
+  final pulumi.Input<List<String>>? blobPathPrefix;
 
   /// Creates a new [ExportResponse].
   /// [blobListBlobPath] The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root.
@@ -30,9 +31,9 @@ class ExportResponse {
 
   factory ExportResponse.fromMap(Map<String, dynamic> map) {
     return ExportResponse(
-      blobListBlobPath: map['blobListBlobPath'] == null ? null : map['blobListBlobPath'] as String,
-      blobPath: map['blobPath'] == null ? null : (map['blobPath'] as List).cast<String>(),
-      blobPathPrefix: map['blobPathPrefix'] == null ? null : (map['blobPathPrefix'] as List).cast<String>(),
+      blobListBlobPath: map['blobListBlobPath'] == null ? null : (map['blobListBlobPath'] as String).input(),
+      blobPath: map['blobPath'] == null ? null : ((map['blobPath'] as List).cast<String>()).input(),
+      blobPathPrefix: map['blobPathPrefix'] == null ? null : ((map['blobPathPrefix'] as List).cast<String>()).input(),
     );
   }
 }

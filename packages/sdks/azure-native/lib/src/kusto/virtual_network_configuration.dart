@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A class that contains virtual network definition.
 class VirtualNetworkConfiguration {
   /// Data management's service public IP address resource id.
-  final String dataManagementPublicIpId;
+  final pulumi.Input<String> dataManagementPublicIpId;
   /// Engine service's public IP address resource id.
-  final String enginePublicIpId;
+  final pulumi.Input<String> enginePublicIpId;
   /// When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// The subnet resource id.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [VirtualNetworkConfiguration].
   /// [dataManagementPublicIpId] Data management's service public IP address resource id.
@@ -35,10 +36,10 @@ class VirtualNetworkConfiguration {
 
   factory VirtualNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkConfiguration(
-      dataManagementPublicIpId: map['dataManagementPublicIpId'] as String,
-      enginePublicIpId: map['enginePublicIpId'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      subnetId: map['subnetId'] as String,
+      dataManagementPublicIpId: (map['dataManagementPublicIpId'] as String).input(),
+      enginePublicIpId: (map['enginePublicIpId'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

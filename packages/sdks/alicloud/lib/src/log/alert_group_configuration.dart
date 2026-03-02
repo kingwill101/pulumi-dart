@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertGroupConfiguration {
-  final List<String>? fields;
+  final pulumi.Input<List<String>>? fields;
   /// Group configuration type, including no_group, labels_auto, custom.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AlertGroupConfiguration].
   /// [fields] Optional.
@@ -23,8 +24,8 @@ class AlertGroupConfiguration {
 
   factory AlertGroupConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertGroupConfiguration(
-      fields: map['fields'] == null ? null : (map['fields'] as List).cast<String>(),
-      type: map['type'] as String,
+      fields: map['fields'] == null ? null : ((map['fields'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

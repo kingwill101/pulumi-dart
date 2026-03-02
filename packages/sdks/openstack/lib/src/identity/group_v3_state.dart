@@ -21,15 +21,11 @@ class GroupV3State {
   /// [name] The name of the group.
   /// [region] The region in which to obtain the V3 Keystone client.
   GroupV3State({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.description,
+    this.domainId,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class GroupV3State {
 
   factory GroupV3State.fromMap(Map<String, dynamic> map) {
     return GroupV3State(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

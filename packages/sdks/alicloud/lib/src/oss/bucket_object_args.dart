@@ -52,33 +52,20 @@ class BucketObjectArgs {
   /// [serverSideEncryption] Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
   /// [source] The path to the source file being uploaded to the bucket.
   BucketObjectArgs({
-    pulumi.Output<String>? acl,
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? cacheControl,
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? contentDisposition,
-    pulumi.Output<String>? contentEncoding,
-    pulumi.Output<String>? contentMd5,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? expires,
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? serverSideEncryption,
-    pulumi.Output<String>? source,
-  }) :
-      acl = pulumi.Input.asOptionalInput<String>(acl),
-      bucket = pulumi.Input.asInput<String>(bucket),
-      cacheControl = pulumi.Input.asOptionalInput<String>(cacheControl),
-      content = pulumi.Input.asOptionalInput<String>(content),
-      contentDisposition = pulumi.Input.asOptionalInput<String>(contentDisposition),
-      contentEncoding = pulumi.Input.asOptionalInput<String>(contentEncoding),
-      contentMd5 = pulumi.Input.asOptionalInput<String>(contentMd5),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      expires = pulumi.Input.asOptionalInput<String>(expires),
-      key = pulumi.Input.asInput<String>(key),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      serverSideEncryption = pulumi.Input.asOptionalInput<String>(serverSideEncryption),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    this.acl,
+    required this.bucket,
+    this.cacheControl,
+    this.content,
+    this.contentDisposition,
+    this.contentEncoding,
+    this.contentMd5,
+    this.contentType,
+    this.expires,
+    required this.key,
+    this.kmsKeyId,
+    this.serverSideEncryption,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,19 +87,19 @@ class BucketObjectArgs {
 
   factory BucketObjectArgs.fromMap(Map<String, dynamic> map) {
     return BucketObjectArgs(
-      acl: map['acl'] == null ? null : pulumi.Output.create<String>(map['acl'] as String),
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      cacheControl: map['cacheControl'] == null ? null : pulumi.Output.create<String>(map['cacheControl'] as String),
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      contentDisposition: map['contentDisposition'] == null ? null : pulumi.Output.create<String>(map['contentDisposition'] as String),
-      contentEncoding: map['contentEncoding'] == null ? null : pulumi.Output.create<String>(map['contentEncoding'] as String),
-      contentMd5: map['contentMd5'] == null ? null : pulumi.Output.create<String>(map['contentMd5'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      expires: map['expires'] == null ? null : pulumi.Output.create<String>(map['expires'] as String),
-      key: pulumi.Output.create<String>(map['key'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      serverSideEncryption: map['serverSideEncryption'] == null ? null : pulumi.Output.create<String>(map['serverSideEncryption'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
+      bucket: (map['bucket'] as String).input(),
+      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition'] as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
+      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      expires: map['expires'] == null ? null : (map['expires'] as String).input(),
+      key: (map['key'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      serverSideEncryption: map['serverSideEncryption'] == null ? null : (map['serverSideEncryption'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRoleRoleLastUsed {
   /// The date and time, in RFC 3339 format, that the role was last used.
-  final String lastUsedDate;
+  final pulumi.Input<String> lastUsedDate;
   /// The name of the AWS Region in which the role was last used.
-  final String region;
+  final pulumi.Input<String> region;
 
   /// Creates a new [GetRoleRoleLastUsed].
   /// [lastUsedDate] The date and time, in RFC 3339 format, that the role was last used.
@@ -24,8 +25,8 @@ class GetRoleRoleLastUsed {
 
   factory GetRoleRoleLastUsed.fromMap(Map<String, dynamic> map) {
     return GetRoleRoleLastUsed(
-      lastUsedDate: map['lastUsedDate'] as String,
-      region: map['region'] as String,
+      lastUsedDate: (map['lastUsedDate'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

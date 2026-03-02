@@ -14,11 +14,9 @@ class DashboardState {
   /// [dashboardJson] The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
   /// [project] The ID of the project in which the resource belongs.
   DashboardState({
-    pulumi.Output<String>? dashboardJson,
-    pulumi.Output<String>? project,
-  }) :
-      dashboardJson = pulumi.Input.asOptionalInput<String>(dashboardJson),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.dashboardJson,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class DashboardState {
 
   factory DashboardState.fromMap(Map<String, dynamic> map) {
     return DashboardState(
-      dashboardJson: map['dashboardJson'] == null ? null : pulumi.Output.create<String>(map['dashboardJson'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dashboardJson: map['dashboardJson'] == null ? null : (map['dashboardJson'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'config_management_membership_spec_response.dart';
 import 'identity_service_membership_spec_response.dart';
 import 'policy_controller_membership_spec_response.dart';
@@ -8,13 +9,13 @@ import 'service_mesh_membership_spec_response.dart';
 /// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
 class CommonFleetDefaultMemberConfigSpecResponse {
   /// Config Management-specific spec.
-  final ConfigManagementMembershipSpecResponse configmanagement;
+  final pulumi.Input<ConfigManagementMembershipSpecResponse> configmanagement;
   /// Identity Service-specific spec.
-  final IdentityServiceMembershipSpecResponse identityservice;
+  final pulumi.Input<IdentityServiceMembershipSpecResponse> identityservice;
   /// Anthos Service Mesh-specific spec
-  final ServiceMeshMembershipSpecResponse mesh;
+  final pulumi.Input<ServiceMeshMembershipSpecResponse> mesh;
   /// Policy Controller spec.
-  final PolicyControllerMembershipSpecResponse policycontroller;
+  final pulumi.Input<PolicyControllerMembershipSpecResponse> policycontroller;
 
   /// Creates a new [CommonFleetDefaultMemberConfigSpecResponse].
   /// [configmanagement] Config Management-specific spec.
@@ -30,19 +31,19 @@ class CommonFleetDefaultMemberConfigSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configmanagement': configmanagement.toMap(),
-      'identityservice': identityservice.toMap(),
-      'mesh': mesh.toMap(),
-      'policycontroller': policycontroller.toMap(),
+      'configmanagement': pulumi.Input.mapInputValue<ConfigManagementMembershipSpecResponse, Map<String, dynamic>>(configmanagement, (value) => value.toMap()),
+      'identityservice': pulumi.Input.mapInputValue<IdentityServiceMembershipSpecResponse, Map<String, dynamic>>(identityservice, (value) => value.toMap()),
+      'mesh': pulumi.Input.mapInputValue<ServiceMeshMembershipSpecResponse, Map<String, dynamic>>(mesh, (value) => value.toMap()),
+      'policycontroller': pulumi.Input.mapInputValue<PolicyControllerMembershipSpecResponse, Map<String, dynamic>>(policycontroller, (value) => value.toMap()),
     };
   }
 
   factory CommonFleetDefaultMemberConfigSpecResponse.fromMap(Map<String, dynamic> map) {
     return CommonFleetDefaultMemberConfigSpecResponse(
-      configmanagement: ConfigManagementMembershipSpecResponse.fromMap((map['configmanagement'] as Map).cast<String, dynamic>()),
-      identityservice: IdentityServiceMembershipSpecResponse.fromMap((map['identityservice'] as Map).cast<String, dynamic>()),
-      mesh: ServiceMeshMembershipSpecResponse.fromMap((map['mesh'] as Map).cast<String, dynamic>()),
-      policycontroller: PolicyControllerMembershipSpecResponse.fromMap((map['policycontroller'] as Map).cast<String, dynamic>()),
+      configmanagement: (ConfigManagementMembershipSpecResponse.fromMap((map['configmanagement'] as Map).cast<String, dynamic>())).input(),
+      identityservice: (IdentityServiceMembershipSpecResponse.fromMap((map['identityservice'] as Map).cast<String, dynamic>())).input(),
+      mesh: (ServiceMeshMembershipSpecResponse.fromMap((map['mesh'] as Map).cast<String, dynamic>())).input(),
+      policycontroller: (PolicyControllerMembershipSpecResponse.fromMap((map['policycontroller'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

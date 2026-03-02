@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Microsoft Fabric endpoint Names properties
 class DataflowEndpointFabricOneLakeNames {
   /// Lakehouse name.
-  final String lakehouseName;
+  final pulumi.Input<String> lakehouseName;
   /// Workspace name.
-  final String workspaceName;
+  final pulumi.Input<String> workspaceName;
 
   /// Creates a new [DataflowEndpointFabricOneLakeNames].
   /// [lakehouseName] Lakehouse name.
@@ -25,8 +26,8 @@ class DataflowEndpointFabricOneLakeNames {
 
   factory DataflowEndpointFabricOneLakeNames.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointFabricOneLakeNames(
-      lakehouseName: map['lakehouseName'] as String,
-      workspaceName: map['workspaceName'] as String,
+      lakehouseName: (map['lakehouseName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

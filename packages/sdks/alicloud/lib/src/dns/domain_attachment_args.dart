@@ -16,11 +16,9 @@ class DomainAttachmentArgs {
   /// [domainNames] The domain names bound to the DNS instance.
   /// [instanceId] The id of the DNS instance.
   DomainAttachmentArgs({
-    required pulumi.Output<List<String>> domainNames,
-    required pulumi.Output<String> instanceId,
-  }) :
-      domainNames = pulumi.Input.asInput<List<String>>(domainNames),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    required this.domainNames,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class DomainAttachmentArgs {
 
   factory DomainAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DomainAttachmentArgs(
-      domainNames: pulumi.Output.create<List<String>>((map['domainNames'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      domainNames: ((map['domainNames'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

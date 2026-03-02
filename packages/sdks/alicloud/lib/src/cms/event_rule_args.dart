@@ -53,31 +53,19 @@ class EventRuleArgs {
   /// [status] The status of the resource. Valid values: `ENABLED`, `DISABLED`.
   /// [webhookParameters] The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
   EventRuleArgs({
-    pulumi.Output<List<EventRuleContactParameter>>? contactParameters,
-    pulumi.Output<String>? description,
-    required pulumi.Output<EventRuleEventPattern> eventPattern,
-    pulumi.Output<List<EventRuleFcParameter>>? fcParameters,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<List<EventRuleMnsParameter>>? mnsParameters,
-    pulumi.Output<List<EventRuleOpenApiParameter>>? openApiParameters,
-    required pulumi.Output<String> ruleName,
-    pulumi.Output<int>? silenceTime,
-    pulumi.Output<List<EventRuleSlsParameter>>? slsParameters,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<EventRuleWebhookParameter>>? webhookParameters,
-  }) :
-      contactParameters = pulumi.Input.asOptionalInput<List<EventRuleContactParameter>>(contactParameters),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventPattern = pulumi.Input.asInput<EventRuleEventPattern>(eventPattern),
-      fcParameters = pulumi.Input.asOptionalInput<List<EventRuleFcParameter>>(fcParameters),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      mnsParameters = pulumi.Input.asOptionalInput<List<EventRuleMnsParameter>>(mnsParameters),
-      openApiParameters = pulumi.Input.asOptionalInput<List<EventRuleOpenApiParameter>>(openApiParameters),
-      ruleName = pulumi.Input.asInput<String>(ruleName),
-      silenceTime = pulumi.Input.asOptionalInput<int>(silenceTime),
-      slsParameters = pulumi.Input.asOptionalInput<List<EventRuleSlsParameter>>(slsParameters),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      webhookParameters = pulumi.Input.asOptionalInput<List<EventRuleWebhookParameter>>(webhookParameters);
+    this.contactParameters,
+    this.description,
+    required this.eventPattern,
+    this.fcParameters,
+    this.groupId,
+    this.mnsParameters,
+    this.openApiParameters,
+    required this.ruleName,
+    this.silenceTime,
+    this.slsParameters,
+    this.status,
+    this.webhookParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,18 +86,18 @@ class EventRuleArgs {
 
   factory EventRuleArgs.fromMap(Map<String, dynamic> map) {
     return EventRuleArgs(
-      contactParameters: map['contactParameters'] == null ? null : pulumi.Output.create<List<EventRuleContactParameter>>(pulumi.Input.decodeList<EventRuleContactParameter>(map['contactParameters'], (value) => EventRuleContactParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventPattern: pulumi.Output.create<EventRuleEventPattern>(EventRuleEventPattern.fromMap((map['eventPattern'] as Map).cast<String, dynamic>())),
-      fcParameters: map['fcParameters'] == null ? null : pulumi.Output.create<List<EventRuleFcParameter>>(pulumi.Input.decodeList<EventRuleFcParameter>(map['fcParameters'], (value) => EventRuleFcParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      mnsParameters: map['mnsParameters'] == null ? null : pulumi.Output.create<List<EventRuleMnsParameter>>(pulumi.Input.decodeList<EventRuleMnsParameter>(map['mnsParameters'], (value) => EventRuleMnsParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      openApiParameters: map['openApiParameters'] == null ? null : pulumi.Output.create<List<EventRuleOpenApiParameter>>(pulumi.Input.decodeList<EventRuleOpenApiParameter>(map['openApiParameters'], (value) => EventRuleOpenApiParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
-      silenceTime: map['silenceTime'] == null ? null : pulumi.Output.create<int>(map['silenceTime'] as int),
-      slsParameters: map['slsParameters'] == null ? null : pulumi.Output.create<List<EventRuleSlsParameter>>(pulumi.Input.decodeList<EventRuleSlsParameter>(map['slsParameters'], (value) => EventRuleSlsParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      webhookParameters: map['webhookParameters'] == null ? null : pulumi.Output.create<List<EventRuleWebhookParameter>>(pulumi.Input.decodeList<EventRuleWebhookParameter>(map['webhookParameters'], (value) => EventRuleWebhookParameter.fromMap((value as Map).cast<String, dynamic>()))),
+      contactParameters: map['contactParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleContactParameter>(map['contactParameters'], (value) => EventRuleContactParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventPattern: (EventRuleEventPattern.fromMap((map['eventPattern'] as Map).cast<String, dynamic>())).input(),
+      fcParameters: map['fcParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleFcParameter>(map['fcParameters'], (value) => EventRuleFcParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      mnsParameters: map['mnsParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleMnsParameter>(map['mnsParameters'], (value) => EventRuleMnsParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      openApiParameters: map['openApiParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleOpenApiParameter>(map['openApiParameters'], (value) => EventRuleOpenApiParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      silenceTime: map['silenceTime'] == null ? null : (map['silenceTime'] as int).input(),
+      slsParameters: map['slsParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleSlsParameter>(map['slsParameters'], (value) => EventRuleSlsParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      webhookParameters: map['webhookParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleWebhookParameter>(map['webhookParameters'], (value) => EventRuleWebhookParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

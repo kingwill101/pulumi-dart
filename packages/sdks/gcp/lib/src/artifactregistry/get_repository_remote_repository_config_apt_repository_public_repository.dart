@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository {
   /// A common public repository base for Apt, e.g. '"debian/dists/stable"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
-  final String repositoryBase;
+  final pulumi.Input<String> repositoryBase;
   /// Specific repository from the base.
-  final String repositoryPath;
+  final pulumi.Input<String> repositoryPath;
 
   /// Creates a new [GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository].
   /// [repositoryBase] A common public repository base for Apt, e.g. '"debian/dists/stable"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
@@ -24,8 +25,8 @@ class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository {
 
   factory GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository.fromMap(Map<String, dynamic> map) {
     return GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository(
-      repositoryBase: map['repositoryBase'] as String,
-      repositoryPath: map['repositoryPath'] as String,
+      repositoryBase: (map['repositoryBase'] as String).input(),
+      repositoryPath: (map['repositoryPath'] as String).input(),
     );
   }
 }

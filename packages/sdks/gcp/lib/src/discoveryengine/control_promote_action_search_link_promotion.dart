@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ControlPromoteActionSearchLinkPromotion {
   /// The description of the promoted link.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The document to promote.
-  final String? document;
+  final pulumi.Input<String>? document;
   /// Return promotions for basic site search.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The image URI of the promoted link.
-  final String? imageUri;
+  final pulumi.Input<String>? imageUri;
   /// The title of the promoted link.
-  final String title;
+  final pulumi.Input<String> title;
   /// The URI to promote.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [ControlPromoteActionSearchLinkPromotion].
   /// [description] The description of the promoted link.
@@ -44,12 +45,12 @@ class ControlPromoteActionSearchLinkPromotion {
 
   factory ControlPromoteActionSearchLinkPromotion.fromMap(Map<String, dynamic> map) {
     return ControlPromoteActionSearchLinkPromotion(
-      description: map['description'] == null ? null : map['description'] as String,
-      document: map['document'] == null ? null : map['document'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      imageUri: map['imageUri'] == null ? null : map['imageUri'] as String,
-      title: map['title'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      document: map['document'] == null ? null : (map['document'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
+      title: (map['title'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

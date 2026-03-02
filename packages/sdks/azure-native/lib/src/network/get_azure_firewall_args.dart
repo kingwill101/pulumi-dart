@@ -16,11 +16,9 @@ class GetAzureFirewallArgs {
   /// [azureFirewallName] The name of the Azure Firewall.
   /// [resourceGroupName] The name of the resource group.
   GetAzureFirewallArgs({
-    required pulumi.Output<String> azureFirewallName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      azureFirewallName = pulumi.Input.asInput<String>(azureFirewallName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.azureFirewallName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAzureFirewallArgs {
 
   factory GetAzureFirewallArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureFirewallArgs(
-      azureFirewallName: pulumi.Output.create<String>(map['azureFirewallName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      azureFirewallName: (map['azureFirewallName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

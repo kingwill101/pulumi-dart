@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_performance_config_total_egress_bandwidth_tier.dart';
 
 /// Configuration of all network bandwidth tiers
 class NetworkPerformanceConfig {
   /// Specifies the total network bandwidth tier for the NodePool.
-  final NetworkPerformanceConfigTotalEgressBandwidthTier? totalEgressBandwidthTier;
+  final pulumi.Input<NetworkPerformanceConfigTotalEgressBandwidthTier>? totalEgressBandwidthTier;
 
   /// Creates a new [NetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for the NodePool.
@@ -15,13 +16,13 @@ class NetworkPerformanceConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'totalEgressBandwidthTier': ?totalEgressBandwidthTier == null ? null : totalEgressBandwidthTier!.value,
+      'totalEgressBandwidthTier': ?pulumi.Input.mapOptionalInputValue<NetworkPerformanceConfigTotalEgressBandwidthTier, String>(totalEgressBandwidthTier, (value) => value.value),
     };
   }
 
   factory NetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return NetworkPerformanceConfig(
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : NetworkPerformanceConfigTotalEgressBandwidthTier.fromValue(map['totalEgressBandwidthTier'] as String),
+      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (NetworkPerformanceConfigTotalEgressBandwidthTier.fromValue(map['totalEgressBandwidthTier'] as String)).input(),
     );
   }
 }

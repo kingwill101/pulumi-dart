@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attach_new_data_disk_options_response.dart';
 
 /// Request body for adding a new or existing data disk to a virtual machine.
 class DataDiskPropertiesResponse {
   /// Specifies options to attach a new disk to the virtual machine.
-  final AttachNewDataDiskOptionsResponse? attachNewDataDiskOptions;
+  final pulumi.Input<AttachNewDataDiskOptionsResponse>? attachNewDataDiskOptions;
   /// Specifies the existing lab disk id to attach to virtual machine.
-  final String? existingLabDiskId;
+  final pulumi.Input<String>? existingLabDiskId;
   /// Caching option for a data disk (i.e. None, ReadOnly, ReadWrite).
-  final String? hostCaching;
+  final pulumi.Input<String>? hostCaching;
 
   /// Creates a new [DataDiskPropertiesResponse].
   /// [attachNewDataDiskOptions] Specifies options to attach a new disk to the virtual machine.
@@ -23,7 +24,7 @@ class DataDiskPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachNewDataDiskOptions': ?attachNewDataDiskOptions == null ? null : attachNewDataDiskOptions!.toMap(),
+      'attachNewDataDiskOptions': ?pulumi.Input.mapOptionalInputValue<AttachNewDataDiskOptionsResponse, Map<String, dynamic>>(attachNewDataDiskOptions, (value) => value.toMap()),
       'existingLabDiskId': ?existingLabDiskId,
       'hostCaching': ?hostCaching,
     };
@@ -31,9 +32,9 @@ class DataDiskPropertiesResponse {
 
   factory DataDiskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataDiskPropertiesResponse(
-      attachNewDataDiskOptions: map['attachNewDataDiskOptions'] == null ? null : AttachNewDataDiskOptionsResponse.fromMap((map['attachNewDataDiskOptions'] as Map).cast<String, dynamic>()),
-      existingLabDiskId: map['existingLabDiskId'] == null ? null : map['existingLabDiskId'] as String,
-      hostCaching: map['hostCaching'] == null ? null : map['hostCaching'] as String,
+      attachNewDataDiskOptions: map['attachNewDataDiskOptions'] == null ? null : (AttachNewDataDiskOptionsResponse.fromMap((map['attachNewDataDiskOptions'] as Map).cast<String, dynamic>())).input(),
+      existingLabDiskId: map['existingLabDiskId'] == null ? null : (map['existingLabDiskId'] as String).input(),
+      hostCaching: map['hostCaching'] == null ? null : (map['hostCaching'] as String).input(),
     );
   }
 }

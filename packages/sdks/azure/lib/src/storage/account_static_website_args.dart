@@ -19,13 +19,10 @@ class AccountStaticWebsiteArgs {
   /// [indexDocument] The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html.
   /// [storageAccountId] The ID of the Storage Account to set Static Website on. Changing this forces a new resource to be created.
   AccountStaticWebsiteArgs({
-    pulumi.Output<String>? error404Document,
-    pulumi.Output<String>? indexDocument,
-    required pulumi.Output<String> storageAccountId,
-  }) :
-      error404Document = pulumi.Input.asOptionalInput<String>(error404Document),
-      indexDocument = pulumi.Input.asOptionalInput<String>(indexDocument),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId);
+    this.error404Document,
+    this.indexDocument,
+    required this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AccountStaticWebsiteArgs {
 
   factory AccountStaticWebsiteArgs.fromMap(Map<String, dynamic> map) {
     return AccountStaticWebsiteArgs(
-      error404Document: map['error404Document'] == null ? null : pulumi.Output.create<String>(map['error404Document'] as String),
-      indexDocument: map['indexDocument'] == null ? null : pulumi.Output.create<String>(map['indexDocument'] as String),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
+      error404Document: map['error404Document'] == null ? null : (map['error404Document'] as String).input(),
+      indexDocument: map['indexDocument'] == null ? null : (map['indexDocument'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableExportIncrementalExportSpecification {
-  final String? exportFromTime;
-  final String? exportToTime;
-  final String? exportViewType;
+  final pulumi.Input<String>? exportFromTime;
+  final pulumi.Input<String>? exportToTime;
+  final pulumi.Input<String>? exportViewType;
 
   /// Creates a new [TableExportIncrementalExportSpecification].
   /// [exportFromTime] Optional.
@@ -26,9 +27,9 @@ class TableExportIncrementalExportSpecification {
 
   factory TableExportIncrementalExportSpecification.fromMap(Map<String, dynamic> map) {
     return TableExportIncrementalExportSpecification(
-      exportFromTime: map['exportFromTime'] == null ? null : map['exportFromTime'] as String,
-      exportToTime: map['exportToTime'] == null ? null : map['exportToTime'] as String,
-      exportViewType: map['exportViewType'] == null ? null : map['exportViewType'] as String,
+      exportFromTime: map['exportFromTime'] == null ? null : (map['exportFromTime'] as String).input(),
+      exportToTime: map['exportToTime'] == null ? null : (map['exportToTime'] as String).input(),
+      exportViewType: map['exportViewType'] == null ? null : (map['exportViewType'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetNodeGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags.
   GetNodeGroupArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> nodeGroupName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      nodeGroupName = pulumi.Input.asInput<String>(nodeGroupName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.clusterName,
+    required this.nodeGroupName,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetNodeGroupArgs {
 
   factory GetNodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      nodeGroupName: pulumi.Output.create<String>(map['nodeGroupName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterName: (map['clusterName'] as String).input(),
+      nodeGroupName: (map['nodeGroupName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

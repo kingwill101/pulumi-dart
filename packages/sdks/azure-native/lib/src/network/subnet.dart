@@ -15,51 +15,51 @@ import 'sub_resource.dart';
 /// Subnet in a virtual network resource.
 class Subnet {
   /// The address prefix for the subnet.
-  final String? addressPrefix;
+  final pulumi.Input<String>? addressPrefix;
   /// List of address prefixes for the subnet.
-  final List<String>? addressPrefixes;
+  final pulumi.Input<List<String>>? addressPrefixes;
   /// Application gateway IP configurations of virtual network resource.
-  final List<ApplicationGatewayIPConfiguration>? applicationGatewayIPConfigurations;
+  final pulumi.Input<List<ApplicationGatewayIPConfiguration>>? applicationGatewayIPConfigurations;
   /// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
-  final bool? defaultOutboundAccess;
+  final pulumi.Input<bool>? defaultOutboundAccess;
   /// An array of references to the delegations on the subnet.
-  final List<Delegation>? delegations;
+  final pulumi.Input<List<Delegation>>? delegations;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String? etag;
+  final pulumi.Input<String>? etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Array of IpAllocation which reference this subnet.
-  final List<SubResource>? ipAllocations;
+  final pulumi.Input<List<SubResource>>? ipAllocations;
   /// A list of IPAM Pools for allocating IP address prefixes.
-  final List<IpamPoolPrefixAllocation>? ipamPoolPrefixAllocations;
+  final pulumi.Input<List<IpamPoolPrefixAllocation>>? ipamPoolPrefixAllocations;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Nat gateway associated with this subnet.
-  final SubResource? natGateway;
+  final pulumi.Input<SubResource>? natGateway;
   /// The reference to the NetworkSecurityGroup resource.
-  final NetworkSecurityGroup? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroup>? networkSecurityGroup;
   /// Enable or Disable apply network policies on private end point in the subnet.
-  final String? privateEndpointNetworkPolicies;
+  final pulumi.Input<String>? privateEndpointNetworkPolicies;
   /// Enable or Disable apply network policies on private link service in the subnet.
-  final String? privateLinkServiceNetworkPolicies;
+  final pulumi.Input<String>? privateLinkServiceNetworkPolicies;
   /// The provisioning state of the resource.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// Gets an array of references to the external resources using subnet.
-  final List<ResourceNavigationLink>? resourceNavigationLinks;
+  final pulumi.Input<List<ResourceNavigationLink>>? resourceNavigationLinks;
   /// The reference to the RouteTable resource.
-  final RouteTable? routeTable;
+  final pulumi.Input<RouteTable>? routeTable;
   /// Gets an array of references to services injecting into this subnet.
-  final List<ServiceAssociationLink>? serviceAssociationLinks;
+  final pulumi.Input<List<ServiceAssociationLink>>? serviceAssociationLinks;
   /// An array of service endpoint policies.
-  final List<ServiceEndpointPolicy>? serviceEndpointPolicies;
+  final pulumi.Input<List<ServiceEndpointPolicy>>? serviceEndpointPolicies;
   /// An array of service endpoints.
-  final List<ServiceEndpointPropertiesFormat>? serviceEndpoints;
+  final pulumi.Input<List<ServiceEndpointPropertiesFormat>>? serviceEndpoints;
   /// Reference to an existing service gateway.
-  final SubResource? serviceGateway;
+  final pulumi.Input<SubResource>? serviceGateway;
   /// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
-  final String? sharingScope;
+  final pulumi.Input<String>? sharingScope;
   /// Resource type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [Subnet].
   /// [addressPrefix] The address prefix for the subnet.
@@ -115,25 +115,25 @@ class Subnet {
     return <String, dynamic>{
       'addressPrefix': ?addressPrefix,
       'addressPrefixes': ?addressPrefixes,
-      'applicationGatewayIPConfigurations': ?applicationGatewayIPConfigurations == null ? null : pulumi.Input.encodeList<ApplicationGatewayIPConfiguration, Map<String, dynamic>>(applicationGatewayIPConfigurations!, (value) => value.toMap()),
+      'applicationGatewayIPConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayIPConfiguration>, List<Map<String, dynamic>>>(applicationGatewayIPConfigurations, (value) => pulumi.Input.encodeList<ApplicationGatewayIPConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'defaultOutboundAccess': ?defaultOutboundAccess,
-      'delegations': ?delegations == null ? null : pulumi.Input.encodeList<Delegation, Map<String, dynamic>>(delegations!, (value) => value.toMap()),
+      'delegations': ?pulumi.Input.mapOptionalInputValue<List<Delegation>, List<Map<String, dynamic>>>(delegations, (value) => pulumi.Input.encodeList<Delegation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'etag': ?etag,
       'id': ?id,
-      'ipAllocations': ?ipAllocations == null ? null : pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(ipAllocations!, (value) => value.toMap()),
-      'ipamPoolPrefixAllocations': ?ipamPoolPrefixAllocations == null ? null : pulumi.Input.encodeList<IpamPoolPrefixAllocation, Map<String, dynamic>>(ipamPoolPrefixAllocations!, (value) => value.toMap()),
+      'ipAllocations': ?pulumi.Input.mapOptionalInputValue<List<SubResource>, List<Map<String, dynamic>>>(ipAllocations, (value) => pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipamPoolPrefixAllocations': ?pulumi.Input.mapOptionalInputValue<List<IpamPoolPrefixAllocation>, List<Map<String, dynamic>>>(ipamPoolPrefixAllocations, (value) => pulumi.Input.encodeList<IpamPoolPrefixAllocation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
-      'natGateway': ?natGateway == null ? null : natGateway!.toMap(),
-      'networkSecurityGroup': ?networkSecurityGroup == null ? null : networkSecurityGroup!.toMap(),
+      'natGateway': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(natGateway, (value) => value.toMap()),
+      'networkSecurityGroup': ?pulumi.Input.mapOptionalInputValue<NetworkSecurityGroup, Map<String, dynamic>>(networkSecurityGroup, (value) => value.toMap()),
       'privateEndpointNetworkPolicies': ?privateEndpointNetworkPolicies,
       'privateLinkServiceNetworkPolicies': ?privateLinkServiceNetworkPolicies,
       'provisioningState': ?provisioningState,
-      'resourceNavigationLinks': ?resourceNavigationLinks == null ? null : pulumi.Input.encodeList<ResourceNavigationLink, Map<String, dynamic>>(resourceNavigationLinks!, (value) => value.toMap()),
-      'routeTable': ?routeTable == null ? null : routeTable!.toMap(),
-      'serviceAssociationLinks': ?serviceAssociationLinks == null ? null : pulumi.Input.encodeList<ServiceAssociationLink, Map<String, dynamic>>(serviceAssociationLinks!, (value) => value.toMap()),
-      'serviceEndpointPolicies': ?serviceEndpointPolicies == null ? null : pulumi.Input.encodeList<ServiceEndpointPolicy, Map<String, dynamic>>(serviceEndpointPolicies!, (value) => value.toMap()),
-      'serviceEndpoints': ?serviceEndpoints == null ? null : pulumi.Input.encodeList<ServiceEndpointPropertiesFormat, Map<String, dynamic>>(serviceEndpoints!, (value) => value.toMap()),
-      'serviceGateway': ?serviceGateway == null ? null : serviceGateway!.toMap(),
+      'resourceNavigationLinks': ?pulumi.Input.mapOptionalInputValue<List<ResourceNavigationLink>, List<Map<String, dynamic>>>(resourceNavigationLinks, (value) => pulumi.Input.encodeList<ResourceNavigationLink, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routeTable': ?pulumi.Input.mapOptionalInputValue<RouteTable, Map<String, dynamic>>(routeTable, (value) => value.toMap()),
+      'serviceAssociationLinks': ?pulumi.Input.mapOptionalInputValue<List<ServiceAssociationLink>, List<Map<String, dynamic>>>(serviceAssociationLinks, (value) => pulumi.Input.encodeList<ServiceAssociationLink, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serviceEndpointPolicies': ?pulumi.Input.mapOptionalInputValue<List<ServiceEndpointPolicy>, List<Map<String, dynamic>>>(serviceEndpointPolicies, (value) => pulumi.Input.encodeList<ServiceEndpointPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serviceEndpoints': ?pulumi.Input.mapOptionalInputValue<List<ServiceEndpointPropertiesFormat>, List<Map<String, dynamic>>>(serviceEndpoints, (value) => pulumi.Input.encodeList<ServiceEndpointPropertiesFormat, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serviceGateway': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(serviceGateway, (value) => value.toMap()),
       'sharingScope': ?sharingScope,
       'type': ?type,
     };
@@ -141,29 +141,29 @@ class Subnet {
 
   factory Subnet.fromMap(Map<String, dynamic> map) {
     return Subnet(
-      addressPrefix: map['addressPrefix'] == null ? null : map['addressPrefix'] as String,
-      addressPrefixes: map['addressPrefixes'] == null ? null : (map['addressPrefixes'] as List).cast<String>(),
-      applicationGatewayIPConfigurations: map['applicationGatewayIPConfigurations'] == null ? null : pulumi.Input.decodeList<ApplicationGatewayIPConfiguration>(map['applicationGatewayIPConfigurations'], (value) => ApplicationGatewayIPConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      defaultOutboundAccess: map['defaultOutboundAccess'] == null ? null : map['defaultOutboundAccess'] as bool,
-      delegations: map['delegations'] == null ? null : pulumi.Input.decodeList<Delegation>(map['delegations'], (value) => Delegation.fromMap((value as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      ipAllocations: map['ipAllocations'] == null ? null : pulumi.Input.decodeList<SubResource>(map['ipAllocations'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>())),
-      ipamPoolPrefixAllocations: map['ipamPoolPrefixAllocations'] == null ? null : pulumi.Input.decodeList<IpamPoolPrefixAllocation>(map['ipamPoolPrefixAllocations'], (value) => IpamPoolPrefixAllocation.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      natGateway: map['natGateway'] == null ? null : SubResource.fromMap((map['natGateway'] as Map).cast<String, dynamic>()),
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : NetworkSecurityGroup.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>()),
-      privateEndpointNetworkPolicies: map['privateEndpointNetworkPolicies'] == null ? null : map['privateEndpointNetworkPolicies'] as String,
-      privateLinkServiceNetworkPolicies: map['privateLinkServiceNetworkPolicies'] == null ? null : map['privateLinkServiceNetworkPolicies'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      resourceNavigationLinks: map['resourceNavigationLinks'] == null ? null : pulumi.Input.decodeList<ResourceNavigationLink>(map['resourceNavigationLinks'], (value) => ResourceNavigationLink.fromMap((value as Map).cast<String, dynamic>())),
-      routeTable: map['routeTable'] == null ? null : RouteTable.fromMap((map['routeTable'] as Map).cast<String, dynamic>()),
-      serviceAssociationLinks: map['serviceAssociationLinks'] == null ? null : pulumi.Input.decodeList<ServiceAssociationLink>(map['serviceAssociationLinks'], (value) => ServiceAssociationLink.fromMap((value as Map).cast<String, dynamic>())),
-      serviceEndpointPolicies: map['serviceEndpointPolicies'] == null ? null : pulumi.Input.decodeList<ServiceEndpointPolicy>(map['serviceEndpointPolicies'], (value) => ServiceEndpointPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      serviceEndpoints: map['serviceEndpoints'] == null ? null : pulumi.Input.decodeList<ServiceEndpointPropertiesFormat>(map['serviceEndpoints'], (value) => ServiceEndpointPropertiesFormat.fromMap((value as Map).cast<String, dynamic>())),
-      serviceGateway: map['serviceGateway'] == null ? null : SubResource.fromMap((map['serviceGateway'] as Map).cast<String, dynamic>()),
-      sharingScope: map['sharingScope'] == null ? null : map['sharingScope'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
+      applicationGatewayIPConfigurations: map['applicationGatewayIPConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayIPConfiguration>(map['applicationGatewayIPConfigurations'], (value) => ApplicationGatewayIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultOutboundAccess: map['defaultOutboundAccess'] == null ? null : (map['defaultOutboundAccess'] as bool).input(),
+      delegations: map['delegations'] == null ? null : (pulumi.Input.decodeList<Delegation>(map['delegations'], (value) => Delegation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipAllocations: map['ipAllocations'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['ipAllocations'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipamPoolPrefixAllocations: map['ipamPoolPrefixAllocations'] == null ? null : (pulumi.Input.decodeList<IpamPoolPrefixAllocation>(map['ipamPoolPrefixAllocations'], (value) => IpamPoolPrefixAllocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      natGateway: map['natGateway'] == null ? null : (SubResource.fromMap((map['natGateway'] as Map).cast<String, dynamic>())).input(),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NetworkSecurityGroup.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())).input(),
+      privateEndpointNetworkPolicies: map['privateEndpointNetworkPolicies'] == null ? null : (map['privateEndpointNetworkPolicies'] as String).input(),
+      privateLinkServiceNetworkPolicies: map['privateLinkServiceNetworkPolicies'] == null ? null : (map['privateLinkServiceNetworkPolicies'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceNavigationLinks: map['resourceNavigationLinks'] == null ? null : (pulumi.Input.decodeList<ResourceNavigationLink>(map['resourceNavigationLinks'], (value) => ResourceNavigationLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeTable: map['routeTable'] == null ? null : (RouteTable.fromMap((map['routeTable'] as Map).cast<String, dynamic>())).input(),
+      serviceAssociationLinks: map['serviceAssociationLinks'] == null ? null : (pulumi.Input.decodeList<ServiceAssociationLink>(map['serviceAssociationLinks'], (value) => ServiceAssociationLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceEndpointPolicies: map['serviceEndpointPolicies'] == null ? null : (pulumi.Input.decodeList<ServiceEndpointPolicy>(map['serviceEndpointPolicies'], (value) => ServiceEndpointPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceEndpoints: map['serviceEndpoints'] == null ? null : (pulumi.Input.decodeList<ServiceEndpointPropertiesFormat>(map['serviceEndpoints'], (value) => ServiceEndpointPropertiesFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceGateway: map['serviceGateway'] == null ? null : (SubResource.fromMap((map['serviceGateway'] as Map).cast<String, dynamic>())).input(),
+      sharingScope: map['sharingScope'] == null ? null : (map['sharingScope'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model configuration options.
 class GroupModelConfiguration {
   /// The URI path to the model.
-  final String? modelId;
+  final pulumi.Input<String>? modelId;
 
   /// Creates a new [GroupModelConfiguration].
   /// [modelId] The URI path to the model.
@@ -20,7 +21,7 @@ class GroupModelConfiguration {
 
   factory GroupModelConfiguration.fromMap(Map<String, dynamic> map) {
     return GroupModelConfiguration(
-      modelId: map['modelId'] == null ? null : map['modelId'] as String,
+      modelId: map['modelId'] == null ? null : (map['modelId'] as String).input(),
     );
   }
 }

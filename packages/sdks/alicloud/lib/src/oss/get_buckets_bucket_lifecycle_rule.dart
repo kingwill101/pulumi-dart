@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_buckets_bucket_lifecycle_rule_expiration.dart';
 
 class GetBucketsBucketLifecycleRule {
   /// Indicate whether the rule is enabled or not.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// A list of one element containing expiration attributes of an object. It contains the following attributes:
-  final GetBucketsBucketLifecycleRuleExpiration expiration;
+  final pulumi.Input<GetBucketsBucketLifecycleRuleExpiration> expiration;
   /// Unique ID of the rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// Prefix applicable to a rule. Only those objects with a matching prefix can be affected by the rule.
-  final String prefix;
+  final pulumi.Input<String> prefix;
 
   /// Creates a new [GetBucketsBucketLifecycleRule].
   /// [enabled] Indicate whether the rule is enabled or not.
@@ -27,7 +28,7 @@ class GetBucketsBucketLifecycleRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'expiration': expiration.toMap(),
+      'expiration': pulumi.Input.mapInputValue<GetBucketsBucketLifecycleRuleExpiration, Map<String, dynamic>>(expiration, (value) => value.toMap()),
       'id': id,
       'prefix': prefix,
     };
@@ -35,10 +36,10 @@ class GetBucketsBucketLifecycleRule {
 
   factory GetBucketsBucketLifecycleRule.fromMap(Map<String, dynamic> map) {
     return GetBucketsBucketLifecycleRule(
-      enabled: map['enabled'] as bool,
-      expiration: GetBucketsBucketLifecycleRuleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      prefix: map['prefix'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      expiration: (GetBucketsBucketLifecycleRuleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      prefix: (map['prefix'] as String).input(),
     );
   }
 }

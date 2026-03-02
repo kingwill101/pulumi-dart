@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of IpFamilyEnumValue
 class IpFamilyEnumValueResponse {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [IpFamilyEnumValueResponse].
   /// [value] Property value
@@ -20,7 +21,7 @@ class IpFamilyEnumValueResponse {
 
   factory IpFamilyEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return IpFamilyEnumValueResponse(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

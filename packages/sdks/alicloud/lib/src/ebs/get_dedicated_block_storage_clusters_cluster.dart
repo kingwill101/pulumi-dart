@@ -1,40 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDedicatedBlockStorageClustersCluster {
   /// The available capacity of the dedicated block storage cluster. Unit: GiB.
-  final String availableCapacity;
+  final pulumi.Input<String> availableCapacity;
   /// The type of cloud disk that can be created by a dedicated block storage cluster.
-  final String category;
+  final pulumi.Input<String> category;
   /// The creation time of the resource
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The first ID of the resource
-  final String dedicatedBlockStorageClusterId;
+  final pulumi.Input<String> dedicatedBlockStorageClusterId;
   /// The name of the resource
-  final String dedicatedBlockStorageClusterName;
+  final pulumi.Input<String> dedicatedBlockStorageClusterName;
   /// Capacity to be delivered in GB.
-  final String deliveryCapacity;
+  final pulumi.Input<String> deliveryCapacity;
   /// The description of the dedicated block storage cluster.
-  final String description;
+  final pulumi.Input<String> description;
   /// The expiration time of the dedicated block storage cluster, in the Unix timestamp format, in seconds.
-  final String expiredTime;
-  final String id;
+  final pulumi.Input<String> expiredTime;
+  final pulumi.Input<String> id;
   /// Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.> Only valid in SupportedCategory = cloud_essd.
-  final String performanceLevel;
+  final pulumi.Input<String> performanceLevel;
   /// The ID of the resource group
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The status of the resource
-  final String status;
+  final pulumi.Input<String> status;
   /// This parameter is not supported.
-  final String supportedCategory;
+  final pulumi.Input<String> supportedCategory;
   /// The total capacity of the dedicated block storage cluster. Unit: GiB.
-  final String totalCapacity;
+  final pulumi.Input<String> totalCapacity;
   /// The dedicated block storage cluster performance type. Possible values:-Standard: Basic type. This type of dedicated block storage cluster can create an ESSD PL0 cloud disk.-Premium: performance type. This type of dedicated block storage cluster can create an ESSD PL1 cloud disk.
-  final String type;
+  final pulumi.Input<String> type;
   /// The used (created disk) capacity of the current cluster, in GB
-  final String usedCapacity;
+  final pulumi.Input<String> usedCapacity;
   /// The zone ID  of the resource
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetDedicatedBlockStorageClustersCluster].
   /// [availableCapacity] The available capacity of the dedicated block storage cluster. Unit: GiB.
@@ -98,23 +99,23 @@ class GetDedicatedBlockStorageClustersCluster {
 
   factory GetDedicatedBlockStorageClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetDedicatedBlockStorageClustersCluster(
-      availableCapacity: map['availableCapacity'] as String,
-      category: map['category'] as String,
-      createTime: map['createTime'] as String,
-      dedicatedBlockStorageClusterId: map['dedicatedBlockStorageClusterId'] as String,
-      dedicatedBlockStorageClusterName: map['dedicatedBlockStorageClusterName'] as String,
-      deliveryCapacity: map['deliveryCapacity'] as String,
-      description: map['description'] as String,
-      expiredTime: map['expiredTime'] as String,
-      id: map['id'] as String,
-      performanceLevel: map['performanceLevel'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      status: map['status'] as String,
-      supportedCategory: map['supportedCategory'] as String,
-      totalCapacity: map['totalCapacity'] as String,
-      type: map['type'] as String,
-      usedCapacity: map['usedCapacity'] as String,
-      zoneId: map['zoneId'] as String,
+      availableCapacity: (map['availableCapacity'] as String).input(),
+      category: (map['category'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      dedicatedBlockStorageClusterId: (map['dedicatedBlockStorageClusterId'] as String).input(),
+      dedicatedBlockStorageClusterName: (map['dedicatedBlockStorageClusterName'] as String).input(),
+      deliveryCapacity: (map['deliveryCapacity'] as String).input(),
+      description: (map['description'] as String).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      performanceLevel: (map['performanceLevel'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      supportedCategory: (map['supportedCategory'] as String).input(),
+      totalCapacity: (map['totalCapacity'] as String).input(),
+      type: (map['type'] as String).input(),
+      usedCapacity: (map['usedCapacity'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

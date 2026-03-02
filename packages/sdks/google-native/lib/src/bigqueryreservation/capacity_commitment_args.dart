@@ -38,25 +38,16 @@ class CapacityCommitmentArgs {
   /// [renewalPlan] The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
   /// [slotCount] Number of slots in this commitment.
   CapacityCommitmentArgs({
-    pulumi.Output<String>? capacityCommitmentId,
-    pulumi.Output<CapacityCommitmentEdition>? edition,
-    pulumi.Output<bool>? enforceSingleAdminProjectPerOrg,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? multiRegionAuxiliary,
-    pulumi.Output<CapacityCommitmentPlan>? plan,
-    pulumi.Output<String>? project,
-    pulumi.Output<CapacityCommitmentRenewalPlan>? renewalPlan,
-    pulumi.Output<String>? slotCount,
-  }) :
-      capacityCommitmentId = pulumi.Input.asOptionalInput<String>(capacityCommitmentId),
-      edition = pulumi.Input.asOptionalInput<CapacityCommitmentEdition>(edition),
-      enforceSingleAdminProjectPerOrg = pulumi.Input.asOptionalInput<bool>(enforceSingleAdminProjectPerOrg),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      multiRegionAuxiliary = pulumi.Input.asOptionalInput<bool>(multiRegionAuxiliary),
-      plan = pulumi.Input.asOptionalInput<CapacityCommitmentPlan>(plan),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      renewalPlan = pulumi.Input.asOptionalInput<CapacityCommitmentRenewalPlan>(renewalPlan),
-      slotCount = pulumi.Input.asOptionalInput<String>(slotCount);
+    this.capacityCommitmentId,
+    this.edition,
+    this.enforceSingleAdminProjectPerOrg,
+    this.location,
+    this.multiRegionAuxiliary,
+    this.plan,
+    this.project,
+    this.renewalPlan,
+    this.slotCount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class CapacityCommitmentArgs {
 
   factory CapacityCommitmentArgs.fromMap(Map<String, dynamic> map) {
     return CapacityCommitmentArgs(
-      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : pulumi.Output.create<String>(map['capacityCommitmentId'] as String),
-      edition: map['edition'] == null ? null : pulumi.Output.create<CapacityCommitmentEdition>(CapacityCommitmentEdition.fromValue(map['edition'] as String)),
-      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : pulumi.Output.create<bool>(map['enforceSingleAdminProjectPerOrg'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : pulumi.Output.create<bool>(map['multiRegionAuxiliary'] as bool),
-      plan: map['plan'] == null ? null : pulumi.Output.create<CapacityCommitmentPlan>(CapacityCommitmentPlan.fromValue(map['plan'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      renewalPlan: map['renewalPlan'] == null ? null : pulumi.Output.create<CapacityCommitmentRenewalPlan>(CapacityCommitmentRenewalPlan.fromValue(map['renewalPlan'] as String)),
-      slotCount: map['slotCount'] == null ? null : pulumi.Output.create<String>(map['slotCount'] as String),
+      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : (map['capacityCommitmentId'] as String).input(),
+      edition: map['edition'] == null ? null : (CapacityCommitmentEdition.fromValue(map['edition'] as String)).input(),
+      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : (map['enforceSingleAdminProjectPerOrg'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : (map['multiRegionAuxiliary'] as bool).input(),
+      plan: map['plan'] == null ? null : (CapacityCommitmentPlan.fromValue(map['plan'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      renewalPlan: map['renewalPlan'] == null ? null : (CapacityCommitmentRenewalPlan.fromValue(map['renewalPlan'] as String)).input(),
+      slotCount: map['slotCount'] == null ? null : (map['slotCount'] as String).input(),
     );
   }
 }

@@ -47,33 +47,20 @@ class EventDataStoreState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [terminationProtectionEnabled] Specifies whether termination protection is enabled for the event data store. If termination protection is enabled, you cannot delete the event data store until termination protection is disabled. Default: `true`.
   EventDataStoreState({
-    pulumi.Output<List<EventDataStoreAdvancedEventSelector>>? advancedEventSelectors,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? billingMode,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<bool>? multiRegionEnabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? organizationEnabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? retentionPeriod,
-    pulumi.Output<String>? suspend,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<bool>? terminationProtectionEnabled,
-  }) :
-      advancedEventSelectors = pulumi.Input.asOptionalInput<List<EventDataStoreAdvancedEventSelector>>(advancedEventSelectors),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      billingMode = pulumi.Input.asOptionalInput<String>(billingMode),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      multiRegionEnabled = pulumi.Input.asOptionalInput<bool>(multiRegionEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationEnabled = pulumi.Input.asOptionalInput<bool>(organizationEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionPeriod = pulumi.Input.asOptionalInput<int>(retentionPeriod),
-      suspend = pulumi.Input.asOptionalInput<String>(suspend),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      terminationProtectionEnabled = pulumi.Input.asOptionalInput<bool>(terminationProtectionEnabled);
+    this.advancedEventSelectors,
+    this.arn,
+    this.billingMode,
+    this.kmsKeyId,
+    this.multiRegionEnabled,
+    this.name,
+    this.organizationEnabled,
+    this.region,
+    this.retentionPeriod,
+    this.suspend,
+    this.tags,
+    this.tagsAll,
+    this.terminationProtectionEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class EventDataStoreState {
 
   factory EventDataStoreState.fromMap(Map<String, dynamic> map) {
     return EventDataStoreState(
-      advancedEventSelectors: map['advancedEventSelectors'] == null ? null : pulumi.Output.create<List<EventDataStoreAdvancedEventSelector>>(pulumi.Input.decodeList<EventDataStoreAdvancedEventSelector>(map['advancedEventSelectors'], (value) => EventDataStoreAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>()))),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      billingMode: map['billingMode'] == null ? null : pulumi.Output.create<String>(map['billingMode'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      multiRegionEnabled: map['multiRegionEnabled'] == null ? null : pulumi.Output.create<bool>(map['multiRegionEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationEnabled: map['organizationEnabled'] == null ? null : pulumi.Output.create<bool>(map['organizationEnabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionPeriod: map['retentionPeriod'] == null ? null : pulumi.Output.create<int>(map['retentionPeriod'] as int),
-      suspend: map['suspend'] == null ? null : pulumi.Output.create<String>(map['suspend'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      terminationProtectionEnabled: map['terminationProtectionEnabled'] == null ? null : pulumi.Output.create<bool>(map['terminationProtectionEnabled'] as bool),
+      advancedEventSelectors: map['advancedEventSelectors'] == null ? null : (pulumi.Input.decodeList<EventDataStoreAdvancedEventSelector>(map['advancedEventSelectors'], (value) => EventDataStoreAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      billingMode: map['billingMode'] == null ? null : (map['billingMode'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      multiRegionEnabled: map['multiRegionEnabled'] == null ? null : (map['multiRegionEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationEnabled: map['organizationEnabled'] == null ? null : (map['organizationEnabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
+      suspend: map['suspend'] == null ? null : (map['suspend'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      terminationProtectionEnabled: map['terminationProtectionEnabled'] == null ? null : (map['terminationProtectionEnabled'] as bool).input(),
     );
   }
 }

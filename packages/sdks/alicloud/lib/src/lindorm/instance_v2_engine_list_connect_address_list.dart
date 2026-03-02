@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceV2EngineListConnectAddressList {
   /// Connect Address
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Connect Port
-  final String? port;
+  final pulumi.Input<String>? port;
   /// Connect Type:
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [InstanceV2EngineListConnectAddressList].
   /// [address] Connect Address
@@ -29,9 +30,9 @@ class InstanceV2EngineListConnectAddressList {
 
   factory InstanceV2EngineListConnectAddressList.fromMap(Map<String, dynamic> map) {
     return InstanceV2EngineListConnectAddressList(
-      address: map['address'] == null ? null : map['address'] as String,
-      port: map['port'] == null ? null : map['port'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

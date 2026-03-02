@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EntityRecognizerInputDataConfigEntityType {
   /// An entity type to be matched by the Entity Recognizer.
   /// Cannot contain a newline (`\n`), carriage return (`\r`), or tab (`\t`).
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [EntityRecognizerInputDataConfigEntityType].
   /// [type] An entity type to be matched by the Entity Recognizer.
@@ -20,7 +21,7 @@ class EntityRecognizerInputDataConfigEntityType {
 
   factory EntityRecognizerInputDataConfigEntityType.fromMap(Map<String, dynamic> map) {
     return EntityRecognizerInputDataConfigEntityType(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

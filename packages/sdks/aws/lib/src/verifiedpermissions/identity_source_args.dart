@@ -23,15 +23,11 @@ class IdentitySourceArgs {
   /// [principalEntityType] Specifies the namespace and data type of the principals generated for identities authenticated by the new identity source.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   IdentitySourceArgs({
-    required pulumi.Output<IdentitySourceConfiguration> configuration,
-    required pulumi.Output<String> policyStoreId,
-    pulumi.Output<String>? principalEntityType,
-    pulumi.Output<String>? region,
-  }) :
-      configuration = pulumi.Input.asInput<IdentitySourceConfiguration>(configuration),
-      policyStoreId = pulumi.Input.asInput<String>(policyStoreId),
-      principalEntityType = pulumi.Input.asOptionalInput<String>(principalEntityType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.configuration,
+    required this.policyStoreId,
+    this.principalEntityType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class IdentitySourceArgs {
 
   factory IdentitySourceArgs.fromMap(Map<String, dynamic> map) {
     return IdentitySourceArgs(
-      configuration: pulumi.Output.create<IdentitySourceConfiguration>(IdentitySourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      policyStoreId: pulumi.Output.create<String>(map['policyStoreId'] as String),
-      principalEntityType: map['principalEntityType'] == null ? null : pulumi.Output.create<String>(map['principalEntityType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      configuration: (IdentitySourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      policyStoreId: (map['policyStoreId'] as String).input(),
+      principalEntityType: map['principalEntityType'] == null ? null : (map['principalEntityType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

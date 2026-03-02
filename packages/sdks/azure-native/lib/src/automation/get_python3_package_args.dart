@@ -19,13 +19,10 @@ class GetPython3PackageArgs {
   /// [packageName] The python package name.
   /// [resourceGroupName] Name of an Azure Resource group.
   GetPython3PackageArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> packageName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      packageName = pulumi.Input.asInput<String>(packageName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.packageName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPython3PackageArgs {
 
   factory GetPython3PackageArgs.fromMap(Map<String, dynamic> map) {
     return GetPython3PackageArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      packageName: pulumi.Output.create<String>(map['packageName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      packageName: (map['packageName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

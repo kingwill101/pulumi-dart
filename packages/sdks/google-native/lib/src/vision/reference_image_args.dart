@@ -29,21 +29,14 @@ class ReferenceImageArgs {
   /// [referenceImageId] A user-supplied resource id for the ReferenceImage to be added. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
   /// [uri] The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
   ReferenceImageArgs({
-    pulumi.Output<List<BoundingPoly>>? boundingPolys,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> productId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? referenceImageId,
-    required pulumi.Output<String> uri,
-  }) :
-      boundingPolys = pulumi.Input.asOptionalInput<List<BoundingPoly>>(boundingPolys),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      referenceImageId = pulumi.Input.asOptionalInput<String>(referenceImageId),
-      uri = pulumi.Input.asInput<String>(uri);
+    this.boundingPolys,
+    this.location,
+    this.name,
+    required this.productId,
+    this.project,
+    this.referenceImageId,
+    required this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class ReferenceImageArgs {
 
   factory ReferenceImageArgs.fromMap(Map<String, dynamic> map) {
     return ReferenceImageArgs(
-      boundingPolys: map['boundingPolys'] == null ? null : pulumi.Output.create<List<BoundingPoly>>(pulumi.Input.decodeList<BoundingPoly>(map['boundingPolys'], (value) => BoundingPoly.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      referenceImageId: map['referenceImageId'] == null ? null : pulumi.Output.create<String>(map['referenceImageId'] as String),
-      uri: pulumi.Output.create<String>(map['uri'] as String),
+      boundingPolys: map['boundingPolys'] == null ? null : (pulumi.Input.decodeList<BoundingPoly>(map['boundingPolys'], (value) => BoundingPoly.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      referenceImageId: map['referenceImageId'] == null ? null : (map['referenceImageId'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

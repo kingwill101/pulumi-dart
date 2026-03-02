@@ -24,17 +24,12 @@ class GroupState {
   /// [subscriptionIds] A list of Subscription GUIDs which should be assigned to the Management Group.
   /// [tenantScopedId] The Management Group ID with the Tenant ID prefix.
   GroupState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentManagementGroupId,
-    pulumi.Output<List<String>>? subscriptionIds,
-    pulumi.Output<String>? tenantScopedId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentManagementGroupId = pulumi.Input.asOptionalInput<String>(parentManagementGroupId),
-      subscriptionIds = pulumi.Input.asOptionalInput<List<String>>(subscriptionIds),
-      tenantScopedId = pulumi.Input.asOptionalInput<String>(tenantScopedId);
+    this.displayName,
+    this.name,
+    this.parentManagementGroupId,
+    this.subscriptionIds,
+    this.tenantScopedId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentManagementGroupId: map['parentManagementGroupId'] == null ? null : pulumi.Output.create<String>(map['parentManagementGroupId'] as String),
-      subscriptionIds: map['subscriptionIds'] == null ? null : pulumi.Output.create<List<String>>((map['subscriptionIds'] as List).cast<String>()),
-      tenantScopedId: map['tenantScopedId'] == null ? null : pulumi.Output.create<String>(map['tenantScopedId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentManagementGroupId: map['parentManagementGroupId'] == null ? null : (map['parentManagementGroupId'] as String).input(),
+      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds'] as List).cast<String>()).input(),
+      tenantScopedId: map['tenantScopedId'] == null ? null : (map['tenantScopedId'] as String).input(),
     );
   }
 }

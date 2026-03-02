@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxAgentGenAppBuilderSettings {
   /// The full name of the Gen App Builder engine related to this agent if there is one.
   /// Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
-  final String engine;
+  final pulumi.Input<String> engine;
 
   /// Creates a new [CxAgentGenAppBuilderSettings].
   /// [engine] The full name of the Gen App Builder engine related to this agent if there is one.
@@ -20,7 +21,7 @@ class CxAgentGenAppBuilderSettings {
 
   factory CxAgentGenAppBuilderSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentGenAppBuilderSettings(
-      engine: map['engine'] as String,
+      engine: (map['engine'] as String).input(),
     );
   }
 }

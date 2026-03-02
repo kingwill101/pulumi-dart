@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseEnginesEngine {
   /// The Managed Database engine type.
-  final String engine;
+  final pulumi.Input<String> engine;
   /// The Managed Database engine ID in engine/version format.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Managed Database engine version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetDatabaseEnginesEngine].
   /// [engine] The Managed Database engine type.
@@ -29,9 +30,9 @@ class GetDatabaseEnginesEngine {
 
   factory GetDatabaseEnginesEngine.fromMap(Map<String, dynamic> map) {
     return GetDatabaseEnginesEngine(
-      engine: map['engine'] as String,
-      id: map['id'] as String,
-      version: map['version'] as String,
+      engine: (map['engine'] as String).input(),
+      id: (map['id'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetModelsModelSummary {
   /// Customizations that the model supports.
-  final List<String> customizationsSupporteds;
+  final pulumi.Input<List<String>> customizationsSupporteds;
   /// Inference types that the model supports.
-  final List<String> inferenceTypesSupporteds;
+  final pulumi.Input<List<String>> inferenceTypesSupporteds;
   /// Input modalities that the model supports.
-  final List<String> inputModalities;
+  final pulumi.Input<List<String>> inputModalities;
   /// Model ARN.
-  final String modelArn;
+  final pulumi.Input<String> modelArn;
   /// Model identifier.
-  final String modelId;
+  final pulumi.Input<String> modelId;
   /// Model name.
-  final String modelName;
+  final pulumi.Input<String> modelName;
   /// Output modalities that the model supports.
-  final List<String> outputModalities;
+  final pulumi.Input<List<String>> outputModalities;
   /// Model provider name.
-  final String providerName;
+  final pulumi.Input<String> providerName;
   /// Indicates whether the model supports streaming.
-  final bool responseStreamingSupported;
+  final pulumi.Input<bool> responseStreamingSupported;
 
   /// Creates a new [GetModelsModelSummary].
   /// [customizationsSupporteds] Customizations that the model supports.
@@ -59,15 +60,15 @@ class GetModelsModelSummary {
 
   factory GetModelsModelSummary.fromMap(Map<String, dynamic> map) {
     return GetModelsModelSummary(
-      customizationsSupporteds: (map['customizationsSupporteds'] as List).cast<String>(),
-      inferenceTypesSupporteds: (map['inferenceTypesSupporteds'] as List).cast<String>(),
-      inputModalities: (map['inputModalities'] as List).cast<String>(),
-      modelArn: map['modelArn'] as String,
-      modelId: map['modelId'] as String,
-      modelName: map['modelName'] as String,
-      outputModalities: (map['outputModalities'] as List).cast<String>(),
-      providerName: map['providerName'] as String,
-      responseStreamingSupported: map['responseStreamingSupported'] as bool,
+      customizationsSupporteds: ((map['customizationsSupporteds'] as List).cast<String>()).input(),
+      inferenceTypesSupporteds: ((map['inferenceTypesSupporteds'] as List).cast<String>()).input(),
+      inputModalities: ((map['inputModalities'] as List).cast<String>()).input(),
+      modelArn: (map['modelArn'] as String).input(),
+      modelId: (map['modelId'] as String).input(),
+      modelName: (map['modelName'] as String).input(),
+      outputModalities: ((map['outputModalities'] as List).cast<String>()).input(),
+      providerName: (map['providerName'] as String).input(),
+      responseStreamingSupported: (map['responseStreamingSupported'] as bool).input(),
     );
   }
 }

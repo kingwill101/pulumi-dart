@@ -46,27 +46,17 @@ class ConfigurationKeyArgs {
   /// [value] The value of the App Configuration Key. This should only be set when type is set to `kv`.
   /// [vaultKeyReference] The ID of the vault secret this App Configuration Key refers to. This should only be set when `type` is set to `vault`.
   ConfigurationKeyArgs({
-    required pulumi.Output<String> configurationStoreId,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? label,
-    pulumi.Output<bool>? locked,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? value,
-    pulumi.Output<String>? vaultKeyReference,
-  }) :
-      configurationStoreId = pulumi.Input.asInput<String>(configurationStoreId),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      key = pulumi.Input.asInput<String>(key),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      locked = pulumi.Input.asOptionalInput<bool>(locked),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      value = pulumi.Input.asOptionalInput<String>(value),
-      vaultKeyReference = pulumi.Input.asOptionalInput<String>(vaultKeyReference);
+    required this.configurationStoreId,
+    this.contentType,
+    this.etag,
+    required this.key,
+    this.label,
+    this.locked,
+    this.tags,
+    this.type,
+    this.value,
+    this.vaultKeyReference,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class ConfigurationKeyArgs {
 
   factory ConfigurationKeyArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationKeyArgs(
-      configurationStoreId: pulumi.Output.create<String>(map['configurationStoreId'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      key: pulumi.Output.create<String>(map['key'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      locked: map['locked'] == null ? null : pulumi.Output.create<bool>(map['locked'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
-      vaultKeyReference: map['vaultKeyReference'] == null ? null : pulumi.Output.create<String>(map['vaultKeyReference'] as String),
+      configurationStoreId: (map['configurationStoreId'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      key: (map['key'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
+      vaultKeyReference: map['vaultKeyReference'] == null ? null : (map['vaultKeyReference'] as String).input(),
     );
   }
 }

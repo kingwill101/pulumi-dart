@@ -39,19 +39,13 @@ class PolicyArgs {
   /// [restorePolicy] A restore policy is a constraint to restore the default policy. Structure is documented below.
   /// [version] Version of the Policy. Default version is 0.
   PolicyArgs({
-    pulumi.Output<PolicyBooleanPolicy>? booleanPolicy,
-    required pulumi.Output<String> constraint,
-    pulumi.Output<PolicyListPolicy>? listPolicy,
-    required pulumi.Output<String> orgId,
-    pulumi.Output<PolicyRestorePolicy>? restorePolicy,
-    pulumi.Output<int>? version,
-  }) :
-      booleanPolicy = pulumi.Input.asOptionalInput<PolicyBooleanPolicy>(booleanPolicy),
-      constraint = pulumi.Input.asInput<String>(constraint),
-      listPolicy = pulumi.Input.asOptionalInput<PolicyListPolicy>(listPolicy),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      restorePolicy = pulumi.Input.asOptionalInput<PolicyRestorePolicy>(restorePolicy),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.booleanPolicy,
+    required this.constraint,
+    this.listPolicy,
+    required this.orgId,
+    this.restorePolicy,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      booleanPolicy: map['booleanPolicy'] == null ? null : pulumi.Output.create<PolicyBooleanPolicy>(PolicyBooleanPolicy.fromMap((map['booleanPolicy'] as Map).cast<String, dynamic>())),
-      constraint: pulumi.Output.create<String>(map['constraint'] as String),
-      listPolicy: map['listPolicy'] == null ? null : pulumi.Output.create<PolicyListPolicy>(PolicyListPolicy.fromMap((map['listPolicy'] as Map).cast<String, dynamic>())),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      restorePolicy: map['restorePolicy'] == null ? null : pulumi.Output.create<PolicyRestorePolicy>(PolicyRestorePolicy.fromMap((map['restorePolicy'] as Map).cast<String, dynamic>())),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      booleanPolicy: map['booleanPolicy'] == null ? null : (PolicyBooleanPolicy.fromMap((map['booleanPolicy'] as Map).cast<String, dynamic>())).input(),
+      constraint: (map['constraint'] as String).input(),
+      listPolicy: map['listPolicy'] == null ? null : (PolicyListPolicy.fromMap((map['listPolicy'] as Map).cast<String, dynamic>())).input(),
+      orgId: (map['orgId'] as String).input(),
+      restorePolicy: map['restorePolicy'] == null ? null : (PolicyRestorePolicy.fromMap((map['restorePolicy'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

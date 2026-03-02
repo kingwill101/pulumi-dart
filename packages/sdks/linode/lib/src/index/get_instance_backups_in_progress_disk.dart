@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceBackupsInProgressDisk {
   /// The filesystem of this disk.
-  final String filesystem;
+  final pulumi.Input<String> filesystem;
   /// The label of this disk.
-  final String label;
+  final pulumi.Input<String> label;
   /// The size of this disk.
-  final int size;
+  final pulumi.Input<int> size;
 
   /// Creates a new [GetInstanceBackupsInProgressDisk].
   /// [filesystem] The filesystem of this disk.
@@ -29,9 +30,9 @@ class GetInstanceBackupsInProgressDisk {
 
   factory GetInstanceBackupsInProgressDisk.fromMap(Map<String, dynamic> map) {
     return GetInstanceBackupsInProgressDisk(
-      filesystem: map['filesystem'] as String,
-      label: map['label'] as String,
-      size: map['size'] as int,
+      filesystem: (map['filesystem'] as String).input(),
+      label: (map['label'] as String).input(),
+      size: (map['size'] as int).input(),
     );
   }
 }

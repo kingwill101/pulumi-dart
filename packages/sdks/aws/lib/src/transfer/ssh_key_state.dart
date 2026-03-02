@@ -21,17 +21,12 @@ class SshKeyState {
   /// [sshKeyId] Optional.
   /// [userName] The name of the user account that is assigned to one or more servers.
   SshKeyState({
-    pulumi.Output<String>? body,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serverId,
-    pulumi.Output<String>? sshKeyId,
-    pulumi.Output<String>? userName,
-  }) :
-      body = pulumi.Input.asOptionalInput<String>(body),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId),
-      sshKeyId = pulumi.Input.asOptionalInput<String>(sshKeyId),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.body,
+    this.region,
+    this.serverId,
+    this.sshKeyId,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,11 +40,11 @@ class SshKeyState {
 
   factory SshKeyState.fromMap(Map<String, dynamic> map) {
     return SshKeyState(
-      body: map['body'] == null ? null : pulumi.Output.create<String>(map['body'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
-      sshKeyId: map['sshKeyId'] == null ? null : pulumi.Output.create<String>(map['sshKeyId'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      sshKeyId: map['sshKeyId'] == null ? null : (map['sshKeyId'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

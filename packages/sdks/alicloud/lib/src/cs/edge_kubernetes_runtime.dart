@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EdgeKubernetesRuntime {
   /// The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The version of the runtime.
   ///
   /// The following example is the definition of runtime block:
@@ -14,7 +15,7 @@ class EdgeKubernetesRuntime {
   /// version = "1.6.28"
   /// }
   /// ```
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [EdgeKubernetesRuntime].
   /// [name] The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
@@ -33,8 +34,8 @@ class EdgeKubernetesRuntime {
 
   factory EdgeKubernetesRuntime.fromMap(Map<String, dynamic> map) {
     return EdgeKubernetesRuntime(
-      name: map['name'] == null ? null : map['name'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

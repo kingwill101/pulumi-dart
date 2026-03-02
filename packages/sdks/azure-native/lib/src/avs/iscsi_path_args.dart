@@ -19,13 +19,10 @@ class IscsiPathArgs {
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   IscsiPathArgs({
-    required pulumi.Output<String> networkBlock,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkBlock = pulumi.Input.asInput<String>(networkBlock),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkBlock,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class IscsiPathArgs {
 
   factory IscsiPathArgs.fromMap(Map<String, dynamic> map) {
     return IscsiPathArgs(
-      networkBlock: pulumi.Output.create<String>(map['networkBlock'] as String),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkBlock: (map['networkBlock'] as String).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

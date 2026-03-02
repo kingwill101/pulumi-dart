@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Storage Account configurations
 class StorageAccountResponse {
   /// Storage account name
-  final String? accountName;
+  final pulumi.Input<String>? accountName;
   /// Resource ID of storage account
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Subscription Id
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
 
   /// Creates a new [StorageAccountResponse].
   /// [accountName] Storage account name
@@ -30,9 +31,9 @@ class StorageAccountResponse {
 
   factory StorageAccountResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountResponse(
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

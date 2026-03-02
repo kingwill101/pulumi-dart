@@ -25,17 +25,12 @@ class GetIpv6InternetBandwidthsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
   GetIpv6InternetBandwidthsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? ipv6AddressId,
-    pulumi.Output<String>? ipv6InternetBandwidthId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      ipv6AddressId = pulumi.Input.asOptionalInput<String>(ipv6AddressId),
-      ipv6InternetBandwidthId = pulumi.Input.asOptionalInput<String>(ipv6InternetBandwidthId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.ipv6AddressId,
+    this.ipv6InternetBandwidthId,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetIpv6InternetBandwidthsArgs {
 
   factory GetIpv6InternetBandwidthsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpv6InternetBandwidthsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      ipv6AddressId: map['ipv6AddressId'] == null ? null : pulumi.Output.create<String>(map['ipv6AddressId'] as String),
-      ipv6InternetBandwidthId: map['ipv6InternetBandwidthId'] == null ? null : pulumi.Output.create<String>(map['ipv6InternetBandwidthId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ipv6AddressId: map['ipv6AddressId'] == null ? null : (map['ipv6AddressId'] as String).input(),
+      ipv6InternetBandwidthId: map['ipv6InternetBandwidthId'] == null ? null : (map['ipv6InternetBandwidthId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

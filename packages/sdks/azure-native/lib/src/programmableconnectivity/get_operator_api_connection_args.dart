@@ -16,11 +16,9 @@ class GetOperatorApiConnectionArgs {
   /// [operatorApiConnectionName] Azure Programmable Connectivity (APC) Operator API Connection Name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetOperatorApiConnectionArgs({
-    required pulumi.Output<String> operatorApiConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      operatorApiConnectionName = pulumi.Input.asInput<String>(operatorApiConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.operatorApiConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetOperatorApiConnectionArgs {
 
   factory GetOperatorApiConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetOperatorApiConnectionArgs(
-      operatorApiConnectionName: pulumi.Output.create<String>(map['operatorApiConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      operatorApiConnectionName: (map['operatorApiConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

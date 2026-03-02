@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures {
   /// Optional. Whether to enable nested virtualization or not (default is false).
-  final bool? enableNestedVirtualization;
+  final pulumi.Input<bool>? enableNestedVirtualization;
   /// Optional. Whether to enable UEFI networking for instance creation.
-  final bool? enableUefiNetworking;
+  final pulumi.Input<bool>? enableUefiNetworking;
   /// Optional. The number of threads per physical core.
-  final int? threadsPerCore;
+  final pulumi.Input<int>? threadsPerCore;
   /// Optional. The number of physical cores to expose to an instance.
-  final int? visibleCoreCount;
+  final pulumi.Input<int>? visibleCoreCount;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures].
   /// [enableNestedVirtualization] Optional. Whether to enable nested virtualization or not (default is false).
@@ -34,10 +35,10 @@ class RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures(
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : map['enableNestedVirtualization'] as bool,
-      enableUefiNetworking: map['enableUefiNetworking'] == null ? null : map['enableUefiNetworking'] as bool,
-      threadsPerCore: map['threadsPerCore'] == null ? null : map['threadsPerCore'] as int,
-      visibleCoreCount: map['visibleCoreCount'] == null ? null : map['visibleCoreCount'] as int,
+      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization'] as bool).input(),
+      enableUefiNetworking: map['enableUefiNetworking'] == null ? null : (map['enableUefiNetworking'] as bool).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as int).input(),
+      visibleCoreCount: map['visibleCoreCount'] == null ? null : (map['visibleCoreCount'] as int).input(),
     );
   }
 }

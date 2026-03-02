@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Label object for Deployments
 class DeploymentLabelEntryDeploymentmanagerV2beta {
   /// Key of the label
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Value of the label
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [DeploymentLabelEntryDeploymentmanagerV2beta].
   /// [key] Key of the label
@@ -25,8 +26,8 @@ class DeploymentLabelEntryDeploymentmanagerV2beta {
 
   factory DeploymentLabelEntryDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return DeploymentLabelEntryDeploymentmanagerV2beta(
-      key: map['key'] == null ? null : map['key'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

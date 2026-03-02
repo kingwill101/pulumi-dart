@@ -25,17 +25,12 @@ class ConfigGroupArgs {
   /// [skipAwait] Indicates that child resources should skip the await logic.
   /// [yaml] A Kubernetes YAML manifest containing Kubernetes resource configuration(s).
   ConfigGroupArgs({
-    pulumi.Output<List<String>>? files,
-    pulumi.Output<List<dynamic>>? objs,
-    pulumi.Output<String>? resourcePrefix,
-    pulumi.Output<bool>? skipAwait,
-    pulumi.Output<String>? yaml,
-  }) :
-      files = pulumi.Input.asOptionalInput<List<String>>(files),
-      objs = pulumi.Input.asOptionalInput<List<dynamic>>(objs),
-      resourcePrefix = pulumi.Input.asOptionalInput<String>(resourcePrefix),
-      skipAwait = pulumi.Input.asOptionalInput<bool>(skipAwait),
-      yaml = pulumi.Input.asOptionalInput<String>(yaml);
+    this.files,
+    this.objs,
+    this.resourcePrefix,
+    this.skipAwait,
+    this.yaml,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ConfigGroupArgs {
 
   factory ConfigGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConfigGroupArgs(
-      files: map['files'] == null ? null : pulumi.Output.create<List<String>>((map['files'] as List).cast<String>()),
-      objs: map['objs'] == null ? null : pulumi.Output.create<List<dynamic>>((map['objs'] as List).cast<dynamic>()),
-      resourcePrefix: map['resourcePrefix'] == null ? null : pulumi.Output.create<String>(map['resourcePrefix'] as String),
-      skipAwait: map['skipAwait'] == null ? null : pulumi.Output.create<bool>(map['skipAwait'] as bool),
-      yaml: map['yaml'] == null ? null : pulumi.Output.create<String>(map['yaml'] as String),
+      files: map['files'] == null ? null : ((map['files'] as List).cast<String>()).input(),
+      objs: map['objs'] == null ? null : ((map['objs'] as List).cast<dynamic>()).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
+      skipAwait: map['skipAwait'] == null ? null : (map['skipAwait'] as bool).input(),
+      yaml: map['yaml'] == null ? null : (map['yaml'] as String).input(),
     );
   }
 }

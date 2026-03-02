@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuardrailSensitiveInformationPolicyConfigRegexesConfig {
   /// Options for sensitive information action. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
-  final String action;
+  final pulumi.Input<String> action;
   /// The regex description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Action to take when harmful content is detected in the input. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
-  final String? inputAction;
+  final pulumi.Input<String>? inputAction;
   /// Whether to enable guardrail evaluation on the input. When disabled, you aren't charged for the evaluation.
-  final bool? inputEnabled;
+  final pulumi.Input<bool>? inputEnabled;
   /// The regex name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
-  final String? outputAction;
+  final pulumi.Input<String>? outputAction;
   /// Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
-  final bool? outputEnabled;
+  final pulumi.Input<bool>? outputEnabled;
   /// The regex pattern.
-  final String pattern;
+  final pulumi.Input<String> pattern;
 
   /// Creates a new [GuardrailSensitiveInformationPolicyConfigRegexesConfig].
   /// [action] Options for sensitive information action. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
@@ -54,14 +55,14 @@ class GuardrailSensitiveInformationPolicyConfigRegexesConfig {
 
   factory GuardrailSensitiveInformationPolicyConfigRegexesConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailSensitiveInformationPolicyConfigRegexesConfig(
-      action: map['action'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      inputAction: map['inputAction'] == null ? null : map['inputAction'] as String,
-      inputEnabled: map['inputEnabled'] == null ? null : map['inputEnabled'] as bool,
-      name: map['name'] as String,
-      outputAction: map['outputAction'] == null ? null : map['outputAction'] as String,
-      outputEnabled: map['outputEnabled'] == null ? null : map['outputEnabled'] as bool,
-      pattern: map['pattern'] as String,
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      inputAction: map['inputAction'] == null ? null : (map['inputAction'] as String).input(),
+      inputEnabled: map['inputEnabled'] == null ? null : (map['inputEnabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      outputAction: map['outputAction'] == null ? null : (map['outputAction'] as String).input(),
+      outputEnabled: map['outputEnabled'] == null ? null : (map['outputEnabled'] as bool).input(),
+      pattern: (map['pattern'] as String).input(),
     );
   }
 }

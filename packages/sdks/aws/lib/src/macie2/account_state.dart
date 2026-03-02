@@ -25,19 +25,13 @@ class AccountState {
   /// [status] Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   /// [updatedAt] The date and time, in UTC and extended RFC 3339 format, of the most recent change to the status of the Macie account.
   AccountState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? findingPublishingFrequency,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceRole,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? updatedAt,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      findingPublishingFrequency = pulumi.Input.asOptionalInput<String>(findingPublishingFrequency),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceRole = pulumi.Input.asOptionalInput<String>(serviceRole),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt);
+    this.createdAt,
+    this.findingPublishingFrequency,
+    this.region,
+    this.serviceRole,
+    this.status,
+    this.updatedAt,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      findingPublishingFrequency: map['findingPublishingFrequency'] == null ? null : pulumi.Output.create<String>(map['findingPublishingFrequency'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceRole: map['serviceRole'] == null ? null : pulumi.Output.create<String>(map['serviceRole'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      findingPublishingFrequency: map['findingPublishingFrequency'] == null ? null : (map['findingPublishingFrequency'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
     );
   }
 }

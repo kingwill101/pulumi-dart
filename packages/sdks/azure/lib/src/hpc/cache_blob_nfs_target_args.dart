@@ -39,25 +39,16 @@ class CacheBlobNfsTargetArgs {
   /// [verificationTimerInSeconds] The amount of time the cache waits before it checks the back-end storage for file updates. Possible values are between `1` and `31536000`.
   /// [writeBackTimerInSeconds] The amount of time the cache waits after the last file change before it copies the changed file to back-end storage. Possible values are between `1` and `31536000`.
   CacheBlobNfsTargetArgs({
-    pulumi.Output<String>? accessPolicyName,
-    required pulumi.Output<String> cacheName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespacePath,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageContainerId,
-    required pulumi.Output<String> usageModel,
-    pulumi.Output<int>? verificationTimerInSeconds,
-    pulumi.Output<int>? writeBackTimerInSeconds,
-  }) :
-      accessPolicyName = pulumi.Input.asOptionalInput<String>(accessPolicyName),
-      cacheName = pulumi.Input.asInput<String>(cacheName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespacePath = pulumi.Input.asInput<String>(namespacePath),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageContainerId = pulumi.Input.asInput<String>(storageContainerId),
-      usageModel = pulumi.Input.asInput<String>(usageModel),
-      verificationTimerInSeconds = pulumi.Input.asOptionalInput<int>(verificationTimerInSeconds),
-      writeBackTimerInSeconds = pulumi.Input.asOptionalInput<int>(writeBackTimerInSeconds);
+    this.accessPolicyName,
+    required this.cacheName,
+    this.name,
+    required this.namespacePath,
+    required this.resourceGroupName,
+    required this.storageContainerId,
+    required this.usageModel,
+    this.verificationTimerInSeconds,
+    this.writeBackTimerInSeconds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class CacheBlobNfsTargetArgs {
 
   factory CacheBlobNfsTargetArgs.fromMap(Map<String, dynamic> map) {
     return CacheBlobNfsTargetArgs(
-      accessPolicyName: map['accessPolicyName'] == null ? null : pulumi.Output.create<String>(map['accessPolicyName'] as String),
-      cacheName: pulumi.Output.create<String>(map['cacheName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespacePath: pulumi.Output.create<String>(map['namespacePath'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageContainerId: pulumi.Output.create<String>(map['storageContainerId'] as String),
-      usageModel: pulumi.Output.create<String>(map['usageModel'] as String),
-      verificationTimerInSeconds: map['verificationTimerInSeconds'] == null ? null : pulumi.Output.create<int>(map['verificationTimerInSeconds'] as int),
-      writeBackTimerInSeconds: map['writeBackTimerInSeconds'] == null ? null : pulumi.Output.create<int>(map['writeBackTimerInSeconds'] as int),
+      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName'] as String).input(),
+      cacheName: (map['cacheName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespacePath: (map['namespacePath'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageContainerId: (map['storageContainerId'] as String).input(),
+      usageModel: (map['usageModel'] as String).input(),
+      verificationTimerInSeconds: map['verificationTimerInSeconds'] == null ? null : (map['verificationTimerInSeconds'] as int).input(),
+      writeBackTimerInSeconds: map['writeBackTimerInSeconds'] == null ? null : (map['writeBackTimerInSeconds'] as int).input(),
     );
   }
 }

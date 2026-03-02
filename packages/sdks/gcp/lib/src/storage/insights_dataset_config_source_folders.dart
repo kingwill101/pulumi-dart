@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightsDatasetConfigSourceFolders {
   /// The list of folder numbers to include in the DatasetConfig.
-  final List<String>? folderNumbers;
+  final pulumi.Input<List<String>>? folderNumbers;
 
   /// Creates a new [InsightsDatasetConfigSourceFolders].
   /// [folderNumbers] The list of folder numbers to include in the DatasetConfig.
@@ -19,7 +20,7 @@ class InsightsDatasetConfigSourceFolders {
 
   factory InsightsDatasetConfigSourceFolders.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigSourceFolders(
-      folderNumbers: map['folderNumbers'] == null ? null : (map['folderNumbers'] as List).cast<String>(),
+      folderNumbers: map['folderNumbers'] == null ? null : ((map['folderNumbers'] as List).cast<String>()).input(),
     );
   }
 }

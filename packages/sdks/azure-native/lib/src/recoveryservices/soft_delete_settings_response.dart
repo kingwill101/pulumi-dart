@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Soft delete Settings of vault
 class SoftDeleteSettingsResponse {
-  final String? enhancedSecurityState;
+  final pulumi.Input<String>? enhancedSecurityState;
   /// Soft delete retention period in days
-  final int? softDeleteRetentionPeriodInDays;
-  final String? softDeleteState;
+  final pulumi.Input<int>? softDeleteRetentionPeriodInDays;
+  final pulumi.Input<String>? softDeleteState;
 
   /// Creates a new [SoftDeleteSettingsResponse].
   /// [enhancedSecurityState] Optional.
@@ -28,9 +29,9 @@ class SoftDeleteSettingsResponse {
 
   factory SoftDeleteSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SoftDeleteSettingsResponse(
-      enhancedSecurityState: map['enhancedSecurityState'] == null ? null : map['enhancedSecurityState'] as String,
-      softDeleteRetentionPeriodInDays: map['softDeleteRetentionPeriodInDays'] == null ? null : map['softDeleteRetentionPeriodInDays'] as int,
-      softDeleteState: map['softDeleteState'] == null ? null : map['softDeleteState'] as String,
+      enhancedSecurityState: map['enhancedSecurityState'] == null ? null : (map['enhancedSecurityState'] as String).input(),
+      softDeleteRetentionPeriodInDays: map['softDeleteRetentionPeriodInDays'] == null ? null : (map['softDeleteRetentionPeriodInDays'] as int).input(),
+      softDeleteState: map['softDeleteState'] == null ? null : (map['softDeleteState'] as String).input(),
     );
   }
 }

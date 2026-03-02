@@ -23,17 +23,12 @@ class VersionState {
   /// [status] The status of this version.
   /// [versionNumber] The sequential number of this version.
   VersionState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? versionNumber,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      versionNumber = pulumi.Input.asOptionalInput<int>(versionNumber);
+    this.description,
+    this.name,
+    this.parent,
+    this.status,
+    this.versionNumber,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class VersionState {
 
   factory VersionState.fromMap(Map<String, dynamic> map) {
     return VersionState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      versionNumber: map['versionNumber'] == null ? null : pulumi.Output.create<int>(map['versionNumber'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      versionNumber: map['versionNumber'] == null ? null : (map['versionNumber'] as int).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_policy_vm_maintenance_policy_concurrency_control_response.dart';
 import 'resource_policy_vm_maintenance_policy_maintenance_window_response.dart';
 
 class ResourcePolicyVmMaintenancePolicyResponse {
-  final ResourcePolicyVmMaintenancePolicyConcurrencyControlResponse concurrencyControlGroup;
+  final pulumi.Input<ResourcePolicyVmMaintenancePolicyConcurrencyControlResponse> concurrencyControlGroup;
   /// Maintenance windows that are applied to VMs covered by this policy.
-  final ResourcePolicyVmMaintenancePolicyMaintenanceWindowResponse maintenanceWindow;
+  final pulumi.Input<ResourcePolicyVmMaintenancePolicyMaintenanceWindowResponse> maintenanceWindow;
 
   /// Creates a new [ResourcePolicyVmMaintenancePolicyResponse].
   /// [concurrencyControlGroup] Required.
@@ -18,15 +19,15 @@ class ResourcePolicyVmMaintenancePolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'concurrencyControlGroup': concurrencyControlGroup.toMap(),
-      'maintenanceWindow': maintenanceWindow.toMap(),
+      'concurrencyControlGroup': pulumi.Input.mapInputValue<ResourcePolicyVmMaintenancePolicyConcurrencyControlResponse, Map<String, dynamic>>(concurrencyControlGroup, (value) => value.toMap()),
+      'maintenanceWindow': pulumi.Input.mapInputValue<ResourcePolicyVmMaintenancePolicyMaintenanceWindowResponse, Map<String, dynamic>>(maintenanceWindow, (value) => value.toMap()),
     };
   }
 
   factory ResourcePolicyVmMaintenancePolicyResponse.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyVmMaintenancePolicyResponse(
-      concurrencyControlGroup: ResourcePolicyVmMaintenancePolicyConcurrencyControlResponse.fromMap((map['concurrencyControlGroup'] as Map).cast<String, dynamic>()),
-      maintenanceWindow: ResourcePolicyVmMaintenancePolicyMaintenanceWindowResponse.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>()),
+      concurrencyControlGroup: (ResourcePolicyVmMaintenancePolicyConcurrencyControlResponse.fromMap((map['concurrencyControlGroup'] as Map).cast<String, dynamic>())).input(),
+      maintenanceWindow: (ResourcePolicyVmMaintenancePolicyMaintenanceWindowResponse.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

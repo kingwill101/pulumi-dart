@@ -16,11 +16,9 @@ class GetPrivateAccessArgs {
   /// [privateAccessName] The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
   /// [resourceGroupName] String that represents an Azure resource group.
   GetPrivateAccessArgs({
-    required pulumi.Output<String> privateAccessName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      privateAccessName = pulumi.Input.asInput<String>(privateAccessName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.privateAccessName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPrivateAccessArgs {
 
   factory GetPrivateAccessArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateAccessArgs(
-      privateAccessName: pulumi.Output.create<String>(map['privateAccessName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      privateAccessName: (map['privateAccessName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

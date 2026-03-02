@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of CFNKubernetesAuditLogsConfiguration
 class CFNKubernetesAuditLogsConfiguration {
   /// Property enable
-  final bool? enable;
+  final pulumi.Input<bool>? enable;
 
   /// Creates a new [CFNKubernetesAuditLogsConfiguration].
   /// [enable] Property enable
@@ -20,7 +21,7 @@ class CFNKubernetesAuditLogsConfiguration {
 
   factory CFNKubernetesAuditLogsConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNKubernetesAuditLogsConfiguration(
-      enable: map['enable'] == null ? null : map['enable'] as bool,
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
     );
   }
 }

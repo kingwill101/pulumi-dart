@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PostgreSQL database profile.
 class PostgresqlProfileResponse {
   /// Database for the PostgreSQL connection.
-  final String database;
+  final pulumi.Input<String> database;
   /// Hostname for the PostgreSQL connection.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// Password for the PostgreSQL connection.
-  final String password;
+  final pulumi.Input<String> password;
   /// Port for the PostgreSQL connection, default value is 5432.
-  final int port;
+  final pulumi.Input<int> port;
   /// Username for the PostgreSQL connection.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [PostgresqlProfileResponse].
   /// [database] Database for the PostgreSQL connection.
@@ -40,11 +41,11 @@ class PostgresqlProfileResponse {
 
   factory PostgresqlProfileResponse.fromMap(Map<String, dynamic> map) {
     return PostgresqlProfileResponse(
-      database: map['database'] as String,
-      hostname: map['hostname'] as String,
-      password: map['password'] as String,
-      port: map['port'] as int,
-      username: map['username'] as String,
+      database: (map['database'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      password: (map['password'] as String).input(),
+      port: (map['port'] as int).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertRuleTemplateNrtTemplate {
   /// The description of this Sentinel Scheduled Alert Rule Template.
-  final String description;
+  final pulumi.Input<String> description;
   /// The query of this Sentinel Scheduled Alert Rule Template.
-  final String query;
+  final pulumi.Input<String> query;
   /// The alert severity of this Sentinel Scheduled Alert Rule Template.
-  final String severity;
+  final pulumi.Input<String> severity;
   /// A list of categories of attacks by which to classify the rule.
-  final List<String> tactics;
+  final pulumi.Input<List<String>> tactics;
 
   /// Creates a new [GetAlertRuleTemplateNrtTemplate].
   /// [description] The description of this Sentinel Scheduled Alert Rule Template.
@@ -34,10 +35,10 @@ class GetAlertRuleTemplateNrtTemplate {
 
   factory GetAlertRuleTemplateNrtTemplate.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleTemplateNrtTemplate(
-      description: map['description'] as String,
-      query: map['query'] as String,
-      severity: map['severity'] as String,
-      tactics: (map['tactics'] as List).cast<String>(),
+      description: (map['description'] as String).input(),
+      query: (map['query'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      tactics: ((map['tactics'] as List).cast<String>()).input(),
     );
   }
 }

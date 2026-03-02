@@ -16,13 +16,10 @@ class GetScheduleAiplatformV1beta1Args {
   /// [project] Optional.
   /// [scheduleId] Required.
   GetScheduleAiplatformV1beta1Args({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> scheduleId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scheduleId = pulumi.Input.asInput<String>(scheduleId);
+    required this.location,
+    this.project,
+    required this.scheduleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetScheduleAiplatformV1beta1Args {
 
   factory GetScheduleAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetScheduleAiplatformV1beta1Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scheduleId: pulumi.Output.create<String>(map['scheduleId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scheduleId: (map['scheduleId'] as String).input(),
     );
   }
 }

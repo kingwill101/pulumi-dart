@@ -6,21 +6,21 @@ import 'api_operation_request_representation_form_parameter.dart';
 
 class ApiOperationRequestRepresentation {
   /// The Content Type of this representation, such as `application/json`.
-  final String contentType;
+  final pulumi.Input<String> contentType;
   /// One or more `example` blocks as defined above.
-  final List<ApiOperationRequestRepresentationExample>? examples;
+  final pulumi.Input<List<ApiOperationRequestRepresentationExample>>? examples;
   /// One or more `form_parameter` block as defined above.
   ///
   /// > **Note:** This is Required when `content_type` is set to `application/x-www-form-urlencoded` or `multipart/form-data`.
-  final List<ApiOperationRequestRepresentationFormParameter>? formParameters;
+  final pulumi.Input<List<ApiOperationRequestRepresentationFormParameter>>? formParameters;
   /// The ID of an API Management Schema which represents this Response.
   ///
   /// > **Note:** This can only be specified when `content_type` is not set to `application/x-www-form-urlencoded` or `multipart/form-data`.
-  final String? schemaId;
+  final pulumi.Input<String>? schemaId;
   /// The Type Name defined by the Schema.
   ///
   /// > **Note:** This can only be specified when `content_type` is not set to `application/x-www-form-urlencoded` or `multipart/form-data`.
-  final String? typeName;
+  final pulumi.Input<String>? typeName;
 
   /// Creates a new [ApiOperationRequestRepresentation].
   /// [contentType] The Content Type of this representation, such as `application/json`.
@@ -39,8 +39,8 @@ class ApiOperationRequestRepresentation {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'contentType': contentType,
-      'examples': ?examples == null ? null : pulumi.Input.encodeList<ApiOperationRequestRepresentationExample, Map<String, dynamic>>(examples!, (value) => value.toMap()),
-      'formParameters': ?formParameters == null ? null : pulumi.Input.encodeList<ApiOperationRequestRepresentationFormParameter, Map<String, dynamic>>(formParameters!, (value) => value.toMap()),
+      'examples': ?pulumi.Input.mapOptionalInputValue<List<ApiOperationRequestRepresentationExample>, List<Map<String, dynamic>>>(examples, (value) => pulumi.Input.encodeList<ApiOperationRequestRepresentationExample, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'formParameters': ?pulumi.Input.mapOptionalInputValue<List<ApiOperationRequestRepresentationFormParameter>, List<Map<String, dynamic>>>(formParameters, (value) => pulumi.Input.encodeList<ApiOperationRequestRepresentationFormParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schemaId': ?schemaId,
       'typeName': ?typeName,
     };
@@ -48,11 +48,11 @@ class ApiOperationRequestRepresentation {
 
   factory ApiOperationRequestRepresentation.fromMap(Map<String, dynamic> map) {
     return ApiOperationRequestRepresentation(
-      contentType: map['contentType'] as String,
-      examples: map['examples'] == null ? null : pulumi.Input.decodeList<ApiOperationRequestRepresentationExample>(map['examples'], (value) => ApiOperationRequestRepresentationExample.fromMap((value as Map).cast<String, dynamic>())),
-      formParameters: map['formParameters'] == null ? null : pulumi.Input.decodeList<ApiOperationRequestRepresentationFormParameter>(map['formParameters'], (value) => ApiOperationRequestRepresentationFormParameter.fromMap((value as Map).cast<String, dynamic>())),
-      schemaId: map['schemaId'] == null ? null : map['schemaId'] as String,
-      typeName: map['typeName'] == null ? null : map['typeName'] as String,
+      contentType: (map['contentType'] as String).input(),
+      examples: map['examples'] == null ? null : (pulumi.Input.decodeList<ApiOperationRequestRepresentationExample>(map['examples'], (value) => ApiOperationRequestRepresentationExample.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      formParameters: map['formParameters'] == null ? null : (pulumi.Input.decodeList<ApiOperationRequestRepresentationFormParameter>(map['formParameters'], (value) => ApiOperationRequestRepresentationFormParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
+      typeName: map['typeName'] == null ? null : (map['typeName'] as String).input(),
     );
   }
 }

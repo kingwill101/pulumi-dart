@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetManagedPrefixListEntry {
-  final String cidr;
-  final String description;
+  final pulumi.Input<String> cidr;
+  final pulumi.Input<String> description;
 
   /// Creates a new [GetManagedPrefixListEntry].
   /// [cidr] Required.
@@ -22,8 +23,8 @@ class GetManagedPrefixListEntry {
 
   factory GetManagedPrefixListEntry.fromMap(Map<String, dynamic> map) {
     return GetManagedPrefixListEntry(
-      cidr: map['cidr'] as String,
-      description: map['description'] as String,
+      cidr: (map['cidr'] as String).input(),
+      description: (map['description'] as String).input(),
     );
   }
 }

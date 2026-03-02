@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPortAllowedAddressPair {
   /// The additional IP address.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The MAC address of the port.
-  final String macAddress;
+  final pulumi.Input<String> macAddress;
 
   /// Creates a new [GetPortAllowedAddressPair].
   /// [ipAddress] The additional IP address.
@@ -24,8 +25,8 @@ class GetPortAllowedAddressPair {
 
   factory GetPortAllowedAddressPair.fromMap(Map<String, dynamic> map) {
     return GetPortAllowedAddressPair(
-      ipAddress: map['ipAddress'] as String,
-      macAddress: map['macAddress'] as String,
+      ipAddress: (map['ipAddress'] as String).input(),
+      macAddress: (map['macAddress'] as String).input(),
     );
   }
 }

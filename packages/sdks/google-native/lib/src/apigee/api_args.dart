@@ -33,23 +33,15 @@ class ApiArgs {
   /// [organizationId] Required.
   /// [validate] Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
   ApiArgs({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? data,
-    pulumi.Output<List<Map<String, String>>>? extensions,
-    pulumi.Output<dynamic>? file,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<bool>? validate,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      data = pulumi.Input.asOptionalInput<String>(data),
-      extensions = pulumi.Input.asOptionalInput<List<Map<String, String>>>(extensions),
-      file = pulumi.Input.asOptionalInput<dynamic>(file),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      validate = pulumi.Input.asOptionalInput<bool>(validate);
+    this.action,
+    this.contentType,
+    this.data,
+    this.extensions,
+    this.file,
+    this.name,
+    required this.organizationId,
+    this.validate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ApiArgs {
 
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      extensions: map['extensions'] == null ? null : pulumi.Output.create<List<Map<String, String>>>((map['extensions'] as List).cast<Map<String, String>>()),
-      file: map['file'] == null ? null : pulumi.Output.create<dynamic>(map['file']),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      validate: map['validate'] == null ? null : pulumi.Output.create<bool>(map['validate'] as bool),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      extensions: map['extensions'] == null ? null : ((map['extensions'] as List).cast<Map<String, String>>()).input(),
+      file: map['file'] == null ? null : (map['file']).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      validate: map['validate'] == null ? null : (map['validate'] as bool).input(),
     );
   }
 }

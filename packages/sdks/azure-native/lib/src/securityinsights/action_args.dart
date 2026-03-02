@@ -28,19 +28,13 @@ class ActionArgs {
   /// [triggerUri] Logic App Callback URL for this specific workflow.
   /// [workspaceName] The name of the workspace.
   ActionArgs({
-    pulumi.Output<String>? actionId,
-    required pulumi.Output<String> logicAppResourceId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleId,
-    required pulumi.Output<String> triggerUri,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      actionId = pulumi.Input.asOptionalInput<String>(actionId),
-      logicAppResourceId = pulumi.Input.asInput<String>(logicAppResourceId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleId = pulumi.Input.asInput<String>(ruleId),
-      triggerUri = pulumi.Input.asInput<String>(triggerUri),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.actionId,
+    required this.logicAppResourceId,
+    required this.resourceGroupName,
+    required this.ruleId,
+    required this.triggerUri,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ActionArgs {
 
   factory ActionArgs.fromMap(Map<String, dynamic> map) {
     return ActionArgs(
-      actionId: map['actionId'] == null ? null : pulumi.Output.create<String>(map['actionId'] as String),
-      logicAppResourceId: pulumi.Output.create<String>(map['logicAppResourceId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleId: pulumi.Output.create<String>(map['ruleId'] as String),
-      triggerUri: pulumi.Output.create<String>(map['triggerUri'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      actionId: map['actionId'] == null ? null : (map['actionId'] as String).input(),
+      logicAppResourceId: (map['logicAppResourceId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleId: (map['ruleId'] as String).input(),
+      triggerUri: (map['triggerUri'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

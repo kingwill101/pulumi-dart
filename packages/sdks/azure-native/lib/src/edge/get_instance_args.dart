@@ -22,15 +22,11 @@ class GetInstanceArgs {
   /// [solutionName] Name of the solution
   /// [targetName] Name of the target
   GetInstanceArgs({
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> solutionName,
-    required pulumi.Output<String> targetName,
-  }) :
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      solutionName = pulumi.Input.asInput<String>(solutionName),
-      targetName = pulumi.Input.asInput<String>(targetName);
+    required this.instanceName,
+    required this.resourceGroupName,
+    required this.solutionName,
+    required this.targetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      solutionName: pulumi.Output.create<String>(map['solutionName'] as String),
-      targetName: pulumi.Output.create<String>(map['targetName'] as String),
+      instanceName: (map['instanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      solutionName: (map['solutionName'] as String).input(),
+      targetName: (map['targetName'] as String).input(),
     );
   }
 }

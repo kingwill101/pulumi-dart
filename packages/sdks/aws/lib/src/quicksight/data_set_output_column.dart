@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetOutputColumn {
   /// The description of the column.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Display name for the dataset.
   ///
   /// The following arguments are optional:
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The data type of the column.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DataSetOutputColumn].
   /// [description] The description of the column.
@@ -31,9 +32,9 @@ class DataSetOutputColumn {
 
   factory DataSetOutputColumn.fromMap(Map<String, dynamic> map) {
     return DataSetOutputColumn(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

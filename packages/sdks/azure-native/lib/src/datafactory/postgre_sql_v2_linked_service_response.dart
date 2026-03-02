@@ -8,58 +8,58 @@ import 'parameter_specification_response.dart';
 /// Linked service for PostgreSQLV2 data source.
 class PostgreSqlV2LinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The authentication type to use. Type: string.
-  final dynamic authenticationType;
+  final pulumi.Input<dynamic> authenticationType;
   /// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
-  final dynamic commandTimeout;
+  final pulumi.Input<dynamic>? commandTimeout;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
-  final dynamic connectionTimeout;
+  final pulumi.Input<dynamic>? connectionTimeout;
   /// Database name for connection. Type: string.
-  final dynamic database;
+  final pulumi.Input<dynamic> database;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
-  final dynamic encoding;
+  final pulumi.Input<dynamic>? encoding;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// When enabled, parameter values are logged when commands are executed. Type: boolean.
-  final dynamic logParameters;
+  final pulumi.Input<dynamic>? logParameters;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// The Azure key vault secret reference of password in connection string. Type: string.
-  final AzureKeyVaultSecretReferenceResponse? password;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
   /// Whether connection pooling should be used. Type: boolean.
-  final dynamic pooling;
+  final pulumi.Input<dynamic>? pooling;
   /// The port for the connection. Type: integer.
-  final dynamic port;
+  final pulumi.Input<dynamic>? port;
   /// Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
-  final dynamic readBufferSize;
+  final pulumi.Input<dynamic>? readBufferSize;
   /// Sets the schema search path. Type: string.
-  final dynamic schema;
+  final pulumi.Input<dynamic>? schema;
   /// Server name for connection. Type: string.
-  final dynamic server;
+  final pulumi.Input<dynamic> server;
   /// Location of a client certificate to be sent to the server. Type: string.
-  final dynamic sslCertificate;
+  final pulumi.Input<dynamic>? sslCertificate;
   /// Location of a client key for a client certificate to be sent to the server. Type: string.
-  final dynamic sslKey;
+  final pulumi.Input<dynamic>? sslKey;
   /// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
-  final dynamic sslMode;
+  final pulumi.Input<dynamic> sslMode;
   /// Password for a key for a client certificate. Type: string.
-  final dynamic sslPassword;
+  final pulumi.Input<dynamic>? sslPassword;
   /// Gets or sets the session timezone. Type: string.
-  final dynamic timezone;
+  final pulumi.Input<dynamic>? timezone;
   /// Whether to trust the server certificate without validating it. Type: boolean.
-  final dynamic trustServerCertificate;
+  final pulumi.Input<dynamic>? trustServerCertificate;
   /// Type of linked service.
   /// Expected value is 'PostgreSqlV2'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Username for authentication. Type: string.
-  final dynamic username;
+  final pulumi.Input<dynamic> username;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [PostgreSqlV2LinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -122,15 +122,15 @@ class PostgreSqlV2LinkedServiceResponse {
       'annotations': ?annotations,
       'authenticationType': authenticationType,
       'commandTimeout': ?commandTimeout,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionTimeout': ?connectionTimeout,
       'database': database,
       'description': ?description,
       'encoding': ?encoding,
       'encryptedCredential': ?encryptedCredential,
       'logParameters': ?logParameters,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
       'pooling': ?pooling,
       'port': ?port,
       'readBufferSize': ?readBufferSize,
@@ -150,32 +150,32 @@ class PostgreSqlV2LinkedServiceResponse {
 
   factory PostgreSqlV2LinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return PostgreSqlV2LinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      authenticationType: map['authenticationType'],
-      commandTimeout: map['commandTimeout'] == null ? null : map['commandTimeout'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      connectionTimeout: map['connectionTimeout'] == null ? null : map['connectionTimeout'],
-      database: map['database'],
-      description: map['description'] == null ? null : map['description'] as String,
-      encoding: map['encoding'] == null ? null : map['encoding'],
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      logParameters: map['logParameters'] == null ? null : map['logParameters'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      pooling: map['pooling'] == null ? null : map['pooling'],
-      port: map['port'] == null ? null : map['port'],
-      readBufferSize: map['readBufferSize'] == null ? null : map['readBufferSize'],
-      schema: map['schema'] == null ? null : map['schema'],
-      server: map['server'],
-      sslCertificate: map['sslCertificate'] == null ? null : map['sslCertificate'],
-      sslKey: map['sslKey'] == null ? null : map['sslKey'],
-      sslMode: map['sslMode'],
-      sslPassword: map['sslPassword'] == null ? null : map['sslPassword'],
-      timezone: map['timezone'] == null ? null : map['timezone'],
-      trustServerCertificate: map['trustServerCertificate'] == null ? null : map['trustServerCertificate'],
-      type: map['type'] as String,
-      username: map['username'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      authenticationType: (map['authenticationType']).input(),
+      commandTimeout: map['commandTimeout'] == null ? null : (map['commandTimeout']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      connectionTimeout: map['connectionTimeout'] == null ? null : (map['connectionTimeout']).input(),
+      database: (map['database']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      logParameters: map['logParameters'] == null ? null : (map['logParameters']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      pooling: map['pooling'] == null ? null : (map['pooling']).input(),
+      port: map['port'] == null ? null : (map['port']).input(),
+      readBufferSize: map['readBufferSize'] == null ? null : (map['readBufferSize']).input(),
+      schema: map['schema'] == null ? null : (map['schema']).input(),
+      server: (map['server']).input(),
+      sslCertificate: map['sslCertificate'] == null ? null : (map['sslCertificate']).input(),
+      sslKey: map['sslKey'] == null ? null : (map['sslKey']).input(),
+      sslMode: (map['sslMode']).input(),
+      sslPassword: map['sslPassword'] == null ? null : (map['sslPassword']).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']).input(),
+      trustServerCertificate: map['trustServerCertificate'] == null ? null : (map['trustServerCertificate']).input(),
+      type: (map['type'] as String).input(),
+      username: (map['username']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

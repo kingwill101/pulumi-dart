@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainRetentionPolicy {
   /// The retention policy for data stored on an Amazon Elastic File System (EFS) volume. Valid values are `Retain` or `Delete`.  Default value is `Retain`.
-  final String? homeEfsFileSystem;
+  final pulumi.Input<String>? homeEfsFileSystem;
 
   /// Creates a new [DomainRetentionPolicy].
   /// [homeEfsFileSystem] The retention policy for data stored on an Amazon Elastic File System (EFS) volume. Valid values are `Retain` or `Delete`.  Default value is `Retain`.
@@ -19,7 +20,7 @@ class DomainRetentionPolicy {
 
   factory DomainRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DomainRetentionPolicy(
-      homeEfsFileSystem: map['homeEfsFileSystem'] == null ? null : map['homeEfsFileSystem'] as String,
+      homeEfsFileSystem: map['homeEfsFileSystem'] == null ? null : (map['homeEfsFileSystem'] as String).input(),
     );
   }
 }

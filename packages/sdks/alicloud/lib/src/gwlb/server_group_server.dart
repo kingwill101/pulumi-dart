@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerGroupServer {
   /// (Optional, Computed, Int) The port that is used by the backend server.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The server group ID.
-  final String? serverGroupId;
+  final pulumi.Input<String>? serverGroupId;
   /// The backend server ID.
   ///
   /// - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
   /// - If the server group is of the `Ip` type, set ServerId to IP addresses.
-  final String serverId;
+  final pulumi.Input<String> serverId;
   /// The IP address of the backend server.
-  final String? serverIp;
+  final pulumi.Input<String>? serverIp;
   /// The type of the backend server. Valid values:
   ///
   /// - `Ecs`: Elastic Compute Service (ECS) instance
   /// - `Eni`: elastic network interface (ENI)
   /// - `Eci`: elastic container instance
   /// - `Ip`: IP address
-  final String serverType;
+  final pulumi.Input<String> serverType;
   /// Indicates the status of the backend server.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [ServerGroupServer].
   /// [port] (Optional, Computed, Int) The port that is used by the backend server.
@@ -52,12 +53,12 @@ class ServerGroupServer {
 
   factory ServerGroupServer.fromMap(Map<String, dynamic> map) {
     return ServerGroupServer(
-      port: map['port'] == null ? null : map['port'] as int,
-      serverGroupId: map['serverGroupId'] == null ? null : map['serverGroupId'] as String,
-      serverId: map['serverId'] as String,
-      serverIp: map['serverIp'] == null ? null : map['serverIp'] as String,
-      serverType: map['serverType'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      serverIp: map['serverIp'] == null ? null : (map['serverIp'] as String).input(),
+      serverType: (map['serverType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

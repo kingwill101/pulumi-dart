@@ -31,21 +31,14 @@ class ComputePolicyArgs {
   /// [objectType] The type of AAD object the object identifier refers to.
   /// [resourceGroupName] The name of the Azure resource group.
   ComputePolicyArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? computePolicyName,
-    pulumi.Output<int>? maxDegreeOfParallelismPerJob,
-    pulumi.Output<int>? minPriorityPerJob,
-    required pulumi.Output<String> objectId,
-    required pulumi.Output<String> objectType,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      computePolicyName = pulumi.Input.asOptionalInput<String>(computePolicyName),
-      maxDegreeOfParallelismPerJob = pulumi.Input.asOptionalInput<int>(maxDegreeOfParallelismPerJob),
-      minPriorityPerJob = pulumi.Input.asOptionalInput<int>(minPriorityPerJob),
-      objectId = pulumi.Input.asInput<String>(objectId),
-      objectType = pulumi.Input.asInput<String>(objectType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.computePolicyName,
+    this.maxDegreeOfParallelismPerJob,
+    this.minPriorityPerJob,
+    required this.objectId,
+    required this.objectType,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ComputePolicyArgs {
 
   factory ComputePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ComputePolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      computePolicyName: map['computePolicyName'] == null ? null : pulumi.Output.create<String>(map['computePolicyName'] as String),
-      maxDegreeOfParallelismPerJob: map['maxDegreeOfParallelismPerJob'] == null ? null : pulumi.Output.create<int>(map['maxDegreeOfParallelismPerJob'] as int),
-      minPriorityPerJob: map['minPriorityPerJob'] == null ? null : pulumi.Output.create<int>(map['minPriorityPerJob'] as int),
-      objectId: pulumi.Output.create<String>(map['objectId'] as String),
-      objectType: pulumi.Output.create<String>(map['objectType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      computePolicyName: map['computePolicyName'] == null ? null : (map['computePolicyName'] as String).input(),
+      maxDegreeOfParallelismPerJob: map['maxDegreeOfParallelismPerJob'] == null ? null : (map['maxDegreeOfParallelismPerJob'] as int).input(),
+      minPriorityPerJob: map['minPriorityPerJob'] == null ? null : (map['minPriorityPerJob'] as int).input(),
+      objectId: (map['objectId'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

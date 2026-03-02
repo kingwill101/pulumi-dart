@@ -14,11 +14,9 @@ class GetGcpUserAccessBindingArgs {
   /// [gcpUserAccessBindingId] Required.
   /// [organizationId] Required.
   GetGcpUserAccessBindingArgs({
-    required pulumi.Output<String> gcpUserAccessBindingId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      gcpUserAccessBindingId = pulumi.Input.asInput<String>(gcpUserAccessBindingId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.gcpUserAccessBindingId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetGcpUserAccessBindingArgs {
 
   factory GetGcpUserAccessBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetGcpUserAccessBindingArgs(
-      gcpUserAccessBindingId: pulumi.Output.create<String>(map['gcpUserAccessBindingId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      gcpUserAccessBindingId: (map['gcpUserAccessBindingId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

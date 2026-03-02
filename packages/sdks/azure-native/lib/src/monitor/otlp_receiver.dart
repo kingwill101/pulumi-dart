@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// OTLP Receiver.
 class OtlpReceiver {
   /// OTLP GRPC endpoint definition. Example: 0.0.0.0:<port>.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
 
   /// Creates a new [OtlpReceiver].
   /// [endpoint] OTLP GRPC endpoint definition. Example: 0.0.0.0:<port>.
@@ -20,7 +21,7 @@ class OtlpReceiver {
 
   factory OtlpReceiver.fromMap(Map<String, dynamic> map) {
     return OtlpReceiver(
-      endpoint: map['endpoint'] as String,
+      endpoint: (map['endpoint'] as String).input(),
     );
   }
 }

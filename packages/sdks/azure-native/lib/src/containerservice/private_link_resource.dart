@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A private link resource
 class PrivateLinkResource {
   /// The group ID of the resource.
-  final String? groupId;
+  final pulumi.Input<String>? groupId;
   /// The ID of the private link resource.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the private link resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The RequiredMembers of the resource
-  final List<String>? requiredMembers;
+  final pulumi.Input<List<String>>? requiredMembers;
   /// The resource type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [PrivateLinkResource].
   /// [groupId] The group ID of the resource.
@@ -40,11 +41,11 @@ class PrivateLinkResource {
 
   factory PrivateLinkResource.fromMap(Map<String, dynamic> map) {
     return PrivateLinkResource(
-      groupId: map['groupId'] == null ? null : map['groupId'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      requiredMembers: map['requiredMembers'] == null ? null : (map['requiredMembers'] as List).cast<String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      requiredMembers: map['requiredMembers'] == null ? null : ((map['requiredMembers'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

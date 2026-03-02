@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UnitOperationCondition {
   /// (Output)
   /// Last time the condition transited from one status to another.
-  final String? lastTransitionTime;
+  final pulumi.Input<String>? lastTransitionTime;
   /// (Output)
   /// Human readable message indicating details about the last transition.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// (Output)
   /// Brief reason for the condition's last transition.
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// (Output)
   /// Status of the condition.
   /// Possible values:
   /// STATUS_UNKNOWN
   /// STATUS_TRUE
   /// STATUS_FALSE
-  final String? status;
+  final pulumi.Input<String>? status;
   /// (Output)
   /// Type of the condition.
   /// Possible values:
@@ -25,7 +26,7 @@ class UnitOperationCondition {
   /// TYPE_RUNNING
   /// TYPE_SUCCEEDED
   /// TYPE_CANCELLED
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [UnitOperationCondition].
   /// [lastTransitionTime] (Output)
@@ -53,11 +54,11 @@ class UnitOperationCondition {
 
   factory UnitOperationCondition.fromMap(Map<String, dynamic> map) {
     return UnitOperationCondition(
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : map['lastTransitionTime'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

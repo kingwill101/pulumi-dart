@@ -19,13 +19,10 @@ class GetSecurityPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityPolicyName] Name of the security policy under the profile.
   GetSecurityPolicyArgs({
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> securityPolicyName,
-  }) :
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityPolicyName = pulumi.Input.asInput<String>(securityPolicyName);
+    required this.profileName,
+    required this.resourceGroupName,
+    required this.securityPolicyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSecurityPolicyArgs {
 
   factory GetSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyArgs(
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityPolicyName: pulumi.Output.create<String>(map['securityPolicyName'] as String),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityPolicyName: (map['securityPolicyName'] as String).input(),
     );
   }
 }

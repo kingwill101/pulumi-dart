@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiRequestConfig {
   /// The body format of the api, which support the values of 'STREAM' and 'FORM'.
-  final String? bodyFormat;
+  final pulumi.Input<String>? bodyFormat;
   /// The method of the api, including 'GET','POST','PUT' etc.
-  final String method;
+  final pulumi.Input<String> method;
   /// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// The request path of the api.
-  final String path;
+  final pulumi.Input<String> path;
   /// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [ApiRequestConfig].
   /// [bodyFormat] The body format of the api, which support the values of 'STREAM' and 'FORM'.
@@ -39,11 +40,11 @@ class ApiRequestConfig {
 
   factory ApiRequestConfig.fromMap(Map<String, dynamic> map) {
     return ApiRequestConfig(
-      bodyFormat: map['bodyFormat'] == null ? null : map['bodyFormat'] as String,
-      method: map['method'] as String,
-      mode: map['mode'] as String,
-      path: map['path'] as String,
-      protocol: map['protocol'] as String,
+      bodyFormat: map['bodyFormat'] == null ? null : (map['bodyFormat'] as String).input(),
+      method: (map['method'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      path: (map['path'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_beyondcorp_appconnectors_v1alpha_app_connector_principal_info_service_account.dart';
 
 /// PrincipalInfo represents an Identity oneof.
 class GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo {
   /// A GCP service account.
-  final GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount? serviceAccount;
+  final pulumi.Input<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount>? serviceAccount;
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo].
   /// [serviceAccount] A GCP service account.
@@ -15,13 +16,13 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serviceAccount': ?serviceAccount == null ? null : serviceAccount!.toMap(),
+      'serviceAccount': ?pulumi.Input.mapOptionalInputValue<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount, Map<String, dynamic>>(serviceAccount, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo(
-      serviceAccount: map['serviceAccount'] == null ? null : GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>()),
+      serviceAccount: map['serviceAccount'] == null ? null : (GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

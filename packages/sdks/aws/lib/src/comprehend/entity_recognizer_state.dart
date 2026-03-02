@@ -64,33 +64,20 @@ class EntityRecognizerState {
   /// [volumeKmsKeyId] ID or ARN of a KMS Key used to encrypt storage volumes during job processing.
   /// [vpcConfig] Configuration parameters for VPC to contain Entity Recognizer resources.
   EntityRecognizerState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? dataAccessRoleArn,
-    pulumi.Output<EntityRecognizerInputDataConfig>? inputDataConfig,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? modelKmsKeyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? versionName,
-    pulumi.Output<String>? versionNamePrefix,
-    pulumi.Output<String>? volumeKmsKeyId,
-    pulumi.Output<EntityRecognizerVpcConfig>? vpcConfig,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      dataAccessRoleArn = pulumi.Input.asOptionalInput<String>(dataAccessRoleArn),
-      inputDataConfig = pulumi.Input.asOptionalInput<EntityRecognizerInputDataConfig>(inputDataConfig),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      modelKmsKeyId = pulumi.Input.asOptionalInput<String>(modelKmsKeyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      versionName = pulumi.Input.asOptionalInput<String>(versionName),
-      versionNamePrefix = pulumi.Input.asOptionalInput<String>(versionNamePrefix),
-      volumeKmsKeyId = pulumi.Input.asOptionalInput<String>(volumeKmsKeyId),
-      vpcConfig = pulumi.Input.asOptionalInput<EntityRecognizerVpcConfig>(vpcConfig);
+    this.arn,
+    this.dataAccessRoleArn,
+    this.inputDataConfig,
+    this.languageCode,
+    this.modelKmsKeyId,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.versionName,
+    this.versionNamePrefix,
+    this.volumeKmsKeyId,
+    this.vpcConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,19 +99,19 @@ class EntityRecognizerState {
 
   factory EntityRecognizerState.fromMap(Map<String, dynamic> map) {
     return EntityRecognizerState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      dataAccessRoleArn: map['dataAccessRoleArn'] == null ? null : pulumi.Output.create<String>(map['dataAccessRoleArn'] as String),
-      inputDataConfig: map['inputDataConfig'] == null ? null : pulumi.Output.create<EntityRecognizerInputDataConfig>(EntityRecognizerInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      modelKmsKeyId: map['modelKmsKeyId'] == null ? null : pulumi.Output.create<String>(map['modelKmsKeyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      versionName: map['versionName'] == null ? null : pulumi.Output.create<String>(map['versionName'] as String),
-      versionNamePrefix: map['versionNamePrefix'] == null ? null : pulumi.Output.create<String>(map['versionNamePrefix'] as String),
-      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : pulumi.Output.create<String>(map['volumeKmsKeyId'] as String),
-      vpcConfig: map['vpcConfig'] == null ? null : pulumi.Output.create<EntityRecognizerVpcConfig>(EntityRecognizerVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      dataAccessRoleArn: map['dataAccessRoleArn'] == null ? null : (map['dataAccessRoleArn'] as String).input(),
+      inputDataConfig: map['inputDataConfig'] == null ? null : (EntityRecognizerInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      modelKmsKeyId: map['modelKmsKeyId'] == null ? null : (map['modelKmsKeyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      versionNamePrefix: map['versionNamePrefix'] == null ? null : (map['versionNamePrefix'] as String).input(),
+      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : (map['volumeKmsKeyId'] as String).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : (EntityRecognizerVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

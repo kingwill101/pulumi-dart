@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Synapse spark job reference type.
 class SynapseSparkJobReference {
   /// Reference spark job name. Expression with resultType string.
-  final dynamic referenceName;
+  final pulumi.Input<dynamic> referenceName;
   /// Synapse spark job reference type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SynapseSparkJobReference].
   /// [referenceName] Reference spark job name. Expression with resultType string.
@@ -25,8 +26,8 @@ class SynapseSparkJobReference {
 
   factory SynapseSparkJobReference.fromMap(Map<String, dynamic> map) {
     return SynapseSparkJobReference(
-      referenceName: map['referenceName'],
-      type: map['type'] as String,
+      referenceName: (map['referenceName']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

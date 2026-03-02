@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Active message associated with project
 class StatusMessageResponse {
   /// Service-defined message code.
-  final String code;
+  final pulumi.Input<String> code;
   /// Time in UTC at which the message was created.
-  final String createdDateTime;
+  final pulumi.Input<String> createdDateTime;
   /// Severity level of message.
-  final String level;
+  final pulumi.Input<String> level;
   /// A human-readable representation of the message code.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [StatusMessageResponse].
   /// [code] Service-defined message code.
@@ -35,10 +36,10 @@ class StatusMessageResponse {
 
   factory StatusMessageResponse.fromMap(Map<String, dynamic> map) {
     return StatusMessageResponse(
-      code: map['code'] as String,
-      createdDateTime: map['createdDateTime'] as String,
-      level: map['level'] as String,
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      createdDateTime: (map['createdDateTime'] as String).input(),
+      level: (map['level'] as String).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

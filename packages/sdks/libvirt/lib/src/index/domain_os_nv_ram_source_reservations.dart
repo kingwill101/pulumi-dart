@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_os_nv_ram_source_reservations_source.dart';
 
 class DomainOsNvRamSourceReservations {
   /// Controls whether reservations are enabled for the network storage source.
-  final String? enabled;
+  final pulumi.Input<String>? enabled;
   /// Specifies if the reservations are managed by a higher-level resource management layer.
-  final bool? managed;
+  final pulumi.Input<bool>? managed;
   /// Configures the source from which reservations are allocated for network storage.
-  final DomainOsNvRamSourceReservationsSource? source;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSource>? source;
 
   /// Creates a new [DomainOsNvRamSourceReservations].
   /// [enabled] Controls whether reservations are enabled for the network storage source.
@@ -24,15 +25,15 @@ class DomainOsNvRamSourceReservations {
     return <String, dynamic>{
       'enabled': ?enabled,
       'managed': ?managed,
-      'source': ?source == null ? null : source!.toMap(),
+      'source': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
   factory DomainOsNvRamSourceReservations.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceReservations(
-      enabled: map['enabled'] == null ? null : map['enabled'] as String,
-      managed: map['managed'] == null ? null : map['managed'] as bool,
-      source: map['source'] == null ? null : DomainOsNvRamSourceReservationsSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
+      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
+      source: map['source'] == null ? null : (DomainOsNvRamSourceReservationsSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -28,15 +28,11 @@ class WorkspaceArgs {
   /// [name] The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
   /// [settings] Settings associated with this workspace.
   WorkspaceArgs({
-    required pulumi.Output<String> dataset,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    required pulumi.Output<WorkspaceSettings> settings,
-  }) :
-      dataset = pulumi.Input.asInput<String>(dataset),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      settings = pulumi.Input.asInput<WorkspaceSettings>(settings);
+    required this.dataset,
+    this.labels,
+    this.name,
+    required this.settings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      dataset: pulumi.Output.create<String>(map['dataset'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      settings: pulumi.Output.create<WorkspaceSettings>(WorkspaceSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())),
+      dataset: (map['dataset'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      settings: (WorkspaceSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -42,29 +42,18 @@ class UserState {
   /// [userName] Amazon QuickSight user name that you want to create for the user you are registering. Required only for users with an identity type of `QUICKSIGHT`.
   /// [userRole] Amazon QuickSight role for the user. Valid values: `READER`, `AUTHOR`, `ADMIN`, `READER_PRO`, `AUTHOR_PRO`, `ADMIN_PRO`, `RESTRICTED_AUTHOR`, `RESTRICTED_READER`.
   UserState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? iamArn,
-    pulumi.Output<String>? identityType,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sessionName,
-    pulumi.Output<String>? userInvitationUrl,
-    pulumi.Output<String>? userName,
-    pulumi.Output<String>? userRole,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      iamArn = pulumi.Input.asOptionalInput<String>(iamArn),
-      identityType = pulumi.Input.asOptionalInput<String>(identityType),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sessionName = pulumi.Input.asOptionalInput<String>(sessionName),
-      userInvitationUrl = pulumi.Input.asOptionalInput<String>(userInvitationUrl),
-      userName = pulumi.Input.asOptionalInput<String>(userName),
-      userRole = pulumi.Input.asOptionalInput<String>(userRole);
+    this.arn,
+    this.awsAccountId,
+    this.email,
+    this.iamArn,
+    this.identityType,
+    this.namespace,
+    this.region,
+    this.sessionName,
+    this.userInvitationUrl,
+    this.userName,
+    this.userRole,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      iamArn: map['iamArn'] == null ? null : pulumi.Output.create<String>(map['iamArn'] as String),
-      identityType: map['identityType'] == null ? null : pulumi.Output.create<String>(map['identityType'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sessionName: map['sessionName'] == null ? null : pulumi.Output.create<String>(map['sessionName'] as String),
-      userInvitationUrl: map['userInvitationUrl'] == null ? null : pulumi.Output.create<String>(map['userInvitationUrl'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
-      userRole: map['userRole'] == null ? null : pulumi.Output.create<String>(map['userRole'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      iamArn: map['iamArn'] == null ? null : (map['iamArn'] as String).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sessionName: map['sessionName'] == null ? null : (map['sessionName'] as String).input(),
+      userInvitationUrl: map['userInvitationUrl'] == null ? null : (map['userInvitationUrl'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userRole: map['userRole'] == null ? null : (map['userRole'] as String).input(),
     );
   }
 }

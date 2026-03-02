@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineVpcOptions {
   /// A list of security groups associated with the VPC endpoint.
-  final List<String>? securityGroupIds;
+  final pulumi.Input<List<String>>? securityGroupIds;
   /// A list of subnet IDs associated with the VPC endpoint.
-  final List<String> subnetIds;
+  final pulumi.Input<List<String>> subnetIds;
   /// Whether you or Amazon OpenSearch Ingestion service create and manage the VPC endpoint configured for the pipeline. Valid values are `CUSTOMER` or `SERVICE`
-  final String? vpcEndpointManagement;
+  final pulumi.Input<String>? vpcEndpointManagement;
 
   /// Creates a new [PipelineVpcOptions].
   /// [securityGroupIds] A list of security groups associated with the VPC endpoint.
@@ -29,9 +30,9 @@ class PipelineVpcOptions {
 
   factory PipelineVpcOptions.fromMap(Map<String, dynamic> map) {
     return PipelineVpcOptions(
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
-      vpcEndpointManagement: map['vpcEndpointManagement'] == null ? null : map['vpcEndpointManagement'] as String,
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      vpcEndpointManagement: map['vpcEndpointManagement'] == null ? null : (map['vpcEndpointManagement'] as String).input(),
     );
   }
 }

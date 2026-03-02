@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerHost {
   /// Hostname to add
-  final String host;
+  final pulumi.Input<String> host;
   /// IP address this hostname should resolve to.
-  final String ip;
+  final pulumi.Input<String> ip;
 
   /// Creates a new [ContainerHost].
   /// [host] Hostname to add
@@ -24,8 +25,8 @@ class ContainerHost {
 
   factory ContainerHost.fromMap(Map<String, dynamic> map) {
     return ContainerHost(
-      host: map['host'] as String,
-      ip: map['ip'] as String,
+      host: (map['host'] as String).input(),
+      ip: (map['ip'] as String).input(),
     );
   }
 }

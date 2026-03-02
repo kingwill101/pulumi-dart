@@ -38,23 +38,15 @@ class ExampleArgs {
   /// [messages] The collection of messages that make up the conversation.
   /// [project] The ID of the project in which the resource belongs.
   ExampleArgs({
-    required pulumi.Output<String> app,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? entryAgent,
-    required pulumi.Output<String> exampleId,
-    required pulumi.Output<String> location,
-    pulumi.Output<List<ExampleMessage>>? messages,
-    pulumi.Output<String>? project,
-  }) :
-      app = pulumi.Input.asInput<String>(app),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      entryAgent = pulumi.Input.asOptionalInput<String>(entryAgent),
-      exampleId = pulumi.Input.asInput<String>(exampleId),
-      location = pulumi.Input.asInput<String>(location),
-      messages = pulumi.Input.asOptionalInput<List<ExampleMessage>>(messages),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.app,
+    this.description,
+    required this.displayName,
+    this.entryAgent,
+    required this.exampleId,
+    required this.location,
+    this.messages,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class ExampleArgs {
 
   factory ExampleArgs.fromMap(Map<String, dynamic> map) {
     return ExampleArgs(
-      app: pulumi.Output.create<String>(map['app'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      entryAgent: map['entryAgent'] == null ? null : pulumi.Output.create<String>(map['entryAgent'] as String),
-      exampleId: pulumi.Output.create<String>(map['exampleId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      messages: map['messages'] == null ? null : pulumi.Output.create<List<ExampleMessage>>(pulumi.Input.decodeList<ExampleMessage>(map['messages'], (value) => ExampleMessage.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      app: (map['app'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      entryAgent: map['entryAgent'] == null ? null : (map['entryAgent'] as String).input(),
+      exampleId: (map['exampleId'] as String).input(),
+      location: (map['location'] as String).input(),
+      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<ExampleMessage>(map['messages'], (value) => ExampleMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

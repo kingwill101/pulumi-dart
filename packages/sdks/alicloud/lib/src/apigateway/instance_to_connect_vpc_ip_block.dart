@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceToConnectVpcIpBlock {
   /// The CIDR block of the VSwitch.
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// Specifies whether the IP block is customized.
-  final bool? customized;
+  final pulumi.Input<bool>? customized;
   /// The VSwitch ID.
-  final String? vswitchId;
+  final pulumi.Input<String>? vswitchId;
   /// The zone ID.
-  final String? zoneId;
+  final pulumi.Input<String>? zoneId;
 
   /// Creates a new [InstanceToConnectVpcIpBlock].
   /// [cidrBlock] The CIDR block of the VSwitch.
@@ -34,10 +35,10 @@ class InstanceToConnectVpcIpBlock {
 
   factory InstanceToConnectVpcIpBlock.fromMap(Map<String, dynamic> map) {
     return InstanceToConnectVpcIpBlock(
-      cidrBlock: map['cidrBlock'] as String,
-      customized: map['customized'] == null ? null : map['customized'] as bool,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      customized: map['customized'] == null ? null : (map['customized'] as bool).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

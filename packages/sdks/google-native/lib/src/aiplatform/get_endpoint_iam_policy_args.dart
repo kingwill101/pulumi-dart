@@ -18,15 +18,11 @@ class GetEndpointIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   GetEndpointIamPolicyArgs({
-    required pulumi.Output<String> endpointId,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-  }) :
-      endpointId = pulumi.Input.asInput<String>(endpointId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.endpointId,
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetEndpointIamPolicyArgs {
 
   factory GetEndpointIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointIamPolicyArgs(
-      endpointId: pulumi.Output.create<String>(map['endpointId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      endpointId: (map['endpointId'] as String).input(),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a GitHub organization
 class GitHubOrganization {
   /// Optional list of repositories in which the pool should be created.
-  final List<String>? repositories;
+  final pulumi.Input<List<String>>? repositories;
   /// The GitHub organization URL in which the pool should be created.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [GitHubOrganization].
   /// [repositories] Optional list of repositories in which the pool should be created.
@@ -25,8 +26,8 @@ class GitHubOrganization {
 
   factory GitHubOrganization.fromMap(Map<String, dynamic> map) {
     return GitHubOrganization(
-      repositories: map['repositories'] == null ? null : (map['repositories'] as List).cast<String>(),
-      url: map['url'] as String,
+      repositories: map['repositories'] == null ? null : ((map['repositories'] as List).cast<String>()).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

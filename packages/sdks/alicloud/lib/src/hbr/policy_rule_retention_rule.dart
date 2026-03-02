@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyRuleRetentionRule {
   /// Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
-  final String? advancedRetentionType;
+  final pulumi.Input<String>? advancedRetentionType;
   /// Retention time, in days
-  final int? retention;
+  final pulumi.Input<int>? retention;
 
   /// Creates a new [PolicyRuleRetentionRule].
   /// [advancedRetentionType] Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
@@ -24,8 +25,8 @@ class PolicyRuleRetentionRule {
 
   factory PolicyRuleRetentionRule.fromMap(Map<String, dynamic> map) {
     return PolicyRuleRetentionRule(
-      advancedRetentionType: map['advancedRetentionType'] == null ? null : map['advancedRetentionType'] as String,
-      retention: map['retention'] == null ? null : map['retention'] as int,
+      advancedRetentionType: map['advancedRetentionType'] == null ? null : (map['advancedRetentionType'] as String).input(),
+      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
     );
   }
 }

@@ -23,13 +23,10 @@ class ReleaseArgs {
   /// [project] The project for the resource
   /// [rulesetName] Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
   ReleaseArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> rulesetName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rulesetName = pulumi.Input.asInput<String>(rulesetName);
+    this.name,
+    this.project,
+    required this.rulesetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class ReleaseArgs {
 
   factory ReleaseArgs.fromMap(Map<String, dynamic> map) {
     return ReleaseArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rulesetName: pulumi.Output.create<String>(map['rulesetName'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rulesetName: (map['rulesetName'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs {
   /// [ipConfigurationName] The Name of the IP Configuration within the Network Interface which should be connected to the Backend Address Pool. Changing this forces a new resource to be created.
   /// [networkInterfaceId] The ID of the Network Interface. Changing this forces a new resource to be created.
   NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs({
-    required pulumi.Output<String> backendAddressPoolId,
-    required pulumi.Output<String> ipConfigurationName,
-    required pulumi.Output<String> networkInterfaceId,
-  }) :
-      backendAddressPoolId = pulumi.Input.asInput<String>(backendAddressPoolId),
-      ipConfigurationName = pulumi.Input.asInput<String>(ipConfigurationName),
-      networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId);
+    required this.backendAddressPoolId,
+    required this.ipConfigurationName,
+    required this.networkInterfaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs {
 
   factory NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs(
-      backendAddressPoolId: pulumi.Output.create<String>(map['backendAddressPoolId'] as String),
-      ipConfigurationName: pulumi.Output.create<String>(map['ipConfigurationName'] as String),
-      networkInterfaceId: pulumi.Output.create<String>(map['networkInterfaceId'] as String),
+      backendAddressPoolId: (map['backendAddressPoolId'] as String).input(),
+      ipConfigurationName: (map['ipConfigurationName'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
     );
   }
 }

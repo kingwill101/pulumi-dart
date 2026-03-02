@@ -25,17 +25,12 @@ class MoverTargetEndpointArgs {
   /// [storageContainerName] Specifies the name of the storage blob container for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   /// [storageMoverId] Specifies the ID of the storage mover for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   MoverTargetEndpointArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> storageAccountId,
-    required pulumi.Output<String> storageContainerName,
-    required pulumi.Output<String> storageMoverId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId),
-      storageContainerName = pulumi.Input.asInput<String>(storageContainerName),
-      storageMoverId = pulumi.Input.asInput<String>(storageMoverId);
+    this.description,
+    this.name,
+    required this.storageAccountId,
+    required this.storageContainerName,
+    required this.storageMoverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class MoverTargetEndpointArgs {
 
   factory MoverTargetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return MoverTargetEndpointArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
-      storageContainerName: pulumi.Output.create<String>(map['storageContainerName'] as String),
-      storageMoverId: pulumi.Output.create<String>(map['storageMoverId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
+      storageContainerName: (map['storageContainerName'] as String).input(),
+      storageMoverId: (map['storageMoverId'] as String).input(),
     );
   }
 }

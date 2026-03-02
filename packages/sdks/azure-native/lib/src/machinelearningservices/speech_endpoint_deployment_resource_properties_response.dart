@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cognitive_services_sku_response.dart';
 import 'endpoint_deployment_model_response.dart';
 
 class SpeechEndpointDeploymentResourcePropertiesResponse {
   /// The failure reason if the creation failed.
-  final String? failureReason;
+  final pulumi.Input<String>? failureReason;
   /// Model used for the endpoint deployment.
-  final EndpointDeploymentModelResponse model;
+  final pulumi.Input<EndpointDeploymentModelResponse> model;
   /// Read-only provision state status property.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The name of RAI policy.
-  final String? raiPolicyName;
-  final CognitiveServicesSkuResponse? sku;
+  final pulumi.Input<String>? raiPolicyName;
+  final pulumi.Input<CognitiveServicesSkuResponse>? sku;
   /// Kind of the deployment.
   /// Expected value is 'Azure.Speech'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Deployment model version upgrade option.
-  final String? versionUpgradeOption;
+  final pulumi.Input<String>? versionUpgradeOption;
 
   /// Creates a new [SpeechEndpointDeploymentResourcePropertiesResponse].
   /// [failureReason] The failure reason if the creation failed.
@@ -40,10 +41,10 @@ class SpeechEndpointDeploymentResourcePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'failureReason': ?failureReason,
-      'model': model.toMap(),
+      'model': pulumi.Input.mapInputValue<EndpointDeploymentModelResponse, Map<String, dynamic>>(model, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'raiPolicyName': ?raiPolicyName,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?pulumi.Input.mapOptionalInputValue<CognitiveServicesSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'type': type,
       'versionUpgradeOption': ?versionUpgradeOption,
     };
@@ -51,13 +52,13 @@ class SpeechEndpointDeploymentResourcePropertiesResponse {
 
   factory SpeechEndpointDeploymentResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SpeechEndpointDeploymentResourcePropertiesResponse(
-      failureReason: map['failureReason'] == null ? null : map['failureReason'] as String,
-      model: EndpointDeploymentModelResponse.fromMap((map['model'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      raiPolicyName: map['raiPolicyName'] == null ? null : map['raiPolicyName'] as String,
-      sku: map['sku'] == null ? null : CognitiveServicesSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : map['versionUpgradeOption'] as String,
+      failureReason: map['failureReason'] == null ? null : (map['failureReason'] as String).input(),
+      model: (EndpointDeploymentModelResponse.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
+      sku: map['sku'] == null ? null : (CognitiveServicesSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption'] as String).input(),
     );
   }
 }

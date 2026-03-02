@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message describing a MC Source of type Guest OS Scan.
 class GuestOsScanResponse {
   /// reference to the corresponding Guest OS Scan in MC Source.
-  final String coreSource;
+  final pulumi.Input<String> coreSource;
 
   /// Creates a new [GuestOsScanResponse].
   /// [coreSource] reference to the corresponding Guest OS Scan in MC Source.
@@ -20,7 +21,7 @@ class GuestOsScanResponse {
 
   factory GuestOsScanResponse.fromMap(Map<String, dynamic> map) {
     return GuestOsScanResponse(
-      coreSource: map['coreSource'] as String,
+      coreSource: (map['coreSource'] as String).input(),
     );
   }
 }

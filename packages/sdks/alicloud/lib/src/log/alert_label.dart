@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertLabel {
   /// Labels's key for new alert.
-  final String key;
+  final pulumi.Input<String> key;
   /// Labels's value for new alert.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [AlertLabel].
   /// [key] Labels's key for new alert.
@@ -24,8 +25,8 @@ class AlertLabel {
 
   factory AlertLabel.fromMap(Map<String, dynamic> map) {
     return AlertLabel(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

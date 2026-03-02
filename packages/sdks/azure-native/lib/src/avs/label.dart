@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A key-value pair representing a label.
 class Label {
   /// The key of the label.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the label.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [Label].
   /// [key] The key of the label.
@@ -25,8 +26,8 @@ class Label {
 
   factory Label.fromMap(Map<String, dynamic> map) {
     return Label(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

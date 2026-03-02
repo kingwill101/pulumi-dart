@@ -44,29 +44,18 @@ class LogGroupState {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   LogGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<bool>? deletionProtectionEnabled,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? logGroupClass,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? retentionInDays,
-    pulumi.Output<bool>? skipDestroy,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      deletionProtectionEnabled = pulumi.Input.asOptionalInput<bool>(deletionProtectionEnabled),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      logGroupClass = pulumi.Input.asOptionalInput<String>(logGroupClass),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionInDays = pulumi.Input.asOptionalInput<int>(retentionInDays),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.deletionProtectionEnabled,
+    this.kmsKeyId,
+    this.logGroupClass,
+    this.name,
+    this.namePrefix,
+    this.region,
+    this.retentionInDays,
+    this.skipDestroy,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class LogGroupState {
 
   factory LogGroupState.fromMap(Map<String, dynamic> map) {
     return LogGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : pulumi.Output.create<bool>(map['deletionProtectionEnabled'] as bool),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      logGroupClass: map['logGroupClass'] == null ? null : pulumi.Output.create<String>(map['logGroupClass'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionInDays: map['retentionInDays'] == null ? null : pulumi.Output.create<int>(map['retentionInDays'] as int),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled'] as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      logGroupClass: map['logGroupClass'] == null ? null : (map['logGroupClass'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

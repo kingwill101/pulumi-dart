@@ -26,17 +26,12 @@ class PartnerRegistrationArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [tags] Tags of the resource.
   PartnerRegistrationArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? partnerRegistrationImmutableId,
-    pulumi.Output<String>? partnerRegistrationName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      partnerRegistrationImmutableId = pulumi.Input.asOptionalInput<String>(partnerRegistrationImmutableId),
-      partnerRegistrationName = pulumi.Input.asOptionalInput<String>(partnerRegistrationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.partnerRegistrationImmutableId,
+    this.partnerRegistrationName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PartnerRegistrationArgs {
 
   factory PartnerRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return PartnerRegistrationArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : pulumi.Output.create<String>(map['partnerRegistrationImmutableId'] as String),
-      partnerRegistrationName: map['partnerRegistrationName'] == null ? null : pulumi.Output.create<String>(map['partnerRegistrationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : (map['partnerRegistrationImmutableId'] as String).input(),
+      partnerRegistrationName: map['partnerRegistrationName'] == null ? null : (map['partnerRegistrationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

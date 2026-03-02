@@ -22,15 +22,11 @@ class GetCosmosDbDataConnectionArgs {
   /// [databaseName] The name of the database in the Kusto cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCosmosDbDataConnectionArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> dataConnectionName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      dataConnectionName = pulumi.Input.asInput<String>(dataConnectionName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.dataConnectionName,
+    required this.databaseName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetCosmosDbDataConnectionArgs {
 
   factory GetCosmosDbDataConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetCosmosDbDataConnectionArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      dataConnectionName: pulumi.Output.create<String>(map['dataConnectionName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      dataConnectionName: (map['dataConnectionName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

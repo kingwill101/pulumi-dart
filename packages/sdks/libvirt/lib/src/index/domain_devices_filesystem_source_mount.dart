@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemSourceMount {
   /// Sets the directory used as the mount point for the filesystem source.
-  final String? dir;
+  final pulumi.Input<String>? dir;
   /// Indicates if the mount point is a socket.
-  final String? socket;
+  final pulumi.Input<String>? socket;
 
   /// Creates a new [DomainDevicesFilesystemSourceMount].
   /// [dir] Sets the directory used as the mount point for the filesystem source.
@@ -24,8 +25,8 @@ class DomainDevicesFilesystemSourceMount {
 
   factory DomainDevicesFilesystemSourceMount.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemSourceMount(
-      dir: map['dir'] == null ? null : map['dir'] as String,
-      socket: map['socket'] == null ? null : map['socket'] as String,
+      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
+      socket: map['socket'] == null ? null : (map['socket'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest {
   /// The number of Slow Requests in the time `interval` to trigger this rule.
-  final int count;
+  final pulumi.Input<int> count;
   /// The time interval in the form `hh:mm:ss`.
-  final String interval;
+  final pulumi.Input<String> interval;
   /// The threshold of time passed to qualify as a Slow Request in `hh:mm:ss`.
-  final String timeTaken;
+  final pulumi.Input<String> timeTaken;
 
   /// Creates a new [LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest].
   /// [count] The number of Slow Requests in the time `interval` to trigger this rule.
@@ -29,9 +30,9 @@ class LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest {
 
   factory LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest(
-      count: map['count'] as int,
-      interval: map['interval'] as String,
-      timeTaken: map['timeTaken'] as String,
+      count: (map['count'] as int).input(),
+      interval: (map['interval'] as String).input(),
+      timeTaken: (map['timeTaken'] as String).input(),
     );
   }
 }

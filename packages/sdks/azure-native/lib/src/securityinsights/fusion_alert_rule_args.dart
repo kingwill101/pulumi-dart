@@ -29,19 +29,13 @@ class FusionAlertRuleArgs {
   /// [ruleId] Alert rule ID
   /// [workspaceName] The name of the workspace.
   FusionAlertRuleArgs({
-    required pulumi.Output<String> alertRuleTemplateName,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? ruleId,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      alertRuleTemplateName = pulumi.Input.asInput<String>(alertRuleTemplateName),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      kind = pulumi.Input.asInput<String>(kind),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleId = pulumi.Input.asOptionalInput<String>(ruleId),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.alertRuleTemplateName,
+    required this.enabled,
+    required this.kind,
+    required this.resourceGroupName,
+    this.ruleId,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class FusionAlertRuleArgs {
 
   factory FusionAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return FusionAlertRuleArgs(
-      alertRuleTemplateName: pulumi.Output.create<String>(map['alertRuleTemplateName'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleId: map['ruleId'] == null ? null : pulumi.Output.create<String>(map['ruleId'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      alertRuleTemplateName: (map['alertRuleTemplateName'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      kind: (map['kind'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

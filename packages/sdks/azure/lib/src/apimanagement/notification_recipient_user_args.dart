@@ -19,13 +19,10 @@ class NotificationRecipientUserArgs {
   /// [notificationType] The Notification Name to be received. Changing this forces a new API Management Notification Recipient User to be created. Possible values are `AccountClosedPublisher`, `BCC`, `NewApplicationNotificationMessage`, `NewIssuePublisherNotificationMessage`, `PurchasePublisherNotificationMessage`, `QuotaLimitApproachingPublisherNotificationMessage`, and `RequestPublisherNotificationMessage`.
   /// [userId] The recipient user ID. Changing this forces a new API Management Notification Recipient User to be created.
   NotificationRecipientUserArgs({
-    required pulumi.Output<String> apiManagementId,
-    required pulumi.Output<String> notificationType,
-    required pulumi.Output<String> userId,
-  }) :
-      apiManagementId = pulumi.Input.asInput<String>(apiManagementId),
-      notificationType = pulumi.Input.asInput<String>(notificationType),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.apiManagementId,
+    required this.notificationType,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class NotificationRecipientUserArgs {
 
   factory NotificationRecipientUserArgs.fromMap(Map<String, dynamic> map) {
     return NotificationRecipientUserArgs(
-      apiManagementId: pulumi.Output.create<String>(map['apiManagementId'] as String),
-      notificationType: pulumi.Output.create<String>(map['notificationType'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      apiManagementId: (map['apiManagementId'] as String).input(),
+      notificationType: (map['notificationType'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

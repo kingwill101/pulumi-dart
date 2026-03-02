@@ -6,13 +6,13 @@ import 'allocation_aggregate_reservation_reserved_resource_info_response_compute
 /// This reservation type is specified by total resource amounts (e.g. total count of CPUs) and can account for multiple instance SKUs. In other words, one can create instances of varying shapes against this reservation.
 class AllocationAggregateReservationResponseComputeBeta {
   /// [Output only] List of resources currently in use.
-  final List<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta> inUseResources;
+  final pulumi.Input<List<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta>> inUseResources;
   /// List of reserved resources (CPUs, memory, accelerators).
-  final List<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta> reservedResources;
+  final pulumi.Input<List<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta>> reservedResources;
   /// The VM family that all instances scheduled against this reservation must belong to.
-  final String vmFamily;
+  final pulumi.Input<String> vmFamily;
   /// The workload type of the instances that will target this reservation.
-  final String workloadType;
+  final pulumi.Input<String> workloadType;
 
   /// Creates a new [AllocationAggregateReservationResponseComputeBeta].
   /// [inUseResources] [Output only] List of resources currently in use.
@@ -28,8 +28,8 @@ class AllocationAggregateReservationResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inUseResources': pulumi.Input.encodeList<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta, Map<String, dynamic>>(inUseResources, (value) => value.toMap()),
-      'reservedResources': pulumi.Input.encodeList<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta, Map<String, dynamic>>(reservedResources, (value) => value.toMap()),
+      'inUseResources': pulumi.Input.mapInputValue<List<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta>, List<Map<String, dynamic>>>(inUseResources, (value) => pulumi.Input.encodeList<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'reservedResources': pulumi.Input.mapInputValue<List<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta>, List<Map<String, dynamic>>>(reservedResources, (value) => pulumi.Input.encodeList<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmFamily': vmFamily,
       'workloadType': workloadType,
     };
@@ -37,10 +37,10 @@ class AllocationAggregateReservationResponseComputeBeta {
 
   factory AllocationAggregateReservationResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return AllocationAggregateReservationResponseComputeBeta(
-      inUseResources: pulumi.Input.decodeList<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta>(map['inUseResources'], (value) => AllocationAggregateReservationReservedResourceInfoResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
-      reservedResources: pulumi.Input.decodeList<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta>(map['reservedResources'], (value) => AllocationAggregateReservationReservedResourceInfoResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
-      vmFamily: map['vmFamily'] as String,
-      workloadType: map['workloadType'] as String,
+      inUseResources: (pulumi.Input.decodeList<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta>(map['inUseResources'], (value) => AllocationAggregateReservationReservedResourceInfoResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reservedResources: (pulumi.Input.decodeList<AllocationAggregateReservationReservedResourceInfoResponseComputeBeta>(map['reservedResources'], (value) => AllocationAggregateReservationReservedResourceInfoResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmFamily: (map['vmFamily'] as String).input(),
+      workloadType: (map['workloadType'] as String).input(),
     );
   }
 }

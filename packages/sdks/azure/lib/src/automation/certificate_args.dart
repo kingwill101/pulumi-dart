@@ -28,19 +28,13 @@ class CertificateArgs {
   /// [name] Specifies the name of the Certificate. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Certificate is created. Changing this forces a new resource to be created.
   CertificateArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> base64,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? exportable,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      base64 = pulumi.Input.asInput<String>(base64),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      exportable = pulumi.Input.asOptionalInput<bool>(exportable),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.base64,
+    this.description,
+    this.exportable,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      base64: pulumi.Output.create<String>(map['base64'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      exportable: map['exportable'] == null ? null : pulumi.Output.create<bool>(map['exportable'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      base64: (map['base64'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      exportable: map['exportable'] == null ? null : (map['exportable'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

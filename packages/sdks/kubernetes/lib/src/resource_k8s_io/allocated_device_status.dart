@@ -11,25 +11,25 @@ class AllocatedDeviceStatus {
   /// Conditions contains the latest observation of the device's state. If the device has been configured according to the class and claim config references, the `Ready` condition should be True.
   ///
   /// Must not contain more than 8 entries.
-  final List<Condition>? conditions;
+  final pulumi.Input<List<Condition>>? conditions;
   /// Data contains arbitrary driver-specific data.
   ///
   /// The length of the raw data must be smaller or equal to 10 Ki.
-  final dynamic data;
+  final pulumi.Input<dynamic>? data;
   /// Device references one device instance via its name in the driver's resource pool. It must be a DNS label.
-  final String device;
+  final pulumi.Input<String> device;
   /// Driver specifies the name of the DRA driver whose kubelet plugin should be invoked to process the allocation once the claim is needed on a node.
   ///
   /// Must be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver. It should use only lower case characters.
-  final String driver;
+  final pulumi.Input<String> driver;
   /// NetworkData contains network-related information specific to the device.
-  final NetworkDeviceData? networkData;
+  final pulumi.Input<NetworkDeviceData>? networkData;
   /// This name together with the driver name and the device name field identify which device was allocated (`<driver name>/<pool name>/<device name>`).
   ///
   /// Must not be longer than 253 characters and may contain one or more DNS sub-domains separated by slashes.
-  final String pool;
+  final pulumi.Input<String> pool;
   /// ShareID uniquely identifies an individual allocation share of the device.
-  final String? shareID;
+  final pulumi.Input<String>? shareID;
 
   /// Creates a new [AllocatedDeviceStatus].
   /// [conditions] Conditions contains the latest observation of the device's state. If the device has been configured according to the class and claim config references, the `Ready` condition should be True.
@@ -51,11 +51,11 @@ class AllocatedDeviceStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<Condition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<Condition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'data': ?data,
       'device': device,
       'driver': driver,
-      'networkData': ?networkData == null ? null : networkData!.toMap(),
+      'networkData': ?pulumi.Input.mapOptionalInputValue<NetworkDeviceData, Map<String, dynamic>>(networkData, (value) => value.toMap()),
       'pool': pool,
       'shareID': ?shareID,
     };
@@ -63,13 +63,13 @@ class AllocatedDeviceStatus {
 
   factory AllocatedDeviceStatus.fromMap(Map<String, dynamic> map) {
     return AllocatedDeviceStatus(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>())),
-      data: map['data'] == null ? null : map['data'],
-      device: map['device'] as String,
-      driver: map['driver'] as String,
-      networkData: map['networkData'] == null ? null : NetworkDeviceData.fromMap((map['networkData'] as Map).cast<String, dynamic>()),
-      pool: map['pool'] as String,
-      shareID: map['shareID'] == null ? null : map['shareID'] as String,
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      data: map['data'] == null ? null : (map['data']).input(),
+      device: (map['device'] as String).input(),
+      driver: (map['driver'] as String).input(),
+      networkData: map['networkData'] == null ? null : (NetworkDeviceData.fromMap((map['networkData'] as Map).cast<String, dynamic>())).input(),
+      pool: (map['pool'] as String).input(),
+      shareID: map['shareID'] == null ? null : (map['shareID'] as String).input(),
     );
   }
 }

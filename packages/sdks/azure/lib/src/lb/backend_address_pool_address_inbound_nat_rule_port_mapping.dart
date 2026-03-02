@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendAddressPoolAddressInboundNatRulePortMapping {
   /// The Backend Port of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
-  final int? backendPort;
+  final pulumi.Input<int>? backendPort;
   /// The Frontend Port of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
-  final int? frontendPort;
+  final pulumi.Input<int>? frontendPort;
   /// The name of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
-  final String? inboundNatRuleName;
+  final pulumi.Input<String>? inboundNatRuleName;
 
   /// Creates a new [BackendAddressPoolAddressInboundNatRulePortMapping].
   /// [backendPort] The Backend Port of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
@@ -29,9 +30,9 @@ class BackendAddressPoolAddressInboundNatRulePortMapping {
 
   factory BackendAddressPoolAddressInboundNatRulePortMapping.fromMap(Map<String, dynamic> map) {
     return BackendAddressPoolAddressInboundNatRulePortMapping(
-      backendPort: map['backendPort'] == null ? null : map['backendPort'] as int,
-      frontendPort: map['frontendPort'] == null ? null : map['frontendPort'] as int,
-      inboundNatRuleName: map['inboundNatRuleName'] == null ? null : map['inboundNatRuleName'] as String,
+      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
+      inboundNatRuleName: map['inboundNatRuleName'] == null ? null : (map['inboundNatRuleName'] as String).input(),
     );
   }
 }

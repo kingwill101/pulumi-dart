@@ -6,7 +6,7 @@ import 'verification_rule_response.dart';
 /// A SLSA provenance attestation check, which ensures that images are built by a trusted builder using source code from its trusted repositories only.
 class SlsaCheckResponse {
   /// Specifies a list of verification rules for the SLSA attestations. An image is considered compliant with the SlsaCheck if any of the rules are satisfied.
-  final List<VerificationRuleResponse> rules;
+  final pulumi.Input<List<VerificationRuleResponse>> rules;
 
   /// Creates a new [SlsaCheckResponse].
   /// [rules] Specifies a list of verification rules for the SLSA attestations. An image is considered compliant with the SlsaCheck if any of the rules are satisfied.
@@ -16,13 +16,13 @@ class SlsaCheckResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': pulumi.Input.encodeList<VerificationRuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.mapInputValue<List<VerificationRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<VerificationRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SlsaCheckResponse.fromMap(Map<String, dynamic> map) {
     return SlsaCheckResponse(
-      rules: pulumi.Input.decodeList<VerificationRuleResponse>(map['rules'], (value) => VerificationRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rules: (pulumi.Input.decodeList<VerificationRuleResponse>(map['rules'], (value) => VerificationRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

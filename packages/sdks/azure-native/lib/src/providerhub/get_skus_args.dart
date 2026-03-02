@@ -19,13 +19,10 @@ class GetSkusArgs {
   /// [resourceType] The resource type.
   /// [sku] The SKU.
   GetSkusArgs({
-    required pulumi.Output<String> providerNamespace,
-    required pulumi.Output<String> resourceType,
-    required pulumi.Output<String> sku,
-  }) :
-      providerNamespace = pulumi.Input.asInput<String>(providerNamespace),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      sku = pulumi.Input.asInput<String>(sku);
+    required this.providerNamespace,
+    required this.resourceType,
+    required this.sku,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSkusArgs {
 
   factory GetSkusArgs.fromMap(Map<String, dynamic> map) {
     return GetSkusArgs(
-      providerNamespace: pulumi.Output.create<String>(map['providerNamespace'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      sku: pulumi.Output.create<String>(map['sku'] as String),
+      providerNamespace: (map['providerNamespace'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      sku: (map['sku'] as String).input(),
     );
   }
 }

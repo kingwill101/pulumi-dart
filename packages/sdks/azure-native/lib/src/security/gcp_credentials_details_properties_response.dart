@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GCP cloud account connector based service to service credentials, the credentials are composed of the organization ID and a JSON API key (write only)
 class GcpCredentialsDetailsPropertiesResponse {
   /// Auth provider x509 certificate URL field of the API key (write only)
-  final String authProviderX509CertUrl;
+  final pulumi.Input<String> authProviderX509CertUrl;
   /// Auth URI field of the API key (write only)
-  final String authUri;
+  final pulumi.Input<String> authUri;
   /// State of the multi-cloud connector
-  final String authenticationProvisioningState;
+  final pulumi.Input<String> authenticationProvisioningState;
   /// Connect to your cloud account, for AWS use either account credentials or role-based authentication. For GCP use account organization credentials.
   /// Expected value is 'gcpCredentials'.
-  final String authenticationType;
+  final pulumi.Input<String> authenticationType;
   /// Client email field of the API key (write only)
-  final String clientEmail;
+  final pulumi.Input<String> clientEmail;
   /// Client ID field of the API key (write only)
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Client x509 certificate URL field of the API key (write only)
-  final String clientX509CertUrl;
+  final pulumi.Input<String> clientX509CertUrl;
   /// The permissions detected in the cloud account.
-  final List<String> grantedPermissions;
+  final pulumi.Input<List<String>> grantedPermissions;
   /// The organization ID of the GCP cloud account
-  final String organizationId;
+  final pulumi.Input<String> organizationId;
   /// Private key field of the API key (write only)
-  final String privateKey;
+  final pulumi.Input<String> privateKey;
   /// Private key ID field of the API key (write only)
-  final String privateKeyId;
+  final pulumi.Input<String> privateKeyId;
   /// Project ID field of the API key (write only)
-  final String projectId;
+  final pulumi.Input<String> projectId;
   /// Token URI field of the API key (write only)
-  final String tokenUri;
+  final pulumi.Input<String> tokenUri;
   /// Type field of the API key (write only)
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GcpCredentialsDetailsPropertiesResponse].
   /// [authProviderX509CertUrl] Auth provider x509 certificate URL field of the API key (write only)
@@ -86,20 +87,20 @@ class GcpCredentialsDetailsPropertiesResponse {
 
   factory GcpCredentialsDetailsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GcpCredentialsDetailsPropertiesResponse(
-      authProviderX509CertUrl: map['authProviderX509CertUrl'] as String,
-      authUri: map['authUri'] as String,
-      authenticationProvisioningState: map['authenticationProvisioningState'] as String,
-      authenticationType: map['authenticationType'] as String,
-      clientEmail: map['clientEmail'] as String,
-      clientId: map['clientId'] as String,
-      clientX509CertUrl: map['clientX509CertUrl'] as String,
-      grantedPermissions: (map['grantedPermissions'] as List).cast<String>(),
-      organizationId: map['organizationId'] as String,
-      privateKey: map['privateKey'] as String,
-      privateKeyId: map['privateKeyId'] as String,
-      projectId: map['projectId'] as String,
-      tokenUri: map['tokenUri'] as String,
-      type: map['type'] as String,
+      authProviderX509CertUrl: (map['authProviderX509CertUrl'] as String).input(),
+      authUri: (map['authUri'] as String).input(),
+      authenticationProvisioningState: (map['authenticationProvisioningState'] as String).input(),
+      authenticationType: (map['authenticationType'] as String).input(),
+      clientEmail: (map['clientEmail'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientX509CertUrl: (map['clientX509CertUrl'] as String).input(),
+      grantedPermissions: ((map['grantedPermissions'] as List).cast<String>()).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      privateKey: (map['privateKey'] as String).input(),
+      privateKeyId: (map['privateKeyId'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
+      tokenUri: (map['tokenUri'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'migration_progress_response.dart';
 
 /// Migration Properties
 class MigrationPropertiesResponse {
   /// Migration Progress
-  final MigrationProgressResponse migrationProgress;
+  final pulumi.Input<MigrationProgressResponse> migrationProgress;
   /// Old Subnet Id
-  final String oldSubnetId;
+  final pulumi.Input<String> oldSubnetId;
   /// Old Vnet Site Id
-  final String oldVnetSiteId;
+  final pulumi.Input<String> oldVnetSiteId;
 
   /// Creates a new [MigrationPropertiesResponse].
   /// [migrationProgress] Migration Progress
@@ -23,7 +24,7 @@ class MigrationPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'migrationProgress': migrationProgress.toMap(),
+      'migrationProgress': pulumi.Input.mapInputValue<MigrationProgressResponse, Map<String, dynamic>>(migrationProgress, (value) => value.toMap()),
       'oldSubnetId': oldSubnetId,
       'oldVnetSiteId': oldVnetSiteId,
     };
@@ -31,9 +32,9 @@ class MigrationPropertiesResponse {
 
   factory MigrationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrationPropertiesResponse(
-      migrationProgress: MigrationProgressResponse.fromMap((map['migrationProgress'] as Map).cast<String, dynamic>()),
-      oldSubnetId: map['oldSubnetId'] as String,
-      oldVnetSiteId: map['oldVnetSiteId'] as String,
+      migrationProgress: (MigrationProgressResponse.fromMap((map['migrationProgress'] as Map).cast<String, dynamic>())).input(),
+      oldSubnetId: (map['oldSubnetId'] as String).input(),
+      oldVnetSiteId: (map['oldVnetSiteId'] as String).input(),
     );
   }
 }

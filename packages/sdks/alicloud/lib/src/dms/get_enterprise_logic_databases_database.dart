@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnterpriseLogicDatabasesDatabase {
   /// Logical Library alias.
-  final String alias;
+  final pulumi.Input<String> alias;
   /// Sub-Database ID.
-  final List<String> databaseIds;
+  final pulumi.Input<List<String>> databaseIds;
   /// Database type.
-  final String dbType;
+  final pulumi.Input<String> dbType;
   /// Environment type, return value is as follows:-product: production environment-dev: development environment-pre: Advance Environment-test: test environment-sit:SIT environment-uat:UAT environment-pet: Pressure measurement environment-stag:STAG environment
-  final String envType;
+  final pulumi.Input<String> envType;
   /// Logic Database ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Whether it is a logical Library, the return value is true.
-  final bool logic;
+  final pulumi.Input<bool> logic;
   /// The ID of the logical Library.
-  final String logicDatabaseId;
+  final pulumi.Input<String> logicDatabaseId;
   /// The user ID list of the logical library Owner.
-  final List<String> ownerIdLists;
+  final pulumi.Input<List<String>> ownerIdLists;
   /// The nickname list of the logical library Owner.
-  final List<String> ownerNameLists;
+  final pulumi.Input<List<String>> ownerNameLists;
   /// Logical Library name.
-  final String schemaName;
+  final pulumi.Input<String> schemaName;
   /// Logical library search name.
-  final String searchName;
+  final pulumi.Input<String> searchName;
 
   /// Creates a new [GetEnterpriseLogicDatabasesDatabase].
   /// [alias] Logical Library alias.
@@ -69,17 +70,17 @@ class GetEnterpriseLogicDatabasesDatabase {
 
   factory GetEnterpriseLogicDatabasesDatabase.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseLogicDatabasesDatabase(
-      alias: map['alias'] as String,
-      databaseIds: (map['databaseIds'] as List).cast<String>(),
-      dbType: map['dbType'] as String,
-      envType: map['envType'] as String,
-      id: map['id'] as String,
-      logic: map['logic'] as bool,
-      logicDatabaseId: map['logicDatabaseId'] as String,
-      ownerIdLists: (map['ownerIdLists'] as List).cast<String>(),
-      ownerNameLists: (map['ownerNameLists'] as List).cast<String>(),
-      schemaName: map['schemaName'] as String,
-      searchName: map['searchName'] as String,
+      alias: (map['alias'] as String).input(),
+      databaseIds: ((map['databaseIds'] as List).cast<String>()).input(),
+      dbType: (map['dbType'] as String).input(),
+      envType: (map['envType'] as String).input(),
+      id: (map['id'] as String).input(),
+      logic: (map['logic'] as bool).input(),
+      logicDatabaseId: (map['logicDatabaseId'] as String).input(),
+      ownerIdLists: ((map['ownerIdLists'] as List).cast<String>()).input(),
+      ownerNameLists: ((map['ownerNameLists'] as List).cast<String>()).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      searchName: (map['searchName'] as String).input(),
     );
   }
 }

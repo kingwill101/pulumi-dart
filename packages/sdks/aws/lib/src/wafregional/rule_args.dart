@@ -26,17 +26,12 @@ class RuleArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   RuleArgs({
-    required pulumi.Output<String> metricName,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<RulePredicate>>? predicates,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      metricName = pulumi.Input.asInput<String>(metricName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      predicates = pulumi.Input.asOptionalInput<List<RulePredicate>>(predicates),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.metricName,
+    this.name,
+    this.predicates,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      metricName: pulumi.Output.create<String>(map['metricName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      predicates: map['predicates'] == null ? null : pulumi.Output.create<List<RulePredicate>>(pulumi.Input.decodeList<RulePredicate>(map['predicates'], (value) => RulePredicate.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      metricName: (map['metricName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      predicates: map['predicates'] == null ? null : (pulumi.Input.decodeList<RulePredicate>(map['predicates'], (value) => RulePredicate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

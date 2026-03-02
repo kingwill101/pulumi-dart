@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'batch_endpoint_defaults_response.dart';
 
 /// Batch endpoint configuration.
 class BatchEndpointResponse {
   /// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
-  final String authMode;
+  final pulumi.Input<String> authMode;
   /// Default values for Batch Endpoint
-  final BatchEndpointDefaultsResponse? defaults;
+  final pulumi.Input<BatchEndpointDefaultsResponse>? defaults;
   /// Description of the inference endpoint.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Property dictionary. Properties can be added, but not removed or altered.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Provisioning state for the endpoint.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Endpoint URI.
-  final String scoringUri;
+  final pulumi.Input<String> scoringUri;
   /// Endpoint Swagger URI.
-  final String swaggerUri;
+  final pulumi.Input<String> swaggerUri;
 
   /// Creates a new [BatchEndpointResponse].
   /// [authMode] [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
@@ -40,7 +41,7 @@ class BatchEndpointResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authMode': authMode,
-      'defaults': ?defaults == null ? null : defaults!.toMap(),
+      'defaults': ?pulumi.Input.mapOptionalInputValue<BatchEndpointDefaultsResponse, Map<String, dynamic>>(defaults, (value) => value.toMap()),
       'description': ?description,
       'properties': ?properties,
       'provisioningState': provisioningState,
@@ -51,13 +52,13 @@ class BatchEndpointResponse {
 
   factory BatchEndpointResponse.fromMap(Map<String, dynamic> map) {
     return BatchEndpointResponse(
-      authMode: map['authMode'] as String,
-      defaults: map['defaults'] == null ? null : BatchEndpointDefaultsResponse.fromMap((map['defaults'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      provisioningState: map['provisioningState'] as String,
-      scoringUri: map['scoringUri'] as String,
-      swaggerUri: map['swaggerUri'] as String,
+      authMode: (map['authMode'] as String).input(),
+      defaults: map['defaults'] == null ? null : (BatchEndpointDefaultsResponse.fromMap((map['defaults'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      scoringUri: (map['scoringUri'] as String).input(),
+      swaggerUri: (map['swaggerUri'] as String).input(),
     );
   }
 }

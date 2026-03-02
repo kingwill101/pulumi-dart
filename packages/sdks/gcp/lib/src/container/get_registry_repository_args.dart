@@ -16,11 +16,9 @@ class GetRegistryRepositoryArgs {
   /// [project] The project ID that this repository is attached to.  If not provided, provider project will be used instead.
   /// [region] The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
   GetRegistryRepositoryArgs({
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRegistryRepositoryArgs {
 
   factory GetRegistryRepositoryArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryRepositoryArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

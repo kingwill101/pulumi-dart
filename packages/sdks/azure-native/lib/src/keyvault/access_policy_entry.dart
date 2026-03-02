@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'permissions.dart';
 
 /// An identity that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
 class AccessPolicyEntry {
   /// Application ID of the client making request on behalf of a principal
-  final String? applicationId;
+  final pulumi.Input<String>? applicationId;
   /// The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies.
-  final String objectId;
+  final pulumi.Input<String> objectId;
   /// Permissions the identity has for keys, secrets and certificates.
-  final Permissions permissions;
+  final pulumi.Input<Permissions> permissions;
   /// The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [AccessPolicyEntry].
   /// [applicationId] Application ID of the client making request on behalf of a principal
@@ -29,17 +30,17 @@ class AccessPolicyEntry {
     return <String, dynamic>{
       'applicationId': ?applicationId,
       'objectId': objectId,
-      'permissions': permissions.toMap(),
+      'permissions': pulumi.Input.mapInputValue<Permissions, Map<String, dynamic>>(permissions, (value) => value.toMap()),
       'tenantId': tenantId,
     };
   }
 
   factory AccessPolicyEntry.fromMap(Map<String, dynamic> map) {
     return AccessPolicyEntry(
-      applicationId: map['applicationId'] == null ? null : map['applicationId'] as String,
-      objectId: map['objectId'] as String,
-      permissions: Permissions.fromMap((map['permissions'] as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] as String,
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      permissions: (Permissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

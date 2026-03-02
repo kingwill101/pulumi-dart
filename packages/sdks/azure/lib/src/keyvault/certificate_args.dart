@@ -29,17 +29,12 @@ class CertificateArgs {
   /// [name] Specifies the name of the Key Vault Certificate. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   CertificateArgs({
-    pulumi.Output<CertificateCertificate>? certificate,
-    pulumi.Output<CertificateCertificatePolicy>? certificatePolicy,
-    required pulumi.Output<String> keyVaultId,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      certificate = pulumi.Input.asOptionalInput<CertificateCertificate>(certificate),
-      certificatePolicy = pulumi.Input.asOptionalInput<CertificateCertificatePolicy>(certificatePolicy),
-      keyVaultId = pulumi.Input.asInput<String>(keyVaultId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.certificate,
+    this.certificatePolicy,
+    required this.keyVaultId,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<CertificateCertificate>(CertificateCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())),
-      certificatePolicy: map['certificatePolicy'] == null ? null : pulumi.Output.create<CertificateCertificatePolicy>(CertificateCertificatePolicy.fromMap((map['certificatePolicy'] as Map).cast<String, dynamic>())),
-      keyVaultId: pulumi.Output.create<String>(map['keyVaultId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      certificate: map['certificate'] == null ? null : (CertificateCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
+      certificatePolicy: map['certificatePolicy'] == null ? null : (CertificateCertificatePolicy.fromMap((map['certificatePolicy'] as Map).cast<String, dynamic>())).input(),
+      keyVaultId: (map['keyVaultId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

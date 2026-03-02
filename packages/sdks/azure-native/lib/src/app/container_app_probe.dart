@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_app_probe_http_get.dart';
 import 'container_app_probe_tcp_socket.dart';
 
 /// Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 class ContainerAppProbe {
   /// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. Maximum value is 10.
-  final int? failureThreshold;
+  final pulumi.Input<int>? failureThreshold;
   /// HTTPGet specifies the http request to perform.
-  final ContainerAppProbeHttpGet? httpGet;
+  final pulumi.Input<ContainerAppProbeHttpGet>? httpGet;
   /// Number of seconds after the container has started before liveness probes are initiated. Minimum value is 1. Maximum value is 60.
-  final int? initialDelaySeconds;
+  final pulumi.Input<int>? initialDelaySeconds;
   /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 240.
-  final int? periodSeconds;
+  final pulumi.Input<int>? periodSeconds;
   /// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1. Maximum value is 10.
-  final int? successThreshold;
+  final pulumi.Input<int>? successThreshold;
   /// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported.
-  final ContainerAppProbeTcpSocket? tcpSocket;
+  final pulumi.Input<ContainerAppProbeTcpSocket>? tcpSocket;
   /// Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate. Maximum value is 3600 seconds (1 hour)
-  final double? terminationGracePeriodSeconds;
+  final pulumi.Input<double>? terminationGracePeriodSeconds;
   /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 240.
-  final int? timeoutSeconds;
+  final pulumi.Input<int>? timeoutSeconds;
   /// The type of probe.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ContainerAppProbe].
   /// [failureThreshold] Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. Maximum value is 10.
@@ -49,11 +50,11 @@ class ContainerAppProbe {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'failureThreshold': ?failureThreshold,
-      'httpGet': ?httpGet == null ? null : httpGet!.toMap(),
+      'httpGet': ?pulumi.Input.mapOptionalInputValue<ContainerAppProbeHttpGet, Map<String, dynamic>>(httpGet, (value) => value.toMap()),
       'initialDelaySeconds': ?initialDelaySeconds,
       'periodSeconds': ?periodSeconds,
       'successThreshold': ?successThreshold,
-      'tcpSocket': ?tcpSocket == null ? null : tcpSocket!.toMap(),
+      'tcpSocket': ?pulumi.Input.mapOptionalInputValue<ContainerAppProbeTcpSocket, Map<String, dynamic>>(tcpSocket, (value) => value.toMap()),
       'terminationGracePeriodSeconds': ?terminationGracePeriodSeconds,
       'timeoutSeconds': ?timeoutSeconds,
       'type': ?type,
@@ -62,15 +63,15 @@ class ContainerAppProbe {
 
   factory ContainerAppProbe.fromMap(Map<String, dynamic> map) {
     return ContainerAppProbe(
-      failureThreshold: map['failureThreshold'] == null ? null : map['failureThreshold'] as int,
-      httpGet: map['httpGet'] == null ? null : ContainerAppProbeHttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>()),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : map['initialDelaySeconds'] as int,
-      periodSeconds: map['periodSeconds'] == null ? null : map['periodSeconds'] as int,
-      successThreshold: map['successThreshold'] == null ? null : map['successThreshold'] as int,
-      tcpSocket: map['tcpSocket'] == null ? null : ContainerAppProbeTcpSocket.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>()),
-      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : map['terminationGracePeriodSeconds'] as double,
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : map['timeoutSeconds'] as int,
-      type: map['type'] == null ? null : map['type'] as String,
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
+      httpGet: map['httpGet'] == null ? null : (ContainerAppProbeHttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (ContainerAppProbeTcpSocket.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
+      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds'] as double).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

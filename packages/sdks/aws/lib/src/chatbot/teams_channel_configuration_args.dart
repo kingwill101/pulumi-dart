@@ -54,35 +54,21 @@ class TeamsChannelConfigurationArgs {
   /// [timeouts] Optional.
   /// [userAuthorizationRequired] Enables use of a user role requirement in your chat configuration.
   TeamsChannelConfigurationArgs({
-    required pulumi.Output<String> channelId,
-    pulumi.Output<String>? channelName,
-    required pulumi.Output<String> configurationName,
-    pulumi.Output<List<String>>? guardrailPolicyArns,
-    required pulumi.Output<String> iamRoleArn,
-    pulumi.Output<String>? loggingLevel,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? snsTopicArns,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> teamId,
-    pulumi.Output<String>? teamName,
-    required pulumi.Output<String> tenantId,
-    pulumi.Output<TeamsChannelConfigurationTimeouts>? timeouts,
-    pulumi.Output<bool>? userAuthorizationRequired,
-  }) :
-      channelId = pulumi.Input.asInput<String>(channelId),
-      channelName = pulumi.Input.asOptionalInput<String>(channelName),
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      guardrailPolicyArns = pulumi.Input.asOptionalInput<List<String>>(guardrailPolicyArns),
-      iamRoleArn = pulumi.Input.asInput<String>(iamRoleArn),
-      loggingLevel = pulumi.Input.asOptionalInput<String>(loggingLevel),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snsTopicArns = pulumi.Input.asOptionalInput<List<String>>(snsTopicArns),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      teamId = pulumi.Input.asInput<String>(teamId),
-      teamName = pulumi.Input.asOptionalInput<String>(teamName),
-      tenantId = pulumi.Input.asInput<String>(tenantId),
-      timeouts = pulumi.Input.asOptionalInput<TeamsChannelConfigurationTimeouts>(timeouts),
-      userAuthorizationRequired = pulumi.Input.asOptionalInput<bool>(userAuthorizationRequired);
+    required this.channelId,
+    this.channelName,
+    required this.configurationName,
+    this.guardrailPolicyArns,
+    required this.iamRoleArn,
+    this.loggingLevel,
+    this.region,
+    this.snsTopicArns,
+    this.tags,
+    required this.teamId,
+    this.teamName,
+    required this.tenantId,
+    this.timeouts,
+    this.userAuthorizationRequired,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class TeamsChannelConfigurationArgs {
 
   factory TeamsChannelConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return TeamsChannelConfigurationArgs(
-      channelId: pulumi.Output.create<String>(map['channelId'] as String),
-      channelName: map['channelName'] == null ? null : pulumi.Output.create<String>(map['channelName'] as String),
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      guardrailPolicyArns: map['guardrailPolicyArns'] == null ? null : pulumi.Output.create<List<String>>((map['guardrailPolicyArns'] as List).cast<String>()),
-      iamRoleArn: pulumi.Output.create<String>(map['iamRoleArn'] as String),
-      loggingLevel: map['loggingLevel'] == null ? null : pulumi.Output.create<String>(map['loggingLevel'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snsTopicArns: map['snsTopicArns'] == null ? null : pulumi.Output.create<List<String>>((map['snsTopicArns'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      teamId: pulumi.Output.create<String>(map['teamId'] as String),
-      teamName: map['teamName'] == null ? null : pulumi.Output.create<String>(map['teamName'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<TeamsChannelConfigurationTimeouts>(TeamsChannelConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      userAuthorizationRequired: map['userAuthorizationRequired'] == null ? null : pulumi.Output.create<bool>(map['userAuthorizationRequired'] as bool),
+      channelId: (map['channelId'] as String).input(),
+      channelName: map['channelName'] == null ? null : (map['channelName'] as String).input(),
+      configurationName: (map['configurationName'] as String).input(),
+      guardrailPolicyArns: map['guardrailPolicyArns'] == null ? null : ((map['guardrailPolicyArns'] as List).cast<String>()).input(),
+      iamRoleArn: (map['iamRoleArn'] as String).input(),
+      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snsTopicArns: map['snsTopicArns'] == null ? null : ((map['snsTopicArns'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      teamId: (map['teamId'] as String).input(),
+      teamName: map['teamName'] == null ? null : (map['teamName'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (TeamsChannelConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      userAuthorizationRequired: map['userAuthorizationRequired'] == null ? null : (map['userAuthorizationRequired'] as bool).input(),
     );
   }
 }

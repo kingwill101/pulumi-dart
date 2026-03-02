@@ -31,23 +31,15 @@ class PackageState {
   /// [packageType] The type of package. Valid values are `TXT-DICTIONARY`, `ZIP-PLUGIN`, `PACKAGE-LICENSE` and `PACKAGE-CONFIG`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PackageState({
-    pulumi.Output<String>? availablePackageVersion,
-    pulumi.Output<String>? engineVersion,
-    pulumi.Output<String>? packageDescription,
-    pulumi.Output<String>? packageId,
-    pulumi.Output<String>? packageName,
-    pulumi.Output<PackagePackageSource>? packageSource,
-    pulumi.Output<String>? packageType,
-    pulumi.Output<String>? region,
-  }) :
-      availablePackageVersion = pulumi.Input.asOptionalInput<String>(availablePackageVersion),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      packageDescription = pulumi.Input.asOptionalInput<String>(packageDescription),
-      packageId = pulumi.Input.asOptionalInput<String>(packageId),
-      packageName = pulumi.Input.asOptionalInput<String>(packageName),
-      packageSource = pulumi.Input.asOptionalInput<PackagePackageSource>(packageSource),
-      packageType = pulumi.Input.asOptionalInput<String>(packageType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.availablePackageVersion,
+    this.engineVersion,
+    this.packageDescription,
+    this.packageId,
+    this.packageName,
+    this.packageSource,
+    this.packageType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class PackageState {
 
   factory PackageState.fromMap(Map<String, dynamic> map) {
     return PackageState(
-      availablePackageVersion: map['availablePackageVersion'] == null ? null : pulumi.Output.create<String>(map['availablePackageVersion'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      packageDescription: map['packageDescription'] == null ? null : pulumi.Output.create<String>(map['packageDescription'] as String),
-      packageId: map['packageId'] == null ? null : pulumi.Output.create<String>(map['packageId'] as String),
-      packageName: map['packageName'] == null ? null : pulumi.Output.create<String>(map['packageName'] as String),
-      packageSource: map['packageSource'] == null ? null : pulumi.Output.create<PackagePackageSource>(PackagePackageSource.fromMap((map['packageSource'] as Map).cast<String, dynamic>())),
-      packageType: map['packageType'] == null ? null : pulumi.Output.create<String>(map['packageType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      availablePackageVersion: map['availablePackageVersion'] == null ? null : (map['availablePackageVersion'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      packageDescription: map['packageDescription'] == null ? null : (map['packageDescription'] as String).input(),
+      packageId: map['packageId'] == null ? null : (map['packageId'] as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      packageSource: map['packageSource'] == null ? null : (PackagePackageSource.fromMap((map['packageSource'] as Map).cast<String, dynamic>())).input(),
+      packageType: map['packageType'] == null ? null : (map['packageType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class InstanceDesiredStateState {
   /// [state] Configured state of the DB Instance. Valid values are `available` and `stopped`.
   /// [timeouts] Optional.
   InstanceDesiredStateState({
-    pulumi.Output<String>? identifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<InstanceDesiredStateTimeouts>? timeouts,
-  }) :
-      identifier = pulumi.Input.asOptionalInput<String>(identifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      timeouts = pulumi.Input.asOptionalInput<InstanceDesiredStateTimeouts>(timeouts);
+    this.identifier,
+    this.region,
+    this.state,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class InstanceDesiredStateState {
 
   factory InstanceDesiredStateState.fromMap(Map<String, dynamic> map) {
     return InstanceDesiredStateState(
-      identifier: map['identifier'] == null ? null : pulumi.Output.create<String>(map['identifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<InstanceDesiredStateTimeouts>(InstanceDesiredStateTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (InstanceDesiredStateTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

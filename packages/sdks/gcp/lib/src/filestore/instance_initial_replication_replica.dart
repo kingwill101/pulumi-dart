@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceInitialReplicationReplica {
   /// The peer instance.
-  final String peerInstance;
+  final pulumi.Input<String> peerInstance;
 
   /// Creates a new [InstanceInitialReplicationReplica].
   /// [peerInstance] The peer instance.
@@ -19,7 +20,7 @@ class InstanceInitialReplicationReplica {
 
   factory InstanceInitialReplicationReplica.fromMap(Map<String, dynamic> map) {
     return InstanceInitialReplicationReplica(
-      peerInstance: map['peerInstance'] as String,
+      peerInstance: (map['peerInstance'] as String).input(),
     );
   }
 }

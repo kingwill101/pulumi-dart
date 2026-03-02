@@ -31,19 +31,13 @@ class GroupArgs {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [verifiedaccessInstanceId] The id of the verified access instance this group is associated with.
   GroupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? region,
-    pulumi.Output<GroupSseConfiguration>? sseConfiguration,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> verifiedaccessInstanceId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sseConfiguration = pulumi.Input.asOptionalInput<GroupSseConfiguration>(sseConfiguration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      verifiedaccessInstanceId = pulumi.Input.asInput<String>(verifiedaccessInstanceId);
+    this.description,
+    this.policyDocument,
+    this.region,
+    this.sseConfiguration,
+    this.tags,
+    required this.verifiedaccessInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sseConfiguration: map['sseConfiguration'] == null ? null : pulumi.Output.create<GroupSseConfiguration>(GroupSseConfiguration.fromMap((map['sseConfiguration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      verifiedaccessInstanceId: pulumi.Output.create<String>(map['verifiedaccessInstanceId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sseConfiguration: map['sseConfiguration'] == null ? null : (GroupSseConfiguration.fromMap((map['sseConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      verifiedaccessInstanceId: (map['verifiedaccessInstanceId'] as String).input(),
     );
   }
 }

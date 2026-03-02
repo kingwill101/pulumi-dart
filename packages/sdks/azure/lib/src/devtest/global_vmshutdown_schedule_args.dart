@@ -32,21 +32,14 @@ class GlobalVMShutdownScheduleArgs {
   /// [timezone] The time zone ID (e.g. Pacific Standard time). Refer to this guide for a [full list of accepted time zone names](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
   /// [virtualMachineId] The resource ID of the target ARM-based Virtual Machine. Changing this forces a new resource to be created.
   GlobalVMShutdownScheduleArgs({
-    required pulumi.Output<String> dailyRecurrenceTime,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? location,
-    required pulumi.Output<GlobalVMShutdownScheduleNotificationSettings> notificationSettings,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> timezone,
-    required pulumi.Output<String> virtualMachineId,
-  }) :
-      dailyRecurrenceTime = pulumi.Input.asInput<String>(dailyRecurrenceTime),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      notificationSettings = pulumi.Input.asInput<GlobalVMShutdownScheduleNotificationSettings>(notificationSettings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timezone = pulumi.Input.asInput<String>(timezone),
-      virtualMachineId = pulumi.Input.asInput<String>(virtualMachineId);
+    required this.dailyRecurrenceTime,
+    this.enabled,
+    this.location,
+    required this.notificationSettings,
+    this.tags,
+    required this.timezone,
+    required this.virtualMachineId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class GlobalVMShutdownScheduleArgs {
 
   factory GlobalVMShutdownScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GlobalVMShutdownScheduleArgs(
-      dailyRecurrenceTime: pulumi.Output.create<String>(map['dailyRecurrenceTime'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      notificationSettings: pulumi.Output.create<GlobalVMShutdownScheduleNotificationSettings>(GlobalVMShutdownScheduleNotificationSettings.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timezone: pulumi.Output.create<String>(map['timezone'] as String),
-      virtualMachineId: pulumi.Output.create<String>(map['virtualMachineId'] as String),
+      dailyRecurrenceTime: (map['dailyRecurrenceTime'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      notificationSettings: (GlobalVMShutdownScheduleNotificationSettings.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timezone: (map['timezone'] as String).input(),
+      virtualMachineId: (map['virtualMachineId'] as String).input(),
     );
   }
 }

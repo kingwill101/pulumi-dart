@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadRegionDiskTargetEnvironment {
   /// Required. Target project for the disk.
-  final String project;
+  final pulumi.Input<String> project;
   /// Required. Target region for the disk.
-  final String region;
+  final pulumi.Input<String> region;
   /// Required. Target URLs of the replica zones for the disk.
-  final List<String> replicaZones;
+  final pulumi.Input<List<String>> replicaZones;
 
   /// Creates a new [RestoreWorkloadRegionDiskTargetEnvironment].
   /// [project] Required. Target project for the disk.
@@ -29,9 +30,9 @@ class RestoreWorkloadRegionDiskTargetEnvironment {
 
   factory RestoreWorkloadRegionDiskTargetEnvironment.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadRegionDiskTargetEnvironment(
-      project: map['project'] as String,
-      region: map['region'] as String,
-      replicaZones: (map['replicaZones'] as List).cast<String>(),
+      project: (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      replicaZones: ((map['replicaZones'] as List).cast<String>()).input(),
     );
   }
 }

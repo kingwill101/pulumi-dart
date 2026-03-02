@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'break_out_category_policies.dart';
 
 /// Network Virtual Appliance Sku Properties.
 class Office365PolicyProperties {
   /// Office 365 breakout categories.
-  final BreakOutCategoryPolicies? breakOutCategories;
+  final pulumi.Input<BreakOutCategoryPolicies>? breakOutCategories;
 
   /// Creates a new [Office365PolicyProperties].
   /// [breakOutCategories] Office 365 breakout categories.
@@ -15,13 +16,13 @@ class Office365PolicyProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'breakOutCategories': ?breakOutCategories == null ? null : breakOutCategories!.toMap(),
+      'breakOutCategories': ?pulumi.Input.mapOptionalInputValue<BreakOutCategoryPolicies, Map<String, dynamic>>(breakOutCategories, (value) => value.toMap()),
     };
   }
 
   factory Office365PolicyProperties.fromMap(Map<String, dynamic> map) {
     return Office365PolicyProperties(
-      breakOutCategories: map['breakOutCategories'] == null ? null : BreakOutCategoryPolicies.fromMap((map['breakOutCategories'] as Map).cast<String, dynamic>()),
+      breakOutCategories: map['breakOutCategories'] == null ? null : (BreakOutCategoryPolicies.fromMap((map['breakOutCategories'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

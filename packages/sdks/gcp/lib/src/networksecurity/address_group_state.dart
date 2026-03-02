@@ -58,33 +58,20 @@ class AddressGroupState {
   /// [type] The type of the Address Group. Possible values are "IPV4" or "IPV6".
   /// [updateTime] The timestamp when the resource was updated.
   AddressGroupState({
-    pulumi.Output<int>? capacity,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<List<String>>? items,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<List<String>>? purposes,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? updateTime,
-  }) :
-      capacity = pulumi.Input.asOptionalInput<int>(capacity),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      items = pulumi.Input.asOptionalInput<List<String>>(items),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      purposes = pulumi.Input.asOptionalInput<List<String>>(purposes),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.capacity,
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.items,
+    this.labels,
+    this.location,
+    this.name,
+    this.parent,
+    this.pulumiLabels,
+    this.purposes,
+    this.type,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,19 +93,19 @@ class AddressGroupState {
 
   factory AddressGroupState.fromMap(Map<String, dynamic> map) {
     return AddressGroupState(
-      capacity: map['capacity'] == null ? null : pulumi.Output.create<int>(map['capacity'] as int),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      items: map['items'] == null ? null : pulumi.Output.create<List<String>>((map['items'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      purposes: map['purposes'] == null ? null : pulumi.Output.create<List<String>>((map['purposes'] as List).cast<String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      purposes: map['purposes'] == null ? null : ((map['purposes'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

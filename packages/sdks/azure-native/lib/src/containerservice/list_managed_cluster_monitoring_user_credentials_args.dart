@@ -19,13 +19,10 @@ class ListManagedClusterMonitoringUserCredentialsArgs {
   /// [resourceName] The name of the managed cluster resource.
   /// [serverFqdn] server fqdn type for credentials to be returned
   ListManagedClusterMonitoringUserCredentialsArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? serverFqdn,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      serverFqdn = pulumi.Input.asOptionalInput<String>(serverFqdn);
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.serverFqdn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListManagedClusterMonitoringUserCredentialsArgs {
 
   factory ListManagedClusterMonitoringUserCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return ListManagedClusterMonitoringUserCredentialsArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      serverFqdn: map['serverFqdn'] == null ? null : pulumi.Output.create<String>(map['serverFqdn'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      serverFqdn: map['serverFqdn'] == null ? null : (map['serverFqdn'] as String).input(),
     );
   }
 }

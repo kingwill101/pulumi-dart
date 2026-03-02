@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cloud Scheduler Trigger configuration
 class GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse {
   /// The cron tab of cloud scheduler trigger.
-  final String cronTab;
+  final pulumi.Input<String> cronTab;
   /// Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List integrations
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// The location where associated cloud scheduler job will be created
-  final String location;
+  final pulumi.Input<String> location;
   /// Service account used by Cloud Scheduler to trigger the integration at scheduled time
-  final String serviceAccountEmail;
+  final pulumi.Input<String> serviceAccountEmail;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse].
   /// [cronTab] The cron tab of cloud scheduler trigger.
@@ -35,10 +36,10 @@ class GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse {
 
   factory GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse(
-      cronTab: map['cronTab'] as String,
-      errorMessage: map['errorMessage'] as String,
-      location: map['location'] as String,
-      serviceAccountEmail: map['serviceAccountEmail'] as String,
+      cronTab: (map['cronTab'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      location: (map['location'] as String).input(),
+      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PluginInstanceAuthConfigGoogleServiceAccountConfig {
   /// The service account to be used for authenticating request.
   /// The `iam.serviceAccounts.getAccessToken` permission should be granted on
   /// this service account to the impersonator service account.
-  final String serviceAccount;
+  final pulumi.Input<String> serviceAccount;
 
   /// Creates a new [PluginInstanceAuthConfigGoogleServiceAccountConfig].
   /// [serviceAccount] The service account to be used for authenticating request.
@@ -21,7 +22,7 @@ class PluginInstanceAuthConfigGoogleServiceAccountConfig {
 
   factory PluginInstanceAuthConfigGoogleServiceAccountConfig.fromMap(Map<String, dynamic> map) {
     return PluginInstanceAuthConfigGoogleServiceAccountConfig(
-      serviceAccount: map['serviceAccount'] as String,
+      serviceAccount: (map['serviceAccount'] as String).input(),
     );
   }
 }

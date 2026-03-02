@@ -43,31 +43,19 @@ class MigrationInstanceState {
   /// [syncArchitecture] The sync architecture. Valid values: `oneway`.
   /// [tags] A mapping of tags to assign to the resource.
   MigrationInstanceState({
-    pulumi.Output<int>? computeUnit,
-    pulumi.Output<int>? databaseCount,
-    pulumi.Output<String>? destinationEndpointEngineName,
-    pulumi.Output<String>? destinationEndpointRegion,
-    pulumi.Output<String>? dtsInstanceId,
-    pulumi.Output<String>? instanceClass,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<String>? sourceEndpointEngineName,
-    pulumi.Output<String>? sourceEndpointRegion,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? syncArchitecture,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      computeUnit = pulumi.Input.asOptionalInput<int>(computeUnit),
-      databaseCount = pulumi.Input.asOptionalInput<int>(databaseCount),
-      destinationEndpointEngineName = pulumi.Input.asOptionalInput<String>(destinationEndpointEngineName),
-      destinationEndpointRegion = pulumi.Input.asOptionalInput<String>(destinationEndpointRegion),
-      dtsInstanceId = pulumi.Input.asOptionalInput<String>(dtsInstanceId),
-      instanceClass = pulumi.Input.asOptionalInput<String>(instanceClass),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      sourceEndpointEngineName = pulumi.Input.asOptionalInput<String>(sourceEndpointEngineName),
-      sourceEndpointRegion = pulumi.Input.asOptionalInput<String>(sourceEndpointRegion),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      syncArchitecture = pulumi.Input.asOptionalInput<String>(syncArchitecture),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.computeUnit,
+    this.databaseCount,
+    this.destinationEndpointEngineName,
+    this.destinationEndpointRegion,
+    this.dtsInstanceId,
+    this.instanceClass,
+    this.paymentType,
+    this.sourceEndpointEngineName,
+    this.sourceEndpointRegion,
+    this.status,
+    this.syncArchitecture,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class MigrationInstanceState {
 
   factory MigrationInstanceState.fromMap(Map<String, dynamic> map) {
     return MigrationInstanceState(
-      computeUnit: map['computeUnit'] == null ? null : pulumi.Output.create<int>(map['computeUnit'] as int),
-      databaseCount: map['databaseCount'] == null ? null : pulumi.Output.create<int>(map['databaseCount'] as int),
-      destinationEndpointEngineName: map['destinationEndpointEngineName'] == null ? null : pulumi.Output.create<String>(map['destinationEndpointEngineName'] as String),
-      destinationEndpointRegion: map['destinationEndpointRegion'] == null ? null : pulumi.Output.create<String>(map['destinationEndpointRegion'] as String),
-      dtsInstanceId: map['dtsInstanceId'] == null ? null : pulumi.Output.create<String>(map['dtsInstanceId'] as String),
-      instanceClass: map['instanceClass'] == null ? null : pulumi.Output.create<String>(map['instanceClass'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      sourceEndpointEngineName: map['sourceEndpointEngineName'] == null ? null : pulumi.Output.create<String>(map['sourceEndpointEngineName'] as String),
-      sourceEndpointRegion: map['sourceEndpointRegion'] == null ? null : pulumi.Output.create<String>(map['sourceEndpointRegion'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      syncArchitecture: map['syncArchitecture'] == null ? null : pulumi.Output.create<String>(map['syncArchitecture'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      computeUnit: map['computeUnit'] == null ? null : (map['computeUnit'] as int).input(),
+      databaseCount: map['databaseCount'] == null ? null : (map['databaseCount'] as int).input(),
+      destinationEndpointEngineName: map['destinationEndpointEngineName'] == null ? null : (map['destinationEndpointEngineName'] as String).input(),
+      destinationEndpointRegion: map['destinationEndpointRegion'] == null ? null : (map['destinationEndpointRegion'] as String).input(),
+      dtsInstanceId: map['dtsInstanceId'] == null ? null : (map['dtsInstanceId'] as String).input(),
+      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      sourceEndpointEngineName: map['sourceEndpointEngineName'] == null ? null : (map['sourceEndpointEngineName'] as String).input(),
+      sourceEndpointRegion: map['sourceEndpointRegion'] == null ? null : (map['sourceEndpointRegion'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      syncArchitecture: map['syncArchitecture'] == null ? null : (map['syncArchitecture'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

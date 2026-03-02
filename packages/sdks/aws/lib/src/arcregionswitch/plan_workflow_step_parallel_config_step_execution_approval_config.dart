@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanWorkflowStepParallelConfigStepExecutionApprovalConfig {
   /// ARN of the IAM role for approval.
-  final String approvalRole;
+  final pulumi.Input<String> approvalRole;
   /// Timeout in minutes for the approval.
-  final int? timeoutMinutes;
+  final pulumi.Input<int>? timeoutMinutes;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepExecutionApprovalConfig].
   /// [approvalRole] ARN of the IAM role for approval.
@@ -24,8 +25,8 @@ class PlanWorkflowStepParallelConfigStepExecutionApprovalConfig {
 
   factory PlanWorkflowStepParallelConfigStepExecutionApprovalConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepExecutionApprovalConfig(
-      approvalRole: map['approvalRole'] as String,
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
+      approvalRole: (map['approvalRole'] as String).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
     );
   }
 }

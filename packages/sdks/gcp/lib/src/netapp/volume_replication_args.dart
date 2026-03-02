@@ -57,31 +57,19 @@ class VolumeReplicationArgs {
   /// [volumeName] The name of the existing source volume.
   /// [waitForMirror] Optional.
   VolumeReplicationArgs({
-    pulumi.Output<bool>? deleteDestinationVolume,
-    pulumi.Output<String>? description,
-    pulumi.Output<VolumeReplicationDestinationVolumeParameters>? destinationVolumeParameters,
-    pulumi.Output<bool>? forceStopping,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? replicationEnabled,
-    required pulumi.Output<String> replicationSchedule,
-    required pulumi.Output<String> volumeName,
-    pulumi.Output<bool>? waitForMirror,
-  }) :
-      deleteDestinationVolume = pulumi.Input.asOptionalInput<bool>(deleteDestinationVolume),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationVolumeParameters = pulumi.Input.asOptionalInput<VolumeReplicationDestinationVolumeParameters>(destinationVolumeParameters),
-      forceStopping = pulumi.Input.asOptionalInput<bool>(forceStopping),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      replicationEnabled = pulumi.Input.asOptionalInput<bool>(replicationEnabled),
-      replicationSchedule = pulumi.Input.asInput<String>(replicationSchedule),
-      volumeName = pulumi.Input.asInput<String>(volumeName),
-      waitForMirror = pulumi.Input.asOptionalInput<bool>(waitForMirror);
+    this.deleteDestinationVolume,
+    this.description,
+    this.destinationVolumeParameters,
+    this.forceStopping,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    this.replicationEnabled,
+    required this.replicationSchedule,
+    required this.volumeName,
+    this.waitForMirror,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,18 +90,18 @@ class VolumeReplicationArgs {
 
   factory VolumeReplicationArgs.fromMap(Map<String, dynamic> map) {
     return VolumeReplicationArgs(
-      deleteDestinationVolume: map['deleteDestinationVolume'] == null ? null : pulumi.Output.create<bool>(map['deleteDestinationVolume'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationVolumeParameters: map['destinationVolumeParameters'] == null ? null : pulumi.Output.create<VolumeReplicationDestinationVolumeParameters>(VolumeReplicationDestinationVolumeParameters.fromMap((map['destinationVolumeParameters'] as Map).cast<String, dynamic>())),
-      forceStopping: map['forceStopping'] == null ? null : pulumi.Output.create<bool>(map['forceStopping'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      replicationEnabled: map['replicationEnabled'] == null ? null : pulumi.Output.create<bool>(map['replicationEnabled'] as bool),
-      replicationSchedule: pulumi.Output.create<String>(map['replicationSchedule'] as String),
-      volumeName: pulumi.Output.create<String>(map['volumeName'] as String),
-      waitForMirror: map['waitForMirror'] == null ? null : pulumi.Output.create<bool>(map['waitForMirror'] as bool),
+      deleteDestinationVolume: map['deleteDestinationVolume'] == null ? null : (map['deleteDestinationVolume'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationVolumeParameters: map['destinationVolumeParameters'] == null ? null : (VolumeReplicationDestinationVolumeParameters.fromMap((map['destinationVolumeParameters'] as Map).cast<String, dynamic>())).input(),
+      forceStopping: map['forceStopping'] == null ? null : (map['forceStopping'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      replicationEnabled: map['replicationEnabled'] == null ? null : (map['replicationEnabled'] as bool).input(),
+      replicationSchedule: (map['replicationSchedule'] as String).input(),
+      volumeName: (map['volumeName'] as String).input(),
+      waitForMirror: map['waitForMirror'] == null ? null : (map['waitForMirror'] as bool).input(),
     );
   }
 }

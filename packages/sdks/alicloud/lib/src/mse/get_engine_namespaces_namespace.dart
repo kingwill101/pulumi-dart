@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEngineNamespacesNamespace {
   /// The Number of Configuration of the Namespace.
-  final int configCount;
+  final pulumi.Input<int> configCount;
   /// The ID of the Engine Namespace. It is formatted to `<instance_id>:<namespace_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The description of the Namespace.
-  final String namespaceDesc;
+  final pulumi.Input<String> namespaceDesc;
   /// The id of Namespace.
-  final String namespaceId;
+  final pulumi.Input<String> namespaceId;
   /// The name of the Namespace.
-  final String namespaceShowName;
+  final pulumi.Input<String> namespaceShowName;
   /// The Quota of the Namespace.
-  final int quota;
+  final pulumi.Input<int> quota;
   /// The number of active services.
-  final String serviceCount;
+  final pulumi.Input<String> serviceCount;
   /// The type of the Namespace, the value is as follows:
   /// - '0': Global Configuration.
   /// - '1': default namespace.
   /// - '2': Custom Namespace.
-  final int type;
+  final pulumi.Input<int> type;
 
   /// Creates a new [GetEngineNamespacesNamespace].
   /// [configCount] The Number of Configuration of the Namespace.
@@ -57,14 +58,14 @@ class GetEngineNamespacesNamespace {
 
   factory GetEngineNamespacesNamespace.fromMap(Map<String, dynamic> map) {
     return GetEngineNamespacesNamespace(
-      configCount: map['configCount'] as int,
-      id: map['id'] as String,
-      namespaceDesc: map['namespaceDesc'] as String,
-      namespaceId: map['namespaceId'] as String,
-      namespaceShowName: map['namespaceShowName'] as String,
-      quota: map['quota'] as int,
-      serviceCount: map['serviceCount'] as String,
-      type: map['type'] as int,
+      configCount: (map['configCount'] as int).input(),
+      id: (map['id'] as String).input(),
+      namespaceDesc: (map['namespaceDesc'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      namespaceShowName: (map['namespaceShowName'] as String).input(),
+      quota: (map['quota'] as int).input(),
+      serviceCount: (map['serviceCount'] as String).input(),
+      type: (map['type'] as int).input(),
     );
   }
 }

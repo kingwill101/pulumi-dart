@@ -39,25 +39,16 @@ class FormulaArgs {
   /// [tags] The tags of the resource.
   /// [vm] Information about a VM from which a formula is to be created.
   FormulaArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<LabVirtualMachineCreationParameter>? formulaContent,
-    required pulumi.Output<String> labName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? osType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<FormulaPropertiesFromVm>? vm,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      formulaContent = pulumi.Input.asOptionalInput<LabVirtualMachineCreationParameter>(formulaContent),
-      labName = pulumi.Input.asInput<String>(labName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      osType = pulumi.Input.asOptionalInput<String>(osType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vm = pulumi.Input.asOptionalInput<FormulaPropertiesFromVm>(vm);
+    this.description,
+    this.formulaContent,
+    required this.labName,
+    this.location,
+    this.name,
+    this.osType,
+    required this.resourceGroupName,
+    this.tags,
+    this.vm,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class FormulaArgs {
 
   factory FormulaArgs.fromMap(Map<String, dynamic> map) {
     return FormulaArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      formulaContent: map['formulaContent'] == null ? null : pulumi.Output.create<LabVirtualMachineCreationParameter>(LabVirtualMachineCreationParameter.fromMap((map['formulaContent'] as Map).cast<String, dynamic>())),
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      osType: map['osType'] == null ? null : pulumi.Output.create<String>(map['osType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vm: map['vm'] == null ? null : pulumi.Output.create<FormulaPropertiesFromVm>(FormulaPropertiesFromVm.fromMap((map['vm'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      formulaContent: map['formulaContent'] == null ? null : (LabVirtualMachineCreationParameter.fromMap((map['formulaContent'] as Map).cast<String, dynamic>())).input(),
+      labName: (map['labName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vm: map['vm'] == null ? null : (FormulaPropertiesFromVm.fromMap((map['vm'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

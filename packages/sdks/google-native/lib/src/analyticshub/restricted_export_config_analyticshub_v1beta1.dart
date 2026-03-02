@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Restricted export config, used to configure restricted export on linked dataset.
 class RestrictedExportConfigAnalyticshubV1beta1 {
   /// Optional. If true, enable restricted export.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Optional. If true, restrict export of query result derived from restricted linked dataset table.
-  final bool? restrictQueryResult;
+  final pulumi.Input<bool>? restrictQueryResult;
 
   /// Creates a new [RestrictedExportConfigAnalyticshubV1beta1].
   /// [enabled] Optional. If true, enable restricted export.
@@ -25,8 +26,8 @@ class RestrictedExportConfigAnalyticshubV1beta1 {
 
   factory RestrictedExportConfigAnalyticshubV1beta1.fromMap(Map<String, dynamic> map) {
     return RestrictedExportConfigAnalyticshubV1beta1(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      restrictQueryResult: map['restrictQueryResult'] == null ? null : map['restrictQueryResult'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      restrictQueryResult: map['restrictQueryResult'] == null ? null : (map['restrictQueryResult'] as bool).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'marketplace_saa_sinfo_response.dart';
 
 /// The properties of Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into.
 class ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse {
   /// The Azure Subscription ID to which the Organization belongs and gets billed into. This is empty for a new user OR a user without an Elastic Organization.
-  final String? billedAzureSubscriptionId;
+  final pulumi.Input<String>? billedAzureSubscriptionId;
   /// The Elastic Organization Id.
-  final String? elasticOrganizationId;
+  final pulumi.Input<String>? elasticOrganizationId;
   /// The Elastic Organization Name.
-  final String? elasticOrganizationName;
+  final pulumi.Input<String>? elasticOrganizationName;
   /// Marketplace SaaS Info of the resource.
-  final MarketplaceSaaSInfoResponse marketplaceSaasInfo;
+  final pulumi.Input<MarketplaceSaaSInfoResponse> marketplaceSaasInfo;
 
   /// Creates a new [ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse].
   /// [billedAzureSubscriptionId] The Azure Subscription ID to which the Organization belongs and gets billed into. This is empty for a new user OR a user without an Elastic Organization.
@@ -30,16 +31,16 @@ class ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse {
       'billedAzureSubscriptionId': ?billedAzureSubscriptionId,
       'elasticOrganizationId': ?elasticOrganizationId,
       'elasticOrganizationName': ?elasticOrganizationName,
-      'marketplaceSaasInfo': marketplaceSaasInfo.toMap(),
+      'marketplaceSaasInfo': pulumi.Input.mapInputValue<MarketplaceSaaSInfoResponse, Map<String, dynamic>>(marketplaceSaasInfo, (value) => value.toMap()),
     };
   }
 
   factory ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse(
-      billedAzureSubscriptionId: map['billedAzureSubscriptionId'] == null ? null : map['billedAzureSubscriptionId'] as String,
-      elasticOrganizationId: map['elasticOrganizationId'] == null ? null : map['elasticOrganizationId'] as String,
-      elasticOrganizationName: map['elasticOrganizationName'] == null ? null : map['elasticOrganizationName'] as String,
-      marketplaceSaasInfo: MarketplaceSaaSInfoResponse.fromMap((map['marketplaceSaasInfo'] as Map).cast<String, dynamic>()),
+      billedAzureSubscriptionId: map['billedAzureSubscriptionId'] == null ? null : (map['billedAzureSubscriptionId'] as String).input(),
+      elasticOrganizationId: map['elasticOrganizationId'] == null ? null : (map['elasticOrganizationId'] as String).input(),
+      elasticOrganizationName: map['elasticOrganizationName'] == null ? null : (map['elasticOrganizationName'] as String).input(),
+      marketplaceSaasInfo: (MarketplaceSaaSInfoResponse.fromMap((map['marketplaceSaasInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

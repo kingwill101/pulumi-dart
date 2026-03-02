@@ -8,27 +8,27 @@ import 'get_app_ingress_traffic_weight.dart';
 
 class GetAppIngress {
   /// Should this ingress allow insecure connections?
-  final bool allowInsecureConnections;
+  final pulumi.Input<bool> allowInsecureConnections;
   /// The client certificate mode for the Ingress.
-  final String clientCertificateMode;
+  final pulumi.Input<String> clientCertificateMode;
   /// A `cors` block as detailed below.
-  final List<GetAppIngressCor> cors;
+  final pulumi.Input<List<GetAppIngressCor>> cors;
   /// One or more `custom_domain` block as detailed below.
-  final List<GetAppIngressCustomDomain> customDomains;
+  final pulumi.Input<List<GetAppIngressCustomDomain>> customDomains;
   /// The exposed port on the container for the Ingress traffic.
-  final int exposedPort;
+  final pulumi.Input<int> exposedPort;
   /// Is this an external Ingress.
-  final bool externalEnabled;
+  final pulumi.Input<bool> externalEnabled;
   /// The FQDN of the ingress.
-  final String fqdn;
+  final pulumi.Input<String> fqdn;
   /// One or more `ip_security_restriction` blocks for IP-filtering rules as defined below.
-  final List<GetAppIngressIpSecurityRestriction> ipSecurityRestrictions;
+  final pulumi.Input<List<GetAppIngressIpSecurityRestriction>> ipSecurityRestrictions;
   /// The target port on the container for the Ingress traffic.
-  final int targetPort;
+  final pulumi.Input<int> targetPort;
   /// A `traffic_weight` block as detailed below.
-  final List<GetAppIngressTrafficWeight> trafficWeights;
+  final pulumi.Input<List<GetAppIngressTrafficWeight>> trafficWeights;
   /// The transport method for the Ingress.
-  final String transport;
+  final pulumi.Input<String> transport;
 
   /// Creates a new [GetAppIngress].
   /// [allowInsecureConnections] Should this ingress allow insecure connections?
@@ -60,31 +60,31 @@ class GetAppIngress {
     return <String, dynamic>{
       'allowInsecureConnections': allowInsecureConnections,
       'clientCertificateMode': clientCertificateMode,
-      'cors': pulumi.Input.encodeList<GetAppIngressCor, Map<String, dynamic>>(cors, (value) => value.toMap()),
-      'customDomains': pulumi.Input.encodeList<GetAppIngressCustomDomain, Map<String, dynamic>>(customDomains, (value) => value.toMap()),
+      'cors': pulumi.Input.mapInputValue<List<GetAppIngressCor>, List<Map<String, dynamic>>>(cors, (value) => pulumi.Input.encodeList<GetAppIngressCor, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customDomains': pulumi.Input.mapInputValue<List<GetAppIngressCustomDomain>, List<Map<String, dynamic>>>(customDomains, (value) => pulumi.Input.encodeList<GetAppIngressCustomDomain, Map<String, dynamic>>(value, (value) => value.toMap())),
       'exposedPort': exposedPort,
       'externalEnabled': externalEnabled,
       'fqdn': fqdn,
-      'ipSecurityRestrictions': pulumi.Input.encodeList<GetAppIngressIpSecurityRestriction, Map<String, dynamic>>(ipSecurityRestrictions, (value) => value.toMap()),
+      'ipSecurityRestrictions': pulumi.Input.mapInputValue<List<GetAppIngressIpSecurityRestriction>, List<Map<String, dynamic>>>(ipSecurityRestrictions, (value) => pulumi.Input.encodeList<GetAppIngressIpSecurityRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetPort': targetPort,
-      'trafficWeights': pulumi.Input.encodeList<GetAppIngressTrafficWeight, Map<String, dynamic>>(trafficWeights, (value) => value.toMap()),
+      'trafficWeights': pulumi.Input.mapInputValue<List<GetAppIngressTrafficWeight>, List<Map<String, dynamic>>>(trafficWeights, (value) => pulumi.Input.encodeList<GetAppIngressTrafficWeight, Map<String, dynamic>>(value, (value) => value.toMap())),
       'transport': transport,
     };
   }
 
   factory GetAppIngress.fromMap(Map<String, dynamic> map) {
     return GetAppIngress(
-      allowInsecureConnections: map['allowInsecureConnections'] as bool,
-      clientCertificateMode: map['clientCertificateMode'] as String,
-      cors: pulumi.Input.decodeList<GetAppIngressCor>(map['cors'], (value) => GetAppIngressCor.fromMap((value as Map).cast<String, dynamic>())),
-      customDomains: pulumi.Input.decodeList<GetAppIngressCustomDomain>(map['customDomains'], (value) => GetAppIngressCustomDomain.fromMap((value as Map).cast<String, dynamic>())),
-      exposedPort: map['exposedPort'] as int,
-      externalEnabled: map['externalEnabled'] as bool,
-      fqdn: map['fqdn'] as String,
-      ipSecurityRestrictions: pulumi.Input.decodeList<GetAppIngressIpSecurityRestriction>(map['ipSecurityRestrictions'], (value) => GetAppIngressIpSecurityRestriction.fromMap((value as Map).cast<String, dynamic>())),
-      targetPort: map['targetPort'] as int,
-      trafficWeights: pulumi.Input.decodeList<GetAppIngressTrafficWeight>(map['trafficWeights'], (value) => GetAppIngressTrafficWeight.fromMap((value as Map).cast<String, dynamic>())),
-      transport: map['transport'] as String,
+      allowInsecureConnections: (map['allowInsecureConnections'] as bool).input(),
+      clientCertificateMode: (map['clientCertificateMode'] as String).input(),
+      cors: (pulumi.Input.decodeList<GetAppIngressCor>(map['cors'], (value) => GetAppIngressCor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customDomains: (pulumi.Input.decodeList<GetAppIngressCustomDomain>(map['customDomains'], (value) => GetAppIngressCustomDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exposedPort: (map['exposedPort'] as int).input(),
+      externalEnabled: (map['externalEnabled'] as bool).input(),
+      fqdn: (map['fqdn'] as String).input(),
+      ipSecurityRestrictions: (pulumi.Input.decodeList<GetAppIngressIpSecurityRestriction>(map['ipSecurityRestrictions'], (value) => GetAppIngressIpSecurityRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetPort: (map['targetPort'] as int).input(),
+      trafficWeights: (pulumi.Input.decodeList<GetAppIngressTrafficWeight>(map['trafficWeights'], (value) => GetAppIngressTrafficWeight.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transport: (map['transport'] as String).input(),
     );
   }
 }

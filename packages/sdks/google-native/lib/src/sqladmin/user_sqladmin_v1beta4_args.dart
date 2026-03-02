@@ -46,29 +46,18 @@ class UserSqladminV1beta4Args {
   /// [sqlserverUserDetails] Optional.
   /// [type] The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.
   UserSqladminV1beta4Args({
-    pulumi.Output<UserDualPasswordTypeSqladminV1beta4>? dualPasswordType,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? host,
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<UserPasswordValidationPolicySqladminV1beta4>? passwordPolicy,
-    pulumi.Output<String>? project,
-    pulumi.Output<SqlServerUserDetailsSqladminV1beta4>? sqlserverUserDetails,
-    pulumi.Output<UserTypeSqladminV1beta4>? type,
-  }) :
-      dualPasswordType = pulumi.Input.asOptionalInput<UserDualPasswordTypeSqladminV1beta4>(dualPasswordType),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      instance = pulumi.Input.asInput<String>(instance),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      passwordPolicy = pulumi.Input.asOptionalInput<UserPasswordValidationPolicySqladminV1beta4>(passwordPolicy),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sqlserverUserDetails = pulumi.Input.asOptionalInput<SqlServerUserDetailsSqladminV1beta4>(sqlserverUserDetails),
-      type = pulumi.Input.asOptionalInput<UserTypeSqladminV1beta4>(type);
+    this.dualPasswordType,
+    this.etag,
+    this.host,
+    required this.instance,
+    this.kind,
+    this.name,
+    this.password,
+    this.passwordPolicy,
+    this.project,
+    this.sqlserverUserDetails,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class UserSqladminV1beta4Args {
 
   factory UserSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return UserSqladminV1beta4Args(
-      dualPasswordType: map['dualPasswordType'] == null ? null : pulumi.Output.create<UserDualPasswordTypeSqladminV1beta4>(UserDualPasswordTypeSqladminV1beta4.fromValue(map['dualPasswordType'] as String)),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      passwordPolicy: map['passwordPolicy'] == null ? null : pulumi.Output.create<UserPasswordValidationPolicySqladminV1beta4>(UserPasswordValidationPolicySqladminV1beta4.fromMap((map['passwordPolicy'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sqlserverUserDetails: map['sqlserverUserDetails'] == null ? null : pulumi.Output.create<SqlServerUserDetailsSqladminV1beta4>(SqlServerUserDetailsSqladminV1beta4.fromMap((map['sqlserverUserDetails'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<UserTypeSqladminV1beta4>(UserTypeSqladminV1beta4.fromValue(map['type'] as String)),
+      dualPasswordType: map['dualPasswordType'] == null ? null : (UserDualPasswordTypeSqladminV1beta4.fromValue(map['dualPasswordType'] as String)).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      passwordPolicy: map['passwordPolicy'] == null ? null : (UserPasswordValidationPolicySqladminV1beta4.fromMap((map['passwordPolicy'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sqlserverUserDetails: map['sqlserverUserDetails'] == null ? null : (SqlServerUserDetailsSqladminV1beta4.fromMap((map['sqlserverUserDetails'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (UserTypeSqladminV1beta4.fromValue(map['type'] as String)).input(),
     );
   }
 }

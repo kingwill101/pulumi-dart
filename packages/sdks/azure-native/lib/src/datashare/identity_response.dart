@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identity of resource
 class IdentityResponse {
   /// service principal Id
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// Tenant Id
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// Identity Type
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [IdentityResponse].
   /// [principalId] service principal Id
@@ -30,9 +31,9 @@ class IdentityResponse {
 
   factory IdentityResponse.fromMap(Map<String, dynamic> map) {
     return IdentityResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

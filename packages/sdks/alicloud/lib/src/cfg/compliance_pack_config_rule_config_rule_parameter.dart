@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CompliancePackConfigRuleConfigRuleParameter {
   /// The parameter name.
-  final String? parameterName;
+  final pulumi.Input<String>? parameterName;
   /// The parameter value.
-  final String? parameterValue;
+  final pulumi.Input<String>? parameterValue;
 
   /// Creates a new [CompliancePackConfigRuleConfigRuleParameter].
   /// [parameterName] The parameter name.
@@ -24,8 +25,8 @@ class CompliancePackConfigRuleConfigRuleParameter {
 
   factory CompliancePackConfigRuleConfigRuleParameter.fromMap(Map<String, dynamic> map) {
     return CompliancePackConfigRuleConfigRuleParameter(
-      parameterName: map['parameterName'] == null ? null : map['parameterName'] as String,
-      parameterValue: map['parameterValue'] == null ? null : map['parameterValue'] as String,
+      parameterName: map['parameterName'] == null ? null : (map['parameterName'] as String).input(),
+      parameterValue: map['parameterValue'] == null ? null : (map['parameterValue'] as String).input(),
     );
   }
 }

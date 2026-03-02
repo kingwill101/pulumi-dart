@@ -6,9 +6,9 @@ import 'get_placement_group_migrations_outbound.dart';
 
 class GetPlacementGroupMigrations {
   /// A list of the Linodes the system is migrating into the placement group.
-  final List<GetPlacementGroupMigrationsInbound> inbounds;
+  final pulumi.Input<List<GetPlacementGroupMigrationsInbound>> inbounds;
   /// A list of the Linodes the system is migrating out of the placement group.
-  final List<GetPlacementGroupMigrationsOutbound> outbounds;
+  final pulumi.Input<List<GetPlacementGroupMigrationsOutbound>> outbounds;
 
   /// Creates a new [GetPlacementGroupMigrations].
   /// [inbounds] A list of the Linodes the system is migrating into the placement group.
@@ -20,15 +20,15 @@ class GetPlacementGroupMigrations {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inbounds': pulumi.Input.encodeList<GetPlacementGroupMigrationsInbound, Map<String, dynamic>>(inbounds, (value) => value.toMap()),
-      'outbounds': pulumi.Input.encodeList<GetPlacementGroupMigrationsOutbound, Map<String, dynamic>>(outbounds, (value) => value.toMap()),
+      'inbounds': pulumi.Input.mapInputValue<List<GetPlacementGroupMigrationsInbound>, List<Map<String, dynamic>>>(inbounds, (value) => pulumi.Input.encodeList<GetPlacementGroupMigrationsInbound, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'outbounds': pulumi.Input.mapInputValue<List<GetPlacementGroupMigrationsOutbound>, List<Map<String, dynamic>>>(outbounds, (value) => pulumi.Input.encodeList<GetPlacementGroupMigrationsOutbound, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetPlacementGroupMigrations.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupMigrations(
-      inbounds: pulumi.Input.decodeList<GetPlacementGroupMigrationsInbound>(map['inbounds'], (value) => GetPlacementGroupMigrationsInbound.fromMap((value as Map).cast<String, dynamic>())),
-      outbounds: pulumi.Input.decodeList<GetPlacementGroupMigrationsOutbound>(map['outbounds'], (value) => GetPlacementGroupMigrationsOutbound.fromMap((value as Map).cast<String, dynamic>())),
+      inbounds: (pulumi.Input.decodeList<GetPlacementGroupMigrationsInbound>(map['inbounds'], (value) => GetPlacementGroupMigrationsInbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outbounds: (pulumi.Input.decodeList<GetPlacementGroupMigrationsOutbound>(map['outbounds'], (value) => GetPlacementGroupMigrationsOutbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

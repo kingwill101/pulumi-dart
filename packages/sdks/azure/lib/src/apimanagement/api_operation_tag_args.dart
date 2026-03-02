@@ -19,13 +19,10 @@ class ApiOperationTagArgs {
   /// [displayName] The display name of the API Management API Operation Tag.
   /// [name] The name which should be used for this API Management API Operation Tag. Changing this forces a new API Management API Operation Tag to be created. The name must be unique in the API Management Service.
   ApiOperationTagArgs({
-    required pulumi.Output<String> apiOperationId,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? name,
-  }) :
-      apiOperationId = pulumi.Input.asInput<String>(apiOperationId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.apiOperationId,
+    required this.displayName,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ApiOperationTagArgs {
 
   factory ApiOperationTagArgs.fromMap(Map<String, dynamic> map) {
     return ApiOperationTagArgs(
-      apiOperationId: pulumi.Output.create<String>(map['apiOperationId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      apiOperationId: (map['apiOperationId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class GetUserArgs {
   /// [objectId] The object ID of the user.
   /// [userPrincipalName] The user principal name (UPN) of the user.
   GetUserArgs({
-    pulumi.Output<String>? employeeId,
-    pulumi.Output<String>? mail,
-    pulumi.Output<String>? mailNickname,
-    pulumi.Output<String>? objectId,
-    pulumi.Output<String>? userPrincipalName,
-  }) :
-      employeeId = pulumi.Input.asOptionalInput<String>(employeeId),
-      mail = pulumi.Input.asOptionalInput<String>(mail),
-      mailNickname = pulumi.Input.asOptionalInput<String>(mailNickname),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId),
-      userPrincipalName = pulumi.Input.asOptionalInput<String>(userPrincipalName);
+    this.employeeId,
+    this.mail,
+    this.mailNickname,
+    this.objectId,
+    this.userPrincipalName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      employeeId: map['employeeId'] == null ? null : pulumi.Output.create<String>(map['employeeId'] as String),
-      mail: map['mail'] == null ? null : pulumi.Output.create<String>(map['mail'] as String),
-      mailNickname: map['mailNickname'] == null ? null : pulumi.Output.create<String>(map['mailNickname'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
-      userPrincipalName: map['userPrincipalName'] == null ? null : pulumi.Output.create<String>(map['userPrincipalName'] as String),
+      employeeId: map['employeeId'] == null ? null : (map['employeeId'] as String).input(),
+      mail: map['mail'] == null ? null : (map['mail'] as String).input(),
+      mailNickname: map['mailNickname'] == null ? null : (map['mailNickname'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName'] as String).input(),
     );
   }
 }

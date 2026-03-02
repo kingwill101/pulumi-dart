@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'memcache_parameters_response_memcache_v1beta2.dart';
 
 class NodeResponseMemcacheV1beta2 {
   /// Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
-  final String host;
+  final pulumi.Input<String> host;
   /// The full version of memcached server running on this node. e.g. - memcached-1.5.16
-  final String memcacheFullVersion;
+  final pulumi.Input<String> memcacheFullVersion;
   /// Major version of memcached server running on this node, e.g. MEMCACHE_1_5
-  final String memcacheVersion;
+  final pulumi.Input<String> memcacheVersion;
   /// Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
-  final String nodeId;
+  final pulumi.Input<String> nodeId;
   /// User defined parameters currently applied to the node.
-  final MemcacheParametersResponseMemcacheV1beta2 parameters;
+  final pulumi.Input<MemcacheParametersResponseMemcacheV1beta2> parameters;
   /// The port number of the Memcached server on this node.
-  final int port;
+  final pulumi.Input<int> port;
   /// Current state of the Memcached node.
-  final String state;
+  final pulumi.Input<String> state;
   /// Returns true if there is an update waiting to be applied
-  final bool updateAvailable;
+  final pulumi.Input<bool> updateAvailable;
   /// Location (GCP Zone) for the Memcached node.
-  final String zone;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [NodeResponseMemcacheV1beta2].
   /// [host] Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
@@ -50,7 +51,7 @@ class NodeResponseMemcacheV1beta2 {
       'memcacheFullVersion': memcacheFullVersion,
       'memcacheVersion': memcacheVersion,
       'nodeId': nodeId,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<MemcacheParametersResponseMemcacheV1beta2, Map<String, dynamic>>(parameters, (value) => value.toMap()),
       'port': port,
       'state': state,
       'updateAvailable': updateAvailable,
@@ -60,15 +61,15 @@ class NodeResponseMemcacheV1beta2 {
 
   factory NodeResponseMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
     return NodeResponseMemcacheV1beta2(
-      host: map['host'] as String,
-      memcacheFullVersion: map['memcacheFullVersion'] as String,
-      memcacheVersion: map['memcacheVersion'] as String,
-      nodeId: map['nodeId'] as String,
-      parameters: MemcacheParametersResponseMemcacheV1beta2.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
-      port: map['port'] as int,
-      state: map['state'] as String,
-      updateAvailable: map['updateAvailable'] as bool,
-      zone: map['zone'] as String,
+      host: (map['host'] as String).input(),
+      memcacheFullVersion: (map['memcacheFullVersion'] as String).input(),
+      memcacheVersion: (map['memcacheVersion'] as String).input(),
+      nodeId: (map['nodeId'] as String).input(),
+      parameters: (MemcacheParametersResponseMemcacheV1beta2.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      port: (map['port'] as int).input(),
+      state: (map['state'] as String).input(),
+      updateAvailable: (map['updateAvailable'] as bool).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

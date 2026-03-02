@@ -25,17 +25,12 @@ class GetDevCenterCatalogImageDefinitionBuildDetailsArgs {
   /// [imageDefinitionName] The name of the Image Definition.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDevCenterCatalogImageDefinitionBuildDetailsArgs({
-    required pulumi.Output<String> buildName,
-    required pulumi.Output<String> catalogName,
-    required pulumi.Output<String> devCenterName,
-    required pulumi.Output<String> imageDefinitionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      buildName = pulumi.Input.asInput<String>(buildName),
-      catalogName = pulumi.Input.asInput<String>(catalogName),
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      imageDefinitionName = pulumi.Input.asInput<String>(imageDefinitionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.buildName,
+    required this.catalogName,
+    required this.devCenterName,
+    required this.imageDefinitionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetDevCenterCatalogImageDefinitionBuildDetailsArgs {
 
   factory GetDevCenterCatalogImageDefinitionBuildDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetDevCenterCatalogImageDefinitionBuildDetailsArgs(
-      buildName: pulumi.Output.create<String>(map['buildName'] as String),
-      catalogName: pulumi.Output.create<String>(map['catalogName'] as String),
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      imageDefinitionName: pulumi.Output.create<String>(map['imageDefinitionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      buildName: (map['buildName'] as String).input(),
+      catalogName: (map['catalogName'] as String).input(),
+      devCenterName: (map['devCenterName'] as String).input(),
+      imageDefinitionName: (map['imageDefinitionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

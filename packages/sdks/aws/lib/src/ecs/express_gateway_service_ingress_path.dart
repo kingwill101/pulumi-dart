@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExpressGatewayServiceIngressPath {
-  final String accessType;
-  final String endpoint;
+  final pulumi.Input<String> accessType;
+  final pulumi.Input<String> endpoint;
 
   /// Creates a new [ExpressGatewayServiceIngressPath].
   /// [accessType] Required.
@@ -22,8 +23,8 @@ class ExpressGatewayServiceIngressPath {
 
   factory ExpressGatewayServiceIngressPath.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServiceIngressPath(
-      accessType: map['accessType'] as String,
-      endpoint: map['endpoint'] as String,
+      accessType: (map['accessType'] as String).input(),
+      endpoint: (map['endpoint'] as String).input(),
     );
   }
 }

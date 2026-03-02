@@ -22,13 +22,10 @@ class NamespaceState {
   /// [namespace] The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
   /// [specification] The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
   NamespaceState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? specification,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      specification = pulumi.Input.asOptionalInput<String>(specification);
+    this.description,
+    this.namespace,
+    this.specification,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      specification: map['specification'] == null ? null : pulumi.Output.create<String>(map['specification'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      specification: map['specification'] == null ? null : (map['specification'] as String).input(),
     );
   }
 }

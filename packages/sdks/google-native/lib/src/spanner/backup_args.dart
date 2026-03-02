@@ -35,25 +35,16 @@ class BackupArgs {
   /// [project] Optional.
   /// [versionTime] The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
   BackupArgs({
-    required pulumi.Output<String> backupId,
-    pulumi.Output<String>? database,
-    required pulumi.Output<String> encryptionConfigEncryptionType,
-    pulumi.Output<String>? encryptionConfigKmsKeyName,
-    pulumi.Output<String>? expireTime,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? versionTime,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      encryptionConfigEncryptionType = pulumi.Input.asInput<String>(encryptionConfigEncryptionType),
-      encryptionConfigKmsKeyName = pulumi.Input.asOptionalInput<String>(encryptionConfigKmsKeyName),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      versionTime = pulumi.Input.asOptionalInput<String>(versionTime);
+    required this.backupId,
+    this.database,
+    required this.encryptionConfigEncryptionType,
+    this.encryptionConfigKmsKeyName,
+    this.expireTime,
+    required this.instanceId,
+    this.name,
+    this.project,
+    this.versionTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      backupId: pulumi.Output.create<String>(map['backupId'] as String),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      encryptionConfigEncryptionType: pulumi.Output.create<String>(map['encryptionConfigEncryptionType'] as String),
-      encryptionConfigKmsKeyName: map['encryptionConfigKmsKeyName'] == null ? null : pulumi.Output.create<String>(map['encryptionConfigKmsKeyName'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      versionTime: map['versionTime'] == null ? null : pulumi.Output.create<String>(map['versionTime'] as String),
+      backupId: (map['backupId'] as String).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      encryptionConfigEncryptionType: (map['encryptionConfigEncryptionType'] as String).input(),
+      encryptionConfigKmsKeyName: map['encryptionConfigKmsKeyName'] == null ? null : (map['encryptionConfigKmsKeyName'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      versionTime: map['versionTime'] == null ? null : (map['versionTime'] as String).input(),
     );
   }
 }

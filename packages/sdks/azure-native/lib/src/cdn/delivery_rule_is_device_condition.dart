@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'is_device_match_condition_parameters.dart';
 
 /// Defines the IsDevice condition for the delivery rule.
 class DeliveryRuleIsDeviceCondition {
   /// Request variable to compare with.
   /// Expected value is 'IsDevice'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the condition.
-  final IsDeviceMatchConditionParameters parameters;
+  final pulumi.Input<IsDeviceMatchConditionParameters> parameters;
 
   /// Creates a new [DeliveryRuleIsDeviceCondition].
   /// [name] Request variable to compare with.
@@ -21,14 +22,14 @@ class DeliveryRuleIsDeviceCondition {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<IsDeviceMatchConditionParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleIsDeviceCondition.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleIsDeviceCondition(
-      name: map['name'] as String,
-      parameters: IsDeviceMatchConditionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (IsDeviceMatchConditionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

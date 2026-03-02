@@ -38,25 +38,16 @@ class ServiceQueueArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [visibilityTimeout] The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
   ServiceQueueArgs({
-    pulumi.Output<int>? delaySeconds,
-    pulumi.Output<ServiceQueueDlqPolicy>? dlqPolicy,
-    pulumi.Output<bool>? loggingEnabled,
-    pulumi.Output<int>? maximumMessageSize,
-    pulumi.Output<int>? messageRetentionPeriod,
-    pulumi.Output<int>? pollingWaitSeconds,
-    required pulumi.Output<String> queueName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? visibilityTimeout,
-  }) :
-      delaySeconds = pulumi.Input.asOptionalInput<int>(delaySeconds),
-      dlqPolicy = pulumi.Input.asOptionalInput<ServiceQueueDlqPolicy>(dlqPolicy),
-      loggingEnabled = pulumi.Input.asOptionalInput<bool>(loggingEnabled),
-      maximumMessageSize = pulumi.Input.asOptionalInput<int>(maximumMessageSize),
-      messageRetentionPeriod = pulumi.Input.asOptionalInput<int>(messageRetentionPeriod),
-      pollingWaitSeconds = pulumi.Input.asOptionalInput<int>(pollingWaitSeconds),
-      queueName = pulumi.Input.asInput<String>(queueName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      visibilityTimeout = pulumi.Input.asOptionalInput<int>(visibilityTimeout);
+    this.delaySeconds,
+    this.dlqPolicy,
+    this.loggingEnabled,
+    this.maximumMessageSize,
+    this.messageRetentionPeriod,
+    this.pollingWaitSeconds,
+    required this.queueName,
+    this.tags,
+    this.visibilityTimeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class ServiceQueueArgs {
 
   factory ServiceQueueArgs.fromMap(Map<String, dynamic> map) {
     return ServiceQueueArgs(
-      delaySeconds: map['delaySeconds'] == null ? null : pulumi.Output.create<int>(map['delaySeconds'] as int),
-      dlqPolicy: map['dlqPolicy'] == null ? null : pulumi.Output.create<ServiceQueueDlqPolicy>(ServiceQueueDlqPolicy.fromMap((map['dlqPolicy'] as Map).cast<String, dynamic>())),
-      loggingEnabled: map['loggingEnabled'] == null ? null : pulumi.Output.create<bool>(map['loggingEnabled'] as bool),
-      maximumMessageSize: map['maximumMessageSize'] == null ? null : pulumi.Output.create<int>(map['maximumMessageSize'] as int),
-      messageRetentionPeriod: map['messageRetentionPeriod'] == null ? null : pulumi.Output.create<int>(map['messageRetentionPeriod'] as int),
-      pollingWaitSeconds: map['pollingWaitSeconds'] == null ? null : pulumi.Output.create<int>(map['pollingWaitSeconds'] as int),
-      queueName: pulumi.Output.create<String>(map['queueName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      visibilityTimeout: map['visibilityTimeout'] == null ? null : pulumi.Output.create<int>(map['visibilityTimeout'] as int),
+      delaySeconds: map['delaySeconds'] == null ? null : (map['delaySeconds'] as int).input(),
+      dlqPolicy: map['dlqPolicy'] == null ? null : (ServiceQueueDlqPolicy.fromMap((map['dlqPolicy'] as Map).cast<String, dynamic>())).input(),
+      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled'] as bool).input(),
+      maximumMessageSize: map['maximumMessageSize'] == null ? null : (map['maximumMessageSize'] as int).input(),
+      messageRetentionPeriod: map['messageRetentionPeriod'] == null ? null : (map['messageRetentionPeriod'] as int).input(),
+      pollingWaitSeconds: map['pollingWaitSeconds'] == null ? null : (map['pollingWaitSeconds'] as int).input(),
+      queueName: (map['queueName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      visibilityTimeout: map['visibilityTimeout'] == null ? null : (map['visibilityTimeout'] as int).input(),
     );
   }
 }

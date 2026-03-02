@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Certificate
 class Certificate {
   /// The Amazon Resource Name (ARN) of the certificate.
-  final String? certificateArn;
+  final pulumi.Input<String>? certificateArn;
   /// <p>The Base64-encoded certificate data required to communicate with your cluster. Add this to the <code>certificate-authority-data</code> section of the <code>kubeconfig</code> file for your cluster.</p>
-  final String? data;
+  final pulumi.Input<String>? data;
 
   /// Creates a new [Certificate].
   /// [certificateArn] The Amazon Resource Name (ARN) of the certificate.
@@ -25,8 +26,8 @@ class Certificate {
 
   factory Certificate.fromMap(Map<String, dynamic> map) {
     return Certificate(
-      certificateArn: map['certificateArn'] == null ? null : map['certificateArn'] as String,
-      data: map['data'] == null ? null : map['data'] as String,
+      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
     );
   }
 }

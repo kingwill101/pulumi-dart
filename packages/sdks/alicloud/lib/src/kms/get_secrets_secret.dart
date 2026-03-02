@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecretsSecret {
   /// (Available since v1.124.0) A mapping of tags to assign to the resource.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// (Available since v1.124.0)  The description of the secret.
-  final String description;
+  final pulumi.Input<String> description;
   /// (Available since v1.124.0)  The ID of the KMS CMK that is used to encrypt the secret value.
-  final String encryptionKeyId;
+  final pulumi.Input<String> encryptionKeyId;
   /// ID of the Kms Secret. The value is same as KMS secret_name.
-  final String id;
+  final pulumi.Input<String> id;
   /// Schedule deletion time.
-  final String plannedDeleteTime;
+  final pulumi.Input<String> plannedDeleteTime;
   /// (Available since v1.124.0)  The value of the secret that you want to create.
-  final String secretData;
+  final pulumi.Input<String> secretData;
   /// (Available since v1.124.0)  The type of the secret data value.
-  final String secretDataType;
+  final pulumi.Input<String> secretDataType;
   /// Name of the KMS Secret.
-  final String secretName;
+  final pulumi.Input<String> secretName;
   /// (Available since v1.124.0)  The type of the secret.
-  final String secretType;
+  final pulumi.Input<String> secretType;
   /// A mapping of tags to assign to the resource, and can be used to filter secrets.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// (Available since v1.124.0)  The version number of the initial version.
-  final String versionId;
+  final pulumi.Input<String> versionId;
   /// (Available since v1.124.0)  The stage labels that mark the new secret version.
-  final List<String> versionStages;
+  final pulumi.Input<List<String>> versionStages;
 
   /// Creates a new [GetSecretsSecret].
   /// [arn] (Available since v1.124.0) A mapping of tags to assign to the resource.
@@ -74,18 +75,18 @@ class GetSecretsSecret {
 
   factory GetSecretsSecret.fromMap(Map<String, dynamic> map) {
     return GetSecretsSecret(
-      arn: map['arn'] as String,
-      description: map['description'] as String,
-      encryptionKeyId: map['encryptionKeyId'] as String,
-      id: map['id'] as String,
-      plannedDeleteTime: map['plannedDeleteTime'] as String,
-      secretData: map['secretData'] as String,
-      secretDataType: map['secretDataType'] as String,
-      secretName: map['secretName'] as String,
-      secretType: map['secretType'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      versionId: map['versionId'] as String,
-      versionStages: (map['versionStages'] as List).cast<String>(),
+      arn: (map['arn'] as String).input(),
+      description: (map['description'] as String).input(),
+      encryptionKeyId: (map['encryptionKeyId'] as String).input(),
+      id: (map['id'] as String).input(),
+      plannedDeleteTime: (map['plannedDeleteTime'] as String).input(),
+      secretData: (map['secretData'] as String).input(),
+      secretDataType: (map['secretDataType'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
+      secretType: (map['secretType'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      versionId: (map['versionId'] as String).input(),
+      versionStages: ((map['versionStages'] as List).cast<String>()).input(),
     );
   }
 }

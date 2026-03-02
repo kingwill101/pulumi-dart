@@ -5,11 +5,11 @@ import 'v3_function_nas_config_mount_point.dart';
 
 class V3FunctionNasConfig {
   /// Group ID
-  final int? groupId;
+  final pulumi.Input<int>? groupId;
   /// Mount point list See `mount_points` below.
-  final List<V3FunctionNasConfigMountPoint>? mountPoints;
+  final pulumi.Input<List<V3FunctionNasConfigMountPoint>>? mountPoints;
   /// Account ID
-  final int? userId;
+  final pulumi.Input<int>? userId;
 
   /// Creates a new [V3FunctionNasConfig].
   /// [groupId] Group ID
@@ -24,16 +24,16 @@ class V3FunctionNasConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'groupId': ?groupId,
-      'mountPoints': ?mountPoints == null ? null : pulumi.Input.encodeList<V3FunctionNasConfigMountPoint, Map<String, dynamic>>(mountPoints!, (value) => value.toMap()),
+      'mountPoints': ?pulumi.Input.mapOptionalInputValue<List<V3FunctionNasConfigMountPoint>, List<Map<String, dynamic>>>(mountPoints, (value) => pulumi.Input.encodeList<V3FunctionNasConfigMountPoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'userId': ?userId,
     };
   }
 
   factory V3FunctionNasConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionNasConfig(
-      groupId: map['groupId'] == null ? null : map['groupId'] as int,
-      mountPoints: map['mountPoints'] == null ? null : pulumi.Input.decodeList<V3FunctionNasConfigMountPoint>(map['mountPoints'], (value) => V3FunctionNasConfigMountPoint.fromMap((value as Map).cast<String, dynamic>())),
-      userId: map['userId'] == null ? null : map['userId'] as int,
+      groupId: map['groupId'] == null ? null : (map['groupId'] as int).input(),
+      mountPoints: map['mountPoints'] == null ? null : (pulumi.Input.decodeList<V3FunctionNasConfigMountPoint>(map['mountPoints'], (value) => V3FunctionNasConfigMountPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as int).input(),
     );
   }
 }

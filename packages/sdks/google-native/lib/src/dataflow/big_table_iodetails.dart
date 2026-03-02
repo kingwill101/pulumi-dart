@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata for a Cloud Bigtable connector used by the job.
 class BigTableIODetails {
   /// InstanceId accessed in the connection.
-  final String? instanceId;
+  final pulumi.Input<String>? instanceId;
   /// ProjectId accessed in the connection.
-  final String? project;
+  final pulumi.Input<String>? project;
   /// TableId accessed in the connection.
-  final String? tableId;
+  final pulumi.Input<String>? tableId;
 
   /// Creates a new [BigTableIODetails].
   /// [instanceId] InstanceId accessed in the connection.
@@ -30,9 +31,9 @@ class BigTableIODetails {
 
   factory BigTableIODetails.fromMap(Map<String, dynamic> map) {
     return BigTableIODetails(
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
-      tableId: map['tableId'] == null ? null : map['tableId'] as String,
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tableId: map['tableId'] == null ? null : (map['tableId'] as String).input(),
     );
   }
 }

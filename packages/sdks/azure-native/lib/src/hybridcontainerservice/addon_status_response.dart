@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of the addon
 class AddonStatusResponse {
   /// ErrorMessage will be set in the event that there is a terminal problem reconciling the AddOn and will contain a more verbose string suitable for logging and human consumption.
-  final String? errorMessage;
+  final pulumi.Input<String>? errorMessage;
   /// Phase represents the current phase of cluster actuation. E.g. Pending, Running, Terminating, Failed etc.
-  final String? phase;
-  final bool? ready;
+  final pulumi.Input<String>? phase;
+  final pulumi.Input<bool>? ready;
 
   /// Creates a new [AddonStatusResponse].
   /// [errorMessage] ErrorMessage will be set in the event that there is a terminal problem reconciling the AddOn and will contain a more verbose string suitable for logging and human consumption.
@@ -29,9 +30,9 @@ class AddonStatusResponse {
 
   factory AddonStatusResponse.fromMap(Map<String, dynamic> map) {
     return AddonStatusResponse(
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
-      phase: map['phase'] == null ? null : map['phase'] as String,
-      ready: map['ready'] == null ? null : map['ready'] as bool,
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
+      ready: map['ready'] == null ? null : (map['ready'] as bool).input(),
     );
   }
 }

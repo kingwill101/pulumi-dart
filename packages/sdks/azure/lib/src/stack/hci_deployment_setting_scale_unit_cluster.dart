@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HciDeploymentSettingScaleUnitCluster {
   /// Specifies the Azure blob service endpoint, for example, `core.windows.net`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final String azureServiceEndpoint;
+  final pulumi.Input<String> azureServiceEndpoint;
   /// Specifies the Azure Storage account name of the cloud witness for the Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final String cloudAccountName;
+  final pulumi.Input<String> cloudAccountName;
   /// Specifies the name of the cluster. It must be 3-15 characters long and contain only letters, numbers and hyphens. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the fileshare path of the local witness for the Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final String witnessPath;
+  final pulumi.Input<String> witnessPath;
   /// Specifies the type of the witness. Possible values are `Cloud`, `FileShare`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final String witnessType;
+  final pulumi.Input<String> witnessType;
 
   /// Creates a new [HciDeploymentSettingScaleUnitCluster].
   /// [azureServiceEndpoint] Specifies the Azure blob service endpoint, for example, `core.windows.net`. Changing this forces a new Stack HCI Deployment Setting to be created.
@@ -39,11 +40,11 @@ class HciDeploymentSettingScaleUnitCluster {
 
   factory HciDeploymentSettingScaleUnitCluster.fromMap(Map<String, dynamic> map) {
     return HciDeploymentSettingScaleUnitCluster(
-      azureServiceEndpoint: map['azureServiceEndpoint'] as String,
-      cloudAccountName: map['cloudAccountName'] as String,
-      name: map['name'] as String,
-      witnessPath: map['witnessPath'] as String,
-      witnessType: map['witnessType'] as String,
+      azureServiceEndpoint: (map['azureServiceEndpoint'] as String).input(),
+      cloudAccountName: (map['cloudAccountName'] as String).input(),
+      name: (map['name'] as String).input(),
+      witnessPath: (map['witnessPath'] as String).input(),
+      witnessType: (map['witnessType'] as String).input(),
     );
   }
 }

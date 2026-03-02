@@ -38,23 +38,15 @@ class ResourceGroupTemplateDeploymentArgs {
   /// [templateContent] The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
   /// [templateSpecVersionId] The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
   ResourceGroupTemplateDeploymentArgs({
-    pulumi.Output<String>? debugLevel,
-    required pulumi.Output<String> deploymentMode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parametersContent,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? templateContent,
-    pulumi.Output<String>? templateSpecVersionId,
-  }) :
-      debugLevel = pulumi.Input.asOptionalInput<String>(debugLevel),
-      deploymentMode = pulumi.Input.asInput<String>(deploymentMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parametersContent = pulumi.Input.asOptionalInput<String>(parametersContent),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateContent = pulumi.Input.asOptionalInput<String>(templateContent),
-      templateSpecVersionId = pulumi.Input.asOptionalInput<String>(templateSpecVersionId);
+    this.debugLevel,
+    required this.deploymentMode,
+    this.name,
+    this.parametersContent,
+    required this.resourceGroupName,
+    this.tags,
+    this.templateContent,
+    this.templateSpecVersionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class ResourceGroupTemplateDeploymentArgs {
 
   factory ResourceGroupTemplateDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGroupTemplateDeploymentArgs(
-      debugLevel: map['debugLevel'] == null ? null : pulumi.Output.create<String>(map['debugLevel'] as String),
-      deploymentMode: pulumi.Output.create<String>(map['deploymentMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parametersContent: map['parametersContent'] == null ? null : pulumi.Output.create<String>(map['parametersContent'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateContent: map['templateContent'] == null ? null : pulumi.Output.create<String>(map['templateContent'] as String),
-      templateSpecVersionId: map['templateSpecVersionId'] == null ? null : pulumi.Output.create<String>(map['templateSpecVersionId'] as String),
+      debugLevel: map['debugLevel'] == null ? null : (map['debugLevel'] as String).input(),
+      deploymentMode: (map['deploymentMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parametersContent: map['parametersContent'] == null ? null : (map['parametersContent'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateContent: map['templateContent'] == null ? null : (map['templateContent'] as String).input(),
+      templateSpecVersionId: map['templateSpecVersionId'] == null ? null : (map['templateSpecVersionId'] as String).input(),
     );
   }
 }

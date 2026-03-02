@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The details of the event associated with a prefix.
 class PeeringServicePrefixEventResponse {
   /// The description of the event associated with a prefix.
-  final String eventDescription;
+  final pulumi.Input<String> eventDescription;
   /// The level of the event associated with a prefix.
-  final String eventLevel;
+  final pulumi.Input<String> eventLevel;
   /// The summary of the event associated with a prefix.
-  final String eventSummary;
+  final pulumi.Input<String> eventSummary;
   /// The timestamp of the event associated with a prefix.
-  final String eventTimestamp;
+  final pulumi.Input<String> eventTimestamp;
   /// The type of the event associated with a prefix.
-  final String eventType;
+  final pulumi.Input<String> eventType;
 
   /// Creates a new [PeeringServicePrefixEventResponse].
   /// [eventDescription] The description of the event associated with a prefix.
@@ -40,11 +41,11 @@ class PeeringServicePrefixEventResponse {
 
   factory PeeringServicePrefixEventResponse.fromMap(Map<String, dynamic> map) {
     return PeeringServicePrefixEventResponse(
-      eventDescription: map['eventDescription'] as String,
-      eventLevel: map['eventLevel'] as String,
-      eventSummary: map['eventSummary'] as String,
-      eventTimestamp: map['eventTimestamp'] as String,
-      eventType: map['eventType'] as String,
+      eventDescription: (map['eventDescription'] as String).input(),
+      eventLevel: (map['eventLevel'] as String).input(),
+      eventSummary: (map['eventSummary'] as String).input(),
+      eventTimestamp: (map['eventTimestamp'] as String).input(),
+      eventType: (map['eventType'] as String).input(),
     );
   }
 }

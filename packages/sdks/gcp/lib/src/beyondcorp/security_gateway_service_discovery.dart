@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_gateway_service_discovery_api_gateway.dart';
 
 class SecurityGatewayServiceDiscovery {
   /// External API configuration.
   /// Structure is documented below.
-  final SecurityGatewayServiceDiscoveryApiGateway? apiGateway;
+  final pulumi.Input<SecurityGatewayServiceDiscoveryApiGateway>? apiGateway;
 
   /// Creates a new [SecurityGatewayServiceDiscovery].
   /// [apiGateway] External API configuration.
@@ -15,13 +16,13 @@ class SecurityGatewayServiceDiscovery {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiGateway': ?apiGateway == null ? null : apiGateway!.toMap(),
+      'apiGateway': ?pulumi.Input.mapOptionalInputValue<SecurityGatewayServiceDiscoveryApiGateway, Map<String, dynamic>>(apiGateway, (value) => value.toMap()),
     };
   }
 
   factory SecurityGatewayServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayServiceDiscovery(
-      apiGateway: map['apiGateway'] == null ? null : SecurityGatewayServiceDiscoveryApiGateway.fromMap((map['apiGateway'] as Map).cast<String, dynamic>()),
+      apiGateway: map['apiGateway'] == null ? null : (SecurityGatewayServiceDiscoveryApiGateway.fromMap((map['apiGateway'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

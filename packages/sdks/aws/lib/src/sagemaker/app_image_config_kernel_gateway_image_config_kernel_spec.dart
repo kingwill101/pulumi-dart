@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppImageConfigKernelGatewayImageConfigKernelSpec {
   /// The display name of the kernel.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The name of the kernel.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [AppImageConfigKernelGatewayImageConfigKernelSpec].
   /// [displayName] The display name of the kernel.
@@ -24,8 +25,8 @@ class AppImageConfigKernelGatewayImageConfigKernelSpec {
 
   factory AppImageConfigKernelGatewayImageConfigKernelSpec.fromMap(Map<String, dynamic> map) {
     return AppImageConfigKernelGatewayImageConfigKernelSpec(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      name: map['name'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworksPropertiesVipPool {
   /// Ending IP address for the IP Pool
-  final String? endIP;
+  final pulumi.Input<String>? endIP;
   /// Starting IP address for the IP Pool
-  final String? startIP;
+  final pulumi.Input<String>? startIP;
 
   /// Creates a new [VirtualNetworksPropertiesVipPool].
   /// [endIP] Ending IP address for the IP Pool
@@ -24,8 +25,8 @@ class VirtualNetworksPropertiesVipPool {
 
   factory VirtualNetworksPropertiesVipPool.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesVipPool(
-      endIP: map['endIP'] == null ? null : map['endIP'] as String,
-      startIP: map['startIP'] == null ? null : map['startIP'] as String,
+      endIP: map['endIP'] == null ? null : (map['endIP'] as String).input(),
+      startIP: map['startIP'] == null ? null : (map['startIP'] as String).input(),
     );
   }
 }

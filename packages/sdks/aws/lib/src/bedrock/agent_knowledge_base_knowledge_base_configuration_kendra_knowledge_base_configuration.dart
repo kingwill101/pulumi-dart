@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration {
   /// ARN of the Amazon Kendra index.
-  final String kendraIndexArn;
+  final pulumi.Input<String> kendraIndexArn;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration].
   /// [kendraIndexArn] ARN of the Amazon Kendra index.
@@ -19,7 +20,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfigurati
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration(
-      kendraIndexArn: map['kendraIndexArn'] as String,
+      kendraIndexArn: (map['kendraIndexArn'] as String).input(),
     );
   }
 }

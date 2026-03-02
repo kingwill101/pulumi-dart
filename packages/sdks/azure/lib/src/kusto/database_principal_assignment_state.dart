@@ -37,27 +37,17 @@ class DatabasePrincipalAssignmentState {
   /// [tenantId] The tenant id in which the principal resides. Changing this forces a new resource to be created.
   /// [tenantName] The name of the tenant.
   DatabasePrincipalAssignmentState({
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? principalId,
-    pulumi.Output<String>? principalName,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<String>? tenantName,
-  }) :
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      principalName = pulumi.Input.asOptionalInput<String>(principalName),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      tenantName = pulumi.Input.asOptionalInput<String>(tenantName);
+    this.clusterName,
+    this.databaseName,
+    this.name,
+    this.principalId,
+    this.principalName,
+    this.principalType,
+    this.resourceGroupName,
+    this.role,
+    this.tenantId,
+    this.tenantName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class DatabasePrincipalAssignmentState {
 
   factory DatabasePrincipalAssignmentState.fromMap(Map<String, dynamic> map) {
     return DatabasePrincipalAssignmentState(
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      principalName: map['principalName'] == null ? null : pulumi.Output.create<String>(map['principalName'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      tenantName: map['tenantName'] == null ? null : pulumi.Output.create<String>(map['tenantName'] as String),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      principalName: map['principalName'] == null ? null : (map['principalName'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantName: map['tenantName'] == null ? null : (map['tenantName'] as String).input(),
     );
   }
 }

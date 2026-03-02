@@ -32,23 +32,15 @@ class ConversationDiscoveryengineV1betaArgs {
   /// [state] The state of the Conversation.
   /// [userPseudoId] A unique identifier for tracking users.
   ConversationDiscoveryengineV1betaArgs({
-    required pulumi.Output<String> collectionId,
-    required pulumi.Output<String> dataStoreId,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<GoogleCloudDiscoveryengineV1betaConversationMessage>>? messages,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ConversationStateDiscoveryengineV1beta>? state,
-    pulumi.Output<String>? userPseudoId,
-  }) :
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      messages = pulumi.Input.asOptionalInput<List<GoogleCloudDiscoveryengineV1betaConversationMessage>>(messages),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<ConversationStateDiscoveryengineV1beta>(state),
-      userPseudoId = pulumi.Input.asOptionalInput<String>(userPseudoId);
+    required this.collectionId,
+    required this.dataStoreId,
+    this.location,
+    this.messages,
+    this.name,
+    this.project,
+    this.state,
+    this.userPseudoId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class ConversationDiscoveryengineV1betaArgs {
 
   factory ConversationDiscoveryengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ConversationDiscoveryengineV1betaArgs(
-      collectionId: pulumi.Output.create<String>(map['collectionId'] as String),
-      dataStoreId: pulumi.Output.create<String>(map['dataStoreId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      messages: map['messages'] == null ? null : pulumi.Output.create<List<GoogleCloudDiscoveryengineV1betaConversationMessage>>(pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1betaConversationMessage>(map['messages'], (value) => GoogleCloudDiscoveryengineV1betaConversationMessage.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<ConversationStateDiscoveryengineV1beta>(ConversationStateDiscoveryengineV1beta.fromValue(map['state'] as String)),
-      userPseudoId: map['userPseudoId'] == null ? null : pulumi.Output.create<String>(map['userPseudoId'] as String),
+      collectionId: (map['collectionId'] as String).input(),
+      dataStoreId: (map['dataStoreId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1betaConversationMessage>(map['messages'], (value) => GoogleCloudDiscoveryengineV1betaConversationMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: map['state'] == null ? null : (ConversationStateDiscoveryengineV1beta.fromValue(map['state'] as String)).input(),
+      userPseudoId: map['userPseudoId'] == null ? null : (map['userPseudoId'] as String).input(),
     );
   }
 }

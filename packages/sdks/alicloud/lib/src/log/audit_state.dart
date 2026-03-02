@@ -22,17 +22,12 @@ class AuditState {
   /// [resourceDirectoryType] Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
   /// [variableMap] Log audit detailed configuration.
   AuditState({
-    pulumi.Output<String>? aliuid,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<String>>? multiAccounts,
-    pulumi.Output<String>? resourceDirectoryType,
-    pulumi.Output<Map<String, String>>? variableMap,
-  }) :
-      aliuid = pulumi.Input.asOptionalInput<String>(aliuid),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      multiAccounts = pulumi.Input.asOptionalInput<List<String>>(multiAccounts),
-      resourceDirectoryType = pulumi.Input.asOptionalInput<String>(resourceDirectoryType),
-      variableMap = pulumi.Input.asOptionalInput<Map<String, String>>(variableMap);
+    this.aliuid,
+    this.displayName,
+    this.multiAccounts,
+    this.resourceDirectoryType,
+    this.variableMap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class AuditState {
 
   factory AuditState.fromMap(Map<String, dynamic> map) {
     return AuditState(
-      aliuid: map['aliuid'] == null ? null : pulumi.Output.create<String>(map['aliuid'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      multiAccounts: map['multiAccounts'] == null ? null : pulumi.Output.create<List<String>>((map['multiAccounts'] as List).cast<String>()),
-      resourceDirectoryType: map['resourceDirectoryType'] == null ? null : pulumi.Output.create<String>(map['resourceDirectoryType'] as String),
-      variableMap: map['variableMap'] == null ? null : pulumi.Output.create<Map<String, String>>((map['variableMap'] as Map).cast<String, String>()),
+      aliuid: map['aliuid'] == null ? null : (map['aliuid'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      multiAccounts: map['multiAccounts'] == null ? null : ((map['multiAccounts'] as List).cast<String>()).input(),
+      resourceDirectoryType: map['resourceDirectoryType'] == null ? null : (map['resourceDirectoryType'] as String).input(),
+      variableMap: map['variableMap'] == null ? null : ((map['variableMap'] as Map).cast<String, String>()).input(),
     );
   }
 }

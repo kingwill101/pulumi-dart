@@ -37,25 +37,16 @@ class EventEndpointState {
   /// [roleArn] The ARN of the IAM role used for replication between event buses.
   /// [routingConfig] Parameters used for routing, including the health check and secondary Region. Documented below.
   EventEndpointState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? endpointUrl,
-    pulumi.Output<List<EventEndpointEventBus>>? eventBuses,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<EventEndpointReplicationConfig>? replicationConfig,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<EventEndpointRoutingConfig>? routingConfig,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpointUrl = pulumi.Input.asOptionalInput<String>(endpointUrl),
-      eventBuses = pulumi.Input.asOptionalInput<List<EventEndpointEventBus>>(eventBuses),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationConfig = pulumi.Input.asOptionalInput<EventEndpointReplicationConfig>(replicationConfig),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      routingConfig = pulumi.Input.asOptionalInput<EventEndpointRoutingConfig>(routingConfig);
+    this.arn,
+    this.description,
+    this.endpointUrl,
+    this.eventBuses,
+    this.name,
+    this.region,
+    this.replicationConfig,
+    this.roleArn,
+    this.routingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class EventEndpointState {
 
   factory EventEndpointState.fromMap(Map<String, dynamic> map) {
     return EventEndpointState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpointUrl: map['endpointUrl'] == null ? null : pulumi.Output.create<String>(map['endpointUrl'] as String),
-      eventBuses: map['eventBuses'] == null ? null : pulumi.Output.create<List<EventEndpointEventBus>>(pulumi.Input.decodeList<EventEndpointEventBus>(map['eventBuses'], (value) => EventEndpointEventBus.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicationConfig: map['replicationConfig'] == null ? null : pulumi.Output.create<EventEndpointReplicationConfig>(EventEndpointReplicationConfig.fromMap((map['replicationConfig'] as Map).cast<String, dynamic>())),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      routingConfig: map['routingConfig'] == null ? null : pulumi.Output.create<EventEndpointRoutingConfig>(EventEndpointRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl'] as String).input(),
+      eventBuses: map['eventBuses'] == null ? null : (pulumi.Input.decodeList<EventEndpointEventBus>(map['eventBuses'], (value) => EventEndpointEventBus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicationConfig: map['replicationConfig'] == null ? null : (EventEndpointReplicationConfig.fromMap((map['replicationConfig'] as Map).cast<String, dynamic>())).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      routingConfig: map['routingConfig'] == null ? null : (EventEndpointRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

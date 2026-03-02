@@ -28,19 +28,13 @@ class GetResourceArgs {
   /// [resourceProviderNamespace] The namespace of the resource provider.
   /// [resourceType] The resource type of the resource.
   GetResourceArgs({
-    required pulumi.Output<String> apiVersion,
-    required pulumi.Output<String> parentResourcePath,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<String> resourceProviderNamespace,
-    required pulumi.Output<String> resourceType,
-  }) :
-      apiVersion = pulumi.Input.asInput<String>(apiVersion),
-      parentResourcePath = pulumi.Input.asInput<String>(parentResourcePath),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      resourceProviderNamespace = pulumi.Input.asInput<String>(resourceProviderNamespace),
-      resourceType = pulumi.Input.asInput<String>(resourceType);
+    required this.apiVersion,
+    required this.parentResourcePath,
+    required this.resourceGroupName,
+    required this.resourceName,
+    required this.resourceProviderNamespace,
+    required this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetResourceArgs {
 
   factory GetResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceArgs(
-      apiVersion: pulumi.Output.create<String>(map['apiVersion'] as String),
-      parentResourcePath: pulumi.Output.create<String>(map['parentResourcePath'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      resourceProviderNamespace: pulumi.Output.create<String>(map['resourceProviderNamespace'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
+      apiVersion: (map['apiVersion'] as String).input(),
+      parentResourcePath: (map['parentResourcePath'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      resourceProviderNamespace: (map['resourceProviderNamespace'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

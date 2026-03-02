@@ -40,27 +40,17 @@ class GetControlPoliciesArgs {
   /// [proto] The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
   /// [source] The source address in the access control policy.
   GetControlPoliciesArgs({
-    pulumi.Output<String>? aclAction,
-    pulumi.Output<String>? aclUuid,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destination,
-    required pulumi.Output<String> direction,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? proto,
-    pulumi.Output<String>? source,
-  }) :
-      aclAction = pulumi.Input.asOptionalInput<String>(aclAction),
-      aclUuid = pulumi.Input.asOptionalInput<String>(aclUuid),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destination = pulumi.Input.asOptionalInput<String>(destination),
-      direction = pulumi.Input.asInput<String>(direction),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      proto = pulumi.Input.asOptionalInput<String>(proto),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    this.aclAction,
+    this.aclUuid,
+    this.description,
+    this.destination,
+    required this.direction,
+    this.ipVersion,
+    this.lang,
+    this.outputFile,
+    this.proto,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class GetControlPoliciesArgs {
 
   factory GetControlPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetControlPoliciesArgs(
-      aclAction: map['aclAction'] == null ? null : pulumi.Output.create<String>(map['aclAction'] as String),
-      aclUuid: map['aclUuid'] == null ? null : pulumi.Output.create<String>(map['aclUuid'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destination: map['destination'] == null ? null : pulumi.Output.create<String>(map['destination'] as String),
-      direction: pulumi.Output.create<String>(map['direction'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      proto: map['proto'] == null ? null : pulumi.Output.create<String>(map['proto'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      aclAction: map['aclAction'] == null ? null : (map['aclAction'] as String).input(),
+      aclUuid: map['aclUuid'] == null ? null : (map['aclUuid'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      proto: map['proto'] == null ? null : (map['proto'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

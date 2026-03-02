@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'device_presence_verification_details_response.dart';
 
 /// Details Related To Provision Resource.
 class ProvisioningDetailsResponse {
   /// Auto Provisioning Details.
-  final String? autoProvisioningStatus;
+  final pulumi.Input<String>? autoProvisioningStatus;
   /// Proof of possession details.
-  final DevicePresenceVerificationDetailsResponse? devicePresenceVerification;
+  final pulumi.Input<DevicePresenceVerificationDetailsResponse>? devicePresenceVerification;
   /// Management Resource ArmId.
-  final String? managementResourceArmId;
+  final pulumi.Input<String>? managementResourceArmId;
   /// Provisioning Resource Arm ID.
-  final String? provisioningArmId;
+  final pulumi.Input<String>? provisioningArmId;
   /// Provisioning End Point.
-  final String? provisioningEndPoint;
+  final pulumi.Input<String>? provisioningEndPoint;
   /// Quantity of the devices.
-  final int? quantity;
+  final pulumi.Input<int>? quantity;
   /// Arc Enabled Resource Arm id.
-  final String? readyToConnectArmId;
+  final pulumi.Input<String>? readyToConnectArmId;
   /// Serial Number for the Device.
-  final String? serialNumber;
+  final pulumi.Input<String>? serialNumber;
   /// Unique Identity for a Device.
-  final String uniqueDeviceIdentifier;
+  final pulumi.Input<String> uniqueDeviceIdentifier;
   /// Vendor Name for the Device , (for 1P devices - Microsoft).
-  final String? vendorName;
+  final pulumi.Input<String>? vendorName;
 
   /// Creates a new [ProvisioningDetailsResponse].
   /// [autoProvisioningStatus] Auto Provisioning Details.
@@ -52,7 +53,7 @@ class ProvisioningDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoProvisioningStatus': ?autoProvisioningStatus,
-      'devicePresenceVerification': ?devicePresenceVerification == null ? null : devicePresenceVerification!.toMap(),
+      'devicePresenceVerification': ?pulumi.Input.mapOptionalInputValue<DevicePresenceVerificationDetailsResponse, Map<String, dynamic>>(devicePresenceVerification, (value) => value.toMap()),
       'managementResourceArmId': ?managementResourceArmId,
       'provisioningArmId': ?provisioningArmId,
       'provisioningEndPoint': ?provisioningEndPoint,
@@ -66,16 +67,16 @@ class ProvisioningDetailsResponse {
 
   factory ProvisioningDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ProvisioningDetailsResponse(
-      autoProvisioningStatus: map['autoProvisioningStatus'] == null ? null : map['autoProvisioningStatus'] as String,
-      devicePresenceVerification: map['devicePresenceVerification'] == null ? null : DevicePresenceVerificationDetailsResponse.fromMap((map['devicePresenceVerification'] as Map).cast<String, dynamic>()),
-      managementResourceArmId: map['managementResourceArmId'] == null ? null : map['managementResourceArmId'] as String,
-      provisioningArmId: map['provisioningArmId'] == null ? null : map['provisioningArmId'] as String,
-      provisioningEndPoint: map['provisioningEndPoint'] == null ? null : map['provisioningEndPoint'] as String,
-      quantity: map['quantity'] == null ? null : map['quantity'] as int,
-      readyToConnectArmId: map['readyToConnectArmId'] == null ? null : map['readyToConnectArmId'] as String,
-      serialNumber: map['serialNumber'] == null ? null : map['serialNumber'] as String,
-      uniqueDeviceIdentifier: map['uniqueDeviceIdentifier'] as String,
-      vendorName: map['vendorName'] == null ? null : map['vendorName'] as String,
+      autoProvisioningStatus: map['autoProvisioningStatus'] == null ? null : (map['autoProvisioningStatus'] as String).input(),
+      devicePresenceVerification: map['devicePresenceVerification'] == null ? null : (DevicePresenceVerificationDetailsResponse.fromMap((map['devicePresenceVerification'] as Map).cast<String, dynamic>())).input(),
+      managementResourceArmId: map['managementResourceArmId'] == null ? null : (map['managementResourceArmId'] as String).input(),
+      provisioningArmId: map['provisioningArmId'] == null ? null : (map['provisioningArmId'] as String).input(),
+      provisioningEndPoint: map['provisioningEndPoint'] == null ? null : (map['provisioningEndPoint'] as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity'] as int).input(),
+      readyToConnectArmId: map['readyToConnectArmId'] == null ? null : (map['readyToConnectArmId'] as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      uniqueDeviceIdentifier: (map['uniqueDeviceIdentifier'] as String).input(),
+      vendorName: map['vendorName'] == null ? null : (map['vendorName'] as String).input(),
     );
   }
 }

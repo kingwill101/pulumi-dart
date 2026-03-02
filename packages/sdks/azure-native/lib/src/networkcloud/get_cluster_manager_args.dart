@@ -16,11 +16,9 @@ class GetClusterManagerArgs {
   /// [clusterManagerName] The name of the cluster manager.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetClusterManagerArgs({
-    required pulumi.Output<String> clusterManagerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterManagerName = pulumi.Input.asInput<String>(clusterManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterManagerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetClusterManagerArgs {
 
   factory GetClusterManagerArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterManagerArgs(
-      clusterManagerName: pulumi.Output.create<String>(map['clusterManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterManagerName: (map['clusterManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

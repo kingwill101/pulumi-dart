@@ -32,21 +32,14 @@ class ScheduledPreloadJobState {
   /// [siteId] The site ID.
   /// [urlList] A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
   ScheduledPreloadJobState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? insertWay,
-    pulumi.Output<String>? ossUrl,
-    pulumi.Output<String>? scheduledPreloadJobId,
-    pulumi.Output<String>? scheduledPreloadJobName,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<String>? urlList,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      insertWay = pulumi.Input.asOptionalInput<String>(insertWay),
-      ossUrl = pulumi.Input.asOptionalInput<String>(ossUrl),
-      scheduledPreloadJobId = pulumi.Input.asOptionalInput<String>(scheduledPreloadJobId),
-      scheduledPreloadJobName = pulumi.Input.asOptionalInput<String>(scheduledPreloadJobName),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      urlList = pulumi.Input.asOptionalInput<String>(urlList);
+    this.createTime,
+    this.insertWay,
+    this.ossUrl,
+    this.scheduledPreloadJobId,
+    this.scheduledPreloadJobName,
+    this.siteId,
+    this.urlList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ScheduledPreloadJobState {
 
   factory ScheduledPreloadJobState.fromMap(Map<String, dynamic> map) {
     return ScheduledPreloadJobState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      insertWay: map['insertWay'] == null ? null : pulumi.Output.create<String>(map['insertWay'] as String),
-      ossUrl: map['ossUrl'] == null ? null : pulumi.Output.create<String>(map['ossUrl'] as String),
-      scheduledPreloadJobId: map['scheduledPreloadJobId'] == null ? null : pulumi.Output.create<String>(map['scheduledPreloadJobId'] as String),
-      scheduledPreloadJobName: map['scheduledPreloadJobName'] == null ? null : pulumi.Output.create<String>(map['scheduledPreloadJobName'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      urlList: map['urlList'] == null ? null : pulumi.Output.create<String>(map['urlList'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      insertWay: map['insertWay'] == null ? null : (map['insertWay'] as String).input(),
+      ossUrl: map['ossUrl'] == null ? null : (map['ossUrl'] as String).input(),
+      scheduledPreloadJobId: map['scheduledPreloadJobId'] == null ? null : (map['scheduledPreloadJobId'] as String).input(),
+      scheduledPreloadJobName: map['scheduledPreloadJobName'] == null ? null : (map['scheduledPreloadJobName'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      urlList: map['urlList'] == null ? null : (map['urlList'] as String).input(),
     );
   }
 }

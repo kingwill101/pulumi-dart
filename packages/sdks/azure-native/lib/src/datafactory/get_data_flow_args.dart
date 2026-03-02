@@ -19,13 +19,10 @@ class GetDataFlowArgs {
   /// [factoryName] The factory name.
   /// [resourceGroupName] The resource group name.
   GetDataFlowArgs({
-    required pulumi.Output<String> dataFlowName,
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dataFlowName = pulumi.Input.asInput<String>(dataFlowName),
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dataFlowName,
+    required this.factoryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDataFlowArgs {
 
   factory GetDataFlowArgs.fromMap(Map<String, dynamic> map) {
     return GetDataFlowArgs(
-      dataFlowName: pulumi.Output.create<String>(map['dataFlowName'] as String),
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dataFlowName: (map['dataFlowName'] as String).input(),
+      factoryName: (map['factoryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

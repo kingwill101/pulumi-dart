@@ -22,15 +22,11 @@ class GetAssessmentArgs {
   /// [projectName] Name of the Azure Migrate project.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   GetAssessmentArgs({
-    required pulumi.Output<String> assessmentName,
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      assessmentName = pulumi.Input.asInput<String>(assessmentName),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.assessmentName,
+    required this.groupName,
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetAssessmentArgs {
 
   factory GetAssessmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAssessmentArgs(
-      assessmentName: pulumi.Output.create<String>(map['assessmentName'] as String),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      assessmentName: (map['assessmentName'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

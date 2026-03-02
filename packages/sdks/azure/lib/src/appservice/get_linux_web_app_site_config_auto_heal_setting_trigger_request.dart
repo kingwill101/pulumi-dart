@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest {
   /// The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
-  final int count;
+  final pulumi.Input<int> count;
   /// The time interval in the form `hh:mm:ss`.
-  final String interval;
+  final pulumi.Input<String> interval;
 
   /// Creates a new [GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest].
   /// [count] The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
@@ -24,8 +25,8 @@ class GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest {
 
   factory GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppSiteConfigAutoHealSettingTriggerRequest(
-      count: map['count'] as int,
-      interval: map['interval'] as String,
+      count: (map['count'] as int).input(),
+      interval: (map['interval'] as String).input(),
     );
   }
 }

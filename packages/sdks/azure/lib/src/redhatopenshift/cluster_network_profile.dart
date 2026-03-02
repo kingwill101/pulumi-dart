@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNetworkProfile {
   /// The outbound (egress) routing method. Possible values are `Loadbalancer` and `UserDefinedRouting`. Defaults to `Loadbalancer`. Changing this forces a new resource to be created.
-  final String? outboundType;
+  final pulumi.Input<String>? outboundType;
   /// The CIDR to use for pod IP addresses. Changing this forces a new resource to be created.
-  final String podCidr;
+  final pulumi.Input<String> podCidr;
   /// Whether a preconfigured network security group is being used on the subnets. Defaults to `false`. Changing this forces a new resource to be created.
-  final bool? preconfiguredNetworkSecurityGroupEnabled;
+  final pulumi.Input<bool>? preconfiguredNetworkSecurityGroupEnabled;
   /// The network range used by the OpenShift service. Changing this forces a new resource to be created.
-  final String serviceCidr;
+  final pulumi.Input<String> serviceCidr;
 
   /// Creates a new [ClusterNetworkProfile].
   /// [outboundType] The outbound (egress) routing method. Possible values are `Loadbalancer` and `UserDefinedRouting`. Defaults to `Loadbalancer`. Changing this forces a new resource to be created.
@@ -34,10 +35,10 @@ class ClusterNetworkProfile {
 
   factory ClusterNetworkProfile.fromMap(Map<String, dynamic> map) {
     return ClusterNetworkProfile(
-      outboundType: map['outboundType'] == null ? null : map['outboundType'] as String,
-      podCidr: map['podCidr'] as String,
-      preconfiguredNetworkSecurityGroupEnabled: map['preconfiguredNetworkSecurityGroupEnabled'] == null ? null : map['preconfiguredNetworkSecurityGroupEnabled'] as bool,
-      serviceCidr: map['serviceCidr'] as String,
+      outboundType: map['outboundType'] == null ? null : (map['outboundType'] as String).input(),
+      podCidr: (map['podCidr'] as String).input(),
+      preconfiguredNetworkSecurityGroupEnabled: map['preconfiguredNetworkSecurityGroupEnabled'] == null ? null : (map['preconfiguredNetworkSecurityGroupEnabled'] as bool).input(),
+      serviceCidr: (map['serviceCidr'] as String).input(),
     );
   }
 }

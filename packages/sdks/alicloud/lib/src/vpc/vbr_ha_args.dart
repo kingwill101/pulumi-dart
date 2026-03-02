@@ -28,17 +28,12 @@ class VbrHaArgs {
   /// [vbrHaName] VBR switch group name.
   /// [vbrId] The VBR instance ID.
   VbrHaArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> peerVbrId,
-    pulumi.Output<String>? vbrHaName,
-    required pulumi.Output<String> vbrId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      peerVbrId = pulumi.Input.asInput<String>(peerVbrId),
-      vbrHaName = pulumi.Input.asOptionalInput<String>(vbrHaName),
-      vbrId = pulumi.Input.asInput<String>(vbrId);
+    this.description,
+    this.dryRun,
+    required this.peerVbrId,
+    this.vbrHaName,
+    required this.vbrId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class VbrHaArgs {
 
   factory VbrHaArgs.fromMap(Map<String, dynamic> map) {
     return VbrHaArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      peerVbrId: pulumi.Output.create<String>(map['peerVbrId'] as String),
-      vbrHaName: map['vbrHaName'] == null ? null : pulumi.Output.create<String>(map['vbrHaName'] as String),
-      vbrId: pulumi.Output.create<String>(map['vbrId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      peerVbrId: (map['peerVbrId'] as String).input(),
+      vbrHaName: map['vbrHaName'] == null ? null : (map['vbrHaName'] as String).input(),
+      vbrId: (map['vbrId'] as String).input(),
     );
   }
 }

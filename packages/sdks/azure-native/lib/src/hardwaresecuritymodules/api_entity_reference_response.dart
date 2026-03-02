@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The API entity reference.
 class ApiEntityReferenceResponse {
   /// The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [ApiEntityReferenceResponse].
   /// [resourceId] The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
@@ -20,7 +21,7 @@ class ApiEntityReferenceResponse {
 
   factory ApiEntityReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ApiEntityReferenceResponse(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

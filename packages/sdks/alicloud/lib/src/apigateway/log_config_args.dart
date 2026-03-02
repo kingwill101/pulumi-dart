@@ -19,13 +19,10 @@ class LogConfigArgs {
   /// [slsLogStore] The name of the Log Store.
   /// [slsProject] The name of the Project.
   LogConfigArgs({
-    required pulumi.Output<String> logType,
-    required pulumi.Output<String> slsLogStore,
-    required pulumi.Output<String> slsProject,
-  }) :
-      logType = pulumi.Input.asInput<String>(logType),
-      slsLogStore = pulumi.Input.asInput<String>(slsLogStore),
-      slsProject = pulumi.Input.asInput<String>(slsProject);
+    required this.logType,
+    required this.slsLogStore,
+    required this.slsProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LogConfigArgs {
 
   factory LogConfigArgs.fromMap(Map<String, dynamic> map) {
     return LogConfigArgs(
-      logType: pulumi.Output.create<String>(map['logType'] as String),
-      slsLogStore: pulumi.Output.create<String>(map['slsLogStore'] as String),
-      slsProject: pulumi.Output.create<String>(map['slsProject'] as String),
+      logType: (map['logType'] as String).input(),
+      slsLogStore: (map['slsLogStore'] as String).input(),
+      slsProject: (map['slsProject'] as String).input(),
     );
   }
 }

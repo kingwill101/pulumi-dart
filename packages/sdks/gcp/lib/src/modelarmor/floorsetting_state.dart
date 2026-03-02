@@ -51,29 +51,18 @@ class FloorsettingState {
   /// [parent] Will be any one of these:
   /// [updateTime] [Output only] Update timestamp
   FloorsettingState({
-    pulumi.Output<FloorsettingAiPlatformFloorSetting>? aiPlatformFloorSetting,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? enableFloorSettingEnforcement,
-    pulumi.Output<FloorsettingFilterConfig>? filterConfig,
-    pulumi.Output<FloorsettingFloorSettingMetadata>? floorSettingMetadata,
-    pulumi.Output<FloorsettingGoogleMcpServerFloorSetting>? googleMcpServerFloorSetting,
-    pulumi.Output<List<String>>? integratedServices,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? updateTime,
-  }) :
-      aiPlatformFloorSetting = pulumi.Input.asOptionalInput<FloorsettingAiPlatformFloorSetting>(aiPlatformFloorSetting),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      enableFloorSettingEnforcement = pulumi.Input.asOptionalInput<bool>(enableFloorSettingEnforcement),
-      filterConfig = pulumi.Input.asOptionalInput<FloorsettingFilterConfig>(filterConfig),
-      floorSettingMetadata = pulumi.Input.asOptionalInput<FloorsettingFloorSettingMetadata>(floorSettingMetadata),
-      googleMcpServerFloorSetting = pulumi.Input.asOptionalInput<FloorsettingGoogleMcpServerFloorSetting>(googleMcpServerFloorSetting),
-      integratedServices = pulumi.Input.asOptionalInput<List<String>>(integratedServices),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.aiPlatformFloorSetting,
+    this.createTime,
+    this.enableFloorSettingEnforcement,
+    this.filterConfig,
+    this.floorSettingMetadata,
+    this.googleMcpServerFloorSetting,
+    this.integratedServices,
+    this.location,
+    this.name,
+    this.parent,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,17 +82,17 @@ class FloorsettingState {
 
   factory FloorsettingState.fromMap(Map<String, dynamic> map) {
     return FloorsettingState(
-      aiPlatformFloorSetting: map['aiPlatformFloorSetting'] == null ? null : pulumi.Output.create<FloorsettingAiPlatformFloorSetting>(FloorsettingAiPlatformFloorSetting.fromMap((map['aiPlatformFloorSetting'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      enableFloorSettingEnforcement: map['enableFloorSettingEnforcement'] == null ? null : pulumi.Output.create<bool>(map['enableFloorSettingEnforcement'] as bool),
-      filterConfig: map['filterConfig'] == null ? null : pulumi.Output.create<FloorsettingFilterConfig>(FloorsettingFilterConfig.fromMap((map['filterConfig'] as Map).cast<String, dynamic>())),
-      floorSettingMetadata: map['floorSettingMetadata'] == null ? null : pulumi.Output.create<FloorsettingFloorSettingMetadata>(FloorsettingFloorSettingMetadata.fromMap((map['floorSettingMetadata'] as Map).cast<String, dynamic>())),
-      googleMcpServerFloorSetting: map['googleMcpServerFloorSetting'] == null ? null : pulumi.Output.create<FloorsettingGoogleMcpServerFloorSetting>(FloorsettingGoogleMcpServerFloorSetting.fromMap((map['googleMcpServerFloorSetting'] as Map).cast<String, dynamic>())),
-      integratedServices: map['integratedServices'] == null ? null : pulumi.Output.create<List<String>>((map['integratedServices'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      aiPlatformFloorSetting: map['aiPlatformFloorSetting'] == null ? null : (FloorsettingAiPlatformFloorSetting.fromMap((map['aiPlatformFloorSetting'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      enableFloorSettingEnforcement: map['enableFloorSettingEnforcement'] == null ? null : (map['enableFloorSettingEnforcement'] as bool).input(),
+      filterConfig: map['filterConfig'] == null ? null : (FloorsettingFilterConfig.fromMap((map['filterConfig'] as Map).cast<String, dynamic>())).input(),
+      floorSettingMetadata: map['floorSettingMetadata'] == null ? null : (FloorsettingFloorSettingMetadata.fromMap((map['floorSettingMetadata'] as Map).cast<String, dynamic>())).input(),
+      googleMcpServerFloorSetting: map['googleMcpServerFloorSetting'] == null ? null : (FloorsettingGoogleMcpServerFloorSetting.fromMap((map['googleMcpServerFloorSetting'] as Map).cast<String, dynamic>())).input(),
+      integratedServices: map['integratedServices'] == null ? null : ((map['integratedServices'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

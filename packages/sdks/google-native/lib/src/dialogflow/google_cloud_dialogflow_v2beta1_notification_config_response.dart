@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines notification behavior.
 class GoogleCloudDialogflowV2beta1NotificationConfigResponse {
   /// Format of message.
-  final String messageFormat;
+  final pulumi.Input<String> messageFormat;
   /// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
-  final String topic;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1NotificationConfigResponse].
   /// [messageFormat] Format of message.
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowV2beta1NotificationConfigResponse {
 
   factory GoogleCloudDialogflowV2beta1NotificationConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1NotificationConfigResponse(
-      messageFormat: map['messageFormat'] as String,
-      topic: map['topic'] as String,
+      messageFormat: (map['messageFormat'] as String).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

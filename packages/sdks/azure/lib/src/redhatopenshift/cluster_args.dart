@@ -50,29 +50,18 @@ class ClusterArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [workerProfile] A `worker_profile` block as defined below. Changing this forces a new resource to be created.
   ClusterArgs({
-    required pulumi.Output<ClusterApiServerProfile> apiServerProfile,
-    required pulumi.Output<ClusterClusterProfile> clusterProfile,
-    required pulumi.Output<ClusterIngressProfile> ingressProfile,
-    pulumi.Output<String>? location,
-    required pulumi.Output<ClusterMainProfile> mainProfile,
-    pulumi.Output<String>? name,
-    required pulumi.Output<ClusterNetworkProfile> networkProfile,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<ClusterServicePrincipal> servicePrincipal,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<ClusterWorkerProfile> workerProfile,
-  }) :
-      apiServerProfile = pulumi.Input.asInput<ClusterApiServerProfile>(apiServerProfile),
-      clusterProfile = pulumi.Input.asInput<ClusterClusterProfile>(clusterProfile),
-      ingressProfile = pulumi.Input.asInput<ClusterIngressProfile>(ingressProfile),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mainProfile = pulumi.Input.asInput<ClusterMainProfile>(mainProfile),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkProfile = pulumi.Input.asInput<ClusterNetworkProfile>(networkProfile),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      servicePrincipal = pulumi.Input.asInput<ClusterServicePrincipal>(servicePrincipal),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workerProfile = pulumi.Input.asInput<ClusterWorkerProfile>(workerProfile);
+    required this.apiServerProfile,
+    required this.clusterProfile,
+    required this.ingressProfile,
+    this.location,
+    required this.mainProfile,
+    this.name,
+    required this.networkProfile,
+    required this.resourceGroupName,
+    required this.servicePrincipal,
+    this.tags,
+    required this.workerProfile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,17 +81,17 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      apiServerProfile: pulumi.Output.create<ClusterApiServerProfile>(ClusterApiServerProfile.fromMap((map['apiServerProfile'] as Map).cast<String, dynamic>())),
-      clusterProfile: pulumi.Output.create<ClusterClusterProfile>(ClusterClusterProfile.fromMap((map['clusterProfile'] as Map).cast<String, dynamic>())),
-      ingressProfile: pulumi.Output.create<ClusterIngressProfile>(ClusterIngressProfile.fromMap((map['ingressProfile'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mainProfile: pulumi.Output.create<ClusterMainProfile>(ClusterMainProfile.fromMap((map['mainProfile'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkProfile: pulumi.Output.create<ClusterNetworkProfile>(ClusterNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      servicePrincipal: pulumi.Output.create<ClusterServicePrincipal>(ClusterServicePrincipal.fromMap((map['servicePrincipal'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workerProfile: pulumi.Output.create<ClusterWorkerProfile>(ClusterWorkerProfile.fromMap((map['workerProfile'] as Map).cast<String, dynamic>())),
+      apiServerProfile: (ClusterApiServerProfile.fromMap((map['apiServerProfile'] as Map).cast<String, dynamic>())).input(),
+      clusterProfile: (ClusterClusterProfile.fromMap((map['clusterProfile'] as Map).cast<String, dynamic>())).input(),
+      ingressProfile: (ClusterIngressProfile.fromMap((map['ingressProfile'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mainProfile: (ClusterMainProfile.fromMap((map['mainProfile'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkProfile: (ClusterNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      servicePrincipal: (ClusterServicePrincipal.fromMap((map['servicePrincipal'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workerProfile: (ClusterWorkerProfile.fromMap((map['workerProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

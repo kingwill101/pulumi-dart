@@ -33,21 +33,14 @@ class RouteServerArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   RouteServerArgs({
-    required pulumi.Output<int> amazonSideAsn,
-    pulumi.Output<String>? persistRoutes,
-    pulumi.Output<int>? persistRoutesDuration,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? snsNotificationsEnabled,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<RouteServerTimeouts>? timeouts,
-  }) :
-      amazonSideAsn = pulumi.Input.asInput<int>(amazonSideAsn),
-      persistRoutes = pulumi.Input.asOptionalInput<String>(persistRoutes),
-      persistRoutesDuration = pulumi.Input.asOptionalInput<int>(persistRoutesDuration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snsNotificationsEnabled = pulumi.Input.asOptionalInput<bool>(snsNotificationsEnabled),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<RouteServerTimeouts>(timeouts);
+    required this.amazonSideAsn,
+    this.persistRoutes,
+    this.persistRoutesDuration,
+    this.region,
+    this.snsNotificationsEnabled,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class RouteServerArgs {
 
   factory RouteServerArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerArgs(
-      amazonSideAsn: pulumi.Output.create<int>(map['amazonSideAsn'] as int),
-      persistRoutes: map['persistRoutes'] == null ? null : pulumi.Output.create<String>(map['persistRoutes'] as String),
-      persistRoutesDuration: map['persistRoutesDuration'] == null ? null : pulumi.Output.create<int>(map['persistRoutesDuration'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snsNotificationsEnabled: map['snsNotificationsEnabled'] == null ? null : pulumi.Output.create<bool>(map['snsNotificationsEnabled'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<RouteServerTimeouts>(RouteServerTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      amazonSideAsn: (map['amazonSideAsn'] as int).input(),
+      persistRoutes: map['persistRoutes'] == null ? null : (map['persistRoutes'] as String).input(),
+      persistRoutesDuration: map['persistRoutesDuration'] == null ? null : (map['persistRoutesDuration'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snsNotificationsEnabled: map['snsNotificationsEnabled'] == null ? null : (map['snsNotificationsEnabled'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (RouteServerTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

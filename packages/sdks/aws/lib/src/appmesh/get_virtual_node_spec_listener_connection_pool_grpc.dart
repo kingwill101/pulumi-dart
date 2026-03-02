@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecListenerConnectionPoolGrpc {
-  final int maxRequests;
+  final pulumi.Input<int> maxRequests;
 
   /// Creates a new [GetVirtualNodeSpecListenerConnectionPoolGrpc].
   /// [maxRequests] Required.
@@ -18,7 +19,7 @@ class GetVirtualNodeSpecListenerConnectionPoolGrpc {
 
   factory GetVirtualNodeSpecListenerConnectionPoolGrpc.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerConnectionPoolGrpc(
-      maxRequests: map['maxRequests'] as int,
+      maxRequests: (map['maxRequests'] as int).input(),
     );
   }
 }

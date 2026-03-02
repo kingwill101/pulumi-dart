@@ -16,11 +16,9 @@ class GroupArgs {
   /// [groupId] GroupId.
   /// [groupName] GroupName.
   GroupArgs({
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? groupName,
-  }) :
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName);
+    this.groupId,
+    this.groupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
     );
   }
 }

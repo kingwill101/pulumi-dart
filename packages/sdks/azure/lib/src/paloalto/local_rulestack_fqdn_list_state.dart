@@ -22,17 +22,12 @@ class LocalRulestackFqdnListState {
   /// [name] The name which should be used for this Palo Alto Local Rulestack FQDN List.
   /// [rulestackId] The ID of the TODO. Changing this forces a new Palo Alto Local Rulestack FQDN List to be created.
   LocalRulestackFqdnListState({
-    pulumi.Output<String>? auditComment,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? fullyQualifiedDomainNames,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? rulestackId,
-  }) :
-      auditComment = pulumi.Input.asOptionalInput<String>(auditComment),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fullyQualifiedDomainNames = pulumi.Input.asOptionalInput<List<String>>(fullyQualifiedDomainNames),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      rulestackId = pulumi.Input.asOptionalInput<String>(rulestackId);
+    this.auditComment,
+    this.description,
+    this.fullyQualifiedDomainNames,
+    this.name,
+    this.rulestackId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class LocalRulestackFqdnListState {
 
   factory LocalRulestackFqdnListState.fromMap(Map<String, dynamic> map) {
     return LocalRulestackFqdnListState(
-      auditComment: map['auditComment'] == null ? null : pulumi.Output.create<String>(map['auditComment'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fullyQualifiedDomainNames: map['fullyQualifiedDomainNames'] == null ? null : pulumi.Output.create<List<String>>((map['fullyQualifiedDomainNames'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      rulestackId: map['rulestackId'] == null ? null : pulumi.Output.create<String>(map['rulestackId'] as String),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fullyQualifiedDomainNames: map['fullyQualifiedDomainNames'] == null ? null : ((map['fullyQualifiedDomainNames'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rulestackId: map['rulestackId'] == null ? null : (map['rulestackId'] as String).input(),
     );
   }
 }

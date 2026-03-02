@@ -6,26 +6,26 @@ import 'namespaced_name_resource_response.dart';
 /// Parameters for Kubernetes Cluster Backup Datasource
 class KubernetesClusterBackupDatasourceParametersResponse {
   /// Gets or sets the backup hook references. This property sets the hook reference to be executed during backup.
-  final List<NamespacedNameResourceResponse>? backupHookReferences;
+  final pulumi.Input<List<NamespacedNameResourceResponse>>? backupHookReferences;
   /// Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during backup.
-  final List<String>? excludedNamespaces;
+  final pulumi.Input<List<String>>? excludedNamespaces;
   /// Gets or sets the exclude resource types property. This property sets the resource types to be excluded during backup.
-  final List<String>? excludedResourceTypes;
+  final pulumi.Input<List<String>>? excludedResourceTypes;
   /// Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during backup.
-  final bool includeClusterScopeResources;
+  final pulumi.Input<bool> includeClusterScopeResources;
   /// Gets or sets the include namespaces property. This property sets the namespaces to be included during backup.
-  final List<String>? includedNamespaces;
+  final pulumi.Input<List<String>>? includedNamespaces;
   /// Gets or sets the include resource types property. This property sets the resource types to be included during backup.
-  final List<String>? includedResourceTypes;
+  final pulumi.Input<List<String>>? includedResourceTypes;
   /// Gets or sets the include volume types property. This property sets the volume types to be included during backup.
-  final List<String>? includedVolumeTypes;
+  final pulumi.Input<List<String>>? includedVolumeTypes;
   /// Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during backup.
-  final List<String>? labelSelectors;
+  final pulumi.Input<List<String>>? labelSelectors;
   /// Type of the specific object - used for deserializing
   /// Expected value is 'KubernetesClusterBackupDatasourceParameters'.
-  final String objectType;
+  final pulumi.Input<String> objectType;
   /// Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during backup.
-  final bool snapshotVolumes;
+  final pulumi.Input<bool> snapshotVolumes;
 
   /// Creates a new [KubernetesClusterBackupDatasourceParametersResponse].
   /// [backupHookReferences] Gets or sets the backup hook references. This property sets the hook reference to be executed during backup.
@@ -53,7 +53,7 @@ class KubernetesClusterBackupDatasourceParametersResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupHookReferences': ?backupHookReferences == null ? null : pulumi.Input.encodeList<NamespacedNameResourceResponse, Map<String, dynamic>>(backupHookReferences!, (value) => value.toMap()),
+      'backupHookReferences': ?pulumi.Input.mapOptionalInputValue<List<NamespacedNameResourceResponse>, List<Map<String, dynamic>>>(backupHookReferences, (value) => pulumi.Input.encodeList<NamespacedNameResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'excludedNamespaces': ?excludedNamespaces,
       'excludedResourceTypes': ?excludedResourceTypes,
       'includeClusterScopeResources': includeClusterScopeResources,
@@ -68,16 +68,16 @@ class KubernetesClusterBackupDatasourceParametersResponse {
 
   factory KubernetesClusterBackupDatasourceParametersResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterBackupDatasourceParametersResponse(
-      backupHookReferences: map['backupHookReferences'] == null ? null : pulumi.Input.decodeList<NamespacedNameResourceResponse>(map['backupHookReferences'], (value) => NamespacedNameResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      excludedNamespaces: map['excludedNamespaces'] == null ? null : (map['excludedNamespaces'] as List).cast<String>(),
-      excludedResourceTypes: map['excludedResourceTypes'] == null ? null : (map['excludedResourceTypes'] as List).cast<String>(),
-      includeClusterScopeResources: map['includeClusterScopeResources'] as bool,
-      includedNamespaces: map['includedNamespaces'] == null ? null : (map['includedNamespaces'] as List).cast<String>(),
-      includedResourceTypes: map['includedResourceTypes'] == null ? null : (map['includedResourceTypes'] as List).cast<String>(),
-      includedVolumeTypes: map['includedVolumeTypes'] == null ? null : (map['includedVolumeTypes'] as List).cast<String>(),
-      labelSelectors: map['labelSelectors'] == null ? null : (map['labelSelectors'] as List).cast<String>(),
-      objectType: map['objectType'] as String,
-      snapshotVolumes: map['snapshotVolumes'] as bool,
+      backupHookReferences: map['backupHookReferences'] == null ? null : (pulumi.Input.decodeList<NamespacedNameResourceResponse>(map['backupHookReferences'], (value) => NamespacedNameResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludedNamespaces: map['excludedNamespaces'] == null ? null : ((map['excludedNamespaces'] as List).cast<String>()).input(),
+      excludedResourceTypes: map['excludedResourceTypes'] == null ? null : ((map['excludedResourceTypes'] as List).cast<String>()).input(),
+      includeClusterScopeResources: (map['includeClusterScopeResources'] as bool).input(),
+      includedNamespaces: map['includedNamespaces'] == null ? null : ((map['includedNamespaces'] as List).cast<String>()).input(),
+      includedResourceTypes: map['includedResourceTypes'] == null ? null : ((map['includedResourceTypes'] as List).cast<String>()).input(),
+      includedVolumeTypes: map['includedVolumeTypes'] == null ? null : ((map['includedVolumeTypes'] as List).cast<String>()).input(),
+      labelSelectors: map['labelSelectors'] == null ? null : ((map['labelSelectors'] as List).cast<String>()).input(),
+      objectType: (map['objectType'] as String).input(),
+      snapshotVolumes: (map['snapshotVolumes'] as bool).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class OrganizationConfigurationState {
   /// [graphArn] ARN of the behavior graph.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   OrganizationConfigurationState({
-    pulumi.Output<bool>? autoEnable,
-    pulumi.Output<String>? graphArn,
-    pulumi.Output<String>? region,
-  }) :
-      autoEnable = pulumi.Input.asOptionalInput<bool>(autoEnable),
-      graphArn = pulumi.Input.asOptionalInput<String>(graphArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.autoEnable,
+    this.graphArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class OrganizationConfigurationState {
 
   factory OrganizationConfigurationState.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationState(
-      autoEnable: map['autoEnable'] == null ? null : pulumi.Output.create<bool>(map['autoEnable'] as bool),
-      graphArn: map['graphArn'] == null ? null : pulumi.Output.create<String>(map['graphArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      autoEnable: map['autoEnable'] == null ? null : (map['autoEnable'] as bool).input(),
+      graphArn: map['graphArn'] == null ? null : (map['graphArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

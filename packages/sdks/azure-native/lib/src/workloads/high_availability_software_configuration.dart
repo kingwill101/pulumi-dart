@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the HA software configuration.
 class HighAvailabilitySoftwareConfiguration {
   /// The fencing client id.
-  final String fencingClientId;
+  final pulumi.Input<String> fencingClientId;
   /// The fencing client id secret/password. The secret should never expire. This will be used pacemaker to start/stop the cluster VMs.
-  final String fencingClientPassword;
+  final pulumi.Input<String> fencingClientPassword;
 
   /// Creates a new [HighAvailabilitySoftwareConfiguration].
   /// [fencingClientId] The fencing client id.
@@ -25,8 +26,8 @@ class HighAvailabilitySoftwareConfiguration {
 
   factory HighAvailabilitySoftwareConfiguration.fromMap(Map<String, dynamic> map) {
     return HighAvailabilitySoftwareConfiguration(
-      fencingClientId: map['fencingClientId'] as String,
-      fencingClientPassword: map['fencingClientPassword'] as String,
+      fencingClientId: (map['fencingClientId'] as String).input(),
+      fencingClientPassword: (map['fencingClientPassword'] as String).input(),
     );
   }
 }

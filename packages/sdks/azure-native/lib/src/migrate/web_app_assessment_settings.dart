@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_svc_container_settings.dart';
 import 'app_svc_native_settings.dart';
 import 'billing_settings.dart';
@@ -9,30 +10,30 @@ import 'savings_settings.dart';
 /// Web app assessment settings class.
 class WebAppAssessmentSettings {
   /// App Service container settings.
-  final AppSvcContainerSettings appSvcContainerSettings;
+  final pulumi.Input<AppSvcContainerSettings> appSvcContainerSettings;
   /// App Service native settings.
-  final AppSvcNativeSettings appSvcNativeSettings;
+  final pulumi.Input<AppSvcNativeSettings> appSvcNativeSettings;
   /// Azure Location or Azure region where to which the machines will be migrated.
-  final String? azureLocation;
+  final pulumi.Input<String>? azureLocation;
   /// Azure security offering type.
-  final String azureSecurityOfferingType;
+  final pulumi.Input<String> azureSecurityOfferingType;
   /// Gets or sets the billing settings.
-  final BillingSettings? billingSettings;
+  final pulumi.Input<BillingSettings>? billingSettings;
   /// Currency in which prices should be reported.
-  final String? currency;
+  final pulumi.Input<String>? currency;
   /// Custom discount percentage.
-  final double? discountPercentage;
+  final pulumi.Input<double>? discountPercentage;
   /// Gets or sets user configurable setting to display the environment type.
-  final String? environmentType;
+  final pulumi.Input<String>? environmentType;
   /// Gets or sets the performance data.
-  final PerformanceData? performanceData;
+  final pulumi.Input<PerformanceData>? performanceData;
   /// Gets or sets the savings settings.
-  final SavingsSettings? savingsSettings;
+  final pulumi.Input<SavingsSettings>? savingsSettings;
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
-  final double? scalingFactor;
+  final pulumi.Input<double>? scalingFactor;
   /// Assessment sizing criterion.
-  final String? sizingCriterion;
+  final pulumi.Input<String>? sizingCriterion;
 
   /// Creates a new [WebAppAssessmentSettings].
   /// [appSvcContainerSettings] App Service container settings.
@@ -64,16 +65,16 @@ class WebAppAssessmentSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appSvcContainerSettings': appSvcContainerSettings.toMap(),
-      'appSvcNativeSettings': appSvcNativeSettings.toMap(),
+      'appSvcContainerSettings': pulumi.Input.mapInputValue<AppSvcContainerSettings, Map<String, dynamic>>(appSvcContainerSettings, (value) => value.toMap()),
+      'appSvcNativeSettings': pulumi.Input.mapInputValue<AppSvcNativeSettings, Map<String, dynamic>>(appSvcNativeSettings, (value) => value.toMap()),
       'azureLocation': ?azureLocation,
       'azureSecurityOfferingType': azureSecurityOfferingType,
-      'billingSettings': ?billingSettings == null ? null : billingSettings!.toMap(),
+      'billingSettings': ?pulumi.Input.mapOptionalInputValue<BillingSettings, Map<String, dynamic>>(billingSettings, (value) => value.toMap()),
       'currency': ?currency,
       'discountPercentage': ?discountPercentage,
       'environmentType': ?environmentType,
-      'performanceData': ?performanceData == null ? null : performanceData!.toMap(),
-      'savingsSettings': ?savingsSettings == null ? null : savingsSettings!.toMap(),
+      'performanceData': ?pulumi.Input.mapOptionalInputValue<PerformanceData, Map<String, dynamic>>(performanceData, (value) => value.toMap()),
+      'savingsSettings': ?pulumi.Input.mapOptionalInputValue<SavingsSettings, Map<String, dynamic>>(savingsSettings, (value) => value.toMap()),
       'scalingFactor': ?scalingFactor,
       'sizingCriterion': ?sizingCriterion,
     };
@@ -81,18 +82,18 @@ class WebAppAssessmentSettings {
 
   factory WebAppAssessmentSettings.fromMap(Map<String, dynamic> map) {
     return WebAppAssessmentSettings(
-      appSvcContainerSettings: AppSvcContainerSettings.fromMap((map['appSvcContainerSettings'] as Map).cast<String, dynamic>()),
-      appSvcNativeSettings: AppSvcNativeSettings.fromMap((map['appSvcNativeSettings'] as Map).cast<String, dynamic>()),
-      azureLocation: map['azureLocation'] == null ? null : map['azureLocation'] as String,
-      azureSecurityOfferingType: map['azureSecurityOfferingType'] as String,
-      billingSettings: map['billingSettings'] == null ? null : BillingSettings.fromMap((map['billingSettings'] as Map).cast<String, dynamic>()),
-      currency: map['currency'] == null ? null : map['currency'] as String,
-      discountPercentage: map['discountPercentage'] == null ? null : map['discountPercentage'] as double,
-      environmentType: map['environmentType'] == null ? null : map['environmentType'] as String,
-      performanceData: map['performanceData'] == null ? null : PerformanceData.fromMap((map['performanceData'] as Map).cast<String, dynamic>()),
-      savingsSettings: map['savingsSettings'] == null ? null : SavingsSettings.fromMap((map['savingsSettings'] as Map).cast<String, dynamic>()),
-      scalingFactor: map['scalingFactor'] == null ? null : map['scalingFactor'] as double,
-      sizingCriterion: map['sizingCriterion'] == null ? null : map['sizingCriterion'] as String,
+      appSvcContainerSettings: (AppSvcContainerSettings.fromMap((map['appSvcContainerSettings'] as Map).cast<String, dynamic>())).input(),
+      appSvcNativeSettings: (AppSvcNativeSettings.fromMap((map['appSvcNativeSettings'] as Map).cast<String, dynamic>())).input(),
+      azureLocation: map['azureLocation'] == null ? null : (map['azureLocation'] as String).input(),
+      azureSecurityOfferingType: (map['azureSecurityOfferingType'] as String).input(),
+      billingSettings: map['billingSettings'] == null ? null : (BillingSettings.fromMap((map['billingSettings'] as Map).cast<String, dynamic>())).input(),
+      currency: map['currency'] == null ? null : (map['currency'] as String).input(),
+      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage'] as double).input(),
+      environmentType: map['environmentType'] == null ? null : (map['environmentType'] as String).input(),
+      performanceData: map['performanceData'] == null ? null : (PerformanceData.fromMap((map['performanceData'] as Map).cast<String, dynamic>())).input(),
+      savingsSettings: map['savingsSettings'] == null ? null : (SavingsSettings.fromMap((map['savingsSettings'] as Map).cast<String, dynamic>())).input(),
+      scalingFactor: map['scalingFactor'] == null ? null : (map['scalingFactor'] as double).input(),
+      sizingCriterion: map['sizingCriterion'] == null ? null : (map['sizingCriterion'] as String).input(),
     );
   }
 }

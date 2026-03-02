@@ -16,11 +16,9 @@ class GetVirtualMachineArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualMachineName] Name of the virtual machine
   GetVirtualMachineArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualMachineName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualMachineName = pulumi.Input.asInput<String>(virtualMachineName);
+    required this.resourceGroupName,
+    required this.virtualMachineName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVirtualMachineArgs {
 
   factory GetVirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualMachineName: pulumi.Output.create<String>(map['virtualMachineName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualMachineName: (map['virtualMachineName'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecServiceHealthCheck {
   /// The number of failed health checks before considered unhealthy.
-  final int? failureThreshold;
+  final pulumi.Input<int>? failureThreshold;
   /// The route path used for the HTTP health check ping.
-  final String? httpPath;
+  final pulumi.Input<String>? httpPath;
   /// The number of seconds to wait before beginning health checks.
-  final int? initialDelaySeconds;
+  final pulumi.Input<int>? initialDelaySeconds;
   /// The number of seconds to wait between health checks.
-  final int? periodSeconds;
+  final pulumi.Input<int>? periodSeconds;
   /// The health check will be performed on this port instead of component's HTTP port.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The number of successful health checks before considered healthy.
-  final int? successThreshold;
+  final pulumi.Input<int>? successThreshold;
   /// The number of seconds after which the check times out.
-  final int? timeoutSeconds;
+  final pulumi.Input<int>? timeoutSeconds;
 
   /// Creates a new [AppSpecServiceHealthCheck].
   /// [failureThreshold] The number of failed health checks before considered unhealthy.
@@ -49,13 +50,13 @@ class AppSpecServiceHealthCheck {
 
   factory AppSpecServiceHealthCheck.fromMap(Map<String, dynamic> map) {
     return AppSpecServiceHealthCheck(
-      failureThreshold: map['failureThreshold'] == null ? null : map['failureThreshold'] as int,
-      httpPath: map['httpPath'] == null ? null : map['httpPath'] as String,
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : map['initialDelaySeconds'] as int,
-      periodSeconds: map['periodSeconds'] == null ? null : map['periodSeconds'] as int,
-      port: map['port'] == null ? null : map['port'] as int,
-      successThreshold: map['successThreshold'] == null ? null : map['successThreshold'] as int,
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : map['timeoutSeconds'] as int,
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
+      httpPath: map['httpPath'] == null ? null : (map['httpPath'] as String).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
     );
   }
 }

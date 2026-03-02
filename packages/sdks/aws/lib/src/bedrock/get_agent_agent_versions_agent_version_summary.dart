@@ -5,19 +5,19 @@ import 'get_agent_agent_versions_agent_version_summary_guardrail_configuration.d
 
 class GetAgentAgentVersionsAgentVersionSummary {
   /// Name of agent to which the version belongs.
-  final String agentName;
+  final pulumi.Input<String> agentName;
   /// Status of the agent to which the version belongs.
-  final String agentStatus;
+  final pulumi.Input<String> agentStatus;
   /// Version of the agent.
-  final String agentVersion;
+  final pulumi.Input<String> agentVersion;
   /// Time at which the version was created.
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Description of the version of the agent.
   /// * `GuardrailConfiguration` - Details aout the guardrail associated with the agent. See Guardrail Configuration
-  final String description;
-  final List<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>? guardrailConfigurations;
+  final pulumi.Input<String> description;
+  final pulumi.Input<List<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>>? guardrailConfigurations;
   /// Time at which the version was last updated.
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
 
   /// Creates a new [GetAgentAgentVersionsAgentVersionSummary].
   /// [agentName] Name of agent to which the version belongs.
@@ -44,20 +44,20 @@ class GetAgentAgentVersionsAgentVersionSummary {
       'agentVersion': agentVersion,
       'createdAt': createdAt,
       'description': description,
-      'guardrailConfigurations': ?guardrailConfigurations == null ? null : pulumi.Input.encodeList<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration, Map<String, dynamic>>(guardrailConfigurations!, (value) => value.toMap()),
+      'guardrailConfigurations': ?pulumi.Input.mapOptionalInputValue<List<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>, List<Map<String, dynamic>>>(guardrailConfigurations, (value) => pulumi.Input.encodeList<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updatedAt': updatedAt,
     };
   }
 
   factory GetAgentAgentVersionsAgentVersionSummary.fromMap(Map<String, dynamic> map) {
     return GetAgentAgentVersionsAgentVersionSummary(
-      agentName: map['agentName'] as String,
-      agentStatus: map['agentStatus'] as String,
-      agentVersion: map['agentVersion'] as String,
-      createdAt: map['createdAt'] as String,
-      description: map['description'] as String,
-      guardrailConfigurations: map['guardrailConfigurations'] == null ? null : pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>(map['guardrailConfigurations'], (value) => GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      updatedAt: map['updatedAt'] as String,
+      agentName: (map['agentName'] as String).input(),
+      agentStatus: (map['agentStatus'] as String).input(),
+      agentVersion: (map['agentVersion'] as String).input(),
+      createdAt: (map['createdAt'] as String).input(),
+      description: (map['description'] as String).input(),
+      guardrailConfigurations: map['guardrailConfigurations'] == null ? null : (pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>(map['guardrailConfigurations'], (value) => GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
     );
   }
 }

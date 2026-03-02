@@ -22,13 +22,10 @@ class GetCertificateTemplateIamPolicyArgs {
   /// [location] The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
   GetCertificateTemplateIamPolicyArgs({
-    required pulumi.Output<String> certificateTemplate,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      certificateTemplate = pulumi.Input.asInput<String>(certificateTemplate),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.certificateTemplate,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetCertificateTemplateIamPolicyArgs {
 
   factory GetCertificateTemplateIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateTemplateIamPolicyArgs(
-      certificateTemplate: pulumi.Output.create<String>(map['certificateTemplate'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      certificateTemplate: (map['certificateTemplate'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class DatabaseArgs {
   /// [project] Optional.
   /// [protoDescriptors] Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements in 'extra_statements' above. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto). To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run """ $protoc --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.data \ moon/shot/app.proto """ For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
   DatabaseArgs({
-    required pulumi.Output<String> createStatement,
-    pulumi.Output<DatabaseDatabaseDialect>? databaseDialect,
-    pulumi.Output<EncryptionConfig>? encryptionConfig,
-    pulumi.Output<List<String>>? extraStatements,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? protoDescriptors,
-  }) :
-      createStatement = pulumi.Input.asInput<String>(createStatement),
-      databaseDialect = pulumi.Input.asOptionalInput<DatabaseDatabaseDialect>(databaseDialect),
-      encryptionConfig = pulumi.Input.asOptionalInput<EncryptionConfig>(encryptionConfig),
-      extraStatements = pulumi.Input.asOptionalInput<List<String>>(extraStatements),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      protoDescriptors = pulumi.Input.asOptionalInput<String>(protoDescriptors);
+    required this.createStatement,
+    this.databaseDialect,
+    this.encryptionConfig,
+    this.extraStatements,
+    required this.instanceId,
+    this.project,
+    this.protoDescriptors,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      createStatement: pulumi.Output.create<String>(map['createStatement'] as String),
-      databaseDialect: map['databaseDialect'] == null ? null : pulumi.Output.create<DatabaseDatabaseDialect>(DatabaseDatabaseDialect.fromValue(map['databaseDialect'] as String)),
-      encryptionConfig: map['encryptionConfig'] == null ? null : pulumi.Output.create<EncryptionConfig>(EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())),
-      extraStatements: map['extraStatements'] == null ? null : pulumi.Output.create<List<String>>((map['extraStatements'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      protoDescriptors: map['protoDescriptors'] == null ? null : pulumi.Output.create<String>(map['protoDescriptors'] as String),
+      createStatement: (map['createStatement'] as String).input(),
+      databaseDialect: map['databaseDialect'] == null ? null : (DatabaseDatabaseDialect.fromValue(map['databaseDialect'] as String)).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      extraStatements: map['extraStatements'] == null ? null : ((map['extraStatements'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      protoDescriptors: map['protoDescriptors'] == null ? null : (map['protoDescriptors'] as String).input(),
     );
   }
 }

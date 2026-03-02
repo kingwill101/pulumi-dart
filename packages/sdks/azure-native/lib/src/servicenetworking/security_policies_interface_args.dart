@@ -29,19 +29,13 @@ class SecurityPoliciesInterfaceArgs {
   /// [trafficControllerName] traffic controller name for path
   /// [wafPolicy] Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
   SecurityPoliciesInterfaceArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? securityPolicyName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> trafficControllerName,
-    pulumi.Output<WafPolicy>? wafPolicy,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityPolicyName = pulumi.Input.asOptionalInput<String>(securityPolicyName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trafficControllerName = pulumi.Input.asInput<String>(trafficControllerName),
-      wafPolicy = pulumi.Input.asOptionalInput<WafPolicy>(wafPolicy);
+    this.location,
+    required this.resourceGroupName,
+    this.securityPolicyName,
+    this.tags,
+    required this.trafficControllerName,
+    this.wafPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class SecurityPoliciesInterfaceArgs {
 
   factory SecurityPoliciesInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPoliciesInterfaceArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityPolicyName: map['securityPolicyName'] == null ? null : pulumi.Output.create<String>(map['securityPolicyName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trafficControllerName: pulumi.Output.create<String>(map['trafficControllerName'] as String),
-      wafPolicy: map['wafPolicy'] == null ? null : pulumi.Output.create<WafPolicy>(WafPolicy.fromMap((map['wafPolicy'] as Map).cast<String, dynamic>())),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityPolicyName: map['securityPolicyName'] == null ? null : (map['securityPolicyName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trafficControllerName: (map['trafficControllerName'] as String).input(),
+      wafPolicy: map['wafPolicy'] == null ? null : (WafPolicy.fromMap((map['wafPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Table view specification.
 class GoogleCloudDatacatalogV1beta1ViewSpecResponse {
   /// The query that defines the table view.
-  final String viewQuery;
+  final pulumi.Input<String> viewQuery;
 
   /// Creates a new [GoogleCloudDatacatalogV1beta1ViewSpecResponse].
   /// [viewQuery] The query that defines the table view.
@@ -20,7 +21,7 @@ class GoogleCloudDatacatalogV1beta1ViewSpecResponse {
 
   factory GoogleCloudDatacatalogV1beta1ViewSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1beta1ViewSpecResponse(
-      viewQuery: map['viewQuery'] as String,
+      viewQuery: (map['viewQuery'] as String).input(),
     );
   }
 }

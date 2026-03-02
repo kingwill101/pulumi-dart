@@ -33,21 +33,14 @@ class ConnectorArgs {
   /// [sourceResourceId] Defines the ID of the connector's source resource.
   /// [tags] Resource tags.
   ConnectorArgs({
-    pulumi.Output<String>? connectorName,
-    pulumi.Output<UserAssignedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<ManagedRGConfiguration>? managedResourceGroupConfiguration,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sourceResourceId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      connectorName = pulumi.Input.asOptionalInput<String>(connectorName),
-      identity = pulumi.Input.asOptionalInput<UserAssignedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedResourceGroupConfiguration = pulumi.Input.asOptionalInput<ManagedRGConfiguration>(managedResourceGroupConfiguration),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceResourceId = pulumi.Input.asInput<String>(sourceResourceId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.connectorName,
+    this.identity,
+    this.location,
+    this.managedResourceGroupConfiguration,
+    required this.resourceGroupName,
+    required this.sourceResourceId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      connectorName: map['connectorName'] == null ? null : pulumi.Output.create<String>(map['connectorName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<UserAssignedServiceIdentity>(UserAssignedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : pulumi.Output.create<ManagedRGConfiguration>(ManagedRGConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceResourceId: pulumi.Output.create<String>(map['sourceResourceId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
+      identity: map['identity'] == null ? null : (UserAssignedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedRGConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceResourceId: (map['sourceResourceId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

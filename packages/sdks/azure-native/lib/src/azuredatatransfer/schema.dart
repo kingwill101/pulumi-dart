@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The schema object.
 class Schema {
   /// Connection ID associated with this schema
-  final String? connectionId;
+  final pulumi.Input<String>? connectionId;
   /// Content of the schema
-  final String? content;
+  final pulumi.Input<String>? content;
   /// The direction of the schema.
-  final String? direction;
+  final pulumi.Input<String>? direction;
   /// ID associated with this schema
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of the schema
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The Schema Type
-  final String? schemaType;
+  final pulumi.Input<String>? schemaType;
   /// Uri containing SAS token for the zipped schema
-  final String? schemaUri;
+  final pulumi.Input<String>? schemaUri;
   /// Status of the schema
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [Schema].
   /// [connectionId] Connection ID associated with this schema
@@ -55,14 +56,14 @@ class Schema {
 
   factory Schema.fromMap(Map<String, dynamic> map) {
     return Schema(
-      connectionId: map['connectionId'] == null ? null : map['connectionId'] as String,
-      content: map['content'] == null ? null : map['content'] as String,
-      direction: map['direction'] == null ? null : map['direction'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      schemaType: map['schemaType'] == null ? null : map['schemaType'] as String,
-      schemaUri: map['schemaUri'] == null ? null : map['schemaUri'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      schemaType: map['schemaType'] == null ? null : (map['schemaType'] as String).input(),
+      schemaUri: map['schemaUri'] == null ? null : (map['schemaUri'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

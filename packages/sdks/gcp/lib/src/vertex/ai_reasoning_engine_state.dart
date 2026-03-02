@@ -44,25 +44,16 @@ class AiReasoningEngineState {
   /// [spec] Optional. Configurations of the ReasoningEngine.
   /// [updateTime] The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
   AiReasoningEngineState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<AiReasoningEngineEncryptionSpec>? encryptionSpec,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<AiReasoningEngineSpec>? spec,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<AiReasoningEngineEncryptionSpec>(encryptionSpec),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      spec = pulumi.Input.asOptionalInput<AiReasoningEngineSpec>(spec),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.encryptionSpec,
+    this.name,
+    this.project,
+    this.region,
+    this.spec,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,15 +71,15 @@ class AiReasoningEngineState {
 
   factory AiReasoningEngineState.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<AiReasoningEngineEncryptionSpec>(AiReasoningEngineEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<AiReasoningEngineSpec>(AiReasoningEngineSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiReasoningEngineEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      spec: map['spec'] == null ? null : (AiReasoningEngineSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

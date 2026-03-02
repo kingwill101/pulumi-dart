@@ -13,11 +13,9 @@ class SnatPoolState {
   /// [members] Specifies a translation address to add to or delete from a SNAT pool (at least one address is required)
   /// [name] Name of the snatpool
   SnatPoolState({
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? name,
-  }) :
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.members,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class SnatPoolState {
 
   factory SnatPoolState.fromMap(Map<String, dynamic> map) {
     return SnatPoolState(
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

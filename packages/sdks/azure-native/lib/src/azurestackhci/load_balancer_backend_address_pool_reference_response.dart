@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to a LoadBalancer backend address pool reference
 class LoadBalancerBackendAddressPoolReferenceResponse {
   /// name of the backend address pool
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [LoadBalancerBackendAddressPoolReferenceResponse].
   /// [name] name of the backend address pool
@@ -20,7 +21,7 @@ class LoadBalancerBackendAddressPoolReferenceResponse {
 
   factory LoadBalancerBackendAddressPoolReferenceResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressPoolReferenceResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

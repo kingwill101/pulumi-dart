@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pub_sub_response.dart';
 
 /// NotificationConfig is the configuration of notifications.
 class NotificationConfigResponse {
   /// Notification config for Pub/Sub.
-  final PubSubResponse pubsub;
+  final pulumi.Input<PubSubResponse> pubsub;
 
   /// Creates a new [NotificationConfigResponse].
   /// [pubsub] Notification config for Pub/Sub.
@@ -15,13 +16,13 @@ class NotificationConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pubsub': pubsub.toMap(),
+      'pubsub': pulumi.Input.mapInputValue<PubSubResponse, Map<String, dynamic>>(pubsub, (value) => value.toMap()),
     };
   }
 
   factory NotificationConfigResponse.fromMap(Map<String, dynamic> map) {
     return NotificationConfigResponse(
-      pubsub: PubSubResponse.fromMap((map['pubsub'] as Map).cast<String, dynamic>()),
+      pubsub: (PubSubResponse.fromMap((map['pubsub'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

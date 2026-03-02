@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecordingConfigurationThumbnailConfiguration {
   /// Thumbnail recording mode. Valid values: `DISABLED`, `INTERVAL`.
-  final String? recordingMode;
+  final pulumi.Input<String>? recordingMode;
   /// The targeted thumbnail-generation interval in seconds.
-  final int? targetIntervalSeconds;
+  final pulumi.Input<int>? targetIntervalSeconds;
 
   /// Creates a new [RecordingConfigurationThumbnailConfiguration].
   /// [recordingMode] Thumbnail recording mode. Valid values: `DISABLED`, `INTERVAL`.
@@ -24,8 +25,8 @@ class RecordingConfigurationThumbnailConfiguration {
 
   factory RecordingConfigurationThumbnailConfiguration.fromMap(Map<String, dynamic> map) {
     return RecordingConfigurationThumbnailConfiguration(
-      recordingMode: map['recordingMode'] == null ? null : map['recordingMode'] as String,
-      targetIntervalSeconds: map['targetIntervalSeconds'] == null ? null : map['targetIntervalSeconds'] as int,
+      recordingMode: map['recordingMode'] == null ? null : (map['recordingMode'] as String).input(),
+      targetIntervalSeconds: map['targetIntervalSeconds'] == null ? null : (map['targetIntervalSeconds'] as int).input(),
     );
   }
 }

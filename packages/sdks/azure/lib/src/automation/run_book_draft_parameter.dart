@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RunBookDraftParameter {
   /// Specifies the default value of the parameter.
-  final String? defaultValue;
+  final pulumi.Input<String>? defaultValue;
   /// The name of the parameter.
-  final String key;
+  final pulumi.Input<String> key;
   /// Whether this parameter is mandatory.
-  final bool? mandatory;
+  final pulumi.Input<bool>? mandatory;
   /// Specifies the position of the parameter.
-  final int? position;
+  final pulumi.Input<int>? position;
   /// Specifies the type of this parameter.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RunBookDraftParameter].
   /// [defaultValue] Specifies the default value of the parameter.
@@ -39,11 +40,11 @@ class RunBookDraftParameter {
 
   factory RunBookDraftParameter.fromMap(Map<String, dynamic> map) {
     return RunBookDraftParameter(
-      defaultValue: map['defaultValue'] == null ? null : map['defaultValue'] as String,
-      key: map['key'] as String,
-      mandatory: map['mandatory'] == null ? null : map['mandatory'] as bool,
-      position: map['position'] == null ? null : map['position'] as int,
-      type: map['type'] as String,
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      key: (map['key'] as String).input(),
+      mandatory: map['mandatory'] == null ? null : (map['mandatory'] as bool).input(),
+      position: map['position'] == null ? null : (map['position'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the custom settings for the virtual machine.
 class CustomProfile {
   /// Path for metadata configuration.
-  final String? metadataConfigurationPath;
+  final pulumi.Input<String>? metadataConfigurationPath;
 
   /// Creates a new [CustomProfile].
   /// [metadataConfigurationPath] Path for metadata configuration.
@@ -20,7 +21,7 @@ class CustomProfile {
 
   factory CustomProfile.fromMap(Map<String, dynamic> map) {
     return CustomProfile(
-      metadataConfigurationPath: map['metadataConfigurationPath'] == null ? null : map['metadataConfigurationPath'] as String,
+      metadataConfigurationPath: map['metadataConfigurationPath'] == null ? null : (map['metadataConfigurationPath'] as String).input(),
     );
   }
 }

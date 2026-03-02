@@ -30,19 +30,13 @@ class InstructionArgs {
   /// [pdfInstruction] Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
   /// [project] Optional.
   InstructionArgs({
-    pulumi.Output<GoogleCloudDatalabelingV1beta1CsvInstruction>? csvInstruction,
-    required pulumi.Output<InstructionDataType> dataType,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<GoogleCloudDatalabelingV1beta1PdfInstruction>? pdfInstruction,
-    pulumi.Output<String>? project,
-  }) :
-      csvInstruction = pulumi.Input.asOptionalInput<GoogleCloudDatalabelingV1beta1CsvInstruction>(csvInstruction),
-      dataType = pulumi.Input.asInput<InstructionDataType>(dataType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      pdfInstruction = pulumi.Input.asOptionalInput<GoogleCloudDatalabelingV1beta1PdfInstruction>(pdfInstruction),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.csvInstruction,
+    required this.dataType,
+    this.description,
+    required this.displayName,
+    this.pdfInstruction,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class InstructionArgs {
 
   factory InstructionArgs.fromMap(Map<String, dynamic> map) {
     return InstructionArgs(
-      csvInstruction: map['csvInstruction'] == null ? null : pulumi.Output.create<GoogleCloudDatalabelingV1beta1CsvInstruction>(GoogleCloudDatalabelingV1beta1CsvInstruction.fromMap((map['csvInstruction'] as Map).cast<String, dynamic>())),
-      dataType: pulumi.Output.create<InstructionDataType>(InstructionDataType.fromValue(map['dataType'] as String)),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      pdfInstruction: map['pdfInstruction'] == null ? null : pulumi.Output.create<GoogleCloudDatalabelingV1beta1PdfInstruction>(GoogleCloudDatalabelingV1beta1PdfInstruction.fromMap((map['pdfInstruction'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      csvInstruction: map['csvInstruction'] == null ? null : (GoogleCloudDatalabelingV1beta1CsvInstruction.fromMap((map['csvInstruction'] as Map).cast<String, dynamic>())).input(),
+      dataType: (InstructionDataType.fromValue(map['dataType'] as String)).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      pdfInstruction: map['pdfInstruction'] == null ? null : (GoogleCloudDatalabelingV1beta1PdfInstruction.fromMap((map['pdfInstruction'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

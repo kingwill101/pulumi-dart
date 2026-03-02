@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the common parameters for all the hosts irrespective of their IP address.
 class VmwareHostConfig {
   /// DNS search domains.
-  final List<String>? dnsSearchDomains;
+  final pulumi.Input<List<String>>? dnsSearchDomains;
   /// DNS servers.
-  final List<String>? dnsServers;
+  final pulumi.Input<List<String>>? dnsServers;
   /// NTP servers.
-  final List<String>? ntpServers;
+  final pulumi.Input<List<String>>? ntpServers;
 
   /// Creates a new [VmwareHostConfig].
   /// [dnsSearchDomains] DNS search domains.
@@ -30,9 +31,9 @@ class VmwareHostConfig {
 
   factory VmwareHostConfig.fromMap(Map<String, dynamic> map) {
     return VmwareHostConfig(
-      dnsSearchDomains: map['dnsSearchDomains'] == null ? null : (map['dnsSearchDomains'] as List).cast<String>(),
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
-      ntpServers: map['ntpServers'] == null ? null : (map['ntpServers'] as List).cast<String>(),
+      dnsSearchDomains: map['dnsSearchDomains'] == null ? null : ((map['dnsSearchDomains'] as List).cast<String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      ntpServers: map['ntpServers'] == null ? null : ((map['ntpServers'] as List).cast<String>()).input(),
     );
   }
 }

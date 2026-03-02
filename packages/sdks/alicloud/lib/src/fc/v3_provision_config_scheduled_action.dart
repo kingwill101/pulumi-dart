@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3ProvisionConfigScheduledAction {
   /// Policy expiration time
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// Policy Name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Timing Configuration
-  final String? scheduleExpression;
+  final pulumi.Input<String>? scheduleExpression;
   /// Policy effective time
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// Number of reserved target resources
-  final int? target;
+  final pulumi.Input<int>? target;
   /// Time zone.
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [V3ProvisionConfigScheduledAction].
   /// [endTime] Policy expiration time
@@ -44,12 +45,12 @@ class V3ProvisionConfigScheduledAction {
 
   factory V3ProvisionConfigScheduledAction.fromMap(Map<String, dynamic> map) {
     return V3ProvisionConfigScheduledAction(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      scheduleExpression: map['scheduleExpression'] == null ? null : map['scheduleExpression'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      target: map['target'] == null ? null : map['target'] as int,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      scheduleExpression: map['scheduleExpression'] == null ? null : (map['scheduleExpression'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as int).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

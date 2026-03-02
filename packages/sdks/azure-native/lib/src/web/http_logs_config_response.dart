@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_blob_storage_http_logs_config_response.dart';
 import 'file_system_http_logs_config_response.dart';
 
 /// Http logs configuration.
 class HttpLogsConfigResponse {
   /// Http logs to azure blob storage configuration.
-  final AzureBlobStorageHttpLogsConfigResponse? azureBlobStorage;
+  final pulumi.Input<AzureBlobStorageHttpLogsConfigResponse>? azureBlobStorage;
   /// Http logs to file system configuration.
-  final FileSystemHttpLogsConfigResponse? fileSystem;
+  final pulumi.Input<FileSystemHttpLogsConfigResponse>? fileSystem;
 
   /// Creates a new [HttpLogsConfigResponse].
   /// [azureBlobStorage] Http logs to azure blob storage configuration.
@@ -20,15 +21,15 @@ class HttpLogsConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureBlobStorage': ?azureBlobStorage == null ? null : azureBlobStorage!.toMap(),
-      'fileSystem': ?fileSystem == null ? null : fileSystem!.toMap(),
+      'azureBlobStorage': ?pulumi.Input.mapOptionalInputValue<AzureBlobStorageHttpLogsConfigResponse, Map<String, dynamic>>(azureBlobStorage, (value) => value.toMap()),
+      'fileSystem': ?pulumi.Input.mapOptionalInputValue<FileSystemHttpLogsConfigResponse, Map<String, dynamic>>(fileSystem, (value) => value.toMap()),
     };
   }
 
   factory HttpLogsConfigResponse.fromMap(Map<String, dynamic> map) {
     return HttpLogsConfigResponse(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : AzureBlobStorageHttpLogsConfigResponse.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>()),
-      fileSystem: map['fileSystem'] == null ? null : FileSystemHttpLogsConfigResponse.fromMap((map['fileSystem'] as Map).cast<String, dynamic>()),
+      azureBlobStorage: map['azureBlobStorage'] == null ? null : (AzureBlobStorageHttpLogsConfigResponse.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>())).input(),
+      fileSystem: map['fileSystem'] == null ? null : (FileSystemHttpLogsConfigResponse.fromMap((map['fileSystem'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

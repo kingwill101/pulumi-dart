@@ -25,17 +25,12 @@ class GetDatabasePrincipalAssignmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace
   GetDatabasePrincipalAssignmentArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> kustoPoolName,
-    required pulumi.Output<String> principalAssignmentName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      kustoPoolName = pulumi.Input.asInput<String>(kustoPoolName),
-      principalAssignmentName = pulumi.Input.asInput<String>(principalAssignmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.databaseName,
+    required this.kustoPoolName,
+    required this.principalAssignmentName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetDatabasePrincipalAssignmentArgs {
 
   factory GetDatabasePrincipalAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabasePrincipalAssignmentArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      kustoPoolName: pulumi.Output.create<String>(map['kustoPoolName'] as String),
-      principalAssignmentName: pulumi.Output.create<String>(map['principalAssignmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      kustoPoolName: (map['kustoPoolName'] as String).input(),
+      principalAssignmentName: (map['principalAssignmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

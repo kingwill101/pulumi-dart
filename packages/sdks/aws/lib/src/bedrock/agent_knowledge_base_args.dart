@@ -38,23 +38,15 @@ class AgentKnowledgeBaseArgs {
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   AgentKnowledgeBaseArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<AgentKnowledgeBaseKnowledgeBaseConfiguration> knowledgeBaseConfiguration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<AgentKnowledgeBaseStorageConfiguration>? storageConfiguration,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<AgentKnowledgeBaseTimeouts>? timeouts,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      knowledgeBaseConfiguration = pulumi.Input.asInput<AgentKnowledgeBaseKnowledgeBaseConfiguration>(knowledgeBaseConfiguration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      storageConfiguration = pulumi.Input.asOptionalInput<AgentKnowledgeBaseStorageConfiguration>(storageConfiguration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<AgentKnowledgeBaseTimeouts>(timeouts);
+    this.description,
+    required this.knowledgeBaseConfiguration,
+    this.name,
+    this.region,
+    required this.roleArn,
+    this.storageConfiguration,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class AgentKnowledgeBaseArgs {
 
   factory AgentKnowledgeBaseArgs.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      knowledgeBaseConfiguration: pulumi.Output.create<AgentKnowledgeBaseKnowledgeBaseConfiguration>(AgentKnowledgeBaseKnowledgeBaseConfiguration.fromMap((map['knowledgeBaseConfiguration'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      storageConfiguration: map['storageConfiguration'] == null ? null : pulumi.Output.create<AgentKnowledgeBaseStorageConfiguration>(AgentKnowledgeBaseStorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentKnowledgeBaseTimeouts>(AgentKnowledgeBaseTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      knowledgeBaseConfiguration: (AgentKnowledgeBaseKnowledgeBaseConfiguration.fromMap((map['knowledgeBaseConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      storageConfiguration: map['storageConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentKnowledgeBaseTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

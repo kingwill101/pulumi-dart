@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScalingConfigurationNetworkInterface {
   /// The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
-  final String? instanceType;
+  final pulumi.Input<String>? instanceType;
   /// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
-  final int? ipv6AddressCount;
+  final pulumi.Input<int>? ipv6AddressCount;
   /// The communication mode of the ENI. Valid values: Standard, HighPerformance.
-  final String? networkInterfaceTrafficMode;
+  final pulumi.Input<String>? networkInterfaceTrafficMode;
   /// The ID of security group N to which ENI N belongs.
-  final List<String>? securityGroupIds;
+  final pulumi.Input<List<String>>? securityGroupIds;
 
   /// Creates a new [ScalingConfigurationNetworkInterface].
   /// [instanceType] The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
@@ -34,10 +35,10 @@ class ScalingConfigurationNetworkInterface {
 
   factory ScalingConfigurationNetworkInterface.fromMap(Map<String, dynamic> map) {
     return ScalingConfigurationNetworkInterface(
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
-      ipv6AddressCount: map['ipv6AddressCount'] == null ? null : map['ipv6AddressCount'] as int,
-      networkInterfaceTrafficMode: map['networkInterfaceTrafficMode'] == null ? null : map['networkInterfaceTrafficMode'] as String,
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      ipv6AddressCount: map['ipv6AddressCount'] == null ? null : (map['ipv6AddressCount'] as int).input(),
+      networkInterfaceTrafficMode: map['networkInterfaceTrafficMode'] == null ? null : (map['networkInterfaceTrafficMode'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerUpload {
   /// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text. Conflicts with `content_base64` & `source`
-  final String? content;
+  final pulumi.Input<String>? content;
   /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for larger binary content such as the result of the `base64encode` interpolation function. See here for the reason. Conflicts with `content` & `source`
-  final String? contentBase64;
+  final pulumi.Input<String>? contentBase64;
   /// If `true`, the file will be uploaded with user executable permission. Defaults to `false`.
-  final bool? executable;
+  final pulumi.Input<bool>? executable;
   /// Path to the file in the container where is upload goes to
-  final String file;
+  final pulumi.Input<String> file;
   /// The permission mode for the file in the container. Has precedence over `executable`.
-  final String? permissions;
+  final pulumi.Input<String>? permissions;
   /// A filename that references a file which will be uploaded as the object content. This allows for large file uploads that do not get stored in state. Conflicts with `content` & `content_base64`
-  final String? source;
+  final pulumi.Input<String>? source;
   /// If using `source`, this will force an update if the file content has updated but the filename has not.
-  final String? sourceHash;
+  final pulumi.Input<String>? sourceHash;
 
   /// Creates a new [ContainerUpload].
   /// [content] Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text. Conflicts with `content_base64` & `source`
@@ -49,13 +50,13 @@ class ContainerUpload {
 
   factory ContainerUpload.fromMap(Map<String, dynamic> map) {
     return ContainerUpload(
-      content: map['content'] == null ? null : map['content'] as String,
-      contentBase64: map['contentBase64'] == null ? null : map['contentBase64'] as String,
-      executable: map['executable'] == null ? null : map['executable'] as bool,
-      file: map['file'] as String,
-      permissions: map['permissions'] == null ? null : map['permissions'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
-      sourceHash: map['sourceHash'] == null ? null : map['sourceHash'] as String,
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      contentBase64: map['contentBase64'] == null ? null : (map['contentBase64'] as String).input(),
+      executable: map['executable'] == null ? null : (map['executable'] as bool).input(),
+      file: (map['file'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      sourceHash: map['sourceHash'] == null ? null : (map['sourceHash'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class HistoryDeliveryJobState {
   /// [status] The status of the resource
   /// [trailName] The Track Name.
   HistoryDeliveryJobState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<int>? status,
-    pulumi.Output<String>? trailName,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      status = pulumi.Input.asOptionalInput<int>(status),
-      trailName = pulumi.Input.asOptionalInput<String>(trailName);
+    this.createTime,
+    this.status,
+    this.trailName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class HistoryDeliveryJobState {
 
   factory HistoryDeliveryJobState.fromMap(Map<String, dynamic> map) {
     return HistoryDeliveryJobState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
-      trailName: map['trailName'] == null ? null : pulumi.Output.create<String>(map['trailName'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
+      trailName: map['trailName'] == null ? null : (map['trailName'] as String).input(),
     );
   }
 }

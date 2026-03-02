@@ -45,29 +45,18 @@ class MetricArgs {
   /// [valueExtractor] Optional. A value_extractor is required when using a distribution logs-based metric to extract the values to record from a log entry. Two functions are supported for value extraction: EXTRACT(field) or REGEXP_EXTRACT(field, regex). The arguments are: field: The name of the log entry field from which the value is to be extracted. regex: A regular expression using the Google RE2 syntax (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified log entry field. The value of the field is converted to a string before applying the regex. It is an error to specify a regex that does not include exactly one capture group.The result of the extraction must be convertible to a double type, as the distribution always records double values. If either the extraction or the conversion to double fails, then those values are not recorded in the distribution.Example: REGEXP_EXTRACT(jsonPayload.request, ".*quantity=(\d+).*")
   /// [version] Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.
   MetricArgs({
-    pulumi.Output<String>? bucketName,
-    pulumi.Output<BucketOptions>? bucketOptions,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> filter,
-    pulumi.Output<Map<String, String>>? labelExtractors,
-    pulumi.Output<MetricDescriptor>? metricDescriptor,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? valueExtractor,
-    pulumi.Output<MetricVersion>? version,
-  }) :
-      bucketName = pulumi.Input.asOptionalInput<String>(bucketName),
-      bucketOptions = pulumi.Input.asOptionalInput<BucketOptions>(bucketOptions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      filter = pulumi.Input.asInput<String>(filter),
-      labelExtractors = pulumi.Input.asOptionalInput<Map<String, String>>(labelExtractors),
-      metricDescriptor = pulumi.Input.asOptionalInput<MetricDescriptor>(metricDescriptor),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      valueExtractor = pulumi.Input.asOptionalInput<String>(valueExtractor),
-      version = pulumi.Input.asOptionalInput<MetricVersion>(version);
+    this.bucketName,
+    this.bucketOptions,
+    this.description,
+    this.disabled,
+    required this.filter,
+    this.labelExtractors,
+    this.metricDescriptor,
+    this.name,
+    this.project,
+    this.valueExtractor,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class MetricArgs {
 
   factory MetricArgs.fromMap(Map<String, dynamic> map) {
     return MetricArgs(
-      bucketName: map['bucketName'] == null ? null : pulumi.Output.create<String>(map['bucketName'] as String),
-      bucketOptions: map['bucketOptions'] == null ? null : pulumi.Output.create<BucketOptions>(BucketOptions.fromMap((map['bucketOptions'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      filter: pulumi.Output.create<String>(map['filter'] as String),
-      labelExtractors: map['labelExtractors'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labelExtractors'] as Map).cast<String, String>()),
-      metricDescriptor: map['metricDescriptor'] == null ? null : pulumi.Output.create<MetricDescriptor>(MetricDescriptor.fromMap((map['metricDescriptor'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      valueExtractor: map['valueExtractor'] == null ? null : pulumi.Output.create<String>(map['valueExtractor'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<MetricVersion>(MetricVersion.fromValue(map['version'] as String)),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      bucketOptions: map['bucketOptions'] == null ? null : (BucketOptions.fromMap((map['bucketOptions'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      filter: (map['filter'] as String).input(),
+      labelExtractors: map['labelExtractors'] == null ? null : ((map['labelExtractors'] as Map).cast<String, String>()).input(),
+      metricDescriptor: map['metricDescriptor'] == null ? null : (MetricDescriptor.fromMap((map['metricDescriptor'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      valueExtractor: map['valueExtractor'] == null ? null : (map['valueExtractor'] as String).input(),
+      version: map['version'] == null ? null : (MetricVersion.fromValue(map['version'] as String)).input(),
     );
   }
 }

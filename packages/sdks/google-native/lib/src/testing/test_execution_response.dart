@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_response.dart';
 import 'shard_response.dart';
 import 'test_details_response.dart';
@@ -9,23 +10,23 @@ import 'tool_results_step_response.dart';
 /// A single test executed in a single environment.
 class TestExecutionResponse {
   /// How the host machine(s) are configured.
-  final EnvironmentResponse environment;
+  final pulumi.Input<EnvironmentResponse> environment;
   /// Id of the containing TestMatrix.
-  final String matrixId;
+  final pulumi.Input<String> matrixId;
   /// The cloud project that owns the test execution.
-  final String project;
+  final pulumi.Input<String> project;
   /// Details about the shard.
-  final ShardResponse shard;
+  final pulumi.Input<ShardResponse> shard;
   /// Indicates the current progress of the test execution (e.g., FINISHED).
-  final String state;
+  final pulumi.Input<String> state;
   /// Additional details about the running test.
-  final TestDetailsResponse testDetails;
+  final pulumi.Input<TestDetailsResponse> testDetails;
   /// How to run the test.
-  final TestSpecificationResponse testSpecification;
+  final pulumi.Input<TestSpecificationResponse> testSpecification;
   /// The time this test execution was initially created.
-  final String timestamp;
+  final pulumi.Input<String> timestamp;
   /// Where the results for this execution are written.
-  final ToolResultsStepResponse toolResultsStep;
+  final pulumi.Input<ToolResultsStepResponse> toolResultsStep;
 
   /// Creates a new [TestExecutionResponse].
   /// [environment] How the host machine(s) are configured.
@@ -51,29 +52,29 @@ class TestExecutionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'environment': environment.toMap(),
+      'environment': pulumi.Input.mapInputValue<EnvironmentResponse, Map<String, dynamic>>(environment, (value) => value.toMap()),
       'matrixId': matrixId,
       'project': project,
-      'shard': shard.toMap(),
+      'shard': pulumi.Input.mapInputValue<ShardResponse, Map<String, dynamic>>(shard, (value) => value.toMap()),
       'state': state,
-      'testDetails': testDetails.toMap(),
-      'testSpecification': testSpecification.toMap(),
+      'testDetails': pulumi.Input.mapInputValue<TestDetailsResponse, Map<String, dynamic>>(testDetails, (value) => value.toMap()),
+      'testSpecification': pulumi.Input.mapInputValue<TestSpecificationResponse, Map<String, dynamic>>(testSpecification, (value) => value.toMap()),
       'timestamp': timestamp,
-      'toolResultsStep': toolResultsStep.toMap(),
+      'toolResultsStep': pulumi.Input.mapInputValue<ToolResultsStepResponse, Map<String, dynamic>>(toolResultsStep, (value) => value.toMap()),
     };
   }
 
   factory TestExecutionResponse.fromMap(Map<String, dynamic> map) {
     return TestExecutionResponse(
-      environment: EnvironmentResponse.fromMap((map['environment'] as Map).cast<String, dynamic>()),
-      matrixId: map['matrixId'] as String,
-      project: map['project'] as String,
-      shard: ShardResponse.fromMap((map['shard'] as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
-      testDetails: TestDetailsResponse.fromMap((map['testDetails'] as Map).cast<String, dynamic>()),
-      testSpecification: TestSpecificationResponse.fromMap((map['testSpecification'] as Map).cast<String, dynamic>()),
-      timestamp: map['timestamp'] as String,
-      toolResultsStep: ToolResultsStepResponse.fromMap((map['toolResultsStep'] as Map).cast<String, dynamic>()),
+      environment: (EnvironmentResponse.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
+      matrixId: (map['matrixId'] as String).input(),
+      project: (map['project'] as String).input(),
+      shard: (ShardResponse.fromMap((map['shard'] as Map).cast<String, dynamic>())).input(),
+      state: (map['state'] as String).input(),
+      testDetails: (TestDetailsResponse.fromMap((map['testDetails'] as Map).cast<String, dynamic>())).input(),
+      testSpecification: (TestSpecificationResponse.fromMap((map['testSpecification'] as Map).cast<String, dynamic>())).input(),
+      timestamp: (map['timestamp'] as String).input(),
+      toolResultsStep: (ToolResultsStepResponse.fromMap((map['toolResultsStep'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionAuthParametersOauthParametersClientParameters {
   /// The ID of the client.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The AccessKey secret of the client.
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
 
   /// Creates a new [ConnectionAuthParametersOauthParametersClientParameters].
   /// [clientId] The ID of the client.
@@ -24,8 +25,8 @@ class ConnectionAuthParametersOauthParametersClientParameters {
 
   factory ConnectionAuthParametersOauthParametersClientParameters.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthParametersOauthParametersClientParameters(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
     );
   }
 }

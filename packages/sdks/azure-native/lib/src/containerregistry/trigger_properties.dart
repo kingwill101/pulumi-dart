@@ -8,11 +8,11 @@ import 'timer_trigger.dart';
 /// The properties of a trigger.
 class TriggerProperties {
   /// The trigger based on base image dependencies.
-  final BaseImageTrigger? baseImageTrigger;
+  final pulumi.Input<BaseImageTrigger>? baseImageTrigger;
   /// The collection of triggers based on source code repository.
-  final List<SourceTrigger>? sourceTriggers;
+  final pulumi.Input<List<SourceTrigger>>? sourceTriggers;
   /// The collection of timer triggers.
-  final List<TimerTrigger>? timerTriggers;
+  final pulumi.Input<List<TimerTrigger>>? timerTriggers;
 
   /// Creates a new [TriggerProperties].
   /// [baseImageTrigger] The trigger based on base image dependencies.
@@ -26,17 +26,17 @@ class TriggerProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baseImageTrigger': ?baseImageTrigger == null ? null : baseImageTrigger!.toMap(),
-      'sourceTriggers': ?sourceTriggers == null ? null : pulumi.Input.encodeList<SourceTrigger, Map<String, dynamic>>(sourceTriggers!, (value) => value.toMap()),
-      'timerTriggers': ?timerTriggers == null ? null : pulumi.Input.encodeList<TimerTrigger, Map<String, dynamic>>(timerTriggers!, (value) => value.toMap()),
+      'baseImageTrigger': ?pulumi.Input.mapOptionalInputValue<BaseImageTrigger, Map<String, dynamic>>(baseImageTrigger, (value) => value.toMap()),
+      'sourceTriggers': ?pulumi.Input.mapOptionalInputValue<List<SourceTrigger>, List<Map<String, dynamic>>>(sourceTriggers, (value) => pulumi.Input.encodeList<SourceTrigger, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'timerTriggers': ?pulumi.Input.mapOptionalInputValue<List<TimerTrigger>, List<Map<String, dynamic>>>(timerTriggers, (value) => pulumi.Input.encodeList<TimerTrigger, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TriggerProperties.fromMap(Map<String, dynamic> map) {
     return TriggerProperties(
-      baseImageTrigger: map['baseImageTrigger'] == null ? null : BaseImageTrigger.fromMap((map['baseImageTrigger'] as Map).cast<String, dynamic>()),
-      sourceTriggers: map['sourceTriggers'] == null ? null : pulumi.Input.decodeList<SourceTrigger>(map['sourceTriggers'], (value) => SourceTrigger.fromMap((value as Map).cast<String, dynamic>())),
-      timerTriggers: map['timerTriggers'] == null ? null : pulumi.Input.decodeList<TimerTrigger>(map['timerTriggers'], (value) => TimerTrigger.fromMap((value as Map).cast<String, dynamic>())),
+      baseImageTrigger: map['baseImageTrigger'] == null ? null : (BaseImageTrigger.fromMap((map['baseImageTrigger'] as Map).cast<String, dynamic>())).input(),
+      sourceTriggers: map['sourceTriggers'] == null ? null : (pulumi.Input.decodeList<SourceTrigger>(map['sourceTriggers'], (value) => SourceTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timerTriggers: map['timerTriggers'] == null ? null : (pulumi.Input.decodeList<TimerTrigger>(map['timerTriggers'], (value) => TimerTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

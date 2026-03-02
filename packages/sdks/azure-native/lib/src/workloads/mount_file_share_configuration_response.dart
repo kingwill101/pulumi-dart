@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the file share configuration where the transport directory fileshare already exists, and user wishes to mount the fileshare as a part of the create infra flow.
 class MountFileShareConfigurationResponse {
   /// The type of file share config.
   /// Expected value is 'Mount'.
-  final String configurationType;
+  final pulumi.Input<String> configurationType;
   /// The fileshare resource ID
-  final String id;
+  final pulumi.Input<String> id;
   /// The private endpoint resource ID
-  final String privateEndpointId;
+  final pulumi.Input<String> privateEndpointId;
 
   /// Creates a new [MountFileShareConfigurationResponse].
   /// [configurationType] The type of file share config.
@@ -31,9 +32,9 @@ class MountFileShareConfigurationResponse {
 
   factory MountFileShareConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return MountFileShareConfigurationResponse(
-      configurationType: map['configurationType'] as String,
-      id: map['id'] as String,
-      privateEndpointId: map['privateEndpointId'] as String,
+      configurationType: (map['configurationType'] as String).input(),
+      id: (map['id'] as String).input(),
+      privateEndpointId: (map['privateEndpointId'] as String).input(),
     );
   }
 }

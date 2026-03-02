@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetQuickConnectQuickConnectConfigUserConfig {
   /// Identifier of the contact flow.
-  final String contactFlowId;
+  final pulumi.Input<String> contactFlowId;
   /// Identifier for the user.
-  final String userId;
+  final pulumi.Input<String> userId;
 
   /// Creates a new [GetQuickConnectQuickConnectConfigUserConfig].
   /// [contactFlowId] Identifier of the contact flow.
@@ -24,8 +25,8 @@ class GetQuickConnectQuickConnectConfigUserConfig {
 
   factory GetQuickConnectQuickConnectConfigUserConfig.fromMap(Map<String, dynamic> map) {
     return GetQuickConnectQuickConnectConfigUserConfig(
-      contactFlowId: map['contactFlowId'] as String,
-      userId: map['userId'] as String,
+      contactFlowId: (map['contactFlowId'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

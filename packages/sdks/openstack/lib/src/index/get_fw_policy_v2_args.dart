@@ -38,23 +38,15 @@ class GetFwPolicyV2Args {
   /// [shared] Whether this policy is shared across all projects.
   /// [tenantId] This argument conflicts and is interchangeable
   GetFwPolicyV2Args({
-    pulumi.Output<bool>? audited,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? shared,
-    pulumi.Output<String>? tenantId,
-  }) :
-      audited = pulumi.Input.asOptionalInput<bool>(audited),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shared = pulumi.Input.asOptionalInput<bool>(shared),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.audited,
+    this.description,
+    this.name,
+    this.policyId,
+    this.projectId,
+    this.region,
+    this.shared,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class GetFwPolicyV2Args {
 
   factory GetFwPolicyV2Args.fromMap(Map<String, dynamic> map) {
     return GetFwPolicyV2Args(
-      audited: map['audited'] == null ? null : pulumi.Output.create<bool>(map['audited'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shared: map['shared'] == null ? null : pulumi.Output.create<bool>(map['shared'] as bool),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      audited: map['audited'] == null ? null : (map['audited'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

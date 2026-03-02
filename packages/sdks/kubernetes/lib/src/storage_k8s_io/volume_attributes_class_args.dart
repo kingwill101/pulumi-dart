@@ -28,17 +28,12 @@ class VolumeAttributesClassArgs {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [parameters] parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass.
   VolumeAttributesClassArgs({
-    pulumi.Output<String>? apiVersion,
-    required pulumi.Output<String> driverName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<Map<String, String>>? parameters,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      driverName = pulumi.Input.asInput<String>(driverName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters);
+    this.apiVersion,
+    required this.driverName,
+    this.kind,
+    this.metadata,
+    this.parameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class VolumeAttributesClassArgs {
 
   factory VolumeAttributesClassArgs.fromMap(Map<String, dynamic> map) {
     return VolumeAttributesClassArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      driverName: pulumi.Output.create<String>(map['driverName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      driverName: (map['driverName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

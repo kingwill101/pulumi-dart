@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'inventory_destination_bucket_encryption.dart';
 
 class InventoryDestinationBucket {
   /// ID of the account that owns the destination bucket. Recommended to be set to prevent problems if the destination bucket ownership changes.
-  final String? accountId;
+  final pulumi.Input<String>? accountId;
   /// Amazon S3 bucket ARN of the destination.
-  final String bucketArn;
+  final pulumi.Input<String> bucketArn;
   /// Contains the type of server-side encryption to use to encrypt the inventory (documented below).
-  final InventoryDestinationBucketEncryption? encryption;
+  final pulumi.Input<InventoryDestinationBucketEncryption>? encryption;
   /// Specifies the output format of the inventory results. Can be `CSV`, [`ORC`](https://orc.apache.org/) or [`Parquet`](https://parquet.apache.org/).
-  final String format;
+  final pulumi.Input<String> format;
   /// Prefix that is prepended to all inventory results.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [InventoryDestinationBucket].
   /// [accountId] ID of the account that owns the destination bucket. Recommended to be set to prevent problems if the destination bucket ownership changes.
@@ -32,7 +33,7 @@ class InventoryDestinationBucket {
     return <String, dynamic>{
       'accountId': ?accountId,
       'bucketArn': bucketArn,
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<InventoryDestinationBucketEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'format': format,
       'prefix': ?prefix,
     };
@@ -40,11 +41,11 @@ class InventoryDestinationBucket {
 
   factory InventoryDestinationBucket.fromMap(Map<String, dynamic> map) {
     return InventoryDestinationBucket(
-      accountId: map['accountId'] == null ? null : map['accountId'] as String,
-      bucketArn: map['bucketArn'] as String,
-      encryption: map['encryption'] == null ? null : InventoryDestinationBucketEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      format: map['format'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      bucketArn: (map['bucketArn'] as String).input(),
+      encryption: map['encryption'] == null ? null : (InventoryDestinationBucketEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      format: (map['format'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

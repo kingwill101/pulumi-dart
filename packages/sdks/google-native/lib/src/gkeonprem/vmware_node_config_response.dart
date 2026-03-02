@@ -7,25 +7,25 @@ import 'vmware_vsphere_config_response.dart';
 /// Parameters that describe the configuration of all nodes within a given node pool.
 class VmwareNodeConfigResponse {
   /// VMware disk size to be used during creation.
-  final String bootDiskSizeGb;
+  final pulumi.Input<String> bootDiskSizeGb;
   /// The number of CPUs for each node in the node pool.
-  final String cpus;
+  final pulumi.Input<String> cpus;
   /// Allow node pool traffic to be load balanced. Only works for clusters with MetalLB load balancers.
-  final bool enableLoadBalancer;
+  final pulumi.Input<bool> enableLoadBalancer;
   /// The OS image name in vCenter, only valid when using Windows.
-  final String image;
+  final pulumi.Input<String> image;
   /// The OS image to be used for each node in a node pool. Currently `cos`, `ubuntu`, `ubuntu_containerd` and `windows` are supported.
-  final String imageType;
+  final pulumi.Input<String> imageType;
   /// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// The megabytes of memory for each node in the node pool.
-  final String memoryMb;
+  final pulumi.Input<String> memoryMb;
   /// The number of nodes in the node pool.
-  final String replicas;
+  final pulumi.Input<String> replicas;
   /// The initial taints assigned to nodes of this node pool.
-  final List<NodeTaintResponse> taints;
+  final pulumi.Input<List<NodeTaintResponse>> taints;
   /// Specifies the vSphere config for node pool.
-  final VmwareVsphereConfigResponse vsphereConfig;
+  final pulumi.Input<VmwareVsphereConfigResponse> vsphereConfig;
 
   /// Creates a new [VmwareNodeConfigResponse].
   /// [bootDiskSizeGb] VMware disk size to be used during creation.
@@ -61,23 +61,23 @@ class VmwareNodeConfigResponse {
       'labels': labels,
       'memoryMb': memoryMb,
       'replicas': replicas,
-      'taints': pulumi.Input.encodeList<NodeTaintResponse, Map<String, dynamic>>(taints, (value) => value.toMap()),
-      'vsphereConfig': vsphereConfig.toMap(),
+      'taints': pulumi.Input.mapInputValue<List<NodeTaintResponse>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<NodeTaintResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vsphereConfig': pulumi.Input.mapInputValue<VmwareVsphereConfigResponse, Map<String, dynamic>>(vsphereConfig, (value) => value.toMap()),
     };
   }
 
   factory VmwareNodeConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareNodeConfigResponse(
-      bootDiskSizeGb: map['bootDiskSizeGb'] as String,
-      cpus: map['cpus'] as String,
-      enableLoadBalancer: map['enableLoadBalancer'] as bool,
-      image: map['image'] as String,
-      imageType: map['imageType'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      memoryMb: map['memoryMb'] as String,
-      replicas: map['replicas'] as String,
-      taints: pulumi.Input.decodeList<NodeTaintResponse>(map['taints'], (value) => NodeTaintResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vsphereConfig: VmwareVsphereConfigResponse.fromMap((map['vsphereConfig'] as Map).cast<String, dynamic>()),
+      bootDiskSizeGb: (map['bootDiskSizeGb'] as String).input(),
+      cpus: (map['cpus'] as String).input(),
+      enableLoadBalancer: (map['enableLoadBalancer'] as bool).input(),
+      image: (map['image'] as String).input(),
+      imageType: (map['imageType'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      memoryMb: (map['memoryMb'] as String).input(),
+      replicas: (map['replicas'] as String).input(),
+      taints: (pulumi.Input.decodeList<NodeTaintResponse>(map['taints'], (value) => NodeTaintResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vsphereConfig: (VmwareVsphereConfigResponse.fromMap((map['vsphereConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

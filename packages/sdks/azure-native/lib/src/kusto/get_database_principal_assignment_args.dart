@@ -22,15 +22,11 @@ class GetDatabasePrincipalAssignmentArgs {
   /// [principalAssignmentName] The name of the Kusto principalAssignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDatabasePrincipalAssignmentArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> principalAssignmentName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      principalAssignmentName = pulumi.Input.asInput<String>(principalAssignmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.databaseName,
+    required this.principalAssignmentName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDatabasePrincipalAssignmentArgs {
 
   factory GetDatabasePrincipalAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabasePrincipalAssignmentArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      principalAssignmentName: pulumi.Output.create<String>(map['principalAssignmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      principalAssignmentName: (map['principalAssignmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

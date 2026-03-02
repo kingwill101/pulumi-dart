@@ -29,19 +29,13 @@ class SnapshotArgs {
   /// [snapshotType] The type of a snapshot. The default is NodePool.
   /// [tags] Resource tags.
   SnapshotArgs({
-    pulumi.Output<CreationData>? creationData,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<String>? snapshotType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      creationData = pulumi.Input.asOptionalInput<CreationData>(creationData),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      snapshotType = pulumi.Input.asOptionalInput<String>(snapshotType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.creationData,
+    this.location,
+    required this.resourceGroupName,
+    this.resourceName,
+    this.snapshotType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      creationData: map['creationData'] == null ? null : pulumi.Output.create<CreationData>(CreationData.fromMap((map['creationData'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      snapshotType: map['snapshotType'] == null ? null : pulumi.Output.create<String>(map['snapshotType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      creationData: map['creationData'] == null ? null : (CreationData.fromMap((map['creationData'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class BuildServiceBuildArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   BuildServiceBuildArgs({
-    pulumi.Output<String>? buildName,
-    required pulumi.Output<String> buildServiceName,
-    pulumi.Output<BuildProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      buildName = pulumi.Input.asOptionalInput<String>(buildName),
-      buildServiceName = pulumi.Input.asInput<String>(buildServiceName),
-      properties = pulumi.Input.asOptionalInput<BuildProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.buildName,
+    required this.buildServiceName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class BuildServiceBuildArgs {
 
   factory BuildServiceBuildArgs.fromMap(Map<String, dynamic> map) {
     return BuildServiceBuildArgs(
-      buildName: map['buildName'] == null ? null : pulumi.Output.create<String>(map['buildName'] as String),
-      buildServiceName: pulumi.Output.create<String>(map['buildServiceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<BuildProperties>(BuildProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      buildName: map['buildName'] == null ? null : (map['buildName'] as String).input(),
+      buildServiceName: (map['buildServiceName'] as String).input(),
+      properties: map['properties'] == null ? null : (BuildProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

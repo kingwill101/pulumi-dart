@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDirectorySamlProperty {
-  final String relayStateParameterName;
-  final String status;
-  final String userAccessUrl;
+  final pulumi.Input<String> relayStateParameterName;
+  final pulumi.Input<String> status;
+  final pulumi.Input<String> userAccessUrl;
 
   /// Creates a new [GetDirectorySamlProperty].
   /// [relayStateParameterName] Required.
@@ -26,9 +27,9 @@ class GetDirectorySamlProperty {
 
   factory GetDirectorySamlProperty.fromMap(Map<String, dynamic> map) {
     return GetDirectorySamlProperty(
-      relayStateParameterName: map['relayStateParameterName'] as String,
-      status: map['status'] as String,
-      userAccessUrl: map['userAccessUrl'] as String,
+      relayStateParameterName: (map['relayStateParameterName'] as String).input(),
+      status: (map['status'] as String).input(),
+      userAccessUrl: (map['userAccessUrl'] as String).input(),
     );
   }
 }

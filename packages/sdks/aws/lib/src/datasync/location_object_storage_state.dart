@@ -49,35 +49,21 @@ class LocationObjectStorageState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uri] The URL of the Object Storage location that was described.
   LocationObjectStorageState({
-    pulumi.Output<String>? accessKey,
-    pulumi.Output<List<String>>? agentArns,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? bucketName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secretKey,
-    pulumi.Output<String>? serverCertificate,
-    pulumi.Output<String>? serverHostname,
-    pulumi.Output<int>? serverPort,
-    pulumi.Output<String>? serverProtocol,
-    pulumi.Output<String>? subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? uri,
-  }) :
-      accessKey = pulumi.Input.asOptionalInput<String>(accessKey),
-      agentArns = pulumi.Input.asOptionalInput<List<String>>(agentArns),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      bucketName = pulumi.Input.asOptionalInput<String>(bucketName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretKey = pulumi.Input.asOptionalInput<String>(secretKey),
-      serverCertificate = pulumi.Input.asOptionalInput<String>(serverCertificate),
-      serverHostname = pulumi.Input.asOptionalInput<String>(serverHostname),
-      serverPort = pulumi.Input.asOptionalInput<int>(serverPort),
-      serverProtocol = pulumi.Input.asOptionalInput<String>(serverProtocol),
-      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.accessKey,
+    this.agentArns,
+    this.arn,
+    this.bucketName,
+    this.region,
+    this.secretKey,
+    this.serverCertificate,
+    this.serverHostname,
+    this.serverPort,
+    this.serverProtocol,
+    this.subdirectory,
+    this.tags,
+    this.tagsAll,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,20 +86,20 @@ class LocationObjectStorageState {
 
   factory LocationObjectStorageState.fromMap(Map<String, dynamic> map) {
     return LocationObjectStorageState(
-      accessKey: map['accessKey'] == null ? null : pulumi.Output.create<String>(map['accessKey'] as String),
-      agentArns: map['agentArns'] == null ? null : pulumi.Output.create<List<String>>((map['agentArns'] as List).cast<String>()),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      bucketName: map['bucketName'] == null ? null : pulumi.Output.create<String>(map['bucketName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretKey: map['secretKey'] == null ? null : pulumi.Output.create<String>(map['secretKey'] as String),
-      serverCertificate: map['serverCertificate'] == null ? null : pulumi.Output.create<String>(map['serverCertificate'] as String),
-      serverHostname: map['serverHostname'] == null ? null : pulumi.Output.create<String>(map['serverHostname'] as String),
-      serverPort: map['serverPort'] == null ? null : pulumi.Output.create<int>(map['serverPort'] as int),
-      serverProtocol: map['serverProtocol'] == null ? null : pulumi.Output.create<String>(map['serverProtocol'] as String),
-      subdirectory: map['subdirectory'] == null ? null : pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
+      agentArns: map['agentArns'] == null ? null : ((map['agentArns'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate'] as String).input(),
+      serverHostname: map['serverHostname'] == null ? null : (map['serverHostname'] as String).input(),
+      serverPort: map['serverPort'] == null ? null : (map['serverPort'] as int).input(),
+      serverProtocol: map['serverProtocol'] == null ? null : (map['serverProtocol'] as String).input(),
+      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'maintenance_window_day_of_week.dart';
 
 /// Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
 class MaintenanceWindow {
   /// The day of week, when the window starts.
-  final MaintenanceWindowDayOfWeek? dayOfWeek;
+  final pulumi.Input<MaintenanceWindowDayOfWeek>? dayOfWeek;
   /// The hour of day (0-23) when the window starts.
-  final int? hourOfDay;
+  final pulumi.Input<int>? hourOfDay;
 
   /// Creates a new [MaintenanceWindow].
   /// [dayOfWeek] The day of week, when the window starts.
@@ -19,15 +20,15 @@ class MaintenanceWindow {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dayOfWeek': ?dayOfWeek == null ? null : dayOfWeek!.value,
+      'dayOfWeek': ?pulumi.Input.mapOptionalInputValue<MaintenanceWindowDayOfWeek, String>(dayOfWeek, (value) => value.value),
       'hourOfDay': ?hourOfDay,
     };
   }
 
   factory MaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindow(
-      dayOfWeek: map['dayOfWeek'] == null ? null : MaintenanceWindowDayOfWeek.fromValue(map['dayOfWeek'] as String),
-      hourOfDay: map['hourOfDay'] == null ? null : map['hourOfDay'] as int,
+      dayOfWeek: map['dayOfWeek'] == null ? null : (MaintenanceWindowDayOfWeek.fromValue(map['dayOfWeek'] as String)).input(),
+      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay'] as int).input(),
     );
   }
 }

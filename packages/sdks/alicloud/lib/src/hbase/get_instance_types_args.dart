@@ -34,23 +34,15 @@ class GetInstanceTypesArgs {
   /// [version] The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
   /// [zoneId] The zone id, belong to regionId.
   GetInstanceTypesArgs({
-    pulumi.Output<String>? chargeType,
-    pulumi.Output<String>? diskType,
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? version,
-    pulumi.Output<String>? zoneId,
-  }) :
-      chargeType = pulumi.Input.asOptionalInput<String>(chargeType),
-      diskType = pulumi.Input.asOptionalInput<String>(diskType),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      version = pulumi.Input.asOptionalInput<String>(version),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.chargeType,
+    this.diskType,
+    this.engine,
+    this.instanceType,
+    this.outputFile,
+    this.regionId,
+    this.version,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetInstanceTypesArgs {
 
   factory GetInstanceTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesArgs(
-      chargeType: map['chargeType'] == null ? null : pulumi.Output.create<String>(map['chargeType'] as String),
-      diskType: map['diskType'] == null ? null : pulumi.Output.create<String>(map['diskType'] as String),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      chargeType: map['chargeType'] == null ? null : (map['chargeType'] as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

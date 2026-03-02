@@ -33,21 +33,14 @@ class ProjectArgs {
   /// [projectId] The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
   /// [projectNumber] The number uniquely identifying the project. Example: `415104041262` Read-only.
   ProjectArgs({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<ProjectLifecycleState>? lifecycleState,
-    pulumi.Output<String>? name,
-    pulumi.Output<ResourceId>? parent,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? projectNumber,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      lifecycleState = pulumi.Input.asOptionalInput<ProjectLifecycleState>(lifecycleState),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<ResourceId>(parent),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      projectNumber = pulumi.Input.asOptionalInput<String>(projectNumber);
+    this.createTime,
+    this.labels,
+    this.lifecycleState,
+    this.name,
+    this.parent,
+    this.projectId,
+    this.projectNumber,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      lifecycleState: map['lifecycleState'] == null ? null : pulumi.Output.create<ProjectLifecycleState>(ProjectLifecycleState.fromValue(map['lifecycleState'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<ResourceId>(ResourceId.fromMap((map['parent'] as Map).cast<String, dynamic>())),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      projectNumber: map['projectNumber'] == null ? null : pulumi.Output.create<String>(map['projectNumber'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      lifecycleState: map['lifecycleState'] == null ? null : (ProjectLifecycleState.fromValue(map['lifecycleState'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (ResourceId.fromMap((map['parent'] as Map).cast<String, dynamic>())).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
     );
   }
 }

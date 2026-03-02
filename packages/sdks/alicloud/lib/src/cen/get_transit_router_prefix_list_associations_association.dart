@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTransitRouterPrefixListAssociationsAssociation {
   /// The ID of the Cen Transit Router Prefix List Association. It formats as `<prefix_list_id>:<transit_router_id>:<transit_router_table_id>:<next_hop>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the next hop connection.
-  final String nextHop;
+  final pulumi.Input<String> nextHop;
   /// The ID of the network instance associated with the next hop connection.
-  final String nextHopInstanceId;
+  final pulumi.Input<String> nextHopInstanceId;
   /// The type of the next hop.
-  final String nextHopType;
+  final pulumi.Input<String> nextHopType;
   /// The ID of the Alibaba Cloud account to which the prefix list belongs.
-  final int ownerUid;
+  final pulumi.Input<int> ownerUid;
   /// The ID of the prefix list.
-  final String prefixListId;
+  final pulumi.Input<String> prefixListId;
   /// The status of the prefix list.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the transit router.
-  final String transitRouterId;
+  final pulumi.Input<String> transitRouterId;
   /// The ID of the route table of the transit router.
-  final String transitRouterTableId;
+  final pulumi.Input<String> transitRouterTableId;
 
   /// Creates a new [GetTransitRouterPrefixListAssociationsAssociation].
   /// [id] The ID of the Cen Transit Router Prefix List Association. It formats as `<prefix_list_id>:<transit_router_id>:<transit_router_table_id>:<next_hop>`.
@@ -59,15 +60,15 @@ class GetTransitRouterPrefixListAssociationsAssociation {
 
   factory GetTransitRouterPrefixListAssociationsAssociation.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterPrefixListAssociationsAssociation(
-      id: map['id'] as String,
-      nextHop: map['nextHop'] as String,
-      nextHopInstanceId: map['nextHopInstanceId'] as String,
-      nextHopType: map['nextHopType'] as String,
-      ownerUid: map['ownerUid'] as int,
-      prefixListId: map['prefixListId'] as String,
-      status: map['status'] as String,
-      transitRouterId: map['transitRouterId'] as String,
-      transitRouterTableId: map['transitRouterTableId'] as String,
+      id: (map['id'] as String).input(),
+      nextHop: (map['nextHop'] as String).input(),
+      nextHopInstanceId: (map['nextHopInstanceId'] as String).input(),
+      nextHopType: (map['nextHopType'] as String).input(),
+      ownerUid: (map['ownerUid'] as int).input(),
+      prefixListId: (map['prefixListId'] as String).input(),
+      status: (map['status'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
+      transitRouterTableId: (map['transitRouterTableId'] as String).input(),
     );
   }
 }

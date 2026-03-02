@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_delegation_service_delegation.dart';
 
 class SubnetDelegation {
   /// A name for this delegation.
-  final String name;
+  final pulumi.Input<String> name;
   /// A `service_delegation` block as defined below.
-  final SubnetDelegationServiceDelegation serviceDelegation;
+  final pulumi.Input<SubnetDelegationServiceDelegation> serviceDelegation;
 
   /// Creates a new [SubnetDelegation].
   /// [name] A name for this delegation.
@@ -19,14 +20,14 @@ class SubnetDelegation {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'serviceDelegation': serviceDelegation.toMap(),
+      'serviceDelegation': pulumi.Input.mapInputValue<SubnetDelegationServiceDelegation, Map<String, dynamic>>(serviceDelegation, (value) => value.toMap()),
     };
   }
 
   factory SubnetDelegation.fromMap(Map<String, dynamic> map) {
     return SubnetDelegation(
-      name: map['name'] as String,
-      serviceDelegation: SubnetDelegationServiceDelegation.fromMap((map['serviceDelegation'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      serviceDelegation: (SubnetDelegationServiceDelegation.fromMap((map['serviceDelegation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

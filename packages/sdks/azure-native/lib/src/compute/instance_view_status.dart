@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'status_level_types.dart';
 
 /// Instance view status.
 class InstanceViewStatus {
   /// The status code.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// The short localizable label for the status.
-  final String? displayStatus;
+  final pulumi.Input<String>? displayStatus;
   /// The level code.
-  final StatusLevelTypes? level;
+  final pulumi.Input<StatusLevelTypes>? level;
   /// The detailed status message, including for alerts and error messages.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// The time of the status.
-  final String? time;
+  final pulumi.Input<String>? time;
 
   /// Creates a new [InstanceViewStatus].
   /// [code] The status code.
@@ -33,7 +34,7 @@ class InstanceViewStatus {
     return <String, dynamic>{
       'code': ?code,
       'displayStatus': ?displayStatus,
-      'level': ?level == null ? null : level!.value,
+      'level': ?pulumi.Input.mapOptionalInputValue<StatusLevelTypes, String>(level, (value) => value.value),
       'message': ?message,
       'time': ?time,
     };
@@ -41,11 +42,11 @@ class InstanceViewStatus {
 
   factory InstanceViewStatus.fromMap(Map<String, dynamic> map) {
     return InstanceViewStatus(
-      code: map['code'] == null ? null : map['code'] as String,
-      displayStatus: map['displayStatus'] == null ? null : map['displayStatus'] as String,
-      level: map['level'] == null ? null : StatusLevelTypes.fromValue(map['level'] as String),
-      message: map['message'] == null ? null : map['message'] as String,
-      time: map['time'] == null ? null : map['time'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      displayStatus: map['displayStatus'] == null ? null : (map['displayStatus'] as String).input(),
+      level: map['level'] == null ? null : (StatusLevelTypes.fromValue(map['level'] as String)).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      time: map['time'] == null ? null : (map['time'] as String).input(),
     );
   }
 }

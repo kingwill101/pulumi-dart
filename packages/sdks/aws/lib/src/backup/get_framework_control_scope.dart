@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFrameworkControlScope {
   /// The ID of the only AWS resource that you want your control scope to contain.
-  final List<String> complianceResourceIds;
+  final pulumi.Input<List<String>> complianceResourceIds;
   /// Describes whether the control scope includes one or more types of resources, such as EFS or RDS.
-  final List<String> complianceResourceTypes;
+  final pulumi.Input<List<String>> complianceResourceTypes;
   /// Tag key-value pair applied to those AWS resources that you want to trigger an evaluation for a rule. A maximum of one key-value pair can be provided.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetFrameworkControlScope].
   /// [complianceResourceIds] The ID of the only AWS resource that you want your control scope to contain.
@@ -29,9 +30,9 @@ class GetFrameworkControlScope {
 
   factory GetFrameworkControlScope.fromMap(Map<String, dynamic> map) {
     return GetFrameworkControlScope(
-      complianceResourceIds: (map['complianceResourceIds'] as List).cast<String>(),
-      complianceResourceTypes: (map['complianceResourceTypes'] as List).cast<String>(),
-      tags: (map['tags'] as Map).cast<String, String>(),
+      complianceResourceIds: ((map['complianceResourceIds'] as List).cast<String>()).input(),
+      complianceResourceTypes: ((map['complianceResourceTypes'] as List).cast<String>()).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

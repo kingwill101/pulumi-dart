@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_request_response.dart';
 import 'retry_policy_response.dart';
 import 'service_bus_queue_message_response.dart';
@@ -8,17 +9,17 @@ import 'storage_queue_message_response.dart';
 
 class JobErrorActionResponse {
   /// Gets or sets the storage queue message.
-  final StorageQueueMessageResponse? queueMessage;
+  final pulumi.Input<StorageQueueMessageResponse>? queueMessage;
   /// Gets or sets the http requests.
-  final HttpRequestResponse? request;
+  final pulumi.Input<HttpRequestResponse>? request;
   /// Gets or sets the retry policy.
-  final RetryPolicyResponse? retryPolicy;
+  final pulumi.Input<RetryPolicyResponse>? retryPolicy;
   /// Gets or sets the service bus queue message.
-  final ServiceBusQueueMessageResponse? serviceBusQueueMessage;
+  final pulumi.Input<ServiceBusQueueMessageResponse>? serviceBusQueueMessage;
   /// Gets or sets the service bus topic message.
-  final ServiceBusTopicMessageResponse? serviceBusTopicMessage;
+  final pulumi.Input<ServiceBusTopicMessageResponse>? serviceBusTopicMessage;
   /// Gets or sets the job error action type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [JobErrorActionResponse].
   /// [queueMessage] Gets or sets the storage queue message.
@@ -38,23 +39,23 @@ class JobErrorActionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'queueMessage': ?queueMessage == null ? null : queueMessage!.toMap(),
-      'request': ?request == null ? null : request!.toMap(),
-      'retryPolicy': ?retryPolicy == null ? null : retryPolicy!.toMap(),
-      'serviceBusQueueMessage': ?serviceBusQueueMessage == null ? null : serviceBusQueueMessage!.toMap(),
-      'serviceBusTopicMessage': ?serviceBusTopicMessage == null ? null : serviceBusTopicMessage!.toMap(),
+      'queueMessage': ?pulumi.Input.mapOptionalInputValue<StorageQueueMessageResponse, Map<String, dynamic>>(queueMessage, (value) => value.toMap()),
+      'request': ?pulumi.Input.mapOptionalInputValue<HttpRequestResponse, Map<String, dynamic>>(request, (value) => value.toMap()),
+      'retryPolicy': ?pulumi.Input.mapOptionalInputValue<RetryPolicyResponse, Map<String, dynamic>>(retryPolicy, (value) => value.toMap()),
+      'serviceBusQueueMessage': ?pulumi.Input.mapOptionalInputValue<ServiceBusQueueMessageResponse, Map<String, dynamic>>(serviceBusQueueMessage, (value) => value.toMap()),
+      'serviceBusTopicMessage': ?pulumi.Input.mapOptionalInputValue<ServiceBusTopicMessageResponse, Map<String, dynamic>>(serviceBusTopicMessage, (value) => value.toMap()),
       'type': ?type,
     };
   }
 
   factory JobErrorActionResponse.fromMap(Map<String, dynamic> map) {
     return JobErrorActionResponse(
-      queueMessage: map['queueMessage'] == null ? null : StorageQueueMessageResponse.fromMap((map['queueMessage'] as Map).cast<String, dynamic>()),
-      request: map['request'] == null ? null : HttpRequestResponse.fromMap((map['request'] as Map).cast<String, dynamic>()),
-      retryPolicy: map['retryPolicy'] == null ? null : RetryPolicyResponse.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>()),
-      serviceBusQueueMessage: map['serviceBusQueueMessage'] == null ? null : ServiceBusQueueMessageResponse.fromMap((map['serviceBusQueueMessage'] as Map).cast<String, dynamic>()),
-      serviceBusTopicMessage: map['serviceBusTopicMessage'] == null ? null : ServiceBusTopicMessageResponse.fromMap((map['serviceBusTopicMessage'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : map['type'] as String,
+      queueMessage: map['queueMessage'] == null ? null : (StorageQueueMessageResponse.fromMap((map['queueMessage'] as Map).cast<String, dynamic>())).input(),
+      request: map['request'] == null ? null : (HttpRequestResponse.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicyResponse.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
+      serviceBusQueueMessage: map['serviceBusQueueMessage'] == null ? null : (ServiceBusQueueMessageResponse.fromMap((map['serviceBusQueueMessage'] as Map).cast<String, dynamic>())).input(),
+      serviceBusTopicMessage: map['serviceBusTopicMessage'] == null ? null : (ServiceBusTopicMessageResponse.fromMap((map['serviceBusTopicMessage'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Recovery plan protected item.
 class RecoveryPlanProtectedItemResponse {
   /// The ARM Id of the recovery plan protected item.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The virtual machine Id.
-  final String? virtualMachineId;
+  final pulumi.Input<String>? virtualMachineId;
 
   /// Creates a new [RecoveryPlanProtectedItemResponse].
   /// [id] The ARM Id of the recovery plan protected item.
@@ -25,8 +26,8 @@ class RecoveryPlanProtectedItemResponse {
 
   factory RecoveryPlanProtectedItemResponse.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanProtectedItemResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      virtualMachineId: map['virtualMachineId'] == null ? null : map['virtualMachineId'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
     );
   }
 }

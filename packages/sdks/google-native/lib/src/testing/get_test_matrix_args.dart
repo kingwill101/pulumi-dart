@@ -14,11 +14,9 @@ class GetTestMatrixArgs {
   /// [project] Optional.
   /// [testMatrixId] Required.
   GetTestMatrixArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> testMatrixId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      testMatrixId = pulumi.Input.asInput<String>(testMatrixId);
+    this.project,
+    required this.testMatrixId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetTestMatrixArgs {
 
   factory GetTestMatrixArgs.fromMap(Map<String, dynamic> map) {
     return GetTestMatrixArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      testMatrixId: pulumi.Output.create<String>(map['testMatrixId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      testMatrixId: (map['testMatrixId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Git source settings for a deployment.
 class DeploymentSettingsGitAuthSSHAuth {
   /// Optional password for SSH authentication.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// SSH private key.
-  final String sshPrivateKey;
+  final pulumi.Input<String> sshPrivateKey;
 
   /// Creates a new [DeploymentSettingsGitAuthSSHAuth].
   /// [password] Optional password for SSH authentication.
@@ -25,8 +26,8 @@ class DeploymentSettingsGitAuthSSHAuth {
 
   factory DeploymentSettingsGitAuthSSHAuth.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsGitAuthSSHAuth(
-      password: map['password'] == null ? null : map['password'] as String,
-      sshPrivateKey: map['sshPrivateKey'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      sshPrivateKey: (map['sshPrivateKey'] as String).input(),
     );
   }
 }

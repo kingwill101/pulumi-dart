@@ -17,11 +17,9 @@ class DatabaseFirewallArgs {
   /// [clusterId] The ID of the target database cluster.
   /// [rules] A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
   DatabaseFirewallArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<List<DatabaseFirewallRule>> rules,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      rules = pulumi.Input.asInput<List<DatabaseFirewallRule>>(rules);
+    required this.clusterId,
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class DatabaseFirewallArgs {
 
   factory DatabaseFirewallArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseFirewallArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      rules: pulumi.Output.create<List<DatabaseFirewallRule>>(pulumi.Input.decodeList<DatabaseFirewallRule>(map['rules'], (value) => DatabaseFirewallRule.fromMap((value as Map).cast<String, dynamic>()))),
+      clusterId: (map['clusterId'] as String).input(),
+      rules: (pulumi.Input.decodeList<DatabaseFirewallRule>(map['rules'], (value) => DatabaseFirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -25,19 +25,13 @@ class TransitRouterMulticastDomainMemberState {
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
   /// [vpcId] The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
   TransitRouterMulticastDomainMemberState({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? groupIpAddress,
-    pulumi.Output<String>? networkInterfaceId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transitRouterMulticastDomainId,
-    pulumi.Output<String>? vpcId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      groupIpAddress = pulumi.Input.asOptionalInput<String>(groupIpAddress),
-      networkInterfaceId = pulumi.Input.asOptionalInput<String>(networkInterfaceId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouterMulticastDomainId = pulumi.Input.asOptionalInput<String>(transitRouterMulticastDomainId),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.dryRun,
+    this.groupIpAddress,
+    this.networkInterfaceId,
+    this.status,
+    this.transitRouterMulticastDomainId,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class TransitRouterMulticastDomainMemberState {
 
   factory TransitRouterMulticastDomainMemberState.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainMemberState(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      groupIpAddress: map['groupIpAddress'] == null ? null : pulumi.Output.create<String>(map['groupIpAddress'] as String),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] == null ? null : pulumi.Output.create<String>(map['transitRouterMulticastDomainId'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      groupIpAddress: map['groupIpAddress'] == null ? null : (map['groupIpAddress'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] == null ? null : (map['transitRouterMulticastDomainId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

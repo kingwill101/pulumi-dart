@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsNodePoolConfigConfigEncryption {
   /// The ARN of the AWS KMS key used to encrypt node pool configuration.
-  final String kmsKeyArn;
+  final pulumi.Input<String> kmsKeyArn;
 
   /// Creates a new [AwsNodePoolConfigConfigEncryption].
   /// [kmsKeyArn] The ARN of the AWS KMS key used to encrypt node pool configuration.
@@ -19,7 +20,7 @@ class AwsNodePoolConfigConfigEncryption {
 
   factory AwsNodePoolConfigConfigEncryption.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolConfigConfigEncryption(
-      kmsKeyArn: map['kmsKeyArn'] as String,
+      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
     );
   }
 }

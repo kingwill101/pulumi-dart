@@ -44,25 +44,16 @@ class ChartArgs {
   /// [values] Overrides for chart values.
   /// [version] The version of the chart to deploy. If not provided, the latest version will be deployed.
   ChartArgs({
-    pulumi.Output<String>? chart,
-    pulumi.Output<FetchOpts>? fetchOpts,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? repo,
-    pulumi.Output<String>? resourcePrefix,
-    pulumi.Output<List<dynamic>>? transformations,
-    pulumi.Output<Map<String, dynamic>>? values,
-    pulumi.Output<String>? version,
-  }) :
-      chart = pulumi.Input.asOptionalInput<String>(chart),
-      fetchOpts = pulumi.Input.asOptionalInput<FetchOpts>(fetchOpts),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      repo = pulumi.Input.asOptionalInput<String>(repo),
-      resourcePrefix = pulumi.Input.asOptionalInput<String>(resourcePrefix),
-      transformations = pulumi.Input.asOptionalInput<List<dynamic>>(transformations),
-      values = pulumi.Input.asOptionalInput<Map<String, dynamic>>(values),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.chart,
+    this.fetchOpts,
+    this.namespace,
+    this.path,
+    this.repo,
+    this.resourcePrefix,
+    this.transformations,
+    this.values,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,15 +71,15 @@ class ChartArgs {
 
   factory ChartArgs.fromMap(Map<String, dynamic> map) {
     return ChartArgs(
-      chart: map['chart'] == null ? null : pulumi.Output.create<String>(map['chart'] as String),
-      fetchOpts: map['fetchOpts'] == null ? null : pulumi.Output.create<FetchOpts>(FetchOpts.fromMap((map['fetchOpts'] as Map).cast<String, dynamic>())),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      repo: map['repo'] == null ? null : pulumi.Output.create<String>(map['repo'] as String),
-      resourcePrefix: map['resourcePrefix'] == null ? null : pulumi.Output.create<String>(map['resourcePrefix'] as String),
-      transformations: map['transformations'] == null ? null : pulumi.Output.create<List<dynamic>>((map['transformations'] as List).cast<dynamic>()),
-      values: map['values'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['values'] as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      chart: map['chart'] == null ? null : (map['chart'] as String).input(),
+      fetchOpts: map['fetchOpts'] == null ? null : (FetchOpts.fromMap((map['fetchOpts'] as Map).cast<String, dynamic>())).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      repo: map['repo'] == null ? null : (map['repo'] as String).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
+      transformations: map['transformations'] == null ? null : ((map['transformations'] as List).cast<dynamic>()).input(),
+      values: map['values'] == null ? null : ((map['values'] as Map).cast<String, dynamic>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

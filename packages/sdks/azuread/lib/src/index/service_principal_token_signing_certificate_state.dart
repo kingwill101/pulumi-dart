@@ -30,21 +30,14 @@ class ServicePrincipalTokenSigningCertificateState {
   /// [thumbprint] A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
   /// [value] The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
   ServicePrincipalTokenSigningCertificateState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? endDate,
-    pulumi.Output<String>? keyId,
-    pulumi.Output<String>? servicePrincipalId,
-    pulumi.Output<String>? startDate,
-    pulumi.Output<String>? thumbprint,
-    pulumi.Output<String>? value,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      endDate = pulumi.Input.asOptionalInput<String>(endDate),
-      keyId = pulumi.Input.asOptionalInput<String>(keyId),
-      servicePrincipalId = pulumi.Input.asOptionalInput<String>(servicePrincipalId),
-      startDate = pulumi.Input.asOptionalInput<String>(startDate),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.displayName,
+    this.endDate,
+    this.keyId,
+    this.servicePrincipalId,
+    this.startDate,
+    this.thumbprint,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ServicePrincipalTokenSigningCertificateState {
 
   factory ServicePrincipalTokenSigningCertificateState.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalTokenSigningCertificateState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      endDate: map['endDate'] == null ? null : pulumi.Output.create<String>(map['endDate'] as String),
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : pulumi.Output.create<String>(map['servicePrincipalId'] as String),
-      startDate: map['startDate'] == null ? null : pulumi.Output.create<String>(map['startDate'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

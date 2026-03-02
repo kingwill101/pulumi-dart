@@ -25,13 +25,10 @@ class GetUserArgs {
   /// [emailId] The email ID of the user to search for.
   /// [name] The name of the user to search for.
   GetUserArgs({
-    required pulumi.Output<String> authenticationDomainId,
-    pulumi.Output<String>? emailId,
-    pulumi.Output<String>? name,
-  }) :
-      authenticationDomainId = pulumi.Input.asInput<String>(authenticationDomainId),
-      emailId = pulumi.Input.asOptionalInput<String>(emailId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.authenticationDomainId,
+    this.emailId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,9 +40,9 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      authenticationDomainId: pulumi.Output.create<String>(map['authenticationDomainId'] as String),
-      emailId: map['emailId'] == null ? null : pulumi.Output.create<String>(map['emailId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      authenticationDomainId: (map['authenticationDomainId'] as String).input(),
+      emailId: map['emailId'] == null ? null : (map['emailId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

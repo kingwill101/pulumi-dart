@@ -22,13 +22,10 @@ class ProducerImageShareGroupArgs {
   /// [images] The images to be shared using this Image Share Group.
   /// [label] The label of the Image Share Group.
   ProducerImageShareGroupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<ProducerImageShareGroupImage>>? images,
-    required pulumi.Output<String> label,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      images = pulumi.Input.asOptionalInput<List<ProducerImageShareGroupImage>>(images),
-      label = pulumi.Input.asInput<String>(label);
+    this.description,
+    this.images,
+    required this.label,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class ProducerImageShareGroupArgs {
 
   factory ProducerImageShareGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProducerImageShareGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      images: map['images'] == null ? null : pulumi.Output.create<List<ProducerImageShareGroupImage>>(pulumi.Input.decodeList<ProducerImageShareGroupImage>(map['images'], (value) => ProducerImageShareGroupImage.fromMap((value as Map).cast<String, dynamic>()))),
-      label: pulumi.Output.create<String>(map['label'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      images: map['images'] == null ? null : (pulumi.Input.decodeList<ProducerImageShareGroupImage>(map['images'], (value) => ProducerImageShareGroupImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      label: (map['label'] as String).input(),
     );
   }
 }

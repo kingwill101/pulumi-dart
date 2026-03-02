@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeviceAwsLocation {
   /// ARN of the subnet that the device is located in.
-  final String? subnetArn;
+  final pulumi.Input<String>? subnetArn;
   /// Zone that the device is located in. Specify the ID of an Availability Zone, Local Zone, Wavelength Zone, or an Outpost.
-  final String? zone;
+  final pulumi.Input<String>? zone;
 
   /// Creates a new [DeviceAwsLocation].
   /// [subnetArn] ARN of the subnet that the device is located in.
@@ -24,8 +25,8 @@ class DeviceAwsLocation {
 
   factory DeviceAwsLocation.fromMap(Map<String, dynamic> map) {
     return DeviceAwsLocation(
-      subnetArn: map['subnetArn'] == null ? null : map['subnetArn'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      subnetArn: map['subnetArn'] == null ? null : (map['subnetArn'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

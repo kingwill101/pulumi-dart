@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gce_regional_persistent_disk_response.dart';
 
 /// A directory to persist across workstation sessions.
 class PersistentDirectoryResponse {
   /// A PersistentDirectory backed by a Compute Engine persistent disk.
-  final GceRegionalPersistentDiskResponse gcePd;
+  final pulumi.Input<GceRegionalPersistentDiskResponse> gcePd;
   /// Optional. Location of this directory in the running workstation.
-  final String mountPath;
+  final pulumi.Input<String> mountPath;
 
   /// Creates a new [PersistentDirectoryResponse].
   /// [gcePd] A PersistentDirectory backed by a Compute Engine persistent disk.
@@ -19,15 +20,15 @@ class PersistentDirectoryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gcePd': gcePd.toMap(),
+      'gcePd': pulumi.Input.mapInputValue<GceRegionalPersistentDiskResponse, Map<String, dynamic>>(gcePd, (value) => value.toMap()),
       'mountPath': mountPath,
     };
   }
 
   factory PersistentDirectoryResponse.fromMap(Map<String, dynamic> map) {
     return PersistentDirectoryResponse(
-      gcePd: GceRegionalPersistentDiskResponse.fromMap((map['gcePd'] as Map).cast<String, dynamic>()),
-      mountPath: map['mountPath'] as String,
+      gcePd: (GceRegionalPersistentDiskResponse.fromMap((map['gcePd'] as Map).cast<String, dynamic>())).input(),
+      mountPath: (map['mountPath'] as String).input(),
     );
   }
 }

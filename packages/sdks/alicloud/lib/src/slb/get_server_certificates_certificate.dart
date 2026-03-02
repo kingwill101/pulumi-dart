@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerCertificatesCertificate {
   /// Id of server certificate issued by alibaba cloud.
-  final String alicloudCertificateId;
+  final pulumi.Input<String> alicloudCertificateId;
   /// Name of server certificate issued by alibaba cloud.
-  final String alicloudCertificateName;
+  final pulumi.Input<String> alicloudCertificateName;
   /// Server certificate common name.
-  final String commonName;
+  final pulumi.Input<String> commonName;
   /// Server certificate created time.
-  final String createdTime;
+  final pulumi.Input<String> createdTime;
   /// Server certificate created timestamp.
-  final int createdTimestamp;
+  final pulumi.Input<int> createdTimestamp;
   /// Server certificate expired time.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// Server certificate expired timestamp.
-  final int expiredTimestamp;
+  final pulumi.Input<int> expiredTimestamp;
   /// Server certificate fingerprint.
-  final String fingerprint;
+  final pulumi.Input<String> fingerprint;
   /// Server certificate ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Is server certificate issued by alibaba cloud or not.
-  final bool isAlicloudCertificate;
+  final pulumi.Input<bool> isAlicloudCertificate;
   /// Server certificate name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Id of resource group which the slb server certificates belongs.
-  final String? resourceGroupId;
+  final pulumi.Input<String>? resourceGroupId;
   /// Server certificate subject alternative name list.
-  final List<String> subjectAlternativeNames;
+  final pulumi.Input<List<String>> subjectAlternativeNames;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetServerCertificatesCertificate].
   /// [alicloudCertificateId] Id of server certificate issued by alibaba cloud.
@@ -84,20 +85,20 @@ class GetServerCertificatesCertificate {
 
   factory GetServerCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetServerCertificatesCertificate(
-      alicloudCertificateId: map['alicloudCertificateId'] as String,
-      alicloudCertificateName: map['alicloudCertificateName'] as String,
-      commonName: map['commonName'] as String,
-      createdTime: map['createdTime'] as String,
-      createdTimestamp: map['createdTimestamp'] as int,
-      expiredTime: map['expiredTime'] as String,
-      expiredTimestamp: map['expiredTimestamp'] as int,
-      fingerprint: map['fingerprint'] as String,
-      id: map['id'] as String,
-      isAlicloudCertificate: map['isAlicloudCertificate'] as bool,
-      name: map['name'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      subjectAlternativeNames: (map['subjectAlternativeNames'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      alicloudCertificateId: (map['alicloudCertificateId'] as String).input(),
+      alicloudCertificateName: (map['alicloudCertificateName'] as String).input(),
+      commonName: (map['commonName'] as String).input(),
+      createdTime: (map['createdTime'] as String).input(),
+      createdTimestamp: (map['createdTimestamp'] as int).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      expiredTimestamp: (map['expiredTimestamp'] as int).input(),
+      fingerprint: (map['fingerprint'] as String).input(),
+      id: (map['id'] as String).input(),
+      isAlicloudCertificate: (map['isAlicloudCertificate'] as bool).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      subjectAlternativeNames: ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

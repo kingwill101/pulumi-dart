@@ -50,31 +50,19 @@ class RegionUrlMapComputeV1Args {
   /// [requestId] begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
   /// [tests] The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
   RegionUrlMapComputeV1Args({
-    pulumi.Output<HttpRouteActionComputeV1>? defaultRouteAction,
-    pulumi.Output<String>? defaultService,
-    pulumi.Output<HttpRedirectActionComputeV1>? defaultUrlRedirect,
-    pulumi.Output<String>? description,
-    pulumi.Output<HttpHeaderActionComputeV1>? headerAction,
-    pulumi.Output<List<HostRuleComputeV1>>? hostRules,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<PathMatcherComputeV1>>? pathMatchers,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<List<UrlMapTestComputeV1>>? tests,
-  }) :
-      defaultRouteAction = pulumi.Input.asOptionalInput<HttpRouteActionComputeV1>(defaultRouteAction),
-      defaultService = pulumi.Input.asOptionalInput<String>(defaultService),
-      defaultUrlRedirect = pulumi.Input.asOptionalInput<HttpRedirectActionComputeV1>(defaultUrlRedirect),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      headerAction = pulumi.Input.asOptionalInput<HttpHeaderActionComputeV1>(headerAction),
-      hostRules = pulumi.Input.asOptionalInput<List<HostRuleComputeV1>>(hostRules),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pathMatchers = pulumi.Input.asOptionalInput<List<PathMatcherComputeV1>>(pathMatchers),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      tests = pulumi.Input.asOptionalInput<List<UrlMapTestComputeV1>>(tests);
+    this.defaultRouteAction,
+    this.defaultService,
+    this.defaultUrlRedirect,
+    this.description,
+    this.headerAction,
+    this.hostRules,
+    this.name,
+    this.pathMatchers,
+    this.project,
+    required this.region,
+    this.requestId,
+    this.tests,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class RegionUrlMapComputeV1Args {
 
   factory RegionUrlMapComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapComputeV1Args(
-      defaultRouteAction: map['defaultRouteAction'] == null ? null : pulumi.Output.create<HttpRouteActionComputeV1>(HttpRouteActionComputeV1.fromMap((map['defaultRouteAction'] as Map).cast<String, dynamic>())),
-      defaultService: map['defaultService'] == null ? null : pulumi.Output.create<String>(map['defaultService'] as String),
-      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : pulumi.Output.create<HttpRedirectActionComputeV1>(HttpRedirectActionComputeV1.fromMap((map['defaultUrlRedirect'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      headerAction: map['headerAction'] == null ? null : pulumi.Output.create<HttpHeaderActionComputeV1>(HttpHeaderActionComputeV1.fromMap((map['headerAction'] as Map).cast<String, dynamic>())),
-      hostRules: map['hostRules'] == null ? null : pulumi.Output.create<List<HostRuleComputeV1>>(pulumi.Input.decodeList<HostRuleComputeV1>(map['hostRules'], (value) => HostRuleComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pathMatchers: map['pathMatchers'] == null ? null : pulumi.Output.create<List<PathMatcherComputeV1>>(pulumi.Input.decodeList<PathMatcherComputeV1>(map['pathMatchers'], (value) => PathMatcherComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      tests: map['tests'] == null ? null : pulumi.Output.create<List<UrlMapTestComputeV1>>(pulumi.Input.decodeList<UrlMapTestComputeV1>(map['tests'], (value) => UrlMapTestComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
+      defaultRouteAction: map['defaultRouteAction'] == null ? null : (HttpRouteActionComputeV1.fromMap((map['defaultRouteAction'] as Map).cast<String, dynamic>())).input(),
+      defaultService: map['defaultService'] == null ? null : (map['defaultService'] as String).input(),
+      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (HttpRedirectActionComputeV1.fromMap((map['defaultUrlRedirect'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      headerAction: map['headerAction'] == null ? null : (HttpHeaderActionComputeV1.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
+      hostRules: map['hostRules'] == null ? null : (pulumi.Input.decodeList<HostRuleComputeV1>(map['hostRules'], (value) => HostRuleComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pathMatchers: map['pathMatchers'] == null ? null : (pulumi.Input.decodeList<PathMatcherComputeV1>(map['pathMatchers'], (value) => PathMatcherComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      tests: map['tests'] == null ? null : (pulumi.Input.decodeList<UrlMapTestComputeV1>(map['tests'], (value) => UrlMapTestComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

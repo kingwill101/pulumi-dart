@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTlsInspectCaCertificatesCertificate {
   /// CA certificate ID
-  final String caCertId;
+  final pulumi.Input<String> caCertId;
   /// The ID of the resource supplied above.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetTlsInspectCaCertificatesCertificate].
   /// [caCertId] CA certificate ID
@@ -24,8 +25,8 @@ class GetTlsInspectCaCertificatesCertificate {
 
   factory GetTlsInspectCaCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetTlsInspectCaCertificatesCertificate(
-      caCertId: map['caCertId'] as String,
-      id: map['id'] as String,
+      caCertId: (map['caCertId'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

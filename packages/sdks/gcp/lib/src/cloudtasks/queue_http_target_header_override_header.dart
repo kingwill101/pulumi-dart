@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueueHttpTargetHeaderOverrideHeader {
   /// The Key of the header.
-  final String key;
+  final pulumi.Input<String> key;
   /// The Value of the header.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [QueueHttpTargetHeaderOverrideHeader].
   /// [key] The Key of the header.
@@ -24,8 +25,8 @@ class QueueHttpTargetHeaderOverrideHeader {
 
   factory QueueHttpTargetHeaderOverrideHeader.fromMap(Map<String, dynamic> map) {
     return QueueHttpTargetHeaderOverrideHeader(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

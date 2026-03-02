@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes properties of a network resource.
 class NetworkResourcePropertiesResponse {
   /// User readable description of the network.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The type of a Service Fabric container network.
   /// Expected value is 'NetworkResourceProperties'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// State of the resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Status of the network.
-  final String status;
+  final pulumi.Input<String> status;
   /// Gives additional information about the current status of the network.
-  final String statusDetails;
+  final pulumi.Input<String> statusDetails;
 
   /// Creates a new [NetworkResourcePropertiesResponse].
   /// [description] User readable description of the network.
@@ -41,11 +42,11 @@ class NetworkResourcePropertiesResponse {
 
   factory NetworkResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkResourcePropertiesResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      kind: map['kind'] as String,
-      provisioningState: map['provisioningState'] as String,
-      status: map['status'] as String,
-      statusDetails: map['statusDetails'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      status: (map['status'] as String).input(),
+      statusDetails: (map['statusDetails'] as String).input(),
     );
   }
 }

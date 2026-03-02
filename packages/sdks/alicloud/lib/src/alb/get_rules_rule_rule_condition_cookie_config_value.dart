@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRulesRuleRuleConditionCookieConfigValue {
   /// The key of the query string.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the query string.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetRulesRuleRuleConditionCookieConfigValue].
   /// [key] The key of the query string.
@@ -24,8 +25,8 @@ class GetRulesRuleRuleConditionCookieConfigValue {
 
   factory GetRulesRuleRuleConditionCookieConfigValue.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleRuleConditionCookieConfigValue(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

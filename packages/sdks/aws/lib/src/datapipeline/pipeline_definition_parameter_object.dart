@@ -5,9 +5,9 @@ import 'pipeline_definition_parameter_object_attribute.dart';
 
 class PipelineDefinitionParameterObject {
   /// Configuration block for attributes of the parameter object. See below
-  final List<PipelineDefinitionParameterObjectAttribute>? attributes;
+  final pulumi.Input<List<PipelineDefinitionParameterObjectAttribute>>? attributes;
   /// ID of the parameter object.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [PipelineDefinitionParameterObject].
   /// [attributes] Configuration block for attributes of the parameter object. See below
@@ -19,15 +19,15 @@ class PipelineDefinitionParameterObject {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': ?attributes == null ? null : pulumi.Input.encodeList<PipelineDefinitionParameterObjectAttribute, Map<String, dynamic>>(attributes!, (value) => value.toMap()),
+      'attributes': ?pulumi.Input.mapOptionalInputValue<List<PipelineDefinitionParameterObjectAttribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<PipelineDefinitionParameterObjectAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
     };
   }
 
   factory PipelineDefinitionParameterObject.fromMap(Map<String, dynamic> map) {
     return PipelineDefinitionParameterObject(
-      attributes: map['attributes'] == null ? null : pulumi.Input.decodeList<PipelineDefinitionParameterObjectAttribute>(map['attributes'], (value) => PipelineDefinitionParameterObjectAttribute.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<PipelineDefinitionParameterObjectAttribute>(map['attributes'], (value) => PipelineDefinitionParameterObjectAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

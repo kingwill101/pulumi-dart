@@ -39,27 +39,17 @@ class NetworkEdgeSecurityServiceState {
   /// [selfLinkWithServiceId] Server-defined URL for this resource with the resource id.
   /// [serviceId] The unique identifier for the resource. This identifier is defined by the server.
   NetworkEdgeSecurityServiceState({
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityPolicy,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? selfLinkWithServiceId,
-    pulumi.Output<String>? serviceId,
-  }) :
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityPolicy = pulumi.Input.asOptionalInput<String>(securityPolicy),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      selfLinkWithServiceId = pulumi.Input.asOptionalInput<String>(selfLinkWithServiceId),
-      serviceId = pulumi.Input.asOptionalInput<String>(serviceId);
+    this.creationTimestamp,
+    this.description,
+    this.fingerprint,
+    this.name,
+    this.project,
+    this.region,
+    this.securityPolicy,
+    this.selfLink,
+    this.selfLinkWithServiceId,
+    this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class NetworkEdgeSecurityServiceState {
 
   factory NetworkEdgeSecurityServiceState.fromMap(Map<String, dynamic> map) {
     return NetworkEdgeSecurityServiceState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityPolicy: map['securityPolicy'] == null ? null : pulumi.Output.create<String>(map['securityPolicy'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      selfLinkWithServiceId: map['selfLinkWithServiceId'] == null ? null : pulumi.Output.create<String>(map['selfLinkWithServiceId'] as String),
-      serviceId: map['serviceId'] == null ? null : pulumi.Output.create<String>(map['serviceId'] as String),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      selfLinkWithServiceId: map['selfLinkWithServiceId'] == null ? null : (map['selfLinkWithServiceId'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
     );
   }
 }

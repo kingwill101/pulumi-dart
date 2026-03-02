@@ -40,29 +40,18 @@ class EcsBackupClientState {
   /// [status] Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
   /// [useHttps] Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
   EcsBackupClientState({
-    pulumi.Output<String>? dataNetworkType,
-    pulumi.Output<String>? dataProxySetting,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? maxCpuCore,
-    pulumi.Output<String>? maxWorker,
-    pulumi.Output<String>? proxyHost,
-    pulumi.Output<String>? proxyPassword,
-    pulumi.Output<String>? proxyPort,
-    pulumi.Output<String>? proxyUser,
-    pulumi.Output<String>? status,
-    pulumi.Output<bool>? useHttps,
-  }) :
-      dataNetworkType = pulumi.Input.asOptionalInput<String>(dataNetworkType),
-      dataProxySetting = pulumi.Input.asOptionalInput<String>(dataProxySetting),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      maxCpuCore = pulumi.Input.asOptionalInput<String>(maxCpuCore),
-      maxWorker = pulumi.Input.asOptionalInput<String>(maxWorker),
-      proxyHost = pulumi.Input.asOptionalInput<String>(proxyHost),
-      proxyPassword = pulumi.Input.asOptionalInput<String>(proxyPassword),
-      proxyPort = pulumi.Input.asOptionalInput<String>(proxyPort),
-      proxyUser = pulumi.Input.asOptionalInput<String>(proxyUser),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      useHttps = pulumi.Input.asOptionalInput<bool>(useHttps);
+    this.dataNetworkType,
+    this.dataProxySetting,
+    this.instanceId,
+    this.maxCpuCore,
+    this.maxWorker,
+    this.proxyHost,
+    this.proxyPassword,
+    this.proxyPort,
+    this.proxyUser,
+    this.status,
+    this.useHttps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class EcsBackupClientState {
 
   factory EcsBackupClientState.fromMap(Map<String, dynamic> map) {
     return EcsBackupClientState(
-      dataNetworkType: map['dataNetworkType'] == null ? null : pulumi.Output.create<String>(map['dataNetworkType'] as String),
-      dataProxySetting: map['dataProxySetting'] == null ? null : pulumi.Output.create<String>(map['dataProxySetting'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      maxCpuCore: map['maxCpuCore'] == null ? null : pulumi.Output.create<String>(map['maxCpuCore'] as String),
-      maxWorker: map['maxWorker'] == null ? null : pulumi.Output.create<String>(map['maxWorker'] as String),
-      proxyHost: map['proxyHost'] == null ? null : pulumi.Output.create<String>(map['proxyHost'] as String),
-      proxyPassword: map['proxyPassword'] == null ? null : pulumi.Output.create<String>(map['proxyPassword'] as String),
-      proxyPort: map['proxyPort'] == null ? null : pulumi.Output.create<String>(map['proxyPort'] as String),
-      proxyUser: map['proxyUser'] == null ? null : pulumi.Output.create<String>(map['proxyUser'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      useHttps: map['useHttps'] == null ? null : pulumi.Output.create<bool>(map['useHttps'] as bool),
+      dataNetworkType: map['dataNetworkType'] == null ? null : (map['dataNetworkType'] as String).input(),
+      dataProxySetting: map['dataProxySetting'] == null ? null : (map['dataProxySetting'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      maxCpuCore: map['maxCpuCore'] == null ? null : (map['maxCpuCore'] as String).input(),
+      maxWorker: map['maxWorker'] == null ? null : (map['maxWorker'] as String).input(),
+      proxyHost: map['proxyHost'] == null ? null : (map['proxyHost'] as String).input(),
+      proxyPassword: map['proxyPassword'] == null ? null : (map['proxyPassword'] as String).input(),
+      proxyPort: map['proxyPort'] == null ? null : (map['proxyPort'] as String).input(),
+      proxyUser: map['proxyUser'] == null ? null : (map['proxyUser'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      useHttps: map['useHttps'] == null ? null : (map['useHttps'] as bool).input(),
     );
   }
 }

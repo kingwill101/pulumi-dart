@@ -16,13 +16,10 @@ class GetRegionNetworkFirewallPolicyArgs {
   /// [project] Optional.
   /// [region] Required.
   GetRegionNetworkFirewallPolicyArgs({
-    required pulumi.Output<String> firewallPolicy,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-  }) :
-      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+    required this.firewallPolicy,
+    this.project,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetRegionNetworkFirewallPolicyArgs {
 
   factory GetRegionNetworkFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionNetworkFirewallPolicyArgs(
-      firewallPolicy: pulumi.Output.create<String>(map['firewallPolicy'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      firewallPolicy: (map['firewallPolicy'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

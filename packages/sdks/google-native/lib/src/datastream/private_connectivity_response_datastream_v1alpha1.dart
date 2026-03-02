@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Private Connectivity
 class PrivateConnectivityResponseDatastreamV1alpha1 {
-  final String privateConnectionName;
+  final pulumi.Input<String> privateConnectionName;
 
   /// Creates a new [PrivateConnectivityResponseDatastreamV1alpha1].
   /// [privateConnectionName] Required.
@@ -19,7 +20,7 @@ class PrivateConnectivityResponseDatastreamV1alpha1 {
 
   factory PrivateConnectivityResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return PrivateConnectivityResponseDatastreamV1alpha1(
-      privateConnectionName: map['privateConnectionName'] as String,
+      privateConnectionName: (map['privateConnectionName'] as String).input(),
     );
   }
 }

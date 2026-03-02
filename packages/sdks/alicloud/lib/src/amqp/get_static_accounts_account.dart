@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStaticAccountsAccount {
   /// Access key.
-  final String accessKey;
+  final pulumi.Input<String> accessKey;
   /// Create time stamp. Unix timestamp, to millisecond level.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// InstanceId
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The ID of the user's primary account.
-  final String masterUid;
+  final pulumi.Input<String> masterUid;
   /// Static password.
-  final String password;
+  final pulumi.Input<String> password;
   /// Static username.
-  final String userName;
+  final pulumi.Input<String> userName;
 
   /// Creates a new [GetStaticAccountsAccount].
   /// [accessKey] Access key.
@@ -49,13 +50,13 @@ class GetStaticAccountsAccount {
 
   factory GetStaticAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetStaticAccountsAccount(
-      accessKey: map['accessKey'] as String,
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      masterUid: map['masterUid'] as String,
-      password: map['password'] as String,
-      userName: map['userName'] as String,
+      accessKey: (map['accessKey'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      masterUid: (map['masterUid'] as String).input(),
+      password: (map['password'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

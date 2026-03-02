@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PartnerAttachmentBgp {
-  final String? authKey;
-  final String? localRouterIp;
-  final int? peerRouterAsn;
-  final String? peerRouterIp;
+  final pulumi.Input<String>? authKey;
+  final pulumi.Input<String>? localRouterIp;
+  final pulumi.Input<int>? peerRouterAsn;
+  final pulumi.Input<String>? peerRouterIp;
 
   /// Creates a new [PartnerAttachmentBgp].
   /// [authKey] Optional.
@@ -30,10 +31,10 @@ class PartnerAttachmentBgp {
 
   factory PartnerAttachmentBgp.fromMap(Map<String, dynamic> map) {
     return PartnerAttachmentBgp(
-      authKey: map['authKey'] == null ? null : map['authKey'] as String,
-      localRouterIp: map['localRouterIp'] == null ? null : map['localRouterIp'] as String,
-      peerRouterAsn: map['peerRouterAsn'] == null ? null : map['peerRouterAsn'] as int,
-      peerRouterIp: map['peerRouterIp'] == null ? null : map['peerRouterIp'] as String,
+      authKey: map['authKey'] == null ? null : (map['authKey'] as String).input(),
+      localRouterIp: map['localRouterIp'] == null ? null : (map['localRouterIp'] as String).input(),
+      peerRouterAsn: map['peerRouterAsn'] == null ? null : (map['peerRouterAsn'] as int).input(),
+      peerRouterIp: map['peerRouterIp'] == null ? null : (map['peerRouterIp'] as String).input(),
     );
   }
 }

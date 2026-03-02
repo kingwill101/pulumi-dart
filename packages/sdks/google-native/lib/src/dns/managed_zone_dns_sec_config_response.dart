@@ -5,12 +5,12 @@ import 'dns_key_spec_response.dart';
 
 class ManagedZoneDnsSecConfigResponse {
   /// Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
-  final List<DnsKeySpecResponse> defaultKeySpecs;
-  final String kind;
+  final pulumi.Input<List<DnsKeySpecResponse>> defaultKeySpecs;
+  final pulumi.Input<String> kind;
   /// Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
-  final String nonExistence;
+  final pulumi.Input<String> nonExistence;
   /// Specifies whether DNSSEC is enabled, and what mode it is in.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [ManagedZoneDnsSecConfigResponse].
   /// [defaultKeySpecs] Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
@@ -26,7 +26,7 @@ class ManagedZoneDnsSecConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultKeySpecs': pulumi.Input.encodeList<DnsKeySpecResponse, Map<String, dynamic>>(defaultKeySpecs, (value) => value.toMap()),
+      'defaultKeySpecs': pulumi.Input.mapInputValue<List<DnsKeySpecResponse>, List<Map<String, dynamic>>>(defaultKeySpecs, (value) => pulumi.Input.encodeList<DnsKeySpecResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': kind,
       'nonExistence': nonExistence,
       'state': state,
@@ -35,10 +35,10 @@ class ManagedZoneDnsSecConfigResponse {
 
   factory ManagedZoneDnsSecConfigResponse.fromMap(Map<String, dynamic> map) {
     return ManagedZoneDnsSecConfigResponse(
-      defaultKeySpecs: pulumi.Input.decodeList<DnsKeySpecResponse>(map['defaultKeySpecs'], (value) => DnsKeySpecResponse.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] as String,
-      nonExistence: map['nonExistence'] as String,
-      state: map['state'] as String,
+      defaultKeySpecs: (pulumi.Input.decodeList<DnsKeySpecResponse>(map['defaultKeySpecs'], (value) => DnsKeySpecResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: (map['kind'] as String).input(),
+      nonExistence: (map['nonExistence'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

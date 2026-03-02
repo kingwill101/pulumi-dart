@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEcsNetworkInterfacesInterfaceAssociatedPublicIp {
   /// The EIP of the ENI.
-  final String publicIpAddress;
+  final pulumi.Input<String> publicIpAddress;
 
   /// Creates a new [GetEcsNetworkInterfacesInterfaceAssociatedPublicIp].
   /// [publicIpAddress] The EIP of the ENI.
@@ -19,7 +20,7 @@ class GetEcsNetworkInterfacesInterfaceAssociatedPublicIp {
 
   factory GetEcsNetworkInterfacesInterfaceAssociatedPublicIp.fromMap(Map<String, dynamic> map) {
     return GetEcsNetworkInterfacesInterfaceAssociatedPublicIp(
-      publicIpAddress: map['publicIpAddress'] as String,
+      publicIpAddress: (map['publicIpAddress'] as String).input(),
     );
   }
 }

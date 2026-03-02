@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCertificateConfig {
-  final String? privateKey;
-  final String? serverCertificate;
-  final String? serverCertificateStatus;
+  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String>? serverCertificate;
+  final pulumi.Input<String>? serverCertificateStatus;
 
   /// Creates a new [DomainCertificateConfig].
   /// [privateKey] Optional.
@@ -26,9 +27,9 @@ class DomainCertificateConfig {
 
   factory DomainCertificateConfig.fromMap(Map<String, dynamic> map) {
     return DomainCertificateConfig(
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
-      serverCertificate: map['serverCertificate'] == null ? null : map['serverCertificate'] as String,
-      serverCertificateStatus: map['serverCertificateStatus'] == null ? null : map['serverCertificateStatus'] as String,
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate'] as String).input(),
+      serverCertificateStatus: map['serverCertificateStatus'] == null ? null : (map['serverCertificateStatus'] as String).input(),
     );
   }
 }

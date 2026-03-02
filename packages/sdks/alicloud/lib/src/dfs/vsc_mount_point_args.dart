@@ -19,13 +19,10 @@ class VscMountPointArgs {
   /// [description] The description of the Mount point.  The length is 0 to 100 characters.
   /// [fileSystemId] The ID of the HDFS file system resource associated with the VSC mount point.
   VscMountPointArgs({
-    pulumi.Output<String>? aliasPrefix,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> fileSystemId,
-  }) :
-      aliasPrefix = pulumi.Input.asOptionalInput<String>(aliasPrefix),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId);
+    this.aliasPrefix,
+    this.description,
+    required this.fileSystemId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VscMountPointArgs {
 
   factory VscMountPointArgs.fromMap(Map<String, dynamic> map) {
     return VscMountPointArgs(
-      aliasPrefix: map['aliasPrefix'] == null ? null : pulumi.Output.create<String>(map['aliasPrefix'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
+      aliasPrefix: map['aliasPrefix'] == null ? null : (map['aliasPrefix'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
     );
   }
 }

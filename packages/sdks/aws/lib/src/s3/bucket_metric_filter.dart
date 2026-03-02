@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketMetricFilter {
   /// S3 Access Point ARN for filtering (singular).
-  final String? accessPoint;
+  final pulumi.Input<String>? accessPoint;
   /// Object prefix for filtering (singular).
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// Object tags for filtering (up to 10).
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [BucketMetricFilter].
   /// [accessPoint] S3 Access Point ARN for filtering (singular).
@@ -29,9 +30,9 @@ class BucketMetricFilter {
 
   factory BucketMetricFilter.fromMap(Map<String, dynamic> map) {
     return BucketMetricFilter(
-      accessPoint: map['accessPoint'] == null ? null : map['accessPoint'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      accessPoint: map['accessPoint'] == null ? null : (map['accessPoint'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

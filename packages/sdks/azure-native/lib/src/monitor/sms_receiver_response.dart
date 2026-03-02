@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An SMS receiver.
 class SmsReceiverResponse {
   /// The country code of the SMS receiver.
-  final String countryCode;
+  final pulumi.Input<String> countryCode;
   /// The name of the SMS receiver. Names must be unique across all receivers within a tenant action group.
-  final String name;
+  final pulumi.Input<String> name;
   /// The phone number of the SMS receiver.
-  final String phoneNumber;
+  final pulumi.Input<String> phoneNumber;
   /// The status of the receiver.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [SmsReceiverResponse].
   /// [countryCode] The country code of the SMS receiver.
@@ -35,10 +36,10 @@ class SmsReceiverResponse {
 
   factory SmsReceiverResponse.fromMap(Map<String, dynamic> map) {
     return SmsReceiverResponse(
-      countryCode: map['countryCode'] as String,
-      name: map['name'] as String,
-      phoneNumber: map['phoneNumber'] as String,
-      status: map['status'] as String,
+      countryCode: (map['countryCode'] as String).input(),
+      name: (map['name'] as String).input(),
+      phoneNumber: (map['phoneNumber'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

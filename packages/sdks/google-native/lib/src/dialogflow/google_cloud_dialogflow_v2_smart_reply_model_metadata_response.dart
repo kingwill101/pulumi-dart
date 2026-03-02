@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata for smart reply models.
 class GoogleCloudDialogflowV2SmartReplyModelMetadataResponse {
   /// Optional. Type of the smart reply model. If not provided, model_type is used.
-  final String trainingModelType;
+  final pulumi.Input<String> trainingModelType;
 
   /// Creates a new [GoogleCloudDialogflowV2SmartReplyModelMetadataResponse].
   /// [trainingModelType] Optional. Type of the smart reply model. If not provided, model_type is used.
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowV2SmartReplyModelMetadataResponse {
 
   factory GoogleCloudDialogflowV2SmartReplyModelMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2SmartReplyModelMetadataResponse(
-      trainingModelType: map['trainingModelType'] as String,
+      trainingModelType: (map['trainingModelType'] as String).input(),
     );
   }
 }

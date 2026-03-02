@@ -37,25 +37,16 @@ class WorkloadNetworkDnsZoneArgs {
   /// [revision] NSX revision number.
   /// [sourceIp] Source IP of the DNS Zone.
   WorkloadNetworkDnsZoneArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<String>>? dnsServerIps,
-    pulumi.Output<double>? dnsServices,
-    pulumi.Output<String>? dnsZoneId,
-    pulumi.Output<List<String>>? domain,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<double>? revision,
-    pulumi.Output<String>? sourceIp,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      dnsServerIps = pulumi.Input.asOptionalInput<List<String>>(dnsServerIps),
-      dnsServices = pulumi.Input.asOptionalInput<double>(dnsServices),
-      dnsZoneId = pulumi.Input.asOptionalInput<String>(dnsZoneId),
-      domain = pulumi.Input.asOptionalInput<List<String>>(domain),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      revision = pulumi.Input.asOptionalInput<double>(revision),
-      sourceIp = pulumi.Input.asOptionalInput<String>(sourceIp);
+    this.displayName,
+    this.dnsServerIps,
+    this.dnsServices,
+    this.dnsZoneId,
+    this.domain,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+    this.revision,
+    this.sourceIp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class WorkloadNetworkDnsZoneArgs {
 
   factory WorkloadNetworkDnsZoneArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkDnsZoneArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      dnsServerIps: map['dnsServerIps'] == null ? null : pulumi.Output.create<List<String>>((map['dnsServerIps'] as List).cast<String>()),
-      dnsServices: map['dnsServices'] == null ? null : pulumi.Output.create<double>(map['dnsServices'] as double),
-      dnsZoneId: map['dnsZoneId'] == null ? null : pulumi.Output.create<String>(map['dnsZoneId'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<List<String>>((map['domain'] as List).cast<String>()),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      revision: map['revision'] == null ? null : pulumi.Output.create<double>(map['revision'] as double),
-      sourceIp: map['sourceIp'] == null ? null : pulumi.Output.create<String>(map['sourceIp'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      dnsServerIps: map['dnsServerIps'] == null ? null : ((map['dnsServerIps'] as List).cast<String>()).input(),
+      dnsServices: map['dnsServices'] == null ? null : (map['dnsServices'] as double).input(),
+      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId'] as String).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as List).cast<String>()).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
+      sourceIp: map['sourceIp'] == null ? null : (map['sourceIp'] as String).input(),
     );
   }
 }

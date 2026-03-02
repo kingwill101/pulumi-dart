@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetUpdateStrategyStageGroup {
   /// The name which should be used for this group.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [FleetUpdateStrategyStageGroup].
   /// [name] The name which should be used for this group.
@@ -19,7 +20,7 @@ class FleetUpdateStrategyStageGroup {
 
   factory FleetUpdateStrategyStageGroup.fromMap(Map<String, dynamic> map) {
     return FleetUpdateStrategyStageGroup(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of WebhookBuildTypeEnumValue
 class WebhookBuildTypeEnumValue {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [WebhookBuildTypeEnumValue].
   /// [value] Property value
@@ -20,7 +21,7 @@ class WebhookBuildTypeEnumValue {
 
   factory WebhookBuildTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return WebhookBuildTypeEnumValue(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class VpcState {
   /// [region] The region of the VPC.
   /// [updated] The date and time when the VPC was last updated.
   VpcState({
-    pulumi.Output<String>? created,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<VpcIpv6>>? ipv6s,
-    pulumi.Output<String>? label,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? updated,
-  }) :
-      created = pulumi.Input.asOptionalInput<String>(created),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipv6s = pulumi.Input.asOptionalInput<List<VpcIpv6>>(ipv6s),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      updated = pulumi.Input.asOptionalInput<String>(updated);
+    this.created,
+    this.description,
+    this.ipv6s,
+    this.label,
+    this.region,
+    this.updated,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class VpcState {
 
   factory VpcState.fromMap(Map<String, dynamic> map) {
     return VpcState(
-      created: map['created'] == null ? null : pulumi.Output.create<String>(map['created'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipv6s: map['ipv6s'] == null ? null : pulumi.Output.create<List<VpcIpv6>>(pulumi.Input.decodeList<VpcIpv6>(map['ipv6s'], (value) => VpcIpv6.fromMap((value as Map).cast<String, dynamic>()))),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      updated: map['updated'] == null ? null : pulumi.Output.create<String>(map['updated'] as String),
+      created: map['created'] == null ? null : (map['created'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipv6s: map['ipv6s'] == null ? null : (pulumi.Input.decodeList<VpcIpv6>(map['ipv6s'], (value) => VpcIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
     );
   }
 }

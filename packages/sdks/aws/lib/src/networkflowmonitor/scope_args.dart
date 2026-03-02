@@ -25,15 +25,11 @@ class ScopeArgs {
   /// [targets] The targets to define the scope to be monitored. A target is an array of target resources, which are currently Region-account pairs.
   /// [timeouts] Optional.
   ScopeArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<List<ScopeTarget>> targets,
-    pulumi.Output<ScopeTimeouts>? timeouts,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targets = pulumi.Input.asInput<List<ScopeTarget>>(targets),
-      timeouts = pulumi.Input.asOptionalInput<ScopeTimeouts>(timeouts);
+    this.region,
+    this.tags,
+    required this.targets,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class ScopeArgs {
 
   factory ScopeArgs.fromMap(Map<String, dynamic> map) {
     return ScopeArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targets: pulumi.Output.create<List<ScopeTarget>>(pulumi.Input.decodeList<ScopeTarget>(map['targets'], (value) => ScopeTarget.fromMap((value as Map).cast<String, dynamic>()))),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ScopeTimeouts>(ScopeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targets: (pulumi.Input.decodeList<ScopeTarget>(map['targets'], (value) => ScopeTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeouts: map['timeouts'] == null ? null : (ScopeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

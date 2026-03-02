@@ -39,25 +39,16 @@ class DiskEncryptionSetArgs {
   /// [rotationToLatestKeyVersionEnabled] Set this flag to true to enable auto-updating of this disk encryption set to the latest key version.
   /// [tags] Resource tags.
   DiskEncryptionSetArgs({
-    pulumi.Output<KeyForDiskEncryptionSet>? activeKey,
-    pulumi.Output<String>? diskEncryptionSetName,
-    pulumi.Output<String>? encryptionType,
-    pulumi.Output<String>? federatedClientId,
-    pulumi.Output<EncryptionSetIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? rotationToLatestKeyVersionEnabled,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      activeKey = pulumi.Input.asOptionalInput<KeyForDiskEncryptionSet>(activeKey),
-      diskEncryptionSetName = pulumi.Input.asOptionalInput<String>(diskEncryptionSetName),
-      encryptionType = pulumi.Input.asOptionalInput<String>(encryptionType),
-      federatedClientId = pulumi.Input.asOptionalInput<String>(federatedClientId),
-      identity = pulumi.Input.asOptionalInput<EncryptionSetIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rotationToLatestKeyVersionEnabled = pulumi.Input.asOptionalInput<bool>(rotationToLatestKeyVersionEnabled),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.activeKey,
+    this.diskEncryptionSetName,
+    this.encryptionType,
+    this.federatedClientId,
+    this.identity,
+    this.location,
+    required this.resourceGroupName,
+    this.rotationToLatestKeyVersionEnabled,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class DiskEncryptionSetArgs {
 
   factory DiskEncryptionSetArgs.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionSetArgs(
-      activeKey: map['activeKey'] == null ? null : pulumi.Output.create<KeyForDiskEncryptionSet>(KeyForDiskEncryptionSet.fromMap((map['activeKey'] as Map).cast<String, dynamic>())),
-      diskEncryptionSetName: map['diskEncryptionSetName'] == null ? null : pulumi.Output.create<String>(map['diskEncryptionSetName'] as String),
-      encryptionType: map['encryptionType'] == null ? null : pulumi.Output.create<String>(map['encryptionType'] as String),
-      federatedClientId: map['federatedClientId'] == null ? null : pulumi.Output.create<String>(map['federatedClientId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<EncryptionSetIdentity>(EncryptionSetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : pulumi.Output.create<bool>(map['rotationToLatestKeyVersionEnabled'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      activeKey: map['activeKey'] == null ? null : (KeyForDiskEncryptionSet.fromMap((map['activeKey'] as Map).cast<String, dynamic>())).input(),
+      diskEncryptionSetName: map['diskEncryptionSetName'] == null ? null : (map['diskEncryptionSetName'] as String).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
+      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId'] as String).input(),
+      identity: map['identity'] == null ? null : (EncryptionSetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : (map['rotationToLatestKeyVersionEnabled'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

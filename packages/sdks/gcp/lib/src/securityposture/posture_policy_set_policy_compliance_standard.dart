@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PosturePolicySetPolicyComplianceStandard {
   /// Mapping of security controls for the policy.
-  final String? control;
+  final pulumi.Input<String>? control;
   /// Mapping of compliance standards for the policy.
-  final String? standard;
+  final pulumi.Input<String>? standard;
 
   /// Creates a new [PosturePolicySetPolicyComplianceStandard].
   /// [control] Mapping of security controls for the policy.
@@ -24,8 +25,8 @@ class PosturePolicySetPolicyComplianceStandard {
 
   factory PosturePolicySetPolicyComplianceStandard.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyComplianceStandard(
-      control: map['control'] == null ? null : map['control'] as String,
-      standard: map['standard'] == null ? null : map['standard'] as String,
+      control: map['control'] == null ? null : (map['control'] as String).input(),
+      standard: map['standard'] == null ? null : (map['standard'] as String).input(),
     );
   }
 }

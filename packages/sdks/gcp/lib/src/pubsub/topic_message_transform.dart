@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'topic_message_transform_javascript_udf.dart';
 
 class TopicMessageTransform {
   /// Controls whether or not to use this transform. If not set or `false`,
   /// the transform will be applied to messages. Default: `true`.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
   /// each one must have a unique `function_name`.
   /// Structure is documented below.
-  final TopicMessageTransformJavascriptUdf? javascriptUdf;
+  final pulumi.Input<TopicMessageTransformJavascriptUdf>? javascriptUdf;
 
   /// Creates a new [TopicMessageTransform].
   /// [disabled] Controls whether or not to use this transform. If not set or `false`,
@@ -22,14 +23,14 @@ class TopicMessageTransform {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'disabled': ?disabled,
-      'javascriptUdf': ?javascriptUdf == null ? null : javascriptUdf!.toMap(),
+      'javascriptUdf': ?pulumi.Input.mapOptionalInputValue<TopicMessageTransformJavascriptUdf, Map<String, dynamic>>(javascriptUdf, (value) => value.toMap()),
     };
   }
 
   factory TopicMessageTransform.fromMap(Map<String, dynamic> map) {
     return TopicMessageTransform(
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      javascriptUdf: map['javascriptUdf'] == null ? null : TopicMessageTransformJavascriptUdf.fromMap((map['javascriptUdf'] as Map).cast<String, dynamic>()),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      javascriptUdf: map['javascriptUdf'] == null ? null : (TopicMessageTransformJavascriptUdf.fromMap((map['javascriptUdf'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

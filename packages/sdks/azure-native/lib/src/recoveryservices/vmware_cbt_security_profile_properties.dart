@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VMwareCbt security profile input.
 class VMwareCbtSecurityProfileProperties {
   /// A value indicating whether confidential compute encryption to be enabled.
-  final String? isTargetVmConfidentialEncryptionEnabled;
+  final pulumi.Input<String>? isTargetVmConfidentialEncryptionEnabled;
   /// A value indicating whether integrity monitoring to be enabled.
-  final String? isTargetVmIntegrityMonitoringEnabled;
+  final pulumi.Input<String>? isTargetVmIntegrityMonitoringEnabled;
   /// A value indicating whether secure boot to be enabled.
-  final String? isTargetVmSecureBootEnabled;
+  final pulumi.Input<String>? isTargetVmSecureBootEnabled;
   /// A value indicating whether trusted platform module to be enabled.
-  final String? isTargetVmTpmEnabled;
+  final pulumi.Input<String>? isTargetVmTpmEnabled;
   /// The target VM security type.
-  final String? targetVmSecurityType;
+  final pulumi.Input<String>? targetVmSecurityType;
 
   /// Creates a new [VMwareCbtSecurityProfileProperties].
   /// [isTargetVmConfidentialEncryptionEnabled] A value indicating whether confidential compute encryption to be enabled.
@@ -40,11 +41,11 @@ class VMwareCbtSecurityProfileProperties {
 
   factory VMwareCbtSecurityProfileProperties.fromMap(Map<String, dynamic> map) {
     return VMwareCbtSecurityProfileProperties(
-      isTargetVmConfidentialEncryptionEnabled: map['isTargetVmConfidentialEncryptionEnabled'] == null ? null : map['isTargetVmConfidentialEncryptionEnabled'] as String,
-      isTargetVmIntegrityMonitoringEnabled: map['isTargetVmIntegrityMonitoringEnabled'] == null ? null : map['isTargetVmIntegrityMonitoringEnabled'] as String,
-      isTargetVmSecureBootEnabled: map['isTargetVmSecureBootEnabled'] == null ? null : map['isTargetVmSecureBootEnabled'] as String,
-      isTargetVmTpmEnabled: map['isTargetVmTpmEnabled'] == null ? null : map['isTargetVmTpmEnabled'] as String,
-      targetVmSecurityType: map['targetVmSecurityType'] == null ? null : map['targetVmSecurityType'] as String,
+      isTargetVmConfidentialEncryptionEnabled: map['isTargetVmConfidentialEncryptionEnabled'] == null ? null : (map['isTargetVmConfidentialEncryptionEnabled'] as String).input(),
+      isTargetVmIntegrityMonitoringEnabled: map['isTargetVmIntegrityMonitoringEnabled'] == null ? null : (map['isTargetVmIntegrityMonitoringEnabled'] as String).input(),
+      isTargetVmSecureBootEnabled: map['isTargetVmSecureBootEnabled'] == null ? null : (map['isTargetVmSecureBootEnabled'] as String).input(),
+      isTargetVmTpmEnabled: map['isTargetVmTpmEnabled'] == null ? null : (map['isTargetVmTpmEnabled'] as String).input(),
+      targetVmSecurityType: map['targetVmSecurityType'] == null ? null : (map['targetVmSecurityType'] as String).input(),
     );
   }
 }

@@ -39,19 +39,13 @@ class BackupPolicyState {
   /// [preferredBackupTime] Data backup time. Format: HH:mmZ-HH:mmZ(UTC time).
   /// [recoveryPointPeriod] Recovery point frequency. Value Description:
   BackupPolicyState({
-    pulumi.Output<int>? backupRetentionPeriod,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<bool>? enableRecoveryPoint,
-    pulumi.Output<String>? preferredBackupPeriod,
-    pulumi.Output<String>? preferredBackupTime,
-    pulumi.Output<String>? recoveryPointPeriod,
-  }) :
-      backupRetentionPeriod = pulumi.Input.asOptionalInput<int>(backupRetentionPeriod),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      enableRecoveryPoint = pulumi.Input.asOptionalInput<bool>(enableRecoveryPoint),
-      preferredBackupPeriod = pulumi.Input.asOptionalInput<String>(preferredBackupPeriod),
-      preferredBackupTime = pulumi.Input.asOptionalInput<String>(preferredBackupTime),
-      recoveryPointPeriod = pulumi.Input.asOptionalInput<String>(recoveryPointPeriod);
+    this.backupRetentionPeriod,
+    this.dbInstanceId,
+    this.enableRecoveryPoint,
+    this.preferredBackupPeriod,
+    this.preferredBackupTime,
+    this.recoveryPointPeriod,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : pulumi.Output.create<int>(map['backupRetentionPeriod'] as int),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      enableRecoveryPoint: map['enableRecoveryPoint'] == null ? null : pulumi.Output.create<bool>(map['enableRecoveryPoint'] as bool),
-      preferredBackupPeriod: map['preferredBackupPeriod'] == null ? null : pulumi.Output.create<String>(map['preferredBackupPeriod'] as String),
-      preferredBackupTime: map['preferredBackupTime'] == null ? null : pulumi.Output.create<String>(map['preferredBackupTime'] as String),
-      recoveryPointPeriod: map['recoveryPointPeriod'] == null ? null : pulumi.Output.create<String>(map['recoveryPointPeriod'] as String),
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod'] as int).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      enableRecoveryPoint: map['enableRecoveryPoint'] == null ? null : (map['enableRecoveryPoint'] as bool).input(),
+      preferredBackupPeriod: map['preferredBackupPeriod'] == null ? null : (map['preferredBackupPeriod'] as String).input(),
+      preferredBackupTime: map['preferredBackupTime'] == null ? null : (map['preferredBackupTime'] as String).input(),
+      recoveryPointPeriod: map['recoveryPointPeriod'] == null ? null : (map['recoveryPointPeriod'] as String).input(),
     );
   }
 }

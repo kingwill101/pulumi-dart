@@ -49,29 +49,18 @@ class RdsInstanceCrossBackupPolicyState {
   /// [retentType] The policy that is used to retain cross-region backups of the instance. Default value: 1. The default value 1 indicate that cross-region backups are retained based on the specified retention period.
   /// [retention] The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
   RdsInstanceCrossBackupPolicyState({
-    pulumi.Output<String>? backupEnabled,
-    pulumi.Output<String>? backupEnabledTime,
-    pulumi.Output<String>? crossBackupRegion,
-    pulumi.Output<String>? crossBackupType,
-    pulumi.Output<String>? dbInstanceStatus,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? lockMode,
-    pulumi.Output<String>? logBackupEnabled,
-    pulumi.Output<String>? logBackupEnabledTime,
-    pulumi.Output<String>? retentType,
-    pulumi.Output<int>? retention,
-  }) :
-      backupEnabled = pulumi.Input.asOptionalInput<String>(backupEnabled),
-      backupEnabledTime = pulumi.Input.asOptionalInput<String>(backupEnabledTime),
-      crossBackupRegion = pulumi.Input.asOptionalInput<String>(crossBackupRegion),
-      crossBackupType = pulumi.Input.asOptionalInput<String>(crossBackupType),
-      dbInstanceStatus = pulumi.Input.asOptionalInput<String>(dbInstanceStatus),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      lockMode = pulumi.Input.asOptionalInput<String>(lockMode),
-      logBackupEnabled = pulumi.Input.asOptionalInput<String>(logBackupEnabled),
-      logBackupEnabledTime = pulumi.Input.asOptionalInput<String>(logBackupEnabledTime),
-      retentType = pulumi.Input.asOptionalInput<String>(retentType),
-      retention = pulumi.Input.asOptionalInput<int>(retention);
+    this.backupEnabled,
+    this.backupEnabledTime,
+    this.crossBackupRegion,
+    this.crossBackupType,
+    this.dbInstanceStatus,
+    this.instanceId,
+    this.lockMode,
+    this.logBackupEnabled,
+    this.logBackupEnabledTime,
+    this.retentType,
+    this.retention,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,17 +80,17 @@ class RdsInstanceCrossBackupPolicyState {
 
   factory RdsInstanceCrossBackupPolicyState.fromMap(Map<String, dynamic> map) {
     return RdsInstanceCrossBackupPolicyState(
-      backupEnabled: map['backupEnabled'] == null ? null : pulumi.Output.create<String>(map['backupEnabled'] as String),
-      backupEnabledTime: map['backupEnabledTime'] == null ? null : pulumi.Output.create<String>(map['backupEnabledTime'] as String),
-      crossBackupRegion: map['crossBackupRegion'] == null ? null : pulumi.Output.create<String>(map['crossBackupRegion'] as String),
-      crossBackupType: map['crossBackupType'] == null ? null : pulumi.Output.create<String>(map['crossBackupType'] as String),
-      dbInstanceStatus: map['dbInstanceStatus'] == null ? null : pulumi.Output.create<String>(map['dbInstanceStatus'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      lockMode: map['lockMode'] == null ? null : pulumi.Output.create<String>(map['lockMode'] as String),
-      logBackupEnabled: map['logBackupEnabled'] == null ? null : pulumi.Output.create<String>(map['logBackupEnabled'] as String),
-      logBackupEnabledTime: map['logBackupEnabledTime'] == null ? null : pulumi.Output.create<String>(map['logBackupEnabledTime'] as String),
-      retentType: map['retentType'] == null ? null : pulumi.Output.create<String>(map['retentType'] as String),
-      retention: map['retention'] == null ? null : pulumi.Output.create<int>(map['retention'] as int),
+      backupEnabled: map['backupEnabled'] == null ? null : (map['backupEnabled'] as String).input(),
+      backupEnabledTime: map['backupEnabledTime'] == null ? null : (map['backupEnabledTime'] as String).input(),
+      crossBackupRegion: map['crossBackupRegion'] == null ? null : (map['crossBackupRegion'] as String).input(),
+      crossBackupType: map['crossBackupType'] == null ? null : (map['crossBackupType'] as String).input(),
+      dbInstanceStatus: map['dbInstanceStatus'] == null ? null : (map['dbInstanceStatus'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      lockMode: map['lockMode'] == null ? null : (map['lockMode'] as String).input(),
+      logBackupEnabled: map['logBackupEnabled'] == null ? null : (map['logBackupEnabled'] as String).input(),
+      logBackupEnabledTime: map['logBackupEnabledTime'] == null ? null : (map['logBackupEnabledTime'] as String).input(),
+      retentType: map['retentType'] == null ? null : (map['retentType'] as String).input(),
+      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
     );
   }
 }

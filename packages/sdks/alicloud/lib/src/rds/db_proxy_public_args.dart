@@ -25,17 +25,12 @@ class DbProxyPublicArgs {
   /// [dbProxyEndpointId] Database proxy connection address ID.
   /// [dbProxyNewConnectStringPort] The port for the new database proxy connection address is 3306 by default for MySQL and 5432 by default for PostgreSQL, which can be customized.
   DbProxyPublicArgs({
-    required pulumi.Output<String> connectionStringPrefix,
-    required pulumi.Output<String> dbInstanceId,
-    required pulumi.Output<String> dbProxyConnectionStringNetType,
-    required pulumi.Output<String> dbProxyEndpointId,
-    pulumi.Output<String>? dbProxyNewConnectStringPort,
-  }) :
-      connectionStringPrefix = pulumi.Input.asInput<String>(connectionStringPrefix),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      dbProxyConnectionStringNetType = pulumi.Input.asInput<String>(dbProxyConnectionStringNetType),
-      dbProxyEndpointId = pulumi.Input.asInput<String>(dbProxyEndpointId),
-      dbProxyNewConnectStringPort = pulumi.Input.asOptionalInput<String>(dbProxyNewConnectStringPort);
+    required this.connectionStringPrefix,
+    required this.dbInstanceId,
+    required this.dbProxyConnectionStringNetType,
+    required this.dbProxyEndpointId,
+    this.dbProxyNewConnectStringPort,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DbProxyPublicArgs {
 
   factory DbProxyPublicArgs.fromMap(Map<String, dynamic> map) {
     return DbProxyPublicArgs(
-      connectionStringPrefix: pulumi.Output.create<String>(map['connectionStringPrefix'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      dbProxyConnectionStringNetType: pulumi.Output.create<String>(map['dbProxyConnectionStringNetType'] as String),
-      dbProxyEndpointId: pulumi.Output.create<String>(map['dbProxyEndpointId'] as String),
-      dbProxyNewConnectStringPort: map['dbProxyNewConnectStringPort'] == null ? null : pulumi.Output.create<String>(map['dbProxyNewConnectStringPort'] as String),
+      connectionStringPrefix: (map['connectionStringPrefix'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      dbProxyConnectionStringNetType: (map['dbProxyConnectionStringNetType'] as String).input(),
+      dbProxyEndpointId: (map['dbProxyEndpointId'] as String).input(),
+      dbProxyNewConnectStringPort: map['dbProxyNewConnectStringPort'] == null ? null : (map['dbProxyNewConnectStringPort'] as String).input(),
     );
   }
 }

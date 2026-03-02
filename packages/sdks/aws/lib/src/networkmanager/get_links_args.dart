@@ -25,17 +25,12 @@ class GetLinksArgs {
   /// [tags] Restricts the list to the links with these tags.
   /// [type] Link type to retrieve.
   GetLinksArgs({
-    required pulumi.Output<String> globalNetworkId,
-    pulumi.Output<String>? providerName,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-  }) :
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      providerName = pulumi.Input.asOptionalInput<String>(providerName),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    required this.globalNetworkId,
+    this.providerName,
+    this.siteId,
+    this.tags,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetLinksArgs {
 
   factory GetLinksArgs.fromMap(Map<String, dynamic> map) {
     return GetLinksArgs(
-      globalNetworkId: pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      providerName: map['providerName'] == null ? null : pulumi.Output.create<String>(map['providerName'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      globalNetworkId: (map['globalNetworkId'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

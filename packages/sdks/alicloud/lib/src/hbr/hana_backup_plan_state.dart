@@ -40,27 +40,17 @@ class HanaBackupPlanState {
   /// [status] The status of the resource. Valid values: `Enabled`, `Disabled`.
   /// [vaultId] The ID of the backup vault.
   HanaBackupPlanState({
-    pulumi.Output<String>? backupPrefix,
-    pulumi.Output<String>? backupType,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? planId,
-    pulumi.Output<String>? planName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? schedule,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vaultId,
-  }) :
-      backupPrefix = pulumi.Input.asOptionalInput<String>(backupPrefix),
-      backupType = pulumi.Input.asOptionalInput<String>(backupType),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      planId = pulumi.Input.asOptionalInput<String>(planId),
-      planName = pulumi.Input.asOptionalInput<String>(planName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      schedule = pulumi.Input.asOptionalInput<String>(schedule),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vaultId = pulumi.Input.asOptionalInput<String>(vaultId);
+    this.backupPrefix,
+    this.backupType,
+    this.clusterId,
+    this.databaseName,
+    this.planId,
+    this.planName,
+    this.resourceGroupId,
+    this.schedule,
+    this.status,
+    this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class HanaBackupPlanState {
 
   factory HanaBackupPlanState.fromMap(Map<String, dynamic> map) {
     return HanaBackupPlanState(
-      backupPrefix: map['backupPrefix'] == null ? null : pulumi.Output.create<String>(map['backupPrefix'] as String),
-      backupType: map['backupType'] == null ? null : pulumi.Output.create<String>(map['backupType'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      planId: map['planId'] == null ? null : pulumi.Output.create<String>(map['planId'] as String),
-      planName: map['planName'] == null ? null : pulumi.Output.create<String>(map['planName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<String>(map['schedule'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vaultId: map['vaultId'] == null ? null : pulumi.Output.create<String>(map['vaultId'] as String),
+      backupPrefix: map['backupPrefix'] == null ? null : (map['backupPrefix'] as String).input(),
+      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
     );
   }
 }

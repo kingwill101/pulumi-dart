@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest {
   /// The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
-  final int count;
+  final pulumi.Input<int> count;
   /// The time interval in the form `hh:mm:ss`.
-  final String interval;
+  final pulumi.Input<String> interval;
   /// (Required) The threshold of time passed to qualify as a Slow Request in `hh:mm:ss`.
-  final String timeTaken;
+  final pulumi.Input<String> timeTaken;
 
   /// Creates a new [GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest].
   /// [count] The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
@@ -29,9 +30,9 @@ class GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest {
 
   factory GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest(
-      count: map['count'] as int,
-      interval: map['interval'] as String,
-      timeTaken: map['timeTaken'] as String,
+      count: (map['count'] as int).input(),
+      interval: (map['interval'] as String).input(),
+      timeTaken: (map['timeTaken'] as String).input(),
     );
   }
 }

@@ -12,9 +12,8 @@ class GetFolderCloudresourcemanagerV3Args {
   /// Creates a new [GetFolderCloudresourcemanagerV3Args].
   /// [folderId] Required.
   GetFolderCloudresourcemanagerV3Args({
-    required pulumi.Output<String> folderId,
-  }) :
-      folderId = pulumi.Input.asInput<String>(folderId);
+    required this.folderId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetFolderCloudresourcemanagerV3Args {
 
   factory GetFolderCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
     return GetFolderCloudresourcemanagerV3Args(
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
+      folderId: (map['folderId'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class ManagementConfigurationArgs {
   /// [properties] Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
   /// [resourceGroupName] The name of the resource group to get. The name is case insensitive.
   ManagementConfigurationArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managementConfigurationName,
-    pulumi.Output<ManagementConfigurationProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managementConfigurationName = pulumi.Input.asOptionalInput<String>(managementConfigurationName),
-      properties = pulumi.Input.asOptionalInput<ManagementConfigurationProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.location,
+    this.managementConfigurationName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ManagementConfigurationArgs {
 
   factory ManagementConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ManagementConfigurationArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managementConfigurationName: map['managementConfigurationName'] == null ? null : pulumi.Output.create<String>(map['managementConfigurationName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ManagementConfigurationProperties>(ManagementConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managementConfigurationName: map['managementConfigurationName'] == null ? null : (map['managementConfigurationName'] as String).input(),
+      properties: map['properties'] == null ? null : (ManagementConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

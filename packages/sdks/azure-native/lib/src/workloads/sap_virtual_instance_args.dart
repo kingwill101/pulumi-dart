@@ -43,27 +43,17 @@ class SapVirtualInstanceArgs {
   /// [sapVirtualInstanceName] The name of the Virtual Instances for SAP solutions resource
   /// [tags] Resource tags.
   SapVirtualInstanceArgs({
-    required pulumi.Output<DeploymentConfiguration> configuration,
-    required pulumi.Output<String> environment,
-    pulumi.Output<SAPVirtualInstanceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<ManagedRGConfiguration>? managedResourceGroupConfiguration,
-    pulumi.Output<String>? managedResourcesNetworkAccessType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sapProduct,
-    pulumi.Output<String>? sapVirtualInstanceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      configuration = pulumi.Input.asInput<DeploymentConfiguration>(configuration),
-      environment = pulumi.Input.asInput<String>(environment),
-      identity = pulumi.Input.asOptionalInput<SAPVirtualInstanceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedResourceGroupConfiguration = pulumi.Input.asOptionalInput<ManagedRGConfiguration>(managedResourceGroupConfiguration),
-      managedResourcesNetworkAccessType = pulumi.Input.asOptionalInput<String>(managedResourcesNetworkAccessType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sapProduct = pulumi.Input.asInput<String>(sapProduct),
-      sapVirtualInstanceName = pulumi.Input.asOptionalInput<String>(sapVirtualInstanceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.configuration,
+    required this.environment,
+    this.identity,
+    this.location,
+    this.managedResourceGroupConfiguration,
+    this.managedResourcesNetworkAccessType,
+    required this.resourceGroupName,
+    required this.sapProduct,
+    this.sapVirtualInstanceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class SapVirtualInstanceArgs {
 
   factory SapVirtualInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SapVirtualInstanceArgs(
-      configuration: pulumi.Output.create<DeploymentConfiguration>(DeploymentConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<SAPVirtualInstanceIdentity>(SAPVirtualInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : pulumi.Output.create<ManagedRGConfiguration>(ManagedRGConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())),
-      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : pulumi.Output.create<String>(map['managedResourcesNetworkAccessType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sapProduct: pulumi.Output.create<String>(map['sapProduct'] as String),
-      sapVirtualInstanceName: map['sapVirtualInstanceName'] == null ? null : pulumi.Output.create<String>(map['sapVirtualInstanceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      configuration: (DeploymentConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      environment: (map['environment'] as String).input(),
+      identity: map['identity'] == null ? null : (SAPVirtualInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedRGConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : (map['managedResourcesNetworkAccessType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sapProduct: (map['sapProduct'] as String).input(),
+      sapVirtualInstanceName: map['sapVirtualInstanceName'] == null ? null : (map['sapVirtualInstanceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

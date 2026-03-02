@@ -16,13 +16,10 @@ class RamRoleAttachmentState {
   /// [policy] The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
   /// [ramRoleName] The name of the instance RAM role.
   RamRoleAttachmentState({
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? ramRoleName,
-  }) :
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      ramRoleName = pulumi.Input.asOptionalInput<String>(ramRoleName);
+    this.instanceId,
+    this.policy,
+    this.ramRoleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class RamRoleAttachmentState {
 
   factory RamRoleAttachmentState.fromMap(Map<String, dynamic> map) {
     return RamRoleAttachmentState(
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      ramRoleName: map['ramRoleName'] == null ? null : pulumi.Output.create<String>(map['ramRoleName'] as String),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      ramRoleName: map['ramRoleName'] == null ? null : (map['ramRoleName'] as String).input(),
     );
   }
 }

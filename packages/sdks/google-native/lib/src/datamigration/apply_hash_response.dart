@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Apply a hash function on the value.
 class ApplyHashResponse {
   /// Optional. Generate UUID from the data's byte array
-  final Map<String, dynamic> uuidFromBytes;
+  final pulumi.Input<Map<String, dynamic>> uuidFromBytes;
 
   /// Creates a new [ApplyHashResponse].
   /// [uuidFromBytes] Optional. Generate UUID from the data's byte array
@@ -20,7 +21,7 @@ class ApplyHashResponse {
 
   factory ApplyHashResponse.fromMap(Map<String, dynamic> map) {
     return ApplyHashResponse(
-      uuidFromBytes: (map['uuidFromBytes'] as Map).cast<String, dynamic>(),
+      uuidFromBytes: ((map['uuidFromBytes'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

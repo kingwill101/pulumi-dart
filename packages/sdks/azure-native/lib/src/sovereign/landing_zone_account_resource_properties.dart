@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of landing zone account resource type.
 class LandingZoneAccountResourceProperties {
   /// The storage account that will host the generated infrastructure as code (IaC) for a landing zone deployment.
-  final String storageAccount;
+  final pulumi.Input<String> storageAccount;
 
   /// Creates a new [LandingZoneAccountResourceProperties].
   /// [storageAccount] The storage account that will host the generated infrastructure as code (IaC) for a landing zone deployment.
@@ -20,7 +21,7 @@ class LandingZoneAccountResourceProperties {
 
   factory LandingZoneAccountResourceProperties.fromMap(Map<String, dynamic> map) {
     return LandingZoneAccountResourceProperties(
-      storageAccount: map['storageAccount'] as String,
+      storageAccount: (map['storageAccount'] as String).input(),
     );
   }
 }

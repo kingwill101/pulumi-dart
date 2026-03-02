@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'config_map_env_source.dart';
 import 'secret_env_source.dart';
 
 /// Not supported by Cloud Run. EnvFromSource represents the source of a set of ConfigMaps
 class EnvFromSource {
   /// The ConfigMap to select from
-  final ConfigMapEnvSource? configMapRef;
+  final pulumi.Input<ConfigMapEnvSource>? configMapRef;
   /// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// The Secret to select from
-  final SecretEnvSource? secretRef;
+  final pulumi.Input<SecretEnvSource>? secretRef;
 
   /// Creates a new [EnvFromSource].
   /// [configMapRef] The ConfigMap to select from
@@ -24,17 +25,17 @@ class EnvFromSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configMapRef': ?configMapRef == null ? null : configMapRef!.toMap(),
+      'configMapRef': ?pulumi.Input.mapOptionalInputValue<ConfigMapEnvSource, Map<String, dynamic>>(configMapRef, (value) => value.toMap()),
       'prefix': ?prefix,
-      'secretRef': ?secretRef == null ? null : secretRef!.toMap(),
+      'secretRef': ?pulumi.Input.mapOptionalInputValue<SecretEnvSource, Map<String, dynamic>>(secretRef, (value) => value.toMap()),
     };
   }
 
   factory EnvFromSource.fromMap(Map<String, dynamic> map) {
     return EnvFromSource(
-      configMapRef: map['configMapRef'] == null ? null : ConfigMapEnvSource.fromMap((map['configMapRef'] as Map).cast<String, dynamic>()),
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      secretRef: map['secretRef'] == null ? null : SecretEnvSource.fromMap((map['secretRef'] as Map).cast<String, dynamic>()),
+      configMapRef: map['configMapRef'] == null ? null : (ConfigMapEnvSource.fromMap((map['configMapRef'] as Map).cast<String, dynamic>())).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      secretRef: map['secretRef'] == null ? null : (SecretEnvSource.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

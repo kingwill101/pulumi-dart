@@ -26,17 +26,12 @@ class PolicyArgs {
   /// [project] Optional.
   /// [spec] Basic information about the Organization Policy.
   PolicyArgs({
-    pulumi.Output<GoogleCloudOrgpolicyV2AlternatePolicySpec>? alternate,
-    pulumi.Output<GoogleCloudOrgpolicyV2PolicySpec>? dryRunSpec,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudOrgpolicyV2PolicySpec>? spec,
-  }) :
-      alternate = pulumi.Input.asOptionalInput<GoogleCloudOrgpolicyV2AlternatePolicySpec>(alternate),
-      dryRunSpec = pulumi.Input.asOptionalInput<GoogleCloudOrgpolicyV2PolicySpec>(dryRunSpec),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spec = pulumi.Input.asOptionalInput<GoogleCloudOrgpolicyV2PolicySpec>(spec);
+    this.alternate,
+    this.dryRunSpec,
+    this.name,
+    this.project,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      alternate: map['alternate'] == null ? null : pulumi.Output.create<GoogleCloudOrgpolicyV2AlternatePolicySpec>(GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap((map['alternate'] as Map).cast<String, dynamic>())),
-      dryRunSpec: map['dryRunSpec'] == null ? null : pulumi.Output.create<GoogleCloudOrgpolicyV2PolicySpec>(GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['dryRunSpec'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<GoogleCloudOrgpolicyV2PolicySpec>(GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      alternate: map['alternate'] == null ? null : (GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap((map['alternate'] as Map).cast<String, dynamic>())).input(),
+      dryRunSpec: map['dryRunSpec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['dryRunSpec'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      spec: map['spec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

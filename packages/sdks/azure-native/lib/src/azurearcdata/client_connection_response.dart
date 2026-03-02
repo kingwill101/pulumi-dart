@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Client connection related configuration.
 class ClientConnectionResponse {
   /// Indicates if client connection is enabled for this SQL Server instance.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ClientConnectionResponse].
   /// [enabled] Indicates if client connection is enabled for this SQL Server instance.
@@ -20,7 +21,7 @@ class ClientConnectionResponse {
 
   factory ClientConnectionResponse.fromMap(Map<String, dynamic> map) {
     return ClientConnectionResponse(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

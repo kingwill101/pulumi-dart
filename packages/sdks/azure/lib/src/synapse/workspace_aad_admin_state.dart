@@ -19,15 +19,11 @@ class WorkspaceAadAdminState {
   /// [synapseWorkspaceId] The ID of the Synapse Workspace where the Azure AD Administrator should be configured.
   /// [tenantId] The tenant id of the Azure AD Administrator of this Synapse Workspace.
   WorkspaceAadAdminState({
-    pulumi.Output<String>? login,
-    pulumi.Output<String>? objectId,
-    pulumi.Output<String>? synapseWorkspaceId,
-    pulumi.Output<String>? tenantId,
-  }) :
-      login = pulumi.Input.asOptionalInput<String>(login),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId),
-      synapseWorkspaceId = pulumi.Input.asOptionalInput<String>(synapseWorkspaceId),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.login,
+    this.objectId,
+    this.synapseWorkspaceId,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class WorkspaceAadAdminState {
 
   factory WorkspaceAadAdminState.fromMap(Map<String, dynamic> map) {
     return WorkspaceAadAdminState(
-      login: map['login'] == null ? null : pulumi.Output.create<String>(map['login'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      login: map['login'] == null ? null : (map['login'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -53,21 +53,14 @@ class RegionHealthSourceArgs {
   /// [sourceType] Specifies the type of the `HealthSource`. The only allowed value
   /// [sources] URLs to the source resources. Must be size 1. Must be a
   RegionHealthSourceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? healthAggregationPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> sourceType,
-    pulumi.Output<String>? sources,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      healthAggregationPolicy = pulumi.Input.asOptionalInput<String>(healthAggregationPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      sourceType = pulumi.Input.asInput<String>(sourceType),
-      sources = pulumi.Input.asOptionalInput<String>(sources);
+    this.description,
+    this.healthAggregationPolicy,
+    this.name,
+    this.project,
+    required this.region,
+    required this.sourceType,
+    this.sources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,13 +76,13 @@ class RegionHealthSourceArgs {
 
   factory RegionHealthSourceArgs.fromMap(Map<String, dynamic> map) {
     return RegionHealthSourceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      healthAggregationPolicy: map['healthAggregationPolicy'] == null ? null : pulumi.Output.create<String>(map['healthAggregationPolicy'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      sourceType: pulumi.Output.create<String>(map['sourceType'] as String),
-      sources: map['sources'] == null ? null : pulumi.Output.create<String>(map['sources'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      healthAggregationPolicy: map['healthAggregationPolicy'] == null ? null : (map['healthAggregationPolicy'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
+      sources: map['sources'] == null ? null : (map['sources'] as String).input(),
     );
   }
 }

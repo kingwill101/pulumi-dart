@@ -9,42 +9,42 @@ import 'parameter_specification.dart';
 /// Delimited text dataset.
 class DelimitedTextDataset {
   /// List of tags that can be used for describing the Dataset.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The column delimiter. Type: string (or Expression with resultType string).
-  final dynamic columnDelimiter;
+  final pulumi.Input<dynamic>? columnDelimiter;
   /// The data compressionCodec. Type: string (or Expression with resultType string).
-  final dynamic compressionCodec;
+  final pulumi.Input<dynamic>? compressionCodec;
   /// The data compression method used for DelimitedText.
-  final dynamic compressionLevel;
+  final pulumi.Input<dynamic>? compressionLevel;
   /// Dataset description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The code page name of the preferred encoding. If miss, the default value is UTF-8, unless BOM denotes another Unicode encoding. Refer to the name column of the table in the following link to set supported values: https://msdn.microsoft.com/library/system.text.encoding.aspx. Type: string (or Expression with resultType string).
-  final dynamic encodingName;
+  final pulumi.Input<dynamic>? encodingName;
   /// The escape character. Type: string (or Expression with resultType string).
-  final dynamic escapeChar;
+  final pulumi.Input<dynamic>? escapeChar;
   /// When used as input, treat the first row of data as headers. When used as output,write the headers into the output as the first row of data. The default value is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic firstRowAsHeader;
+  final pulumi.Input<dynamic>? firstRowAsHeader;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final DatasetFolder? folder;
+  final pulumi.Input<DatasetFolder>? folder;
   /// Linked service reference.
-  final LinkedServiceReference linkedServiceName;
+  final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// The location of the delimited text storage.
-  final AmazonS3CompatibleLocation location;
+  final pulumi.Input<AmazonS3CompatibleLocation> location;
   /// The null value string. Type: string (or Expression with resultType string).
-  final dynamic nullValue;
+  final pulumi.Input<dynamic>? nullValue;
   /// Parameters for dataset.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The quote character. Type: string (or Expression with resultType string).
-  final dynamic quoteChar;
+  final pulumi.Input<dynamic>? quoteChar;
   /// The row delimiter. Type: string (or Expression with resultType string).
-  final dynamic rowDelimiter;
+  final pulumi.Input<dynamic>? rowDelimiter;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-  final dynamic schema;
+  final pulumi.Input<dynamic>? schema;
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-  final dynamic structure;
+  final pulumi.Input<dynamic>? structure;
   /// Type of dataset.
   /// Expected value is 'DelimitedText'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DelimitedTextDataset].
   /// [annotations] List of tags that can be used for describing the Dataset.
@@ -96,11 +96,11 @@ class DelimitedTextDataset {
       'encodingName': ?encodingName,
       'escapeChar': ?escapeChar,
       'firstRowAsHeader': ?firstRowAsHeader,
-      'folder': ?folder == null ? null : folder!.toMap(),
-      'linkedServiceName': linkedServiceName.toMap(),
-      'location': location.toMap(),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'location': pulumi.Input.mapInputValue<AmazonS3CompatibleLocation, Map<String, dynamic>>(location, (value) => value.toMap()),
       'nullValue': ?nullValue,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'quoteChar': ?quoteChar,
       'rowDelimiter': ?rowDelimiter,
       'schema': ?schema,
@@ -111,24 +111,24 @@ class DelimitedTextDataset {
 
   factory DelimitedTextDataset.fromMap(Map<String, dynamic> map) {
     return DelimitedTextDataset(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      columnDelimiter: map['columnDelimiter'] == null ? null : map['columnDelimiter'],
-      compressionCodec: map['compressionCodec'] == null ? null : map['compressionCodec'],
-      compressionLevel: map['compressionLevel'] == null ? null : map['compressionLevel'],
-      description: map['description'] == null ? null : map['description'] as String,
-      encodingName: map['encodingName'] == null ? null : map['encodingName'],
-      escapeChar: map['escapeChar'] == null ? null : map['escapeChar'],
-      firstRowAsHeader: map['firstRowAsHeader'] == null ? null : map['firstRowAsHeader'],
-      folder: map['folder'] == null ? null : DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>()),
-      linkedServiceName: LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      location: AmazonS3CompatibleLocation.fromMap((map['location'] as Map).cast<String, dynamic>()),
-      nullValue: map['nullValue'] == null ? null : map['nullValue'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      quoteChar: map['quoteChar'] == null ? null : map['quoteChar'],
-      rowDelimiter: map['rowDelimiter'] == null ? null : map['rowDelimiter'],
-      schema: map['schema'] == null ? null : map['schema'],
-      structure: map['structure'] == null ? null : map['structure'],
-      type: map['type'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      columnDelimiter: map['columnDelimiter'] == null ? null : (map['columnDelimiter']).input(),
+      compressionCodec: map['compressionCodec'] == null ? null : (map['compressionCodec']).input(),
+      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encodingName: map['encodingName'] == null ? null : (map['encodingName']).input(),
+      escapeChar: map['escapeChar'] == null ? null : (map['escapeChar']).input(),
+      firstRowAsHeader: map['firstRowAsHeader'] == null ? null : (map['firstRowAsHeader']).input(),
+      folder: map['folder'] == null ? null : (DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      location: (AmazonS3CompatibleLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
+      nullValue: map['nullValue'] == null ? null : (map['nullValue']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      quoteChar: map['quoteChar'] == null ? null : (map['quoteChar']).input(),
+      rowDelimiter: map['rowDelimiter'] == null ? null : (map['rowDelimiter']).input(),
+      schema: map['schema'] == null ? null : (map['schema']).input(),
+      structure: map['structure'] == null ? null : (map['structure']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

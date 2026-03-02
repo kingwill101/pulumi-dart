@@ -25,19 +25,13 @@ class ContactState {
   /// [reservationStartTime] Reservation start time of the Contact. Changing this forces a new resource to be created.
   /// [spacecraftId] The ID of the spacecraft which the contact will be made to. Changing this forces a new resource to be created.
   ContactState({
-    pulumi.Output<String>? contactProfileId,
-    pulumi.Output<String>? groundStationName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? reservationEndTime,
-    pulumi.Output<String>? reservationStartTime,
-    pulumi.Output<String>? spacecraftId,
-  }) :
-      contactProfileId = pulumi.Input.asOptionalInput<String>(contactProfileId),
-      groundStationName = pulumi.Input.asOptionalInput<String>(groundStationName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      reservationEndTime = pulumi.Input.asOptionalInput<String>(reservationEndTime),
-      reservationStartTime = pulumi.Input.asOptionalInput<String>(reservationStartTime),
-      spacecraftId = pulumi.Input.asOptionalInput<String>(spacecraftId);
+    this.contactProfileId,
+    this.groundStationName,
+    this.name,
+    this.reservationEndTime,
+    this.reservationStartTime,
+    this.spacecraftId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class ContactState {
 
   factory ContactState.fromMap(Map<String, dynamic> map) {
     return ContactState(
-      contactProfileId: map['contactProfileId'] == null ? null : pulumi.Output.create<String>(map['contactProfileId'] as String),
-      groundStationName: map['groundStationName'] == null ? null : pulumi.Output.create<String>(map['groundStationName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      reservationEndTime: map['reservationEndTime'] == null ? null : pulumi.Output.create<String>(map['reservationEndTime'] as String),
-      reservationStartTime: map['reservationStartTime'] == null ? null : pulumi.Output.create<String>(map['reservationStartTime'] as String),
-      spacecraftId: map['spacecraftId'] == null ? null : pulumi.Output.create<String>(map['spacecraftId'] as String),
+      contactProfileId: map['contactProfileId'] == null ? null : (map['contactProfileId'] as String).input(),
+      groundStationName: map['groundStationName'] == null ? null : (map['groundStationName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      reservationEndTime: map['reservationEndTime'] == null ? null : (map['reservationEndTime'] as String).input(),
+      reservationStartTime: map['reservationStartTime'] == null ? null : (map['reservationStartTime'] as String).input(),
+      spacecraftId: map['spacecraftId'] == null ? null : (map['spacecraftId'] as String).input(),
     );
   }
 }

@@ -35,23 +35,15 @@ class SpacecraftArgs {
   /// [titleLine] Title of the two line elements (TLE).
   /// [twoLineElements] A list of the two line elements (TLE), the first string being the first of the TLE, the second string being the second line of the TLE. Changing this forces a new resource to be created.
   SpacecraftArgs({
-    required pulumi.Output<List<SpacecraftLink>> links,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> noradId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> titleLine,
-    required pulumi.Output<List<String>> twoLineElements,
-  }) :
-      links = pulumi.Input.asInput<List<SpacecraftLink>>(links),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      noradId = pulumi.Input.asInput<String>(noradId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      titleLine = pulumi.Input.asInput<String>(titleLine),
-      twoLineElements = pulumi.Input.asInput<List<String>>(twoLineElements);
+    required this.links,
+    this.location,
+    this.name,
+    required this.noradId,
+    required this.resourceGroupName,
+    this.tags,
+    required this.titleLine,
+    required this.twoLineElements,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class SpacecraftArgs {
 
   factory SpacecraftArgs.fromMap(Map<String, dynamic> map) {
     return SpacecraftArgs(
-      links: pulumi.Output.create<List<SpacecraftLink>>(pulumi.Input.decodeList<SpacecraftLink>(map['links'], (value) => SpacecraftLink.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      noradId: pulumi.Output.create<String>(map['noradId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      titleLine: pulumi.Output.create<String>(map['titleLine'] as String),
-      twoLineElements: pulumi.Output.create<List<String>>((map['twoLineElements'] as List).cast<String>()),
+      links: (pulumi.Input.decodeList<SpacecraftLink>(map['links'], (value) => SpacecraftLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      noradId: (map['noradId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      titleLine: (map['titleLine'] as String).input(),
+      twoLineElements: ((map['twoLineElements'] as List).cast<String>()).input(),
     );
   }
 }

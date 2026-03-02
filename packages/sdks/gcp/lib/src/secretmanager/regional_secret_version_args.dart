@@ -31,17 +31,12 @@ class RegionalSecretVersionArgs {
   /// [secret] Secret Manager regional secret resource.
   /// [secretData] The secret data. Must be no larger than 64KiB.
   RegionalSecretVersionArgs({
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? isSecretDataBase64,
-    required pulumi.Output<String> secret,
-    required pulumi.Output<String> secretData,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      isSecretDataBase64 = pulumi.Input.asOptionalInput<bool>(isSecretDataBase64),
-      secret = pulumi.Input.asInput<String>(secret),
-      secretData = pulumi.Input.asInput<String>(secretData);
+    this.deletionPolicy,
+    this.enabled,
+    this.isSecretDataBase64,
+    required this.secret,
+    required this.secretData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class RegionalSecretVersionArgs {
 
   factory RegionalSecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegionalSecretVersionArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : pulumi.Output.create<bool>(map['isSecretDataBase64'] as bool),
-      secret: pulumi.Output.create<String>(map['secret'] as String),
-      secretData: pulumi.Output.create<String>(map['secretData'] as String),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64'] as bool).input(),
+      secret: (map['secret'] as String).input(),
+      secretData: (map['secretData'] as String).input(),
     );
   }
 }

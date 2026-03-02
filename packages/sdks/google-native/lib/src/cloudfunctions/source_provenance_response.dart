@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repo_source_response.dart';
 import 'storage_source_response.dart';
 
 /// Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
 class SourceProvenanceResponse {
   /// A copy of the build's `source.git_uri`, if exists, with any commits resolved.
-  final String gitUri;
+  final pulumi.Input<String> gitUri;
   /// A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
-  final RepoSourceResponse resolvedRepoSource;
+  final pulumi.Input<RepoSourceResponse> resolvedRepoSource;
   /// A copy of the build's `source.storage_source`, if exists, with any generations resolved.
-  final StorageSourceResponse resolvedStorageSource;
+  final pulumi.Input<StorageSourceResponse> resolvedStorageSource;
 
   /// Creates a new [SourceProvenanceResponse].
   /// [gitUri] A copy of the build's `source.git_uri`, if exists, with any commits resolved.
@@ -25,16 +26,16 @@ class SourceProvenanceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'gitUri': gitUri,
-      'resolvedRepoSource': resolvedRepoSource.toMap(),
-      'resolvedStorageSource': resolvedStorageSource.toMap(),
+      'resolvedRepoSource': pulumi.Input.mapInputValue<RepoSourceResponse, Map<String, dynamic>>(resolvedRepoSource, (value) => value.toMap()),
+      'resolvedStorageSource': pulumi.Input.mapInputValue<StorageSourceResponse, Map<String, dynamic>>(resolvedStorageSource, (value) => value.toMap()),
     };
   }
 
   factory SourceProvenanceResponse.fromMap(Map<String, dynamic> map) {
     return SourceProvenanceResponse(
-      gitUri: map['gitUri'] as String,
-      resolvedRepoSource: RepoSourceResponse.fromMap((map['resolvedRepoSource'] as Map).cast<String, dynamic>()),
-      resolvedStorageSource: StorageSourceResponse.fromMap((map['resolvedStorageSource'] as Map).cast<String, dynamic>()),
+      gitUri: (map['gitUri'] as String).input(),
+      resolvedRepoSource: (RepoSourceResponse.fromMap((map['resolvedRepoSource'] as Map).cast<String, dynamic>())).input(),
+      resolvedStorageSource: (StorageSourceResponse.fromMap((map['resolvedStorageSource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

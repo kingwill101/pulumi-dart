@@ -23,15 +23,11 @@ class InboundSamlSsoProfileArgs {
   /// [idpConfig] SAML identity provider configuration.
   /// [spConfig] SAML service provider configuration for this SAML SSO profile. These are the service provider details provided by Google that should be configured on the corresponding identity provider.
   InboundSamlSsoProfileArgs({
-    pulumi.Output<String>? customer,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<SamlIdpConfig>? idpConfig,
-    pulumi.Output<Map<String, dynamic>>? spConfig,
-  }) :
-      customer = pulumi.Input.asOptionalInput<String>(customer),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      idpConfig = pulumi.Input.asOptionalInput<SamlIdpConfig>(idpConfig),
-      spConfig = pulumi.Input.asOptionalInput<Map<String, dynamic>>(spConfig);
+    this.customer,
+    this.displayName,
+    this.idpConfig,
+    this.spConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class InboundSamlSsoProfileArgs {
 
   factory InboundSamlSsoProfileArgs.fromMap(Map<String, dynamic> map) {
     return InboundSamlSsoProfileArgs(
-      customer: map['customer'] == null ? null : pulumi.Output.create<String>(map['customer'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      idpConfig: map['idpConfig'] == null ? null : pulumi.Output.create<SamlIdpConfig>(SamlIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())),
-      spConfig: map['spConfig'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['spConfig'] as Map).cast<String, dynamic>()),
+      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      idpConfig: map['idpConfig'] == null ? null : (SamlIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())).input(),
+      spConfig: map['spConfig'] == null ? null : ((map['spConfig'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

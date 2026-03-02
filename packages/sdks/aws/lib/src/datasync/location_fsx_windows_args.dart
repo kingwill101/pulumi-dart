@@ -34,23 +34,15 @@ class LocationFsxWindowsArgs {
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [user] The user who has the permissions to access files and folders in the FSx for Windows file system.
   LocationFsxWindowsArgs({
-    pulumi.Output<String>? domain,
-    required pulumi.Output<String> fsxFilesystemArn,
-    required pulumi.Output<String> password,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> securityGroupArns,
-    pulumi.Output<String>? subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> user,
-  }) :
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      fsxFilesystemArn = pulumi.Input.asInput<String>(fsxFilesystemArn),
-      password = pulumi.Input.asInput<String>(password),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupArns = pulumi.Input.asInput<List<String>>(securityGroupArns),
-      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      user = pulumi.Input.asInput<String>(user);
+    this.domain,
+    required this.fsxFilesystemArn,
+    required this.password,
+    this.region,
+    required this.securityGroupArns,
+    this.subdirectory,
+    this.tags,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class LocationFsxWindowsArgs {
 
   factory LocationFsxWindowsArgs.fromMap(Map<String, dynamic> map) {
     return LocationFsxWindowsArgs(
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      fsxFilesystemArn: pulumi.Output.create<String>(map['fsxFilesystemArn'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupArns: pulumi.Output.create<List<String>>((map['securityGroupArns'] as List).cast<String>()),
-      subdirectory: map['subdirectory'] == null ? null : pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      user: pulumi.Output.create<String>(map['user'] as String),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      fsxFilesystemArn: (map['fsxFilesystemArn'] as String).input(),
+      password: (map['password'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupArns: ((map['securityGroupArns'] as List).cast<String>()).input(),
+      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_id_response.dart';
 
 /// The ip configurations for the private link service.
 class IPConfigurationResponse {
   /// The private link IP configuration id.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of private link IP configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates whether this IP configuration is primary for the corresponding NIC.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// The IP address.
-  final String? privateIPAddress;
+  final pulumi.Input<String>? privateIPAddress;
   /// The method that private IP address is allocated.
-  final String? privateIPAllocationMethod;
+  final pulumi.Input<String>? privateIPAllocationMethod;
   /// The private link configuration provisioning state, which only appears in the response.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The subnet resource id.
-  final ResourceIdResponse? subnet;
+  final pulumi.Input<ResourceIdResponse>? subnet;
   /// The type of the private link IP configuration.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [IPConfigurationResponse].
   /// [id] The private link IP configuration id.
@@ -49,21 +50,21 @@ class IPConfigurationResponse {
       'privateIPAddress': ?privateIPAddress,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
       'provisioningState': provisioningState,
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<ResourceIdResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory IPConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return IPConfigurationResponse(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      privateIPAddress: map['privateIPAddress'] == null ? null : map['privateIPAddress'] as String,
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : map['privateIPAllocationMethod'] as String,
-      provisioningState: map['provisioningState'] as String,
-      subnet: map['subnet'] == null ? null : ResourceIdResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      subnet: map['subnet'] == null ? null : (ResourceIdResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

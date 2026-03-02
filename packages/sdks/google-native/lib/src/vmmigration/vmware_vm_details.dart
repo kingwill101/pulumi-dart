@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vmware_vm_details_power_state.dart';
 
 /// VmwareVmDetails describes a VM in vCenter.
 class VmwareVmDetails {
   /// The total size of the storage allocated to the VM in MB.
-  final String? committedStorageMb;
+  final pulumi.Input<String>? committedStorageMb;
   /// The number of cpus in the VM.
-  final int? cpuCount;
+  final pulumi.Input<int>? cpuCount;
   /// The descriptive name of the vCenter's datacenter this VM is contained in.
-  final String? datacenterDescription;
+  final pulumi.Input<String>? datacenterDescription;
   /// The id of the vCenter's datacenter this VM is contained in.
-  final String? datacenterId;
+  final pulumi.Input<String>? datacenterId;
   /// The number of disks the VM has.
-  final int? diskCount;
+  final pulumi.Input<int>? diskCount;
   /// The display name of the VM. Note that this is not necessarily unique.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
-  final String? guestDescription;
+  final pulumi.Input<String>? guestDescription;
   /// The size of the memory of the VM in MB.
-  final int? memoryMb;
+  final pulumi.Input<int>? memoryMb;
   /// The power state of the VM at the moment list was taken.
-  final VmwareVmDetailsPowerState? powerState;
+  final pulumi.Input<VmwareVmDetailsPowerState>? powerState;
   /// The unique identifier of the VM in vCenter.
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
   /// The VM's id in the source (note that this is not the MigratingVm's id). This is the moref id of the VM.
-  final String? vmId;
+  final pulumi.Input<String>? vmId;
 
   /// Creates a new [VmwareVmDetails].
   /// [committedStorageMb] The total size of the storage allocated to the VM in MB.
@@ -63,7 +64,7 @@ class VmwareVmDetails {
       'displayName': ?displayName,
       'guestDescription': ?guestDescription,
       'memoryMb': ?memoryMb,
-      'powerState': ?powerState == null ? null : powerState!.value,
+      'powerState': ?pulumi.Input.mapOptionalInputValue<VmwareVmDetailsPowerState, String>(powerState, (value) => value.value),
       'uuid': ?uuid,
       'vmId': ?vmId,
     };
@@ -71,17 +72,17 @@ class VmwareVmDetails {
 
   factory VmwareVmDetails.fromMap(Map<String, dynamic> map) {
     return VmwareVmDetails(
-      committedStorageMb: map['committedStorageMb'] == null ? null : map['committedStorageMb'] as String,
-      cpuCount: map['cpuCount'] == null ? null : map['cpuCount'] as int,
-      datacenterDescription: map['datacenterDescription'] == null ? null : map['datacenterDescription'] as String,
-      datacenterId: map['datacenterId'] == null ? null : map['datacenterId'] as String,
-      diskCount: map['diskCount'] == null ? null : map['diskCount'] as int,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      guestDescription: map['guestDescription'] == null ? null : map['guestDescription'] as String,
-      memoryMb: map['memoryMb'] == null ? null : map['memoryMb'] as int,
-      powerState: map['powerState'] == null ? null : VmwareVmDetailsPowerState.fromValue(map['powerState'] as String),
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
-      vmId: map['vmId'] == null ? null : map['vmId'] as String,
+      committedStorageMb: map['committedStorageMb'] == null ? null : (map['committedStorageMb'] as String).input(),
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as int).input(),
+      datacenterDescription: map['datacenterDescription'] == null ? null : (map['datacenterDescription'] as String).input(),
+      datacenterId: map['datacenterId'] == null ? null : (map['datacenterId'] as String).input(),
+      diskCount: map['diskCount'] == null ? null : (map['diskCount'] as int).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      guestDescription: map['guestDescription'] == null ? null : (map['guestDescription'] as String).input(),
+      memoryMb: map['memoryMb'] == null ? null : (map['memoryMb'] as int).input(),
+      powerState: map['powerState'] == null ? null : (VmwareVmDetailsPowerState.fromValue(map['powerState'] as String)).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      vmId: map['vmId'] == null ? null : (map['vmId'] as String).input(),
     );
   }
 }

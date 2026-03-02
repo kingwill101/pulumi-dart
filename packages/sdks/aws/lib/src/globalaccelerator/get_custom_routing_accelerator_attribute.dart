@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCustomRoutingAcceleratorAttribute {
-  final bool flowLogsEnabled;
-  final String flowLogsS3Bucket;
-  final String flowLogsS3Prefix;
+  final pulumi.Input<bool> flowLogsEnabled;
+  final pulumi.Input<String> flowLogsS3Bucket;
+  final pulumi.Input<String> flowLogsS3Prefix;
 
   /// Creates a new [GetCustomRoutingAcceleratorAttribute].
   /// [flowLogsEnabled] Required.
@@ -26,9 +27,9 @@ class GetCustomRoutingAcceleratorAttribute {
 
   factory GetCustomRoutingAcceleratorAttribute.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingAcceleratorAttribute(
-      flowLogsEnabled: map['flowLogsEnabled'] as bool,
-      flowLogsS3Bucket: map['flowLogsS3Bucket'] as String,
-      flowLogsS3Prefix: map['flowLogsS3Prefix'] as String,
+      flowLogsEnabled: (map['flowLogsEnabled'] as bool).input(),
+      flowLogsS3Bucket: (map['flowLogsS3Bucket'] as String).input(),
+      flowLogsS3Prefix: (map['flowLogsS3Prefix'] as String).input(),
     );
   }
 }

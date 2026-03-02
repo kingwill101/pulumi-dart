@@ -19,13 +19,10 @@ class GetKafkaConnectorArgs {
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetKafkaConnectorArgs({
-    required pulumi.Output<String> kafkaConnectorName,
-    required pulumi.Output<String> mqName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      kafkaConnectorName = pulumi.Input.asInput<String>(kafkaConnectorName),
-      mqName = pulumi.Input.asInput<String>(mqName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.kafkaConnectorName,
+    required this.mqName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetKafkaConnectorArgs {
 
   factory GetKafkaConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetKafkaConnectorArgs(
-      kafkaConnectorName: pulumi.Output.create<String>(map['kafkaConnectorName'] as String),
-      mqName: pulumi.Output.create<String>(map['mqName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      kafkaConnectorName: (map['kafkaConnectorName'] as String).input(),
+      mqName: (map['mqName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

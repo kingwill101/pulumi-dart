@@ -19,13 +19,10 @@ class GetScopeConnectionArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [scopeConnectionName] Name for the cross-tenant connection.
   GetScopeConnectionArgs({
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scopeConnectionName,
-  }) :
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopeConnectionName = pulumi.Input.asInput<String>(scopeConnectionName);
+    required this.networkManagerName,
+    required this.resourceGroupName,
+    required this.scopeConnectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetScopeConnectionArgs {
 
   factory GetScopeConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeConnectionArgs(
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopeConnectionName: pulumi.Output.create<String>(map['scopeConnectionName'] as String),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopeConnectionName: (map['scopeConnectionName'] as String).input(),
     );
   }
 }

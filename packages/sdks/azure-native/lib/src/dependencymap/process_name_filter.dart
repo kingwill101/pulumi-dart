@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Process name filter for dependency map visualization apis
 class ProcessNameFilter {
   /// Operator for process name filter
-  final String operator;
+  final pulumi.Input<String> operator;
   /// List of process names on which the operator should be applied
-  final List<String> processNames;
+  final pulumi.Input<List<String>> processNames;
 
   /// Creates a new [ProcessNameFilter].
   /// [operator] Operator for process name filter
@@ -25,8 +26,8 @@ class ProcessNameFilter {
 
   factory ProcessNameFilter.fromMap(Map<String, dynamic> map) {
     return ProcessNameFilter(
-      operator: map['operator'] as String,
-      processNames: (map['processNames'] as List).cast<String>(),
+      operator: (map['operator'] as String).input(),
+      processNames: ((map['processNames'] as List).cast<String>()).input(),
     );
   }
 }

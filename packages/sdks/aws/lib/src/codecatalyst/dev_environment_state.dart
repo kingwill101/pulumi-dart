@@ -38,25 +38,16 @@ class DevEnvironmentState {
   /// [repositories] The source repository that contains the branch to clone into the Dev Environment.
   /// [spaceName] The name of the space.
   DevEnvironmentState({
-    pulumi.Output<String>? alias,
-    pulumi.Output<DevEnvironmentIdes>? ides,
-    pulumi.Output<int>? inactivityTimeoutMinutes,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<DevEnvironmentPersistentStorage>? persistentStorage,
-    pulumi.Output<String>? projectName,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<DevEnvironmentRepository>>? repositories,
-    pulumi.Output<String>? spaceName,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      ides = pulumi.Input.asOptionalInput<DevEnvironmentIdes>(ides),
-      inactivityTimeoutMinutes = pulumi.Input.asOptionalInput<int>(inactivityTimeoutMinutes),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      persistentStorage = pulumi.Input.asOptionalInput<DevEnvironmentPersistentStorage>(persistentStorage),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repositories = pulumi.Input.asOptionalInput<List<DevEnvironmentRepository>>(repositories),
-      spaceName = pulumi.Input.asOptionalInput<String>(spaceName);
+    this.alias,
+    this.ides,
+    this.inactivityTimeoutMinutes,
+    this.instanceType,
+    this.persistentStorage,
+    this.projectName,
+    this.region,
+    this.repositories,
+    this.spaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class DevEnvironmentState {
 
   factory DevEnvironmentState.fromMap(Map<String, dynamic> map) {
     return DevEnvironmentState(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      ides: map['ides'] == null ? null : pulumi.Output.create<DevEnvironmentIdes>(DevEnvironmentIdes.fromMap((map['ides'] as Map).cast<String, dynamic>())),
-      inactivityTimeoutMinutes: map['inactivityTimeoutMinutes'] == null ? null : pulumi.Output.create<int>(map['inactivityTimeoutMinutes'] as int),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      persistentStorage: map['persistentStorage'] == null ? null : pulumi.Output.create<DevEnvironmentPersistentStorage>(DevEnvironmentPersistentStorage.fromMap((map['persistentStorage'] as Map).cast<String, dynamic>())),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repositories: map['repositories'] == null ? null : pulumi.Output.create<List<DevEnvironmentRepository>>(pulumi.Input.decodeList<DevEnvironmentRepository>(map['repositories'], (value) => DevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>()))),
-      spaceName: map['spaceName'] == null ? null : pulumi.Output.create<String>(map['spaceName'] as String),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      ides: map['ides'] == null ? null : (DevEnvironmentIdes.fromMap((map['ides'] as Map).cast<String, dynamic>())).input(),
+      inactivityTimeoutMinutes: map['inactivityTimeoutMinutes'] == null ? null : (map['inactivityTimeoutMinutes'] as int).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      persistentStorage: map['persistentStorage'] == null ? null : (DevEnvironmentPersistentStorage.fromMap((map['persistentStorage'] as Map).cast<String, dynamic>())).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<DevEnvironmentRepository>(map['repositories'], (value) => DevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spaceName: map['spaceName'] == null ? null : (map['spaceName'] as String).input(),
     );
   }
 }

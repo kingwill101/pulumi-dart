@@ -28,19 +28,13 @@ class WebAppDomainOwnershipIdentifierSlotArgs {
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will delete the binding for the production slot.
   /// [value] String representation of the identity.
   WebAppDomainOwnershipIdentifierSlotArgs({
-    pulumi.Output<String>? domainOwnershipIdentifierName,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> slot,
-    pulumi.Output<String>? value,
-  }) :
-      domainOwnershipIdentifierName = pulumi.Input.asOptionalInput<String>(domainOwnershipIdentifierName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      slot = pulumi.Input.asInput<String>(slot),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.domainOwnershipIdentifierName,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+    required this.slot,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class WebAppDomainOwnershipIdentifierSlotArgs {
 
   factory WebAppDomainOwnershipIdentifierSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppDomainOwnershipIdentifierSlotArgs(
-      domainOwnershipIdentifierName: map['domainOwnershipIdentifierName'] == null ? null : pulumi.Output.create<String>(map['domainOwnershipIdentifierName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      domainOwnershipIdentifierName: map['domainOwnershipIdentifierName'] == null ? null : (map['domainOwnershipIdentifierName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      slot: (map['slot'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSlsGroupsGroupSlsGroupConfig {
   /// The name of the Log Store.
-  final String slsLogstore;
+  final pulumi.Input<String> slsLogstore;
   /// The name of the Project.
-  final String slsProject;
+  final pulumi.Input<String> slsProject;
   /// The Sls Region.
-  final String slsRegion;
+  final pulumi.Input<String> slsRegion;
   /// The ID of the Sls User.
-  final String slsUserId;
+  final pulumi.Input<String> slsUserId;
 
   /// Creates a new [GetSlsGroupsGroupSlsGroupConfig].
   /// [slsLogstore] The name of the Log Store.
@@ -34,10 +35,10 @@ class GetSlsGroupsGroupSlsGroupConfig {
 
   factory GetSlsGroupsGroupSlsGroupConfig.fromMap(Map<String, dynamic> map) {
     return GetSlsGroupsGroupSlsGroupConfig(
-      slsLogstore: map['slsLogstore'] as String,
-      slsProject: map['slsProject'] as String,
-      slsRegion: map['slsRegion'] as String,
-      slsUserId: map['slsUserId'] as String,
+      slsLogstore: (map['slsLogstore'] as String).input(),
+      slsProject: (map['slsProject'] as String).input(),
+      slsRegion: (map['slsRegion'] as String).input(),
+      slsUserId: (map['slsUserId'] as String).input(),
     );
   }
 }

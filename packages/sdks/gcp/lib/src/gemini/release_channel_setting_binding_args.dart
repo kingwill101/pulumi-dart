@@ -35,21 +35,14 @@ class ReleaseChannelSettingBindingArgs {
   /// [settingBindingId] Id of the setting binding.
   /// [target] Target of the binding.
   ReleaseChannelSettingBindingArgs({
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? product,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> releaseChannelSettingId,
-    required pulumi.Output<String> settingBindingId,
-    required pulumi.Output<String> target,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      product = pulumi.Input.asOptionalInput<String>(product),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      releaseChannelSettingId = pulumi.Input.asInput<String>(releaseChannelSettingId),
-      settingBindingId = pulumi.Input.asInput<String>(settingBindingId),
-      target = pulumi.Input.asInput<String>(target);
+    this.labels,
+    this.location,
+    this.product,
+    this.project,
+    required this.releaseChannelSettingId,
+    required this.settingBindingId,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class ReleaseChannelSettingBindingArgs {
 
   factory ReleaseChannelSettingBindingArgs.fromMap(Map<String, dynamic> map) {
     return ReleaseChannelSettingBindingArgs(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      product: map['product'] == null ? null : pulumi.Output.create<String>(map['product'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      releaseChannelSettingId: pulumi.Output.create<String>(map['releaseChannelSettingId'] as String),
-      settingBindingId: pulumi.Output.create<String>(map['settingBindingId'] as String),
-      target: pulumi.Output.create<String>(map['target'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      product: map['product'] == null ? null : (map['product'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      releaseChannelSettingId: (map['releaseChannelSettingId'] as String).input(),
+      settingBindingId: (map['settingBindingId'] as String).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

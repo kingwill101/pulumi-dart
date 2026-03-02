@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceTemplateSchedulingOnInstanceStopAction {
   /// Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
-  final bool? discardLocalSsd;
+  final pulumi.Input<bool>? discardLocalSsd;
 
   /// Creates a new [InstanceTemplateSchedulingOnInstanceStopAction].
   /// [discardLocalSsd] Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
@@ -19,7 +20,7 @@ class InstanceTemplateSchedulingOnInstanceStopAction {
 
   factory InstanceTemplateSchedulingOnInstanceStopAction.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateSchedulingOnInstanceStopAction(
-      discardLocalSsd: map['discardLocalSsd'] == null ? null : map['discardLocalSsd'] as bool,
+      discardLocalSsd: map['discardLocalSsd'] == null ? null : (map['discardLocalSsd'] as bool).input(),
     );
   }
 }

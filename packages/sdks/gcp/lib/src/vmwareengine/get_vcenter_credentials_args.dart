@@ -13,9 +13,8 @@ class GetVcenterCredentialsArgs {
   /// Creates a new [GetVcenterCredentialsArgs].
   /// [parent] The resource name of the private cloud which contains the Vcenter.
   GetVcenterCredentialsArgs({
-    required pulumi.Output<String> parent,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent);
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetVcenterCredentialsArgs {
 
   factory GetVcenterCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return GetVcenterCredentialsArgs(
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

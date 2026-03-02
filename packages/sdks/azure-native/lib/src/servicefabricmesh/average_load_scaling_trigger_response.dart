@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auto_scaling_resource_metric_response.dart';
 
 /// Describes the average load trigger used for auto scaling.
 class AverageLoadScalingTriggerResponse {
   /// Enumerates the triggers for auto scaling.
   /// Expected value is 'AverageLoad'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Lower load threshold (if average load is below this threshold, service will scale down).
-  final double lowerLoadThreshold;
+  final pulumi.Input<double> lowerLoadThreshold;
   /// Description of the metric that is used for scaling.
-  final AutoScalingResourceMetricResponse metric;
+  final pulumi.Input<AutoScalingResourceMetricResponse> metric;
   /// Scale interval that indicates how often will this trigger be checked.
-  final int scaleIntervalInSeconds;
+  final pulumi.Input<int> scaleIntervalInSeconds;
   /// Upper load threshold (if average load is above this threshold, service will scale up).
-  final double upperLoadThreshold;
+  final pulumi.Input<double> upperLoadThreshold;
 
   /// Creates a new [AverageLoadScalingTriggerResponse].
   /// [kind] Enumerates the triggers for auto scaling.
@@ -34,7 +35,7 @@ class AverageLoadScalingTriggerResponse {
     return <String, dynamic>{
       'kind': kind,
       'lowerLoadThreshold': lowerLoadThreshold,
-      'metric': metric.toMap(),
+      'metric': pulumi.Input.mapInputValue<AutoScalingResourceMetricResponse, Map<String, dynamic>>(metric, (value) => value.toMap()),
       'scaleIntervalInSeconds': scaleIntervalInSeconds,
       'upperLoadThreshold': upperLoadThreshold,
     };
@@ -42,11 +43,11 @@ class AverageLoadScalingTriggerResponse {
 
   factory AverageLoadScalingTriggerResponse.fromMap(Map<String, dynamic> map) {
     return AverageLoadScalingTriggerResponse(
-      kind: map['kind'] as String,
-      lowerLoadThreshold: map['lowerLoadThreshold'] as double,
-      metric: AutoScalingResourceMetricResponse.fromMap((map['metric'] as Map).cast<String, dynamic>()),
-      scaleIntervalInSeconds: map['scaleIntervalInSeconds'] as int,
-      upperLoadThreshold: map['upperLoadThreshold'] as double,
+      kind: (map['kind'] as String).input(),
+      lowerLoadThreshold: (map['lowerLoadThreshold'] as double).input(),
+      metric: (AutoScalingResourceMetricResponse.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
+      scaleIntervalInSeconds: (map['scaleIntervalInSeconds'] as int).input(),
+      upperLoadThreshold: (map['upperLoadThreshold'] as double).input(),
     );
   }
 }

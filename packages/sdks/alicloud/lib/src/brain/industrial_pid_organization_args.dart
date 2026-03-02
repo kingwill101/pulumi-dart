@@ -16,11 +16,9 @@ class IndustrialPidOrganizationArgs {
   /// [parentPidOrganizationId] The ID of parent pid organization.
   /// [pidOrganizationName] The name of pid organization.
   IndustrialPidOrganizationArgs({
-    pulumi.Output<String>? parentPidOrganizationId,
-    required pulumi.Output<String> pidOrganizationName,
-  }) :
-      parentPidOrganizationId = pulumi.Input.asOptionalInput<String>(parentPidOrganizationId),
-      pidOrganizationName = pulumi.Input.asInput<String>(pidOrganizationName);
+    this.parentPidOrganizationId,
+    required this.pidOrganizationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class IndustrialPidOrganizationArgs {
 
   factory IndustrialPidOrganizationArgs.fromMap(Map<String, dynamic> map) {
     return IndustrialPidOrganizationArgs(
-      parentPidOrganizationId: map['parentPidOrganizationId'] == null ? null : pulumi.Output.create<String>(map['parentPidOrganizationId'] as String),
-      pidOrganizationName: pulumi.Output.create<String>(map['pidOrganizationName'] as String),
+      parentPidOrganizationId: map['parentPidOrganizationId'] == null ? null : (map['parentPidOrganizationId'] as String).input(),
+      pidOrganizationName: (map['pidOrganizationName'] as String).input(),
     );
   }
 }

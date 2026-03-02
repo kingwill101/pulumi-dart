@@ -25,15 +25,11 @@ class GetNotificationDestinationArgs {
   /// [name] The name of the notification destination.
   /// [secureUrls] The URL in secure format, showing only the `prefix`, as the `secure_suffix` is a secret.
   GetNotificationDestinationArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<GetNotificationDestinationSecureUrl>>? secureUrls,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      secureUrls = pulumi.Input.asOptionalInput<List<GetNotificationDestinationSecureUrl>>(secureUrls);
+    this.accountId,
+    this.id,
+    this.name,
+    this.secureUrls,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class GetNotificationDestinationArgs {
 
   factory GetNotificationDestinationArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationDestinationArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      secureUrls: map['secureUrls'] == null ? null : pulumi.Output.create<List<GetNotificationDestinationSecureUrl>>(pulumi.Input.decodeList<GetNotificationDestinationSecureUrl>(map['secureUrls'], (value) => GetNotificationDestinationSecureUrl.fromMap((value as Map).cast<String, dynamic>()))),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      secureUrls: map['secureUrls'] == null ? null : (pulumi.Input.decodeList<GetNotificationDestinationSecureUrl>(map['secureUrls'], (value) => GetNotificationDestinationSecureUrl.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

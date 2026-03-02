@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceCor {
   /// A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
-  final List<String> allowedOrigins;
+  final pulumi.Input<List<String>> allowedOrigins;
 
   /// Creates a new [ServiceCor].
   /// [allowedOrigins] A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
@@ -19,7 +20,7 @@ class ServiceCor {
 
   factory ServiceCor.fromMap(Map<String, dynamic> map) {
     return ServiceCor(
-      allowedOrigins: (map['allowedOrigins'] as List).cast<String>(),
+      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
     );
   }
 }

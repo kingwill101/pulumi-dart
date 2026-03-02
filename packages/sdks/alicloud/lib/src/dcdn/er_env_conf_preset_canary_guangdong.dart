@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ErEnvConfPresetCanaryGuangdong {
   /// Allowed DCDN domain names.
-  final List<String>? allowedHosts;
+  final pulumi.Input<List<String>>? allowedHosts;
   /// The version number of the code.
-  final String? codeRev;
+  final pulumi.Input<String>? codeRev;
   /// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-  final String? specName;
+  final pulumi.Input<String>? specName;
 
   /// Creates a new [ErEnvConfPresetCanaryGuangdong].
   /// [allowedHosts] Allowed DCDN domain names.
@@ -29,9 +30,9 @@ class ErEnvConfPresetCanaryGuangdong {
 
   factory ErEnvConfPresetCanaryGuangdong.fromMap(Map<String, dynamic> map) {
     return ErEnvConfPresetCanaryGuangdong(
-      allowedHosts: map['allowedHosts'] == null ? null : (map['allowedHosts'] as List).cast<String>(),
-      codeRev: map['codeRev'] == null ? null : map['codeRev'] as String,
-      specName: map['specName'] == null ? null : map['specName'] as String,
+      allowedHosts: map['allowedHosts'] == null ? null : ((map['allowedHosts'] as List).cast<String>()).input(),
+      codeRev: map['codeRev'] == null ? null : (map['codeRev'] as String).input(),
+      specName: map['specName'] == null ? null : (map['specName'] as String).input(),
     );
   }
 }

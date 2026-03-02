@@ -19,13 +19,10 @@ class GetKafkaVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Version of MSK Kafka. For example 2.4.1.1 or "2.2.1" etc. Either `preferred_versions` or `version` must be set.
   GetKafkaVersionArgs({
-    pulumi.Output<List<String>>? preferredVersions,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? version,
-  }) :
-      preferredVersions = pulumi.Input.asOptionalInput<List<String>>(preferredVersions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.preferredVersions,
+    this.region,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetKafkaVersionArgs {
 
   factory GetKafkaVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetKafkaVersionArgs(
-      preferredVersions: map['preferredVersions'] == null ? null : pulumi.Output.create<List<String>>((map['preferredVersions'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      preferredVersions: map['preferredVersions'] == null ? null : ((map['preferredVersions'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

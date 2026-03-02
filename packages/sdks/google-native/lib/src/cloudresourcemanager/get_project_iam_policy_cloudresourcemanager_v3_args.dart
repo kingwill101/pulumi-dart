@@ -12,9 +12,8 @@ class GetProjectIamPolicyCloudresourcemanagerV3Args {
   /// Creates a new [GetProjectIamPolicyCloudresourcemanagerV3Args].
   /// [project] Optional.
   GetProjectIamPolicyCloudresourcemanagerV3Args({
-    pulumi.Output<String>? project,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetProjectIamPolicyCloudresourcemanagerV3Args {
 
   factory GetProjectIamPolicyCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
     return GetProjectIamPolicyCloudresourcemanagerV3Args(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

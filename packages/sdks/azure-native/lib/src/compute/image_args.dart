@@ -37,23 +37,15 @@ class ImageArgs {
   /// [storageProfile] Specifies the storage settings for the virtual machine disks.
   /// [tags] Resource tags.
   ImageArgs({
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? hyperVGeneration,
-    pulumi.Output<String>? imageName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SubResource>? sourceVirtualMachine,
-    pulumi.Output<ImageStorageProfile>? storageProfile,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      hyperVGeneration = pulumi.Input.asOptionalInput<String>(hyperVGeneration),
-      imageName = pulumi.Input.asOptionalInput<String>(imageName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceVirtualMachine = pulumi.Input.asOptionalInput<SubResource>(sourceVirtualMachine),
-      storageProfile = pulumi.Input.asOptionalInput<ImageStorageProfile>(storageProfile),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.extendedLocation,
+    this.hyperVGeneration,
+    this.imageName,
+    this.location,
+    required this.resourceGroupName,
+    this.sourceVirtualMachine,
+    this.storageProfile,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : pulumi.Output.create<String>(map['hyperVGeneration'] as String),
-      imageName: map['imageName'] == null ? null : pulumi.Output.create<String>(map['imageName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceVirtualMachine: map['sourceVirtualMachine'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['sourceVirtualMachine'] as Map).cast<String, dynamic>())),
-      storageProfile: map['storageProfile'] == null ? null : pulumi.Output.create<ImageStorageProfile>(ImageStorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceVirtualMachine: map['sourceVirtualMachine'] == null ? null : (SubResource.fromMap((map['sourceVirtualMachine'] as Map).cast<String, dynamic>())).input(),
+      storageProfile: map['storageProfile'] == null ? null : (ImageStorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'day_of_week.dart';
 
 /// The recurrence schedule occurrence.
 class RecurrenceScheduleOccurrence {
   /// The day of the week.
-  final DayOfWeek? day;
+  final pulumi.Input<DayOfWeek>? day;
   /// The occurrence.
-  final int? occurrence;
+  final pulumi.Input<int>? occurrence;
 
   /// Creates a new [RecurrenceScheduleOccurrence].
   /// [day] The day of the week.
@@ -19,15 +20,15 @@ class RecurrenceScheduleOccurrence {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'day': ?day == null ? null : day!.value,
+      'day': ?pulumi.Input.mapOptionalInputValue<DayOfWeek, String>(day, (value) => value.value),
       'occurrence': ?occurrence,
     };
   }
 
   factory RecurrenceScheduleOccurrence.fromMap(Map<String, dynamic> map) {
     return RecurrenceScheduleOccurrence(
-      day: map['day'] == null ? null : DayOfWeek.fromValue(map['day'] as String),
-      occurrence: map['occurrence'] == null ? null : map['occurrence'] as int,
+      day: map['day'] == null ? null : (DayOfWeek.fromValue(map['day'] as String)).input(),
+      occurrence: map['occurrence'] == null ? null : (map['occurrence'] as int).input(),
     );
   }
 }

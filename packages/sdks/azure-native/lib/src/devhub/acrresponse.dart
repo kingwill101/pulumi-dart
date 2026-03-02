@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information on the azure container registry
 class ACRResponse {
   /// ACR registry
-  final String? acrRegistryName;
+  final pulumi.Input<String>? acrRegistryName;
   /// ACR repository
-  final String? acrRepositoryName;
+  final pulumi.Input<String>? acrRepositoryName;
   /// ACR resource group
-  final String? acrResourceGroup;
+  final pulumi.Input<String>? acrResourceGroup;
   /// ACR subscription id
-  final String? acrSubscriptionId;
+  final pulumi.Input<String>? acrSubscriptionId;
 
   /// Creates a new [ACRResponse].
   /// [acrRegistryName] ACR registry
@@ -35,10 +36,10 @@ class ACRResponse {
 
   factory ACRResponse.fromMap(Map<String, dynamic> map) {
     return ACRResponse(
-      acrRegistryName: map['acrRegistryName'] == null ? null : map['acrRegistryName'] as String,
-      acrRepositoryName: map['acrRepositoryName'] == null ? null : map['acrRepositoryName'] as String,
-      acrResourceGroup: map['acrResourceGroup'] == null ? null : map['acrResourceGroup'] as String,
-      acrSubscriptionId: map['acrSubscriptionId'] == null ? null : map['acrSubscriptionId'] as String,
+      acrRegistryName: map['acrRegistryName'] == null ? null : (map['acrRegistryName'] as String).input(),
+      acrRepositoryName: map['acrRepositoryName'] == null ? null : (map['acrRepositoryName'] as String).input(),
+      acrResourceGroup: map['acrResourceGroup'] == null ? null : (map['acrResourceGroup'] as String).input(),
+      acrSubscriptionId: map['acrSubscriptionId'] == null ? null : (map['acrSubscriptionId'] as String).input(),
     );
   }
 }

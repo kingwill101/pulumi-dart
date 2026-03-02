@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'blob_inventory_policy_filter_response.dart';
 
 /// An object that defines the blob inventory rule.
 class BlobInventoryPolicyDefinitionResponse {
   /// An object that defines the filter set.
-  final BlobInventoryPolicyFilterResponse? filters;
+  final pulumi.Input<BlobInventoryPolicyFilterResponse>? filters;
   /// This is a required field, it specifies the format for the inventory files.
-  final String format;
+  final pulumi.Input<String> format;
   /// This is a required field. This field specifies the scope of the inventory created either at the blob or container level.
-  final String objectType;
+  final pulumi.Input<String> objectType;
   /// This is a required field. This field is used to schedule an inventory formation.
-  final String schedule;
+  final pulumi.Input<String> schedule;
   /// This is a required field. This field specifies the fields and properties of the object to be included in the inventory. The Schema field value 'Name' is always required. The valid values for this field for the 'Blob' definition.objectType include 'Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, AccessTierInferred, Tags, Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime, Tags, Etag, ContentType, ContentEncoding, ContentLanguage, ContentCRC64, CacheControl, ContentDisposition, LeaseStatus, LeaseState, LeaseDuration, ServerEncrypted, Deleted, DeletionId, DeletedTime, RemainingRetentionDays, ImmutabilityPolicyUntilDate, ImmutabilityPolicyMode, LegalHold, CopyId, CopyStatus, CopySource, CopyProgress, CopyCompletionTime, CopyStatusDescription, CustomerProvidedKeySha256, RehydratePriority, ArchiveStatus, XmsBlobSequenceNumber, EncryptionScope, IncrementalCopy, TagCount'. For Blob object type schema field value 'DeletedTime' is applicable only for Hns enabled accounts. The valid values for 'Container' definition.objectType include 'Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, Etag, DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, DeletedTime, RemainingRetentionDays'. Schema field values 'Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, DeletionId' are valid only for Hns enabled accounts.Schema field values 'Tags, TagCount' are only valid for Non-Hns accounts.
-  final List<String> schemaFields;
+  final pulumi.Input<List<String>> schemaFields;
 
   /// Creates a new [BlobInventoryPolicyDefinitionResponse].
   /// [filters] An object that defines the filter set.
@@ -31,7 +32,7 @@ class BlobInventoryPolicyDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : filters!.toMap(),
+      'filters': ?pulumi.Input.mapOptionalInputValue<BlobInventoryPolicyFilterResponse, Map<String, dynamic>>(filters, (value) => value.toMap()),
       'format': format,
       'objectType': objectType,
       'schedule': schedule,
@@ -41,11 +42,11 @@ class BlobInventoryPolicyDefinitionResponse {
 
   factory BlobInventoryPolicyDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicyDefinitionResponse(
-      filters: map['filters'] == null ? null : BlobInventoryPolicyFilterResponse.fromMap((map['filters'] as Map).cast<String, dynamic>()),
-      format: map['format'] as String,
-      objectType: map['objectType'] as String,
-      schedule: map['schedule'] as String,
-      schemaFields: (map['schemaFields'] as List).cast<String>(),
+      filters: map['filters'] == null ? null : (BlobInventoryPolicyFilterResponse.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      format: (map['format'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
+      schedule: (map['schedule'] as String).input(),
+      schemaFields: ((map['schemaFields'] as List).cast<String>()).input(),
     );
   }
 }

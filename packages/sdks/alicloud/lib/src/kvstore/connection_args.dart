@@ -19,13 +19,10 @@ class ConnectionArgs {
   /// [instanceId] The ID of the instance.
   /// [port] The service port number of the instance.
   ConnectionArgs({
-    required pulumi.Output<String> connectionStringPrefix,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> port,
-  }) :
-      connectionStringPrefix = pulumi.Input.asInput<String>(connectionStringPrefix),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      port = pulumi.Input.asInput<String>(port);
+    required this.connectionStringPrefix,
+    required this.instanceId,
+    required this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      connectionStringPrefix: pulumi.Output.create<String>(map['connectionStringPrefix'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      port: pulumi.Output.create<String>(map['port'] as String),
+      connectionStringPrefix: (map['connectionStringPrefix'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      port: (map['port'] as String).input(),
     );
   }
 }

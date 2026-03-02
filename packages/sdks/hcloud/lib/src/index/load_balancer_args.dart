@@ -35,23 +35,15 @@ class LoadBalancerArgs {
   /// [networkZone] The Network Zone of the Load Balancer. Require when no location is set.
   /// [targets] Optional.
   LoadBalancerArgs({
-    pulumi.Output<LoadBalancerAlgorithm>? algorithm,
-    pulumi.Output<bool>? deleteProtection,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> loadBalancerType,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkZone,
-    pulumi.Output<List<LoadBalancerTarget>>? targets,
-  }) :
-      algorithm = pulumi.Input.asOptionalInput<LoadBalancerAlgorithm>(algorithm),
-      deleteProtection = pulumi.Input.asOptionalInput<bool>(deleteProtection),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      loadBalancerType = pulumi.Input.asInput<String>(loadBalancerType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkZone = pulumi.Input.asOptionalInput<String>(networkZone),
-      targets = pulumi.Input.asOptionalInput<List<LoadBalancerTarget>>(targets);
+    this.algorithm,
+    this.deleteProtection,
+    this.labels,
+    required this.loadBalancerType,
+    this.location,
+    this.name,
+    this.networkZone,
+    this.targets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class LoadBalancerArgs {
 
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
-      algorithm: map['algorithm'] == null ? null : pulumi.Output.create<LoadBalancerAlgorithm>(LoadBalancerAlgorithm.fromMap((map['algorithm'] as Map).cast<String, dynamic>())),
-      deleteProtection: map['deleteProtection'] == null ? null : pulumi.Output.create<bool>(map['deleteProtection'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      loadBalancerType: pulumi.Output.create<String>(map['loadBalancerType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkZone: map['networkZone'] == null ? null : pulumi.Output.create<String>(map['networkZone'] as String),
-      targets: map['targets'] == null ? null : pulumi.Output.create<List<LoadBalancerTarget>>(pulumi.Input.decodeList<LoadBalancerTarget>(map['targets'], (value) => LoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>()))),
+      algorithm: map['algorithm'] == null ? null : (LoadBalancerAlgorithm.fromMap((map['algorithm'] as Map).cast<String, dynamic>())).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      loadBalancerType: (map['loadBalancerType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkZone: map['networkZone'] == null ? null : (map['networkZone'] as String).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<LoadBalancerTarget>(map['targets'], (value) => LoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NodeRuntimeHandlerFeatures is a set of features implemented by the runtime handler.
 class NodeRuntimeHandlerFeatures {
   /// RecursiveReadOnlyMounts is set to true if the runtime handler supports RecursiveReadOnlyMounts.
-  final bool? recursiveReadOnlyMounts;
+  final pulumi.Input<bool>? recursiveReadOnlyMounts;
   /// UserNamespaces is set to true if the runtime handler supports UserNamespaces, including for volumes.
-  final bool? userNamespaces;
+  final pulumi.Input<bool>? userNamespaces;
 
   /// Creates a new [NodeRuntimeHandlerFeatures].
   /// [recursiveReadOnlyMounts] RecursiveReadOnlyMounts is set to true if the runtime handler supports RecursiveReadOnlyMounts.
@@ -25,8 +26,8 @@ class NodeRuntimeHandlerFeatures {
 
   factory NodeRuntimeHandlerFeatures.fromMap(Map<String, dynamic> map) {
     return NodeRuntimeHandlerFeatures(
-      recursiveReadOnlyMounts: map['recursiveReadOnlyMounts'] == null ? null : map['recursiveReadOnlyMounts'] as bool,
-      userNamespaces: map['userNamespaces'] == null ? null : map['userNamespaces'] as bool,
+      recursiveReadOnlyMounts: map['recursiveReadOnlyMounts'] == null ? null : (map['recursiveReadOnlyMounts'] as bool).input(),
+      userNamespaces: map['userNamespaces'] == null ? null : (map['userNamespaces'] as bool).input(),
     );
   }
 }

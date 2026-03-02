@@ -39,27 +39,17 @@ class NodeGroupArgs {
   /// [requestId] Optional. A unique ID used to identify the request. If the server receives two CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests) with the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
   /// [roles] Node group roles.
   NodeGroupArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<InstanceGroupConfig>? nodeGroupConfig,
-    pulumi.Output<String>? nodeGroupId,
-    pulumi.Output<String>? parentOperationId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> regionId,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<List<NodeGroupRolesItem>> roles,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeGroupConfig = pulumi.Input.asOptionalInput<InstanceGroupConfig>(nodeGroupConfig),
-      nodeGroupId = pulumi.Input.asOptionalInput<String>(nodeGroupId),
-      parentOperationId = pulumi.Input.asOptionalInput<String>(parentOperationId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regionId = pulumi.Input.asInput<String>(regionId),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      roles = pulumi.Input.asInput<List<NodeGroupRolesItem>>(roles);
+    required this.clusterId,
+    this.labels,
+    this.name,
+    this.nodeGroupConfig,
+    this.nodeGroupId,
+    this.parentOperationId,
+    this.project,
+    required this.regionId,
+    this.requestId,
+    required this.roles,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class NodeGroupArgs {
 
   factory NodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeGroupConfig: map['nodeGroupConfig'] == null ? null : pulumi.Output.create<InstanceGroupConfig>(InstanceGroupConfig.fromMap((map['nodeGroupConfig'] as Map).cast<String, dynamic>())),
-      nodeGroupId: map['nodeGroupId'] == null ? null : pulumi.Output.create<String>(map['nodeGroupId'] as String),
-      parentOperationId: map['parentOperationId'] == null ? null : pulumi.Output.create<String>(map['parentOperationId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      regionId: pulumi.Output.create<String>(map['regionId'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      roles: pulumi.Output.create<List<NodeGroupRolesItem>>(pulumi.Input.decodeList<NodeGroupRolesItem>(map['roles'], (value) => NodeGroupRolesItem.fromValue(value as String))),
+      clusterId: (map['clusterId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeGroupConfig: map['nodeGroupConfig'] == null ? null : (InstanceGroupConfig.fromMap((map['nodeGroupConfig'] as Map).cast<String, dynamic>())).input(),
+      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId'] as String).input(),
+      parentOperationId: map['parentOperationId'] == null ? null : (map['parentOperationId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      roles: (pulumi.Input.decodeList<NodeGroupRolesItem>(map['roles'], (value) => NodeGroupRolesItem.fromValue(value as String))).input(),
     );
   }
 }

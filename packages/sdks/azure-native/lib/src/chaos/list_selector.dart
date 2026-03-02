@@ -7,14 +7,14 @@ import 'target_reference.dart';
 /// Model that represents a list selector.
 class ListSelector {
   /// Model that represents available filter types that can be applied to a targets list.
-  final SimpleFilter? filter;
+  final pulumi.Input<SimpleFilter>? filter;
   /// String of the selector ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// List of Target references.
-  final List<TargetReference> targets;
+  final pulumi.Input<List<TargetReference>> targets;
   /// Enum of the selector type.
   /// Expected value is 'List'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ListSelector].
   /// [filter] Model that represents available filter types that can be applied to a targets list.
@@ -30,19 +30,19 @@ class ListSelector {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filter': ?filter == null ? null : filter!.toMap(),
+      'filter': ?pulumi.Input.mapOptionalInputValue<SimpleFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'id': id,
-      'targets': pulumi.Input.encodeList<TargetReference, Map<String, dynamic>>(targets, (value) => value.toMap()),
+      'targets': pulumi.Input.mapInputValue<List<TargetReference>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<TargetReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory ListSelector.fromMap(Map<String, dynamic> map) {
     return ListSelector(
-      filter: map['filter'] == null ? null : SimpleFilter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      targets: pulumi.Input.decodeList<TargetReference>(map['targets'], (value) => TargetReference.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      filter: map['filter'] == null ? null : (SimpleFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      targets: (pulumi.Input.decodeList<TargetReference>(map['targets'], (value) => TargetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

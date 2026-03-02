@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CrawlerDeltaTarget {
   /// The name of the connection to use to connect to the Delta table target.
-  final String? connectionName;
+  final pulumi.Input<String>? connectionName;
   /// Specifies whether the crawler will create native tables, to allow integration with query engines that support querying of the Delta transaction log directly.
-  final bool? createNativeDeltaTable;
+  final pulumi.Input<bool>? createNativeDeltaTable;
   /// A list of the Amazon S3 paths to the Delta tables.
-  final List<String> deltaTables;
+  final pulumi.Input<List<String>> deltaTables;
   /// Specifies whether to write the manifest files to the Delta table path.
-  final bool writeManifest;
+  final pulumi.Input<bool> writeManifest;
 
   /// Creates a new [CrawlerDeltaTarget].
   /// [connectionName] The name of the connection to use to connect to the Delta table target.
@@ -34,10 +35,10 @@ class CrawlerDeltaTarget {
 
   factory CrawlerDeltaTarget.fromMap(Map<String, dynamic> map) {
     return CrawlerDeltaTarget(
-      connectionName: map['connectionName'] == null ? null : map['connectionName'] as String,
-      createNativeDeltaTable: map['createNativeDeltaTable'] == null ? null : map['createNativeDeltaTable'] as bool,
-      deltaTables: (map['deltaTables'] as List).cast<String>(),
-      writeManifest: map['writeManifest'] as bool,
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      createNativeDeltaTable: map['createNativeDeltaTable'] == null ? null : (map['createNativeDeltaTable'] as bool).input(),
+      deltaTables: ((map['deltaTables'] as List).cast<String>()).input(),
+      writeManifest: (map['writeManifest'] as bool).input(),
     );
   }
 }

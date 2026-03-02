@@ -21,13 +21,10 @@ class RouterStatusArgs {
   /// [project] The ID of the project in which the resource
   /// [region] The region this router has been created in. If
   RouterStatusArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class RouterStatusArgs {
 
   factory RouterStatusArgs.fromMap(Map<String, dynamic> map) {
     return RouterStatusArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

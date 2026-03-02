@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Linked server Id
 class RedisLinkedServerResponse {
   /// Linked server Id.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [RedisLinkedServerResponse].
   /// [id] Linked server Id.
@@ -20,7 +21,7 @@ class RedisLinkedServerResponse {
 
   factory RedisLinkedServerResponse.fromMap(Map<String, dynamic> map) {
     return RedisLinkedServerResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

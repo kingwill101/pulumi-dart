@@ -10,39 +10,39 @@ import 'network_interface.dart';
 /// ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
 class ComputeEngineTargetDefaults {
   /// Additional licenses to assign to the VM.
-  final List<String>? additionalLicenses;
+  final pulumi.Input<List<String>>? additionalLicenses;
   /// Compute instance scheduling information (if empty default is used).
-  final ComputeScheduling? computeScheduling;
+  final pulumi.Input<ComputeScheduling>? computeScheduling;
   /// The disk type to use in the VM.
-  final ComputeEngineTargetDefaultsDiskType? diskType;
+  final pulumi.Input<ComputeEngineTargetDefaultsDiskType>? diskType;
   /// Optional. Immutable. The encryption to apply to the VM disks.
-  final Encryption? encryption;
+  final pulumi.Input<Encryption>? encryption;
   /// The hostname to assign to the VM.
-  final String? hostname;
+  final pulumi.Input<String>? hostname;
   /// A map of labels to associate with the VM.
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// The license type to use in OS adaptation.
-  final ComputeEngineTargetDefaultsLicenseType? licenseType;
+  final pulumi.Input<ComputeEngineTargetDefaultsLicenseType>? licenseType;
   /// The machine type to create the VM with.
-  final String? machineType;
+  final pulumi.Input<String>? machineType;
   /// The machine type series to create the VM with.
-  final String? machineTypeSeries;
+  final pulumi.Input<String>? machineTypeSeries;
   /// The metadata key/value pairs to assign to the VM.
-  final Map<String, String>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
   /// List of NICs connected to this VM.
-  final List<NetworkInterface>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterface>>? networkInterfaces;
   /// A list of network tags to associate with the VM.
-  final List<String>? networkTags;
+  final pulumi.Input<List<String>>? networkTags;
   /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
-  final bool? secureBoot;
+  final pulumi.Input<bool>? secureBoot;
   /// The service account to associate the VM with.
-  final String? serviceAccount;
+  final pulumi.Input<String>? serviceAccount;
   /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
-  final String? targetProject;
+  final pulumi.Input<String>? targetProject;
   /// The name of the VM to create.
-  final String? vmName;
+  final pulumi.Input<String>? vmName;
   /// The zone in which to create the VM.
-  final String? zone;
+  final pulumi.Input<String>? zone;
 
   /// Creates a new [ComputeEngineTargetDefaults].
   /// [additionalLicenses] Additional licenses to assign to the VM.
@@ -85,16 +85,16 @@ class ComputeEngineTargetDefaults {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalLicenses': ?additionalLicenses,
-      'computeScheduling': ?computeScheduling == null ? null : computeScheduling!.toMap(),
-      'diskType': ?diskType == null ? null : diskType!.value,
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'computeScheduling': ?pulumi.Input.mapOptionalInputValue<ComputeScheduling, Map<String, dynamic>>(computeScheduling, (value) => value.toMap()),
+      'diskType': ?pulumi.Input.mapOptionalInputValue<ComputeEngineTargetDefaultsDiskType, String>(diskType, (value) => value.value),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<Encryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'hostname': ?hostname,
       'labels': ?labels,
-      'licenseType': ?licenseType == null ? null : licenseType!.value,
+      'licenseType': ?pulumi.Input.mapOptionalInputValue<ComputeEngineTargetDefaultsLicenseType, String>(licenseType, (value) => value.value),
       'machineType': ?machineType,
       'machineTypeSeries': ?machineTypeSeries,
       'metadata': ?metadata,
-      'networkInterfaces': ?networkInterfaces == null ? null : pulumi.Input.encodeList<NetworkInterface, Map<String, dynamic>>(networkInterfaces!, (value) => value.toMap()),
+      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterface>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterface, Map<String, dynamic>>(value, (value) => value.toMap())),
       'networkTags': ?networkTags,
       'secureBoot': ?secureBoot,
       'serviceAccount': ?serviceAccount,
@@ -106,23 +106,23 @@ class ComputeEngineTargetDefaults {
 
   factory ComputeEngineTargetDefaults.fromMap(Map<String, dynamic> map) {
     return ComputeEngineTargetDefaults(
-      additionalLicenses: map['additionalLicenses'] == null ? null : (map['additionalLicenses'] as List).cast<String>(),
-      computeScheduling: map['computeScheduling'] == null ? null : ComputeScheduling.fromMap((map['computeScheduling'] as Map).cast<String, dynamic>()),
-      diskType: map['diskType'] == null ? null : ComputeEngineTargetDefaultsDiskType.fromValue(map['diskType'] as String),
-      encryption: map['encryption'] == null ? null : Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      licenseType: map['licenseType'] == null ? null : ComputeEngineTargetDefaultsLicenseType.fromValue(map['licenseType'] as String),
-      machineType: map['machineType'] == null ? null : map['machineType'] as String,
-      machineTypeSeries: map['machineTypeSeries'] == null ? null : map['machineTypeSeries'] as String,
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces'], (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
-      networkTags: map['networkTags'] == null ? null : (map['networkTags'] as List).cast<String>(),
-      secureBoot: map['secureBoot'] == null ? null : map['secureBoot'] as bool,
-      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
-      targetProject: map['targetProject'] == null ? null : map['targetProject'] as String,
-      vmName: map['vmName'] == null ? null : map['vmName'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      additionalLicenses: map['additionalLicenses'] == null ? null : ((map['additionalLicenses'] as List).cast<String>()).input(),
+      computeScheduling: map['computeScheduling'] == null ? null : (ComputeScheduling.fromMap((map['computeScheduling'] as Map).cast<String, dynamic>())).input(),
+      diskType: map['diskType'] == null ? null : (ComputeEngineTargetDefaultsDiskType.fromValue(map['diskType'] as String)).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      licenseType: map['licenseType'] == null ? null : (ComputeEngineTargetDefaultsLicenseType.fromValue(map['licenseType'] as String)).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      machineTypeSeries: map['machineTypeSeries'] == null ? null : (map['machineTypeSeries'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces'], (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkTags: map['networkTags'] == null ? null : ((map['networkTags'] as List).cast<String>()).input(),
+      secureBoot: map['secureBoot'] == null ? null : (map['secureBoot'] as bool).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      targetProject: map['targetProject'] == null ? null : (map['targetProject'] as String).input(),
+      vmName: map['vmName'] == null ? null : (map['vmName'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

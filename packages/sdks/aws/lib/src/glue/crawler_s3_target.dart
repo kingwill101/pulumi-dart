@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CrawlerS3Target {
   /// The name of a connection which allows crawler to access data in S3 within a VPC.
-  final String? connectionName;
+  final pulumi.Input<String>? connectionName;
   /// The ARN of the dead-letter SQS queue.
-  final String? dlqEventQueueArn;
+  final pulumi.Input<String>? dlqEventQueueArn;
   /// The ARN of the SQS queue to receive S3 notifications from.
-  final String? eventQueueArn;
+  final pulumi.Input<String>? eventQueueArn;
   /// A list of glob patterns used to exclude from the crawl.
-  final List<String>? exclusions;
+  final pulumi.Input<List<String>>? exclusions;
   /// The path to the Amazon S3 target.
-  final String path;
+  final pulumi.Input<String> path;
   /// Sets the number of files in each leaf folder to be crawled when crawling sample files in a dataset. If not set, all the files are crawled. A valid value is an integer between 1 and 249.
-  final int? sampleSize;
+  final pulumi.Input<int>? sampleSize;
 
   /// Creates a new [CrawlerS3Target].
   /// [connectionName] The name of a connection which allows crawler to access data in S3 within a VPC.
@@ -44,12 +45,12 @@ class CrawlerS3Target {
 
   factory CrawlerS3Target.fromMap(Map<String, dynamic> map) {
     return CrawlerS3Target(
-      connectionName: map['connectionName'] == null ? null : map['connectionName'] as String,
-      dlqEventQueueArn: map['dlqEventQueueArn'] == null ? null : map['dlqEventQueueArn'] as String,
-      eventQueueArn: map['eventQueueArn'] == null ? null : map['eventQueueArn'] as String,
-      exclusions: map['exclusions'] == null ? null : (map['exclusions'] as List).cast<String>(),
-      path: map['path'] as String,
-      sampleSize: map['sampleSize'] == null ? null : map['sampleSize'] as int,
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      dlqEventQueueArn: map['dlqEventQueueArn'] == null ? null : (map['dlqEventQueueArn'] as String).input(),
+      eventQueueArn: map['eventQueueArn'] == null ? null : (map['eventQueueArn'] as String).input(),
+      exclusions: map['exclusions'] == null ? null : ((map['exclusions'] as List).cast<String>()).input(),
+      path: (map['path'] as String).input(),
+      sampleSize: map['sampleSize'] == null ? null : (map['sampleSize'] as int).input(),
     );
   }
 }

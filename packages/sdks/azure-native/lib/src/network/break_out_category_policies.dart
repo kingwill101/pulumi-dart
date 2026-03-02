@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network Virtual Appliance Sku Properties.
 class BreakOutCategoryPolicies {
   /// Flag to control breakout of o365 allow category.
-  final bool? allow;
+  final pulumi.Input<bool>? allow;
   /// Flag to control breakout of o365 default category.
-  final bool? default_;
+  final pulumi.Input<bool>? default_;
   /// Flag to control breakout of o365 optimize category.
-  final bool? optimize;
+  final pulumi.Input<bool>? optimize;
 
   /// Creates a new [BreakOutCategoryPolicies].
   /// [allow] Flag to control breakout of o365 allow category.
@@ -30,9 +31,9 @@ class BreakOutCategoryPolicies {
 
   factory BreakOutCategoryPolicies.fromMap(Map<String, dynamic> map) {
     return BreakOutCategoryPolicies(
-      allow: map['allow'] == null ? null : map['allow'] as bool,
-      default_: map['default'] == null ? null : map['default'] as bool,
-      optimize: map['optimize'] == null ? null : map['optimize'] as bool,
+      allow: map['allow'] == null ? null : (map['allow'] as bool).input(),
+      default_: map['default'] == null ? null : (map['default'] as bool).input(),
+      optimize: map['optimize'] == null ? null : (map['optimize'] as bool).input(),
     );
   }
 }

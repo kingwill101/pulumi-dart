@@ -61,31 +61,19 @@ class EdgeCacheServiceArgs {
   /// [routing] Defines how requests are routed, modified, cached and/or which origin content is filled from.
   /// [sslPolicy] URL of the SslPolicy resource that will be associated with the EdgeCacheService.
   EdgeCacheServiceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disableHttp2,
-    pulumi.Output<bool>? disableQuic,
-    pulumi.Output<String>? edgeSecurityPolicy,
-    pulumi.Output<List<String>>? edgeSslCertificates,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<EdgeCacheServiceLogConfig>? logConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? requireTls,
-    required pulumi.Output<EdgeCacheServiceRouting> routing,
-    pulumi.Output<String>? sslPolicy,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disableHttp2 = pulumi.Input.asOptionalInput<bool>(disableHttp2),
-      disableQuic = pulumi.Input.asOptionalInput<bool>(disableQuic),
-      edgeSecurityPolicy = pulumi.Input.asOptionalInput<String>(edgeSecurityPolicy),
-      edgeSslCertificates = pulumi.Input.asOptionalInput<List<String>>(edgeSslCertificates),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      logConfig = pulumi.Input.asOptionalInput<EdgeCacheServiceLogConfig>(logConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requireTls = pulumi.Input.asOptionalInput<bool>(requireTls),
-      routing = pulumi.Input.asInput<EdgeCacheServiceRouting>(routing),
-      sslPolicy = pulumi.Input.asOptionalInput<String>(sslPolicy);
+    this.description,
+    this.disableHttp2,
+    this.disableQuic,
+    this.edgeSecurityPolicy,
+    this.edgeSslCertificates,
+    this.labels,
+    this.logConfig,
+    this.name,
+    this.project,
+    this.requireTls,
+    required this.routing,
+    this.sslPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,18 +94,18 @@ class EdgeCacheServiceArgs {
 
   factory EdgeCacheServiceArgs.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disableHttp2: map['disableHttp2'] == null ? null : pulumi.Output.create<bool>(map['disableHttp2'] as bool),
-      disableQuic: map['disableQuic'] == null ? null : pulumi.Output.create<bool>(map['disableQuic'] as bool),
-      edgeSecurityPolicy: map['edgeSecurityPolicy'] == null ? null : pulumi.Output.create<String>(map['edgeSecurityPolicy'] as String),
-      edgeSslCertificates: map['edgeSslCertificates'] == null ? null : pulumi.Output.create<List<String>>((map['edgeSslCertificates'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      logConfig: map['logConfig'] == null ? null : pulumi.Output.create<EdgeCacheServiceLogConfig>(EdgeCacheServiceLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requireTls: map['requireTls'] == null ? null : pulumi.Output.create<bool>(map['requireTls'] as bool),
-      routing: pulumi.Output.create<EdgeCacheServiceRouting>(EdgeCacheServiceRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())),
-      sslPolicy: map['sslPolicy'] == null ? null : pulumi.Output.create<String>(map['sslPolicy'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableHttp2: map['disableHttp2'] == null ? null : (map['disableHttp2'] as bool).input(),
+      disableQuic: map['disableQuic'] == null ? null : (map['disableQuic'] as bool).input(),
+      edgeSecurityPolicy: map['edgeSecurityPolicy'] == null ? null : (map['edgeSecurityPolicy'] as String).input(),
+      edgeSslCertificates: map['edgeSslCertificates'] == null ? null : ((map['edgeSslCertificates'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      logConfig: map['logConfig'] == null ? null : (EdgeCacheServiceLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requireTls: map['requireTls'] == null ? null : (map['requireTls'] as bool).input(),
+      routing: (EdgeCacheServiceRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
     );
   }
 }

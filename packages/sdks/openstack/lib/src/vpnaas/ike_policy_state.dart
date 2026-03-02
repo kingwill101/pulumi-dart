@@ -54,29 +54,18 @@ class IkePolicyState {
   /// [tenantId] The owner of the policy. Required if admin wants to
   /// [valueSpecs] Map of additional options.
   IkePolicyState({
-    pulumi.Output<String>? authAlgorithm,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? encryptionAlgorithm,
-    pulumi.Output<String>? ikeVersion,
-    pulumi.Output<List<IkePolicyLifetime>>? lifetimes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pfs,
-    pulumi.Output<String>? phase1NegotiationMode,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-  }) :
-      authAlgorithm = pulumi.Input.asOptionalInput<String>(authAlgorithm),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryptionAlgorithm = pulumi.Input.asOptionalInput<String>(encryptionAlgorithm),
-      ikeVersion = pulumi.Input.asOptionalInput<String>(ikeVersion),
-      lifetimes = pulumi.Input.asOptionalInput<List<IkePolicyLifetime>>(lifetimes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pfs = pulumi.Input.asOptionalInput<String>(pfs),
-      phase1NegotiationMode = pulumi.Input.asOptionalInput<String>(phase1NegotiationMode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs);
+    this.authAlgorithm,
+    this.description,
+    this.encryptionAlgorithm,
+    this.ikeVersion,
+    this.lifetimes,
+    this.name,
+    this.pfs,
+    this.phase1NegotiationMode,
+    this.region,
+    this.tenantId,
+    this.valueSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,17 +85,17 @@ class IkePolicyState {
 
   factory IkePolicyState.fromMap(Map<String, dynamic> map) {
     return IkePolicyState(
-      authAlgorithm: map['authAlgorithm'] == null ? null : pulumi.Output.create<String>(map['authAlgorithm'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : pulumi.Output.create<String>(map['encryptionAlgorithm'] as String),
-      ikeVersion: map['ikeVersion'] == null ? null : pulumi.Output.create<String>(map['ikeVersion'] as String),
-      lifetimes: map['lifetimes'] == null ? null : pulumi.Output.create<List<IkePolicyLifetime>>(pulumi.Input.decodeList<IkePolicyLifetime>(map['lifetimes'], (value) => IkePolicyLifetime.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pfs: map['pfs'] == null ? null : pulumi.Output.create<String>(map['pfs'] as String),
-      phase1NegotiationMode: map['phase1NegotiationMode'] == null ? null : pulumi.Output.create<String>(map['phase1NegotiationMode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
+      authAlgorithm: map['authAlgorithm'] == null ? null : (map['authAlgorithm'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm'] as String).input(),
+      ikeVersion: map['ikeVersion'] == null ? null : (map['ikeVersion'] as String).input(),
+      lifetimes: map['lifetimes'] == null ? null : (pulumi.Input.decodeList<IkePolicyLifetime>(map['lifetimes'], (value) => IkePolicyLifetime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pfs: map['pfs'] == null ? null : (map['pfs'] as String).input(),
+      phase1NegotiationMode: map['phase1NegotiationMode'] == null ? null : (map['phase1NegotiationMode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
     );
   }
 }

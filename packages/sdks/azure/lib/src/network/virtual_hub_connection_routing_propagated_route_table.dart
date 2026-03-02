@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualHubConnectionRoutingPropagatedRouteTable {
   /// The list of labels to assign to this route table.
-  final List<String>? labels;
+  final pulumi.Input<List<String>>? labels;
   /// A list of Route Table IDs to associated with this Virtual Hub Connection.
-  final List<String>? routeTableIds;
+  final pulumi.Input<List<String>>? routeTableIds;
 
   /// Creates a new [VirtualHubConnectionRoutingPropagatedRouteTable].
   /// [labels] The list of labels to assign to this route table.
@@ -24,8 +25,8 @@ class VirtualHubConnectionRoutingPropagatedRouteTable {
 
   factory VirtualHubConnectionRoutingPropagatedRouteTable.fromMap(Map<String, dynamic> map) {
     return VirtualHubConnectionRoutingPropagatedRouteTable(
-      labels: map['labels'] == null ? null : (map['labels'] as List).cast<String>(),
-      routeTableIds: map['routeTableIds'] == null ? null : (map['routeTableIds'] as List).cast<String>(),
+      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      routeTableIds: map['routeTableIds'] == null ? null : ((map['routeTableIds'] as List).cast<String>()).input(),
     );
   }
 }

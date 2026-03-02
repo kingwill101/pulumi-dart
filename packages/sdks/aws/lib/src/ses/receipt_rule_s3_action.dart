@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReceiptRuleS3Action {
   /// The name of the S3 bucket
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// The ARN of the IAM role to be used by Amazon Simple Email Service while writing to the Amazon S3 bucket, optionally encrypting your mail via the provided customer managed key, and publishing to the Amazon SNS topic
-  final String? iamRoleArn;
+  final pulumi.Input<String>? iamRoleArn;
   /// The ARN of the KMS key
-  final String? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
   /// The key prefix of the S3 bucket
-  final String? objectKeyPrefix;
+  final pulumi.Input<String>? objectKeyPrefix;
   /// The position of the action in the receipt rule
-  final int position;
+  final pulumi.Input<int> position;
   /// The ARN of an SNS topic to notify
-  final String? topicArn;
+  final pulumi.Input<String>? topicArn;
 
   /// Creates a new [ReceiptRuleS3Action].
   /// [bucketName] The name of the S3 bucket
@@ -44,12 +45,12 @@ class ReceiptRuleS3Action {
 
   factory ReceiptRuleS3Action.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleS3Action(
-      bucketName: map['bucketName'] as String,
-      iamRoleArn: map['iamRoleArn'] == null ? null : map['iamRoleArn'] as String,
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
-      objectKeyPrefix: map['objectKeyPrefix'] == null ? null : map['objectKeyPrefix'] as String,
-      position: map['position'] as int,
-      topicArn: map['topicArn'] == null ? null : map['topicArn'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      objectKeyPrefix: map['objectKeyPrefix'] == null ? null : (map['objectKeyPrefix'] as String).input(),
+      position: (map['position'] as int).input(),
+      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
     );
   }
 }

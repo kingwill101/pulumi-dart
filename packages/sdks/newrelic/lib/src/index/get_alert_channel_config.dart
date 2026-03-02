@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertChannelConfig {
-  final String? apiKey;
-  final String? authPassword;
-  final String? authType;
-  final String? authUsername;
-  final String? baseUrl;
-  final String? channel;
-  final Map<String, String>? headers;
-  final String? includeJsonAttachment;
-  final String? key;
-  final Map<String, String>? payload;
-  final String? payloadString;
-  final String? payloadType;
-  final String? recipients;
-  final String? region;
-  final String? routeKey;
-  final String? serviceKey;
-  final String? tags;
-  final String? teams;
-  final String? url;
-  final String? userId;
+  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String>? authPassword;
+  final pulumi.Input<String>? authType;
+  final pulumi.Input<String>? authUsername;
+  final pulumi.Input<String>? baseUrl;
+  final pulumi.Input<String>? channel;
+  final pulumi.Input<Map<String, String>>? headers;
+  final pulumi.Input<String>? includeJsonAttachment;
+  final pulumi.Input<String>? key;
+  final pulumi.Input<Map<String, String>>? payload;
+  final pulumi.Input<String>? payloadString;
+  final pulumi.Input<String>? payloadType;
+  final pulumi.Input<String>? recipients;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<String>? routeKey;
+  final pulumi.Input<String>? serviceKey;
+  final pulumi.Input<String>? tags;
+  final pulumi.Input<String>? teams;
+  final pulumi.Input<String>? url;
+  final pulumi.Input<String>? userId;
 
   /// Creates a new [GetAlertChannelConfig].
   /// [apiKey] Optional.
@@ -94,26 +95,26 @@ class GetAlertChannelConfig {
 
   factory GetAlertChannelConfig.fromMap(Map<String, dynamic> map) {
     return GetAlertChannelConfig(
-      apiKey: map['apiKey'] == null ? null : map['apiKey'] as String,
-      authPassword: map['authPassword'] == null ? null : map['authPassword'] as String,
-      authType: map['authType'] == null ? null : map['authType'] as String,
-      authUsername: map['authUsername'] == null ? null : map['authUsername'] as String,
-      baseUrl: map['baseUrl'] == null ? null : map['baseUrl'] as String,
-      channel: map['channel'] == null ? null : map['channel'] as String,
-      headers: map['headers'] == null ? null : (map['headers'] as Map).cast<String, String>(),
-      includeJsonAttachment: map['includeJsonAttachment'] == null ? null : map['includeJsonAttachment'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      payload: map['payload'] == null ? null : (map['payload'] as Map).cast<String, String>(),
-      payloadString: map['payloadString'] == null ? null : map['payloadString'] as String,
-      payloadType: map['payloadType'] == null ? null : map['payloadType'] as String,
-      recipients: map['recipients'] == null ? null : map['recipients'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      routeKey: map['routeKey'] == null ? null : map['routeKey'] as String,
-      serviceKey: map['serviceKey'] == null ? null : map['serviceKey'] as String,
-      tags: map['tags'] == null ? null : map['tags'] as String,
-      teams: map['teams'] == null ? null : map['teams'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
-      userId: map['userId'] == null ? null : map['userId'] as String,
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      authPassword: map['authPassword'] == null ? null : (map['authPassword'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      authUsername: map['authUsername'] == null ? null : (map['authUsername'] as String).input(),
+      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl'] as String).input(),
+      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
+      includeJsonAttachment: map['includeJsonAttachment'] == null ? null : (map['includeJsonAttachment'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      payload: map['payload'] == null ? null : ((map['payload'] as Map).cast<String, String>()).input(),
+      payloadString: map['payloadString'] == null ? null : (map['payloadString'] as String).input(),
+      payloadType: map['payloadType'] == null ? null : (map['payloadType'] as String).input(),
+      recipients: map['recipients'] == null ? null : (map['recipients'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeKey: map['routeKey'] == null ? null : (map['routeKey'] as String).input(),
+      serviceKey: map['serviceKey'] == null ? null : (map['serviceKey'] as String).input(),
+      tags: map['tags'] == null ? null : (map['tags'] as String).input(),
+      teams: map['teams'] == null ? null : (map['teams'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

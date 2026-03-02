@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Indicates that the builder claims certain fields in this message to be complete.
 class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse {
   /// If true, the builder claims that invocation.environment is complete.
-  final bool environment;
+  final pulumi.Input<bool> environment;
   /// If true, the builder claims that materials is complete.
-  final bool materials;
+  final pulumi.Input<bool> materials;
   /// If true, the builder claims that invocation.parameters is complete.
-  final bool parameters;
+  final pulumi.Input<bool> parameters;
 
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse].
   /// [environment] If true, the builder claims that invocation.environment is complete.
@@ -30,9 +31,9 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletene
 
   factory GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse(
-      environment: map['environment'] as bool,
-      materials: map['materials'] as bool,
-      parameters: map['parameters'] as bool,
+      environment: (map['environment'] as bool).input(),
+      materials: (map['materials'] as bool).input(),
+      parameters: (map['parameters'] as bool).input(),
     );
   }
 }

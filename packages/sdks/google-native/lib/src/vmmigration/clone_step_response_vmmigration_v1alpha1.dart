@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CloneStep holds information about the clone step progress.
 class CloneStepResponseVmmigrationV1alpha1 {
   /// Adapting OS step.
-  final Map<String, dynamic> adaptingOs;
+  final pulumi.Input<Map<String, dynamic>> adaptingOs;
   /// The time the step has ended.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Instantiating migrated VM step.
-  final Map<String, dynamic> instantiatingMigratedVm;
+  final pulumi.Input<Map<String, dynamic>> instantiatingMigratedVm;
   /// Preparing VM disks step.
-  final Map<String, dynamic> preparingVmDisks;
+  final pulumi.Input<Map<String, dynamic>> preparingVmDisks;
   /// The time the step has started.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [CloneStepResponseVmmigrationV1alpha1].
   /// [adaptingOs] Adapting OS step.
@@ -40,11 +41,11 @@ class CloneStepResponseVmmigrationV1alpha1 {
 
   factory CloneStepResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return CloneStepResponseVmmigrationV1alpha1(
-      adaptingOs: (map['adaptingOs'] as Map).cast<String, dynamic>(),
-      endTime: map['endTime'] as String,
-      instantiatingMigratedVm: (map['instantiatingMigratedVm'] as Map).cast<String, dynamic>(),
-      preparingVmDisks: (map['preparingVmDisks'] as Map).cast<String, dynamic>(),
-      startTime: map['startTime'] as String,
+      adaptingOs: ((map['adaptingOs'] as Map).cast<String, dynamic>()).input(),
+      endTime: (map['endTime'] as String).input(),
+      instantiatingMigratedVm: ((map['instantiatingMigratedVm'] as Map).cast<String, dynamic>()).input(),
+      preparingVmDisks: ((map['preparingVmDisks'] as Map).cast<String, dynamic>()).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

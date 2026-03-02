@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib {
   /// The maximum amount of memory, in MiB. To specify no maximum limit, omit this parameter.
-  final int? max;
+  final pulumi.Input<int>? max;
   /// The minimum amount of memory, in MiB. To specify no minimum limit, specify `0`.
-  final int min;
+  final pulumi.Input<int> min;
 
   /// Creates a new [FleetLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib].
   /// [max] The maximum amount of memory, in MiB. To specify no maximum limit, omit this parameter.
@@ -24,8 +25,8 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib {
 
   factory FleetLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib.fromMap(Map<String, dynamic> map) {
     return FleetLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib(
-      max: map['max'] == null ? null : map['max'] as int,
-      min: map['min'] as int,
+      max: map['max'] == null ? null : (map['max'] as int).input(),
+      min: (map['min'] as int).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The description of an X509 CA Certificate.
 class CertificatePropertiesResponse {
   /// The certificate content
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// The certificate's create date and time.
-  final String created;
+  final pulumi.Input<String> created;
   /// The certificate's expiration date and time.
-  final String expiry;
+  final pulumi.Input<String> expiry;
   /// Determines whether certificate has been verified.
-  final bool? isVerified;
+  final pulumi.Input<bool>? isVerified;
   /// The certificate's subject name.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// The certificate's thumbprint.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
   /// The certificate's last update date and time.
-  final String updated;
+  final pulumi.Input<String> updated;
 
   /// Creates a new [CertificatePropertiesResponse].
   /// [certificate] The certificate content
@@ -50,13 +51,13 @@ class CertificatePropertiesResponse {
 
   factory CertificatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CertificatePropertiesResponse(
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      created: map['created'] as String,
-      expiry: map['expiry'] as String,
-      isVerified: map['isVerified'] == null ? null : map['isVerified'] as bool,
-      subject: map['subject'] as String,
-      thumbprint: map['thumbprint'] as String,
-      updated: map['updated'] as String,
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      created: (map['created'] as String).input(),
+      expiry: (map['expiry'] as String).input(),
+      isVerified: map['isVerified'] == null ? null : (map['isVerified'] as bool).input(),
+      subject: (map['subject'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
+      updated: (map['updated'] as String).input(),
     );
   }
 }

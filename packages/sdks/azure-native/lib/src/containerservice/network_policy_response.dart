@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The network policy for the managed namespace.
 class NetworkPolicyResponse {
   /// The egress policy for the managed namespace.
-  final String? egress;
+  final pulumi.Input<String>? egress;
   /// The ingress policy for the managed namespace.
-  final String? ingress;
+  final pulumi.Input<String>? ingress;
 
   /// Creates a new [NetworkPolicyResponse].
   /// [egress] The egress policy for the managed namespace.
@@ -25,8 +26,8 @@ class NetworkPolicyResponse {
 
   factory NetworkPolicyResponse.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyResponse(
-      egress: map['egress'] == null ? null : map['egress'] as String,
-      ingress: map['ingress'] == null ? null : map['ingress'] as String,
+      egress: map['egress'] == null ? null : (map['egress'] as String).input(),
+      ingress: map['ingress'] == null ? null : (map['ingress'] as String).input(),
     );
   }
 }

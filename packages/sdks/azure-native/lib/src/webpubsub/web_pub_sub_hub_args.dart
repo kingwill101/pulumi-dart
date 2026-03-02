@@ -23,15 +23,11 @@ class WebPubSubHubArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
   WebPubSubHubArgs({
-    pulumi.Output<String>? hubName,
-    required pulumi.Output<WebPubSubHubProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      hubName = pulumi.Input.asOptionalInput<String>(hubName),
-      properties = pulumi.Input.asInput<WebPubSubHubProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    this.hubName,
+    required this.properties,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class WebPubSubHubArgs {
 
   factory WebPubSubHubArgs.fromMap(Map<String, dynamic> map) {
     return WebPubSubHubArgs(
-      hubName: map['hubName'] == null ? null : pulumi.Output.create<String>(map['hubName'] as String),
-      properties: pulumi.Output.create<WebPubSubHubProperties>(WebPubSubHubProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      hubName: map['hubName'] == null ? null : (map['hubName'] as String).input(),
+      properties: (WebPubSubHubProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

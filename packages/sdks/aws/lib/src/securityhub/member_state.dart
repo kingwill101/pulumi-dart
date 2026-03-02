@@ -25,19 +25,13 @@ class MemberState {
   /// [memberStatus] The status of the member account relationship.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   MemberState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? email,
-    pulumi.Output<bool>? invite,
-    pulumi.Output<String>? masterId,
-    pulumi.Output<String>? memberStatus,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      invite = pulumi.Input.asOptionalInput<bool>(invite),
-      masterId = pulumi.Input.asOptionalInput<String>(masterId),
-      memberStatus = pulumi.Input.asOptionalInput<String>(memberStatus),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accountId,
+    this.email,
+    this.invite,
+    this.masterId,
+    this.memberStatus,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class MemberState {
 
   factory MemberState.fromMap(Map<String, dynamic> map) {
     return MemberState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      invite: map['invite'] == null ? null : pulumi.Output.create<bool>(map['invite'] as bool),
-      masterId: map['masterId'] == null ? null : pulumi.Output.create<String>(map['masterId'] as String),
-      memberStatus: map['memberStatus'] == null ? null : pulumi.Output.create<String>(map['memberStatus'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      invite: map['invite'] == null ? null : (map['invite'] as bool).input(),
+      masterId: map['masterId'] == null ? null : (map['masterId'] as String).input(),
+      memberStatus: map['memberStatus'] == null ? null : (map['memberStatus'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

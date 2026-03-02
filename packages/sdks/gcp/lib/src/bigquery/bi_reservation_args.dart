@@ -25,15 +25,11 @@ class BiReservationArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [size] Size of a reservation, in bytes.
   BiReservationArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<List<BiReservationPreferredTable>>? preferredTables,
-    pulumi.Output<String>? project,
-    pulumi.Output<int>? size,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      preferredTables = pulumi.Input.asOptionalInput<List<BiReservationPreferredTable>>(preferredTables),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      size = pulumi.Input.asOptionalInput<int>(size);
+    required this.location,
+    this.preferredTables,
+    this.project,
+    this.size,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class BiReservationArgs {
 
   factory BiReservationArgs.fromMap(Map<String, dynamic> map) {
     return BiReservationArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      preferredTables: map['preferredTables'] == null ? null : pulumi.Output.create<List<BiReservationPreferredTable>>(pulumi.Input.decodeList<BiReservationPreferredTable>(map['preferredTables'], (value) => BiReservationPreferredTable.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
+      location: (map['location'] as String).input(),
+      preferredTables: map['preferredTables'] == null ? null : (pulumi.Input.decodeList<BiReservationPreferredTable>(map['preferredTables'], (value) => BiReservationPreferredTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

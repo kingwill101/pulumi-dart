@@ -19,13 +19,10 @@ class GetCassandraDataCenterArgs {
   /// [dataCenterName] Data center name in a managed Cassandra cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCassandraDataCenterArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> dataCenterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      dataCenterName = pulumi.Input.asInput<String>(dataCenterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.dataCenterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCassandraDataCenterArgs {
 
   factory GetCassandraDataCenterArgs.fromMap(Map<String, dynamic> map) {
     return GetCassandraDataCenterArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      dataCenterName: pulumi.Output.create<String>(map['dataCenterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      dataCenterName: (map['dataCenterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -62,35 +62,21 @@ class BgpvpnV2State {
   /// [type] The type of the BGP VPN (either `l2` or `l3`). Changing this
   /// [vni] The globally-assigned VXLAN VNI for the BGP VPN. Changing
   BgpvpnV2State({
-    pulumi.Output<List<String>>? exportTargets,
-    pulumi.Output<List<String>>? importTargets,
-    pulumi.Output<int>? localPref,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? networks,
-    pulumi.Output<List<String>>? ports,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? routeDistinguishers,
-    pulumi.Output<List<String>>? routeTargets,
-    pulumi.Output<List<String>>? routers,
-    pulumi.Output<bool>? shared,
-    pulumi.Output<String>? type,
-    pulumi.Output<int>? vni,
-  }) :
-      exportTargets = pulumi.Input.asOptionalInput<List<String>>(exportTargets),
-      importTargets = pulumi.Input.asOptionalInput<List<String>>(importTargets),
-      localPref = pulumi.Input.asOptionalInput<int>(localPref),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networks = pulumi.Input.asOptionalInput<List<String>>(networks),
-      ports = pulumi.Input.asOptionalInput<List<String>>(ports),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeDistinguishers = pulumi.Input.asOptionalInput<List<String>>(routeDistinguishers),
-      routeTargets = pulumi.Input.asOptionalInput<List<String>>(routeTargets),
-      routers = pulumi.Input.asOptionalInput<List<String>>(routers),
-      shared = pulumi.Input.asOptionalInput<bool>(shared),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vni = pulumi.Input.asOptionalInput<int>(vni);
+    this.exportTargets,
+    this.importTargets,
+    this.localPref,
+    this.name,
+    this.networks,
+    this.ports,
+    this.projectId,
+    this.region,
+    this.routeDistinguishers,
+    this.routeTargets,
+    this.routers,
+    this.shared,
+    this.type,
+    this.vni,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -113,20 +99,20 @@ class BgpvpnV2State {
 
   factory BgpvpnV2State.fromMap(Map<String, dynamic> map) {
     return BgpvpnV2State(
-      exportTargets: map['exportTargets'] == null ? null : pulumi.Output.create<List<String>>((map['exportTargets'] as List).cast<String>()),
-      importTargets: map['importTargets'] == null ? null : pulumi.Output.create<List<String>>((map['importTargets'] as List).cast<String>()),
-      localPref: map['localPref'] == null ? null : pulumi.Output.create<int>(map['localPref'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networks: map['networks'] == null ? null : pulumi.Output.create<List<String>>((map['networks'] as List).cast<String>()),
-      ports: map['ports'] == null ? null : pulumi.Output.create<List<String>>((map['ports'] as List).cast<String>()),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeDistinguishers: map['routeDistinguishers'] == null ? null : pulumi.Output.create<List<String>>((map['routeDistinguishers'] as List).cast<String>()),
-      routeTargets: map['routeTargets'] == null ? null : pulumi.Output.create<List<String>>((map['routeTargets'] as List).cast<String>()),
-      routers: map['routers'] == null ? null : pulumi.Output.create<List<String>>((map['routers'] as List).cast<String>()),
-      shared: map['shared'] == null ? null : pulumi.Output.create<bool>(map['shared'] as bool),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vni: map['vni'] == null ? null : pulumi.Output.create<int>(map['vni'] as int),
+      exportTargets: map['exportTargets'] == null ? null : ((map['exportTargets'] as List).cast<String>()).input(),
+      importTargets: map['importTargets'] == null ? null : ((map['importTargets'] as List).cast<String>()).input(),
+      localPref: map['localPref'] == null ? null : (map['localPref'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networks: map['networks'] == null ? null : ((map['networks'] as List).cast<String>()).input(),
+      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeDistinguishers: map['routeDistinguishers'] == null ? null : ((map['routeDistinguishers'] as List).cast<String>()).input(),
+      routeTargets: map['routeTargets'] == null ? null : ((map['routeTargets'] as List).cast<String>()).input(),
+      routers: map['routers'] == null ? null : ((map['routers'] as List).cast<String>()).input(),
+      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vni: map['vni'] == null ? null : (map['vni'] as int).input(),
     );
   }
 }

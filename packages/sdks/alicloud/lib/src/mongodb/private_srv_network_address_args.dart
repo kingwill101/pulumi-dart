@@ -13,9 +13,8 @@ class PrivateSrvNetworkAddressArgs {
   /// Creates a new [PrivateSrvNetworkAddressArgs].
   /// [dbInstanceId] The instance ID.
   PrivateSrvNetworkAddressArgs({
-    required pulumi.Output<String> dbInstanceId,
-  }) :
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId);
+    required this.dbInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class PrivateSrvNetworkAddressArgs {
 
   factory PrivateSrvNetworkAddressArgs.fromMap(Map<String, dynamic> map) {
     return PrivateSrvNetworkAddressArgs(
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
     );
   }
 }

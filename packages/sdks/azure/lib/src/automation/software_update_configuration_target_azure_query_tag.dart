@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SoftwareUpdateConfigurationTargetAzureQueryTag {
   /// Specifies the name of the tag to filter.
-  final String tag;
+  final pulumi.Input<String> tag;
   /// Specifies a list of values for this tag key.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [SoftwareUpdateConfigurationTargetAzureQueryTag].
   /// [tag] Specifies the name of the tag to filter.
@@ -24,8 +25,8 @@ class SoftwareUpdateConfigurationTargetAzureQueryTag {
 
   factory SoftwareUpdateConfigurationTargetAzureQueryTag.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationTargetAzureQueryTag(
-      tag: map['tag'] as String,
-      values: (map['values'] as List).cast<String>(),
+      tag: (map['tag'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

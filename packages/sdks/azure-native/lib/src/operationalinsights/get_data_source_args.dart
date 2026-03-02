@@ -19,13 +19,10 @@ class GetDataSourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   GetDataSourceArgs({
-    required pulumi.Output<String> dataSourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      dataSourceName = pulumi.Input.asInput<String>(dataSourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.dataSourceName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDataSourceArgs {
 
   factory GetDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSourceArgs(
-      dataSourceName: pulumi.Output.create<String>(map['dataSourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      dataSourceName: (map['dataSourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

@@ -66,29 +66,18 @@ class RegionCommitmentArgs {
   /// [resources] A list of commitment amounts for particular resources.
   /// [type] The type of commitment, which affects the discount rate and the eligible resources.
   RegionCommitmentArgs({
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<String>? category,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? existingReservations,
-    pulumi.Output<RegionCommitmentLicenseResource>? licenseResource,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> plan,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<RegionCommitmentResource>>? resources,
-    pulumi.Output<String>? type,
-  }) :
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      category = pulumi.Input.asOptionalInput<String>(category),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      existingReservations = pulumi.Input.asOptionalInput<String>(existingReservations),
-      licenseResource = pulumi.Input.asOptionalInput<RegionCommitmentLicenseResource>(licenseResource),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      plan = pulumi.Input.asInput<String>(plan),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resources = pulumi.Input.asOptionalInput<List<RegionCommitmentResource>>(resources),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.autoRenew,
+    this.category,
+    this.description,
+    this.existingReservations,
+    this.licenseResource,
+    this.name,
+    required this.plan,
+    this.project,
+    this.region,
+    this.resources,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,17 +97,17 @@ class RegionCommitmentArgs {
 
   factory RegionCommitmentArgs.fromMap(Map<String, dynamic> map) {
     return RegionCommitmentArgs(
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      existingReservations: map['existingReservations'] == null ? null : pulumi.Output.create<String>(map['existingReservations'] as String),
-      licenseResource: map['licenseResource'] == null ? null : pulumi.Output.create<RegionCommitmentLicenseResource>(RegionCommitmentLicenseResource.fromMap((map['licenseResource'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      plan: pulumi.Output.create<String>(map['plan'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<RegionCommitmentResource>>(pulumi.Input.decodeList<RegionCommitmentResource>(map['resources'], (value) => RegionCommitmentResource.fromMap((value as Map).cast<String, dynamic>()))),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      existingReservations: map['existingReservations'] == null ? null : (map['existingReservations'] as String).input(),
+      licenseResource: map['licenseResource'] == null ? null : (RegionCommitmentLicenseResource.fromMap((map['licenseResource'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      plan: (map['plan'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<RegionCommitmentResource>(map['resources'], (value) => RegionCommitmentResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

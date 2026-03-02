@@ -47,21 +47,14 @@ class TunnelDestGroupIamBindingState {
   /// [region] The region of the tunnel group. Must be the same as the network resources in the group.
   /// [role] The role that should be applied. Only one
   TunnelDestGroupIamBindingState({
-    pulumi.Output<TunnelDestGroupIamBindingCondition>? condition,
-    pulumi.Output<String>? destGroup,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<TunnelDestGroupIamBindingCondition>(condition),
-      destGroup = pulumi.Input.asOptionalInput<String>(destGroup),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.destGroup,
+    this.etag,
+    this.members,
+    this.project,
+    this.region,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,13 +70,13 @@ class TunnelDestGroupIamBindingState {
 
   factory TunnelDestGroupIamBindingState.fromMap(Map<String, dynamic> map) {
     return TunnelDestGroupIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<TunnelDestGroupIamBindingCondition>(TunnelDestGroupIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      destGroup: map['destGroup'] == null ? null : pulumi.Output.create<String>(map['destGroup'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (TunnelDestGroupIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      destGroup: map['destGroup'] == null ? null : (map['destGroup'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

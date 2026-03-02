@@ -62,33 +62,20 @@ class WatchlistState {
   /// [watchlistId] Optional. The ID to use for the watchlist,
   /// [watchlistUserPreferences] A collection of user preferences for watchlist UI configuration.
   WatchlistState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<WatchlistEntityCount>>? entityCounts,
-    pulumi.Output<WatchlistEntityPopulationMechanism>? entityPopulationMechanism,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? location,
-    pulumi.Output<double>? multiplyingFactor,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<String>? watchlistId,
-    pulumi.Output<WatchlistWatchlistUserPreferences>? watchlistUserPreferences,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      entityCounts = pulumi.Input.asOptionalInput<List<WatchlistEntityCount>>(entityCounts),
-      entityPopulationMechanism = pulumi.Input.asOptionalInput<WatchlistEntityPopulationMechanism>(entityPopulationMechanism),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      multiplyingFactor = pulumi.Input.asOptionalInput<double>(multiplyingFactor),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      watchlistId = pulumi.Input.asOptionalInput<String>(watchlistId),
-      watchlistUserPreferences = pulumi.Input.asOptionalInput<WatchlistWatchlistUserPreferences>(watchlistUserPreferences);
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.entityCounts,
+    this.entityPopulationMechanism,
+    this.instance,
+    this.location,
+    this.multiplyingFactor,
+    this.name,
+    this.project,
+    this.updateTime,
+    this.watchlistId,
+    this.watchlistUserPreferences,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -110,19 +97,19 @@ class WatchlistState {
 
   factory WatchlistState.fromMap(Map<String, dynamic> map) {
     return WatchlistState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      entityCounts: map['entityCounts'] == null ? null : pulumi.Output.create<List<WatchlistEntityCount>>(pulumi.Input.decodeList<WatchlistEntityCount>(map['entityCounts'], (value) => WatchlistEntityCount.fromMap((value as Map).cast<String, dynamic>()))),
-      entityPopulationMechanism: map['entityPopulationMechanism'] == null ? null : pulumi.Output.create<WatchlistEntityPopulationMechanism>(WatchlistEntityPopulationMechanism.fromMap((map['entityPopulationMechanism'] as Map).cast<String, dynamic>())),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      multiplyingFactor: map['multiplyingFactor'] == null ? null : pulumi.Output.create<double>(map['multiplyingFactor'] as double),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      watchlistId: map['watchlistId'] == null ? null : pulumi.Output.create<String>(map['watchlistId'] as String),
-      watchlistUserPreferences: map['watchlistUserPreferences'] == null ? null : pulumi.Output.create<WatchlistWatchlistUserPreferences>(WatchlistWatchlistUserPreferences.fromMap((map['watchlistUserPreferences'] as Map).cast<String, dynamic>())),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      entityCounts: map['entityCounts'] == null ? null : (pulumi.Input.decodeList<WatchlistEntityCount>(map['entityCounts'], (value) => WatchlistEntityCount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entityPopulationMechanism: map['entityPopulationMechanism'] == null ? null : (WatchlistEntityPopulationMechanism.fromMap((map['entityPopulationMechanism'] as Map).cast<String, dynamic>())).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      multiplyingFactor: map['multiplyingFactor'] == null ? null : (map['multiplyingFactor'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      watchlistId: map['watchlistId'] == null ? null : (map['watchlistId'] as String).input(),
+      watchlistUserPreferences: map['watchlistUserPreferences'] == null ? null : (WatchlistWatchlistUserPreferences.fromMap((map['watchlistUserPreferences'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

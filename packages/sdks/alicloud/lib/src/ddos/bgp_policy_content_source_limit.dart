@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BgpPolicyContentSourceLimit {
   /// bps range 1024~268435456.
-  final int? bps;
+  final pulumi.Input<int>? bps;
   /// Pps range 32~500000.
-  final int? pps;
+  final pulumi.Input<int>? pps;
   /// SynBps range 1024~268435456.
-  final int? synBps;
+  final pulumi.Input<int>? synBps;
   /// SynPps range 1~100000.
-  final int? synPps;
+  final pulumi.Input<int>? synPps;
 
   /// Creates a new [BgpPolicyContentSourceLimit].
   /// [bps] bps range 1024~268435456.
@@ -34,10 +35,10 @@ class BgpPolicyContentSourceLimit {
 
   factory BgpPolicyContentSourceLimit.fromMap(Map<String, dynamic> map) {
     return BgpPolicyContentSourceLimit(
-      bps: map['bps'] == null ? null : map['bps'] as int,
-      pps: map['pps'] == null ? null : map['pps'] as int,
-      synBps: map['synBps'] == null ? null : map['synBps'] as int,
-      synPps: map['synPps'] == null ? null : map['synPps'] as int,
+      bps: map['bps'] == null ? null : (map['bps'] as int).input(),
+      pps: map['pps'] == null ? null : (map['pps'] as int).input(),
+      synBps: map['synBps'] == null ? null : (map['synBps'] as int).input(),
+      synPps: map['synPps'] == null ? null : (map['synPps'] as int).input(),
     );
   }
 }

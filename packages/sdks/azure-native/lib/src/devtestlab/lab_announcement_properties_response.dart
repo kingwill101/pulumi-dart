@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a lab's announcement banner
 class LabAnnouncementPropertiesResponse {
   /// Is the lab announcement active/enabled at this time?
-  final String? enabled;
+  final pulumi.Input<String>? enabled;
   /// The time at which the announcement expires (null for never)
-  final String? expirationDate;
+  final pulumi.Input<String>? expirationDate;
   /// Has this announcement expired?
-  final bool? expired;
+  final pulumi.Input<bool>? expired;
   /// The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown.
-  final String? markdown;
+  final pulumi.Input<String>? markdown;
   /// The provisioning status of the resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The plain text title for the lab announcement
-  final String? title;
+  final pulumi.Input<String>? title;
   /// The unique immutable identifier of a resource (Guid).
-  final String uniqueIdentifier;
+  final pulumi.Input<String> uniqueIdentifier;
 
   /// Creates a new [LabAnnouncementPropertiesResponse].
   /// [enabled] Is the lab announcement active/enabled at this time?
@@ -50,13 +51,13 @@ class LabAnnouncementPropertiesResponse {
 
   factory LabAnnouncementPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LabAnnouncementPropertiesResponse(
-      enabled: map['enabled'] == null ? null : map['enabled'] as String,
-      expirationDate: map['expirationDate'] == null ? null : map['expirationDate'] as String,
-      expired: map['expired'] == null ? null : map['expired'] as bool,
-      markdown: map['markdown'] == null ? null : map['markdown'] as String,
-      provisioningState: map['provisioningState'] as String,
-      title: map['title'] == null ? null : map['title'] as String,
-      uniqueIdentifier: map['uniqueIdentifier'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      expired: map['expired'] == null ? null : (map['expired'] as bool).input(),
+      markdown: map['markdown'] == null ? null : (map['markdown'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
+      uniqueIdentifier: (map['uniqueIdentifier'] as String).input(),
     );
   }
 }

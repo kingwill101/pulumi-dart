@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Items in the MarketSetPrices array.
 class MarketSetPricesItems {
   /// The currency of the locked price value. Validation: Required. Must be a valid ISO 4217 3-letter currency code.
-  final String currency;
-  final List<String> markets;
+  final pulumi.Input<String> currency;
+  final pulumi.Input<List<String>> markets;
   /// The locked price for the priceable node. Validation: Required. Must be greater than or equal to 0. If the case of billing plans. This represents the price for each cycle charge.
-  final double value;
+  final pulumi.Input<double> value;
 
   /// Creates a new [MarketSetPricesItems].
   /// [currency] The currency of the locked price value. Validation: Required. Must be a valid ISO 4217 3-letter currency code.
@@ -29,9 +30,9 @@ class MarketSetPricesItems {
 
   factory MarketSetPricesItems.fromMap(Map<String, dynamic> map) {
     return MarketSetPricesItems(
-      currency: map['currency'] as String,
-      markets: (map['markets'] as List).cast<String>(),
-      value: map['value'] as double,
+      currency: (map['currency'] as String).input(),
+      markets: ((map['markets'] as List).cast<String>()).input(),
+      value: (map['value'] as double).input(),
     );
   }
 }

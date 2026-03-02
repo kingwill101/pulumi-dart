@@ -38,23 +38,15 @@ class TemplateArgs {
   /// [templateId] Identifier for the template.
   /// [versionDescription] A description of the current template version being created/updated.
   TemplateArgs({
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<TemplatePermission>>? permissions,
-    pulumi.Output<String>? region,
-    pulumi.Output<TemplateSourceEntity>? sourceEntity,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> templateId,
-    required pulumi.Output<String> versionDescription,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      permissions = pulumi.Input.asOptionalInput<List<TemplatePermission>>(permissions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceEntity = pulumi.Input.asOptionalInput<TemplateSourceEntity>(sourceEntity),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateId = pulumi.Input.asInput<String>(templateId),
-      versionDescription = pulumi.Input.asInput<String>(versionDescription);
+    this.awsAccountId,
+    this.name,
+    this.permissions,
+    this.region,
+    this.sourceEntity,
+    this.tags,
+    required this.templateId,
+    required this.versionDescription,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<List<TemplatePermission>>(pulumi.Input.decodeList<TemplatePermission>(map['permissions'], (value) => TemplatePermission.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceEntity: map['sourceEntity'] == null ? null : pulumi.Output.create<TemplateSourceEntity>(TemplateSourceEntity.fromMap((map['sourceEntity'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateId: pulumi.Output.create<String>(map['templateId'] as String),
-      versionDescription: pulumi.Output.create<String>(map['versionDescription'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<TemplatePermission>(map['permissions'], (value) => TemplatePermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceEntity: map['sourceEntity'] == null ? null : (TemplateSourceEntity.fromMap((map['sourceEntity'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateId: (map['templateId'] as String).input(),
+      versionDescription: (map['versionDescription'] as String).input(),
     );
   }
 }

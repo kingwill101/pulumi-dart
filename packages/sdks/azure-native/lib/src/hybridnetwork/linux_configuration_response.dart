@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ssh_configuration_response.dart';
 
 /// Specifies the Linux operating system settings on the virtual machine.
 class LinuxConfigurationResponse {
   /// Specifies the ssh key configuration for a Linux OS.
-  final SshConfigurationResponse? ssh;
+  final pulumi.Input<SshConfigurationResponse>? ssh;
 
   /// Creates a new [LinuxConfigurationResponse].
   /// [ssh] Specifies the ssh key configuration for a Linux OS.
@@ -15,13 +16,13 @@ class LinuxConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ssh': ?ssh == null ? null : ssh!.toMap(),
+      'ssh': ?pulumi.Input.mapOptionalInputValue<SshConfigurationResponse, Map<String, dynamic>>(ssh, (value) => value.toMap()),
     };
   }
 
   factory LinuxConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LinuxConfigurationResponse(
-      ssh: map['ssh'] == null ? null : SshConfigurationResponse.fromMap((map['ssh'] as Map).cast<String, dynamic>()),
+      ssh: map['ssh'] == null ? null : (SshConfigurationResponse.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

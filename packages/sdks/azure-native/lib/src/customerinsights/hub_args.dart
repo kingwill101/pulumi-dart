@@ -29,19 +29,13 @@ class HubArgs {
   /// [tags] Resource tags.
   /// [tenantFeatures] The bit flags for enabled hub features. Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1 is set to 1 indicates the hub is disabled, or enabled if set to 0.
   HubArgs({
-    pulumi.Output<HubBillingInfoFormat>? hubBillingInfo,
-    pulumi.Output<String>? hubName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? tenantFeatures,
-  }) :
-      hubBillingInfo = pulumi.Input.asOptionalInput<HubBillingInfoFormat>(hubBillingInfo),
-      hubName = pulumi.Input.asOptionalInput<String>(hubName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantFeatures = pulumi.Input.asOptionalInput<int>(tenantFeatures);
+    this.hubBillingInfo,
+    this.hubName,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    this.tenantFeatures,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class HubArgs {
 
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
-      hubBillingInfo: map['hubBillingInfo'] == null ? null : pulumi.Output.create<HubBillingInfoFormat>(HubBillingInfoFormat.fromMap((map['hubBillingInfo'] as Map).cast<String, dynamic>())),
-      hubName: map['hubName'] == null ? null : pulumi.Output.create<String>(map['hubName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantFeatures: map['tenantFeatures'] == null ? null : pulumi.Output.create<int>(map['tenantFeatures'] as int),
+      hubBillingInfo: map['hubBillingInfo'] == null ? null : (HubBillingInfoFormat.fromMap((map['hubBillingInfo'] as Map).cast<String, dynamic>())).input(),
+      hubName: map['hubName'] == null ? null : (map['hubName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantFeatures: map['tenantFeatures'] == null ? null : (map['tenantFeatures'] as int).input(),
     );
   }
 }

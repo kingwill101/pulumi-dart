@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Relationship properties
 class RelationshipPropertiesResponse {
   /// Resource name of the child entity
-  final String childEntityName;
+  final pulumi.Input<String> childEntityName;
   /// Date when the relationship was (soft-)deleted
-  final String deletionDate;
+  final pulumi.Input<String> deletionDate;
   /// Discovered by which discovery rule. If set, the relationship cannot be deleted manually.
-  final String discoveredBy;
+  final pulumi.Input<String> discoveredBy;
   /// Display name
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Resource name of the parent entity
-  final String parentEntityName;
+  final pulumi.Input<String> parentEntityName;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Optional set of labels (key-value pairs)
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [RelationshipPropertiesResponse].
   /// [childEntityName] Resource name of the child entity
@@ -50,13 +51,13 @@ class RelationshipPropertiesResponse {
 
   factory RelationshipPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RelationshipPropertiesResponse(
-      childEntityName: map['childEntityName'] as String,
-      deletionDate: map['deletionDate'] as String,
-      discoveredBy: map['discoveredBy'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      parentEntityName: map['parentEntityName'] as String,
-      provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      childEntityName: (map['childEntityName'] as String).input(),
+      deletionDate: (map['deletionDate'] as String).input(),
+      discoveredBy: (map['discoveredBy'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      parentEntityName: (map['parentEntityName'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

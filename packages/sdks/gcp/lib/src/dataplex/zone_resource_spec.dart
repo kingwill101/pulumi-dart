@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ZoneResourceSpec {
   /// Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
   ///
   /// - - -
-  final String locationType;
+  final pulumi.Input<String> locationType;
 
   /// Creates a new [ZoneResourceSpec].
   /// [locationType] Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
@@ -21,7 +22,7 @@ class ZoneResourceSpec {
 
   factory ZoneResourceSpec.fromMap(Map<String, dynamic> map) {
     return ZoneResourceSpec(
-      locationType: map['locationType'] as String,
+      locationType: (map['locationType'] as String).input(),
     );
   }
 }

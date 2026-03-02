@@ -34,23 +34,15 @@ class WorkforcePoolArgs {
   /// [sessionDuration] Duration that the Google Cloud access tokens, console sign-in sessions, and `gcloud` sign-in sessions from this pool are valid. Must be greater than 15 minutes (900s) and less than 12 hours (43200s). If `session_duration` is not configured, minted credentials have a default duration of one hour (3600s). For SAML providers, the lifetime of the token is the minimum of the `session_duration` and the `SessionNotOnOrAfter` claim in the SAML assertion.
   /// [workforcePoolId] The ID to use for the pool, which becomes the final component of the resource name. The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may not be specified.
   WorkforcePoolArgs({
-    pulumi.Output<AccessRestrictions>? accessRestrictions,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? sessionDuration,
-    pulumi.Output<String>? workforcePoolId,
-  }) :
-      accessRestrictions = pulumi.Input.asOptionalInput<AccessRestrictions>(accessRestrictions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      sessionDuration = pulumi.Input.asOptionalInput<String>(sessionDuration),
-      workforcePoolId = pulumi.Input.asOptionalInput<String>(workforcePoolId);
+    this.accessRestrictions,
+    this.description,
+    this.disabled,
+    this.displayName,
+    this.location,
+    this.parent,
+    this.sessionDuration,
+    this.workforcePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class WorkforcePoolArgs {
 
   factory WorkforcePoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolArgs(
-      accessRestrictions: map['accessRestrictions'] == null ? null : pulumi.Output.create<AccessRestrictions>(AccessRestrictions.fromMap((map['accessRestrictions'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      sessionDuration: map['sessionDuration'] == null ? null : pulumi.Output.create<String>(map['sessionDuration'] as String),
-      workforcePoolId: map['workforcePoolId'] == null ? null : pulumi.Output.create<String>(map['workforcePoolId'] as String),
+      accessRestrictions: map['accessRestrictions'] == null ? null : (AccessRestrictions.fromMap((map['accessRestrictions'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration'] as String).input(),
+      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId'] as String).input(),
     );
   }
 }

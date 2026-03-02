@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The request header options.
 class ResourceTypeRegistrationPropertiesRequestHeaderOptions {
   /// The opt in headers.
-  final String? optInHeaders;
+  final pulumi.Input<String>? optInHeaders;
   /// The opt out headers.
-  final String? optOutHeaders;
+  final pulumi.Input<String>? optOutHeaders;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesRequestHeaderOptions].
   /// [optInHeaders] The opt in headers.
@@ -25,8 +26,8 @@ class ResourceTypeRegistrationPropertiesRequestHeaderOptions {
 
   factory ResourceTypeRegistrationPropertiesRequestHeaderOptions.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesRequestHeaderOptions(
-      optInHeaders: map['optInHeaders'] == null ? null : map['optInHeaders'] as String,
-      optOutHeaders: map['optOutHeaders'] == null ? null : map['optOutHeaders'] as String,
+      optInHeaders: map['optInHeaders'] == null ? null : (map['optInHeaders'] as String).input(),
+      optOutHeaders: map['optOutHeaders'] == null ? null : (map['optOutHeaders'] as String).input(),
     );
   }
 }

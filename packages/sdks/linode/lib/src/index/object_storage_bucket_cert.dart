@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ObjectStorageBucketCert {
   /// The Base64 encoded and PEM formatted SSL certificate.
-  final String certificate;
+  final pulumi.Input<String> certificate;
   /// The private key associated with the TLS/SSL certificate.
-  final String privateKey;
+  final pulumi.Input<String> privateKey;
 
   /// Creates a new [ObjectStorageBucketCert].
   /// [certificate] The Base64 encoded and PEM formatted SSL certificate.
@@ -24,8 +25,8 @@ class ObjectStorageBucketCert {
 
   factory ObjectStorageBucketCert.fromMap(Map<String, dynamic> map) {
     return ObjectStorageBucketCert(
-      certificate: map['certificate'] as String,
-      privateKey: map['privateKey'] as String,
+      certificate: (map['certificate'] as String).input(),
+      privateKey: (map['privateKey'] as String).input(),
     );
   }
 }

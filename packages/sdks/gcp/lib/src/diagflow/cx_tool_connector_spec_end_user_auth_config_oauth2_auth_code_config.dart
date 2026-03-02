@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig {
   /// Oauth token value or parameter name to pass it through.
-  final String oauthToken;
+  final pulumi.Input<String> oauthToken;
 
   /// Creates a new [CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig].
   /// [oauthToken] Oauth token value or parameter name to pass it through.
@@ -19,7 +20,7 @@ class CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig {
 
   factory CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig.fromMap(Map<String, dynamic> map) {
     return CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig(
-      oauthToken: map['oauthToken'] as String,
+      oauthToken: (map['oauthToken'] as String).input(),
     );
   }
 }

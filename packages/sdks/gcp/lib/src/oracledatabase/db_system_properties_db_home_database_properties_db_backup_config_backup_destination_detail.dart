@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail {
   /// The type of the database backup destination.
@@ -9,7 +10,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationD
   /// OBJECT_STORE
   /// LOCAL
   /// DBRS
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail].
   /// [type] The type of the database backup destination.
@@ -25,7 +26,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationD
 
   factory DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

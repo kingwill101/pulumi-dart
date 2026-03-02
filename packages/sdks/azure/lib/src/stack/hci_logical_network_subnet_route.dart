@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HciLogicalNetworkSubnetRoute {
   /// The Address in CIDR notation. Changing this forces a new resource to be created.
-  final String addressPrefix;
+  final pulumi.Input<String> addressPrefix;
   /// The name of the route. Changing this forces a new resource to be created.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The IPv4 address of the next hop. Changing this forces a new resource to be created.
-  final String nextHopIpAddress;
+  final pulumi.Input<String> nextHopIpAddress;
 
   /// Creates a new [HciLogicalNetworkSubnetRoute].
   /// [addressPrefix] The Address in CIDR notation. Changing this forces a new resource to be created.
@@ -29,9 +30,9 @@ class HciLogicalNetworkSubnetRoute {
 
   factory HciLogicalNetworkSubnetRoute.fromMap(Map<String, dynamic> map) {
     return HciLogicalNetworkSubnetRoute(
-      addressPrefix: map['addressPrefix'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      nextHopIpAddress: map['nextHopIpAddress'] as String,
+      addressPrefix: (map['addressPrefix'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nextHopIpAddress: (map['nextHopIpAddress'] as String).input(),
     );
   }
 }

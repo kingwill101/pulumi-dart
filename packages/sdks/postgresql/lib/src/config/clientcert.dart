@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Clientcert {
   /// The SSL client certificate file path. The file must contain PEM encoded data.
-  final String cert;
+  final pulumi.Input<String> cert;
   /// The SSL client certificate private key file path. The file must contain PEM encoded data.
-  final String key;
+  final pulumi.Input<String> key;
   /// Must be set to true if you are inlining the cert/key instead of using a file path.
-  final bool? sslinline;
+  final pulumi.Input<bool>? sslinline;
 
   /// Creates a new [Clientcert].
   /// [cert] The SSL client certificate file path. The file must contain PEM encoded data.
@@ -29,9 +30,9 @@ class Clientcert {
 
   factory Clientcert.fromMap(Map<String, dynamic> map) {
     return Clientcert(
-      cert: map['cert'] as String,
-      key: map['key'] as String,
-      sslinline: map['sslinline'] == null ? null : map['sslinline'] as bool,
+      cert: (map['cert'] as String).input(),
+      key: (map['key'] as String).input(),
+      sslinline: map['sslinline'] == null ? null : (map['sslinline'] as bool).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetResourceManagementPrivateLinkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [rmplName] The name of the resource management private link.
   GetResourceManagementPrivateLinkArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> rmplName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rmplName = pulumi.Input.asInput<String>(rmplName);
+    required this.resourceGroupName,
+    required this.rmplName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResourceManagementPrivateLinkArgs {
 
   factory GetResourceManagementPrivateLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceManagementPrivateLinkArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rmplName: pulumi.Output.create<String>(map['rmplName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rmplName: (map['rmplName'] as String).input(),
     );
   }
 }

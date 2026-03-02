@@ -44,27 +44,17 @@ class TargetArgs {
   /// [topologies] Defines the device topology for a target or instance.
   /// [version] Version of the particular resource.
   TargetArgs({
-    pulumi.Output<List<ComponentProperties>>? components,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<ReconciliationPolicy>? reconciliationPolicy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scope,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<TopologiesProperties>>? topologies,
-    pulumi.Output<String>? version,
-  }) :
-      components = pulumi.Input.asOptionalInput<List<ComponentProperties>>(components),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      reconciliationPolicy = pulumi.Input.asOptionalInput<ReconciliationPolicy>(reconciliationPolicy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      topologies = pulumi.Input.asOptionalInput<List<TopologiesProperties>>(topologies),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.components,
+    required this.extendedLocation,
+    this.location,
+    this.name,
+    this.reconciliationPolicy,
+    required this.resourceGroupName,
+    this.scope,
+    this.tags,
+    this.topologies,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      components: map['components'] == null ? null : pulumi.Output.create<List<ComponentProperties>>(pulumi.Input.decodeList<ComponentProperties>(map['components'], (value) => ComponentProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : pulumi.Output.create<ReconciliationPolicy>(ReconciliationPolicy.fromMap((map['reconciliationPolicy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      topologies: map['topologies'] == null ? null : pulumi.Output.create<List<TopologiesProperties>>(pulumi.Input.decodeList<TopologiesProperties>(map['topologies'], (value) => TopologiesProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      components: map['components'] == null ? null : (pulumi.Input.decodeList<ComponentProperties>(map['components'], (value) => ComponentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicy.fromMap((map['reconciliationPolicy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      topologies: map['topologies'] == null ? null : (pulumi.Input.decodeList<TopologiesProperties>(map['topologies'], (value) => TopologiesProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetFleetTierArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tierName] Name of the tier.
   GetFleetTierArgs({
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> tierName,
-  }) :
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tierName = pulumi.Input.asInput<String>(tierName);
+    required this.fleetName,
+    required this.resourceGroupName,
+    required this.tierName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFleetTierArgs {
 
   factory GetFleetTierArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetTierArgs(
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tierName: pulumi.Output.create<String>(map['tierName'] as String),
+      fleetName: (map['fleetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tierName: (map['tierName'] as String).input(),
     );
   }
 }

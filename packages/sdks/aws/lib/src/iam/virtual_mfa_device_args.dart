@@ -19,13 +19,10 @@ class VirtualMfaDeviceArgs {
   /// [tags] Map of resource tags for the virtual mfa device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [virtualMfaDeviceName] Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
   VirtualMfaDeviceArgs({
-    pulumi.Output<String>? path,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualMfaDeviceName,
-  }) :
-      path = pulumi.Input.asOptionalInput<String>(path),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualMfaDeviceName = pulumi.Input.asInput<String>(virtualMfaDeviceName);
+    this.path,
+    this.tags,
+    required this.virtualMfaDeviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VirtualMfaDeviceArgs {
 
   factory VirtualMfaDeviceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMfaDeviceArgs(
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualMfaDeviceName: pulumi.Output.create<String>(map['virtualMfaDeviceName'] as String),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualMfaDeviceName: (map['virtualMfaDeviceName'] as String).input(),
     );
   }
 }

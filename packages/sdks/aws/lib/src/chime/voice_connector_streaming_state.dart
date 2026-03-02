@@ -26,19 +26,13 @@ class VoiceConnectorStreamingState {
   /// [streamingNotificationTargets] The streaming notification targets. Valid Values: `EventBridge | SNS | SQS`
   /// [voiceConnectorId] The Amazon Chime Voice Connector ID.
   VoiceConnectorStreamingState({
-    pulumi.Output<int>? dataRetention,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<VoiceConnectorStreamingMediaInsightsConfiguration>? mediaInsightsConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? streamingNotificationTargets,
-    pulumi.Output<String>? voiceConnectorId,
-  }) :
-      dataRetention = pulumi.Input.asOptionalInput<int>(dataRetention),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      mediaInsightsConfiguration = pulumi.Input.asOptionalInput<VoiceConnectorStreamingMediaInsightsConfiguration>(mediaInsightsConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      streamingNotificationTargets = pulumi.Input.asOptionalInput<List<String>>(streamingNotificationTargets),
-      voiceConnectorId = pulumi.Input.asOptionalInput<String>(voiceConnectorId);
+    this.dataRetention,
+    this.disabled,
+    this.mediaInsightsConfiguration,
+    this.region,
+    this.streamingNotificationTargets,
+    this.voiceConnectorId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class VoiceConnectorStreamingState {
 
   factory VoiceConnectorStreamingState.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorStreamingState(
-      dataRetention: map['dataRetention'] == null ? null : pulumi.Output.create<int>(map['dataRetention'] as int),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      mediaInsightsConfiguration: map['mediaInsightsConfiguration'] == null ? null : pulumi.Output.create<VoiceConnectorStreamingMediaInsightsConfiguration>(VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((map['mediaInsightsConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      streamingNotificationTargets: map['streamingNotificationTargets'] == null ? null : pulumi.Output.create<List<String>>((map['streamingNotificationTargets'] as List).cast<String>()),
-      voiceConnectorId: map['voiceConnectorId'] == null ? null : pulumi.Output.create<String>(map['voiceConnectorId'] as String),
+      dataRetention: map['dataRetention'] == null ? null : (map['dataRetention'] as int).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      mediaInsightsConfiguration: map['mediaInsightsConfiguration'] == null ? null : (VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((map['mediaInsightsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      streamingNotificationTargets: map['streamingNotificationTargets'] == null ? null : ((map['streamingNotificationTargets'] as List).cast<String>()).input(),
+      voiceConnectorId: map['voiceConnectorId'] == null ? null : (map['voiceConnectorId'] as String).input(),
     );
   }
 }

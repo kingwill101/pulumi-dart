@@ -13,11 +13,9 @@ class UserPoliciesExclusiveState {
   /// [policyNames] A list of inline policy names to be assigned to the user. Policies attached to this user but not configured in this argument will be removed.
   /// [userName] IAM user name.
   UserPoliciesExclusiveState({
-    pulumi.Output<List<String>>? policyNames,
-    pulumi.Output<String>? userName,
-  }) :
-      policyNames = pulumi.Input.asOptionalInput<List<String>>(policyNames),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.policyNames,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class UserPoliciesExclusiveState {
 
   factory UserPoliciesExclusiveState.fromMap(Map<String, dynamic> map) {
     return UserPoliciesExclusiveState(
-      policyNames: map['policyNames'] == null ? null : pulumi.Output.create<List<String>>((map['policyNames'] as List).cast<String>()),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      policyNames: map['policyNames'] == null ? null : ((map['policyNames'] as List).cast<String>()).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

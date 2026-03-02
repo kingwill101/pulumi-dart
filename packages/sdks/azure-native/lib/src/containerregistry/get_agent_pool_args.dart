@@ -19,13 +19,10 @@ class GetAgentPoolArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
   GetAgentPoolArgs({
-    required pulumi.Output<String> agentPoolName,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      agentPoolName = pulumi.Input.asInput<String>(agentPoolName),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.agentPoolName,
+    required this.registryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAgentPoolArgs {
 
   factory GetAgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentPoolArgs(
-      agentPoolName: pulumi.Output.create<String>(map['agentPoolName'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      agentPoolName: (map['agentPoolName'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

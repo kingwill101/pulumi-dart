@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The parameters to provide for the Slack channel.
 class SlackChannelProperties {
   /// The Slack client id
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// Whether this channel is enabled for the bot
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
   /// The Slack landing page Url
-  final String? landingPageUrl;
+  final pulumi.Input<String>? landingPageUrl;
   /// Whether to register the settings before OAuth validation is performed. Recommended to True.
-  final bool? registerBeforeOAuthFlow;
+  final pulumi.Input<bool>? registerBeforeOAuthFlow;
   /// The Slack permission scopes.
-  final String? scopes;
+  final pulumi.Input<String>? scopes;
   /// The Slack signing secret.
-  final String? signingSecret;
+  final pulumi.Input<String>? signingSecret;
   /// The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
-  final String? verificationToken;
+  final pulumi.Input<String>? verificationToken;
 
   /// Creates a new [SlackChannelProperties].
   /// [clientId] The Slack client id
@@ -55,14 +56,14 @@ class SlackChannelProperties {
 
   factory SlackChannelProperties.fromMap(Map<String, dynamic> map) {
     return SlackChannelProperties(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      isEnabled: map['isEnabled'] as bool,
-      landingPageUrl: map['landingPageUrl'] == null ? null : map['landingPageUrl'] as String,
-      registerBeforeOAuthFlow: map['registerBeforeOAuthFlow'] == null ? null : map['registerBeforeOAuthFlow'] as bool,
-      scopes: map['scopes'] == null ? null : map['scopes'] as String,
-      signingSecret: map['signingSecret'] == null ? null : map['signingSecret'] as String,
-      verificationToken: map['verificationToken'] == null ? null : map['verificationToken'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      isEnabled: (map['isEnabled'] as bool).input(),
+      landingPageUrl: map['landingPageUrl'] == null ? null : (map['landingPageUrl'] as String).input(),
+      registerBeforeOAuthFlow: map['registerBeforeOAuthFlow'] == null ? null : (map['registerBeforeOAuthFlow'] as bool).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
+      signingSecret: map['signingSecret'] == null ? null : (map['signingSecret'] as String).input(),
+      verificationToken: map['verificationToken'] == null ? null : (map['verificationToken'] as String).input(),
     );
   }
 }

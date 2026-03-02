@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_assessment_schedule.dart';
 
 class VirtualMachineAssessment {
   /// Should Assessment be enabled? Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Should Assessment be run immediately? Defaults to `false`.
-  final bool? runImmediately;
+  final pulumi.Input<bool>? runImmediately;
   /// An `schedule` block as defined below.
-  final VirtualMachineAssessmentSchedule? schedule;
+  final pulumi.Input<VirtualMachineAssessmentSchedule>? schedule;
 
   /// Creates a new [VirtualMachineAssessment].
   /// [enabled] Should Assessment be enabled? Defaults to `true`.
@@ -24,15 +25,15 @@ class VirtualMachineAssessment {
     return <String, dynamic>{
       'enabled': ?enabled,
       'runImmediately': ?runImmediately,
-      'schedule': ?schedule == null ? null : schedule!.toMap(),
+      'schedule': ?pulumi.Input.mapOptionalInputValue<VirtualMachineAssessmentSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineAssessment.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAssessment(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      runImmediately: map['runImmediately'] == null ? null : map['runImmediately'] as bool,
-      schedule: map['schedule'] == null ? null : VirtualMachineAssessmentSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      runImmediately: map['runImmediately'] == null ? null : (map['runImmediately'] as bool).input(),
+      schedule: map['schedule'] == null ? null : (VirtualMachineAssessmentSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

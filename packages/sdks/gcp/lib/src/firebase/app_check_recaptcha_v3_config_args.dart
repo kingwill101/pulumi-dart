@@ -28,15 +28,11 @@ class AppCheckRecaptchaV3ConfigArgs {
   /// [siteSecret] The site secret used to identify your service for reCAPTCHA v3 verification.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from reCAPTCHA V3 artifacts will be valid.
   AppCheckRecaptchaV3ConfigArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> siteSecret,
-    pulumi.Output<String>? tokenTtl,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteSecret = pulumi.Input.asInput<String>(siteSecret),
-      tokenTtl = pulumi.Input.asOptionalInput<String>(tokenTtl);
+    required this.appId,
+    this.project,
+    required this.siteSecret,
+    this.tokenTtl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class AppCheckRecaptchaV3ConfigArgs {
 
   factory AppCheckRecaptchaV3ConfigArgs.fromMap(Map<String, dynamic> map) {
     return AppCheckRecaptchaV3ConfigArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      siteSecret: pulumi.Output.create<String>(map['siteSecret'] as String),
-      tokenTtl: map['tokenTtl'] == null ? null : pulumi.Output.create<String>(map['tokenTtl'] as String),
+      appId: (map['appId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      siteSecret: (map['siteSecret'] as String).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
     );
   }
 }

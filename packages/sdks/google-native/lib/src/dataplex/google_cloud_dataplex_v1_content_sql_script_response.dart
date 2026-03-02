@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for the Sql Script content.
 class GoogleCloudDataplexV1ContentSqlScriptResponse {
   /// Query Engine to be used for the Sql Query.
-  final String engine;
+  final pulumi.Input<String> engine;
 
   /// Creates a new [GoogleCloudDataplexV1ContentSqlScriptResponse].
   /// [engine] Query Engine to be used for the Sql Query.
@@ -20,7 +21,7 @@ class GoogleCloudDataplexV1ContentSqlScriptResponse {
 
   factory GoogleCloudDataplexV1ContentSqlScriptResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ContentSqlScriptResponse(
-      engine: map['engine'] as String,
+      engine: (map['engine'] as String).input(),
     );
   }
 }

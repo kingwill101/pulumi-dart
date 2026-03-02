@@ -5,19 +5,19 @@ import 'plan_workflow_step_global_aurora_config_ungraceful.dart';
 
 class PlanWorkflowStepGlobalAuroraConfig {
   /// Behavior for Aurora operations. Valid values: `switchoverOnly`, `failover`.
-  final String behavior;
+  final pulumi.Input<String> behavior;
   /// ARN of the cross-account role to assume.
-  final String? crossAccountRole;
+  final pulumi.Input<String>? crossAccountRole;
   /// List of database cluster ARNs.
-  final List<String> databaseClusterArns;
+  final pulumi.Input<List<String>> databaseClusterArns;
   /// External ID for cross-account role assumption.
-  final String? externalId;
+  final pulumi.Input<String>? externalId;
   /// Global cluster identifier.
-  final String globalClusterIdentifier;
+  final pulumi.Input<String> globalClusterIdentifier;
   /// Timeout in minutes.
-  final int? timeoutMinutes;
+  final pulumi.Input<int>? timeoutMinutes;
   /// Ungraceful behavior configuration. See Ungraceful Aurora below.
-  final List<PlanWorkflowStepGlobalAuroraConfigUngraceful>? ungracefuls;
+  final pulumi.Input<List<PlanWorkflowStepGlobalAuroraConfigUngraceful>>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepGlobalAuroraConfig].
   /// [behavior] Behavior for Aurora operations. Valid values: `switchoverOnly`, `failover`.
@@ -45,19 +45,19 @@ class PlanWorkflowStepGlobalAuroraConfig {
       'externalId': ?externalId,
       'globalClusterIdentifier': globalClusterIdentifier,
       'timeoutMinutes': ?timeoutMinutes,
-      'ungracefuls': ?ungracefuls == null ? null : pulumi.Input.encodeList<PlanWorkflowStepGlobalAuroraConfigUngraceful, Map<String, dynamic>>(ungracefuls!, (value) => value.toMap()),
+      'ungracefuls': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepGlobalAuroraConfigUngraceful>, List<Map<String, dynamic>>>(ungracefuls, (value) => pulumi.Input.encodeList<PlanWorkflowStepGlobalAuroraConfigUngraceful, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PlanWorkflowStepGlobalAuroraConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepGlobalAuroraConfig(
-      behavior: map['behavior'] as String,
-      crossAccountRole: map['crossAccountRole'] == null ? null : map['crossAccountRole'] as String,
-      databaseClusterArns: (map['databaseClusterArns'] as List).cast<String>(),
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
-      globalClusterIdentifier: map['globalClusterIdentifier'] as String,
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
-      ungracefuls: map['ungracefuls'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStepGlobalAuroraConfigUngraceful>(map['ungracefuls'], (value) => PlanWorkflowStepGlobalAuroraConfigUngraceful.fromMap((value as Map).cast<String, dynamic>())),
+      behavior: (map['behavior'] as String).input(),
+      crossAccountRole: map['crossAccountRole'] == null ? null : (map['crossAccountRole'] as String).input(),
+      databaseClusterArns: ((map['databaseClusterArns'] as List).cast<String>()).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      globalClusterIdentifier: (map['globalClusterIdentifier'] as String).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
+      ungracefuls: map['ungracefuls'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepGlobalAuroraConfigUngraceful>(map['ungracefuls'], (value) => PlanWorkflowStepGlobalAuroraConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

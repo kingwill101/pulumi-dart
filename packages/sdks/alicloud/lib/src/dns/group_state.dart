@@ -10,9 +10,8 @@ class GroupState {
   /// Creates a new [GroupState].
   /// [name] Name of the domain group.
   GroupState({
-    pulumi.Output<String>? name,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

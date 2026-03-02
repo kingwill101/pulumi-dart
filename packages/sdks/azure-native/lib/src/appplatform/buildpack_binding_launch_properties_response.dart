@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Buildpack Binding Launch Properties
 class BuildpackBindingLaunchPropertiesResponse {
   /// Non-sensitive properties for launchProperties
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Sensitive properties for launchProperties
-  final Map<String, String>? secrets;
+  final pulumi.Input<Map<String, String>>? secrets;
 
   /// Creates a new [BuildpackBindingLaunchPropertiesResponse].
   /// [properties] Non-sensitive properties for launchProperties
@@ -25,8 +26,8 @@ class BuildpackBindingLaunchPropertiesResponse {
 
   factory BuildpackBindingLaunchPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BuildpackBindingLaunchPropertiesResponse(
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      secrets: map['secrets'] == null ? null : (map['secrets'] as Map).cast<String, String>(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      secrets: map['secrets'] == null ? null : ((map['secrets'] as Map).cast<String, String>()).input(),
     );
   }
 }

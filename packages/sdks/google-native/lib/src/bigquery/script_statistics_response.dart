@@ -5,9 +5,9 @@ import 'script_stack_frame_response.dart';
 
 class ScriptStatisticsResponse {
   /// Whether this child job was a statement or expression.
-  final String evaluationKind;
+  final pulumi.Input<String> evaluationKind;
   /// Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
-  final List<ScriptStackFrameResponse> stackFrames;
+  final pulumi.Input<List<ScriptStackFrameResponse>> stackFrames;
 
   /// Creates a new [ScriptStatisticsResponse].
   /// [evaluationKind] Whether this child job was a statement or expression.
@@ -20,14 +20,14 @@ class ScriptStatisticsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'evaluationKind': evaluationKind,
-      'stackFrames': pulumi.Input.encodeList<ScriptStackFrameResponse, Map<String, dynamic>>(stackFrames, (value) => value.toMap()),
+      'stackFrames': pulumi.Input.mapInputValue<List<ScriptStackFrameResponse>, List<Map<String, dynamic>>>(stackFrames, (value) => pulumi.Input.encodeList<ScriptStackFrameResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ScriptStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return ScriptStatisticsResponse(
-      evaluationKind: map['evaluationKind'] as String,
-      stackFrames: pulumi.Input.decodeList<ScriptStackFrameResponse>(map['stackFrames'], (value) => ScriptStackFrameResponse.fromMap((value as Map).cast<String, dynamic>())),
+      evaluationKind: (map['evaluationKind'] as String).input(),
+      stackFrames: (pulumi.Input.decodeList<ScriptStackFrameResponse>(map['stackFrames'], (value) => ScriptStackFrameResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

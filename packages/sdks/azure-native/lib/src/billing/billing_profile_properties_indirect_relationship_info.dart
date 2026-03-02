@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
 class BillingProfilePropertiesIndirectRelationshipInfo {
   /// The billing account name of the partner or the customer for an indirect motion.
-  final String? billingAccountName;
+  final pulumi.Input<String>? billingAccountName;
   /// The billing profile name of the partner or the customer for an indirect motion.
-  final String? billingProfileName;
+  final pulumi.Input<String>? billingProfileName;
   /// The display name of the partner or customer for an indirect motion.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Creates a new [BillingProfilePropertiesIndirectRelationshipInfo].
   /// [billingAccountName] The billing account name of the partner or the customer for an indirect motion.
@@ -30,9 +31,9 @@ class BillingProfilePropertiesIndirectRelationshipInfo {
 
   factory BillingProfilePropertiesIndirectRelationshipInfo.fromMap(Map<String, dynamic> map) {
     return BillingProfilePropertiesIndirectRelationshipInfo(
-      billingAccountName: map['billingAccountName'] == null ? null : map['billingAccountName'] as String,
-      billingProfileName: map['billingProfileName'] == null ? null : map['billingProfileName'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      billingAccountName: map['billingAccountName'] == null ? null : (map['billingAccountName'] as String).input(),
+      billingProfileName: map['billingProfileName'] == null ? null : (map['billingProfileName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
     );
   }
 }

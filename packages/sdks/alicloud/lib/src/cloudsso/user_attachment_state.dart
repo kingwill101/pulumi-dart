@@ -16,13 +16,10 @@ class UserAttachmentState {
   /// [groupId] The ID of the group.
   /// [userId] The ID of the user.
   UserAttachmentState({
-    pulumi.Output<String>? directoryId,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? userId,
-  }) :
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.directoryId,
+    this.groupId,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class UserAttachmentState {
 
   factory UserAttachmentState.fromMap(Map<String, dynamic> map) {
     return UserAttachmentState(
-      directoryId: map['directoryId'] == null ? null : pulumi.Output.create<String>(map['directoryId'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

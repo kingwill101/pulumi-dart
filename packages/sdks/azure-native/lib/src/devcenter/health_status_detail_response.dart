@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Pool health status detail.
 class HealthStatusDetailResponse {
   /// An identifier for the issue.
-  final String code;
+  final pulumi.Input<String> code;
   /// A message describing the issue, intended to be suitable for display in a user interface
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [HealthStatusDetailResponse].
   /// [code] An identifier for the issue.
@@ -25,8 +26,8 @@ class HealthStatusDetailResponse {
 
   factory HealthStatusDetailResponse.fromMap(Map<String, dynamic> map) {
     return HealthStatusDetailResponse(
-      code: map['code'] as String,
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

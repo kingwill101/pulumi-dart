@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_service_connect_configuration_service_tls_issuer_cert_authority.dart';
 
 class ServiceServiceConnectConfigurationServiceTls {
   /// Details of the certificate authority which will issue the certificate.
-  final ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority issuerCertAuthority;
+  final pulumi.Input<ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority> issuerCertAuthority;
   /// KMS key used to encrypt the private key in Secrets Manager.
-  final String? kmsKey;
+  final pulumi.Input<String>? kmsKey;
   /// ARN of the IAM Role that's associated with the Service Connect TLS.
-  final String? roleArn;
+  final pulumi.Input<String>? roleArn;
 
   /// Creates a new [ServiceServiceConnectConfigurationServiceTls].
   /// [issuerCertAuthority] Details of the certificate authority which will issue the certificate.
@@ -22,7 +23,7 @@ class ServiceServiceConnectConfigurationServiceTls {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'issuerCertAuthority': issuerCertAuthority.toMap(),
+      'issuerCertAuthority': pulumi.Input.mapInputValue<ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority, Map<String, dynamic>>(issuerCertAuthority, (value) => value.toMap()),
       'kmsKey': ?kmsKey,
       'roleArn': ?roleArn,
     };
@@ -30,9 +31,9 @@ class ServiceServiceConnectConfigurationServiceTls {
 
   factory ServiceServiceConnectConfigurationServiceTls.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceTls(
-      issuerCertAuthority: ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority.fromMap((map['issuerCertAuthority'] as Map).cast<String, dynamic>()),
-      kmsKey: map['kmsKey'] == null ? null : map['kmsKey'] as String,
-      roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
+      issuerCertAuthority: (ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority.fromMap((map['issuerCertAuthority'] as Map).cast<String, dynamic>())).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetEvidenceArgs {
   /// [evidenceName] The evidence name.
   /// [reportName] Report Name.
   GetEvidenceArgs({
-    required pulumi.Output<String> evidenceName,
-    required pulumi.Output<String> reportName,
-  }) :
-      evidenceName = pulumi.Input.asInput<String>(evidenceName),
-      reportName = pulumi.Input.asInput<String>(reportName);
+    required this.evidenceName,
+    required this.reportName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEvidenceArgs {
 
   factory GetEvidenceArgs.fromMap(Map<String, dynamic> map) {
     return GetEvidenceArgs(
-      evidenceName: pulumi.Output.create<String>(map['evidenceName'] as String),
-      reportName: pulumi.Output.create<String>(map['reportName'] as String),
+      evidenceName: (map['evidenceName'] as String).input(),
+      reportName: (map['reportName'] as String).input(),
     );
   }
 }

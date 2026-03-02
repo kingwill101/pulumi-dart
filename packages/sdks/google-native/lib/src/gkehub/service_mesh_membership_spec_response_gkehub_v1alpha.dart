@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// **Service Mesh**: Spec for a single Membership for the servicemesh feature
 class ServiceMeshMembershipSpecResponseGkehubV1alpha {
   /// Deprecated: use `management` instead Enables automatic control plane management.
-  final String controlPlane;
+  final pulumi.Input<String> controlPlane;
   /// Determines which release channel to use for default injection and service mesh APIs.
-  final String defaultChannel;
+  final pulumi.Input<String> defaultChannel;
   /// Enables automatic Service Mesh management.
-  final String management;
+  final pulumi.Input<String> management;
 
   /// Creates a new [ServiceMeshMembershipSpecResponseGkehubV1alpha].
   /// [controlPlane] Deprecated: use `management` instead Enables automatic control plane management.
@@ -30,9 +31,9 @@ class ServiceMeshMembershipSpecResponseGkehubV1alpha {
 
   factory ServiceMeshMembershipSpecResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMembershipSpecResponseGkehubV1alpha(
-      controlPlane: map['controlPlane'] as String,
-      defaultChannel: map['defaultChannel'] as String,
-      management: map['management'] as String,
+      controlPlane: (map['controlPlane'] as String).input(),
+      defaultChannel: (map['defaultChannel'] as String).input(),
+      management: (map['management'] as String).input(),
     );
   }
 }

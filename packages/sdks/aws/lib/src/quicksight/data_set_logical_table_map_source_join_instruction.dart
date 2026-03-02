@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_set_logical_table_map_source_join_instruction_left_join_key_properties.dart';
 import 'data_set_logical_table_map_source_join_instruction_right_join_key_properties.dart';
 
 class DataSetLogicalTableMapSourceJoinInstruction {
   /// Join key properties of the left operand. See left_join_key_properties.
-  final DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties? leftJoinKeyProperties;
+  final pulumi.Input<DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties>? leftJoinKeyProperties;
   /// Operand on the left side of a join.
-  final String leftOperand;
+  final pulumi.Input<String> leftOperand;
   /// Join instructions provided in the ON clause of a join.
-  final String onClause;
+  final pulumi.Input<String> onClause;
   /// Join key properties of the right operand. See right_join_key_properties.
-  final DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties? rightJoinKeyProperties;
+  final pulumi.Input<DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties>? rightJoinKeyProperties;
   /// Operand on the right side of a join.
-  final String rightOperand;
+  final pulumi.Input<String> rightOperand;
   /// Type of join. Valid values are `INNER`, `OUTER`, `LEFT`, and `RIGHT`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DataSetLogicalTableMapSourceJoinInstruction].
   /// [leftJoinKeyProperties] Join key properties of the left operand. See left_join_key_properties.
@@ -35,10 +36,10 @@ class DataSetLogicalTableMapSourceJoinInstruction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'leftJoinKeyProperties': ?leftJoinKeyProperties == null ? null : leftJoinKeyProperties!.toMap(),
+      'leftJoinKeyProperties': ?pulumi.Input.mapOptionalInputValue<DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties, Map<String, dynamic>>(leftJoinKeyProperties, (value) => value.toMap()),
       'leftOperand': leftOperand,
       'onClause': onClause,
-      'rightJoinKeyProperties': ?rightJoinKeyProperties == null ? null : rightJoinKeyProperties!.toMap(),
+      'rightJoinKeyProperties': ?pulumi.Input.mapOptionalInputValue<DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties, Map<String, dynamic>>(rightJoinKeyProperties, (value) => value.toMap()),
       'rightOperand': rightOperand,
       'type': type,
     };
@@ -46,12 +47,12 @@ class DataSetLogicalTableMapSourceJoinInstruction {
 
   factory DataSetLogicalTableMapSourceJoinInstruction.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapSourceJoinInstruction(
-      leftJoinKeyProperties: map['leftJoinKeyProperties'] == null ? null : DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties.fromMap((map['leftJoinKeyProperties'] as Map).cast<String, dynamic>()),
-      leftOperand: map['leftOperand'] as String,
-      onClause: map['onClause'] as String,
-      rightJoinKeyProperties: map['rightJoinKeyProperties'] == null ? null : DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties.fromMap((map['rightJoinKeyProperties'] as Map).cast<String, dynamic>()),
-      rightOperand: map['rightOperand'] as String,
-      type: map['type'] as String,
+      leftJoinKeyProperties: map['leftJoinKeyProperties'] == null ? null : (DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties.fromMap((map['leftJoinKeyProperties'] as Map).cast<String, dynamic>())).input(),
+      leftOperand: (map['leftOperand'] as String).input(),
+      onClause: (map['onClause'] as String).input(),
+      rightJoinKeyProperties: map['rightJoinKeyProperties'] == null ? null : (DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties.fromMap((map['rightJoinKeyProperties'] as Map).cast<String, dynamic>())).input(),
+      rightOperand: (map['rightOperand'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

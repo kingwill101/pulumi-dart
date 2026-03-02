@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional options to customize the fetching of the Helm chart.
 class FetchOpts {
   /// Verify certificates of HTTPS-enabled servers using this CA bundle.
-  final String? caFile;
+  final pulumi.Input<String>? caFile;
   /// Identify HTTPS client using this SSL certificate file.
-  final String? certFile;
+  final pulumi.Input<String>? certFile;
   /// Location to write the chart. If this and tardir are specified, tardir is appended to this (default ".").
-  final String? destination;
+  final pulumi.Input<String>? destination;
   /// Use development versions, too. Equivalent to version '>0.0.0-0'. If –version is set, this is ignored.
-  final bool? devel;
+  final pulumi.Input<bool>? devel;
   /// Location of your Helm config. Overrides $HELM_HOME (default "/Users/abc/.helm").
-  final String? home;
+  final pulumi.Input<String>? home;
   /// Identify HTTPS client using this SSL key file.
-  final String? keyFile;
+  final pulumi.Input<String>? keyFile;
   /// Keyring containing public keys (default “/Users/abc/.gnupg/pubring.gpg”).
-  final String? keyring;
+  final pulumi.Input<String>? keyring;
   /// Chart repository password.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Fetch the provenance file, but don’t perform verification.
-  final String? prov;
+  final pulumi.Input<String>? prov;
   /// Chart repository url where to locate the requested chart.
-  final String? repo;
+  final pulumi.Input<String>? repo;
   /// If set to false, will leave the chart as a tarball after downloading.
-  final bool? untar;
+  final pulumi.Input<bool>? untar;
   /// If untar is specified, this flag specifies the name of the directory into which the chart is expanded (default ".").
-  final String? untardir;
+  final pulumi.Input<String>? untardir;
   /// Chart repository username.
-  final String? username;
+  final pulumi.Input<String>? username;
   /// Verify the package against its signature.
-  final bool? verify;
+  final pulumi.Input<bool>? verify;
   /// Specific version of a chart. Without this, the latest version is fetched.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [FetchOpts].
   /// [caFile] Verify certificates of HTTPS-enabled servers using this CA bundle.
@@ -90,21 +91,21 @@ class FetchOpts {
 
   factory FetchOpts.fromMap(Map<String, dynamic> map) {
     return FetchOpts(
-      caFile: map['caFile'] == null ? null : map['caFile'] as String,
-      certFile: map['certFile'] == null ? null : map['certFile'] as String,
-      destination: map['destination'] == null ? null : map['destination'] as String,
-      devel: map['devel'] == null ? null : map['devel'] as bool,
-      home: map['home'] == null ? null : map['home'] as String,
-      keyFile: map['keyFile'] == null ? null : map['keyFile'] as String,
-      keyring: map['keyring'] == null ? null : map['keyring'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      prov: map['prov'] == null ? null : map['prov'] as String,
-      repo: map['repo'] == null ? null : map['repo'] as String,
-      untar: map['untar'] == null ? null : map['untar'] as bool,
-      untardir: map['untardir'] == null ? null : map['untardir'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
-      verify: map['verify'] == null ? null : map['verify'] as bool,
-      version: map['version'] == null ? null : map['version'] as String,
+      caFile: map['caFile'] == null ? null : (map['caFile'] as String).input(),
+      certFile: map['certFile'] == null ? null : (map['certFile'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      devel: map['devel'] == null ? null : (map['devel'] as bool).input(),
+      home: map['home'] == null ? null : (map['home'] as String).input(),
+      keyFile: map['keyFile'] == null ? null : (map['keyFile'] as String).input(),
+      keyring: map['keyring'] == null ? null : (map['keyring'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      prov: map['prov'] == null ? null : (map['prov'] as String).input(),
+      repo: map['repo'] == null ? null : (map['repo'] as String).input(),
+      untar: map['untar'] == null ? null : (map['untar'] as bool).input(),
+      untardir: map['untardir'] == null ? null : (map['untardir'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
+      verify: map['verify'] == null ? null : (map['verify'] as bool).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

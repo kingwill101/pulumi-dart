@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The X12 schema reference.
 class X12SchemaReferenceResponse {
   /// The message id.
-  final String messageId;
+  final pulumi.Input<String> messageId;
   /// The schema name.
-  final String schemaName;
+  final pulumi.Input<String> schemaName;
   /// The schema version.
-  final String schemaVersion;
+  final pulumi.Input<String> schemaVersion;
   /// The sender application id.
-  final String? senderApplicationId;
+  final pulumi.Input<String>? senderApplicationId;
 
   /// Creates a new [X12SchemaReferenceResponse].
   /// [messageId] The message id.
@@ -35,10 +36,10 @@ class X12SchemaReferenceResponse {
 
   factory X12SchemaReferenceResponse.fromMap(Map<String, dynamic> map) {
     return X12SchemaReferenceResponse(
-      messageId: map['messageId'] as String,
-      schemaName: map['schemaName'] as String,
-      schemaVersion: map['schemaVersion'] as String,
-      senderApplicationId: map['senderApplicationId'] == null ? null : map['senderApplicationId'] as String,
+      messageId: (map['messageId'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      schemaVersion: (map['schemaVersion'] as String).input(),
+      senderApplicationId: map['senderApplicationId'] == null ? null : (map['senderApplicationId'] as String).input(),
     );
   }
 }

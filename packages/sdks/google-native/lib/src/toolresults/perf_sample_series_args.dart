@@ -22,17 +22,12 @@ class PerfSampleSeriesArgs {
   /// [project] Optional.
   /// [stepId] Required.
   PerfSampleSeriesArgs({
-    pulumi.Output<BasicPerfSampleSeries>? basicPerfSampleSeries,
-    required pulumi.Output<String> executionId,
-    required pulumi.Output<String> historyId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> stepId,
-  }) :
-      basicPerfSampleSeries = pulumi.Input.asOptionalInput<BasicPerfSampleSeries>(basicPerfSampleSeries),
-      executionId = pulumi.Input.asInput<String>(executionId),
-      historyId = pulumi.Input.asInput<String>(historyId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      stepId = pulumi.Input.asInput<String>(stepId);
+    this.basicPerfSampleSeries,
+    required this.executionId,
+    required this.historyId,
+    this.project,
+    required this.stepId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class PerfSampleSeriesArgs {
 
   factory PerfSampleSeriesArgs.fromMap(Map<String, dynamic> map) {
     return PerfSampleSeriesArgs(
-      basicPerfSampleSeries: map['basicPerfSampleSeries'] == null ? null : pulumi.Output.create<BasicPerfSampleSeries>(BasicPerfSampleSeries.fromMap((map['basicPerfSampleSeries'] as Map).cast<String, dynamic>())),
-      executionId: pulumi.Output.create<String>(map['executionId'] as String),
-      historyId: pulumi.Output.create<String>(map['historyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      stepId: pulumi.Output.create<String>(map['stepId'] as String),
+      basicPerfSampleSeries: map['basicPerfSampleSeries'] == null ? null : (BasicPerfSampleSeries.fromMap((map['basicPerfSampleSeries'] as Map).cast<String, dynamic>())).input(),
+      executionId: (map['executionId'] as String).input(),
+      historyId: (map['historyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      stepId: (map['stepId'] as String).input(),
     );
   }
 }

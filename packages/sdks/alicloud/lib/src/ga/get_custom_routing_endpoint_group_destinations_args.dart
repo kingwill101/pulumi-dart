@@ -38,27 +38,17 @@ class GetCustomRoutingEndpointGroupDestinationsArgs {
   /// [protocols] The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
   /// [toPort] The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
   GetCustomRoutingEndpointGroupDestinationsArgs({
-    required pulumi.Output<String> acceleratorId,
-    pulumi.Output<String>? endpointGroupId,
-    pulumi.Output<int>? fromPort,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-    pulumi.Output<List<String>>? protocols,
-    pulumi.Output<int>? toPort,
-  }) :
-      acceleratorId = pulumi.Input.asInput<String>(acceleratorId),
-      endpointGroupId = pulumi.Input.asOptionalInput<String>(endpointGroupId),
-      fromPort = pulumi.Input.asOptionalInput<int>(fromPort),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize),
-      protocols = pulumi.Input.asOptionalInput<List<String>>(protocols),
-      toPort = pulumi.Input.asOptionalInput<int>(toPort);
+    required this.acceleratorId,
+    this.endpointGroupId,
+    this.fromPort,
+    this.ids,
+    this.listenerId,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+    this.protocols,
+    this.toPort,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class GetCustomRoutingEndpointGroupDestinationsArgs {
 
   factory GetCustomRoutingEndpointGroupDestinationsArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingEndpointGroupDestinationsArgs(
-      acceleratorId: pulumi.Output.create<String>(map['acceleratorId'] as String),
-      endpointGroupId: map['endpointGroupId'] == null ? null : pulumi.Output.create<String>(map['endpointGroupId'] as String),
-      fromPort: map['fromPort'] == null ? null : pulumi.Output.create<int>(map['fromPort'] as int),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
-      protocols: map['protocols'] == null ? null : pulumi.Output.create<List<String>>((map['protocols'] as List).cast<String>()),
-      toPort: map['toPort'] == null ? null : pulumi.Output.create<int>(map['toPort'] as int),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId'] as String).input(),
+      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<String>()).input(),
+      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
     );
   }
 }

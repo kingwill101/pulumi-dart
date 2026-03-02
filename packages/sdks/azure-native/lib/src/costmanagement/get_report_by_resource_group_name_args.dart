@@ -16,11 +16,9 @@ class GetReportByResourceGroupNameArgs {
   /// [reportName] Report Name.
   /// [resourceGroupName] Azure Resource Group Name.
   GetReportByResourceGroupNameArgs({
-    required pulumi.Output<String> reportName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      reportName = pulumi.Input.asInput<String>(reportName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.reportName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetReportByResourceGroupNameArgs {
 
   factory GetReportByResourceGroupNameArgs.fromMap(Map<String, dynamic> map) {
     return GetReportByResourceGroupNameArgs(
-      reportName: pulumi.Output.create<String>(map['reportName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      reportName: (map['reportName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class NetworkInterfaceArgs {
   /// [networkInterfaceName] Name of the Network Interface.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   NetworkInterfaceArgs({
-    pulumi.Output<String>? annotation,
-    required pulumi.Output<String> networkDeviceName,
-    pulumi.Output<String>? networkInterfaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      networkDeviceName = pulumi.Input.asInput<String>(networkDeviceName),
-      networkInterfaceName = pulumi.Input.asOptionalInput<String>(networkInterfaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.annotation,
+    required this.networkDeviceName,
+    this.networkInterfaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class NetworkInterfaceArgs {
 
   factory NetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceArgs(
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      networkDeviceName: pulumi.Output.create<String>(map['networkDeviceName'] as String),
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      networkDeviceName: (map['networkDeviceName'] as String).input(),
+      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of database instance
 class DatabaseInstancePropertiesResponse {
   /// Fully qualified domain name of existing database instance
-  final String databaseFqdn;
+  final pulumi.Input<String> databaseFqdn;
   /// Resource Id of existing database instance
-  final String? databaseInstanceId;
+  final pulumi.Input<String>? databaseInstanceId;
   /// Resource Id of warehouse database on database instance
-  final String dwDatabaseId;
+  final pulumi.Input<String> dwDatabaseId;
   /// Name of warehouse database on database instance
-  final String dwDatabaseName;
+  final pulumi.Input<String> dwDatabaseName;
   /// Resource Id of operational database on database instance
-  final String operationalDatabaseId;
+  final pulumi.Input<String> operationalDatabaseId;
 
   /// Creates a new [DatabaseInstancePropertiesResponse].
   /// [databaseFqdn] Fully qualified domain name of existing database instance
@@ -40,11 +41,11 @@ class DatabaseInstancePropertiesResponse {
 
   factory DatabaseInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseInstancePropertiesResponse(
-      databaseFqdn: map['databaseFqdn'] as String,
-      databaseInstanceId: map['databaseInstanceId'] == null ? null : map['databaseInstanceId'] as String,
-      dwDatabaseId: map['dwDatabaseId'] as String,
-      dwDatabaseName: map['dwDatabaseName'] as String,
-      operationalDatabaseId: map['operationalDatabaseId'] as String,
+      databaseFqdn: (map['databaseFqdn'] as String).input(),
+      databaseInstanceId: map['databaseInstanceId'] == null ? null : (map['databaseInstanceId'] as String).input(),
+      dwDatabaseId: (map['dwDatabaseId'] as String).input(),
+      dwDatabaseName: (map['dwDatabaseName'] as String).input(),
+      operationalDatabaseId: (map['operationalDatabaseId'] as String).input(),
     );
   }
 }

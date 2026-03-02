@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_proximity.dart';
 import 'google_privacy_dlp_v2_regex.dart';
 
 /// The rule to exclude findings based on a hotword. For record inspection of tables, column names are considered hotwords. An example of this is to exclude a finding if it belongs to a BigQuery column that matches a specific pattern.
 class GooglePrivacyDlpV2ExcludeByHotword {
   /// Regular expression pattern defining what qualifies as a hotword.
-  final GooglePrivacyDlpV2Regex? hotwordRegex;
+  final pulumi.Input<GooglePrivacyDlpV2Regex>? hotwordRegex;
   /// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be included in a column header.
-  final GooglePrivacyDlpV2Proximity? proximity;
+  final pulumi.Input<GooglePrivacyDlpV2Proximity>? proximity;
 
   /// Creates a new [GooglePrivacyDlpV2ExcludeByHotword].
   /// [hotwordRegex] Regular expression pattern defining what qualifies as a hotword.
@@ -20,15 +21,15 @@ class GooglePrivacyDlpV2ExcludeByHotword {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hotwordRegex': ?hotwordRegex == null ? null : hotwordRegex!.toMap(),
-      'proximity': ?proximity == null ? null : proximity!.toMap(),
+      'hotwordRegex': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2Regex, Map<String, dynamic>>(hotwordRegex, (value) => value.toMap()),
+      'proximity': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2Proximity, Map<String, dynamic>>(proximity, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2ExcludeByHotword.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ExcludeByHotword(
-      hotwordRegex: map['hotwordRegex'] == null ? null : GooglePrivacyDlpV2Regex.fromMap((map['hotwordRegex'] as Map).cast<String, dynamic>()),
-      proximity: map['proximity'] == null ? null : GooglePrivacyDlpV2Proximity.fromMap((map['proximity'] as Map).cast<String, dynamic>()),
+      hotwordRegex: map['hotwordRegex'] == null ? null : (GooglePrivacyDlpV2Regex.fromMap((map['hotwordRegex'] as Map).cast<String, dynamic>())).input(),
+      proximity: map['proximity'] == null ? null : (GooglePrivacyDlpV2Proximity.fromMap((map['proximity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

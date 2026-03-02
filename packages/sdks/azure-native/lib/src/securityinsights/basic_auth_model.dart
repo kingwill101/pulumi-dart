@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model for API authentication with basic flow - user name + password.
 class BasicAuthModel {
   /// The password
-  final String password;
+  final pulumi.Input<String> password;
   /// Type of paging
   /// Expected value is 'Basic'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The user name.
-  final String userName;
+  final pulumi.Input<String> userName;
 
   /// Creates a new [BasicAuthModel].
   /// [password] The password
@@ -31,9 +32,9 @@ class BasicAuthModel {
 
   factory BasicAuthModel.fromMap(Map<String, dynamic> map) {
     return BasicAuthModel(
-      password: map['password'] as String,
-      type: map['type'] as String,
-      userName: map['userName'] as String,
+      password: (map['password'] as String).input(),
+      type: (map['type'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

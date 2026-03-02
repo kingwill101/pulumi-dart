@@ -13,9 +13,8 @@ class GetDelegatedAdministratorsArgs {
   /// Creates a new [GetDelegatedAdministratorsArgs].
   /// [servicePrincipal] Specifies a service principal name. If specified, then the operation lists the delegated administrators only for the specified service. If you don't specify a service principal, the operation lists all delegated administrators for all services in your organization.
   GetDelegatedAdministratorsArgs({
-    pulumi.Output<String>? servicePrincipal,
-  }) :
-      servicePrincipal = pulumi.Input.asOptionalInput<String>(servicePrincipal);
+    this.servicePrincipal,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetDelegatedAdministratorsArgs {
 
   factory GetDelegatedAdministratorsArgs.fromMap(Map<String, dynamic> map) {
     return GetDelegatedAdministratorsArgs(
-      servicePrincipal: map['servicePrincipal'] == null ? null : pulumi.Output.create<String>(map['servicePrincipal'] as String),
+      servicePrincipal: map['servicePrincipal'] == null ? null : (map['servicePrincipal'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'recovery_plan_automation_runbook_action_details_response.dart';
 
 /// Recovery plan action details.
 class RecoveryPlanActionResponse {
   /// The action name.
-  final String actionName;
+  final pulumi.Input<String> actionName;
   /// The custom details.
-  final RecoveryPlanAutomationRunbookActionDetailsResponse customDetails;
+  final pulumi.Input<RecoveryPlanAutomationRunbookActionDetailsResponse> customDetails;
   /// The list of failover directions.
-  final List<String> failoverDirections;
+  final pulumi.Input<List<String>> failoverDirections;
   /// The list of failover types.
-  final List<String> failoverTypes;
+  final pulumi.Input<List<String>> failoverTypes;
 
   /// Creates a new [RecoveryPlanActionResponse].
   /// [actionName] The action name.
@@ -28,7 +29,7 @@ class RecoveryPlanActionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionName': actionName,
-      'customDetails': customDetails.toMap(),
+      'customDetails': pulumi.Input.mapInputValue<RecoveryPlanAutomationRunbookActionDetailsResponse, Map<String, dynamic>>(customDetails, (value) => value.toMap()),
       'failoverDirections': failoverDirections,
       'failoverTypes': failoverTypes,
     };
@@ -36,10 +37,10 @@ class RecoveryPlanActionResponse {
 
   factory RecoveryPlanActionResponse.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanActionResponse(
-      actionName: map['actionName'] as String,
-      customDetails: RecoveryPlanAutomationRunbookActionDetailsResponse.fromMap((map['customDetails'] as Map).cast<String, dynamic>()),
-      failoverDirections: (map['failoverDirections'] as List).cast<String>(),
-      failoverTypes: (map['failoverTypes'] as List).cast<String>(),
+      actionName: (map['actionName'] as String).input(),
+      customDetails: (RecoveryPlanAutomationRunbookActionDetailsResponse.fromMap((map['customDetails'] as Map).cast<String, dynamic>())).input(),
+      failoverDirections: ((map['failoverDirections'] as List).cast<String>()).input(),
+      failoverTypes: ((map['failoverTypes'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ExpressRoute circuit peering identifier.
 class ExpressRouteCircuitPeeringId {
   /// The ID of the ExpressRoute circuit peering.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [ExpressRouteCircuitPeeringId].
   /// [id] The ID of the ExpressRoute circuit peering.
@@ -20,7 +21,7 @@ class ExpressRouteCircuitPeeringId {
 
   factory ExpressRouteCircuitPeeringId.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeeringId(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

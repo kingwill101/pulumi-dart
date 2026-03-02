@@ -6,11 +6,11 @@ import 'selector_response.dart';
 /// The policy property value override.
 class OverrideResponse {
   /// The override kind.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// The list of the selector expressions.
-  final List<SelectorResponse>? selectors;
+  final pulumi.Input<List<SelectorResponse>>? selectors;
   /// The value to override the policy property.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [OverrideResponse].
   /// [kind] The override kind.
@@ -25,16 +25,16 @@ class OverrideResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kind': ?kind,
-      'selectors': ?selectors == null ? null : pulumi.Input.encodeList<SelectorResponse, Map<String, dynamic>>(selectors!, (value) => value.toMap()),
+      'selectors': ?pulumi.Input.mapOptionalInputValue<List<SelectorResponse>, List<Map<String, dynamic>>>(selectors, (value) => pulumi.Input.encodeList<SelectorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'value': ?value,
     };
   }
 
   factory OverrideResponse.fromMap(Map<String, dynamic> map) {
     return OverrideResponse(
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      selectors: map['selectors'] == null ? null : pulumi.Input.decodeList<SelectorResponse>(map['selectors'], (value) => SelectorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      value: map['value'] == null ? null : map['value'] as String,
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<SelectorResponse>(map['selectors'], (value) => SelectorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

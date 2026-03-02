@@ -31,19 +31,13 @@ class ControlFolderIntelligenceConfigState {
   /// [trialConfigs] The trial configuration of the Storage Intelligence resource.
   /// [updateTime] The time at which the Storage Intelligence Config resource is last updated.
   ControlFolderIntelligenceConfigState({
-    pulumi.Output<String>? editionConfig,
-    pulumi.Output<List<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>>? effectiveIntelligenceConfigs,
-    pulumi.Output<ControlFolderIntelligenceConfigFilter>? filter,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ControlFolderIntelligenceConfigTrialConfig>>? trialConfigs,
-    pulumi.Output<String>? updateTime,
-  }) :
-      editionConfig = pulumi.Input.asOptionalInput<String>(editionConfig),
-      effectiveIntelligenceConfigs = pulumi.Input.asOptionalInput<List<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>>(effectiveIntelligenceConfigs),
-      filter = pulumi.Input.asOptionalInput<ControlFolderIntelligenceConfigFilter>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      trialConfigs = pulumi.Input.asOptionalInput<List<ControlFolderIntelligenceConfigTrialConfig>>(trialConfigs),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.editionConfig,
+    this.effectiveIntelligenceConfigs,
+    this.filter,
+    this.name,
+    this.trialConfigs,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class ControlFolderIntelligenceConfigState {
 
   factory ControlFolderIntelligenceConfigState.fromMap(Map<String, dynamic> map) {
     return ControlFolderIntelligenceConfigState(
-      editionConfig: map['editionConfig'] == null ? null : pulumi.Output.create<String>(map['editionConfig'] as String),
-      effectiveIntelligenceConfigs: map['effectiveIntelligenceConfigs'] == null ? null : pulumi.Output.create<List<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>>(pulumi.Input.decodeList<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>(map['effectiveIntelligenceConfigs'], (value) => ControlFolderIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      filter: map['filter'] == null ? null : pulumi.Output.create<ControlFolderIntelligenceConfigFilter>(ControlFolderIntelligenceConfigFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      trialConfigs: map['trialConfigs'] == null ? null : pulumi.Output.create<List<ControlFolderIntelligenceConfigTrialConfig>>(pulumi.Input.decodeList<ControlFolderIntelligenceConfigTrialConfig>(map['trialConfigs'], (value) => ControlFolderIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      editionConfig: map['editionConfig'] == null ? null : (map['editionConfig'] as String).input(),
+      effectiveIntelligenceConfigs: map['effectiveIntelligenceConfigs'] == null ? null : (pulumi.Input.decodeList<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>(map['effectiveIntelligenceConfigs'], (value) => ControlFolderIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (ControlFolderIntelligenceConfigFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      trialConfigs: map['trialConfigs'] == null ? null : (pulumi.Input.decodeList<ControlFolderIntelligenceConfigTrialConfig>(map['trialConfigs'], (value) => ControlFolderIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

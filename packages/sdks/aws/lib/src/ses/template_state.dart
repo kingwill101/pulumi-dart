@@ -25,19 +25,13 @@ class TemplateState {
   /// [subject] The subject line of the email.
   /// [text] The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
   TemplateState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? html,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subject,
-    pulumi.Output<String>? text,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      html = pulumi.Input.asOptionalInput<String>(html),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subject = pulumi.Input.asOptionalInput<String>(subject),
-      text = pulumi.Input.asOptionalInput<String>(text);
+    this.arn,
+    this.html,
+    this.name,
+    this.region,
+    this.subject,
+    this.text,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class TemplateState {
 
   factory TemplateState.fromMap(Map<String, dynamic> map) {
     return TemplateState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      html: map['html'] == null ? null : pulumi.Output.create<String>(map['html'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subject: map['subject'] == null ? null : pulumi.Output.create<String>(map['subject'] as String),
-      text: map['text'] == null ? null : pulumi.Output.create<String>(map['text'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      html: map['html'] == null ? null : (map['html'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
     );
   }
 }

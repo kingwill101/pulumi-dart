@@ -28,19 +28,13 @@ class AccessPolicyArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [roles] The list of roles the principal is assigned on the environment.
   AccessPolicyArgs({
-    pulumi.Output<String>? accessPolicyName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> environmentName,
-    pulumi.Output<String>? principalObjectId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<String>>? roles,
-  }) :
-      accessPolicyName = pulumi.Input.asOptionalInput<String>(accessPolicyName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      principalObjectId = pulumi.Input.asOptionalInput<String>(principalObjectId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roles = pulumi.Input.asOptionalInput<List<String>>(roles);
+    this.accessPolicyName,
+    this.description,
+    required this.environmentName,
+    this.principalObjectId,
+    required this.resourceGroupName,
+    this.roles,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class AccessPolicyArgs {
 
   factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyArgs(
-      accessPolicyName: map['accessPolicyName'] == null ? null : pulumi.Output.create<String>(map['accessPolicyName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      principalObjectId: map['principalObjectId'] == null ? null : pulumi.Output.create<String>(map['principalObjectId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<String>>((map['roles'] as List).cast<String>()),
+      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentName: (map['environmentName'] as String).input(),
+      principalObjectId: map['principalObjectId'] == null ? null : (map['principalObjectId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
     );
   }
 }

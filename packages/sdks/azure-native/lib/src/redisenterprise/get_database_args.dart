@@ -19,13 +19,10 @@ class GetDatabaseArgs {
   /// [databaseName] The name of the Redis Enterprise database.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDatabaseArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.databaseName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDatabaseArgs {
 
   factory GetDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

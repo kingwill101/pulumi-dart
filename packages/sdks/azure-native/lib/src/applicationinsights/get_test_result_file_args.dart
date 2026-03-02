@@ -31,21 +31,14 @@ class GetTestResultFileArgs {
   /// [timeStamp] The posix (epoch) time stamp for the webtest result.
   /// [webTestName] The name of the Application Insights webtest resource.
   GetTestResultFileArgs({
-    pulumi.Output<String>? continuationToken,
-    required pulumi.Output<String> downloadAs,
-    required pulumi.Output<String> geoLocationId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? testSuccessfulCriteria,
-    required pulumi.Output<int> timeStamp,
-    required pulumi.Output<String> webTestName,
-  }) :
-      continuationToken = pulumi.Input.asOptionalInput<String>(continuationToken),
-      downloadAs = pulumi.Input.asInput<String>(downloadAs),
-      geoLocationId = pulumi.Input.asInput<String>(geoLocationId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      testSuccessfulCriteria = pulumi.Input.asOptionalInput<bool>(testSuccessfulCriteria),
-      timeStamp = pulumi.Input.asInput<int>(timeStamp),
-      webTestName = pulumi.Input.asInput<String>(webTestName);
+    this.continuationToken,
+    required this.downloadAs,
+    required this.geoLocationId,
+    required this.resourceGroupName,
+    this.testSuccessfulCriteria,
+    required this.timeStamp,
+    required this.webTestName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetTestResultFileArgs {
 
   factory GetTestResultFileArgs.fromMap(Map<String, dynamic> map) {
     return GetTestResultFileArgs(
-      continuationToken: map['continuationToken'] == null ? null : pulumi.Output.create<String>(map['continuationToken'] as String),
-      downloadAs: pulumi.Output.create<String>(map['downloadAs'] as String),
-      geoLocationId: pulumi.Output.create<String>(map['geoLocationId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      testSuccessfulCriteria: map['testSuccessfulCriteria'] == null ? null : pulumi.Output.create<bool>(map['testSuccessfulCriteria'] as bool),
-      timeStamp: pulumi.Output.create<int>(map['timeStamp'] as int),
-      webTestName: pulumi.Output.create<String>(map['webTestName'] as String),
+      continuationToken: map['continuationToken'] == null ? null : (map['continuationToken'] as String).input(),
+      downloadAs: (map['downloadAs'] as String).input(),
+      geoLocationId: (map['geoLocationId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      testSuccessfulCriteria: map['testSuccessfulCriteria'] == null ? null : (map['testSuccessfulCriteria'] as bool).input(),
+      timeStamp: (map['timeStamp'] as int).input(),
+      webTestName: (map['webTestName'] as String).input(),
     );
   }
 }

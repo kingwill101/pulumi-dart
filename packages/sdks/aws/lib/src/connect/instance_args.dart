@@ -47,31 +47,19 @@ class InstanceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the Instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   InstanceArgs({
-    pulumi.Output<bool>? autoResolveBestVoicesEnabled,
-    pulumi.Output<bool>? contactFlowLogsEnabled,
-    pulumi.Output<bool>? contactLensEnabled,
-    pulumi.Output<String>? directoryId,
-    pulumi.Output<bool>? earlyMediaEnabled,
-    required pulumi.Output<String> identityManagementType,
-    required pulumi.Output<bool> inboundCallsEnabled,
-    pulumi.Output<String>? instanceAlias,
-    pulumi.Output<bool>? multiPartyConferenceEnabled,
-    required pulumi.Output<bool> outboundCallsEnabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoResolveBestVoicesEnabled = pulumi.Input.asOptionalInput<bool>(autoResolveBestVoicesEnabled),
-      contactFlowLogsEnabled = pulumi.Input.asOptionalInput<bool>(contactFlowLogsEnabled),
-      contactLensEnabled = pulumi.Input.asOptionalInput<bool>(contactLensEnabled),
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      earlyMediaEnabled = pulumi.Input.asOptionalInput<bool>(earlyMediaEnabled),
-      identityManagementType = pulumi.Input.asInput<String>(identityManagementType),
-      inboundCallsEnabled = pulumi.Input.asInput<bool>(inboundCallsEnabled),
-      instanceAlias = pulumi.Input.asOptionalInput<String>(instanceAlias),
-      multiPartyConferenceEnabled = pulumi.Input.asOptionalInput<bool>(multiPartyConferenceEnabled),
-      outboundCallsEnabled = pulumi.Input.asInput<bool>(outboundCallsEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.autoResolveBestVoicesEnabled,
+    this.contactFlowLogsEnabled,
+    this.contactLensEnabled,
+    this.directoryId,
+    this.earlyMediaEnabled,
+    required this.identityManagementType,
+    required this.inboundCallsEnabled,
+    this.instanceAlias,
+    this.multiPartyConferenceEnabled,
+    required this.outboundCallsEnabled,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      autoResolveBestVoicesEnabled: map['autoResolveBestVoicesEnabled'] == null ? null : pulumi.Output.create<bool>(map['autoResolveBestVoicesEnabled'] as bool),
-      contactFlowLogsEnabled: map['contactFlowLogsEnabled'] == null ? null : pulumi.Output.create<bool>(map['contactFlowLogsEnabled'] as bool),
-      contactLensEnabled: map['contactLensEnabled'] == null ? null : pulumi.Output.create<bool>(map['contactLensEnabled'] as bool),
-      directoryId: map['directoryId'] == null ? null : pulumi.Output.create<String>(map['directoryId'] as String),
-      earlyMediaEnabled: map['earlyMediaEnabled'] == null ? null : pulumi.Output.create<bool>(map['earlyMediaEnabled'] as bool),
-      identityManagementType: pulumi.Output.create<String>(map['identityManagementType'] as String),
-      inboundCallsEnabled: pulumi.Output.create<bool>(map['inboundCallsEnabled'] as bool),
-      instanceAlias: map['instanceAlias'] == null ? null : pulumi.Output.create<String>(map['instanceAlias'] as String),
-      multiPartyConferenceEnabled: map['multiPartyConferenceEnabled'] == null ? null : pulumi.Output.create<bool>(map['multiPartyConferenceEnabled'] as bool),
-      outboundCallsEnabled: pulumi.Output.create<bool>(map['outboundCallsEnabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoResolveBestVoicesEnabled: map['autoResolveBestVoicesEnabled'] == null ? null : (map['autoResolveBestVoicesEnabled'] as bool).input(),
+      contactFlowLogsEnabled: map['contactFlowLogsEnabled'] == null ? null : (map['contactFlowLogsEnabled'] as bool).input(),
+      contactLensEnabled: map['contactLensEnabled'] == null ? null : (map['contactLensEnabled'] as bool).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
+      earlyMediaEnabled: map['earlyMediaEnabled'] == null ? null : (map['earlyMediaEnabled'] as bool).input(),
+      identityManagementType: (map['identityManagementType'] as String).input(),
+      inboundCallsEnabled: (map['inboundCallsEnabled'] as bool).input(),
+      instanceAlias: map['instanceAlias'] == null ? null : (map['instanceAlias'] as String).input(),
+      multiPartyConferenceEnabled: map['multiPartyConferenceEnabled'] == null ? null : (map['multiPartyConferenceEnabled'] as bool).input(),
+      outboundCallsEnabled: (map['outboundCallsEnabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'autoscale_schedule.dart';
 /// Schedule-based autoscale request parameters
 class AutoscaleRecurrence {
   /// Array of schedule-based autoscale rules
-  final List<AutoscaleSchedule>? schedule;
+  final pulumi.Input<List<AutoscaleSchedule>>? schedule;
   /// The time zone for the autoscale schedule times
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [AutoscaleRecurrence].
   /// [schedule] Array of schedule-based autoscale rules
@@ -20,15 +20,15 @@ class AutoscaleRecurrence {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schedule': ?schedule == null ? null : pulumi.Input.encodeList<AutoscaleSchedule, Map<String, dynamic>>(schedule!, (value) => value.toMap()),
+      'schedule': ?pulumi.Input.mapOptionalInputValue<List<AutoscaleSchedule>, List<Map<String, dynamic>>>(schedule, (value) => pulumi.Input.encodeList<AutoscaleSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeZone': ?timeZone,
     };
   }
 
   factory AutoscaleRecurrence.fromMap(Map<String, dynamic> map) {
     return AutoscaleRecurrence(
-      schedule: map['schedule'] == null ? null : pulumi.Input.decodeList<AutoscaleSchedule>(map['schedule'], (value) => AutoscaleSchedule.fromMap((value as Map).cast<String, dynamic>())),
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      schedule: map['schedule'] == null ? null : (pulumi.Input.decodeList<AutoscaleSchedule>(map['schedule'], (value) => AutoscaleSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

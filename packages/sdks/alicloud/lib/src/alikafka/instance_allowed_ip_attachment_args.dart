@@ -26,15 +26,11 @@ class InstanceAllowedIpAttachmentArgs {
   /// [instanceId] The ID of the instance.
   /// [portRange] The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
   InstanceAllowedIpAttachmentArgs({
-    required pulumi.Output<String> allowedIp,
-    required pulumi.Output<String> allowedType,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> portRange,
-  }) :
-      allowedIp = pulumi.Input.asInput<String>(allowedIp),
-      allowedType = pulumi.Input.asInput<String>(allowedType),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      portRange = pulumi.Input.asInput<String>(portRange);
+    required this.allowedIp,
+    required this.allowedType,
+    required this.instanceId,
+    required this.portRange,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class InstanceAllowedIpAttachmentArgs {
 
   factory InstanceAllowedIpAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAllowedIpAttachmentArgs(
-      allowedIp: pulumi.Output.create<String>(map['allowedIp'] as String),
-      allowedType: pulumi.Output.create<String>(map['allowedType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      portRange: pulumi.Output.create<String>(map['portRange'] as String),
+      allowedIp: (map['allowedIp'] as String).input(),
+      allowedType: (map['allowedType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      portRange: (map['portRange'] as String).input(),
     );
   }
 }

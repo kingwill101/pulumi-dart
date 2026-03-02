@@ -25,17 +25,12 @@ class CaCertificateArgs {
   /// [resourceGroupId] The Id of resource group which the slb_ca certificate belongs.
   /// [tags] A mapping of tags to assign to the resource.
   CaCertificateArgs({
-    required pulumi.Output<String> caCertificate,
-    pulumi.Output<String>? caCertificateName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      caCertificate = pulumi.Input.asInput<String>(caCertificate),
-      caCertificateName = pulumi.Input.asOptionalInput<String>(caCertificateName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.caCertificate,
+    this.caCertificateName,
+    this.name,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CaCertificateArgs {
 
   factory CaCertificateArgs.fromMap(Map<String, dynamic> map) {
     return CaCertificateArgs(
-      caCertificate: pulumi.Output.create<String>(map['caCertificate'] as String),
-      caCertificateName: map['caCertificateName'] == null ? null : pulumi.Output.create<String>(map['caCertificateName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      caCertificate: (map['caCertificate'] as String).input(),
+      caCertificateName: map['caCertificateName'] == null ? null : (map['caCertificateName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

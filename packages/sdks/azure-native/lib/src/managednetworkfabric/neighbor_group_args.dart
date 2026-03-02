@@ -29,19 +29,13 @@ class NeighborGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   NeighborGroupArgs({
-    pulumi.Output<String>? annotation,
-    required pulumi.Output<NeighborGroupDestination> destination,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? neighborGroupName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      destination = pulumi.Input.asInput<NeighborGroupDestination>(destination),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      neighborGroupName = pulumi.Input.asOptionalInput<String>(neighborGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.annotation,
+    required this.destination,
+    this.location,
+    this.neighborGroupName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class NeighborGroupArgs {
 
   factory NeighborGroupArgs.fromMap(Map<String, dynamic> map) {
     return NeighborGroupArgs(
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      destination: pulumi.Output.create<NeighborGroupDestination>(NeighborGroupDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      neighborGroupName: map['neighborGroupName'] == null ? null : pulumi.Output.create<String>(map['neighborGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      destination: (NeighborGroupDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      neighborGroupName: map['neighborGroupName'] == null ? null : (map['neighborGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

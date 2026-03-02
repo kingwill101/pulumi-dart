@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppTemplateCustomScaleRuleAuthentication {
   /// The name of the secret that contains the value for this environment variable.
-  final String secretName;
-  final String triggerParameter;
+  final pulumi.Input<String> secretName;
+  final pulumi.Input<String> triggerParameter;
 
   /// Creates a new [GetAppTemplateCustomScaleRuleAuthentication].
   /// [secretName] The name of the secret that contains the value for this environment variable.
@@ -23,8 +24,8 @@ class GetAppTemplateCustomScaleRuleAuthentication {
 
   factory GetAppTemplateCustomScaleRuleAuthentication.fromMap(Map<String, dynamic> map) {
     return GetAppTemplateCustomScaleRuleAuthentication(
-      secretName: map['secretName'] as String,
-      triggerParameter: map['triggerParameter'] as String,
+      secretName: (map['secretName'] as String).input(),
+      triggerParameter: (map['triggerParameter'] as String).input(),
     );
   }
 }

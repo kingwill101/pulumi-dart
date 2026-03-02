@@ -25,17 +25,12 @@ class LinkedServerArgs {
   /// [serverRole] The role of the linked Redis cache (eg "Secondary"). Changing this forces a new Redis to be created. Possible values are `Primary` and `Secondary`.
   /// [targetRedisCacheName] The name of Redis cache to link with. Changing this forces a new Redis to be created. (eg The primary role)
   LinkedServerArgs({
-    required pulumi.Output<String> linkedRedisCacheId,
-    required pulumi.Output<String> linkedRedisCacheLocation,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverRole,
-    required pulumi.Output<String> targetRedisCacheName,
-  }) :
-      linkedRedisCacheId = pulumi.Input.asInput<String>(linkedRedisCacheId),
-      linkedRedisCacheLocation = pulumi.Input.asInput<String>(linkedRedisCacheLocation),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverRole = pulumi.Input.asInput<String>(serverRole),
-      targetRedisCacheName = pulumi.Input.asInput<String>(targetRedisCacheName);
+    required this.linkedRedisCacheId,
+    required this.linkedRedisCacheLocation,
+    required this.resourceGroupName,
+    required this.serverRole,
+    required this.targetRedisCacheName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class LinkedServerArgs {
 
   factory LinkedServerArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServerArgs(
-      linkedRedisCacheId: pulumi.Output.create<String>(map['linkedRedisCacheId'] as String),
-      linkedRedisCacheLocation: pulumi.Output.create<String>(map['linkedRedisCacheLocation'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverRole: pulumi.Output.create<String>(map['serverRole'] as String),
-      targetRedisCacheName: pulumi.Output.create<String>(map['targetRedisCacheName'] as String),
+      linkedRedisCacheId: (map['linkedRedisCacheId'] as String).input(),
+      linkedRedisCacheLocation: (map['linkedRedisCacheLocation'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverRole: (map['serverRole'] as String).input(),
+      targetRedisCacheName: (map['targetRedisCacheName'] as String).input(),
     );
   }
 }

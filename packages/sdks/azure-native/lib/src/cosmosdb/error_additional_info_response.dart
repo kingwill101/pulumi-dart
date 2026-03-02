@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The resource management error additional info.
 class ErrorAdditionalInfoResponse {
   /// The additional info.
-  final dynamic info;
+  final pulumi.Input<dynamic> info;
   /// The additional info type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ErrorAdditionalInfoResponse].
   /// [info] The additional info.
@@ -25,8 +26,8 @@ class ErrorAdditionalInfoResponse {
 
   factory ErrorAdditionalInfoResponse.fromMap(Map<String, dynamic> map) {
     return ErrorAdditionalInfoResponse(
-      info: map['info'],
-      type: map['type'] as String,
+      info: (map['info']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class ZoneAssociationArgs {
   /// [vpcRegion] The VPC's region. Defaults to the region of the AWS provider.
   /// [zoneId] The private hosted zone to associate.
   ZoneAssociationArgs({
-    required pulumi.Output<String> vpcId,
-    pulumi.Output<String>? vpcRegion,
-    required pulumi.Output<String> zoneId,
-  }) :
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      vpcRegion = pulumi.Input.asOptionalInput<String>(vpcRegion),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    required this.vpcId,
+    this.vpcRegion,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ZoneAssociationArgs {
 
   factory ZoneAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ZoneAssociationArgs(
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      vpcRegion: map['vpcRegion'] == null ? null : pulumi.Output.create<String>(map['vpcRegion'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      vpcId: (map['vpcId'] as String).input(),
+      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

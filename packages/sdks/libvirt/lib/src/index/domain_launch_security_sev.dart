@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainLaunchSecuritySev {
   /// Sets the position of the circular bit for SEV in the domain's configuration.
-  final double? cbitPos;
+  final pulumi.Input<double>? cbitPos;
   /// Configures the Diffie-Hellman certificate parameter for SEV.
-  final String dhCert;
+  final pulumi.Input<String> dhCert;
   /// Configures kernel hashes for SEV to ensure integrity verification.
-  final String? kernelHashes;
+  final pulumi.Input<String>? kernelHashes;
   /// Sets the security policy for SEV operations within the domain.
-  final double? policy;
+  final pulumi.Input<double>? policy;
   /// Configures the reduced physical bits setting for SEV to assign smaller address spaces.
-  final double? reducedPhysBits;
+  final pulumi.Input<double>? reducedPhysBits;
   /// Sets the SEV session identifier for managing virtual machine security.
-  final String session;
+  final pulumi.Input<String> session;
 
   /// Creates a new [DomainLaunchSecuritySev].
   /// [cbitPos] Sets the position of the circular bit for SEV in the domain's configuration.
@@ -44,12 +45,12 @@ class DomainLaunchSecuritySev {
 
   factory DomainLaunchSecuritySev.fromMap(Map<String, dynamic> map) {
     return DomainLaunchSecuritySev(
-      cbitPos: map['cbitPos'] == null ? null : map['cbitPos'] as double,
-      dhCert: map['dhCert'] as String,
-      kernelHashes: map['kernelHashes'] == null ? null : map['kernelHashes'] as String,
-      policy: map['policy'] == null ? null : map['policy'] as double,
-      reducedPhysBits: map['reducedPhysBits'] == null ? null : map['reducedPhysBits'] as double,
-      session: map['session'] as String,
+      cbitPos: map['cbitPos'] == null ? null : (map['cbitPos'] as double).input(),
+      dhCert: (map['dhCert'] as String).input(),
+      kernelHashes: map['kernelHashes'] == null ? null : (map['kernelHashes'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as double).input(),
+      reducedPhysBits: map['reducedPhysBits'] == null ? null : (map['reducedPhysBits'] as double).input(),
+      session: (map['session'] as String).input(),
     );
   }
 }

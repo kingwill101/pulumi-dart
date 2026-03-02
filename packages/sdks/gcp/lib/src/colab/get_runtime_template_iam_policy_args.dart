@@ -22,13 +22,10 @@ class GetRuntimeTemplateIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [runtimeTemplate] Used to find the parent resource to bind the IAM policy to
   GetRuntimeTemplateIamPolicyArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> runtimeTemplate,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runtimeTemplate = pulumi.Input.asInput<String>(runtimeTemplate);
+    this.location,
+    this.project,
+    required this.runtimeTemplate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetRuntimeTemplateIamPolicyArgs {
 
   factory GetRuntimeTemplateIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeTemplateIamPolicyArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runtimeTemplate: pulumi.Output.create<String>(map['runtimeTemplate'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runtimeTemplate: (map['runtimeTemplate'] as String).input(),
     );
   }
 }

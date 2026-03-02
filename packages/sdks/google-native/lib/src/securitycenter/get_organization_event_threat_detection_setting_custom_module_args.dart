@@ -14,11 +14,9 @@ class GetOrganizationEventThreatDetectionSettingCustomModuleArgs {
   /// [customModuleId] Required.
   /// [organizationId] Required.
   GetOrganizationEventThreatDetectionSettingCustomModuleArgs({
-    required pulumi.Output<String> customModuleId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      customModuleId = pulumi.Input.asInput<String>(customModuleId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.customModuleId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetOrganizationEventThreatDetectionSettingCustomModuleArgs {
 
   factory GetOrganizationEventThreatDetectionSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationEventThreatDetectionSettingCustomModuleArgs(
-      customModuleId: pulumi.Output.create<String>(map['customModuleId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      customModuleId: (map['customModuleId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

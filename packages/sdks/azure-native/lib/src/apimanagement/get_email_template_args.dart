@@ -19,13 +19,10 @@ class GetEmailTemplateArgs {
   /// [serviceName] The name of the API Management service.
   /// [templateName] Email Template Name Identifier.
   GetEmailTemplateArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> templateName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      templateName = pulumi.Input.asInput<String>(templateName);
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.templateName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetEmailTemplateArgs {
 
   factory GetEmailTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetEmailTemplateArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      templateName: pulumi.Output.create<String>(map['templateName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      templateName: (map['templateName'] as String).input(),
     );
   }
 }

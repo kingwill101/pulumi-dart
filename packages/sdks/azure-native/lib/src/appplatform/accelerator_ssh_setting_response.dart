@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Auth setting for SSH auth.
 class AcceleratorSshSettingResponse {
   /// The type of the auth setting.
   /// Expected value is 'SSH'.
-  final String authType;
+  final pulumi.Input<String> authType;
 
   /// Creates a new [AcceleratorSshSettingResponse].
   /// [authType] The type of the auth setting.
@@ -21,7 +22,7 @@ class AcceleratorSshSettingResponse {
 
   factory AcceleratorSshSettingResponse.fromMap(Map<String, dynamic> map) {
     return AcceleratorSshSettingResponse(
-      authType: map['authType'] as String,
+      authType: (map['authType'] as String).input(),
     );
   }
 }

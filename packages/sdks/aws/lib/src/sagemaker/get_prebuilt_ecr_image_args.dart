@@ -22,15 +22,11 @@ class GetPrebuiltEcrImageArgs {
   /// [region] Region to use in the registry path. Defaults to the Region set in the provider configuration.
   /// [repositoryName] Name of the repository, which is generally the algorithm or library. Values include `autogluon-inference`, `autogluon-training`, `blazingtext`, `djl-inference`, `factorization-machines`, `forecasting-deepar`, `huggingface-pytorch-inference`, `huggingface-pytorch-inference-neuron`, `huggingface-pytorch-inference-neuronx`, `huggingface-pytorch-tgi-inference`, `huggingface-pytorch-training`, `huggingface-pytorch-training-neuronx`, `huggingface-pytorch-trcomp-training`, `huggingface-tensorflow-inference`, `huggingface-tensorflow-training`, `huggingface-tensorflow-trcomp-training`, `image-classification`, `image-classification-neo`, `ipinsights`, `kmeans`, `knn`, `lda`, `linear-learner`, `mxnet-inference`, `mxnet-inference-eia`, `mxnet-training`, `ntm`, `object-detection`, `object2vec`, `pca`, `pytorch-inference`, `pytorch-inference-eia`, `pytorch-inference-graviton`, `pytorch-inference-neuronx`, `pytorch-training`, `pytorch-training-neuronx`, `pytorch-trcomp-training`, `randomcutforest`, `sagemaker-base-python`, `sagemaker-chainer`, `sagemaker-clarify-processing`, `sagemaker-data-wrangler-container`, `sagemaker-debugger-rules`, `sagemaker-geospatial-v1-0`, `sagemaker-inference-mxnet`, `sagemaker-inference-pytorch`, `sagemaker-inference-tensorflow`, `sagemaker-model-monitor-analyzer`, `sagemaker-mxnet`, `sagemaker-mxnet-eia`, `sagemaker-mxnet-serving`, `sagemaker-mxnet-serving-eia`, `sagemaker-neo-mxnet`, `sagemaker-neo-pytorch`, `sagemaker-neo-tensorflow`, `sagemaker-pytorch`, `sagemaker-rl-coach-container`, `sagemaker-rl-mxnet`, `sagemaker-rl-ray-container`, `sagemaker-rl-tensorflow`, `sagemaker-rl-vw-container`, `sagemaker-scikit-learn`, `sagemaker-spark-processing`, `sagemaker-sparkml-serving`, `sagemaker-tensorflow`, `sagemaker-tensorflow-eia`, `sagemaker-tensorflow-scriptmode`, `sagemaker-tensorflow-serving`, `sagemaker-tensorflow-serving-eia`, `sagemaker-tritonserver`, `sagemaker-xgboost`, `semantic-segmentation`, `seq2seq`, `stabilityai-pytorch-inference`, `tei`, `tei-cpu`, `tensorflow-inference`, `tensorflow-inference-eia`, `tensorflow-inference-graviton`, `tensorflow-training`, and `xgboost-neo`.
   GetPrebuiltEcrImageArgs({
-    pulumi.Output<String>? dnsSuffix,
-    pulumi.Output<String>? imageTag,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> repositoryName,
-  }) :
-      dnsSuffix = pulumi.Input.asOptionalInput<String>(dnsSuffix),
-      imageTag = pulumi.Input.asOptionalInput<String>(imageTag),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repositoryName = pulumi.Input.asInput<String>(repositoryName);
+    this.dnsSuffix,
+    this.imageTag,
+    this.region,
+    required this.repositoryName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetPrebuiltEcrImageArgs {
 
   factory GetPrebuiltEcrImageArgs.fromMap(Map<String, dynamic> map) {
     return GetPrebuiltEcrImageArgs(
-      dnsSuffix: map['dnsSuffix'] == null ? null : pulumi.Output.create<String>(map['dnsSuffix'] as String),
-      imageTag: map['imageTag'] == null ? null : pulumi.Output.create<String>(map['imageTag'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repositoryName: pulumi.Output.create<String>(map['repositoryName'] as String),
+      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
+      imageTag: map['imageTag'] == null ? null : (map['imageTag'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
     );
   }
 }

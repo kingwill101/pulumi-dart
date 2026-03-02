@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Onboarding configuration.
 class OnboardingConfigurationResponse {
   /// Azure Arc virtual machine ID.
-  final String? arcVirtualMachineId;
+  final pulumi.Input<String>? arcVirtualMachineId;
   /// Location of the resource.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Resource ID.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// Tenant ID of the resource.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// Type of the onboarding resource to support polymorphic resource.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [OnboardingConfigurationResponse].
   /// [arcVirtualMachineId] Azure Arc virtual machine ID.
@@ -40,11 +41,11 @@ class OnboardingConfigurationResponse {
 
   factory OnboardingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return OnboardingConfigurationResponse(
-      arcVirtualMachineId: map['arcVirtualMachineId'] == null ? null : map['arcVirtualMachineId'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      arcVirtualMachineId: map['arcVirtualMachineId'] == null ? null : (map['arcVirtualMachineId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

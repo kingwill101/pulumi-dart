@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NfsLocationOnPremConfig {
   /// List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
-  final List<String> agentArns;
+  final pulumi.Input<List<String>> agentArns;
 
   /// Creates a new [NfsLocationOnPremConfig].
   /// [agentArns] List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
@@ -19,7 +20,7 @@ class NfsLocationOnPremConfig {
 
   factory NfsLocationOnPremConfig.fromMap(Map<String, dynamic> map) {
     return NfsLocationOnPremConfig(
-      agentArns: (map['agentArns'] as List).cast<String>(),
+      agentArns: ((map['agentArns'] as List).cast<String>()).input(),
     );
   }
 }

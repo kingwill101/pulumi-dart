@@ -43,27 +43,17 @@ class CertificateState {
   /// [type] The type of certificate to provision. Can be either
   /// [uuid] The UUID of the certificate
   CertificateState({
-    pulumi.Output<String>? certificateChain,
-    pulumi.Output<List<String>>? domains,
-    pulumi.Output<String>? leafCertificate,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notAfter,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? sha1Fingerprint,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? uuid,
-  }) :
-      certificateChain = pulumi.Input.asOptionalInput<String>(certificateChain),
-      domains = pulumi.Input.asOptionalInput<List<String>>(domains),
-      leafCertificate = pulumi.Input.asOptionalInput<String>(leafCertificate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notAfter = pulumi.Input.asOptionalInput<String>(notAfter),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      sha1Fingerprint = pulumi.Input.asOptionalInput<String>(sha1Fingerprint),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid);
+    this.certificateChain,
+    this.domains,
+    this.leafCertificate,
+    this.name,
+    this.notAfter,
+    this.privateKey,
+    this.sha1Fingerprint,
+    this.state,
+    this.type,
+    this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      certificateChain: map['certificateChain'] == null ? null : pulumi.Output.create<String>(map['certificateChain'] as String),
-      domains: map['domains'] == null ? null : pulumi.Output.create<List<String>>((map['domains'] as List).cast<String>()),
-      leafCertificate: map['leafCertificate'] == null ? null : pulumi.Output.create<String>(map['leafCertificate'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notAfter: map['notAfter'] == null ? null : pulumi.Output.create<String>(map['notAfter'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : pulumi.Output.create<String>(map['sha1Fingerprint'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
+      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
+      leafCertificate: map['leafCertificate'] == null ? null : (map['leafCertificate'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

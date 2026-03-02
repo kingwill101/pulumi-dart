@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// details of validation failure
 class HciValidationFailureDetailResponse {
   /// Exception details while installing extension.
-  final String exception;
+  final pulumi.Input<String> exception;
 
   /// Creates a new [HciValidationFailureDetailResponse].
   /// [exception] Exception details while installing extension.
@@ -20,7 +21,7 @@ class HciValidationFailureDetailResponse {
 
   factory HciValidationFailureDetailResponse.fromMap(Map<String, dynamic> map) {
     return HciValidationFailureDetailResponse(
-      exception: map['exception'] as String,
+      exception: (map['exception'] as String).input(),
     );
   }
 }

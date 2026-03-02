@@ -33,19 +33,13 @@ class V2OrganizationMuteConfigArgs {
   /// [organization] The organization whose Cloud Security Command Center the Mute
   /// [type] The type of the mute config.
   V2OrganizationMuteConfigArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> filter,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> muteConfigId,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filter = pulumi.Input.asInput<String>(filter),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      muteConfigId = pulumi.Input.asInput<String>(muteConfigId),
-      organization = pulumi.Input.asInput<String>(organization),
-      type = pulumi.Input.asInput<String>(type);
+    this.description,
+    required this.filter,
+    this.location,
+    required this.muteConfigId,
+    required this.organization,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class V2OrganizationMuteConfigArgs {
 
   factory V2OrganizationMuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2OrganizationMuteConfigArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filter: pulumi.Output.create<String>(map['filter'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      muteConfigId: pulumi.Output.create<String>(map['muteConfigId'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filter: (map['filter'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      muteConfigId: (map['muteConfigId'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

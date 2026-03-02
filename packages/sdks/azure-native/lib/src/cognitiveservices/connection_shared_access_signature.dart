@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionSharedAccessSignature {
-  final String? sas;
+  final pulumi.Input<String>? sas;
 
   /// Creates a new [ConnectionSharedAccessSignature].
   /// [sas] Optional.
@@ -18,7 +19,7 @@ class ConnectionSharedAccessSignature {
 
   factory ConnectionSharedAccessSignature.fromMap(Map<String, dynamic> map) {
     return ConnectionSharedAccessSignature(
-      sas: map['sas'] == null ? null : map['sas'] as String,
+      sas: map['sas'] == null ? null : (map['sas'] as String).input(),
     );
   }
 }

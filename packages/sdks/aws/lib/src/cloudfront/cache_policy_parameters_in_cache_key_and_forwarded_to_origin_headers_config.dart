@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_policy_parameters_in_cache_key_and_forwarded_to_origin_headers_config_headers.dart';
 
 class CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig {
   /// Whether any HTTP headers are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `header_behavior` are `none` and `whitelist`.
-  final String? headerBehavior;
+  final pulumi.Input<String>? headerBehavior;
   /// Object contains a list of header names. See Items for more information.
-  final CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders? headers;
+  final pulumi.Input<CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders>? headers;
 
   /// Creates a new [CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig].
   /// [headerBehavior] Whether any HTTP headers are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `header_behavior` are `none` and `whitelist`.
@@ -19,14 +20,14 @@ class CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'headerBehavior': ?headerBehavior,
-      'headers': ?headers == null ? null : headers!.toMap(),
+      'headers': ?pulumi.Input.mapOptionalInputValue<CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders, Map<String, dynamic>>(headers, (value) => value.toMap()),
     };
   }
 
   factory CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig.fromMap(Map<String, dynamic> map) {
     return CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig(
-      headerBehavior: map['headerBehavior'] == null ? null : map['headerBehavior'] as String,
-      headers: map['headers'] == null ? null : CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders.fromMap((map['headers'] as Map).cast<String, dynamic>()),
+      headerBehavior: map['headerBehavior'] == null ? null : (map['headerBehavior'] as String).input(),
+      headers: map['headers'] == null ? null : (CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders.fromMap((map['headers'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

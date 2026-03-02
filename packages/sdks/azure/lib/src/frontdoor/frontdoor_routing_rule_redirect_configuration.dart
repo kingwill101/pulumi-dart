@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorRoutingRuleRedirectConfiguration {
   /// The destination fragment in the portion of URL after '#'. Set this to add a fragment to the redirect URL.
-  final String? customFragment;
+  final pulumi.Input<String>? customFragment;
   /// Set this to change the URL for the redirection.
-  final String? customHost;
+  final pulumi.Input<String>? customHost;
   /// The path to retain as per the incoming request, or update in the URL for the redirection.
-  final String? customPath;
+  final pulumi.Input<String>? customPath;
   /// Replace any existing query string from the incoming request URL.
-  final String? customQueryString;
+  final pulumi.Input<String>? customQueryString;
   /// Protocol to use when redirecting. Valid options are `HttpOnly`, `HttpsOnly`, or `MatchRequest`.
-  final String redirectProtocol;
+  final pulumi.Input<String> redirectProtocol;
   /// Status code for the redirect. Valida options are `Moved`, `Found`, `TemporaryRedirect`, `PermanentRedirect`.
-  final String redirectType;
+  final pulumi.Input<String> redirectType;
 
   /// Creates a new [FrontdoorRoutingRuleRedirectConfiguration].
   /// [customFragment] The destination fragment in the portion of URL after '#'. Set this to add a fragment to the redirect URL.
@@ -44,12 +45,12 @@ class FrontdoorRoutingRuleRedirectConfiguration {
 
   factory FrontdoorRoutingRuleRedirectConfiguration.fromMap(Map<String, dynamic> map) {
     return FrontdoorRoutingRuleRedirectConfiguration(
-      customFragment: map['customFragment'] == null ? null : map['customFragment'] as String,
-      customHost: map['customHost'] == null ? null : map['customHost'] as String,
-      customPath: map['customPath'] == null ? null : map['customPath'] as String,
-      customQueryString: map['customQueryString'] == null ? null : map['customQueryString'] as String,
-      redirectProtocol: map['redirectProtocol'] as String,
-      redirectType: map['redirectType'] as String,
+      customFragment: map['customFragment'] == null ? null : (map['customFragment'] as String).input(),
+      customHost: map['customHost'] == null ? null : (map['customHost'] as String).input(),
+      customPath: map['customPath'] == null ? null : (map['customPath'] as String).input(),
+      customQueryString: map['customQueryString'] == null ? null : (map['customQueryString'] as String).input(),
+      redirectProtocol: (map['redirectProtocol'] as String).input(),
+      redirectType: (map['redirectType'] as String).input(),
     );
   }
 }

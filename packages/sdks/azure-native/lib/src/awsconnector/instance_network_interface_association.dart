@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of InstanceNetworkInterfaceAssociation
 class InstanceNetworkInterfaceAssociation {
   /// <p>The carrier IP address associated with the network interface.</p>
-  final String? carrierIp;
+  final pulumi.Input<String>? carrierIp;
   /// <p>The customer-owned IP address associated with the network interface.</p>
-  final String? customerOwnedIp;
+  final pulumi.Input<String>? customerOwnedIp;
   /// <p>The ID of the owner of the Elastic IP address.</p>
-  final String? ipOwnerId;
+  final pulumi.Input<String>? ipOwnerId;
   /// <p>The public DNS name.</p>
-  final String? publicDnsName;
+  final pulumi.Input<String>? publicDnsName;
   /// <p>The public IP address or Elastic IP address bound to the network interface.</p>
-  final String? publicIp;
+  final pulumi.Input<String>? publicIp;
 
   /// Creates a new [InstanceNetworkInterfaceAssociation].
   /// [carrierIp] <p>The carrier IP address associated with the network interface.</p>
@@ -40,11 +41,11 @@ class InstanceNetworkInterfaceAssociation {
 
   factory InstanceNetworkInterfaceAssociation.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkInterfaceAssociation(
-      carrierIp: map['carrierIp'] == null ? null : map['carrierIp'] as String,
-      customerOwnedIp: map['customerOwnedIp'] == null ? null : map['customerOwnedIp'] as String,
-      ipOwnerId: map['ipOwnerId'] == null ? null : map['ipOwnerId'] as String,
-      publicDnsName: map['publicDnsName'] == null ? null : map['publicDnsName'] as String,
-      publicIp: map['publicIp'] == null ? null : map['publicIp'] as String,
+      carrierIp: map['carrierIp'] == null ? null : (map['carrierIp'] as String).input(),
+      customerOwnedIp: map['customerOwnedIp'] == null ? null : (map['customerOwnedIp'] as String).input(),
+      ipOwnerId: map['ipOwnerId'] == null ? null : (map['ipOwnerId'] as String).input(),
+      publicDnsName: map['publicDnsName'] == null ? null : (map['publicDnsName'] as String).input(),
+      publicIp: map['publicIp'] == null ? null : (map['publicIp'] as String).input(),
     );
   }
 }

@@ -33,21 +33,14 @@ class KustoTableDataSetArgs {
   /// [shareName] The name of the share to add the data set to.
   /// [tableLevelSharingProperties] Table level sharing properties for kusto database
   KustoTableDataSetArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? dataSetName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> kustoDatabaseResourceId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareName,
-    required pulumi.Output<TableLevelSharingProperties> tableLevelSharingProperties,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      dataSetName = pulumi.Input.asOptionalInput<String>(dataSetName),
-      kind = pulumi.Input.asInput<String>(kind),
-      kustoDatabaseResourceId = pulumi.Input.asInput<String>(kustoDatabaseResourceId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareName = pulumi.Input.asInput<String>(shareName),
-      tableLevelSharingProperties = pulumi.Input.asInput<TableLevelSharingProperties>(tableLevelSharingProperties);
+    required this.accountName,
+    this.dataSetName,
+    required this.kind,
+    required this.kustoDatabaseResourceId,
+    required this.resourceGroupName,
+    required this.shareName,
+    required this.tableLevelSharingProperties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class KustoTableDataSetArgs {
 
   factory KustoTableDataSetArgs.fromMap(Map<String, dynamic> map) {
     return KustoTableDataSetArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      dataSetName: map['dataSetName'] == null ? null : pulumi.Output.create<String>(map['dataSetName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      kustoDatabaseResourceId: pulumi.Output.create<String>(map['kustoDatabaseResourceId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareName: pulumi.Output.create<String>(map['shareName'] as String),
-      tableLevelSharingProperties: pulumi.Output.create<TableLevelSharingProperties>(TableLevelSharingProperties.fromMap((map['tableLevelSharingProperties'] as Map).cast<String, dynamic>())),
+      accountName: (map['accountName'] as String).input(),
+      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      kustoDatabaseResourceId: (map['kustoDatabaseResourceId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareName: (map['shareName'] as String).input(),
+      tableLevelSharingProperties: (TableLevelSharingProperties.fromMap((map['tableLevelSharingProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

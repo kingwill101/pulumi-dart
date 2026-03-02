@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data used when creating a volume snapshot.
 class SnapshotCreationData {
   /// Fully qualified resource ID of the volume. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
-  final String sourceId;
+  final pulumi.Input<String> sourceId;
 
   /// Creates a new [SnapshotCreationData].
   /// [sourceId] Fully qualified resource ID of the volume. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
@@ -20,7 +21,7 @@ class SnapshotCreationData {
 
   factory SnapshotCreationData.fromMap(Map<String, dynamic> map) {
     return SnapshotCreationData(
-      sourceId: map['sourceId'] as String,
+      sourceId: (map['sourceId'] as String).input(),
     );
   }
 }

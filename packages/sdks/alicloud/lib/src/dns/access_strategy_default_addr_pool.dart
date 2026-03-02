@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessStrategyDefaultAddrPool {
   /// The ID of the address pool in the primary address pool group.
-  final String addrPoolId;
+  final pulumi.Input<String> addrPoolId;
   /// The weight of the address pool in the primary address pool group.
-  final int? lbaWeight;
+  final pulumi.Input<int>? lbaWeight;
 
   /// Creates a new [AccessStrategyDefaultAddrPool].
   /// [addrPoolId] The ID of the address pool in the primary address pool group.
@@ -24,8 +25,8 @@ class AccessStrategyDefaultAddrPool {
 
   factory AccessStrategyDefaultAddrPool.fromMap(Map<String, dynamic> map) {
     return AccessStrategyDefaultAddrPool(
-      addrPoolId: map['addrPoolId'] as String,
-      lbaWeight: map['lbaWeight'] == null ? null : map['lbaWeight'] as int,
+      addrPoolId: (map['addrPoolId'] as String).input(),
+      lbaWeight: map['lbaWeight'] == null ? null : (map['lbaWeight'] as int).input(),
     );
   }
 }

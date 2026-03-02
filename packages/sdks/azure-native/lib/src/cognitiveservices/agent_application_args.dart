@@ -26,17 +26,12 @@ class AgentApplicationArgs {
   /// [properties] [Required] Additional attributes of the entity.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   AgentApplicationArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<AgenticApplication> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asInput<AgenticApplication>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.name,
+    required this.projectName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AgentApplicationArgs {
 
   factory AgentApplicationArgs.fromMap(Map<String, dynamic> map) {
     return AgentApplicationArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: pulumi.Output.create<AgenticApplication>(AgenticApplication.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: (AgenticApplication.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

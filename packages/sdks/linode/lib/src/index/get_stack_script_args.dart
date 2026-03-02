@@ -13,9 +13,8 @@ class GetStackScriptArgs {
   /// Creates a new [GetStackScriptArgs].
   /// [id] The unique numeric ID of the StackScript to query.
   GetStackScriptArgs({
-    required pulumi.Output<String> id,
-  }) :
-      id = pulumi.Input.asInput<String>(id);
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetStackScriptArgs {
 
   factory GetStackScriptArgs.fromMap(Map<String, dynamic> map) {
     return GetStackScriptArgs(
-      id: pulumi.Output.create<String>(map['id'] as String),
+      id: (map['id'] as String).input(),
     );
   }
 }

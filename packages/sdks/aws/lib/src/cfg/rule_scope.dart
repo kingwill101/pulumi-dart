@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleScope {
   /// The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for `compliance_resource_types`.
-  final String? complianceResourceId;
+  final pulumi.Input<String>? complianceResourceId;
   /// A list of resource types of only those AWS resources that you want to trigger an evaluation for the ruleE.g., `AWS::EC2::Instance`. You can only specify one type if you also specify a resource ID for `compliance_resource_id`. See [relevant part of AWS Docs](http://docs.aws.amazon.com/config/latest/APIReference/API_ResourceIdentifier.html#config-Type-ResourceIdentifier-resourceType) for available types.
-  final List<String>? complianceResourceTypes;
+  final pulumi.Input<List<String>>? complianceResourceTypes;
   /// The tag key that is applied to only those AWS resources that you want you want to trigger an evaluation for the rule.
-  final String? tagKey;
+  final pulumi.Input<String>? tagKey;
   /// The tag value applied to only those AWS resources that you want to trigger an evaluation for the rule.
-  final String? tagValue;
+  final pulumi.Input<String>? tagValue;
 
   /// Creates a new [RuleScope].
   /// [complianceResourceId] The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for `compliance_resource_types`.
@@ -34,10 +35,10 @@ class RuleScope {
 
   factory RuleScope.fromMap(Map<String, dynamic> map) {
     return RuleScope(
-      complianceResourceId: map['complianceResourceId'] == null ? null : map['complianceResourceId'] as String,
-      complianceResourceTypes: map['complianceResourceTypes'] == null ? null : (map['complianceResourceTypes'] as List).cast<String>(),
-      tagKey: map['tagKey'] == null ? null : map['tagKey'] as String,
-      tagValue: map['tagValue'] == null ? null : map['tagValue'] as String,
+      complianceResourceId: map['complianceResourceId'] == null ? null : (map['complianceResourceId'] as String).input(),
+      complianceResourceTypes: map['complianceResourceTypes'] == null ? null : ((map['complianceResourceTypes'] as List).cast<String>()).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
     );
   }
 }

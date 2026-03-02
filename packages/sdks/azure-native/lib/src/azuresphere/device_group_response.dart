@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 
 /// An device group resource belonging to a product resource.
 class DeviceGroupResponse {
   /// Flag to define if the user allows for crash dump collection.
-  final String? allowCrashDumpsCollection;
+  final pulumi.Input<String>? allowCrashDumpsCollection;
   /// Description of the device group.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Deployment status for the device group.
-  final bool hasDeployment;
+  final pulumi.Input<bool> hasDeployment;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the resource
-  final String name;
+  final pulumi.Input<String> name;
   /// Operating system feed type of the device group.
-  final String? osFeedType;
+  final pulumi.Input<String>? osFeedType;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Regional data boundary for the device group.
-  final String? regionalDataBoundary;
+  final pulumi.Input<String>? regionalDataBoundary;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final pulumi.Input<String> type;
   /// Update policy of the device group.
-  final String? updatePolicy;
+  final pulumi.Input<String>? updatePolicy;
 
   /// Creates a new [DeviceGroupResponse].
   /// [allowCrashDumpsCollection] Flag to define if the user allows for crash dump collection.
@@ -63,7 +64,7 @@ class DeviceGroupResponse {
       'osFeedType': ?osFeedType,
       'provisioningState': provisioningState,
       'regionalDataBoundary': ?regionalDataBoundary,
-      'systemData': systemData.toMap(),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
       'updatePolicy': ?updatePolicy,
     };
@@ -71,17 +72,17 @@ class DeviceGroupResponse {
 
   factory DeviceGroupResponse.fromMap(Map<String, dynamic> map) {
     return DeviceGroupResponse(
-      allowCrashDumpsCollection: map['allowCrashDumpsCollection'] == null ? null : map['allowCrashDumpsCollection'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      hasDeployment: map['hasDeployment'] as bool,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      osFeedType: map['osFeedType'] == null ? null : map['osFeedType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : map['regionalDataBoundary'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      updatePolicy: map['updatePolicy'] == null ? null : map['updatePolicy'] as String,
+      allowCrashDumpsCollection: map['allowCrashDumpsCollection'] == null ? null : (map['allowCrashDumpsCollection'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hasDeployment: (map['hasDeployment'] as bool).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      osFeedType: map['osFeedType'] == null ? null : (map['osFeedType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary'] as String).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      updatePolicy: map['updatePolicy'] == null ? null : (map['updatePolicy'] as String).input(),
     );
   }
 }

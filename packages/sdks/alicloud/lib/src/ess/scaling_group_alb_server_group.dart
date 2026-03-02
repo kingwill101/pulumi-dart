@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScalingGroupAlbServerGroup {
   /// The ID of ALB server group.
-  final String? albServerGroupId;
+  final pulumi.Input<String>? albServerGroupId;
   /// The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
-  final int? weight;
+  final pulumi.Input<int>? weight;
 
   /// Creates a new [ScalingGroupAlbServerGroup].
   /// [albServerGroupId] The ID of ALB server group.
@@ -29,9 +30,9 @@ class ScalingGroupAlbServerGroup {
 
   factory ScalingGroupAlbServerGroup.fromMap(Map<String, dynamic> map) {
     return ScalingGroupAlbServerGroup(
-      albServerGroupId: map['albServerGroupId'] == null ? null : map['albServerGroupId'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      albServerGroupId: map['albServerGroupId'] == null ? null : (map['albServerGroupId'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

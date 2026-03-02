@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For a large document, sharding may be performed to produce several document shards. Each document shard contains this field to detail which shard it is.
 class GoogleCloudDocumentaiV1DocumentShardInfoResponse {
   /// Total number of shards.
-  final String shardCount;
+  final pulumi.Input<String> shardCount;
   /// The 0-based index of this shard.
-  final String shardIndex;
+  final pulumi.Input<String> shardIndex;
   /// The index of the first character in Document.text in the overall document global text.
-  final String textOffset;
+  final pulumi.Input<String> textOffset;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentShardInfoResponse].
   /// [shardCount] Total number of shards.
@@ -30,9 +31,9 @@ class GoogleCloudDocumentaiV1DocumentShardInfoResponse {
 
   factory GoogleCloudDocumentaiV1DocumentShardInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentShardInfoResponse(
-      shardCount: map['shardCount'] as String,
-      shardIndex: map['shardIndex'] as String,
-      textOffset: map['textOffset'] as String,
+      shardCount: (map['shardCount'] as String).input(),
+      shardIndex: (map['shardIndex'] as String).input(),
+      textOffset: (map['textOffset'] as String).input(),
     );
   }
 }

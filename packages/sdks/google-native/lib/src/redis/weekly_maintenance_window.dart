@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'time_of_day.dart';
 import 'weekly_maintenance_window_day.dart';
 
 /// Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
 class WeeklyMaintenanceWindow {
   /// The day of week that maintenance updates occur.
-  final WeeklyMaintenanceWindowDay day;
+  final pulumi.Input<WeeklyMaintenanceWindowDay> day;
   /// Start time of the window in UTC time.
-  final TimeOfDay startTime;
+  final pulumi.Input<TimeOfDay> startTime;
 
   /// Creates a new [WeeklyMaintenanceWindow].
   /// [day] The day of week that maintenance updates occur.
@@ -20,15 +21,15 @@ class WeeklyMaintenanceWindow {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'day': day.value,
-      'startTime': startTime.toMap(),
+      'day': pulumi.Input.mapInputValue<WeeklyMaintenanceWindowDay, String>(day, (value) => value.value),
+      'startTime': pulumi.Input.mapInputValue<TimeOfDay, Map<String, dynamic>>(startTime, (value) => value.toMap()),
     };
   }
 
   factory WeeklyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return WeeklyMaintenanceWindow(
-      day: WeeklyMaintenanceWindowDay.fromValue(map['day'] as String),
-      startTime: TimeOfDay.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      day: (WeeklyMaintenanceWindowDay.fromValue(map['day'] as String)).input(),
+      startTime: (TimeOfDay.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

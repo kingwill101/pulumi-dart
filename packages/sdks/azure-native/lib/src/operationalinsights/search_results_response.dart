@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parameters of the search job that initiated this table.
 class SearchResultsResponse {
   /// Search results table async operation id.
-  final String azureAsyncOperationId;
+  final pulumi.Input<String> azureAsyncOperationId;
   /// Search job Description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The timestamp to end the search by (UTC)
-  final String? endSearchTime;
+  final pulumi.Input<String>? endSearchTime;
   /// Limit the search job to return up to specified number of rows.
-  final int? limit;
+  final pulumi.Input<int>? limit;
   /// Search job query.
-  final String? query;
+  final pulumi.Input<String>? query;
   /// The table used in the search job.
-  final String sourceTable;
+  final pulumi.Input<String> sourceTable;
   /// The timestamp to start the search from (UTC)
-  final String? startSearchTime;
+  final pulumi.Input<String>? startSearchTime;
 
   /// Creates a new [SearchResultsResponse].
   /// [azureAsyncOperationId] Search results table async operation id.
@@ -50,13 +51,13 @@ class SearchResultsResponse {
 
   factory SearchResultsResponse.fromMap(Map<String, dynamic> map) {
     return SearchResultsResponse(
-      azureAsyncOperationId: map['azureAsyncOperationId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      endSearchTime: map['endSearchTime'] == null ? null : map['endSearchTime'] as String,
-      limit: map['limit'] == null ? null : map['limit'] as int,
-      query: map['query'] == null ? null : map['query'] as String,
-      sourceTable: map['sourceTable'] as String,
-      startSearchTime: map['startSearchTime'] == null ? null : map['startSearchTime'] as String,
+      azureAsyncOperationId: (map['azureAsyncOperationId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endSearchTime: map['endSearchTime'] == null ? null : (map['endSearchTime'] as String).input(),
+      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
+      query: map['query'] == null ? null : (map['query'] as String).input(),
+      sourceTable: (map['sourceTable'] as String).input(),
+      startSearchTime: map['startSearchTime'] == null ? null : (map['startSearchTime'] as String).input(),
     );
   }
 }

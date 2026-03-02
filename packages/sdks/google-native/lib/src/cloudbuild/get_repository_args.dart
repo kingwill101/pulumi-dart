@@ -18,15 +18,11 @@ class GetRepositoryArgs {
   /// [project] Optional.
   /// [repositoryId] Required.
   GetRepositoryArgs({
-    required pulumi.Output<String> connectionId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-  }) :
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId);
+    required this.connectionId,
+    required this.location,
+    this.project,
+    required this.repositoryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetRepositoryArgs {
 
   factory GetRepositoryArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryArgs(
-      connectionId: pulumi.Output.create<String>(map['connectionId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
+      connectionId: (map['connectionId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
     );
   }
 }

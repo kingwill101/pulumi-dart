@@ -16,13 +16,10 @@ class GetHyperparameterTuningJobAiplatformV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   GetHyperparameterTuningJobAiplatformV1beta1Args({
-    required pulumi.Output<String> hyperparameterTuningJobId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      hyperparameterTuningJobId = pulumi.Input.asInput<String>(hyperparameterTuningJobId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.hyperparameterTuningJobId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetHyperparameterTuningJobAiplatformV1beta1Args {
 
   factory GetHyperparameterTuningJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetHyperparameterTuningJobAiplatformV1beta1Args(
-      hyperparameterTuningJobId: pulumi.Output.create<String>(map['hyperparameterTuningJobId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      hyperparameterTuningJobId: (map['hyperparameterTuningJobId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

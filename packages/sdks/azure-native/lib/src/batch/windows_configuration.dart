@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Windows operating system settings to apply to the virtual machine.
 class WindowsConfiguration {
   /// If omitted, the default value is true.
-  final bool? enableAutomaticUpdates;
+  final pulumi.Input<bool>? enableAutomaticUpdates;
 
   /// Creates a new [WindowsConfiguration].
   /// [enableAutomaticUpdates] If omitted, the default value is true.
@@ -20,7 +21,7 @@ class WindowsConfiguration {
 
   factory WindowsConfiguration.fromMap(Map<String, dynamic> map) {
     return WindowsConfiguration(
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : map['enableAutomaticUpdates'] as bool,
+      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates'] as bool).input(),
     );
   }
 }

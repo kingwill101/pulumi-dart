@@ -22,15 +22,11 @@ class GetImageArgs {
   /// [resourceGroupName] The Name of the Resource Group where this Image exists.
   /// [sortDescending] By default when matching by regex, images are sorted by name in ascending order and the first match is chosen, to sort descending, set this flag.
   GetImageArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nameRegex,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? sortDescending,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sortDescending = pulumi.Input.asOptionalInput<bool>(sortDescending);
+    this.name,
+    this.nameRegex,
+    required this.resourceGroupName,
+    this.sortDescending,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sortDescending: map['sortDescending'] == null ? null : pulumi.Output.create<bool>(map['sortDescending'] as bool),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sortDescending: map['sortDescending'] == null ? null : (map['sortDescending'] as bool).input(),
     );
   }
 }

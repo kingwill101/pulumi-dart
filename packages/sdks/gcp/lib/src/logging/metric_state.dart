@@ -62,27 +62,17 @@ class MetricState {
   /// [project] The ID of the project in which the resource belongs.
   /// [valueExtractor] A valueExtractor is required when using a distribution logs-based metric to extract the values to
   MetricState({
-    pulumi.Output<String>? bucketName,
-    pulumi.Output<MetricBucketOptions>? bucketOptions,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? filter,
-    pulumi.Output<Map<String, String>>? labelExtractors,
-    pulumi.Output<MetricMetricDescriptor>? metricDescriptor,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? valueExtractor,
-  }) :
-      bucketName = pulumi.Input.asOptionalInput<String>(bucketName),
-      bucketOptions = pulumi.Input.asOptionalInput<MetricBucketOptions>(bucketOptions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      labelExtractors = pulumi.Input.asOptionalInput<Map<String, String>>(labelExtractors),
-      metricDescriptor = pulumi.Input.asOptionalInput<MetricMetricDescriptor>(metricDescriptor),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      valueExtractor = pulumi.Input.asOptionalInput<String>(valueExtractor);
+    this.bucketName,
+    this.bucketOptions,
+    this.description,
+    this.disabled,
+    this.filter,
+    this.labelExtractors,
+    this.metricDescriptor,
+    this.name,
+    this.project,
+    this.valueExtractor,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,16 +91,16 @@ class MetricState {
 
   factory MetricState.fromMap(Map<String, dynamic> map) {
     return MetricState(
-      bucketName: map['bucketName'] == null ? null : pulumi.Output.create<String>(map['bucketName'] as String),
-      bucketOptions: map['bucketOptions'] == null ? null : pulumi.Output.create<MetricBucketOptions>(MetricBucketOptions.fromMap((map['bucketOptions'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      labelExtractors: map['labelExtractors'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labelExtractors'] as Map).cast<String, String>()),
-      metricDescriptor: map['metricDescriptor'] == null ? null : pulumi.Output.create<MetricMetricDescriptor>(MetricMetricDescriptor.fromMap((map['metricDescriptor'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      valueExtractor: map['valueExtractor'] == null ? null : pulumi.Output.create<String>(map['valueExtractor'] as String),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      bucketOptions: map['bucketOptions'] == null ? null : (MetricBucketOptions.fromMap((map['bucketOptions'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      labelExtractors: map['labelExtractors'] == null ? null : ((map['labelExtractors'] as Map).cast<String, String>()).input(),
+      metricDescriptor: map['metricDescriptor'] == null ? null : (MetricMetricDescriptor.fromMap((map['metricDescriptor'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      valueExtractor: map['valueExtractor'] == null ? null : (map['valueExtractor'] as String).input(),
     );
   }
 }

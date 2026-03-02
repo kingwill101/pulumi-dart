@@ -38,25 +38,16 @@ class WorkspaceLoggerArgs {
   /// [serviceName] The name of the API Management service.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   WorkspaceLoggerArgs({
-    pulumi.Output<Map<String, String>>? credentials,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? isBuffered,
-    pulumi.Output<String>? loggerId,
-    required pulumi.Output<String> loggerType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceId,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      credentials = pulumi.Input.asOptionalInput<Map<String, String>>(credentials),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      isBuffered = pulumi.Input.asOptionalInput<bool>(isBuffered),
-      loggerId = pulumi.Input.asOptionalInput<String>(loggerId),
-      loggerType = pulumi.Input.asInput<String>(loggerType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.credentials,
+    this.description,
+    this.isBuffered,
+    this.loggerId,
+    required this.loggerType,
+    required this.resourceGroupName,
+    this.resourceId,
+    required this.serviceName,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class WorkspaceLoggerArgs {
 
   factory WorkspaceLoggerArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceLoggerArgs(
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<Map<String, String>>((map['credentials'] as Map).cast<String, String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      isBuffered: map['isBuffered'] == null ? null : pulumi.Output.create<bool>(map['isBuffered'] as bool),
-      loggerId: map['loggerId'] == null ? null : pulumi.Output.create<String>(map['loggerId'] as String),
-      loggerType: pulumi.Output.create<String>(map['loggerType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      credentials: map['credentials'] == null ? null : ((map['credentials'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isBuffered: map['isBuffered'] == null ? null : (map['isBuffered'] as bool).input(),
+      loggerId: map['loggerId'] == null ? null : (map['loggerId'] as String).input(),
+      loggerType: (map['loggerType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

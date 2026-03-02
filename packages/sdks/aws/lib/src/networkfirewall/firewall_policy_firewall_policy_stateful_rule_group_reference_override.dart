@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride {
   /// The action that changes the rule group from DROP to ALERT . This only applies to managed rule groups.
-  final String? action;
+  final pulumi.Input<String>? action;
 
   /// Creates a new [FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride].
   /// [action] The action that changes the rule group from DROP to ALERT . This only applies to managed rule groups.
@@ -19,7 +20,7 @@ class FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride {
 
   factory FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride(
-      action: map['action'] == null ? null : map['action'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
     );
   }
 }

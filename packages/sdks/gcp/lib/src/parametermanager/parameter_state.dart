@@ -58,29 +58,18 @@ class ParameterState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] The time at which the Parameter was updated.
   ParameterState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? format,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parameterId,
-    pulumi.Output<List<ParameterPolicyMember>>? policyMembers,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      format = pulumi.Input.asOptionalInput<String>(format),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameterId = pulumi.Input.asOptionalInput<String>(parameterId),
-      policyMembers = pulumi.Input.asOptionalInput<List<ParameterPolicyMember>>(policyMembers),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.effectiveLabels,
+    this.format,
+    this.kmsKey,
+    this.labels,
+    this.name,
+    this.parameterId,
+    this.policyMembers,
+    this.project,
+    this.pulumiLabels,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,17 +89,17 @@ class ParameterState {
 
   factory ParameterState.fromMap(Map<String, dynamic> map) {
     return ParameterState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameterId: map['parameterId'] == null ? null : pulumi.Output.create<String>(map['parameterId'] as String),
-      policyMembers: map['policyMembers'] == null ? null : pulumi.Output.create<List<ParameterPolicyMember>>(pulumi.Input.decodeList<ParameterPolicyMember>(map['policyMembers'], (value) => ParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameterId: map['parameterId'] == null ? null : (map['parameterId'] as String).input(),
+      policyMembers: map['policyMembers'] == null ? null : (pulumi.Input.decodeList<ParameterPolicyMember>(map['policyMembers'], (value) => ParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_target_encryption_cipher.dart';
 import 'volume_target_encryption_ivgen.dart';
 import 'volume_target_encryption_secret.dart';
 
 class VolumeTargetEncryption {
   /// Sets the encryption cipher for the storage volume to be applied.
-  final VolumeTargetEncryptionCipher? cipher;
+  final pulumi.Input<VolumeTargetEncryptionCipher>? cipher;
   /// Defines the format of the encryption for the storage volume.
-  final String format;
+  final pulumi.Input<String> format;
   /// Controls the initialization vector generation settings for the encryption.
-  final VolumeTargetEncryptionIvgen? ivgen;
+  final pulumi.Input<VolumeTargetEncryptionIvgen>? ivgen;
   /// Provides the configuration for the secret used in the encryption process.
-  final VolumeTargetEncryptionSecret? secret;
+  final pulumi.Input<VolumeTargetEncryptionSecret>? secret;
 
   /// Creates a new [VolumeTargetEncryption].
   /// [cipher] Sets the encryption cipher for the storage volume to be applied.
@@ -28,19 +29,19 @@ class VolumeTargetEncryption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cipher': ?cipher == null ? null : cipher!.toMap(),
+      'cipher': ?pulumi.Input.mapOptionalInputValue<VolumeTargetEncryptionCipher, Map<String, dynamic>>(cipher, (value) => value.toMap()),
       'format': format,
-      'ivgen': ?ivgen == null ? null : ivgen!.toMap(),
-      'secret': ?secret == null ? null : secret!.toMap(),
+      'ivgen': ?pulumi.Input.mapOptionalInputValue<VolumeTargetEncryptionIvgen, Map<String, dynamic>>(ivgen, (value) => value.toMap()),
+      'secret': ?pulumi.Input.mapOptionalInputValue<VolumeTargetEncryptionSecret, Map<String, dynamic>>(secret, (value) => value.toMap()),
     };
   }
 
   factory VolumeTargetEncryption.fromMap(Map<String, dynamic> map) {
     return VolumeTargetEncryption(
-      cipher: map['cipher'] == null ? null : VolumeTargetEncryptionCipher.fromMap((map['cipher'] as Map).cast<String, dynamic>()),
-      format: map['format'] as String,
-      ivgen: map['ivgen'] == null ? null : VolumeTargetEncryptionIvgen.fromMap((map['ivgen'] as Map).cast<String, dynamic>()),
-      secret: map['secret'] == null ? null : VolumeTargetEncryptionSecret.fromMap((map['secret'] as Map).cast<String, dynamic>()),
+      cipher: map['cipher'] == null ? null : (VolumeTargetEncryptionCipher.fromMap((map['cipher'] as Map).cast<String, dynamic>())).input(),
+      format: (map['format'] as String).input(),
+      ivgen: map['ivgen'] == null ? null : (VolumeTargetEncryptionIvgen.fromMap((map['ivgen'] as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (VolumeTargetEncryptionSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigActionExportDataProfileTable {
   /// Dataset Id of the table
-  final String? datasetId;
+  final pulumi.Input<String>? datasetId;
   /// The Google Cloud Platform project ID of the project containing the table. If omitted, the project ID is inferred from the API call.
-  final String? projectId;
+  final pulumi.Input<String>? projectId;
   /// Name of the table
-  final String? tableId;
+  final pulumi.Input<String>? tableId;
 
   /// Creates a new [PreventionDiscoveryConfigActionExportDataProfileTable].
   /// [datasetId] Dataset Id of the table
@@ -29,9 +30,9 @@ class PreventionDiscoveryConfigActionExportDataProfileTable {
 
   factory PreventionDiscoveryConfigActionExportDataProfileTable.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionExportDataProfileTable(
-      datasetId: map['datasetId'] == null ? null : map['datasetId'] as String,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
-      tableId: map['tableId'] == null ? null : map['tableId'] as String,
+      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      tableId: map['tableId'] == null ? null : (map['tableId'] as String).input(),
     );
   }
 }

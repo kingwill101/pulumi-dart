@@ -22,19 +22,13 @@ class GetPartitionArgs {
   /// [project] Optional.
   /// [zone] Required.
   GetPartitionArgs({
-    required pulumi.Output<String> entityId,
-    required pulumi.Output<String> lakeId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> partitionId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> zone,
-  }) :
-      entityId = pulumi.Input.asInput<String>(entityId),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asInput<String>(location),
-      partitionId = pulumi.Input.asInput<String>(partitionId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+    required this.entityId,
+    required this.lakeId,
+    required this.location,
+    required this.partitionId,
+    this.project,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,12 +43,12 @@ class GetPartitionArgs {
 
   factory GetPartitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPartitionArgs(
-      entityId: pulumi.Output.create<String>(map['entityId'] as String),
-      lakeId: pulumi.Output.create<String>(map['lakeId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      partitionId: pulumi.Output.create<String>(map['partitionId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      entityId: (map['entityId'] as String).input(),
+      lakeId: (map['lakeId'] as String).input(),
+      location: (map['location'] as String).input(),
+      partitionId: (map['partitionId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

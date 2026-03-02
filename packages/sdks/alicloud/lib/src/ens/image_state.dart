@@ -25,19 +25,13 @@ class ImageState {
   /// [status] The state of the image.
   /// [targetOssRegionId] The region of the target OSS where the image is to be stored.
   ImageState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? deleteAfterImageUpload,
-    pulumi.Output<String>? imageName,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? targetOssRegionId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      deleteAfterImageUpload = pulumi.Input.asOptionalInput<String>(deleteAfterImageUpload),
-      imageName = pulumi.Input.asOptionalInput<String>(imageName),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      targetOssRegionId = pulumi.Input.asOptionalInput<String>(targetOssRegionId);
+    this.createTime,
+    this.deleteAfterImageUpload,
+    this.imageName,
+    this.instanceId,
+    this.status,
+    this.targetOssRegionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class ImageState {
 
   factory ImageState.fromMap(Map<String, dynamic> map) {
     return ImageState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      deleteAfterImageUpload: map['deleteAfterImageUpload'] == null ? null : pulumi.Output.create<String>(map['deleteAfterImageUpload'] as String),
-      imageName: map['imageName'] == null ? null : pulumi.Output.create<String>(map['imageName'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      targetOssRegionId: map['targetOssRegionId'] == null ? null : pulumi.Output.create<String>(map['targetOssRegionId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      deleteAfterImageUpload: map['deleteAfterImageUpload'] == null ? null : (map['deleteAfterImageUpload'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      targetOssRegionId: map['targetOssRegionId'] == null ? null : (map['targetOssRegionId'] as String).input(),
     );
   }
 }

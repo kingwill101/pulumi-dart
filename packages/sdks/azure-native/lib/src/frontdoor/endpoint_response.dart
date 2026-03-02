@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the endpoint properties
 class EndpointResponse {
   /// The endpoint URL
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// The name of the endpoint
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [EndpointResponse].
   /// [endpoint] The endpoint URL
@@ -25,8 +26,8 @@ class EndpointResponse {
 
   factory EndpointResponse.fromMap(Map<String, dynamic> map) {
     return EndpointResponse(
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

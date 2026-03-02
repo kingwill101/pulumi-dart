@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointConnectionNetworkInterface {
   /// The ID of the network interface associated with the private endpoint.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specifies the Name of the private endpoint.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetEndpointConnectionNetworkInterface].
   /// [id] The ID of the network interface associated with the private endpoint.
@@ -24,8 +25,8 @@ class GetEndpointConnectionNetworkInterface {
 
   factory GetEndpointConnectionNetworkInterface.fromMap(Map<String, dynamic> map) {
     return GetEndpointConnectionNetworkInterface(
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

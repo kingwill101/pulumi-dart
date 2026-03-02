@@ -42,27 +42,17 @@ class RemediationAtManagementGroupArgs {
   /// [resourceCount] Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
   /// [resourceDiscoveryMode] The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
   RemediationAtManagementGroupArgs({
-    pulumi.Output<RemediationPropertiesFailureThreshold>? failureThreshold,
-    pulumi.Output<RemediationFilters>? filters,
-    required pulumi.Output<String> managementGroupId,
-    required pulumi.Output<String> managementGroupsNamespace,
-    pulumi.Output<int>? parallelDeployments,
-    pulumi.Output<String>? policyAssignmentId,
-    pulumi.Output<String>? policyDefinitionReferenceId,
-    pulumi.Output<String>? remediationName,
-    pulumi.Output<int>? resourceCount,
-    pulumi.Output<String>? resourceDiscoveryMode,
-  }) :
-      failureThreshold = pulumi.Input.asOptionalInput<RemediationPropertiesFailureThreshold>(failureThreshold),
-      filters = pulumi.Input.asOptionalInput<RemediationFilters>(filters),
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      managementGroupsNamespace = pulumi.Input.asInput<String>(managementGroupsNamespace),
-      parallelDeployments = pulumi.Input.asOptionalInput<int>(parallelDeployments),
-      policyAssignmentId = pulumi.Input.asOptionalInput<String>(policyAssignmentId),
-      policyDefinitionReferenceId = pulumi.Input.asOptionalInput<String>(policyDefinitionReferenceId),
-      remediationName = pulumi.Input.asOptionalInput<String>(remediationName),
-      resourceCount = pulumi.Input.asOptionalInput<int>(resourceCount),
-      resourceDiscoveryMode = pulumi.Input.asOptionalInput<String>(resourceDiscoveryMode);
+    this.failureThreshold,
+    this.filters,
+    required this.managementGroupId,
+    required this.managementGroupsNamespace,
+    this.parallelDeployments,
+    this.policyAssignmentId,
+    this.policyDefinitionReferenceId,
+    this.remediationName,
+    this.resourceCount,
+    this.resourceDiscoveryMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class RemediationAtManagementGroupArgs {
 
   factory RemediationAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return RemediationAtManagementGroupArgs(
-      failureThreshold: map['failureThreshold'] == null ? null : pulumi.Output.create<RemediationPropertiesFailureThreshold>(RemediationPropertiesFailureThreshold.fromMap((map['failureThreshold'] as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Output.create<RemediationFilters>(RemediationFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())),
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      managementGroupsNamespace: pulumi.Output.create<String>(map['managementGroupsNamespace'] as String),
-      parallelDeployments: map['parallelDeployments'] == null ? null : pulumi.Output.create<int>(map['parallelDeployments'] as int),
-      policyAssignmentId: map['policyAssignmentId'] == null ? null : pulumi.Output.create<String>(map['policyAssignmentId'] as String),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : pulumi.Output.create<String>(map['policyDefinitionReferenceId'] as String),
-      remediationName: map['remediationName'] == null ? null : pulumi.Output.create<String>(map['remediationName'] as String),
-      resourceCount: map['resourceCount'] == null ? null : pulumi.Output.create<int>(map['resourceCount'] as int),
-      resourceDiscoveryMode: map['resourceDiscoveryMode'] == null ? null : pulumi.Output.create<String>(map['resourceDiscoveryMode'] as String),
+      failureThreshold: map['failureThreshold'] == null ? null : (RemediationPropertiesFailureThreshold.fromMap((map['failureThreshold'] as Map).cast<String, dynamic>())).input(),
+      filters: map['filters'] == null ? null : (RemediationFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      managementGroupsNamespace: (map['managementGroupsNamespace'] as String).input(),
+      parallelDeployments: map['parallelDeployments'] == null ? null : (map['parallelDeployments'] as int).input(),
+      policyAssignmentId: map['policyAssignmentId'] == null ? null : (map['policyAssignmentId'] as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
+      remediationName: map['remediationName'] == null ? null : (map['remediationName'] as String).input(),
+      resourceCount: map['resourceCount'] == null ? null : (map['resourceCount'] as int).input(),
+      resourceDiscoveryMode: map['resourceDiscoveryMode'] == null ? null : (map['resourceDiscoveryMode'] as String).input(),
     );
   }
 }

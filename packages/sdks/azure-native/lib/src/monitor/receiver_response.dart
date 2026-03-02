@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'otlp_receiver_response.dart';
 import 'syslog_receiver_response.dart';
 import 'udp_receiver_response.dart';
@@ -7,15 +8,15 @@ import 'udp_receiver_response.dart';
 /// Receiver Info.
 class ReceiverResponse {
   /// The name of receiver.
-  final String name;
+  final pulumi.Input<String> name;
   /// OTLP receiver configurations. This field is mandatory for OTLP and pipelineGroup receivers.
-  final OtlpReceiverResponse? otlp;
+  final pulumi.Input<OtlpReceiverResponse>? otlp;
   /// Syslog configurations. This field is mandatory for syslog type receivers.
-  final SyslogReceiverResponse? syslog;
+  final pulumi.Input<SyslogReceiverResponse>? syslog;
   /// The type of receiver.
-  final String type;
+  final pulumi.Input<String> type;
   /// UDP receiver configurations. This field is mandatory for UDP receivers.
-  final UdpReceiverResponse? udp;
+  final pulumi.Input<UdpReceiverResponse>? udp;
 
   /// Creates a new [ReceiverResponse].
   /// [name] The name of receiver.
@@ -34,20 +35,20 @@ class ReceiverResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'otlp': ?otlp == null ? null : otlp!.toMap(),
-      'syslog': ?syslog == null ? null : syslog!.toMap(),
+      'otlp': ?pulumi.Input.mapOptionalInputValue<OtlpReceiverResponse, Map<String, dynamic>>(otlp, (value) => value.toMap()),
+      'syslog': ?pulumi.Input.mapOptionalInputValue<SyslogReceiverResponse, Map<String, dynamic>>(syslog, (value) => value.toMap()),
       'type': type,
-      'udp': ?udp == null ? null : udp!.toMap(),
+      'udp': ?pulumi.Input.mapOptionalInputValue<UdpReceiverResponse, Map<String, dynamic>>(udp, (value) => value.toMap()),
     };
   }
 
   factory ReceiverResponse.fromMap(Map<String, dynamic> map) {
     return ReceiverResponse(
-      name: map['name'] as String,
-      otlp: map['otlp'] == null ? null : OtlpReceiverResponse.fromMap((map['otlp'] as Map).cast<String, dynamic>()),
-      syslog: map['syslog'] == null ? null : SyslogReceiverResponse.fromMap((map['syslog'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      udp: map['udp'] == null ? null : UdpReceiverResponse.fromMap((map['udp'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      otlp: map['otlp'] == null ? null : (OtlpReceiverResponse.fromMap((map['otlp'] as Map).cast<String, dynamic>())).input(),
+      syslog: map['syslog'] == null ? null : (SyslogReceiverResponse.fromMap((map['syslog'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      udp: map['udp'] == null ? null : (UdpReceiverResponse.fromMap((map['udp'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

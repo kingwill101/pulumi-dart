@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
   /// AWS Key ID.
-  final String accessKeyId;
+  final pulumi.Input<String> accessKeyId;
   /// AWS Secret Access Key.
-  final String secretAccessKey;
+  final pulumi.Input<String> secretAccessKey;
 
   /// Creates a new [TransferJobTransferSpecAwsS3DataSourceAwsAccessKey].
   /// [accessKeyId] AWS Key ID.
@@ -24,8 +25,8 @@ class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
 
   factory TransferJobTransferSpecAwsS3DataSourceAwsAccessKey.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecAwsS3DataSourceAwsAccessKey(
-      accessKeyId: map['accessKeyId'] as String,
-      secretAccessKey: map['secretAccessKey'] as String,
+      accessKeyId: (map['accessKeyId'] as String).input(),
+      secretAccessKey: (map['secretAccessKey'] as String).input(),
     );
   }
 }

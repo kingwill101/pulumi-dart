@@ -6,7 +6,7 @@ import 'vmware_cluster_network_config_static_ip_config_ip_block.dart';
 class VMwareClusterNetworkConfigStaticIpConfig {
   /// Represents the configuration values for static IP allocation to nodes.
   /// Structure is documented below.
-  final List<VMwareClusterNetworkConfigStaticIpConfigIpBlock> ipBlocks;
+  final pulumi.Input<List<VMwareClusterNetworkConfigStaticIpConfigIpBlock>> ipBlocks;
 
   /// Creates a new [VMwareClusterNetworkConfigStaticIpConfig].
   /// [ipBlocks] Represents the configuration values for static IP allocation to nodes.
@@ -16,13 +16,13 @@ class VMwareClusterNetworkConfigStaticIpConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipBlocks': pulumi.Input.encodeList<VMwareClusterNetworkConfigStaticIpConfigIpBlock, Map<String, dynamic>>(ipBlocks, (value) => value.toMap()),
+      'ipBlocks': pulumi.Input.mapInputValue<List<VMwareClusterNetworkConfigStaticIpConfigIpBlock>, List<Map<String, dynamic>>>(ipBlocks, (value) => pulumi.Input.encodeList<VMwareClusterNetworkConfigStaticIpConfigIpBlock, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VMwareClusterNetworkConfigStaticIpConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterNetworkConfigStaticIpConfig(
-      ipBlocks: pulumi.Input.decodeList<VMwareClusterNetworkConfigStaticIpConfigIpBlock>(map['ipBlocks'], (value) => VMwareClusterNetworkConfigStaticIpConfigIpBlock.fromMap((value as Map).cast<String, dynamic>())),
+      ipBlocks: (pulumi.Input.decodeList<VMwareClusterNetworkConfigStaticIpConfigIpBlock>(map['ipBlocks'], (value) => VMwareClusterNetworkConfigStaticIpConfigIpBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

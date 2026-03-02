@@ -25,17 +25,12 @@ class GetEngineVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Version of the DB engine. For example, `3.6.0`. If `version` and `preferred_versions` are not set, the data source will provide information for the AWS-defined default version. If both the `version` and `preferred_versions` arguments are not configured, the data source will return the default version for the engine.
   GetEngineVersionArgs({
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? parameterGroupFamily,
-    pulumi.Output<List<String>>? preferredVersions,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? version,
-  }) :
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      parameterGroupFamily = pulumi.Input.asOptionalInput<String>(parameterGroupFamily),
-      preferredVersions = pulumi.Input.asOptionalInput<List<String>>(preferredVersions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.engine,
+    this.parameterGroupFamily,
+    this.preferredVersions,
+    this.region,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetEngineVersionArgs {
 
   factory GetEngineVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetEngineVersionArgs(
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      parameterGroupFamily: map['parameterGroupFamily'] == null ? null : pulumi.Output.create<String>(map['parameterGroupFamily'] as String),
-      preferredVersions: map['preferredVersions'] == null ? null : pulumi.Output.create<List<String>>((map['preferredVersions'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      parameterGroupFamily: map['parameterGroupFamily'] == null ? null : (map['parameterGroupFamily'] as String).input(),
+      preferredVersions: map['preferredVersions'] == null ? null : ((map['preferredVersions'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

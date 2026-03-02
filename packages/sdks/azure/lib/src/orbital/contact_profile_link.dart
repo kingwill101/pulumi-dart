@@ -5,13 +5,13 @@ import 'contact_profile_link_channel.dart';
 
 class ContactProfileLink {
   /// A list of contact profile link channels. A `channels` block as defined below.
-  final List<ContactProfileLinkChannel> channels;
+  final pulumi.Input<List<ContactProfileLinkChannel>> channels;
   /// Direction of the link. Possible values are `Uplink` and `Downlink`.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// Name of the link.
-  final String name;
+  final pulumi.Input<String> name;
   /// Polarization of the link. Possible values are `LHCP`, `RHCP`, `linearVertical` and `linearHorizontal`.
-  final String polarization;
+  final pulumi.Input<String> polarization;
 
   /// Creates a new [ContactProfileLink].
   /// [channels] A list of contact profile link channels. A `channels` block as defined below.
@@ -27,7 +27,7 @@ class ContactProfileLink {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channels': pulumi.Input.encodeList<ContactProfileLinkChannel, Map<String, dynamic>>(channels, (value) => value.toMap()),
+      'channels': pulumi.Input.mapInputValue<List<ContactProfileLinkChannel>, List<Map<String, dynamic>>>(channels, (value) => pulumi.Input.encodeList<ContactProfileLinkChannel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'direction': direction,
       'name': name,
       'polarization': polarization,
@@ -36,10 +36,10 @@ class ContactProfileLink {
 
   factory ContactProfileLink.fromMap(Map<String, dynamic> map) {
     return ContactProfileLink(
-      channels: pulumi.Input.decodeList<ContactProfileLinkChannel>(map['channels'], (value) => ContactProfileLinkChannel.fromMap((value as Map).cast<String, dynamic>())),
-      direction: map['direction'] as String,
-      name: map['name'] as String,
-      polarization: map['polarization'] as String,
+      channels: (pulumi.Input.decodeList<ContactProfileLinkChannel>(map['channels'], (value) => ContactProfileLinkChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      direction: (map['direction'] as String).input(),
+      name: (map['name'] as String).input(),
+      polarization: (map['polarization'] as String).input(),
     );
   }
 }

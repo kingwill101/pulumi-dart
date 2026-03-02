@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The object that contains details of encryption used on the workspace.
 class EncryptionResponse {
   /// The name of KeyVault key.
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
   /// The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
-  final String? keySource;
+  final pulumi.Input<String>? keySource;
   /// The Uri of KeyVault.
-  final String? keyVaultUri;
+  final pulumi.Input<String>? keyVaultUri;
   /// The version of KeyVault key.
-  final String? keyVersion;
+  final pulumi.Input<String>? keyVersion;
 
   /// Creates a new [EncryptionResponse].
   /// [keyName] The name of KeyVault key.
@@ -35,10 +36,10 @@ class EncryptionResponse {
 
   factory EncryptionResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionResponse(
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      keySource: map['keySource'] == null ? null : map['keySource'] as String,
-      keyVaultUri: map['keyVaultUri'] == null ? null : map['keyVaultUri'] as String,
-      keyVersion: map['keyVersion'] == null ? null : map['keyVersion'] as String,
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keySource: map['keySource'] == null ? null : (map['keySource'] as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
     );
   }
 }

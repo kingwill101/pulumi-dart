@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAncestryAncestor {
   /// If it's a project, the `project_id` is exported, else the numeric folder id or organization id.
-  final String id;
+  final pulumi.Input<String> id;
   /// One of `"project"`, `"folder"` or `"organization"`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetAncestryAncestor].
   /// [id] If it's a project, the `project_id` is exported, else the numeric folder id or organization id.
@@ -24,8 +25,8 @@ class GetAncestryAncestor {
 
   factory GetAncestryAncestor.fromMap(Map<String, dynamic> map) {
     return GetAncestryAncestor(
-      id: map['id'] as String,
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

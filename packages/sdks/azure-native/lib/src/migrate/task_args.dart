@@ -23,15 +23,11 @@ class TaskArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [taskName] Task ARM name
   TaskArgs({
-    required pulumi.Output<String> projectName,
-    pulumi.Output<TaskProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? taskName,
-  }) :
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<TaskProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      taskName = pulumi.Input.asOptionalInput<String>(taskName);
+    required this.projectName,
+    this.properties,
+    required this.resourceGroupName,
+    this.taskName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class TaskArgs {
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<TaskProperties>(TaskProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      taskName: map['taskName'] == null ? null : pulumi.Output.create<String>(map['taskName'] as String),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (TaskProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      taskName: map['taskName'] == null ? null : (map['taskName'] as String).input(),
     );
   }
 }

@@ -5,13 +5,13 @@ import 'queued_resource_status_failed_data_error_errors_item_error_details_item_
 
 class QueuedResourceStatusFailedDataErrorErrorsItemResponse {
   /// The error type identifier for this error.
-  final String code;
+  final pulumi.Input<String> code;
   /// An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
-  final List<QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse> errorDetails;
+  final pulumi.Input<List<QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse>> errorDetails;
   /// Indicates the field in the request that caused the error. This property is optional.
-  final String location;
+  final pulumi.Input<String> location;
   /// An optional, human-readable error message.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [QueuedResourceStatusFailedDataErrorErrorsItemResponse].
   /// [code] The error type identifier for this error.
@@ -28,7 +28,7 @@ class QueuedResourceStatusFailedDataErrorErrorsItemResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'errorDetails': pulumi.Input.encodeList<QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse, Map<String, dynamic>>(errorDetails, (value) => value.toMap()),
+      'errorDetails': pulumi.Input.mapInputValue<List<QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse>, List<Map<String, dynamic>>>(errorDetails, (value) => pulumi.Input.encodeList<QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': location,
       'message': message,
     };
@@ -36,10 +36,10 @@ class QueuedResourceStatusFailedDataErrorErrorsItemResponse {
 
   factory QueuedResourceStatusFailedDataErrorErrorsItemResponse.fromMap(Map<String, dynamic> map) {
     return QueuedResourceStatusFailedDataErrorErrorsItemResponse(
-      code: map['code'] as String,
-      errorDetails: pulumi.Input.decodeList<QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse>(map['errorDetails'], (value) => QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      errorDetails: (pulumi.Input.decodeList<QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse>(map['errorDetails'], (value) => QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: (map['location'] as String).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

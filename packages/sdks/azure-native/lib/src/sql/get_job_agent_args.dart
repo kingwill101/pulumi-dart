@@ -19,13 +19,10 @@ class GetJobAgentArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
   GetJobAgentArgs({
-    required pulumi.Output<String> jobAgentName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      jobAgentName = pulumi.Input.asInput<String>(jobAgentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    required this.jobAgentName,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetJobAgentArgs {
 
   factory GetJobAgentArgs.fromMap(Map<String, dynamic> map) {
     return GetJobAgentArgs(
-      jobAgentName: pulumi.Output.create<String>(map['jobAgentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      jobAgentName: (map['jobAgentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

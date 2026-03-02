@@ -50,33 +50,20 @@ class DicomServiceState {
   /// [tags] A mapping of tags to assign to the Healthcare DICOM Service.
   /// [workspaceId] Specifies the ID of the Healthcare Workspace where the Healthcare DICOM Service should exist. Changing this forces a new Healthcare DICOM Service to be created.
   DicomServiceState({
-    pulumi.Output<List<DicomServiceAuthentication>>? authentications,
-    pulumi.Output<DicomServiceCors>? cors,
-    pulumi.Output<bool>? dataPartitionsEnabled,
-    pulumi.Output<String>? encryptionKeyUrl,
-    pulumi.Output<DicomServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<DicomServicePrivateEndpoint>>? privateEndpoints,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    pulumi.Output<String>? serviceUrl,
-    pulumi.Output<DicomServiceStorage>? storage,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      authentications = pulumi.Input.asOptionalInput<List<DicomServiceAuthentication>>(authentications),
-      cors = pulumi.Input.asOptionalInput<DicomServiceCors>(cors),
-      dataPartitionsEnabled = pulumi.Input.asOptionalInput<bool>(dataPartitionsEnabled),
-      encryptionKeyUrl = pulumi.Input.asOptionalInput<String>(encryptionKeyUrl),
-      identity = pulumi.Input.asOptionalInput<DicomServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateEndpoints = pulumi.Input.asOptionalInput<List<DicomServicePrivateEndpoint>>(privateEndpoints),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      serviceUrl = pulumi.Input.asOptionalInput<String>(serviceUrl),
-      storage = pulumi.Input.asOptionalInput<DicomServiceStorage>(storage),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.authentications,
+    this.cors,
+    this.dataPartitionsEnabled,
+    this.encryptionKeyUrl,
+    this.identity,
+    this.location,
+    this.name,
+    this.privateEndpoints,
+    this.publicNetworkAccessEnabled,
+    this.serviceUrl,
+    this.storage,
+    this.tags,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class DicomServiceState {
 
   factory DicomServiceState.fromMap(Map<String, dynamic> map) {
     return DicomServiceState(
-      authentications: map['authentications'] == null ? null : pulumi.Output.create<List<DicomServiceAuthentication>>(pulumi.Input.decodeList<DicomServiceAuthentication>(map['authentications'], (value) => DicomServiceAuthentication.fromMap((value as Map).cast<String, dynamic>()))),
-      cors: map['cors'] == null ? null : pulumi.Output.create<DicomServiceCors>(DicomServiceCors.fromMap((map['cors'] as Map).cast<String, dynamic>())),
-      dataPartitionsEnabled: map['dataPartitionsEnabled'] == null ? null : pulumi.Output.create<bool>(map['dataPartitionsEnabled'] as bool),
-      encryptionKeyUrl: map['encryptionKeyUrl'] == null ? null : pulumi.Output.create<String>(map['encryptionKeyUrl'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<DicomServiceIdentity>(DicomServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateEndpoints: map['privateEndpoints'] == null ? null : pulumi.Output.create<List<DicomServicePrivateEndpoint>>(pulumi.Input.decodeList<DicomServicePrivateEndpoint>(map['privateEndpoints'], (value) => DicomServicePrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      serviceUrl: map['serviceUrl'] == null ? null : pulumi.Output.create<String>(map['serviceUrl'] as String),
-      storage: map['storage'] == null ? null : pulumi.Output.create<DicomServiceStorage>(DicomServiceStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      authentications: map['authentications'] == null ? null : (pulumi.Input.decodeList<DicomServiceAuthentication>(map['authentications'], (value) => DicomServiceAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cors: map['cors'] == null ? null : (DicomServiceCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      dataPartitionsEnabled: map['dataPartitionsEnabled'] == null ? null : (map['dataPartitionsEnabled'] as bool).input(),
+      encryptionKeyUrl: map['encryptionKeyUrl'] == null ? null : (map['encryptionKeyUrl'] as String).input(),
+      identity: map['identity'] == null ? null : (DicomServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<DicomServicePrivateEndpoint>(map['privateEndpoints'], (value) => DicomServicePrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      serviceUrl: map['serviceUrl'] == null ? null : (map['serviceUrl'] as String).input(),
+      storage: map['storage'] == null ? null : (DicomServiceStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

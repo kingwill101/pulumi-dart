@@ -26,17 +26,12 @@ class PartnerConfigurationArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [tags] Tags of the resource.
   PartnerConfigurationArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<PartnerAuthorization>? partnerAuthorization,
-    pulumi.Output<String>? provisioningState,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      partnerAuthorization = pulumi.Input.asOptionalInput<PartnerAuthorization>(partnerAuthorization),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.partnerAuthorization,
+    this.provisioningState,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PartnerConfigurationArgs {
 
   factory PartnerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return PartnerConfigurationArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      partnerAuthorization: map['partnerAuthorization'] == null ? null : pulumi.Output.create<PartnerAuthorization>(PartnerAuthorization.fromMap((map['partnerAuthorization'] as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      partnerAuthorization: map['partnerAuthorization'] == null ? null : (PartnerAuthorization.fromMap((map['partnerAuthorization'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

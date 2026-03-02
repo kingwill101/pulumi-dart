@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyVMRetentionDaily {
   /// The number of daily backups to keep. Must be between `7` and `9999`.
   ///
   /// > **Note:** Azure previously allows this field to be set to a minimum of 1 (day) - but for new resources/to update this value on existing Backup Policies - this value must now be at least 7 (days).
-  final int count;
+  final pulumi.Input<int> count;
 
   /// Creates a new [PolicyVMRetentionDaily].
   /// [count] The number of daily backups to keep. Must be between `7` and `9999`.
@@ -21,7 +22,7 @@ class PolicyVMRetentionDaily {
 
   factory PolicyVMRetentionDaily.fromMap(Map<String, dynamic> map) {
     return PolicyVMRetentionDaily(
-      count: map['count'] as int,
+      count: (map['count'] as int).input(),
     );
   }
 }

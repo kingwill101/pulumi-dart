@@ -6,7 +6,7 @@ import 'google_cloud_datacatalog_v1_column_schema.dart';
 /// Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
 class GoogleCloudDatacatalogV1Schema {
   /// The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels.
-  final List<GoogleCloudDatacatalogV1ColumnSchema>? columns;
+  final pulumi.Input<List<GoogleCloudDatacatalogV1ColumnSchema>>? columns;
 
   /// Creates a new [GoogleCloudDatacatalogV1Schema].
   /// [columns] The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels.
@@ -16,13 +16,13 @@ class GoogleCloudDatacatalogV1Schema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns': ?columns == null ? null : pulumi.Input.encodeList<GoogleCloudDatacatalogV1ColumnSchema, Map<String, dynamic>>(columns!, (value) => value.toMap()),
+      'columns': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDatacatalogV1ColumnSchema>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<GoogleCloudDatacatalogV1ColumnSchema, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GoogleCloudDatacatalogV1Schema.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1Schema(
-      columns: map['columns'] == null ? null : pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(map['columns'], (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap((value as Map).cast<String, dynamic>())),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(map['columns'], (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

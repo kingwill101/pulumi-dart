@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_physical_schema_response.dart';
 
 /// Common Dataplex fields.
 class GoogleCloudDatacatalogV1DataplexSpecResponse {
   /// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
-  final String asset;
+  final pulumi.Input<String> asset;
   /// Compression format of the data, e.g., zip, gzip etc.
-  final String compressionFormat;
+  final pulumi.Input<String> compressionFormat;
   /// Format of the data.
-  final GoogleCloudDatacatalogV1PhysicalSchemaResponse dataFormat;
+  final pulumi.Input<GoogleCloudDatacatalogV1PhysicalSchemaResponse> dataFormat;
   /// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [GoogleCloudDatacatalogV1DataplexSpecResponse].
   /// [asset] Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
@@ -29,17 +30,17 @@ class GoogleCloudDatacatalogV1DataplexSpecResponse {
     return <String, dynamic>{
       'asset': asset,
       'compressionFormat': compressionFormat,
-      'dataFormat': dataFormat.toMap(),
+      'dataFormat': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1PhysicalSchemaResponse, Map<String, dynamic>>(dataFormat, (value) => value.toMap()),
       'project': project,
     };
   }
 
   factory GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DataplexSpecResponse(
-      asset: map['asset'] as String,
-      compressionFormat: map['compressionFormat'] as String,
-      dataFormat: GoogleCloudDatacatalogV1PhysicalSchemaResponse.fromMap((map['dataFormat'] as Map).cast<String, dynamic>()),
-      project: map['project'] as String,
+      asset: (map['asset'] as String).input(),
+      compressionFormat: (map['compressionFormat'] as String).input(),
+      dataFormat: (GoogleCloudDatacatalogV1PhysicalSchemaResponse.fromMap((map['dataFormat'] as Map).cast<String, dynamic>())).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

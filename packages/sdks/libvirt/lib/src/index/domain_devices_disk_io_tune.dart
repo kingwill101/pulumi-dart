@@ -1,47 +1,48 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskIoTune {
   /// Specifies the name of the group for tuning parameters, organizing settings related to disk I/O performance.
-  final String? groupName;
+  final pulumi.Input<String>? groupName;
   /// Sets the maximum number of read bytes per second for the disk, regulating its data throughput.
-  final double? readBytesSec;
+  final pulumi.Input<double>? readBytesSec;
   /// Configures the maximum read bytes per second limit, further controlling the disk's data transfer rate.
-  final double? readBytesSecMax;
+  final pulumi.Input<double>? readBytesSecMax;
   /// Defines the length of maximum read bytes per second setting, detailing how long this limit is effective.
-  final double? readBytesSecMaxLength;
+  final pulumi.Input<double>? readBytesSecMaxLength;
   /// Specifies the maximum number of read I/O operations per second for the disk, controlling its responsiveness.
-  final double? readIopsSec;
+  final pulumi.Input<double>? readIopsSec;
   /// Sets the upper limit for read IOPS on the disk, refining its input/output performance.
-  final double? readIopsSecMax;
+  final pulumi.Input<double>? readIopsSecMax;
   /// Configures the effective duration for the maximum read IOPS limit.
-  final double? readIopsSecMaxLength;
+  final pulumi.Input<double>? readIopsSecMaxLength;
   /// Defines the size-related performance in IOPS for the disk, optimizing access based on data size.
-  final double? sizeIopsSec;
+  final pulumi.Input<double>? sizeIopsSec;
   /// Sets the overall maximum bytes transfer rate for all operations on the disk.
-  final double? totalBytesSec;
+  final pulumi.Input<double>? totalBytesSec;
   /// Specifies the maximum limit on total bytes per second across all I/O operations for the disk.
-  final double? totalBytesSecMax;
+  final pulumi.Input<double>? totalBytesSecMax;
   /// Describes the duration that the maximum total bytes per second setting is enforced on the disk.
-  final double? totalBytesSecMaxLength;
+  final pulumi.Input<double>? totalBytesSecMaxLength;
   /// Configures the overall maximum IOPS for the disk, controlling the number of operations performed over time.
-  final double? totalIopsSec;
+  final pulumi.Input<double>? totalIopsSec;
   /// Sets the maximum IOPS limit for all operations handled by the disk.
-  final double? totalIopsSecMax;
+  final pulumi.Input<double>? totalIopsSecMax;
   /// Defines how long the total IOPS limit is maintained during operations on the disk.
-  final double? totalIopsSecMaxLength;
+  final pulumi.Input<double>? totalIopsSecMaxLength;
   /// Configures the maximum number of bytes written per second for the disk, managing data output rates.
-  final double? writeBytesSec;
+  final pulumi.Input<double>? writeBytesSec;
   /// Sets the maximum write bytes per second limit, controlling the disk's writing capability.
-  final double? writeBytesSecMax;
+  final pulumi.Input<double>? writeBytesSecMax;
   /// Specifies the effective length for the maximum write bytes per second setting.
-  final double? writeBytesSecMaxLength;
+  final pulumi.Input<double>? writeBytesSecMaxLength;
   /// Defines the maximum number of write I/O operations per second for the disk, influencing its performance.
-  final double? writeIopsSec;
+  final pulumi.Input<double>? writeIopsSec;
   /// Sets the upper limit for write IOPS on the disk, adjusting its output operations.
-  final double? writeIopsSecMax;
+  final pulumi.Input<double>? writeIopsSecMax;
   /// Configures the effective duration for the maximum write IOPS limit.
-  final double? writeIopsSecMaxLength;
+  final pulumi.Input<double>? writeIopsSecMaxLength;
 
   /// Creates a new [DomainDevicesDiskIoTune].
   /// [groupName] Specifies the name of the group for tuning parameters, organizing settings related to disk I/O performance.
@@ -114,26 +115,26 @@ class DomainDevicesDiskIoTune {
 
   factory DomainDevicesDiskIoTune.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskIoTune(
-      groupName: map['groupName'] == null ? null : map['groupName'] as String,
-      readBytesSec: map['readBytesSec'] == null ? null : map['readBytesSec'] as double,
-      readBytesSecMax: map['readBytesSecMax'] == null ? null : map['readBytesSecMax'] as double,
-      readBytesSecMaxLength: map['readBytesSecMaxLength'] == null ? null : map['readBytesSecMaxLength'] as double,
-      readIopsSec: map['readIopsSec'] == null ? null : map['readIopsSec'] as double,
-      readIopsSecMax: map['readIopsSecMax'] == null ? null : map['readIopsSecMax'] as double,
-      readIopsSecMaxLength: map['readIopsSecMaxLength'] == null ? null : map['readIopsSecMaxLength'] as double,
-      sizeIopsSec: map['sizeIopsSec'] == null ? null : map['sizeIopsSec'] as double,
-      totalBytesSec: map['totalBytesSec'] == null ? null : map['totalBytesSec'] as double,
-      totalBytesSecMax: map['totalBytesSecMax'] == null ? null : map['totalBytesSecMax'] as double,
-      totalBytesSecMaxLength: map['totalBytesSecMaxLength'] == null ? null : map['totalBytesSecMaxLength'] as double,
-      totalIopsSec: map['totalIopsSec'] == null ? null : map['totalIopsSec'] as double,
-      totalIopsSecMax: map['totalIopsSecMax'] == null ? null : map['totalIopsSecMax'] as double,
-      totalIopsSecMaxLength: map['totalIopsSecMaxLength'] == null ? null : map['totalIopsSecMaxLength'] as double,
-      writeBytesSec: map['writeBytesSec'] == null ? null : map['writeBytesSec'] as double,
-      writeBytesSecMax: map['writeBytesSecMax'] == null ? null : map['writeBytesSecMax'] as double,
-      writeBytesSecMaxLength: map['writeBytesSecMaxLength'] == null ? null : map['writeBytesSecMaxLength'] as double,
-      writeIopsSec: map['writeIopsSec'] == null ? null : map['writeIopsSec'] as double,
-      writeIopsSecMax: map['writeIopsSecMax'] == null ? null : map['writeIopsSecMax'] as double,
-      writeIopsSecMaxLength: map['writeIopsSecMaxLength'] == null ? null : map['writeIopsSecMaxLength'] as double,
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      readBytesSec: map['readBytesSec'] == null ? null : (map['readBytesSec'] as double).input(),
+      readBytesSecMax: map['readBytesSecMax'] == null ? null : (map['readBytesSecMax'] as double).input(),
+      readBytesSecMaxLength: map['readBytesSecMaxLength'] == null ? null : (map['readBytesSecMaxLength'] as double).input(),
+      readIopsSec: map['readIopsSec'] == null ? null : (map['readIopsSec'] as double).input(),
+      readIopsSecMax: map['readIopsSecMax'] == null ? null : (map['readIopsSecMax'] as double).input(),
+      readIopsSecMaxLength: map['readIopsSecMaxLength'] == null ? null : (map['readIopsSecMaxLength'] as double).input(),
+      sizeIopsSec: map['sizeIopsSec'] == null ? null : (map['sizeIopsSec'] as double).input(),
+      totalBytesSec: map['totalBytesSec'] == null ? null : (map['totalBytesSec'] as double).input(),
+      totalBytesSecMax: map['totalBytesSecMax'] == null ? null : (map['totalBytesSecMax'] as double).input(),
+      totalBytesSecMaxLength: map['totalBytesSecMaxLength'] == null ? null : (map['totalBytesSecMaxLength'] as double).input(),
+      totalIopsSec: map['totalIopsSec'] == null ? null : (map['totalIopsSec'] as double).input(),
+      totalIopsSecMax: map['totalIopsSecMax'] == null ? null : (map['totalIopsSecMax'] as double).input(),
+      totalIopsSecMaxLength: map['totalIopsSecMaxLength'] == null ? null : (map['totalIopsSecMaxLength'] as double).input(),
+      writeBytesSec: map['writeBytesSec'] == null ? null : (map['writeBytesSec'] as double).input(),
+      writeBytesSecMax: map['writeBytesSecMax'] == null ? null : (map['writeBytesSecMax'] as double).input(),
+      writeBytesSecMaxLength: map['writeBytesSecMaxLength'] == null ? null : (map['writeBytesSecMaxLength'] as double).input(),
+      writeIopsSec: map['writeIopsSec'] == null ? null : (map['writeIopsSec'] as double).input(),
+      writeIopsSecMax: map['writeIopsSecMax'] == null ? null : (map['writeIopsSecMax'] as double).input(),
+      writeIopsSecMaxLength: map['writeIopsSecMaxLength'] == null ? null : (map['writeIopsSecMaxLength'] as double).input(),
     );
   }
 }

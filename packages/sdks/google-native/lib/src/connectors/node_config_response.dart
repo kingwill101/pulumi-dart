@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Node configuration for the connection.
 class NodeConfigResponse {
   /// Maximum number of nodes in the runtime nodes.
-  final int maxNodeCount;
+  final pulumi.Input<int> maxNodeCount;
   /// Minimum number of nodes in the runtime nodes.
-  final int minNodeCount;
+  final pulumi.Input<int> minNodeCount;
 
   /// Creates a new [NodeConfigResponse].
   /// [maxNodeCount] Maximum number of nodes in the runtime nodes.
@@ -25,8 +26,8 @@ class NodeConfigResponse {
 
   factory NodeConfigResponse.fromMap(Map<String, dynamic> map) {
     return NodeConfigResponse(
-      maxNodeCount: map['maxNodeCount'] as int,
-      minNodeCount: map['minNodeCount'] as int,
+      maxNodeCount: (map['maxNodeCount'] as int).input(),
+      minNodeCount: (map['minNodeCount'] as int).input(),
     );
   }
 }

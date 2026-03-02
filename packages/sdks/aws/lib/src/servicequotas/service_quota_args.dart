@@ -22,15 +22,11 @@ class ServiceQuotaArgs {
   /// [serviceCode] Code of the service to track. For example: `vpc`. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
   /// [value] Float specifying the desired value for the service quota. If the desired value is higher than the current value, a quota increase request is submitted. When a known request is submitted and pending, the value reflects the desired value of the pending request.
   ServiceQuotaArgs({
-    required pulumi.Output<String> quotaCode,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceCode,
-    required pulumi.Output<double> value,
-  }) :
-      quotaCode = pulumi.Input.asInput<String>(quotaCode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceCode = pulumi.Input.asInput<String>(serviceCode),
-      value = pulumi.Input.asInput<double>(value);
+    required this.quotaCode,
+    this.region,
+    required this.serviceCode,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ServiceQuotaArgs {
 
   factory ServiceQuotaArgs.fromMap(Map<String, dynamic> map) {
     return ServiceQuotaArgs(
-      quotaCode: pulumi.Output.create<String>(map['quotaCode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceCode: pulumi.Output.create<String>(map['serviceCode'] as String),
-      value: pulumi.Output.create<double>(map['value'] as double),
+      quotaCode: (map['quotaCode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceCode: (map['serviceCode'] as String).input(),
+      value: (map['value'] as double).input(),
     );
   }
 }

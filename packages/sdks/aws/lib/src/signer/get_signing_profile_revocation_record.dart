@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSigningProfileRevocationRecord {
-  final String revocationEffectiveFrom;
-  final String revokedAt;
-  final String revokedBy;
+  final pulumi.Input<String> revocationEffectiveFrom;
+  final pulumi.Input<String> revokedAt;
+  final pulumi.Input<String> revokedBy;
 
   /// Creates a new [GetSigningProfileRevocationRecord].
   /// [revocationEffectiveFrom] Required.
@@ -26,9 +27,9 @@ class GetSigningProfileRevocationRecord {
 
   factory GetSigningProfileRevocationRecord.fromMap(Map<String, dynamic> map) {
     return GetSigningProfileRevocationRecord(
-      revocationEffectiveFrom: map['revocationEffectiveFrom'] as String,
-      revokedAt: map['revokedAt'] as String,
-      revokedBy: map['revokedBy'] as String,
+      revocationEffectiveFrom: (map['revocationEffectiveFrom'] as String).input(),
+      revokedAt: (map['revokedAt'] as String).input(),
+      revokedBy: (map['revokedBy'] as String).input(),
     );
   }
 }

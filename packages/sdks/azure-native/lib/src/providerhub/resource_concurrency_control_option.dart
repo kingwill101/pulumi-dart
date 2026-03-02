@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceConcurrencyControlOption {
   /// The policy.
-  final String? policy;
+  final pulumi.Input<String>? policy;
 
   /// Creates a new [ResourceConcurrencyControlOption].
   /// [policy] The policy.
@@ -19,7 +20,7 @@ class ResourceConcurrencyControlOption {
 
   factory ResourceConcurrencyControlOption.fromMap(Map<String, dynamic> map) {
     return ResourceConcurrencyControlOption(
-      policy: map['policy'] == null ? null : map['policy'] as String,
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
     );
   }
 }

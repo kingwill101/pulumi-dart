@@ -7,24 +7,24 @@ import 'target_region.dart';
 /// Distribute via Azure Compute Gallery.
 class ImageTemplateSharedImageDistributor {
   /// Tags that will be applied to the artifact once it has been created/updated by the distributor.
-  final Map<String, String>? artifactTags;
+  final pulumi.Input<Map<String, String>>? artifactTags;
   /// Flag that indicates whether created image version should be excluded from latest. Omit to use the default (false).
-  final bool? excludeFromLatest;
+  final pulumi.Input<bool>? excludeFromLatest;
   /// Resource Id of the Azure Compute Gallery image
-  final String galleryImageId;
+  final pulumi.Input<String> galleryImageId;
   /// [Deprecated] A list of regions that the image will be replicated to. This list can be specified only if targetRegions is not specified. This field is deprecated - use targetRegions instead.
-  final List<String>? replicationRegions;
+  final pulumi.Input<List<String>>? replicationRegions;
   /// The name to be used for the associated RunOutput.
-  final String runOutputName;
+  final pulumi.Input<String> runOutputName;
   /// [Deprecated] Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS). This field can be specified only if replicationRegions is specified. This field is deprecated - use targetRegions instead.
-  final String? storageAccountType;
+  final pulumi.Input<String>? storageAccountType;
   /// The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
-  final List<TargetRegion>? targetRegions;
+  final pulumi.Input<List<TargetRegion>>? targetRegions;
   /// Type of distribution.
   /// Expected value is 'SharedImage'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Describes how to generate new x.y.z version number for distribution.
-  final DistributeVersionerLatest? versioning;
+  final pulumi.Input<DistributeVersionerLatest>? versioning;
 
   /// Creates a new [ImageTemplateSharedImageDistributor].
   /// [artifactTags] Tags that will be applied to the artifact once it has been created/updated by the distributor.
@@ -56,23 +56,23 @@ class ImageTemplateSharedImageDistributor {
       'replicationRegions': ?replicationRegions,
       'runOutputName': runOutputName,
       'storageAccountType': ?storageAccountType,
-      'targetRegions': ?targetRegions == null ? null : pulumi.Input.encodeList<TargetRegion, Map<String, dynamic>>(targetRegions!, (value) => value.toMap()),
+      'targetRegions': ?pulumi.Input.mapOptionalInputValue<List<TargetRegion>, List<Map<String, dynamic>>>(targetRegions, (value) => pulumi.Input.encodeList<TargetRegion, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
-      'versioning': ?versioning == null ? null : versioning!.toMap(),
+      'versioning': ?pulumi.Input.mapOptionalInputValue<DistributeVersionerLatest, Map<String, dynamic>>(versioning, (value) => value.toMap()),
     };
   }
 
   factory ImageTemplateSharedImageDistributor.fromMap(Map<String, dynamic> map) {
     return ImageTemplateSharedImageDistributor(
-      artifactTags: map['artifactTags'] == null ? null : (map['artifactTags'] as Map).cast<String, String>(),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : map['excludeFromLatest'] as bool,
-      galleryImageId: map['galleryImageId'] as String,
-      replicationRegions: map['replicationRegions'] == null ? null : (map['replicationRegions'] as List).cast<String>(),
-      runOutputName: map['runOutputName'] as String,
-      storageAccountType: map['storageAccountType'] == null ? null : map['storageAccountType'] as String,
-      targetRegions: map['targetRegions'] == null ? null : pulumi.Input.decodeList<TargetRegion>(map['targetRegions'], (value) => TargetRegion.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      versioning: map['versioning'] == null ? null : DistributeVersionerLatest.fromMap((map['versioning'] as Map).cast<String, dynamic>()),
+      artifactTags: map['artifactTags'] == null ? null : ((map['artifactTags'] as Map).cast<String, String>()).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
+      galleryImageId: (map['galleryImageId'] as String).input(),
+      replicationRegions: map['replicationRegions'] == null ? null : ((map['replicationRegions'] as List).cast<String>()).input(),
+      runOutputName: (map['runOutputName'] as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegion>(map['targetRegions'], (value) => TargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      versioning: map['versioning'] == null ? null : (DistributeVersionerLatest.fromMap((map['versioning'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

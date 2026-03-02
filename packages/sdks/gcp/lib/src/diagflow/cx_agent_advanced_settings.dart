@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_agent_advanced_settings_audio_export_gcs_destination.dart';
 import 'cx_agent_advanced_settings_dtmf_settings.dart';
 import 'cx_agent_advanced_settings_logging_settings.dart';
@@ -10,25 +11,25 @@ class CxAgentAdvancedSettings {
   /// * Agent level
   /// * Flow level
   /// Structure is documented below.
-  final CxAgentAdvancedSettingsAudioExportGcsDestination? audioExportGcsDestination;
+  final pulumi.Input<CxAgentAdvancedSettingsAudioExportGcsDestination>? audioExportGcsDestination;
   /// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
   /// * Agent level
   /// * Flow level
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final CxAgentAdvancedSettingsDtmfSettings? dtmfSettings;
+  final pulumi.Input<CxAgentAdvancedSettingsDtmfSettings>? dtmfSettings;
   /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
   /// * Agent level
   /// Structure is documented below.
-  final CxAgentAdvancedSettingsLoggingSettings? loggingSettings;
+  final pulumi.Input<CxAgentAdvancedSettingsLoggingSettings>? loggingSettings;
   /// Settings for speech to text detection. Exposed at the following levels:
   /// * Agent level
   /// * Flow level
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final CxAgentAdvancedSettingsSpeechSettings? speechSettings;
+  final pulumi.Input<CxAgentAdvancedSettingsSpeechSettings>? speechSettings;
 
   /// Creates a new [CxAgentAdvancedSettings].
   /// [audioExportGcsDestination] If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
@@ -44,19 +45,19 @@ class CxAgentAdvancedSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioExportGcsDestination': ?audioExportGcsDestination == null ? null : audioExportGcsDestination!.toMap(),
-      'dtmfSettings': ?dtmfSettings == null ? null : dtmfSettings!.toMap(),
-      'loggingSettings': ?loggingSettings == null ? null : loggingSettings!.toMap(),
-      'speechSettings': ?speechSettings == null ? null : speechSettings!.toMap(),
+      'audioExportGcsDestination': ?pulumi.Input.mapOptionalInputValue<CxAgentAdvancedSettingsAudioExportGcsDestination, Map<String, dynamic>>(audioExportGcsDestination, (value) => value.toMap()),
+      'dtmfSettings': ?pulumi.Input.mapOptionalInputValue<CxAgentAdvancedSettingsDtmfSettings, Map<String, dynamic>>(dtmfSettings, (value) => value.toMap()),
+      'loggingSettings': ?pulumi.Input.mapOptionalInputValue<CxAgentAdvancedSettingsLoggingSettings, Map<String, dynamic>>(loggingSettings, (value) => value.toMap()),
+      'speechSettings': ?pulumi.Input.mapOptionalInputValue<CxAgentAdvancedSettingsSpeechSettings, Map<String, dynamic>>(speechSettings, (value) => value.toMap()),
     };
   }
 
   factory CxAgentAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentAdvancedSettings(
-      audioExportGcsDestination: map['audioExportGcsDestination'] == null ? null : CxAgentAdvancedSettingsAudioExportGcsDestination.fromMap((map['audioExportGcsDestination'] as Map).cast<String, dynamic>()),
-      dtmfSettings: map['dtmfSettings'] == null ? null : CxAgentAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>()),
-      loggingSettings: map['loggingSettings'] == null ? null : CxAgentAdvancedSettingsLoggingSettings.fromMap((map['loggingSettings'] as Map).cast<String, dynamic>()),
-      speechSettings: map['speechSettings'] == null ? null : CxAgentAdvancedSettingsSpeechSettings.fromMap((map['speechSettings'] as Map).cast<String, dynamic>()),
+      audioExportGcsDestination: map['audioExportGcsDestination'] == null ? null : (CxAgentAdvancedSettingsAudioExportGcsDestination.fromMap((map['audioExportGcsDestination'] as Map).cast<String, dynamic>())).input(),
+      dtmfSettings: map['dtmfSettings'] == null ? null : (CxAgentAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>())).input(),
+      loggingSettings: map['loggingSettings'] == null ? null : (CxAgentAdvancedSettingsLoggingSettings.fromMap((map['loggingSettings'] as Map).cast<String, dynamic>())).input(),
+      speechSettings: map['speechSettings'] == null ? null : (CxAgentAdvancedSettingsSpeechSettings.fromMap((map['speechSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

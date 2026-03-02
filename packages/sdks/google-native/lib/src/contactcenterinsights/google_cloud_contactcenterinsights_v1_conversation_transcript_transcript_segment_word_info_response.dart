@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Word-level info for words in a transcript.
 class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse {
   /// A confidence estimate between 0.0 and 1.0 of the fidelity of this word. A default value of 0.0 indicates that the value is unset.
-  final double confidence;
+  final pulumi.Input<double> confidence;
   /// Time offset of the end of this word relative to the beginning of the total conversation.
-  final String endOffset;
+  final pulumi.Input<String> endOffset;
   /// Time offset of the start of this word relative to the beginning of the total conversation.
-  final String startOffset;
+  final pulumi.Input<String> startOffset;
   /// The word itself. Includes punctuation marks that surround the word.
-  final String word;
+  final pulumi.Input<String> word;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse].
   /// [confidence] A confidence estimate between 0.0 and 1.0 of the fidelity of this word. A default value of 0.0 indicates that the value is unset.
@@ -35,10 +36,10 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentW
 
   factory GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse(
-      confidence: map['confidence'] as double,
-      endOffset: map['endOffset'] as String,
-      startOffset: map['startOffset'] as String,
-      word: map['word'] as String,
+      confidence: (map['confidence'] as double).input(),
+      endOffset: (map['endOffset'] as String).input(),
+      startOffset: (map['startOffset'] as String).input(),
+      word: (map['word'] as String).input(),
     );
   }
 }

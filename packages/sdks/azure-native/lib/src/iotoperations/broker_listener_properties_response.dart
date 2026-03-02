@@ -6,13 +6,13 @@ import 'listener_port_response.dart';
 /// Defines a Broker listener. A listener is a collection of ports on which the broker accepts connections from clients.
 class BrokerListenerPropertiesResponse {
   /// Ports on which this listener accepts client connections.
-  final List<ListenerPortResponse> ports;
+  final pulumi.Input<List<ListenerPortResponse>> ports;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Kubernetes Service name of this listener.
-  final String? serviceName;
+  final pulumi.Input<String>? serviceName;
   /// Kubernetes Service type of this listener.
-  final String? serviceType;
+  final pulumi.Input<String>? serviceType;
 
   /// Creates a new [BrokerListenerPropertiesResponse].
   /// [ports] Ports on which this listener accepts client connections.
@@ -28,7 +28,7 @@ class BrokerListenerPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ports': pulumi.Input.encodeList<ListenerPortResponse, Map<String, dynamic>>(ports, (value) => value.toMap()),
+      'ports': pulumi.Input.mapInputValue<List<ListenerPortResponse>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<ListenerPortResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'serviceName': ?serviceName,
       'serviceType': ?serviceType,
@@ -37,10 +37,10 @@ class BrokerListenerPropertiesResponse {
 
   factory BrokerListenerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BrokerListenerPropertiesResponse(
-      ports: pulumi.Input.decodeList<ListenerPortResponse>(map['ports'], (value) => ListenerPortResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
-      serviceType: map['serviceType'] == null ? null : map['serviceType'] as String,
+      ports: (pulumi.Input.decodeList<ListenerPortResponse>(map['ports'], (value) => ListenerPortResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
     );
   }
 }

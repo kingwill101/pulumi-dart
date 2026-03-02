@@ -16,11 +16,9 @@ class GetAzureLargeInstanceArgs {
   /// [azureLargeInstanceName] Name of the AzureLargeInstance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAzureLargeInstanceArgs({
-    required pulumi.Output<String> azureLargeInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      azureLargeInstanceName = pulumi.Input.asInput<String>(azureLargeInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.azureLargeInstanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAzureLargeInstanceArgs {
 
   factory GetAzureLargeInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureLargeInstanceArgs(
-      azureLargeInstanceName: pulumi.Output.create<String>(map['azureLargeInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      azureLargeInstanceName: (map['azureLargeInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

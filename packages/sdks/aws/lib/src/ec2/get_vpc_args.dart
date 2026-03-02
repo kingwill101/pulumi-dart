@@ -41,23 +41,15 @@ class GetVpcArgs {
   /// [state] Current state of the desired VPC.
   /// [tags] Map of tags, each pair of which must exactly match
   GetVpcArgs({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<bool>? default_,
-    pulumi.Output<String>? dhcpOptionsId,
-    pulumi.Output<List<GetVpcFilter>>? filters,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      default_ = pulumi.Input.asOptionalInput<bool>(default_),
-      dhcpOptionsId = pulumi.Input.asOptionalInput<String>(dhcpOptionsId),
-      filters = pulumi.Input.asOptionalInput<List<GetVpcFilter>>(filters),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.cidrBlock,
+    this.default_,
+    this.dhcpOptionsId,
+    this.filters,
+    this.id,
+    this.region,
+    this.state,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,14 +66,14 @@ class GetVpcArgs {
 
   factory GetVpcArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      default_: map['default'] == null ? null : pulumi.Output.create<bool>(map['default'] as bool),
-      dhcpOptionsId: map['dhcpOptionsId'] == null ? null : pulumi.Output.create<String>(map['dhcpOptionsId'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpcFilter>>(pulumi.Input.decodeList<GetVpcFilter>(map['filters'], (value) => GetVpcFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      default_: map['default'] == null ? null : (map['default'] as bool).input(),
+      dhcpOptionsId: map['dhcpOptionsId'] == null ? null : (map['dhcpOptionsId'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcFilter>(map['filters'], (value) => GetVpcFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

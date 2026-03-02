@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StarRocksInstanceFrontendNodeGroup {
   /// Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
-  final int? cu;
+  final pulumi.Input<int>? cu;
   /// DiskNumber
-  final int? diskNumber;
+  final pulumi.Input<int>? diskNumber;
   /// Local SSD instance specifications.
-  final String? localStorageInstanceType;
+  final pulumi.Input<String>? localStorageInstanceType;
   /// Resident node number of node group.
-  final int? residentNodeNumber;
+  final pulumi.Input<int>? residentNodeNumber;
   /// Compute group specification types include the following:
   /// - standard
   /// - ramEnhanced
-  final String? specType;
+  final pulumi.Input<String>? specType;
   /// Performance levels of cloud disks include the following values:
   /// - pl0: Maximum random read/write IOPS per disk is 10,000.
   /// - pl1: Maximum random read/write IOPS per disk is 50,000.
   /// - pl2: Maximum random read/write IOPS per disk is 100,000.
   /// - pl3: Maximum random read/write IOPS per disk is 1,000,000.
-  final String? storagePerformanceLevel;
+  final pulumi.Input<String>? storagePerformanceLevel;
   /// Storage size, measured in GiB.
-  final int? storageSize;
+  final pulumi.Input<int>? storageSize;
   /// Zone ID.
-  final String? zoneId;
+  final pulumi.Input<String>? zoneId;
 
   /// Creates a new [StarRocksInstanceFrontendNodeGroup].
   /// [cu] Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
@@ -60,14 +61,14 @@ class StarRocksInstanceFrontendNodeGroup {
 
   factory StarRocksInstanceFrontendNodeGroup.fromMap(Map<String, dynamic> map) {
     return StarRocksInstanceFrontendNodeGroup(
-      cu: map['cu'] == null ? null : map['cu'] as int,
-      diskNumber: map['diskNumber'] == null ? null : map['diskNumber'] as int,
-      localStorageInstanceType: map['localStorageInstanceType'] == null ? null : map['localStorageInstanceType'] as String,
-      residentNodeNumber: map['residentNodeNumber'] == null ? null : map['residentNodeNumber'] as int,
-      specType: map['specType'] == null ? null : map['specType'] as String,
-      storagePerformanceLevel: map['storagePerformanceLevel'] == null ? null : map['storagePerformanceLevel'] as String,
-      storageSize: map['storageSize'] == null ? null : map['storageSize'] as int,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      cu: map['cu'] == null ? null : (map['cu'] as int).input(),
+      diskNumber: map['diskNumber'] == null ? null : (map['diskNumber'] as int).input(),
+      localStorageInstanceType: map['localStorageInstanceType'] == null ? null : (map['localStorageInstanceType'] as String).input(),
+      residentNodeNumber: map['residentNodeNumber'] == null ? null : (map['residentNodeNumber'] as int).input(),
+      specType: map['specType'] == null ? null : (map['specType'] as String).input(),
+      storagePerformanceLevel: map['storagePerformanceLevel'] == null ? null : (map['storagePerformanceLevel'] as String).input(),
+      storageSize: map['storageSize'] == null ? null : (map['storageSize'] as int).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines parameters for tcp connection pooling
 class TcpConnectionPoolResponse {
   /// Maximum number of tcp connections allowed
-  final int? maxConnections;
+  final pulumi.Input<int>? maxConnections;
 
   /// Creates a new [TcpConnectionPoolResponse].
   /// [maxConnections] Maximum number of tcp connections allowed
@@ -20,7 +21,7 @@ class TcpConnectionPoolResponse {
 
   factory TcpConnectionPoolResponse.fromMap(Map<String, dynamic> map) {
     return TcpConnectionPoolResponse(
-      maxConnections: map['maxConnections'] == null ? null : map['maxConnections'] as int,
+      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections'] as int).input(),
     );
   }
 }

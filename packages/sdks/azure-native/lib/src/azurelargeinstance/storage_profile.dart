@@ -6,10 +6,10 @@ import 'disk.dart';
 /// Specifies the storage settings for the Azure Large Instance disks.
 class StorageProfile {
   /// IP Address to connect to storage.
-  final String? nfsIpAddress;
+  final pulumi.Input<String>? nfsIpAddress;
   /// Specifies information about the operating system disk used by Azure Large
   /// Instance.
-  final List<Disk>? osDisks;
+  final pulumi.Input<List<Disk>>? osDisks;
 
   /// Creates a new [StorageProfile].
   /// [nfsIpAddress] IP Address to connect to storage.
@@ -22,14 +22,14 @@ class StorageProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nfsIpAddress': ?nfsIpAddress,
-      'osDisks': ?osDisks == null ? null : pulumi.Input.encodeList<Disk, Map<String, dynamic>>(osDisks!, (value) => value.toMap()),
+      'osDisks': ?pulumi.Input.mapOptionalInputValue<List<Disk>, List<Map<String, dynamic>>>(osDisks, (value) => pulumi.Input.encodeList<Disk, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageProfile(
-      nfsIpAddress: map['nfsIpAddress'] == null ? null : map['nfsIpAddress'] as String,
-      osDisks: map['osDisks'] == null ? null : pulumi.Input.decodeList<Disk>(map['osDisks'], (value) => Disk.fromMap((value as Map).cast<String, dynamic>())),
+      nfsIpAddress: map['nfsIpAddress'] == null ? null : (map['nfsIpAddress'] as String).input(),
+      osDisks: map['osDisks'] == null ? null : (pulumi.Input.decodeList<Disk>(map['osDisks'], (value) => Disk.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -51,25 +51,16 @@ class TableArgs {
   /// [tableBucketArn] ARN referencing the Table Bucket that contains this Namespace.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   TableArgs({
-    pulumi.Output<TableEncryptionConfiguration>? encryptionConfiguration,
-    required pulumi.Output<String> format,
-    pulumi.Output<TableMaintenanceConfiguration>? maintenanceConfiguration,
-    pulumi.Output<TableMetadata>? metadata,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespace,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> tableBucketArn,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      encryptionConfiguration = pulumi.Input.asOptionalInput<TableEncryptionConfiguration>(encryptionConfiguration),
-      format = pulumi.Input.asInput<String>(format),
-      maintenanceConfiguration = pulumi.Input.asOptionalInput<TableMaintenanceConfiguration>(maintenanceConfiguration),
-      metadata = pulumi.Input.asOptionalInput<TableMetadata>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableBucketArn = pulumi.Input.asInput<String>(tableBucketArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.encryptionConfiguration,
+    required this.format,
+    this.maintenanceConfiguration,
+    this.metadata,
+    this.name,
+    required this.namespace,
+    this.region,
+    required this.tableBucketArn,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,15 +78,15 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : pulumi.Output.create<TableEncryptionConfiguration>(TableEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())),
-      format: pulumi.Output.create<String>(map['format'] as String),
-      maintenanceConfiguration: map['maintenanceConfiguration'] == null ? null : pulumi.Output.create<TableMaintenanceConfiguration>(TableMaintenanceConfiguration.fromMap((map['maintenanceConfiguration'] as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<TableMetadata>(TableMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableBucketArn: pulumi.Output.create<String>(map['tableBucketArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (TableEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      format: (map['format'] as String).input(),
+      maintenanceConfiguration: map['maintenanceConfiguration'] == null ? null : (TableMaintenanceConfiguration.fromMap((map['maintenanceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (TableMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableBucketArn: (map['tableBucketArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

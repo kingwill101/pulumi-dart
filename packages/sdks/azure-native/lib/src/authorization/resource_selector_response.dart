@@ -6,9 +6,9 @@ import 'selector_response.dart';
 /// The resource selector to filter policies by resource properties.
 class ResourceSelectorResponse {
   /// The name of the resource selector.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The list of the selector expressions.
-  final List<SelectorResponse>? selectors;
+  final pulumi.Input<List<SelectorResponse>>? selectors;
 
   /// Creates a new [ResourceSelectorResponse].
   /// [name] The name of the resource selector.
@@ -21,14 +21,14 @@ class ResourceSelectorResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'selectors': ?selectors == null ? null : pulumi.Input.encodeList<SelectorResponse, Map<String, dynamic>>(selectors!, (value) => value.toMap()),
+      'selectors': ?pulumi.Input.mapOptionalInputValue<List<SelectorResponse>, List<Map<String, dynamic>>>(selectors, (value) => pulumi.Input.encodeList<SelectorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResourceSelectorResponse.fromMap(Map<String, dynamic> map) {
     return ResourceSelectorResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      selectors: map['selectors'] == null ? null : pulumi.Input.decodeList<SelectorResponse>(map['selectors'], (value) => SelectorResponse.fromMap((value as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<SelectorResponse>(map['selectors'], (value) => SelectorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

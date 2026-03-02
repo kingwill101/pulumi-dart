@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserPoolSchemaAttributeNumberAttributeConstraint {
   /// - Maximum allowed value.
-  final String maxValue;
+  final pulumi.Input<String> maxValue;
   /// - Minimum allowed value.
-  final String minValue;
+  final pulumi.Input<String> minValue;
 
   /// Creates a new [GetUserPoolSchemaAttributeNumberAttributeConstraint].
   /// [maxValue] - Maximum allowed value.
@@ -24,8 +25,8 @@ class GetUserPoolSchemaAttributeNumberAttributeConstraint {
 
   factory GetUserPoolSchemaAttributeNumberAttributeConstraint.fromMap(Map<String, dynamic> map) {
     return GetUserPoolSchemaAttributeNumberAttributeConstraint(
-      maxValue: map['maxValue'] as String,
-      minValue: map['minValue'] as String,
+      maxValue: (map['maxValue'] as String).input(),
+      minValue: (map['minValue'] as String).input(),
     );
   }
 }

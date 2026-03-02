@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlidnsDomainGroupsGroup {
   /// Number of domain names in the group.
-  final int domainCount;
+  final pulumi.Input<int> domainCount;
   /// Id of the domain group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The name of the domain group.
-  final String groupName;
+  final pulumi.Input<String> groupName;
   /// Id of the instance.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetAlidnsDomainGroupsGroup].
   /// [domainCount] Number of domain names in the group.
@@ -34,10 +35,10 @@ class GetAlidnsDomainGroupsGroup {
 
   factory GetAlidnsDomainGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetAlidnsDomainGroupsGroup(
-      domainCount: map['domainCount'] as int,
-      groupId: map['groupId'] as String,
-      groupName: map['groupName'] as String,
-      id: map['id'] as String,
+      domainCount: (map['domainCount'] as int).input(),
+      groupId: (map['groupId'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

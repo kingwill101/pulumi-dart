@@ -23,15 +23,11 @@ class DashboardDefinitionArgs {
   /// [properties] Properties specific to the dashboard definition resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   DashboardDefinitionArgs({
-    required pulumi.Output<String> dashboardName,
-    pulumi.Output<String>? definitionName,
-    pulumi.Output<DashboardDefinitionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dashboardName = pulumi.Input.asInput<String>(dashboardName),
-      definitionName = pulumi.Input.asOptionalInput<String>(definitionName),
-      properties = pulumi.Input.asOptionalInput<DashboardDefinitionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dashboardName,
+    this.definitionName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class DashboardDefinitionArgs {
 
   factory DashboardDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return DashboardDefinitionArgs(
-      dashboardName: pulumi.Output.create<String>(map['dashboardName'] as String),
-      definitionName: map['definitionName'] == null ? null : pulumi.Output.create<String>(map['definitionName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DashboardDefinitionProperties>(DashboardDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dashboardName: (map['dashboardName'] as String).input(),
+      definitionName: map['definitionName'] == null ? null : (map['definitionName'] as String).input(),
+      properties: map['properties'] == null ? null : (DashboardDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

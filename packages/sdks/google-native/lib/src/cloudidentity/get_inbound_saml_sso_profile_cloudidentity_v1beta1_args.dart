@@ -12,9 +12,8 @@ class GetInboundSamlSsoProfileCloudidentityV1beta1Args {
   /// Creates a new [GetInboundSamlSsoProfileCloudidentityV1beta1Args].
   /// [inboundSamlSsoProfileId] Required.
   GetInboundSamlSsoProfileCloudidentityV1beta1Args({
-    required pulumi.Output<String> inboundSamlSsoProfileId,
-  }) :
-      inboundSamlSsoProfileId = pulumi.Input.asInput<String>(inboundSamlSsoProfileId);
+    required this.inboundSamlSsoProfileId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetInboundSamlSsoProfileCloudidentityV1beta1Args {
 
   factory GetInboundSamlSsoProfileCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetInboundSamlSsoProfileCloudidentityV1beta1Args(
-      inboundSamlSsoProfileId: pulumi.Output.create<String>(map['inboundSamlSsoProfileId'] as String),
+      inboundSamlSsoProfileId: (map['inboundSamlSsoProfileId'] as String).input(),
     );
   }
 }

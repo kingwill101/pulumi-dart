@@ -5,9 +5,9 @@ import 'capability_configuration_argo_cd_rbac_role_mapping_identity.dart';
 
 class CapabilityConfigurationArgoCdRbacRoleMapping {
   /// List of identities. See `identity` below.
-  final List<CapabilityConfigurationArgoCdRbacRoleMappingIdentity> identities;
+  final pulumi.Input<List<CapabilityConfigurationArgoCdRbacRoleMappingIdentity>> identities;
   /// ArgoCD role. Valid values: `ADMIN`, `EDITOR`, `VIEWER`.
-  final String role;
+  final pulumi.Input<String> role;
 
   /// Creates a new [CapabilityConfigurationArgoCdRbacRoleMapping].
   /// [identities] List of identities. See `identity` below.
@@ -19,15 +19,15 @@ class CapabilityConfigurationArgoCdRbacRoleMapping {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identities': pulumi.Input.encodeList<CapabilityConfigurationArgoCdRbacRoleMappingIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'identities': pulumi.Input.mapInputValue<List<CapabilityConfigurationArgoCdRbacRoleMappingIdentity>, List<Map<String, dynamic>>>(identities, (value) => pulumi.Input.encodeList<CapabilityConfigurationArgoCdRbacRoleMappingIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
       'role': role,
     };
   }
 
   factory CapabilityConfigurationArgoCdRbacRoleMapping.fromMap(Map<String, dynamic> map) {
     return CapabilityConfigurationArgoCdRbacRoleMapping(
-      identities: pulumi.Input.decodeList<CapabilityConfigurationArgoCdRbacRoleMappingIdentity>(map['identities'], (value) => CapabilityConfigurationArgoCdRbacRoleMappingIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      role: map['role'] as String,
+      identities: (pulumi.Input.decodeList<CapabilityConfigurationArgoCdRbacRoleMappingIdentity>(map['identities'], (value) => CapabilityConfigurationArgoCdRbacRoleMappingIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

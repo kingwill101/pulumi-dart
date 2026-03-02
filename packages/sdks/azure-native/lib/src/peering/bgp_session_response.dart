@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties that define a BGP session.
 class BgpSessionResponse {
   /// The maximum number of prefixes advertised over the IPv4 session.
-  final int? maxPrefixesAdvertisedV4;
+  final pulumi.Input<int>? maxPrefixesAdvertisedV4;
   /// The maximum number of prefixes advertised over the IPv6 session.
-  final int? maxPrefixesAdvertisedV6;
+  final pulumi.Input<int>? maxPrefixesAdvertisedV6;
   /// The MD5 authentication key of the session.
-  final String? md5AuthenticationKey;
+  final pulumi.Input<String>? md5AuthenticationKey;
   /// The IPv4 session address on Microsoft's end.
-  final String? microsoftSessionIPv4Address;
+  final pulumi.Input<String>? microsoftSessionIPv4Address;
   /// The IPv6 session address on Microsoft's end.
-  final String? microsoftSessionIPv6Address;
+  final pulumi.Input<String>? microsoftSessionIPv6Address;
   /// The IPv4 session address on peer's end.
-  final String? peerSessionIPv4Address;
+  final pulumi.Input<String>? peerSessionIPv4Address;
   /// The IPv6 session address on peer's end.
-  final String? peerSessionIPv6Address;
+  final pulumi.Input<String>? peerSessionIPv6Address;
   /// The IPv4 prefix that contains both ends' IPv4 addresses.
-  final String? sessionPrefixV4;
+  final pulumi.Input<String>? sessionPrefixV4;
   /// The IPv6 prefix that contains both ends' IPv6 addresses.
-  final String? sessionPrefixV6;
+  final pulumi.Input<String>? sessionPrefixV6;
   /// The state of the IPv4 session.
-  final String sessionStateV4;
+  final pulumi.Input<String> sessionStateV4;
   /// The state of the IPv6 session.
-  final String sessionStateV6;
+  final pulumi.Input<String> sessionStateV6;
 
   /// Creates a new [BgpSessionResponse].
   /// [maxPrefixesAdvertisedV4] The maximum number of prefixes advertised over the IPv4 session.
@@ -70,17 +71,17 @@ class BgpSessionResponse {
 
   factory BgpSessionResponse.fromMap(Map<String, dynamic> map) {
     return BgpSessionResponse(
-      maxPrefixesAdvertisedV4: map['maxPrefixesAdvertisedV4'] == null ? null : map['maxPrefixesAdvertisedV4'] as int,
-      maxPrefixesAdvertisedV6: map['maxPrefixesAdvertisedV6'] == null ? null : map['maxPrefixesAdvertisedV6'] as int,
-      md5AuthenticationKey: map['md5AuthenticationKey'] == null ? null : map['md5AuthenticationKey'] as String,
-      microsoftSessionIPv4Address: map['microsoftSessionIPv4Address'] == null ? null : map['microsoftSessionIPv4Address'] as String,
-      microsoftSessionIPv6Address: map['microsoftSessionIPv6Address'] == null ? null : map['microsoftSessionIPv6Address'] as String,
-      peerSessionIPv4Address: map['peerSessionIPv4Address'] == null ? null : map['peerSessionIPv4Address'] as String,
-      peerSessionIPv6Address: map['peerSessionIPv6Address'] == null ? null : map['peerSessionIPv6Address'] as String,
-      sessionPrefixV4: map['sessionPrefixV4'] == null ? null : map['sessionPrefixV4'] as String,
-      sessionPrefixV6: map['sessionPrefixV6'] == null ? null : map['sessionPrefixV6'] as String,
-      sessionStateV4: map['sessionStateV4'] as String,
-      sessionStateV6: map['sessionStateV6'] as String,
+      maxPrefixesAdvertisedV4: map['maxPrefixesAdvertisedV4'] == null ? null : (map['maxPrefixesAdvertisedV4'] as int).input(),
+      maxPrefixesAdvertisedV6: map['maxPrefixesAdvertisedV6'] == null ? null : (map['maxPrefixesAdvertisedV6'] as int).input(),
+      md5AuthenticationKey: map['md5AuthenticationKey'] == null ? null : (map['md5AuthenticationKey'] as String).input(),
+      microsoftSessionIPv4Address: map['microsoftSessionIPv4Address'] == null ? null : (map['microsoftSessionIPv4Address'] as String).input(),
+      microsoftSessionIPv6Address: map['microsoftSessionIPv6Address'] == null ? null : (map['microsoftSessionIPv6Address'] as String).input(),
+      peerSessionIPv4Address: map['peerSessionIPv4Address'] == null ? null : (map['peerSessionIPv4Address'] as String).input(),
+      peerSessionIPv6Address: map['peerSessionIPv6Address'] == null ? null : (map['peerSessionIPv6Address'] as String).input(),
+      sessionPrefixV4: map['sessionPrefixV4'] == null ? null : (map['sessionPrefixV4'] as String).input(),
+      sessionPrefixV6: map['sessionPrefixV6'] == null ? null : (map['sessionPrefixV6'] as String).input(),
+      sessionStateV4: (map['sessionStateV4'] as String).input(),
+      sessionStateV6: (map['sessionStateV6'] as String).input(),
     );
   }
 }

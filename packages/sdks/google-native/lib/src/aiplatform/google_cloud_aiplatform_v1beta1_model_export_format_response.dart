@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents export format supported by the Model. All formats export to Google Cloud Storage.
 class GoogleCloudAiplatformV1beta1ModelExportFormatResponse {
   /// The content of this Model that may be exported.
-  final List<String> exportableContents;
+  final pulumi.Input<List<String>> exportableContents;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ModelExportFormatResponse].
   /// [exportableContents] The content of this Model that may be exported.
@@ -20,7 +21,7 @@ class GoogleCloudAiplatformV1beta1ModelExportFormatResponse {
 
   factory GoogleCloudAiplatformV1beta1ModelExportFormatResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelExportFormatResponse(
-      exportableContents: (map['exportableContents'] as List).cast<String>(),
+      exportableContents: ((map['exportableContents'] as List).cast<String>()).input(),
     );
   }
 }

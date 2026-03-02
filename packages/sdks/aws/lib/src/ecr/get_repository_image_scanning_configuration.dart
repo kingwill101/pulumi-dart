@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRepositoryImageScanningConfiguration {
   /// Whether images are scanned after being pushed to the repository.
-  final bool scanOnPush;
+  final pulumi.Input<bool> scanOnPush;
 
   /// Creates a new [GetRepositoryImageScanningConfiguration].
   /// [scanOnPush] Whether images are scanned after being pushed to the repository.
@@ -19,7 +20,7 @@ class GetRepositoryImageScanningConfiguration {
 
   factory GetRepositoryImageScanningConfiguration.fromMap(Map<String, dynamic> map) {
     return GetRepositoryImageScanningConfiguration(
-      scanOnPush: map['scanOnPush'] as bool,
+      scanOnPush: (map['scanOnPush'] as bool).input(),
     );
   }
 }

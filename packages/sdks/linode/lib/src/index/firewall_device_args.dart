@@ -19,13 +19,10 @@ class FirewallDeviceArgs {
   /// [entityType] The type of the entity to attach. (default: `linode`)
   /// [firewallId] The unique ID of the target Firewall.
   FirewallDeviceArgs({
-    required pulumi.Output<int> entityId,
-    pulumi.Output<String>? entityType,
-    required pulumi.Output<int> firewallId,
-  }) :
-      entityId = pulumi.Input.asInput<int>(entityId),
-      entityType = pulumi.Input.asOptionalInput<String>(entityType),
-      firewallId = pulumi.Input.asInput<int>(firewallId);
+    required this.entityId,
+    this.entityType,
+    required this.firewallId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class FirewallDeviceArgs {
 
   factory FirewallDeviceArgs.fromMap(Map<String, dynamic> map) {
     return FirewallDeviceArgs(
-      entityId: pulumi.Output.create<int>(map['entityId'] as int),
-      entityType: map['entityType'] == null ? null : pulumi.Output.create<String>(map['entityType'] as String),
-      firewallId: pulumi.Output.create<int>(map['firewallId'] as int),
+      entityId: (map['entityId'] as int).input(),
+      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
+      firewallId: (map['firewallId'] as int).input(),
     );
   }
 }

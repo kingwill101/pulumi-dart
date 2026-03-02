@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The network profile of the machines in the pool.
 class NetworkProfileResponse {
   /// The subnet id on which to put all machines created in the pool.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [NetworkProfileResponse].
   /// [subnetId] The subnet id on which to put all machines created in the pool.
@@ -20,7 +21,7 @@ class NetworkProfileResponse {
 
   factory NetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return NetworkProfileResponse(
-      subnetId: map['subnetId'] as String,
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

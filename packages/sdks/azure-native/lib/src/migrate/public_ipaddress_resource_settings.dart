@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the public IP address resource settings.
 class PublicIPAddressResourceSettings {
   /// Gets or sets the domain name label.
-  final String? domainNameLabel;
+  final pulumi.Input<String>? domainNameLabel;
   /// Gets or sets the fully qualified domain name.
-  final String? fqdn;
+  final pulumi.Input<String>? fqdn;
   /// Gets or sets public IP allocation method.
-  final String? publicIpAllocationMethod;
+  final pulumi.Input<String>? publicIpAllocationMethod;
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Network/publicIPAddresses'.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// Gets or sets public IP sku.
-  final String? sku;
+  final pulumi.Input<String>? sku;
   /// Gets or sets the Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Gets or sets the target resource group name.
-  final String? targetResourceGroupName;
+  final pulumi.Input<String>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final String? targetResourceName;
+  final pulumi.Input<String>? targetResourceName;
   /// Gets or sets public IP zones.
-  final String? zones;
+  final pulumi.Input<String>? zones;
 
   /// Creates a new [PublicIPAddressResourceSettings].
   /// [domainNameLabel] Gets or sets the domain name label.
@@ -61,15 +62,15 @@ class PublicIPAddressResourceSettings {
 
   factory PublicIPAddressResourceSettings.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressResourceSettings(
-      domainNameLabel: map['domainNameLabel'] == null ? null : map['domainNameLabel'] as String,
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      publicIpAllocationMethod: map['publicIpAllocationMethod'] == null ? null : map['publicIpAllocationMethod'] as String,
-      resourceType: map['resourceType'] as String,
-      sku: map['sku'] == null ? null : map['sku'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : map['targetResourceGroupName'] as String,
-      targetResourceName: map['targetResourceName'] == null ? null : map['targetResourceName'] as String,
-      zones: map['zones'] == null ? null : map['zones'] as String,
+      domainNameLabel: map['domainNameLabel'] == null ? null : (map['domainNameLabel'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      publicIpAllocationMethod: map['publicIpAllocationMethod'] == null ? null : (map['publicIpAllocationMethod'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
+      zones: map['zones'] == null ? null : (map['zones'] as String).input(),
     );
   }
 }

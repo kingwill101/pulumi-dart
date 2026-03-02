@@ -16,11 +16,9 @@ class GetReceivedLicenseArgs {
   /// [licenseArn] The ARN of the received license you want data for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetReceivedLicenseArgs({
-    required pulumi.Output<String> licenseArn,
-    pulumi.Output<String>? region,
-  }) :
-      licenseArn = pulumi.Input.asInput<String>(licenseArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.licenseArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetReceivedLicenseArgs {
 
   factory GetReceivedLicenseArgs.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseArgs(
-      licenseArn: pulumi.Output.create<String>(map['licenseArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      licenseArn: (map['licenseArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of FileSystemConfig
 class FileSystemConfigResponse {
   /// The Amazon Resource Name (ARN) of the Amazon EFS access point that provides access to the file system.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// The path where the function can access the file system, starting with ``/mnt/``.
-  final String? localMountPath;
+  final pulumi.Input<String>? localMountPath;
 
   /// Creates a new [FileSystemConfigResponse].
   /// [arn] The Amazon Resource Name (ARN) of the Amazon EFS access point that provides access to the file system.
@@ -25,8 +26,8 @@ class FileSystemConfigResponse {
 
   factory FileSystemConfigResponse.fromMap(Map<String, dynamic> map) {
     return FileSystemConfigResponse(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      localMountPath: map['localMountPath'] == null ? null : map['localMountPath'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      localMountPath: map['localMountPath'] == null ? null : (map['localMountPath'] as String).input(),
     );
   }
 }

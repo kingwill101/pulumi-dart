@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Elastic Backup Policy properties
 class ElasticBackupPolicyPropertiesResponse {
   /// The number of volumes currently using this Backup Policy.
-  final int assignedVolumesCount;
+  final pulumi.Input<int> assignedVolumesCount;
   /// Daily backups count to keep
-  final int? dailyBackupsToKeep;
+  final pulumi.Input<int>? dailyBackupsToKeep;
   /// Monthly backups count to keep
-  final int? monthlyBackupsToKeep;
+  final pulumi.Input<int>? monthlyBackupsToKeep;
   /// The property to identify whether Backup Policy is enabled or not
-  final String? policyState;
+  final pulumi.Input<String>? policyState;
   /// Azure lifecycle management.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Weekly backups count to keep
-  final int? weeklyBackupsToKeep;
+  final pulumi.Input<int>? weeklyBackupsToKeep;
 
   /// Creates a new [ElasticBackupPolicyPropertiesResponse].
   /// [assignedVolumesCount] The number of volumes currently using this Backup Policy.
@@ -45,12 +46,12 @@ class ElasticBackupPolicyPropertiesResponse {
 
   factory ElasticBackupPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticBackupPolicyPropertiesResponse(
-      assignedVolumesCount: map['assignedVolumesCount'] as int,
-      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : map['dailyBackupsToKeep'] as int,
-      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : map['monthlyBackupsToKeep'] as int,
-      policyState: map['policyState'] == null ? null : map['policyState'] as String,
-      provisioningState: map['provisioningState'] as String,
-      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : map['weeklyBackupsToKeep'] as int,
+      assignedVolumesCount: (map['assignedVolumesCount'] as int).input(),
+      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : (map['dailyBackupsToKeep'] as int).input(),
+      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : (map['monthlyBackupsToKeep'] as int).input(),
+      policyState: map['policyState'] == null ? null : (map['policyState'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : (map['weeklyBackupsToKeep'] as int).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader {
-  final List<String> items;
+  final pulumi.Input<List<String>> items;
 
   /// Creates a new [GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader].
   /// [items] Required.
@@ -18,7 +19,7 @@ class GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader {
 
   factory GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader.fromMap(Map<String, dynamic> map) {
     return GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader(
-      items: (map['items'] as List).cast<String>(),
+      items: ((map['items'] as List).cast<String>()).input(),
     );
   }
 }

@@ -32,23 +32,15 @@ class BuildState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [version] Version that is associated with this build.
   BuildState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? operatingSystem,
-    pulumi.Output<String>? region,
-    pulumi.Output<BuildStorageLocation>? storageLocation,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? version,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      operatingSystem = pulumi.Input.asOptionalInput<String>(operatingSystem),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      storageLocation = pulumi.Input.asOptionalInput<BuildStorageLocation>(storageLocation),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.arn,
+    this.name,
+    this.operatingSystem,
+    this.region,
+    this.storageLocation,
+    this.tags,
+    this.tagsAll,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class BuildState {
 
   factory BuildState.fromMap(Map<String, dynamic> map) {
     return BuildState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      operatingSystem: map['operatingSystem'] == null ? null : pulumi.Output.create<String>(map['operatingSystem'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      storageLocation: map['storageLocation'] == null ? null : pulumi.Output.create<BuildStorageLocation>(BuildStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      storageLocation: map['storageLocation'] == null ? null : (BuildStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

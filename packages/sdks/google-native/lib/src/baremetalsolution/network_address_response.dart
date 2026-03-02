@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A network.
 class NetworkAddressResponse {
   /// IPv4 address to be assigned to the server.
-  final String address;
+  final pulumi.Input<String> address;
   /// Name of the existing network to use.
-  final String existingNetworkId;
+  final pulumi.Input<String> existingNetworkId;
   /// Id of the network to use, within the same ProvisioningConfig request.
-  final String networkId;
+  final pulumi.Input<String> networkId;
 
   /// Creates a new [NetworkAddressResponse].
   /// [address] IPv4 address to be assigned to the server.
@@ -30,9 +31,9 @@ class NetworkAddressResponse {
 
   factory NetworkAddressResponse.fromMap(Map<String, dynamic> map) {
     return NetworkAddressResponse(
-      address: map['address'] as String,
-      existingNetworkId: map['existingNetworkId'] as String,
-      networkId: map['networkId'] as String,
+      address: (map['address'] as String).input(),
+      existingNetworkId: (map['existingNetworkId'] as String).input(),
+      networkId: (map['networkId'] as String).input(),
     );
   }
 }

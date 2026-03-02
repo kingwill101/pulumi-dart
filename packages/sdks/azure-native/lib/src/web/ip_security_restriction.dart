@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IP security restriction on an app.
 class IpSecurityRestriction {
   /// Allow or Deny access for this IP range.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// IP restriction rule description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// IP restriction rule headers.
   /// X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).
   /// The matching logic is ..
@@ -23,26 +24,26 @@ class IpSecurityRestriction {
   ///
   /// X-Azure-FDID and X-FD-HealthProbe.
   /// The matching logic is exact match.
-  final Map<String, List<String>>? headers;
+  final pulumi.Input<Map<String, List<String>>>? headers;
   /// IP address the security restriction is valid for.
   /// It can be in form of pure ipv4 address (required SubnetMask property) or
   /// CIDR notation such as ipv4/mask (leading bit match). For CIDR,
   /// SubnetMask property must not be specified.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// IP restriction rule name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Priority of IP restriction rule.
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// Subnet mask for the range of IP addresses the restriction is valid for.
-  final String? subnetMask;
+  final pulumi.Input<String>? subnetMask;
   /// (internal) Subnet traffic tag
-  final int? subnetTrafficTag;
+  final pulumi.Input<int>? subnetTrafficTag;
   /// Defines what this IP filter will be used for. This is to support IP filtering on proxies.
-  final String? tag;
+  final pulumi.Input<String>? tag;
   /// Virtual network resource id
-  final String? vnetSubnetResourceId;
+  final pulumi.Input<String>? vnetSubnetResourceId;
   /// (internal) Vnet traffic tag
-  final int? vnetTrafficTag;
+  final pulumi.Input<int>? vnetTrafficTag;
 
   /// Creates a new [IpSecurityRestriction].
   /// [action] Allow or Deny access for this IP range.
@@ -88,17 +89,17 @@ class IpSecurityRestriction {
 
   factory IpSecurityRestriction.fromMap(Map<String, dynamic> map) {
     return IpSecurityRestriction(
-      action: map['action'] == null ? null : map['action'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      headers: map['headers'] == null ? null : (map['headers'] as Map).cast<String, List<String>>(),
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      subnetMask: map['subnetMask'] == null ? null : map['subnetMask'] as String,
-      subnetTrafficTag: map['subnetTrafficTag'] == null ? null : map['subnetTrafficTag'] as int,
-      tag: map['tag'] == null ? null : map['tag'] as String,
-      vnetSubnetResourceId: map['vnetSubnetResourceId'] == null ? null : map['vnetSubnetResourceId'] as String,
-      vnetTrafficTag: map['vnetTrafficTag'] == null ? null : map['vnetTrafficTag'] as int,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, List<String>>()).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
+      subnetTrafficTag: map['subnetTrafficTag'] == null ? null : (map['subnetTrafficTag'] as int).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      vnetSubnetResourceId: map['vnetSubnetResourceId'] == null ? null : (map['vnetSubnetResourceId'] as String).input(),
+      vnetTrafficTag: map['vnetTrafficTag'] == null ? null : (map['vnetTrafficTag'] as int).input(),
     );
   }
 }

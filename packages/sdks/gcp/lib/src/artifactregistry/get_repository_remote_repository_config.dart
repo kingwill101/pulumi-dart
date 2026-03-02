@@ -12,26 +12,26 @@ import 'get_repository_remote_repository_config_yum_repository.dart';
 
 class GetRepositoryRemoteRepositoryConfig {
   /// Specific settings for an Apt remote repository.
-  final List<GetRepositoryRemoteRepositoryConfigAptRepository> aptRepositories;
+  final pulumi.Input<List<GetRepositoryRemoteRepositoryConfigAptRepository>> aptRepositories;
   /// Specific settings for an Artifact Registory remote repository.
-  final List<GetRepositoryRemoteRepositoryConfigCommonRepository> commonRepositories;
+  final pulumi.Input<List<GetRepositoryRemoteRepositoryConfigCommonRepository>> commonRepositories;
   /// The description of the remote source.
-  final String description;
+  final pulumi.Input<String> description;
   /// If true, the remote repository upstream and upstream credentials will
   /// not be validated.
-  final bool disableUpstreamValidation;
+  final pulumi.Input<bool> disableUpstreamValidation;
   /// Specific settings for a Docker remote repository.
-  final List<GetRepositoryRemoteRepositoryConfigDockerRepository> dockerRepositories;
+  final pulumi.Input<List<GetRepositoryRemoteRepositoryConfigDockerRepository>> dockerRepositories;
   /// Specific settings for a Maven remote repository.
-  final List<GetRepositoryRemoteRepositoryConfigMavenRepository> mavenRepositories;
+  final pulumi.Input<List<GetRepositoryRemoteRepositoryConfigMavenRepository>> mavenRepositories;
   /// Specific settings for an Npm remote repository.
-  final List<GetRepositoryRemoteRepositoryConfigNpmRepository> npmRepositories;
+  final pulumi.Input<List<GetRepositoryRemoteRepositoryConfigNpmRepository>> npmRepositories;
   /// Specific settings for a Python remote repository.
-  final List<GetRepositoryRemoteRepositoryConfigPythonRepository> pythonRepositories;
+  final pulumi.Input<List<GetRepositoryRemoteRepositoryConfigPythonRepository>> pythonRepositories;
   /// The credentials used to access the remote repository.
-  final List<GetRepositoryRemoteRepositoryConfigUpstreamCredential> upstreamCredentials;
+  final pulumi.Input<List<GetRepositoryRemoteRepositoryConfigUpstreamCredential>> upstreamCredentials;
   /// Specific settings for an Yum remote repository.
-  final List<GetRepositoryRemoteRepositoryConfigYumRepository> yumRepositories;
+  final pulumi.Input<List<GetRepositoryRemoteRepositoryConfigYumRepository>> yumRepositories;
 
   /// Creates a new [GetRepositoryRemoteRepositoryConfig].
   /// [aptRepositories] Specific settings for an Apt remote repository.
@@ -59,31 +59,31 @@ class GetRepositoryRemoteRepositoryConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aptRepositories': pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigAptRepository, Map<String, dynamic>>(aptRepositories, (value) => value.toMap()),
-      'commonRepositories': pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigCommonRepository, Map<String, dynamic>>(commonRepositories, (value) => value.toMap()),
+      'aptRepositories': pulumi.Input.mapInputValue<List<GetRepositoryRemoteRepositoryConfigAptRepository>, List<Map<String, dynamic>>>(aptRepositories, (value) => pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigAptRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'commonRepositories': pulumi.Input.mapInputValue<List<GetRepositoryRemoteRepositoryConfigCommonRepository>, List<Map<String, dynamic>>>(commonRepositories, (value) => pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigCommonRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': description,
       'disableUpstreamValidation': disableUpstreamValidation,
-      'dockerRepositories': pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigDockerRepository, Map<String, dynamic>>(dockerRepositories, (value) => value.toMap()),
-      'mavenRepositories': pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigMavenRepository, Map<String, dynamic>>(mavenRepositories, (value) => value.toMap()),
-      'npmRepositories': pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigNpmRepository, Map<String, dynamic>>(npmRepositories, (value) => value.toMap()),
-      'pythonRepositories': pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigPythonRepository, Map<String, dynamic>>(pythonRepositories, (value) => value.toMap()),
-      'upstreamCredentials': pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigUpstreamCredential, Map<String, dynamic>>(upstreamCredentials, (value) => value.toMap()),
-      'yumRepositories': pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigYumRepository, Map<String, dynamic>>(yumRepositories, (value) => value.toMap()),
+      'dockerRepositories': pulumi.Input.mapInputValue<List<GetRepositoryRemoteRepositoryConfigDockerRepository>, List<Map<String, dynamic>>>(dockerRepositories, (value) => pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigDockerRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mavenRepositories': pulumi.Input.mapInputValue<List<GetRepositoryRemoteRepositoryConfigMavenRepository>, List<Map<String, dynamic>>>(mavenRepositories, (value) => pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigMavenRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'npmRepositories': pulumi.Input.mapInputValue<List<GetRepositoryRemoteRepositoryConfigNpmRepository>, List<Map<String, dynamic>>>(npmRepositories, (value) => pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigNpmRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pythonRepositories': pulumi.Input.mapInputValue<List<GetRepositoryRemoteRepositoryConfigPythonRepository>, List<Map<String, dynamic>>>(pythonRepositories, (value) => pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigPythonRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'upstreamCredentials': pulumi.Input.mapInputValue<List<GetRepositoryRemoteRepositoryConfigUpstreamCredential>, List<Map<String, dynamic>>>(upstreamCredentials, (value) => pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigUpstreamCredential, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'yumRepositories': pulumi.Input.mapInputValue<List<GetRepositoryRemoteRepositoryConfigYumRepository>, List<Map<String, dynamic>>>(yumRepositories, (value) => pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigYumRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRepositoryRemoteRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return GetRepositoryRemoteRepositoryConfig(
-      aptRepositories: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigAptRepository>(map['aptRepositories'], (value) => GetRepositoryRemoteRepositoryConfigAptRepository.fromMap((value as Map).cast<String, dynamic>())),
-      commonRepositories: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigCommonRepository>(map['commonRepositories'], (value) => GetRepositoryRemoteRepositoryConfigCommonRepository.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] as String,
-      disableUpstreamValidation: map['disableUpstreamValidation'] as bool,
-      dockerRepositories: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigDockerRepository>(map['dockerRepositories'], (value) => GetRepositoryRemoteRepositoryConfigDockerRepository.fromMap((value as Map).cast<String, dynamic>())),
-      mavenRepositories: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigMavenRepository>(map['mavenRepositories'], (value) => GetRepositoryRemoteRepositoryConfigMavenRepository.fromMap((value as Map).cast<String, dynamic>())),
-      npmRepositories: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigNpmRepository>(map['npmRepositories'], (value) => GetRepositoryRemoteRepositoryConfigNpmRepository.fromMap((value as Map).cast<String, dynamic>())),
-      pythonRepositories: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigPythonRepository>(map['pythonRepositories'], (value) => GetRepositoryRemoteRepositoryConfigPythonRepository.fromMap((value as Map).cast<String, dynamic>())),
-      upstreamCredentials: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigUpstreamCredential>(map['upstreamCredentials'], (value) => GetRepositoryRemoteRepositoryConfigUpstreamCredential.fromMap((value as Map).cast<String, dynamic>())),
-      yumRepositories: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigYumRepository>(map['yumRepositories'], (value) => GetRepositoryRemoteRepositoryConfigYumRepository.fromMap((value as Map).cast<String, dynamic>())),
+      aptRepositories: (pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigAptRepository>(map['aptRepositories'], (value) => GetRepositoryRemoteRepositoryConfigAptRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commonRepositories: (pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigCommonRepository>(map['commonRepositories'], (value) => GetRepositoryRemoteRepositoryConfigCommonRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: (map['description'] as String).input(),
+      disableUpstreamValidation: (map['disableUpstreamValidation'] as bool).input(),
+      dockerRepositories: (pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigDockerRepository>(map['dockerRepositories'], (value) => GetRepositoryRemoteRepositoryConfigDockerRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mavenRepositories: (pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigMavenRepository>(map['mavenRepositories'], (value) => GetRepositoryRemoteRepositoryConfigMavenRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      npmRepositories: (pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigNpmRepository>(map['npmRepositories'], (value) => GetRepositoryRemoteRepositoryConfigNpmRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pythonRepositories: (pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigPythonRepository>(map['pythonRepositories'], (value) => GetRepositoryRemoteRepositoryConfigPythonRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      upstreamCredentials: (pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigUpstreamCredential>(map['upstreamCredentials'], (value) => GetRepositoryRemoteRepositoryConfigUpstreamCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      yumRepositories: (pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigYumRepository>(map['yumRepositories'], (value) => GetRepositoryRemoteRepositoryConfigYumRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

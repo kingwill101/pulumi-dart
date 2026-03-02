@@ -40,29 +40,18 @@ class SnapshotState {
   /// [retentionPeriod] How long to retain the created snapshot. Default value is `-1`.
   /// [snapshotName] The name of the snapshot.
   SnapshotState({
-    pulumi.Output<List<String>>? accountsWithProvisionedRestoreAccesses,
-    pulumi.Output<List<String>>? accountsWithRestoreAccesses,
-    pulumi.Output<String>? adminUsername,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? namespaceArn,
-    pulumi.Output<String>? namespaceName,
-    pulumi.Output<String>? ownerAccount,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? retentionPeriod,
-    pulumi.Output<String>? snapshotName,
-  }) :
-      accountsWithProvisionedRestoreAccesses = pulumi.Input.asOptionalInput<List<String>>(accountsWithProvisionedRestoreAccesses),
-      accountsWithRestoreAccesses = pulumi.Input.asOptionalInput<List<String>>(accountsWithRestoreAccesses),
-      adminUsername = pulumi.Input.asOptionalInput<String>(adminUsername),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      namespaceArn = pulumi.Input.asOptionalInput<String>(namespaceArn),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      ownerAccount = pulumi.Input.asOptionalInput<String>(ownerAccount),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionPeriod = pulumi.Input.asOptionalInput<int>(retentionPeriod),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName);
+    this.accountsWithProvisionedRestoreAccesses,
+    this.accountsWithRestoreAccesses,
+    this.adminUsername,
+    this.arn,
+    this.kmsKeyId,
+    this.namespaceArn,
+    this.namespaceName,
+    this.ownerAccount,
+    this.region,
+    this.retentionPeriod,
+    this.snapshotName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      accountsWithProvisionedRestoreAccesses: map['accountsWithProvisionedRestoreAccesses'] == null ? null : pulumi.Output.create<List<String>>((map['accountsWithProvisionedRestoreAccesses'] as List).cast<String>()),
-      accountsWithRestoreAccesses: map['accountsWithRestoreAccesses'] == null ? null : pulumi.Output.create<List<String>>((map['accountsWithRestoreAccesses'] as List).cast<String>()),
-      adminUsername: map['adminUsername'] == null ? null : pulumi.Output.create<String>(map['adminUsername'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      namespaceArn: map['namespaceArn'] == null ? null : pulumi.Output.create<String>(map['namespaceArn'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      ownerAccount: map['ownerAccount'] == null ? null : pulumi.Output.create<String>(map['ownerAccount'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionPeriod: map['retentionPeriod'] == null ? null : pulumi.Output.create<int>(map['retentionPeriod'] as int),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
+      accountsWithProvisionedRestoreAccesses: map['accountsWithProvisionedRestoreAccesses'] == null ? null : ((map['accountsWithProvisionedRestoreAccesses'] as List).cast<String>()).input(),
+      accountsWithRestoreAccesses: map['accountsWithRestoreAccesses'] == null ? null : ((map['accountsWithRestoreAccesses'] as List).cast<String>()).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      namespaceArn: map['namespaceArn'] == null ? null : (map['namespaceArn'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      ownerAccount: map['ownerAccount'] == null ? null : (map['ownerAccount'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
     );
   }
 }

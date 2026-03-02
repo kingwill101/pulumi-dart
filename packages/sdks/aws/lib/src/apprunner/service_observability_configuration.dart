@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceObservabilityConfiguration {
   /// ARN of the observability configuration that is associated with the service. Specified only when `observability_enabled` is `true`.
-  final String? observabilityConfigurationArn;
+  final pulumi.Input<String>? observabilityConfigurationArn;
   /// When `true`, an observability configuration resource is associated with the service.
-  final bool observabilityEnabled;
+  final pulumi.Input<bool> observabilityEnabled;
 
   /// Creates a new [ServiceObservabilityConfiguration].
   /// [observabilityConfigurationArn] ARN of the observability configuration that is associated with the service. Specified only when `observability_enabled` is `true`.
@@ -24,8 +25,8 @@ class ServiceObservabilityConfiguration {
 
   factory ServiceObservabilityConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceObservabilityConfiguration(
-      observabilityConfigurationArn: map['observabilityConfigurationArn'] == null ? null : map['observabilityConfigurationArn'] as String,
-      observabilityEnabled: map['observabilityEnabled'] as bool,
+      observabilityConfigurationArn: map['observabilityConfigurationArn'] == null ? null : (map['observabilityConfigurationArn'] as String).input(),
+      observabilityEnabled: (map['observabilityEnabled'] as bool).input(),
     );
   }
 }

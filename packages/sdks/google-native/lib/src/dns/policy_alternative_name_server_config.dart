@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_alternative_name_server_config_target_name_server.dart';
 
 class PolicyAlternativeNameServerConfig {
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
-  final List<PolicyAlternativeNameServerConfigTargetNameServer>? targetNameServers;
+  final pulumi.Input<List<PolicyAlternativeNameServerConfigTargetNameServer>>? targetNameServers;
 
   /// Creates a new [PolicyAlternativeNameServerConfig].
   /// [kind] Optional.
@@ -19,14 +19,14 @@ class PolicyAlternativeNameServerConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kind': ?kind,
-      'targetNameServers': ?targetNameServers == null ? null : pulumi.Input.encodeList<PolicyAlternativeNameServerConfigTargetNameServer, Map<String, dynamic>>(targetNameServers!, (value) => value.toMap()),
+      'targetNameServers': ?pulumi.Input.mapOptionalInputValue<List<PolicyAlternativeNameServerConfigTargetNameServer>, List<Map<String, dynamic>>>(targetNameServers, (value) => pulumi.Input.encodeList<PolicyAlternativeNameServerConfigTargetNameServer, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PolicyAlternativeNameServerConfig.fromMap(Map<String, dynamic> map) {
     return PolicyAlternativeNameServerConfig(
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      targetNameServers: map['targetNameServers'] == null ? null : pulumi.Input.decodeList<PolicyAlternativeNameServerConfigTargetNameServer>(map['targetNameServers'], (value) => PolicyAlternativeNameServerConfigTargetNameServer.fromMap((value as Map).cast<String, dynamic>())),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      targetNameServers: map['targetNameServers'] == null ? null : (pulumi.Input.decodeList<PolicyAlternativeNameServerConfigTargetNameServer>(map['targetNameServers'], (value) => PolicyAlternativeNameServerConfigTargetNameServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

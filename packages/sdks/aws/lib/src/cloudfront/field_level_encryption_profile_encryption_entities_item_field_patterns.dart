@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns {
-  final List<String>? items;
+  final pulumi.Input<List<String>>? items;
 
   /// Creates a new [FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns].
   /// [items] Optional.
@@ -18,7 +19,7 @@ class FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns {
 
   factory FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns(
-      items: map['items'] == null ? null : (map['items'] as List).cast<String>(),
+      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
     );
   }
 }

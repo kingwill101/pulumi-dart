@@ -28,19 +28,13 @@ class ChannelArgs {
   /// [credentials] The channel credentials
   /// [resourceGroupName] Resource Group Name
   ChannelArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<List<String>>? channelFunctions,
-    pulumi.Output<String>? channelName,
-    required pulumi.Output<String> channelType,
-    pulumi.Output<Map<String, String>>? credentials,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      channelFunctions = pulumi.Input.asOptionalInput<List<String>>(channelFunctions),
-      channelName = pulumi.Input.asOptionalInput<String>(channelName),
-      channelType = pulumi.Input.asInput<String>(channelType),
-      credentials = pulumi.Input.asOptionalInput<Map<String, String>>(credentials),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.channelFunctions,
+    this.channelName,
+    required this.channelType,
+    this.credentials,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ChannelArgs {
 
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      channelFunctions: map['channelFunctions'] == null ? null : pulumi.Output.create<List<String>>((map['channelFunctions'] as List).cast<String>()),
-      channelName: map['channelName'] == null ? null : pulumi.Output.create<String>(map['channelName'] as String),
-      channelType: pulumi.Output.create<String>(map['channelType'] as String),
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<Map<String, String>>((map['credentials'] as Map).cast<String, String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      channelFunctions: map['channelFunctions'] == null ? null : ((map['channelFunctions'] as List).cast<String>()).input(),
+      channelName: map['channelName'] == null ? null : (map['channelName'] as String).input(),
+      channelType: (map['channelType'] as String).input(),
+      credentials: map['credentials'] == null ? null : ((map['credentials'] as Map).cast<String, String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

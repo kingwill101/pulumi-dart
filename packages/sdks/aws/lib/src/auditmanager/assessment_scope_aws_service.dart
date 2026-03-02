@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssessmentScopeAwsService {
   /// Name of the Amazon Web Service.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [AssessmentScopeAwsService].
   /// [serviceName] Name of the Amazon Web Service.
@@ -19,7 +20,7 @@ class AssessmentScopeAwsService {
 
   factory AssessmentScopeAwsService.fromMap(Map<String, dynamic> map) {
     return AssessmentScopeAwsService(
-      serviceName: map['serviceName'] as String,
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

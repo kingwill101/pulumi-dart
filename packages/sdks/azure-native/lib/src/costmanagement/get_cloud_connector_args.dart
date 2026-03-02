@@ -16,11 +16,9 @@ class GetCloudConnectorArgs {
   /// [connectorName] Connector Name.
   /// [expand] May be used to expand the collectionInfo property. By default, collectionInfo is not included.
   GetCloudConnectorArgs({
-    required pulumi.Output<String> connectorName,
-    pulumi.Output<String>? expand,
-  }) :
-      connectorName = pulumi.Input.asInput<String>(connectorName),
-      expand = pulumi.Input.asOptionalInput<String>(expand);
+    required this.connectorName,
+    this.expand,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCloudConnectorArgs {
 
   factory GetCloudConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudConnectorArgs(
-      connectorName: pulumi.Output.create<String>(map['connectorName'] as String),
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
+      connectorName: (map['connectorName'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_info_response_alloydb_v1beta.dart';
 
 /// ContinuousBackupInfo describes the continuous backup properties of a cluster.
 class ContinuousBackupInfoResponseAlloydbV1beta {
   /// The earliest restorable time that can be restored to. Output only field.
-  final String earliestRestorableTime;
+  final pulumi.Input<String> earliestRestorableTime;
   /// When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
-  final String enabledTime;
+  final pulumi.Input<String> enabledTime;
   /// The encryption information for the WALs and backups required for ContinuousBackup.
-  final EncryptionInfoResponseAlloydbV1beta encryptionInfo;
+  final pulumi.Input<EncryptionInfoResponseAlloydbV1beta> encryptionInfo;
   /// Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
-  final List<String> schedule;
+  final pulumi.Input<List<String>> schedule;
 
   /// Creates a new [ContinuousBackupInfoResponseAlloydbV1beta].
   /// [earliestRestorableTime] The earliest restorable time that can be restored to. Output only field.
@@ -29,17 +30,17 @@ class ContinuousBackupInfoResponseAlloydbV1beta {
     return <String, dynamic>{
       'earliestRestorableTime': earliestRestorableTime,
       'enabledTime': enabledTime,
-      'encryptionInfo': encryptionInfo.toMap(),
+      'encryptionInfo': pulumi.Input.mapInputValue<EncryptionInfoResponseAlloydbV1beta, Map<String, dynamic>>(encryptionInfo, (value) => value.toMap()),
       'schedule': schedule,
     };
   }
 
   factory ContinuousBackupInfoResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return ContinuousBackupInfoResponseAlloydbV1beta(
-      earliestRestorableTime: map['earliestRestorableTime'] as String,
-      enabledTime: map['enabledTime'] as String,
-      encryptionInfo: EncryptionInfoResponseAlloydbV1beta.fromMap((map['encryptionInfo'] as Map).cast<String, dynamic>()),
-      schedule: (map['schedule'] as List).cast<String>(),
+      earliestRestorableTime: (map['earliestRestorableTime'] as String).input(),
+      enabledTime: (map['enabledTime'] as String).input(),
+      encryptionInfo: (EncryptionInfoResponseAlloydbV1beta.fromMap((map['encryptionInfo'] as Map).cast<String, dynamic>())).input(),
+      schedule: ((map['schedule'] as List).cast<String>()).input(),
     );
   }
 }

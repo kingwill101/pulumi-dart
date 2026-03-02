@@ -43,29 +43,18 @@ class IpAllocationArgs {
   /// [tags] Resource tags.
   /// [type] The type for the IpAllocation.
   IpAllocationArgs({
-    pulumi.Output<Map<String, String>>? allocationTags,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? ipAllocationName,
-    pulumi.Output<String>? ipamAllocationId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? prefix,
-    pulumi.Output<int>? prefixLength,
-    pulumi.Output<String>? prefixType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-  }) :
-      allocationTags = pulumi.Input.asOptionalInput<Map<String, String>>(allocationTags),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      ipAllocationName = pulumi.Input.asOptionalInput<String>(ipAllocationName),
-      ipamAllocationId = pulumi.Input.asOptionalInput<String>(ipamAllocationId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      prefixLength = pulumi.Input.asOptionalInput<int>(prefixLength),
-      prefixType = pulumi.Input.asOptionalInput<String>(prefixType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.allocationTags,
+    this.id,
+    this.ipAllocationName,
+    this.ipamAllocationId,
+    this.location,
+    this.prefix,
+    this.prefixLength,
+    this.prefixType,
+    required this.resourceGroupName,
+    this.tags,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class IpAllocationArgs {
 
   factory IpAllocationArgs.fromMap(Map<String, dynamic> map) {
     return IpAllocationArgs(
-      allocationTags: map['allocationTags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['allocationTags'] as Map).cast<String, String>()),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      ipAllocationName: map['ipAllocationName'] == null ? null : pulumi.Output.create<String>(map['ipAllocationName'] as String),
-      ipamAllocationId: map['ipamAllocationId'] == null ? null : pulumi.Output.create<String>(map['ipamAllocationId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      prefixLength: map['prefixLength'] == null ? null : pulumi.Output.create<int>(map['prefixLength'] as int),
-      prefixType: map['prefixType'] == null ? null : pulumi.Output.create<String>(map['prefixType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      allocationTags: map['allocationTags'] == null ? null : ((map['allocationTags'] as Map).cast<String, String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipAllocationName: map['ipAllocationName'] == null ? null : (map['ipAllocationName'] as String).input(),
+      ipamAllocationId: map['ipamAllocationId'] == null ? null : (map['ipamAllocationId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
+      prefixType: map['prefixType'] == null ? null : (map['prefixType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

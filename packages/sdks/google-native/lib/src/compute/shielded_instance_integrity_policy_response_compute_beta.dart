@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The policy describes the baseline against which Instance boot integrity is measured.
 class ShieldedInstanceIntegrityPolicyResponseComputeBeta {
   /// Updates the integrity policy baseline using the measurements from the VM instance's most recent boot.
-  final bool updateAutoLearnPolicy;
+  final pulumi.Input<bool> updateAutoLearnPolicy;
 
   /// Creates a new [ShieldedInstanceIntegrityPolicyResponseComputeBeta].
   /// [updateAutoLearnPolicy] Updates the integrity policy baseline using the measurements from the VM instance's most recent boot.
@@ -20,7 +21,7 @@ class ShieldedInstanceIntegrityPolicyResponseComputeBeta {
 
   factory ShieldedInstanceIntegrityPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceIntegrityPolicyResponseComputeBeta(
-      updateAutoLearnPolicy: map['updateAutoLearnPolicy'] as bool,
+      updateAutoLearnPolicy: (map['updateAutoLearnPolicy'] as bool).input(),
     );
   }
 }

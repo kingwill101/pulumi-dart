@@ -46,25 +46,16 @@ class MembershipState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   MembershipState({
-    pulumi.Output<MembershipAuthority>? authority,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<MembershipEndpoint>? endpoint,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? membershipId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-  }) :
-      authority = pulumi.Input.asOptionalInput<MembershipAuthority>(authority),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      endpoint = pulumi.Input.asOptionalInput<MembershipEndpoint>(endpoint),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      membershipId = pulumi.Input.asOptionalInput<String>(membershipId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels);
+    this.authority,
+    this.effectiveLabels,
+    this.endpoint,
+    this.labels,
+    this.location,
+    this.membershipId,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,15 +73,15 @@ class MembershipState {
 
   factory MembershipState.fromMap(Map<String, dynamic> map) {
     return MembershipState(
-      authority: map['authority'] == null ? null : pulumi.Output.create<MembershipAuthority>(MembershipAuthority.fromMap((map['authority'] as Map).cast<String, dynamic>())),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<MembershipEndpoint>(MembershipEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      membershipId: map['membershipId'] == null ? null : pulumi.Output.create<String>(map['membershipId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
+      authority: map['authority'] == null ? null : (MembershipAuthority.fromMap((map['authority'] as Map).cast<String, dynamic>())).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      endpoint: map['endpoint'] == null ? null : (MembershipEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      membershipId: map['membershipId'] == null ? null : (map['membershipId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
     );
   }
 }

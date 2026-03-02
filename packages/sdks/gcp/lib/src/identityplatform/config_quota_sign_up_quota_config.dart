@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigQuotaSignUpQuotaConfig {
   /// A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
-  final int? quota;
+  final pulumi.Input<int>? quota;
   /// How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
-  final String? quotaDuration;
+  final pulumi.Input<String>? quotaDuration;
   /// When this quota will take affect.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [ConfigQuotaSignUpQuotaConfig].
   /// [quota] A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
@@ -29,9 +30,9 @@ class ConfigQuotaSignUpQuotaConfig {
 
   factory ConfigQuotaSignUpQuotaConfig.fromMap(Map<String, dynamic> map) {
     return ConfigQuotaSignUpQuotaConfig(
-      quota: map['quota'] == null ? null : map['quota'] as int,
-      quotaDuration: map['quotaDuration'] == null ? null : map['quotaDuration'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      quota: map['quota'] == null ? null : (map['quota'] as int).input(),
+      quotaDuration: map['quotaDuration'] == null ? null : (map['quotaDuration'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

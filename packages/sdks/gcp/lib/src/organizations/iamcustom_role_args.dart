@@ -30,19 +30,13 @@ class IAMCustomRoleArgs {
   /// [stage] The current launch stage of the role.
   /// [title] A human-readable title for the role.
   IAMCustomRoleArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<List<String>> permissions,
-    pulumi.Output<String>? roleId,
-    pulumi.Output<String>? stage,
-    required pulumi.Output<String> title,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      permissions = pulumi.Input.asInput<List<String>>(permissions),
-      roleId = pulumi.Input.asOptionalInput<String>(roleId),
-      stage = pulumi.Input.asOptionalInput<String>(stage),
-      title = pulumi.Input.asInput<String>(title);
+    this.description,
+    required this.orgId,
+    required this.permissions,
+    this.roleId,
+    this.stage,
+    required this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class IAMCustomRoleArgs {
 
   factory IAMCustomRoleArgs.fromMap(Map<String, dynamic> map) {
     return IAMCustomRoleArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      permissions: pulumi.Output.create<List<String>>((map['permissions'] as List).cast<String>()),
-      roleId: map['roleId'] == null ? null : pulumi.Output.create<String>(map['roleId'] as String),
-      stage: map['stage'] == null ? null : pulumi.Output.create<String>(map['stage'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      permissions: ((map['permissions'] as List).cast<String>()).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

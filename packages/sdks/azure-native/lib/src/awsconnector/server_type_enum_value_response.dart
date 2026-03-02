@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ServerTypeEnumValue
 class ServerTypeEnumValueResponse {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ServerTypeEnumValueResponse].
   /// [value] Property value
@@ -20,7 +21,7 @@ class ServerTypeEnumValueResponse {
 
   factory ServerTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ServerTypeEnumValueResponse(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

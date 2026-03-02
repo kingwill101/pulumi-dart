@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings {
   /// Should output be redacted.
-  final String? contentRedactionOutput;
+  final pulumi.Input<String>? contentRedactionOutput;
   /// ARN of the role used by AWS Transcribe to upload your post call analysis.
-  final String dataAccessRoleArn;
+  final pulumi.Input<String> dataAccessRoleArn;
   /// ID of the KMS key used to encrypt the output.
-  final String? outputEncryptionKmsKeyId;
+  final pulumi.Input<String>? outputEncryptionKmsKeyId;
   /// The Amazon S3 location where you want your Call Analytics post-call transcription output stored.
-  final String outputLocation;
+  final pulumi.Input<String> outputLocation;
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings].
   /// [contentRedactionOutput] Should output be redacted.
@@ -34,10 +35,10 @@ class MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProc
 
   factory MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings(
-      contentRedactionOutput: map['contentRedactionOutput'] == null ? null : map['contentRedactionOutput'] as String,
-      dataAccessRoleArn: map['dataAccessRoleArn'] as String,
-      outputEncryptionKmsKeyId: map['outputEncryptionKmsKeyId'] == null ? null : map['outputEncryptionKmsKeyId'] as String,
-      outputLocation: map['outputLocation'] as String,
+      contentRedactionOutput: map['contentRedactionOutput'] == null ? null : (map['contentRedactionOutput'] as String).input(),
+      dataAccessRoleArn: (map['dataAccessRoleArn'] as String).input(),
+      outputEncryptionKmsKeyId: map['outputEncryptionKmsKeyId'] == null ? null : (map['outputEncryptionKmsKeyId'] as String).input(),
+      outputLocation: (map['outputLocation'] as String).input(),
     );
   }
 }

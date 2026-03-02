@@ -6,11 +6,11 @@ import 'report_summary_vmware_node_allocation_response_2.dart';
 /// A set of findings that applies to assets destined for VMWare Engine.
 class ReportSummaryVmwareEngineFindingResponse {
   /// Count of assets which are allocated
-  final String allocatedAssetCount;
+  final pulumi.Input<String> allocatedAssetCount;
   /// Set of regions in which the assets were allocated
-  final List<String> allocatedRegions;
+  final pulumi.Input<List<String>> allocatedRegions;
   /// Set of per-nodetype allocation records
-  final List<ReportSummaryVmwareNodeAllocationResponse> nodeAllocations;
+  final pulumi.Input<List<ReportSummaryVmwareNodeAllocationResponse>> nodeAllocations;
 
   /// Creates a new [ReportSummaryVmwareEngineFindingResponse].
   /// [allocatedAssetCount] Count of assets which are allocated
@@ -26,15 +26,15 @@ class ReportSummaryVmwareEngineFindingResponse {
     return <String, dynamic>{
       'allocatedAssetCount': allocatedAssetCount,
       'allocatedRegions': allocatedRegions,
-      'nodeAllocations': pulumi.Input.encodeList<ReportSummaryVmwareNodeAllocationResponse, Map<String, dynamic>>(nodeAllocations, (value) => value.toMap()),
+      'nodeAllocations': pulumi.Input.mapInputValue<List<ReportSummaryVmwareNodeAllocationResponse>, List<Map<String, dynamic>>>(nodeAllocations, (value) => pulumi.Input.encodeList<ReportSummaryVmwareNodeAllocationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ReportSummaryVmwareEngineFindingResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryVmwareEngineFindingResponse(
-      allocatedAssetCount: map['allocatedAssetCount'] as String,
-      allocatedRegions: (map['allocatedRegions'] as List).cast<String>(),
-      nodeAllocations: pulumi.Input.decodeList<ReportSummaryVmwareNodeAllocationResponse>(map['nodeAllocations'], (value) => ReportSummaryVmwareNodeAllocationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      allocatedAssetCount: (map['allocatedAssetCount'] as String).input(),
+      allocatedRegions: ((map['allocatedRegions'] as List).cast<String>()).input(),
+      nodeAllocations: (pulumi.Input.decodeList<ReportSummaryVmwareNodeAllocationResponse>(map['nodeAllocations'], (value) => ReportSummaryVmwareNodeAllocationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

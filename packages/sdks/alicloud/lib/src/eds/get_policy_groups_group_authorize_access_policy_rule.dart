@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyGroupsGroupAuthorizeAccessPolicyRule {
   /// The cidrip of authorize access rule..
-  final String cidrIp;
+  final pulumi.Input<String> cidrIp;
   /// The description of authorize access rule.
-  final String description;
+  final pulumi.Input<String> description;
 
   /// Creates a new [GetPolicyGroupsGroupAuthorizeAccessPolicyRule].
   /// [cidrIp] The cidrip of authorize access rule..
@@ -24,8 +25,8 @@ class GetPolicyGroupsGroupAuthorizeAccessPolicyRule {
 
   factory GetPolicyGroupsGroupAuthorizeAccessPolicyRule.fromMap(Map<String, dynamic> map) {
     return GetPolicyGroupsGroupAuthorizeAccessPolicyRule(
-      cidrIp: map['cidrIp'] as String,
-      description: map['description'] as String,
+      cidrIp: (map['cidrIp'] as String).input(),
+      description: (map['description'] as String).input(),
     );
   }
 }

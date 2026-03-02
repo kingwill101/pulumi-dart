@@ -16,11 +16,9 @@ class GetQueuesArgs {
   /// [namePrefix] A string to filter resulting queues by their name prefixs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetQueuesArgs({
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? outputFile,
-  }) :
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.namePrefix,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetQueuesArgs {
 
   factory GetQueuesArgs.fromMap(Map<String, dynamic> map) {
     return GetQueuesArgs(
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

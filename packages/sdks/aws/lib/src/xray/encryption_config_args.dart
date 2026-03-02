@@ -19,13 +19,10 @@ class EncryptionConfigArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] The type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
   EncryptionConfigArgs({
-    pulumi.Output<String>? keyId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> type,
-  }) :
-      keyId = pulumi.Input.asOptionalInput<String>(keyId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asInput<String>(type);
+    this.keyId,
+    this.region,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EncryptionConfigArgs {
 
   factory EncryptionConfigArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigArgs(
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

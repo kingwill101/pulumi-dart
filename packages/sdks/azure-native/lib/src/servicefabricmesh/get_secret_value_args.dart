@@ -19,13 +19,10 @@ class GetSecretValueArgs {
   /// [secretResourceName] The name of the secret resource.
   /// [secretValueResourceName] The name of the secret resource value which is typically the version identifier for the value.
   GetSecretValueArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> secretResourceName,
-    required pulumi.Output<String> secretValueResourceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secretResourceName = pulumi.Input.asInput<String>(secretResourceName),
-      secretValueResourceName = pulumi.Input.asInput<String>(secretValueResourceName);
+    required this.resourceGroupName,
+    required this.secretResourceName,
+    required this.secretValueResourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSecretValueArgs {
 
   factory GetSecretValueArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretValueArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secretResourceName: pulumi.Output.create<String>(map['secretResourceName'] as String),
-      secretValueResourceName: pulumi.Output.create<String>(map['secretValueResourceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secretResourceName: (map['secretResourceName'] as String).input(),
+      secretValueResourceName: (map['secretValueResourceName'] as String).input(),
     );
   }
 }

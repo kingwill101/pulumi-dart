@@ -6,9 +6,9 @@ import 'subscription_state_override_action.dart';
 /// The subscription lifecycle notification specifications.
 class ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications {
   /// The soft delete TTL.
-  final String? softDeleteTTL;
+  final pulumi.Input<String>? softDeleteTTL;
   /// The subscription state override actions.
-  final List<SubscriptionStateOverrideAction>? subscriptionStateOverrideActions;
+  final pulumi.Input<List<SubscriptionStateOverrideAction>>? subscriptionStateOverrideActions;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications].
   /// [softDeleteTTL] The soft delete TTL.
@@ -21,14 +21,14 @@ class ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifi
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'softDeleteTTL': ?softDeleteTTL,
-      'subscriptionStateOverrideActions': ?subscriptionStateOverrideActions == null ? null : pulumi.Input.encodeList<SubscriptionStateOverrideAction, Map<String, dynamic>>(subscriptionStateOverrideActions!, (value) => value.toMap()),
+      'subscriptionStateOverrideActions': ?pulumi.Input.mapOptionalInputValue<List<SubscriptionStateOverrideAction>, List<Map<String, dynamic>>>(subscriptionStateOverrideActions, (value) => pulumi.Input.encodeList<SubscriptionStateOverrideAction, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications(
-      softDeleteTTL: map['softDeleteTTL'] == null ? null : map['softDeleteTTL'] as String,
-      subscriptionStateOverrideActions: map['subscriptionStateOverrideActions'] == null ? null : pulumi.Input.decodeList<SubscriptionStateOverrideAction>(map['subscriptionStateOverrideActions'], (value) => SubscriptionStateOverrideAction.fromMap((value as Map).cast<String, dynamic>())),
+      softDeleteTTL: map['softDeleteTTL'] == null ? null : (map['softDeleteTTL'] as String).input(),
+      subscriptionStateOverrideActions: map['subscriptionStateOverrideActions'] == null ? null : (pulumi.Input.decodeList<SubscriptionStateOverrideAction>(map['subscriptionStateOverrideActions'], (value) => SubscriptionStateOverrideAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -51,25 +51,16 @@ class GoogleApiSourceArgs {
   /// [loggingConfig] The configuration for Platform Telemetry logging for Eventarc Advanced
   /// [project] The ID of the project in which the resource belongs.
   GoogleApiSourceArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? cryptoKeyName,
-    required pulumi.Output<String> destination,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> googleApiSourceId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<GoogleApiSourceLoggingConfig>? loggingConfig,
-    pulumi.Output<String>? project,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      cryptoKeyName = pulumi.Input.asOptionalInput<String>(cryptoKeyName),
-      destination = pulumi.Input.asInput<String>(destination),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      googleApiSourceId = pulumi.Input.asInput<String>(googleApiSourceId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      loggingConfig = pulumi.Input.asOptionalInput<GoogleApiSourceLoggingConfig>(loggingConfig),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.annotations,
+    this.cryptoKeyName,
+    required this.destination,
+    this.displayName,
+    required this.googleApiSourceId,
+    this.labels,
+    required this.location,
+    this.loggingConfig,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,15 +78,15 @@ class GoogleApiSourceArgs {
 
   factory GoogleApiSourceArgs.fromMap(Map<String, dynamic> map) {
     return GoogleApiSourceArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      cryptoKeyName: map['cryptoKeyName'] == null ? null : pulumi.Output.create<String>(map['cryptoKeyName'] as String),
-      destination: pulumi.Output.create<String>(map['destination'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      googleApiSourceId: pulumi.Output.create<String>(map['googleApiSourceId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      loggingConfig: map['loggingConfig'] == null ? null : pulumi.Output.create<GoogleApiSourceLoggingConfig>(GoogleApiSourceLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName'] as String).input(),
+      destination: (map['destination'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      googleApiSourceId: (map['googleApiSourceId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (GoogleApiSourceLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

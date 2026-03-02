@@ -16,11 +16,9 @@ class GetManagedCCFArgs {
   /// [appName] Name of the Managed CCF
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetManagedCCFArgs({
-    required pulumi.Output<String> appName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      appName = pulumi.Input.asInput<String>(appName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.appName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetManagedCCFArgs {
 
   factory GetManagedCCFArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedCCFArgs(
-      appName: pulumi.Output.create<String>(map['appName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      appName: (map['appName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

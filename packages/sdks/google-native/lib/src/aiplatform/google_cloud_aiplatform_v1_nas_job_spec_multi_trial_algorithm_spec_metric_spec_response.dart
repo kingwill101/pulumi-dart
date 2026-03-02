@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a metric to optimize.
 class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse {
   /// The optimization goal of the metric.
-  final String goal;
+  final pulumi.Input<String> goal;
   /// The ID of the metric. Must not contain whitespaces.
-  final String metricId;
+  final pulumi.Input<String> metricId;
 
   /// Creates a new [GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse].
   /// [goal] The optimization goal of the metric.
@@ -25,8 +26,8 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse
 
   factory GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse(
-      goal: map['goal'] as String,
-      metricId: map['metricId'] as String,
+      goal: (map['goal'] as String).input(),
+      metricId: (map['metricId'] as String).input(),
     );
   }
 }

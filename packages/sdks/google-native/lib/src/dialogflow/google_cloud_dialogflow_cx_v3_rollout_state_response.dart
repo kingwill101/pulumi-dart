@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// State of the auto-rollout process.
 class GoogleCloudDialogflowCxV3RolloutStateResponse {
   /// Start time of the current step.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Display name of the current auto rollout step.
-  final String step;
+  final pulumi.Input<String> step;
   /// Index of the current step in the auto rollout steps list.
-  final int stepIndex;
+  final pulumi.Input<int> stepIndex;
 
   /// Creates a new [GoogleCloudDialogflowCxV3RolloutStateResponse].
   /// [startTime] Start time of the current step.
@@ -30,9 +31,9 @@ class GoogleCloudDialogflowCxV3RolloutStateResponse {
 
   factory GoogleCloudDialogflowCxV3RolloutStateResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3RolloutStateResponse(
-      startTime: map['startTime'] as String,
-      step: map['step'] as String,
-      stepIndex: map['stepIndex'] as int,
+      startTime: (map['startTime'] as String).input(),
+      step: (map['step'] as String).input(),
+      stepIndex: (map['stepIndex'] as int).input(),
     );
   }
 }

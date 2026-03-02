@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_bus_authentication_type.dart';
 
 class ServiceBusAuthentication {
   /// Gets or sets the SAS key.
-  final String? sasKey;
+  final pulumi.Input<String>? sasKey;
   /// Gets or sets the SAS key name.
-  final String? sasKeyName;
+  final pulumi.Input<String>? sasKeyName;
   /// Gets or sets the authentication type.
-  final ServiceBusAuthenticationType? type;
+  final pulumi.Input<ServiceBusAuthenticationType>? type;
 
   /// Creates a new [ServiceBusAuthentication].
   /// [sasKey] Gets or sets the SAS key.
@@ -24,15 +25,15 @@ class ServiceBusAuthentication {
     return <String, dynamic>{
       'sasKey': ?sasKey,
       'sasKeyName': ?sasKeyName,
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<ServiceBusAuthenticationType, String>(type, (value) => value.value),
     };
   }
 
   factory ServiceBusAuthentication.fromMap(Map<String, dynamic> map) {
     return ServiceBusAuthentication(
-      sasKey: map['sasKey'] == null ? null : map['sasKey'] as String,
-      sasKeyName: map['sasKeyName'] == null ? null : map['sasKeyName'] as String,
-      type: map['type'] == null ? null : ServiceBusAuthenticationType.fromValue(map['type'] as String),
+      sasKey: map['sasKey'] == null ? null : (map['sasKey'] as String).input(),
+      sasKeyName: map['sasKeyName'] == null ? null : (map['sasKeyName'] as String).input(),
+      type: map['type'] == null ? null : (ServiceBusAuthenticationType.fromValue(map['type'] as String)).input(),
     );
   }
 }

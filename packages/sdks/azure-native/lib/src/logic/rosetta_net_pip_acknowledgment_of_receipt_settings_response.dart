@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The integration account RosettaNet ProcessConfiguration Acknowledgement settings.
 class RosettaNetPipAcknowledgmentOfReceiptSettingsResponse {
   /// The non-repudiation is required or not.
-  final bool isNonRepudiationRequired;
+  final pulumi.Input<bool> isNonRepudiationRequired;
   /// The time to acknowledge in seconds.
-  final int timeToAcknowledgeInSeconds;
+  final pulumi.Input<int> timeToAcknowledgeInSeconds;
 
   /// Creates a new [RosettaNetPipAcknowledgmentOfReceiptSettingsResponse].
   /// [isNonRepudiationRequired] The non-repudiation is required or not.
@@ -25,8 +26,8 @@ class RosettaNetPipAcknowledgmentOfReceiptSettingsResponse {
 
   factory RosettaNetPipAcknowledgmentOfReceiptSettingsResponse.fromMap(Map<String, dynamic> map) {
     return RosettaNetPipAcknowledgmentOfReceiptSettingsResponse(
-      isNonRepudiationRequired: map['isNonRepudiationRequired'] as bool,
-      timeToAcknowledgeInSeconds: map['timeToAcknowledgeInSeconds'] as int,
+      isNonRepudiationRequired: (map['isNonRepudiationRequired'] as bool).input(),
+      timeToAcknowledgeInSeconds: (map['timeToAcknowledgeInSeconds'] as int).input(),
     );
   }
 }

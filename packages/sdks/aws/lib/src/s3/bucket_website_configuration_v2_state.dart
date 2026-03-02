@@ -42,27 +42,17 @@ class BucketWebsiteConfigurationV2State {
   /// [websiteDomain] Domain of the website endpoint. This is used to create Route 53 alias records.
   /// [websiteEndpoint] Website endpoint.
   BucketWebsiteConfigurationV2State({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<BucketWebsiteConfigurationV2ErrorDocument>? errorDocument,
-    pulumi.Output<String>? expectedBucketOwner,
-    pulumi.Output<BucketWebsiteConfigurationV2IndexDocument>? indexDocument,
-    pulumi.Output<BucketWebsiteConfigurationV2RedirectAllRequestsTo>? redirectAllRequestsTo,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routingRuleDetails,
-    pulumi.Output<List<BucketWebsiteConfigurationV2RoutingRule>>? routingRules,
-    pulumi.Output<String>? websiteDomain,
-    pulumi.Output<String>? websiteEndpoint,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      errorDocument = pulumi.Input.asOptionalInput<BucketWebsiteConfigurationV2ErrorDocument>(errorDocument),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      indexDocument = pulumi.Input.asOptionalInput<BucketWebsiteConfigurationV2IndexDocument>(indexDocument),
-      redirectAllRequestsTo = pulumi.Input.asOptionalInput<BucketWebsiteConfigurationV2RedirectAllRequestsTo>(redirectAllRequestsTo),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingRuleDetails = pulumi.Input.asOptionalInput<String>(routingRuleDetails),
-      routingRules = pulumi.Input.asOptionalInput<List<BucketWebsiteConfigurationV2RoutingRule>>(routingRules),
-      websiteDomain = pulumi.Input.asOptionalInput<String>(websiteDomain),
-      websiteEndpoint = pulumi.Input.asOptionalInput<String>(websiteEndpoint);
+    this.bucket,
+    this.errorDocument,
+    this.expectedBucketOwner,
+    this.indexDocument,
+    this.redirectAllRequestsTo,
+    this.region,
+    this.routingRuleDetails,
+    this.routingRules,
+    this.websiteDomain,
+    this.websiteEndpoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class BucketWebsiteConfigurationV2State {
 
   factory BucketWebsiteConfigurationV2State.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteConfigurationV2State(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      errorDocument: map['errorDocument'] == null ? null : pulumi.Output.create<BucketWebsiteConfigurationV2ErrorDocument>(BucketWebsiteConfigurationV2ErrorDocument.fromMap((map['errorDocument'] as Map).cast<String, dynamic>())),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      indexDocument: map['indexDocument'] == null ? null : pulumi.Output.create<BucketWebsiteConfigurationV2IndexDocument>(BucketWebsiteConfigurationV2IndexDocument.fromMap((map['indexDocument'] as Map).cast<String, dynamic>())),
-      redirectAllRequestsTo: map['redirectAllRequestsTo'] == null ? null : pulumi.Output.create<BucketWebsiteConfigurationV2RedirectAllRequestsTo>(BucketWebsiteConfigurationV2RedirectAllRequestsTo.fromMap((map['redirectAllRequestsTo'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingRuleDetails: map['routingRuleDetails'] == null ? null : pulumi.Output.create<String>(map['routingRuleDetails'] as String),
-      routingRules: map['routingRules'] == null ? null : pulumi.Output.create<List<BucketWebsiteConfigurationV2RoutingRule>>(pulumi.Input.decodeList<BucketWebsiteConfigurationV2RoutingRule>(map['routingRules'], (value) => BucketWebsiteConfigurationV2RoutingRule.fromMap((value as Map).cast<String, dynamic>()))),
-      websiteDomain: map['websiteDomain'] == null ? null : pulumi.Output.create<String>(map['websiteDomain'] as String),
-      websiteEndpoint: map['websiteEndpoint'] == null ? null : pulumi.Output.create<String>(map['websiteEndpoint'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      errorDocument: map['errorDocument'] == null ? null : (BucketWebsiteConfigurationV2ErrorDocument.fromMap((map['errorDocument'] as Map).cast<String, dynamic>())).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      indexDocument: map['indexDocument'] == null ? null : (BucketWebsiteConfigurationV2IndexDocument.fromMap((map['indexDocument'] as Map).cast<String, dynamic>())).input(),
+      redirectAllRequestsTo: map['redirectAllRequestsTo'] == null ? null : (BucketWebsiteConfigurationV2RedirectAllRequestsTo.fromMap((map['redirectAllRequestsTo'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingRuleDetails: map['routingRuleDetails'] == null ? null : (map['routingRuleDetails'] as String).input(),
+      routingRules: map['routingRules'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteConfigurationV2RoutingRule>(map['routingRules'], (value) => BucketWebsiteConfigurationV2RoutingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      websiteDomain: map['websiteDomain'] == null ? null : (map['websiteDomain'] as String).input(),
+      websiteEndpoint: map['websiteEndpoint'] == null ? null : (map['websiteEndpoint'] as String).input(),
     );
   }
 }

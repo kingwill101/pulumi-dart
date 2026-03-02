@@ -31,21 +31,14 @@ class IPSetArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   IPSetArgs({
-    required pulumi.Output<bool> activate,
-    required pulumi.Output<String> detectorId,
-    required pulumi.Output<String> format,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      activate = pulumi.Input.asInput<bool>(activate),
-      detectorId = pulumi.Input.asInput<String>(detectorId),
-      format = pulumi.Input.asInput<String>(format),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.activate,
+    required this.detectorId,
+    required this.format,
+    required this.location,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class IPSetArgs {
 
   factory IPSetArgs.fromMap(Map<String, dynamic> map) {
     return IPSetArgs(
-      activate: pulumi.Output.create<bool>(map['activate'] as bool),
-      detectorId: pulumi.Output.create<String>(map['detectorId'] as String),
-      format: pulumi.Output.create<String>(map['format'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      activate: (map['activate'] as bool).input(),
+      detectorId: (map['detectorId'] as String).input(),
+      format: (map['format'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

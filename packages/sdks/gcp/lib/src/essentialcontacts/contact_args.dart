@@ -22,15 +22,11 @@ class ContactArgs {
   /// [notificationCategorySubscriptions] The categories of notifications that the contact will receive communications for.
   /// [parent] The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
   ContactArgs({
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> languageTag,
-    required pulumi.Output<List<String>> notificationCategorySubscriptions,
-    required pulumi.Output<String> parent,
-  }) :
-      email = pulumi.Input.asInput<String>(email),
-      languageTag = pulumi.Input.asInput<String>(languageTag),
-      notificationCategorySubscriptions = pulumi.Input.asInput<List<String>>(notificationCategorySubscriptions),
-      parent = pulumi.Input.asInput<String>(parent);
+    required this.email,
+    required this.languageTag,
+    required this.notificationCategorySubscriptions,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ContactArgs {
 
   factory ContactArgs.fromMap(Map<String, dynamic> map) {
     return ContactArgs(
-      email: pulumi.Output.create<String>(map['email'] as String),
-      languageTag: pulumi.Output.create<String>(map['languageTag'] as String),
-      notificationCategorySubscriptions: pulumi.Output.create<List<String>>((map['notificationCategorySubscriptions'] as List).cast<String>()),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      email: (map['email'] as String).input(),
+      languageTag: (map['languageTag'] as String).input(),
+      notificationCategorySubscriptions: ((map['notificationCategorySubscriptions'] as List).cast<String>()).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

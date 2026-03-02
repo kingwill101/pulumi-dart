@@ -16,11 +16,9 @@ class GetGatewayArgs {
   /// [gatewayName] The name of the Gateway.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetGatewayArgs({
-    required pulumi.Output<String> gatewayName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.gatewayName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetGatewayArgs {
 
   factory GetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayArgs(
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      gatewayName: (map['gatewayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

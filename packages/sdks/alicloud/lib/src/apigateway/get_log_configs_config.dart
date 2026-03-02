@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLogConfigsConfig {
   /// The ID of the Log Config.
-  final String id;
+  final pulumi.Input<String> id;
   /// The type the of log.
-  final String logType;
+  final pulumi.Input<String> logType;
   /// The region ID of the Log Config.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The name of the Log Store.
-  final String slsLogStore;
+  final pulumi.Input<String> slsLogStore;
   /// The name of the Project.
-  final String slsProject;
+  final pulumi.Input<String> slsProject;
 
   /// Creates a new [GetLogConfigsConfig].
   /// [id] The ID of the Log Config.
@@ -39,11 +40,11 @@ class GetLogConfigsConfig {
 
   factory GetLogConfigsConfig.fromMap(Map<String, dynamic> map) {
     return GetLogConfigsConfig(
-      id: map['id'] as String,
-      logType: map['logType'] as String,
-      regionId: map['regionId'] as String,
-      slsLogStore: map['slsLogStore'] as String,
-      slsProject: map['slsProject'] as String,
+      id: (map['id'] as String).input(),
+      logType: (map['logType'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      slsLogStore: (map['slsLogStore'] as String).input(),
+      slsProject: (map['slsProject'] as String).input(),
     );
   }
 }

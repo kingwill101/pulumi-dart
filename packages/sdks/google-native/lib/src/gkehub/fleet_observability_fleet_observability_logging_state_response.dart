@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fleet_observability_fleet_observability_base_feature_state_response.dart';
 
 /// Feature state for logging feature.
 class FleetObservabilityFleetObservabilityLoggingStateResponse {
   /// The base feature state of fleet default log.
-  final FleetObservabilityFleetObservabilityBaseFeatureStateResponse defaultLog;
+  final pulumi.Input<FleetObservabilityFleetObservabilityBaseFeatureStateResponse> defaultLog;
   /// The base feature state of fleet scope log.
-  final FleetObservabilityFleetObservabilityBaseFeatureStateResponse scopeLog;
+  final pulumi.Input<FleetObservabilityFleetObservabilityBaseFeatureStateResponse> scopeLog;
 
   /// Creates a new [FleetObservabilityFleetObservabilityLoggingStateResponse].
   /// [defaultLog] The base feature state of fleet default log.
@@ -19,15 +20,15 @@ class FleetObservabilityFleetObservabilityLoggingStateResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultLog': defaultLog.toMap(),
-      'scopeLog': scopeLog.toMap(),
+      'defaultLog': pulumi.Input.mapInputValue<FleetObservabilityFleetObservabilityBaseFeatureStateResponse, Map<String, dynamic>>(defaultLog, (value) => value.toMap()),
+      'scopeLog': pulumi.Input.mapInputValue<FleetObservabilityFleetObservabilityBaseFeatureStateResponse, Map<String, dynamic>>(scopeLog, (value) => value.toMap()),
     };
   }
 
   factory FleetObservabilityFleetObservabilityLoggingStateResponse.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityFleetObservabilityLoggingStateResponse(
-      defaultLog: FleetObservabilityFleetObservabilityBaseFeatureStateResponse.fromMap((map['defaultLog'] as Map).cast<String, dynamic>()),
-      scopeLog: FleetObservabilityFleetObservabilityBaseFeatureStateResponse.fromMap((map['scopeLog'] as Map).cast<String, dynamic>()),
+      defaultLog: (FleetObservabilityFleetObservabilityBaseFeatureStateResponse.fromMap((map['defaultLog'] as Map).cast<String, dynamic>())).input(),
+      scopeLog: (FleetObservabilityFleetObservabilityBaseFeatureStateResponse.fromMap((map['scopeLog'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

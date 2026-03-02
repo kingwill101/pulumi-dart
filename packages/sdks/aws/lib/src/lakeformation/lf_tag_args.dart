@@ -22,15 +22,11 @@ class LfTagArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [values] List of possible values an attribute can take.
   LfTagArgs({
-    pulumi.Output<String>? catalogId,
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> values,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      key = pulumi.Input.asInput<String>(key),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      values = pulumi.Input.asInput<List<String>>(values);
+    this.catalogId,
+    required this.key,
+    this.region,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class LfTagArgs {
 
   factory LfTagArgs.fromMap(Map<String, dynamic> map) {
     return LfTagArgs(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      key: pulumi.Output.create<String>(map['key'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      values: pulumi.Output.create<List<String>>((map['values'] as List).cast<String>()),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      key: (map['key'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

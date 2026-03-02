@@ -19,15 +19,11 @@ class FirewallRuleState {
   /// [name] The name of the Mongo Cluster Firewall Rule. Changing this forces a new resource to be created.
   /// [startIpAddress] The start IP address of the Mongo Cluster Firewall Rule.
   FirewallRuleState({
-    pulumi.Output<String>? endIpAddress,
-    pulumi.Output<String>? mongoClusterId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? startIpAddress,
-  }) :
-      endIpAddress = pulumi.Input.asOptionalInput<String>(endIpAddress),
-      mongoClusterId = pulumi.Input.asOptionalInput<String>(mongoClusterId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      startIpAddress = pulumi.Input.asOptionalInput<String>(startIpAddress);
+    this.endIpAddress,
+    this.mongoClusterId,
+    this.name,
+    this.startIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class FirewallRuleState {
 
   factory FirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FirewallRuleState(
-      endIpAddress: map['endIpAddress'] == null ? null : pulumi.Output.create<String>(map['endIpAddress'] as String),
-      mongoClusterId: map['mongoClusterId'] == null ? null : pulumi.Output.create<String>(map['mongoClusterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      startIpAddress: map['startIpAddress'] == null ? null : pulumi.Output.create<String>(map['startIpAddress'] as String),
+      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress'] as String).input(),
+      mongoClusterId: map['mongoClusterId'] == null ? null : (map['mongoClusterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress'] as String).input(),
     );
   }
 }

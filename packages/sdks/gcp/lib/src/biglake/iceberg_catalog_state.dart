@@ -43,27 +43,17 @@ class IcebergCatalogState {
   /// [storageRegions] Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
   /// [updateTime] Output only. The last modification time of the IcebergCatalog.
   IcebergCatalogState({
-    pulumi.Output<String>? biglakeServiceAccount,
-    pulumi.Output<String>? catalogType,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? credentialMode,
-    pulumi.Output<String>? defaultLocation,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<IcebergCatalogReplica>>? replicas,
-    pulumi.Output<List<String>>? storageRegions,
-    pulumi.Output<String>? updateTime,
-  }) :
-      biglakeServiceAccount = pulumi.Input.asOptionalInput<String>(biglakeServiceAccount),
-      catalogType = pulumi.Input.asOptionalInput<String>(catalogType),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      credentialMode = pulumi.Input.asOptionalInput<String>(credentialMode),
-      defaultLocation = pulumi.Input.asOptionalInput<String>(defaultLocation),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      replicas = pulumi.Input.asOptionalInput<List<IcebergCatalogReplica>>(replicas),
-      storageRegions = pulumi.Input.asOptionalInput<List<String>>(storageRegions),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.biglakeServiceAccount,
+    this.catalogType,
+    this.createTime,
+    this.credentialMode,
+    this.defaultLocation,
+    this.name,
+    this.project,
+    this.replicas,
+    this.storageRegions,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class IcebergCatalogState {
 
   factory IcebergCatalogState.fromMap(Map<String, dynamic> map) {
     return IcebergCatalogState(
-      biglakeServiceAccount: map['biglakeServiceAccount'] == null ? null : pulumi.Output.create<String>(map['biglakeServiceAccount'] as String),
-      catalogType: map['catalogType'] == null ? null : pulumi.Output.create<String>(map['catalogType'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      credentialMode: map['credentialMode'] == null ? null : pulumi.Output.create<String>(map['credentialMode'] as String),
-      defaultLocation: map['defaultLocation'] == null ? null : pulumi.Output.create<String>(map['defaultLocation'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      replicas: map['replicas'] == null ? null : pulumi.Output.create<List<IcebergCatalogReplica>>(pulumi.Input.decodeList<IcebergCatalogReplica>(map['replicas'], (value) => IcebergCatalogReplica.fromMap((value as Map).cast<String, dynamic>()))),
-      storageRegions: map['storageRegions'] == null ? null : pulumi.Output.create<List<String>>((map['storageRegions'] as List).cast<String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      biglakeServiceAccount: map['biglakeServiceAccount'] == null ? null : (map['biglakeServiceAccount'] as String).input(),
+      catalogType: map['catalogType'] == null ? null : (map['catalogType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      credentialMode: map['credentialMode'] == null ? null : (map['credentialMode'] as String).input(),
+      defaultLocation: map['defaultLocation'] == null ? null : (map['defaultLocation'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<IcebergCatalogReplica>(map['replicas'], (value) => IcebergCatalogReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageRegions: map['storageRegions'] == null ? null : ((map['storageRegions'] as List).cast<String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

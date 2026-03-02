@@ -52,31 +52,19 @@ class LkeClusterArgs {
   /// [tier] The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
   /// [vpcId] The ID of the VPC to use for the Kubernetes cluster.
   LkeClusterArgs({
-    pulumi.Output<bool>? aplEnabled,
-    pulumi.Output<LkeClusterControlPlane>? controlPlane,
-    pulumi.Output<List<String>>? externalPoolTags,
-    required pulumi.Output<String> k8sVersion,
-    required pulumi.Output<String> label,
-    required pulumi.Output<List<LkeClusterPool>> pools,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? stackType,
-    pulumi.Output<int>? subnetId,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? tier,
-    pulumi.Output<int>? vpcId,
-  }) :
-      aplEnabled = pulumi.Input.asOptionalInput<bool>(aplEnabled),
-      controlPlane = pulumi.Input.asOptionalInput<LkeClusterControlPlane>(controlPlane),
-      externalPoolTags = pulumi.Input.asOptionalInput<List<String>>(externalPoolTags),
-      k8sVersion = pulumi.Input.asInput<String>(k8sVersion),
-      label = pulumi.Input.asInput<String>(label),
-      pools = pulumi.Input.asInput<List<LkeClusterPool>>(pools),
-      region = pulumi.Input.asInput<String>(region),
-      stackType = pulumi.Input.asOptionalInput<String>(stackType),
-      subnetId = pulumi.Input.asOptionalInput<int>(subnetId),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      tier = pulumi.Input.asOptionalInput<String>(tier),
-      vpcId = pulumi.Input.asOptionalInput<int>(vpcId);
+    this.aplEnabled,
+    this.controlPlane,
+    this.externalPoolTags,
+    required this.k8sVersion,
+    required this.label,
+    required this.pools,
+    required this.region,
+    this.stackType,
+    this.subnetId,
+    this.tags,
+    this.tier,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class LkeClusterArgs {
 
   factory LkeClusterArgs.fromMap(Map<String, dynamic> map) {
     return LkeClusterArgs(
-      aplEnabled: map['aplEnabled'] == null ? null : pulumi.Output.create<bool>(map['aplEnabled'] as bool),
-      controlPlane: map['controlPlane'] == null ? null : pulumi.Output.create<LkeClusterControlPlane>(LkeClusterControlPlane.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())),
-      externalPoolTags: map['externalPoolTags'] == null ? null : pulumi.Output.create<List<String>>((map['externalPoolTags'] as List).cast<String>()),
-      k8sVersion: pulumi.Output.create<String>(map['k8sVersion'] as String),
-      label: pulumi.Output.create<String>(map['label'] as String),
-      pools: pulumi.Output.create<List<LkeClusterPool>>(pulumi.Input.decodeList<LkeClusterPool>(map['pools'], (value) => LkeClusterPool.fromMap((value as Map).cast<String, dynamic>()))),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      stackType: map['stackType'] == null ? null : pulumi.Output.create<String>(map['stackType'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<int>(map['subnetId'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      tier: map['tier'] == null ? null : pulumi.Output.create<String>(map['tier'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<int>(map['vpcId'] as int),
+      aplEnabled: map['aplEnabled'] == null ? null : (map['aplEnabled'] as bool).input(),
+      controlPlane: map['controlPlane'] == null ? null : (LkeClusterControlPlane.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())).input(),
+      externalPoolTags: map['externalPoolTags'] == null ? null : ((map['externalPoolTags'] as List).cast<String>()).input(),
+      k8sVersion: (map['k8sVersion'] as String).input(),
+      label: (map['label'] as String).input(),
+      pools: (pulumi.Input.decodeList<LkeClusterPool>(map['pools'], (value) => LkeClusterPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: (map['region'] as String).input(),
+      stackType: map['stackType'] == null ? null : (map['stackType'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as int).input(),
     );
   }
 }

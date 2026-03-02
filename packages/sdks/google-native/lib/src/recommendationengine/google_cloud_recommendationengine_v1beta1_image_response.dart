@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Catalog item thumbnail/detail image.
 class GoogleCloudRecommendationengineV1beta1ImageResponse {
   /// Optional. Height of the image in number of pixels.
-  final int height;
+  final pulumi.Input<int> height;
   /// URL of the image with a length limit of 5 KiB.
-  final String uri;
+  final pulumi.Input<String> uri;
   /// Optional. Width of the image in number of pixels.
-  final int width;
+  final pulumi.Input<int> width;
 
   /// Creates a new [GoogleCloudRecommendationengineV1beta1ImageResponse].
   /// [height] Optional. Height of the image in number of pixels.
@@ -30,9 +31,9 @@ class GoogleCloudRecommendationengineV1beta1ImageResponse {
 
   factory GoogleCloudRecommendationengineV1beta1ImageResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1ImageResponse(
-      height: map['height'] as int,
-      uri: map['uri'] as String,
-      width: map['width'] as int,
+      height: (map['height'] as int).input(),
+      uri: (map['uri'] as String).input(),
+      width: (map['width'] as int).input(),
     );
   }
 }

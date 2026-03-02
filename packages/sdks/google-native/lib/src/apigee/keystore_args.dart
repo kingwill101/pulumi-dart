@@ -17,13 +17,10 @@ class KeystoreArgs {
   /// [name] Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
   /// [organizationId] Required.
   KeystoreArgs({
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.environmentId,
+    this.name,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class KeystoreArgs {
 
   factory KeystoreArgs.fromMap(Map<String, dynamic> map) {
     return KeystoreArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

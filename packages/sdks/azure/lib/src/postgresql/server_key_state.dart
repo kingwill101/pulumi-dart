@@ -13,11 +13,9 @@ class ServerKeyState {
   /// [keyVaultKeyId] The URL to a Key Vault Key.
   /// [serverId] The ID of the PostgreSQL Server. Changing this forces a new resource to be created.
   ServerKeyState({
-    pulumi.Output<String>? keyVaultKeyId,
-    pulumi.Output<String>? serverId,
-  }) :
-      keyVaultKeyId = pulumi.Input.asOptionalInput<String>(keyVaultKeyId),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId);
+    this.keyVaultKeyId,
+    this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class ServerKeyState {
 
   factory ServerKeyState.fromMap(Map<String, dynamic> map) {
     return ServerKeyState(
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
     );
   }
 }

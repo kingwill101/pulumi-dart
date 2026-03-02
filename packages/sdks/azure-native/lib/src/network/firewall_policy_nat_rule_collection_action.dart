@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of the FirewallPolicyNatRuleCollectionAction.
 class FirewallPolicyNatRuleCollectionAction {
   /// The type of action.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [FirewallPolicyNatRuleCollectionAction].
   /// [type] The type of action.
@@ -20,7 +21,7 @@ class FirewallPolicyNatRuleCollectionAction {
 
   factory FirewallPolicyNatRuleCollectionAction.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyNatRuleCollectionAction(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

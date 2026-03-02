@@ -24,15 +24,11 @@ class MscSubContractArgs {
   /// [mobile] The User's Telephone.
   /// [position] The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
   MscSubContractArgs({
-    required pulumi.Output<String> contactName,
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> mobile,
-    required pulumi.Output<String> position,
-  }) :
-      contactName = pulumi.Input.asInput<String>(contactName),
-      email = pulumi.Input.asInput<String>(email),
-      mobile = pulumi.Input.asInput<String>(mobile),
-      position = pulumi.Input.asInput<String>(position);
+    required this.contactName,
+    required this.email,
+    required this.mobile,
+    required this.position,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class MscSubContractArgs {
 
   factory MscSubContractArgs.fromMap(Map<String, dynamic> map) {
     return MscSubContractArgs(
-      contactName: pulumi.Output.create<String>(map['contactName'] as String),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      mobile: pulumi.Output.create<String>(map['mobile'] as String),
-      position: pulumi.Output.create<String>(map['position'] as String),
+      contactName: (map['contactName'] as String).input(),
+      email: (map['email'] as String).input(),
+      mobile: (map['mobile'] as String).input(),
+      position: (map['position'] as String).input(),
     );
   }
 }

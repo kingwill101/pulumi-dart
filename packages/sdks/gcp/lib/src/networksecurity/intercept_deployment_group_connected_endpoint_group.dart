@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterceptDeploymentGroupConnectedEndpointGroup {
   /// (Output)
   /// The connected endpoint group's resource name, for example:
   /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
   /// See https://google.aip.dev/124.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [InterceptDeploymentGroupConnectedEndpointGroup].
   /// [name] (Output)
@@ -22,7 +23,7 @@ class InterceptDeploymentGroupConnectedEndpointGroup {
 
   factory InterceptDeploymentGroupConnectedEndpointGroup.fromMap(Map<String, dynamic> map) {
     return InterceptDeploymentGroupConnectedEndpointGroup(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

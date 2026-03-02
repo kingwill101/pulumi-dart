@@ -31,23 +31,15 @@ class ChannelDirectLineSpeechState {
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group where the Direct Line Speech Channel should be created. Changing this forces a new resource to be created.
   ChannelDirectLineSpeechState({
-    pulumi.Output<String>? botName,
-    pulumi.Output<String>? cognitiveAccountId,
-    pulumi.Output<String>? cognitiveServiceAccessKey,
-    pulumi.Output<String>? cognitiveServiceLocation,
-    pulumi.Output<String>? customSpeechModelId,
-    pulumi.Output<String>? customVoiceDeploymentId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      botName = pulumi.Input.asOptionalInput<String>(botName),
-      cognitiveAccountId = pulumi.Input.asOptionalInput<String>(cognitiveAccountId),
-      cognitiveServiceAccessKey = pulumi.Input.asOptionalInput<String>(cognitiveServiceAccessKey),
-      cognitiveServiceLocation = pulumi.Input.asOptionalInput<String>(cognitiveServiceLocation),
-      customSpeechModelId = pulumi.Input.asOptionalInput<String>(customSpeechModelId),
-      customVoiceDeploymentId = pulumi.Input.asOptionalInput<String>(customVoiceDeploymentId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.botName,
+    this.cognitiveAccountId,
+    this.cognitiveServiceAccessKey,
+    this.cognitiveServiceLocation,
+    this.customSpeechModelId,
+    this.customVoiceDeploymentId,
+    this.location,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class ChannelDirectLineSpeechState {
 
   factory ChannelDirectLineSpeechState.fromMap(Map<String, dynamic> map) {
     return ChannelDirectLineSpeechState(
-      botName: map['botName'] == null ? null : pulumi.Output.create<String>(map['botName'] as String),
-      cognitiveAccountId: map['cognitiveAccountId'] == null ? null : pulumi.Output.create<String>(map['cognitiveAccountId'] as String),
-      cognitiveServiceAccessKey: map['cognitiveServiceAccessKey'] == null ? null : pulumi.Output.create<String>(map['cognitiveServiceAccessKey'] as String),
-      cognitiveServiceLocation: map['cognitiveServiceLocation'] == null ? null : pulumi.Output.create<String>(map['cognitiveServiceLocation'] as String),
-      customSpeechModelId: map['customSpeechModelId'] == null ? null : pulumi.Output.create<String>(map['customSpeechModelId'] as String),
-      customVoiceDeploymentId: map['customVoiceDeploymentId'] == null ? null : pulumi.Output.create<String>(map['customVoiceDeploymentId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
+      cognitiveAccountId: map['cognitiveAccountId'] == null ? null : (map['cognitiveAccountId'] as String).input(),
+      cognitiveServiceAccessKey: map['cognitiveServiceAccessKey'] == null ? null : (map['cognitiveServiceAccessKey'] as String).input(),
+      cognitiveServiceLocation: map['cognitiveServiceLocation'] == null ? null : (map['cognitiveServiceLocation'] as String).input(),
+      customSpeechModelId: map['customSpeechModelId'] == null ? null : (map['customSpeechModelId'] as String).input(),
+      customVoiceDeploymentId: map['customVoiceDeploymentId'] == null ? null : (map['customVoiceDeploymentId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

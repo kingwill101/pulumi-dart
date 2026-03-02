@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kafka_remote_broker_authentication_properties_response.dart';
 import 'kafka_remote_broker_connection_tls_response.dart';
 
 /// Kafka RemoteBrokerConnectionSpec details
 class KafkaRemoteBrokerConnectionSpecResponse {
   /// The remote broker authentication methods.
-  final KafkaRemoteBrokerAuthenticationPropertiesResponse authentication;
+  final pulumi.Input<KafkaRemoteBrokerAuthenticationPropertiesResponse> authentication;
   /// The endpoint of remote broker to connect to.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// TLS details for Remote broker Connection.
-  final KafkaRemoteBrokerConnectionTlsResponse tls;
+  final pulumi.Input<KafkaRemoteBrokerConnectionTlsResponse> tls;
 
   /// Creates a new [KafkaRemoteBrokerConnectionSpecResponse].
   /// [authentication] The remote broker authentication methods.
@@ -24,17 +25,17 @@ class KafkaRemoteBrokerConnectionSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': authentication.toMap(),
+      'authentication': pulumi.Input.mapInputValue<KafkaRemoteBrokerAuthenticationPropertiesResponse, Map<String, dynamic>>(authentication, (value) => value.toMap()),
       'endpoint': endpoint,
-      'tls': tls.toMap(),
+      'tls': pulumi.Input.mapInputValue<KafkaRemoteBrokerConnectionTlsResponse, Map<String, dynamic>>(tls, (value) => value.toMap()),
     };
   }
 
   factory KafkaRemoteBrokerConnectionSpecResponse.fromMap(Map<String, dynamic> map) {
     return KafkaRemoteBrokerConnectionSpecResponse(
-      authentication: KafkaRemoteBrokerAuthenticationPropertiesResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      endpoint: map['endpoint'] as String,
-      tls: KafkaRemoteBrokerConnectionTlsResponse.fromMap((map['tls'] as Map).cast<String, dynamic>()),
+      authentication: (KafkaRemoteBrokerAuthenticationPropertiesResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      endpoint: (map['endpoint'] as String).input(),
+      tls: (KafkaRemoteBrokerConnectionTlsResponse.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class GradientaiFunctionArgs {
   /// [inputSchema] The input schema of the GradientAI resource.
   /// [outputSchema] The output schema of the GradientAI resource.
   GradientaiFunctionArgs({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<String> description,
-    pulumi.Output<String>? faasName,
-    required pulumi.Output<String> faasNamespace,
-    required pulumi.Output<String> functionName,
-    required pulumi.Output<String> inputSchema,
-    pulumi.Output<String>? outputSchema,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      description = pulumi.Input.asInput<String>(description),
-      faasName = pulumi.Input.asOptionalInput<String>(faasName),
-      faasNamespace = pulumi.Input.asInput<String>(faasNamespace),
-      functionName = pulumi.Input.asInput<String>(functionName),
-      inputSchema = pulumi.Input.asInput<String>(inputSchema),
-      outputSchema = pulumi.Input.asOptionalInput<String>(outputSchema);
+    required this.agentId,
+    required this.description,
+    this.faasName,
+    required this.faasNamespace,
+    required this.functionName,
+    required this.inputSchema,
+    this.outputSchema,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GradientaiFunctionArgs {
 
   factory GradientaiFunctionArgs.fromMap(Map<String, dynamic> map) {
     return GradientaiFunctionArgs(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      faasName: map['faasName'] == null ? null : pulumi.Output.create<String>(map['faasName'] as String),
-      faasNamespace: pulumi.Output.create<String>(map['faasNamespace'] as String),
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      inputSchema: pulumi.Output.create<String>(map['inputSchema'] as String),
-      outputSchema: map['outputSchema'] == null ? null : pulumi.Output.create<String>(map['outputSchema'] as String),
+      agentId: (map['agentId'] as String).input(),
+      description: (map['description'] as String).input(),
+      faasName: map['faasName'] == null ? null : (map['faasName'] as String).input(),
+      faasNamespace: (map['faasNamespace'] as String).input(),
+      functionName: (map['functionName'] as String).input(),
+      inputSchema: (map['inputSchema'] as String).input(),
+      outputSchema: map['outputSchema'] == null ? null : (map['outputSchema'] as String).input(),
     );
   }
 }

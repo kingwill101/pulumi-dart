@@ -30,17 +30,12 @@ class QosBandwidthLimitRuleArgs {
   /// [qosPolicyId] The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
   /// [region] The region in which to obtain the V2 Networking client.
   QosBandwidthLimitRuleArgs({
-    pulumi.Output<String>? direction,
-    pulumi.Output<int>? maxBurstKbps,
-    required pulumi.Output<int> maxKbps,
-    required pulumi.Output<String> qosPolicyId,
-    pulumi.Output<String>? region,
-  }) :
-      direction = pulumi.Input.asOptionalInput<String>(direction),
-      maxBurstKbps = pulumi.Input.asOptionalInput<int>(maxBurstKbps),
-      maxKbps = pulumi.Input.asInput<int>(maxKbps),
-      qosPolicyId = pulumi.Input.asInput<String>(qosPolicyId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.direction,
+    this.maxBurstKbps,
+    required this.maxKbps,
+    required this.qosPolicyId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class QosBandwidthLimitRuleArgs {
 
   factory QosBandwidthLimitRuleArgs.fromMap(Map<String, dynamic> map) {
     return QosBandwidthLimitRuleArgs(
-      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
-      maxBurstKbps: map['maxBurstKbps'] == null ? null : pulumi.Output.create<int>(map['maxBurstKbps'] as int),
-      maxKbps: pulumi.Output.create<int>(map['maxKbps'] as int),
-      qosPolicyId: pulumi.Output.create<String>(map['qosPolicyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      maxBurstKbps: map['maxBurstKbps'] == null ? null : (map['maxBurstKbps'] as int).input(),
+      maxKbps: (map['maxKbps'] as int).input(),
+      qosPolicyId: (map['qosPolicyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

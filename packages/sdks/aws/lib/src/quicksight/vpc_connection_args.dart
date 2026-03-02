@@ -42,27 +42,17 @@ class VpcConnectionArgs {
   /// [timeouts] Optional.
   /// [vpcConnectionId] The ID of the VPC connection.
   VpcConnectionArgs({
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<List<String>>? dnsResolvers,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    required pulumi.Output<List<String>> securityGroupIds,
-    required pulumi.Output<List<String>> subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<VpcConnectionTimeouts>? timeouts,
-    required pulumi.Output<String> vpcConnectionId,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      dnsResolvers = pulumi.Input.asOptionalInput<List<String>>(dnsResolvers),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      securityGroupIds = pulumi.Input.asInput<List<String>>(securityGroupIds),
-      subnetIds = pulumi.Input.asInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<VpcConnectionTimeouts>(timeouts),
-      vpcConnectionId = pulumi.Input.asInput<String>(vpcConnectionId);
+    this.awsAccountId,
+    this.dnsResolvers,
+    this.name,
+    this.region,
+    required this.roleArn,
+    required this.securityGroupIds,
+    required this.subnetIds,
+    this.tags,
+    this.timeouts,
+    required this.vpcConnectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class VpcConnectionArgs {
 
   factory VpcConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VpcConnectionArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      dnsResolvers: map['dnsResolvers'] == null ? null : pulumi.Output.create<List<String>>((map['dnsResolvers'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      securityGroupIds: pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
-      subnetIds: pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<VpcConnectionTimeouts>(VpcConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcConnectionId: pulumi.Output.create<String>(map['vpcConnectionId'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      dnsResolvers: map['dnsResolvers'] == null ? null : ((map['dnsResolvers'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (VpcConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcConnectionId: (map['vpcConnectionId'] as String).input(),
     );
   }
 }

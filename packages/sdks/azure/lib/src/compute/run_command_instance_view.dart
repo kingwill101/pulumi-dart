@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RunCommandInstanceView {
-  final String? endTime;
-  final String? errorMessage;
-  final String? executionMessage;
-  final String? executionState;
-  final int? exitCode;
-  final String? output;
-  final String? startTime;
+  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String>? executionMessage;
+  final pulumi.Input<String>? executionState;
+  final pulumi.Input<int>? exitCode;
+  final pulumi.Input<String>? output;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [RunCommandInstanceView].
   /// [endTime] Optional.
@@ -42,13 +43,13 @@ class RunCommandInstanceView {
 
   factory RunCommandInstanceView.fromMap(Map<String, dynamic> map) {
     return RunCommandInstanceView(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
-      executionMessage: map['executionMessage'] == null ? null : map['executionMessage'] as String,
-      executionState: map['executionState'] == null ? null : map['executionState'] as String,
-      exitCode: map['exitCode'] == null ? null : map['exitCode'] as int,
-      output: map['output'] == null ? null : map['output'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      executionMessage: map['executionMessage'] == null ? null : (map['executionMessage'] as String).input(),
+      executionState: map['executionState'] == null ? null : (map['executionState'] as String).input(),
+      exitCode: map['exitCode'] == null ? null : (map['exitCode'] as int).input(),
+      output: map['output'] == null ? null : (map['output'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

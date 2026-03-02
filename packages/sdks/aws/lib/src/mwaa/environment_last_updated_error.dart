@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentLastUpdatedError {
-  final String? errorCode;
-  final String? errorMessage;
+  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String>? errorMessage;
 
   /// Creates a new [EnvironmentLastUpdatedError].
   /// [errorCode] Optional.
@@ -22,8 +23,8 @@ class EnvironmentLastUpdatedError {
 
   factory EnvironmentLastUpdatedError.fromMap(Map<String, dynamic> map) {
     return EnvironmentLastUpdatedError(
-      errorCode: map['errorCode'] == null ? null : map['errorCode'] as String,
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
+      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetScopeAccessReviewHistoryDefinitionByIdArgs {
   /// [historyDefinitionId] The id of the access review history definition.
   /// [scope] The scope of the resource.
   GetScopeAccessReviewHistoryDefinitionByIdArgs({
-    required pulumi.Output<String> historyDefinitionId,
-    required pulumi.Output<String> scope,
-  }) :
-      historyDefinitionId = pulumi.Input.asInput<String>(historyDefinitionId),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.historyDefinitionId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetScopeAccessReviewHistoryDefinitionByIdArgs {
 
   factory GetScopeAccessReviewHistoryDefinitionByIdArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeAccessReviewHistoryDefinitionByIdArgs(
-      historyDefinitionId: pulumi.Output.create<String>(map['historyDefinitionId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      historyDefinitionId: (map['historyDefinitionId'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

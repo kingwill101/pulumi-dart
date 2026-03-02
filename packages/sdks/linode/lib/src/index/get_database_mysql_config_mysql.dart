@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_database_mysql_config_mysql_connect_timeout.dart';
 import 'get_database_mysql_config_mysql_default_time_zone.dart';
 import 'get_database_mysql_config_mysql_group_concat_max_len.dart';
@@ -29,33 +30,33 @@ import 'get_database_mysql_config_mysql_tmp_table_size.dart';
 import 'get_database_mysql_config_mysql_wait_timeout.dart';
 
 class GetDatabaseMysqlConfigMysql {
-  final GetDatabaseMysqlConfigMysqlConnectTimeout connectTimeout;
-  final GetDatabaseMysqlConfigMysqlDefaultTimeZone defaultTimeZone;
-  final GetDatabaseMysqlConfigMysqlGroupConcatMaxLen groupConcatMaxLen;
-  final GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry informationSchemaStatsExpiry;
-  final GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize innodbChangeBufferMaxSize;
-  final GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors innodbFlushNeighbors;
-  final GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize innodbFtMinTokenSize;
-  final GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable innodbFtServerStopwordTable;
-  final GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout innodbLockWaitTimeout;
-  final GetDatabaseMysqlConfigMysqlInnodbLogBufferSize innodbLogBufferSize;
-  final GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize innodbOnlineAlterLogMaxSize;
-  final GetDatabaseMysqlConfigMysqlInnodbReadIoThreads innodbReadIoThreads;
-  final GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout innodbRollbackOnTimeout;
-  final GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency innodbThreadConcurrency;
-  final GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads innodbWriteIoThreads;
-  final GetDatabaseMysqlConfigMysqlInteractiveTimeout interactiveTimeout;
-  final GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine internalTmpMemStorageEngine;
-  final GetDatabaseMysqlConfigMysqlMaxAllowedPacket maxAllowedPacket;
-  final GetDatabaseMysqlConfigMysqlMaxHeapTableSize maxHeapTableSize;
-  final GetDatabaseMysqlConfigMysqlNetBufferLength netBufferLength;
-  final GetDatabaseMysqlConfigMysqlNetReadTimeout netReadTimeout;
-  final GetDatabaseMysqlConfigMysqlNetWriteTimeout netWriteTimeout;
-  final GetDatabaseMysqlConfigMysqlSortBufferSize sortBufferSize;
-  final GetDatabaseMysqlConfigMysqlSqlMode sqlMode;
-  final GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey sqlRequirePrimaryKey;
-  final GetDatabaseMysqlConfigMysqlTmpTableSize tmpTableSize;
-  final GetDatabaseMysqlConfigMysqlWaitTimeout waitTimeout;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlConnectTimeout> connectTimeout;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlDefaultTimeZone> defaultTimeZone;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlGroupConcatMaxLen> groupConcatMaxLen;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry> informationSchemaStatsExpiry;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize> innodbChangeBufferMaxSize;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors> innodbFlushNeighbors;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize> innodbFtMinTokenSize;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable> innodbFtServerStopwordTable;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout> innodbLockWaitTimeout;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInnodbLogBufferSize> innodbLogBufferSize;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize> innodbOnlineAlterLogMaxSize;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInnodbReadIoThreads> innodbReadIoThreads;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout> innodbRollbackOnTimeout;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency> innodbThreadConcurrency;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads> innodbWriteIoThreads;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInteractiveTimeout> interactiveTimeout;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine> internalTmpMemStorageEngine;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlMaxAllowedPacket> maxAllowedPacket;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlMaxHeapTableSize> maxHeapTableSize;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlNetBufferLength> netBufferLength;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlNetReadTimeout> netReadTimeout;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlNetWriteTimeout> netWriteTimeout;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlSortBufferSize> sortBufferSize;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlSqlMode> sqlMode;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey> sqlRequirePrimaryKey;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlTmpTableSize> tmpTableSize;
+  final pulumi.Input<GetDatabaseMysqlConfigMysqlWaitTimeout> waitTimeout;
 
   /// Creates a new [GetDatabaseMysqlConfigMysql].
   /// [connectTimeout] Required.
@@ -117,65 +118,65 @@ class GetDatabaseMysqlConfigMysql {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectTimeout': connectTimeout.toMap(),
-      'defaultTimeZone': defaultTimeZone.toMap(),
-      'groupConcatMaxLen': groupConcatMaxLen.toMap(),
-      'informationSchemaStatsExpiry': informationSchemaStatsExpiry.toMap(),
-      'innodbChangeBufferMaxSize': innodbChangeBufferMaxSize.toMap(),
-      'innodbFlushNeighbors': innodbFlushNeighbors.toMap(),
-      'innodbFtMinTokenSize': innodbFtMinTokenSize.toMap(),
-      'innodbFtServerStopwordTable': innodbFtServerStopwordTable.toMap(),
-      'innodbLockWaitTimeout': innodbLockWaitTimeout.toMap(),
-      'innodbLogBufferSize': innodbLogBufferSize.toMap(),
-      'innodbOnlineAlterLogMaxSize': innodbOnlineAlterLogMaxSize.toMap(),
-      'innodbReadIoThreads': innodbReadIoThreads.toMap(),
-      'innodbRollbackOnTimeout': innodbRollbackOnTimeout.toMap(),
-      'innodbThreadConcurrency': innodbThreadConcurrency.toMap(),
-      'innodbWriteIoThreads': innodbWriteIoThreads.toMap(),
-      'interactiveTimeout': interactiveTimeout.toMap(),
-      'internalTmpMemStorageEngine': internalTmpMemStorageEngine.toMap(),
-      'maxAllowedPacket': maxAllowedPacket.toMap(),
-      'maxHeapTableSize': maxHeapTableSize.toMap(),
-      'netBufferLength': netBufferLength.toMap(),
-      'netReadTimeout': netReadTimeout.toMap(),
-      'netWriteTimeout': netWriteTimeout.toMap(),
-      'sortBufferSize': sortBufferSize.toMap(),
-      'sqlMode': sqlMode.toMap(),
-      'sqlRequirePrimaryKey': sqlRequirePrimaryKey.toMap(),
-      'tmpTableSize': tmpTableSize.toMap(),
-      'waitTimeout': waitTimeout.toMap(),
+      'connectTimeout': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlConnectTimeout, Map<String, dynamic>>(connectTimeout, (value) => value.toMap()),
+      'defaultTimeZone': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlDefaultTimeZone, Map<String, dynamic>>(defaultTimeZone, (value) => value.toMap()),
+      'groupConcatMaxLen': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlGroupConcatMaxLen, Map<String, dynamic>>(groupConcatMaxLen, (value) => value.toMap()),
+      'informationSchemaStatsExpiry': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry, Map<String, dynamic>>(informationSchemaStatsExpiry, (value) => value.toMap()),
+      'innodbChangeBufferMaxSize': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize, Map<String, dynamic>>(innodbChangeBufferMaxSize, (value) => value.toMap()),
+      'innodbFlushNeighbors': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors, Map<String, dynamic>>(innodbFlushNeighbors, (value) => value.toMap()),
+      'innodbFtMinTokenSize': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize, Map<String, dynamic>>(innodbFtMinTokenSize, (value) => value.toMap()),
+      'innodbFtServerStopwordTable': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable, Map<String, dynamic>>(innodbFtServerStopwordTable, (value) => value.toMap()),
+      'innodbLockWaitTimeout': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout, Map<String, dynamic>>(innodbLockWaitTimeout, (value) => value.toMap()),
+      'innodbLogBufferSize': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInnodbLogBufferSize, Map<String, dynamic>>(innodbLogBufferSize, (value) => value.toMap()),
+      'innodbOnlineAlterLogMaxSize': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize, Map<String, dynamic>>(innodbOnlineAlterLogMaxSize, (value) => value.toMap()),
+      'innodbReadIoThreads': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInnodbReadIoThreads, Map<String, dynamic>>(innodbReadIoThreads, (value) => value.toMap()),
+      'innodbRollbackOnTimeout': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout, Map<String, dynamic>>(innodbRollbackOnTimeout, (value) => value.toMap()),
+      'innodbThreadConcurrency': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency, Map<String, dynamic>>(innodbThreadConcurrency, (value) => value.toMap()),
+      'innodbWriteIoThreads': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads, Map<String, dynamic>>(innodbWriteIoThreads, (value) => value.toMap()),
+      'interactiveTimeout': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInteractiveTimeout, Map<String, dynamic>>(interactiveTimeout, (value) => value.toMap()),
+      'internalTmpMemStorageEngine': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine, Map<String, dynamic>>(internalTmpMemStorageEngine, (value) => value.toMap()),
+      'maxAllowedPacket': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlMaxAllowedPacket, Map<String, dynamic>>(maxAllowedPacket, (value) => value.toMap()),
+      'maxHeapTableSize': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlMaxHeapTableSize, Map<String, dynamic>>(maxHeapTableSize, (value) => value.toMap()),
+      'netBufferLength': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlNetBufferLength, Map<String, dynamic>>(netBufferLength, (value) => value.toMap()),
+      'netReadTimeout': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlNetReadTimeout, Map<String, dynamic>>(netReadTimeout, (value) => value.toMap()),
+      'netWriteTimeout': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlNetWriteTimeout, Map<String, dynamic>>(netWriteTimeout, (value) => value.toMap()),
+      'sortBufferSize': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlSortBufferSize, Map<String, dynamic>>(sortBufferSize, (value) => value.toMap()),
+      'sqlMode': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlSqlMode, Map<String, dynamic>>(sqlMode, (value) => value.toMap()),
+      'sqlRequirePrimaryKey': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey, Map<String, dynamic>>(sqlRequirePrimaryKey, (value) => value.toMap()),
+      'tmpTableSize': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlTmpTableSize, Map<String, dynamic>>(tmpTableSize, (value) => value.toMap()),
+      'waitTimeout': pulumi.Input.mapInputValue<GetDatabaseMysqlConfigMysqlWaitTimeout, Map<String, dynamic>>(waitTimeout, (value) => value.toMap()),
     };
   }
 
   factory GetDatabaseMysqlConfigMysql.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysql(
-      connectTimeout: GetDatabaseMysqlConfigMysqlConnectTimeout.fromMap((map['connectTimeout'] as Map).cast<String, dynamic>()),
-      defaultTimeZone: GetDatabaseMysqlConfigMysqlDefaultTimeZone.fromMap((map['defaultTimeZone'] as Map).cast<String, dynamic>()),
-      groupConcatMaxLen: GetDatabaseMysqlConfigMysqlGroupConcatMaxLen.fromMap((map['groupConcatMaxLen'] as Map).cast<String, dynamic>()),
-      informationSchemaStatsExpiry: GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry.fromMap((map['informationSchemaStatsExpiry'] as Map).cast<String, dynamic>()),
-      innodbChangeBufferMaxSize: GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize.fromMap((map['innodbChangeBufferMaxSize'] as Map).cast<String, dynamic>()),
-      innodbFlushNeighbors: GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors.fromMap((map['innodbFlushNeighbors'] as Map).cast<String, dynamic>()),
-      innodbFtMinTokenSize: GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize.fromMap((map['innodbFtMinTokenSize'] as Map).cast<String, dynamic>()),
-      innodbFtServerStopwordTable: GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable.fromMap((map['innodbFtServerStopwordTable'] as Map).cast<String, dynamic>()),
-      innodbLockWaitTimeout: GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout.fromMap((map['innodbLockWaitTimeout'] as Map).cast<String, dynamic>()),
-      innodbLogBufferSize: GetDatabaseMysqlConfigMysqlInnodbLogBufferSize.fromMap((map['innodbLogBufferSize'] as Map).cast<String, dynamic>()),
-      innodbOnlineAlterLogMaxSize: GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize.fromMap((map['innodbOnlineAlterLogMaxSize'] as Map).cast<String, dynamic>()),
-      innodbReadIoThreads: GetDatabaseMysqlConfigMysqlInnodbReadIoThreads.fromMap((map['innodbReadIoThreads'] as Map).cast<String, dynamic>()),
-      innodbRollbackOnTimeout: GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout.fromMap((map['innodbRollbackOnTimeout'] as Map).cast<String, dynamic>()),
-      innodbThreadConcurrency: GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency.fromMap((map['innodbThreadConcurrency'] as Map).cast<String, dynamic>()),
-      innodbWriteIoThreads: GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads.fromMap((map['innodbWriteIoThreads'] as Map).cast<String, dynamic>()),
-      interactiveTimeout: GetDatabaseMysqlConfigMysqlInteractiveTimeout.fromMap((map['interactiveTimeout'] as Map).cast<String, dynamic>()),
-      internalTmpMemStorageEngine: GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine.fromMap((map['internalTmpMemStorageEngine'] as Map).cast<String, dynamic>()),
-      maxAllowedPacket: GetDatabaseMysqlConfigMysqlMaxAllowedPacket.fromMap((map['maxAllowedPacket'] as Map).cast<String, dynamic>()),
-      maxHeapTableSize: GetDatabaseMysqlConfigMysqlMaxHeapTableSize.fromMap((map['maxHeapTableSize'] as Map).cast<String, dynamic>()),
-      netBufferLength: GetDatabaseMysqlConfigMysqlNetBufferLength.fromMap((map['netBufferLength'] as Map).cast<String, dynamic>()),
-      netReadTimeout: GetDatabaseMysqlConfigMysqlNetReadTimeout.fromMap((map['netReadTimeout'] as Map).cast<String, dynamic>()),
-      netWriteTimeout: GetDatabaseMysqlConfigMysqlNetWriteTimeout.fromMap((map['netWriteTimeout'] as Map).cast<String, dynamic>()),
-      sortBufferSize: GetDatabaseMysqlConfigMysqlSortBufferSize.fromMap((map['sortBufferSize'] as Map).cast<String, dynamic>()),
-      sqlMode: GetDatabaseMysqlConfigMysqlSqlMode.fromMap((map['sqlMode'] as Map).cast<String, dynamic>()),
-      sqlRequirePrimaryKey: GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey.fromMap((map['sqlRequirePrimaryKey'] as Map).cast<String, dynamic>()),
-      tmpTableSize: GetDatabaseMysqlConfigMysqlTmpTableSize.fromMap((map['tmpTableSize'] as Map).cast<String, dynamic>()),
-      waitTimeout: GetDatabaseMysqlConfigMysqlWaitTimeout.fromMap((map['waitTimeout'] as Map).cast<String, dynamic>()),
+      connectTimeout: (GetDatabaseMysqlConfigMysqlConnectTimeout.fromMap((map['connectTimeout'] as Map).cast<String, dynamic>())).input(),
+      defaultTimeZone: (GetDatabaseMysqlConfigMysqlDefaultTimeZone.fromMap((map['defaultTimeZone'] as Map).cast<String, dynamic>())).input(),
+      groupConcatMaxLen: (GetDatabaseMysqlConfigMysqlGroupConcatMaxLen.fromMap((map['groupConcatMaxLen'] as Map).cast<String, dynamic>())).input(),
+      informationSchemaStatsExpiry: (GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry.fromMap((map['informationSchemaStatsExpiry'] as Map).cast<String, dynamic>())).input(),
+      innodbChangeBufferMaxSize: (GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize.fromMap((map['innodbChangeBufferMaxSize'] as Map).cast<String, dynamic>())).input(),
+      innodbFlushNeighbors: (GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors.fromMap((map['innodbFlushNeighbors'] as Map).cast<String, dynamic>())).input(),
+      innodbFtMinTokenSize: (GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize.fromMap((map['innodbFtMinTokenSize'] as Map).cast<String, dynamic>())).input(),
+      innodbFtServerStopwordTable: (GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable.fromMap((map['innodbFtServerStopwordTable'] as Map).cast<String, dynamic>())).input(),
+      innodbLockWaitTimeout: (GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout.fromMap((map['innodbLockWaitTimeout'] as Map).cast<String, dynamic>())).input(),
+      innodbLogBufferSize: (GetDatabaseMysqlConfigMysqlInnodbLogBufferSize.fromMap((map['innodbLogBufferSize'] as Map).cast<String, dynamic>())).input(),
+      innodbOnlineAlterLogMaxSize: (GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize.fromMap((map['innodbOnlineAlterLogMaxSize'] as Map).cast<String, dynamic>())).input(),
+      innodbReadIoThreads: (GetDatabaseMysqlConfigMysqlInnodbReadIoThreads.fromMap((map['innodbReadIoThreads'] as Map).cast<String, dynamic>())).input(),
+      innodbRollbackOnTimeout: (GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout.fromMap((map['innodbRollbackOnTimeout'] as Map).cast<String, dynamic>())).input(),
+      innodbThreadConcurrency: (GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency.fromMap((map['innodbThreadConcurrency'] as Map).cast<String, dynamic>())).input(),
+      innodbWriteIoThreads: (GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads.fromMap((map['innodbWriteIoThreads'] as Map).cast<String, dynamic>())).input(),
+      interactiveTimeout: (GetDatabaseMysqlConfigMysqlInteractiveTimeout.fromMap((map['interactiveTimeout'] as Map).cast<String, dynamic>())).input(),
+      internalTmpMemStorageEngine: (GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine.fromMap((map['internalTmpMemStorageEngine'] as Map).cast<String, dynamic>())).input(),
+      maxAllowedPacket: (GetDatabaseMysqlConfigMysqlMaxAllowedPacket.fromMap((map['maxAllowedPacket'] as Map).cast<String, dynamic>())).input(),
+      maxHeapTableSize: (GetDatabaseMysqlConfigMysqlMaxHeapTableSize.fromMap((map['maxHeapTableSize'] as Map).cast<String, dynamic>())).input(),
+      netBufferLength: (GetDatabaseMysqlConfigMysqlNetBufferLength.fromMap((map['netBufferLength'] as Map).cast<String, dynamic>())).input(),
+      netReadTimeout: (GetDatabaseMysqlConfigMysqlNetReadTimeout.fromMap((map['netReadTimeout'] as Map).cast<String, dynamic>())).input(),
+      netWriteTimeout: (GetDatabaseMysqlConfigMysqlNetWriteTimeout.fromMap((map['netWriteTimeout'] as Map).cast<String, dynamic>())).input(),
+      sortBufferSize: (GetDatabaseMysqlConfigMysqlSortBufferSize.fromMap((map['sortBufferSize'] as Map).cast<String, dynamic>())).input(),
+      sqlMode: (GetDatabaseMysqlConfigMysqlSqlMode.fromMap((map['sqlMode'] as Map).cast<String, dynamic>())).input(),
+      sqlRequirePrimaryKey: (GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey.fromMap((map['sqlRequirePrimaryKey'] as Map).cast<String, dynamic>())).input(),
+      tmpTableSize: (GetDatabaseMysqlConfigMysqlTmpTableSize.fromMap((map['tmpTableSize'] as Map).cast<String, dynamic>())).input(),
+      waitTimeout: (GetDatabaseMysqlConfigMysqlWaitTimeout.fromMap((map['waitTimeout'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

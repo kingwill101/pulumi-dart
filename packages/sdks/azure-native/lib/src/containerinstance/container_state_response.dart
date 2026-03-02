@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The container instance state.
 class ContainerStateResponse {
   /// The human-readable status of the container instance state.
-  final String detailStatus;
+  final pulumi.Input<String> detailStatus;
   /// The container instance exit codes correspond to those from the `docker run` command.
-  final int exitCode;
+  final pulumi.Input<int> exitCode;
   /// The date-time when the container instance state finished.
-  final String finishTime;
+  final pulumi.Input<String> finishTime;
   /// The date-time when the container instance state started.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The state of the container instance.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [ContainerStateResponse].
   /// [detailStatus] The human-readable status of the container instance state.
@@ -40,11 +41,11 @@ class ContainerStateResponse {
 
   factory ContainerStateResponse.fromMap(Map<String, dynamic> map) {
     return ContainerStateResponse(
-      detailStatus: map['detailStatus'] as String,
-      exitCode: map['exitCode'] as int,
-      finishTime: map['finishTime'] as String,
-      startTime: map['startTime'] as String,
-      state: map['state'] as String,
+      detailStatus: (map['detailStatus'] as String).input(),
+      exitCode: (map['exitCode'] as int).input(),
+      finishTime: (map['finishTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

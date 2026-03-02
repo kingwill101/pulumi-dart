@@ -16,11 +16,9 @@ class ImageBlockPublicAccessArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] The state of block public access for AMIs at the account level in the configured AWS Region. Valid values: `unblocked` and `block-new-sharing`.
   ImageBlockPublicAccessArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> state,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asInput<String>(state);
+    this.region,
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ImageBlockPublicAccessArgs {
 
   factory ImageBlockPublicAccessArgs.fromMap(Map<String, dynamic> map) {
     return ImageBlockPublicAccessArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: pulumi.Output.create<String>(map['state'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

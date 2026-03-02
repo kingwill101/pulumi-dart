@@ -7,13 +7,13 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_suggestion_response.d
 /// Rich Business Messaging (RBM) Card content
 class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse {
   /// Optional. Description of the card (at most 2000 bytes). At least one of the title, description or media must be set.
-  final String description;
+  final pulumi.Input<String> description;
   /// Optional. However at least one of the title, description or media must be set. Media (image, GIF or a video) to include in the card.
-  final GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaResponse media;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaResponse> media;
   /// Optional. List of suggestions to include in the card.
-  final List<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse> suggestions;
+  final pulumi.Input<List<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse>> suggestions;
   /// Optional. Title of the card (at most 200 bytes). At least one of the title, description or media must be set.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse].
   /// [description] Optional. Description of the card (at most 2000 bytes). At least one of the title, description or media must be set.
@@ -30,18 +30,18 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'media': media.toMap(),
-      'suggestions': pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse, Map<String, dynamic>>(suggestions, (value) => value.toMap()),
+      'media': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaResponse, Map<String, dynamic>>(media, (value) => value.toMap()),
+      'suggestions': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse>, List<Map<String, dynamic>>>(suggestions, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'title': title,
     };
   }
 
   factory GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse(
-      description: map['description'] as String,
-      media: GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaResponse.fromMap((map['media'] as Map).cast<String, dynamic>()),
-      suggestions: pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse>(map['suggestions'], (value) => GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      title: map['title'] as String,
+      description: (map['description'] as String).input(),
+      media: (GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaResponse.fromMap((map['media'] as Map).cast<String, dynamic>())).input(),
+      suggestions: (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse>(map['suggestions'], (value) => GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

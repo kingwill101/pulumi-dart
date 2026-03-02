@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkstationClusterDomainConfig {
   /// Domain used by Workstations for HTTP ingress.
-  final String domain;
+  final pulumi.Input<String> domain;
 
   /// Creates a new [WorkstationClusterDomainConfig].
   /// [domain] Domain used by Workstations for HTTP ingress.
@@ -19,7 +20,7 @@ class WorkstationClusterDomainConfig {
 
   factory WorkstationClusterDomainConfig.fromMap(Map<String, dynamic> map) {
     return WorkstationClusterDomainConfig(
-      domain: map['domain'] as String,
+      domain: (map['domain'] as String).input(),
     );
   }
 }

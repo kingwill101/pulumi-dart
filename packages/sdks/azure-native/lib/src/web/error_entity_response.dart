@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Body of the error response returned from the API.
 class ErrorEntityResponse {
   /// Basic error code.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// Error Details.
-  final List<ErrorEntityResponse>? details;
+  final pulumi.Input<List<ErrorEntityResponse>>? details;
   /// Type of error.
-  final String? extendedCode;
+  final pulumi.Input<String>? extendedCode;
   /// Inner errors.
-  final List<ErrorEntityResponse>? innerErrors;
+  final pulumi.Input<List<ErrorEntityResponse>>? innerErrors;
   /// Any details of the error.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Message template.
-  final String? messageTemplate;
+  final pulumi.Input<String>? messageTemplate;
   /// Parameters for the template.
-  final List<String>? parameters;
+  final pulumi.Input<List<String>>? parameters;
   /// The error target.
-  final String? target;
+  final pulumi.Input<String>? target;
 
   /// Creates a new [ErrorEntityResponse].
   /// [code] Basic error code.
@@ -44,9 +44,9 @@ class ErrorEntityResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': ?code,
-      'details': ?details == null ? null : pulumi.Input.encodeList<ErrorEntityResponse, Map<String, dynamic>>(details!, (value) => value.toMap()),
+      'details': ?pulumi.Input.mapOptionalInputValue<List<ErrorEntityResponse>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<ErrorEntityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'extendedCode': ?extendedCode,
-      'innerErrors': ?innerErrors == null ? null : pulumi.Input.encodeList<ErrorEntityResponse, Map<String, dynamic>>(innerErrors!, (value) => value.toMap()),
+      'innerErrors': ?pulumi.Input.mapOptionalInputValue<List<ErrorEntityResponse>, List<Map<String, dynamic>>>(innerErrors, (value) => pulumi.Input.encodeList<ErrorEntityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'message': ?message,
       'messageTemplate': ?messageTemplate,
       'parameters': ?parameters,
@@ -56,14 +56,14 @@ class ErrorEntityResponse {
 
   factory ErrorEntityResponse.fromMap(Map<String, dynamic> map) {
     return ErrorEntityResponse(
-      code: map['code'] == null ? null : map['code'] as String,
-      details: map['details'] == null ? null : pulumi.Input.decodeList<ErrorEntityResponse>(map['details'], (value) => ErrorEntityResponse.fromMap((value as Map).cast<String, dynamic>())),
-      extendedCode: map['extendedCode'] == null ? null : map['extendedCode'] as String,
-      innerErrors: map['innerErrors'] == null ? null : pulumi.Input.decodeList<ErrorEntityResponse>(map['innerErrors'], (value) => ErrorEntityResponse.fromMap((value as Map).cast<String, dynamic>())),
-      message: map['message'] == null ? null : map['message'] as String,
-      messageTemplate: map['messageTemplate'] == null ? null : map['messageTemplate'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as List).cast<String>(),
-      target: map['target'] == null ? null : map['target'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<ErrorEntityResponse>(map['details'], (value) => ErrorEntityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extendedCode: map['extendedCode'] == null ? null : (map['extendedCode'] as String).input(),
+      innerErrors: map['innerErrors'] == null ? null : (pulumi.Input.decodeList<ErrorEntityResponse>(map['innerErrors'], (value) => ErrorEntityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      messageTemplate: map['messageTemplate'] == null ? null : (map['messageTemplate'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as List).cast<String>()).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

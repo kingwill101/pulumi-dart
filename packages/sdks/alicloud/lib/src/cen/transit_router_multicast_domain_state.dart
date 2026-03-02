@@ -29,21 +29,14 @@ class TransitRouterMulticastDomainState {
   /// [transitRouterMulticastDomainDescription] The description of the multicast domain.
   /// [transitRouterMulticastDomainName] The name of the multicast domain.
   TransitRouterMulticastDomainState({
-    pulumi.Output<TransitRouterMulticastDomainOptions>? options,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitRouterId,
-    pulumi.Output<String>? transitRouterMulticastDomainDescription,
-    pulumi.Output<String>? transitRouterMulticastDomainName,
-  }) :
-      options = pulumi.Input.asOptionalInput<TransitRouterMulticastDomainOptions>(options),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitRouterId = pulumi.Input.asOptionalInput<String>(transitRouterId),
-      transitRouterMulticastDomainDescription = pulumi.Input.asOptionalInput<String>(transitRouterMulticastDomainDescription),
-      transitRouterMulticastDomainName = pulumi.Input.asOptionalInput<String>(transitRouterMulticastDomainName);
+    this.options,
+    this.regionId,
+    this.status,
+    this.tags,
+    this.transitRouterId,
+    this.transitRouterMulticastDomainDescription,
+    this.transitRouterMulticastDomainName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class TransitRouterMulticastDomainState {
 
   factory TransitRouterMulticastDomainState.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainState(
-      options: map['options'] == null ? null : pulumi.Output.create<TransitRouterMulticastDomainOptions>(TransitRouterMulticastDomainOptions.fromMap((map['options'] as Map).cast<String, dynamic>())),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitRouterId: map['transitRouterId'] == null ? null : pulumi.Output.create<String>(map['transitRouterId'] as String),
-      transitRouterMulticastDomainDescription: map['transitRouterMulticastDomainDescription'] == null ? null : pulumi.Output.create<String>(map['transitRouterMulticastDomainDescription'] as String),
-      transitRouterMulticastDomainName: map['transitRouterMulticastDomainName'] == null ? null : pulumi.Output.create<String>(map['transitRouterMulticastDomainName'] as String),
+      options: map['options'] == null ? null : (TransitRouterMulticastDomainOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      transitRouterMulticastDomainDescription: map['transitRouterMulticastDomainDescription'] == null ? null : (map['transitRouterMulticastDomainDescription'] as String).input(),
+      transitRouterMulticastDomainName: map['transitRouterMulticastDomainName'] == null ? null : (map['transitRouterMulticastDomainName'] as String).input(),
     );
   }
 }

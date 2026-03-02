@@ -26,13 +26,10 @@ class GetKeyRingsArgs {
   /// [location] The location that the underlying key ring resides in. e.g us-west1
   /// [project] The Project ID of the project.
   GetKeyRingsArgs({
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.filter,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,9 +41,9 @@ class GetKeyRingsArgs {
 
   factory GetKeyRingsArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyRingsArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareAdminClusterNetworkConfigDhcpIpConfig {
   /// enabled is a flag to mark if DHCP IP allocation is
   /// used for VMware admin clusters.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [VmwareAdminClusterNetworkConfigDhcpIpConfig].
   /// [enabled] enabled is a flag to mark if DHCP IP allocation is
@@ -20,7 +21,7 @@ class VmwareAdminClusterNetworkConfigDhcpIpConfig {
 
   factory VmwareAdminClusterNetworkConfigDhcpIpConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterNetworkConfigDhcpIpConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

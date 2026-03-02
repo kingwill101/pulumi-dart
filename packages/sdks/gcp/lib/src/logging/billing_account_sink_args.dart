@@ -46,23 +46,15 @@ class BillingAccountSinkArgs {
   /// [filter] The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// [name] The name of the logging sink.
   BillingAccountSinkArgs({
-    pulumi.Output<BillingAccountSinkBigqueryOptions>? bigqueryOptions,
-    required pulumi.Output<String> billingAccount,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> destination,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<List<BillingAccountSinkExclusion>>? exclusions,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? name,
-  }) :
-      bigqueryOptions = pulumi.Input.asOptionalInput<BillingAccountSinkBigqueryOptions>(bigqueryOptions),
-      billingAccount = pulumi.Input.asInput<String>(billingAccount),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destination = pulumi.Input.asInput<String>(destination),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      exclusions = pulumi.Input.asOptionalInput<List<BillingAccountSinkExclusion>>(exclusions),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.bigqueryOptions,
+    required this.billingAccount,
+    this.description,
+    required this.destination,
+    this.disabled,
+    this.exclusions,
+    this.filter,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,14 +71,14 @@ class BillingAccountSinkArgs {
 
   factory BillingAccountSinkArgs.fromMap(Map<String, dynamic> map) {
     return BillingAccountSinkArgs(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : pulumi.Output.create<BillingAccountSinkBigqueryOptions>(BillingAccountSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())),
-      billingAccount: pulumi.Output.create<String>(map['billingAccount'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destination: pulumi.Output.create<String>(map['destination'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      exclusions: map['exclusions'] == null ? null : pulumi.Output.create<List<BillingAccountSinkExclusion>>(pulumi.Input.decodeList<BillingAccountSinkExclusion>(map['exclusions'], (value) => BillingAccountSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (BillingAccountSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
+      billingAccount: (map['billingAccount'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destination: (map['destination'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<BillingAccountSinkExclusion>(map['exclusions'], (value) => BillingAccountSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

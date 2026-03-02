@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool {
   /// Name of the prompt.
   ///
   /// The following arguments are optional:
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool].
   /// [name] Name of the prompt.
@@ -21,7 +22,7 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool
 
   factory AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

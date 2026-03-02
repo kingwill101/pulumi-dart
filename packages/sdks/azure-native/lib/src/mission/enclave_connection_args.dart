@@ -34,23 +34,15 @@ class EnclaveConnectionArgs {
   /// [sourceResourceId] Source Resource Id.
   /// [tags] Resource tags.
   EnclaveConnectionArgs({
-    required pulumi.Output<String> communityResourceId,
-    required pulumi.Output<String> destinationEndpointId,
-    pulumi.Output<String>? enclaveConnectionName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sourceCidr,
-    required pulumi.Output<String> sourceResourceId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      communityResourceId = pulumi.Input.asInput<String>(communityResourceId),
-      destinationEndpointId = pulumi.Input.asInput<String>(destinationEndpointId),
-      enclaveConnectionName = pulumi.Input.asOptionalInput<String>(enclaveConnectionName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceCidr = pulumi.Input.asOptionalInput<String>(sourceCidr),
-      sourceResourceId = pulumi.Input.asInput<String>(sourceResourceId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.communityResourceId,
+    required this.destinationEndpointId,
+    this.enclaveConnectionName,
+    this.location,
+    required this.resourceGroupName,
+    this.sourceCidr,
+    required this.sourceResourceId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class EnclaveConnectionArgs {
 
   factory EnclaveConnectionArgs.fromMap(Map<String, dynamic> map) {
     return EnclaveConnectionArgs(
-      communityResourceId: pulumi.Output.create<String>(map['communityResourceId'] as String),
-      destinationEndpointId: pulumi.Output.create<String>(map['destinationEndpointId'] as String),
-      enclaveConnectionName: map['enclaveConnectionName'] == null ? null : pulumi.Output.create<String>(map['enclaveConnectionName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceCidr: map['sourceCidr'] == null ? null : pulumi.Output.create<String>(map['sourceCidr'] as String),
-      sourceResourceId: pulumi.Output.create<String>(map['sourceResourceId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      communityResourceId: (map['communityResourceId'] as String).input(),
+      destinationEndpointId: (map['destinationEndpointId'] as String).input(),
+      enclaveConnectionName: map['enclaveConnectionName'] == null ? null : (map['enclaveConnectionName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr'] as String).input(),
+      sourceResourceId: (map['sourceResourceId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'open_deployment_resource_reference_response.dart';
 
 /// NetworkFunction with secrets.
 class NetworkFunctionValueWithSecretsResponse {
   /// Indicates if software updates are allowed during deployment.
-  final bool? allowSoftwareUpdate;
+  final pulumi.Input<bool>? allowSoftwareUpdate;
   /// The secret type which indicates if secret or not.
   /// Expected value is 'Secret'.
-  final String configurationType;
+  final pulumi.Input<String> configurationType;
   /// The network function definition group name for the network function.
-  final String? networkFunctionDefinitionGroupName;
+  final pulumi.Input<String>? networkFunctionDefinitionGroupName;
   /// The location of the network function definition offering.
-  final String? networkFunctionDefinitionOfferingLocation;
+  final pulumi.Input<String>? networkFunctionDefinitionOfferingLocation;
   /// The network function definition version for the network function.
-  final String? networkFunctionDefinitionVersion;
+  final pulumi.Input<String>? networkFunctionDefinitionVersion;
   /// The network function definition version resource reference.
-  final OpenDeploymentResourceReferenceResponse? networkFunctionDefinitionVersionResourceReference;
+  final pulumi.Input<OpenDeploymentResourceReferenceResponse>? networkFunctionDefinitionVersionResourceReference;
   /// The nfviId for the network function.
-  final String? nfviId;
+  final pulumi.Input<String>? nfviId;
   /// The nfvi type for the network function.
-  final String? nfviType;
+  final pulumi.Input<String>? nfviType;
   /// The provisioning state of the network function resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The publisher name for the network function.
-  final String? publisherName;
+  final pulumi.Input<String>? publisherName;
   /// The scope of the publisher.
-  final String? publisherScope;
+  final pulumi.Input<String>? publisherScope;
   /// The role configuration override values from the user.
-  final List<String>? roleOverrideValues;
+  final pulumi.Input<List<String>>? roleOverrideValues;
 
   /// Creates a new [NetworkFunctionValueWithSecretsResponse].
   /// [allowSoftwareUpdate] Indicates if software updates are allowed during deployment.
@@ -65,7 +66,7 @@ class NetworkFunctionValueWithSecretsResponse {
       'networkFunctionDefinitionGroupName': ?networkFunctionDefinitionGroupName,
       'networkFunctionDefinitionOfferingLocation': ?networkFunctionDefinitionOfferingLocation,
       'networkFunctionDefinitionVersion': ?networkFunctionDefinitionVersion,
-      'networkFunctionDefinitionVersionResourceReference': ?networkFunctionDefinitionVersionResourceReference == null ? null : networkFunctionDefinitionVersionResourceReference!.toMap(),
+      'networkFunctionDefinitionVersionResourceReference': ?pulumi.Input.mapOptionalInputValue<OpenDeploymentResourceReferenceResponse, Map<String, dynamic>>(networkFunctionDefinitionVersionResourceReference, (value) => value.toMap()),
       'nfviId': ?nfviId,
       'nfviType': ?nfviType,
       'provisioningState': provisioningState,
@@ -77,18 +78,18 @@ class NetworkFunctionValueWithSecretsResponse {
 
   factory NetworkFunctionValueWithSecretsResponse.fromMap(Map<String, dynamic> map) {
     return NetworkFunctionValueWithSecretsResponse(
-      allowSoftwareUpdate: map['allowSoftwareUpdate'] == null ? null : map['allowSoftwareUpdate'] as bool,
-      configurationType: map['configurationType'] as String,
-      networkFunctionDefinitionGroupName: map['networkFunctionDefinitionGroupName'] == null ? null : map['networkFunctionDefinitionGroupName'] as String,
-      networkFunctionDefinitionOfferingLocation: map['networkFunctionDefinitionOfferingLocation'] == null ? null : map['networkFunctionDefinitionOfferingLocation'] as String,
-      networkFunctionDefinitionVersion: map['networkFunctionDefinitionVersion'] == null ? null : map['networkFunctionDefinitionVersion'] as String,
-      networkFunctionDefinitionVersionResourceReference: map['networkFunctionDefinitionVersionResourceReference'] == null ? null : OpenDeploymentResourceReferenceResponse.fromMap((map['networkFunctionDefinitionVersionResourceReference'] as Map).cast<String, dynamic>()),
-      nfviId: map['nfviId'] == null ? null : map['nfviId'] as String,
-      nfviType: map['nfviType'] == null ? null : map['nfviType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      publisherName: map['publisherName'] == null ? null : map['publisherName'] as String,
-      publisherScope: map['publisherScope'] == null ? null : map['publisherScope'] as String,
-      roleOverrideValues: map['roleOverrideValues'] == null ? null : (map['roleOverrideValues'] as List).cast<String>(),
+      allowSoftwareUpdate: map['allowSoftwareUpdate'] == null ? null : (map['allowSoftwareUpdate'] as bool).input(),
+      configurationType: (map['configurationType'] as String).input(),
+      networkFunctionDefinitionGroupName: map['networkFunctionDefinitionGroupName'] == null ? null : (map['networkFunctionDefinitionGroupName'] as String).input(),
+      networkFunctionDefinitionOfferingLocation: map['networkFunctionDefinitionOfferingLocation'] == null ? null : (map['networkFunctionDefinitionOfferingLocation'] as String).input(),
+      networkFunctionDefinitionVersion: map['networkFunctionDefinitionVersion'] == null ? null : (map['networkFunctionDefinitionVersion'] as String).input(),
+      networkFunctionDefinitionVersionResourceReference: map['networkFunctionDefinitionVersionResourceReference'] == null ? null : (OpenDeploymentResourceReferenceResponse.fromMap((map['networkFunctionDefinitionVersionResourceReference'] as Map).cast<String, dynamic>())).input(),
+      nfviId: map['nfviId'] == null ? null : (map['nfviId'] as String).input(),
+      nfviType: map['nfviType'] == null ? null : (map['nfviType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publisherName: map['publisherName'] == null ? null : (map['publisherName'] as String).input(),
+      publisherScope: map['publisherScope'] == null ? null : (map['publisherScope'] as String).input(),
+      roleOverrideValues: map['roleOverrideValues'] == null ? null : ((map['roleOverrideValues'] as List).cast<String>()).input(),
     );
   }
 }

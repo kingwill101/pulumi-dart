@@ -10,35 +10,35 @@ import 'service_tree_info.dart';
 /// The resource provider management.
 class ResourceProviderManifestPropertiesManagement {
   /// The authorization owners.
-  final List<String>? authorizationOwners;
+  final pulumi.Input<List<String>>? authorizationOwners;
   /// List of manifest owners for canary.
-  final List<String>? canaryManifestOwners;
+  final pulumi.Input<List<String>>? canaryManifestOwners;
   /// Options for error response messages.
-  final ResourceProviderManagementErrorResponseMessageOptions? errorResponseMessageOptions;
+  final pulumi.Input<ResourceProviderManagementErrorResponseMessageOptions>? errorResponseMessageOptions;
   /// Metadata for expedited rollout.
-  final ResourceProviderManagementExpeditedRolloutMetadata? expeditedRolloutMetadata;
+  final pulumi.Input<ResourceProviderManagementExpeditedRolloutMetadata>? expeditedRolloutMetadata;
   /// List of expedited rollout submitters.
-  final List<String>? expeditedRolloutSubmitters;
+  final pulumi.Input<List<String>>? expeditedRolloutSubmitters;
   /// The incident contact email.
-  final String? incidentContactEmail;
+  final pulumi.Input<String>? incidentContactEmail;
   /// The incident routing service.
-  final String? incidentRoutingService;
+  final pulumi.Input<String>? incidentRoutingService;
   /// The incident routing team.
-  final String? incidentRoutingTeam;
+  final pulumi.Input<String>? incidentRoutingTeam;
   /// The manifest owners.
-  final List<String>? manifestOwners;
+  final pulumi.Input<List<String>>? manifestOwners;
   /// The profit center code for the subscription.
-  final String? pcCode;
+  final pulumi.Input<String>? pcCode;
   /// The profit center program id for the subscription.
-  final String? profitCenterProgramId;
+  final pulumi.Input<String>? profitCenterProgramId;
   /// The resource access policy.
-  final ResourceAccessPolicy? resourceAccessPolicy;
+  final pulumi.Input<ResourceAccessPolicy>? resourceAccessPolicy;
   /// The resource access roles.
-  final List<ResourceAccessRole>? resourceAccessRoles;
+  final pulumi.Input<List<ResourceAccessRole>>? resourceAccessRoles;
   /// The schema owners.
-  final List<String>? schemaOwners;
+  final pulumi.Input<List<String>>? schemaOwners;
   /// The service tree infos.
-  final List<ServiceTreeInfo>? serviceTreeInfos;
+  final pulumi.Input<List<ServiceTreeInfo>>? serviceTreeInfos;
 
   /// Creates a new [ResourceProviderManifestPropertiesManagement].
   /// [authorizationOwners] The authorization owners.
@@ -78,8 +78,8 @@ class ResourceProviderManifestPropertiesManagement {
     return <String, dynamic>{
       'authorizationOwners': ?authorizationOwners,
       'canaryManifestOwners': ?canaryManifestOwners,
-      'errorResponseMessageOptions': ?errorResponseMessageOptions == null ? null : errorResponseMessageOptions!.toMap(),
-      'expeditedRolloutMetadata': ?expeditedRolloutMetadata == null ? null : expeditedRolloutMetadata!.toMap(),
+      'errorResponseMessageOptions': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManagementErrorResponseMessageOptions, Map<String, dynamic>>(errorResponseMessageOptions, (value) => value.toMap()),
+      'expeditedRolloutMetadata': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManagementExpeditedRolloutMetadata, Map<String, dynamic>>(expeditedRolloutMetadata, (value) => value.toMap()),
       'expeditedRolloutSubmitters': ?expeditedRolloutSubmitters,
       'incidentContactEmail': ?incidentContactEmail,
       'incidentRoutingService': ?incidentRoutingService,
@@ -87,30 +87,30 @@ class ResourceProviderManifestPropertiesManagement {
       'manifestOwners': ?manifestOwners,
       'pcCode': ?pcCode,
       'profitCenterProgramId': ?profitCenterProgramId,
-      'resourceAccessPolicy': ?resourceAccessPolicy == null ? null : resourceAccessPolicy!.value,
-      'resourceAccessRoles': ?resourceAccessRoles == null ? null : pulumi.Input.encodeList<ResourceAccessRole, Map<String, dynamic>>(resourceAccessRoles!, (value) => value.toMap()),
+      'resourceAccessPolicy': ?pulumi.Input.mapOptionalInputValue<ResourceAccessPolicy, String>(resourceAccessPolicy, (value) => value.value),
+      'resourceAccessRoles': ?pulumi.Input.mapOptionalInputValue<List<ResourceAccessRole>, List<Map<String, dynamic>>>(resourceAccessRoles, (value) => pulumi.Input.encodeList<ResourceAccessRole, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schemaOwners': ?schemaOwners,
-      'serviceTreeInfos': ?serviceTreeInfos == null ? null : pulumi.Input.encodeList<ServiceTreeInfo, Map<String, dynamic>>(serviceTreeInfos!, (value) => value.toMap()),
+      'serviceTreeInfos': ?pulumi.Input.mapOptionalInputValue<List<ServiceTreeInfo>, List<Map<String, dynamic>>>(serviceTreeInfos, (value) => pulumi.Input.encodeList<ServiceTreeInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResourceProviderManifestPropertiesManagement.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesManagement(
-      authorizationOwners: map['authorizationOwners'] == null ? null : (map['authorizationOwners'] as List).cast<String>(),
-      canaryManifestOwners: map['canaryManifestOwners'] == null ? null : (map['canaryManifestOwners'] as List).cast<String>(),
-      errorResponseMessageOptions: map['errorResponseMessageOptions'] == null ? null : ResourceProviderManagementErrorResponseMessageOptions.fromMap((map['errorResponseMessageOptions'] as Map).cast<String, dynamic>()),
-      expeditedRolloutMetadata: map['expeditedRolloutMetadata'] == null ? null : ResourceProviderManagementExpeditedRolloutMetadata.fromMap((map['expeditedRolloutMetadata'] as Map).cast<String, dynamic>()),
-      expeditedRolloutSubmitters: map['expeditedRolloutSubmitters'] == null ? null : (map['expeditedRolloutSubmitters'] as List).cast<String>(),
-      incidentContactEmail: map['incidentContactEmail'] == null ? null : map['incidentContactEmail'] as String,
-      incidentRoutingService: map['incidentRoutingService'] == null ? null : map['incidentRoutingService'] as String,
-      incidentRoutingTeam: map['incidentRoutingTeam'] == null ? null : map['incidentRoutingTeam'] as String,
-      manifestOwners: map['manifestOwners'] == null ? null : (map['manifestOwners'] as List).cast<String>(),
-      pcCode: map['pcCode'] == null ? null : map['pcCode'] as String,
-      profitCenterProgramId: map['profitCenterProgramId'] == null ? null : map['profitCenterProgramId'] as String,
-      resourceAccessPolicy: map['resourceAccessPolicy'] == null ? null : ResourceAccessPolicy.fromValue(map['resourceAccessPolicy'] as String),
-      resourceAccessRoles: map['resourceAccessRoles'] == null ? null : pulumi.Input.decodeList<ResourceAccessRole>(map['resourceAccessRoles'], (value) => ResourceAccessRole.fromMap((value as Map).cast<String, dynamic>())),
-      schemaOwners: map['schemaOwners'] == null ? null : (map['schemaOwners'] as List).cast<String>(),
-      serviceTreeInfos: map['serviceTreeInfos'] == null ? null : pulumi.Input.decodeList<ServiceTreeInfo>(map['serviceTreeInfos'], (value) => ServiceTreeInfo.fromMap((value as Map).cast<String, dynamic>())),
+      authorizationOwners: map['authorizationOwners'] == null ? null : ((map['authorizationOwners'] as List).cast<String>()).input(),
+      canaryManifestOwners: map['canaryManifestOwners'] == null ? null : ((map['canaryManifestOwners'] as List).cast<String>()).input(),
+      errorResponseMessageOptions: map['errorResponseMessageOptions'] == null ? null : (ResourceProviderManagementErrorResponseMessageOptions.fromMap((map['errorResponseMessageOptions'] as Map).cast<String, dynamic>())).input(),
+      expeditedRolloutMetadata: map['expeditedRolloutMetadata'] == null ? null : (ResourceProviderManagementExpeditedRolloutMetadata.fromMap((map['expeditedRolloutMetadata'] as Map).cast<String, dynamic>())).input(),
+      expeditedRolloutSubmitters: map['expeditedRolloutSubmitters'] == null ? null : ((map['expeditedRolloutSubmitters'] as List).cast<String>()).input(),
+      incidentContactEmail: map['incidentContactEmail'] == null ? null : (map['incidentContactEmail'] as String).input(),
+      incidentRoutingService: map['incidentRoutingService'] == null ? null : (map['incidentRoutingService'] as String).input(),
+      incidentRoutingTeam: map['incidentRoutingTeam'] == null ? null : (map['incidentRoutingTeam'] as String).input(),
+      manifestOwners: map['manifestOwners'] == null ? null : ((map['manifestOwners'] as List).cast<String>()).input(),
+      pcCode: map['pcCode'] == null ? null : (map['pcCode'] as String).input(),
+      profitCenterProgramId: map['profitCenterProgramId'] == null ? null : (map['profitCenterProgramId'] as String).input(),
+      resourceAccessPolicy: map['resourceAccessPolicy'] == null ? null : (ResourceAccessPolicy.fromValue(map['resourceAccessPolicy'] as String)).input(),
+      resourceAccessRoles: map['resourceAccessRoles'] == null ? null : (pulumi.Input.decodeList<ResourceAccessRole>(map['resourceAccessRoles'], (value) => ResourceAccessRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schemaOwners: map['schemaOwners'] == null ? null : ((map['schemaOwners'] as List).cast<String>()).input(),
+      serviceTreeInfos: map['serviceTreeInfos'] == null ? null : (pulumi.Input.decodeList<ServiceTreeInfo>(map['serviceTreeInfos'], (value) => ServiceTreeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

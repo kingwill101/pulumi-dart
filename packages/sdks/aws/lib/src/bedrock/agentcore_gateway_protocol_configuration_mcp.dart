@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayProtocolConfigurationMcp {
   /// Instructions for the MCP protocol configuration.
-  final String? instructions;
+  final pulumi.Input<String>? instructions;
   /// Search type for MCP. Valid values: `SEMANTIC`.
-  final String? searchType;
+  final pulumi.Input<String>? searchType;
   /// Set of supported MCP protocol versions.
-  final List<String>? supportedVersions;
+  final pulumi.Input<List<String>>? supportedVersions;
 
   /// Creates a new [AgentcoreGatewayProtocolConfigurationMcp].
   /// [instructions] Instructions for the MCP protocol configuration.
@@ -29,9 +30,9 @@ class AgentcoreGatewayProtocolConfigurationMcp {
 
   factory AgentcoreGatewayProtocolConfigurationMcp.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayProtocolConfigurationMcp(
-      instructions: map['instructions'] == null ? null : map['instructions'] as String,
-      searchType: map['searchType'] == null ? null : map['searchType'] as String,
-      supportedVersions: map['supportedVersions'] == null ? null : (map['supportedVersions'] as List).cast<String>(),
+      instructions: map['instructions'] == null ? null : (map['instructions'] as String).input(),
+      searchType: map['searchType'] == null ? null : (map['searchType'] as String).input(),
+      supportedVersions: map['supportedVersions'] == null ? null : ((map['supportedVersions'] as List).cast<String>()).input(),
     );
   }
 }

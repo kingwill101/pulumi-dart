@@ -16,13 +16,10 @@ class GetDatasetArgs {
   /// [location] Required.
   /// [project] Optional.
   GetDatasetArgs({
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.datasetId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetDatasetArgs {
 
   factory GetDatasetArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetArgs(
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      datasetId: (map['datasetId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

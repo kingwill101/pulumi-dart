@@ -25,19 +25,13 @@ class NrqlDropRuleState {
   /// [pipelineCloudRuleEntityId] The ID (GUID) of the corresponding Pipeline Cloud Rule, (migrated upstream by New Relic, in light of the upcoming EOL, as stated in the Deprecation Warning above). This can be used to import the corresponding Pipeline Cloud Rule as a [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource, as explained in our Drop Rules EOL Migration Guide.
   /// [ruleId] The id, uniquely identifying the rule.
   NrqlDropRuleState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? nrql,
-    pulumi.Output<String>? pipelineCloudRuleEntityId,
-    pulumi.Output<String>? ruleId,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      action = pulumi.Input.asOptionalInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      nrql = pulumi.Input.asOptionalInput<String>(nrql),
-      pipelineCloudRuleEntityId = pulumi.Input.asOptionalInput<String>(pipelineCloudRuleEntityId),
-      ruleId = pulumi.Input.asOptionalInput<String>(ruleId);
+    this.accountId,
+    this.action,
+    this.description,
+    this.nrql,
+    this.pipelineCloudRuleEntityId,
+    this.ruleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class NrqlDropRuleState {
 
   factory NrqlDropRuleState.fromMap(Map<String, dynamic> map) {
     return NrqlDropRuleState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      nrql: map['nrql'] == null ? null : pulumi.Output.create<String>(map['nrql'] as String),
-      pipelineCloudRuleEntityId: map['pipelineCloudRuleEntityId'] == null ? null : pulumi.Output.create<String>(map['pipelineCloudRuleEntityId'] as String),
-      ruleId: map['ruleId'] == null ? null : pulumi.Output.create<String>(map['ruleId'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      nrql: map['nrql'] == null ? null : (map['nrql'] as String).input(),
+      pipelineCloudRuleEntityId: map['pipelineCloudRuleEntityId'] == null ? null : (map['pipelineCloudRuleEntityId'] as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
     );
   }
 }

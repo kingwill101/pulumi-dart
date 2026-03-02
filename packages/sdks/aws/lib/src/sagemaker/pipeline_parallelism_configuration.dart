@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineParallelismConfiguration {
   /// The max number of steps that can be executed in parallel.
-  final int maxParallelExecutionSteps;
+  final pulumi.Input<int> maxParallelExecutionSteps;
 
   /// Creates a new [PipelineParallelismConfiguration].
   /// [maxParallelExecutionSteps] The max number of steps that can be executed in parallel.
@@ -19,7 +20,7 @@ class PipelineParallelismConfiguration {
 
   factory PipelineParallelismConfiguration.fromMap(Map<String, dynamic> map) {
     return PipelineParallelismConfiguration(
-      maxParallelExecutionSteps: map['maxParallelExecutionSteps'] as int,
+      maxParallelExecutionSteps: (map['maxParallelExecutionSteps'] as int).input(),
     );
   }
 }

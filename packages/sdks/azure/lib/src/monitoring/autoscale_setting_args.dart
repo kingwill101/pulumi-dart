@@ -40,25 +40,16 @@ class AutoscaleSettingArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [targetResourceId] Specifies the resource ID of the resource that the autoscale setting should be added to. Changing this forces a new resource to be created.
   AutoscaleSettingArgs({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<AutoscaleSettingNotification>? notification,
-    pulumi.Output<AutoscaleSettingPredictive>? predictive,
-    required pulumi.Output<List<AutoscaleSettingProfile>> profiles,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetResourceId,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notification = pulumi.Input.asOptionalInput<AutoscaleSettingNotification>(notification),
-      predictive = pulumi.Input.asOptionalInput<AutoscaleSettingPredictive>(predictive),
-      profiles = pulumi.Input.asInput<List<AutoscaleSettingProfile>>(profiles),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId);
+    this.enabled,
+    this.location,
+    this.name,
+    this.notification,
+    this.predictive,
+    required this.profiles,
+    required this.resourceGroupName,
+    this.tags,
+    required this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class AutoscaleSettingArgs {
 
   factory AutoscaleSettingArgs.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingArgs(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notification: map['notification'] == null ? null : pulumi.Output.create<AutoscaleSettingNotification>(AutoscaleSettingNotification.fromMap((map['notification'] as Map).cast<String, dynamic>())),
-      predictive: map['predictive'] == null ? null : pulumi.Output.create<AutoscaleSettingPredictive>(AutoscaleSettingPredictive.fromMap((map['predictive'] as Map).cast<String, dynamic>())),
-      profiles: pulumi.Output.create<List<AutoscaleSettingProfile>>(pulumi.Input.decodeList<AutoscaleSettingProfile>(map['profiles'], (value) => AutoscaleSettingProfile.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notification: map['notification'] == null ? null : (AutoscaleSettingNotification.fromMap((map['notification'] as Map).cast<String, dynamic>())).input(),
+      predictive: map['predictive'] == null ? null : (AutoscaleSettingPredictive.fromMap((map['predictive'] as Map).cast<String, dynamic>())).input(),
+      profiles: (pulumi.Input.decodeList<AutoscaleSettingProfile>(map['profiles'], (value) => AutoscaleSettingProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }
 }

@@ -52,33 +52,20 @@ class DedicatedHostArgs {
   /// [vswitchId] The ID of the vSwitch to which the host is connected.
   /// [zoneId] The ID of the zone.
   DedicatedHostArgs({
-    pulumi.Output<String>? allocationStatus,
-    pulumi.Output<bool>? autoRenew,
-    required pulumi.Output<String> dedicatedHostGroupId,
-    required pulumi.Output<String> hostClass,
-    pulumi.Output<String>? hostName,
-    pulumi.Output<String>? imageCategory,
-    pulumi.Output<String>? osPassword,
-    required pulumi.Output<String> paymentType,
-    pulumi.Output<String>? period,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? usedTime,
-    required pulumi.Output<String> vswitchId,
-    required pulumi.Output<String> zoneId,
-  }) :
-      allocationStatus = pulumi.Input.asOptionalInput<String>(allocationStatus),
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      dedicatedHostGroupId = pulumi.Input.asInput<String>(dedicatedHostGroupId),
-      hostClass = pulumi.Input.asInput<String>(hostClass),
-      hostName = pulumi.Input.asOptionalInput<String>(hostName),
-      imageCategory = pulumi.Input.asOptionalInput<String>(imageCategory),
-      osPassword = pulumi.Input.asOptionalInput<String>(osPassword),
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      period = pulumi.Input.asOptionalInput<String>(period),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      usedTime = pulumi.Input.asOptionalInput<int>(usedTime),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.allocationStatus,
+    this.autoRenew,
+    required this.dedicatedHostGroupId,
+    required this.hostClass,
+    this.hostName,
+    this.imageCategory,
+    this.osPassword,
+    required this.paymentType,
+    this.period,
+    this.tags,
+    this.usedTime,
+    required this.vswitchId,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,19 +87,19 @@ class DedicatedHostArgs {
 
   factory DedicatedHostArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedHostArgs(
-      allocationStatus: map['allocationStatus'] == null ? null : pulumi.Output.create<String>(map['allocationStatus'] as String),
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      dedicatedHostGroupId: pulumi.Output.create<String>(map['dedicatedHostGroupId'] as String),
-      hostClass: pulumi.Output.create<String>(map['hostClass'] as String),
-      hostName: map['hostName'] == null ? null : pulumi.Output.create<String>(map['hostName'] as String),
-      imageCategory: map['imageCategory'] == null ? null : pulumi.Output.create<String>(map['imageCategory'] as String),
-      osPassword: map['osPassword'] == null ? null : pulumi.Output.create<String>(map['osPassword'] as String),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<String>(map['period'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      usedTime: map['usedTime'] == null ? null : pulumi.Output.create<int>(map['usedTime'] as int),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      allocationStatus: map['allocationStatus'] == null ? null : (map['allocationStatus'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      dedicatedHostGroupId: (map['dedicatedHostGroupId'] as String).input(),
+      hostClass: (map['hostClass'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      imageCategory: map['imageCategory'] == null ? null : (map['imageCategory'] as String).input(),
+      osPassword: map['osPassword'] == null ? null : (map['osPassword'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      usedTime: map['usedTime'] == null ? null : (map['usedTime'] as int).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

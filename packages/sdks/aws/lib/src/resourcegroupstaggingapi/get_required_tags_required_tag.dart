@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRequiredTagsRequiredTag {
   /// CloudFormation resource types assigned the required tag keys.
-  final List<String> cloudFormationResourceTypes;
+  final pulumi.Input<List<String>> cloudFormationResourceTypes;
   /// Tag keys marked as required in the `report_required_tag_for` block of the effective tag policy.
-  final List<String> reportingTagKeys;
+  final pulumi.Input<List<String>> reportingTagKeys;
   /// Resource type for the required tag keys.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
 
   /// Creates a new [GetRequiredTagsRequiredTag].
   /// [cloudFormationResourceTypes] CloudFormation resource types assigned the required tag keys.
@@ -29,9 +30,9 @@ class GetRequiredTagsRequiredTag {
 
   factory GetRequiredTagsRequiredTag.fromMap(Map<String, dynamic> map) {
     return GetRequiredTagsRequiredTag(
-      cloudFormationResourceTypes: (map['cloudFormationResourceTypes'] as List).cast<String>(),
-      reportingTagKeys: (map['reportingTagKeys'] as List).cast<String>(),
-      resourceType: map['resourceType'] as String,
+      cloudFormationResourceTypes: ((map['cloudFormationResourceTypes'] as List).cast<String>()).input(),
+      reportingTagKeys: ((map['reportingTagKeys'] as List).cast<String>()).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

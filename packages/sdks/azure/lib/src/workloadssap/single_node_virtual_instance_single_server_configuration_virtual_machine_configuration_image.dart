@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage {
   /// Specifies the offer of the platform image or marketplace image used to create the virtual machine. Changing this forces a new resource to be created.
-  final String offer;
+  final pulumi.Input<String> offer;
   /// The publisher of the Image. Possible values are `RedHat` and `SUSE`. Changing this forces a new resource to be created.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// The SKU of the Image. Changing this forces a new resource to be created.
-  final String sku;
+  final pulumi.Input<String> sku;
   /// Specifies the version of the platform image or marketplace image used to create the virtual machine. Changing this forces a new resource to be created.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage].
   /// [offer] Specifies the offer of the platform image or marketplace image used to create the virtual machine. Changing this forces a new resource to be created.
@@ -34,10 +35,10 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurat
 
   factory SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage.fromMap(Map<String, dynamic> map) {
     return SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage(
-      offer: map['offer'] as String,
-      publisher: map['publisher'] as String,
-      sku: map['sku'] as String,
-      version: map['version'] as String,
+      offer: (map['offer'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      sku: (map['sku'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

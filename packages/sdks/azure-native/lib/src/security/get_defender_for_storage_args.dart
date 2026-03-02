@@ -16,11 +16,9 @@ class GetDefenderForStorageArgs {
   /// [resourceId] The identifier of the resource.
   /// [settingName] Defender for Storage setting name.
   GetDefenderForStorageArgs({
-    required pulumi.Output<String> resourceId,
-    required pulumi.Output<String> settingName,
-  }) :
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      settingName = pulumi.Input.asInput<String>(settingName);
+    required this.resourceId,
+    required this.settingName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDefenderForStorageArgs {
 
   factory GetDefenderForStorageArgs.fromMap(Map<String, dynamic> map) {
     return GetDefenderForStorageArgs(
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      settingName: pulumi.Output.create<String>(map['settingName'] as String),
+      resourceId: (map['resourceId'] as String).input(),
+      settingName: (map['settingName'] as String).input(),
     );
   }
 }

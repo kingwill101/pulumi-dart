@@ -36,23 +36,15 @@ class SigningProfileArgs {
   /// [signingParameters] Map of key-value pairs for signing. These can include any information that you want to use during signing.
   /// [tags] A list of tags associated with the signing profile. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   SigningProfileArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    required pulumi.Output<String> platformId,
-    pulumi.Output<String>? region,
-    pulumi.Output<SigningProfileSignatureValidityPeriod>? signatureValidityPeriod,
-    pulumi.Output<SigningProfileSigningMaterial>? signingMaterial,
-    pulumi.Output<Map<String, String>>? signingParameters,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      platformId = pulumi.Input.asInput<String>(platformId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      signatureValidityPeriod = pulumi.Input.asOptionalInput<SigningProfileSignatureValidityPeriod>(signatureValidityPeriod),
-      signingMaterial = pulumi.Input.asOptionalInput<SigningProfileSigningMaterial>(signingMaterial),
-      signingParameters = pulumi.Input.asOptionalInput<Map<String, String>>(signingParameters),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.name,
+    this.namePrefix,
+    required this.platformId,
+    this.region,
+    this.signatureValidityPeriod,
+    this.signingMaterial,
+    this.signingParameters,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class SigningProfileArgs {
 
   factory SigningProfileArgs.fromMap(Map<String, dynamic> map) {
     return SigningProfileArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      platformId: pulumi.Output.create<String>(map['platformId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      signatureValidityPeriod: map['signatureValidityPeriod'] == null ? null : pulumi.Output.create<SigningProfileSignatureValidityPeriod>(SigningProfileSignatureValidityPeriod.fromMap((map['signatureValidityPeriod'] as Map).cast<String, dynamic>())),
-      signingMaterial: map['signingMaterial'] == null ? null : pulumi.Output.create<SigningProfileSigningMaterial>(SigningProfileSigningMaterial.fromMap((map['signingMaterial'] as Map).cast<String, dynamic>())),
-      signingParameters: map['signingParameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['signingParameters'] as Map).cast<String, String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      platformId: (map['platformId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      signatureValidityPeriod: map['signatureValidityPeriod'] == null ? null : (SigningProfileSignatureValidityPeriod.fromMap((map['signatureValidityPeriod'] as Map).cast<String, dynamic>())).input(),
+      signingMaterial: map['signingMaterial'] == null ? null : (SigningProfileSigningMaterial.fromMap((map['signingMaterial'] as Map).cast<String, dynamic>())).input(),
+      signingParameters: map['signingParameters'] == null ? null : ((map['signingParameters'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class HostedPublicVirtualInterfaceAccepterArgs {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [virtualInterfaceId] The ID of the Direct Connect virtual interface to accept.
   HostedPublicVirtualInterfaceAccepterArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualInterfaceId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualInterfaceId = pulumi.Input.asInput<String>(virtualInterfaceId);
+    this.region,
+    this.tags,
+    required this.virtualInterfaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class HostedPublicVirtualInterfaceAccepterArgs {
 
   factory HostedPublicVirtualInterfaceAccepterArgs.fromMap(Map<String, dynamic> map) {
     return HostedPublicVirtualInterfaceAccepterArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualInterfaceId: pulumi.Output.create<String>(map['virtualInterfaceId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualInterfaceId: (map['virtualInterfaceId'] as String).input(),
     );
   }
 }

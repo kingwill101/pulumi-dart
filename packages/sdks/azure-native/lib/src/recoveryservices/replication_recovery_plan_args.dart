@@ -23,15 +23,11 @@ class ReplicationRecoveryPlanArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
   ReplicationRecoveryPlanArgs({
-    required pulumi.Output<CreateRecoveryPlanInputProperties> properties,
-    pulumi.Output<String>? recoveryPlanName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      properties = pulumi.Input.asInput<CreateRecoveryPlanInputProperties>(properties),
-      recoveryPlanName = pulumi.Input.asOptionalInput<String>(recoveryPlanName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.properties,
+    this.recoveryPlanName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ReplicationRecoveryPlanArgs {
 
   factory ReplicationRecoveryPlanArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationRecoveryPlanArgs(
-      properties: pulumi.Output.create<CreateRecoveryPlanInputProperties>(CreateRecoveryPlanInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      recoveryPlanName: map['recoveryPlanName'] == null ? null : pulumi.Output.create<String>(map['recoveryPlanName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      properties: (CreateRecoveryPlanInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      recoveryPlanName: map['recoveryPlanName'] == null ? null : (map['recoveryPlanName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

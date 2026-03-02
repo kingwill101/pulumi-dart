@@ -25,17 +25,12 @@ class FleetMemberArgs {
   /// [group] The group this member belongs to for multi-cluster update management.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   FleetMemberArgs({
-    required pulumi.Output<String> clusterResourceId,
-    pulumi.Output<String>? fleetMemberName,
-    required pulumi.Output<String> fleetName,
-    pulumi.Output<String>? group,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterResourceId = pulumi.Input.asInput<String>(clusterResourceId),
-      fleetMemberName = pulumi.Input.asOptionalInput<String>(fleetMemberName),
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      group = pulumi.Input.asOptionalInput<String>(group),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterResourceId,
+    this.fleetMemberName,
+    required this.fleetName,
+    this.group,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class FleetMemberArgs {
 
   factory FleetMemberArgs.fromMap(Map<String, dynamic> map) {
     return FleetMemberArgs(
-      clusterResourceId: pulumi.Output.create<String>(map['clusterResourceId'] as String),
-      fleetMemberName: map['fleetMemberName'] == null ? null : pulumi.Output.create<String>(map['fleetMemberName'] as String),
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterResourceId: (map['clusterResourceId'] as String).input(),
+      fleetMemberName: map['fleetMemberName'] == null ? null : (map['fleetMemberName'] as String).input(),
+      fleetName: (map['fleetName'] as String).input(),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

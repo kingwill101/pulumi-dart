@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup {
   /// Name of the target group.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup].
   /// [name] Name of the target group.
@@ -19,7 +20,7 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup {
 
   factory DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -43,27 +43,17 @@ class AutomationAccountArgs {
   /// [sku] Gets or sets account SKU.
   /// [tags] Gets or sets the tags attached to the resource.
   AutomationAccountArgs({
-    pulumi.Output<String>? automationAccountName,
-    pulumi.Output<bool>? disableLocalAuth,
-    pulumi.Output<EncryptionProperties>? encryption,
-    pulumi.Output<Identity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      automationAccountName = pulumi.Input.asOptionalInput<String>(automationAccountName),
-      disableLocalAuth = pulumi.Input.asOptionalInput<bool>(disableLocalAuth),
-      encryption = pulumi.Input.asOptionalInput<EncryptionProperties>(encryption),
-      identity = pulumi.Input.asOptionalInput<Identity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<bool>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.automationAccountName,
+    this.disableLocalAuth,
+    this.encryption,
+    this.identity,
+    this.location,
+    this.name,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class AutomationAccountArgs {
 
   factory AutomationAccountArgs.fromMap(Map<String, dynamic> map) {
     return AutomationAccountArgs(
-      automationAccountName: map['automationAccountName'] == null ? null : pulumi.Output.create<String>(map['automationAccountName'] as String),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : pulumi.Output.create<bool>(map['disableLocalAuth'] as bool),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<EncryptionProperties>(EncryptionProperties.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<Identity>(Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccess'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionProperties.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

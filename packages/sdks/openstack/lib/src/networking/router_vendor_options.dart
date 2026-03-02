@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouterVendorOptions {
   /// Boolean to control whether
   /// the Router gateway is assigned during creation or updated after creation.
-  final bool? setRouterGatewayAfterCreate;
+  final pulumi.Input<bool>? setRouterGatewayAfterCreate;
 
   /// Creates a new [RouterVendorOptions].
   /// [setRouterGatewayAfterCreate] Boolean to control whether
@@ -20,7 +21,7 @@ class RouterVendorOptions {
 
   factory RouterVendorOptions.fromMap(Map<String, dynamic> map) {
     return RouterVendorOptions(
-      setRouterGatewayAfterCreate: map['setRouterGatewayAfterCreate'] == null ? null : map['setRouterGatewayAfterCreate'] as bool,
+      setRouterGatewayAfterCreate: map['setRouterGatewayAfterCreate'] == null ? null : (map['setRouterGatewayAfterCreate'] as bool).input(),
     );
   }
 }

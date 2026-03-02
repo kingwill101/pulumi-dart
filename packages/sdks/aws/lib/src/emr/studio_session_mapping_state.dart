@@ -25,19 +25,13 @@ class StudioSessionMappingState {
   /// [sessionPolicyArn] The Amazon Resource Name (ARN) for the session policy that will be applied to the user or group. You should specify the ARN for the session policy that you want to apply, not the ARN of your user role.
   /// [studioId] The ID of the Amazon EMR Studio to which the user or group will be mapped.
   StudioSessionMappingState({
-    pulumi.Output<String>? identityId,
-    pulumi.Output<String>? identityName,
-    pulumi.Output<String>? identityType,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sessionPolicyArn,
-    pulumi.Output<String>? studioId,
-  }) :
-      identityId = pulumi.Input.asOptionalInput<String>(identityId),
-      identityName = pulumi.Input.asOptionalInput<String>(identityName),
-      identityType = pulumi.Input.asOptionalInput<String>(identityType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sessionPolicyArn = pulumi.Input.asOptionalInput<String>(sessionPolicyArn),
-      studioId = pulumi.Input.asOptionalInput<String>(studioId);
+    this.identityId,
+    this.identityName,
+    this.identityType,
+    this.region,
+    this.sessionPolicyArn,
+    this.studioId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class StudioSessionMappingState {
 
   factory StudioSessionMappingState.fromMap(Map<String, dynamic> map) {
     return StudioSessionMappingState(
-      identityId: map['identityId'] == null ? null : pulumi.Output.create<String>(map['identityId'] as String),
-      identityName: map['identityName'] == null ? null : pulumi.Output.create<String>(map['identityName'] as String),
-      identityType: map['identityType'] == null ? null : pulumi.Output.create<String>(map['identityType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sessionPolicyArn: map['sessionPolicyArn'] == null ? null : pulumi.Output.create<String>(map['sessionPolicyArn'] as String),
-      studioId: map['studioId'] == null ? null : pulumi.Output.create<String>(map['studioId'] as String),
+      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
+      identityName: map['identityName'] == null ? null : (map['identityName'] as String).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sessionPolicyArn: map['sessionPolicyArn'] == null ? null : (map['sessionPolicyArn'] as String).input(),
+      studioId: map['studioId'] == null ? null : (map['studioId'] as String).input(),
     );
   }
 }

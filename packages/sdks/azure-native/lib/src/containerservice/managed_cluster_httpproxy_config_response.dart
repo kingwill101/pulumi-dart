@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cluster HTTP proxy configuration.
 class ManagedClusterHTTPProxyConfigResponse {
   /// The HTTP proxy server endpoint to use.
-  final String? httpProxy;
+  final pulumi.Input<String>? httpProxy;
   /// The HTTPS proxy server endpoint to use.
-  final String? httpsProxy;
+  final pulumi.Input<String>? httpsProxy;
   /// The endpoints that should not go through proxy.
-  final List<String>? noProxy;
+  final pulumi.Input<List<String>>? noProxy;
   /// Alternative CA cert to use for connecting to proxy servers.
-  final String? trustedCa;
+  final pulumi.Input<String>? trustedCa;
 
   /// Creates a new [ManagedClusterHTTPProxyConfigResponse].
   /// [httpProxy] The HTTP proxy server endpoint to use.
@@ -35,10 +36,10 @@ class ManagedClusterHTTPProxyConfigResponse {
 
   factory ManagedClusterHTTPProxyConfigResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterHTTPProxyConfigResponse(
-      httpProxy: map['httpProxy'] == null ? null : map['httpProxy'] as String,
-      httpsProxy: map['httpsProxy'] == null ? null : map['httpsProxy'] as String,
-      noProxy: map['noProxy'] == null ? null : (map['noProxy'] as List).cast<String>(),
-      trustedCa: map['trustedCa'] == null ? null : map['trustedCa'] as String,
+      httpProxy: map['httpProxy'] == null ? null : (map['httpProxy'] as String).input(),
+      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy'] as String).input(),
+      noProxy: map['noProxy'] == null ? null : ((map['noProxy'] as List).cast<String>()).input(),
+      trustedCa: map['trustedCa'] == null ? null : (map['trustedCa'] as String).input(),
     );
   }
 }

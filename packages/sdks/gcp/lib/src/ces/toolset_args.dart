@@ -42,23 +42,15 @@ class ToolsetArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [toolsetId] The ID to use for the toolset, which will become the final component of
   ToolsetArgs({
-    required pulumi.Output<String> app,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? executionType,
-    required pulumi.Output<String> location,
-    pulumi.Output<ToolsetOpenApiToolset>? openApiToolset,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> toolsetId,
-  }) :
-      app = pulumi.Input.asInput<String>(app),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      executionType = pulumi.Input.asOptionalInput<String>(executionType),
-      location = pulumi.Input.asInput<String>(location),
-      openApiToolset = pulumi.Input.asOptionalInput<ToolsetOpenApiToolset>(openApiToolset),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      toolsetId = pulumi.Input.asInput<String>(toolsetId);
+    required this.app,
+    this.description,
+    this.displayName,
+    this.executionType,
+    required this.location,
+    this.openApiToolset,
+    this.project,
+    required this.toolsetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class ToolsetArgs {
 
   factory ToolsetArgs.fromMap(Map<String, dynamic> map) {
     return ToolsetArgs(
-      app: pulumi.Output.create<String>(map['app'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      executionType: map['executionType'] == null ? null : pulumi.Output.create<String>(map['executionType'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      openApiToolset: map['openApiToolset'] == null ? null : pulumi.Output.create<ToolsetOpenApiToolset>(ToolsetOpenApiToolset.fromMap((map['openApiToolset'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      toolsetId: pulumi.Output.create<String>(map['toolsetId'] as String),
+      app: (map['app'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      executionType: map['executionType'] == null ? null : (map['executionType'] as String).input(),
+      location: (map['location'] as String).input(),
+      openApiToolset: map['openApiToolset'] == null ? null : (ToolsetOpenApiToolset.fromMap((map['openApiToolset'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      toolsetId: (map['toolsetId'] as String).input(),
     );
   }
 }

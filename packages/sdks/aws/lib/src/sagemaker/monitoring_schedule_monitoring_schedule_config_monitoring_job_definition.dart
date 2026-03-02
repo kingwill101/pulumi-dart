@@ -11,23 +11,23 @@ import 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition
 
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition {
   /// Baseline configuration used to validate that the data conforms to the specified constraints and statistics. Fields are documented below.
-  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline? baseline;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline>? baseline;
   /// Map of environment variables in the Docker container.
-  final Map<String, String>? environment;
+  final pulumi.Input<Map<String, String>>? environment;
   /// Configures the monitoring job to run a specified Docker container image. Fields are documented below.
-  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification monitoringAppSpecification;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification> monitoringAppSpecification;
   /// Inputs for the monitoring job. Fields are documented below.
-  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs monitoringInputs;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs> monitoringInputs;
   /// Outputs from the monitoring job to be uploaded to Amazon S3. Fields are documented below.
-  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig monitoringOutputConfig;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig> monitoringOutputConfig;
   /// Identifies the resources, ML compute instances, and ML storage volumes to deploy for a monitoring job. Fields are documented below.
-  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources monitoringResources;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources> monitoringResources;
   /// Networking options for the monitoring job. Fields are documented below.
-  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig? networkConfig;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig>? networkConfig;
   /// ARN of an IAM role that Amazon SageMaker AI can assume to perform tasks on your behalf.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// How long the monitoring job is allowed to run. Fields are documented below.
-  final List<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition>? stoppingConditions;
+  final pulumi.Input<List<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition>>? stoppingConditions;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition].
   /// [baseline] Baseline configuration used to validate that the data conforms to the specified constraints and statistics. Fields are documented below.
@@ -53,29 +53,29 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baseline': ?baseline == null ? null : baseline!.toMap(),
+      'baseline': ?pulumi.Input.mapOptionalInputValue<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline, Map<String, dynamic>>(baseline, (value) => value.toMap()),
       'environment': ?environment,
-      'monitoringAppSpecification': monitoringAppSpecification.toMap(),
-      'monitoringInputs': monitoringInputs.toMap(),
-      'monitoringOutputConfig': monitoringOutputConfig.toMap(),
-      'monitoringResources': monitoringResources.toMap(),
-      'networkConfig': ?networkConfig == null ? null : networkConfig!.toMap(),
+      'monitoringAppSpecification': pulumi.Input.mapInputValue<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification, Map<String, dynamic>>(monitoringAppSpecification, (value) => value.toMap()),
+      'monitoringInputs': pulumi.Input.mapInputValue<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs, Map<String, dynamic>>(monitoringInputs, (value) => value.toMap()),
+      'monitoringOutputConfig': pulumi.Input.mapInputValue<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig, Map<String, dynamic>>(monitoringOutputConfig, (value) => value.toMap()),
+      'monitoringResources': pulumi.Input.mapInputValue<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources, Map<String, dynamic>>(monitoringResources, (value) => value.toMap()),
+      'networkConfig': ?pulumi.Input.mapOptionalInputValue<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
       'roleArn': roleArn,
-      'stoppingConditions': ?stoppingConditions == null ? null : pulumi.Input.encodeList<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition, Map<String, dynamic>>(stoppingConditions!, (value) => value.toMap()),
+      'stoppingConditions': ?pulumi.Input.mapOptionalInputValue<List<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition>, List<Map<String, dynamic>>>(stoppingConditions, (value) => pulumi.Input.encodeList<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition(
-      baseline: map['baseline'] == null ? null : MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline.fromMap((map['baseline'] as Map).cast<String, dynamic>()),
-      environment: map['environment'] == null ? null : (map['environment'] as Map).cast<String, String>(),
-      monitoringAppSpecification: MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification.fromMap((map['monitoringAppSpecification'] as Map).cast<String, dynamic>()),
-      monitoringInputs: MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs.fromMap((map['monitoringInputs'] as Map).cast<String, dynamic>()),
-      monitoringOutputConfig: MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig.fromMap((map['monitoringOutputConfig'] as Map).cast<String, dynamic>()),
-      monitoringResources: MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources.fromMap((map['monitoringResources'] as Map).cast<String, dynamic>()),
-      networkConfig: map['networkConfig'] == null ? null : MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>()),
-      roleArn: map['roleArn'] as String,
-      stoppingConditions: map['stoppingConditions'] == null ? null : pulumi.Input.decodeList<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition>(map['stoppingConditions'], (value) => MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition.fromMap((value as Map).cast<String, dynamic>())),
+      baseline: map['baseline'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline.fromMap((map['baseline'] as Map).cast<String, dynamic>())).input(),
+      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
+      monitoringAppSpecification: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification.fromMap((map['monitoringAppSpecification'] as Map).cast<String, dynamic>())).input(),
+      monitoringInputs: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs.fromMap((map['monitoringInputs'] as Map).cast<String, dynamic>())).input(),
+      monitoringOutputConfig: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig.fromMap((map['monitoringOutputConfig'] as Map).cast<String, dynamic>())).input(),
+      monitoringResources: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources.fromMap((map['monitoringResources'] as Map).cast<String, dynamic>())).input(),
+      networkConfig: map['networkConfig'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      stoppingConditions: map['stoppingConditions'] == null ? null : (pulumi.Input.decodeList<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition>(map['stoppingConditions'], (value) => MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

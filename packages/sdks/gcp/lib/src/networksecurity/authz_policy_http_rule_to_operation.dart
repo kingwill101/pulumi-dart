@@ -8,18 +8,18 @@ import 'authz_policy_http_rule_to_operation_path.dart';
 class AuthzPolicyHttpRuleToOperation {
   /// A list of headers to match against in http header.
   /// Structure is documented below.
-  final AuthzPolicyHttpRuleToOperationHeaderSet? headerSet;
+  final pulumi.Input<AuthzPolicyHttpRuleToOperationHeaderSet>? headerSet;
   /// A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
   /// Limited to 10 matches.
   /// Structure is documented below.
-  final List<AuthzPolicyHttpRuleToOperationHost>? hosts;
+  final pulumi.Input<List<AuthzPolicyHttpRuleToOperationHost>>? hosts;
   /// A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
-  final List<String>? methods;
+  final pulumi.Input<List<String>>? methods;
   /// A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
   /// Limited to 10 matches.
   /// Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
   /// Structure is documented below.
-  final List<AuthzPolicyHttpRuleToOperationPath>? paths;
+  final pulumi.Input<List<AuthzPolicyHttpRuleToOperationPath>>? paths;
 
   /// Creates a new [AuthzPolicyHttpRuleToOperation].
   /// [headerSet] A list of headers to match against in http header.
@@ -35,19 +35,19 @@ class AuthzPolicyHttpRuleToOperation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headerSet': ?headerSet == null ? null : headerSet!.toMap(),
-      'hosts': ?hosts == null ? null : pulumi.Input.encodeList<AuthzPolicyHttpRuleToOperationHost, Map<String, dynamic>>(hosts!, (value) => value.toMap()),
+      'headerSet': ?pulumi.Input.mapOptionalInputValue<AuthzPolicyHttpRuleToOperationHeaderSet, Map<String, dynamic>>(headerSet, (value) => value.toMap()),
+      'hosts': ?pulumi.Input.mapOptionalInputValue<List<AuthzPolicyHttpRuleToOperationHost>, List<Map<String, dynamic>>>(hosts, (value) => pulumi.Input.encodeList<AuthzPolicyHttpRuleToOperationHost, Map<String, dynamic>>(value, (value) => value.toMap())),
       'methods': ?methods,
-      'paths': ?paths == null ? null : pulumi.Input.encodeList<AuthzPolicyHttpRuleToOperationPath, Map<String, dynamic>>(paths!, (value) => value.toMap()),
+      'paths': ?pulumi.Input.mapOptionalInputValue<List<AuthzPolicyHttpRuleToOperationPath>, List<Map<String, dynamic>>>(paths, (value) => pulumi.Input.encodeList<AuthzPolicyHttpRuleToOperationPath, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AuthzPolicyHttpRuleToOperation.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleToOperation(
-      headerSet: map['headerSet'] == null ? null : AuthzPolicyHttpRuleToOperationHeaderSet.fromMap((map['headerSet'] as Map).cast<String, dynamic>()),
-      hosts: map['hosts'] == null ? null : pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationHost>(map['hosts'], (value) => AuthzPolicyHttpRuleToOperationHost.fromMap((value as Map).cast<String, dynamic>())),
-      methods: map['methods'] == null ? null : (map['methods'] as List).cast<String>(),
-      paths: map['paths'] == null ? null : pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationPath>(map['paths'], (value) => AuthzPolicyHttpRuleToOperationPath.fromMap((value as Map).cast<String, dynamic>())),
+      headerSet: map['headerSet'] == null ? null : (AuthzPolicyHttpRuleToOperationHeaderSet.fromMap((map['headerSet'] as Map).cast<String, dynamic>())).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationHost>(map['hosts'], (value) => AuthzPolicyHttpRuleToOperationHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
+      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationPath>(map['paths'], (value) => AuthzPolicyHttpRuleToOperationPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

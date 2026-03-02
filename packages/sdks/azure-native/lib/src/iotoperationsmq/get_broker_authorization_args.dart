@@ -22,15 +22,11 @@ class GetBrokerAuthorizationArgs {
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetBrokerAuthorizationArgs({
-    required pulumi.Output<String> authorizationName,
-    required pulumi.Output<String> brokerName,
-    required pulumi.Output<String> mqName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authorizationName = pulumi.Input.asInput<String>(authorizationName),
-      brokerName = pulumi.Input.asInput<String>(brokerName),
-      mqName = pulumi.Input.asInput<String>(mqName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.authorizationName,
+    required this.brokerName,
+    required this.mqName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetBrokerAuthorizationArgs {
 
   factory GetBrokerAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return GetBrokerAuthorizationArgs(
-      authorizationName: pulumi.Output.create<String>(map['authorizationName'] as String),
-      brokerName: pulumi.Output.create<String>(map['brokerName'] as String),
-      mqName: pulumi.Output.create<String>(map['mqName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authorizationName: (map['authorizationName'] as String).input(),
+      brokerName: (map['brokerName'] as String).input(),
+      mqName: (map['mqName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

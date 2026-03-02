@@ -23,15 +23,11 @@ class EndpointAttachmentArgs {
   /// [orgId] The Apigee Organization associated with the Apigee instance,
   /// [serviceAttachment] Format: projects/*/regions/*/serviceAttachments/*
   EndpointAttachmentArgs({
-    required pulumi.Output<String> endpointAttachmentId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<String> serviceAttachment,
-  }) :
-      endpointAttachmentId = pulumi.Input.asInput<String>(endpointAttachmentId),
-      location = pulumi.Input.asInput<String>(location),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      serviceAttachment = pulumi.Input.asInput<String>(serviceAttachment);
+    required this.endpointAttachmentId,
+    required this.location,
+    required this.orgId,
+    required this.serviceAttachment,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class EndpointAttachmentArgs {
 
   factory EndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAttachmentArgs(
-      endpointAttachmentId: pulumi.Output.create<String>(map['endpointAttachmentId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      serviceAttachment: pulumi.Output.create<String>(map['serviceAttachment'] as String),
+      endpointAttachmentId: (map['endpointAttachmentId'] as String).input(),
+      location: (map['location'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      serviceAttachment: (map['serviceAttachment'] as String).input(),
     );
   }
 }

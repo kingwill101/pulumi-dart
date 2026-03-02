@@ -25,17 +25,12 @@ class GetSnapshotsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [snapshotId] The ID of the Snapshot.
   GetSnapshotsArgs({
-    pulumi.Output<String>? desktopId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? snapshotId,
-  }) :
-      desktopId = pulumi.Input.asOptionalInput<String>(desktopId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      snapshotId = pulumi.Input.asOptionalInput<String>(snapshotId);
+    this.desktopId,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.snapshotId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSnapshotsArgs {
 
   factory GetSnapshotsArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsArgs(
-      desktopId: map['desktopId'] == null ? null : pulumi.Output.create<String>(map['desktopId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      snapshotId: map['snapshotId'] == null ? null : pulumi.Output.create<String>(map['snapshotId'] as String),
+      desktopId: map['desktopId'] == null ? null : (map['desktopId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
     );
   }
 }

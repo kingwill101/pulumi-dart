@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'status_response_cloudtasks_v2beta2.dart';
 
 /// The status of a task attempt.
 class AttemptStatusResponse {
   /// The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
-  final String dispatchTime;
+  final pulumi.Input<String> dispatchTime;
   /// The response from the target for this attempt. If the task has not been attempted or the task is currently running then the response status is unset.
-  final StatusResponseCloudtasksV2beta2 responseStatus;
+  final pulumi.Input<StatusResponseCloudtasksV2beta2> responseStatus;
   /// The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
-  final String responseTime;
+  final pulumi.Input<String> responseTime;
   /// The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
-  final String scheduleTime;
+  final pulumi.Input<String> scheduleTime;
 
   /// Creates a new [AttemptStatusResponse].
   /// [dispatchTime] The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
@@ -28,7 +29,7 @@ class AttemptStatusResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dispatchTime': dispatchTime,
-      'responseStatus': responseStatus.toMap(),
+      'responseStatus': pulumi.Input.mapInputValue<StatusResponseCloudtasksV2beta2, Map<String, dynamic>>(responseStatus, (value) => value.toMap()),
       'responseTime': responseTime,
       'scheduleTime': scheduleTime,
     };
@@ -36,10 +37,10 @@ class AttemptStatusResponse {
 
   factory AttemptStatusResponse.fromMap(Map<String, dynamic> map) {
     return AttemptStatusResponse(
-      dispatchTime: map['dispatchTime'] as String,
-      responseStatus: StatusResponseCloudtasksV2beta2.fromMap((map['responseStatus'] as Map).cast<String, dynamic>()),
-      responseTime: map['responseTime'] as String,
-      scheduleTime: map['scheduleTime'] as String,
+      dispatchTime: (map['dispatchTime'] as String).input(),
+      responseStatus: (StatusResponseCloudtasksV2beta2.fromMap((map['responseStatus'] as Map).cast<String, dynamic>())).input(),
+      responseTime: (map['responseTime'] as String).input(),
+      scheduleTime: (map['scheduleTime'] as String).input(),
     );
   }
 }

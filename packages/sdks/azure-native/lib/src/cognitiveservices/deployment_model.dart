@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of Cognitive Services account deployment model.
 class DeploymentModel {
   /// Deployment model format.
-  final String? format;
+  final pulumi.Input<String>? format;
   /// Deployment model name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Deployment model publisher.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// Optional. Deployment model source ARM resource ID.
-  final String? source;
+  final pulumi.Input<String>? source;
   /// Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
-  final String? sourceAccount;
+  final pulumi.Input<String>? sourceAccount;
   /// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [DeploymentModel].
   /// [format] Deployment model format.
@@ -45,12 +46,12 @@ class DeploymentModel {
 
   factory DeploymentModel.fromMap(Map<String, dynamic> map) {
     return DeploymentModel(
-      format: map['format'] == null ? null : map['format'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
-      sourceAccount: map['sourceAccount'] == null ? null : map['sourceAccount'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      sourceAccount: map['sourceAccount'] == null ? null : (map['sourceAccount'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

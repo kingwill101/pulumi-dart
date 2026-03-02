@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'blob_inventory_policy_definition.dart';
 
 /// An object that wraps the blob inventory rule. Each rule is uniquely defined by name.
 class BlobInventoryPolicyRule {
   /// An object that defines the blob inventory policy rule.
-  final BlobInventoryPolicyDefinition definition;
+  final pulumi.Input<BlobInventoryPolicyDefinition> definition;
   /// Container name where blob inventory files are stored. Must be pre-created.
-  final String destination;
+  final pulumi.Input<String> destination;
   /// Rule is enabled when set to true.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [BlobInventoryPolicyRule].
   /// [definition] An object that defines the blob inventory policy rule.
@@ -27,7 +28,7 @@ class BlobInventoryPolicyRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'definition': definition.toMap(),
+      'definition': pulumi.Input.mapInputValue<BlobInventoryPolicyDefinition, Map<String, dynamic>>(definition, (value) => value.toMap()),
       'destination': destination,
       'enabled': enabled,
       'name': name,
@@ -36,10 +37,10 @@ class BlobInventoryPolicyRule {
 
   factory BlobInventoryPolicyRule.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicyRule(
-      definition: BlobInventoryPolicyDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>()),
-      destination: map['destination'] as String,
-      enabled: map['enabled'] as bool,
-      name: map['name'] as String,
+      definition: (BlobInventoryPolicyDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      destination: (map['destination'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

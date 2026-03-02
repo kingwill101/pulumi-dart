@@ -28,15 +28,11 @@ class ServicePerimeterIngressPolicyArgs {
   /// [perimeter] The name of the Service Perimeter to add this resource to.
   /// [title] Human readable title. Must be unique within the perimeter. Does not affect behavior.
   ServicePerimeterIngressPolicyArgs({
-    pulumi.Output<ServicePerimeterIngressPolicyIngressFrom>? ingressFrom,
-    pulumi.Output<ServicePerimeterIngressPolicyIngressTo>? ingressTo,
-    required pulumi.Output<String> perimeter,
-    pulumi.Output<String>? title,
-  }) :
-      ingressFrom = pulumi.Input.asOptionalInput<ServicePerimeterIngressPolicyIngressFrom>(ingressFrom),
-      ingressTo = pulumi.Input.asOptionalInput<ServicePerimeterIngressPolicyIngressTo>(ingressTo),
-      perimeter = pulumi.Input.asInput<String>(perimeter),
-      title = pulumi.Input.asOptionalInput<String>(title);
+    this.ingressFrom,
+    this.ingressTo,
+    required this.perimeter,
+    this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class ServicePerimeterIngressPolicyArgs {
 
   factory ServicePerimeterIngressPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterIngressPolicyArgs(
-      ingressFrom: map['ingressFrom'] == null ? null : pulumi.Output.create<ServicePerimeterIngressPolicyIngressFrom>(ServicePerimeterIngressPolicyIngressFrom.fromMap((map['ingressFrom'] as Map).cast<String, dynamic>())),
-      ingressTo: map['ingressTo'] == null ? null : pulumi.Output.create<ServicePerimeterIngressPolicyIngressTo>(ServicePerimeterIngressPolicyIngressTo.fromMap((map['ingressTo'] as Map).cast<String, dynamic>())),
-      perimeter: pulumi.Output.create<String>(map['perimeter'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
+      ingressFrom: map['ingressFrom'] == null ? null : (ServicePerimeterIngressPolicyIngressFrom.fromMap((map['ingressFrom'] as Map).cast<String, dynamic>())).input(),
+      ingressTo: map['ingressTo'] == null ? null : (ServicePerimeterIngressPolicyIngressTo.fromMap((map['ingressTo'] as Map).cast<String, dynamic>())).input(),
+      perimeter: (map['perimeter'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

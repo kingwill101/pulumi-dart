@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'target_assessment_arm_ids.dart';
 
 /// Properties of a compound assessment.
 class CompoundAssessmentProperties {
   /// Fallback machine assessment ARM ID.
-  final String? fallbackMachineAssessmentArmId;
+  final pulumi.Input<String>? fallbackMachineAssessmentArmId;
   /// ARM IDs of the target assessments.
-  final TargetAssessmentArmIds targetAssessmentArmIds;
+  final pulumi.Input<TargetAssessmentArmIds> targetAssessmentArmIds;
 
   /// Creates a new [CompoundAssessmentProperties].
   /// [fallbackMachineAssessmentArmId] Fallback machine assessment ARM ID.
@@ -20,14 +21,14 @@ class CompoundAssessmentProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fallbackMachineAssessmentArmId': ?fallbackMachineAssessmentArmId,
-      'targetAssessmentArmIds': targetAssessmentArmIds.toMap(),
+      'targetAssessmentArmIds': pulumi.Input.mapInputValue<TargetAssessmentArmIds, Map<String, dynamic>>(targetAssessmentArmIds, (value) => value.toMap()),
     };
   }
 
   factory CompoundAssessmentProperties.fromMap(Map<String, dynamic> map) {
     return CompoundAssessmentProperties(
-      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : map['fallbackMachineAssessmentArmId'] as String,
-      targetAssessmentArmIds: TargetAssessmentArmIds.fromMap((map['targetAssessmentArmIds'] as Map).cast<String, dynamic>()),
+      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId'] as String).input(),
+      targetAssessmentArmIds: (TargetAssessmentArmIds.fromMap((map['targetAssessmentArmIds'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

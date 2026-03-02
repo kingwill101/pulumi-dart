@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate {
   /// The ID of the launch template to use for faster launching for a Windows AMI.
-  final String? launchTemplateId;
+  final pulumi.Input<String>? launchTemplateId;
   /// The name of the launch template to use for faster launching for a Windows AMI.
-  final String? launchTemplateName;
+  final pulumi.Input<String>? launchTemplateName;
   /// The version of the launch template to use for faster launching for a Windows AMI.
-  final String? launchTemplateVersion;
+  final pulumi.Input<String>? launchTemplateVersion;
 
   /// Creates a new [DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate].
   /// [launchTemplateId] The ID of the launch template to use for faster launching for a Windows AMI.
@@ -29,9 +30,9 @@ class DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate
 
   factory DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate(
-      launchTemplateId: map['launchTemplateId'] == null ? null : map['launchTemplateId'] as String,
-      launchTemplateName: map['launchTemplateName'] == null ? null : map['launchTemplateName'] as String,
-      launchTemplateVersion: map['launchTemplateVersion'] == null ? null : map['launchTemplateVersion'] as String,
+      launchTemplateId: map['launchTemplateId'] == null ? null : (map['launchTemplateId'] as String).input(),
+      launchTemplateName: map['launchTemplateName'] == null ? null : (map['launchTemplateName'] as String).input(),
+      launchTemplateVersion: map['launchTemplateVersion'] == null ? null : (map['launchTemplateVersion'] as String).input(),
     );
   }
 }

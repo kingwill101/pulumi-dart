@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerAccessLogs {
   /// The S3 bucket name to store the logs in.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// The S3 bucket prefix. Logs are stored in the root if not configured.
-  final String? bucketPrefix;
+  final pulumi.Input<String>? bucketPrefix;
   /// Boolean to enable / disable `access_logs`. Default is `true`
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The publishing interval in minutes. Valid values: `5` and `60`. Default: `60`
-  final int? interval;
+  final pulumi.Input<int>? interval;
 
   /// Creates a new [LoadBalancerAccessLogs].
   /// [bucket] The S3 bucket name to store the logs in.
@@ -34,10 +35,10 @@ class LoadBalancerAccessLogs {
 
   factory LoadBalancerAccessLogs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerAccessLogs(
-      bucket: map['bucket'] as String,
-      bucketPrefix: map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      interval: map['interval'] == null ? null : map['interval'] as int,
+      bucket: (map['bucket'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
     );
   }
 }

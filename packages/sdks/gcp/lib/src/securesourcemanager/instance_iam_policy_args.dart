@@ -18,15 +18,11 @@ class InstanceIamPolicyArgs {
   /// [policyData] Required.
   /// [project] Optional.
   InstanceIamPolicyArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.instanceId,
+    this.location,
+    required this.policyData,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class InstanceIamPolicyArgs {
 
   factory InstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIamPolicyArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

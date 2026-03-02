@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceDataNodeConfiguration {
   /// Number of data nodes in the Elasticsearch cluster
-  final int? amount;
+  final pulumi.Input<int>? amount;
   /// Elasticsearch data node disk size
-  final int? disk;
+  final pulumi.Input<int>? disk;
   /// Whether the Elasticsearch data node disk is encrypted
-  final bool? diskEncryption;
+  final pulumi.Input<bool>? diskEncryption;
   /// Elasticsearch cluster data node disk type
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
   /// Elasticsearch cluster data node Essd disk level
-  final String? performanceLevel;
+  final pulumi.Input<String>? performanceLevel;
   /// Elasticsearch data node specification
-  final String spec;
+  final pulumi.Input<String> spec;
 
   /// Creates a new [InstanceDataNodeConfiguration].
   /// [amount] Number of data nodes in the Elasticsearch cluster
@@ -44,12 +45,12 @@ class InstanceDataNodeConfiguration {
 
   factory InstanceDataNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceDataNodeConfiguration(
-      amount: map['amount'] == null ? null : map['amount'] as int,
-      disk: map['disk'] == null ? null : map['disk'] as int,
-      diskEncryption: map['diskEncryption'] == null ? null : map['diskEncryption'] as bool,
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      performanceLevel: map['performanceLevel'] == null ? null : map['performanceLevel'] as String,
-      spec: map['spec'] as String,
+      amount: map['amount'] == null ? null : (map['amount'] as int).input(),
+      disk: map['disk'] == null ? null : (map['disk'] as int).input(),
+      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption'] as bool).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
+      spec: (map['spec'] as String).input(),
     );
   }
 }

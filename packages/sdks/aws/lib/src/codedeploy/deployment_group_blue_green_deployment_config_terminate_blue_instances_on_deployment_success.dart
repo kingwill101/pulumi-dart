@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess {
   /// The action to take on instances in the original environment after a successful blue/green deployment.
   /// * `TERMINATE`: Instances are terminated after a specified wait time.
   /// * `KEEP_ALIVE`: Instances are left running after they are deregistered from the load balancer and removed from the deployment group.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.
-  final int? terminationWaitTimeInMinutes;
+  final pulumi.Input<int>? terminationWaitTimeInMinutes;
 
   /// Creates a new [DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess].
   /// [action] The action to take on instances in the original environment after a successful blue/green deployment.
@@ -26,8 +27,8 @@ class DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeployment
 
   factory DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess(
-      action: map['action'] == null ? null : map['action'] as String,
-      terminationWaitTimeInMinutes: map['terminationWaitTimeInMinutes'] == null ? null : map['terminationWaitTimeInMinutes'] as int,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      terminationWaitTimeInMinutes: map['terminationWaitTimeInMinutes'] == null ? null : (map['terminationWaitTimeInMinutes'] as int).input(),
     );
   }
 }

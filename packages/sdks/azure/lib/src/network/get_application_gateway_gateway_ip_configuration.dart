@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationGatewayGatewayIpConfiguration {
   /// The ID of the Rewrite Rule Set
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of this Application Gateway.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of the subnet the private link configuration is connected to.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetApplicationGatewayGatewayIpConfiguration].
   /// [id] The ID of the Rewrite Rule Set
@@ -29,9 +30,9 @@ class GetApplicationGatewayGatewayIpConfiguration {
 
   factory GetApplicationGatewayGatewayIpConfiguration.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayGatewayIpConfiguration(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      subnetId: map['subnetId'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

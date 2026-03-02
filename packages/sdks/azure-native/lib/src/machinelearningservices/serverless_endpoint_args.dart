@@ -40,25 +40,16 @@ class ServerlessEndpointArgs {
   /// [tags] Resource tags.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   ServerlessEndpointArgs({
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<ServerlessEndpointMachinelearningservices> serverlessEndpointProperties,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverlessEndpointProperties = pulumi.Input.asInput<ServerlessEndpointMachinelearningservices>(serverlessEndpointProperties),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.identity,
+    this.kind,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    required this.serverlessEndpointProperties,
+    this.sku,
+    this.tags,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class ServerlessEndpointArgs {
 
   factory ServerlessEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessEndpointArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverlessEndpointProperties: pulumi.Output.create<ServerlessEndpointMachinelearningservices>(map['serverlessEndpointProperties'] as ServerlessEndpointMachinelearningservices),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverlessEndpointProperties: (map['serverlessEndpointProperties'] as ServerlessEndpointMachinelearningservices).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

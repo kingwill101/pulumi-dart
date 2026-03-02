@@ -27,17 +27,12 @@ class FilesetArgs {
   /// [fileSystemId] The ID of the file system.
   /// [fileSystemPath] The path of Fileset.
   FilesetArgs({
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> fileSystemId,
-    required pulumi.Output<String> fileSystemPath,
-  }) :
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      fileSystemPath = pulumi.Input.asInput<String>(fileSystemPath);
+    this.deletionProtection,
+    this.description,
+    this.dryRun,
+    required this.fileSystemId,
+    required this.fileSystemPath,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class FilesetArgs {
 
   factory FilesetArgs.fromMap(Map<String, dynamic> map) {
     return FilesetArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      fileSystemPath: pulumi.Output.create<String>(map['fileSystemPath'] as String),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      fileSystemPath: (map['fileSystemPath'] as String).input(),
     );
   }
 }

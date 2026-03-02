@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_http_target_oauth_token.dart';
 import 'job_http_target_oidc_token.dart';
 
@@ -8,22 +9,22 @@ class JobHttpTarget {
   /// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
   /// It is an error to set body on a job with an incompatible HttpMethod.
   /// A base64-encoded string.
-  final String? body;
+  final pulumi.Input<String>? body;
   /// This map contains the header field names and values.
   /// Repeated headers are not supported, but a header value can contain commas.
-  final Map<String, String>? headers;
+  final pulumi.Input<Map<String, String>>? headers;
   /// Which HTTP method to use for the request.
-  final String? httpMethod;
+  final pulumi.Input<String>? httpMethod;
   /// Contains information needed for generating an OAuth token.
   /// This type of authorization should be used when sending requests to a GCP endpoint.
   /// Structure is documented below.
-  final JobHttpTargetOauthToken? oauthToken;
+  final pulumi.Input<JobHttpTargetOauthToken>? oauthToken;
   /// Contains information needed for generating an OpenID Connect token.
   /// This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
   /// Structure is documented below.
-  final JobHttpTargetOidcToken? oidcToken;
+  final pulumi.Input<JobHttpTargetOidcToken>? oidcToken;
   /// The full URI path that the request will be sent to.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [JobHttpTarget].
   /// [body] HTTP request body.
@@ -46,20 +47,20 @@ class JobHttpTarget {
       'body': ?body,
       'headers': ?headers,
       'httpMethod': ?httpMethod,
-      'oauthToken': ?oauthToken == null ? null : oauthToken!.toMap(),
-      'oidcToken': ?oidcToken == null ? null : oidcToken!.toMap(),
+      'oauthToken': ?pulumi.Input.mapOptionalInputValue<JobHttpTargetOauthToken, Map<String, dynamic>>(oauthToken, (value) => value.toMap()),
+      'oidcToken': ?pulumi.Input.mapOptionalInputValue<JobHttpTargetOidcToken, Map<String, dynamic>>(oidcToken, (value) => value.toMap()),
       'uri': uri,
     };
   }
 
   factory JobHttpTarget.fromMap(Map<String, dynamic> map) {
     return JobHttpTarget(
-      body: map['body'] == null ? null : map['body'] as String,
-      headers: map['headers'] == null ? null : (map['headers'] as Map).cast<String, String>(),
-      httpMethod: map['httpMethod'] == null ? null : map['httpMethod'] as String,
-      oauthToken: map['oauthToken'] == null ? null : JobHttpTargetOauthToken.fromMap((map['oauthToken'] as Map).cast<String, dynamic>()),
-      oidcToken: map['oidcToken'] == null ? null : JobHttpTargetOidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>()),
-      uri: map['uri'] as String,
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
+      oauthToken: map['oauthToken'] == null ? null : (JobHttpTargetOauthToken.fromMap((map['oauthToken'] as Map).cast<String, dynamic>())).input(),
+      oidcToken: map['oidcToken'] == null ? null : (JobHttpTargetOidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

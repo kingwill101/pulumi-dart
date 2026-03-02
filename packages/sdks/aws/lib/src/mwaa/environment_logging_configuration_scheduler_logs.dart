@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentLoggingConfigurationSchedulerLogs {
-  final String? cloudWatchLogGroupArn;
+  final pulumi.Input<String>? cloudWatchLogGroupArn;
   /// Enabling or disabling the collection of logs
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Logging level. Valid values: `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`. Will be `INFO` by default.
-  final String? logLevel;
+  final pulumi.Input<String>? logLevel;
 
   /// Creates a new [EnvironmentLoggingConfigurationSchedulerLogs].
   /// [cloudWatchLogGroupArn] Optional.
@@ -28,9 +29,9 @@ class EnvironmentLoggingConfigurationSchedulerLogs {
 
   factory EnvironmentLoggingConfigurationSchedulerLogs.fromMap(Map<String, dynamic> map) {
     return EnvironmentLoggingConfigurationSchedulerLogs(
-      cloudWatchLogGroupArn: map['cloudWatchLogGroupArn'] == null ? null : map['cloudWatchLogGroupArn'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      logLevel: map['logLevel'] == null ? null : map['logLevel'] as String,
+      cloudWatchLogGroupArn: map['cloudWatchLogGroupArn'] == null ? null : (map['cloudWatchLogGroupArn'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
     );
   }
 }

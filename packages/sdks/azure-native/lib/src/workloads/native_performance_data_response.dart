@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SAP instance specific performance data for native discovery.
 class NativePerformanceDataResponse {
   /// The data source for this resource.
   /// Expected value is 'Native'.
-  final String dataSource;
+  final pulumi.Input<String> dataSource;
 
   /// Creates a new [NativePerformanceDataResponse].
   /// [dataSource] The data source for this resource.
@@ -21,7 +22,7 @@ class NativePerformanceDataResponse {
 
   factory NativePerformanceDataResponse.fromMap(Map<String, dynamic> map) {
     return NativePerformanceDataResponse(
-      dataSource: map['dataSource'] as String,
+      dataSource: (map['dataSource'] as String).input(),
     );
   }
 }

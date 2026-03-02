@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorBackendPoolHealthProbe {
   /// Is this health probe enabled? Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The ID of the FrontDoor.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The number of seconds between each Health Probe. Defaults to `120`.
-  final int? intervalInSeconds;
+  final pulumi.Input<int>? intervalInSeconds;
   /// Specifies the name of the Health Probe.
-  final String name;
+  final pulumi.Input<String> name;
   /// The path to use for the Health Probe. Default is `/`.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Specifies HTTP method the health probe uses when querying the backend pool instances. Possible values include: `GET` and `HEAD`. Defaults to `GET`.
   ///
   /// > **NOTE:** Use the `HEAD` method if you do not need to check the response body of your health probe.
-  final String? probeMethod;
+  final pulumi.Input<String>? probeMethod;
   /// Protocol scheme to use for the Health Probe. Possible values are `Http` and `Https`. Defaults to `Http`.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
 
   /// Creates a new [FrontdoorBackendPoolHealthProbe].
   /// [enabled] Is this health probe enabled? Defaults to `true`.
@@ -51,13 +52,13 @@ class FrontdoorBackendPoolHealthProbe {
 
   factory FrontdoorBackendPoolHealthProbe.fromMap(Map<String, dynamic> map) {
     return FrontdoorBackendPoolHealthProbe(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      id: map['id'] == null ? null : map['id'] as String,
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : map['intervalInSeconds'] as int,
-      name: map['name'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      probeMethod: map['probeMethod'] == null ? null : map['probeMethod'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
+      name: (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      probeMethod: map['probeMethod'] == null ? null : (map['probeMethod'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
     );
   }
 }

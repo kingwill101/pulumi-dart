@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Signed Access Approvals (SAA) enrollment response.
 class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse {
   /// Indicates SAA enrollment setup error if any.
-  final List<String> setupErrors;
+  final pulumi.Input<List<String>> setupErrors;
   /// Indicates SAA enrollment status of a given workload.
-  final String setupStatus;
+  final pulumi.Input<String> setupStatus;
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse].
   /// [setupErrors] Indicates SAA enrollment setup error if any.
@@ -25,8 +26,8 @@ class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse {
 
   factory GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse(
-      setupErrors: (map['setupErrors'] as List).cast<String>(),
-      setupStatus: map['setupStatus'] as String,
+      setupErrors: ((map['setupErrors'] as List).cast<String>()).input(),
+      setupStatus: (map['setupStatus'] as String).input(),
     );
   }
 }

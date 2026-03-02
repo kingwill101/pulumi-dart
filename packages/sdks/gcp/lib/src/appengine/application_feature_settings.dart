@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationFeatureSettings {
   /// Set to false to use the legacy health check instead of the readiness
   /// and liveness checks.
-  final bool splitHealthChecks;
+  final pulumi.Input<bool> splitHealthChecks;
 
   /// Creates a new [ApplicationFeatureSettings].
   /// [splitHealthChecks] Set to false to use the legacy health check instead of the readiness
@@ -20,7 +21,7 @@ class ApplicationFeatureSettings {
 
   factory ApplicationFeatureSettings.fromMap(Map<String, dynamic> map) {
     return ApplicationFeatureSettings(
-      splitHealthChecks: map['splitHealthChecks'] as bool,
+      splitHealthChecks: (map['splitHealthChecks'] as bool).input(),
     );
   }
 }

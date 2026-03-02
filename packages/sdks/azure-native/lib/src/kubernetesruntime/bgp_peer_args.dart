@@ -25,17 +25,12 @@ class BgpPeerArgs {
   /// [peerAsn] Peer ASN
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   BgpPeerArgs({
-    pulumi.Output<String>? bgpPeerName,
-    required pulumi.Output<int> myAsn,
-    required pulumi.Output<String> peerAddress,
-    required pulumi.Output<int> peerAsn,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      bgpPeerName = pulumi.Input.asOptionalInput<String>(bgpPeerName),
-      myAsn = pulumi.Input.asInput<int>(myAsn),
-      peerAddress = pulumi.Input.asInput<String>(peerAddress),
-      peerAsn = pulumi.Input.asInput<int>(peerAsn),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.bgpPeerName,
+    required this.myAsn,
+    required this.peerAddress,
+    required this.peerAsn,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class BgpPeerArgs {
 
   factory BgpPeerArgs.fromMap(Map<String, dynamic> map) {
     return BgpPeerArgs(
-      bgpPeerName: map['bgpPeerName'] == null ? null : pulumi.Output.create<String>(map['bgpPeerName'] as String),
-      myAsn: pulumi.Output.create<int>(map['myAsn'] as int),
-      peerAddress: pulumi.Output.create<String>(map['peerAddress'] as String),
-      peerAsn: pulumi.Output.create<int>(map['peerAsn'] as int),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      bgpPeerName: map['bgpPeerName'] == null ? null : (map['bgpPeerName'] as String).input(),
+      myAsn: (map['myAsn'] as int).input(),
+      peerAddress: (map['peerAddress'] as String).input(),
+      peerAsn: (map['peerAsn'] as int).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

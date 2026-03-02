@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
 class MaintenanceWindowResponse {
   /// The day of week, when the window starts.
-  final String dayOfWeek;
+  final pulumi.Input<String> dayOfWeek;
   /// The hour of day (0-23) when the window starts.
-  final int hourOfDay;
+  final pulumi.Input<int> hourOfDay;
 
   /// Creates a new [MaintenanceWindowResponse].
   /// [dayOfWeek] The day of week, when the window starts.
@@ -25,8 +26,8 @@ class MaintenanceWindowResponse {
 
   factory MaintenanceWindowResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowResponse(
-      dayOfWeek: map['dayOfWeek'] as String,
-      hourOfDay: map['hourOfDay'] as int,
+      dayOfWeek: (map['dayOfWeek'] as String).input(),
+      hourOfDay: (map['hourOfDay'] as int).input(),
     );
   }
 }

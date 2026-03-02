@@ -19,15 +19,11 @@ class ProtectionContainerState {
   /// [recoveryVaultName] The name of the vault that should be updated. Changing this forces a new resource to be created.
   /// [resourceGroupName] Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   ProtectionContainerState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? recoveryFabricName,
-    pulumi.Output<String>? recoveryVaultName,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryFabricName = pulumi.Input.asOptionalInput<String>(recoveryFabricName),
-      recoveryVaultName = pulumi.Input.asOptionalInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.name,
+    this.recoveryFabricName,
+    this.recoveryVaultName,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ProtectionContainerState {
 
   factory ProtectionContainerState.fromMap(Map<String, dynamic> map) {
     return ProtectionContainerState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryFabricName: map['recoveryFabricName'] == null ? null : pulumi.Output.create<String>(map['recoveryFabricName'] as String),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryFabricName: map['recoveryFabricName'] == null ? null : (map['recoveryFabricName'] as String).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

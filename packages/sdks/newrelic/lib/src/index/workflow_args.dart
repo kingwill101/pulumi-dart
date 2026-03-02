@@ -41,25 +41,16 @@ class WorkflowArgs {
   /// [mutingRulesHandling] How to handle muted issues. See Muting Rules below for details.
   /// [name] The name of the workflow.
   WorkflowArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<List<WorkflowDestination>> destinations,
-    pulumi.Output<bool>? destinationsEnabled,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<WorkflowEnrichments>? enrichments,
-    pulumi.Output<bool>? enrichmentsEnabled,
-    required pulumi.Output<WorkflowIssuesFilter> issuesFilter,
-    required pulumi.Output<String> mutingRulesHandling,
-    pulumi.Output<String>? name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      destinations = pulumi.Input.asInput<List<WorkflowDestination>>(destinations),
-      destinationsEnabled = pulumi.Input.asOptionalInput<bool>(destinationsEnabled),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      enrichments = pulumi.Input.asOptionalInput<WorkflowEnrichments>(enrichments),
-      enrichmentsEnabled = pulumi.Input.asOptionalInput<bool>(enrichmentsEnabled),
-      issuesFilter = pulumi.Input.asInput<WorkflowIssuesFilter>(issuesFilter),
-      mutingRulesHandling = pulumi.Input.asInput<String>(mutingRulesHandling),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.accountId,
+    required this.destinations,
+    this.destinationsEnabled,
+    this.enabled,
+    this.enrichments,
+    this.enrichmentsEnabled,
+    required this.issuesFilter,
+    required this.mutingRulesHandling,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class WorkflowArgs {
 
   factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      destinations: pulumi.Output.create<List<WorkflowDestination>>(pulumi.Input.decodeList<WorkflowDestination>(map['destinations'], (value) => WorkflowDestination.fromMap((value as Map).cast<String, dynamic>()))),
-      destinationsEnabled: map['destinationsEnabled'] == null ? null : pulumi.Output.create<bool>(map['destinationsEnabled'] as bool),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      enrichments: map['enrichments'] == null ? null : pulumi.Output.create<WorkflowEnrichments>(WorkflowEnrichments.fromMap((map['enrichments'] as Map).cast<String, dynamic>())),
-      enrichmentsEnabled: map['enrichmentsEnabled'] == null ? null : pulumi.Output.create<bool>(map['enrichmentsEnabled'] as bool),
-      issuesFilter: pulumi.Output.create<WorkflowIssuesFilter>(WorkflowIssuesFilter.fromMap((map['issuesFilter'] as Map).cast<String, dynamic>())),
-      mutingRulesHandling: pulumi.Output.create<String>(map['mutingRulesHandling'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      destinations: (pulumi.Input.decodeList<WorkflowDestination>(map['destinations'], (value) => WorkflowDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationsEnabled: map['destinationsEnabled'] == null ? null : (map['destinationsEnabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enrichments: map['enrichments'] == null ? null : (WorkflowEnrichments.fromMap((map['enrichments'] as Map).cast<String, dynamic>())).input(),
+      enrichmentsEnabled: map['enrichmentsEnabled'] == null ? null : (map['enrichmentsEnabled'] as bool).input(),
+      issuesFilter: (WorkflowIssuesFilter.fromMap((map['issuesFilter'] as Map).cast<String, dynamic>())).input(),
+      mutingRulesHandling: (map['mutingRulesHandling'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

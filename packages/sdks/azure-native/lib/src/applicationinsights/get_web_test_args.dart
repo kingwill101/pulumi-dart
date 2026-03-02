@@ -16,11 +16,9 @@ class GetWebTestArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [webTestName] The name of the Application Insights WebTest resource.
   GetWebTestArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> webTestName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      webTestName = pulumi.Input.asInput<String>(webTestName);
+    required this.resourceGroupName,
+    required this.webTestName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetWebTestArgs {
 
   factory GetWebTestArgs.fromMap(Map<String, dynamic> map) {
     return GetWebTestArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      webTestName: pulumi.Output.create<String>(map['webTestName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      webTestName: (map['webTestName'] as String).input(),
     );
   }
 }

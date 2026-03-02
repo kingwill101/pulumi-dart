@@ -60,33 +60,20 @@ class FeatureGkehubState {
   /// [states] (Output)
   /// [updateTime] (Output)
   FeatureGkehubState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? deleteTime,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<FeatureFleetDefaultMemberConfig>? fleetDefaultMemberConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<List<FeatureResourceState>>? resourceStates,
-    pulumi.Output<FeatureSpec>? spec,
-    pulumi.Output<List<FeatureState>>? states,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      deleteTime = pulumi.Input.asOptionalInput<String>(deleteTime),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      fleetDefaultMemberConfig = pulumi.Input.asOptionalInput<FeatureFleetDefaultMemberConfig>(fleetDefaultMemberConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      resourceStates = pulumi.Input.asOptionalInput<List<FeatureResourceState>>(resourceStates),
-      spec = pulumi.Input.asOptionalInput<FeatureSpec>(spec),
-      states = pulumi.Input.asOptionalInput<List<FeatureState>>(states),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.deleteTime,
+    this.effectiveLabels,
+    this.fleetDefaultMemberConfig,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.resourceStates,
+    this.spec,
+    this.states,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,19 +95,19 @@ class FeatureGkehubState {
 
   factory FeatureGkehubState.fromMap(Map<String, dynamic> map) {
     return FeatureGkehubState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      deleteTime: map['deleteTime'] == null ? null : pulumi.Output.create<String>(map['deleteTime'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : pulumi.Output.create<FeatureFleetDefaultMemberConfig>(FeatureFleetDefaultMemberConfig.fromMap((map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      resourceStates: map['resourceStates'] == null ? null : pulumi.Output.create<List<FeatureResourceState>>(pulumi.Input.decodeList<FeatureResourceState>(map['resourceStates'], (value) => FeatureResourceState.fromMap((value as Map).cast<String, dynamic>()))),
-      spec: map['spec'] == null ? null : pulumi.Output.create<FeatureSpec>(FeatureSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
-      states: map['states'] == null ? null : pulumi.Output.create<List<FeatureState>>(pulumi.Input.decodeList<FeatureState>(map['states'], (value) => FeatureState.fromMap((value as Map).cast<String, dynamic>()))),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : (FeatureFleetDefaultMemberConfig.fromMap((map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      resourceStates: map['resourceStates'] == null ? null : (pulumi.Input.decodeList<FeatureResourceState>(map['resourceStates'], (value) => FeatureResourceState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spec: map['spec'] == null ? null : (FeatureSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<FeatureState>(map['states'], (value) => FeatureState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

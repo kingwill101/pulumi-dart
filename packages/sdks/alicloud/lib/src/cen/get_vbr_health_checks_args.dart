@@ -25,17 +25,12 @@ class GetVbrHealthChecksArgs {
   /// [vbrInstanceOwnerId] The User ID (UID) of the account to which the VBR instance belongs.
   /// [vbrInstanceRegionId] The ID of the region where the VBR instance is deployed.
   GetVbrHealthChecksArgs({
-    pulumi.Output<String>? cenId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? vbrInstanceId,
-    pulumi.Output<int>? vbrInstanceOwnerId,
-    required pulumi.Output<String> vbrInstanceRegionId,
-  }) :
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      vbrInstanceId = pulumi.Input.asOptionalInput<String>(vbrInstanceId),
-      vbrInstanceOwnerId = pulumi.Input.asOptionalInput<int>(vbrInstanceOwnerId),
-      vbrInstanceRegionId = pulumi.Input.asInput<String>(vbrInstanceRegionId);
+    this.cenId,
+    this.outputFile,
+    this.vbrInstanceId,
+    this.vbrInstanceOwnerId,
+    required this.vbrInstanceRegionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetVbrHealthChecksArgs {
 
   factory GetVbrHealthChecksArgs.fromMap(Map<String, dynamic> map) {
     return GetVbrHealthChecksArgs(
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      vbrInstanceId: map['vbrInstanceId'] == null ? null : pulumi.Output.create<String>(map['vbrInstanceId'] as String),
-      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : pulumi.Output.create<int>(map['vbrInstanceOwnerId'] as int),
-      vbrInstanceRegionId: pulumi.Output.create<String>(map['vbrInstanceRegionId'] as String),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      vbrInstanceId: map['vbrInstanceId'] == null ? null : (map['vbrInstanceId'] as String).input(),
+      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : (map['vbrInstanceOwnerId'] as int).input(),
+      vbrInstanceRegionId: (map['vbrInstanceRegionId'] as String).input(),
     );
   }
 }

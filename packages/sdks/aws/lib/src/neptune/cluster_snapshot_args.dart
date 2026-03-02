@@ -19,13 +19,10 @@ class ClusterSnapshotArgs {
   /// [dbClusterSnapshotIdentifier] The Identifier for the snapshot.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ClusterSnapshotArgs({
-    required pulumi.Output<String> dbClusterIdentifier,
-    required pulumi.Output<String> dbClusterSnapshotIdentifier,
-    pulumi.Output<String>? region,
-  }) :
-      dbClusterIdentifier = pulumi.Input.asInput<String>(dbClusterIdentifier),
-      dbClusterSnapshotIdentifier = pulumi.Input.asInput<String>(dbClusterSnapshotIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.dbClusterIdentifier,
+    required this.dbClusterSnapshotIdentifier,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ClusterSnapshotArgs {
 
   factory ClusterSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotArgs(
-      dbClusterIdentifier: pulumi.Output.create<String>(map['dbClusterIdentifier'] as String),
-      dbClusterSnapshotIdentifier: pulumi.Output.create<String>(map['dbClusterSnapshotIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      dbClusterIdentifier: (map['dbClusterIdentifier'] as String).input(),
+      dbClusterSnapshotIdentifier: (map['dbClusterSnapshotIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

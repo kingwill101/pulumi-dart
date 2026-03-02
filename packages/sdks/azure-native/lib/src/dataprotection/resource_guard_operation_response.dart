@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This class contains all the details about a critical operation.
 class ResourceGuardOperationResponse {
   /// Type of resource request.
-  final String requestResourceType;
+  final pulumi.Input<String> requestResourceType;
   /// Name of the critical operation.
-  final String vaultCriticalOperation;
+  final pulumi.Input<String> vaultCriticalOperation;
 
   /// Creates a new [ResourceGuardOperationResponse].
   /// [requestResourceType] Type of resource request.
@@ -25,8 +26,8 @@ class ResourceGuardOperationResponse {
 
   factory ResourceGuardOperationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceGuardOperationResponse(
-      requestResourceType: map['requestResourceType'] as String,
-      vaultCriticalOperation: map['vaultCriticalOperation'] as String,
+      requestResourceType: (map['requestResourceType'] as String).input(),
+      vaultCriticalOperation: (map['vaultCriticalOperation'] as String).input(),
     );
   }
 }

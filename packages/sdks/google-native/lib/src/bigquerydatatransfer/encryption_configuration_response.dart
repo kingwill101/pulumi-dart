@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the encryption configuration for a transfer.
 class EncryptionConfigurationResponse {
   /// The name of the KMS key used for encrypting BigQuery data.
-  final String kmsKeyName;
+  final pulumi.Input<String> kmsKeyName;
 
   /// Creates a new [EncryptionConfigurationResponse].
   /// [kmsKeyName] The name of the KMS key used for encrypting BigQuery data.
@@ -20,7 +21,7 @@ class EncryptionConfigurationResponse {
 
   factory EncryptionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigurationResponse(
-      kmsKeyName: map['kmsKeyName'] as String,
+      kmsKeyName: (map['kmsKeyName'] as String).input(),
     );
   }
 }

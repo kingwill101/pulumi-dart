@@ -49,25 +49,16 @@ class AiFeatureOnlineStoreFeatureviewArgs {
   /// [syncConfig] Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
   /// [vectorSearchConfig] Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
   AiFeatureOnlineStoreFeatureviewArgs({
-    pulumi.Output<AiFeatureOnlineStoreFeatureviewBigQuerySource>? bigQuerySource,
-    required pulumi.Output<String> featureOnlineStore,
-    pulumi.Output<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource>? featureRegistrySource,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<AiFeatureOnlineStoreFeatureviewSyncConfig>? syncConfig,
-    pulumi.Output<AiFeatureOnlineStoreFeatureviewVectorSearchConfig>? vectorSearchConfig,
-  }) :
-      bigQuerySource = pulumi.Input.asOptionalInput<AiFeatureOnlineStoreFeatureviewBigQuerySource>(bigQuerySource),
-      featureOnlineStore = pulumi.Input.asInput<String>(featureOnlineStore),
-      featureRegistrySource = pulumi.Input.asOptionalInput<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource>(featureRegistrySource),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      syncConfig = pulumi.Input.asOptionalInput<AiFeatureOnlineStoreFeatureviewSyncConfig>(syncConfig),
-      vectorSearchConfig = pulumi.Input.asOptionalInput<AiFeatureOnlineStoreFeatureviewVectorSearchConfig>(vectorSearchConfig);
+    this.bigQuerySource,
+    required this.featureOnlineStore,
+    this.featureRegistrySource,
+    this.labels,
+    this.name,
+    this.project,
+    this.region,
+    this.syncConfig,
+    this.vectorSearchConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,15 +76,15 @@ class AiFeatureOnlineStoreFeatureviewArgs {
 
   factory AiFeatureOnlineStoreFeatureviewArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewArgs(
-      bigQuerySource: map['bigQuerySource'] == null ? null : pulumi.Output.create<AiFeatureOnlineStoreFeatureviewBigQuerySource>(AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap((map['bigQuerySource'] as Map).cast<String, dynamic>())),
-      featureOnlineStore: pulumi.Output.create<String>(map['featureOnlineStore'] as String),
-      featureRegistrySource: map['featureRegistrySource'] == null ? null : pulumi.Output.create<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource>(AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap((map['featureRegistrySource'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      syncConfig: map['syncConfig'] == null ? null : pulumi.Output.create<AiFeatureOnlineStoreFeatureviewSyncConfig>(AiFeatureOnlineStoreFeatureviewSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())),
-      vectorSearchConfig: map['vectorSearchConfig'] == null ? null : pulumi.Output.create<AiFeatureOnlineStoreFeatureviewVectorSearchConfig>(AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap((map['vectorSearchConfig'] as Map).cast<String, dynamic>())),
+      bigQuerySource: map['bigQuerySource'] == null ? null : (AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap((map['bigQuerySource'] as Map).cast<String, dynamic>())).input(),
+      featureOnlineStore: (map['featureOnlineStore'] as String).input(),
+      featureRegistrySource: map['featureRegistrySource'] == null ? null : (AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap((map['featureRegistrySource'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      syncConfig: map['syncConfig'] == null ? null : (AiFeatureOnlineStoreFeatureviewSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())).input(),
+      vectorSearchConfig: map['vectorSearchConfig'] == null ? null : (AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap((map['vectorSearchConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

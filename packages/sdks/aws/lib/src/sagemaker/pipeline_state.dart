@@ -42,29 +42,18 @@ class PipelineState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   PipelineState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<PipelineParallelismConfiguration>? parallelismConfiguration,
-    pulumi.Output<String>? pipelineDefinition,
-    pulumi.Output<PipelinePipelineDefinitionS3Location>? pipelineDefinitionS3Location,
-    pulumi.Output<String>? pipelineDescription,
-    pulumi.Output<String>? pipelineDisplayName,
-    pulumi.Output<String>? pipelineName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      parallelismConfiguration = pulumi.Input.asOptionalInput<PipelineParallelismConfiguration>(parallelismConfiguration),
-      pipelineDefinition = pulumi.Input.asOptionalInput<String>(pipelineDefinition),
-      pipelineDefinitionS3Location = pulumi.Input.asOptionalInput<PipelinePipelineDefinitionS3Location>(pipelineDefinitionS3Location),
-      pipelineDescription = pulumi.Input.asOptionalInput<String>(pipelineDescription),
-      pipelineDisplayName = pulumi.Input.asOptionalInput<String>(pipelineDisplayName),
-      pipelineName = pulumi.Input.asOptionalInput<String>(pipelineName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.parallelismConfiguration,
+    this.pipelineDefinition,
+    this.pipelineDefinitionS3Location,
+    this.pipelineDescription,
+    this.pipelineDisplayName,
+    this.pipelineName,
+    this.region,
+    this.roleArn,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class PipelineState {
 
   factory PipelineState.fromMap(Map<String, dynamic> map) {
     return PipelineState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      parallelismConfiguration: map['parallelismConfiguration'] == null ? null : pulumi.Output.create<PipelineParallelismConfiguration>(PipelineParallelismConfiguration.fromMap((map['parallelismConfiguration'] as Map).cast<String, dynamic>())),
-      pipelineDefinition: map['pipelineDefinition'] == null ? null : pulumi.Output.create<String>(map['pipelineDefinition'] as String),
-      pipelineDefinitionS3Location: map['pipelineDefinitionS3Location'] == null ? null : pulumi.Output.create<PipelinePipelineDefinitionS3Location>(PipelinePipelineDefinitionS3Location.fromMap((map['pipelineDefinitionS3Location'] as Map).cast<String, dynamic>())),
-      pipelineDescription: map['pipelineDescription'] == null ? null : pulumi.Output.create<String>(map['pipelineDescription'] as String),
-      pipelineDisplayName: map['pipelineDisplayName'] == null ? null : pulumi.Output.create<String>(map['pipelineDisplayName'] as String),
-      pipelineName: map['pipelineName'] == null ? null : pulumi.Output.create<String>(map['pipelineName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      parallelismConfiguration: map['parallelismConfiguration'] == null ? null : (PipelineParallelismConfiguration.fromMap((map['parallelismConfiguration'] as Map).cast<String, dynamic>())).input(),
+      pipelineDefinition: map['pipelineDefinition'] == null ? null : (map['pipelineDefinition'] as String).input(),
+      pipelineDefinitionS3Location: map['pipelineDefinitionS3Location'] == null ? null : (PipelinePipelineDefinitionS3Location.fromMap((map['pipelineDefinitionS3Location'] as Map).cast<String, dynamic>())).input(),
+      pipelineDescription: map['pipelineDescription'] == null ? null : (map['pipelineDescription'] as String).input(),
+      pipelineDisplayName: map['pipelineDisplayName'] == null ? null : (map['pipelineDisplayName'] as String).input(),
+      pipelineName: map['pipelineName'] == null ? null : (map['pipelineName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

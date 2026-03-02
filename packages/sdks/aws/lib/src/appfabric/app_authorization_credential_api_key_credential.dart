@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppAuthorizationCredentialApiKeyCredential {
   /// Contains API key credential information.
-  final String apiKey;
+  final pulumi.Input<String> apiKey;
 
   /// Creates a new [AppAuthorizationCredentialApiKeyCredential].
   /// [apiKey] Contains API key credential information.
@@ -19,7 +20,7 @@ class AppAuthorizationCredentialApiKeyCredential {
 
   factory AppAuthorizationCredentialApiKeyCredential.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationCredentialApiKeyCredential(
-      apiKey: map['apiKey'] as String,
+      apiKey: (map['apiKey'] as String).input(),
     );
   }
 }

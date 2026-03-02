@@ -23,15 +23,11 @@ class CassandraDataCenterArgs {
   /// [properties] Properties of a managed Cassandra data center.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   CassandraDataCenterArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? dataCenterName,
-    pulumi.Output<DataCenterResourceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      dataCenterName = pulumi.Input.asOptionalInput<String>(dataCenterName),
-      properties = pulumi.Input.asOptionalInput<DataCenterResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    this.dataCenterName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class CassandraDataCenterArgs {
 
   factory CassandraDataCenterArgs.fromMap(Map<String, dynamic> map) {
     return CassandraDataCenterArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      dataCenterName: map['dataCenterName'] == null ? null : pulumi.Output.create<String>(map['dataCenterName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DataCenterResourceProperties>(DataCenterResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      dataCenterName: map['dataCenterName'] == null ? null : (map['dataCenterName'] as String).input(),
+      properties: map['properties'] == null ? null : (DataCenterResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

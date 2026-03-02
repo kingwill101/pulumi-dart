@@ -5,9 +5,9 @@ import 'bucket_v2_replication_configuration_rule.dart';
 
 class BucketV2ReplicationConfiguration {
   /// ARN of the IAM role for Amazon S3 to assume when replicating the objects.
-  final String role;
+  final pulumi.Input<String> role;
   /// Specifies the rules managing the replication (documented below).
-  final List<BucketV2ReplicationConfigurationRule> rules;
+  final pulumi.Input<List<BucketV2ReplicationConfigurationRule>> rules;
 
   /// Creates a new [BucketV2ReplicationConfiguration].
   /// [role] ARN of the IAM role for Amazon S3 to assume when replicating the objects.
@@ -20,14 +20,14 @@ class BucketV2ReplicationConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'role': role,
-      'rules': pulumi.Input.encodeList<BucketV2ReplicationConfigurationRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.mapInputValue<List<BucketV2ReplicationConfigurationRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<BucketV2ReplicationConfigurationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BucketV2ReplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketV2ReplicationConfiguration(
-      role: map['role'] as String,
-      rules: pulumi.Input.decodeList<BucketV2ReplicationConfigurationRule>(map['rules'], (value) => BucketV2ReplicationConfigurationRule.fromMap((value as Map).cast<String, dynamic>())),
+      role: (map['role'] as String).input(),
+      rules: (pulumi.Input.decodeList<BucketV2ReplicationConfigurationRule>(map['rules'], (value) => BucketV2ReplicationConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

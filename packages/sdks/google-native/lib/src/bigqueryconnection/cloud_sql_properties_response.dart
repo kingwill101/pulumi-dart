@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_sql_credential_response.dart';
 
 /// Connection properties specific to the Cloud SQL.
 class CloudSqlPropertiesResponse {
   /// Input only. Cloud SQL credential.
-  final CloudSqlCredentialResponse credential;
+  final pulumi.Input<CloudSqlCredentialResponse> credential;
   /// Database name.
-  final String database;
+  final pulumi.Input<String> database;
   /// Cloud SQL instance ID in the form `project:location:instance`.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The account ID of the service used for the purpose of this connection. When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
-  final String serviceAccountId;
+  final pulumi.Input<String> serviceAccountId;
   /// Type of the Cloud SQL database.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [CloudSqlPropertiesResponse].
   /// [credential] Input only. Cloud SQL credential.
@@ -31,7 +32,7 @@ class CloudSqlPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credential': credential.toMap(),
+      'credential': pulumi.Input.mapInputValue<CloudSqlCredentialResponse, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'database': database,
       'instanceId': instanceId,
       'serviceAccountId': serviceAccountId,
@@ -41,11 +42,11 @@ class CloudSqlPropertiesResponse {
 
   factory CloudSqlPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CloudSqlPropertiesResponse(
-      credential: CloudSqlCredentialResponse.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      database: map['database'] as String,
-      instanceId: map['instanceId'] as String,
-      serviceAccountId: map['serviceAccountId'] as String,
-      type: map['type'] as String,
+      credential: (CloudSqlCredentialResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      database: (map['database'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      serviceAccountId: (map['serviceAccountId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

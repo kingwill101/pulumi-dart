@@ -61,31 +61,19 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs {
   /// [targetSecureTags] A list of secure tags that controls which instances the firewall rule applies to.
   /// [tlsInspect] Boolean flag indicating if the traffic should be TLS decrypted.
   NetworkFirewallPolicyPacketMirroringRuleArgs({
-    required pulumi.Output<String> action,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> direction,
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> firewallPolicy,
-    required pulumi.Output<NetworkFirewallPolicyPacketMirroringRuleMatch> match,
-    required pulumi.Output<int> priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<String>? securityProfileGroup,
-    pulumi.Output<List<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>>? targetSecureTags,
-    pulumi.Output<bool>? tlsInspect,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      direction = pulumi.Input.asInput<String>(direction),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
-      match = pulumi.Input.asInput<NetworkFirewallPolicyPacketMirroringRuleMatch>(match),
-      priority = pulumi.Input.asInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      securityProfileGroup = pulumi.Input.asOptionalInput<String>(securityProfileGroup),
-      targetSecureTags = pulumi.Input.asOptionalInput<List<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>>(targetSecureTags),
-      tlsInspect = pulumi.Input.asOptionalInput<bool>(tlsInspect);
+    required this.action,
+    this.description,
+    required this.direction,
+    this.disabled,
+    required this.firewallPolicy,
+    required this.match,
+    required this.priority,
+    this.project,
+    this.ruleName,
+    this.securityProfileGroup,
+    this.targetSecureTags,
+    this.tlsInspect,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,18 +94,18 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs {
 
   factory NetworkFirewallPolicyPacketMirroringRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyPacketMirroringRuleArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      direction: pulumi.Output.create<String>(map['direction'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      firewallPolicy: pulumi.Output.create<String>(map['firewallPolicy'] as String),
-      match: pulumi.Output.create<NetworkFirewallPolicyPacketMirroringRuleMatch>(NetworkFirewallPolicyPacketMirroringRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      securityProfileGroup: map['securityProfileGroup'] == null ? null : pulumi.Output.create<String>(map['securityProfileGroup'] as String),
-      targetSecureTags: map['targetSecureTags'] == null ? null : pulumi.Output.create<List<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>>(pulumi.Input.decodeList<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>(map['targetSecureTags'], (value) => NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))),
-      tlsInspect: map['tlsInspect'] == null ? null : pulumi.Output.create<bool>(map['tlsInspect'] as bool),
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      firewallPolicy: (map['firewallPolicy'] as String).input(),
+      match: (NetworkFirewallPolicyPacketMirroringRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      priority: (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      securityProfileGroup: map['securityProfileGroup'] == null ? null : (map['securityProfileGroup'] as String).input(),
+      targetSecureTags: map['targetSecureTags'] == null ? null : (pulumi.Input.decodeList<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>(map['targetSecureTags'], (value) => NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tlsInspect: map['tlsInspect'] == null ? null : (map['tlsInspect'] as bool).input(),
     );
   }
 }

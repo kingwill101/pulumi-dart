@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_service_iapoauth2_client_info.dart';
 
 /// Identity-Aware Proxy
 class BackendServiceIAP {
   /// Whether the serving infrastructure will authenticate and authorize all incoming requests.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// OAuth2 client ID to use for the authentication flow.
-  final String? oauth2ClientId;
+  final pulumi.Input<String>? oauth2ClientId;
   /// [Input Only] OAuth client info required to generate client id to be used for IAP.
-  final BackendServiceIAPOAuth2ClientInfo? oauth2ClientInfo;
+  final pulumi.Input<BackendServiceIAPOAuth2ClientInfo>? oauth2ClientInfo;
   /// OAuth2 client secret to use for the authentication flow. For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field. @InputOnly
-  final String? oauth2ClientSecret;
+  final pulumi.Input<String>? oauth2ClientSecret;
 
   /// Creates a new [BackendServiceIAP].
   /// [enabled] Whether the serving infrastructure will authenticate and authorize all incoming requests.
@@ -29,17 +30,17 @@ class BackendServiceIAP {
     return <String, dynamic>{
       'enabled': ?enabled,
       'oauth2ClientId': ?oauth2ClientId,
-      'oauth2ClientInfo': ?oauth2ClientInfo == null ? null : oauth2ClientInfo!.toMap(),
+      'oauth2ClientInfo': ?pulumi.Input.mapOptionalInputValue<BackendServiceIAPOAuth2ClientInfo, Map<String, dynamic>>(oauth2ClientInfo, (value) => value.toMap()),
       'oauth2ClientSecret': ?oauth2ClientSecret,
     };
   }
 
   factory BackendServiceIAP.fromMap(Map<String, dynamic> map) {
     return BackendServiceIAP(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      oauth2ClientId: map['oauth2ClientId'] == null ? null : map['oauth2ClientId'] as String,
-      oauth2ClientInfo: map['oauth2ClientInfo'] == null ? null : BackendServiceIAPOAuth2ClientInfo.fromMap((map['oauth2ClientInfo'] as Map).cast<String, dynamic>()),
-      oauth2ClientSecret: map['oauth2ClientSecret'] == null ? null : map['oauth2ClientSecret'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      oauth2ClientId: map['oauth2ClientId'] == null ? null : (map['oauth2ClientId'] as String).input(),
+      oauth2ClientInfo: map['oauth2ClientInfo'] == null ? null : (BackendServiceIAPOAuth2ClientInfo.fromMap((map['oauth2ClientInfo'] as Map).cast<String, dynamic>())).input(),
+      oauth2ClientSecret: map['oauth2ClientSecret'] == null ? null : (map['oauth2ClientSecret'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'text_format.dart';
 import 'text_style.dart';
 
 /// A widget that displays textual content.
 class Text {
   /// The text content to be displayed.
-  final String? content;
+  final pulumi.Input<String>? content;
   /// How the text content is formatted.
-  final TextFormat? format;
+  final pulumi.Input<TextFormat>? format;
   /// How the text is styled
-  final TextStyle? style;
+  final pulumi.Input<TextStyle>? style;
 
   /// Creates a new [Text].
   /// [content] The text content to be displayed.
@@ -25,16 +26,16 @@ class Text {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'content': ?content,
-      'format': ?format == null ? null : format!.value,
-      'style': ?style == null ? null : style!.toMap(),
+      'format': ?pulumi.Input.mapOptionalInputValue<TextFormat, String>(format, (value) => value.value),
+      'style': ?pulumi.Input.mapOptionalInputValue<TextStyle, Map<String, dynamic>>(style, (value) => value.toMap()),
     };
   }
 
   factory Text.fromMap(Map<String, dynamic> map) {
     return Text(
-      content: map['content'] == null ? null : map['content'] as String,
-      format: map['format'] == null ? null : TextFormat.fromValue(map['format'] as String),
-      style: map['style'] == null ? null : TextStyle.fromMap((map['style'] as Map).cast<String, dynamic>()),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      format: map['format'] == null ? null : (TextFormat.fromValue(map['format'] as String)).input(),
+      style: map['style'] == null ? null : (TextStyle.fromMap((map['style'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

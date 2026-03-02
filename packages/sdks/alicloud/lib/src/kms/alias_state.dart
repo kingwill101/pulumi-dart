@@ -19,11 +19,9 @@ class AliasState {
   /// [aliasName] The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
   /// [keyId] The id of the key.
   AliasState({
-    pulumi.Output<String>? aliasName,
-    pulumi.Output<String>? keyId,
-  }) :
-      aliasName = pulumi.Input.asOptionalInput<String>(aliasName),
-      keyId = pulumi.Input.asOptionalInput<String>(keyId);
+    this.aliasName,
+    this.keyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,8 +32,8 @@ class AliasState {
 
   factory AliasState.fromMap(Map<String, dynamic> map) {
     return AliasState(
-      aliasName: map['aliasName'] == null ? null : pulumi.Output.create<String>(map['aliasName'] as String),
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
+      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
     );
   }
 }

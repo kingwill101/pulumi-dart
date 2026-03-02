@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventTargetBatchTarget {
   /// The size of the array, if this is an array batch job. Valid values are integers between 2 and 10,000.
-  final int? arraySize;
+  final pulumi.Input<int>? arraySize;
   /// The number of times to attempt to retry, if the job fails. Valid values are 1 to 10.
-  final int? jobAttempts;
+  final pulumi.Input<int>? jobAttempts;
   /// The ARN or name of the job definition to use if the event target is an AWS Batch job. This job definition must already exist.
-  final String jobDefinition;
+  final pulumi.Input<String> jobDefinition;
   /// The name to use for this execution of the job, if the target is an AWS Batch job.
-  final String jobName;
+  final pulumi.Input<String> jobName;
 
   /// Creates a new [EventTargetBatchTarget].
   /// [arraySize] The size of the array, if this is an array batch job. Valid values are integers between 2 and 10,000.
@@ -34,10 +35,10 @@ class EventTargetBatchTarget {
 
   factory EventTargetBatchTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetBatchTarget(
-      arraySize: map['arraySize'] == null ? null : map['arraySize'] as int,
-      jobAttempts: map['jobAttempts'] == null ? null : map['jobAttempts'] as int,
-      jobDefinition: map['jobDefinition'] as String,
-      jobName: map['jobName'] as String,
+      arraySize: map['arraySize'] == null ? null : (map['arraySize'] as int).input(),
+      jobAttempts: map['jobAttempts'] == null ? null : (map['jobAttempts'] as int).input(),
+      jobDefinition: (map['jobDefinition'] as String).input(),
+      jobName: (map['jobName'] as String).input(),
     );
   }
 }

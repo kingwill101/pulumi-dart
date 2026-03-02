@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAdbsNationalCharacterSetsCharacterSet {
   /// A valid Oracle national character set.
-  final String characterSet;
+  final pulumi.Input<String> characterSet;
 
   /// Creates a new [GetAdbsNationalCharacterSetsCharacterSet].
   /// [characterSet] A valid Oracle national character set.
@@ -19,7 +20,7 @@ class GetAdbsNationalCharacterSetsCharacterSet {
 
   factory GetAdbsNationalCharacterSetsCharacterSet.fromMap(Map<String, dynamic> map) {
     return GetAdbsNationalCharacterSetsCharacterSet(
-      characterSet: map['characterSet'] as String,
+      characterSet: (map['characterSet'] as String).input(),
     );
   }
 }

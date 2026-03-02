@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDeliveryRuleRequestMethodCondition {
   /// Valid values are `DELETE`, `GET`, `HEAD`, `OPTIONS`, `POST` and `PUT`.
-  final List<String> matchValues;
+  final pulumi.Input<List<String>> matchValues;
   /// Defaults to `false`.
-  final bool? negateCondition;
+  final pulumi.Input<bool>? negateCondition;
   /// Valid values are `Equal`. Defaults to `Equal`.
-  final String? operator;
+  final pulumi.Input<String>? operator;
 
   /// Creates a new [EndpointDeliveryRuleRequestMethodCondition].
   /// [matchValues] Valid values are `DELETE`, `GET`, `HEAD`, `OPTIONS`, `POST` and `PUT`.
@@ -29,9 +30,9 @@ class EndpointDeliveryRuleRequestMethodCondition {
 
   factory EndpointDeliveryRuleRequestMethodCondition.fromMap(Map<String, dynamic> map) {
     return EndpointDeliveryRuleRequestMethodCondition(
-      matchValues: (map['matchValues'] as List).cast<String>(),
-      negateCondition: map['negateCondition'] == null ? null : map['negateCondition'] as bool,
-      operator: map['operator'] == null ? null : map['operator'] as String,
+      matchValues: ((map['matchValues'] as List).cast<String>()).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
     );
   }
 }

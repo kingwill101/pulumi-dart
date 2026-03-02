@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Representation of a licence.
 class HypervLicense {
   /// Cost of a licence.
-  final double licenseCost;
+  final pulumi.Input<double> licenseCost;
   /// HyperV licence type.
-  final String licenseType;
+  final pulumi.Input<String> licenseType;
 
   /// Creates a new [HypervLicense].
   /// [licenseCost] Cost of a licence.
@@ -25,8 +26,8 @@ class HypervLicense {
 
   factory HypervLicense.fromMap(Map<String, dynamic> map) {
     return HypervLicense(
-      licenseCost: map['licenseCost'] as double,
-      licenseType: map['licenseType'] as String,
+      licenseCost: (map['licenseCost'] as double).input(),
+      licenseType: (map['licenseType'] as String).input(),
     );
   }
 }

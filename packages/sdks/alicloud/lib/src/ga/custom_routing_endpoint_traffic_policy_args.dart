@@ -20,13 +20,10 @@ class CustomRoutingEndpointTrafficPolicyArgs {
   /// [endpointId] The ID of the Custom Routing Endpoint.
   /// [portRanges] Port rangeSee the following. See `port_ranges` below.
   CustomRoutingEndpointTrafficPolicyArgs({
-    required pulumi.Output<String> address,
-    required pulumi.Output<String> endpointId,
-    pulumi.Output<List<CustomRoutingEndpointTrafficPolicyPortRange>>? portRanges,
-  }) :
-      address = pulumi.Input.asInput<String>(address),
-      endpointId = pulumi.Input.asInput<String>(endpointId),
-      portRanges = pulumi.Input.asOptionalInput<List<CustomRoutingEndpointTrafficPolicyPortRange>>(portRanges);
+    required this.address,
+    required this.endpointId,
+    this.portRanges,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class CustomRoutingEndpointTrafficPolicyArgs {
 
   factory CustomRoutingEndpointTrafficPolicyArgs.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointTrafficPolicyArgs(
-      address: pulumi.Output.create<String>(map['address'] as String),
-      endpointId: pulumi.Output.create<String>(map['endpointId'] as String),
-      portRanges: map['portRanges'] == null ? null : pulumi.Output.create<List<CustomRoutingEndpointTrafficPolicyPortRange>>(pulumi.Input.decodeList<CustomRoutingEndpointTrafficPolicyPortRange>(map['portRanges'], (value) => CustomRoutingEndpointTrafficPolicyPortRange.fromMap((value as Map).cast<String, dynamic>()))),
+      address: (map['address'] as String).input(),
+      endpointId: (map['endpointId'] as String).input(),
+      portRanges: map['portRanges'] == null ? null : (pulumi.Input.decodeList<CustomRoutingEndpointTrafficPolicyPortRange>(map['portRanges'], (value) => CustomRoutingEndpointTrafficPolicyPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

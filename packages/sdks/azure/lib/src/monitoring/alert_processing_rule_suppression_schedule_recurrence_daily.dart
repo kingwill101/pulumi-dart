@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertProcessingRuleSuppressionScheduleRecurrenceDaily {
   /// Specifies the recurrence end time (H:M:S).
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Specifies the recurrence start time (H:M:S).
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [AlertProcessingRuleSuppressionScheduleRecurrenceDaily].
   /// [endTime] Specifies the recurrence end time (H:M:S).
@@ -24,8 +25,8 @@ class AlertProcessingRuleSuppressionScheduleRecurrenceDaily {
 
   factory AlertProcessingRuleSuppressionScheduleRecurrenceDaily.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleSuppressionScheduleRecurrenceDaily(
-      endTime: map['endTime'] as String,
-      startTime: map['startTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

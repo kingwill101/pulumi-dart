@@ -16,11 +16,9 @@ class GetAuthorityArgs {
   /// [authorityName] The ID of the authority
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAuthorityArgs({
-    required pulumi.Output<String> authorityName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authorityName = pulumi.Input.asInput<String>(authorityName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.authorityName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAuthorityArgs {
 
   factory GetAuthorityArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorityArgs(
-      authorityName: pulumi.Output.create<String>(map['authorityName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authorityName: (map['authorityName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -332,35 +332,21 @@ class PolicyArgs {
   /// [stepAdjustments] Set of adjustments that manage
   /// [targetTrackingConfiguration] Target tracking policy. These have the following structure:
   PolicyArgs({
-    pulumi.Output<String>? adjustmentType,
-    required pulumi.Output<String> autoscalingGroupName,
-    pulumi.Output<int>? cooldown,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<int>? estimatedInstanceWarmup,
-    pulumi.Output<String>? metricAggregationType,
-    pulumi.Output<int>? minAdjustmentMagnitude,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<PolicyPredictiveScalingConfiguration>? predictiveScalingConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? scalingAdjustment,
-    pulumi.Output<List<PolicyStepAdjustment>>? stepAdjustments,
-    pulumi.Output<PolicyTargetTrackingConfiguration>? targetTrackingConfiguration,
-  }) :
-      adjustmentType = pulumi.Input.asOptionalInput<String>(adjustmentType),
-      autoscalingGroupName = pulumi.Input.asInput<String>(autoscalingGroupName),
-      cooldown = pulumi.Input.asOptionalInput<int>(cooldown),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      estimatedInstanceWarmup = pulumi.Input.asOptionalInput<int>(estimatedInstanceWarmup),
-      metricAggregationType = pulumi.Input.asOptionalInput<String>(metricAggregationType),
-      minAdjustmentMagnitude = pulumi.Input.asOptionalInput<int>(minAdjustmentMagnitude),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      predictiveScalingConfiguration = pulumi.Input.asOptionalInput<PolicyPredictiveScalingConfiguration>(predictiveScalingConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scalingAdjustment = pulumi.Input.asOptionalInput<int>(scalingAdjustment),
-      stepAdjustments = pulumi.Input.asOptionalInput<List<PolicyStepAdjustment>>(stepAdjustments),
-      targetTrackingConfiguration = pulumi.Input.asOptionalInput<PolicyTargetTrackingConfiguration>(targetTrackingConfiguration);
+    this.adjustmentType,
+    required this.autoscalingGroupName,
+    this.cooldown,
+    this.enabled,
+    this.estimatedInstanceWarmup,
+    this.metricAggregationType,
+    this.minAdjustmentMagnitude,
+    this.name,
+    this.policyType,
+    this.predictiveScalingConfiguration,
+    this.region,
+    this.scalingAdjustment,
+    this.stepAdjustments,
+    this.targetTrackingConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -383,20 +369,20 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      adjustmentType: map['adjustmentType'] == null ? null : pulumi.Output.create<String>(map['adjustmentType'] as String),
-      autoscalingGroupName: pulumi.Output.create<String>(map['autoscalingGroupName'] as String),
-      cooldown: map['cooldown'] == null ? null : pulumi.Output.create<int>(map['cooldown'] as int),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      estimatedInstanceWarmup: map['estimatedInstanceWarmup'] == null ? null : pulumi.Output.create<int>(map['estimatedInstanceWarmup'] as int),
-      metricAggregationType: map['metricAggregationType'] == null ? null : pulumi.Output.create<String>(map['metricAggregationType'] as String),
-      minAdjustmentMagnitude: map['minAdjustmentMagnitude'] == null ? null : pulumi.Output.create<int>(map['minAdjustmentMagnitude'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      predictiveScalingConfiguration: map['predictiveScalingConfiguration'] == null ? null : pulumi.Output.create<PolicyPredictiveScalingConfiguration>(PolicyPredictiveScalingConfiguration.fromMap((map['predictiveScalingConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scalingAdjustment: map['scalingAdjustment'] == null ? null : pulumi.Output.create<int>(map['scalingAdjustment'] as int),
-      stepAdjustments: map['stepAdjustments'] == null ? null : pulumi.Output.create<List<PolicyStepAdjustment>>(pulumi.Input.decodeList<PolicyStepAdjustment>(map['stepAdjustments'], (value) => PolicyStepAdjustment.fromMap((value as Map).cast<String, dynamic>()))),
-      targetTrackingConfiguration: map['targetTrackingConfiguration'] == null ? null : pulumi.Output.create<PolicyTargetTrackingConfiguration>(PolicyTargetTrackingConfiguration.fromMap((map['targetTrackingConfiguration'] as Map).cast<String, dynamic>())),
+      adjustmentType: map['adjustmentType'] == null ? null : (map['adjustmentType'] as String).input(),
+      autoscalingGroupName: (map['autoscalingGroupName'] as String).input(),
+      cooldown: map['cooldown'] == null ? null : (map['cooldown'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      estimatedInstanceWarmup: map['estimatedInstanceWarmup'] == null ? null : (map['estimatedInstanceWarmup'] as int).input(),
+      metricAggregationType: map['metricAggregationType'] == null ? null : (map['metricAggregationType'] as String).input(),
+      minAdjustmentMagnitude: map['minAdjustmentMagnitude'] == null ? null : (map['minAdjustmentMagnitude'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      predictiveScalingConfiguration: map['predictiveScalingConfiguration'] == null ? null : (PolicyPredictiveScalingConfiguration.fromMap((map['predictiveScalingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scalingAdjustment: map['scalingAdjustment'] == null ? null : (map['scalingAdjustment'] as int).input(),
+      stepAdjustments: map['stepAdjustments'] == null ? null : (pulumi.Input.decodeList<PolicyStepAdjustment>(map['stepAdjustments'], (value) => PolicyStepAdjustment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetTrackingConfiguration: map['targetTrackingConfiguration'] == null ? null : (PolicyTargetTrackingConfiguration.fromMap((map['targetTrackingConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

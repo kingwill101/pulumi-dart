@@ -10,38 +10,38 @@ import 'parameter_specification_response.dart';
 /// A single Amazon Simple Storage Service (S3) object or a set of S3 objects.
 class AmazonS3DatasetResponse {
   /// List of tags that can be used for describing the Dataset.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The name of the Amazon S3 bucket. Type: string (or Expression with resultType string).
-  final dynamic bucketName;
+  final pulumi.Input<dynamic> bucketName;
   /// The data compression method used for the Amazon S3 object.
-  final DatasetCompressionResponse? compression;
+  final pulumi.Input<DatasetCompressionResponse>? compression;
   /// Dataset description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final DatasetResponseFolder? folder;
+  final pulumi.Input<DatasetResponseFolder>? folder;
   /// The format of files.
-  final AvroFormatResponse? format;
+  final pulumi.Input<AvroFormatResponse>? format;
   /// The key of the Amazon S3 object. Type: string (or Expression with resultType string).
-  final dynamic key;
+  final pulumi.Input<dynamic>? key;
   /// Linked service reference.
-  final LinkedServiceReferenceResponse linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse> linkedServiceName;
   /// The end of S3 object's modified datetime. Type: string (or Expression with resultType string).
-  final dynamic modifiedDatetimeEnd;
+  final pulumi.Input<dynamic>? modifiedDatetimeEnd;
   /// The start of S3 object's modified datetime. Type: string (or Expression with resultType string).
-  final dynamic modifiedDatetimeStart;
+  final pulumi.Input<dynamic>? modifiedDatetimeStart;
   /// Parameters for dataset.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// The prefix filter for the S3 object name. Type: string (or Expression with resultType string).
-  final dynamic prefix;
+  final pulumi.Input<dynamic>? prefix;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-  final dynamic schema;
+  final pulumi.Input<dynamic>? schema;
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-  final dynamic structure;
+  final pulumi.Input<dynamic>? structure;
   /// Type of dataset.
   /// Expected value is 'AmazonS3Object'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The version for the S3 object. Type: string (or Expression with resultType string).
-  final dynamic version;
+  final pulumi.Input<dynamic>? version;
 
   /// Creates a new [AmazonS3DatasetResponse].
   /// [annotations] List of tags that can be used for describing the Dataset.
@@ -83,15 +83,15 @@ class AmazonS3DatasetResponse {
     return <String, dynamic>{
       'annotations': ?annotations,
       'bucketName': bucketName,
-      'compression': ?compression == null ? null : compression!.toMap(),
+      'compression': ?pulumi.Input.mapOptionalInputValue<DatasetCompressionResponse, Map<String, dynamic>>(compression, (value) => value.toMap()),
       'description': ?description,
-      'folder': ?folder == null ? null : folder!.toMap(),
-      'format': ?format == null ? null : format!.toMap(),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetResponseFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'format': ?pulumi.Input.mapOptionalInputValue<AvroFormatResponse, Map<String, dynamic>>(format, (value) => value.toMap()),
       'key': ?key,
-      'linkedServiceName': linkedServiceName.toMap(),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'modifiedDatetimeEnd': ?modifiedDatetimeEnd,
       'modifiedDatetimeStart': ?modifiedDatetimeStart,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'prefix': ?prefix,
       'schema': ?schema,
       'structure': ?structure,
@@ -102,22 +102,22 @@ class AmazonS3DatasetResponse {
 
   factory AmazonS3DatasetResponse.fromMap(Map<String, dynamic> map) {
     return AmazonS3DatasetResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      bucketName: map['bucketName'],
-      compression: map['compression'] == null ? null : DatasetCompressionResponse.fromMap((map['compression'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      folder: map['folder'] == null ? null : DatasetResponseFolder.fromMap((map['folder'] as Map).cast<String, dynamic>()),
-      format: map['format'] == null ? null : AvroFormatResponse.fromMap((map['format'] as Map).cast<String, dynamic>()),
-      key: map['key'] == null ? null : map['key'],
-      linkedServiceName: LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : map['modifiedDatetimeEnd'],
-      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : map['modifiedDatetimeStart'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      prefix: map['prefix'] == null ? null : map['prefix'],
-      schema: map['schema'] == null ? null : map['schema'],
-      structure: map['structure'] == null ? null : map['structure'],
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'],
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      bucketName: (map['bucketName']).input(),
+      compression: map['compression'] == null ? null : (DatasetCompressionResponse.fromMap((map['compression'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (DatasetResponseFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (AvroFormatResponse.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (map['key']).input(),
+      linkedServiceName: (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : (map['modifiedDatetimeEnd']).input(),
+      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : (map['modifiedDatetimeStart']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']).input(),
+      schema: map['schema'] == null ? null : (map['schema']).input(),
+      structure: map['structure'] == null ? null : (map['structure']).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version']).input(),
     );
   }
 }

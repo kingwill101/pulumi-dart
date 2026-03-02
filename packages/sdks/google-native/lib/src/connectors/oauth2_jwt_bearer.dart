@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'jwt_claims.dart';
 import 'secret.dart';
 
 /// Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication. See https://tools.ietf.org/html/rfc7523 for more details.
 class Oauth2JwtBearer {
   /// Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*/secrets/*/versions/*`.
-  final Secret? clientKey;
+  final pulumi.Input<Secret>? clientKey;
   /// JwtClaims providers fields to generate the token.
-  final JwtClaims? jwtClaims;
+  final pulumi.Input<JwtClaims>? jwtClaims;
 
   /// Creates a new [Oauth2JwtBearer].
   /// [clientKey] Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*/secrets/*/versions/*`.
@@ -20,15 +21,15 @@ class Oauth2JwtBearer {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientKey': ?clientKey == null ? null : clientKey!.toMap(),
-      'jwtClaims': ?jwtClaims == null ? null : jwtClaims!.toMap(),
+      'clientKey': ?pulumi.Input.mapOptionalInputValue<Secret, Map<String, dynamic>>(clientKey, (value) => value.toMap()),
+      'jwtClaims': ?pulumi.Input.mapOptionalInputValue<JwtClaims, Map<String, dynamic>>(jwtClaims, (value) => value.toMap()),
     };
   }
 
   factory Oauth2JwtBearer.fromMap(Map<String, dynamic> map) {
     return Oauth2JwtBearer(
-      clientKey: map['clientKey'] == null ? null : Secret.fromMap((map['clientKey'] as Map).cast<String, dynamic>()),
-      jwtClaims: map['jwtClaims'] == null ? null : JwtClaims.fromMap((map['jwtClaims'] as Map).cast<String, dynamic>()),
+      clientKey: map['clientKey'] == null ? null : (Secret.fromMap((map['clientKey'] as Map).cast<String, dynamic>())).input(),
+      jwtClaims: map['jwtClaims'] == null ? null : (JwtClaims.fromMap((map['jwtClaims'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

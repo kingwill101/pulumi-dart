@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiJobResourceSettingsRealtimeResourceSettings {
   /// Scheduling resource group cu
-  final double? requestedCu;
+  final pulumi.Input<double>? requestedCu;
   /// Scheduling resource group name
-  final String? resourceGroupIdentifier;
+  final pulumi.Input<String>? resourceGroupIdentifier;
 
   /// Creates a new [DiJobResourceSettingsRealtimeResourceSettings].
   /// [requestedCu] Scheduling resource group cu
@@ -24,8 +25,8 @@ class DiJobResourceSettingsRealtimeResourceSettings {
 
   factory DiJobResourceSettingsRealtimeResourceSettings.fromMap(Map<String, dynamic> map) {
     return DiJobResourceSettingsRealtimeResourceSettings(
-      requestedCu: map['requestedCu'] == null ? null : map['requestedCu'] as double,
-      resourceGroupIdentifier: map['resourceGroupIdentifier'] == null ? null : map['resourceGroupIdentifier'] as String,
+      requestedCu: map['requestedCu'] == null ? null : (map['requestedCu'] as double).input(),
+      resourceGroupIdentifier: map['resourceGroupIdentifier'] == null ? null : (map['resourceGroupIdentifier'] as String).input(),
     );
   }
 }

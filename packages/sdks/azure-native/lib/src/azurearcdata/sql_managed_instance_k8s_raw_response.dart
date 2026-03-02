@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sql_managed_instance_k8s_spec_response.dart';
 
 /// The raw kubernetes information.
 class SqlManagedInstanceK8sRawResponse {
   /// The kubernetes spec information.
-  final SqlManagedInstanceK8sSpecResponse? spec;
+  final pulumi.Input<SqlManagedInstanceK8sSpecResponse>? spec;
 
   /// Creates a new [SqlManagedInstanceK8sRawResponse].
   /// [spec] The kubernetes spec information.
@@ -15,13 +16,13 @@ class SqlManagedInstanceK8sRawResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'spec': ?spec == null ? null : spec!.toMap(),
+      'spec': ?pulumi.Input.mapOptionalInputValue<SqlManagedInstanceK8sSpecResponse, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
   factory SqlManagedInstanceK8sRawResponse.fromMap(Map<String, dynamic> map) {
     return SqlManagedInstanceK8sRawResponse(
-      spec: map['spec'] == null ? null : SqlManagedInstanceK8sSpecResponse.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      spec: map['spec'] == null ? null : (SqlManagedInstanceK8sSpecResponse.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of certificate imported from key vault.
 class ContentCertificatePropertiesResponse {
   /// The activate date of certificate.
-  final String activateDate;
+  final pulumi.Input<String> activateDate;
   /// The domain list of certificate.
-  final List<String> dnsNames;
+  final pulumi.Input<List<String>> dnsNames;
   /// The expiration date of certificate.
-  final String expirationDate;
+  final pulumi.Input<String> expirationDate;
   /// The issue date of certificate.
-  final String issuedDate;
+  final pulumi.Input<String> issuedDate;
   /// The issuer of certificate.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// Provisioning state of the Certificate
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The subject name of certificate.
-  final String subjectName;
+  final pulumi.Input<String> subjectName;
   /// The thumbprint of certificate.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
   /// The type of the certificate source.
   /// Expected value is 'ContentCertificate'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ContentCertificatePropertiesResponse].
   /// [activateDate] The activate date of certificate.
@@ -61,15 +62,15 @@ class ContentCertificatePropertiesResponse {
 
   factory ContentCertificatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ContentCertificatePropertiesResponse(
-      activateDate: map['activateDate'] as String,
-      dnsNames: (map['dnsNames'] as List).cast<String>(),
-      expirationDate: map['expirationDate'] as String,
-      issuedDate: map['issuedDate'] as String,
-      issuer: map['issuer'] as String,
-      provisioningState: map['provisioningState'] as String,
-      subjectName: map['subjectName'] as String,
-      thumbprint: map['thumbprint'] as String,
-      type: map['type'] as String,
+      activateDate: (map['activateDate'] as String).input(),
+      dnsNames: ((map['dnsNames'] as List).cast<String>()).input(),
+      expirationDate: (map['expirationDate'] as String).input(),
+      issuedDate: (map['issuedDate'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      subjectName: (map['subjectName'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

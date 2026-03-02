@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreApiKeyCredentialProviderApiKeySecretArn {
   /// ARN of the secret in AWS Secrets Manager.
-  final String secretArn;
+  final pulumi.Input<String> secretArn;
 
   /// Creates a new [AgentcoreApiKeyCredentialProviderApiKeySecretArn].
   /// [secretArn] ARN of the secret in AWS Secrets Manager.
@@ -19,7 +20,7 @@ class AgentcoreApiKeyCredentialProviderApiKeySecretArn {
 
   factory AgentcoreApiKeyCredentialProviderApiKeySecretArn.fromMap(Map<String, dynamic> map) {
     return AgentcoreApiKeyCredentialProviderApiKeySecretArn(
-      secretArn: map['secretArn'] as String,
+      secretArn: (map['secretArn'] as String).input(),
     );
   }
 }

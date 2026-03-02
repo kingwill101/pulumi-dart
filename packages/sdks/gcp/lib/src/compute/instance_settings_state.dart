@@ -23,15 +23,11 @@ class InstanceSettingsState {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the machine resides.
   InstanceSettingsState({
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<InstanceSettingsMetadata>? metadata,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      metadata = pulumi.Input.asOptionalInput<InstanceSettingsMetadata>(metadata),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.fingerprint,
+    this.metadata,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class InstanceSettingsState {
 
   factory InstanceSettingsState.fromMap(Map<String, dynamic> map) {
     return InstanceSettingsState(
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<InstanceSettingsMetadata>(InstanceSettingsMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      metadata: map['metadata'] == null ? null : (InstanceSettingsMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

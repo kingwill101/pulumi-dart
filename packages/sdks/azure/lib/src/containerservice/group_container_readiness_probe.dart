@@ -5,19 +5,19 @@ import 'group_container_readiness_probe_http_get.dart';
 
 class GroupContainerReadinessProbe {
   /// Commands to be run to validate container readiness. Changing this forces a new resource to be created.
-  final List<String>? execs;
+  final pulumi.Input<List<String>>? execs;
   /// How many times to try the probe before restarting the container (liveness probe) or marking the container as unhealthy (readiness probe). Changing this forces a new resource to be created.
-  final int? failureThreshold;
+  final pulumi.Input<int>? failureThreshold;
   /// The definition of the http_get for this container as documented in the `http_get` block below. Changing this forces a new resource to be created.
-  final List<GroupContainerReadinessProbeHttpGet>? httpGets;
+  final pulumi.Input<List<GroupContainerReadinessProbeHttpGet>>? httpGets;
   /// Number of seconds after the container has started before liveness or readiness probes are initiated. Changing this forces a new resource to be created.
-  final int? initialDelaySeconds;
+  final pulumi.Input<int>? initialDelaySeconds;
   /// How often (in seconds) to perform the probe. Changing this forces a new resource to be created.
-  final int? periodSeconds;
+  final pulumi.Input<int>? periodSeconds;
   /// Minimum consecutive successes for the probe to be considered successful after having failed. Changing this forces a new resource to be created.
-  final int? successThreshold;
+  final pulumi.Input<int>? successThreshold;
   /// Number of seconds after which the probe times out. Changing this forces a new resource to be created.
-  final int? timeoutSeconds;
+  final pulumi.Input<int>? timeoutSeconds;
 
   /// Creates a new [GroupContainerReadinessProbe].
   /// [execs] Commands to be run to validate container readiness. Changing this forces a new resource to be created.
@@ -41,7 +41,7 @@ class GroupContainerReadinessProbe {
     return <String, dynamic>{
       'execs': ?execs,
       'failureThreshold': ?failureThreshold,
-      'httpGets': ?httpGets == null ? null : pulumi.Input.encodeList<GroupContainerReadinessProbeHttpGet, Map<String, dynamic>>(httpGets!, (value) => value.toMap()),
+      'httpGets': ?pulumi.Input.mapOptionalInputValue<List<GroupContainerReadinessProbeHttpGet>, List<Map<String, dynamic>>>(httpGets, (value) => pulumi.Input.encodeList<GroupContainerReadinessProbeHttpGet, Map<String, dynamic>>(value, (value) => value.toMap())),
       'initialDelaySeconds': ?initialDelaySeconds,
       'periodSeconds': ?periodSeconds,
       'successThreshold': ?successThreshold,
@@ -51,13 +51,13 @@ class GroupContainerReadinessProbe {
 
   factory GroupContainerReadinessProbe.fromMap(Map<String, dynamic> map) {
     return GroupContainerReadinessProbe(
-      execs: map['execs'] == null ? null : (map['execs'] as List).cast<String>(),
-      failureThreshold: map['failureThreshold'] == null ? null : map['failureThreshold'] as int,
-      httpGets: map['httpGets'] == null ? null : pulumi.Input.decodeList<GroupContainerReadinessProbeHttpGet>(map['httpGets'], (value) => GroupContainerReadinessProbeHttpGet.fromMap((value as Map).cast<String, dynamic>())),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : map['initialDelaySeconds'] as int,
-      periodSeconds: map['periodSeconds'] == null ? null : map['periodSeconds'] as int,
-      successThreshold: map['successThreshold'] == null ? null : map['successThreshold'] as int,
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : map['timeoutSeconds'] as int,
+      execs: map['execs'] == null ? null : ((map['execs'] as List).cast<String>()).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
+      httpGets: map['httpGets'] == null ? null : (pulumi.Input.decodeList<GroupContainerReadinessProbeHttpGet>(map['httpGets'], (value) => GroupContainerReadinessProbeHttpGet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
     );
   }
 }

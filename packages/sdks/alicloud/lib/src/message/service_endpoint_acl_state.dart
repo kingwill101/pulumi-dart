@@ -17,13 +17,10 @@ class ServiceEndpointAclState {
   /// [cidr] Optional.
   /// [endpointType] Access point type. Value:
   ServiceEndpointAclState({
-    pulumi.Output<String>? aclStrategy,
-    pulumi.Output<String>? cidr,
-    pulumi.Output<String>? endpointType,
-  }) :
-      aclStrategy = pulumi.Input.asOptionalInput<String>(aclStrategy),
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      endpointType = pulumi.Input.asOptionalInput<String>(endpointType);
+    this.aclStrategy,
+    this.cidr,
+    this.endpointType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class ServiceEndpointAclState {
 
   factory ServiceEndpointAclState.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointAclState(
-      aclStrategy: map['aclStrategy'] == null ? null : pulumi.Output.create<String>(map['aclStrategy'] as String),
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      endpointType: map['endpointType'] == null ? null : pulumi.Output.create<String>(map['endpointType'] as String),
+      aclStrategy: map['aclStrategy'] == null ? null : (map['aclStrategy'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
     );
   }
 }

@@ -11,9 +11,8 @@ class EventState {
   /// Creates a new [EventState].
   /// [events] An event to insert into Insights. Multiple event blocks can be defined. See Events below for details.
   EventState({
-    pulumi.Output<List<EventEvent>>? events,
-  }) :
-      events = pulumi.Input.asOptionalInput<List<EventEvent>>(events);
+    this.events,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,7 +22,7 @@ class EventState {
 
   factory EventState.fromMap(Map<String, dynamic> map) {
     return EventState(
-      events: map['events'] == null ? null : pulumi.Output.create<List<EventEvent>>(pulumi.Input.decodeList<EventEvent>(map['events'], (value) => EventEvent.fromMap((value as Map).cast<String, dynamic>()))),
+      events: map['events'] == null ? null : (pulumi.Input.decodeList<EventEvent>(map['events'], (value) => EventEvent.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

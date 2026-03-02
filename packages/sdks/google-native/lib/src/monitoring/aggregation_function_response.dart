@@ -6,9 +6,9 @@ import 'parameter_response.dart';
 /// Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release.
 class AggregationFunctionResponse {
   /// Optional. Parameters applied to the aggregation function. Only used for functions that require them.
-  final List<ParameterResponse> parameters;
+  final pulumi.Input<List<ParameterResponse>> parameters;
   /// The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM()
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AggregationFunctionResponse].
   /// [parameters] Optional. Parameters applied to the aggregation function. Only used for functions that require them.
@@ -20,15 +20,15 @@ class AggregationFunctionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': pulumi.Input.encodeList<ParameterResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.mapInputValue<List<ParameterResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory AggregationFunctionResponse.fromMap(Map<String, dynamic> map) {
     return AggregationFunctionResponse(
-      parameters: pulumi.Input.decodeList<ParameterResponse>(map['parameters'], (value) => ParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      parameters: (pulumi.Input.decodeList<ParameterResponse>(map['parameters'], (value) => ParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

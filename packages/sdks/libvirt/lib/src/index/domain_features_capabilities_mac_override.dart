@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesCapabilitiesMacOverride {
   /// Sets the state of the capability to wake from an alarm.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [DomainFeaturesCapabilitiesMacOverride].
   /// [state] Sets the state of the capability to wake from an alarm.
@@ -19,7 +20,7 @@ class DomainFeaturesCapabilitiesMacOverride {
 
   factory DomainFeaturesCapabilitiesMacOverride.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesMacOverride(
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

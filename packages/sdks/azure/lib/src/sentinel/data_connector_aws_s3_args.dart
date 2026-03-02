@@ -25,17 +25,12 @@ class DataConnectorAwsS3Args {
   /// [name] The name which should be used for this AWS S3 Data Connector. Changing this forces a new AWS S3 Data Connector to be created.
   /// [sqsUrls] Specifies a list of AWS SQS urls for the AWS S3 Data Connector.
   DataConnectorAwsS3Args({
-    required pulumi.Output<String> awsRoleArn,
-    required pulumi.Output<String> destinationTable,
-    required pulumi.Output<String> logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<String>> sqsUrls,
-  }) :
-      awsRoleArn = pulumi.Input.asInput<String>(awsRoleArn),
-      destinationTable = pulumi.Input.asInput<String>(destinationTable),
-      logAnalyticsWorkspaceId = pulumi.Input.asInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sqsUrls = pulumi.Input.asInput<List<String>>(sqsUrls);
+    required this.awsRoleArn,
+    required this.destinationTable,
+    required this.logAnalyticsWorkspaceId,
+    this.name,
+    required this.sqsUrls,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DataConnectorAwsS3Args {
 
   factory DataConnectorAwsS3Args.fromMap(Map<String, dynamic> map) {
     return DataConnectorAwsS3Args(
-      awsRoleArn: pulumi.Output.create<String>(map['awsRoleArn'] as String),
-      destinationTable: pulumi.Output.create<String>(map['destinationTable'] as String),
-      logAnalyticsWorkspaceId: pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sqsUrls: pulumi.Output.create<List<String>>((map['sqsUrls'] as List).cast<String>()),
+      awsRoleArn: (map['awsRoleArn'] as String).input(),
+      destinationTable: (map['destinationTable'] as String).input(),
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sqsUrls: ((map['sqsUrls'] as List).cast<String>()).input(),
     );
   }
 }

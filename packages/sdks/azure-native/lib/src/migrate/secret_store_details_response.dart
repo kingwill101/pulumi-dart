@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_store_properties_response.dart';
 
 class SecretStoreDetailsResponse {
-  final String? secretStore;
-  final SecretStorePropertiesResponse? secretStoreProperties;
+  final pulumi.Input<String>? secretStore;
+  final pulumi.Input<SecretStorePropertiesResponse>? secretStoreProperties;
 
   /// Creates a new [SecretStoreDetailsResponse].
   /// [secretStore] Optional.
@@ -17,14 +18,14 @@ class SecretStoreDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'secretStore': ?secretStore,
-      'secretStoreProperties': ?secretStoreProperties == null ? null : secretStoreProperties!.toMap(),
+      'secretStoreProperties': ?pulumi.Input.mapOptionalInputValue<SecretStorePropertiesResponse, Map<String, dynamic>>(secretStoreProperties, (value) => value.toMap()),
     };
   }
 
   factory SecretStoreDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SecretStoreDetailsResponse(
-      secretStore: map['secretStore'] == null ? null : map['secretStore'] as String,
-      secretStoreProperties: map['secretStoreProperties'] == null ? null : SecretStorePropertiesResponse.fromMap((map['secretStoreProperties'] as Map).cast<String, dynamic>()),
+      secretStore: map['secretStore'] == null ? null : (map['secretStore'] as String).input(),
+      secretStoreProperties: map['secretStoreProperties'] == null ? null : (SecretStorePropertiesResponse.fromMap((map['secretStoreProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

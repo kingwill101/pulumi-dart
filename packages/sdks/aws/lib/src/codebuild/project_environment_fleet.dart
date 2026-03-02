@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectEnvironmentFleet {
   /// Compute fleet ARN for the build project.
-  final String? fleetArn;
+  final pulumi.Input<String>? fleetArn;
 
   /// Creates a new [ProjectEnvironmentFleet].
   /// [fleetArn] Compute fleet ARN for the build project.
@@ -19,7 +20,7 @@ class ProjectEnvironmentFleet {
 
   factory ProjectEnvironmentFleet.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentFleet(
-      fleetArn: map['fleetArn'] == null ? null : map['fleetArn'] as String,
+      fleetArn: map['fleetArn'] == null ? null : (map['fleetArn'] as String).input(),
     );
   }
 }

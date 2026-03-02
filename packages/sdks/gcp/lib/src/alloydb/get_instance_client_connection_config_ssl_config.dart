@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceClientConnectionConfigSslConfig {
   /// SSL mode. Specifies client-server SSL/TLS connection behavior. Possible values: ["ENCRYPTED_ONLY", "ALLOW_UNENCRYPTED_AND_ENCRYPTED"]
-  final String sslMode;
+  final pulumi.Input<String> sslMode;
 
   /// Creates a new [GetInstanceClientConnectionConfigSslConfig].
   /// [sslMode] SSL mode. Specifies client-server SSL/TLS connection behavior. Possible values: ["ENCRYPTED_ONLY", "ALLOW_UNENCRYPTED_AND_ENCRYPTED"]
@@ -19,7 +20,7 @@ class GetInstanceClientConnectionConfigSslConfig {
 
   factory GetInstanceClientConnectionConfigSslConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceClientConnectionConfigSslConfig(
-      sslMode: map['sslMode'] as String,
+      sslMode: (map['sslMode'] as String).input(),
     );
   }
 }

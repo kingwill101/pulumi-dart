@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of Azure Storage blob container endpoint.
 class AzureStorageBlobContainerEndpointProperties {
   /// The name of the Storage blob container that is the target destination.
-  final String blobContainerName;
+  final pulumi.Input<String> blobContainerName;
   /// A description for the Endpoint.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The Endpoint resource type.
   /// Expected value is 'AzureStorageBlobContainer'.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// The Azure Resource ID of the storage account that is the target destination.
-  final String storageAccountResourceId;
+  final pulumi.Input<String> storageAccountResourceId;
 
   /// Creates a new [AzureStorageBlobContainerEndpointProperties].
   /// [blobContainerName] The name of the Storage blob container that is the target destination.
@@ -36,10 +37,10 @@ class AzureStorageBlobContainerEndpointProperties {
 
   factory AzureStorageBlobContainerEndpointProperties.fromMap(Map<String, dynamic> map) {
     return AzureStorageBlobContainerEndpointProperties(
-      blobContainerName: map['blobContainerName'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      endpointType: map['endpointType'] as String,
-      storageAccountResourceId: map['storageAccountResourceId'] as String,
+      blobContainerName: (map['blobContainerName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      storageAccountResourceId: (map['storageAccountResourceId'] as String).input(),
     );
   }
 }

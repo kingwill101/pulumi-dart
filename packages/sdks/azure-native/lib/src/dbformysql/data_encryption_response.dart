@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The date encryption for cmk.
 class DataEncryptionResponse {
   /// Geo backup key uri as key vault can't cross region, need cmk in same region as geo backup
-  final String? geoBackupKeyURI;
+  final pulumi.Input<String>? geoBackupKeyURI;
   /// Geo backup user identity resource id as identity can't cross region, need identity in same region as geo backup
-  final String? geoBackupUserAssignedIdentityId;
+  final pulumi.Input<String>? geoBackupUserAssignedIdentityId;
   /// Primary key uri
-  final String? primaryKeyURI;
+  final pulumi.Input<String>? primaryKeyURI;
   /// Primary user identity resource id
-  final String? primaryUserAssignedIdentityId;
+  final pulumi.Input<String>? primaryUserAssignedIdentityId;
   /// The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DataEncryptionResponse].
   /// [geoBackupKeyURI] Geo backup key uri as key vault can't cross region, need cmk in same region as geo backup
@@ -40,11 +41,11 @@ class DataEncryptionResponse {
 
   factory DataEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return DataEncryptionResponse(
-      geoBackupKeyURI: map['geoBackupKeyURI'] == null ? null : map['geoBackupKeyURI'] as String,
-      geoBackupUserAssignedIdentityId: map['geoBackupUserAssignedIdentityId'] == null ? null : map['geoBackupUserAssignedIdentityId'] as String,
-      primaryKeyURI: map['primaryKeyURI'] == null ? null : map['primaryKeyURI'] as String,
-      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : map['primaryUserAssignedIdentityId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      geoBackupKeyURI: map['geoBackupKeyURI'] == null ? null : (map['geoBackupKeyURI'] as String).input(),
+      geoBackupUserAssignedIdentityId: map['geoBackupUserAssignedIdentityId'] == null ? null : (map['geoBackupUserAssignedIdentityId'] as String).input(),
+      primaryKeyURI: map['primaryKeyURI'] == null ? null : (map['primaryKeyURI'] as String).input(),
+      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

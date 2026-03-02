@@ -13,9 +13,8 @@ class GetSitesBySubscriptionArgs {
   /// Creates a new [GetSitesBySubscriptionArgs].
   /// [siteName] The name of the Site
   GetSitesBySubscriptionArgs({
-    required pulumi.Output<String> siteName,
-  }) :
-      siteName = pulumi.Input.asInput<String>(siteName);
+    required this.siteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetSitesBySubscriptionArgs {
 
   factory GetSitesBySubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSitesBySubscriptionArgs(
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
+      siteName: (map['siteName'] as String).input(),
     );
   }
 }

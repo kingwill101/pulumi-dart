@@ -22,15 +22,11 @@ class GetRemoteReferenceArgs {
   /// [token] The token used to authenticate with the remote backend.
   /// [workspaces] Required.
   GetRemoteReferenceArgs({
-    pulumi.Output<String>? hostname,
-    required pulumi.Output<String> organization,
-    pulumi.Output<String>? token,
-    required pulumi.Output<Workspaces> workspaces,
-  }) :
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      organization = pulumi.Input.asInput<String>(organization),
-      token = pulumi.Input.asOptionalInput<String>(token),
-      workspaces = pulumi.Input.asInput<Workspaces>(workspaces);
+    this.hostname,
+    required this.organization,
+    this.token,
+    required this.workspaces,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetRemoteReferenceArgs {
 
   factory GetRemoteReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetRemoteReferenceArgs(
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      token: map['token'] == null ? null : pulumi.Output.create<String>(map['token'] as String),
-      workspaces: pulumi.Output.create<Workspaces>(Workspaces.fromMap((map['workspaces'] as Map).cast<String, dynamic>())),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
+      workspaces: (Workspaces.fromMap((map['workspaces'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

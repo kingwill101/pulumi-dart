@@ -17,15 +17,11 @@ class ReservedIpv6State {
   /// [regionSlug] The region that the reserved IPv6 needs to be reserved to.
   /// [reservedIpv6Urn] the uniform resource name for the reserved ipv6
   ReservedIpv6State({
-    pulumi.Output<int>? dropletId,
-    pulumi.Output<String>? ip,
-    pulumi.Output<String>? regionSlug,
-    pulumi.Output<String>? reservedIpv6Urn,
-  }) :
-      dropletId = pulumi.Input.asOptionalInput<int>(dropletId),
-      ip = pulumi.Input.asOptionalInput<String>(ip),
-      regionSlug = pulumi.Input.asOptionalInput<String>(regionSlug),
-      reservedIpv6Urn = pulumi.Input.asOptionalInput<String>(reservedIpv6Urn);
+    this.dropletId,
+    this.ip,
+    this.regionSlug,
+    this.reservedIpv6Urn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,10 +34,10 @@ class ReservedIpv6State {
 
   factory ReservedIpv6State.fromMap(Map<String, dynamic> map) {
     return ReservedIpv6State(
-      dropletId: map['dropletId'] == null ? null : pulumi.Output.create<int>(map['dropletId'] as int),
-      ip: map['ip'] == null ? null : pulumi.Output.create<String>(map['ip'] as String),
-      regionSlug: map['regionSlug'] == null ? null : pulumi.Output.create<String>(map['regionSlug'] as String),
-      reservedIpv6Urn: map['reservedIpv6Urn'] == null ? null : pulumi.Output.create<String>(map['reservedIpv6Urn'] as String),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      regionSlug: map['regionSlug'] == null ? null : (map['regionSlug'] as String).input(),
+      reservedIpv6Urn: map['reservedIpv6Urn'] == null ? null : (map['reservedIpv6Urn'] as String).input(),
     );
   }
 }

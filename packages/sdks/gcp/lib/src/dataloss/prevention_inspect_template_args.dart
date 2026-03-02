@@ -33,17 +33,12 @@ class PreventionInspectTemplateArgs {
   /// [parent] The parent of the inspect template in any of the following formats:
   /// [templateId] The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   PreventionInspectTemplateArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<PreventionInspectTemplateInspectConfig>? inspectConfig,
-    required pulumi.Output<String> parent,
-    pulumi.Output<String>? templateId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      inspectConfig = pulumi.Input.asOptionalInput<PreventionInspectTemplateInspectConfig>(inspectConfig),
-      parent = pulumi.Input.asInput<String>(parent),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId);
+    this.description,
+    this.displayName,
+    this.inspectConfig,
+    required this.parent,
+    this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,11 +52,11 @@ class PreventionInspectTemplateArgs {
 
   factory PreventionInspectTemplateArgs.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      inspectConfig: map['inspectConfig'] == null ? null : pulumi.Output.create<PreventionInspectTemplateInspectConfig>(PreventionInspectTemplateInspectConfig.fromMap((map['inspectConfig'] as Map).cast<String, dynamic>())),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      inspectConfig: map['inspectConfig'] == null ? null : (PreventionInspectTemplateInspectConfig.fromMap((map['inspectConfig'] as Map).cast<String, dynamic>())).input(),
+      parent: (map['parent'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
     );
   }
 }

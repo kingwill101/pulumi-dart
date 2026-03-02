@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterKubeletIdentity {
   /// The Client ID of the user-defined Managed Identity to be assigned to the Kubelets. If not specified a Managed Identity is created automatically. Changing this forces a new resource to be created.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The Object ID of the user-defined Managed Identity assigned to the Kubelets.If not specified a Managed Identity is created automatically. Changing this forces a new resource to be created.
-  final String? objectId;
+  final pulumi.Input<String>? objectId;
   /// The ID of the User Assigned Identity assigned to the Kubelets. If not specified a Managed Identity is created automatically. Changing this forces a new resource to be created.
-  final String? userAssignedIdentityId;
+  final pulumi.Input<String>? userAssignedIdentityId;
 
   /// Creates a new [KubernetesClusterKubeletIdentity].
   /// [clientId] The Client ID of the user-defined Managed Identity to be assigned to the Kubelets. If not specified a Managed Identity is created automatically. Changing this forces a new resource to be created.
@@ -29,9 +30,9 @@ class KubernetesClusterKubeletIdentity {
 
   factory KubernetesClusterKubeletIdentity.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterKubeletIdentity(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : map['userAssignedIdentityId'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
     );
   }
 }

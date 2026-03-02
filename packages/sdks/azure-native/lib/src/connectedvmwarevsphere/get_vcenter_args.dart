@@ -16,11 +16,9 @@ class GetVCenterArgs {
   /// [resourceGroupName] The Resource Group Name.
   /// [vcenterName] Name of the vCenter.
   GetVCenterArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vcenterName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vcenterName = pulumi.Input.asInput<String>(vcenterName);
+    required this.resourceGroupName,
+    required this.vcenterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVCenterArgs {
 
   factory GetVCenterArgs.fromMap(Map<String, dynamic> map) {
     return GetVCenterArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vcenterName: pulumi.Output.create<String>(map['vcenterName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vcenterName: (map['vcenterName'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeGroupSystemDisk {
   /// The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
-  final String category;
+  final pulumi.Input<String> category;
   /// The count of a data disk.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-  final String? performanceLevel;
+  final pulumi.Input<String>? performanceLevel;
   /// The size of a data disk, at least 40. Unit: GiB.
-  final int size;
+  final pulumi.Input<int> size;
 
   /// Creates a new [ClusterNodeGroupSystemDisk].
   /// [category] The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
@@ -34,10 +35,10 @@ class ClusterNodeGroupSystemDisk {
 
   factory ClusterNodeGroupSystemDisk.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupSystemDisk(
-      category: map['category'] as String,
-      count: map['count'] == null ? null : map['count'] as int,
-      performanceLevel: map['performanceLevel'] == null ? null : map['performanceLevel'] as String,
-      size: map['size'] as int,
+      category: (map['category'] as String).input(),
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
+      size: (map['size'] as int).input(),
     );
   }
 }

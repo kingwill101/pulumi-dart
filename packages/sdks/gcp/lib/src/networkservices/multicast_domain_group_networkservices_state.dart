@@ -70,33 +70,20 @@ class MulticastDomainGroupNetworkservicesState {
   /// [uniqueId] The Google-generated UUID for the resource. This value is
   /// [updateTime] The timestamp when the multicast domain group was most
   MulticastDomainGroupNetworkservicesState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? multicastDomainGroupId,
-    pulumi.Output<List<String>>? multicastDomains,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<List<MulticastDomainGroupState>>? states,
-    pulumi.Output<String>? uniqueId,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      multicastDomainGroupId = pulumi.Input.asOptionalInput<String>(multicastDomainGroupId),
-      multicastDomains = pulumi.Input.asOptionalInput<List<String>>(multicastDomains),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      states = pulumi.Input.asOptionalInput<List<MulticastDomainGroupState>>(states),
-      uniqueId = pulumi.Input.asOptionalInput<String>(uniqueId),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.multicastDomainGroupId,
+    this.multicastDomains,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.states,
+    this.uniqueId,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -118,19 +105,19 @@ class MulticastDomainGroupNetworkservicesState {
 
   factory MulticastDomainGroupNetworkservicesState.fromMap(Map<String, dynamic> map) {
     return MulticastDomainGroupNetworkservicesState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      multicastDomainGroupId: map['multicastDomainGroupId'] == null ? null : pulumi.Output.create<String>(map['multicastDomainGroupId'] as String),
-      multicastDomains: map['multicastDomains'] == null ? null : pulumi.Output.create<List<String>>((map['multicastDomains'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      states: map['states'] == null ? null : pulumi.Output.create<List<MulticastDomainGroupState>>(pulumi.Input.decodeList<MulticastDomainGroupState>(map['states'], (value) => MulticastDomainGroupState.fromMap((value as Map).cast<String, dynamic>()))),
-      uniqueId: map['uniqueId'] == null ? null : pulumi.Output.create<String>(map['uniqueId'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      multicastDomainGroupId: map['multicastDomainGroupId'] == null ? null : (map['multicastDomainGroupId'] as String).input(),
+      multicastDomains: map['multicastDomains'] == null ? null : ((map['multicastDomains'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<MulticastDomainGroupState>(map['states'], (value) => MulticastDomainGroupState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

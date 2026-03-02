@@ -16,13 +16,10 @@ class GetOrganizationAddressGroupArgs {
   /// [location] Required.
   /// [organizationId] Required.
   GetOrganizationAddressGroupArgs({
-    required pulumi.Output<String> addressGroupId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> organizationId,
-  }) :
-      addressGroupId = pulumi.Input.asInput<String>(addressGroupId),
-      location = pulumi.Input.asInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.addressGroupId,
+    required this.location,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetOrganizationAddressGroupArgs {
 
   factory GetOrganizationAddressGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationAddressGroupArgs(
-      addressGroupId: pulumi.Output.create<String>(map['addressGroupId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      addressGroupId: (map['addressGroupId'] as String).input(),
+      location: (map['location'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

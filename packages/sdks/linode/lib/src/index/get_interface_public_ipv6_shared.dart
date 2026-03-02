@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInterfacePublicIpv6Shared {
   /// The IPv6 range.
-  final String range;
+  final pulumi.Input<String> range;
   /// The route target for this IPv6 range.
-  final String routeTarget;
+  final pulumi.Input<String> routeTarget;
 
   /// Creates a new [GetInterfacePublicIpv6Shared].
   /// [range] The IPv6 range.
@@ -24,8 +25,8 @@ class GetInterfacePublicIpv6Shared {
 
   factory GetInterfacePublicIpv6Shared.fromMap(Map<String, dynamic> map) {
     return GetInterfacePublicIpv6Shared(
-      range: map['range'] as String,
-      routeTarget: map['routeTarget'] as String,
+      range: (map['range'] as String).input(),
+      routeTarget: (map['routeTarget'] as String).input(),
     );
   }
 }

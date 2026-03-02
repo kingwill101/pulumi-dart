@@ -16,13 +16,10 @@ class CustomRoutingListenerState {
   /// [arn] Optional.
   /// [portRanges] The list of port ranges for the connections from clients to the accelerator. Fields documented below.
   CustomRoutingListenerState({
-    pulumi.Output<String>? acceleratorArn,
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<CustomRoutingListenerPortRange>>? portRanges,
-  }) :
-      acceleratorArn = pulumi.Input.asOptionalInput<String>(acceleratorArn),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      portRanges = pulumi.Input.asOptionalInput<List<CustomRoutingListenerPortRange>>(portRanges);
+    this.acceleratorArn,
+    this.arn,
+    this.portRanges,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class CustomRoutingListenerState {
 
   factory CustomRoutingListenerState.fromMap(Map<String, dynamic> map) {
     return CustomRoutingListenerState(
-      acceleratorArn: map['acceleratorArn'] == null ? null : pulumi.Output.create<String>(map['acceleratorArn'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      portRanges: map['portRanges'] == null ? null : pulumi.Output.create<List<CustomRoutingListenerPortRange>>(pulumi.Input.decodeList<CustomRoutingListenerPortRange>(map['portRanges'], (value) => CustomRoutingListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))),
+      acceleratorArn: map['acceleratorArn'] == null ? null : (map['acceleratorArn'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      portRanges: map['portRanges'] == null ? null : (pulumi.Input.decodeList<CustomRoutingListenerPortRange>(map['portRanges'], (value) => CustomRoutingListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

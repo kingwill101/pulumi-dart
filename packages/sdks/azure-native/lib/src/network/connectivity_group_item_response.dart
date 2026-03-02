@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Connectivity group item.
 class ConnectivityGroupItemResponse {
   /// Group connectivity type.
-  final String groupConnectivity;
+  final pulumi.Input<String> groupConnectivity;
   /// Flag if global is supported.
-  final String? isGlobal;
+  final pulumi.Input<String>? isGlobal;
   /// Network group Id.
-  final String networkGroupId;
+  final pulumi.Input<String> networkGroupId;
   /// Flag if need to use hub gateway.
-  final String? useHubGateway;
+  final pulumi.Input<String>? useHubGateway;
 
   /// Creates a new [ConnectivityGroupItemResponse].
   /// [groupConnectivity] Group connectivity type.
@@ -35,10 +36,10 @@ class ConnectivityGroupItemResponse {
 
   factory ConnectivityGroupItemResponse.fromMap(Map<String, dynamic> map) {
     return ConnectivityGroupItemResponse(
-      groupConnectivity: map['groupConnectivity'] as String,
-      isGlobal: map['isGlobal'] == null ? null : map['isGlobal'] as String,
-      networkGroupId: map['networkGroupId'] as String,
-      useHubGateway: map['useHubGateway'] == null ? null : map['useHubGateway'] as String,
+      groupConnectivity: (map['groupConnectivity'] as String).input(),
+      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal'] as String).input(),
+      networkGroupId: (map['networkGroupId'] as String).input(),
+      useHubGateway: map['useHubGateway'] == null ? null : (map['useHubGateway'] as String).input(),
     );
   }
 }

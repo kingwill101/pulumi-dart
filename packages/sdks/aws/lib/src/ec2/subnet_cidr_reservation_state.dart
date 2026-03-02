@@ -25,19 +25,13 @@ class SubnetCidrReservationState {
   /// [reservationType] The type of reservation to create. Valid values: `explicit`, `prefix`
   /// [subnetId] The ID of the subnet to create the reservation for.
   SubnetCidrReservationState({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? reservationType,
-    pulumi.Output<String>? subnetId,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reservationType = pulumi.Input.asOptionalInput<String>(reservationType),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
+    this.cidrBlock,
+    this.description,
+    this.ownerId,
+    this.region,
+    this.reservationType,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SubnetCidrReservationState {
 
   factory SubnetCidrReservationState.fromMap(Map<String, dynamic> map) {
     return SubnetCidrReservationState(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reservationType: map['reservationType'] == null ? null : pulumi.Output.create<String>(map['reservationType'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reservationType: map['reservationType'] == null ? null : (map['reservationType'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

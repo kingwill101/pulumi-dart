@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCreate {
-  final bool? autodestroy;
-  final bool? bypassCache;
-  final bool? forceBoot;
-  final bool? paused;
-  final bool? resetNvram;
-  final bool? validate;
+  final pulumi.Input<bool>? autodestroy;
+  final pulumi.Input<bool>? bypassCache;
+  final pulumi.Input<bool>? forceBoot;
+  final pulumi.Input<bool>? paused;
+  final pulumi.Input<bool>? resetNvram;
+  final pulumi.Input<bool>? validate;
 
   /// Creates a new [DomainCreate].
   /// [autodestroy] Optional.
@@ -38,12 +39,12 @@ class DomainCreate {
 
   factory DomainCreate.fromMap(Map<String, dynamic> map) {
     return DomainCreate(
-      autodestroy: map['autodestroy'] == null ? null : map['autodestroy'] as bool,
-      bypassCache: map['bypassCache'] == null ? null : map['bypassCache'] as bool,
-      forceBoot: map['forceBoot'] == null ? null : map['forceBoot'] as bool,
-      paused: map['paused'] == null ? null : map['paused'] as bool,
-      resetNvram: map['resetNvram'] == null ? null : map['resetNvram'] as bool,
-      validate: map['validate'] == null ? null : map['validate'] as bool,
+      autodestroy: map['autodestroy'] == null ? null : (map['autodestroy'] as bool).input(),
+      bypassCache: map['bypassCache'] == null ? null : (map['bypassCache'] as bool).input(),
+      forceBoot: map['forceBoot'] == null ? null : (map['forceBoot'] as bool).input(),
+      paused: map['paused'] == null ? null : (map['paused'] as bool).input(),
+      resetNvram: map['resetNvram'] == null ? null : (map['resetNvram'] as bool).input(),
+      validate: map['validate'] == null ? null : (map['validate'] as bool).input(),
     );
   }
 }

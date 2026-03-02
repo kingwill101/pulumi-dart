@@ -25,19 +25,13 @@ class AzureLinkAccountState {
   /// [subscriptionId] Subscription ID of the Azure cloud account.
   /// [tenantId] Tenant ID of the Azure cloud account.
   AzureLinkAccountState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? clientSecret,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? subscriptionId,
-    pulumi.Output<String>? tenantId,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.accountId,
+    this.applicationId,
+    this.clientSecret,
+    this.name,
+    this.subscriptionId,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class AzureLinkAccountState {
 
   factory AzureLinkAccountState.fromMap(Map<String, dynamic> map) {
     return AzureLinkAccountState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      clientSecret: map['clientSecret'] == null ? null : pulumi.Output.create<String>(map['clientSecret'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

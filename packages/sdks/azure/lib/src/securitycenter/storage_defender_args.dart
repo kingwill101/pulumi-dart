@@ -28,19 +28,13 @@ class StorageDefenderArgs {
   /// [sensitiveDataDiscoveryEnabled] Whether Sensitive Data Discovery should be enabled. Defaults to `false`.
   /// [storageAccountId] The ID of the storage account the defender applied to. Changing this forces a new resource to be created.
   StorageDefenderArgs({
-    pulumi.Output<int>? malwareScanningOnUploadCapGbPerMonth,
-    pulumi.Output<bool>? malwareScanningOnUploadEnabled,
-    pulumi.Output<bool>? overrideSubscriptionSettingsEnabled,
-    pulumi.Output<String>? scanResultsEventGridTopicId,
-    pulumi.Output<bool>? sensitiveDataDiscoveryEnabled,
-    required pulumi.Output<String> storageAccountId,
-  }) :
-      malwareScanningOnUploadCapGbPerMonth = pulumi.Input.asOptionalInput<int>(malwareScanningOnUploadCapGbPerMonth),
-      malwareScanningOnUploadEnabled = pulumi.Input.asOptionalInput<bool>(malwareScanningOnUploadEnabled),
-      overrideSubscriptionSettingsEnabled = pulumi.Input.asOptionalInput<bool>(overrideSubscriptionSettingsEnabled),
-      scanResultsEventGridTopicId = pulumi.Input.asOptionalInput<String>(scanResultsEventGridTopicId),
-      sensitiveDataDiscoveryEnabled = pulumi.Input.asOptionalInput<bool>(sensitiveDataDiscoveryEnabled),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId);
+    this.malwareScanningOnUploadCapGbPerMonth,
+    this.malwareScanningOnUploadEnabled,
+    this.overrideSubscriptionSettingsEnabled,
+    this.scanResultsEventGridTopicId,
+    this.sensitiveDataDiscoveryEnabled,
+    required this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class StorageDefenderArgs {
 
   factory StorageDefenderArgs.fromMap(Map<String, dynamic> map) {
     return StorageDefenderArgs(
-      malwareScanningOnUploadCapGbPerMonth: map['malwareScanningOnUploadCapGbPerMonth'] == null ? null : pulumi.Output.create<int>(map['malwareScanningOnUploadCapGbPerMonth'] as int),
-      malwareScanningOnUploadEnabled: map['malwareScanningOnUploadEnabled'] == null ? null : pulumi.Output.create<bool>(map['malwareScanningOnUploadEnabled'] as bool),
-      overrideSubscriptionSettingsEnabled: map['overrideSubscriptionSettingsEnabled'] == null ? null : pulumi.Output.create<bool>(map['overrideSubscriptionSettingsEnabled'] as bool),
-      scanResultsEventGridTopicId: map['scanResultsEventGridTopicId'] == null ? null : pulumi.Output.create<String>(map['scanResultsEventGridTopicId'] as String),
-      sensitiveDataDiscoveryEnabled: map['sensitiveDataDiscoveryEnabled'] == null ? null : pulumi.Output.create<bool>(map['sensitiveDataDiscoveryEnabled'] as bool),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
+      malwareScanningOnUploadCapGbPerMonth: map['malwareScanningOnUploadCapGbPerMonth'] == null ? null : (map['malwareScanningOnUploadCapGbPerMonth'] as int).input(),
+      malwareScanningOnUploadEnabled: map['malwareScanningOnUploadEnabled'] == null ? null : (map['malwareScanningOnUploadEnabled'] as bool).input(),
+      overrideSubscriptionSettingsEnabled: map['overrideSubscriptionSettingsEnabled'] == null ? null : (map['overrideSubscriptionSettingsEnabled'] as bool).input(),
+      scanResultsEventGridTopicId: map['scanResultsEventGridTopicId'] == null ? null : (map['scanResultsEventGridTopicId'] as String).input(),
+      sensitiveDataDiscoveryEnabled: map['sensitiveDataDiscoveryEnabled'] == null ? null : (map['sensitiveDataDiscoveryEnabled'] as bool).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

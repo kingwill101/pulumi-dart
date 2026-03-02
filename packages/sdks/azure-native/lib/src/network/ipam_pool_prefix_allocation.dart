@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IpamPool prefix allocation reference.
 class IpamPoolPrefixAllocation {
   /// Resource id of the associated Azure IpamPool resource.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Number of IP addresses to allocate.
-  final String? numberOfIpAddresses;
+  final pulumi.Input<String>? numberOfIpAddresses;
 
   /// Creates a new [IpamPoolPrefixAllocation].
   /// [id] Resource id of the associated Azure IpamPool resource.
@@ -25,8 +26,8 @@ class IpamPoolPrefixAllocation {
 
   factory IpamPoolPrefixAllocation.fromMap(Map<String, dynamic> map) {
     return IpamPoolPrefixAllocation(
-      id: map['id'] == null ? null : map['id'] as String,
-      numberOfIpAddresses: map['numberOfIpAddresses'] == null ? null : map['numberOfIpAddresses'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      numberOfIpAddresses: map['numberOfIpAddresses'] == null ? null : (map['numberOfIpAddresses'] as String).input(),
     );
   }
 }

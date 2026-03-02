@@ -20,17 +20,12 @@ class GetBareMetalNodePoolArgs {
   /// [project] Optional.
   /// [view] Optional.
   GetBareMetalNodePoolArgs({
-    required pulumi.Output<String> bareMetalClusterId,
-    required pulumi.Output<String> bareMetalNodePoolId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? view,
-  }) :
-      bareMetalClusterId = pulumi.Input.asInput<String>(bareMetalClusterId),
-      bareMetalNodePoolId = pulumi.Input.asInput<String>(bareMetalNodePoolId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    required this.bareMetalClusterId,
+    required this.bareMetalNodePoolId,
+    required this.location,
+    this.project,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetBareMetalNodePoolArgs {
 
   factory GetBareMetalNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetBareMetalNodePoolArgs(
-      bareMetalClusterId: pulumi.Output.create<String>(map['bareMetalClusterId'] as String),
-      bareMetalNodePoolId: pulumi.Output.create<String>(map['bareMetalNodePoolId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      bareMetalClusterId: (map['bareMetalClusterId'] as String).input(),
+      bareMetalNodePoolId: (map['bareMetalNodePoolId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

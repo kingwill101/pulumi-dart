@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationProfileValidator {
   /// Either the JSON Schema content or the ARN of an AWS Lambda function.
-  final String? content;
+  final pulumi.Input<String>? content;
   /// Type of validator. Valid values: `JSON_SCHEMA` and `LAMBDA`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ConfigurationProfileValidator].
   /// [content] Either the JSON Schema content or the ARN of an AWS Lambda function.
@@ -24,8 +25,8 @@ class ConfigurationProfileValidator {
 
   factory ConfigurationProfileValidator.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileValidator(
-      content: map['content'] == null ? null : map['content'] as String,
-      type: map['type'] as String,
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

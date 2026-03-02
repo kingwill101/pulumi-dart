@@ -39,27 +39,17 @@ class BgpPeerState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [virtualInterfaceId] The ID of the Direct Connect virtual interface on which to create the BGP peer.
   BgpPeerState({
-    pulumi.Output<String>? addressFamily,
-    pulumi.Output<String>? amazonAddress,
-    pulumi.Output<String>? awsDevice,
-    pulumi.Output<int>? bgpAsn,
-    pulumi.Output<String>? bgpAuthKey,
-    pulumi.Output<String>? bgpPeerId,
-    pulumi.Output<String>? bgpStatus,
-    pulumi.Output<String>? customerAddress,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? virtualInterfaceId,
-  }) :
-      addressFamily = pulumi.Input.asOptionalInput<String>(addressFamily),
-      amazonAddress = pulumi.Input.asOptionalInput<String>(amazonAddress),
-      awsDevice = pulumi.Input.asOptionalInput<String>(awsDevice),
-      bgpAsn = pulumi.Input.asOptionalInput<int>(bgpAsn),
-      bgpAuthKey = pulumi.Input.asOptionalInput<String>(bgpAuthKey),
-      bgpPeerId = pulumi.Input.asOptionalInput<String>(bgpPeerId),
-      bgpStatus = pulumi.Input.asOptionalInput<String>(bgpStatus),
-      customerAddress = pulumi.Input.asOptionalInput<String>(customerAddress),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      virtualInterfaceId = pulumi.Input.asOptionalInput<String>(virtualInterfaceId);
+    this.addressFamily,
+    this.amazonAddress,
+    this.awsDevice,
+    this.bgpAsn,
+    this.bgpAuthKey,
+    this.bgpPeerId,
+    this.bgpStatus,
+    this.customerAddress,
+    this.region,
+    this.virtualInterfaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class BgpPeerState {
 
   factory BgpPeerState.fromMap(Map<String, dynamic> map) {
     return BgpPeerState(
-      addressFamily: map['addressFamily'] == null ? null : pulumi.Output.create<String>(map['addressFamily'] as String),
-      amazonAddress: map['amazonAddress'] == null ? null : pulumi.Output.create<String>(map['amazonAddress'] as String),
-      awsDevice: map['awsDevice'] == null ? null : pulumi.Output.create<String>(map['awsDevice'] as String),
-      bgpAsn: map['bgpAsn'] == null ? null : pulumi.Output.create<int>(map['bgpAsn'] as int),
-      bgpAuthKey: map['bgpAuthKey'] == null ? null : pulumi.Output.create<String>(map['bgpAuthKey'] as String),
-      bgpPeerId: map['bgpPeerId'] == null ? null : pulumi.Output.create<String>(map['bgpPeerId'] as String),
-      bgpStatus: map['bgpStatus'] == null ? null : pulumi.Output.create<String>(map['bgpStatus'] as String),
-      customerAddress: map['customerAddress'] == null ? null : pulumi.Output.create<String>(map['customerAddress'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      virtualInterfaceId: map['virtualInterfaceId'] == null ? null : pulumi.Output.create<String>(map['virtualInterfaceId'] as String),
+      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily'] as String).input(),
+      amazonAddress: map['amazonAddress'] == null ? null : (map['amazonAddress'] as String).input(),
+      awsDevice: map['awsDevice'] == null ? null : (map['awsDevice'] as String).input(),
+      bgpAsn: map['bgpAsn'] == null ? null : (map['bgpAsn'] as int).input(),
+      bgpAuthKey: map['bgpAuthKey'] == null ? null : (map['bgpAuthKey'] as String).input(),
+      bgpPeerId: map['bgpPeerId'] == null ? null : (map['bgpPeerId'] as String).input(),
+      bgpStatus: map['bgpStatus'] == null ? null : (map['bgpStatus'] as String).input(),
+      customerAddress: map['customerAddress'] == null ? null : (map['customerAddress'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      virtualInterfaceId: map['virtualInterfaceId'] == null ? null : (map['virtualInterfaceId'] as String).input(),
     );
   }
 }

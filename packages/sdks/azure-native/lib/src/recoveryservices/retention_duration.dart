@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Retention duration.
 class RetentionDuration {
   /// Count of duration types. Retention duration is obtained by the counting the duration type Count times.
   /// For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Retention duration type of retention policy.
-  final String? durationType;
+  final pulumi.Input<String>? durationType;
 
   /// Creates a new [RetentionDuration].
   /// [count] Count of duration types. Retention duration is obtained by the counting the duration type Count times.
@@ -26,8 +27,8 @@ class RetentionDuration {
 
   factory RetentionDuration.fromMap(Map<String, dynamic> map) {
     return RetentionDuration(
-      count: map['count'] == null ? null : map['count'] as int,
-      durationType: map['durationType'] == null ? null : map['durationType'] as String,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      durationType: map['durationType'] == null ? null : (map['durationType'] as String).input(),
     );
   }
 }

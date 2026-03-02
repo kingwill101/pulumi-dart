@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainMatchingAutoMergingConsolidation {
   /// A list of matching criteria.
-  final List<List<String>> matchingAttributesLists;
+  final pulumi.Input<List<List<String>>> matchingAttributesLists;
 
   /// Creates a new [DomainMatchingAutoMergingConsolidation].
   /// [matchingAttributesLists] A list of matching criteria.
@@ -19,7 +20,7 @@ class DomainMatchingAutoMergingConsolidation {
 
   factory DomainMatchingAutoMergingConsolidation.fromMap(Map<String, dynamic> map) {
     return DomainMatchingAutoMergingConsolidation(
-      matchingAttributesLists: (map['matchingAttributesLists'] as List).cast<List<String>>(),
+      matchingAttributesLists: ((map['matchingAttributesLists'] as List).cast<List<String>>()).input(),
     );
   }
 }

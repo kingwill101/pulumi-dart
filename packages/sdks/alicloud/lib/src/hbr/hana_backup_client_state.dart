@@ -31,23 +31,15 @@ class HanaBackupClientState {
   /// [useHttps] Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
   /// [vaultId] The ID of the backup vault.
   HanaBackupClientState({
-    pulumi.Output<String>? alertSetting,
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? clientInfo,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? status,
-    pulumi.Output<bool>? useHttps,
-    pulumi.Output<String>? vaultId,
-  }) :
-      alertSetting = pulumi.Input.asOptionalInput<String>(alertSetting),
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      clientInfo = pulumi.Input.asOptionalInput<String>(clientInfo),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      useHttps = pulumi.Input.asOptionalInput<bool>(useHttps),
-      vaultId = pulumi.Input.asOptionalInput<String>(vaultId);
+    this.alertSetting,
+    this.clientId,
+    this.clientInfo,
+    this.clusterId,
+    this.instanceId,
+    this.status,
+    this.useHttps,
+    this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class HanaBackupClientState {
 
   factory HanaBackupClientState.fromMap(Map<String, dynamic> map) {
     return HanaBackupClientState(
-      alertSetting: map['alertSetting'] == null ? null : pulumi.Output.create<String>(map['alertSetting'] as String),
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      clientInfo: map['clientInfo'] == null ? null : pulumi.Output.create<String>(map['clientInfo'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      useHttps: map['useHttps'] == null ? null : pulumi.Output.create<bool>(map['useHttps'] as bool),
-      vaultId: map['vaultId'] == null ? null : pulumi.Output.create<String>(map['vaultId'] as String),
+      alertSetting: map['alertSetting'] == null ? null : (map['alertSetting'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientInfo: map['clientInfo'] == null ? null : (map['clientInfo'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      useHttps: map['useHttps'] == null ? null : (map['useHttps'] as bool).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
     );
   }
 }

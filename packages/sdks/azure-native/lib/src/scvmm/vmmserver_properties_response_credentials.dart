@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Credentials to connect to VMMServer.
 class VMMServerPropertiesResponseCredentials {
   /// Username to use to connect to VMMServer.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [VMMServerPropertiesResponseCredentials].
   /// [username] Username to use to connect to VMMServer.
@@ -20,7 +21,7 @@ class VMMServerPropertiesResponseCredentials {
 
   factory VMMServerPropertiesResponseCredentials.fromMap(Map<String, dynamic> map) {
     return VMMServerPropertiesResponseCredentials(
-      username: map['username'] == null ? null : map['username'] as String,
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

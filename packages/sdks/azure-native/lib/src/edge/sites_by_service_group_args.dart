@@ -20,13 +20,10 @@ class SitesByServiceGroupArgs {
   /// [servicegroupName] The name of the service group
   /// [siteName] The name of the Site
   SitesByServiceGroupArgs({
-    pulumi.Output<SiteProperties>? properties,
-    required pulumi.Output<String> servicegroupName,
-    pulumi.Output<String>? siteName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<SiteProperties>(properties),
-      servicegroupName = pulumi.Input.asInput<String>(servicegroupName),
-      siteName = pulumi.Input.asOptionalInput<String>(siteName);
+    this.properties,
+    required this.servicegroupName,
+    this.siteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class SitesByServiceGroupArgs {
 
   factory SitesByServiceGroupArgs.fromMap(Map<String, dynamic> map) {
     return SitesByServiceGroupArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<SiteProperties>(SiteProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      servicegroupName: pulumi.Output.create<String>(map['servicegroupName'] as String),
-      siteName: map['siteName'] == null ? null : pulumi.Output.create<String>(map['siteName'] as String),
+      properties: map['properties'] == null ? null : (SiteProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      servicegroupName: (map['servicegroupName'] as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
     );
   }
 }

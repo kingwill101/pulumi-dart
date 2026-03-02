@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OneDashboardPageWidgetBulletDataFormat {
   /// (Optional) This attribute is provided when the `name` is that of a column comprising date/time values and the `type` attribute is set to `custom` defining the specific date format to be applied to your data.
-  final String? format;
+  final pulumi.Input<String>? format;
   /// The title of the dashboard.
-  final String name;
+  final pulumi.Input<String> name;
   /// (Optional) This attribute is utilized when the `type` attribute is set to `decimal`, stipulating the precise number of digits after the decimal point for your data.
-  final int? precision;
+  final pulumi.Input<int>? precision;
   /// (Required) Specifies the data type of the variable and where its possible values may come from. One of `enum`, `nrql` or `string`
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [OneDashboardPageWidgetBulletDataFormat].
   /// [format] (Optional) This attribute is provided when the `name` is that of a column comprising date/time values and the `type` attribute is set to `custom` defining the specific date format to be applied to your data.
@@ -34,10 +35,10 @@ class OneDashboardPageWidgetBulletDataFormat {
 
   factory OneDashboardPageWidgetBulletDataFormat.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetBulletDataFormat(
-      format: map['format'] == null ? null : map['format'] as String,
-      name: map['name'] as String,
-      precision: map['precision'] == null ? null : map['precision'] as int,
-      type: map['type'] as String,
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      name: (map['name'] as String).input(),
+      precision: map['precision'] == null ? null : (map['precision'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

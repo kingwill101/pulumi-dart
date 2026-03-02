@@ -40,29 +40,18 @@ class VswitchCidrReservationState {
   /// [vswitchCidrReservationName] The name of the resource.
   /// [vswitchId] The Id of the switch instance.
   VswitchCidrReservationState({
-    pulumi.Output<String>? cidrReservationCidr,
-    pulumi.Output<String>? cidrReservationDescription,
-    pulumi.Output<String>? cidrReservationMask,
-    pulumi.Output<String>? cidrReservationType,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchCidrReservationId,
-    pulumi.Output<String>? vswitchCidrReservationName,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      cidrReservationCidr = pulumi.Input.asOptionalInput<String>(cidrReservationCidr),
-      cidrReservationDescription = pulumi.Input.asOptionalInput<String>(cidrReservationDescription),
-      cidrReservationMask = pulumi.Input.asOptionalInput<String>(cidrReservationMask),
-      cidrReservationType = pulumi.Input.asOptionalInput<String>(cidrReservationType),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchCidrReservationId = pulumi.Input.asOptionalInput<String>(vswitchCidrReservationId),
-      vswitchCidrReservationName = pulumi.Input.asOptionalInput<String>(vswitchCidrReservationName),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.cidrReservationCidr,
+    this.cidrReservationDescription,
+    this.cidrReservationMask,
+    this.cidrReservationType,
+    this.createTime,
+    this.ipVersion,
+    this.status,
+    this.vpcId,
+    this.vswitchCidrReservationId,
+    this.vswitchCidrReservationName,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class VswitchCidrReservationState {
 
   factory VswitchCidrReservationState.fromMap(Map<String, dynamic> map) {
     return VswitchCidrReservationState(
-      cidrReservationCidr: map['cidrReservationCidr'] == null ? null : pulumi.Output.create<String>(map['cidrReservationCidr'] as String),
-      cidrReservationDescription: map['cidrReservationDescription'] == null ? null : pulumi.Output.create<String>(map['cidrReservationDescription'] as String),
-      cidrReservationMask: map['cidrReservationMask'] == null ? null : pulumi.Output.create<String>(map['cidrReservationMask'] as String),
-      cidrReservationType: map['cidrReservationType'] == null ? null : pulumi.Output.create<String>(map['cidrReservationType'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchCidrReservationId: map['vswitchCidrReservationId'] == null ? null : pulumi.Output.create<String>(map['vswitchCidrReservationId'] as String),
-      vswitchCidrReservationName: map['vswitchCidrReservationName'] == null ? null : pulumi.Output.create<String>(map['vswitchCidrReservationName'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      cidrReservationCidr: map['cidrReservationCidr'] == null ? null : (map['cidrReservationCidr'] as String).input(),
+      cidrReservationDescription: map['cidrReservationDescription'] == null ? null : (map['cidrReservationDescription'] as String).input(),
+      cidrReservationMask: map['cidrReservationMask'] == null ? null : (map['cidrReservationMask'] as String).input(),
+      cidrReservationType: map['cidrReservationType'] == null ? null : (map['cidrReservationType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchCidrReservationId: map['vswitchCidrReservationId'] == null ? null : (map['vswitchCidrReservationId'] as String).input(),
+      vswitchCidrReservationName: map['vswitchCidrReservationName'] == null ? null : (map['vswitchCidrReservationName'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'broker_authenticator_methods_response.dart';
 /// BrokerAuthentication Resource properties
 class BrokerAuthenticationPropertiesResponse {
   /// Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported.
-  final List<BrokerAuthenticatorMethodsResponse> authenticationMethods;
+  final pulumi.Input<List<BrokerAuthenticatorMethodsResponse>> authenticationMethods;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [BrokerAuthenticationPropertiesResponse].
   /// [authenticationMethods] Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported.
@@ -20,15 +20,15 @@ class BrokerAuthenticationPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticationMethods': pulumi.Input.encodeList<BrokerAuthenticatorMethodsResponse, Map<String, dynamic>>(authenticationMethods, (value) => value.toMap()),
+      'authenticationMethods': pulumi.Input.mapInputValue<List<BrokerAuthenticatorMethodsResponse>, List<Map<String, dynamic>>>(authenticationMethods, (value) => pulumi.Input.encodeList<BrokerAuthenticatorMethodsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
     };
   }
 
   factory BrokerAuthenticationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticationPropertiesResponse(
-      authenticationMethods: pulumi.Input.decodeList<BrokerAuthenticatorMethodsResponse>(map['authenticationMethods'], (value) => BrokerAuthenticatorMethodsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
+      authenticationMethods: (pulumi.Input.decodeList<BrokerAuthenticatorMethodsResponse>(map['authenticationMethods'], (value) => BrokerAuthenticatorMethodsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

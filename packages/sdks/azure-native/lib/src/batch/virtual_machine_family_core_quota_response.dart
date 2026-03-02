@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A VM Family and its associated core quota for the Batch account.
 class VirtualMachineFamilyCoreQuotaResponse {
   /// The core quota for the VM family for the Batch account.
-  final int coreQuota;
+  final pulumi.Input<int> coreQuota;
   /// The Virtual Machine family name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [VirtualMachineFamilyCoreQuotaResponse].
   /// [coreQuota] The core quota for the VM family for the Batch account.
@@ -25,8 +26,8 @@ class VirtualMachineFamilyCoreQuotaResponse {
 
   factory VirtualMachineFamilyCoreQuotaResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineFamilyCoreQuotaResponse(
-      coreQuota: map['coreQuota'] as int,
-      name: map['name'] as String,
+      coreQuota: (map['coreQuota'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

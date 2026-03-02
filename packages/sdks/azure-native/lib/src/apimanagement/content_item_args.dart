@@ -25,17 +25,12 @@ class ContentItemArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   ContentItemArgs({
-    pulumi.Output<String>? contentItemId,
-    required pulumi.Output<String> contentTypeId,
-    pulumi.Output<dynamic>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      contentItemId = pulumi.Input.asOptionalInput<String>(contentItemId),
-      contentTypeId = pulumi.Input.asInput<String>(contentTypeId),
-      properties = pulumi.Input.asOptionalInput<dynamic>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.contentItemId,
+    required this.contentTypeId,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ContentItemArgs {
 
   factory ContentItemArgs.fromMap(Map<String, dynamic> map) {
     return ContentItemArgs(
-      contentItemId: map['contentItemId'] == null ? null : pulumi.Output.create<String>(map['contentItemId'] as String),
-      contentTypeId: pulumi.Output.create<String>(map['contentTypeId'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<dynamic>(map['properties']),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      contentItemId: map['contentItemId'] == null ? null : (map['contentItemId'] as String).input(),
+      contentTypeId: (map['contentTypeId'] as String).input(),
+      properties: map['properties'] == null ? null : (map['properties']).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKeyXksKeyConfiguration {
   /// The globally unique identifier for the key
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetKeyXksKeyConfiguration].
   /// [id] The globally unique identifier for the key
@@ -19,7 +20,7 @@ class GetKeyXksKeyConfiguration {
 
   factory GetKeyXksKeyConfiguration.fromMap(Map<String, dynamic> map) {
     return GetKeyXksKeyConfiguration(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

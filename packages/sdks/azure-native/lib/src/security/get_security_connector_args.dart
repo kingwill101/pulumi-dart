@@ -16,11 +16,9 @@ class GetSecurityConnectorArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
   GetSecurityConnectorArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> securityConnectorName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityConnectorName = pulumi.Input.asInput<String>(securityConnectorName);
+    required this.resourceGroupName,
+    required this.securityConnectorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSecurityConnectorArgs {
 
   factory GetSecurityConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityConnectorArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityConnectorName: pulumi.Output.create<String>(map['securityConnectorName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityConnectorName: (map['securityConnectorName'] as String).input(),
     );
   }
 }

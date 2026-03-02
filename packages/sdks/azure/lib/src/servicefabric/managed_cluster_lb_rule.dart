@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedClusterLbRule {
   /// LB Backend port.
-  final int backendPort;
+  final pulumi.Input<int> backendPort;
   /// LB Frontend port.
-  final int frontendPort;
+  final pulumi.Input<int> frontendPort;
   /// Protocol for the probe. Can be one of `tcp`, `udp`, `http`, or `https`.
-  final String probeProtocol;
+  final pulumi.Input<String> probeProtocol;
   /// Path for the probe to check, when probe protocol is set to `http`.
-  final String? probeRequestPath;
+  final pulumi.Input<String>? probeRequestPath;
   /// The transport protocol used in this rule. Can be one of `tcp` or `udp`.
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [ManagedClusterLbRule].
   /// [backendPort] LB Backend port.
@@ -39,11 +40,11 @@ class ManagedClusterLbRule {
 
   factory ManagedClusterLbRule.fromMap(Map<String, dynamic> map) {
     return ManagedClusterLbRule(
-      backendPort: map['backendPort'] as int,
-      frontendPort: map['frontendPort'] as int,
-      probeProtocol: map['probeProtocol'] as String,
-      probeRequestPath: map['probeRequestPath'] == null ? null : map['probeRequestPath'] as String,
-      protocol: map['protocol'] as String,
+      backendPort: (map['backendPort'] as int).input(),
+      frontendPort: (map['frontendPort'] as int).input(),
+      probeProtocol: (map['probeProtocol'] as String).input(),
+      probeRequestPath: map['probeRequestPath'] == null ? null : (map['probeRequestPath'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

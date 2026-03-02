@@ -23,17 +23,12 @@ class ExecutionWorkflowexecutionsV1betaArgs {
   /// [project] Optional.
   /// [workflowId] Required.
   ExecutionWorkflowexecutionsV1betaArgs({
-    pulumi.Output<String>? argument,
-    pulumi.Output<ExecutionCallLogLevelWorkflowexecutionsV1beta>? callLogLevel,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> workflowId,
-  }) :
-      argument = pulumi.Input.asOptionalInput<String>(argument),
-      callLogLevel = pulumi.Input.asOptionalInput<ExecutionCallLogLevelWorkflowexecutionsV1beta>(callLogLevel),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workflowId = pulumi.Input.asInput<String>(workflowId);
+    this.argument,
+    this.callLogLevel,
+    this.location,
+    this.project,
+    required this.workflowId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class ExecutionWorkflowexecutionsV1betaArgs {
 
   factory ExecutionWorkflowexecutionsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ExecutionWorkflowexecutionsV1betaArgs(
-      argument: map['argument'] == null ? null : pulumi.Output.create<String>(map['argument'] as String),
-      callLogLevel: map['callLogLevel'] == null ? null : pulumi.Output.create<ExecutionCallLogLevelWorkflowexecutionsV1beta>(ExecutionCallLogLevelWorkflowexecutionsV1beta.fromValue(map['callLogLevel'] as String)),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workflowId: pulumi.Output.create<String>(map['workflowId'] as String),
+      argument: map['argument'] == null ? null : (map['argument'] as String).input(),
+      callLogLevel: map['callLogLevel'] == null ? null : (ExecutionCallLogLevelWorkflowexecutionsV1beta.fromValue(map['callLogLevel'] as String)).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workflowId: (map['workflowId'] as String).input(),
     );
   }
 }

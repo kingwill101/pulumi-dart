@@ -25,17 +25,12 @@ class ApiMappingArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stage] API stage. Use the `aws.apigatewayv2.Stage` resource to configure an API stage.
   ApiMappingArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? apiMappingKey,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> stage,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      apiMappingKey = pulumi.Input.asOptionalInput<String>(apiMappingKey),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      stage = pulumi.Input.asInput<String>(stage);
+    required this.apiId,
+    this.apiMappingKey,
+    required this.domainName,
+    this.region,
+    required this.stage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ApiMappingArgs {
 
   factory ApiMappingArgs.fromMap(Map<String, dynamic> map) {
     return ApiMappingArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      apiMappingKey: map['apiMappingKey'] == null ? null : pulumi.Output.create<String>(map['apiMappingKey'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      stage: pulumi.Output.create<String>(map['stage'] as String),
+      apiId: (map['apiId'] as String).input(),
+      apiMappingKey: map['apiMappingKey'] == null ? null : (map['apiMappingKey'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      stage: (map['stage'] as String).input(),
     );
   }
 }

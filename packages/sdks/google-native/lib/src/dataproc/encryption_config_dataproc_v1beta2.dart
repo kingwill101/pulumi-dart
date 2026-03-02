@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Encryption settings for the cluster.
 class EncryptionConfigDataprocV1beta2 {
   /// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-  final String? gcePdKmsKeyName;
+  final pulumi.Input<String>? gcePdKmsKeyName;
 
   /// Creates a new [EncryptionConfigDataprocV1beta2].
   /// [gcePdKmsKeyName] Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
@@ -20,7 +21,7 @@ class EncryptionConfigDataprocV1beta2 {
 
   factory EncryptionConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigDataprocV1beta2(
-      gcePdKmsKeyName: map['gcePdKmsKeyName'] == null ? null : map['gcePdKmsKeyName'] as String,
+      gcePdKmsKeyName: map['gcePdKmsKeyName'] == null ? null : (map['gcePdKmsKeyName'] as String).input(),
     );
   }
 }

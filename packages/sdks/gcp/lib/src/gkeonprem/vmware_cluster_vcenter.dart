@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VMwareClusterVcenter {
   /// (Output)
   /// The vCenter IP address.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Contains the vCenter CA certificate public key for SSL verification.
-  final String? caCertData;
+  final pulumi.Input<String>? caCertData;
   /// The name of the vCenter cluster for the user cluster.
-  final String? cluster;
+  final pulumi.Input<String>? cluster;
   /// The name of the vCenter datacenter for the user cluster.
-  final String? datacenter;
+  final pulumi.Input<String>? datacenter;
   /// The name of the vCenter datastore for the user cluster.
-  final String? datastore;
+  final pulumi.Input<String>? datastore;
   /// The name of the vCenter folder for the user cluster.
-  final String? folder;
+  final pulumi.Input<String>? folder;
   /// The name of the vCenter resource pool for the user cluster.
-  final String? resourcePool;
+  final pulumi.Input<String>? resourcePool;
   /// The name of the vCenter storage policy for the user cluster.
-  final String? storagePolicyName;
+  final pulumi.Input<String>? storagePolicyName;
 
   /// Creates a new [VMwareClusterVcenter].
   /// [address] (Output)
@@ -55,14 +56,14 @@ class VMwareClusterVcenter {
 
   factory VMwareClusterVcenter.fromMap(Map<String, dynamic> map) {
     return VMwareClusterVcenter(
-      address: map['address'] == null ? null : map['address'] as String,
-      caCertData: map['caCertData'] == null ? null : map['caCertData'] as String,
-      cluster: map['cluster'] == null ? null : map['cluster'] as String,
-      datacenter: map['datacenter'] == null ? null : map['datacenter'] as String,
-      datastore: map['datastore'] == null ? null : map['datastore'] as String,
-      folder: map['folder'] == null ? null : map['folder'] as String,
-      resourcePool: map['resourcePool'] == null ? null : map['resourcePool'] as String,
-      storagePolicyName: map['storagePolicyName'] == null ? null : map['storagePolicyName'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      caCertData: map['caCertData'] == null ? null : (map['caCertData'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
+      datacenter: map['datacenter'] == null ? null : (map['datacenter'] as String).input(),
+      datastore: map['datastore'] == null ? null : (map['datastore'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      resourcePool: map['resourcePool'] == null ? null : (map['resourcePool'] as String).input(),
+      storagePolicyName: map['storagePolicyName'] == null ? null : (map['storagePolicyName'] as String).input(),
     );
   }
 }

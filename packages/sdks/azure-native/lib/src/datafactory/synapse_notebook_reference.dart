@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Synapse notebook reference type.
 class SynapseNotebookReference {
   /// Reference notebook name. Type: string (or Expression with resultType string).
-  final dynamic referenceName;
+  final pulumi.Input<dynamic> referenceName;
   /// Synapse notebook reference type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SynapseNotebookReference].
   /// [referenceName] Reference notebook name. Type: string (or Expression with resultType string).
@@ -25,8 +26,8 @@ class SynapseNotebookReference {
 
   factory SynapseNotebookReference.fromMap(Map<String, dynamic> map) {
     return SynapseNotebookReference(
-      referenceName: map['referenceName'],
-      type: map['type'] as String,
+      referenceName: (map['referenceName']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

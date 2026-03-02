@@ -40,25 +40,16 @@ class V2modelsBotLocaleArgs {
   /// [timeouts] Optional.
   /// [voiceSettings] Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. See `voice_settings`.
   V2modelsBotLocaleArgs({
-    required pulumi.Output<String> botId,
-    required pulumi.Output<String> botVersion,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> localeId,
-    required pulumi.Output<double> nLuIntentConfidenceThreshold,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<V2modelsBotLocaleTimeouts>? timeouts,
-    pulumi.Output<V2modelsBotLocaleVoiceSettings>? voiceSettings,
-  }) :
-      botId = pulumi.Input.asInput<String>(botId),
-      botVersion = pulumi.Input.asInput<String>(botVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      localeId = pulumi.Input.asInput<String>(localeId),
-      nLuIntentConfidenceThreshold = pulumi.Input.asInput<double>(nLuIntentConfidenceThreshold),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<V2modelsBotLocaleTimeouts>(timeouts),
-      voiceSettings = pulumi.Input.asOptionalInput<V2modelsBotLocaleVoiceSettings>(voiceSettings);
+    required this.botId,
+    required this.botVersion,
+    this.description,
+    required this.localeId,
+    required this.nLuIntentConfidenceThreshold,
+    this.name,
+    this.region,
+    this.timeouts,
+    this.voiceSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class V2modelsBotLocaleArgs {
 
   factory V2modelsBotLocaleArgs.fromMap(Map<String, dynamic> map) {
     return V2modelsBotLocaleArgs(
-      botId: pulumi.Output.create<String>(map['botId'] as String),
-      botVersion: pulumi.Output.create<String>(map['botVersion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      localeId: pulumi.Output.create<String>(map['localeId'] as String),
-      nLuIntentConfidenceThreshold: pulumi.Output.create<double>(map['nLuIntentConfidenceThreshold'] as double),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<V2modelsBotLocaleTimeouts>(V2modelsBotLocaleTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      voiceSettings: map['voiceSettings'] == null ? null : pulumi.Output.create<V2modelsBotLocaleVoiceSettings>(V2modelsBotLocaleVoiceSettings.fromMap((map['voiceSettings'] as Map).cast<String, dynamic>())),
+      botId: (map['botId'] as String).input(),
+      botVersion: (map['botVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      localeId: (map['localeId'] as String).input(),
+      nLuIntentConfidenceThreshold: (map['nLuIntentConfidenceThreshold'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (V2modelsBotLocaleTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      voiceSettings: map['voiceSettings'] == null ? null : (V2modelsBotLocaleVoiceSettings.fromMap((map['voiceSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

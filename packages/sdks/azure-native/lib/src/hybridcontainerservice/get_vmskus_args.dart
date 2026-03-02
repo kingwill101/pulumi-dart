@@ -13,9 +13,8 @@ class GetVMSkusArgs {
   /// Creates a new [GetVMSkusArgs].
   /// [customLocationResourceUri] The fully qualified Azure Resource Manager identifier of the custom location resource.
   GetVMSkusArgs({
-    required pulumi.Output<String> customLocationResourceUri,
-  }) :
-      customLocationResourceUri = pulumi.Input.asInput<String>(customLocationResourceUri);
+    required this.customLocationResourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetVMSkusArgs {
 
   factory GetVMSkusArgs.fromMap(Map<String, dynamic> map) {
     return GetVMSkusArgs(
-      customLocationResourceUri: pulumi.Output.create<String>(map['customLocationResourceUri'] as String),
+      customLocationResourceUri: (map['customLocationResourceUri'] as String).input(),
     );
   }
 }

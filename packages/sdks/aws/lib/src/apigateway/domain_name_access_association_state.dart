@@ -28,21 +28,14 @@ class DomainNameAccessAssociationState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   DomainNameAccessAssociationState({
-    pulumi.Output<String>? accessAssociationSource,
-    pulumi.Output<String>? accessAssociationSourceType,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? domainNameArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      accessAssociationSource = pulumi.Input.asOptionalInput<String>(accessAssociationSource),
-      accessAssociationSourceType = pulumi.Input.asOptionalInput<String>(accessAssociationSourceType),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      domainNameArn = pulumi.Input.asOptionalInput<String>(domainNameArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.accessAssociationSource,
+    this.accessAssociationSourceType,
+    this.arn,
+    this.domainNameArn,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class DomainNameAccessAssociationState {
 
   factory DomainNameAccessAssociationState.fromMap(Map<String, dynamic> map) {
     return DomainNameAccessAssociationState(
-      accessAssociationSource: map['accessAssociationSource'] == null ? null : pulumi.Output.create<String>(map['accessAssociationSource'] as String),
-      accessAssociationSourceType: map['accessAssociationSourceType'] == null ? null : pulumi.Output.create<String>(map['accessAssociationSourceType'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      domainNameArn: map['domainNameArn'] == null ? null : pulumi.Output.create<String>(map['domainNameArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      accessAssociationSource: map['accessAssociationSource'] == null ? null : (map['accessAssociationSource'] as String).input(),
+      accessAssociationSourceType: map['accessAssociationSourceType'] == null ? null : (map['accessAssociationSourceType'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      domainNameArn: map['domainNameArn'] == null ? null : (map['domainNameArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

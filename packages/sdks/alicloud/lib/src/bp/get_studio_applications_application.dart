@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStudioApplicationsApplication {
   /// The ID of the Application.
-  final String applicationId;
+  final pulumi.Input<String> applicationId;
   /// The name of the Application.
-  final String applicationName;
+  final pulumi.Input<String> applicationName;
   /// The creation time of the Application.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the Application.
-  final String id;
+  final pulumi.Input<String> id;
   /// The image url of the Application.
-  final String imageUrl;
+  final pulumi.Input<String> imageUrl;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The status of the Application. Valid values: `success`, `release`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The topo url of the Application.
-  final String topoUrl;
+  final pulumi.Input<String> topoUrl;
 
   /// Creates a new [GetStudioApplicationsApplication].
   /// [applicationId] The ID of the Application.
@@ -54,14 +55,14 @@ class GetStudioApplicationsApplication {
 
   factory GetStudioApplicationsApplication.fromMap(Map<String, dynamic> map) {
     return GetStudioApplicationsApplication(
-      applicationId: map['applicationId'] as String,
-      applicationName: map['applicationName'] as String,
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      imageUrl: map['imageUrl'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      status: map['status'] as String,
-      topoUrl: map['topoUrl'] as String,
+      applicationId: (map['applicationId'] as String).input(),
+      applicationName: (map['applicationName'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      imageUrl: (map['imageUrl'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      topoUrl: (map['topoUrl'] as String).input(),
     );
   }
 }

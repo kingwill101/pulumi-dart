@@ -59,27 +59,17 @@ class GetAmiArgs {
   /// [tags] Any tags assigned to the image.
   /// [uefiData] (Optional) Base64 representation of the non-volatile UEFI variable store.
   GetAmiArgs({
-    pulumi.Output<bool>? allowUnsafeFilter,
-    pulumi.Output<List<String>>? executableUsers,
-    pulumi.Output<List<GetAmiFilter>>? filters,
-    pulumi.Output<bool>? includeDeprecated,
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<List<String>>? owners,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? uefiData,
-  }) :
-      allowUnsafeFilter = pulumi.Input.asOptionalInput<bool>(allowUnsafeFilter),
-      executableUsers = pulumi.Input.asOptionalInput<List<String>>(executableUsers),
-      filters = pulumi.Input.asOptionalInput<List<GetAmiFilter>>(filters),
-      includeDeprecated = pulumi.Input.asOptionalInput<bool>(includeDeprecated),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      owners = pulumi.Input.asOptionalInput<List<String>>(owners),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      uefiData = pulumi.Input.asOptionalInput<String>(uefiData);
+    this.allowUnsafeFilter,
+    this.executableUsers,
+    this.filters,
+    this.includeDeprecated,
+    this.mostRecent,
+    this.nameRegex,
+    this.owners,
+    this.region,
+    this.tags,
+    this.uefiData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,16 +88,16 @@ class GetAmiArgs {
 
   factory GetAmiArgs.fromMap(Map<String, dynamic> map) {
     return GetAmiArgs(
-      allowUnsafeFilter: map['allowUnsafeFilter'] == null ? null : pulumi.Output.create<bool>(map['allowUnsafeFilter'] as bool),
-      executableUsers: map['executableUsers'] == null ? null : pulumi.Output.create<List<String>>((map['executableUsers'] as List).cast<String>()),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetAmiFilter>>(pulumi.Input.decodeList<GetAmiFilter>(map['filters'], (value) => GetAmiFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      includeDeprecated: map['includeDeprecated'] == null ? null : pulumi.Output.create<bool>(map['includeDeprecated'] as bool),
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      owners: map['owners'] == null ? null : pulumi.Output.create<List<String>>((map['owners'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      uefiData: map['uefiData'] == null ? null : pulumi.Output.create<String>(map['uefiData'] as String),
+      allowUnsafeFilter: map['allowUnsafeFilter'] == null ? null : (map['allowUnsafeFilter'] as bool).input(),
+      executableUsers: map['executableUsers'] == null ? null : ((map['executableUsers'] as List).cast<String>()).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAmiFilter>(map['filters'], (value) => GetAmiFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated'] as bool).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      owners: map['owners'] == null ? null : ((map['owners'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      uefiData: map['uefiData'] == null ? null : (map['uefiData'] as String).input(),
     );
   }
 }

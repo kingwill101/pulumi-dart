@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceSourceNetwork {
   /// Defines the bridge device that connects the network interface to the host's network.
-  final String? bridge;
+  final pulumi.Input<String>? bridge;
   /// Sets the name of the virtual network to which the network interface connects.
-  final String? network;
+  final pulumi.Input<String>? network;
   /// Configures the port group for the network interface, categorizing it within network management frameworks.
-  final String? portGroup;
+  final pulumi.Input<String>? portGroup;
   /// Defines the identifier for the port within the network configuration, aiding in managing network traffic.
-  final String? portId;
+  final pulumi.Input<String>? portId;
 
   /// Creates a new [DomainDevicesInterfaceSourceNetwork].
   /// [bridge] Defines the bridge device that connects the network interface to the host's network.
@@ -34,10 +35,10 @@ class DomainDevicesInterfaceSourceNetwork {
 
   factory DomainDevicesInterfaceSourceNetwork.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceNetwork(
-      bridge: map['bridge'] == null ? null : map['bridge'] as String,
-      network: map['network'] == null ? null : map['network'] as String,
-      portGroup: map['portGroup'] == null ? null : map['portGroup'] as String,
-      portId: map['portId'] == null ? null : map['portId'] as String,
+      bridge: map['bridge'] == null ? null : (map['bridge'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      portGroup: map['portGroup'] == null ? null : (map['portGroup'] as String).input(),
+      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
     );
   }
 }

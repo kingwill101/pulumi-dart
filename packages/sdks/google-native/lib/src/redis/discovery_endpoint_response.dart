@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'psc_config_response.dart';
 
 /// Endpoints on each network, for Redis clients to connect to the cluster.
 class DiscoveryEndpointResponse {
   /// Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname.
-  final String address;
+  final pulumi.Input<String> address;
   /// The port number of the exposed Redis endpoint.
-  final int port;
+  final pulumi.Input<int> port;
   /// Customer configuration for where the endpoint is created and accessed from.
-  final PscConfigResponse pscConfig;
+  final pulumi.Input<PscConfigResponse> pscConfig;
 
   /// Creates a new [DiscoveryEndpointResponse].
   /// [address] Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname.
@@ -25,15 +26,15 @@ class DiscoveryEndpointResponse {
     return <String, dynamic>{
       'address': address,
       'port': port,
-      'pscConfig': pscConfig.toMap(),
+      'pscConfig': pulumi.Input.mapInputValue<PscConfigResponse, Map<String, dynamic>>(pscConfig, (value) => value.toMap()),
     };
   }
 
   factory DiscoveryEndpointResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveryEndpointResponse(
-      address: map['address'] as String,
-      port: map['port'] as int,
-      pscConfig: PscConfigResponse.fromMap((map['pscConfig'] as Map).cast<String, dynamic>()),
+      address: (map['address'] as String).input(),
+      port: (map['port'] as int).input(),
+      pscConfig: (PscConfigResponse.fromMap((map['pscConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

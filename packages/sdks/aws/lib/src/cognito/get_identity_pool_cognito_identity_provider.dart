@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIdentityPoolCognitoIdentityProvider {
-  final String clientId;
-  final String providerName;
-  final bool serverSideTokenCheck;
+  final pulumi.Input<String> clientId;
+  final pulumi.Input<String> providerName;
+  final pulumi.Input<bool> serverSideTokenCheck;
 
   /// Creates a new [GetIdentityPoolCognitoIdentityProvider].
   /// [clientId] Required.
@@ -26,9 +27,9 @@ class GetIdentityPoolCognitoIdentityProvider {
 
   factory GetIdentityPoolCognitoIdentityProvider.fromMap(Map<String, dynamic> map) {
     return GetIdentityPoolCognitoIdentityProvider(
-      clientId: map['clientId'] as String,
-      providerName: map['providerName'] as String,
-      serverSideTokenCheck: map['serverSideTokenCheck'] as bool,
+      clientId: (map['clientId'] as String).input(),
+      providerName: (map['providerName'] as String).input(),
+      serverSideTokenCheck: (map['serverSideTokenCheck'] as bool).input(),
     );
   }
 }

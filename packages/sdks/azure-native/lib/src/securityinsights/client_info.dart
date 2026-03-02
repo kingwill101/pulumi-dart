@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information on the client (user or application) that made some action
 class ClientInfo {
   /// The email of the client.
-  final String? email;
+  final pulumi.Input<String>? email;
   /// The name of the client.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The object id of the client.
-  final String? objectId;
+  final pulumi.Input<String>? objectId;
   /// The user principal name of the client.
-  final String? userPrincipalName;
+  final pulumi.Input<String>? userPrincipalName;
 
   /// Creates a new [ClientInfo].
   /// [email] The email of the client.
@@ -35,10 +36,10 @@ class ClientInfo {
 
   factory ClientInfo.fromMap(Map<String, dynamic> map) {
     return ClientInfo(
-      email: map['email'] == null ? null : map['email'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      userPrincipalName: map['userPrincipalName'] == null ? null : map['userPrincipalName'] as String,
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName'] as String).input(),
     );
   }
 }

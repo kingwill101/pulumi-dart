@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterPscConnection {
   /// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
-  final String address;
+  final pulumi.Input<String> address;
   /// Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
-  final String forwardingRule;
+  final pulumi.Input<String> forwardingRule;
   /// The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
-  final String network;
+  final pulumi.Input<String> network;
   /// Output only. The consumer projectId where the forwarding rule is created from.
-  final String projectId;
+  final pulumi.Input<String> projectId;
   /// Output only. The PSC connection id of the forwarding rule connected to the service attachment.
-  final String pscConnectionId;
+  final pulumi.Input<String> pscConnectionId;
 
   /// Creates a new [GetClusterPscConnection].
   /// [address] Output only. The IP allocated on the consumer network for the PSC forwarding rule.
@@ -39,11 +40,11 @@ class GetClusterPscConnection {
 
   factory GetClusterPscConnection.fromMap(Map<String, dynamic> map) {
     return GetClusterPscConnection(
-      address: map['address'] as String,
-      forwardingRule: map['forwardingRule'] as String,
-      network: map['network'] as String,
-      projectId: map['projectId'] as String,
-      pscConnectionId: map['pscConnectionId'] as String,
+      address: (map['address'] as String).input(),
+      forwardingRule: (map['forwardingRule'] as String).input(),
+      network: (map['network'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
+      pscConnectionId: (map['pscConnectionId'] as String).input(),
     );
   }
 }

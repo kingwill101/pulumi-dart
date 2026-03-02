@@ -23,15 +23,11 @@ class DraArgs {
   /// [properties] Dra model properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   DraArgs({
-    pulumi.Output<String>? fabricAgentName,
-    required pulumi.Output<String> fabricName,
-    required pulumi.Output<DraModelProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      fabricAgentName = pulumi.Input.asOptionalInput<String>(fabricAgentName),
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      properties = pulumi.Input.asInput<DraModelProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.fabricAgentName,
+    required this.fabricName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class DraArgs {
 
   factory DraArgs.fromMap(Map<String, dynamic> map) {
     return DraArgs(
-      fabricAgentName: map['fabricAgentName'] == null ? null : pulumi.Output.create<String>(map['fabricAgentName'] as String),
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      properties: pulumi.Output.create<DraModelProperties>(DraModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      fabricAgentName: map['fabricAgentName'] == null ? null : (map['fabricAgentName'] as String).input(),
+      fabricName: (map['fabricName'] as String).input(),
+      properties: (DraModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

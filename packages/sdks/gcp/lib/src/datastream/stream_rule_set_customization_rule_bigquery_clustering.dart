@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamRuleSetCustomizationRuleBigqueryClustering {
   /// Column names to set as clustering columns.
-  final List<String> columns;
+  final pulumi.Input<List<String>> columns;
 
   /// Creates a new [StreamRuleSetCustomizationRuleBigqueryClustering].
   /// [columns] Column names to set as clustering columns.
@@ -19,7 +20,7 @@ class StreamRuleSetCustomizationRuleBigqueryClustering {
 
   factory StreamRuleSetCustomizationRuleBigqueryClustering.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetCustomizationRuleBigqueryClustering(
-      columns: (map['columns'] as List).cast<String>(),
+      columns: ((map['columns'] as List).cast<String>()).input(),
     );
   }
 }

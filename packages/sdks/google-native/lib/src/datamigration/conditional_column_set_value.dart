@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'source_numeric_filter.dart';
 import 'source_text_filter.dart';
 import 'value_transformation.dart';
@@ -7,13 +8,13 @@ import 'value_transformation.dart';
 /// Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
 class ConditionalColumnSetValue {
   /// Optional. Custom engine specific features.
-  final Map<String, String>? customFeatures;
+  final pulumi.Input<Map<String, String>>? customFeatures;
   /// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
-  final SourceNumericFilter? sourceNumericFilter;
+  final pulumi.Input<SourceNumericFilter>? sourceNumericFilter;
   /// Optional. Optional filter on source column length. Used for text based data types like varchar.
-  final SourceTextFilter? sourceTextFilter;
+  final pulumi.Input<SourceTextFilter>? sourceTextFilter;
   /// Description of data transformation during migration.
-  final ValueTransformation valueTransformation;
+  final pulumi.Input<ValueTransformation> valueTransformation;
 
   /// Creates a new [ConditionalColumnSetValue].
   /// [customFeatures] Optional. Custom engine specific features.
@@ -30,18 +31,18 @@ class ConditionalColumnSetValue {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customFeatures': ?customFeatures,
-      'sourceNumericFilter': ?sourceNumericFilter == null ? null : sourceNumericFilter!.toMap(),
-      'sourceTextFilter': ?sourceTextFilter == null ? null : sourceTextFilter!.toMap(),
-      'valueTransformation': valueTransformation.toMap(),
+      'sourceNumericFilter': ?pulumi.Input.mapOptionalInputValue<SourceNumericFilter, Map<String, dynamic>>(sourceNumericFilter, (value) => value.toMap()),
+      'sourceTextFilter': ?pulumi.Input.mapOptionalInputValue<SourceTextFilter, Map<String, dynamic>>(sourceTextFilter, (value) => value.toMap()),
+      'valueTransformation': pulumi.Input.mapInputValue<ValueTransformation, Map<String, dynamic>>(valueTransformation, (value) => value.toMap()),
     };
   }
 
   factory ConditionalColumnSetValue.fromMap(Map<String, dynamic> map) {
     return ConditionalColumnSetValue(
-      customFeatures: map['customFeatures'] == null ? null : (map['customFeatures'] as Map).cast<String, String>(),
-      sourceNumericFilter: map['sourceNumericFilter'] == null ? null : SourceNumericFilter.fromMap((map['sourceNumericFilter'] as Map).cast<String, dynamic>()),
-      sourceTextFilter: map['sourceTextFilter'] == null ? null : SourceTextFilter.fromMap((map['sourceTextFilter'] as Map).cast<String, dynamic>()),
-      valueTransformation: ValueTransformation.fromMap((map['valueTransformation'] as Map).cast<String, dynamic>()),
+      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures'] as Map).cast<String, String>()).input(),
+      sourceNumericFilter: map['sourceNumericFilter'] == null ? null : (SourceNumericFilter.fromMap((map['sourceNumericFilter'] as Map).cast<String, dynamic>())).input(),
+      sourceTextFilter: map['sourceTextFilter'] == null ? null : (SourceTextFilter.fromMap((map['sourceTextFilter'] as Map).cast<String, dynamic>())).input(),
+      valueTransformation: (ValueTransformation.fromMap((map['valueTransformation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

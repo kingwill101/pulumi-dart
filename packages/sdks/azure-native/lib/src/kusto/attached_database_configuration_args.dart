@@ -41,27 +41,17 @@ class AttachedDatabaseConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tableLevelSharingProperties] Table level sharing specifications
   AttachedDatabaseConfigurationArgs({
-    pulumi.Output<String>? attachedDatabaseConfigurationName,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> clusterResourceId,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? databaseNameOverride,
-    pulumi.Output<String>? databaseNamePrefix,
-    required pulumi.Output<String> defaultPrincipalsModificationKind,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<TableLevelSharingProperties>? tableLevelSharingProperties,
-  }) :
-      attachedDatabaseConfigurationName = pulumi.Input.asOptionalInput<String>(attachedDatabaseConfigurationName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      clusterResourceId = pulumi.Input.asInput<String>(clusterResourceId),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      databaseNameOverride = pulumi.Input.asOptionalInput<String>(databaseNameOverride),
-      databaseNamePrefix = pulumi.Input.asOptionalInput<String>(databaseNamePrefix),
-      defaultPrincipalsModificationKind = pulumi.Input.asInput<String>(defaultPrincipalsModificationKind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tableLevelSharingProperties = pulumi.Input.asOptionalInput<TableLevelSharingProperties>(tableLevelSharingProperties);
+    this.attachedDatabaseConfigurationName,
+    required this.clusterName,
+    required this.clusterResourceId,
+    required this.databaseName,
+    this.databaseNameOverride,
+    this.databaseNamePrefix,
+    required this.defaultPrincipalsModificationKind,
+    this.location,
+    required this.resourceGroupName,
+    this.tableLevelSharingProperties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class AttachedDatabaseConfigurationArgs {
 
   factory AttachedDatabaseConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return AttachedDatabaseConfigurationArgs(
-      attachedDatabaseConfigurationName: map['attachedDatabaseConfigurationName'] == null ? null : pulumi.Output.create<String>(map['attachedDatabaseConfigurationName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      clusterResourceId: pulumi.Output.create<String>(map['clusterResourceId'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      databaseNameOverride: map['databaseNameOverride'] == null ? null : pulumi.Output.create<String>(map['databaseNameOverride'] as String),
-      databaseNamePrefix: map['databaseNamePrefix'] == null ? null : pulumi.Output.create<String>(map['databaseNamePrefix'] as String),
-      defaultPrincipalsModificationKind: pulumi.Output.create<String>(map['defaultPrincipalsModificationKind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : pulumi.Output.create<TableLevelSharingProperties>(TableLevelSharingProperties.fromMap((map['tableLevelSharingProperties'] as Map).cast<String, dynamic>())),
+      attachedDatabaseConfigurationName: map['attachedDatabaseConfigurationName'] == null ? null : (map['attachedDatabaseConfigurationName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      clusterResourceId: (map['clusterResourceId'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      databaseNameOverride: map['databaseNameOverride'] == null ? null : (map['databaseNameOverride'] as String).input(),
+      databaseNamePrefix: map['databaseNamePrefix'] == null ? null : (map['databaseNamePrefix'] as String).input(),
+      defaultPrincipalsModificationKind: (map['defaultPrincipalsModificationKind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : (TableLevelSharingProperties.fromMap((map['tableLevelSharingProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

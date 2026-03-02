@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contact information for a customer account.
 class GoogleCloudChannelV1ContactInfo {
   /// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
-  final String? email;
+  final pulumi.Input<String>? email;
   /// The customer account contact's first name. Optional for Team customers.
-  final String? firstName;
+  final pulumi.Input<String>? firstName;
   /// The customer account contact's last name. Optional for Team customers.
-  final String? lastName;
+  final pulumi.Input<String>? lastName;
   /// The customer account's contact phone number.
-  final String? phone;
+  final pulumi.Input<String>? phone;
   /// Optional. The customer account contact's job title.
-  final String? title;
+  final pulumi.Input<String>? title;
 
   /// Creates a new [GoogleCloudChannelV1ContactInfo].
   /// [email] The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
@@ -40,11 +41,11 @@ class GoogleCloudChannelV1ContactInfo {
 
   factory GoogleCloudChannelV1ContactInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1ContactInfo(
-      email: map['email'] == null ? null : map['email'] as String,
-      firstName: map['firstName'] == null ? null : map['firstName'] as String,
-      lastName: map['lastName'] == null ? null : map['lastName'] as String,
-      phone: map['phone'] == null ? null : map['phone'] as String,
-      title: map['title'] == null ? null : map['title'] as String,
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
+      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

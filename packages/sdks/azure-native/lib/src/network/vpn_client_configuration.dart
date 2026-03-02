@@ -11,31 +11,31 @@ import 'vpn_client_root_certificate.dart';
 /// VpnClientConfiguration for P2S client.
 class VpnClientConfiguration {
   /// The AADAudience property of the VirtualNetworkGateway resource for vpn client connection used for AAD authentication.
-  final String? aadAudience;
+  final pulumi.Input<String>? aadAudience;
   /// The AADIssuer property of the VirtualNetworkGateway resource for vpn client connection used for AAD authentication.
-  final String? aadIssuer;
+  final pulumi.Input<String>? aadIssuer;
   /// The AADTenant property of the VirtualNetworkGateway resource for vpn client connection used for AAD authentication.
-  final String? aadTenant;
+  final pulumi.Input<String>? aadTenant;
   /// The radius server address property of the VirtualNetworkGateway resource for vpn client connection.
-  final String? radiusServerAddress;
+  final pulumi.Input<String>? radiusServerAddress;
   /// The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
-  final String? radiusServerSecret;
+  final pulumi.Input<String>? radiusServerSecret;
   /// The radiusServers property for multiple radius server configuration.
-  final List<RadiusServer>? radiusServers;
+  final pulumi.Input<List<RadiusServer>>? radiusServers;
   /// per ip address pool connection policy for virtual network gateway P2S client.
-  final List<VngClientConnectionConfiguration>? vngClientConnectionConfigurations;
+  final pulumi.Input<List<VngClientConnectionConfiguration>>? vngClientConnectionConfigurations;
   /// VPN authentication types for the virtual network gateway..
-  final List<String>? vpnAuthenticationTypes;
+  final pulumi.Input<List<String>>? vpnAuthenticationTypes;
   /// The reference to the address space resource which represents Address space for P2S VpnClient.
-  final AddressSpace? vpnClientAddressPool;
+  final pulumi.Input<AddressSpace>? vpnClientAddressPool;
   /// VpnClientIpsecPolicies for virtual network gateway P2S client.
-  final List<IpsecPolicy>? vpnClientIpsecPolicies;
+  final pulumi.Input<List<IpsecPolicy>>? vpnClientIpsecPolicies;
   /// VpnClientProtocols for Virtual network gateway.
-  final List<String>? vpnClientProtocols;
+  final pulumi.Input<List<String>>? vpnClientProtocols;
   /// VpnClientRevokedCertificate for Virtual network gateway.
-  final List<VpnClientRevokedCertificate>? vpnClientRevokedCertificates;
+  final pulumi.Input<List<VpnClientRevokedCertificate>>? vpnClientRevokedCertificates;
   /// VpnClientRootCertificate for virtual network gateway.
-  final List<VpnClientRootCertificate>? vpnClientRootCertificates;
+  final pulumi.Input<List<VpnClientRootCertificate>>? vpnClientRootCertificates;
 
   /// Creates a new [VpnClientConfiguration].
   /// [aadAudience] The AADAudience property of the VirtualNetworkGateway resource for vpn client connection used for AAD authentication.
@@ -74,32 +74,32 @@ class VpnClientConfiguration {
       'aadTenant': ?aadTenant,
       'radiusServerAddress': ?radiusServerAddress,
       'radiusServerSecret': ?radiusServerSecret,
-      'radiusServers': ?radiusServers == null ? null : pulumi.Input.encodeList<RadiusServer, Map<String, dynamic>>(radiusServers!, (value) => value.toMap()),
-      'vngClientConnectionConfigurations': ?vngClientConnectionConfigurations == null ? null : pulumi.Input.encodeList<VngClientConnectionConfiguration, Map<String, dynamic>>(vngClientConnectionConfigurations!, (value) => value.toMap()),
+      'radiusServers': ?pulumi.Input.mapOptionalInputValue<List<RadiusServer>, List<Map<String, dynamic>>>(radiusServers, (value) => pulumi.Input.encodeList<RadiusServer, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vngClientConnectionConfigurations': ?pulumi.Input.mapOptionalInputValue<List<VngClientConnectionConfiguration>, List<Map<String, dynamic>>>(vngClientConnectionConfigurations, (value) => pulumi.Input.encodeList<VngClientConnectionConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpnAuthenticationTypes': ?vpnAuthenticationTypes,
-      'vpnClientAddressPool': ?vpnClientAddressPool == null ? null : vpnClientAddressPool!.toMap(),
-      'vpnClientIpsecPolicies': ?vpnClientIpsecPolicies == null ? null : pulumi.Input.encodeList<IpsecPolicy, Map<String, dynamic>>(vpnClientIpsecPolicies!, (value) => value.toMap()),
+      'vpnClientAddressPool': ?pulumi.Input.mapOptionalInputValue<AddressSpace, Map<String, dynamic>>(vpnClientAddressPool, (value) => value.toMap()),
+      'vpnClientIpsecPolicies': ?pulumi.Input.mapOptionalInputValue<List<IpsecPolicy>, List<Map<String, dynamic>>>(vpnClientIpsecPolicies, (value) => pulumi.Input.encodeList<IpsecPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpnClientProtocols': ?vpnClientProtocols,
-      'vpnClientRevokedCertificates': ?vpnClientRevokedCertificates == null ? null : pulumi.Input.encodeList<VpnClientRevokedCertificate, Map<String, dynamic>>(vpnClientRevokedCertificates!, (value) => value.toMap()),
-      'vpnClientRootCertificates': ?vpnClientRootCertificates == null ? null : pulumi.Input.encodeList<VpnClientRootCertificate, Map<String, dynamic>>(vpnClientRootCertificates!, (value) => value.toMap()),
+      'vpnClientRevokedCertificates': ?pulumi.Input.mapOptionalInputValue<List<VpnClientRevokedCertificate>, List<Map<String, dynamic>>>(vpnClientRevokedCertificates, (value) => pulumi.Input.encodeList<VpnClientRevokedCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpnClientRootCertificates': ?pulumi.Input.mapOptionalInputValue<List<VpnClientRootCertificate>, List<Map<String, dynamic>>>(vpnClientRootCertificates, (value) => pulumi.Input.encodeList<VpnClientRootCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VpnClientConfiguration.fromMap(Map<String, dynamic> map) {
     return VpnClientConfiguration(
-      aadAudience: map['aadAudience'] == null ? null : map['aadAudience'] as String,
-      aadIssuer: map['aadIssuer'] == null ? null : map['aadIssuer'] as String,
-      aadTenant: map['aadTenant'] == null ? null : map['aadTenant'] as String,
-      radiusServerAddress: map['radiusServerAddress'] == null ? null : map['radiusServerAddress'] as String,
-      radiusServerSecret: map['radiusServerSecret'] == null ? null : map['radiusServerSecret'] as String,
-      radiusServers: map['radiusServers'] == null ? null : pulumi.Input.decodeList<RadiusServer>(map['radiusServers'], (value) => RadiusServer.fromMap((value as Map).cast<String, dynamic>())),
-      vngClientConnectionConfigurations: map['vngClientConnectionConfigurations'] == null ? null : pulumi.Input.decodeList<VngClientConnectionConfiguration>(map['vngClientConnectionConfigurations'], (value) => VngClientConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      vpnAuthenticationTypes: map['vpnAuthenticationTypes'] == null ? null : (map['vpnAuthenticationTypes'] as List).cast<String>(),
-      vpnClientAddressPool: map['vpnClientAddressPool'] == null ? null : AddressSpace.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>()),
-      vpnClientIpsecPolicies: map['vpnClientIpsecPolicies'] == null ? null : pulumi.Input.decodeList<IpsecPolicy>(map['vpnClientIpsecPolicies'], (value) => IpsecPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      vpnClientProtocols: map['vpnClientProtocols'] == null ? null : (map['vpnClientProtocols'] as List).cast<String>(),
-      vpnClientRevokedCertificates: map['vpnClientRevokedCertificates'] == null ? null : pulumi.Input.decodeList<VpnClientRevokedCertificate>(map['vpnClientRevokedCertificates'], (value) => VpnClientRevokedCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      vpnClientRootCertificates: map['vpnClientRootCertificates'] == null ? null : pulumi.Input.decodeList<VpnClientRootCertificate>(map['vpnClientRootCertificates'], (value) => VpnClientRootCertificate.fromMap((value as Map).cast<String, dynamic>())),
+      aadAudience: map['aadAudience'] == null ? null : (map['aadAudience'] as String).input(),
+      aadIssuer: map['aadIssuer'] == null ? null : (map['aadIssuer'] as String).input(),
+      aadTenant: map['aadTenant'] == null ? null : (map['aadTenant'] as String).input(),
+      radiusServerAddress: map['radiusServerAddress'] == null ? null : (map['radiusServerAddress'] as String).input(),
+      radiusServerSecret: map['radiusServerSecret'] == null ? null : (map['radiusServerSecret'] as String).input(),
+      radiusServers: map['radiusServers'] == null ? null : (pulumi.Input.decodeList<RadiusServer>(map['radiusServers'], (value) => RadiusServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vngClientConnectionConfigurations: map['vngClientConnectionConfigurations'] == null ? null : (pulumi.Input.decodeList<VngClientConnectionConfiguration>(map['vngClientConnectionConfigurations'], (value) => VngClientConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnAuthenticationTypes: map['vpnAuthenticationTypes'] == null ? null : ((map['vpnAuthenticationTypes'] as List).cast<String>()).input(),
+      vpnClientAddressPool: map['vpnClientAddressPool'] == null ? null : (AddressSpace.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>())).input(),
+      vpnClientIpsecPolicies: map['vpnClientIpsecPolicies'] == null ? null : (pulumi.Input.decodeList<IpsecPolicy>(map['vpnClientIpsecPolicies'], (value) => IpsecPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnClientProtocols: map['vpnClientProtocols'] == null ? null : ((map['vpnClientProtocols'] as List).cast<String>()).input(),
+      vpnClientRevokedCertificates: map['vpnClientRevokedCertificates'] == null ? null : (pulumi.Input.decodeList<VpnClientRevokedCertificate>(map['vpnClientRevokedCertificates'], (value) => VpnClientRevokedCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnClientRootCertificates: map['vpnClientRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnClientRootCertificate>(map['vpnClientRootCertificates'], (value) => VpnClientRootCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

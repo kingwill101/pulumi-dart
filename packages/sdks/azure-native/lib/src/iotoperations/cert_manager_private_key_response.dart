@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cert Manager private key properties
 class CertManagerPrivateKeyResponse {
   /// algorithm for private key.
-  final String algorithm;
+  final pulumi.Input<String> algorithm;
   /// cert-manager private key rotationPolicy.
-  final String rotationPolicy;
+  final pulumi.Input<String> rotationPolicy;
 
   /// Creates a new [CertManagerPrivateKeyResponse].
   /// [algorithm] algorithm for private key.
@@ -25,8 +26,8 @@ class CertManagerPrivateKeyResponse {
 
   factory CertManagerPrivateKeyResponse.fromMap(Map<String, dynamic> map) {
     return CertManagerPrivateKeyResponse(
-      algorithm: map['algorithm'] as String,
-      rotationPolicy: map['rotationPolicy'] as String,
+      algorithm: (map['algorithm'] as String).input(),
+      rotationPolicy: (map['rotationPolicy'] as String).input(),
     );
   }
 }

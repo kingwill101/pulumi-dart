@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecretParametersParameter {
   /// The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
-  final String constraints;
+  final pulumi.Input<String> constraints;
   /// The time when the encryption parameter was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The user who created the encryption parameter.
-  final String createdBy;
+  final pulumi.Input<String> createdBy;
   /// The description of the encryption parameter.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Secret Parameter.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the key of Key Management Service (KMS) that is used for encryption.
-  final String keyId;
+  final pulumi.Input<String> keyId;
   /// The version number of the encryption parameter.
-  final int parameterVersion;
+  final pulumi.Input<int> parameterVersion;
   /// The ID of the Resource Group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The ID of the encryption parameter.
-  final String secretParameterId;
+  final pulumi.Input<String> secretParameterId;
   /// The name of the Secret Parameter.
-  final String secretParameterName;
+  final pulumi.Input<String> secretParameterName;
   /// The share type of the encryption parameter.
-  final String shareType;
+  final pulumi.Input<String> shareType;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The type of the parameter.
-  final String type;
+  final pulumi.Input<String> type;
   /// The user who updated the encryption parameter.
-  final String updatedBy;
+  final pulumi.Input<String> updatedBy;
   /// The time when the encryption parameter was updated.
-  final String updatedDate;
+  final pulumi.Input<String> updatedDate;
   /// (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `with_decryption` is set to `true`.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetSecretParametersParameter].
   /// [constraints] The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
@@ -94,22 +95,22 @@ class GetSecretParametersParameter {
 
   factory GetSecretParametersParameter.fromMap(Map<String, dynamic> map) {
     return GetSecretParametersParameter(
-      constraints: map['constraints'] as String,
-      createTime: map['createTime'] as String,
-      createdBy: map['createdBy'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      keyId: map['keyId'] as String,
-      parameterVersion: map['parameterVersion'] as int,
-      resourceGroupId: map['resourceGroupId'] as String,
-      secretParameterId: map['secretParameterId'] as String,
-      secretParameterName: map['secretParameterName'] as String,
-      shareType: map['shareType'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      updatedBy: map['updatedBy'] as String,
-      updatedDate: map['updatedDate'] as String,
-      value: map['value'] as String,
+      constraints: (map['constraints'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      createdBy: (map['createdBy'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      keyId: (map['keyId'] as String).input(),
+      parameterVersion: (map['parameterVersion'] as int).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      secretParameterId: (map['secretParameterId'] as String).input(),
+      secretParameterName: (map['secretParameterName'] as String).input(),
+      shareType: (map['shareType'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      updatedBy: (map['updatedBy'] as String).input(),
+      updatedDate: (map['updatedDate'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

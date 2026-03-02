@@ -37,25 +37,16 @@ class GetQuotaApplicationsArgs {
   /// [quotaCategory] The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
   /// [status] The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
   GetQuotaApplicationsArgs({
-    pulumi.Output<List<GetQuotaApplicationsDimension>>? dimensions,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? keyWord,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> productCode,
-    pulumi.Output<String>? quotaActionCode,
-    pulumi.Output<String>? quotaCategory,
-    pulumi.Output<String>? status,
-  }) :
-      dimensions = pulumi.Input.asOptionalInput<List<GetQuotaApplicationsDimension>>(dimensions),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      keyWord = pulumi.Input.asOptionalInput<String>(keyWord),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      productCode = pulumi.Input.asInput<String>(productCode),
-      quotaActionCode = pulumi.Input.asOptionalInput<String>(quotaActionCode),
-      quotaCategory = pulumi.Input.asOptionalInput<String>(quotaCategory),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.dimensions,
+    this.enableDetails,
+    this.ids,
+    this.keyWord,
+    this.outputFile,
+    required this.productCode,
+    this.quotaActionCode,
+    this.quotaCategory,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class GetQuotaApplicationsArgs {
 
   factory GetQuotaApplicationsArgs.fromMap(Map<String, dynamic> map) {
     return GetQuotaApplicationsArgs(
-      dimensions: map['dimensions'] == null ? null : pulumi.Output.create<List<GetQuotaApplicationsDimension>>(pulumi.Input.decodeList<GetQuotaApplicationsDimension>(map['dimensions'], (value) => GetQuotaApplicationsDimension.fromMap((value as Map).cast<String, dynamic>()))),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      keyWord: map['keyWord'] == null ? null : pulumi.Output.create<String>(map['keyWord'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      productCode: pulumi.Output.create<String>(map['productCode'] as String),
-      quotaActionCode: map['quotaActionCode'] == null ? null : pulumi.Output.create<String>(map['quotaActionCode'] as String),
-      quotaCategory: map['quotaCategory'] == null ? null : pulumi.Output.create<String>(map['quotaCategory'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<GetQuotaApplicationsDimension>(map['dimensions'], (value) => GetQuotaApplicationsDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      keyWord: map['keyWord'] == null ? null : (map['keyWord'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      productCode: (map['productCode'] as String).input(),
+      quotaActionCode: map['quotaActionCode'] == null ? null : (map['quotaActionCode'] as String).input(),
+      quotaCategory: map['quotaCategory'] == null ? null : (map['quotaCategory'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

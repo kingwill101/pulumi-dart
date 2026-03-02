@@ -10,9 +10,8 @@ class SecurityTokenServicePreferencesState {
   /// Creates a new [SecurityTokenServicePreferencesState].
   /// [globalEndpointTokenVersion] The version of the STS global endpoint token. Valid values: `v1Token`, `v2Token`.
   SecurityTokenServicePreferencesState({
-    pulumi.Output<String>? globalEndpointTokenVersion,
-  }) :
-      globalEndpointTokenVersion = pulumi.Input.asOptionalInput<String>(globalEndpointTokenVersion);
+    this.globalEndpointTokenVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class SecurityTokenServicePreferencesState {
 
   factory SecurityTokenServicePreferencesState.fromMap(Map<String, dynamic> map) {
     return SecurityTokenServicePreferencesState(
-      globalEndpointTokenVersion: map['globalEndpointTokenVersion'] == null ? null : pulumi.Output.create<String>(map['globalEndpointTokenVersion'] as String),
+      globalEndpointTokenVersion: map['globalEndpointTokenVersion'] == null ? null : (map['globalEndpointTokenVersion'] as String).input(),
     );
   }
 }

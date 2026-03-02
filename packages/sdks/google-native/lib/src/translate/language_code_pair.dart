@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Used with unidirectional glossaries.
 class LanguageCodePair {
   /// The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
-  final String sourceLanguageCode;
+  final pulumi.Input<String> sourceLanguageCode;
   /// The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
-  final String targetLanguageCode;
+  final pulumi.Input<String> targetLanguageCode;
 
   /// Creates a new [LanguageCodePair].
   /// [sourceLanguageCode] The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
@@ -25,8 +26,8 @@ class LanguageCodePair {
 
   factory LanguageCodePair.fromMap(Map<String, dynamic> map) {
     return LanguageCodePair(
-      sourceLanguageCode: map['sourceLanguageCode'] as String,
-      targetLanguageCode: map['targetLanguageCode'] as String,
+      sourceLanguageCode: (map['sourceLanguageCode'] as String).input(),
+      targetLanguageCode: (map['targetLanguageCode'] as String).input(),
     );
   }
 }

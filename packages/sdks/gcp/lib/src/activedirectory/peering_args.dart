@@ -34,21 +34,14 @@ class PeeringArgs {
   /// [status] The current state of this Peering.
   /// [statusMessage] Additional information about the current status of this peering, if available.
   PeeringArgs({
-    required pulumi.Output<String> authorizedNetwork,
-    required pulumi.Output<String> domainResource,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> peeringId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? statusMessage,
-  }) :
-      authorizedNetwork = pulumi.Input.asInput<String>(authorizedNetwork),
-      domainResource = pulumi.Input.asInput<String>(domainResource),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      peeringId = pulumi.Input.asInput<String>(peeringId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      statusMessage = pulumi.Input.asOptionalInput<String>(statusMessage);
+    required this.authorizedNetwork,
+    required this.domainResource,
+    this.labels,
+    required this.peeringId,
+    this.project,
+    this.status,
+    this.statusMessage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class PeeringArgs {
 
   factory PeeringArgs.fromMap(Map<String, dynamic> map) {
     return PeeringArgs(
-      authorizedNetwork: pulumi.Output.create<String>(map['authorizedNetwork'] as String),
-      domainResource: pulumi.Output.create<String>(map['domainResource'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      peeringId: pulumi.Output.create<String>(map['peeringId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      statusMessage: map['statusMessage'] == null ? null : pulumi.Output.create<String>(map['statusMessage'] as String),
+      authorizedNetwork: (map['authorizedNetwork'] as String).input(),
+      domainResource: (map['domainResource'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      peeringId: (map['peeringId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
     );
   }
 }

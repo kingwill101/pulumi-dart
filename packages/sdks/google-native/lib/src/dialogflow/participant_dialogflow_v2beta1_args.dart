@@ -29,21 +29,14 @@ class ParticipantDialogflowV2beta1Args {
   /// [project] Optional.
   /// [role] Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
   ParticipantDialogflowV2beta1Args({
-    required pulumi.Output<String> conversationId,
-    pulumi.Output<Map<String, String>>? documentsMetadataFilters,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? obfuscatedExternalUserId,
-    pulumi.Output<String>? project,
-    pulumi.Output<ParticipantRoleDialogflowV2beta1>? role,
-  }) :
-      conversationId = pulumi.Input.asInput<String>(conversationId),
-      documentsMetadataFilters = pulumi.Input.asOptionalInput<Map<String, String>>(documentsMetadataFilters),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      obfuscatedExternalUserId = pulumi.Input.asOptionalInput<String>(obfuscatedExternalUserId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<ParticipantRoleDialogflowV2beta1>(role);
+    required this.conversationId,
+    this.documentsMetadataFilters,
+    this.location,
+    this.name,
+    this.obfuscatedExternalUserId,
+    this.project,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class ParticipantDialogflowV2beta1Args {
 
   factory ParticipantDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return ParticipantDialogflowV2beta1Args(
-      conversationId: pulumi.Output.create<String>(map['conversationId'] as String),
-      documentsMetadataFilters: map['documentsMetadataFilters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['documentsMetadataFilters'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      obfuscatedExternalUserId: map['obfuscatedExternalUserId'] == null ? null : pulumi.Output.create<String>(map['obfuscatedExternalUserId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<ParticipantRoleDialogflowV2beta1>(ParticipantRoleDialogflowV2beta1.fromValue(map['role'] as String)),
+      conversationId: (map['conversationId'] as String).input(),
+      documentsMetadataFilters: map['documentsMetadataFilters'] == null ? null : ((map['documentsMetadataFilters'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      obfuscatedExternalUserId: map['obfuscatedExternalUserId'] == null ? null : (map['obfuscatedExternalUserId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (ParticipantRoleDialogflowV2beta1.fromValue(map['role'] as String)).input(),
     );
   }
 }

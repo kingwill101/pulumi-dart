@@ -22,15 +22,11 @@ class GetVpnLinkConnectionIkeSasArgs {
   /// [linkConnectionName] The name of the vpn link connection.
   /// [resourceGroupName] The name of the resource group.
   GetVpnLinkConnectionIkeSasArgs({
-    required pulumi.Output<String> connectionName,
-    required pulumi.Output<String> gatewayName,
-    required pulumi.Output<String> linkConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      linkConnectionName = pulumi.Input.asInput<String>(linkConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.connectionName,
+    required this.gatewayName,
+    required this.linkConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetVpnLinkConnectionIkeSasArgs {
 
   factory GetVpnLinkConnectionIkeSasArgs.fromMap(Map<String, dynamic> map) {
     return GetVpnLinkConnectionIkeSasArgs(
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      linkConnectionName: pulumi.Output.create<String>(map['linkConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      connectionName: (map['connectionName'] as String).input(),
+      gatewayName: (map['gatewayName'] as String).input(),
+      linkConnectionName: (map['linkConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

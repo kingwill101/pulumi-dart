@@ -7,15 +7,15 @@ import 'endpoint_authentication_response.dart';
 /// Account resource properties.
 class AccountResourceResponseProperties {
   /// Account configuration. This can only be set at RecommendationsService Account creation.
-  final String? configuration;
+  final pulumi.Input<String>? configuration;
   /// The list of CORS details.
-  final List<CorsRuleResponse>? cors;
+  final pulumi.Input<List<CorsRuleResponse>>? cors;
   /// The list of service endpoints authentication details.
-  final List<EndpointAuthenticationResponse>? endpointAuthentications;
+  final pulumi.Input<List<EndpointAuthenticationResponse>>? endpointAuthentications;
   /// The resource provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Connection string to write Accounts reports to.
-  final String? reportsConnectionString;
+  final pulumi.Input<String>? reportsConnectionString;
 
   /// Creates a new [AccountResourceResponseProperties].
   /// [configuration] Account configuration. This can only be set at RecommendationsService Account creation.
@@ -34,8 +34,8 @@ class AccountResourceResponseProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configuration': ?configuration,
-      'cors': ?cors == null ? null : pulumi.Input.encodeList<CorsRuleResponse, Map<String, dynamic>>(cors!, (value) => value.toMap()),
-      'endpointAuthentications': ?endpointAuthentications == null ? null : pulumi.Input.encodeList<EndpointAuthenticationResponse, Map<String, dynamic>>(endpointAuthentications!, (value) => value.toMap()),
+      'cors': ?pulumi.Input.mapOptionalInputValue<List<CorsRuleResponse>, List<Map<String, dynamic>>>(cors, (value) => pulumi.Input.encodeList<CorsRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'endpointAuthentications': ?pulumi.Input.mapOptionalInputValue<List<EndpointAuthenticationResponse>, List<Map<String, dynamic>>>(endpointAuthentications, (value) => pulumi.Input.encodeList<EndpointAuthenticationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'reportsConnectionString': ?reportsConnectionString,
     };
@@ -43,11 +43,11 @@ class AccountResourceResponseProperties {
 
   factory AccountResourceResponseProperties.fromMap(Map<String, dynamic> map) {
     return AccountResourceResponseProperties(
-      configuration: map['configuration'] == null ? null : map['configuration'] as String,
-      cors: map['cors'] == null ? null : pulumi.Input.decodeList<CorsRuleResponse>(map['cors'], (value) => CorsRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      endpointAuthentications: map['endpointAuthentications'] == null ? null : pulumi.Input.decodeList<EndpointAuthenticationResponse>(map['endpointAuthentications'], (value) => EndpointAuthenticationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      reportsConnectionString: map['reportsConnectionString'] == null ? null : map['reportsConnectionString'] as String,
+      configuration: map['configuration'] == null ? null : (map['configuration'] as String).input(),
+      cors: map['cors'] == null ? null : (pulumi.Input.decodeList<CorsRuleResponse>(map['cors'], (value) => CorsRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpointAuthentications: map['endpointAuthentications'] == null ? null : (pulumi.Input.decodeList<EndpointAuthenticationResponse>(map['endpointAuthentications'], (value) => EndpointAuthenticationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      reportsConnectionString: map['reportsConnectionString'] == null ? null : (map['reportsConnectionString'] as String).input(),
     );
   }
 }

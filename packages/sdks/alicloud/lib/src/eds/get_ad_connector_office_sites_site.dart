@@ -6,65 +6,65 @@ import 'get_ad_connector_office_sites_site_log.dart';
 
 class GetAdConnectorOfficeSitesSite {
   /// The Name of the ad connector office site.
-  final String adConnectorOfficeSiteName;
+  final pulumi.Input<String> adConnectorOfficeSiteName;
   /// AD Connector Collection of Information.
-  final List<GetAdConnectorOfficeSitesSiteAdConnector> adConnectors;
+  final pulumi.Input<List<GetAdConnectorOfficeSitesSiteAdConnector>> adConnectors;
   /// The Internet Bandwidth Peak. Possible Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// Cloud Enterprise Network Instance Id.
-  final String cenId;
+  final pulumi.Input<String> cenId;
   /// Workspace Corresponds to the Security Office Network of IPv4 Segment.
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// Workspace Creation Time.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Security Group ID.
-  final String customSecurityGroupId;
+  final pulumi.Input<String> customSecurityGroupId;
   /// The method that is used to connect the client to cloud desktops.
-  final String desktopAccessType;
+  final pulumi.Input<String> desktopAccessType;
   /// The endpoint that is used to connect to cloud desktops over a VPC.
-  final String desktopVpcEndpoint;
+  final pulumi.Input<String> desktopVpcEndpoint;
   /// Enterprise Ad Corresponding DNS Address.
-  final List<String> dnsAddresses;
+  final pulumi.Input<List<String>> dnsAddresses;
   /// The Easy-to-Use DNS Name.
-  final String dnsUserName;
+  final pulumi.Input<String> dnsUserName;
   /// Enterprise of Ad Domain Name.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The Domain Administrator's Username.
-  final String domainUserName;
+  final pulumi.Input<String> domainUserName;
   /// Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
-  final bool enableAdminAccess;
+  final pulumi.Input<bool> enableAdminAccess;
   /// Indicates whether the desktop communication feature is enabled for cloud desktops in the same workspace. After the feature is enabled, the cloud desktops in the same workspace can access each other.
-  final bool enableCrossDesktopAccess;
+  final pulumi.Input<bool> enableCrossDesktopAccess;
   /// Whether the Open Internet Access Function.
-  final bool enableInternetAccess;
+  final pulumi.Input<bool> enableInternetAccess;
   /// NAS File System ID.
-  final List<String> fileSystemIds;
+  final pulumi.Input<List<String>> fileSystemIds;
   /// The ID of the Ad Connector Office Site.
-  final String id;
+  final pulumi.Input<String> id;
   /// Registered Log Information.
-  final List<GetAdConnectorOfficeSitesSiteLog> logs;
+  final pulumi.Input<List<GetAdConnectorOfficeSitesSiteLog>> logs;
   /// Whether to Enable Multi-Factor Authentication MFA.
-  final bool mfaEnabled;
+  final pulumi.Input<bool> mfaEnabled;
   /// The ID of the Internet Access.
-  final String networkPackageId;
+  final pulumi.Input<String> networkPackageId;
   /// The ID of the Workspace.
-  final String officeSiteId;
+  final pulumi.Input<String> officeSiteId;
   /// Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
-  final String officeSiteType;
+  final pulumi.Input<String> officeSiteType;
   /// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
-  final bool ssoEnabled;
+  final pulumi.Input<bool> ssoEnabled;
   /// The workspace status.
-  final String status;
+  final pulumi.Input<String> status;
   /// Sub-Domain DNS Address.
-  final List<String> subDomainDnsAddresses;
+  final pulumi.Input<List<String>> subDomainDnsAddresses;
   /// The AD Domain DNS Name.
-  final String subDomainName;
+  final pulumi.Input<String> subDomainName;
   /// The AD Trust Password.
-  final String trustPassword;
+  final pulumi.Input<String> trustPassword;
   /// Security Office VPC ID.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The vswitch ids.
-  final List<String> vswitchIds;
+  final pulumi.Input<List<String>> vswitchIds;
 
   /// Creates a new [GetAdConnectorOfficeSitesSite].
   /// [adConnectorOfficeSiteName] The Name of the ad connector office site.
@@ -133,7 +133,7 @@ class GetAdConnectorOfficeSitesSite {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'adConnectorOfficeSiteName': adConnectorOfficeSiteName,
-      'adConnectors': pulumi.Input.encodeList<GetAdConnectorOfficeSitesSiteAdConnector, Map<String, dynamic>>(adConnectors, (value) => value.toMap()),
+      'adConnectors': pulumi.Input.mapInputValue<List<GetAdConnectorOfficeSitesSiteAdConnector>, List<Map<String, dynamic>>>(adConnectors, (value) => pulumi.Input.encodeList<GetAdConnectorOfficeSitesSiteAdConnector, Map<String, dynamic>>(value, (value) => value.toMap())),
       'bandwidth': bandwidth,
       'cenId': cenId,
       'cidrBlock': cidrBlock,
@@ -150,7 +150,7 @@ class GetAdConnectorOfficeSitesSite {
       'enableInternetAccess': enableInternetAccess,
       'fileSystemIds': fileSystemIds,
       'id': id,
-      'logs': pulumi.Input.encodeList<GetAdConnectorOfficeSitesSiteLog, Map<String, dynamic>>(logs, (value) => value.toMap()),
+      'logs': pulumi.Input.mapInputValue<List<GetAdConnectorOfficeSitesSiteLog>, List<Map<String, dynamic>>>(logs, (value) => pulumi.Input.encodeList<GetAdConnectorOfficeSitesSiteLog, Map<String, dynamic>>(value, (value) => value.toMap())),
       'mfaEnabled': mfaEnabled,
       'networkPackageId': networkPackageId,
       'officeSiteId': officeSiteId,
@@ -167,36 +167,36 @@ class GetAdConnectorOfficeSitesSite {
 
   factory GetAdConnectorOfficeSitesSite.fromMap(Map<String, dynamic> map) {
     return GetAdConnectorOfficeSitesSite(
-      adConnectorOfficeSiteName: map['adConnectorOfficeSiteName'] as String,
-      adConnectors: pulumi.Input.decodeList<GetAdConnectorOfficeSitesSiteAdConnector>(map['adConnectors'], (value) => GetAdConnectorOfficeSitesSiteAdConnector.fromMap((value as Map).cast<String, dynamic>())),
-      bandwidth: map['bandwidth'] as int,
-      cenId: map['cenId'] as String,
-      cidrBlock: map['cidrBlock'] as String,
-      createTime: map['createTime'] as String,
-      customSecurityGroupId: map['customSecurityGroupId'] as String,
-      desktopAccessType: map['desktopAccessType'] as String,
-      desktopVpcEndpoint: map['desktopVpcEndpoint'] as String,
-      dnsAddresses: (map['dnsAddresses'] as List).cast<String>(),
-      dnsUserName: map['dnsUserName'] as String,
-      domainName: map['domainName'] as String,
-      domainUserName: map['domainUserName'] as String,
-      enableAdminAccess: map['enableAdminAccess'] as bool,
-      enableCrossDesktopAccess: map['enableCrossDesktopAccess'] as bool,
-      enableInternetAccess: map['enableInternetAccess'] as bool,
-      fileSystemIds: (map['fileSystemIds'] as List).cast<String>(),
-      id: map['id'] as String,
-      logs: pulumi.Input.decodeList<GetAdConnectorOfficeSitesSiteLog>(map['logs'], (value) => GetAdConnectorOfficeSitesSiteLog.fromMap((value as Map).cast<String, dynamic>())),
-      mfaEnabled: map['mfaEnabled'] as bool,
-      networkPackageId: map['networkPackageId'] as String,
-      officeSiteId: map['officeSiteId'] as String,
-      officeSiteType: map['officeSiteType'] as String,
-      ssoEnabled: map['ssoEnabled'] as bool,
-      status: map['status'] as String,
-      subDomainDnsAddresses: (map['subDomainDnsAddresses'] as List).cast<String>(),
-      subDomainName: map['subDomainName'] as String,
-      trustPassword: map['trustPassword'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchIds: (map['vswitchIds'] as List).cast<String>(),
+      adConnectorOfficeSiteName: (map['adConnectorOfficeSiteName'] as String).input(),
+      adConnectors: (pulumi.Input.decodeList<GetAdConnectorOfficeSitesSiteAdConnector>(map['adConnectors'], (value) => GetAdConnectorOfficeSitesSiteAdConnector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bandwidth: (map['bandwidth'] as int).input(),
+      cenId: (map['cenId'] as String).input(),
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      customSecurityGroupId: (map['customSecurityGroupId'] as String).input(),
+      desktopAccessType: (map['desktopAccessType'] as String).input(),
+      desktopVpcEndpoint: (map['desktopVpcEndpoint'] as String).input(),
+      dnsAddresses: ((map['dnsAddresses'] as List).cast<String>()).input(),
+      dnsUserName: (map['dnsUserName'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      domainUserName: (map['domainUserName'] as String).input(),
+      enableAdminAccess: (map['enableAdminAccess'] as bool).input(),
+      enableCrossDesktopAccess: (map['enableCrossDesktopAccess'] as bool).input(),
+      enableInternetAccess: (map['enableInternetAccess'] as bool).input(),
+      fileSystemIds: ((map['fileSystemIds'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      logs: (pulumi.Input.decodeList<GetAdConnectorOfficeSitesSiteLog>(map['logs'], (value) => GetAdConnectorOfficeSitesSiteLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mfaEnabled: (map['mfaEnabled'] as bool).input(),
+      networkPackageId: (map['networkPackageId'] as String).input(),
+      officeSiteId: (map['officeSiteId'] as String).input(),
+      officeSiteType: (map['officeSiteType'] as String).input(),
+      ssoEnabled: (map['ssoEnabled'] as bool).input(),
+      status: (map['status'] as String).input(),
+      subDomainDnsAddresses: ((map['subDomainDnsAddresses'] as List).cast<String>()).input(),
+      subDomainName: (map['subDomainName'] as String).input(),
+      trustPassword: (map['trustPassword'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchIds: ((map['vswitchIds'] as List).cast<String>()).input(),
     );
   }
 }

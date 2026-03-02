@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of OperationPreferences
 class OperationPreferences {
   /// Property failureToleranceCount
-  final int? failureToleranceCount;
+  final pulumi.Input<int>? failureToleranceCount;
   /// Property failureTolerancePercentage
-  final int? failureTolerancePercentage;
+  final pulumi.Input<int>? failureTolerancePercentage;
   /// Property maxConcurrentCount
-  final int? maxConcurrentCount;
+  final pulumi.Input<int>? maxConcurrentCount;
   /// Property maxConcurrentPercentage
-  final int? maxConcurrentPercentage;
+  final pulumi.Input<int>? maxConcurrentPercentage;
   /// The concurrency type of deploying StackSets operations in regions, could be in parallel or one region at a time
-  final String? regionConcurrencyType;
+  final pulumi.Input<String>? regionConcurrencyType;
   /// Property regionOrder
-  final List<String>? regionOrder;
+  final pulumi.Input<List<String>>? regionOrder;
 
   /// Creates a new [OperationPreferences].
   /// [failureToleranceCount] Property failureToleranceCount
@@ -45,12 +46,12 @@ class OperationPreferences {
 
   factory OperationPreferences.fromMap(Map<String, dynamic> map) {
     return OperationPreferences(
-      failureToleranceCount: map['failureToleranceCount'] == null ? null : map['failureToleranceCount'] as int,
-      failureTolerancePercentage: map['failureTolerancePercentage'] == null ? null : map['failureTolerancePercentage'] as int,
-      maxConcurrentCount: map['maxConcurrentCount'] == null ? null : map['maxConcurrentCount'] as int,
-      maxConcurrentPercentage: map['maxConcurrentPercentage'] == null ? null : map['maxConcurrentPercentage'] as int,
-      regionConcurrencyType: map['regionConcurrencyType'] == null ? null : map['regionConcurrencyType'] as String,
-      regionOrder: map['regionOrder'] == null ? null : (map['regionOrder'] as List).cast<String>(),
+      failureToleranceCount: map['failureToleranceCount'] == null ? null : (map['failureToleranceCount'] as int).input(),
+      failureTolerancePercentage: map['failureTolerancePercentage'] == null ? null : (map['failureTolerancePercentage'] as int).input(),
+      maxConcurrentCount: map['maxConcurrentCount'] == null ? null : (map['maxConcurrentCount'] as int).input(),
+      maxConcurrentPercentage: map['maxConcurrentPercentage'] == null ? null : (map['maxConcurrentPercentage'] as int).input(),
+      regionConcurrencyType: map['regionConcurrencyType'] == null ? null : (map['regionConcurrencyType'] as String).input(),
+      regionOrder: map['regionOrder'] == null ? null : ((map['regionOrder'] as List).cast<String>()).input(),
     );
   }
 }

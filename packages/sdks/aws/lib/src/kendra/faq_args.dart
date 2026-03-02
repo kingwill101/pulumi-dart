@@ -34,25 +34,16 @@ class FaqArgs {
   /// [s3Path] The S3 location of the FAQ input data. Detailed below.
   /// [tags] Optional.
   FaqArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fileFormat,
-    required pulumi.Output<String> indexId,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    required pulumi.Output<FaqS3Path> s3Path,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileFormat = pulumi.Input.asOptionalInput<String>(fileFormat),
-      indexId = pulumi.Input.asInput<String>(indexId),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      s3Path = pulumi.Input.asInput<FaqS3Path>(s3Path),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.fileFormat,
+    required this.indexId,
+    this.languageCode,
+    this.name,
+    this.region,
+    required this.roleArn,
+    required this.s3Path,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class FaqArgs {
 
   factory FaqArgs.fromMap(Map<String, dynamic> map) {
     return FaqArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileFormat: map['fileFormat'] == null ? null : pulumi.Output.create<String>(map['fileFormat'] as String),
-      indexId: pulumi.Output.create<String>(map['indexId'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      s3Path: pulumi.Output.create<FaqS3Path>(FaqS3Path.fromMap((map['s3Path'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
+      indexId: (map['indexId'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      s3Path: (FaqS3Path.fromMap((map['s3Path'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -50,31 +50,19 @@ class SecurityGroupRuleArgs {
   /// [toPort] End port (or ICMP code if protocol is "icmp").
   /// [type] Type of rule being created. Valid options are `ingress` (inbound)
   SecurityGroupRuleArgs({
-    pulumi.Output<List<String>>? cidrBlocks,
-    pulumi.Output<String>? description,
-    required pulumi.Output<int> fromPort,
-    pulumi.Output<List<String>>? ipv6CidrBlocks,
-    pulumi.Output<List<String>>? prefixListIds,
-    required pulumi.Output<String> protocol,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> securityGroupId,
-    pulumi.Output<bool>? self,
-    pulumi.Output<String>? sourceSecurityGroupId,
-    required pulumi.Output<int> toPort,
-    required pulumi.Output<String> type,
-  }) :
-      cidrBlocks = pulumi.Input.asOptionalInput<List<String>>(cidrBlocks),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fromPort = pulumi.Input.asInput<int>(fromPort),
-      ipv6CidrBlocks = pulumi.Input.asOptionalInput<List<String>>(ipv6CidrBlocks),
-      prefixListIds = pulumi.Input.asOptionalInput<List<String>>(prefixListIds),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
-      self = pulumi.Input.asOptionalInput<bool>(self),
-      sourceSecurityGroupId = pulumi.Input.asOptionalInput<String>(sourceSecurityGroupId),
-      toPort = pulumi.Input.asInput<int>(toPort),
-      type = pulumi.Input.asInput<String>(type);
+    this.cidrBlocks,
+    this.description,
+    required this.fromPort,
+    this.ipv6CidrBlocks,
+    this.prefixListIds,
+    required this.protocol,
+    this.region,
+    required this.securityGroupId,
+    this.self,
+    this.sourceSecurityGroupId,
+    required this.toPort,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class SecurityGroupRuleArgs {
 
   factory SecurityGroupRuleArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGroupRuleArgs(
-      cidrBlocks: map['cidrBlocks'] == null ? null : pulumi.Output.create<List<String>>((map['cidrBlocks'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fromPort: pulumi.Output.create<int>(map['fromPort'] as int),
-      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : pulumi.Output.create<List<String>>((map['ipv6CidrBlocks'] as List).cast<String>()),
-      prefixListIds: map['prefixListIds'] == null ? null : pulumi.Output.create<List<String>>((map['prefixListIds'] as List).cast<String>()),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupId: pulumi.Output.create<String>(map['securityGroupId'] as String),
-      self: map['self'] == null ? null : pulumi.Output.create<bool>(map['self'] as bool),
-      sourceSecurityGroupId: map['sourceSecurityGroupId'] == null ? null : pulumi.Output.create<String>(map['sourceSecurityGroupId'] as String),
-      toPort: pulumi.Output.create<int>(map['toPort'] as int),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      cidrBlocks: map['cidrBlocks'] == null ? null : ((map['cidrBlocks'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fromPort: (map['fromPort'] as int).input(),
+      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : ((map['ipv6CidrBlocks'] as List).cast<String>()).input(),
+      prefixListIds: map['prefixListIds'] == null ? null : ((map['prefixListIds'] as List).cast<String>()).input(),
+      protocol: (map['protocol'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      self: map['self'] == null ? null : (map['self'] as bool).input(),
+      sourceSecurityGroupId: map['sourceSecurityGroupId'] == null ? null : (map['sourceSecurityGroupId'] as String).input(),
+      toPort: (map['toPort'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

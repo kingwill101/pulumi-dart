@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The native cloud connection configuration
 class DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection {
   /// The data collection service account email address in GCP for this offering
-  final String? serviceAccountEmailAddress;
+  final pulumi.Input<String>? serviceAccountEmailAddress;
   /// The data collection GCP workload identity provider id for this offering
-  final String? workloadIdentityProviderId;
+  final pulumi.Input<String>? workloadIdentityProviderId;
 
   /// Creates a new [DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection].
   /// [serviceAccountEmailAddress] The data collection service account email address in GCP for this offering
@@ -25,8 +26,8 @@ class DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection {
 
   factory DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection(
-      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : map['serviceAccountEmailAddress'] as String,
-      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : map['workloadIdentityProviderId'] as String,
+      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress'] as String).input(),
+      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId'] as String).input(),
     );
   }
 }

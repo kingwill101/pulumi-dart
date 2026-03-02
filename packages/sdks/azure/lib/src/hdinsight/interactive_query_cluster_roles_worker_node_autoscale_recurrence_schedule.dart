@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrenceSchedule {
   /// The days of the week to perform autoscale. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
-  final List<String> days;
+  final pulumi.Input<List<String>> days;
   /// The number of worker nodes to autoscale at the specified time.
-  final int targetInstanceCount;
+  final pulumi.Input<int> targetInstanceCount;
   /// The time of day to perform the autoscale in 24hour format.
-  final String time;
+  final pulumi.Input<String> time;
 
   /// Creates a new [InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrenceSchedule].
   /// [days] The days of the week to perform autoscale. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
@@ -29,9 +30,9 @@ class InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrenceSchedule {
 
   factory InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrenceSchedule.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrenceSchedule(
-      days: (map['days'] as List).cast<String>(),
-      targetInstanceCount: map['targetInstanceCount'] as int,
-      time: map['time'] as String,
+      days: ((map['days'] as List).cast<String>()).input(),
+      targetInstanceCount: (map['targetInstanceCount'] as int).input(),
+      time: (map['time'] as String).input(),
     );
   }
 }

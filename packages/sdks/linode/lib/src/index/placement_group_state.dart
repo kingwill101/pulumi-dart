@@ -26,19 +26,13 @@ class PlacementGroupState {
   /// [placementGroupType] The placement group type to use when placing Linodes in this group.
   /// [region] The region of the Placement Group.
   PlacementGroupState({
-    pulumi.Output<bool>? isCompliant,
-    pulumi.Output<String>? label,
-    pulumi.Output<List<PlacementGroupMember>>? members,
-    pulumi.Output<String>? placementGroupPolicy,
-    pulumi.Output<String>? placementGroupType,
-    pulumi.Output<String>? region,
-  }) :
-      isCompliant = pulumi.Input.asOptionalInput<bool>(isCompliant),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      members = pulumi.Input.asOptionalInput<List<PlacementGroupMember>>(members),
-      placementGroupPolicy = pulumi.Input.asOptionalInput<String>(placementGroupPolicy),
-      placementGroupType = pulumi.Input.asOptionalInput<String>(placementGroupType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.isCompliant,
+    this.label,
+    this.members,
+    this.placementGroupPolicy,
+    this.placementGroupType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class PlacementGroupState {
 
   factory PlacementGroupState.fromMap(Map<String, dynamic> map) {
     return PlacementGroupState(
-      isCompliant: map['isCompliant'] == null ? null : pulumi.Output.create<bool>(map['isCompliant'] as bool),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<PlacementGroupMember>>(pulumi.Input.decodeList<PlacementGroupMember>(map['members'], (value) => PlacementGroupMember.fromMap((value as Map).cast<String, dynamic>()))),
-      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : pulumi.Output.create<String>(map['placementGroupPolicy'] as String),
-      placementGroupType: map['placementGroupType'] == null ? null : pulumi.Output.create<String>(map['placementGroupType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      isCompliant: map['isCompliant'] == null ? null : (map['isCompliant'] as bool).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      members: map['members'] == null ? null : (pulumi.Input.decodeList<PlacementGroupMember>(map['members'], (value) => PlacementGroupMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : (map['placementGroupPolicy'] as String).input(),
+      placementGroupType: map['placementGroupType'] == null ? null : (map['placementGroupType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

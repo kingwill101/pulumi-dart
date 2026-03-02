@@ -22,15 +22,11 @@ class GetProtectionIntentArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [vaultName] The name of the recovery services vault.
   GetProtectionIntentArgs({
-    required pulumi.Output<String> fabricName,
-    required pulumi.Output<String> intentObjectName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      intentObjectName = pulumi.Input.asInput<String>(intentObjectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.fabricName,
+    required this.intentObjectName,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetProtectionIntentArgs {
 
   factory GetProtectionIntentArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectionIntentArgs(
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      intentObjectName: pulumi.Output.create<String>(map['intentObjectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      fabricName: (map['fabricName'] as String).input(),
+      intentObjectName: (map['intentObjectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

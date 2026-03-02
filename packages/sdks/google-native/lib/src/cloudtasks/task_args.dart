@@ -37,25 +37,16 @@ class TaskArgs {
   /// [responseView] The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
   /// [scheduleTime] The time when the task is scheduled to be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
   TaskArgs({
-    pulumi.Output<AppEngineHttpRequest>? appEngineHttpRequest,
-    pulumi.Output<String>? dispatchDeadline,
-    pulumi.Output<HttpRequest>? httpRequest,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> queueId,
-    pulumi.Output<TaskResponseView>? responseView,
-    pulumi.Output<String>? scheduleTime,
-  }) :
-      appEngineHttpRequest = pulumi.Input.asOptionalInput<AppEngineHttpRequest>(appEngineHttpRequest),
-      dispatchDeadline = pulumi.Input.asOptionalInput<String>(dispatchDeadline),
-      httpRequest = pulumi.Input.asOptionalInput<HttpRequest>(httpRequest),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queueId = pulumi.Input.asInput<String>(queueId),
-      responseView = pulumi.Input.asOptionalInput<TaskResponseView>(responseView),
-      scheduleTime = pulumi.Input.asOptionalInput<String>(scheduleTime);
+    this.appEngineHttpRequest,
+    this.dispatchDeadline,
+    this.httpRequest,
+    this.location,
+    this.name,
+    this.project,
+    required this.queueId,
+    this.responseView,
+    this.scheduleTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class TaskArgs {
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
-      appEngineHttpRequest: map['appEngineHttpRequest'] == null ? null : pulumi.Output.create<AppEngineHttpRequest>(AppEngineHttpRequest.fromMap((map['appEngineHttpRequest'] as Map).cast<String, dynamic>())),
-      dispatchDeadline: map['dispatchDeadline'] == null ? null : pulumi.Output.create<String>(map['dispatchDeadline'] as String),
-      httpRequest: map['httpRequest'] == null ? null : pulumi.Output.create<HttpRequest>(HttpRequest.fromMap((map['httpRequest'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      queueId: pulumi.Output.create<String>(map['queueId'] as String),
-      responseView: map['responseView'] == null ? null : pulumi.Output.create<TaskResponseView>(TaskResponseView.fromValue(map['responseView'] as String)),
-      scheduleTime: map['scheduleTime'] == null ? null : pulumi.Output.create<String>(map['scheduleTime'] as String),
+      appEngineHttpRequest: map['appEngineHttpRequest'] == null ? null : (AppEngineHttpRequest.fromMap((map['appEngineHttpRequest'] as Map).cast<String, dynamic>())).input(),
+      dispatchDeadline: map['dispatchDeadline'] == null ? null : (map['dispatchDeadline'] as String).input(),
+      httpRequest: map['httpRequest'] == null ? null : (HttpRequest.fromMap((map['httpRequest'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      queueId: (map['queueId'] as String).input(),
+      responseView: map['responseView'] == null ? null : (TaskResponseView.fromValue(map['responseView'] as String)).input(),
+      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime'] as String).input(),
     );
   }
 }

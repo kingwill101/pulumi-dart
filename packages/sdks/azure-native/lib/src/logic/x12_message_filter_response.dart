@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The X12 message filter for odata query.
 class X12MessageFilterResponse {
   /// The message filter type.
-  final String messageFilterType;
+  final pulumi.Input<String> messageFilterType;
 
   /// Creates a new [X12MessageFilterResponse].
   /// [messageFilterType] The message filter type.
@@ -20,7 +21,7 @@ class X12MessageFilterResponse {
 
   factory X12MessageFilterResponse.fromMap(Map<String, dynamic> map) {
     return X12MessageFilterResponse(
-      messageFilterType: map['messageFilterType'] as String,
+      messageFilterType: (map['messageFilterType'] as String).input(),
     );
   }
 }

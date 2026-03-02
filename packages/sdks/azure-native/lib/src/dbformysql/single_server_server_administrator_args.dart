@@ -28,19 +28,13 @@ class SingleServerServerAdministratorArgs {
   /// [sid] The server administrator Sid (Secure ID).
   /// [tenantId] The server Active Directory Administrator tenant id.
   SingleServerServerAdministratorArgs({
-    required pulumi.Output<String> administratorType,
-    required pulumi.Output<String> login,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> sid,
-    required pulumi.Output<String> tenantId,
-  }) :
-      administratorType = pulumi.Input.asInput<String>(administratorType),
-      login = pulumi.Input.asInput<String>(login),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      sid = pulumi.Input.asInput<String>(sid),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    required this.administratorType,
+    required this.login,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.sid,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SingleServerServerAdministratorArgs {
 
   factory SingleServerServerAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return SingleServerServerAdministratorArgs(
-      administratorType: pulumi.Output.create<String>(map['administratorType'] as String),
-      login: pulumi.Output.create<String>(map['login'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      sid: pulumi.Output.create<String>(map['sid'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      administratorType: (map['administratorType'] as String).input(),
+      login: (map['login'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      sid: (map['sid'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

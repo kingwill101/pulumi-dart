@@ -43,27 +43,17 @@ class CertificateState {
   /// [subject] The Subject of this Certificate.
   /// [thumbprint] The Thumbprint of this Certificate.
   CertificateState({
-    pulumi.Output<String>? apiManagementName,
-    pulumi.Output<String>? data,
-    pulumi.Output<String>? expiration,
-    pulumi.Output<String>? keyVaultIdentityClientId,
-    pulumi.Output<String>? keyVaultSecretId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? subject,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      apiManagementName = pulumi.Input.asOptionalInput<String>(apiManagementName),
-      data = pulumi.Input.asOptionalInput<String>(data),
-      expiration = pulumi.Input.asOptionalInput<String>(expiration),
-      keyVaultIdentityClientId = pulumi.Input.asOptionalInput<String>(keyVaultIdentityClientId),
-      keyVaultSecretId = pulumi.Input.asOptionalInput<String>(keyVaultSecretId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      subject = pulumi.Input.asOptionalInput<String>(subject),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    this.apiManagementName,
+    this.data,
+    this.expiration,
+    this.keyVaultIdentityClientId,
+    this.keyVaultSecretId,
+    this.name,
+    this.password,
+    this.resourceGroupName,
+    this.subject,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      apiManagementName: map['apiManagementName'] == null ? null : pulumi.Output.create<String>(map['apiManagementName'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      expiration: map['expiration'] == null ? null : pulumi.Output.create<String>(map['expiration'] as String),
-      keyVaultIdentityClientId: map['keyVaultIdentityClientId'] == null ? null : pulumi.Output.create<String>(map['keyVaultIdentityClientId'] as String),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : pulumi.Output.create<String>(map['keyVaultSecretId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subject: map['subject'] == null ? null : pulumi.Output.create<String>(map['subject'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
+      keyVaultIdentityClientId: map['keyVaultIdentityClientId'] == null ? null : (map['keyVaultIdentityClientId'] as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

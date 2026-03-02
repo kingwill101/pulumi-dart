@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIndexIndexStatisticTextDocumentStatistic {
   /// Total size, in bytes, of the indexed documents.
-  final int indexedTextBytes;
+  final pulumi.Input<int> indexedTextBytes;
   /// The number of text documents indexed.
-  final int indexedTextDocumentsCount;
+  final pulumi.Input<int> indexedTextDocumentsCount;
 
   /// Creates a new [GetIndexIndexStatisticTextDocumentStatistic].
   /// [indexedTextBytes] Total size, in bytes, of the indexed documents.
@@ -24,8 +25,8 @@ class GetIndexIndexStatisticTextDocumentStatistic {
 
   factory GetIndexIndexStatisticTextDocumentStatistic.fromMap(Map<String, dynamic> map) {
     return GetIndexIndexStatisticTextDocumentStatistic(
-      indexedTextBytes: map['indexedTextBytes'] as int,
-      indexedTextDocumentsCount: map['indexedTextDocumentsCount'] as int,
+      indexedTextBytes: (map['indexedTextBytes'] as int).input(),
+      indexedTextDocumentsCount: (map['indexedTextDocumentsCount'] as int).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class WebAppAzureStorageAccountsArgs {
   /// [properties] Azure storage accounts.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   WebAppAzureStorageAccountsArgs({
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    pulumi.Output<Map<String, AzureStorageInfoValue>>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<Map<String, AzureStorageInfoValue>>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.kind,
+    required this.name,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class WebAppAzureStorageAccountsArgs {
 
   factory WebAppAzureStorageAccountsArgs.fromMap(Map<String, dynamic> map) {
     return WebAppAzureStorageAccountsArgs(
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<Map<String, AzureStorageInfoValue>>(pulumi.Input.decodeMapValues<AzureStorageInfoValue>(map['properties'], (value) => AzureStorageInfoValue.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeMapValues<AzureStorageInfoValue>(map['properties'], (value) => AzureStorageInfoValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

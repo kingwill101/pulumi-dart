@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deploy_policy_rule_rollout_restriction_time_windows_one_time_window_end_date.dart';
 import 'deploy_policy_rule_rollout_restriction_time_windows_one_time_window_end_time.dart';
 import 'deploy_policy_rule_rollout_restriction_time_windows_one_time_window_start_date.dart';
@@ -8,16 +9,16 @@ import 'deploy_policy_rule_rollout_restriction_time_windows_one_time_window_star
 class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
   /// End date.
   /// Structure is documented below.
-  final DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate endDate;
+  final pulumi.Input<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate> endDate;
   /// End time (exclusive). You may use 24:00 for the end of the day.
   /// Structure is documented below.
-  final DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime endTime;
+  final pulumi.Input<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime> endTime;
   /// Start date.
   /// Structure is documented below.
-  final DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate startDate;
+  final pulumi.Input<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate> startDate;
   /// Start time (inclusive). Use 00:00 for the beginning of the day.
   /// Structure is documented below.
-  final DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime startTime;
+  final pulumi.Input<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime> startTime;
 
   /// Creates a new [DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow].
   /// [endDate] End date.
@@ -33,19 +34,19 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endDate': endDate.toMap(),
-      'endTime': endTime.toMap(),
-      'startDate': startDate.toMap(),
-      'startTime': startTime.toMap(),
+      'endDate': pulumi.Input.mapInputValue<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate, Map<String, dynamic>>(endDate, (value) => value.toMap()),
+      'endTime': pulumi.Input.mapInputValue<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime, Map<String, dynamic>>(endTime, (value) => value.toMap()),
+      'startDate': pulumi.Input.mapInputValue<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate, Map<String, dynamic>>(startDate, (value) => value.toMap()),
+      'startTime': pulumi.Input.mapInputValue<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime, Map<String, dynamic>>(startTime, (value) => value.toMap()),
     };
   }
 
   factory DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow.fromMap(Map<String, dynamic> map) {
     return DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow(
-      endDate: DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>()),
-      endTime: DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime.fromMap((map['endTime'] as Map).cast<String, dynamic>()),
-      startDate: DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>()),
-      startTime: DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      endDate: (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>())).input(),
+      endTime: (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime.fromMap((map['endTime'] as Map).cast<String, dynamic>())).input(),
+      startDate: (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>())).input(),
+      startTime: (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

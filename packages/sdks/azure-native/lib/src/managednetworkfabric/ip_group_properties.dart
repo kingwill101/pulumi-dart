@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IP Group properties.
 class IpGroupProperties {
   /// IP Address type.
-  final String? ipAddressType;
+  final pulumi.Input<String>? ipAddressType;
   /// List of IP Prefixes.
-  final List<String>? ipPrefixes;
+  final pulumi.Input<List<String>>? ipPrefixes;
   /// IP Group name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [IpGroupProperties].
   /// [ipAddressType] IP Address type.
@@ -30,9 +31,9 @@ class IpGroupProperties {
 
   factory IpGroupProperties.fromMap(Map<String, dynamic> map) {
     return IpGroupProperties(
-      ipAddressType: map['ipAddressType'] == null ? null : map['ipAddressType'] as String,
-      ipPrefixes: map['ipPrefixes'] == null ? null : (map['ipPrefixes'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      ipPrefixes: map['ipPrefixes'] == null ? null : ((map['ipPrefixes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

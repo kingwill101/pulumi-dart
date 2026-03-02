@@ -37,21 +37,14 @@ class GetPoolV2Args {
   /// [region] The region in which to obtain the V2 Load Balancer
   /// [tags] A set of tags applied to the loadbalancer's pool. The
   GetPoolV2Args({
-    pulumi.Output<String>? lbMethod,
-    pulumi.Output<String>? loadbalancerId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? poolId,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? tags,
-  }) :
-      lbMethod = pulumi.Input.asOptionalInput<String>(lbMethod),
-      loadbalancerId = pulumi.Input.asOptionalInput<String>(loadbalancerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      poolId = pulumi.Input.asOptionalInput<String>(poolId),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags);
+    this.lbMethod,
+    this.loadbalancerId,
+    this.name,
+    this.poolId,
+    this.protocol,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class GetPoolV2Args {
 
   factory GetPoolV2Args.fromMap(Map<String, dynamic> map) {
     return GetPoolV2Args(
-      lbMethod: map['lbMethod'] == null ? null : pulumi.Output.create<String>(map['lbMethod'] as String),
-      loadbalancerId: map['loadbalancerId'] == null ? null : pulumi.Output.create<String>(map['loadbalancerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      poolId: map['poolId'] == null ? null : pulumi.Output.create<String>(map['poolId'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      lbMethod: map['lbMethod'] == null ? null : (map['lbMethod'] as String).input(),
+      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      poolId: map['poolId'] == null ? null : (map['poolId'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

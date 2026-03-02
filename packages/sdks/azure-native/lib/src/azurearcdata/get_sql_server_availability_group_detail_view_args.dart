@@ -19,13 +19,10 @@ class GetSqlServerAvailabilityGroupDetailViewArgs {
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerInstanceName] Name of SQL Server Instance
   GetSqlServerAvailabilityGroupDetailViewArgs({
-    required pulumi.Output<String> availabilityGroupName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlServerInstanceName,
-  }) :
-      availabilityGroupName = pulumi.Input.asInput<String>(availabilityGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlServerInstanceName = pulumi.Input.asInput<String>(sqlServerInstanceName);
+    required this.availabilityGroupName,
+    required this.resourceGroupName,
+    required this.sqlServerInstanceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSqlServerAvailabilityGroupDetailViewArgs {
 
   factory GetSqlServerAvailabilityGroupDetailViewArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerAvailabilityGroupDetailViewArgs(
-      availabilityGroupName: pulumi.Output.create<String>(map['availabilityGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlServerInstanceName: pulumi.Output.create<String>(map['sqlServerInstanceName'] as String),
+      availabilityGroupName: (map['availabilityGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
     );
   }
 }

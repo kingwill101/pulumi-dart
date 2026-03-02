@@ -25,17 +25,12 @@ class GetAggregateDeliveriesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
   GetAggregateDeliveriesArgs({
-    required pulumi.Output<String> aggregatorId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? status,
-  }) :
-      aggregatorId = pulumi.Input.asInput<String>(aggregatorId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<int>(status);
+    required this.aggregatorId,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetAggregateDeliveriesArgs {
 
   factory GetAggregateDeliveriesArgs.fromMap(Map<String, dynamic> map) {
     return GetAggregateDeliveriesArgs(
-      aggregatorId: pulumi.Output.create<String>(map['aggregatorId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
+      aggregatorId: (map['aggregatorId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
     );
   }
 }

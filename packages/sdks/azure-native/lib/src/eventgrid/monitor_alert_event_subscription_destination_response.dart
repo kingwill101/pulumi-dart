@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about the Monitor Alert destination for an event subscription.
 class MonitorAlertEventSubscriptionDestinationResponse {
   /// The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
   /// Each resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Insights/actionGroups/{ActionGroupName}.
-  final List<String>? actionGroups;
+  final pulumi.Input<List<String>>? actionGroups;
   /// The description that will be attached to every Alert fired through this event subscription.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Type of the endpoint for the event subscription destination.
   /// Expected value is 'MonitorAlert'.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// The severity that will be attached to every Alert fired through this event subscription.
   /// This field must be provided.
-  final String? severity;
+  final pulumi.Input<String>? severity;
 
   /// Creates a new [MonitorAlertEventSubscriptionDestinationResponse].
   /// [actionGroups] The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
@@ -38,10 +39,10 @@ class MonitorAlertEventSubscriptionDestinationResponse {
 
   factory MonitorAlertEventSubscriptionDestinationResponse.fromMap(Map<String, dynamic> map) {
     return MonitorAlertEventSubscriptionDestinationResponse(
-      actionGroups: map['actionGroups'] == null ? null : (map['actionGroups'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      endpointType: map['endpointType'] as String,
-      severity: map['severity'] == null ? null : map['severity'] as String,
+      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
     );
   }
 }

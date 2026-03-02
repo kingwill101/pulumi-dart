@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GalleryApplicationVersionManageAction {
   /// The command to install the Gallery Application. Changing this forces a new resource to be created.
-  final String install;
+  final pulumi.Input<String> install;
   /// The command to remove the Gallery Application. Changing this forces a new resource to be created.
-  final String remove;
+  final pulumi.Input<String> remove;
   /// The command to update the Gallery Application. Changing this forces a new resource to be created.
-  final String? update;
+  final pulumi.Input<String>? update;
 
   /// Creates a new [GalleryApplicationVersionManageAction].
   /// [install] The command to install the Gallery Application. Changing this forces a new resource to be created.
@@ -29,9 +30,9 @@ class GalleryApplicationVersionManageAction {
 
   factory GalleryApplicationVersionManageAction.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationVersionManageAction(
-      install: map['install'] as String,
-      remove: map['remove'] as String,
-      update: map['update'] == null ? null : map['update'] as String,
+      install: (map['install'] as String).input(),
+      remove: (map['remove'] as String).input(),
+      update: map['update'] == null ? null : (map['update'] as String).input(),
     );
   }
 }

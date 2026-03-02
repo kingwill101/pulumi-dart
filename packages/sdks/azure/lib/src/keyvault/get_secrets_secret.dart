@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecretsSecret {
   /// Whether this secret is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The ID of this secret.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of secret.
-  final String name;
+  final pulumi.Input<String> name;
   /// The tags of this secret.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetSecretsSecret].
   /// [enabled] Whether this secret is enabled.
@@ -34,10 +35,10 @@ class GetSecretsSecret {
 
   factory GetSecretsSecret.fromMap(Map<String, dynamic> map) {
     return GetSecretsSecret(
-      enabled: map['enabled'] as bool,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      enabled: (map['enabled'] as bool).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

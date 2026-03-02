@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionNetworkParameters {
   /// The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// The ID of the security group.
-  final String? securityGroupId;
+  final pulumi.Input<String>? securityGroupId;
   /// The ID of the VPC.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
   /// The ID of the VSwitch.
-  final String? vswitcheId;
+  final pulumi.Input<String>? vswitcheId;
 
   /// Creates a new [ConnectionNetworkParameters].
   /// [networkType] The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
@@ -34,10 +35,10 @@ class ConnectionNetworkParameters {
 
   factory ConnectionNetworkParameters.fromMap(Map<String, dynamic> map) {
     return ConnectionNetworkParameters(
-      networkType: map['networkType'] as String,
-      securityGroupId: map['securityGroupId'] == null ? null : map['securityGroupId'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vswitcheId: map['vswitcheId'] == null ? null : map['vswitcheId'] as String,
+      networkType: (map['networkType'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitcheId: map['vswitcheId'] == null ? null : (map['vswitcheId'] as String).input(),
     );
   }
 }

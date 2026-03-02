@@ -15,34 +15,34 @@ import 'windows_profile_response_response.dart';
 
 class ProvisionedClustersResponsePropertiesResponse {
   /// AAD profile for the provisioned cluster.
-  final AADProfileResponseResponse? aadProfile;
+  final pulumi.Input<AADProfileResponseResponse>? aadProfile;
   /// AddonProfiles - Profile of managed cluster add-on.
-  final Map<String, AddonProfilesResponse>? addonProfiles;
+  final pulumi.Input<Map<String, AddonProfilesResponse>>? addonProfiles;
   /// The agent pools of the cluster.
-  final List<NamedAgentPoolProfileResponse>? agentPoolProfiles;
+  final pulumi.Input<List<NamedAgentPoolProfileResponse>>? agentPoolProfiles;
   /// The underlying cloud infra provider properties.
-  final CloudProviderProfileResponse? cloudProviderProfile;
+  final pulumi.Input<CloudProviderProfileResponse>? cloudProviderProfile;
   /// ControlPlane - ControlPlane Configuration
-  final ControlPlaneProfileResponse? controlPlane;
+  final pulumi.Input<ControlPlaneProfileResponse>? controlPlane;
   /// EnableRBAC - Whether to enable Kubernetes Role-Based Access Control.
-  final bool? enableRbac;
+  final pulumi.Input<bool>? enableRbac;
   /// Additional features specs like Arc Agent Onboarding.
-  final ProvisionedClustersCommonPropertiesResponseFeatures? features;
+  final pulumi.Input<ProvisionedClustersCommonPropertiesResponseFeatures>? features;
   /// HttpProxyConfig - Configurations for provisioning the cluster with HTTP proxy servers.
-  final HttpProxyConfigResponseResponse? httpProxyConfig;
+  final pulumi.Input<HttpProxyConfigResponseResponse>? httpProxyConfig;
   /// KubernetesVersion - Version of Kubernetes specified when creating the managed cluster.
-  final String? kubernetesVersion;
+  final pulumi.Input<String>? kubernetesVersion;
   /// LinuxProfile - The profile for Linux VMs in the Provisioned Cluster.
-  final LinuxProfilePropertiesResponse? linuxProfile;
+  final pulumi.Input<LinuxProfilePropertiesResponse>? linuxProfile;
   /// NetworkProfile - Profile of network configuration.
-  final NetworkProfileResponse? networkProfile;
+  final pulumi.Input<NetworkProfileResponse>? networkProfile;
   /// NodeResourceGroup - Name of the resource group containing agent pool nodes.
-  final String? nodeResourceGroup;
-  final String provisioningState;
+  final pulumi.Input<String>? nodeResourceGroup;
+  final pulumi.Input<String> provisioningState;
   /// HybridAKSClusterStatus defines the observed state of HybridAKSCluster
-  final ProvisionedClustersCommonPropertiesResponseStatus status;
+  final pulumi.Input<ProvisionedClustersCommonPropertiesResponseStatus> status;
   /// WindowsProfile - Profile for Windows VMs in the Provisioned Cluster.
-  final WindowsProfileResponseResponse? windowsProfile;
+  final pulumi.Input<WindowsProfileResponseResponse>? windowsProfile;
 
   /// Creates a new [ProvisionedClustersResponsePropertiesResponse].
   /// [aadProfile] AAD profile for the provisioned cluster.
@@ -80,41 +80,41 @@ class ProvisionedClustersResponsePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aadProfile': ?aadProfile == null ? null : aadProfile!.toMap(),
-      'addonProfiles': ?addonProfiles == null ? null : pulumi.Input.encodeMapValues<AddonProfilesResponse, Map<String, dynamic>>(addonProfiles!, (value) => value.toMap()),
-      'agentPoolProfiles': ?agentPoolProfiles == null ? null : pulumi.Input.encodeList<NamedAgentPoolProfileResponse, Map<String, dynamic>>(agentPoolProfiles!, (value) => value.toMap()),
-      'cloudProviderProfile': ?cloudProviderProfile == null ? null : cloudProviderProfile!.toMap(),
-      'controlPlane': ?controlPlane == null ? null : controlPlane!.toMap(),
+      'aadProfile': ?pulumi.Input.mapOptionalInputValue<AADProfileResponseResponse, Map<String, dynamic>>(aadProfile, (value) => value.toMap()),
+      'addonProfiles': ?pulumi.Input.mapOptionalInputValue<Map<String, AddonProfilesResponse>, Map<String, Map<String, dynamic>>>(addonProfiles, (value) => pulumi.Input.encodeMapValues<AddonProfilesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'agentPoolProfiles': ?pulumi.Input.mapOptionalInputValue<List<NamedAgentPoolProfileResponse>, List<Map<String, dynamic>>>(agentPoolProfiles, (value) => pulumi.Input.encodeList<NamedAgentPoolProfileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cloudProviderProfile': ?pulumi.Input.mapOptionalInputValue<CloudProviderProfileResponse, Map<String, dynamic>>(cloudProviderProfile, (value) => value.toMap()),
+      'controlPlane': ?pulumi.Input.mapOptionalInputValue<ControlPlaneProfileResponse, Map<String, dynamic>>(controlPlane, (value) => value.toMap()),
       'enableRbac': ?enableRbac,
-      'features': ?features == null ? null : features!.toMap(),
-      'httpProxyConfig': ?httpProxyConfig == null ? null : httpProxyConfig!.toMap(),
+      'features': ?pulumi.Input.mapOptionalInputValue<ProvisionedClustersCommonPropertiesResponseFeatures, Map<String, dynamic>>(features, (value) => value.toMap()),
+      'httpProxyConfig': ?pulumi.Input.mapOptionalInputValue<HttpProxyConfigResponseResponse, Map<String, dynamic>>(httpProxyConfig, (value) => value.toMap()),
       'kubernetesVersion': ?kubernetesVersion,
-      'linuxProfile': ?linuxProfile == null ? null : linuxProfile!.toMap(),
-      'networkProfile': ?networkProfile == null ? null : networkProfile!.toMap(),
+      'linuxProfile': ?pulumi.Input.mapOptionalInputValue<LinuxProfilePropertiesResponse, Map<String, dynamic>>(linuxProfile, (value) => value.toMap()),
+      'networkProfile': ?pulumi.Input.mapOptionalInputValue<NetworkProfileResponse, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
       'nodeResourceGroup': ?nodeResourceGroup,
       'provisioningState': provisioningState,
-      'status': status.toMap(),
-      'windowsProfile': ?windowsProfile == null ? null : windowsProfile!.toMap(),
+      'status': pulumi.Input.mapInputValue<ProvisionedClustersCommonPropertiesResponseStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'windowsProfile': ?pulumi.Input.mapOptionalInputValue<WindowsProfileResponseResponse, Map<String, dynamic>>(windowsProfile, (value) => value.toMap()),
     };
   }
 
   factory ProvisionedClustersResponsePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProvisionedClustersResponsePropertiesResponse(
-      aadProfile: map['aadProfile'] == null ? null : AADProfileResponseResponse.fromMap((map['aadProfile'] as Map).cast<String, dynamic>()),
-      addonProfiles: map['addonProfiles'] == null ? null : pulumi.Input.decodeMapValues<AddonProfilesResponse>(map['addonProfiles'], (value) => AddonProfilesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      agentPoolProfiles: map['agentPoolProfiles'] == null ? null : pulumi.Input.decodeList<NamedAgentPoolProfileResponse>(map['agentPoolProfiles'], (value) => NamedAgentPoolProfileResponse.fromMap((value as Map).cast<String, dynamic>())),
-      cloudProviderProfile: map['cloudProviderProfile'] == null ? null : CloudProviderProfileResponse.fromMap((map['cloudProviderProfile'] as Map).cast<String, dynamic>()),
-      controlPlane: map['controlPlane'] == null ? null : ControlPlaneProfileResponse.fromMap((map['controlPlane'] as Map).cast<String, dynamic>()),
-      enableRbac: map['enableRbac'] == null ? null : map['enableRbac'] as bool,
-      features: map['features'] == null ? null : ProvisionedClustersCommonPropertiesResponseFeatures.fromMap((map['features'] as Map).cast<String, dynamic>()),
-      httpProxyConfig: map['httpProxyConfig'] == null ? null : HttpProxyConfigResponseResponse.fromMap((map['httpProxyConfig'] as Map).cast<String, dynamic>()),
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : map['kubernetesVersion'] as String,
-      linuxProfile: map['linuxProfile'] == null ? null : LinuxProfilePropertiesResponse.fromMap((map['linuxProfile'] as Map).cast<String, dynamic>()),
-      networkProfile: map['networkProfile'] == null ? null : NetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>()),
-      nodeResourceGroup: map['nodeResourceGroup'] == null ? null : map['nodeResourceGroup'] as String,
-      provisioningState: map['provisioningState'] as String,
-      status: ProvisionedClustersCommonPropertiesResponseStatus.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      windowsProfile: map['windowsProfile'] == null ? null : WindowsProfileResponseResponse.fromMap((map['windowsProfile'] as Map).cast<String, dynamic>()),
+      aadProfile: map['aadProfile'] == null ? null : (AADProfileResponseResponse.fromMap((map['aadProfile'] as Map).cast<String, dynamic>())).input(),
+      addonProfiles: map['addonProfiles'] == null ? null : (pulumi.Input.decodeMapValues<AddonProfilesResponse>(map['addonProfiles'], (value) => AddonProfilesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      agentPoolProfiles: map['agentPoolProfiles'] == null ? null : (pulumi.Input.decodeList<NamedAgentPoolProfileResponse>(map['agentPoolProfiles'], (value) => NamedAgentPoolProfileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudProviderProfile: map['cloudProviderProfile'] == null ? null : (CloudProviderProfileResponse.fromMap((map['cloudProviderProfile'] as Map).cast<String, dynamic>())).input(),
+      controlPlane: map['controlPlane'] == null ? null : (ControlPlaneProfileResponse.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())).input(),
+      enableRbac: map['enableRbac'] == null ? null : (map['enableRbac'] as bool).input(),
+      features: map['features'] == null ? null : (ProvisionedClustersCommonPropertiesResponseFeatures.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
+      httpProxyConfig: map['httpProxyConfig'] == null ? null : (HttpProxyConfigResponseResponse.fromMap((map['httpProxyConfig'] as Map).cast<String, dynamic>())).input(),
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
+      linuxProfile: map['linuxProfile'] == null ? null : (LinuxProfilePropertiesResponse.fromMap((map['linuxProfile'] as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      nodeResourceGroup: map['nodeResourceGroup'] == null ? null : (map['nodeResourceGroup'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      status: (ProvisionedClustersCommonPropertiesResponseStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      windowsProfile: map['windowsProfile'] == null ? null : (WindowsProfileResponseResponse.fromMap((map['windowsProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

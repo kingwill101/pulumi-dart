@@ -38,17 +38,12 @@ class ConsumersIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [serviceName] The name of the service. Used to find the parent resource to bind the IAM policy to
   ConsumersIamMemberArgs({
-    pulumi.Output<ConsumersIamMemberCondition>? condition,
-    required pulumi.Output<String> consumerProject,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> serviceName,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ConsumersIamMemberCondition>(condition),
-      consumerProject = pulumi.Input.asInput<String>(consumerProject),
-      member = pulumi.Input.asInput<String>(member),
-      role = pulumi.Input.asInput<String>(role),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.condition,
+    required this.consumerProject,
+    required this.member,
+    required this.role,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,11 +57,11 @@ class ConsumersIamMemberArgs {
 
   factory ConsumersIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ConsumersIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<ConsumersIamMemberCondition>(ConsumersIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      consumerProject: pulumi.Output.create<String>(map['consumerProject'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      condition: map['condition'] == null ? null : (ConsumersIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      consumerProject: (map['consumerProject'] as String).input(),
+      member: (map['member'] as String).input(),
+      role: (map['role'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

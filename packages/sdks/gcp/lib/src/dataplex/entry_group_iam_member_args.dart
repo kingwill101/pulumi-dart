@@ -45,19 +45,13 @@ class EntryGroupIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   EntryGroupIamMemberArgs({
-    pulumi.Output<EntryGroupIamMemberCondition>? condition,
-    required pulumi.Output<String> entryGroupId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<EntryGroupIamMemberCondition>(condition),
-      entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.entryGroupId,
+    this.location,
+    required this.member,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,12 +66,12 @@ class EntryGroupIamMemberArgs {
 
   factory EntryGroupIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return EntryGroupIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<EntryGroupIamMemberCondition>(EntryGroupIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      entryGroupId: pulumi.Output.create<String>(map['entryGroupId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (EntryGroupIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      entryGroupId: (map['entryGroupId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

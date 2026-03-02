@@ -34,23 +34,15 @@ class WorkloadNetworkPortMirroringArgs {
   /// [revision] NSX revision number.
   /// [source] Source VM Group.
   WorkloadNetworkPortMirroringArgs({
-    pulumi.Output<String>? destination,
-    pulumi.Output<String>? direction,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? portMirroringId,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<double>? revision,
-    pulumi.Output<String>? source,
-  }) :
-      destination = pulumi.Input.asOptionalInput<String>(destination),
-      direction = pulumi.Input.asOptionalInput<String>(direction),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      portMirroringId = pulumi.Input.asOptionalInput<String>(portMirroringId),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      revision = pulumi.Input.asOptionalInput<double>(revision),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    this.destination,
+    this.direction,
+    this.displayName,
+    this.portMirroringId,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+    this.revision,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class WorkloadNetworkPortMirroringArgs {
 
   factory WorkloadNetworkPortMirroringArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkPortMirroringArgs(
-      destination: map['destination'] == null ? null : pulumi.Output.create<String>(map['destination'] as String),
-      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      portMirroringId: map['portMirroringId'] == null ? null : pulumi.Output.create<String>(map['portMirroringId'] as String),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      revision: map['revision'] == null ? null : pulumi.Output.create<double>(map['revision'] as double),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      portMirroringId: map['portMirroringId'] == null ? null : (map['portMirroringId'] as String).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

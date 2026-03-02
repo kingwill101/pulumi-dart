@@ -47,29 +47,18 @@ class RegistrationDomainsV1beta1Args {
   /// [validateOnly] When true, only validation is performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
   /// [yearlyPrice] Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
   RegistrationDomainsV1beta1Args({
-    pulumi.Output<List<RegistrationContactNoticesItemDomainsV1beta1>>? contactNotices,
-    required pulumi.Output<ContactSettingsDomainsV1beta1> contactSettings,
-    pulumi.Output<DnsSettingsDomainsV1beta1>? dnsSettings,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<List<RegistrationDomainNoticesItemDomainsV1beta1>>? domainNotices,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<ManagementSettingsDomainsV1beta1>? managementSettings,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? validateOnly,
-    required pulumi.Output<MoneyDomainsV1beta1> yearlyPrice,
-  }) :
-      contactNotices = pulumi.Input.asOptionalInput<List<RegistrationContactNoticesItemDomainsV1beta1>>(contactNotices),
-      contactSettings = pulumi.Input.asInput<ContactSettingsDomainsV1beta1>(contactSettings),
-      dnsSettings = pulumi.Input.asOptionalInput<DnsSettingsDomainsV1beta1>(dnsSettings),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      domainNotices = pulumi.Input.asOptionalInput<List<RegistrationDomainNoticesItemDomainsV1beta1>>(domainNotices),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managementSettings = pulumi.Input.asOptionalInput<ManagementSettingsDomainsV1beta1>(managementSettings),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      validateOnly = pulumi.Input.asOptionalInput<bool>(validateOnly),
-      yearlyPrice = pulumi.Input.asInput<MoneyDomainsV1beta1>(yearlyPrice);
+    this.contactNotices,
+    required this.contactSettings,
+    this.dnsSettings,
+    required this.domainName,
+    this.domainNotices,
+    this.labels,
+    this.location,
+    this.managementSettings,
+    this.project,
+    this.validateOnly,
+    required this.yearlyPrice,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class RegistrationDomainsV1beta1Args {
 
   factory RegistrationDomainsV1beta1Args.fromMap(Map<String, dynamic> map) {
     return RegistrationDomainsV1beta1Args(
-      contactNotices: map['contactNotices'] == null ? null : pulumi.Output.create<List<RegistrationContactNoticesItemDomainsV1beta1>>(pulumi.Input.decodeList<RegistrationContactNoticesItemDomainsV1beta1>(map['contactNotices'], (value) => RegistrationContactNoticesItemDomainsV1beta1.fromValue(value as String))),
-      contactSettings: pulumi.Output.create<ContactSettingsDomainsV1beta1>(ContactSettingsDomainsV1beta1.fromMap((map['contactSettings'] as Map).cast<String, dynamic>())),
-      dnsSettings: map['dnsSettings'] == null ? null : pulumi.Output.create<DnsSettingsDomainsV1beta1>(DnsSettingsDomainsV1beta1.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      domainNotices: map['domainNotices'] == null ? null : pulumi.Output.create<List<RegistrationDomainNoticesItemDomainsV1beta1>>(pulumi.Input.decodeList<RegistrationDomainNoticesItemDomainsV1beta1>(map['domainNotices'], (value) => RegistrationDomainNoticesItemDomainsV1beta1.fromValue(value as String))),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managementSettings: map['managementSettings'] == null ? null : pulumi.Output.create<ManagementSettingsDomainsV1beta1>(ManagementSettingsDomainsV1beta1.fromMap((map['managementSettings'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      validateOnly: map['validateOnly'] == null ? null : pulumi.Output.create<bool>(map['validateOnly'] as bool),
-      yearlyPrice: pulumi.Output.create<MoneyDomainsV1beta1>(MoneyDomainsV1beta1.fromMap((map['yearlyPrice'] as Map).cast<String, dynamic>())),
+      contactNotices: map['contactNotices'] == null ? null : (pulumi.Input.decodeList<RegistrationContactNoticesItemDomainsV1beta1>(map['contactNotices'], (value) => RegistrationContactNoticesItemDomainsV1beta1.fromValue(value as String))).input(),
+      contactSettings: (ContactSettingsDomainsV1beta1.fromMap((map['contactSettings'] as Map).cast<String, dynamic>())).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (DnsSettingsDomainsV1beta1.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      domainName: (map['domainName'] as String).input(),
+      domainNotices: map['domainNotices'] == null ? null : (pulumi.Input.decodeList<RegistrationDomainNoticesItemDomainsV1beta1>(map['domainNotices'], (value) => RegistrationDomainNoticesItemDomainsV1beta1.fromValue(value as String))).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managementSettings: map['managementSettings'] == null ? null : (ManagementSettingsDomainsV1beta1.fromMap((map['managementSettings'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly'] as bool).input(),
+      yearlyPrice: (MoneyDomainsV1beta1.fromMap((map['yearlyPrice'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

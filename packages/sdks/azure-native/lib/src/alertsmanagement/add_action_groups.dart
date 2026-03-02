@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Add action groups to alert processing rule.
 class AddActionGroups {
   /// List of action group Ids to add to alert processing rule.
-  final List<String> actionGroupIds;
+  final pulumi.Input<List<String>> actionGroupIds;
   /// Action that should be applied.
   /// Expected value is 'AddActionGroups'.
-  final String actionType;
+  final pulumi.Input<String> actionType;
 
   /// Creates a new [AddActionGroups].
   /// [actionGroupIds] List of action group Ids to add to alert processing rule.
@@ -26,8 +27,8 @@ class AddActionGroups {
 
   factory AddActionGroups.fromMap(Map<String, dynamic> map) {
     return AddActionGroups(
-      actionGroupIds: (map['actionGroupIds'] as List).cast<String>(),
-      actionType: map['actionType'] as String,
+      actionGroupIds: ((map['actionGroupIds'] as List).cast<String>()).input(),
+      actionType: (map['actionType'] as String).input(),
     );
   }
 }

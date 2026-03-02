@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureOIDCConfiguration {
   /// The client ID of the federated workload identity.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The subscription ID of the federated workload identity.
-  final String subscriptionId;
+  final pulumi.Input<String> subscriptionId;
   /// The tenant ID of the federated workload identity.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [AzureOIDCConfiguration].
   /// [clientId] The client ID of the federated workload identity.
@@ -29,9 +30,9 @@ class AzureOIDCConfiguration {
 
   factory AzureOIDCConfiguration.fromMap(Map<String, dynamic> map) {
     return AzureOIDCConfiguration(
-      clientId: map['clientId'] as String,
-      subscriptionId: map['subscriptionId'] as String,
-      tenantId: map['tenantId'] as String,
+      clientId: (map['clientId'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TargetGroupTargetFailover {
   /// Indicates how the GWLB handles existing flows when a target is deregistered. Possible values are `rebalance` and `no_rebalance`. Must match the attribute value set for `on_unhealthy`. Default: `no_rebalance`.
-  final String onDeregistration;
+  final pulumi.Input<String> onDeregistration;
   /// Indicates how the GWLB handles existing flows when a target is unhealthy. Possible values are `rebalance` and `no_rebalance`. Must match the attribute value set for `on_deregistration`. Default: `no_rebalance`.
-  final String onUnhealthy;
+  final pulumi.Input<String> onUnhealthy;
 
   /// Creates a new [TargetGroupTargetFailover].
   /// [onDeregistration] Indicates how the GWLB handles existing flows when a target is deregistered. Possible values are `rebalance` and `no_rebalance`. Must match the attribute value set for `on_unhealthy`. Default: `no_rebalance`.
@@ -24,8 +25,8 @@ class TargetGroupTargetFailover {
 
   factory TargetGroupTargetFailover.fromMap(Map<String, dynamic> map) {
     return TargetGroupTargetFailover(
-      onDeregistration: map['onDeregistration'] as String,
-      onUnhealthy: map['onUnhealthy'] as String,
+      onDeregistration: (map['onDeregistration'] as String).input(),
+      onUnhealthy: (map['onUnhealthy'] as String).input(),
     );
   }
 }

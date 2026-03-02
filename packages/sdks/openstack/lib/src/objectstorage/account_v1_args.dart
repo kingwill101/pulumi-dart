@@ -24,13 +24,10 @@ class AccountV1Args {
   /// [projectId] The project ID of the corresponding account. If
   /// [region] The region in which to create the account. If omitted,
   AccountV1Args({
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-  }) :
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.metadata,
+    this.projectId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,9 +39,9 @@ class AccountV1Args {
 
   factory AccountV1Args.fromMap(Map<String, dynamic> map) {
     return AccountV1Args(
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

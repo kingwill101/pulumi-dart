@@ -5,9 +5,9 @@ import 'resource_group_policy_assignment_resource_selector_selector.dart';
 
 class ResourceGroupPolicyAssignmentResourceSelector {
   /// Specifies a name for the resource selector.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// One or more `resource_selector` block as defined below.
-  final List<ResourceGroupPolicyAssignmentResourceSelectorSelector> selectors;
+  final pulumi.Input<List<ResourceGroupPolicyAssignmentResourceSelectorSelector>> selectors;
 
   /// Creates a new [ResourceGroupPolicyAssignmentResourceSelector].
   /// [name] Specifies a name for the resource selector.
@@ -20,14 +20,14 @@ class ResourceGroupPolicyAssignmentResourceSelector {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'selectors': pulumi.Input.encodeList<ResourceGroupPolicyAssignmentResourceSelectorSelector, Map<String, dynamic>>(selectors, (value) => value.toMap()),
+      'selectors': pulumi.Input.mapInputValue<List<ResourceGroupPolicyAssignmentResourceSelectorSelector>, List<Map<String, dynamic>>>(selectors, (value) => pulumi.Input.encodeList<ResourceGroupPolicyAssignmentResourceSelectorSelector, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResourceGroupPolicyAssignmentResourceSelector.fromMap(Map<String, dynamic> map) {
     return ResourceGroupPolicyAssignmentResourceSelector(
-      name: map['name'] == null ? null : map['name'] as String,
-      selectors: pulumi.Input.decodeList<ResourceGroupPolicyAssignmentResourceSelectorSelector>(map['selectors'], (value) => ResourceGroupPolicyAssignmentResourceSelectorSelector.fromMap((value as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      selectors: (pulumi.Input.decodeList<ResourceGroupPolicyAssignmentResourceSelectorSelector>(map['selectors'], (value) => ResourceGroupPolicyAssignmentResourceSelectorSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

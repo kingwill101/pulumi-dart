@@ -22,15 +22,11 @@ class GetDatabaseAccountCassandraTableArgs {
   /// [resourceGroupName] Name of an Azure resource group.
   /// [tableName] Cosmos DB table name.
   GetDatabaseAccountCassandraTableArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> keyspaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> tableName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      keyspaceName = pulumi.Input.asInput<String>(keyspaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    required this.accountName,
+    required this.keyspaceName,
+    required this.resourceGroupName,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDatabaseAccountCassandraTableArgs {
 
   factory GetDatabaseAccountCassandraTableArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseAccountCassandraTableArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      keyspaceName: pulumi.Output.create<String>(map['keyspaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      keyspaceName: (map['keyspaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

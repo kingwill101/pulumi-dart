@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_workload_dataflow_flex_template_request_launch_parameter.dart';
 
 class PipelineWorkloadDataflowFlexTemplateRequest {
   /// Parameter to launch a job from a Flex Template.
   /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
   /// Structure is documented below.
-  final PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter launchParameter;
+  final pulumi.Input<PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter> launchParameter;
   /// The regional endpoint to which to direct the request. For example, us-central1, us-west1.
-  final String location;
+  final pulumi.Input<String> location;
   /// The ID of the Cloud Platform project that the job belongs to.
-  final String projectId;
+  final pulumi.Input<String> projectId;
   /// If true, the request is validated but not actually executed. Defaults to false.
-  final bool? validateOnly;
+  final pulumi.Input<bool>? validateOnly;
 
   /// Creates a new [PipelineWorkloadDataflowFlexTemplateRequest].
   /// [launchParameter] Parameter to launch a job from a Flex Template.
@@ -28,7 +29,7 @@ class PipelineWorkloadDataflowFlexTemplateRequest {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'launchParameter': launchParameter.toMap(),
+      'launchParameter': pulumi.Input.mapInputValue<PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter, Map<String, dynamic>>(launchParameter, (value) => value.toMap()),
       'location': location,
       'projectId': projectId,
       'validateOnly': ?validateOnly,
@@ -37,10 +38,10 @@ class PipelineWorkloadDataflowFlexTemplateRequest {
 
   factory PipelineWorkloadDataflowFlexTemplateRequest.fromMap(Map<String, dynamic> map) {
     return PipelineWorkloadDataflowFlexTemplateRequest(
-      launchParameter: PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter.fromMap((map['launchParameter'] as Map).cast<String, dynamic>()),
-      location: map['location'] as String,
-      projectId: map['projectId'] as String,
-      validateOnly: map['validateOnly'] == null ? null : map['validateOnly'] as bool,
+      launchParameter: (PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter.fromMap((map['launchParameter'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
+      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly'] as bool).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of the delegation.
 class DelegationPropertiesResponse {
   /// The current provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The service name to which the NVA is delegated.
-  final String? serviceName;
+  final pulumi.Input<String>? serviceName;
 
   /// Creates a new [DelegationPropertiesResponse].
   /// [provisioningState] The current provisioning state.
@@ -25,8 +26,8 @@ class DelegationPropertiesResponse {
 
   factory DelegationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DelegationPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
-      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Virtual Machine image for Windows AML Compute
 class VirtualMachineImage {
   /// Virtual Machine image path
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [VirtualMachineImage].
   /// [id] Virtual Machine image path
@@ -20,7 +21,7 @@ class VirtualMachineImage {
 
   factory VirtualMachineImage.fromMap(Map<String, dynamic> map) {
     return VirtualMachineImage(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

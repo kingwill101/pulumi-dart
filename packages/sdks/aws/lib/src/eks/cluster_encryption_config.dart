@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_encryption_config_provider.dart';
 
 class ClusterEncryptionConfig {
   /// Configuration block with provider for encryption. Detailed below.
-  final ClusterEncryptionConfigProvider provider;
+  final pulumi.Input<ClusterEncryptionConfigProvider> provider;
   /// List of strings with resources to be encrypted. Valid values: `secrets`.
-  final List<String> resources;
+  final pulumi.Input<List<String>> resources;
 
   /// Creates a new [ClusterEncryptionConfig].
   /// [provider] Configuration block with provider for encryption. Detailed below.
@@ -18,15 +19,15 @@ class ClusterEncryptionConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'provider': provider.toMap(),
+      'provider': pulumi.Input.mapInputValue<ClusterEncryptionConfigProvider, Map<String, dynamic>>(provider, (value) => value.toMap()),
       'resources': resources,
     };
   }
 
   factory ClusterEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return ClusterEncryptionConfig(
-      provider: ClusterEncryptionConfigProvider.fromMap((map['provider'] as Map).cast<String, dynamic>()),
-      resources: (map['resources'] as List).cast<String>(),
+      provider: (ClusterEncryptionConfigProvider.fromMap((map['provider'] as Map).cast<String, dynamic>())).input(),
+      resources: ((map['resources'] as List).cast<String>()).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetUserPoolsArgs {
   /// [name] Name of the cognito user pools. Name is not a unique attribute for cognito user pool, so multiple pools might be returned with given name. If the pool name is expected to be unique, you can reference the pool id via ```tolist(data.aws_cognito_user_pools.selected.ids)[0]```
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetUserPoolsArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetUserPoolsArgs {
 
   factory GetUserPoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetUserPoolsArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

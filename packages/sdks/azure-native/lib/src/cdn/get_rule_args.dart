@@ -22,15 +22,11 @@ class GetRuleArgs {
   /// [ruleName] Name of the delivery rule which is unique within the endpoint.
   /// [ruleSetName] Name of the rule set under the profile which is unique globally.
   GetRuleArgs({
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleName,
-    required pulumi.Output<String> ruleSetName,
-  }) :
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleName = pulumi.Input.asInput<String>(ruleName),
-      ruleSetName = pulumi.Input.asInput<String>(ruleSetName);
+    required this.profileName,
+    required this.resourceGroupName,
+    required this.ruleName,
+    required this.ruleSetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetRuleArgs {
 
   factory GetRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetRuleArgs(
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
-      ruleSetName: pulumi.Output.create<String>(map['ruleSetName'] as String),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      ruleSetName: (map['ruleSetName'] as String).input(),
     );
   }
 }

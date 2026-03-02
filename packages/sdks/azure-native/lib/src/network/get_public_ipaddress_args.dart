@@ -19,13 +19,10 @@ class GetPublicIPAddressArgs {
   /// [publicIpAddressName] The name of the public IP address.
   /// [resourceGroupName] The name of the resource group.
   GetPublicIPAddressArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> publicIpAddressName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      publicIpAddressName = pulumi.Input.asInput<String>(publicIpAddressName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.expand,
+    required this.publicIpAddressName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPublicIPAddressArgs {
 
   factory GetPublicIPAddressArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIPAddressArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      publicIpAddressName: pulumi.Output.create<String>(map['publicIpAddressName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      publicIpAddressName: (map['publicIpAddressName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

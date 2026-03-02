@@ -21,13 +21,10 @@ class ControlPanelArgs {
   /// [name] Name describing the control panel.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ControlPanelArgs({
-    required pulumi.Output<String> clusterArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterArn = pulumi.Input.asInput<String>(clusterArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.clusterArn,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class ControlPanelArgs {
 
   factory ControlPanelArgs.fromMap(Map<String, dynamic> map) {
     return ControlPanelArgs(
-      clusterArn: pulumi.Output.create<String>(map['clusterArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterArn: (map['clusterArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

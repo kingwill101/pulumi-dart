@@ -6,15 +6,15 @@ import 'private_endpoint_connection_response.dart';
 /// Properties that define a Azure Arc PrivateLinkScope resource.
 class KubernetesConfigurationPrivateLinkScopePropertiesResponse {
   /// Managed Cluster ARM ID for the private link scope  (Required)
-  final String clusterResourceId;
+  final pulumi.Input<String> clusterResourceId;
   /// The collection of associated Private Endpoint Connections.
-  final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// The Guid id of the private link scope.
-  final String privateLinkScopeId;
+  final pulumi.Input<String> privateLinkScopeId;
   /// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Provisioning ,Succeeded, Canceled and Failed.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
 
   /// Creates a new [KubernetesConfigurationPrivateLinkScopePropertiesResponse].
   /// [clusterResourceId] Managed Cluster ARM ID for the private link scope  (Required)
@@ -33,7 +33,7 @@ class KubernetesConfigurationPrivateLinkScopePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterResourceId': clusterResourceId,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'privateLinkScopeId': privateLinkScopeId,
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
@@ -42,11 +42,11 @@ class KubernetesConfigurationPrivateLinkScopePropertiesResponse {
 
   factory KubernetesConfigurationPrivateLinkScopePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesConfigurationPrivateLinkScopePropertiesResponse(
-      clusterResourceId: map['clusterResourceId'] as String,
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      privateLinkScopeId: map['privateLinkScopeId'] as String,
-      provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
+      clusterResourceId: (map['clusterResourceId'] as String).input(),
+      privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateLinkScopeId: (map['privateLinkScopeId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
     );
   }
 }

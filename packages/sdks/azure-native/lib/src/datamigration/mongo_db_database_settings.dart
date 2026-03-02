@@ -6,9 +6,9 @@ import 'mongo_db_collection_settings.dart';
 /// Describes how an individual MongoDB database should be migrated
 class MongoDbDatabaseSettings {
   /// The collections on the source database to migrate to the target. The keys are the unqualified names of the collections.
-  final Map<String, MongoDbCollectionSettings> collections;
+  final pulumi.Input<Map<String, MongoDbCollectionSettings>> collections;
   /// The RUs that should be configured on a CosmosDB target, or null to use the default, or 0 if throughput should not be provisioned for the database. This has no effect on non-CosmosDB targets.
-  final int? targetRUs;
+  final pulumi.Input<int>? targetRUs;
 
   /// Creates a new [MongoDbDatabaseSettings].
   /// [collections] The collections on the source database to migrate to the target. The keys are the unqualified names of the collections.
@@ -20,15 +20,15 @@ class MongoDbDatabaseSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'collections': pulumi.Input.encodeMapValues<MongoDbCollectionSettings, Map<String, dynamic>>(collections, (value) => value.toMap()),
+      'collections': pulumi.Input.mapInputValue<Map<String, MongoDbCollectionSettings>, Map<String, Map<String, dynamic>>>(collections, (value) => pulumi.Input.encodeMapValues<MongoDbCollectionSettings, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetRUs': ?targetRUs,
     };
   }
 
   factory MongoDbDatabaseSettings.fromMap(Map<String, dynamic> map) {
     return MongoDbDatabaseSettings(
-      collections: pulumi.Input.decodeMapValues<MongoDbCollectionSettings>(map['collections'], (value) => MongoDbCollectionSettings.fromMap((value as Map).cast<String, dynamic>())),
-      targetRUs: map['targetRUs'] == null ? null : map['targetRUs'] as int,
+      collections: (pulumi.Input.decodeMapValues<MongoDbCollectionSettings>(map['collections'], (value) => MongoDbCollectionSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetRUs: map['targetRUs'] == null ? null : (map['targetRUs'] as int).input(),
     );
   }
 }

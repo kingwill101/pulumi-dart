@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The upload status of the virtual hard disk
 class VirtualHardDiskUploadStatusResponse {
   /// VirtualHardDisk upload error code
-  final String? errorCode;
+  final pulumi.Input<String>? errorCode;
   /// Descriptive upload error message
-  final String? errorMessage;
+  final pulumi.Input<String>? errorMessage;
   /// The progress of the operation in percentage
-  final double? progressPercentage;
+  final pulumi.Input<double>? progressPercentage;
   /// The status of Uploading virtual hard disk [Succeeded, Failed, InProgress]
-  final String status;
+  final pulumi.Input<String> status;
   /// The uploaded sized of the virtual hard disk in MB
-  final double? uploadedSizeInMB;
+  final pulumi.Input<double>? uploadedSizeInMB;
 
   /// Creates a new [VirtualHardDiskUploadStatusResponse].
   /// [errorCode] VirtualHardDisk upload error code
@@ -40,11 +41,11 @@ class VirtualHardDiskUploadStatusResponse {
 
   factory VirtualHardDiskUploadStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHardDiskUploadStatusResponse(
-      errorCode: map['errorCode'] == null ? null : map['errorCode'] as String,
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
-      progressPercentage: map['progressPercentage'] == null ? null : map['progressPercentage'] as double,
-      status: map['status'] as String,
-      uploadedSizeInMB: map['uploadedSizeInMB'] == null ? null : map['uploadedSizeInMB'] as double,
+      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      progressPercentage: map['progressPercentage'] == null ? null : (map['progressPercentage'] as double).input(),
+      status: (map['status'] as String).input(),
+      uploadedSizeInMB: map['uploadedSizeInMB'] == null ? null : (map['uploadedSizeInMB'] as double).input(),
     );
   }
 }

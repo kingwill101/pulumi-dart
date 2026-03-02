@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies an auto scale rule metric dimension.
 class ScaleRuleMetricDimension {
   /// Name of the dimension.
-  final String dimensionName;
+  final pulumi.Input<String> dimensionName;
   /// the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values
-  final String operator;
+  final pulumi.Input<String> operator;
   /// list of dimension values. For example: ["App1","App2"].
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ScaleRuleMetricDimension].
   /// [dimensionName] Name of the dimension.
@@ -30,9 +31,9 @@ class ScaleRuleMetricDimension {
 
   factory ScaleRuleMetricDimension.fromMap(Map<String, dynamic> map) {
     return ScaleRuleMetricDimension(
-      dimensionName: map['dimensionName'] as String,
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      dimensionName: (map['dimensionName'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

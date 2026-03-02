@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedInstancePrivateLinkServiceConnectionStateProperty {
   /// The private link service connection description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The private link service connection status.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ManagedInstancePrivateLinkServiceConnectionStateProperty].
   /// [description] The private link service connection description.
@@ -24,8 +25,8 @@ class ManagedInstancePrivateLinkServiceConnectionStateProperty {
 
   factory ManagedInstancePrivateLinkServiceConnectionStateProperty.fromMap(Map<String, dynamic> map) {
     return ManagedInstancePrivateLinkServiceConnectionStateProperty(
-      description: map['description'] as String,
-      status: map['status'] as String,
+      description: (map['description'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

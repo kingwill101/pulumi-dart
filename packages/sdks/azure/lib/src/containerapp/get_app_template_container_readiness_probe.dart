@@ -5,25 +5,25 @@ import 'get_app_template_container_readiness_probe_header.dart';
 
 class GetAppTemplateContainerReadinessProbe {
   /// The number of consecutive failures required to consider this probe as failed.
-  final int failureCountThreshold;
+  final pulumi.Input<int> failureCountThreshold;
   /// A `header` block as detailed below.
-  final List<GetAppTemplateContainerReadinessProbeHeader> headers;
+  final pulumi.Input<List<GetAppTemplateContainerReadinessProbeHeader>> headers;
   /// The value for the host header which should be sent with this probe.
-  final String host;
+  final pulumi.Input<String> host;
   /// The number of seconds elapsed after the container has started before the probe is initiated.
-  final int initialDelay;
+  final pulumi.Input<int> initialDelay;
   /// How often, in seconds, the probe should run.
-  final int intervalSeconds;
+  final pulumi.Input<int> intervalSeconds;
   /// The path in the container at which to mount this volume.
-  final String path;
+  final pulumi.Input<String> path;
   /// The port number on which to connect.
-  final int port;
+  final pulumi.Input<int> port;
   /// The number of consecutive successful responses required to consider this probe as successful.
-  final int successCountThreshold;
+  final pulumi.Input<int> successCountThreshold;
   /// Time in seconds after which the probe times out.
-  final int timeout;
+  final pulumi.Input<int> timeout;
   /// The transport method for the Ingress.
-  final String transport;
+  final pulumi.Input<String> transport;
 
   /// Creates a new [GetAppTemplateContainerReadinessProbe].
   /// [failureCountThreshold] The number of consecutive failures required to consider this probe as failed.
@@ -52,7 +52,7 @@ class GetAppTemplateContainerReadinessProbe {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'failureCountThreshold': failureCountThreshold,
-      'headers': pulumi.Input.encodeList<GetAppTemplateContainerReadinessProbeHeader, Map<String, dynamic>>(headers, (value) => value.toMap()),
+      'headers': pulumi.Input.mapInputValue<List<GetAppTemplateContainerReadinessProbeHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<GetAppTemplateContainerReadinessProbeHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'host': host,
       'initialDelay': initialDelay,
       'intervalSeconds': intervalSeconds,
@@ -66,16 +66,16 @@ class GetAppTemplateContainerReadinessProbe {
 
   factory GetAppTemplateContainerReadinessProbe.fromMap(Map<String, dynamic> map) {
     return GetAppTemplateContainerReadinessProbe(
-      failureCountThreshold: map['failureCountThreshold'] as int,
-      headers: pulumi.Input.decodeList<GetAppTemplateContainerReadinessProbeHeader>(map['headers'], (value) => GetAppTemplateContainerReadinessProbeHeader.fromMap((value as Map).cast<String, dynamic>())),
-      host: map['host'] as String,
-      initialDelay: map['initialDelay'] as int,
-      intervalSeconds: map['intervalSeconds'] as int,
-      path: map['path'] as String,
-      port: map['port'] as int,
-      successCountThreshold: map['successCountThreshold'] as int,
-      timeout: map['timeout'] as int,
-      transport: map['transport'] as String,
+      failureCountThreshold: (map['failureCountThreshold'] as int).input(),
+      headers: (pulumi.Input.decodeList<GetAppTemplateContainerReadinessProbeHeader>(map['headers'], (value) => GetAppTemplateContainerReadinessProbeHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      host: (map['host'] as String).input(),
+      initialDelay: (map['initialDelay'] as int).input(),
+      intervalSeconds: (map['intervalSeconds'] as int).input(),
+      path: (map['path'] as String).input(),
+      port: (map['port'] as int).input(),
+      successCountThreshold: (map['successCountThreshold'] as int).input(),
+      timeout: (map['timeout'] as int).input(),
+      transport: (map['transport'] as String).input(),
     );
   }
 }

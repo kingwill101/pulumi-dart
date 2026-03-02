@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Hourly Schedule properties
 class HourlyScheduleResponse {
   /// Indicates which minute snapshot should be taken
-  final int? minute;
+  final pulumi.Input<int>? minute;
   /// Hourly snapshot count to keep
-  final int? snapshotsToKeep;
+  final pulumi.Input<int>? snapshotsToKeep;
   /// Resource size in bytes, current storage usage for the volume in bytes
-  final double? usedBytes;
+  final pulumi.Input<double>? usedBytes;
 
   /// Creates a new [HourlyScheduleResponse].
   /// [minute] Indicates which minute snapshot should be taken
@@ -30,9 +31,9 @@ class HourlyScheduleResponse {
 
   factory HourlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return HourlyScheduleResponse(
-      minute: map['minute'] == null ? null : map['minute'] as int,
-      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : map['snapshotsToKeep'] as int,
-      usedBytes: map['usedBytes'] == null ? null : map['usedBytes'] as double,
+      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
+      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep'] as int).input(),
+      usedBytes: map['usedBytes'] == null ? null : (map['usedBytes'] as double).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Onboarding information
 class Onboarding {
   /// The location of the development portal
-  final List<String>? developerPortalUri;
+  final pulumi.Input<List<String>>? developerPortalUri;
   /// Onboarding guide.
-  final String? instructions;
+  final pulumi.Input<String>? instructions;
 
   /// Creates a new [Onboarding].
   /// [developerPortalUri] The location of the development portal
@@ -25,8 +26,8 @@ class Onboarding {
 
   factory Onboarding.fromMap(Map<String, dynamic> map) {
     return Onboarding(
-      developerPortalUri: map['developerPortalUri'] == null ? null : (map['developerPortalUri'] as List).cast<String>(),
-      instructions: map['instructions'] == null ? null : map['instructions'] as String,
+      developerPortalUri: map['developerPortalUri'] == null ? null : ((map['developerPortalUri'] as List).cast<String>()).input(),
+      instructions: map['instructions'] == null ? null : (map['instructions'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HubRoutingVpc {
   /// The URI of the VPC network.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [HubRoutingVpc].
   /// [uri] The URI of the VPC network.
@@ -19,7 +20,7 @@ class HubRoutingVpc {
 
   factory HubRoutingVpc.fromMap(Map<String, dynamic> map) {
     return HubRoutingVpc(
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

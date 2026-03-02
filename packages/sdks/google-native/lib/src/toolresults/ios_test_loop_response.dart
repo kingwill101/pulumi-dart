@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A game loop test of an iOS application.
 class IosTestLoopResponse {
   /// Bundle ID of the app.
-  final String bundleId;
+  final pulumi.Input<String> bundleId;
 
   /// Creates a new [IosTestLoopResponse].
   /// [bundleId] Bundle ID of the app.
@@ -20,7 +21,7 @@ class IosTestLoopResponse {
 
   factory IosTestLoopResponse.fromMap(Map<String, dynamic> map) {
     return IosTestLoopResponse(
-      bundleId: map['bundleId'] as String,
+      bundleId: (map['bundleId'] as String).input(),
     );
   }
 }

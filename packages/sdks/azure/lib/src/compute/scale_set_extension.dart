@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScaleSetExtension {
   /// Specifies whether or not to use the latest minor version available.
-  final bool? autoUpgradeMinorVersion;
+  final pulumi.Input<bool>? autoUpgradeMinorVersion;
   /// Specifies the name of the extension.
-  final String name;
+  final pulumi.Input<String> name;
   /// The protected_settings passed to the extension, like settings, these are specified as a JSON object in a string.
-  final String? protectedSettings;
+  final pulumi.Input<String>? protectedSettings;
   /// Specifies a dependency array of extensions required to be executed before, the array stores the name of each extension.
-  final List<String>? provisionAfterExtensions;
+  final pulumi.Input<List<String>>? provisionAfterExtensions;
   /// The publisher of the extension, available publishers can be found by using the Azure CLI.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// The settings passed to the extension, these are specified as a JSON object in a string.
-  final String? settings;
+  final pulumi.Input<String>? settings;
   /// The type of extension, available types for a publisher can be found using the Azure CLI.
-  final String type;
+  final pulumi.Input<String> type;
   /// Specifies the version of the extension to use, available versions can be found using the Azure CLI.
-  final String typeHandlerVersion;
+  final pulumi.Input<String> typeHandlerVersion;
 
   /// Creates a new [ScaleSetExtension].
   /// [autoUpgradeMinorVersion] Specifies whether or not to use the latest minor version available.
@@ -54,14 +55,14 @@ class ScaleSetExtension {
 
   factory ScaleSetExtension.fromMap(Map<String, dynamic> map) {
     return ScaleSetExtension(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : map['autoUpgradeMinorVersion'] as bool,
-      name: map['name'] as String,
-      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings'] as String,
-      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : (map['provisionAfterExtensions'] as List).cast<String>(),
-      publisher: map['publisher'] as String,
-      settings: map['settings'] == null ? null : map['settings'] as String,
-      type: map['type'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] as String,
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
+      name: (map['name'] as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings'] as String).input(),
+      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions'] as List).cast<String>()).input(),
+      publisher: (map['publisher'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings'] as String).input(),
+      type: (map['type'] as String).input(),
+      typeHandlerVersion: (map['typeHandlerVersion'] as String).input(),
     );
   }
 }

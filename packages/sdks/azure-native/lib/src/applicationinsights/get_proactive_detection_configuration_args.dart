@@ -19,13 +19,10 @@ class GetProactiveDetectionConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
   GetProactiveDetectionConfigurationArgs({
-    required pulumi.Output<String> configurationId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      configurationId = pulumi.Input.asInput<String>(configurationId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.configurationId,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetProactiveDetectionConfigurationArgs {
 
   factory GetProactiveDetectionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetProactiveDetectionConfigurationArgs(
-      configurationId: pulumi.Output.create<String>(map['configurationId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      configurationId: (map['configurationId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

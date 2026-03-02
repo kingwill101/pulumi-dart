@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_statement_effect.dart';
 
 /// The Statement element is the main element for a policy. This element is required. It can include multiple elements (see the subsequent sections in this page). The Statement element contains an array of individual statements.
 class PolicyStatement {
   /// Include a list of actions that the policy allows or denies. Required (either Action or NotAction)
-  final String? action;
+  final pulumi.Input<String>? action;
   /// Specify the circumstances under which the policy grants permission.
-  final Map<String, dynamic>? condition;
+  final pulumi.Input<Map<String, dynamic>>? condition;
   /// Indicate whether the policy allows or denies access.
-  final PolicyStatementEffect effect;
+  final pulumi.Input<PolicyStatementEffect> effect;
   /// Include a list of actions that are not covered by this policy. Required (either Action or NotAction)
-  final String? notAction;
+  final pulumi.Input<String>? notAction;
   /// Indicate the account, user, role, or federated user to which this policy does not apply.
-  final String? notPrincipal;
+  final pulumi.Input<String>? notPrincipal;
   /// A list of resources that are specifically excluded by this policy.
-  final String? notResource;
+  final pulumi.Input<String>? notResource;
   /// Indicate the account, user, role, or federated user to which you would like to allow or deny access. If you are creating a policy to attach to a user or role, you cannot include this element. The principal is implied as that user or role.
-  final String? principal;
+  final pulumi.Input<String>? principal;
   /// A list of resources to which the actions apply.
-  final String? resource;
+  final pulumi.Input<String>? resource;
   /// An optional statement ID to differentiate between your statements.
-  final String? sid;
+  final pulumi.Input<String>? sid;
 
   /// Creates a new [PolicyStatement].
   /// [action] Include a list of actions that the policy allows or denies. Required (either Action or NotAction)
@@ -49,7 +50,7 @@ class PolicyStatement {
     return <String, dynamic>{
       'Action': ?action,
       'Condition': ?condition,
-      'Effect': effect.value,
+      'Effect': pulumi.Input.mapInputValue<PolicyStatementEffect, String>(effect, (value) => value.value),
       'NotAction': ?notAction,
       'NotPrincipal': ?notPrincipal,
       'NotResource': ?notResource,
@@ -61,15 +62,15 @@ class PolicyStatement {
 
   factory PolicyStatement.fromMap(Map<String, dynamic> map) {
     return PolicyStatement(
-      action: map['Action'] == null ? null : map['Action'] as String,
-      condition: map['Condition'] == null ? null : (map['Condition'] as Map).cast<String, dynamic>(),
-      effect: PolicyStatementEffect.fromValue(map['Effect'] as String),
-      notAction: map['NotAction'] == null ? null : map['NotAction'] as String,
-      notPrincipal: map['NotPrincipal'] == null ? null : map['NotPrincipal'] as String,
-      notResource: map['NotResource'] == null ? null : map['NotResource'] as String,
-      principal: map['Principal'] == null ? null : map['Principal'] as String,
-      resource: map['Resource'] == null ? null : map['Resource'] as String,
-      sid: map['Sid'] == null ? null : map['Sid'] as String,
+      action: map['Action'] == null ? null : (map['Action'] as String).input(),
+      condition: map['Condition'] == null ? null : ((map['Condition'] as Map).cast<String, dynamic>()).input(),
+      effect: (PolicyStatementEffect.fromValue(map['Effect'] as String)).input(),
+      notAction: map['NotAction'] == null ? null : (map['NotAction'] as String).input(),
+      notPrincipal: map['NotPrincipal'] == null ? null : (map['NotPrincipal'] as String).input(),
+      notResource: map['NotResource'] == null ? null : (map['NotResource'] as String).input(),
+      principal: map['Principal'] == null ? null : (map['Principal'] as String).input(),
+      resource: map['Resource'] == null ? null : (map['Resource'] as String).input(),
+      sid: map['Sid'] == null ? null : (map['Sid'] as String).input(),
     );
   }
 }

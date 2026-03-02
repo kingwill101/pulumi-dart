@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTestablePermissionsPermission {
   /// Whether the corresponding API has been enabled for the resource.
-  final bool apiDisabled;
+  final pulumi.Input<bool> apiDisabled;
   /// The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
-  final String customSupportLevel;
+  final pulumi.Input<String> customSupportLevel;
   /// Name of the permission.
-  final String name;
+  final pulumi.Input<String> name;
   /// Release stage of the permission.
-  final String stage;
+  final pulumi.Input<String> stage;
   /// Human readable title of the permission.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [GetTestablePermissionsPermission].
   /// [apiDisabled] Whether the corresponding API has been enabled for the resource.
@@ -39,11 +40,11 @@ class GetTestablePermissionsPermission {
 
   factory GetTestablePermissionsPermission.fromMap(Map<String, dynamic> map) {
     return GetTestablePermissionsPermission(
-      apiDisabled: map['apiDisabled'] as bool,
-      customSupportLevel: map['customSupportLevel'] as String,
-      name: map['name'] as String,
-      stage: map['stage'] as String,
-      title: map['title'] as String,
+      apiDisabled: (map['apiDisabled'] as bool).input(),
+      customSupportLevel: (map['customSupportLevel'] as String).input(),
+      name: (map['name'] as String).input(),
+      stage: (map['stage'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

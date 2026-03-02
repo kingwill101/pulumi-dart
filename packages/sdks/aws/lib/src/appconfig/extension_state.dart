@@ -35,25 +35,16 @@ class ExtensionState {
   /// [tagsAll] Optional.
   /// [version] The version number for the extension.
   ExtensionState({
-    pulumi.Output<List<ExtensionActionPoint>>? actionPoints,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ExtensionParameter>>? parameters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<int>? version,
-  }) :
-      actionPoints = pulumi.Input.asOptionalInput<List<ExtensionActionPoint>>(actionPoints),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<List<ExtensionParameter>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.actionPoints,
+    this.arn,
+    this.description,
+    this.name,
+    this.parameters,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class ExtensionState {
 
   factory ExtensionState.fromMap(Map<String, dynamic> map) {
     return ExtensionState(
-      actionPoints: map['actionPoints'] == null ? null : pulumi.Output.create<List<ExtensionActionPoint>>(pulumi.Input.decodeList<ExtensionActionPoint>(map['actionPoints'], (value) => ExtensionActionPoint.fromMap((value as Map).cast<String, dynamic>()))),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<ExtensionParameter>>(pulumi.Input.decodeList<ExtensionParameter>(map['parameters'], (value) => ExtensionParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      actionPoints: map['actionPoints'] == null ? null : (pulumi.Input.decodeList<ExtensionActionPoint>(map['actionPoints'], (value) => ExtensionActionPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ExtensionParameter>(map['parameters'], (value) => ExtensionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

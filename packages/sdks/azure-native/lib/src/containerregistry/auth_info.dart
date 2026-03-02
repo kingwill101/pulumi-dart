@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The authorization properties for accessing the source code repository.
 class AuthInfo {
   /// Time in seconds that the token remains valid
-  final int? expiresIn;
+  final pulumi.Input<int>? expiresIn;
   /// The refresh token used to refresh the access token.
-  final String? refreshToken;
+  final pulumi.Input<String>? refreshToken;
   /// The scope of the access token.
-  final String? scope;
+  final pulumi.Input<String>? scope;
   /// The access token used to access the source control provider.
-  final String token;
+  final pulumi.Input<String> token;
   /// The type of Auth token.
-  final String tokenType;
+  final pulumi.Input<String> tokenType;
 
   /// Creates a new [AuthInfo].
   /// [expiresIn] Time in seconds that the token remains valid
@@ -40,11 +41,11 @@ class AuthInfo {
 
   factory AuthInfo.fromMap(Map<String, dynamic> map) {
     return AuthInfo(
-      expiresIn: map['expiresIn'] == null ? null : map['expiresIn'] as int,
-      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      token: map['token'] as String,
-      tokenType: map['tokenType'] as String,
+      expiresIn: map['expiresIn'] == null ? null : (map['expiresIn'] as int).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      token: (map['token'] as String).input(),
+      tokenType: (map['tokenType'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection {
   /// Selects a specific PID from within a source.
-  final int pid;
+  final pulumi.Input<int> pid;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection].
   /// [pid] Selects a specific PID from within a source.
@@ -19,7 +20,7 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSe
 
   factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection(
-      pid: map['pid'] as int,
+      pid: (map['pid'] as int).input(),
     );
   }
 }

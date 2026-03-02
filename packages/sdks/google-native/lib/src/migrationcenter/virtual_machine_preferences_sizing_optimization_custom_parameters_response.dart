@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Custom data to use for sizing optimizations.
 class VirtualMachinePreferencesSizingOptimizationCustomParametersResponse {
   /// Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
-  final String aggregationMethod;
+  final pulumi.Input<String> aggregationMethod;
   /// Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
-  final int cpuUsagePercentage;
+  final pulumi.Input<int> cpuUsagePercentage;
   /// Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
-  final int memoryUsagePercentage;
+  final pulumi.Input<int> memoryUsagePercentage;
   /// Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
-  final double storageMultiplier;
+  final pulumi.Input<double> storageMultiplier;
 
   /// Creates a new [VirtualMachinePreferencesSizingOptimizationCustomParametersResponse].
   /// [aggregationMethod] Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
@@ -35,10 +36,10 @@ class VirtualMachinePreferencesSizingOptimizationCustomParametersResponse {
 
   factory VirtualMachinePreferencesSizingOptimizationCustomParametersResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePreferencesSizingOptimizationCustomParametersResponse(
-      aggregationMethod: map['aggregationMethod'] as String,
-      cpuUsagePercentage: map['cpuUsagePercentage'] as int,
-      memoryUsagePercentage: map['memoryUsagePercentage'] as int,
-      storageMultiplier: map['storageMultiplier'] as double,
+      aggregationMethod: (map['aggregationMethod'] as String).input(),
+      cpuUsagePercentage: (map['cpuUsagePercentage'] as int).input(),
+      memoryUsagePercentage: (map['memoryUsagePercentage'] as int).input(),
+      storageMultiplier: (map['storageMultiplier'] as double).input(),
     );
   }
 }

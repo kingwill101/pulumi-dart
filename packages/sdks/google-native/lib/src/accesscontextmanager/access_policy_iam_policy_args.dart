@@ -29,19 +29,13 @@ class AccessPolicyIamPolicyArgs {
   /// [updateMask] OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
   /// [version] Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   AccessPolicyIamPolicyArgs({
-    required pulumi.Output<String> accessPolicyId,
-    pulumi.Output<List<AuditConfig>>? auditConfigs,
-    pulumi.Output<List<Binding>>? bindings,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? updateMask,
-    pulumi.Output<int>? version,
-  }) :
-      accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId),
-      auditConfigs = pulumi.Input.asOptionalInput<List<AuditConfig>>(auditConfigs),
-      bindings = pulumi.Input.asOptionalInput<List<Binding>>(bindings),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      updateMask = pulumi.Input.asOptionalInput<String>(updateMask),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    required this.accessPolicyId,
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.updateMask,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class AccessPolicyIamPolicyArgs {
 
   factory AccessPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyIamPolicyArgs(
-      accessPolicyId: pulumi.Output.create<String>(map['accessPolicyId'] as String),
-      auditConfigs: map['auditConfigs'] == null ? null : pulumi.Output.create<List<AuditConfig>>(pulumi.Input.decodeList<AuditConfig>(map['auditConfigs'], (value) => AuditConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      bindings: map['bindings'] == null ? null : pulumi.Output.create<List<Binding>>(pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      updateMask: map['updateMask'] == null ? null : pulumi.Output.create<String>(map['updateMask'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      accessPolicyId: (map['accessPolicyId'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfig>(map['auditConfigs'], (value) => AuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

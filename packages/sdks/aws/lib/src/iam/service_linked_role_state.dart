@@ -37,27 +37,17 @@ class ServiceLinkedRoleState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uniqueId] The stable and unique string identifying the role.
   ServiceLinkedRoleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? awsServiceName,
-    pulumi.Output<String>? createDate,
-    pulumi.Output<String>? customSuffix,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? path,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? uniqueId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      awsServiceName = pulumi.Input.asOptionalInput<String>(awsServiceName),
-      createDate = pulumi.Input.asOptionalInput<String>(createDate),
-      customSuffix = pulumi.Input.asOptionalInput<String>(customSuffix),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      uniqueId = pulumi.Input.asOptionalInput<String>(uniqueId);
+    this.arn,
+    this.awsServiceName,
+    this.createDate,
+    this.customSuffix,
+    this.description,
+    this.name,
+    this.path,
+    this.tags,
+    this.tagsAll,
+    this.uniqueId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class ServiceLinkedRoleState {
 
   factory ServiceLinkedRoleState.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      awsServiceName: map['awsServiceName'] == null ? null : pulumi.Output.create<String>(map['awsServiceName'] as String),
-      createDate: map['createDate'] == null ? null : pulumi.Output.create<String>(map['createDate'] as String),
-      customSuffix: map['customSuffix'] == null ? null : pulumi.Output.create<String>(map['customSuffix'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      uniqueId: map['uniqueId'] == null ? null : pulumi.Output.create<String>(map['uniqueId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      awsServiceName: map['awsServiceName'] == null ? null : (map['awsServiceName'] as String).input(),
+      createDate: map['createDate'] == null ? null : (map['createDate'] as String).input(),
+      customSuffix: map['customSuffix'] == null ? null : (map['customSuffix'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId'] as String).input(),
     );
   }
 }

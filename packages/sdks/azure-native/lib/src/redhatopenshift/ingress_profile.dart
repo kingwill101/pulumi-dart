@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IngressProfile represents an ingress profile.
 class IngressProfile {
   /// The ingress profile name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Ingress visibility.
-  final String? visibility;
+  final pulumi.Input<String>? visibility;
 
   /// Creates a new [IngressProfile].
   /// [name] The ingress profile name.
@@ -25,8 +26,8 @@ class IngressProfile {
 
   factory IngressProfile.fromMap(Map<String, dynamic> map) {
     return IngressProfile(
-      name: map['name'] == null ? null : map['name'] as String,
-      visibility: map['visibility'] == null ? null : map['visibility'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
     );
   }
 }

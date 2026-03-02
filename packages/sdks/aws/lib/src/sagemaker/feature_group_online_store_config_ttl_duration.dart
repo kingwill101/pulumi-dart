@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureGroupOnlineStoreConfigTtlDuration {
   /// TtlDuration time unit. Valid values are `Seconds`, `Minutes`, `Hours`, `Days`, or `Weeks`.
-  final String? unit;
+  final pulumi.Input<String>? unit;
   /// TtlDuration time value.
-  final int? value;
+  final pulumi.Input<int>? value;
 
   /// Creates a new [FeatureGroupOnlineStoreConfigTtlDuration].
   /// [unit] TtlDuration time unit. Valid values are `Seconds`, `Minutes`, `Hours`, `Days`, or `Weeks`.
@@ -24,8 +25,8 @@ class FeatureGroupOnlineStoreConfigTtlDuration {
 
   factory FeatureGroupOnlineStoreConfigTtlDuration.fromMap(Map<String, dynamic> map) {
     return FeatureGroupOnlineStoreConfigTtlDuration(
-      unit: map['unit'] == null ? null : map['unit'] as String,
-      value: map['value'] == null ? null : map['value'] as int,
+      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as int).input(),
     );
   }
 }

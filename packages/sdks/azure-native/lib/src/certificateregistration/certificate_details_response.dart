@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SSL certificate details.
 class CertificateDetailsResponse {
   /// Certificate Issuer.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// Date Certificate is valid to.
-  final String notAfter;
+  final pulumi.Input<String> notAfter;
   /// Date Certificate is valid from.
-  final String notBefore;
+  final pulumi.Input<String> notBefore;
   /// Raw certificate data.
-  final String rawData;
+  final pulumi.Input<String> rawData;
   /// Certificate Serial Number.
-  final String serialNumber;
+  final pulumi.Input<String> serialNumber;
   /// Certificate Signature algorithm.
-  final String signatureAlgorithm;
+  final pulumi.Input<String> signatureAlgorithm;
   /// Certificate Subject.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// Certificate Thumbprint.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
   /// Certificate Version.
-  final int version;
+  final pulumi.Input<int> version;
 
   /// Creates a new [CertificateDetailsResponse].
   /// [issuer] Certificate Issuer.
@@ -60,15 +61,15 @@ class CertificateDetailsResponse {
 
   factory CertificateDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CertificateDetailsResponse(
-      issuer: map['issuer'] as String,
-      notAfter: map['notAfter'] as String,
-      notBefore: map['notBefore'] as String,
-      rawData: map['rawData'] as String,
-      serialNumber: map['serialNumber'] as String,
-      signatureAlgorithm: map['signatureAlgorithm'] as String,
-      subject: map['subject'] as String,
-      thumbprint: map['thumbprint'] as String,
-      version: map['version'] as int,
+      issuer: (map['issuer'] as String).input(),
+      notAfter: (map['notAfter'] as String).input(),
+      notBefore: (map['notBefore'] as String).input(),
+      rawData: (map['rawData'] as String).input(),
+      serialNumber: (map['serialNumber'] as String).input(),
+      signatureAlgorithm: (map['signatureAlgorithm'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
+      version: (map['version'] as int).input(),
     );
   }
 }

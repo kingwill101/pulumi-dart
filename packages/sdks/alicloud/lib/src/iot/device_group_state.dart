@@ -19,15 +19,11 @@ class DeviceGroupState {
   /// [iotInstanceId] The id of the Iot Instance.
   /// [superGroupId] The id of the SuperGroup.
   DeviceGroupState({
-    pulumi.Output<String>? groupDesc,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? iotInstanceId,
-    pulumi.Output<String>? superGroupId,
-  }) :
-      groupDesc = pulumi.Input.asOptionalInput<String>(groupDesc),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      iotInstanceId = pulumi.Input.asOptionalInput<String>(iotInstanceId),
-      superGroupId = pulumi.Input.asOptionalInput<String>(superGroupId);
+    this.groupDesc,
+    this.groupName,
+    this.iotInstanceId,
+    this.superGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class DeviceGroupState {
 
   factory DeviceGroupState.fromMap(Map<String, dynamic> map) {
     return DeviceGroupState(
-      groupDesc: map['groupDesc'] == null ? null : pulumi.Output.create<String>(map['groupDesc'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      iotInstanceId: map['iotInstanceId'] == null ? null : pulumi.Output.create<String>(map['iotInstanceId'] as String),
-      superGroupId: map['superGroupId'] == null ? null : pulumi.Output.create<String>(map['superGroupId'] as String),
+      groupDesc: map['groupDesc'] == null ? null : (map['groupDesc'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      iotInstanceId: map['iotInstanceId'] == null ? null : (map['iotInstanceId'] as String).input(),
+      superGroupId: map['superGroupId'] == null ? null : (map['superGroupId'] as String).input(),
     );
   }
 }

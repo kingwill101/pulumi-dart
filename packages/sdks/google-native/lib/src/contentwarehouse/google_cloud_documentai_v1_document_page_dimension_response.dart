@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Dimension for the page.
 class GoogleCloudDocumentaiV1DocumentPageDimensionResponse {
   /// Page height.
-  final double height;
+  final pulumi.Input<double> height;
   /// Dimension unit.
-  final String unit;
+  final pulumi.Input<String> unit;
   /// Page width.
-  final double width;
+  final pulumi.Input<double> width;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageDimensionResponse].
   /// [height] Page height.
@@ -30,9 +31,9 @@ class GoogleCloudDocumentaiV1DocumentPageDimensionResponse {
 
   factory GoogleCloudDocumentaiV1DocumentPageDimensionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageDimensionResponse(
-      height: map['height'] as double,
-      unit: map['unit'] as String,
-      width: map['width'] as double,
+      height: (map['height'] as double).input(),
+      unit: (map['unit'] as String).input(),
+      width: (map['width'] as double).input(),
     );
   }
 }

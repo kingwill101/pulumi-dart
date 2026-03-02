@@ -7,21 +7,21 @@ import 'cluster_networks_vpd_info.dart';
 
 class ClusterNetworks {
   /// IP allocation policy See `ip_allocation_policy` below.
-  final List<ClusterNetworksIpAllocationPolicy>? ipAllocationPolicies;
+  final pulumi.Input<List<ClusterNetworksIpAllocationPolicy>>? ipAllocationPolicies;
   /// Vpd configuration information See `new_vpd_info` below.
-  final ClusterNetworksNewVpdInfo? newVpdInfo;
+  final pulumi.Input<ClusterNetworksNewVpdInfo>? newVpdInfo;
   /// Security group ID
-  final String? securityGroupId;
+  final pulumi.Input<String>? securityGroupId;
   /// IP version
-  final String? tailIpVersion;
+  final pulumi.Input<String>? tailIpVersion;
   /// VPC ID
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
   /// Multiplexing VPD information See `vpd_info` below.
-  final ClusterNetworksVpdInfo? vpdInfo;
+  final pulumi.Input<ClusterNetworksVpdInfo>? vpdInfo;
   /// Switch ID
-  final String? vswitchId;
+  final pulumi.Input<String>? vswitchId;
   /// Switch ZoneID
-  final String? vswitchZoneId;
+  final pulumi.Input<String>? vswitchZoneId;
 
   /// Creates a new [ClusterNetworks].
   /// [ipAllocationPolicies] IP allocation policy See `ip_allocation_policy` below.
@@ -45,12 +45,12 @@ class ClusterNetworks {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipAllocationPolicies': ?ipAllocationPolicies == null ? null : pulumi.Input.encodeList<ClusterNetworksIpAllocationPolicy, Map<String, dynamic>>(ipAllocationPolicies!, (value) => value.toMap()),
-      'newVpdInfo': ?newVpdInfo == null ? null : newVpdInfo!.toMap(),
+      'ipAllocationPolicies': ?pulumi.Input.mapOptionalInputValue<List<ClusterNetworksIpAllocationPolicy>, List<Map<String, dynamic>>>(ipAllocationPolicies, (value) => pulumi.Input.encodeList<ClusterNetworksIpAllocationPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'newVpdInfo': ?pulumi.Input.mapOptionalInputValue<ClusterNetworksNewVpdInfo, Map<String, dynamic>>(newVpdInfo, (value) => value.toMap()),
       'securityGroupId': ?securityGroupId,
       'tailIpVersion': ?tailIpVersion,
       'vpcId': ?vpcId,
-      'vpdInfo': ?vpdInfo == null ? null : vpdInfo!.toMap(),
+      'vpdInfo': ?pulumi.Input.mapOptionalInputValue<ClusterNetworksVpdInfo, Map<String, dynamic>>(vpdInfo, (value) => value.toMap()),
       'vswitchId': ?vswitchId,
       'vswitchZoneId': ?vswitchZoneId,
     };
@@ -58,14 +58,14 @@ class ClusterNetworks {
 
   factory ClusterNetworks.fromMap(Map<String, dynamic> map) {
     return ClusterNetworks(
-      ipAllocationPolicies: map['ipAllocationPolicies'] == null ? null : pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicy>(map['ipAllocationPolicies'], (value) => ClusterNetworksIpAllocationPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      newVpdInfo: map['newVpdInfo'] == null ? null : ClusterNetworksNewVpdInfo.fromMap((map['newVpdInfo'] as Map).cast<String, dynamic>()),
-      securityGroupId: map['securityGroupId'] == null ? null : map['securityGroupId'] as String,
-      tailIpVersion: map['tailIpVersion'] == null ? null : map['tailIpVersion'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vpdInfo: map['vpdInfo'] == null ? null : ClusterNetworksVpdInfo.fromMap((map['vpdInfo'] as Map).cast<String, dynamic>()),
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
-      vswitchZoneId: map['vswitchZoneId'] == null ? null : map['vswitchZoneId'] as String,
+      ipAllocationPolicies: map['ipAllocationPolicies'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicy>(map['ipAllocationPolicies'], (value) => ClusterNetworksIpAllocationPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      newVpdInfo: map['newVpdInfo'] == null ? null : (ClusterNetworksNewVpdInfo.fromMap((map['newVpdInfo'] as Map).cast<String, dynamic>())).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      tailIpVersion: map['tailIpVersion'] == null ? null : (map['tailIpVersion'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpdInfo: map['vpdInfo'] == null ? null : (ClusterNetworksVpdInfo.fromMap((map['vpdInfo'] as Map).cast<String, dynamic>())).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      vswitchZoneId: map['vswitchZoneId'] == null ? null : (map['vswitchZoneId'] as String).input(),
     );
   }
 }

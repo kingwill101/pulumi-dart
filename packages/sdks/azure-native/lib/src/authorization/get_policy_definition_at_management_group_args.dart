@@ -16,11 +16,9 @@ class GetPolicyDefinitionAtManagementGroupArgs {
   /// [managementGroupId] The ID of the management group.
   /// [policyDefinitionName] The name of the policy definition to get.
   GetPolicyDefinitionAtManagementGroupArgs({
-    required pulumi.Output<String> managementGroupId,
-    required pulumi.Output<String> policyDefinitionName,
-  }) :
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      policyDefinitionName = pulumi.Input.asInput<String>(policyDefinitionName);
+    required this.managementGroupId,
+    required this.policyDefinitionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPolicyDefinitionAtManagementGroupArgs {
 
   factory GetPolicyDefinitionAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyDefinitionAtManagementGroupArgs(
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      policyDefinitionName: pulumi.Output.create<String>(map['policyDefinitionName'] as String),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      policyDefinitionName: (map['policyDefinitionName'] as String).input(),
     );
   }
 }

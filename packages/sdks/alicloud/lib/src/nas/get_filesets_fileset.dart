@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFilesetsFileset {
   /// The time when Fileset was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Description of Fileset.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the file system.
-  final String fileSystemId;
+  final pulumi.Input<String> fileSystemId;
   /// The path of Fileset.
-  final String fileSystemPath;
+  final pulumi.Input<String> fileSystemPath;
   /// The first ID of the resource.
-  final String filesetId;
+  final pulumi.Input<String> filesetId;
   /// The ID of the Fileset.
-  final String id;
+  final pulumi.Input<String> id;
   /// The status of the fileset.
-  final String status;
+  final pulumi.Input<String> status;
   /// The latest update time of Fileset.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GetFilesetsFileset].
   /// [createTime] The time when Fileset was created.
@@ -54,14 +55,14 @@ class GetFilesetsFileset {
 
   factory GetFilesetsFileset.fromMap(Map<String, dynamic> map) {
     return GetFilesetsFileset(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      fileSystemId: map['fileSystemId'] as String,
-      fileSystemPath: map['fileSystemPath'] as String,
-      filesetId: map['filesetId'] as String,
-      id: map['id'] as String,
-      status: map['status'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      fileSystemPath: (map['fileSystemPath'] as String).input(),
+      filesetId: (map['filesetId'] as String).input(),
+      id: (map['id'] as String).input(),
+      status: (map['status'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_maintenance_policy_weekly_maintenance_window_start_time.dart';
 
 class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
@@ -13,14 +14,14 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
   /// - SATURDAY: Saturday
   /// - SUNDAY: Sunday
   /// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-  final String day;
+  final pulumi.Input<String> day;
   /// Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
   /// A duration in seconds with up to nine fractional digits,
   /// terminated by 's'. Example: "3.5s".
-  final String duration;
+  final pulumi.Input<String> duration;
   /// Required. Start time of the window in UTC time.
   /// Structure is documented below.
-  final InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime startTime;
+  final pulumi.Input<InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTime;
 
   /// Creates a new [InstanceMaintenancePolicyWeeklyMaintenanceWindow].
   /// [day] Required. The day of week that maintenance updates occur.
@@ -36,15 +37,15 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
     return <String, dynamic>{
       'day': day,
       'duration': duration,
-      'startTime': startTime.toMap(),
+      'startTime': pulumi.Input.mapInputValue<InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime, Map<String, dynamic>>(startTime, (value) => value.toMap()),
     };
   }
 
   factory InstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return InstanceMaintenancePolicyWeeklyMaintenanceWindow(
-      day: map['day'] as String,
-      duration: map['duration'] as String,
-      startTime: InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      day: (map['day'] as String).input(),
+      duration: (map['duration'] as String).input(),
+      startTime: (InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

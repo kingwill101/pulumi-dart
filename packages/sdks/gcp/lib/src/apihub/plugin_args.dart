@@ -65,27 +65,17 @@ class PluginArgs {
   /// [pluginId] The ID to use for the Plugin resource, which will become the final
   /// [project] The ID of the project in which the resource belongs.
   PluginArgs({
-    pulumi.Output<List<PluginActionsConfig>>? actionsConfigs,
-    pulumi.Output<PluginConfigTemplate>? configTemplate,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<PluginDocumentation>? documentation,
-    pulumi.Output<PluginHostingService>? hostingService,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? pluginCategory,
-    required pulumi.Output<String> pluginId,
-    pulumi.Output<String>? project,
-  }) :
-      actionsConfigs = pulumi.Input.asOptionalInput<List<PluginActionsConfig>>(actionsConfigs),
-      configTemplate = pulumi.Input.asOptionalInput<PluginConfigTemplate>(configTemplate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      documentation = pulumi.Input.asOptionalInput<PluginDocumentation>(documentation),
-      hostingService = pulumi.Input.asOptionalInput<PluginHostingService>(hostingService),
-      location = pulumi.Input.asInput<String>(location),
-      pluginCategory = pulumi.Input.asOptionalInput<String>(pluginCategory),
-      pluginId = pulumi.Input.asInput<String>(pluginId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.actionsConfigs,
+    this.configTemplate,
+    this.description,
+    required this.displayName,
+    this.documentation,
+    this.hostingService,
+    required this.location,
+    this.pluginCategory,
+    required this.pluginId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,16 +94,16 @@ class PluginArgs {
 
   factory PluginArgs.fromMap(Map<String, dynamic> map) {
     return PluginArgs(
-      actionsConfigs: map['actionsConfigs'] == null ? null : pulumi.Output.create<List<PluginActionsConfig>>(pulumi.Input.decodeList<PluginActionsConfig>(map['actionsConfigs'], (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      configTemplate: map['configTemplate'] == null ? null : pulumi.Output.create<PluginConfigTemplate>(PluginConfigTemplate.fromMap((map['configTemplate'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      documentation: map['documentation'] == null ? null : pulumi.Output.create<PluginDocumentation>(PluginDocumentation.fromMap((map['documentation'] as Map).cast<String, dynamic>())),
-      hostingService: map['hostingService'] == null ? null : pulumi.Output.create<PluginHostingService>(PluginHostingService.fromMap((map['hostingService'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      pluginCategory: map['pluginCategory'] == null ? null : pulumi.Output.create<String>(map['pluginCategory'] as String),
-      pluginId: pulumi.Output.create<String>(map['pluginId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      actionsConfigs: map['actionsConfigs'] == null ? null : (pulumi.Input.decodeList<PluginActionsConfig>(map['actionsConfigs'], (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configTemplate: map['configTemplate'] == null ? null : (PluginConfigTemplate.fromMap((map['configTemplate'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      documentation: map['documentation'] == null ? null : (PluginDocumentation.fromMap((map['documentation'] as Map).cast<String, dynamic>())).input(),
+      hostingService: map['hostingService'] == null ? null : (PluginHostingService.fromMap((map['hostingService'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      pluginCategory: map['pluginCategory'] == null ? null : (map['pluginCategory'] as String).input(),
+      pluginId: (map['pluginId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

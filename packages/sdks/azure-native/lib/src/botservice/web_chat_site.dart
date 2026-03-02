@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A site for the Webchat channel
 class WebChatSite {
   /// DirectLine application id
-  final String? appId;
+  final pulumi.Input<String>? appId;
   /// Entity Tag
-  final String? eTag;
+  final pulumi.Input<String>? eTag;
   /// Whether this site is enabled for block user upload.
-  final bool? isBlockUserUploadEnabled;
+  final pulumi.Input<bool>? isBlockUserUploadEnabled;
   /// Whether this site is disabled detailed logging for
-  final bool? isDetailedLoggingEnabled;
+  final pulumi.Input<bool>? isDetailedLoggingEnabled;
   /// Whether this site is enabled for DirectLine channel
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
   /// Whether this site is EndpointParameters enabled for channel
-  final bool? isEndpointParametersEnabled;
+  final pulumi.Input<bool>? isEndpointParametersEnabled;
   /// Whether this no-storage site is disabled detailed logging for
-  final bool? isNoStorageEnabled;
+  final pulumi.Input<bool>? isNoStorageEnabled;
   /// Whether this site is enabled for authentication with Bot Framework.
-  final bool? isSecureSiteEnabled;
+  final pulumi.Input<bool>? isSecureSiteEnabled;
   /// Whether this site is enabled for Bot Framework V1 protocol.
-  final bool? isV1Enabled;
+  final pulumi.Input<bool>? isV1Enabled;
   /// Whether this site is enabled for Bot Framework V3 protocol.
-  final bool? isV3Enabled;
+  final pulumi.Input<bool>? isV3Enabled;
   /// Whether this site is enabled for Webchat Speech
-  final bool? isWebChatSpeechEnabled;
+  final pulumi.Input<bool>? isWebChatSpeechEnabled;
   /// Whether this site is enabled for preview versions of Webchat
-  final bool? isWebchatPreviewEnabled;
+  final pulumi.Input<bool>? isWebchatPreviewEnabled;
   /// Site name
-  final String siteName;
+  final pulumi.Input<String> siteName;
   /// Tenant Id
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
-  final List<String>? trustedOrigins;
+  final pulumi.Input<List<String>>? trustedOrigins;
 
   /// Creates a new [WebChatSite].
   /// [appId] DirectLine application id
@@ -90,21 +91,21 @@ class WebChatSite {
 
   factory WebChatSite.fromMap(Map<String, dynamic> map) {
     return WebChatSite(
-      appId: map['appId'] == null ? null : map['appId'] as String,
-      eTag: map['eTag'] == null ? null : map['eTag'] as String,
-      isBlockUserUploadEnabled: map['isBlockUserUploadEnabled'] == null ? null : map['isBlockUserUploadEnabled'] as bool,
-      isDetailedLoggingEnabled: map['isDetailedLoggingEnabled'] == null ? null : map['isDetailedLoggingEnabled'] as bool,
-      isEnabled: map['isEnabled'] as bool,
-      isEndpointParametersEnabled: map['isEndpointParametersEnabled'] == null ? null : map['isEndpointParametersEnabled'] as bool,
-      isNoStorageEnabled: map['isNoStorageEnabled'] == null ? null : map['isNoStorageEnabled'] as bool,
-      isSecureSiteEnabled: map['isSecureSiteEnabled'] == null ? null : map['isSecureSiteEnabled'] as bool,
-      isV1Enabled: map['isV1Enabled'] == null ? null : map['isV1Enabled'] as bool,
-      isV3Enabled: map['isV3Enabled'] == null ? null : map['isV3Enabled'] as bool,
-      isWebChatSpeechEnabled: map['isWebChatSpeechEnabled'] == null ? null : map['isWebChatSpeechEnabled'] as bool,
-      isWebchatPreviewEnabled: map['isWebchatPreviewEnabled'] == null ? null : map['isWebchatPreviewEnabled'] as bool,
-      siteName: map['siteName'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      trustedOrigins: map['trustedOrigins'] == null ? null : (map['trustedOrigins'] as List).cast<String>(),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      isBlockUserUploadEnabled: map['isBlockUserUploadEnabled'] == null ? null : (map['isBlockUserUploadEnabled'] as bool).input(),
+      isDetailedLoggingEnabled: map['isDetailedLoggingEnabled'] == null ? null : (map['isDetailedLoggingEnabled'] as bool).input(),
+      isEnabled: (map['isEnabled'] as bool).input(),
+      isEndpointParametersEnabled: map['isEndpointParametersEnabled'] == null ? null : (map['isEndpointParametersEnabled'] as bool).input(),
+      isNoStorageEnabled: map['isNoStorageEnabled'] == null ? null : (map['isNoStorageEnabled'] as bool).input(),
+      isSecureSiteEnabled: map['isSecureSiteEnabled'] == null ? null : (map['isSecureSiteEnabled'] as bool).input(),
+      isV1Enabled: map['isV1Enabled'] == null ? null : (map['isV1Enabled'] as bool).input(),
+      isV3Enabled: map['isV3Enabled'] == null ? null : (map['isV3Enabled'] as bool).input(),
+      isWebChatSpeechEnabled: map['isWebChatSpeechEnabled'] == null ? null : (map['isWebChatSpeechEnabled'] as bool).input(),
+      isWebchatPreviewEnabled: map['isWebchatPreviewEnabled'] == null ? null : (map['isWebchatPreviewEnabled'] as bool).input(),
+      siteName: (map['siteName'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      trustedOrigins: map['trustedOrigins'] == null ? null : ((map['trustedOrigins'] as List).cast<String>()).input(),
     );
   }
 }

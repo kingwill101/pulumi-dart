@@ -26,17 +26,12 @@ class ReservationAssignmentArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [reservation] The reservation for the resource
   ReservationAssignmentArgs({
-    required pulumi.Output<String> assignee,
-    required pulumi.Output<String> jobType,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> reservation,
-  }) :
-      assignee = pulumi.Input.asInput<String>(assignee),
-      jobType = pulumi.Input.asInput<String>(jobType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservation = pulumi.Input.asInput<String>(reservation);
+    required this.assignee,
+    required this.jobType,
+    this.location,
+    this.project,
+    required this.reservation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ReservationAssignmentArgs {
 
   factory ReservationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ReservationAssignmentArgs(
-      assignee: pulumi.Output.create<String>(map['assignee'] as String),
-      jobType: pulumi.Output.create<String>(map['jobType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reservation: pulumi.Output.create<String>(map['reservation'] as String),
+      assignee: (map['assignee'] as String).input(),
+      jobType: (map['jobType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reservation: (map['reservation'] as String).input(),
     );
   }
 }

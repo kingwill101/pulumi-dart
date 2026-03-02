@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecretVersionsVersion {
   /// Date and time this version of the secret was created.
-  final String createdTime;
+  final pulumi.Input<String> createdTime;
   /// Date that this version of the secret was last accessed.
-  final String lastAccessedDate;
+  final pulumi.Input<String> lastAccessedDate;
   /// Unique version identifier of this version of the secret.
-  final String versionId;
+  final pulumi.Input<String> versionId;
   /// List of staging labels attached to the version.
-  final List<String> versionStages;
+  final pulumi.Input<List<String>> versionStages;
 
   /// Creates a new [GetSecretVersionsVersion].
   /// [createdTime] Date and time this version of the secret was created.
@@ -34,10 +35,10 @@ class GetSecretVersionsVersion {
 
   factory GetSecretVersionsVersion.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionsVersion(
-      createdTime: map['createdTime'] as String,
-      lastAccessedDate: map['lastAccessedDate'] as String,
-      versionId: map['versionId'] as String,
-      versionStages: (map['versionStages'] as List).cast<String>(),
+      createdTime: (map['createdTime'] as String).input(),
+      lastAccessedDate: (map['lastAccessedDate'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
+      versionStages: ((map['versionStages'] as List).cast<String>()).input(),
     );
   }
 }

@@ -17,11 +17,9 @@ class GetImagePipelinesArgs {
   /// [filters] Configuration block(s) for filtering. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetImagePipelinesArgs({
-    pulumi.Output<List<GetImagePipelinesFilter>>? filters,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetImagePipelinesFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filters,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetImagePipelinesArgs {
 
   factory GetImagePipelinesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagePipelinesArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetImagePipelinesFilter>>(pulumi.Input.decodeList<GetImagePipelinesFilter>(map['filters'], (value) => GetImagePipelinesFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetImagePipelinesFilter>(map['filters'], (value) => GetImagePipelinesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

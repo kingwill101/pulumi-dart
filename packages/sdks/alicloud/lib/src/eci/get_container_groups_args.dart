@@ -44,31 +44,19 @@ class GetContainerGroupsArgs {
   /// [withEvent] Optional.
   /// [zoneId] The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
   GetContainerGroupsArgs({
-    pulumi.Output<String>? containerGroupName,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<int>? limit,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vswitchId,
-    pulumi.Output<bool>? withEvent,
-    pulumi.Output<String>? zoneId,
-  }) :
-      containerGroupName = pulumi.Input.asOptionalInput<String>(containerGroupName),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      limit = pulumi.Input.asOptionalInput<int>(limit),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId),
-      withEvent = pulumi.Input.asOptionalInput<bool>(withEvent),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.containerGroupName,
+    this.enableDetails,
+    this.ids,
+    this.limit,
+    this.nameRegex,
+    this.outputFile,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+    this.vswitchId,
+    this.withEvent,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class GetContainerGroupsArgs {
 
   factory GetContainerGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerGroupsArgs(
-      containerGroupName: map['containerGroupName'] == null ? null : pulumi.Output.create<String>(map['containerGroupName'] as String),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      limit: map['limit'] == null ? null : pulumi.Output.create<int>(map['limit'] as int),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
-      withEvent: map['withEvent'] == null ? null : pulumi.Output.create<bool>(map['withEvent'] as bool),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      containerGroupName: map['containerGroupName'] == null ? null : (map['containerGroupName'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      withEvent: map['withEvent'] == null ? null : (map['withEvent'] as bool).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

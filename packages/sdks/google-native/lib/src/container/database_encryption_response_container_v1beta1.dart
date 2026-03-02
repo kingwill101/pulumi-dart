@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of etcd encryption.
 class DatabaseEncryptionResponseContainerV1beta1 {
   /// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
-  final String keyName;
+  final pulumi.Input<String> keyName;
   /// The desired state of etcd encryption.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [DatabaseEncryptionResponseContainerV1beta1].
   /// [keyName] Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
@@ -25,8 +26,8 @@ class DatabaseEncryptionResponseContainerV1beta1 {
 
   factory DatabaseEncryptionResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return DatabaseEncryptionResponseContainerV1beta1(
-      keyName: map['keyName'] as String,
-      state: map['state'] as String,
+      keyName: (map['keyName'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class DisasterRecoveryConfigArgs {
   /// [partnerNamespace] ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   DisasterRecoveryConfigArgs({
-    pulumi.Output<String>? alias,
-    pulumi.Output<String>? alternateName,
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<String>? partnerNamespace,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      alternateName = pulumi.Input.asOptionalInput<String>(alternateName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      partnerNamespace = pulumi.Input.asOptionalInput<String>(partnerNamespace),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.alias,
+    this.alternateName,
+    required this.namespaceName,
+    this.partnerNamespace,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DisasterRecoveryConfigArgs {
 
   factory DisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return DisasterRecoveryConfigArgs(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      alternateName: map['alternateName'] == null ? null : pulumi.Output.create<String>(map['alternateName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      partnerNamespace: map['partnerNamespace'] == null ? null : pulumi.Output.create<String>(map['partnerNamespace'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      alternateName: map['alternateName'] == null ? null : (map['alternateName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      partnerNamespace: map['partnerNamespace'] == null ? null : (map['partnerNamespace'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetPipelineGroupArgs {
   /// [pipelineGroupName] The name of pipeline group. The name is case insensitive.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetPipelineGroupArgs({
-    required pulumi.Output<String> pipelineGroupName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      pipelineGroupName = pulumi.Input.asInput<String>(pipelineGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.pipelineGroupName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPipelineGroupArgs {
 
   factory GetPipelineGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetPipelineGroupArgs(
-      pipelineGroupName: pulumi.Output.create<String>(map['pipelineGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      pipelineGroupName: (map['pipelineGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

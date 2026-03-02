@@ -16,11 +16,9 @@ class GetProducerImageShareGroupMemberArgs {
   /// [sharegroupId] The ID of the Image Share Group the member belongs to.
   /// [tokenUuid] The UUID of member's token.
   GetProducerImageShareGroupMemberArgs({
-    required pulumi.Output<int> sharegroupId,
-    required pulumi.Output<String> tokenUuid,
-  }) :
-      sharegroupId = pulumi.Input.asInput<int>(sharegroupId),
-      tokenUuid = pulumi.Input.asInput<String>(tokenUuid);
+    required this.sharegroupId,
+    required this.tokenUuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetProducerImageShareGroupMemberArgs {
 
   factory GetProducerImageShareGroupMemberArgs.fromMap(Map<String, dynamic> map) {
     return GetProducerImageShareGroupMemberArgs(
-      sharegroupId: pulumi.Output.create<int>(map['sharegroupId'] as int),
-      tokenUuid: pulumi.Output.create<String>(map['tokenUuid'] as String),
+      sharegroupId: (map['sharegroupId'] as int).input(),
+      tokenUuid: (map['tokenUuid'] as String).input(),
     );
   }
 }

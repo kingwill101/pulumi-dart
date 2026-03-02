@@ -25,17 +25,12 @@ class DomainNameAccessAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DomainNameAccessAssociationArgs({
-    required pulumi.Output<String> accessAssociationSource,
-    required pulumi.Output<String> accessAssociationSourceType,
-    required pulumi.Output<String> domainNameArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accessAssociationSource = pulumi.Input.asInput<String>(accessAssociationSource),
-      accessAssociationSourceType = pulumi.Input.asInput<String>(accessAssociationSourceType),
-      domainNameArn = pulumi.Input.asInput<String>(domainNameArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accessAssociationSource,
+    required this.accessAssociationSourceType,
+    required this.domainNameArn,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DomainNameAccessAssociationArgs {
 
   factory DomainNameAccessAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DomainNameAccessAssociationArgs(
-      accessAssociationSource: pulumi.Output.create<String>(map['accessAssociationSource'] as String),
-      accessAssociationSourceType: pulumi.Output.create<String>(map['accessAssociationSourceType'] as String),
-      domainNameArn: pulumi.Output.create<String>(map['domainNameArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accessAssociationSource: (map['accessAssociationSource'] as String).input(),
+      accessAssociationSourceType: (map['accessAssociationSourceType'] as String).input(),
+      domainNameArn: (map['domainNameArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

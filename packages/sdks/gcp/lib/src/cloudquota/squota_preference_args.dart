@@ -45,25 +45,16 @@ class SQuotaPreferenceArgs {
   /// [quotaId] The id of the quota to which the quota preference is applied. A quota id is unique in the service.
   /// [service] The name of the service to which the quota preference is applied.
   SQuotaPreferenceArgs({
-    pulumi.Output<String>? contactEmail,
-    pulumi.Output<Map<String, String>>? dimensions,
-    pulumi.Output<String>? ignoreSafetyChecks,
-    pulumi.Output<String>? justification,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    required pulumi.Output<SQuotaPreferenceQuotaConfig> quotaConfig,
-    pulumi.Output<String>? quotaId,
-    pulumi.Output<String>? service,
-  }) :
-      contactEmail = pulumi.Input.asOptionalInput<String>(contactEmail),
-      dimensions = pulumi.Input.asOptionalInput<Map<String, String>>(dimensions),
-      ignoreSafetyChecks = pulumi.Input.asOptionalInput<String>(ignoreSafetyChecks),
-      justification = pulumi.Input.asOptionalInput<String>(justification),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      quotaConfig = pulumi.Input.asInput<SQuotaPreferenceQuotaConfig>(quotaConfig),
-      quotaId = pulumi.Input.asOptionalInput<String>(quotaId),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.contactEmail,
+    this.dimensions,
+    this.ignoreSafetyChecks,
+    this.justification,
+    this.name,
+    this.parent,
+    required this.quotaConfig,
+    this.quotaId,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,15 +72,15 @@ class SQuotaPreferenceArgs {
 
   factory SQuotaPreferenceArgs.fromMap(Map<String, dynamic> map) {
     return SQuotaPreferenceArgs(
-      contactEmail: map['contactEmail'] == null ? null : pulumi.Output.create<String>(map['contactEmail'] as String),
-      dimensions: map['dimensions'] == null ? null : pulumi.Output.create<Map<String, String>>((map['dimensions'] as Map).cast<String, String>()),
-      ignoreSafetyChecks: map['ignoreSafetyChecks'] == null ? null : pulumi.Output.create<String>(map['ignoreSafetyChecks'] as String),
-      justification: map['justification'] == null ? null : pulumi.Output.create<String>(map['justification'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      quotaConfig: pulumi.Output.create<SQuotaPreferenceQuotaConfig>(SQuotaPreferenceQuotaConfig.fromMap((map['quotaConfig'] as Map).cast<String, dynamic>())),
-      quotaId: map['quotaId'] == null ? null : pulumi.Output.create<String>(map['quotaId'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      contactEmail: map['contactEmail'] == null ? null : (map['contactEmail'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
+      ignoreSafetyChecks: map['ignoreSafetyChecks'] == null ? null : (map['ignoreSafetyChecks'] as String).input(),
+      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      quotaConfig: (SQuotaPreferenceQuotaConfig.fromMap((map['quotaConfig'] as Map).cast<String, dynamic>())).input(),
+      quotaId: map['quotaId'] == null ? null : (map['quotaId'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

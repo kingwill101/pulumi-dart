@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedResourceGroupConfigurationResponse {
   /// The location of the managed resource group. If not specified, the location of the parent resource is chosen.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The name for the managed resource group. If not specified, the unique name is automatically generated.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ManagedResourceGroupConfigurationResponse].
   /// [location] The location of the managed resource group. If not specified, the location of the parent resource is chosen.
@@ -24,8 +25,8 @@ class ManagedResourceGroupConfigurationResponse {
 
   factory ManagedResourceGroupConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ManagedResourceGroupConfigurationResponse(
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

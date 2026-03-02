@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetExperienceConfigurationUserIdentityConfiguration {
   /// The AWS SSO field name that contains the identifiers of your users, such as their emails.
-  final String identityAttributeName;
+  final pulumi.Input<String> identityAttributeName;
 
   /// Creates a new [GetExperienceConfigurationUserIdentityConfiguration].
   /// [identityAttributeName] The AWS SSO field name that contains the identifiers of your users, such as their emails.
@@ -19,7 +20,7 @@ class GetExperienceConfigurationUserIdentityConfiguration {
 
   factory GetExperienceConfigurationUserIdentityConfiguration.fromMap(Map<String, dynamic> map) {
     return GetExperienceConfigurationUserIdentityConfiguration(
-      identityAttributeName: map['identityAttributeName'] as String,
+      identityAttributeName: (map['identityAttributeName'] as String).input(),
     );
   }
 }

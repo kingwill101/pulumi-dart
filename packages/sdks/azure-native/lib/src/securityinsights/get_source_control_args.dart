@@ -19,13 +19,10 @@ class GetSourceControlArgs {
   /// [sourceControlId] Source control Id
   /// [workspaceName] The name of the workspace.
   GetSourceControlArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sourceControlId,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceControlId = pulumi.Input.asInput<String>(sourceControlId),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.sourceControlId,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSourceControlArgs {
 
   factory GetSourceControlArgs.fromMap(Map<String, dynamic> map) {
     return GetSourceControlArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceControlId: pulumi.Output.create<String>(map['sourceControlId'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceControlId: (map['sourceControlId'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

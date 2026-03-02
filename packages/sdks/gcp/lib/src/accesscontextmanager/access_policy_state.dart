@@ -27,19 +27,13 @@ class AccessPolicyState {
   /// [title] Human readable title. Does not affect behavior.
   /// [updateTime] Time the AccessPolicy was updated in UTC.
   AccessPolicyState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? scopes,
-    pulumi.Output<String>? title,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      scopes = pulumi.Input.asOptionalInput<String>(scopes),
-      title = pulumi.Input.asOptionalInput<String>(title),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.name,
+    this.parent,
+    this.scopes,
+    this.title,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class AccessPolicyState {
 
   factory AccessPolicyState.fromMap(Map<String, dynamic> map) {
     return AccessPolicyState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<String>(map['scopes'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

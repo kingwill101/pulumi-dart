@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Sku, to be associated with a SiteNetworkService.
 class SkuResponse {
   /// Name of this Sku
-  final String name;
+  final pulumi.Input<String> name;
   /// The SKU tier based on the SKU name.
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [SkuResponse].
   /// [name] Name of this Sku
@@ -25,8 +26,8 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      name: map['name'] as String,
-      tier: map['tier'] as String,
+      name: (map['name'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

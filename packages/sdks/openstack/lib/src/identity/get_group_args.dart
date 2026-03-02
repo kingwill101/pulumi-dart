@@ -20,13 +20,10 @@ class GetGroupArgs {
   /// [name] The name of the group.
   /// [region] The region in which to obtain the V3 Keystone client.
   GetGroupArgs({
-    pulumi.Output<String>? domainId,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-  }) :
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.domainId,
+    required this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetGroupArgs {
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -24,15 +24,11 @@ class IamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [tableId] Used to find the parent resource to bind the IAM policy to
   IamPolicyArgs({
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tableId,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tableId = pulumi.Input.asInput<String>(tableId);
+    required this.datasetId,
+    required this.policyData,
+    this.project,
+    required this.tableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class IamPolicyArgs {
 
   factory IamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return IamPolicyArgs(
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tableId: pulumi.Output.create<String>(map['tableId'] as String),
+      datasetId: (map['datasetId'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tableId: (map['tableId'] as String).input(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'resource_group_policy_assignment_override_selector.dart';
 
 class ResourceGroupPolicyAssignmentOverride {
   /// One or more `override_selector` block as defined below.
-  final List<ResourceGroupPolicyAssignmentOverrideSelector>? selectors;
+  final pulumi.Input<List<ResourceGroupPolicyAssignmentOverrideSelector>>? selectors;
   /// Specifies the value to override the policy property. Possible values for `policyEffect` override listed [policy effects](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects).
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ResourceGroupPolicyAssignmentOverride].
   /// [selectors] One or more `override_selector` block as defined below.
@@ -19,15 +19,15 @@ class ResourceGroupPolicyAssignmentOverride {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'selectors': ?selectors == null ? null : pulumi.Input.encodeList<ResourceGroupPolicyAssignmentOverrideSelector, Map<String, dynamic>>(selectors!, (value) => value.toMap()),
+      'selectors': ?pulumi.Input.mapOptionalInputValue<List<ResourceGroupPolicyAssignmentOverrideSelector>, List<Map<String, dynamic>>>(selectors, (value) => pulumi.Input.encodeList<ResourceGroupPolicyAssignmentOverrideSelector, Map<String, dynamic>>(value, (value) => value.toMap())),
       'value': value,
     };
   }
 
   factory ResourceGroupPolicyAssignmentOverride.fromMap(Map<String, dynamic> map) {
     return ResourceGroupPolicyAssignmentOverride(
-      selectors: map['selectors'] == null ? null : pulumi.Input.decodeList<ResourceGroupPolicyAssignmentOverrideSelector>(map['selectors'], (value) => ResourceGroupPolicyAssignmentOverrideSelector.fromMap((value as Map).cast<String, dynamic>())),
-      value: map['value'] as String,
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<ResourceGroupPolicyAssignmentOverrideSelector>(map['selectors'], (value) => ResourceGroupPolicyAssignmentOverrideSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetLabArgs {
   /// [name] The name of the lab.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetLabArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.expand,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLabArgs {
 
   factory GetLabArgs.fromMap(Map<String, dynamic> map) {
     return GetLabArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

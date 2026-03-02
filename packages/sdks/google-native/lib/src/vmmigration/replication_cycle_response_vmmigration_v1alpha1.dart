@@ -8,27 +8,27 @@ import 'status_response_vmmigration_v1alpha1.dart';
 /// ReplicationCycle contains information about the current replication cycle status.
 class ReplicationCycleResponseVmmigrationV1alpha1 {
   /// The cycle's ordinal number.
-  final int cycleNumber;
+  final pulumi.Input<int> cycleNumber;
   /// The time the replication cycle has ended.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Provides details on the state of the cycle in case of an error.
-  final StatusResponseVmmigrationV1alpha1 error;
+  final pulumi.Input<StatusResponseVmmigrationV1alpha1> error;
   /// The identifier of the ReplicationCycle.
-  final String name;
+  final pulumi.Input<String> name;
   /// The current progress in percentage of this cycle.
-  final int progress;
+  final pulumi.Input<int> progress;
   /// The current progress in percentage of this cycle. Was replaced by 'steps' field, which breaks down the cycle progression more accurately.
-  final int progressPercent;
+  final pulumi.Input<int> progressPercent;
   /// The time the replication cycle has started.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// State of the ReplicationCycle.
-  final String state;
+  final pulumi.Input<String> state;
   /// The cycle's steps list representing its progress.
-  final List<CycleStepResponseVmmigrationV1alpha1> steps;
+  final pulumi.Input<List<CycleStepResponseVmmigrationV1alpha1>> steps;
   /// The accumulated duration the replication cycle was paused.
-  final String totalPauseDuration;
+  final pulumi.Input<String> totalPauseDuration;
   /// Warnings that occurred during the cycle.
-  final List<MigrationWarningResponseVmmigrationV1alpha1> warnings;
+  final pulumi.Input<List<MigrationWarningResponseVmmigrationV1alpha1>> warnings;
 
   /// Creates a new [ReplicationCycleResponseVmmigrationV1alpha1].
   /// [cycleNumber] The cycle's ordinal number.
@@ -60,31 +60,31 @@ class ReplicationCycleResponseVmmigrationV1alpha1 {
     return <String, dynamic>{
       'cycleNumber': cycleNumber,
       'endTime': endTime,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<StatusResponseVmmigrationV1alpha1, Map<String, dynamic>>(error, (value) => value.toMap()),
       'name': name,
       'progress': progress,
       'progressPercent': progressPercent,
       'startTime': startTime,
       'state': state,
-      'steps': pulumi.Input.encodeList<CycleStepResponseVmmigrationV1alpha1, Map<String, dynamic>>(steps, (value) => value.toMap()),
+      'steps': pulumi.Input.mapInputValue<List<CycleStepResponseVmmigrationV1alpha1>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<CycleStepResponseVmmigrationV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'totalPauseDuration': totalPauseDuration,
-      'warnings': pulumi.Input.encodeList<MigrationWarningResponseVmmigrationV1alpha1, Map<String, dynamic>>(warnings, (value) => value.toMap()),
+      'warnings': pulumi.Input.mapInputValue<List<MigrationWarningResponseVmmigrationV1alpha1>, List<Map<String, dynamic>>>(warnings, (value) => pulumi.Input.encodeList<MigrationWarningResponseVmmigrationV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ReplicationCycleResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return ReplicationCycleResponseVmmigrationV1alpha1(
-      cycleNumber: map['cycleNumber'] as int,
-      endTime: map['endTime'] as String,
-      error: StatusResponseVmmigrationV1alpha1.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      progress: map['progress'] as int,
-      progressPercent: map['progressPercent'] as int,
-      startTime: map['startTime'] as String,
-      state: map['state'] as String,
-      steps: pulumi.Input.decodeList<CycleStepResponseVmmigrationV1alpha1>(map['steps'], (value) => CycleStepResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
-      totalPauseDuration: map['totalPauseDuration'] as String,
-      warnings: pulumi.Input.decodeList<MigrationWarningResponseVmmigrationV1alpha1>(map['warnings'], (value) => MigrationWarningResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      cycleNumber: (map['cycleNumber'] as int).input(),
+      endTime: (map['endTime'] as String).input(),
+      error: (StatusResponseVmmigrationV1alpha1.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      progress: (map['progress'] as int).input(),
+      progressPercent: (map['progressPercent'] as int).input(),
+      startTime: (map['startTime'] as String).input(),
+      state: (map['state'] as String).input(),
+      steps: (pulumi.Input.decodeList<CycleStepResponseVmmigrationV1alpha1>(map['steps'], (value) => CycleStepResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      totalPauseDuration: (map['totalPauseDuration'] as String).input(),
+      warnings: (pulumi.Input.decodeList<MigrationWarningResponseVmmigrationV1alpha1>(map['warnings'], (value) => MigrationWarningResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

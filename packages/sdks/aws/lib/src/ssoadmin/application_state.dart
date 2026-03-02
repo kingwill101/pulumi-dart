@@ -49,33 +49,20 @@ class ApplicationState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ApplicationState({
-    pulumi.Output<String>? applicationAccount,
-    pulumi.Output<String>? applicationArn,
-    pulumi.Output<String>? applicationProviderArn,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? clientToken,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? instanceArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<ApplicationPortalOptions>? portalOptions,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      applicationAccount = pulumi.Input.asOptionalInput<String>(applicationAccount),
-      applicationArn = pulumi.Input.asOptionalInput<String>(applicationArn),
-      applicationProviderArn = pulumi.Input.asOptionalInput<String>(applicationProviderArn),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      clientToken = pulumi.Input.asOptionalInput<String>(clientToken),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceArn = pulumi.Input.asOptionalInput<String>(instanceArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      portalOptions = pulumi.Input.asOptionalInput<ApplicationPortalOptions>(portalOptions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.applicationAccount,
+    this.applicationArn,
+    this.applicationProviderArn,
+    this.arn,
+    this.clientToken,
+    this.description,
+    this.instanceArn,
+    this.name,
+    this.portalOptions,
+    this.region,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      applicationAccount: map['applicationAccount'] == null ? null : pulumi.Output.create<String>(map['applicationAccount'] as String),
-      applicationArn: map['applicationArn'] == null ? null : pulumi.Output.create<String>(map['applicationArn'] as String),
-      applicationProviderArn: map['applicationProviderArn'] == null ? null : pulumi.Output.create<String>(map['applicationProviderArn'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      clientToken: map['clientToken'] == null ? null : pulumi.Output.create<String>(map['clientToken'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceArn: map['instanceArn'] == null ? null : pulumi.Output.create<String>(map['instanceArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      portalOptions: map['portalOptions'] == null ? null : pulumi.Output.create<ApplicationPortalOptions>(ApplicationPortalOptions.fromMap((map['portalOptions'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      applicationAccount: map['applicationAccount'] == null ? null : (map['applicationAccount'] as String).input(),
+      applicationArn: map['applicationArn'] == null ? null : (map['applicationArn'] as String).input(),
+      applicationProviderArn: map['applicationProviderArn'] == null ? null : (map['applicationProviderArn'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      clientToken: map['clientToken'] == null ? null : (map['clientToken'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      portalOptions: map['portalOptions'] == null ? null : (ApplicationPortalOptions.fromMap((map['portalOptions'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

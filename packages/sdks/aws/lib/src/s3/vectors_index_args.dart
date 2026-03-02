@@ -41,25 +41,16 @@ class VectorsIndexArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vectorBucketName] Name of the vector bucket for the vector index.
   VectorsIndexArgs({
-    required pulumi.Output<String> dataType,
-    required pulumi.Output<int> dimension,
-    required pulumi.Output<String> distanceMetric,
-    pulumi.Output<List<VectorsIndexEncryptionConfiguration>>? encryptionConfigurations,
-    required pulumi.Output<String> indexName,
-    pulumi.Output<VectorsIndexMetadataConfiguration>? metadataConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vectorBucketName,
-  }) :
-      dataType = pulumi.Input.asInput<String>(dataType),
-      dimension = pulumi.Input.asInput<int>(dimension),
-      distanceMetric = pulumi.Input.asInput<String>(distanceMetric),
-      encryptionConfigurations = pulumi.Input.asOptionalInput<List<VectorsIndexEncryptionConfiguration>>(encryptionConfigurations),
-      indexName = pulumi.Input.asInput<String>(indexName),
-      metadataConfiguration = pulumi.Input.asOptionalInput<VectorsIndexMetadataConfiguration>(metadataConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vectorBucketName = pulumi.Input.asInput<String>(vectorBucketName);
+    required this.dataType,
+    required this.dimension,
+    required this.distanceMetric,
+    this.encryptionConfigurations,
+    required this.indexName,
+    this.metadataConfiguration,
+    this.region,
+    this.tags,
+    required this.vectorBucketName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class VectorsIndexArgs {
 
   factory VectorsIndexArgs.fromMap(Map<String, dynamic> map) {
     return VectorsIndexArgs(
-      dataType: pulumi.Output.create<String>(map['dataType'] as String),
-      dimension: pulumi.Output.create<int>(map['dimension'] as int),
-      distanceMetric: pulumi.Output.create<String>(map['distanceMetric'] as String),
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : pulumi.Output.create<List<VectorsIndexEncryptionConfiguration>>(pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(map['encryptionConfigurations'], (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      indexName: pulumi.Output.create<String>(map['indexName'] as String),
-      metadataConfiguration: map['metadataConfiguration'] == null ? null : pulumi.Output.create<VectorsIndexMetadataConfiguration>(VectorsIndexMetadataConfiguration.fromMap((map['metadataConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vectorBucketName: pulumi.Output.create<String>(map['vectorBucketName'] as String),
+      dataType: (map['dataType'] as String).input(),
+      dimension: (map['dimension'] as int).input(),
+      distanceMetric: (map['distanceMetric'] as String).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(map['encryptionConfigurations'], (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      indexName: (map['indexName'] as String).input(),
+      metadataConfiguration: map['metadataConfiguration'] == null ? null : (VectorsIndexMetadataConfiguration.fromMap((map['metadataConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vectorBucketName: (map['vectorBucketName'] as String).input(),
     );
   }
 }

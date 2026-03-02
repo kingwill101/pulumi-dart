@@ -22,17 +22,12 @@ class EnrollmentStatusState {
   /// [status] The enrollment status of the account. Valid values: `Active`, `Inactive`.
   /// [timeouts] Optional.
   EnrollmentStatusState({
-    pulumi.Output<bool>? includeMemberAccounts,
-    pulumi.Output<int>? numberOfMemberAccountsOptedIn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<EnrollmentStatusTimeouts>? timeouts,
-  }) :
-      includeMemberAccounts = pulumi.Input.asOptionalInput<bool>(includeMemberAccounts),
-      numberOfMemberAccountsOptedIn = pulumi.Input.asOptionalInput<int>(numberOfMemberAccountsOptedIn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      timeouts = pulumi.Input.asOptionalInput<EnrollmentStatusTimeouts>(timeouts);
+    this.includeMemberAccounts,
+    this.numberOfMemberAccountsOptedIn,
+    this.region,
+    this.status,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class EnrollmentStatusState {
 
   factory EnrollmentStatusState.fromMap(Map<String, dynamic> map) {
     return EnrollmentStatusState(
-      includeMemberAccounts: map['includeMemberAccounts'] == null ? null : pulumi.Output.create<bool>(map['includeMemberAccounts'] as bool),
-      numberOfMemberAccountsOptedIn: map['numberOfMemberAccountsOptedIn'] == null ? null : pulumi.Output.create<int>(map['numberOfMemberAccountsOptedIn'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<EnrollmentStatusTimeouts>(EnrollmentStatusTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      includeMemberAccounts: map['includeMemberAccounts'] == null ? null : (map['includeMemberAccounts'] as bool).input(),
+      numberOfMemberAccountsOptedIn: map['numberOfMemberAccountsOptedIn'] == null ? null : (map['numberOfMemberAccountsOptedIn'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (EnrollmentStatusTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BaselineBaselineItem {
   /// Baseline item configuration. The format is a JSON string.
-  final String? config;
+  final pulumi.Input<String>? config;
   /// The baseline item name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The baseline item version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [BaselineBaselineItem].
   /// [config] Baseline item configuration. The format is a JSON string.
@@ -29,9 +30,9 @@ class BaselineBaselineItem {
 
   factory BaselineBaselineItem.fromMap(Map<String, dynamic> map) {
     return BaselineBaselineItem(
-      config: map['config'] == null ? null : map['config'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

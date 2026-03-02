@@ -22,15 +22,11 @@ class GetWafDomainsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [queryArgs] The query conditions. You can filter domain names by name. Fuzzy match is supported `QueryArgs={"DomainName":"Accelerated domain name"}`.
   GetWafDomainsArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? queryArgs,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      queryArgs = pulumi.Input.asOptionalInput<String>(queryArgs);
+    this.enableDetails,
+    this.ids,
+    this.outputFile,
+    this.queryArgs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWafDomainsArgs {
 
   factory GetWafDomainsArgs.fromMap(Map<String, dynamic> map) {
     return GetWafDomainsArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      queryArgs: map['queryArgs'] == null ? null : pulumi.Output.create<String>(map['queryArgs'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      queryArgs: map['queryArgs'] == null ? null : (map['queryArgs'] as String).input(),
     );
   }
 }

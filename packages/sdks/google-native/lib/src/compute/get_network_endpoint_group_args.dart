@@ -16,13 +16,10 @@ class GetNetworkEndpointGroupArgs {
   /// [project] Optional.
   /// [zone] Required.
   GetNetworkEndpointGroupArgs({
-    required pulumi.Output<String> networkEndpointGroup,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> zone,
-  }) :
-      networkEndpointGroup = pulumi.Input.asInput<String>(networkEndpointGroup),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+    required this.networkEndpointGroup,
+    this.project,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetNetworkEndpointGroupArgs {
 
   factory GetNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkEndpointGroupArgs(
-      networkEndpointGroup: pulumi.Output.create<String>(map['networkEndpointGroup'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      networkEndpointGroup: (map['networkEndpointGroup'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

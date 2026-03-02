@@ -43,31 +43,19 @@ class LocationSmbState {
   /// [uri] Optional.
   /// [user] The user who can mount the share and has file and folder permissions in the SMB share.
   LocationSmbState({
-    pulumi.Output<List<String>>? agentArns,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? domain,
-    pulumi.Output<LocationSmbMountOptions>? mountOptions,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serverHostname,
-    pulumi.Output<String>? subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? uri,
-    pulumi.Output<String>? user,
-  }) :
-      agentArns = pulumi.Input.asOptionalInput<List<String>>(agentArns),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      mountOptions = pulumi.Input.asOptionalInput<LocationSmbMountOptions>(mountOptions),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverHostname = pulumi.Input.asOptionalInput<String>(serverHostname),
-      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      uri = pulumi.Input.asOptionalInput<String>(uri),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.agentArns,
+    this.arn,
+    this.domain,
+    this.mountOptions,
+    this.password,
+    this.region,
+    this.serverHostname,
+    this.subdirectory,
+    this.tags,
+    this.tagsAll,
+    this.uri,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class LocationSmbState {
 
   factory LocationSmbState.fromMap(Map<String, dynamic> map) {
     return LocationSmbState(
-      agentArns: map['agentArns'] == null ? null : pulumi.Output.create<List<String>>((map['agentArns'] as List).cast<String>()),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      mountOptions: map['mountOptions'] == null ? null : pulumi.Output.create<LocationSmbMountOptions>(LocationSmbMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverHostname: map['serverHostname'] == null ? null : pulumi.Output.create<String>(map['serverHostname'] as String),
-      subdirectory: map['subdirectory'] == null ? null : pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      agentArns: map['agentArns'] == null ? null : ((map['agentArns'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : (LocationSmbMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverHostname: map['serverHostname'] == null ? null : (map['serverHostname'] as String).input(),
+      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

@@ -32,17 +32,12 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs {
   /// [folder] Numerical ID of the parent folder.
   /// [location] Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   ManagementFolderSecurityHealthAnalyticsCustomModuleArgs({
-    pulumi.Output<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig>? customConfig,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? enablementState,
-    required pulumi.Output<String> folder,
-    pulumi.Output<String>? location,
-  }) :
-      customConfig = pulumi.Input.asOptionalInput<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig>(customConfig),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enablementState = pulumi.Input.asOptionalInput<String>(enablementState),
-      folder = pulumi.Input.asInput<String>(folder),
-      location = pulumi.Input.asOptionalInput<String>(location);
+    this.customConfig,
+    this.displayName,
+    this.enablementState,
+    required this.folder,
+    this.location,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs {
 
   factory ManagementFolderSecurityHealthAnalyticsCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return ManagementFolderSecurityHealthAnalyticsCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : pulumi.Output.create<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig>(ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enablementState: map['enablementState'] == null ? null : pulumi.Output.create<String>(map['enablementState'] as String),
-      folder: pulumi.Output.create<String>(map['folder'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      customConfig: map['customConfig'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enablementState: map['enablementState'] == null ? null : (map['enablementState'] as String).input(),
+      folder: (map['folder'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
     );
   }
 }

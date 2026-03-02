@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The suggestion chip message that allows the user to jump out to the app or website associated with this agent.
 class GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion {
   /// The name of the app or site this chip is linking to.
-  final String destinationName;
+  final pulumi.Input<String> destinationName;
   /// The URI of the app or site to open when the user taps the suggestion chip.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion].
   /// [destinationName] The name of the app or site this chip is linking to.
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion(
-      destinationName: map['destinationName'] as String,
-      uri: map['uri'] as String,
+      destinationName: (map['destinationName'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class StaticCidrArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [staticCidrName] Static Cidr allocation name.
   StaticCidrArgs({
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> poolName,
-    pulumi.Output<StaticCidrProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? staticCidrName,
-  }) :
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      properties = pulumi.Input.asOptionalInput<StaticCidrProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      staticCidrName = pulumi.Input.asOptionalInput<String>(staticCidrName);
+    required this.networkManagerName,
+    required this.poolName,
+    this.properties,
+    required this.resourceGroupName,
+    this.staticCidrName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class StaticCidrArgs {
 
   factory StaticCidrArgs.fromMap(Map<String, dynamic> map) {
     return StaticCidrArgs(
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<StaticCidrProperties>(StaticCidrProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      staticCidrName: map['staticCidrName'] == null ? null : pulumi.Output.create<String>(map['staticCidrName'] as String),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      properties: map['properties'] == null ? null : (StaticCidrProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      staticCidrName: map['staticCidrName'] == null ? null : (map['staticCidrName'] as String).input(),
     );
   }
 }

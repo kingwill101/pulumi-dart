@@ -19,13 +19,10 @@ class GetServerlessSecurityPolicyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] Type of security policy. One of `encryption` or `network`.
   GetServerlessSecurityPolicyArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> type,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asInput<String>(type);
+    required this.name,
+    this.region,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetServerlessSecurityPolicyArgs {
 
   factory GetServerlessSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServerlessSecurityPolicyArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

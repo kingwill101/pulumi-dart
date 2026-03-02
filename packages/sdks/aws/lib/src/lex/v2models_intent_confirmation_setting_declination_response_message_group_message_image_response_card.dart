@@ -5,13 +5,13 @@ import 'v2models_intent_confirmation_setting_declination_response_message_group_
 
 class V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCard {
   /// Configuration blocks for buttons that should be displayed on the response card. The arrangement of the buttons is determined by the platform that displays the button. See `button`.
-  final List<V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCardButton>? buttons;
+  final pulumi.Input<List<V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCardButton>>? buttons;
   /// URL of an image to display on the response card. The image URL must be publicly available so that the platform displaying the response card has access to the image.
-  final String? imageUrl;
+  final pulumi.Input<String>? imageUrl;
   /// Subtitle to display on the response card. The format of the subtitle is determined by the platform displaying the response card.
-  final String? subtitle;
+  final pulumi.Input<String>? subtitle;
   /// Title to display on the response card. The format of the title is determined by the platform displaying the response card.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCard].
   /// [buttons] Configuration blocks for buttons that should be displayed on the response card. The arrangement of the buttons is determined by the platform that displays the button. See `button`.
@@ -27,7 +27,7 @@ class V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageIma
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buttons': ?buttons == null ? null : pulumi.Input.encodeList<V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCardButton, Map<String, dynamic>>(buttons!, (value) => value.toMap()),
+      'buttons': ?pulumi.Input.mapOptionalInputValue<List<V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCardButton>, List<Map<String, dynamic>>>(buttons, (value) => pulumi.Input.encodeList<V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCardButton, Map<String, dynamic>>(value, (value) => value.toMap())),
       'imageUrl': ?imageUrl,
       'subtitle': ?subtitle,
       'title': title,
@@ -36,10 +36,10 @@ class V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageIma
 
   factory V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCard.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCard(
-      buttons: map['buttons'] == null ? null : pulumi.Input.decodeList<V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCardButton>(map['buttons'], (value) => V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCardButton.fromMap((value as Map).cast<String, dynamic>())),
-      imageUrl: map['imageUrl'] == null ? null : map['imageUrl'] as String,
-      subtitle: map['subtitle'] == null ? null : map['subtitle'] as String,
-      title: map['title'] as String,
+      buttons: map['buttons'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCardButton>(map['buttons'], (value) => V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupMessageImageResponseCardButton.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageUrl: map['imageUrl'] == null ? null : (map['imageUrl'] as String).input(),
+      subtitle: map['subtitle'] == null ? null : (map['subtitle'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

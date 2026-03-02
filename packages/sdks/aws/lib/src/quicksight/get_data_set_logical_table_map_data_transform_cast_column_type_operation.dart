@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation {
-  final String columnName;
-  final String format;
-  final String newColumnType;
+  final pulumi.Input<String> columnName;
+  final pulumi.Input<String> format;
+  final pulumi.Input<String> newColumnType;
 
   /// Creates a new [GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation].
   /// [columnName] Required.
@@ -26,9 +27,9 @@ class GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation {
 
   factory GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation(
-      columnName: map['columnName'] as String,
-      format: map['format'] as String,
-      newColumnType: map['newColumnType'] as String,
+      columnName: (map['columnName'] as String).input(),
+      format: (map['format'] as String).input(),
+      newColumnType: (map['newColumnType'] as String).input(),
     );
   }
 }

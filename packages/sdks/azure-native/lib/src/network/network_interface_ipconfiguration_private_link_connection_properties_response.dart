@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PrivateLinkConnection properties for the network interface.
 class NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse {
   /// List of FQDNs for current private link connection.
-  final List<String> fqdns;
+  final pulumi.Input<List<String>> fqdns;
   /// The group ID for current private link connection.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The required member name for current private link connection.
-  final String requiredMemberName;
+  final pulumi.Input<String> requiredMemberName;
 
   /// Creates a new [NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse].
   /// [fqdns] List of FQDNs for current private link connection.
@@ -30,9 +31,9 @@ class NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse {
 
   factory NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse(
-      fqdns: (map['fqdns'] as List).cast<String>(),
-      groupId: map['groupId'] as String,
-      requiredMemberName: map['requiredMemberName'] as String,
+      fqdns: ((map['fqdns'] as List).cast<String>()).input(),
+      groupId: (map['groupId'] as String).input(),
+      requiredMemberName: (map['requiredMemberName'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetFleetMemberArgs {
   /// [fleetName] The name of the Fleet resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFleetMemberArgs({
-    required pulumi.Output<String> fleetMemberName,
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      fleetMemberName = pulumi.Input.asInput<String>(fleetMemberName),
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.fleetMemberName,
+    required this.fleetName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFleetMemberArgs {
 
   factory GetFleetMemberArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetMemberArgs(
-      fleetMemberName: pulumi.Output.create<String>(map['fleetMemberName'] as String),
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      fleetMemberName: (map['fleetMemberName'] as String).input(),
+      fleetName: (map['fleetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

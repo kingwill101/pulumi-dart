@@ -42,27 +42,17 @@ class GetRouterArgs {
   /// [tags] The list of router tags to filter.
   /// [tenantId] The owner of the router.
   GetRouterArgs({
-    pulumi.Output<bool>? adminStateUp,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? distributed,
-    pulumi.Output<bool>? enableSnat,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routerId,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? tenantId,
-  }) :
-      adminStateUp = pulumi.Input.asOptionalInput<bool>(adminStateUp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      distributed = pulumi.Input.asOptionalInput<bool>(distributed),
-      enableSnat = pulumi.Input.asOptionalInput<bool>(enableSnat),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routerId = pulumi.Input.asOptionalInput<String>(routerId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.adminStateUp,
+    this.description,
+    this.distributed,
+    this.enableSnat,
+    this.name,
+    this.region,
+    this.routerId,
+    this.status,
+    this.tags,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class GetRouterArgs {
 
   factory GetRouterArgs.fromMap(Map<String, dynamic> map) {
     return GetRouterArgs(
-      adminStateUp: map['adminStateUp'] == null ? null : pulumi.Output.create<bool>(map['adminStateUp'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      distributed: map['distributed'] == null ? null : pulumi.Output.create<bool>(map['distributed'] as bool),
-      enableSnat: map['enableSnat'] == null ? null : pulumi.Output.create<bool>(map['enableSnat'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      distributed: map['distributed'] == null ? null : (map['distributed'] as bool).input(),
+      enableSnat: map['enableSnat'] == null ? null : (map['enableSnat'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

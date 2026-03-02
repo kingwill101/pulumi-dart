@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecretStoreProperties {
-  final String? secretStoreId;
+  final pulumi.Input<String>? secretStoreId;
 
   /// Creates a new [SecretStoreProperties].
   /// [secretStoreId] Optional.
@@ -18,7 +19,7 @@ class SecretStoreProperties {
 
   factory SecretStoreProperties.fromMap(Map<String, dynamic> map) {
     return SecretStoreProperties(
-      secretStoreId: map['secretStoreId'] == null ? null : map['secretStoreId'] as String,
+      secretStoreId: map['secretStoreId'] == null ? null : (map['secretStoreId'] as String).input(),
     );
   }
 }

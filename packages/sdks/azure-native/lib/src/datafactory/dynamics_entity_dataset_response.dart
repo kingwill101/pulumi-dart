@@ -8,24 +8,24 @@ import 'parameter_specification_response.dart';
 /// The Dynamics entity dataset.
 class DynamicsEntityDatasetResponse {
   /// List of tags that can be used for describing the Dataset.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// Dataset description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The logical name of the entity. Type: string (or Expression with resultType string).
-  final dynamic entityName;
+  final pulumi.Input<dynamic>? entityName;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final DatasetResponseFolder? folder;
+  final pulumi.Input<DatasetResponseFolder>? folder;
   /// Linked service reference.
-  final LinkedServiceReferenceResponse linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse> linkedServiceName;
   /// Parameters for dataset.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-  final dynamic schema;
+  final pulumi.Input<dynamic>? schema;
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-  final dynamic structure;
+  final pulumi.Input<dynamic>? structure;
   /// Type of dataset.
   /// Expected value is 'DynamicsEntity'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DynamicsEntityDatasetResponse].
   /// [annotations] List of tags that can be used for describing the Dataset.
@@ -54,9 +54,9 @@ class DynamicsEntityDatasetResponse {
       'annotations': ?annotations,
       'description': ?description,
       'entityName': ?entityName,
-      'folder': ?folder == null ? null : folder!.toMap(),
-      'linkedServiceName': linkedServiceName.toMap(),
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetResponseFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schema': ?schema,
       'structure': ?structure,
       'type': type,
@@ -65,15 +65,15 @@ class DynamicsEntityDatasetResponse {
 
   factory DynamicsEntityDatasetResponse.fromMap(Map<String, dynamic> map) {
     return DynamicsEntityDatasetResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      entityName: map['entityName'] == null ? null : map['entityName'],
-      folder: map['folder'] == null ? null : DatasetResponseFolder.fromMap((map['folder'] as Map).cast<String, dynamic>()),
-      linkedServiceName: LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      schema: map['schema'] == null ? null : map['schema'],
-      structure: map['structure'] == null ? null : map['structure'],
-      type: map['type'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      entityName: map['entityName'] == null ? null : (map['entityName']).input(),
+      folder: map['folder'] == null ? null : (DatasetResponseFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      linkedServiceName: (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schema: map['schema'] == null ? null : (map['schema']).input(),
+      structure: map['structure'] == null ? null : (map['structure']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -44,29 +44,18 @@ class WorkspaceProductArgs {
   /// [terms] Product terms of use. Developers trying to subscribe to the product will be presented and required to accept these terms before they can complete the subscription process.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   WorkspaceProductArgs({
-    pulumi.Output<bool>? approvalRequired,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? productId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<ProductState>? state,
-    pulumi.Output<bool>? subscriptionRequired,
-    pulumi.Output<int>? subscriptionsLimit,
-    pulumi.Output<String>? terms,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      approvalRequired = pulumi.Input.asOptionalInput<bool>(approvalRequired),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      productId = pulumi.Input.asOptionalInput<String>(productId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      state = pulumi.Input.asOptionalInput<ProductState>(state),
-      subscriptionRequired = pulumi.Input.asOptionalInput<bool>(subscriptionRequired),
-      subscriptionsLimit = pulumi.Input.asOptionalInput<int>(subscriptionsLimit),
-      terms = pulumi.Input.asOptionalInput<String>(terms),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.approvalRequired,
+    this.description,
+    required this.displayName,
+    this.productId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.state,
+    this.subscriptionRequired,
+    this.subscriptionsLimit,
+    this.terms,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class WorkspaceProductArgs {
 
   factory WorkspaceProductArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceProductArgs(
-      approvalRequired: map['approvalRequired'] == null ? null : pulumi.Output.create<bool>(map['approvalRequired'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<ProductState>(ProductState.fromValue(map['state'] as String)),
-      subscriptionRequired: map['subscriptionRequired'] == null ? null : pulumi.Output.create<bool>(map['subscriptionRequired'] as bool),
-      subscriptionsLimit: map['subscriptionsLimit'] == null ? null : pulumi.Output.create<int>(map['subscriptionsLimit'] as int),
-      terms: map['terms'] == null ? null : pulumi.Output.create<String>(map['terms'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      state: map['state'] == null ? null : (ProductState.fromValue(map['state'] as String)).input(),
+      subscriptionRequired: map['subscriptionRequired'] == null ? null : (map['subscriptionRequired'] as bool).input(),
+      subscriptionsLimit: map['subscriptionsLimit'] == null ? null : (map['subscriptionsLimit'] as int).input(),
+      terms: map['terms'] == null ? null : (map['terms'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class MonitoredSubscriptionArgs {
   /// [properties] The request to update subscriptions needed to be monitored by the Datadog monitor resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   MonitoredSubscriptionArgs({
-    pulumi.Output<String>? configurationName,
-    required pulumi.Output<String> monitorName,
-    pulumi.Output<SubscriptionList>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configurationName = pulumi.Input.asOptionalInput<String>(configurationName),
-      monitorName = pulumi.Input.asInput<String>(monitorName),
-      properties = pulumi.Input.asOptionalInput<SubscriptionList>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.configurationName,
+    required this.monitorName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class MonitoredSubscriptionArgs {
 
   factory MonitoredSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return MonitoredSubscriptionArgs(
-      configurationName: map['configurationName'] == null ? null : pulumi.Output.create<String>(map['configurationName'] as String),
-      monitorName: pulumi.Output.create<String>(map['monitorName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<SubscriptionList>(SubscriptionList.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
+      monitorName: (map['monitorName'] as String).input(),
+      properties: map['properties'] == null ? null : (SubscriptionList.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -26,19 +26,13 @@ class UrlListNetworksecurityV1beta1Args {
   /// [urlListId] Required. Short name of the UrlList resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "url_list".
   /// [values] FQDNs and URLs.
   UrlListNetworksecurityV1beta1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> urlListId,
-    required pulumi.Output<List<String>> values,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      urlListId = pulumi.Input.asInput<String>(urlListId),
-      values = pulumi.Input.asInput<List<String>>(values);
+    this.description,
+    this.location,
+    this.name,
+    this.project,
+    required this.urlListId,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class UrlListNetworksecurityV1beta1Args {
 
   factory UrlListNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return UrlListNetworksecurityV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      urlListId: pulumi.Output.create<String>(map['urlListId'] as String),
-      values: pulumi.Output.create<List<String>>((map['values'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      urlListId: (map['urlListId'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

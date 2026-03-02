@@ -50,29 +50,18 @@ class EipArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the resource. Tags can only be applied to EIPs in a VPC. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   EipArgs({
-    pulumi.Output<String>? address,
-    pulumi.Output<String>? associateWithPrivateIp,
-    pulumi.Output<String>? customerOwnedIpv4Pool,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? ipamPoolId,
-    pulumi.Output<String>? networkBorderGroup,
-    pulumi.Output<String>? networkInterface,
-    pulumi.Output<String>? publicIpv4Pool,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      associateWithPrivateIp = pulumi.Input.asOptionalInput<String>(associateWithPrivateIp),
-      customerOwnedIpv4Pool = pulumi.Input.asOptionalInput<String>(customerOwnedIpv4Pool),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      ipamPoolId = pulumi.Input.asOptionalInput<String>(ipamPoolId),
-      networkBorderGroup = pulumi.Input.asOptionalInput<String>(networkBorderGroup),
-      networkInterface = pulumi.Input.asOptionalInput<String>(networkInterface),
-      publicIpv4Pool = pulumi.Input.asOptionalInput<String>(publicIpv4Pool),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.address,
+    this.associateWithPrivateIp,
+    this.customerOwnedIpv4Pool,
+    this.domain,
+    this.instance,
+    this.ipamPoolId,
+    this.networkBorderGroup,
+    this.networkInterface,
+    this.publicIpv4Pool,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,17 +81,17 @@ class EipArgs {
 
   factory EipArgs.fromMap(Map<String, dynamic> map) {
     return EipArgs(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      associateWithPrivateIp: map['associateWithPrivateIp'] == null ? null : pulumi.Output.create<String>(map['associateWithPrivateIp'] as String),
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : pulumi.Output.create<String>(map['customerOwnedIpv4Pool'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      ipamPoolId: map['ipamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipamPoolId'] as String),
-      networkBorderGroup: map['networkBorderGroup'] == null ? null : pulumi.Output.create<String>(map['networkBorderGroup'] as String),
-      networkInterface: map['networkInterface'] == null ? null : pulumi.Output.create<String>(map['networkInterface'] as String),
-      publicIpv4Pool: map['publicIpv4Pool'] == null ? null : pulumi.Output.create<String>(map['publicIpv4Pool'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      associateWithPrivateIp: map['associateWithPrivateIp'] == null ? null : (map['associateWithPrivateIp'] as String).input(),
+      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : (map['customerOwnedIpv4Pool'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
+      networkBorderGroup: map['networkBorderGroup'] == null ? null : (map['networkBorderGroup'] as String).input(),
+      networkInterface: map['networkInterface'] == null ? null : (map['networkInterface'] as String).input(),
+      publicIpv4Pool: map['publicIpv4Pool'] == null ? null : (map['publicIpv4Pool'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

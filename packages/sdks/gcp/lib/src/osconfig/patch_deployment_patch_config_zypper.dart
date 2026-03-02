@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PatchDeploymentPatchConfigZypper {
   /// Install only patches with these categories. Common categories include security, recommended, and feature.
-  final List<String>? categories;
+  final pulumi.Input<List<String>>? categories;
   /// List of packages to exclude from update.
-  final List<String>? excludes;
+  final pulumi.Input<List<String>>? excludes;
   /// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command.
   /// This field must not be used with any other patch configuration fields.
-  final List<String>? exclusivePatches;
+  final pulumi.Input<List<String>>? exclusivePatches;
   /// Install only patches with these severities. Common severities include critical, important, moderate, and low.
-  final List<String>? severities;
+  final pulumi.Input<List<String>>? severities;
   /// Adds the --with-optional flag to zypper patch.
-  final bool? withOptional;
+  final pulumi.Input<bool>? withOptional;
   /// Adds the --with-update flag, to zypper patch.
-  final bool? withUpdate;
+  final pulumi.Input<bool>? withUpdate;
 
   /// Creates a new [PatchDeploymentPatchConfigZypper].
   /// [categories] Install only patches with these categories. Common categories include security, recommended, and feature.
@@ -45,12 +46,12 @@ class PatchDeploymentPatchConfigZypper {
 
   factory PatchDeploymentPatchConfigZypper.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentPatchConfigZypper(
-      categories: map['categories'] == null ? null : (map['categories'] as List).cast<String>(),
-      excludes: map['excludes'] == null ? null : (map['excludes'] as List).cast<String>(),
-      exclusivePatches: map['exclusivePatches'] == null ? null : (map['exclusivePatches'] as List).cast<String>(),
-      severities: map['severities'] == null ? null : (map['severities'] as List).cast<String>(),
-      withOptional: map['withOptional'] == null ? null : map['withOptional'] as bool,
-      withUpdate: map['withUpdate'] == null ? null : map['withUpdate'] as bool,
+      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
+      excludes: map['excludes'] == null ? null : ((map['excludes'] as List).cast<String>()).input(),
+      exclusivePatches: map['exclusivePatches'] == null ? null : ((map['exclusivePatches'] as List).cast<String>()).input(),
+      severities: map['severities'] == null ? null : ((map['severities'] as List).cast<String>()).input(),
+      withOptional: map['withOptional'] == null ? null : (map['withOptional'] as bool).input(),
+      withUpdate: map['withUpdate'] == null ? null : (map['withUpdate'] as bool).input(),
     );
   }
 }

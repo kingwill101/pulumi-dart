@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sql_connection_info_response.dart';
 import 'ssis_migration_info_response.dart';
 
 /// Input for task that migrates SSIS packages from SQL Server to Azure SQL Database Managed Instance.
 class MigrateSsisTaskInputResponse {
   /// Information for connecting to source
-  final SqlConnectionInfoResponse sourceConnectionInfo;
+  final pulumi.Input<SqlConnectionInfoResponse> sourceConnectionInfo;
   /// SSIS package migration information.
-  final SsisMigrationInfoResponse ssisMigrationInfo;
+  final pulumi.Input<SsisMigrationInfoResponse> ssisMigrationInfo;
   /// Information for connecting to target
-  final SqlConnectionInfoResponse targetConnectionInfo;
+  final pulumi.Input<SqlConnectionInfoResponse> targetConnectionInfo;
 
   /// Creates a new [MigrateSsisTaskInputResponse].
   /// [sourceConnectionInfo] Information for connecting to source
@@ -24,17 +25,17 @@ class MigrateSsisTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceConnectionInfo': sourceConnectionInfo.toMap(),
-      'ssisMigrationInfo': ssisMigrationInfo.toMap(),
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'ssisMigrationInfo': pulumi.Input.mapInputValue<SsisMigrationInfoResponse, Map<String, dynamic>>(ssisMigrationInfo, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory MigrateSsisTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSsisTaskInputResponse(
-      sourceConnectionInfo: SqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>()),
-      ssisMigrationInfo: SsisMigrationInfoResponse.fromMap((map['ssisMigrationInfo'] as Map).cast<String, dynamic>()),
-      targetConnectionInfo: SqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
+      sourceConnectionInfo: (SqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      ssisMigrationInfo: (SsisMigrationInfoResponse.fromMap((map['ssisMigrationInfo'] as Map).cast<String, dynamic>())).input(),
+      targetConnectionInfo: (SqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

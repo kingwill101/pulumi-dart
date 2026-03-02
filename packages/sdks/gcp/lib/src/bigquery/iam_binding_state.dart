@@ -42,21 +42,14 @@ class IamBindingState {
   /// [role] The role that should be applied. Only one
   /// [tableId] Used to find the parent resource to bind the IAM policy to
   IamBindingState({
-    pulumi.Output<IamBindingCondition>? condition,
-    pulumi.Output<String>? datasetId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? tableId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<IamBindingCondition>(condition),
-      datasetId = pulumi.Input.asOptionalInput<String>(datasetId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      tableId = pulumi.Input.asOptionalInput<String>(tableId);
+    this.condition,
+    this.datasetId,
+    this.etag,
+    this.members,
+    this.project,
+    this.role,
+    this.tableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,13 +65,13 @@ class IamBindingState {
 
   factory IamBindingState.fromMap(Map<String, dynamic> map) {
     return IamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<IamBindingCondition>(IamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      datasetId: map['datasetId'] == null ? null : pulumi.Output.create<String>(map['datasetId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      tableId: map['tableId'] == null ? null : pulumi.Output.create<String>(map['tableId'] as String),
+      condition: map['condition'] == null ? null : (IamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      tableId: map['tableId'] == null ? null : (map['tableId'] as String).input(),
     );
   }
 }

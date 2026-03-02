@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The auto-approval list of the private link service.
 class PrivateLinkServicePropertiesResponseAutoApproval {
   /// The list of subscriptions.
-  final List<String>? subscriptions;
+  final pulumi.Input<List<String>>? subscriptions;
 
   /// Creates a new [PrivateLinkServicePropertiesResponseAutoApproval].
   /// [subscriptions] The list of subscriptions.
@@ -20,7 +21,7 @@ class PrivateLinkServicePropertiesResponseAutoApproval {
 
   factory PrivateLinkServicePropertiesResponseAutoApproval.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServicePropertiesResponseAutoApproval(
-      subscriptions: map['subscriptions'] == null ? null : (map['subscriptions'] as List).cast<String>(),
+      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions'] as List).cast<String>()).input(),
     );
   }
 }

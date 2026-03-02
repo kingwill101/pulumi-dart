@@ -50,27 +50,17 @@ class ShareState {
   /// [storageAccountName] Specifies the storage account in which to create the share. This property is deprecated in favour of `storage_account_id`.
   /// [url] The URL of the File Share
   ShareState({
-    pulumi.Output<String>? accessTier,
-    pulumi.Output<List<ShareAcl>>? acls,
-    pulumi.Output<String>? enabledProtocol,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? quota,
-    pulumi.Output<String>? resourceManagerId,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? storageAccountName,
-    pulumi.Output<String>? url,
-  }) :
-      accessTier = pulumi.Input.asOptionalInput<String>(accessTier),
-      acls = pulumi.Input.asOptionalInput<List<ShareAcl>>(acls),
-      enabledProtocol = pulumi.Input.asOptionalInput<String>(enabledProtocol),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      quota = pulumi.Input.asOptionalInput<int>(quota),
-      resourceManagerId = pulumi.Input.asOptionalInput<String>(resourceManagerId),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      storageAccountName = pulumi.Input.asOptionalInput<String>(storageAccountName),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.accessTier,
+    this.acls,
+    this.enabledProtocol,
+    this.metadata,
+    this.name,
+    this.quota,
+    this.resourceManagerId,
+    this.storageAccountId,
+    this.storageAccountName,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,16 +79,16 @@ class ShareState {
 
   factory ShareState.fromMap(Map<String, dynamic> map) {
     return ShareState(
-      accessTier: map['accessTier'] == null ? null : pulumi.Output.create<String>(map['accessTier'] as String),
-      acls: map['acls'] == null ? null : pulumi.Output.create<List<ShareAcl>>(pulumi.Input.decodeList<ShareAcl>(map['acls'], (value) => ShareAcl.fromMap((value as Map).cast<String, dynamic>()))),
-      enabledProtocol: map['enabledProtocol'] == null ? null : pulumi.Output.create<String>(map['enabledProtocol'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      quota: map['quota'] == null ? null : pulumi.Output.create<int>(map['quota'] as int),
-      resourceManagerId: map['resourceManagerId'] == null ? null : pulumi.Output.create<String>(map['resourceManagerId'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      storageAccountName: map['storageAccountName'] == null ? null : pulumi.Output.create<String>(map['storageAccountName'] as String),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      accessTier: map['accessTier'] == null ? null : (map['accessTier'] as String).input(),
+      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<ShareAcl>(map['acls'], (value) => ShareAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabledProtocol: map['enabledProtocol'] == null ? null : (map['enabledProtocol'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      quota: map['quota'] == null ? null : (map['quota'] as int).input(),
+      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

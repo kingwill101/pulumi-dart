@@ -6,9 +6,9 @@ import 'name_description_object_response.dart';
 /// Security services type list
 class SecurityServicesTypeListResponse {
   /// list
-  final List<NameDescriptionObjectResponse> entry;
+  final pulumi.Input<List<NameDescriptionObjectResponse>> entry;
   /// security services type
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [SecurityServicesTypeListResponse].
   /// [entry] list
@@ -20,15 +20,15 @@ class SecurityServicesTypeListResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entry': pulumi.Input.encodeList<NameDescriptionObjectResponse, Map<String, dynamic>>(entry, (value) => value.toMap()),
+      'entry': pulumi.Input.mapInputValue<List<NameDescriptionObjectResponse>, List<Map<String, dynamic>>>(entry, (value) => pulumi.Input.encodeList<NameDescriptionObjectResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': ?type,
     };
   }
 
   factory SecurityServicesTypeListResponse.fromMap(Map<String, dynamic> map) {
     return SecurityServicesTypeListResponse(
-      entry: pulumi.Input.decodeList<NameDescriptionObjectResponse>(map['entry'], (value) => NameDescriptionObjectResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : map['type'] as String,
+      entry: (pulumi.Input.decodeList<NameDescriptionObjectResponse>(map['entry'], (value) => NameDescriptionObjectResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

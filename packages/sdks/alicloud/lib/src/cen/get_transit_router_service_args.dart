@@ -15,9 +15,8 @@ class GetTransitRouterServiceArgs {
   /// Creates a new [GetTransitRouterServiceArgs].
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
   GetTransitRouterServiceArgs({
-    pulumi.Output<String>? enable,
-  }) :
-      enable = pulumi.Input.asOptionalInput<String>(enable);
+    this.enable,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +26,7 @@ class GetTransitRouterServiceArgs {
 
   factory GetTransitRouterServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterServiceArgs(
-      enable: map['enable'] == null ? null : pulumi.Output.create<String>(map['enable'] as String),
+      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
     );
   }
 }

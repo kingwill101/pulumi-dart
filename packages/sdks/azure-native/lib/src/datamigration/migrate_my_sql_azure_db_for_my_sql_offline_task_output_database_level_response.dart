@@ -6,40 +6,40 @@ import 'reportable_exception_response.dart';
 
 class MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse {
   /// Name of the database
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// Migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Number of database/object errors.
-  final double errorCount;
+  final pulumi.Input<double> errorCount;
   /// Wildcard string prefix to use for querying all errors of the item
-  final String errorPrefix;
+  final pulumi.Input<String> errorPrefix;
   /// Migration exceptions and warnings.
-  final List<ReportableExceptionResponse> exceptionsAndWarnings;
+  final pulumi.Input<List<ReportableExceptionResponse>> exceptionsAndWarnings;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Last time the storage was updated
-  final String lastStorageUpdate;
+  final pulumi.Input<String> lastStorageUpdate;
   /// Migration progress message
-  final String message;
+  final pulumi.Input<String> message;
   /// Number of objects
-  final double numberOfObjects;
+  final pulumi.Input<double> numberOfObjects;
   /// Number of successfully completed objects
-  final double numberOfObjectsCompleted;
+  final pulumi.Input<double> numberOfObjectsCompleted;
   /// Summary of object results in the migration
-  final Map<String, DataItemMigrationSummaryResultResponse> objectSummary;
+  final pulumi.Input<Map<String, DataItemMigrationSummaryResultResponse>> objectSummary;
   /// Wildcard string prefix to use for querying all sub-tem results of the item
-  final String resultPrefix;
+  final pulumi.Input<String> resultPrefix;
   /// Result type
   /// Expected value is 'DatabaseLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Migration stage that this database is in
-  final String stage;
+  final pulumi.Input<String> stage;
   /// Migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Current state of migration
-  final String state;
+  final pulumi.Input<String> state;
   /// Status message
-  final String statusMessage;
+  final pulumi.Input<String> statusMessage;
 
   /// Creates a new [MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse].
   /// [databaseName] Name of the database
@@ -85,13 +85,13 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse {
       'endedOn': endedOn,
       'errorCount': errorCount,
       'errorPrefix': errorPrefix,
-      'exceptionsAndWarnings': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(exceptionsAndWarnings, (value) => value.toMap()),
+      'exceptionsAndWarnings': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(exceptionsAndWarnings, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'lastStorageUpdate': lastStorageUpdate,
       'message': message,
       'numberOfObjects': numberOfObjects,
       'numberOfObjectsCompleted': numberOfObjectsCompleted,
-      'objectSummary': pulumi.Input.encodeMapValues<DataItemMigrationSummaryResultResponse, Map<String, dynamic>>(objectSummary, (value) => value.toMap()),
+      'objectSummary': pulumi.Input.mapInputValue<Map<String, DataItemMigrationSummaryResultResponse>, Map<String, Map<String, dynamic>>>(objectSummary, (value) => pulumi.Input.encodeMapValues<DataItemMigrationSummaryResultResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resultPrefix': resultPrefix,
       'resultType': resultType,
       'stage': stage,
@@ -103,23 +103,23 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse {
 
   factory MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse(
-      databaseName: map['databaseName'] as String,
-      endedOn: map['endedOn'] as String,
-      errorCount: map['errorCount'] as double,
-      errorPrefix: map['errorPrefix'] as String,
-      exceptionsAndWarnings: pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      lastStorageUpdate: map['lastStorageUpdate'] as String,
-      message: map['message'] as String,
-      numberOfObjects: map['numberOfObjects'] as double,
-      numberOfObjectsCompleted: map['numberOfObjectsCompleted'] as double,
-      objectSummary: pulumi.Input.decodeMapValues<DataItemMigrationSummaryResultResponse>(map['objectSummary'], (value) => DataItemMigrationSummaryResultResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resultPrefix: map['resultPrefix'] as String,
-      resultType: map['resultType'] as String,
-      stage: map['stage'] as String,
-      startedOn: map['startedOn'] as String,
-      state: map['state'] as String,
-      statusMessage: map['statusMessage'] as String,
+      databaseName: (map['databaseName'] as String).input(),
+      endedOn: (map['endedOn'] as String).input(),
+      errorCount: (map['errorCount'] as double).input(),
+      errorPrefix: (map['errorPrefix'] as String).input(),
+      exceptionsAndWarnings: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      lastStorageUpdate: (map['lastStorageUpdate'] as String).input(),
+      message: (map['message'] as String).input(),
+      numberOfObjects: (map['numberOfObjects'] as double).input(),
+      numberOfObjectsCompleted: (map['numberOfObjectsCompleted'] as double).input(),
+      objectSummary: (pulumi.Input.decodeMapValues<DataItemMigrationSummaryResultResponse>(map['objectSummary'], (value) => DataItemMigrationSummaryResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resultPrefix: (map['resultPrefix'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
+      stage: (map['stage'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      state: (map['state'] as String).input(),
+      statusMessage: (map['statusMessage'] as String).input(),
     );
   }
 }

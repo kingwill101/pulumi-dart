@@ -5,9 +5,9 @@ import 'boolean_condition_properties.dart';
 
 /// Describes an automation rule condition with boolean operators.
 class AutomationRuleBooleanCondition {
-  final List<BooleanConditionProperties>? innerConditions;
+  final pulumi.Input<List<BooleanConditionProperties>>? innerConditions;
   /// Describes a boolean condition operator.
-  final String? operator;
+  final pulumi.Input<String>? operator;
 
   /// Creates a new [AutomationRuleBooleanCondition].
   /// [innerConditions] Optional.
@@ -19,15 +19,15 @@ class AutomationRuleBooleanCondition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'innerConditions': ?innerConditions == null ? null : pulumi.Input.encodeList<BooleanConditionProperties, Map<String, dynamic>>(innerConditions!, (value) => value.toMap()),
+      'innerConditions': ?pulumi.Input.mapOptionalInputValue<List<BooleanConditionProperties>, List<Map<String, dynamic>>>(innerConditions, (value) => pulumi.Input.encodeList<BooleanConditionProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
       'operator': ?operator,
     };
   }
 
   factory AutomationRuleBooleanCondition.fromMap(Map<String, dynamic> map) {
     return AutomationRuleBooleanCondition(
-      innerConditions: map['innerConditions'] == null ? null : pulumi.Input.decodeList<BooleanConditionProperties>(map['innerConditions'], (value) => BooleanConditionProperties.fromMap((value as Map).cast<String, dynamic>())),
-      operator: map['operator'] == null ? null : map['operator'] as String,
+      innerConditions: map['innerConditions'] == null ? null : (pulumi.Input.decodeList<BooleanConditionProperties>(map['innerConditions'], (value) => BooleanConditionProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
     );
   }
 }

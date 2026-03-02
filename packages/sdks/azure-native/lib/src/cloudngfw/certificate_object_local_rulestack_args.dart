@@ -31,21 +31,14 @@ class CertificateObjectLocalRulestackArgs {
   /// [name] certificate name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   CertificateObjectLocalRulestackArgs({
-    pulumi.Output<String>? auditComment,
-    required pulumi.Output<String> certificateSelfSigned,
-    pulumi.Output<String>? certificateSignerResourceId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> localRulestackName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      auditComment = pulumi.Input.asOptionalInput<String>(auditComment),
-      certificateSelfSigned = pulumi.Input.asInput<String>(certificateSelfSigned),
-      certificateSignerResourceId = pulumi.Input.asOptionalInput<String>(certificateSignerResourceId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      localRulestackName = pulumi.Input.asInput<String>(localRulestackName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.auditComment,
+    required this.certificateSelfSigned,
+    this.certificateSignerResourceId,
+    this.description,
+    required this.localRulestackName,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class CertificateObjectLocalRulestackArgs {
 
   factory CertificateObjectLocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return CertificateObjectLocalRulestackArgs(
-      auditComment: map['auditComment'] == null ? null : pulumi.Output.create<String>(map['auditComment'] as String),
-      certificateSelfSigned: pulumi.Output.create<String>(map['certificateSelfSigned'] as String),
-      certificateSignerResourceId: map['certificateSignerResourceId'] == null ? null : pulumi.Output.create<String>(map['certificateSignerResourceId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      localRulestackName: pulumi.Output.create<String>(map['localRulestackName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
+      certificateSelfSigned: (map['certificateSelfSigned'] as String).input(),
+      certificateSignerResourceId: map['certificateSignerResourceId'] == null ? null : (map['certificateSignerResourceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      localRulestackName: (map['localRulestackName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -25,19 +25,13 @@ class ExtensionState {
   /// [schema] Sets the schema of an extension.
   /// [version] Sets the version number of the extension.
   ExtensionState({
-    pulumi.Output<bool>? createCascade,
-    pulumi.Output<String>? database,
-    pulumi.Output<bool>? dropCascade,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? schema,
-    pulumi.Output<String>? version,
-  }) :
-      createCascade = pulumi.Input.asOptionalInput<bool>(createCascade),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      dropCascade = pulumi.Input.asOptionalInput<bool>(dropCascade),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      schema = pulumi.Input.asOptionalInput<String>(schema),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.createCascade,
+    this.database,
+    this.dropCascade,
+    this.name,
+    this.schema,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class ExtensionState {
 
   factory ExtensionState.fromMap(Map<String, dynamic> map) {
     return ExtensionState(
-      createCascade: map['createCascade'] == null ? null : pulumi.Output.create<bool>(map['createCascade'] as bool),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      dropCascade: map['dropCascade'] == null ? null : pulumi.Output.create<bool>(map['dropCascade'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<String>(map['schema'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      createCascade: map['createCascade'] == null ? null : (map['createCascade'] as bool).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

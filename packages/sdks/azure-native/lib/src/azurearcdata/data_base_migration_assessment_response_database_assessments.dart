@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataBaseMigrationAssessmentResponseDatabaseAssessments {
-  final String? appliesToMigrationTargetPlatform;
-  final String? featureId;
-  final String? issueCategory;
-  final String? moreInformation;
+  final pulumi.Input<String>? appliesToMigrationTargetPlatform;
+  final pulumi.Input<String>? featureId;
+  final pulumi.Input<String>? issueCategory;
+  final pulumi.Input<String>? moreInformation;
 
   /// Creates a new [DataBaseMigrationAssessmentResponseDatabaseAssessments].
   /// [appliesToMigrationTargetPlatform] Optional.
@@ -30,10 +31,10 @@ class DataBaseMigrationAssessmentResponseDatabaseAssessments {
 
   factory DataBaseMigrationAssessmentResponseDatabaseAssessments.fromMap(Map<String, dynamic> map) {
     return DataBaseMigrationAssessmentResponseDatabaseAssessments(
-      appliesToMigrationTargetPlatform: map['appliesToMigrationTargetPlatform'] == null ? null : map['appliesToMigrationTargetPlatform'] as String,
-      featureId: map['featureId'] == null ? null : map['featureId'] as String,
-      issueCategory: map['issueCategory'] == null ? null : map['issueCategory'] as String,
-      moreInformation: map['moreInformation'] == null ? null : map['moreInformation'] as String,
+      appliesToMigrationTargetPlatform: map['appliesToMigrationTargetPlatform'] == null ? null : (map['appliesToMigrationTargetPlatform'] as String).input(),
+      featureId: map['featureId'] == null ? null : (map['featureId'] as String).input(),
+      issueCategory: map['issueCategory'] == null ? null : (map['issueCategory'] as String).input(),
+      moreInformation: map['moreInformation'] == null ? null : (map['moreInformation'] as String).input(),
     );
   }
 }

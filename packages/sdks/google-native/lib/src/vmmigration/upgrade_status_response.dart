@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'status_response.dart';
 
 /// UpgradeStatus contains information about upgradeAppliance operation.
 class UpgradeStatusResponse {
   /// Provides details on the state of the upgrade operation in case of an error.
-  final StatusResponse error;
+  final pulumi.Input<StatusResponse> error;
   /// The version from which we upgraded.
-  final String previousVersion;
+  final pulumi.Input<String> previousVersion;
   /// The time the operation was started.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The state of the upgradeAppliance operation.
-  final String state;
+  final pulumi.Input<String> state;
   /// The version to upgrade to.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [UpgradeStatusResponse].
   /// [error] Provides details on the state of the upgrade operation in case of an error.
@@ -31,7 +32,7 @@ class UpgradeStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'previousVersion': previousVersion,
       'startTime': startTime,
       'state': state,
@@ -41,11 +42,11 @@ class UpgradeStatusResponse {
 
   factory UpgradeStatusResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeStatusResponse(
-      error: StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      previousVersion: map['previousVersion'] as String,
-      startTime: map['startTime'] as String,
-      state: map['state'] as String,
-      version: map['version'] as String,
+      error: (StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      previousVersion: (map['previousVersion'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      state: (map['state'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

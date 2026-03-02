@@ -22,17 +22,12 @@ class VaultNotificationsState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snsTopicArn] The Amazon Resource Name (ARN) that specifies the topic for a backup vault’s events
   VaultNotificationsState({
-    pulumi.Output<String>? backupVaultArn,
-    pulumi.Output<List<String>>? backupVaultEvents,
-    pulumi.Output<String>? backupVaultName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? snsTopicArn,
-  }) :
-      backupVaultArn = pulumi.Input.asOptionalInput<String>(backupVaultArn),
-      backupVaultEvents = pulumi.Input.asOptionalInput<List<String>>(backupVaultEvents),
-      backupVaultName = pulumi.Input.asOptionalInput<String>(backupVaultName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snsTopicArn = pulumi.Input.asOptionalInput<String>(snsTopicArn);
+    this.backupVaultArn,
+    this.backupVaultEvents,
+    this.backupVaultName,
+    this.region,
+    this.snsTopicArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class VaultNotificationsState {
 
   factory VaultNotificationsState.fromMap(Map<String, dynamic> map) {
     return VaultNotificationsState(
-      backupVaultArn: map['backupVaultArn'] == null ? null : pulumi.Output.create<String>(map['backupVaultArn'] as String),
-      backupVaultEvents: map['backupVaultEvents'] == null ? null : pulumi.Output.create<List<String>>((map['backupVaultEvents'] as List).cast<String>()),
-      backupVaultName: map['backupVaultName'] == null ? null : pulumi.Output.create<String>(map['backupVaultName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snsTopicArn: map['snsTopicArn'] == null ? null : pulumi.Output.create<String>(map['snsTopicArn'] as String),
+      backupVaultArn: map['backupVaultArn'] == null ? null : (map['backupVaultArn'] as String).input(),
+      backupVaultEvents: map['backupVaultEvents'] == null ? null : ((map['backupVaultEvents'] as List).cast<String>()).input(),
+      backupVaultName: map['backupVaultName'] == null ? null : (map['backupVaultName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snsTopicArn: map['snsTopicArn'] == null ? null : (map['snsTopicArn'] as String).input(),
     );
   }
 }

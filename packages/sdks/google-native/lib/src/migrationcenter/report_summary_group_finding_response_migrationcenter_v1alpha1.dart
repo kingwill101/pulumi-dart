@@ -7,15 +7,15 @@ import 'report_summary_group_preference_set_finding_response_migrationcenter_v1a
 /// Summary Findings for a specific Group.
 class ReportSummaryGroupFindingResponseMigrationcenterV1alpha1 {
   /// Summary statistics for all the assets in this group.
-  final ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1 assetAggregateStats;
+  final pulumi.Input<ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1> assetAggregateStats;
   /// Description for the Group.
-  final String description;
+  final pulumi.Input<String> description;
   /// Display Name for the Group.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// This field is deprecated, do not rely on it having a value.
-  final String overlappingAssetCount;
+  final pulumi.Input<String> overlappingAssetCount;
   /// Findings for each of the PreferenceSets for this group.
-  final List<ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1> preferenceSetFindings;
+  final pulumi.Input<List<ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1>> preferenceSetFindings;
 
   /// Creates a new [ReportSummaryGroupFindingResponseMigrationcenterV1alpha1].
   /// [assetAggregateStats] Summary statistics for all the assets in this group.
@@ -33,21 +33,21 @@ class ReportSummaryGroupFindingResponseMigrationcenterV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assetAggregateStats': assetAggregateStats.toMap(),
+      'assetAggregateStats': pulumi.Input.mapInputValue<ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1, Map<String, dynamic>>(assetAggregateStats, (value) => value.toMap()),
       'description': description,
       'displayName': displayName,
       'overlappingAssetCount': overlappingAssetCount,
-      'preferenceSetFindings': pulumi.Input.encodeList<ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1, Map<String, dynamic>>(preferenceSetFindings, (value) => value.toMap()),
+      'preferenceSetFindings': pulumi.Input.mapInputValue<List<ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1>, List<Map<String, dynamic>>>(preferenceSetFindings, (value) => pulumi.Input.encodeList<ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ReportSummaryGroupFindingResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ReportSummaryGroupFindingResponseMigrationcenterV1alpha1(
-      assetAggregateStats: ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1.fromMap((map['assetAggregateStats'] as Map).cast<String, dynamic>()),
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      overlappingAssetCount: map['overlappingAssetCount'] as String,
-      preferenceSetFindings: pulumi.Input.decodeList<ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1>(map['preferenceSetFindings'], (value) => ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      assetAggregateStats: (ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1.fromMap((map['assetAggregateStats'] as Map).cast<String, dynamic>())).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      overlappingAssetCount: (map['overlappingAssetCount'] as String).input(),
+      preferenceSetFindings: (pulumi.Input.decodeList<ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1>(map['preferenceSetFindings'], (value) => ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

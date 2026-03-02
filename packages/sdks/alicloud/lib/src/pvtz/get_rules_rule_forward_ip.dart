@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRulesRuleForwardIp {
-  final String ip;
-  final int port;
+  final pulumi.Input<String> ip;
+  final pulumi.Input<int> port;
 
   /// Creates a new [GetRulesRuleForwardIp].
   /// [ip] Required.
@@ -22,8 +23,8 @@ class GetRulesRuleForwardIp {
 
   factory GetRulesRuleForwardIp.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleForwardIp(
-      ip: map['ip'] as String,
-      port: map['port'] as int,
+      ip: (map['ip'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

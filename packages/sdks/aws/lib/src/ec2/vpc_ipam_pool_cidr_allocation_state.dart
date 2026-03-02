@@ -36,27 +36,17 @@ class VpcIpamPoolCidrAllocationState {
   /// [resourceOwner] The owner of the resource.
   /// [resourceType] The type of the resource.
   VpcIpamPoolCidrAllocationState({
-    pulumi.Output<String>? cidr,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? disallowedCidrs,
-    pulumi.Output<String>? ipamPoolAllocationId,
-    pulumi.Output<String>? ipamPoolId,
-    pulumi.Output<int>? netmaskLength,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? resourceOwner,
-    pulumi.Output<String>? resourceType,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disallowedCidrs = pulumi.Input.asOptionalInput<List<String>>(disallowedCidrs),
-      ipamPoolAllocationId = pulumi.Input.asOptionalInput<String>(ipamPoolAllocationId),
-      ipamPoolId = pulumi.Input.asOptionalInput<String>(ipamPoolId),
-      netmaskLength = pulumi.Input.asOptionalInput<int>(netmaskLength),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceOwner = pulumi.Input.asOptionalInput<String>(resourceOwner),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType);
+    this.cidr,
+    this.description,
+    this.disallowedCidrs,
+    this.ipamPoolAllocationId,
+    this.ipamPoolId,
+    this.netmaskLength,
+    this.region,
+    this.resourceId,
+    this.resourceOwner,
+    this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,16 +65,16 @@ class VpcIpamPoolCidrAllocationState {
 
   factory VpcIpamPoolCidrAllocationState.fromMap(Map<String, dynamic> map) {
     return VpcIpamPoolCidrAllocationState(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disallowedCidrs: map['disallowedCidrs'] == null ? null : pulumi.Output.create<List<String>>((map['disallowedCidrs'] as List).cast<String>()),
-      ipamPoolAllocationId: map['ipamPoolAllocationId'] == null ? null : pulumi.Output.create<String>(map['ipamPoolAllocationId'] as String),
-      ipamPoolId: map['ipamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipamPoolId'] as String),
-      netmaskLength: map['netmaskLength'] == null ? null : pulumi.Output.create<int>(map['netmaskLength'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceOwner: map['resourceOwner'] == null ? null : pulumi.Output.create<String>(map['resourceOwner'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disallowedCidrs: map['disallowedCidrs'] == null ? null : ((map['disallowedCidrs'] as List).cast<String>()).input(),
+      ipamPoolAllocationId: map['ipamPoolAllocationId'] == null ? null : (map['ipamPoolAllocationId'] as String).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
+      netmaskLength: map['netmaskLength'] == null ? null : (map['netmaskLength'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceOwner: map['resourceOwner'] == null ? null : (map['resourceOwner'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

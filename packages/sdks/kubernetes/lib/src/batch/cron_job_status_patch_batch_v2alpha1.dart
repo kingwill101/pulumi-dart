@@ -6,9 +6,9 @@ import '../core/object_reference_patch.dart';
 /// CronJobStatus represents the current state of a cron job.
 class CronJobStatusPatchBatchV2alpha1 {
   /// A list of pointers to currently running jobs.
-  final List<ObjectReferencePatch>? active;
+  final pulumi.Input<List<ObjectReferencePatch>>? active;
   /// Information when was the last time the job was successfully scheduled.
-  final String? lastScheduleTime;
+  final pulumi.Input<String>? lastScheduleTime;
 
   /// Creates a new [CronJobStatusPatchBatchV2alpha1].
   /// [active] A list of pointers to currently running jobs.
@@ -20,15 +20,15 @@ class CronJobStatusPatchBatchV2alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'active': ?active == null ? null : pulumi.Input.encodeList<ObjectReferencePatch, Map<String, dynamic>>(active!, (value) => value.toMap()),
+      'active': ?pulumi.Input.mapOptionalInputValue<List<ObjectReferencePatch>, List<Map<String, dynamic>>>(active, (value) => pulumi.Input.encodeList<ObjectReferencePatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastScheduleTime': ?lastScheduleTime,
     };
   }
 
   factory CronJobStatusPatchBatchV2alpha1.fromMap(Map<String, dynamic> map) {
     return CronJobStatusPatchBatchV2alpha1(
-      active: map['active'] == null ? null : pulumi.Input.decodeList<ObjectReferencePatch>(map['active'], (value) => ObjectReferencePatch.fromMap((value as Map).cast<String, dynamic>())),
-      lastScheduleTime: map['lastScheduleTime'] == null ? null : map['lastScheduleTime'] as String,
+      active: map['active'] == null ? null : (pulumi.Input.decodeList<ObjectReferencePatch>(map['active'], (value) => ObjectReferencePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastScheduleTime: map['lastScheduleTime'] == null ? null : (map['lastScheduleTime'] as String).input(),
     );
   }
 }

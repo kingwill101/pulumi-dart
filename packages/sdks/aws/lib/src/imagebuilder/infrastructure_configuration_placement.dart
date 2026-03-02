@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InfrastructureConfigurationPlacement {
   /// Availability Zone where your build and test instances will launch.
-  final String? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
   /// ID of the Dedicated Host on which build and test instances run. Conflicts with `host_resource_group_arn`.
-  final String? hostId;
+  final pulumi.Input<String>? hostId;
   /// ARN of the host resource group in which to launch build and test instances. Conflicts with `host_id`.
-  final String? hostResourceGroupArn;
+  final pulumi.Input<String>? hostResourceGroupArn;
   /// Placement tenancy of the instance. Valid values: `default`, `dedicated` and `host`.
-  final String? tenancy;
+  final pulumi.Input<String>? tenancy;
 
   /// Creates a new [InfrastructureConfigurationPlacement].
   /// [availabilityZone] Availability Zone where your build and test instances will launch.
@@ -34,10 +35,10 @@ class InfrastructureConfigurationPlacement {
 
   factory InfrastructureConfigurationPlacement.fromMap(Map<String, dynamic> map) {
     return InfrastructureConfigurationPlacement(
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      hostId: map['hostId'] == null ? null : map['hostId'] as String,
-      hostResourceGroupArn: map['hostResourceGroupArn'] == null ? null : map['hostResourceGroupArn'] as String,
-      tenancy: map['tenancy'] == null ? null : map['tenancy'] as String,
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
+      hostResourceGroupArn: map['hostResourceGroupArn'] == null ? null : (map['hostResourceGroupArn'] as String).input(),
+      tenancy: map['tenancy'] == null ? null : (map['tenancy'] as String).input(),
     );
   }
 }

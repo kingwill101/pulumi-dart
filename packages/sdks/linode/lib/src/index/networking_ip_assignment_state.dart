@@ -14,11 +14,9 @@ class NetworkingIpAssignmentState {
   /// [assignments] A list of IP/Linode assignments to apply.
   /// [region] The region where the IP addresses will be assigned.
   NetworkingIpAssignmentState({
-    pulumi.Output<List<NetworkingIpAssignmentAssignment>>? assignments,
-    pulumi.Output<String>? region,
-  }) :
-      assignments = pulumi.Input.asOptionalInput<List<NetworkingIpAssignmentAssignment>>(assignments),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.assignments,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class NetworkingIpAssignmentState {
 
   factory NetworkingIpAssignmentState.fromMap(Map<String, dynamic> map) {
     return NetworkingIpAssignmentState(
-      assignments: map['assignments'] == null ? null : pulumi.Output.create<List<NetworkingIpAssignmentAssignment>>(pulumi.Input.decodeList<NetworkingIpAssignmentAssignment>(map['assignments'], (value) => NetworkingIpAssignmentAssignment.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      assignments: map['assignments'] == null ? null : (pulumi.Input.decodeList<NetworkingIpAssignmentAssignment>(map['assignments'], (value) => NetworkingIpAssignmentAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

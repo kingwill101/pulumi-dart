@@ -33,23 +33,15 @@ class NetworkSettingsState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] The VPC that streaming instances will connect to.
   NetworkSettingsState({
-    pulumi.Output<List<String>>? associatedPortalArns,
-    pulumi.Output<String>? networkSettingsArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupIds,
-    pulumi.Output<List<String>>? subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vpcId,
-  }) :
-      associatedPortalArns = pulumi.Input.asOptionalInput<List<String>>(associatedPortalArns),
-      networkSettingsArn = pulumi.Input.asOptionalInput<String>(networkSettingsArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.associatedPortalArns,
+    this.networkSettingsArn,
+    this.region,
+    this.securityGroupIds,
+    this.subnetIds,
+    this.tags,
+    this.tagsAll,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class NetworkSettingsState {
 
   factory NetworkSettingsState.fromMap(Map<String, dynamic> map) {
     return NetworkSettingsState(
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : pulumi.Output.create<List<String>>((map['associatedPortalArns'] as List).cast<String>()),
-      networkSettingsArn: map['networkSettingsArn'] == null ? null : pulumi.Output.create<String>(map['networkSettingsArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      associatedPortalArns: map['associatedPortalArns'] == null ? null : ((map['associatedPortalArns'] as List).cast<String>()).input(),
+      networkSettingsArn: map['networkSettingsArn'] == null ? null : (map['networkSettingsArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

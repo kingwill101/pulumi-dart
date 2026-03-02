@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pod_affinity_term.dart';
 
 /// The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 class WeightedPodAffinityTerm {
   /// Required. A pod affinity term, associated with the corresponding weight.
-  final PodAffinityTerm podAffinityTerm;
+  final pulumi.Input<PodAffinityTerm> podAffinityTerm;
   /// weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [WeightedPodAffinityTerm].
   /// [podAffinityTerm] Required. A pod affinity term, associated with the corresponding weight.
@@ -19,15 +20,15 @@ class WeightedPodAffinityTerm {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'podAffinityTerm': podAffinityTerm.toMap(),
+      'podAffinityTerm': pulumi.Input.mapInputValue<PodAffinityTerm, Map<String, dynamic>>(podAffinityTerm, (value) => value.toMap()),
       'weight': weight,
     };
   }
 
   factory WeightedPodAffinityTerm.fromMap(Map<String, dynamic> map) {
     return WeightedPodAffinityTerm(
-      podAffinityTerm: PodAffinityTerm.fromMap((map['podAffinityTerm'] as Map).cast<String, dynamic>()),
-      weight: map['weight'] as int,
+      podAffinityTerm: (PodAffinityTerm.fromMap((map['podAffinityTerm'] as Map).cast<String, dynamic>())).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

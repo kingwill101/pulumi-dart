@@ -59,35 +59,21 @@ class TrustState {
   /// [trustStateReason] Reason for the Trust state set in `trust_state`.
   /// [trustType] Type of the Trust relationship.
   TrustState({
-    pulumi.Output<List<String>>? conditionalForwarderIpAddrs,
-    pulumi.Output<String>? createdDateTime,
-    pulumi.Output<bool>? deleteAssociatedConditionalForwarder,
-    pulumi.Output<String>? directoryId,
-    pulumi.Output<String>? lastUpdatedDateTime,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? remoteDomainName,
-    pulumi.Output<String>? selectiveAuth,
-    pulumi.Output<String>? stateLastUpdatedDateTime,
-    pulumi.Output<String>? trustDirection,
-    pulumi.Output<String>? trustPassword,
-    pulumi.Output<String>? trustState,
-    pulumi.Output<String>? trustStateReason,
-    pulumi.Output<String>? trustType,
-  }) :
-      conditionalForwarderIpAddrs = pulumi.Input.asOptionalInput<List<String>>(conditionalForwarderIpAddrs),
-      createdDateTime = pulumi.Input.asOptionalInput<String>(createdDateTime),
-      deleteAssociatedConditionalForwarder = pulumi.Input.asOptionalInput<bool>(deleteAssociatedConditionalForwarder),
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      lastUpdatedDateTime = pulumi.Input.asOptionalInput<String>(lastUpdatedDateTime),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      remoteDomainName = pulumi.Input.asOptionalInput<String>(remoteDomainName),
-      selectiveAuth = pulumi.Input.asOptionalInput<String>(selectiveAuth),
-      stateLastUpdatedDateTime = pulumi.Input.asOptionalInput<String>(stateLastUpdatedDateTime),
-      trustDirection = pulumi.Input.asOptionalInput<String>(trustDirection),
-      trustPassword = pulumi.Input.asOptionalInput<String>(trustPassword),
-      trustState = pulumi.Input.asOptionalInput<String>(trustState),
-      trustStateReason = pulumi.Input.asOptionalInput<String>(trustStateReason),
-      trustType = pulumi.Input.asOptionalInput<String>(trustType);
+    this.conditionalForwarderIpAddrs,
+    this.createdDateTime,
+    this.deleteAssociatedConditionalForwarder,
+    this.directoryId,
+    this.lastUpdatedDateTime,
+    this.region,
+    this.remoteDomainName,
+    this.selectiveAuth,
+    this.stateLastUpdatedDateTime,
+    this.trustDirection,
+    this.trustPassword,
+    this.trustState,
+    this.trustStateReason,
+    this.trustType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -110,20 +96,20 @@ class TrustState {
 
   factory TrustState.fromMap(Map<String, dynamic> map) {
     return TrustState(
-      conditionalForwarderIpAddrs: map['conditionalForwarderIpAddrs'] == null ? null : pulumi.Output.create<List<String>>((map['conditionalForwarderIpAddrs'] as List).cast<String>()),
-      createdDateTime: map['createdDateTime'] == null ? null : pulumi.Output.create<String>(map['createdDateTime'] as String),
-      deleteAssociatedConditionalForwarder: map['deleteAssociatedConditionalForwarder'] == null ? null : pulumi.Output.create<bool>(map['deleteAssociatedConditionalForwarder'] as bool),
-      directoryId: map['directoryId'] == null ? null : pulumi.Output.create<String>(map['directoryId'] as String),
-      lastUpdatedDateTime: map['lastUpdatedDateTime'] == null ? null : pulumi.Output.create<String>(map['lastUpdatedDateTime'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      remoteDomainName: map['remoteDomainName'] == null ? null : pulumi.Output.create<String>(map['remoteDomainName'] as String),
-      selectiveAuth: map['selectiveAuth'] == null ? null : pulumi.Output.create<String>(map['selectiveAuth'] as String),
-      stateLastUpdatedDateTime: map['stateLastUpdatedDateTime'] == null ? null : pulumi.Output.create<String>(map['stateLastUpdatedDateTime'] as String),
-      trustDirection: map['trustDirection'] == null ? null : pulumi.Output.create<String>(map['trustDirection'] as String),
-      trustPassword: map['trustPassword'] == null ? null : pulumi.Output.create<String>(map['trustPassword'] as String),
-      trustState: map['trustState'] == null ? null : pulumi.Output.create<String>(map['trustState'] as String),
-      trustStateReason: map['trustStateReason'] == null ? null : pulumi.Output.create<String>(map['trustStateReason'] as String),
-      trustType: map['trustType'] == null ? null : pulumi.Output.create<String>(map['trustType'] as String),
+      conditionalForwarderIpAddrs: map['conditionalForwarderIpAddrs'] == null ? null : ((map['conditionalForwarderIpAddrs'] as List).cast<String>()).input(),
+      createdDateTime: map['createdDateTime'] == null ? null : (map['createdDateTime'] as String).input(),
+      deleteAssociatedConditionalForwarder: map['deleteAssociatedConditionalForwarder'] == null ? null : (map['deleteAssociatedConditionalForwarder'] as bool).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
+      lastUpdatedDateTime: map['lastUpdatedDateTime'] == null ? null : (map['lastUpdatedDateTime'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      remoteDomainName: map['remoteDomainName'] == null ? null : (map['remoteDomainName'] as String).input(),
+      selectiveAuth: map['selectiveAuth'] == null ? null : (map['selectiveAuth'] as String).input(),
+      stateLastUpdatedDateTime: map['stateLastUpdatedDateTime'] == null ? null : (map['stateLastUpdatedDateTime'] as String).input(),
+      trustDirection: map['trustDirection'] == null ? null : (map['trustDirection'] as String).input(),
+      trustPassword: map['trustPassword'] == null ? null : (map['trustPassword'] as String).input(),
+      trustState: map['trustState'] == null ? null : (map['trustState'] as String).input(),
+      trustStateReason: map['trustStateReason'] == null ? null : (map['trustStateReason'] as String).input(),
+      trustType: map['trustType'] == null ? null : (map['trustType'] as String).input(),
     );
   }
 }

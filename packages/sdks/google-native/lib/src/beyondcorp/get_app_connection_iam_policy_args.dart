@@ -18,15 +18,11 @@ class GetAppConnectionIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   GetAppConnectionIamPolicyArgs({
-    required pulumi.Output<String> appConnectionId,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-  }) :
-      appConnectionId = pulumi.Input.asInput<String>(appConnectionId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.appConnectionId,
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetAppConnectionIamPolicyArgs {
 
   factory GetAppConnectionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAppConnectionIamPolicyArgs(
-      appConnectionId: pulumi.Output.create<String>(map['appConnectionId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      appConnectionId: (map['appConnectionId'] as String).input(),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

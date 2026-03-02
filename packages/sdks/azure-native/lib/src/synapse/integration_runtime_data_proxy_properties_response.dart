@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entity_reference_response.dart';
 
 /// Data proxy properties for a managed dedicated integration runtime.
 class IntegrationRuntimeDataProxyPropertiesResponse {
   /// The self-hosted integration runtime reference.
-  final EntityReferenceResponse? connectVia;
+  final pulumi.Input<EntityReferenceResponse>? connectVia;
   /// The path to contain the staged data in the Blob storage.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// The staging linked service reference.
-  final EntityReferenceResponse? stagingLinkedService;
+  final pulumi.Input<EntityReferenceResponse>? stagingLinkedService;
 
   /// Creates a new [IntegrationRuntimeDataProxyPropertiesResponse].
   /// [connectVia] The self-hosted integration runtime reference.
@@ -23,17 +24,17 @@ class IntegrationRuntimeDataProxyPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<EntityReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'path': ?path,
-      'stagingLinkedService': ?stagingLinkedService == null ? null : stagingLinkedService!.toMap(),
+      'stagingLinkedService': ?pulumi.Input.mapOptionalInputValue<EntityReferenceResponse, Map<String, dynamic>>(stagingLinkedService, (value) => value.toMap()),
     };
   }
 
   factory IntegrationRuntimeDataProxyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeDataProxyPropertiesResponse(
-      connectVia: map['connectVia'] == null ? null : EntityReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      path: map['path'] == null ? null : map['path'] as String,
-      stagingLinkedService: map['stagingLinkedService'] == null ? null : EntityReferenceResponse.fromMap((map['stagingLinkedService'] as Map).cast<String, dynamic>()),
+      connectVia: map['connectVia'] == null ? null : (EntityReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      stagingLinkedService: map['stagingLinkedService'] == null ? null : (EntityReferenceResponse.fromMap((map['stagingLinkedService'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

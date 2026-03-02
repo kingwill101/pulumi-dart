@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkforceSourceIpConfig {
   /// A list of up to 10 CIDR values.
-  final List<String> cidrs;
+  final pulumi.Input<List<String>> cidrs;
 
   /// Creates a new [WorkforceSourceIpConfig].
   /// [cidrs] A list of up to 10 CIDR values.
@@ -19,7 +20,7 @@ class WorkforceSourceIpConfig {
 
   factory WorkforceSourceIpConfig.fromMap(Map<String, dynamic> map) {
     return WorkforceSourceIpConfig(
-      cidrs: (map['cidrs'] as List).cast<String>(),
+      cidrs: ((map['cidrs'] as List).cast<String>()).input(),
     );
   }
 }

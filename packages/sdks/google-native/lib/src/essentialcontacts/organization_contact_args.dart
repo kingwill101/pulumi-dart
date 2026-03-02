@@ -29,19 +29,13 @@ class OrganizationContactArgs {
   /// [validateTime] The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
   /// [validationState] The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
   OrganizationContactArgs({
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> languageTag,
-    required pulumi.Output<List<OrganizationContactNotificationCategorySubscriptionsItem>> notificationCategorySubscriptions,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<String>? validateTime,
-    pulumi.Output<OrganizationContactValidationState>? validationState,
-  }) :
-      email = pulumi.Input.asInput<String>(email),
-      languageTag = pulumi.Input.asInput<String>(languageTag),
-      notificationCategorySubscriptions = pulumi.Input.asInput<List<OrganizationContactNotificationCategorySubscriptionsItem>>(notificationCategorySubscriptions),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      validateTime = pulumi.Input.asOptionalInput<String>(validateTime),
-      validationState = pulumi.Input.asOptionalInput<OrganizationContactValidationState>(validationState);
+    required this.email,
+    required this.languageTag,
+    required this.notificationCategorySubscriptions,
+    required this.organizationId,
+    this.validateTime,
+    this.validationState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class OrganizationContactArgs {
 
   factory OrganizationContactArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationContactArgs(
-      email: pulumi.Output.create<String>(map['email'] as String),
-      languageTag: pulumi.Output.create<String>(map['languageTag'] as String),
-      notificationCategorySubscriptions: pulumi.Output.create<List<OrganizationContactNotificationCategorySubscriptionsItem>>(pulumi.Input.decodeList<OrganizationContactNotificationCategorySubscriptionsItem>(map['notificationCategorySubscriptions'], (value) => OrganizationContactNotificationCategorySubscriptionsItem.fromValue(value as String))),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      validateTime: map['validateTime'] == null ? null : pulumi.Output.create<String>(map['validateTime'] as String),
-      validationState: map['validationState'] == null ? null : pulumi.Output.create<OrganizationContactValidationState>(OrganizationContactValidationState.fromValue(map['validationState'] as String)),
+      email: (map['email'] as String).input(),
+      languageTag: (map['languageTag'] as String).input(),
+      notificationCategorySubscriptions: (pulumi.Input.decodeList<OrganizationContactNotificationCategorySubscriptionsItem>(map['notificationCategorySubscriptions'], (value) => OrganizationContactNotificationCategorySubscriptionsItem.fromValue(value as String))).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      validateTime: map['validateTime'] == null ? null : (map['validateTime'] as String).input(),
+      validationState: map['validationState'] == null ? null : (OrganizationContactValidationState.fromValue(map['validationState'] as String)).input(),
     );
   }
 }

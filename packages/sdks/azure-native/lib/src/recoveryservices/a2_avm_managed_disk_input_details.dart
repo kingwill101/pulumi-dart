@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_encryption_info.dart';
 
 /// A2A managed disk input details.
 class A2AVmManagedDiskInputDetails {
   /// The recovery disk encryption information (for one / single pass flows).
-  final DiskEncryptionInfo? diskEncryptionInfo;
+  final pulumi.Input<DiskEncryptionInfo>? diskEncryptionInfo;
   /// The disk Id.
-  final String diskId;
+  final pulumi.Input<String> diskId;
   /// The primary staging storage account Arm Id.
-  final String primaryStagingAzureStorageAccountId;
+  final pulumi.Input<String> primaryStagingAzureStorageAccountId;
   /// The recovery disk encryption set Id.
-  final String? recoveryDiskEncryptionSetId;
+  final pulumi.Input<String>? recoveryDiskEncryptionSetId;
   /// The replica disk type. Its an optional value and will be same as source disk type if not user provided.
-  final String? recoveryReplicaDiskAccountType;
+  final pulumi.Input<String>? recoveryReplicaDiskAccountType;
   /// The target resource group Arm Id.
-  final String recoveryResourceGroupId;
+  final pulumi.Input<String> recoveryResourceGroupId;
   /// The target disk type after failover. Its an optional value and will be same as source disk type if not user provided.
-  final String? recoveryTargetDiskAccountType;
+  final pulumi.Input<String>? recoveryTargetDiskAccountType;
 
   /// Creates a new [A2AVmManagedDiskInputDetails].
   /// [diskEncryptionInfo] The recovery disk encryption information (for one / single pass flows).
@@ -39,7 +40,7 @@ class A2AVmManagedDiskInputDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diskEncryptionInfo': ?diskEncryptionInfo == null ? null : diskEncryptionInfo!.toMap(),
+      'diskEncryptionInfo': ?pulumi.Input.mapOptionalInputValue<DiskEncryptionInfo, Map<String, dynamic>>(diskEncryptionInfo, (value) => value.toMap()),
       'diskId': diskId,
       'primaryStagingAzureStorageAccountId': primaryStagingAzureStorageAccountId,
       'recoveryDiskEncryptionSetId': ?recoveryDiskEncryptionSetId,
@@ -51,13 +52,13 @@ class A2AVmManagedDiskInputDetails {
 
   factory A2AVmManagedDiskInputDetails.fromMap(Map<String, dynamic> map) {
     return A2AVmManagedDiskInputDetails(
-      diskEncryptionInfo: map['diskEncryptionInfo'] == null ? null : DiskEncryptionInfo.fromMap((map['diskEncryptionInfo'] as Map).cast<String, dynamic>()),
-      diskId: map['diskId'] as String,
-      primaryStagingAzureStorageAccountId: map['primaryStagingAzureStorageAccountId'] as String,
-      recoveryDiskEncryptionSetId: map['recoveryDiskEncryptionSetId'] == null ? null : map['recoveryDiskEncryptionSetId'] as String,
-      recoveryReplicaDiskAccountType: map['recoveryReplicaDiskAccountType'] == null ? null : map['recoveryReplicaDiskAccountType'] as String,
-      recoveryResourceGroupId: map['recoveryResourceGroupId'] as String,
-      recoveryTargetDiskAccountType: map['recoveryTargetDiskAccountType'] == null ? null : map['recoveryTargetDiskAccountType'] as String,
+      diskEncryptionInfo: map['diskEncryptionInfo'] == null ? null : (DiskEncryptionInfo.fromMap((map['diskEncryptionInfo'] as Map).cast<String, dynamic>())).input(),
+      diskId: (map['diskId'] as String).input(),
+      primaryStagingAzureStorageAccountId: (map['primaryStagingAzureStorageAccountId'] as String).input(),
+      recoveryDiskEncryptionSetId: map['recoveryDiskEncryptionSetId'] == null ? null : (map['recoveryDiskEncryptionSetId'] as String).input(),
+      recoveryReplicaDiskAccountType: map['recoveryReplicaDiskAccountType'] == null ? null : (map['recoveryReplicaDiskAccountType'] as String).input(),
+      recoveryResourceGroupId: (map['recoveryResourceGroupId'] as String).input(),
+      recoveryTargetDiskAccountType: map['recoveryTargetDiskAccountType'] == null ? null : (map['recoveryTargetDiskAccountType'] as String).input(),
     );
   }
 }

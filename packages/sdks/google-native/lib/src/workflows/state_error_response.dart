@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes an error related to the current state of the workflow.
 class StateErrorResponse {
   /// Provides specifics about the error.
-  final String details;
+  final pulumi.Input<String> details;
   /// The type of this state error.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [StateErrorResponse].
   /// [details] Provides specifics about the error.
@@ -25,8 +26,8 @@ class StateErrorResponse {
 
   factory StateErrorResponse.fromMap(Map<String, dynamic> map) {
     return StateErrorResponse(
-      details: map['details'] as String,
-      type: map['type'] as String,
+      details: (map['details'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// FHIR Service data mapping configuration for Analytics Connector.
 class AnalyticsConnectorFhirToParquetMapping {
   /// Artifact reference for extension schema.
-  final String? extensionSchemaReference;
+  final pulumi.Input<String>? extensionSchemaReference;
   /// Artifact reference for filter configurations.
-  final String? filterConfigurationReference;
+  final pulumi.Input<String>? filterConfigurationReference;
   /// Type of data mapping.
   /// Expected value is 'fhirToParquet'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AnalyticsConnectorFhirToParquetMapping].
   /// [extensionSchemaReference] Artifact reference for extension schema.
@@ -31,9 +32,9 @@ class AnalyticsConnectorFhirToParquetMapping {
 
   factory AnalyticsConnectorFhirToParquetMapping.fromMap(Map<String, dynamic> map) {
     return AnalyticsConnectorFhirToParquetMapping(
-      extensionSchemaReference: map['extensionSchemaReference'] == null ? null : map['extensionSchemaReference'] as String,
-      filterConfigurationReference: map['filterConfigurationReference'] == null ? null : map['filterConfigurationReference'] as String,
-      type: map['type'] as String,
+      extensionSchemaReference: map['extensionSchemaReference'] == null ? null : (map['extensionSchemaReference'] as String).input(),
+      filterConfigurationReference: map['filterConfigurationReference'] == null ? null : (map['filterConfigurationReference'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -44,29 +44,18 @@ class InternetMonitorState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [trafficPercentageToMonitor] The percentage of the internet-facing traffic for your application that you want to monitor with this monitor.
   InternetMonitorState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<InternetMonitorHealthEventsConfig>? healthEventsConfig,
-    pulumi.Output<InternetMonitorInternetMeasurementsLogDelivery>? internetMeasurementsLogDelivery,
-    pulumi.Output<int>? maxCityNetworksToMonitor,
-    pulumi.Output<String>? monitorName,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? resources,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<int>? trafficPercentageToMonitor,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      healthEventsConfig = pulumi.Input.asOptionalInput<InternetMonitorHealthEventsConfig>(healthEventsConfig),
-      internetMeasurementsLogDelivery = pulumi.Input.asOptionalInput<InternetMonitorInternetMeasurementsLogDelivery>(internetMeasurementsLogDelivery),
-      maxCityNetworksToMonitor = pulumi.Input.asOptionalInput<int>(maxCityNetworksToMonitor),
-      monitorName = pulumi.Input.asOptionalInput<String>(monitorName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resources = pulumi.Input.asOptionalInput<List<String>>(resources),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      trafficPercentageToMonitor = pulumi.Input.asOptionalInput<int>(trafficPercentageToMonitor);
+    this.arn,
+    this.healthEventsConfig,
+    this.internetMeasurementsLogDelivery,
+    this.maxCityNetworksToMonitor,
+    this.monitorName,
+    this.region,
+    this.resources,
+    this.status,
+    this.tags,
+    this.tagsAll,
+    this.trafficPercentageToMonitor,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class InternetMonitorState {
 
   factory InternetMonitorState.fromMap(Map<String, dynamic> map) {
     return InternetMonitorState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      healthEventsConfig: map['healthEventsConfig'] == null ? null : pulumi.Output.create<InternetMonitorHealthEventsConfig>(InternetMonitorHealthEventsConfig.fromMap((map['healthEventsConfig'] as Map).cast<String, dynamic>())),
-      internetMeasurementsLogDelivery: map['internetMeasurementsLogDelivery'] == null ? null : pulumi.Output.create<InternetMonitorInternetMeasurementsLogDelivery>(InternetMonitorInternetMeasurementsLogDelivery.fromMap((map['internetMeasurementsLogDelivery'] as Map).cast<String, dynamic>())),
-      maxCityNetworksToMonitor: map['maxCityNetworksToMonitor'] == null ? null : pulumi.Output.create<int>(map['maxCityNetworksToMonitor'] as int),
-      monitorName: map['monitorName'] == null ? null : pulumi.Output.create<String>(map['monitorName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<String>>((map['resources'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      trafficPercentageToMonitor: map['trafficPercentageToMonitor'] == null ? null : pulumi.Output.create<int>(map['trafficPercentageToMonitor'] as int),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      healthEventsConfig: map['healthEventsConfig'] == null ? null : (InternetMonitorHealthEventsConfig.fromMap((map['healthEventsConfig'] as Map).cast<String, dynamic>())).input(),
+      internetMeasurementsLogDelivery: map['internetMeasurementsLogDelivery'] == null ? null : (InternetMonitorInternetMeasurementsLogDelivery.fromMap((map['internetMeasurementsLogDelivery'] as Map).cast<String, dynamic>())).input(),
+      maxCityNetworksToMonitor: map['maxCityNetworksToMonitor'] == null ? null : (map['maxCityNetworksToMonitor'] as int).input(),
+      monitorName: map['monitorName'] == null ? null : (map['monitorName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      trafficPercentageToMonitor: map['trafficPercentageToMonitor'] == null ? null : (map['trafficPercentageToMonitor'] as int).input(),
     );
   }
 }

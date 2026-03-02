@@ -19,13 +19,10 @@ class GetDiscoverySourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceName] discovery source resource
   GetDiscoverySourceArgs({
-    required pulumi.Output<String> mapName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sourceName,
-  }) :
-      mapName = pulumi.Input.asInput<String>(mapName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceName = pulumi.Input.asInput<String>(sourceName);
+    required this.mapName,
+    required this.resourceGroupName,
+    required this.sourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDiscoverySourceArgs {
 
   factory GetDiscoverySourceArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoverySourceArgs(
-      mapName: pulumi.Output.create<String>(map['mapName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceName: pulumi.Output.create<String>(map['sourceName'] as String),
+      mapName: (map['mapName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceName: (map['sourceName'] as String).input(),
     );
   }
 }

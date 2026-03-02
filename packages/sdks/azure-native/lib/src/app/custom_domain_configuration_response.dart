@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_key_vault_properties_response.dart';
 
 /// Configuration properties for apps environment custom domain
 class CustomDomainConfigurationResponse {
   /// Certificate stored in Azure Key Vault.
-  final CertificateKeyVaultPropertiesResponse? certificateKeyVaultProperties;
+  final pulumi.Input<CertificateKeyVaultPropertiesResponse>? certificateKeyVaultProperties;
   /// Certificate password
-  final String? certificatePassword;
+  final pulumi.Input<String>? certificatePassword;
   /// PFX or PEM blob
-  final String? certificateValue;
+  final pulumi.Input<String>? certificateValue;
   /// Id used to verify domain name ownership
-  final String customDomainVerificationId;
+  final pulumi.Input<String> customDomainVerificationId;
   /// Dns suffix for the environment domain
-  final String? dnsSuffix;
+  final pulumi.Input<String>? dnsSuffix;
   /// Certificate expiration date.
-  final String expirationDate;
+  final pulumi.Input<String> expirationDate;
   /// Subject name of the certificate.
-  final String subjectName;
+  final pulumi.Input<String> subjectName;
   /// Certificate thumbprint.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
 
   /// Creates a new [CustomDomainConfigurationResponse].
   /// [certificateKeyVaultProperties] Certificate stored in Azure Key Vault.
@@ -43,7 +44,7 @@ class CustomDomainConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateKeyVaultProperties': ?certificateKeyVaultProperties == null ? null : certificateKeyVaultProperties!.toMap(),
+      'certificateKeyVaultProperties': ?pulumi.Input.mapOptionalInputValue<CertificateKeyVaultPropertiesResponse, Map<String, dynamic>>(certificateKeyVaultProperties, (value) => value.toMap()),
       'certificatePassword': ?certificatePassword,
       'certificateValue': ?certificateValue,
       'customDomainVerificationId': customDomainVerificationId,
@@ -56,14 +57,14 @@ class CustomDomainConfigurationResponse {
 
   factory CustomDomainConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CustomDomainConfigurationResponse(
-      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : CertificateKeyVaultPropertiesResponse.fromMap((map['certificateKeyVaultProperties'] as Map).cast<String, dynamic>()),
-      certificatePassword: map['certificatePassword'] == null ? null : map['certificatePassword'] as String,
-      certificateValue: map['certificateValue'] == null ? null : map['certificateValue'] as String,
-      customDomainVerificationId: map['customDomainVerificationId'] as String,
-      dnsSuffix: map['dnsSuffix'] == null ? null : map['dnsSuffix'] as String,
-      expirationDate: map['expirationDate'] as String,
-      subjectName: map['subjectName'] as String,
-      thumbprint: map['thumbprint'] as String,
+      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : (CertificateKeyVaultPropertiesResponse.fromMap((map['certificateKeyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
+      certificateValue: map['certificateValue'] == null ? null : (map['certificateValue'] as String).input(),
+      customDomainVerificationId: (map['customDomainVerificationId'] as String).input(),
+      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
+      expirationDate: (map['expirationDate'] as String).input(),
+      subjectName: (map['subjectName'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryScanningConfigurationRuleRepositoryFilter {
-  final String filter;
-  final String filterType;
+  final pulumi.Input<String> filter;
+  final pulumi.Input<String> filterType;
 
   /// Creates a new [RegistryScanningConfigurationRuleRepositoryFilter].
   /// [filter] Required.
@@ -22,8 +23,8 @@ class RegistryScanningConfigurationRuleRepositoryFilter {
 
   factory RegistryScanningConfigurationRuleRepositoryFilter.fromMap(Map<String, dynamic> map) {
     return RegistryScanningConfigurationRuleRepositoryFilter(
-      filter: map['filter'] as String,
-      filterType: map['filterType'] as String,
+      filter: (map['filter'] as String).input(),
+      filterType: (map['filterType'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'elastic_encryption.dart';
 
 /// NetApp elastic account properties
 class ElasticAccountProperties {
   /// Encryption settings
-  final ElasticEncryption? encryption;
+  final pulumi.Input<ElasticEncryption>? encryption;
 
   /// Creates a new [ElasticAccountProperties].
   /// [encryption] Encryption settings
@@ -15,13 +16,13 @@ class ElasticAccountProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<ElasticEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
     };
   }
 
   factory ElasticAccountProperties.fromMap(Map<String, dynamic> map) {
     return ElasticAccountProperties(
-      encryption: map['encryption'] == null ? null : ElasticEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
+      encryption: map['encryption'] == null ? null : (ElasticEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

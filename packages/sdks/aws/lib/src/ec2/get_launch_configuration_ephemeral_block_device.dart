@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchConfigurationEphemeralBlockDevice {
   /// Name of the device.
-  final String deviceName;
+  final pulumi.Input<String> deviceName;
   /// Virtual Name of the device.
-  final String virtualName;
+  final pulumi.Input<String> virtualName;
 
   /// Creates a new [GetLaunchConfigurationEphemeralBlockDevice].
   /// [deviceName] Name of the device.
@@ -24,8 +25,8 @@ class GetLaunchConfigurationEphemeralBlockDevice {
 
   factory GetLaunchConfigurationEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
     return GetLaunchConfigurationEphemeralBlockDevice(
-      deviceName: map['deviceName'] as String,
-      virtualName: map['virtualName'] as String,
+      deviceName: (map['deviceName'] as String).input(),
+      virtualName: (map['virtualName'] as String).input(),
     );
   }
 }

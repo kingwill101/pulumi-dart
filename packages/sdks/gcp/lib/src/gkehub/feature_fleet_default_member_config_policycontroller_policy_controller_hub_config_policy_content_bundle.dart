@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle {
   /// The identifier for this object. Format specified above.
-  final String bundle;
+  final pulumi.Input<String> bundle;
   /// The set of namespaces to be exempted from the bundle.
-  final List<String>? exemptedNamespaces;
+  final pulumi.Input<List<String>>? exemptedNamespaces;
 
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle].
   /// [bundle] The identifier for this object. Format specified above.
@@ -24,8 +25,8 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
 
   factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle(
-      bundle: map['bundle'] as String,
-      exemptedNamespaces: map['exemptedNamespaces'] == null ? null : (map['exemptedNamespaces'] as List).cast<String>(),
+      bundle: (map['bundle'] as String).input(),
+      exemptedNamespaces: map['exemptedNamespaces'] == null ? null : ((map['exemptedNamespaces'] as List).cast<String>()).input(),
     );
   }
 }

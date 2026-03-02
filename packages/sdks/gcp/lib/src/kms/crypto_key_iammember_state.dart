@@ -35,17 +35,12 @@ class CryptoKeyIAMMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Note that custom roles must be of the format
   CryptoKeyIAMMemberState({
-    pulumi.Output<CryptoKeyIAMMemberCondition>? condition,
-    pulumi.Output<String>? cryptoKeyId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<CryptoKeyIAMMemberCondition>(condition),
-      cryptoKeyId = pulumi.Input.asOptionalInput<String>(cryptoKeyId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.cryptoKeyId,
+    this.etag,
+    this.member,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,11 +54,11 @@ class CryptoKeyIAMMemberState {
 
   factory CryptoKeyIAMMemberState.fromMap(Map<String, dynamic> map) {
     return CryptoKeyIAMMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<CryptoKeyIAMMemberCondition>(CryptoKeyIAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      cryptoKeyId: map['cryptoKeyId'] == null ? null : pulumi.Output.create<String>(map['cryptoKeyId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (CryptoKeyIAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      cryptoKeyId: map['cryptoKeyId'] == null ? null : (map['cryptoKeyId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

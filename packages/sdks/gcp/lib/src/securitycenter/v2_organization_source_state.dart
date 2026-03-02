@@ -25,15 +25,11 @@ class V2OrganizationSourceState {
   /// [name] The resource name of this source, in the format
   /// [organization] The organization whose Cloud Security Command Center the Source
   V2OrganizationSourceState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? organization,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organization = pulumi.Input.asOptionalInput<String>(organization);
+    this.description,
+    this.displayName,
+    this.name,
+    this.organization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class V2OrganizationSourceState {
 
   factory V2OrganizationSourceState.fromMap(Map<String, dynamic> map) {
     return V2OrganizationSourceState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organization: map['organization'] == null ? null : pulumi.Output.create<String>(map['organization'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
     );
   }
 }

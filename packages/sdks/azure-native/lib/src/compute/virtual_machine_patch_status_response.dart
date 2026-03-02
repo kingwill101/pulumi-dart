@@ -8,11 +8,11 @@ import 'last_patch_installation_summary_response.dart';
 /// The status of virtual machine patch operations.
 class VirtualMachinePatchStatusResponse {
   /// The available patch summary of the latest assessment operation for the virtual machine.
-  final AvailablePatchSummaryResponse? availablePatchSummary;
+  final pulumi.Input<AvailablePatchSummaryResponse>? availablePatchSummary;
   /// The enablement status of the specified patchMode
-  final List<InstanceViewStatusResponse> configurationStatuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>> configurationStatuses;
   /// The installation summary of the latest installation operation for the virtual machine.
-  final LastPatchInstallationSummaryResponse? lastPatchInstallationSummary;
+  final pulumi.Input<LastPatchInstallationSummaryResponse>? lastPatchInstallationSummary;
 
   /// Creates a new [VirtualMachinePatchStatusResponse].
   /// [availablePatchSummary] The available patch summary of the latest assessment operation for the virtual machine.
@@ -26,17 +26,17 @@ class VirtualMachinePatchStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availablePatchSummary': ?availablePatchSummary == null ? null : availablePatchSummary!.toMap(),
-      'configurationStatuses': pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(configurationStatuses, (value) => value.toMap()),
-      'lastPatchInstallationSummary': ?lastPatchInstallationSummary == null ? null : lastPatchInstallationSummary!.toMap(),
+      'availablePatchSummary': ?pulumi.Input.mapOptionalInputValue<AvailablePatchSummaryResponse, Map<String, dynamic>>(availablePatchSummary, (value) => value.toMap()),
+      'configurationStatuses': pulumi.Input.mapInputValue<List<InstanceViewStatusResponse>, List<Map<String, dynamic>>>(configurationStatuses, (value) => pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lastPatchInstallationSummary': ?pulumi.Input.mapOptionalInputValue<LastPatchInstallationSummaryResponse, Map<String, dynamic>>(lastPatchInstallationSummary, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachinePatchStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePatchStatusResponse(
-      availablePatchSummary: map['availablePatchSummary'] == null ? null : AvailablePatchSummaryResponse.fromMap((map['availablePatchSummary'] as Map).cast<String, dynamic>()),
-      configurationStatuses: pulumi.Input.decodeList<InstanceViewStatusResponse>(map['configurationStatuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastPatchInstallationSummary: map['lastPatchInstallationSummary'] == null ? null : LastPatchInstallationSummaryResponse.fromMap((map['lastPatchInstallationSummary'] as Map).cast<String, dynamic>()),
+      availablePatchSummary: map['availablePatchSummary'] == null ? null : (AvailablePatchSummaryResponse.fromMap((map['availablePatchSummary'] as Map).cast<String, dynamic>())).input(),
+      configurationStatuses: (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['configurationStatuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastPatchInstallationSummary: map['lastPatchInstallationSummary'] == null ? null : (LastPatchInstallationSummaryResponse.fromMap((map['lastPatchInstallationSummary'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfiguredTableTableReference {
-  final String databaseName;
-  final String tableName;
+  final pulumi.Input<String> databaseName;
+  final pulumi.Input<String> tableName;
 
   /// Creates a new [ConfiguredTableTableReference].
   /// [databaseName] Required.
@@ -22,8 +23,8 @@ class ConfiguredTableTableReference {
 
   factory ConfiguredTableTableReference.fromMap(Map<String, dynamic> map) {
     return ConfiguredTableTableReference(
-      databaseName: map['databaseName'] as String,
-      tableName: map['tableName'] as String,
+      databaseName: (map['databaseName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

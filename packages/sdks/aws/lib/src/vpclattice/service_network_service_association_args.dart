@@ -22,15 +22,11 @@ class ServiceNetworkServiceAssociationArgs {
   /// [serviceNetworkIdentifier] The ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ServiceNetworkServiceAssociationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceIdentifier,
-    required pulumi.Output<String> serviceNetworkIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceIdentifier = pulumi.Input.asInput<String>(serviceIdentifier),
-      serviceNetworkIdentifier = pulumi.Input.asInput<String>(serviceNetworkIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.region,
+    required this.serviceIdentifier,
+    required this.serviceNetworkIdentifier,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ServiceNetworkServiceAssociationArgs {
 
   factory ServiceNetworkServiceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkServiceAssociationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceIdentifier: pulumi.Output.create<String>(map['serviceIdentifier'] as String),
-      serviceNetworkIdentifier: pulumi.Output.create<String>(map['serviceNetworkIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceIdentifier: (map['serviceIdentifier'] as String).input(),
+      serviceNetworkIdentifier: (map['serviceNetworkIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

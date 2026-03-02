@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'main_principal.dart';
 
 /// A Fleetspace properties.
 class FleetspaceProperties {
   /// Maximum number of vCores database fleet manager is allowed to provision in the fleetspace.
-  final int? capacityMax;
+  final pulumi.Input<int>? capacityMax;
   /// Main Microsoft Entra ID principal that has admin access to all databases in the fleetspace.
-  final MainPrincipal? mainPrincipal;
+  final pulumi.Input<MainPrincipal>? mainPrincipal;
 
   /// Creates a new [FleetspaceProperties].
   /// [capacityMax] Maximum number of vCores database fleet manager is allowed to provision in the fleetspace.
@@ -20,14 +21,14 @@ class FleetspaceProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capacityMax': ?capacityMax,
-      'mainPrincipal': ?mainPrincipal == null ? null : mainPrincipal!.toMap(),
+      'mainPrincipal': ?pulumi.Input.mapOptionalInputValue<MainPrincipal, Map<String, dynamic>>(mainPrincipal, (value) => value.toMap()),
     };
   }
 
   factory FleetspaceProperties.fromMap(Map<String, dynamic> map) {
     return FleetspaceProperties(
-      capacityMax: map['capacityMax'] == null ? null : map['capacityMax'] as int,
-      mainPrincipal: map['mainPrincipal'] == null ? null : MainPrincipal.fromMap((map['mainPrincipal'] as Map).cast<String, dynamic>()),
+      capacityMax: map['capacityMax'] == null ? null : (map['capacityMax'] as int).input(),
+      mainPrincipal: map['mainPrincipal'] == null ? null : (MainPrincipal.fromMap((map['mainPrincipal'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

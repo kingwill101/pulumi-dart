@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ParameterGroupParameter {
   /// The name of the Redshift parameter.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the Redshift parameter.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ParameterGroupParameter].
   /// [name] The name of the Redshift parameter.
@@ -24,8 +25,8 @@ class ParameterGroupParameter {
 
   factory ParameterGroupParameter.fromMap(Map<String, dynamic> map) {
     return ParameterGroupParameter(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -30,21 +30,14 @@ class ConnectionArgs {
   /// [name] The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
   /// [project] Optional.
   ConnectionArgs({
-    pulumi.Output<CloudSqlProperties>? cloudSql,
-    pulumi.Output<String>? connectionId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? friendlyName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      cloudSql = pulumi.Input.asOptionalInput<CloudSqlProperties>(cloudSql),
-      connectionId = pulumi.Input.asOptionalInput<String>(connectionId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.cloudSql,
+    this.connectionId,
+    this.description,
+    this.friendlyName,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      cloudSql: map['cloudSql'] == null ? null : pulumi.Output.create<CloudSqlProperties>(CloudSqlProperties.fromMap((map['cloudSql'] as Map).cast<String, dynamic>())),
-      connectionId: map['connectionId'] == null ? null : pulumi.Output.create<String>(map['connectionId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      cloudSql: map['cloudSql'] == null ? null : (CloudSqlProperties.fromMap((map['cloudSql'] as Map).cast<String, dynamic>())).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

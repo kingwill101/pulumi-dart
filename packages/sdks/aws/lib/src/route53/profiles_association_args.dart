@@ -28,19 +28,13 @@ class ProfilesAssociationArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   ProfilesAssociationArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> profileId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ProfilesAssociationTimeouts>? timeouts,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      profileId = pulumi.Input.asInput<String>(profileId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ProfilesAssociationTimeouts>(timeouts);
+    this.name,
+    required this.profileId,
+    this.region,
+    required this.resourceId,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ProfilesAssociationArgs {
 
   factory ProfilesAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ProfilesAssociationArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      profileId: pulumi.Output.create<String>(map['profileId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ProfilesAssociationTimeouts>(ProfilesAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      profileId: (map['profileId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ProfilesAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

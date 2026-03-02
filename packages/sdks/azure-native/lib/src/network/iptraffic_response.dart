@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IP traffic information.
 class IPTrafficResponse {
   /// List of destination IP addresses of the traffic..
-  final List<String> destinationIps;
+  final pulumi.Input<List<String>> destinationIps;
   /// The destination ports of the traffic.
-  final List<String> destinationPorts;
-  final List<String> protocols;
+  final pulumi.Input<List<String>> destinationPorts;
+  final pulumi.Input<List<String>> protocols;
   /// List of source IP addresses of the traffic..
-  final List<String> sourceIps;
+  final pulumi.Input<List<String>> sourceIps;
   /// The source ports of the traffic.
-  final List<String> sourcePorts;
+  final pulumi.Input<List<String>> sourcePorts;
 
   /// Creates a new [IPTrafficResponse].
   /// [destinationIps] List of destination IP addresses of the traffic..
@@ -39,11 +40,11 @@ class IPTrafficResponse {
 
   factory IPTrafficResponse.fromMap(Map<String, dynamic> map) {
     return IPTrafficResponse(
-      destinationIps: (map['destinationIps'] as List).cast<String>(),
-      destinationPorts: (map['destinationPorts'] as List).cast<String>(),
-      protocols: (map['protocols'] as List).cast<String>(),
-      sourceIps: (map['sourceIps'] as List).cast<String>(),
-      sourcePorts: (map['sourcePorts'] as List).cast<String>(),
+      destinationIps: ((map['destinationIps'] as List).cast<String>()).input(),
+      destinationPorts: ((map['destinationPorts'] as List).cast<String>()).input(),
+      protocols: ((map['protocols'] as List).cast<String>()).input(),
+      sourceIps: ((map['sourceIps'] as List).cast<String>()).input(),
+      sourcePorts: ((map['sourcePorts'] as List).cast<String>()).input(),
     );
   }
 }

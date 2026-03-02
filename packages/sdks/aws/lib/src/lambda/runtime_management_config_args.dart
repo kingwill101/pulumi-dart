@@ -27,17 +27,12 @@ class RuntimeManagementConfigArgs {
   /// [runtimeVersionArn] ARN of the runtime version. Only required when `update_runtime_on` is `Manual`.
   /// [updateRuntimeOn] Runtime update mode. Valid values are `Auto`, `FunctionUpdate`, and `Manual`. When a function is created, the default mode is `Auto`.
   RuntimeManagementConfigArgs({
-    required pulumi.Output<String> functionName,
-    pulumi.Output<String>? qualifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? runtimeVersionArn,
-    pulumi.Output<String>? updateRuntimeOn,
-  }) :
-      functionName = pulumi.Input.asInput<String>(functionName),
-      qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      runtimeVersionArn = pulumi.Input.asOptionalInput<String>(runtimeVersionArn),
-      updateRuntimeOn = pulumi.Input.asOptionalInput<String>(updateRuntimeOn);
+    required this.functionName,
+    this.qualifier,
+    this.region,
+    this.runtimeVersionArn,
+    this.updateRuntimeOn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class RuntimeManagementConfigArgs {
 
   factory RuntimeManagementConfigArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeManagementConfigArgs(
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      qualifier: map['qualifier'] == null ? null : pulumi.Output.create<String>(map['qualifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      runtimeVersionArn: map['runtimeVersionArn'] == null ? null : pulumi.Output.create<String>(map['runtimeVersionArn'] as String),
-      updateRuntimeOn: map['updateRuntimeOn'] == null ? null : pulumi.Output.create<String>(map['updateRuntimeOn'] as String),
+      functionName: (map['functionName'] as String).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      runtimeVersionArn: map['runtimeVersionArn'] == null ? null : (map['runtimeVersionArn'] as String).input(),
+      updateRuntimeOn: map['updateRuntimeOn'] == null ? null : (map['updateRuntimeOn'] as String).input(),
     );
   }
 }

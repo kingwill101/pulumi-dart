@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNodeBalancerTransfer {
   /// The total transfer, in MB, used by this NodeBalancer for the current month
-  final double in_;
+  final pulumi.Input<double> in_;
   /// The total inbound transfer, in MB, used for this NodeBalancer for the current month
-  final double out;
+  final pulumi.Input<double> out;
   /// The total outbound transfer, in MB, used for this NodeBalancer for the current month
-  final double total;
+  final pulumi.Input<double> total;
 
   /// Creates a new [GetNodeBalancerTransfer].
   /// [in_] The total transfer, in MB, used by this NodeBalancer for the current month
@@ -29,9 +30,9 @@ class GetNodeBalancerTransfer {
 
   factory GetNodeBalancerTransfer.fromMap(Map<String, dynamic> map) {
     return GetNodeBalancerTransfer(
-      in_: map['in'] as double,
-      out: map['out'] as double,
-      total: map['total'] as double,
+      in_: (map['in'] as double).input(),
+      out: (map['out'] as double).input(),
+      total: (map['total'] as double).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class WorkspaceManagerAssignmentArgs {
   /// [workspaceManagerAssignmentName] The name of the workspace manager assignment
   /// [workspaceName] The name of the workspace.
   WorkspaceManagerAssignmentArgs({
-    required pulumi.Output<List<AssignmentItem>> items,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> targetResourceName,
-    pulumi.Output<String>? workspaceManagerAssignmentName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      items = pulumi.Input.asInput<List<AssignmentItem>>(items),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetResourceName = pulumi.Input.asInput<String>(targetResourceName),
-      workspaceManagerAssignmentName = pulumi.Input.asOptionalInput<String>(workspaceManagerAssignmentName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.items,
+    required this.resourceGroupName,
+    required this.targetResourceName,
+    this.workspaceManagerAssignmentName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class WorkspaceManagerAssignmentArgs {
 
   factory WorkspaceManagerAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceManagerAssignmentArgs(
-      items: pulumi.Output.create<List<AssignmentItem>>(pulumi.Input.decodeList<AssignmentItem>(map['items'], (value) => AssignmentItem.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetResourceName: pulumi.Output.create<String>(map['targetResourceName'] as String),
-      workspaceManagerAssignmentName: map['workspaceManagerAssignmentName'] == null ? null : pulumi.Output.create<String>(map['workspaceManagerAssignmentName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      items: (pulumi.Input.decodeList<AssignmentItem>(map['items'], (value) => AssignmentItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetResourceName: (map['targetResourceName'] as String).input(),
+      workspaceManagerAssignmentName: map['workspaceManagerAssignmentName'] == null ? null : (map['workspaceManagerAssignmentName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

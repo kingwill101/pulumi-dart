@@ -6,7 +6,7 @@ import 'cx_tool_version_tool_open_api_spec_tls_config_ca_cert.dart';
 class CxToolVersionToolOpenApiSpecTlsConfig {
   /// Specifies a list of allowed custom CA certificates for HTTPS verification.
   /// Structure is documented below.
-  final List<CxToolVersionToolOpenApiSpecTlsConfigCaCert> caCerts;
+  final pulumi.Input<List<CxToolVersionToolOpenApiSpecTlsConfigCaCert>> caCerts;
 
   /// Creates a new [CxToolVersionToolOpenApiSpecTlsConfig].
   /// [caCerts] Specifies a list of allowed custom CA certificates for HTTPS verification.
@@ -16,13 +16,13 @@ class CxToolVersionToolOpenApiSpecTlsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caCerts': pulumi.Input.encodeList<CxToolVersionToolOpenApiSpecTlsConfigCaCert, Map<String, dynamic>>(caCerts, (value) => value.toMap()),
+      'caCerts': pulumi.Input.mapInputValue<List<CxToolVersionToolOpenApiSpecTlsConfigCaCert>, List<Map<String, dynamic>>>(caCerts, (value) => pulumi.Input.encodeList<CxToolVersionToolOpenApiSpecTlsConfigCaCert, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CxToolVersionToolOpenApiSpecTlsConfig.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolOpenApiSpecTlsConfig(
-      caCerts: pulumi.Input.decodeList<CxToolVersionToolOpenApiSpecTlsConfigCaCert>(map['caCerts'], (value) => CxToolVersionToolOpenApiSpecTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>())),
+      caCerts: (pulumi.Input.decodeList<CxToolVersionToolOpenApiSpecTlsConfigCaCert>(map['caCerts'], (value) => CxToolVersionToolOpenApiSpecTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

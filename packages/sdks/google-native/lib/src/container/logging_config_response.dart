@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'logging_component_config_response.dart';
 
 /// LoggingConfig is cluster logging configuration.
 class LoggingConfigResponse {
   /// Logging components configuration
-  final LoggingComponentConfigResponse componentConfig;
+  final pulumi.Input<LoggingComponentConfigResponse> componentConfig;
 
   /// Creates a new [LoggingConfigResponse].
   /// [componentConfig] Logging components configuration
@@ -15,13 +16,13 @@ class LoggingConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentConfig': componentConfig.toMap(),
+      'componentConfig': pulumi.Input.mapInputValue<LoggingComponentConfigResponse, Map<String, dynamic>>(componentConfig, (value) => value.toMap()),
     };
   }
 
   factory LoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return LoggingConfigResponse(
-      componentConfig: LoggingComponentConfigResponse.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
+      componentConfig: (LoggingComponentConfigResponse.fromMap((map['componentConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

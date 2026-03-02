@@ -21,13 +21,10 @@ class GetDbServerArgs {
   /// [id] The unique identifier of db node associated with vm cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetDbServerArgs({
-    required pulumi.Output<String> cloudExadataInfrastructureId,
-    required pulumi.Output<String> id,
-    pulumi.Output<String>? region,
-  }) :
-      cloudExadataInfrastructureId = pulumi.Input.asInput<String>(cloudExadataInfrastructureId),
-      id = pulumi.Input.asInput<String>(id),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.cloudExadataInfrastructureId,
+    required this.id,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetDbServerArgs {
 
   factory GetDbServerArgs.fromMap(Map<String, dynamic> map) {
     return GetDbServerArgs(
-      cloudExadataInfrastructureId: pulumi.Output.create<String>(map['cloudExadataInfrastructureId'] as String),
-      id: pulumi.Output.create<String>(map['id'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      cloudExadataInfrastructureId: (map['cloudExadataInfrastructureId'] as String).input(),
+      id: (map['id'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

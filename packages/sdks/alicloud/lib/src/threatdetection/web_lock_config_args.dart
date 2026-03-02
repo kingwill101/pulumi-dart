@@ -37,25 +37,16 @@ class WebLockConfigArgs {
   /// [mode] Specify the protected directory mode. Value:-**whitelist**: whitelist mode, which protects the added protected directories and file types.-**blacklist**: blacklist mode, which protects all unexcluded subdirectories, file types, and specified files under the added protection directory.
   /// [uuid] Specify the UUID of the server to which you want to add a protection directory.> You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
   WebLockConfigArgs({
-    required pulumi.Output<String> defenceMode,
-    required pulumi.Output<String> dir,
-    pulumi.Output<String>? exclusiveDir,
-    pulumi.Output<String>? exclusiveFile,
-    pulumi.Output<String>? exclusiveFileType,
-    pulumi.Output<String>? inclusiveFileType,
-    required pulumi.Output<String> localBackupDir,
-    required pulumi.Output<String> mode,
-    required pulumi.Output<String> uuid,
-  }) :
-      defenceMode = pulumi.Input.asInput<String>(defenceMode),
-      dir = pulumi.Input.asInput<String>(dir),
-      exclusiveDir = pulumi.Input.asOptionalInput<String>(exclusiveDir),
-      exclusiveFile = pulumi.Input.asOptionalInput<String>(exclusiveFile),
-      exclusiveFileType = pulumi.Input.asOptionalInput<String>(exclusiveFileType),
-      inclusiveFileType = pulumi.Input.asOptionalInput<String>(inclusiveFileType),
-      localBackupDir = pulumi.Input.asInput<String>(localBackupDir),
-      mode = pulumi.Input.asInput<String>(mode),
-      uuid = pulumi.Input.asInput<String>(uuid);
+    required this.defenceMode,
+    required this.dir,
+    this.exclusiveDir,
+    this.exclusiveFile,
+    this.exclusiveFileType,
+    this.inclusiveFileType,
+    required this.localBackupDir,
+    required this.mode,
+    required this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class WebLockConfigArgs {
 
   factory WebLockConfigArgs.fromMap(Map<String, dynamic> map) {
     return WebLockConfigArgs(
-      defenceMode: pulumi.Output.create<String>(map['defenceMode'] as String),
-      dir: pulumi.Output.create<String>(map['dir'] as String),
-      exclusiveDir: map['exclusiveDir'] == null ? null : pulumi.Output.create<String>(map['exclusiveDir'] as String),
-      exclusiveFile: map['exclusiveFile'] == null ? null : pulumi.Output.create<String>(map['exclusiveFile'] as String),
-      exclusiveFileType: map['exclusiveFileType'] == null ? null : pulumi.Output.create<String>(map['exclusiveFileType'] as String),
-      inclusiveFileType: map['inclusiveFileType'] == null ? null : pulumi.Output.create<String>(map['inclusiveFileType'] as String),
-      localBackupDir: pulumi.Output.create<String>(map['localBackupDir'] as String),
-      mode: pulumi.Output.create<String>(map['mode'] as String),
-      uuid: pulumi.Output.create<String>(map['uuid'] as String),
+      defenceMode: (map['defenceMode'] as String).input(),
+      dir: (map['dir'] as String).input(),
+      exclusiveDir: map['exclusiveDir'] == null ? null : (map['exclusiveDir'] as String).input(),
+      exclusiveFile: map['exclusiveFile'] == null ? null : (map['exclusiveFile'] as String).input(),
+      exclusiveFileType: map['exclusiveFileType'] == null ? null : (map['exclusiveFileType'] as String).input(),
+      inclusiveFileType: map['inclusiveFileType'] == null ? null : (map['inclusiveFileType'] as String).input(),
+      localBackupDir: (map['localBackupDir'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      uuid: (map['uuid'] as String).input(),
     );
   }
 }

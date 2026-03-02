@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigGvnic {
   /// Whether or not gvnic is enabled
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [NodePoolNodeConfigGvnic].
   /// [enabled] Whether or not gvnic is enabled
@@ -19,7 +20,7 @@ class NodePoolNodeConfigGvnic {
 
   factory NodePoolNodeConfigGvnic.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigGvnic(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

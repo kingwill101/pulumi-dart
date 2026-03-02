@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Database migration errors for online migration
 class SyncMigrationDatabaseErrorEventResponse {
   /// Event text.
-  final String eventText;
+  final pulumi.Input<String> eventText;
   /// Event type.
-  final String eventTypeString;
+  final pulumi.Input<String> eventTypeString;
   /// String value of timestamp.
-  final String timestampString;
+  final pulumi.Input<String> timestampString;
 
   /// Creates a new [SyncMigrationDatabaseErrorEventResponse].
   /// [eventText] Event text.
@@ -30,9 +31,9 @@ class SyncMigrationDatabaseErrorEventResponse {
 
   factory SyncMigrationDatabaseErrorEventResponse.fromMap(Map<String, dynamic> map) {
     return SyncMigrationDatabaseErrorEventResponse(
-      eventText: map['eventText'] as String,
-      eventTypeString: map['eventTypeString'] as String,
-      timestampString: map['timestampString'] as String,
+      eventText: (map['eventText'] as String).input(),
+      eventTypeString: (map['eventTypeString'] as String).input(),
+      timestampString: (map['timestampString'] as String).input(),
     );
   }
 }

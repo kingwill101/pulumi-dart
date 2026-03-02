@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_connector_credentials_response.dart';
 
 /// Mapping of data connector credentials.
 class DataConnectorCredentialMapResponse {
   /// The key representing the credential.
-  final String key;
+  final pulumi.Input<String> key;
   /// The data connector credential value.
-  final DataConnectorCredentialsResponse value;
+  final pulumi.Input<DataConnectorCredentialsResponse> value;
 
   /// Creates a new [DataConnectorCredentialMapResponse].
   /// [key] The key representing the credential.
@@ -20,14 +21,14 @@ class DataConnectorCredentialMapResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'key': key,
-      'value': value.toMap(),
+      'value': pulumi.Input.mapInputValue<DataConnectorCredentialsResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory DataConnectorCredentialMapResponse.fromMap(Map<String, dynamic> map) {
     return DataConnectorCredentialMapResponse(
-      key: map['key'] as String,
-      value: DataConnectorCredentialsResponse.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      key: (map['key'] as String).input(),
+      value: (DataConnectorCredentialsResponse.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

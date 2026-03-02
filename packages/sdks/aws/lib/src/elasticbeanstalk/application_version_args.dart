@@ -39,25 +39,16 @@ class ApplicationVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of tags for the Elastic Beanstalk Application Version. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ApplicationVersionArgs({
-    required pulumi.Output<String> application,
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? forceDelete,
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? process,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      application = pulumi.Input.asInput<String>(application),
-      bucket = pulumi.Input.asInput<String>(bucket),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      key = pulumi.Input.asInput<String>(key),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      process = pulumi.Input.asOptionalInput<bool>(process),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.application,
+    required this.bucket,
+    this.description,
+    this.forceDelete,
+    required this.key,
+    this.name,
+    this.process,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ApplicationVersionArgs {
 
   factory ApplicationVersionArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationVersionArgs(
-      application: pulumi.Output.create<String>(map['application'] as String),
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      key: pulumi.Output.create<String>(map['key'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      process: map['process'] == null ? null : pulumi.Output.create<bool>(map['process'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      application: (map['application'] as String).input(),
+      bucket: (map['bucket'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      key: (map['key'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      process: map['process'] == null ? null : (map['process'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

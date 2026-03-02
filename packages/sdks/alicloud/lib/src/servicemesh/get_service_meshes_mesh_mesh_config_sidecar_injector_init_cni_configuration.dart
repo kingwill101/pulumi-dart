@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration {
   /// Whether to enable CNI.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The excluded namespace of the CNI.
-  final String excludeNamespaces;
+  final pulumi.Input<String> excludeNamespaces;
 
   /// Creates a new [GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration].
   /// [enabled] Whether to enable CNI.
@@ -24,8 +25,8 @@ class GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration {
 
   factory GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration(
-      enabled: map['enabled'] as bool,
-      excludeNamespaces: map['excludeNamespaces'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      excludeNamespaces: (map['excludeNamespaces'] as String).input(),
     );
   }
 }

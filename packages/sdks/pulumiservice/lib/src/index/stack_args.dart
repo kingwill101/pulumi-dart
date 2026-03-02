@@ -22,15 +22,11 @@ class StackArgs {
   /// [projectName] The name of the project.
   /// [stackName] The name of the stack.
   StackArgs({
-    pulumi.Output<bool>? forceDestroy,
-    required pulumi.Output<String> organizationName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> stackName,
-  }) :
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      stackName = pulumi.Input.asInput<String>(stackName);
+    this.forceDestroy,
+    required this.organizationName,
+    required this.projectName,
+    required this.stackName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class StackArgs {
 
   factory StackArgs.fromMap(Map<String, dynamic> map) {
     return StackArgs(
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      stackName: pulumi.Output.create<String>(map['stackName'] as String),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      organizationName: (map['organizationName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      stackName: (map['stackName'] as String).input(),
     );
   }
 }

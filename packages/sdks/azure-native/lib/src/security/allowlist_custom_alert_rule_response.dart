@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A custom alert rule that checks if a value (depends on the custom alert type) is allowed.
 class AllowlistCustomAlertRuleResponse {
   /// The values to allow. The format of the values depends on the rule type.
-  final List<String> allowlistValues;
+  final pulumi.Input<List<String>> allowlistValues;
   /// The description of the custom alert.
-  final String description;
+  final pulumi.Input<String> description;
   /// The display name of the custom alert.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Status of the custom alert.
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
   /// The type of the custom alert rule.
   /// Expected value is 'AllowlistCustomAlertRule'.
-  final String ruleType;
+  final pulumi.Input<String> ruleType;
   /// The value type of the items in the list.
-  final String valueType;
+  final pulumi.Input<String> valueType;
 
   /// Creates a new [AllowlistCustomAlertRuleResponse].
   /// [allowlistValues] The values to allow. The format of the values depends on the rule type.
@@ -46,12 +47,12 @@ class AllowlistCustomAlertRuleResponse {
 
   factory AllowlistCustomAlertRuleResponse.fromMap(Map<String, dynamic> map) {
     return AllowlistCustomAlertRuleResponse(
-      allowlistValues: (map['allowlistValues'] as List).cast<String>(),
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      isEnabled: map['isEnabled'] as bool,
-      ruleType: map['ruleType'] as String,
-      valueType: map['valueType'] as String,
+      allowlistValues: ((map['allowlistValues'] as List).cast<String>()).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      isEnabled: (map['isEnabled'] as bool).input(),
+      ruleType: (map['ruleType'] as String).input(),
+      valueType: (map['valueType'] as String).input(),
     );
   }
 }

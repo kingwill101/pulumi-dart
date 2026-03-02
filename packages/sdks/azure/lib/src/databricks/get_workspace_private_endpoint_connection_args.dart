@@ -16,11 +16,9 @@ class GetWorkspacePrivateEndpointConnectionArgs {
   /// [privateEndpointId] The resource ID of the Private Endpoint.
   /// [workspaceId] The resource ID of the Databricks Workspace.
   GetWorkspacePrivateEndpointConnectionArgs({
-    required pulumi.Output<String> privateEndpointId,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      privateEndpointId = pulumi.Input.asInput<String>(privateEndpointId),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.privateEndpointId,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetWorkspacePrivateEndpointConnectionArgs {
 
   factory GetWorkspacePrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspacePrivateEndpointConnectionArgs(
-      privateEndpointId: pulumi.Output.create<String>(map['privateEndpointId'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      privateEndpointId: (map['privateEndpointId'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

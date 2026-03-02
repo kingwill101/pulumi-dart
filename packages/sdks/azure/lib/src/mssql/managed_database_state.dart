@@ -27,19 +27,13 @@ class ManagedDatabaseState {
   /// [shortTermRetentionDays] The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   /// [tags] A mapping of tags to assign to the resource.
   ManagedDatabaseState({
-    pulumi.Output<ManagedDatabaseLongTermRetentionPolicy>? longTermRetentionPolicy,
-    pulumi.Output<String>? managedInstanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<ManagedDatabasePointInTimeRestore>? pointInTimeRestore,
-    pulumi.Output<int>? shortTermRetentionDays,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      longTermRetentionPolicy = pulumi.Input.asOptionalInput<ManagedDatabaseLongTermRetentionPolicy>(longTermRetentionPolicy),
-      managedInstanceId = pulumi.Input.asOptionalInput<String>(managedInstanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pointInTimeRestore = pulumi.Input.asOptionalInput<ManagedDatabasePointInTimeRestore>(pointInTimeRestore),
-      shortTermRetentionDays = pulumi.Input.asOptionalInput<int>(shortTermRetentionDays),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.longTermRetentionPolicy,
+    this.managedInstanceId,
+    this.name,
+    this.pointInTimeRestore,
+    this.shortTermRetentionDays,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class ManagedDatabaseState {
 
   factory ManagedDatabaseState.fromMap(Map<String, dynamic> map) {
     return ManagedDatabaseState(
-      longTermRetentionPolicy: map['longTermRetentionPolicy'] == null ? null : pulumi.Output.create<ManagedDatabaseLongTermRetentionPolicy>(ManagedDatabaseLongTermRetentionPolicy.fromMap((map['longTermRetentionPolicy'] as Map).cast<String, dynamic>())),
-      managedInstanceId: map['managedInstanceId'] == null ? null : pulumi.Output.create<String>(map['managedInstanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pointInTimeRestore: map['pointInTimeRestore'] == null ? null : pulumi.Output.create<ManagedDatabasePointInTimeRestore>(ManagedDatabasePointInTimeRestore.fromMap((map['pointInTimeRestore'] as Map).cast<String, dynamic>())),
-      shortTermRetentionDays: map['shortTermRetentionDays'] == null ? null : pulumi.Output.create<int>(map['shortTermRetentionDays'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      longTermRetentionPolicy: map['longTermRetentionPolicy'] == null ? null : (ManagedDatabaseLongTermRetentionPolicy.fromMap((map['longTermRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      managedInstanceId: map['managedInstanceId'] == null ? null : (map['managedInstanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pointInTimeRestore: map['pointInTimeRestore'] == null ? null : (ManagedDatabasePointInTimeRestore.fromMap((map['pointInTimeRestore'] as Map).cast<String, dynamic>())).input(),
+      shortTermRetentionDays: map['shortTermRetentionDays'] == null ? null : (map['shortTermRetentionDays'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

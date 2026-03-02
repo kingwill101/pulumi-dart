@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TargetSiteFailureReasonQuotaFailure {
   /// This number is an estimation on how much total quota this project
   /// needs to successfully complete indexing.
-  final int? totalRequiredQuota;
+  final pulumi.Input<int>? totalRequiredQuota;
 
   /// Creates a new [TargetSiteFailureReasonQuotaFailure].
   /// [totalRequiredQuota] This number is an estimation on how much total quota this project
@@ -20,7 +21,7 @@ class TargetSiteFailureReasonQuotaFailure {
 
   factory TargetSiteFailureReasonQuotaFailure.fromMap(Map<String, dynamic> map) {
     return TargetSiteFailureReasonQuotaFailure(
-      totalRequiredQuota: map['totalRequiredQuota'] == null ? null : map['totalRequiredQuota'] as int,
+      totalRequiredQuota: map['totalRequiredQuota'] == null ? null : (map['totalRequiredQuota'] as int).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Which Image to use for the virtual machine
 class VirtualMachinePropertiesResponseImageReference {
   /// Resource ID of the image
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [VirtualMachinePropertiesResponseImageReference].
   /// [id] Resource ID of the image
@@ -20,7 +21,7 @@ class VirtualMachinePropertiesResponseImageReference {
 
   factory VirtualMachinePropertiesResponseImageReference.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponseImageReference(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

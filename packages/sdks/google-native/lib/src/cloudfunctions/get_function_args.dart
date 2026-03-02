@@ -18,15 +18,11 @@ class GetFunctionArgs {
   /// [project] Optional.
   /// [versionId] Optional.
   GetFunctionArgs({
-    required pulumi.Output<String> functionId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? versionId,
-  }) :
-      functionId = pulumi.Input.asInput<String>(functionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      versionId = pulumi.Input.asOptionalInput<String>(versionId);
+    required this.functionId,
+    required this.location,
+    this.project,
+    this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetFunctionArgs {
 
   factory GetFunctionArgs.fromMap(Map<String, dynamic> map) {
     return GetFunctionArgs(
-      functionId: pulumi.Output.create<String>(map['functionId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      versionId: map['versionId'] == null ? null : pulumi.Output.create<String>(map['versionId'] as String),
+      functionId: (map['functionId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
     );
   }
 }

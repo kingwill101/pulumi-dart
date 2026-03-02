@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificatesCertificateManagedAuthorizationAttemptInfo {
   /// Human readable explanation for reaching the state. Provided to help
   /// address the configuration issues.
   /// Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
-  final String details;
+  final pulumi.Input<String> details;
   /// Domain name of the authorization attempt.
-  final String domain;
+  final pulumi.Input<String> domain;
   /// Reason for failure of the authorization attempt for the domain.
-  final String failureReason;
+  final pulumi.Input<String> failureReason;
   /// State of the domain for managed certificate issuance.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GetCertificatesCertificateManagedAuthorizationAttemptInfo].
   /// [details] Human readable explanation for reaching the state. Provided to help
@@ -36,10 +37,10 @@ class GetCertificatesCertificateManagedAuthorizationAttemptInfo {
 
   factory GetCertificatesCertificateManagedAuthorizationAttemptInfo.fromMap(Map<String, dynamic> map) {
     return GetCertificatesCertificateManagedAuthorizationAttemptInfo(
-      details: map['details'] as String,
-      domain: map['domain'] as String,
-      failureReason: map['failureReason'] as String,
-      state: map['state'] as String,
+      details: (map['details'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      failureReason: (map['failureReason'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

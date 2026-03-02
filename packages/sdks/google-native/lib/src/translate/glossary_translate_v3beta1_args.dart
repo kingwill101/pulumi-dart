@@ -29,19 +29,13 @@ class GlossaryTranslateV3beta1Args {
   /// [name] The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
   /// [project] Optional.
   GlossaryTranslateV3beta1Args({
-    required pulumi.Output<GlossaryInputConfigTranslateV3beta1> inputConfig,
-    pulumi.Output<LanguageCodesSetTranslateV3beta1>? languageCodesSet,
-    pulumi.Output<LanguageCodePairTranslateV3beta1>? languagePair,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      inputConfig = pulumi.Input.asInput<GlossaryInputConfigTranslateV3beta1>(inputConfig),
-      languageCodesSet = pulumi.Input.asOptionalInput<LanguageCodesSetTranslateV3beta1>(languageCodesSet),
-      languagePair = pulumi.Input.asOptionalInput<LanguageCodePairTranslateV3beta1>(languagePair),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.inputConfig,
+    this.languageCodesSet,
+    this.languagePair,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GlossaryTranslateV3beta1Args {
 
   factory GlossaryTranslateV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GlossaryTranslateV3beta1Args(
-      inputConfig: pulumi.Output.create<GlossaryInputConfigTranslateV3beta1>(GlossaryInputConfigTranslateV3beta1.fromMap((map['inputConfig'] as Map).cast<String, dynamic>())),
-      languageCodesSet: map['languageCodesSet'] == null ? null : pulumi.Output.create<LanguageCodesSetTranslateV3beta1>(LanguageCodesSetTranslateV3beta1.fromMap((map['languageCodesSet'] as Map).cast<String, dynamic>())),
-      languagePair: map['languagePair'] == null ? null : pulumi.Output.create<LanguageCodePairTranslateV3beta1>(LanguageCodePairTranslateV3beta1.fromMap((map['languagePair'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      inputConfig: (GlossaryInputConfigTranslateV3beta1.fromMap((map['inputConfig'] as Map).cast<String, dynamic>())).input(),
+      languageCodesSet: map['languageCodesSet'] == null ? null : (LanguageCodesSetTranslateV3beta1.fromMap((map['languageCodesSet'] as Map).cast<String, dynamic>())).input(),
+      languagePair: map['languagePair'] == null ? null : (LanguageCodePairTranslateV3beta1.fromMap((map['languagePair'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

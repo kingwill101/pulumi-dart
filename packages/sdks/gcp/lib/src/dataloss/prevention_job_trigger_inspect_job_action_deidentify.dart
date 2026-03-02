@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prevention_job_trigger_inspect_job_action_deidentify_transformation_config.dart';
 import 'prevention_job_trigger_inspect_job_action_deidentify_transformation_details_storage_config.dart';
 
@@ -9,18 +10,18 @@ class PreventionJobTriggerInspectJobActionDeidentify {
   /// The output Cloud Storage bucket must be different from the input bucket.
   /// De-identified files will overwrite files in the output path.
   /// Form of: gs://bucket/folder/ or gs://bucket
-  final String cloudStorageOutput;
+  final pulumi.Input<String> cloudStorageOutput;
   /// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed.
   /// If empty, all supported files will be transformed. Supported types may be automatically added over time.
   /// If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
   /// Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
-  final List<String>? fileTypesToTransforms;
+  final pulumi.Input<List<String>>? fileTypesToTransforms;
   /// User specified deidentify templates and configs for structured, unstructured, and image files.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig? transformationConfig;
+  final pulumi.Input<PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig>? transformationConfig;
   /// Config for storing transformation details.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig? transformationDetailsStorageConfig;
+  final pulumi.Input<PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig>? transformationDetailsStorageConfig;
 
   /// Creates a new [PreventionJobTriggerInspectJobActionDeidentify].
   /// [cloudStorageOutput] User settable Cloud Storage bucket and folders to store de-identified files.
@@ -38,17 +39,17 @@ class PreventionJobTriggerInspectJobActionDeidentify {
     return <String, dynamic>{
       'cloudStorageOutput': cloudStorageOutput,
       'fileTypesToTransforms': ?fileTypesToTransforms,
-      'transformationConfig': ?transformationConfig == null ? null : transformationConfig!.toMap(),
-      'transformationDetailsStorageConfig': ?transformationDetailsStorageConfig == null ? null : transformationDetailsStorageConfig!.toMap(),
+      'transformationConfig': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig, Map<String, dynamic>>(transformationConfig, (value) => value.toMap()),
+      'transformationDetailsStorageConfig': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig, Map<String, dynamic>>(transformationDetailsStorageConfig, (value) => value.toMap()),
     };
   }
 
   factory PreventionJobTriggerInspectJobActionDeidentify.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobActionDeidentify(
-      cloudStorageOutput: map['cloudStorageOutput'] as String,
-      fileTypesToTransforms: map['fileTypesToTransforms'] == null ? null : (map['fileTypesToTransforms'] as List).cast<String>(),
-      transformationConfig: map['transformationConfig'] == null ? null : PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig.fromMap((map['transformationConfig'] as Map).cast<String, dynamic>()),
-      transformationDetailsStorageConfig: map['transformationDetailsStorageConfig'] == null ? null : PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig.fromMap((map['transformationDetailsStorageConfig'] as Map).cast<String, dynamic>()),
+      cloudStorageOutput: (map['cloudStorageOutput'] as String).input(),
+      fileTypesToTransforms: map['fileTypesToTransforms'] == null ? null : ((map['fileTypesToTransforms'] as List).cast<String>()).input(),
+      transformationConfig: map['transformationConfig'] == null ? null : (PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig.fromMap((map['transformationConfig'] as Map).cast<String, dynamic>())).input(),
+      transformationDetailsStorageConfig: map['transformationDetailsStorageConfig'] == null ? null : (PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig.fromMap((map['transformationDetailsStorageConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetBandwidthLimitsArgs {
   /// [instanceIds] A list of CEN instances IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetBandwidthLimitsArgs({
-    pulumi.Output<List<String>>? instanceIds,
-    pulumi.Output<String>? outputFile,
-  }) :
-      instanceIds = pulumi.Input.asOptionalInput<List<String>>(instanceIds),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.instanceIds,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBandwidthLimitsArgs {
 
   factory GetBandwidthLimitsArgs.fromMap(Map<String, dynamic> map) {
     return GetBandwidthLimitsArgs(
-      instanceIds: map['instanceIds'] == null ? null : pulumi.Output.create<List<String>>((map['instanceIds'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

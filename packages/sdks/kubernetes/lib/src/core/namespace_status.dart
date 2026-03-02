@@ -6,9 +6,9 @@ import 'namespace_condition.dart';
 /// NamespaceStatus is information about the current status of a Namespace.
 class NamespaceStatus {
   /// Represents the latest available observations of a namespace's current state.
-  final List<NamespaceCondition>? conditions;
+  final pulumi.Input<List<NamespaceCondition>>? conditions;
   /// Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
-  final String? phase;
+  final pulumi.Input<String>? phase;
 
   /// Creates a new [NamespaceStatus].
   /// [conditions] Represents the latest available observations of a namespace's current state.
@@ -20,15 +20,15 @@ class NamespaceStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<NamespaceCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<NamespaceCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<NamespaceCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'phase': ?phase,
     };
   }
 
   factory NamespaceStatus.fromMap(Map<String, dynamic> map) {
     return NamespaceStatus(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<NamespaceCondition>(map['conditions'], (value) => NamespaceCondition.fromMap((value as Map).cast<String, dynamic>())),
-      phase: map['phase'] == null ? null : map['phase'] as String,
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<NamespaceCondition>(map['conditions'], (value) => NamespaceCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
     );
   }
 }

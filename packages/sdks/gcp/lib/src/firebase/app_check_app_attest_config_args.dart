@@ -23,13 +23,10 @@ class AppCheckAppAttestConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from App Attest artifacts will be valid.
   AppCheckAppAttestConfigArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? tokenTtl,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tokenTtl = pulumi.Input.asOptionalInput<String>(tokenTtl);
+    required this.appId,
+    this.project,
+    this.tokenTtl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class AppCheckAppAttestConfigArgs {
 
   factory AppCheckAppAttestConfigArgs.fromMap(Map<String, dynamic> map) {
     return AppCheckAppAttestConfigArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tokenTtl: map['tokenTtl'] == null ? null : pulumi.Output.create<String>(map['tokenTtl'] as String),
+      appId: (map['appId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
     );
   }
 }

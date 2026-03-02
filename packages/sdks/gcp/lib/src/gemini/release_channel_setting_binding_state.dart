@@ -49,31 +49,19 @@ class ReleaseChannelSettingBindingState {
   /// [target] Target of the binding.
   /// [updateTime] Update time stamp.
   ReleaseChannelSettingBindingState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? product,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? releaseChannelSettingId,
-    pulumi.Output<String>? settingBindingId,
-    pulumi.Output<String>? target,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      product = pulumi.Input.asOptionalInput<String>(product),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      releaseChannelSettingId = pulumi.Input.asOptionalInput<String>(releaseChannelSettingId),
-      settingBindingId = pulumi.Input.asOptionalInput<String>(settingBindingId),
-      target = pulumi.Input.asOptionalInput<String>(target),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.name,
+    this.product,
+    this.project,
+    this.pulumiLabels,
+    this.releaseChannelSettingId,
+    this.settingBindingId,
+    this.target,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class ReleaseChannelSettingBindingState {
 
   factory ReleaseChannelSettingBindingState.fromMap(Map<String, dynamic> map) {
     return ReleaseChannelSettingBindingState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      product: map['product'] == null ? null : pulumi.Output.create<String>(map['product'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      releaseChannelSettingId: map['releaseChannelSettingId'] == null ? null : pulumi.Output.create<String>(map['releaseChannelSettingId'] as String),
-      settingBindingId: map['settingBindingId'] == null ? null : pulumi.Output.create<String>(map['settingBindingId'] as String),
-      target: map['target'] == null ? null : pulumi.Output.create<String>(map['target'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      product: map['product'] == null ? null : (map['product'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      releaseChannelSettingId: map['releaseChannelSettingId'] == null ? null : (map['releaseChannelSettingId'] as String).input(),
+      settingBindingId: map['settingBindingId'] == null ? null : (map['settingBindingId'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Sku.
 class SkuResponse {
   /// The display name of the sku.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The sku family.
-  final String? family;
+  final pulumi.Input<String>? family;
   /// The model name.
-  final String model;
+  final pulumi.Input<String> model;
   /// The sku name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [SkuResponse].
   /// [displayName] The display name of the sku.
@@ -35,10 +36,10 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      family: map['family'] == null ? null : map['family'] as String,
-      model: map['model'] as String,
-      name: map['name'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      model: (map['model'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

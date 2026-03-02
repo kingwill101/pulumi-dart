@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A Symptom instance.
 class SymptomResponseTpuV2alpha1 {
   /// Timestamp when the Symptom is created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Detailed information of the current Symptom.
-  final String details;
+  final pulumi.Input<String> details;
   /// Type of the Symptom.
-  final String symptomType;
+  final pulumi.Input<String> symptomType;
   /// A string used to uniquely distinguish a worker within a TPU node.
-  final String workerId;
+  final pulumi.Input<String> workerId;
 
   /// Creates a new [SymptomResponseTpuV2alpha1].
   /// [createTime] Timestamp when the Symptom is created.
@@ -35,10 +36,10 @@ class SymptomResponseTpuV2alpha1 {
 
   factory SymptomResponseTpuV2alpha1.fromMap(Map<String, dynamic> map) {
     return SymptomResponseTpuV2alpha1(
-      createTime: map['createTime'] as String,
-      details: map['details'] as String,
-      symptomType: map['symptomType'] as String,
-      workerId: map['workerId'] as String,
+      createTime: (map['createTime'] as String).input(),
+      details: (map['details'] as String).input(),
+      symptomType: (map['symptomType'] as String).input(),
+      workerId: (map['workerId'] as String).input(),
     );
   }
 }

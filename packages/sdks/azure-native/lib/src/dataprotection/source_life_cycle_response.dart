@@ -8,10 +8,10 @@ import 'target_copy_setting_response.dart';
 /// Source LifeCycle
 class SourceLifeCycleResponse {
   /// Delete Option
-  final AbsoluteDeleteOptionResponse deleteAfter;
+  final pulumi.Input<AbsoluteDeleteOptionResponse> deleteAfter;
   /// DataStoreInfo base
-  final DataStoreInfoBaseResponse sourceDataStore;
-  final List<TargetCopySettingResponse>? targetDataStoreCopySettings;
+  final pulumi.Input<DataStoreInfoBaseResponse> sourceDataStore;
+  final pulumi.Input<List<TargetCopySettingResponse>>? targetDataStoreCopySettings;
 
   /// Creates a new [SourceLifeCycleResponse].
   /// [deleteAfter] Delete Option
@@ -25,17 +25,17 @@ class SourceLifeCycleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deleteAfter': deleteAfter.toMap(),
-      'sourceDataStore': sourceDataStore.toMap(),
-      'targetDataStoreCopySettings': ?targetDataStoreCopySettings == null ? null : pulumi.Input.encodeList<TargetCopySettingResponse, Map<String, dynamic>>(targetDataStoreCopySettings!, (value) => value.toMap()),
+      'deleteAfter': pulumi.Input.mapInputValue<AbsoluteDeleteOptionResponse, Map<String, dynamic>>(deleteAfter, (value) => value.toMap()),
+      'sourceDataStore': pulumi.Input.mapInputValue<DataStoreInfoBaseResponse, Map<String, dynamic>>(sourceDataStore, (value) => value.toMap()),
+      'targetDataStoreCopySettings': ?pulumi.Input.mapOptionalInputValue<List<TargetCopySettingResponse>, List<Map<String, dynamic>>>(targetDataStoreCopySettings, (value) => pulumi.Input.encodeList<TargetCopySettingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SourceLifeCycleResponse.fromMap(Map<String, dynamic> map) {
     return SourceLifeCycleResponse(
-      deleteAfter: AbsoluteDeleteOptionResponse.fromMap((map['deleteAfter'] as Map).cast<String, dynamic>()),
-      sourceDataStore: DataStoreInfoBaseResponse.fromMap((map['sourceDataStore'] as Map).cast<String, dynamic>()),
-      targetDataStoreCopySettings: map['targetDataStoreCopySettings'] == null ? null : pulumi.Input.decodeList<TargetCopySettingResponse>(map['targetDataStoreCopySettings'], (value) => TargetCopySettingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      deleteAfter: (AbsoluteDeleteOptionResponse.fromMap((map['deleteAfter'] as Map).cast<String, dynamic>())).input(),
+      sourceDataStore: (DataStoreInfoBaseResponse.fromMap((map['sourceDataStore'] as Map).cast<String, dynamic>())).input(),
+      targetDataStoreCopySettings: map['targetDataStoreCopySettings'] == null ? null : (pulumi.Input.decodeList<TargetCopySettingResponse>(map['targetDataStoreCopySettings'], (value) => TargetCopySettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertRuleAnomalySingleSelectObservation {
   /// The description of the threshold observation.
-  final String description;
+  final pulumi.Input<String> description;
   /// The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
-  final String name;
+  final pulumi.Input<String> name;
   /// A list of supported values of the single select observation.
-  final List<String> supportedValues;
+  final pulumi.Input<List<String>> supportedValues;
   /// The value of the threshold observation.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetAlertRuleAnomalySingleSelectObservation].
   /// [description] The description of the threshold observation.
@@ -34,10 +35,10 @@ class GetAlertRuleAnomalySingleSelectObservation {
 
   factory GetAlertRuleAnomalySingleSelectObservation.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleAnomalySingleSelectObservation(
-      description: map['description'] as String,
-      name: map['name'] as String,
-      supportedValues: (map['supportedValues'] as List).cast<String>(),
-      value: map['value'] as String,
+      description: (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      supportedValues: ((map['supportedValues'] as List).cast<String>()).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

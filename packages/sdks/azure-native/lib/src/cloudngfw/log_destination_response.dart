@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_hub_response.dart';
 import 'monitor_log_response.dart';
 import 'storage_account_response.dart';
@@ -7,11 +8,11 @@ import 'storage_account_response.dart';
 /// Log Destination
 class LogDestinationResponse {
   /// Event Hub configurations
-  final EventHubResponse? eventHubConfigurations;
+  final pulumi.Input<EventHubResponse>? eventHubConfigurations;
   /// Monitor Log configurations
-  final MonitorLogResponse? monitorConfigurations;
+  final pulumi.Input<MonitorLogResponse>? monitorConfigurations;
   /// Storage account configurations
-  final StorageAccountResponse? storageConfigurations;
+  final pulumi.Input<StorageAccountResponse>? storageConfigurations;
 
   /// Creates a new [LogDestinationResponse].
   /// [eventHubConfigurations] Event Hub configurations
@@ -25,17 +26,17 @@ class LogDestinationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'eventHubConfigurations': ?eventHubConfigurations == null ? null : eventHubConfigurations!.toMap(),
-      'monitorConfigurations': ?monitorConfigurations == null ? null : monitorConfigurations!.toMap(),
-      'storageConfigurations': ?storageConfigurations == null ? null : storageConfigurations!.toMap(),
+      'eventHubConfigurations': ?pulumi.Input.mapOptionalInputValue<EventHubResponse, Map<String, dynamic>>(eventHubConfigurations, (value) => value.toMap()),
+      'monitorConfigurations': ?pulumi.Input.mapOptionalInputValue<MonitorLogResponse, Map<String, dynamic>>(monitorConfigurations, (value) => value.toMap()),
+      'storageConfigurations': ?pulumi.Input.mapOptionalInputValue<StorageAccountResponse, Map<String, dynamic>>(storageConfigurations, (value) => value.toMap()),
     };
   }
 
   factory LogDestinationResponse.fromMap(Map<String, dynamic> map) {
     return LogDestinationResponse(
-      eventHubConfigurations: map['eventHubConfigurations'] == null ? null : EventHubResponse.fromMap((map['eventHubConfigurations'] as Map).cast<String, dynamic>()),
-      monitorConfigurations: map['monitorConfigurations'] == null ? null : MonitorLogResponse.fromMap((map['monitorConfigurations'] as Map).cast<String, dynamic>()),
-      storageConfigurations: map['storageConfigurations'] == null ? null : StorageAccountResponse.fromMap((map['storageConfigurations'] as Map).cast<String, dynamic>()),
+      eventHubConfigurations: map['eventHubConfigurations'] == null ? null : (EventHubResponse.fromMap((map['eventHubConfigurations'] as Map).cast<String, dynamic>())).input(),
+      monitorConfigurations: map['monitorConfigurations'] == null ? null : (MonitorLogResponse.fromMap((map['monitorConfigurations'] as Map).cast<String, dynamic>())).input(),
+      storageConfigurations: map['storageConfigurations'] == null ? null : (StorageAccountResponse.fromMap((map['storageConfigurations'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

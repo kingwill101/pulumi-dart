@@ -33,21 +33,14 @@ class CIAMTenantArgs {
   /// [tags] Resource Tags
   /// [tenantId] An identifier of the Azure AD for customers tenant.
   CIAMTenantArgs({
-    required pulumi.Output<CreateCIAMTenantProperties> createTenantProperties,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceName,
-    required pulumi.Output<CIAMResourceSKU> sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tenantId,
-  }) :
-      createTenantProperties = pulumi.Input.asInput<CreateCIAMTenantProperties>(createTenantProperties),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      sku = pulumi.Input.asInput<CIAMResourceSKU>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    required this.createTenantProperties,
+    this.location,
+    required this.resourceGroupName,
+    this.resourceName,
+    required this.sku,
+    this.tags,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class CIAMTenantArgs {
 
   factory CIAMTenantArgs.fromMap(Map<String, dynamic> map) {
     return CIAMTenantArgs(
-      createTenantProperties: pulumi.Output.create<CreateCIAMTenantProperties>(CreateCIAMTenantProperties.fromMap((map['createTenantProperties'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      sku: pulumi.Output.create<CIAMResourceSKU>(CIAMResourceSKU.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      createTenantProperties: (CreateCIAMTenantProperties.fromMap((map['createTenantProperties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      sku: (CIAMResourceSKU.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

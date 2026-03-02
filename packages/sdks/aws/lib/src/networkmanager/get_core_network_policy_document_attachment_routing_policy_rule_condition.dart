@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition {
   /// Must be `routing-policy-label`.
-  final String type;
+  final pulumi.Input<String> type;
   /// Routing policy label to match.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition].
   /// [type] Must be `routing-policy-label`.
@@ -24,8 +25,8 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition {
 
   factory GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition(
-      type: map['type'] as String,
-      value: map['value'] as String,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

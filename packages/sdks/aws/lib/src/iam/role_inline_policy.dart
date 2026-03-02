@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RoleInlinePolicy {
   /// Name of the role policy.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Policy document as a JSON formatted string.
-  final String? policy;
+  final pulumi.Input<String>? policy;
 
   /// Creates a new [RoleInlinePolicy].
   /// [name] Name of the role policy.
@@ -24,8 +25,8 @@ class RoleInlinePolicy {
 
   factory RoleInlinePolicy.fromMap(Map<String, dynamic> map) {
     return RoleInlinePolicy(
-      name: map['name'] == null ? null : map['name'] as String,
-      policy: map['policy'] == null ? null : map['policy'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
     );
   }
 }

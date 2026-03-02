@@ -48,19 +48,13 @@ class CaPoolIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   CaPoolIamMemberArgs({
-    required pulumi.Output<String> caPool,
-    pulumi.Output<CaPoolIamMemberCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      caPool = pulumi.Input.asInput<String>(caPool),
-      condition = pulumi.Input.asOptionalInput<CaPoolIamMemberCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    required this.caPool,
+    this.condition,
+    this.location,
+    required this.member,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,12 +69,12 @@ class CaPoolIamMemberArgs {
 
   factory CaPoolIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return CaPoolIamMemberArgs(
-      caPool: pulumi.Output.create<String>(map['caPool'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<CaPoolIamMemberCondition>(CaPoolIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      caPool: (map['caPool'] as String).input(),
+      condition: map['condition'] == null ? null : (CaPoolIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

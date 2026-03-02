@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource cache options.
 class ResourceTypeRegistrationPropertiesResourceCacheResponse {
   /// Enable resource cache.
-  final bool? enableResourceCache;
+  final pulumi.Input<bool>? enableResourceCache;
   /// Resource cache expiration timespan. This is a TimeSpan property.
-  final String? resourceCacheExpirationTimespan;
+  final pulumi.Input<String>? resourceCacheExpirationTimespan;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceCacheResponse].
   /// [enableResourceCache] Enable resource cache.
@@ -25,8 +26,8 @@ class ResourceTypeRegistrationPropertiesResourceCacheResponse {
 
   factory ResourceTypeRegistrationPropertiesResourceCacheResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceCacheResponse(
-      enableResourceCache: map['enableResourceCache'] == null ? null : map['enableResourceCache'] as bool,
-      resourceCacheExpirationTimespan: map['resourceCacheExpirationTimespan'] == null ? null : map['resourceCacheExpirationTimespan'] as String,
+      enableResourceCache: map['enableResourceCache'] == null ? null : (map['enableResourceCache'] as bool).input(),
+      resourceCacheExpirationTimespan: map['resourceCacheExpirationTimespan'] == null ? null : (map['resourceCacheExpirationTimespan'] as String).input(),
     );
   }
 }

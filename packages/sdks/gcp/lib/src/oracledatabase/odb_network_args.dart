@@ -39,21 +39,14 @@ class OdbNetworkArgs {
   /// [odbNetworkId] The ID of the OdbNetwork to create. This value is restricted
   /// [project] The ID of the project in which the resource belongs.
   OdbNetworkArgs({
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? gcpOracleZone,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> network,
-    required pulumi.Output<String> odbNetworkId,
-    pulumi.Output<String>? project,
-  }) :
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      gcpOracleZone = pulumi.Input.asOptionalInput<String>(gcpOracleZone),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      network = pulumi.Input.asInput<String>(network),
-      odbNetworkId = pulumi.Input.asInput<String>(odbNetworkId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.deletionProtection,
+    this.gcpOracleZone,
+    this.labels,
+    required this.location,
+    required this.network,
+    required this.odbNetworkId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,13 +62,13 @@ class OdbNetworkArgs {
 
   factory OdbNetworkArgs.fromMap(Map<String, dynamic> map) {
     return OdbNetworkArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      gcpOracleZone: map['gcpOracleZone'] == null ? null : pulumi.Output.create<String>(map['gcpOracleZone'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      odbNetworkId: pulumi.Output.create<String>(map['odbNetworkId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      gcpOracleZone: map['gcpOracleZone'] == null ? null : (map['gcpOracleZone'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      network: (map['network'] as String).input(),
+      odbNetworkId: (map['odbNetworkId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

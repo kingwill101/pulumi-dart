@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType {
   /// The worker type. Valid values are `SPARK_DRIVER`, `SPARK_EXECUTOR`, `HIVE_DRIVER`, and `TEZ_TASK`.
-  final String name;
+  final pulumi.Input<String> name;
   /// The list of log types to publish. Valid values are `STDOUT`, `STDERR`, `HIVE_LOG`, `TEZ_AM`, and `SYSTEM_LOGS`.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType].
   /// [name] The worker type. Valid values are `SPARK_DRIVER`, `SPARK_EXECUTOR`, `HIVE_DRIVER`, and `TEZ_TASK`.
@@ -24,8 +25,8 @@ class ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType {
 
   factory ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType.fromMap(Map<String, dynamic> map) {
     return ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -43,25 +43,16 @@ class SacAttachmentArgs {
   /// [symantecOptions] Configuration required for Symantec attachments.
   /// [timeZone] Case-sensitive tzinfo identifier used for localization. Only valid for Symantec attachments.
   SacAttachmentArgs({
-    pulumi.Output<String>? country,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> nccGateway,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sacRealm,
-    pulumi.Output<SacAttachmentSymantecOptions>? symantecOptions,
-    pulumi.Output<String>? timeZone,
-  }) :
-      country = pulumi.Input.asOptionalInput<String>(country),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nccGateway = pulumi.Input.asInput<String>(nccGateway),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sacRealm = pulumi.Input.asInput<String>(sacRealm),
-      symantecOptions = pulumi.Input.asOptionalInput<SacAttachmentSymantecOptions>(symantecOptions),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.country,
+    this.labels,
+    required this.location,
+    this.name,
+    required this.nccGateway,
+    this.project,
+    required this.sacRealm,
+    this.symantecOptions,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class SacAttachmentArgs {
 
   factory SacAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return SacAttachmentArgs(
-      country: map['country'] == null ? null : pulumi.Output.create<String>(map['country'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nccGateway: pulumi.Output.create<String>(map['nccGateway'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sacRealm: pulumi.Output.create<String>(map['sacRealm'] as String),
-      symantecOptions: map['symantecOptions'] == null ? null : pulumi.Output.create<SacAttachmentSymantecOptions>(SacAttachmentSymantecOptions.fromMap((map['symantecOptions'] as Map).cast<String, dynamic>())),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      country: map['country'] == null ? null : (map['country'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nccGateway: (map['nccGateway'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sacRealm: (map['sacRealm'] as String).input(),
+      symantecOptions: map['symantecOptions'] == null ? null : (SacAttachmentSymantecOptions.fromMap((map['symantecOptions'] as Map).cast<String, dynamic>())).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

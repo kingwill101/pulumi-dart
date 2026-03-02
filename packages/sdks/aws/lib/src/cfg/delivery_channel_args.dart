@@ -32,21 +32,14 @@ class DeliveryChannelArgs {
   /// [snapshotDeliveryProperties] Options for how AWS Config delivers configuration snapshots. See below
   /// [snsTopicArn] The ARN of the SNS topic that AWS Config delivers notifications to.
   DeliveryChannelArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> s3BucketName,
-    pulumi.Output<String>? s3KeyPrefix,
-    pulumi.Output<String>? s3KmsKeyArn,
-    pulumi.Output<DeliveryChannelSnapshotDeliveryProperties>? snapshotDeliveryProperties,
-    pulumi.Output<String>? snsTopicArn,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3BucketName = pulumi.Input.asInput<String>(s3BucketName),
-      s3KeyPrefix = pulumi.Input.asOptionalInput<String>(s3KeyPrefix),
-      s3KmsKeyArn = pulumi.Input.asOptionalInput<String>(s3KmsKeyArn),
-      snapshotDeliveryProperties = pulumi.Input.asOptionalInput<DeliveryChannelSnapshotDeliveryProperties>(snapshotDeliveryProperties),
-      snsTopicArn = pulumi.Input.asOptionalInput<String>(snsTopicArn);
+    this.name,
+    this.region,
+    required this.s3BucketName,
+    this.s3KeyPrefix,
+    this.s3KmsKeyArn,
+    this.snapshotDeliveryProperties,
+    this.snsTopicArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class DeliveryChannelArgs {
 
   factory DeliveryChannelArgs.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3BucketName: pulumi.Output.create<String>(map['s3BucketName'] as String),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : pulumi.Output.create<String>(map['s3KeyPrefix'] as String),
-      s3KmsKeyArn: map['s3KmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['s3KmsKeyArn'] as String),
-      snapshotDeliveryProperties: map['snapshotDeliveryProperties'] == null ? null : pulumi.Output.create<DeliveryChannelSnapshotDeliveryProperties>(DeliveryChannelSnapshotDeliveryProperties.fromMap((map['snapshotDeliveryProperties'] as Map).cast<String, dynamic>())),
-      snsTopicArn: map['snsTopicArn'] == null ? null : pulumi.Output.create<String>(map['snsTopicArn'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3BucketName: (map['s3BucketName'] as String).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
+      s3KmsKeyArn: map['s3KmsKeyArn'] == null ? null : (map['s3KmsKeyArn'] as String).input(),
+      snapshotDeliveryProperties: map['snapshotDeliveryProperties'] == null ? null : (DeliveryChannelSnapshotDeliveryProperties.fromMap((map['snapshotDeliveryProperties'] as Map).cast<String, dynamic>())).input(),
+      snsTopicArn: map['snsTopicArn'] == null ? null : (map['snsTopicArn'] as String).input(),
     );
   }
 }

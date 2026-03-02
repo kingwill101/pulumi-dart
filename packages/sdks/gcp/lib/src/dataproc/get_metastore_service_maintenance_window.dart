@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMetastoreServiceMaintenanceWindow {
   /// The day of week, when the window starts. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
-  final String dayOfWeek;
+  final pulumi.Input<String> dayOfWeek;
   /// The hour of day (0-23) when the window starts.
-  final int hourOfDay;
+  final pulumi.Input<int> hourOfDay;
 
   /// Creates a new [GetMetastoreServiceMaintenanceWindow].
   /// [dayOfWeek] The day of week, when the window starts. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
@@ -24,8 +25,8 @@ class GetMetastoreServiceMaintenanceWindow {
 
   factory GetMetastoreServiceMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetMetastoreServiceMaintenanceWindow(
-      dayOfWeek: map['dayOfWeek'] as String,
-      hourOfDay: map['hourOfDay'] as int,
+      dayOfWeek: (map['dayOfWeek'] as String).input(),
+      hourOfDay: (map['hourOfDay'] as int).input(),
     );
   }
 }

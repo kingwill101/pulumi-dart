@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDedicatedHostsOperationLock {
   /// The reason why the dedicated host resource is locked.
-  final String? lockReason;
+  final pulumi.Input<String>? lockReason;
 
   /// Creates a new [GetDedicatedHostsOperationLock].
   /// [lockReason] The reason why the dedicated host resource is locked.
@@ -19,7 +20,7 @@ class GetDedicatedHostsOperationLock {
 
   factory GetDedicatedHostsOperationLock.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsOperationLock(
-      lockReason: map['lockReason'] == null ? null : map['lockReason'] as String,
+      lockReason: map['lockReason'] == null ? null : (map['lockReason'] as String).input(),
     );
   }
 }

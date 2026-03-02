@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnGatewayConnectionVpnLinkCustomBgpAddress {
   /// The custom bgp ip address which belongs to the IP Configuration.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The ID of the IP Configuration which belongs to the VPN Gateway.
-  final String ipConfigurationId;
+  final pulumi.Input<String> ipConfigurationId;
 
   /// Creates a new [VpnGatewayConnectionVpnLinkCustomBgpAddress].
   /// [ipAddress] The custom bgp ip address which belongs to the IP Configuration.
@@ -24,8 +25,8 @@ class VpnGatewayConnectionVpnLinkCustomBgpAddress {
 
   factory VpnGatewayConnectionVpnLinkCustomBgpAddress.fromMap(Map<String, dynamic> map) {
     return VpnGatewayConnectionVpnLinkCustomBgpAddress(
-      ipAddress: map['ipAddress'] as String,
-      ipConfigurationId: map['ipConfigurationId'] as String,
+      ipAddress: (map['ipAddress'] as String).input(),
+      ipConfigurationId: (map['ipConfigurationId'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class ImageArgs {
   /// [imageName] The image name.
   /// [instanceId] The instance ID.
   ImageArgs({
-    required pulumi.Output<String> imageName,
-    required pulumi.Output<String> instanceId,
-  }) :
-      imageName = pulumi.Input.asInput<String>(imageName),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    required this.imageName,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      imageName: pulumi.Output.create<String>(map['imageName'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      imageName: (map['imageName'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

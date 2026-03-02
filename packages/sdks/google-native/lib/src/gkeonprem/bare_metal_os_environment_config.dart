@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies operating system settings for cluster provisioning.
 class BareMetalOsEnvironmentConfig {
   /// Whether the package repo should not be included when initializing bare metal machines.
-  final bool? packageRepoExcluded;
+  final pulumi.Input<bool>? packageRepoExcluded;
 
   /// Creates a new [BareMetalOsEnvironmentConfig].
   /// [packageRepoExcluded] Whether the package repo should not be included when initializing bare metal machines.
@@ -20,7 +21,7 @@ class BareMetalOsEnvironmentConfig {
 
   factory BareMetalOsEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalOsEnvironmentConfig(
-      packageRepoExcluded: map['packageRepoExcluded'] == null ? null : map['packageRepoExcluded'] as bool,
+      packageRepoExcluded: map['packageRepoExcluded'] == null ? null : (map['packageRepoExcluded'] as bool).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An Application Insights component daily data volume cap
 class ApplicationInsightsComponentDataVolumeCapResponse {
   /// Daily data volume cap in GB.
-  final double? cap;
+  final pulumi.Input<double>? cap;
   /// Maximum daily data volume cap that the user can set for this component.
-  final double maxHistoryCap;
+  final pulumi.Input<double> maxHistoryCap;
   /// Daily data volume cap UTC reset hour.
-  final int resetTime;
+  final pulumi.Input<int> resetTime;
   /// Do not send a notification email when the daily data volume cap is met.
-  final bool? stopSendNotificationWhenHitCap;
+  final pulumi.Input<bool>? stopSendNotificationWhenHitCap;
   /// Reserved, not used for now.
-  final bool? stopSendNotificationWhenHitThreshold;
+  final pulumi.Input<bool>? stopSendNotificationWhenHitThreshold;
   /// Reserved, not used for now.
-  final int? warningThreshold;
+  final pulumi.Input<int>? warningThreshold;
 
   /// Creates a new [ApplicationInsightsComponentDataVolumeCapResponse].
   /// [cap] Daily data volume cap in GB.
@@ -45,12 +46,12 @@ class ApplicationInsightsComponentDataVolumeCapResponse {
 
   factory ApplicationInsightsComponentDataVolumeCapResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationInsightsComponentDataVolumeCapResponse(
-      cap: map['cap'] == null ? null : map['cap'] as double,
-      maxHistoryCap: map['maxHistoryCap'] as double,
-      resetTime: map['resetTime'] as int,
-      stopSendNotificationWhenHitCap: map['stopSendNotificationWhenHitCap'] == null ? null : map['stopSendNotificationWhenHitCap'] as bool,
-      stopSendNotificationWhenHitThreshold: map['stopSendNotificationWhenHitThreshold'] == null ? null : map['stopSendNotificationWhenHitThreshold'] as bool,
-      warningThreshold: map['warningThreshold'] == null ? null : map['warningThreshold'] as int,
+      cap: map['cap'] == null ? null : (map['cap'] as double).input(),
+      maxHistoryCap: (map['maxHistoryCap'] as double).input(),
+      resetTime: (map['resetTime'] as int).input(),
+      stopSendNotificationWhenHitCap: map['stopSendNotificationWhenHitCap'] == null ? null : (map['stopSendNotificationWhenHitCap'] as bool).input(),
+      stopSendNotificationWhenHitThreshold: map['stopSendNotificationWhenHitThreshold'] == null ? null : (map['stopSendNotificationWhenHitThreshold'] as bool).input(),
+      warningThreshold: map['warningThreshold'] == null ? null : (map['warningThreshold'] as int).input(),
     );
   }
 }

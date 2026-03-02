@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gmsa Details
 class GmsaDetailsResponse {
   /// Frontend DNS name for Load Balancer which will be used by Agents to initiate communication
-  final String? dnsName;
+  final pulumi.Input<String>? dnsName;
   /// gMSA account under which context all Management Server services will run
-  final String? gmsaAccount;
+  final pulumi.Input<String>? gmsaAccount;
   /// Frontend IP configuration for Load Balancer, which should be an available IP in customer VNet
-  final String? loadBalancerIP;
+  final pulumi.Input<String>? loadBalancerIP;
   /// OnPrem AD Computer Group where we will join VMs for ease of management
-  final String? managementServerGroupName;
+  final pulumi.Input<String>? managementServerGroupName;
 
   /// Creates a new [GmsaDetailsResponse].
   /// [dnsName] Frontend DNS name for Load Balancer which will be used by Agents to initiate communication
@@ -35,10 +36,10 @@ class GmsaDetailsResponse {
 
   factory GmsaDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GmsaDetailsResponse(
-      dnsName: map['dnsName'] == null ? null : map['dnsName'] as String,
-      gmsaAccount: map['gmsaAccount'] == null ? null : map['gmsaAccount'] as String,
-      loadBalancerIP: map['loadBalancerIP'] == null ? null : map['loadBalancerIP'] as String,
-      managementServerGroupName: map['managementServerGroupName'] == null ? null : map['managementServerGroupName'] as String,
+      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
+      gmsaAccount: map['gmsaAccount'] == null ? null : (map['gmsaAccount'] as String).input(),
+      loadBalancerIP: map['loadBalancerIP'] == null ? null : (map['loadBalancerIP'] as String).input(),
+      managementServerGroupName: map['managementServerGroupName'] == null ? null : (map['managementServerGroupName'] as String).input(),
     );
   }
 }

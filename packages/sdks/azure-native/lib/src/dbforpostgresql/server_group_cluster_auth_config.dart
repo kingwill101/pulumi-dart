@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authentication configuration of a cluster.
 class ServerGroupClusterAuthConfig {
-  final String? activeDirectoryAuth;
-  final String? passwordAuth;
+  final pulumi.Input<String>? activeDirectoryAuth;
+  final pulumi.Input<String>? passwordAuth;
 
   /// Creates a new [ServerGroupClusterAuthConfig].
   /// [activeDirectoryAuth] Optional.
@@ -23,8 +24,8 @@ class ServerGroupClusterAuthConfig {
 
   factory ServerGroupClusterAuthConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupClusterAuthConfig(
-      activeDirectoryAuth: map['activeDirectoryAuth'] == null ? null : map['activeDirectoryAuth'] as String,
-      passwordAuth: map['passwordAuth'] == null ? null : map['passwordAuth'] as String,
+      activeDirectoryAuth: map['activeDirectoryAuth'] == null ? null : (map['activeDirectoryAuth'] as String).input(),
+      passwordAuth: map['passwordAuth'] == null ? null : (map['passwordAuth'] as String).input(),
     );
   }
 }

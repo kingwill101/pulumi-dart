@@ -9,31 +9,31 @@ import 'google_cloud_integrations_v1alpha_next_task_response.dart';
 /// Configuration detail of a trigger.
 class GoogleCloudIntegrationsV1alphaTriggerConfigResponse {
   /// Optional. An alert threshold configuration for the [trigger + client + integration] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + integration] when published.
-  final List<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse> alertConfig;
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse>> alertConfig;
   /// Optional. Cloud Scheduler Trigger related metadata
-  final GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse cloudSchedulerConfig;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse> cloudSchedulerConfig;
   /// Optional. User-provided description intended to give additional business context about the task.
-  final String description;
+  final pulumi.Input<String> description;
   /// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
-  final String errorCatcherId;
+  final pulumi.Input<String> errorCatcherId;
   /// Optional. The user created label for a particular trigger.
-  final String label;
+  final pulumi.Input<String> label;
   /// Optional. Dictates how next tasks will be executed.
-  final String nextTasksExecutionPolicy;
+  final pulumi.Input<String> nextTasksExecutionPolicy;
   /// Optional. Informs the front-end application where to draw this error catcher config on the UI.
-  final GoogleCloudIntegrationsV1alphaCoordinateResponse position;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaCoordinateResponse> position;
   /// Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers.
-  final Map<String, String> properties;
+  final pulumi.Input<Map<String, String>> properties;
   /// Optional. Set of tasks numbers from where the integration execution is started by this trigger. If this is empty, then integration is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same integration execution graph).
-  final List<GoogleCloudIntegrationsV1alphaNextTaskResponse> startTasks;
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaNextTaskResponse>> startTasks;
   /// Optional. Name of the trigger. Example: "API Trigger", "Cloud Pub Sub Trigger" When set will be sent out to monitoring dashabord for tracking purpose.
-  final String trigger;
+  final pulumi.Input<String> trigger;
   /// Optional. The backend trigger ID.
-  final String triggerId;
+  final pulumi.Input<String> triggerId;
   /// A number to uniquely identify each trigger config within the integration on UI.
-  final String triggerNumber;
+  final pulumi.Input<String> triggerNumber;
   /// Optional. Type of trigger
-  final String triggerType;
+  final pulumi.Input<String> triggerType;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaTriggerConfigResponse].
   /// [alertConfig] Optional. An alert threshold configuration for the [trigger + client + integration] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + integration] when published.
@@ -67,15 +67,15 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alertConfig': pulumi.Input.encodeList<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse, Map<String, dynamic>>(alertConfig, (value) => value.toMap()),
-      'cloudSchedulerConfig': cloudSchedulerConfig.toMap(),
+      'alertConfig': pulumi.Input.mapInputValue<List<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse>, List<Map<String, dynamic>>>(alertConfig, (value) => pulumi.Input.encodeList<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cloudSchedulerConfig': pulumi.Input.mapInputValue<GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse, Map<String, dynamic>>(cloudSchedulerConfig, (value) => value.toMap()),
       'description': description,
       'errorCatcherId': errorCatcherId,
       'label': label,
       'nextTasksExecutionPolicy': nextTasksExecutionPolicy,
-      'position': position.toMap(),
+      'position': pulumi.Input.mapInputValue<GoogleCloudIntegrationsV1alphaCoordinateResponse, Map<String, dynamic>>(position, (value) => value.toMap()),
       'properties': properties,
-      'startTasks': pulumi.Input.encodeList<GoogleCloudIntegrationsV1alphaNextTaskResponse, Map<String, dynamic>>(startTasks, (value) => value.toMap()),
+      'startTasks': pulumi.Input.mapInputValue<List<GoogleCloudIntegrationsV1alphaNextTaskResponse>, List<Map<String, dynamic>>>(startTasks, (value) => pulumi.Input.encodeList<GoogleCloudIntegrationsV1alphaNextTaskResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'trigger': trigger,
       'triggerId': triggerId,
       'triggerNumber': triggerNumber,
@@ -85,19 +85,19 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigResponse {
 
   factory GoogleCloudIntegrationsV1alphaTriggerConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaTriggerConfigResponse(
-      alertConfig: pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse>(map['alertConfig'], (value) => GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
-      cloudSchedulerConfig: GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse.fromMap((map['cloudSchedulerConfig'] as Map).cast<String, dynamic>()),
-      description: map['description'] as String,
-      errorCatcherId: map['errorCatcherId'] as String,
-      label: map['label'] as String,
-      nextTasksExecutionPolicy: map['nextTasksExecutionPolicy'] as String,
-      position: GoogleCloudIntegrationsV1alphaCoordinateResponse.fromMap((map['position'] as Map).cast<String, dynamic>()),
-      properties: (map['properties'] as Map).cast<String, String>(),
-      startTasks: pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaNextTaskResponse>(map['startTasks'], (value) => GoogleCloudIntegrationsV1alphaNextTaskResponse.fromMap((value as Map).cast<String, dynamic>())),
-      trigger: map['trigger'] as String,
-      triggerId: map['triggerId'] as String,
-      triggerNumber: map['triggerNumber'] as String,
-      triggerType: map['triggerType'] as String,
+      alertConfig: (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse>(map['alertConfig'], (value) => GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudSchedulerConfig: (GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse.fromMap((map['cloudSchedulerConfig'] as Map).cast<String, dynamic>())).input(),
+      description: (map['description'] as String).input(),
+      errorCatcherId: (map['errorCatcherId'] as String).input(),
+      label: (map['label'] as String).input(),
+      nextTasksExecutionPolicy: (map['nextTasksExecutionPolicy'] as String).input(),
+      position: (GoogleCloudIntegrationsV1alphaCoordinateResponse.fromMap((map['position'] as Map).cast<String, dynamic>())).input(),
+      properties: ((map['properties'] as Map).cast<String, String>()).input(),
+      startTasks: (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaNextTaskResponse>(map['startTasks'], (value) => GoogleCloudIntegrationsV1alphaNextTaskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trigger: (map['trigger'] as String).input(),
+      triggerId: (map['triggerId'] as String).input(),
+      triggerNumber: (map['triggerNumber'] as String).input(),
+      triggerType: (map['triggerType'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Infra network profile for the NetworkCloud platform
 class VirtualNetworksPropertiesResponseNetworkCloud {
   /// The ARM ID of Network Cloud Network Resource to Associate with this VirtualNetwork
-  final String? networkId;
+  final pulumi.Input<String>? networkId;
 
   /// Creates a new [VirtualNetworksPropertiesResponseNetworkCloud].
   /// [networkId] The ARM ID of Network Cloud Network Resource to Associate with this VirtualNetwork
@@ -20,7 +21,7 @@ class VirtualNetworksPropertiesResponseNetworkCloud {
 
   factory VirtualNetworksPropertiesResponseNetworkCloud.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesResponseNetworkCloud(
-      networkId: map['networkId'] == null ? null : map['networkId'] as String,
+      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
     );
   }
 }

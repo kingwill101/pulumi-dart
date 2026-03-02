@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsWebAppSiteConfigAutoHealSettingTriggerRequests {
   /// The number of requests in the specified `interval` to trigger this rule.
-  final int count;
+  final pulumi.Input<int> count;
   /// The interval in `hh:mm:ss`.
-  final String interval;
+  final pulumi.Input<String> interval;
 
   /// Creates a new [WindowsWebAppSiteConfigAutoHealSettingTriggerRequests].
   /// [count] The number of requests in the specified `interval` to trigger this rule.
@@ -24,8 +25,8 @@ class WindowsWebAppSiteConfigAutoHealSettingTriggerRequests {
 
   factory WindowsWebAppSiteConfigAutoHealSettingTriggerRequests.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSiteConfigAutoHealSettingTriggerRequests(
-      count: map['count'] as int,
-      interval: map['interval'] as String,
+      count: (map['count'] as int).input(),
+      interval: (map['interval'] as String).input(),
     );
   }
 }

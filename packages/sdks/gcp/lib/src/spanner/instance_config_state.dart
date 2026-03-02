@@ -45,25 +45,16 @@ class InstanceConfigState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [replicas] The geographic placement of nodes in this instance configuration and their replication properties.
   InstanceConfigState({
-    pulumi.Output<String>? baseConfig,
-    pulumi.Output<String>? configType,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<List<InstanceConfigReplica>>? replicas,
-  }) :
-      baseConfig = pulumi.Input.asOptionalInput<String>(baseConfig),
-      configType = pulumi.Input.asOptionalInput<String>(configType),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      replicas = pulumi.Input.asOptionalInput<List<InstanceConfigReplica>>(replicas);
+    this.baseConfig,
+    this.configType,
+    this.displayName,
+    this.effectiveLabels,
+    this.labels,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.replicas,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,15 +72,15 @@ class InstanceConfigState {
 
   factory InstanceConfigState.fromMap(Map<String, dynamic> map) {
     return InstanceConfigState(
-      baseConfig: map['baseConfig'] == null ? null : pulumi.Output.create<String>(map['baseConfig'] as String),
-      configType: map['configType'] == null ? null : pulumi.Output.create<String>(map['configType'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      replicas: map['replicas'] == null ? null : pulumi.Output.create<List<InstanceConfigReplica>>(pulumi.Input.decodeList<InstanceConfigReplica>(map['replicas'], (value) => InstanceConfigReplica.fromMap((value as Map).cast<String, dynamic>()))),
+      baseConfig: map['baseConfig'] == null ? null : (map['baseConfig'] as String).input(),
+      configType: map['configType'] == null ? null : (map['configType'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<InstanceConfigReplica>(map['replicas'], (value) => InstanceConfigReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

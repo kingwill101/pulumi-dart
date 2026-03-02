@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This encapsulates a metric property of the form sum(message_count) where name is message_count and function is sum
 class GoogleCloudApigeeV1CustomReportMetric {
   /// aggregate function
-  final String? function;
+  final pulumi.Input<String>? function;
   /// name of the metric
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [GoogleCloudApigeeV1CustomReportMetric].
   /// [function] aggregate function
@@ -25,8 +26,8 @@ class GoogleCloudApigeeV1CustomReportMetric {
 
   factory GoogleCloudApigeeV1CustomReportMetric.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1CustomReportMetric(
-      function: map['function'] == null ? null : map['function'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      function: map['function'] == null ? null : (map['function'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

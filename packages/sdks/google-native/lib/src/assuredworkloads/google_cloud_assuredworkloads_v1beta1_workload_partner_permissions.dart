@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Permissions granted to the AW Partner SA account for the customer workload
 class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions {
   /// Optional. Allow partner to view violation alerts.
-  final bool? assuredWorkloadsMonitoring;
+  final pulumi.Input<bool>? assuredWorkloadsMonitoring;
   /// Allow the partner to view inspectability logs and monitoring violations.
-  final bool? dataLogsViewer;
+  final pulumi.Input<bool>? dataLogsViewer;
   /// Optional. Allow partner to view access approval logs.
-  final bool? serviceAccessApprover;
+  final pulumi.Input<bool>? serviceAccessApprover;
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions].
   /// [assuredWorkloadsMonitoring] Optional. Allow partner to view violation alerts.
@@ -30,9 +31,9 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions {
 
   factory GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions(
-      assuredWorkloadsMonitoring: map['assuredWorkloadsMonitoring'] == null ? null : map['assuredWorkloadsMonitoring'] as bool,
-      dataLogsViewer: map['dataLogsViewer'] == null ? null : map['dataLogsViewer'] as bool,
-      serviceAccessApprover: map['serviceAccessApprover'] == null ? null : map['serviceAccessApprover'] as bool,
+      assuredWorkloadsMonitoring: map['assuredWorkloadsMonitoring'] == null ? null : (map['assuredWorkloadsMonitoring'] as bool).input(),
+      dataLogsViewer: map['dataLogsViewer'] == null ? null : (map['dataLogsViewer'] as bool).input(),
+      serviceAccessApprover: map['serviceAccessApprover'] == null ? null : (map['serviceAccessApprover'] as bool).input(),
     );
   }
 }

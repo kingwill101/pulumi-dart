@@ -36,25 +36,16 @@ class Hl7V2StoreArgs {
   /// [project] Optional.
   /// [rejectDuplicateMessage] Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.
   Hl7V2StoreArgs({
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<String>? hl7V2StoreId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<Hl7V2NotificationConfig>>? notificationConfigs,
-    pulumi.Output<ParserConfig>? parserConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? rejectDuplicateMessage,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      hl7V2StoreId = pulumi.Input.asOptionalInput<String>(hl7V2StoreId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationConfigs = pulumi.Input.asOptionalInput<List<Hl7V2NotificationConfig>>(notificationConfigs),
-      parserConfig = pulumi.Input.asOptionalInput<ParserConfig>(parserConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rejectDuplicateMessage = pulumi.Input.asOptionalInput<bool>(rejectDuplicateMessage);
+    required this.datasetId,
+    this.hl7V2StoreId,
+    this.labels,
+    this.location,
+    this.name,
+    this.notificationConfigs,
+    this.parserConfig,
+    this.project,
+    this.rejectDuplicateMessage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class Hl7V2StoreArgs {
 
   factory Hl7V2StoreArgs.fromMap(Map<String, dynamic> map) {
     return Hl7V2StoreArgs(
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : pulumi.Output.create<String>(map['hl7V2StoreId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationConfigs: map['notificationConfigs'] == null ? null : pulumi.Output.create<List<Hl7V2NotificationConfig>>(pulumi.Input.decodeList<Hl7V2NotificationConfig>(map['notificationConfigs'], (value) => Hl7V2NotificationConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      parserConfig: map['parserConfig'] == null ? null : pulumi.Output.create<ParserConfig>(ParserConfig.fromMap((map['parserConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rejectDuplicateMessage: map['rejectDuplicateMessage'] == null ? null : pulumi.Output.create<bool>(map['rejectDuplicateMessage'] as bool),
+      datasetId: (map['datasetId'] as String).input(),
+      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : (map['hl7V2StoreId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationConfigs: map['notificationConfigs'] == null ? null : (pulumi.Input.decodeList<Hl7V2NotificationConfig>(map['notificationConfigs'], (value) => Hl7V2NotificationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parserConfig: map['parserConfig'] == null ? null : (ParserConfig.fromMap((map['parserConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rejectDuplicateMessage: map['rejectDuplicateMessage'] == null ? null : (map['rejectDuplicateMessage'] as bool).input(),
     );
   }
 }

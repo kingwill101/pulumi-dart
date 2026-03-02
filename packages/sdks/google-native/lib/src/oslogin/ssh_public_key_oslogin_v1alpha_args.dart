@@ -18,13 +18,10 @@ class SshPublicKeyOsloginV1alphaArgs {
   /// [key] Public key text in SSH format, defined by RFC4253 section 6.6.
   /// [userId] Required.
   SshPublicKeyOsloginV1alphaArgs({
-    pulumi.Output<String>? expirationTimeUsec,
-    pulumi.Output<String>? key,
-    required pulumi.Output<String> userId,
-  }) :
-      expirationTimeUsec = pulumi.Input.asOptionalInput<String>(expirationTimeUsec),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      userId = pulumi.Input.asInput<String>(userId);
+    this.expirationTimeUsec,
+    this.key,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class SshPublicKeyOsloginV1alphaArgs {
 
   factory SshPublicKeyOsloginV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyOsloginV1alphaArgs(
-      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : pulumi.Output.create<String>(map['expirationTimeUsec'] as String),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : (map['expirationTimeUsec'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

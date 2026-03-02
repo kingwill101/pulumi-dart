@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sub_resource.dart';
 
 /// Path rule of URL path map of an application gateway.
 class ApplicationGatewayPathRule {
   /// Backend address pool resource of URL path map path rule.
-  final SubResource? backendAddressPool;
+  final pulumi.Input<SubResource>? backendAddressPool;
   /// Backend http settings resource of URL path map path rule.
-  final SubResource? backendHttpSettings;
+  final pulumi.Input<SubResource>? backendHttpSettings;
   /// Reference to the FirewallPolicy resource.
-  final SubResource? firewallPolicy;
+  final pulumi.Input<SubResource>? firewallPolicy;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Load Distribution Policy resource of URL path map path rule.
-  final SubResource? loadDistributionPolicy;
+  final pulumi.Input<SubResource>? loadDistributionPolicy;
   /// Name of the path rule that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Path rules of URL path map.
-  final List<String>? paths;
+  final pulumi.Input<List<String>>? paths;
   /// Redirect configuration resource of URL path map path rule.
-  final SubResource? redirectConfiguration;
+  final pulumi.Input<SubResource>? redirectConfiguration;
   /// Rewrite rule set resource of URL path map path rule.
-  final SubResource? rewriteRuleSet;
+  final pulumi.Input<SubResource>? rewriteRuleSet;
 
   /// Creates a new [ApplicationGatewayPathRule].
   /// [backendAddressPool] Backend address pool resource of URL path map path rule.
@@ -47,29 +48,29 @@ class ApplicationGatewayPathRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddressPool': ?backendAddressPool == null ? null : backendAddressPool!.toMap(),
-      'backendHttpSettings': ?backendHttpSettings == null ? null : backendHttpSettings!.toMap(),
-      'firewallPolicy': ?firewallPolicy == null ? null : firewallPolicy!.toMap(),
+      'backendAddressPool': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(backendAddressPool, (value) => value.toMap()),
+      'backendHttpSettings': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(backendHttpSettings, (value) => value.toMap()),
+      'firewallPolicy': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(firewallPolicy, (value) => value.toMap()),
       'id': ?id,
-      'loadDistributionPolicy': ?loadDistributionPolicy == null ? null : loadDistributionPolicy!.toMap(),
+      'loadDistributionPolicy': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(loadDistributionPolicy, (value) => value.toMap()),
       'name': ?name,
       'paths': ?paths,
-      'redirectConfiguration': ?redirectConfiguration == null ? null : redirectConfiguration!.toMap(),
-      'rewriteRuleSet': ?rewriteRuleSet == null ? null : rewriteRuleSet!.toMap(),
+      'redirectConfiguration': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(redirectConfiguration, (value) => value.toMap()),
+      'rewriteRuleSet': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(rewriteRuleSet, (value) => value.toMap()),
     };
   }
 
   factory ApplicationGatewayPathRule.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayPathRule(
-      backendAddressPool: map['backendAddressPool'] == null ? null : SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>()),
-      backendHttpSettings: map['backendHttpSettings'] == null ? null : SubResource.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>()),
-      firewallPolicy: map['firewallPolicy'] == null ? null : SubResource.fromMap((map['firewallPolicy'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      loadDistributionPolicy: map['loadDistributionPolicy'] == null ? null : SubResource.fromMap((map['loadDistributionPolicy'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      paths: map['paths'] == null ? null : (map['paths'] as List).cast<String>(),
-      redirectConfiguration: map['redirectConfiguration'] == null ? null : SubResource.fromMap((map['redirectConfiguration'] as Map).cast<String, dynamic>()),
-      rewriteRuleSet: map['rewriteRuleSet'] == null ? null : SubResource.fromMap((map['rewriteRuleSet'] as Map).cast<String, dynamic>()),
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
+      backendHttpSettings: map['backendHttpSettings'] == null ? null : (SubResource.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>())).input(),
+      firewallPolicy: map['firewallPolicy'] == null ? null : (SubResource.fromMap((map['firewallPolicy'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      loadDistributionPolicy: map['loadDistributionPolicy'] == null ? null : (SubResource.fromMap((map['loadDistributionPolicy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
+      redirectConfiguration: map['redirectConfiguration'] == null ? null : (SubResource.fromMap((map['redirectConfiguration'] as Map).cast<String, dynamic>())).input(),
+      rewriteRuleSet: map['rewriteRuleSet'] == null ? null : (SubResource.fromMap((map['rewriteRuleSet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

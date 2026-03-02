@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerDefaultActionAuthenticateCognito {
-  final Map<String, String> authenticationRequestExtraParams;
-  final String onUnauthenticatedRequest;
-  final String scope;
-  final String sessionCookieName;
-  final int sessionTimeout;
-  final String userPoolArn;
-  final String userPoolClientId;
-  final String userPoolDomain;
+  final pulumi.Input<Map<String, String>> authenticationRequestExtraParams;
+  final pulumi.Input<String> onUnauthenticatedRequest;
+  final pulumi.Input<String> scope;
+  final pulumi.Input<String> sessionCookieName;
+  final pulumi.Input<int> sessionTimeout;
+  final pulumi.Input<String> userPoolArn;
+  final pulumi.Input<String> userPoolClientId;
+  final pulumi.Input<String> userPoolDomain;
 
   /// Creates a new [GetListenerDefaultActionAuthenticateCognito].
   /// [authenticationRequestExtraParams] Required.
@@ -46,14 +47,14 @@ class GetListenerDefaultActionAuthenticateCognito {
 
   factory GetListenerDefaultActionAuthenticateCognito.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionAuthenticateCognito(
-      authenticationRequestExtraParams: (map['authenticationRequestExtraParams'] as Map).cast<String, String>(),
-      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] as String,
-      scope: map['scope'] as String,
-      sessionCookieName: map['sessionCookieName'] as String,
-      sessionTimeout: map['sessionTimeout'] as int,
-      userPoolArn: map['userPoolArn'] as String,
-      userPoolClientId: map['userPoolClientId'] as String,
-      userPoolDomain: map['userPoolDomain'] as String,
+      authenticationRequestExtraParams: ((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input(),
+      onUnauthenticatedRequest: (map['onUnauthenticatedRequest'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      sessionCookieName: (map['sessionCookieName'] as String).input(),
+      sessionTimeout: (map['sessionTimeout'] as int).input(),
+      userPoolArn: (map['userPoolArn'] as String).input(),
+      userPoolClientId: (map['userPoolClientId'] as String).input(),
+      userPoolDomain: (map['userPoolDomain'] as String).input(),
     );
   }
 }

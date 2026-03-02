@@ -13,9 +13,8 @@ class GetMaintenancePoliciesArgs {
   /// Creates a new [GetMaintenancePoliciesArgs].
   /// [filters] Optional.
   GetMaintenancePoliciesArgs({
-    pulumi.Output<List<GetMaintenancePoliciesFilter>>? filters,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetMaintenancePoliciesFilter>>(filters);
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetMaintenancePoliciesArgs {
 
   factory GetMaintenancePoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetMaintenancePoliciesArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetMaintenancePoliciesFilter>>(pulumi.Input.decodeList<GetMaintenancePoliciesFilter>(map['filters'], (value) => GetMaintenancePoliciesFilter.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetMaintenancePoliciesFilter>(map['filters'], (value) => GetMaintenancePoliciesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

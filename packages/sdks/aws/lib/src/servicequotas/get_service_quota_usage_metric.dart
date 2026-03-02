@@ -5,13 +5,13 @@ import 'get_service_quota_usage_metric_metric_dimension.dart';
 
 class GetServiceQuotaUsageMetric {
   /// The metric dimensions.
-  final List<GetServiceQuotaUsageMetricMetricDimension> metricDimensions;
+  final pulumi.Input<List<GetServiceQuotaUsageMetricMetricDimension>> metricDimensions;
   /// The name of the metric.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The namespace of the metric.
-  final String metricNamespace;
+  final pulumi.Input<String> metricNamespace;
   /// The metric statistic that AWS recommend you use when determining quota usage.
-  final String metricStatisticRecommendation;
+  final pulumi.Input<String> metricStatisticRecommendation;
 
   /// Creates a new [GetServiceQuotaUsageMetric].
   /// [metricDimensions] The metric dimensions.
@@ -27,7 +27,7 @@ class GetServiceQuotaUsageMetric {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metricDimensions': pulumi.Input.encodeList<GetServiceQuotaUsageMetricMetricDimension, Map<String, dynamic>>(metricDimensions, (value) => value.toMap()),
+      'metricDimensions': pulumi.Input.mapInputValue<List<GetServiceQuotaUsageMetricMetricDimension>, List<Map<String, dynamic>>>(metricDimensions, (value) => pulumi.Input.encodeList<GetServiceQuotaUsageMetricMetricDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metricName': metricName,
       'metricNamespace': metricNamespace,
       'metricStatisticRecommendation': metricStatisticRecommendation,
@@ -36,10 +36,10 @@ class GetServiceQuotaUsageMetric {
 
   factory GetServiceQuotaUsageMetric.fromMap(Map<String, dynamic> map) {
     return GetServiceQuotaUsageMetric(
-      metricDimensions: pulumi.Input.decodeList<GetServiceQuotaUsageMetricMetricDimension>(map['metricDimensions'], (value) => GetServiceQuotaUsageMetricMetricDimension.fromMap((value as Map).cast<String, dynamic>())),
-      metricName: map['metricName'] as String,
-      metricNamespace: map['metricNamespace'] as String,
-      metricStatisticRecommendation: map['metricStatisticRecommendation'] as String,
+      metricDimensions: (pulumi.Input.decodeList<GetServiceQuotaUsageMetricMetricDimension>(map['metricDimensions'], (value) => GetServiceQuotaUsageMetricMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricName: (map['metricName'] as String).input(),
+      metricNamespace: (map['metricNamespace'] as String).input(),
+      metricStatisticRecommendation: (map['metricStatisticRecommendation'] as String).input(),
     );
   }
 }

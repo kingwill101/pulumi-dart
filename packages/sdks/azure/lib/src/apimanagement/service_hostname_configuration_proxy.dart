@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceHostnameConfigurationProxy {
   /// The Base64 Encoded Certificate.
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// The password associated with the certificate provided above.
   ///
   /// > **Note:** Either `key_vault_certificate_id` or `certificate` and `certificate_password` must be specified.
-  final String? certificatePassword;
+  final pulumi.Input<String>? certificatePassword;
   /// The source of the certificate.
-  final String? certificateSource;
+  final pulumi.Input<String>? certificateSource;
   /// The status of the certificate.
-  final String? certificateStatus;
+  final pulumi.Input<String>? certificateStatus;
   /// Is the certificate associated with this Hostname the Default SSL Certificate? This is used when an SNI header isn't specified by a client. Defaults to `false`.
-  final bool? defaultSslBinding;
+  final pulumi.Input<bool>? defaultSslBinding;
   /// The expiration date of the certificate in RFC3339 format: `2000-01-02T03:04:05Z`.
-  final String? expiry;
+  final pulumi.Input<String>? expiry;
   /// The Hostname to use for the Management API.
-  final String hostName;
+  final pulumi.Input<String> hostName;
   /// The ID of the Key Vault Secret containing the SSL Certificate, which must be of the type `application/x-pkcs12`.
   ///
   /// > **Note:** Setting this field requires the `identity` block to be specified, since this identity is used for to retrieve the Key Vault Certificate. Auto-updating the Certificate from the Key Vault requires the Secret version isn't specified.
-  final String? keyVaultCertificateId;
-  final String? keyVaultId;
+  final pulumi.Input<String>? keyVaultCertificateId;
+  final pulumi.Input<String>? keyVaultId;
   /// Should Client Certificate Negotiation be enabled for this Hostname? Defaults to `false`.
-  final bool? negotiateClientCertificate;
+  final pulumi.Input<bool>? negotiateClientCertificate;
   /// The Managed Identity Client ID to use to access the Key Vault. This Identity must be specified in the `identity` block to be used.
-  final String? sslKeyvaultIdentityClientId;
+  final pulumi.Input<String>? sslKeyvaultIdentityClientId;
   /// The subject of the certificate.
-  final String? subject;
+  final pulumi.Input<String>? subject;
   /// The thumbprint of the certificate.
-  final String? thumbprint;
+  final pulumi.Input<String>? thumbprint;
 
   /// Creates a new [ServiceHostnameConfigurationProxy].
   /// [certificate] The Base64 Encoded Certificate.
@@ -82,19 +83,19 @@ class ServiceHostnameConfigurationProxy {
 
   factory ServiceHostnameConfigurationProxy.fromMap(Map<String, dynamic> map) {
     return ServiceHostnameConfigurationProxy(
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      certificatePassword: map['certificatePassword'] == null ? null : map['certificatePassword'] as String,
-      certificateSource: map['certificateSource'] == null ? null : map['certificateSource'] as String,
-      certificateStatus: map['certificateStatus'] == null ? null : map['certificateStatus'] as String,
-      defaultSslBinding: map['defaultSslBinding'] == null ? null : map['defaultSslBinding'] as bool,
-      expiry: map['expiry'] == null ? null : map['expiry'] as String,
-      hostName: map['hostName'] as String,
-      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : map['keyVaultCertificateId'] as String,
-      keyVaultId: map['keyVaultId'] == null ? null : map['keyVaultId'] as String,
-      negotiateClientCertificate: map['negotiateClientCertificate'] == null ? null : map['negotiateClientCertificate'] as bool,
-      sslKeyvaultIdentityClientId: map['sslKeyvaultIdentityClientId'] == null ? null : map['sslKeyvaultIdentityClientId'] as String,
-      subject: map['subject'] == null ? null : map['subject'] as String,
-      thumbprint: map['thumbprint'] == null ? null : map['thumbprint'] as String,
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
+      certificateSource: map['certificateSource'] == null ? null : (map['certificateSource'] as String).input(),
+      certificateStatus: map['certificateStatus'] == null ? null : (map['certificateStatus'] as String).input(),
+      defaultSslBinding: map['defaultSslBinding'] == null ? null : (map['defaultSslBinding'] as bool).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
+      hostName: (map['hostName'] as String).input(),
+      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : (map['keyVaultCertificateId'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      negotiateClientCertificate: map['negotiateClientCertificate'] == null ? null : (map['negotiateClientCertificate'] as bool).input(),
+      sslKeyvaultIdentityClientId: map['sslKeyvaultIdentityClientId'] == null ? null : (map['sslKeyvaultIdentityClientId'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

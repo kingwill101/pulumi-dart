@@ -18,15 +18,11 @@ class GetAutoscalingPolicyIamPolicyDataprocV1beta2Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   GetAutoscalingPolicyIamPolicyDataprocV1beta2Args({
-    required pulumi.Output<String> autoscalingPolicyId,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-  }) :
-      autoscalingPolicyId = pulumi.Input.asInput<String>(autoscalingPolicyId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.autoscalingPolicyId,
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetAutoscalingPolicyIamPolicyDataprocV1beta2Args {
 
   factory GetAutoscalingPolicyIamPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetAutoscalingPolicyIamPolicyDataprocV1beta2Args(
-      autoscalingPolicyId: pulumi.Output.create<String>(map['autoscalingPolicyId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      autoscalingPolicyId: (map['autoscalingPolicyId'] as String).input(),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

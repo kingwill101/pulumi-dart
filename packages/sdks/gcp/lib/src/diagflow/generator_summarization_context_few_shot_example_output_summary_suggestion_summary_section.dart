@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection {
   /// Required. Name of the section.
-  final String section;
+  final pulumi.Input<String> section;
   /// Required. Summary text for the section.
-  final String summary;
+  final pulumi.Input<String> summary;
 
   /// Creates a new [GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection].
   /// [section] Required. Name of the section.
@@ -24,8 +25,8 @@ class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummaryS
 
   factory GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection.fromMap(Map<String, dynamic> map) {
     return GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection(
-      section: map['section'] as String,
-      summary: map['summary'] as String,
+      section: (map['section'] as String).input(),
+      summary: (map['summary'] as String).input(),
     );
   }
 }

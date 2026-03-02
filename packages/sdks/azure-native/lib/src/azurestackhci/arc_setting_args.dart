@@ -38,25 +38,16 @@ class ArcSettingArgs {
   /// [connectivityProperties] contains connectivity related configuration for ARC resources
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ArcSettingArgs({
-    pulumi.Output<String>? arcApplicationClientId,
-    pulumi.Output<String>? arcApplicationObjectId,
-    pulumi.Output<String>? arcApplicationTenantId,
-    pulumi.Output<String>? arcInstanceResourceGroup,
-    pulumi.Output<String>? arcServicePrincipalObjectId,
-    pulumi.Output<String>? arcSettingName,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<List<ArcConnectivityProperties>>? connectivityProperties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      arcApplicationClientId = pulumi.Input.asOptionalInput<String>(arcApplicationClientId),
-      arcApplicationObjectId = pulumi.Input.asOptionalInput<String>(arcApplicationObjectId),
-      arcApplicationTenantId = pulumi.Input.asOptionalInput<String>(arcApplicationTenantId),
-      arcInstanceResourceGroup = pulumi.Input.asOptionalInput<String>(arcInstanceResourceGroup),
-      arcServicePrincipalObjectId = pulumi.Input.asOptionalInput<String>(arcServicePrincipalObjectId),
-      arcSettingName = pulumi.Input.asOptionalInput<String>(arcSettingName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      connectivityProperties = pulumi.Input.asOptionalInput<List<ArcConnectivityProperties>>(connectivityProperties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.arcApplicationClientId,
+    this.arcApplicationObjectId,
+    this.arcApplicationTenantId,
+    this.arcInstanceResourceGroup,
+    this.arcServicePrincipalObjectId,
+    this.arcSettingName,
+    required this.clusterName,
+    this.connectivityProperties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class ArcSettingArgs {
 
   factory ArcSettingArgs.fromMap(Map<String, dynamic> map) {
     return ArcSettingArgs(
-      arcApplicationClientId: map['arcApplicationClientId'] == null ? null : pulumi.Output.create<String>(map['arcApplicationClientId'] as String),
-      arcApplicationObjectId: map['arcApplicationObjectId'] == null ? null : pulumi.Output.create<String>(map['arcApplicationObjectId'] as String),
-      arcApplicationTenantId: map['arcApplicationTenantId'] == null ? null : pulumi.Output.create<String>(map['arcApplicationTenantId'] as String),
-      arcInstanceResourceGroup: map['arcInstanceResourceGroup'] == null ? null : pulumi.Output.create<String>(map['arcInstanceResourceGroup'] as String),
-      arcServicePrincipalObjectId: map['arcServicePrincipalObjectId'] == null ? null : pulumi.Output.create<String>(map['arcServicePrincipalObjectId'] as String),
-      arcSettingName: map['arcSettingName'] == null ? null : pulumi.Output.create<String>(map['arcSettingName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      connectivityProperties: map['connectivityProperties'] == null ? null : pulumi.Output.create<List<ArcConnectivityProperties>>(pulumi.Input.decodeList<ArcConnectivityProperties>(map['connectivityProperties'], (value) => ArcConnectivityProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      arcApplicationClientId: map['arcApplicationClientId'] == null ? null : (map['arcApplicationClientId'] as String).input(),
+      arcApplicationObjectId: map['arcApplicationObjectId'] == null ? null : (map['arcApplicationObjectId'] as String).input(),
+      arcApplicationTenantId: map['arcApplicationTenantId'] == null ? null : (map['arcApplicationTenantId'] as String).input(),
+      arcInstanceResourceGroup: map['arcInstanceResourceGroup'] == null ? null : (map['arcInstanceResourceGroup'] as String).input(),
+      arcServicePrincipalObjectId: map['arcServicePrincipalObjectId'] == null ? null : (map['arcServicePrincipalObjectId'] as String).input(),
+      arcSettingName: map['arcSettingName'] == null ? null : (map['arcSettingName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      connectivityProperties: map['connectivityProperties'] == null ? null : (pulumi.Input.decodeList<ArcConnectivityProperties>(map['connectivityProperties'], (value) => ArcConnectivityProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

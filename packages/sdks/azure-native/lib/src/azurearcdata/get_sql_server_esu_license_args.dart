@@ -16,11 +16,9 @@ class GetSqlServerEsuLicenseArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sqlServerEsuLicenseName] Name of SQL Server ESU License
   GetSqlServerEsuLicenseArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlServerEsuLicenseName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlServerEsuLicenseName = pulumi.Input.asInput<String>(sqlServerEsuLicenseName);
+    required this.resourceGroupName,
+    required this.sqlServerEsuLicenseName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSqlServerEsuLicenseArgs {
 
   factory GetSqlServerEsuLicenseArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerEsuLicenseArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlServerEsuLicenseName: pulumi.Output.create<String>(map['sqlServerEsuLicenseName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlServerEsuLicenseName: (map['sqlServerEsuLicenseName'] as String).input(),
     );
   }
 }

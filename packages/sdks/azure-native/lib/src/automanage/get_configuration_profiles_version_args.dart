@@ -19,13 +19,10 @@ class GetConfigurationProfilesVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [versionName] The configuration profile version name.
   GetConfigurationProfilesVersionArgs({
-    required pulumi.Output<String> configurationProfileName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> versionName,
-  }) :
-      configurationProfileName = pulumi.Input.asInput<String>(configurationProfileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      versionName = pulumi.Input.asInput<String>(versionName);
+    required this.configurationProfileName,
+    required this.resourceGroupName,
+    required this.versionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConfigurationProfilesVersionArgs {
 
   factory GetConfigurationProfilesVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationProfilesVersionArgs(
-      configurationProfileName: pulumi.Output.create<String>(map['configurationProfileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      versionName: pulumi.Output.create<String>(map['versionName'] as String),
+      configurationProfileName: (map['configurationProfileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      versionName: (map['versionName'] as String).input(),
     );
   }
 }

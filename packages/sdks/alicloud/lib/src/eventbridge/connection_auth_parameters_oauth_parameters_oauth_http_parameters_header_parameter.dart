@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter {
   /// Specifies whether to enable authentication.
-  final String? isValueSecret;
+  final pulumi.Input<String>? isValueSecret;
   /// The key of the request path.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The key of the request path.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter].
   /// [isValueSecret] Specifies whether to enable authentication.
@@ -29,9 +30,9 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter 
 
   factory ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter(
-      isValueSecret: map['isValueSecret'] == null ? null : map['isValueSecret'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      isValueSecret: map['isValueSecret'] == null ? null : (map['isValueSecret'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

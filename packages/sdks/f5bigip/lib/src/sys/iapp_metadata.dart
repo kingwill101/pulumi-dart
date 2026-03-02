@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IAppMetadata {
   /// Name of origin
-  final String? persists;
+  final pulumi.Input<String>? persists;
   /// Name of origin
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [IAppMetadata].
   /// [persists] Name of origin
@@ -24,8 +25,8 @@ class IAppMetadata {
 
   factory IAppMetadata.fromMap(Map<String, dynamic> map) {
     return IAppMetadata(
-      persists: map['persists'] == null ? null : map['persists'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      persists: map['persists'] == null ? null : (map['persists'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

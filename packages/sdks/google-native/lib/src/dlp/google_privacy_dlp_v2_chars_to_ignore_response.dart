@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
 class GooglePrivacyDlpV2CharsToIgnoreResponse {
   /// Characters to not transform when masking.
-  final String charactersToSkip;
+  final pulumi.Input<String> charactersToSkip;
   /// Common characters to not transform when masking. Useful to avoid removing punctuation.
-  final String commonCharactersToIgnore;
+  final pulumi.Input<String> commonCharactersToIgnore;
 
   /// Creates a new [GooglePrivacyDlpV2CharsToIgnoreResponse].
   /// [charactersToSkip] Characters to not transform when masking.
@@ -25,8 +26,8 @@ class GooglePrivacyDlpV2CharsToIgnoreResponse {
 
   factory GooglePrivacyDlpV2CharsToIgnoreResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CharsToIgnoreResponse(
-      charactersToSkip: map['charactersToSkip'] as String,
-      commonCharactersToIgnore: map['commonCharactersToIgnore'] as String,
+      charactersToSkip: (map['charactersToSkip'] as String).input(),
+      commonCharactersToIgnore: (map['commonCharactersToIgnore'] as String).input(),
     );
   }
 }

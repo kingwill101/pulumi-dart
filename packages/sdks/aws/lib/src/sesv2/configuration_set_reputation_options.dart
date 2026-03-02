@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationSetReputationOptions {
   /// The date and time (in Unix time) when the reputation metrics were last given a fresh start. When your account is given a fresh start, your reputation metrics are calculated starting from the date of the fresh start.
-  final String? lastFreshStart;
+  final pulumi.Input<String>? lastFreshStart;
   /// If `true`, tracking of reputation metrics is enabled for the configuration set. If `false`, tracking of reputation metrics is disabled for the configuration set.
-  final bool? reputationMetricsEnabled;
+  final pulumi.Input<bool>? reputationMetricsEnabled;
 
   /// Creates a new [ConfigurationSetReputationOptions].
   /// [lastFreshStart] The date and time (in Unix time) when the reputation metrics were last given a fresh start. When your account is given a fresh start, your reputation metrics are calculated starting from the date of the fresh start.
@@ -24,8 +25,8 @@ class ConfigurationSetReputationOptions {
 
   factory ConfigurationSetReputationOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetReputationOptions(
-      lastFreshStart: map['lastFreshStart'] == null ? null : map['lastFreshStart'] as String,
-      reputationMetricsEnabled: map['reputationMetricsEnabled'] == null ? null : map['reputationMetricsEnabled'] as bool,
+      lastFreshStart: map['lastFreshStart'] == null ? null : (map['lastFreshStart'] as String).input(),
+      reputationMetricsEnabled: map['reputationMetricsEnabled'] == null ? null : (map['reputationMetricsEnabled'] as bool).input(),
     );
   }
 }

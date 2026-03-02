@@ -32,19 +32,13 @@ class TagKeyArgs {
   /// [purposeData] Optional. Purpose data cannot be changed once set.
   /// [shortName] Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
   TagKeyArgs({
-    pulumi.Output<String>? allowedValuesRegex,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> parent,
-    pulumi.Output<String>? purpose,
-    pulumi.Output<Map<String, String>>? purposeData,
-    required pulumi.Output<String> shortName,
-  }) :
-      allowedValuesRegex = pulumi.Input.asOptionalInput<String>(allowedValuesRegex),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      parent = pulumi.Input.asInput<String>(parent),
-      purpose = pulumi.Input.asOptionalInput<String>(purpose),
-      purposeData = pulumi.Input.asOptionalInput<Map<String, String>>(purposeData),
-      shortName = pulumi.Input.asInput<String>(shortName);
+    this.allowedValuesRegex,
+    this.description,
+    required this.parent,
+    this.purpose,
+    this.purposeData,
+    required this.shortName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class TagKeyArgs {
 
   factory TagKeyArgs.fromMap(Map<String, dynamic> map) {
     return TagKeyArgs(
-      allowedValuesRegex: map['allowedValuesRegex'] == null ? null : pulumi.Output.create<String>(map['allowedValuesRegex'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      purpose: map['purpose'] == null ? null : pulumi.Output.create<String>(map['purpose'] as String),
-      purposeData: map['purposeData'] == null ? null : pulumi.Output.create<Map<String, String>>((map['purposeData'] as Map).cast<String, String>()),
-      shortName: pulumi.Output.create<String>(map['shortName'] as String),
+      allowedValuesRegex: map['allowedValuesRegex'] == null ? null : (map['allowedValuesRegex'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
+      purposeData: map['purposeData'] == null ? null : ((map['purposeData'] as Map).cast<String, String>()).input(),
+      shortName: (map['shortName'] as String).input(),
     );
   }
 }

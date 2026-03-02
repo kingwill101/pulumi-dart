@@ -54,35 +54,21 @@ class PlatformApplicationArgs {
   /// [successFeedbackRoleArn] The IAM role ARN permitted to receive success feedback for this application and give SNS write access to use CloudWatch logs on your behalf.
   /// [successFeedbackSampleRate] The sample rate percentage (0-100) of successfully delivered messages.
   PlatformApplicationArgs({
-    pulumi.Output<String>? applePlatformBundleId,
-    pulumi.Output<String>? applePlatformTeamId,
-    pulumi.Output<String>? eventDeliveryFailureTopicArn,
-    pulumi.Output<String>? eventEndpointCreatedTopicArn,
-    pulumi.Output<String>? eventEndpointDeletedTopicArn,
-    pulumi.Output<String>? eventEndpointUpdatedTopicArn,
-    pulumi.Output<String>? failureFeedbackRoleArn,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> platform,
-    required pulumi.Output<String> platformCredential,
-    pulumi.Output<String>? platformPrincipal,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? successFeedbackRoleArn,
-    pulumi.Output<String>? successFeedbackSampleRate,
-  }) :
-      applePlatformBundleId = pulumi.Input.asOptionalInput<String>(applePlatformBundleId),
-      applePlatformTeamId = pulumi.Input.asOptionalInput<String>(applePlatformTeamId),
-      eventDeliveryFailureTopicArn = pulumi.Input.asOptionalInput<String>(eventDeliveryFailureTopicArn),
-      eventEndpointCreatedTopicArn = pulumi.Input.asOptionalInput<String>(eventEndpointCreatedTopicArn),
-      eventEndpointDeletedTopicArn = pulumi.Input.asOptionalInput<String>(eventEndpointDeletedTopicArn),
-      eventEndpointUpdatedTopicArn = pulumi.Input.asOptionalInput<String>(eventEndpointUpdatedTopicArn),
-      failureFeedbackRoleArn = pulumi.Input.asOptionalInput<String>(failureFeedbackRoleArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      platform = pulumi.Input.asInput<String>(platform),
-      platformCredential = pulumi.Input.asInput<String>(platformCredential),
-      platformPrincipal = pulumi.Input.asOptionalInput<String>(platformPrincipal),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      successFeedbackRoleArn = pulumi.Input.asOptionalInput<String>(successFeedbackRoleArn),
-      successFeedbackSampleRate = pulumi.Input.asOptionalInput<String>(successFeedbackSampleRate);
+    this.applePlatformBundleId,
+    this.applePlatformTeamId,
+    this.eventDeliveryFailureTopicArn,
+    this.eventEndpointCreatedTopicArn,
+    this.eventEndpointDeletedTopicArn,
+    this.eventEndpointUpdatedTopicArn,
+    this.failureFeedbackRoleArn,
+    this.name,
+    required this.platform,
+    required this.platformCredential,
+    this.platformPrincipal,
+    this.region,
+    this.successFeedbackRoleArn,
+    this.successFeedbackSampleRate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class PlatformApplicationArgs {
 
   factory PlatformApplicationArgs.fromMap(Map<String, dynamic> map) {
     return PlatformApplicationArgs(
-      applePlatformBundleId: map['applePlatformBundleId'] == null ? null : pulumi.Output.create<String>(map['applePlatformBundleId'] as String),
-      applePlatformTeamId: map['applePlatformTeamId'] == null ? null : pulumi.Output.create<String>(map['applePlatformTeamId'] as String),
-      eventDeliveryFailureTopicArn: map['eventDeliveryFailureTopicArn'] == null ? null : pulumi.Output.create<String>(map['eventDeliveryFailureTopicArn'] as String),
-      eventEndpointCreatedTopicArn: map['eventEndpointCreatedTopicArn'] == null ? null : pulumi.Output.create<String>(map['eventEndpointCreatedTopicArn'] as String),
-      eventEndpointDeletedTopicArn: map['eventEndpointDeletedTopicArn'] == null ? null : pulumi.Output.create<String>(map['eventEndpointDeletedTopicArn'] as String),
-      eventEndpointUpdatedTopicArn: map['eventEndpointUpdatedTopicArn'] == null ? null : pulumi.Output.create<String>(map['eventEndpointUpdatedTopicArn'] as String),
-      failureFeedbackRoleArn: map['failureFeedbackRoleArn'] == null ? null : pulumi.Output.create<String>(map['failureFeedbackRoleArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      platform: pulumi.Output.create<String>(map['platform'] as String),
-      platformCredential: pulumi.Output.create<String>(map['platformCredential'] as String),
-      platformPrincipal: map['platformPrincipal'] == null ? null : pulumi.Output.create<String>(map['platformPrincipal'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      successFeedbackRoleArn: map['successFeedbackRoleArn'] == null ? null : pulumi.Output.create<String>(map['successFeedbackRoleArn'] as String),
-      successFeedbackSampleRate: map['successFeedbackSampleRate'] == null ? null : pulumi.Output.create<String>(map['successFeedbackSampleRate'] as String),
+      applePlatformBundleId: map['applePlatformBundleId'] == null ? null : (map['applePlatformBundleId'] as String).input(),
+      applePlatformTeamId: map['applePlatformTeamId'] == null ? null : (map['applePlatformTeamId'] as String).input(),
+      eventDeliveryFailureTopicArn: map['eventDeliveryFailureTopicArn'] == null ? null : (map['eventDeliveryFailureTopicArn'] as String).input(),
+      eventEndpointCreatedTopicArn: map['eventEndpointCreatedTopicArn'] == null ? null : (map['eventEndpointCreatedTopicArn'] as String).input(),
+      eventEndpointDeletedTopicArn: map['eventEndpointDeletedTopicArn'] == null ? null : (map['eventEndpointDeletedTopicArn'] as String).input(),
+      eventEndpointUpdatedTopicArn: map['eventEndpointUpdatedTopicArn'] == null ? null : (map['eventEndpointUpdatedTopicArn'] as String).input(),
+      failureFeedbackRoleArn: map['failureFeedbackRoleArn'] == null ? null : (map['failureFeedbackRoleArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      platform: (map['platform'] as String).input(),
+      platformCredential: (map['platformCredential'] as String).input(),
+      platformPrincipal: map['platformPrincipal'] == null ? null : (map['platformPrincipal'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      successFeedbackRoleArn: map['successFeedbackRoleArn'] == null ? null : (map['successFeedbackRoleArn'] as String).input(),
+      successFeedbackSampleRate: map['successFeedbackSampleRate'] == null ? null : (map['successFeedbackSampleRate'] as String).input(),
     );
   }
 }

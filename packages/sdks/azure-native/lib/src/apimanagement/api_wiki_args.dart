@@ -23,15 +23,11 @@ class ApiWikiArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   ApiWikiArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<List<WikiDocumentationContract>>? documents,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      documents = pulumi.Input.asOptionalInput<List<WikiDocumentationContract>>(documents),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.apiId,
+    this.documents,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ApiWikiArgs {
 
   factory ApiWikiArgs.fromMap(Map<String, dynamic> map) {
     return ApiWikiArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      documents: map['documents'] == null ? null : pulumi.Output.create<List<WikiDocumentationContract>>(pulumi.Input.decodeList<WikiDocumentationContract>(map['documents'], (value) => WikiDocumentationContract.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      apiId: (map['apiId'] as String).input(),
+      documents: map['documents'] == null ? null : (pulumi.Input.decodeList<WikiDocumentationContract>(map['documents'], (value) => WikiDocumentationContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

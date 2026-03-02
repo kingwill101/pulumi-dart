@@ -19,13 +19,10 @@ class GetVirtualEndpointArgs {
   /// [serverName] The name of the server.
   /// [virtualEndpointName] Base name of the virtual endpoints.
   GetVirtualEndpointArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> virtualEndpointName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      virtualEndpointName = pulumi.Input.asInput<String>(virtualEndpointName);
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.virtualEndpointName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVirtualEndpointArgs {
 
   factory GetVirtualEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualEndpointArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      virtualEndpointName: pulumi.Output.create<String>(map['virtualEndpointName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      virtualEndpointName: (map['virtualEndpointName'] as String).input(),
     );
   }
 }

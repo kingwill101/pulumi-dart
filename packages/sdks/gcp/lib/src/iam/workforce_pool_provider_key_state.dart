@@ -39,25 +39,16 @@ class WorkforcePoolProviderKeyState {
   /// [use] The purpose of the key.
   /// [workforcePoolId] The ID of the workforce pool.
   WorkforcePoolProviderKeyState({
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<WorkforcePoolProviderKeyKeyData>? keyData,
-    pulumi.Output<String>? keyId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? providerId,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? use,
-    pulumi.Output<String>? workforcePoolId,
-  }) :
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      keyData = pulumi.Input.asOptionalInput<WorkforcePoolProviderKeyKeyData>(keyData),
-      keyId = pulumi.Input.asOptionalInput<String>(keyId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      providerId = pulumi.Input.asOptionalInput<String>(providerId),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      use = pulumi.Input.asOptionalInput<String>(use),
-      workforcePoolId = pulumi.Input.asOptionalInput<String>(workforcePoolId);
+    this.expireTime,
+    this.keyData,
+    this.keyId,
+    this.location,
+    this.name,
+    this.providerId,
+    this.state,
+    this.use,
+    this.workforcePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class WorkforcePoolProviderKeyState {
 
   factory WorkforcePoolProviderKeyState.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderKeyState(
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      keyData: map['keyData'] == null ? null : pulumi.Output.create<WorkforcePoolProviderKeyKeyData>(WorkforcePoolProviderKeyKeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>())),
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      providerId: map['providerId'] == null ? null : pulumi.Output.create<String>(map['providerId'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      use: map['use'] == null ? null : pulumi.Output.create<String>(map['use'] as String),
-      workforcePoolId: map['workforcePoolId'] == null ? null : pulumi.Output.create<String>(map['workforcePoolId'] as String),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      keyData: map['keyData'] == null ? null : (WorkforcePoolProviderKeyKeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>())).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      providerId: map['providerId'] == null ? null : (map['providerId'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      use: map['use'] == null ? null : (map['use'] as String).input(),
+      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId'] as String).input(),
     );
   }
 }

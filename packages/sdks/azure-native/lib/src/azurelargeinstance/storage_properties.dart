@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_billing_properties.dart';
 
 /// described the storage properties of the azure large storage instance
 class StorageProperties {
   /// the kind of storage instance
-  final String? generation;
+  final pulumi.Input<String>? generation;
   /// the hardware type of the storage instance
-  final String? hardwareType;
+  final pulumi.Input<String>? hardwareType;
   /// the offering type for which the resource is getting provisioned
-  final String? offeringType;
+  final pulumi.Input<String>? offeringType;
   /// the billing related information for the resource
-  final StorageBillingProperties? storageBillingProperties;
+  final pulumi.Input<StorageBillingProperties>? storageBillingProperties;
   /// the storage protocol for which the resource is getting provisioned
-  final String? storageType;
+  final pulumi.Input<String>? storageType;
   /// the workload for which the resource is getting provisioned
-  final String? workloadType;
+  final pulumi.Input<String>? workloadType;
 
   /// Creates a new [StorageProperties].
   /// [generation] the kind of storage instance
@@ -38,7 +39,7 @@ class StorageProperties {
       'generation': ?generation,
       'hardwareType': ?hardwareType,
       'offeringType': ?offeringType,
-      'storageBillingProperties': ?storageBillingProperties == null ? null : storageBillingProperties!.toMap(),
+      'storageBillingProperties': ?pulumi.Input.mapOptionalInputValue<StorageBillingProperties, Map<String, dynamic>>(storageBillingProperties, (value) => value.toMap()),
       'storageType': ?storageType,
       'workloadType': ?workloadType,
     };
@@ -46,12 +47,12 @@ class StorageProperties {
 
   factory StorageProperties.fromMap(Map<String, dynamic> map) {
     return StorageProperties(
-      generation: map['generation'] == null ? null : map['generation'] as String,
-      hardwareType: map['hardwareType'] == null ? null : map['hardwareType'] as String,
-      offeringType: map['offeringType'] == null ? null : map['offeringType'] as String,
-      storageBillingProperties: map['storageBillingProperties'] == null ? null : StorageBillingProperties.fromMap((map['storageBillingProperties'] as Map).cast<String, dynamic>()),
-      storageType: map['storageType'] == null ? null : map['storageType'] as String,
-      workloadType: map['workloadType'] == null ? null : map['workloadType'] as String,
+      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType'] as String).input(),
+      offeringType: map['offeringType'] == null ? null : (map['offeringType'] as String).input(),
+      storageBillingProperties: map['storageBillingProperties'] == null ? null : (StorageBillingProperties.fromMap((map['storageBillingProperties'] as Map).cast<String, dynamic>())).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
+      workloadType: map['workloadType'] == null ? null : (map['workloadType'] as String).input(),
     );
   }
 }

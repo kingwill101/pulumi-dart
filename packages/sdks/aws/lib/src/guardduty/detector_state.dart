@@ -32,23 +32,15 @@ class DetectorState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   DetectorState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<DetectorDatasources>? datasources,
-    pulumi.Output<bool>? enable,
-    pulumi.Output<String>? findingPublishingFrequency,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      datasources = pulumi.Input.asOptionalInput<DetectorDatasources>(datasources),
-      enable = pulumi.Input.asOptionalInput<bool>(enable),
-      findingPublishingFrequency = pulumi.Input.asOptionalInput<String>(findingPublishingFrequency),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.accountId,
+    this.arn,
+    this.datasources,
+    this.enable,
+    this.findingPublishingFrequency,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class DetectorState {
 
   factory DetectorState.fromMap(Map<String, dynamic> map) {
     return DetectorState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      datasources: map['datasources'] == null ? null : pulumi.Output.create<DetectorDatasources>(DetectorDatasources.fromMap((map['datasources'] as Map).cast<String, dynamic>())),
-      enable: map['enable'] == null ? null : pulumi.Output.create<bool>(map['enable'] as bool),
-      findingPublishingFrequency: map['findingPublishingFrequency'] == null ? null : pulumi.Output.create<String>(map['findingPublishingFrequency'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      datasources: map['datasources'] == null ? null : (DetectorDatasources.fromMap((map['datasources'] as Map).cast<String, dynamic>())).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      findingPublishingFrequency: map['findingPublishingFrequency'] == null ? null : (map['findingPublishingFrequency'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model for API authentication for Oracle.
 class OracleAuthModel {
   /// Content of the PRM file
-  final String pemFile;
+  final pulumi.Input<String> pemFile;
   /// Public Fingerprint
-  final String publicFingerprint;
+  final pulumi.Input<String> publicFingerprint;
   /// Oracle tenant ID
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// Type of paging
   /// Expected value is 'Oracle'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Oracle user ID
-  final String userId;
+  final pulumi.Input<String> userId;
 
   /// Creates a new [OracleAuthModel].
   /// [pemFile] Content of the PRM file
@@ -41,11 +42,11 @@ class OracleAuthModel {
 
   factory OracleAuthModel.fromMap(Map<String, dynamic> map) {
     return OracleAuthModel(
-      pemFile: map['pemFile'] as String,
-      publicFingerprint: map['publicFingerprint'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
-      userId: map['userId'] as String,
+      pemFile: (map['pemFile'] as String).input(),
+      publicFingerprint: (map['publicFingerprint'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

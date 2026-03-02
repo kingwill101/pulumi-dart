@@ -38,21 +38,14 @@ class ResourceClassResourceK8sIoV1alpha2Args {
   /// [structuredParameters] If and only if allocation of claims using this class is handled via structured parameters, then StructuredParameters must be set to true.
   /// [suitableNodes] Only nodes matching the selector will be considered by the scheduler when trying to find a Node that fits a Pod when that Pod uses a ResourceClaim that has not been allocated yet.
   ResourceClassResourceK8sIoV1alpha2Args({
-    pulumi.Output<String>? apiVersion,
-    required pulumi.Output<String> driverName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<ResourceClassParametersReferenceResourceK8sIoV1alpha2>? parametersRef,
-    pulumi.Output<bool>? structuredParameters,
-    pulumi.Output<NodeSelector>? suitableNodes,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      driverName = pulumi.Input.asInput<String>(driverName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      parametersRef = pulumi.Input.asOptionalInput<ResourceClassParametersReferenceResourceK8sIoV1alpha2>(parametersRef),
-      structuredParameters = pulumi.Input.asOptionalInput<bool>(structuredParameters),
-      suitableNodes = pulumi.Input.asOptionalInput<NodeSelector>(suitableNodes);
+    this.apiVersion,
+    required this.driverName,
+    this.kind,
+    this.metadata,
+    this.parametersRef,
+    this.structuredParameters,
+    this.suitableNodes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,13 +61,13 @@ class ResourceClassResourceK8sIoV1alpha2Args {
 
   factory ResourceClassResourceK8sIoV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return ResourceClassResourceK8sIoV1alpha2Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      driverName: pulumi.Output.create<String>(map['driverName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      parametersRef: map['parametersRef'] == null ? null : pulumi.Output.create<ResourceClassParametersReferenceResourceK8sIoV1alpha2>(ResourceClassParametersReferenceResourceK8sIoV1alpha2.fromMap((map['parametersRef'] as Map).cast<String, dynamic>())),
-      structuredParameters: map['structuredParameters'] == null ? null : pulumi.Output.create<bool>(map['structuredParameters'] as bool),
-      suitableNodes: map['suitableNodes'] == null ? null : pulumi.Output.create<NodeSelector>(NodeSelector.fromMap((map['suitableNodes'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      driverName: (map['driverName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      parametersRef: map['parametersRef'] == null ? null : (ResourceClassParametersReferenceResourceK8sIoV1alpha2.fromMap((map['parametersRef'] as Map).cast<String, dynamic>())).input(),
+      structuredParameters: map['structuredParameters'] == null ? null : (map['structuredParameters'] as bool).input(),
+      suitableNodes: map['suitableNodes'] == null ? null : (NodeSelector.fromMap((map['suitableNodes'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

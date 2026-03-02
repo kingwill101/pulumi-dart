@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage {
   /// The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// The ID of the cross-region acceleration bandwidth plan.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Creates a new [GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage].
   /// [bandwidth] The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
@@ -24,8 +25,8 @@ class GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage {
 
   factory GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage.fromMap(Map<String, dynamic> map) {
     return GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage(
-      bandwidth: map['bandwidth'] as int,
-      instanceId: map['instanceId'] as String,
+      bandwidth: (map['bandwidth'] as int).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

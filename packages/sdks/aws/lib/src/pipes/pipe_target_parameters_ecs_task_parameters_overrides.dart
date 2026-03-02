@@ -7,19 +7,19 @@ import 'pipe_target_parameters_ecs_task_parameters_overrides_inference_accelerat
 
 class PipeTargetParametersEcsTaskParametersOverrides {
   /// One or more container overrides that are sent to a task. Detailed below.
-  final List<PipeTargetParametersEcsTaskParametersOverridesContainerOverride>? containerOverrides;
+  final pulumi.Input<List<PipeTargetParametersEcsTaskParametersOverridesContainerOverride>>? containerOverrides;
   /// The number of cpu units reserved for the container, instead of the default value from the task definition. You must also specify a container name.
-  final String? cpu;
+  final pulumi.Input<String>? cpu;
   /// The ephemeral storage setting override for the task.  Detailed below.
-  final PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage? ephemeralStorage;
+  final pulumi.Input<PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage>? ephemeralStorage;
   /// The Amazon Resource Name (ARN) of the task execution IAM role override for the task.
-  final String? executionRoleArn;
+  final pulumi.Input<String>? executionRoleArn;
   /// List of Elastic Inference accelerator overrides for the task. Detailed below.
-  final List<PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride>? inferenceAcceleratorOverrides;
+  final pulumi.Input<List<PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride>>? inferenceAcceleratorOverrides;
   /// The hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed. You must also specify a container name.
-  final String? memory;
+  final pulumi.Input<String>? memory;
   /// The Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role.
-  final String? taskRoleArn;
+  final pulumi.Input<String>? taskRoleArn;
 
   /// Creates a new [PipeTargetParametersEcsTaskParametersOverrides].
   /// [containerOverrides] One or more container overrides that are sent to a task. Detailed below.
@@ -41,11 +41,11 @@ class PipeTargetParametersEcsTaskParametersOverrides {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerOverrides': ?containerOverrides == null ? null : pulumi.Input.encodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverride, Map<String, dynamic>>(containerOverrides!, (value) => value.toMap()),
+      'containerOverrides': ?pulumi.Input.mapOptionalInputValue<List<PipeTargetParametersEcsTaskParametersOverridesContainerOverride>, List<Map<String, dynamic>>>(containerOverrides, (value) => pulumi.Input.encodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cpu': ?cpu,
-      'ephemeralStorage': ?ephemeralStorage == null ? null : ephemeralStorage!.toMap(),
+      'ephemeralStorage': ?pulumi.Input.mapOptionalInputValue<PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage, Map<String, dynamic>>(ephemeralStorage, (value) => value.toMap()),
       'executionRoleArn': ?executionRoleArn,
-      'inferenceAcceleratorOverrides': ?inferenceAcceleratorOverrides == null ? null : pulumi.Input.encodeList<PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride, Map<String, dynamic>>(inferenceAcceleratorOverrides!, (value) => value.toMap()),
+      'inferenceAcceleratorOverrides': ?pulumi.Input.mapOptionalInputValue<List<PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride>, List<Map<String, dynamic>>>(inferenceAcceleratorOverrides, (value) => pulumi.Input.encodeList<PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
       'memory': ?memory,
       'taskRoleArn': ?taskRoleArn,
     };
@@ -53,13 +53,13 @@ class PipeTargetParametersEcsTaskParametersOverrides {
 
   factory PipeTargetParametersEcsTaskParametersOverrides.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersEcsTaskParametersOverrides(
-      containerOverrides: map['containerOverrides'] == null ? null : pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverride>(map['containerOverrides'], (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverride.fromMap((value as Map).cast<String, dynamic>())),
-      cpu: map['cpu'] == null ? null : map['cpu'] as String,
-      ephemeralStorage: map['ephemeralStorage'] == null ? null : PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage.fromMap((map['ephemeralStorage'] as Map).cast<String, dynamic>()),
-      executionRoleArn: map['executionRoleArn'] == null ? null : map['executionRoleArn'] as String,
-      inferenceAcceleratorOverrides: map['inferenceAcceleratorOverrides'] == null ? null : pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride>(map['inferenceAcceleratorOverrides'], (value) => PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride.fromMap((value as Map).cast<String, dynamic>())),
-      memory: map['memory'] == null ? null : map['memory'] as String,
-      taskRoleArn: map['taskRoleArn'] == null ? null : map['taskRoleArn'] as String,
+      containerOverrides: map['containerOverrides'] == null ? null : (pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverride>(map['containerOverrides'], (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
+      ephemeralStorage: map['ephemeralStorage'] == null ? null : (PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage.fromMap((map['ephemeralStorage'] as Map).cast<String, dynamic>())).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
+      inferenceAcceleratorOverrides: map['inferenceAcceleratorOverrides'] == null ? null : (pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride>(map['inferenceAcceleratorOverrides'], (value) => PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      taskRoleArn: map['taskRoleArn'] == null ? null : (map['taskRoleArn'] as String).input(),
     );
   }
 }

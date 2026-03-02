@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkgroupConfigurationEngineVersion {
   /// The engine version on which the query runs. If `selected_engine_version` is set to `AUTO`, the effective engine version is chosen by Athena.
-  final String? effectiveEngineVersion;
+  final pulumi.Input<String>? effectiveEngineVersion;
   /// Requested engine version. Defaults to `AUTO`.
-  final String? selectedEngineVersion;
+  final pulumi.Input<String>? selectedEngineVersion;
 
   /// Creates a new [WorkgroupConfigurationEngineVersion].
   /// [effectiveEngineVersion] The engine version on which the query runs. If `selected_engine_version` is set to `AUTO`, the effective engine version is chosen by Athena.
@@ -24,8 +25,8 @@ class WorkgroupConfigurationEngineVersion {
 
   factory WorkgroupConfigurationEngineVersion.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationEngineVersion(
-      effectiveEngineVersion: map['effectiveEngineVersion'] == null ? null : map['effectiveEngineVersion'] as String,
-      selectedEngineVersion: map['selectedEngineVersion'] == null ? null : map['selectedEngineVersion'] as String,
+      effectiveEngineVersion: map['effectiveEngineVersion'] == null ? null : (map['effectiveEngineVersion'] as String).input(),
+      selectedEngineVersion: map['selectedEngineVersion'] == null ? null : (map['selectedEngineVersion'] as String).input(),
     );
   }
 }

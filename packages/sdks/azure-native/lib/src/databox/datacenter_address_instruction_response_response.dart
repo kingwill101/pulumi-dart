@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Datacenter instruction for given storage location.
 class DatacenterAddressInstructionResponseResponse {
   /// Data center communication instruction
-  final String communicationInstruction;
+  final pulumi.Input<String> communicationInstruction;
   /// Azure Location where the Data Center serves primarily.
-  final String dataCenterAzureLocation;
+  final pulumi.Input<String> dataCenterAzureLocation;
   /// Data center address type
   /// Expected value is 'DatacenterAddressInstruction'.
-  final String datacenterAddressType;
+  final pulumi.Input<String> datacenterAddressType;
   /// List of supported carriers for return shipment.
-  final List<String> supportedCarriersForReturnShipment;
+  final pulumi.Input<List<String>> supportedCarriersForReturnShipment;
 
   /// Creates a new [DatacenterAddressInstructionResponseResponse].
   /// [communicationInstruction] Data center communication instruction
@@ -36,10 +37,10 @@ class DatacenterAddressInstructionResponseResponse {
 
   factory DatacenterAddressInstructionResponseResponse.fromMap(Map<String, dynamic> map) {
     return DatacenterAddressInstructionResponseResponse(
-      communicationInstruction: map['communicationInstruction'] as String,
-      dataCenterAzureLocation: map['dataCenterAzureLocation'] as String,
-      datacenterAddressType: map['datacenterAddressType'] as String,
-      supportedCarriersForReturnShipment: (map['supportedCarriersForReturnShipment'] as List).cast<String>(),
+      communicationInstruction: (map['communicationInstruction'] as String).input(),
+      dataCenterAzureLocation: (map['dataCenterAzureLocation'] as String).input(),
+      datacenterAddressType: (map['datacenterAddressType'] as String).input(),
+      supportedCarriersForReturnShipment: ((map['supportedCarriersForReturnShipment'] as List).cast<String>()).input(),
     );
   }
 }

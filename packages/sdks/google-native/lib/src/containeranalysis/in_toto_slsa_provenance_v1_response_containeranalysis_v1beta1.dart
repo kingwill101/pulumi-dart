@@ -5,11 +5,11 @@ import 'slsa_provenance_v1_response_containeranalysis_v1beta1.dart';
 import 'subject_response_containeranalysis_v1beta1.dart';
 
 class InTotoSlsaProvenanceV1ResponseContaineranalysisV1beta1 {
-  final SlsaProvenanceV1ResponseContaineranalysisV1beta1 predicate;
-  final String predicateType;
-  final List<SubjectResponseContaineranalysisV1beta1> subject;
+  final pulumi.Input<SlsaProvenanceV1ResponseContaineranalysisV1beta1> predicate;
+  final pulumi.Input<String> predicateType;
+  final pulumi.Input<List<SubjectResponseContaineranalysisV1beta1>> subject;
   /// InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [InTotoSlsaProvenanceV1ResponseContaineranalysisV1beta1].
   /// [predicate] Required.
@@ -25,19 +25,19 @@ class InTotoSlsaProvenanceV1ResponseContaineranalysisV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'predicate': predicate.toMap(),
+      'predicate': pulumi.Input.mapInputValue<SlsaProvenanceV1ResponseContaineranalysisV1beta1, Map<String, dynamic>>(predicate, (value) => value.toMap()),
       'predicateType': predicateType,
-      'subject': pulumi.Input.encodeList<SubjectResponseContaineranalysisV1beta1, Map<String, dynamic>>(subject, (value) => value.toMap()),
+      'subject': pulumi.Input.mapInputValue<List<SubjectResponseContaineranalysisV1beta1>, List<Map<String, dynamic>>>(subject, (value) => pulumi.Input.encodeList<SubjectResponseContaineranalysisV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory InTotoSlsaProvenanceV1ResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return InTotoSlsaProvenanceV1ResponseContaineranalysisV1beta1(
-      predicate: SlsaProvenanceV1ResponseContaineranalysisV1beta1.fromMap((map['predicate'] as Map).cast<String, dynamic>()),
-      predicateType: map['predicateType'] as String,
-      subject: pulumi.Input.decodeList<SubjectResponseContaineranalysisV1beta1>(map['subject'], (value) => SubjectResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      predicate: (SlsaProvenanceV1ResponseContaineranalysisV1beta1.fromMap((map['predicate'] as Map).cast<String, dynamic>())).input(),
+      predicateType: (map['predicateType'] as String).input(),
+      subject: (pulumi.Input.decodeList<SubjectResponseContaineranalysisV1beta1>(map['subject'], (value) => SubjectResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

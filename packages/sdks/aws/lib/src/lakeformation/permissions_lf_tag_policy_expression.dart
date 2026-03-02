@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PermissionsLfTagPolicyExpression {
   /// The key-name of an LF-Tag.
-  final String key;
+  final pulumi.Input<String> key;
   /// A list of possible values of an LF-Tag.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [PermissionsLfTagPolicyExpression].
   /// [key] The key-name of an LF-Tag.
@@ -24,8 +25,8 @@ class PermissionsLfTagPolicyExpression {
 
   factory PermissionsLfTagPolicyExpression.fromMap(Map<String, dynamic> map) {
     return PermissionsLfTagPolicyExpression(
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

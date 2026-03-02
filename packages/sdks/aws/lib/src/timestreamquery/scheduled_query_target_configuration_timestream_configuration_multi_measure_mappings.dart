@@ -5,9 +5,9 @@ import 'scheduled_query_target_configuration_timestream_configuration_multi_meas
 
 class ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings {
   /// Attribute mappings to be used for mapping query results to ingest data for multi-measure attributes. See above.
-  final List<ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping> multiMeasureAttributeMappings;
+  final pulumi.Input<List<ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping>> multiMeasureAttributeMappings;
   /// Name of the target multi-measure name in the derived table. This input is required when `measure_name_column` is not provided. If `measure_name_column` is provided, then the value from that column will be used as the multi-measure name.
-  final String? targetMultiMeasureName;
+  final pulumi.Input<String>? targetMultiMeasureName;
 
   /// Creates a new [ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings].
   /// [multiMeasureAttributeMappings] Attribute mappings to be used for mapping query results to ingest data for multi-measure attributes. See above.
@@ -19,15 +19,15 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappin
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'multiMeasureAttributeMappings': pulumi.Input.encodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping, Map<String, dynamic>>(multiMeasureAttributeMappings, (value) => value.toMap()),
+      'multiMeasureAttributeMappings': pulumi.Input.mapInputValue<List<ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping>, List<Map<String, dynamic>>>(multiMeasureAttributeMappings, (value) => pulumi.Input.encodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetMultiMeasureName': ?targetMultiMeasureName,
     };
   }
 
   factory ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings(
-      multiMeasureAttributeMappings: pulumi.Input.decodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping>(map['multiMeasureAttributeMappings'], (value) => ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping.fromMap((value as Map).cast<String, dynamic>())),
-      targetMultiMeasureName: map['targetMultiMeasureName'] == null ? null : map['targetMultiMeasureName'] as String,
+      multiMeasureAttributeMappings: (pulumi.Input.decodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping>(map['multiMeasureAttributeMappings'], (value) => ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetMultiMeasureName: map['targetMultiMeasureName'] == null ? null : (map['targetMultiMeasureName'] as String).input(),
     );
   }
 }

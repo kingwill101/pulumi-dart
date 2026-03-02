@@ -28,19 +28,13 @@ class GetServiceHybridDoubleWritesArgs {
   /// [sourceUserId] Source UserId.
   /// [userId] Target UserId.
   GetServiceHybridDoubleWritesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? sourceNamespace,
-    pulumi.Output<String>? sourceUserId,
-    pulumi.Output<String>? userId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      sourceNamespace = pulumi.Input.asOptionalInput<String>(sourceNamespace),
-      sourceUserId = pulumi.Input.asOptionalInput<String>(sourceUserId),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.ids,
+    this.namespace,
+    this.outputFile,
+    this.sourceNamespace,
+    this.sourceUserId,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetServiceHybridDoubleWritesArgs {
 
   factory GetServiceHybridDoubleWritesArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceHybridDoubleWritesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      sourceNamespace: map['sourceNamespace'] == null ? null : pulumi.Output.create<String>(map['sourceNamespace'] as String),
-      sourceUserId: map['sourceUserId'] == null ? null : pulumi.Output.create<String>(map['sourceUserId'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      sourceNamespace: map['sourceNamespace'] == null ? null : (map['sourceNamespace'] as String).input(),
+      sourceUserId: map['sourceUserId'] == null ? null : (map['sourceUserId'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

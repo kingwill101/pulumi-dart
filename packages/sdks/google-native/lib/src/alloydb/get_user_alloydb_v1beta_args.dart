@@ -18,15 +18,11 @@ class GetUserAlloydbV1betaArgs {
   /// [project] Optional.
   /// [userId] Required.
   GetUserAlloydbV1betaArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> userId,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.clusterId,
+    required this.location,
+    this.project,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetUserAlloydbV1betaArgs {
 
   factory GetUserAlloydbV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetUserAlloydbV1betaArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

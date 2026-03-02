@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the disk information fo the Azure Large Instance
 class Disk {
   /// Specifies the size of an empty data disk in gigabytes.
-  final int? diskSizeGB;
+  final pulumi.Input<int>? diskSizeGB;
   /// The disk name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [Disk].
   /// [diskSizeGB] Specifies the size of an empty data disk in gigabytes.
@@ -25,8 +26,8 @@ class Disk {
 
   factory Disk.fromMap(Map<String, dynamic> map) {
     return Disk(
-      diskSizeGB: map['diskSizeGB'] == null ? null : map['diskSizeGB'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

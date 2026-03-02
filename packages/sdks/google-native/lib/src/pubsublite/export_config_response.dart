@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pub_sub_config_response.dart';
 
 /// Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.
 class ExportConfigResponse {
   /// The current state of the export, which may be different to the desired state due to errors. This field is output only.
-  final String currentState;
+  final pulumi.Input<String> currentState;
   /// Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
-  final String deadLetterTopic;
+  final pulumi.Input<String> deadLetterTopic;
   /// The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
-  final String desiredState;
+  final pulumi.Input<String> desiredState;
   /// Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.
-  final PubSubConfigResponse pubsubConfig;
+  final pulumi.Input<PubSubConfigResponse> pubsubConfig;
 
   /// Creates a new [ExportConfigResponse].
   /// [currentState] The current state of the export, which may be different to the desired state due to errors. This field is output only.
@@ -30,16 +31,16 @@ class ExportConfigResponse {
       'currentState': currentState,
       'deadLetterTopic': deadLetterTopic,
       'desiredState': desiredState,
-      'pubsubConfig': pubsubConfig.toMap(),
+      'pubsubConfig': pulumi.Input.mapInputValue<PubSubConfigResponse, Map<String, dynamic>>(pubsubConfig, (value) => value.toMap()),
     };
   }
 
   factory ExportConfigResponse.fromMap(Map<String, dynamic> map) {
     return ExportConfigResponse(
-      currentState: map['currentState'] as String,
-      deadLetterTopic: map['deadLetterTopic'] as String,
-      desiredState: map['desiredState'] as String,
-      pubsubConfig: PubSubConfigResponse.fromMap((map['pubsubConfig'] as Map).cast<String, dynamic>()),
+      currentState: (map['currentState'] as String).input(),
+      deadLetterTopic: (map['deadLetterTopic'] as String).input(),
+      desiredState: (map['desiredState'] as String).input(),
+      pubsubConfig: (PubSubConfigResponse.fromMap((map['pubsubConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

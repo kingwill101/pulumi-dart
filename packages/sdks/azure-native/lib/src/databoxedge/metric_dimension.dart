@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The metric dimension
 class MetricDimension {
   /// The dimension value.
-  final String sourceName;
+  final pulumi.Input<String> sourceName;
   /// The dimension type.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
 
   /// Creates a new [MetricDimension].
   /// [sourceName] The dimension value.
@@ -25,8 +26,8 @@ class MetricDimension {
 
   factory MetricDimension.fromMap(Map<String, dynamic> map) {
     return MetricDimension(
-      sourceName: map['sourceName'] as String,
-      sourceType: map['sourceType'] as String,
+      sourceName: (map['sourceName'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertProcessingRuleSuppressionConditionMonitorService {
   /// The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// A list of values to match for a given condition. Possible values are `ActivityLog Administrative`, `ActivityLog Autoscale`, `ActivityLog Policy`, `ActivityLog Recommendation`, `ActivityLog Security`, `Application Insights`, `Azure Backup`, `Azure Stack Edge`, `Azure Stack Hub`, `Custom`, `Data Box Gateway`, `Health Platform`, `Log Alerts V2`, `Log Analytics`, `Platform`, `Prometheus`, `Resource Health`, `Smart Detector`, and `VM Insights - Health`.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [AlertProcessingRuleSuppressionConditionMonitorService].
   /// [operator] The operator for a given condition. Possible values are `Equals` and `NotEquals`.
@@ -24,8 +25,8 @@ class AlertProcessingRuleSuppressionConditionMonitorService {
 
   factory AlertProcessingRuleSuppressionConditionMonitorService.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleSuppressionConditionMonitorService(
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

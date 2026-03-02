@@ -22,17 +22,12 @@ class PolicyTableAssociationState {
   /// [transitGatewayAttachmentId] Identifier of EC2 Transit Gateway Attachment.
   /// [transitGatewayPolicyTableId] Identifier of EC2 Transit Gateway Policy Table.
   PolicyTableAssociationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? transitGatewayAttachmentId,
-    pulumi.Output<String>? transitGatewayPolicyTableId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      transitGatewayAttachmentId = pulumi.Input.asOptionalInput<String>(transitGatewayAttachmentId),
-      transitGatewayPolicyTableId = pulumi.Input.asOptionalInput<String>(transitGatewayPolicyTableId);
+    this.region,
+    this.resourceId,
+    this.resourceType,
+    this.transitGatewayAttachmentId,
+    this.transitGatewayPolicyTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class PolicyTableAssociationState {
 
   factory PolicyTableAssociationState.fromMap(Map<String, dynamic> map) {
     return PolicyTableAssociationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
-      transitGatewayPolicyTableId: map['transitGatewayPolicyTableId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayPolicyTableId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
+      transitGatewayPolicyTableId: map['transitGatewayPolicyTableId'] == null ? null : (map['transitGatewayPolicyTableId'] as String).input(),
     );
   }
 }

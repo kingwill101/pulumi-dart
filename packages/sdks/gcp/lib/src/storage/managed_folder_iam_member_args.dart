@@ -39,17 +39,12 @@ class ManagedFolderIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   ManagedFolderIamMemberArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<ManagedFolderIamMemberCondition>? condition,
-    required pulumi.Output<String> managedFolder,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> role,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      condition = pulumi.Input.asOptionalInput<ManagedFolderIamMemberCondition>(condition),
-      managedFolder = pulumi.Input.asInput<String>(managedFolder),
-      member = pulumi.Input.asInput<String>(member),
-      role = pulumi.Input.asInput<String>(role);
+    required this.bucket,
+    this.condition,
+    required this.managedFolder,
+    required this.member,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,11 +58,11 @@ class ManagedFolderIamMemberArgs {
 
   factory ManagedFolderIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ManagedFolderIamMemberArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<ManagedFolderIamMemberCondition>(ManagedFolderIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      managedFolder: pulumi.Output.create<String>(map['managedFolder'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      bucket: (map['bucket'] as String).input(),
+      condition: map['condition'] == null ? null : (ManagedFolderIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      managedFolder: (map['managedFolder'] as String).input(),
+      member: (map['member'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

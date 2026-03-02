@@ -45,27 +45,17 @@ class ServiceSubscriptionState {
   /// [subscriptionName] Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
   /// [topicName] The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
   ServiceSubscriptionState({
-    pulumi.Output<int>? createTime,
-    pulumi.Output<ServiceSubscriptionDlqPolicy>? dlqPolicy,
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<String>? filterTag,
-    pulumi.Output<String>? notifyContentFormat,
-    pulumi.Output<String>? notifyStrategy,
-    pulumi.Output<String>? pushType,
-    pulumi.Output<String>? stsRoleArn,
-    pulumi.Output<String>? subscriptionName,
-    pulumi.Output<String>? topicName,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      dlqPolicy = pulumi.Input.asOptionalInput<ServiceSubscriptionDlqPolicy>(dlqPolicy),
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      filterTag = pulumi.Input.asOptionalInput<String>(filterTag),
-      notifyContentFormat = pulumi.Input.asOptionalInput<String>(notifyContentFormat),
-      notifyStrategy = pulumi.Input.asOptionalInput<String>(notifyStrategy),
-      pushType = pulumi.Input.asOptionalInput<String>(pushType),
-      stsRoleArn = pulumi.Input.asOptionalInput<String>(stsRoleArn),
-      subscriptionName = pulumi.Input.asOptionalInput<String>(subscriptionName),
-      topicName = pulumi.Input.asOptionalInput<String>(topicName);
+    this.createTime,
+    this.dlqPolicy,
+    this.endpoint,
+    this.filterTag,
+    this.notifyContentFormat,
+    this.notifyStrategy,
+    this.pushType,
+    this.stsRoleArn,
+    this.subscriptionName,
+    this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class ServiceSubscriptionState {
 
   factory ServiceSubscriptionState.fromMap(Map<String, dynamic> map) {
     return ServiceSubscriptionState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      dlqPolicy: map['dlqPolicy'] == null ? null : pulumi.Output.create<ServiceSubscriptionDlqPolicy>(ServiceSubscriptionDlqPolicy.fromMap((map['dlqPolicy'] as Map).cast<String, dynamic>())),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      filterTag: map['filterTag'] == null ? null : pulumi.Output.create<String>(map['filterTag'] as String),
-      notifyContentFormat: map['notifyContentFormat'] == null ? null : pulumi.Output.create<String>(map['notifyContentFormat'] as String),
-      notifyStrategy: map['notifyStrategy'] == null ? null : pulumi.Output.create<String>(map['notifyStrategy'] as String),
-      pushType: map['pushType'] == null ? null : pulumi.Output.create<String>(map['pushType'] as String),
-      stsRoleArn: map['stsRoleArn'] == null ? null : pulumi.Output.create<String>(map['stsRoleArn'] as String),
-      subscriptionName: map['subscriptionName'] == null ? null : pulumi.Output.create<String>(map['subscriptionName'] as String),
-      topicName: map['topicName'] == null ? null : pulumi.Output.create<String>(map['topicName'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      dlqPolicy: map['dlqPolicy'] == null ? null : (ServiceSubscriptionDlqPolicy.fromMap((map['dlqPolicy'] as Map).cast<String, dynamic>())).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      filterTag: map['filterTag'] == null ? null : (map['filterTag'] as String).input(),
+      notifyContentFormat: map['notifyContentFormat'] == null ? null : (map['notifyContentFormat'] as String).input(),
+      notifyStrategy: map['notifyStrategy'] == null ? null : (map['notifyStrategy'] as String).input(),
+      pushType: map['pushType'] == null ? null : (map['pushType'] as String).input(),
+      stsRoleArn: map['stsRoleArn'] == null ? null : (map['stsRoleArn'] as String).input(),
+      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName'] as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
     );
   }
 }

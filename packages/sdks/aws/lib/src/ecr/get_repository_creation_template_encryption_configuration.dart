@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRepositoryCreationTemplateEncryptionConfiguration {
   /// Encryption type to use for any created repositories, either `AES256` or `KMS`.
-  final String encryptionType;
+  final pulumi.Input<String> encryptionType;
   /// If `encryption_type` is `KMS`, the ARN of the KMS key used.
-  final String kmsKey;
+  final pulumi.Input<String> kmsKey;
 
   /// Creates a new [GetRepositoryCreationTemplateEncryptionConfiguration].
   /// [encryptionType] Encryption type to use for any created repositories, either `AES256` or `KMS`.
@@ -24,8 +25,8 @@ class GetRepositoryCreationTemplateEncryptionConfiguration {
 
   factory GetRepositoryCreationTemplateEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetRepositoryCreationTemplateEncryptionConfiguration(
-      encryptionType: map['encryptionType'] as String,
-      kmsKey: map['kmsKey'] as String,
+      encryptionType: (map['encryptionType'] as String).input(),
+      kmsKey: (map['kmsKey'] as String).input(),
     );
   }
 }

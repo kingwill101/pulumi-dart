@@ -44,29 +44,18 @@ class AgentcoreBrowserState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   AgentcoreBrowserState({
-    pulumi.Output<String>? browserArn,
-    pulumi.Output<String>? browserId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? executionRoleArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<AgentcoreBrowserNetworkConfiguration>? networkConfiguration,
-    pulumi.Output<AgentcoreBrowserRecording>? recording,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<AgentcoreBrowserTimeouts>? timeouts,
-  }) :
-      browserArn = pulumi.Input.asOptionalInput<String>(browserArn),
-      browserId = pulumi.Input.asOptionalInput<String>(browserId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      executionRoleArn = pulumi.Input.asOptionalInput<String>(executionRoleArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkConfiguration = pulumi.Input.asOptionalInput<AgentcoreBrowserNetworkConfiguration>(networkConfiguration),
-      recording = pulumi.Input.asOptionalInput<AgentcoreBrowserRecording>(recording),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<AgentcoreBrowserTimeouts>(timeouts);
+    this.browserArn,
+    this.browserId,
+    this.description,
+    this.executionRoleArn,
+    this.name,
+    this.networkConfiguration,
+    this.recording,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class AgentcoreBrowserState {
 
   factory AgentcoreBrowserState.fromMap(Map<String, dynamic> map) {
     return AgentcoreBrowserState(
-      browserArn: map['browserArn'] == null ? null : pulumi.Output.create<String>(map['browserArn'] as String),
-      browserId: map['browserId'] == null ? null : pulumi.Output.create<String>(map['browserId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      executionRoleArn: map['executionRoleArn'] == null ? null : pulumi.Output.create<String>(map['executionRoleArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkConfiguration: map['networkConfiguration'] == null ? null : pulumi.Output.create<AgentcoreBrowserNetworkConfiguration>(AgentcoreBrowserNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())),
-      recording: map['recording'] == null ? null : pulumi.Output.create<AgentcoreBrowserRecording>(AgentcoreBrowserRecording.fromMap((map['recording'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentcoreBrowserTimeouts>(AgentcoreBrowserTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      browserArn: map['browserArn'] == null ? null : (map['browserArn'] as String).input(),
+      browserId: map['browserId'] == null ? null : (map['browserId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : (AgentcoreBrowserNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      recording: map['recording'] == null ? null : (AgentcoreBrowserRecording.fromMap((map['recording'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentcoreBrowserTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

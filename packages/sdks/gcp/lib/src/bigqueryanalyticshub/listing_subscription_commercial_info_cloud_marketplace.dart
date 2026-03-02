@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListingSubscriptionCommercialInfoCloudMarketplace {
   /// (Output)
   /// Resource name of the Marketplace Order.
-  final String? order;
+  final pulumi.Input<String>? order;
 
   /// Creates a new [ListingSubscriptionCommercialInfoCloudMarketplace].
   /// [order] (Output)
@@ -20,7 +21,7 @@ class ListingSubscriptionCommercialInfoCloudMarketplace {
 
   factory ListingSubscriptionCommercialInfoCloudMarketplace.fromMap(Map<String, dynamic> map) {
     return ListingSubscriptionCommercialInfoCloudMarketplace(
-      order: map['order'] == null ? null : map['order'] as String,
+      order: map['order'] == null ? null : (map['order'] as String).input(),
     );
   }
 }

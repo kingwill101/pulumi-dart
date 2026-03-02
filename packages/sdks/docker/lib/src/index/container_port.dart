@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerPort {
   /// Port exposed out of the container. If not given a free random port `>= 32768` will be used.
-  final int? external;
+  final pulumi.Input<int>? external;
   /// Port within the container.
-  final int internal;
+  final pulumi.Input<int> internal;
   /// IP address/mask that can access this port. Defaults to `0.0.0.0`.
-  final String? ip;
+  final pulumi.Input<String>? ip;
   /// Protocol that can be used over this port. Defaults to `tcp`.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
 
   /// Creates a new [ContainerPort].
   /// [external] Port exposed out of the container. If not given a free random port `>= 32768` will be used.
@@ -34,10 +35,10 @@ class ContainerPort {
 
   factory ContainerPort.fromMap(Map<String, dynamic> map) {
     return ContainerPort(
-      external: map['external'] == null ? null : map['external'] as int,
-      internal: map['internal'] as int,
-      ip: map['ip'] == null ? null : map['ip'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
+      external: map['external'] == null ? null : (map['external'] as int).input(),
+      internal: (map['internal'] as int).input(),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
     );
   }
 }

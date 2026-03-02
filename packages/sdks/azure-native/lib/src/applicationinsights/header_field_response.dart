@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A header to add to the WebTest.
 class HeaderFieldResponse {
   /// The name of the header.
-  final String? headerFieldName;
+  final pulumi.Input<String>? headerFieldName;
   /// The value of the header.
-  final String? headerFieldValue;
+  final pulumi.Input<String>? headerFieldValue;
 
   /// Creates a new [HeaderFieldResponse].
   /// [headerFieldName] The name of the header.
@@ -25,8 +26,8 @@ class HeaderFieldResponse {
 
   factory HeaderFieldResponse.fromMap(Map<String, dynamic> map) {
     return HeaderFieldResponse(
-      headerFieldName: map['headerFieldName'] == null ? null : map['headerFieldName'] as String,
-      headerFieldValue: map['headerFieldValue'] == null ? null : map['headerFieldValue'] as String,
+      headerFieldName: map['headerFieldName'] == null ? null : (map['headerFieldName'] as String).input(),
+      headerFieldValue: map['headerFieldValue'] == null ? null : (map['headerFieldValue'] as String).input(),
     );
   }
 }

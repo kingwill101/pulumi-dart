@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLinuxFunctionAppSiteConfigApplicationStackDocker {
   /// The name of the Docker image used.
-  final String imageName;
+  final pulumi.Input<String> imageName;
   /// The image tag of the image used.
-  final String imageTag;
+  final pulumi.Input<String> imageTag;
   /// The password for the account to use to connect to the registry.
-  final String registryPassword;
+  final pulumi.Input<String> registryPassword;
   /// The URL of the docker registry.
-  final String registryUrl;
+  final pulumi.Input<String> registryUrl;
   /// The username used for connections to the registry.
-  final String registryUsername;
+  final pulumi.Input<String> registryUsername;
 
   /// Creates a new [GetLinuxFunctionAppSiteConfigApplicationStackDocker].
   /// [imageName] The name of the Docker image used.
@@ -39,11 +40,11 @@ class GetLinuxFunctionAppSiteConfigApplicationStackDocker {
 
   factory GetLinuxFunctionAppSiteConfigApplicationStackDocker.fromMap(Map<String, dynamic> map) {
     return GetLinuxFunctionAppSiteConfigApplicationStackDocker(
-      imageName: map['imageName'] as String,
-      imageTag: map['imageTag'] as String,
-      registryPassword: map['registryPassword'] as String,
-      registryUrl: map['registryUrl'] as String,
-      registryUsername: map['registryUsername'] as String,
+      imageName: (map['imageName'] as String).input(),
+      imageTag: (map['imageTag'] as String).input(),
+      registryPassword: (map['registryPassword'] as String).input(),
+      registryUrl: (map['registryUrl'] as String).input(),
+      registryUsername: (map['registryUsername'] as String).input(),
     );
   }
 }

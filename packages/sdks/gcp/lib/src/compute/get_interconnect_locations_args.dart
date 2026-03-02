@@ -14,9 +14,8 @@ class GetInterconnectLocationsArgs {
   /// Creates a new [GetInterconnectLocationsArgs].
   /// [project] The project in which the resource belongs. If it
   GetInterconnectLocationsArgs({
-    pulumi.Output<String>? project,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +25,7 @@ class GetInterconnectLocationsArgs {
 
   factory GetInterconnectLocationsArgs.fromMap(Map<String, dynamic> map) {
     return GetInterconnectLocationsArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

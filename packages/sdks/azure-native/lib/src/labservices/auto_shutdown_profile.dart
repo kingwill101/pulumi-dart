@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enable_state.dart';
 import 'shutdown_on_idle_mode.dart';
 
 /// Profile for how to handle shutting down virtual machines.
 class AutoShutdownProfile {
   /// The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  final String? disconnectDelay;
+  final pulumi.Input<String>? disconnectDelay;
   /// The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  final String? idleDelay;
+  final pulumi.Input<String>? idleDelay;
   /// The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  final String? noConnectDelay;
+  final pulumi.Input<String>? noConnectDelay;
   /// Whether shutdown on disconnect is enabled
-  final EnableState? shutdownOnDisconnect;
+  final pulumi.Input<EnableState>? shutdownOnDisconnect;
   /// Whether a VM will get shutdown when it has idled for a period of time.
-  final ShutdownOnIdleMode? shutdownOnIdle;
+  final pulumi.Input<ShutdownOnIdleMode>? shutdownOnIdle;
   /// Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  final EnableState? shutdownWhenNotConnected;
+  final pulumi.Input<EnableState>? shutdownWhenNotConnected;
 
   /// Creates a new [AutoShutdownProfile].
   /// [disconnectDelay] The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
@@ -39,20 +40,20 @@ class AutoShutdownProfile {
       'disconnectDelay': ?disconnectDelay,
       'idleDelay': ?idleDelay,
       'noConnectDelay': ?noConnectDelay,
-      'shutdownOnDisconnect': ?shutdownOnDisconnect == null ? null : shutdownOnDisconnect!.value,
-      'shutdownOnIdle': ?shutdownOnIdle == null ? null : shutdownOnIdle!.value,
-      'shutdownWhenNotConnected': ?shutdownWhenNotConnected == null ? null : shutdownWhenNotConnected!.value,
+      'shutdownOnDisconnect': ?pulumi.Input.mapOptionalInputValue<EnableState, String>(shutdownOnDisconnect, (value) => value.value),
+      'shutdownOnIdle': ?pulumi.Input.mapOptionalInputValue<ShutdownOnIdleMode, String>(shutdownOnIdle, (value) => value.value),
+      'shutdownWhenNotConnected': ?pulumi.Input.mapOptionalInputValue<EnableState, String>(shutdownWhenNotConnected, (value) => value.value),
     };
   }
 
   factory AutoShutdownProfile.fromMap(Map<String, dynamic> map) {
     return AutoShutdownProfile(
-      disconnectDelay: map['disconnectDelay'] == null ? null : map['disconnectDelay'] as String,
-      idleDelay: map['idleDelay'] == null ? null : map['idleDelay'] as String,
-      noConnectDelay: map['noConnectDelay'] == null ? null : map['noConnectDelay'] as String,
-      shutdownOnDisconnect: map['shutdownOnDisconnect'] == null ? null : EnableState.fromValue(map['shutdownOnDisconnect'] as String),
-      shutdownOnIdle: map['shutdownOnIdle'] == null ? null : ShutdownOnIdleMode.fromValue(map['shutdownOnIdle'] as String),
-      shutdownWhenNotConnected: map['shutdownWhenNotConnected'] == null ? null : EnableState.fromValue(map['shutdownWhenNotConnected'] as String),
+      disconnectDelay: map['disconnectDelay'] == null ? null : (map['disconnectDelay'] as String).input(),
+      idleDelay: map['idleDelay'] == null ? null : (map['idleDelay'] as String).input(),
+      noConnectDelay: map['noConnectDelay'] == null ? null : (map['noConnectDelay'] as String).input(),
+      shutdownOnDisconnect: map['shutdownOnDisconnect'] == null ? null : (EnableState.fromValue(map['shutdownOnDisconnect'] as String)).input(),
+      shutdownOnIdle: map['shutdownOnIdle'] == null ? null : (ShutdownOnIdleMode.fromValue(map['shutdownOnIdle'] as String)).input(),
+      shutdownWhenNotConnected: map['shutdownWhenNotConnected'] == null ? null : (EnableState.fromValue(map['shutdownWhenNotConnected'] as String)).input(),
     );
   }
 }

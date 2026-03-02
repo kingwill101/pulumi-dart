@@ -25,17 +25,12 @@ class ListEffectiveVirtualNetworkByNetworkManagerArgs {
   /// [skipToken] Continuation token for pagination, capturing the next page size and offset, as well as the context of the query.
   /// [top] An optional query parameter which specifies the maximum number of records to be returned by the server.
   ListEffectiveVirtualNetworkByNetworkManagerArgs({
-    pulumi.Output<String>? conditionalMembers,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skipToken,
-    pulumi.Output<int>? top,
-  }) :
-      conditionalMembers = pulumi.Input.asOptionalInput<String>(conditionalMembers),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken),
-      top = pulumi.Input.asOptionalInput<int>(top);
+    this.conditionalMembers,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+    this.skipToken,
+    this.top,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ListEffectiveVirtualNetworkByNetworkManagerArgs {
 
   factory ListEffectiveVirtualNetworkByNetworkManagerArgs.fromMap(Map<String, dynamic> map) {
     return ListEffectiveVirtualNetworkByNetworkManagerArgs(
-      conditionalMembers: map['conditionalMembers'] == null ? null : pulumi.Output.create<String>(map['conditionalMembers'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
+      conditionalMembers: map['conditionalMembers'] == null ? null : (map['conditionalMembers'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDelegatedAdministratorsAdministrator {
   /// The ID of the member account.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// The time when the member was specified as a delegated administrator account.
-  final String delegationEnabledTime;
+  final pulumi.Input<String> delegationEnabledTime;
   /// The ID of the Delegated Administrator.
-  final String id;
+  final pulumi.Input<String> id;
   /// The identity of the trusted service.
-  final String servicePrincipal;
+  final pulumi.Input<String> servicePrincipal;
 
   /// Creates a new [GetDelegatedAdministratorsAdministrator].
   /// [accountId] The ID of the member account.
@@ -34,10 +35,10 @@ class GetDelegatedAdministratorsAdministrator {
 
   factory GetDelegatedAdministratorsAdministrator.fromMap(Map<String, dynamic> map) {
     return GetDelegatedAdministratorsAdministrator(
-      accountId: map['accountId'] as String,
-      delegationEnabledTime: map['delegationEnabledTime'] as String,
-      id: map['id'] as String,
-      servicePrincipal: map['servicePrincipal'] as String,
+      accountId: (map['accountId'] as String).input(),
+      delegationEnabledTime: (map['delegationEnabledTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      servicePrincipal: (map['servicePrincipal'] as String).input(),
     );
   }
 }

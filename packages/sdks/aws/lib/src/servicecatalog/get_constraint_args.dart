@@ -24,15 +24,11 @@ class GetConstraintArgs {
   /// [id] Constraint identifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetConstraintArgs({
-    pulumi.Output<String>? acceptLanguage,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> id,
-    pulumi.Output<String>? region,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      id = pulumi.Input.asInput<String>(id),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.acceptLanguage,
+    this.description,
+    required this.id,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetConstraintArgs {
 
   factory GetConstraintArgs.fromMap(Map<String, dynamic> map) {
     return GetConstraintArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      id: pulumi.Output.create<String>(map['id'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

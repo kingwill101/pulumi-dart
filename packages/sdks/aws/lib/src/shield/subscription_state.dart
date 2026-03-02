@@ -13,11 +13,9 @@ class SubscriptionState {
   /// [autoRenew] Toggle for automated renewal of the subscription. Valid values are `ENABLED` or `DISABLED`. Default is `ENABLED`.
   /// [skipDestroy] Skip attempting to disable automated renewal upon destruction. If set to `true`, the `auto_renew` value will be left as-is and the resource will simply be removed from state.
   SubscriptionState({
-    pulumi.Output<String>? autoRenew,
-    pulumi.Output<bool>? skipDestroy,
-  }) :
-      autoRenew = pulumi.Input.asOptionalInput<String>(autoRenew),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy);
+    this.autoRenew,
+    this.skipDestroy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class SubscriptionState {
 
   factory SubscriptionState.fromMap(Map<String, dynamic> map) {
     return SubscriptionState(
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<String>(map['autoRenew'] as String),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetTunnelPolicyArgs {
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [tunnelPolicyName] Name of the Tunnel Policy under the profile.
   GetTunnelPolicyArgs({
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> tunnelPolicyName,
-  }) :
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tunnelPolicyName = pulumi.Input.asInput<String>(tunnelPolicyName);
+    required this.profileName,
+    required this.resourceGroupName,
+    required this.tunnelPolicyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTunnelPolicyArgs {
 
   factory GetTunnelPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTunnelPolicyArgs(
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tunnelPolicyName: pulumi.Output.create<String>(map['tunnelPolicyName'] as String),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tunnelPolicyName: (map['tunnelPolicyName'] as String).input(),
     );
   }
 }

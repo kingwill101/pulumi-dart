@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_prompt_variant_template_configuration_chat_message_content_cache_point.dart';
 
 class AgentPromptVariantTemplateConfigurationChatMessageContent {
-  final AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint? cachePoint;
-  final String? text;
+  final pulumi.Input<AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint>? cachePoint;
+  final pulumi.Input<String>? text;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatMessageContent].
   /// [cachePoint] Optional.
@@ -16,15 +17,15 @@ class AgentPromptVariantTemplateConfigurationChatMessageContent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cachePoint': ?cachePoint == null ? null : cachePoint!.toMap(),
+      'cachePoint': ?pulumi.Input.mapOptionalInputValue<AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint, Map<String, dynamic>>(cachePoint, (value) => value.toMap()),
       'text': ?text,
     };
   }
 
   factory AgentPromptVariantTemplateConfigurationChatMessageContent.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatMessageContent(
-      cachePoint: map['cachePoint'] == null ? null : AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint.fromMap((map['cachePoint'] as Map).cast<String, dynamic>()),
-      text: map['text'] == null ? null : map['text'] as String,
+      cachePoint: map['cachePoint'] == null ? null : (AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint.fromMap((map['cachePoint'] as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
     );
   }
 }

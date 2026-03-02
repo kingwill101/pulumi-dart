@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicationRecoveryPlanShutdownRecoveryGroupPostAction {
   /// The fabric location of runbook or script. Possible values are `Primary` and `Recovery`. It must not be specified when `type` is `ManualActionDetails`.
   ///
   /// > **Note:** This is required when `type` is set to `AutomationRunbookActionDetails` or `ScriptActionDetails`.
-  final String? fabricLocation;
+  final pulumi.Input<String>? fabricLocation;
   /// Directions of fail over. Possible values are `PrimaryToRecovery` and `RecoveryToPrimary`
-  final List<String> failOverDirections;
+  final pulumi.Input<List<String>> failOverDirections;
   /// Types of fail over. Possible values are `TestFailover`, `PlannedFailover` and `UnplannedFailover`
-  final List<String> failOverTypes;
+  final pulumi.Input<List<String>> failOverTypes;
   /// Instructions of manual action.
   ///
   /// > **Note:** This property is required when `type` is set to `ManualActionDetails`.
-  final String? manualActionInstruction;
+  final pulumi.Input<String>? manualActionInstruction;
   /// The name of the Replication Plan. The name can contain only letters, numbers, and hyphens. It should start with a letter and end with a letter or a number. Can be a maximum of 63 characters. Changing this forces a new resource to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// Id of runbook.
   ///
   /// > **Note:** This property is required when `type` is set to `AutomationRunbookActionDetails`.
-  final String? runbookId;
+  final pulumi.Input<String>? runbookId;
   /// Path of action script.
   ///
   /// > **Note:** This property is required when `type` is set to `ScriptActionDetails`.
-  final String? scriptPath;
+  final pulumi.Input<String>? scriptPath;
   /// Type of the action detail. Possible values are `AutomationRunbookActionDetails`, `ManualActionDetails` and `ScriptActionDetails`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ReplicationRecoveryPlanShutdownRecoveryGroupPostAction].
   /// [fabricLocation] The fabric location of runbook or script. Possible values are `Primary` and `Recovery`. It must not be specified when `type` is `ManualActionDetails`.
@@ -62,14 +63,14 @@ class ReplicationRecoveryPlanShutdownRecoveryGroupPostAction {
 
   factory ReplicationRecoveryPlanShutdownRecoveryGroupPostAction.fromMap(Map<String, dynamic> map) {
     return ReplicationRecoveryPlanShutdownRecoveryGroupPostAction(
-      fabricLocation: map['fabricLocation'] == null ? null : map['fabricLocation'] as String,
-      failOverDirections: (map['failOverDirections'] as List).cast<String>(),
-      failOverTypes: (map['failOverTypes'] as List).cast<String>(),
-      manualActionInstruction: map['manualActionInstruction'] == null ? null : map['manualActionInstruction'] as String,
-      name: map['name'] as String,
-      runbookId: map['runbookId'] == null ? null : map['runbookId'] as String,
-      scriptPath: map['scriptPath'] == null ? null : map['scriptPath'] as String,
-      type: map['type'] as String,
+      fabricLocation: map['fabricLocation'] == null ? null : (map['fabricLocation'] as String).input(),
+      failOverDirections: ((map['failOverDirections'] as List).cast<String>()).input(),
+      failOverTypes: ((map['failOverTypes'] as List).cast<String>()).input(),
+      manualActionInstruction: map['manualActionInstruction'] == null ? null : (map['manualActionInstruction'] as String).input(),
+      name: (map['name'] as String).input(),
+      runbookId: map['runbookId'] == null ? null : (map['runbookId'] as String).input(),
+      scriptPath: map['scriptPath'] == null ? null : (map['scriptPath'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

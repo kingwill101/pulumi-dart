@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInterfacePublicIpv6Slaac {
   /// The IPv6 SLAAC address.
-  final String address;
+  final pulumi.Input<String> address;
   /// The prefix length for the IPv6 SLAAC address.
-  final int prefix;
+  final pulumi.Input<int> prefix;
 
   /// Creates a new [GetInterfacePublicIpv6Slaac].
   /// [address] The IPv6 SLAAC address.
@@ -24,8 +25,8 @@ class GetInterfacePublicIpv6Slaac {
 
   factory GetInterfacePublicIpv6Slaac.fromMap(Map<String, dynamic> map) {
     return GetInterfacePublicIpv6Slaac(
-      address: map['address'] as String,
-      prefix: map['prefix'] as int,
+      address: (map['address'] as String).input(),
+      prefix: (map['prefix'] as int).input(),
     );
   }
 }

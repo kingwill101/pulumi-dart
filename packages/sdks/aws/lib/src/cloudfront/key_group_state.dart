@@ -19,15 +19,11 @@ class KeyGroupState {
   /// [items] A list of the identifiers of the public keys in the key group.
   /// [name] A name to identify the key group.
   KeyGroupState({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? items,
-    pulumi.Output<String>? name,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      items = pulumi.Input.asOptionalInput<List<String>>(items),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.comment,
+    this.etag,
+    this.items,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class KeyGroupState {
 
   factory KeyGroupState.fromMap(Map<String, dynamic> map) {
     return KeyGroupState(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      items: map['items'] == null ? null : pulumi.Output.create<List<String>>((map['items'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

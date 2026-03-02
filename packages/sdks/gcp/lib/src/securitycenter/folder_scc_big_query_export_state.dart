@@ -64,27 +64,17 @@ class FolderSccBigQueryExportState {
   /// [principal] The service account that needs permission to create table and upload data to the BigQuery dataset.
   /// [updateTime] The most recent time at which the BigQuery export was updated.
   FolderSccBigQueryExportState({
-    pulumi.Output<String>? bigQueryExportId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? dataset,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? folder,
-    pulumi.Output<String>? mostRecentEditor,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? principal,
-    pulumi.Output<String>? updateTime,
-  }) :
-      bigQueryExportId = pulumi.Input.asOptionalInput<String>(bigQueryExportId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dataset = pulumi.Input.asOptionalInput<String>(dataset),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      mostRecentEditor = pulumi.Input.asOptionalInput<String>(mostRecentEditor),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      principal = pulumi.Input.asOptionalInput<String>(principal),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.bigQueryExportId,
+    this.createTime,
+    this.dataset,
+    this.description,
+    this.filter,
+    this.folder,
+    this.mostRecentEditor,
+    this.name,
+    this.principal,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,16 +93,16 @@ class FolderSccBigQueryExportState {
 
   factory FolderSccBigQueryExportState.fromMap(Map<String, dynamic> map) {
     return FolderSccBigQueryExportState(
-      bigQueryExportId: map['bigQueryExportId'] == null ? null : pulumi.Output.create<String>(map['bigQueryExportId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dataset: map['dataset'] == null ? null : pulumi.Output.create<String>(map['dataset'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      mostRecentEditor: map['mostRecentEditor'] == null ? null : pulumi.Output.create<String>(map['mostRecentEditor'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      principal: map['principal'] == null ? null : pulumi.Output.create<String>(map['principal'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      bigQueryExportId: map['bigQueryExportId'] == null ? null : (map['bigQueryExportId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      mostRecentEditor: map['mostRecentEditor'] == null ? null : (map['mostRecentEditor'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

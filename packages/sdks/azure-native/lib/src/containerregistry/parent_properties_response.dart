@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sync_properties_response.dart';
 
 /// The properties of the connected registry parent.
 class ParentPropertiesResponse {
   /// The resource ID of the parent to which the connected registry will be associated.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The sync properties of the connected registry with its parent.
-  final SyncPropertiesResponse syncProperties;
+  final pulumi.Input<SyncPropertiesResponse> syncProperties;
 
   /// Creates a new [ParentPropertiesResponse].
   /// [id] The resource ID of the parent to which the connected registry will be associated.
@@ -20,14 +21,14 @@ class ParentPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'syncProperties': syncProperties.toMap(),
+      'syncProperties': pulumi.Input.mapInputValue<SyncPropertiesResponse, Map<String, dynamic>>(syncProperties, (value) => value.toMap()),
     };
   }
 
   factory ParentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ParentPropertiesResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      syncProperties: SyncPropertiesResponse.fromMap((map['syncProperties'] as Map).cast<String, dynamic>()),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      syncProperties: (SyncPropertiesResponse.fromMap((map['syncProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

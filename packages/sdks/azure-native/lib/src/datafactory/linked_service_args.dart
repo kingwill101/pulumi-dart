@@ -23,15 +23,11 @@ class LinkedServiceArgs {
   /// [properties] Properties of linked service.
   /// [resourceGroupName] The resource group name.
   LinkedServiceArgs({
-    required pulumi.Output<String> factoryName,
-    pulumi.Output<String>? linkedServiceName,
-    required pulumi.Output<AmazonMWSLinkedService> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      linkedServiceName = pulumi.Input.asOptionalInput<String>(linkedServiceName),
-      properties = pulumi.Input.asInput<AmazonMWSLinkedService>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.factoryName,
+    this.linkedServiceName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class LinkedServiceArgs {
 
   factory LinkedServiceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      linkedServiceName: map['linkedServiceName'] == null ? null : pulumi.Output.create<String>(map['linkedServiceName'] as String),
-      properties: pulumi.Output.create<AmazonMWSLinkedService>(AmazonMWSLinkedService.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (map['linkedServiceName'] as String).input(),
+      properties: (AmazonMWSLinkedService.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetRulesEngineArgs {
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [rulesEngineName] Name of the Rules Engine which is unique within the Front Door.
   GetRulesEngineArgs({
-    required pulumi.Output<String> frontDoorName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> rulesEngineName,
-  }) :
-      frontDoorName = pulumi.Input.asInput<String>(frontDoorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rulesEngineName = pulumi.Input.asInput<String>(rulesEngineName);
+    required this.frontDoorName,
+    required this.resourceGroupName,
+    required this.rulesEngineName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRulesEngineArgs {
 
   factory GetRulesEngineArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesEngineArgs(
-      frontDoorName: pulumi.Output.create<String>(map['frontDoorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rulesEngineName: pulumi.Output.create<String>(map['rulesEngineName'] as String),
+      frontDoorName: (map['frontDoorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rulesEngineName: (map['rulesEngineName'] as String).input(),
     );
   }
 }

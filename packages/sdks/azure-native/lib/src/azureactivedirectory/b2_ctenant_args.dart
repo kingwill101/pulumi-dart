@@ -35,23 +35,15 @@ class B2CTenantArgs {
   /// [sku] SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
   /// [tags] Resource Tags
   B2CTenantArgs({
-    pulumi.Output<String>? countryCode,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? isGoLocalTenant,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceName,
-    required pulumi.Output<B2CResourceSKU> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      countryCode = pulumi.Input.asOptionalInput<String>(countryCode),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      isGoLocalTenant = pulumi.Input.asOptionalInput<bool>(isGoLocalTenant),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      sku = pulumi.Input.asInput<B2CResourceSKU>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.countryCode,
+    this.displayName,
+    this.isGoLocalTenant,
+    this.location,
+    required this.resourceGroupName,
+    this.resourceName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class B2CTenantArgs {
 
   factory B2CTenantArgs.fromMap(Map<String, dynamic> map) {
     return B2CTenantArgs(
-      countryCode: map['countryCode'] == null ? null : pulumi.Output.create<String>(map['countryCode'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      isGoLocalTenant: map['isGoLocalTenant'] == null ? null : pulumi.Output.create<bool>(map['isGoLocalTenant'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      sku: pulumi.Output.create<B2CResourceSKU>(B2CResourceSKU.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      isGoLocalTenant: map['isGoLocalTenant'] == null ? null : (map['isGoLocalTenant'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      sku: (B2CResourceSKU.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

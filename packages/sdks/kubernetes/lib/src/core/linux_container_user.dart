@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// LinuxContainerUser represents user identity information in Linux containers
 class LinuxContainerUser {
   /// GID is the primary gid initially attached to the first process in the container
-  final int gid;
+  final pulumi.Input<int> gid;
   /// SupplementalGroups are the supplemental groups initially attached to the first process in the container
-  final List<int>? supplementalGroups;
+  final pulumi.Input<List<int>>? supplementalGroups;
   /// UID is the primary uid initially attached to the first process in the container
-  final int uid;
+  final pulumi.Input<int> uid;
 
   /// Creates a new [LinuxContainerUser].
   /// [gid] GID is the primary gid initially attached to the first process in the container
@@ -30,9 +31,9 @@ class LinuxContainerUser {
 
   factory LinuxContainerUser.fromMap(Map<String, dynamic> map) {
     return LinuxContainerUser(
-      gid: map['gid'] as int,
-      supplementalGroups: map['supplementalGroups'] == null ? null : (map['supplementalGroups'] as List).cast<int>(),
-      uid: map['uid'] as int,
+      gid: (map['gid'] as int).input(),
+      supplementalGroups: map['supplementalGroups'] == null ? null : ((map['supplementalGroups'] as List).cast<int>()).input(),
+      uid: (map['uid'] as int).input(),
     );
   }
 }

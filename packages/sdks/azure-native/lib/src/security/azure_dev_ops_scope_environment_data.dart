@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The AzureDevOps scope connector's environment data
 class AzureDevOpsScopeEnvironmentData {
   /// The type of the environment data.
   /// Expected value is 'AzureDevOpsScope'.
-  final String environmentType;
+  final pulumi.Input<String> environmentType;
 
   /// Creates a new [AzureDevOpsScopeEnvironmentData].
   /// [environmentType] The type of the environment data.
@@ -21,7 +22,7 @@ class AzureDevOpsScopeEnvironmentData {
 
   factory AzureDevOpsScopeEnvironmentData.fromMap(Map<String, dynamic> map) {
     return AzureDevOpsScopeEnvironmentData(
-      environmentType: map['environmentType'] as String,
+      environmentType: (map['environmentType'] as String).input(),
     );
   }
 }

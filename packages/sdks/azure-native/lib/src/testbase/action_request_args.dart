@@ -23,17 +23,12 @@ class ActionRequestArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
   ActionRequestArgs({
-    pulumi.Output<String>? actionRequestName,
-    pulumi.Output<PreReleaseAccessRequestSpec>? preReleaseAccessRequestSpec,
-    required pulumi.Output<String> requestType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> testBaseAccountName,
-  }) :
-      actionRequestName = pulumi.Input.asOptionalInput<String>(actionRequestName),
-      preReleaseAccessRequestSpec = pulumi.Input.asOptionalInput<PreReleaseAccessRequestSpec>(preReleaseAccessRequestSpec),
-      requestType = pulumi.Input.asInput<String>(requestType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      testBaseAccountName = pulumi.Input.asInput<String>(testBaseAccountName);
+    this.actionRequestName,
+    this.preReleaseAccessRequestSpec,
+    required this.requestType,
+    required this.resourceGroupName,
+    required this.testBaseAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class ActionRequestArgs {
 
   factory ActionRequestArgs.fromMap(Map<String, dynamic> map) {
     return ActionRequestArgs(
-      actionRequestName: map['actionRequestName'] == null ? null : pulumi.Output.create<String>(map['actionRequestName'] as String),
-      preReleaseAccessRequestSpec: map['preReleaseAccessRequestSpec'] == null ? null : pulumi.Output.create<PreReleaseAccessRequestSpec>(PreReleaseAccessRequestSpec.fromMap((map['preReleaseAccessRequestSpec'] as Map).cast<String, dynamic>())),
-      requestType: pulumi.Output.create<String>(map['requestType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      testBaseAccountName: pulumi.Output.create<String>(map['testBaseAccountName'] as String),
+      actionRequestName: map['actionRequestName'] == null ? null : (map['actionRequestName'] as String).input(),
+      preReleaseAccessRequestSpec: map['preReleaseAccessRequestSpec'] == null ? null : (PreReleaseAccessRequestSpec.fromMap((map['preReleaseAccessRequestSpec'] as Map).cast<String, dynamic>())).input(),
+      requestType: (map['requestType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
     );
   }
 }

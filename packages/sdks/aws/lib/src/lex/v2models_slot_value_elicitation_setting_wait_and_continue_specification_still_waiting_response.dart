@@ -5,12 +5,12 @@ import 'v2models_slot_value_elicitation_setting_wait_and_continue_specification_
 
 class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse {
   /// Whether the user can interrupt a speech response from Amazon Lex.
-  final bool? allowInterrupt;
+  final pulumi.Input<bool>? allowInterrupt;
   /// How often a message should be sent to the user.
-  final int frequencyInSeconds;
-  final List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup>? messageGroups;
+  final pulumi.Input<int> frequencyInSeconds;
+  final pulumi.Input<List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup>>? messageGroups;
   /// If Amazon Lex waits longer than this length of time for a response, it will stop sending messages.
-  final int timeoutInSeconds;
+  final pulumi.Input<int> timeoutInSeconds;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.
@@ -28,17 +28,17 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitin
     return <String, dynamic>{
       'allowInterrupt': ?allowInterrupt,
       'frequencyInSeconds': frequencyInSeconds,
-      'messageGroups': ?messageGroups == null ? null : pulumi.Input.encodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup, Map<String, dynamic>>(messageGroups!, (value) => value.toMap()),
+      'messageGroups': ?pulumi.Input.mapOptionalInputValue<List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup>, List<Map<String, dynamic>>>(messageGroups, (value) => pulumi.Input.encodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeoutInSeconds': timeoutInSeconds,
     };
   }
 
   factory V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse(
-      allowInterrupt: map['allowInterrupt'] == null ? null : map['allowInterrupt'] as bool,
-      frequencyInSeconds: map['frequencyInSeconds'] as int,
-      messageGroups: map['messageGroups'] == null ? null : pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup>(map['messageGroups'], (value) => V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup.fromMap((value as Map).cast<String, dynamic>())),
-      timeoutInSeconds: map['timeoutInSeconds'] as int,
+      allowInterrupt: map['allowInterrupt'] == null ? null : (map['allowInterrupt'] as bool).input(),
+      frequencyInSeconds: (map['frequencyInSeconds'] as int).input(),
+      messageGroups: map['messageGroups'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup>(map['messageGroups'], (value) => V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeoutInSeconds: (map['timeoutInSeconds'] as int).input(),
     );
   }
 }

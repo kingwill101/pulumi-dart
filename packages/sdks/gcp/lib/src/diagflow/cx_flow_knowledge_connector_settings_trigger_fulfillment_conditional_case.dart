@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
   /// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
   /// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
-  final String? cases;
+  final pulumi.Input<String>? cases;
 
   /// Creates a new [CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase].
   /// [cases] A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -20,7 +21,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
 
   factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase(
-      cases: map['cases'] == null ? null : map['cases'] as String,
+      cases: map['cases'] == null ? null : (map['cases'] as String).input(),
     );
   }
 }

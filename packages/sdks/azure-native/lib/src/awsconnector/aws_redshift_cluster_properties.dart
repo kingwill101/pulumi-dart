@@ -8,115 +8,115 @@ import 'tag.dart';
 /// Definition of awsRedshiftCluster
 class AwsRedshiftClusterProperties {
   /// Major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. Default value is True
-  final bool? allowVersionUpgrade;
+  final pulumi.Input<bool>? allowVersionUpgrade;
   /// The value represents how the cluster is configured to use AQUA (Advanced Query Accelerator) after the cluster is restored. Possible values include the following.enabled - Use AQUA if it is available for the current Region and Amazon Redshift node type.disabled - Don't use AQUA.auto - Amazon Redshift determines whether to use AQUA.
-  final String? aquaConfigurationStatus;
+  final pulumi.Input<String>? aquaConfigurationStatus;
   /// The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Default value is 1
-  final int? automatedSnapshotRetentionPeriod;
+  final pulumi.Input<int>? automatedSnapshotRetentionPeriod;
   /// The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. Default: A random, system-chosen Availability Zone in the region that is specified by the endpoint
-  final String? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
   /// The option to enable relocation for an Amazon Redshift cluster between Availability Zones after the cluster modification is complete.
-  final bool? availabilityZoneRelocation;
+  final pulumi.Input<bool>? availabilityZoneRelocation;
   /// The availability zone relocation status of the cluster
-  final String? availabilityZoneRelocationStatus;
+  final pulumi.Input<String>? availabilityZoneRelocationStatus;
   /// A boolean value indicating whether the resize operation is using the classic resize process. If you don't provide this parameter or set the value to false , the resize type is elastic.
-  final bool? classic;
+  final pulumi.Input<bool>? classic;
   /// A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. All alphabetical characters must be lower case, no hypens at the end, no two consecutive hyphens. Cluster name should be unique for all clusters within an AWS account
-  final String? clusterIdentifier;
+  final pulumi.Input<String>? clusterIdentifier;
   /// The Amazon Resource Name (ARN) of the cluster namespace.
-  final String? clusterNamespaceArn;
+  final pulumi.Input<String>? clusterNamespaceArn;
   /// The name of the parameter group to be associated with this cluster.
-  final String? clusterParameterGroupName;
+  final pulumi.Input<String>? clusterParameterGroupName;
   /// A list of security groups to be associated with this cluster.
-  final List<String>? clusterSecurityGroups;
+  final pulumi.Input<List<String>>? clusterSecurityGroups;
   /// The name of a cluster subnet group to be associated with this cluster.
-  final String? clusterSubnetGroupName;
+  final pulumi.Input<String>? clusterSubnetGroupName;
   /// The type of the cluster. When cluster type is specified as single-node, the NumberOfNodes parameter is not required and if multi-node, the NumberOfNodes parameter is required
-  final String? clusterType;
+  final pulumi.Input<String>? clusterType;
   /// The version of the Amazon Redshift engine software that you want to deploy on the cluster.The version selected runs on all the nodes in the cluster.
-  final String? clusterVersion;
+  final pulumi.Input<String>? clusterVersion;
   /// The name of the first database to be created when the cluster is created. To create additional databases after the cluster is created, connect to the cluster with a SQL client and use SQL commands to create a database.
-  final String? dbName;
+  final pulumi.Input<String>? dbName;
   /// A boolean indicating whether to enable the deferred maintenance window.
-  final bool? deferMaintenance;
+  final pulumi.Input<bool>? deferMaintenance;
   /// An integer indicating the duration of the maintenance window in days. If you specify a duration, you can't specify an end time. The duration must be 45 days or less.
-  final int? deferMaintenanceDuration;
+  final pulumi.Input<int>? deferMaintenanceDuration;
   /// A timestamp indicating end time for the deferred maintenance window. If you specify an end time, you can't specify a duration.
-  final String? deferMaintenanceEndTime;
+  final pulumi.Input<String>? deferMaintenanceEndTime;
   /// A unique identifier for the deferred maintenance window.
-  final String? deferMaintenanceIdentifier;
+  final pulumi.Input<String>? deferMaintenanceIdentifier;
   /// A timestamp indicating the start time for the deferred maintenance window.
-  final String? deferMaintenanceStartTime;
+  final pulumi.Input<String>? deferMaintenanceStartTime;
   /// The destination AWS Region that you want to copy snapshots to. Constraints: Must be the name of a valid AWS Region. For more information, see Regions and Endpoints in the Amazon Web Services [https://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region] General Reference
-  final String? destinationRegion;
+  final pulumi.Input<String>? destinationRegion;
   /// The Elastic IP (EIP) address for the cluster.
-  final String? elasticIp;
+  final pulumi.Input<String>? elasticIp;
   /// If true, the data in the cluster is encrypted at rest.
-  final bool? encrypted;
+  final pulumi.Input<bool>? encrypted;
   /// Property endpoint
-  final RedshiftClusterEndpoint? endpoint;
+  final pulumi.Input<RedshiftClusterEndpoint>? endpoint;
   /// An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide.If this option is true , enhanced VPC routing is enabled.Default: false
-  final bool? enhancedVpcRouting;
+  final pulumi.Input<bool>? enhancedVpcRouting;
   /// Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM
-  final String? hsmClientCertificateIdentifier;
+  final pulumi.Input<String>? hsmClientCertificateIdentifier;
   /// Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
-  final String? hsmConfigurationIdentifier;
+  final pulumi.Input<String>? hsmConfigurationIdentifier;
   /// A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 50 IAM roles in a single request
-  final List<String>? iamRoles;
+  final pulumi.Input<List<String>>? iamRoles;
   /// The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the cluster.
-  final String? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
   /// Property loggingProperties
-  final LoggingProperties? loggingProperties;
+  final pulumi.Input<LoggingProperties>? loggingProperties;
   /// The name for the maintenance track that you want to assign for the cluster. This name change is asynchronous. The new track name stays in the PendingModifiedValues for the cluster until the next maintenance window. When the maintenance track changes, the cluster is switched to the latest cluster release available for the maintenance track. At this point, the maintenance track name is applied.
-  final String? maintenanceTrackName;
+  final pulumi.Input<String>? maintenanceTrackName;
   /// A boolean indicating if the redshift cluster's admin user credentials is managed by Redshift or not. You can't use MasterUserPassword if ManageMasterPassword is true. If ManageMasterPassword is false or not set, Amazon Redshift uses MasterUserPassword for the admin user account's password.
-  final bool? manageMasterPassword;
+  final pulumi.Input<bool>? manageMasterPassword;
   /// The number of days to retain newly copied snapshots in the destination AWS Region after they are copied from the source AWS Region. If the value is -1, the manual snapshot is retained indefinitely.The value must be either -1 or an integer between 1 and 3,653.
-  final int? manualSnapshotRetentionPeriod;
+  final pulumi.Input<int>? manualSnapshotRetentionPeriod;
   /// The Amazon Resource Name (ARN) for the cluster's admin user credentials secret.
-  final String? masterPasswordSecretArn;
+  final pulumi.Input<String>? masterPasswordSecretArn;
   /// The ID of the Key Management Service (KMS) key used to encrypt and store the cluster's admin user credentials secret.
-  final String? masterPasswordSecretKmsKeyId;
+  final pulumi.Input<String>? masterPasswordSecretKmsKeyId;
   /// The password associated with the master user account for the cluster that is being created. You can't use MasterUserPassword if ManageMasterPassword is true. Password must be between 8 and 64 characters in length, should have at least one uppercase letter.Must contain at least one lowercase letter.Must contain one number.Can be any printable ASCII character.
-  final String? masterUserPassword;
+  final pulumi.Input<String>? masterUserPassword;
   /// The user name associated with the master user account for the cluster that is being created. The user name can't be PUBLIC and first character must be a letter.
-  final String? masterUsername;
+  final pulumi.Input<String>? masterUsername;
   /// A boolean indicating if the redshift cluster is multi-az or not. If you don't provide this parameter or set the value to false, the redshift cluster will be single-az.
-  final bool? multiAZ;
+  final pulumi.Input<bool>? multiAZ;
   /// The namespace resource policy document that will be attached to a Redshift cluster.
-  final dynamic namespaceResourcePolicy;
+  final pulumi.Input<dynamic>? namespaceResourcePolicy;
   /// The node type to be provisioned for the cluster.Valid Values: ds2.xlarge | ds2.8xlarge | dc1.large | dc1.8xlarge | dc2.large | dc2.8xlarge | ra3.4xlarge | ra3.16xlarge
-  final String? nodeType;
+  final pulumi.Input<String>? nodeType;
   /// The number of compute nodes in the cluster. This parameter is required when the ClusterType parameter is specified as multi-node.
-  final int? numberOfNodes;
+  final pulumi.Input<int>? numberOfNodes;
   /// Property ownerAccount
-  final String? ownerAccount;
+  final pulumi.Input<String>? ownerAccount;
   /// The port number on which the cluster accepts incoming connections. The cluster is accessible only via the JDBC and ODBC connection strings
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The weekly time range (in UTC) during which automated cluster maintenance can occur.
-  final String? preferredMaintenanceWindow;
+  final pulumi.Input<String>? preferredMaintenanceWindow;
   /// If true, the cluster can be accessed from a public network.
-  final bool? publiclyAccessible;
+  final pulumi.Input<bool>? publiclyAccessible;
   /// The Redshift operation to be performed. Resource Action supports pause-cluster, resume-cluster, failover-primary-compute APIs
-  final String? resourceAction;
+  final pulumi.Input<String>? resourceAction;
   /// The identifier of the database revision. You can retrieve this value from the response to the DescribeClusterDbRevisions request.
-  final String? revisionTarget;
+  final pulumi.Input<String>? revisionTarget;
   /// A boolean indicating if we want to rotate Encryption Keys.
-  final bool? rotateEncryptionKey;
+  final pulumi.Input<bool>? rotateEncryptionKey;
   /// The name of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.
-  final String? snapshotClusterIdentifier;
+  final pulumi.Input<String>? snapshotClusterIdentifier;
   /// The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
-  final String? snapshotCopyGrantName;
+  final pulumi.Input<String>? snapshotCopyGrantName;
   /// Indicates whether to apply the snapshot retention period to newly copied manual snapshots instead of automated snapshots.
-  final bool? snapshotCopyManual;
+  final pulumi.Input<bool>? snapshotCopyManual;
   /// The number of days to retain automated snapshots in the destination region after they are copied from the source region.  Default is 7.  Constraints: Must be at least 1 and no more than 35.
-  final int? snapshotCopyRetentionPeriod;
+  final pulumi.Input<int>? snapshotCopyRetentionPeriod;
   /// The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.
-  final String? snapshotIdentifier;
+  final pulumi.Input<String>? snapshotIdentifier;
   /// The list of tags for the cluster parameter group.
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
   /// A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
-  final List<String>? vpcSecurityGroupIds;
+  final pulumi.Input<List<String>>? vpcSecurityGroupIds;
 
   /// Creates a new [AwsRedshiftClusterProperties].
   /// [allowVersionUpgrade] Major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. Default value is True
@@ -257,13 +257,13 @@ class AwsRedshiftClusterProperties {
       'destinationRegion': ?destinationRegion,
       'elasticIp': ?elasticIp,
       'encrypted': ?encrypted,
-      'endpoint': ?endpoint == null ? null : endpoint!.toMap(),
+      'endpoint': ?pulumi.Input.mapOptionalInputValue<RedshiftClusterEndpoint, Map<String, dynamic>>(endpoint, (value) => value.toMap()),
       'enhancedVpcRouting': ?enhancedVpcRouting,
       'hsmClientCertificateIdentifier': ?hsmClientCertificateIdentifier,
       'hsmConfigurationIdentifier': ?hsmConfigurationIdentifier,
       'iamRoles': ?iamRoles,
       'kmsKeyId': ?kmsKeyId,
-      'loggingProperties': ?loggingProperties == null ? null : loggingProperties!.toMap(),
+      'loggingProperties': ?pulumi.Input.mapOptionalInputValue<LoggingProperties, Map<String, dynamic>>(loggingProperties, (value) => value.toMap()),
       'maintenanceTrackName': ?maintenanceTrackName,
       'manageMasterPassword': ?manageMasterPassword,
       'manualSnapshotRetentionPeriod': ?manualSnapshotRetentionPeriod,
@@ -287,68 +287,68 @@ class AwsRedshiftClusterProperties {
       'snapshotCopyManual': ?snapshotCopyManual,
       'snapshotCopyRetentionPeriod': ?snapshotCopyRetentionPeriod,
       'snapshotIdentifier': ?snapshotIdentifier,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcSecurityGroupIds': ?vpcSecurityGroupIds,
     };
   }
 
   factory AwsRedshiftClusterProperties.fromMap(Map<String, dynamic> map) {
     return AwsRedshiftClusterProperties(
-      allowVersionUpgrade: map['allowVersionUpgrade'] == null ? null : map['allowVersionUpgrade'] as bool,
-      aquaConfigurationStatus: map['aquaConfigurationStatus'] == null ? null : map['aquaConfigurationStatus'] as String,
-      automatedSnapshotRetentionPeriod: map['automatedSnapshotRetentionPeriod'] == null ? null : map['automatedSnapshotRetentionPeriod'] as int,
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      availabilityZoneRelocation: map['availabilityZoneRelocation'] == null ? null : map['availabilityZoneRelocation'] as bool,
-      availabilityZoneRelocationStatus: map['availabilityZoneRelocationStatus'] == null ? null : map['availabilityZoneRelocationStatus'] as String,
-      classic: map['classic'] == null ? null : map['classic'] as bool,
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : map['clusterIdentifier'] as String,
-      clusterNamespaceArn: map['clusterNamespaceArn'] == null ? null : map['clusterNamespaceArn'] as String,
-      clusterParameterGroupName: map['clusterParameterGroupName'] == null ? null : map['clusterParameterGroupName'] as String,
-      clusterSecurityGroups: map['clusterSecurityGroups'] == null ? null : (map['clusterSecurityGroups'] as List).cast<String>(),
-      clusterSubnetGroupName: map['clusterSubnetGroupName'] == null ? null : map['clusterSubnetGroupName'] as String,
-      clusterType: map['clusterType'] == null ? null : map['clusterType'] as String,
-      clusterVersion: map['clusterVersion'] == null ? null : map['clusterVersion'] as String,
-      dbName: map['dbName'] == null ? null : map['dbName'] as String,
-      deferMaintenance: map['deferMaintenance'] == null ? null : map['deferMaintenance'] as bool,
-      deferMaintenanceDuration: map['deferMaintenanceDuration'] == null ? null : map['deferMaintenanceDuration'] as int,
-      deferMaintenanceEndTime: map['deferMaintenanceEndTime'] == null ? null : map['deferMaintenanceEndTime'] as String,
-      deferMaintenanceIdentifier: map['deferMaintenanceIdentifier'] == null ? null : map['deferMaintenanceIdentifier'] as String,
-      deferMaintenanceStartTime: map['deferMaintenanceStartTime'] == null ? null : map['deferMaintenanceStartTime'] as String,
-      destinationRegion: map['destinationRegion'] == null ? null : map['destinationRegion'] as String,
-      elasticIp: map['elasticIp'] == null ? null : map['elasticIp'] as String,
-      encrypted: map['encrypted'] == null ? null : map['encrypted'] as bool,
-      endpoint: map['endpoint'] == null ? null : RedshiftClusterEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>()),
-      enhancedVpcRouting: map['enhancedVpcRouting'] == null ? null : map['enhancedVpcRouting'] as bool,
-      hsmClientCertificateIdentifier: map['hsmClientCertificateIdentifier'] == null ? null : map['hsmClientCertificateIdentifier'] as String,
-      hsmConfigurationIdentifier: map['hsmConfigurationIdentifier'] == null ? null : map['hsmConfigurationIdentifier'] as String,
-      iamRoles: map['iamRoles'] == null ? null : (map['iamRoles'] as List).cast<String>(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      loggingProperties: map['loggingProperties'] == null ? null : LoggingProperties.fromMap((map['loggingProperties'] as Map).cast<String, dynamic>()),
-      maintenanceTrackName: map['maintenanceTrackName'] == null ? null : map['maintenanceTrackName'] as String,
-      manageMasterPassword: map['manageMasterPassword'] == null ? null : map['manageMasterPassword'] as bool,
-      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : map['manualSnapshotRetentionPeriod'] as int,
-      masterPasswordSecretArn: map['masterPasswordSecretArn'] == null ? null : map['masterPasswordSecretArn'] as String,
-      masterPasswordSecretKmsKeyId: map['masterPasswordSecretKmsKeyId'] == null ? null : map['masterPasswordSecretKmsKeyId'] as String,
-      masterUserPassword: map['masterUserPassword'] == null ? null : map['masterUserPassword'] as String,
-      masterUsername: map['masterUsername'] == null ? null : map['masterUsername'] as String,
-      multiAZ: map['multiAZ'] == null ? null : map['multiAZ'] as bool,
-      namespaceResourcePolicy: map['namespaceResourcePolicy'] == null ? null : map['namespaceResourcePolicy'],
-      nodeType: map['nodeType'] == null ? null : map['nodeType'] as String,
-      numberOfNodes: map['numberOfNodes'] == null ? null : map['numberOfNodes'] as int,
-      ownerAccount: map['ownerAccount'] == null ? null : map['ownerAccount'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : map['preferredMaintenanceWindow'] as String,
-      publiclyAccessible: map['publiclyAccessible'] == null ? null : map['publiclyAccessible'] as bool,
-      resourceAction: map['resourceAction'] == null ? null : map['resourceAction'] as String,
-      revisionTarget: map['revisionTarget'] == null ? null : map['revisionTarget'] as String,
-      rotateEncryptionKey: map['rotateEncryptionKey'] == null ? null : map['rotateEncryptionKey'] as bool,
-      snapshotClusterIdentifier: map['snapshotClusterIdentifier'] == null ? null : map['snapshotClusterIdentifier'] as String,
-      snapshotCopyGrantName: map['snapshotCopyGrantName'] == null ? null : map['snapshotCopyGrantName'] as String,
-      snapshotCopyManual: map['snapshotCopyManual'] == null ? null : map['snapshotCopyManual'] as bool,
-      snapshotCopyRetentionPeriod: map['snapshotCopyRetentionPeriod'] == null ? null : map['snapshotCopyRetentionPeriod'] as int,
-      snapshotIdentifier: map['snapshotIdentifier'] == null ? null : map['snapshotIdentifier'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (map['vpcSecurityGroupIds'] as List).cast<String>(),
+      allowVersionUpgrade: map['allowVersionUpgrade'] == null ? null : (map['allowVersionUpgrade'] as bool).input(),
+      aquaConfigurationStatus: map['aquaConfigurationStatus'] == null ? null : (map['aquaConfigurationStatus'] as String).input(),
+      automatedSnapshotRetentionPeriod: map['automatedSnapshotRetentionPeriod'] == null ? null : (map['automatedSnapshotRetentionPeriod'] as int).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      availabilityZoneRelocation: map['availabilityZoneRelocation'] == null ? null : (map['availabilityZoneRelocation'] as bool).input(),
+      availabilityZoneRelocationStatus: map['availabilityZoneRelocationStatus'] == null ? null : (map['availabilityZoneRelocationStatus'] as String).input(),
+      classic: map['classic'] == null ? null : (map['classic'] as bool).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
+      clusterNamespaceArn: map['clusterNamespaceArn'] == null ? null : (map['clusterNamespaceArn'] as String).input(),
+      clusterParameterGroupName: map['clusterParameterGroupName'] == null ? null : (map['clusterParameterGroupName'] as String).input(),
+      clusterSecurityGroups: map['clusterSecurityGroups'] == null ? null : ((map['clusterSecurityGroups'] as List).cast<String>()).input(),
+      clusterSubnetGroupName: map['clusterSubnetGroupName'] == null ? null : (map['clusterSubnetGroupName'] as String).input(),
+      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as String).input(),
+      clusterVersion: map['clusterVersion'] == null ? null : (map['clusterVersion'] as String).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
+      deferMaintenance: map['deferMaintenance'] == null ? null : (map['deferMaintenance'] as bool).input(),
+      deferMaintenanceDuration: map['deferMaintenanceDuration'] == null ? null : (map['deferMaintenanceDuration'] as int).input(),
+      deferMaintenanceEndTime: map['deferMaintenanceEndTime'] == null ? null : (map['deferMaintenanceEndTime'] as String).input(),
+      deferMaintenanceIdentifier: map['deferMaintenanceIdentifier'] == null ? null : (map['deferMaintenanceIdentifier'] as String).input(),
+      deferMaintenanceStartTime: map['deferMaintenanceStartTime'] == null ? null : (map['deferMaintenanceStartTime'] as String).input(),
+      destinationRegion: map['destinationRegion'] == null ? null : (map['destinationRegion'] as String).input(),
+      elasticIp: map['elasticIp'] == null ? null : (map['elasticIp'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      endpoint: map['endpoint'] == null ? null : (RedshiftClusterEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
+      enhancedVpcRouting: map['enhancedVpcRouting'] == null ? null : (map['enhancedVpcRouting'] as bool).input(),
+      hsmClientCertificateIdentifier: map['hsmClientCertificateIdentifier'] == null ? null : (map['hsmClientCertificateIdentifier'] as String).input(),
+      hsmConfigurationIdentifier: map['hsmConfigurationIdentifier'] == null ? null : (map['hsmConfigurationIdentifier'] as String).input(),
+      iamRoles: map['iamRoles'] == null ? null : ((map['iamRoles'] as List).cast<String>()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      loggingProperties: map['loggingProperties'] == null ? null : (LoggingProperties.fromMap((map['loggingProperties'] as Map).cast<String, dynamic>())).input(),
+      maintenanceTrackName: map['maintenanceTrackName'] == null ? null : (map['maintenanceTrackName'] as String).input(),
+      manageMasterPassword: map['manageMasterPassword'] == null ? null : (map['manageMasterPassword'] as bool).input(),
+      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : (map['manualSnapshotRetentionPeriod'] as int).input(),
+      masterPasswordSecretArn: map['masterPasswordSecretArn'] == null ? null : (map['masterPasswordSecretArn'] as String).input(),
+      masterPasswordSecretKmsKeyId: map['masterPasswordSecretKmsKeyId'] == null ? null : (map['masterPasswordSecretKmsKeyId'] as String).input(),
+      masterUserPassword: map['masterUserPassword'] == null ? null : (map['masterUserPassword'] as String).input(),
+      masterUsername: map['masterUsername'] == null ? null : (map['masterUsername'] as String).input(),
+      multiAZ: map['multiAZ'] == null ? null : (map['multiAZ'] as bool).input(),
+      namespaceResourcePolicy: map['namespaceResourcePolicy'] == null ? null : (map['namespaceResourcePolicy']).input(),
+      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
+      numberOfNodes: map['numberOfNodes'] == null ? null : (map['numberOfNodes'] as int).input(),
+      ownerAccount: map['ownerAccount'] == null ? null : (map['ownerAccount'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : (map['preferredMaintenanceWindow'] as String).input(),
+      publiclyAccessible: map['publiclyAccessible'] == null ? null : (map['publiclyAccessible'] as bool).input(),
+      resourceAction: map['resourceAction'] == null ? null : (map['resourceAction'] as String).input(),
+      revisionTarget: map['revisionTarget'] == null ? null : (map['revisionTarget'] as String).input(),
+      rotateEncryptionKey: map['rotateEncryptionKey'] == null ? null : (map['rotateEncryptionKey'] as bool).input(),
+      snapshotClusterIdentifier: map['snapshotClusterIdentifier'] == null ? null : (map['snapshotClusterIdentifier'] as String).input(),
+      snapshotCopyGrantName: map['snapshotCopyGrantName'] == null ? null : (map['snapshotCopyGrantName'] as String).input(),
+      snapshotCopyManual: map['snapshotCopyManual'] == null ? null : (map['snapshotCopyManual'] as bool).input(),
+      snapshotCopyRetentionPeriod: map['snapshotCopyRetentionPeriod'] == null ? null : (map['snapshotCopyRetentionPeriod'] as int).input(),
+      snapshotIdentifier: map['snapshotIdentifier'] == null ? null : (map['snapshotIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
     );
   }
 }

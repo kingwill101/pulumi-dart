@@ -31,21 +31,14 @@ class VpcConnectionArgs {
   /// [targetClusterArn] The Amazon Resource Name (ARN) of the cluster.
   /// [vpcId] The VPC ID of the remote client.
   VpcConnectionArgs({
-    required pulumi.Output<String> authentication,
-    required pulumi.Output<List<String>> clientSubnets,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> securityGroups,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetClusterArn,
-    required pulumi.Output<String> vpcId,
-  }) :
-      authentication = pulumi.Input.asInput<String>(authentication),
-      clientSubnets = pulumi.Input.asInput<List<String>>(clientSubnets),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroups = pulumi.Input.asInput<List<String>>(securityGroups),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetClusterArn = pulumi.Input.asInput<String>(targetClusterArn),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    required this.authentication,
+    required this.clientSubnets,
+    this.region,
+    required this.securityGroups,
+    this.tags,
+    required this.targetClusterArn,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class VpcConnectionArgs {
 
   factory VpcConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VpcConnectionArgs(
-      authentication: pulumi.Output.create<String>(map['authentication'] as String),
-      clientSubnets: pulumi.Output.create<List<String>>((map['clientSubnets'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroups: pulumi.Output.create<List<String>>((map['securityGroups'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetClusterArn: pulumi.Output.create<String>(map['targetClusterArn'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      authentication: (map['authentication'] as String).input(),
+      clientSubnets: ((map['clientSubnets'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetClusterArn: (map['targetClusterArn'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

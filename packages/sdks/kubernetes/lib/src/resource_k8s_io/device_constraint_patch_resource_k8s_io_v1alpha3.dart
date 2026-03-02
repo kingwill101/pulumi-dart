@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DeviceConstraint must have exactly one field set besides Requests.
 class DeviceConstraintPatchResourceK8sIoV1alpha3 {
@@ -8,9 +9,9 @@ class DeviceConstraintPatchResourceK8sIoV1alpha3 {
   /// For example, if you specified "dra.example.com/numa" (a hypothetical example!), then only devices in the same NUMA node will be chosen. A device which does not have that attribute will not be chosen. All devices should use a value of the same type for this attribute because that is part of its specification, but if one device doesn't, then it also will not be chosen.
   ///
   /// Must include the domain qualifier.
-  final String? matchAttribute;
+  final pulumi.Input<String>? matchAttribute;
   /// Requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim.
-  final List<String>? requests;
+  final pulumi.Input<List<String>>? requests;
 
   /// Creates a new [DeviceConstraintPatchResourceK8sIoV1alpha3].
   /// [matchAttribute] MatchAttribute requires that all devices in question have this attribute and that its type and value are the same across those devices.
@@ -29,8 +30,8 @@ class DeviceConstraintPatchResourceK8sIoV1alpha3 {
 
   factory DeviceConstraintPatchResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return DeviceConstraintPatchResourceK8sIoV1alpha3(
-      matchAttribute: map['matchAttribute'] == null ? null : map['matchAttribute'] as String,
-      requests: map['requests'] == null ? null : (map['requests'] as List).cast<String>(),
+      matchAttribute: map['matchAttribute'] == null ? null : (map['matchAttribute'] as String).input(),
+      requests: map['requests'] == null ? null : ((map['requests'] as List).cast<String>()).input(),
     );
   }
 }

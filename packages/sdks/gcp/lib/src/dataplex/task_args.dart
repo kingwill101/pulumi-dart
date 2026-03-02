@@ -55,29 +55,18 @@ class TaskArgs {
   /// [taskId] The task Id of the task.
   /// [triggerSpec] Configuration for the cluster
   TaskArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<TaskExecutionSpec> executionSpec,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? lake,
-    pulumi.Output<String>? location,
-    pulumi.Output<TaskNotebook>? notebook,
-    pulumi.Output<String>? project,
-    pulumi.Output<TaskSpark>? spark,
-    pulumi.Output<String>? taskId,
-    required pulumi.Output<TaskTriggerSpec> triggerSpec,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      executionSpec = pulumi.Input.asInput<TaskExecutionSpec>(executionSpec),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      lake = pulumi.Input.asOptionalInput<String>(lake),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      notebook = pulumi.Input.asOptionalInput<TaskNotebook>(notebook),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spark = pulumi.Input.asOptionalInput<TaskSpark>(spark),
-      taskId = pulumi.Input.asOptionalInput<String>(taskId),
-      triggerSpec = pulumi.Input.asInput<TaskTriggerSpec>(triggerSpec);
+    this.description,
+    this.displayName,
+    required this.executionSpec,
+    this.labels,
+    this.lake,
+    this.location,
+    this.notebook,
+    this.project,
+    this.spark,
+    this.taskId,
+    required this.triggerSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,17 +86,17 @@ class TaskArgs {
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      executionSpec: pulumi.Output.create<TaskExecutionSpec>(TaskExecutionSpec.fromMap((map['executionSpec'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      lake: map['lake'] == null ? null : pulumi.Output.create<String>(map['lake'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      notebook: map['notebook'] == null ? null : pulumi.Output.create<TaskNotebook>(TaskNotebook.fromMap((map['notebook'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      spark: map['spark'] == null ? null : pulumi.Output.create<TaskSpark>(TaskSpark.fromMap((map['spark'] as Map).cast<String, dynamic>())),
-      taskId: map['taskId'] == null ? null : pulumi.Output.create<String>(map['taskId'] as String),
-      triggerSpec: pulumi.Output.create<TaskTriggerSpec>(TaskTriggerSpec.fromMap((map['triggerSpec'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      executionSpec: (TaskExecutionSpec.fromMap((map['executionSpec'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      lake: map['lake'] == null ? null : (map['lake'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      notebook: map['notebook'] == null ? null : (TaskNotebook.fromMap((map['notebook'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      spark: map['spark'] == null ? null : (TaskSpark.fromMap((map['spark'] as Map).cast<String, dynamic>())).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
+      triggerSpec: (TaskTriggerSpec.fromMap((map['triggerSpec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

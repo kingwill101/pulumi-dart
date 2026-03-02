@@ -22,15 +22,11 @@ class MailAddressArgs {
   /// [replyAddress] Return address.
   /// [sendtype] Account type. Valid values: `batch`, `trigger`.
   MailAddressArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? replyAddress,
-    required pulumi.Output<String> sendtype,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      replyAddress = pulumi.Input.asOptionalInput<String>(replyAddress),
-      sendtype = pulumi.Input.asInput<String>(sendtype);
+    required this.accountName,
+    this.password,
+    this.replyAddress,
+    required this.sendtype,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class MailAddressArgs {
 
   factory MailAddressArgs.fromMap(Map<String, dynamic> map) {
     return MailAddressArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      replyAddress: map['replyAddress'] == null ? null : pulumi.Output.create<String>(map['replyAddress'] as String),
-      sendtype: pulumi.Output.create<String>(map['sendtype'] as String),
+      accountName: (map['accountName'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      replyAddress: map['replyAddress'] == null ? null : (map['replyAddress'] as String).input(),
+      sendtype: (map['sendtype'] as String).input(),
     );
   }
 }

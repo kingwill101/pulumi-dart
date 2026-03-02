@@ -20,15 +20,11 @@ class SqlMigrationServiceArgs {
   /// [sqlMigrationServiceName] Name of the SQL Migration Service.
   /// [tags] Optional.
   SqlMigrationServiceArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sqlMigrationServiceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlMigrationServiceName = pulumi.Input.asOptionalInput<String>(sqlMigrationServiceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    required this.resourceGroupName,
+    this.sqlMigrationServiceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class SqlMigrationServiceArgs {
 
   factory SqlMigrationServiceArgs.fromMap(Map<String, dynamic> map) {
     return SqlMigrationServiceArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlMigrationServiceName: map['sqlMigrationServiceName'] == null ? null : pulumi.Output.create<String>(map['sqlMigrationServiceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlMigrationServiceName: map['sqlMigrationServiceName'] == null ? null : (map['sqlMigrationServiceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

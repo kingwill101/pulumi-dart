@@ -39,25 +39,16 @@ class IscsiTargetArgs {
   /// [staticAcls] Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
   /// [targetIqn] iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server".
   IscsiTargetArgs({
-    required pulumi.Output<String> aclMode,
-    required pulumi.Output<String> diskPoolName,
-    pulumi.Output<String>? iscsiTargetName,
-    pulumi.Output<List<IscsiLun>>? luns,
-    pulumi.Output<String>? managedBy,
-    pulumi.Output<List<String>>? managedByExtended,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<Acl>>? staticAcls,
-    pulumi.Output<String>? targetIqn,
-  }) :
-      aclMode = pulumi.Input.asInput<String>(aclMode),
-      diskPoolName = pulumi.Input.asInput<String>(diskPoolName),
-      iscsiTargetName = pulumi.Input.asOptionalInput<String>(iscsiTargetName),
-      luns = pulumi.Input.asOptionalInput<List<IscsiLun>>(luns),
-      managedBy = pulumi.Input.asOptionalInput<String>(managedBy),
-      managedByExtended = pulumi.Input.asOptionalInput<List<String>>(managedByExtended),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      staticAcls = pulumi.Input.asOptionalInput<List<Acl>>(staticAcls),
-      targetIqn = pulumi.Input.asOptionalInput<String>(targetIqn);
+    required this.aclMode,
+    required this.diskPoolName,
+    this.iscsiTargetName,
+    this.luns,
+    this.managedBy,
+    this.managedByExtended,
+    required this.resourceGroupName,
+    this.staticAcls,
+    this.targetIqn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class IscsiTargetArgs {
 
   factory IscsiTargetArgs.fromMap(Map<String, dynamic> map) {
     return IscsiTargetArgs(
-      aclMode: pulumi.Output.create<String>(map['aclMode'] as String),
-      diskPoolName: pulumi.Output.create<String>(map['diskPoolName'] as String),
-      iscsiTargetName: map['iscsiTargetName'] == null ? null : pulumi.Output.create<String>(map['iscsiTargetName'] as String),
-      luns: map['luns'] == null ? null : pulumi.Output.create<List<IscsiLun>>(pulumi.Input.decodeList<IscsiLun>(map['luns'], (value) => IscsiLun.fromMap((value as Map).cast<String, dynamic>()))),
-      managedBy: map['managedBy'] == null ? null : pulumi.Output.create<String>(map['managedBy'] as String),
-      managedByExtended: map['managedByExtended'] == null ? null : pulumi.Output.create<List<String>>((map['managedByExtended'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      staticAcls: map['staticAcls'] == null ? null : pulumi.Output.create<List<Acl>>(pulumi.Input.decodeList<Acl>(map['staticAcls'], (value) => Acl.fromMap((value as Map).cast<String, dynamic>()))),
-      targetIqn: map['targetIqn'] == null ? null : pulumi.Output.create<String>(map['targetIqn'] as String),
+      aclMode: (map['aclMode'] as String).input(),
+      diskPoolName: (map['diskPoolName'] as String).input(),
+      iscsiTargetName: map['iscsiTargetName'] == null ? null : (map['iscsiTargetName'] as String).input(),
+      luns: map['luns'] == null ? null : (pulumi.Input.decodeList<IscsiLun>(map['luns'], (value) => IscsiLun.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
+      managedByExtended: map['managedByExtended'] == null ? null : ((map['managedByExtended'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      staticAcls: map['staticAcls'] == null ? null : (pulumi.Input.decodeList<Acl>(map['staticAcls'], (value) => Acl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetIqn: map['targetIqn'] == null ? null : (map['targetIqn'] as String).input(),
     );
   }
 }

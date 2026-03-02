@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFoldersFolder {
-  final String folderId;
+  final pulumi.Input<String> folderId;
   /// Folder Path.
-  final String folderPath;
+  final pulumi.Input<String> folderPath;
   /// The Folder ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the project.
-  final String projectId;
+  final pulumi.Input<String> projectId;
 
   /// Creates a new [GetFoldersFolder].
   /// [folderId] Required.
@@ -33,10 +34,10 @@ class GetFoldersFolder {
 
   factory GetFoldersFolder.fromMap(Map<String, dynamic> map) {
     return GetFoldersFolder(
-      folderId: map['folderId'] as String,
-      folderPath: map['folderPath'] as String,
-      id: map['id'] as String,
-      projectId: map['projectId'] as String,
+      folderId: (map['folderId'] as String).input(),
+      folderPath: (map['folderPath'] as String).input(),
+      id: (map['id'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_type_engine.dart';
 import 'database_type_provider.dart';
 
 /// A message defining the database engine and provider.
 class DatabaseType {
   /// The database engine.
-  final DatabaseTypeEngine? engine;
+  final pulumi.Input<DatabaseTypeEngine>? engine;
   /// The database provider.
-  final DatabaseTypeProvider? provider;
+  final pulumi.Input<DatabaseTypeProvider>? provider;
 
   /// Creates a new [DatabaseType].
   /// [engine] The database engine.
@@ -20,15 +21,15 @@ class DatabaseType {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'engine': ?engine == null ? null : engine!.value,
-      'provider': ?provider == null ? null : provider!.value,
+      'engine': ?pulumi.Input.mapOptionalInputValue<DatabaseTypeEngine, String>(engine, (value) => value.value),
+      'provider': ?pulumi.Input.mapOptionalInputValue<DatabaseTypeProvider, String>(provider, (value) => value.value),
     };
   }
 
   factory DatabaseType.fromMap(Map<String, dynamic> map) {
     return DatabaseType(
-      engine: map['engine'] == null ? null : DatabaseTypeEngine.fromValue(map['engine'] as String),
-      provider: map['provider'] == null ? null : DatabaseTypeProvider.fromValue(map['provider'] as String),
+      engine: map['engine'] == null ? null : (DatabaseTypeEngine.fromValue(map['engine'] as String)).input(),
+      provider: map['provider'] == null ? null : (DatabaseTypeProvider.fromValue(map['provider'] as String)).input(),
     );
   }
 }

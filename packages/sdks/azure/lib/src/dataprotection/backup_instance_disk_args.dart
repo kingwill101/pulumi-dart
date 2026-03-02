@@ -31,21 +31,14 @@ class BackupInstanceDiskArgs {
   /// [snapshotSubscriptionId] The subscription ID of the Resource Group where snapshots are stored. The default value is the subscription ID of the Backup Vault. Changing this forces a new Backup Instance Disk to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Instance Disk should exist. Changing this forces a new Backup Instance Disk to be created.
   BackupInstanceDiskArgs({
-    required pulumi.Output<String> backupPolicyId,
-    required pulumi.Output<String> diskId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> snapshotResourceGroupName,
-    pulumi.Output<String>? snapshotSubscriptionId,
-    required pulumi.Output<String> vaultId,
-  }) :
-      backupPolicyId = pulumi.Input.asInput<String>(backupPolicyId),
-      diskId = pulumi.Input.asInput<String>(diskId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      snapshotResourceGroupName = pulumi.Input.asInput<String>(snapshotResourceGroupName),
-      snapshotSubscriptionId = pulumi.Input.asOptionalInput<String>(snapshotSubscriptionId),
-      vaultId = pulumi.Input.asInput<String>(vaultId);
+    required this.backupPolicyId,
+    required this.diskId,
+    this.location,
+    this.name,
+    required this.snapshotResourceGroupName,
+    this.snapshotSubscriptionId,
+    required this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class BackupInstanceDiskArgs {
 
   factory BackupInstanceDiskArgs.fromMap(Map<String, dynamic> map) {
     return BackupInstanceDiskArgs(
-      backupPolicyId: pulumi.Output.create<String>(map['backupPolicyId'] as String),
-      diskId: pulumi.Output.create<String>(map['diskId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      snapshotResourceGroupName: pulumi.Output.create<String>(map['snapshotResourceGroupName'] as String),
-      snapshotSubscriptionId: map['snapshotSubscriptionId'] == null ? null : pulumi.Output.create<String>(map['snapshotSubscriptionId'] as String),
-      vaultId: pulumi.Output.create<String>(map['vaultId'] as String),
+      backupPolicyId: (map['backupPolicyId'] as String).input(),
+      diskId: (map['diskId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      snapshotResourceGroupName: (map['snapshotResourceGroupName'] as String).input(),
+      snapshotSubscriptionId: map['snapshotSubscriptionId'] == null ? null : (map['snapshotSubscriptionId'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

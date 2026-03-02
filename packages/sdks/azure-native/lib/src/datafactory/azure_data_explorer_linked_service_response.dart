@@ -9,30 +9,30 @@ import 'parameter_specification_response.dart';
 /// Azure Data Explorer (Kusto) linked service.
 class AzureDataExplorerLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// The credential reference containing authentication information.
-  final CredentialReferenceResponse? credential;
+  final pulumi.Input<CredentialReferenceResponse>? credential;
   /// Database name for connection. Type: string (or Expression with resultType string).
-  final dynamic database;
+  final pulumi.Input<dynamic> database;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The endpoint of Azure Data Explorer (the engine's endpoint). URL will be in the format https://<clusterName>.<regionName>.kusto.windows.net. Type: string (or Expression with resultType string)
-  final dynamic endpoint;
+  final pulumi.Input<dynamic> endpoint;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// The ID of the service principal used to authenticate against Azure Data Explorer. Type: string (or Expression with resultType string).
-  final dynamic servicePrincipalId;
+  final pulumi.Input<dynamic>? servicePrincipalId;
   /// The key of the service principal used to authenticate against Kusto.
-  final AzureKeyVaultSecretReferenceResponse? servicePrincipalKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? servicePrincipalKey;
   /// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
-  final dynamic tenant;
+  final pulumi.Input<dynamic>? tenant;
   /// Type of linked service.
   /// Expected value is 'AzureDataExplorer'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [AzureDataExplorerLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -65,14 +65,14 @@ class AzureDataExplorerLinkedServiceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
-      'credential': ?credential == null ? null : credential!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReferenceResponse, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'database': database,
       'description': ?description,
       'endpoint': endpoint,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'servicePrincipalId': ?servicePrincipalId,
-      'servicePrincipalKey': ?servicePrincipalKey == null ? null : servicePrincipalKey!.toMap(),
+      'servicePrincipalKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
       'tenant': ?tenant,
       'type': type,
       'version': ?version,
@@ -81,18 +81,18 @@ class AzureDataExplorerLinkedServiceResponse {
 
   factory AzureDataExplorerLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return AzureDataExplorerLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      credential: map['credential'] == null ? null : CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      database: map['database'],
-      description: map['description'] == null ? null : map['description'] as String,
-      endpoint: map['endpoint'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : map['servicePrincipalId'],
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>()),
-      tenant: map['tenant'] == null ? null : map['tenant'],
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      database: (map['database']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpoint: (map['endpoint']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>())).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceSourceMcastLocal {
   /// Specifies the local address for UDP communications on the network interface.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Sets the local port number for UDP traffic on the network interface.
-  final double? port;
+  final pulumi.Input<double>? port;
 
   /// Creates a new [DomainDevicesInterfaceSourceMcastLocal].
   /// [address] Specifies the local address for UDP communications on the network interface.
@@ -24,8 +25,8 @@ class DomainDevicesInterfaceSourceMcastLocal {
 
   factory DomainDevicesInterfaceSourceMcastLocal.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceMcastLocal(
-      address: map['address'] == null ? null : map['address'] as String,
-      port: map['port'] == null ? null : map['port'] as double,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as double).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'site_agent_properties_response.dart';
 import 'site_spn_properties_response.dart';
 
 /// Class for site properties.
 class SitePropertiesResponse {
   /// On-premises agent details.
-  final SiteAgentPropertiesResponse? agentDetails;
+  final pulumi.Input<SiteAgentPropertiesResponse>? agentDetails;
   /// Appliance Name.
-  final String? applianceName;
+  final pulumi.Input<String>? applianceName;
   /// ARM ID of migration hub solution for SDS.
-  final String? discoverySolutionId;
+  final pulumi.Input<String>? discoverySolutionId;
   /// Service endpoint.
-  final String serviceEndpoint;
+  final pulumi.Input<String> serviceEndpoint;
   /// Service principal identity details used by agent for communication to the service.
-  final SiteSpnPropertiesResponse? servicePrincipalIdentityDetails;
+  final pulumi.Input<SiteSpnPropertiesResponse>? servicePrincipalIdentityDetails;
 
   /// Creates a new [SitePropertiesResponse].
   /// [agentDetails] On-premises agent details.
@@ -32,21 +33,21 @@ class SitePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentDetails': ?agentDetails == null ? null : agentDetails!.toMap(),
+      'agentDetails': ?pulumi.Input.mapOptionalInputValue<SiteAgentPropertiesResponse, Map<String, dynamic>>(agentDetails, (value) => value.toMap()),
       'applianceName': ?applianceName,
       'discoverySolutionId': ?discoverySolutionId,
       'serviceEndpoint': serviceEndpoint,
-      'servicePrincipalIdentityDetails': ?servicePrincipalIdentityDetails == null ? null : servicePrincipalIdentityDetails!.toMap(),
+      'servicePrincipalIdentityDetails': ?pulumi.Input.mapOptionalInputValue<SiteSpnPropertiesResponse, Map<String, dynamic>>(servicePrincipalIdentityDetails, (value) => value.toMap()),
     };
   }
 
   factory SitePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SitePropertiesResponse(
-      agentDetails: map['agentDetails'] == null ? null : SiteAgentPropertiesResponse.fromMap((map['agentDetails'] as Map).cast<String, dynamic>()),
-      applianceName: map['applianceName'] == null ? null : map['applianceName'] as String,
-      discoverySolutionId: map['discoverySolutionId'] == null ? null : map['discoverySolutionId'] as String,
-      serviceEndpoint: map['serviceEndpoint'] as String,
-      servicePrincipalIdentityDetails: map['servicePrincipalIdentityDetails'] == null ? null : SiteSpnPropertiesResponse.fromMap((map['servicePrincipalIdentityDetails'] as Map).cast<String, dynamic>()),
+      agentDetails: map['agentDetails'] == null ? null : (SiteAgentPropertiesResponse.fromMap((map['agentDetails'] as Map).cast<String, dynamic>())).input(),
+      applianceName: map['applianceName'] == null ? null : (map['applianceName'] as String).input(),
+      discoverySolutionId: map['discoverySolutionId'] == null ? null : (map['discoverySolutionId'] as String).input(),
+      serviceEndpoint: (map['serviceEndpoint'] as String).input(),
+      servicePrincipalIdentityDetails: map['servicePrincipalIdentityDetails'] == null ? null : (SiteSpnPropertiesResponse.fromMap((map['servicePrincipalIdentityDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -5,17 +5,17 @@ import 'network_connection_monitor_test_configuration_http_configuration_request
 
 class NetworkConnectionMonitorTestConfigurationHttpConfiguration {
   /// The HTTP method for the HTTP request. Possible values are `Get` and `Post`. Defaults to `Get`.
-  final String? method;
+  final pulumi.Input<String>? method;
   /// The path component of the URI. It only accepts the absolute path.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// The port for the HTTP connection.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Should HTTPS be preferred over HTTP in cases where the choice is not explicit? Defaults to `false`.
-  final bool? preferHttps;
+  final pulumi.Input<bool>? preferHttps;
   /// A `request_header` block as defined below.
-  final List<NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader>? requestHeaders;
+  final pulumi.Input<List<NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader>>? requestHeaders;
   /// The HTTP status codes to consider successful. For instance, `2xx`, `301-304` and `418`.
-  final List<String>? validStatusCodeRanges;
+  final pulumi.Input<List<String>>? validStatusCodeRanges;
 
   /// Creates a new [NetworkConnectionMonitorTestConfigurationHttpConfiguration].
   /// [method] The HTTP method for the HTTP request. Possible values are `Get` and `Post`. Defaults to `Get`.
@@ -39,19 +39,19 @@ class NetworkConnectionMonitorTestConfigurationHttpConfiguration {
       'path': ?path,
       'port': ?port,
       'preferHttps': ?preferHttps,
-      'requestHeaders': ?requestHeaders == null ? null : pulumi.Input.encodeList<NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader, Map<String, dynamic>>(requestHeaders!, (value) => value.toMap()),
+      'requestHeaders': ?pulumi.Input.mapOptionalInputValue<List<NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader>, List<Map<String, dynamic>>>(requestHeaders, (value) => pulumi.Input.encodeList<NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'validStatusCodeRanges': ?validStatusCodeRanges,
     };
   }
 
   factory NetworkConnectionMonitorTestConfigurationHttpConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorTestConfigurationHttpConfiguration(
-      method: map['method'] == null ? null : map['method'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      preferHttps: map['preferHttps'] == null ? null : map['preferHttps'] as bool,
-      requestHeaders: map['requestHeaders'] == null ? null : pulumi.Input.decodeList<NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader>(map['requestHeaders'], (value) => NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader.fromMap((value as Map).cast<String, dynamic>())),
-      validStatusCodeRanges: map['validStatusCodeRanges'] == null ? null : (map['validStatusCodeRanges'] as List).cast<String>(),
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      preferHttps: map['preferHttps'] == null ? null : (map['preferHttps'] as bool).input(),
+      requestHeaders: map['requestHeaders'] == null ? null : (pulumi.Input.decodeList<NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader>(map['requestHeaders'], (value) => NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validStatusCodeRanges: map['validStatusCodeRanges'] == null ? null : ((map['validStatusCodeRanges'] as List).cast<String>()).input(),
     );
   }
 }

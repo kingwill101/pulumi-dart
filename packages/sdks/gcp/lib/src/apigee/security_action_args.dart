@@ -62,31 +62,19 @@ class SecurityActionArgs {
   /// [state] Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
   /// [ttl] The TTL for this SecurityAction.
   SecurityActionArgs({
-    pulumi.Output<Map<String, dynamic>>? allow,
-    pulumi.Output<List<String>>? apiProxies,
-    required pulumi.Output<SecurityActionConditionConfig> conditionConfig,
-    pulumi.Output<SecurityActionDeny>? deny,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> envId,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<SecurityActionFlag>? flag,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<String> securityActionId,
-    required pulumi.Output<String> state,
-    pulumi.Output<String>? ttl,
-  }) :
-      allow = pulumi.Input.asOptionalInput<Map<String, dynamic>>(allow),
-      apiProxies = pulumi.Input.asOptionalInput<List<String>>(apiProxies),
-      conditionConfig = pulumi.Input.asInput<SecurityActionConditionConfig>(conditionConfig),
-      deny = pulumi.Input.asOptionalInput<SecurityActionDeny>(deny),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      envId = pulumi.Input.asInput<String>(envId),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      flag = pulumi.Input.asOptionalInput<SecurityActionFlag>(flag),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      securityActionId = pulumi.Input.asInput<String>(securityActionId),
-      state = pulumi.Input.asInput<String>(state),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl);
+    this.allow,
+    this.apiProxies,
+    required this.conditionConfig,
+    this.deny,
+    this.description,
+    required this.envId,
+    this.expireTime,
+    this.flag,
+    required this.orgId,
+    required this.securityActionId,
+    required this.state,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,18 +95,18 @@ class SecurityActionArgs {
 
   factory SecurityActionArgs.fromMap(Map<String, dynamic> map) {
     return SecurityActionArgs(
-      allow: map['allow'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['allow'] as Map).cast<String, dynamic>()),
-      apiProxies: map['apiProxies'] == null ? null : pulumi.Output.create<List<String>>((map['apiProxies'] as List).cast<String>()),
-      conditionConfig: pulumi.Output.create<SecurityActionConditionConfig>(SecurityActionConditionConfig.fromMap((map['conditionConfig'] as Map).cast<String, dynamic>())),
-      deny: map['deny'] == null ? null : pulumi.Output.create<SecurityActionDeny>(SecurityActionDeny.fromMap((map['deny'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      envId: pulumi.Output.create<String>(map['envId'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      flag: map['flag'] == null ? null : pulumi.Output.create<SecurityActionFlag>(SecurityActionFlag.fromMap((map['flag'] as Map).cast<String, dynamic>())),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      securityActionId: pulumi.Output.create<String>(map['securityActionId'] as String),
-      state: pulumi.Output.create<String>(map['state'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
+      allow: map['allow'] == null ? null : ((map['allow'] as Map).cast<String, dynamic>()).input(),
+      apiProxies: map['apiProxies'] == null ? null : ((map['apiProxies'] as List).cast<String>()).input(),
+      conditionConfig: (SecurityActionConditionConfig.fromMap((map['conditionConfig'] as Map).cast<String, dynamic>())).input(),
+      deny: map['deny'] == null ? null : (SecurityActionDeny.fromMap((map['deny'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      envId: (map['envId'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      flag: map['flag'] == null ? null : (SecurityActionFlag.fromMap((map['flag'] as Map).cast<String, dynamic>())).input(),
+      orgId: (map['orgId'] as String).input(),
+      securityActionId: (map['securityActionId'] as String).input(),
+      state: (map['state'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
     );
   }
 }

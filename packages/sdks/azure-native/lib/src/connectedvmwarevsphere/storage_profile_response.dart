@@ -7,9 +7,9 @@ import 'virtual_scsicontroller_response.dart';
 /// Specifies the storage settings for the virtual machine disks.
 class StorageProfileResponse {
   /// Gets or sets the list of virtual disks associated with the virtual machine.
-  final List<VirtualDiskResponse>? disks;
+  final pulumi.Input<List<VirtualDiskResponse>>? disks;
   /// Gets or sets the list of virtual SCSI controllers associated with the virtual machine.
-  final List<VirtualSCSIControllerResponse> scsiControllers;
+  final pulumi.Input<List<VirtualSCSIControllerResponse>> scsiControllers;
 
   /// Creates a new [StorageProfileResponse].
   /// [disks] Gets or sets the list of virtual disks associated with the virtual machine.
@@ -21,15 +21,15 @@ class StorageProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks': ?disks == null ? null : pulumi.Input.encodeList<VirtualDiskResponse, Map<String, dynamic>>(disks!, (value) => value.toMap()),
-      'scsiControllers': pulumi.Input.encodeList<VirtualSCSIControllerResponse, Map<String, dynamic>>(scsiControllers, (value) => value.toMap()),
+      'disks': ?pulumi.Input.mapOptionalInputValue<List<VirtualDiskResponse>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<VirtualDiskResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scsiControllers': pulumi.Input.mapInputValue<List<VirtualSCSIControllerResponse>, List<Map<String, dynamic>>>(scsiControllers, (value) => pulumi.Input.encodeList<VirtualSCSIControllerResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      disks: map['disks'] == null ? null : pulumi.Input.decodeList<VirtualDiskResponse>(map['disks'], (value) => VirtualDiskResponse.fromMap((value as Map).cast<String, dynamic>())),
-      scsiControllers: pulumi.Input.decodeList<VirtualSCSIControllerResponse>(map['scsiControllers'], (value) => VirtualSCSIControllerResponse.fromMap((value as Map).cast<String, dynamic>())),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<VirtualDiskResponse>(map['disks'], (value) => VirtualDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scsiControllers: (pulumi.Input.decodeList<VirtualSCSIControllerResponse>(map['scsiControllers'], (value) => VirtualSCSIControllerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

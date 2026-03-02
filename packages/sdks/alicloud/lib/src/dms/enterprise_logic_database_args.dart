@@ -19,13 +19,10 @@ class EnterpriseLogicDatabaseArgs {
   /// [databaseIds] Sub-Database ID
   /// [logicDatabaseId] The ID of the logical Library.
   EnterpriseLogicDatabaseArgs({
-    required pulumi.Output<String> alias,
-    required pulumi.Output<List<String>> databaseIds,
-    pulumi.Output<String>? logicDatabaseId,
-  }) :
-      alias = pulumi.Input.asInput<String>(alias),
-      databaseIds = pulumi.Input.asInput<List<String>>(databaseIds),
-      logicDatabaseId = pulumi.Input.asOptionalInput<String>(logicDatabaseId);
+    required this.alias,
+    required this.databaseIds,
+    this.logicDatabaseId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EnterpriseLogicDatabaseArgs {
 
   factory EnterpriseLogicDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseLogicDatabaseArgs(
-      alias: pulumi.Output.create<String>(map['alias'] as String),
-      databaseIds: pulumi.Output.create<List<String>>((map['databaseIds'] as List).cast<String>()),
-      logicDatabaseId: map['logicDatabaseId'] == null ? null : pulumi.Output.create<String>(map['logicDatabaseId'] as String),
+      alias: (map['alias'] as String).input(),
+      databaseIds: ((map['databaseIds'] as List).cast<String>()).input(),
+      logicDatabaseId: map['logicDatabaseId'] == null ? null : (map['logicDatabaseId'] as String).input(),
     );
   }
 }

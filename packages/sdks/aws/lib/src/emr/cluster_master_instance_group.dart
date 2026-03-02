@@ -5,17 +5,17 @@ import 'cluster_master_instance_group_ebs_config.dart';
 
 class ClusterMasterInstanceGroup {
   /// Bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
-  final String? bidPrice;
+  final pulumi.Input<String>? bidPrice;
   /// Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
-  final List<ClusterMasterInstanceGroupEbsConfig>? ebsConfigs;
+  final pulumi.Input<List<ClusterMasterInstanceGroupEbsConfig>>? ebsConfigs;
   /// Master node type Instance Group ID, if using Instance Group for this node type.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `core_instance_group` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have map public IP on launch enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `termination_protection = false` configuration applied before destroying this resource.
-  final int? instanceCount;
+  final pulumi.Input<int>? instanceCount;
   /// EC2 instance type for all instances in the instance group.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Friendly name given to the instance group.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ClusterMasterInstanceGroup].
   /// [bidPrice] Bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
@@ -36,7 +36,7 @@ class ClusterMasterInstanceGroup {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bidPrice': ?bidPrice,
-      'ebsConfigs': ?ebsConfigs == null ? null : pulumi.Input.encodeList<ClusterMasterInstanceGroupEbsConfig, Map<String, dynamic>>(ebsConfigs!, (value) => value.toMap()),
+      'ebsConfigs': ?pulumi.Input.mapOptionalInputValue<List<ClusterMasterInstanceGroupEbsConfig>, List<Map<String, dynamic>>>(ebsConfigs, (value) => pulumi.Input.encodeList<ClusterMasterInstanceGroupEbsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'instanceCount': ?instanceCount,
       'instanceType': instanceType,
@@ -46,12 +46,12 @@ class ClusterMasterInstanceGroup {
 
   factory ClusterMasterInstanceGroup.fromMap(Map<String, dynamic> map) {
     return ClusterMasterInstanceGroup(
-      bidPrice: map['bidPrice'] == null ? null : map['bidPrice'] as String,
-      ebsConfigs: map['ebsConfigs'] == null ? null : pulumi.Input.decodeList<ClusterMasterInstanceGroupEbsConfig>(map['ebsConfigs'], (value) => ClusterMasterInstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      instanceCount: map['instanceCount'] == null ? null : map['instanceCount'] as int,
-      instanceType: map['instanceType'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      bidPrice: map['bidPrice'] == null ? null : (map['bidPrice'] as String).input(),
+      ebsConfigs: map['ebsConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterMasterInstanceGroupEbsConfig>(map['ebsConfigs'], (value) => ClusterMasterInstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

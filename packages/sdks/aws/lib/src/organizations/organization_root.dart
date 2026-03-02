@@ -5,13 +5,13 @@ import 'organization_root_policy_type.dart';
 
 class OrganizationRoot {
   /// ARN of the root.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// Identifier of the root.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of the policy type.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// List of policy types enabled for this root. All elements have these attributes:
-  final List<OrganizationRootPolicyType>? policyTypes;
+  final pulumi.Input<List<OrganizationRootPolicyType>>? policyTypes;
 
   /// Creates a new [OrganizationRoot].
   /// [arn] ARN of the root.
@@ -30,16 +30,16 @@ class OrganizationRoot {
       'arn': ?arn,
       'id': ?id,
       'name': ?name,
-      'policyTypes': ?policyTypes == null ? null : pulumi.Input.encodeList<OrganizationRootPolicyType, Map<String, dynamic>>(policyTypes!, (value) => value.toMap()),
+      'policyTypes': ?pulumi.Input.mapOptionalInputValue<List<OrganizationRootPolicyType>, List<Map<String, dynamic>>>(policyTypes, (value) => pulumi.Input.encodeList<OrganizationRootPolicyType, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OrganizationRoot.fromMap(Map<String, dynamic> map) {
     return OrganizationRoot(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      policyTypes: map['policyTypes'] == null ? null : pulumi.Input.decodeList<OrganizationRootPolicyType>(map['policyTypes'], (value) => OrganizationRootPolicyType.fromMap((value as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyTypes: map['policyTypes'] == null ? null : (pulumi.Input.decodeList<OrganizationRootPolicyType>(map['policyTypes'], (value) => OrganizationRootPolicyType.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

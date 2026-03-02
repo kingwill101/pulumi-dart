@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VoiceConnectorStreamingMediaInsightsConfiguration {
   /// The media insights configuration that will be invoked by the Voice Connector.
-  final String? configurationArn;
+  final pulumi.Input<String>? configurationArn;
   /// When `true`, the media insights configuration is not enabled. Defaults to `false`.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// Creates a new [VoiceConnectorStreamingMediaInsightsConfiguration].
   /// [configurationArn] The media insights configuration that will be invoked by the Voice Connector.
@@ -24,8 +25,8 @@ class VoiceConnectorStreamingMediaInsightsConfiguration {
 
   factory VoiceConnectorStreamingMediaInsightsConfiguration.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorStreamingMediaInsightsConfiguration(
-      configurationArn: map['configurationArn'] == null ? null : map['configurationArn'] as String,
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
+      configurationArn: map['configurationArn'] == null ? null : (map['configurationArn'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
     );
   }
 }

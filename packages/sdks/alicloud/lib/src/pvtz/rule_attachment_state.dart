@@ -14,11 +14,9 @@ class RuleAttachmentState {
   /// [ruleId] The ID of the rule.
   /// [vpcs] The List of the VPC. See `vpcs` below.
   RuleAttachmentState({
-    pulumi.Output<String>? ruleId,
-    pulumi.Output<List<RuleAttachmentVpc>>? vpcs,
-  }) :
-      ruleId = pulumi.Input.asOptionalInput<String>(ruleId),
-      vpcs = pulumi.Input.asOptionalInput<List<RuleAttachmentVpc>>(vpcs);
+    this.ruleId,
+    this.vpcs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class RuleAttachmentState {
 
   factory RuleAttachmentState.fromMap(Map<String, dynamic> map) {
     return RuleAttachmentState(
-      ruleId: map['ruleId'] == null ? null : pulumi.Output.create<String>(map['ruleId'] as String),
-      vpcs: map['vpcs'] == null ? null : pulumi.Output.create<List<RuleAttachmentVpc>>(pulumi.Input.decodeList<RuleAttachmentVpc>(map['vpcs'], (value) => RuleAttachmentVpc.fromMap((value as Map).cast<String, dynamic>()))),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<RuleAttachmentVpc>(map['vpcs'], (value) => RuleAttachmentVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

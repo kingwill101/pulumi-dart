@@ -43,27 +43,17 @@ class StandardAssignmentArgs {
   /// [resourceId] The identifier of the resource.
   /// [standardAssignmentName] The standard assignments assignment key - unique key for the standard assignment
   StandardAssignmentArgs({
-    pulumi.Output<AssignedStandardItem>? assignedStandard,
-    pulumi.Output<StandardAssignmentPropertiesAttestationData>? attestationData,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? effect,
-    pulumi.Output<List<String>>? excludedScopes,
-    pulumi.Output<StandardAssignmentPropertiesExemptionData>? exemptionData,
-    pulumi.Output<String>? expiresOn,
-    required pulumi.Output<String> resourceId,
-    pulumi.Output<String>? standardAssignmentName,
-  }) :
-      assignedStandard = pulumi.Input.asOptionalInput<AssignedStandardItem>(assignedStandard),
-      attestationData = pulumi.Input.asOptionalInput<StandardAssignmentPropertiesAttestationData>(attestationData),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      effect = pulumi.Input.asOptionalInput<String>(effect),
-      excludedScopes = pulumi.Input.asOptionalInput<List<String>>(excludedScopes),
-      exemptionData = pulumi.Input.asOptionalInput<StandardAssignmentPropertiesExemptionData>(exemptionData),
-      expiresOn = pulumi.Input.asOptionalInput<String>(expiresOn),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      standardAssignmentName = pulumi.Input.asOptionalInput<String>(standardAssignmentName);
+    this.assignedStandard,
+    this.attestationData,
+    this.description,
+    this.displayName,
+    this.effect,
+    this.excludedScopes,
+    this.exemptionData,
+    this.expiresOn,
+    required this.resourceId,
+    this.standardAssignmentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class StandardAssignmentArgs {
 
   factory StandardAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return StandardAssignmentArgs(
-      assignedStandard: map['assignedStandard'] == null ? null : pulumi.Output.create<AssignedStandardItem>(AssignedStandardItem.fromMap((map['assignedStandard'] as Map).cast<String, dynamic>())),
-      attestationData: map['attestationData'] == null ? null : pulumi.Output.create<StandardAssignmentPropertiesAttestationData>(StandardAssignmentPropertiesAttestationData.fromMap((map['attestationData'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      effect: map['effect'] == null ? null : pulumi.Output.create<String>(map['effect'] as String),
-      excludedScopes: map['excludedScopes'] == null ? null : pulumi.Output.create<List<String>>((map['excludedScopes'] as List).cast<String>()),
-      exemptionData: map['exemptionData'] == null ? null : pulumi.Output.create<StandardAssignmentPropertiesExemptionData>(StandardAssignmentPropertiesExemptionData.fromMap((map['exemptionData'] as Map).cast<String, dynamic>())),
-      expiresOn: map['expiresOn'] == null ? null : pulumi.Output.create<String>(map['expiresOn'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      standardAssignmentName: map['standardAssignmentName'] == null ? null : pulumi.Output.create<String>(map['standardAssignmentName'] as String),
+      assignedStandard: map['assignedStandard'] == null ? null : (AssignedStandardItem.fromMap((map['assignedStandard'] as Map).cast<String, dynamic>())).input(),
+      attestationData: map['attestationData'] == null ? null : (StandardAssignmentPropertiesAttestationData.fromMap((map['attestationData'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
+      excludedScopes: map['excludedScopes'] == null ? null : ((map['excludedScopes'] as List).cast<String>()).input(),
+      exemptionData: map['exemptionData'] == null ? null : (StandardAssignmentPropertiesExemptionData.fromMap((map['exemptionData'] as Map).cast<String, dynamic>())).input(),
+      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      standardAssignmentName: map['standardAssignmentName'] == null ? null : (map['standardAssignmentName'] as String).input(),
     );
   }
 }

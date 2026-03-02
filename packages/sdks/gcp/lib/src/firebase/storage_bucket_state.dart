@@ -17,13 +17,10 @@ class StorageBucketState {
   /// [name] Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
   /// [project] The ID of the project in which the resource belongs.
   StorageBucketState({
-    pulumi.Output<String>? bucketId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      bucketId = pulumi.Input.asOptionalInput<String>(bucketId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.bucketId,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class StorageBucketState {
 
   factory StorageBucketState.fromMap(Map<String, dynamic> map) {
     return StorageBucketState(
-      bucketId: map['bucketId'] == null ? null : pulumi.Output.create<String>(map['bucketId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bucketId: map['bucketId'] == null ? null : (map['bucketId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

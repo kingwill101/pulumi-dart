@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Read-replica configuration specific to MySQL databases.
 class MySqlReplicaConfigurationResponseSqladminV1beta4 {
   /// PEM representation of the trusted CA's x509 certificate.
-  final String caCertificate;
+  final pulumi.Input<String> caCertificate;
   /// PEM representation of the replica's x509 certificate.
-  final String clientCertificate;
+  final pulumi.Input<String> clientCertificate;
   /// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
-  final String clientKey;
+  final pulumi.Input<String> clientKey;
   /// Seconds to wait between connect retries. MySQL's default is 60 seconds.
-  final int connectRetryInterval;
+  final pulumi.Input<int> connectRetryInterval;
   /// Path to a SQL dump file in Google Cloud Storage from which the replica instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps have the binlog co-ordinates from which replication begins. This can be accomplished by setting --master-data to 1 when using mysqldump.
-  final String dumpFilePath;
+  final pulumi.Input<String> dumpFilePath;
   /// This is always `sql#mysqlReplicaConfiguration`.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Interval in milliseconds between replication heartbeats.
-  final String masterHeartbeatPeriod;
+  final pulumi.Input<String> masterHeartbeatPeriod;
   /// The password for the replication connection.
-  final String password;
+  final pulumi.Input<String> password;
   /// A list of permissible ciphers to use for SSL encryption.
-  final String sslCipher;
+  final pulumi.Input<String> sslCipher;
   /// The username for the replication connection.
-  final String username;
+  final pulumi.Input<String> username;
   /// Whether or not to check the primary instance's Common Name value in the certificate that it sends during the SSL handshake.
-  final bool verifyServerCertificate;
+  final pulumi.Input<bool> verifyServerCertificate;
 
   /// Creates a new [MySqlReplicaConfigurationResponseSqladminV1beta4].
   /// [caCertificate] PEM representation of the trusted CA's x509 certificate.
@@ -70,17 +71,17 @@ class MySqlReplicaConfigurationResponseSqladminV1beta4 {
 
   factory MySqlReplicaConfigurationResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return MySqlReplicaConfigurationResponseSqladminV1beta4(
-      caCertificate: map['caCertificate'] as String,
-      clientCertificate: map['clientCertificate'] as String,
-      clientKey: map['clientKey'] as String,
-      connectRetryInterval: map['connectRetryInterval'] as int,
-      dumpFilePath: map['dumpFilePath'] as String,
-      kind: map['kind'] as String,
-      masterHeartbeatPeriod: map['masterHeartbeatPeriod'] as String,
-      password: map['password'] as String,
-      sslCipher: map['sslCipher'] as String,
-      username: map['username'] as String,
-      verifyServerCertificate: map['verifyServerCertificate'] as bool,
+      caCertificate: (map['caCertificate'] as String).input(),
+      clientCertificate: (map['clientCertificate'] as String).input(),
+      clientKey: (map['clientKey'] as String).input(),
+      connectRetryInterval: (map['connectRetryInterval'] as int).input(),
+      dumpFilePath: (map['dumpFilePath'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      masterHeartbeatPeriod: (map['masterHeartbeatPeriod'] as String).input(),
+      password: (map['password'] as String).input(),
+      sslCipher: (map['sslCipher'] as String).input(),
+      username: (map['username'] as String).input(),
+      verifyServerCertificate: (map['verifyServerCertificate'] as bool).input(),
     );
   }
 }

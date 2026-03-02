@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Template mapping rule profile
 class ArmTemplateMappingRuleProfileResponse {
   /// List of template parameters.
-  final String? templateParameters;
+  final pulumi.Input<String>? templateParameters;
 
   /// Creates a new [ArmTemplateMappingRuleProfileResponse].
   /// [templateParameters] List of template parameters.
@@ -20,7 +21,7 @@ class ArmTemplateMappingRuleProfileResponse {
 
   factory ArmTemplateMappingRuleProfileResponse.fromMap(Map<String, dynamic> map) {
     return ArmTemplateMappingRuleProfileResponse(
-      templateParameters: map['templateParameters'] == null ? null : map['templateParameters'] as String,
+      templateParameters: map['templateParameters'] == null ? null : (map['templateParameters'] as String).input(),
     );
   }
 }

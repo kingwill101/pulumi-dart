@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'experiment_plan_template_template_pipeline_env_params.dart';
 
 class ExperimentPlanTemplateTemplatePipeline {
   /// Contains a series of parameters related to the environment. See `env_params` below.
-  final ExperimentPlanTemplateTemplatePipelineEnvParams envParams;
+  final pulumi.Input<ExperimentPlanTemplateTemplatePipelineEnvParams> envParams;
   /// Indicates the sequence number of the pipeline node.
-  final int pipelineOrder;
+  final pulumi.Input<int> pipelineOrder;
   /// The use of the template scenario. It can have the following optional parameters:
   /// - baseline: benchmark evaluation
-  final String scene;
+  final pulumi.Input<String> scene;
   /// Represents additional parameters for the run.
-  final Map<String, String>? settingParams;
+  final pulumi.Input<Map<String, String>>? settingParams;
   /// Used to uniquely identify a specific payload.
-  final int workloadId;
+  final pulumi.Input<int> workloadId;
   /// The name used to represent a specific payload.
-  final String workloadName;
+  final pulumi.Input<String> workloadName;
 
   /// Creates a new [ExperimentPlanTemplateTemplatePipeline].
   /// [envParams] Contains a series of parameters related to the environment. See `env_params` below.
@@ -35,7 +36,7 @@ class ExperimentPlanTemplateTemplatePipeline {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'envParams': envParams.toMap(),
+      'envParams': pulumi.Input.mapInputValue<ExperimentPlanTemplateTemplatePipelineEnvParams, Map<String, dynamic>>(envParams, (value) => value.toMap()),
       'pipelineOrder': pipelineOrder,
       'scene': scene,
       'settingParams': ?settingParams,
@@ -46,12 +47,12 @@ class ExperimentPlanTemplateTemplatePipeline {
 
   factory ExperimentPlanTemplateTemplatePipeline.fromMap(Map<String, dynamic> map) {
     return ExperimentPlanTemplateTemplatePipeline(
-      envParams: ExperimentPlanTemplateTemplatePipelineEnvParams.fromMap((map['envParams'] as Map).cast<String, dynamic>()),
-      pipelineOrder: map['pipelineOrder'] as int,
-      scene: map['scene'] as String,
-      settingParams: map['settingParams'] == null ? null : (map['settingParams'] as Map).cast<String, String>(),
-      workloadId: map['workloadId'] as int,
-      workloadName: map['workloadName'] as String,
+      envParams: (ExperimentPlanTemplateTemplatePipelineEnvParams.fromMap((map['envParams'] as Map).cast<String, dynamic>())).input(),
+      pipelineOrder: (map['pipelineOrder'] as int).input(),
+      scene: (map['scene'] as String).input(),
+      settingParams: map['settingParams'] == null ? null : ((map['settingParams'] as Map).cast<String, String>()).input(),
+      workloadId: (map['workloadId'] as int).input(),
+      workloadName: (map['workloadName'] as String).input(),
     );
   }
 }

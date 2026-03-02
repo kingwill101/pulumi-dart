@@ -21,15 +21,11 @@ class FlexibleServerVirtualEndpointState {
   /// [sourceServerId] The Resource ID of the *Source* Postgres Flexible Server this should be associated with. Changing this forces a new resource to be created.
   /// [type] The type of Virtual Endpoint. Currently only `ReadWrite` is supported. Changing this forces a new resource to be created.
   FlexibleServerVirtualEndpointState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? replicaServerId,
-    pulumi.Output<String>? sourceServerId,
-    pulumi.Output<String>? type,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      replicaServerId = pulumi.Input.asOptionalInput<String>(replicaServerId),
-      sourceServerId = pulumi.Input.asOptionalInput<String>(sourceServerId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.name,
+    this.replicaServerId,
+    this.sourceServerId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class FlexibleServerVirtualEndpointState {
 
   factory FlexibleServerVirtualEndpointState.fromMap(Map<String, dynamic> map) {
     return FlexibleServerVirtualEndpointState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      replicaServerId: map['replicaServerId'] == null ? null : pulumi.Output.create<String>(map['replicaServerId'] as String),
-      sourceServerId: map['sourceServerId'] == null ? null : pulumi.Output.create<String>(map['sourceServerId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      replicaServerId: map['replicaServerId'] == null ? null : (map['replicaServerId'] as String).input(),
+      sourceServerId: map['sourceServerId'] == null ? null : (map['sourceServerId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

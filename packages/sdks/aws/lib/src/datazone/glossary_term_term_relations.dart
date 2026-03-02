@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlossaryTermTermRelations {
   /// String array that calssifies the term relations.
-  final List<String>? classifies;
-  final List<String>? isAs;
+  final pulumi.Input<List<String>>? classifies;
+  final pulumi.Input<List<String>>? isAs;
 
   /// Creates a new [GlossaryTermTermRelations].
   /// [classifies] String array that calssifies the term relations.
@@ -23,8 +24,8 @@ class GlossaryTermTermRelations {
 
   factory GlossaryTermTermRelations.fromMap(Map<String, dynamic> map) {
     return GlossaryTermTermRelations(
-      classifies: map['classifies'] == null ? null : (map['classifies'] as List).cast<String>(),
-      isAs: map['isAs'] == null ? null : (map['isAs'] as List).cast<String>(),
+      classifies: map['classifies'] == null ? null : ((map['classifies'] as List).cast<String>()).input(),
+      isAs: map['isAs'] == null ? null : ((map['isAs'] as List).cast<String>()).input(),
     );
   }
 }

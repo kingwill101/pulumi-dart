@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HardwareValidationStatusResponse {
   /// The timestamp of the hardware validation execution.
-  final String lastValidationTime;
+  final pulumi.Input<String> lastValidationTime;
   /// The outcome of the hardware validation.
-  final String result;
+  final pulumi.Input<String> result;
 
   /// Creates a new [HardwareValidationStatusResponse].
   /// [lastValidationTime] The timestamp of the hardware validation execution.
@@ -24,8 +25,8 @@ class HardwareValidationStatusResponse {
 
   factory HardwareValidationStatusResponse.fromMap(Map<String, dynamic> map) {
     return HardwareValidationStatusResponse(
-      lastValidationTime: map['lastValidationTime'] as String,
-      result: map['result'] as String,
+      lastValidationTime: (map['lastValidationTime'] as String).input(),
+      result: (map['result'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsIntegrationsAwsMq {
   /// Specify each AWS region that includes the resources that you want to monitor.
-  final List<String>? awsRegions;
+  final pulumi.Input<List<String>>? awsRegions;
   /// The data polling interval in seconds.
-  final int? metricsPollingInterval;
+  final pulumi.Input<int>? metricsPollingInterval;
 
   /// Creates a new [AwsIntegrationsAwsMq].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
@@ -24,8 +25,8 @@ class AwsIntegrationsAwsMq {
 
   factory AwsIntegrationsAwsMq.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsAwsMq(
-      awsRegions: map['awsRegions'] == null ? null : (map['awsRegions'] as List).cast<String>(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : map['metricsPollingInterval'] as int,
+      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions'] as List).cast<String>()).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
     );
   }
 }

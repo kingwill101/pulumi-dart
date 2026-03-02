@@ -42,27 +42,17 @@ class PipelineArgs {
   /// [type] The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
   /// [workload] Workload information for creating new jobs.
   PipelineArgs({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? pipelineSources,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudDatapipelinesV1ScheduleSpec>? scheduleInfo,
-    pulumi.Output<String>? schedulerServiceAccountEmail,
-    required pulumi.Output<PipelineState> state,
-    required pulumi.Output<PipelineType> type,
-    pulumi.Output<GoogleCloudDatapipelinesV1Workload>? workload,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pipelineSources = pulumi.Input.asOptionalInput<Map<String, String>>(pipelineSources),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scheduleInfo = pulumi.Input.asOptionalInput<GoogleCloudDatapipelinesV1ScheduleSpec>(scheduleInfo),
-      schedulerServiceAccountEmail = pulumi.Input.asOptionalInput<String>(schedulerServiceAccountEmail),
-      state = pulumi.Input.asInput<PipelineState>(state),
-      type = pulumi.Input.asInput<PipelineType>(type),
-      workload = pulumi.Input.asOptionalInput<GoogleCloudDatapipelinesV1Workload>(workload);
+    required this.displayName,
+    this.location,
+    this.name,
+    this.pipelineSources,
+    this.project,
+    this.scheduleInfo,
+    this.schedulerServiceAccountEmail,
+    required this.state,
+    required this.type,
+    this.workload,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pipelineSources: map['pipelineSources'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pipelineSources'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scheduleInfo: map['scheduleInfo'] == null ? null : pulumi.Output.create<GoogleCloudDatapipelinesV1ScheduleSpec>(GoogleCloudDatapipelinesV1ScheduleSpec.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>())),
-      schedulerServiceAccountEmail: map['schedulerServiceAccountEmail'] == null ? null : pulumi.Output.create<String>(map['schedulerServiceAccountEmail'] as String),
-      state: pulumi.Output.create<PipelineState>(PipelineState.fromValue(map['state'] as String)),
-      type: pulumi.Output.create<PipelineType>(PipelineType.fromValue(map['type'] as String)),
-      workload: map['workload'] == null ? null : pulumi.Output.create<GoogleCloudDatapipelinesV1Workload>(GoogleCloudDatapipelinesV1Workload.fromMap((map['workload'] as Map).cast<String, dynamic>())),
+      displayName: (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pipelineSources: map['pipelineSources'] == null ? null : ((map['pipelineSources'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scheduleInfo: map['scheduleInfo'] == null ? null : (GoogleCloudDatapipelinesV1ScheduleSpec.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>())).input(),
+      schedulerServiceAccountEmail: map['schedulerServiceAccountEmail'] == null ? null : (map['schedulerServiceAccountEmail'] as String).input(),
+      state: (PipelineState.fromValue(map['state'] as String)).input(),
+      type: (PipelineType.fromValue(map['type'] as String)).input(),
+      workload: map['workload'] == null ? null : (GoogleCloudDatapipelinesV1Workload.fromMap((map['workload'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

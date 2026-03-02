@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mysql_ssl_config_response.dart';
 
 /// MySQL database profile.
 class MysqlProfileResponse {
   /// Hostname for the MySQL connection.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// Input only. Password for the MySQL connection.
-  final String password;
+  final pulumi.Input<String> password;
   /// Port for the MySQL connection, default value is 3306.
-  final int port;
+  final pulumi.Input<int> port;
   /// SSL configuration for the MySQL connection.
-  final MysqlSslConfigResponse sslConfig;
+  final pulumi.Input<MysqlSslConfigResponse> sslConfig;
   /// Username for the MySQL connection.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [MysqlProfileResponse].
   /// [hostname] Hostname for the MySQL connection.
@@ -34,18 +35,18 @@ class MysqlProfileResponse {
       'hostname': hostname,
       'password': password,
       'port': port,
-      'sslConfig': sslConfig.toMap(),
+      'sslConfig': pulumi.Input.mapInputValue<MysqlSslConfigResponse, Map<String, dynamic>>(sslConfig, (value) => value.toMap()),
       'username': username,
     };
   }
 
   factory MysqlProfileResponse.fromMap(Map<String, dynamic> map) {
     return MysqlProfileResponse(
-      hostname: map['hostname'] as String,
-      password: map['password'] as String,
-      port: map['port'] as int,
-      sslConfig: MysqlSslConfigResponse.fromMap((map['sslConfig'] as Map).cast<String, dynamic>()),
-      username: map['username'] as String,
+      hostname: (map['hostname'] as String).input(),
+      password: (map['password'] as String).input(),
+      port: (map['port'] as int).input(),
+      sslConfig: (MysqlSslConfigResponse.fromMap((map['sslConfig'] as Map).cast<String, dynamic>())).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

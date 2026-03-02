@@ -47,33 +47,20 @@ class HoneypotProbeState {
   /// [uuid] Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
   /// [vpcId] The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
   HoneypotProbeState({
-    pulumi.Output<bool>? arp,
-    pulumi.Output<String>? controlNodeId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<HoneypotProbeHoneypotBindList>>? honeypotBindLists,
-    pulumi.Output<String>? honeypotProbeId,
-    pulumi.Output<bool>? ping,
-    pulumi.Output<String>? probeType,
-    pulumi.Output<String>? probeVersion,
-    pulumi.Output<String>? proxyIp,
-    pulumi.Output<List<String>>? serviceIpLists,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? uuid,
-    pulumi.Output<String>? vpcId,
-  }) :
-      arp = pulumi.Input.asOptionalInput<bool>(arp),
-      controlNodeId = pulumi.Input.asOptionalInput<String>(controlNodeId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      honeypotBindLists = pulumi.Input.asOptionalInput<List<HoneypotProbeHoneypotBindList>>(honeypotBindLists),
-      honeypotProbeId = pulumi.Input.asOptionalInput<String>(honeypotProbeId),
-      ping = pulumi.Input.asOptionalInput<bool>(ping),
-      probeType = pulumi.Input.asOptionalInput<String>(probeType),
-      probeVersion = pulumi.Input.asOptionalInput<String>(probeVersion),
-      proxyIp = pulumi.Input.asOptionalInput<String>(proxyIp),
-      serviceIpLists = pulumi.Input.asOptionalInput<List<String>>(serviceIpLists),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.arp,
+    this.controlNodeId,
+    this.displayName,
+    this.honeypotBindLists,
+    this.honeypotProbeId,
+    this.ping,
+    this.probeType,
+    this.probeVersion,
+    this.proxyIp,
+    this.serviceIpLists,
+    this.status,
+    this.uuid,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class HoneypotProbeState {
 
   factory HoneypotProbeState.fromMap(Map<String, dynamic> map) {
     return HoneypotProbeState(
-      arp: map['arp'] == null ? null : pulumi.Output.create<bool>(map['arp'] as bool),
-      controlNodeId: map['controlNodeId'] == null ? null : pulumi.Output.create<String>(map['controlNodeId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      honeypotBindLists: map['honeypotBindLists'] == null ? null : pulumi.Output.create<List<HoneypotProbeHoneypotBindList>>(pulumi.Input.decodeList<HoneypotProbeHoneypotBindList>(map['honeypotBindLists'], (value) => HoneypotProbeHoneypotBindList.fromMap((value as Map).cast<String, dynamic>()))),
-      honeypotProbeId: map['honeypotProbeId'] == null ? null : pulumi.Output.create<String>(map['honeypotProbeId'] as String),
-      ping: map['ping'] == null ? null : pulumi.Output.create<bool>(map['ping'] as bool),
-      probeType: map['probeType'] == null ? null : pulumi.Output.create<String>(map['probeType'] as String),
-      probeVersion: map['probeVersion'] == null ? null : pulumi.Output.create<String>(map['probeVersion'] as String),
-      proxyIp: map['proxyIp'] == null ? null : pulumi.Output.create<String>(map['proxyIp'] as String),
-      serviceIpLists: map['serviceIpLists'] == null ? null : pulumi.Output.create<List<String>>((map['serviceIpLists'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      arp: map['arp'] == null ? null : (map['arp'] as bool).input(),
+      controlNodeId: map['controlNodeId'] == null ? null : (map['controlNodeId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      honeypotBindLists: map['honeypotBindLists'] == null ? null : (pulumi.Input.decodeList<HoneypotProbeHoneypotBindList>(map['honeypotBindLists'], (value) => HoneypotProbeHoneypotBindList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      honeypotProbeId: map['honeypotProbeId'] == null ? null : (map['honeypotProbeId'] as String).input(),
+      ping: map['ping'] == null ? null : (map['ping'] as bool).input(),
+      probeType: map['probeType'] == null ? null : (map['probeType'] as String).input(),
+      probeVersion: map['probeVersion'] == null ? null : (map['probeVersion'] as String).input(),
+      proxyIp: map['proxyIp'] == null ? null : (map['proxyIp'] as String).input(),
+      serviceIpLists: map['serviceIpLists'] == null ? null : ((map['serviceIpLists'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

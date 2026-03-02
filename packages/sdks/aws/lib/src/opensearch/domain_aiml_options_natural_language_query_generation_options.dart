@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAimlOptionsNaturalLanguageQueryGenerationOptions {
   /// The desired state of the natural language query generation feature. Valid values are `ENABLED` and `DISABLED`.
-  final String? desiredState;
+  final pulumi.Input<String>? desiredState;
 
   /// Creates a new [DomainAimlOptionsNaturalLanguageQueryGenerationOptions].
   /// [desiredState] The desired state of the natural language query generation feature. Valid values are `ENABLED` and `DISABLED`.
@@ -19,7 +20,7 @@ class DomainAimlOptionsNaturalLanguageQueryGenerationOptions {
 
   factory DomainAimlOptionsNaturalLanguageQueryGenerationOptions.fromMap(Map<String, dynamic> map) {
     return DomainAimlOptionsNaturalLanguageQueryGenerationOptions(
-      desiredState: map['desiredState'] == null ? null : map['desiredState'] as String,
+      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
     );
   }
 }

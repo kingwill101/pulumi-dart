@@ -31,17 +31,12 @@ class FirewallRuleArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [sourceRange] IP address or range, defined using CIDR notation, of requests that this rule applies to.
   FirewallRuleArgs({
-    required pulumi.Output<String> action,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sourceRange,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceRange = pulumi.Input.asInput<String>(sourceRange);
+    required this.action,
+    this.description,
+    this.priority,
+    this.project,
+    required this.sourceRange,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sourceRange: pulumi.Output.create<String>(map['sourceRange'] as String),
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sourceRange: (map['sourceRange'] as String).input(),
     );
   }
 }

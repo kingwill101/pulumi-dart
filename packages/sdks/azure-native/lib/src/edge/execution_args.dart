@@ -33,21 +33,14 @@ class ExecutionArgs {
   /// [versionName] The name of the workflowVersion.
   /// [workflowName] Name of the workflow
   ExecutionArgs({
-    required pulumi.Output<String> contextName,
-    pulumi.Output<String>? executionName,
-    pulumi.Output<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation,
-    pulumi.Output<ExecutionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> versionName,
-    required pulumi.Output<String> workflowName,
-  }) :
-      contextName = pulumi.Input.asInput<String>(contextName),
-      executionName = pulumi.Input.asOptionalInput<String>(executionName),
-      extendedLocation = pulumi.Input.asOptionalInput<AzureResourceManagerCommonTypesExtendedLocation>(extendedLocation),
-      properties = pulumi.Input.asOptionalInput<ExecutionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      versionName = pulumi.Input.asInput<String>(versionName),
-      workflowName = pulumi.Input.asInput<String>(workflowName);
+    required this.contextName,
+    this.executionName,
+    this.extendedLocation,
+    this.properties,
+    required this.resourceGroupName,
+    required this.versionName,
+    required this.workflowName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ExecutionArgs {
 
   factory ExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ExecutionArgs(
-      contextName: pulumi.Output.create<String>(map['contextName'] as String),
-      executionName: map['executionName'] == null ? null : pulumi.Output.create<String>(map['executionName'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<AzureResourceManagerCommonTypesExtendedLocation>(AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ExecutionProperties>(ExecutionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      versionName: pulumi.Output.create<String>(map['versionName'] as String),
-      workflowName: pulumi.Output.create<String>(map['workflowName'] as String),
+      contextName: (map['contextName'] as String).input(),
+      executionName: map['executionName'] == null ? null : (map['executionName'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ExecutionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      versionName: (map['versionName'] as String).input(),
+      workflowName: (map['workflowName'] as String).input(),
     );
   }
 }

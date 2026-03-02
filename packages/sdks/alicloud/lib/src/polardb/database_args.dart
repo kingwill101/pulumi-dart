@@ -35,21 +35,14 @@ class DatabaseArgs {
   /// [dbDescription] The description of the database. The description must meet the following requirements:
   /// [dbName] The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
   DatabaseArgs({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<String>? characterSetName,
-    pulumi.Output<String>? collate,
-    pulumi.Output<String>? ctype,
-    required pulumi.Output<String> dbClusterId,
-    pulumi.Output<String>? dbDescription,
-    required pulumi.Output<String> dbName,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      characterSetName = pulumi.Input.asOptionalInput<String>(characterSetName),
-      collate = pulumi.Input.asOptionalInput<String>(collate),
-      ctype = pulumi.Input.asOptionalInput<String>(ctype),
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      dbDescription = pulumi.Input.asOptionalInput<String>(dbDescription),
-      dbName = pulumi.Input.asInput<String>(dbName);
+    this.accountName,
+    this.characterSetName,
+    this.collate,
+    this.ctype,
+    required this.dbClusterId,
+    this.dbDescription,
+    required this.dbName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      characterSetName: map['characterSetName'] == null ? null : pulumi.Output.create<String>(map['characterSetName'] as String),
-      collate: map['collate'] == null ? null : pulumi.Output.create<String>(map['collate'] as String),
-      ctype: map['ctype'] == null ? null : pulumi.Output.create<String>(map['ctype'] as String),
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      dbDescription: map['dbDescription'] == null ? null : pulumi.Output.create<String>(map['dbDescription'] as String),
-      dbName: pulumi.Output.create<String>(map['dbName'] as String),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      characterSetName: map['characterSetName'] == null ? null : (map['characterSetName'] as String).input(),
+      collate: map['collate'] == null ? null : (map['collate'] as String).input(),
+      ctype: map['ctype'] == null ? null : (map['ctype'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      dbDescription: map['dbDescription'] == null ? null : (map['dbDescription'] as String).input(),
+      dbName: (map['dbName'] as String).input(),
     );
   }
 }

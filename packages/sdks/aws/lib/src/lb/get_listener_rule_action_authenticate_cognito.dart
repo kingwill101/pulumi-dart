@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerRuleActionAuthenticateCognito {
   /// Set of additional parameters for the request.
   /// Detailed below.
-  final Map<String, String> authenticationRequestExtraParams;
+  final pulumi.Input<Map<String, String>> authenticationRequestExtraParams;
   /// Behavior when the client is not authenticated.
-  final String onUnauthenticatedRequest;
+  final pulumi.Input<String> onUnauthenticatedRequest;
   /// Set of user claims requested.
-  final String scope;
+  final pulumi.Input<String> scope;
   /// Name of the cookie used to maintain session information.
-  final String sessionCookieName;
+  final pulumi.Input<String> sessionCookieName;
   /// Maximum duration of the authentication session in seconds.
-  final int sessionTimeout;
+  final pulumi.Input<int> sessionTimeout;
   /// ARN of the Cognito user pool.
-  final String userPoolArn;
+  final pulumi.Input<String> userPoolArn;
   /// ID of the Cognito user pool client.
-  final String userPoolClientId;
+  final pulumi.Input<String> userPoolClientId;
   /// Domain prefix or fully-qualified domain name of the Cognito user pool.
-  final String userPoolDomain;
+  final pulumi.Input<String> userPoolDomain;
 
   /// Creates a new [GetListenerRuleActionAuthenticateCognito].
   /// [authenticationRequestExtraParams] Set of additional parameters for the request.
@@ -55,14 +56,14 @@ class GetListenerRuleActionAuthenticateCognito {
 
   factory GetListenerRuleActionAuthenticateCognito.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionAuthenticateCognito(
-      authenticationRequestExtraParams: (map['authenticationRequestExtraParams'] as Map).cast<String, String>(),
-      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] as String,
-      scope: map['scope'] as String,
-      sessionCookieName: map['sessionCookieName'] as String,
-      sessionTimeout: map['sessionTimeout'] as int,
-      userPoolArn: map['userPoolArn'] as String,
-      userPoolClientId: map['userPoolClientId'] as String,
-      userPoolDomain: map['userPoolDomain'] as String,
+      authenticationRequestExtraParams: ((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input(),
+      onUnauthenticatedRequest: (map['onUnauthenticatedRequest'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      sessionCookieName: (map['sessionCookieName'] as String).input(),
+      sessionTimeout: (map['sessionTimeout'] as int).input(),
+      userPoolArn: (map['userPoolArn'] as String).input(),
+      userPoolClientId: (map['userPoolClientId'] as String).input(),
+      userPoolDomain: (map['userPoolDomain'] as String).input(),
     );
   }
 }

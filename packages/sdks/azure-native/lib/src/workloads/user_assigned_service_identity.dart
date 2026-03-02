@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed service identity (user assigned identities)
 class UserAssignedServiceIdentity {
   /// Type of manage identity
-  final String type;
+  final pulumi.Input<String> type;
   /// User assigned identities dictionary
-  final List<String>? userAssignedIdentities;
+  final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [UserAssignedServiceIdentity].
   /// [type] Type of manage identity
@@ -25,8 +26,8 @@ class UserAssignedServiceIdentity {
 
   factory UserAssignedServiceIdentity.fromMap(Map<String, dynamic> map) {
     return UserAssignedServiceIdentity(
-      type: map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (map['userAssignedIdentities'] as List).cast<String>(),
+      type: (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
     );
   }
 }

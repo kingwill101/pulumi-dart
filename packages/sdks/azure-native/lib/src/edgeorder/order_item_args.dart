@@ -37,23 +37,15 @@ class OrderItemArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   OrderItemArgs({
-    pulumi.Output<AddressDetails>? addressDetails,
-    pulumi.Output<ResourceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> orderId,
-    required pulumi.Output<OrderItemDetails> orderItemDetails,
-    pulumi.Output<String>? orderItemName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      addressDetails = pulumi.Input.asOptionalInput<AddressDetails>(addressDetails),
-      identity = pulumi.Input.asOptionalInput<ResourceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      orderId = pulumi.Input.asInput<String>(orderId),
-      orderItemDetails = pulumi.Input.asInput<OrderItemDetails>(orderItemDetails),
-      orderItemName = pulumi.Input.asOptionalInput<String>(orderItemName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.addressDetails,
+    this.identity,
+    this.location,
+    required this.orderId,
+    required this.orderItemDetails,
+    this.orderItemName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class OrderItemArgs {
 
   factory OrderItemArgs.fromMap(Map<String, dynamic> map) {
     return OrderItemArgs(
-      addressDetails: map['addressDetails'] == null ? null : pulumi.Output.create<AddressDetails>(AddressDetails.fromMap((map['addressDetails'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ResourceIdentity>(ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      orderId: pulumi.Output.create<String>(map['orderId'] as String),
-      orderItemDetails: pulumi.Output.create<OrderItemDetails>(OrderItemDetails.fromMap((map['orderItemDetails'] as Map).cast<String, dynamic>())),
-      orderItemName: map['orderItemName'] == null ? null : pulumi.Output.create<String>(map['orderItemName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      addressDetails: map['addressDetails'] == null ? null : (AddressDetails.fromMap((map['addressDetails'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      orderId: (map['orderId'] as String).input(),
+      orderItemDetails: (OrderItemDetails.fromMap((map['orderItemDetails'] as Map).cast<String, dynamic>())).input(),
+      orderItemName: map['orderItemName'] == null ? null : (map['orderItemName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

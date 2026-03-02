@@ -20,13 +20,10 @@ class UserSettingsWithLocationArgs {
   /// [properties] The cloud shell user settings properties.
   /// [userSettingsName] The name of the user settings
   UserSettingsWithLocationArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<UserProperties> properties,
-    pulumi.Output<String>? userSettingsName,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      properties = pulumi.Input.asInput<UserProperties>(properties),
-      userSettingsName = pulumi.Input.asOptionalInput<String>(userSettingsName);
+    required this.location,
+    required this.properties,
+    this.userSettingsName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class UserSettingsWithLocationArgs {
 
   factory UserSettingsWithLocationArgs.fromMap(Map<String, dynamic> map) {
     return UserSettingsWithLocationArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<UserProperties>(UserProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      userSettingsName: map['userSettingsName'] == null ? null : pulumi.Output.create<String>(map['userSettingsName'] as String),
+      location: (map['location'] as String).input(),
+      properties: (UserProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      userSettingsName: map['userSettingsName'] == null ? null : (map['userSettingsName'] as String).input(),
     );
   }
 }

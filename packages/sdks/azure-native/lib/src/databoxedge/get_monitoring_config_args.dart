@@ -19,13 +19,10 @@ class GetMonitoringConfigArgs {
   /// [resourceGroupName] The resource group name.
   /// [roleName] The role name.
   GetMonitoringConfigArgs({
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> roleName,
-  }) :
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleName = pulumi.Input.asInput<String>(roleName);
+    required this.deviceName,
+    required this.resourceGroupName,
+    required this.roleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMonitoringConfigArgs {
 
   factory GetMonitoringConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitoringConfigArgs(
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleName: pulumi.Output.create<String>(map['roleName'] as String),
+      deviceName: (map['deviceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleName: (map['roleName'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'component_name.dart';
 import 'pass_name.dart';
 import 'setting_names.dart';
@@ -7,13 +8,13 @@ import 'setting_names.dart';
 /// Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied.
 class AdditionalUnattendContent {
   /// The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
-  final ComponentName? componentName;
+  final pulumi.Input<ComponentName>? componentName;
   /// Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
-  final String? content;
+  final pulumi.Input<String>? content;
   /// The pass name. Currently, the only allowable value is OobeSystem.
-  final PassName? passName;
+  final pulumi.Input<PassName>? passName;
   /// Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
-  final SettingNames? settingName;
+  final pulumi.Input<SettingNames>? settingName;
 
   /// Creates a new [AdditionalUnattendContent].
   /// [componentName] The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
@@ -29,19 +30,19 @@ class AdditionalUnattendContent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentName': ?componentName == null ? null : componentName!.value,
+      'componentName': ?pulumi.Input.mapOptionalInputValue<ComponentName, String>(componentName, (value) => value.value),
       'content': ?content,
-      'passName': ?passName == null ? null : passName!.value,
-      'settingName': ?settingName == null ? null : settingName!.value,
+      'passName': ?pulumi.Input.mapOptionalInputValue<PassName, String>(passName, (value) => value.value),
+      'settingName': ?pulumi.Input.mapOptionalInputValue<SettingNames, String>(settingName, (value) => value.value),
     };
   }
 
   factory AdditionalUnattendContent.fromMap(Map<String, dynamic> map) {
     return AdditionalUnattendContent(
-      componentName: map['componentName'] == null ? null : ComponentName.fromValue(map['componentName'] as String),
-      content: map['content'] == null ? null : map['content'] as String,
-      passName: map['passName'] == null ? null : PassName.fromValue(map['passName'] as String),
-      settingName: map['settingName'] == null ? null : SettingNames.fromValue(map['settingName'] as String),
+      componentName: map['componentName'] == null ? null : (ComponentName.fromValue(map['componentName'] as String)).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      passName: map['passName'] == null ? null : (PassName.fromValue(map['passName'] as String)).input(),
+      settingName: map['settingName'] == null ? null : (SettingNames.fromValue(map['settingName'] as String)).input(),
     );
   }
 }

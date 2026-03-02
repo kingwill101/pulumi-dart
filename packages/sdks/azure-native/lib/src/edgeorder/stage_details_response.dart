@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource stage details.
 class StageDetailsResponse {
   /// Display name of the resource stage.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Stage name.
-  final String stageName;
+  final pulumi.Input<String> stageName;
   /// Stage status.
-  final String stageStatus;
+  final pulumi.Input<String> stageStatus;
   /// Stage start time.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [StageDetailsResponse].
   /// [displayName] Display name of the resource stage.
@@ -35,10 +36,10 @@ class StageDetailsResponse {
 
   factory StageDetailsResponse.fromMap(Map<String, dynamic> map) {
     return StageDetailsResponse(
-      displayName: map['displayName'] as String,
-      stageName: map['stageName'] as String,
-      stageStatus: map['stageStatus'] as String,
-      startTime: map['startTime'] as String,
+      displayName: (map['displayName'] as String).input(),
+      stageName: (map['stageName'] as String).input(),
+      stageStatus: (map['stageStatus'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

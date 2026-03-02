@@ -25,15 +25,11 @@ class ExperimentPlanTemplateArgs {
   /// [templateName] Help users identify and select specific templates.
   /// [templatePipelines] Representative Template Pipeline. See `template_pipeline` below.
   ExperimentPlanTemplateArgs({
-    required pulumi.Output<String> privacyLevel,
-    pulumi.Output<String>? templateDescription,
-    required pulumi.Output<String> templateName,
-    required pulumi.Output<List<ExperimentPlanTemplateTemplatePipeline>> templatePipelines,
-  }) :
-      privacyLevel = pulumi.Input.asInput<String>(privacyLevel),
-      templateDescription = pulumi.Input.asOptionalInput<String>(templateDescription),
-      templateName = pulumi.Input.asInput<String>(templateName),
-      templatePipelines = pulumi.Input.asInput<List<ExperimentPlanTemplateTemplatePipeline>>(templatePipelines);
+    required this.privacyLevel,
+    this.templateDescription,
+    required this.templateName,
+    required this.templatePipelines,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class ExperimentPlanTemplateArgs {
 
   factory ExperimentPlanTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ExperimentPlanTemplateArgs(
-      privacyLevel: pulumi.Output.create<String>(map['privacyLevel'] as String),
-      templateDescription: map['templateDescription'] == null ? null : pulumi.Output.create<String>(map['templateDescription'] as String),
-      templateName: pulumi.Output.create<String>(map['templateName'] as String),
-      templatePipelines: pulumi.Output.create<List<ExperimentPlanTemplateTemplatePipeline>>(pulumi.Input.decodeList<ExperimentPlanTemplateTemplatePipeline>(map['templatePipelines'], (value) => ExperimentPlanTemplateTemplatePipeline.fromMap((value as Map).cast<String, dynamic>()))),
+      privacyLevel: (map['privacyLevel'] as String).input(),
+      templateDescription: map['templateDescription'] == null ? null : (map['templateDescription'] as String).input(),
+      templateName: (map['templateName'] as String).input(),
+      templatePipelines: (pulumi.Input.decodeList<ExperimentPlanTemplateTemplatePipeline>(map['templatePipelines'], (value) => ExperimentPlanTemplateTemplatePipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

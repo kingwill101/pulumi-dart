@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery {
   /// Example natural language query.
-  final String naturalLanguage;
+  final pulumi.Input<String> naturalLanguage;
   /// SQL equivalent of `natural_language`.
-  final String sql;
+  final pulumi.Input<String> sql;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery].
   /// [naturalLanguage] Example natural language query.
@@ -24,8 +25,8 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery(
-      naturalLanguage: map['naturalLanguage'] as String,
-      sql: map['sql'] as String,
+      naturalLanguage: (map['naturalLanguage'] as String).input(),
+      sql: (map['sql'] as String).input(),
     );
   }
 }

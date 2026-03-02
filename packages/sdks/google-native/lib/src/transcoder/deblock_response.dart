@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Deblock preprocessing configuration. **Note:** This configuration is not supported.
 class DeblockResponse {
   /// Enable deblocker. The default is `false`.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Set strength of the deblocker. Enter a value between 0 and 1. The higher the value, the stronger the block removal. 0 is no deblocking. The default is 0.
-  final double strength;
+  final pulumi.Input<double> strength;
 
   /// Creates a new [DeblockResponse].
   /// [enabled] Enable deblocker. The default is `false`.
@@ -25,8 +26,8 @@ class DeblockResponse {
 
   factory DeblockResponse.fromMap(Map<String, dynamic> map) {
     return DeblockResponse(
-      enabled: map['enabled'] as bool,
-      strength: map['strength'] as double,
+      enabled: (map['enabled'] as bool).input(),
+      strength: (map['strength'] as double).input(),
     );
   }
 }

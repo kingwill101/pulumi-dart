@@ -23,15 +23,11 @@ class RealtimeLogConfigArgs {
   /// [name] The unique name to identify this real-time log configuration.
   /// [samplingRate] The sampling rate for this real-time log configuration. The sampling rate determines the percentage of viewer requests that are represented in the real-time log data. An integer between `1` and `100`, inclusive.
   RealtimeLogConfigArgs({
-    required pulumi.Output<RealtimeLogConfigEndpoint> endpoint,
-    required pulumi.Output<List<String>> fields,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> samplingRate,
-  }) :
-      endpoint = pulumi.Input.asInput<RealtimeLogConfigEndpoint>(endpoint),
-      fields = pulumi.Input.asInput<List<String>>(fields),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      samplingRate = pulumi.Input.asInput<int>(samplingRate);
+    required this.endpoint,
+    required this.fields,
+    this.name,
+    required this.samplingRate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class RealtimeLogConfigArgs {
 
   factory RealtimeLogConfigArgs.fromMap(Map<String, dynamic> map) {
     return RealtimeLogConfigArgs(
-      endpoint: pulumi.Output.create<RealtimeLogConfigEndpoint>(RealtimeLogConfigEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())),
-      fields: pulumi.Output.create<List<String>>((map['fields'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      samplingRate: pulumi.Output.create<int>(map['samplingRate'] as int),
+      endpoint: (RealtimeLogConfigEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
+      fields: ((map['fields'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      samplingRate: (map['samplingRate'] as int).input(),
     );
   }
 }

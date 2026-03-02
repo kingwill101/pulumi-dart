@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for classic alerts
 class ClassicAlertSettings {
-  final String? alertsForCriticalOperations;
-  final String? emailNotificationsForSiteRecovery;
+  final pulumi.Input<String>? alertsForCriticalOperations;
+  final pulumi.Input<String>? emailNotificationsForSiteRecovery;
 
   /// Creates a new [ClassicAlertSettings].
   /// [alertsForCriticalOperations] Optional.
@@ -23,8 +24,8 @@ class ClassicAlertSettings {
 
   factory ClassicAlertSettings.fromMap(Map<String, dynamic> map) {
     return ClassicAlertSettings(
-      alertsForCriticalOperations: map['alertsForCriticalOperations'] == null ? null : map['alertsForCriticalOperations'] as String,
-      emailNotificationsForSiteRecovery: map['emailNotificationsForSiteRecovery'] == null ? null : map['emailNotificationsForSiteRecovery'] as String,
+      alertsForCriticalOperations: map['alertsForCriticalOperations'] == null ? null : (map['alertsForCriticalOperations'] as String).input(),
+      emailNotificationsForSiteRecovery: map['emailNotificationsForSiteRecovery'] == null ? null : (map['emailNotificationsForSiteRecovery'] as String).input(),
     );
   }
 }

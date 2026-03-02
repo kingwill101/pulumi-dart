@@ -33,21 +33,14 @@ class TIDataConnectorArgs {
   /// [tipLookbackPeriod] The lookback period for the feed to be imported.
   /// [workspaceName] The name of the workspace.
   TIDataConnectorArgs({
-    pulumi.Output<String>? dataConnectorId,
-    required pulumi.Output<TIDataConnectorDataTypes> dataTypes,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> tenantId,
-    pulumi.Output<String>? tipLookbackPeriod,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      dataConnectorId = pulumi.Input.asOptionalInput<String>(dataConnectorId),
-      dataTypes = pulumi.Input.asInput<TIDataConnectorDataTypes>(dataTypes),
-      kind = pulumi.Input.asInput<String>(kind),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tenantId = pulumi.Input.asInput<String>(tenantId),
-      tipLookbackPeriod = pulumi.Input.asOptionalInput<String>(tipLookbackPeriod),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.dataConnectorId,
+    required this.dataTypes,
+    required this.kind,
+    required this.resourceGroupName,
+    required this.tenantId,
+    this.tipLookbackPeriod,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class TIDataConnectorArgs {
 
   factory TIDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return TIDataConnectorArgs(
-      dataConnectorId: map['dataConnectorId'] == null ? null : pulumi.Output.create<String>(map['dataConnectorId'] as String),
-      dataTypes: pulumi.Output.create<TIDataConnectorDataTypes>(TIDataConnectorDataTypes.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
-      tipLookbackPeriod: map['tipLookbackPeriod'] == null ? null : pulumi.Output.create<String>(map['tipLookbackPeriod'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId'] as String).input(),
+      dataTypes: (TIDataConnectorDataTypes.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      tipLookbackPeriod: map['tipLookbackPeriod'] == null ? null : (map['tipLookbackPeriod'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

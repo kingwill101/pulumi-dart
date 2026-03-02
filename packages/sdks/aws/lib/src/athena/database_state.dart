@@ -39,27 +39,17 @@ class DatabaseState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroup] Name of the workgroup.
   DatabaseState({
-    pulumi.Output<DatabaseAclConfiguration>? aclConfiguration,
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? comment,
-    pulumi.Output<DatabaseEncryptionConfiguration>? encryptionConfiguration,
-    pulumi.Output<String>? expectedBucketOwner,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? properties,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? workgroup,
-  }) :
-      aclConfiguration = pulumi.Input.asOptionalInput<DatabaseAclConfiguration>(aclConfiguration),
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      encryptionConfiguration = pulumi.Input.asOptionalInput<DatabaseEncryptionConfiguration>(encryptionConfiguration),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<Map<String, String>>(properties),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workgroup = pulumi.Input.asOptionalInput<String>(workgroup);
+    this.aclConfiguration,
+    this.bucket,
+    this.comment,
+    this.encryptionConfiguration,
+    this.expectedBucketOwner,
+    this.forceDestroy,
+    this.name,
+    this.properties,
+    this.region,
+    this.workgroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      aclConfiguration: map['aclConfiguration'] == null ? null : pulumi.Output.create<DatabaseAclConfiguration>(DatabaseAclConfiguration.fromMap((map['aclConfiguration'] as Map).cast<String, dynamic>())),
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : pulumi.Output.create<DatabaseEncryptionConfiguration>(DatabaseEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['properties'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workgroup: map['workgroup'] == null ? null : pulumi.Output.create<String>(map['workgroup'] as String),
+      aclConfiguration: map['aclConfiguration'] == null ? null : (DatabaseAclConfiguration.fromMap((map['aclConfiguration'] as Map).cast<String, dynamic>())).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (DatabaseEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workgroup: map['workgroup'] == null ? null : (map['workgroup'] as String).input(),
     );
   }
 }

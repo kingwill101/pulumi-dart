@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardDashboardPublishOptionsSheetControlsOption {
   /// Visibility state. Possibles values: EXPANDED, COLLAPSED.
-  final String? visibilityState;
+  final pulumi.Input<String>? visibilityState;
 
   /// Creates a new [DashboardDashboardPublishOptionsSheetControlsOption].
   /// [visibilityState] Visibility state. Possibles values: EXPANDED, COLLAPSED.
@@ -19,7 +20,7 @@ class DashboardDashboardPublishOptionsSheetControlsOption {
 
   factory DashboardDashboardPublishOptionsSheetControlsOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsSheetControlsOption(
-      visibilityState: map['visibilityState'] == null ? null : map['visibilityState'] as String,
+      visibilityState: map['visibilityState'] == null ? null : (map['visibilityState'] as String).input(),
     );
   }
 }

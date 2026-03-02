@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVaultsVault {
   /// The name of the OSS bucket of the Vault.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// The amount of backup data. The unit is Byte.
-  final String bytesDone;
+  final pulumi.Input<String> bytesDone;
   /// The creation time of the Vault. UNIX time in seconds.
-  final String createdTime;
+  final pulumi.Input<String> createdTime;
   /// Whether to enable the deduplication function for the database backup Vault.
-  final bool dedup;
+  final pulumi.Input<bool> dedup;
   /// The description of the vault.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of vault.
-  final String id;
+  final pulumi.Input<String> id;
   /// Index available.
-  final bool indexAvailable;
+  final pulumi.Input<bool> indexAvailable;
   /// Index level.
-  final String indexLevel;
+  final pulumi.Input<String> indexLevel;
   /// Index update time.
-  final String indexUpdateTime;
+  final pulumi.Input<String> indexUpdateTime;
   /// The time of the last remote backup synchronization.
-  final String latestReplicationTime;
+  final pulumi.Input<String> latestReplicationTime;
   /// Billing model, possible values:
   /// * `FREE` is not billed
   /// * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
@@ -29,34 +30,34 @@ class GetVaultsVault {
   /// * `AEGIS` Billing method for cloud security use
   /// * `UNI_BACKUP` the backup of deduplication database
   /// * `ARCHIVE` archive library.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// Whether it is a remote backup warehouse. It's a boolean value.
-  final bool replication;
+  final pulumi.Input<bool> replication;
   /// The region ID to which the remote backup Vault belongs.
-  final String replicationSourceRegionId;
+  final pulumi.Input<String> replicationSourceRegionId;
   /// The source vault ID of the remote backup Vault.
-  final String replicationSourceVaultId;
+  final pulumi.Input<String> replicationSourceVaultId;
   /// Warehouse-level data retention days, only valid for archive libraries.
-  final String retention;
+  final pulumi.Input<String> retention;
   /// Whether to enable the backup search function.
-  final bool searchEnabled;
-  final List<String> sourceTypes;
+  final pulumi.Input<bool> searchEnabled;
+  final pulumi.Input<List<String>> sourceTypes;
   /// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
-  final String status;
+  final pulumi.Input<String> status;
   /// Backup vault storage usage. The unit is Byte.
-  final String storageSize;
+  final pulumi.Input<String> storageSize;
   /// The update time of the Vault. UNIX time in seconds.
-  final String updatedTime;
+  final pulumi.Input<String> updatedTime;
   /// The ID of vault, same as `id`.
-  final String vaultId;
+  final pulumi.Input<String> vaultId;
   /// The name of vault.
-  final String vaultName;
+  final pulumi.Input<String> vaultName;
   /// Error status information of Vault. Only valid for remote backup warehouses. Only the remote backup warehouse is valid.
-  final String vaultStatusMessage;
+  final pulumi.Input<String> vaultStatusMessage;
   /// The storage class of vault. Valid values: `STANDARD`.
-  final String vaultStorageClass;
+  final pulumi.Input<String> vaultStorageClass;
   /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
-  final String vaultType;
+  final pulumi.Input<String> vaultType;
 
   /// Creates a new [GetVaultsVault].
   /// [bucketName] The name of the OSS bucket of the Vault.
@@ -144,31 +145,31 @@ class GetVaultsVault {
 
   factory GetVaultsVault.fromMap(Map<String, dynamic> map) {
     return GetVaultsVault(
-      bucketName: map['bucketName'] as String,
-      bytesDone: map['bytesDone'] as String,
-      createdTime: map['createdTime'] as String,
-      dedup: map['dedup'] as bool,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      indexAvailable: map['indexAvailable'] as bool,
-      indexLevel: map['indexLevel'] as String,
-      indexUpdateTime: map['indexUpdateTime'] as String,
-      latestReplicationTime: map['latestReplicationTime'] as String,
-      paymentType: map['paymentType'] as String,
-      replication: map['replication'] as bool,
-      replicationSourceRegionId: map['replicationSourceRegionId'] as String,
-      replicationSourceVaultId: map['replicationSourceVaultId'] as String,
-      retention: map['retention'] as String,
-      searchEnabled: map['searchEnabled'] as bool,
-      sourceTypes: (map['sourceTypes'] as List).cast<String>(),
-      status: map['status'] as String,
-      storageSize: map['storageSize'] as String,
-      updatedTime: map['updatedTime'] as String,
-      vaultId: map['vaultId'] as String,
-      vaultName: map['vaultName'] as String,
-      vaultStatusMessage: map['vaultStatusMessage'] as String,
-      vaultStorageClass: map['vaultStorageClass'] as String,
-      vaultType: map['vaultType'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      bytesDone: (map['bytesDone'] as String).input(),
+      createdTime: (map['createdTime'] as String).input(),
+      dedup: (map['dedup'] as bool).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      indexAvailable: (map['indexAvailable'] as bool).input(),
+      indexLevel: (map['indexLevel'] as String).input(),
+      indexUpdateTime: (map['indexUpdateTime'] as String).input(),
+      latestReplicationTime: (map['latestReplicationTime'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      replication: (map['replication'] as bool).input(),
+      replicationSourceRegionId: (map['replicationSourceRegionId'] as String).input(),
+      replicationSourceVaultId: (map['replicationSourceVaultId'] as String).input(),
+      retention: (map['retention'] as String).input(),
+      searchEnabled: (map['searchEnabled'] as bool).input(),
+      sourceTypes: ((map['sourceTypes'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
+      storageSize: (map['storageSize'] as String).input(),
+      updatedTime: (map['updatedTime'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
+      vaultStatusMessage: (map['vaultStatusMessage'] as String).input(),
+      vaultStorageClass: (map['vaultStorageClass'] as String).input(),
+      vaultType: (map['vaultType'] as String).input(),
     );
   }
 }

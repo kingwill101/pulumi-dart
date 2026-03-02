@@ -35,23 +35,15 @@ class UserDefinedFunctionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceUris] The configuration block for Resource URIs. See resource uris below for more details.
   UserDefinedFunctionArgs({
-    pulumi.Output<String>? catalogId,
-    required pulumi.Output<String> className,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> ownerName,
-    required pulumi.Output<String> ownerType,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<UserDefinedFunctionResourceUri>>? resourceUris,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      className = pulumi.Input.asInput<String>(className),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerName = pulumi.Input.asInput<String>(ownerName),
-      ownerType = pulumi.Input.asInput<String>(ownerType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceUris = pulumi.Input.asOptionalInput<List<UserDefinedFunctionResourceUri>>(resourceUris);
+    this.catalogId,
+    required this.className,
+    required this.databaseName,
+    this.name,
+    required this.ownerName,
+    required this.ownerType,
+    this.region,
+    this.resourceUris,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class UserDefinedFunctionArgs {
 
   factory UserDefinedFunctionArgs.fromMap(Map<String, dynamic> map) {
     return UserDefinedFunctionArgs(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      className: pulumi.Output.create<String>(map['className'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerName: pulumi.Output.create<String>(map['ownerName'] as String),
-      ownerType: pulumi.Output.create<String>(map['ownerType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceUris: map['resourceUris'] == null ? null : pulumi.Output.create<List<UserDefinedFunctionResourceUri>>(pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(map['resourceUris'], (value) => UserDefinedFunctionResourceUri.fromMap((value as Map).cast<String, dynamic>()))),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      className: (map['className'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerName: (map['ownerName'] as String).input(),
+      ownerType: (map['ownerType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceUris: map['resourceUris'] == null ? null : (pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(map['resourceUris'], (value) => UserDefinedFunctionResourceUri.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

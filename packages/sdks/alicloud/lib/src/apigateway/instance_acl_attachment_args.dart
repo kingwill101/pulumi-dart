@@ -19,13 +19,10 @@ class InstanceAclAttachmentArgs {
   /// [aclType] The type of the ACL. Valid values: `white`, `black`.
   /// [instanceId] The ID of the API Gateway instance that the ACL will be attached to.
   InstanceAclAttachmentArgs({
-    required pulumi.Output<String> aclId,
-    required pulumi.Output<String> aclType,
-    required pulumi.Output<String> instanceId,
-  }) :
-      aclId = pulumi.Input.asInput<String>(aclId),
-      aclType = pulumi.Input.asInput<String>(aclType),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    required this.aclId,
+    required this.aclType,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class InstanceAclAttachmentArgs {
 
   factory InstanceAclAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAclAttachmentArgs(
-      aclId: pulumi.Output.create<String>(map['aclId'] as String),
-      aclType: pulumi.Output.create<String>(map['aclType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      aclId: (map['aclId'] as String).input(),
+      aclType: (map['aclType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

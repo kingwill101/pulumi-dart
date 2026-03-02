@@ -19,13 +19,10 @@ class GetConfigurationKeyArgs {
   /// [key] The name of the App Configuration Key.
   /// [label] The label of the App Configuration Key.
   GetConfigurationKeyArgs({
-    required pulumi.Output<String> configurationStoreId,
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? label,
-  }) :
-      configurationStoreId = pulumi.Input.asInput<String>(configurationStoreId),
-      key = pulumi.Input.asInput<String>(key),
-      label = pulumi.Input.asOptionalInput<String>(label);
+    required this.configurationStoreId,
+    required this.key,
+    this.label,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConfigurationKeyArgs {
 
   factory GetConfigurationKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationKeyArgs(
-      configurationStoreId: pulumi.Output.create<String>(map['configurationStoreId'] as String),
-      key: pulumi.Output.create<String>(map['key'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
+      configurationStoreId: (map['configurationStoreId'] as String).input(),
+      key: (map['key'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
     );
   }
 }

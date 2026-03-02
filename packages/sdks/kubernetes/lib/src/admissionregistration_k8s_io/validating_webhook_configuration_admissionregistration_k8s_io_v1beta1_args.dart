@@ -24,15 +24,11 @@ class ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1beta1Args {
   /// [metadata] Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   /// [webhooks] Webhooks is a list of webhooks and the affected resources and operations.
   ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1beta1Args({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<List<ValidatingWebhookAdmissionregistrationK8sIoV1beta1>>? webhooks,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      webhooks = pulumi.Input.asOptionalInput<List<ValidatingWebhookAdmissionregistrationK8sIoV1beta1>>(webhooks);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.webhooks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1beta1Args {
 
   factory ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      webhooks: map['webhooks'] == null ? null : pulumi.Output.create<List<ValidatingWebhookAdmissionregistrationK8sIoV1beta1>>(pulumi.Input.decodeList<ValidatingWebhookAdmissionregistrationK8sIoV1beta1>(map['webhooks'], (value) => ValidatingWebhookAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      webhooks: map['webhooks'] == null ? null : (pulumi.Input.decodeList<ValidatingWebhookAdmissionregistrationK8sIoV1beta1>(map['webhooks'], (value) => ValidatingWebhookAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

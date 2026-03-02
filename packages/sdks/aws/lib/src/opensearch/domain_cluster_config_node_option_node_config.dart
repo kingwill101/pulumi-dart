@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainClusterConfigNodeOptionNodeConfig {
   /// Number of nodes of a particular node type in the cluster.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Whether a particular node type is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The instance type of a particular node type in the cluster.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DomainClusterConfigNodeOptionNodeConfig].
   /// [count] Number of nodes of a particular node type in the cluster.
@@ -29,9 +30,9 @@ class DomainClusterConfigNodeOptionNodeConfig {
 
   factory DomainClusterConfigNodeOptionNodeConfig.fromMap(Map<String, dynamic> map) {
     return DomainClusterConfigNodeOptionNodeConfig(
-      count: map['count'] == null ? null : map['count'] as int,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      type: map['type'] == null ? null : map['type'] as String,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

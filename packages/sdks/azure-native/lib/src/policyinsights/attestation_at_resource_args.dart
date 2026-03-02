@@ -44,29 +44,18 @@ class AttestationAtResourceArgs {
   /// [policyDefinitionReferenceId] The policy definition reference ID from a policy set definition that the attestation is setting the state for. If the policy assignment assigns a policy set definition the attestation can choose a definition within the set definition with this property or omit this and set the state for the entire set definition.
   /// [resourceId] Resource ID.
   AttestationAtResourceArgs({
-    pulumi.Output<String>? assessmentDate,
-    pulumi.Output<String>? attestationName,
-    pulumi.Output<String>? comments,
-    pulumi.Output<String>? complianceState,
-    pulumi.Output<List<AttestationEvidence>>? evidence,
-    pulumi.Output<String>? expiresOn,
-    pulumi.Output<dynamic>? metadata,
-    pulumi.Output<String>? owner,
-    required pulumi.Output<String> policyAssignmentId,
-    pulumi.Output<String>? policyDefinitionReferenceId,
-    required pulumi.Output<String> resourceId,
-  }) :
-      assessmentDate = pulumi.Input.asOptionalInput<String>(assessmentDate),
-      attestationName = pulumi.Input.asOptionalInput<String>(attestationName),
-      comments = pulumi.Input.asOptionalInput<String>(comments),
-      complianceState = pulumi.Input.asOptionalInput<String>(complianceState),
-      evidence = pulumi.Input.asOptionalInput<List<AttestationEvidence>>(evidence),
-      expiresOn = pulumi.Input.asOptionalInput<String>(expiresOn),
-      metadata = pulumi.Input.asOptionalInput<dynamic>(metadata),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      policyAssignmentId = pulumi.Input.asInput<String>(policyAssignmentId),
-      policyDefinitionReferenceId = pulumi.Input.asOptionalInput<String>(policyDefinitionReferenceId),
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+    this.assessmentDate,
+    this.attestationName,
+    this.comments,
+    this.complianceState,
+    this.evidence,
+    this.expiresOn,
+    this.metadata,
+    this.owner,
+    required this.policyAssignmentId,
+    this.policyDefinitionReferenceId,
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class AttestationAtResourceArgs {
 
   factory AttestationAtResourceArgs.fromMap(Map<String, dynamic> map) {
     return AttestationAtResourceArgs(
-      assessmentDate: map['assessmentDate'] == null ? null : pulumi.Output.create<String>(map['assessmentDate'] as String),
-      attestationName: map['attestationName'] == null ? null : pulumi.Output.create<String>(map['attestationName'] as String),
-      comments: map['comments'] == null ? null : pulumi.Output.create<String>(map['comments'] as String),
-      complianceState: map['complianceState'] == null ? null : pulumi.Output.create<String>(map['complianceState'] as String),
-      evidence: map['evidence'] == null ? null : pulumi.Output.create<List<AttestationEvidence>>(pulumi.Input.decodeList<AttestationEvidence>(map['evidence'], (value) => AttestationEvidence.fromMap((value as Map).cast<String, dynamic>()))),
-      expiresOn: map['expiresOn'] == null ? null : pulumi.Output.create<String>(map['expiresOn'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<dynamic>(map['metadata']),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      policyAssignmentId: pulumi.Output.create<String>(map['policyAssignmentId'] as String),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : pulumi.Output.create<String>(map['policyDefinitionReferenceId'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
+      assessmentDate: map['assessmentDate'] == null ? null : (map['assessmentDate'] as String).input(),
+      attestationName: map['attestationName'] == null ? null : (map['attestationName'] as String).input(),
+      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
+      complianceState: map['complianceState'] == null ? null : (map['complianceState'] as String).input(),
+      evidence: map['evidence'] == null ? null : (pulumi.Input.decodeList<AttestationEvidence>(map['evidence'], (value) => AttestationEvidence.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      policyAssignmentId: (map['policyAssignmentId'] as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

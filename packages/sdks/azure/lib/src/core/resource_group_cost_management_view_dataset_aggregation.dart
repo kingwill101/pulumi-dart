@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceGroupCostManagementViewDatasetAggregation {
   /// The name of the column to aggregate. Changing this forces a new Cost Management View for a Resource Group to be created.
-  final String columnName;
+  final pulumi.Input<String> columnName;
   /// The name which should be used for this aggregation. Changing this forces a new Cost Management View for a Resource Group to be created.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ResourceGroupCostManagementViewDatasetAggregation].
   /// [columnName] The name of the column to aggregate. Changing this forces a new Cost Management View for a Resource Group to be created.
@@ -24,8 +25,8 @@ class ResourceGroupCostManagementViewDatasetAggregation {
 
   factory ResourceGroupCostManagementViewDatasetAggregation.fromMap(Map<String, dynamic> map) {
     return ResourceGroupCostManagementViewDatasetAggregation(
-      columnName: map['columnName'] as String,
-      name: map['name'] as String,
+      columnName: (map['columnName'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

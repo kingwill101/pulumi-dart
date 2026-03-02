@@ -14,9 +14,8 @@ class TemplateServiceArgs {
   /// Creates a new [TemplateServiceArgs].
   /// [serviceStatus] Status of the quota template. Valid values:
   TemplateServiceArgs({
-    required pulumi.Output<int> serviceStatus,
-  }) :
-      serviceStatus = pulumi.Input.asInput<int>(serviceStatus);
+    required this.serviceStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +25,7 @@ class TemplateServiceArgs {
 
   factory TemplateServiceArgs.fromMap(Map<String, dynamic> map) {
     return TemplateServiceArgs(
-      serviceStatus: pulumi.Output.create<int>(map['serviceStatus'] as int),
+      serviceStatus: (map['serviceStatus'] as int).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionAuthConfigSshPublicKeySshClientCertPass {
   /// The resource name of the secret version in the format,
   /// format as: projects/*/secrets/*/versions/*.
   ///
   /// <a name="nested_auth_config_oauth2_auth_code_flow"></a>The `oauth2_auth_code_flow` block supports:
-  final String secretVersion;
+  final pulumi.Input<String> secretVersion;
 
   /// Creates a new [ConnectionAuthConfigSshPublicKeySshClientCertPass].
   /// [secretVersion] The resource name of the secret version in the format,
@@ -22,7 +23,7 @@ class ConnectionAuthConfigSshPublicKeySshClientCertPass {
 
   factory ConnectionAuthConfigSshPublicKeySshClientCertPass.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigSshPublicKeySshClientCertPass(
-      secretVersion: map['secretVersion'] as String,
+      secretVersion: (map['secretVersion'] as String).input(),
     );
   }
 }

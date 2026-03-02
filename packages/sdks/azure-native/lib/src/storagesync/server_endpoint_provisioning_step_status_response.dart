@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Server endpoint provisioning step status object.
 class ServerEndpointProvisioningStepStatusResponse {
   /// Additional information for the provisioning step
-  final Map<String, String> additionalInformation;
+  final pulumi.Input<Map<String, String>> additionalInformation;
   /// End time of the provisioning step
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Error code (HResult) for the provisioning step
-  final int errorCode;
+  final pulumi.Input<int> errorCode;
   /// Estimated completion time of the provisioning step in minutes
-  final int minutesLeft;
+  final pulumi.Input<int> minutesLeft;
   /// Name of the provisioning step
-  final String name;
+  final pulumi.Input<String> name;
   /// Estimated progress percentage
-  final int progressPercentage;
+  final pulumi.Input<int> progressPercentage;
   /// Start time of the provisioning step
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Status of the provisioning step
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ServerEndpointProvisioningStepStatusResponse].
   /// [additionalInformation] Additional information for the provisioning step
@@ -55,14 +56,14 @@ class ServerEndpointProvisioningStepStatusResponse {
 
   factory ServerEndpointProvisioningStepStatusResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointProvisioningStepStatusResponse(
-      additionalInformation: (map['additionalInformation'] as Map).cast<String, String>(),
-      endTime: map['endTime'] as String,
-      errorCode: map['errorCode'] as int,
-      minutesLeft: map['minutesLeft'] as int,
-      name: map['name'] as String,
-      progressPercentage: map['progressPercentage'] as int,
-      startTime: map['startTime'] as String,
-      status: map['status'] as String,
+      additionalInformation: ((map['additionalInformation'] as Map).cast<String, String>()).input(),
+      endTime: (map['endTime'] as String).input(),
+      errorCode: (map['errorCode'] as int).input(),
+      minutesLeft: (map['minutesLeft'] as int).input(),
+      name: (map['name'] as String).input(),
+      progressPercentage: (map['progressPercentage'] as int).input(),
+      startTime: (map['startTime'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

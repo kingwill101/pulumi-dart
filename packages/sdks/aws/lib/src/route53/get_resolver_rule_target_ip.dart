@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResolverRuleTargetIp {
   /// IPv4 address that you want to forward DNS queries to.
-  final String ip;
+  final pulumi.Input<String> ip;
   /// IPv6 address that you want to forward DNS queries to.
-  final String ipv6;
+  final pulumi.Input<String> ipv6;
   /// Port at the IP address that you want to forward DNS queries to.
-  final int port;
+  final pulumi.Input<int> port;
   /// Protocol for the target IP address. Valid values are `Do53` (DNS over port 53), `DoH` (DNS over HTTPS), and `DoH-FIPS` (DNS over HTTPS with FIPS).
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [GetResolverRuleTargetIp].
   /// [ip] IPv4 address that you want to forward DNS queries to.
@@ -34,10 +35,10 @@ class GetResolverRuleTargetIp {
 
   factory GetResolverRuleTargetIp.fromMap(Map<String, dynamic> map) {
     return GetResolverRuleTargetIp(
-      ip: map['ip'] as String,
-      ipv6: map['ipv6'] as String,
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
+      ip: (map['ip'] as String).input(),
+      ipv6: (map['ipv6'] as String).input(),
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

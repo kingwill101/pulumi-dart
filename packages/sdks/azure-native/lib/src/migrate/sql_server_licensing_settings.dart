@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SQL Server licensing settings.
 class SqlServerLicensingSettings {
   /// Licence cost.
-  final double licenseCost;
+  final pulumi.Input<double> licenseCost;
   /// Software assurance (SA) cost.
-  final double softwareAssuranceCost;
+  final pulumi.Input<double> softwareAssuranceCost;
   /// SQL Server version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [SqlServerLicensingSettings].
   /// [licenseCost] Licence cost.
@@ -30,9 +31,9 @@ class SqlServerLicensingSettings {
 
   factory SqlServerLicensingSettings.fromMap(Map<String, dynamic> map) {
     return SqlServerLicensingSettings(
-      licenseCost: map['licenseCost'] as double,
-      softwareAssuranceCost: map['softwareAssuranceCost'] as double,
-      version: map['version'] as String,
+      licenseCost: (map['licenseCost'] as double).input(),
+      softwareAssuranceCost: (map['softwareAssuranceCost'] as double).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

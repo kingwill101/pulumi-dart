@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcIpamOperatingRegion {
   /// The name of the Region you want to add to the IPAM.
-  final String regionName;
+  final pulumi.Input<String> regionName;
 
   /// Creates a new [VpcIpamOperatingRegion].
   /// [regionName] The name of the Region you want to add to the IPAM.
@@ -19,7 +20,7 @@ class VpcIpamOperatingRegion {
 
   factory VpcIpamOperatingRegion.fromMap(Map<String, dynamic> map) {
     return VpcIpamOperatingRegion(
-      regionName: map['regionName'] as String,
+      regionName: (map['regionName'] as String).input(),
     );
   }
 }

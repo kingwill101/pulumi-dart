@@ -49,27 +49,17 @@ class RegionTargetTcpProxyState {
   /// [region] The Region in which the created target TCP proxy should reside.
   /// [selfLink] The URI of the created resource.
   RegionTargetTcpProxyState({
-    pulumi.Output<String>? backendService,
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? proxyBind,
-    pulumi.Output<String>? proxyHeader,
-    pulumi.Output<int>? proxyId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? selfLink,
-  }) :
-      backendService = pulumi.Input.asOptionalInput<String>(backendService),
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      proxyBind = pulumi.Input.asOptionalInput<bool>(proxyBind),
-      proxyHeader = pulumi.Input.asOptionalInput<String>(proxyHeader),
-      proxyId = pulumi.Input.asOptionalInput<int>(proxyId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+    this.backendService,
+    this.creationTimestamp,
+    this.description,
+    this.name,
+    this.project,
+    this.proxyBind,
+    this.proxyHeader,
+    this.proxyId,
+    this.region,
+    this.selfLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,16 +78,16 @@ class RegionTargetTcpProxyState {
 
   factory RegionTargetTcpProxyState.fromMap(Map<String, dynamic> map) {
     return RegionTargetTcpProxyState(
-      backendService: map['backendService'] == null ? null : pulumi.Output.create<String>(map['backendService'] as String),
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      proxyBind: map['proxyBind'] == null ? null : pulumi.Output.create<bool>(map['proxyBind'] as bool),
-      proxyHeader: map['proxyHeader'] == null ? null : pulumi.Output.create<String>(map['proxyHeader'] as String),
-      proxyId: map['proxyId'] == null ? null : pulumi.Output.create<int>(map['proxyId'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
+      backendService: map['backendService'] == null ? null : (map['backendService'] as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
+      proxyHeader: map['proxyHeader'] == null ? null : (map['proxyHeader'] as String).input(),
+      proxyId: map['proxyId'] == null ? null : (map['proxyId'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
     );
   }
 }

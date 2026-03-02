@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The X12 message identifier.
 class X12MessageIdentifier {
   /// The message id.
-  final String messageId;
+  final pulumi.Input<String> messageId;
 
   /// Creates a new [X12MessageIdentifier].
   /// [messageId] The message id.
@@ -20,7 +21,7 @@ class X12MessageIdentifier {
 
   factory X12MessageIdentifier.fromMap(Map<String, dynamic> map) {
     return X12MessageIdentifier(
-      messageId: map['messageId'] as String,
+      messageId: (map['messageId'] as String).input(),
     );
   }
 }

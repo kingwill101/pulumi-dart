@@ -25,17 +25,12 @@ class ClusterArgs {
   /// [networkMode] The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
   /// [vpcId] The ID of the Virtual Private Cloud (VPC) for the cluster.
   ClusterArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<int> clusterType,
-    pulumi.Output<String>? logicalRegionId,
-    required pulumi.Output<int> networkMode,
-    pulumi.Output<String>? vpcId,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      clusterType = pulumi.Input.asInput<int>(clusterType),
-      logicalRegionId = pulumi.Input.asOptionalInput<String>(logicalRegionId),
-      networkMode = pulumi.Input.asInput<int>(networkMode),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    required this.clusterName,
+    required this.clusterType,
+    this.logicalRegionId,
+    required this.networkMode,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      clusterType: pulumi.Output.create<int>(map['clusterType'] as int),
-      logicalRegionId: map['logicalRegionId'] == null ? null : pulumi.Output.create<String>(map['logicalRegionId'] as String),
-      networkMode: pulumi.Output.create<int>(map['networkMode'] as int),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      clusterType: (map['clusterType'] as int).input(),
+      logicalRegionId: map['logicalRegionId'] == null ? null : (map['logicalRegionId'] as String).input(),
+      networkMode: (map['networkMode'] as int).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

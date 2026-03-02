@@ -16,11 +16,9 @@ class GetDeploymentArgs {
   /// [deploymentName] The name of the deployment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDeploymentArgs({
-    required pulumi.Output<String> deploymentName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      deploymentName = pulumi.Input.asInput<String>(deploymentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.deploymentName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDeploymentArgs {
 
   factory GetDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentArgs(
-      deploymentName: pulumi.Output.create<String>(map['deploymentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      deploymentName: (map['deploymentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

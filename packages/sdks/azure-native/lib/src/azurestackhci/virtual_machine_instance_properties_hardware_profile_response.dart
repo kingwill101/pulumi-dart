@@ -7,15 +7,15 @@ import 'virtual_machine_instance_properties_hardware_profile_virtual_machine_gpu
 /// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
 class VirtualMachineInstancePropertiesHardwareProfileResponse {
   /// Dynamic memory config
-  final VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse? dynamicMemoryConfig;
+  final pulumi.Input<VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse>? dynamicMemoryConfig;
   /// RAM in MB for the virtual machine instance
-  final double? memoryMB;
+  final pulumi.Input<double>? memoryMB;
   /// number of processors for the virtual machine instance
-  final int? processors;
+  final pulumi.Input<int>? processors;
   /// virtualMachineGPUs - list of gpus to be attached to the virtual machine instance
-  final List<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse>? virtualMachineGPUs;
+  final pulumi.Input<List<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse>>? virtualMachineGPUs;
   /// Enum of VM Sizes
-  final String? vmSize;
+  final pulumi.Input<String>? vmSize;
 
   /// Creates a new [VirtualMachineInstancePropertiesHardwareProfileResponse].
   /// [dynamicMemoryConfig] Dynamic memory config
@@ -33,21 +33,21 @@ class VirtualMachineInstancePropertiesHardwareProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dynamicMemoryConfig': ?dynamicMemoryConfig == null ? null : dynamicMemoryConfig!.toMap(),
+      'dynamicMemoryConfig': ?pulumi.Input.mapOptionalInputValue<VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse, Map<String, dynamic>>(dynamicMemoryConfig, (value) => value.toMap()),
       'memoryMB': ?memoryMB,
       'processors': ?processors,
-      'virtualMachineGPUs': ?virtualMachineGPUs == null ? null : pulumi.Input.encodeList<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse, Map<String, dynamic>>(virtualMachineGPUs!, (value) => value.toMap()),
+      'virtualMachineGPUs': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse>, List<Map<String, dynamic>>>(virtualMachineGPUs, (value) => pulumi.Input.encodeList<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmSize': ?vmSize,
     };
   }
 
   factory VirtualMachineInstancePropertiesHardwareProfileResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesHardwareProfileResponse(
-      dynamicMemoryConfig: map['dynamicMemoryConfig'] == null ? null : VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse.fromMap((map['dynamicMemoryConfig'] as Map).cast<String, dynamic>()),
-      memoryMB: map['memoryMB'] == null ? null : map['memoryMB'] as double,
-      processors: map['processors'] == null ? null : map['processors'] as int,
-      virtualMachineGPUs: map['virtualMachineGPUs'] == null ? null : pulumi.Input.decodeList<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse>(map['virtualMachineGPUs'], (value) => VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vmSize: map['vmSize'] == null ? null : map['vmSize'] as String,
+      dynamicMemoryConfig: map['dynamicMemoryConfig'] == null ? null : (VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse.fromMap((map['dynamicMemoryConfig'] as Map).cast<String, dynamic>())).input(),
+      memoryMB: map['memoryMB'] == null ? null : (map['memoryMB'] as double).input(),
+      processors: map['processors'] == null ? null : (map['processors'] as int).input(),
+      virtualMachineGPUs: map['virtualMachineGPUs'] == null ? null : (pulumi.Input.decodeList<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse>(map['virtualMachineGPUs'], (value) => VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
     );
   }
 }

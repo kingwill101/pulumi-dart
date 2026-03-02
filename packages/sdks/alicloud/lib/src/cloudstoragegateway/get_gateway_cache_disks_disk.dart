@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGatewayCacheDisksDisk {
   /// The category of eht cache disk.
-  final String cacheDiskCategory;
+  final pulumi.Input<String> cacheDiskCategory;
   /// The size of the cache disk.
-  final int cacheDiskSizeInGb;
+  final pulumi.Input<int> cacheDiskSizeInGb;
   /// The ID of the cache disk.
-  final String cacheId;
+  final pulumi.Input<String> cacheId;
   /// The expiration time. Time stamp in seconds (s).
-  final int expiredTime;
+  final pulumi.Input<int> expiredTime;
   /// The ID of the gateway.
-  final String gatewayId;
+  final pulumi.Input<String> gatewayId;
   /// The ID of the Gateway Cache Disk.
-  final String id;
+  final pulumi.Input<String> id;
   /// Per second of the input output.
-  final int iops;
+  final pulumi.Input<int> iops;
   /// Whether it is used.
-  final bool isUsed;
+  final pulumi.Input<bool> isUsed;
   /// The cache disk inside the device name.
-  final String localFilePath;
+  final pulumi.Input<String> localFilePath;
   /// A renewal link of the cache disk.
-  final String renewUrl;
+  final pulumi.Input<String> renewUrl;
   /// The status of the resource.
-  final int status;
+  final pulumi.Input<int> status;
 
   /// Creates a new [GetGatewayCacheDisksDisk].
   /// [cacheDiskCategory] The category of eht cache disk.
@@ -69,17 +70,17 @@ class GetGatewayCacheDisksDisk {
 
   factory GetGatewayCacheDisksDisk.fromMap(Map<String, dynamic> map) {
     return GetGatewayCacheDisksDisk(
-      cacheDiskCategory: map['cacheDiskCategory'] as String,
-      cacheDiskSizeInGb: map['cacheDiskSizeInGb'] as int,
-      cacheId: map['cacheId'] as String,
-      expiredTime: map['expiredTime'] as int,
-      gatewayId: map['gatewayId'] as String,
-      id: map['id'] as String,
-      iops: map['iops'] as int,
-      isUsed: map['isUsed'] as bool,
-      localFilePath: map['localFilePath'] as String,
-      renewUrl: map['renewUrl'] as String,
-      status: map['status'] as int,
+      cacheDiskCategory: (map['cacheDiskCategory'] as String).input(),
+      cacheDiskSizeInGb: (map['cacheDiskSizeInGb'] as int).input(),
+      cacheId: (map['cacheId'] as String).input(),
+      expiredTime: (map['expiredTime'] as int).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
+      id: (map['id'] as String).input(),
+      iops: (map['iops'] as int).input(),
+      isUsed: (map['isUsed'] as bool).input(),
+      localFilePath: (map['localFilePath'] as String).input(),
+      renewUrl: (map['renewUrl'] as String).input(),
+      status: (map['status'] as int).input(),
     );
   }
 }

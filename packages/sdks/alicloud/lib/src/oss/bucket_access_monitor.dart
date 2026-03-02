@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketAccessMonitor {
   /// The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [BucketAccessMonitor].
   /// [status] The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
@@ -19,7 +20,7 @@ class BucketAccessMonitor {
 
   factory BucketAccessMonitor.fromMap(Map<String, dynamic> map) {
     return BucketAccessMonitor(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

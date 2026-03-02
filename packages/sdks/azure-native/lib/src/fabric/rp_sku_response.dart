@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the SKU name and Azure pricing tier for Microsoft Fabric capacity resource.
 class RpSkuResponse {
   /// The name of the SKU level.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the Azure pricing tier to which the SKU applies.
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [RpSkuResponse].
   /// [name] The name of the SKU level.
@@ -25,8 +26,8 @@ class RpSkuResponse {
 
   factory RpSkuResponse.fromMap(Map<String, dynamic> map) {
     return RpSkuResponse(
-      name: map['name'] as String,
-      tier: map['tier'] as String,
+      name: (map['name'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

@@ -14,11 +14,9 @@ class GetOrganizationRoleArgs {
   /// [organizationId] Required.
   /// [roleId] Required.
   GetOrganizationRoleArgs({
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> roleId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      roleId = pulumi.Input.asInput<String>(roleId);
+    required this.organizationId,
+    required this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetOrganizationRoleArgs {
 
   factory GetOrganizationRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationRoleArgs(
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      roleId: pulumi.Output.create<String>(map['roleId'] as String),
+      organizationId: (map['organizationId'] as String).input(),
+      roleId: (map['roleId'] as String).input(),
     );
   }
 }

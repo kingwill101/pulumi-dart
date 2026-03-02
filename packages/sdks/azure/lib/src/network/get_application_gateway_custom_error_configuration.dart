@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationGatewayCustomErrorConfiguration {
   /// Error page URL of the application gateway custom error.
-  final String customErrorPageUrl;
+  final pulumi.Input<String> customErrorPageUrl;
   /// The ID of the Rewrite Rule Set
-  final String id;
+  final pulumi.Input<String> id;
   /// Status code of the application gateway custom error.
-  final String statusCode;
+  final pulumi.Input<String> statusCode;
 
   /// Creates a new [GetApplicationGatewayCustomErrorConfiguration].
   /// [customErrorPageUrl] Error page URL of the application gateway custom error.
@@ -29,9 +30,9 @@ class GetApplicationGatewayCustomErrorConfiguration {
 
   factory GetApplicationGatewayCustomErrorConfiguration.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayCustomErrorConfiguration(
-      customErrorPageUrl: map['customErrorPageUrl'] as String,
-      id: map['id'] as String,
-      statusCode: map['statusCode'] as String,
+      customErrorPageUrl: (map['customErrorPageUrl'] as String).input(),
+      id: (map['id'] as String).input(),
+      statusCode: (map['statusCode'] as String).input(),
     );
   }
 }

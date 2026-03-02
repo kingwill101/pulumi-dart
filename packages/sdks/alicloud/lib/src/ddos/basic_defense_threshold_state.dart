@@ -34,25 +34,16 @@ class BasicDefenseThresholdState {
   /// [maxPps] The maximum packet scrubbing threshold. Unit: pps.
   /// [pps] The current message number cleaning threshold. Unit: pps.
   BasicDefenseThresholdState({
-    pulumi.Output<int>? bps,
-    pulumi.Output<String>? ddosType,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? internetIp,
-    pulumi.Output<bool>? isAuto,
-    pulumi.Output<int>? maxBps,
-    pulumi.Output<int>? maxPps,
-    pulumi.Output<int>? pps,
-  }) :
-      bps = pulumi.Input.asOptionalInput<int>(bps),
-      ddosType = pulumi.Input.asOptionalInput<String>(ddosType),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      internetIp = pulumi.Input.asOptionalInput<String>(internetIp),
-      isAuto = pulumi.Input.asOptionalInput<bool>(isAuto),
-      maxBps = pulumi.Input.asOptionalInput<int>(maxBps),
-      maxPps = pulumi.Input.asOptionalInput<int>(maxPps),
-      pps = pulumi.Input.asOptionalInput<int>(pps);
+    this.bps,
+    this.ddosType,
+    this.instanceId,
+    this.instanceType,
+    this.internetIp,
+    this.isAuto,
+    this.maxBps,
+    this.maxPps,
+    this.pps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class BasicDefenseThresholdState {
 
   factory BasicDefenseThresholdState.fromMap(Map<String, dynamic> map) {
     return BasicDefenseThresholdState(
-      bps: map['bps'] == null ? null : pulumi.Output.create<int>(map['bps'] as int),
-      ddosType: map['ddosType'] == null ? null : pulumi.Output.create<String>(map['ddosType'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      internetIp: map['internetIp'] == null ? null : pulumi.Output.create<String>(map['internetIp'] as String),
-      isAuto: map['isAuto'] == null ? null : pulumi.Output.create<bool>(map['isAuto'] as bool),
-      maxBps: map['maxBps'] == null ? null : pulumi.Output.create<int>(map['maxBps'] as int),
-      maxPps: map['maxPps'] == null ? null : pulumi.Output.create<int>(map['maxPps'] as int),
-      pps: map['pps'] == null ? null : pulumi.Output.create<int>(map['pps'] as int),
+      bps: map['bps'] == null ? null : (map['bps'] as int).input(),
+      ddosType: map['ddosType'] == null ? null : (map['ddosType'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      internetIp: map['internetIp'] == null ? null : (map['internetIp'] as String).input(),
+      isAuto: map['isAuto'] == null ? null : (map['isAuto'] as bool).input(),
+      maxBps: map['maxBps'] == null ? null : (map['maxBps'] as int).input(),
+      maxPps: map['maxPps'] == null ? null : (map['maxPps'] as int).input(),
+      pps: map['pps'] == null ? null : (map['pps'] as int).input(),
     );
   }
 }

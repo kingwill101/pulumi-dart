@@ -39,23 +39,15 @@ class DataFlowArgs {
   /// [status] The status of the Data flow. Valid values: `Running`, `Stopped`.
   /// [throughput] The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
   DataFlowArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> fileSystemId,
-    required pulumi.Output<String> fsetId,
-    pulumi.Output<String>? sourceSecurityType,
-    required pulumi.Output<String> sourceStorage,
-    pulumi.Output<String>? status,
-    required pulumi.Output<int> throughput,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      fsetId = pulumi.Input.asInput<String>(fsetId),
-      sourceSecurityType = pulumi.Input.asOptionalInput<String>(sourceSecurityType),
-      sourceStorage = pulumi.Input.asInput<String>(sourceStorage),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      throughput = pulumi.Input.asInput<int>(throughput);
+    this.description,
+    this.dryRun,
+    required this.fileSystemId,
+    required this.fsetId,
+    this.sourceSecurityType,
+    required this.sourceStorage,
+    this.status,
+    required this.throughput,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class DataFlowArgs {
 
   factory DataFlowArgs.fromMap(Map<String, dynamic> map) {
     return DataFlowArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      fsetId: pulumi.Output.create<String>(map['fsetId'] as String),
-      sourceSecurityType: map['sourceSecurityType'] == null ? null : pulumi.Output.create<String>(map['sourceSecurityType'] as String),
-      sourceStorage: pulumi.Output.create<String>(map['sourceStorage'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      throughput: pulumi.Output.create<int>(map['throughput'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      fsetId: (map['fsetId'] as String).input(),
+      sourceSecurityType: map['sourceSecurityType'] == null ? null : (map['sourceSecurityType'] as String).input(),
+      sourceStorage: (map['sourceStorage'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      throughput: (map['throughput'] as int).input(),
     );
   }
 }

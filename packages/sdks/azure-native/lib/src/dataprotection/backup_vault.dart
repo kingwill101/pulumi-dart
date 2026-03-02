@@ -9,17 +9,17 @@ import 'storage_setting.dart';
 /// Backup Vault
 class BackupVault {
   /// Feature Settings
-  final FeatureSettings? featureSettings;
+  final pulumi.Input<FeatureSettings>? featureSettings;
   /// Monitoring Settings
-  final MonitoringSettings? monitoringSettings;
+  final pulumi.Input<MonitoringSettings>? monitoringSettings;
   /// List of replicated regions for Backup Vault
-  final List<String>? replicatedRegions;
+  final pulumi.Input<List<String>>? replicatedRegions;
   /// ResourceGuardOperationRequests on which LAC check will be performed
-  final List<String>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
   /// Security Settings
-  final SecuritySettings? securitySettings;
+  final pulumi.Input<SecuritySettings>? securitySettings;
   /// Storage Settings
-  final List<StorageSetting> storageSettings;
+  final pulumi.Input<List<StorageSetting>> storageSettings;
 
   /// Creates a new [BackupVault].
   /// [featureSettings] Feature Settings
@@ -39,23 +39,23 @@ class BackupVault {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'featureSettings': ?featureSettings == null ? null : featureSettings!.toMap(),
-      'monitoringSettings': ?monitoringSettings == null ? null : monitoringSettings!.toMap(),
+      'featureSettings': ?pulumi.Input.mapOptionalInputValue<FeatureSettings, Map<String, dynamic>>(featureSettings, (value) => value.toMap()),
+      'monitoringSettings': ?pulumi.Input.mapOptionalInputValue<MonitoringSettings, Map<String, dynamic>>(monitoringSettings, (value) => value.toMap()),
       'replicatedRegions': ?replicatedRegions,
       'resourceGuardOperationRequests': ?resourceGuardOperationRequests,
-      'securitySettings': ?securitySettings == null ? null : securitySettings!.toMap(),
-      'storageSettings': pulumi.Input.encodeList<StorageSetting, Map<String, dynamic>>(storageSettings, (value) => value.toMap()),
+      'securitySettings': ?pulumi.Input.mapOptionalInputValue<SecuritySettings, Map<String, dynamic>>(securitySettings, (value) => value.toMap()),
+      'storageSettings': pulumi.Input.mapInputValue<List<StorageSetting>, List<Map<String, dynamic>>>(storageSettings, (value) => pulumi.Input.encodeList<StorageSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BackupVault.fromMap(Map<String, dynamic> map) {
     return BackupVault(
-      featureSettings: map['featureSettings'] == null ? null : FeatureSettings.fromMap((map['featureSettings'] as Map).cast<String, dynamic>()),
-      monitoringSettings: map['monitoringSettings'] == null ? null : MonitoringSettings.fromMap((map['monitoringSettings'] as Map).cast<String, dynamic>()),
-      replicatedRegions: map['replicatedRegions'] == null ? null : (map['replicatedRegions'] as List).cast<String>(),
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : (map['resourceGuardOperationRequests'] as List).cast<String>(),
-      securitySettings: map['securitySettings'] == null ? null : SecuritySettings.fromMap((map['securitySettings'] as Map).cast<String, dynamic>()),
-      storageSettings: pulumi.Input.decodeList<StorageSetting>(map['storageSettings'], (value) => StorageSetting.fromMap((value as Map).cast<String, dynamic>())),
+      featureSettings: map['featureSettings'] == null ? null : (FeatureSettings.fromMap((map['featureSettings'] as Map).cast<String, dynamic>())).input(),
+      monitoringSettings: map['monitoringSettings'] == null ? null : (MonitoringSettings.fromMap((map['monitoringSettings'] as Map).cast<String, dynamic>())).input(),
+      replicatedRegions: map['replicatedRegions'] == null ? null : ((map['replicatedRegions'] as List).cast<String>()).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
+      securitySettings: map['securitySettings'] == null ? null : (SecuritySettings.fromMap((map['securitySettings'] as Map).cast<String, dynamic>())).input(),
+      storageSettings: (pulumi.Input.decodeList<StorageSetting>(map['storageSettings'], (value) => StorageSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

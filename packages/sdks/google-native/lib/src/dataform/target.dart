@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents an action identifier. If the action writes output, the output will be written to the referenced database object.
 class Target {
   /// The action's database (Google Cloud project ID) .
-  final String? database;
+  final pulumi.Input<String>? database;
   /// The action's name, within `database` and `schema`.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The action's schema (BigQuery dataset ID), within `database`.
-  final String? schema;
+  final pulumi.Input<String>? schema;
 
   /// Creates a new [Target].
   /// [database] The action's database (Google Cloud project ID) .
@@ -30,9 +31,9 @@ class Target {
 
   factory Target.fromMap(Map<String, dynamic> map) {
     return Target(
-      database: map['database'] == null ? null : map['database'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      schema: map['schema'] == null ? null : map['schema'] as String,
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
     );
   }
 }

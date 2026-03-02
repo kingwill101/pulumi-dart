@@ -19,15 +19,11 @@ class TagState {
   /// [tagTriggers] List of values which cause the tag to be (re)created. This is useful for triggering a new tag when the source image changes.
   /// [targetImage] Name of the target image.
   TagState({
-    pulumi.Output<String>? sourceImage,
-    pulumi.Output<String>? sourceImageId,
-    pulumi.Output<List<String>>? tagTriggers,
-    pulumi.Output<String>? targetImage,
-  }) :
-      sourceImage = pulumi.Input.asOptionalInput<String>(sourceImage),
-      sourceImageId = pulumi.Input.asOptionalInput<String>(sourceImageId),
-      tagTriggers = pulumi.Input.asOptionalInput<List<String>>(tagTriggers),
-      targetImage = pulumi.Input.asOptionalInput<String>(targetImage);
+    this.sourceImage,
+    this.sourceImageId,
+    this.tagTriggers,
+    this.targetImage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      sourceImage: map['sourceImage'] == null ? null : pulumi.Output.create<String>(map['sourceImage'] as String),
-      sourceImageId: map['sourceImageId'] == null ? null : pulumi.Output.create<String>(map['sourceImageId'] as String),
-      tagTriggers: map['tagTriggers'] == null ? null : pulumi.Output.create<List<String>>((map['tagTriggers'] as List).cast<String>()),
-      targetImage: map['targetImage'] == null ? null : pulumi.Output.create<String>(map['targetImage'] as String),
+      sourceImage: map['sourceImage'] == null ? null : (map['sourceImage'] as String).input(),
+      sourceImageId: map['sourceImageId'] == null ? null : (map['sourceImageId'] as String).input(),
+      tagTriggers: map['tagTriggers'] == null ? null : ((map['tagTriggers'] as List).cast<String>()).input(),
+      targetImage: map['targetImage'] == null ? null : (map['targetImage'] as String).input(),
     );
   }
 }

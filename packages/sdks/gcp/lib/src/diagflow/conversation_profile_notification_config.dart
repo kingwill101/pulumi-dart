@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileNotificationConfig {
   /// Format of the message
   /// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
-  final String? messageFormat;
+  final pulumi.Input<String>? messageFormat;
   /// Name of the Pub/Sub topic to publish conversation events
-  final String? topic;
+  final pulumi.Input<String>? topic;
 
   /// Creates a new [ConversationProfileNotificationConfig].
   /// [messageFormat] Format of the message
@@ -25,8 +26,8 @@ class ConversationProfileNotificationConfig {
 
   factory ConversationProfileNotificationConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileNotificationConfig(
-      messageFormat: map['messageFormat'] == null ? null : map['messageFormat'] as String,
-      topic: map['topic'] == null ? null : map['topic'] as String,
+      messageFormat: map['messageFormat'] == null ? null : (map['messageFormat'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

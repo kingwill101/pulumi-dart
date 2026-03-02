@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'url_signing_action_parameters_response.dart';
 
 /// Defines the url signing action for the delivery rule.
 class UrlSigningActionResponse {
   /// The name of the action for the delivery rule.
   /// Expected value is 'UrlSigning'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the action.
-  final UrlSigningActionParametersResponse parameters;
+  final pulumi.Input<UrlSigningActionParametersResponse> parameters;
 
   /// Creates a new [UrlSigningActionResponse].
   /// [name] The name of the action for the delivery rule.
@@ -21,14 +22,14 @@ class UrlSigningActionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<UrlSigningActionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory UrlSigningActionResponse.fromMap(Map<String, dynamic> map) {
     return UrlSigningActionResponse(
-      name: map['name'] as String,
-      parameters: UrlSigningActionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (UrlSigningActionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

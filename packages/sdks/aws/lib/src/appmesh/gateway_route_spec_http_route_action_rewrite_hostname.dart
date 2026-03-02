@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayRouteSpecHttpRouteActionRewriteHostname {
   /// Default target host name to write to. Valid values: `ENABLED`, `DISABLED`.
-  final String defaultTargetHostname;
+  final pulumi.Input<String> defaultTargetHostname;
 
   /// Creates a new [GatewayRouteSpecHttpRouteActionRewriteHostname].
   /// [defaultTargetHostname] Default target host name to write to. Valid values: `ENABLED`, `DISABLED`.
@@ -19,7 +20,7 @@ class GatewayRouteSpecHttpRouteActionRewriteHostname {
 
   factory GatewayRouteSpecHttpRouteActionRewriteHostname.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRouteActionRewriteHostname(
-      defaultTargetHostname: map['defaultTargetHostname'] as String,
+      defaultTargetHostname: (map['defaultTargetHostname'] as String).input(),
     );
   }
 }

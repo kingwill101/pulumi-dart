@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_vmworkload_protection_policy_backup.dart';
 import 'policy_vmworkload_protection_policy_retention_daily.dart';
 import 'policy_vmworkload_protection_policy_retention_monthly.dart';
@@ -9,19 +10,19 @@ import 'policy_vmworkload_protection_policy_simple_retention.dart';
 
 class PolicyVMWorkloadProtectionPolicy {
   /// A `backup` block as defined below.
-  final PolicyVMWorkloadProtectionPolicyBackup backup;
+  final pulumi.Input<PolicyVMWorkloadProtectionPolicyBackup> backup;
   /// The type of the VM Workload Backup Policy. Possible values are `Differential`, `Full`, `Incremental` and `Log`.
-  final String policyType;
+  final pulumi.Input<String> policyType;
   /// A `retention_daily` block as defined below.
-  final PolicyVMWorkloadProtectionPolicyRetentionDaily? retentionDaily;
+  final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionDaily>? retentionDaily;
   /// A `retention_monthly` block as defined below.
-  final PolicyVMWorkloadProtectionPolicyRetentionMonthly? retentionMonthly;
+  final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionMonthly>? retentionMonthly;
   /// A `retention_weekly` block as defined below.
-  final PolicyVMWorkloadProtectionPolicyRetentionWeekly? retentionWeekly;
+  final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionWeekly>? retentionWeekly;
   /// A `retention_yearly` block as defined below.
-  final PolicyVMWorkloadProtectionPolicyRetentionYearly? retentionYearly;
+  final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionYearly>? retentionYearly;
   /// A `simple_retention` block as defined below.
-  final PolicyVMWorkloadProtectionPolicySimpleRetention? simpleRetention;
+  final pulumi.Input<PolicyVMWorkloadProtectionPolicySimpleRetention>? simpleRetention;
 
   /// Creates a new [PolicyVMWorkloadProtectionPolicy].
   /// [backup] A `backup` block as defined below.
@@ -43,25 +44,25 @@ class PolicyVMWorkloadProtectionPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backup': backup.toMap(),
+      'backup': pulumi.Input.mapInputValue<PolicyVMWorkloadProtectionPolicyBackup, Map<String, dynamic>>(backup, (value) => value.toMap()),
       'policyType': policyType,
-      'retentionDaily': ?retentionDaily == null ? null : retentionDaily!.toMap(),
-      'retentionMonthly': ?retentionMonthly == null ? null : retentionMonthly!.toMap(),
-      'retentionWeekly': ?retentionWeekly == null ? null : retentionWeekly!.toMap(),
-      'retentionYearly': ?retentionYearly == null ? null : retentionYearly!.toMap(),
-      'simpleRetention': ?simpleRetention == null ? null : simpleRetention!.toMap(),
+      'retentionDaily': ?pulumi.Input.mapOptionalInputValue<PolicyVMWorkloadProtectionPolicyRetentionDaily, Map<String, dynamic>>(retentionDaily, (value) => value.toMap()),
+      'retentionMonthly': ?pulumi.Input.mapOptionalInputValue<PolicyVMWorkloadProtectionPolicyRetentionMonthly, Map<String, dynamic>>(retentionMonthly, (value) => value.toMap()),
+      'retentionWeekly': ?pulumi.Input.mapOptionalInputValue<PolicyVMWorkloadProtectionPolicyRetentionWeekly, Map<String, dynamic>>(retentionWeekly, (value) => value.toMap()),
+      'retentionYearly': ?pulumi.Input.mapOptionalInputValue<PolicyVMWorkloadProtectionPolicyRetentionYearly, Map<String, dynamic>>(retentionYearly, (value) => value.toMap()),
+      'simpleRetention': ?pulumi.Input.mapOptionalInputValue<PolicyVMWorkloadProtectionPolicySimpleRetention, Map<String, dynamic>>(simpleRetention, (value) => value.toMap()),
     };
   }
 
   factory PolicyVMWorkloadProtectionPolicy.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadProtectionPolicy(
-      backup: PolicyVMWorkloadProtectionPolicyBackup.fromMap((map['backup'] as Map).cast<String, dynamic>()),
-      policyType: map['policyType'] as String,
-      retentionDaily: map['retentionDaily'] == null ? null : PolicyVMWorkloadProtectionPolicyRetentionDaily.fromMap((map['retentionDaily'] as Map).cast<String, dynamic>()),
-      retentionMonthly: map['retentionMonthly'] == null ? null : PolicyVMWorkloadProtectionPolicyRetentionMonthly.fromMap((map['retentionMonthly'] as Map).cast<String, dynamic>()),
-      retentionWeekly: map['retentionWeekly'] == null ? null : PolicyVMWorkloadProtectionPolicyRetentionWeekly.fromMap((map['retentionWeekly'] as Map).cast<String, dynamic>()),
-      retentionYearly: map['retentionYearly'] == null ? null : PolicyVMWorkloadProtectionPolicyRetentionYearly.fromMap((map['retentionYearly'] as Map).cast<String, dynamic>()),
-      simpleRetention: map['simpleRetention'] == null ? null : PolicyVMWorkloadProtectionPolicySimpleRetention.fromMap((map['simpleRetention'] as Map).cast<String, dynamic>()),
+      backup: (PolicyVMWorkloadProtectionPolicyBackup.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
+      policyType: (map['policyType'] as String).input(),
+      retentionDaily: map['retentionDaily'] == null ? null : (PolicyVMWorkloadProtectionPolicyRetentionDaily.fromMap((map['retentionDaily'] as Map).cast<String, dynamic>())).input(),
+      retentionMonthly: map['retentionMonthly'] == null ? null : (PolicyVMWorkloadProtectionPolicyRetentionMonthly.fromMap((map['retentionMonthly'] as Map).cast<String, dynamic>())).input(),
+      retentionWeekly: map['retentionWeekly'] == null ? null : (PolicyVMWorkloadProtectionPolicyRetentionWeekly.fromMap((map['retentionWeekly'] as Map).cast<String, dynamic>())).input(),
+      retentionYearly: map['retentionYearly'] == null ? null : (PolicyVMWorkloadProtectionPolicyRetentionYearly.fromMap((map['retentionYearly'] as Map).cast<String, dynamic>())).input(),
+      simpleRetention: map['simpleRetention'] == null ? null : (PolicyVMWorkloadProtectionPolicySimpleRetention.fromMap((map['simpleRetention'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

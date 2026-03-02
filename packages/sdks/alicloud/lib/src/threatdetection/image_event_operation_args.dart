@@ -34,23 +34,15 @@ class ImageEventOperationArgs {
   /// [scenarios] The application scope of the rule.
   /// [source] The source of the whitelist. Valid values:
   ImageEventOperationArgs({
-    required pulumi.Output<String> conditions,
-    pulumi.Output<String>? eventKey,
-    pulumi.Output<String>? eventName,
-    required pulumi.Output<String> eventType,
-    pulumi.Output<String>? note,
-    required pulumi.Output<String> operationCode,
-    pulumi.Output<String>? scenarios,
-    pulumi.Output<String>? source,
-  }) :
-      conditions = pulumi.Input.asInput<String>(conditions),
-      eventKey = pulumi.Input.asOptionalInput<String>(eventKey),
-      eventName = pulumi.Input.asOptionalInput<String>(eventName),
-      eventType = pulumi.Input.asInput<String>(eventType),
-      note = pulumi.Input.asOptionalInput<String>(note),
-      operationCode = pulumi.Input.asInput<String>(operationCode),
-      scenarios = pulumi.Input.asOptionalInput<String>(scenarios),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    required this.conditions,
+    this.eventKey,
+    this.eventName,
+    required this.eventType,
+    this.note,
+    required this.operationCode,
+    this.scenarios,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ImageEventOperationArgs {
 
   factory ImageEventOperationArgs.fromMap(Map<String, dynamic> map) {
     return ImageEventOperationArgs(
-      conditions: pulumi.Output.create<String>(map['conditions'] as String),
-      eventKey: map['eventKey'] == null ? null : pulumi.Output.create<String>(map['eventKey'] as String),
-      eventName: map['eventName'] == null ? null : pulumi.Output.create<String>(map['eventName'] as String),
-      eventType: pulumi.Output.create<String>(map['eventType'] as String),
-      note: map['note'] == null ? null : pulumi.Output.create<String>(map['note'] as String),
-      operationCode: pulumi.Output.create<String>(map['operationCode'] as String),
-      scenarios: map['scenarios'] == null ? null : pulumi.Output.create<String>(map['scenarios'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      conditions: (map['conditions'] as String).input(),
+      eventKey: map['eventKey'] == null ? null : (map['eventKey'] as String).input(),
+      eventName: map['eventName'] == null ? null : (map['eventName'] as String).input(),
+      eventType: (map['eventType'] as String).input(),
+      note: map['note'] == null ? null : (map['note'] as String).input(),
+      operationCode: (map['operationCode'] as String).input(),
+      scenarios: map['scenarios'] == null ? null : (map['scenarios'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

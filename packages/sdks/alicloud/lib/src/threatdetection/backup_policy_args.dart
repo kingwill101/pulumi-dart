@@ -25,17 +25,12 @@ class BackupPolicyArgs {
   /// [policyVersion] Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
   /// [uuidLists] Specify the Protection of Server UUID List.
   BackupPolicyArgs({
-    required pulumi.Output<String> backupPolicyName,
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? policyRegionId,
-    required pulumi.Output<String> policyVersion,
-    required pulumi.Output<List<String>> uuidLists,
-  }) :
-      backupPolicyName = pulumi.Input.asInput<String>(backupPolicyName),
-      policy = pulumi.Input.asInput<String>(policy),
-      policyRegionId = pulumi.Input.asOptionalInput<String>(policyRegionId),
-      policyVersion = pulumi.Input.asInput<String>(policyVersion),
-      uuidLists = pulumi.Input.asInput<List<String>>(uuidLists);
+    required this.backupPolicyName,
+    required this.policy,
+    this.policyRegionId,
+    required this.policyVersion,
+    required this.uuidLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      backupPolicyName: pulumi.Output.create<String>(map['backupPolicyName'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      policyRegionId: map['policyRegionId'] == null ? null : pulumi.Output.create<String>(map['policyRegionId'] as String),
-      policyVersion: pulumi.Output.create<String>(map['policyVersion'] as String),
-      uuidLists: pulumi.Output.create<List<String>>((map['uuidLists'] as List).cast<String>()),
+      backupPolicyName: (map['backupPolicyName'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      policyRegionId: map['policyRegionId'] == null ? null : (map['policyRegionId'] as String).input(),
+      policyVersion: (map['policyVersion'] as String).input(),
+      uuidLists: ((map['uuidLists'] as List).cast<String>()).input(),
     );
   }
 }

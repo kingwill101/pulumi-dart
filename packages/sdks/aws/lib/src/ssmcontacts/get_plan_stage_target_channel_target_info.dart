@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPlanStageTargetChannelTargetInfo {
-  final String contactChannelId;
-  final int retryIntervalInMinutes;
+  final pulumi.Input<String> contactChannelId;
+  final pulumi.Input<int> retryIntervalInMinutes;
 
   /// Creates a new [GetPlanStageTargetChannelTargetInfo].
   /// [contactChannelId] Required.
@@ -22,8 +23,8 @@ class GetPlanStageTargetChannelTargetInfo {
 
   factory GetPlanStageTargetChannelTargetInfo.fromMap(Map<String, dynamic> map) {
     return GetPlanStageTargetChannelTargetInfo(
-      contactChannelId: map['contactChannelId'] as String,
-      retryIntervalInMinutes: map['retryIntervalInMinutes'] as int,
+      contactChannelId: (map['contactChannelId'] as String).input(),
+      retryIntervalInMinutes: (map['retryIntervalInMinutes'] as int).input(),
     );
   }
 }

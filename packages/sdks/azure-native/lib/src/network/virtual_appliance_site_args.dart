@@ -32,21 +32,14 @@ class VirtualApplianceSiteArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [siteName] The name of the site.
   VirtualApplianceSiteArgs({
-    pulumi.Output<String>? addressPrefix,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkVirtualApplianceName,
-    pulumi.Output<Office365PolicyProperties>? o365Policy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? siteName,
-  }) :
-      addressPrefix = pulumi.Input.asOptionalInput<String>(addressPrefix),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkVirtualApplianceName = pulumi.Input.asInput<String>(networkVirtualApplianceName),
-      o365Policy = pulumi.Input.asOptionalInput<Office365PolicyProperties>(o365Policy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asOptionalInput<String>(siteName);
+    this.addressPrefix,
+    this.id,
+    this.name,
+    required this.networkVirtualApplianceName,
+    this.o365Policy,
+    required this.resourceGroupName,
+    this.siteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class VirtualApplianceSiteArgs {
 
   factory VirtualApplianceSiteArgs.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceSiteArgs(
-      addressPrefix: map['addressPrefix'] == null ? null : pulumi.Output.create<String>(map['addressPrefix'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkVirtualApplianceName: pulumi.Output.create<String>(map['networkVirtualApplianceName'] as String),
-      o365Policy: map['o365Policy'] == null ? null : pulumi.Output.create<Office365PolicyProperties>(Office365PolicyProperties.fromMap((map['o365Policy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: map['siteName'] == null ? null : pulumi.Output.create<String>(map['siteName'] as String),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkVirtualApplianceName: (map['networkVirtualApplianceName'] as String).input(),
+      o365Policy: map['o365Policy'] == null ? null : (Office365PolicyProperties.fromMap((map['o365Policy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
     );
   }
 }

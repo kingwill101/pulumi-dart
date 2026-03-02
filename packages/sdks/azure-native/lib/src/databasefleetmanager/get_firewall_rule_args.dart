@@ -22,15 +22,11 @@ class GetFirewallRuleArgs {
   /// [fleetspaceName] Name of the fleetspace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFirewallRuleArgs({
-    required pulumi.Output<String> firewallRuleName,
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<String> fleetspaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      firewallRuleName = pulumi.Input.asInput<String>(firewallRuleName),
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      fleetspaceName = pulumi.Input.asInput<String>(fleetspaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.firewallRuleName,
+    required this.fleetName,
+    required this.fleetspaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetFirewallRuleArgs {
 
   factory GetFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallRuleArgs(
-      firewallRuleName: pulumi.Output.create<String>(map['firewallRuleName'] as String),
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      fleetspaceName: pulumi.Output.create<String>(map['fleetspaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      firewallRuleName: (map['firewallRuleName'] as String).input(),
+      fleetName: (map['fleetName'] as String).input(),
+      fleetspaceName: (map['fleetspaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

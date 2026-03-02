@@ -41,23 +41,15 @@ class EnvironmentArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [vmImage] Use a Compute Engine VM image to start the notebook instance.
   EnvironmentArgs({
-    pulumi.Output<EnvironmentContainerImage>? containerImage,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? postStartupScript,
-    pulumi.Output<String>? project,
-    pulumi.Output<EnvironmentVmImage>? vmImage,
-  }) :
-      containerImage = pulumi.Input.asOptionalInput<EnvironmentContainerImage>(containerImage),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      postStartupScript = pulumi.Input.asOptionalInput<String>(postStartupScript),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      vmImage = pulumi.Input.asOptionalInput<EnvironmentVmImage>(vmImage);
+    this.containerImage,
+    this.description,
+    this.displayName,
+    required this.location,
+    this.name,
+    this.postStartupScript,
+    this.project,
+    this.vmImage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,14 +66,14 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      containerImage: map['containerImage'] == null ? null : pulumi.Output.create<EnvironmentContainerImage>(EnvironmentContainerImage.fromMap((map['containerImage'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      postStartupScript: map['postStartupScript'] == null ? null : pulumi.Output.create<String>(map['postStartupScript'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      vmImage: map['vmImage'] == null ? null : pulumi.Output.create<EnvironmentVmImage>(EnvironmentVmImage.fromMap((map['vmImage'] as Map).cast<String, dynamic>())),
+      containerImage: map['containerImage'] == null ? null : (EnvironmentContainerImage.fromMap((map['containerImage'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      postStartupScript: map['postStartupScript'] == null ? null : (map['postStartupScript'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      vmImage: map['vmImage'] == null ? null : (EnvironmentVmImage.fromMap((map['vmImage'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

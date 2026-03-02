@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cognitive Services account commitment quota.
 class CommitmentQuotaResponse {
   /// Commitment quota quantity.
-  final double? quantity;
+  final pulumi.Input<double>? quantity;
   /// Commitment quota unit.
-  final String? unit;
+  final pulumi.Input<String>? unit;
 
   /// Creates a new [CommitmentQuotaResponse].
   /// [quantity] Commitment quota quantity.
@@ -25,8 +26,8 @@ class CommitmentQuotaResponse {
 
   factory CommitmentQuotaResponse.fromMap(Map<String, dynamic> map) {
     return CommitmentQuotaResponse(
-      quantity: map['quantity'] == null ? null : map['quantity'] as double,
-      unit: map['unit'] == null ? null : map['unit'] as String,
+      quantity: map['quantity'] == null ? null : (map['quantity'] as double).input(),
+      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class PrivateAccessArgs {
   /// [resourceGroupName] String that represents an Azure resource group.
   /// [tags] Resource tags.
   PrivateAccessArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? privateAccessName,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      privateAccessName = pulumi.Input.asOptionalInput<String>(privateAccessName),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.privateAccessName,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PrivateAccessArgs {
 
   factory PrivateAccessArgs.fromMap(Map<String, dynamic> map) {
     return PrivateAccessArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      privateAccessName: map['privateAccessName'] == null ? null : pulumi.Output.create<String>(map['privateAccessName'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      privateAccessName: map['privateAccessName'] == null ? null : (map['privateAccessName'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class GetPrefixListsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [prefixListName] The name of the prefix list.
   GetPrefixListsArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? prefixListName,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      prefixListName = pulumi.Input.asOptionalInput<String>(prefixListName);
+    this.enableDetails,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.prefixListName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetPrefixListsArgs {
 
   factory GetPrefixListsArgs.fromMap(Map<String, dynamic> map) {
     return GetPrefixListsArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      prefixListName: map['prefixListName'] == null ? null : pulumi.Output.create<String>(map['prefixListName'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      prefixListName: map['prefixListName'] == null ? null : (map['prefixListName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SoftwareUpdateConfigurationPostTask {
   /// Specifies a map of parameters for the task.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
   /// The name of the runbook for the post task.
-  final String? source;
+  final pulumi.Input<String>? source;
 
   /// Creates a new [SoftwareUpdateConfigurationPostTask].
   /// [parameters] Specifies a map of parameters for the task.
@@ -24,8 +25,8 @@ class SoftwareUpdateConfigurationPostTask {
 
   factory SoftwareUpdateConfigurationPostTask.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationPostTask(
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      source: map['source'] == null ? null : map['source'] as String,
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

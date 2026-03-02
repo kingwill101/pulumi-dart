@@ -20,13 +20,10 @@ class HybridUseBenefitArgs {
   /// [scope] The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
   /// [sku] Hybrid use benefit SKU
   HybridUseBenefitArgs({
-    pulumi.Output<String>? planId,
-    required pulumi.Output<String> scope,
-    required pulumi.Output<Sku> sku,
-  }) :
-      planId = pulumi.Input.asOptionalInput<String>(planId),
-      scope = pulumi.Input.asInput<String>(scope),
-      sku = pulumi.Input.asInput<Sku>(sku);
+    this.planId,
+    required this.scope,
+    required this.sku,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class HybridUseBenefitArgs {
 
   factory HybridUseBenefitArgs.fromMap(Map<String, dynamic> map) {
     return HybridUseBenefitArgs(
-      planId: map['planId'] == null ? null : pulumi.Output.create<String>(map['planId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
+      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class GetMavenArtifactArgs {
   /// [project] The ID of the project that owns the repository. If not provided, the provider-level project is used.
   /// [repositoryId] The ID of the repository containing the Maven artifact.
   GetMavenArtifactArgs({
-    required pulumi.Output<String> artifactId,
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-  }) :
-      artifactId = pulumi.Input.asInput<String>(artifactId),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId);
+    required this.artifactId,
+    required this.groupId,
+    required this.location,
+    this.project,
+    required this.repositoryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetMavenArtifactArgs {
 
   factory GetMavenArtifactArgs.fromMap(Map<String, dynamic> map) {
     return GetMavenArtifactArgs(
-      artifactId: pulumi.Output.create<String>(map['artifactId'] as String),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
+      artifactId: (map['artifactId'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
     );
   }
 }

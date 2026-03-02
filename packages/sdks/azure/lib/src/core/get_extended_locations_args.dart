@@ -13,9 +13,8 @@ class GetExtendedLocationsArgs {
   /// Creates a new [GetExtendedLocationsArgs].
   /// [location] The Azure location to retrieve the Extended Locations for.
   GetExtendedLocationsArgs({
-    required pulumi.Output<String> location,
-  }) :
-      location = pulumi.Input.asInput<String>(location);
+    required this.location,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetExtendedLocationsArgs {
 
   factory GetExtendedLocationsArgs.fromMap(Map<String, dynamic> map) {
     return GetExtendedLocationsArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
+      location: (map['location'] as String).input(),
     );
   }
 }

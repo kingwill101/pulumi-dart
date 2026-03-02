@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SigningJobDestinationS3 {
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// An Amazon S3 object key prefix that you can use to limit signed objects keys to begin with the specified prefix.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [SigningJobDestinationS3].
   /// [bucket] Required.
@@ -23,8 +24,8 @@ class SigningJobDestinationS3 {
 
   factory SigningJobDestinationS3.fromMap(Map<String, dynamic> map) {
     return SigningJobDestinationS3(
-      bucket: map['bucket'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      bucket: (map['bucket'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A GCP vlan attachment.
 class IntakeVlanAttachmentResponse {
   /// Attachment pairing key.
-  final String pairingKey;
+  final pulumi.Input<String> pairingKey;
 
   /// Creates a new [IntakeVlanAttachmentResponse].
   /// [pairingKey] Attachment pairing key.
@@ -20,7 +21,7 @@ class IntakeVlanAttachmentResponse {
 
   factory IntakeVlanAttachmentResponse.fromMap(Map<String, dynamic> map) {
     return IntakeVlanAttachmentResponse(
-      pairingKey: map['pairingKey'] as String,
+      pairingKey: (map['pairingKey'] as String).input(),
     );
   }
 }

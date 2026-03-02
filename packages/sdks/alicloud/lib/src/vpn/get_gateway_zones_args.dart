@@ -27,13 +27,10 @@ class GetGatewayZonesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [spec] Bandwidth specification.-If an IPsec connection is bound to a VPN gateway instance, this parameter indicates the Bandwidth specification of the VPN gateway instance.-If an IPsec connection is bound to a forwarding router, this parameter indicates the bandwidth that you expect the IPsec connection to support.Different bandwidth specifications may affect the zone information that is found. Value:
   GetGatewayZonesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> spec,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      spec = pulumi.Input.asInput<String>(spec);
+    this.ids,
+    this.outputFile,
+    required this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,9 +42,9 @@ class GetGatewayZonesArgs {
 
   factory GetGatewayZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayZonesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      spec: pulumi.Output.create<String>(map['spec'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      spec: (map['spec'] as String).input(),
     );
   }
 }

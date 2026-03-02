@@ -16,11 +16,9 @@ class GetIssueArgs {
   /// [issueName] The name of the IssueResource
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   GetIssueArgs({
-    required pulumi.Output<String> issueName,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      issueName = pulumi.Input.asInput<String>(issueName),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.issueName,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetIssueArgs {
 
   factory GetIssueArgs.fromMap(Map<String, dynamic> map) {
     return GetIssueArgs(
-      issueName: pulumi.Output.create<String>(map['issueName'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      issueName: (map['issueName'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

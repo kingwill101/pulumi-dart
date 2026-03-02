@@ -30,21 +30,14 @@ class PrivateConnectionDatastreamV1alpha1Args {
   /// [requestId] Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [vpcPeeringConfig] VPC Peering Config
   PrivateConnectionDatastreamV1alpha1Args({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> privateConnectionId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<VpcPeeringConfigDatastreamV1alpha1>? vpcPeeringConfig,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      privateConnectionId = pulumi.Input.asInput<String>(privateConnectionId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      vpcPeeringConfig = pulumi.Input.asOptionalInput<VpcPeeringConfigDatastreamV1alpha1>(vpcPeeringConfig);
+    required this.displayName,
+    this.labels,
+    this.location,
+    required this.privateConnectionId,
+    this.project,
+    this.requestId,
+    this.vpcPeeringConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class PrivateConnectionDatastreamV1alpha1Args {
 
   factory PrivateConnectionDatastreamV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionDatastreamV1alpha1Args(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      privateConnectionId: pulumi.Output.create<String>(map['privateConnectionId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      vpcPeeringConfig: map['vpcPeeringConfig'] == null ? null : pulumi.Output.create<VpcPeeringConfigDatastreamV1alpha1>(VpcPeeringConfigDatastreamV1alpha1.fromMap((map['vpcPeeringConfig'] as Map).cast<String, dynamic>())),
+      displayName: (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      privateConnectionId: (map['privateConnectionId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      vpcPeeringConfig: map['vpcPeeringConfig'] == null ? null : (VpcPeeringConfigDatastreamV1alpha1.fromMap((map['vpcPeeringConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

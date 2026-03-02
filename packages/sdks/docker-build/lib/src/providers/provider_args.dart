@@ -16,11 +16,9 @@ class ProviderArgs {
   /// [host] The build daemon's address.
   /// [registries] Optional.
   ProviderArgs({
-    pulumi.Output<String>? host,
-    pulumi.Output<List<Registry>>? registries,
-  }) :
-      host = pulumi.Input.asOptionalInput<String>(host),
-      registries = pulumi.Input.asOptionalInput<List<Registry>>(registries);
+    this.host,
+    this.registries,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      registries: map['registries'] == null ? null : pulumi.Output.create<List<Registry>>(pulumi.Input.decodeList<Registry>(map['registries'], (value) => Registry.fromMap((value as Map).cast<String, dynamic>()))),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<Registry>(map['registries'], (value) => Registry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

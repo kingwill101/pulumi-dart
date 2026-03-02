@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudBuildPackBindingLaunch {
   /// Specifies a map of non-sensitive properties for launchProperties.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Specifies a map of sensitive properties for launchProperties.
-  final Map<String, String>? secrets;
+  final pulumi.Input<Map<String, String>>? secrets;
 
   /// Creates a new [SpringCloudBuildPackBindingLaunch].
   /// [properties] Specifies a map of non-sensitive properties for launchProperties.
@@ -24,8 +25,8 @@ class SpringCloudBuildPackBindingLaunch {
 
   factory SpringCloudBuildPackBindingLaunch.fromMap(Map<String, dynamic> map) {
     return SpringCloudBuildPackBindingLaunch(
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      secrets: map['secrets'] == null ? null : (map['secrets'] as Map).cast<String, String>(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      secrets: map['secrets'] == null ? null : ((map['secrets'] as Map).cast<String, String>()).input(),
     );
   }
 }

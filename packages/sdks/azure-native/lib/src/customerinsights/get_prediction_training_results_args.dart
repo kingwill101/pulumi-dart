@@ -19,13 +19,10 @@ class GetPredictionTrainingResultsArgs {
   /// [predictionName] The name of the Prediction.
   /// [resourceGroupName] The name of the resource group.
   GetPredictionTrainingResultsArgs({
-    required pulumi.Output<String> hubName,
-    required pulumi.Output<String> predictionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hubName = pulumi.Input.asInput<String>(hubName),
-      predictionName = pulumi.Input.asInput<String>(predictionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hubName,
+    required this.predictionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPredictionTrainingResultsArgs {
 
   factory GetPredictionTrainingResultsArgs.fromMap(Map<String, dynamic> map) {
     return GetPredictionTrainingResultsArgs(
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      predictionName: pulumi.Output.create<String>(map['predictionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hubName: (map['hubName'] as String).input(),
+      predictionName: (map['predictionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

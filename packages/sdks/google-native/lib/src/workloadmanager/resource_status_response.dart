@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message describing resource status
 class ResourceStatusResponse {
   /// Historical: Used before 2023-05-22 the new version of rule id if exists
-  final List<String> rulesNewerVersions;
+  final pulumi.Input<List<String>> rulesNewerVersions;
   /// State of the resource
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [ResourceStatusResponse].
   /// [rulesNewerVersions] Historical: Used before 2023-05-22 the new version of rule id if exists
@@ -25,8 +26,8 @@ class ResourceStatusResponse {
 
   factory ResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return ResourceStatusResponse(
-      rulesNewerVersions: (map['rulesNewerVersions'] as List).cast<String>(),
-      state: map['state'] as String,
+      rulesNewerVersions: ((map['rulesNewerVersions'] as List).cast<String>()).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

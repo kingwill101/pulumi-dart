@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterDbRevisionVersionList {
   /// (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
-  final String? releaseNote;
+  final pulumi.Input<String>? releaseNote;
   /// (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
-  final String? releaseType;
+  final pulumi.Input<String>? releaseType;
   /// (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
-  final String? revisionVersionCode;
+  final pulumi.Input<String>? revisionVersionCode;
   /// (Available since v1.216.0) The revision version number of the database engine.
-  final String? revisionVersionName;
+  final pulumi.Input<String>? revisionVersionName;
 
   /// Creates a new [ClusterDbRevisionVersionList].
   /// [releaseNote] (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
@@ -34,10 +35,10 @@ class ClusterDbRevisionVersionList {
 
   factory ClusterDbRevisionVersionList.fromMap(Map<String, dynamic> map) {
     return ClusterDbRevisionVersionList(
-      releaseNote: map['releaseNote'] == null ? null : map['releaseNote'] as String,
-      releaseType: map['releaseType'] == null ? null : map['releaseType'] as String,
-      revisionVersionCode: map['revisionVersionCode'] == null ? null : map['revisionVersionCode'] as String,
-      revisionVersionName: map['revisionVersionName'] == null ? null : map['revisionVersionName'] as String,
+      releaseNote: map['releaseNote'] == null ? null : (map['releaseNote'] as String).input(),
+      releaseType: map['releaseType'] == null ? null : (map['releaseType'] as String).input(),
+      revisionVersionCode: map['revisionVersionCode'] == null ? null : (map['revisionVersionCode'] as String).input(),
+      revisionVersionName: map['revisionVersionName'] == null ? null : (map['revisionVersionName'] as String).input(),
     );
   }
 }

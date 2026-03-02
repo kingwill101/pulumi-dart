@@ -31,23 +31,15 @@ class BucketS3ControlState {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   BucketS3ControlState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? creationDate,
-    pulumi.Output<String>? outpostId,
-    pulumi.Output<bool>? publicAccessBlockEnabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      creationDate = pulumi.Input.asOptionalInput<String>(creationDate),
-      outpostId = pulumi.Input.asOptionalInput<String>(outpostId),
-      publicAccessBlockEnabled = pulumi.Input.asOptionalInput<bool>(publicAccessBlockEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.bucket,
+    this.creationDate,
+    this.outpostId,
+    this.publicAccessBlockEnabled,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class BucketS3ControlState {
 
   factory BucketS3ControlState.fromMap(Map<String, dynamic> map) {
     return BucketS3ControlState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      creationDate: map['creationDate'] == null ? null : pulumi.Output.create<String>(map['creationDate'] as String),
-      outpostId: map['outpostId'] == null ? null : pulumi.Output.create<String>(map['outpostId'] as String),
-      publicAccessBlockEnabled: map['publicAccessBlockEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicAccessBlockEnabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      creationDate: map['creationDate'] == null ? null : (map['creationDate'] as String).input(),
+      outpostId: map['outpostId'] == null ? null : (map['outpostId'] as String).input(),
+      publicAccessBlockEnabled: map['publicAccessBlockEnabled'] == null ? null : (map['publicAccessBlockEnabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

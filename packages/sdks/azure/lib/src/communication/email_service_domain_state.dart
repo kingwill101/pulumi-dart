@@ -32,23 +32,15 @@ class EmailServiceDomainState {
   /// [userEngagementTrackingEnabled] Describes user engagement tracking is enabled or disabled. Defaults to `false`.
   /// [verificationRecords] (Optional) An `verification_records` block as defined below.
   EmailServiceDomainState({
-    pulumi.Output<String>? domainManagement,
-    pulumi.Output<String>? emailServiceId,
-    pulumi.Output<String>? fromSenderDomain,
-    pulumi.Output<String>? mailFromSenderDomain,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? userEngagementTrackingEnabled,
-    pulumi.Output<List<EmailServiceDomainVerificationRecord>>? verificationRecords,
-  }) :
-      domainManagement = pulumi.Input.asOptionalInput<String>(domainManagement),
-      emailServiceId = pulumi.Input.asOptionalInput<String>(emailServiceId),
-      fromSenderDomain = pulumi.Input.asOptionalInput<String>(fromSenderDomain),
-      mailFromSenderDomain = pulumi.Input.asOptionalInput<String>(mailFromSenderDomain),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userEngagementTrackingEnabled = pulumi.Input.asOptionalInput<bool>(userEngagementTrackingEnabled),
-      verificationRecords = pulumi.Input.asOptionalInput<List<EmailServiceDomainVerificationRecord>>(verificationRecords);
+    this.domainManagement,
+    this.emailServiceId,
+    this.fromSenderDomain,
+    this.mailFromSenderDomain,
+    this.name,
+    this.tags,
+    this.userEngagementTrackingEnabled,
+    this.verificationRecords,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class EmailServiceDomainState {
 
   factory EmailServiceDomainState.fromMap(Map<String, dynamic> map) {
     return EmailServiceDomainState(
-      domainManagement: map['domainManagement'] == null ? null : pulumi.Output.create<String>(map['domainManagement'] as String),
-      emailServiceId: map['emailServiceId'] == null ? null : pulumi.Output.create<String>(map['emailServiceId'] as String),
-      fromSenderDomain: map['fromSenderDomain'] == null ? null : pulumi.Output.create<String>(map['fromSenderDomain'] as String),
-      mailFromSenderDomain: map['mailFromSenderDomain'] == null ? null : pulumi.Output.create<String>(map['mailFromSenderDomain'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userEngagementTrackingEnabled: map['userEngagementTrackingEnabled'] == null ? null : pulumi.Output.create<bool>(map['userEngagementTrackingEnabled'] as bool),
-      verificationRecords: map['verificationRecords'] == null ? null : pulumi.Output.create<List<EmailServiceDomainVerificationRecord>>(pulumi.Input.decodeList<EmailServiceDomainVerificationRecord>(map['verificationRecords'], (value) => EmailServiceDomainVerificationRecord.fromMap((value as Map).cast<String, dynamic>()))),
+      domainManagement: map['domainManagement'] == null ? null : (map['domainManagement'] as String).input(),
+      emailServiceId: map['emailServiceId'] == null ? null : (map['emailServiceId'] as String).input(),
+      fromSenderDomain: map['fromSenderDomain'] == null ? null : (map['fromSenderDomain'] as String).input(),
+      mailFromSenderDomain: map['mailFromSenderDomain'] == null ? null : (map['mailFromSenderDomain'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userEngagementTrackingEnabled: map['userEngagementTrackingEnabled'] == null ? null : (map['userEngagementTrackingEnabled'] as bool).input(),
+      verificationRecords: map['verificationRecords'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecord>(map['verificationRecords'], (value) => EmailServiceDomainVerificationRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

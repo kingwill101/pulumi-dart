@@ -25,15 +25,11 @@ class VolumeArgs {
   /// [sizeInGib] Specifies the size of the Elastic SAN Volume in GiB. The size should be within the remaining capacity of the parent Elastic SAN. Possible values are between `1` and `65536` (16 TiB).
   /// [volumeGroupId] Specifies the Volume Group ID within which this Elastic SAN Volume should exist. Changing this forces a new resource to be created.
   VolumeArgs({
-    pulumi.Output<VolumeCreateSource>? createSource,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> sizeInGib,
-    required pulumi.Output<String> volumeGroupId,
-  }) :
-      createSource = pulumi.Input.asOptionalInput<VolumeCreateSource>(createSource),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sizeInGib = pulumi.Input.asInput<int>(sizeInGib),
-      volumeGroupId = pulumi.Input.asInput<String>(volumeGroupId);
+    this.createSource,
+    this.name,
+    required this.sizeInGib,
+    required this.volumeGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      createSource: map['createSource'] == null ? null : pulumi.Output.create<VolumeCreateSource>(VolumeCreateSource.fromMap((map['createSource'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sizeInGib: pulumi.Output.create<int>(map['sizeInGib'] as int),
-      volumeGroupId: pulumi.Output.create<String>(map['volumeGroupId'] as String),
+      createSource: map['createSource'] == null ? null : (VolumeCreateSource.fromMap((map['createSource'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sizeInGib: (map['sizeInGib'] as int).input(),
+      volumeGroupId: (map['volumeGroupId'] as String).input(),
     );
   }
 }

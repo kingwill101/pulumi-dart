@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The additional capabilities for a lab VM.
 class VirtualMachineAdditionalCapabilitiesResponse {
   /// Flag to pre-install dedicated GPU drivers.
-  final String? installGpuDrivers;
+  final pulumi.Input<String>? installGpuDrivers;
 
   /// Creates a new [VirtualMachineAdditionalCapabilitiesResponse].
   /// [installGpuDrivers] Flag to pre-install dedicated GPU drivers.
@@ -20,7 +21,7 @@ class VirtualMachineAdditionalCapabilitiesResponse {
 
   factory VirtualMachineAdditionalCapabilitiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAdditionalCapabilitiesResponse(
-      installGpuDrivers: map['installGpuDrivers'] == null ? null : map['installGpuDrivers'] as String,
+      installGpuDrivers: map['installGpuDrivers'] == null ? null : (map['installGpuDrivers'] as String).input(),
     );
   }
 }

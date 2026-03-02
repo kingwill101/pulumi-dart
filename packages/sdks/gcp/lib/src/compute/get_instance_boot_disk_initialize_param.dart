@@ -6,33 +6,33 @@ import 'get_instance_boot_disk_initialize_param_source_snapshot_encryption_key.d
 
 class GetInstanceBootDiskInitializeParam {
   /// The architecture of the disk. One of "X86_64" or "ARM64".
-  final String architecture;
+  final pulumi.Input<String> architecture;
   /// A flag to enable confidential compute mode on boot disk
-  final bool enableConfidentialCompute;
+  final pulumi.Input<bool> enableConfidentialCompute;
   /// The image from which this disk was initialised.
-  final String image;
+  final pulumi.Input<String> image;
   /// A set of key/value label pairs assigned to the disk.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
-  final int provisionedIops;
+  final pulumi.Input<int> provisionedIops;
   /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
-  final int provisionedThroughput;
+  final pulumi.Input<int> provisionedThroughput;
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-  final Map<String, String> resourceManagerTags;
+  final pulumi.Input<Map<String, String>> resourceManagerTags;
   /// A list of self_links to resource policies attached to the selected `boot_disk`
-  final List<String> resourcePolicies;
+  final pulumi.Input<List<String>> resourcePolicies;
   /// The size of the image in gigabytes.
-  final int size;
+  final pulumi.Input<int> size;
   /// The snapshot from which this disk was initialised.
-  final String snapshot;
+  final pulumi.Input<String> snapshot;
   /// The encryption key used to decrypt the source image.
-  final List<GetInstanceBootDiskInitializeParamSourceImageEncryptionKey> sourceImageEncryptionKeys;
+  final pulumi.Input<List<GetInstanceBootDiskInitializeParamSourceImageEncryptionKey>> sourceImageEncryptionKeys;
   /// The encryption key used to decrypt the source snapshot.
-  final List<GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
+  final pulumi.Input<List<GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey>> sourceSnapshotEncryptionKeys;
   /// The URL of the storage pool in which the new disk is created
-  final String storagePool;
+  final pulumi.Input<String> storagePool;
   /// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetInstanceBootDiskInitializeParam].
   /// [architecture] The architecture of the disk. One of "X86_64" or "ARM64".
@@ -78,8 +78,8 @@ class GetInstanceBootDiskInitializeParam {
       'resourcePolicies': resourcePolicies,
       'size': size,
       'snapshot': snapshot,
-      'sourceImageEncryptionKeys': pulumi.Input.encodeList<GetInstanceBootDiskInitializeParamSourceImageEncryptionKey, Map<String, dynamic>>(sourceImageEncryptionKeys, (value) => value.toMap()),
-      'sourceSnapshotEncryptionKeys': pulumi.Input.encodeList<GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey, Map<String, dynamic>>(sourceSnapshotEncryptionKeys, (value) => value.toMap()),
+      'sourceImageEncryptionKeys': pulumi.Input.mapInputValue<List<GetInstanceBootDiskInitializeParamSourceImageEncryptionKey>, List<Map<String, dynamic>>>(sourceImageEncryptionKeys, (value) => pulumi.Input.encodeList<GetInstanceBootDiskInitializeParamSourceImageEncryptionKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceSnapshotEncryptionKeys': pulumi.Input.mapInputValue<List<GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey>, List<Map<String, dynamic>>>(sourceSnapshotEncryptionKeys, (value) => pulumi.Input.encodeList<GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'storagePool': storagePool,
       'type': type,
     };
@@ -87,20 +87,20 @@ class GetInstanceBootDiskInitializeParam {
 
   factory GetInstanceBootDiskInitializeParam.fromMap(Map<String, dynamic> map) {
     return GetInstanceBootDiskInitializeParam(
-      architecture: map['architecture'] as String,
-      enableConfidentialCompute: map['enableConfidentialCompute'] as bool,
-      image: map['image'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      provisionedIops: map['provisionedIops'] as int,
-      provisionedThroughput: map['provisionedThroughput'] as int,
-      resourceManagerTags: (map['resourceManagerTags'] as Map).cast<String, String>(),
-      resourcePolicies: (map['resourcePolicies'] as List).cast<String>(),
-      size: map['size'] as int,
-      snapshot: map['snapshot'] as String,
-      sourceImageEncryptionKeys: pulumi.Input.decodeList<GetInstanceBootDiskInitializeParamSourceImageEncryptionKey>(map['sourceImageEncryptionKeys'], (value) => GetInstanceBootDiskInitializeParamSourceImageEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
-      sourceSnapshotEncryptionKeys: pulumi.Input.decodeList<GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey>(map['sourceSnapshotEncryptionKeys'], (value) => GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
-      storagePool: map['storagePool'] as String,
-      type: map['type'] as String,
+      architecture: (map['architecture'] as String).input(),
+      enableConfidentialCompute: (map['enableConfidentialCompute'] as bool).input(),
+      image: (map['image'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      provisionedIops: (map['provisionedIops'] as int).input(),
+      provisionedThroughput: (map['provisionedThroughput'] as int).input(),
+      resourceManagerTags: ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourcePolicies: ((map['resourcePolicies'] as List).cast<String>()).input(),
+      size: (map['size'] as int).input(),
+      snapshot: (map['snapshot'] as String).input(),
+      sourceImageEncryptionKeys: (pulumi.Input.decodeList<GetInstanceBootDiskInitializeParamSourceImageEncryptionKey>(map['sourceImageEncryptionKeys'], (value) => GetInstanceBootDiskInitializeParamSourceImageEncryptionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceSnapshotEncryptionKeys: (pulumi.Input.decodeList<GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey>(map['sourceSnapshotEncryptionKeys'], (value) => GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storagePool: (map['storagePool'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

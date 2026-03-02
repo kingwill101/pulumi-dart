@@ -25,17 +25,12 @@ class CertificateArgs {
   /// [name] Specifies the name of the IotHub Certificate resource. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group under which the IotHub Certificate resource has to be created. Changing this forces a new resource to be created.
   CertificateArgs({
-    required pulumi.Output<String> certificateContent,
-    required pulumi.Output<String> iothubName,
-    pulumi.Output<bool>? isVerified,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      certificateContent = pulumi.Input.asInput<String>(certificateContent),
-      iothubName = pulumi.Input.asInput<String>(iothubName),
-      isVerified = pulumi.Input.asOptionalInput<bool>(isVerified),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.certificateContent,
+    required this.iothubName,
+    this.isVerified,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateContent: pulumi.Output.create<String>(map['certificateContent'] as String),
-      iothubName: pulumi.Output.create<String>(map['iothubName'] as String),
-      isVerified: map['isVerified'] == null ? null : pulumi.Output.create<bool>(map['isVerified'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      certificateContent: (map['certificateContent'] as String).input(),
+      iothubName: (map['iothubName'] as String).input(),
+      isVerified: map['isVerified'] == null ? null : (map['isVerified'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

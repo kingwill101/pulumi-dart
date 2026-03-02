@@ -35,21 +35,14 @@ class ConfigurationTemplateArgs {
   /// [settings] Option settings to configure the new Environment. These
   /// [solutionStackName] A solution stack to base your Template
   ConfigurationTemplateArgs({
-    required pulumi.Output<String> application,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<ConfigurationTemplateSetting>>? settings,
-    pulumi.Output<String>? solutionStackName,
-  }) :
-      application = pulumi.Input.asInput<String>(application),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      settings = pulumi.Input.asOptionalInput<List<ConfigurationTemplateSetting>>(settings),
-      solutionStackName = pulumi.Input.asOptionalInput<String>(solutionStackName);
+    required this.application,
+    this.description,
+    this.environmentId,
+    this.name,
+    this.region,
+    this.settings,
+    this.solutionStackName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class ConfigurationTemplateArgs {
 
   factory ConfigurationTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationTemplateArgs(
-      application: pulumi.Output.create<String>(map['application'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<List<ConfigurationTemplateSetting>>(pulumi.Input.decodeList<ConfigurationTemplateSetting>(map['settings'], (value) => ConfigurationTemplateSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      solutionStackName: map['solutionStackName'] == null ? null : pulumi.Output.create<String>(map['solutionStackName'] as String),
+      application: (map['application'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<ConfigurationTemplateSetting>(map['settings'], (value) => ConfigurationTemplateSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      solutionStackName: map['solutionStackName'] == null ? null : (map['solutionStackName'] as String).input(),
     );
   }
 }

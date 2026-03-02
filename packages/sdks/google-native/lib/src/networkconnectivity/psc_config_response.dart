@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
 class PscConfigResponse {
   /// Optional. Max number of PSC connections for this policy.
-  final String limit;
+  final pulumi.Input<String> limit;
   /// The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
-  final List<String> subnetworks;
+  final pulumi.Input<List<String>> subnetworks;
 
   /// Creates a new [PscConfigResponse].
   /// [limit] Optional. Max number of PSC connections for this policy.
@@ -25,8 +26,8 @@ class PscConfigResponse {
 
   factory PscConfigResponse.fromMap(Map<String, dynamic> map) {
     return PscConfigResponse(
-      limit: map['limit'] as String,
-      subnetworks: (map['subnetworks'] as List).cast<String>(),
+      limit: (map['limit'] as String).input(),
+      subnetworks: ((map['subnetworks'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorCapacityProvisionedCapacity {
   /// The number of microcontroller units (MCUs) allocated to each connector worker. Valid values: `1`, `2`, `4`, `8`. The default value is `1`.
-  final int? mcuCount;
+  final pulumi.Input<int>? mcuCount;
   /// The number of workers that are allocated to the connector.
-  final int workerCount;
+  final pulumi.Input<int> workerCount;
 
   /// Creates a new [ConnectorCapacityProvisionedCapacity].
   /// [mcuCount] The number of microcontroller units (MCUs) allocated to each connector worker. Valid values: `1`, `2`, `4`, `8`. The default value is `1`.
@@ -24,8 +25,8 @@ class ConnectorCapacityProvisionedCapacity {
 
   factory ConnectorCapacityProvisionedCapacity.fromMap(Map<String, dynamic> map) {
     return ConnectorCapacityProvisionedCapacity(
-      mcuCount: map['mcuCount'] == null ? null : map['mcuCount'] as int,
-      workerCount: map['workerCount'] as int,
+      mcuCount: map['mcuCount'] == null ? null : (map['mcuCount'] as int).input(),
+      workerCount: (map['workerCount'] as int).input(),
     );
   }
 }

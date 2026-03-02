@@ -46,31 +46,19 @@ class SqlPoolSensitivityLabelArgs {
   /// [tableName] The name of the table.
   /// [workspaceName] The name of the workspace.
   SqlPoolSensitivityLabelArgs({
-    required pulumi.Output<String> columnName,
-    pulumi.Output<String>? informationType,
-    pulumi.Output<String>? informationTypeId,
-    pulumi.Output<String>? labelId,
-    pulumi.Output<String>? labelName,
-    pulumi.Output<SensitivityLabelRank>? rank,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaName,
-    pulumi.Output<String>? sensitivityLabelSource,
-    required pulumi.Output<String> sqlPoolName,
-    required pulumi.Output<String> tableName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      columnName = pulumi.Input.asInput<String>(columnName),
-      informationType = pulumi.Input.asOptionalInput<String>(informationType),
-      informationTypeId = pulumi.Input.asOptionalInput<String>(informationTypeId),
-      labelId = pulumi.Input.asOptionalInput<String>(labelId),
-      labelName = pulumi.Input.asOptionalInput<String>(labelName),
-      rank = pulumi.Input.asOptionalInput<SensitivityLabelRank>(rank),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asInput<String>(schemaName),
-      sensitivityLabelSource = pulumi.Input.asOptionalInput<String>(sensitivityLabelSource),
-      sqlPoolName = pulumi.Input.asInput<String>(sqlPoolName),
-      tableName = pulumi.Input.asInput<String>(tableName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.columnName,
+    this.informationType,
+    this.informationTypeId,
+    this.labelId,
+    this.labelName,
+    this.rank,
+    required this.resourceGroupName,
+    required this.schemaName,
+    this.sensitivityLabelSource,
+    required this.sqlPoolName,
+    required this.tableName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class SqlPoolSensitivityLabelArgs {
 
   factory SqlPoolSensitivityLabelArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolSensitivityLabelArgs(
-      columnName: pulumi.Output.create<String>(map['columnName'] as String),
-      informationType: map['informationType'] == null ? null : pulumi.Output.create<String>(map['informationType'] as String),
-      informationTypeId: map['informationTypeId'] == null ? null : pulumi.Output.create<String>(map['informationTypeId'] as String),
-      labelId: map['labelId'] == null ? null : pulumi.Output.create<String>(map['labelId'] as String),
-      labelName: map['labelName'] == null ? null : pulumi.Output.create<String>(map['labelName'] as String),
-      rank: map['rank'] == null ? null : pulumi.Output.create<SensitivityLabelRank>(SensitivityLabelRank.fromValue(map['rank'] as String)),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
-      sensitivityLabelSource: map['sensitivityLabelSource'] == null ? null : pulumi.Output.create<String>(map['sensitivityLabelSource'] as String),
-      sqlPoolName: pulumi.Output.create<String>(map['sqlPoolName'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      columnName: (map['columnName'] as String).input(),
+      informationType: map['informationType'] == null ? null : (map['informationType'] as String).input(),
+      informationTypeId: map['informationTypeId'] == null ? null : (map['informationTypeId'] as String).input(),
+      labelId: map['labelId'] == null ? null : (map['labelId'] as String).input(),
+      labelName: map['labelName'] == null ? null : (map['labelName'] as String).input(),
+      rank: map['rank'] == null ? null : (SensitivityLabelRank.fromValue(map['rank'] as String)).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      sensitivityLabelSource: map['sensitivityLabelSource'] == null ? null : (map['sensitivityLabelSource'] as String).input(),
+      sqlPoolName: (map['sqlPoolName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

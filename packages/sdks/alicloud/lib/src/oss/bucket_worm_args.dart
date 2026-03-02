@@ -21,13 +21,10 @@ class BucketWormArgs {
   /// [retentionPeriodInDays] The specified number of days to retain the Object.
   /// [status] The status of the compliance retention policy. Optional values:
   BucketWormArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<int>? retentionPeriodInDays,
-    pulumi.Output<String>? status,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      retentionPeriodInDays = pulumi.Input.asOptionalInput<int>(retentionPeriodInDays),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.bucket,
+    this.retentionPeriodInDays,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class BucketWormArgs {
 
   factory BucketWormArgs.fromMap(Map<String, dynamic> map) {
     return BucketWormArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : pulumi.Output.create<int>(map['retentionPeriodInDays'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bucket: (map['bucket'] as String).input(),
+      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : (map['retentionPeriodInDays'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

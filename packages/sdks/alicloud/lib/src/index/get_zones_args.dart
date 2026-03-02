@@ -49,29 +49,18 @@ class GetZonesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [spotStrategy] - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
   GetZonesArgs({
-    pulumi.Output<String>? availableDiskCategory,
-    pulumi.Output<String>? availableInstanceType,
-    pulumi.Output<String>? availableResourceCreation,
-    pulumi.Output<String>? availableSlbAddressIpVersion,
-    pulumi.Output<String>? availableSlbAddressType,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<String>? instanceChargeType,
-    pulumi.Output<bool>? multi,
-    pulumi.Output<String>? networkType,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? spotStrategy,
-  }) :
-      availableDiskCategory = pulumi.Input.asOptionalInput<String>(availableDiskCategory),
-      availableInstanceType = pulumi.Input.asOptionalInput<String>(availableInstanceType),
-      availableResourceCreation = pulumi.Input.asOptionalInput<String>(availableResourceCreation),
-      availableSlbAddressIpVersion = pulumi.Input.asOptionalInput<String>(availableSlbAddressIpVersion),
-      availableSlbAddressType = pulumi.Input.asOptionalInput<String>(availableSlbAddressType),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      instanceChargeType = pulumi.Input.asOptionalInput<String>(instanceChargeType),
-      multi = pulumi.Input.asOptionalInput<bool>(multi),
-      networkType = pulumi.Input.asOptionalInput<String>(networkType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      spotStrategy = pulumi.Input.asOptionalInput<String>(spotStrategy);
+    this.availableDiskCategory,
+    this.availableInstanceType,
+    this.availableResourceCreation,
+    this.availableSlbAddressIpVersion,
+    this.availableSlbAddressType,
+    this.enableDetails,
+    this.instanceChargeType,
+    this.multi,
+    this.networkType,
+    this.outputFile,
+    this.spotStrategy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,17 +80,17 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      availableDiskCategory: map['availableDiskCategory'] == null ? null : pulumi.Output.create<String>(map['availableDiskCategory'] as String),
-      availableInstanceType: map['availableInstanceType'] == null ? null : pulumi.Output.create<String>(map['availableInstanceType'] as String),
-      availableResourceCreation: map['availableResourceCreation'] == null ? null : pulumi.Output.create<String>(map['availableResourceCreation'] as String),
-      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : pulumi.Output.create<String>(map['availableSlbAddressIpVersion'] as String),
-      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : pulumi.Output.create<String>(map['availableSlbAddressType'] as String),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      instanceChargeType: map['instanceChargeType'] == null ? null : pulumi.Output.create<String>(map['instanceChargeType'] as String),
-      multi: map['multi'] == null ? null : pulumi.Output.create<bool>(map['multi'] as bool),
-      networkType: map['networkType'] == null ? null : pulumi.Output.create<String>(map['networkType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      spotStrategy: map['spotStrategy'] == null ? null : pulumi.Output.create<String>(map['spotStrategy'] as String),
+      availableDiskCategory: map['availableDiskCategory'] == null ? null : (map['availableDiskCategory'] as String).input(),
+      availableInstanceType: map['availableInstanceType'] == null ? null : (map['availableInstanceType'] as String).input(),
+      availableResourceCreation: map['availableResourceCreation'] == null ? null : (map['availableResourceCreation'] as String).input(),
+      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : (map['availableSlbAddressIpVersion'] as String).input(),
+      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : (map['availableSlbAddressType'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
+      multi: map['multi'] == null ? null : (map['multi'] as bool).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      spotStrategy: map['spotStrategy'] == null ? null : (map['spotStrategy'] as String).input(),
     );
   }
 }

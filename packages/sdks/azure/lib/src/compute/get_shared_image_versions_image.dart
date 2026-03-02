@@ -5,19 +5,19 @@ import 'get_shared_image_versions_image_target_region.dart';
 
 class GetSharedImageVersionsImage {
   /// Is this Image Version excluded from the `latest` filter?
-  final bool excludeFromLatest;
+  final pulumi.Input<bool> excludeFromLatest;
   /// The ID of this Shared Image Version.
-  final String id;
+  final pulumi.Input<String> id;
   /// The supported Azure location where the Shared Image Gallery exists.
-  final String location;
+  final pulumi.Input<String> location;
   /// The ID of the Managed Image which was the source of this Shared Image Version.
-  final String managedImageId;
+  final pulumi.Input<String> managedImageId;
   /// The Azure Region in which this Image Version exists.
-  final String name;
+  final pulumi.Input<String> name;
   /// A mapping of tags assigned to the Shared Image.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// One or more `target_region` blocks as documented below.
-  final List<GetSharedImageVersionsImageTargetRegion> targetRegions;
+  final pulumi.Input<List<GetSharedImageVersionsImageTargetRegion>> targetRegions;
 
   /// Creates a new [GetSharedImageVersionsImage].
   /// [excludeFromLatest] Is this Image Version excluded from the `latest` filter?
@@ -45,19 +45,19 @@ class GetSharedImageVersionsImage {
       'managedImageId': managedImageId,
       'name': name,
       'tags': tags,
-      'targetRegions': pulumi.Input.encodeList<GetSharedImageVersionsImageTargetRegion, Map<String, dynamic>>(targetRegions, (value) => value.toMap()),
+      'targetRegions': pulumi.Input.mapInputValue<List<GetSharedImageVersionsImageTargetRegion>, List<Map<String, dynamic>>>(targetRegions, (value) => pulumi.Input.encodeList<GetSharedImageVersionsImageTargetRegion, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetSharedImageVersionsImage.fromMap(Map<String, dynamic> map) {
     return GetSharedImageVersionsImage(
-      excludeFromLatest: map['excludeFromLatest'] as bool,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      managedImageId: map['managedImageId'] as String,
-      name: map['name'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      targetRegions: pulumi.Input.decodeList<GetSharedImageVersionsImageTargetRegion>(map['targetRegions'], (value) => GetSharedImageVersionsImageTargetRegion.fromMap((value as Map).cast<String, dynamic>())),
+      excludeFromLatest: (map['excludeFromLatest'] as bool).input(),
+      id: (map['id'] as String).input(),
+      location: (map['location'] as String).input(),
+      managedImageId: (map['managedImageId'] as String).input(),
+      name: (map['name'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      targetRegions: (pulumi.Input.decodeList<GetSharedImageVersionsImageTargetRegion>(map['targetRegions'], (value) => GetSharedImageVersionsImageTargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

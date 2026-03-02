@@ -5,7 +5,7 @@ import 'web_acl_association_config_request_body.dart';
 
 class WebAclAssociationConfig {
   /// Customizes the request body that your protected resource forward to AWS WAF for inspection. See `request_body` below for details.
-  final List<WebAclAssociationConfigRequestBody>? requestBodies;
+  final pulumi.Input<List<WebAclAssociationConfigRequestBody>>? requestBodies;
 
   /// Creates a new [WebAclAssociationConfig].
   /// [requestBodies] Customizes the request body that your protected resource forward to AWS WAF for inspection. See `request_body` below for details.
@@ -15,13 +15,13 @@ class WebAclAssociationConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestBodies': ?requestBodies == null ? null : pulumi.Input.encodeList<WebAclAssociationConfigRequestBody, Map<String, dynamic>>(requestBodies!, (value) => value.toMap()),
+      'requestBodies': ?pulumi.Input.mapOptionalInputValue<List<WebAclAssociationConfigRequestBody>, List<Map<String, dynamic>>>(requestBodies, (value) => pulumi.Input.encodeList<WebAclAssociationConfigRequestBody, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WebAclAssociationConfig.fromMap(Map<String, dynamic> map) {
     return WebAclAssociationConfig(
-      requestBodies: map['requestBodies'] == null ? null : pulumi.Input.decodeList<WebAclAssociationConfigRequestBody>(map['requestBodies'], (value) => WebAclAssociationConfigRequestBody.fromMap((value as Map).cast<String, dynamic>())),
+      requestBodies: map['requestBodies'] == null ? null : (pulumi.Input.decodeList<WebAclAssociationConfigRequestBody>(map['requestBodies'], (value) => WebAclAssociationConfigRequestBody.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

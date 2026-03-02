@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkConnectionMonitorTestGroup {
   /// A list of destination endpoint names.
-  final List<String> destinationEndpoints;
+  final pulumi.Input<List<String>> destinationEndpoints;
   /// Should the test group be enabled? Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The name of the test group for the Network Connection Monitor.
-  final String name;
+  final pulumi.Input<String> name;
   /// A list of source endpoint names.
-  final List<String> sourceEndpoints;
+  final pulumi.Input<List<String>> sourceEndpoints;
   /// A list of test configuration names.
-  final List<String> testConfigurationNames;
+  final pulumi.Input<List<String>> testConfigurationNames;
 
   /// Creates a new [NetworkConnectionMonitorTestGroup].
   /// [destinationEndpoints] A list of destination endpoint names.
@@ -39,11 +40,11 @@ class NetworkConnectionMonitorTestGroup {
 
   factory NetworkConnectionMonitorTestGroup.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorTestGroup(
-      destinationEndpoints: (map['destinationEndpoints'] as List).cast<String>(),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      name: map['name'] as String,
-      sourceEndpoints: (map['sourceEndpoints'] as List).cast<String>(),
-      testConfigurationNames: (map['testConfigurationNames'] as List).cast<String>(),
+      destinationEndpoints: ((map['destinationEndpoints'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      sourceEndpoints: ((map['sourceEndpoints'] as List).cast<String>()).input(),
+      testConfigurationNames: ((map['testConfigurationNames'] as List).cast<String>()).input(),
     );
   }
 }

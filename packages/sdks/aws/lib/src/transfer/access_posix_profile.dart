@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPosixProfile {
   /// The POSIX group ID used for all EFS operations by this user.
-  final int gid;
+  final pulumi.Input<int> gid;
   /// The secondary POSIX group IDs used for all EFS operations by this user.
-  final List<int>? secondaryGids;
+  final pulumi.Input<List<int>>? secondaryGids;
   /// The POSIX user ID used for all EFS operations by this user.
-  final int uid;
+  final pulumi.Input<int> uid;
 
   /// Creates a new [AccessPosixProfile].
   /// [gid] The POSIX group ID used for all EFS operations by this user.
@@ -29,9 +30,9 @@ class AccessPosixProfile {
 
   factory AccessPosixProfile.fromMap(Map<String, dynamic> map) {
     return AccessPosixProfile(
-      gid: map['gid'] as int,
-      secondaryGids: map['secondaryGids'] == null ? null : (map['secondaryGids'] as List).cast<int>(),
-      uid: map['uid'] as int,
+      gid: (map['gid'] as int).input(),
+      secondaryGids: map['secondaryGids'] == null ? null : ((map['secondaryGids'] as List).cast<int>()).input(),
+      uid: (map['uid'] as int).input(),
     );
   }
 }

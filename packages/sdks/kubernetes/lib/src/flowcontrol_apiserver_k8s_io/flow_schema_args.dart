@@ -24,15 +24,11 @@ class FlowSchemaArgs {
   /// [metadata] `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   FlowSchemaArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<FlowSchemaSpec>? spec,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      spec = pulumi.Input.asOptionalInput<FlowSchemaSpec>(spec);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class FlowSchemaArgs {
 
   factory FlowSchemaArgs.fromMap(Map<String, dynamic> map) {
     return FlowSchemaArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      spec: map['spec'] == null ? null : pulumi.Output.create<FlowSchemaSpec>(FlowSchemaSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (FlowSchemaSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

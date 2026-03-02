@@ -13,9 +13,8 @@ class GetAutonomousDatabaseBackupsArgs {
   /// Creates a new [GetAutonomousDatabaseBackupsArgs].
   /// [autonomousDatabaseId] The azureId of the Autonomous Database for which the backups will be listed.
   GetAutonomousDatabaseBackupsArgs({
-    required pulumi.Output<String> autonomousDatabaseId,
-  }) :
-      autonomousDatabaseId = pulumi.Input.asInput<String>(autonomousDatabaseId);
+    required this.autonomousDatabaseId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetAutonomousDatabaseBackupsArgs {
 
   factory GetAutonomousDatabaseBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabaseBackupsArgs(
-      autonomousDatabaseId: pulumi.Output.create<String>(map['autonomousDatabaseId'] as String),
+      autonomousDatabaseId: (map['autonomousDatabaseId'] as String).input(),
     );
   }
 }

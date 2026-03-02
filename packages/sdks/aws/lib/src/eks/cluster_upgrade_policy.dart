@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterUpgradePolicy {
   /// Support type to use for the cluster. If the cluster is set to `EXTENDED`, it will enter extended support at the end of standard support. If the cluster is set to `STANDARD`, it will be automatically upgraded at the end of standard support. Valid values are `EXTENDED`, `STANDARD`
-  final String? supportType;
+  final pulumi.Input<String>? supportType;
 
   /// Creates a new [ClusterUpgradePolicy].
   /// [supportType] Support type to use for the cluster. If the cluster is set to `EXTENDED`, it will enter extended support at the end of standard support. If the cluster is set to `STANDARD`, it will be automatically upgraded at the end of standard support. Valid values are `EXTENDED`, `STANDARD`
@@ -19,7 +20,7 @@ class ClusterUpgradePolicy {
 
   factory ClusterUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradePolicy(
-      supportType: map['supportType'] == null ? null : map['supportType'] as String,
+      supportType: map['supportType'] == null ? null : (map['supportType'] as String).input(),
     );
   }
 }

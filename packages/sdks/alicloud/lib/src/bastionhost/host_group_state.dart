@@ -19,15 +19,11 @@ class HostGroupState {
   /// [hostGroupName] Specify the New Host Group Name, Supports up to 128 Characters.
   /// [instanceId] Specify the New Host Group Where the Bastion Host ID of.
   HostGroupState({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? hostGroupId,
-    pulumi.Output<String>? hostGroupName,
-    pulumi.Output<String>? instanceId,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      hostGroupId = pulumi.Input.asOptionalInput<String>(hostGroupId),
-      hostGroupName = pulumi.Input.asOptionalInput<String>(hostGroupName),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId);
+    this.comment,
+    this.hostGroupId,
+    this.hostGroupName,
+    this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class HostGroupState {
 
   factory HostGroupState.fromMap(Map<String, dynamic> map) {
     return HostGroupState(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      hostGroupId: map['hostGroupId'] == null ? null : pulumi.Output.create<String>(map['hostGroupId'] as String),
-      hostGroupName: map['hostGroupName'] == null ? null : pulumi.Output.create<String>(map['hostGroupName'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId'] as String).input(),
+      hostGroupName: map['hostGroupName'] == null ? null : (map['hostGroupName'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetProfessionalServiceSubscriptionLevelArgs {
   /// [resourceName] The name of the resource.
   /// [subscriptionId] The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
   GetProfessionalServiceSubscriptionLevelArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetProfessionalServiceSubscriptionLevelArgs {
 
   factory GetProfessionalServiceSubscriptionLevelArgs.fromMap(Map<String, dynamic> map) {
     return GetProfessionalServiceSubscriptionLevelArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

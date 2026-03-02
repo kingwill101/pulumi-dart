@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointCustomDomainCdnManagedHttps {
   /// The type of HTTPS certificate. Possible values are `Shared` and `Dedicated`.
-  final String certificateType;
+  final pulumi.Input<String> certificateType;
   /// The type of protocol. Possible values are `ServerNameIndication` and `IPBased`.
-  final String protocolType;
+  final pulumi.Input<String> protocolType;
   /// The minimum TLS protocol version that is used for HTTPS. Possible values are `TLS10` (representing TLS 1.0/1.1), `TLS12` (representing TLS 1.2) and `None` (representing no minimums). Defaults to `TLS12`.
   ///
   /// > **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
-  final String? tlsVersion;
+  final pulumi.Input<String>? tlsVersion;
 
   /// Creates a new [EndpointCustomDomainCdnManagedHttps].
   /// [certificateType] The type of HTTPS certificate. Possible values are `Shared` and `Dedicated`.
@@ -31,9 +32,9 @@ class EndpointCustomDomainCdnManagedHttps {
 
   factory EndpointCustomDomainCdnManagedHttps.fromMap(Map<String, dynamic> map) {
     return EndpointCustomDomainCdnManagedHttps(
-      certificateType: map['certificateType'] as String,
-      protocolType: map['protocolType'] as String,
-      tlsVersion: map['tlsVersion'] == null ? null : map['tlsVersion'] as String,
+      certificateType: (map['certificateType'] as String).input(),
+      protocolType: (map['protocolType'] as String).input(),
+      tlsVersion: map['tlsVersion'] == null ? null : (map['tlsVersion'] as String).input(),
     );
   }
 }

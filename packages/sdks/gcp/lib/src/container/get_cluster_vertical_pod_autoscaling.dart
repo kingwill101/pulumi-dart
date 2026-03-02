@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterVerticalPodAutoscaling {
   /// Enables vertical pod autoscaling.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetClusterVerticalPodAutoscaling].
   /// [enabled] Enables vertical pod autoscaling.
@@ -19,7 +20,7 @@ class GetClusterVerticalPodAutoscaling {
 
   factory GetClusterVerticalPodAutoscaling.fromMap(Map<String, dynamic> map) {
     return GetClusterVerticalPodAutoscaling(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

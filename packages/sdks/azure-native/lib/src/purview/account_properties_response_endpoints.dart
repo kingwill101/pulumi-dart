@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The URIs that are the public endpoints of the account.
 class AccountPropertiesResponseEndpoints {
   /// Gets the catalog endpoint.
-  final String catalog;
+  final pulumi.Input<String> catalog;
   /// Gets the scan endpoint.
-  final String scan;
+  final pulumi.Input<String> scan;
 
   /// Creates a new [AccountPropertiesResponseEndpoints].
   /// [catalog] Gets the catalog endpoint.
@@ -25,8 +26,8 @@ class AccountPropertiesResponseEndpoints {
 
   factory AccountPropertiesResponseEndpoints.fromMap(Map<String, dynamic> map) {
     return AccountPropertiesResponseEndpoints(
-      catalog: map['catalog'] as String,
-      scan: map['scan'] as String,
+      catalog: (map['catalog'] as String).input(),
+      scan: (map['scan'] as String).input(),
     );
   }
 }

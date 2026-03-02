@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RaiToolLabelPropertiesResponseProjectScopes {
   /// Dictionary of label key-value pairs for the project scope.
-  final Map<String, String> labelValues;
+  final pulumi.Input<Map<String, String>> labelValues;
   /// Project name to which this scope applies.
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [RaiToolLabelPropertiesResponseProjectScopes].
   /// [labelValues] Dictionary of label key-value pairs for the project scope.
@@ -24,8 +25,8 @@ class RaiToolLabelPropertiesResponseProjectScopes {
 
   factory RaiToolLabelPropertiesResponseProjectScopes.fromMap(Map<String, dynamic> map) {
     return RaiToolLabelPropertiesResponseProjectScopes(
-      labelValues: (map['labelValues'] as Map).cast<String, String>(),
-      project: map['project'] as String,
+      labelValues: ((map['labelValues'] as Map).cast<String, String>()).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

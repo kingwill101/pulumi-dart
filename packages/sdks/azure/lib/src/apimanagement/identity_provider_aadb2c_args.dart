@@ -46,31 +46,19 @@ class IdentityProviderAadb2cArgs {
   /// [signinTenant] The tenant to use instead of Common when logging into Active Directory, usually your B2C tenant domain.
   /// [signupPolicy] Signup Policy Name.
   IdentityProviderAadb2cArgs({
-    required pulumi.Output<String> allowedTenant,
-    required pulumi.Output<String> apiManagementName,
-    required pulumi.Output<String> authority,
-    required pulumi.Output<String> clientId,
-    pulumi.Output<String>? clientLibrary,
-    required pulumi.Output<String> clientSecret,
-    pulumi.Output<String>? passwordResetPolicy,
-    pulumi.Output<String>? profileEditingPolicy,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> signinPolicy,
-    required pulumi.Output<String> signinTenant,
-    required pulumi.Output<String> signupPolicy,
-  }) :
-      allowedTenant = pulumi.Input.asInput<String>(allowedTenant),
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      authority = pulumi.Input.asInput<String>(authority),
-      clientId = pulumi.Input.asInput<String>(clientId),
-      clientLibrary = pulumi.Input.asOptionalInput<String>(clientLibrary),
-      clientSecret = pulumi.Input.asInput<String>(clientSecret),
-      passwordResetPolicy = pulumi.Input.asOptionalInput<String>(passwordResetPolicy),
-      profileEditingPolicy = pulumi.Input.asOptionalInput<String>(profileEditingPolicy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      signinPolicy = pulumi.Input.asInput<String>(signinPolicy),
-      signinTenant = pulumi.Input.asInput<String>(signinTenant),
-      signupPolicy = pulumi.Input.asInput<String>(signupPolicy);
+    required this.allowedTenant,
+    required this.apiManagementName,
+    required this.authority,
+    required this.clientId,
+    this.clientLibrary,
+    required this.clientSecret,
+    this.passwordResetPolicy,
+    this.profileEditingPolicy,
+    required this.resourceGroupName,
+    required this.signinPolicy,
+    required this.signinTenant,
+    required this.signupPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class IdentityProviderAadb2cArgs {
 
   factory IdentityProviderAadb2cArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderAadb2cArgs(
-      allowedTenant: pulumi.Output.create<String>(map['allowedTenant'] as String),
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      authority: pulumi.Output.create<String>(map['authority'] as String),
-      clientId: pulumi.Output.create<String>(map['clientId'] as String),
-      clientLibrary: map['clientLibrary'] == null ? null : pulumi.Output.create<String>(map['clientLibrary'] as String),
-      clientSecret: pulumi.Output.create<String>(map['clientSecret'] as String),
-      passwordResetPolicy: map['passwordResetPolicy'] == null ? null : pulumi.Output.create<String>(map['passwordResetPolicy'] as String),
-      profileEditingPolicy: map['profileEditingPolicy'] == null ? null : pulumi.Output.create<String>(map['profileEditingPolicy'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      signinPolicy: pulumi.Output.create<String>(map['signinPolicy'] as String),
-      signinTenant: pulumi.Output.create<String>(map['signinTenant'] as String),
-      signupPolicy: pulumi.Output.create<String>(map['signupPolicy'] as String),
+      allowedTenant: (map['allowedTenant'] as String).input(),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      authority: (map['authority'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      passwordResetPolicy: map['passwordResetPolicy'] == null ? null : (map['passwordResetPolicy'] as String).input(),
+      profileEditingPolicy: map['profileEditingPolicy'] == null ? null : (map['profileEditingPolicy'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      signinPolicy: (map['signinPolicy'] as String).input(),
+      signinTenant: (map['signinTenant'] as String).input(),
+      signupPolicy: (map['signupPolicy'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class GetAddonVersionArgs {
   /// [mostRecent] Determines if the most recent or default version of the addon should be returned.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetAddonVersionArgs({
-    required pulumi.Output<String> addonName,
-    required pulumi.Output<String> kubernetesVersion,
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? region,
-  }) :
-      addonName = pulumi.Input.asInput<String>(addonName),
-      kubernetesVersion = pulumi.Input.asInput<String>(kubernetesVersion),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.addonName,
+    required this.kubernetesVersion,
+    this.mostRecent,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetAddonVersionArgs {
 
   factory GetAddonVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetAddonVersionArgs(
-      addonName: pulumi.Output.create<String>(map['addonName'] as String),
-      kubernetesVersion: pulumi.Output.create<String>(map['kubernetesVersion'] as String),
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      addonName: (map['addonName'] as String).input(),
+      kubernetesVersion: (map['kubernetesVersion'] as String).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

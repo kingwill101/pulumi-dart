@@ -16,13 +16,10 @@ class FastTemplateState {
   /// [name] Name of the FAST template set to be created on to BIGIP
   /// [source] Path to the zip archive file containing FAST template set on Local Disk
   FastTemplateState({
-    pulumi.Output<String>? md5Hash,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? source,
-  }) :
-      md5Hash = pulumi.Input.asOptionalInput<String>(md5Hash),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    this.md5Hash,
+    this.name,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class FastTemplateState {
 
   factory FastTemplateState.fromMap(Map<String, dynamic> map) {
     return FastTemplateState(
-      md5Hash: map['md5Hash'] == null ? null : pulumi.Output.create<String>(map['md5Hash'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      md5Hash: map['md5Hash'] == null ? null : (map['md5Hash'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

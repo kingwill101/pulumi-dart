@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Summary of database results in the migration
 class DatabaseSummaryResultResponse {
   /// Migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Wildcard string prefix to use for querying all errors of the item
-  final String errorPrefix;
+  final pulumi.Input<String> errorPrefix;
   /// Number of successfully completed items
-  final double itemsCompletedCount;
+  final pulumi.Input<double> itemsCompletedCount;
   /// Number of items
-  final double itemsCount;
+  final pulumi.Input<double> itemsCount;
   /// Name of the item
-  final String name;
+  final pulumi.Input<String> name;
   /// Wildcard string prefix to use for querying all sub-tem results of the item
-  final String resultPrefix;
+  final pulumi.Input<String> resultPrefix;
   /// Size of the database in megabytes
-  final double sizeMB;
+  final pulumi.Input<double> sizeMB;
   /// Migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Current state of migration
-  final String state;
+  final pulumi.Input<String> state;
   /// Status message
-  final String statusMessage;
+  final pulumi.Input<String> statusMessage;
 
   /// Creates a new [DatabaseSummaryResultResponse].
   /// [endedOn] Migration end time
@@ -65,16 +66,16 @@ class DatabaseSummaryResultResponse {
 
   factory DatabaseSummaryResultResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseSummaryResultResponse(
-      endedOn: map['endedOn'] as String,
-      errorPrefix: map['errorPrefix'] as String,
-      itemsCompletedCount: map['itemsCompletedCount'] as double,
-      itemsCount: map['itemsCount'] as double,
-      name: map['name'] as String,
-      resultPrefix: map['resultPrefix'] as String,
-      sizeMB: map['sizeMB'] as double,
-      startedOn: map['startedOn'] as String,
-      state: map['state'] as String,
-      statusMessage: map['statusMessage'] as String,
+      endedOn: (map['endedOn'] as String).input(),
+      errorPrefix: (map['errorPrefix'] as String).input(),
+      itemsCompletedCount: (map['itemsCompletedCount'] as double).input(),
+      itemsCount: (map['itemsCount'] as double).input(),
+      name: (map['name'] as String).input(),
+      resultPrefix: (map['resultPrefix'] as String).input(),
+      sizeMB: (map['sizeMB'] as double).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      state: (map['state'] as String).input(),
+      statusMessage: (map['statusMessage'] as String).input(),
     );
   }
 }

@@ -7,9 +7,9 @@ import 'iprule.dart';
 /// Network access profile for Batch endpoint.
 class EndpointAccessProfile {
   /// Default action for endpoint access. It is only applicable when publicNetworkAccess is enabled.
-  final EndpointAccessDefaultAction defaultAction;
+  final pulumi.Input<EndpointAccessDefaultAction> defaultAction;
   /// Array of IP ranges to filter client IP address.
-  final List<IPRule>? ipRules;
+  final pulumi.Input<List<IPRule>>? ipRules;
 
   /// Creates a new [EndpointAccessProfile].
   /// [defaultAction] Default action for endpoint access. It is only applicable when publicNetworkAccess is enabled.
@@ -21,15 +21,15 @@ class EndpointAccessProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultAction': defaultAction.value,
-      'ipRules': ?ipRules == null ? null : pulumi.Input.encodeList<IPRule, Map<String, dynamic>>(ipRules!, (value) => value.toMap()),
+      'defaultAction': pulumi.Input.mapInputValue<EndpointAccessDefaultAction, String>(defaultAction, (value) => value.value),
+      'ipRules': ?pulumi.Input.mapOptionalInputValue<List<IPRule>, List<Map<String, dynamic>>>(ipRules, (value) => pulumi.Input.encodeList<IPRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EndpointAccessProfile.fromMap(Map<String, dynamic> map) {
     return EndpointAccessProfile(
-      defaultAction: EndpointAccessDefaultAction.fromValue(map['defaultAction'] as String),
-      ipRules: map['ipRules'] == null ? null : pulumi.Input.decodeList<IPRule>(map['ipRules'], (value) => IPRule.fromMap((value as Map).cast<String, dynamic>())),
+      defaultAction: (EndpointAccessDefaultAction.fromValue(map['defaultAction'] as String)).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRule>(map['ipRules'], (value) => IPRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

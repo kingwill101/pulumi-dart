@@ -19,13 +19,10 @@ class EnvFeatureArgs {
   /// [environmentId] The first ID of the resource.
   /// [featureVersion] Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
   EnvFeatureArgs({
-    required pulumi.Output<String> envFeatureName,
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> featureVersion,
-  }) :
-      envFeatureName = pulumi.Input.asInput<String>(envFeatureName),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      featureVersion = pulumi.Input.asInput<String>(featureVersion);
+    required this.envFeatureName,
+    required this.environmentId,
+    required this.featureVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EnvFeatureArgs {
 
   factory EnvFeatureArgs.fromMap(Map<String, dynamic> map) {
     return EnvFeatureArgs(
-      envFeatureName: pulumi.Output.create<String>(map['envFeatureName'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      featureVersion: pulumi.Output.create<String>(map['featureVersion'] as String),
+      envFeatureName: (map['envFeatureName'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      featureVersion: (map['featureVersion'] as String).input(),
     );
   }
 }

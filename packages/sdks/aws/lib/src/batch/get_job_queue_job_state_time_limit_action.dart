@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobQueueJobStateTimeLimitAction {
-  final String action;
-  final int maxTimeSeconds;
-  final String reason;
+  final pulumi.Input<String> action;
+  final pulumi.Input<int> maxTimeSeconds;
+  final pulumi.Input<String> reason;
   /// Describes the ability of the queue to accept new jobs (for example, `ENABLED` or `DISABLED`).
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GetJobQueueJobStateTimeLimitAction].
   /// [action] Required.
@@ -31,10 +32,10 @@ class GetJobQueueJobStateTimeLimitAction {
 
   factory GetJobQueueJobStateTimeLimitAction.fromMap(Map<String, dynamic> map) {
     return GetJobQueueJobStateTimeLimitAction(
-      action: map['action'] as String,
-      maxTimeSeconds: map['maxTimeSeconds'] as int,
-      reason: map['reason'] as String,
-      state: map['state'] as String,
+      action: (map['action'] as String).input(),
+      maxTimeSeconds: (map['maxTimeSeconds'] as int).input(),
+      reason: (map['reason'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

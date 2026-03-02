@@ -48,33 +48,20 @@ class AutomationArgs {
   /// [serviceAccount] Email address of the user-managed IAM service account that creates Cloud Deploy release and rollout resources.
   /// [suspended] Optional. When Suspended, automation is deactivated from execution.
   AutomationArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> automationId,
-    required pulumi.Output<String> deliveryPipelineId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<List<AutomationRule>> rules,
-    required pulumi.Output<AutomationResourceSelector> selector,
-    required pulumi.Output<String> serviceAccount,
-    pulumi.Output<bool>? suspended,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      automationId = pulumi.Input.asInput<String>(automationId),
-      deliveryPipelineId = pulumi.Input.asInput<String>(deliveryPipelineId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      rules = pulumi.Input.asInput<List<AutomationRule>>(rules),
-      selector = pulumi.Input.asInput<AutomationResourceSelector>(selector),
-      serviceAccount = pulumi.Input.asInput<String>(serviceAccount),
-      suspended = pulumi.Input.asOptionalInput<bool>(suspended);
+    this.annotations,
+    required this.automationId,
+    required this.deliveryPipelineId,
+    this.description,
+    this.etag,
+    this.labels,
+    this.location,
+    this.project,
+    this.requestId,
+    required this.rules,
+    required this.selector,
+    required this.serviceAccount,
+    this.suspended,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class AutomationArgs {
 
   factory AutomationArgs.fromMap(Map<String, dynamic> map) {
     return AutomationArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      automationId: pulumi.Output.create<String>(map['automationId'] as String),
-      deliveryPipelineId: pulumi.Output.create<String>(map['deliveryPipelineId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      rules: pulumi.Output.create<List<AutomationRule>>(pulumi.Input.decodeList<AutomationRule>(map['rules'], (value) => AutomationRule.fromMap((value as Map).cast<String, dynamic>()))),
-      selector: pulumi.Output.create<AutomationResourceSelector>(AutomationResourceSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())),
-      serviceAccount: pulumi.Output.create<String>(map['serviceAccount'] as String),
-      suspended: map['suspended'] == null ? null : pulumi.Output.create<bool>(map['suspended'] as bool),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      automationId: (map['automationId'] as String).input(),
+      deliveryPipelineId: (map['deliveryPipelineId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      rules: (pulumi.Input.decodeList<AutomationRule>(map['rules'], (value) => AutomationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selector: (AutomationResourceSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: (map['serviceAccount'] as String).input(),
+      suspended: map['suspended'] == null ? null : (map['suspended'] as bool).input(),
     );
   }
 }

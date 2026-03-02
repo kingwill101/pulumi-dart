@@ -7,11 +7,11 @@ import 'dev_ops_capability_response.dart';
 /// DevOps Configuration properties.
 class DevOpsConfigurationPropertiesResponse {
   /// Authorization payload.
-  final AuthorizationResponse? authorization;
+  final pulumi.Input<AuthorizationResponse>? authorization;
   /// AutoDiscovery states.
-  final String? autoDiscovery;
+  final pulumi.Input<String>? autoDiscovery;
   /// List of capabilities assigned to the DevOps configuration during the discovery process.
-  final List<DevOpsCapabilityResponse> capabilities;
+  final pulumi.Input<List<DevOpsCapabilityResponse>> capabilities;
   /// The provisioning state of the resource.
   ///
   /// Pending - Provisioning pending.
@@ -21,14 +21,14 @@ class DevOpsConfigurationPropertiesResponse {
   /// PendingDeletion - Deletion pending.
   /// DeletionSuccess - Deletion successful.
   /// DeletionFailure - Deletion failure.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// Gets or sets resource status message.
-  final String provisioningStatusMessage;
+  final pulumi.Input<String> provisioningStatusMessage;
   /// Gets or sets time when resource was last checked.
-  final String provisioningStatusUpdateTimeUtc;
+  final pulumi.Input<String> provisioningStatusUpdateTimeUtc;
   /// List of top-level inventory to select when AutoDiscovery is disabled.
   /// This field is ignored when AutoDiscovery is enabled.
-  final List<String>? topLevelInventoryList;
+  final pulumi.Input<List<String>>? topLevelInventoryList;
 
   /// Creates a new [DevOpsConfigurationPropertiesResponse].
   /// [authorization] Authorization payload.
@@ -50,9 +50,9 @@ class DevOpsConfigurationPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorization': ?authorization == null ? null : authorization!.toMap(),
+      'authorization': ?pulumi.Input.mapOptionalInputValue<AuthorizationResponse, Map<String, dynamic>>(authorization, (value) => value.toMap()),
       'autoDiscovery': ?autoDiscovery,
-      'capabilities': pulumi.Input.encodeList<DevOpsCapabilityResponse, Map<String, dynamic>>(capabilities, (value) => value.toMap()),
+      'capabilities': pulumi.Input.mapInputValue<List<DevOpsCapabilityResponse>, List<Map<String, dynamic>>>(capabilities, (value) => pulumi.Input.encodeList<DevOpsCapabilityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': ?provisioningState,
       'provisioningStatusMessage': provisioningStatusMessage,
       'provisioningStatusUpdateTimeUtc': provisioningStatusUpdateTimeUtc,
@@ -62,13 +62,13 @@ class DevOpsConfigurationPropertiesResponse {
 
   factory DevOpsConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DevOpsConfigurationPropertiesResponse(
-      authorization: map['authorization'] == null ? null : AuthorizationResponse.fromMap((map['authorization'] as Map).cast<String, dynamic>()),
-      autoDiscovery: map['autoDiscovery'] == null ? null : map['autoDiscovery'] as String,
-      capabilities: pulumi.Input.decodeList<DevOpsCapabilityResponse>(map['capabilities'], (value) => DevOpsCapabilityResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      provisioningStatusMessage: map['provisioningStatusMessage'] as String,
-      provisioningStatusUpdateTimeUtc: map['provisioningStatusUpdateTimeUtc'] as String,
-      topLevelInventoryList: map['topLevelInventoryList'] == null ? null : (map['topLevelInventoryList'] as List).cast<String>(),
+      authorization: map['authorization'] == null ? null : (AuthorizationResponse.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
+      autoDiscovery: map['autoDiscovery'] == null ? null : (map['autoDiscovery'] as String).input(),
+      capabilities: (pulumi.Input.decodeList<DevOpsCapabilityResponse>(map['capabilities'], (value) => DevOpsCapabilityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      provisioningStatusMessage: (map['provisioningStatusMessage'] as String).input(),
+      provisioningStatusUpdateTimeUtc: (map['provisioningStatusUpdateTimeUtc'] as String).input(),
+      topLevelInventoryList: map['topLevelInventoryList'] == null ? null : ((map['topLevelInventoryList'] as List).cast<String>()).input(),
     );
   }
 }

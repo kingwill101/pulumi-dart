@@ -16,11 +16,9 @@ class GetDataControllerArgs {
   /// [dataControllerName] The name of the data controller
   /// [resourceGroupName] The name of the Azure resource group
   GetDataControllerArgs({
-    required pulumi.Output<String> dataControllerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dataControllerName = pulumi.Input.asInput<String>(dataControllerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dataControllerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDataControllerArgs {
 
   factory GetDataControllerArgs.fromMap(Map<String, dynamic> map) {
     return GetDataControllerArgs(
-      dataControllerName: pulumi.Output.create<String>(map['dataControllerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dataControllerName: (map['dataControllerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -31,19 +31,13 @@ class DomainArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scalingParameters] Domain scaling parameters. Documented below.
   DomainArgs({
-    pulumi.Output<DomainEndpointOptions>? endpointOptions,
-    pulumi.Output<List<DomainIndexField>>? indexFields,
-    pulumi.Output<bool>? multiAz,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<DomainScalingParameters>? scalingParameters,
-  }) :
-      endpointOptions = pulumi.Input.asOptionalInput<DomainEndpointOptions>(endpointOptions),
-      indexFields = pulumi.Input.asOptionalInput<List<DomainIndexField>>(indexFields),
-      multiAz = pulumi.Input.asOptionalInput<bool>(multiAz),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scalingParameters = pulumi.Input.asOptionalInput<DomainScalingParameters>(scalingParameters);
+    this.endpointOptions,
+    this.indexFields,
+    this.multiAz,
+    this.name,
+    this.region,
+    this.scalingParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      endpointOptions: map['endpointOptions'] == null ? null : pulumi.Output.create<DomainEndpointOptions>(DomainEndpointOptions.fromMap((map['endpointOptions'] as Map).cast<String, dynamic>())),
-      indexFields: map['indexFields'] == null ? null : pulumi.Output.create<List<DomainIndexField>>(pulumi.Input.decodeList<DomainIndexField>(map['indexFields'], (value) => DomainIndexField.fromMap((value as Map).cast<String, dynamic>()))),
-      multiAz: map['multiAz'] == null ? null : pulumi.Output.create<bool>(map['multiAz'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scalingParameters: map['scalingParameters'] == null ? null : pulumi.Output.create<DomainScalingParameters>(DomainScalingParameters.fromMap((map['scalingParameters'] as Map).cast<String, dynamic>())),
+      endpointOptions: map['endpointOptions'] == null ? null : (DomainEndpointOptions.fromMap((map['endpointOptions'] as Map).cast<String, dynamic>())).input(),
+      indexFields: map['indexFields'] == null ? null : (pulumi.Input.decodeList<DomainIndexField>(map['indexFields'], (value) => DomainIndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      multiAz: map['multiAz'] == null ? null : (map['multiAz'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scalingParameters: map['scalingParameters'] == null ? null : (DomainScalingParameters.fromMap((map['scalingParameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

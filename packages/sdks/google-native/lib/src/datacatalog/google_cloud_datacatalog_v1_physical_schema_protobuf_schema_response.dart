@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Schema in protocol buffer format.
 class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse {
   /// Protocol buffer source of the schema.
-  final String text;
+  final pulumi.Input<String> text;
 
   /// Creates a new [GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse].
   /// [text] Protocol buffer source of the schema.
@@ -20,7 +21,7 @@ class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse {
 
   factory GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse(
-      text: map['text'] as String,
+      text: (map['text'] as String).input(),
     );
   }
 }

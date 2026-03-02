@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VPN client revoked certificate of virtual network gateway.
 class VpnClientRevokedCertificate {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The revoked VPN client certificate thumbprint.
-  final String? thumbprint;
+  final pulumi.Input<String>? thumbprint;
 
   /// Creates a new [VpnClientRevokedCertificate].
   /// [id] Resource ID.
@@ -30,9 +31,9 @@ class VpnClientRevokedCertificate {
 
   factory VpnClientRevokedCertificate.fromMap(Map<String, dynamic> map) {
     return VpnClientRevokedCertificate(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      thumbprint: map['thumbprint'] == null ? null : map['thumbprint'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

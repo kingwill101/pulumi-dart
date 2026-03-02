@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
 class WsfcDomainCredentialsResponse {
   /// Cluster bootstrap account password.
-  final String? clusterBootstrapAccountPassword;
+  final pulumi.Input<String>? clusterBootstrapAccountPassword;
   /// Cluster operator account password.
-  final String? clusterOperatorAccountPassword;
+  final pulumi.Input<String>? clusterOperatorAccountPassword;
   /// SQL service account password.
-  final String? sqlServiceAccountPassword;
+  final pulumi.Input<String>? sqlServiceAccountPassword;
 
   /// Creates a new [WsfcDomainCredentialsResponse].
   /// [clusterBootstrapAccountPassword] Cluster bootstrap account password.
@@ -30,9 +31,9 @@ class WsfcDomainCredentialsResponse {
 
   factory WsfcDomainCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return WsfcDomainCredentialsResponse(
-      clusterBootstrapAccountPassword: map['clusterBootstrapAccountPassword'] == null ? null : map['clusterBootstrapAccountPassword'] as String,
-      clusterOperatorAccountPassword: map['clusterOperatorAccountPassword'] == null ? null : map['clusterOperatorAccountPassword'] as String,
-      sqlServiceAccountPassword: map['sqlServiceAccountPassword'] == null ? null : map['sqlServiceAccountPassword'] as String,
+      clusterBootstrapAccountPassword: map['clusterBootstrapAccountPassword'] == null ? null : (map['clusterBootstrapAccountPassword'] as String).input(),
+      clusterOperatorAccountPassword: map['clusterOperatorAccountPassword'] == null ? null : (map['clusterOperatorAccountPassword'] as String).input(),
+      sqlServiceAccountPassword: map['sqlServiceAccountPassword'] == null ? null : (map['sqlServiceAccountPassword'] as String).input(),
     );
   }
 }

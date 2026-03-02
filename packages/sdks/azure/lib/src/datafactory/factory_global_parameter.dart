@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FactoryGlobalParameter {
   /// Specifies the global parameter name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the global parameter type. Possible Values are `Array`, `Bool`, `Float`, `Int`, `Object` or `String`.
-  final String type;
+  final pulumi.Input<String> type;
   /// Specifies the global parameter value.
   ///
   /// > **Note:** For type `Array` and `Object` it is recommended to use `jsonencode()` for the value
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [FactoryGlobalParameter].
   /// [name] Specifies the global parameter name.
@@ -31,9 +32,9 @@ class FactoryGlobalParameter {
 
   factory FactoryGlobalParameter.fromMap(Map<String, dynamic> map) {
     return FactoryGlobalParameter(
-      name: map['name'] as String,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

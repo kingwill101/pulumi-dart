@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTaskDefinitionEphemeralStorage {
   /// The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is `21` GiB and the maximum supported value is `200` GiB.
-  final int sizeInGib;
+  final pulumi.Input<int> sizeInGib;
 
   /// Creates a new [GetTaskDefinitionEphemeralStorage].
   /// [sizeInGib] The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is `21` GiB and the maximum supported value is `200` GiB.
@@ -19,7 +20,7 @@ class GetTaskDefinitionEphemeralStorage {
 
   factory GetTaskDefinitionEphemeralStorage.fromMap(Map<String, dynamic> map) {
     return GetTaskDefinitionEphemeralStorage(
-      sizeInGib: map['sizeInGib'] as int,
+      sizeInGib: (map['sizeInGib'] as int).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdcApplicationServiceIntegrationRedshiftConnect {
   /// Determines whether the connect integration is enabled or disabled.
-  final String authorization;
+  final pulumi.Input<String> authorization;
 
   /// Creates a new [IdcApplicationServiceIntegrationRedshiftConnect].
   /// [authorization] Determines whether the connect integration is enabled or disabled.
@@ -19,7 +20,7 @@ class IdcApplicationServiceIntegrationRedshiftConnect {
 
   factory IdcApplicationServiceIntegrationRedshiftConnect.fromMap(Map<String, dynamic> map) {
     return IdcApplicationServiceIntegrationRedshiftConnect(
-      authorization: map['authorization'] as String,
+      authorization: (map['authorization'] as String).input(),
     );
   }
 }

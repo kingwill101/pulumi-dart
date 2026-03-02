@@ -54,31 +54,19 @@ class AppGatewayState {
   /// [type] The type of network connectivity used by the AppGateway.
   /// [uri] Server-defined URI for this resource.
   AppGatewayState({
-    pulumi.Output<List<AppGatewayAllocatedConnection>>? allocatedConnections,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? hostType,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? uri,
-  }) :
-      allocatedConnections = pulumi.Input.asOptionalInput<List<AppGatewayAllocatedConnection>>(allocatedConnections),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      hostType = pulumi.Input.asOptionalInput<String>(hostType),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.allocatedConnections,
+    this.displayName,
+    this.effectiveLabels,
+    this.hostType,
+    this.labels,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.region,
+    this.state,
+    this.type,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,18 +87,18 @@ class AppGatewayState {
 
   factory AppGatewayState.fromMap(Map<String, dynamic> map) {
     return AppGatewayState(
-      allocatedConnections: map['allocatedConnections'] == null ? null : pulumi.Output.create<List<AppGatewayAllocatedConnection>>(pulumi.Input.decodeList<AppGatewayAllocatedConnection>(map['allocatedConnections'], (value) => AppGatewayAllocatedConnection.fromMap((value as Map).cast<String, dynamic>()))),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      hostType: map['hostType'] == null ? null : pulumi.Output.create<String>(map['hostType'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      allocatedConnections: map['allocatedConnections'] == null ? null : (pulumi.Input.decodeList<AppGatewayAllocatedConnection>(map['allocatedConnections'], (value) => AppGatewayAllocatedConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      hostType: map['hostType'] == null ? null : (map['hostType'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

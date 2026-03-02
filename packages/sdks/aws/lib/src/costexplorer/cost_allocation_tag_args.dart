@@ -16,11 +16,9 @@ class CostAllocationTagArgs {
   /// [status] The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
   /// [tagKey] The key for the cost allocation tag.
   CostAllocationTagArgs({
-    required pulumi.Output<String> status,
-    required pulumi.Output<String> tagKey,
-  }) :
-      status = pulumi.Input.asInput<String>(status),
-      tagKey = pulumi.Input.asInput<String>(tagKey);
+    required this.status,
+    required this.tagKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class CostAllocationTagArgs {
 
   factory CostAllocationTagArgs.fromMap(Map<String, dynamic> map) {
     return CostAllocationTagArgs(
-      status: pulumi.Output.create<String>(map['status'] as String),
-      tagKey: pulumi.Output.create<String>(map['tagKey'] as String),
+      status: (map['status'] as String).input(),
+      tagKey: (map['tagKey'] as String).input(),
     );
   }
 }

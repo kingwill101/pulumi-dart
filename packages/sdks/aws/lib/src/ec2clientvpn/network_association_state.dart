@@ -22,17 +22,12 @@ class NetworkAssociationState {
   /// [subnetId] The ID of the subnet to associate with the Client VPN endpoint.
   /// [vpcId] The ID of the VPC in which the target subnet is located.
   NetworkAssociationState({
-    pulumi.Output<String>? associationId,
-    pulumi.Output<String>? clientVpnEndpointId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<String>? vpcId,
-  }) :
-      associationId = pulumi.Input.asOptionalInput<String>(associationId),
-      clientVpnEndpointId = pulumi.Input.asOptionalInput<String>(clientVpnEndpointId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.associationId,
+    this.clientVpnEndpointId,
+    this.region,
+    this.subnetId,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class NetworkAssociationState {
 
   factory NetworkAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkAssociationState(
-      associationId: map['associationId'] == null ? null : pulumi.Output.create<String>(map['associationId'] as String),
-      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : pulumi.Output.create<String>(map['clientVpnEndpointId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
+      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : (map['clientVpnEndpointId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

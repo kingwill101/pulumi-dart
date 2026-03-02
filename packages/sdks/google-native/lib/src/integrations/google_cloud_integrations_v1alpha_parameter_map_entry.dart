@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_parameter_map_field.dart';
 
 /// Entry is a pair of key and value.
 class GoogleCloudIntegrationsV1alphaParameterMapEntry {
   /// Key of the map entry.
-  final GoogleCloudIntegrationsV1alphaParameterMapField? key;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMapField>? key;
   /// Value of the map entry.
-  final GoogleCloudIntegrationsV1alphaParameterMapField? value;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMapField>? value;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaParameterMapEntry].
   /// [key] Key of the map entry.
@@ -19,15 +20,15 @@ class GoogleCloudIntegrationsV1alphaParameterMapEntry {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'key': ?key == null ? null : key!.toMap(),
-      'value': ?value == null ? null : value!.toMap(),
+      'key': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIntegrationsV1alphaParameterMapField, Map<String, dynamic>>(key, (value) => value.toMap()),
+      'value': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIntegrationsV1alphaParameterMapField, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudIntegrationsV1alphaParameterMapEntry.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaParameterMapEntry(
-      key: map['key'] == null ? null : GoogleCloudIntegrationsV1alphaParameterMapField.fromMap((map['key'] as Map).cast<String, dynamic>()),
-      value: map['value'] == null ? null : GoogleCloudIntegrationsV1alphaParameterMapField.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      key: map['key'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMapField.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMapField.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

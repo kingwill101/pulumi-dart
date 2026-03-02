@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceReservationAffinitySpecificReservation {
   /// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
-  final String key;
+  final pulumi.Input<String> key;
   /// Corresponds to the label values of a reservation resource.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [InstanceReservationAffinitySpecificReservation].
   /// [key] Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
@@ -24,8 +25,8 @@ class InstanceReservationAffinitySpecificReservation {
 
   factory InstanceReservationAffinitySpecificReservation.fromMap(Map<String, dynamic> map) {
     return InstanceReservationAffinitySpecificReservation(
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

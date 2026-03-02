@@ -16,11 +16,9 @@ class GetDatasetDataLakeGen2Args {
   /// [name] The name of this Data Share Data Lake Gen2 Dataset.
   /// [shareId] The resource ID of the Data Share where this Data Share Data Lake Gen2 Dataset should be created.
   GetDatasetDataLakeGen2Args({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> shareId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      shareId = pulumi.Input.asInput<String>(shareId);
+    required this.name,
+    required this.shareId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDatasetDataLakeGen2Args {
 
   factory GetDatasetDataLakeGen2Args.fromMap(Map<String, dynamic> map) {
     return GetDatasetDataLakeGen2Args(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      shareId: pulumi.Output.create<String>(map['shareId'] as String),
+      name: (map['name'] as String).input(),
+      shareId: (map['shareId'] as String).input(),
     );
   }
 }

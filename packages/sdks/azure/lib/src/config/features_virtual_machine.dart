@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesVirtualMachine {
-  final bool? deleteOsDiskOnDeletion;
-  final bool? detachImplicitDataDiskOnDeletion;
-  final bool? gracefulShutdown;
-  final bool? skipShutdownAndForceDelete;
+  final pulumi.Input<bool>? deleteOsDiskOnDeletion;
+  final pulumi.Input<bool>? detachImplicitDataDiskOnDeletion;
+  final pulumi.Input<bool>? gracefulShutdown;
+  final pulumi.Input<bool>? skipShutdownAndForceDelete;
 
   /// Creates a new [FeaturesVirtualMachine].
   /// [deleteOsDiskOnDeletion] Optional.
@@ -30,10 +31,10 @@ class FeaturesVirtualMachine {
 
   factory FeaturesVirtualMachine.fromMap(Map<String, dynamic> map) {
     return FeaturesVirtualMachine(
-      deleteOsDiskOnDeletion: map['deleteOsDiskOnDeletion'] == null ? null : map['deleteOsDiskOnDeletion'] as bool,
-      detachImplicitDataDiskOnDeletion: map['detachImplicitDataDiskOnDeletion'] == null ? null : map['detachImplicitDataDiskOnDeletion'] as bool,
-      gracefulShutdown: map['gracefulShutdown'] == null ? null : map['gracefulShutdown'] as bool,
-      skipShutdownAndForceDelete: map['skipShutdownAndForceDelete'] == null ? null : map['skipShutdownAndForceDelete'] as bool,
+      deleteOsDiskOnDeletion: map['deleteOsDiskOnDeletion'] == null ? null : (map['deleteOsDiskOnDeletion'] as bool).input(),
+      detachImplicitDataDiskOnDeletion: map['detachImplicitDataDiskOnDeletion'] == null ? null : (map['detachImplicitDataDiskOnDeletion'] as bool).input(),
+      gracefulShutdown: map['gracefulShutdown'] == null ? null : (map['gracefulShutdown'] as bool).input(),
+      skipShutdownAndForceDelete: map['skipShutdownAndForceDelete'] == null ? null : (map['skipShutdownAndForceDelete'] as bool).input(),
     );
   }
 }

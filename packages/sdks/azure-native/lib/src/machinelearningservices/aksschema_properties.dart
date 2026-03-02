@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aks_networking_configuration.dart';
 import 'ssl_configuration.dart';
 
 /// AKS properties
 class AKSSchemaProperties {
   /// Number of agents
-  final int? agentCount;
+  final pulumi.Input<int>? agentCount;
   /// Agent virtual machine size
-  final String? agentVmSize;
+  final pulumi.Input<String>? agentVmSize;
   /// AKS networking configuration for vnet
-  final AksNetworkingConfiguration? aksNetworkingConfiguration;
+  final pulumi.Input<AksNetworkingConfiguration>? aksNetworkingConfiguration;
   /// Cluster full qualified domain name
-  final String? clusterFqdn;
+  final pulumi.Input<String>? clusterFqdn;
   /// Intended usage of the cluster
-  final String? clusterPurpose;
+  final pulumi.Input<String>? clusterPurpose;
   /// Load Balancer Subnet
-  final String? loadBalancerSubnet;
+  final pulumi.Input<String>? loadBalancerSubnet;
   /// Load Balancer Type
-  final String? loadBalancerType;
+  final pulumi.Input<String>? loadBalancerType;
   /// SSL configuration
-  final SslConfiguration? sslConfiguration;
+  final pulumi.Input<SslConfiguration>? sslConfiguration;
 
   /// Creates a new [AKSSchemaProperties].
   /// [agentCount] Number of agents
@@ -46,25 +47,25 @@ class AKSSchemaProperties {
     return <String, dynamic>{
       'agentCount': ?agentCount,
       'agentVmSize': ?agentVmSize,
-      'aksNetworkingConfiguration': ?aksNetworkingConfiguration == null ? null : aksNetworkingConfiguration!.toMap(),
+      'aksNetworkingConfiguration': ?pulumi.Input.mapOptionalInputValue<AksNetworkingConfiguration, Map<String, dynamic>>(aksNetworkingConfiguration, (value) => value.toMap()),
       'clusterFqdn': ?clusterFqdn,
       'clusterPurpose': ?clusterPurpose,
       'loadBalancerSubnet': ?loadBalancerSubnet,
       'loadBalancerType': ?loadBalancerType,
-      'sslConfiguration': ?sslConfiguration == null ? null : sslConfiguration!.toMap(),
+      'sslConfiguration': ?pulumi.Input.mapOptionalInputValue<SslConfiguration, Map<String, dynamic>>(sslConfiguration, (value) => value.toMap()),
     };
   }
 
   factory AKSSchemaProperties.fromMap(Map<String, dynamic> map) {
     return AKSSchemaProperties(
-      agentCount: map['agentCount'] == null ? null : map['agentCount'] as int,
-      agentVmSize: map['agentVmSize'] == null ? null : map['agentVmSize'] as String,
-      aksNetworkingConfiguration: map['aksNetworkingConfiguration'] == null ? null : AksNetworkingConfiguration.fromMap((map['aksNetworkingConfiguration'] as Map).cast<String, dynamic>()),
-      clusterFqdn: map['clusterFqdn'] == null ? null : map['clusterFqdn'] as String,
-      clusterPurpose: map['clusterPurpose'] == null ? null : map['clusterPurpose'] as String,
-      loadBalancerSubnet: map['loadBalancerSubnet'] == null ? null : map['loadBalancerSubnet'] as String,
-      loadBalancerType: map['loadBalancerType'] == null ? null : map['loadBalancerType'] as String,
-      sslConfiguration: map['sslConfiguration'] == null ? null : SslConfiguration.fromMap((map['sslConfiguration'] as Map).cast<String, dynamic>()),
+      agentCount: map['agentCount'] == null ? null : (map['agentCount'] as int).input(),
+      agentVmSize: map['agentVmSize'] == null ? null : (map['agentVmSize'] as String).input(),
+      aksNetworkingConfiguration: map['aksNetworkingConfiguration'] == null ? null : (AksNetworkingConfiguration.fromMap((map['aksNetworkingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      clusterFqdn: map['clusterFqdn'] == null ? null : (map['clusterFqdn'] as String).input(),
+      clusterPurpose: map['clusterPurpose'] == null ? null : (map['clusterPurpose'] as String).input(),
+      loadBalancerSubnet: map['loadBalancerSubnet'] == null ? null : (map['loadBalancerSubnet'] as String).input(),
+      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType'] as String).input(),
+      sslConfiguration: map['sslConfiguration'] == null ? null : (SslConfiguration.fromMap((map['sslConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

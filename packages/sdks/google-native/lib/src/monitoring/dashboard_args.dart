@@ -44,27 +44,17 @@ class DashboardArgs {
   /// [project] Optional.
   /// [rowLayout] The content is divided into equally spaced rows and the widgets are arranged horizontally.
   DashboardArgs({
-    pulumi.Output<ColumnLayout>? columnLayout,
-    pulumi.Output<List<DashboardFilter>>? dashboardFilters,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<GridLayout>? gridLayout,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<MosaicLayout>? mosaicLayout,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<RowLayout>? rowLayout,
-  }) :
-      columnLayout = pulumi.Input.asOptionalInput<ColumnLayout>(columnLayout),
-      dashboardFilters = pulumi.Input.asOptionalInput<List<DashboardFilter>>(dashboardFilters),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      gridLayout = pulumi.Input.asOptionalInput<GridLayout>(gridLayout),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      mosaicLayout = pulumi.Input.asOptionalInput<MosaicLayout>(mosaicLayout),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rowLayout = pulumi.Input.asOptionalInput<RowLayout>(rowLayout);
+    this.columnLayout,
+    this.dashboardFilters,
+    required this.displayName,
+    this.etag,
+    this.gridLayout,
+    this.labels,
+    this.mosaicLayout,
+    this.name,
+    this.project,
+    this.rowLayout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class DashboardArgs {
 
   factory DashboardArgs.fromMap(Map<String, dynamic> map) {
     return DashboardArgs(
-      columnLayout: map['columnLayout'] == null ? null : pulumi.Output.create<ColumnLayout>(ColumnLayout.fromMap((map['columnLayout'] as Map).cast<String, dynamic>())),
-      dashboardFilters: map['dashboardFilters'] == null ? null : pulumi.Output.create<List<DashboardFilter>>(pulumi.Input.decodeList<DashboardFilter>(map['dashboardFilters'], (value) => DashboardFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      gridLayout: map['gridLayout'] == null ? null : pulumi.Output.create<GridLayout>(GridLayout.fromMap((map['gridLayout'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      mosaicLayout: map['mosaicLayout'] == null ? null : pulumi.Output.create<MosaicLayout>(MosaicLayout.fromMap((map['mosaicLayout'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rowLayout: map['rowLayout'] == null ? null : pulumi.Output.create<RowLayout>(RowLayout.fromMap((map['rowLayout'] as Map).cast<String, dynamic>())),
+      columnLayout: map['columnLayout'] == null ? null : (ColumnLayout.fromMap((map['columnLayout'] as Map).cast<String, dynamic>())).input(),
+      dashboardFilters: map['dashboardFilters'] == null ? null : (pulumi.Input.decodeList<DashboardFilter>(map['dashboardFilters'], (value) => DashboardFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      gridLayout: map['gridLayout'] == null ? null : (GridLayout.fromMap((map['gridLayout'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      mosaicLayout: map['mosaicLayout'] == null ? null : (MosaicLayout.fromMap((map['mosaicLayout'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rowLayout: map['rowLayout'] == null ? null : (RowLayout.fromMap((map['rowLayout'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,13 +21,10 @@ class ProxyProtocolPolicyArgs {
   /// [loadBalancer] The load balancer to which the policy
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ProxyProtocolPolicyArgs({
-    required pulumi.Output<List<String>> instancePorts,
-    required pulumi.Output<String> loadBalancer,
-    pulumi.Output<String>? region,
-  }) :
-      instancePorts = pulumi.Input.asInput<List<String>>(instancePorts),
-      loadBalancer = pulumi.Input.asInput<String>(loadBalancer),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.instancePorts,
+    required this.loadBalancer,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class ProxyProtocolPolicyArgs {
 
   factory ProxyProtocolPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ProxyProtocolPolicyArgs(
-      instancePorts: pulumi.Output.create<List<String>>((map['instancePorts'] as List).cast<String>()),
-      loadBalancer: pulumi.Output.create<String>(map['loadBalancer'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      instancePorts: ((map['instancePorts'] as List).cast<String>()).input(),
+      loadBalancer: (map['loadBalancer'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

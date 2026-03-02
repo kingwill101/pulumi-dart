@@ -5,11 +5,11 @@ import 'feature_membership_configmanagement_config_sync_deployment_override_cont
 
 class FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
   /// The override configurations for the containers in the Deployment. Structure is documented below.
-  final List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer>? containers;
+  final pulumi.Input<List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer>>? containers;
   /// The name of the Deployment.
-  final String? deploymentName;
+  final pulumi.Input<String>? deploymentName;
   /// The namespace of the Deployment.
-  final String? deploymentNamespace;
+  final pulumi.Input<String>? deploymentNamespace;
 
   /// Creates a new [FeatureMembershipConfigmanagementConfigSyncDeploymentOverride].
   /// [containers] The override configurations for the containers in the Deployment. Structure is documented below.
@@ -23,7 +23,7 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containers': ?containers == null ? null : pulumi.Input.encodeList<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer, Map<String, dynamic>>(containers!, (value) => value.toMap()),
+      'containers': ?pulumi.Input.mapOptionalInputValue<List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deploymentName': ?deploymentName,
       'deploymentNamespace': ?deploymentNamespace,
     };
@@ -31,9 +31,9 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
 
   factory FeatureMembershipConfigmanagementConfigSyncDeploymentOverride.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipConfigmanagementConfigSyncDeploymentOverride(
-      containers: map['containers'] == null ? null : pulumi.Input.decodeList<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer>(map['containers'], (value) => FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer.fromMap((value as Map).cast<String, dynamic>())),
-      deploymentName: map['deploymentName'] == null ? null : map['deploymentName'] as String,
-      deploymentNamespace: map['deploymentNamespace'] == null ? null : map['deploymentNamespace'] as String,
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer>(map['containers'], (value) => FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      deploymentNamespace: map['deploymentNamespace'] == null ? null : (map['deploymentNamespace'] as String).input(),
     );
   }
 }

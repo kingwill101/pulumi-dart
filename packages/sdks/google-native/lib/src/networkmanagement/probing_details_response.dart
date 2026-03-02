@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'edge_location_response.dart';
 import 'endpoint_info_response.dart';
 import 'latency_distribution_response.dart';
@@ -8,23 +9,23 @@ import 'status_response.dart';
 /// Results of active probing from the last run of the test.
 class ProbingDetailsResponse {
   /// The reason probing was aborted.
-  final String abortCause;
+  final pulumi.Input<String> abortCause;
   /// The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the Google network. This will only be populated for a connectivity test which has an internet destination/source address. The absence of this field *must not* be used as an indication that the destination/source is part of the Google network.
-  final EdgeLocationResponse destinationEgressLocation;
+  final pulumi.Input<EdgeLocationResponse> destinationEgressLocation;
   /// The source and destination endpoints derived from the test input and used for active probing.
-  final EndpointInfoResponse endpointInfo;
+  final pulumi.Input<EndpointInfoResponse> endpointInfo;
   /// Details about an internal failure or the cancellation of active probing.
-  final StatusResponse error;
+  final pulumi.Input<StatusResponse> error;
   /// Latency as measured by active probing in one direction: from the source to the destination endpoint.
-  final LatencyDistributionResponse probingLatency;
+  final pulumi.Input<LatencyDistributionResponse> probingLatency;
   /// The overall result of active probing.
-  final String result;
+  final pulumi.Input<String> result;
   /// Number of probes sent.
-  final int sentProbeCount;
+  final pulumi.Input<int> sentProbeCount;
   /// Number of probes that reached the destination.
-  final int successfulProbeCount;
+  final pulumi.Input<int> successfulProbeCount;
   /// The time that reachability was assessed through active probing.
-  final String verifyTime;
+  final pulumi.Input<String> verifyTime;
 
   /// Creates a new [ProbingDetailsResponse].
   /// [abortCause] The reason probing was aborted.
@@ -51,10 +52,10 @@ class ProbingDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'abortCause': abortCause,
-      'destinationEgressLocation': destinationEgressLocation.toMap(),
-      'endpointInfo': endpointInfo.toMap(),
-      'error': error.toMap(),
-      'probingLatency': probingLatency.toMap(),
+      'destinationEgressLocation': pulumi.Input.mapInputValue<EdgeLocationResponse, Map<String, dynamic>>(destinationEgressLocation, (value) => value.toMap()),
+      'endpointInfo': pulumi.Input.mapInputValue<EndpointInfoResponse, Map<String, dynamic>>(endpointInfo, (value) => value.toMap()),
+      'error': pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'probingLatency': pulumi.Input.mapInputValue<LatencyDistributionResponse, Map<String, dynamic>>(probingLatency, (value) => value.toMap()),
       'result': result,
       'sentProbeCount': sentProbeCount,
       'successfulProbeCount': successfulProbeCount,
@@ -64,15 +65,15 @@ class ProbingDetailsResponse {
 
   factory ProbingDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ProbingDetailsResponse(
-      abortCause: map['abortCause'] as String,
-      destinationEgressLocation: EdgeLocationResponse.fromMap((map['destinationEgressLocation'] as Map).cast<String, dynamic>()),
-      endpointInfo: EndpointInfoResponse.fromMap((map['endpointInfo'] as Map).cast<String, dynamic>()),
-      error: StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      probingLatency: LatencyDistributionResponse.fromMap((map['probingLatency'] as Map).cast<String, dynamic>()),
-      result: map['result'] as String,
-      sentProbeCount: map['sentProbeCount'] as int,
-      successfulProbeCount: map['successfulProbeCount'] as int,
-      verifyTime: map['verifyTime'] as String,
+      abortCause: (map['abortCause'] as String).input(),
+      destinationEgressLocation: (EdgeLocationResponse.fromMap((map['destinationEgressLocation'] as Map).cast<String, dynamic>())).input(),
+      endpointInfo: (EndpointInfoResponse.fromMap((map['endpointInfo'] as Map).cast<String, dynamic>())).input(),
+      error: (StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      probingLatency: (LatencyDistributionResponse.fromMap((map['probingLatency'] as Map).cast<String, dynamic>())).input(),
+      result: (map['result'] as String).input(),
+      sentProbeCount: (map['sentProbeCount'] as int).input(),
+      successfulProbeCount: (map['successfulProbeCount'] as int).input(),
+      verifyTime: (map['verifyTime'] as String).input(),
     );
   }
 }

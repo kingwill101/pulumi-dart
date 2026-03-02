@@ -6,7 +6,7 @@ import 'tls_route_rule_action_destination.dart';
 class TlsRouteRuleAction {
   /// The destination to which traffic should be forwarded.
   /// Structure is documented below.
-  final List<TlsRouteRuleActionDestination>? destinations;
+  final pulumi.Input<List<TlsRouteRuleActionDestination>>? destinations;
 
   /// Creates a new [TlsRouteRuleAction].
   /// [destinations] The destination to which traffic should be forwarded.
@@ -16,13 +16,13 @@ class TlsRouteRuleAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<TlsRouteRuleActionDestination, Map<String, dynamic>>(destinations!, (value) => value.toMap()),
+      'destinations': ?pulumi.Input.mapOptionalInputValue<List<TlsRouteRuleActionDestination>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<TlsRouteRuleActionDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TlsRouteRuleAction.fromMap(Map<String, dynamic> map) {
     return TlsRouteRuleAction(
-      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<TlsRouteRuleActionDestination>(map['destinations'], (value) => TlsRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>())),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<TlsRouteRuleActionDestination>(map['destinations'], (value) => TlsRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

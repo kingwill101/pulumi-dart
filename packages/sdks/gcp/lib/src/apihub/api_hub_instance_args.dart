@@ -39,19 +39,13 @@ class ApiHubInstanceArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
   ApiHubInstanceArgs({
-    pulumi.Output<String>? apiHubInstanceId,
-    required pulumi.Output<ApiHubInstanceConfig> config,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      apiHubInstanceId = pulumi.Input.asOptionalInput<String>(apiHubInstanceId),
-      config = pulumi.Input.asInput<ApiHubInstanceConfig>(config),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.apiHubInstanceId,
+    required this.config,
+    this.description,
+    this.labels,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class ApiHubInstanceArgs {
 
   factory ApiHubInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ApiHubInstanceArgs(
-      apiHubInstanceId: map['apiHubInstanceId'] == null ? null : pulumi.Output.create<String>(map['apiHubInstanceId'] as String),
-      config: pulumi.Output.create<ApiHubInstanceConfig>(ApiHubInstanceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      apiHubInstanceId: map['apiHubInstanceId'] == null ? null : (map['apiHubInstanceId'] as String).input(),
+      config: (ApiHubInstanceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

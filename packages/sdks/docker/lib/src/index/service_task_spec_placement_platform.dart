@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecPlacementPlatform {
   /// The architecture, e.g. `amd64`
-  final String architecture;
+  final pulumi.Input<String> architecture;
   /// The operation system, e.g. `linux`
-  final String os;
+  final pulumi.Input<String> os;
 
   /// Creates a new [ServiceTaskSpecPlacementPlatform].
   /// [architecture] The architecture, e.g. `amd64`
@@ -24,8 +25,8 @@ class ServiceTaskSpecPlacementPlatform {
 
   factory ServiceTaskSpecPlacementPlatform.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecPlacementPlatform(
-      architecture: map['architecture'] as String,
-      os: map['os'] as String,
+      architecture: (map['architecture'] as String).input(),
+      os: (map['os'] as String).input(),
     );
   }
 }

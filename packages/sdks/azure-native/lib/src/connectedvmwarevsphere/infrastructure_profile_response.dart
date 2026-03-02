@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the vCenter infrastructure specific settings for the virtual machine.
 class InfrastructureProfileResponse {
   /// Gets the name of the corresponding resource in Kubernetes.
-  final String customResourceName;
+  final pulumi.Input<String> customResourceName;
   /// Firmware type
-  final String? firmwareType;
+  final pulumi.Input<String>? firmwareType;
   /// Gets or sets the folder path of the vm.
-  final String folderPath;
+  final pulumi.Input<String> folderPath;
   /// Gets or sets the instance uuid of the vm.
-  final String instanceUuid;
+  final pulumi.Input<String> instanceUuid;
   /// Gets or sets the inventory Item ID for the virtual machine.
-  final String? inventoryItemId;
+  final pulumi.Input<String>? inventoryItemId;
   /// Gets or sets the vCenter Managed Object name for the virtual machine.
-  final String moName;
+  final pulumi.Input<String> moName;
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine.
-  final String moRefId;
+  final pulumi.Input<String> moRefId;
   /// Gets or sets the SMBIOS UUID of the vm.
-  final String? smbiosUuid;
+  final pulumi.Input<String>? smbiosUuid;
   /// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
-  final String? templateId;
+  final pulumi.Input<String>? templateId;
   /// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
-  final String? vCenterId;
+  final pulumi.Input<String>? vCenterId;
 
   /// Creates a new [InfrastructureProfileResponse].
   /// [customResourceName] Gets the name of the corresponding resource in Kubernetes.
@@ -65,16 +66,16 @@ class InfrastructureProfileResponse {
 
   factory InfrastructureProfileResponse.fromMap(Map<String, dynamic> map) {
     return InfrastructureProfileResponse(
-      customResourceName: map['customResourceName'] as String,
-      firmwareType: map['firmwareType'] == null ? null : map['firmwareType'] as String,
-      folderPath: map['folderPath'] as String,
-      instanceUuid: map['instanceUuid'] as String,
-      inventoryItemId: map['inventoryItemId'] == null ? null : map['inventoryItemId'] as String,
-      moName: map['moName'] as String,
-      moRefId: map['moRefId'] as String,
-      smbiosUuid: map['smbiosUuid'] == null ? null : map['smbiosUuid'] as String,
-      templateId: map['templateId'] == null ? null : map['templateId'] as String,
-      vCenterId: map['vCenterId'] == null ? null : map['vCenterId'] as String,
+      customResourceName: (map['customResourceName'] as String).input(),
+      firmwareType: map['firmwareType'] == null ? null : (map['firmwareType'] as String).input(),
+      folderPath: (map['folderPath'] as String).input(),
+      instanceUuid: (map['instanceUuid'] as String).input(),
+      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId'] as String).input(),
+      moName: (map['moName'] as String).input(),
+      moRefId: (map['moRefId'] as String).input(),
+      smbiosUuid: map['smbiosUuid'] == null ? null : (map['smbiosUuid'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      vCenterId: map['vCenterId'] == null ? null : (map['vCenterId'] as String).input(),
     );
   }
 }

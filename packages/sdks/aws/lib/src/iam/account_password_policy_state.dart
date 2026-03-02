@@ -37,27 +37,17 @@ class AccountPasswordPolicyState {
   /// [requireSymbols] Whether to require symbols for user passwords.
   /// [requireUppercaseCharacters] Whether to require uppercase characters for user passwords.
   AccountPasswordPolicyState({
-    pulumi.Output<bool>? allowUsersToChangePassword,
-    pulumi.Output<bool>? expirePasswords,
-    pulumi.Output<bool>? hardExpiry,
-    pulumi.Output<int>? maxPasswordAge,
-    pulumi.Output<int>? minimumPasswordLength,
-    pulumi.Output<int>? passwordReusePrevention,
-    pulumi.Output<bool>? requireLowercaseCharacters,
-    pulumi.Output<bool>? requireNumbers,
-    pulumi.Output<bool>? requireSymbols,
-    pulumi.Output<bool>? requireUppercaseCharacters,
-  }) :
-      allowUsersToChangePassword = pulumi.Input.asOptionalInput<bool>(allowUsersToChangePassword),
-      expirePasswords = pulumi.Input.asOptionalInput<bool>(expirePasswords),
-      hardExpiry = pulumi.Input.asOptionalInput<bool>(hardExpiry),
-      maxPasswordAge = pulumi.Input.asOptionalInput<int>(maxPasswordAge),
-      minimumPasswordLength = pulumi.Input.asOptionalInput<int>(minimumPasswordLength),
-      passwordReusePrevention = pulumi.Input.asOptionalInput<int>(passwordReusePrevention),
-      requireLowercaseCharacters = pulumi.Input.asOptionalInput<bool>(requireLowercaseCharacters),
-      requireNumbers = pulumi.Input.asOptionalInput<bool>(requireNumbers),
-      requireSymbols = pulumi.Input.asOptionalInput<bool>(requireSymbols),
-      requireUppercaseCharacters = pulumi.Input.asOptionalInput<bool>(requireUppercaseCharacters);
+    this.allowUsersToChangePassword,
+    this.expirePasswords,
+    this.hardExpiry,
+    this.maxPasswordAge,
+    this.minimumPasswordLength,
+    this.passwordReusePrevention,
+    this.requireLowercaseCharacters,
+    this.requireNumbers,
+    this.requireSymbols,
+    this.requireUppercaseCharacters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class AccountPasswordPolicyState {
 
   factory AccountPasswordPolicyState.fromMap(Map<String, dynamic> map) {
     return AccountPasswordPolicyState(
-      allowUsersToChangePassword: map['allowUsersToChangePassword'] == null ? null : pulumi.Output.create<bool>(map['allowUsersToChangePassword'] as bool),
-      expirePasswords: map['expirePasswords'] == null ? null : pulumi.Output.create<bool>(map['expirePasswords'] as bool),
-      hardExpiry: map['hardExpiry'] == null ? null : pulumi.Output.create<bool>(map['hardExpiry'] as bool),
-      maxPasswordAge: map['maxPasswordAge'] == null ? null : pulumi.Output.create<int>(map['maxPasswordAge'] as int),
-      minimumPasswordLength: map['minimumPasswordLength'] == null ? null : pulumi.Output.create<int>(map['minimumPasswordLength'] as int),
-      passwordReusePrevention: map['passwordReusePrevention'] == null ? null : pulumi.Output.create<int>(map['passwordReusePrevention'] as int),
-      requireLowercaseCharacters: map['requireLowercaseCharacters'] == null ? null : pulumi.Output.create<bool>(map['requireLowercaseCharacters'] as bool),
-      requireNumbers: map['requireNumbers'] == null ? null : pulumi.Output.create<bool>(map['requireNumbers'] as bool),
-      requireSymbols: map['requireSymbols'] == null ? null : pulumi.Output.create<bool>(map['requireSymbols'] as bool),
-      requireUppercaseCharacters: map['requireUppercaseCharacters'] == null ? null : pulumi.Output.create<bool>(map['requireUppercaseCharacters'] as bool),
+      allowUsersToChangePassword: map['allowUsersToChangePassword'] == null ? null : (map['allowUsersToChangePassword'] as bool).input(),
+      expirePasswords: map['expirePasswords'] == null ? null : (map['expirePasswords'] as bool).input(),
+      hardExpiry: map['hardExpiry'] == null ? null : (map['hardExpiry'] as bool).input(),
+      maxPasswordAge: map['maxPasswordAge'] == null ? null : (map['maxPasswordAge'] as int).input(),
+      minimumPasswordLength: map['minimumPasswordLength'] == null ? null : (map['minimumPasswordLength'] as int).input(),
+      passwordReusePrevention: map['passwordReusePrevention'] == null ? null : (map['passwordReusePrevention'] as int).input(),
+      requireLowercaseCharacters: map['requireLowercaseCharacters'] == null ? null : (map['requireLowercaseCharacters'] as bool).input(),
+      requireNumbers: map['requireNumbers'] == null ? null : (map['requireNumbers'] as bool).input(),
+      requireSymbols: map['requireSymbols'] == null ? null : (map['requireSymbols'] as bool).input(),
+      requireUppercaseCharacters: map['requireUppercaseCharacters'] == null ? null : (map['requireUppercaseCharacters'] as bool).input(),
     );
   }
 }

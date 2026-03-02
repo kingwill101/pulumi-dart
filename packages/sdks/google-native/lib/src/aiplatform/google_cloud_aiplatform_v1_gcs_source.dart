@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Google Cloud Storage location for the input content.
 class GoogleCloudAiplatformV1GcsSource {
   /// Google Cloud Storage URI(-s) to the input file(s). May contain wildcards. For more information on wildcards, see https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames.
-  final List<String> uris;
+  final pulumi.Input<List<String>> uris;
 
   /// Creates a new [GoogleCloudAiplatformV1GcsSource].
   /// [uris] Google Cloud Storage URI(-s) to the input file(s). May contain wildcards. For more information on wildcards, see https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames.
@@ -20,7 +21,7 @@ class GoogleCloudAiplatformV1GcsSource {
 
   factory GoogleCloudAiplatformV1GcsSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1GcsSource(
-      uris: (map['uris'] as List).cast<String>(),
+      uris: ((map['uris'] as List).cast<String>()).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class SchedulingPolicyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   SchedulingPolicyArgs({
-    pulumi.Output<SchedulingPolicyFairSharePolicy>? fairSharePolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      fairSharePolicy = pulumi.Input.asOptionalInput<SchedulingPolicyFairSharePolicy>(fairSharePolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.fairSharePolicy,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SchedulingPolicyArgs {
 
   factory SchedulingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SchedulingPolicyArgs(
-      fairSharePolicy: map['fairSharePolicy'] == null ? null : pulumi.Output.create<SchedulingPolicyFairSharePolicy>(SchedulingPolicyFairSharePolicy.fromMap((map['fairSharePolicy'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      fairSharePolicy: map['fairSharePolicy'] == null ? null : (SchedulingPolicyFairSharePolicy.fromMap((map['fairSharePolicy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

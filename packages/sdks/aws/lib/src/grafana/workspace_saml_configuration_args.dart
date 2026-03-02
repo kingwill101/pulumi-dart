@@ -54,35 +54,21 @@ class WorkspaceSamlConfigurationArgs {
   /// [roleAssertion] The role assertion.
   /// [workspaceId] The workspace id.
   WorkspaceSamlConfigurationArgs({
-    pulumi.Output<List<String>>? adminRoleValues,
-    pulumi.Output<List<String>>? allowedOrganizations,
-    required pulumi.Output<List<String>> editorRoleValues,
-    pulumi.Output<String>? emailAssertion,
-    pulumi.Output<String>? groupsAssertion,
-    pulumi.Output<String>? idpMetadataUrl,
-    pulumi.Output<String>? idpMetadataXml,
-    pulumi.Output<String>? loginAssertion,
-    pulumi.Output<int>? loginValidityDuration,
-    pulumi.Output<String>? nameAssertion,
-    pulumi.Output<String>? orgAssertion,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleAssertion,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      adminRoleValues = pulumi.Input.asOptionalInput<List<String>>(adminRoleValues),
-      allowedOrganizations = pulumi.Input.asOptionalInput<List<String>>(allowedOrganizations),
-      editorRoleValues = pulumi.Input.asInput<List<String>>(editorRoleValues),
-      emailAssertion = pulumi.Input.asOptionalInput<String>(emailAssertion),
-      groupsAssertion = pulumi.Input.asOptionalInput<String>(groupsAssertion),
-      idpMetadataUrl = pulumi.Input.asOptionalInput<String>(idpMetadataUrl),
-      idpMetadataXml = pulumi.Input.asOptionalInput<String>(idpMetadataXml),
-      loginAssertion = pulumi.Input.asOptionalInput<String>(loginAssertion),
-      loginValidityDuration = pulumi.Input.asOptionalInput<int>(loginValidityDuration),
-      nameAssertion = pulumi.Input.asOptionalInput<String>(nameAssertion),
-      orgAssertion = pulumi.Input.asOptionalInput<String>(orgAssertion),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleAssertion = pulumi.Input.asOptionalInput<String>(roleAssertion),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.adminRoleValues,
+    this.allowedOrganizations,
+    required this.editorRoleValues,
+    this.emailAssertion,
+    this.groupsAssertion,
+    this.idpMetadataUrl,
+    this.idpMetadataXml,
+    this.loginAssertion,
+    this.loginValidityDuration,
+    this.nameAssertion,
+    this.orgAssertion,
+    this.region,
+    this.roleAssertion,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class WorkspaceSamlConfigurationArgs {
 
   factory WorkspaceSamlConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceSamlConfigurationArgs(
-      adminRoleValues: map['adminRoleValues'] == null ? null : pulumi.Output.create<List<String>>((map['adminRoleValues'] as List).cast<String>()),
-      allowedOrganizations: map['allowedOrganizations'] == null ? null : pulumi.Output.create<List<String>>((map['allowedOrganizations'] as List).cast<String>()),
-      editorRoleValues: pulumi.Output.create<List<String>>((map['editorRoleValues'] as List).cast<String>()),
-      emailAssertion: map['emailAssertion'] == null ? null : pulumi.Output.create<String>(map['emailAssertion'] as String),
-      groupsAssertion: map['groupsAssertion'] == null ? null : pulumi.Output.create<String>(map['groupsAssertion'] as String),
-      idpMetadataUrl: map['idpMetadataUrl'] == null ? null : pulumi.Output.create<String>(map['idpMetadataUrl'] as String),
-      idpMetadataXml: map['idpMetadataXml'] == null ? null : pulumi.Output.create<String>(map['idpMetadataXml'] as String),
-      loginAssertion: map['loginAssertion'] == null ? null : pulumi.Output.create<String>(map['loginAssertion'] as String),
-      loginValidityDuration: map['loginValidityDuration'] == null ? null : pulumi.Output.create<int>(map['loginValidityDuration'] as int),
-      nameAssertion: map['nameAssertion'] == null ? null : pulumi.Output.create<String>(map['nameAssertion'] as String),
-      orgAssertion: map['orgAssertion'] == null ? null : pulumi.Output.create<String>(map['orgAssertion'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleAssertion: map['roleAssertion'] == null ? null : pulumi.Output.create<String>(map['roleAssertion'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      adminRoleValues: map['adminRoleValues'] == null ? null : ((map['adminRoleValues'] as List).cast<String>()).input(),
+      allowedOrganizations: map['allowedOrganizations'] == null ? null : ((map['allowedOrganizations'] as List).cast<String>()).input(),
+      editorRoleValues: ((map['editorRoleValues'] as List).cast<String>()).input(),
+      emailAssertion: map['emailAssertion'] == null ? null : (map['emailAssertion'] as String).input(),
+      groupsAssertion: map['groupsAssertion'] == null ? null : (map['groupsAssertion'] as String).input(),
+      idpMetadataUrl: map['idpMetadataUrl'] == null ? null : (map['idpMetadataUrl'] as String).input(),
+      idpMetadataXml: map['idpMetadataXml'] == null ? null : (map['idpMetadataXml'] as String).input(),
+      loginAssertion: map['loginAssertion'] == null ? null : (map['loginAssertion'] as String).input(),
+      loginValidityDuration: map['loginValidityDuration'] == null ? null : (map['loginValidityDuration'] as int).input(),
+      nameAssertion: map['nameAssertion'] == null ? null : (map['nameAssertion'] as String).input(),
+      orgAssertion: map['orgAssertion'] == null ? null : (map['orgAssertion'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleAssertion: map['roleAssertion'] == null ? null : (map['roleAssertion'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

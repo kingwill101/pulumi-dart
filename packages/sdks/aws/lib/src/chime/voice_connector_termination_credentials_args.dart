@@ -20,13 +20,10 @@ class VoiceConnectorTerminationCredentialsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [voiceConnectorId] Amazon Chime Voice Connector ID.
   VoiceConnectorTerminationCredentialsArgs({
-    required pulumi.Output<List<VoiceConnectorTerminationCredentialsCredential>> credentials,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> voiceConnectorId,
-  }) :
-      credentials = pulumi.Input.asInput<List<VoiceConnectorTerminationCredentialsCredential>>(credentials),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      voiceConnectorId = pulumi.Input.asInput<String>(voiceConnectorId);
+    required this.credentials,
+    this.region,
+    required this.voiceConnectorId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class VoiceConnectorTerminationCredentialsArgs {
 
   factory VoiceConnectorTerminationCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorTerminationCredentialsArgs(
-      credentials: pulumi.Output.create<List<VoiceConnectorTerminationCredentialsCredential>>(pulumi.Input.decodeList<VoiceConnectorTerminationCredentialsCredential>(map['credentials'], (value) => VoiceConnectorTerminationCredentialsCredential.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      voiceConnectorId: pulumi.Output.create<String>(map['voiceConnectorId'] as String),
+      credentials: (pulumi.Input.decodeList<VoiceConnectorTerminationCredentialsCredential>(map['credentials'], (value) => VoiceConnectorTerminationCredentialsCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      voiceConnectorId: (map['voiceConnectorId'] as String).input(),
     );
   }
 }

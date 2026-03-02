@@ -5,29 +5,29 @@ import 'domain_devices_graphic_vnc_listener.dart';
 
 class DomainDevicesGraphicVnc {
   /// Enables automatic port selection for the VNC server, allowing flexibility for connections.
-  final bool? autoPort;
+  final pulumi.Input<bool>? autoPort;
   /// Indicates whether the VNC graphical interface is currently connected to the client.
-  final String? connected;
+  final pulumi.Input<String>? connected;
   /// Specifies the keymap for the keyboard input within the VNC session.
-  final String? keymap;
+  final pulumi.Input<String>? keymap;
   /// Configures the listening options for the VNC server to accept connections.
-  final String? listen;
+  final pulumi.Input<String>? listen;
   /// Defines listener settings for the VNC protocol, managing incoming connection handling.
-  final List<DomainDevicesGraphicVncListener>? listeners;
+  final pulumi.Input<List<DomainDevicesGraphicVncListener>>? listeners;
   /// Configures the password required to access the VNC server of the virtual machine.
-  final String? passwd;
+  final pulumi.Input<String>? passwd;
   /// Sets the expiration timestamp for the VNC password, after which the password will no longer be valid.
-  final String? passwdValidTo;
+  final pulumi.Input<String>? passwdValidTo;
   /// Indicates the port on which the VNC server listens for incoming connections.
-  final double? port;
+  final pulumi.Input<double>? port;
   /// Controls the power management behavior for the VNC session, allowing it to manage guest power states.
-  final String? powerControl;
+  final pulumi.Input<String>? powerControl;
   /// Sets the share policy for the VNC server, determining how multiple connections are handled.
-  final String? sharePolicy;
+  final pulumi.Input<String>? sharePolicy;
   /// Configures the path of the Unix socket for VNC connections, allowing for secured access.
-  final String? socket;
+  final pulumi.Input<String>? socket;
   /// Enables websocket connections to the VNC server, allowing for browser-based access.
-  final double? webSocket;
+  final pulumi.Input<double>? webSocket;
 
   /// Creates a new [DomainDevicesGraphicVnc].
   /// [autoPort] Enables automatic port selection for the VNC server, allowing flexibility for connections.
@@ -63,7 +63,7 @@ class DomainDevicesGraphicVnc {
       'connected': ?connected,
       'keymap': ?keymap,
       'listen': ?listen,
-      'listeners': ?listeners == null ? null : pulumi.Input.encodeList<DomainDevicesGraphicVncListener, Map<String, dynamic>>(listeners!, (value) => value.toMap()),
+      'listeners': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesGraphicVncListener>, List<Map<String, dynamic>>>(listeners, (value) => pulumi.Input.encodeList<DomainDevicesGraphicVncListener, Map<String, dynamic>>(value, (value) => value.toMap())),
       'passwd': ?passwd,
       'passwdValidTo': ?passwdValidTo,
       'port': ?port,
@@ -76,18 +76,18 @@ class DomainDevicesGraphicVnc {
 
   factory DomainDevicesGraphicVnc.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicVnc(
-      autoPort: map['autoPort'] == null ? null : map['autoPort'] as bool,
-      connected: map['connected'] == null ? null : map['connected'] as String,
-      keymap: map['keymap'] == null ? null : map['keymap'] as String,
-      listen: map['listen'] == null ? null : map['listen'] as String,
-      listeners: map['listeners'] == null ? null : pulumi.Input.decodeList<DomainDevicesGraphicVncListener>(map['listeners'], (value) => DomainDevicesGraphicVncListener.fromMap((value as Map).cast<String, dynamic>())),
-      passwd: map['passwd'] == null ? null : map['passwd'] as String,
-      passwdValidTo: map['passwdValidTo'] == null ? null : map['passwdValidTo'] as String,
-      port: map['port'] == null ? null : map['port'] as double,
-      powerControl: map['powerControl'] == null ? null : map['powerControl'] as String,
-      sharePolicy: map['sharePolicy'] == null ? null : map['sharePolicy'] as String,
-      socket: map['socket'] == null ? null : map['socket'] as String,
-      webSocket: map['webSocket'] == null ? null : map['webSocket'] as double,
+      autoPort: map['autoPort'] == null ? null : (map['autoPort'] as bool).input(),
+      connected: map['connected'] == null ? null : (map['connected'] as String).input(),
+      keymap: map['keymap'] == null ? null : (map['keymap'] as String).input(),
+      listen: map['listen'] == null ? null : (map['listen'] as String).input(),
+      listeners: map['listeners'] == null ? null : (pulumi.Input.decodeList<DomainDevicesGraphicVncListener>(map['listeners'], (value) => DomainDevicesGraphicVncListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      passwd: map['passwd'] == null ? null : (map['passwd'] as String).input(),
+      passwdValidTo: map['passwdValidTo'] == null ? null : (map['passwdValidTo'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as double).input(),
+      powerControl: map['powerControl'] == null ? null : (map['powerControl'] as String).input(),
+      sharePolicy: map['sharePolicy'] == null ? null : (map['sharePolicy'] as String).input(),
+      socket: map['socket'] == null ? null : (map['socket'] as String).input(),
+      webSocket: map['webSocket'] == null ? null : (map['webSocket'] as double).input(),
     );
   }
 }

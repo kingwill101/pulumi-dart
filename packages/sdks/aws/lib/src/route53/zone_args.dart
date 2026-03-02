@@ -32,21 +32,14 @@ class ZoneArgs {
   /// [tags] A mapping of tags to assign to the zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcs] Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegation_set_id` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
   ZoneArgs({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? delegationSetId,
-    pulumi.Output<bool>? enableAcceleratedRecovery,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<ZoneVpc>>? vpcs,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      delegationSetId = pulumi.Input.asOptionalInput<String>(delegationSetId),
-      enableAcceleratedRecovery = pulumi.Input.asOptionalInput<bool>(enableAcceleratedRecovery),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcs = pulumi.Input.asOptionalInput<List<ZoneVpc>>(vpcs);
+    this.comment,
+    this.delegationSetId,
+    this.enableAcceleratedRecovery,
+    this.forceDestroy,
+    this.name,
+    this.tags,
+    this.vpcs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ZoneArgs {
 
   factory ZoneArgs.fromMap(Map<String, dynamic> map) {
     return ZoneArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      delegationSetId: map['delegationSetId'] == null ? null : pulumi.Output.create<String>(map['delegationSetId'] as String),
-      enableAcceleratedRecovery: map['enableAcceleratedRecovery'] == null ? null : pulumi.Output.create<bool>(map['enableAcceleratedRecovery'] as bool),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcs: map['vpcs'] == null ? null : pulumi.Output.create<List<ZoneVpc>>(pulumi.Input.decodeList<ZoneVpc>(map['vpcs'], (value) => ZoneVpc.fromMap((value as Map).cast<String, dynamic>()))),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      delegationSetId: map['delegationSetId'] == null ? null : (map['delegationSetId'] as String).input(),
+      enableAcceleratedRecovery: map['enableAcceleratedRecovery'] == null ? null : (map['enableAcceleratedRecovery'] as bool).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<ZoneVpc>(map['vpcs'], (value) => ZoneVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

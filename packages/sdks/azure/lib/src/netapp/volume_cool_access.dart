@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeCoolAccess {
   /// The coolness period in days for the volume. Possible vales are between `2` and `183`.
-  final int coolnessPeriodInDays;
+  final pulumi.Input<int> coolnessPeriodInDays;
   /// The cool access retrieval policy for the volume. Possible values are `Default`, `Never` and `OnRead`.
-  final String retrievalPolicy;
+  final pulumi.Input<String> retrievalPolicy;
   /// The cool access tiering policy for the volume. Possible values are `Auto` and `SnapshotOnly`.
-  final String tieringPolicy;
+  final pulumi.Input<String> tieringPolicy;
 
   /// Creates a new [VolumeCoolAccess].
   /// [coolnessPeriodInDays] The coolness period in days for the volume. Possible vales are between `2` and `183`.
@@ -29,9 +30,9 @@ class VolumeCoolAccess {
 
   factory VolumeCoolAccess.fromMap(Map<String, dynamic> map) {
     return VolumeCoolAccess(
-      coolnessPeriodInDays: map['coolnessPeriodInDays'] as int,
-      retrievalPolicy: map['retrievalPolicy'] as String,
-      tieringPolicy: map['tieringPolicy'] as String,
+      coolnessPeriodInDays: (map['coolnessPeriodInDays'] as int).input(),
+      retrievalPolicy: (map['retrievalPolicy'] as String).input(),
+      tieringPolicy: (map['tieringPolicy'] as String).input(),
     );
   }
 }

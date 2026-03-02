@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Copy log details for a storage account of a DataBox job
 class DataBoxAccountCopyLogDetailsResponse {
   /// Account name.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// Indicates the type of job details.
   /// Expected value is 'DataBox'.
-  final String copyLogDetailsType;
+  final pulumi.Input<String> copyLogDetailsType;
   /// Link for copy logs.
-  final String copyLogLink;
+  final pulumi.Input<String> copyLogLink;
   /// Link for copy verbose logs. This will be set only when LogCollectionLevel is set to Verbose.
-  final String copyVerboseLogLink;
+  final pulumi.Input<String> copyVerboseLogLink;
 
   /// Creates a new [DataBoxAccountCopyLogDetailsResponse].
   /// [accountName] Account name.
@@ -36,10 +37,10 @@ class DataBoxAccountCopyLogDetailsResponse {
 
   factory DataBoxAccountCopyLogDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DataBoxAccountCopyLogDetailsResponse(
-      accountName: map['accountName'] as String,
-      copyLogDetailsType: map['copyLogDetailsType'] as String,
-      copyLogLink: map['copyLogLink'] as String,
-      copyVerboseLogLink: map['copyVerboseLogLink'] as String,
+      accountName: (map['accountName'] as String).input(),
+      copyLogDetailsType: (map['copyLogDetailsType'] as String).input(),
+      copyLogLink: (map['copyLogLink'] as String).input(),
+      copyVerboseLogLink: (map['copyVerboseLogLink'] as String).input(),
     );
   }
 }

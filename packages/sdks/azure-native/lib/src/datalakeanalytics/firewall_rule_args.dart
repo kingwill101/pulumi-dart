@@ -25,17 +25,12 @@ class FirewallRuleArgs {
   /// [resourceGroupName] The name of the Azure resource group.
   /// [startIpAddress] The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
   FirewallRuleArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> endIpAddress,
-    pulumi.Output<String>? firewallRuleName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> startIpAddress,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      endIpAddress = pulumi.Input.asInput<String>(endIpAddress),
-      firewallRuleName = pulumi.Input.asOptionalInput<String>(firewallRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      startIpAddress = pulumi.Input.asInput<String>(startIpAddress);
+    required this.accountName,
+    required this.endIpAddress,
+    this.firewallRuleName,
+    required this.resourceGroupName,
+    required this.startIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      endIpAddress: pulumi.Output.create<String>(map['endIpAddress'] as String),
-      firewallRuleName: map['firewallRuleName'] == null ? null : pulumi.Output.create<String>(map['firewallRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startIpAddress: pulumi.Output.create<String>(map['startIpAddress'] as String),
+      accountName: (map['accountName'] as String).input(),
+      endIpAddress: (map['endIpAddress'] as String).input(),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      startIpAddress: (map['startIpAddress'] as String).input(),
     );
   }
 }

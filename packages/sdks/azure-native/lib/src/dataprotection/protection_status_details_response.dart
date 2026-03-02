@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_facing_error_response.dart';
 
 /// Protection status details
 class ProtectionStatusDetailsResponse {
   /// Specifies the protection status error of the resource
-  final UserFacingErrorResponse? errorDetails;
+  final pulumi.Input<UserFacingErrorResponse>? errorDetails;
   /// Specifies the protection status of the resource
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [ProtectionStatusDetailsResponse].
   /// [errorDetails] Specifies the protection status error of the resource
@@ -19,15 +20,15 @@ class ProtectionStatusDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorDetails': ?errorDetails == null ? null : errorDetails!.toMap(),
+      'errorDetails': ?pulumi.Input.mapOptionalInputValue<UserFacingErrorResponse, Map<String, dynamic>>(errorDetails, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory ProtectionStatusDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ProtectionStatusDetailsResponse(
-      errorDetails: map['errorDetails'] == null ? null : UserFacingErrorResponse.fromMap((map['errorDetails'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
+      errorDetails: map['errorDetails'] == null ? null : (UserFacingErrorResponse.fromMap((map['errorDetails'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

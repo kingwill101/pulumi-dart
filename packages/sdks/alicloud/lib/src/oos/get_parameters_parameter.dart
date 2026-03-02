@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetParametersParameter {
   /// The constraints of the common parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
-  final String constraints;
+  final pulumi.Input<String> constraints;
   /// The time when the common parameter was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The user who created the common parameter.
-  final String createdBy;
+  final pulumi.Input<String> createdBy;
   /// The description of the common parameter.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Parameter. Its value is same as `parameter_name`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the common parameter.
-  final String parameterId;
+  final pulumi.Input<String> parameterId;
   /// The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
-  final String parameterName;
+  final pulumi.Input<String> parameterName;
   /// The version number of the common parameter.
-  final int parameterVersion;
+  final pulumi.Input<int> parameterVersion;
   /// The ID of the Resource Group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The share type of the common parameter.
-  final String shareType;
+  final pulumi.Input<String> shareType;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The data type of the common parameter. Valid values: `String`, `StringList`.
-  final String type;
+  final pulumi.Input<String> type;
   /// The user who updated the common parameter.
-  final String updatedBy;
+  final pulumi.Input<String> updatedBy;
   /// The time when the common parameter was updated.
-  final String updatedDate;
+  final pulumi.Input<String> updatedDate;
   /// (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enable_details` is set to `true`.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetParametersParameter].
   /// [constraints] The constraints of the common parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
@@ -89,21 +90,21 @@ class GetParametersParameter {
 
   factory GetParametersParameter.fromMap(Map<String, dynamic> map) {
     return GetParametersParameter(
-      constraints: map['constraints'] as String,
-      createTime: map['createTime'] as String,
-      createdBy: map['createdBy'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      parameterId: map['parameterId'] as String,
-      parameterName: map['parameterName'] as String,
-      parameterVersion: map['parameterVersion'] as int,
-      resourceGroupId: map['resourceGroupId'] as String,
-      shareType: map['shareType'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      updatedBy: map['updatedBy'] as String,
-      updatedDate: map['updatedDate'] as String,
-      value: map['value'] as String,
+      constraints: (map['constraints'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      createdBy: (map['createdBy'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      parameterId: (map['parameterId'] as String).input(),
+      parameterName: (map['parameterName'] as String).input(),
+      parameterVersion: (map['parameterVersion'] as int).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      shareType: (map['shareType'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      updatedBy: (map['updatedBy'] as String).input(),
+      updatedDate: (map['updatedDate'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

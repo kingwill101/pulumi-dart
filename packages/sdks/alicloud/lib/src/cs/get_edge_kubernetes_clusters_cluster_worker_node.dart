@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEdgeKubernetesClustersClusterWorkerNode {
   /// ID of the node.
-  final String id;
+  final pulumi.Input<String> id;
   /// Node name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The private IP address of node.
-  final String privateIp;
+  final pulumi.Input<String> privateIp;
 
   /// Creates a new [GetEdgeKubernetesClustersClusterWorkerNode].
   /// [id] ID of the node.
@@ -29,9 +30,9 @@ class GetEdgeKubernetesClustersClusterWorkerNode {
 
   factory GetEdgeKubernetesClustersClusterWorkerNode.fromMap(Map<String, dynamic> map) {
     return GetEdgeKubernetesClustersClusterWorkerNode(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      privateIp: map['privateIp'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      privateIp: (map['privateIp'] as String).input(),
     );
   }
 }

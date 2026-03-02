@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DbClusterParamChangeLog {
   /// The id of parameter change.
-  final int? configId;
+  final pulumi.Input<int>? configId;
   /// When the parameter change is created.
-  final String? gmtCreated;
+  final pulumi.Input<String>? gmtCreated;
   /// When the parameter change is modified.
-  final String? gmtModified;
+  final pulumi.Input<String>? gmtModified;
   /// Whether the parameter changing is applied.
-  final bool? isApplied;
+  final pulumi.Input<bool>? isApplied;
   /// Changed parameter name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The new value of parameter.
-  final String? newValue;
+  final pulumi.Input<String>? newValue;
   /// The old value of parameter.
-  final String? oldValue;
+  final pulumi.Input<String>? oldValue;
 
   /// Creates a new [DbClusterParamChangeLog].
   /// [configId] The id of parameter change.
@@ -49,13 +50,13 @@ class DbClusterParamChangeLog {
 
   factory DbClusterParamChangeLog.fromMap(Map<String, dynamic> map) {
     return DbClusterParamChangeLog(
-      configId: map['configId'] == null ? null : map['configId'] as int,
-      gmtCreated: map['gmtCreated'] == null ? null : map['gmtCreated'] as String,
-      gmtModified: map['gmtModified'] == null ? null : map['gmtModified'] as String,
-      isApplied: map['isApplied'] == null ? null : map['isApplied'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      newValue: map['newValue'] == null ? null : map['newValue'] as String,
-      oldValue: map['oldValue'] == null ? null : map['oldValue'] as String,
+      configId: map['configId'] == null ? null : (map['configId'] as int).input(),
+      gmtCreated: map['gmtCreated'] == null ? null : (map['gmtCreated'] as String).input(),
+      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified'] as String).input(),
+      isApplied: map['isApplied'] == null ? null : (map['isApplied'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      newValue: map['newValue'] == null ? null : (map['newValue'] as String).input(),
+      oldValue: map['oldValue'] == null ? null : (map['oldValue'] as String).input(),
     );
   }
 }

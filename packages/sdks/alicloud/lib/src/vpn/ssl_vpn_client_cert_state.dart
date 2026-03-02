@@ -28,21 +28,14 @@ class SslVpnClientCertState {
   /// [sslVpnServerId] The ID of the SSL-VPN server.
   /// [status] The status of the client certificate.
   SslVpnClientCertState({
-    pulumi.Output<String>? caCert,
-    pulumi.Output<String>? clientCert,
-    pulumi.Output<String>? clientConfig,
-    pulumi.Output<String>? clientKey,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? sslVpnServerId,
-    pulumi.Output<String>? status,
-  }) :
-      caCert = pulumi.Input.asOptionalInput<String>(caCert),
-      clientCert = pulumi.Input.asOptionalInput<String>(clientCert),
-      clientConfig = pulumi.Input.asOptionalInput<String>(clientConfig),
-      clientKey = pulumi.Input.asOptionalInput<String>(clientKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sslVpnServerId = pulumi.Input.asOptionalInput<String>(sslVpnServerId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.caCert,
+    this.clientCert,
+    this.clientConfig,
+    this.clientKey,
+    this.name,
+    this.sslVpnServerId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class SslVpnClientCertState {
 
   factory SslVpnClientCertState.fromMap(Map<String, dynamic> map) {
     return SslVpnClientCertState(
-      caCert: map['caCert'] == null ? null : pulumi.Output.create<String>(map['caCert'] as String),
-      clientCert: map['clientCert'] == null ? null : pulumi.Output.create<String>(map['clientCert'] as String),
-      clientConfig: map['clientConfig'] == null ? null : pulumi.Output.create<String>(map['clientConfig'] as String),
-      clientKey: map['clientKey'] == null ? null : pulumi.Output.create<String>(map['clientKey'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sslVpnServerId: map['sslVpnServerId'] == null ? null : pulumi.Output.create<String>(map['sslVpnServerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      caCert: map['caCert'] == null ? null : (map['caCert'] as String).input(),
+      clientCert: map['clientCert'] == null ? null : (map['clientCert'] as String).input(),
+      clientConfig: map['clientConfig'] == null ? null : (map['clientConfig'] as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sslVpnServerId: map['sslVpnServerId'] == null ? null : (map['sslVpnServerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

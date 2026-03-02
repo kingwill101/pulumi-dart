@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationMfaEmail {
   /// The email HTML body.
-  final String htmlBody;
+  final pulumi.Input<String> htmlBody;
   /// The email subject.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// The email text body.
-  final String textBody;
+  final pulumi.Input<String> textBody;
 
   /// Creates a new [RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationMfaEmail].
   /// [htmlBody] The email HTML body.
@@ -29,9 +30,9 @@ class RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationMfaEma
 
   factory RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationMfaEmail.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationMfaEmail(
-      htmlBody: map['htmlBody'] as String,
-      subject: map['subject'] as String,
-      textBody: map['textBody'] as String,
+      htmlBody: (map['htmlBody'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      textBody: (map['textBody'] as String).input(),
     );
   }
 }

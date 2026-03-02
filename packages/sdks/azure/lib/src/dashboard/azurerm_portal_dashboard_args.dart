@@ -22,15 +22,11 @@ class AzurermPortalDashboardArgs {
   /// [name] Specifies the name of the shared Azure Portal Dashboard.
   /// [resourceGroupName] Specifies the name of the resource group the shared Azure Portal Dashboard is located in.
   AzurermPortalDashboardArgs({
-    pulumi.Output<String>? dashboardProperties,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dashboardProperties = pulumi.Input.asOptionalInput<String>(dashboardProperties),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.dashboardProperties,
+    this.displayName,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AzurermPortalDashboardArgs {
 
   factory AzurermPortalDashboardArgs.fromMap(Map<String, dynamic> map) {
     return AzurermPortalDashboardArgs(
-      dashboardProperties: map['dashboardProperties'] == null ? null : pulumi.Output.create<String>(map['dashboardProperties'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dashboardProperties: map['dashboardProperties'] == null ? null : (map['dashboardProperties'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

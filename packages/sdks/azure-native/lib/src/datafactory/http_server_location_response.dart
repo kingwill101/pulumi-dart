@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The location of http server.
 class HttpServerLocationResponse {
   /// Specify the file name of dataset. Type: string (or Expression with resultType string).
-  final dynamic fileName;
+  final pulumi.Input<dynamic>? fileName;
   /// Specify the folder path of dataset. Type: string (or Expression with resultType string)
-  final dynamic folderPath;
+  final pulumi.Input<dynamic>? folderPath;
   /// Specify the relativeUrl of http server. Type: string (or Expression with resultType string)
-  final dynamic relativeUrl;
+  final pulumi.Input<dynamic>? relativeUrl;
   /// Type of dataset storage location.
   /// Expected value is 'HttpServerLocation'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [HttpServerLocationResponse].
   /// [fileName] Specify the file name of dataset. Type: string (or Expression with resultType string).
@@ -36,10 +37,10 @@ class HttpServerLocationResponse {
 
   factory HttpServerLocationResponse.fromMap(Map<String, dynamic> map) {
     return HttpServerLocationResponse(
-      fileName: map['fileName'] == null ? null : map['fileName'],
-      folderPath: map['folderPath'] == null ? null : map['folderPath'],
-      relativeUrl: map['relativeUrl'] == null ? null : map['relativeUrl'],
-      type: map['type'] as String,
+      fileName: map['fileName'] == null ? null : (map['fileName']).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
+      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

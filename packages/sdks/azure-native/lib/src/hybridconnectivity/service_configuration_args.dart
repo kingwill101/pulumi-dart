@@ -28,19 +28,13 @@ class ServiceConfigurationArgs {
   /// [serviceConfigurationName] The service name.
   /// [serviceName] Name of the service.
   ServiceConfigurationArgs({
-    required pulumi.Output<String> endpointName,
-    pulumi.Output<double>? port,
-    pulumi.Output<String>? resourceId,
-    required pulumi.Output<String> resourceUri,
-    pulumi.Output<String>? serviceConfigurationName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      port = pulumi.Input.asOptionalInput<double>(port),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      serviceConfigurationName = pulumi.Input.asOptionalInput<String>(serviceConfigurationName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.endpointName,
+    this.port,
+    this.resourceId,
+    required this.resourceUri,
+    this.serviceConfigurationName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ServiceConfigurationArgs {
 
   factory ServiceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConfigurationArgs(
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<double>(map['port'] as double),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      serviceConfigurationName: map['serviceConfigurationName'] == null ? null : pulumi.Output.create<String>(map['serviceConfigurationName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      endpointName: (map['endpointName'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as double).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
+      serviceConfigurationName: map['serviceConfigurationName'] == null ? null : (map['serviceConfigurationName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

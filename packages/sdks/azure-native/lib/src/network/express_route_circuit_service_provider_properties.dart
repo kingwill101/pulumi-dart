@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains ServiceProviderProperties in an ExpressRouteCircuit.
 class ExpressRouteCircuitServiceProviderProperties {
   /// The BandwidthInMbps.
-  final int? bandwidthInMbps;
+  final pulumi.Input<int>? bandwidthInMbps;
   /// The peering location.
-  final String? peeringLocation;
+  final pulumi.Input<String>? peeringLocation;
   /// The serviceProviderName.
-  final String? serviceProviderName;
+  final pulumi.Input<String>? serviceProviderName;
 
   /// Creates a new [ExpressRouteCircuitServiceProviderProperties].
   /// [bandwidthInMbps] The BandwidthInMbps.
@@ -30,9 +31,9 @@ class ExpressRouteCircuitServiceProviderProperties {
 
   factory ExpressRouteCircuitServiceProviderProperties.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitServiceProviderProperties(
-      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : map['bandwidthInMbps'] as int,
-      peeringLocation: map['peeringLocation'] == null ? null : map['peeringLocation'] as String,
-      serviceProviderName: map['serviceProviderName'] == null ? null : map['serviceProviderName'] as String,
+      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : (map['bandwidthInMbps'] as int).input(),
+      peeringLocation: map['peeringLocation'] == null ? null : (map['peeringLocation'] as String).input(),
+      serviceProviderName: map['serviceProviderName'] == null ? null : (map['serviceProviderName'] as String).input(),
     );
   }
 }

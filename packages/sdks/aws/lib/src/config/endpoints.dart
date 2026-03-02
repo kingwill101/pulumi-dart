@@ -1,625 +1,626 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Endpoints {
   /// Use this to override the default service endpoint URL
-  final String? accessanalyzer;
+  final pulumi.Input<String>? accessanalyzer;
   /// Use this to override the default service endpoint URL
-  final String? account;
+  final pulumi.Input<String>? account;
   /// Use this to override the default service endpoint URL
-  final String? acm;
+  final pulumi.Input<String>? acm;
   /// Use this to override the default service endpoint URL
-  final String? acmpca;
+  final pulumi.Input<String>? acmpca;
   /// Use this to override the default service endpoint URL
-  final String? amg;
+  final pulumi.Input<String>? amg;
   /// Use this to override the default service endpoint URL
-  final String? amp;
+  final pulumi.Input<String>? amp;
   /// Use this to override the default service endpoint URL
-  final String? amplify;
+  final pulumi.Input<String>? amplify;
   /// Use this to override the default service endpoint URL
-  final String? apigateway;
+  final pulumi.Input<String>? apigateway;
   /// Use this to override the default service endpoint URL
-  final String? apigatewayv2;
+  final pulumi.Input<String>? apigatewayv2;
   /// Use this to override the default service endpoint URL
-  final String? appautoscaling;
+  final pulumi.Input<String>? appautoscaling;
   /// Use this to override the default service endpoint URL
-  final String? appconfig;
+  final pulumi.Input<String>? appconfig;
   /// Use this to override the default service endpoint URL
-  final String? appfabric;
+  final pulumi.Input<String>? appfabric;
   /// Use this to override the default service endpoint URL
-  final String? appflow;
+  final pulumi.Input<String>? appflow;
   /// Use this to override the default service endpoint URL
-  final String? appintegrations;
+  final pulumi.Input<String>? appintegrations;
   /// Use this to override the default service endpoint URL
-  final String? appintegrationsservice;
+  final pulumi.Input<String>? appintegrationsservice;
   /// Use this to override the default service endpoint URL
-  final String? applicationautoscaling;
+  final pulumi.Input<String>? applicationautoscaling;
   /// Use this to override the default service endpoint URL
-  final String? applicationinsights;
+  final pulumi.Input<String>? applicationinsights;
   /// Use this to override the default service endpoint URL
-  final String? applicationsignals;
+  final pulumi.Input<String>? applicationsignals;
   /// Use this to override the default service endpoint URL
-  final String? appmesh;
+  final pulumi.Input<String>? appmesh;
   /// Use this to override the default service endpoint URL
-  final String? appregistry;
+  final pulumi.Input<String>? appregistry;
   /// Use this to override the default service endpoint URL
-  final String? apprunner;
+  final pulumi.Input<String>? apprunner;
   /// Use this to override the default service endpoint URL
-  final String? appstream;
+  final pulumi.Input<String>? appstream;
   /// Use this to override the default service endpoint URL
-  final String? appsync;
+  final pulumi.Input<String>? appsync;
   /// Use this to override the default service endpoint URL
-  final String? arcregionswitch;
+  final pulumi.Input<String>? arcregionswitch;
   /// Use this to override the default service endpoint URL
-  final String? arczonalshift;
+  final pulumi.Input<String>? arczonalshift;
   /// Use this to override the default service endpoint URL
-  final String? athena;
+  final pulumi.Input<String>? athena;
   /// Use this to override the default service endpoint URL
-  final String? auditmanager;
+  final pulumi.Input<String>? auditmanager;
   /// Use this to override the default service endpoint URL
-  final String? autoscaling;
+  final pulumi.Input<String>? autoscaling;
   /// Use this to override the default service endpoint URL
-  final String? autoscalingplans;
+  final pulumi.Input<String>? autoscalingplans;
   /// Use this to override the default service endpoint URL
-  final String? backup;
+  final pulumi.Input<String>? backup;
   /// Use this to override the default service endpoint URL
-  final String? batch;
+  final pulumi.Input<String>? batch;
   /// Use this to override the default service endpoint URL
-  final String? bcmdataexports;
+  final pulumi.Input<String>? bcmdataexports;
   /// Use this to override the default service endpoint URL
-  final String? beanstalk;
+  final pulumi.Input<String>? beanstalk;
   /// Use this to override the default service endpoint URL
-  final String? bedrock;
+  final pulumi.Input<String>? bedrock;
   /// Use this to override the default service endpoint URL
-  final String? bedrockagent;
+  final pulumi.Input<String>? bedrockagent;
   /// Use this to override the default service endpoint URL
-  final String? bedrockagentcore;
+  final pulumi.Input<String>? bedrockagentcore;
   /// Use this to override the default service endpoint URL
-  final String? billing;
+  final pulumi.Input<String>? billing;
   /// Use this to override the default service endpoint URL
-  final String? budgets;
+  final pulumi.Input<String>? budgets;
   /// Use this to override the default service endpoint URL
-  final String? ce;
+  final pulumi.Input<String>? ce;
   /// Use this to override the default service endpoint URL
-  final String? chatbot;
+  final pulumi.Input<String>? chatbot;
   /// Use this to override the default service endpoint URL
-  final String? chime;
+  final pulumi.Input<String>? chime;
   /// Use this to override the default service endpoint URL
-  final String? chimesdkmediapipelines;
+  final pulumi.Input<String>? chimesdkmediapipelines;
   /// Use this to override the default service endpoint URL
-  final String? chimesdkvoice;
+  final pulumi.Input<String>? chimesdkvoice;
   /// Use this to override the default service endpoint URL
-  final String? cleanrooms;
+  final pulumi.Input<String>? cleanrooms;
   /// Use this to override the default service endpoint URL
-  final String? cloud9;
+  final pulumi.Input<String>? cloud9;
   /// Use this to override the default service endpoint URL
-  final String? cloudcontrol;
+  final pulumi.Input<String>? cloudcontrol;
   /// Use this to override the default service endpoint URL
-  final String? cloudcontrolapi;
+  final pulumi.Input<String>? cloudcontrolapi;
   /// Use this to override the default service endpoint URL
-  final String? cloudformation;
+  final pulumi.Input<String>? cloudformation;
   /// Use this to override the default service endpoint URL
-  final String? cloudfront;
+  final pulumi.Input<String>? cloudfront;
   /// Use this to override the default service endpoint URL
-  final String? cloudfrontkeyvaluestore;
+  final pulumi.Input<String>? cloudfrontkeyvaluestore;
   /// Use this to override the default service endpoint URL
-  final String? cloudhsm;
+  final pulumi.Input<String>? cloudhsm;
   /// Use this to override the default service endpoint URL
-  final String? cloudhsmv2;
+  final pulumi.Input<String>? cloudhsmv2;
   /// Use this to override the default service endpoint URL
-  final String? cloudsearch;
+  final pulumi.Input<String>? cloudsearch;
   /// Use this to override the default service endpoint URL
-  final String? cloudtrail;
+  final pulumi.Input<String>? cloudtrail;
   /// Use this to override the default service endpoint URL
-  final String? cloudwatch;
+  final pulumi.Input<String>? cloudwatch;
   /// Use this to override the default service endpoint URL
-  final String? cloudwatchevents;
+  final pulumi.Input<String>? cloudwatchevents;
   /// Use this to override the default service endpoint URL
-  final String? cloudwatchevidently;
+  final pulumi.Input<String>? cloudwatchevidently;
   /// Use this to override the default service endpoint URL
-  final String? cloudwatchlog;
+  final pulumi.Input<String>? cloudwatchlog;
   /// Use this to override the default service endpoint URL
-  final String? cloudwatchlogs;
+  final pulumi.Input<String>? cloudwatchlogs;
   /// Use this to override the default service endpoint URL
-  final String? cloudwatchobservabilityaccessmanager;
+  final pulumi.Input<String>? cloudwatchobservabilityaccessmanager;
   /// Use this to override the default service endpoint URL
-  final String? cloudwatchrum;
+  final pulumi.Input<String>? cloudwatchrum;
   /// Use this to override the default service endpoint URL
-  final String? codeartifact;
+  final pulumi.Input<String>? codeartifact;
   /// Use this to override the default service endpoint URL
-  final String? codebuild;
+  final pulumi.Input<String>? codebuild;
   /// Use this to override the default service endpoint URL
-  final String? codecatalyst;
+  final pulumi.Input<String>? codecatalyst;
   /// Use this to override the default service endpoint URL
-  final String? codecommit;
+  final pulumi.Input<String>? codecommit;
   /// Use this to override the default service endpoint URL
-  final String? codeconnections;
+  final pulumi.Input<String>? codeconnections;
   /// Use this to override the default service endpoint URL
-  final String? codedeploy;
+  final pulumi.Input<String>? codedeploy;
   /// Use this to override the default service endpoint URL
-  final String? codeguruprofiler;
+  final pulumi.Input<String>? codeguruprofiler;
   /// Use this to override the default service endpoint URL
-  final String? codegurureviewer;
+  final pulumi.Input<String>? codegurureviewer;
   /// Use this to override the default service endpoint URL
-  final String? codepipeline;
+  final pulumi.Input<String>? codepipeline;
   /// Use this to override the default service endpoint URL
-  final String? codestarconnections;
+  final pulumi.Input<String>? codestarconnections;
   /// Use this to override the default service endpoint URL
-  final String? codestarnotifications;
+  final pulumi.Input<String>? codestarnotifications;
   /// Use this to override the default service endpoint URL
-  final String? cognitoidentity;
+  final pulumi.Input<String>? cognitoidentity;
   /// Use this to override the default service endpoint URL
-  final String? cognitoidentityprovider;
+  final pulumi.Input<String>? cognitoidentityprovider;
   /// Use this to override the default service endpoint URL
-  final String? cognitoidp;
+  final pulumi.Input<String>? cognitoidp;
   /// Use this to override the default service endpoint URL
-  final String? comprehend;
+  final pulumi.Input<String>? comprehend;
   /// Use this to override the default service endpoint URL
-  final String? computeoptimizer;
+  final pulumi.Input<String>? computeoptimizer;
   /// Use this to override the default service endpoint URL
-  final String? config;
+  final pulumi.Input<String>? config;
   /// Use this to override the default service endpoint URL
-  final String? configservice;
+  final pulumi.Input<String>? configservice;
   /// Use this to override the default service endpoint URL
-  final String? connect;
+  final pulumi.Input<String>? connect;
   /// Use this to override the default service endpoint URL
-  final String? connectcases;
+  final pulumi.Input<String>? connectcases;
   /// Use this to override the default service endpoint URL
-  final String? controltower;
+  final pulumi.Input<String>? controltower;
   /// Use this to override the default service endpoint URL
-  final String? costandusagereportservice;
+  final pulumi.Input<String>? costandusagereportservice;
   /// Use this to override the default service endpoint URL
-  final String? costexplorer;
+  final pulumi.Input<String>? costexplorer;
   /// Use this to override the default service endpoint URL
-  final String? costoptimizationhub;
+  final pulumi.Input<String>? costoptimizationhub;
   /// Use this to override the default service endpoint URL
-  final String? cur;
+  final pulumi.Input<String>? cur;
   /// Use this to override the default service endpoint URL
-  final String? customerprofiles;
+  final pulumi.Input<String>? customerprofiles;
   /// Use this to override the default service endpoint URL
-  final String? databasemigration;
+  final pulumi.Input<String>? databasemigration;
   /// Use this to override the default service endpoint URL
-  final String? databasemigrationservice;
+  final pulumi.Input<String>? databasemigrationservice;
   /// Use this to override the default service endpoint URL
-  final String? databrew;
+  final pulumi.Input<String>? databrew;
   /// Use this to override the default service endpoint URL
-  final String? dataexchange;
+  final pulumi.Input<String>? dataexchange;
   /// Use this to override the default service endpoint URL
-  final String? datapipeline;
+  final pulumi.Input<String>? datapipeline;
   /// Use this to override the default service endpoint URL
-  final String? datasync;
+  final pulumi.Input<String>? datasync;
   /// Use this to override the default service endpoint URL
-  final String? datazone;
+  final pulumi.Input<String>? datazone;
   /// Use this to override the default service endpoint URL
-  final String? dax;
+  final pulumi.Input<String>? dax;
   /// Use this to override the default service endpoint URL
-  final String? deploy;
+  final pulumi.Input<String>? deploy;
   /// Use this to override the default service endpoint URL
-  final String? detective;
+  final pulumi.Input<String>? detective;
   /// Use this to override the default service endpoint URL
-  final String? devicefarm;
+  final pulumi.Input<String>? devicefarm;
   /// Use this to override the default service endpoint URL
-  final String? devopsguru;
+  final pulumi.Input<String>? devopsguru;
   /// Use this to override the default service endpoint URL
-  final String? directconnect;
+  final pulumi.Input<String>? directconnect;
   /// Use this to override the default service endpoint URL
-  final String? directoryservice;
+  final pulumi.Input<String>? directoryservice;
   /// Use this to override the default service endpoint URL
-  final String? dlm;
+  final pulumi.Input<String>? dlm;
   /// Use this to override the default service endpoint URL
-  final String? dms;
+  final pulumi.Input<String>? dms;
   /// Use this to override the default service endpoint URL
-  final String? docdb;
+  final pulumi.Input<String>? docdb;
   /// Use this to override the default service endpoint URL
-  final String? docdbelastic;
+  final pulumi.Input<String>? docdbelastic;
   /// Use this to override the default service endpoint URL
-  final String? drs;
+  final pulumi.Input<String>? drs;
   /// Use this to override the default service endpoint URL
-  final String? ds;
+  final pulumi.Input<String>? ds;
   /// Use this to override the default service endpoint URL
-  final String? dsql;
+  final pulumi.Input<String>? dsql;
   /// Use this to override the default service endpoint URL
-  final String? dynamodb;
+  final pulumi.Input<String>? dynamodb;
   /// Use this to override the default service endpoint URL
-  final String? ec2;
+  final pulumi.Input<String>? ec2;
   /// Use this to override the default service endpoint URL
-  final String? ecr;
+  final pulumi.Input<String>? ecr;
   /// Use this to override the default service endpoint URL
-  final String? ecrpublic;
+  final pulumi.Input<String>? ecrpublic;
   /// Use this to override the default service endpoint URL
-  final String? ecs;
+  final pulumi.Input<String>? ecs;
   /// Use this to override the default service endpoint URL
-  final String? efs;
+  final pulumi.Input<String>? efs;
   /// Use this to override the default service endpoint URL
-  final String? eks;
+  final pulumi.Input<String>? eks;
   /// Use this to override the default service endpoint URL
-  final String? elasticache;
+  final pulumi.Input<String>? elasticache;
   /// Use this to override the default service endpoint URL
-  final String? elasticbeanstalk;
+  final pulumi.Input<String>? elasticbeanstalk;
   /// Use this to override the default service endpoint URL
-  final String? elasticloadbalancing;
+  final pulumi.Input<String>? elasticloadbalancing;
   /// Use this to override the default service endpoint URL
-  final String? elasticloadbalancingv2;
+  final pulumi.Input<String>? elasticloadbalancingv2;
   /// Use this to override the default service endpoint URL
-  final String? elasticsearch;
+  final pulumi.Input<String>? elasticsearch;
   /// Use this to override the default service endpoint URL
-  final String? elasticsearchservice;
+  final pulumi.Input<String>? elasticsearchservice;
   /// Use this to override the default service endpoint URL
-  final String? elastictranscoder;
+  final pulumi.Input<String>? elastictranscoder;
   /// Use this to override the default service endpoint URL
-  final String? elb;
+  final pulumi.Input<String>? elb;
   /// Use this to override the default service endpoint URL
-  final String? elbv2;
+  final pulumi.Input<String>? elbv2;
   /// Use this to override the default service endpoint URL
-  final String? emr;
+  final pulumi.Input<String>? emr;
   /// Use this to override the default service endpoint URL
-  final String? emrcontainers;
+  final pulumi.Input<String>? emrcontainers;
   /// Use this to override the default service endpoint URL
-  final String? emrserverless;
+  final pulumi.Input<String>? emrserverless;
   /// Use this to override the default service endpoint URL
-  final String? es;
+  final pulumi.Input<String>? es;
   /// Use this to override the default service endpoint URL
-  final String? eventbridge;
+  final pulumi.Input<String>? eventbridge;
   /// Use this to override the default service endpoint URL
-  final String? events;
+  final pulumi.Input<String>? events;
   /// Use this to override the default service endpoint URL
-  final String? evidently;
+  final pulumi.Input<String>? evidently;
   /// Use this to override the default service endpoint URL
-  final String? evs;
+  final pulumi.Input<String>? evs;
   /// Use this to override the default service endpoint URL
-  final String? finspace;
+  final pulumi.Input<String>? finspace;
   /// Use this to override the default service endpoint URL
-  final String? firehose;
+  final pulumi.Input<String>? firehose;
   /// Use this to override the default service endpoint URL
-  final String? fis;
+  final pulumi.Input<String>? fis;
   /// Use this to override the default service endpoint URL
-  final String? fms;
+  final pulumi.Input<String>? fms;
   /// Use this to override the default service endpoint URL
-  final String? fsx;
+  final pulumi.Input<String>? fsx;
   /// Use this to override the default service endpoint URL
-  final String? gamelift;
+  final pulumi.Input<String>? gamelift;
   /// Use this to override the default service endpoint URL
-  final String? glacier;
+  final pulumi.Input<String>? glacier;
   /// Use this to override the default service endpoint URL
-  final String? globalaccelerator;
+  final pulumi.Input<String>? globalaccelerator;
   /// Use this to override the default service endpoint URL
-  final String? glue;
+  final pulumi.Input<String>? glue;
   /// Use this to override the default service endpoint URL
-  final String? gluedatabrew;
+  final pulumi.Input<String>? gluedatabrew;
   /// Use this to override the default service endpoint URL
-  final String? grafana;
+  final pulumi.Input<String>? grafana;
   /// Use this to override the default service endpoint URL
-  final String? greengrass;
+  final pulumi.Input<String>? greengrass;
   /// Use this to override the default service endpoint URL
-  final String? groundstation;
+  final pulumi.Input<String>? groundstation;
   /// Use this to override the default service endpoint URL
-  final String? guardduty;
+  final pulumi.Input<String>? guardduty;
   /// Use this to override the default service endpoint URL
-  final String? healthlake;
+  final pulumi.Input<String>? healthlake;
   /// Use this to override the default service endpoint URL
-  final String? iam;
+  final pulumi.Input<String>? iam;
   /// Use this to override the default service endpoint URL
-  final String? identitystore;
+  final pulumi.Input<String>? identitystore;
   /// Use this to override the default service endpoint URL
-  final String? imagebuilder;
+  final pulumi.Input<String>? imagebuilder;
   /// Use this to override the default service endpoint URL
-  final String? inspector;
+  final pulumi.Input<String>? inspector;
   /// Use this to override the default service endpoint URL
-  final String? inspector2;
+  final pulumi.Input<String>? inspector2;
   /// Use this to override the default service endpoint URL
-  final String? inspectorv2;
+  final pulumi.Input<String>? inspectorv2;
   /// Use this to override the default service endpoint URL
-  final String? internetmonitor;
+  final pulumi.Input<String>? internetmonitor;
   /// Use this to override the default service endpoint URL
-  final String? invoicing;
+  final pulumi.Input<String>? invoicing;
   /// Use this to override the default service endpoint URL
-  final String? iot;
+  final pulumi.Input<String>? iot;
   /// Use this to override the default service endpoint URL
-  final String? ivs;
+  final pulumi.Input<String>? ivs;
   /// Use this to override the default service endpoint URL
-  final String? ivschat;
+  final pulumi.Input<String>? ivschat;
   /// Use this to override the default service endpoint URL
-  final String? kafka;
+  final pulumi.Input<String>? kafka;
   /// Use this to override the default service endpoint URL
-  final String? kafkaconnect;
+  final pulumi.Input<String>? kafkaconnect;
   /// Use this to override the default service endpoint URL
-  final String? kendra;
+  final pulumi.Input<String>? kendra;
   /// Use this to override the default service endpoint URL
-  final String? keyspaces;
+  final pulumi.Input<String>? keyspaces;
   /// Use this to override the default service endpoint URL
-  final String? kinesis;
+  final pulumi.Input<String>? kinesis;
   /// Use this to override the default service endpoint URL
-  final String? kinesisanalytics;
+  final pulumi.Input<String>? kinesisanalytics;
   /// Use this to override the default service endpoint URL
-  final String? kinesisanalyticsv2;
+  final pulumi.Input<String>? kinesisanalyticsv2;
   /// Use this to override the default service endpoint URL
-  final String? kinesisvideo;
+  final pulumi.Input<String>? kinesisvideo;
   /// Use this to override the default service endpoint URL
-  final String? kms;
+  final pulumi.Input<String>? kms;
   /// Use this to override the default service endpoint URL
-  final String? lakeformation;
+  final pulumi.Input<String>? lakeformation;
   /// Use this to override the default service endpoint URL
-  final String? lambda;
+  final pulumi.Input<String>? lambda;
   /// Use this to override the default service endpoint URL
-  final String? launchwizard;
+  final pulumi.Input<String>? launchwizard;
   /// Use this to override the default service endpoint URL
-  final String? lex;
+  final pulumi.Input<String>? lex;
   /// Use this to override the default service endpoint URL
-  final String? lexmodelbuilding;
+  final pulumi.Input<String>? lexmodelbuilding;
   /// Use this to override the default service endpoint URL
-  final String? lexmodelbuildingservice;
+  final pulumi.Input<String>? lexmodelbuildingservice;
   /// Use this to override the default service endpoint URL
-  final String? lexmodels;
+  final pulumi.Input<String>? lexmodels;
   /// Use this to override the default service endpoint URL
-  final String? lexmodelsv2;
+  final pulumi.Input<String>? lexmodelsv2;
   /// Use this to override the default service endpoint URL
-  final String? lexv2models;
+  final pulumi.Input<String>? lexv2models;
   /// Use this to override the default service endpoint URL
-  final String? licensemanager;
+  final pulumi.Input<String>? licensemanager;
   /// Use this to override the default service endpoint URL
-  final String? lightsail;
+  final pulumi.Input<String>? lightsail;
   /// Use this to override the default service endpoint URL
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Use this to override the default service endpoint URL
-  final String? locationservice;
+  final pulumi.Input<String>? locationservice;
   /// Use this to override the default service endpoint URL
-  final String? logs;
+  final pulumi.Input<String>? logs;
   /// Use this to override the default service endpoint URL
-  final String? m2;
+  final pulumi.Input<String>? m2;
   /// Use this to override the default service endpoint URL
-  final String? macie2;
+  final pulumi.Input<String>? macie2;
   /// Use this to override the default service endpoint URL
-  final String? managedgrafana;
+  final pulumi.Input<String>? managedgrafana;
   /// Use this to override the default service endpoint URL
-  final String? mediaconnect;
+  final pulumi.Input<String>? mediaconnect;
   /// Use this to override the default service endpoint URL
-  final String? mediaconvert;
+  final pulumi.Input<String>? mediaconvert;
   /// Use this to override the default service endpoint URL
-  final String? medialive;
+  final pulumi.Input<String>? medialive;
   /// Use this to override the default service endpoint URL
-  final String? mediapackage;
+  final pulumi.Input<String>? mediapackage;
   /// Use this to override the default service endpoint URL
-  final String? mediapackagev2;
+  final pulumi.Input<String>? mediapackagev2;
   /// Use this to override the default service endpoint URL
-  final String? mediapackagevod;
+  final pulumi.Input<String>? mediapackagevod;
   /// Use this to override the default service endpoint URL
-  final String? mediastore;
+  final pulumi.Input<String>? mediastore;
   /// Use this to override the default service endpoint URL
-  final String? memorydb;
+  final pulumi.Input<String>? memorydb;
   /// Use this to override the default service endpoint URL
-  final String? mgn;
+  final pulumi.Input<String>? mgn;
   /// Use this to override the default service endpoint URL
-  final String? mpa;
+  final pulumi.Input<String>? mpa;
   /// Use this to override the default service endpoint URL
-  final String? mq;
+  final pulumi.Input<String>? mq;
   /// Use this to override the default service endpoint URL
-  final String? msk;
+  final pulumi.Input<String>? msk;
   /// Use this to override the default service endpoint URL
-  final String? mwaa;
+  final pulumi.Input<String>? mwaa;
   /// Use this to override the default service endpoint URL
-  final String? mwaaserverless;
+  final pulumi.Input<String>? mwaaserverless;
   /// Use this to override the default service endpoint URL
-  final String? neptune;
+  final pulumi.Input<String>? neptune;
   /// Use this to override the default service endpoint URL
-  final String? neptunegraph;
+  final pulumi.Input<String>? neptunegraph;
   /// Use this to override the default service endpoint URL
-  final String? networkfirewall;
+  final pulumi.Input<String>? networkfirewall;
   /// Use this to override the default service endpoint URL
-  final String? networkflowmonitor;
+  final pulumi.Input<String>? networkflowmonitor;
   /// Use this to override the default service endpoint URL
-  final String? networkmanager;
+  final pulumi.Input<String>? networkmanager;
   /// Use this to override the default service endpoint URL
-  final String? networkmonitor;
+  final pulumi.Input<String>? networkmonitor;
   /// Use this to override the default service endpoint URL
-  final String? notifications;
+  final pulumi.Input<String>? notifications;
   /// Use this to override the default service endpoint URL
-  final String? notificationscontacts;
+  final pulumi.Input<String>? notificationscontacts;
   /// Use this to override the default service endpoint URL
-  final String? oam;
+  final pulumi.Input<String>? oam;
   /// Use this to override the default service endpoint URL
-  final String? observabilityadmin;
+  final pulumi.Input<String>? observabilityadmin;
   /// Use this to override the default service endpoint URL
-  final String? odb;
+  final pulumi.Input<String>? odb;
   /// Use this to override the default service endpoint URL
-  final String? opensearch;
+  final pulumi.Input<String>? opensearch;
   /// Use this to override the default service endpoint URL
-  final String? opensearchingestion;
+  final pulumi.Input<String>? opensearchingestion;
   /// Use this to override the default service endpoint URL
-  final String? opensearchserverless;
+  final pulumi.Input<String>? opensearchserverless;
   /// Use this to override the default service endpoint URL
-  final String? opensearchservice;
+  final pulumi.Input<String>? opensearchservice;
   /// Use this to override the default service endpoint URL
-  final String? organizations;
+  final pulumi.Input<String>? organizations;
   /// Use this to override the default service endpoint URL
-  final String? osis;
+  final pulumi.Input<String>? osis;
   /// Use this to override the default service endpoint URL
-  final String? outposts;
+  final pulumi.Input<String>? outposts;
   /// Use this to override the default service endpoint URL
-  final String? paymentcryptography;
+  final pulumi.Input<String>? paymentcryptography;
   /// Use this to override the default service endpoint URL
-  final String? pcaconnectorad;
+  final pulumi.Input<String>? pcaconnectorad;
   /// Use this to override the default service endpoint URL
-  final String? pcs;
+  final pulumi.Input<String>? pcs;
   /// Use this to override the default service endpoint URL
-  final String? pinpoint;
+  final pulumi.Input<String>? pinpoint;
   /// Use this to override the default service endpoint URL
-  final String? pinpointsmsvoicev2;
+  final pulumi.Input<String>? pinpointsmsvoicev2;
   /// Use this to override the default service endpoint URL
-  final String? pipes;
+  final pulumi.Input<String>? pipes;
   /// Use this to override the default service endpoint URL
-  final String? polly;
+  final pulumi.Input<String>? polly;
   /// Use this to override the default service endpoint URL
-  final String? pricing;
+  final pulumi.Input<String>? pricing;
   /// Use this to override the default service endpoint URL
-  final String? prometheus;
+  final pulumi.Input<String>? prometheus;
   /// Use this to override the default service endpoint URL
-  final String? prometheusservice;
+  final pulumi.Input<String>? prometheusservice;
   /// Use this to override the default service endpoint URL
-  final String? qbusiness;
+  final pulumi.Input<String>? qbusiness;
   /// Use this to override the default service endpoint URL
-  final String? qldb;
+  final pulumi.Input<String>? qldb;
   /// Use this to override the default service endpoint URL
-  final String? quicksight;
+  final pulumi.Input<String>? quicksight;
   /// Use this to override the default service endpoint URL
-  final String? ram;
+  final pulumi.Input<String>? ram;
   /// Use this to override the default service endpoint URL
-  final String? rbin;
+  final pulumi.Input<String>? rbin;
   /// Use this to override the default service endpoint URL
-  final String? rds;
+  final pulumi.Input<String>? rds;
   /// Use this to override the default service endpoint URL
-  final String? rdsdata;
+  final pulumi.Input<String>? rdsdata;
   /// Use this to override the default service endpoint URL
-  final String? rdsdataservice;
+  final pulumi.Input<String>? rdsdataservice;
   /// Use this to override the default service endpoint URL
-  final String? recyclebin;
+  final pulumi.Input<String>? recyclebin;
   /// Use this to override the default service endpoint URL
-  final String? redshift;
+  final pulumi.Input<String>? redshift;
   /// Use this to override the default service endpoint URL
-  final String? redshiftdata;
+  final pulumi.Input<String>? redshiftdata;
   /// Use this to override the default service endpoint URL
-  final String? redshiftdataapiservice;
+  final pulumi.Input<String>? redshiftdataapiservice;
   /// Use this to override the default service endpoint URL
-  final String? redshiftserverless;
+  final pulumi.Input<String>? redshiftserverless;
   /// Use this to override the default service endpoint URL
-  final String? rekognition;
+  final pulumi.Input<String>? rekognition;
   /// Use this to override the default service endpoint URL
-  final String? resiliencehub;
+  final pulumi.Input<String>? resiliencehub;
   /// Use this to override the default service endpoint URL
-  final String? resourceexplorer2;
+  final pulumi.Input<String>? resourceexplorer2;
   /// Use this to override the default service endpoint URL
-  final String? resourcegroups;
+  final pulumi.Input<String>? resourcegroups;
   /// Use this to override the default service endpoint URL
-  final String? resourcegroupstagging;
+  final pulumi.Input<String>? resourcegroupstagging;
   /// Use this to override the default service endpoint URL
-  final String? resourcegroupstaggingapi;
+  final pulumi.Input<String>? resourcegroupstaggingapi;
   /// Use this to override the default service endpoint URL
-  final String? rolesanywhere;
+  final pulumi.Input<String>? rolesanywhere;
   /// Use this to override the default service endpoint URL
-  final String? route53;
+  final pulumi.Input<String>? route53;
   /// Use this to override the default service endpoint URL
-  final String? route53domains;
+  final pulumi.Input<String>? route53domains;
   /// Use this to override the default service endpoint URL
-  final String? route53profiles;
+  final pulumi.Input<String>? route53profiles;
   /// Use this to override the default service endpoint URL
-  final String? route53recoverycontrolconfig;
+  final pulumi.Input<String>? route53recoverycontrolconfig;
   /// Use this to override the default service endpoint URL
-  final String? route53recoveryreadiness;
+  final pulumi.Input<String>? route53recoveryreadiness;
   /// Use this to override the default service endpoint URL
-  final String? route53resolver;
+  final pulumi.Input<String>? route53resolver;
   /// Use this to override the default service endpoint URL
-  final String? rum;
+  final pulumi.Input<String>? rum;
   /// Use this to override the default service endpoint URL
-  final String? s3;
+  final pulumi.Input<String>? s3;
   /// Use this to override the default service endpoint URL
-  final String? s3api;
+  final pulumi.Input<String>? s3api;
   /// Use this to override the default service endpoint URL
-  final String? s3control;
+  final pulumi.Input<String>? s3control;
   /// Use this to override the default service endpoint URL
-  final String? s3outposts;
+  final pulumi.Input<String>? s3outposts;
   /// Use this to override the default service endpoint URL
-  final String? s3tables;
+  final pulumi.Input<String>? s3tables;
   /// Use this to override the default service endpoint URL
-  final String? s3vectors;
+  final pulumi.Input<String>? s3vectors;
   /// Use this to override the default service endpoint URL
-  final String? sagemaker;
+  final pulumi.Input<String>? sagemaker;
   /// Use this to override the default service endpoint URL
-  final String? savingsplans;
+  final pulumi.Input<String>? savingsplans;
   /// Use this to override the default service endpoint URL
-  final String? scheduler;
+  final pulumi.Input<String>? scheduler;
   /// Use this to override the default service endpoint URL
-  final String? schemas;
+  final pulumi.Input<String>? schemas;
   /// Use this to override the default service endpoint URL
-  final String? secretsmanager;
+  final pulumi.Input<String>? secretsmanager;
   /// Use this to override the default service endpoint URL
-  final String? securityhub;
+  final pulumi.Input<String>? securityhub;
   /// Use this to override the default service endpoint URL
-  final String? securitylake;
+  final pulumi.Input<String>? securitylake;
   /// Use this to override the default service endpoint URL
-  final String? serverlessapplicationrepository;
+  final pulumi.Input<String>? serverlessapplicationrepository;
   /// Use this to override the default service endpoint URL
-  final String? serverlessapprepo;
+  final pulumi.Input<String>? serverlessapprepo;
   /// Use this to override the default service endpoint URL
-  final String? serverlessrepo;
+  final pulumi.Input<String>? serverlessrepo;
   /// Use this to override the default service endpoint URL
-  final String? servicecatalog;
+  final pulumi.Input<String>? servicecatalog;
   /// Use this to override the default service endpoint URL
-  final String? servicecatalogappregistry;
+  final pulumi.Input<String>? servicecatalogappregistry;
   /// Use this to override the default service endpoint URL
-  final String? servicediscovery;
+  final pulumi.Input<String>? servicediscovery;
   /// Use this to override the default service endpoint URL
-  final String? servicequotas;
+  final pulumi.Input<String>? servicequotas;
   /// Use this to override the default service endpoint URL
-  final String? ses;
+  final pulumi.Input<String>? ses;
   /// Use this to override the default service endpoint URL
-  final String? sesv2;
+  final pulumi.Input<String>? sesv2;
   /// Use this to override the default service endpoint URL
-  final String? sfn;
+  final pulumi.Input<String>? sfn;
   /// Use this to override the default service endpoint URL
-  final String? shield;
+  final pulumi.Input<String>? shield;
   /// Use this to override the default service endpoint URL
-  final String? signer;
+  final pulumi.Input<String>? signer;
   /// Use this to override the default service endpoint URL
-  final String? sns;
+  final pulumi.Input<String>? sns;
   /// Use this to override the default service endpoint URL
-  final String? sqs;
+  final pulumi.Input<String>? sqs;
   /// Use this to override the default service endpoint URL
-  final String? ssm;
+  final pulumi.Input<String>? ssm;
   /// Use this to override the default service endpoint URL
-  final String? ssmcontacts;
+  final pulumi.Input<String>? ssmcontacts;
   /// Use this to override the default service endpoint URL
-  final String? ssmincidents;
+  final pulumi.Input<String>? ssmincidents;
   /// Use this to override the default service endpoint URL
-  final String? ssmquicksetup;
+  final pulumi.Input<String>? ssmquicksetup;
   /// Use this to override the default service endpoint URL
-  final String? ssmsap;
+  final pulumi.Input<String>? ssmsap;
   /// Use this to override the default service endpoint URL
-  final String? sso;
+  final pulumi.Input<String>? sso;
   /// Use this to override the default service endpoint URL
-  final String? ssoadmin;
+  final pulumi.Input<String>? ssoadmin;
   /// Use this to override the default service endpoint URL
-  final String? stepfunctions;
+  final pulumi.Input<String>? stepfunctions;
   /// Use this to override the default service endpoint URL
-  final String? storagegateway;
+  final pulumi.Input<String>? storagegateway;
   /// Use this to override the default service endpoint URL
-  final String? sts;
+  final pulumi.Input<String>? sts;
   /// Use this to override the default service endpoint URL
-  final String? swf;
+  final pulumi.Input<String>? swf;
   /// Use this to override the default service endpoint URL
-  final String? synthetics;
+  final pulumi.Input<String>? synthetics;
   /// Use this to override the default service endpoint URL
-  final String? taxsettings;
+  final pulumi.Input<String>? taxsettings;
   /// Use this to override the default service endpoint URL
-  final String? timestreaminfluxdb;
+  final pulumi.Input<String>? timestreaminfluxdb;
   /// Use this to override the default service endpoint URL
-  final String? timestreamquery;
+  final pulumi.Input<String>? timestreamquery;
   /// Use this to override the default service endpoint URL
-  final String? timestreamwrite;
+  final pulumi.Input<String>? timestreamwrite;
   /// Use this to override the default service endpoint URL
-  final String? transcribe;
+  final pulumi.Input<String>? transcribe;
   /// Use this to override the default service endpoint URL
-  final String? transcribeservice;
+  final pulumi.Input<String>? transcribeservice;
   /// Use this to override the default service endpoint URL
-  final String? transfer;
+  final pulumi.Input<String>? transfer;
   /// Use this to override the default service endpoint URL
-  final String? verifiedpermissions;
+  final pulumi.Input<String>? verifiedpermissions;
   /// Use this to override the default service endpoint URL
-  final String? vpclattice;
+  final pulumi.Input<String>? vpclattice;
   /// Use this to override the default service endpoint URL
-  final String? waf;
+  final pulumi.Input<String>? waf;
   /// Use this to override the default service endpoint URL
-  final String? wafregional;
+  final pulumi.Input<String>? wafregional;
   /// Use this to override the default service endpoint URL
-  final String? wafv2;
+  final pulumi.Input<String>? wafv2;
   /// Use this to override the default service endpoint URL
-  final String? wellarchitected;
+  final pulumi.Input<String>? wellarchitected;
   /// Use this to override the default service endpoint URL
-  final String? workmail;
+  final pulumi.Input<String>? workmail;
   /// Use this to override the default service endpoint URL
-  final String? workspaces;
+  final pulumi.Input<String>? workspaces;
   /// Use this to override the default service endpoint URL
-  final String? workspacesweb;
+  final pulumi.Input<String>? workspacesweb;
   /// Use this to override the default service endpoint URL
-  final String? xray;
+  final pulumi.Input<String>? xray;
 
   /// Creates a new [Endpoints].
   /// [accessanalyzer] Use this to override the default service endpoint URL
@@ -1559,315 +1560,315 @@ class Endpoints {
 
   factory Endpoints.fromMap(Map<String, dynamic> map) {
     return Endpoints(
-      accessanalyzer: map['accessanalyzer'] == null ? null : map['accessanalyzer'] as String,
-      account: map['account'] == null ? null : map['account'] as String,
-      acm: map['acm'] == null ? null : map['acm'] as String,
-      acmpca: map['acmpca'] == null ? null : map['acmpca'] as String,
-      amg: map['amg'] == null ? null : map['amg'] as String,
-      amp: map['amp'] == null ? null : map['amp'] as String,
-      amplify: map['amplify'] == null ? null : map['amplify'] as String,
-      apigateway: map['apigateway'] == null ? null : map['apigateway'] as String,
-      apigatewayv2: map['apigatewayv2'] == null ? null : map['apigatewayv2'] as String,
-      appautoscaling: map['appautoscaling'] == null ? null : map['appautoscaling'] as String,
-      appconfig: map['appconfig'] == null ? null : map['appconfig'] as String,
-      appfabric: map['appfabric'] == null ? null : map['appfabric'] as String,
-      appflow: map['appflow'] == null ? null : map['appflow'] as String,
-      appintegrations: map['appintegrations'] == null ? null : map['appintegrations'] as String,
-      appintegrationsservice: map['appintegrationsservice'] == null ? null : map['appintegrationsservice'] as String,
-      applicationautoscaling: map['applicationautoscaling'] == null ? null : map['applicationautoscaling'] as String,
-      applicationinsights: map['applicationinsights'] == null ? null : map['applicationinsights'] as String,
-      applicationsignals: map['applicationsignals'] == null ? null : map['applicationsignals'] as String,
-      appmesh: map['appmesh'] == null ? null : map['appmesh'] as String,
-      appregistry: map['appregistry'] == null ? null : map['appregistry'] as String,
-      apprunner: map['apprunner'] == null ? null : map['apprunner'] as String,
-      appstream: map['appstream'] == null ? null : map['appstream'] as String,
-      appsync: map['appsync'] == null ? null : map['appsync'] as String,
-      arcregionswitch: map['arcregionswitch'] == null ? null : map['arcregionswitch'] as String,
-      arczonalshift: map['arczonalshift'] == null ? null : map['arczonalshift'] as String,
-      athena: map['athena'] == null ? null : map['athena'] as String,
-      auditmanager: map['auditmanager'] == null ? null : map['auditmanager'] as String,
-      autoscaling: map['autoscaling'] == null ? null : map['autoscaling'] as String,
-      autoscalingplans: map['autoscalingplans'] == null ? null : map['autoscalingplans'] as String,
-      backup: map['backup'] == null ? null : map['backup'] as String,
-      batch: map['batch'] == null ? null : map['batch'] as String,
-      bcmdataexports: map['bcmdataexports'] == null ? null : map['bcmdataexports'] as String,
-      beanstalk: map['beanstalk'] == null ? null : map['beanstalk'] as String,
-      bedrock: map['bedrock'] == null ? null : map['bedrock'] as String,
-      bedrockagent: map['bedrockagent'] == null ? null : map['bedrockagent'] as String,
-      bedrockagentcore: map['bedrockagentcore'] == null ? null : map['bedrockagentcore'] as String,
-      billing: map['billing'] == null ? null : map['billing'] as String,
-      budgets: map['budgets'] == null ? null : map['budgets'] as String,
-      ce: map['ce'] == null ? null : map['ce'] as String,
-      chatbot: map['chatbot'] == null ? null : map['chatbot'] as String,
-      chime: map['chime'] == null ? null : map['chime'] as String,
-      chimesdkmediapipelines: map['chimesdkmediapipelines'] == null ? null : map['chimesdkmediapipelines'] as String,
-      chimesdkvoice: map['chimesdkvoice'] == null ? null : map['chimesdkvoice'] as String,
-      cleanrooms: map['cleanrooms'] == null ? null : map['cleanrooms'] as String,
-      cloud9: map['cloud9'] == null ? null : map['cloud9'] as String,
-      cloudcontrol: map['cloudcontrol'] == null ? null : map['cloudcontrol'] as String,
-      cloudcontrolapi: map['cloudcontrolapi'] == null ? null : map['cloudcontrolapi'] as String,
-      cloudformation: map['cloudformation'] == null ? null : map['cloudformation'] as String,
-      cloudfront: map['cloudfront'] == null ? null : map['cloudfront'] as String,
-      cloudfrontkeyvaluestore: map['cloudfrontkeyvaluestore'] == null ? null : map['cloudfrontkeyvaluestore'] as String,
-      cloudhsm: map['cloudhsm'] == null ? null : map['cloudhsm'] as String,
-      cloudhsmv2: map['cloudhsmv2'] == null ? null : map['cloudhsmv2'] as String,
-      cloudsearch: map['cloudsearch'] == null ? null : map['cloudsearch'] as String,
-      cloudtrail: map['cloudtrail'] == null ? null : map['cloudtrail'] as String,
-      cloudwatch: map['cloudwatch'] == null ? null : map['cloudwatch'] as String,
-      cloudwatchevents: map['cloudwatchevents'] == null ? null : map['cloudwatchevents'] as String,
-      cloudwatchevidently: map['cloudwatchevidently'] == null ? null : map['cloudwatchevidently'] as String,
-      cloudwatchlog: map['cloudwatchlog'] == null ? null : map['cloudwatchlog'] as String,
-      cloudwatchlogs: map['cloudwatchlogs'] == null ? null : map['cloudwatchlogs'] as String,
-      cloudwatchobservabilityaccessmanager: map['cloudwatchobservabilityaccessmanager'] == null ? null : map['cloudwatchobservabilityaccessmanager'] as String,
-      cloudwatchrum: map['cloudwatchrum'] == null ? null : map['cloudwatchrum'] as String,
-      codeartifact: map['codeartifact'] == null ? null : map['codeartifact'] as String,
-      codebuild: map['codebuild'] == null ? null : map['codebuild'] as String,
-      codecatalyst: map['codecatalyst'] == null ? null : map['codecatalyst'] as String,
-      codecommit: map['codecommit'] == null ? null : map['codecommit'] as String,
-      codeconnections: map['codeconnections'] == null ? null : map['codeconnections'] as String,
-      codedeploy: map['codedeploy'] == null ? null : map['codedeploy'] as String,
-      codeguruprofiler: map['codeguruprofiler'] == null ? null : map['codeguruprofiler'] as String,
-      codegurureviewer: map['codegurureviewer'] == null ? null : map['codegurureviewer'] as String,
-      codepipeline: map['codepipeline'] == null ? null : map['codepipeline'] as String,
-      codestarconnections: map['codestarconnections'] == null ? null : map['codestarconnections'] as String,
-      codestarnotifications: map['codestarnotifications'] == null ? null : map['codestarnotifications'] as String,
-      cognitoidentity: map['cognitoidentity'] == null ? null : map['cognitoidentity'] as String,
-      cognitoidentityprovider: map['cognitoidentityprovider'] == null ? null : map['cognitoidentityprovider'] as String,
-      cognitoidp: map['cognitoidp'] == null ? null : map['cognitoidp'] as String,
-      comprehend: map['comprehend'] == null ? null : map['comprehend'] as String,
-      computeoptimizer: map['computeoptimizer'] == null ? null : map['computeoptimizer'] as String,
-      config: map['config'] == null ? null : map['config'] as String,
-      configservice: map['configservice'] == null ? null : map['configservice'] as String,
-      connect: map['connect'] == null ? null : map['connect'] as String,
-      connectcases: map['connectcases'] == null ? null : map['connectcases'] as String,
-      controltower: map['controltower'] == null ? null : map['controltower'] as String,
-      costandusagereportservice: map['costandusagereportservice'] == null ? null : map['costandusagereportservice'] as String,
-      costexplorer: map['costexplorer'] == null ? null : map['costexplorer'] as String,
-      costoptimizationhub: map['costoptimizationhub'] == null ? null : map['costoptimizationhub'] as String,
-      cur: map['cur'] == null ? null : map['cur'] as String,
-      customerprofiles: map['customerprofiles'] == null ? null : map['customerprofiles'] as String,
-      databasemigration: map['databasemigration'] == null ? null : map['databasemigration'] as String,
-      databasemigrationservice: map['databasemigrationservice'] == null ? null : map['databasemigrationservice'] as String,
-      databrew: map['databrew'] == null ? null : map['databrew'] as String,
-      dataexchange: map['dataexchange'] == null ? null : map['dataexchange'] as String,
-      datapipeline: map['datapipeline'] == null ? null : map['datapipeline'] as String,
-      datasync: map['datasync'] == null ? null : map['datasync'] as String,
-      datazone: map['datazone'] == null ? null : map['datazone'] as String,
-      dax: map['dax'] == null ? null : map['dax'] as String,
-      deploy: map['deploy'] == null ? null : map['deploy'] as String,
-      detective: map['detective'] == null ? null : map['detective'] as String,
-      devicefarm: map['devicefarm'] == null ? null : map['devicefarm'] as String,
-      devopsguru: map['devopsguru'] == null ? null : map['devopsguru'] as String,
-      directconnect: map['directconnect'] == null ? null : map['directconnect'] as String,
-      directoryservice: map['directoryservice'] == null ? null : map['directoryservice'] as String,
-      dlm: map['dlm'] == null ? null : map['dlm'] as String,
-      dms: map['dms'] == null ? null : map['dms'] as String,
-      docdb: map['docdb'] == null ? null : map['docdb'] as String,
-      docdbelastic: map['docdbelastic'] == null ? null : map['docdbelastic'] as String,
-      drs: map['drs'] == null ? null : map['drs'] as String,
-      ds: map['ds'] == null ? null : map['ds'] as String,
-      dsql: map['dsql'] == null ? null : map['dsql'] as String,
-      dynamodb: map['dynamodb'] == null ? null : map['dynamodb'] as String,
-      ec2: map['ec2'] == null ? null : map['ec2'] as String,
-      ecr: map['ecr'] == null ? null : map['ecr'] as String,
-      ecrpublic: map['ecrpublic'] == null ? null : map['ecrpublic'] as String,
-      ecs: map['ecs'] == null ? null : map['ecs'] as String,
-      efs: map['efs'] == null ? null : map['efs'] as String,
-      eks: map['eks'] == null ? null : map['eks'] as String,
-      elasticache: map['elasticache'] == null ? null : map['elasticache'] as String,
-      elasticbeanstalk: map['elasticbeanstalk'] == null ? null : map['elasticbeanstalk'] as String,
-      elasticloadbalancing: map['elasticloadbalancing'] == null ? null : map['elasticloadbalancing'] as String,
-      elasticloadbalancingv2: map['elasticloadbalancingv2'] == null ? null : map['elasticloadbalancingv2'] as String,
-      elasticsearch: map['elasticsearch'] == null ? null : map['elasticsearch'] as String,
-      elasticsearchservice: map['elasticsearchservice'] == null ? null : map['elasticsearchservice'] as String,
-      elastictranscoder: map['elastictranscoder'] == null ? null : map['elastictranscoder'] as String,
-      elb: map['elb'] == null ? null : map['elb'] as String,
-      elbv2: map['elbv2'] == null ? null : map['elbv2'] as String,
-      emr: map['emr'] == null ? null : map['emr'] as String,
-      emrcontainers: map['emrcontainers'] == null ? null : map['emrcontainers'] as String,
-      emrserverless: map['emrserverless'] == null ? null : map['emrserverless'] as String,
-      es: map['es'] == null ? null : map['es'] as String,
-      eventbridge: map['eventbridge'] == null ? null : map['eventbridge'] as String,
-      events: map['events'] == null ? null : map['events'] as String,
-      evidently: map['evidently'] == null ? null : map['evidently'] as String,
-      evs: map['evs'] == null ? null : map['evs'] as String,
-      finspace: map['finspace'] == null ? null : map['finspace'] as String,
-      firehose: map['firehose'] == null ? null : map['firehose'] as String,
-      fis: map['fis'] == null ? null : map['fis'] as String,
-      fms: map['fms'] == null ? null : map['fms'] as String,
-      fsx: map['fsx'] == null ? null : map['fsx'] as String,
-      gamelift: map['gamelift'] == null ? null : map['gamelift'] as String,
-      glacier: map['glacier'] == null ? null : map['glacier'] as String,
-      globalaccelerator: map['globalaccelerator'] == null ? null : map['globalaccelerator'] as String,
-      glue: map['glue'] == null ? null : map['glue'] as String,
-      gluedatabrew: map['gluedatabrew'] == null ? null : map['gluedatabrew'] as String,
-      grafana: map['grafana'] == null ? null : map['grafana'] as String,
-      greengrass: map['greengrass'] == null ? null : map['greengrass'] as String,
-      groundstation: map['groundstation'] == null ? null : map['groundstation'] as String,
-      guardduty: map['guardduty'] == null ? null : map['guardduty'] as String,
-      healthlake: map['healthlake'] == null ? null : map['healthlake'] as String,
-      iam: map['iam'] == null ? null : map['iam'] as String,
-      identitystore: map['identitystore'] == null ? null : map['identitystore'] as String,
-      imagebuilder: map['imagebuilder'] == null ? null : map['imagebuilder'] as String,
-      inspector: map['inspector'] == null ? null : map['inspector'] as String,
-      inspector2: map['inspector2'] == null ? null : map['inspector2'] as String,
-      inspectorv2: map['inspectorv2'] == null ? null : map['inspectorv2'] as String,
-      internetmonitor: map['internetmonitor'] == null ? null : map['internetmonitor'] as String,
-      invoicing: map['invoicing'] == null ? null : map['invoicing'] as String,
-      iot: map['iot'] == null ? null : map['iot'] as String,
-      ivs: map['ivs'] == null ? null : map['ivs'] as String,
-      ivschat: map['ivschat'] == null ? null : map['ivschat'] as String,
-      kafka: map['kafka'] == null ? null : map['kafka'] as String,
-      kafkaconnect: map['kafkaconnect'] == null ? null : map['kafkaconnect'] as String,
-      kendra: map['kendra'] == null ? null : map['kendra'] as String,
-      keyspaces: map['keyspaces'] == null ? null : map['keyspaces'] as String,
-      kinesis: map['kinesis'] == null ? null : map['kinesis'] as String,
-      kinesisanalytics: map['kinesisanalytics'] == null ? null : map['kinesisanalytics'] as String,
-      kinesisanalyticsv2: map['kinesisanalyticsv2'] == null ? null : map['kinesisanalyticsv2'] as String,
-      kinesisvideo: map['kinesisvideo'] == null ? null : map['kinesisvideo'] as String,
-      kms: map['kms'] == null ? null : map['kms'] as String,
-      lakeformation: map['lakeformation'] == null ? null : map['lakeformation'] as String,
-      lambda: map['lambda'] == null ? null : map['lambda'] as String,
-      launchwizard: map['launchwizard'] == null ? null : map['launchwizard'] as String,
-      lex: map['lex'] == null ? null : map['lex'] as String,
-      lexmodelbuilding: map['lexmodelbuilding'] == null ? null : map['lexmodelbuilding'] as String,
-      lexmodelbuildingservice: map['lexmodelbuildingservice'] == null ? null : map['lexmodelbuildingservice'] as String,
-      lexmodels: map['lexmodels'] == null ? null : map['lexmodels'] as String,
-      lexmodelsv2: map['lexmodelsv2'] == null ? null : map['lexmodelsv2'] as String,
-      lexv2models: map['lexv2models'] == null ? null : map['lexv2models'] as String,
-      licensemanager: map['licensemanager'] == null ? null : map['licensemanager'] as String,
-      lightsail: map['lightsail'] == null ? null : map['lightsail'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      locationservice: map['locationservice'] == null ? null : map['locationservice'] as String,
-      logs: map['logs'] == null ? null : map['logs'] as String,
-      m2: map['m2'] == null ? null : map['m2'] as String,
-      macie2: map['macie2'] == null ? null : map['macie2'] as String,
-      managedgrafana: map['managedgrafana'] == null ? null : map['managedgrafana'] as String,
-      mediaconnect: map['mediaconnect'] == null ? null : map['mediaconnect'] as String,
-      mediaconvert: map['mediaconvert'] == null ? null : map['mediaconvert'] as String,
-      medialive: map['medialive'] == null ? null : map['medialive'] as String,
-      mediapackage: map['mediapackage'] == null ? null : map['mediapackage'] as String,
-      mediapackagev2: map['mediapackagev2'] == null ? null : map['mediapackagev2'] as String,
-      mediapackagevod: map['mediapackagevod'] == null ? null : map['mediapackagevod'] as String,
-      mediastore: map['mediastore'] == null ? null : map['mediastore'] as String,
-      memorydb: map['memorydb'] == null ? null : map['memorydb'] as String,
-      mgn: map['mgn'] == null ? null : map['mgn'] as String,
-      mpa: map['mpa'] == null ? null : map['mpa'] as String,
-      mq: map['mq'] == null ? null : map['mq'] as String,
-      msk: map['msk'] == null ? null : map['msk'] as String,
-      mwaa: map['mwaa'] == null ? null : map['mwaa'] as String,
-      mwaaserverless: map['mwaaserverless'] == null ? null : map['mwaaserverless'] as String,
-      neptune: map['neptune'] == null ? null : map['neptune'] as String,
-      neptunegraph: map['neptunegraph'] == null ? null : map['neptunegraph'] as String,
-      networkfirewall: map['networkfirewall'] == null ? null : map['networkfirewall'] as String,
-      networkflowmonitor: map['networkflowmonitor'] == null ? null : map['networkflowmonitor'] as String,
-      networkmanager: map['networkmanager'] == null ? null : map['networkmanager'] as String,
-      networkmonitor: map['networkmonitor'] == null ? null : map['networkmonitor'] as String,
-      notifications: map['notifications'] == null ? null : map['notifications'] as String,
-      notificationscontacts: map['notificationscontacts'] == null ? null : map['notificationscontacts'] as String,
-      oam: map['oam'] == null ? null : map['oam'] as String,
-      observabilityadmin: map['observabilityadmin'] == null ? null : map['observabilityadmin'] as String,
-      odb: map['odb'] == null ? null : map['odb'] as String,
-      opensearch: map['opensearch'] == null ? null : map['opensearch'] as String,
-      opensearchingestion: map['opensearchingestion'] == null ? null : map['opensearchingestion'] as String,
-      opensearchserverless: map['opensearchserverless'] == null ? null : map['opensearchserverless'] as String,
-      opensearchservice: map['opensearchservice'] == null ? null : map['opensearchservice'] as String,
-      organizations: map['organizations'] == null ? null : map['organizations'] as String,
-      osis: map['osis'] == null ? null : map['osis'] as String,
-      outposts: map['outposts'] == null ? null : map['outposts'] as String,
-      paymentcryptography: map['paymentcryptography'] == null ? null : map['paymentcryptography'] as String,
-      pcaconnectorad: map['pcaconnectorad'] == null ? null : map['pcaconnectorad'] as String,
-      pcs: map['pcs'] == null ? null : map['pcs'] as String,
-      pinpoint: map['pinpoint'] == null ? null : map['pinpoint'] as String,
-      pinpointsmsvoicev2: map['pinpointsmsvoicev2'] == null ? null : map['pinpointsmsvoicev2'] as String,
-      pipes: map['pipes'] == null ? null : map['pipes'] as String,
-      polly: map['polly'] == null ? null : map['polly'] as String,
-      pricing: map['pricing'] == null ? null : map['pricing'] as String,
-      prometheus: map['prometheus'] == null ? null : map['prometheus'] as String,
-      prometheusservice: map['prometheusservice'] == null ? null : map['prometheusservice'] as String,
-      qbusiness: map['qbusiness'] == null ? null : map['qbusiness'] as String,
-      qldb: map['qldb'] == null ? null : map['qldb'] as String,
-      quicksight: map['quicksight'] == null ? null : map['quicksight'] as String,
-      ram: map['ram'] == null ? null : map['ram'] as String,
-      rbin: map['rbin'] == null ? null : map['rbin'] as String,
-      rds: map['rds'] == null ? null : map['rds'] as String,
-      rdsdata: map['rdsdata'] == null ? null : map['rdsdata'] as String,
-      rdsdataservice: map['rdsdataservice'] == null ? null : map['rdsdataservice'] as String,
-      recyclebin: map['recyclebin'] == null ? null : map['recyclebin'] as String,
-      redshift: map['redshift'] == null ? null : map['redshift'] as String,
-      redshiftdata: map['redshiftdata'] == null ? null : map['redshiftdata'] as String,
-      redshiftdataapiservice: map['redshiftdataapiservice'] == null ? null : map['redshiftdataapiservice'] as String,
-      redshiftserverless: map['redshiftserverless'] == null ? null : map['redshiftserverless'] as String,
-      rekognition: map['rekognition'] == null ? null : map['rekognition'] as String,
-      resiliencehub: map['resiliencehub'] == null ? null : map['resiliencehub'] as String,
-      resourceexplorer2: map['resourceexplorer2'] == null ? null : map['resourceexplorer2'] as String,
-      resourcegroups: map['resourcegroups'] == null ? null : map['resourcegroups'] as String,
-      resourcegroupstagging: map['resourcegroupstagging'] == null ? null : map['resourcegroupstagging'] as String,
-      resourcegroupstaggingapi: map['resourcegroupstaggingapi'] == null ? null : map['resourcegroupstaggingapi'] as String,
-      rolesanywhere: map['rolesanywhere'] == null ? null : map['rolesanywhere'] as String,
-      route53: map['route53'] == null ? null : map['route53'] as String,
-      route53domains: map['route53domains'] == null ? null : map['route53domains'] as String,
-      route53profiles: map['route53profiles'] == null ? null : map['route53profiles'] as String,
-      route53recoverycontrolconfig: map['route53recoverycontrolconfig'] == null ? null : map['route53recoverycontrolconfig'] as String,
-      route53recoveryreadiness: map['route53recoveryreadiness'] == null ? null : map['route53recoveryreadiness'] as String,
-      route53resolver: map['route53resolver'] == null ? null : map['route53resolver'] as String,
-      rum: map['rum'] == null ? null : map['rum'] as String,
-      s3: map['s3'] == null ? null : map['s3'] as String,
-      s3api: map['s3api'] == null ? null : map['s3api'] as String,
-      s3control: map['s3control'] == null ? null : map['s3control'] as String,
-      s3outposts: map['s3outposts'] == null ? null : map['s3outposts'] as String,
-      s3tables: map['s3tables'] == null ? null : map['s3tables'] as String,
-      s3vectors: map['s3vectors'] == null ? null : map['s3vectors'] as String,
-      sagemaker: map['sagemaker'] == null ? null : map['sagemaker'] as String,
-      savingsplans: map['savingsplans'] == null ? null : map['savingsplans'] as String,
-      scheduler: map['scheduler'] == null ? null : map['scheduler'] as String,
-      schemas: map['schemas'] == null ? null : map['schemas'] as String,
-      secretsmanager: map['secretsmanager'] == null ? null : map['secretsmanager'] as String,
-      securityhub: map['securityhub'] == null ? null : map['securityhub'] as String,
-      securitylake: map['securitylake'] == null ? null : map['securitylake'] as String,
-      serverlessapplicationrepository: map['serverlessapplicationrepository'] == null ? null : map['serverlessapplicationrepository'] as String,
-      serverlessapprepo: map['serverlessapprepo'] == null ? null : map['serverlessapprepo'] as String,
-      serverlessrepo: map['serverlessrepo'] == null ? null : map['serverlessrepo'] as String,
-      servicecatalog: map['servicecatalog'] == null ? null : map['servicecatalog'] as String,
-      servicecatalogappregistry: map['servicecatalogappregistry'] == null ? null : map['servicecatalogappregistry'] as String,
-      servicediscovery: map['servicediscovery'] == null ? null : map['servicediscovery'] as String,
-      servicequotas: map['servicequotas'] == null ? null : map['servicequotas'] as String,
-      ses: map['ses'] == null ? null : map['ses'] as String,
-      sesv2: map['sesv2'] == null ? null : map['sesv2'] as String,
-      sfn: map['sfn'] == null ? null : map['sfn'] as String,
-      shield: map['shield'] == null ? null : map['shield'] as String,
-      signer: map['signer'] == null ? null : map['signer'] as String,
-      sns: map['sns'] == null ? null : map['sns'] as String,
-      sqs: map['sqs'] == null ? null : map['sqs'] as String,
-      ssm: map['ssm'] == null ? null : map['ssm'] as String,
-      ssmcontacts: map['ssmcontacts'] == null ? null : map['ssmcontacts'] as String,
-      ssmincidents: map['ssmincidents'] == null ? null : map['ssmincidents'] as String,
-      ssmquicksetup: map['ssmquicksetup'] == null ? null : map['ssmquicksetup'] as String,
-      ssmsap: map['ssmsap'] == null ? null : map['ssmsap'] as String,
-      sso: map['sso'] == null ? null : map['sso'] as String,
-      ssoadmin: map['ssoadmin'] == null ? null : map['ssoadmin'] as String,
-      stepfunctions: map['stepfunctions'] == null ? null : map['stepfunctions'] as String,
-      storagegateway: map['storagegateway'] == null ? null : map['storagegateway'] as String,
-      sts: map['sts'] == null ? null : map['sts'] as String,
-      swf: map['swf'] == null ? null : map['swf'] as String,
-      synthetics: map['synthetics'] == null ? null : map['synthetics'] as String,
-      taxsettings: map['taxsettings'] == null ? null : map['taxsettings'] as String,
-      timestreaminfluxdb: map['timestreaminfluxdb'] == null ? null : map['timestreaminfluxdb'] as String,
-      timestreamquery: map['timestreamquery'] == null ? null : map['timestreamquery'] as String,
-      timestreamwrite: map['timestreamwrite'] == null ? null : map['timestreamwrite'] as String,
-      transcribe: map['transcribe'] == null ? null : map['transcribe'] as String,
-      transcribeservice: map['transcribeservice'] == null ? null : map['transcribeservice'] as String,
-      transfer: map['transfer'] == null ? null : map['transfer'] as String,
-      verifiedpermissions: map['verifiedpermissions'] == null ? null : map['verifiedpermissions'] as String,
-      vpclattice: map['vpclattice'] == null ? null : map['vpclattice'] as String,
-      waf: map['waf'] == null ? null : map['waf'] as String,
-      wafregional: map['wafregional'] == null ? null : map['wafregional'] as String,
-      wafv2: map['wafv2'] == null ? null : map['wafv2'] as String,
-      wellarchitected: map['wellarchitected'] == null ? null : map['wellarchitected'] as String,
-      workmail: map['workmail'] == null ? null : map['workmail'] as String,
-      workspaces: map['workspaces'] == null ? null : map['workspaces'] as String,
-      workspacesweb: map['workspacesweb'] == null ? null : map['workspacesweb'] as String,
-      xray: map['xray'] == null ? null : map['xray'] as String,
+      accessanalyzer: map['accessanalyzer'] == null ? null : (map['accessanalyzer'] as String).input(),
+      account: map['account'] == null ? null : (map['account'] as String).input(),
+      acm: map['acm'] == null ? null : (map['acm'] as String).input(),
+      acmpca: map['acmpca'] == null ? null : (map['acmpca'] as String).input(),
+      amg: map['amg'] == null ? null : (map['amg'] as String).input(),
+      amp: map['amp'] == null ? null : (map['amp'] as String).input(),
+      amplify: map['amplify'] == null ? null : (map['amplify'] as String).input(),
+      apigateway: map['apigateway'] == null ? null : (map['apigateway'] as String).input(),
+      apigatewayv2: map['apigatewayv2'] == null ? null : (map['apigatewayv2'] as String).input(),
+      appautoscaling: map['appautoscaling'] == null ? null : (map['appautoscaling'] as String).input(),
+      appconfig: map['appconfig'] == null ? null : (map['appconfig'] as String).input(),
+      appfabric: map['appfabric'] == null ? null : (map['appfabric'] as String).input(),
+      appflow: map['appflow'] == null ? null : (map['appflow'] as String).input(),
+      appintegrations: map['appintegrations'] == null ? null : (map['appintegrations'] as String).input(),
+      appintegrationsservice: map['appintegrationsservice'] == null ? null : (map['appintegrationsservice'] as String).input(),
+      applicationautoscaling: map['applicationautoscaling'] == null ? null : (map['applicationautoscaling'] as String).input(),
+      applicationinsights: map['applicationinsights'] == null ? null : (map['applicationinsights'] as String).input(),
+      applicationsignals: map['applicationsignals'] == null ? null : (map['applicationsignals'] as String).input(),
+      appmesh: map['appmesh'] == null ? null : (map['appmesh'] as String).input(),
+      appregistry: map['appregistry'] == null ? null : (map['appregistry'] as String).input(),
+      apprunner: map['apprunner'] == null ? null : (map['apprunner'] as String).input(),
+      appstream: map['appstream'] == null ? null : (map['appstream'] as String).input(),
+      appsync: map['appsync'] == null ? null : (map['appsync'] as String).input(),
+      arcregionswitch: map['arcregionswitch'] == null ? null : (map['arcregionswitch'] as String).input(),
+      arczonalshift: map['arczonalshift'] == null ? null : (map['arczonalshift'] as String).input(),
+      athena: map['athena'] == null ? null : (map['athena'] as String).input(),
+      auditmanager: map['auditmanager'] == null ? null : (map['auditmanager'] as String).input(),
+      autoscaling: map['autoscaling'] == null ? null : (map['autoscaling'] as String).input(),
+      autoscalingplans: map['autoscalingplans'] == null ? null : (map['autoscalingplans'] as String).input(),
+      backup: map['backup'] == null ? null : (map['backup'] as String).input(),
+      batch: map['batch'] == null ? null : (map['batch'] as String).input(),
+      bcmdataexports: map['bcmdataexports'] == null ? null : (map['bcmdataexports'] as String).input(),
+      beanstalk: map['beanstalk'] == null ? null : (map['beanstalk'] as String).input(),
+      bedrock: map['bedrock'] == null ? null : (map['bedrock'] as String).input(),
+      bedrockagent: map['bedrockagent'] == null ? null : (map['bedrockagent'] as String).input(),
+      bedrockagentcore: map['bedrockagentcore'] == null ? null : (map['bedrockagentcore'] as String).input(),
+      billing: map['billing'] == null ? null : (map['billing'] as String).input(),
+      budgets: map['budgets'] == null ? null : (map['budgets'] as String).input(),
+      ce: map['ce'] == null ? null : (map['ce'] as String).input(),
+      chatbot: map['chatbot'] == null ? null : (map['chatbot'] as String).input(),
+      chime: map['chime'] == null ? null : (map['chime'] as String).input(),
+      chimesdkmediapipelines: map['chimesdkmediapipelines'] == null ? null : (map['chimesdkmediapipelines'] as String).input(),
+      chimesdkvoice: map['chimesdkvoice'] == null ? null : (map['chimesdkvoice'] as String).input(),
+      cleanrooms: map['cleanrooms'] == null ? null : (map['cleanrooms'] as String).input(),
+      cloud9: map['cloud9'] == null ? null : (map['cloud9'] as String).input(),
+      cloudcontrol: map['cloudcontrol'] == null ? null : (map['cloudcontrol'] as String).input(),
+      cloudcontrolapi: map['cloudcontrolapi'] == null ? null : (map['cloudcontrolapi'] as String).input(),
+      cloudformation: map['cloudformation'] == null ? null : (map['cloudformation'] as String).input(),
+      cloudfront: map['cloudfront'] == null ? null : (map['cloudfront'] as String).input(),
+      cloudfrontkeyvaluestore: map['cloudfrontkeyvaluestore'] == null ? null : (map['cloudfrontkeyvaluestore'] as String).input(),
+      cloudhsm: map['cloudhsm'] == null ? null : (map['cloudhsm'] as String).input(),
+      cloudhsmv2: map['cloudhsmv2'] == null ? null : (map['cloudhsmv2'] as String).input(),
+      cloudsearch: map['cloudsearch'] == null ? null : (map['cloudsearch'] as String).input(),
+      cloudtrail: map['cloudtrail'] == null ? null : (map['cloudtrail'] as String).input(),
+      cloudwatch: map['cloudwatch'] == null ? null : (map['cloudwatch'] as String).input(),
+      cloudwatchevents: map['cloudwatchevents'] == null ? null : (map['cloudwatchevents'] as String).input(),
+      cloudwatchevidently: map['cloudwatchevidently'] == null ? null : (map['cloudwatchevidently'] as String).input(),
+      cloudwatchlog: map['cloudwatchlog'] == null ? null : (map['cloudwatchlog'] as String).input(),
+      cloudwatchlogs: map['cloudwatchlogs'] == null ? null : (map['cloudwatchlogs'] as String).input(),
+      cloudwatchobservabilityaccessmanager: map['cloudwatchobservabilityaccessmanager'] == null ? null : (map['cloudwatchobservabilityaccessmanager'] as String).input(),
+      cloudwatchrum: map['cloudwatchrum'] == null ? null : (map['cloudwatchrum'] as String).input(),
+      codeartifact: map['codeartifact'] == null ? null : (map['codeartifact'] as String).input(),
+      codebuild: map['codebuild'] == null ? null : (map['codebuild'] as String).input(),
+      codecatalyst: map['codecatalyst'] == null ? null : (map['codecatalyst'] as String).input(),
+      codecommit: map['codecommit'] == null ? null : (map['codecommit'] as String).input(),
+      codeconnections: map['codeconnections'] == null ? null : (map['codeconnections'] as String).input(),
+      codedeploy: map['codedeploy'] == null ? null : (map['codedeploy'] as String).input(),
+      codeguruprofiler: map['codeguruprofiler'] == null ? null : (map['codeguruprofiler'] as String).input(),
+      codegurureviewer: map['codegurureviewer'] == null ? null : (map['codegurureviewer'] as String).input(),
+      codepipeline: map['codepipeline'] == null ? null : (map['codepipeline'] as String).input(),
+      codestarconnections: map['codestarconnections'] == null ? null : (map['codestarconnections'] as String).input(),
+      codestarnotifications: map['codestarnotifications'] == null ? null : (map['codestarnotifications'] as String).input(),
+      cognitoidentity: map['cognitoidentity'] == null ? null : (map['cognitoidentity'] as String).input(),
+      cognitoidentityprovider: map['cognitoidentityprovider'] == null ? null : (map['cognitoidentityprovider'] as String).input(),
+      cognitoidp: map['cognitoidp'] == null ? null : (map['cognitoidp'] as String).input(),
+      comprehend: map['comprehend'] == null ? null : (map['comprehend'] as String).input(),
+      computeoptimizer: map['computeoptimizer'] == null ? null : (map['computeoptimizer'] as String).input(),
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      configservice: map['configservice'] == null ? null : (map['configservice'] as String).input(),
+      connect: map['connect'] == null ? null : (map['connect'] as String).input(),
+      connectcases: map['connectcases'] == null ? null : (map['connectcases'] as String).input(),
+      controltower: map['controltower'] == null ? null : (map['controltower'] as String).input(),
+      costandusagereportservice: map['costandusagereportservice'] == null ? null : (map['costandusagereportservice'] as String).input(),
+      costexplorer: map['costexplorer'] == null ? null : (map['costexplorer'] as String).input(),
+      costoptimizationhub: map['costoptimizationhub'] == null ? null : (map['costoptimizationhub'] as String).input(),
+      cur: map['cur'] == null ? null : (map['cur'] as String).input(),
+      customerprofiles: map['customerprofiles'] == null ? null : (map['customerprofiles'] as String).input(),
+      databasemigration: map['databasemigration'] == null ? null : (map['databasemigration'] as String).input(),
+      databasemigrationservice: map['databasemigrationservice'] == null ? null : (map['databasemigrationservice'] as String).input(),
+      databrew: map['databrew'] == null ? null : (map['databrew'] as String).input(),
+      dataexchange: map['dataexchange'] == null ? null : (map['dataexchange'] as String).input(),
+      datapipeline: map['datapipeline'] == null ? null : (map['datapipeline'] as String).input(),
+      datasync: map['datasync'] == null ? null : (map['datasync'] as String).input(),
+      datazone: map['datazone'] == null ? null : (map['datazone'] as String).input(),
+      dax: map['dax'] == null ? null : (map['dax'] as String).input(),
+      deploy: map['deploy'] == null ? null : (map['deploy'] as String).input(),
+      detective: map['detective'] == null ? null : (map['detective'] as String).input(),
+      devicefarm: map['devicefarm'] == null ? null : (map['devicefarm'] as String).input(),
+      devopsguru: map['devopsguru'] == null ? null : (map['devopsguru'] as String).input(),
+      directconnect: map['directconnect'] == null ? null : (map['directconnect'] as String).input(),
+      directoryservice: map['directoryservice'] == null ? null : (map['directoryservice'] as String).input(),
+      dlm: map['dlm'] == null ? null : (map['dlm'] as String).input(),
+      dms: map['dms'] == null ? null : (map['dms'] as String).input(),
+      docdb: map['docdb'] == null ? null : (map['docdb'] as String).input(),
+      docdbelastic: map['docdbelastic'] == null ? null : (map['docdbelastic'] as String).input(),
+      drs: map['drs'] == null ? null : (map['drs'] as String).input(),
+      ds: map['ds'] == null ? null : (map['ds'] as String).input(),
+      dsql: map['dsql'] == null ? null : (map['dsql'] as String).input(),
+      dynamodb: map['dynamodb'] == null ? null : (map['dynamodb'] as String).input(),
+      ec2: map['ec2'] == null ? null : (map['ec2'] as String).input(),
+      ecr: map['ecr'] == null ? null : (map['ecr'] as String).input(),
+      ecrpublic: map['ecrpublic'] == null ? null : (map['ecrpublic'] as String).input(),
+      ecs: map['ecs'] == null ? null : (map['ecs'] as String).input(),
+      efs: map['efs'] == null ? null : (map['efs'] as String).input(),
+      eks: map['eks'] == null ? null : (map['eks'] as String).input(),
+      elasticache: map['elasticache'] == null ? null : (map['elasticache'] as String).input(),
+      elasticbeanstalk: map['elasticbeanstalk'] == null ? null : (map['elasticbeanstalk'] as String).input(),
+      elasticloadbalancing: map['elasticloadbalancing'] == null ? null : (map['elasticloadbalancing'] as String).input(),
+      elasticloadbalancingv2: map['elasticloadbalancingv2'] == null ? null : (map['elasticloadbalancingv2'] as String).input(),
+      elasticsearch: map['elasticsearch'] == null ? null : (map['elasticsearch'] as String).input(),
+      elasticsearchservice: map['elasticsearchservice'] == null ? null : (map['elasticsearchservice'] as String).input(),
+      elastictranscoder: map['elastictranscoder'] == null ? null : (map['elastictranscoder'] as String).input(),
+      elb: map['elb'] == null ? null : (map['elb'] as String).input(),
+      elbv2: map['elbv2'] == null ? null : (map['elbv2'] as String).input(),
+      emr: map['emr'] == null ? null : (map['emr'] as String).input(),
+      emrcontainers: map['emrcontainers'] == null ? null : (map['emrcontainers'] as String).input(),
+      emrserverless: map['emrserverless'] == null ? null : (map['emrserverless'] as String).input(),
+      es: map['es'] == null ? null : (map['es'] as String).input(),
+      eventbridge: map['eventbridge'] == null ? null : (map['eventbridge'] as String).input(),
+      events: map['events'] == null ? null : (map['events'] as String).input(),
+      evidently: map['evidently'] == null ? null : (map['evidently'] as String).input(),
+      evs: map['evs'] == null ? null : (map['evs'] as String).input(),
+      finspace: map['finspace'] == null ? null : (map['finspace'] as String).input(),
+      firehose: map['firehose'] == null ? null : (map['firehose'] as String).input(),
+      fis: map['fis'] == null ? null : (map['fis'] as String).input(),
+      fms: map['fms'] == null ? null : (map['fms'] as String).input(),
+      fsx: map['fsx'] == null ? null : (map['fsx'] as String).input(),
+      gamelift: map['gamelift'] == null ? null : (map['gamelift'] as String).input(),
+      glacier: map['glacier'] == null ? null : (map['glacier'] as String).input(),
+      globalaccelerator: map['globalaccelerator'] == null ? null : (map['globalaccelerator'] as String).input(),
+      glue: map['glue'] == null ? null : (map['glue'] as String).input(),
+      gluedatabrew: map['gluedatabrew'] == null ? null : (map['gluedatabrew'] as String).input(),
+      grafana: map['grafana'] == null ? null : (map['grafana'] as String).input(),
+      greengrass: map['greengrass'] == null ? null : (map['greengrass'] as String).input(),
+      groundstation: map['groundstation'] == null ? null : (map['groundstation'] as String).input(),
+      guardduty: map['guardduty'] == null ? null : (map['guardduty'] as String).input(),
+      healthlake: map['healthlake'] == null ? null : (map['healthlake'] as String).input(),
+      iam: map['iam'] == null ? null : (map['iam'] as String).input(),
+      identitystore: map['identitystore'] == null ? null : (map['identitystore'] as String).input(),
+      imagebuilder: map['imagebuilder'] == null ? null : (map['imagebuilder'] as String).input(),
+      inspector: map['inspector'] == null ? null : (map['inspector'] as String).input(),
+      inspector2: map['inspector2'] == null ? null : (map['inspector2'] as String).input(),
+      inspectorv2: map['inspectorv2'] == null ? null : (map['inspectorv2'] as String).input(),
+      internetmonitor: map['internetmonitor'] == null ? null : (map['internetmonitor'] as String).input(),
+      invoicing: map['invoicing'] == null ? null : (map['invoicing'] as String).input(),
+      iot: map['iot'] == null ? null : (map['iot'] as String).input(),
+      ivs: map['ivs'] == null ? null : (map['ivs'] as String).input(),
+      ivschat: map['ivschat'] == null ? null : (map['ivschat'] as String).input(),
+      kafka: map['kafka'] == null ? null : (map['kafka'] as String).input(),
+      kafkaconnect: map['kafkaconnect'] == null ? null : (map['kafkaconnect'] as String).input(),
+      kendra: map['kendra'] == null ? null : (map['kendra'] as String).input(),
+      keyspaces: map['keyspaces'] == null ? null : (map['keyspaces'] as String).input(),
+      kinesis: map['kinesis'] == null ? null : (map['kinesis'] as String).input(),
+      kinesisanalytics: map['kinesisanalytics'] == null ? null : (map['kinesisanalytics'] as String).input(),
+      kinesisanalyticsv2: map['kinesisanalyticsv2'] == null ? null : (map['kinesisanalyticsv2'] as String).input(),
+      kinesisvideo: map['kinesisvideo'] == null ? null : (map['kinesisvideo'] as String).input(),
+      kms: map['kms'] == null ? null : (map['kms'] as String).input(),
+      lakeformation: map['lakeformation'] == null ? null : (map['lakeformation'] as String).input(),
+      lambda: map['lambda'] == null ? null : (map['lambda'] as String).input(),
+      launchwizard: map['launchwizard'] == null ? null : (map['launchwizard'] as String).input(),
+      lex: map['lex'] == null ? null : (map['lex'] as String).input(),
+      lexmodelbuilding: map['lexmodelbuilding'] == null ? null : (map['lexmodelbuilding'] as String).input(),
+      lexmodelbuildingservice: map['lexmodelbuildingservice'] == null ? null : (map['lexmodelbuildingservice'] as String).input(),
+      lexmodels: map['lexmodels'] == null ? null : (map['lexmodels'] as String).input(),
+      lexmodelsv2: map['lexmodelsv2'] == null ? null : (map['lexmodelsv2'] as String).input(),
+      lexv2models: map['lexv2models'] == null ? null : (map['lexv2models'] as String).input(),
+      licensemanager: map['licensemanager'] == null ? null : (map['licensemanager'] as String).input(),
+      lightsail: map['lightsail'] == null ? null : (map['lightsail'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      locationservice: map['locationservice'] == null ? null : (map['locationservice'] as String).input(),
+      logs: map['logs'] == null ? null : (map['logs'] as String).input(),
+      m2: map['m2'] == null ? null : (map['m2'] as String).input(),
+      macie2: map['macie2'] == null ? null : (map['macie2'] as String).input(),
+      managedgrafana: map['managedgrafana'] == null ? null : (map['managedgrafana'] as String).input(),
+      mediaconnect: map['mediaconnect'] == null ? null : (map['mediaconnect'] as String).input(),
+      mediaconvert: map['mediaconvert'] == null ? null : (map['mediaconvert'] as String).input(),
+      medialive: map['medialive'] == null ? null : (map['medialive'] as String).input(),
+      mediapackage: map['mediapackage'] == null ? null : (map['mediapackage'] as String).input(),
+      mediapackagev2: map['mediapackagev2'] == null ? null : (map['mediapackagev2'] as String).input(),
+      mediapackagevod: map['mediapackagevod'] == null ? null : (map['mediapackagevod'] as String).input(),
+      mediastore: map['mediastore'] == null ? null : (map['mediastore'] as String).input(),
+      memorydb: map['memorydb'] == null ? null : (map['memorydb'] as String).input(),
+      mgn: map['mgn'] == null ? null : (map['mgn'] as String).input(),
+      mpa: map['mpa'] == null ? null : (map['mpa'] as String).input(),
+      mq: map['mq'] == null ? null : (map['mq'] as String).input(),
+      msk: map['msk'] == null ? null : (map['msk'] as String).input(),
+      mwaa: map['mwaa'] == null ? null : (map['mwaa'] as String).input(),
+      mwaaserverless: map['mwaaserverless'] == null ? null : (map['mwaaserverless'] as String).input(),
+      neptune: map['neptune'] == null ? null : (map['neptune'] as String).input(),
+      neptunegraph: map['neptunegraph'] == null ? null : (map['neptunegraph'] as String).input(),
+      networkfirewall: map['networkfirewall'] == null ? null : (map['networkfirewall'] as String).input(),
+      networkflowmonitor: map['networkflowmonitor'] == null ? null : (map['networkflowmonitor'] as String).input(),
+      networkmanager: map['networkmanager'] == null ? null : (map['networkmanager'] as String).input(),
+      networkmonitor: map['networkmonitor'] == null ? null : (map['networkmonitor'] as String).input(),
+      notifications: map['notifications'] == null ? null : (map['notifications'] as String).input(),
+      notificationscontacts: map['notificationscontacts'] == null ? null : (map['notificationscontacts'] as String).input(),
+      oam: map['oam'] == null ? null : (map['oam'] as String).input(),
+      observabilityadmin: map['observabilityadmin'] == null ? null : (map['observabilityadmin'] as String).input(),
+      odb: map['odb'] == null ? null : (map['odb'] as String).input(),
+      opensearch: map['opensearch'] == null ? null : (map['opensearch'] as String).input(),
+      opensearchingestion: map['opensearchingestion'] == null ? null : (map['opensearchingestion'] as String).input(),
+      opensearchserverless: map['opensearchserverless'] == null ? null : (map['opensearchserverless'] as String).input(),
+      opensearchservice: map['opensearchservice'] == null ? null : (map['opensearchservice'] as String).input(),
+      organizations: map['organizations'] == null ? null : (map['organizations'] as String).input(),
+      osis: map['osis'] == null ? null : (map['osis'] as String).input(),
+      outposts: map['outposts'] == null ? null : (map['outposts'] as String).input(),
+      paymentcryptography: map['paymentcryptography'] == null ? null : (map['paymentcryptography'] as String).input(),
+      pcaconnectorad: map['pcaconnectorad'] == null ? null : (map['pcaconnectorad'] as String).input(),
+      pcs: map['pcs'] == null ? null : (map['pcs'] as String).input(),
+      pinpoint: map['pinpoint'] == null ? null : (map['pinpoint'] as String).input(),
+      pinpointsmsvoicev2: map['pinpointsmsvoicev2'] == null ? null : (map['pinpointsmsvoicev2'] as String).input(),
+      pipes: map['pipes'] == null ? null : (map['pipes'] as String).input(),
+      polly: map['polly'] == null ? null : (map['polly'] as String).input(),
+      pricing: map['pricing'] == null ? null : (map['pricing'] as String).input(),
+      prometheus: map['prometheus'] == null ? null : (map['prometheus'] as String).input(),
+      prometheusservice: map['prometheusservice'] == null ? null : (map['prometheusservice'] as String).input(),
+      qbusiness: map['qbusiness'] == null ? null : (map['qbusiness'] as String).input(),
+      qldb: map['qldb'] == null ? null : (map['qldb'] as String).input(),
+      quicksight: map['quicksight'] == null ? null : (map['quicksight'] as String).input(),
+      ram: map['ram'] == null ? null : (map['ram'] as String).input(),
+      rbin: map['rbin'] == null ? null : (map['rbin'] as String).input(),
+      rds: map['rds'] == null ? null : (map['rds'] as String).input(),
+      rdsdata: map['rdsdata'] == null ? null : (map['rdsdata'] as String).input(),
+      rdsdataservice: map['rdsdataservice'] == null ? null : (map['rdsdataservice'] as String).input(),
+      recyclebin: map['recyclebin'] == null ? null : (map['recyclebin'] as String).input(),
+      redshift: map['redshift'] == null ? null : (map['redshift'] as String).input(),
+      redshiftdata: map['redshiftdata'] == null ? null : (map['redshiftdata'] as String).input(),
+      redshiftdataapiservice: map['redshiftdataapiservice'] == null ? null : (map['redshiftdataapiservice'] as String).input(),
+      redshiftserverless: map['redshiftserverless'] == null ? null : (map['redshiftserverless'] as String).input(),
+      rekognition: map['rekognition'] == null ? null : (map['rekognition'] as String).input(),
+      resiliencehub: map['resiliencehub'] == null ? null : (map['resiliencehub'] as String).input(),
+      resourceexplorer2: map['resourceexplorer2'] == null ? null : (map['resourceexplorer2'] as String).input(),
+      resourcegroups: map['resourcegroups'] == null ? null : (map['resourcegroups'] as String).input(),
+      resourcegroupstagging: map['resourcegroupstagging'] == null ? null : (map['resourcegroupstagging'] as String).input(),
+      resourcegroupstaggingapi: map['resourcegroupstaggingapi'] == null ? null : (map['resourcegroupstaggingapi'] as String).input(),
+      rolesanywhere: map['rolesanywhere'] == null ? null : (map['rolesanywhere'] as String).input(),
+      route53: map['route53'] == null ? null : (map['route53'] as String).input(),
+      route53domains: map['route53domains'] == null ? null : (map['route53domains'] as String).input(),
+      route53profiles: map['route53profiles'] == null ? null : (map['route53profiles'] as String).input(),
+      route53recoverycontrolconfig: map['route53recoverycontrolconfig'] == null ? null : (map['route53recoverycontrolconfig'] as String).input(),
+      route53recoveryreadiness: map['route53recoveryreadiness'] == null ? null : (map['route53recoveryreadiness'] as String).input(),
+      route53resolver: map['route53resolver'] == null ? null : (map['route53resolver'] as String).input(),
+      rum: map['rum'] == null ? null : (map['rum'] as String).input(),
+      s3: map['s3'] == null ? null : (map['s3'] as String).input(),
+      s3api: map['s3api'] == null ? null : (map['s3api'] as String).input(),
+      s3control: map['s3control'] == null ? null : (map['s3control'] as String).input(),
+      s3outposts: map['s3outposts'] == null ? null : (map['s3outposts'] as String).input(),
+      s3tables: map['s3tables'] == null ? null : (map['s3tables'] as String).input(),
+      s3vectors: map['s3vectors'] == null ? null : (map['s3vectors'] as String).input(),
+      sagemaker: map['sagemaker'] == null ? null : (map['sagemaker'] as String).input(),
+      savingsplans: map['savingsplans'] == null ? null : (map['savingsplans'] as String).input(),
+      scheduler: map['scheduler'] == null ? null : (map['scheduler'] as String).input(),
+      schemas: map['schemas'] == null ? null : (map['schemas'] as String).input(),
+      secretsmanager: map['secretsmanager'] == null ? null : (map['secretsmanager'] as String).input(),
+      securityhub: map['securityhub'] == null ? null : (map['securityhub'] as String).input(),
+      securitylake: map['securitylake'] == null ? null : (map['securitylake'] as String).input(),
+      serverlessapplicationrepository: map['serverlessapplicationrepository'] == null ? null : (map['serverlessapplicationrepository'] as String).input(),
+      serverlessapprepo: map['serverlessapprepo'] == null ? null : (map['serverlessapprepo'] as String).input(),
+      serverlessrepo: map['serverlessrepo'] == null ? null : (map['serverlessrepo'] as String).input(),
+      servicecatalog: map['servicecatalog'] == null ? null : (map['servicecatalog'] as String).input(),
+      servicecatalogappregistry: map['servicecatalogappregistry'] == null ? null : (map['servicecatalogappregistry'] as String).input(),
+      servicediscovery: map['servicediscovery'] == null ? null : (map['servicediscovery'] as String).input(),
+      servicequotas: map['servicequotas'] == null ? null : (map['servicequotas'] as String).input(),
+      ses: map['ses'] == null ? null : (map['ses'] as String).input(),
+      sesv2: map['sesv2'] == null ? null : (map['sesv2'] as String).input(),
+      sfn: map['sfn'] == null ? null : (map['sfn'] as String).input(),
+      shield: map['shield'] == null ? null : (map['shield'] as String).input(),
+      signer: map['signer'] == null ? null : (map['signer'] as String).input(),
+      sns: map['sns'] == null ? null : (map['sns'] as String).input(),
+      sqs: map['sqs'] == null ? null : (map['sqs'] as String).input(),
+      ssm: map['ssm'] == null ? null : (map['ssm'] as String).input(),
+      ssmcontacts: map['ssmcontacts'] == null ? null : (map['ssmcontacts'] as String).input(),
+      ssmincidents: map['ssmincidents'] == null ? null : (map['ssmincidents'] as String).input(),
+      ssmquicksetup: map['ssmquicksetup'] == null ? null : (map['ssmquicksetup'] as String).input(),
+      ssmsap: map['ssmsap'] == null ? null : (map['ssmsap'] as String).input(),
+      sso: map['sso'] == null ? null : (map['sso'] as String).input(),
+      ssoadmin: map['ssoadmin'] == null ? null : (map['ssoadmin'] as String).input(),
+      stepfunctions: map['stepfunctions'] == null ? null : (map['stepfunctions'] as String).input(),
+      storagegateway: map['storagegateway'] == null ? null : (map['storagegateway'] as String).input(),
+      sts: map['sts'] == null ? null : (map['sts'] as String).input(),
+      swf: map['swf'] == null ? null : (map['swf'] as String).input(),
+      synthetics: map['synthetics'] == null ? null : (map['synthetics'] as String).input(),
+      taxsettings: map['taxsettings'] == null ? null : (map['taxsettings'] as String).input(),
+      timestreaminfluxdb: map['timestreaminfluxdb'] == null ? null : (map['timestreaminfluxdb'] as String).input(),
+      timestreamquery: map['timestreamquery'] == null ? null : (map['timestreamquery'] as String).input(),
+      timestreamwrite: map['timestreamwrite'] == null ? null : (map['timestreamwrite'] as String).input(),
+      transcribe: map['transcribe'] == null ? null : (map['transcribe'] as String).input(),
+      transcribeservice: map['transcribeservice'] == null ? null : (map['transcribeservice'] as String).input(),
+      transfer: map['transfer'] == null ? null : (map['transfer'] as String).input(),
+      verifiedpermissions: map['verifiedpermissions'] == null ? null : (map['verifiedpermissions'] as String).input(),
+      vpclattice: map['vpclattice'] == null ? null : (map['vpclattice'] as String).input(),
+      waf: map['waf'] == null ? null : (map['waf'] as String).input(),
+      wafregional: map['wafregional'] == null ? null : (map['wafregional'] as String).input(),
+      wafv2: map['wafv2'] == null ? null : (map['wafv2'] as String).input(),
+      wellarchitected: map['wellarchitected'] == null ? null : (map['wellarchitected'] as String).input(),
+      workmail: map['workmail'] == null ? null : (map['workmail'] as String).input(),
+      workspaces: map['workspaces'] == null ? null : (map['workspaces'] as String).input(),
+      workspacesweb: map['workspacesweb'] == null ? null : (map['workspacesweb'] as String).input(),
+      xray: map['xray'] == null ? null : (map['xray'] as String).input(),
     );
   }
 }

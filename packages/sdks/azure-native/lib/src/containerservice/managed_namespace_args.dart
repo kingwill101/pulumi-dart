@@ -29,19 +29,13 @@ class ManagedNamespaceArgs {
   /// [resourceName] The name of the managed cluster resource.
   /// [tags] The tags to be persisted on the managed cluster namespace.
   ManagedNamespaceArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedNamespaceName,
-    pulumi.Output<NamespaceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedNamespaceName = pulumi.Input.asOptionalInput<String>(managedNamespaceName),
-      properties = pulumi.Input.asOptionalInput<NamespaceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.managedNamespaceName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ManagedNamespaceArgs {
 
   factory ManagedNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return ManagedNamespaceArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedNamespaceName: map['managedNamespaceName'] == null ? null : pulumi.Output.create<String>(map['managedNamespaceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<NamespaceProperties>(NamespaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedNamespaceName: map['managedNamespaceName'] == null ? null : (map['managedNamespaceName'] as String).input(),
+      properties: map['properties'] == null ? null : (NamespaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

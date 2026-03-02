@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationConfigFile {
   /// Specifies the base-64 encoded contents of this config file.
-  final String content;
+  final pulumi.Input<String> content;
   /// Specifies the path of this config file.
-  final String virtualPath;
+  final pulumi.Input<String> virtualPath;
 
   /// Creates a new [ConfigurationConfigFile].
   /// [content] Specifies the base-64 encoded contents of this config file.
@@ -24,8 +25,8 @@ class ConfigurationConfigFile {
 
   factory ConfigurationConfigFile.fromMap(Map<String, dynamic> map) {
     return ConfigurationConfigFile(
-      content: map['content'] as String,
-      virtualPath: map['virtualPath'] as String,
+      content: (map['content'] as String).input(),
+      virtualPath: (map['virtualPath'] as String).input(),
     );
   }
 }

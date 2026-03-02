@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A set of Compute Engine Shielded instance options.
 class GceShieldedInstanceConfigWorkstationsV1beta {
   /// Optional. Whether the instance has integrity monitoring enabled.
-  final bool? enableIntegrityMonitoring;
+  final pulumi.Input<bool>? enableIntegrityMonitoring;
   /// Optional. Whether the instance has Secure Boot enabled.
-  final bool? enableSecureBoot;
+  final pulumi.Input<bool>? enableSecureBoot;
   /// Optional. Whether the instance has the vTPM enabled.
-  final bool? enableVtpm;
+  final pulumi.Input<bool>? enableVtpm;
 
   /// Creates a new [GceShieldedInstanceConfigWorkstationsV1beta].
   /// [enableIntegrityMonitoring] Optional. Whether the instance has integrity monitoring enabled.
@@ -30,9 +31,9 @@ class GceShieldedInstanceConfigWorkstationsV1beta {
 
   factory GceShieldedInstanceConfigWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return GceShieldedInstanceConfigWorkstationsV1beta(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
-      enableVtpm: map['enableVtpm'] == null ? null : map['enableVtpm'] as bool,
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : (map['enableIntegrityMonitoring'] as bool).input(),
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot'] as bool).input(),
+      enableVtpm: map['enableVtpm'] == null ? null : (map['enableVtpm'] as bool).input(),
     );
   }
 }

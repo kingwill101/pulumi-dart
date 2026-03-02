@@ -23,15 +23,11 @@ class ConnectedEnvironmentsStorageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageName] Name of the storage.
   ConnectedEnvironmentsStorageArgs({
-    required pulumi.Output<String> connectedEnvironmentName,
-    pulumi.Output<ConnectedEnvironmentStorageProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageName,
-  }) :
-      connectedEnvironmentName = pulumi.Input.asInput<String>(connectedEnvironmentName),
-      properties = pulumi.Input.asOptionalInput<ConnectedEnvironmentStorageProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageName = pulumi.Input.asOptionalInput<String>(storageName);
+    required this.connectedEnvironmentName,
+    this.properties,
+    required this.resourceGroupName,
+    this.storageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ConnectedEnvironmentsStorageArgs {
 
   factory ConnectedEnvironmentsStorageArgs.fromMap(Map<String, dynamic> map) {
     return ConnectedEnvironmentsStorageArgs(
-      connectedEnvironmentName: pulumi.Output.create<String>(map['connectedEnvironmentName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ConnectedEnvironmentStorageProperties>(ConnectedEnvironmentStorageProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageName: map['storageName'] == null ? null : pulumi.Output.create<String>(map['storageName'] as String),
+      connectedEnvironmentName: (map['connectedEnvironmentName'] as String).input(),
+      properties: map['properties'] == null ? null : (ConnectedEnvironmentStorageProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageName: map['storageName'] == null ? null : (map['storageName'] as String).input(),
     );
   }
 }

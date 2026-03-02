@@ -25,17 +25,12 @@ class CommitmentPlanAssociationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   CommitmentPlanAssociationArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? commitmentPlanAssociationName,
-    required pulumi.Output<String> commitmentPlanName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      commitmentPlanAssociationName = pulumi.Input.asOptionalInput<String>(commitmentPlanAssociationName),
-      commitmentPlanName = pulumi.Input.asInput<String>(commitmentPlanName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accountId,
+    this.commitmentPlanAssociationName,
+    required this.commitmentPlanName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CommitmentPlanAssociationArgs {
 
   factory CommitmentPlanAssociationArgs.fromMap(Map<String, dynamic> map) {
     return CommitmentPlanAssociationArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      commitmentPlanAssociationName: map['commitmentPlanAssociationName'] == null ? null : pulumi.Output.create<String>(map['commitmentPlanAssociationName'] as String),
-      commitmentPlanName: pulumi.Output.create<String>(map['commitmentPlanName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      commitmentPlanAssociationName: map['commitmentPlanAssociationName'] == null ? null : (map['commitmentPlanAssociationName'] as String).input(),
+      commitmentPlanName: (map['commitmentPlanName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

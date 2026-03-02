@@ -6,7 +6,7 @@ import 'custom_rule.dart';
 /// Defines contents of custom rules
 class CustomRuleList {
   /// List of rules
-  final List<CustomRule>? rules;
+  final pulumi.Input<List<CustomRule>>? rules;
 
   /// Creates a new [CustomRuleList].
   /// [rules] List of rules
@@ -16,13 +16,13 @@ class CustomRuleList {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<CustomRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<CustomRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<CustomRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CustomRuleList.fromMap(Map<String, dynamic> map) {
     return CustomRuleList(
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<CustomRule>(map['rules'], (value) => CustomRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<CustomRule>(map['rules'], (value) => CustomRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

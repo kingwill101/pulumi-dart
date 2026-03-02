@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'query_logging_configuration_destination_cloudwatch_logs.dart';
 import 'query_logging_configuration_destination_filters.dart';
 
 class QueryLoggingConfigurationDestination {
   /// Configuration block for CloudWatch Logs destination. See `cloudwatch_logs`.
-  final QueryLoggingConfigurationDestinationCloudwatchLogs cloudwatchLogs;
+  final pulumi.Input<QueryLoggingConfigurationDestinationCloudwatchLogs> cloudwatchLogs;
   /// A list of filter configurations that specify which logs should be sent to the destination. See `filters`.
-  final QueryLoggingConfigurationDestinationFilters filters;
+  final pulumi.Input<QueryLoggingConfigurationDestinationFilters> filters;
 
   /// Creates a new [QueryLoggingConfigurationDestination].
   /// [cloudwatchLogs] Configuration block for CloudWatch Logs destination. See `cloudwatch_logs`.
@@ -19,15 +20,15 @@ class QueryLoggingConfigurationDestination {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudwatchLogs': cloudwatchLogs.toMap(),
-      'filters': filters.toMap(),
+      'cloudwatchLogs': pulumi.Input.mapInputValue<QueryLoggingConfigurationDestinationCloudwatchLogs, Map<String, dynamic>>(cloudwatchLogs, (value) => value.toMap()),
+      'filters': pulumi.Input.mapInputValue<QueryLoggingConfigurationDestinationFilters, Map<String, dynamic>>(filters, (value) => value.toMap()),
     };
   }
 
   factory QueryLoggingConfigurationDestination.fromMap(Map<String, dynamic> map) {
     return QueryLoggingConfigurationDestination(
-      cloudwatchLogs: QueryLoggingConfigurationDestinationCloudwatchLogs.fromMap((map['cloudwatchLogs'] as Map).cast<String, dynamic>()),
-      filters: QueryLoggingConfigurationDestinationFilters.fromMap((map['filters'] as Map).cast<String, dynamic>()),
+      cloudwatchLogs: (QueryLoggingConfigurationDestinationCloudwatchLogs.fromMap((map['cloudwatchLogs'] as Map).cast<String, dynamic>())).input(),
+      filters: (QueryLoggingConfigurationDestinationFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

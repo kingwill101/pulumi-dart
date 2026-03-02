@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'defender_for_servers_gcp_offering_response_configuration.dart';
 
 /// The Vulnerability Assessment autoprovisioning configuration
 class DefenderForServersGcpOfferingResponseVaAutoProvisioning {
   /// configuration for Vulnerability Assessment autoprovisioning
-  final DefenderForServersGcpOfferingResponseConfiguration? configuration;
+  final pulumi.Input<DefenderForServersGcpOfferingResponseConfiguration>? configuration;
   /// Is Vulnerability Assessment auto provisioning enabled
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [DefenderForServersGcpOfferingResponseVaAutoProvisioning].
   /// [configuration] configuration for Vulnerability Assessment autoprovisioning
@@ -19,15 +20,15 @@ class DefenderForServersGcpOfferingResponseVaAutoProvisioning {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?configuration == null ? null : configuration!.toMap(),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingResponseConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'enabled': ?enabled,
     };
   }
 
   factory DefenderForServersGcpOfferingResponseVaAutoProvisioning.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingResponseVaAutoProvisioning(
-      configuration: map['configuration'] == null ? null : DefenderForServersGcpOfferingResponseConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      configuration: map['configuration'] == null ? null : (DefenderForServersGcpOfferingResponseConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

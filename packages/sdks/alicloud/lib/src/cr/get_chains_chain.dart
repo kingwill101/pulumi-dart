@@ -5,25 +5,25 @@ import 'get_chains_chain_chain_config.dart';
 
 class GetChainsChain {
   /// The configuration of delivery chain.
-  final List<GetChainsChainChainConfig> chainConfigs;
+  final pulumi.Input<List<GetChainsChainChainConfig>> chainConfigs;
   /// The ID of delivery chain.
-  final String chainId;
+  final pulumi.Input<String> chainId;
   /// The name of delivery chain.
-  final String chainName;
+  final pulumi.Input<String> chainName;
   /// The creation time of delivery chain.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of delivery chain.
-  final String description;
+  final pulumi.Input<String> description;
   /// The resource ID of the delivery chain. The value formats as `<instance_id>:<chain_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of CR Enterprise Edition instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The modification time of delivery chain description.
-  final String modifiedTime;
+  final pulumi.Input<String> modifiedTime;
   /// Delivery chain scope ID.
-  final String scopeId;
+  final pulumi.Input<String> scopeId;
   /// Delivery chain scope type.
-  final String scopeType;
+  final pulumi.Input<String> scopeType;
 
   /// Creates a new [GetChainsChain].
   /// [chainConfigs] The configuration of delivery chain.
@@ -51,7 +51,7 @@ class GetChainsChain {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'chainConfigs': pulumi.Input.encodeList<GetChainsChainChainConfig, Map<String, dynamic>>(chainConfigs, (value) => value.toMap()),
+      'chainConfigs': pulumi.Input.mapInputValue<List<GetChainsChainChainConfig>, List<Map<String, dynamic>>>(chainConfigs, (value) => pulumi.Input.encodeList<GetChainsChainChainConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'chainId': chainId,
       'chainName': chainName,
       'createTime': createTime,
@@ -66,16 +66,16 @@ class GetChainsChain {
 
   factory GetChainsChain.fromMap(Map<String, dynamic> map) {
     return GetChainsChain(
-      chainConfigs: pulumi.Input.decodeList<GetChainsChainChainConfig>(map['chainConfigs'], (value) => GetChainsChainChainConfig.fromMap((value as Map).cast<String, dynamic>())),
-      chainId: map['chainId'] as String,
-      chainName: map['chainName'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      modifiedTime: map['modifiedTime'] as String,
-      scopeId: map['scopeId'] as String,
-      scopeType: map['scopeType'] as String,
+      chainConfigs: (pulumi.Input.decodeList<GetChainsChainChainConfig>(map['chainConfigs'], (value) => GetChainsChainChainConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      chainId: (map['chainId'] as String).input(),
+      chainName: (map['chainName'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      modifiedTime: (map['modifiedTime'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
+      scopeType: (map['scopeType'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_endpoint_change_enumeration_activity_response.dart';
 import 'cloud_endpoint_last_change_enumeration_status_response.dart';
 
 /// Cloud endpoint change enumeration status object
 class CloudEndpointChangeEnumerationStatusResponse {
   /// Change enumeration activity
-  final CloudEndpointChangeEnumerationActivityResponse activity;
+  final pulumi.Input<CloudEndpointChangeEnumerationActivityResponse> activity;
   /// Status of last completed change enumeration
-  final CloudEndpointLastChangeEnumerationStatusResponse lastEnumerationStatus;
+  final pulumi.Input<CloudEndpointLastChangeEnumerationStatusResponse> lastEnumerationStatus;
   /// Last updated timestamp
-  final String lastUpdatedTimestamp;
+  final pulumi.Input<String> lastUpdatedTimestamp;
 
   /// Creates a new [CloudEndpointChangeEnumerationStatusResponse].
   /// [activity] Change enumeration activity
@@ -24,17 +25,17 @@ class CloudEndpointChangeEnumerationStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activity': activity.toMap(),
-      'lastEnumerationStatus': lastEnumerationStatus.toMap(),
+      'activity': pulumi.Input.mapInputValue<CloudEndpointChangeEnumerationActivityResponse, Map<String, dynamic>>(activity, (value) => value.toMap()),
+      'lastEnumerationStatus': pulumi.Input.mapInputValue<CloudEndpointLastChangeEnumerationStatusResponse, Map<String, dynamic>>(lastEnumerationStatus, (value) => value.toMap()),
       'lastUpdatedTimestamp': lastUpdatedTimestamp,
     };
   }
 
   factory CloudEndpointChangeEnumerationStatusResponse.fromMap(Map<String, dynamic> map) {
     return CloudEndpointChangeEnumerationStatusResponse(
-      activity: CloudEndpointChangeEnumerationActivityResponse.fromMap((map['activity'] as Map).cast<String, dynamic>()),
-      lastEnumerationStatus: CloudEndpointLastChangeEnumerationStatusResponse.fromMap((map['lastEnumerationStatus'] as Map).cast<String, dynamic>()),
-      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] as String,
+      activity: (CloudEndpointChangeEnumerationActivityResponse.fromMap((map['activity'] as Map).cast<String, dynamic>())).input(),
+      lastEnumerationStatus: (CloudEndpointLastChangeEnumerationStatusResponse.fromMap((map['lastEnumerationStatus'] as Map).cast<String, dynamic>())).input(),
+      lastUpdatedTimestamp: (map['lastUpdatedTimestamp'] as String).input(),
     );
   }
 }

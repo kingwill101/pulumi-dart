@@ -26,17 +26,12 @@ class RaiToolLabelArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   RaiToolLabelArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<RaiToolLabelProperties>? properties,
-    pulumi.Output<String>? raiToolConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      properties = pulumi.Input.asOptionalInput<RaiToolLabelProperties>(properties),
-      raiToolConnectionName = pulumi.Input.asOptionalInput<String>(raiToolConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    this.properties,
+    this.raiToolConnectionName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RaiToolLabelArgs {
 
   factory RaiToolLabelArgs.fromMap(Map<String, dynamic> map) {
     return RaiToolLabelArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<RaiToolLabelProperties>(RaiToolLabelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      raiToolConnectionName: map['raiToolConnectionName'] == null ? null : pulumi.Output.create<String>(map['raiToolConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      properties: map['properties'] == null ? null : (RaiToolLabelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      raiToolConnectionName: map['raiToolConnectionName'] == null ? null : (map['raiToolConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_mode.dart';
 
 class CacheToS3 {
   /// Defaults to `$AWS_ACCESS_KEY_ID`.
-  final String? accessKeyId;
+  final pulumi.Input<String>? accessKeyId;
   /// Prefix to prepend to blob filenames.
-  final String? blobsPrefix;
+  final pulumi.Input<String>? blobsPrefix;
   /// Name of the S3 bucket.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// Endpoint of the S3 bucket.
-  final String? endpointUrl;
+  final pulumi.Input<String>? endpointUrl;
   /// Ignore errors caused by failed cache exports.
-  final bool? ignoreError;
+  final pulumi.Input<bool>? ignoreError;
   /// Prefix to prepend on manifest filenames.
-  final String? manifestsPrefix;
+  final pulumi.Input<String>? manifestsPrefix;
   /// The cache mode to use. Defaults to `min`.
-  final CacheMode? mode;
+  final pulumi.Input<CacheMode>? mode;
   /// Name of the cache image.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The geographic location of the bucket. Defaults to `$AWS_REGION`.
-  final String region;
+  final pulumi.Input<String> region;
   /// Defaults to `$AWS_SECRET_ACCESS_KEY`.
-  final String? secretAccessKey;
+  final pulumi.Input<String>? secretAccessKey;
   /// Defaults to `$AWS_SESSION_TOKEN`.
-  final String? sessionToken;
+  final pulumi.Input<String>? sessionToken;
   /// Uses `bucket` in the URL instead of hostname when `true`.
-  final bool? usePathStyle;
+  final pulumi.Input<bool>? usePathStyle;
 
   /// Creates a new [CacheToS3].
   /// [accessKeyId] Defaults to `$AWS_ACCESS_KEY_ID`.
@@ -64,7 +65,7 @@ class CacheToS3 {
       'endpointUrl': ?endpointUrl,
       'ignoreError': ?ignoreError,
       'manifestsPrefix': ?manifestsPrefix,
-      'mode': ?mode == null ? null : mode!.value,
+      'mode': ?pulumi.Input.mapOptionalInputValue<CacheMode, String>(mode, (value) => value.value),
       'name': ?name,
       'region': region,
       'secretAccessKey': ?secretAccessKey,
@@ -75,18 +76,18 @@ class CacheToS3 {
 
   factory CacheToS3.fromMap(Map<String, dynamic> map) {
     return CacheToS3(
-      accessKeyId: map['accessKeyId'] == null ? null : map['accessKeyId'] as String,
-      blobsPrefix: map['blobsPrefix'] == null ? null : map['blobsPrefix'] as String,
-      bucket: map['bucket'] as String,
-      endpointUrl: map['endpointUrl'] == null ? null : map['endpointUrl'] as String,
-      ignoreError: map['ignoreError'] == null ? null : map['ignoreError'] as bool,
-      manifestsPrefix: map['manifestsPrefix'] == null ? null : map['manifestsPrefix'] as String,
-      mode: map['mode'] == null ? null : CacheMode.fromValue(map['mode'] as String),
-      name: map['name'] == null ? null : map['name'] as String,
-      region: map['region'] as String,
-      secretAccessKey: map['secretAccessKey'] == null ? null : map['secretAccessKey'] as String,
-      sessionToken: map['sessionToken'] == null ? null : map['sessionToken'] as String,
-      usePathStyle: map['usePathStyle'] == null ? null : map['usePathStyle'] as bool,
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
+      blobsPrefix: map['blobsPrefix'] == null ? null : (map['blobsPrefix'] as String).input(),
+      bucket: (map['bucket'] as String).input(),
+      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl'] as String).input(),
+      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError'] as bool).input(),
+      manifestsPrefix: map['manifestsPrefix'] == null ? null : (map['manifestsPrefix'] as String).input(),
+      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
+      sessionToken: map['sessionToken'] == null ? null : (map['sessionToken'] as String).input(),
+      usePathStyle: map['usePathStyle'] == null ? null : (map['usePathStyle'] as bool).input(),
     );
   }
 }

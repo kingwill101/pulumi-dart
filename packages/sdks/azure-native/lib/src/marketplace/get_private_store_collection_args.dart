@@ -16,11 +16,9 @@ class GetPrivateStoreCollectionArgs {
   /// [collectionId] The collection ID
   /// [privateStoreId] The store ID - must use the tenant ID
   GetPrivateStoreCollectionArgs({
-    required pulumi.Output<String> collectionId,
-    required pulumi.Output<String> privateStoreId,
-  }) :
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      privateStoreId = pulumi.Input.asInput<String>(privateStoreId);
+    required this.collectionId,
+    required this.privateStoreId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPrivateStoreCollectionArgs {
 
   factory GetPrivateStoreCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateStoreCollectionArgs(
-      collectionId: pulumi.Output.create<String>(map['collectionId'] as String),
-      privateStoreId: pulumi.Output.create<String>(map['privateStoreId'] as String),
+      collectionId: (map['collectionId'] as String).input(),
+      privateStoreId: (map['privateStoreId'] as String).input(),
     );
   }
 }

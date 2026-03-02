@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProfileRewriteRequest {
   /// Enable to add the X-Forwarded For (XFF) header, to specify the originating IP address of the client. Valid choices are: `enabled, disabled`
-  final String? insertXfwdFor;
+  final pulumi.Input<String>? insertXfwdFor;
   /// Enable to add the X-Forwarded Host header, to specify the originating host of the client. Valid choices are: `enabled, disabled`
-  final String? insertXfwdHost;
+  final pulumi.Input<String>? insertXfwdHost;
   /// Enable to add the X-Forwarded Proto header, to specify the originating protocol of the client. Valid choices are: `enabled, disabled`
-  final String? insertXfwdProtocol;
+  final pulumi.Input<String>? insertXfwdProtocol;
   /// Enable to rewrite headers in Request settings. Valid choices are: `enabled, disabled`
-  final String? rewriteHeaders;
+  final pulumi.Input<String>? rewriteHeaders;
 
   /// Creates a new [ProfileRewriteRequest].
   /// [insertXfwdFor] Enable to add the X-Forwarded For (XFF) header, to specify the originating IP address of the client. Valid choices are: `enabled, disabled`
@@ -34,10 +35,10 @@ class ProfileRewriteRequest {
 
   factory ProfileRewriteRequest.fromMap(Map<String, dynamic> map) {
     return ProfileRewriteRequest(
-      insertXfwdFor: map['insertXfwdFor'] == null ? null : map['insertXfwdFor'] as String,
-      insertXfwdHost: map['insertXfwdHost'] == null ? null : map['insertXfwdHost'] as String,
-      insertXfwdProtocol: map['insertXfwdProtocol'] == null ? null : map['insertXfwdProtocol'] as String,
-      rewriteHeaders: map['rewriteHeaders'] == null ? null : map['rewriteHeaders'] as String,
+      insertXfwdFor: map['insertXfwdFor'] == null ? null : (map['insertXfwdFor'] as String).input(),
+      insertXfwdHost: map['insertXfwdHost'] == null ? null : (map['insertXfwdHost'] as String).input(),
+      insertXfwdProtocol: map['insertXfwdProtocol'] == null ? null : (map['insertXfwdProtocol'] as String).input(),
+      rewriteHeaders: map['rewriteHeaders'] == null ? null : (map['rewriteHeaders'] as String).input(),
     );
   }
 }

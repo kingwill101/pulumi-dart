@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_vault_secret_properties.dart';
 
 /// UsernamePassword for BrokerAuthentication
 class BrokerAuthenticatorMethodUsernamePassword {
   /// Keyvault username password secret properties.
-  final KeyVaultSecretProperties? keyVault;
+  final pulumi.Input<KeyVaultSecretProperties>? keyVault;
   /// Secret where username and password are stored.
-  final String? secretName;
+  final pulumi.Input<String>? secretName;
 
   /// Creates a new [BrokerAuthenticatorMethodUsernamePassword].
   /// [keyVault] Keyvault username password secret properties.
@@ -19,15 +20,15 @@ class BrokerAuthenticatorMethodUsernamePassword {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVault': ?keyVault == null ? null : keyVault!.toMap(),
+      'keyVault': ?pulumi.Input.mapOptionalInputValue<KeyVaultSecretProperties, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
       'secretName': ?secretName,
     };
   }
 
   factory BrokerAuthenticatorMethodUsernamePassword.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodUsernamePassword(
-      keyVault: map['keyVault'] == null ? null : KeyVaultSecretProperties.fromMap((map['keyVault'] as Map).cast<String, dynamic>()),
-      secretName: map['secretName'] == null ? null : map['secretName'] as String,
+      keyVault: map['keyVault'] == null ? null : (KeyVaultSecretProperties.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
     );
   }
 }

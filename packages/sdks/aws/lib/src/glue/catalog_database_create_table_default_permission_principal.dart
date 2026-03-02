@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogDatabaseCreateTableDefaultPermissionPrincipal {
   /// An identifier for the Lake Formation principal.
-  final String? dataLakePrincipalIdentifier;
+  final pulumi.Input<String>? dataLakePrincipalIdentifier;
 
   /// Creates a new [CatalogDatabaseCreateTableDefaultPermissionPrincipal].
   /// [dataLakePrincipalIdentifier] An identifier for the Lake Formation principal.
@@ -19,7 +20,7 @@ class CatalogDatabaseCreateTableDefaultPermissionPrincipal {
 
   factory CatalogDatabaseCreateTableDefaultPermissionPrincipal.fromMap(Map<String, dynamic> map) {
     return CatalogDatabaseCreateTableDefaultPermissionPrincipal(
-      dataLakePrincipalIdentifier: map['dataLakePrincipalIdentifier'] == null ? null : map['dataLakePrincipalIdentifier'] as String,
+      dataLakePrincipalIdentifier: map['dataLakePrincipalIdentifier'] == null ? null : (map['dataLakePrincipalIdentifier'] as String).input(),
     );
   }
 }

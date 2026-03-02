@@ -33,19 +33,13 @@ class GetKeyPairArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Any tags assigned to the Key Pair.
   GetKeyPairArgs({
-    pulumi.Output<List<GetKeyPairFilter>>? filters,
-    pulumi.Output<bool>? includePublicKey,
-    pulumi.Output<String>? keyName,
-    pulumi.Output<String>? keyPairId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetKeyPairFilter>>(filters),
-      includePublicKey = pulumi.Input.asOptionalInput<bool>(includePublicKey),
-      keyName = pulumi.Input.asOptionalInput<String>(keyName),
-      keyPairId = pulumi.Input.asOptionalInput<String>(keyPairId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.includePublicKey,
+    this.keyName,
+    this.keyPairId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class GetKeyPairArgs {
 
   factory GetKeyPairArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyPairArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetKeyPairFilter>>(pulumi.Input.decodeList<GetKeyPairFilter>(map['filters'], (value) => GetKeyPairFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      includePublicKey: map['includePublicKey'] == null ? null : pulumi.Output.create<bool>(map['includePublicKey'] as bool),
-      keyName: map['keyName'] == null ? null : pulumi.Output.create<String>(map['keyName'] as String),
-      keyPairId: map['keyPairId'] == null ? null : pulumi.Output.create<String>(map['keyPairId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetKeyPairFilter>(map['filters'], (value) => GetKeyPairFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includePublicKey: map['includePublicKey'] == null ? null : (map['includePublicKey'] as bool).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyPairId: map['keyPairId'] == null ? null : (map['keyPairId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

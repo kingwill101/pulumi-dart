@@ -52,31 +52,19 @@ class NetworkAclRuleArgs {
   /// [ruleNumber] The rule number for the entry (for example, 100). ACL entries are processed in ascending order by rule number.
   /// [toPort] The to port to match.
   NetworkAclRuleArgs({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<bool>? egress,
-    pulumi.Output<int>? fromPort,
-    pulumi.Output<int>? icmpCode,
-    pulumi.Output<int>? icmpType,
-    pulumi.Output<String>? ipv6CidrBlock,
-    required pulumi.Output<String> networkAclId,
-    required pulumi.Output<String> protocol,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> ruleAction,
-    required pulumi.Output<int> ruleNumber,
-    pulumi.Output<int>? toPort,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      egress = pulumi.Input.asOptionalInput<bool>(egress),
-      fromPort = pulumi.Input.asOptionalInput<int>(fromPort),
-      icmpCode = pulumi.Input.asOptionalInput<int>(icmpCode),
-      icmpType = pulumi.Input.asOptionalInput<int>(icmpType),
-      ipv6CidrBlock = pulumi.Input.asOptionalInput<String>(ipv6CidrBlock),
-      networkAclId = pulumi.Input.asInput<String>(networkAclId),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleAction = pulumi.Input.asInput<String>(ruleAction),
-      ruleNumber = pulumi.Input.asInput<int>(ruleNumber),
-      toPort = pulumi.Input.asOptionalInput<int>(toPort);
+    this.cidrBlock,
+    this.egress,
+    this.fromPort,
+    this.icmpCode,
+    this.icmpType,
+    this.ipv6CidrBlock,
+    required this.networkAclId,
+    required this.protocol,
+    this.region,
+    required this.ruleAction,
+    required this.ruleNumber,
+    this.toPort,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class NetworkAclRuleArgs {
 
   factory NetworkAclRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAclRuleArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      egress: map['egress'] == null ? null : pulumi.Output.create<bool>(map['egress'] as bool),
-      fromPort: map['fromPort'] == null ? null : pulumi.Output.create<int>(map['fromPort'] as int),
-      icmpCode: map['icmpCode'] == null ? null : pulumi.Output.create<int>(map['icmpCode'] as int),
-      icmpType: map['icmpType'] == null ? null : pulumi.Output.create<int>(map['icmpType'] as int),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : pulumi.Output.create<String>(map['ipv6CidrBlock'] as String),
-      networkAclId: pulumi.Output.create<String>(map['networkAclId'] as String),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleAction: pulumi.Output.create<String>(map['ruleAction'] as String),
-      ruleNumber: pulumi.Output.create<int>(map['ruleNumber'] as int),
-      toPort: map['toPort'] == null ? null : pulumi.Output.create<int>(map['toPort'] as int),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      egress: map['egress'] == null ? null : (map['egress'] as bool).input(),
+      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
+      icmpCode: map['icmpCode'] == null ? null : (map['icmpCode'] as int).input(),
+      icmpType: map['icmpType'] == null ? null : (map['icmpType'] as int).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      networkAclId: (map['networkAclId'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleAction: (map['ruleAction'] as String).input(),
+      ruleNumber: (map['ruleNumber'] as int).input(),
+      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
     );
   }
 }

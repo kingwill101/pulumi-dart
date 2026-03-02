@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_v1_acl_read.dart';
 
 class SecretV1Acl {
-  final SecretV1AclRead? read;
+  final pulumi.Input<SecretV1AclRead>? read;
 
   /// Creates a new [SecretV1Acl].
   /// [read] Optional.
@@ -13,13 +14,13 @@ class SecretV1Acl {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'read': ?read == null ? null : read!.toMap(),
+      'read': ?pulumi.Input.mapOptionalInputValue<SecretV1AclRead, Map<String, dynamic>>(read, (value) => value.toMap()),
     };
   }
 
   factory SecretV1Acl.fromMap(Map<String, dynamic> map) {
     return SecretV1Acl(
-      read: map['read'] == null ? null : SecretV1AclRead.fromMap((map['read'] as Map).cast<String, dynamic>()),
+      read: map['read'] == null ? null : (SecretV1AclRead.fromMap((map['read'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

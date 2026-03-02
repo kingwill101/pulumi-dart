@@ -19,13 +19,10 @@ class GetAccountCapabilityHostArgs {
   /// [capabilityHostName] The name of the capability host associated with the Cognitive Services Resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAccountCapabilityHostArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> capabilityHostName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      capabilityHostName = pulumi.Input.asInput<String>(capabilityHostName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.capabilityHostName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAccountCapabilityHostArgs {
 
   factory GetAccountCapabilityHostArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountCapabilityHostArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      capabilityHostName: pulumi.Output.create<String>(map['capabilityHostName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      capabilityHostName: (map['capabilityHostName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

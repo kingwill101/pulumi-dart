@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegistryEnterpriseInstancesInstance {
   /// The password that was used to log on to the registry.
-  final String authorizationToken;
+  final pulumi.Input<String> authorizationToken;
   /// ID of Container Registry Enterprise Edition instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// Name of Container Registry Enterprise Edition instance.
-  final String name;
+  final pulumi.Input<String> name;
   /// The max number of namespaces that an instance can create.
-  final String namespaceQuota;
+  final pulumi.Input<String> namespaceQuota;
   /// The number of namespaces already created.
-  final String namespaceUsage;
+  final pulumi.Input<String> namespaceUsage;
   /// A list of domains for access on internet network.
-  final List<String> publicEndpoints;
+  final pulumi.Input<List<String>> publicEndpoints;
   /// Region of Container Registry Enterprise Edition instance.
-  final String region;
+  final pulumi.Input<String> region;
   /// The max number of repos that an instance can create.
-  final String repoQuota;
+  final pulumi.Input<String> repoQuota;
   /// The number of repos already created.
-  final String repoUsage;
+  final pulumi.Input<String> repoUsage;
   /// Specification of Container Registry Enterprise Edition instance.
-  final String specification;
+  final pulumi.Input<String> specification;
   /// The username that was used to log on to the registry.
-  final String tempUsername;
+  final pulumi.Input<String> tempUsername;
   /// A list of domains for access on vpc network.
-  final List<String> vpcEndpoints;
+  final pulumi.Input<List<String>> vpcEndpoints;
 
   /// Creates a new [GetRegistryEnterpriseInstancesInstance].
   /// [authorizationToken] The password that was used to log on to the registry.
@@ -74,18 +75,18 @@ class GetRegistryEnterpriseInstancesInstance {
 
   factory GetRegistryEnterpriseInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetRegistryEnterpriseInstancesInstance(
-      authorizationToken: map['authorizationToken'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      namespaceQuota: map['namespaceQuota'] as String,
-      namespaceUsage: map['namespaceUsage'] as String,
-      publicEndpoints: (map['publicEndpoints'] as List).cast<String>(),
-      region: map['region'] as String,
-      repoQuota: map['repoQuota'] as String,
-      repoUsage: map['repoUsage'] as String,
-      specification: map['specification'] as String,
-      tempUsername: map['tempUsername'] as String,
-      vpcEndpoints: (map['vpcEndpoints'] as List).cast<String>(),
+      authorizationToken: (map['authorizationToken'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      namespaceQuota: (map['namespaceQuota'] as String).input(),
+      namespaceUsage: (map['namespaceUsage'] as String).input(),
+      publicEndpoints: ((map['publicEndpoints'] as List).cast<String>()).input(),
+      region: (map['region'] as String).input(),
+      repoQuota: (map['repoQuota'] as String).input(),
+      repoUsage: (map['repoUsage'] as String).input(),
+      specification: (map['specification'] as String).input(),
+      tempUsername: (map['tempUsername'] as String).input(),
+      vpcEndpoints: ((map['vpcEndpoints'] as List).cast<String>()).input(),
     );
   }
 }

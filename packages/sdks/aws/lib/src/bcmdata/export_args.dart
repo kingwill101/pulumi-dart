@@ -20,13 +20,10 @@ class ExportArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   ExportArgs({
-    pulumi.Output<ExportExport>? export,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ExportTimeouts>? timeouts,
-  }) :
-      export = pulumi.Input.asOptionalInput<ExportExport>(export),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ExportTimeouts>(timeouts);
+    this.export,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class ExportArgs {
 
   factory ExportArgs.fromMap(Map<String, dynamic> map) {
     return ExportArgs(
-      export: map['export'] == null ? null : pulumi.Output.create<ExportExport>(ExportExport.fromMap((map['export'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ExportTimeouts>(ExportTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      export: map['export'] == null ? null : (ExportExport.fromMap((map['export'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ExportTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

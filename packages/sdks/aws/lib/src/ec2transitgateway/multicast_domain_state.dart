@@ -34,25 +34,16 @@ class MulticastDomainState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [transitGatewayId] EC2 Transit Gateway identifier. The EC2 Transit Gateway must have `multicast_support` enabled.
   MulticastDomainState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? autoAcceptSharedAssociations,
-    pulumi.Output<String>? igmpv2Support,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? staticSourcesSupport,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? transitGatewayId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      autoAcceptSharedAssociations = pulumi.Input.asOptionalInput<String>(autoAcceptSharedAssociations),
-      igmpv2Support = pulumi.Input.asOptionalInput<String>(igmpv2Support),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      staticSourcesSupport = pulumi.Input.asOptionalInput<String>(staticSourcesSupport),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      transitGatewayId = pulumi.Input.asOptionalInput<String>(transitGatewayId);
+    this.arn,
+    this.autoAcceptSharedAssociations,
+    this.igmpv2Support,
+    this.ownerId,
+    this.region,
+    this.staticSourcesSupport,
+    this.tags,
+    this.tagsAll,
+    this.transitGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class MulticastDomainState {
 
   factory MulticastDomainState.fromMap(Map<String, dynamic> map) {
     return MulticastDomainState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      autoAcceptSharedAssociations: map['autoAcceptSharedAssociations'] == null ? null : pulumi.Output.create<String>(map['autoAcceptSharedAssociations'] as String),
-      igmpv2Support: map['igmpv2Support'] == null ? null : pulumi.Output.create<String>(map['igmpv2Support'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      staticSourcesSupport: map['staticSourcesSupport'] == null ? null : pulumi.Output.create<String>(map['staticSourcesSupport'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      transitGatewayId: map['transitGatewayId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      autoAcceptSharedAssociations: map['autoAcceptSharedAssociations'] == null ? null : (map['autoAcceptSharedAssociations'] as String).input(),
+      igmpv2Support: map['igmpv2Support'] == null ? null : (map['igmpv2Support'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      staticSourcesSupport: map['staticSourcesSupport'] == null ? null : (map['staticSourcesSupport'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
     );
   }
 }

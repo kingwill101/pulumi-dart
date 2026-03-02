@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateConfigPubsubDestination {
   /// The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
-  final String? topic;
+  final pulumi.Input<String>? topic;
 
   /// Creates a new [JobTemplateConfigPubsubDestination].
   /// [topic] The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
@@ -19,7 +20,7 @@ class JobTemplateConfigPubsubDestination {
 
   factory JobTemplateConfigPubsubDestination.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigPubsubDestination(
-      topic: map['topic'] == null ? null : map['topic'] as String,
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

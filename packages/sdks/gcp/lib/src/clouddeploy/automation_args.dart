@@ -52,29 +52,18 @@ class AutomationArgs {
   /// [serviceAccount] Required. Email address of the user-managed IAM service account that creates Cloud Deploy release and rollout resources.
   /// [suspended] Optional. When Suspended, automation is deactivated from execution.
   AutomationArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> deliveryPipeline,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<List<AutomationRule>> rules,
-    required pulumi.Output<AutomationSelector> selector,
-    required pulumi.Output<String> serviceAccount,
-    pulumi.Output<bool>? suspended,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      deliveryPipeline = pulumi.Input.asInput<String>(deliveryPipeline),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rules = pulumi.Input.asInput<List<AutomationRule>>(rules),
-      selector = pulumi.Input.asInput<AutomationSelector>(selector),
-      serviceAccount = pulumi.Input.asInput<String>(serviceAccount),
-      suspended = pulumi.Input.asOptionalInput<bool>(suspended);
+    this.annotations,
+    required this.deliveryPipeline,
+    this.description,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    required this.rules,
+    required this.selector,
+    required this.serviceAccount,
+    this.suspended,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,17 +83,17 @@ class AutomationArgs {
 
   factory AutomationArgs.fromMap(Map<String, dynamic> map) {
     return AutomationArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      deliveryPipeline: pulumi.Output.create<String>(map['deliveryPipeline'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rules: pulumi.Output.create<List<AutomationRule>>(pulumi.Input.decodeList<AutomationRule>(map['rules'], (value) => AutomationRule.fromMap((value as Map).cast<String, dynamic>()))),
-      selector: pulumi.Output.create<AutomationSelector>(AutomationSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())),
-      serviceAccount: pulumi.Output.create<String>(map['serviceAccount'] as String),
-      suspended: map['suspended'] == null ? null : pulumi.Output.create<bool>(map['suspended'] as bool),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      deliveryPipeline: (map['deliveryPipeline'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rules: (pulumi.Input.decodeList<AutomationRule>(map['rules'], (value) => AutomationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selector: (AutomationSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: (map['serviceAccount'] as String).input(),
+      suspended: map['suspended'] == null ? null : (map['suspended'] as bool).input(),
     );
   }
 }

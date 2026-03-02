@@ -36,19 +36,13 @@ class BackupChannelArgs {
   /// [name] The full name of the BackupChannel Resource.
   /// [project] The ID of the project in which the resource belongs.
   BackupChannelArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> destinationProject,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationProject = pulumi.Input.asInput<String>(destinationProject),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    required this.destinationProject,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,12 +57,12 @@ class BackupChannelArgs {
 
   factory BackupChannelArgs.fromMap(Map<String, dynamic> map) {
     return BackupChannelArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationProject: pulumi.Output.create<String>(map['destinationProject'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationProject: (map['destinationProject'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

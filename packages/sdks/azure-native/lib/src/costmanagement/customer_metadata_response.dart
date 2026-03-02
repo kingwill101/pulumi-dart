@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The customer billing metadata
 class CustomerMetadataResponse {
   /// Customer billing account id
-  final String billingAccountId;
+  final pulumi.Input<String> billingAccountId;
   /// Customer billing profile id
-  final String billingProfileId;
+  final pulumi.Input<String> billingProfileId;
 
   /// Creates a new [CustomerMetadataResponse].
   /// [billingAccountId] Customer billing account id
@@ -25,8 +26,8 @@ class CustomerMetadataResponse {
 
   factory CustomerMetadataResponse.fromMap(Map<String, dynamic> map) {
     return CustomerMetadataResponse(
-      billingAccountId: map['billingAccountId'] as String,
-      billingProfileId: map['billingProfileId'] as String,
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      billingProfileId: (map['billingProfileId'] as String).input(),
     );
   }
 }

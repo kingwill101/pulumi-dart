@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Client incident details ex: incidentId , incident source
 class ClientIncidentDetails {
   /// Client incident id. ex : id of the incident created to investigate and address the impact if any.
-  final String? clientIncidentId;
+  final pulumi.Input<String>? clientIncidentId;
   /// Client incident source. ex : source system name where the incident is created
-  final String? clientIncidentSource;
+  final pulumi.Input<String>? clientIncidentSource;
 
   /// Creates a new [ClientIncidentDetails].
   /// [clientIncidentId] Client incident id. ex : id of the incident created to investigate and address the impact if any.
@@ -25,8 +26,8 @@ class ClientIncidentDetails {
 
   factory ClientIncidentDetails.fromMap(Map<String, dynamic> map) {
     return ClientIncidentDetails(
-      clientIncidentId: map['clientIncidentId'] == null ? null : map['clientIncidentId'] as String,
-      clientIncidentSource: map['clientIncidentSource'] == null ? null : map['clientIncidentSource'] as String,
+      clientIncidentId: map['clientIncidentId'] == null ? null : (map['clientIncidentId'] as String).input(),
+      clientIncidentSource: map['clientIncidentSource'] == null ? null : (map['clientIncidentSource'] as String).input(),
     );
   }
 }

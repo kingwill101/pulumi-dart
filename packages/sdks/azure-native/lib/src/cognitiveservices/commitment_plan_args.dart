@@ -36,23 +36,15 @@ class CommitmentPlanArgs {
   /// [sku] The resource model definition representing SKU
   /// [tags] Resource tags.
   CommitmentPlanArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? commitmentPlanName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<CommitmentPlanProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      commitmentPlanName = pulumi.Input.asOptionalInput<String>(commitmentPlanName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<CommitmentPlanProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    this.commitmentPlanName,
+    this.kind,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class CommitmentPlanArgs {
 
   factory CommitmentPlanArgs.fromMap(Map<String, dynamic> map) {
     return CommitmentPlanArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      commitmentPlanName: map['commitmentPlanName'] == null ? null : pulumi.Output.create<String>(map['commitmentPlanName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<CommitmentPlanProperties>(CommitmentPlanProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      commitmentPlanName: map['commitmentPlanName'] == null ? null : (map['commitmentPlanName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (CommitmentPlanProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

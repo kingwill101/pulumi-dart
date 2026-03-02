@@ -28,19 +28,13 @@ class GetRolesArgs {
   /// [policyType] The type of the policy. Default value: `System`. Valid values: `System`, `Custom`. **Note:** `policy_type` takes effect only when `policy_name` is set.
   /// [tags] A mapping of tags to assign to the resource.
   GetRolesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? policyName,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.policyName,
+    this.policyType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetRolesArgs {
 
   factory GetRolesArgs.fromMap(Map<String, dynamic> map) {
     return GetRolesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

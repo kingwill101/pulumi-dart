@@ -28,15 +28,11 @@ class TagTemplateIamMemberDatacatalogV1beta1Args {
   /// [name] The name of the resource to manage IAM policies for.
   /// [role] The role that should be applied.
   TagTemplateIamMemberDatacatalogV1beta1Args({
-    pulumi.Output<Condition>? condition,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<Condition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      name = pulumi.Input.asInput<String>(name),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.member,
+    required this.name,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class TagTemplateIamMemberDatacatalogV1beta1Args {
 
   factory TagTemplateIamMemberDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TagTemplateIamMemberDatacatalogV1beta1Args(
-      condition: map['condition'] == null ? null : pulumi.Output.create<Condition>(Condition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      name: (map['name'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

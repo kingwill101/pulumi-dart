@@ -23,15 +23,11 @@ class DiscoveryRuleArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   DiscoveryRuleArgs({
-    pulumi.Output<String>? discoveryRuleName,
-    required pulumi.Output<String> healthModelName,
-    pulumi.Output<DiscoveryRuleProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      discoveryRuleName = pulumi.Input.asOptionalInput<String>(discoveryRuleName),
-      healthModelName = pulumi.Input.asInput<String>(healthModelName),
-      properties = pulumi.Input.asOptionalInput<DiscoveryRuleProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.discoveryRuleName,
+    required this.healthModelName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class DiscoveryRuleArgs {
 
   factory DiscoveryRuleArgs.fromMap(Map<String, dynamic> map) {
     return DiscoveryRuleArgs(
-      discoveryRuleName: map['discoveryRuleName'] == null ? null : pulumi.Output.create<String>(map['discoveryRuleName'] as String),
-      healthModelName: pulumi.Output.create<String>(map['healthModelName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DiscoveryRuleProperties>(DiscoveryRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      discoveryRuleName: map['discoveryRuleName'] == null ? null : (map['discoveryRuleName'] as String).input(),
+      healthModelName: (map['healthModelName'] as String).input(),
+      properties: map['properties'] == null ? null : (DiscoveryRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

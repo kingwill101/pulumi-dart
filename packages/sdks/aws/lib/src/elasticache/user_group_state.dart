@@ -30,21 +30,14 @@ class UserGroupState {
   /// [userGroupId] The ID of the user group.
   /// [userIds] The list of user IDs that belong to the user group.
   UserGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? userGroupId,
-    pulumi.Output<List<String>>? userIds,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      userGroupId = pulumi.Input.asOptionalInput<String>(userGroupId),
-      userIds = pulumi.Input.asOptionalInput<List<String>>(userIds);
+    this.arn,
+    this.engine,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.userGroupId,
+    this.userIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class UserGroupState {
 
   factory UserGroupState.fromMap(Map<String, dynamic> map) {
     return UserGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      userGroupId: map['userGroupId'] == null ? null : pulumi.Output.create<String>(map['userGroupId'] as String),
-      userIds: map['userIds'] == null ? null : pulumi.Output.create<List<String>>((map['userIds'] as List).cast<String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      userGroupId: map['userGroupId'] == null ? null : (map['userGroupId'] as String).input(),
+      userIds: map['userIds'] == null ? null : ((map['userIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The status of the Kubernetes custom resource.
 class ActiveDirectoryConnectorStatusResponse {
   /// The time that the custom resource was last updated.
-  final String? lastUpdateTime;
+  final pulumi.Input<String>? lastUpdateTime;
   /// The version of the replicaSet associated with the AD connector custom resource.
-  final double? observedGeneration;
+  final pulumi.Input<double>? observedGeneration;
   /// The state of the AD connector custom resource.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [ActiveDirectoryConnectorStatusResponse].
   /// [lastUpdateTime] The time that the custom resource was last updated.
@@ -30,9 +31,9 @@ class ActiveDirectoryConnectorStatusResponse {
 
   factory ActiveDirectoryConnectorStatusResponse.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorStatusResponse(
-      lastUpdateTime: map['lastUpdateTime'] == null ? null : map['lastUpdateTime'] as String,
-      observedGeneration: map['observedGeneration'] == null ? null : map['observedGeneration'] as double,
-      state: map['state'] == null ? null : map['state'] as String,
+      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime'] as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as double).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

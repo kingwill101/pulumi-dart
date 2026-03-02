@@ -18,10 +18,10 @@ class GetRegionBackendServiceHaPolicy {
   /// packet (IPv6). Google Cloud immediately but temporarily associates the
   /// forwarding rule IP address with that VM, and both new and in-flight packets
   /// are quickly delivered to that VM. Possible values: ["DISABLED", "GARP_RA"]
-  final String fastIpMove;
+  final pulumi.Input<String> fastIpMove;
   /// Selects one of the network endpoints attached to the backend NEGs of this service as the
   /// active endpoint (the leader) that receives all traffic.
-  final List<GetRegionBackendServiceHaPolicyLeader> leaders;
+  final pulumi.Input<List<GetRegionBackendServiceHaPolicyLeader>> leaders;
 
   /// Creates a new [GetRegionBackendServiceHaPolicy].
   /// [fastIpMove] Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.
@@ -34,14 +34,14 @@ class GetRegionBackendServiceHaPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fastIpMove': fastIpMove,
-      'leaders': pulumi.Input.encodeList<GetRegionBackendServiceHaPolicyLeader, Map<String, dynamic>>(leaders, (value) => value.toMap()),
+      'leaders': pulumi.Input.mapInputValue<List<GetRegionBackendServiceHaPolicyLeader>, List<Map<String, dynamic>>>(leaders, (value) => pulumi.Input.encodeList<GetRegionBackendServiceHaPolicyLeader, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRegionBackendServiceHaPolicy.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceHaPolicy(
-      fastIpMove: map['fastIpMove'] as String,
-      leaders: pulumi.Input.decodeList<GetRegionBackendServiceHaPolicyLeader>(map['leaders'], (value) => GetRegionBackendServiceHaPolicyLeader.fromMap((value as Map).cast<String, dynamic>())),
+      fastIpMove: (map['fastIpMove'] as String).input(),
+      leaders: (pulumi.Input.decodeList<GetRegionBackendServiceHaPolicyLeader>(map['leaders'], (value) => GetRegionBackendServiceHaPolicyLeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An Azure Cosmos DB Mongo DB Resource.
 class PrivilegeResource {
   /// The collection name the role is applied.
-  final String? collection;
+  final pulumi.Input<String>? collection;
   /// The database name the role is applied.
-  final String? db;
+  final pulumi.Input<String>? db;
 
   /// Creates a new [PrivilegeResource].
   /// [collection] The collection name the role is applied.
@@ -25,8 +26,8 @@ class PrivilegeResource {
 
   factory PrivilegeResource.fromMap(Map<String, dynamic> map) {
     return PrivilegeResource(
-      collection: map['collection'] == null ? null : map['collection'] as String,
-      db: map['db'] == null ? null : map['db'] as String,
+      collection: map['collection'] == null ? null : (map['collection'] as String).input(),
+      db: map['db'] == null ? null : (map['db'] as String).input(),
     );
   }
 }

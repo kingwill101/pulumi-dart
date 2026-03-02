@@ -6,11 +6,11 @@ import 'instance_initial_replication_replica.dart';
 class InstanceInitialReplication {
   /// The replication role.
   /// Structure is documented below.
-  final List<InstanceInitialReplicationReplica>? replicas;
+  final pulumi.Input<List<InstanceInitialReplicationReplica>>? replicas;
   /// The replication role.
   /// Default value is `STANDBY`.
   /// Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
-  final String? role;
+  final pulumi.Input<String>? role;
 
   /// Creates a new [InstanceInitialReplication].
   /// [replicas] The replication role.
@@ -22,15 +22,15 @@ class InstanceInitialReplication {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'replicas': ?replicas == null ? null : pulumi.Input.encodeList<InstanceInitialReplicationReplica, Map<String, dynamic>>(replicas!, (value) => value.toMap()),
+      'replicas': ?pulumi.Input.mapOptionalInputValue<List<InstanceInitialReplicationReplica>, List<Map<String, dynamic>>>(replicas, (value) => pulumi.Input.encodeList<InstanceInitialReplicationReplica, Map<String, dynamic>>(value, (value) => value.toMap())),
       'role': ?role,
     };
   }
 
   factory InstanceInitialReplication.fromMap(Map<String, dynamic> map) {
     return InstanceInitialReplication(
-      replicas: map['replicas'] == null ? null : pulumi.Input.decodeList<InstanceInitialReplicationReplica>(map['replicas'], (value) => InstanceInitialReplicationReplica.fromMap((value as Map).cast<String, dynamic>())),
-      role: map['role'] == null ? null : map['role'] as String,
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<InstanceInitialReplicationReplica>(map['replicas'], (value) => InstanceInitialReplicationReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

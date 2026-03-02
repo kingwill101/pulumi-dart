@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This profile allows the customers to customize the rolling update.
 class UpdateProfileRollingUpdateProfile {
   /// Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
-  final bool? inPlaceUpdate;
+  final pulumi.Input<bool>? inPlaceUpdate;
   /// Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch.
-  final int? maxBatchPercent;
+  final pulumi.Input<int>? maxBatchPercent;
   /// Maximum percentage of the updated Container Groups which can be in unhealthy state after each batch is updated.
-  final int? maxUnhealthyPercent;
+  final pulumi.Input<int>? maxUnhealthyPercent;
   /// The wait time between batches after completing the one batch of the rolling update and starting the next batch. The time duration should be specified in ISO 8601 format for duration.
-  final String? pauseTimeBetweenBatches;
+  final pulumi.Input<String>? pauseTimeBetweenBatches;
 
   /// Creates a new [UpdateProfileRollingUpdateProfile].
   /// [inPlaceUpdate] Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
@@ -35,10 +36,10 @@ class UpdateProfileRollingUpdateProfile {
 
   factory UpdateProfileRollingUpdateProfile.fromMap(Map<String, dynamic> map) {
     return UpdateProfileRollingUpdateProfile(
-      inPlaceUpdate: map['inPlaceUpdate'] == null ? null : map['inPlaceUpdate'] as bool,
-      maxBatchPercent: map['maxBatchPercent'] == null ? null : map['maxBatchPercent'] as int,
-      maxUnhealthyPercent: map['maxUnhealthyPercent'] == null ? null : map['maxUnhealthyPercent'] as int,
-      pauseTimeBetweenBatches: map['pauseTimeBetweenBatches'] == null ? null : map['pauseTimeBetweenBatches'] as String,
+      inPlaceUpdate: map['inPlaceUpdate'] == null ? null : (map['inPlaceUpdate'] as bool).input(),
+      maxBatchPercent: map['maxBatchPercent'] == null ? null : (map['maxBatchPercent'] as int).input(),
+      maxUnhealthyPercent: map['maxUnhealthyPercent'] == null ? null : (map['maxUnhealthyPercent'] as int).input(),
+      pauseTimeBetweenBatches: map['pauseTimeBetweenBatches'] == null ? null : (map['pauseTimeBetweenBatches'] as String).input(),
     );
   }
 }

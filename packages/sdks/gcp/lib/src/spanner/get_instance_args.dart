@@ -23,15 +23,11 @@ class GetInstanceArgs {
   /// [name] The name of the spanner instance.
   /// [project] The project in which the resource belongs. If it
   GetInstanceArgs({
-    pulumi.Output<String>? config,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-  }) :
-      config = pulumi.Input.asOptionalInput<String>(config),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.config,
+    this.displayName,
+    required this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      config: map['config'] == null ? null : pulumi.Output.create<String>(map['config'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

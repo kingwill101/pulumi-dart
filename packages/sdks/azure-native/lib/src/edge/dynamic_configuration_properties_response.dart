@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Dynamic Configuration Properties
 class DynamicConfigurationPropertiesResponse {
   /// Current Version of dynamic configuration
-  final String currentVersion;
+  final pulumi.Input<String> currentVersion;
   /// Type of dynamic configuration model
-  final String dynamicConfigurationModel;
+  final pulumi.Input<String> dynamicConfigurationModel;
   /// Type of dynamic configuration
-  final String dynamicConfigurationType;
+  final pulumi.Input<String> dynamicConfigurationType;
   /// Provisioning state of resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [DynamicConfigurationPropertiesResponse].
   /// [currentVersion] Current Version of dynamic configuration
@@ -35,10 +36,10 @@ class DynamicConfigurationPropertiesResponse {
 
   factory DynamicConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DynamicConfigurationPropertiesResponse(
-      currentVersion: map['currentVersion'] as String,
-      dynamicConfigurationModel: map['dynamicConfigurationModel'] as String,
-      dynamicConfigurationType: map['dynamicConfigurationType'] as String,
-      provisioningState: map['provisioningState'] as String,
+      currentVersion: (map['currentVersion'] as String).input(),
+      dynamicConfigurationModel: (map['dynamicConfigurationModel'] as String).input(),
+      dynamicConfigurationType: (map['dynamicConfigurationType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

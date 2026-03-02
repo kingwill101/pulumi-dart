@@ -16,13 +16,10 @@ class GetCaseCloudsupportV2betaArgs {
   /// [v2betaId1] Required.
   /// [v2betumId] Required.
   GetCaseCloudsupportV2betaArgs({
-    required pulumi.Output<String> caseId,
-    required pulumi.Output<String> v2betaId1,
-    required pulumi.Output<String> v2betumId,
-  }) :
-      caseId = pulumi.Input.asInput<String>(caseId),
-      v2betaId1 = pulumi.Input.asInput<String>(v2betaId1),
-      v2betumId = pulumi.Input.asInput<String>(v2betumId);
+    required this.caseId,
+    required this.v2betaId1,
+    required this.v2betumId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetCaseCloudsupportV2betaArgs {
 
   factory GetCaseCloudsupportV2betaArgs.fromMap(Map<String, dynamic> map) {
     return GetCaseCloudsupportV2betaArgs(
-      caseId: pulumi.Output.create<String>(map['caseId'] as String),
-      v2betaId1: pulumi.Output.create<String>(map['v2betaId1'] as String),
-      v2betumId: pulumi.Output.create<String>(map['v2betumId'] as String),
+      caseId: (map['caseId'] as String).input(),
+      v2betaId1: (map['v2betaId1'] as String).input(),
+      v2betumId: (map['v2betumId'] as String).input(),
     );
   }
 }

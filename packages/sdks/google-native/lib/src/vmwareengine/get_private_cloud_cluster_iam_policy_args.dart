@@ -20,17 +20,12 @@ class GetPrivateCloudClusterIamPolicyArgs {
   /// [privateCloudId] Required.
   /// [project] Optional.
   GetPrivateCloudClusterIamPolicyArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    required pulumi.Output<String> privateCloudId,
-    pulumi.Output<String>? project,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.clusterId,
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    required this.privateCloudId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetPrivateCloudClusterIamPolicyArgs {
 
   factory GetPrivateCloudClusterIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudClusterIamPolicyArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      privateCloudId: pulumi.Output.create<String>(map['privateCloudId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      privateCloudId: (map['privateCloudId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

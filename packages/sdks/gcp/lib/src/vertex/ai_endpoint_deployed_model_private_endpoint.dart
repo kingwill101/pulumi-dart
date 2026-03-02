@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiEndpointDeployedModelPrivateEndpoint {
   /// (Output)
   /// Output only. Http(s) path to send explain requests.
-  final String? explainHttpUri;
+  final pulumi.Input<String>? explainHttpUri;
   /// (Output)
   /// Output only. Http(s) path to send health check requests.
-  final String? healthHttpUri;
+  final pulumi.Input<String>? healthHttpUri;
   /// (Output)
   /// Output only. Http(s) path to send prediction requests.
-  final String? predictHttpUri;
+  final pulumi.Input<String>? predictHttpUri;
   /// (Output)
   /// Output only. The name of the service attachment resource. Populated if private service connect is enabled.
-  final String? serviceAttachment;
+  final pulumi.Input<String>? serviceAttachment;
 
   /// Creates a new [AiEndpointDeployedModelPrivateEndpoint].
   /// [explainHttpUri] (Output)
@@ -38,10 +39,10 @@ class AiEndpointDeployedModelPrivateEndpoint {
 
   factory AiEndpointDeployedModelPrivateEndpoint.fromMap(Map<String, dynamic> map) {
     return AiEndpointDeployedModelPrivateEndpoint(
-      explainHttpUri: map['explainHttpUri'] == null ? null : map['explainHttpUri'] as String,
-      healthHttpUri: map['healthHttpUri'] == null ? null : map['healthHttpUri'] as String,
-      predictHttpUri: map['predictHttpUri'] == null ? null : map['predictHttpUri'] as String,
-      serviceAttachment: map['serviceAttachment'] == null ? null : map['serviceAttachment'] as String,
+      explainHttpUri: map['explainHttpUri'] == null ? null : (map['explainHttpUri'] as String).input(),
+      healthHttpUri: map['healthHttpUri'] == null ? null : (map['healthHttpUri'] as String).input(),
+      predictHttpUri: map['predictHttpUri'] == null ? null : (map['predictHttpUri'] as String).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
     );
   }
 }

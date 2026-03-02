@@ -7,11 +7,11 @@ import 'my_sql_connection_info.dart';
 /// Input for the task that migrates MySQL databases to Azure Database for MySQL for online migrations
 class MigrateMySqlAzureDbForMySqlSyncTaskInput {
   /// Databases to migrate
-  final List<MigrateMySqlAzureDbForMySqlSyncDatabaseInput> selectedDatabases;
+  final pulumi.Input<List<MigrateMySqlAzureDbForMySqlSyncDatabaseInput>> selectedDatabases;
   /// Connection information for source MySQL
-  final MySqlConnectionInfo sourceConnectionInfo;
+  final pulumi.Input<MySqlConnectionInfo> sourceConnectionInfo;
   /// Connection information for target Azure Database for MySQL
-  final MySqlConnectionInfo targetConnectionInfo;
+  final pulumi.Input<MySqlConnectionInfo> targetConnectionInfo;
 
   /// Creates a new [MigrateMySqlAzureDbForMySqlSyncTaskInput].
   /// [selectedDatabases] Databases to migrate
@@ -25,17 +25,17 @@ class MigrateMySqlAzureDbForMySqlSyncTaskInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'selectedDatabases': pulumi.Input.encodeList<MigrateMySqlAzureDbForMySqlSyncDatabaseInput, Map<String, dynamic>>(selectedDatabases, (value) => value.toMap()),
-      'sourceConnectionInfo': sourceConnectionInfo.toMap(),
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'selectedDatabases': pulumi.Input.mapInputValue<List<MigrateMySqlAzureDbForMySqlSyncDatabaseInput>, List<Map<String, dynamic>>>(selectedDatabases, (value) => pulumi.Input.encodeList<MigrateMySqlAzureDbForMySqlSyncDatabaseInput, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<MySqlConnectionInfo, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<MySqlConnectionInfo, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory MigrateMySqlAzureDbForMySqlSyncTaskInput.fromMap(Map<String, dynamic> map) {
     return MigrateMySqlAzureDbForMySqlSyncTaskInput(
-      selectedDatabases: pulumi.Input.decodeList<MigrateMySqlAzureDbForMySqlSyncDatabaseInput>(map['selectedDatabases'], (value) => MigrateMySqlAzureDbForMySqlSyncDatabaseInput.fromMap((value as Map).cast<String, dynamic>())),
-      sourceConnectionInfo: MySqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>()),
-      targetConnectionInfo: MySqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
+      selectedDatabases: (pulumi.Input.decodeList<MigrateMySqlAzureDbForMySqlSyncDatabaseInput>(map['selectedDatabases'], (value) => MigrateMySqlAzureDbForMySqlSyncDatabaseInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceConnectionInfo: (MySqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      targetConnectionInfo: (MySqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

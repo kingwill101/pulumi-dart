@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'binary_authorization_config_gkehub_v1beta.dart';
 import 'security_posture_config_gkehub_v1beta.dart';
 
 /// DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
 class DefaultClusterConfigGkehubV1beta {
   /// Optional. Enable/Disable binary authorization features for the cluster.
-  final BinaryAuthorizationConfigGkehubV1beta? binaryAuthorizationConfig;
+  final pulumi.Input<BinaryAuthorizationConfigGkehubV1beta>? binaryAuthorizationConfig;
   /// Enable/Disable Security Posture features for the cluster.
-  final SecurityPostureConfigGkehubV1beta? securityPostureConfig;
+  final pulumi.Input<SecurityPostureConfigGkehubV1beta>? securityPostureConfig;
 
   /// Creates a new [DefaultClusterConfigGkehubV1beta].
   /// [binaryAuthorizationConfig] Optional. Enable/Disable binary authorization features for the cluster.
@@ -20,15 +21,15 @@ class DefaultClusterConfigGkehubV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'binaryAuthorizationConfig': ?binaryAuthorizationConfig == null ? null : binaryAuthorizationConfig!.toMap(),
-      'securityPostureConfig': ?securityPostureConfig == null ? null : securityPostureConfig!.toMap(),
+      'binaryAuthorizationConfig': ?pulumi.Input.mapOptionalInputValue<BinaryAuthorizationConfigGkehubV1beta, Map<String, dynamic>>(binaryAuthorizationConfig, (value) => value.toMap()),
+      'securityPostureConfig': ?pulumi.Input.mapOptionalInputValue<SecurityPostureConfigGkehubV1beta, Map<String, dynamic>>(securityPostureConfig, (value) => value.toMap()),
     };
   }
 
   factory DefaultClusterConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return DefaultClusterConfigGkehubV1beta(
-      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : BinaryAuthorizationConfigGkehubV1beta.fromMap((map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>()),
-      securityPostureConfig: map['securityPostureConfig'] == null ? null : SecurityPostureConfigGkehubV1beta.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>()),
+      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : (BinaryAuthorizationConfigGkehubV1beta.fromMap((map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>())).input(),
+      securityPostureConfig: map['securityPostureConfig'] == null ? null : (SecurityPostureConfigGkehubV1beta.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

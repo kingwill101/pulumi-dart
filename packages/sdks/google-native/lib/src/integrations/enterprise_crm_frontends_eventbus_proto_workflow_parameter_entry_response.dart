@@ -7,32 +7,32 @@ import 'enterprise_crm_frontends_eventbus_proto_parameter_value_type_response.da
 
 class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse {
   /// Metadata information about the parameters.
-  final EnterpriseCrmEventbusProtoAttributesResponse attributes;
+  final pulumi.Input<EnterpriseCrmEventbusProtoAttributesResponse> attributes;
   /// Child parameters nested within this parameter. This field only applies to protobuf parameters
-  final List<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse> children;
+  final pulumi.Input<List<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse>> children;
   /// The data type of the parameter.
-  final String dataType;
+  final pulumi.Input<String> dataType;
   /// Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
-  final EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse defaultValue;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse> defaultValue;
   /// Optional. The description about the parameter
-  final String description;
+  final pulumi.Input<String> description;
   /// Specifies the input/output type for the parameter.
-  final String inOutType;
+  final pulumi.Input<String> inOutType;
   /// Whether this parameter is a transient parameter.
-  final bool isTransient;
+  final pulumi.Input<bool> isTransient;
   /// This schema will be used to validate runtime JSON-typed values of this parameter.
-  final String jsonSchema;
+  final pulumi.Input<String> jsonSchema;
   /// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the workflow definition.
-  final String key;
+  final pulumi.Input<String> key;
   /// The name (without prefix) to be displayed in the UI for this parameter. E.g. if the key is "foo.bar.myName", then the name would be "myName".
-  final String name;
+  final pulumi.Input<String> name;
   /// The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.
-  final EnterpriseCrmEventbusProtoNodeIdentifierResponse producedBy;
-  final String producer;
+  final pulumi.Input<EnterpriseCrmEventbusProtoNodeIdentifierResponse> producedBy;
+  final pulumi.Input<String> producer;
   /// The name of the protobuf type if the parameter has a protobuf data type.
-  final String protoDefName;
+  final pulumi.Input<String> protoDefName;
   /// If the data type is of type proto or proto array, this field needs to be populated with the fully qualified proto name. This message, for example, would be "enterprise.crm.frontends.eventbus.proto.WorkflowParameterEntry".
-  final String protoDefPath;
+  final pulumi.Input<String> protoDefPath;
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse].
   /// [attributes] Metadata information about the parameters.
@@ -68,17 +68,17 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': attributes.toMap(),
-      'children': pulumi.Input.encodeList<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse, Map<String, dynamic>>(children, (value) => value.toMap()),
+      'attributes': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoAttributesResponse, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'children': pulumi.Input.mapInputValue<List<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse>, List<Map<String, dynamic>>>(children, (value) => pulumi.Input.encodeList<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dataType': dataType,
-      'defaultValue': defaultValue.toMap(),
+      'defaultValue': pulumi.Input.mapInputValue<EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse, Map<String, dynamic>>(defaultValue, (value) => value.toMap()),
       'description': description,
       'inOutType': inOutType,
       'isTransient': isTransient,
       'jsonSchema': jsonSchema,
       'key': key,
       'name': name,
-      'producedBy': producedBy.toMap(),
+      'producedBy': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoNodeIdentifierResponse, Map<String, dynamic>>(producedBy, (value) => value.toMap()),
       'producer': producer,
       'protoDefName': protoDefName,
       'protoDefPath': protoDefPath,
@@ -87,20 +87,20 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse {
 
   factory EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse(
-      attributes: EnterpriseCrmEventbusProtoAttributesResponse.fromMap((map['attributes'] as Map).cast<String, dynamic>()),
-      children: pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse>(map['children'], (value) => EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dataType: map['dataType'] as String,
-      defaultValue: EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse.fromMap((map['defaultValue'] as Map).cast<String, dynamic>()),
-      description: map['description'] as String,
-      inOutType: map['inOutType'] as String,
-      isTransient: map['isTransient'] as bool,
-      jsonSchema: map['jsonSchema'] as String,
-      key: map['key'] as String,
-      name: map['name'] as String,
-      producedBy: EnterpriseCrmEventbusProtoNodeIdentifierResponse.fromMap((map['producedBy'] as Map).cast<String, dynamic>()),
-      producer: map['producer'] as String,
-      protoDefName: map['protoDefName'] as String,
-      protoDefPath: map['protoDefPath'] as String,
+      attributes: (EnterpriseCrmEventbusProtoAttributesResponse.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
+      children: (pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse>(map['children'], (value) => EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataType: (map['dataType'] as String).input(),
+      defaultValue: (EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse.fromMap((map['defaultValue'] as Map).cast<String, dynamic>())).input(),
+      description: (map['description'] as String).input(),
+      inOutType: (map['inOutType'] as String).input(),
+      isTransient: (map['isTransient'] as bool).input(),
+      jsonSchema: (map['jsonSchema'] as String).input(),
+      key: (map['key'] as String).input(),
+      name: (map['name'] as String).input(),
+      producedBy: (EnterpriseCrmEventbusProtoNodeIdentifierResponse.fromMap((map['producedBy'] as Map).cast<String, dynamic>())).input(),
+      producer: (map['producer'] as String).input(),
+      protoDefName: (map['protoDefName'] as String).input(),
+      protoDefPath: (map['protoDefPath'] as String).input(),
     );
   }
 }

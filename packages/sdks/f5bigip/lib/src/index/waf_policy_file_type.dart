@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WafPolicyFileType {
   /// Determines whether the file type is allowed or disallowed. In either of these cases the VIOL_FILETYPE violation is issued (if enabled) for an incoming request-
   /// * No allowed file type matched the file type of the request.
   /// * The file type of the request matched a disallowed file type.
-  final bool? allowed;
+  final pulumi.Input<bool>? allowed;
   /// Specifies the file type name as appearing in the URL extension.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Determines the type of the name attribute. Only when setting the type to `wildcard` will the special wildcard characters in the name be interpreted as such
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [WafPolicyFileType].
   /// [allowed] Determines whether the file type is allowed or disallowed. In either of these cases the VIOL_FILETYPE violation is issued (if enabled) for an incoming request-
@@ -31,9 +32,9 @@ class WafPolicyFileType {
 
   factory WafPolicyFileType.fromMap(Map<String, dynamic> map) {
     return WafPolicyFileType(
-      allowed: map['allowed'] == null ? null : map['allowed'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      allowed: map['allowed'] == null ? null : (map['allowed'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

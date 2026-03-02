@@ -16,11 +16,9 @@ class ReservedIpv6AssignmentArgs {
   /// [dropletId] The ID of Droplet that the reserved IPv6 will be assigned to.
   /// [ip] The reserved IPv6 to assign to the Droplet.
   ReservedIpv6AssignmentArgs({
-    required pulumi.Output<int> dropletId,
-    required pulumi.Output<String> ip,
-  }) :
-      dropletId = pulumi.Input.asInput<int>(dropletId),
-      ip = pulumi.Input.asInput<String>(ip);
+    required this.dropletId,
+    required this.ip,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ReservedIpv6AssignmentArgs {
 
   factory ReservedIpv6AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ReservedIpv6AssignmentArgs(
-      dropletId: pulumi.Output.create<int>(map['dropletId'] as int),
-      ip: pulumi.Output.create<String>(map['ip'] as String),
+      dropletId: (map['dropletId'] as int).input(),
+      ip: (map['ip'] as String).input(),
     );
   }
 }

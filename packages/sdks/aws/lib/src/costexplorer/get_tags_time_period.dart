@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTagsTimePeriod {
   /// Beginning of the time period.
-  final String end;
+  final pulumi.Input<String> end;
   /// End of the time period.
-  final String start;
+  final pulumi.Input<String> start;
 
   /// Creates a new [GetTagsTimePeriod].
   /// [end] Beginning of the time period.
@@ -24,8 +25,8 @@ class GetTagsTimePeriod {
 
   factory GetTagsTimePeriod.fromMap(Map<String, dynamic> map) {
     return GetTagsTimePeriod(
-      end: map['end'] as String,
-      start: map['start'] as String,
+      end: (map['end'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

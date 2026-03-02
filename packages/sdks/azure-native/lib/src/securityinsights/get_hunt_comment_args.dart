@@ -22,15 +22,11 @@ class GetHuntCommentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   GetHuntCommentArgs({
-    required pulumi.Output<String> huntCommentId,
-    required pulumi.Output<String> huntId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      huntCommentId = pulumi.Input.asInput<String>(huntCommentId),
-      huntId = pulumi.Input.asInput<String>(huntId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.huntCommentId,
+    required this.huntId,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetHuntCommentArgs {
 
   factory GetHuntCommentArgs.fromMap(Map<String, dynamic> map) {
     return GetHuntCommentArgs(
-      huntCommentId: pulumi.Output.create<String>(map['huntCommentId'] as String),
-      huntId: pulumi.Output.create<String>(map['huntId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      huntCommentId: (map['huntCommentId'] as String).input(),
+      huntId: (map['huntId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

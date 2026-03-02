@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a Gateway Message Bus output data source.
 class GatewayMessageBusOutputDataSourceResponse {
   /// The name of the Service Bus topic.
-  final String? topic;
+  final pulumi.Input<String>? topic;
   /// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'GatewayMessageBus'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GatewayMessageBusOutputDataSourceResponse].
   /// [topic] The name of the Service Bus topic.
@@ -26,8 +27,8 @@ class GatewayMessageBusOutputDataSourceResponse {
 
   factory GatewayMessageBusOutputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return GatewayMessageBusOutputDataSourceResponse(
-      topic: map['topic'] == null ? null : map['topic'] as String,
-      type: map['type'] as String,
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

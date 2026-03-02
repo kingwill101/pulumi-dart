@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
 class CryptoKeyVersionTemplateResponse {
   /// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-  final String algorithm;
+  final pulumi.Input<String> algorithm;
   /// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-  final String protectionLevel;
+  final pulumi.Input<String> protectionLevel;
 
   /// Creates a new [CryptoKeyVersionTemplateResponse].
   /// [algorithm] Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
@@ -25,8 +26,8 @@ class CryptoKeyVersionTemplateResponse {
 
   factory CryptoKeyVersionTemplateResponse.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionTemplateResponse(
-      algorithm: map['algorithm'] as String,
-      protectionLevel: map['protectionLevel'] as String,
+      algorithm: (map['algorithm'] as String).input(),
+      protectionLevel: (map['protectionLevel'] as String).input(),
     );
   }
 }

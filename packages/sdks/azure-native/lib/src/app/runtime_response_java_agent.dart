@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'runtime_response_logging.dart';
 
 /// Diagnostic capabilities achieved by java agent
 class RuntimeResponseJavaAgent {
   /// Enable java agent injection for the java app.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Capabilities on the java logging scenario.
-  final RuntimeResponseLogging? logging;
+  final pulumi.Input<RuntimeResponseLogging>? logging;
 
   /// Creates a new [RuntimeResponseJavaAgent].
   /// [enabled] Enable java agent injection for the java app.
@@ -20,14 +21,14 @@ class RuntimeResponseJavaAgent {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'logging': ?logging == null ? null : logging!.toMap(),
+      'logging': ?pulumi.Input.mapOptionalInputValue<RuntimeResponseLogging, Map<String, dynamic>>(logging, (value) => value.toMap()),
     };
   }
 
   factory RuntimeResponseJavaAgent.fromMap(Map<String, dynamic> map) {
     return RuntimeResponseJavaAgent(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      logging: map['logging'] == null ? null : RuntimeResponseLogging.fromMap((map['logging'] as Map).cast<String, dynamic>()),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      logging: map['logging'] == null ? null : (RuntimeResponseLogging.fromMap((map['logging'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Job resource request payload
 class JobResourceRequestsResponse {
   /// CPU allocated to each job execution instance.
-  final String? cpu;
+  final pulumi.Input<String>? cpu;
   /// Memory allocated to each job execution instance.
-  final String? memory;
+  final pulumi.Input<String>? memory;
 
   /// Creates a new [JobResourceRequestsResponse].
   /// [cpu] CPU allocated to each job execution instance.
@@ -25,8 +26,8 @@ class JobResourceRequestsResponse {
 
   factory JobResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
     return JobResourceRequestsResponse(
-      cpu: map['cpu'] == null ? null : map['cpu'] as String,
-      memory: map['memory'] == null ? null : map['memory'] as String,
+      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
+      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
     );
   }
 }

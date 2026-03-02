@@ -16,11 +16,9 @@ class GetRestorableDatabaseAccountsArgs {
   /// [location] The location where the Cosmos DB Database Account.
   /// [name] The name of this Cosmos DB Database Account.
   GetRestorableDatabaseAccountsArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> name,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asInput<String>(name);
+    required this.location,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRestorableDatabaseAccountsArgs {
 
   factory GetRestorableDatabaseAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetRestorableDatabaseAccountsArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      location: (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

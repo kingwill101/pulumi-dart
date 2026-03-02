@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesClusterNvidiaGpuDevicePlugin {
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetKubernetesClusterNvidiaGpuDevicePlugin].
   /// [enabled] Required.
@@ -18,7 +19,7 @@ class GetKubernetesClusterNvidiaGpuDevicePlugin {
 
   factory GetKubernetesClusterNvidiaGpuDevicePlugin.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterNvidiaGpuDevicePlugin(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

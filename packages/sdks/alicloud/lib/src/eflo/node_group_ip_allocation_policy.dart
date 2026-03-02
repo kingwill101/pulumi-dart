@@ -7,11 +7,11 @@ import 'node_group_ip_allocation_policy_node_policy.dart';
 
 class NodeGroupIpAllocationPolicy {
   /// Specify the cluster subnet ID based on the bond name See `bond_policy` below.
-  final NodeGroupIpAllocationPolicyBondPolicy? bondPolicy;
+  final pulumi.Input<NodeGroupIpAllocationPolicyBondPolicy>? bondPolicy;
   /// Model Assignment Policy See `machine_type_policy` below.
-  final List<NodeGroupIpAllocationPolicyMachineTypePolicy>? machineTypePolicies;
+  final pulumi.Input<List<NodeGroupIpAllocationPolicyMachineTypePolicy>>? machineTypePolicies;
   /// Node allocation policy See `node_policy` below.
-  final List<NodeGroupIpAllocationPolicyNodePolicy>? nodePolicies;
+  final pulumi.Input<List<NodeGroupIpAllocationPolicyNodePolicy>>? nodePolicies;
 
   /// Creates a new [NodeGroupIpAllocationPolicy].
   /// [bondPolicy] Specify the cluster subnet ID based on the bond name See `bond_policy` below.
@@ -25,17 +25,17 @@ class NodeGroupIpAllocationPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bondPolicy': ?bondPolicy == null ? null : bondPolicy!.toMap(),
-      'machineTypePolicies': ?machineTypePolicies == null ? null : pulumi.Input.encodeList<NodeGroupIpAllocationPolicyMachineTypePolicy, Map<String, dynamic>>(machineTypePolicies!, (value) => value.toMap()),
-      'nodePolicies': ?nodePolicies == null ? null : pulumi.Input.encodeList<NodeGroupIpAllocationPolicyNodePolicy, Map<String, dynamic>>(nodePolicies!, (value) => value.toMap()),
+      'bondPolicy': ?pulumi.Input.mapOptionalInputValue<NodeGroupIpAllocationPolicyBondPolicy, Map<String, dynamic>>(bondPolicy, (value) => value.toMap()),
+      'machineTypePolicies': ?pulumi.Input.mapOptionalInputValue<List<NodeGroupIpAllocationPolicyMachineTypePolicy>, List<Map<String, dynamic>>>(machineTypePolicies, (value) => pulumi.Input.encodeList<NodeGroupIpAllocationPolicyMachineTypePolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodePolicies': ?pulumi.Input.mapOptionalInputValue<List<NodeGroupIpAllocationPolicyNodePolicy>, List<Map<String, dynamic>>>(nodePolicies, (value) => pulumi.Input.encodeList<NodeGroupIpAllocationPolicyNodePolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NodeGroupIpAllocationPolicy.fromMap(Map<String, dynamic> map) {
     return NodeGroupIpAllocationPolicy(
-      bondPolicy: map['bondPolicy'] == null ? null : NodeGroupIpAllocationPolicyBondPolicy.fromMap((map['bondPolicy'] as Map).cast<String, dynamic>()),
-      machineTypePolicies: map['machineTypePolicies'] == null ? null : pulumi.Input.decodeList<NodeGroupIpAllocationPolicyMachineTypePolicy>(map['machineTypePolicies'], (value) => NodeGroupIpAllocationPolicyMachineTypePolicy.fromMap((value as Map).cast<String, dynamic>())),
-      nodePolicies: map['nodePolicies'] == null ? null : pulumi.Input.decodeList<NodeGroupIpAllocationPolicyNodePolicy>(map['nodePolicies'], (value) => NodeGroupIpAllocationPolicyNodePolicy.fromMap((value as Map).cast<String, dynamic>())),
+      bondPolicy: map['bondPolicy'] == null ? null : (NodeGroupIpAllocationPolicyBondPolicy.fromMap((map['bondPolicy'] as Map).cast<String, dynamic>())).input(),
+      machineTypePolicies: map['machineTypePolicies'] == null ? null : (pulumi.Input.decodeList<NodeGroupIpAllocationPolicyMachineTypePolicy>(map['machineTypePolicies'], (value) => NodeGroupIpAllocationPolicyMachineTypePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodePolicies: map['nodePolicies'] == null ? null : (pulumi.Input.decodeList<NodeGroupIpAllocationPolicyNodePolicy>(map['nodePolicies'], (value) => NodeGroupIpAllocationPolicyNodePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

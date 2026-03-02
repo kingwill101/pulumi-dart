@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery {
   /// Determines whether the query scope is enabled or disabled.
-  final String authorization;
+  final pulumi.Input<String> authorization;
 
   /// Creates a new [IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery].
   /// [authorization] Determines whether the query scope is enabled or disabled.
@@ -19,7 +20,7 @@ class IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery {
 
   factory IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery.fromMap(Map<String, dynamic> map) {
     return IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery(
-      authorization: map['authorization'] as String,
+      authorization: (map['authorization'] as String).input(),
     );
   }
 }

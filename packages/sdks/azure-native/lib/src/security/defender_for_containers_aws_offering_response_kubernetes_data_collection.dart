@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The kubernetes data collection connection configuration
 class DefenderForContainersAwsOfferingResponseKubernetesDataCollection {
   /// The cloud role ARN in AWS for this feature used for reading data
-  final String? cloudRoleArn;
+  final pulumi.Input<String>? cloudRoleArn;
 
   /// Creates a new [DefenderForContainersAwsOfferingResponseKubernetesDataCollection].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature used for reading data
@@ -20,7 +21,7 @@ class DefenderForContainersAwsOfferingResponseKubernetesDataCollection {
 
   factory DefenderForContainersAwsOfferingResponseKubernetesDataCollection.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersAwsOfferingResponseKubernetesDataCollection(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : map['cloudRoleArn'] as String,
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
     );
   }
 }

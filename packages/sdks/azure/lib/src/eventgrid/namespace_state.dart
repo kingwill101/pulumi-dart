@@ -40,27 +40,17 @@ class NamespaceState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [topicSpacesConfigurations] A `topic_spaces_configuration` block as defined below. Changing this forces a new resource to be created.
   NamespaceState({
-    pulumi.Output<int>? capacity,
-    pulumi.Output<NamespaceIdentity>? identity,
-    pulumi.Output<List<NamespaceInboundIpRule>>? inboundIpRules,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? publicNetworkAccess,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<NamespaceTopicSpacesConfiguration>>? topicSpacesConfigurations,
-  }) :
-      capacity = pulumi.Input.asOptionalInput<int>(capacity),
-      identity = pulumi.Input.asOptionalInput<NamespaceIdentity>(identity),
-      inboundIpRules = pulumi.Input.asOptionalInput<List<NamespaceInboundIpRule>>(inboundIpRules),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<String>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      topicSpacesConfigurations = pulumi.Input.asOptionalInput<List<NamespaceTopicSpacesConfiguration>>(topicSpacesConfigurations);
+    this.capacity,
+    this.identity,
+    this.inboundIpRules,
+    this.location,
+    this.name,
+    this.publicNetworkAccess,
+    this.resourceGroupName,
+    this.sku,
+    this.tags,
+    this.topicSpacesConfigurations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      capacity: map['capacity'] == null ? null : pulumi.Output.create<int>(map['capacity'] as int),
-      identity: map['identity'] == null ? null : pulumi.Output.create<NamespaceIdentity>(NamespaceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      inboundIpRules: map['inboundIpRules'] == null ? null : pulumi.Output.create<List<NamespaceInboundIpRule>>(pulumi.Input.decodeList<NamespaceInboundIpRule>(map['inboundIpRules'], (value) => NamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<String>(map['sku'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      topicSpacesConfigurations: map['topicSpacesConfigurations'] == null ? null : pulumi.Output.create<List<NamespaceTopicSpacesConfiguration>>(pulumi.Input.decodeList<NamespaceTopicSpacesConfiguration>(map['topicSpacesConfigurations'], (value) => NamespaceTopicSpacesConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      identity: map['identity'] == null ? null : (NamespaceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<NamespaceInboundIpRule>(map['inboundIpRules'], (value) => NamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      topicSpacesConfigurations: map['topicSpacesConfigurations'] == null ? null : (pulumi.Input.decodeList<NamespaceTopicSpacesConfiguration>(map['topicSpacesConfigurations'], (value) => NamespaceTopicSpacesConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

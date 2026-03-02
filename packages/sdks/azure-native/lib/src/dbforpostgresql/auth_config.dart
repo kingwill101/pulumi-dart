@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authentication configuration properties of a server.
 class AuthConfig {
   /// Indicates if the server supports Microsoft Entra authentication.
-  final String? activeDirectoryAuth;
+  final pulumi.Input<String>? activeDirectoryAuth;
   /// Indicates if the server supports password based authentication.
-  final String? passwordAuth;
+  final pulumi.Input<String>? passwordAuth;
   /// Identifier of the tenant of the delegated resource.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [AuthConfig].
   /// [activeDirectoryAuth] Indicates if the server supports Microsoft Entra authentication.
@@ -30,9 +31,9 @@ class AuthConfig {
 
   factory AuthConfig.fromMap(Map<String, dynamic> map) {
     return AuthConfig(
-      activeDirectoryAuth: map['activeDirectoryAuth'] == null ? null : map['activeDirectoryAuth'] as String,
-      passwordAuth: map['passwordAuth'] == null ? null : map['passwordAuth'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      activeDirectoryAuth: map['activeDirectoryAuth'] == null ? null : (map['activeDirectoryAuth'] as String).input(),
+      passwordAuth: map['passwordAuth'] == null ? null : (map['passwordAuth'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

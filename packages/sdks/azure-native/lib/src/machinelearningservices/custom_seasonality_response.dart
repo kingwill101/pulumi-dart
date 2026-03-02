@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomSeasonalityResponse {
   /// Forecasting seasonality mode.
   /// Expected value is 'Custom'.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// [Required] Seasonality value.
-  final int value;
+  final pulumi.Input<int> value;
 
   /// Creates a new [CustomSeasonalityResponse].
   /// [mode] Forecasting seasonality mode.
@@ -25,8 +26,8 @@ class CustomSeasonalityResponse {
 
   factory CustomSeasonalityResponse.fromMap(Map<String, dynamic> map) {
     return CustomSeasonalityResponse(
-      mode: map['mode'] as String,
-      value: map['value'] as int,
+      mode: (map['mode'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

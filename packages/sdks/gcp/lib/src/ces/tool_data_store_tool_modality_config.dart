@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tool_data_store_tool_modality_config_grounding_config.dart';
 import 'tool_data_store_tool_modality_config_rewriter_config.dart';
 import 'tool_data_store_tool_modality_config_summarization_config.dart';
@@ -7,18 +8,18 @@ import 'tool_data_store_tool_modality_config_summarization_config.dart';
 class ToolDataStoreToolModalityConfig {
   /// Grounding configuration.
   /// Structure is documented below.
-  final ToolDataStoreToolModalityConfigGroundingConfig? groundingConfig;
+  final pulumi.Input<ToolDataStoreToolModalityConfigGroundingConfig>? groundingConfig;
   /// The modality type.
   /// Possible values:
   /// TEXT
   /// AUDIO
-  final String modalityType;
+  final pulumi.Input<String> modalityType;
   /// Rewriter configuration.
   /// Structure is documented below.
-  final ToolDataStoreToolModalityConfigRewriterConfig? rewriterConfig;
+  final pulumi.Input<ToolDataStoreToolModalityConfigRewriterConfig>? rewriterConfig;
   /// Summarization configuration.
   /// Structure is documented below.
-  final ToolDataStoreToolModalityConfigSummarizationConfig? summarizationConfig;
+  final pulumi.Input<ToolDataStoreToolModalityConfigSummarizationConfig>? summarizationConfig;
 
   /// Creates a new [ToolDataStoreToolModalityConfig].
   /// [groundingConfig] Grounding configuration.
@@ -34,19 +35,19 @@ class ToolDataStoreToolModalityConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groundingConfig': ?groundingConfig == null ? null : groundingConfig!.toMap(),
+      'groundingConfig': ?pulumi.Input.mapOptionalInputValue<ToolDataStoreToolModalityConfigGroundingConfig, Map<String, dynamic>>(groundingConfig, (value) => value.toMap()),
       'modalityType': modalityType,
-      'rewriterConfig': ?rewriterConfig == null ? null : rewriterConfig!.toMap(),
-      'summarizationConfig': ?summarizationConfig == null ? null : summarizationConfig!.toMap(),
+      'rewriterConfig': ?pulumi.Input.mapOptionalInputValue<ToolDataStoreToolModalityConfigRewriterConfig, Map<String, dynamic>>(rewriterConfig, (value) => value.toMap()),
+      'summarizationConfig': ?pulumi.Input.mapOptionalInputValue<ToolDataStoreToolModalityConfigSummarizationConfig, Map<String, dynamic>>(summarizationConfig, (value) => value.toMap()),
     };
   }
 
   factory ToolDataStoreToolModalityConfig.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolModalityConfig(
-      groundingConfig: map['groundingConfig'] == null ? null : ToolDataStoreToolModalityConfigGroundingConfig.fromMap((map['groundingConfig'] as Map).cast<String, dynamic>()),
-      modalityType: map['modalityType'] as String,
-      rewriterConfig: map['rewriterConfig'] == null ? null : ToolDataStoreToolModalityConfigRewriterConfig.fromMap((map['rewriterConfig'] as Map).cast<String, dynamic>()),
-      summarizationConfig: map['summarizationConfig'] == null ? null : ToolDataStoreToolModalityConfigSummarizationConfig.fromMap((map['summarizationConfig'] as Map).cast<String, dynamic>()),
+      groundingConfig: map['groundingConfig'] == null ? null : (ToolDataStoreToolModalityConfigGroundingConfig.fromMap((map['groundingConfig'] as Map).cast<String, dynamic>())).input(),
+      modalityType: (map['modalityType'] as String).input(),
+      rewriterConfig: map['rewriterConfig'] == null ? null : (ToolDataStoreToolModalityConfigRewriterConfig.fromMap((map['rewriterConfig'] as Map).cast<String, dynamic>())).input(),
+      summarizationConfig: map['summarizationConfig'] == null ? null : (ToolDataStoreToolModalityConfigSummarizationConfig.fromMap((map['summarizationConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

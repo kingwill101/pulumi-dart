@@ -16,11 +16,9 @@ class GetShareArgs {
   /// [accountId] The ID of the Data Share account in which the Data Share is created.
   /// [name] The name of this Data Share.
   GetShareArgs({
-    required pulumi.Output<String> accountId,
-    required pulumi.Output<String> name,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.accountId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetShareArgs {
 
   factory GetShareArgs.fromMap(Map<String, dynamic> map) {
     return GetShareArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      accountId: (map['accountId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

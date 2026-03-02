@@ -6,9 +6,9 @@ import 'domain_cpu_numa_interconnects.dart';
 
 class DomainCpuNuma {
   /// Defines specific CPU NUMA cell properties, allowing for fine-tuning of resources.
-  final List<DomainCpuNumaCell>? cells;
+  final pulumi.Input<List<DomainCpuNumaCell>>? cells;
   /// Defines the interconnects between NUMA nodes, configuring how they communicate.
-  final DomainCpuNumaInterconnects? interconnects;
+  final pulumi.Input<DomainCpuNumaInterconnects>? interconnects;
 
   /// Creates a new [DomainCpuNuma].
   /// [cells] Defines specific CPU NUMA cell properties, allowing for fine-tuning of resources.
@@ -20,15 +20,15 @@ class DomainCpuNuma {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cells': ?cells == null ? null : pulumi.Input.encodeList<DomainCpuNumaCell, Map<String, dynamic>>(cells!, (value) => value.toMap()),
-      'interconnects': ?interconnects == null ? null : interconnects!.toMap(),
+      'cells': ?pulumi.Input.mapOptionalInputValue<List<DomainCpuNumaCell>, List<Map<String, dynamic>>>(cells, (value) => pulumi.Input.encodeList<DomainCpuNumaCell, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'interconnects': ?pulumi.Input.mapOptionalInputValue<DomainCpuNumaInterconnects, Map<String, dynamic>>(interconnects, (value) => value.toMap()),
     };
   }
 
   factory DomainCpuNuma.fromMap(Map<String, dynamic> map) {
     return DomainCpuNuma(
-      cells: map['cells'] == null ? null : pulumi.Input.decodeList<DomainCpuNumaCell>(map['cells'], (value) => DomainCpuNumaCell.fromMap((value as Map).cast<String, dynamic>())),
-      interconnects: map['interconnects'] == null ? null : DomainCpuNumaInterconnects.fromMap((map['interconnects'] as Map).cast<String, dynamic>()),
+      cells: map['cells'] == null ? null : (pulumi.Input.decodeList<DomainCpuNumaCell>(map['cells'], (value) => DomainCpuNumaCell.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interconnects: map['interconnects'] == null ? null : (DomainCpuNumaInterconnects.fromMap((map['interconnects'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

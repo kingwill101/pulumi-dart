@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceUpstreamEndpoint {
   /// The categories to match on, or `*` for all.
-  final List<String> categoryPatterns;
+  final pulumi.Input<List<String>> categoryPatterns;
   /// The events to match on, or `*` for all.
-  final List<String> eventPatterns;
+  final pulumi.Input<List<String>> eventPatterns;
   /// The hubs to match on, or `*` for all.
-  final List<String> hubPatterns;
+  final pulumi.Input<List<String>> hubPatterns;
   /// The upstream URL Template. This can be a url or a template such as `http://host.com/{hub}/api/{category}/{event}`.
-  final String urlTemplate;
+  final pulumi.Input<String> urlTemplate;
   /// Specifies the Managed Identity IDs to be assigned to this signalR upstream setting by using resource uuid as both system assigned and user assigned identity is supported.
-  final String? userAssignedIdentityId;
+  final pulumi.Input<String>? userAssignedIdentityId;
 
   /// Creates a new [ServiceUpstreamEndpoint].
   /// [categoryPatterns] The categories to match on, or `*` for all.
@@ -39,11 +40,11 @@ class ServiceUpstreamEndpoint {
 
   factory ServiceUpstreamEndpoint.fromMap(Map<String, dynamic> map) {
     return ServiceUpstreamEndpoint(
-      categoryPatterns: (map['categoryPatterns'] as List).cast<String>(),
-      eventPatterns: (map['eventPatterns'] as List).cast<String>(),
-      hubPatterns: (map['hubPatterns'] as List).cast<String>(),
-      urlTemplate: map['urlTemplate'] as String,
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : map['userAssignedIdentityId'] as String,
+      categoryPatterns: ((map['categoryPatterns'] as List).cast<String>()).input(),
+      eventPatterns: ((map['eventPatterns'] as List).cast<String>()).input(),
+      hubPatterns: ((map['hubPatterns'] as List).cast<String>()).input(),
+      urlTemplate: (map['urlTemplate'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
     );
   }
 }

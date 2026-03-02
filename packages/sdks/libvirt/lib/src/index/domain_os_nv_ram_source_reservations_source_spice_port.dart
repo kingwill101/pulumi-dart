@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainOsNvRamSourceReservationsSourceSpicePort {
   /// Sets the channel attribute for the SPICE port in the random number generator backend.
-  final String channel;
+  final pulumi.Input<String> channel;
 
   /// Creates a new [DomainOsNvRamSourceReservationsSourceSpicePort].
   /// [channel] Sets the channel attribute for the SPICE port in the random number generator backend.
@@ -19,7 +20,7 @@ class DomainOsNvRamSourceReservationsSourceSpicePort {
 
   factory DomainOsNvRamSourceReservationsSourceSpicePort.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceReservationsSourceSpicePort(
-      channel: map['channel'] as String,
+      channel: (map['channel'] as String).input(),
     );
   }
 }

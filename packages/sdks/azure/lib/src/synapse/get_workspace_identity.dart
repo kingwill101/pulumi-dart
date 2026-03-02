@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWorkspaceIdentity {
-  final List<String> identityIds;
+  final pulumi.Input<List<String>> identityIds;
   /// The Principal ID for the Service Principal associated with the Managed Service Identity of this Synapse Workspace.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The Tenant ID for the Service Principal associated with the Managed Service Identity of this Synapse Workspace.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The Identity Type for the Service Principal associated with the Managed Service Identity of this Synapse Workspace.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetWorkspaceIdentity].
   /// [identityIds] Required.
@@ -33,10 +34,10 @@ class GetWorkspaceIdentity {
 
   factory GetWorkspaceIdentity.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

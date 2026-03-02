@@ -30,23 +30,15 @@ class SchemaArgs {
   /// [schemaId] Required. The ID to use for the Schema, which will become the final component of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
   /// [structSchema] The structured representation of the schema.
   SchemaArgs({
-    required pulumi.Output<String> collectionId,
-    required pulumi.Output<String> dataStoreId,
-    pulumi.Output<String>? jsonSchema,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> schemaId,
-    pulumi.Output<Map<String, String>>? structSchema,
-  }) :
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      jsonSchema = pulumi.Input.asOptionalInput<String>(jsonSchema),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schemaId = pulumi.Input.asInput<String>(schemaId),
-      structSchema = pulumi.Input.asOptionalInput<Map<String, String>>(structSchema);
+    required this.collectionId,
+    required this.dataStoreId,
+    this.jsonSchema,
+    this.location,
+    this.name,
+    this.project,
+    required this.schemaId,
+    this.structSchema,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,14 +55,14 @@ class SchemaArgs {
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      collectionId: pulumi.Output.create<String>(map['collectionId'] as String),
-      dataStoreId: pulumi.Output.create<String>(map['dataStoreId'] as String),
-      jsonSchema: map['jsonSchema'] == null ? null : pulumi.Output.create<String>(map['jsonSchema'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schemaId: pulumi.Output.create<String>(map['schemaId'] as String),
-      structSchema: map['structSchema'] == null ? null : pulumi.Output.create<Map<String, String>>((map['structSchema'] as Map).cast<String, String>()),
+      collectionId: (map['collectionId'] as String).input(),
+      dataStoreId: (map['dataStoreId'] as String).input(),
+      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schemaId: (map['schemaId'] as String).input(),
+      structSchema: map['structSchema'] == null ? null : ((map['structSchema'] as Map).cast<String, String>()).input(),
     );
   }
 }

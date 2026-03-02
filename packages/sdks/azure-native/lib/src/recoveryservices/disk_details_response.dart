@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Onprem disk details data.
 class DiskDetailsResponse {
   /// The hard disk max size in MB.
-  final double? maxSizeMB;
+  final pulumi.Input<double>? maxSizeMB;
   /// The VHD Id.
-  final String? vhdId;
+  final pulumi.Input<String>? vhdId;
   /// The VHD name.
-  final String? vhdName;
+  final pulumi.Input<String>? vhdName;
   /// The type of the volume.
-  final String? vhdType;
+  final pulumi.Input<String>? vhdType;
 
   /// Creates a new [DiskDetailsResponse].
   /// [maxSizeMB] The hard disk max size in MB.
@@ -35,10 +36,10 @@ class DiskDetailsResponse {
 
   factory DiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DiskDetailsResponse(
-      maxSizeMB: map['maxSizeMB'] == null ? null : map['maxSizeMB'] as double,
-      vhdId: map['vhdId'] == null ? null : map['vhdId'] as String,
-      vhdName: map['vhdName'] == null ? null : map['vhdName'] as String,
-      vhdType: map['vhdType'] == null ? null : map['vhdType'] as String,
+      maxSizeMB: map['maxSizeMB'] == null ? null : (map['maxSizeMB'] as double).input(),
+      vhdId: map['vhdId'] == null ? null : (map['vhdId'] as String).input(),
+      vhdName: map['vhdName'] == null ? null : (map['vhdName'] as String).input(),
+      vhdType: map['vhdType'] == null ? null : (map['vhdType'] as String).input(),
     );
   }
 }

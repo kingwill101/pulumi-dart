@@ -43,31 +43,19 @@ class NacosConfigState {
   /// [tags] The tags of the configuration.
   /// [type] The format of the configuration. Supported formats include TEXT, JSON, and XML.
   NacosConfigState({
-    pulumi.Output<String>? acceptLanguage,
-    pulumi.Output<String>? appName,
-    pulumi.Output<String>? betaIps,
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? dataId,
-    pulumi.Output<String>? desc,
-    pulumi.Output<String>? encryptedDataKey,
-    pulumi.Output<String>? group,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? namespaceId,
-    pulumi.Output<String>? tags,
-    pulumi.Output<String>? type,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      appName = pulumi.Input.asOptionalInput<String>(appName),
-      betaIps = pulumi.Input.asOptionalInput<String>(betaIps),
-      content = pulumi.Input.asOptionalInput<String>(content),
-      dataId = pulumi.Input.asOptionalInput<String>(dataId),
-      desc = pulumi.Input.asOptionalInput<String>(desc),
-      encryptedDataKey = pulumi.Input.asOptionalInput<String>(encryptedDataKey),
-      group = pulumi.Input.asOptionalInput<String>(group),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      namespaceId = pulumi.Input.asOptionalInput<String>(namespaceId),
-      tags = pulumi.Input.asOptionalInput<String>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.acceptLanguage,
+    this.appName,
+    this.betaIps,
+    this.content,
+    this.dataId,
+    this.desc,
+    this.encryptedDataKey,
+    this.group,
+    this.instanceId,
+    this.namespaceId,
+    this.tags,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class NacosConfigState {
 
   factory NacosConfigState.fromMap(Map<String, dynamic> map) {
     return NacosConfigState(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      appName: map['appName'] == null ? null : pulumi.Output.create<String>(map['appName'] as String),
-      betaIps: map['betaIps'] == null ? null : pulumi.Output.create<String>(map['betaIps'] as String),
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      dataId: map['dataId'] == null ? null : pulumi.Output.create<String>(map['dataId'] as String),
-      desc: map['desc'] == null ? null : pulumi.Output.create<String>(map['desc'] as String),
-      encryptedDataKey: map['encryptedDataKey'] == null ? null : pulumi.Output.create<String>(map['encryptedDataKey'] as String),
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      namespaceId: map['namespaceId'] == null ? null : pulumi.Output.create<String>(map['namespaceId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<String>(map['tags'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
+      betaIps: map['betaIps'] == null ? null : (map['betaIps'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      dataId: map['dataId'] == null ? null : (map['dataId'] as String).input(),
+      desc: map['desc'] == null ? null : (map['desc'] as String).input(),
+      encryptedDataKey: map['encryptedDataKey'] == null ? null : (map['encryptedDataKey'] as String).input(),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      tags: map['tags'] == null ? null : (map['tags'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetPartnerDestinationArgs {
   /// [partnerDestinationName] Name of the partner destination.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   GetPartnerDestinationArgs({
-    required pulumi.Output<String> partnerDestinationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      partnerDestinationName = pulumi.Input.asInput<String>(partnerDestinationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.partnerDestinationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPartnerDestinationArgs {
 
   factory GetPartnerDestinationArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerDestinationArgs(
-      partnerDestinationName: pulumi.Output.create<String>(map['partnerDestinationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      partnerDestinationName: (map['partnerDestinationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

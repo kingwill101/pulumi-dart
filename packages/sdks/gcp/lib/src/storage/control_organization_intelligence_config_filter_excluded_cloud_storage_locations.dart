@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations {
   /// List of locations.
-  final List<String> locations;
+  final pulumi.Input<List<String>> locations;
 
   /// Creates a new [ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations].
   /// [locations] List of locations.
@@ -19,7 +20,7 @@ class ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations {
 
   factory ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations.fromMap(Map<String, dynamic> map) {
     return ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations(
-      locations: (map['locations'] as List).cast<String>(),
+      locations: ((map['locations'] as List).cast<String>()).input(),
     );
   }
 }

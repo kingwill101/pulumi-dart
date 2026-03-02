@@ -19,13 +19,10 @@ class GetCiphertextArgs {
   /// [keyId] The globally unique ID of the CMK.
   /// [plaintext] The plaintext to be encrypted which must be encoded in Base64.
   GetCiphertextArgs({
-    pulumi.Output<Map<String, String>>? encryptionContext,
-    required pulumi.Output<String> keyId,
-    required pulumi.Output<String> plaintext,
-  }) :
-      encryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(encryptionContext),
-      keyId = pulumi.Input.asInput<String>(keyId),
-      plaintext = pulumi.Input.asInput<String>(plaintext);
+    this.encryptionContext,
+    required this.keyId,
+    required this.plaintext,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCiphertextArgs {
 
   factory GetCiphertextArgs.fromMap(Map<String, dynamic> map) {
     return GetCiphertextArgs(
-      encryptionContext: map['encryptionContext'] == null ? null : pulumi.Output.create<Map<String, String>>((map['encryptionContext'] as Map).cast<String, String>()),
-      keyId: pulumi.Output.create<String>(map['keyId'] as String),
-      plaintext: pulumi.Output.create<String>(map['plaintext'] as String),
+      encryptionContext: map['encryptionContext'] == null ? null : ((map['encryptionContext'] as Map).cast<String, String>()).input(),
+      keyId: (map['keyId'] as String).input(),
+      plaintext: (map['plaintext'] as String).input(),
     );
   }
 }

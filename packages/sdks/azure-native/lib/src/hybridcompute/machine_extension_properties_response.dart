@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'machine_extension_instance_view_response.dart';
 
 /// Describes the properties of a Machine Extension.
 class MachineExtensionPropertiesResponse {
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-  final bool? autoUpgradeMinorVersion;
+  final pulumi.Input<bool>? autoUpgradeMinorVersion;
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-  final bool? enableAutomaticUpgrade;
+  final pulumi.Input<bool>? enableAutomaticUpgrade;
   /// How the extension handler should be forced to update even if the extension configuration has not changed.
-  final String? forceUpdateTag;
+  final pulumi.Input<String>? forceUpdateTag;
   /// The machine extension instance view.
-  final MachineExtensionInstanceViewResponse? instanceView;
+  final pulumi.Input<MachineExtensionInstanceViewResponse>? instanceView;
   /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-  final dynamic protectedSettings;
+  final pulumi.Input<dynamic>? protectedSettings;
   /// The provisioning state, which only appears in the response.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The name of the extension handler publisher.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// Json formatted public settings for the extension.
-  final dynamic settings;
+  final pulumi.Input<dynamic>? settings;
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Specifies the version of the script handler.
-  final String? typeHandlerVersion;
+  final pulumi.Input<String>? typeHandlerVersion;
 
   /// Creates a new [MachineExtensionPropertiesResponse].
   /// [autoUpgradeMinorVersion] Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
@@ -54,7 +55,7 @@ class MachineExtensionPropertiesResponse {
       'autoUpgradeMinorVersion': ?autoUpgradeMinorVersion,
       'enableAutomaticUpgrade': ?enableAutomaticUpgrade,
       'forceUpdateTag': ?forceUpdateTag,
-      'instanceView': ?instanceView == null ? null : instanceView!.toMap(),
+      'instanceView': ?pulumi.Input.mapOptionalInputValue<MachineExtensionInstanceViewResponse, Map<String, dynamic>>(instanceView, (value) => value.toMap()),
       'protectedSettings': ?protectedSettings,
       'provisioningState': provisioningState,
       'publisher': ?publisher,
@@ -66,16 +67,16 @@ class MachineExtensionPropertiesResponse {
 
   factory MachineExtensionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MachineExtensionPropertiesResponse(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : map['autoUpgradeMinorVersion'] as bool,
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : map['enableAutomaticUpgrade'] as bool,
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag'] as String,
-      instanceView: map['instanceView'] == null ? null : MachineExtensionInstanceViewResponse.fromMap((map['instanceView'] as Map).cast<String, dynamic>()),
-      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings'],
-      provisioningState: map['provisioningState'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      settings: map['settings'] == null ? null : map['settings'],
-      type: map['type'] == null ? null : map['type'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion'] as String,
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade'] as bool).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
+      instanceView: map['instanceView'] == null ? null : (MachineExtensionInstanceViewResponse.fromMap((map['instanceView'] as Map).cast<String, dynamic>())).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings']).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
     );
   }
 }

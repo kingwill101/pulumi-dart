@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should define the possible range of values for the scorecard's query (inclusive).
 class GaugeView {
   /// The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this.
-  final double? lowerBound;
+  final pulumi.Input<double>? lowerBound;
   /// The upper bound for this gauge chart. The value of the chart should always be less than or equal to this.
-  final double? upperBound;
+  final pulumi.Input<double>? upperBound;
 
   /// Creates a new [GaugeView].
   /// [lowerBound] The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this.
@@ -25,8 +26,8 @@ class GaugeView {
 
   factory GaugeView.fromMap(Map<String, dynamic> map) {
     return GaugeView(
-      lowerBound: map['lowerBound'] == null ? null : map['lowerBound'] as double,
-      upperBound: map['upperBound'] == null ? null : map['upperBound'] as double,
+      lowerBound: map['lowerBound'] == null ? null : (map['lowerBound'] as double).input(),
+      upperBound: map['upperBound'] == null ? null : (map['upperBound'] as double).input(),
     );
   }
 }

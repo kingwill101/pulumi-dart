@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecIngressRuleRedirect {
-  final String? authority;
-  final int? port;
-  final int? redirectCode;
-  final String? scheme;
-  final String? uri;
+  final pulumi.Input<String>? authority;
+  final pulumi.Input<int>? port;
+  final pulumi.Input<int>? redirectCode;
+  final pulumi.Input<String>? scheme;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [GetAppSpecIngressRuleRedirect].
   /// [authority] Optional.
@@ -34,11 +35,11 @@ class GetAppSpecIngressRuleRedirect {
 
   factory GetAppSpecIngressRuleRedirect.fromMap(Map<String, dynamic> map) {
     return GetAppSpecIngressRuleRedirect(
-      authority: map['authority'] == null ? null : map['authority'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      redirectCode: map['redirectCode'] == null ? null : map['redirectCode'] as int,
-      scheme: map['scheme'] == null ? null : map['scheme'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      redirectCode: map['redirectCode'] == null ? null : (map['redirectCode'] as int).input(),
+      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

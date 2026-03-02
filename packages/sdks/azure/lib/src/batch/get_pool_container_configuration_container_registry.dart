@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolContainerConfigurationContainerRegistry {
   /// The password for the user account.
-  final String password;
+  final pulumi.Input<String> password;
   /// The container registry URL. The default is "docker.io".
-  final String registryServer;
+  final pulumi.Input<String> registryServer;
   /// The reference to the user assigned identity to use to access an Azure Container Registry instead of username and password.
-  final String userAssignedIdentityId;
+  final pulumi.Input<String> userAssignedIdentityId;
   /// The user to use for authentication against the CIFS file system.
-  final String userName;
+  final pulumi.Input<String> userName;
 
   /// Creates a new [GetPoolContainerConfigurationContainerRegistry].
   /// [password] The password for the user account.
@@ -34,10 +35,10 @@ class GetPoolContainerConfigurationContainerRegistry {
 
   factory GetPoolContainerConfigurationContainerRegistry.fromMap(Map<String, dynamic> map) {
     return GetPoolContainerConfigurationContainerRegistry(
-      password: map['password'] as String,
-      registryServer: map['registryServer'] as String,
-      userAssignedIdentityId: map['userAssignedIdentityId'] as String,
-      userName: map['userName'] as String,
+      password: (map['password'] as String).input(),
+      registryServer: (map['registryServer'] as String).input(),
+      userAssignedIdentityId: (map['userAssignedIdentityId'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

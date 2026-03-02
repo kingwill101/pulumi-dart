@@ -7,19 +7,19 @@ import 'namespace_discovered_dataset_data_point_response.dart';
 /// Defines the dataset properties.
 class NamespaceDiscoveredDatasetResponse {
   /// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
-  final List<NamespaceDiscoveredDatasetDataPointResponse>? dataPoints;
+  final pulumi.Input<List<NamespaceDiscoveredDatasetDataPointResponse>>? dataPoints;
   /// Reference to a data source for a given dataset.
-  final String? dataSource;
+  final pulumi.Input<String>? dataSource;
   /// Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
-  final String? datasetConfiguration;
+  final pulumi.Input<String>? datasetConfiguration;
   /// Destinations for a dataset.
-  final List<DatasetBrokerStateStoreDestinationResponse>? destinations;
+  final pulumi.Input<List<DatasetBrokerStateStoreDestinationResponse>>? destinations;
   /// Timestamp (in UTC) indicating when the dataset was added or modified.
-  final String? lastUpdatedOn;
+  final pulumi.Input<String>? lastUpdatedOn;
   /// Name of the dataset.
-  final String name;
+  final pulumi.Input<String> name;
   /// URI or type definition ID.
-  final String? typeRef;
+  final pulumi.Input<String>? typeRef;
 
   /// Creates a new [NamespaceDiscoveredDatasetResponse].
   /// [dataPoints] Array of data points that are part of the dataset. Each data point can have per-data point configuration.
@@ -41,10 +41,10 @@ class NamespaceDiscoveredDatasetResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataPoints': ?dataPoints == null ? null : pulumi.Input.encodeList<NamespaceDiscoveredDatasetDataPointResponse, Map<String, dynamic>>(dataPoints!, (value) => value.toMap()),
+      'dataPoints': ?pulumi.Input.mapOptionalInputValue<List<NamespaceDiscoveredDatasetDataPointResponse>, List<Map<String, dynamic>>>(dataPoints, (value) => pulumi.Input.encodeList<NamespaceDiscoveredDatasetDataPointResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dataSource': ?dataSource,
       'datasetConfiguration': ?datasetConfiguration,
-      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<DatasetBrokerStateStoreDestinationResponse, Map<String, dynamic>>(destinations!, (value) => value.toMap()),
+      'destinations': ?pulumi.Input.mapOptionalInputValue<List<DatasetBrokerStateStoreDestinationResponse>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<DatasetBrokerStateStoreDestinationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastUpdatedOn': ?lastUpdatedOn,
       'name': name,
       'typeRef': ?typeRef,
@@ -53,13 +53,13 @@ class NamespaceDiscoveredDatasetResponse {
 
   factory NamespaceDiscoveredDatasetResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceDiscoveredDatasetResponse(
-      dataPoints: map['dataPoints'] == null ? null : pulumi.Input.decodeList<NamespaceDiscoveredDatasetDataPointResponse>(map['dataPoints'], (value) => NamespaceDiscoveredDatasetDataPointResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dataSource: map['dataSource'] == null ? null : map['dataSource'] as String,
-      datasetConfiguration: map['datasetConfiguration'] == null ? null : map['datasetConfiguration'] as String,
-      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<DatasetBrokerStateStoreDestinationResponse>(map['destinations'], (value) => DatasetBrokerStateStoreDestinationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : map['lastUpdatedOn'] as String,
-      name: map['name'] as String,
-      typeRef: map['typeRef'] == null ? null : map['typeRef'] as String,
+      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<NamespaceDiscoveredDatasetDataPointResponse>(map['dataPoints'], (value) => NamespaceDiscoveredDatasetDataPointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
+      datasetConfiguration: map['datasetConfiguration'] == null ? null : (map['datasetConfiguration'] as String).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<DatasetBrokerStateStoreDestinationResponse>(map['destinations'], (value) => DatasetBrokerStateStoreDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn'] as String).input(),
+      name: (map['name'] as String).input(),
+      typeRef: map['typeRef'] == null ? null : (map['typeRef'] as String).input(),
     );
   }
 }

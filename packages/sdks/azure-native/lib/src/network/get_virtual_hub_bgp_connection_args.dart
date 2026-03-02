@@ -19,13 +19,10 @@ class GetVirtualHubBgpConnectionArgs {
   /// [resourceGroupName] The resource group name of the VirtualHub.
   /// [virtualHubName] The name of the VirtualHub.
   GetVirtualHubBgpConnectionArgs({
-    required pulumi.Output<String> connectionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualHubName,
-  }) :
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualHubName = pulumi.Input.asInput<String>(virtualHubName);
+    required this.connectionName,
+    required this.resourceGroupName,
+    required this.virtualHubName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVirtualHubBgpConnectionArgs {
 
   factory GetVirtualHubBgpConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualHubBgpConnectionArgs(
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualHubName: pulumi.Output.create<String>(map['virtualHubName'] as String),
+      connectionName: (map['connectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }
 }

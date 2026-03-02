@@ -6,9 +6,9 @@ import 'delivery_rule.dart';
 /// A policy that specifies the delivery rules to be used for an endpoint.
 class EndpointPropertiesUpdateParametersDeliveryPolicy {
   /// User-friendly description of the policy.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// A list of the delivery rules.
-  final List<DeliveryRule> rules;
+  final pulumi.Input<List<DeliveryRule>> rules;
 
   /// Creates a new [EndpointPropertiesUpdateParametersDeliveryPolicy].
   /// [description] User-friendly description of the policy.
@@ -21,14 +21,14 @@ class EndpointPropertiesUpdateParametersDeliveryPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'rules': pulumi.Input.encodeList<DeliveryRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.mapInputValue<List<DeliveryRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<DeliveryRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EndpointPropertiesUpdateParametersDeliveryPolicy.fromMap(Map<String, dynamic> map) {
     return EndpointPropertiesUpdateParametersDeliveryPolicy(
-      description: map['description'] == null ? null : map['description'] as String,
-      rules: pulumi.Input.decodeList<DeliveryRule>(map['rules'], (value) => DeliveryRule.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      rules: (pulumi.Input.decodeList<DeliveryRule>(map['rules'], (value) => DeliveryRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

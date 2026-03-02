@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 class AuditLogConfigResponseComputeV1 {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-  final List<String> exemptedMembers;
+  final pulumi.Input<List<String>> exemptedMembers;
   /// This is deprecated and has no effect. Do not use.
-  final bool ignoreChildExemptions;
+  final pulumi.Input<bool> ignoreChildExemptions;
   /// The log type that this config enables.
-  final String logType;
+  final pulumi.Input<String> logType;
 
   /// Creates a new [AuditLogConfigResponseComputeV1].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -30,9 +31,9 @@ class AuditLogConfigResponseComputeV1 {
 
   factory AuditLogConfigResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigResponseComputeV1(
-      exemptedMembers: (map['exemptedMembers'] as List).cast<String>(),
-      ignoreChildExemptions: map['ignoreChildExemptions'] as bool,
-      logType: map['logType'] as String,
+      exemptedMembers: ((map['exemptedMembers'] as List).cast<String>()).input(),
+      ignoreChildExemptions: (map['ignoreChildExemptions'] as bool).input(),
+      logType: (map['logType'] as String).input(),
     );
   }
 }

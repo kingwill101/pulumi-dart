@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskSetScale {
   /// The unit of measure for the scale value. Default: `PERCENT`.
-  final String? unit;
+  final pulumi.Input<String>? unit;
   /// The value, specified as a percent total of a service's `desiredCount`, to scale the task set. Defaults to `0` if not specified. Accepted values are numbers between 0.0 and 100.0.
-  final double? value;
+  final pulumi.Input<double>? value;
 
   /// Creates a new [TaskSetScale].
   /// [unit] The unit of measure for the scale value. Default: `PERCENT`.
@@ -24,8 +25,8 @@ class TaskSetScale {
 
   factory TaskSetScale.fromMap(Map<String, dynamic> map) {
     return TaskSetScale(
-      unit: map['unit'] == null ? null : map['unit'] as String,
-      value: map['value'] == null ? null : map['value'] as double,
+      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as double).input(),
     );
   }
 }

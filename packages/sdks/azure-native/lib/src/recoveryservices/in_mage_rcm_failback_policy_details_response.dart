@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InMageRcm failback specific policy details.
 class InMageRcmFailbackPolicyDetailsResponse {
   /// The app consistent snapshot frequency in minutes.
-  final int? appConsistentFrequencyInMinutes;
+  final pulumi.Input<int>? appConsistentFrequencyInMinutes;
   /// The crash consistent snapshot frequency in minutes.
-  final int? crashConsistentFrequencyInMinutes;
+  final pulumi.Input<int>? crashConsistentFrequencyInMinutes;
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'InMageRcmFailback'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Creates a new [InMageRcmFailbackPolicyDetailsResponse].
   /// [appConsistentFrequencyInMinutes] The app consistent snapshot frequency in minutes.
@@ -31,9 +32,9 @@ class InMageRcmFailbackPolicyDetailsResponse {
 
   factory InMageRcmFailbackPolicyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmFailbackPolicyDetailsResponse(
-      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : map['appConsistentFrequencyInMinutes'] as int,
-      crashConsistentFrequencyInMinutes: map['crashConsistentFrequencyInMinutes'] == null ? null : map['crashConsistentFrequencyInMinutes'] as int,
-      instanceType: map['instanceType'] as String,
+      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : (map['appConsistentFrequencyInMinutes'] as int).input(),
+      crashConsistentFrequencyInMinutes: map['crashConsistentFrequencyInMinutes'] == null ? null : (map['crashConsistentFrequencyInMinutes'] as int).input(),
+      instanceType: (map['instanceType'] as String).input(),
     );
   }
 }

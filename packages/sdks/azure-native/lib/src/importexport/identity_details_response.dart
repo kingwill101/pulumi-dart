@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the identity properties.
 class IdentityDetailsResponse {
   /// Specifies the principal id for the identity for the job.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// Specifies the tenant id for the identity for the job.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The type of identity
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [IdentityDetailsResponse].
   /// [principalId] Specifies the principal id for the identity for the job.
@@ -30,9 +31,9 @@ class IdentityDetailsResponse {
 
   factory IdentityDetailsResponse.fromMap(Map<String, dynamic> map) {
     return IdentityDetailsResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

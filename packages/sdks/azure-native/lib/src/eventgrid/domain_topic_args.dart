@@ -19,13 +19,10 @@ class DomainTopicArgs {
   /// [domainTopicName] Name of the domain topic.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   DomainTopicArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? domainTopicName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      domainTopicName = pulumi.Input.asOptionalInput<String>(domainTopicName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.domainName,
+    this.domainTopicName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DomainTopicArgs {
 
   factory DomainTopicArgs.fromMap(Map<String, dynamic> map) {
     return DomainTopicArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      domainTopicName: map['domainTopicName'] == null ? null : pulumi.Output.create<String>(map['domainTopicName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      domainName: (map['domainName'] as String).input(),
+      domainTopicName: map['domainTopicName'] == null ? null : (map['domainTopicName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

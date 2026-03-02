@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SKU (Stock Keeping Unit) assigned to this durable task scheduler
 class SchedulerSkuResponse {
   /// The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// The name of the SKU
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates whether the current SKU configuration is zone redundant
-  final String redundancyState;
+  final pulumi.Input<String> redundancyState;
 
   /// Creates a new [SchedulerSkuResponse].
   /// [capacity] The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy
@@ -30,9 +31,9 @@ class SchedulerSkuResponse {
 
   factory SchedulerSkuResponse.fromMap(Map<String, dynamic> map) {
     return SchedulerSkuResponse(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      name: map['name'] as String,
-      redundancyState: map['redundancyState'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      name: (map['name'] as String).input(),
+      redundancyState: (map['redundancyState'] as String).input(),
     );
   }
 }

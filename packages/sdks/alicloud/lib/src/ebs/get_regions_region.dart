@@ -5,9 +5,9 @@ import 'get_regions_region_zone.dart';
 
 class GetRegionsRegion {
   /// The ID of the region.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// A list of Ebs Zones.
-  final List<GetRegionsRegionZone> zones;
+  final pulumi.Input<List<GetRegionsRegionZone>> zones;
 
   /// Creates a new [GetRegionsRegion].
   /// [regionId] The ID of the region.
@@ -20,14 +20,14 @@ class GetRegionsRegion {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'regionId': regionId,
-      'zones': pulumi.Input.encodeList<GetRegionsRegionZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
+      'zones': pulumi.Input.mapInputValue<List<GetRegionsRegionZone>, List<Map<String, dynamic>>>(zones, (value) => pulumi.Input.encodeList<GetRegionsRegionZone, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRegionsRegion.fromMap(Map<String, dynamic> map) {
     return GetRegionsRegion(
-      regionId: map['regionId'] as String,
-      zones: pulumi.Input.decodeList<GetRegionsRegionZone>(map['zones'], (value) => GetRegionsRegionZone.fromMap((value as Map).cast<String, dynamic>())),
+      regionId: (map['regionId'] as String).input(),
+      zones: (pulumi.Input.decodeList<GetRegionsRegionZone>(map['zones'], (value) => GetRegionsRegionZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

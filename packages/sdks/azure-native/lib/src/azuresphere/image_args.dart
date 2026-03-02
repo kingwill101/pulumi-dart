@@ -28,19 +28,13 @@ class ImageArgs {
   /// [regionalDataBoundary] Regional data boundary for an image
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ImageArgs({
-    required pulumi.Output<String> catalogName,
-    pulumi.Output<String>? image,
-    pulumi.Output<String>? imageId,
-    pulumi.Output<String>? imageName,
-    pulumi.Output<String>? regionalDataBoundary,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      catalogName = pulumi.Input.asInput<String>(catalogName),
-      image = pulumi.Input.asOptionalInput<String>(image),
-      imageId = pulumi.Input.asOptionalInput<String>(imageId),
-      imageName = pulumi.Input.asOptionalInput<String>(imageName),
-      regionalDataBoundary = pulumi.Input.asOptionalInput<String>(regionalDataBoundary),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.catalogName,
+    this.image,
+    this.imageId,
+    this.imageName,
+    this.regionalDataBoundary,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      catalogName: pulumi.Output.create<String>(map['catalogName'] as String),
-      image: map['image'] == null ? null : pulumi.Output.create<String>(map['image'] as String),
-      imageId: map['imageId'] == null ? null : pulumi.Output.create<String>(map['imageId'] as String),
-      imageName: map['imageName'] == null ? null : pulumi.Output.create<String>(map['imageName'] as String),
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : pulumi.Output.create<String>(map['regionalDataBoundary'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      catalogName: (map['catalogName'] as String).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

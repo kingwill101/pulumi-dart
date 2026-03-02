@@ -6,7 +6,7 @@ import 'stream_backfill_all_mongodb_excluded_objects_database.dart';
 class StreamBackfillAllMongodbExcludedObjects {
   /// MongoDB databases in the cluster.
   /// Structure is documented below.
-  final List<StreamBackfillAllMongodbExcludedObjectsDatabase> databases;
+  final pulumi.Input<List<StreamBackfillAllMongodbExcludedObjectsDatabase>> databases;
 
   /// Creates a new [StreamBackfillAllMongodbExcludedObjects].
   /// [databases] MongoDB databases in the cluster.
@@ -16,13 +16,13 @@ class StreamBackfillAllMongodbExcludedObjects {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databases': pulumi.Input.encodeList<StreamBackfillAllMongodbExcludedObjectsDatabase, Map<String, dynamic>>(databases, (value) => value.toMap()),
+      'databases': pulumi.Input.mapInputValue<List<StreamBackfillAllMongodbExcludedObjectsDatabase>, List<Map<String, dynamic>>>(databases, (value) => pulumi.Input.encodeList<StreamBackfillAllMongodbExcludedObjectsDatabase, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StreamBackfillAllMongodbExcludedObjects.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllMongodbExcludedObjects(
-      databases: pulumi.Input.decodeList<StreamBackfillAllMongodbExcludedObjectsDatabase>(map['databases'], (value) => StreamBackfillAllMongodbExcludedObjectsDatabase.fromMap((value as Map).cast<String, dynamic>())),
+      databases: (pulumi.Input.decodeList<StreamBackfillAllMongodbExcludedObjectsDatabase>(map['databases'], (value) => StreamBackfillAllMongodbExcludedObjectsDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

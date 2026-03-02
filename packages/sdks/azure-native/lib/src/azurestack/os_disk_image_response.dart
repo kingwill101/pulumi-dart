@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// OS disk image.
 class OsDiskImageResponse {
   /// OS operating system type.
-  final String operatingSystem;
+  final pulumi.Input<String> operatingSystem;
   /// SAS key for source blob.
-  final String sourceBlobSasUri;
+  final pulumi.Input<String> sourceBlobSasUri;
 
   /// Creates a new [OsDiskImageResponse].
   /// [operatingSystem] OS operating system type.
@@ -25,8 +26,8 @@ class OsDiskImageResponse {
 
   factory OsDiskImageResponse.fromMap(Map<String, dynamic> map) {
     return OsDiskImageResponse(
-      operatingSystem: map['operatingSystem'] as String,
-      sourceBlobSasUri: map['sourceBlobSasUri'] as String,
+      operatingSystem: (map['operatingSystem'] as String).input(),
+      sourceBlobSasUri: (map['sourceBlobSasUri'] as String).input(),
     );
   }
 }

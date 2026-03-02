@@ -7,7 +7,7 @@ class AutomationSourceRuleSet {
   /// One or more `rule` blocks as defined below.
   ///
   /// > **Note:** This automation will trigger when all of the `rule`s in this `rule_set` are evaluated as 'true'. This is equivalent to a logical 'AND'.
-  final List<AutomationSourceRuleSetRule> rules;
+  final pulumi.Input<List<AutomationSourceRuleSetRule>> rules;
 
   /// Creates a new [AutomationSourceRuleSet].
   /// [rules] One or more `rule` blocks as defined below.
@@ -17,13 +17,13 @@ class AutomationSourceRuleSet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': pulumi.Input.encodeList<AutomationSourceRuleSetRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.mapInputValue<List<AutomationSourceRuleSetRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AutomationSourceRuleSetRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AutomationSourceRuleSet.fromMap(Map<String, dynamic> map) {
     return AutomationSourceRuleSet(
-      rules: pulumi.Input.decodeList<AutomationSourceRuleSetRule>(map['rules'], (value) => AutomationSourceRuleSetRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: (pulumi.Input.decodeList<AutomationSourceRuleSetRule>(map['rules'], (value) => AutomationSourceRuleSetRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

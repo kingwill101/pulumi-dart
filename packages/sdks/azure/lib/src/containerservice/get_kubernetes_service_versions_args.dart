@@ -19,13 +19,10 @@ class GetKubernetesServiceVersionsArgs {
   /// [location] Specifies the location in which to query for versions.
   /// [versionPrefix] A prefix filter for the versions of Kubernetes which should be returned; for example `1.` will return `1.9` to `1.14`, whereas `1.12` will return `1.12.2`.
   GetKubernetesServiceVersionsArgs({
-    pulumi.Output<bool>? includePreview,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? versionPrefix,
-  }) :
-      includePreview = pulumi.Input.asOptionalInput<bool>(includePreview),
-      location = pulumi.Input.asInput<String>(location),
-      versionPrefix = pulumi.Input.asOptionalInput<String>(versionPrefix);
+    this.includePreview,
+    required this.location,
+    this.versionPrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetKubernetesServiceVersionsArgs {
 
   factory GetKubernetesServiceVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesServiceVersionsArgs(
-      includePreview: map['includePreview'] == null ? null : pulumi.Output.create<bool>(map['includePreview'] as bool),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      versionPrefix: map['versionPrefix'] == null ? null : pulumi.Output.create<String>(map['versionPrefix'] as String),
+      includePreview: map['includePreview'] == null ? null : (map['includePreview'] as bool).input(),
+      location: (map['location'] as String).input(),
+      versionPrefix: map['versionPrefix'] == null ? null : (map['versionPrefix'] as String).input(),
     );
   }
 }

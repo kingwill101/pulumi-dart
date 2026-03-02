@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolUserAccountWindowsUserConfiguration {
   /// Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode. Values supported are "Batch" and "Interactive".
-  final String loginMode;
+  final pulumi.Input<String> loginMode;
 
   /// Creates a new [PoolUserAccountWindowsUserConfiguration].
   /// [loginMode] Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode. Values supported are "Batch" and "Interactive".
@@ -19,7 +20,7 @@ class PoolUserAccountWindowsUserConfiguration {
 
   factory PoolUserAccountWindowsUserConfiguration.fromMap(Map<String, dynamic> map) {
     return PoolUserAccountWindowsUserConfiguration(
-      loginMode: map['loginMode'] as String,
+      loginMode: (map['loginMode'] as String).input(),
     );
   }
 }

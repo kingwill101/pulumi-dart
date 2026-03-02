@@ -19,13 +19,10 @@ class GetWorkspaceArgs {
   /// [tags] Tags assigned to the resource.
   /// [workspaceId] Prometheus workspace ID.
   GetWorkspaceArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.region,
+    this.tags,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWorkspaceArgs {
 
   factory GetWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

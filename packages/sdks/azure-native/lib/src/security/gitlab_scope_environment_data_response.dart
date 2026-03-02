@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The GitLab scope connector's environment data
 class GitlabScopeEnvironmentDataResponse {
   /// The type of the environment data.
   /// Expected value is 'GitlabScope'.
-  final String environmentType;
+  final pulumi.Input<String> environmentType;
 
   /// Creates a new [GitlabScopeEnvironmentDataResponse].
   /// [environmentType] The type of the environment data.
@@ -21,7 +22,7 @@ class GitlabScopeEnvironmentDataResponse {
 
   factory GitlabScopeEnvironmentDataResponse.fromMap(Map<String, dynamic> map) {
     return GitlabScopeEnvironmentDataResponse(
-      environmentType: map['environmentType'] as String,
+      environmentType: (map['environmentType'] as String).input(),
     );
   }
 }

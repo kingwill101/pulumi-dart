@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterSecurityPostureConfig {
   /// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include VULNERABILITY_DISABLED, VULNERABILITY_BASIC and VULNERABILITY_ENTERPRISE.
-  final String vulnerabilityMode;
+  final pulumi.Input<String> vulnerabilityMode;
 
   /// Creates a new [GetClusterSecurityPostureConfig].
   /// [mode] Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
@@ -24,8 +25,8 @@ class GetClusterSecurityPostureConfig {
 
   factory GetClusterSecurityPostureConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterSecurityPostureConfig(
-      mode: map['mode'] as String,
-      vulnerabilityMode: map['vulnerabilityMode'] as String,
+      mode: (map['mode'] as String).input(),
+      vulnerabilityMode: (map['vulnerabilityMode'] as String).input(),
     );
   }
 }

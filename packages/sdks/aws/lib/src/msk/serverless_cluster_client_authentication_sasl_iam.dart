@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerlessClusterClientAuthenticationSaslIam {
   /// Whether SASL/IAM authentication is enabled or not.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ServerlessClusterClientAuthenticationSaslIam].
   /// [enabled] Whether SASL/IAM authentication is enabled or not.
@@ -19,7 +20,7 @@ class ServerlessClusterClientAuthenticationSaslIam {
 
   factory ServerlessClusterClientAuthenticationSaslIam.fromMap(Map<String, dynamic> map) {
     return ServerlessClusterClientAuthenticationSaslIam(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_connection_response_properties.dart';
 import 'system_data_response.dart';
 
 /// Connection body inside a pipeline
 class PipelineConnectionResponse {
   /// Connection etag inside pipeline
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Connection id inside pipeline
-  final String id;
+  final pulumi.Input<String> id;
   /// Connection location inside pipeline
-  final String location;
+  final pulumi.Input<String> location;
   /// Connection name inside pipeline
-  final String name;
+  final pulumi.Input<String> name;
   /// Connection properties inside pipeline
-  final PipelineConnectionResponseProperties? properties;
+  final pulumi.Input<PipelineConnectionResponseProperties>? properties;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// Connection type inside pipeline
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PipelineConnectionResponse].
   /// [etag] Connection etag inside pipeline
@@ -44,21 +45,21 @@ class PipelineConnectionResponse {
       'id': id,
       'location': location,
       'name': name,
-      'properties': ?properties == null ? null : properties!.toMap(),
-      'systemData': systemData.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<PipelineConnectionResponseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory PipelineConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PipelineConnectionResponse(
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      properties: map['properties'] == null ? null : PipelineConnectionResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      etag: (map['etag'] as String).input(),
+      id: (map['id'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (PipelineConnectionResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the hardware settings for the virtual machine.
 class HardwareProfileResponse {
   /// Gets or sets a value indicating whether virtual processors can be added while this virtual machine is running.
-  final bool cpuHotAddEnabled;
+  final pulumi.Input<bool> cpuHotAddEnabled;
   /// Gets or sets a value indicating whether virtual processors can be removed while this virtual machine is running.
-  final bool cpuHotRemoveEnabled;
+  final pulumi.Input<bool> cpuHotRemoveEnabled;
   /// Gets or sets a value indicating whether memory can be added while this virtual machine is running.
-  final bool memoryHotAddEnabled;
+  final pulumi.Input<bool> memoryHotAddEnabled;
   /// Gets or sets memory size in MBs for the vm.
-  final int? memorySizeMB;
+  final pulumi.Input<int>? memorySizeMB;
   /// Gets or sets the number of vCPUs for the vm.
-  final int? numCPUs;
+  final pulumi.Input<int>? numCPUs;
   /// Gets or sets the number of cores per socket for the vm. Defaults to 1 if unspecified.
-  final int? numCoresPerSocket;
+  final pulumi.Input<int>? numCoresPerSocket;
 
   /// Creates a new [HardwareProfileResponse].
   /// [cpuHotAddEnabled] Gets or sets a value indicating whether virtual processors can be added while this virtual machine is running.
@@ -45,12 +46,12 @@ class HardwareProfileResponse {
 
   factory HardwareProfileResponse.fromMap(Map<String, dynamic> map) {
     return HardwareProfileResponse(
-      cpuHotAddEnabled: map['cpuHotAddEnabled'] as bool,
-      cpuHotRemoveEnabled: map['cpuHotRemoveEnabled'] as bool,
-      memoryHotAddEnabled: map['memoryHotAddEnabled'] as bool,
-      memorySizeMB: map['memorySizeMB'] == null ? null : map['memorySizeMB'] as int,
-      numCPUs: map['numCPUs'] == null ? null : map['numCPUs'] as int,
-      numCoresPerSocket: map['numCoresPerSocket'] == null ? null : map['numCoresPerSocket'] as int,
+      cpuHotAddEnabled: (map['cpuHotAddEnabled'] as bool).input(),
+      cpuHotRemoveEnabled: (map['cpuHotRemoveEnabled'] as bool).input(),
+      memoryHotAddEnabled: (map['memoryHotAddEnabled'] as bool).input(),
+      memorySizeMB: map['memorySizeMB'] == null ? null : (map['memorySizeMB'] as int).input(),
+      numCPUs: map['numCPUs'] == null ? null : (map['numCPUs'] as int).input(),
+      numCoresPerSocket: map['numCoresPerSocket'] == null ? null : (map['numCoresPerSocket'] as int).input(),
     );
   }
 }

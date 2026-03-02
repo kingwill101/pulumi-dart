@@ -18,11 +18,9 @@ class VirtualNetworkApplianceArgs {
   /// [name] The name which should be used for this Palo Alto Local Network Virtual Appliance. Changing this forces a new Palo Alto Local Network Virtual Appliance to be created.
   /// [virtualHubId] The ID of the Virtual Hub to deploy this appliance onto. Changing this forces a new Palo Alto Local Network Virtual Appliance to be created.
   VirtualNetworkApplianceArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> virtualHubId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      virtualHubId = pulumi.Input.asInput<String>(virtualHubId);
+    this.name,
+    required this.virtualHubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class VirtualNetworkApplianceArgs {
 
   factory VirtualNetworkApplianceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkApplianceArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      virtualHubId: pulumi.Output.create<String>(map['virtualHubId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      virtualHubId: (map['virtualHubId'] as String).input(),
     );
   }
 }

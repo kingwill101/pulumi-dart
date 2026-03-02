@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancersLoadBalancerTarget {
-  final String labelSelector;
-  final int serverId;
-  final String type;
+  final pulumi.Input<String> labelSelector;
+  final pulumi.Input<int> serverId;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetLoadBalancersLoadBalancerTarget].
   /// [labelSelector] Required.
@@ -26,9 +27,9 @@ class GetLoadBalancersLoadBalancerTarget {
 
   factory GetLoadBalancersLoadBalancerTarget.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersLoadBalancerTarget(
-      labelSelector: map['labelSelector'] as String,
-      serverId: map['serverId'] as int,
-      type: map['type'] as String,
+      labelSelector: (map['labelSelector'] as String).input(),
+      serverId: (map['serverId'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DNS Settings of the interface
 class InterfaceDNSSettingsResponse {
   /// List of DNS server IP Addresses for the interface
-  final List<String>? dnsServers;
+  final pulumi.Input<List<String>>? dnsServers;
 
   /// Creates a new [InterfaceDNSSettingsResponse].
   /// [dnsServers] List of DNS server IP Addresses for the interface
@@ -20,7 +21,7 @@ class InterfaceDNSSettingsResponse {
 
   factory InterfaceDNSSettingsResponse.fromMap(Map<String, dynamic> map) {
     return InterfaceDNSSettingsResponse(
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
     );
   }
 }

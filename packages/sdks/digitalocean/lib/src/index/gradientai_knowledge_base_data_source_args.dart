@@ -19,13 +19,10 @@ class GradientaiKnowledgeBaseDataSourceArgs {
   /// [spacesDataSource] Optional.
   /// [webCrawlerDataSource] Optional.
   GradientaiKnowledgeBaseDataSourceArgs({
-    required pulumi.Output<String> knowledgeBaseUuid,
-    pulumi.Output<GradientaiKnowledgeBaseDataSourceSpacesDataSource>? spacesDataSource,
-    pulumi.Output<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource>? webCrawlerDataSource,
-  }) :
-      knowledgeBaseUuid = pulumi.Input.asInput<String>(knowledgeBaseUuid),
-      spacesDataSource = pulumi.Input.asOptionalInput<GradientaiKnowledgeBaseDataSourceSpacesDataSource>(spacesDataSource),
-      webCrawlerDataSource = pulumi.Input.asOptionalInput<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource>(webCrawlerDataSource);
+    required this.knowledgeBaseUuid,
+    this.spacesDataSource,
+    this.webCrawlerDataSource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GradientaiKnowledgeBaseDataSourceArgs {
 
   factory GradientaiKnowledgeBaseDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GradientaiKnowledgeBaseDataSourceArgs(
-      knowledgeBaseUuid: pulumi.Output.create<String>(map['knowledgeBaseUuid'] as String),
-      spacesDataSource: map['spacesDataSource'] == null ? null : pulumi.Output.create<GradientaiKnowledgeBaseDataSourceSpacesDataSource>(GradientaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((map['spacesDataSource'] as Map).cast<String, dynamic>())),
-      webCrawlerDataSource: map['webCrawlerDataSource'] == null ? null : pulumi.Output.create<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource>(GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((map['webCrawlerDataSource'] as Map).cast<String, dynamic>())),
+      knowledgeBaseUuid: (map['knowledgeBaseUuid'] as String).input(),
+      spacesDataSource: map['spacesDataSource'] == null ? null : (GradientaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((map['spacesDataSource'] as Map).cast<String, dynamic>())).input(),
+      webCrawlerDataSource: map['webCrawlerDataSource'] == null ? null : (GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((map['webCrawlerDataSource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

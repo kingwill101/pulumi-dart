@@ -23,15 +23,11 @@ class FirewallRuleState {
   /// [startIpAddress] The starting IP address to allow through the firewall for this rule.
   /// [synapseWorkspaceId] The ID of the Synapse Workspace on which to create the Firewall Rule. Changing this forces a new resource to be created.
   FirewallRuleState({
-    pulumi.Output<String>? endIpAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? startIpAddress,
-    pulumi.Output<String>? synapseWorkspaceId,
-  }) :
-      endIpAddress = pulumi.Input.asOptionalInput<String>(endIpAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      startIpAddress = pulumi.Input.asOptionalInput<String>(startIpAddress),
-      synapseWorkspaceId = pulumi.Input.asOptionalInput<String>(synapseWorkspaceId);
+    this.endIpAddress,
+    this.name,
+    this.startIpAddress,
+    this.synapseWorkspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class FirewallRuleState {
 
   factory FirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FirewallRuleState(
-      endIpAddress: map['endIpAddress'] == null ? null : pulumi.Output.create<String>(map['endIpAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      startIpAddress: map['startIpAddress'] == null ? null : pulumi.Output.create<String>(map['startIpAddress'] as String),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
+      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress'] as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
     );
   }
 }

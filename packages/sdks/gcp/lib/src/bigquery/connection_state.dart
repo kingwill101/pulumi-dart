@@ -70,35 +70,21 @@ class ConnectionState {
   /// [project] The ID of the project in which the resource belongs.
   /// [spark] Container for connection properties to execute stored procedures for Apache Spark. resources.
   ConnectionState({
-    pulumi.Output<ConnectionAws>? aws,
-    pulumi.Output<ConnectionAzure>? azure,
-    pulumi.Output<ConnectionCloudResource>? cloudResource,
-    pulumi.Output<ConnectionCloudSpanner>? cloudSpanner,
-    pulumi.Output<ConnectionCloudSql>? cloudSql,
-    pulumi.Output<String>? connectionId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? friendlyName,
-    pulumi.Output<bool>? hasCredential,
-    pulumi.Output<String>? kmsKeyName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ConnectionSpark>? spark,
-  }) :
-      aws = pulumi.Input.asOptionalInput<ConnectionAws>(aws),
-      azure = pulumi.Input.asOptionalInput<ConnectionAzure>(azure),
-      cloudResource = pulumi.Input.asOptionalInput<ConnectionCloudResource>(cloudResource),
-      cloudSpanner = pulumi.Input.asOptionalInput<ConnectionCloudSpanner>(cloudSpanner),
-      cloudSql = pulumi.Input.asOptionalInput<ConnectionCloudSql>(cloudSql),
-      connectionId = pulumi.Input.asOptionalInput<String>(connectionId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      hasCredential = pulumi.Input.asOptionalInput<bool>(hasCredential),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spark = pulumi.Input.asOptionalInput<ConnectionSpark>(spark);
+    this.aws,
+    this.azure,
+    this.cloudResource,
+    this.cloudSpanner,
+    this.cloudSql,
+    this.connectionId,
+    this.description,
+    this.friendlyName,
+    this.hasCredential,
+    this.kmsKeyName,
+    this.location,
+    this.name,
+    this.project,
+    this.spark,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -121,20 +107,20 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      aws: map['aws'] == null ? null : pulumi.Output.create<ConnectionAws>(ConnectionAws.fromMap((map['aws'] as Map).cast<String, dynamic>())),
-      azure: map['azure'] == null ? null : pulumi.Output.create<ConnectionAzure>(ConnectionAzure.fromMap((map['azure'] as Map).cast<String, dynamic>())),
-      cloudResource: map['cloudResource'] == null ? null : pulumi.Output.create<ConnectionCloudResource>(ConnectionCloudResource.fromMap((map['cloudResource'] as Map).cast<String, dynamic>())),
-      cloudSpanner: map['cloudSpanner'] == null ? null : pulumi.Output.create<ConnectionCloudSpanner>(ConnectionCloudSpanner.fromMap((map['cloudSpanner'] as Map).cast<String, dynamic>())),
-      cloudSql: map['cloudSql'] == null ? null : pulumi.Output.create<ConnectionCloudSql>(ConnectionCloudSql.fromMap((map['cloudSql'] as Map).cast<String, dynamic>())),
-      connectionId: map['connectionId'] == null ? null : pulumi.Output.create<String>(map['connectionId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      hasCredential: map['hasCredential'] == null ? null : pulumi.Output.create<bool>(map['hasCredential'] as bool),
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      spark: map['spark'] == null ? null : pulumi.Output.create<ConnectionSpark>(ConnectionSpark.fromMap((map['spark'] as Map).cast<String, dynamic>())),
+      aws: map['aws'] == null ? null : (ConnectionAws.fromMap((map['aws'] as Map).cast<String, dynamic>())).input(),
+      azure: map['azure'] == null ? null : (ConnectionAzure.fromMap((map['azure'] as Map).cast<String, dynamic>())).input(),
+      cloudResource: map['cloudResource'] == null ? null : (ConnectionCloudResource.fromMap((map['cloudResource'] as Map).cast<String, dynamic>())).input(),
+      cloudSpanner: map['cloudSpanner'] == null ? null : (ConnectionCloudSpanner.fromMap((map['cloudSpanner'] as Map).cast<String, dynamic>())).input(),
+      cloudSql: map['cloudSql'] == null ? null : (ConnectionCloudSql.fromMap((map['cloudSql'] as Map).cast<String, dynamic>())).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      hasCredential: map['hasCredential'] == null ? null : (map['hasCredential'] as bool).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      spark: map['spark'] == null ? null : (ConnectionSpark.fromMap((map['spark'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

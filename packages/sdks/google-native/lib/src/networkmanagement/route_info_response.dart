@@ -1,40 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For display only. Metadata associated with a Compute Engine route.
 class RouteInfoResponse {
   /// Destination IP range of the route.
-  final String destIpRange;
+  final pulumi.Input<String> destIpRange;
   /// Destination port ranges of the route. Policy based routes only.
-  final List<String> destPortRanges;
+  final pulumi.Input<List<String>> destPortRanges;
   /// Name of a route.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Instance tags of the route.
-  final List<String> instanceTags;
+  final pulumi.Input<List<String>> instanceTags;
   /// URI of a NCC Hub. NCC_HUB routes only.
-  final String nccHubUri;
+  final pulumi.Input<String> nccHubUri;
   /// URI of a NCC Spoke. NCC_HUB routes only.
-  final String nccSpokeUri;
+  final pulumi.Input<String> nccSpokeUri;
   /// URI of a Compute Engine network. NETWORK routes only.
-  final String networkUri;
+  final pulumi.Input<String> networkUri;
   /// Next hop of the route.
-  final String nextHop;
+  final pulumi.Input<String> nextHop;
   /// Type of next hop.
-  final String nextHopType;
+  final pulumi.Input<String> nextHopType;
   /// Priority of the route.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// Protocols of the route. Policy based routes only.
-  final List<String> protocols;
+  final pulumi.Input<List<String>> protocols;
   /// Indicates where route is applicable.
-  final String routeScope;
+  final pulumi.Input<String> routeScope;
   /// Type of route.
-  final String routeType;
+  final pulumi.Input<String> routeType;
   /// Source IP address range of the route. Policy based routes only.
-  final String srcIpRange;
+  final pulumi.Input<String> srcIpRange;
   /// Source port ranges of the route. Policy based routes only.
-  final List<String> srcPortRanges;
+  final pulumi.Input<List<String>> srcPortRanges;
   /// URI of a route. Dynamic, peering static and peering dynamic routes do not have an URI. Advertised route from Google Cloud VPC to on-premises network also does not have an URI.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [RouteInfoResponse].
   /// [destIpRange] Destination IP range of the route.
@@ -95,22 +96,22 @@ class RouteInfoResponse {
 
   factory RouteInfoResponse.fromMap(Map<String, dynamic> map) {
     return RouteInfoResponse(
-      destIpRange: map['destIpRange'] as String,
-      destPortRanges: (map['destPortRanges'] as List).cast<String>(),
-      displayName: map['displayName'] as String,
-      instanceTags: (map['instanceTags'] as List).cast<String>(),
-      nccHubUri: map['nccHubUri'] as String,
-      nccSpokeUri: map['nccSpokeUri'] as String,
-      networkUri: map['networkUri'] as String,
-      nextHop: map['nextHop'] as String,
-      nextHopType: map['nextHopType'] as String,
-      priority: map['priority'] as int,
-      protocols: (map['protocols'] as List).cast<String>(),
-      routeScope: map['routeScope'] as String,
-      routeType: map['routeType'] as String,
-      srcIpRange: map['srcIpRange'] as String,
-      srcPortRanges: (map['srcPortRanges'] as List).cast<String>(),
-      uri: map['uri'] as String,
+      destIpRange: (map['destIpRange'] as String).input(),
+      destPortRanges: ((map['destPortRanges'] as List).cast<String>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      instanceTags: ((map['instanceTags'] as List).cast<String>()).input(),
+      nccHubUri: (map['nccHubUri'] as String).input(),
+      nccSpokeUri: (map['nccSpokeUri'] as String).input(),
+      networkUri: (map['networkUri'] as String).input(),
+      nextHop: (map['nextHop'] as String).input(),
+      nextHopType: (map['nextHopType'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      protocols: ((map['protocols'] as List).cast<String>()).input(),
+      routeScope: (map['routeScope'] as String).input(),
+      routeType: (map['routeType'] as String).input(),
+      srcIpRange: (map['srcIpRange'] as String).input(),
+      srcPortRanges: ((map['srcPortRanges'] as List).cast<String>()).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

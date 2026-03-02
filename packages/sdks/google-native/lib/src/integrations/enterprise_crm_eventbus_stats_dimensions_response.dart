@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseCrmEventbusStatsDimensionsResponse {
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Whether to include or exclude the enums matching the regex.
-  final String enumFilterType;
-  final String errorEnumString;
-  final String retryAttempt;
-  final String taskName;
-  final String taskNumber;
+  final pulumi.Input<String> enumFilterType;
+  final pulumi.Input<String> errorEnumString;
+  final pulumi.Input<String> retryAttempt;
+  final pulumi.Input<String> taskName;
+  final pulumi.Input<String> taskNumber;
   /// Stats have been or will be aggregated on set fields for any semantically-meaningful combination.
-  final String triggerId;
-  final String warningEnumString;
-  final String workflowId;
-  final String workflowName;
+  final pulumi.Input<String> triggerId;
+  final pulumi.Input<String> warningEnumString;
+  final pulumi.Input<String> workflowId;
+  final pulumi.Input<String> workflowName;
 
   /// Creates a new [EnterpriseCrmEventbusStatsDimensionsResponse].
   /// [clientId] Required.
@@ -56,16 +57,16 @@ class EnterpriseCrmEventbusStatsDimensionsResponse {
 
   factory EnterpriseCrmEventbusStatsDimensionsResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusStatsDimensionsResponse(
-      clientId: map['clientId'] as String,
-      enumFilterType: map['enumFilterType'] as String,
-      errorEnumString: map['errorEnumString'] as String,
-      retryAttempt: map['retryAttempt'] as String,
-      taskName: map['taskName'] as String,
-      taskNumber: map['taskNumber'] as String,
-      triggerId: map['triggerId'] as String,
-      warningEnumString: map['warningEnumString'] as String,
-      workflowId: map['workflowId'] as String,
-      workflowName: map['workflowName'] as String,
+      clientId: (map['clientId'] as String).input(),
+      enumFilterType: (map['enumFilterType'] as String).input(),
+      errorEnumString: (map['errorEnumString'] as String).input(),
+      retryAttempt: (map['retryAttempt'] as String).input(),
+      taskName: (map['taskName'] as String).input(),
+      taskNumber: (map['taskNumber'] as String).input(),
+      triggerId: (map['triggerId'] as String).input(),
+      warningEnumString: (map['warningEnumString'] as String).input(),
+      workflowId: (map['workflowId'] as String).input(),
+      workflowName: (map['workflowName'] as String).input(),
     );
   }
 }

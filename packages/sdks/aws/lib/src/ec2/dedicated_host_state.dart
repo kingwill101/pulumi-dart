@@ -43,31 +43,19 @@ class DedicatedHostState {
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   DedicatedHostState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? assetId,
-    pulumi.Output<String>? autoPlacement,
-    pulumi.Output<String>? availabilityZone,
-    pulumi.Output<String>? hostRecovery,
-    pulumi.Output<String>? instanceFamily,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? outpostArn,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      assetId = pulumi.Input.asOptionalInput<String>(assetId),
-      autoPlacement = pulumi.Input.asOptionalInput<String>(autoPlacement),
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      hostRecovery = pulumi.Input.asOptionalInput<String>(hostRecovery),
-      instanceFamily = pulumi.Input.asOptionalInput<String>(instanceFamily),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      outpostArn = pulumi.Input.asOptionalInput<String>(outpostArn),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.assetId,
+    this.autoPlacement,
+    this.availabilityZone,
+    this.hostRecovery,
+    this.instanceFamily,
+    this.instanceType,
+    this.outpostArn,
+    this.ownerId,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class DedicatedHostState {
 
   factory DedicatedHostState.fromMap(Map<String, dynamic> map) {
     return DedicatedHostState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      assetId: map['assetId'] == null ? null : pulumi.Output.create<String>(map['assetId'] as String),
-      autoPlacement: map['autoPlacement'] == null ? null : pulumi.Output.create<String>(map['autoPlacement'] as String),
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      hostRecovery: map['hostRecovery'] == null ? null : pulumi.Output.create<String>(map['hostRecovery'] as String),
-      instanceFamily: map['instanceFamily'] == null ? null : pulumi.Output.create<String>(map['instanceFamily'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      outpostArn: map['outpostArn'] == null ? null : pulumi.Output.create<String>(map['outpostArn'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      assetId: map['assetId'] == null ? null : (map['assetId'] as String).input(),
+      autoPlacement: map['autoPlacement'] == null ? null : (map['autoPlacement'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      hostRecovery: map['hostRecovery'] == null ? null : (map['hostRecovery'] as String).input(),
+      instanceFamily: map['instanceFamily'] == null ? null : (map['instanceFamily'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

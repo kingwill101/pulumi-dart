@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_disk_mirror_source_data_store_format.dart';
 
 class DomainDevicesDiskMirrorSourceDataStore {
   /// Defines the format of the data store used in the backing store source configuration.
-  final DomainDevicesDiskMirrorSourceDataStoreFormat? format;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceDataStoreFormat>? format;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceDataStore].
   /// [format] Defines the format of the data store used in the backing store source configuration.
@@ -14,13 +15,13 @@ class DomainDevicesDiskMirrorSourceDataStore {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'format': ?format == null ? null : format!.toMap(),
+      'format': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceDataStoreFormat, Map<String, dynamic>>(format, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesDiskMirrorSourceDataStore.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceDataStore(
-      format: map['format'] == null ? null : DomainDevicesDiskMirrorSourceDataStoreFormat.fromMap((map['format'] as Map).cast<String, dynamic>()),
+      format: map['format'] == null ? null : (DomainDevicesDiskMirrorSourceDataStoreFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

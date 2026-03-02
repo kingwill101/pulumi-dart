@@ -40,21 +40,14 @@ class InterceptDeploymentArgs {
   /// [location] The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
   /// [project] The ID of the project in which the resource belongs.
   InterceptDeploymentArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> forwardingRule,
-    required pulumi.Output<String> interceptDeploymentGroup,
-    required pulumi.Output<String> interceptDeploymentId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      forwardingRule = pulumi.Input.asInput<String>(forwardingRule),
-      interceptDeploymentGroup = pulumi.Input.asInput<String>(interceptDeploymentGroup),
-      interceptDeploymentId = pulumi.Input.asInput<String>(interceptDeploymentId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    required this.forwardingRule,
+    required this.interceptDeploymentGroup,
+    required this.interceptDeploymentId,
+    this.labels,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,13 +63,13 @@ class InterceptDeploymentArgs {
 
   factory InterceptDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return InterceptDeploymentArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      forwardingRule: pulumi.Output.create<String>(map['forwardingRule'] as String),
-      interceptDeploymentGroup: pulumi.Output.create<String>(map['interceptDeploymentGroup'] as String),
-      interceptDeploymentId: pulumi.Output.create<String>(map['interceptDeploymentId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      forwardingRule: (map['forwardingRule'] as String).input(),
+      interceptDeploymentGroup: (map['interceptDeploymentGroup'] as String).input(),
+      interceptDeploymentId: (map['interceptDeploymentId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

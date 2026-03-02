@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rollout_sequence_stage_cluster_selector.dart';
 
 class RolloutSequenceStage {
   /// Filter to select a subset of clusters from the specified Fleet projects.
   /// If not specified, all clusters in the fleet projects are selected.
   /// Structure is documented below.
-  final RolloutSequenceStageClusterSelector? clusterSelector;
+  final pulumi.Input<RolloutSequenceStageClusterSelector>? clusterSelector;
   /// List of Fleet projects to select the clusters from.
   /// Expected format: projects/{project}
-  final List<String> fleetProjects;
+  final pulumi.Input<List<String>> fleetProjects;
   /// Soak time after upgrading all the clusters in the stage, specified in seconds.
-  final String? soakDuration;
+  final pulumi.Input<String>? soakDuration;
 
   /// Creates a new [RolloutSequenceStage].
   /// [clusterSelector] Filter to select a subset of clusters from the specified Fleet projects.
@@ -25,7 +26,7 @@ class RolloutSequenceStage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterSelector': ?clusterSelector == null ? null : clusterSelector!.toMap(),
+      'clusterSelector': ?pulumi.Input.mapOptionalInputValue<RolloutSequenceStageClusterSelector, Map<String, dynamic>>(clusterSelector, (value) => value.toMap()),
       'fleetProjects': fleetProjects,
       'soakDuration': ?soakDuration,
     };
@@ -33,9 +34,9 @@ class RolloutSequenceStage {
 
   factory RolloutSequenceStage.fromMap(Map<String, dynamic> map) {
     return RolloutSequenceStage(
-      clusterSelector: map['clusterSelector'] == null ? null : RolloutSequenceStageClusterSelector.fromMap((map['clusterSelector'] as Map).cast<String, dynamic>()),
-      fleetProjects: (map['fleetProjects'] as List).cast<String>(),
-      soakDuration: map['soakDuration'] == null ? null : map['soakDuration'] as String,
+      clusterSelector: map['clusterSelector'] == null ? null : (RolloutSequenceStageClusterSelector.fromMap((map['clusterSelector'] as Map).cast<String, dynamic>())).input(),
+      fleetProjects: ((map['fleetProjects'] as List).cast<String>()).input(),
+      soakDuration: map['soakDuration'] == null ? null : (map['soakDuration'] as String).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsBotVersionLocaleSpecification {
-  final String sourceBotVersion;
+  final pulumi.Input<String> sourceBotVersion;
 
   /// Creates a new [V2modelsBotVersionLocaleSpecification].
   /// [sourceBotVersion] Required.
@@ -18,7 +19,7 @@ class V2modelsBotVersionLocaleSpecification {
 
   factory V2modelsBotVersionLocaleSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsBotVersionLocaleSpecification(
-      sourceBotVersion: map['sourceBotVersion'] as String,
+      sourceBotVersion: (map['sourceBotVersion'] as String).input(),
     );
   }
 }

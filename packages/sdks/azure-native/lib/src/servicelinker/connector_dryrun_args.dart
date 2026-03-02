@@ -26,17 +26,12 @@ class ConnectorDryrunArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subscriptionId] The ID of the target subscription.
   ConnectorDryrunArgs({
-    pulumi.Output<String>? dryrunName,
-    required pulumi.Output<String> location,
-    pulumi.Output<CreateOrUpdateDryrunParameters>? parameters,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      dryrunName = pulumi.Input.asOptionalInput<String>(dryrunName),
-      location = pulumi.Input.asInput<String>(location),
-      parameters = pulumi.Input.asOptionalInput<CreateOrUpdateDryrunParameters>(parameters),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    this.dryrunName,
+    required this.location,
+    this.parameters,
+    required this.resourceGroupName,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ConnectorDryrunArgs {
 
   factory ConnectorDryrunArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorDryrunArgs(
-      dryrunName: map['dryrunName'] == null ? null : pulumi.Output.create<String>(map['dryrunName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<CreateOrUpdateDryrunParameters>(CreateOrUpdateDryrunParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      dryrunName: map['dryrunName'] == null ? null : (map['dryrunName'] as String).input(),
+      location: (map['location'] as String).input(),
+      parameters: map['parameters'] == null ? null : (CreateOrUpdateDryrunParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

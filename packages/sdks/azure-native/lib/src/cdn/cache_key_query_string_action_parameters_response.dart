@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the parameters for the cache-key query string action.
 class CacheKeyQueryStringActionParametersResponse {
   /// query parameters to include or exclude (comma separated).
-  final String? queryParameters;
+  final pulumi.Input<String>? queryParameters;
   /// Caching behavior for the requests
-  final String queryStringBehavior;
+  final pulumi.Input<String> queryStringBehavior;
   /// Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
-  final String typeName;
+  final pulumi.Input<String> typeName;
 
   /// Creates a new [CacheKeyQueryStringActionParametersResponse].
   /// [queryParameters] query parameters to include or exclude (comma separated).
@@ -30,9 +31,9 @@ class CacheKeyQueryStringActionParametersResponse {
 
   factory CacheKeyQueryStringActionParametersResponse.fromMap(Map<String, dynamic> map) {
     return CacheKeyQueryStringActionParametersResponse(
-      queryParameters: map['queryParameters'] == null ? null : map['queryParameters'] as String,
-      queryStringBehavior: map['queryStringBehavior'] as String,
-      typeName: map['typeName'] as String,
+      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters'] as String).input(),
+      queryStringBehavior: (map['queryStringBehavior'] as String).input(),
+      typeName: (map['typeName'] as String).input(),
     );
   }
 }

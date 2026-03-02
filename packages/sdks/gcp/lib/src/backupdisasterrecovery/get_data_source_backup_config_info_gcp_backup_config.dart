@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSourceBackupConfigInfoGcpBackupConfig {
   /// The name of the backup plan.
-  final String backupPlan;
+  final pulumi.Input<String> backupPlan;
   /// The name of the backup plan association.
-  final String backupPlanAssociation;
+  final pulumi.Input<String> backupPlanAssociation;
   /// The description of the backup plan.
-  final String backupPlanDescription;
+  final pulumi.Input<String> backupPlanDescription;
   /// The names of the backup plan rules which point to this backupvault
-  final List<String> backupPlanRules;
+  final pulumi.Input<List<String>> backupPlanRules;
 
   /// Creates a new [GetDataSourceBackupConfigInfoGcpBackupConfig].
   /// [backupPlan] The name of the backup plan.
@@ -34,10 +35,10 @@ class GetDataSourceBackupConfigInfoGcpBackupConfig {
 
   factory GetDataSourceBackupConfigInfoGcpBackupConfig.fromMap(Map<String, dynamic> map) {
     return GetDataSourceBackupConfigInfoGcpBackupConfig(
-      backupPlan: map['backupPlan'] as String,
-      backupPlanAssociation: map['backupPlanAssociation'] as String,
-      backupPlanDescription: map['backupPlanDescription'] as String,
-      backupPlanRules: (map['backupPlanRules'] as List).cast<String>(),
+      backupPlan: (map['backupPlan'] as String).input(),
+      backupPlanAssociation: (map['backupPlanAssociation'] as String).input(),
+      backupPlanDescription: (map['backupPlanDescription'] as String).input(),
+      backupPlanRules: ((map['backupPlanRules'] as List).cast<String>()).input(),
     );
   }
 }

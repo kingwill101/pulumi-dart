@@ -38,19 +38,13 @@ class ConsumersIamBindingState {
   /// [role] The role that should be applied. Only one
   /// [serviceName] The name of the service. Used to find the parent resource to bind the IAM policy to
   ConsumersIamBindingState({
-    pulumi.Output<ConsumersIamBindingCondition>? condition,
-    pulumi.Output<String>? consumerProject,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? serviceName,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ConsumersIamBindingCondition>(condition),
-      consumerProject = pulumi.Input.asOptionalInput<String>(consumerProject),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName);
+    this.condition,
+    this.consumerProject,
+    this.etag,
+    this.members,
+    this.role,
+    this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,12 +59,12 @@ class ConsumersIamBindingState {
 
   factory ConsumersIamBindingState.fromMap(Map<String, dynamic> map) {
     return ConsumersIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<ConsumersIamBindingCondition>(ConsumersIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      consumerProject: map['consumerProject'] == null ? null : pulumi.Output.create<String>(map['consumerProject'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
+      condition: map['condition'] == null ? null : (ConsumersIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      consumerProject: map['consumerProject'] == null ? null : (map['consumerProject'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
     );
   }
 }

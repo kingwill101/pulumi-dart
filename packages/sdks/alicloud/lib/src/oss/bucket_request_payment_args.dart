@@ -16,11 +16,9 @@ class BucketRequestPaymentArgs {
   /// [bucket] The name of the bucket.
   /// [payer] The payer of the request and traffic fees.Valid values: BucketOwner: request and traffic fees are paid by the bucket owner. Requester: request and traffic fees are paid by the requester.
   BucketRequestPaymentArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? payer,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      payer = pulumi.Input.asOptionalInput<String>(payer);
+    required this.bucket,
+    this.payer,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class BucketRequestPaymentArgs {
 
   factory BucketRequestPaymentArgs.fromMap(Map<String, dynamic> map) {
     return BucketRequestPaymentArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      payer: map['payer'] == null ? null : pulumi.Output.create<String>(map['payer'] as String),
+      bucket: (map['bucket'] as String).input(),
+      payer: map['payer'] == null ? null : (map['payer'] as String).input(),
     );
   }
 }

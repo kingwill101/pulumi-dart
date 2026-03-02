@@ -31,19 +31,13 @@ class AuthorizedViewArgs {
   /// [subsetView] An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
   /// [tableName] The name of the Bigtable table in which the authorized view belongs.
   AuthorizedViewArgs({
-    pulumi.Output<String>? deletionProtection,
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<AuthorizedViewSubsetView>? subsetView,
-    required pulumi.Output<String> tableName,
-  }) :
-      deletionProtection = pulumi.Input.asOptionalInput<String>(deletionProtection),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      subsetView = pulumi.Input.asOptionalInput<AuthorizedViewSubsetView>(subsetView),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    this.deletionProtection,
+    required this.instanceName,
+    this.name,
+    this.project,
+    this.subsetView,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class AuthorizedViewArgs {
 
   factory AuthorizedViewArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedViewArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<String>(map['deletionProtection'] as String),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      subsetView: map['subsetView'] == null ? null : pulumi.Output.create<AuthorizedViewSubsetView>(AuthorizedViewSubsetView.fromMap((map['subsetView'] as Map).cast<String, dynamic>())),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      subsetView: map['subsetView'] == null ? null : (AuthorizedViewSubsetView.fromMap((map['subsetView'] as Map).cast<String, dynamic>())).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

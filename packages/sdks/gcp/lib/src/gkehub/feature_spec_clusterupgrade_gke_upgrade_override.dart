@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_spec_clusterupgrade_gke_upgrade_override_post_conditions.dart';
 import 'feature_spec_clusterupgrade_gke_upgrade_override_upgrade.dart';
 
 class FeatureSpecClusterupgradeGkeUpgradeOverride {
   /// Post conditions to override for the specified upgrade.
   /// Structure is documented below.
-  final FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions postConditions;
+  final pulumi.Input<FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions> postConditions;
   /// Which upgrade to override.
   /// Structure is documented below.
-  final FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade upgrade;
+  final pulumi.Input<FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade> upgrade;
 
   /// Creates a new [FeatureSpecClusterupgradeGkeUpgradeOverride].
   /// [postConditions] Post conditions to override for the specified upgrade.
@@ -21,15 +22,15 @@ class FeatureSpecClusterupgradeGkeUpgradeOverride {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postConditions': postConditions.toMap(),
-      'upgrade': upgrade.toMap(),
+      'postConditions': pulumi.Input.mapInputValue<FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions, Map<String, dynamic>>(postConditions, (value) => value.toMap()),
+      'upgrade': pulumi.Input.mapInputValue<FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade, Map<String, dynamic>>(upgrade, (value) => value.toMap()),
     };
   }
 
   factory FeatureSpecClusterupgradeGkeUpgradeOverride.fromMap(Map<String, dynamic> map) {
     return FeatureSpecClusterupgradeGkeUpgradeOverride(
-      postConditions: FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions.fromMap((map['postConditions'] as Map).cast<String, dynamic>()),
-      upgrade: FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade.fromMap((map['upgrade'] as Map).cast<String, dynamic>()),
+      postConditions: (FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions.fromMap((map['postConditions'] as Map).cast<String, dynamic>())).input(),
+      upgrade: (FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade.fromMap((map['upgrade'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

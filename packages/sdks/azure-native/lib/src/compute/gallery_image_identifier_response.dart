@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This is the gallery image definition identifier.
 class GalleryImageIdentifierResponse {
   /// The name of the gallery image definition offer.
-  final String offer;
+  final pulumi.Input<String> offer;
   /// The name of the gallery image definition publisher.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// The name of the gallery image definition SKU.
-  final String sku;
+  final pulumi.Input<String> sku;
 
   /// Creates a new [GalleryImageIdentifierResponse].
   /// [offer] The name of the gallery image definition offer.
@@ -30,9 +31,9 @@ class GalleryImageIdentifierResponse {
 
   factory GalleryImageIdentifierResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageIdentifierResponse(
-      offer: map['offer'] as String,
-      publisher: map['publisher'] as String,
-      sku: map['sku'] as String,
+      offer: (map['offer'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      sku: (map['sku'] as String).input(),
     );
   }
 }

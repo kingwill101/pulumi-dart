@@ -38,27 +38,17 @@ class ApplicationState {
   /// [resourceGroupName] The name of the Resource Group where the Managed Application should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   ApplicationState({
-    pulumi.Output<String>? applicationDefinitionId,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedResourceGroupName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? outputs,
-    pulumi.Output<String>? parameterValues,
-    pulumi.Output<ApplicationPlan>? plan,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationDefinitionId = pulumi.Input.asOptionalInput<String>(applicationDefinitionId),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedResourceGroupName = pulumi.Input.asOptionalInput<String>(managedResourceGroupName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputs = pulumi.Input.asOptionalInput<Map<String, String>>(outputs),
-      parameterValues = pulumi.Input.asOptionalInput<String>(parameterValues),
-      plan = pulumi.Input.asOptionalInput<ApplicationPlan>(plan),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.applicationDefinitionId,
+    this.kind,
+    this.location,
+    this.managedResourceGroupName,
+    this.name,
+    this.outputs,
+    this.parameterValues,
+    this.plan,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      applicationDefinitionId: map['applicationDefinitionId'] == null ? null : pulumi.Output.create<String>(map['applicationDefinitionId'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : pulumi.Output.create<String>(map['managedResourceGroupName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputs: map['outputs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['outputs'] as Map).cast<String, String>()),
-      parameterValues: map['parameterValues'] == null ? null : pulumi.Output.create<String>(map['parameterValues'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<ApplicationPlan>(ApplicationPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationDefinitionId: map['applicationDefinitionId'] == null ? null : (map['applicationDefinitionId'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputs: map['outputs'] == null ? null : ((map['outputs'] as Map).cast<String, String>()).input(),
+      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues'] as String).input(),
+      plan: map['plan'] == null ? null : (ApplicationPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

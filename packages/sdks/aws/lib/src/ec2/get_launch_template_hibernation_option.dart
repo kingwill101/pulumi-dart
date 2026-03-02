@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateHibernationOption {
-  final bool configured;
+  final pulumi.Input<bool> configured;
 
   /// Creates a new [GetLaunchTemplateHibernationOption].
   /// [configured] Required.
@@ -18,7 +19,7 @@ class GetLaunchTemplateHibernationOption {
 
   factory GetLaunchTemplateHibernationOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateHibernationOption(
-      configured: map['configured'] as bool,
+      configured: (map['configured'] as bool).input(),
     );
   }
 }

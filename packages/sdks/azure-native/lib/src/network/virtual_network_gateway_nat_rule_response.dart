@@ -6,23 +6,23 @@ import 'vpn_nat_rule_mapping_response.dart';
 /// VirtualNetworkGatewayNatRule Resource.
 class VirtualNetworkGatewayNatRuleResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// The private IP address external mapping for NAT.
-  final List<VpnNatRuleMappingResponse>? externalMappings;
+  final pulumi.Input<List<VpnNatRuleMappingResponse>>? externalMappings;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The private IP address internal mapping for NAT.
-  final List<VpnNatRuleMappingResponse>? internalMappings;
+  final pulumi.Input<List<VpnNatRuleMappingResponse>>? internalMappings;
   /// The IP Configuration ID this NAT rule applies to.
-  final String? ipConfigurationId;
+  final pulumi.Input<String>? ipConfigurationId;
   /// The Source NAT direction of a VPN NAT.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the NAT Rule resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [VirtualNetworkGatewayNatRuleResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.
@@ -49,9 +49,9 @@ class VirtualNetworkGatewayNatRuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'etag': etag,
-      'externalMappings': ?externalMappings == null ? null : pulumi.Input.encodeList<VpnNatRuleMappingResponse, Map<String, dynamic>>(externalMappings!, (value) => value.toMap()),
+      'externalMappings': ?pulumi.Input.mapOptionalInputValue<List<VpnNatRuleMappingResponse>, List<Map<String, dynamic>>>(externalMappings, (value) => pulumi.Input.encodeList<VpnNatRuleMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
-      'internalMappings': ?internalMappings == null ? null : pulumi.Input.encodeList<VpnNatRuleMappingResponse, Map<String, dynamic>>(internalMappings!, (value) => value.toMap()),
+      'internalMappings': ?pulumi.Input.mapOptionalInputValue<List<VpnNatRuleMappingResponse>, List<Map<String, dynamic>>>(internalMappings, (value) => pulumi.Input.encodeList<VpnNatRuleMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipConfigurationId': ?ipConfigurationId,
       'mode': ?mode,
       'name': ?name,
@@ -62,15 +62,15 @@ class VirtualNetworkGatewayNatRuleResponse {
 
   factory VirtualNetworkGatewayNatRuleResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayNatRuleResponse(
-      etag: map['etag'] as String,
-      externalMappings: map['externalMappings'] == null ? null : pulumi.Input.decodeList<VpnNatRuleMappingResponse>(map['externalMappings'], (value) => VpnNatRuleMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      internalMappings: map['internalMappings'] == null ? null : pulumi.Input.decodeList<VpnNatRuleMappingResponse>(map['internalMappings'], (value) => VpnNatRuleMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
-      ipConfigurationId: map['ipConfigurationId'] == null ? null : map['ipConfigurationId'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      etag: (map['etag'] as String).input(),
+      externalMappings: map['externalMappings'] == null ? null : (pulumi.Input.decodeList<VpnNatRuleMappingResponse>(map['externalMappings'], (value) => VpnNatRuleMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      internalMappings: map['internalMappings'] == null ? null : (pulumi.Input.decodeList<VpnNatRuleMappingResponse>(map['internalMappings'], (value) => VpnNatRuleMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipConfigurationId: map['ipConfigurationId'] == null ? null : (map['ipConfigurationId'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

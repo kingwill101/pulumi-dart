@@ -29,17 +29,12 @@ class NotificationConfigArgs {
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is
   /// [streamingConfig] The config for triggering streaming-based notifications.
   NotificationConfigArgs({
-    required pulumi.Output<String> configId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> pubsubTopic,
-    required pulumi.Output<NotificationConfigStreamingConfig> streamingConfig,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      organization = pulumi.Input.asInput<String>(organization),
-      pubsubTopic = pulumi.Input.asInput<String>(pubsubTopic),
-      streamingConfig = pulumi.Input.asInput<NotificationConfigStreamingConfig>(streamingConfig);
+    required this.configId,
+    this.description,
+    required this.organization,
+    required this.pubsubTopic,
+    required this.streamingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class NotificationConfigArgs {
 
   factory NotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return NotificationConfigArgs(
-      configId: pulumi.Output.create<String>(map['configId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      pubsubTopic: pulumi.Output.create<String>(map['pubsubTopic'] as String),
-      streamingConfig: pulumi.Output.create<NotificationConfigStreamingConfig>(NotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())),
+      configId: (map['configId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      pubsubTopic: (map['pubsubTopic'] as String).input(),
+      streamingConfig: (NotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

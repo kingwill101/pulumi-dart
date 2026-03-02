@@ -30,21 +30,14 @@ class VmwareEngineNetworkArgs {
   /// [type] VMware Engine network type.
   /// [vmwareEngineNetworkId] Required. The user-provided identifier of the new VMware Engine network. This identifier must be unique among VMware Engine network resources within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * For networks of type LEGACY, adheres to the format: `{region-id}-default`. Replace `{region-id}` with the region where you want to create the VMware Engine network. For example, "us-central1-default". * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
   VmwareEngineNetworkArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<VmwareEngineNetworkType> type,
-    required pulumi.Output<String> vmwareEngineNetworkId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      type = pulumi.Input.asInput<VmwareEngineNetworkType>(type),
-      vmwareEngineNetworkId = pulumi.Input.asInput<String>(vmwareEngineNetworkId);
+    this.description,
+    this.etag,
+    this.location,
+    this.project,
+    this.requestId,
+    required this.type,
+    required this.vmwareEngineNetworkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class VmwareEngineNetworkArgs {
 
   factory VmwareEngineNetworkArgs.fromMap(Map<String, dynamic> map) {
     return VmwareEngineNetworkArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      type: pulumi.Output.create<VmwareEngineNetworkType>(VmwareEngineNetworkType.fromValue(map['type'] as String)),
-      vmwareEngineNetworkId: pulumi.Output.create<String>(map['vmwareEngineNetworkId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      type: (VmwareEngineNetworkType.fromValue(map['type'] as String)).input(),
+      vmwareEngineNetworkId: (map['vmwareEngineNetworkId'] as String).input(),
     );
   }
 }

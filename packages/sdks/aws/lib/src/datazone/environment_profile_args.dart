@@ -38,25 +38,16 @@ class EnvironmentProfileArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userParameters] Array of user parameters of the environment profile with the following attributes:
   EnvironmentProfileArgs({
-    pulumi.Output<String>? awsAccountId,
-    required pulumi.Output<String> awsAccountRegion,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> domainIdentifier,
-    required pulumi.Output<String> environmentBlueprintIdentifier,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> projectIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<EnvironmentProfileUserParameter>>? userParameters,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      awsAccountRegion = pulumi.Input.asInput<String>(awsAccountRegion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainIdentifier = pulumi.Input.asInput<String>(domainIdentifier),
-      environmentBlueprintIdentifier = pulumi.Input.asInput<String>(environmentBlueprintIdentifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectIdentifier = pulumi.Input.asInput<String>(projectIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userParameters = pulumi.Input.asOptionalInput<List<EnvironmentProfileUserParameter>>(userParameters);
+    this.awsAccountId,
+    required this.awsAccountRegion,
+    this.description,
+    required this.domainIdentifier,
+    required this.environmentBlueprintIdentifier,
+    this.name,
+    required this.projectIdentifier,
+    this.region,
+    this.userParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class EnvironmentProfileArgs {
 
   factory EnvironmentProfileArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentProfileArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      awsAccountRegion: pulumi.Output.create<String>(map['awsAccountRegion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainIdentifier: pulumi.Output.create<String>(map['domainIdentifier'] as String),
-      environmentBlueprintIdentifier: pulumi.Output.create<String>(map['environmentBlueprintIdentifier'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectIdentifier: pulumi.Output.create<String>(map['projectIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userParameters: map['userParameters'] == null ? null : pulumi.Output.create<List<EnvironmentProfileUserParameter>>(pulumi.Input.decodeList<EnvironmentProfileUserParameter>(map['userParameters'], (value) => EnvironmentProfileUserParameter.fromMap((value as Map).cast<String, dynamic>()))),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsAccountRegion: (map['awsAccountRegion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainIdentifier: (map['domainIdentifier'] as String).input(),
+      environmentBlueprintIdentifier: (map['environmentBlueprintIdentifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectIdentifier: (map['projectIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userParameters: map['userParameters'] == null ? null : (pulumi.Input.decodeList<EnvironmentProfileUserParameter>(map['userParameters'], (value) => EnvironmentProfileUserParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

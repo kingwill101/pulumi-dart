@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_group_init_container_security_context_capability.dart';
 
 class ContainerGroupInitContainerSecurityContext {
-  final List<ContainerGroupInitContainerSecurityContextCapability>? capabilities;
-  final int? runAsUser;
+  final pulumi.Input<List<ContainerGroupInitContainerSecurityContextCapability>>? capabilities;
+  final pulumi.Input<int>? runAsUser;
 
   /// Creates a new [ContainerGroupInitContainerSecurityContext].
   /// [capabilities] Optional.
@@ -17,15 +17,15 @@ class ContainerGroupInitContainerSecurityContext {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capabilities': ?capabilities == null ? null : pulumi.Input.encodeList<ContainerGroupInitContainerSecurityContextCapability, Map<String, dynamic>>(capabilities!, (value) => value.toMap()),
+      'capabilities': ?pulumi.Input.mapOptionalInputValue<List<ContainerGroupInitContainerSecurityContextCapability>, List<Map<String, dynamic>>>(capabilities, (value) => pulumi.Input.encodeList<ContainerGroupInitContainerSecurityContextCapability, Map<String, dynamic>>(value, (value) => value.toMap())),
       'runAsUser': ?runAsUser,
     };
   }
 
   factory ContainerGroupInitContainerSecurityContext.fromMap(Map<String, dynamic> map) {
     return ContainerGroupInitContainerSecurityContext(
-      capabilities: map['capabilities'] == null ? null : pulumi.Input.decodeList<ContainerGroupInitContainerSecurityContextCapability>(map['capabilities'], (value) => ContainerGroupInitContainerSecurityContextCapability.fromMap((value as Map).cast<String, dynamic>())),
-      runAsUser: map['runAsUser'] == null ? null : map['runAsUser'] as int,
+      capabilities: map['capabilities'] == null ? null : (pulumi.Input.decodeList<ContainerGroupInitContainerSecurityContextCapability>(map['capabilities'], (value) => ContainerGroupInitContainerSecurityContextCapability.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
     );
   }
 }

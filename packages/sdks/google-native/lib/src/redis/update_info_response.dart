@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents information about an updating cluster.
 class UpdateInfoResponse {
   /// Target number of replica nodes per shard.
-  final int targetReplicaCount;
+  final pulumi.Input<int> targetReplicaCount;
   /// Target number of shards for redis cluster
-  final int targetShardCount;
+  final pulumi.Input<int> targetShardCount;
 
   /// Creates a new [UpdateInfoResponse].
   /// [targetReplicaCount] Target number of replica nodes per shard.
@@ -25,8 +26,8 @@ class UpdateInfoResponse {
 
   factory UpdateInfoResponse.fromMap(Map<String, dynamic> map) {
     return UpdateInfoResponse(
-      targetReplicaCount: map['targetReplicaCount'] as int,
-      targetShardCount: map['targetShardCount'] as int,
+      targetReplicaCount: (map['targetReplicaCount'] as int).input(),
+      targetShardCount: (map['targetShardCount'] as int).input(),
     );
   }
 }

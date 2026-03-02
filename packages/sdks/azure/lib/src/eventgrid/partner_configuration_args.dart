@@ -23,15 +23,11 @@ class PartnerConfigurationArgs {
   /// [resourceGroupName] The name of the Resource Group where the Event Grid Partner Configuration should exist. Changing this forces a new Event Grid Partner Configuration to be created.
   /// [tags] A mapping of tags which should be assigned to the Event Grid Partner Configuration.
   PartnerConfigurationArgs({
-    pulumi.Output<int>? defaultMaximumExpirationTimeInDays,
-    pulumi.Output<List<PartnerConfigurationPartnerAuthorization>>? partnerAuthorizations,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      defaultMaximumExpirationTimeInDays = pulumi.Input.asOptionalInput<int>(defaultMaximumExpirationTimeInDays),
-      partnerAuthorizations = pulumi.Input.asOptionalInput<List<PartnerConfigurationPartnerAuthorization>>(partnerAuthorizations),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.defaultMaximumExpirationTimeInDays,
+    this.partnerAuthorizations,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class PartnerConfigurationArgs {
 
   factory PartnerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return PartnerConfigurationArgs(
-      defaultMaximumExpirationTimeInDays: map['defaultMaximumExpirationTimeInDays'] == null ? null : pulumi.Output.create<int>(map['defaultMaximumExpirationTimeInDays'] as int),
-      partnerAuthorizations: map['partnerAuthorizations'] == null ? null : pulumi.Output.create<List<PartnerConfigurationPartnerAuthorization>>(pulumi.Input.decodeList<PartnerConfigurationPartnerAuthorization>(map['partnerAuthorizations'], (value) => PartnerConfigurationPartnerAuthorization.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      defaultMaximumExpirationTimeInDays: map['defaultMaximumExpirationTimeInDays'] == null ? null : (map['defaultMaximumExpirationTimeInDays'] as int).input(),
+      partnerAuthorizations: map['partnerAuthorizations'] == null ? null : (pulumi.Input.decodeList<PartnerConfigurationPartnerAuthorization>(map['partnerAuthorizations'], (value) => PartnerConfigurationPartnerAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

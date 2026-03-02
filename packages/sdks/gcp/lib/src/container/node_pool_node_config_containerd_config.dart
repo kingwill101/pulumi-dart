@@ -7,11 +7,11 @@ import 'node_pool_node_config_containerd_config_writable_cgroups.dart';
 
 class NodePoolNodeConfigContainerdConfig {
   /// Parameters for private container registries configuration.
-  final NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig? privateRegistryAccessConfig;
+  final pulumi.Input<NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig>? privateRegistryAccessConfig;
   /// Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
-  final List<NodePoolNodeConfigContainerdConfigRegistryHost>? registryHosts;
+  final pulumi.Input<List<NodePoolNodeConfigContainerdConfigRegistryHost>>? registryHosts;
   /// Parameters for writable cgroups configuration.
-  final NodePoolNodeConfigContainerdConfigWritableCgroups? writableCgroups;
+  final pulumi.Input<NodePoolNodeConfigContainerdConfigWritableCgroups>? writableCgroups;
 
   /// Creates a new [NodePoolNodeConfigContainerdConfig].
   /// [privateRegistryAccessConfig] Parameters for private container registries configuration.
@@ -25,17 +25,17 @@ class NodePoolNodeConfigContainerdConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'privateRegistryAccessConfig': ?privateRegistryAccessConfig == null ? null : privateRegistryAccessConfig!.toMap(),
-      'registryHosts': ?registryHosts == null ? null : pulumi.Input.encodeList<NodePoolNodeConfigContainerdConfigRegistryHost, Map<String, dynamic>>(registryHosts!, (value) => value.toMap()),
-      'writableCgroups': ?writableCgroups == null ? null : writableCgroups!.toMap(),
+      'privateRegistryAccessConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig, Map<String, dynamic>>(privateRegistryAccessConfig, (value) => value.toMap()),
+      'registryHosts': ?pulumi.Input.mapOptionalInputValue<List<NodePoolNodeConfigContainerdConfigRegistryHost>, List<Map<String, dynamic>>>(registryHosts, (value) => pulumi.Input.encodeList<NodePoolNodeConfigContainerdConfigRegistryHost, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'writableCgroups': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigContainerdConfigWritableCgroups, Map<String, dynamic>>(writableCgroups, (value) => value.toMap()),
     };
   }
 
   factory NodePoolNodeConfigContainerdConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigContainerdConfig(
-      privateRegistryAccessConfig: map['privateRegistryAccessConfig'] == null ? null : NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig.fromMap((map['privateRegistryAccessConfig'] as Map).cast<String, dynamic>()),
-      registryHosts: map['registryHosts'] == null ? null : pulumi.Input.decodeList<NodePoolNodeConfigContainerdConfigRegistryHost>(map['registryHosts'], (value) => NodePoolNodeConfigContainerdConfigRegistryHost.fromMap((value as Map).cast<String, dynamic>())),
-      writableCgroups: map['writableCgroups'] == null ? null : NodePoolNodeConfigContainerdConfigWritableCgroups.fromMap((map['writableCgroups'] as Map).cast<String, dynamic>()),
+      privateRegistryAccessConfig: map['privateRegistryAccessConfig'] == null ? null : (NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig.fromMap((map['privateRegistryAccessConfig'] as Map).cast<String, dynamic>())).input(),
+      registryHosts: map['registryHosts'] == null ? null : (pulumi.Input.decodeList<NodePoolNodeConfigContainerdConfigRegistryHost>(map['registryHosts'], (value) => NodePoolNodeConfigContainerdConfigRegistryHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      writableCgroups: map['writableCgroups'] == null ? null : (NodePoolNodeConfigContainerdConfigWritableCgroups.fromMap((map['writableCgroups'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

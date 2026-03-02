@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeGroupAckConfigVolumeMount {
   /// The name of ack cluster job pod volume mounts.
-  final String name;
+  final pulumi.Input<String> name;
   /// The path of ack cluster job pod volume mounts.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [ClusterNodeGroupAckConfigVolumeMount].
   /// [name] The name of ack cluster job pod volume mounts.
@@ -24,8 +25,8 @@ class ClusterNodeGroupAckConfigVolumeMount {
 
   factory ClusterNodeGroupAckConfigVolumeMount.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAckConfigVolumeMount(
-      name: map['name'] as String,
-      path: map['path'] as String,
+      name: (map['name'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

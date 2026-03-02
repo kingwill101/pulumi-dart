@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchPathsSummaryConstraintSummary {
   /// Description of the constraint.
-  final String description;
+  final pulumi.Input<String> description;
   /// Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `STACKSET`, and `TEMPLATE`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetLaunchPathsSummaryConstraintSummary].
   /// [description] Description of the constraint.
@@ -24,8 +25,8 @@ class GetLaunchPathsSummaryConstraintSummary {
 
   factory GetLaunchPathsSummaryConstraintSummary.fromMap(Map<String, dynamic> map) {
     return GetLaunchPathsSummaryConstraintSummary(
-      description: map['description'] as String,
-      type: map['type'] as String,
+      description: (map['description'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

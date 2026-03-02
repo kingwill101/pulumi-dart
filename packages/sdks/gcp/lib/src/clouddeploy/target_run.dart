@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TargetRun {
   /// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
-  final String location;
+  final pulumi.Input<String> location;
 
   /// Creates a new [TargetRun].
   /// [location] Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
@@ -19,7 +20,7 @@ class TargetRun {
 
   factory TargetRun.fromMap(Map<String, dynamic> map) {
     return TargetRun(
-      location: map['location'] as String,
+      location: (map['location'] as String).input(),
     );
   }
 }

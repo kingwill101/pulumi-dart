@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings {
   /// Do not trigger if last utterance is small talk.
-  final bool? noSmallTalk;
+  final pulumi.Input<bool>? noSmallTalk;
   /// Only trigger suggestion if participant role of last utterance is END_USER.
-  final bool? onlyEndUser;
+  final pulumi.Input<bool>? onlyEndUser;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings].
   /// [noSmallTalk] Do not trigger if last utterance is small talk.
@@ -24,8 +25,8 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
 
   factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings(
-      noSmallTalk: map['noSmallTalk'] == null ? null : map['noSmallTalk'] as bool,
-      onlyEndUser: map['onlyEndUser'] == null ? null : map['onlyEndUser'] as bool,
+      noSmallTalk: map['noSmallTalk'] == null ? null : (map['noSmallTalk'] as bool).input(),
+      onlyEndUser: map['onlyEndUser'] == null ? null : (map['onlyEndUser'] as bool).input(),
     );
   }
 }

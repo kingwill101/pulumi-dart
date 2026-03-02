@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The current payment term of the billing profile.
 class BillingProfilePropertiesResponseCurrentPaymentTerm {
   /// The date on when the defined 'Payment Term' will end and is always in UTC.
-  final String? endDate;
+  final pulumi.Input<String>? endDate;
   /// Indicates payment term is the standard payment term.
-  final bool isDefault;
+  final pulumi.Input<bool> isDefault;
   /// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
-  final String? startDate;
+  final pulumi.Input<String>? startDate;
   /// Represents duration in netXX format. Always in days.
-  final String? term;
+  final pulumi.Input<String>? term;
 
   /// Creates a new [BillingProfilePropertiesResponseCurrentPaymentTerm].
   /// [endDate] The date on when the defined 'Payment Term' will end and is always in UTC.
@@ -35,10 +36,10 @@ class BillingProfilePropertiesResponseCurrentPaymentTerm {
 
   factory BillingProfilePropertiesResponseCurrentPaymentTerm.fromMap(Map<String, dynamic> map) {
     return BillingProfilePropertiesResponseCurrentPaymentTerm(
-      endDate: map['endDate'] == null ? null : map['endDate'] as String,
-      isDefault: map['isDefault'] as bool,
-      startDate: map['startDate'] == null ? null : map['startDate'] as String,
-      term: map['term'] == null ? null : map['term'] as String,
+      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      isDefault: (map['isDefault'] as bool).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
+      term: map['term'] == null ? null : (map['term'] as String).input(),
     );
   }
 }

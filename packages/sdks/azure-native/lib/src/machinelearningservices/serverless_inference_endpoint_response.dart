@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerlessInferenceEndpointResponse {
   /// Specifies any required headers to target this serverless endpoint.
-  final Map<String, String> headers;
+  final pulumi.Input<Map<String, String>> headers;
   /// [Required] The inference uri to target when making requests against the Serverless Endpoint.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [ServerlessInferenceEndpointResponse].
   /// [headers] Specifies any required headers to target this serverless endpoint.
@@ -24,8 +25,8 @@ class ServerlessInferenceEndpointResponse {
 
   factory ServerlessInferenceEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ServerlessInferenceEndpointResponse(
-      headers: (map['headers'] as Map).cast<String, String>(),
-      uri: map['uri'] as String,
+      headers: ((map['headers'] as Map).cast<String, String>()).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

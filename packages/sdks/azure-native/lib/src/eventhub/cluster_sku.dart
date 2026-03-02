@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU parameters particular to a cluster instance.
 class ClusterSku {
   /// The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Name of this SKU.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ClusterSku].
   /// [capacity] The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
@@ -25,8 +26,8 @@ class ClusterSku {
 
   factory ClusterSku.fromMap(Map<String, dynamic> map) {
     return ClusterSku(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      name: map['name'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

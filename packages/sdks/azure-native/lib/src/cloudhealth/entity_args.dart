@@ -23,15 +23,11 @@ class EntityArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   EntityArgs({
-    pulumi.Output<String>? entityName,
-    required pulumi.Output<String> healthModelName,
-    pulumi.Output<EntityProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      entityName = pulumi.Input.asOptionalInput<String>(entityName),
-      healthModelName = pulumi.Input.asInput<String>(healthModelName),
-      properties = pulumi.Input.asOptionalInput<EntityProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.entityName,
+    required this.healthModelName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class EntityArgs {
 
   factory EntityArgs.fromMap(Map<String, dynamic> map) {
     return EntityArgs(
-      entityName: map['entityName'] == null ? null : pulumi.Output.create<String>(map['entityName'] as String),
-      healthModelName: pulumi.Output.create<String>(map['healthModelName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<EntityProperties>(EntityProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      entityName: map['entityName'] == null ? null : (map['entityName'] as String).input(),
+      healthModelName: (map['healthModelName'] as String).input(),
+      properties: map['properties'] == null ? null : (EntityProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

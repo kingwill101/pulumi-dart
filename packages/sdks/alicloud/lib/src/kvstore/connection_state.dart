@@ -19,15 +19,11 @@ class ConnectionState {
   /// [instanceId] The ID of the instance.
   /// [port] The service port number of the instance.
   ConnectionState({
-    pulumi.Output<String>? connectionString,
-    pulumi.Output<String>? connectionStringPrefix,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? port,
-  }) :
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      connectionStringPrefix = pulumi.Input.asOptionalInput<String>(connectionStringPrefix),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      port = pulumi.Input.asOptionalInput<String>(port);
+    this.connectionString,
+    this.connectionStringPrefix,
+    this.instanceId,
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionStringPrefix'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
     );
   }
 }

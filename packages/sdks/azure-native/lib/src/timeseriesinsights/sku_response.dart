@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
 class SkuResponse {
   /// The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
-  final int capacity;
+  final pulumi.Input<int> capacity;
   /// The name of this SKU.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [SkuResponse].
   /// [capacity] The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
@@ -25,8 +26,8 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      capacity: map['capacity'] as int,
-      name: map['name'] as String,
+      capacity: (map['capacity'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -40,25 +40,16 @@ class InventoryArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [schedule] Specifies the schedule for generating inventory results (documented below).
   InventoryArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<InventoryDestination> destination,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<InventoryFilter>? filter,
-    required pulumi.Output<String> includedObjectVersions,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? optionalFields,
-    pulumi.Output<String>? region,
-    required pulumi.Output<InventorySchedule> schedule,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      destination = pulumi.Input.asInput<InventoryDestination>(destination),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      filter = pulumi.Input.asOptionalInput<InventoryFilter>(filter),
-      includedObjectVersions = pulumi.Input.asInput<String>(includedObjectVersions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      optionalFields = pulumi.Input.asOptionalInput<List<String>>(optionalFields),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      schedule = pulumi.Input.asInput<InventorySchedule>(schedule);
+    required this.bucket,
+    required this.destination,
+    this.enabled,
+    this.filter,
+    required this.includedObjectVersions,
+    this.name,
+    this.optionalFields,
+    this.region,
+    required this.schedule,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class InventoryArgs {
 
   factory InventoryArgs.fromMap(Map<String, dynamic> map) {
     return InventoryArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      destination: pulumi.Output.create<InventoryDestination>(InventoryDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      filter: map['filter'] == null ? null : pulumi.Output.create<InventoryFilter>(InventoryFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      includedObjectVersions: pulumi.Output.create<String>(map['includedObjectVersions'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      optionalFields: map['optionalFields'] == null ? null : pulumi.Output.create<List<String>>((map['optionalFields'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      schedule: pulumi.Output.create<InventorySchedule>(InventorySchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
+      bucket: (map['bucket'] as String).input(),
+      destination: (InventoryDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      filter: map['filter'] == null ? null : (InventoryFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      includedObjectVersions: (map['includedObjectVersions'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      optionalFields: map['optionalFields'] == null ? null : ((map['optionalFields'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      schedule: (InventorySchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

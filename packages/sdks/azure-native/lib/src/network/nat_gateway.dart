@@ -7,21 +7,21 @@ import 'sub_resource.dart';
 /// Nat Gateway resource.
 class NatGateway {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The idle timeout of the nat gateway.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// An array of public ip addresses associated with the nat gateway resource.
-  final List<SubResource>? publicIpAddresses;
+  final pulumi.Input<List<SubResource>>? publicIpAddresses;
   /// An array of public ip prefixes associated with the nat gateway resource.
-  final List<SubResource>? publicIpPrefixes;
+  final pulumi.Input<List<SubResource>>? publicIpPrefixes;
   /// The nat gateway SKU.
-  final NatGatewaySku? sku;
+  final pulumi.Input<NatGatewaySku>? sku;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// A list of availability zones denoting the zone in which Nat Gateway should be deployed.
-  final List<String>? zones;
+  final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [NatGateway].
   /// [id] Resource ID.
@@ -48,9 +48,9 @@ class NatGateway {
       'id': ?id,
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
       'location': ?location,
-      'publicIpAddresses': ?publicIpAddresses == null ? null : pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(publicIpAddresses!, (value) => value.toMap()),
-      'publicIpPrefixes': ?publicIpPrefixes == null ? null : pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(publicIpPrefixes!, (value) => value.toMap()),
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'publicIpAddresses': ?pulumi.Input.mapOptionalInputValue<List<SubResource>, List<Map<String, dynamic>>>(publicIpAddresses, (value) => pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'publicIpPrefixes': ?pulumi.Input.mapOptionalInputValue<List<SubResource>, List<Map<String, dynamic>>>(publicIpPrefixes, (value) => pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sku': ?pulumi.Input.mapOptionalInputValue<NatGatewaySku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
       'zones': ?zones,
     };
@@ -58,14 +58,14 @@ class NatGateway {
 
   factory NatGateway.fromMap(Map<String, dynamic> map) {
     return NatGateway(
-      id: map['id'] == null ? null : map['id'] as String,
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      location: map['location'] == null ? null : map['location'] as String,
-      publicIpAddresses: map['publicIpAddresses'] == null ? null : pulumi.Input.decodeList<SubResource>(map['publicIpAddresses'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>())),
-      publicIpPrefixes: map['publicIpPrefixes'] == null ? null : pulumi.Input.decodeList<SubResource>(map['publicIpPrefixes'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>())),
-      sku: map['sku'] == null ? null : NatGatewaySku.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publicIpAddresses: map['publicIpAddresses'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['publicIpAddresses'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicIpPrefixes: map['publicIpPrefixes'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['publicIpPrefixes'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sku: map['sku'] == null ? null : (NatGatewaySku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

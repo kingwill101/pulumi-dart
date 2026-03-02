@@ -22,15 +22,11 @@ class ListListEffectiveVirtualNetworkByNetworkGroupArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [skipToken] When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
   ListListEffectiveVirtualNetworkByNetworkGroupArgs({
-    required pulumi.Output<String> networkGroupName,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skipToken,
-  }) :
-      networkGroupName = pulumi.Input.asInput<String>(networkGroupName),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken);
+    required this.networkGroupName,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+    this.skipToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListListEffectiveVirtualNetworkByNetworkGroupArgs {
 
   factory ListListEffectiveVirtualNetworkByNetworkGroupArgs.fromMap(Map<String, dynamic> map) {
     return ListListEffectiveVirtualNetworkByNetworkGroupArgs(
-      networkGroupName: pulumi.Output.create<String>(map['networkGroupName'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
+      networkGroupName: (map['networkGroupName'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
     );
   }
 }

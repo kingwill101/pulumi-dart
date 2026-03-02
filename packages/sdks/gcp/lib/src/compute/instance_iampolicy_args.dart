@@ -26,15 +26,11 @@ class InstanceIAMPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
   InstanceIAMPolicyArgs({
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.instanceName,
+    required this.policyData,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class InstanceIAMPolicyArgs {
 
   factory InstanceIAMPolicyArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIAMPolicyArgs(
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      instanceName: (map['instanceName'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

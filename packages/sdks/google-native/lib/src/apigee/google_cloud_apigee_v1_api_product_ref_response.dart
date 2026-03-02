@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoogleCloudApigeeV1ApiProductRefResponse {
   /// Name of the API product.
-  final String apiproduct;
+  final pulumi.Input<String> apiproduct;
   /// Status of the API product. Valid values are `approved` or `revoked`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GoogleCloudApigeeV1ApiProductRefResponse].
   /// [apiproduct] Name of the API product.
@@ -24,8 +25,8 @@ class GoogleCloudApigeeV1ApiProductRefResponse {
 
   factory GoogleCloudApigeeV1ApiProductRefResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1ApiProductRefResponse(
-      apiproduct: map['apiproduct'] as String,
-      status: map['status'] as String,
+      apiproduct: (map['apiproduct'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents Site Related Details.
 class SiteDetailsResponse {
   /// Unique Id, Identifying A Site.
-  final String siteId;
+  final pulumi.Input<String> siteId;
 
   /// Creates a new [SiteDetailsResponse].
   /// [siteId] Unique Id, Identifying A Site.
@@ -20,7 +21,7 @@ class SiteDetailsResponse {
 
   factory SiteDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SiteDetailsResponse(
-      siteId: map['siteId'] as String,
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

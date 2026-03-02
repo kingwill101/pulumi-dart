@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'refresh_schedule_schedule_schedule_frequency.dart';
 
 class RefreshScheduleSchedule {
   /// The type of refresh that the dataset undergoes. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
-  final String refreshType;
+  final pulumi.Input<String> refreshType;
   /// The configuration of the [schedule frequency](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshFrequency.html). See schedule_frequency.
-  final RefreshScheduleScheduleScheduleFrequency scheduleFrequency;
+  final pulumi.Input<RefreshScheduleScheduleScheduleFrequency> scheduleFrequency;
   /// Time after which the refresh schedule can be started, expressed in `YYYY-MM-DDTHH:MM:SS` format.
-  final String? startAfterDateTime;
+  final pulumi.Input<String>? startAfterDateTime;
 
   /// Creates a new [RefreshScheduleSchedule].
   /// [refreshType] The type of refresh that the dataset undergoes. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
@@ -23,16 +24,16 @@ class RefreshScheduleSchedule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'refreshType': refreshType,
-      'scheduleFrequency': scheduleFrequency.toMap(),
+      'scheduleFrequency': pulumi.Input.mapInputValue<RefreshScheduleScheduleScheduleFrequency, Map<String, dynamic>>(scheduleFrequency, (value) => value.toMap()),
       'startAfterDateTime': ?startAfterDateTime,
     };
   }
 
   factory RefreshScheduleSchedule.fromMap(Map<String, dynamic> map) {
     return RefreshScheduleSchedule(
-      refreshType: map['refreshType'] as String,
-      scheduleFrequency: RefreshScheduleScheduleScheduleFrequency.fromMap((map['scheduleFrequency'] as Map).cast<String, dynamic>()),
-      startAfterDateTime: map['startAfterDateTime'] == null ? null : map['startAfterDateTime'] as String,
+      refreshType: (map['refreshType'] as String).input(),
+      scheduleFrequency: (RefreshScheduleScheduleScheduleFrequency.fromMap((map['scheduleFrequency'] as Map).cast<String, dynamic>())).input(),
+      startAfterDateTime: map['startAfterDateTime'] == null ? null : (map['startAfterDateTime'] as String).input(),
     );
   }
 }

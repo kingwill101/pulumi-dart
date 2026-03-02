@@ -23,13 +23,10 @@ class AppCheckServiceConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
   AppCheckServiceConfigArgs({
-    pulumi.Output<String>? enforcementMode,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceId,
-  }) :
-      enforcementMode = pulumi.Input.asOptionalInput<String>(enforcementMode),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    this.enforcementMode,
+    this.project,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class AppCheckServiceConfigArgs {
 
   factory AppCheckServiceConfigArgs.fromMap(Map<String, dynamic> map) {
     return AppCheckServiceConfigArgs(
-      enforcementMode: map['enforcementMode'] == null ? null : pulumi.Output.create<String>(map['enforcementMode'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      enforcementMode: map['enforcementMode'] == null ? null : (map['enforcementMode'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

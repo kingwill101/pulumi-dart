@@ -37,25 +37,16 @@ class ScaleSetPacketCaptureState {
   /// [storageLocation] A `storage_location` block as defined below. Changing this forces a new resource to be created.
   /// [virtualMachineScaleSetId] The resource ID of the Virtual Machine Scale Set to capture packets from. Changing this forces a new resource to be created.
   ScaleSetPacketCaptureState({
-    pulumi.Output<List<ScaleSetPacketCaptureFilter>>? filters,
-    pulumi.Output<ScaleSetPacketCaptureMachineScope>? machineScope,
-    pulumi.Output<int>? maximumBytesPerPacket,
-    pulumi.Output<int>? maximumBytesPerSession,
-    pulumi.Output<int>? maximumCaptureDurationInSeconds,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkWatcherId,
-    pulumi.Output<ScaleSetPacketCaptureStorageLocation>? storageLocation,
-    pulumi.Output<String>? virtualMachineScaleSetId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<ScaleSetPacketCaptureFilter>>(filters),
-      machineScope = pulumi.Input.asOptionalInput<ScaleSetPacketCaptureMachineScope>(machineScope),
-      maximumBytesPerPacket = pulumi.Input.asOptionalInput<int>(maximumBytesPerPacket),
-      maximumBytesPerSession = pulumi.Input.asOptionalInput<int>(maximumBytesPerSession),
-      maximumCaptureDurationInSeconds = pulumi.Input.asOptionalInput<int>(maximumCaptureDurationInSeconds),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkWatcherId = pulumi.Input.asOptionalInput<String>(networkWatcherId),
-      storageLocation = pulumi.Input.asOptionalInput<ScaleSetPacketCaptureStorageLocation>(storageLocation),
-      virtualMachineScaleSetId = pulumi.Input.asOptionalInput<String>(virtualMachineScaleSetId);
+    this.filters,
+    this.machineScope,
+    this.maximumBytesPerPacket,
+    this.maximumBytesPerSession,
+    this.maximumCaptureDurationInSeconds,
+    this.name,
+    this.networkWatcherId,
+    this.storageLocation,
+    this.virtualMachineScaleSetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ScaleSetPacketCaptureState {
 
   factory ScaleSetPacketCaptureState.fromMap(Map<String, dynamic> map) {
     return ScaleSetPacketCaptureState(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<ScaleSetPacketCaptureFilter>>(pulumi.Input.decodeList<ScaleSetPacketCaptureFilter>(map['filters'], (value) => ScaleSetPacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      machineScope: map['machineScope'] == null ? null : pulumi.Output.create<ScaleSetPacketCaptureMachineScope>(ScaleSetPacketCaptureMachineScope.fromMap((map['machineScope'] as Map).cast<String, dynamic>())),
-      maximumBytesPerPacket: map['maximumBytesPerPacket'] == null ? null : pulumi.Output.create<int>(map['maximumBytesPerPacket'] as int),
-      maximumBytesPerSession: map['maximumBytesPerSession'] == null ? null : pulumi.Output.create<int>(map['maximumBytesPerSession'] as int),
-      maximumCaptureDurationInSeconds: map['maximumCaptureDurationInSeconds'] == null ? null : pulumi.Output.create<int>(map['maximumCaptureDurationInSeconds'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkWatcherId: map['networkWatcherId'] == null ? null : pulumi.Output.create<String>(map['networkWatcherId'] as String),
-      storageLocation: map['storageLocation'] == null ? null : pulumi.Output.create<ScaleSetPacketCaptureStorageLocation>(ScaleSetPacketCaptureStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())),
-      virtualMachineScaleSetId: map['virtualMachineScaleSetId'] == null ? null : pulumi.Output.create<String>(map['virtualMachineScaleSetId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<ScaleSetPacketCaptureFilter>(map['filters'], (value) => ScaleSetPacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      machineScope: map['machineScope'] == null ? null : (ScaleSetPacketCaptureMachineScope.fromMap((map['machineScope'] as Map).cast<String, dynamic>())).input(),
+      maximumBytesPerPacket: map['maximumBytesPerPacket'] == null ? null : (map['maximumBytesPerPacket'] as int).input(),
+      maximumBytesPerSession: map['maximumBytesPerSession'] == null ? null : (map['maximumBytesPerSession'] as int).input(),
+      maximumCaptureDurationInSeconds: map['maximumCaptureDurationInSeconds'] == null ? null : (map['maximumCaptureDurationInSeconds'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkWatcherId: map['networkWatcherId'] == null ? null : (map['networkWatcherId'] as String).input(),
+      storageLocation: map['storageLocation'] == null ? null : (ScaleSetPacketCaptureStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())).input(),
+      virtualMachineScaleSetId: map['virtualMachineScaleSetId'] == null ? null : (map['virtualMachineScaleSetId'] as String).input(),
     );
   }
 }

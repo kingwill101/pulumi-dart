@@ -58,35 +58,21 @@ class TransferJobState {
   /// [status] Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
   /// [transferSpec] Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
   TransferJobState({
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<String>? deletionTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<TransferJobEventStream>? eventStream,
-    pulumi.Output<String>? lastModificationTime,
-    pulumi.Output<TransferJobLoggingConfig>? loggingConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<TransferJobNotificationConfig>? notificationConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<TransferJobReplicationSpec>? replicationSpec,
-    pulumi.Output<TransferJobSchedule>? schedule,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<String>? status,
-    pulumi.Output<TransferJobTransferSpec>? transferSpec,
-  }) :
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      deletionTime = pulumi.Input.asOptionalInput<String>(deletionTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventStream = pulumi.Input.asOptionalInput<TransferJobEventStream>(eventStream),
-      lastModificationTime = pulumi.Input.asOptionalInput<String>(lastModificationTime),
-      loggingConfig = pulumi.Input.asOptionalInput<TransferJobLoggingConfig>(loggingConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationConfig = pulumi.Input.asOptionalInput<TransferJobNotificationConfig>(notificationConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      replicationSpec = pulumi.Input.asOptionalInput<TransferJobReplicationSpec>(replicationSpec),
-      schedule = pulumi.Input.asOptionalInput<TransferJobSchedule>(schedule),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transferSpec = pulumi.Input.asOptionalInput<TransferJobTransferSpec>(transferSpec);
+    this.creationTime,
+    this.deletionTime,
+    this.description,
+    this.eventStream,
+    this.lastModificationTime,
+    this.loggingConfig,
+    this.name,
+    this.notificationConfig,
+    this.project,
+    this.replicationSpec,
+    this.schedule,
+    this.serviceAccount,
+    this.status,
+    this.transferSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class TransferJobState {
 
   factory TransferJobState.fromMap(Map<String, dynamic> map) {
     return TransferJobState(
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      deletionTime: map['deletionTime'] == null ? null : pulumi.Output.create<String>(map['deletionTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventStream: map['eventStream'] == null ? null : pulumi.Output.create<TransferJobEventStream>(TransferJobEventStream.fromMap((map['eventStream'] as Map).cast<String, dynamic>())),
-      lastModificationTime: map['lastModificationTime'] == null ? null : pulumi.Output.create<String>(map['lastModificationTime'] as String),
-      loggingConfig: map['loggingConfig'] == null ? null : pulumi.Output.create<TransferJobLoggingConfig>(TransferJobLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationConfig: map['notificationConfig'] == null ? null : pulumi.Output.create<TransferJobNotificationConfig>(TransferJobNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      replicationSpec: map['replicationSpec'] == null ? null : pulumi.Output.create<TransferJobReplicationSpec>(TransferJobReplicationSpec.fromMap((map['replicationSpec'] as Map).cast<String, dynamic>())),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<TransferJobSchedule>(TransferJobSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transferSpec: map['transferSpec'] == null ? null : pulumi.Output.create<TransferJobTransferSpec>(TransferJobTransferSpec.fromMap((map['transferSpec'] as Map).cast<String, dynamic>())),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      deletionTime: map['deletionTime'] == null ? null : (map['deletionTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventStream: map['eventStream'] == null ? null : (TransferJobEventStream.fromMap((map['eventStream'] as Map).cast<String, dynamic>())).input(),
+      lastModificationTime: map['lastModificationTime'] == null ? null : (map['lastModificationTime'] as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (TransferJobLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (TransferJobNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      replicationSpec: map['replicationSpec'] == null ? null : (TransferJobReplicationSpec.fromMap((map['replicationSpec'] as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (TransferJobSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transferSpec: map['transferSpec'] == null ? null : (TransferJobTransferSpec.fromMap((map['transferSpec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

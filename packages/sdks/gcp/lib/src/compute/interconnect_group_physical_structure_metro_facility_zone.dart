@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterconnectGroupPhysicalStructureMetroFacilityZone {
   /// Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
@@ -8,12 +9,12 @@ class InterconnectGroupPhysicalStructureMetroFacilityZone {
   /// Note that there are add-members and remove-members methods in gcloud.
   /// The size of this map is limited by an "Interconnects per group" quota.
   /// Structure is documented below.
-  final List<String>? interconnects;
+  final pulumi.Input<List<String>>? interconnects;
   /// (Output)
   /// The name of the zone, either "zone1" or "zone2".
   /// This is the second component of the location of Interconnects in
   /// this facility.
-  final String? zone;
+  final pulumi.Input<String>? zone;
 
   /// Creates a new [InterconnectGroupPhysicalStructureMetroFacilityZone].
   /// [interconnects] Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
@@ -32,8 +33,8 @@ class InterconnectGroupPhysicalStructureMetroFacilityZone {
 
   factory InterconnectGroupPhysicalStructureMetroFacilityZone.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupPhysicalStructureMetroFacilityZone(
-      interconnects: map['interconnects'] == null ? null : (map['interconnects'] as List).cast<String>(),
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      interconnects: map['interconnects'] == null ? null : ((map['interconnects'] as List).cast<String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

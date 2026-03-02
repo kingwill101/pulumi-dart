@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VPC access connector specification.
 class VpcAccessConnectorResponse {
   /// The egress setting for the connector, controlling what traffic is diverted through it.
-  final String egressSetting;
+  final pulumi.Input<String> egressSetting;
   /// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [VpcAccessConnectorResponse].
   /// [egressSetting] The egress setting for the connector, controlling what traffic is diverted through it.
@@ -25,8 +26,8 @@ class VpcAccessConnectorResponse {
 
   factory VpcAccessConnectorResponse.fromMap(Map<String, dynamic> map) {
     return VpcAccessConnectorResponse(
-      egressSetting: map['egressSetting'] as String,
-      name: map['name'] as String,
+      egressSetting: (map['egressSetting'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

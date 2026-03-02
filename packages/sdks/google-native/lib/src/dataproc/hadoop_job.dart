@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'logging_config.dart';
 
 /// A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
 class HadoopJob {
   /// Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
-  final List<String>? archiveUris;
+  final pulumi.Input<List<String>>? archiveUris;
   /// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
-  final List<String>? args;
+  final pulumi.Input<List<String>>? args;
   /// Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
-  final List<String>? fileUris;
+  final pulumi.Input<List<String>>? fileUris;
   /// Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
-  final List<String>? jarFileUris;
+  final pulumi.Input<List<String>>? jarFileUris;
   /// Optional. The runtime log config for job execution.
-  final LoggingConfig? loggingConfig;
+  final pulumi.Input<LoggingConfig>? loggingConfig;
   /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.
-  final String? mainClass;
+  final pulumi.Input<String>? mainClass;
   /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
-  final String? mainJarFileUri;
+  final pulumi.Input<String>? mainJarFileUri;
   /// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
 
   /// Creates a new [HadoopJob].
   /// [archiveUris] Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
@@ -47,7 +48,7 @@ class HadoopJob {
       'args': ?args,
       'fileUris': ?fileUris,
       'jarFileUris': ?jarFileUris,
-      'loggingConfig': ?loggingConfig == null ? null : loggingConfig!.toMap(),
+      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<LoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
       'mainClass': ?mainClass,
       'mainJarFileUri': ?mainJarFileUri,
       'properties': ?properties,
@@ -56,14 +57,14 @@ class HadoopJob {
 
   factory HadoopJob.fromMap(Map<String, dynamic> map) {
     return HadoopJob(
-      archiveUris: map['archiveUris'] == null ? null : (map['archiveUris'] as List).cast<String>(),
-      args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      fileUris: map['fileUris'] == null ? null : (map['fileUris'] as List).cast<String>(),
-      jarFileUris: map['jarFileUris'] == null ? null : (map['jarFileUris'] as List).cast<String>(),
-      loggingConfig: map['loggingConfig'] == null ? null : LoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
-      mainClass: map['mainClass'] == null ? null : map['mainClass'] as String,
-      mainJarFileUri: map['mainJarFileUri'] == null ? null : map['mainJarFileUri'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
+      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris'] as List).cast<String>()).input(),
+      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      fileUris: map['fileUris'] == null ? null : ((map['fileUris'] as List).cast<String>()).input(),
+      jarFileUris: map['jarFileUris'] == null ? null : ((map['jarFileUris'] as List).cast<String>()).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (LoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      mainClass: map['mainClass'] == null ? null : (map['mainClass'] as String).input(),
+      mainJarFileUri: map['mainJarFileUri'] == null ? null : (map['mainJarFileUri'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -38,25 +38,16 @@ class QuicksetupConfigurationManagerState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   QuicksetupConfigurationManagerState({
-    pulumi.Output<QuicksetupConfigurationManagerConfigurationDefinition>? configurationDefinition,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? managerArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<QuicksetupConfigurationManagerStatusSummary>>? statusSummaries,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<QuicksetupConfigurationManagerTimeouts>? timeouts,
-  }) :
-      configurationDefinition = pulumi.Input.asOptionalInput<QuicksetupConfigurationManagerConfigurationDefinition>(configurationDefinition),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      managerArn = pulumi.Input.asOptionalInput<String>(managerArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      statusSummaries = pulumi.Input.asOptionalInput<List<QuicksetupConfigurationManagerStatusSummary>>(statusSummaries),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<QuicksetupConfigurationManagerTimeouts>(timeouts);
+    this.configurationDefinition,
+    this.description,
+    this.managerArn,
+    this.name,
+    this.region,
+    this.statusSummaries,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class QuicksetupConfigurationManagerState {
 
   factory QuicksetupConfigurationManagerState.fromMap(Map<String, dynamic> map) {
     return QuicksetupConfigurationManagerState(
-      configurationDefinition: map['configurationDefinition'] == null ? null : pulumi.Output.create<QuicksetupConfigurationManagerConfigurationDefinition>(QuicksetupConfigurationManagerConfigurationDefinition.fromMap((map['configurationDefinition'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      managerArn: map['managerArn'] == null ? null : pulumi.Output.create<String>(map['managerArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      statusSummaries: map['statusSummaries'] == null ? null : pulumi.Output.create<List<QuicksetupConfigurationManagerStatusSummary>>(pulumi.Input.decodeList<QuicksetupConfigurationManagerStatusSummary>(map['statusSummaries'], (value) => QuicksetupConfigurationManagerStatusSummary.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<QuicksetupConfigurationManagerTimeouts>(QuicksetupConfigurationManagerTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      configurationDefinition: map['configurationDefinition'] == null ? null : (QuicksetupConfigurationManagerConfigurationDefinition.fromMap((map['configurationDefinition'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      managerArn: map['managerArn'] == null ? null : (map['managerArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      statusSummaries: map['statusSummaries'] == null ? null : (pulumi.Input.decodeList<QuicksetupConfigurationManagerStatusSummary>(map['statusSummaries'], (value) => QuicksetupConfigurationManagerStatusSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (QuicksetupConfigurationManagerTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

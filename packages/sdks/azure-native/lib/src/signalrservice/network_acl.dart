@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network ACL
 class NetworkACL {
   /// Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  final List<String>? allow;
+  final pulumi.Input<List<String>>? allow;
   /// Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  final List<String>? deny;
+  final pulumi.Input<List<String>>? deny;
 
   /// Creates a new [NetworkACL].
   /// [allow] Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
@@ -25,8 +26,8 @@ class NetworkACL {
 
   factory NetworkACL.fromMap(Map<String, dynamic> map) {
     return NetworkACL(
-      allow: map['allow'] == null ? null : (map['allow'] as List).cast<String>(),
-      deny: map['deny'] == null ? null : (map['deny'] as List).cast<String>(),
+      allow: map['allow'] == null ? null : ((map['allow'] as List).cast<String>()).input(),
+      deny: map['deny'] == null ? null : ((map['deny'] as List).cast<String>()).input(),
     );
   }
 }

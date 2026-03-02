@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'evaluation_rule_response.dart';
 
 /// Prometheus Metrics Signal Definition properties
 class PrometheusMetricsSignalDefinitionPropertiesResponse {
   /// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
-  final String? dataUnit;
+  final pulumi.Input<String>? dataUnit;
   /// Date when the signal definition was (soft-)deleted
-  final String deletionDate;
+  final pulumi.Input<String> deletionDate;
   /// Display name
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Evaluation rules for the signal definition
-  final EvaluationRuleResponse evaluationRules;
+  final pulumi.Input<EvaluationRuleResponse> evaluationRules;
   /// Optional set of labels (key-value pairs)
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Query text in PromQL syntax
-  final String queryText;
+  final pulumi.Input<String> queryText;
   /// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
-  final String? refreshInterval;
+  final pulumi.Input<String>? refreshInterval;
   /// Supported signal kinds as discriminator
   /// Expected value is 'PrometheusMetricsQuery'.
-  final String signalKind;
+  final pulumi.Input<String> signalKind;
   /// Time range of signal. ISO duration format like PT10M.
-  final String? timeGrain;
+  final pulumi.Input<String>? timeGrain;
 
   /// Creates a new [PrometheusMetricsSignalDefinitionPropertiesResponse].
   /// [dataUnit] Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
@@ -55,7 +56,7 @@ class PrometheusMetricsSignalDefinitionPropertiesResponse {
       'dataUnit': ?dataUnit,
       'deletionDate': deletionDate,
       'displayName': ?displayName,
-      'evaluationRules': evaluationRules.toMap(),
+      'evaluationRules': pulumi.Input.mapInputValue<EvaluationRuleResponse, Map<String, dynamic>>(evaluationRules, (value) => value.toMap()),
       'labels': ?labels,
       'provisioningState': provisioningState,
       'queryText': queryText,
@@ -67,16 +68,16 @@ class PrometheusMetricsSignalDefinitionPropertiesResponse {
 
   factory PrometheusMetricsSignalDefinitionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PrometheusMetricsSignalDefinitionPropertiesResponse(
-      dataUnit: map['dataUnit'] == null ? null : map['dataUnit'] as String,
-      deletionDate: map['deletionDate'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      evaluationRules: EvaluationRuleResponse.fromMap((map['evaluationRules'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      provisioningState: map['provisioningState'] as String,
-      queryText: map['queryText'] as String,
-      refreshInterval: map['refreshInterval'] == null ? null : map['refreshInterval'] as String,
-      signalKind: map['signalKind'] as String,
-      timeGrain: map['timeGrain'] == null ? null : map['timeGrain'] as String,
+      dataUnit: map['dataUnit'] == null ? null : (map['dataUnit'] as String).input(),
+      deletionDate: (map['deletionDate'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      evaluationRules: (EvaluationRuleResponse.fromMap((map['evaluationRules'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      queryText: (map['queryText'] as String).input(),
+      refreshInterval: map['refreshInterval'] == null ? null : (map['refreshInterval'] as String).input(),
+      signalKind: (map['signalKind'] as String).input(),
+      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain'] as String).input(),
     );
   }
 }

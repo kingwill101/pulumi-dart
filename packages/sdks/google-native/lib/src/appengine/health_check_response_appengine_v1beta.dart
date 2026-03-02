@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. Only applicable for instances in App Engine flexible environment.
 class HealthCheckResponseAppengineV1beta {
   /// Interval between health checks.
-  final String checkInterval;
+  final pulumi.Input<String> checkInterval;
   /// Whether to explicitly disable health checks for this instance.
-  final bool disableHealthCheck;
+  final pulumi.Input<bool> disableHealthCheck;
   /// Number of consecutive successful health checks required before receiving traffic.
-  final int healthyThreshold;
+  final pulumi.Input<int> healthyThreshold;
   /// Host header to send when performing an HTTP health check. Example: "myapp.appspot.com"
-  final String host;
+  final pulumi.Input<String> host;
   /// Number of consecutive failed health checks required before an instance is restarted.
-  final int restartThreshold;
+  final pulumi.Input<int> restartThreshold;
   /// Time before the health check is considered failed.
-  final String timeout;
+  final pulumi.Input<String> timeout;
   /// Number of consecutive failed health checks required before removing traffic.
-  final int unhealthyThreshold;
+  final pulumi.Input<int> unhealthyThreshold;
 
   /// Creates a new [HealthCheckResponseAppengineV1beta].
   /// [checkInterval] Interval between health checks.
@@ -50,13 +51,13 @@ class HealthCheckResponseAppengineV1beta {
 
   factory HealthCheckResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return HealthCheckResponseAppengineV1beta(
-      checkInterval: map['checkInterval'] as String,
-      disableHealthCheck: map['disableHealthCheck'] as bool,
-      healthyThreshold: map['healthyThreshold'] as int,
-      host: map['host'] as String,
-      restartThreshold: map['restartThreshold'] as int,
-      timeout: map['timeout'] as String,
-      unhealthyThreshold: map['unhealthyThreshold'] as int,
+      checkInterval: (map['checkInterval'] as String).input(),
+      disableHealthCheck: (map['disableHealthCheck'] as bool).input(),
+      healthyThreshold: (map['healthyThreshold'] as int).input(),
+      host: (map['host'] as String).input(),
+      restartThreshold: (map['restartThreshold'] as int).input(),
+      timeout: (map['timeout'] as String).input(),
+      unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),
     );
   }
 }

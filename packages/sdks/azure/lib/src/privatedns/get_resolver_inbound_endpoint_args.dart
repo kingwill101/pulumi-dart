@@ -16,11 +16,9 @@ class GetResolverInboundEndpointArgs {
   /// [name] Name of the Private DNS Resolver Inbound Endpoint.
   /// [privateDnsResolverId] ID of the Private DNS Resolver.
   GetResolverInboundEndpointArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> privateDnsResolverId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      privateDnsResolverId = pulumi.Input.asInput<String>(privateDnsResolverId);
+    required this.name,
+    required this.privateDnsResolverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResolverInboundEndpointArgs {
 
   factory GetResolverInboundEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverInboundEndpointArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      privateDnsResolverId: pulumi.Output.create<String>(map['privateDnsResolverId'] as String),
+      name: (map['name'] as String).input(),
+      privateDnsResolverId: (map['privateDnsResolverId'] as String).input(),
     );
   }
 }

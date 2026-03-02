@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A conversion workspace's version.
 class ConversionWorkspaceInfoResponse {
   /// The commit ID of the conversion workspace.
-  final String commitId;
+  final pulumi.Input<String> commitId;
   /// The resource name (URI) of the conversion workspace.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ConversionWorkspaceInfoResponse].
   /// [commitId] The commit ID of the conversion workspace.
@@ -25,8 +26,8 @@ class ConversionWorkspaceInfoResponse {
 
   factory ConversionWorkspaceInfoResponse.fromMap(Map<String, dynamic> map) {
     return ConversionWorkspaceInfoResponse(
-      commitId: map['commitId'] as String,
-      name: map['name'] as String,
+      commitId: (map['commitId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

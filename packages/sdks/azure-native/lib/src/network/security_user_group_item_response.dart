@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network manager security user group item.
 class SecurityUserGroupItemResponse {
   /// Network manager group Id.
-  final String networkGroupId;
+  final pulumi.Input<String> networkGroupId;
 
   /// Creates a new [SecurityUserGroupItemResponse].
   /// [networkGroupId] Network manager group Id.
@@ -20,7 +21,7 @@ class SecurityUserGroupItemResponse {
 
   factory SecurityUserGroupItemResponse.fromMap(Map<String, dynamic> map) {
     return SecurityUserGroupItemResponse(
-      networkGroupId: map['networkGroupId'] as String,
+      networkGroupId: (map['networkGroupId'] as String).input(),
     );
   }
 }

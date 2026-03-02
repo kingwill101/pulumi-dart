@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Weekly planned maintenance
 class WeeklyMaintenanceScheduleConfiguration {
   /// The day to run the maintenance job
-  final String day;
+  final pulumi.Input<String> day;
   /// The frequency to run the maintenance job
   /// Expected value is 'Weekly'.
-  final String frequency;
+  final pulumi.Input<String> frequency;
   /// The hour to run the maintenance job
-  final int hour;
+  final pulumi.Input<int> hour;
 
   /// Creates a new [WeeklyMaintenanceScheduleConfiguration].
   /// [day] The day to run the maintenance job
@@ -31,9 +32,9 @@ class WeeklyMaintenanceScheduleConfiguration {
 
   factory WeeklyMaintenanceScheduleConfiguration.fromMap(Map<String, dynamic> map) {
     return WeeklyMaintenanceScheduleConfiguration(
-      day: map['day'] as String,
-      frequency: map['frequency'] as String,
-      hour: map['hour'] as int,
+      day: (map['day'] as String).input(),
+      frequency: (map['frequency'] as String).input(),
+      hour: (map['hour'] as int).input(),
     );
   }
 }

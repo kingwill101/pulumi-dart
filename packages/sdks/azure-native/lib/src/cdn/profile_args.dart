@@ -37,23 +37,15 @@ class ProfileArgs {
   /// [sku] The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
   /// [tags] Resource tags.
   ProfileArgs({
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<ProfileLogScrubbing>? logScrubbing,
-    pulumi.Output<int>? originResponseTimeoutSeconds,
-    pulumi.Output<String>? profileName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<Sku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logScrubbing = pulumi.Input.asOptionalInput<ProfileLogScrubbing>(logScrubbing),
-      originResponseTimeoutSeconds = pulumi.Input.asOptionalInput<int>(originResponseTimeoutSeconds),
-      profileName = pulumi.Input.asOptionalInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.identity,
+    this.location,
+    this.logScrubbing,
+    this.originResponseTimeoutSeconds,
+    this.profileName,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class ProfileArgs {
 
   factory ProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfileArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logScrubbing: map['logScrubbing'] == null ? null : pulumi.Output.create<ProfileLogScrubbing>(ProfileLogScrubbing.fromMap((map['logScrubbing'] as Map).cast<String, dynamic>())),
-      originResponseTimeoutSeconds: map['originResponseTimeoutSeconds'] == null ? null : pulumi.Output.create<int>(map['originResponseTimeoutSeconds'] as int),
-      profileName: map['profileName'] == null ? null : pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logScrubbing: map['logScrubbing'] == null ? null : (ProfileLogScrubbing.fromMap((map['logScrubbing'] as Map).cast<String, dynamic>())).input(),
+      originResponseTimeoutSeconds: map['originResponseTimeoutSeconds'] == null ? null : (map['originResponseTimeoutSeconds'] as int).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

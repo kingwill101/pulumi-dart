@@ -33,21 +33,14 @@ class AzureBareMetalStorageInstanceArgs {
   /// [storageProperties] Specifies the storage properties for the AzureBareMetalStorage instance.
   /// [tags] Resource tags.
   AzureBareMetalStorageInstanceArgs({
-    pulumi.Output<String>? azureBareMetalStorageInstanceName,
-    pulumi.Output<String>? azureBareMetalStorageInstanceUniqueIdentifier,
-    pulumi.Output<AzureBareMetalStorageInstanceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<StorageProperties>? storageProperties,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      azureBareMetalStorageInstanceName = pulumi.Input.asOptionalInput<String>(azureBareMetalStorageInstanceName),
-      azureBareMetalStorageInstanceUniqueIdentifier = pulumi.Input.asOptionalInput<String>(azureBareMetalStorageInstanceUniqueIdentifier),
-      identity = pulumi.Input.asOptionalInput<AzureBareMetalStorageInstanceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageProperties = pulumi.Input.asOptionalInput<StorageProperties>(storageProperties),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.azureBareMetalStorageInstanceName,
+    this.azureBareMetalStorageInstanceUniqueIdentifier,
+    this.identity,
+    this.location,
+    required this.resourceGroupName,
+    this.storageProperties,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AzureBareMetalStorageInstanceArgs {
 
   factory AzureBareMetalStorageInstanceArgs.fromMap(Map<String, dynamic> map) {
     return AzureBareMetalStorageInstanceArgs(
-      azureBareMetalStorageInstanceName: map['azureBareMetalStorageInstanceName'] == null ? null : pulumi.Output.create<String>(map['azureBareMetalStorageInstanceName'] as String),
-      azureBareMetalStorageInstanceUniqueIdentifier: map['azureBareMetalStorageInstanceUniqueIdentifier'] == null ? null : pulumi.Output.create<String>(map['azureBareMetalStorageInstanceUniqueIdentifier'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<AzureBareMetalStorageInstanceIdentity>(AzureBareMetalStorageInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageProperties: map['storageProperties'] == null ? null : pulumi.Output.create<StorageProperties>(StorageProperties.fromMap((map['storageProperties'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      azureBareMetalStorageInstanceName: map['azureBareMetalStorageInstanceName'] == null ? null : (map['azureBareMetalStorageInstanceName'] as String).input(),
+      azureBareMetalStorageInstanceUniqueIdentifier: map['azureBareMetalStorageInstanceUniqueIdentifier'] == null ? null : (map['azureBareMetalStorageInstanceUniqueIdentifier'] as String).input(),
+      identity: map['identity'] == null ? null : (AzureBareMetalStorageInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageProperties: map['storageProperties'] == null ? null : (StorageProperties.fromMap((map['storageProperties'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

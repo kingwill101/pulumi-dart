@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains endpoint information specific to Ethereum nodes.
 class EthereumEndpointsResponse {
   /// The assigned URL for the node's Beacon API endpoint.
-  final String beaconApiEndpoint;
+  final pulumi.Input<String> beaconApiEndpoint;
   /// The assigned URL for the node's Beacon Prometheus metrics endpoint. See [Prometheus Metrics](https://lighthouse-book.sigmaprime.io/advanced_metrics.html) for more details.
-  final String beaconPrometheusMetricsApiEndpoint;
+  final pulumi.Input<String> beaconPrometheusMetricsApiEndpoint;
   /// The assigned URL for the node's execution client's Prometheus metrics endpoint.
-  final String executionClientPrometheusMetricsApiEndpoint;
+  final pulumi.Input<String> executionClientPrometheusMetricsApiEndpoint;
 
   /// Creates a new [EthereumEndpointsResponse].
   /// [beaconApiEndpoint] The assigned URL for the node's Beacon API endpoint.
@@ -30,9 +31,9 @@ class EthereumEndpointsResponse {
 
   factory EthereumEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return EthereumEndpointsResponse(
-      beaconApiEndpoint: map['beaconApiEndpoint'] as String,
-      beaconPrometheusMetricsApiEndpoint: map['beaconPrometheusMetricsApiEndpoint'] as String,
-      executionClientPrometheusMetricsApiEndpoint: map['executionClientPrometheusMetricsApiEndpoint'] as String,
+      beaconApiEndpoint: (map['beaconApiEndpoint'] as String).input(),
+      beaconPrometheusMetricsApiEndpoint: (map['beaconPrometheusMetricsApiEndpoint'] as String).input(),
+      executionClientPrometheusMetricsApiEndpoint: (map['executionClientPrometheusMetricsApiEndpoint'] as String).input(),
     );
   }
 }

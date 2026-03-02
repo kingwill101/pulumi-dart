@@ -1,70 +1,71 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model representing customer for connected cache resource
 class AdditionalCustomerPropertiesResponse {
   /// Customer resource Asn (autonomous system number).
-  final String? customerAsn;
+  final pulumi.Input<String>? customerAsn;
   /// Customer resource estimated Asn peering peak in Gbps.
-  final double customerAsnEstimatedEgressPeekGbps;
+  final pulumi.Input<double> customerAsnEstimatedEgressPeekGbps;
   /// Customer resource contact email.
-  final String? customerEmail;
+  final pulumi.Input<String>? customerEmail;
   /// Customer resource entitlement expiration date string.
-  final String? customerEntitlementExpiration;
+  final pulumi.Input<String>? customerEntitlementExpiration;
   /// Customer resource entitlement Sku Guid.
-  final String? customerEntitlementSkuGuid;
+  final pulumi.Input<String>? customerEntitlementSkuGuid;
   /// Customer resource entitlement Sku Id.
-  final String? customerEntitlementSkuId;
+  final pulumi.Input<String>? customerEntitlementSkuId;
   /// Customer resource entitlement Sku name.
-  final String? customerEntitlementSkuName;
+  final pulumi.Input<String>? customerEntitlementSkuName;
   /// Customer resource owner organization name.
-  final String customerOrgName;
+  final pulumi.Input<String> customerOrgName;
   /// Customer resource average egress in Mbps.
-  final double customerPropertiesOverviewAverageEgressMbps;
+  final pulumi.Input<double> customerPropertiesOverviewAverageEgressMbps;
   /// Customer resource average cache miss throughput in Mbps.
-  final double customerPropertiesOverviewAverageMissMbps;
+  final pulumi.Input<double> customerPropertiesOverviewAverageMissMbps;
   /// Customer resource cache efficiency.
-  final double customerPropertiesOverviewCacheEfficiency;
+  final pulumi.Input<double> customerPropertiesOverviewCacheEfficiency;
   /// Customer resource total healthy cache nodes.
-  final int customerPropertiesOverviewCacheNodesHealthyCount;
+  final pulumi.Input<int> customerPropertiesOverviewCacheNodesHealthyCount;
   /// Customer resource total unhealthy cache nodes.
-  final int customerPropertiesOverviewCacheNodesUnhealthyCount;
+  final pulumi.Input<int> customerPropertiesOverviewCacheNodesUnhealthyCount;
   /// Customer resource maximum egress in Mbps.
-  final double customerPropertiesOverviewEgressMbpsMax;
+  final pulumi.Input<double> customerPropertiesOverviewEgressMbpsMax;
   /// Customer resource peak egress timestamp.
-  final String customerPropertiesOverviewEgressMbpsMaxDateTime;
+  final pulumi.Input<String> customerPropertiesOverviewEgressMbpsMaxDateTime;
   /// Customer resource maximum cache miss throughput in Mbps.
-  final double customerPropertiesOverviewMissMbpsMax;
+  final pulumi.Input<double> customerPropertiesOverviewMissMbpsMax;
   /// Customer resource peak cache miss throughput timestamp.
-  final String customerPropertiesOverviewMissMbpsMaxDateTime;
+  final pulumi.Input<String> customerPropertiesOverviewMissMbpsMaxDateTime;
   /// Customer resource transit Asn (autonomous system number).
-  final String? customerTransitAsn;
+  final pulumi.Input<String>? customerTransitAsn;
   /// Customer resource transit state.
-  final String? customerTransitState;
+  final pulumi.Input<String>? customerTransitState;
   /// Optional property #1 of Mcc response object.
-  final String? optionalProperty1;
+  final pulumi.Input<String>? optionalProperty1;
   /// Optional property #2 of Mcc response object.
-  final String? optionalProperty2;
+  final pulumi.Input<String>? optionalProperty2;
   /// Optional property #3 of Mcc response object.
-  final String? optionalProperty3;
+  final pulumi.Input<String>? optionalProperty3;
   /// Optional property #4 of Mcc response object.
-  final String? optionalProperty4;
+  final pulumi.Input<String>? optionalProperty4;
   /// Optional property #5 of Mcc response object.
-  final String? optionalProperty5;
+  final pulumi.Input<String>? optionalProperty5;
   /// Customer resource last PeeringDB update timestamp.
-  final String peeringDbLastUpdateDate;
+  final pulumi.Input<String> peeringDbLastUpdateDate;
   /// Customer resource last PeeringDB update timestamp.
-  final String peeringDbLastUpdateTime;
+  final pulumi.Input<String> peeringDbLastUpdateTime;
   /// Customer resource signup phase status code as integer.
-  final int signupPhaseStatusCode;
+  final pulumi.Input<int> signupPhaseStatusCode;
   /// Customer resource signup phase status as string text.
-  final String signupPhaseStatusText;
+  final pulumi.Input<String> signupPhaseStatusText;
   /// Customer resource signup status as boolean.
-  final bool signupStatus;
+  final pulumi.Input<bool> signupStatus;
   /// Customer resource signup status as integer code.
-  final int signupStatusCode;
+  final pulumi.Input<int> signupStatusCode;
   /// Customer resource signup status as string text.
-  final String signupStatusText;
+  final pulumi.Input<String> signupStatusText;
 
   /// Creates a new [AdditionalCustomerPropertiesResponse].
   /// [customerAsn] Customer resource Asn (autonomous system number).
@@ -170,37 +171,37 @@ class AdditionalCustomerPropertiesResponse {
 
   factory AdditionalCustomerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalCustomerPropertiesResponse(
-      customerAsn: map['customerAsn'] == null ? null : map['customerAsn'] as String,
-      customerAsnEstimatedEgressPeekGbps: map['customerAsnEstimatedEgressPeekGbps'] as double,
-      customerEmail: map['customerEmail'] == null ? null : map['customerEmail'] as String,
-      customerEntitlementExpiration: map['customerEntitlementExpiration'] == null ? null : map['customerEntitlementExpiration'] as String,
-      customerEntitlementSkuGuid: map['customerEntitlementSkuGuid'] == null ? null : map['customerEntitlementSkuGuid'] as String,
-      customerEntitlementSkuId: map['customerEntitlementSkuId'] == null ? null : map['customerEntitlementSkuId'] as String,
-      customerEntitlementSkuName: map['customerEntitlementSkuName'] == null ? null : map['customerEntitlementSkuName'] as String,
-      customerOrgName: map['customerOrgName'] as String,
-      customerPropertiesOverviewAverageEgressMbps: map['customerPropertiesOverviewAverageEgressMbps'] as double,
-      customerPropertiesOverviewAverageMissMbps: map['customerPropertiesOverviewAverageMissMbps'] as double,
-      customerPropertiesOverviewCacheEfficiency: map['customerPropertiesOverviewCacheEfficiency'] as double,
-      customerPropertiesOverviewCacheNodesHealthyCount: map['customerPropertiesOverviewCacheNodesHealthyCount'] as int,
-      customerPropertiesOverviewCacheNodesUnhealthyCount: map['customerPropertiesOverviewCacheNodesUnhealthyCount'] as int,
-      customerPropertiesOverviewEgressMbpsMax: map['customerPropertiesOverviewEgressMbpsMax'] as double,
-      customerPropertiesOverviewEgressMbpsMaxDateTime: map['customerPropertiesOverviewEgressMbpsMaxDateTime'] as String,
-      customerPropertiesOverviewMissMbpsMax: map['customerPropertiesOverviewMissMbpsMax'] as double,
-      customerPropertiesOverviewMissMbpsMaxDateTime: map['customerPropertiesOverviewMissMbpsMaxDateTime'] as String,
-      customerTransitAsn: map['customerTransitAsn'] == null ? null : map['customerTransitAsn'] as String,
-      customerTransitState: map['customerTransitState'] == null ? null : map['customerTransitState'] as String,
-      optionalProperty1: map['optionalProperty1'] == null ? null : map['optionalProperty1'] as String,
-      optionalProperty2: map['optionalProperty2'] == null ? null : map['optionalProperty2'] as String,
-      optionalProperty3: map['optionalProperty3'] == null ? null : map['optionalProperty3'] as String,
-      optionalProperty4: map['optionalProperty4'] == null ? null : map['optionalProperty4'] as String,
-      optionalProperty5: map['optionalProperty5'] == null ? null : map['optionalProperty5'] as String,
-      peeringDbLastUpdateDate: map['peeringDbLastUpdateDate'] as String,
-      peeringDbLastUpdateTime: map['peeringDbLastUpdateTime'] as String,
-      signupPhaseStatusCode: map['signupPhaseStatusCode'] as int,
-      signupPhaseStatusText: map['signupPhaseStatusText'] as String,
-      signupStatus: map['signupStatus'] as bool,
-      signupStatusCode: map['signupStatusCode'] as int,
-      signupStatusText: map['signupStatusText'] as String,
+      customerAsn: map['customerAsn'] == null ? null : (map['customerAsn'] as String).input(),
+      customerAsnEstimatedEgressPeekGbps: (map['customerAsnEstimatedEgressPeekGbps'] as double).input(),
+      customerEmail: map['customerEmail'] == null ? null : (map['customerEmail'] as String).input(),
+      customerEntitlementExpiration: map['customerEntitlementExpiration'] == null ? null : (map['customerEntitlementExpiration'] as String).input(),
+      customerEntitlementSkuGuid: map['customerEntitlementSkuGuid'] == null ? null : (map['customerEntitlementSkuGuid'] as String).input(),
+      customerEntitlementSkuId: map['customerEntitlementSkuId'] == null ? null : (map['customerEntitlementSkuId'] as String).input(),
+      customerEntitlementSkuName: map['customerEntitlementSkuName'] == null ? null : (map['customerEntitlementSkuName'] as String).input(),
+      customerOrgName: (map['customerOrgName'] as String).input(),
+      customerPropertiesOverviewAverageEgressMbps: (map['customerPropertiesOverviewAverageEgressMbps'] as double).input(),
+      customerPropertiesOverviewAverageMissMbps: (map['customerPropertiesOverviewAverageMissMbps'] as double).input(),
+      customerPropertiesOverviewCacheEfficiency: (map['customerPropertiesOverviewCacheEfficiency'] as double).input(),
+      customerPropertiesOverviewCacheNodesHealthyCount: (map['customerPropertiesOverviewCacheNodesHealthyCount'] as int).input(),
+      customerPropertiesOverviewCacheNodesUnhealthyCount: (map['customerPropertiesOverviewCacheNodesUnhealthyCount'] as int).input(),
+      customerPropertiesOverviewEgressMbpsMax: (map['customerPropertiesOverviewEgressMbpsMax'] as double).input(),
+      customerPropertiesOverviewEgressMbpsMaxDateTime: (map['customerPropertiesOverviewEgressMbpsMaxDateTime'] as String).input(),
+      customerPropertiesOverviewMissMbpsMax: (map['customerPropertiesOverviewMissMbpsMax'] as double).input(),
+      customerPropertiesOverviewMissMbpsMaxDateTime: (map['customerPropertiesOverviewMissMbpsMaxDateTime'] as String).input(),
+      customerTransitAsn: map['customerTransitAsn'] == null ? null : (map['customerTransitAsn'] as String).input(),
+      customerTransitState: map['customerTransitState'] == null ? null : (map['customerTransitState'] as String).input(),
+      optionalProperty1: map['optionalProperty1'] == null ? null : (map['optionalProperty1'] as String).input(),
+      optionalProperty2: map['optionalProperty2'] == null ? null : (map['optionalProperty2'] as String).input(),
+      optionalProperty3: map['optionalProperty3'] == null ? null : (map['optionalProperty3'] as String).input(),
+      optionalProperty4: map['optionalProperty4'] == null ? null : (map['optionalProperty4'] as String).input(),
+      optionalProperty5: map['optionalProperty5'] == null ? null : (map['optionalProperty5'] as String).input(),
+      peeringDbLastUpdateDate: (map['peeringDbLastUpdateDate'] as String).input(),
+      peeringDbLastUpdateTime: (map['peeringDbLastUpdateTime'] as String).input(),
+      signupPhaseStatusCode: (map['signupPhaseStatusCode'] as int).input(),
+      signupPhaseStatusText: (map['signupPhaseStatusText'] as String).input(),
+      signupStatus: (map['signupStatus'] as bool).input(),
+      signupStatusCode: (map['signupStatusCode'] as int).input(),
+      signupStatusText: (map['signupStatusText'] as String).input(),
     );
   }
 }

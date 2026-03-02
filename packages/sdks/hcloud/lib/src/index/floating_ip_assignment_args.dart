@@ -16,11 +16,9 @@ class FloatingIpAssignmentArgs {
   /// [floatingIpId] ID of the Floating IP.
   /// [serverId] Server to assign the Floating IP to.
   FloatingIpAssignmentArgs({
-    required pulumi.Output<int> floatingIpId,
-    required pulumi.Output<int> serverId,
-  }) :
-      floatingIpId = pulumi.Input.asInput<int>(floatingIpId),
-      serverId = pulumi.Input.asInput<int>(serverId);
+    required this.floatingIpId,
+    required this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class FloatingIpAssignmentArgs {
 
   factory FloatingIpAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return FloatingIpAssignmentArgs(
-      floatingIpId: pulumi.Output.create<int>(map['floatingIpId'] as int),
-      serverId: pulumi.Output.create<int>(map['serverId'] as int),
+      floatingIpId: (map['floatingIpId'] as int).input(),
+      serverId: (map['serverId'] as int).input(),
     );
   }
 }

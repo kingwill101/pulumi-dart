@@ -39,27 +39,17 @@ class MonitorDowntimeState {
   /// [startTime] A datetime stamp signifying the start of the Monitor Downtime.
   /// [timeZone] The timezone that applies to the Monitor Downtime schedule.
   MonitorDowntimeState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<MonitorDowntimeEndRepeat>? endRepeat,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<MonitorDowntimeFrequency>? frequency,
-    pulumi.Output<List<String>>? maintenanceDays,
-    pulumi.Output<String>? mode,
-    pulumi.Output<List<String>>? monitorGuids,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? timeZone,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      endRepeat = pulumi.Input.asOptionalInput<MonitorDowntimeEndRepeat>(endRepeat),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      frequency = pulumi.Input.asOptionalInput<MonitorDowntimeFrequency>(frequency),
-      maintenanceDays = pulumi.Input.asOptionalInput<List<String>>(maintenanceDays),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      monitorGuids = pulumi.Input.asOptionalInput<List<String>>(monitorGuids),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.accountId,
+    this.endRepeat,
+    this.endTime,
+    this.frequency,
+    this.maintenanceDays,
+    this.mode,
+    this.monitorGuids,
+    this.name,
+    this.startTime,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class MonitorDowntimeState {
 
   factory MonitorDowntimeState.fromMap(Map<String, dynamic> map) {
     return MonitorDowntimeState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      endRepeat: map['endRepeat'] == null ? null : pulumi.Output.create<MonitorDowntimeEndRepeat>(MonitorDowntimeEndRepeat.fromMap((map['endRepeat'] as Map).cast<String, dynamic>())),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      frequency: map['frequency'] == null ? null : pulumi.Output.create<MonitorDowntimeFrequency>(MonitorDowntimeFrequency.fromMap((map['frequency'] as Map).cast<String, dynamic>())),
-      maintenanceDays: map['maintenanceDays'] == null ? null : pulumi.Output.create<List<String>>((map['maintenanceDays'] as List).cast<String>()),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      monitorGuids: map['monitorGuids'] == null ? null : pulumi.Output.create<List<String>>((map['monitorGuids'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      endRepeat: map['endRepeat'] == null ? null : (MonitorDowntimeEndRepeat.fromMap((map['endRepeat'] as Map).cast<String, dynamic>())).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      frequency: map['frequency'] == null ? null : (MonitorDowntimeFrequency.fromMap((map['frequency'] as Map).cast<String, dynamic>())).input(),
+      maintenanceDays: map['maintenanceDays'] == null ? null : ((map['maintenanceDays'] as List).cast<String>()).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      monitorGuids: map['monitorGuids'] == null ? null : ((map['monitorGuids'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

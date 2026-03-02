@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataStoreAdvancedSiteSearchConfig {
   /// If set true, automatic refresh is disabled for the DataStore.
-  final bool? disableAutomaticRefresh;
+  final pulumi.Input<bool>? disableAutomaticRefresh;
   /// If set true, initial indexing is disabled for the DataStore.
-  final bool? disableInitialIndex;
+  final pulumi.Input<bool>? disableInitialIndex;
 
   /// Creates a new [DataStoreAdvancedSiteSearchConfig].
   /// [disableAutomaticRefresh] If set true, automatic refresh is disabled for the DataStore.
@@ -24,8 +25,8 @@ class DataStoreAdvancedSiteSearchConfig {
 
   factory DataStoreAdvancedSiteSearchConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreAdvancedSiteSearchConfig(
-      disableAutomaticRefresh: map['disableAutomaticRefresh'] == null ? null : map['disableAutomaticRefresh'] as bool,
-      disableInitialIndex: map['disableInitialIndex'] == null ? null : map['disableInitialIndex'] as bool,
+      disableAutomaticRefresh: map['disableAutomaticRefresh'] == null ? null : (map['disableAutomaticRefresh'] as bool).input(),
+      disableInitialIndex: map['disableInitialIndex'] == null ? null : (map['disableInitialIndex'] as bool).input(),
     );
   }
 }

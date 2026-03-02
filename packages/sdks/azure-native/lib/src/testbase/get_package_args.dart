@@ -19,13 +19,10 @@ class GetPackageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
   GetPackageArgs({
-    required pulumi.Output<String> packageName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> testBaseAccountName,
-  }) :
-      packageName = pulumi.Input.asInput<String>(packageName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      testBaseAccountName = pulumi.Input.asInput<String>(testBaseAccountName);
+    required this.packageName,
+    required this.resourceGroupName,
+    required this.testBaseAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPackageArgs {
 
   factory GetPackageArgs.fromMap(Map<String, dynamic> map) {
     return GetPackageArgs(
-      packageName: pulumi.Output.create<String>(map['packageName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      testBaseAccountName: pulumi.Output.create<String>(map['testBaseAccountName'] as String),
+      packageName: (map['packageName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
     );
   }
 }

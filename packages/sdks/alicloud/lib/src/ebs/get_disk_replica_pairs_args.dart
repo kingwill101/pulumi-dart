@@ -22,15 +22,11 @@ class GetDiskReplicaPairsArgs {
   /// [replicaGroupId] Consistent Replication Group ID, you can specify a consistent replication group ID to query the replication pairs within the group.
   /// [site] Get data for replication pairs where this Region is the production site or the disaster recovery site.
   GetDiskReplicaPairsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? replicaGroupId,
-    pulumi.Output<String>? site,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      replicaGroupId = pulumi.Input.asOptionalInput<String>(replicaGroupId),
-      site = pulumi.Input.asOptionalInput<String>(site);
+    this.ids,
+    this.outputFile,
+    this.replicaGroupId,
+    this.site,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDiskReplicaPairsArgs {
 
   factory GetDiskReplicaPairsArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskReplicaPairsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      replicaGroupId: map['replicaGroupId'] == null ? null : pulumi.Output.create<String>(map['replicaGroupId'] as String),
-      site: map['site'] == null ? null : pulumi.Output.create<String>(map['site'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      replicaGroupId: map['replicaGroupId'] == null ? null : (map['replicaGroupId'] as String).input(),
+      site: map['site'] == null ? null : (map['site'] as String).input(),
     );
   }
 }

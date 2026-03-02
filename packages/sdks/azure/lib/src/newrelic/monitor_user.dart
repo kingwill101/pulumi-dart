@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorUser {
   /// Specifies the user Email. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final String email;
+  final pulumi.Input<String> email;
   /// Specifies the first name. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final String firstName;
+  final pulumi.Input<String> firstName;
   /// Specifies the last name. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final String lastName;
+  final pulumi.Input<String> lastName;
   /// Specifies the contact phone number. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final String phoneNumber;
+  final pulumi.Input<String> phoneNumber;
 
   /// Creates a new [MonitorUser].
   /// [email] Specifies the user Email. Changing this forces a new Azure Native New Relic Monitor to be created.
@@ -34,10 +35,10 @@ class MonitorUser {
 
   factory MonitorUser.fromMap(Map<String, dynamic> map) {
     return MonitorUser(
-      email: map['email'] as String,
-      firstName: map['firstName'] as String,
-      lastName: map['lastName'] as String,
-      phoneNumber: map['phoneNumber'] as String,
+      email: (map['email'] as String).input(),
+      firstName: (map['firstName'] as String).input(),
+      lastName: (map['lastName'] as String).input(),
+      phoneNumber: (map['phoneNumber'] as String).input(),
     );
   }
 }

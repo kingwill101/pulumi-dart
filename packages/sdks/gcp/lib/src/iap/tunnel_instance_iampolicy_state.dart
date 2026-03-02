@@ -26,17 +26,12 @@ class TunnelInstanceIAMPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] Used to find the parent resource to bind the IAM policy to. If not specified,
   TunnelInstanceIAMPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.etag,
+    this.instance,
+    this.policyData,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class TunnelInstanceIAMPolicyState {
 
   factory TunnelInstanceIAMPolicyState.fromMap(Map<String, dynamic> map) {
     return TunnelInstanceIAMPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

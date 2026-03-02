@@ -41,27 +41,17 @@ class VpnGatewayComputeBetaArgs {
   /// [stackType] The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
   /// [vpnInterfaces] The list of VPN interfaces associated with this VPN gateway.
   VpnGatewayComputeBetaArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<VpnGatewayGatewayIpVersionComputeBeta>? gatewayIpVersion,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<VpnGatewayStackTypeComputeBeta>? stackType,
-    pulumi.Output<List<VpnGatewayVpnGatewayInterfaceComputeBeta>>? vpnInterfaces,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gatewayIpVersion = pulumi.Input.asOptionalInput<VpnGatewayGatewayIpVersionComputeBeta>(gatewayIpVersion),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      stackType = pulumi.Input.asOptionalInput<VpnGatewayStackTypeComputeBeta>(stackType),
-      vpnInterfaces = pulumi.Input.asOptionalInput<List<VpnGatewayVpnGatewayInterfaceComputeBeta>>(vpnInterfaces);
+    this.description,
+    this.gatewayIpVersion,
+    this.labels,
+    this.name,
+    this.network,
+    this.project,
+    required this.region,
+    this.requestId,
+    this.stackType,
+    this.vpnInterfaces,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class VpnGatewayComputeBetaArgs {
 
   factory VpnGatewayComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return VpnGatewayComputeBetaArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gatewayIpVersion: map['gatewayIpVersion'] == null ? null : pulumi.Output.create<VpnGatewayGatewayIpVersionComputeBeta>(VpnGatewayGatewayIpVersionComputeBeta.fromValue(map['gatewayIpVersion'] as String)),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      stackType: map['stackType'] == null ? null : pulumi.Output.create<VpnGatewayStackTypeComputeBeta>(VpnGatewayStackTypeComputeBeta.fromValue(map['stackType'] as String)),
-      vpnInterfaces: map['vpnInterfaces'] == null ? null : pulumi.Output.create<List<VpnGatewayVpnGatewayInterfaceComputeBeta>>(pulumi.Input.decodeList<VpnGatewayVpnGatewayInterfaceComputeBeta>(map['vpnInterfaces'], (value) => VpnGatewayVpnGatewayInterfaceComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gatewayIpVersion: map['gatewayIpVersion'] == null ? null : (VpnGatewayGatewayIpVersionComputeBeta.fromValue(map['gatewayIpVersion'] as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      stackType: map['stackType'] == null ? null : (VpnGatewayStackTypeComputeBeta.fromValue(map['stackType'] as String)).input(),
+      vpnInterfaces: map['vpnInterfaces'] == null ? null : (pulumi.Input.decodeList<VpnGatewayVpnGatewayInterfaceComputeBeta>(map['vpnInterfaces'], (value) => VpnGatewayVpnGatewayInterfaceComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

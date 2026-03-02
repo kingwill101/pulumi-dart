@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAutonomousDatabasePropertyApexDetail {
   /// The Oracle APEX Application Development version.
-  final String apexVersion;
+  final pulumi.Input<String> apexVersion;
   /// The Oracle REST Data Services (ORDS) version.
-  final String ordsVersion;
+  final pulumi.Input<String> ordsVersion;
 
   /// Creates a new [GetAutonomousDatabasePropertyApexDetail].
   /// [apexVersion] The Oracle APEX Application Development version.
@@ -24,8 +25,8 @@ class GetAutonomousDatabasePropertyApexDetail {
 
   factory GetAutonomousDatabasePropertyApexDetail.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasePropertyApexDetail(
-      apexVersion: map['apexVersion'] as String,
-      ordsVersion: map['ordsVersion'] as String,
+      apexVersion: (map['apexVersion'] as String).input(),
+      ordsVersion: (map['ordsVersion'] as String).input(),
     );
   }
 }

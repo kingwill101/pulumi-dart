@@ -5,7 +5,7 @@ import 'data_source_configuration_web_crawler_configuration_authentication_confi
 
 class DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration {
   /// The list of configuration information that's required to connect to and crawl a website host using basic authentication credentials. The list includes the name and port number of the website host. Detailed below.
-  final List<DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication>? basicAuthentications;
+  final pulumi.Input<List<DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication>>? basicAuthentications;
 
   /// Creates a new [DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration].
   /// [basicAuthentications] The list of configuration information that's required to connect to and crawl a website host using basic authentication credentials. The list includes the name and port number of the website host. Detailed below.
@@ -15,13 +15,13 @@ class DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicAuthentications': ?basicAuthentications == null ? null : pulumi.Input.encodeList<DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication, Map<String, dynamic>>(basicAuthentications!, (value) => value.toMap()),
+      'basicAuthentications': ?pulumi.Input.mapOptionalInputValue<List<DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication>, List<Map<String, dynamic>>>(basicAuthentications, (value) => pulumi.Input.encodeList<DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration(
-      basicAuthentications: map['basicAuthentications'] == null ? null : pulumi.Input.decodeList<DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication>(map['basicAuthentications'], (value) => DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication.fromMap((value as Map).cast<String, dynamic>())),
+      basicAuthentications: map['basicAuthentications'] == null ? null : (pulumi.Input.decodeList<DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication>(map['basicAuthentications'], (value) => DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

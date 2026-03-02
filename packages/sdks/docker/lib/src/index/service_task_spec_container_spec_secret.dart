@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecContainerSpecSecret {
   /// Represents the file GID. Defaults to `0`
-  final String? fileGid;
+  final pulumi.Input<String>? fileGid;
   /// Represents represents the FileMode of the file. Defaults to `0o444`
-  final int? fileMode;
+  final pulumi.Input<int>? fileMode;
   /// Represents the final filename in the filesystem
-  final String fileName;
+  final pulumi.Input<String> fileName;
   /// Represents the file UID. Defaults to `0`
-  final String? fileUid;
+  final pulumi.Input<String>? fileUid;
   /// ID of the specific secret that we're referencing
-  final String secretId;
+  final pulumi.Input<String> secretId;
   /// Name of the secret that this references, but this is just provided for lookup/display purposes. The config in the reference will be identified by its ID
-  final String? secretName;
+  final pulumi.Input<String>? secretName;
 
   /// Creates a new [ServiceTaskSpecContainerSpecSecret].
   /// [fileGid] Represents the file GID. Defaults to `0`
@@ -44,12 +45,12 @@ class ServiceTaskSpecContainerSpecSecret {
 
   factory ServiceTaskSpecContainerSpecSecret.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecSecret(
-      fileGid: map['fileGid'] == null ? null : map['fileGid'] as String,
-      fileMode: map['fileMode'] == null ? null : map['fileMode'] as int,
-      fileName: map['fileName'] as String,
-      fileUid: map['fileUid'] == null ? null : map['fileUid'] as String,
-      secretId: map['secretId'] as String,
-      secretName: map['secretName'] == null ? null : map['secretName'] as String,
+      fileGid: map['fileGid'] == null ? null : (map['fileGid'] as String).input(),
+      fileMode: map['fileMode'] == null ? null : (map['fileMode'] as int).input(),
+      fileName: (map['fileName'] as String).input(),
+      fileUid: map['fileUid'] == null ? null : (map['fileUid'] as String).input(),
+      secretId: (map['secretId'] as String).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WafPolicyPolicyBuilder {
   /// learning mode setting for policy-builder, possible options: [`automatic`,`disabled`, `manual`]
-  final String? learningMode;
+  final pulumi.Input<String>? learningMode;
 
   /// Creates a new [WafPolicyPolicyBuilder].
   /// [learningMode] learning mode setting for policy-builder, possible options: [`automatic`,`disabled`, `manual`]
@@ -19,7 +20,7 @@ class WafPolicyPolicyBuilder {
 
   factory WafPolicyPolicyBuilder.fromMap(Map<String, dynamic> map) {
     return WafPolicyPolicyBuilder(
-      learningMode: map['learningMode'] == null ? null : map['learningMode'] as String,
+      learningMode: map['learningMode'] == null ? null : (map['learningMode'] as String).input(),
     );
   }
 }

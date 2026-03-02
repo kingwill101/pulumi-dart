@@ -25,17 +25,12 @@ class TransitRouterGrantAttachmentArgs {
   /// [instanceType] The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
   /// [orderType] The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
   TransitRouterGrantAttachmentArgs({
-    required pulumi.Output<String> cenId,
-    required pulumi.Output<String> cenOwnerId,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> instanceType,
-    pulumi.Output<String>? orderType,
-  }) :
-      cenId = pulumi.Input.asInput<String>(cenId),
-      cenOwnerId = pulumi.Input.asInput<String>(cenOwnerId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      orderType = pulumi.Input.asOptionalInput<String>(orderType);
+    required this.cenId,
+    required this.cenOwnerId,
+    required this.instanceId,
+    required this.instanceType,
+    this.orderType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class TransitRouterGrantAttachmentArgs {
 
   factory TransitRouterGrantAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterGrantAttachmentArgs(
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      cenOwnerId: pulumi.Output.create<String>(map['cenOwnerId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
-      orderType: map['orderType'] == null ? null : pulumi.Output.create<String>(map['orderType'] as String),
+      cenId: (map['cenId'] as String).input(),
+      cenOwnerId: (map['cenOwnerId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      orderType: map['orderType'] == null ? null : (map['orderType'] as String).input(),
     );
   }
 }

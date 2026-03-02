@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertTemplateConfiguration {
   /// Alert template annotations.
-  final Map<String, String>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
   /// Alert template id.
-  final String id;
+  final pulumi.Input<String> id;
   /// Alert template language including `cn`, `en`.
-  final String? lang;
+  final pulumi.Input<String>? lang;
   /// Alert template tokens.
-  final Map<String, String>? tokens;
+  final pulumi.Input<Map<String, String>>? tokens;
   /// Alert template type including `sys`, `user`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AlertTemplateConfiguration].
   /// [annotations] Alert template annotations.
@@ -39,11 +40,11 @@ class AlertTemplateConfiguration {
 
   factory AlertTemplateConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertTemplateConfiguration(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
-      id: map['id'] as String,
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      tokens: map['tokens'] == null ? null : (map['tokens'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      id: (map['id'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      tokens: map['tokens'] == null ? null : ((map['tokens'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

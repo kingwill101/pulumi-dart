@@ -13,9 +13,8 @@ class GetSpacesKeyArgs {
   /// Creates a new [GetSpacesKeyArgs].
   /// [accessKey] The Access Key ID of the Spaces key.
   GetSpacesKeyArgs({
-    required pulumi.Output<String> accessKey,
-  }) :
-      accessKey = pulumi.Input.asInput<String>(accessKey);
+    required this.accessKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetSpacesKeyArgs {
 
   factory GetSpacesKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetSpacesKeyArgs(
-      accessKey: pulumi.Output.create<String>(map['accessKey'] as String),
+      accessKey: (map['accessKey'] as String).input(),
     );
   }
 }

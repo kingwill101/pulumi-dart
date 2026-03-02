@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionTimeout {
   /// The job timeout time (in seconds) that's measured from the job attempt's startedAt timestamp.
-  final int attemptDurationSeconds;
+  final pulumi.Input<int> attemptDurationSeconds;
 
   /// Creates a new [GetJobDefinitionTimeout].
   /// [attemptDurationSeconds] The job timeout time (in seconds) that's measured from the job attempt's startedAt timestamp.
@@ -19,7 +20,7 @@ class GetJobDefinitionTimeout {
 
   factory GetJobDefinitionTimeout.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionTimeout(
-      attemptDurationSeconds: map['attemptDurationSeconds'] as int,
+      attemptDurationSeconds: (map['attemptDurationSeconds'] as int).input(),
     );
   }
 }

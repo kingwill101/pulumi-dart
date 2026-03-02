@@ -29,21 +29,14 @@ class ChangeArgs {
   /// [managedZone] Required.
   /// [project] Optional.
   ChangeArgs({
-    pulumi.Output<List<ResourceRecordSetDnsV1>>? additions,
-    pulumi.Output<String>? clientOperationId,
-    pulumi.Output<List<ResourceRecordSetDnsV1>>? deletions,
-    pulumi.Output<bool>? isServing,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> managedZone,
-    pulumi.Output<String>? project,
-  }) :
-      additions = pulumi.Input.asOptionalInput<List<ResourceRecordSetDnsV1>>(additions),
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      deletions = pulumi.Input.asOptionalInput<List<ResourceRecordSetDnsV1>>(deletions),
-      isServing = pulumi.Input.asOptionalInput<bool>(isServing),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      managedZone = pulumi.Input.asInput<String>(managedZone),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.additions,
+    this.clientOperationId,
+    this.deletions,
+    this.isServing,
+    this.kind,
+    required this.managedZone,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class ChangeArgs {
 
   factory ChangeArgs.fromMap(Map<String, dynamic> map) {
     return ChangeArgs(
-      additions: map['additions'] == null ? null : pulumi.Output.create<List<ResourceRecordSetDnsV1>>((map['additions'] as List).cast<ResourceRecordSetDnsV1>()),
-      clientOperationId: map['clientOperationId'] == null ? null : pulumi.Output.create<String>(map['clientOperationId'] as String),
-      deletions: map['deletions'] == null ? null : pulumi.Output.create<List<ResourceRecordSetDnsV1>>((map['deletions'] as List).cast<ResourceRecordSetDnsV1>()),
-      isServing: map['isServing'] == null ? null : pulumi.Output.create<bool>(map['isServing'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      managedZone: pulumi.Output.create<String>(map['managedZone'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      additions: map['additions'] == null ? null : ((map['additions'] as List).cast<ResourceRecordSetDnsV1>()).input(),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
+      deletions: map['deletions'] == null ? null : ((map['deletions'] as List).cast<ResourceRecordSetDnsV1>()).input(),
+      isServing: map['isServing'] == null ? null : (map['isServing'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      managedZone: (map['managedZone'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

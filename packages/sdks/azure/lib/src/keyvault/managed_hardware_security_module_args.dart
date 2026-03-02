@@ -50,33 +50,20 @@ class ManagedHardwareSecurityModuleArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [tenantId] The Azure Active Directory Tenant ID that should be used for authenticating requests to the key vault Managed Hardware Security Module. Changing this forces a new resource to be created.
   ManagedHardwareSecurityModuleArgs({
-    required pulumi.Output<List<String>> adminObjectIds,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<ManagedHardwareSecurityModuleNetworkAcls>? networkAcls,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    pulumi.Output<bool>? purgeProtectionEnabled,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<String>>? securityDomainKeyVaultCertificateIds,
-    pulumi.Output<int>? securityDomainQuorum,
-    required pulumi.Output<String> skuName,
-    pulumi.Output<int>? softDeleteRetentionDays,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> tenantId,
-  }) :
-      adminObjectIds = pulumi.Input.asInput<List<String>>(adminObjectIds),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkAcls = pulumi.Input.asOptionalInput<ManagedHardwareSecurityModuleNetworkAcls>(networkAcls),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      purgeProtectionEnabled = pulumi.Input.asOptionalInput<bool>(purgeProtectionEnabled),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityDomainKeyVaultCertificateIds = pulumi.Input.asOptionalInput<List<String>>(securityDomainKeyVaultCertificateIds),
-      securityDomainQuorum = pulumi.Input.asOptionalInput<int>(securityDomainQuorum),
-      skuName = pulumi.Input.asInput<String>(skuName),
-      softDeleteRetentionDays = pulumi.Input.asOptionalInput<int>(softDeleteRetentionDays),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    required this.adminObjectIds,
+    this.location,
+    this.name,
+    this.networkAcls,
+    this.publicNetworkAccessEnabled,
+    this.purgeProtectionEnabled,
+    required this.resourceGroupName,
+    this.securityDomainKeyVaultCertificateIds,
+    this.securityDomainQuorum,
+    required this.skuName,
+    this.softDeleteRetentionDays,
+    this.tags,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class ManagedHardwareSecurityModuleArgs {
 
   factory ManagedHardwareSecurityModuleArgs.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleArgs(
-      adminObjectIds: pulumi.Output.create<List<String>>((map['adminObjectIds'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkAcls: map['networkAcls'] == null ? null : pulumi.Output.create<ManagedHardwareSecurityModuleNetworkAcls>(ManagedHardwareSecurityModuleNetworkAcls.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      purgeProtectionEnabled: map['purgeProtectionEnabled'] == null ? null : pulumi.Output.create<bool>(map['purgeProtectionEnabled'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityDomainKeyVaultCertificateIds: map['securityDomainKeyVaultCertificateIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityDomainKeyVaultCertificateIds'] as List).cast<String>()),
-      securityDomainQuorum: map['securityDomainQuorum'] == null ? null : pulumi.Output.create<int>(map['securityDomainQuorum'] as int),
-      skuName: pulumi.Output.create<String>(map['skuName'] as String),
-      softDeleteRetentionDays: map['softDeleteRetentionDays'] == null ? null : pulumi.Output.create<int>(map['softDeleteRetentionDays'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      adminObjectIds: ((map['adminObjectIds'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkAcls: map['networkAcls'] == null ? null : (ManagedHardwareSecurityModuleNetworkAcls.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      purgeProtectionEnabled: map['purgeProtectionEnabled'] == null ? null : (map['purgeProtectionEnabled'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityDomainKeyVaultCertificateIds: map['securityDomainKeyVaultCertificateIds'] == null ? null : ((map['securityDomainKeyVaultCertificateIds'] as List).cast<String>()).input(),
+      securityDomainQuorum: map['securityDomainQuorum'] == null ? null : (map['securityDomainQuorum'] as int).input(),
+      skuName: (map['skuName'] as String).input(),
+      softDeleteRetentionDays: map['softDeleteRetentionDays'] == null ? null : (map['softDeleteRetentionDays'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class ScheduleArgs {
   /// [payload] The trigger message of the time-based schedule to be created. It must be in JSON object format.
   /// [scheduleName] The name of the time-based schedule to be created.
   ScheduleArgs({
-    required pulumi.Output<String> cronExpression,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enable,
-    required pulumi.Output<String> flowName,
-    pulumi.Output<String>? payload,
-    required pulumi.Output<String> scheduleName,
-  }) :
-      cronExpression = pulumi.Input.asInput<String>(cronExpression),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enable = pulumi.Input.asOptionalInput<bool>(enable),
-      flowName = pulumi.Input.asInput<String>(flowName),
-      payload = pulumi.Input.asOptionalInput<String>(payload),
-      scheduleName = pulumi.Input.asInput<String>(scheduleName);
+    required this.cronExpression,
+    this.description,
+    this.enable,
+    required this.flowName,
+    this.payload,
+    required this.scheduleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      cronExpression: pulumi.Output.create<String>(map['cronExpression'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enable: map['enable'] == null ? null : pulumi.Output.create<bool>(map['enable'] as bool),
-      flowName: pulumi.Output.create<String>(map['flowName'] as String),
-      payload: map['payload'] == null ? null : pulumi.Output.create<String>(map['payload'] as String),
-      scheduleName: pulumi.Output.create<String>(map['scheduleName'] as String),
+      cronExpression: (map['cronExpression'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      flowName: (map['flowName'] as String).input(),
+      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
+      scheduleName: (map['scheduleName'] as String).input(),
     );
   }
 }

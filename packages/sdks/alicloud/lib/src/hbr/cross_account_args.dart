@@ -19,13 +19,10 @@ class CrossAccountArgs {
   /// [crossAccountRoleName] The name of RAM role that the backup account authorizes the management account to manage its resources
   /// [crossAccountUserId] The uid of the backup account.
   CrossAccountArgs({
-    pulumi.Output<String>? alias,
-    required pulumi.Output<String> crossAccountRoleName,
-    required pulumi.Output<int> crossAccountUserId,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      crossAccountRoleName = pulumi.Input.asInput<String>(crossAccountRoleName),
-      crossAccountUserId = pulumi.Input.asInput<int>(crossAccountUserId);
+    this.alias,
+    required this.crossAccountRoleName,
+    required this.crossAccountUserId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class CrossAccountArgs {
 
   factory CrossAccountArgs.fromMap(Map<String, dynamic> map) {
     return CrossAccountArgs(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      crossAccountRoleName: pulumi.Output.create<String>(map['crossAccountRoleName'] as String),
-      crossAccountUserId: pulumi.Output.create<int>(map['crossAccountUserId'] as int),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      crossAccountRoleName: (map['crossAccountRoleName'] as String).input(),
+      crossAccountUserId: (map['crossAccountUserId'] as int).input(),
     );
   }
 }

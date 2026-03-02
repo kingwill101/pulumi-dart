@@ -19,15 +19,11 @@ class GrantRuleToCenState {
   /// [createTime] (Available since v1.263.0) The time when the instance was created.
   /// [instanceId] The ID of the VBR.
   GrantRuleToCenState({
-    pulumi.Output<String>? cenId,
-    pulumi.Output<String>? cenOwnerId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? instanceId,
-  }) :
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      cenOwnerId = pulumi.Input.asOptionalInput<String>(cenOwnerId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId);
+    this.cenId,
+    this.cenOwnerId,
+    this.createTime,
+    this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class GrantRuleToCenState {
 
   factory GrantRuleToCenState.fromMap(Map<String, dynamic> map) {
     return GrantRuleToCenState(
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      cenOwnerId: map['cenOwnerId'] == null ? null : pulumi.Output.create<String>(map['cenOwnerId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
     );
   }
 }

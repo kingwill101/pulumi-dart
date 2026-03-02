@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// UpgradeStatus provides status information for each upgrade.
 class ClusterUpgradeUpgradeStatusResponseGkehubV1beta {
   /// Status code of the upgrade.
-  final String code;
+  final pulumi.Input<String> code;
   /// Reason for this status.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// Last timestamp the status was updated.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [ClusterUpgradeUpgradeStatusResponseGkehubV1beta].
   /// [code] Status code of the upgrade.
@@ -30,9 +31,9 @@ class ClusterUpgradeUpgradeStatusResponseGkehubV1beta {
 
   factory ClusterUpgradeUpgradeStatusResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeUpgradeStatusResponseGkehubV1beta(
-      code: map['code'] as String,
-      reason: map['reason'] as String,
-      updateTime: map['updateTime'] as String,
+      code: (map['code'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

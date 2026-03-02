@@ -56,33 +56,20 @@ class CertificateTemplateState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Output only. The time at which this CertificateTemplate was updated.
   CertificateTemplateState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<CertificateTemplateIdentityConstraints>? identityConstraints,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? maximumLifetime,
-    pulumi.Output<String>? name,
-    pulumi.Output<CertificateTemplatePassthroughExtensions>? passthroughExtensions,
-    pulumi.Output<CertificateTemplatePredefinedValues>? predefinedValues,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      identityConstraints = pulumi.Input.asOptionalInput<CertificateTemplateIdentityConstraints>(identityConstraints),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maximumLifetime = pulumi.Input.asOptionalInput<String>(maximumLifetime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      passthroughExtensions = pulumi.Input.asOptionalInput<CertificateTemplatePassthroughExtensions>(passthroughExtensions),
-      predefinedValues = pulumi.Input.asOptionalInput<CertificateTemplatePredefinedValues>(predefinedValues),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.identityConstraints,
+    this.labels,
+    this.location,
+    this.maximumLifetime,
+    this.name,
+    this.passthroughExtensions,
+    this.predefinedValues,
+    this.project,
+    this.pulumiLabels,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,19 +91,19 @@ class CertificateTemplateState {
 
   factory CertificateTemplateState.fromMap(Map<String, dynamic> map) {
     return CertificateTemplateState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      identityConstraints: map['identityConstraints'] == null ? null : pulumi.Output.create<CertificateTemplateIdentityConstraints>(CertificateTemplateIdentityConstraints.fromMap((map['identityConstraints'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maximumLifetime: map['maximumLifetime'] == null ? null : pulumi.Output.create<String>(map['maximumLifetime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      passthroughExtensions: map['passthroughExtensions'] == null ? null : pulumi.Output.create<CertificateTemplatePassthroughExtensions>(CertificateTemplatePassthroughExtensions.fromMap((map['passthroughExtensions'] as Map).cast<String, dynamic>())),
-      predefinedValues: map['predefinedValues'] == null ? null : pulumi.Output.create<CertificateTemplatePredefinedValues>(CertificateTemplatePredefinedValues.fromMap((map['predefinedValues'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      identityConstraints: map['identityConstraints'] == null ? null : (CertificateTemplateIdentityConstraints.fromMap((map['identityConstraints'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      passthroughExtensions: map['passthroughExtensions'] == null ? null : (CertificateTemplatePassthroughExtensions.fromMap((map['passthroughExtensions'] as Map).cast<String, dynamic>())).input(),
+      predefinedValues: map['predefinedValues'] == null ? null : (CertificateTemplatePredefinedValues.fromMap((map['predefinedValues'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

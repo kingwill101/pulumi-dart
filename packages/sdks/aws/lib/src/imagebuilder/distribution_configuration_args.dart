@@ -28,17 +28,12 @@ class DistributionConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags for the distribution configuration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DistributionConfigurationArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<DistributionConfigurationDistribution>> distributions,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      distributions = pulumi.Input.asInput<List<DistributionConfigurationDistribution>>(distributions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.distributions,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class DistributionConfigurationArgs {
 
   factory DistributionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      distributions: pulumi.Output.create<List<DistributionConfigurationDistribution>>(pulumi.Input.decodeList<DistributionConfigurationDistribution>(map['distributions'], (value) => DistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      distributions: (pulumi.Input.decodeList<DistributionConfigurationDistribution>(map['distributions'], (value) => DistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

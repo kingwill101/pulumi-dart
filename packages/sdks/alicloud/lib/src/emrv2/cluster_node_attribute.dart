@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeAttribute {
   /// Whether to enable data disk encryption.
-  final bool? dataDiskEncrypted;
+  final pulumi.Input<bool>? dataDiskEncrypted;
   /// The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
-  final String? dataDiskKmsKeyId;
+  final pulumi.Input<String>? dataDiskKmsKeyId;
   /// The name of the key pair.
-  final String keyPairName;
+  final pulumi.Input<String> keyPairName;
   /// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
-  final String ramRole;
+  final pulumi.Input<String> ramRole;
   /// Security Group ID for Cluster.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// Whether to enable system disk encryption.
-  final bool? systemDiskEncrypted;
+  final pulumi.Input<bool>? systemDiskEncrypted;
   /// The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
-  final String? systemDiskKmsKeyId;
+  final pulumi.Input<String>? systemDiskKmsKeyId;
   /// Used to retrieve instances belong to specified VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// Zone ID, e.g. cn-hangzhou-i
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [ClusterNodeAttribute].
   /// [dataDiskEncrypted] Whether to enable data disk encryption.
@@ -59,15 +60,15 @@ class ClusterNodeAttribute {
 
   factory ClusterNodeAttribute.fromMap(Map<String, dynamic> map) {
     return ClusterNodeAttribute(
-      dataDiskEncrypted: map['dataDiskEncrypted'] == null ? null : map['dataDiskEncrypted'] as bool,
-      dataDiskKmsKeyId: map['dataDiskKmsKeyId'] == null ? null : map['dataDiskKmsKeyId'] as String,
-      keyPairName: map['keyPairName'] as String,
-      ramRole: map['ramRole'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      systemDiskEncrypted: map['systemDiskEncrypted'] == null ? null : map['systemDiskEncrypted'] as bool,
-      systemDiskKmsKeyId: map['systemDiskKmsKeyId'] == null ? null : map['systemDiskKmsKeyId'] as String,
-      vpcId: map['vpcId'] as String,
-      zoneId: map['zoneId'] as String,
+      dataDiskEncrypted: map['dataDiskEncrypted'] == null ? null : (map['dataDiskEncrypted'] as bool).input(),
+      dataDiskKmsKeyId: map['dataDiskKmsKeyId'] == null ? null : (map['dataDiskKmsKeyId'] as String).input(),
+      keyPairName: (map['keyPairName'] as String).input(),
+      ramRole: (map['ramRole'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      systemDiskEncrypted: map['systemDiskEncrypted'] == null ? null : (map['systemDiskEncrypted'] as bool).input(),
+      systemDiskKmsKeyId: map['systemDiskKmsKeyId'] == null ? null : (map['systemDiskKmsKeyId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

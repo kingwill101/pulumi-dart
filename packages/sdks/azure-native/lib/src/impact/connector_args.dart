@@ -17,11 +17,9 @@ class ConnectorArgs {
   /// [connectorName] The name of the connector
   /// [properties] The resource-specific properties for this resource.
   ConnectorArgs({
-    pulumi.Output<String>? connectorName,
-    pulumi.Output<ConnectorProperties>? properties,
-  }) :
-      connectorName = pulumi.Input.asOptionalInput<String>(connectorName),
-      properties = pulumi.Input.asOptionalInput<ConnectorProperties>(properties);
+    this.connectorName,
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      connectorName: map['connectorName'] == null ? null : pulumi.Output.create<String>(map['connectorName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ConnectorProperties>(ConnectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
+      properties: map['properties'] == null ? null : (ConnectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

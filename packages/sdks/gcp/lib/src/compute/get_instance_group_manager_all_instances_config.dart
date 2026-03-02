@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceGroupManagerAllInstancesConfig {
   /// The label key-value pairs that you want to patch onto the instance,
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
-  final Map<String, String> metadata;
+  final pulumi.Input<Map<String, String>> metadata;
 
   /// Creates a new [GetInstanceGroupManagerAllInstancesConfig].
   /// [labels] The label key-value pairs that you want to patch onto the instance,
@@ -24,8 +25,8 @@ class GetInstanceGroupManagerAllInstancesConfig {
 
   factory GetInstanceGroupManagerAllInstancesConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerAllInstancesConfig(
-      labels: (map['labels'] as Map).cast<String, String>(),
-      metadata: (map['metadata'] as Map).cast<String, String>(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      metadata: ((map['metadata'] as Map).cast<String, String>()).input(),
     );
   }
 }

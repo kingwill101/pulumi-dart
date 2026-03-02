@@ -49,31 +49,19 @@ class DatasetHttpArgs {
   /// [requestMethod] The HTTP method for the HTTP request. (e.g. GET, POST)
   /// [schemaColumns] A `schema_column` block as defined below.
   DatasetHttpArgs({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? folder,
-    required pulumi.Output<String> linkedServiceName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? relativeUrl,
-    pulumi.Output<String>? requestBody,
-    pulumi.Output<String>? requestMethod,
-    pulumi.Output<List<DatasetHttpSchemaColumn>>? schemaColumns,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      linkedServiceName = pulumi.Input.asInput<String>(linkedServiceName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      relativeUrl = pulumi.Input.asOptionalInput<String>(relativeUrl),
-      requestBody = pulumi.Input.asOptionalInput<String>(requestBody),
-      requestMethod = pulumi.Input.asOptionalInput<String>(requestMethod),
-      schemaColumns = pulumi.Input.asOptionalInput<List<DatasetHttpSchemaColumn>>(schemaColumns);
+    this.additionalProperties,
+    this.annotations,
+    required this.dataFactoryId,
+    this.description,
+    this.folder,
+    required this.linkedServiceName,
+    this.name,
+    this.parameters,
+    this.relativeUrl,
+    this.requestBody,
+    this.requestMethod,
+    this.schemaColumns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class DatasetHttpArgs {
 
   factory DatasetHttpArgs.fromMap(Map<String, dynamic> map) {
     return DatasetHttpArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      linkedServiceName: pulumi.Output.create<String>(map['linkedServiceName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      relativeUrl: map['relativeUrl'] == null ? null : pulumi.Output.create<String>(map['relativeUrl'] as String),
-      requestBody: map['requestBody'] == null ? null : pulumi.Output.create<String>(map['requestBody'] as String),
-      requestMethod: map['requestMethod'] == null ? null : pulumi.Output.create<String>(map['requestMethod'] as String),
-      schemaColumns: map['schemaColumns'] == null ? null : pulumi.Output.create<List<DatasetHttpSchemaColumn>>(pulumi.Input.decodeList<DatasetHttpSchemaColumn>(map['schemaColumns'], (value) => DatasetHttpSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      linkedServiceName: (map['linkedServiceName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl'] as String).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody'] as String).input(),
+      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod'] as String).input(),
+      schemaColumns: map['schemaColumns'] == null ? null : (pulumi.Input.decodeList<DatasetHttpSchemaColumn>(map['schemaColumns'], (value) => DatasetHttpSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

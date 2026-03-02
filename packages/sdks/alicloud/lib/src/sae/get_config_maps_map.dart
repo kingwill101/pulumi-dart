@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigMapsMap {
   /// The first ID of the resource.
-  final String configMapId;
+  final pulumi.Input<String> configMapId;
   /// The Creation Time of the ConfigMap.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// ConfigMap instance data. The value's format is a `json` string
-  final String data;
+  final pulumi.Input<String> data;
   /// The Description of Config Map.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Config Map.
-  final String id;
+  final pulumi.Input<String> id;
   /// ConfigMap instance name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The NamespaceId of Config Maps.
-  final String namespaceId;
+  final pulumi.Input<String> namespaceId;
 
   /// Creates a new [GetConfigMapsMap].
   /// [configMapId] The first ID of the resource.
@@ -49,13 +50,13 @@ class GetConfigMapsMap {
 
   factory GetConfigMapsMap.fromMap(Map<String, dynamic> map) {
     return GetConfigMapsMap(
-      configMapId: map['configMapId'] as String,
-      createTime: map['createTime'] as String,
-      data: map['data'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      namespaceId: map['namespaceId'] as String,
+      configMapId: (map['configMapId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      data: (map['data'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
     );
   }
 }

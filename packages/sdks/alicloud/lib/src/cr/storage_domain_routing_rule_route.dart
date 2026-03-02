@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageDomainRoutingRuleRoute {
   /// Endpoint Type.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// Instance domain name.
-  final String instanceDomain;
+  final pulumi.Input<String> instanceDomain;
   /// Storage domain name.
-  final String storageDomain;
+  final pulumi.Input<String> storageDomain;
 
   /// Creates a new [StorageDomainRoutingRuleRoute].
   /// [endpointType] Endpoint Type.
@@ -29,9 +30,9 @@ class StorageDomainRoutingRuleRoute {
 
   factory StorageDomainRoutingRuleRoute.fromMap(Map<String, dynamic> map) {
     return StorageDomainRoutingRuleRoute(
-      endpointType: map['endpointType'] as String,
-      instanceDomain: map['instanceDomain'] as String,
-      storageDomain: map['storageDomain'] as String,
+      endpointType: (map['endpointType'] as String).input(),
+      instanceDomain: (map['instanceDomain'] as String).input(),
+      storageDomain: (map['storageDomain'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureClusterAuthorizationAdminGroup {
   /// The name of the group, e.g. `my-group@domain.com`.
-  final String group;
+  final pulumi.Input<String> group;
 
   /// Creates a new [AzureClusterAuthorizationAdminGroup].
   /// [group] The name of the group, e.g. `my-group@domain.com`.
@@ -19,7 +20,7 @@ class AzureClusterAuthorizationAdminGroup {
 
   factory AzureClusterAuthorizationAdminGroup.fromMap(Map<String, dynamic> map) {
     return AzureClusterAuthorizationAdminGroup(
-      group: map['group'] as String,
+      group: (map['group'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class AgreementArgs {
   /// [serverId] The unique server identifier for the server instance. This is the specific server the agreement uses.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AgreementArgs({
-    required pulumi.Output<String> accessRole,
-    required pulumi.Output<String> baseDirectory,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> localProfileId,
-    required pulumi.Output<String> partnerProfileId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serverId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accessRole = pulumi.Input.asInput<String>(accessRole),
-      baseDirectory = pulumi.Input.asInput<String>(baseDirectory),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      localProfileId = pulumi.Input.asInput<String>(localProfileId),
-      partnerProfileId = pulumi.Input.asInput<String>(partnerProfileId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverId = pulumi.Input.asInput<String>(serverId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accessRole,
+    required this.baseDirectory,
+    this.description,
+    required this.localProfileId,
+    required this.partnerProfileId,
+    this.region,
+    required this.serverId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class AgreementArgs {
 
   factory AgreementArgs.fromMap(Map<String, dynamic> map) {
     return AgreementArgs(
-      accessRole: pulumi.Output.create<String>(map['accessRole'] as String),
-      baseDirectory: pulumi.Output.create<String>(map['baseDirectory'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      localProfileId: pulumi.Output.create<String>(map['localProfileId'] as String),
-      partnerProfileId: pulumi.Output.create<String>(map['partnerProfileId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accessRole: (map['accessRole'] as String).input(),
+      baseDirectory: (map['baseDirectory'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      localProfileId: (map['localProfileId'] as String).input(),
+      partnerProfileId: (map['partnerProfileId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

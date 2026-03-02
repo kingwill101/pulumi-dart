@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceCpuOptions {
   /// The maximum number of partitions in the storage set.
-  final int? coreCount;
+  final pulumi.Input<int>? coreCount;
   /// The number of threads per CPU core.
-  final int? threadsPerCore;
+  final pulumi.Input<int>? threadsPerCore;
   /// The CPU topology type of the instance. Valid values: `ContinuousCoreToHTMapping`, `DiscreteCoreToHTMapping`.
-  final String? topologyType;
+  final pulumi.Input<String>? topologyType;
 
   /// Creates a new [InstanceCpuOptions].
   /// [coreCount] The maximum number of partitions in the storage set.
@@ -29,9 +30,9 @@ class InstanceCpuOptions {
 
   factory InstanceCpuOptions.fromMap(Map<String, dynamic> map) {
     return InstanceCpuOptions(
-      coreCount: map['coreCount'] == null ? null : map['coreCount'] as int,
-      threadsPerCore: map['threadsPerCore'] == null ? null : map['threadsPerCore'] as int,
-      topologyType: map['topologyType'] == null ? null : map['topologyType'] as String,
+      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as int).input(),
+      topologyType: map['topologyType'] == null ? null : (map['topologyType'] as String).input(),
     );
   }
 }

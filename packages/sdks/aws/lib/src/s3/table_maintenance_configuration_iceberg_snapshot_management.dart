@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_maintenance_configuration_iceberg_snapshot_management_settings.dart';
 
 class TableMaintenanceConfigurationIcebergSnapshotManagement {
   /// Settings object for snapshot management.
   /// See `iceberg_snapshot_management.settings` below.
-  final TableMaintenanceConfigurationIcebergSnapshotManagementSettings settings;
+  final pulumi.Input<TableMaintenanceConfigurationIcebergSnapshotManagementSettings> settings;
   /// Whether the configuration is enabled.
   /// Valid values are `enabled` and `disabled`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [TableMaintenanceConfigurationIcebergSnapshotManagement].
   /// [settings] Settings object for snapshot management.
@@ -20,15 +21,15 @@ class TableMaintenanceConfigurationIcebergSnapshotManagement {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'settings': settings.toMap(),
+      'settings': pulumi.Input.mapInputValue<TableMaintenanceConfigurationIcebergSnapshotManagementSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
       'status': status,
     };
   }
 
   factory TableMaintenanceConfigurationIcebergSnapshotManagement.fromMap(Map<String, dynamic> map) {
     return TableMaintenanceConfigurationIcebergSnapshotManagement(
-      settings: TableMaintenanceConfigurationIcebergSnapshotManagementSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
-      status: map['status'] as String,
+      settings: (TableMaintenanceConfigurationIcebergSnapshotManagementSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

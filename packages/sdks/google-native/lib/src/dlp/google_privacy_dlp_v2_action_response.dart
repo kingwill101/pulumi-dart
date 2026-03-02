@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_deidentify_response.dart';
 import 'google_privacy_dlp_v2_publish_to_pub_sub_response.dart';
 import 'google_privacy_dlp_v2_save_findings_response.dart';
@@ -7,19 +8,19 @@ import 'google_privacy_dlp_v2_save_findings_response.dart';
 /// A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 class GooglePrivacyDlpV2ActionResponse {
   /// Create a de-identified copy of the input data.
-  final GooglePrivacyDlpV2DeidentifyResponse deidentify;
+  final pulumi.Input<GooglePrivacyDlpV2DeidentifyResponse> deidentify;
   /// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
-  final Map<String, dynamic> jobNotificationEmails;
+  final pulumi.Input<Map<String, dynamic>> jobNotificationEmails;
   /// Publish a notification to a Pub/Sub topic.
-  final GooglePrivacyDlpV2PublishToPubSubResponse pubSub;
+  final pulumi.Input<GooglePrivacyDlpV2PublishToPubSubResponse> pubSub;
   /// Publish findings to Cloud Datahub.
-  final Map<String, dynamic> publishFindingsToCloudDataCatalog;
+  final pulumi.Input<Map<String, dynamic>> publishFindingsToCloudDataCatalog;
   /// Publish summary to Cloud Security Command Center (Alpha).
-  final Map<String, dynamic> publishSummaryToCscc;
+  final pulumi.Input<Map<String, dynamic>> publishSummaryToCscc;
   /// Enable Stackdriver metric dlp.googleapis.com/finding_count.
-  final Map<String, dynamic> publishToStackdriver;
+  final pulumi.Input<Map<String, dynamic>> publishToStackdriver;
   /// Save resulting findings in a provided location.
-  final GooglePrivacyDlpV2SaveFindingsResponse saveFindings;
+  final pulumi.Input<GooglePrivacyDlpV2SaveFindingsResponse> saveFindings;
 
   /// Creates a new [GooglePrivacyDlpV2ActionResponse].
   /// [deidentify] Create a de-identified copy of the input data.
@@ -41,25 +42,25 @@ class GooglePrivacyDlpV2ActionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deidentify': deidentify.toMap(),
+      'deidentify': pulumi.Input.mapInputValue<GooglePrivacyDlpV2DeidentifyResponse, Map<String, dynamic>>(deidentify, (value) => value.toMap()),
       'jobNotificationEmails': jobNotificationEmails,
-      'pubSub': pubSub.toMap(),
+      'pubSub': pulumi.Input.mapInputValue<GooglePrivacyDlpV2PublishToPubSubResponse, Map<String, dynamic>>(pubSub, (value) => value.toMap()),
       'publishFindingsToCloudDataCatalog': publishFindingsToCloudDataCatalog,
       'publishSummaryToCscc': publishSummaryToCscc,
       'publishToStackdriver': publishToStackdriver,
-      'saveFindings': saveFindings.toMap(),
+      'saveFindings': pulumi.Input.mapInputValue<GooglePrivacyDlpV2SaveFindingsResponse, Map<String, dynamic>>(saveFindings, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2ActionResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ActionResponse(
-      deidentify: GooglePrivacyDlpV2DeidentifyResponse.fromMap((map['deidentify'] as Map).cast<String, dynamic>()),
-      jobNotificationEmails: (map['jobNotificationEmails'] as Map).cast<String, dynamic>(),
-      pubSub: GooglePrivacyDlpV2PublishToPubSubResponse.fromMap((map['pubSub'] as Map).cast<String, dynamic>()),
-      publishFindingsToCloudDataCatalog: (map['publishFindingsToCloudDataCatalog'] as Map).cast<String, dynamic>(),
-      publishSummaryToCscc: (map['publishSummaryToCscc'] as Map).cast<String, dynamic>(),
-      publishToStackdriver: (map['publishToStackdriver'] as Map).cast<String, dynamic>(),
-      saveFindings: GooglePrivacyDlpV2SaveFindingsResponse.fromMap((map['saveFindings'] as Map).cast<String, dynamic>()),
+      deidentify: (GooglePrivacyDlpV2DeidentifyResponse.fromMap((map['deidentify'] as Map).cast<String, dynamic>())).input(),
+      jobNotificationEmails: ((map['jobNotificationEmails'] as Map).cast<String, dynamic>()).input(),
+      pubSub: (GooglePrivacyDlpV2PublishToPubSubResponse.fromMap((map['pubSub'] as Map).cast<String, dynamic>())).input(),
+      publishFindingsToCloudDataCatalog: ((map['publishFindingsToCloudDataCatalog'] as Map).cast<String, dynamic>()).input(),
+      publishSummaryToCscc: ((map['publishSummaryToCscc'] as Map).cast<String, dynamic>()).input(),
+      publishToStackdriver: ((map['publishToStackdriver'] as Map).cast<String, dynamic>()).input(),
+      saveFindings: (GooglePrivacyDlpV2SaveFindingsResponse.fromMap((map['saveFindings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

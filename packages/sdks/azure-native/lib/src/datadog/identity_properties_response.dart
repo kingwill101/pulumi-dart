@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentityPropertiesResponse {
   /// The identity ID.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The tenant ID of resource.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [IdentityPropertiesResponse].
   /// [principalId] The identity ID.
@@ -29,9 +30,9 @@ class IdentityPropertiesResponse {
 
   factory IdentityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IdentityPropertiesResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

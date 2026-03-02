@@ -16,11 +16,9 @@ class GetAlertProcessingRuleByNameArgs {
   /// [alertProcessingRuleName] The name of the alert processing rule that needs to be fetched.
   /// [resourceGroupName] Resource group name where the resource is created.
   GetAlertProcessingRuleByNameArgs({
-    required pulumi.Output<String> alertProcessingRuleName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      alertProcessingRuleName = pulumi.Input.asInput<String>(alertProcessingRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.alertProcessingRuleName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAlertProcessingRuleByNameArgs {
 
   factory GetAlertProcessingRuleByNameArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertProcessingRuleByNameArgs(
-      alertProcessingRuleName: pulumi.Output.create<String>(map['alertProcessingRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      alertProcessingRuleName: (map['alertProcessingRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

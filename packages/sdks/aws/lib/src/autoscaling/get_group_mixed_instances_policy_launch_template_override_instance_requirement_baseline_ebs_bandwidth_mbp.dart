@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp {
   /// Maximum.
-  final int max;
+  final pulumi.Input<int> max;
   /// Minimum.
-  final int min;
+  final pulumi.Input<int> min;
 
   /// Creates a new [GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp].
   /// [max] Maximum.
@@ -24,8 +25,8 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBasel
 
   factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp.fromMap(Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp(
-      max: map['max'] as int,
-      min: map['min'] as int,
+      max: (map['max'] as int).input(),
+      min: (map['min'] as int).input(),
     );
   }
 }

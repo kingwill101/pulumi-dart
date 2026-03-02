@@ -7,15 +7,15 @@ import 'tag.dart';
 /// Definition of awsRedshiftClusterParameterGroup
 class AwsRedshiftClusterParameterGroupProperties {
   /// A description of the parameter group.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The Amazon Redshift engine version to which the cluster parameter group applies. The cluster engine version determines the set of parameters.
-  final String? parameterGroupFamily;
+  final pulumi.Input<String>? parameterGroupFamily;
   /// The name of the cluster parameter group.
-  final String? parameterGroupName;
+  final pulumi.Input<String>? parameterGroupName;
   /// An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.
-  final List<Parameter>? parameters;
+  final pulumi.Input<List<Parameter>>? parameters;
   /// An array of key-value pairs to apply to this resource.
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
 
   /// Creates a new [AwsRedshiftClusterParameterGroupProperties].
   /// [description] A description of the parameter group.
@@ -36,18 +36,18 @@ class AwsRedshiftClusterParameterGroupProperties {
       'description': ?description,
       'parameterGroupFamily': ?parameterGroupFamily,
       'parameterGroupName': ?parameterGroupName,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<Parameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<Parameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<Parameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AwsRedshiftClusterParameterGroupProperties.fromMap(Map<String, dynamic> map) {
     return AwsRedshiftClusterParameterGroupProperties(
-      description: map['description'] == null ? null : map['description'] as String,
-      parameterGroupFamily: map['parameterGroupFamily'] == null ? null : map['parameterGroupFamily'] as String,
-      parameterGroupName: map['parameterGroupName'] == null ? null : map['parameterGroupName'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<Parameter>(map['parameters'], (value) => Parameter.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parameterGroupFamily: map['parameterGroupFamily'] == null ? null : (map['parameterGroupFamily'] as String).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<Parameter>(map['parameters'], (value) => Parameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

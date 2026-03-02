@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_auth_config_ssh_public_key_ssh_client_cert.dart';
 import 'connection_auth_config_ssh_public_key_ssh_client_cert_pass.dart';
 
 class ConnectionAuthConfigSshPublicKey {
   /// Format of SSH Client cert.
-  final String? certType;
+  final pulumi.Input<String>? certType;
   /// SSH Client Cert. It should contain both public and private key.
   /// Structure is documented below.
-  final ConnectionAuthConfigSshPublicKeySshClientCert? sshClientCert;
+  final pulumi.Input<ConnectionAuthConfigSshPublicKeySshClientCert>? sshClientCert;
   /// Password (passphrase) for ssh client certificate if it has one.
   /// Structure is documented below.
-  final ConnectionAuthConfigSshPublicKeySshClientCertPass? sshClientCertPass;
+  final pulumi.Input<ConnectionAuthConfigSshPublicKeySshClientCertPass>? sshClientCertPass;
   /// The user account used to authenticate.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [ConnectionAuthConfigSshPublicKey].
   /// [certType] Format of SSH Client cert.
@@ -30,18 +31,18 @@ class ConnectionAuthConfigSshPublicKey {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certType': ?certType,
-      'sshClientCert': ?sshClientCert == null ? null : sshClientCert!.toMap(),
-      'sshClientCertPass': ?sshClientCertPass == null ? null : sshClientCertPass!.toMap(),
+      'sshClientCert': ?pulumi.Input.mapOptionalInputValue<ConnectionAuthConfigSshPublicKeySshClientCert, Map<String, dynamic>>(sshClientCert, (value) => value.toMap()),
+      'sshClientCertPass': ?pulumi.Input.mapOptionalInputValue<ConnectionAuthConfigSshPublicKeySshClientCertPass, Map<String, dynamic>>(sshClientCertPass, (value) => value.toMap()),
       'username': username,
     };
   }
 
   factory ConnectionAuthConfigSshPublicKey.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigSshPublicKey(
-      certType: map['certType'] == null ? null : map['certType'] as String,
-      sshClientCert: map['sshClientCert'] == null ? null : ConnectionAuthConfigSshPublicKeySshClientCert.fromMap((map['sshClientCert'] as Map).cast<String, dynamic>()),
-      sshClientCertPass: map['sshClientCertPass'] == null ? null : ConnectionAuthConfigSshPublicKeySshClientCertPass.fromMap((map['sshClientCertPass'] as Map).cast<String, dynamic>()),
-      username: map['username'] as String,
+      certType: map['certType'] == null ? null : (map['certType'] as String).input(),
+      sshClientCert: map['sshClientCert'] == null ? null : (ConnectionAuthConfigSshPublicKeySshClientCert.fromMap((map['sshClientCert'] as Map).cast<String, dynamic>())).input(),
+      sshClientCertPass: map['sshClientCertPass'] == null ? null : (ConnectionAuthConfigSshPublicKeySshClientCertPass.fromMap((map['sshClientCertPass'] as Map).cast<String, dynamic>())).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

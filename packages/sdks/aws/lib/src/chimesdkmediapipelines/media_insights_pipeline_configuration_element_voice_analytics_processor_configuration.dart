@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration {
   /// Enable speaker search.
-  final String speakerSearchStatus;
+  final pulumi.Input<String> speakerSearchStatus;
   /// Enable voice tone analysis.
-  final String voiceToneAnalysisStatus;
+  final pulumi.Input<String> voiceToneAnalysisStatus;
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration].
   /// [speakerSearchStatus] Enable speaker search.
@@ -24,8 +25,8 @@ class MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfigurat
 
   factory MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration(
-      speakerSearchStatus: map['speakerSearchStatus'] as String,
-      voiceToneAnalysisStatus: map['voiceToneAnalysisStatus'] as String,
+      speakerSearchStatus: (map['speakerSearchStatus'] as String).input(),
+      voiceToneAnalysisStatus: (map['voiceToneAnalysisStatus'] as String).input(),
     );
   }
 }

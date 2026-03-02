@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Deployment container liveness/readiness probe configuration.
 class ProbeSettings {
   /// The number of failures to allow before returning an unhealthy status.
-  final int? failureThreshold;
+  final pulumi.Input<int>? failureThreshold;
   /// The delay before the first probe in ISO 8601 format.
-  final String? initialDelay;
+  final pulumi.Input<String>? initialDelay;
   /// The length of time between probes in ISO 8601 format.
-  final String? period;
+  final pulumi.Input<String>? period;
   /// The number of successful probes before returning a healthy status.
-  final int? successThreshold;
+  final pulumi.Input<int>? successThreshold;
   /// The probe timeout in ISO 8601 format.
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
 
   /// Creates a new [ProbeSettings].
   /// [failureThreshold] The number of failures to allow before returning an unhealthy status.
@@ -40,11 +41,11 @@ class ProbeSettings {
 
   factory ProbeSettings.fromMap(Map<String, dynamic> map) {
     return ProbeSettings(
-      failureThreshold: map['failureThreshold'] == null ? null : map['failureThreshold'] as int,
-      initialDelay: map['initialDelay'] == null ? null : map['initialDelay'] as String,
-      period: map['period'] == null ? null : map['period'] as String,
-      successThreshold: map['successThreshold'] == null ? null : map['successThreshold'] as int,
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
+      initialDelay: map['initialDelay'] == null ? null : (map['initialDelay'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as String).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

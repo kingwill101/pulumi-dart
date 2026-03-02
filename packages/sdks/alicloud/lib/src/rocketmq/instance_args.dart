@@ -24,15 +24,11 @@ class InstanceArgs {
   /// [remark] This attribute is a concise description of instance. The length cannot exceed 128.
   /// [tags] A mapping of tags to assign to the resource.
   InstanceArgs({
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? remark,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.instanceName,
+    this.name,
+    this.remark,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

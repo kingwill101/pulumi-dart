@@ -19,13 +19,10 @@ class GetRegistryDataContainerArgs {
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetRegistryDataContainerArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.registryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRegistryDataContainerArgs {
 
   factory GetRegistryDataContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryDataContainerArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolStartTaskResourceFile {
   /// The storage container name in the auto storage account.
-  final String autoStorageContainerName;
+  final pulumi.Input<String> autoStorageContainerName;
   /// The blob prefix used when downloading blobs from an Azure Storage container.
-  final String blobPrefix;
+  final pulumi.Input<String> blobPrefix;
   /// The file permission mode attribute represented as a string in octal format (e.g. `"0644"`).
-  final String fileMode;
+  final pulumi.Input<String> fileMode;
   /// The location on the compute node to which to download the file, relative to the task's working directory. If the `http_url` property is specified, the `file_path` is required and describes the path which the file will be downloaded to, including the filename. Otherwise, if the `auto_storage_container_name` or `storage_container_url` property is specified.
-  final String filePath;
+  final pulumi.Input<String> filePath;
   /// The URL of the file to download. If the URL is Azure Blob Storage, it must be readable using anonymous access.
-  final String httpUrl;
+  final pulumi.Input<String> httpUrl;
   /// The URL of the blob container within Azure Blob Storage.
-  final String storageContainerUrl;
+  final pulumi.Input<String> storageContainerUrl;
   /// The reference to the user assigned identity to use to access an Azure Container Registry instead of username and password.
-  final String userAssignedIdentityId;
+  final pulumi.Input<String> userAssignedIdentityId;
 
   /// Creates a new [GetPoolStartTaskResourceFile].
   /// [autoStorageContainerName] The storage container name in the auto storage account.
@@ -49,13 +50,13 @@ class GetPoolStartTaskResourceFile {
 
   factory GetPoolStartTaskResourceFile.fromMap(Map<String, dynamic> map) {
     return GetPoolStartTaskResourceFile(
-      autoStorageContainerName: map['autoStorageContainerName'] as String,
-      blobPrefix: map['blobPrefix'] as String,
-      fileMode: map['fileMode'] as String,
-      filePath: map['filePath'] as String,
-      httpUrl: map['httpUrl'] as String,
-      storageContainerUrl: map['storageContainerUrl'] as String,
-      userAssignedIdentityId: map['userAssignedIdentityId'] as String,
+      autoStorageContainerName: (map['autoStorageContainerName'] as String).input(),
+      blobPrefix: (map['blobPrefix'] as String).input(),
+      fileMode: (map['fileMode'] as String).input(),
+      filePath: (map['filePath'] as String).input(),
+      httpUrl: (map['httpUrl'] as String).input(),
+      storageContainerUrl: (map['storageContainerUrl'] as String).input(),
+      userAssignedIdentityId: (map['userAssignedIdentityId'] as String).input(),
     );
   }
 }

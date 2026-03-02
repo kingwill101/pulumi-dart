@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_cidr_options_port_range.dart';
 
 class EndpointCidrOptions {
-  final String cidr;
-  final List<EndpointCidrOptionsPortRange> portRanges;
-  final String? protocol;
-  final List<String>? subnetIds;
+  final pulumi.Input<String> cidr;
+  final pulumi.Input<List<EndpointCidrOptionsPortRange>> portRanges;
+  final pulumi.Input<String>? protocol;
+  final pulumi.Input<List<String>>? subnetIds;
 
   /// Creates a new [EndpointCidrOptions].
   /// [cidr] Required.
@@ -24,7 +24,7 @@ class EndpointCidrOptions {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cidr': cidr,
-      'portRanges': pulumi.Input.encodeList<EndpointCidrOptionsPortRange, Map<String, dynamic>>(portRanges, (value) => value.toMap()),
+      'portRanges': pulumi.Input.mapInputValue<List<EndpointCidrOptionsPortRange>, List<Map<String, dynamic>>>(portRanges, (value) => pulumi.Input.encodeList<EndpointCidrOptionsPortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'protocol': ?protocol,
       'subnetIds': ?subnetIds,
     };
@@ -32,10 +32,10 @@ class EndpointCidrOptions {
 
   factory EndpointCidrOptions.fromMap(Map<String, dynamic> map) {
     return EndpointCidrOptions(
-      cidr: map['cidr'] as String,
-      portRanges: pulumi.Input.decodeList<EndpointCidrOptionsPortRange>(map['portRanges'], (value) => EndpointCidrOptionsPortRange.fromMap((value as Map).cast<String, dynamic>())),
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      subnetIds: map['subnetIds'] == null ? null : (map['subnetIds'] as List).cast<String>(),
+      cidr: (map['cidr'] as String).input(),
+      portRanges: (pulumi.Input.decodeList<EndpointCidrOptionsPortRange>(map['portRanges'], (value) => EndpointCidrOptionsPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
     );
   }
 }

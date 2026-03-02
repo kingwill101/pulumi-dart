@@ -6,7 +6,7 @@ import 'organization_custom_module_custom_config_custom_output_property.dart';
 class OrganizationCustomModuleCustomConfigCustomOutput {
   /// A list of custom output properties to add to the finding.
   /// Structure is documented below.
-  final List<OrganizationCustomModuleCustomConfigCustomOutputProperty>? properties;
+  final pulumi.Input<List<OrganizationCustomModuleCustomConfigCustomOutputProperty>>? properties;
 
   /// Creates a new [OrganizationCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
@@ -16,13 +16,13 @@ class OrganizationCustomModuleCustomConfigCustomOutput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?properties == null ? null : pulumi.Input.encodeList<OrganizationCustomModuleCustomConfigCustomOutputProperty, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<List<OrganizationCustomModuleCustomConfigCustomOutputProperty>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<OrganizationCustomModuleCustomConfigCustomOutputProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OrganizationCustomModuleCustomConfigCustomOutput.fromMap(Map<String, dynamic> map) {
     return OrganizationCustomModuleCustomConfigCustomOutput(
-      properties: map['properties'] == null ? null : pulumi.Input.decodeList<OrganizationCustomModuleCustomConfigCustomOutputProperty>(map['properties'], (value) => OrganizationCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<OrganizationCustomModuleCustomConfigCustomOutputProperty>(map['properties'], (value) => OrganizationCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

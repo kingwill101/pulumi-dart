@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Marketplace Subscription
 class MarketplaceSaaSInfoResponseMarketplaceSubscription {
   /// Marketplace Subscription Id. This is a GUID-formatted string.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [MarketplaceSaaSInfoResponseMarketplaceSubscription].
   /// [id] Marketplace Subscription Id. This is a GUID-formatted string.
@@ -20,7 +21,7 @@ class MarketplaceSaaSInfoResponseMarketplaceSubscription {
 
   factory MarketplaceSaaSInfoResponseMarketplaceSubscription.fromMap(Map<String, dynamic> map) {
     return MarketplaceSaaSInfoResponseMarketplaceSubscription(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

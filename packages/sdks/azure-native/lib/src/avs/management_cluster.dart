@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of a management cluster
 class ManagementCluster {
   /// The cluster size
-  final int? clusterSize;
+  final pulumi.Input<int>? clusterSize;
   /// The hosts
-  final List<String>? hosts;
+  final pulumi.Input<List<String>>? hosts;
   /// Name of the vsan datastore associated with the cluster
-  final String? vsanDatastoreName;
+  final pulumi.Input<String>? vsanDatastoreName;
 
   /// Creates a new [ManagementCluster].
   /// [clusterSize] The cluster size
@@ -30,9 +31,9 @@ class ManagementCluster {
 
   factory ManagementCluster.fromMap(Map<String, dynamic> map) {
     return ManagementCluster(
-      clusterSize: map['clusterSize'] == null ? null : map['clusterSize'] as int,
-      hosts: map['hosts'] == null ? null : (map['hosts'] as List).cast<String>(),
-      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : map['vsanDatastoreName'] as String,
+      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize'] as int).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
+      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : (map['vsanDatastoreName'] as String).input(),
     );
   }
 }

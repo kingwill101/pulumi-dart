@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicSpiceClipBoard {
   /// Determines whether the copy-paste functionality is enabled for the Spice clipboard.
-  final String copyPaste;
+  final pulumi.Input<String> copyPaste;
 
   /// Creates a new [DomainDevicesGraphicSpiceClipBoard].
   /// [copyPaste] Determines whether the copy-paste functionality is enabled for the Spice clipboard.
@@ -19,7 +20,7 @@ class DomainDevicesGraphicSpiceClipBoard {
 
   factory DomainDevicesGraphicSpiceClipBoard.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSpiceClipBoard(
-      copyPaste: map['copyPaste'] as String,
+      copyPaste: (map['copyPaste'] as String).input(),
     );
   }
 }

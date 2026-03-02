@@ -8,21 +8,21 @@ import 'container_response.dart';
 /// Container network interface child resource.
 class ContainerNetworkInterfaceResponse {
   /// Reference to the container to which this container network interface is attached.
-  final ContainerResponse? container;
+  final pulumi.Input<ContainerResponse>? container;
   /// Container network interface configuration from which this container network interface is created.
-  final ContainerNetworkInterfaceConfigurationResponse containerNetworkInterfaceConfiguration;
+  final pulumi.Input<ContainerNetworkInterfaceConfigurationResponse> containerNetworkInterfaceConfiguration;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Reference to the ip configuration on this container nic.
-  final List<ContainerNetworkInterfaceIpConfigurationResponse> ipConfigurations;
+  final pulumi.Input<List<ContainerNetworkInterfaceIpConfigurationResponse>> ipConfigurations;
   /// The name of the resource. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the container network interface resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Sub Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ContainerNetworkInterfaceResponse].
   /// [container] Reference to the container to which this container network interface is attached.
@@ -46,11 +46,11 @@ class ContainerNetworkInterfaceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'container': ?container == null ? null : container!.toMap(),
-      'containerNetworkInterfaceConfiguration': containerNetworkInterfaceConfiguration.toMap(),
+      'container': ?pulumi.Input.mapOptionalInputValue<ContainerResponse, Map<String, dynamic>>(container, (value) => value.toMap()),
+      'containerNetworkInterfaceConfiguration': pulumi.Input.mapInputValue<ContainerNetworkInterfaceConfigurationResponse, Map<String, dynamic>>(containerNetworkInterfaceConfiguration, (value) => value.toMap()),
       'etag': etag,
       'id': ?id,
-      'ipConfigurations': pulumi.Input.encodeList<ContainerNetworkInterfaceIpConfigurationResponse, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations': pulumi.Input.mapInputValue<List<ContainerNetworkInterfaceIpConfigurationResponse>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<ContainerNetworkInterfaceIpConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'provisioningState': provisioningState,
       'type': type,
@@ -59,14 +59,14 @@ class ContainerNetworkInterfaceResponse {
 
   factory ContainerNetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return ContainerNetworkInterfaceResponse(
-      container: map['container'] == null ? null : ContainerResponse.fromMap((map['container'] as Map).cast<String, dynamic>()),
-      containerNetworkInterfaceConfiguration: ContainerNetworkInterfaceConfigurationResponse.fromMap((map['containerNetworkInterfaceConfiguration'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      ipConfigurations: pulumi.Input.decodeList<ContainerNetworkInterfaceIpConfigurationResponse>(map['ipConfigurations'], (value) => ContainerNetworkInterfaceIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      container: map['container'] == null ? null : (ContainerResponse.fromMap((map['container'] as Map).cast<String, dynamic>())).input(),
+      containerNetworkInterfaceConfiguration: (ContainerNetworkInterfaceConfigurationResponse.fromMap((map['containerNetworkInterfaceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipConfigurations: (pulumi.Input.decodeList<ContainerNetworkInterfaceIpConfigurationResponse>(map['ipConfigurations'], (value) => ContainerNetworkInterfaceIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

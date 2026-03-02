@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory {
   /// The path on disk to the Virtual Directory
-  final String physicalPath;
+  final pulumi.Input<String> physicalPath;
   /// The Virtual Path of the Virtual Directory.
-  final String virtualPath;
+  final pulumi.Input<String> virtualPath;
 
   /// Creates a new [GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory].
   /// [physicalPath] The path on disk to the Virtual Directory
@@ -24,8 +25,8 @@ class GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory {
 
   factory GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory(
-      physicalPath: map['physicalPath'] as String,
-      virtualPath: map['virtualPath'] as String,
+      physicalPath: (map['physicalPath'] as String).input(),
+      virtualPath: (map['virtualPath'] as String).input(),
     );
   }
 }

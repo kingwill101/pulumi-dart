@@ -24,13 +24,10 @@ class GetSecurityGroupRuleArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroupRuleId] ID of the security group rule to select.
   GetSecurityGroupRuleArgs({
-    pulumi.Output<List<GetSecurityGroupRuleFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityGroupRuleId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetSecurityGroupRuleFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupRuleId = pulumi.Input.asOptionalInput<String>(securityGroupRuleId);
+    this.filters,
+    this.region,
+    this.securityGroupRuleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,9 +39,9 @@ class GetSecurityGroupRuleArgs {
 
   factory GetSecurityGroupRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupRuleArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetSecurityGroupRuleFilter>>(pulumi.Input.decodeList<GetSecurityGroupRuleFilter>(map['filters'], (value) => GetSecurityGroupRuleFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupRuleId: map['securityGroupRuleId'] == null ? null : pulumi.Output.create<String>(map['securityGroupRuleId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSecurityGroupRuleFilter>(map['filters'], (value) => GetSecurityGroupRuleFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupRuleId: map['securityGroupRuleId'] == null ? null : (map['securityGroupRuleId'] as String).input(),
     );
   }
 }

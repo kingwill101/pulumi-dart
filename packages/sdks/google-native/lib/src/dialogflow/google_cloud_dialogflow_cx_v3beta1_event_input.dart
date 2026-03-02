@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the event to trigger.
 class GoogleCloudDialogflowCxV3beta1EventInput {
   /// Name of the event.
-  final String? event;
+  final pulumi.Input<String>? event;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1EventInput].
   /// [event] Name of the event.
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowCxV3beta1EventInput {
 
   factory GoogleCloudDialogflowCxV3beta1EventInput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1EventInput(
-      event: map['event'] == null ? null : map['event'] as String,
+      event: map['event'] == null ? null : (map['event'] as String).input(),
     );
   }
 }

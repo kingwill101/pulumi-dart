@@ -45,29 +45,18 @@ class VpcEndpointServiceArgs {
   /// [tags] The list of tags.
   /// [zoneAffinityEnabled] Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
   VpcEndpointServiceArgs({
-    pulumi.Output<String>? addressIpVersion,
-    pulumi.Output<bool>? autoAcceptConnection,
-    pulumi.Output<int>? connectBandwidth,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? payer,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? serviceDescription,
-    pulumi.Output<String>? serviceResourceType,
-    pulumi.Output<bool>? serviceSupportIpv6,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? zoneAffinityEnabled,
-  }) :
-      addressIpVersion = pulumi.Input.asOptionalInput<String>(addressIpVersion),
-      autoAcceptConnection = pulumi.Input.asOptionalInput<bool>(autoAcceptConnection),
-      connectBandwidth = pulumi.Input.asOptionalInput<int>(connectBandwidth),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      payer = pulumi.Input.asOptionalInput<String>(payer),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      serviceDescription = pulumi.Input.asOptionalInput<String>(serviceDescription),
-      serviceResourceType = pulumi.Input.asOptionalInput<String>(serviceResourceType),
-      serviceSupportIpv6 = pulumi.Input.asOptionalInput<bool>(serviceSupportIpv6),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneAffinityEnabled = pulumi.Input.asOptionalInput<bool>(zoneAffinityEnabled);
+    this.addressIpVersion,
+    this.autoAcceptConnection,
+    this.connectBandwidth,
+    this.dryRun,
+    this.payer,
+    this.resourceGroupId,
+    this.serviceDescription,
+    this.serviceResourceType,
+    this.serviceSupportIpv6,
+    this.tags,
+    this.zoneAffinityEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class VpcEndpointServiceArgs {
 
   factory VpcEndpointServiceArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceArgs(
-      addressIpVersion: map['addressIpVersion'] == null ? null : pulumi.Output.create<String>(map['addressIpVersion'] as String),
-      autoAcceptConnection: map['autoAcceptConnection'] == null ? null : pulumi.Output.create<bool>(map['autoAcceptConnection'] as bool),
-      connectBandwidth: map['connectBandwidth'] == null ? null : pulumi.Output.create<int>(map['connectBandwidth'] as int),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      payer: map['payer'] == null ? null : pulumi.Output.create<String>(map['payer'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      serviceDescription: map['serviceDescription'] == null ? null : pulumi.Output.create<String>(map['serviceDescription'] as String),
-      serviceResourceType: map['serviceResourceType'] == null ? null : pulumi.Output.create<String>(map['serviceResourceType'] as String),
-      serviceSupportIpv6: map['serviceSupportIpv6'] == null ? null : pulumi.Output.create<bool>(map['serviceSupportIpv6'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneAffinityEnabled: map['zoneAffinityEnabled'] == null ? null : pulumi.Output.create<bool>(map['zoneAffinityEnabled'] as bool),
+      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion'] as String).input(),
+      autoAcceptConnection: map['autoAcceptConnection'] == null ? null : (map['autoAcceptConnection'] as bool).input(),
+      connectBandwidth: map['connectBandwidth'] == null ? null : (map['connectBandwidth'] as int).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      payer: map['payer'] == null ? null : (map['payer'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      serviceDescription: map['serviceDescription'] == null ? null : (map['serviceDescription'] as String).input(),
+      serviceResourceType: map['serviceResourceType'] == null ? null : (map['serviceResourceType'] as String).input(),
+      serviceSupportIpv6: map['serviceSupportIpv6'] == null ? null : (map['serviceSupportIpv6'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneAffinityEnabled: map['zoneAffinityEnabled'] == null ? null : (map['zoneAffinityEnabled'] as bool).input(),
     );
   }
 }

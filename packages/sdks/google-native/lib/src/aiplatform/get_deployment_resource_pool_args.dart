@@ -16,13 +16,10 @@ class GetDeploymentResourcePoolArgs {
   /// [location] Required.
   /// [project] Optional.
   GetDeploymentResourcePoolArgs({
-    required pulumi.Output<String> deploymentResourcePoolId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      deploymentResourcePoolId = pulumi.Input.asInput<String>(deploymentResourcePoolId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.deploymentResourcePoolId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetDeploymentResourcePoolArgs {
 
   factory GetDeploymentResourcePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentResourcePoolArgs(
-      deploymentResourcePoolId: pulumi.Output.create<String>(map['deploymentResourcePoolId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      deploymentResourcePoolId: (map['deploymentResourcePoolId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

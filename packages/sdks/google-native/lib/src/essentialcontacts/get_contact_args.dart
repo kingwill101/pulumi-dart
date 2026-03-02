@@ -14,11 +14,9 @@ class GetContactArgs {
   /// [contactId] Required.
   /// [project] Optional.
   GetContactArgs({
-    required pulumi.Output<String> contactId,
-    pulumi.Output<String>? project,
-  }) :
-      contactId = pulumi.Input.asInput<String>(contactId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.contactId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetContactArgs {
 
   factory GetContactArgs.fromMap(Map<String, dynamic> map) {
     return GetContactArgs(
-      contactId: pulumi.Output.create<String>(map['contactId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      contactId: (map['contactId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

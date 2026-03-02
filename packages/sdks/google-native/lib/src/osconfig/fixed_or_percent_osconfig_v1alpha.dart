@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
 class FixedOrPercentOsconfigV1alpha {
   /// Specifies a fixed value.
-  final int? fixed;
+  final pulumi.Input<int>? fixed;
   /// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
-  final int? percent;
+  final pulumi.Input<int>? percent;
 
   /// Creates a new [FixedOrPercentOsconfigV1alpha].
   /// [fixed] Specifies a fixed value.
@@ -25,8 +26,8 @@ class FixedOrPercentOsconfigV1alpha {
 
   factory FixedOrPercentOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return FixedOrPercentOsconfigV1alpha(
-      fixed: map['fixed'] == null ? null : map['fixed'] as int,
-      percent: map['percent'] == null ? null : map['percent'] as int,
+      fixed: map['fixed'] == null ? null : (map['fixed'] as int).input(),
+      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
     );
   }
 }

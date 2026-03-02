@@ -31,21 +31,14 @@ class EnvironmentApiRevisionDeploymentArgs {
   /// [sequencedRollout] If true, enables sequenced rollout for safe traffic switching.
   /// [serviceAccount] Optional service account the deployed proxy runs as.
   EnvironmentApiRevisionDeploymentArgs({
-    required pulumi.Output<String> api,
-    required pulumi.Output<String> environment,
-    required pulumi.Output<String> orgId,
-    pulumi.Output<bool>? override,
-    required pulumi.Output<int> revision,
-    pulumi.Output<bool>? sequencedRollout,
-    pulumi.Output<String>? serviceAccount,
-  }) :
-      api = pulumi.Input.asInput<String>(api),
-      environment = pulumi.Input.asInput<String>(environment),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      override = pulumi.Input.asOptionalInput<bool>(override),
-      revision = pulumi.Input.asInput<int>(revision),
-      sequencedRollout = pulumi.Input.asOptionalInput<bool>(sequencedRollout),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount);
+    required this.api,
+    required this.environment,
+    required this.orgId,
+    this.override,
+    required this.revision,
+    this.sequencedRollout,
+    this.serviceAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class EnvironmentApiRevisionDeploymentArgs {
 
   factory EnvironmentApiRevisionDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentApiRevisionDeploymentArgs(
-      api: pulumi.Output.create<String>(map['api'] as String),
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      override: map['override'] == null ? null : pulumi.Output.create<bool>(map['override'] as bool),
-      revision: pulumi.Output.create<int>(map['revision'] as int),
-      sequencedRollout: map['sequencedRollout'] == null ? null : pulumi.Output.create<bool>(map['sequencedRollout'] as bool),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
+      api: (map['api'] as String).input(),
+      environment: (map['environment'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      override: map['override'] == null ? null : (map['override'] as bool).input(),
+      revision: (map['revision'] as int).input(),
+      sequencedRollout: map['sequencedRollout'] == null ? null : (map['sequencedRollout'] as bool).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
     );
   }
 }

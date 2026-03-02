@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics {
   /// Whether the activity metrics are enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics].
   /// [enabled] Whether the activity metrics are enabled.
@@ -19,7 +20,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetric
 
   factory StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

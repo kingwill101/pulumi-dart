@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'generic_container_extended_info.dart';
 
 /// Base class for generic container of backup items
 class GenericContainer {
   /// Type of backup management for the container.
-  final String? backupManagementType;
+  final pulumi.Input<String>? backupManagementType;
   /// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
   /// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
   /// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
   /// Backup is VMAppContainer
   /// Expected value is 'GenericContainer'.
-  final String containerType;
+  final pulumi.Input<String> containerType;
   /// Extended information (not returned in List container API calls)
-  final GenericContainerExtendedInfo? extendedInformation;
+  final pulumi.Input<GenericContainerExtendedInfo>? extendedInformation;
   /// Name of the container's fabric
-  final String? fabricName;
+  final pulumi.Input<String>? fabricName;
   /// Friendly name of the container.
-  final String? friendlyName;
+  final pulumi.Input<String>? friendlyName;
   /// Status of health of the container.
-  final String? healthStatus;
+  final pulumi.Input<String>? healthStatus;
   /// Type of the protectable object associated with this container
-  final String? protectableObjectType;
+  final pulumi.Input<String>? protectableObjectType;
   /// Status of registration of the container with the Recovery Services Vault.
-  final String? registrationStatus;
+  final pulumi.Input<String>? registrationStatus;
 
   /// Creates a new [GenericContainer].
   /// [backupManagementType] Type of backup management for the container.
@@ -49,7 +50,7 @@ class GenericContainer {
     return <String, dynamic>{
       'backupManagementType': ?backupManagementType,
       'containerType': containerType,
-      'extendedInformation': ?extendedInformation == null ? null : extendedInformation!.toMap(),
+      'extendedInformation': ?pulumi.Input.mapOptionalInputValue<GenericContainerExtendedInfo, Map<String, dynamic>>(extendedInformation, (value) => value.toMap()),
       'fabricName': ?fabricName,
       'friendlyName': ?friendlyName,
       'healthStatus': ?healthStatus,
@@ -60,14 +61,14 @@ class GenericContainer {
 
   factory GenericContainer.fromMap(Map<String, dynamic> map) {
     return GenericContainer(
-      backupManagementType: map['backupManagementType'] == null ? null : map['backupManagementType'] as String,
-      containerType: map['containerType'] as String,
-      extendedInformation: map['extendedInformation'] == null ? null : GenericContainerExtendedInfo.fromMap((map['extendedInformation'] as Map).cast<String, dynamic>()),
-      fabricName: map['fabricName'] == null ? null : map['fabricName'] as String,
-      friendlyName: map['friendlyName'] == null ? null : map['friendlyName'] as String,
-      healthStatus: map['healthStatus'] == null ? null : map['healthStatus'] as String,
-      protectableObjectType: map['protectableObjectType'] == null ? null : map['protectableObjectType'] as String,
-      registrationStatus: map['registrationStatus'] == null ? null : map['registrationStatus'] as String,
+      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType'] as String).input(),
+      containerType: (map['containerType'] as String).input(),
+      extendedInformation: map['extendedInformation'] == null ? null : (GenericContainerExtendedInfo.fromMap((map['extendedInformation'] as Map).cast<String, dynamic>())).input(),
+      fabricName: map['fabricName'] == null ? null : (map['fabricName'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus'] as String).input(),
+      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType'] as String).input(),
+      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus'] as String).input(),
     );
   }
 }

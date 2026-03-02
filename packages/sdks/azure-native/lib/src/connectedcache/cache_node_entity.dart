@@ -1,44 +1,45 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model representing Cache Node for ConnectedCache resource
 class CacheNodeEntity {
   /// Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
-  final int? autoUpdateRequestedDay;
+  final pulumi.Input<int>? autoUpdateRequestedDay;
   /// Customer requested time of the day for mcc install of auto update cycle, should be hh:mm
-  final String? autoUpdateRequestedTime;
+  final pulumi.Input<String>? autoUpdateRequestedTime;
   /// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
-  final int? autoUpdateRequestedWeek;
+  final pulumi.Input<int>? autoUpdateRequestedWeek;
   /// Auto Update Ring Type which is slow or fast etc.
-  final String? autoUpdateRingType;
+  final pulumi.Input<String>? autoUpdateRingType;
   /// Cache node resource identifier of the cache node
-  final String? cacheNodeId;
+  final pulumi.Input<String>? cacheNodeId;
   /// Cache node resource name.
-  final String? cacheNodeName;
+  final pulumi.Input<String>? cacheNodeName;
   /// Cache node resource comma separated values of Cidrs.
-  final List<String>? cidrCsv;
+  final pulumi.Input<List<String>>? cidrCsv;
   /// Cache node resource current Cidr range precedence selection type.
-  final int? cidrSelectionType;
+  final pulumi.Input<int>? cidrSelectionType;
   /// Cache node resource customer resource Asn (autonomous system number)
-  final int? customerAsn;
+  final pulumi.Input<int>? customerAsn;
   /// Cache node resource customer index as string.
-  final String? customerIndex;
+  final pulumi.Input<String>? customerIndex;
   /// Cache node resource customer resource name.
-  final String? customerName;
+  final pulumi.Input<String>? customerName;
   /// FQDN(fully qualified domain name) value of the mcc cache node
-  final String? fullyQualifiedDomainName;
+  final pulumi.Input<String>? fullyQualifiedDomainName;
   /// Cache node resource Azure fully qualified resource Id.
-  final String? fullyQualifiedResourceId;
+  final pulumi.Input<String>? fullyQualifiedResourceId;
   /// Cache node resource Ip address.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// Cache node resource flag for indicating if cache node is enabled.
-  final bool? isEnabled;
+  final pulumi.Input<bool>? isEnabled;
   /// Cache node resource flag for determining if managed by enterprise as boolean.
-  final bool? isEnterpriseManaged;
+  final pulumi.Input<bool>? isEnterpriseManaged;
   /// Cache node resource maximum allowed egress in Mbps.
-  final int? maxAllowableEgressInMbps;
+  final pulumi.Input<int>? maxAllowableEgressInMbps;
   /// Cache node resource flag for determining if customer will be migrated.
-  final bool? shouldMigrate;
+  final pulumi.Input<bool>? shouldMigrate;
 
   /// Creates a new [CacheNodeEntity].
   /// [autoUpdateRequestedDay] Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
@@ -105,24 +106,24 @@ class CacheNodeEntity {
 
   factory CacheNodeEntity.fromMap(Map<String, dynamic> map) {
     return CacheNodeEntity(
-      autoUpdateRequestedDay: map['autoUpdateRequestedDay'] == null ? null : map['autoUpdateRequestedDay'] as int,
-      autoUpdateRequestedTime: map['autoUpdateRequestedTime'] == null ? null : map['autoUpdateRequestedTime'] as String,
-      autoUpdateRequestedWeek: map['autoUpdateRequestedWeek'] == null ? null : map['autoUpdateRequestedWeek'] as int,
-      autoUpdateRingType: map['autoUpdateRingType'] == null ? null : map['autoUpdateRingType'] as String,
-      cacheNodeId: map['cacheNodeId'] == null ? null : map['cacheNodeId'] as String,
-      cacheNodeName: map['cacheNodeName'] == null ? null : map['cacheNodeName'] as String,
-      cidrCsv: map['cidrCsv'] == null ? null : (map['cidrCsv'] as List).cast<String>(),
-      cidrSelectionType: map['cidrSelectionType'] == null ? null : map['cidrSelectionType'] as int,
-      customerAsn: map['customerAsn'] == null ? null : map['customerAsn'] as int,
-      customerIndex: map['customerIndex'] == null ? null : map['customerIndex'] as String,
-      customerName: map['customerName'] == null ? null : map['customerName'] as String,
-      fullyQualifiedDomainName: map['fullyQualifiedDomainName'] == null ? null : map['fullyQualifiedDomainName'] as String,
-      fullyQualifiedResourceId: map['fullyQualifiedResourceId'] == null ? null : map['fullyQualifiedResourceId'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled'] as bool,
-      isEnterpriseManaged: map['isEnterpriseManaged'] == null ? null : map['isEnterpriseManaged'] as bool,
-      maxAllowableEgressInMbps: map['maxAllowableEgressInMbps'] == null ? null : map['maxAllowableEgressInMbps'] as int,
-      shouldMigrate: map['shouldMigrate'] == null ? null : map['shouldMigrate'] as bool,
+      autoUpdateRequestedDay: map['autoUpdateRequestedDay'] == null ? null : (map['autoUpdateRequestedDay'] as int).input(),
+      autoUpdateRequestedTime: map['autoUpdateRequestedTime'] == null ? null : (map['autoUpdateRequestedTime'] as String).input(),
+      autoUpdateRequestedWeek: map['autoUpdateRequestedWeek'] == null ? null : (map['autoUpdateRequestedWeek'] as int).input(),
+      autoUpdateRingType: map['autoUpdateRingType'] == null ? null : (map['autoUpdateRingType'] as String).input(),
+      cacheNodeId: map['cacheNodeId'] == null ? null : (map['cacheNodeId'] as String).input(),
+      cacheNodeName: map['cacheNodeName'] == null ? null : (map['cacheNodeName'] as String).input(),
+      cidrCsv: map['cidrCsv'] == null ? null : ((map['cidrCsv'] as List).cast<String>()).input(),
+      cidrSelectionType: map['cidrSelectionType'] == null ? null : (map['cidrSelectionType'] as int).input(),
+      customerAsn: map['customerAsn'] == null ? null : (map['customerAsn'] as int).input(),
+      customerIndex: map['customerIndex'] == null ? null : (map['customerIndex'] as String).input(),
+      customerName: map['customerName'] == null ? null : (map['customerName'] as String).input(),
+      fullyQualifiedDomainName: map['fullyQualifiedDomainName'] == null ? null : (map['fullyQualifiedDomainName'] as String).input(),
+      fullyQualifiedResourceId: map['fullyQualifiedResourceId'] == null ? null : (map['fullyQualifiedResourceId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      isEnterpriseManaged: map['isEnterpriseManaged'] == null ? null : (map['isEnterpriseManaged'] as bool).input(),
+      maxAllowableEgressInMbps: map['maxAllowableEgressInMbps'] == null ? null : (map['maxAllowableEgressInMbps'] as int).input(),
+      shouldMigrate: map['shouldMigrate'] == null ? null : (map['shouldMigrate'] as bool).input(),
     );
   }
 }

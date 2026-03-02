@@ -1,72 +1,73 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadCrrAccessTokenResponse {
   /// Access token used for authentication
-  final String? accessTokenString;
+  final pulumi.Input<String>? accessTokenString;
   /// Active region name of BMS Stamp
-  final String? bMSActiveRegion;
+  final pulumi.Input<String>? bMSActiveRegion;
   /// Backup Management Type
-  final String? backupManagementType;
+  final pulumi.Input<String>? backupManagementType;
   /// Container Id
-  final String? containerId;
+  final pulumi.Input<String>? containerId;
   /// Container Unique name
-  final String? containerName;
+  final pulumi.Input<String>? containerName;
   /// Container Type
-  final String? containerType;
+  final pulumi.Input<String>? containerType;
   /// CoordinatorServiceStampId to be used by BCM in restore call
-  final String? coordinatorServiceStampId;
+  final pulumi.Input<String>? coordinatorServiceStampId;
   /// CoordinatorServiceStampUri to be used by BCM in restore call
-  final String? coordinatorServiceStampUri;
+  final pulumi.Input<String>? coordinatorServiceStampUri;
   /// Datasource Container Unique Name
-  final String? datasourceContainerName;
+  final pulumi.Input<String>? datasourceContainerName;
   /// Datasource Id
-  final String? datasourceId;
+  final pulumi.Input<String>? datasourceId;
   /// Datasource Friendly Name
-  final String? datasourceName;
+  final pulumi.Input<String>? datasourceName;
   /// Datasource Type
-  final String? datasourceType;
+  final pulumi.Input<String>? datasourceType;
   /// Type of the specific object - used for deserializing
   /// Expected value is 'WorkloadCrrAccessToken'.
-  final String objectType;
+  final pulumi.Input<String> objectType;
   /// Policy Id
-  final String? policyId;
+  final pulumi.Input<String>? policyId;
   /// Policy Name
-  final String? policyName;
-  final String? protectableObjectContainerHostOsName;
-  final String? protectableObjectFriendlyName;
-  final String? protectableObjectParentLogicalContainerName;
-  final String? protectableObjectProtectionState;
-  final String? protectableObjectUniqueName;
-  final String? protectableObjectWorkloadType;
+  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String>? protectableObjectContainerHostOsName;
+  final pulumi.Input<String>? protectableObjectFriendlyName;
+  final pulumi.Input<String>? protectableObjectParentLogicalContainerName;
+  final pulumi.Input<String>? protectableObjectProtectionState;
+  final pulumi.Input<String>? protectableObjectUniqueName;
+  final pulumi.Input<String>? protectableObjectWorkloadType;
   /// Protected item container id
-  final double? protectionContainerId;
+  final pulumi.Input<double>? protectionContainerId;
   /// ProtectionServiceStampId to be used by BCM in restore call
-  final String? protectionServiceStampId;
+  final pulumi.Input<String>? protectionServiceStampId;
   /// ProtectionServiceStampUri to be used by BCM in restore call
-  final String? protectionServiceStampUri;
+  final pulumi.Input<String>? protectionServiceStampUri;
   /// Recovery Point Id
-  final String? recoveryPointId;
+  final pulumi.Input<String>? recoveryPointId;
   /// Recovery Point Time
-  final String? recoveryPointTime;
+  final pulumi.Input<String>? recoveryPointTime;
   /// Resource Group name of the source vault
-  final String? resourceGroupName;
+  final pulumi.Input<String>? resourceGroupName;
   /// Resource Id of the source vault
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// Resource Name of the source vault
-  final String? resourceName;
+  final pulumi.Input<String>? resourceName;
   /// Recovery point information: Managed virtual machine
-  final bool? rpIsManagedVirtualMachine;
+  final pulumi.Input<bool>? rpIsManagedVirtualMachine;
   /// Recovery point information: Original SA option
-  final bool? rpOriginalSAOption;
+  final pulumi.Input<bool>? rpOriginalSAOption;
   /// Recovery point Tier Information
-  final Map<String, String>? rpTierInformation;
+  final pulumi.Input<Map<String, String>>? rpTierInformation;
   /// Recovery point information: VM size description
-  final String? rpVMSizeDescription;
+  final pulumi.Input<String>? rpVMSizeDescription;
   /// Subscription Id of the source vault
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// Extended Information about the token like FileSpec etc.
-  final String? tokenExtendedInformation;
+  final pulumi.Input<String>? tokenExtendedInformation;
 
   /// Creates a new [WorkloadCrrAccessTokenResponse].
   /// [accessTokenString] Access token used for authentication
@@ -184,41 +185,41 @@ class WorkloadCrrAccessTokenResponse {
 
   factory WorkloadCrrAccessTokenResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadCrrAccessTokenResponse(
-      accessTokenString: map['accessTokenString'] == null ? null : map['accessTokenString'] as String,
-      bMSActiveRegion: map['bMSActiveRegion'] == null ? null : map['bMSActiveRegion'] as String,
-      backupManagementType: map['backupManagementType'] == null ? null : map['backupManagementType'] as String,
-      containerId: map['containerId'] == null ? null : map['containerId'] as String,
-      containerName: map['containerName'] == null ? null : map['containerName'] as String,
-      containerType: map['containerType'] == null ? null : map['containerType'] as String,
-      coordinatorServiceStampId: map['coordinatorServiceStampId'] == null ? null : map['coordinatorServiceStampId'] as String,
-      coordinatorServiceStampUri: map['coordinatorServiceStampUri'] == null ? null : map['coordinatorServiceStampUri'] as String,
-      datasourceContainerName: map['datasourceContainerName'] == null ? null : map['datasourceContainerName'] as String,
-      datasourceId: map['datasourceId'] == null ? null : map['datasourceId'] as String,
-      datasourceName: map['datasourceName'] == null ? null : map['datasourceName'] as String,
-      datasourceType: map['datasourceType'] == null ? null : map['datasourceType'] as String,
-      objectType: map['objectType'] as String,
-      policyId: map['policyId'] == null ? null : map['policyId'] as String,
-      policyName: map['policyName'] == null ? null : map['policyName'] as String,
-      protectableObjectContainerHostOsName: map['protectableObjectContainerHostOsName'] == null ? null : map['protectableObjectContainerHostOsName'] as String,
-      protectableObjectFriendlyName: map['protectableObjectFriendlyName'] == null ? null : map['protectableObjectFriendlyName'] as String,
-      protectableObjectParentLogicalContainerName: map['protectableObjectParentLogicalContainerName'] == null ? null : map['protectableObjectParentLogicalContainerName'] as String,
-      protectableObjectProtectionState: map['protectableObjectProtectionState'] == null ? null : map['protectableObjectProtectionState'] as String,
-      protectableObjectUniqueName: map['protectableObjectUniqueName'] == null ? null : map['protectableObjectUniqueName'] as String,
-      protectableObjectWorkloadType: map['protectableObjectWorkloadType'] == null ? null : map['protectableObjectWorkloadType'] as String,
-      protectionContainerId: map['protectionContainerId'] == null ? null : map['protectionContainerId'] as double,
-      protectionServiceStampId: map['protectionServiceStampId'] == null ? null : map['protectionServiceStampId'] as String,
-      protectionServiceStampUri: map['protectionServiceStampUri'] == null ? null : map['protectionServiceStampUri'] as String,
-      recoveryPointId: map['recoveryPointId'] == null ? null : map['recoveryPointId'] as String,
-      recoveryPointTime: map['recoveryPointTime'] == null ? null : map['recoveryPointTime'] as String,
-      resourceGroupName: map['resourceGroupName'] == null ? null : map['resourceGroupName'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      resourceName: map['resourceName'] == null ? null : map['resourceName'] as String,
-      rpIsManagedVirtualMachine: map['rpIsManagedVirtualMachine'] == null ? null : map['rpIsManagedVirtualMachine'] as bool,
-      rpOriginalSAOption: map['rpOriginalSAOption'] == null ? null : map['rpOriginalSAOption'] as bool,
-      rpTierInformation: map['rpTierInformation'] == null ? null : (map['rpTierInformation'] as Map).cast<String, String>(),
-      rpVMSizeDescription: map['rpVMSizeDescription'] == null ? null : map['rpVMSizeDescription'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      tokenExtendedInformation: map['tokenExtendedInformation'] == null ? null : map['tokenExtendedInformation'] as String,
+      accessTokenString: map['accessTokenString'] == null ? null : (map['accessTokenString'] as String).input(),
+      bMSActiveRegion: map['bMSActiveRegion'] == null ? null : (map['bMSActiveRegion'] as String).input(),
+      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType'] as String).input(),
+      containerId: map['containerId'] == null ? null : (map['containerId'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      containerType: map['containerType'] == null ? null : (map['containerType'] as String).input(),
+      coordinatorServiceStampId: map['coordinatorServiceStampId'] == null ? null : (map['coordinatorServiceStampId'] as String).input(),
+      coordinatorServiceStampUri: map['coordinatorServiceStampUri'] == null ? null : (map['coordinatorServiceStampUri'] as String).input(),
+      datasourceContainerName: map['datasourceContainerName'] == null ? null : (map['datasourceContainerName'] as String).input(),
+      datasourceId: map['datasourceId'] == null ? null : (map['datasourceId'] as String).input(),
+      datasourceName: map['datasourceName'] == null ? null : (map['datasourceName'] as String).input(),
+      datasourceType: map['datasourceType'] == null ? null : (map['datasourceType'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      protectableObjectContainerHostOsName: map['protectableObjectContainerHostOsName'] == null ? null : (map['protectableObjectContainerHostOsName'] as String).input(),
+      protectableObjectFriendlyName: map['protectableObjectFriendlyName'] == null ? null : (map['protectableObjectFriendlyName'] as String).input(),
+      protectableObjectParentLogicalContainerName: map['protectableObjectParentLogicalContainerName'] == null ? null : (map['protectableObjectParentLogicalContainerName'] as String).input(),
+      protectableObjectProtectionState: map['protectableObjectProtectionState'] == null ? null : (map['protectableObjectProtectionState'] as String).input(),
+      protectableObjectUniqueName: map['protectableObjectUniqueName'] == null ? null : (map['protectableObjectUniqueName'] as String).input(),
+      protectableObjectWorkloadType: map['protectableObjectWorkloadType'] == null ? null : (map['protectableObjectWorkloadType'] as String).input(),
+      protectionContainerId: map['protectionContainerId'] == null ? null : (map['protectionContainerId'] as double).input(),
+      protectionServiceStampId: map['protectionServiceStampId'] == null ? null : (map['protectionServiceStampId'] as String).input(),
+      protectionServiceStampUri: map['protectionServiceStampUri'] == null ? null : (map['protectionServiceStampUri'] as String).input(),
+      recoveryPointId: map['recoveryPointId'] == null ? null : (map['recoveryPointId'] as String).input(),
+      recoveryPointTime: map['recoveryPointTime'] == null ? null : (map['recoveryPointTime'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      rpIsManagedVirtualMachine: map['rpIsManagedVirtualMachine'] == null ? null : (map['rpIsManagedVirtualMachine'] as bool).input(),
+      rpOriginalSAOption: map['rpOriginalSAOption'] == null ? null : (map['rpOriginalSAOption'] as bool).input(),
+      rpTierInformation: map['rpTierInformation'] == null ? null : ((map['rpTierInformation'] as Map).cast<String, String>()).input(),
+      rpVMSizeDescription: map['rpVMSizeDescription'] == null ? null : (map['rpVMSizeDescription'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tokenExtendedInformation: map['tokenExtendedInformation'] == null ? null : (map['tokenExtendedInformation'] as String).input(),
     );
   }
 }

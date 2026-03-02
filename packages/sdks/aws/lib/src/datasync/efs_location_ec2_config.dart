@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EfsLocationEc2Config {
   /// List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
-  final List<String> securityGroupArns;
+  final pulumi.Input<List<String>> securityGroupArns;
   /// Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
-  final String subnetArn;
+  final pulumi.Input<String> subnetArn;
 
   /// Creates a new [EfsLocationEc2Config].
   /// [securityGroupArns] List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
@@ -24,8 +25,8 @@ class EfsLocationEc2Config {
 
   factory EfsLocationEc2Config.fromMap(Map<String, dynamic> map) {
     return EfsLocationEc2Config(
-      securityGroupArns: (map['securityGroupArns'] as List).cast<String>(),
-      subnetArn: map['subnetArn'] as String,
+      securityGroupArns: ((map['securityGroupArns'] as List).cast<String>()).input(),
+      subnetArn: (map['subnetArn'] as String).input(),
     );
   }
 }

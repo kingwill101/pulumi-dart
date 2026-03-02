@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IpGroupRule {
   /// The description of the IP group.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The IP address range, in CIDR notation, e.g., `10.0.0.0/16`
-  final String source;
+  final pulumi.Input<String> source;
 
   /// Creates a new [IpGroupRule].
   /// [description] The description of the IP group.
@@ -24,8 +25,8 @@ class IpGroupRule {
 
   factory IpGroupRule.fromMap(Map<String, dynamic> map) {
     return IpGroupRule(
-      description: map['description'] == null ? null : map['description'] as String,
-      source: map['source'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

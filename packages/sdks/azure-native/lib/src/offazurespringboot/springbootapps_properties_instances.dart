@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringbootappsPropertiesInstances {
   /// The instance count of this app instance
-  final int? instanceCount;
+  final pulumi.Input<int>? instanceCount;
   /// The jvm heap memory allocated of this app instance
-  final int? jvmMemoryInMB;
+  final pulumi.Input<int>? jvmMemoryInMB;
   /// The machine ARM resource Id of this app instance
-  final String machineArmId;
+  final pulumi.Input<String> machineArmId;
 
   /// Creates a new [SpringbootappsPropertiesInstances].
   /// [instanceCount] The instance count of this app instance
@@ -29,9 +30,9 @@ class SpringbootappsPropertiesInstances {
 
   factory SpringbootappsPropertiesInstances.fromMap(Map<String, dynamic> map) {
     return SpringbootappsPropertiesInstances(
-      instanceCount: map['instanceCount'] == null ? null : map['instanceCount'] as int,
-      jvmMemoryInMB: map['jvmMemoryInMB'] == null ? null : map['jvmMemoryInMB'] as int,
-      machineArmId: map['machineArmId'] as String,
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      jvmMemoryInMB: map['jvmMemoryInMB'] == null ? null : (map['jvmMemoryInMB'] as int).input(),
+      machineArmId: (map['machineArmId'] as String).input(),
     );
   }
 }

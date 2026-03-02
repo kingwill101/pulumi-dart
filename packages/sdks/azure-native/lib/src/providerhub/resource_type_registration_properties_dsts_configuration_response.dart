@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The dsts configuration.
 class ResourceTypeRegistrationPropertiesDstsConfigurationResponse {
   /// This is a URI property.
-  final String? serviceDnsName;
+  final pulumi.Input<String>? serviceDnsName;
   /// The service name.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesDstsConfigurationResponse].
   /// [serviceDnsName] This is a URI property.
@@ -25,8 +26,8 @@ class ResourceTypeRegistrationPropertiesDstsConfigurationResponse {
 
   factory ResourceTypeRegistrationPropertiesDstsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesDstsConfigurationResponse(
-      serviceDnsName: map['serviceDnsName'] == null ? null : map['serviceDnsName'] as String,
-      serviceName: map['serviceName'] as String,
+      serviceDnsName: map['serviceDnsName'] == null ? null : (map['serviceDnsName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

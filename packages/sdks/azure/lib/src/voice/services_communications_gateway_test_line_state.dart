@@ -25,19 +25,13 @@ class ServicesCommunicationsGatewayTestLineState {
   /// [tags] A mapping of tags which should be assigned to the Voice Services Communications Gateway Test Line.
   /// [voiceServicesCommunicationsGatewayId] Specifies the ID of the Voice Services Communications Gateway. Changing this forces a new resource to be created.
   ServicesCommunicationsGatewayTestLineState({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? phoneNumber,
-    pulumi.Output<String>? purpose,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? voiceServicesCommunicationsGatewayId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      phoneNumber = pulumi.Input.asOptionalInput<String>(phoneNumber),
-      purpose = pulumi.Input.asOptionalInput<String>(purpose),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      voiceServicesCommunicationsGatewayId = pulumi.Input.asOptionalInput<String>(voiceServicesCommunicationsGatewayId);
+    this.location,
+    this.name,
+    this.phoneNumber,
+    this.purpose,
+    this.tags,
+    this.voiceServicesCommunicationsGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class ServicesCommunicationsGatewayTestLineState {
 
   factory ServicesCommunicationsGatewayTestLineState.fromMap(Map<String, dynamic> map) {
     return ServicesCommunicationsGatewayTestLineState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      phoneNumber: map['phoneNumber'] == null ? null : pulumi.Output.create<String>(map['phoneNumber'] as String),
-      purpose: map['purpose'] == null ? null : pulumi.Output.create<String>(map['purpose'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      voiceServicesCommunicationsGatewayId: map['voiceServicesCommunicationsGatewayId'] == null ? null : pulumi.Output.create<String>(map['voiceServicesCommunicationsGatewayId'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      voiceServicesCommunicationsGatewayId: map['voiceServicesCommunicationsGatewayId'] == null ? null : (map['voiceServicesCommunicationsGatewayId'] as String).input(),
     );
   }
 }

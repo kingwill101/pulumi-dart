@@ -23,15 +23,11 @@ class GetAttachmentArgs {
   /// [tags] Key-value tags for the attachment.
   /// [transitGatewayAttachmentId] ID of the attachment.
   GetAttachmentArgs({
-    pulumi.Output<List<GetAttachmentFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitGatewayAttachmentId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetAttachmentFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayAttachmentId = pulumi.Input.asOptionalInput<String>(transitGatewayAttachmentId);
+    this.filters,
+    this.region,
+    this.tags,
+    this.transitGatewayAttachmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetAttachmentArgs {
 
   factory GetAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAttachmentArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetAttachmentFilter>>(pulumi.Input.decodeList<GetAttachmentFilter>(map['filters'], (value) => GetAttachmentFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAttachmentFilter>(map['filters'], (value) => GetAttachmentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
     );
   }
 }

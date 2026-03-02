@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Criteria to match on
 class HttpRouteMatch {
   /// path case sensitive, default is true
-  final bool? caseSensitive;
+  final pulumi.Input<bool>? caseSensitive;
   /// match on exact path
-  final String? path;
+  final pulumi.Input<String>? path;
   /// match on all prefix's. Not exact
-  final String? pathSeparatedPrefix;
+  final pulumi.Input<String>? pathSeparatedPrefix;
   /// match on all prefix's. Not exact
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [HttpRouteMatch].
   /// [caseSensitive] path case sensitive, default is true
@@ -35,10 +36,10 @@ class HttpRouteMatch {
 
   factory HttpRouteMatch.fromMap(Map<String, dynamic> map) {
     return HttpRouteMatch(
-      caseSensitive: map['caseSensitive'] == null ? null : map['caseSensitive'] as bool,
-      path: map['path'] == null ? null : map['path'] as String,
-      pathSeparatedPrefix: map['pathSeparatedPrefix'] == null ? null : map['pathSeparatedPrefix'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      pathSeparatedPrefix: map['pathSeparatedPrefix'] == null ? null : (map['pathSeparatedPrefix'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

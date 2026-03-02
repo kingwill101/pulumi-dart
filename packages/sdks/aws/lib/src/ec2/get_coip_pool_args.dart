@@ -29,17 +29,12 @@ class GetCoipPoolArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Mapping of tags, each pair of which must exactly match
   GetCoipPoolArgs({
-    pulumi.Output<List<GetCoipPoolFilter>>? filters,
-    pulumi.Output<String>? localGatewayRouteTableId,
-    pulumi.Output<String>? poolId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetCoipPoolFilter>>(filters),
-      localGatewayRouteTableId = pulumi.Input.asOptionalInput<String>(localGatewayRouteTableId),
-      poolId = pulumi.Input.asOptionalInput<String>(poolId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.localGatewayRouteTableId,
+    this.poolId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class GetCoipPoolArgs {
 
   factory GetCoipPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetCoipPoolArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetCoipPoolFilter>>(pulumi.Input.decodeList<GetCoipPoolFilter>(map['filters'], (value) => GetCoipPoolFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : pulumi.Output.create<String>(map['localGatewayRouteTableId'] as String),
-      poolId: map['poolId'] == null ? null : pulumi.Output.create<String>(map['poolId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetCoipPoolFilter>(map['filters'], (value) => GetCoipPoolFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : (map['localGatewayRouteTableId'] as String).input(),
+      poolId: map['poolId'] == null ? null : (map['poolId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes external reference
 class ThreatIntelligenceExternalReference {
   /// External reference description
-  final String? description;
+  final pulumi.Input<String>? description;
   /// External reference ID
-  final String? externalId;
+  final pulumi.Input<String>? externalId;
   /// External reference hashes
-  final Map<String, String>? hashes;
+  final pulumi.Input<Map<String, String>>? hashes;
   /// External reference source name
-  final String? sourceName;
+  final pulumi.Input<String>? sourceName;
   /// External reference URL
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [ThreatIntelligenceExternalReference].
   /// [description] External reference description
@@ -40,11 +41,11 @@ class ThreatIntelligenceExternalReference {
 
   factory ThreatIntelligenceExternalReference.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceExternalReference(
-      description: map['description'] == null ? null : map['description'] as String,
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
-      hashes: map['hashes'] == null ? null : (map['hashes'] as Map).cast<String, String>(),
-      sourceName: map['sourceName'] == null ? null : map['sourceName'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      hashes: map['hashes'] == null ? null : ((map['hashes'] as Map).cast<String, String>()).input(),
+      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

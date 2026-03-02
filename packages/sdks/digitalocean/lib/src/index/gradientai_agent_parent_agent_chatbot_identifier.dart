@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GradientaiAgentParentAgentChatbotIdentifier {
-  final String? chatbotId;
+  final pulumi.Input<String>? chatbotId;
 
   /// Creates a new [GradientaiAgentParentAgentChatbotIdentifier].
   /// [chatbotId] Optional.
@@ -18,7 +19,7 @@ class GradientaiAgentParentAgentChatbotIdentifier {
 
   factory GradientaiAgentParentAgentChatbotIdentifier.fromMap(Map<String, dynamic> map) {
     return GradientaiAgentParentAgentChatbotIdentifier(
-      chatbotId: map['chatbotId'] == null ? null : map['chatbotId'] as String,
+      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId'] as String).input(),
     );
   }
 }

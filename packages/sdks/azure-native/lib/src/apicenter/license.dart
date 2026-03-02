@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The license information for the API.
 class License {
   /// SPDX license information for the API. The identifier field is mutually
   /// exclusive of the URL field.
-  final String? identifier;
+  final pulumi.Input<String>? identifier;
   /// Name of the license.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// URL pointing to the license details. The URL field is mutually exclusive of the
   /// identifier field.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [License].
   /// [identifier] SPDX license information for the API. The identifier field is mutually
@@ -32,9 +33,9 @@ class License {
 
   factory License.fromMap(Map<String, dynamic> map) {
     return License(
-      identifier: map['identifier'] == null ? null : map['identifier'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
+      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetConnectorMappingArgs {
   /// [mappingName] The name of the connector mapping.
   /// [resourceGroupName] The name of the resource group.
   GetConnectorMappingArgs({
-    required pulumi.Output<String> connectorName,
-    required pulumi.Output<String> hubName,
-    required pulumi.Output<String> mappingName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      connectorName = pulumi.Input.asInput<String>(connectorName),
-      hubName = pulumi.Input.asInput<String>(hubName),
-      mappingName = pulumi.Input.asInput<String>(mappingName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.connectorName,
+    required this.hubName,
+    required this.mappingName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetConnectorMappingArgs {
 
   factory GetConnectorMappingArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectorMappingArgs(
-      connectorName: pulumi.Output.create<String>(map['connectorName'] as String),
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      mappingName: pulumi.Output.create<String>(map['mappingName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      connectorName: (map['connectorName'] as String).input(),
+      hubName: (map['hubName'] as String).input(),
+      mappingName: (map['mappingName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

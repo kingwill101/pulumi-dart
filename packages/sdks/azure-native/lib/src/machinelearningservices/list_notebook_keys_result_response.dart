@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListNotebookKeysResultResponse {
-  final String primaryAccessKey;
-  final String secondaryAccessKey;
+  final pulumi.Input<String> primaryAccessKey;
+  final pulumi.Input<String> secondaryAccessKey;
 
   /// Creates a new [ListNotebookKeysResultResponse].
   /// [primaryAccessKey] Required.
@@ -22,8 +23,8 @@ class ListNotebookKeysResultResponse {
 
   factory ListNotebookKeysResultResponse.fromMap(Map<String, dynamic> map) {
     return ListNotebookKeysResultResponse(
-      primaryAccessKey: map['primaryAccessKey'] as String,
-      secondaryAccessKey: map['secondaryAccessKey'] as String,
+      primaryAccessKey: (map['primaryAccessKey'] as String).input(),
+      secondaryAccessKey: (map['secondaryAccessKey'] as String).input(),
     );
   }
 }

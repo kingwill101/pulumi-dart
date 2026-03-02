@@ -5,68 +5,68 @@ import 'get_backup_jobs_job_ots_detail.dart';
 
 class GetBackupJobsJob {
   /// The actual data volume of the backup task (After deduplication) . Unit byte.
-  final String actualBytes;
+  final pulumi.Input<String> actualBytes;
   /// The actual number of items in the backup task. (Currently only file backup is available).
-  final String actualItems;
+  final pulumi.Input<String> actualItems;
   /// The name of backup job.
-  final String backJobName;
+  final pulumi.Input<String> backJobName;
   /// The ID of the backup job.
-  final String backupJobId;
+  final pulumi.Input<String> backupJobId;
   /// Backup type. Valid values: `COMPLETE`(full backup).
-  final String backupType;
+  final pulumi.Input<String> backupType;
   /// The name of target OSS bucket.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// The amount of backup data (Incremental). Unit byte.
-  final String bytesDone;
+  final pulumi.Input<String> bytesDone;
   /// The total amount of data sources. Unit byte.
-  final String bytesTotal;
+  final pulumi.Input<String> bytesTotal;
   /// The completion time of backup job. UNIX time seconds.
-  final String completeTime;
+  final pulumi.Input<String> completeTime;
   /// The creation time of backup job. UNIX time seconds.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
-  final String crossAccountRoleName;
+  final pulumi.Input<String> crossAccountRoleName;
   /// The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
-  final String crossAccountType;
+  final pulumi.Input<String> crossAccountType;
   /// The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
-  final int crossAccountUserId;
+  final pulumi.Input<int> crossAccountUserId;
   /// Error message.
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
-  final String exclude;
+  final pulumi.Input<String> exclude;
   /// The ID of destination file system.
-  final String fileSystemId;
+  final pulumi.Input<String> fileSystemId;
   /// The ID of the backup job.
-  final String id;
+  final pulumi.Input<String> id;
   /// Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
-  final String include;
+  final pulumi.Input<String> include;
   /// The ID of target ECS instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The number of items restore job recovered.
-  final String itemsDone;
+  final pulumi.Input<String> itemsDone;
   /// The total number of items restore job recovered.
-  final String itemsTotal;
+  final pulumi.Input<String> itemsTotal;
   /// File system creation time. UNIX time in seconds.
-  final String nasCreateTime;
-  final List<GetBackupJobsJobOtsDetail> otsDetails;
+  final pulumi.Input<String> nasCreateTime;
+  final pulumi.Input<List<GetBackupJobsJobOtsDetail>> otsDetails;
   /// List of backup path. e.g. `["/home", "/var"]`.
-  final List<String> paths;
+  final pulumi.Input<List<String>> paths;
   /// The ID of a backup plan.
-  final String planId;
+  final pulumi.Input<String> planId;
   /// The prefix of Oss bucket files.
-  final String prefix;
+  final pulumi.Input<String> prefix;
   /// Backup progress. The value is 100%*100.
-  final String progress;
+  final pulumi.Input<String> progress;
   /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
   /// The scheduled backup start time. UNIX time seconds.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The update time of backup job. UNIX time seconds.
-  final String updatedTime;
+  final pulumi.Input<String> updatedTime;
   /// The ID of backup vault.
-  final String vaultId;
+  final pulumi.Input<String> vaultId;
 
   /// Creates a new [GetBackupJobsJob].
   /// [actualBytes] The actual data volume of the backup task (After deduplication) . Unit byte.
@@ -160,7 +160,7 @@ class GetBackupJobsJob {
       'itemsDone': itemsDone,
       'itemsTotal': itemsTotal,
       'nasCreateTime': nasCreateTime,
-      'otsDetails': pulumi.Input.encodeList<GetBackupJobsJobOtsDetail, Map<String, dynamic>>(otsDetails, (value) => value.toMap()),
+      'otsDetails': pulumi.Input.mapInputValue<List<GetBackupJobsJobOtsDetail>, List<Map<String, dynamic>>>(otsDetails, (value) => pulumi.Input.encodeList<GetBackupJobsJobOtsDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'paths': paths,
       'planId': planId,
       'prefix': prefix,
@@ -175,38 +175,38 @@ class GetBackupJobsJob {
 
   factory GetBackupJobsJob.fromMap(Map<String, dynamic> map) {
     return GetBackupJobsJob(
-      actualBytes: map['actualBytes'] as String,
-      actualItems: map['actualItems'] as String,
-      backJobName: map['backJobName'] as String,
-      backupJobId: map['backupJobId'] as String,
-      backupType: map['backupType'] as String,
-      bucket: map['bucket'] as String,
-      bytesDone: map['bytesDone'] as String,
-      bytesTotal: map['bytesTotal'] as String,
-      completeTime: map['completeTime'] as String,
-      createTime: map['createTime'] as String,
-      crossAccountRoleName: map['crossAccountRoleName'] as String,
-      crossAccountType: map['crossAccountType'] as String,
-      crossAccountUserId: map['crossAccountUserId'] as int,
-      errorMessage: map['errorMessage'] as String,
-      exclude: map['exclude'] as String,
-      fileSystemId: map['fileSystemId'] as String,
-      id: map['id'] as String,
-      include: map['include'] as String,
-      instanceId: map['instanceId'] as String,
-      itemsDone: map['itemsDone'] as String,
-      itemsTotal: map['itemsTotal'] as String,
-      nasCreateTime: map['nasCreateTime'] as String,
-      otsDetails: pulumi.Input.decodeList<GetBackupJobsJobOtsDetail>(map['otsDetails'], (value) => GetBackupJobsJobOtsDetail.fromMap((value as Map).cast<String, dynamic>())),
-      paths: (map['paths'] as List).cast<String>(),
-      planId: map['planId'] as String,
-      prefix: map['prefix'] as String,
-      progress: map['progress'] as String,
-      sourceType: map['sourceType'] as String,
-      startTime: map['startTime'] as String,
-      status: map['status'] as String,
-      updatedTime: map['updatedTime'] as String,
-      vaultId: map['vaultId'] as String,
+      actualBytes: (map['actualBytes'] as String).input(),
+      actualItems: (map['actualItems'] as String).input(),
+      backJobName: (map['backJobName'] as String).input(),
+      backupJobId: (map['backupJobId'] as String).input(),
+      backupType: (map['backupType'] as String).input(),
+      bucket: (map['bucket'] as String).input(),
+      bytesDone: (map['bytesDone'] as String).input(),
+      bytesTotal: (map['bytesTotal'] as String).input(),
+      completeTime: (map['completeTime'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      crossAccountRoleName: (map['crossAccountRoleName'] as String).input(),
+      crossAccountType: (map['crossAccountType'] as String).input(),
+      crossAccountUserId: (map['crossAccountUserId'] as int).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      exclude: (map['exclude'] as String).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      id: (map['id'] as String).input(),
+      include: (map['include'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      itemsDone: (map['itemsDone'] as String).input(),
+      itemsTotal: (map['itemsTotal'] as String).input(),
+      nasCreateTime: (map['nasCreateTime'] as String).input(),
+      otsDetails: (pulumi.Input.decodeList<GetBackupJobsJobOtsDetail>(map['otsDetails'], (value) => GetBackupJobsJobOtsDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      paths: ((map['paths'] as List).cast<String>()).input(),
+      planId: (map['planId'] as String).input(),
+      prefix: (map['prefix'] as String).input(),
+      progress: (map['progress'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      status: (map['status'] as String).input(),
+      updatedTime: (map['updatedTime'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

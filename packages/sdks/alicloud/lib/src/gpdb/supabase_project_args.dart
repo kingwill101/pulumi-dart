@@ -43,25 +43,16 @@ class SupabaseProjectArgs {
   /// [vswitchId] The vSwitch ID.
   /// [zoneId] The Zone ID.
   SupabaseProjectArgs({
-    required pulumi.Output<String> accountPassword,
-    pulumi.Output<String>? diskPerformanceLevel,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> projectSpec,
-    required pulumi.Output<List<String>> securityIpLists,
-    pulumi.Output<int>? storageSize,
-    required pulumi.Output<String> vpcId,
-    required pulumi.Output<String> vswitchId,
-    required pulumi.Output<String> zoneId,
-  }) :
-      accountPassword = pulumi.Input.asInput<String>(accountPassword),
-      diskPerformanceLevel = pulumi.Input.asOptionalInput<String>(diskPerformanceLevel),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      projectSpec = pulumi.Input.asInput<String>(projectSpec),
-      securityIpLists = pulumi.Input.asInput<List<String>>(securityIpLists),
-      storageSize = pulumi.Input.asOptionalInput<int>(storageSize),
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    required this.accountPassword,
+    this.diskPerformanceLevel,
+    required this.projectName,
+    required this.projectSpec,
+    required this.securityIpLists,
+    this.storageSize,
+    required this.vpcId,
+    required this.vswitchId,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class SupabaseProjectArgs {
 
   factory SupabaseProjectArgs.fromMap(Map<String, dynamic> map) {
     return SupabaseProjectArgs(
-      accountPassword: pulumi.Output.create<String>(map['accountPassword'] as String),
-      diskPerformanceLevel: map['diskPerformanceLevel'] == null ? null : pulumi.Output.create<String>(map['diskPerformanceLevel'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      projectSpec: pulumi.Output.create<String>(map['projectSpec'] as String),
-      securityIpLists: pulumi.Output.create<List<String>>((map['securityIpLists'] as List).cast<String>()),
-      storageSize: map['storageSize'] == null ? null : pulumi.Output.create<int>(map['storageSize'] as int),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      accountPassword: (map['accountPassword'] as String).input(),
+      diskPerformanceLevel: map['diskPerformanceLevel'] == null ? null : (map['diskPerformanceLevel'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      projectSpec: (map['projectSpec'] as String).input(),
+      securityIpLists: ((map['securityIpLists'] as List).cast<String>()).input(),
+      storageSize: map['storageSize'] == null ? null : (map['storageSize'] as int).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCustomModelsModelSummary {
   /// Creation time of the model.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// The ARN of the custom model.
-  final String modelArn;
+  final pulumi.Input<String> modelArn;
   /// The name of the custom model.
-  final String modelName;
+  final pulumi.Input<String> modelName;
 
   /// Creates a new [GetCustomModelsModelSummary].
   /// [creationTime] Creation time of the model.
@@ -29,9 +30,9 @@ class GetCustomModelsModelSummary {
 
   factory GetCustomModelsModelSummary.fromMap(Map<String, dynamic> map) {
     return GetCustomModelsModelSummary(
-      creationTime: map['creationTime'] as String,
-      modelArn: map['modelArn'] as String,
-      modelName: map['modelName'] as String,
+      creationTime: (map['creationTime'] as String).input(),
+      modelArn: (map['modelArn'] as String).input(),
+      modelName: (map['modelName'] as String).input(),
     );
   }
 }

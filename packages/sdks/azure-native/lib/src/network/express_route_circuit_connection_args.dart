@@ -45,29 +45,18 @@ class ExpressRouteCircuitConnectionArgs {
   /// [peeringName] The name of the peering.
   /// [resourceGroupName] The name of the resource group.
   ExpressRouteCircuitConnectionArgs({
-    pulumi.Output<String>? addressPrefix,
-    pulumi.Output<String>? authorizationKey,
-    required pulumi.Output<String> circuitName,
-    pulumi.Output<String>? connectionName,
-    pulumi.Output<SubResource>? expressRouteCircuitPeering,
-    pulumi.Output<String>? id,
-    pulumi.Output<Ipv6CircuitConnectionConfig>? ipv6CircuitConnectionConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<SubResource>? peerExpressRouteCircuitPeering,
-    required pulumi.Output<String> peeringName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      addressPrefix = pulumi.Input.asOptionalInput<String>(addressPrefix),
-      authorizationKey = pulumi.Input.asOptionalInput<String>(authorizationKey),
-      circuitName = pulumi.Input.asInput<String>(circuitName),
-      connectionName = pulumi.Input.asOptionalInput<String>(connectionName),
-      expressRouteCircuitPeering = pulumi.Input.asOptionalInput<SubResource>(expressRouteCircuitPeering),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      ipv6CircuitConnectionConfig = pulumi.Input.asOptionalInput<Ipv6CircuitConnectionConfig>(ipv6CircuitConnectionConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peerExpressRouteCircuitPeering = pulumi.Input.asOptionalInput<SubResource>(peerExpressRouteCircuitPeering),
-      peeringName = pulumi.Input.asInput<String>(peeringName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.addressPrefix,
+    this.authorizationKey,
+    required this.circuitName,
+    this.connectionName,
+    this.expressRouteCircuitPeering,
+    this.id,
+    this.ipv6CircuitConnectionConfig,
+    this.name,
+    this.peerExpressRouteCircuitPeering,
+    required this.peeringName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class ExpressRouteCircuitConnectionArgs {
 
   factory ExpressRouteCircuitConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitConnectionArgs(
-      addressPrefix: map['addressPrefix'] == null ? null : pulumi.Output.create<String>(map['addressPrefix'] as String),
-      authorizationKey: map['authorizationKey'] == null ? null : pulumi.Output.create<String>(map['authorizationKey'] as String),
-      circuitName: pulumi.Output.create<String>(map['circuitName'] as String),
-      connectionName: map['connectionName'] == null ? null : pulumi.Output.create<String>(map['connectionName'] as String),
-      expressRouteCircuitPeering: map['expressRouteCircuitPeering'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      ipv6CircuitConnectionConfig: map['ipv6CircuitConnectionConfig'] == null ? null : pulumi.Output.create<Ipv6CircuitConnectionConfig>(Ipv6CircuitConnectionConfig.fromMap((map['ipv6CircuitConnectionConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peerExpressRouteCircuitPeering: map['peerExpressRouteCircuitPeering'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['peerExpressRouteCircuitPeering'] as Map).cast<String, dynamic>())),
-      peeringName: pulumi.Output.create<String>(map['peeringName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
+      circuitName: (map['circuitName'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      expressRouteCircuitPeering: map['expressRouteCircuitPeering'] == null ? null : (SubResource.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipv6CircuitConnectionConfig: map['ipv6CircuitConnectionConfig'] == null ? null : (Ipv6CircuitConnectionConfig.fromMap((map['ipv6CircuitConnectionConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peerExpressRouteCircuitPeering: map['peerExpressRouteCircuitPeering'] == null ? null : (SubResource.fromMap((map['peerExpressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
+      peeringName: (map['peeringName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

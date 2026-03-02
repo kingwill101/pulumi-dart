@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration and status of a managed SSL certificate.
 class SslCertificateManagedSslCertificateResponse {
   /// [Output only] Detailed statuses of the domains specified for managed certificate resource.
-  final Map<String, String> domainStatus;
+  final pulumi.Input<Map<String, String>> domainStatus;
   /// The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
-  final List<String> domains;
+  final pulumi.Input<List<String>> domains;
   /// [Output only] Status of the managed certificate resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [SslCertificateManagedSslCertificateResponse].
   /// [domainStatus] [Output only] Detailed statuses of the domains specified for managed certificate resource.
@@ -30,9 +31,9 @@ class SslCertificateManagedSslCertificateResponse {
 
   factory SslCertificateManagedSslCertificateResponse.fromMap(Map<String, dynamic> map) {
     return SslCertificateManagedSslCertificateResponse(
-      domainStatus: (map['domainStatus'] as Map).cast<String, String>(),
-      domains: (map['domains'] as List).cast<String>(),
-      status: map['status'] as String,
+      domainStatus: ((map['domainStatus'] as Map).cast<String, String>()).input(),
+      domains: ((map['domains'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

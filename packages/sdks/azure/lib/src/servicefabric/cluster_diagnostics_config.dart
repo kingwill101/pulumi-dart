@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterDiagnosticsConfig {
   /// The Blob Endpoint of the Storage Account.
-  final String blobEndpoint;
+  final pulumi.Input<String> blobEndpoint;
   /// The protected diagnostics storage key name, such as `StorageAccountKey1`.
-  final String protectedAccountKeyName;
+  final pulumi.Input<String> protectedAccountKeyName;
   /// The Queue Endpoint of the Storage Account.
-  final String queueEndpoint;
+  final pulumi.Input<String> queueEndpoint;
   /// The name of the Storage Account where the Diagnostics should be sent to.
-  final String storageAccountName;
+  final pulumi.Input<String> storageAccountName;
   /// The Table Endpoint of the Storage Account.
-  final String tableEndpoint;
+  final pulumi.Input<String> tableEndpoint;
 
   /// Creates a new [ClusterDiagnosticsConfig].
   /// [blobEndpoint] The Blob Endpoint of the Storage Account.
@@ -39,11 +40,11 @@ class ClusterDiagnosticsConfig {
 
   factory ClusterDiagnosticsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterDiagnosticsConfig(
-      blobEndpoint: map['blobEndpoint'] as String,
-      protectedAccountKeyName: map['protectedAccountKeyName'] as String,
-      queueEndpoint: map['queueEndpoint'] as String,
-      storageAccountName: map['storageAccountName'] as String,
-      tableEndpoint: map['tableEndpoint'] as String,
+      blobEndpoint: (map['blobEndpoint'] as String).input(),
+      protectedAccountKeyName: (map['protectedAccountKeyName'] as String).input(),
+      queueEndpoint: (map['queueEndpoint'] as String).input(),
+      storageAccountName: (map['storageAccountName'] as String).input(),
+      tableEndpoint: (map['tableEndpoint'] as String).input(),
     );
   }
 }

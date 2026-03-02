@@ -16,13 +16,10 @@ class DomainServiceAccessPolicyState {
   /// [domainName] The CloudSearch domain name the policy applies to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DomainServiceAccessPolicyState({
-    pulumi.Output<String>? accessPolicy,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? region,
-  }) :
-      accessPolicy = pulumi.Input.asOptionalInput<String>(accessPolicy),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accessPolicy,
+    this.domainName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class DomainServiceAccessPolicyState {
 
   factory DomainServiceAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return DomainServiceAccessPolicyState(
-      accessPolicy: map['accessPolicy'] == null ? null : pulumi.Output.create<String>(map['accessPolicy'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accessPolicy: map['accessPolicy'] == null ? null : (map['accessPolicy'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

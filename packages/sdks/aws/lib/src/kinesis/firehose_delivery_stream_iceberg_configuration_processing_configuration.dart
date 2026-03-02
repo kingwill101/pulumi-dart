@@ -5,9 +5,9 @@ import 'firehose_delivery_stream_iceberg_configuration_processing_configuration_
 
 class FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Specifies the data processors as multiple blocks. See `processors` block below for details.
-  final List<FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor>? processors;
+  final pulumi.Input<List<FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor>>? processors;
 
   /// Creates a new [FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
@@ -20,14 +20,14 @@ class FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'processors': ?processors == null ? null : pulumi.Input.encodeList<FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor, Map<String, dynamic>>(processors!, (value) => value.toMap()),
+      'processors': ?pulumi.Input.mapOptionalInputValue<List<FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor>, List<Map<String, dynamic>>>(processors, (value) => pulumi.Input.encodeList<FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      processors: map['processors'] == null ? null : pulumi.Input.decodeList<FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor>(map['processors'], (value) => FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor.fromMap((value as Map).cast<String, dynamic>())),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      processors: map['processors'] == null ? null : (pulumi.Input.decodeList<FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor>(map['processors'], (value) => FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

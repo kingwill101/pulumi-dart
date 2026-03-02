@@ -25,19 +25,13 @@ class NetworkInterfacePermissionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   NetworkInterfacePermissionState({
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? networkInterfaceId,
-    pulumi.Output<String>? networkInterfacePermissionId,
-    pulumi.Output<String>? permission,
-    pulumi.Output<String>? region,
-    pulumi.Output<NetworkInterfacePermissionTimeouts>? timeouts,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      networkInterfaceId = pulumi.Input.asOptionalInput<String>(networkInterfaceId),
-      networkInterfacePermissionId = pulumi.Input.asOptionalInput<String>(networkInterfacePermissionId),
-      permission = pulumi.Input.asOptionalInput<String>(permission),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<NetworkInterfacePermissionTimeouts>(timeouts);
+    this.awsAccountId,
+    this.networkInterfaceId,
+    this.networkInterfacePermissionId,
+    this.permission,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class NetworkInterfacePermissionState {
 
   factory NetworkInterfacePermissionState.fromMap(Map<String, dynamic> map) {
     return NetworkInterfacePermissionState(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      networkInterfacePermissionId: map['networkInterfacePermissionId'] == null ? null : pulumi.Output.create<String>(map['networkInterfacePermissionId'] as String),
-      permission: map['permission'] == null ? null : pulumi.Output.create<String>(map['permission'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<NetworkInterfacePermissionTimeouts>(NetworkInterfacePermissionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      networkInterfacePermissionId: map['networkInterfacePermissionId'] == null ? null : (map['networkInterfacePermissionId'] as String).input(),
+      permission: map['permission'] == null ? null : (map['permission'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (NetworkInterfacePermissionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

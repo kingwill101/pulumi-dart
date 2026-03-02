@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_config_type_notebooks_v2.dart';
 
 /// An accelerator configuration for a VM instance Definition of a hardware accelerator. Note that there is no check on `type` and `core_count` combinations. TPUs are not supported. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination.
 class AcceleratorConfigNotebooksV2 {
   /// Optional. Count of cores of this accelerator.
-  final String? coreCount;
+  final pulumi.Input<String>? coreCount;
   /// Optional. Type of this accelerator.
-  final AcceleratorConfigTypeNotebooksV2? type;
+  final pulumi.Input<AcceleratorConfigTypeNotebooksV2>? type;
 
   /// Creates a new [AcceleratorConfigNotebooksV2].
   /// [coreCount] Optional. Count of cores of this accelerator.
@@ -20,14 +21,14 @@ class AcceleratorConfigNotebooksV2 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'coreCount': ?coreCount,
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<AcceleratorConfigTypeNotebooksV2, String>(type, (value) => value.value),
     };
   }
 
   factory AcceleratorConfigNotebooksV2.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfigNotebooksV2(
-      coreCount: map['coreCount'] == null ? null : map['coreCount'] as String,
-      type: map['type'] == null ? null : AcceleratorConfigTypeNotebooksV2.fromValue(map['type'] as String),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as String).input(),
+      type: map['type'] == null ? null : (AcceleratorConfigTypeNotebooksV2.fromValue(map['type'] as String)).input(),
     );
   }
 }

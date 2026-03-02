@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotificationEndpoint {
   /// The locations.
-  final List<String>? locations;
+  final pulumi.Input<List<String>>? locations;
   /// The notification destination.
-  final String? notificationDestination;
+  final pulumi.Input<String>? notificationDestination;
 
   /// Creates a new [NotificationEndpoint].
   /// [locations] The locations.
@@ -24,8 +25,8 @@ class NotificationEndpoint {
 
   factory NotificationEndpoint.fromMap(Map<String, dynamic> map) {
     return NotificationEndpoint(
-      locations: map['locations'] == null ? null : (map['locations'] as List).cast<String>(),
-      notificationDestination: map['notificationDestination'] == null ? null : map['notificationDestination'] as String,
+      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      notificationDestination: map['notificationDestination'] == null ? null : (map['notificationDestination'] as String).input(),
     );
   }
 }

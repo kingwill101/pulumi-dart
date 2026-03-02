@@ -27,17 +27,12 @@ class RouteCalculationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value tags for the route calculator. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   RouteCalculationArgs({
-    required pulumi.Output<String> calculatorName,
-    required pulumi.Output<String> dataSource,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      calculatorName = pulumi.Input.asInput<String>(calculatorName),
-      dataSource = pulumi.Input.asInput<String>(dataSource),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.calculatorName,
+    required this.dataSource,
+    this.description,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class RouteCalculationArgs {
 
   factory RouteCalculationArgs.fromMap(Map<String, dynamic> map) {
     return RouteCalculationArgs(
-      calculatorName: pulumi.Output.create<String>(map['calculatorName'] as String),
-      dataSource: pulumi.Output.create<String>(map['dataSource'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      calculatorName: (map['calculatorName'] as String).input(),
+      dataSource: (map['dataSource'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

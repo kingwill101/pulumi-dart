@@ -10,17 +10,17 @@ import 'google_cloud_aiplatform_v1beta1_python_package_spec.dart';
 /// Represents the spec of a worker pool in a job.
 class GoogleCloudAiplatformV1beta1WorkerPoolSpec {
   /// The custom container task.
-  final GoogleCloudAiplatformV1beta1ContainerSpec? containerSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ContainerSpec>? containerSpec;
   /// Disk spec.
-  final GoogleCloudAiplatformV1beta1DiskSpec? diskSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1DiskSpec>? diskSpec;
   /// Optional. Immutable. The specification of a single machine.
-  final GoogleCloudAiplatformV1beta1MachineSpec? machineSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1MachineSpec>? machineSpec;
   /// Optional. List of NFS mount spec.
-  final List<GoogleCloudAiplatformV1beta1NfsMount>? nfsMounts;
+  final pulumi.Input<List<GoogleCloudAiplatformV1beta1NfsMount>>? nfsMounts;
   /// The Python packaged task.
-  final GoogleCloudAiplatformV1beta1PythonPackageSpec? pythonPackageSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1PythonPackageSpec>? pythonPackageSpec;
   /// Optional. The number of worker replicas to use for this worker pool.
-  final String? replicaCount;
+  final pulumi.Input<String>? replicaCount;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1WorkerPoolSpec].
   /// [containerSpec] The custom container task.
@@ -40,23 +40,23 @@ class GoogleCloudAiplatformV1beta1WorkerPoolSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerSpec': ?containerSpec == null ? null : containerSpec!.toMap(),
-      'diskSpec': ?diskSpec == null ? null : diskSpec!.toMap(),
-      'machineSpec': ?machineSpec == null ? null : machineSpec!.toMap(),
-      'nfsMounts': ?nfsMounts == null ? null : pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1NfsMount, Map<String, dynamic>>(nfsMounts!, (value) => value.toMap()),
-      'pythonPackageSpec': ?pythonPackageSpec == null ? null : pythonPackageSpec!.toMap(),
+      'containerSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1ContainerSpec, Map<String, dynamic>>(containerSpec, (value) => value.toMap()),
+      'diskSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1DiskSpec, Map<String, dynamic>>(diskSpec, (value) => value.toMap()),
+      'machineSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1MachineSpec, Map<String, dynamic>>(machineSpec, (value) => value.toMap()),
+      'nfsMounts': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudAiplatformV1beta1NfsMount>, List<Map<String, dynamic>>>(nfsMounts, (value) => pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1NfsMount, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pythonPackageSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1PythonPackageSpec, Map<String, dynamic>>(pythonPackageSpec, (value) => value.toMap()),
       'replicaCount': ?replicaCount,
     };
   }
 
   factory GoogleCloudAiplatformV1beta1WorkerPoolSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1WorkerPoolSpec(
-      containerSpec: map['containerSpec'] == null ? null : GoogleCloudAiplatformV1beta1ContainerSpec.fromMap((map['containerSpec'] as Map).cast<String, dynamic>()),
-      diskSpec: map['diskSpec'] == null ? null : GoogleCloudAiplatformV1beta1DiskSpec.fromMap((map['diskSpec'] as Map).cast<String, dynamic>()),
-      machineSpec: map['machineSpec'] == null ? null : GoogleCloudAiplatformV1beta1MachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>()),
-      nfsMounts: map['nfsMounts'] == null ? null : pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1NfsMount>(map['nfsMounts'], (value) => GoogleCloudAiplatformV1beta1NfsMount.fromMap((value as Map).cast<String, dynamic>())),
-      pythonPackageSpec: map['pythonPackageSpec'] == null ? null : GoogleCloudAiplatformV1beta1PythonPackageSpec.fromMap((map['pythonPackageSpec'] as Map).cast<String, dynamic>()),
-      replicaCount: map['replicaCount'] == null ? null : map['replicaCount'] as String,
+      containerSpec: map['containerSpec'] == null ? null : (GoogleCloudAiplatformV1beta1ContainerSpec.fromMap((map['containerSpec'] as Map).cast<String, dynamic>())).input(),
+      diskSpec: map['diskSpec'] == null ? null : (GoogleCloudAiplatformV1beta1DiskSpec.fromMap((map['diskSpec'] as Map).cast<String, dynamic>())).input(),
+      machineSpec: map['machineSpec'] == null ? null : (GoogleCloudAiplatformV1beta1MachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
+      nfsMounts: map['nfsMounts'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1NfsMount>(map['nfsMounts'], (value) => GoogleCloudAiplatformV1beta1NfsMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pythonPackageSpec: map['pythonPackageSpec'] == null ? null : (GoogleCloudAiplatformV1beta1PythonPackageSpec.fromMap((map['pythonPackageSpec'] as Map).cast<String, dynamic>())).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as String).input(),
     );
   }
 }

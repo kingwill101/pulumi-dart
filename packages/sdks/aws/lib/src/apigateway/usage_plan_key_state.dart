@@ -25,19 +25,13 @@ class UsagePlanKeyState {
   /// [usagePlanId] Id of the usage plan resource representing to associate the key to.
   /// [value] Value of a usage plan key.
   UsagePlanKeyState({
-    pulumi.Output<String>? keyId,
-    pulumi.Output<String>? keyType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? usagePlanId,
-    pulumi.Output<String>? value,
-  }) :
-      keyId = pulumi.Input.asOptionalInput<String>(keyId),
-      keyType = pulumi.Input.asOptionalInput<String>(keyType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      usagePlanId = pulumi.Input.asOptionalInput<String>(usagePlanId),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.keyId,
+    this.keyType,
+    this.name,
+    this.region,
+    this.usagePlanId,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class UsagePlanKeyState {
 
   factory UsagePlanKeyState.fromMap(Map<String, dynamic> map) {
     return UsagePlanKeyState(
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
-      keyType: map['keyType'] == null ? null : pulumi.Output.create<String>(map['keyType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      usagePlanId: map['usagePlanId'] == null ? null : pulumi.Output.create<String>(map['usagePlanId'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      usagePlanId: map['usagePlanId'] == null ? null : (map['usagePlanId'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

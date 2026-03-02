@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
 class NetworkTagsResponseContainerV1beta1 {
   /// List of network tags.
-  final List<String> tags;
+  final pulumi.Input<List<String>> tags;
 
   /// Creates a new [NetworkTagsResponseContainerV1beta1].
   /// [tags] List of network tags.
@@ -20,7 +21,7 @@ class NetworkTagsResponseContainerV1beta1 {
 
   factory NetworkTagsResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkTagsResponseContainerV1beta1(
-      tags: (map['tags'] as List).cast<String>(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

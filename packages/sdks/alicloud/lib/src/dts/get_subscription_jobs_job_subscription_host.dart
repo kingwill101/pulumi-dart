@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSubscriptionJobsJobSubscriptionHost {
   /// Classic network address.
-  final String privateHost;
+  final pulumi.Input<String> privateHost;
   /// Public network address.
-  final String publicHost;
+  final pulumi.Input<String> publicHost;
   /// VPC network address.
-  final String vpcHost;
+  final pulumi.Input<String> vpcHost;
 
   /// Creates a new [GetSubscriptionJobsJobSubscriptionHost].
   /// [privateHost] Classic network address.
@@ -29,9 +30,9 @@ class GetSubscriptionJobsJobSubscriptionHost {
 
   factory GetSubscriptionJobsJobSubscriptionHost.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionJobsJobSubscriptionHost(
-      privateHost: map['privateHost'] as String,
-      publicHost: map['publicHost'] as String,
-      vpcHost: map['vpcHost'] as String,
+      privateHost: (map['privateHost'] as String).input(),
+      publicHost: (map['publicHost'] as String).input(),
+      vpcHost: (map['vpcHost'] as String).input(),
     );
   }
 }

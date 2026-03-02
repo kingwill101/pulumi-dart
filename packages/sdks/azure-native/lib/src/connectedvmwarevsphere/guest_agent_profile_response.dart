@@ -6,19 +6,19 @@ import 'error_detail_response.dart';
 /// Specifies the guest agent settings for the virtual machine.
 class GuestAgentProfileResponse {
   /// The hybrid machine agent full version.
-  final String agentVersion;
+  final pulumi.Input<String> agentVersion;
   /// Gets or sets the Public Key provided by the client for enabling guest management.
-  final String? clientPublicKey;
+  final pulumi.Input<String>? clientPublicKey;
   /// Details about the error state.
-  final List<ErrorDetailResponse> errorDetails;
+  final pulumi.Input<List<ErrorDetailResponse>> errorDetails;
   /// The time of the last status change.
-  final String lastStatusChange;
+  final pulumi.Input<String> lastStatusChange;
   /// Specifies whether any MS SQL instance is discovered on the machine.
-  final String mssqlDiscovered;
+  final pulumi.Input<String> mssqlDiscovered;
   /// The status of the hybrid machine agent.
-  final String status;
+  final pulumi.Input<String> status;
   /// Specifies the VM's unique SMBIOS ID.
-  final String vmUuid;
+  final pulumi.Input<String> vmUuid;
 
   /// Creates a new [GuestAgentProfileResponse].
   /// [agentVersion] The hybrid machine agent full version.
@@ -42,7 +42,7 @@ class GuestAgentProfileResponse {
     return <String, dynamic>{
       'agentVersion': agentVersion,
       'clientPublicKey': ?clientPublicKey,
-      'errorDetails': pulumi.Input.encodeList<ErrorDetailResponse, Map<String, dynamic>>(errorDetails, (value) => value.toMap()),
+      'errorDetails': pulumi.Input.mapInputValue<List<ErrorDetailResponse>, List<Map<String, dynamic>>>(errorDetails, (value) => pulumi.Input.encodeList<ErrorDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastStatusChange': lastStatusChange,
       'mssqlDiscovered': mssqlDiscovered,
       'status': status,
@@ -52,13 +52,13 @@ class GuestAgentProfileResponse {
 
   factory GuestAgentProfileResponse.fromMap(Map<String, dynamic> map) {
     return GuestAgentProfileResponse(
-      agentVersion: map['agentVersion'] as String,
-      clientPublicKey: map['clientPublicKey'] == null ? null : map['clientPublicKey'] as String,
-      errorDetails: pulumi.Input.decodeList<ErrorDetailResponse>(map['errorDetails'], (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastStatusChange: map['lastStatusChange'] as String,
-      mssqlDiscovered: map['mssqlDiscovered'] as String,
-      status: map['status'] as String,
-      vmUuid: map['vmUuid'] as String,
+      agentVersion: (map['agentVersion'] as String).input(),
+      clientPublicKey: map['clientPublicKey'] == null ? null : (map['clientPublicKey'] as String).input(),
+      errorDetails: (pulumi.Input.decodeList<ErrorDetailResponse>(map['errorDetails'], (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastStatusChange: (map['lastStatusChange'] as String).input(),
+      mssqlDiscovered: (map['mssqlDiscovered'] as String).input(),
+      status: (map['status'] as String).input(),
+      vmUuid: (map['vmUuid'] as String).input(),
     );
   }
 }

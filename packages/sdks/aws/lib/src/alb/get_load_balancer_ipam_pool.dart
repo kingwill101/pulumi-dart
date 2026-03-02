@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerIpamPool {
-  final String ipv4IpamPoolId;
+  final pulumi.Input<String> ipv4IpamPoolId;
 
   /// Creates a new [GetLoadBalancerIpamPool].
   /// [ipv4IpamPoolId] Required.
@@ -18,7 +19,7 @@ class GetLoadBalancerIpamPool {
 
   factory GetLoadBalancerIpamPool.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerIpamPool(
-      ipv4IpamPoolId: map['ipv4IpamPoolId'] as String,
+      ipv4IpamPoolId: (map['ipv4IpamPoolId'] as String).input(),
     );
   }
 }

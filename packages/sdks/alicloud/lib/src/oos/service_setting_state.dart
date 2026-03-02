@@ -22,17 +22,12 @@ class ServiceSettingState {
   /// [deliverySlsEnabled] Is the execution record function to SLS delivery Template turned on.
   /// [deliverySlsProjectName] The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
   ServiceSettingState({
-    pulumi.Output<String>? deliveryOssBucketName,
-    pulumi.Output<bool>? deliveryOssEnabled,
-    pulumi.Output<String>? deliveryOssKeyPrefix,
-    pulumi.Output<bool>? deliverySlsEnabled,
-    pulumi.Output<String>? deliverySlsProjectName,
-  }) :
-      deliveryOssBucketName = pulumi.Input.asOptionalInput<String>(deliveryOssBucketName),
-      deliveryOssEnabled = pulumi.Input.asOptionalInput<bool>(deliveryOssEnabled),
-      deliveryOssKeyPrefix = pulumi.Input.asOptionalInput<String>(deliveryOssKeyPrefix),
-      deliverySlsEnabled = pulumi.Input.asOptionalInput<bool>(deliverySlsEnabled),
-      deliverySlsProjectName = pulumi.Input.asOptionalInput<String>(deliverySlsProjectName);
+    this.deliveryOssBucketName,
+    this.deliveryOssEnabled,
+    this.deliveryOssKeyPrefix,
+    this.deliverySlsEnabled,
+    this.deliverySlsProjectName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ServiceSettingState {
 
   factory ServiceSettingState.fromMap(Map<String, dynamic> map) {
     return ServiceSettingState(
-      deliveryOssBucketName: map['deliveryOssBucketName'] == null ? null : pulumi.Output.create<String>(map['deliveryOssBucketName'] as String),
-      deliveryOssEnabled: map['deliveryOssEnabled'] == null ? null : pulumi.Output.create<bool>(map['deliveryOssEnabled'] as bool),
-      deliveryOssKeyPrefix: map['deliveryOssKeyPrefix'] == null ? null : pulumi.Output.create<String>(map['deliveryOssKeyPrefix'] as String),
-      deliverySlsEnabled: map['deliverySlsEnabled'] == null ? null : pulumi.Output.create<bool>(map['deliverySlsEnabled'] as bool),
-      deliverySlsProjectName: map['deliverySlsProjectName'] == null ? null : pulumi.Output.create<String>(map['deliverySlsProjectName'] as String),
+      deliveryOssBucketName: map['deliveryOssBucketName'] == null ? null : (map['deliveryOssBucketName'] as String).input(),
+      deliveryOssEnabled: map['deliveryOssEnabled'] == null ? null : (map['deliveryOssEnabled'] as bool).input(),
+      deliveryOssKeyPrefix: map['deliveryOssKeyPrefix'] == null ? null : (map['deliveryOssKeyPrefix'] as String).input(),
+      deliverySlsEnabled: map['deliverySlsEnabled'] == null ? null : (map['deliverySlsEnabled'] as bool).input(),
+      deliverySlsProjectName: map['deliverySlsProjectName'] == null ? null : (map['deliverySlsProjectName'] as String).input(),
     );
   }
 }

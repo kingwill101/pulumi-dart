@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Sku of Azure Spring Apps
 class SkuResponse {
   /// Current capacity of the target resource
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Name of the Sku
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Tier of the Sku
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [SkuResponse].
   /// [capacity] Current capacity of the target resource
@@ -30,9 +31,9 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

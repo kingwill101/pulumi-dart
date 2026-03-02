@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'symmetric_key_response.dart';
 
 /// Authentication mechanism for IoT devices.
 class AuthenticationResponse {
   /// Symmetric key for authentication.
-  final SymmetricKeyResponse? symmetricKey;
+  final pulumi.Input<SymmetricKeyResponse>? symmetricKey;
 
   /// Creates a new [AuthenticationResponse].
   /// [symmetricKey] Symmetric key for authentication.
@@ -15,13 +16,13 @@ class AuthenticationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'symmetricKey': ?symmetricKey == null ? null : symmetricKey!.toMap(),
+      'symmetricKey': ?pulumi.Input.mapOptionalInputValue<SymmetricKeyResponse, Map<String, dynamic>>(symmetricKey, (value) => value.toMap()),
     };
   }
 
   factory AuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationResponse(
-      symmetricKey: map['symmetricKey'] == null ? null : SymmetricKeyResponse.fromMap((map['symmetricKey'] as Map).cast<String, dynamic>()),
+      symmetricKey: map['symmetricKey'] == null ? null : (SymmetricKeyResponse.fromMap((map['symmetricKey'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

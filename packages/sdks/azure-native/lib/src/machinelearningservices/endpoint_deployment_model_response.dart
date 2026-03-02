@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDeploymentModelResponse {
   /// Model format
-  final String? format;
+  final pulumi.Input<String>? format;
   /// Model name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Optional. Deployment model source ARM resource ID.
-  final String? source;
+  final pulumi.Input<String>? source;
   /// Model version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [EndpointDeploymentModelResponse].
   /// [format] Model format
@@ -34,10 +35,10 @@ class EndpointDeploymentModelResponse {
 
   factory EndpointDeploymentModelResponse.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentModelResponse(
-      format: map['format'] == null ? null : map['format'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

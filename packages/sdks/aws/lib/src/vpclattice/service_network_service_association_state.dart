@@ -38,27 +38,17 @@ class ServiceNetworkServiceAssociationState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ServiceNetworkServiceAssociationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdBy,
-    pulumi.Output<String>? customDomainName,
-    pulumi.Output<List<ServiceNetworkServiceAssociationDnsEntry>>? dnsEntries,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceIdentifier,
-    pulumi.Output<String>? serviceNetworkIdentifier,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdBy = pulumi.Input.asOptionalInput<String>(createdBy),
-      customDomainName = pulumi.Input.asOptionalInput<String>(customDomainName),
-      dnsEntries = pulumi.Input.asOptionalInput<List<ServiceNetworkServiceAssociationDnsEntry>>(dnsEntries),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceIdentifier = pulumi.Input.asOptionalInput<String>(serviceIdentifier),
-      serviceNetworkIdentifier = pulumi.Input.asOptionalInput<String>(serviceNetworkIdentifier),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.createdBy,
+    this.customDomainName,
+    this.dnsEntries,
+    this.region,
+    this.serviceIdentifier,
+    this.serviceNetworkIdentifier,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class ServiceNetworkServiceAssociationState {
 
   factory ServiceNetworkServiceAssociationState.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkServiceAssociationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdBy: map['createdBy'] == null ? null : pulumi.Output.create<String>(map['createdBy'] as String),
-      customDomainName: map['customDomainName'] == null ? null : pulumi.Output.create<String>(map['customDomainName'] as String),
-      dnsEntries: map['dnsEntries'] == null ? null : pulumi.Output.create<List<ServiceNetworkServiceAssociationDnsEntry>>(pulumi.Input.decodeList<ServiceNetworkServiceAssociationDnsEntry>(map['dnsEntries'], (value) => ServiceNetworkServiceAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceIdentifier: map['serviceIdentifier'] == null ? null : pulumi.Output.create<String>(map['serviceIdentifier'] as String),
-      serviceNetworkIdentifier: map['serviceNetworkIdentifier'] == null ? null : pulumi.Output.create<String>(map['serviceNetworkIdentifier'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
+      dnsEntries: map['dnsEntries'] == null ? null : (pulumi.Input.decodeList<ServiceNetworkServiceAssociationDnsEntry>(map['dnsEntries'], (value) => ServiceNetworkServiceAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceIdentifier: map['serviceIdentifier'] == null ? null : (map['serviceIdentifier'] as String).input(),
+      serviceNetworkIdentifier: map['serviceNetworkIdentifier'] == null ? null : (map['serviceNetworkIdentifier'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

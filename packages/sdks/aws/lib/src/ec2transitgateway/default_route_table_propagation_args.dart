@@ -22,15 +22,11 @@ class DefaultRouteTablePropagationArgs {
   /// [transitGatewayId] ID of the Transit Gateway to change the default association route table on.
   /// [transitGatewayRouteTableId] ID of the Transit Gateway Route Table to be made the default association route table.
   DefaultRouteTablePropagationArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<DefaultRouteTablePropagationTimeouts>? timeouts,
-    required pulumi.Output<String> transitGatewayId,
-    required pulumi.Output<String> transitGatewayRouteTableId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<DefaultRouteTablePropagationTimeouts>(timeouts),
-      transitGatewayId = pulumi.Input.asInput<String>(transitGatewayId),
-      transitGatewayRouteTableId = pulumi.Input.asInput<String>(transitGatewayRouteTableId);
+    this.region,
+    this.timeouts,
+    required this.transitGatewayId,
+    required this.transitGatewayRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DefaultRouteTablePropagationArgs {
 
   factory DefaultRouteTablePropagationArgs.fromMap(Map<String, dynamic> map) {
     return DefaultRouteTablePropagationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DefaultRouteTablePropagationTimeouts>(DefaultRouteTablePropagationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      transitGatewayId: pulumi.Output.create<String>(map['transitGatewayId'] as String),
-      transitGatewayRouteTableId: pulumi.Output.create<String>(map['transitGatewayRouteTableId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (DefaultRouteTablePropagationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      transitGatewayId: (map['transitGatewayId'] as String).input(),
+      transitGatewayRouteTableId: (map['transitGatewayRouteTableId'] as String).input(),
     );
   }
 }

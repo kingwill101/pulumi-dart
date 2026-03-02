@@ -6,9 +6,9 @@ import 'app_seen_info_response.dart';
 /// Data Type for App Seen
 class AppSeenDataResponse {
   /// array of appSeen
-  final List<AppSeenInfoResponse> appSeenList;
+  final pulumi.Input<List<AppSeenInfoResponse>> appSeenList;
   /// number of rows
-  final int count;
+  final pulumi.Input<int> count;
 
   /// Creates a new [AppSeenDataResponse].
   /// [appSeenList] array of appSeen
@@ -20,15 +20,15 @@ class AppSeenDataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appSeenList': pulumi.Input.encodeList<AppSeenInfoResponse, Map<String, dynamic>>(appSeenList, (value) => value.toMap()),
+      'appSeenList': pulumi.Input.mapInputValue<List<AppSeenInfoResponse>, List<Map<String, dynamic>>>(appSeenList, (value) => pulumi.Input.encodeList<AppSeenInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'count': count,
     };
   }
 
   factory AppSeenDataResponse.fromMap(Map<String, dynamic> map) {
     return AppSeenDataResponse(
-      appSeenList: pulumi.Input.decodeList<AppSeenInfoResponse>(map['appSeenList'], (value) => AppSeenInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      count: map['count'] as int,
+      appSeenList: (pulumi.Input.decodeList<AppSeenInfoResponse>(map['appSeenList'], (value) => AppSeenInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      count: (map['count'] as int).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Error Detail class which encapsulates Code, Message and Recommendations.
 class ErrorDetailResponse {
   /// Error code.
-  final String code;
+  final pulumi.Input<String> code;
   /// Error Message related to the Code.
-  final String message;
+  final pulumi.Input<String> message;
   /// List of recommendation strings.
-  final List<String> recommendations;
+  final pulumi.Input<List<String>> recommendations;
 
   /// Creates a new [ErrorDetailResponse].
   /// [code] Error code.
@@ -30,9 +31,9 @@ class ErrorDetailResponse {
 
   factory ErrorDetailResponse.fromMap(Map<String, dynamic> map) {
     return ErrorDetailResponse(
-      code: map['code'] as String,
-      message: map['message'] as String,
-      recommendations: (map['recommendations'] as List).cast<String>(),
+      code: (map['code'] as String).input(),
+      message: (map['message'] as String).input(),
+      recommendations: ((map['recommendations'] as List).cast<String>()).input(),
     );
   }
 }

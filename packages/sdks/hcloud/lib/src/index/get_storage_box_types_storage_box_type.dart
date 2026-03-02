@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStorageBoxTypesStorageBoxType {
   /// Maximum number of snapshots created automatically by a snapshot plan.
-  final int automaticSnapshotLimit;
+  final pulumi.Input<int> automaticSnapshotLimit;
   /// Date of the Storage Box Type deprecation announcement.
-  final String deprecationAnnounced;
+  final pulumi.Input<String> deprecationAnnounced;
   /// Description of the Storage Box Type.
-  final String description;
+  final pulumi.Input<String> description;
   /// ID of the Storage Box Type.
-  final int id;
+  final pulumi.Input<int> id;
   /// Whether the Storage Box Type is deprecated.
-  final bool isDeprecated;
+  final pulumi.Input<bool> isDeprecated;
   /// Name of the Storage Box Type.
-  final String name;
+  final pulumi.Input<String> name;
   /// Available storage in bytes.
-  final int size;
+  final pulumi.Input<int> size;
   /// Maximum number of allowed manual snapshots.
-  final int snapshotLimit;
+  final pulumi.Input<int> snapshotLimit;
   /// Maximum number of subaccounts.
-  final int subaccountsLimit;
+  final pulumi.Input<int> subaccountsLimit;
   /// Date of the Storage Box Type removal. After this date, the Storage Box Type cannot be used anymore.
-  final String unavailableAfter;
+  final pulumi.Input<String> unavailableAfter;
 
   /// Creates a new [GetStorageBoxTypesStorageBoxType].
   /// [automaticSnapshotLimit] Maximum number of snapshots created automatically by a snapshot plan.
@@ -64,16 +65,16 @@ class GetStorageBoxTypesStorageBoxType {
 
   factory GetStorageBoxTypesStorageBoxType.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxTypesStorageBoxType(
-      automaticSnapshotLimit: map['automaticSnapshotLimit'] as int,
-      deprecationAnnounced: map['deprecationAnnounced'] as String,
-      description: map['description'] as String,
-      id: map['id'] as int,
-      isDeprecated: map['isDeprecated'] as bool,
-      name: map['name'] as String,
-      size: map['size'] as int,
-      snapshotLimit: map['snapshotLimit'] as int,
-      subaccountsLimit: map['subaccountsLimit'] as int,
-      unavailableAfter: map['unavailableAfter'] as String,
+      automaticSnapshotLimit: (map['automaticSnapshotLimit'] as int).input(),
+      deprecationAnnounced: (map['deprecationAnnounced'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as int).input(),
+      isDeprecated: (map['isDeprecated'] as bool).input(),
+      name: (map['name'] as String).input(),
+      size: (map['size'] as int).input(),
+      snapshotLimit: (map['snapshotLimit'] as int).input(),
+      subaccountsLimit: (map['subaccountsLimit'] as int).input(),
+      unavailableAfter: (map['unavailableAfter'] as String).input(),
     );
   }
 }

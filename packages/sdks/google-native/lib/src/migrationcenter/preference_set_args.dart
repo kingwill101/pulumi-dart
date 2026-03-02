@@ -30,21 +30,14 @@ class PreferenceSetArgs {
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [virtualMachinePreferences] A set of preferences that applies to all virtual machines in the context.
   PreferenceSetArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> preferenceSetId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<VirtualMachinePreferences>? virtualMachinePreferences,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      preferenceSetId = pulumi.Input.asInput<String>(preferenceSetId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      virtualMachinePreferences = pulumi.Input.asOptionalInput<VirtualMachinePreferences>(virtualMachinePreferences);
+    this.description,
+    this.displayName,
+    this.location,
+    required this.preferenceSetId,
+    this.project,
+    this.requestId,
+    this.virtualMachinePreferences,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class PreferenceSetArgs {
 
   factory PreferenceSetArgs.fromMap(Map<String, dynamic> map) {
     return PreferenceSetArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      preferenceSetId: pulumi.Output.create<String>(map['preferenceSetId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : pulumi.Output.create<VirtualMachinePreferences>(VirtualMachinePreferences.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      preferenceSetId: (map['preferenceSetId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : (VirtualMachinePreferences.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

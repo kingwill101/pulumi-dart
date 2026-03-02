@@ -42,31 +42,19 @@ class RouteServerState {
   /// [virtualRouterAsn] Optional.
   /// [virtualRouterIps] Optional.
   RouteServerState({
-    pulumi.Output<bool>? branchToBranchTrafficEnabled,
-    pulumi.Output<String>? hubRoutingPreference,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? publicIpAddressId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? routingState,
-    pulumi.Output<String>? sku,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? virtualRouterAsn,
-    pulumi.Output<List<String>>? virtualRouterIps,
-  }) :
-      branchToBranchTrafficEnabled = pulumi.Input.asOptionalInput<bool>(branchToBranchTrafficEnabled),
-      hubRoutingPreference = pulumi.Input.asOptionalInput<String>(hubRoutingPreference),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicIpAddressId = pulumi.Input.asOptionalInput<String>(publicIpAddressId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      routingState = pulumi.Input.asOptionalInput<String>(routingState),
-      sku = pulumi.Input.asOptionalInput<String>(sku),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualRouterAsn = pulumi.Input.asOptionalInput<int>(virtualRouterAsn),
-      virtualRouterIps = pulumi.Input.asOptionalInput<List<String>>(virtualRouterIps);
+    this.branchToBranchTrafficEnabled,
+    this.hubRoutingPreference,
+    this.location,
+    this.name,
+    this.publicIpAddressId,
+    this.resourceGroupName,
+    this.routingState,
+    this.sku,
+    this.subnetId,
+    this.tags,
+    this.virtualRouterAsn,
+    this.virtualRouterIps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,18 +75,18 @@ class RouteServerState {
 
   factory RouteServerState.fromMap(Map<String, dynamic> map) {
     return RouteServerState(
-      branchToBranchTrafficEnabled: map['branchToBranchTrafficEnabled'] == null ? null : pulumi.Output.create<bool>(map['branchToBranchTrafficEnabled'] as bool),
-      hubRoutingPreference: map['hubRoutingPreference'] == null ? null : pulumi.Output.create<String>(map['hubRoutingPreference'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : pulumi.Output.create<String>(map['publicIpAddressId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routingState: map['routingState'] == null ? null : pulumi.Output.create<String>(map['routingState'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<String>(map['sku'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualRouterAsn: map['virtualRouterAsn'] == null ? null : pulumi.Output.create<int>(map['virtualRouterAsn'] as int),
-      virtualRouterIps: map['virtualRouterIps'] == null ? null : pulumi.Output.create<List<String>>((map['virtualRouterIps'] as List).cast<String>()),
+      branchToBranchTrafficEnabled: map['branchToBranchTrafficEnabled'] == null ? null : (map['branchToBranchTrafficEnabled'] as bool).input(),
+      hubRoutingPreference: map['hubRoutingPreference'] == null ? null : (map['hubRoutingPreference'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      routingState: map['routingState'] == null ? null : (map['routingState'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualRouterAsn: map['virtualRouterAsn'] == null ? null : (map['virtualRouterAsn'] as int).input(),
+      virtualRouterIps: map['virtualRouterIps'] == null ? null : ((map['virtualRouterIps'] as List).cast<String>()).input(),
     );
   }
 }

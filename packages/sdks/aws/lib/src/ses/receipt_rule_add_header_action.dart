@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReceiptRuleAddHeaderAction {
   /// The name of the header to add
-  final String headerName;
+  final pulumi.Input<String> headerName;
   /// The value of the header to add
-  final String headerValue;
+  final pulumi.Input<String> headerValue;
   /// The position of the action in the receipt rule
-  final int position;
+  final pulumi.Input<int> position;
 
   /// Creates a new [ReceiptRuleAddHeaderAction].
   /// [headerName] The name of the header to add
@@ -29,9 +30,9 @@ class ReceiptRuleAddHeaderAction {
 
   factory ReceiptRuleAddHeaderAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleAddHeaderAction(
-      headerName: map['headerName'] as String,
-      headerValue: map['headerValue'] as String,
-      position: map['position'] as int,
+      headerName: (map['headerName'] as String).input(),
+      headerValue: (map['headerValue'] as String).input(),
+      position: (map['position'] as int).input(),
     );
   }
 }

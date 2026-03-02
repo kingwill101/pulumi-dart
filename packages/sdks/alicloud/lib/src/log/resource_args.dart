@@ -25,17 +25,12 @@ class ResourceArgs {
   /// [schema] The meta store's schema info, which is json string format, used to define table's fields.
   /// [type] The meta store's type, userdefine e.g.
   ResourceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? extInfo,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> schema,
-    required pulumi.Output<String> type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      extInfo = pulumi.Input.asOptionalInput<String>(extInfo),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      schema = pulumi.Input.asInput<String>(schema),
-      type = pulumi.Input.asInput<String>(type);
+    this.description,
+    this.extInfo,
+    this.name,
+    required this.schema,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      extInfo: map['extInfo'] == null ? null : pulumi.Output.create<String>(map['extInfo'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      schema: pulumi.Output.create<String>(map['schema'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      extInfo: map['extInfo'] == null ? null : (map['extInfo'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      schema: (map['schema'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

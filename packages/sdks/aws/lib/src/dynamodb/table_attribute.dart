@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableAttribute {
   /// Name of the attribute
-  final String name;
+  final pulumi.Input<String> name;
   /// Attribute type. Valid values are `S` (string), `N` (number), `B` (binary).
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TableAttribute].
   /// [name] Name of the attribute
@@ -24,8 +25,8 @@ class TableAttribute {
 
   factory TableAttribute.fromMap(Map<String, dynamic> map) {
     return TableAttribute(
-      name: map['name'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

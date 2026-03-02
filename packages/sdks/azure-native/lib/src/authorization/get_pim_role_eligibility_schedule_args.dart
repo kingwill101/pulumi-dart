@@ -16,11 +16,9 @@ class GetPimRoleEligibilityScheduleArgs {
   /// [roleEligibilityScheduleRequestName] The name (guid) of the role eligibility schedule request to get.
   /// [scope] The scope of the role eligibility schedule request.
   GetPimRoleEligibilityScheduleArgs({
-    required pulumi.Output<String> roleEligibilityScheduleRequestName,
-    required pulumi.Output<String> scope,
-  }) :
-      roleEligibilityScheduleRequestName = pulumi.Input.asInput<String>(roleEligibilityScheduleRequestName),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.roleEligibilityScheduleRequestName,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPimRoleEligibilityScheduleArgs {
 
   factory GetPimRoleEligibilityScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetPimRoleEligibilityScheduleArgs(
-      roleEligibilityScheduleRequestName: pulumi.Output.create<String>(map['roleEligibilityScheduleRequestName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      roleEligibilityScheduleRequestName: (map['roleEligibilityScheduleRequestName'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

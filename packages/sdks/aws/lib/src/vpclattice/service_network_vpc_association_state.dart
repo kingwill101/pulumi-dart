@@ -42,29 +42,18 @@ class ServiceNetworkVpcAssociationState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcIdentifier] The ID of the VPC.
   ServiceNetworkVpcAssociationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdBy,
-    pulumi.Output<ServiceNetworkVpcAssociationDnsOptions>? dnsOptions,
-    pulumi.Output<bool>? privateDnsEnabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupIds,
-    pulumi.Output<String>? serviceNetworkIdentifier,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vpcIdentifier,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdBy = pulumi.Input.asOptionalInput<String>(createdBy),
-      dnsOptions = pulumi.Input.asOptionalInput<ServiceNetworkVpcAssociationDnsOptions>(dnsOptions),
-      privateDnsEnabled = pulumi.Input.asOptionalInput<bool>(privateDnsEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-      serviceNetworkIdentifier = pulumi.Input.asOptionalInput<String>(serviceNetworkIdentifier),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vpcIdentifier = pulumi.Input.asOptionalInput<String>(vpcIdentifier);
+    this.arn,
+    this.createdBy,
+    this.dnsOptions,
+    this.privateDnsEnabled,
+    this.region,
+    this.securityGroupIds,
+    this.serviceNetworkIdentifier,
+    this.status,
+    this.tags,
+    this.tagsAll,
+    this.vpcIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class ServiceNetworkVpcAssociationState {
 
   factory ServiceNetworkVpcAssociationState.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkVpcAssociationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdBy: map['createdBy'] == null ? null : pulumi.Output.create<String>(map['createdBy'] as String),
-      dnsOptions: map['dnsOptions'] == null ? null : pulumi.Output.create<ServiceNetworkVpcAssociationDnsOptions>(ServiceNetworkVpcAssociationDnsOptions.fromMap((map['dnsOptions'] as Map).cast<String, dynamic>())),
-      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : pulumi.Output.create<bool>(map['privateDnsEnabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
-      serviceNetworkIdentifier: map['serviceNetworkIdentifier'] == null ? null : pulumi.Output.create<String>(map['serviceNetworkIdentifier'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vpcIdentifier: map['vpcIdentifier'] == null ? null : pulumi.Output.create<String>(map['vpcIdentifier'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      dnsOptions: map['dnsOptions'] == null ? null : (ServiceNetworkVpcAssociationDnsOptions.fromMap((map['dnsOptions'] as Map).cast<String, dynamic>())).input(),
+      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      serviceNetworkIdentifier: map['serviceNetworkIdentifier'] == null ? null : (map['serviceNetworkIdentifier'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vpcIdentifier: map['vpcIdentifier'] == null ? null : (map['vpcIdentifier'] as String).input(),
     );
   }
 }

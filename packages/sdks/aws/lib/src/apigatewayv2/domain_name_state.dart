@@ -36,25 +36,16 @@ class DomainNameState {
   /// [tags] Map of tags to assign to the domain name. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   DomainNameState({
-    pulumi.Output<String>? apiMappingSelectionExpression,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<DomainNameDomainNameConfiguration>? domainNameConfiguration,
-    pulumi.Output<DomainNameMutualTlsAuthentication>? mutualTlsAuthentication,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routingMode,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      apiMappingSelectionExpression = pulumi.Input.asOptionalInput<String>(apiMappingSelectionExpression),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      domainNameConfiguration = pulumi.Input.asOptionalInput<DomainNameDomainNameConfiguration>(domainNameConfiguration),
-      mutualTlsAuthentication = pulumi.Input.asOptionalInput<DomainNameMutualTlsAuthentication>(mutualTlsAuthentication),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingMode = pulumi.Input.asOptionalInput<String>(routingMode),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.apiMappingSelectionExpression,
+    this.arn,
+    this.domainName,
+    this.domainNameConfiguration,
+    this.mutualTlsAuthentication,
+    this.region,
+    this.routingMode,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class DomainNameState {
 
   factory DomainNameState.fromMap(Map<String, dynamic> map) {
     return DomainNameState(
-      apiMappingSelectionExpression: map['apiMappingSelectionExpression'] == null ? null : pulumi.Output.create<String>(map['apiMappingSelectionExpression'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      domainNameConfiguration: map['domainNameConfiguration'] == null ? null : pulumi.Output.create<DomainNameDomainNameConfiguration>(DomainNameDomainNameConfiguration.fromMap((map['domainNameConfiguration'] as Map).cast<String, dynamic>())),
-      mutualTlsAuthentication: map['mutualTlsAuthentication'] == null ? null : pulumi.Output.create<DomainNameMutualTlsAuthentication>(DomainNameMutualTlsAuthentication.fromMap((map['mutualTlsAuthentication'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingMode: map['routingMode'] == null ? null : pulumi.Output.create<String>(map['routingMode'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      apiMappingSelectionExpression: map['apiMappingSelectionExpression'] == null ? null : (map['apiMappingSelectionExpression'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainNameConfiguration: map['domainNameConfiguration'] == null ? null : (DomainNameDomainNameConfiguration.fromMap((map['domainNameConfiguration'] as Map).cast<String, dynamic>())).input(),
+      mutualTlsAuthentication: map['mutualTlsAuthentication'] == null ? null : (DomainNameMutualTlsAuthentication.fromMap((map['mutualTlsAuthentication'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingMode: map['routingMode'] == null ? null : (map['routingMode'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

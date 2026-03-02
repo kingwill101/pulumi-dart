@@ -16,11 +16,9 @@ class GetJobCollectionArgs {
   /// [jobCollectionName] The job collection name.
   /// [resourceGroupName] The resource group name.
   GetJobCollectionArgs({
-    required pulumi.Output<String> jobCollectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      jobCollectionName = pulumi.Input.asInput<String>(jobCollectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.jobCollectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetJobCollectionArgs {
 
   factory GetJobCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetJobCollectionArgs(
-      jobCollectionName: pulumi.Output.create<String>(map['jobCollectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      jobCollectionName: (map['jobCollectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

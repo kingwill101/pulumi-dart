@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 
 /// An image resource belonging to a catalog resource.
 class ImageResponse {
   /// The image component id.
-  final String componentId;
+  final pulumi.Input<String> componentId;
   /// The image description.
-  final String description;
+  final pulumi.Input<String> description;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final pulumi.Input<String> id;
   /// Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads.
-  final String? image;
+  final pulumi.Input<String>? image;
   /// Image ID
-  final String? imageId;
+  final pulumi.Input<String>? imageId;
   /// Image name
-  final String imageName;
+  final pulumi.Input<String> imageName;
   /// The image type.
-  final String imageType;
+  final pulumi.Input<String> imageType;
   /// The name of the resource
-  final String name;
+  final pulumi.Input<String> name;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Regional data boundary for an image
-  final String? regionalDataBoundary;
+  final pulumi.Input<String>? regionalDataBoundary;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final pulumi.Input<String> type;
   /// Location the image
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [ImageResponse].
   /// [componentId] The image component id.
@@ -73,7 +74,7 @@ class ImageResponse {
       'name': name,
       'provisioningState': provisioningState,
       'regionalDataBoundary': ?regionalDataBoundary,
-      'systemData': systemData.toMap(),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
       'uri': uri,
     };
@@ -81,19 +82,19 @@ class ImageResponse {
 
   factory ImageResponse.fromMap(Map<String, dynamic> map) {
     return ImageResponse(
-      componentId: map['componentId'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      image: map['image'] == null ? null : map['image'] as String,
-      imageId: map['imageId'] == null ? null : map['imageId'] as String,
-      imageName: map['imageName'] as String,
-      imageType: map['imageType'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : map['regionalDataBoundary'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      uri: map['uri'] as String,
+      componentId: (map['componentId'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      imageName: (map['imageName'] as String).input(),
+      imageType: (map['imageType'] as String).input(),
+      name: (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary'] as String).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

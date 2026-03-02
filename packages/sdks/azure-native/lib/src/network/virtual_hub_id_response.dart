@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Virtual Hub identifier.
 class VirtualHubIdResponse {
   /// The resource URI for the Virtual Hub where the ExpressRoute gateway is or will be deployed. The Virtual Hub resource and the ExpressRoute gateway resource reside in the same subscription.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [VirtualHubIdResponse].
   /// [id] The resource URI for the Virtual Hub where the ExpressRoute gateway is or will be deployed. The Virtual Hub resource and the ExpressRoute gateway resource reside in the same subscription.
@@ -20,7 +21,7 @@ class VirtualHubIdResponse {
 
   factory VirtualHubIdResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHubIdResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

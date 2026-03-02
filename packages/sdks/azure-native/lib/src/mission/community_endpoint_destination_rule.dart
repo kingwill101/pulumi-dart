@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Base type for destination rules.
 class CommunityEndpointDestinationRule {
   /// Destination address. Can include multiple CIDR/IP Addresses or fqdn tags or fqdns (for community endpoint) separated by commas.
-  final String? destination;
+  final pulumi.Input<String>? destination;
   /// Destination Type.
-  final String? destinationType;
+  final pulumi.Input<String>? destinationType;
   /// Endpoint Rule Name.
-  final String? endpointRuleName;
+  final pulumi.Input<String>? endpointRuleName;
   /// Port. Can include multiple ports separated by commas or a range indicated by a hyphen.
-  final String? ports;
+  final pulumi.Input<String>? ports;
   /// Protocols. Options specified by Endpoint Protocol Enum.
-  final List<String>? protocols;
+  final pulumi.Input<List<String>>? protocols;
   /// Transit Hub Resource Id.
-  final String? transitHubResourceId;
+  final pulumi.Input<String>? transitHubResourceId;
 
   /// Creates a new [CommunityEndpointDestinationRule].
   /// [destination] Destination address. Can include multiple CIDR/IP Addresses or fqdn tags or fqdns (for community endpoint) separated by commas.
@@ -45,12 +46,12 @@ class CommunityEndpointDestinationRule {
 
   factory CommunityEndpointDestinationRule.fromMap(Map<String, dynamic> map) {
     return CommunityEndpointDestinationRule(
-      destination: map['destination'] == null ? null : map['destination'] as String,
-      destinationType: map['destinationType'] == null ? null : map['destinationType'] as String,
-      endpointRuleName: map['endpointRuleName'] == null ? null : map['endpointRuleName'] as String,
-      ports: map['ports'] == null ? null : map['ports'] as String,
-      protocols: map['protocols'] == null ? null : (map['protocols'] as List).cast<String>(),
-      transitHubResourceId: map['transitHubResourceId'] == null ? null : map['transitHubResourceId'] as String,
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      destinationType: map['destinationType'] == null ? null : (map['destinationType'] as String).input(),
+      endpointRuleName: map['endpointRuleName'] == null ? null : (map['endpointRuleName'] as String).input(),
+      ports: map['ports'] == null ? null : (map['ports'] as String).input(),
+      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<String>()).input(),
+      transitHubResourceId: map['transitHubResourceId'] == null ? null : (map['transitHubResourceId'] as String).input(),
     );
   }
 }

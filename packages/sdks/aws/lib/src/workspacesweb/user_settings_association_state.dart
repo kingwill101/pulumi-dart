@@ -18,13 +18,10 @@ class UserSettingsAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userSettingsArn] ARN of the user settings to associate with the portal. Forces replacement if changed.
   UserSettingsAssociationState({
-    pulumi.Output<String>? portalArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? userSettingsArn,
-  }) :
-      portalArn = pulumi.Input.asOptionalInput<String>(portalArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userSettingsArn = pulumi.Input.asOptionalInput<String>(userSettingsArn);
+    this.portalArn,
+    this.region,
+    this.userSettingsArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class UserSettingsAssociationState {
 
   factory UserSettingsAssociationState.fromMap(Map<String, dynamic> map) {
     return UserSettingsAssociationState(
-      portalArn: map['portalArn'] == null ? null : pulumi.Output.create<String>(map['portalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userSettingsArn: map['userSettingsArn'] == null ? null : pulumi.Output.create<String>(map['userSettingsArn'] as String),
+      portalArn: map['portalArn'] == null ? null : (map['portalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userSettingsArn: map['userSettingsArn'] == null ? null : (map['userSettingsArn'] as String).input(),
     );
   }
 }

@@ -5,27 +5,27 @@ import 'orchestrated_virtual_machine_scale_set_network_interface_ip_configuratio
 
 class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
   /// A list of Backend Address Pools IDs from a Application Gateway which this Virtual Machine Scale Set should be connected to.
-  final List<String>? applicationGatewayBackendAddressPoolIds;
+  final pulumi.Input<List<String>>? applicationGatewayBackendAddressPoolIds;
   /// A list of Application Security Group IDs which this Virtual Machine Scale Set should be connected to.
-  final List<String>? applicationSecurityGroupIds;
+  final pulumi.Input<List<String>>? applicationSecurityGroupIds;
   /// A list of Backend Address Pools IDs from a Load Balancer which this Virtual Machine Scale Set should be connected to.
   ///
   /// > **Note:** When using this field you'll also need to configure a Rule for the Load Balancer, and use a depends_on between this resource and the Load Balancer Rule.
-  final List<String>? loadBalancerBackendAddressPoolIds;
+  final pulumi.Input<List<String>>? loadBalancerBackendAddressPoolIds;
   /// The Name which should be used for this IP Configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// Is this the Primary IP Configuration for this Network Interface? Possible values are `true` and `false`. Defaults to `false`.
   ///
   /// > **Note:** One `ip_configuration` block must be marked as Primary for each Network Interface.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// A `public_ip_address` block as defined below.
-  final List<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress>? publicIpAddresses;
+  final pulumi.Input<List<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress>>? publicIpAddresses;
   /// The ID of the Subnet which this IP Configuration should be connected to.
   ///
   /// > **Note:** `subnet_id` is required if version is set to `IPv4`.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
   /// The Internet Protocol Version which should be used for this IP Configuration. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration].
   /// [applicationGatewayBackendAddressPoolIds] A list of Backend Address Pools IDs from a Application Gateway which this Virtual Machine Scale Set should be connected to.
@@ -54,7 +54,7 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
       'loadBalancerBackendAddressPoolIds': ?loadBalancerBackendAddressPoolIds,
       'name': name,
       'primary': ?primary,
-      'publicIpAddresses': ?publicIpAddresses == null ? null : pulumi.Input.encodeList<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress, Map<String, dynamic>>(publicIpAddresses!, (value) => value.toMap()),
+      'publicIpAddresses': ?pulumi.Input.mapOptionalInputValue<List<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress>, List<Map<String, dynamic>>>(publicIpAddresses, (value) => pulumi.Input.encodeList<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'subnetId': ?subnetId,
       'version': ?version,
     };
@@ -62,14 +62,14 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
 
   factory OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration(
-      applicationGatewayBackendAddressPoolIds: map['applicationGatewayBackendAddressPoolIds'] == null ? null : (map['applicationGatewayBackendAddressPoolIds'] as List).cast<String>(),
-      applicationSecurityGroupIds: map['applicationSecurityGroupIds'] == null ? null : (map['applicationSecurityGroupIds'] as List).cast<String>(),
-      loadBalancerBackendAddressPoolIds: map['loadBalancerBackendAddressPoolIds'] == null ? null : (map['loadBalancerBackendAddressPoolIds'] as List).cast<String>(),
-      name: map['name'] as String,
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      publicIpAddresses: map['publicIpAddresses'] == null ? null : pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress>(map['publicIpAddresses'], (value) => OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress.fromMap((value as Map).cast<String, dynamic>())),
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      applicationGatewayBackendAddressPoolIds: map['applicationGatewayBackendAddressPoolIds'] == null ? null : ((map['applicationGatewayBackendAddressPoolIds'] as List).cast<String>()).input(),
+      applicationSecurityGroupIds: map['applicationSecurityGroupIds'] == null ? null : ((map['applicationSecurityGroupIds'] as List).cast<String>()).input(),
+      loadBalancerBackendAddressPoolIds: map['loadBalancerBackendAddressPoolIds'] == null ? null : ((map['loadBalancerBackendAddressPoolIds'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      publicIpAddresses: map['publicIpAddresses'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress>(map['publicIpAddresses'], (value) => OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

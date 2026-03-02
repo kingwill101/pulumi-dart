@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Target lags rolling window determined automatically.
 class AutoTargetRollingWindowSize {
   /// Target rolling windows size mode.
   /// Expected value is 'Auto'.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [AutoTargetRollingWindowSize].
   /// [mode] Target rolling windows size mode.
@@ -21,7 +22,7 @@ class AutoTargetRollingWindowSize {
 
   factory AutoTargetRollingWindowSize.fromMap(Map<String, dynamic> map) {
     return AutoTargetRollingWindowSize(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

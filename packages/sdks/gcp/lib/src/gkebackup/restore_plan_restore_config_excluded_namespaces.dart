@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestorePlanRestoreConfigExcludedNamespaces {
   /// A list of Kubernetes Namespaces.
-  final List<String> namespaces;
+  final pulumi.Input<List<String>> namespaces;
 
   /// Creates a new [RestorePlanRestoreConfigExcludedNamespaces].
   /// [namespaces] A list of Kubernetes Namespaces.
@@ -19,7 +20,7 @@ class RestorePlanRestoreConfigExcludedNamespaces {
 
   factory RestorePlanRestoreConfigExcludedNamespaces.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigExcludedNamespaces(
-      namespaces: (map['namespaces'] as List).cast<String>(),
+      namespaces: ((map['namespaces'] as List).cast<String>()).input(),
     );
   }
 }

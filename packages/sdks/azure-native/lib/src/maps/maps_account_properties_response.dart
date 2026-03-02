@@ -9,19 +9,19 @@ import 'maps_account_properties_response_locations.dart';
 /// Additional Maps account properties
 class MapsAccountPropertiesResponse {
   /// Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
-  final CorsRulesResponse? cors;
+  final pulumi.Input<CorsRulesResponse>? cors;
   /// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys and Shared Access Signature Token authentication from any usage.
-  final bool? disableLocalAuth;
+  final pulumi.Input<bool>? disableLocalAuth;
   /// All encryption configuration for a resource.
-  final EncryptionResponse? encryption;
+  final pulumi.Input<EncryptionResponse>? encryption;
   /// The array of associated resources to the Maps account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Maps Account Managed Identity(s) permissions to those resource(s).
-  final List<LinkedResourceResponse>? linkedResources;
+  final pulumi.Input<List<LinkedResourceResponse>>? linkedResources;
   /// List of additional data processing regions for the Maps Account, which may result in requests being processed in another geography. Some features or results may be restricted to specific regions. By default, Maps REST APIs process requests according to the account location or the [geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).
-  final List<MapsAccountPropertiesResponseLocations>? locations;
+  final pulumi.Input<List<MapsAccountPropertiesResponseLocations>>? locations;
   /// The provisioning state of the Maps account resource, Account updates can only be performed on terminal states. Terminal states: `Succeeded` and `Failed`
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// A unique identifier for the Maps Account
-  final String uniqueId;
+  final pulumi.Input<String> uniqueId;
 
   /// Creates a new [MapsAccountPropertiesResponse].
   /// [cors] Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
@@ -43,11 +43,11 @@ class MapsAccountPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cors': ?cors == null ? null : cors!.toMap(),
+      'cors': ?pulumi.Input.mapOptionalInputValue<CorsRulesResponse, Map<String, dynamic>>(cors, (value) => value.toMap()),
       'disableLocalAuth': ?disableLocalAuth,
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
-      'linkedResources': ?linkedResources == null ? null : pulumi.Input.encodeList<LinkedResourceResponse, Map<String, dynamic>>(linkedResources!, (value) => value.toMap()),
-      'locations': ?locations == null ? null : pulumi.Input.encodeList<MapsAccountPropertiesResponseLocations, Map<String, dynamic>>(locations!, (value) => value.toMap()),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<EncryptionResponse, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'linkedResources': ?pulumi.Input.mapOptionalInputValue<List<LinkedResourceResponse>, List<Map<String, dynamic>>>(linkedResources, (value) => pulumi.Input.encodeList<LinkedResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'locations': ?pulumi.Input.mapOptionalInputValue<List<MapsAccountPropertiesResponseLocations>, List<Map<String, dynamic>>>(locations, (value) => pulumi.Input.encodeList<MapsAccountPropertiesResponseLocations, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'uniqueId': uniqueId,
     };
@@ -55,13 +55,13 @@ class MapsAccountPropertiesResponse {
 
   factory MapsAccountPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MapsAccountPropertiesResponse(
-      cors: map['cors'] == null ? null : CorsRulesResponse.fromMap((map['cors'] as Map).cast<String, dynamic>()),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : map['disableLocalAuth'] as bool,
-      encryption: map['encryption'] == null ? null : EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      linkedResources: map['linkedResources'] == null ? null : pulumi.Input.decodeList<LinkedResourceResponse>(map['linkedResources'], (value) => LinkedResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      locations: map['locations'] == null ? null : pulumi.Input.decodeList<MapsAccountPropertiesResponseLocations>(map['locations'], (value) => MapsAccountPropertiesResponseLocations.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      uniqueId: map['uniqueId'] as String,
+      cors: map['cors'] == null ? null : (CorsRulesResponse.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      linkedResources: map['linkedResources'] == null ? null : (pulumi.Input.decodeList<LinkedResourceResponse>(map['linkedResources'], (value) => LinkedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<MapsAccountPropertiesResponseLocations>(map['locations'], (value) => MapsAccountPropertiesResponseLocations.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      uniqueId: (map['uniqueId'] as String).input(),
     );
   }
 }

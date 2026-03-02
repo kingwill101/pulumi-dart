@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'awselastic_block_store_volume_source_patch.dart';
 import 'azure_disk_volume_source_patch.dart';
 import 'azure_file_volume_source_patch.dart';
@@ -34,23 +35,23 @@ import 'vsphere_virtual_disk_volume_source_patch.dart';
 /// Volume represents a named volume in a pod that may be accessed by any container in the pod.
 class VolumePatch {
   /// awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Deprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree awsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
-  final AWSElasticBlockStoreVolumeSourcePatch? awsElasticBlockStore;
+  final pulumi.Input<AWSElasticBlockStoreVolumeSourcePatch>? awsElasticBlockStore;
   /// azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod. Deprecated: AzureDisk is deprecated. All operations for the in-tree azureDisk type are redirected to the disk.csi.azure.com CSI driver.
-  final AzureDiskVolumeSourcePatch? azureDisk;
+  final pulumi.Input<AzureDiskVolumeSourcePatch>? azureDisk;
   /// azureFile represents an Azure File Service mount on the host and bind mount to the pod. Deprecated: AzureFile is deprecated. All operations for the in-tree azureFile type are redirected to the file.csi.azure.com CSI driver.
-  final AzureFileVolumeSourcePatch? azureFile;
+  final pulumi.Input<AzureFileVolumeSourcePatch>? azureFile;
   /// cephFS represents a Ceph FS mount on the host that shares a pod's lifetime. Deprecated: CephFS is deprecated and the in-tree cephfs type is no longer supported.
-  final CephFSVolumeSourcePatch? cephfs;
+  final pulumi.Input<CephFSVolumeSourcePatch>? cephfs;
   /// cinder represents a cinder volume attached and mounted on kubelets host machine. Deprecated: Cinder is deprecated. All operations for the in-tree cinder type are redirected to the cinder.csi.openstack.org CSI driver. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
-  final CinderVolumeSourcePatch? cinder;
+  final pulumi.Input<CinderVolumeSourcePatch>? cinder;
   /// configMap represents a configMap that should populate this volume
-  final ConfigMapVolumeSourcePatch? configMap;
+  final pulumi.Input<ConfigMapVolumeSourcePatch>? configMap;
   /// csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers.
-  final CSIVolumeSourcePatch? csi;
+  final pulumi.Input<CSIVolumeSourcePatch>? csi;
   /// downwardAPI represents downward API about the pod that should populate this volume
-  final DownwardAPIVolumeSourcePatch? downwardAPI;
+  final pulumi.Input<DownwardAPIVolumeSourcePatch>? downwardAPI;
   /// emptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
-  final EmptyDirVolumeSourcePatch? emptyDir;
+  final pulumi.Input<EmptyDirVolumeSourcePatch>? emptyDir;
   /// ephemeral represents a volume that is handled by a cluster storage driver. The volume's lifecycle is tied to the pod that defines it - it will be created before the pod starts, and deleted when the pod is removed.
   ///
   /// Use this if: a) the volume is only needed while the pod runs, b) features of normal volumes like restoring from snapshot or capacity
@@ -65,53 +66,53 @@ class VolumePatch {
   /// Use CSI for light-weight local ephemeral volumes if the CSI driver is meant to be used that way - see the documentation of the driver for more information.
   ///
   /// A pod can use both types of ephemeral volumes and persistent volumes at the same time.
-  final EphemeralVolumeSourcePatch? ephemeral;
+  final pulumi.Input<EphemeralVolumeSourcePatch>? ephemeral;
   /// fc represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
-  final FCVolumeSourcePatch? fc;
+  final pulumi.Input<FCVolumeSourcePatch>? fc;
   /// flexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. Deprecated: FlexVolume is deprecated. Consider using a CSIDriver instead.
-  final FlexVolumeSourcePatch? flexVolume;
+  final pulumi.Input<FlexVolumeSourcePatch>? flexVolume;
   /// flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running. Deprecated: Flocker is deprecated and the in-tree flocker type is no longer supported.
-  final FlockerVolumeSourcePatch? flocker;
+  final pulumi.Input<FlockerVolumeSourcePatch>? flocker;
   /// gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Deprecated: GCEPersistentDisk is deprecated. All operations for the in-tree gcePersistentDisk type are redirected to the pd.csi.storage.gke.io CSI driver. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
-  final GCEPersistentDiskVolumeSourcePatch? gcePersistentDisk;
+  final pulumi.Input<GCEPersistentDiskVolumeSourcePatch>? gcePersistentDisk;
   /// gitRepo represents a git repository at a particular revision. Deprecated: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.
-  final GitRepoVolumeSourcePatch? gitRepo;
+  final pulumi.Input<GitRepoVolumeSourcePatch>? gitRepo;
   /// glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime. Deprecated: Glusterfs is deprecated and the in-tree glusterfs type is no longer supported.
-  final GlusterfsVolumeSourcePatch? glusterfs;
+  final pulumi.Input<GlusterfsVolumeSourcePatch>? glusterfs;
   /// hostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
-  final HostPathVolumeSourcePatch? hostPath;
+  final pulumi.Input<HostPathVolumeSourcePatch>? hostPath;
   /// image represents an OCI object (a container image or artifact) pulled and mounted on the kubelet's host machine. The volume is resolved at pod startup depending on which PullPolicy value is provided:
   ///
   /// - Always: the kubelet always attempts to pull the reference. Container creation will fail If the pull fails. - Never: the kubelet never pulls the reference and only uses a local image or artifact. Container creation will fail if the reference isn't present. - IfNotPresent: the kubelet pulls if the reference isn't already present on disk. Container creation will fail if the reference isn't present and the pull fails.
   ///
   /// The volume gets re-resolved if the pod gets deleted and recreated, which means that new remote content will become available on pod recreation. A failure to resolve or pull the image during pod startup will block containers from starting and may add significant latency. Failures will be retried using normal volume backoff and will be reported on the pod reason and message. The types of objects that may be mounted by this volume are defined by the container runtime implementation on a host machine and at minimum must include all valid types supported by the container image field. The OCI object gets mounted in a single directory (spec.containers[*].volumeMounts.mountPath) by merging the manifest layers in the same way as for container images. The volume will be mounted read-only (ro) and non-executable files (noexec). Sub path mounts for containers are not supported (spec.containers[*].volumeMounts.subpath) before 1.33. The field spec.securityContext.fsGroupChangePolicy has no effect on this volume type.
-  final ImageVolumeSourcePatch? image;
+  final pulumi.Input<ImageVolumeSourcePatch>? image;
   /// iscsi represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes/#iscsi
-  final ISCSIVolumeSourcePatch? iscsi;
+  final pulumi.Input<ISCSIVolumeSourcePatch>? iscsi;
   /// name of the volume. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-  final String? name;
+  final pulumi.Input<String>? name;
   /// nfs represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
-  final NFSVolumeSourcePatch? nfs;
+  final pulumi.Input<NFSVolumeSourcePatch>? nfs;
   /// persistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
-  final PersistentVolumeClaimVolumeSourcePatch? persistentVolumeClaim;
+  final pulumi.Input<PersistentVolumeClaimVolumeSourcePatch>? persistentVolumeClaim;
   /// photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine. Deprecated: PhotonPersistentDisk is deprecated and the in-tree photonPersistentDisk type is no longer supported.
-  final PhotonPersistentDiskVolumeSourcePatch? photonPersistentDisk;
+  final pulumi.Input<PhotonPersistentDiskVolumeSourcePatch>? photonPersistentDisk;
   /// portworxVolume represents a portworx volume attached and mounted on kubelets host machine. Deprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type are redirected to the pxd.portworx.com CSI driver when the CSIMigrationPortworx feature-gate is on.
-  final PortworxVolumeSourcePatch? portworxVolume;
+  final pulumi.Input<PortworxVolumeSourcePatch>? portworxVolume;
   /// projected items for all in one resources secrets, configmaps, and downward API
-  final ProjectedVolumeSourcePatch? projected;
+  final pulumi.Input<ProjectedVolumeSourcePatch>? projected;
   /// quobyte represents a Quobyte mount on the host that shares a pod's lifetime. Deprecated: Quobyte is deprecated and the in-tree quobyte type is no longer supported.
-  final QuobyteVolumeSourcePatch? quobyte;
+  final pulumi.Input<QuobyteVolumeSourcePatch>? quobyte;
   /// rbd represents a Rados Block Device mount on the host that shares a pod's lifetime. Deprecated: RBD is deprecated and the in-tree rbd type is no longer supported.
-  final RBDVolumeSourcePatch? rbd;
+  final pulumi.Input<RBDVolumeSourcePatch>? rbd;
   /// scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes. Deprecated: ScaleIO is deprecated and the in-tree scaleIO type is no longer supported.
-  final ScaleIOVolumeSourcePatch? scaleIO;
+  final pulumi.Input<ScaleIOVolumeSourcePatch>? scaleIO;
   /// secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
-  final SecretVolumeSourcePatch? secret;
+  final pulumi.Input<SecretVolumeSourcePatch>? secret;
   /// storageOS represents a StorageOS volume attached and mounted on Kubernetes nodes. Deprecated: StorageOS is deprecated and the in-tree storageos type is no longer supported.
-  final StorageOSVolumeSourcePatch? storageos;
+  final pulumi.Input<StorageOSVolumeSourcePatch>? storageos;
   /// vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine. Deprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type are redirected to the csi.vsphere.vmware.com CSI driver.
-  final VsphereVirtualDiskVolumeSourcePatch? vsphereVolume;
+  final pulumi.Input<VsphereVirtualDiskVolumeSourcePatch>? vsphereVolume;
 
   /// Creates a new [VolumePatch].
   /// [awsElasticBlockStore] awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Deprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree awsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
@@ -181,73 +182,73 @@ class VolumePatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'awsElasticBlockStore': ?awsElasticBlockStore == null ? null : awsElasticBlockStore!.toMap(),
-      'azureDisk': ?azureDisk == null ? null : azureDisk!.toMap(),
-      'azureFile': ?azureFile == null ? null : azureFile!.toMap(),
-      'cephfs': ?cephfs == null ? null : cephfs!.toMap(),
-      'cinder': ?cinder == null ? null : cinder!.toMap(),
-      'configMap': ?configMap == null ? null : configMap!.toMap(),
-      'csi': ?csi == null ? null : csi!.toMap(),
-      'downwardAPI': ?downwardAPI == null ? null : downwardAPI!.toMap(),
-      'emptyDir': ?emptyDir == null ? null : emptyDir!.toMap(),
-      'ephemeral': ?ephemeral == null ? null : ephemeral!.toMap(),
-      'fc': ?fc == null ? null : fc!.toMap(),
-      'flexVolume': ?flexVolume == null ? null : flexVolume!.toMap(),
-      'flocker': ?flocker == null ? null : flocker!.toMap(),
-      'gcePersistentDisk': ?gcePersistentDisk == null ? null : gcePersistentDisk!.toMap(),
-      'gitRepo': ?gitRepo == null ? null : gitRepo!.toMap(),
-      'glusterfs': ?glusterfs == null ? null : glusterfs!.toMap(),
-      'hostPath': ?hostPath == null ? null : hostPath!.toMap(),
-      'image': ?image == null ? null : image!.toMap(),
-      'iscsi': ?iscsi == null ? null : iscsi!.toMap(),
+      'awsElasticBlockStore': ?pulumi.Input.mapOptionalInputValue<AWSElasticBlockStoreVolumeSourcePatch, Map<String, dynamic>>(awsElasticBlockStore, (value) => value.toMap()),
+      'azureDisk': ?pulumi.Input.mapOptionalInputValue<AzureDiskVolumeSourcePatch, Map<String, dynamic>>(azureDisk, (value) => value.toMap()),
+      'azureFile': ?pulumi.Input.mapOptionalInputValue<AzureFileVolumeSourcePatch, Map<String, dynamic>>(azureFile, (value) => value.toMap()),
+      'cephfs': ?pulumi.Input.mapOptionalInputValue<CephFSVolumeSourcePatch, Map<String, dynamic>>(cephfs, (value) => value.toMap()),
+      'cinder': ?pulumi.Input.mapOptionalInputValue<CinderVolumeSourcePatch, Map<String, dynamic>>(cinder, (value) => value.toMap()),
+      'configMap': ?pulumi.Input.mapOptionalInputValue<ConfigMapVolumeSourcePatch, Map<String, dynamic>>(configMap, (value) => value.toMap()),
+      'csi': ?pulumi.Input.mapOptionalInputValue<CSIVolumeSourcePatch, Map<String, dynamic>>(csi, (value) => value.toMap()),
+      'downwardAPI': ?pulumi.Input.mapOptionalInputValue<DownwardAPIVolumeSourcePatch, Map<String, dynamic>>(downwardAPI, (value) => value.toMap()),
+      'emptyDir': ?pulumi.Input.mapOptionalInputValue<EmptyDirVolumeSourcePatch, Map<String, dynamic>>(emptyDir, (value) => value.toMap()),
+      'ephemeral': ?pulumi.Input.mapOptionalInputValue<EphemeralVolumeSourcePatch, Map<String, dynamic>>(ephemeral, (value) => value.toMap()),
+      'fc': ?pulumi.Input.mapOptionalInputValue<FCVolumeSourcePatch, Map<String, dynamic>>(fc, (value) => value.toMap()),
+      'flexVolume': ?pulumi.Input.mapOptionalInputValue<FlexVolumeSourcePatch, Map<String, dynamic>>(flexVolume, (value) => value.toMap()),
+      'flocker': ?pulumi.Input.mapOptionalInputValue<FlockerVolumeSourcePatch, Map<String, dynamic>>(flocker, (value) => value.toMap()),
+      'gcePersistentDisk': ?pulumi.Input.mapOptionalInputValue<GCEPersistentDiskVolumeSourcePatch, Map<String, dynamic>>(gcePersistentDisk, (value) => value.toMap()),
+      'gitRepo': ?pulumi.Input.mapOptionalInputValue<GitRepoVolumeSourcePatch, Map<String, dynamic>>(gitRepo, (value) => value.toMap()),
+      'glusterfs': ?pulumi.Input.mapOptionalInputValue<GlusterfsVolumeSourcePatch, Map<String, dynamic>>(glusterfs, (value) => value.toMap()),
+      'hostPath': ?pulumi.Input.mapOptionalInputValue<HostPathVolumeSourcePatch, Map<String, dynamic>>(hostPath, (value) => value.toMap()),
+      'image': ?pulumi.Input.mapOptionalInputValue<ImageVolumeSourcePatch, Map<String, dynamic>>(image, (value) => value.toMap()),
+      'iscsi': ?pulumi.Input.mapOptionalInputValue<ISCSIVolumeSourcePatch, Map<String, dynamic>>(iscsi, (value) => value.toMap()),
       'name': ?name,
-      'nfs': ?nfs == null ? null : nfs!.toMap(),
-      'persistentVolumeClaim': ?persistentVolumeClaim == null ? null : persistentVolumeClaim!.toMap(),
-      'photonPersistentDisk': ?photonPersistentDisk == null ? null : photonPersistentDisk!.toMap(),
-      'portworxVolume': ?portworxVolume == null ? null : portworxVolume!.toMap(),
-      'projected': ?projected == null ? null : projected!.toMap(),
-      'quobyte': ?quobyte == null ? null : quobyte!.toMap(),
-      'rbd': ?rbd == null ? null : rbd!.toMap(),
-      'scaleIO': ?scaleIO == null ? null : scaleIO!.toMap(),
-      'secret': ?secret == null ? null : secret!.toMap(),
-      'storageos': ?storageos == null ? null : storageos!.toMap(),
-      'vsphereVolume': ?vsphereVolume == null ? null : vsphereVolume!.toMap(),
+      'nfs': ?pulumi.Input.mapOptionalInputValue<NFSVolumeSourcePatch, Map<String, dynamic>>(nfs, (value) => value.toMap()),
+      'persistentVolumeClaim': ?pulumi.Input.mapOptionalInputValue<PersistentVolumeClaimVolumeSourcePatch, Map<String, dynamic>>(persistentVolumeClaim, (value) => value.toMap()),
+      'photonPersistentDisk': ?pulumi.Input.mapOptionalInputValue<PhotonPersistentDiskVolumeSourcePatch, Map<String, dynamic>>(photonPersistentDisk, (value) => value.toMap()),
+      'portworxVolume': ?pulumi.Input.mapOptionalInputValue<PortworxVolumeSourcePatch, Map<String, dynamic>>(portworxVolume, (value) => value.toMap()),
+      'projected': ?pulumi.Input.mapOptionalInputValue<ProjectedVolumeSourcePatch, Map<String, dynamic>>(projected, (value) => value.toMap()),
+      'quobyte': ?pulumi.Input.mapOptionalInputValue<QuobyteVolumeSourcePatch, Map<String, dynamic>>(quobyte, (value) => value.toMap()),
+      'rbd': ?pulumi.Input.mapOptionalInputValue<RBDVolumeSourcePatch, Map<String, dynamic>>(rbd, (value) => value.toMap()),
+      'scaleIO': ?pulumi.Input.mapOptionalInputValue<ScaleIOVolumeSourcePatch, Map<String, dynamic>>(scaleIO, (value) => value.toMap()),
+      'secret': ?pulumi.Input.mapOptionalInputValue<SecretVolumeSourcePatch, Map<String, dynamic>>(secret, (value) => value.toMap()),
+      'storageos': ?pulumi.Input.mapOptionalInputValue<StorageOSVolumeSourcePatch, Map<String, dynamic>>(storageos, (value) => value.toMap()),
+      'vsphereVolume': ?pulumi.Input.mapOptionalInputValue<VsphereVirtualDiskVolumeSourcePatch, Map<String, dynamic>>(vsphereVolume, (value) => value.toMap()),
     };
   }
 
   factory VolumePatch.fromMap(Map<String, dynamic> map) {
     return VolumePatch(
-      awsElasticBlockStore: map['awsElasticBlockStore'] == null ? null : AWSElasticBlockStoreVolumeSourcePatch.fromMap((map['awsElasticBlockStore'] as Map).cast<String, dynamic>()),
-      azureDisk: map['azureDisk'] == null ? null : AzureDiskVolumeSourcePatch.fromMap((map['azureDisk'] as Map).cast<String, dynamic>()),
-      azureFile: map['azureFile'] == null ? null : AzureFileVolumeSourcePatch.fromMap((map['azureFile'] as Map).cast<String, dynamic>()),
-      cephfs: map['cephfs'] == null ? null : CephFSVolumeSourcePatch.fromMap((map['cephfs'] as Map).cast<String, dynamic>()),
-      cinder: map['cinder'] == null ? null : CinderVolumeSourcePatch.fromMap((map['cinder'] as Map).cast<String, dynamic>()),
-      configMap: map['configMap'] == null ? null : ConfigMapVolumeSourcePatch.fromMap((map['configMap'] as Map).cast<String, dynamic>()),
-      csi: map['csi'] == null ? null : CSIVolumeSourcePatch.fromMap((map['csi'] as Map).cast<String, dynamic>()),
-      downwardAPI: map['downwardAPI'] == null ? null : DownwardAPIVolumeSourcePatch.fromMap((map['downwardAPI'] as Map).cast<String, dynamic>()),
-      emptyDir: map['emptyDir'] == null ? null : EmptyDirVolumeSourcePatch.fromMap((map['emptyDir'] as Map).cast<String, dynamic>()),
-      ephemeral: map['ephemeral'] == null ? null : EphemeralVolumeSourcePatch.fromMap((map['ephemeral'] as Map).cast<String, dynamic>()),
-      fc: map['fc'] == null ? null : FCVolumeSourcePatch.fromMap((map['fc'] as Map).cast<String, dynamic>()),
-      flexVolume: map['flexVolume'] == null ? null : FlexVolumeSourcePatch.fromMap((map['flexVolume'] as Map).cast<String, dynamic>()),
-      flocker: map['flocker'] == null ? null : FlockerVolumeSourcePatch.fromMap((map['flocker'] as Map).cast<String, dynamic>()),
-      gcePersistentDisk: map['gcePersistentDisk'] == null ? null : GCEPersistentDiskVolumeSourcePatch.fromMap((map['gcePersistentDisk'] as Map).cast<String, dynamic>()),
-      gitRepo: map['gitRepo'] == null ? null : GitRepoVolumeSourcePatch.fromMap((map['gitRepo'] as Map).cast<String, dynamic>()),
-      glusterfs: map['glusterfs'] == null ? null : GlusterfsVolumeSourcePatch.fromMap((map['glusterfs'] as Map).cast<String, dynamic>()),
-      hostPath: map['hostPath'] == null ? null : HostPathVolumeSourcePatch.fromMap((map['hostPath'] as Map).cast<String, dynamic>()),
-      image: map['image'] == null ? null : ImageVolumeSourcePatch.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      iscsi: map['iscsi'] == null ? null : ISCSIVolumeSourcePatch.fromMap((map['iscsi'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      nfs: map['nfs'] == null ? null : NFSVolumeSourcePatch.fromMap((map['nfs'] as Map).cast<String, dynamic>()),
-      persistentVolumeClaim: map['persistentVolumeClaim'] == null ? null : PersistentVolumeClaimVolumeSourcePatch.fromMap((map['persistentVolumeClaim'] as Map).cast<String, dynamic>()),
-      photonPersistentDisk: map['photonPersistentDisk'] == null ? null : PhotonPersistentDiskVolumeSourcePatch.fromMap((map['photonPersistentDisk'] as Map).cast<String, dynamic>()),
-      portworxVolume: map['portworxVolume'] == null ? null : PortworxVolumeSourcePatch.fromMap((map['portworxVolume'] as Map).cast<String, dynamic>()),
-      projected: map['projected'] == null ? null : ProjectedVolumeSourcePatch.fromMap((map['projected'] as Map).cast<String, dynamic>()),
-      quobyte: map['quobyte'] == null ? null : QuobyteVolumeSourcePatch.fromMap((map['quobyte'] as Map).cast<String, dynamic>()),
-      rbd: map['rbd'] == null ? null : RBDVolumeSourcePatch.fromMap((map['rbd'] as Map).cast<String, dynamic>()),
-      scaleIO: map['scaleIO'] == null ? null : ScaleIOVolumeSourcePatch.fromMap((map['scaleIO'] as Map).cast<String, dynamic>()),
-      secret: map['secret'] == null ? null : SecretVolumeSourcePatch.fromMap((map['secret'] as Map).cast<String, dynamic>()),
-      storageos: map['storageos'] == null ? null : StorageOSVolumeSourcePatch.fromMap((map['storageos'] as Map).cast<String, dynamic>()),
-      vsphereVolume: map['vsphereVolume'] == null ? null : VsphereVirtualDiskVolumeSourcePatch.fromMap((map['vsphereVolume'] as Map).cast<String, dynamic>()),
+      awsElasticBlockStore: map['awsElasticBlockStore'] == null ? null : (AWSElasticBlockStoreVolumeSourcePatch.fromMap((map['awsElasticBlockStore'] as Map).cast<String, dynamic>())).input(),
+      azureDisk: map['azureDisk'] == null ? null : (AzureDiskVolumeSourcePatch.fromMap((map['azureDisk'] as Map).cast<String, dynamic>())).input(),
+      azureFile: map['azureFile'] == null ? null : (AzureFileVolumeSourcePatch.fromMap((map['azureFile'] as Map).cast<String, dynamic>())).input(),
+      cephfs: map['cephfs'] == null ? null : (CephFSVolumeSourcePatch.fromMap((map['cephfs'] as Map).cast<String, dynamic>())).input(),
+      cinder: map['cinder'] == null ? null : (CinderVolumeSourcePatch.fromMap((map['cinder'] as Map).cast<String, dynamic>())).input(),
+      configMap: map['configMap'] == null ? null : (ConfigMapVolumeSourcePatch.fromMap((map['configMap'] as Map).cast<String, dynamic>())).input(),
+      csi: map['csi'] == null ? null : (CSIVolumeSourcePatch.fromMap((map['csi'] as Map).cast<String, dynamic>())).input(),
+      downwardAPI: map['downwardAPI'] == null ? null : (DownwardAPIVolumeSourcePatch.fromMap((map['downwardAPI'] as Map).cast<String, dynamic>())).input(),
+      emptyDir: map['emptyDir'] == null ? null : (EmptyDirVolumeSourcePatch.fromMap((map['emptyDir'] as Map).cast<String, dynamic>())).input(),
+      ephemeral: map['ephemeral'] == null ? null : (EphemeralVolumeSourcePatch.fromMap((map['ephemeral'] as Map).cast<String, dynamic>())).input(),
+      fc: map['fc'] == null ? null : (FCVolumeSourcePatch.fromMap((map['fc'] as Map).cast<String, dynamic>())).input(),
+      flexVolume: map['flexVolume'] == null ? null : (FlexVolumeSourcePatch.fromMap((map['flexVolume'] as Map).cast<String, dynamic>())).input(),
+      flocker: map['flocker'] == null ? null : (FlockerVolumeSourcePatch.fromMap((map['flocker'] as Map).cast<String, dynamic>())).input(),
+      gcePersistentDisk: map['gcePersistentDisk'] == null ? null : (GCEPersistentDiskVolumeSourcePatch.fromMap((map['gcePersistentDisk'] as Map).cast<String, dynamic>())).input(),
+      gitRepo: map['gitRepo'] == null ? null : (GitRepoVolumeSourcePatch.fromMap((map['gitRepo'] as Map).cast<String, dynamic>())).input(),
+      glusterfs: map['glusterfs'] == null ? null : (GlusterfsVolumeSourcePatch.fromMap((map['glusterfs'] as Map).cast<String, dynamic>())).input(),
+      hostPath: map['hostPath'] == null ? null : (HostPathVolumeSourcePatch.fromMap((map['hostPath'] as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (ImageVolumeSourcePatch.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      iscsi: map['iscsi'] == null ? null : (ISCSIVolumeSourcePatch.fromMap((map['iscsi'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nfs: map['nfs'] == null ? null : (NFSVolumeSourcePatch.fromMap((map['nfs'] as Map).cast<String, dynamic>())).input(),
+      persistentVolumeClaim: map['persistentVolumeClaim'] == null ? null : (PersistentVolumeClaimVolumeSourcePatch.fromMap((map['persistentVolumeClaim'] as Map).cast<String, dynamic>())).input(),
+      photonPersistentDisk: map['photonPersistentDisk'] == null ? null : (PhotonPersistentDiskVolumeSourcePatch.fromMap((map['photonPersistentDisk'] as Map).cast<String, dynamic>())).input(),
+      portworxVolume: map['portworxVolume'] == null ? null : (PortworxVolumeSourcePatch.fromMap((map['portworxVolume'] as Map).cast<String, dynamic>())).input(),
+      projected: map['projected'] == null ? null : (ProjectedVolumeSourcePatch.fromMap((map['projected'] as Map).cast<String, dynamic>())).input(),
+      quobyte: map['quobyte'] == null ? null : (QuobyteVolumeSourcePatch.fromMap((map['quobyte'] as Map).cast<String, dynamic>())).input(),
+      rbd: map['rbd'] == null ? null : (RBDVolumeSourcePatch.fromMap((map['rbd'] as Map).cast<String, dynamic>())).input(),
+      scaleIO: map['scaleIO'] == null ? null : (ScaleIOVolumeSourcePatch.fromMap((map['scaleIO'] as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (SecretVolumeSourcePatch.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      storageos: map['storageos'] == null ? null : (StorageOSVolumeSourcePatch.fromMap((map['storageos'] as Map).cast<String, dynamic>())).input(),
+      vsphereVolume: map['vsphereVolume'] == null ? null : (VsphereVirtualDiskVolumeSourcePatch.fromMap((map['vsphereVolume'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

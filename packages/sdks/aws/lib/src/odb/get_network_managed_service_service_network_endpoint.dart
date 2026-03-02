@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkManagedServiceServiceNetworkEndpoint {
-  final String vpcEndpointId;
-  final String vpcEndpointType;
+  final pulumi.Input<String> vpcEndpointId;
+  final pulumi.Input<String> vpcEndpointType;
 
   /// Creates a new [GetNetworkManagedServiceServiceNetworkEndpoint].
   /// [vpcEndpointId] Required.
@@ -22,8 +23,8 @@ class GetNetworkManagedServiceServiceNetworkEndpoint {
 
   factory GetNetworkManagedServiceServiceNetworkEndpoint.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagedServiceServiceNetworkEndpoint(
-      vpcEndpointId: map['vpcEndpointId'] as String,
-      vpcEndpointType: map['vpcEndpointType'] as String,
+      vpcEndpointId: (map['vpcEndpointId'] as String).input(),
+      vpcEndpointType: (map['vpcEndpointType'] as String).input(),
     );
   }
 }

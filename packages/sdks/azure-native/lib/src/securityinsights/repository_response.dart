@@ -6,15 +6,15 @@ import 'content_path_map_response.dart';
 /// metadata of a repository.
 class RepositoryResponse {
   /// Branch name of repository.
-  final String? branch;
+  final pulumi.Input<String>? branch;
   /// Url to access repository action logs.
-  final String? deploymentLogsUrl;
+  final pulumi.Input<String>? deploymentLogsUrl;
   /// Display url of repository.
-  final String? displayUrl;
+  final pulumi.Input<String>? displayUrl;
   /// Dictionary of source control content type and path mapping.
-  final List<ContentPathMapResponse>? pathMapping;
+  final pulumi.Input<List<ContentPathMapResponse>>? pathMapping;
   /// Url of repository.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [RepositoryResponse].
   /// [branch] Branch name of repository.
@@ -35,18 +35,18 @@ class RepositoryResponse {
       'branch': ?branch,
       'deploymentLogsUrl': ?deploymentLogsUrl,
       'displayUrl': ?displayUrl,
-      'pathMapping': ?pathMapping == null ? null : pulumi.Input.encodeList<ContentPathMapResponse, Map<String, dynamic>>(pathMapping!, (value) => value.toMap()),
+      'pathMapping': ?pulumi.Input.mapOptionalInputValue<List<ContentPathMapResponse>, List<Map<String, dynamic>>>(pathMapping, (value) => pulumi.Input.encodeList<ContentPathMapResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'url': ?url,
     };
   }
 
   factory RepositoryResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryResponse(
-      branch: map['branch'] == null ? null : map['branch'] as String,
-      deploymentLogsUrl: map['deploymentLogsUrl'] == null ? null : map['deploymentLogsUrl'] as String,
-      displayUrl: map['displayUrl'] == null ? null : map['displayUrl'] as String,
-      pathMapping: map['pathMapping'] == null ? null : pulumi.Input.decodeList<ContentPathMapResponse>(map['pathMapping'], (value) => ContentPathMapResponse.fromMap((value as Map).cast<String, dynamic>())),
-      url: map['url'] == null ? null : map['url'] as String,
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      deploymentLogsUrl: map['deploymentLogsUrl'] == null ? null : (map['deploymentLogsUrl'] as String).input(),
+      displayUrl: map['displayUrl'] == null ? null : (map['displayUrl'] as String).input(),
+      pathMapping: map['pathMapping'] == null ? null : (pulumi.Input.decodeList<ContentPathMapResponse>(map['pathMapping'], (value) => ContentPathMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

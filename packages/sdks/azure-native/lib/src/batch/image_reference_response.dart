@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
 class ImageReferenceResponse {
   /// This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
-  final String? communityGalleryImageId;
+  final pulumi.Input<String>? communityGalleryImageId;
   /// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// For example, UbuntuServer or WindowsServer.
-  final String? offer;
+  final pulumi.Input<String>? offer;
   /// For example, Canonical or MicrosoftWindowsServer.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// This property is mutually exclusive with other properties and can be fetched from shared gallery image GET call.
-  final String? sharedGalleryImageId;
+  final pulumi.Input<String>? sharedGalleryImageId;
   /// For example, 18.04-LTS or 2022-datacenter.
-  final String? sku;
+  final pulumi.Input<String>? sku;
   /// A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ImageReferenceResponse].
   /// [communityGalleryImageId] This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
@@ -50,13 +51,13 @@ class ImageReferenceResponse {
 
   factory ImageReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ImageReferenceResponse(
-      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : map['communityGalleryImageId'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      offer: map['offer'] == null ? null : map['offer'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      sharedGalleryImageId: map['sharedGalleryImageId'] == null ? null : map['sharedGalleryImageId'] as String,
-      sku: map['sku'] == null ? null : map['sku'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : (map['communityGalleryImageId'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      offer: map['offer'] == null ? null : (map['offer'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      sharedGalleryImageId: map['sharedGalleryImageId'] == null ? null : (map['sharedGalleryImageId'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

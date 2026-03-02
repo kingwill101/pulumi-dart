@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FluxConfigurationKustomizationPostBuildSubstituteFrom {
   /// Specifies the source kind to hold the variables to be used in substitution. Possible values are `ConfigMap` and `Secret`.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Specifies the name of the ConfigMap/Secret that holds the variables to be used in substitution.
-  final String name;
+  final pulumi.Input<String> name;
   /// Whether to proceed without ConfigMap/Secret if it is not present. Defaults to `false`.
-  final bool? optional;
+  final pulumi.Input<bool>? optional;
 
   /// Creates a new [FluxConfigurationKustomizationPostBuildSubstituteFrom].
   /// [kind] Specifies the source kind to hold the variables to be used in substitution. Possible values are `ConfigMap` and `Secret`.
@@ -29,9 +30,9 @@ class FluxConfigurationKustomizationPostBuildSubstituteFrom {
 
   factory FluxConfigurationKustomizationPostBuildSubstituteFrom.fromMap(Map<String, dynamic> map) {
     return FluxConfigurationKustomizationPostBuildSubstituteFrom(
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      optional: map['optional'] == null ? null : map['optional'] as bool,
+      kind: (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
     );
   }
 }

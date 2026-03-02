@@ -36,23 +36,15 @@ class DomainTrustState {
   /// [trustHandshakeSecret] The trust secret used for the handshake with the target domain. This will not be stored.
   /// [trustType] The type of trust represented by the trust resource.
   DomainTrustState({
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? selectiveAuthentication,
-    pulumi.Output<List<String>>? targetDnsIpAddresses,
-    pulumi.Output<String>? targetDomainName,
-    pulumi.Output<String>? trustDirection,
-    pulumi.Output<String>? trustHandshakeSecret,
-    pulumi.Output<String>? trustType,
-  }) :
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selectiveAuthentication = pulumi.Input.asOptionalInput<bool>(selectiveAuthentication),
-      targetDnsIpAddresses = pulumi.Input.asOptionalInput<List<String>>(targetDnsIpAddresses),
-      targetDomainName = pulumi.Input.asOptionalInput<String>(targetDomainName),
-      trustDirection = pulumi.Input.asOptionalInput<String>(trustDirection),
-      trustHandshakeSecret = pulumi.Input.asOptionalInput<String>(trustHandshakeSecret),
-      trustType = pulumi.Input.asOptionalInput<String>(trustType);
+    this.domain,
+    this.project,
+    this.selectiveAuthentication,
+    this.targetDnsIpAddresses,
+    this.targetDomainName,
+    this.trustDirection,
+    this.trustHandshakeSecret,
+    this.trustType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class DomainTrustState {
 
   factory DomainTrustState.fromMap(Map<String, dynamic> map) {
     return DomainTrustState(
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selectiveAuthentication: map['selectiveAuthentication'] == null ? null : pulumi.Output.create<bool>(map['selectiveAuthentication'] as bool),
-      targetDnsIpAddresses: map['targetDnsIpAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['targetDnsIpAddresses'] as List).cast<String>()),
-      targetDomainName: map['targetDomainName'] == null ? null : pulumi.Output.create<String>(map['targetDomainName'] as String),
-      trustDirection: map['trustDirection'] == null ? null : pulumi.Output.create<String>(map['trustDirection'] as String),
-      trustHandshakeSecret: map['trustHandshakeSecret'] == null ? null : pulumi.Output.create<String>(map['trustHandshakeSecret'] as String),
-      trustType: map['trustType'] == null ? null : pulumi.Output.create<String>(map['trustType'] as String),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selectiveAuthentication: map['selectiveAuthentication'] == null ? null : (map['selectiveAuthentication'] as bool).input(),
+      targetDnsIpAddresses: map['targetDnsIpAddresses'] == null ? null : ((map['targetDnsIpAddresses'] as List).cast<String>()).input(),
+      targetDomainName: map['targetDomainName'] == null ? null : (map['targetDomainName'] as String).input(),
+      trustDirection: map['trustDirection'] == null ? null : (map['trustDirection'] as String).input(),
+      trustHandshakeSecret: map['trustHandshakeSecret'] == null ? null : (map['trustHandshakeSecret'] as String).input(),
+      trustType: map['trustType'] == null ? null : (map['trustType'] as String).input(),
     );
   }
 }

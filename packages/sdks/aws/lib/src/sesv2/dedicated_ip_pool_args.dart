@@ -24,15 +24,11 @@ class DedicatedIpPoolArgs {
   /// [scalingMode] IP pool scaling mode. Valid values: `STANDARD`, `MANAGED`. If omitted, the AWS API will default to a standard pool.
   /// [tags] A map of tags to assign to the pool. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DedicatedIpPoolArgs({
-    required pulumi.Output<String> poolName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? scalingMode,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      poolName = pulumi.Input.asInput<String>(poolName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scalingMode = pulumi.Input.asOptionalInput<String>(scalingMode),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.poolName,
+    this.region,
+    this.scalingMode,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class DedicatedIpPoolArgs {
 
   factory DedicatedIpPoolArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedIpPoolArgs(
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scalingMode: map['scalingMode'] == null ? null : pulumi.Output.create<String>(map['scalingMode'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      poolName: (map['poolName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scalingMode: map['scalingMode'] == null ? null : (map['scalingMode'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

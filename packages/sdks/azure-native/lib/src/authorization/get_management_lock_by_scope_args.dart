@@ -16,11 +16,9 @@ class GetManagementLockByScopeArgs {
   /// [lockName] The name of lock.
   /// [scope] The scope for the lock.
   GetManagementLockByScopeArgs({
-    required pulumi.Output<String> lockName,
-    required pulumi.Output<String> scope,
-  }) :
-      lockName = pulumi.Input.asInput<String>(lockName),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.lockName,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetManagementLockByScopeArgs {
 
   factory GetManagementLockByScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementLockByScopeArgs(
-      lockName: pulumi.Output.create<String>(map['lockName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      lockName: (map['lockName'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

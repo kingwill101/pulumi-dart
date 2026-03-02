@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A tag of the LegalHold of a blob container.
 class TagPropertyResponse {
   /// Returns the Object ID of the user who added the tag.
-  final String objectIdentifier;
+  final pulumi.Input<String> objectIdentifier;
   /// The tag value.
-  final String tag;
+  final pulumi.Input<String> tag;
   /// Returns the Tenant ID that issued the token for the user who added the tag.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// Returns the date and time the tag was added.
-  final String timestamp;
+  final pulumi.Input<String> timestamp;
   /// Returns the User Principal Name of the user who added the tag.
-  final String upn;
+  final pulumi.Input<String> upn;
 
   /// Creates a new [TagPropertyResponse].
   /// [objectIdentifier] Returns the Object ID of the user who added the tag.
@@ -40,11 +41,11 @@ class TagPropertyResponse {
 
   factory TagPropertyResponse.fromMap(Map<String, dynamic> map) {
     return TagPropertyResponse(
-      objectIdentifier: map['objectIdentifier'] as String,
-      tag: map['tag'] as String,
-      tenantId: map['tenantId'] as String,
-      timestamp: map['timestamp'] as String,
-      upn: map['upn'] as String,
+      objectIdentifier: (map['objectIdentifier'] as String).input(),
+      tag: (map['tag'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      timestamp: (map['timestamp'] as String).input(),
+      upn: (map['upn'] as String).input(),
     );
   }
 }

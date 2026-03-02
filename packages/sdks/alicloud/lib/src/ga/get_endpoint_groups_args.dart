@@ -31,21 +31,14 @@ class GetEndpointGroupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
   GetEndpointGroupsArgs({
-    required pulumi.Output<String> acceleratorId,
-    pulumi.Output<String>? endpointGroupType,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      acceleratorId = pulumi.Input.asInput<String>(acceleratorId),
-      endpointGroupType = pulumi.Input.asOptionalInput<String>(endpointGroupType),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.acceleratorId,
+    this.endpointGroupType,
+    this.ids,
+    this.listenerId,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetEndpointGroupsArgs {
 
   factory GetEndpointGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointGroupsArgs(
-      acceleratorId: pulumi.Output.create<String>(map['acceleratorId'] as String),
-      endpointGroupType: map['endpointGroupType'] == null ? null : pulumi.Output.create<String>(map['endpointGroupType'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      endpointGroupType: map['endpointGroupType'] == null ? null : (map['endpointGroupType'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

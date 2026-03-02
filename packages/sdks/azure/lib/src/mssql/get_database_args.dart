@@ -16,11 +16,9 @@ class GetDatabaseArgs {
   /// [name] The name of the MS SQL Database.
   /// [serverId] The id of the MS SQL Server on which to read the database.
   GetDatabaseArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> serverId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      serverId = pulumi.Input.asInput<String>(serverId);
+    required this.name,
+    required this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDatabaseArgs {
 
   factory GetDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
+      name: (map['name'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
     );
   }
 }

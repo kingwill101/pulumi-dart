@@ -19,13 +19,10 @@ class GetDicomServiceArgs {
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
   GetDicomServiceArgs({
-    required pulumi.Output<String> dicomServiceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      dicomServiceName = pulumi.Input.asInput<String>(dicomServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.dicomServiceName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDicomServiceArgs {
 
   factory GetDicomServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetDicomServiceArgs(
-      dicomServiceName: pulumi.Output.create<String>(map['dicomServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      dicomServiceName: (map['dicomServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

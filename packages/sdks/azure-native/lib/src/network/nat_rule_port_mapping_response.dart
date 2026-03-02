@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Individual port mappings for inbound NAT rule created for backend pool.
 class NatRulePortMappingResponse {
   /// Backend port.
-  final int? backendPort;
+  final pulumi.Input<int>? backendPort;
   /// Frontend port.
-  final int? frontendPort;
+  final pulumi.Input<int>? frontendPort;
   /// Name of inbound NAT rule.
-  final String? inboundNatRuleName;
+  final pulumi.Input<String>? inboundNatRuleName;
 
   /// Creates a new [NatRulePortMappingResponse].
   /// [backendPort] Backend port.
@@ -30,9 +31,9 @@ class NatRulePortMappingResponse {
 
   factory NatRulePortMappingResponse.fromMap(Map<String, dynamic> map) {
     return NatRulePortMappingResponse(
-      backendPort: map['backendPort'] == null ? null : map['backendPort'] as int,
-      frontendPort: map['frontendPort'] == null ? null : map['frontendPort'] as int,
-      inboundNatRuleName: map['inboundNatRuleName'] == null ? null : map['inboundNatRuleName'] as String,
+      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
+      inboundNatRuleName: map['inboundNatRuleName'] == null ? null : (map['inboundNatRuleName'] as String).input(),
     );
   }
 }

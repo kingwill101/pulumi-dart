@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// (Optional) The ID of the parent management group.
 class ParentGroupInfoResponse {
   /// The friendly name of the parent management group.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the parent management group
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ParentGroupInfoResponse].
   /// [displayName] The friendly name of the parent management group.
@@ -30,9 +31,9 @@ class ParentGroupInfoResponse {
 
   factory ParentGroupInfoResponse.fromMap(Map<String, dynamic> map) {
     return ParentGroupInfoResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

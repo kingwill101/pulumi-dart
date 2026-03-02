@@ -19,13 +19,10 @@ class GetInventoryItemArgs {
   /// [resourceGroupName] The Resource Group Name.
   /// [vcenterName] Name of the vCenter.
   GetInventoryItemArgs({
-    required pulumi.Output<String> inventoryItemName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vcenterName,
-  }) :
-      inventoryItemName = pulumi.Input.asInput<String>(inventoryItemName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vcenterName = pulumi.Input.asInput<String>(vcenterName);
+    required this.inventoryItemName,
+    required this.resourceGroupName,
+    required this.vcenterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetInventoryItemArgs {
 
   factory GetInventoryItemArgs.fromMap(Map<String, dynamic> map) {
     return GetInventoryItemArgs(
-      inventoryItemName: pulumi.Output.create<String>(map['inventoryItemName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vcenterName: pulumi.Output.create<String>(map['vcenterName'] as String),
+      inventoryItemName: (map['inventoryItemName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vcenterName: (map['vcenterName'] as String).input(),
     );
   }
 }

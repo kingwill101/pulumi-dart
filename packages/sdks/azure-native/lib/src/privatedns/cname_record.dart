@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A CNAME record.
 class CnameRecord {
   /// The canonical name for this CNAME record.
-  final String? cname;
+  final pulumi.Input<String>? cname;
 
   /// Creates a new [CnameRecord].
   /// [cname] The canonical name for this CNAME record.
@@ -20,7 +21,7 @@ class CnameRecord {
 
   factory CnameRecord.fromMap(Map<String, dynamic> map) {
     return CnameRecord(
-      cname: map['cname'] == null ? null : map['cname'] as String,
+      cname: map['cname'] == null ? null : (map['cname'] as String).input(),
     );
   }
 }

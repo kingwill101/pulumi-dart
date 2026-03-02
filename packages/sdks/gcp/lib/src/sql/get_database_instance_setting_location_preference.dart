@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseInstanceSettingLocationPreference {
   /// A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
-  final String followGaeApplication;
+  final pulumi.Input<String> followGaeApplication;
   /// The preferred Compute Engine zone for the secondary/failover
-  final String secondaryZone;
+  final pulumi.Input<String> secondaryZone;
   /// The preferred compute engine zone.
-  final String zone;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [GetDatabaseInstanceSettingLocationPreference].
   /// [followGaeApplication] A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
@@ -29,9 +30,9 @@ class GetDatabaseInstanceSettingLocationPreference {
 
   factory GetDatabaseInstanceSettingLocationPreference.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingLocationPreference(
-      followGaeApplication: map['followGaeApplication'] as String,
-      secondaryZone: map['secondaryZone'] as String,
-      zone: map['zone'] as String,
+      followGaeApplication: (map['followGaeApplication'] as String).input(),
+      secondaryZone: (map['secondaryZone'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

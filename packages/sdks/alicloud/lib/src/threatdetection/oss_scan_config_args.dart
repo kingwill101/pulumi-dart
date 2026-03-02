@@ -49,33 +49,20 @@ class OssScanConfigArgs {
   /// [scanDayLists] The days when the check is performed. The value indicates the days of the week.
   /// [startTime] The start time of the check. The time is in the HH:mm:ss format.
   OssScanConfigArgs({
-    pulumi.Output<bool>? allKeyPrefix,
-    required pulumi.Output<List<String>> bucketNameLists,
-    pulumi.Output<int>? decompressMaxFileCount,
-    pulumi.Output<int>? decompressMaxLayer,
-    pulumi.Output<List<String>>? decryptionLists,
-    required pulumi.Output<int> enable,
-    required pulumi.Output<String> endTime,
-    pulumi.Output<List<String>>? keyPrefixLists,
-    required pulumi.Output<List<String>> keySuffixLists,
-    pulumi.Output<int>? lastModifiedStartTime,
-    pulumi.Output<String>? ossScanConfigName,
-    required pulumi.Output<List<int>> scanDayLists,
-    required pulumi.Output<String> startTime,
-  }) :
-      allKeyPrefix = pulumi.Input.asOptionalInput<bool>(allKeyPrefix),
-      bucketNameLists = pulumi.Input.asInput<List<String>>(bucketNameLists),
-      decompressMaxFileCount = pulumi.Input.asOptionalInput<int>(decompressMaxFileCount),
-      decompressMaxLayer = pulumi.Input.asOptionalInput<int>(decompressMaxLayer),
-      decryptionLists = pulumi.Input.asOptionalInput<List<String>>(decryptionLists),
-      enable = pulumi.Input.asInput<int>(enable),
-      endTime = pulumi.Input.asInput<String>(endTime),
-      keyPrefixLists = pulumi.Input.asOptionalInput<List<String>>(keyPrefixLists),
-      keySuffixLists = pulumi.Input.asInput<List<String>>(keySuffixLists),
-      lastModifiedStartTime = pulumi.Input.asOptionalInput<int>(lastModifiedStartTime),
-      ossScanConfigName = pulumi.Input.asOptionalInput<String>(ossScanConfigName),
-      scanDayLists = pulumi.Input.asInput<List<int>>(scanDayLists),
-      startTime = pulumi.Input.asInput<String>(startTime);
+    this.allKeyPrefix,
+    required this.bucketNameLists,
+    this.decompressMaxFileCount,
+    this.decompressMaxLayer,
+    this.decryptionLists,
+    required this.enable,
+    required this.endTime,
+    this.keyPrefixLists,
+    required this.keySuffixLists,
+    this.lastModifiedStartTime,
+    this.ossScanConfigName,
+    required this.scanDayLists,
+    required this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class OssScanConfigArgs {
 
   factory OssScanConfigArgs.fromMap(Map<String, dynamic> map) {
     return OssScanConfigArgs(
-      allKeyPrefix: map['allKeyPrefix'] == null ? null : pulumi.Output.create<bool>(map['allKeyPrefix'] as bool),
-      bucketNameLists: pulumi.Output.create<List<String>>((map['bucketNameLists'] as List).cast<String>()),
-      decompressMaxFileCount: map['decompressMaxFileCount'] == null ? null : pulumi.Output.create<int>(map['decompressMaxFileCount'] as int),
-      decompressMaxLayer: map['decompressMaxLayer'] == null ? null : pulumi.Output.create<int>(map['decompressMaxLayer'] as int),
-      decryptionLists: map['decryptionLists'] == null ? null : pulumi.Output.create<List<String>>((map['decryptionLists'] as List).cast<String>()),
-      enable: pulumi.Output.create<int>(map['enable'] as int),
-      endTime: pulumi.Output.create<String>(map['endTime'] as String),
-      keyPrefixLists: map['keyPrefixLists'] == null ? null : pulumi.Output.create<List<String>>((map['keyPrefixLists'] as List).cast<String>()),
-      keySuffixLists: pulumi.Output.create<List<String>>((map['keySuffixLists'] as List).cast<String>()),
-      lastModifiedStartTime: map['lastModifiedStartTime'] == null ? null : pulumi.Output.create<int>(map['lastModifiedStartTime'] as int),
-      ossScanConfigName: map['ossScanConfigName'] == null ? null : pulumi.Output.create<String>(map['ossScanConfigName'] as String),
-      scanDayLists: pulumi.Output.create<List<int>>((map['scanDayLists'] as List).cast<int>()),
-      startTime: pulumi.Output.create<String>(map['startTime'] as String),
+      allKeyPrefix: map['allKeyPrefix'] == null ? null : (map['allKeyPrefix'] as bool).input(),
+      bucketNameLists: ((map['bucketNameLists'] as List).cast<String>()).input(),
+      decompressMaxFileCount: map['decompressMaxFileCount'] == null ? null : (map['decompressMaxFileCount'] as int).input(),
+      decompressMaxLayer: map['decompressMaxLayer'] == null ? null : (map['decompressMaxLayer'] as int).input(),
+      decryptionLists: map['decryptionLists'] == null ? null : ((map['decryptionLists'] as List).cast<String>()).input(),
+      enable: (map['enable'] as int).input(),
+      endTime: (map['endTime'] as String).input(),
+      keyPrefixLists: map['keyPrefixLists'] == null ? null : ((map['keyPrefixLists'] as List).cast<String>()).input(),
+      keySuffixLists: ((map['keySuffixLists'] as List).cast<String>()).input(),
+      lastModifiedStartTime: map['lastModifiedStartTime'] == null ? null : (map['lastModifiedStartTime'] as int).input(),
+      ossScanConfigName: map['ossScanConfigName'] == null ? null : (map['ossScanConfigName'] as String).input(),
+      scanDayLists: ((map['scanDayLists'] as List).cast<int>()).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

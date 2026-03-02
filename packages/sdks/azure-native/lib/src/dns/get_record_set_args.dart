@@ -22,15 +22,11 @@ class GetRecordSetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [zoneName] The name of the DNS zone (without a terminating dot).
   GetRecordSetArgs({
-    required pulumi.Output<String> recordType,
-    required pulumi.Output<String> relativeRecordSetName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> zoneName,
-  }) :
-      recordType = pulumi.Input.asInput<String>(recordType),
-      relativeRecordSetName = pulumi.Input.asInput<String>(relativeRecordSetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      zoneName = pulumi.Input.asInput<String>(zoneName);
+    required this.recordType,
+    required this.relativeRecordSetName,
+    required this.resourceGroupName,
+    required this.zoneName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetRecordSetArgs {
 
   factory GetRecordSetArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordSetArgs(
-      recordType: pulumi.Output.create<String>(map['recordType'] as String),
-      relativeRecordSetName: pulumi.Output.create<String>(map['relativeRecordSetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      zoneName: pulumi.Output.create<String>(map['zoneName'] as String),
+      recordType: (map['recordType'] as String).input(),
+      relativeRecordSetName: (map['relativeRecordSetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      zoneName: (map['zoneName'] as String).input(),
     );
   }
 }

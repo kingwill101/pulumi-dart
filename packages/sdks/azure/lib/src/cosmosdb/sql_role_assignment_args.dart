@@ -28,19 +28,13 @@ class SqlRoleAssignmentArgs {
   /// [roleDefinitionId] The resource ID of the Cosmos DB SQL Role Definition.
   /// [scope] The data plane resource path for which access is being granted through this Cosmos DB SQL Role Assignment. Changing this forces a new resource to be created.
   SqlRoleAssignmentArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> principalId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> roleDefinitionId,
-    required pulumi.Output<String> scope,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleDefinitionId = pulumi.Input.asInput<String>(roleDefinitionId),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.accountName,
+    this.name,
+    required this.principalId,
+    required this.resourceGroupName,
+    required this.roleDefinitionId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SqlRoleAssignmentArgs {
 
   factory SqlRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return SqlRoleAssignmentArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleDefinitionId: pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      accountName: (map['accountName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

@@ -5,23 +5,23 @@ import 'get_compliance_packs_pack_config_rule.dart';
 
 class GetCompliancePacksPack {
   /// The Aliyun User Id.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// The Compliance Package ID.
-  final String compliancePackId;
+  final pulumi.Input<String> compliancePackId;
   /// The Compliance Package Name.
-  final String compliancePackName;
+  final pulumi.Input<String> compliancePackName;
   /// The template ID of the Compliance Package.
-  final String compliancePackTemplateId;
+  final pulumi.Input<String> compliancePackTemplateId;
   /// A list of The Compliance Package Rules.
-  final List<GetCompliancePacksPackConfigRule> configRules;
+  final pulumi.Input<List<GetCompliancePacksPackConfigRule>> configRules;
   /// The description of compliance pack.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Compliance Pack.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Ris Level.
-  final int riskLevel;
+  final pulumi.Input<int> riskLevel;
   /// The status of the resource. Valid values `ACTIVE`, `CREATING`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetCompliancePacksPack].
   /// [accountId] The Aliyun User Id.
@@ -51,7 +51,7 @@ class GetCompliancePacksPack {
       'compliancePackId': compliancePackId,
       'compliancePackName': compliancePackName,
       'compliancePackTemplateId': compliancePackTemplateId,
-      'configRules': pulumi.Input.encodeList<GetCompliancePacksPackConfigRule, Map<String, dynamic>>(configRules, (value) => value.toMap()),
+      'configRules': pulumi.Input.mapInputValue<List<GetCompliancePacksPackConfigRule>, List<Map<String, dynamic>>>(configRules, (value) => pulumi.Input.encodeList<GetCompliancePacksPackConfigRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': description,
       'id': id,
       'riskLevel': riskLevel,
@@ -61,15 +61,15 @@ class GetCompliancePacksPack {
 
   factory GetCompliancePacksPack.fromMap(Map<String, dynamic> map) {
     return GetCompliancePacksPack(
-      accountId: map['accountId'] as String,
-      compliancePackId: map['compliancePackId'] as String,
-      compliancePackName: map['compliancePackName'] as String,
-      compliancePackTemplateId: map['compliancePackTemplateId'] as String,
-      configRules: pulumi.Input.decodeList<GetCompliancePacksPackConfigRule>(map['configRules'], (value) => GetCompliancePacksPackConfigRule.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] as String,
-      id: map['id'] as String,
-      riskLevel: map['riskLevel'] as int,
-      status: map['status'] as String,
+      accountId: (map['accountId'] as String).input(),
+      compliancePackId: (map['compliancePackId'] as String).input(),
+      compliancePackName: (map['compliancePackName'] as String).input(),
+      compliancePackTemplateId: (map['compliancePackTemplateId'] as String).input(),
+      configRules: (pulumi.Input.decodeList<GetCompliancePacksPackConfigRule>(map['configRules'], (value) => GetCompliancePacksPackConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      riskLevel: (map['riskLevel'] as int).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

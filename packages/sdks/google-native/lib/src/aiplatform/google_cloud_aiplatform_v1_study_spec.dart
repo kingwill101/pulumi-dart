@@ -14,23 +14,23 @@ import 'google_cloud_aiplatform_v1_study_spec_study_stopping_config.dart';
 /// Represents specification of a Study.
 class GoogleCloudAiplatformV1StudySpec {
   /// The search algorithm specified for the Study.
-  final GoogleCloudAiplatformV1StudySpecAlgorithm? algorithm;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecAlgorithm>? algorithm;
   /// The automated early stopping spec using convex stopping rule.
-  final GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpec? convexAutomatedStoppingSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpec>? convexAutomatedStoppingSpec;
   /// The automated early stopping spec using decay curve rule.
-  final GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec? decayCurveStoppingSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec>? decayCurveStoppingSpec;
   /// Describe which measurement selection type will be used
-  final GoogleCloudAiplatformV1StudySpecMeasurementSelectionType? measurementSelectionType;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecMeasurementSelectionType>? measurementSelectionType;
   /// The automated early stopping spec using median rule.
-  final GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec? medianAutomatedStoppingSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec>? medianAutomatedStoppingSpec;
   /// Metric specs for the Study.
-  final List<GoogleCloudAiplatformV1StudySpecMetricSpec> metrics;
+  final pulumi.Input<List<GoogleCloudAiplatformV1StudySpecMetricSpec>> metrics;
   /// The observation noise level of the study. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
-  final GoogleCloudAiplatformV1StudySpecObservationNoise? observationNoise;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecObservationNoise>? observationNoise;
   /// The set of parameters to tune.
-  final List<GoogleCloudAiplatformV1StudySpecParameterSpec> parameters;
+  final pulumi.Input<List<GoogleCloudAiplatformV1StudySpecParameterSpec>> parameters;
   /// Conditions for automated stopping of a Study. Enable automated stopping by configuring at least one condition.
-  final GoogleCloudAiplatformV1StudySpecStudyStoppingConfig? studyStoppingConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecStudyStoppingConfig>? studyStoppingConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1StudySpec].
   /// [algorithm] The search algorithm specified for the Study.
@@ -56,29 +56,29 @@ class GoogleCloudAiplatformV1StudySpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'algorithm': ?algorithm == null ? null : algorithm!.value,
-      'convexAutomatedStoppingSpec': ?convexAutomatedStoppingSpec == null ? null : convexAutomatedStoppingSpec!.toMap(),
-      'decayCurveStoppingSpec': ?decayCurveStoppingSpec == null ? null : decayCurveStoppingSpec!.toMap(),
-      'measurementSelectionType': ?measurementSelectionType == null ? null : measurementSelectionType!.value,
-      'medianAutomatedStoppingSpec': ?medianAutomatedStoppingSpec == null ? null : medianAutomatedStoppingSpec!.toMap(),
-      'metrics': pulumi.Input.encodeList<GoogleCloudAiplatformV1StudySpecMetricSpec, Map<String, dynamic>>(metrics, (value) => value.toMap()),
-      'observationNoise': ?observationNoise == null ? null : observationNoise!.value,
-      'parameters': pulumi.Input.encodeList<GoogleCloudAiplatformV1StudySpecParameterSpec, Map<String, dynamic>>(parameters, (value) => value.toMap()),
-      'studyStoppingConfig': ?studyStoppingConfig == null ? null : studyStoppingConfig!.toMap(),
+      'algorithm': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1StudySpecAlgorithm, String>(algorithm, (value) => value.value),
+      'convexAutomatedStoppingSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpec, Map<String, dynamic>>(convexAutomatedStoppingSpec, (value) => value.toMap()),
+      'decayCurveStoppingSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec, Map<String, dynamic>>(decayCurveStoppingSpec, (value) => value.toMap()),
+      'measurementSelectionType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1StudySpecMeasurementSelectionType, String>(measurementSelectionType, (value) => value.value),
+      'medianAutomatedStoppingSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec, Map<String, dynamic>>(medianAutomatedStoppingSpec, (value) => value.toMap()),
+      'metrics': pulumi.Input.mapInputValue<List<GoogleCloudAiplatformV1StudySpecMetricSpec>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<GoogleCloudAiplatformV1StudySpecMetricSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'observationNoise': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1StudySpecObservationNoise, String>(observationNoise, (value) => value.value),
+      'parameters': pulumi.Input.mapInputValue<List<GoogleCloudAiplatformV1StudySpecParameterSpec>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<GoogleCloudAiplatformV1StudySpecParameterSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'studyStoppingConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1StudySpecStudyStoppingConfig, Map<String, dynamic>>(studyStoppingConfig, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudAiplatformV1StudySpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpec(
-      algorithm: map['algorithm'] == null ? null : GoogleCloudAiplatformV1StudySpecAlgorithm.fromValue(map['algorithm'] as String),
-      convexAutomatedStoppingSpec: map['convexAutomatedStoppingSpec'] == null ? null : GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpec.fromMap((map['convexAutomatedStoppingSpec'] as Map).cast<String, dynamic>()),
-      decayCurveStoppingSpec: map['decayCurveStoppingSpec'] == null ? null : GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec.fromMap((map['decayCurveStoppingSpec'] as Map).cast<String, dynamic>()),
-      measurementSelectionType: map['measurementSelectionType'] == null ? null : GoogleCloudAiplatformV1StudySpecMeasurementSelectionType.fromValue(map['measurementSelectionType'] as String),
-      medianAutomatedStoppingSpec: map['medianAutomatedStoppingSpec'] == null ? null : GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec.fromMap((map['medianAutomatedStoppingSpec'] as Map).cast<String, dynamic>()),
-      metrics: pulumi.Input.decodeList<GoogleCloudAiplatformV1StudySpecMetricSpec>(map['metrics'], (value) => GoogleCloudAiplatformV1StudySpecMetricSpec.fromMap((value as Map).cast<String, dynamic>())),
-      observationNoise: map['observationNoise'] == null ? null : GoogleCloudAiplatformV1StudySpecObservationNoise.fromValue(map['observationNoise'] as String),
-      parameters: pulumi.Input.decodeList<GoogleCloudAiplatformV1StudySpecParameterSpec>(map['parameters'], (value) => GoogleCloudAiplatformV1StudySpecParameterSpec.fromMap((value as Map).cast<String, dynamic>())),
-      studyStoppingConfig: map['studyStoppingConfig'] == null ? null : GoogleCloudAiplatformV1StudySpecStudyStoppingConfig.fromMap((map['studyStoppingConfig'] as Map).cast<String, dynamic>()),
+      algorithm: map['algorithm'] == null ? null : (GoogleCloudAiplatformV1StudySpecAlgorithm.fromValue(map['algorithm'] as String)).input(),
+      convexAutomatedStoppingSpec: map['convexAutomatedStoppingSpec'] == null ? null : (GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpec.fromMap((map['convexAutomatedStoppingSpec'] as Map).cast<String, dynamic>())).input(),
+      decayCurveStoppingSpec: map['decayCurveStoppingSpec'] == null ? null : (GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec.fromMap((map['decayCurveStoppingSpec'] as Map).cast<String, dynamic>())).input(),
+      measurementSelectionType: map['measurementSelectionType'] == null ? null : (GoogleCloudAiplatformV1StudySpecMeasurementSelectionType.fromValue(map['measurementSelectionType'] as String)).input(),
+      medianAutomatedStoppingSpec: map['medianAutomatedStoppingSpec'] == null ? null : (GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec.fromMap((map['medianAutomatedStoppingSpec'] as Map).cast<String, dynamic>())).input(),
+      metrics: (pulumi.Input.decodeList<GoogleCloudAiplatformV1StudySpecMetricSpec>(map['metrics'], (value) => GoogleCloudAiplatformV1StudySpecMetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      observationNoise: map['observationNoise'] == null ? null : (GoogleCloudAiplatformV1StudySpecObservationNoise.fromValue(map['observationNoise'] as String)).input(),
+      parameters: (pulumi.Input.decodeList<GoogleCloudAiplatformV1StudySpecParameterSpec>(map['parameters'], (value) => GoogleCloudAiplatformV1StudySpecParameterSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      studyStoppingConfig: map['studyStoppingConfig'] == null ? null : (GoogleCloudAiplatformV1StudySpecStudyStoppingConfig.fromMap((map['studyStoppingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

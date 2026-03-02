@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The VirtualHub Router autoscale configuration.
 class VirtualRouterAutoScaleConfiguration {
   /// The minimum number of scale units for VirtualHub Router.
-  final int? minCapacity;
+  final pulumi.Input<int>? minCapacity;
 
   /// Creates a new [VirtualRouterAutoScaleConfiguration].
   /// [minCapacity] The minimum number of scale units for VirtualHub Router.
@@ -20,7 +21,7 @@ class VirtualRouterAutoScaleConfiguration {
 
   factory VirtualRouterAutoScaleConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualRouterAutoScaleConfiguration(
-      minCapacity: map['minCapacity'] == null ? null : map['minCapacity'] as int,
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as int).input(),
     );
   }
 }

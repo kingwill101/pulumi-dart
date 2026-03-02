@@ -6,13 +6,13 @@ import 'get_instance_classes_instance_class_zone_id.dart';
 
 class GetInstanceClassesInstanceClass {
   /// DB Instance available class.
-  final String instanceClass;
+  final pulumi.Input<String> instanceClass;
   /// Unit price of instance specifications.
-  final String price;
+  final pulumi.Input<String> price;
   /// DB Instance available storage range.
-  final GetInstanceClassesInstanceClassStorageRange storageRange;
+  final pulumi.Input<GetInstanceClassesInstanceClassStorageRange> storageRange;
   /// A list of Zone to launch the DB instance.
-  final List<GetInstanceClassesInstanceClassZoneId> zoneIds;
+  final pulumi.Input<List<GetInstanceClassesInstanceClassZoneId>> zoneIds;
 
   /// Creates a new [GetInstanceClassesInstanceClass].
   /// [instanceClass] DB Instance available class.
@@ -30,17 +30,17 @@ class GetInstanceClassesInstanceClass {
     return <String, dynamic>{
       'instanceClass': instanceClass,
       'price': price,
-      'storageRange': storageRange.toMap(),
-      'zoneIds': pulumi.Input.encodeList<GetInstanceClassesInstanceClassZoneId, Map<String, dynamic>>(zoneIds, (value) => value.toMap()),
+      'storageRange': pulumi.Input.mapInputValue<GetInstanceClassesInstanceClassStorageRange, Map<String, dynamic>>(storageRange, (value) => value.toMap()),
+      'zoneIds': pulumi.Input.mapInputValue<List<GetInstanceClassesInstanceClassZoneId>, List<Map<String, dynamic>>>(zoneIds, (value) => pulumi.Input.encodeList<GetInstanceClassesInstanceClassZoneId, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetInstanceClassesInstanceClass.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassesInstanceClass(
-      instanceClass: map['instanceClass'] as String,
-      price: map['price'] as String,
-      storageRange: GetInstanceClassesInstanceClassStorageRange.fromMap((map['storageRange'] as Map).cast<String, dynamic>()),
-      zoneIds: pulumi.Input.decodeList<GetInstanceClassesInstanceClassZoneId>(map['zoneIds'], (value) => GetInstanceClassesInstanceClassZoneId.fromMap((value as Map).cast<String, dynamic>())),
+      instanceClass: (map['instanceClass'] as String).input(),
+      price: (map['price'] as String).input(),
+      storageRange: (GetInstanceClassesInstanceClassStorageRange.fromMap((map['storageRange'] as Map).cast<String, dynamic>())).input(),
+      zoneIds: (pulumi.Input.decodeList<GetInstanceClassesInstanceClassZoneId>(map['zoneIds'], (value) => GetInstanceClassesInstanceClassZoneId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

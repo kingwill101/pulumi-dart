@@ -5,13 +5,13 @@ import 'get_container_recipe_instance_configuration_block_device_mapping_eb.dart
 
 class GetContainerRecipeInstanceConfigurationBlockDeviceMapping {
   /// Name of the device. For example, `/dev/sda` or `/dev/xvdb`.
-  final String deviceName;
+  final pulumi.Input<String> deviceName;
   /// Single list of object with Elastic Block Storage (EBS) block device mapping settings.
-  final List<GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb> ebs;
+  final pulumi.Input<List<GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb>> ebs;
   /// Whether to remove a mapping from the parent image.
-  final String noDevice;
+  final pulumi.Input<String> noDevice;
   /// Virtual device name. For example, `ephemeral0`. Instance store volumes are numbered starting from 0.
-  final String virtualName;
+  final pulumi.Input<String> virtualName;
 
   /// Creates a new [GetContainerRecipeInstanceConfigurationBlockDeviceMapping].
   /// [deviceName] Name of the device. For example, `/dev/sda` or `/dev/xvdb`.
@@ -28,7 +28,7 @@ class GetContainerRecipeInstanceConfigurationBlockDeviceMapping {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deviceName': deviceName,
-      'ebs': pulumi.Input.encodeList<GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb, Map<String, dynamic>>(ebs, (value) => value.toMap()),
+      'ebs': pulumi.Input.mapInputValue<List<GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb>, List<Map<String, dynamic>>>(ebs, (value) => pulumi.Input.encodeList<GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb, Map<String, dynamic>>(value, (value) => value.toMap())),
       'noDevice': noDevice,
       'virtualName': virtualName,
     };
@@ -36,10 +36,10 @@ class GetContainerRecipeInstanceConfigurationBlockDeviceMapping {
 
   factory GetContainerRecipeInstanceConfigurationBlockDeviceMapping.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipeInstanceConfigurationBlockDeviceMapping(
-      deviceName: map['deviceName'] as String,
-      ebs: pulumi.Input.decodeList<GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb>(map['ebs'], (value) => GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>())),
-      noDevice: map['noDevice'] as String,
-      virtualName: map['virtualName'] as String,
+      deviceName: (map['deviceName'] as String).input(),
+      ebs: (pulumi.Input.decodeList<GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb>(map['ebs'], (value) => GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      noDevice: (map['noDevice'] as String).input(),
+      virtualName: (map['virtualName'] as String).input(),
     );
   }
 }

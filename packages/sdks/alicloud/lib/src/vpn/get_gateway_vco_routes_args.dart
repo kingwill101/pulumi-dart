@@ -29,21 +29,14 @@ class GetGatewayVcoRoutesArgs {
   /// [status] The status of the vpn route entry. Valid values: `normal`, `published`.
   /// [vpnConnectionId] The id of the vpn connection.
   GetGatewayVcoRoutesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-    pulumi.Output<String>? routeEntryType,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> vpnConnectionId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize),
-      routeEntryType = pulumi.Input.asOptionalInput<String>(routeEntryType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpnConnectionId = pulumi.Input.asInput<String>(vpnConnectionId);
+    this.ids,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+    this.routeEntryType,
+    this.status,
+    required this.vpnConnectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class GetGatewayVcoRoutesArgs {
 
   factory GetGatewayVcoRoutesArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayVcoRoutesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
-      routeEntryType: map['routeEntryType'] == null ? null : pulumi.Output.create<String>(map['routeEntryType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpnConnectionId: pulumi.Output.create<String>(map['vpnConnectionId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      routeEntryType: map['routeEntryType'] == null ? null : (map['routeEntryType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpnConnectionId: (map['vpnConnectionId'] as String).input(),
     );
   }
 }

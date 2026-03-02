@@ -20,15 +20,11 @@ class HciDeploymentSettingState {
   /// [stackHciClusterId] The ID of the Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [version] The deployment template version. The format must be a set of numbers separated by dots such as `10.0.0.0`. Changing this forces a new Stack HCI Deployment Setting to be created.
   HciDeploymentSettingState({
-    pulumi.Output<List<String>>? arcResourceIds,
-    pulumi.Output<List<HciDeploymentSettingScaleUnit>>? scaleUnits,
-    pulumi.Output<String>? stackHciClusterId,
-    pulumi.Output<String>? version,
-  }) :
-      arcResourceIds = pulumi.Input.asOptionalInput<List<String>>(arcResourceIds),
-      scaleUnits = pulumi.Input.asOptionalInput<List<HciDeploymentSettingScaleUnit>>(scaleUnits),
-      stackHciClusterId = pulumi.Input.asOptionalInput<String>(stackHciClusterId),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.arcResourceIds,
+    this.scaleUnits,
+    this.stackHciClusterId,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class HciDeploymentSettingState {
 
   factory HciDeploymentSettingState.fromMap(Map<String, dynamic> map) {
     return HciDeploymentSettingState(
-      arcResourceIds: map['arcResourceIds'] == null ? null : pulumi.Output.create<List<String>>((map['arcResourceIds'] as List).cast<String>()),
-      scaleUnits: map['scaleUnits'] == null ? null : pulumi.Output.create<List<HciDeploymentSettingScaleUnit>>(pulumi.Input.decodeList<HciDeploymentSettingScaleUnit>(map['scaleUnits'], (value) => HciDeploymentSettingScaleUnit.fromMap((value as Map).cast<String, dynamic>()))),
-      stackHciClusterId: map['stackHciClusterId'] == null ? null : pulumi.Output.create<String>(map['stackHciClusterId'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      arcResourceIds: map['arcResourceIds'] == null ? null : ((map['arcResourceIds'] as List).cast<String>()).input(),
+      scaleUnits: map['scaleUnits'] == null ? null : (pulumi.Input.decodeList<HciDeploymentSettingScaleUnit>(map['scaleUnits'], (value) => HciDeploymentSettingScaleUnit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stackHciClusterId: map['stackHciClusterId'] == null ? null : (map['stackHciClusterId'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

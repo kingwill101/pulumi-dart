@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertsAlertConfigurationJoinConfiguration {
   /// Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
-  final String condition;
+  final pulumi.Input<String> condition;
   /// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetAlertsAlertConfigurationJoinConfiguration].
   /// [condition] Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
@@ -24,8 +25,8 @@ class GetAlertsAlertConfigurationJoinConfiguration {
 
   factory GetAlertsAlertConfigurationJoinConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAlertsAlertConfigurationJoinConfiguration(
-      condition: map['condition'] as String,
-      type: map['type'] as String,
+      condition: (map['condition'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

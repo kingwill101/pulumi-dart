@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of the provisioned Event Hub-compatible endpoint used by the IoT hub.
 class EventHubPropertiesResponse {
   /// The Event Hub-compatible endpoint.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// The number of partitions for receiving device-to-cloud messages in the Event Hub-compatible endpoint. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages.
-  final int? partitionCount;
+  final pulumi.Input<int>? partitionCount;
   /// The partition ids in the Event Hub-compatible endpoint.
-  final List<String> partitionIds;
+  final pulumi.Input<List<String>> partitionIds;
   /// The Event Hub-compatible name.
-  final String path;
+  final pulumi.Input<String> path;
   /// The retention time for device-to-cloud messages in days. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages
-  final double? retentionTimeInDays;
+  final pulumi.Input<double>? retentionTimeInDays;
 
   /// Creates a new [EventHubPropertiesResponse].
   /// [endpoint] The Event Hub-compatible endpoint.
@@ -40,11 +41,11 @@ class EventHubPropertiesResponse {
 
   factory EventHubPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EventHubPropertiesResponse(
-      endpoint: map['endpoint'] as String,
-      partitionCount: map['partitionCount'] == null ? null : map['partitionCount'] as int,
-      partitionIds: (map['partitionIds'] as List).cast<String>(),
-      path: map['path'] as String,
-      retentionTimeInDays: map['retentionTimeInDays'] == null ? null : map['retentionTimeInDays'] as double,
+      endpoint: (map['endpoint'] as String).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
+      partitionIds: ((map['partitionIds'] as List).cast<String>()).input(),
+      path: (map['path'] as String).input(),
+      retentionTimeInDays: map['retentionTimeInDays'] == null ? null : (map['retentionTimeInDays'] as double).input(),
     );
   }
 }

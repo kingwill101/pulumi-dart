@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IP rule with specific IP or IP range in CIDR format.
 class IPRule {
   /// The action of IP ACL rule.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
-  final String iPAddressOrRange;
+  final pulumi.Input<String> iPAddressOrRange;
 
   /// Creates a new [IPRule].
   /// [action] The action of IP ACL rule.
@@ -25,8 +26,8 @@ class IPRule {
 
   factory IPRule.fromMap(Map<String, dynamic> map) {
     return IPRule(
-      action: map['action'] == null ? null : map['action'] as String,
-      iPAddressOrRange: map['iPAddressOrRange'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      iPAddressOrRange: (map['iPAddressOrRange'] as String).input(),
     );
   }
 }

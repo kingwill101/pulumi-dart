@@ -7,13 +7,13 @@ import 'routing_rule.dart';
 /// Definition of WebsiteConfiguration
 class WebsiteConfiguration {
   /// The name of the error document for the website.
-  final String? errorDocument;
+  final pulumi.Input<String>? errorDocument;
   /// The name of the index document for the website.
-  final String? indexDocument;
+  final pulumi.Input<String>? indexDocument;
   /// The redirect behavior for every request to this bucket's website endpoint.  If you specify this property, you can't specify any other property. Specifies the redirect behavior of all requests to a website endpoint of an Amazon S3 bucket.
-  final RedirectAllRequestsTo? redirectAllRequestsTo;
+  final pulumi.Input<RedirectAllRequestsTo>? redirectAllRequestsTo;
   /// Rules that define when a redirect is applied and the redirect behavior.
-  final List<RoutingRule>? routingRules;
+  final pulumi.Input<List<RoutingRule>>? routingRules;
 
   /// Creates a new [WebsiteConfiguration].
   /// [errorDocument] The name of the error document for the website.
@@ -31,17 +31,17 @@ class WebsiteConfiguration {
     return <String, dynamic>{
       'errorDocument': ?errorDocument,
       'indexDocument': ?indexDocument,
-      'redirectAllRequestsTo': ?redirectAllRequestsTo == null ? null : redirectAllRequestsTo!.toMap(),
-      'routingRules': ?routingRules == null ? null : pulumi.Input.encodeList<RoutingRule, Map<String, dynamic>>(routingRules!, (value) => value.toMap()),
+      'redirectAllRequestsTo': ?pulumi.Input.mapOptionalInputValue<RedirectAllRequestsTo, Map<String, dynamic>>(redirectAllRequestsTo, (value) => value.toMap()),
+      'routingRules': ?pulumi.Input.mapOptionalInputValue<List<RoutingRule>, List<Map<String, dynamic>>>(routingRules, (value) => pulumi.Input.encodeList<RoutingRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WebsiteConfiguration.fromMap(Map<String, dynamic> map) {
     return WebsiteConfiguration(
-      errorDocument: map['errorDocument'] == null ? null : map['errorDocument'] as String,
-      indexDocument: map['indexDocument'] == null ? null : map['indexDocument'] as String,
-      redirectAllRequestsTo: map['redirectAllRequestsTo'] == null ? null : RedirectAllRequestsTo.fromMap((map['redirectAllRequestsTo'] as Map).cast<String, dynamic>()),
-      routingRules: map['routingRules'] == null ? null : pulumi.Input.decodeList<RoutingRule>(map['routingRules'], (value) => RoutingRule.fromMap((value as Map).cast<String, dynamic>())),
+      errorDocument: map['errorDocument'] == null ? null : (map['errorDocument'] as String).input(),
+      indexDocument: map['indexDocument'] == null ? null : (map['indexDocument'] as String).input(),
+      redirectAllRequestsTo: map['redirectAllRequestsTo'] == null ? null : (RedirectAllRequestsTo.fromMap((map['redirectAllRequestsTo'] as Map).cast<String, dynamic>())).input(),
+      routingRules: map['routingRules'] == null ? null : (pulumi.Input.decodeList<RoutingRule>(map['routingRules'], (value) => RoutingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

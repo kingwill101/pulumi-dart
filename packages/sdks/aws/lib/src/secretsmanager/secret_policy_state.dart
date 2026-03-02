@@ -21,15 +21,11 @@ class SecretPolicyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretArn] Secret ARN.
   SecretPolicyState({
-    pulumi.Output<bool>? blockPublicPolicy,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secretArn,
-  }) :
-      blockPublicPolicy = pulumi.Input.asOptionalInput<bool>(blockPublicPolicy),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretArn = pulumi.Input.asOptionalInput<String>(secretArn);
+    this.blockPublicPolicy,
+    this.policy,
+    this.region,
+    this.secretArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class SecretPolicyState {
 
   factory SecretPolicyState.fromMap(Map<String, dynamic> map) {
     return SecretPolicyState(
-      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : pulumi.Output.create<bool>(map['blockPublicPolicy'] as bool),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretArn: map['secretArn'] == null ? null : pulumi.Output.create<String>(map['secretArn'] as String),
+      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy'] as bool).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
     );
   }
 }

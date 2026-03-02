@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Fields for tracking resource move
 class ResourceMoveDetailsResponse {
   /// Denotes whether move operation is in progress
-  final String? operationInProgress;
+  final pulumi.Input<String>? operationInProgress;
   /// Denotes the timeout of the operation to finish
-  final String? operationInProgressLockTimeoutInUTC;
+  final pulumi.Input<String>? operationInProgressLockTimeoutInUTC;
 
   /// Creates a new [ResourceMoveDetailsResponse].
   /// [operationInProgress] Denotes whether move operation is in progress
@@ -25,8 +26,8 @@ class ResourceMoveDetailsResponse {
 
   factory ResourceMoveDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceMoveDetailsResponse(
-      operationInProgress: map['operationInProgress'] == null ? null : map['operationInProgress'] as String,
-      operationInProgressLockTimeoutInUTC: map['operationInProgressLockTimeoutInUTC'] == null ? null : map['operationInProgressLockTimeoutInUTC'] as String,
+      operationInProgress: map['operationInProgress'] == null ? null : (map['operationInProgress'] as String).input(),
+      operationInProgressLockTimeoutInUTC: map['operationInProgressLockTimeoutInUTC'] == null ? null : (map['operationInProgressLockTimeoutInUTC'] as String).input(),
     );
   }
 }

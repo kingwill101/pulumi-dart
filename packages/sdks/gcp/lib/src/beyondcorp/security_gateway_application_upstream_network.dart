@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityGatewayApplicationUpstreamNetwork {
   /// Required. Network name is of the format:
   /// `projects/{project}/global/networks/{network}`
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [SecurityGatewayApplicationUpstreamNetwork].
   /// [name] Required. Network name is of the format:
@@ -20,7 +21,7 @@ class SecurityGatewayApplicationUpstreamNetwork {
 
   factory SecurityGatewayApplicationUpstreamNetwork.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamNetwork(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

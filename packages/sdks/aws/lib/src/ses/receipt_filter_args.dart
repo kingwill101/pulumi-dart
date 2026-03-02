@@ -22,15 +22,11 @@ class ReceiptFilterArgs {
   /// [policy] Block or Allow
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ReceiptFilterArgs({
-    required pulumi.Output<String> cidr,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? region,
-  }) :
-      cidr = pulumi.Input.asInput<String>(cidr),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.cidr,
+    this.name,
+    required this.policy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ReceiptFilterArgs {
 
   factory ReceiptFilterArgs.fromMap(Map<String, dynamic> map) {
     return ReceiptFilterArgs(
-      cidr: pulumi.Output.create<String>(map['cidr'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      cidr: (map['cidr'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

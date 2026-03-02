@@ -51,33 +51,20 @@ class NodeGroupArgs {
   /// [shareSettings] Share-settings for the node group
   /// [zone] Optional.
   NodeGroupArgs({
-    pulumi.Output<NodeGroupAutoscalingPolicy>? autoscalingPolicy,
-    pulumi.Output<String>? description,
-    required pulumi.Output<int> initialNodeCount,
-    pulumi.Output<String>? locationHint,
-    pulumi.Output<NodeGroupMaintenanceInterval>? maintenanceInterval,
-    pulumi.Output<NodeGroupMaintenancePolicy>? maintenancePolicy,
-    pulumi.Output<NodeGroupMaintenanceWindow>? maintenanceWindow,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nodeTemplate,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<ShareSettings>? shareSettings,
-    pulumi.Output<String>? zone,
-  }) :
-      autoscalingPolicy = pulumi.Input.asOptionalInput<NodeGroupAutoscalingPolicy>(autoscalingPolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      initialNodeCount = pulumi.Input.asInput<int>(initialNodeCount),
-      locationHint = pulumi.Input.asOptionalInput<String>(locationHint),
-      maintenanceInterval = pulumi.Input.asOptionalInput<NodeGroupMaintenanceInterval>(maintenanceInterval),
-      maintenancePolicy = pulumi.Input.asOptionalInput<NodeGroupMaintenancePolicy>(maintenancePolicy),
-      maintenanceWindow = pulumi.Input.asOptionalInput<NodeGroupMaintenanceWindow>(maintenanceWindow),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeTemplate = pulumi.Input.asOptionalInput<String>(nodeTemplate),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      shareSettings = pulumi.Input.asOptionalInput<ShareSettings>(shareSettings),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.autoscalingPolicy,
+    this.description,
+    required this.initialNodeCount,
+    this.locationHint,
+    this.maintenanceInterval,
+    this.maintenancePolicy,
+    this.maintenanceWindow,
+    this.name,
+    this.nodeTemplate,
+    this.project,
+    this.requestId,
+    this.shareSettings,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class NodeGroupArgs {
 
   factory NodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupArgs(
-      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : pulumi.Output.create<NodeGroupAutoscalingPolicy>(NodeGroupAutoscalingPolicy.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      initialNodeCount: pulumi.Output.create<int>(map['initialNodeCount'] as int),
-      locationHint: map['locationHint'] == null ? null : pulumi.Output.create<String>(map['locationHint'] as String),
-      maintenanceInterval: map['maintenanceInterval'] == null ? null : pulumi.Output.create<NodeGroupMaintenanceInterval>(NodeGroupMaintenanceInterval.fromValue(map['maintenanceInterval'] as String)),
-      maintenancePolicy: map['maintenancePolicy'] == null ? null : pulumi.Output.create<NodeGroupMaintenancePolicy>(NodeGroupMaintenancePolicy.fromValue(map['maintenancePolicy'] as String)),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : pulumi.Output.create<NodeGroupMaintenanceWindow>(NodeGroupMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeTemplate: map['nodeTemplate'] == null ? null : pulumi.Output.create<String>(map['nodeTemplate'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      shareSettings: map['shareSettings'] == null ? null : pulumi.Output.create<ShareSettings>(ShareSettings.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (NodeGroupAutoscalingPolicy.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      initialNodeCount: (map['initialNodeCount'] as int).input(),
+      locationHint: map['locationHint'] == null ? null : (map['locationHint'] as String).input(),
+      maintenanceInterval: map['maintenanceInterval'] == null ? null : (NodeGroupMaintenanceInterval.fromValue(map['maintenanceInterval'] as String)).input(),
+      maintenancePolicy: map['maintenancePolicy'] == null ? null : (NodeGroupMaintenancePolicy.fromValue(map['maintenancePolicy'] as String)).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (NodeGroupMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeTemplate: map['nodeTemplate'] == null ? null : (map['nodeTemplate'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      shareSettings: map['shareSettings'] == null ? null : (ShareSettings.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

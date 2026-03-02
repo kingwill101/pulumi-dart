@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage {
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage].
   /// [value] Required.
@@ -18,7 +19,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageS
 
   factory V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

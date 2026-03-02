@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancersBalancerBackendServer {
-  final String description;
-  final String serverId;
-  final String type;
-  final int weight;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> serverId;
+  final pulumi.Input<String> type;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetLoadBalancersBalancerBackendServer].
   /// [description] Required.
@@ -30,10 +31,10 @@ class GetLoadBalancersBalancerBackendServer {
 
   factory GetLoadBalancersBalancerBackendServer.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerBackendServer(
-      description: map['description'] as String,
-      serverId: map['serverId'] as String,
-      type: map['type'] as String,
-      weight: map['weight'] as int,
+      description: (map['description'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      type: (map['type'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

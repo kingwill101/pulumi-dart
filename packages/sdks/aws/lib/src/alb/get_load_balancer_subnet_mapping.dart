@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerSubnetMapping {
-  final String allocationId;
-  final String ipv6Address;
-  final String outpostId;
-  final String privateIpv4Address;
-  final String subnetId;
+  final pulumi.Input<String> allocationId;
+  final pulumi.Input<String> ipv6Address;
+  final pulumi.Input<String> outpostId;
+  final pulumi.Input<String> privateIpv4Address;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetLoadBalancerSubnetMapping].
   /// [allocationId] Required.
@@ -34,11 +35,11 @@ class GetLoadBalancerSubnetMapping {
 
   factory GetLoadBalancerSubnetMapping.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerSubnetMapping(
-      allocationId: map['allocationId'] as String,
-      ipv6Address: map['ipv6Address'] as String,
-      outpostId: map['outpostId'] as String,
-      privateIpv4Address: map['privateIpv4Address'] as String,
-      subnetId: map['subnetId'] as String,
+      allocationId: (map['allocationId'] as String).input(),
+      ipv6Address: (map['ipv6Address'] as String).input(),
+      outpostId: (map['outpostId'] as String).input(),
+      privateIpv4Address: (map['privateIpv4Address'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MoboBroker resource.
 class MoboBrokerResourceResponse {
   /// Resource Id of MoboBrokerResource
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [MoboBrokerResourceResponse].
   /// [id] Resource Id of MoboBrokerResource
@@ -20,7 +21,7 @@ class MoboBrokerResourceResponse {
 
   factory MoboBrokerResourceResponse.fromMap(Map<String, dynamic> map) {
     return MoboBrokerResourceResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

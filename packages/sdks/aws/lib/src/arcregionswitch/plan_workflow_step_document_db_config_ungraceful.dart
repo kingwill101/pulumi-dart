@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanWorkflowStepDocumentDbConfigUngraceful {
-  final String ungraceful;
+  final pulumi.Input<String> ungraceful;
 
   /// Creates a new [PlanWorkflowStepDocumentDbConfigUngraceful].
   /// [ungraceful] Required.
@@ -18,7 +19,7 @@ class PlanWorkflowStepDocumentDbConfigUngraceful {
 
   factory PlanWorkflowStepDocumentDbConfigUngraceful.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepDocumentDbConfigUngraceful(
-      ungraceful: map['ungraceful'] as String,
+      ungraceful: (map['ungraceful'] as String).input(),
     );
   }
 }

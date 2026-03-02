@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateCreditSpecification {
-  final String cpuCredits;
+  final pulumi.Input<String> cpuCredits;
 
   /// Creates a new [GetLaunchTemplateCreditSpecification].
   /// [cpuCredits] Required.
@@ -18,7 +19,7 @@ class GetLaunchTemplateCreditSpecification {
 
   factory GetLaunchTemplateCreditSpecification.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateCreditSpecification(
-      cpuCredits: map['cpuCredits'] as String,
+      cpuCredits: (map['cpuCredits'] as String).input(),
     );
   }
 }

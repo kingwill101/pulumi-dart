@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'status_error_response.dart';
 
 /// Defines the status config properties.
 class StatusConfigResponse {
   /// Object to transfer and persist errors that originate from the edge.
-  final StatusErrorResponse error;
+  final pulumi.Input<StatusErrorResponse> error;
   /// A read-only timestamp indicating the last time the configuration has been modified from the perspective of the current actual (edge) state of the CRD. Edge would be the only writer of this value and would sync back up to the cloud.
-  final String lastTransitionTime;
+  final pulumi.Input<String> lastTransitionTime;
   /// A read-only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (edge) state of the CRD. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
-  final double version;
+  final pulumi.Input<double> version;
 
   /// Creates a new [StatusConfigResponse].
   /// [error] Object to transfer and persist errors that originate from the edge.
@@ -23,7 +24,7 @@ class StatusConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<StatusErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'lastTransitionTime': lastTransitionTime,
       'version': version,
     };
@@ -31,9 +32,9 @@ class StatusConfigResponse {
 
   factory StatusConfigResponse.fromMap(Map<String, dynamic> map) {
     return StatusConfigResponse(
-      error: StatusErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      lastTransitionTime: map['lastTransitionTime'] as String,
-      version: map['version'] as double,
+      error: (StatusErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      lastTransitionTime: (map['lastTransitionTime'] as String).input(),
+      version: (map['version'] as double).input(),
     );
   }
 }

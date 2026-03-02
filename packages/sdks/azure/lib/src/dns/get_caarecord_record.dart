@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCAARecordRecord {
   /// Extensible CAA flags, currently only 1 is implemented to set the issuer critical flag.
-  final int flags;
+  final pulumi.Input<int> flags;
   /// A property tag, options are `issue`, `issuewild`, `iodef`, and `contactemail`.
-  final String tag;
+  final pulumi.Input<String> tag;
   /// A property value such as a registrar domain.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetCAARecordRecord].
   /// [flags] Extensible CAA flags, currently only 1 is implemented to set the issuer critical flag.
@@ -29,9 +30,9 @@ class GetCAARecordRecord {
 
   factory GetCAARecordRecord.fromMap(Map<String, dynamic> map) {
     return GetCAARecordRecord(
-      flags: map['flags'] as int,
-      tag: map['tag'] as String,
-      value: map['value'] as String,
+      flags: (map['flags'] as int).input(),
+      tag: (map['tag'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

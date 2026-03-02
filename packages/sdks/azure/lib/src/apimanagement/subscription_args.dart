@@ -47,29 +47,18 @@ class SubscriptionArgs {
   /// [subscriptionId] An Identifier which should used as the ID of this Subscription. If not specified a new Subscription ID will be generated. Changing this forces a new resource to be created.
   /// [userId] The ID of the User which should be assigned to this Subscription. Changing this forces a new resource to be created.
   SubscriptionArgs({
-    pulumi.Output<bool>? allowTracing,
-    pulumi.Output<String>? apiId,
-    required pulumi.Output<String> apiManagementName,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? primaryKey,
-    pulumi.Output<String>? productId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? secondaryKey,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? subscriptionId,
-    pulumi.Output<String>? userId,
-  }) :
-      allowTracing = pulumi.Input.asOptionalInput<bool>(allowTracing),
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      primaryKey = pulumi.Input.asOptionalInput<String>(primaryKey),
-      productId = pulumi.Input.asOptionalInput<String>(productId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secondaryKey = pulumi.Input.asOptionalInput<String>(secondaryKey),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.allowTracing,
+    this.apiId,
+    required this.apiManagementName,
+    required this.displayName,
+    this.primaryKey,
+    this.productId,
+    required this.resourceGroupName,
+    this.secondaryKey,
+    this.state,
+    this.subscriptionId,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      allowTracing: map['allowTracing'] == null ? null : pulumi.Output.create<bool>(map['allowTracing'] as bool),
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      primaryKey: map['primaryKey'] == null ? null : pulumi.Output.create<String>(map['primaryKey'] as String),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secondaryKey: map['secondaryKey'] == null ? null : pulumi.Output.create<String>(map['secondaryKey'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      allowTracing: map['allowTracing'] == null ? null : (map['allowTracing'] as bool).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

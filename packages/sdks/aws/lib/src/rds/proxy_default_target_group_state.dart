@@ -23,17 +23,12 @@ class ProxyDefaultTargetGroupState {
   /// [name] The name of the default target group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ProxyDefaultTargetGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<ProxyDefaultTargetGroupConnectionPoolConfig>? connectionPoolConfig,
-    pulumi.Output<String>? dbProxyName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      connectionPoolConfig = pulumi.Input.asOptionalInput<ProxyDefaultTargetGroupConnectionPoolConfig>(connectionPoolConfig),
-      dbProxyName = pulumi.Input.asOptionalInput<String>(dbProxyName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.arn,
+    this.connectionPoolConfig,
+    this.dbProxyName,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class ProxyDefaultTargetGroupState {
 
   factory ProxyDefaultTargetGroupState.fromMap(Map<String, dynamic> map) {
     return ProxyDefaultTargetGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      connectionPoolConfig: map['connectionPoolConfig'] == null ? null : pulumi.Output.create<ProxyDefaultTargetGroupConnectionPoolConfig>(ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((map['connectionPoolConfig'] as Map).cast<String, dynamic>())),
-      dbProxyName: map['dbProxyName'] == null ? null : pulumi.Output.create<String>(map['dbProxyName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      connectionPoolConfig: map['connectionPoolConfig'] == null ? null : (ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((map['connectionPoolConfig'] as Map).cast<String, dynamic>())).input(),
+      dbProxyName: map['dbProxyName'] == null ? null : (map['dbProxyName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

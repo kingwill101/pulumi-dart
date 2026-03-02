@@ -25,17 +25,12 @@ class ZonalAccountArgs {
   /// [accountType] Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
   /// [dbClusterId] The Id of cluster in which account belongs.
   ZonalAccountArgs({
-    pulumi.Output<String>? accountDescription,
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? accountPassword,
-    pulumi.Output<String>? accountType,
-    required pulumi.Output<String> dbClusterId,
-  }) :
-      accountDescription = pulumi.Input.asOptionalInput<String>(accountDescription),
-      accountName = pulumi.Input.asInput<String>(accountName),
-      accountPassword = pulumi.Input.asOptionalInput<String>(accountPassword),
-      accountType = pulumi.Input.asOptionalInput<String>(accountType),
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId);
+    this.accountDescription,
+    required this.accountName,
+    this.accountPassword,
+    this.accountType,
+    required this.dbClusterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ZonalAccountArgs {
 
   factory ZonalAccountArgs.fromMap(Map<String, dynamic> map) {
     return ZonalAccountArgs(
-      accountDescription: map['accountDescription'] == null ? null : pulumi.Output.create<String>(map['accountDescription'] as String),
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      accountPassword: map['accountPassword'] == null ? null : pulumi.Output.create<String>(map['accountPassword'] as String),
-      accountType: map['accountType'] == null ? null : pulumi.Output.create<String>(map['accountType'] as String),
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
     );
   }
 }

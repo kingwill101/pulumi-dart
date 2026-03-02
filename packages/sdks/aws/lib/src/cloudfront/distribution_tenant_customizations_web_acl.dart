@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionTenantCustomizationsWebAcl {
   /// Action to take for the web ACL. Valid values: `allow`, `block`.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// ARN of the distribution tenant.
-  final String? arn;
+  final pulumi.Input<String>? arn;
 
   /// Creates a new [DistributionTenantCustomizationsWebAcl].
   /// [action] Action to take for the web ACL. Valid values: `allow`, `block`.
@@ -24,8 +25,8 @@ class DistributionTenantCustomizationsWebAcl {
 
   factory DistributionTenantCustomizationsWebAcl.fromMap(Map<String, dynamic> map) {
     return DistributionTenantCustomizationsWebAcl(
-      action: map['action'] == null ? null : map['action'] as String,
-      arn: map['arn'] == null ? null : map['arn'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
     );
   }
 }

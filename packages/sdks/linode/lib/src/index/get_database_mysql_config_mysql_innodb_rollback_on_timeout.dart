@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout {
-  final String description;
-  final bool example;
-  final bool requiresRestart;
-  final String type;
+  final pulumi.Input<String> description;
+  final pulumi.Input<bool> example;
+  final pulumi.Input<bool> requiresRestart;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout].
   /// [description] Required.
@@ -30,10 +31,10 @@ class GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout {
 
   factory GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout(
-      description: map['description'] as String,
-      example: map['example'] as bool,
-      requiresRestart: map['requiresRestart'] as bool,
-      type: map['type'] as String,
+      description: (map['description'] as String).input(),
+      example: (map['example'] as bool).input(),
+      requiresRestart: (map['requiresRestart'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

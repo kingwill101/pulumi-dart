@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
 class WebhookConfigResponse {
   /// Resource name for the secret required as a URL parameter.
-  final String secret;
+  final pulumi.Input<String> secret;
   /// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [WebhookConfigResponse].
   /// [secret] Resource name for the secret required as a URL parameter.
@@ -25,8 +26,8 @@ class WebhookConfigResponse {
 
   factory WebhookConfigResponse.fromMap(Map<String, dynamic> map) {
     return WebhookConfigResponse(
-      secret: map['secret'] as String,
-      state: map['state'] as String,
+      secret: (map['secret'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

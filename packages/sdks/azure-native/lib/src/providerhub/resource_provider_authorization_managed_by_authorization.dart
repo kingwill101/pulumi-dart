@@ -5,11 +5,11 @@ import 'additional_authorization.dart';
 
 /// Managed by authorization.
 class ResourceProviderAuthorizationManagedByAuthorization {
-  final List<AdditionalAuthorization>? additionalAuthorizations;
+  final pulumi.Input<List<AdditionalAuthorization>>? additionalAuthorizations;
   /// Indicates whether the managed by resource role definition ID should be inherited.
-  final bool? allowManagedByInheritance;
+  final pulumi.Input<bool>? allowManagedByInheritance;
   /// The managed by resource role definition ID for the application.
-  final String? managedByResourceRoleDefinitionId;
+  final pulumi.Input<String>? managedByResourceRoleDefinitionId;
 
   /// Creates a new [ResourceProviderAuthorizationManagedByAuthorization].
   /// [additionalAuthorizations] Optional.
@@ -23,7 +23,7 @@ class ResourceProviderAuthorizationManagedByAuthorization {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalAuthorizations': ?additionalAuthorizations == null ? null : pulumi.Input.encodeList<AdditionalAuthorization, Map<String, dynamic>>(additionalAuthorizations!, (value) => value.toMap()),
+      'additionalAuthorizations': ?pulumi.Input.mapOptionalInputValue<List<AdditionalAuthorization>, List<Map<String, dynamic>>>(additionalAuthorizations, (value) => pulumi.Input.encodeList<AdditionalAuthorization, Map<String, dynamic>>(value, (value) => value.toMap())),
       'allowManagedByInheritance': ?allowManagedByInheritance,
       'managedByResourceRoleDefinitionId': ?managedByResourceRoleDefinitionId,
     };
@@ -31,9 +31,9 @@ class ResourceProviderAuthorizationManagedByAuthorization {
 
   factory ResourceProviderAuthorizationManagedByAuthorization.fromMap(Map<String, dynamic> map) {
     return ResourceProviderAuthorizationManagedByAuthorization(
-      additionalAuthorizations: map['additionalAuthorizations'] == null ? null : pulumi.Input.decodeList<AdditionalAuthorization>(map['additionalAuthorizations'], (value) => AdditionalAuthorization.fromMap((value as Map).cast<String, dynamic>())),
-      allowManagedByInheritance: map['allowManagedByInheritance'] == null ? null : map['allowManagedByInheritance'] as bool,
-      managedByResourceRoleDefinitionId: map['managedByResourceRoleDefinitionId'] == null ? null : map['managedByResourceRoleDefinitionId'] as String,
+      additionalAuthorizations: map['additionalAuthorizations'] == null ? null : (pulumi.Input.decodeList<AdditionalAuthorization>(map['additionalAuthorizations'], (value) => AdditionalAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowManagedByInheritance: map['allowManagedByInheritance'] == null ? null : (map['allowManagedByInheritance'] as bool).input(),
+      managedByResourceRoleDefinitionId: map['managedByResourceRoleDefinitionId'] == null ? null : (map['managedByResourceRoleDefinitionId'] as String).input(),
     );
   }
 }

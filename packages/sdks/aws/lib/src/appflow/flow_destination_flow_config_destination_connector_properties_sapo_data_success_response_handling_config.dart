@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig {
   /// Name of the Amazon S3 bucket.
-  final String? bucketName;
+  final pulumi.Input<String>? bucketName;
   /// Amazon S3 bucket prefix.
-  final String? bucketPrefix;
+  final pulumi.Input<String>? bucketPrefix;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig].
   /// [bucketName] Name of the Amazon S3 bucket.
@@ -24,8 +25,8 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResp
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig(
-      bucketName: map['bucketName'] == null ? null : map['bucketName'] as String,
-      bucketPrefix: map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
     );
   }
 }

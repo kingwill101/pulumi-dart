@@ -18,13 +18,10 @@ class LbHttpsRedirectionPolicyState {
   /// [lbName] Name of the load balancer to which you want to enable HTTP to HTTPS redirection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LbHttpsRedirectionPolicyState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? lbName,
-    pulumi.Output<String>? region,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      lbName = pulumi.Input.asOptionalInput<String>(lbName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.enabled,
+    this.lbName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class LbHttpsRedirectionPolicyState {
 
   factory LbHttpsRedirectionPolicyState.fromMap(Map<String, dynamic> map) {
     return LbHttpsRedirectionPolicyState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      lbName: map['lbName'] == null ? null : pulumi.Output.create<String>(map['lbName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      lbName: map['lbName'] == null ? null : (map['lbName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

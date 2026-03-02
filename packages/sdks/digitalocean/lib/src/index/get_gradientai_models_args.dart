@@ -16,11 +16,9 @@ class GetGradientaiModelsArgs {
   /// [filters] Optional.
   /// [sorts] Optional.
   GetGradientaiModelsArgs({
-    pulumi.Output<List<GetGradientaiModelsFilter>>? filters,
-    pulumi.Output<List<GetGradientaiModelsSort>>? sorts,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetGradientaiModelsFilter>>(filters),
-      sorts = pulumi.Input.asOptionalInput<List<GetGradientaiModelsSort>>(sorts);
+    this.filters,
+    this.sorts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetGradientaiModelsArgs {
 
   factory GetGradientaiModelsArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiModelsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetGradientaiModelsFilter>>(pulumi.Input.decodeList<GetGradientaiModelsFilter>(map['filters'], (value) => GetGradientaiModelsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      sorts: map['sorts'] == null ? null : pulumi.Output.create<List<GetGradientaiModelsSort>>(pulumi.Input.decodeList<GetGradientaiModelsSort>(map['sorts'], (value) => GetGradientaiModelsSort.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiModelsFilter>(map['filters'], (value) => GetGradientaiModelsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiModelsSort>(map['sorts'], (value) => GetGradientaiModelsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

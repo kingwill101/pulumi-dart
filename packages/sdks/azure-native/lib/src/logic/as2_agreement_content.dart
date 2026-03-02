@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'as2_one_way_agreement.dart';
 
 /// The integration account AS2 agreement content.
 class AS2AgreementContent {
   /// The AS2 one-way receive agreement.
-  final AS2OneWayAgreement receiveAgreement;
+  final pulumi.Input<AS2OneWayAgreement> receiveAgreement;
   /// The AS2 one-way send agreement.
-  final AS2OneWayAgreement sendAgreement;
+  final pulumi.Input<AS2OneWayAgreement> sendAgreement;
 
   /// Creates a new [AS2AgreementContent].
   /// [receiveAgreement] The AS2 one-way receive agreement.
@@ -19,15 +20,15 @@ class AS2AgreementContent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'receiveAgreement': receiveAgreement.toMap(),
-      'sendAgreement': sendAgreement.toMap(),
+      'receiveAgreement': pulumi.Input.mapInputValue<AS2OneWayAgreement, Map<String, dynamic>>(receiveAgreement, (value) => value.toMap()),
+      'sendAgreement': pulumi.Input.mapInputValue<AS2OneWayAgreement, Map<String, dynamic>>(sendAgreement, (value) => value.toMap()),
     };
   }
 
   factory AS2AgreementContent.fromMap(Map<String, dynamic> map) {
     return AS2AgreementContent(
-      receiveAgreement: AS2OneWayAgreement.fromMap((map['receiveAgreement'] as Map).cast<String, dynamic>()),
-      sendAgreement: AS2OneWayAgreement.fromMap((map['sendAgreement'] as Map).cast<String, dynamic>()),
+      receiveAgreement: (AS2OneWayAgreement.fromMap((map['receiveAgreement'] as Map).cast<String, dynamic>())).input(),
+      sendAgreement: (AS2OneWayAgreement.fromMap((map['sendAgreement'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

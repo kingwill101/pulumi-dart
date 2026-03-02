@@ -36,25 +36,16 @@ class ServerlessClusterState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcConfigs] VPC configuration information. See below.
   ServerlessClusterState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? bootstrapBrokersSaslIam,
-    pulumi.Output<ServerlessClusterClientAuthentication>? clientAuthentication,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? clusterUuid,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<List<ServerlessClusterVpcConfig>>? vpcConfigs,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      bootstrapBrokersSaslIam = pulumi.Input.asOptionalInput<String>(bootstrapBrokersSaslIam),
-      clientAuthentication = pulumi.Input.asOptionalInput<ServerlessClusterClientAuthentication>(clientAuthentication),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      clusterUuid = pulumi.Input.asOptionalInput<String>(clusterUuid),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vpcConfigs = pulumi.Input.asOptionalInput<List<ServerlessClusterVpcConfig>>(vpcConfigs);
+    this.arn,
+    this.bootstrapBrokersSaslIam,
+    this.clientAuthentication,
+    this.clusterName,
+    this.clusterUuid,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.vpcConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class ServerlessClusterState {
 
   factory ServerlessClusterState.fromMap(Map<String, dynamic> map) {
     return ServerlessClusterState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      bootstrapBrokersSaslIam: map['bootstrapBrokersSaslIam'] == null ? null : pulumi.Output.create<String>(map['bootstrapBrokersSaslIam'] as String),
-      clientAuthentication: map['clientAuthentication'] == null ? null : pulumi.Output.create<ServerlessClusterClientAuthentication>(ServerlessClusterClientAuthentication.fromMap((map['clientAuthentication'] as Map).cast<String, dynamic>())),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      clusterUuid: map['clusterUuid'] == null ? null : pulumi.Output.create<String>(map['clusterUuid'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vpcConfigs: map['vpcConfigs'] == null ? null : pulumi.Output.create<List<ServerlessClusterVpcConfig>>(pulumi.Input.decodeList<ServerlessClusterVpcConfig>(map['vpcConfigs'], (value) => ServerlessClusterVpcConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      bootstrapBrokersSaslIam: map['bootstrapBrokersSaslIam'] == null ? null : (map['bootstrapBrokersSaslIam'] as String).input(),
+      clientAuthentication: map['clientAuthentication'] == null ? null : (ServerlessClusterClientAuthentication.fromMap((map['clientAuthentication'] as Map).cast<String, dynamic>())).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      clusterUuid: map['clusterUuid'] == null ? null : (map['clusterUuid'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vpcConfigs: map['vpcConfigs'] == null ? null : (pulumi.Input.decodeList<ServerlessClusterVpcConfig>(map['vpcConfigs'], (value) => ServerlessClusterVpcConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

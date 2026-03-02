@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Target scaling by disk usage. Only applicable in the App Engine flexible environment.
 class DiskUtilizationResponseAppengineV1beta {
   /// Target bytes read per second.
-  final int targetReadBytesPerSecond;
+  final pulumi.Input<int> targetReadBytesPerSecond;
   /// Target ops read per seconds.
-  final int targetReadOpsPerSecond;
+  final pulumi.Input<int> targetReadOpsPerSecond;
   /// Target bytes written per second.
-  final int targetWriteBytesPerSecond;
+  final pulumi.Input<int> targetWriteBytesPerSecond;
   /// Target ops written per second.
-  final int targetWriteOpsPerSecond;
+  final pulumi.Input<int> targetWriteOpsPerSecond;
 
   /// Creates a new [DiskUtilizationResponseAppengineV1beta].
   /// [targetReadBytesPerSecond] Target bytes read per second.
@@ -35,10 +36,10 @@ class DiskUtilizationResponseAppengineV1beta {
 
   factory DiskUtilizationResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return DiskUtilizationResponseAppengineV1beta(
-      targetReadBytesPerSecond: map['targetReadBytesPerSecond'] as int,
-      targetReadOpsPerSecond: map['targetReadOpsPerSecond'] as int,
-      targetWriteBytesPerSecond: map['targetWriteBytesPerSecond'] as int,
-      targetWriteOpsPerSecond: map['targetWriteOpsPerSecond'] as int,
+      targetReadBytesPerSecond: (map['targetReadBytesPerSecond'] as int).input(),
+      targetReadOpsPerSecond: (map['targetReadOpsPerSecond'] as int).input(),
+      targetWriteBytesPerSecond: (map['targetWriteBytesPerSecond'] as int).input(),
+      targetWriteOpsPerSecond: (map['targetWriteOpsPerSecond'] as int).input(),
     );
   }
 }

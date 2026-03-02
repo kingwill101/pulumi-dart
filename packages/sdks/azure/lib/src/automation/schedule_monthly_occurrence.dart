@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleMonthlyOccurrence {
   /// Day of the occurrence. Must be one of `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
-  final String day;
+  final pulumi.Input<String> day;
   /// Occurrence of the week within the month. Must be between `1` and `5`. `-1` for last week within the month.
-  final int occurrence;
+  final pulumi.Input<int> occurrence;
 
   /// Creates a new [ScheduleMonthlyOccurrence].
   /// [day] Day of the occurrence. Must be one of `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
@@ -24,8 +25,8 @@ class ScheduleMonthlyOccurrence {
 
   factory ScheduleMonthlyOccurrence.fromMap(Map<String, dynamic> map) {
     return ScheduleMonthlyOccurrence(
-      day: map['day'] as String,
-      occurrence: map['occurrence'] as int,
+      day: (map['day'] as String).input(),
+      occurrence: (map['occurrence'] as int).input(),
     );
   }
 }

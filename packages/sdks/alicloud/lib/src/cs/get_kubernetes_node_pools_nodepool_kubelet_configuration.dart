@@ -6,67 +6,67 @@ import 'get_kubernetes_node_pools_nodepool_kubelet_configuration_tracing.dart';
 
 class GetKubernetesNodePoolsNodepoolKubeletConfiguration {
   /// Allowed sysctl mode whitelist.
-  final List<String> allowedUnsafeSysctls;
+  final pulumi.Input<List<String>> allowedUnsafeSysctls;
   /// The list of IP addresses of the cluster DNS servers.
-  final List<String> clusterDns;
+  final pulumi.Input<List<String>> clusterDns;
   /// The maximum number of log files that can exist in each container.
-  final String containerLogMaxFiles;
+  final pulumi.Input<String> containerLogMaxFiles;
   /// The maximum size that can be reached before a log file is rotated.
-  final String containerLogMaxSize;
+  final pulumi.Input<String> containerLogMaxSize;
   /// Specifies the maximum number of concurrent workers required to perform log rotation operations.
-  final String containerLogMaxWorkers;
+  final pulumi.Input<String> containerLogMaxWorkers;
   /// Specifies the duration for which container logs are monitored for log rotation.
-  final String containerLogMonitorInterval;
+  final pulumi.Input<String> containerLogMonitorInterval;
   /// CPU CFS quota constraint switch.
-  final String cpuCfsQuota;
+  final pulumi.Input<String> cpuCfsQuota;
   /// CPU CFS quota period value.
-  final String cpuCfsQuotaPeriod;
+  final pulumi.Input<String> cpuCfsQuotaPeriod;
   /// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
-  final String cpuManagerPolicy;
+  final pulumi.Input<String> cpuManagerPolicy;
   /// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
-  final String eventBurst;
+  final pulumi.Input<String> eventBurst;
   /// Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
-  final String eventRecordQps;
+  final pulumi.Input<String> eventRecordQps;
   /// Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
-  final Map<String, String> evictionHard;
+  final pulumi.Input<Map<String, String>> evictionHard;
   /// Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
-  final Map<String, String> evictionSoft;
+  final pulumi.Input<Map<String, String>> evictionSoft;
   /// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
-  final Map<String, String> evictionSoftGracePeriod;
+  final pulumi.Input<Map<String, String>> evictionSoftGracePeriod;
   /// Feature switch to enable configuration of experimental features.
-  final Map<String, String> featureGates;
+  final pulumi.Input<Map<String, String>> featureGates;
   /// If the image usage exceeds this threshold, image garbage collection will continue.
-  final String imageGcHighThresholdPercent;
+  final pulumi.Input<String> imageGcHighThresholdPercent;
   /// Image garbage collection is not performed when the image usage is below this threshold.
-  final String imageGcLowThresholdPercent;
+  final pulumi.Input<String> imageGcLowThresholdPercent;
   /// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
-  final String kubeApiBurst;
+  final pulumi.Input<String> kubeApiBurst;
   /// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
-  final String kubeApiQps;
+  final pulumi.Input<String> kubeApiQps;
   /// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
-  final Map<String, String> kubeReserved;
+  final pulumi.Input<Map<String, String>> kubeReserved;
   /// The maximum number of running pods.
-  final String maxPods;
+  final pulumi.Input<String> maxPods;
   /// The policy to be used by the memory manager.
-  final String memoryManagerPolicy;
+  final pulumi.Input<String> memoryManagerPolicy;
   /// The maximum number of PIDs that can be used in a Pod.
-  final String podPidsLimit;
+  final pulumi.Input<String> podPidsLimit;
   /// Read-only port number.
-  final String readOnlyPort;
+  final pulumi.Input<String> readOnlyPort;
   /// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
-  final String registryBurst;
+  final pulumi.Input<String> registryBurst;
   /// Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
-  final String registryPullQps;
+  final pulumi.Input<String> registryPullQps;
   /// Reserve memory for NUMA nodes.
-  final List<GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory> reservedMemories;
+  final pulumi.Input<List<GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory>> reservedMemories;
   /// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
-  final String serializeImagePulls;
+  final pulumi.Input<String> serializeImagePulls;
   /// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
-  final Map<String, String> systemReserved;
+  final pulumi.Input<Map<String, String>> systemReserved;
   /// Name of the Topology Manager policy used.
-  final String topologyManagerPolicy;
+  final pulumi.Input<String> topologyManagerPolicy;
   /// OpenTelemetry tracks the configuration information for client settings versioning.
-  final GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing tracing;
+  final pulumi.Input<GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing> tracing;
 
   /// Creates a new [GetKubernetesNodePoolsNodepoolKubeletConfiguration].
   /// [allowedUnsafeSysctls] Allowed sysctl mode whitelist.
@@ -162,47 +162,47 @@ class GetKubernetesNodePoolsNodepoolKubeletConfiguration {
       'readOnlyPort': readOnlyPort,
       'registryBurst': registryBurst,
       'registryPullQps': registryPullQps,
-      'reservedMemories': pulumi.Input.encodeList<GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory, Map<String, dynamic>>(reservedMemories, (value) => value.toMap()),
+      'reservedMemories': pulumi.Input.mapInputValue<List<GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory>, List<Map<String, dynamic>>>(reservedMemories, (value) => pulumi.Input.encodeList<GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serializeImagePulls': serializeImagePulls,
       'systemReserved': systemReserved,
       'topologyManagerPolicy': topologyManagerPolicy,
-      'tracing': tracing.toMap(),
+      'tracing': pulumi.Input.mapInputValue<GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing, Map<String, dynamic>>(tracing, (value) => value.toMap()),
     };
   }
 
   factory GetKubernetesNodePoolsNodepoolKubeletConfiguration.fromMap(Map<String, dynamic> map) {
     return GetKubernetesNodePoolsNodepoolKubeletConfiguration(
-      allowedUnsafeSysctls: (map['allowedUnsafeSysctls'] as List).cast<String>(),
-      clusterDns: (map['clusterDns'] as List).cast<String>(),
-      containerLogMaxFiles: map['containerLogMaxFiles'] as String,
-      containerLogMaxSize: map['containerLogMaxSize'] as String,
-      containerLogMaxWorkers: map['containerLogMaxWorkers'] as String,
-      containerLogMonitorInterval: map['containerLogMonitorInterval'] as String,
-      cpuCfsQuota: map['cpuCfsQuota'] as String,
-      cpuCfsQuotaPeriod: map['cpuCfsQuotaPeriod'] as String,
-      cpuManagerPolicy: map['cpuManagerPolicy'] as String,
-      eventBurst: map['eventBurst'] as String,
-      eventRecordQps: map['eventRecordQps'] as String,
-      evictionHard: (map['evictionHard'] as Map).cast<String, String>(),
-      evictionSoft: (map['evictionSoft'] as Map).cast<String, String>(),
-      evictionSoftGracePeriod: (map['evictionSoftGracePeriod'] as Map).cast<String, String>(),
-      featureGates: (map['featureGates'] as Map).cast<String, String>(),
-      imageGcHighThresholdPercent: map['imageGcHighThresholdPercent'] as String,
-      imageGcLowThresholdPercent: map['imageGcLowThresholdPercent'] as String,
-      kubeApiBurst: map['kubeApiBurst'] as String,
-      kubeApiQps: map['kubeApiQps'] as String,
-      kubeReserved: (map['kubeReserved'] as Map).cast<String, String>(),
-      maxPods: map['maxPods'] as String,
-      memoryManagerPolicy: map['memoryManagerPolicy'] as String,
-      podPidsLimit: map['podPidsLimit'] as String,
-      readOnlyPort: map['readOnlyPort'] as String,
-      registryBurst: map['registryBurst'] as String,
-      registryPullQps: map['registryPullQps'] as String,
-      reservedMemories: pulumi.Input.decodeList<GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory>(map['reservedMemories'], (value) => GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory.fromMap((value as Map).cast<String, dynamic>())),
-      serializeImagePulls: map['serializeImagePulls'] as String,
-      systemReserved: (map['systemReserved'] as Map).cast<String, String>(),
-      topologyManagerPolicy: map['topologyManagerPolicy'] as String,
-      tracing: GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing.fromMap((map['tracing'] as Map).cast<String, dynamic>()),
+      allowedUnsafeSysctls: ((map['allowedUnsafeSysctls'] as List).cast<String>()).input(),
+      clusterDns: ((map['clusterDns'] as List).cast<String>()).input(),
+      containerLogMaxFiles: (map['containerLogMaxFiles'] as String).input(),
+      containerLogMaxSize: (map['containerLogMaxSize'] as String).input(),
+      containerLogMaxWorkers: (map['containerLogMaxWorkers'] as String).input(),
+      containerLogMonitorInterval: (map['containerLogMonitorInterval'] as String).input(),
+      cpuCfsQuota: (map['cpuCfsQuota'] as String).input(),
+      cpuCfsQuotaPeriod: (map['cpuCfsQuotaPeriod'] as String).input(),
+      cpuManagerPolicy: (map['cpuManagerPolicy'] as String).input(),
+      eventBurst: (map['eventBurst'] as String).input(),
+      eventRecordQps: (map['eventRecordQps'] as String).input(),
+      evictionHard: ((map['evictionHard'] as Map).cast<String, String>()).input(),
+      evictionSoft: ((map['evictionSoft'] as Map).cast<String, String>()).input(),
+      evictionSoftGracePeriod: ((map['evictionSoftGracePeriod'] as Map).cast<String, String>()).input(),
+      featureGates: ((map['featureGates'] as Map).cast<String, String>()).input(),
+      imageGcHighThresholdPercent: (map['imageGcHighThresholdPercent'] as String).input(),
+      imageGcLowThresholdPercent: (map['imageGcLowThresholdPercent'] as String).input(),
+      kubeApiBurst: (map['kubeApiBurst'] as String).input(),
+      kubeApiQps: (map['kubeApiQps'] as String).input(),
+      kubeReserved: ((map['kubeReserved'] as Map).cast<String, String>()).input(),
+      maxPods: (map['maxPods'] as String).input(),
+      memoryManagerPolicy: (map['memoryManagerPolicy'] as String).input(),
+      podPidsLimit: (map['podPidsLimit'] as String).input(),
+      readOnlyPort: (map['readOnlyPort'] as String).input(),
+      registryBurst: (map['registryBurst'] as String).input(),
+      registryPullQps: (map['registryPullQps'] as String).input(),
+      reservedMemories: (pulumi.Input.decodeList<GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory>(map['reservedMemories'], (value) => GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serializeImagePulls: (map['serializeImagePulls'] as String).input(),
+      systemReserved: ((map['systemReserved'] as Map).cast<String, String>()).input(),
+      topologyManagerPolicy: (map['topologyManagerPolicy'] as String).input(),
+      tracing: (GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing.fromMap((map['tracing'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

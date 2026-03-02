@@ -12,9 +12,8 @@ class GetPartnerAttachmentServiceKeyArgs {
   /// Creates a new [GetPartnerAttachmentServiceKeyArgs].
   /// [attachmentId] Required.
   GetPartnerAttachmentServiceKeyArgs({
-    required pulumi.Output<String> attachmentId,
-  }) :
-      attachmentId = pulumi.Input.asInput<String>(attachmentId);
+    required this.attachmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetPartnerAttachmentServiceKeyArgs {
 
   factory GetPartnerAttachmentServiceKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerAttachmentServiceKeyArgs(
-      attachmentId: pulumi.Output.create<String>(map['attachmentId'] as String),
+      attachmentId: (map['attachmentId'] as String).input(),
     );
   }
 }

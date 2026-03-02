@@ -5,9 +5,9 @@ import 'media_insights_pipeline_configuration_real_time_alert_configuration_rule
 
 class MediaInsightsPipelineConfigurationRealTimeAlertConfiguration {
   /// Disables real time alert rules.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// Collection of real time alert rules
-  final List<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule> rules;
+  final pulumi.Input<List<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule>> rules;
 
   /// Creates a new [MediaInsightsPipelineConfigurationRealTimeAlertConfiguration].
   /// [disabled] Disables real time alert rules.
@@ -20,14 +20,14 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'disabled': ?disabled,
-      'rules': pulumi.Input.encodeList<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.mapInputValue<List<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MediaInsightsPipelineConfigurationRealTimeAlertConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfiguration(
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      rules: pulumi.Input.decodeList<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule>(map['rules'], (value) => MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule.fromMap((value as Map).cast<String, dynamic>())),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      rules: (pulumi.Input.decodeList<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule>(map['rules'], (value) => MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodesNodeEvent {
   /// The number of occurrences.
-  final int count;
+  final pulumi.Input<int> count;
   /// The first presentation time stamp.
-  final String firstTimestamp;
+  final pulumi.Input<String> firstTimestamp;
   /// The most recent time stamp.
-  final String lastTimestamp;
+  final pulumi.Input<String> lastTimestamp;
   /// The event of the message body.
-  final String message;
+  final pulumi.Input<String> message;
   /// The name of the event.
-  final String name;
+  final pulumi.Input<String> name;
   /// The causes of the incident.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// The Event type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetVirtualNodesNodeEvent].
   /// [count] The number of occurrences.
@@ -49,13 +50,13 @@ class GetVirtualNodesNodeEvent {
 
   factory GetVirtualNodesNodeEvent.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodesNodeEvent(
-      count: map['count'] as int,
-      firstTimestamp: map['firstTimestamp'] as String,
-      lastTimestamp: map['lastTimestamp'] as String,
-      message: map['message'] as String,
-      name: map['name'] as String,
-      reason: map['reason'] as String,
-      type: map['type'] as String,
+      count: (map['count'] as int).input(),
+      firstTimestamp: (map['firstTimestamp'] as String).input(),
+      lastTimestamp: (map['lastTimestamp'] as String).input(),
+      message: (map['message'] as String).input(),
+      name: (map['name'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

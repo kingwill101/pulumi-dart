@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_maintenance_configuration_iceberg_compaction_settings.dart';
 
 class TableMaintenanceConfigurationIcebergCompaction {
   /// Settings object for compaction.
   /// See `iceberg_compaction.settings` below.
-  final TableMaintenanceConfigurationIcebergCompactionSettings settings;
+  final pulumi.Input<TableMaintenanceConfigurationIcebergCompactionSettings> settings;
   /// Whether the configuration is enabled.
   /// Valid values are `enabled` and `disabled`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [TableMaintenanceConfigurationIcebergCompaction].
   /// [settings] Settings object for compaction.
@@ -20,15 +21,15 @@ class TableMaintenanceConfigurationIcebergCompaction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'settings': settings.toMap(),
+      'settings': pulumi.Input.mapInputValue<TableMaintenanceConfigurationIcebergCompactionSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
       'status': status,
     };
   }
 
   factory TableMaintenanceConfigurationIcebergCompaction.fromMap(Map<String, dynamic> map) {
     return TableMaintenanceConfigurationIcebergCompaction(
-      settings: TableMaintenanceConfigurationIcebergCompactionSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
-      status: map['status'] as String,
+      settings: (TableMaintenanceConfigurationIcebergCompactionSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

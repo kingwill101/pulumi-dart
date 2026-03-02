@@ -18,13 +18,10 @@ class SourceIamPolicyArgs {
   /// [policyData] Required.
   /// [source] Required.
   SourceIamPolicyArgs({
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> policyData,
-    required pulumi.Output<String> source,
-  }) :
-      organization = pulumi.Input.asInput<String>(organization),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      source = pulumi.Input.asInput<String>(source);
+    required this.organization,
+    required this.policyData,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class SourceIamPolicyArgs {
 
   factory SourceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SourceIamPolicyArgs(
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      source: pulumi.Output.create<String>(map['source'] as String),
+      organization: (map['organization'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

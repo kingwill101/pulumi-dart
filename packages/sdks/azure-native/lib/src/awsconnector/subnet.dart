@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'availability_zone.dart';
 
 /// Definition of Subnet
 class Subnet {
   /// <p>The Availability Zone of the subnet.</p>
-  final AvailabilityZone? subnetAvailabilityZone;
+  final pulumi.Input<AvailabilityZone>? subnetAvailabilityZone;
   /// <p>The subnet identifier.</p>
-  final String? subnetIdentifier;
+  final pulumi.Input<String>? subnetIdentifier;
   /// <p>The status of the subnet.</p>
-  final String? subnetStatus;
+  final pulumi.Input<String>? subnetStatus;
 
   /// Creates a new [Subnet].
   /// [subnetAvailabilityZone] <p>The Availability Zone of the subnet.</p>
@@ -23,7 +24,7 @@ class Subnet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subnetAvailabilityZone': ?subnetAvailabilityZone == null ? null : subnetAvailabilityZone!.toMap(),
+      'subnetAvailabilityZone': ?pulumi.Input.mapOptionalInputValue<AvailabilityZone, Map<String, dynamic>>(subnetAvailabilityZone, (value) => value.toMap()),
       'subnetIdentifier': ?subnetIdentifier,
       'subnetStatus': ?subnetStatus,
     };
@@ -31,9 +32,9 @@ class Subnet {
 
   factory Subnet.fromMap(Map<String, dynamic> map) {
     return Subnet(
-      subnetAvailabilityZone: map['subnetAvailabilityZone'] == null ? null : AvailabilityZone.fromMap((map['subnetAvailabilityZone'] as Map).cast<String, dynamic>()),
-      subnetIdentifier: map['subnetIdentifier'] == null ? null : map['subnetIdentifier'] as String,
-      subnetStatus: map['subnetStatus'] == null ? null : map['subnetStatus'] as String,
+      subnetAvailabilityZone: map['subnetAvailabilityZone'] == null ? null : (AvailabilityZone.fromMap((map['subnetAvailabilityZone'] as Map).cast<String, dynamic>())).input(),
+      subnetIdentifier: map['subnetIdentifier'] == null ? null : (map['subnetIdentifier'] as String).input(),
+      subnetStatus: map['subnetStatus'] == null ? null : (map['subnetStatus'] as String).input(),
     );
   }
 }

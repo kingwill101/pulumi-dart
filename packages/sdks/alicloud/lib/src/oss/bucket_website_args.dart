@@ -25,15 +25,11 @@ class BucketWebsiteArgs {
   /// [indexDocument] Static Website Default Home Page Configuration See `index_document` below.
   /// [routingRules] The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
   BucketWebsiteArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<BucketWebsiteErrorDocument>? errorDocument,
-    pulumi.Output<BucketWebsiteIndexDocument>? indexDocument,
-    pulumi.Output<BucketWebsiteRoutingRules>? routingRules,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      errorDocument = pulumi.Input.asOptionalInput<BucketWebsiteErrorDocument>(errorDocument),
-      indexDocument = pulumi.Input.asOptionalInput<BucketWebsiteIndexDocument>(indexDocument),
-      routingRules = pulumi.Input.asOptionalInput<BucketWebsiteRoutingRules>(routingRules);
+    required this.bucket,
+    this.errorDocument,
+    this.indexDocument,
+    this.routingRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class BucketWebsiteArgs {
 
   factory BucketWebsiteArgs.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      errorDocument: map['errorDocument'] == null ? null : pulumi.Output.create<BucketWebsiteErrorDocument>(BucketWebsiteErrorDocument.fromMap((map['errorDocument'] as Map).cast<String, dynamic>())),
-      indexDocument: map['indexDocument'] == null ? null : pulumi.Output.create<BucketWebsiteIndexDocument>(BucketWebsiteIndexDocument.fromMap((map['indexDocument'] as Map).cast<String, dynamic>())),
-      routingRules: map['routingRules'] == null ? null : pulumi.Output.create<BucketWebsiteRoutingRules>(BucketWebsiteRoutingRules.fromMap((map['routingRules'] as Map).cast<String, dynamic>())),
+      bucket: (map['bucket'] as String).input(),
+      errorDocument: map['errorDocument'] == null ? null : (BucketWebsiteErrorDocument.fromMap((map['errorDocument'] as Map).cast<String, dynamic>())).input(),
+      indexDocument: map['indexDocument'] == null ? null : (BucketWebsiteIndexDocument.fromMap((map['indexDocument'] as Map).cast<String, dynamic>())).input(),
+      routingRules: map['routingRules'] == null ? null : (BucketWebsiteRoutingRules.fromMap((map['routingRules'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

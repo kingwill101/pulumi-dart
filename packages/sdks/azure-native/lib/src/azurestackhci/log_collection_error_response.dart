@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Log Collection Error details of the cluster.
 class LogCollectionErrorResponse {
   /// Error Code of the log collection
-  final String errorCode;
+  final pulumi.Input<String> errorCode;
   /// Error Message of the log collection
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
 
   /// Creates a new [LogCollectionErrorResponse].
   /// [errorCode] Error Code of the log collection
@@ -25,8 +26,8 @@ class LogCollectionErrorResponse {
 
   factory LogCollectionErrorResponse.fromMap(Map<String, dynamic> map) {
     return LogCollectionErrorResponse(
-      errorCode: map['errorCode'] as String,
-      errorMessage: map['errorMessage'] as String,
+      errorCode: (map['errorCode'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
     );
   }
 }

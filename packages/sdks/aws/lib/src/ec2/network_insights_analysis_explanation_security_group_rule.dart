@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_insights_analysis_explanation_security_group_rule_port_range.dart';
 
 class NetworkInsightsAnalysisExplanationSecurityGroupRule {
-  final String? cidr;
-  final String? direction;
-  final List<NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange>? portRanges;
-  final String? prefixListId;
-  final String? protocol;
-  final String? securityGroupId;
+  final pulumi.Input<String>? cidr;
+  final pulumi.Input<String>? direction;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange>>? portRanges;
+  final pulumi.Input<String>? prefixListId;
+  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String>? securityGroupId;
 
   /// Creates a new [NetworkInsightsAnalysisExplanationSecurityGroupRule].
   /// [cidr] Optional.
@@ -31,7 +31,7 @@ class NetworkInsightsAnalysisExplanationSecurityGroupRule {
     return <String, dynamic>{
       'cidr': ?cidr,
       'direction': ?direction,
-      'portRanges': ?portRanges == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange, Map<String, dynamic>>(portRanges!, (value) => value.toMap()),
+      'portRanges': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange>, List<Map<String, dynamic>>>(portRanges, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'prefixListId': ?prefixListId,
       'protocol': ?protocol,
       'securityGroupId': ?securityGroupId,
@@ -40,12 +40,12 @@ class NetworkInsightsAnalysisExplanationSecurityGroupRule {
 
   factory NetworkInsightsAnalysisExplanationSecurityGroupRule.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationSecurityGroupRule(
-      cidr: map['cidr'] == null ? null : map['cidr'] as String,
-      direction: map['direction'] == null ? null : map['direction'] as String,
-      portRanges: map['portRanges'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange>(map['portRanges'], (value) => NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange.fromMap((value as Map).cast<String, dynamic>())),
-      prefixListId: map['prefixListId'] == null ? null : map['prefixListId'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      securityGroupId: map['securityGroupId'] == null ? null : map['securityGroupId'] as String,
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      portRanges: map['portRanges'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange>(map['portRanges'], (value) => NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
     );
   }
 }

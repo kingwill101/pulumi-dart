@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName {
   /// A list of alternative DNS names (FQDNs) identified by the Certificate.
-  final List<String> dnsNames;
+  final pulumi.Input<List<String>> dnsNames;
   /// A list of email addresses identified by this Certificate.
-  final List<String> emails;
+  final pulumi.Input<List<String>> emails;
   /// A list of User Principal Names identified by the Certificate.
-  final List<String> upns;
+  final pulumi.Input<List<String>> upns;
 
   /// Creates a new [GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName].
   /// [dnsNames] A list of alternative DNS names (FQDNs) identified by the Certificate.
@@ -29,9 +30,9 @@ class GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeNa
 
   factory GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName.fromMap(Map<String, dynamic> map) {
     return GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName(
-      dnsNames: (map['dnsNames'] as List).cast<String>(),
-      emails: (map['emails'] as List).cast<String>(),
-      upns: (map['upns'] as List).cast<String>(),
+      dnsNames: ((map['dnsNames'] as List).cast<String>()).input(),
+      emails: ((map['emails'] as List).cast<String>()).input(),
+      upns: ((map['upns'] as List).cast<String>()).input(),
     );
   }
 }

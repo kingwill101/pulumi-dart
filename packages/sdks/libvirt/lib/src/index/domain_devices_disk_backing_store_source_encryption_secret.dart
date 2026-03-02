@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskBackingStoreSourceEncryptionSecret {
   /// Sets the type of secret used for iSCSI authentication.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Defines the usage context for the iSCSI authentication secret.
-  final String? usage;
+  final pulumi.Input<String>? usage;
   /// Specifies the UUID of the iSCSI authentication secret.
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceEncryptionSecret].
   /// [type] Sets the type of secret used for iSCSI authentication.
@@ -29,9 +30,9 @@ class DomainDevicesDiskBackingStoreSourceEncryptionSecret {
 
   factory DomainDevicesDiskBackingStoreSourceEncryptionSecret.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceEncryptionSecret(
-      type: map['type'] == null ? null : map['type'] as String,
-      usage: map['usage'] == null ? null : map['usage'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      usage: map['usage'] == null ? null : (map['usage'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HyperNodeDataDisk {
   /// Whether to enable Burst (performance Burst).
-  final bool? burstingEnabled;
+  final pulumi.Input<bool>? burstingEnabled;
   /// The disk type. Value range:
   /// - cloud_essd:ESSD cloud disk.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Whether the data disk is unsubscribed and deleted with the node.
-  final bool? deleteWithNode;
+  final pulumi.Input<bool>? deleteWithNode;
   /// When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
   /// - PL0: maximum random read/write IOPS 10000 for a single disk.
   /// - PL1: maximum random read/write IOPS 50000 for a single disk.
-  final String? performanceLevel;
+  final pulumi.Input<String>? performanceLevel;
   /// ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
-  final int? provisionedIops;
+  final pulumi.Input<int>? provisionedIops;
   /// The size of the disk. The unit is GiB.
-  final int? size;
+  final pulumi.Input<int>? size;
 
   /// Creates a new [HyperNodeDataDisk].
   /// [burstingEnabled] Whether to enable Burst (performance Burst).
@@ -47,12 +48,12 @@ class HyperNodeDataDisk {
 
   factory HyperNodeDataDisk.fromMap(Map<String, dynamic> map) {
     return HyperNodeDataDisk(
-      burstingEnabled: map['burstingEnabled'] == null ? null : map['burstingEnabled'] as bool,
-      category: map['category'] == null ? null : map['category'] as String,
-      deleteWithNode: map['deleteWithNode'] == null ? null : map['deleteWithNode'] as bool,
-      performanceLevel: map['performanceLevel'] == null ? null : map['performanceLevel'] as String,
-      provisionedIops: map['provisionedIops'] == null ? null : map['provisionedIops'] as int,
-      size: map['size'] == null ? null : map['size'] as int,
+      burstingEnabled: map['burstingEnabled'] == null ? null : (map['burstingEnabled'] as bool).input(),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      deleteWithNode: map['deleteWithNode'] == null ? null : (map['deleteWithNode'] as bool).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
+      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops'] as int).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

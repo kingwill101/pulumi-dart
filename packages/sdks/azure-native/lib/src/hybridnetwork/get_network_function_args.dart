@@ -16,11 +16,9 @@ class GetNetworkFunctionArgs {
   /// [networkFunctionName] The name of the network function resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNetworkFunctionArgs({
-    required pulumi.Output<String> networkFunctionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkFunctionName = pulumi.Input.asInput<String>(networkFunctionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkFunctionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkFunctionArgs {
 
   factory GetNetworkFunctionArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkFunctionArgs(
-      networkFunctionName: pulumi.Output.create<String>(map['networkFunctionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkFunctionName: (map['networkFunctionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

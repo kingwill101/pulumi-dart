@@ -1,42 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_interface_ipconfiguration_response.dart';
 import 'sub_resource_response.dart';
 
 /// Inbound NAT rule of the load balancer.
 class InboundNatRuleResponse {
   /// A reference to backendAddressPool resource.
-  final SubResourceResponse? backendAddressPool;
+  final pulumi.Input<SubResourceResponse>? backendAddressPool;
   /// A reference to a private IP address defined on a network interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations is forwarded to the backend IP.
-  final NetworkInterfaceIPConfigurationResponse backendIPConfiguration;
+  final pulumi.Input<NetworkInterfaceIPConfigurationResponse> backendIPConfiguration;
   /// The port used for the internal endpoint. Acceptable values range from 1 to 65535.
-  final int? backendPort;
+  final pulumi.Input<int>? backendPort;
   /// Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
-  final bool? enableFloatingIP;
+  final pulumi.Input<bool>? enableFloatingIP;
   /// Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-  final bool? enableTcpReset;
+  final pulumi.Input<bool>? enableTcpReset;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// A reference to frontend IP addresses.
-  final SubResourceResponse? frontendIPConfiguration;
+  final pulumi.Input<SubResourceResponse>? frontendIPConfiguration;
   /// The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
-  final int? frontendPort;
+  final pulumi.Input<int>? frontendPort;
   /// The port range end for the external endpoint. This property is used together with BackendAddressPool and FrontendPortRangeStart. Individual inbound NAT rule port mappings will be created for each backend address from BackendAddressPool. Acceptable values range from 1 to 65534.
-  final int? frontendPortRangeEnd;
+  final pulumi.Input<int>? frontendPortRangeEnd;
   /// The port range start for the external endpoint. This property is used together with BackendAddressPool and FrontendPortRangeEnd. Individual inbound NAT rule port mappings will be created for each backend address from BackendAddressPool. Acceptable values range from 1 to 65534.
-  final int? frontendPortRangeStart;
+  final pulumi.Input<int>? frontendPortRangeStart;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// The name of the resource that is unique within the set of inbound NAT rules used by the load balancer. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The reference to the transport protocol used by the load balancing rule.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// The provisioning state of the inbound NAT rule resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Type of the resource.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [InboundNatRuleResponse].
   /// [backendAddressPool] A reference to backendAddressPool resource.
@@ -76,13 +77,13 @@ class InboundNatRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddressPool': ?backendAddressPool == null ? null : backendAddressPool!.toMap(),
-      'backendIPConfiguration': backendIPConfiguration.toMap(),
+      'backendAddressPool': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(backendAddressPool, (value) => value.toMap()),
+      'backendIPConfiguration': pulumi.Input.mapInputValue<NetworkInterfaceIPConfigurationResponse, Map<String, dynamic>>(backendIPConfiguration, (value) => value.toMap()),
       'backendPort': ?backendPort,
       'enableFloatingIP': ?enableFloatingIP,
       'enableTcpReset': ?enableTcpReset,
       'etag': etag,
-      'frontendIPConfiguration': ?frontendIPConfiguration == null ? null : frontendIPConfiguration!.toMap(),
+      'frontendIPConfiguration': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(frontendIPConfiguration, (value) => value.toMap()),
       'frontendPort': ?frontendPort,
       'frontendPortRangeEnd': ?frontendPortRangeEnd,
       'frontendPortRangeStart': ?frontendPortRangeStart,
@@ -97,22 +98,22 @@ class InboundNatRuleResponse {
 
   factory InboundNatRuleResponse.fromMap(Map<String, dynamic> map) {
     return InboundNatRuleResponse(
-      backendAddressPool: map['backendAddressPool'] == null ? null : SubResourceResponse.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>()),
-      backendIPConfiguration: NetworkInterfaceIPConfigurationResponse.fromMap((map['backendIPConfiguration'] as Map).cast<String, dynamic>()),
-      backendPort: map['backendPort'] == null ? null : map['backendPort'] as int,
-      enableFloatingIP: map['enableFloatingIP'] == null ? null : map['enableFloatingIP'] as bool,
-      enableTcpReset: map['enableTcpReset'] == null ? null : map['enableTcpReset'] as bool,
-      etag: map['etag'] as String,
-      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : SubResourceResponse.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>()),
-      frontendPort: map['frontendPort'] == null ? null : map['frontendPort'] as int,
-      frontendPortRangeEnd: map['frontendPortRangeEnd'] == null ? null : map['frontendPortRangeEnd'] as int,
-      frontendPortRangeStart: map['frontendPortRangeStart'] == null ? null : map['frontendPortRangeStart'] as int,
-      id: map['id'] == null ? null : map['id'] as String,
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResourceResponse.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
+      backendIPConfiguration: (NetworkInterfaceIPConfigurationResponse.fromMap((map['backendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
+      enableFloatingIP: map['enableFloatingIP'] == null ? null : (map['enableFloatingIP'] as bool).input(),
+      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset'] as bool).input(),
+      etag: (map['etag'] as String).input(),
+      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
+      frontendPortRangeEnd: map['frontendPortRangeEnd'] == null ? null : (map['frontendPortRangeEnd'] as int).input(),
+      frontendPortRangeStart: map['frontendPortRangeStart'] == null ? null : (map['frontendPortRangeStart'] as int).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

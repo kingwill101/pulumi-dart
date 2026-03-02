@@ -18,13 +18,10 @@ class HmacKeyArgs {
   /// [serviceAccountEmail] Email address of the service account.
   /// [userProject] The project to be billed for this request.
   HmacKeyArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceAccountEmail,
-    pulumi.Output<String>? userProject,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceAccountEmail = pulumi.Input.asInput<String>(serviceAccountEmail),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+    this.project,
+    required this.serviceAccountEmail,
+    this.userProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class HmacKeyArgs {
 
   factory HmacKeyArgs.fromMap(Map<String, dynamic> map) {
     return HmacKeyArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceAccountEmail: pulumi.Output.create<String>(map['serviceAccountEmail'] as String),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
     );
   }
 }

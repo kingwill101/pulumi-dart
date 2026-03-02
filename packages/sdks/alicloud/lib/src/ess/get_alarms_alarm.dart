@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlarmsAlarm {
   /// The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
-  final List<String> alarmActions;
+  final pulumi.Input<List<String>> alarmActions;
   /// Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
-  final int cloudMonitorGroupId;
+  final pulumi.Input<int> cloudMonitorGroupId;
   /// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand.
-  final String comparisonOperator;
+  final pulumi.Input<String> comparisonOperator;
   /// The description for the alarm.
-  final String description;
+  final pulumi.Input<String> description;
   /// The dimension map for the alarm's associated metric.
-  final Map<String, String> dimensions;
+  final pulumi.Input<Map<String, String>> dimensions;
   /// Whether to enable specific ess alarm.
-  final bool enable;
+  final pulumi.Input<bool> enable;
   /// The number of times that needs to satisfies comparison condition before transition into ALARM state.
-  final int evaluationCount;
+  final pulumi.Input<int> evaluationCount;
   /// The id of alarm.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name for the alarm's associated metric.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
-  final String metricType;
+  final pulumi.Input<String> metricType;
   /// The name for ess alarm.
-  final String name;
+  final pulumi.Input<String> name;
   /// The period in seconds over which the specified statistic is applied.
-  final int period;
+  final pulumi.Input<int> period;
   /// Scaling group id the alarms belong to.
-  final String scalingGroupId;
+  final pulumi.Input<String> scalingGroupId;
   /// The state of alarm task.
-  final String state;
+  final pulumi.Input<String> state;
   /// The statistic to apply to the alarm's associated metric.
-  final String statistics;
+  final pulumi.Input<String> statistics;
   /// The value against which the specified statistics is compared.
-  final String threshold;
+  final pulumi.Input<String> threshold;
 
   /// Creates a new [GetAlarmsAlarm].
   /// [alarmActions] The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
@@ -94,22 +95,22 @@ class GetAlarmsAlarm {
 
   factory GetAlarmsAlarm.fromMap(Map<String, dynamic> map) {
     return GetAlarmsAlarm(
-      alarmActions: (map['alarmActions'] as List).cast<String>(),
-      cloudMonitorGroupId: map['cloudMonitorGroupId'] as int,
-      comparisonOperator: map['comparisonOperator'] as String,
-      description: map['description'] as String,
-      dimensions: (map['dimensions'] as Map).cast<String, String>(),
-      enable: map['enable'] as bool,
-      evaluationCount: map['evaluationCount'] as int,
-      id: map['id'] as String,
-      metricName: map['metricName'] as String,
-      metricType: map['metricType'] as String,
-      name: map['name'] as String,
-      period: map['period'] as int,
-      scalingGroupId: map['scalingGroupId'] as String,
-      state: map['state'] as String,
-      statistics: map['statistics'] as String,
-      threshold: map['threshold'] as String,
+      alarmActions: ((map['alarmActions'] as List).cast<String>()).input(),
+      cloudMonitorGroupId: (map['cloudMonitorGroupId'] as int).input(),
+      comparisonOperator: (map['comparisonOperator'] as String).input(),
+      description: (map['description'] as String).input(),
+      dimensions: ((map['dimensions'] as Map).cast<String, String>()).input(),
+      enable: (map['enable'] as bool).input(),
+      evaluationCount: (map['evaluationCount'] as int).input(),
+      id: (map['id'] as String).input(),
+      metricName: (map['metricName'] as String).input(),
+      metricType: (map['metricType'] as String).input(),
+      name: (map['name'] as String).input(),
+      period: (map['period'] as int).input(),
+      scalingGroupId: (map['scalingGroupId'] as String).input(),
+      state: (map['state'] as String).input(),
+      statistics: (map['statistics'] as String).input(),
+      threshold: (map['threshold'] as String).input(),
     );
   }
 }

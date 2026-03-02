@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTransitRouterPeerAttachmentsAttachment {
   /// Auto publish route enabled.
-  final bool autoPublishRouteEnabled;
+  final pulumi.Input<bool> autoPublishRouteEnabled;
   /// The bandwidth of the bandwidth package.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// ID of the CEN bandwidth package.
-  final String cenBandwidthPackageId;
+  final pulumi.Input<String> cenBandwidthPackageId;
   /// ID of the geographic.
-  final String geographicSpanId;
+  final pulumi.Input<String> geographicSpanId;
   /// The ID of CEN Transit Router peer attachments.
-  final String id;
+  final pulumi.Input<String> id;
   /// ID of the peer transit router.
-  final String peerTransitRouterId;
+  final pulumi.Input<String> peerTransitRouterId;
   /// Owner ID of the peer transit router.
-  final String peerTransitRouterOwnerId;
+  final pulumi.Input<String> peerTransitRouterOwnerId;
   /// Region ID of the peer transit router.
-  final String peerTransitRouterRegionId;
+  final pulumi.Input<String> peerTransitRouterRegionId;
   /// Type of the resource.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The description of CEN Transit Router peer attachments.
-  final String transitRouterAttachmentDescription;
+  final pulumi.Input<String> transitRouterAttachmentDescription;
   /// The ID of CEN Transit Router peer attachments.
-  final String transitRouterAttachmentId;
+  final pulumi.Input<String> transitRouterAttachmentId;
   /// Name of the transit router attachment.
-  final String transitRouterAttachmentName;
+  final pulumi.Input<String> transitRouterAttachmentName;
   /// The ID of transit router.
-  final String transitRouterId;
+  final pulumi.Input<String> transitRouterId;
 
   /// Creates a new [GetTransitRouterPeerAttachmentsAttachment].
   /// [autoPublishRouteEnabled] Auto publish route enabled.
@@ -84,20 +85,20 @@ class GetTransitRouterPeerAttachmentsAttachment {
 
   factory GetTransitRouterPeerAttachmentsAttachment.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterPeerAttachmentsAttachment(
-      autoPublishRouteEnabled: map['autoPublishRouteEnabled'] as bool,
-      bandwidth: map['bandwidth'] as int,
-      cenBandwidthPackageId: map['cenBandwidthPackageId'] as String,
-      geographicSpanId: map['geographicSpanId'] as String,
-      id: map['id'] as String,
-      peerTransitRouterId: map['peerTransitRouterId'] as String,
-      peerTransitRouterOwnerId: map['peerTransitRouterOwnerId'] as String,
-      peerTransitRouterRegionId: map['peerTransitRouterRegionId'] as String,
-      resourceType: map['resourceType'] as String,
-      status: map['status'] as String,
-      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] as String,
-      transitRouterAttachmentName: map['transitRouterAttachmentName'] as String,
-      transitRouterId: map['transitRouterId'] as String,
+      autoPublishRouteEnabled: (map['autoPublishRouteEnabled'] as bool).input(),
+      bandwidth: (map['bandwidth'] as int).input(),
+      cenBandwidthPackageId: (map['cenBandwidthPackageId'] as String).input(),
+      geographicSpanId: (map['geographicSpanId'] as String).input(),
+      id: (map['id'] as String).input(),
+      peerTransitRouterId: (map['peerTransitRouterId'] as String).input(),
+      peerTransitRouterOwnerId: (map['peerTransitRouterOwnerId'] as String).input(),
+      peerTransitRouterRegionId: (map['peerTransitRouterRegionId'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      status: (map['status'] as String).input(),
+      transitRouterAttachmentDescription: (map['transitRouterAttachmentDescription'] as String).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterAttachmentName: (map['transitRouterAttachmentName'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }
 }

@@ -45,31 +45,19 @@ class DdosBgpInstanceState {
   /// [tags] The key of the tag that is added to the Anti-DDoS Origin instance.
   /// [type] The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
   DdosBgpInstanceState({
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<int>? baseBandwidth,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<int>? ipCount,
-    pulumi.Output<String>? ipType,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? normalBandwidth,
-    pulumi.Output<int>? period,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      baseBandwidth = pulumi.Input.asOptionalInput<int>(baseBandwidth),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      ipCount = pulumi.Input.asOptionalInput<int>(ipCount),
-      ipType = pulumi.Input.asOptionalInput<String>(ipType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      normalBandwidth = pulumi.Input.asOptionalInput<int>(normalBandwidth),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.bandwidth,
+    this.baseBandwidth,
+    this.instanceName,
+    this.ipCount,
+    this.ipType,
+    this.name,
+    this.normalBandwidth,
+    this.period,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class DdosBgpInstanceState {
 
   factory DdosBgpInstanceState.fromMap(Map<String, dynamic> map) {
     return DdosBgpInstanceState(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      baseBandwidth: map['baseBandwidth'] == null ? null : pulumi.Output.create<int>(map['baseBandwidth'] as int),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      ipCount: map['ipCount'] == null ? null : pulumi.Output.create<int>(map['ipCount'] as int),
-      ipType: map['ipType'] == null ? null : pulumi.Output.create<String>(map['ipType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      normalBandwidth: map['normalBandwidth'] == null ? null : pulumi.Output.create<int>(map['normalBandwidth'] as int),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      baseBandwidth: map['baseBandwidth'] == null ? null : (map['baseBandwidth'] as int).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      ipCount: map['ipCount'] == null ? null : (map['ipCount'] as int).input(),
+      ipType: map['ipType'] == null ? null : (map['ipType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      normalBandwidth: map['normalBandwidth'] == null ? null : (map['normalBandwidth'] as int).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -40,25 +40,16 @@ class GetWafEntityUrlArgs {
   /// [signatureOverridesDisables] List of Attack Signature Ids which are disabled for this particular URL.
   /// [type] Specifies whether the parameter is an 'explicit' or a 'wildcard' attribute. Default is: wildcard.
   GetWafEntityUrlArgs({
-    pulumi.Output<List<GetWafEntityUrlCrossOriginRequestsEnforcement>>? crossOriginRequestsEnforcements,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? method,
-    pulumi.Output<List<GetWafEntityUrlMethodOverride>>? methodOverrides,
-    required pulumi.Output<String> name,
-    pulumi.Output<bool>? performStaging,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<List<int>>? signatureOverridesDisables,
-    pulumi.Output<String>? type,
-  }) :
-      crossOriginRequestsEnforcements = pulumi.Input.asOptionalInput<List<GetWafEntityUrlCrossOriginRequestsEnforcement>>(crossOriginRequestsEnforcements),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      method = pulumi.Input.asOptionalInput<String>(method),
-      methodOverrides = pulumi.Input.asOptionalInput<List<GetWafEntityUrlMethodOverride>>(methodOverrides),
-      name = pulumi.Input.asInput<String>(name),
-      performStaging = pulumi.Input.asOptionalInput<bool>(performStaging),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      signatureOverridesDisables = pulumi.Input.asOptionalInput<List<int>>(signatureOverridesDisables),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.crossOriginRequestsEnforcements,
+    this.description,
+    this.method,
+    this.methodOverrides,
+    required this.name,
+    this.performStaging,
+    this.protocol,
+    this.signatureOverridesDisables,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class GetWafEntityUrlArgs {
 
   factory GetWafEntityUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetWafEntityUrlArgs(
-      crossOriginRequestsEnforcements: map['crossOriginRequestsEnforcements'] == null ? null : pulumi.Output.create<List<GetWafEntityUrlCrossOriginRequestsEnforcement>>(pulumi.Input.decodeList<GetWafEntityUrlCrossOriginRequestsEnforcement>(map['crossOriginRequestsEnforcements'], (value) => GetWafEntityUrlCrossOriginRequestsEnforcement.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      method: map['method'] == null ? null : pulumi.Output.create<String>(map['method'] as String),
-      methodOverrides: map['methodOverrides'] == null ? null : pulumi.Output.create<List<GetWafEntityUrlMethodOverride>>(pulumi.Input.decodeList<GetWafEntityUrlMethodOverride>(map['methodOverrides'], (value) => GetWafEntityUrlMethodOverride.fromMap((value as Map).cast<String, dynamic>()))),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      performStaging: map['performStaging'] == null ? null : pulumi.Output.create<bool>(map['performStaging'] as bool),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      signatureOverridesDisables: map['signatureOverridesDisables'] == null ? null : pulumi.Output.create<List<int>>((map['signatureOverridesDisables'] as List).cast<int>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      crossOriginRequestsEnforcements: map['crossOriginRequestsEnforcements'] == null ? null : (pulumi.Input.decodeList<GetWafEntityUrlCrossOriginRequestsEnforcement>(map['crossOriginRequestsEnforcements'], (value) => GetWafEntityUrlCrossOriginRequestsEnforcement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      methodOverrides: map['methodOverrides'] == null ? null : (pulumi.Input.decodeList<GetWafEntityUrlMethodOverride>(map['methodOverrides'], (value) => GetWafEntityUrlMethodOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      performStaging: map['performStaging'] == null ? null : (map['performStaging'] as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      signatureOverridesDisables: map['signatureOverridesDisables'] == null ? null : ((map['signatureOverridesDisables'] as List).cast<int>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

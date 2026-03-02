@@ -16,13 +16,10 @@ class QueryLogState {
   /// [cloudwatchLogGroupArn] CloudWatch log group ARN to send query logs.
   /// [zoneId] Route53 hosted zone ID to enable query logs.
   QueryLogState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? cloudwatchLogGroupArn,
-    pulumi.Output<String>? zoneId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      cloudwatchLogGroupArn = pulumi.Input.asOptionalInput<String>(cloudwatchLogGroupArn),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.arn,
+    this.cloudwatchLogGroupArn,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class QueryLogState {
 
   factory QueryLogState.fromMap(Map<String, dynamic> map) {
     return QueryLogState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      cloudwatchLogGroupArn: map['cloudwatchLogGroupArn'] == null ? null : pulumi.Output.create<String>(map['cloudwatchLogGroupArn'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      cloudwatchLogGroupArn: map['cloudwatchLogGroupArn'] == null ? null : (map['cloudwatchLogGroupArn'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

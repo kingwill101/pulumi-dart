@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'basic_login_information.dart';
 
 /// Postgres Instance properties.
 class PostgresInstanceProperties {
   /// The instance admin
-  final String? admin;
+  final pulumi.Input<String>? admin;
   /// Username and password for basic authentication.
-  final BasicLoginInformation? basicLoginInformation;
+  final pulumi.Input<BasicLoginInformation>? basicLoginInformation;
   /// The data controller id
-  final String? dataControllerId;
+  final pulumi.Input<String>? dataControllerId;
   /// The raw kubernetes information
-  final dynamic k8sRaw;
+  final pulumi.Input<dynamic>? k8sRaw;
   /// Last uploaded date from Kubernetes cluster. Defaults to current date time
-  final String? lastUploadedDate;
+  final pulumi.Input<String>? lastUploadedDate;
 
   /// Creates a new [PostgresInstanceProperties].
   /// [admin] The instance admin
@@ -32,7 +33,7 @@ class PostgresInstanceProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'admin': ?admin,
-      'basicLoginInformation': ?basicLoginInformation == null ? null : basicLoginInformation!.toMap(),
+      'basicLoginInformation': ?pulumi.Input.mapOptionalInputValue<BasicLoginInformation, Map<String, dynamic>>(basicLoginInformation, (value) => value.toMap()),
       'dataControllerId': ?dataControllerId,
       'k8sRaw': ?k8sRaw,
       'lastUploadedDate': ?lastUploadedDate,
@@ -41,11 +42,11 @@ class PostgresInstanceProperties {
 
   factory PostgresInstanceProperties.fromMap(Map<String, dynamic> map) {
     return PostgresInstanceProperties(
-      admin: map['admin'] == null ? null : map['admin'] as String,
-      basicLoginInformation: map['basicLoginInformation'] == null ? null : BasicLoginInformation.fromMap((map['basicLoginInformation'] as Map).cast<String, dynamic>()),
-      dataControllerId: map['dataControllerId'] == null ? null : map['dataControllerId'] as String,
-      k8sRaw: map['k8sRaw'] == null ? null : map['k8sRaw'],
-      lastUploadedDate: map['lastUploadedDate'] == null ? null : map['lastUploadedDate'] as String,
+      admin: map['admin'] == null ? null : (map['admin'] as String).input(),
+      basicLoginInformation: map['basicLoginInformation'] == null ? null : (BasicLoginInformation.fromMap((map['basicLoginInformation'] as Map).cast<String, dynamic>())).input(),
+      dataControllerId: map['dataControllerId'] == null ? null : (map['dataControllerId'] as String).input(),
+      k8sRaw: map['k8sRaw'] == null ? null : (map['k8sRaw']).input(),
+      lastUploadedDate: map['lastUploadedDate'] == null ? null : (map['lastUploadedDate'] as String).input(),
     );
   }
 }

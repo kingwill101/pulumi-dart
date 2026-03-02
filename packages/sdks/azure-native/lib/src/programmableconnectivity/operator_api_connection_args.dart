@@ -45,29 +45,18 @@ class OperatorApiConnectionArgs {
   /// [saasProperties] Details about the SaaS offer purchased from the marketplace.
   /// [tags] Resource tags.
   OperatorApiConnectionArgs({
-    required pulumi.Output<String> accountType,
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? appSecret,
-    pulumi.Output<ApplicationProperties>? configuredApplication,
-    required pulumi.Output<String> gatewayId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? operatorApiConnectionName,
-    required pulumi.Output<String> operatorApiPlanId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SaasProperties>? saasProperties,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountType = pulumi.Input.asInput<String>(accountType),
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      appSecret = pulumi.Input.asOptionalInput<String>(appSecret),
-      configuredApplication = pulumi.Input.asOptionalInput<ApplicationProperties>(configuredApplication),
-      gatewayId = pulumi.Input.asInput<String>(gatewayId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      operatorApiConnectionName = pulumi.Input.asOptionalInput<String>(operatorApiConnectionName),
-      operatorApiPlanId = pulumi.Input.asInput<String>(operatorApiPlanId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      saasProperties = pulumi.Input.asOptionalInput<SaasProperties>(saasProperties),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountType,
+    this.appId,
+    this.appSecret,
+    this.configuredApplication,
+    required this.gatewayId,
+    this.location,
+    this.operatorApiConnectionName,
+    required this.operatorApiPlanId,
+    required this.resourceGroupName,
+    this.saasProperties,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class OperatorApiConnectionArgs {
 
   factory OperatorApiConnectionArgs.fromMap(Map<String, dynamic> map) {
     return OperatorApiConnectionArgs(
-      accountType: pulumi.Output.create<String>(map['accountType'] as String),
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      appSecret: map['appSecret'] == null ? null : pulumi.Output.create<String>(map['appSecret'] as String),
-      configuredApplication: map['configuredApplication'] == null ? null : pulumi.Output.create<ApplicationProperties>(ApplicationProperties.fromMap((map['configuredApplication'] as Map).cast<String, dynamic>())),
-      gatewayId: pulumi.Output.create<String>(map['gatewayId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      operatorApiConnectionName: map['operatorApiConnectionName'] == null ? null : pulumi.Output.create<String>(map['operatorApiConnectionName'] as String),
-      operatorApiPlanId: pulumi.Output.create<String>(map['operatorApiPlanId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      saasProperties: map['saasProperties'] == null ? null : pulumi.Output.create<SaasProperties>(SaasProperties.fromMap((map['saasProperties'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountType: (map['accountType'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      appSecret: map['appSecret'] == null ? null : (map['appSecret'] as String).input(),
+      configuredApplication: map['configuredApplication'] == null ? null : (ApplicationProperties.fromMap((map['configuredApplication'] as Map).cast<String, dynamic>())).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      operatorApiConnectionName: map['operatorApiConnectionName'] == null ? null : (map['operatorApiConnectionName'] as String).input(),
+      operatorApiPlanId: (map['operatorApiPlanId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      saasProperties: map['saasProperties'] == null ? null : (SaasProperties.fromMap((map['saasProperties'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

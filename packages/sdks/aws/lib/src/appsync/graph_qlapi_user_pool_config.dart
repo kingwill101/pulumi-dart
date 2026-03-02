@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GraphQLApiUserPoolConfig {
   /// Regular expression for validating the incoming Amazon Cognito User Pool app client ID.
-  final String? appIdClientRegex;
+  final pulumi.Input<String>? appIdClientRegex;
   /// AWS region in which the user pool was created.
-  final String? awsRegion;
+  final pulumi.Input<String>? awsRegion;
   /// Action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
-  final String defaultAction;
+  final pulumi.Input<String> defaultAction;
   /// User pool ID.
-  final String userPoolId;
+  final pulumi.Input<String> userPoolId;
 
   /// Creates a new [GraphQLApiUserPoolConfig].
   /// [appIdClientRegex] Regular expression for validating the incoming Amazon Cognito User Pool app client ID.
@@ -34,10 +35,10 @@ class GraphQLApiUserPoolConfig {
 
   factory GraphQLApiUserPoolConfig.fromMap(Map<String, dynamic> map) {
     return GraphQLApiUserPoolConfig(
-      appIdClientRegex: map['appIdClientRegex'] == null ? null : map['appIdClientRegex'] as String,
-      awsRegion: map['awsRegion'] == null ? null : map['awsRegion'] as String,
-      defaultAction: map['defaultAction'] as String,
-      userPoolId: map['userPoolId'] as String,
+      appIdClientRegex: map['appIdClientRegex'] == null ? null : (map['appIdClientRegex'] as String).input(),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
+      defaultAction: (map['defaultAction'] as String).input(),
+      userPoolId: (map['userPoolId'] as String).input(),
     );
   }
 }

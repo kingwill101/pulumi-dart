@@ -28,13 +28,10 @@ class GetConnectionIamPolicyArgs {
   /// [location] The geographic location where the connection should reside.
   /// [project] The ID of the project in which the resource belongs.
   GetConnectionIamPolicyArgs({
-    required pulumi.Output<String> connectionId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.connectionId,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,9 +43,9 @@ class GetConnectionIamPolicyArgs {
 
   factory GetConnectionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionIamPolicyArgs(
-      connectionId: pulumi.Output.create<String>(map['connectionId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      connectionId: (map['connectionId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Value.
 class WorkspaceCustomStringParameter {
   /// The value which should be used for this field.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [WorkspaceCustomStringParameter].
   /// [value] The value which should be used for this field.
@@ -20,7 +21,7 @@ class WorkspaceCustomStringParameter {
 
   factory WorkspaceCustomStringParameter.fromMap(Map<String, dynamic> map) {
     return WorkspaceCustomStringParameter(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

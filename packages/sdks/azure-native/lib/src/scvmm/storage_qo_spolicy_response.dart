@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The StorageQoSPolicy definition.
 class StorageQoSPolicyResponse {
   /// The Bandwidth Limit for internet traffic.
-  final double? bandwidthLimit;
+  final pulumi.Input<double>? bandwidthLimit;
   /// The ID of the QoS policy.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The maximum IO operations per second.
-  final double? iopsMaximum;
+  final pulumi.Input<double>? iopsMaximum;
   /// The minimum IO operations per second.
-  final double? iopsMinimum;
+  final pulumi.Input<double>? iopsMinimum;
   /// The name of the policy.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The underlying policy.
-  final String? policyId;
+  final pulumi.Input<String>? policyId;
 
   /// Creates a new [StorageQoSPolicyResponse].
   /// [bandwidthLimit] The Bandwidth Limit for internet traffic.
@@ -45,12 +46,12 @@ class StorageQoSPolicyResponse {
 
   factory StorageQoSPolicyResponse.fromMap(Map<String, dynamic> map) {
     return StorageQoSPolicyResponse(
-      bandwidthLimit: map['bandwidthLimit'] == null ? null : map['bandwidthLimit'] as double,
-      id: map['id'] == null ? null : map['id'] as String,
-      iopsMaximum: map['iopsMaximum'] == null ? null : map['iopsMaximum'] as double,
-      iopsMinimum: map['iopsMinimum'] == null ? null : map['iopsMinimum'] as double,
-      name: map['name'] == null ? null : map['name'] as String,
-      policyId: map['policyId'] == null ? null : map['policyId'] as String,
+      bandwidthLimit: map['bandwidthLimit'] == null ? null : (map['bandwidthLimit'] as double).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      iopsMaximum: map['iopsMaximum'] == null ? null : (map['iopsMaximum'] as double).input(),
+      iopsMinimum: map['iopsMinimum'] == null ? null : (map['iopsMinimum'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
     );
   }
 }

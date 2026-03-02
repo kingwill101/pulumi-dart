@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Pipeline reference type.
 class PipelineReference {
   /// Reference name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Reference pipeline name.
-  final String referenceName;
+  final pulumi.Input<String> referenceName;
   /// Pipeline reference type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PipelineReference].
   /// [name] Reference name.
@@ -30,9 +31,9 @@ class PipelineReference {
 
   factory PipelineReference.fromMap(Map<String, dynamic> map) {
     return PipelineReference(
-      name: map['name'] == null ? null : map['name'] as String,
-      referenceName: map['referenceName'] as String,
-      type: map['type'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      referenceName: (map['referenceName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

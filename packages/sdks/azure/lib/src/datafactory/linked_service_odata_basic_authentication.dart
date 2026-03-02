@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinkedServiceOdataBasicAuthentication {
   /// The password associated with the username, which can be used to authenticate to the OData endpoint.
-  final String password;
+  final pulumi.Input<String> password;
   /// The username which can be used to authenticate to the OData endpoint.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [LinkedServiceOdataBasicAuthentication].
   /// [password] The password associated with the username, which can be used to authenticate to the OData endpoint.
@@ -24,8 +25,8 @@ class LinkedServiceOdataBasicAuthentication {
 
   factory LinkedServiceOdataBasicAuthentication.fromMap(Map<String, dynamic> map) {
     return LinkedServiceOdataBasicAuthentication(
-      password: map['password'] as String,
-      username: map['username'] as String,
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

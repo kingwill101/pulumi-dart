@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
 class ManagedClusterWorkloadAutoScalerProfileKeda {
   /// Whether to enable KEDA.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ManagedClusterWorkloadAutoScalerProfileKeda].
   /// [enabled] Whether to enable KEDA.
@@ -20,7 +21,7 @@ class ManagedClusterWorkloadAutoScalerProfileKeda {
 
   factory ManagedClusterWorkloadAutoScalerProfileKeda.fromMap(Map<String, dynamic> map) {
     return ManagedClusterWorkloadAutoScalerProfileKeda(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

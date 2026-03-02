@@ -22,15 +22,11 @@ class GetBusinessProcessArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spaceName] The name of the space
   GetBusinessProcessArgs({
-    required pulumi.Output<String> applicationName,
-    required pulumi.Output<String> businessProcessName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> spaceName,
-  }) :
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      businessProcessName = pulumi.Input.asInput<String>(businessProcessName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      spaceName = pulumi.Input.asInput<String>(spaceName);
+    required this.applicationName,
+    required this.businessProcessName,
+    required this.resourceGroupName,
+    required this.spaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetBusinessProcessArgs {
 
   factory GetBusinessProcessArgs.fromMap(Map<String, dynamic> map) {
     return GetBusinessProcessArgs(
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      businessProcessName: pulumi.Output.create<String>(map['businessProcessName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      spaceName: pulumi.Output.create<String>(map['spaceName'] as String),
+      applicationName: (map['applicationName'] as String).input(),
+      businessProcessName: (map['businessProcessName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      spaceName: (map['spaceName'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class TlsCipherPolicyState {
   /// [tlsCipherPolicyName] TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
   /// [tlsVersions] The version of TLS protocol. You can find the corresponding value description in the document center [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
   TlsCipherPolicyState({
-    pulumi.Output<List<String>>? ciphers,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? tlsCipherPolicyName,
-    pulumi.Output<List<String>>? tlsVersions,
-  }) :
-      ciphers = pulumi.Input.asOptionalInput<List<String>>(ciphers),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tlsCipherPolicyName = pulumi.Input.asOptionalInput<String>(tlsCipherPolicyName),
-      tlsVersions = pulumi.Input.asOptionalInput<List<String>>(tlsVersions);
+    this.ciphers,
+    this.status,
+    this.tlsCipherPolicyName,
+    this.tlsVersions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class TlsCipherPolicyState {
 
   factory TlsCipherPolicyState.fromMap(Map<String, dynamic> map) {
     return TlsCipherPolicyState(
-      ciphers: map['ciphers'] == null ? null : pulumi.Output.create<List<String>>((map['ciphers'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tlsCipherPolicyName: map['tlsCipherPolicyName'] == null ? null : pulumi.Output.create<String>(map['tlsCipherPolicyName'] as String),
-      tlsVersions: map['tlsVersions'] == null ? null : pulumi.Output.create<List<String>>((map['tlsVersions'] as List).cast<String>()),
+      ciphers: map['ciphers'] == null ? null : ((map['ciphers'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tlsCipherPolicyName: map['tlsCipherPolicyName'] == null ? null : (map['tlsCipherPolicyName'] as String).input(),
+      tlsVersions: map['tlsVersions'] == null ? null : ((map['tlsVersions'] as List).cast<String>()).input(),
     );
   }
 }

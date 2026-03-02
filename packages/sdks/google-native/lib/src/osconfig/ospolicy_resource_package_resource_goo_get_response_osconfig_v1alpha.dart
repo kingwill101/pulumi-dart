@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A package managed by GooGet. - install: `googet -noconfirm install package` - remove: `googet -noconfirm remove package`
 class OSPolicyResourcePackageResourceGooGetResponseOsconfigV1alpha {
   /// Package name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [OSPolicyResourcePackageResourceGooGetResponseOsconfigV1alpha].
   /// [name] Package name.
@@ -20,7 +21,7 @@ class OSPolicyResourcePackageResourceGooGetResponseOsconfigV1alpha {
 
   factory OSPolicyResourcePackageResourceGooGetResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceGooGetResponseOsconfigV1alpha(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

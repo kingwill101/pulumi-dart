@@ -6,11 +6,11 @@ import 'listener_default_action_forward_target_group.dart';
 
 class ListenerDefaultActionForward {
   /// Configuration block for target group stickiness for the rule. See below.
-  final ListenerDefaultActionForwardStickiness? stickiness;
+  final pulumi.Input<ListenerDefaultActionForwardStickiness>? stickiness;
   /// Set of 1-5 target group blocks. See below.
   ///
   /// The following arguments are optional:
-  final List<ListenerDefaultActionForwardTargetGroup> targetGroups;
+  final pulumi.Input<List<ListenerDefaultActionForwardTargetGroup>> targetGroups;
 
   /// Creates a new [ListenerDefaultActionForward].
   /// [stickiness] Configuration block for target group stickiness for the rule. See below.
@@ -22,15 +22,15 @@ class ListenerDefaultActionForward {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'stickiness': ?stickiness == null ? null : stickiness!.toMap(),
-      'targetGroups': pulumi.Input.encodeList<ListenerDefaultActionForwardTargetGroup, Map<String, dynamic>>(targetGroups, (value) => value.toMap()),
+      'stickiness': ?pulumi.Input.mapOptionalInputValue<ListenerDefaultActionForwardStickiness, Map<String, dynamic>>(stickiness, (value) => value.toMap()),
+      'targetGroups': pulumi.Input.mapInputValue<List<ListenerDefaultActionForwardTargetGroup>, List<Map<String, dynamic>>>(targetGroups, (value) => pulumi.Input.encodeList<ListenerDefaultActionForwardTargetGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ListenerDefaultActionForward.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionForward(
-      stickiness: map['stickiness'] == null ? null : ListenerDefaultActionForwardStickiness.fromMap((map['stickiness'] as Map).cast<String, dynamic>()),
-      targetGroups: pulumi.Input.decodeList<ListenerDefaultActionForwardTargetGroup>(map['targetGroups'], (value) => ListenerDefaultActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>())),
+      stickiness: map['stickiness'] == null ? null : (ListenerDefaultActionForwardStickiness.fromMap((map['stickiness'] as Map).cast<String, dynamic>())).input(),
+      targetGroups: (pulumi.Input.decodeList<ListenerDefaultActionForwardTargetGroup>(map['targetGroups'], (value) => ListenerDefaultActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

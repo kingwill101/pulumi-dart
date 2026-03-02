@@ -5,13 +5,13 @@ import 'service_api_method.dart';
 
 class ServiceApi {
   /// A list of Method objects; structure is documented below.
-  final List<ServiceApiMethod>? methods;
+  final pulumi.Input<List<ServiceApiMethod>>? methods;
   /// The simple name of the endpoint as described in the config.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
-  final String? syntax;
+  final pulumi.Input<String>? syntax;
   /// A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ServiceApi].
   /// [methods] A list of Method objects; structure is documented below.
@@ -27,7 +27,7 @@ class ServiceApi {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'methods': ?methods == null ? null : pulumi.Input.encodeList<ServiceApiMethod, Map<String, dynamic>>(methods!, (value) => value.toMap()),
+      'methods': ?pulumi.Input.mapOptionalInputValue<List<ServiceApiMethod>, List<Map<String, dynamic>>>(methods, (value) => pulumi.Input.encodeList<ServiceApiMethod, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'syntax': ?syntax,
       'version': ?version,
@@ -36,10 +36,10 @@ class ServiceApi {
 
   factory ServiceApi.fromMap(Map<String, dynamic> map) {
     return ServiceApi(
-      methods: map['methods'] == null ? null : pulumi.Input.decodeList<ServiceApiMethod>(map['methods'], (value) => ServiceApiMethod.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      syntax: map['syntax'] == null ? null : map['syntax'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      methods: map['methods'] == null ? null : (pulumi.Input.decodeList<ServiceApiMethod>(map['methods'], (value) => ServiceApiMethod.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      syntax: map['syntax'] == null ? null : (map['syntax'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

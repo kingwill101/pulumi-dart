@@ -16,13 +16,10 @@ class AuthenticationProfileState {
   /// [authenticationProfileName] The name of the authentication profile.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AuthenticationProfileState({
-    pulumi.Output<String>? authenticationProfileContent,
-    pulumi.Output<String>? authenticationProfileName,
-    pulumi.Output<String>? region,
-  }) :
-      authenticationProfileContent = pulumi.Input.asOptionalInput<String>(authenticationProfileContent),
-      authenticationProfileName = pulumi.Input.asOptionalInput<String>(authenticationProfileName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.authenticationProfileContent,
+    this.authenticationProfileName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AuthenticationProfileState {
 
   factory AuthenticationProfileState.fromMap(Map<String, dynamic> map) {
     return AuthenticationProfileState(
-      authenticationProfileContent: map['authenticationProfileContent'] == null ? null : pulumi.Output.create<String>(map['authenticationProfileContent'] as String),
-      authenticationProfileName: map['authenticationProfileName'] == null ? null : pulumi.Output.create<String>(map['authenticationProfileName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      authenticationProfileContent: map['authenticationProfileContent'] == null ? null : (map['authenticationProfileContent'] as String).input(),
+      authenticationProfileName: map['authenticationProfileName'] == null ? null : (map['authenticationProfileName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -61,35 +61,21 @@ class ConnectorArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [workerConfiguration] Specifies which worker configuration to use with the connector. See `worker_configuration` Block for details.
   ConnectorArgs({
-    required pulumi.Output<ConnectorCapacity> capacity,
-    required pulumi.Output<Map<String, String>> connectorConfiguration,
-    pulumi.Output<String>? description,
-    required pulumi.Output<ConnectorKafkaCluster> kafkaCluster,
-    required pulumi.Output<ConnectorKafkaClusterClientAuthentication> kafkaClusterClientAuthentication,
-    required pulumi.Output<ConnectorKafkaClusterEncryptionInTransit> kafkaClusterEncryptionInTransit,
-    required pulumi.Output<String> kafkaconnectVersion,
-    pulumi.Output<ConnectorLogDelivery>? logDelivery,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<ConnectorPlugin>> plugins,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceExecutionRoleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ConnectorWorkerConfiguration>? workerConfiguration,
-  }) :
-      capacity = pulumi.Input.asInput<ConnectorCapacity>(capacity),
-      connectorConfiguration = pulumi.Input.asInput<Map<String, String>>(connectorConfiguration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kafkaCluster = pulumi.Input.asInput<ConnectorKafkaCluster>(kafkaCluster),
-      kafkaClusterClientAuthentication = pulumi.Input.asInput<ConnectorKafkaClusterClientAuthentication>(kafkaClusterClientAuthentication),
-      kafkaClusterEncryptionInTransit = pulumi.Input.asInput<ConnectorKafkaClusterEncryptionInTransit>(kafkaClusterEncryptionInTransit),
-      kafkaconnectVersion = pulumi.Input.asInput<String>(kafkaconnectVersion),
-      logDelivery = pulumi.Input.asOptionalInput<ConnectorLogDelivery>(logDelivery),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      plugins = pulumi.Input.asInput<List<ConnectorPlugin>>(plugins),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceExecutionRoleArn = pulumi.Input.asInput<String>(serviceExecutionRoleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workerConfiguration = pulumi.Input.asOptionalInput<ConnectorWorkerConfiguration>(workerConfiguration);
+    required this.capacity,
+    required this.connectorConfiguration,
+    this.description,
+    required this.kafkaCluster,
+    required this.kafkaClusterClientAuthentication,
+    required this.kafkaClusterEncryptionInTransit,
+    required this.kafkaconnectVersion,
+    this.logDelivery,
+    this.name,
+    required this.plugins,
+    this.region,
+    required this.serviceExecutionRoleArn,
+    this.tags,
+    this.workerConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,20 +98,20 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      capacity: pulumi.Output.create<ConnectorCapacity>(ConnectorCapacity.fromMap((map['capacity'] as Map).cast<String, dynamic>())),
-      connectorConfiguration: pulumi.Output.create<Map<String, String>>((map['connectorConfiguration'] as Map).cast<String, String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kafkaCluster: pulumi.Output.create<ConnectorKafkaCluster>(ConnectorKafkaCluster.fromMap((map['kafkaCluster'] as Map).cast<String, dynamic>())),
-      kafkaClusterClientAuthentication: pulumi.Output.create<ConnectorKafkaClusterClientAuthentication>(ConnectorKafkaClusterClientAuthentication.fromMap((map['kafkaClusterClientAuthentication'] as Map).cast<String, dynamic>())),
-      kafkaClusterEncryptionInTransit: pulumi.Output.create<ConnectorKafkaClusterEncryptionInTransit>(ConnectorKafkaClusterEncryptionInTransit.fromMap((map['kafkaClusterEncryptionInTransit'] as Map).cast<String, dynamic>())),
-      kafkaconnectVersion: pulumi.Output.create<String>(map['kafkaconnectVersion'] as String),
-      logDelivery: map['logDelivery'] == null ? null : pulumi.Output.create<ConnectorLogDelivery>(ConnectorLogDelivery.fromMap((map['logDelivery'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      plugins: pulumi.Output.create<List<ConnectorPlugin>>(pulumi.Input.decodeList<ConnectorPlugin>(map['plugins'], (value) => ConnectorPlugin.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceExecutionRoleArn: pulumi.Output.create<String>(map['serviceExecutionRoleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workerConfiguration: map['workerConfiguration'] == null ? null : pulumi.Output.create<ConnectorWorkerConfiguration>(ConnectorWorkerConfiguration.fromMap((map['workerConfiguration'] as Map).cast<String, dynamic>())),
+      capacity: (ConnectorCapacity.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
+      connectorConfiguration: ((map['connectorConfiguration'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kafkaCluster: (ConnectorKafkaCluster.fromMap((map['kafkaCluster'] as Map).cast<String, dynamic>())).input(),
+      kafkaClusterClientAuthentication: (ConnectorKafkaClusterClientAuthentication.fromMap((map['kafkaClusterClientAuthentication'] as Map).cast<String, dynamic>())).input(),
+      kafkaClusterEncryptionInTransit: (ConnectorKafkaClusterEncryptionInTransit.fromMap((map['kafkaClusterEncryptionInTransit'] as Map).cast<String, dynamic>())).input(),
+      kafkaconnectVersion: (map['kafkaconnectVersion'] as String).input(),
+      logDelivery: map['logDelivery'] == null ? null : (ConnectorLogDelivery.fromMap((map['logDelivery'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      plugins: (pulumi.Input.decodeList<ConnectorPlugin>(map['plugins'], (value) => ConnectorPlugin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceExecutionRoleArn: (map['serviceExecutionRoleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workerConfiguration: map['workerConfiguration'] == null ? null : (ConnectorWorkerConfiguration.fromMap((map['workerConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

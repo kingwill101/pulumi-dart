@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesSerialSourceFileSecLabel {
   /// Configures the label for the security attributes of the UNIX domain socket.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Determines whether to skip the label check for the security label in the UNIX socket.
-  final String? labelSkip;
+  final pulumi.Input<String>? labelSkip;
   /// Sets the model type for the security label in the UNIX domain socket configuration.
-  final String? model;
+  final pulumi.Input<String>? model;
   /// Enables or disables relabeling for the security label in the UNIX domain socket.
-  final String? relabel;
+  final pulumi.Input<String>? relabel;
 
   /// Creates a new [DomainDevicesSerialSourceFileSecLabel].
   /// [label] Configures the label for the security attributes of the UNIX domain socket.
@@ -34,10 +35,10 @@ class DomainDevicesSerialSourceFileSecLabel {
 
   factory DomainDevicesSerialSourceFileSecLabel.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSerialSourceFileSecLabel(
-      label: map['label'] == null ? null : map['label'] as String,
-      labelSkip: map['labelSkip'] == null ? null : map['labelSkip'] as String,
-      model: map['model'] == null ? null : map['model'] as String,
-      relabel: map['relabel'] == null ? null : map['relabel'] as String,
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      labelSkip: map['labelSkip'] == null ? null : (map['labelSkip'] as String).input(),
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      relabel: map['relabel'] == null ? null : (map['relabel'] as String).input(),
     );
   }
 }

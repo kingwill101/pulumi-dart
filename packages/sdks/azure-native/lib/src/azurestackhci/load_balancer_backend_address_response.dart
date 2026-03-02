@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_backend_address_properties_response.dart';
 
 /// LoadBalancer Backend Address
 class LoadBalancerBackendAddressResponse {
   /// name of the backend address
-  final String name;
+  final pulumi.Input<String> name;
   /// backend address properties
-  final LoadBalancerBackendAddressPropertiesResponse properties;
+  final pulumi.Input<LoadBalancerBackendAddressPropertiesResponse> properties;
 
   /// Creates a new [LoadBalancerBackendAddressResponse].
   /// [name] name of the backend address
@@ -20,14 +21,14 @@ class LoadBalancerBackendAddressResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': properties.toMap(),
+      'properties': pulumi.Input.mapInputValue<LoadBalancerBackendAddressPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory LoadBalancerBackendAddressResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressResponse(
-      name: map['name'] as String,
-      properties: LoadBalancerBackendAddressPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      properties: (LoadBalancerBackendAddressPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

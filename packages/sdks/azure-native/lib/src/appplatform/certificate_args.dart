@@ -23,15 +23,11 @@ class CertificateArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   CertificateArgs({
-    pulumi.Output<String>? certificateName,
-    pulumi.Output<ContentCertificateProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      properties = pulumi.Input.asOptionalInput<ContentCertificateProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.certificateName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ContentCertificateProperties>(ContentCertificateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      properties: map['properties'] == null ? null : (ContentCertificateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

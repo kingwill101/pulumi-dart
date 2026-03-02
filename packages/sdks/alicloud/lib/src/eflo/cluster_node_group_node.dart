@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeGroupNode {
   /// Host name
-  final String? hostname;
+  final pulumi.Input<String>? hostname;
   /// Login Password
-  final String? loginPassword;
-  final String? nodeId;
-  final String? vpcId;
-  final String? vswitchId;
+  final pulumi.Input<String>? loginPassword;
+  final pulumi.Input<String>? nodeId;
+  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String>? vswitchId;
 
   /// Creates a new [ClusterNodeGroupNode].
   /// [hostname] Host name
@@ -36,11 +37,11 @@ class ClusterNodeGroupNode {
 
   factory ClusterNodeGroupNode.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupNode(
-      hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      loginPassword: map['loginPassword'] == null ? null : map['loginPassword'] as String,
-      nodeId: map['nodeId'] == null ? null : map['nodeId'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      loginPassword: map['loginPassword'] == null ? null : (map['loginPassword'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

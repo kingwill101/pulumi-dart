@@ -19,13 +19,10 @@ class GetBackupInstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The name of the backup vault.
   GetBackupInstanceArgs({
-    required pulumi.Output<String> backupInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      backupInstanceName = pulumi.Input.asInput<String>(backupInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.backupInstanceName,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBackupInstanceArgs {
 
   factory GetBackupInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupInstanceArgs(
-      backupInstanceName: pulumi.Output.create<String>(map['backupInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      backupInstanceName: (map['backupInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

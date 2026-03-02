@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mapper_connection_reference.dart';
 
 /// Attribute reference details for the referred column.
 class MapperAttributeReference {
   /// Name of the table.
-  final String? entity;
+  final pulumi.Input<String>? entity;
   /// The connection reference for the connection.
-  final MapperConnectionReference? entityConnectionReference;
+  final pulumi.Input<MapperConnectionReference>? entityConnectionReference;
   /// Name of the column.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [MapperAttributeReference].
   /// [entity] Name of the table.
@@ -24,16 +25,16 @@ class MapperAttributeReference {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'entity': ?entity,
-      'entityConnectionReference': ?entityConnectionReference == null ? null : entityConnectionReference!.toMap(),
+      'entityConnectionReference': ?pulumi.Input.mapOptionalInputValue<MapperConnectionReference, Map<String, dynamic>>(entityConnectionReference, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
   factory MapperAttributeReference.fromMap(Map<String, dynamic> map) {
     return MapperAttributeReference(
-      entity: map['entity'] == null ? null : map['entity'] as String,
-      entityConnectionReference: map['entityConnectionReference'] == null ? null : MapperConnectionReference.fromMap((map['entityConnectionReference'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
+      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
+      entityConnectionReference: map['entityConnectionReference'] == null ? null : (MapperConnectionReference.fromMap((map['entityConnectionReference'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

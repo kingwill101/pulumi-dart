@@ -54,33 +54,20 @@ class ConfigurationStoreArgs {
   /// [softDeleteRetentionInDays] The amount of time in days that the configuration store will be retained when it is soft deleted.
   /// [tags] Resource tags.
   ConfigurationStoreArgs({
-    pulumi.Output<String>? configStoreName,
-    pulumi.Output<CreateMode>? createMode,
-    pulumi.Output<DataPlaneProxyProperties>? dataPlaneProxy,
-    pulumi.Output<bool>? disableLocalAuth,
-    pulumi.Output<bool>? enablePurgeProtection,
-    pulumi.Output<EncryptionProperties>? encryption,
-    pulumi.Output<ResourceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<Sku> sku,
-    pulumi.Output<int>? softDeleteRetentionInDays,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      configStoreName = pulumi.Input.asOptionalInput<String>(configStoreName),
-      createMode = pulumi.Input.asOptionalInput<CreateMode>(createMode),
-      dataPlaneProxy = pulumi.Input.asOptionalInput<DataPlaneProxyProperties>(dataPlaneProxy),
-      disableLocalAuth = pulumi.Input.asOptionalInput<bool>(disableLocalAuth),
-      enablePurgeProtection = pulumi.Input.asOptionalInput<bool>(enablePurgeProtection),
-      encryption = pulumi.Input.asOptionalInput<EncryptionProperties>(encryption),
-      identity = pulumi.Input.asOptionalInput<ResourceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<Sku>(sku),
-      softDeleteRetentionInDays = pulumi.Input.asOptionalInput<int>(softDeleteRetentionInDays),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.configStoreName,
+    this.createMode,
+    this.dataPlaneProxy,
+    this.disableLocalAuth,
+    this.enablePurgeProtection,
+    this.encryption,
+    this.identity,
+    this.location,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    required this.sku,
+    this.softDeleteRetentionInDays,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class ConfigurationStoreArgs {
 
   factory ConfigurationStoreArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationStoreArgs(
-      configStoreName: map['configStoreName'] == null ? null : pulumi.Output.create<String>(map['configStoreName'] as String),
-      createMode: map['createMode'] == null ? null : pulumi.Output.create<CreateMode>(CreateMode.fromValue(map['createMode'] as String)),
-      dataPlaneProxy: map['dataPlaneProxy'] == null ? null : pulumi.Output.create<DataPlaneProxyProperties>(DataPlaneProxyProperties.fromMap((map['dataPlaneProxy'] as Map).cast<String, dynamic>())),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : pulumi.Output.create<bool>(map['disableLocalAuth'] as bool),
-      enablePurgeProtection: map['enablePurgeProtection'] == null ? null : pulumi.Output.create<bool>(map['enablePurgeProtection'] as bool),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<EncryptionProperties>(EncryptionProperties.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ResourceIdentity>(ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      softDeleteRetentionInDays: map['softDeleteRetentionInDays'] == null ? null : pulumi.Output.create<int>(map['softDeleteRetentionInDays'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      configStoreName: map['configStoreName'] == null ? null : (map['configStoreName'] as String).input(),
+      createMode: map['createMode'] == null ? null : (CreateMode.fromValue(map['createMode'] as String)).input(),
+      dataPlaneProxy: map['dataPlaneProxy'] == null ? null : (DataPlaneProxyProperties.fromMap((map['dataPlaneProxy'] as Map).cast<String, dynamic>())).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
+      enablePurgeProtection: map['enablePurgeProtection'] == null ? null : (map['enablePurgeProtection'] as bool).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionProperties.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      softDeleteRetentionInDays: map['softDeleteRetentionInDays'] == null ? null : (map['softDeleteRetentionInDays'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

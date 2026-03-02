@@ -25,17 +25,12 @@ class ClientKeyArgs {
   /// [password] To enhance security, set a password for the downloaded Client Key,When an application accesses KMS, you must use the ClientKey content and this password to initialize the SDK client.
   /// [privateKeyDataFile] The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
   ClientKeyArgs({
-    required pulumi.Output<String> aapName,
-    pulumi.Output<String>? notAfter,
-    pulumi.Output<String>? notBefore,
-    required pulumi.Output<String> password,
-    pulumi.Output<String>? privateKeyDataFile,
-  }) :
-      aapName = pulumi.Input.asInput<String>(aapName),
-      notAfter = pulumi.Input.asOptionalInput<String>(notAfter),
-      notBefore = pulumi.Input.asOptionalInput<String>(notBefore),
-      password = pulumi.Input.asInput<String>(password),
-      privateKeyDataFile = pulumi.Input.asOptionalInput<String>(privateKeyDataFile);
+    required this.aapName,
+    this.notAfter,
+    this.notBefore,
+    required this.password,
+    this.privateKeyDataFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ClientKeyArgs {
 
   factory ClientKeyArgs.fromMap(Map<String, dynamic> map) {
     return ClientKeyArgs(
-      aapName: pulumi.Output.create<String>(map['aapName'] as String),
-      notAfter: map['notAfter'] == null ? null : pulumi.Output.create<String>(map['notAfter'] as String),
-      notBefore: map['notBefore'] == null ? null : pulumi.Output.create<String>(map['notBefore'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      privateKeyDataFile: map['privateKeyDataFile'] == null ? null : pulumi.Output.create<String>(map['privateKeyDataFile'] as String),
+      aapName: (map['aapName'] as String).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
+      password: (map['password'] as String).input(),
+      privateKeyDataFile: map['privateKeyDataFile'] == null ? null : (map['privateKeyDataFile'] as String).input(),
     );
   }
 }

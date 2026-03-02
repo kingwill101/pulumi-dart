@@ -27,17 +27,12 @@ class GlobalNetworkEndpointArgs {
   /// [port] Port number of the external endpoint.
   /// [project] The ID of the project in which the resource belongs.
   GlobalNetworkEndpointArgs({
-    pulumi.Output<String>? fqdn,
-    required pulumi.Output<String> globalNetworkEndpointGroup,
-    pulumi.Output<String>? ipAddress,
-    required pulumi.Output<int> port,
-    pulumi.Output<String>? project,
-  }) :
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      globalNetworkEndpointGroup = pulumi.Input.asInput<String>(globalNetworkEndpointGroup),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      port = pulumi.Input.asInput<int>(port),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.fqdn,
+    required this.globalNetworkEndpointGroup,
+    this.ipAddress,
+    required this.port,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GlobalNetworkEndpointArgs {
 
   factory GlobalNetworkEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GlobalNetworkEndpointArgs(
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<String>(map['fqdn'] as String),
-      globalNetworkEndpointGroup: pulumi.Output.create<String>(map['globalNetworkEndpointGroup'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      port: pulumi.Output.create<int>(map['port'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      globalNetworkEndpointGroup: (map['globalNetworkEndpointGroup'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      port: (map['port'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

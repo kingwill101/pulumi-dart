@@ -42,29 +42,18 @@ class AttributeArgs {
   /// [project] Optional.
   /// [resourceAccessSpec] Optional. Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery dataset, BigQuery table).
   AttributeArgs({
-    pulumi.Output<GoogleCloudDataplexV1DataAccessSpec>? dataAccessSpec,
-    required pulumi.Output<String> dataAttributeId,
-    required pulumi.Output<String> dataTaxonomyId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? parentId,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudDataplexV1ResourceAccessSpec>? resourceAccessSpec,
-  }) :
-      dataAccessSpec = pulumi.Input.asOptionalInput<GoogleCloudDataplexV1DataAccessSpec>(dataAccessSpec),
-      dataAttributeId = pulumi.Input.asInput<String>(dataAttributeId),
-      dataTaxonomyId = pulumi.Input.asInput<String>(dataTaxonomyId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parentId = pulumi.Input.asOptionalInput<String>(parentId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceAccessSpec = pulumi.Input.asOptionalInput<GoogleCloudDataplexV1ResourceAccessSpec>(resourceAccessSpec);
+    this.dataAccessSpec,
+    required this.dataAttributeId,
+    required this.dataTaxonomyId,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.location,
+    this.parentId,
+    this.project,
+    this.resourceAccessSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class AttributeArgs {
 
   factory AttributeArgs.fromMap(Map<String, dynamic> map) {
     return AttributeArgs(
-      dataAccessSpec: map['dataAccessSpec'] == null ? null : pulumi.Output.create<GoogleCloudDataplexV1DataAccessSpec>(GoogleCloudDataplexV1DataAccessSpec.fromMap((map['dataAccessSpec'] as Map).cast<String, dynamic>())),
-      dataAttributeId: pulumi.Output.create<String>(map['dataAttributeId'] as String),
-      dataTaxonomyId: pulumi.Output.create<String>(map['dataTaxonomyId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parentId: map['parentId'] == null ? null : pulumi.Output.create<String>(map['parentId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceAccessSpec: map['resourceAccessSpec'] == null ? null : pulumi.Output.create<GoogleCloudDataplexV1ResourceAccessSpec>(GoogleCloudDataplexV1ResourceAccessSpec.fromMap((map['resourceAccessSpec'] as Map).cast<String, dynamic>())),
+      dataAccessSpec: map['dataAccessSpec'] == null ? null : (GoogleCloudDataplexV1DataAccessSpec.fromMap((map['dataAccessSpec'] as Map).cast<String, dynamic>())).input(),
+      dataAttributeId: (map['dataAttributeId'] as String).input(),
+      dataTaxonomyId: (map['dataTaxonomyId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceAccessSpec: map['resourceAccessSpec'] == null ? null : (GoogleCloudDataplexV1ResourceAccessSpec.fromMap((map['resourceAccessSpec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

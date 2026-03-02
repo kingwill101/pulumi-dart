@@ -32,21 +32,14 @@ class SecretPatchArgs {
   /// [stringData] stringData allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.
   /// [type] Used to facilitate programmatic handling of secret data. More info: https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
   SecretPatchArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<Map<String, String>>? data,
-    pulumi.Output<bool>? immutable,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<Map<String, String>>? stringData,
-    pulumi.Output<String>? type,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      data = pulumi.Input.asOptionalInput<Map<String, String>>(data),
-      immutable = pulumi.Input.asOptionalInput<bool>(immutable),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      stringData = pulumi.Input.asOptionalInput<Map<String, String>>(stringData),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.apiVersion,
+    this.data,
+    this.immutable,
+    this.kind,
+    this.metadata,
+    this.stringData,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class SecretPatchArgs {
 
   factory SecretPatchArgs.fromMap(Map<String, dynamic> map) {
     return SecretPatchArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<Map<String, String>>((map['data'] as Map).cast<String, String>()),
-      immutable: map['immutable'] == null ? null : pulumi.Output.create<bool>(map['immutable'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      stringData: map['stringData'] == null ? null : pulumi.Output.create<Map<String, String>>((map['stringData'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      data: map['data'] == null ? null : ((map['data'] as Map).cast<String, String>()).input(),
+      immutable: map['immutable'] == null ? null : (map['immutable'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      stringData: map['stringData'] == null ? null : ((map['stringData'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

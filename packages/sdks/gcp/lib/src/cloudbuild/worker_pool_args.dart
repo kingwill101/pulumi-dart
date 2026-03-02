@@ -43,23 +43,15 @@ class WorkerPoolArgs {
   /// [project] The project for the resource
   /// [workerConfig] Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
   WorkerPoolArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<WorkerPoolNetworkConfig>? networkConfig,
-    pulumi.Output<WorkerPoolPrivateServiceConnect>? privateServiceConnect,
-    pulumi.Output<String>? project,
-    pulumi.Output<WorkerPoolWorkerConfig>? workerConfig,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkConfig = pulumi.Input.asOptionalInput<WorkerPoolNetworkConfig>(networkConfig),
-      privateServiceConnect = pulumi.Input.asOptionalInput<WorkerPoolPrivateServiceConnect>(privateServiceConnect),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workerConfig = pulumi.Input.asOptionalInput<WorkerPoolWorkerConfig>(workerConfig);
+    this.annotations,
+    this.displayName,
+    required this.location,
+    this.name,
+    this.networkConfig,
+    this.privateServiceConnect,
+    this.project,
+    this.workerConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,14 +68,14 @@ class WorkerPoolArgs {
 
   factory WorkerPoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkerPoolArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkConfig: map['networkConfig'] == null ? null : pulumi.Output.create<WorkerPoolNetworkConfig>(WorkerPoolNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())),
-      privateServiceConnect: map['privateServiceConnect'] == null ? null : pulumi.Output.create<WorkerPoolPrivateServiceConnect>(WorkerPoolPrivateServiceConnect.fromMap((map['privateServiceConnect'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workerConfig: map['workerConfig'] == null ? null : pulumi.Output.create<WorkerPoolWorkerConfig>(WorkerPoolWorkerConfig.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (WorkerPoolNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
+      privateServiceConnect: map['privateServiceConnect'] == null ? null : (WorkerPoolPrivateServiceConnect.fromMap((map['privateServiceConnect'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workerConfig: map['workerConfig'] == null ? null : (WorkerPoolWorkerConfig.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

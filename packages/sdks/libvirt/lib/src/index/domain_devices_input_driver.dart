@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInputDriver {
   /// Controls the Address Translation Services (ATS) feature for the input device driver.
-  final String? ats;
+  final pulumi.Input<String>? ats;
   /// Enables or disables the IOMMU feature for the input device driver.
-  final String? iommu;
+  final pulumi.Input<String>? iommu;
   /// Configures whether the input device driver uses packed ring.
-  final String? packed;
+  final pulumi.Input<String>? packed;
   /// Sets the page per virtual queue option for the input device driver.
-  final String? pagePerVq;
+  final pulumi.Input<String>? pagePerVq;
 
   /// Creates a new [DomainDevicesInputDriver].
   /// [ats] Controls the Address Translation Services (ATS) feature for the input device driver.
@@ -34,10 +35,10 @@ class DomainDevicesInputDriver {
 
   factory DomainDevicesInputDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInputDriver(
-      ats: map['ats'] == null ? null : map['ats'] as String,
-      iommu: map['iommu'] == null ? null : map['iommu'] as String,
-      packed: map['packed'] == null ? null : map['packed'] as String,
-      pagePerVq: map['pagePerVq'] == null ? null : map['pagePerVq'] as String,
+      ats: map['ats'] == null ? null : (map['ats'] as String).input(),
+      iommu: map['iommu'] == null ? null : (map['iommu'] as String).input(),
+      packed: map['packed'] == null ? null : (map['packed'] as String).input(),
+      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq'] as String).input(),
     );
   }
 }

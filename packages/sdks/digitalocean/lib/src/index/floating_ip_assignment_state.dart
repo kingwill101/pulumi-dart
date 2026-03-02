@@ -13,11 +13,9 @@ class FloatingIpAssignmentState {
   /// [dropletId] The ID of Droplet that the Floating IP will be assigned to.
   /// [ipAddress] The Floating IP to assign to the Droplet.
   FloatingIpAssignmentState({
-    pulumi.Output<int>? dropletId,
-    pulumi.Output<String>? ipAddress,
-  }) :
-      dropletId = pulumi.Input.asOptionalInput<int>(dropletId),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress);
+    this.dropletId,
+    this.ipAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class FloatingIpAssignmentState {
 
   factory FloatingIpAssignmentState.fromMap(Map<String, dynamic> map) {
     return FloatingIpAssignmentState(
-      dropletId: map['dropletId'] == null ? null : pulumi.Output.create<int>(map['dropletId'] as int),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
     );
   }
 }

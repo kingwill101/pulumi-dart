@@ -27,11 +27,9 @@ class StandardsSubscriptionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [standardsArn] The ARN of a standard - see below.
   StandardsSubscriptionState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? standardsArn,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      standardsArn = pulumi.Input.asOptionalInput<String>(standardsArn);
+    this.region,
+    this.standardsArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,8 +40,8 @@ class StandardsSubscriptionState {
 
   factory StandardsSubscriptionState.fromMap(Map<String, dynamic> map) {
     return StandardsSubscriptionState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      standardsArn: map['standardsArn'] == null ? null : pulumi.Output.create<String>(map['standardsArn'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      standardsArn: map['standardsArn'] == null ? null : (map['standardsArn'] as String).input(),
     );
   }
 }

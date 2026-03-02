@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_gateway_route_spec_http2_route_action_target_virtual_service.dart';
 
 class GetGatewayRouteSpecHttp2RouteActionTarget {
-  final int port;
-  final List<GetGatewayRouteSpecHttp2RouteActionTargetVirtualService> virtualServices;
+  final pulumi.Input<int> port;
+  final pulumi.Input<List<GetGatewayRouteSpecHttp2RouteActionTargetVirtualService>> virtualServices;
 
   /// Creates a new [GetGatewayRouteSpecHttp2RouteActionTarget].
   /// [port] Required.
@@ -18,14 +18,14 @@ class GetGatewayRouteSpecHttp2RouteActionTarget {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'port': port,
-      'virtualServices': pulumi.Input.encodeList<GetGatewayRouteSpecHttp2RouteActionTargetVirtualService, Map<String, dynamic>>(virtualServices, (value) => value.toMap()),
+      'virtualServices': pulumi.Input.mapInputValue<List<GetGatewayRouteSpecHttp2RouteActionTargetVirtualService>, List<Map<String, dynamic>>>(virtualServices, (value) => pulumi.Input.encodeList<GetGatewayRouteSpecHttp2RouteActionTargetVirtualService, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetGatewayRouteSpecHttp2RouteActionTarget.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttp2RouteActionTarget(
-      port: map['port'] as int,
-      virtualServices: pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteActionTargetVirtualService>(map['virtualServices'], (value) => GetGatewayRouteSpecHttp2RouteActionTargetVirtualService.fromMap((value as Map).cast<String, dynamic>())),
+      port: (map['port'] as int).input(),
+      virtualServices: (pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteActionTargetVirtualService>(map['virtualServices'], (value) => GetGatewayRouteSpecHttp2RouteActionTargetVirtualService.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

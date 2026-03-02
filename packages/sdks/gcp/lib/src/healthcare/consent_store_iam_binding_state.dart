@@ -40,19 +40,13 @@ class ConsentStoreIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   ConsentStoreIamBindingState({
-    pulumi.Output<ConsentStoreIamBindingCondition>? condition,
-    pulumi.Output<String>? consentStoreId,
-    pulumi.Output<String>? dataset,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ConsentStoreIamBindingCondition>(condition),
-      consentStoreId = pulumi.Input.asOptionalInput<String>(consentStoreId),
-      dataset = pulumi.Input.asOptionalInput<String>(dataset),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.consentStoreId,
+    this.dataset,
+    this.etag,
+    this.members,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,12 +61,12 @@ class ConsentStoreIamBindingState {
 
   factory ConsentStoreIamBindingState.fromMap(Map<String, dynamic> map) {
     return ConsentStoreIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<ConsentStoreIamBindingCondition>(ConsentStoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      consentStoreId: map['consentStoreId'] == null ? null : pulumi.Output.create<String>(map['consentStoreId'] as String),
-      dataset: map['dataset'] == null ? null : pulumi.Output.create<String>(map['dataset'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (ConsentStoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      consentStoreId: map['consentStoreId'] == null ? null : (map['consentStoreId'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

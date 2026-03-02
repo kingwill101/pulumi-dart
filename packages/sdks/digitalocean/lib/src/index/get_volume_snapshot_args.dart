@@ -26,15 +26,11 @@ class GetVolumeSnapshotArgs {
   /// [nameRegex] A regex string to apply to the volume snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
   /// [region] A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only volume snapshots available in the region will be returned.
   GetVolumeSnapshotArgs({
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? region,
-  }) :
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.mostRecent,
+    this.name,
+    this.nameRegex,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class GetVolumeSnapshotArgs {
 
   factory GetVolumeSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeSnapshotArgs(
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

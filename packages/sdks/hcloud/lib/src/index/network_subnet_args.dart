@@ -25,17 +25,12 @@ class NetworkSubnetArgs {
   /// [type] Type of subnet. `server`, `cloud` or `vswitch`
   /// [vswitchId] ID of the vswitch, Required if type is `vswitch`
   NetworkSubnetArgs({
-    required pulumi.Output<String> ipRange,
-    required pulumi.Output<int> networkId,
-    required pulumi.Output<String> networkZone,
-    required pulumi.Output<String> type,
-    pulumi.Output<int>? vswitchId,
-  }) :
-      ipRange = pulumi.Input.asInput<String>(ipRange),
-      networkId = pulumi.Input.asInput<int>(networkId),
-      networkZone = pulumi.Input.asInput<String>(networkZone),
-      type = pulumi.Input.asInput<String>(type),
-      vswitchId = pulumi.Input.asOptionalInput<int>(vswitchId);
+    required this.ipRange,
+    required this.networkId,
+    required this.networkZone,
+    required this.type,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class NetworkSubnetArgs {
 
   factory NetworkSubnetArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSubnetArgs(
-      ipRange: pulumi.Output.create<String>(map['ipRange'] as String),
-      networkId: pulumi.Output.create<int>(map['networkId'] as int),
-      networkZone: pulumi.Output.create<String>(map['networkZone'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<int>(map['vswitchId'] as int),
+      ipRange: (map['ipRange'] as String).input(),
+      networkId: (map['networkId'] as int).input(),
+      networkZone: (map['networkZone'] as String).input(),
+      type: (map['type'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as int).input(),
     );
   }
 }

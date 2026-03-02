@@ -44,29 +44,18 @@ class StorageAccountCredentialArgs {
   /// [storageAccountId] Id of the storage account.
   /// [userName] Username for the storage account.
   StorageAccountCredentialArgs({
-    pulumi.Output<AsymmetricEncryptedSecret>? accountKey,
-    required pulumi.Output<String> accountType,
-    required pulumi.Output<String> alias,
-    pulumi.Output<String>? blobDomainName,
-    pulumi.Output<String>? connectionString,
-    required pulumi.Output<String> deviceName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sslStatus,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? userName,
-  }) :
-      accountKey = pulumi.Input.asOptionalInput<AsymmetricEncryptedSecret>(accountKey),
-      accountType = pulumi.Input.asInput<String>(accountType),
-      alias = pulumi.Input.asInput<String>(alias),
-      blobDomainName = pulumi.Input.asOptionalInput<String>(blobDomainName),
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sslStatus = pulumi.Input.asInput<String>(sslStatus),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.accountKey,
+    required this.accountType,
+    required this.alias,
+    this.blobDomainName,
+    this.connectionString,
+    required this.deviceName,
+    this.name,
+    required this.resourceGroupName,
+    required this.sslStatus,
+    this.storageAccountId,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class StorageAccountCredentialArgs {
 
   factory StorageAccountCredentialArgs.fromMap(Map<String, dynamic> map) {
     return StorageAccountCredentialArgs(
-      accountKey: map['accountKey'] == null ? null : pulumi.Output.create<AsymmetricEncryptedSecret>(AsymmetricEncryptedSecret.fromMap((map['accountKey'] as Map).cast<String, dynamic>())),
-      accountType: pulumi.Output.create<String>(map['accountType'] as String),
-      alias: pulumi.Output.create<String>(map['alias'] as String),
-      blobDomainName: map['blobDomainName'] == null ? null : pulumi.Output.create<String>(map['blobDomainName'] as String),
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sslStatus: pulumi.Output.create<String>(map['sslStatus'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      accountKey: map['accountKey'] == null ? null : (AsymmetricEncryptedSecret.fromMap((map['accountKey'] as Map).cast<String, dynamic>())).input(),
+      accountType: (map['accountType'] as String).input(),
+      alias: (map['alias'] as String).input(),
+      blobDomainName: map['blobDomainName'] == null ? null : (map['blobDomainName'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sslStatus: (map['sslStatus'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

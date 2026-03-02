@@ -19,13 +19,10 @@ class GetDiagnosticArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetDiagnosticArgs({
-    required pulumi.Output<String> diagnosticId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      diagnosticId = pulumi.Input.asInput<String>(diagnosticId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.diagnosticId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDiagnosticArgs {
 
   factory GetDiagnosticArgs.fromMap(Map<String, dynamic> map) {
     return GetDiagnosticArgs(
-      diagnosticId: pulumi.Output.create<String>(map['diagnosticId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      diagnosticId: (map['diagnosticId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

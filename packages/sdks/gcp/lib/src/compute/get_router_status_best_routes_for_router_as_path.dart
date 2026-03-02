@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouterStatusBestRoutesForRouterAsPath {
   /// The AS numbers of the AS Path.
-  final List<int> asLists;
+  final pulumi.Input<List<int>> asLists;
   /// The type of the AS Path, which can be one of the following values:
   /// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
   /// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
   /// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
   /// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
-  final String pathSegmentType;
+  final pulumi.Input<String> pathSegmentType;
 
   /// Creates a new [GetRouterStatusBestRoutesForRouterAsPath].
   /// [asLists] The AS numbers of the AS Path.
@@ -28,8 +29,8 @@ class GetRouterStatusBestRoutesForRouterAsPath {
 
   factory GetRouterStatusBestRoutesForRouterAsPath.fromMap(Map<String, dynamic> map) {
     return GetRouterStatusBestRoutesForRouterAsPath(
-      asLists: (map['asLists'] as List).cast<int>(),
-      pathSegmentType: map['pathSegmentType'] as String,
+      asLists: ((map['asLists'] as List).cast<int>()).input(),
+      pathSegmentType: (map['pathSegmentType'] as String).input(),
     );
   }
 }

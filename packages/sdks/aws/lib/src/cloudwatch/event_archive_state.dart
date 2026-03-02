@@ -31,23 +31,15 @@ class EventArchiveState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [retentionDays] The maximum number of days to retain events in the new event archive. By default, it archives indefinitely.
   EventArchiveState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? eventPattern,
-    pulumi.Output<String>? eventSourceArn,
-    pulumi.Output<String>? kmsKeyIdentifier,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? retentionDays,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventPattern = pulumi.Input.asOptionalInput<String>(eventPattern),
-      eventSourceArn = pulumi.Input.asOptionalInput<String>(eventSourceArn),
-      kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(kmsKeyIdentifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays);
+    this.arn,
+    this.description,
+    this.eventPattern,
+    this.eventSourceArn,
+    this.kmsKeyIdentifier,
+    this.name,
+    this.region,
+    this.retentionDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class EventArchiveState {
 
   factory EventArchiveState.fromMap(Map<String, dynamic> map) {
     return EventArchiveState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventPattern: map['eventPattern'] == null ? null : pulumi.Output.create<String>(map['eventPattern'] as String),
-      eventSourceArn: map['eventSourceArn'] == null ? null : pulumi.Output.create<String>(map['eventSourceArn'] as String),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : pulumi.Output.create<String>(map['kmsKeyIdentifier'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventPattern: map['eventPattern'] == null ? null : (map['eventPattern'] as String).input(),
+      eventSourceArn: map['eventSourceArn'] == null ? null : (map['eventSourceArn'] as String).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
     );
   }
 }

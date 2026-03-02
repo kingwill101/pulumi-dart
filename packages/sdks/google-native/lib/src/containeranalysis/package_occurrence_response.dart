@@ -8,19 +8,19 @@ import 'version_response.dart';
 /// Details on how a particular software package was installed on a system.
 class PackageOccurrenceResponse {
   /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
-  final String architecture;
+  final pulumi.Input<String> architecture;
   /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
-  final String cpeUri;
+  final pulumi.Input<String> cpeUri;
   /// Licenses that have been declared by the authors of the package.
-  final LicenseResponse license;
+  final pulumi.Input<LicenseResponse> license;
   /// All of the places within the filesystem versions of this package have been found.
-  final List<LocationResponse> location;
+  final pulumi.Input<List<LocationResponse>> location;
   /// The name of the installed package.
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
-  final String packageType;
+  final pulumi.Input<String> packageType;
   /// The version of the package.
-  final VersionResponse version;
+  final pulumi.Input<VersionResponse> version;
 
   /// Creates a new [PackageOccurrenceResponse].
   /// [architecture] The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
@@ -44,23 +44,23 @@ class PackageOccurrenceResponse {
     return <String, dynamic>{
       'architecture': architecture,
       'cpeUri': cpeUri,
-      'license': license.toMap(),
-      'location': pulumi.Input.encodeList<LocationResponse, Map<String, dynamic>>(location, (value) => value.toMap()),
+      'license': pulumi.Input.mapInputValue<LicenseResponse, Map<String, dynamic>>(license, (value) => value.toMap()),
+      'location': pulumi.Input.mapInputValue<List<LocationResponse>, List<Map<String, dynamic>>>(location, (value) => pulumi.Input.encodeList<LocationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'packageType': packageType,
-      'version': version.toMap(),
+      'version': pulumi.Input.mapInputValue<VersionResponse, Map<String, dynamic>>(version, (value) => value.toMap()),
     };
   }
 
   factory PackageOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return PackageOccurrenceResponse(
-      architecture: map['architecture'] as String,
-      cpeUri: map['cpeUri'] as String,
-      license: LicenseResponse.fromMap((map['license'] as Map).cast<String, dynamic>()),
-      location: pulumi.Input.decodeList<LocationResponse>(map['location'], (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      packageType: map['packageType'] as String,
-      version: VersionResponse.fromMap((map['version'] as Map).cast<String, dynamic>()),
+      architecture: (map['architecture'] as String).input(),
+      cpeUri: (map['cpeUri'] as String).input(),
+      license: (LicenseResponse.fromMap((map['license'] as Map).cast<String, dynamic>())).input(),
+      location: (pulumi.Input.decodeList<LocationResponse>(map['location'], (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      packageType: (map['packageType'] as String).input(),
+      version: (VersionResponse.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

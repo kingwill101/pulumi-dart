@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Iceberg write settings.
 class IcebergWriteSettingsResponse {
   /// The write setting type.
   /// Expected value is 'IcebergWriteSettings'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [IcebergWriteSettingsResponse].
   /// [type] The write setting type.
@@ -21,7 +22,7 @@ class IcebergWriteSettingsResponse {
 
   factory IcebergWriteSettingsResponse.fromMap(Map<String, dynamic> map) {
     return IcebergWriteSettingsResponse(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

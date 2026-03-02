@@ -43,25 +43,16 @@ class LinkedServiceState {
   /// [type] The type of data stores that will be connected to Synapse. Valid Values include `AmazonMWS`, `AmazonRdsForOracle`, `AmazonRdsForSqlServer`, `AmazonRedshift`, `AmazonS3`, `AzureBatch`. Changing this forces a new resource to be created.
   /// [typePropertiesJson] A JSON object that contains the properties of the Synapse Linked Service.
   LinkedServiceState({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? description,
-    pulumi.Output<LinkedServiceIntegrationRuntime>? integrationRuntime,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? synapseWorkspaceId,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? typePropertiesJson,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      integrationRuntime = pulumi.Input.asOptionalInput<LinkedServiceIntegrationRuntime>(integrationRuntime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      synapseWorkspaceId = pulumi.Input.asOptionalInput<String>(synapseWorkspaceId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      typePropertiesJson = pulumi.Input.asOptionalInput<String>(typePropertiesJson);
+    this.additionalProperties,
+    this.annotations,
+    this.description,
+    this.integrationRuntime,
+    this.name,
+    this.parameters,
+    this.synapseWorkspaceId,
+    this.type,
+    this.typePropertiesJson,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class LinkedServiceState {
 
   factory LinkedServiceState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceState(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      integrationRuntime: map['integrationRuntime'] == null ? null : pulumi.Output.create<LinkedServiceIntegrationRuntime>(LinkedServiceIntegrationRuntime.fromMap((map['integrationRuntime'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      typePropertiesJson: map['typePropertiesJson'] == null ? null : pulumi.Output.create<String>(map['typePropertiesJson'] as String),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      integrationRuntime: map['integrationRuntime'] == null ? null : (LinkedServiceIntegrationRuntime.fromMap((map['integrationRuntime'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      typePropertiesJson: map['typePropertiesJson'] == null ? null : (map['typePropertiesJson'] as String).input(),
     );
   }
 }

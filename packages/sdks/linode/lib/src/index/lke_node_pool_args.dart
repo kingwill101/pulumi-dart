@@ -48,29 +48,18 @@ class LkeNodePoolArgs {
   /// [type] A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
   /// [updateStrategy] The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
   LkeNodePoolArgs({
-    pulumi.Output<LkeNodePoolAutoscaler>? autoscaler,
-    required pulumi.Output<int> clusterId,
-    pulumi.Output<int>? firewallId,
-    pulumi.Output<String>? k8sVersion,
-    pulumi.Output<String>? label,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<int>? nodeCount,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<List<LkeNodePoolTaint>>? taints,
-    required pulumi.Output<String> type,
-    pulumi.Output<String>? updateStrategy,
-  }) :
-      autoscaler = pulumi.Input.asOptionalInput<LkeNodePoolAutoscaler>(autoscaler),
-      clusterId = pulumi.Input.asInput<int>(clusterId),
-      firewallId = pulumi.Input.asOptionalInput<int>(firewallId),
-      k8sVersion = pulumi.Input.asOptionalInput<String>(k8sVersion),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      nodeCount = pulumi.Input.asOptionalInput<int>(nodeCount),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      taints = pulumi.Input.asOptionalInput<List<LkeNodePoolTaint>>(taints),
-      type = pulumi.Input.asInput<String>(type),
-      updateStrategy = pulumi.Input.asOptionalInput<String>(updateStrategy);
+    this.autoscaler,
+    required this.clusterId,
+    this.firewallId,
+    this.k8sVersion,
+    this.label,
+    this.labels,
+    this.nodeCount,
+    this.tags,
+    this.taints,
+    required this.type,
+    this.updateStrategy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,17 +79,17 @@ class LkeNodePoolArgs {
 
   factory LkeNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return LkeNodePoolArgs(
-      autoscaler: map['autoscaler'] == null ? null : pulumi.Output.create<LkeNodePoolAutoscaler>(LkeNodePoolAutoscaler.fromMap((map['autoscaler'] as Map).cast<String, dynamic>())),
-      clusterId: pulumi.Output.create<int>(map['clusterId'] as int),
-      firewallId: map['firewallId'] == null ? null : pulumi.Output.create<int>(map['firewallId'] as int),
-      k8sVersion: map['k8sVersion'] == null ? null : pulumi.Output.create<String>(map['k8sVersion'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      nodeCount: map['nodeCount'] == null ? null : pulumi.Output.create<int>(map['nodeCount'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      taints: map['taints'] == null ? null : pulumi.Output.create<List<LkeNodePoolTaint>>(pulumi.Input.decodeList<LkeNodePoolTaint>(map['taints'], (value) => LkeNodePoolTaint.fromMap((value as Map).cast<String, dynamic>()))),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      updateStrategy: map['updateStrategy'] == null ? null : pulumi.Output.create<String>(map['updateStrategy'] as String),
+      autoscaler: map['autoscaler'] == null ? null : (LkeNodePoolAutoscaler.fromMap((map['autoscaler'] as Map).cast<String, dynamic>())).input(),
+      clusterId: (map['clusterId'] as int).input(),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as int).input(),
+      k8sVersion: map['k8sVersion'] == null ? null : (map['k8sVersion'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<LkeNodePoolTaint>(map['taints'], (value) => LkeNodePoolTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      updateStrategy: map['updateStrategy'] == null ? null : (map['updateStrategy'] as String).input(),
     );
   }
 }

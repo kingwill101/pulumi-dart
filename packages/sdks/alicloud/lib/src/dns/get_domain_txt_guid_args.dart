@@ -22,15 +22,11 @@ class GetDomainTxtGuidArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [type] Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
   GetDomainTxtGuidArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> type,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      type = pulumi.Input.asInput<String>(type);
+    required this.domainName,
+    this.lang,
+    this.outputFile,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDomainTxtGuidArgs {
 
   factory GetDomainTxtGuidArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainTxtGuidArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      domainName: (map['domainName'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -25,19 +25,13 @@ class PublicCertificateState {
   /// [resourceGroupName] The name of the Resource Group where the App Service Public Certificate should exist. Changing this forces a new App Service Public Certificate to be created.
   /// [thumbprint] The thumbprint of the public certificate.
   PublicCertificateState({
-    pulumi.Output<String>? appServiceName,
-    pulumi.Output<String>? blob,
-    pulumi.Output<String>? certificateLocation,
-    pulumi.Output<String>? certificateName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      appServiceName = pulumi.Input.asOptionalInput<String>(appServiceName),
-      blob = pulumi.Input.asOptionalInput<String>(blob),
-      certificateLocation = pulumi.Input.asOptionalInput<String>(certificateLocation),
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    this.appServiceName,
+    this.blob,
+    this.certificateLocation,
+    this.certificateName,
+    this.resourceGroupName,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class PublicCertificateState {
 
   factory PublicCertificateState.fromMap(Map<String, dynamic> map) {
     return PublicCertificateState(
-      appServiceName: map['appServiceName'] == null ? null : pulumi.Output.create<String>(map['appServiceName'] as String),
-      blob: map['blob'] == null ? null : pulumi.Output.create<String>(map['blob'] as String),
-      certificateLocation: map['certificateLocation'] == null ? null : pulumi.Output.create<String>(map['certificateLocation'] as String),
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName'] as String).input(),
+      blob: map['blob'] == null ? null : (map['blob'] as String).input(),
+      certificateLocation: map['certificateLocation'] == null ? null : (map['certificateLocation'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

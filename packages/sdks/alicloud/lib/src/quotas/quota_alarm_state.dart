@@ -37,25 +37,16 @@ class QuotaAlarmState {
   /// [thresholdType] Quota alarm type. Value:
   /// [webHook] The WebHook of Quota Alarm.
   QuotaAlarmState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? productCode,
-    pulumi.Output<String>? quotaActionCode,
-    pulumi.Output<String>? quotaAlarmName,
-    pulumi.Output<List<QuotaAlarmQuotaDimension>>? quotaDimensions,
-    pulumi.Output<double>? threshold,
-    pulumi.Output<double>? thresholdPercent,
-    pulumi.Output<String>? thresholdType,
-    pulumi.Output<String>? webHook,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      productCode = pulumi.Input.asOptionalInput<String>(productCode),
-      quotaActionCode = pulumi.Input.asOptionalInput<String>(quotaActionCode),
-      quotaAlarmName = pulumi.Input.asOptionalInput<String>(quotaAlarmName),
-      quotaDimensions = pulumi.Input.asOptionalInput<List<QuotaAlarmQuotaDimension>>(quotaDimensions),
-      threshold = pulumi.Input.asOptionalInput<double>(threshold),
-      thresholdPercent = pulumi.Input.asOptionalInput<double>(thresholdPercent),
-      thresholdType = pulumi.Input.asOptionalInput<String>(thresholdType),
-      webHook = pulumi.Input.asOptionalInput<String>(webHook);
+    this.createTime,
+    this.productCode,
+    this.quotaActionCode,
+    this.quotaAlarmName,
+    this.quotaDimensions,
+    this.threshold,
+    this.thresholdPercent,
+    this.thresholdType,
+    this.webHook,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class QuotaAlarmState {
 
   factory QuotaAlarmState.fromMap(Map<String, dynamic> map) {
     return QuotaAlarmState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      productCode: map['productCode'] == null ? null : pulumi.Output.create<String>(map['productCode'] as String),
-      quotaActionCode: map['quotaActionCode'] == null ? null : pulumi.Output.create<String>(map['quotaActionCode'] as String),
-      quotaAlarmName: map['quotaAlarmName'] == null ? null : pulumi.Output.create<String>(map['quotaAlarmName'] as String),
-      quotaDimensions: map['quotaDimensions'] == null ? null : pulumi.Output.create<List<QuotaAlarmQuotaDimension>>(pulumi.Input.decodeList<QuotaAlarmQuotaDimension>(map['quotaDimensions'], (value) => QuotaAlarmQuotaDimension.fromMap((value as Map).cast<String, dynamic>()))),
-      threshold: map['threshold'] == null ? null : pulumi.Output.create<double>(map['threshold'] as double),
-      thresholdPercent: map['thresholdPercent'] == null ? null : pulumi.Output.create<double>(map['thresholdPercent'] as double),
-      thresholdType: map['thresholdType'] == null ? null : pulumi.Output.create<String>(map['thresholdType'] as String),
-      webHook: map['webHook'] == null ? null : pulumi.Output.create<String>(map['webHook'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
+      quotaActionCode: map['quotaActionCode'] == null ? null : (map['quotaActionCode'] as String).input(),
+      quotaAlarmName: map['quotaAlarmName'] == null ? null : (map['quotaAlarmName'] as String).input(),
+      quotaDimensions: map['quotaDimensions'] == null ? null : (pulumi.Input.decodeList<QuotaAlarmQuotaDimension>(map['quotaDimensions'], (value) => QuotaAlarmQuotaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold'] as double).input(),
+      thresholdPercent: map['thresholdPercent'] == null ? null : (map['thresholdPercent'] as double).input(),
+      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType'] as String).input(),
+      webHook: map['webHook'] == null ? null : (map['webHook'] as String).input(),
     );
   }
 }

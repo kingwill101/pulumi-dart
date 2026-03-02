@@ -26,19 +26,13 @@ class ChannelArgs {
   /// [project] Optional.
   /// [provider] The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
   ChannelArgs({
-    required pulumi.Output<String> channelId,
-    pulumi.Output<String>? cryptoKeyName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? provider,
-  }) :
-      channelId = pulumi.Input.asInput<String>(channelId),
-      cryptoKeyName = pulumi.Input.asOptionalInput<String>(cryptoKeyName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      provider = pulumi.Input.asOptionalInput<String>(provider);
+    required this.channelId,
+    this.cryptoKeyName,
+    this.location,
+    this.name,
+    this.project,
+    this.provider,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class ChannelArgs {
 
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
-      channelId: pulumi.Output.create<String>(map['channelId'] as String),
-      cryptoKeyName: map['cryptoKeyName'] == null ? null : pulumi.Output.create<String>(map['cryptoKeyName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      provider: map['provider'] == null ? null : pulumi.Output.create<String>(map['provider'] as String),
+      channelId: (map['channelId'] as String).input(),
+      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      provider: map['provider'] == null ? null : (map['provider'] as String).input(),
     );
   }
 }

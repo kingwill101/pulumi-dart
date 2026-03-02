@@ -17,13 +17,10 @@ class NatAddressArgs {
   /// [name] Resource ID of the NAT address.
   /// [organizationId] Required.
   NatAddressArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.instanceId,
+    this.name,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class NatAddressArgs {
 
   factory NatAddressArgs.fromMap(Map<String, dynamic> map) {
     return NatAddressArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

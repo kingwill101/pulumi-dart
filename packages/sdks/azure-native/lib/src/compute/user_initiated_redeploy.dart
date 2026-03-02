@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies Redeploy related Scheduled Event related configurations.
 class UserInitiatedRedeploy {
   /// Specifies Redeploy Scheduled Event related configurations.
-  final bool? automaticallyApprove;
+  final pulumi.Input<bool>? automaticallyApprove;
 
   /// Creates a new [UserInitiatedRedeploy].
   /// [automaticallyApprove] Specifies Redeploy Scheduled Event related configurations.
@@ -20,7 +21,7 @@ class UserInitiatedRedeploy {
 
   factory UserInitiatedRedeploy.fromMap(Map<String, dynamic> map) {
     return UserInitiatedRedeploy(
-      automaticallyApprove: map['automaticallyApprove'] == null ? null : map['automaticallyApprove'] as bool,
+      automaticallyApprove: map['automaticallyApprove'] == null ? null : (map['automaticallyApprove'] as bool).input(),
     );
   }
 }

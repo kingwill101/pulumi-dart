@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cost_category_rule_rule_or_or_cost_category.dart';
 import 'cost_category_rule_rule_or_or_dimension.dart';
 import 'cost_category_rule_rule_or_or_tags.dart';
 
 class CostCategoryRuleRuleOrOr {
   /// Configuration block for the filter that's based on `CostCategory` values. See below.
-  final CostCategoryRuleRuleOrOrCostCategory? costCategory;
+  final pulumi.Input<CostCategoryRuleRuleOrOrCostCategory>? costCategory;
   /// Configuration block for the specific `Dimension` to use for `Expression`. See below.
-  final CostCategoryRuleRuleOrOrDimension? dimension;
+  final pulumi.Input<CostCategoryRuleRuleOrOrDimension>? dimension;
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final CostCategoryRuleRuleOrOrTags? tags;
+  final pulumi.Input<CostCategoryRuleRuleOrOrTags>? tags;
 
   /// Creates a new [CostCategoryRuleRuleOrOr].
   /// [costCategory] Configuration block for the filter that's based on `CostCategory` values. See below.
@@ -24,17 +25,17 @@ class CostCategoryRuleRuleOrOr {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'costCategory': ?costCategory == null ? null : costCategory!.toMap(),
-      'dimension': ?dimension == null ? null : dimension!.toMap(),
-      'tags': ?tags == null ? null : tags!.toMap(),
+      'costCategory': ?pulumi.Input.mapOptionalInputValue<CostCategoryRuleRuleOrOrCostCategory, Map<String, dynamic>>(costCategory, (value) => value.toMap()),
+      'dimension': ?pulumi.Input.mapOptionalInputValue<CostCategoryRuleRuleOrOrDimension, Map<String, dynamic>>(dimension, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<CostCategoryRuleRuleOrOrTags, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory CostCategoryRuleRuleOrOr.fromMap(Map<String, dynamic> map) {
     return CostCategoryRuleRuleOrOr(
-      costCategory: map['costCategory'] == null ? null : CostCategoryRuleRuleOrOrCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>()),
-      dimension: map['dimension'] == null ? null : CostCategoryRuleRuleOrOrDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : CostCategoryRuleRuleOrOrTags.fromMap((map['tags'] as Map).cast<String, dynamic>()),
+      costCategory: map['costCategory'] == null ? null : (CostCategoryRuleRuleOrOrCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>())).input(),
+      dimension: map['dimension'] == null ? null : (CostCategoryRuleRuleOrOrDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (CostCategoryRuleRuleOrOrTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

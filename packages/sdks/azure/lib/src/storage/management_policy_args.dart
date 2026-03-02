@@ -17,11 +17,9 @@ class ManagementPolicyArgs {
   /// [rules] A `rule` block as documented below.
   /// [storageAccountId] Specifies the id of the storage account to apply the management policy to. Changing this forces a new resource to be created.
   ManagementPolicyArgs({
-    pulumi.Output<List<ManagementPolicyRule>>? rules,
-    required pulumi.Output<String> storageAccountId,
-  }) :
-      rules = pulumi.Input.asOptionalInput<List<ManagementPolicyRule>>(rules),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId);
+    this.rules,
+    required this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class ManagementPolicyArgs {
 
   factory ManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyArgs(
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<ManagementPolicyRule>>(pulumi.Input.decodeList<ManagementPolicyRule>(map['rules'], (value) => ManagementPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ManagementPolicyRule>(map['rules'], (value) => ManagementPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

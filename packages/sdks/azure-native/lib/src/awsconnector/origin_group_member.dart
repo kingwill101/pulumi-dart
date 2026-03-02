@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of OriginGroupMember
 class OriginGroupMember {
   /// The ID for an origin in an origin group.
-  final String? originId;
+  final pulumi.Input<String>? originId;
 
   /// Creates a new [OriginGroupMember].
   /// [originId] The ID for an origin in an origin group.
@@ -20,7 +21,7 @@ class OriginGroupMember {
 
   factory OriginGroupMember.fromMap(Map<String, dynamic> map) {
     return OriginGroupMember(
-      originId: map['originId'] == null ? null : map['originId'] as String,
+      originId: map['originId'] == null ? null : (map['originId'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration {
   /// The total number of disks required for the concerned volume. Possible values are at least `1`. Changing this forces a new resource to be created.
-  final int numberOfDisks;
+  final pulumi.Input<int> numberOfDisks;
   /// The size of the Disk in GB. Changing this forces a new resource to be created.
-  final int sizeInGb;
+  final pulumi.Input<int> sizeInGb;
   /// The name of the Disk SKU. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`. Changing this forces a new resource to be created.
-  final String skuName;
+  final pulumi.Input<String> skuName;
   /// Specifies the volumn name of the database disk. Possible values are `backup`, `hana/data`, `hana/log`, `hana/shared`, `os` and `usr/sap`. Changing this forces a new resource to be created.
-  final String volumeName;
+  final pulumi.Input<String> volumeName;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration].
   /// [numberOfDisks] The total number of disks required for the concerned volume. Possible values are at least `1`. Changing this forces a new resource to be created.
@@ -34,10 +35,10 @@ class ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationD
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration(
-      numberOfDisks: map['numberOfDisks'] as int,
-      sizeInGb: map['sizeInGb'] as int,
-      skuName: map['skuName'] as String,
-      volumeName: map['volumeName'] as String,
+      numberOfDisks: (map['numberOfDisks'] as int).input(),
+      sizeInGb: (map['sizeInGb'] as int).input(),
+      skuName: (map['skuName'] as String).input(),
+      volumeName: (map['volumeName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_hsm_sku_name.dart';
 
 /// SKU details
 class ManagedHsmSku {
   /// SKU Family of the managed HSM Pool
-  final String family;
+  final pulumi.Input<String> family;
   /// SKU of the managed HSM Pool
-  final ManagedHsmSkuName name;
+  final pulumi.Input<ManagedHsmSkuName> name;
 
   /// Creates a new [ManagedHsmSku].
   /// [family] SKU Family of the managed HSM Pool
@@ -20,14 +21,14 @@ class ManagedHsmSku {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'family': family,
-      'name': name.value,
+      'name': pulumi.Input.mapInputValue<ManagedHsmSkuName, String>(name, (value) => value.value),
     };
   }
 
   factory ManagedHsmSku.fromMap(Map<String, dynamic> map) {
     return ManagedHsmSku(
-      family: map['family'] as String,
-      name: ManagedHsmSkuName.fromValue(map['name'] as String),
+      family: (map['family'] as String).input(),
+      name: (ManagedHsmSkuName.fromValue(map['name'] as String)).input(),
     );
   }
 }

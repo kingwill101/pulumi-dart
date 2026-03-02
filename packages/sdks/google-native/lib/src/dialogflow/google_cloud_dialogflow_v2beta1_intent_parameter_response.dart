@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents intent parameters.
 class GoogleCloudDialogflowV2beta1IntentParameterResponse {
   /// Optional. The default value to use when the `value` yields an empty result. Default values can be extracted from contexts by using the following syntax: `#context_name.parameter_name`.
-  final String defaultValue;
+  final pulumi.Input<String> defaultValue;
   /// The name of the parameter.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter. If the parameter is required, this must be provided.
-  final String entityTypeDisplayName;
+  final pulumi.Input<String> entityTypeDisplayName;
   /// Optional. Indicates whether the parameter represents a list of values.
-  final bool isList;
+  final pulumi.Input<bool> isList;
   /// Optional. Indicates whether the parameter is required. That is, whether the intent cannot be completed without collecting the parameter value.
-  final bool mandatory;
+  final pulumi.Input<bool> mandatory;
   /// The unique identifier of this parameter.
-  final String name;
+  final pulumi.Input<String> name;
   /// Optional. The collection of prompts that the agent can present to the user in order to collect a value for the parameter.
-  final List<String> prompts;
+  final pulumi.Input<List<String>> prompts;
   /// Optional. The definition of the parameter value. It can be: - a constant string, - a parameter value defined as `$parameter_name`, - an original parameter value defined as `$parameter_name.original`, - a parameter value from some context defined as `#context_name.parameter_name`.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentParameterResponse].
   /// [defaultValue] Optional. The default value to use when the `value` yields an empty result. Default values can be extracted from contexts by using the following syntax: `#context_name.parameter_name`.
@@ -55,14 +56,14 @@ class GoogleCloudDialogflowV2beta1IntentParameterResponse {
 
   factory GoogleCloudDialogflowV2beta1IntentParameterResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentParameterResponse(
-      defaultValue: map['defaultValue'] as String,
-      displayName: map['displayName'] as String,
-      entityTypeDisplayName: map['entityTypeDisplayName'] as String,
-      isList: map['isList'] as bool,
-      mandatory: map['mandatory'] as bool,
-      name: map['name'] as String,
-      prompts: (map['prompts'] as List).cast<String>(),
-      value: map['value'] as String,
+      defaultValue: (map['defaultValue'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      entityTypeDisplayName: (map['entityTypeDisplayName'] as String).input(),
+      isList: (map['isList'] as bool).input(),
+      mandatory: (map['mandatory'] as bool).input(),
+      name: (map['name'] as String).input(),
+      prompts: ((map['prompts'] as List).cast<String>()).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

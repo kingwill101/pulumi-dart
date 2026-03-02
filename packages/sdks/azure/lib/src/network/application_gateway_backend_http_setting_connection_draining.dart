@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayBackendHttpSettingConnectionDraining {
   /// The number of seconds connection draining is active. Acceptable values are from `1` second to `3600` seconds.
-  final int drainTimeoutSec;
+  final pulumi.Input<int> drainTimeoutSec;
   /// If connection draining is enabled or not.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ApplicationGatewayBackendHttpSettingConnectionDraining].
   /// [drainTimeoutSec] The number of seconds connection draining is active. Acceptable values are from `1` second to `3600` seconds.
@@ -24,8 +25,8 @@ class ApplicationGatewayBackendHttpSettingConnectionDraining {
 
   factory ApplicationGatewayBackendHttpSettingConnectionDraining.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendHttpSettingConnectionDraining(
-      drainTimeoutSec: map['drainTimeoutSec'] as int,
-      enabled: map['enabled'] as bool,
+      drainTimeoutSec: (map['drainTimeoutSec'] as int).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Username / Password Credentials to connect to guest.
 class GuestCredentialResponse {
   /// Gets or sets username to connect with the guest.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GuestCredentialResponse].
   /// [username] Gets or sets username to connect with the guest.
@@ -20,7 +21,7 @@ class GuestCredentialResponse {
 
   factory GuestCredentialResponse.fromMap(Map<String, dynamic> map) {
     return GuestCredentialResponse(
-      username: map['username'] as String,
+      username: (map['username'] as String).input(),
     );
   }
 }

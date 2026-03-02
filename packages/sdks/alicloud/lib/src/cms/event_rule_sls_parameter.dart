@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventRuleSlsParameter {
   /// (Available since v1.211.1) The ARN of the API operation.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// The name of the Simple Log Service Logstore.
-  final String? logStore;
+  final pulumi.Input<String>? logStore;
   /// The name of the Simple Log Service project.
-  final String? project;
+  final pulumi.Input<String>? project;
   /// The region where Simple Log Service is deployed.
-  final String? region;
+  final pulumi.Input<String>? region;
   /// The ID of the recipient that receives alert notifications.
-  final String? slsParametersId;
+  final pulumi.Input<String>? slsParametersId;
 
   /// Creates a new [EventRuleSlsParameter].
   /// [arn] (Available since v1.211.1) The ARN of the API operation.
@@ -39,11 +40,11 @@ class EventRuleSlsParameter {
 
   factory EventRuleSlsParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleSlsParameter(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      logStore: map['logStore'] == null ? null : map['logStore'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      slsParametersId: map['slsParametersId'] == null ? null : map['slsParametersId'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      logStore: map['logStore'] == null ? null : (map['logStore'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      slsParametersId: map['slsParametersId'] == null ? null : (map['slsParametersId'] as String).input(),
     );
   }
 }

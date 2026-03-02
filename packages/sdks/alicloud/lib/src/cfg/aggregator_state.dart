@@ -33,21 +33,14 @@ class AggregatorState {
   /// [folderId] The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregator_type` is set to `FOLDER`, `folder_id` is required.
   /// [status] The status of the account group.
   AggregatorState({
-    pulumi.Output<List<AggregatorAggregatorAccount>>? aggregatorAccounts,
-    pulumi.Output<String>? aggregatorName,
-    pulumi.Output<String>? aggregatorType,
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? folderId,
-    pulumi.Output<String>? status,
-  }) :
-      aggregatorAccounts = pulumi.Input.asOptionalInput<List<AggregatorAggregatorAccount>>(aggregatorAccounts),
-      aggregatorName = pulumi.Input.asOptionalInput<String>(aggregatorName),
-      aggregatorType = pulumi.Input.asOptionalInput<String>(aggregatorType),
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folderId = pulumi.Input.asOptionalInput<String>(folderId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.aggregatorAccounts,
+    this.aggregatorName,
+    this.aggregatorType,
+    this.createTime,
+    this.description,
+    this.folderId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AggregatorState {
 
   factory AggregatorState.fromMap(Map<String, dynamic> map) {
     return AggregatorState(
-      aggregatorAccounts: map['aggregatorAccounts'] == null ? null : pulumi.Output.create<List<AggregatorAggregatorAccount>>(pulumi.Input.decodeList<AggregatorAggregatorAccount>(map['aggregatorAccounts'], (value) => AggregatorAggregatorAccount.fromMap((value as Map).cast<String, dynamic>()))),
-      aggregatorName: map['aggregatorName'] == null ? null : pulumi.Output.create<String>(map['aggregatorName'] as String),
-      aggregatorType: map['aggregatorType'] == null ? null : pulumi.Output.create<String>(map['aggregatorType'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folderId: map['folderId'] == null ? null : pulumi.Output.create<String>(map['folderId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      aggregatorAccounts: map['aggregatorAccounts'] == null ? null : (pulumi.Input.decodeList<AggregatorAggregatorAccount>(map['aggregatorAccounts'], (value) => AggregatorAggregatorAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aggregatorName: map['aggregatorName'] == null ? null : (map['aggregatorName'] as String).input(),
+      aggregatorType: map['aggregatorType'] == null ? null : (map['aggregatorType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

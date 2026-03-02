@@ -7,43 +7,43 @@ import 'document_ai_warehouse_document_schema_property_definition_schema_source.
 
 class DocumentAiWarehouseDocumentSchemaPropertyDefinition {
   /// Date time property. Not supported by CMEK compliant deployment.
-  final Map<String, dynamic>? dateTimeTypeOptions;
+  final pulumi.Input<Map<String, dynamic>>? dateTimeTypeOptions;
   /// The display-name for the property, used for front-end.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Enum/categorical property.
   /// Structure is documented below.
-  final DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions? enumTypeOptions;
+  final pulumi.Input<DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions>? enumTypeOptions;
   /// Float property.
-  final Map<String, dynamic>? floatTypeOptions;
+  final pulumi.Input<Map<String, dynamic>>? floatTypeOptions;
   /// Integer property.
-  final Map<String, dynamic>? integerTypeOptions;
+  final pulumi.Input<Map<String, dynamic>>? integerTypeOptions;
   /// Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
-  final bool? isFilterable;
+  final pulumi.Input<bool>? isFilterable;
   /// Whether the property is user supplied metadata.
-  final bool? isMetadata;
+  final pulumi.Input<bool>? isMetadata;
   /// Whether the property can have multiple values.
-  final bool? isRepeatable;
+  final pulumi.Input<bool>? isRepeatable;
   /// Whether the property is mandatory.
-  final bool? isRequired;
+  final pulumi.Input<bool>? isRequired;
   /// Indicates that the property should be included in a global search.
-  final bool? isSearchable;
+  final pulumi.Input<bool>? isSearchable;
   /// Map property.
-  final Map<String, dynamic>? mapTypeOptions;
+  final pulumi.Input<Map<String, dynamic>>? mapTypeOptions;
   /// The name of the metadata property.
-  final String name;
+  final pulumi.Input<String> name;
   /// Nested structured data property.
   /// Structure is documented below.
-  final DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions? propertyTypeOptions;
+  final pulumi.Input<DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions>? propertyTypeOptions;
   /// Stores the retrieval importance.
   /// Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
-  final String? retrievalImportance;
+  final pulumi.Input<String>? retrievalImportance;
   /// The schema source information.
   /// Structure is documented below.
-  final List<DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource>? schemaSources;
+  final pulumi.Input<List<DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource>>? schemaSources;
   /// Text property.
-  final Map<String, dynamic>? textTypeOptions;
+  final pulumi.Input<Map<String, dynamic>>? textTypeOptions;
   /// Timestamp property. Not supported by CMEK compliant deployment.
-  final Map<String, dynamic>? timestampTypeOptions;
+  final pulumi.Input<Map<String, dynamic>>? timestampTypeOptions;
 
   /// Creates a new [DocumentAiWarehouseDocumentSchemaPropertyDefinition].
   /// [dateTimeTypeOptions] Date time property. Not supported by CMEK compliant deployment.
@@ -87,7 +87,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinition {
     return <String, dynamic>{
       'dateTimeTypeOptions': ?dateTimeTypeOptions,
       'displayName': ?displayName,
-      'enumTypeOptions': ?enumTypeOptions == null ? null : enumTypeOptions!.toMap(),
+      'enumTypeOptions': ?pulumi.Input.mapOptionalInputValue<DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions, Map<String, dynamic>>(enumTypeOptions, (value) => value.toMap()),
       'floatTypeOptions': ?floatTypeOptions,
       'integerTypeOptions': ?integerTypeOptions,
       'isFilterable': ?isFilterable,
@@ -97,9 +97,9 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinition {
       'isSearchable': ?isSearchable,
       'mapTypeOptions': ?mapTypeOptions,
       'name': name,
-      'propertyTypeOptions': ?propertyTypeOptions == null ? null : propertyTypeOptions!.toMap(),
+      'propertyTypeOptions': ?pulumi.Input.mapOptionalInputValue<DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions, Map<String, dynamic>>(propertyTypeOptions, (value) => value.toMap()),
       'retrievalImportance': ?retrievalImportance,
-      'schemaSources': ?schemaSources == null ? null : pulumi.Input.encodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource, Map<String, dynamic>>(schemaSources!, (value) => value.toMap()),
+      'schemaSources': ?pulumi.Input.mapOptionalInputValue<List<DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource>, List<Map<String, dynamic>>>(schemaSources, (value) => pulumi.Input.encodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'textTypeOptions': ?textTypeOptions,
       'timestampTypeOptions': ?timestampTypeOptions,
     };
@@ -107,23 +107,23 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinition {
 
   factory DocumentAiWarehouseDocumentSchemaPropertyDefinition.fromMap(Map<String, dynamic> map) {
     return DocumentAiWarehouseDocumentSchemaPropertyDefinition(
-      dateTimeTypeOptions: map['dateTimeTypeOptions'] == null ? null : (map['dateTimeTypeOptions'] as Map).cast<String, dynamic>(),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      enumTypeOptions: map['enumTypeOptions'] == null ? null : DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions.fromMap((map['enumTypeOptions'] as Map).cast<String, dynamic>()),
-      floatTypeOptions: map['floatTypeOptions'] == null ? null : (map['floatTypeOptions'] as Map).cast<String, dynamic>(),
-      integerTypeOptions: map['integerTypeOptions'] == null ? null : (map['integerTypeOptions'] as Map).cast<String, dynamic>(),
-      isFilterable: map['isFilterable'] == null ? null : map['isFilterable'] as bool,
-      isMetadata: map['isMetadata'] == null ? null : map['isMetadata'] as bool,
-      isRepeatable: map['isRepeatable'] == null ? null : map['isRepeatable'] as bool,
-      isRequired: map['isRequired'] == null ? null : map['isRequired'] as bool,
-      isSearchable: map['isSearchable'] == null ? null : map['isSearchable'] as bool,
-      mapTypeOptions: map['mapTypeOptions'] == null ? null : (map['mapTypeOptions'] as Map).cast<String, dynamic>(),
-      name: map['name'] as String,
-      propertyTypeOptions: map['propertyTypeOptions'] == null ? null : DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions.fromMap((map['propertyTypeOptions'] as Map).cast<String, dynamic>()),
-      retrievalImportance: map['retrievalImportance'] == null ? null : map['retrievalImportance'] as String,
-      schemaSources: map['schemaSources'] == null ? null : pulumi.Input.decodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource>(map['schemaSources'], (value) => DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource.fromMap((value as Map).cast<String, dynamic>())),
-      textTypeOptions: map['textTypeOptions'] == null ? null : (map['textTypeOptions'] as Map).cast<String, dynamic>(),
-      timestampTypeOptions: map['timestampTypeOptions'] == null ? null : (map['timestampTypeOptions'] as Map).cast<String, dynamic>(),
+      dateTimeTypeOptions: map['dateTimeTypeOptions'] == null ? null : ((map['dateTimeTypeOptions'] as Map).cast<String, dynamic>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enumTypeOptions: map['enumTypeOptions'] == null ? null : (DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions.fromMap((map['enumTypeOptions'] as Map).cast<String, dynamic>())).input(),
+      floatTypeOptions: map['floatTypeOptions'] == null ? null : ((map['floatTypeOptions'] as Map).cast<String, dynamic>()).input(),
+      integerTypeOptions: map['integerTypeOptions'] == null ? null : ((map['integerTypeOptions'] as Map).cast<String, dynamic>()).input(),
+      isFilterable: map['isFilterable'] == null ? null : (map['isFilterable'] as bool).input(),
+      isMetadata: map['isMetadata'] == null ? null : (map['isMetadata'] as bool).input(),
+      isRepeatable: map['isRepeatable'] == null ? null : (map['isRepeatable'] as bool).input(),
+      isRequired: map['isRequired'] == null ? null : (map['isRequired'] as bool).input(),
+      isSearchable: map['isSearchable'] == null ? null : (map['isSearchable'] as bool).input(),
+      mapTypeOptions: map['mapTypeOptions'] == null ? null : ((map['mapTypeOptions'] as Map).cast<String, dynamic>()).input(),
+      name: (map['name'] as String).input(),
+      propertyTypeOptions: map['propertyTypeOptions'] == null ? null : (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions.fromMap((map['propertyTypeOptions'] as Map).cast<String, dynamic>())).input(),
+      retrievalImportance: map['retrievalImportance'] == null ? null : (map['retrievalImportance'] as String).input(),
+      schemaSources: map['schemaSources'] == null ? null : (pulumi.Input.decodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource>(map['schemaSources'], (value) => DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTypeOptions: map['textTypeOptions'] == null ? null : ((map['textTypeOptions'] as Map).cast<String, dynamic>()).input(),
+      timestampTypeOptions: map['timestampTypeOptions'] == null ? null : ((map['timestampTypeOptions'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

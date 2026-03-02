@@ -28,21 +28,14 @@ class VpcEndpointZoneState {
   /// [vswitchId] The ID of the vSwitch in the zone.
   /// [zoneId] The zone ID.
   VpcEndpointZoneState({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? endpointId,
-    pulumi.Output<String>? eniIp,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vswitchId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      endpointId = pulumi.Input.asOptionalInput<String>(endpointId),
-      eniIp = pulumi.Input.asOptionalInput<String>(eniIp),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.dryRun,
+    this.endpointId,
+    this.eniIp,
+    this.regionId,
+    this.status,
+    this.vswitchId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class VpcEndpointZoneState {
 
   factory VpcEndpointZoneState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointZoneState(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      endpointId: map['endpointId'] == null ? null : pulumi.Output.create<String>(map['endpointId'] as String),
-      eniIp: map['eniIp'] == null ? null : pulumi.Output.create<String>(map['eniIp'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
+      eniIp: map['eniIp'] == null ? null : (map['eniIp'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

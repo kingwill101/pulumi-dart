@@ -16,11 +16,9 @@ class GetBareMetalMachineArgs {
   /// [bareMetalMachineName] The name of the bare metal machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetBareMetalMachineArgs({
-    required pulumi.Output<String> bareMetalMachineName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      bareMetalMachineName = pulumi.Input.asInput<String>(bareMetalMachineName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.bareMetalMachineName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBareMetalMachineArgs {
 
   factory GetBareMetalMachineArgs.fromMap(Map<String, dynamic> map) {
     return GetBareMetalMachineArgs(
-      bareMetalMachineName: pulumi.Output.create<String>(map['bareMetalMachineName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      bareMetalMachineName: (map['bareMetalMachineName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

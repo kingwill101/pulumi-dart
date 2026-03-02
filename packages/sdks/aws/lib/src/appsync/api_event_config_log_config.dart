@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiEventConfigLogConfig {
   /// ARN of the IAM role for CloudWatch logs.
-  final String cloudwatchLogsRoleArn;
+  final pulumi.Input<String> cloudwatchLogsRoleArn;
   /// Log level. Valid values: `NONE`, `ERROR`, `ALL`, `INFO`, `DEBUG`.
-  final String logLevel;
+  final pulumi.Input<String> logLevel;
 
   /// Creates a new [ApiEventConfigLogConfig].
   /// [cloudwatchLogsRoleArn] ARN of the IAM role for CloudWatch logs.
@@ -24,8 +25,8 @@ class ApiEventConfigLogConfig {
 
   factory ApiEventConfigLogConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigLogConfig(
-      cloudwatchLogsRoleArn: map['cloudwatchLogsRoleArn'] as String,
-      logLevel: map['logLevel'] as String,
+      cloudwatchLogsRoleArn: (map['cloudwatchLogsRoleArn'] as String).input(),
+      logLevel: (map['logLevel'] as String).input(),
     );
   }
 }

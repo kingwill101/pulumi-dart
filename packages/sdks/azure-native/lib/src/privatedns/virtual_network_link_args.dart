@@ -35,23 +35,15 @@ class VirtualNetworkLinkArgs {
   /// [virtualNetwork] The reference of the virtual network.
   /// [virtualNetworkLinkName] The name of the virtual network link.
   VirtualNetworkLinkArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> privateZoneName,
-    pulumi.Output<bool>? registrationEnabled,
-    pulumi.Output<String>? resolutionPolicy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<SubResource>? virtualNetwork,
-    pulumi.Output<String>? virtualNetworkLinkName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      privateZoneName = pulumi.Input.asInput<String>(privateZoneName),
-      registrationEnabled = pulumi.Input.asOptionalInput<bool>(registrationEnabled),
-      resolutionPolicy = pulumi.Input.asOptionalInput<String>(resolutionPolicy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualNetwork = pulumi.Input.asOptionalInput<SubResource>(virtualNetwork),
-      virtualNetworkLinkName = pulumi.Input.asOptionalInput<String>(virtualNetworkLinkName);
+    this.location,
+    required this.privateZoneName,
+    this.registrationEnabled,
+    this.resolutionPolicy,
+    required this.resourceGroupName,
+    this.tags,
+    this.virtualNetwork,
+    this.virtualNetworkLinkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class VirtualNetworkLinkArgs {
 
   factory VirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkLinkArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      privateZoneName: pulumi.Output.create<String>(map['privateZoneName'] as String),
-      registrationEnabled: map['registrationEnabled'] == null ? null : pulumi.Output.create<bool>(map['registrationEnabled'] as bool),
-      resolutionPolicy: map['resolutionPolicy'] == null ? null : pulumi.Output.create<String>(map['resolutionPolicy'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualNetwork: map['virtualNetwork'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())),
-      virtualNetworkLinkName: map['virtualNetworkLinkName'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkLinkName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      privateZoneName: (map['privateZoneName'] as String).input(),
+      registrationEnabled: map['registrationEnabled'] == null ? null : (map['registrationEnabled'] as bool).input(),
+      resolutionPolicy: map['resolutionPolicy'] == null ? null : (map['resolutionPolicy'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualNetwork: map['virtualNetwork'] == null ? null : (SubResource.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())).input(),
+      virtualNetworkLinkName: map['virtualNetworkLinkName'] == null ? null : (map['virtualNetworkLinkName'] as String).input(),
     );
   }
 }

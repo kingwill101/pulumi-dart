@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseClusterMaintenanceWindow {
   /// The day of the week on which to apply maintenance updates.
-  final String day;
+  final pulumi.Input<String> day;
   /// The hour in UTC at which maintenance updates will be applied in 24 hour format.
-  final String hour;
+  final pulumi.Input<String> hour;
 
   /// Creates a new [GetDatabaseClusterMaintenanceWindow].
   /// [day] The day of the week on which to apply maintenance updates.
@@ -24,8 +25,8 @@ class GetDatabaseClusterMaintenanceWindow {
 
   factory GetDatabaseClusterMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetDatabaseClusterMaintenanceWindow(
-      day: map['day'] as String,
-      hour: map['hour'] as String,
+      day: (map['day'] as String).input(),
+      hour: (map['hour'] as String).input(),
     );
   }
 }

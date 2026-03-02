@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeGroupNode {
   /// Host name
-  final String? hostname;
+  final pulumi.Input<String>? hostname;
   /// Login Password
-  final String? loginPassword;
+  final pulumi.Input<String>? loginPassword;
   /// Node ID
-  final String? nodeId;
+  final pulumi.Input<String>? nodeId;
   /// VPC ID
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
   /// Switch ID
-  final String? vswitchId;
+  final pulumi.Input<String>? vswitchId;
 
   /// Creates a new [NodeGroupNode].
   /// [hostname] Host name
@@ -39,11 +40,11 @@ class NodeGroupNode {
 
   factory NodeGroupNode.fromMap(Map<String, dynamic> map) {
     return NodeGroupNode(
-      hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      loginPassword: map['loginPassword'] == null ? null : map['loginPassword'] as String,
-      nodeId: map['nodeId'] == null ? null : map['nodeId'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      loginPassword: map['loginPassword'] == null ? null : (map['loginPassword'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

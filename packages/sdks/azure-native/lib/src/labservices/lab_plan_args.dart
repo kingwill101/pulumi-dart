@@ -51,31 +51,19 @@ class LabPlanArgs {
   /// [supportInfo] Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
   /// [tags] Resource tags.
   LabPlanArgs({
-    pulumi.Output<List<String>>? allowedRegions,
-    pulumi.Output<AutoShutdownProfile>? defaultAutoShutdownProfile,
-    pulumi.Output<ConnectionProfile>? defaultConnectionProfile,
-    pulumi.Output<LabPlanNetworkProfile>? defaultNetworkProfile,
-    pulumi.Output<Identity>? identity,
-    pulumi.Output<String>? labPlanName,
-    pulumi.Output<String>? linkedLmsInstance,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sharedGalleryId,
-    pulumi.Output<SupportInfo>? supportInfo,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      allowedRegions = pulumi.Input.asOptionalInput<List<String>>(allowedRegions),
-      defaultAutoShutdownProfile = pulumi.Input.asOptionalInput<AutoShutdownProfile>(defaultAutoShutdownProfile),
-      defaultConnectionProfile = pulumi.Input.asOptionalInput<ConnectionProfile>(defaultConnectionProfile),
-      defaultNetworkProfile = pulumi.Input.asOptionalInput<LabPlanNetworkProfile>(defaultNetworkProfile),
-      identity = pulumi.Input.asOptionalInput<Identity>(identity),
-      labPlanName = pulumi.Input.asOptionalInput<String>(labPlanName),
-      linkedLmsInstance = pulumi.Input.asOptionalInput<String>(linkedLmsInstance),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sharedGalleryId = pulumi.Input.asOptionalInput<String>(sharedGalleryId),
-      supportInfo = pulumi.Input.asOptionalInput<SupportInfo>(supportInfo),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.allowedRegions,
+    this.defaultAutoShutdownProfile,
+    this.defaultConnectionProfile,
+    this.defaultNetworkProfile,
+    this.identity,
+    this.labPlanName,
+    this.linkedLmsInstance,
+    this.location,
+    required this.resourceGroupName,
+    this.sharedGalleryId,
+    this.supportInfo,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,18 +84,18 @@ class LabPlanArgs {
 
   factory LabPlanArgs.fromMap(Map<String, dynamic> map) {
     return LabPlanArgs(
-      allowedRegions: map['allowedRegions'] == null ? null : pulumi.Output.create<List<String>>((map['allowedRegions'] as List).cast<String>()),
-      defaultAutoShutdownProfile: map['defaultAutoShutdownProfile'] == null ? null : pulumi.Output.create<AutoShutdownProfile>(AutoShutdownProfile.fromMap((map['defaultAutoShutdownProfile'] as Map).cast<String, dynamic>())),
-      defaultConnectionProfile: map['defaultConnectionProfile'] == null ? null : pulumi.Output.create<ConnectionProfile>(ConnectionProfile.fromMap((map['defaultConnectionProfile'] as Map).cast<String, dynamic>())),
-      defaultNetworkProfile: map['defaultNetworkProfile'] == null ? null : pulumi.Output.create<LabPlanNetworkProfile>(LabPlanNetworkProfile.fromMap((map['defaultNetworkProfile'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<Identity>(Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      labPlanName: map['labPlanName'] == null ? null : pulumi.Output.create<String>(map['labPlanName'] as String),
-      linkedLmsInstance: map['linkedLmsInstance'] == null ? null : pulumi.Output.create<String>(map['linkedLmsInstance'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sharedGalleryId: map['sharedGalleryId'] == null ? null : pulumi.Output.create<String>(map['sharedGalleryId'] as String),
-      supportInfo: map['supportInfo'] == null ? null : pulumi.Output.create<SupportInfo>(SupportInfo.fromMap((map['supportInfo'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      allowedRegions: map['allowedRegions'] == null ? null : ((map['allowedRegions'] as List).cast<String>()).input(),
+      defaultAutoShutdownProfile: map['defaultAutoShutdownProfile'] == null ? null : (AutoShutdownProfile.fromMap((map['defaultAutoShutdownProfile'] as Map).cast<String, dynamic>())).input(),
+      defaultConnectionProfile: map['defaultConnectionProfile'] == null ? null : (ConnectionProfile.fromMap((map['defaultConnectionProfile'] as Map).cast<String, dynamic>())).input(),
+      defaultNetworkProfile: map['defaultNetworkProfile'] == null ? null : (LabPlanNetworkProfile.fromMap((map['defaultNetworkProfile'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      labPlanName: map['labPlanName'] == null ? null : (map['labPlanName'] as String).input(),
+      linkedLmsInstance: map['linkedLmsInstance'] == null ? null : (map['linkedLmsInstance'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sharedGalleryId: map['sharedGalleryId'] == null ? null : (map['sharedGalleryId'] as String).input(),
+      supportInfo: map['supportInfo'] == null ? null : (SupportInfo.fromMap((map['supportInfo'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class ServicePerimeterAccesscontextmanagerV1betaArgs {
   /// [perimeterType] Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
   /// [title] Human readable title. Must be unique within the Policy.
   ServicePerimeterAccesscontextmanagerV1betaArgs({
-    required pulumi.Output<String> accessPolicyId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta>? perimeterType,
-    pulumi.Output<String>? title,
-  }) :
-      accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      perimeterType = pulumi.Input.asOptionalInput<ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta>(perimeterType),
-      title = pulumi.Input.asOptionalInput<String>(title);
+    required this.accessPolicyId,
+    this.description,
+    this.name,
+    this.perimeterType,
+    this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ServicePerimeterAccesscontextmanagerV1betaArgs {
 
   factory ServicePerimeterAccesscontextmanagerV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterAccesscontextmanagerV1betaArgs(
-      accessPolicyId: pulumi.Output.create<String>(map['accessPolicyId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      perimeterType: map['perimeterType'] == null ? null : pulumi.Output.create<ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta>(ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta.fromValue(map['perimeterType'] as String)),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
+      accessPolicyId: (map['accessPolicyId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      perimeterType: map['perimeterType'] == null ? null : (ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta.fromValue(map['perimeterType'] as String)).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

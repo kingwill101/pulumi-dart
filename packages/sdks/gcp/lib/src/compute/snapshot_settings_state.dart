@@ -17,11 +17,9 @@ class SnapshotSettingsState {
   /// [project] The ID of the project in which the resource belongs.
   /// [storageLocation] Policy of which storage location is going to be resolved, and additional data
   SnapshotSettingsState({
-    pulumi.Output<String>? project,
-    pulumi.Output<SnapshotSettingsStorageLocation>? storageLocation,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      storageLocation = pulumi.Input.asOptionalInput<SnapshotSettingsStorageLocation>(storageLocation);
+    this.project,
+    this.storageLocation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class SnapshotSettingsState {
 
   factory SnapshotSettingsState.fromMap(Map<String, dynamic> map) {
     return SnapshotSettingsState(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      storageLocation: map['storageLocation'] == null ? null : pulumi.Output.create<SnapshotSettingsStorageLocation>(SnapshotSettingsStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      storageLocation: map['storageLocation'] == null ? null : (SnapshotSettingsStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

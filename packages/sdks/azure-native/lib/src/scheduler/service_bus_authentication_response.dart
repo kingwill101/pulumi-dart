@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceBusAuthenticationResponse {
   /// Gets or sets the SAS key.
-  final String? sasKey;
+  final pulumi.Input<String>? sasKey;
   /// Gets or sets the SAS key name.
-  final String? sasKeyName;
+  final pulumi.Input<String>? sasKeyName;
   /// Gets or sets the authentication type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ServiceBusAuthenticationResponse].
   /// [sasKey] Gets or sets the SAS key.
@@ -29,9 +30,9 @@ class ServiceBusAuthenticationResponse {
 
   factory ServiceBusAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return ServiceBusAuthenticationResponse(
-      sasKey: map['sasKey'] == null ? null : map['sasKey'] as String,
-      sasKeyName: map['sasKeyName'] == null ? null : map['sasKeyName'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      sasKey: map['sasKey'] == null ? null : (map['sasKey'] as String).input(),
+      sasKeyName: map['sasKeyName'] == null ? null : (map['sasKeyName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

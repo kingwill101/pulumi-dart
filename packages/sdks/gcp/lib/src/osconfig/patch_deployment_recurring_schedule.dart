@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'patch_deployment_recurring_schedule_monthly.dart';
 import 'patch_deployment_recurring_schedule_time_of_day.dart';
 import 'patch_deployment_recurring_schedule_time_zone.dart';
@@ -8,31 +9,31 @@ import 'patch_deployment_recurring_schedule_weekly.dart';
 class PatchDeploymentRecurringSchedule {
   /// The end time at which a recurring patch deployment schedule is no longer active.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// (Output)
   /// The time the last patch job ran successfully.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final String? lastExecuteTime;
+  final pulumi.Input<String>? lastExecuteTime;
   /// Schedule with monthly executions.
   /// Structure is documented below.
-  final PatchDeploymentRecurringScheduleMonthly? monthly;
+  final pulumi.Input<PatchDeploymentRecurringScheduleMonthly>? monthly;
   /// (Output)
   /// The time the next patch job is scheduled to run.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final String? nextExecuteTime;
+  final pulumi.Input<String>? nextExecuteTime;
   /// The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// Time of the day to run a recurring deployment.
   /// Structure is documented below.
-  final PatchDeploymentRecurringScheduleTimeOfDay timeOfDay;
+  final pulumi.Input<PatchDeploymentRecurringScheduleTimeOfDay> timeOfDay;
   /// Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
   /// determined by the chosen time zone.
   /// Structure is documented below.
-  final PatchDeploymentRecurringScheduleTimeZone timeZone;
+  final pulumi.Input<PatchDeploymentRecurringScheduleTimeZone> timeZone;
   /// Schedule with weekly executions.
   /// Structure is documented below.
-  final PatchDeploymentRecurringScheduleWeekly? weekly;
+  final pulumi.Input<PatchDeploymentRecurringScheduleWeekly>? weekly;
 
   /// Creates a new [PatchDeploymentRecurringSchedule].
   /// [endTime] The end time at which a recurring patch deployment schedule is no longer active.
@@ -58,25 +59,25 @@ class PatchDeploymentRecurringSchedule {
     return <String, dynamic>{
       'endTime': ?endTime,
       'lastExecuteTime': ?lastExecuteTime,
-      'monthly': ?monthly == null ? null : monthly!.toMap(),
+      'monthly': ?pulumi.Input.mapOptionalInputValue<PatchDeploymentRecurringScheduleMonthly, Map<String, dynamic>>(monthly, (value) => value.toMap()),
       'nextExecuteTime': ?nextExecuteTime,
       'startTime': ?startTime,
-      'timeOfDay': timeOfDay.toMap(),
-      'timeZone': timeZone.toMap(),
-      'weekly': ?weekly == null ? null : weekly!.toMap(),
+      'timeOfDay': pulumi.Input.mapInputValue<PatchDeploymentRecurringScheduleTimeOfDay, Map<String, dynamic>>(timeOfDay, (value) => value.toMap()),
+      'timeZone': pulumi.Input.mapInputValue<PatchDeploymentRecurringScheduleTimeZone, Map<String, dynamic>>(timeZone, (value) => value.toMap()),
+      'weekly': ?pulumi.Input.mapOptionalInputValue<PatchDeploymentRecurringScheduleWeekly, Map<String, dynamic>>(weekly, (value) => value.toMap()),
     };
   }
 
   factory PatchDeploymentRecurringSchedule.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentRecurringSchedule(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      lastExecuteTime: map['lastExecuteTime'] == null ? null : map['lastExecuteTime'] as String,
-      monthly: map['monthly'] == null ? null : PatchDeploymentRecurringScheduleMonthly.fromMap((map['monthly'] as Map).cast<String, dynamic>()),
-      nextExecuteTime: map['nextExecuteTime'] == null ? null : map['nextExecuteTime'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      timeOfDay: PatchDeploymentRecurringScheduleTimeOfDay.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>()),
-      timeZone: PatchDeploymentRecurringScheduleTimeZone.fromMap((map['timeZone'] as Map).cast<String, dynamic>()),
-      weekly: map['weekly'] == null ? null : PatchDeploymentRecurringScheduleWeekly.fromMap((map['weekly'] as Map).cast<String, dynamic>()),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      lastExecuteTime: map['lastExecuteTime'] == null ? null : (map['lastExecuteTime'] as String).input(),
+      monthly: map['monthly'] == null ? null : (PatchDeploymentRecurringScheduleMonthly.fromMap((map['monthly'] as Map).cast<String, dynamic>())).input(),
+      nextExecuteTime: map['nextExecuteTime'] == null ? null : (map['nextExecuteTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timeOfDay: (PatchDeploymentRecurringScheduleTimeOfDay.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>())).input(),
+      timeZone: (PatchDeploymentRecurringScheduleTimeZone.fromMap((map['timeZone'] as Map).cast<String, dynamic>())).input(),
+      weekly: map['weekly'] == null ? null : (PatchDeploymentRecurringScheduleWeekly.fromMap((map['weekly'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -8,31 +8,31 @@ import 'tier.dart';
 /// Definition of awsElasticBeanstalkEnvironment
 class AwsElasticBeanstalkEnvironmentProperties {
   /// The name of the application that is associated with this environment.
-  final String? applicationName;
+  final pulumi.Input<String>? applicationName;
   /// If specified, the environment attempts to use this value as the prefix for the CNAME in your Elastic Beanstalk environment URL. If not specified, the CNAME is generated automatically by appending a random alphanumeric string to the environment name.
-  final String? cnamePrefix;
+  final pulumi.Input<String>? cnamePrefix;
   /// Your description for this environment.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Property endpointURL
-  final String? endpointURL;
+  final pulumi.Input<String>? endpointURL;
   /// A unique name for the environment.
-  final String? environmentName;
+  final pulumi.Input<String>? environmentName;
   /// The Amazon Resource Name (ARN) of an existing IAM role to be used as the environment's operations role.
-  final String? operationsRole;
+  final pulumi.Input<String>? operationsRole;
   /// Key-value pairs defining configuration options for this environment, such as the instance type.
-  final List<OptionSetting>? optionSettings;
+  final pulumi.Input<List<OptionSetting>>? optionSettings;
   /// The Amazon Resource Name (ARN) of the custom platform to use with the environment.
-  final String? platformArn;
+  final pulumi.Input<String>? platformArn;
   /// The name of an Elastic Beanstalk solution stack (platform version) to use with the environment.
-  final String? solutionStackName;
+  final pulumi.Input<String>? solutionStackName;
   /// Specifies the tags applied to resources in the environment.
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
   /// The name of the Elastic Beanstalk configuration template to use with the environment.
-  final String? templateName;
+  final pulumi.Input<String>? templateName;
   /// Specifies the tier to use in creating this environment. The environment tier that you choose determines whether Elastic Beanstalk provisions resources to support a web application that handles HTTP(S) requests or a web application that handles background-processing tasks.
-  final Tier? tier;
+  final pulumi.Input<Tier>? tier;
   /// The name of the application version to deploy.
-  final String? versionLabel;
+  final pulumi.Input<String>? versionLabel;
 
   /// Creates a new [AwsElasticBeanstalkEnvironmentProperties].
   /// [applicationName] The name of the application that is associated with this environment.
@@ -72,31 +72,31 @@ class AwsElasticBeanstalkEnvironmentProperties {
       'endpointURL': ?endpointURL,
       'environmentName': ?environmentName,
       'operationsRole': ?operationsRole,
-      'optionSettings': ?optionSettings == null ? null : pulumi.Input.encodeList<OptionSetting, Map<String, dynamic>>(optionSettings!, (value) => value.toMap()),
+      'optionSettings': ?pulumi.Input.mapOptionalInputValue<List<OptionSetting>, List<Map<String, dynamic>>>(optionSettings, (value) => pulumi.Input.encodeList<OptionSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'platformArn': ?platformArn,
       'solutionStackName': ?solutionStackName,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'templateName': ?templateName,
-      'tier': ?tier == null ? null : tier!.value,
+      'tier': ?pulumi.Input.mapOptionalInputValue<Tier, String>(tier, (value) => value.value),
       'versionLabel': ?versionLabel,
     };
   }
 
   factory AwsElasticBeanstalkEnvironmentProperties.fromMap(Map<String, dynamic> map) {
     return AwsElasticBeanstalkEnvironmentProperties(
-      applicationName: map['applicationName'] == null ? null : map['applicationName'] as String,
-      cnamePrefix: map['cnamePrefix'] == null ? null : map['cnamePrefix'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      endpointURL: map['endpointURL'] == null ? null : map['endpointURL'] as String,
-      environmentName: map['environmentName'] == null ? null : map['environmentName'] as String,
-      operationsRole: map['operationsRole'] == null ? null : map['operationsRole'] as String,
-      optionSettings: map['optionSettings'] == null ? null : pulumi.Input.decodeList<OptionSetting>(map['optionSettings'], (value) => OptionSetting.fromMap((value as Map).cast<String, dynamic>())),
-      platformArn: map['platformArn'] == null ? null : map['platformArn'] as String,
-      solutionStackName: map['solutionStackName'] == null ? null : map['solutionStackName'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
-      templateName: map['templateName'] == null ? null : map['templateName'] as String,
-      tier: map['tier'] == null ? null : Tier.fromValue(map['tier'] as String),
-      versionLabel: map['versionLabel'] == null ? null : map['versionLabel'] as String,
+      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
+      cnamePrefix: map['cnamePrefix'] == null ? null : (map['cnamePrefix'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointURL: map['endpointURL'] == null ? null : (map['endpointURL'] as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      operationsRole: map['operationsRole'] == null ? null : (map['operationsRole'] as String).input(),
+      optionSettings: map['optionSettings'] == null ? null : (pulumi.Input.decodeList<OptionSetting>(map['optionSettings'], (value) => OptionSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      platformArn: map['platformArn'] == null ? null : (map['platformArn'] as String).input(),
+      solutionStackName: map['solutionStackName'] == null ? null : (map['solutionStackName'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      tier: map['tier'] == null ? null : (Tier.fromValue(map['tier'] as String)).input(),
+      versionLabel: map['versionLabel'] == null ? null : (map['versionLabel'] as String).input(),
     );
   }
 }

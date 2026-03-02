@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_access_token_response.dart';
 import 'google_cloud_integrations_v1alpha_parameter_map_response.dart';
 
 /// The OAuth Type where the client sends request with the client id and requested scopes to auth endpoint. User sees a consent screen and auth code is received at specified redirect url afterwards. The auth code is then combined with the client id and secret and sent to the token endpoint in exchange for the access and refresh token. The refresh token can be used to fetch new access tokens.
 class GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse {
   /// The access token received from the token endpoint.
-  final GoogleCloudIntegrationsV1alphaAccessTokenResponse accessToken;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaAccessTokenResponse> accessToken;
   /// Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
-  final bool applyReauthPolicy;
+  final pulumi.Input<bool> applyReauthPolicy;
   /// The Auth Code that is used to initially retrieve the access token.
-  final String authCode;
+  final pulumi.Input<String> authCode;
   /// The auth url endpoint to send the auth code request to.
-  final String authEndpoint;
+  final pulumi.Input<String> authEndpoint;
   /// The auth parameters sent along with the auth code request.
-  final GoogleCloudIntegrationsV1alphaParameterMapResponse authParams;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMapResponse> authParams;
   /// The client's id.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The client's secret.
-  final String clientSecret;
+  final pulumi.Input<String> clientSecret;
   /// Represent how to pass parameters to fetch access token
-  final String requestType;
+  final pulumi.Input<String> requestType;
   /// A space-delimited list of requested scope permissions.
-  final String scope;
+  final pulumi.Input<String> scope;
   /// The token url endpoint to send the token request to.
-  final String tokenEndpoint;
+  final pulumi.Input<String> tokenEndpoint;
   /// The token parameters sent along with the token request.
-  final GoogleCloudIntegrationsV1alphaParameterMapResponse tokenParams;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMapResponse> tokenParams;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse].
   /// [accessToken] The access token received from the token endpoint.
@@ -56,33 +57,33 @@ class GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessToken': accessToken.toMap(),
+      'accessToken': pulumi.Input.mapInputValue<GoogleCloudIntegrationsV1alphaAccessTokenResponse, Map<String, dynamic>>(accessToken, (value) => value.toMap()),
       'applyReauthPolicy': applyReauthPolicy,
       'authCode': authCode,
       'authEndpoint': authEndpoint,
-      'authParams': authParams.toMap(),
+      'authParams': pulumi.Input.mapInputValue<GoogleCloudIntegrationsV1alphaParameterMapResponse, Map<String, dynamic>>(authParams, (value) => value.toMap()),
       'clientId': clientId,
       'clientSecret': clientSecret,
       'requestType': requestType,
       'scope': scope,
       'tokenEndpoint': tokenEndpoint,
-      'tokenParams': tokenParams.toMap(),
+      'tokenParams': pulumi.Input.mapInputValue<GoogleCloudIntegrationsV1alphaParameterMapResponse, Map<String, dynamic>>(tokenParams, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse(
-      accessToken: GoogleCloudIntegrationsV1alphaAccessTokenResponse.fromMap((map['accessToken'] as Map).cast<String, dynamic>()),
-      applyReauthPolicy: map['applyReauthPolicy'] as bool,
-      authCode: map['authCode'] as String,
-      authEndpoint: map['authEndpoint'] as String,
-      authParams: GoogleCloudIntegrationsV1alphaParameterMapResponse.fromMap((map['authParams'] as Map).cast<String, dynamic>()),
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] as String,
-      requestType: map['requestType'] as String,
-      scope: map['scope'] as String,
-      tokenEndpoint: map['tokenEndpoint'] as String,
-      tokenParams: GoogleCloudIntegrationsV1alphaParameterMapResponse.fromMap((map['tokenParams'] as Map).cast<String, dynamic>()),
+      accessToken: (GoogleCloudIntegrationsV1alphaAccessTokenResponse.fromMap((map['accessToken'] as Map).cast<String, dynamic>())).input(),
+      applyReauthPolicy: (map['applyReauthPolicy'] as bool).input(),
+      authCode: (map['authCode'] as String).input(),
+      authEndpoint: (map['authEndpoint'] as String).input(),
+      authParams: (GoogleCloudIntegrationsV1alphaParameterMapResponse.fromMap((map['authParams'] as Map).cast<String, dynamic>())).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      requestType: (map['requestType'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      tokenEndpoint: (map['tokenEndpoint'] as String).input(),
+      tokenParams: (GoogleCloudIntegrationsV1alphaParameterMapResponse.fromMap((map['tokenParams'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

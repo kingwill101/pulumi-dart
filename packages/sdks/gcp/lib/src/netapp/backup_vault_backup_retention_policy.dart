@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackupVaultBackupRetentionPolicy {
   /// Minimum retention duration in days for backups in the backup vault.
-  final int backupMinimumEnforcedRetentionDays;
+  final pulumi.Input<int> backupMinimumEnforcedRetentionDays;
   /// Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
-  final bool? dailyBackupImmutable;
+  final pulumi.Input<bool>? dailyBackupImmutable;
   /// Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
-  final bool? manualBackupImmutable;
+  final pulumi.Input<bool>? manualBackupImmutable;
   /// Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
-  final bool? monthlyBackupImmutable;
+  final pulumi.Input<bool>? monthlyBackupImmutable;
   /// Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
-  final bool? weeklyBackupImmutable;
+  final pulumi.Input<bool>? weeklyBackupImmutable;
 
   /// Creates a new [BackupVaultBackupRetentionPolicy].
   /// [backupMinimumEnforcedRetentionDays] Minimum retention duration in days for backups in the backup vault.
@@ -39,11 +40,11 @@ class BackupVaultBackupRetentionPolicy {
 
   factory BackupVaultBackupRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return BackupVaultBackupRetentionPolicy(
-      backupMinimumEnforcedRetentionDays: map['backupMinimumEnforcedRetentionDays'] as int,
-      dailyBackupImmutable: map['dailyBackupImmutable'] == null ? null : map['dailyBackupImmutable'] as bool,
-      manualBackupImmutable: map['manualBackupImmutable'] == null ? null : map['manualBackupImmutable'] as bool,
-      monthlyBackupImmutable: map['monthlyBackupImmutable'] == null ? null : map['monthlyBackupImmutable'] as bool,
-      weeklyBackupImmutable: map['weeklyBackupImmutable'] == null ? null : map['weeklyBackupImmutable'] as bool,
+      backupMinimumEnforcedRetentionDays: (map['backupMinimumEnforcedRetentionDays'] as int).input(),
+      dailyBackupImmutable: map['dailyBackupImmutable'] == null ? null : (map['dailyBackupImmutable'] as bool).input(),
+      manualBackupImmutable: map['manualBackupImmutable'] == null ? null : (map['manualBackupImmutable'] as bool).input(),
+      monthlyBackupImmutable: map['monthlyBackupImmutable'] == null ? null : (map['monthlyBackupImmutable'] as bool).input(),
+      weeklyBackupImmutable: map['weeklyBackupImmutable'] == null ? null : (map['weeklyBackupImmutable'] as bool).input(),
     );
   }
 }

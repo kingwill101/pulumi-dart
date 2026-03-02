@@ -22,13 +22,10 @@ class DefaultServiceAccountsArgs {
   /// [project] The project ID where service accounts are created.
   /// [restorePolicy] The action to be performed in the default service accounts on the resource destroy.
   DefaultServiceAccountsArgs({
-    required pulumi.Output<String> action,
-    required pulumi.Output<String> project,
-    pulumi.Output<String>? restorePolicy,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      project = pulumi.Input.asInput<String>(project),
-      restorePolicy = pulumi.Input.asOptionalInput<String>(restorePolicy);
+    required this.action,
+    required this.project,
+    this.restorePolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class DefaultServiceAccountsArgs {
 
   factory DefaultServiceAccountsArgs.fromMap(Map<String, dynamic> map) {
     return DefaultServiceAccountsArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      restorePolicy: map['restorePolicy'] == null ? null : pulumi.Output.create<String>(map['restorePolicy'] as String),
+      action: (map['action'] as String).input(),
+      project: (map['project'] as String).input(),
+      restorePolicy: map['restorePolicy'] == null ? null : (map['restorePolicy'] as String).input(),
     );
   }
 }

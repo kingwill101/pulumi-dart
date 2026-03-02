@@ -44,27 +44,17 @@ class DatabaseArgs {
   /// [project] Optional.
   /// [type] The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
   DatabaseArgs({
-    pulumi.Output<DatabaseAppEngineIntegrationMode>? appEngineIntegrationMode,
-    pulumi.Output<DatabaseConcurrencyMode>? concurrencyMode,
-    required pulumi.Output<String> databaseId,
-    pulumi.Output<DatabaseDeleteProtectionState>? deleteProtectionState,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<DatabasePointInTimeRecoveryEnablement>? pointInTimeRecoveryEnablement,
-    pulumi.Output<String>? project,
-    pulumi.Output<DatabaseType>? type,
-  }) :
-      appEngineIntegrationMode = pulumi.Input.asOptionalInput<DatabaseAppEngineIntegrationMode>(appEngineIntegrationMode),
-      concurrencyMode = pulumi.Input.asOptionalInput<DatabaseConcurrencyMode>(concurrencyMode),
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      deleteProtectionState = pulumi.Input.asOptionalInput<DatabaseDeleteProtectionState>(deleteProtectionState),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pointInTimeRecoveryEnablement = pulumi.Input.asOptionalInput<DatabasePointInTimeRecoveryEnablement>(pointInTimeRecoveryEnablement),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asOptionalInput<DatabaseType>(type);
+    this.appEngineIntegrationMode,
+    this.concurrencyMode,
+    required this.databaseId,
+    this.deleteProtectionState,
+    this.etag,
+    this.location,
+    this.name,
+    this.pointInTimeRecoveryEnablement,
+    this.project,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      appEngineIntegrationMode: map['appEngineIntegrationMode'] == null ? null : pulumi.Output.create<DatabaseAppEngineIntegrationMode>(DatabaseAppEngineIntegrationMode.fromValue(map['appEngineIntegrationMode'] as String)),
-      concurrencyMode: map['concurrencyMode'] == null ? null : pulumi.Output.create<DatabaseConcurrencyMode>(DatabaseConcurrencyMode.fromValue(map['concurrencyMode'] as String)),
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      deleteProtectionState: map['deleteProtectionState'] == null ? null : pulumi.Output.create<DatabaseDeleteProtectionState>(DatabaseDeleteProtectionState.fromValue(map['deleteProtectionState'] as String)),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pointInTimeRecoveryEnablement: map['pointInTimeRecoveryEnablement'] == null ? null : pulumi.Output.create<DatabasePointInTimeRecoveryEnablement>(DatabasePointInTimeRecoveryEnablement.fromValue(map['pointInTimeRecoveryEnablement'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<DatabaseType>(DatabaseType.fromValue(map['type'] as String)),
+      appEngineIntegrationMode: map['appEngineIntegrationMode'] == null ? null : (DatabaseAppEngineIntegrationMode.fromValue(map['appEngineIntegrationMode'] as String)).input(),
+      concurrencyMode: map['concurrencyMode'] == null ? null : (DatabaseConcurrencyMode.fromValue(map['concurrencyMode'] as String)).input(),
+      databaseId: (map['databaseId'] as String).input(),
+      deleteProtectionState: map['deleteProtectionState'] == null ? null : (DatabaseDeleteProtectionState.fromValue(map['deleteProtectionState'] as String)).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pointInTimeRecoveryEnablement: map['pointInTimeRecoveryEnablement'] == null ? null : (DatabasePointInTimeRecoveryEnablement.fromValue(map['pointInTimeRecoveryEnablement'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: map['type'] == null ? null : (DatabaseType.fromValue(map['type'] as String)).input(),
     );
   }
 }

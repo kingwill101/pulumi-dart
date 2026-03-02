@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for external callout policies, including URI patterns, access types, and service types.
 class CalloutPolicyResponse {
   /// Unique identifier for the callout configuration.
-  final String calloutId;
+  final pulumi.Input<String> calloutId;
   /// Type of the callout service, specifying the kind of external resource or service being accessed.
-  final String? calloutType;
+  final pulumi.Input<String>? calloutType;
   /// Regular expression or FQDN pattern for the callout URI.
-  final String? calloutUriRegex;
+  final pulumi.Input<String>? calloutUriRegex;
   /// Indicates whether outbound access is permitted for the specified URI pattern.
-  final String? outboundAccess;
+  final pulumi.Input<String>? outboundAccess;
 
   /// Creates a new [CalloutPolicyResponse].
   /// [calloutId] Unique identifier for the callout configuration.
@@ -35,10 +36,10 @@ class CalloutPolicyResponse {
 
   factory CalloutPolicyResponse.fromMap(Map<String, dynamic> map) {
     return CalloutPolicyResponse(
-      calloutId: map['calloutId'] as String,
-      calloutType: map['calloutType'] == null ? null : map['calloutType'] as String,
-      calloutUriRegex: map['calloutUriRegex'] == null ? null : map['calloutUriRegex'] as String,
-      outboundAccess: map['outboundAccess'] == null ? null : map['outboundAccess'] as String,
+      calloutId: (map['calloutId'] as String).input(),
+      calloutType: map['calloutType'] == null ? null : (map['calloutType'] as String).input(),
+      calloutUriRegex: map['calloutUriRegex'] == null ? null : (map['calloutUriRegex'] as String).input(),
+      outboundAccess: map['outboundAccess'] == null ? null : (map['outboundAccess'] as String).input(),
     );
   }
 }

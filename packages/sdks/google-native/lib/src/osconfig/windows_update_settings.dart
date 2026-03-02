@@ -6,11 +6,11 @@ import 'windows_update_settings_classifications_item.dart';
 /// Windows patching is performed using the Windows Update Agent.
 class WindowsUpdateSettings {
   /// Only apply updates of these windows update classifications. If empty, all updates are applied.
-  final List<WindowsUpdateSettingsClassificationsItem>? classifications;
+  final pulumi.Input<List<WindowsUpdateSettingsClassificationsItem>>? classifications;
   /// List of KBs to exclude from update.
-  final List<String>? excludes;
+  final pulumi.Input<List<String>>? excludes;
   /// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
-  final List<String>? exclusivePatches;
+  final pulumi.Input<List<String>>? exclusivePatches;
 
   /// Creates a new [WindowsUpdateSettings].
   /// [classifications] Only apply updates of these windows update classifications. If empty, all updates are applied.
@@ -24,7 +24,7 @@ class WindowsUpdateSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'classifications': ?classifications == null ? null : pulumi.Input.encodeList<WindowsUpdateSettingsClassificationsItem, String>(classifications!, (value) => value.value),
+      'classifications': ?pulumi.Input.mapOptionalInputValue<List<WindowsUpdateSettingsClassificationsItem>, List<String>>(classifications, (value) => pulumi.Input.encodeList<WindowsUpdateSettingsClassificationsItem, String>(value, (value) => value.value)),
       'excludes': ?excludes,
       'exclusivePatches': ?exclusivePatches,
     };
@@ -32,9 +32,9 @@ class WindowsUpdateSettings {
 
   factory WindowsUpdateSettings.fromMap(Map<String, dynamic> map) {
     return WindowsUpdateSettings(
-      classifications: map['classifications'] == null ? null : pulumi.Input.decodeList<WindowsUpdateSettingsClassificationsItem>(map['classifications'], (value) => WindowsUpdateSettingsClassificationsItem.fromValue(value as String)),
-      excludes: map['excludes'] == null ? null : (map['excludes'] as List).cast<String>(),
-      exclusivePatches: map['exclusivePatches'] == null ? null : (map['exclusivePatches'] as List).cast<String>(),
+      classifications: map['classifications'] == null ? null : (pulumi.Input.decodeList<WindowsUpdateSettingsClassificationsItem>(map['classifications'], (value) => WindowsUpdateSettingsClassificationsItem.fromValue(value as String))).input(),
+      excludes: map['excludes'] == null ? null : ((map['excludes'] as List).cast<String>()).input(),
+      exclusivePatches: map['exclusivePatches'] == null ? null : ((map['exclusivePatches'] as List).cast<String>()).input(),
     );
   }
 }

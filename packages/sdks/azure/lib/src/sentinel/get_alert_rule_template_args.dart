@@ -21,13 +21,10 @@ class GetAlertRuleTemplateArgs {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace.
   /// [name] The name of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
   GetAlertRuleTemplateArgs({
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      logAnalyticsWorkspaceId = pulumi.Input.asInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.displayName,
+    required this.logAnalyticsWorkspaceId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetAlertRuleTemplateArgs {
 
   factory GetAlertRuleTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleTemplateArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      logAnalyticsWorkspaceId: pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

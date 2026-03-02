@@ -18,15 +18,11 @@ class GetSnapshotArgs {
   /// [snapshotId] Required.
   /// [volumeId] Required.
   GetSnapshotArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> snapshotId,
-    required pulumi.Output<String> volumeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      snapshotId = pulumi.Input.asInput<String>(snapshotId),
-      volumeId = pulumi.Input.asInput<String>(volumeId);
+    required this.location,
+    this.project,
+    required this.snapshotId,
+    required this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetSnapshotArgs {
 
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      snapshotId: pulumi.Output.create<String>(map['snapshotId'] as String),
-      volumeId: pulumi.Output.create<String>(map['volumeId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
+      volumeId: (map['volumeId'] as String).input(),
     );
   }
 }

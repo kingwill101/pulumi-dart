@@ -6,7 +6,7 @@ import 'managed_rule_set_response.dart';
 /// Defines the list of managed rule sets for the policy.
 class ManagedRuleSetListResponse {
   /// List of rule sets.
-  final List<ManagedRuleSetResponse>? managedRuleSets;
+  final pulumi.Input<List<ManagedRuleSetResponse>>? managedRuleSets;
 
   /// Creates a new [ManagedRuleSetListResponse].
   /// [managedRuleSets] List of rule sets.
@@ -16,13 +16,13 @@ class ManagedRuleSetListResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedRuleSets': ?managedRuleSets == null ? null : pulumi.Input.encodeList<ManagedRuleSetResponse, Map<String, dynamic>>(managedRuleSets!, (value) => value.toMap()),
+      'managedRuleSets': ?pulumi.Input.mapOptionalInputValue<List<ManagedRuleSetResponse>, List<Map<String, dynamic>>>(managedRuleSets, (value) => pulumi.Input.encodeList<ManagedRuleSetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ManagedRuleSetListResponse.fromMap(Map<String, dynamic> map) {
     return ManagedRuleSetListResponse(
-      managedRuleSets: map['managedRuleSets'] == null ? null : pulumi.Input.decodeList<ManagedRuleSetResponse>(map['managedRuleSets'], (value) => ManagedRuleSetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      managedRuleSets: map['managedRuleSets'] == null ? null : (pulumi.Input.decodeList<ManagedRuleSetResponse>(map['managedRuleSets'], (value) => ManagedRuleSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

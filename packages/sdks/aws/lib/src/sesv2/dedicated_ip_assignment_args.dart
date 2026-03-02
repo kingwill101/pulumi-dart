@@ -19,13 +19,10 @@ class DedicatedIpAssignmentArgs {
   /// [ip] Dedicated IP address.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DedicatedIpAssignmentArgs({
-    required pulumi.Output<String> destinationPoolName,
-    required pulumi.Output<String> ip,
-    pulumi.Output<String>? region,
-  }) :
-      destinationPoolName = pulumi.Input.asInput<String>(destinationPoolName),
-      ip = pulumi.Input.asInput<String>(ip),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.destinationPoolName,
+    required this.ip,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DedicatedIpAssignmentArgs {
 
   factory DedicatedIpAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedIpAssignmentArgs(
-      destinationPoolName: pulumi.Output.create<String>(map['destinationPoolName'] as String),
-      ip: pulumi.Output.create<String>(map['ip'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      destinationPoolName: (map['destinationPoolName'] as String).input(),
+      ip: (map['ip'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

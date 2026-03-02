@@ -22,15 +22,11 @@ class ServerTrustCertificateArgs {
   /// [publicBlob] The certificate public blob
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   ServerTrustCertificateArgs({
-    pulumi.Output<String>? certificateName,
-    required pulumi.Output<String> managedInstanceName,
-    pulumi.Output<String>? publicBlob,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      publicBlob = pulumi.Input.asOptionalInput<String>(publicBlob),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.certificateName,
+    required this.managedInstanceName,
+    this.publicBlob,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ServerTrustCertificateArgs {
 
   factory ServerTrustCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ServerTrustCertificateArgs(
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      publicBlob: map['publicBlob'] == null ? null : pulumi.Output.create<String>(map['publicBlob'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      publicBlob: map['publicBlob'] == null ? null : (map['publicBlob'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

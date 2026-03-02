@@ -48,29 +48,18 @@ class AiLogicPromptTemplateState {
   /// [templateString] The DotPrompt raw template string.
   /// [updateTime] Timestamp when the PromptTemplate was last updated.
   AiLogicPromptTemplateState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? locked,
-    pulumi.Output<String>? model,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? stateChangeTime,
-    pulumi.Output<String>? templateId,
-    pulumi.Output<String>? templateString,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      locked = pulumi.Input.asOptionalInput<bool>(locked),
-      model = pulumi.Input.asOptionalInput<String>(model),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      stateChangeTime = pulumi.Input.asOptionalInput<String>(stateChangeTime),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId),
-      templateString = pulumi.Input.asOptionalInput<String>(templateString),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.displayName,
+    this.location,
+    this.locked,
+    this.model,
+    this.name,
+    this.project,
+    this.stateChangeTime,
+    this.templateId,
+    this.templateString,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,17 +79,17 @@ class AiLogicPromptTemplateState {
 
   factory AiLogicPromptTemplateState.fromMap(Map<String, dynamic> map) {
     return AiLogicPromptTemplateState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      locked: map['locked'] == null ? null : pulumi.Output.create<bool>(map['locked'] as bool),
-      model: map['model'] == null ? null : pulumi.Output.create<String>(map['model'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      stateChangeTime: map['stateChangeTime'] == null ? null : pulumi.Output.create<String>(map['stateChangeTime'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
-      templateString: map['templateString'] == null ? null : pulumi.Output.create<String>(map['templateString'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      stateChangeTime: map['stateChangeTime'] == null ? null : (map['stateChangeTime'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      templateString: map['templateString'] == null ? null : (map['templateString'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

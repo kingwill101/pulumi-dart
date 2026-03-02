@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allocation_aggregate_reservation_reserved_resource_info_accelerator.dart';
 
 class AllocationAggregateReservationReservedResourceInfo {
   /// Properties of accelerator resources in this reservation.
-  final AllocationAggregateReservationReservedResourceInfoAccelerator? accelerator;
+  final pulumi.Input<AllocationAggregateReservationReservedResourceInfoAccelerator>? accelerator;
 
   /// Creates a new [AllocationAggregateReservationReservedResourceInfo].
   /// [accelerator] Properties of accelerator resources in this reservation.
@@ -14,13 +15,13 @@ class AllocationAggregateReservationReservedResourceInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accelerator': ?accelerator == null ? null : accelerator!.toMap(),
+      'accelerator': ?pulumi.Input.mapOptionalInputValue<AllocationAggregateReservationReservedResourceInfoAccelerator, Map<String, dynamic>>(accelerator, (value) => value.toMap()),
     };
   }
 
   factory AllocationAggregateReservationReservedResourceInfo.fromMap(Map<String, dynamic> map) {
     return AllocationAggregateReservationReservedResourceInfo(
-      accelerator: map['accelerator'] == null ? null : AllocationAggregateReservationReservedResourceInfoAccelerator.fromMap((map['accelerator'] as Map).cast<String, dynamic>()),
+      accelerator: map['accelerator'] == null ? null : (AllocationAggregateReservationReservedResourceInfoAccelerator.fromMap((map['accelerator'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

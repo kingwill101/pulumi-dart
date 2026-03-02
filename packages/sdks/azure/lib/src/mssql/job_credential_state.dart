@@ -22,17 +22,12 @@ class JobCredentialState {
   /// [passwordWoVersion] An integer value used to trigger an update for `password_wo`. This property should be incremented when updating `password_wo`.
   /// [username] The username to use for this Elastic Job credential.
   JobCredentialState({
-    pulumi.Output<String>? jobAgentId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<int>? passwordWoVersion,
-    pulumi.Output<String>? username,
-  }) :
-      jobAgentId = pulumi.Input.asOptionalInput<String>(jobAgentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      passwordWoVersion = pulumi.Input.asOptionalInput<int>(passwordWoVersion),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.jobAgentId,
+    this.name,
+    this.password,
+    this.passwordWoVersion,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class JobCredentialState {
 
   factory JobCredentialState.fromMap(Map<String, dynamic> map) {
     return JobCredentialState(
-      jobAgentId: map['jobAgentId'] == null ? null : pulumi.Output.create<String>(map['jobAgentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      passwordWoVersion: map['passwordWoVersion'] == null ? null : pulumi.Output.create<int>(map['passwordWoVersion'] as int),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      jobAgentId: map['jobAgentId'] == null ? null : (map['jobAgentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion'] as int).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

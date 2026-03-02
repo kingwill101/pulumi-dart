@@ -28,19 +28,13 @@ class ComputingGroupArgs {
   /// [nodeScaleMax] Computing group node elasticity upper limit
   /// [nodeScaleMin] Lower limit of computing group node elasticity
   ComputingGroupArgs({
-    pulumi.Output<String>? computingGroupDescription,
-    required pulumi.Output<String> dbInstanceId,
-    required pulumi.Output<bool> isReadonly,
-    required pulumi.Output<int> nodeCount,
-    required pulumi.Output<int> nodeScaleMax,
-    required pulumi.Output<int> nodeScaleMin,
-  }) :
-      computingGroupDescription = pulumi.Input.asOptionalInput<String>(computingGroupDescription),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      isReadonly = pulumi.Input.asInput<bool>(isReadonly),
-      nodeCount = pulumi.Input.asInput<int>(nodeCount),
-      nodeScaleMax = pulumi.Input.asInput<int>(nodeScaleMax),
-      nodeScaleMin = pulumi.Input.asInput<int>(nodeScaleMin);
+    this.computingGroupDescription,
+    required this.dbInstanceId,
+    required this.isReadonly,
+    required this.nodeCount,
+    required this.nodeScaleMax,
+    required this.nodeScaleMin,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ComputingGroupArgs {
 
   factory ComputingGroupArgs.fromMap(Map<String, dynamic> map) {
     return ComputingGroupArgs(
-      computingGroupDescription: map['computingGroupDescription'] == null ? null : pulumi.Output.create<String>(map['computingGroupDescription'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      isReadonly: pulumi.Output.create<bool>(map['isReadonly'] as bool),
-      nodeCount: pulumi.Output.create<int>(map['nodeCount'] as int),
-      nodeScaleMax: pulumi.Output.create<int>(map['nodeScaleMax'] as int),
-      nodeScaleMin: pulumi.Output.create<int>(map['nodeScaleMin'] as int),
+      computingGroupDescription: map['computingGroupDescription'] == null ? null : (map['computingGroupDescription'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      isReadonly: (map['isReadonly'] as bool).input(),
+      nodeCount: (map['nodeCount'] as int).input(),
+      nodeScaleMax: (map['nodeScaleMax'] as int).input(),
+      nodeScaleMin: (map['nodeScaleMin'] as int).input(),
     );
   }
 }

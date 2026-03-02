@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Evaluates whether each column value is contained by a specified set.
 class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
   /// Optional. Expected values for the column value.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleSetExpectation].
   /// [values] Optional. Expected values for the column value.
@@ -20,7 +21,7 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
 
   factory GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityRuleSetExpectation(
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

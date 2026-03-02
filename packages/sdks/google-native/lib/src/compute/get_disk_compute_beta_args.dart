@@ -16,13 +16,10 @@ class GetDiskComputeBetaArgs {
   /// [project] Optional.
   /// [zone] Required.
   GetDiskComputeBetaArgs({
-    required pulumi.Output<String> disk,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> zone,
-  }) :
-      disk = pulumi.Input.asInput<String>(disk),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+    required this.disk,
+    this.project,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetDiskComputeBetaArgs {
 
   factory GetDiskComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskComputeBetaArgs(
-      disk: pulumi.Output.create<String>(map['disk'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      disk: (map['disk'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specific issue for a particular config diagnostics validator
 class ConfigDiagnosticsValidatorResultIssueResponse {
   /// List of domain resource property name or values used to compose a rich description.
-  final List<String>? descriptionParams;
+  final pulumi.Input<List<String>>? descriptionParams;
   /// Validation issue identifier.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [ConfigDiagnosticsValidatorResultIssueResponse].
   /// [descriptionParams] List of domain resource property name or values used to compose a rich description.
@@ -25,8 +26,8 @@ class ConfigDiagnosticsValidatorResultIssueResponse {
 
   factory ConfigDiagnosticsValidatorResultIssueResponse.fromMap(Map<String, dynamic> map) {
     return ConfigDiagnosticsValidatorResultIssueResponse(
-      descriptionParams: map['descriptionParams'] == null ? null : (map['descriptionParams'] as List).cast<String>(),
-      id: map['id'] == null ? null : map['id'] as String,
+      descriptionParams: map['descriptionParams'] == null ? null : ((map['descriptionParams'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

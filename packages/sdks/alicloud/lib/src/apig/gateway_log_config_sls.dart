@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayLogConfigSls {
   /// Enable Log Service
-  final bool? enable;
+  final pulumi.Input<bool>? enable;
 
   /// Creates a new [GatewayLogConfigSls].
   /// [enable] Enable Log Service
@@ -19,7 +20,7 @@ class GatewayLogConfigSls {
 
   factory GatewayLogConfigSls.fromMap(Map<String, dynamic> map) {
     return GatewayLogConfigSls(
-      enable: map['enable'] == null ? null : map['enable'] as bool,
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
     );
   }
 }

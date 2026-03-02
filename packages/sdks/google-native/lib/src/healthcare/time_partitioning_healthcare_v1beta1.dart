@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'time_partitioning_type_healthcare_v1beta1.dart';
 
 /// Configuration for FHIR BigQuery time-partitioned tables.
 class TimePartitioningHealthcareV1beta1 {
   /// Number of milliseconds for which to keep the storage for a partition.
-  final String? expirationMs;
+  final pulumi.Input<String>? expirationMs;
   /// Type of partitioning.
-  final TimePartitioningTypeHealthcareV1beta1? type;
+  final pulumi.Input<TimePartitioningTypeHealthcareV1beta1>? type;
 
   /// Creates a new [TimePartitioningHealthcareV1beta1].
   /// [expirationMs] Number of milliseconds for which to keep the storage for a partition.
@@ -20,14 +21,14 @@ class TimePartitioningHealthcareV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'expirationMs': ?expirationMs,
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<TimePartitioningTypeHealthcareV1beta1, String>(type, (value) => value.value),
     };
   }
 
   factory TimePartitioningHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return TimePartitioningHealthcareV1beta1(
-      expirationMs: map['expirationMs'] == null ? null : map['expirationMs'] as String,
-      type: map['type'] == null ? null : TimePartitioningTypeHealthcareV1beta1.fromValue(map['type'] as String),
+      expirationMs: map['expirationMs'] == null ? null : (map['expirationMs'] as String).input(),
+      type: map['type'] == null ? null : (TimePartitioningTypeHealthcareV1beta1.fromValue(map['type'] as String)).input(),
     );
   }
 }

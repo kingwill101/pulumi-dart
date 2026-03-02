@@ -27,19 +27,13 @@ class AutoscalingPolicyDataprocV1beta2Args {
   /// [secondaryWorkerConfig] Optional. Describes how the autoscaler will operate for secondary workers.
   /// [workerConfig] Describes how the autoscaler will operate for primary workers.
   AutoscalingPolicyDataprocV1beta2Args({
-    pulumi.Output<BasicAutoscalingAlgorithmDataprocV1beta2>? basicAlgorithm,
-    required pulumi.Output<String> id,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<InstanceGroupAutoscalingPolicyConfigDataprocV1beta2>? secondaryWorkerConfig,
-    required pulumi.Output<InstanceGroupAutoscalingPolicyConfigDataprocV1beta2> workerConfig,
-  }) :
-      basicAlgorithm = pulumi.Input.asOptionalInput<BasicAutoscalingAlgorithmDataprocV1beta2>(basicAlgorithm),
-      id = pulumi.Input.asInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secondaryWorkerConfig = pulumi.Input.asOptionalInput<InstanceGroupAutoscalingPolicyConfigDataprocV1beta2>(secondaryWorkerConfig),
-      workerConfig = pulumi.Input.asInput<InstanceGroupAutoscalingPolicyConfigDataprocV1beta2>(workerConfig);
+    this.basicAlgorithm,
+    required this.id,
+    this.location,
+    this.project,
+    this.secondaryWorkerConfig,
+    required this.workerConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class AutoscalingPolicyDataprocV1beta2Args {
 
   factory AutoscalingPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyDataprocV1beta2Args(
-      basicAlgorithm: map['basicAlgorithm'] == null ? null : pulumi.Output.create<BasicAutoscalingAlgorithmDataprocV1beta2>(BasicAutoscalingAlgorithmDataprocV1beta2.fromMap((map['basicAlgorithm'] as Map).cast<String, dynamic>())),
-      id: pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : pulumi.Output.create<InstanceGroupAutoscalingPolicyConfigDataprocV1beta2>(InstanceGroupAutoscalingPolicyConfigDataprocV1beta2.fromMap((map['secondaryWorkerConfig'] as Map).cast<String, dynamic>())),
-      workerConfig: pulumi.Output.create<InstanceGroupAutoscalingPolicyConfigDataprocV1beta2>(InstanceGroupAutoscalingPolicyConfigDataprocV1beta2.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())),
+      basicAlgorithm: map['basicAlgorithm'] == null ? null : (BasicAutoscalingAlgorithmDataprocV1beta2.fromMap((map['basicAlgorithm'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : (InstanceGroupAutoscalingPolicyConfigDataprocV1beta2.fromMap((map['secondaryWorkerConfig'] as Map).cast<String, dynamic>())).input(),
+      workerConfig: (InstanceGroupAutoscalingPolicyConfigDataprocV1beta2.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

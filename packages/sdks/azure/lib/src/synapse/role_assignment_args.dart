@@ -33,17 +33,12 @@ class RoleAssignmentArgs {
   /// [synapseSparkPoolId] The Synapse Spark Pool which the Synapse Role Assignment applies to. Changing this forces a new resource to be created.
   /// [synapseWorkspaceId] The Synapse Workspace which the Synapse Role Assignment applies to. Changing this forces a new resource to be created.
   RoleAssignmentArgs({
-    required pulumi.Output<String> principalId,
-    pulumi.Output<String>? principalType,
-    required pulumi.Output<String> roleName,
-    pulumi.Output<String>? synapseSparkPoolId,
-    pulumi.Output<String>? synapseWorkspaceId,
-  }) :
-      principalId = pulumi.Input.asInput<String>(principalId),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      roleName = pulumi.Input.asInput<String>(roleName),
-      synapseSparkPoolId = pulumi.Input.asOptionalInput<String>(synapseSparkPoolId),
-      synapseWorkspaceId = pulumi.Input.asOptionalInput<String>(synapseWorkspaceId);
+    required this.principalId,
+    this.principalType,
+    required this.roleName,
+    this.synapseSparkPoolId,
+    this.synapseWorkspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,11 +52,11 @@ class RoleAssignmentArgs {
 
   factory RoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return RoleAssignmentArgs(
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      roleName: pulumi.Output.create<String>(map['roleName'] as String),
-      synapseSparkPoolId: map['synapseSparkPoolId'] == null ? null : pulumi.Output.create<String>(map['synapseSparkPoolId'] as String),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
+      principalId: (map['principalId'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      roleName: (map['roleName'] as String).input(),
+      synapseSparkPoolId: map['synapseSparkPoolId'] == null ? null : (map['synapseSparkPoolId'] as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
     );
   }
 }

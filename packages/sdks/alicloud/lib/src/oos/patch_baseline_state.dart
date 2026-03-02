@@ -43,31 +43,19 @@ class PatchBaselineState {
   /// [sources] Source.
   /// [tags] Label.
   PatchBaselineState({
-    pulumi.Output<String>? approvalRules,
-    pulumi.Output<List<String>>? approvedPatches,
-    pulumi.Output<bool>? approvedPatchesEnableNonSecurity,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? operationSystem,
-    pulumi.Output<String>? patchBaselineName,
-    pulumi.Output<List<String>>? rejectedPatches,
-    pulumi.Output<String>? rejectedPatchesAction,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<List<String>>? sources,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      approvalRules = pulumi.Input.asOptionalInput<String>(approvalRules),
-      approvedPatches = pulumi.Input.asOptionalInput<List<String>>(approvedPatches),
-      approvedPatchesEnableNonSecurity = pulumi.Input.asOptionalInput<bool>(approvedPatchesEnableNonSecurity),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      operationSystem = pulumi.Input.asOptionalInput<String>(operationSystem),
-      patchBaselineName = pulumi.Input.asOptionalInput<String>(patchBaselineName),
-      rejectedPatches = pulumi.Input.asOptionalInput<List<String>>(rejectedPatches),
-      rejectedPatchesAction = pulumi.Input.asOptionalInput<String>(rejectedPatchesAction),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      sources = pulumi.Input.asOptionalInput<List<String>>(sources),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.approvalRules,
+    this.approvedPatches,
+    this.approvedPatchesEnableNonSecurity,
+    this.createTime,
+    this.description,
+    this.operationSystem,
+    this.patchBaselineName,
+    this.rejectedPatches,
+    this.rejectedPatchesAction,
+    this.resourceGroupId,
+    this.sources,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class PatchBaselineState {
 
   factory PatchBaselineState.fromMap(Map<String, dynamic> map) {
     return PatchBaselineState(
-      approvalRules: map['approvalRules'] == null ? null : pulumi.Output.create<String>(map['approvalRules'] as String),
-      approvedPatches: map['approvedPatches'] == null ? null : pulumi.Output.create<List<String>>((map['approvedPatches'] as List).cast<String>()),
-      approvedPatchesEnableNonSecurity: map['approvedPatchesEnableNonSecurity'] == null ? null : pulumi.Output.create<bool>(map['approvedPatchesEnableNonSecurity'] as bool),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      operationSystem: map['operationSystem'] == null ? null : pulumi.Output.create<String>(map['operationSystem'] as String),
-      patchBaselineName: map['patchBaselineName'] == null ? null : pulumi.Output.create<String>(map['patchBaselineName'] as String),
-      rejectedPatches: map['rejectedPatches'] == null ? null : pulumi.Output.create<List<String>>((map['rejectedPatches'] as List).cast<String>()),
-      rejectedPatchesAction: map['rejectedPatchesAction'] == null ? null : pulumi.Output.create<String>(map['rejectedPatchesAction'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      sources: map['sources'] == null ? null : pulumi.Output.create<List<String>>((map['sources'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      approvalRules: map['approvalRules'] == null ? null : (map['approvalRules'] as String).input(),
+      approvedPatches: map['approvedPatches'] == null ? null : ((map['approvedPatches'] as List).cast<String>()).input(),
+      approvedPatchesEnableNonSecurity: map['approvedPatchesEnableNonSecurity'] == null ? null : (map['approvedPatchesEnableNonSecurity'] as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      operationSystem: map['operationSystem'] == null ? null : (map['operationSystem'] as String).input(),
+      patchBaselineName: map['patchBaselineName'] == null ? null : (map['patchBaselineName'] as String).input(),
+      rejectedPatches: map['rejectedPatches'] == null ? null : ((map['rejectedPatches'] as List).cast<String>()).input(),
+      rejectedPatchesAction: map['rejectedPatchesAction'] == null ? null : (map['rejectedPatchesAction'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      sources: map['sources'] == null ? null : ((map['sources'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

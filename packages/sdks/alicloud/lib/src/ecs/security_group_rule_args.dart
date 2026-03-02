@@ -52,33 +52,20 @@ class SecurityGroupRuleArgs {
   /// [sourceSecurityGroupId] The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
   /// [type] The type of the Security Group Rule. Valid values:
   SecurityGroupRuleArgs({
-    pulumi.Output<String>? cidrIp,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> ipProtocol,
-    pulumi.Output<String>? ipv6CidrIp,
-    pulumi.Output<String>? nicType,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? portRange,
-    pulumi.Output<String>? prefixListId,
-    pulumi.Output<int>? priority,
-    required pulumi.Output<String> securityGroupId,
-    pulumi.Output<String>? sourceGroupOwnerAccount,
-    pulumi.Output<String>? sourceSecurityGroupId,
-    required pulumi.Output<String> type,
-  }) :
-      cidrIp = pulumi.Input.asOptionalInput<String>(cidrIp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipProtocol = pulumi.Input.asInput<String>(ipProtocol),
-      ipv6CidrIp = pulumi.Input.asOptionalInput<String>(ipv6CidrIp),
-      nicType = pulumi.Input.asOptionalInput<String>(nicType),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      portRange = pulumi.Input.asOptionalInput<String>(portRange),
-      prefixListId = pulumi.Input.asOptionalInput<String>(prefixListId),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
-      sourceGroupOwnerAccount = pulumi.Input.asOptionalInput<String>(sourceGroupOwnerAccount),
-      sourceSecurityGroupId = pulumi.Input.asOptionalInput<String>(sourceSecurityGroupId),
-      type = pulumi.Input.asInput<String>(type);
+    this.cidrIp,
+    this.description,
+    required this.ipProtocol,
+    this.ipv6CidrIp,
+    this.nicType,
+    this.policy,
+    this.portRange,
+    this.prefixListId,
+    this.priority,
+    required this.securityGroupId,
+    this.sourceGroupOwnerAccount,
+    this.sourceSecurityGroupId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,19 +87,19 @@ class SecurityGroupRuleArgs {
 
   factory SecurityGroupRuleArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGroupRuleArgs(
-      cidrIp: map['cidrIp'] == null ? null : pulumi.Output.create<String>(map['cidrIp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipProtocol: pulumi.Output.create<String>(map['ipProtocol'] as String),
-      ipv6CidrIp: map['ipv6CidrIp'] == null ? null : pulumi.Output.create<String>(map['ipv6CidrIp'] as String),
-      nicType: map['nicType'] == null ? null : pulumi.Output.create<String>(map['nicType'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      portRange: map['portRange'] == null ? null : pulumi.Output.create<String>(map['portRange'] as String),
-      prefixListId: map['prefixListId'] == null ? null : pulumi.Output.create<String>(map['prefixListId'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      securityGroupId: pulumi.Output.create<String>(map['securityGroupId'] as String),
-      sourceGroupOwnerAccount: map['sourceGroupOwnerAccount'] == null ? null : pulumi.Output.create<String>(map['sourceGroupOwnerAccount'] as String),
-      sourceSecurityGroupId: map['sourceSecurityGroupId'] == null ? null : pulumi.Output.create<String>(map['sourceSecurityGroupId'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      cidrIp: map['cidrIp'] == null ? null : (map['cidrIp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipProtocol: (map['ipProtocol'] as String).input(),
+      ipv6CidrIp: map['ipv6CidrIp'] == null ? null : (map['ipv6CidrIp'] as String).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      portRange: map['portRange'] == null ? null : (map['portRange'] as String).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      sourceGroupOwnerAccount: map['sourceGroupOwnerAccount'] == null ? null : (map['sourceGroupOwnerAccount'] as String).input(),
+      sourceSecurityGroupId: map['sourceSecurityGroupId'] == null ? null : (map['sourceSecurityGroupId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

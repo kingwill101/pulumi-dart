@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Options for error response messages.
 class ResourceProviderManagementErrorResponseMessageOptionsResponse {
   /// Type of server failure response message.
-  final String? serverFailureResponseMessageType;
+  final pulumi.Input<String>? serverFailureResponseMessageType;
 
   /// Creates a new [ResourceProviderManagementErrorResponseMessageOptionsResponse].
   /// [serverFailureResponseMessageType] Type of server failure response message.
@@ -20,7 +21,7 @@ class ResourceProviderManagementErrorResponseMessageOptionsResponse {
 
   factory ResourceProviderManagementErrorResponseMessageOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManagementErrorResponseMessageOptionsResponse(
-      serverFailureResponseMessageType: map['serverFailureResponseMessageType'] == null ? null : map['serverFailureResponseMessageType'] as String,
+      serverFailureResponseMessageType: map['serverFailureResponseMessageType'] == null ? null : (map['serverFailureResponseMessageType'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class AvailabilityZoneGroupState {
   /// [optInStatus] Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AvailabilityZoneGroupState({
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? optInStatus,
-    pulumi.Output<String>? region,
-  }) :
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      optInStatus = pulumi.Input.asOptionalInput<String>(optInStatus),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.groupName,
+    this.optInStatus,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AvailabilityZoneGroupState {
 
   factory AvailabilityZoneGroupState.fromMap(Map<String, dynamic> map) {
     return AvailabilityZoneGroupState(
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      optInStatus: map['optInStatus'] == null ? null : pulumi.Output.create<String>(map['optInStatus'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      optInStatus: map['optInStatus'] == null ? null : (map['optInStatus'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

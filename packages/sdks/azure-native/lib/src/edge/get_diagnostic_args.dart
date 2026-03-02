@@ -16,11 +16,9 @@ class GetDiagnosticArgs {
   /// [diagnosticName] Name of Diagnostic.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDiagnosticArgs({
-    required pulumi.Output<String> diagnosticName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      diagnosticName = pulumi.Input.asInput<String>(diagnosticName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.diagnosticName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDiagnosticArgs {
 
   factory GetDiagnosticArgs.fromMap(Map<String, dynamic> map) {
     return GetDiagnosticArgs(
-      diagnosticName: pulumi.Output.create<String>(map['diagnosticName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      diagnosticName: (map['diagnosticName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

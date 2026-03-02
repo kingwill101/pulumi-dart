@@ -6,13 +6,13 @@ import 'storage_container_properties_response.dart';
 /// AzStackHCI cluster properties.
 class AzStackHCIClusterPropertiesResponse {
   /// Gets or sets the AzStackHCICluster FQDN name.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
   /// Gets or sets the AzStackHCICluster resource name.
-  final String resourceName;
+  final pulumi.Input<String> resourceName;
   /// Gets or sets the Storage account name.
-  final String storageAccountName;
+  final pulumi.Input<String> storageAccountName;
   /// Gets or sets the list of AzStackHCICluster Storage Container.
-  final List<StorageContainerPropertiesResponse> storageContainers;
+  final pulumi.Input<List<StorageContainerPropertiesResponse>> storageContainers;
 
   /// Creates a new [AzStackHCIClusterPropertiesResponse].
   /// [clusterName] Gets or sets the AzStackHCICluster FQDN name.
@@ -31,16 +31,16 @@ class AzStackHCIClusterPropertiesResponse {
       'clusterName': clusterName,
       'resourceName': resourceName,
       'storageAccountName': storageAccountName,
-      'storageContainers': pulumi.Input.encodeList<StorageContainerPropertiesResponse, Map<String, dynamic>>(storageContainers, (value) => value.toMap()),
+      'storageContainers': pulumi.Input.mapInputValue<List<StorageContainerPropertiesResponse>, List<Map<String, dynamic>>>(storageContainers, (value) => pulumi.Input.encodeList<StorageContainerPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AzStackHCIClusterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AzStackHCIClusterPropertiesResponse(
-      clusterName: map['clusterName'] as String,
-      resourceName: map['resourceName'] as String,
-      storageAccountName: map['storageAccountName'] as String,
-      storageContainers: pulumi.Input.decodeList<StorageContainerPropertiesResponse>(map['storageContainers'], (value) => StorageContainerPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      storageAccountName: (map['storageAccountName'] as String).input(),
+      storageContainers: (pulumi.Input.decodeList<StorageContainerPropertiesResponse>(map['storageContainers'], (value) => StorageContainerPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ManagementURI for the Management Server resource.
 class ManagementURIResponse {
   /// The ManagementServer AGM/RD API URL.
-  final String api;
+  final pulumi.Input<String> api;
   /// The ManagementServer AGM/RD WebUI URL.
-  final String webUi;
+  final pulumi.Input<String> webUi;
 
   /// Creates a new [ManagementURIResponse].
   /// [api] The ManagementServer AGM/RD API URL.
@@ -25,8 +26,8 @@ class ManagementURIResponse {
 
   factory ManagementURIResponse.fromMap(Map<String, dynamic> map) {
     return ManagementURIResponse(
-      api: map['api'] as String,
-      webUi: map['webUi'] as String,
+      api: (map['api'] as String).input(),
+      webUi: (map['webUi'] as String).input(),
     );
   }
 }

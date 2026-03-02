@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of LoggingConfig
 class LoggingConfig {
   /// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest.
-  final String? applicationLogLevel;
+  final pulumi.Input<String>? applicationLogLevel;
   /// Property failureFeedbackRoleArn
-  final String? failureFeedbackRoleArn;
+  final pulumi.Input<String>? failureFeedbackRoleArn;
   /// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
-  final String? logFormat;
+  final pulumi.Input<String>? logFormat;
   /// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named ``/aws/lambda/<function name>``. To use a different log group, enter an existing log group or enter a new log group name.
-  final String? logGroup;
+  final pulumi.Input<String>? logGroup;
   /// Property protocol
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Property successFeedbackRoleArn
-  final String? successFeedbackRoleArn;
+  final pulumi.Input<String>? successFeedbackRoleArn;
   /// Property successFeedbackSampleRate
-  final String? successFeedbackSampleRate;
+  final pulumi.Input<String>? successFeedbackSampleRate;
   /// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where ``DEBUG`` is the highest level and ``WARN`` is the lowest.
-  final String? systemLogLevel;
+  final pulumi.Input<String>? systemLogLevel;
 
   /// Creates a new [LoggingConfig].
   /// [applicationLogLevel] Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest.
@@ -55,14 +56,14 @@ class LoggingConfig {
 
   factory LoggingConfig.fromMap(Map<String, dynamic> map) {
     return LoggingConfig(
-      applicationLogLevel: map['applicationLogLevel'] == null ? null : map['applicationLogLevel'] as String,
-      failureFeedbackRoleArn: map['failureFeedbackRoleArn'] == null ? null : map['failureFeedbackRoleArn'] as String,
-      logFormat: map['logFormat'] == null ? null : map['logFormat'] as String,
-      logGroup: map['logGroup'] == null ? null : map['logGroup'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      successFeedbackRoleArn: map['successFeedbackRoleArn'] == null ? null : map['successFeedbackRoleArn'] as String,
-      successFeedbackSampleRate: map['successFeedbackSampleRate'] == null ? null : map['successFeedbackSampleRate'] as String,
-      systemLogLevel: map['systemLogLevel'] == null ? null : map['systemLogLevel'] as String,
+      applicationLogLevel: map['applicationLogLevel'] == null ? null : (map['applicationLogLevel'] as String).input(),
+      failureFeedbackRoleArn: map['failureFeedbackRoleArn'] == null ? null : (map['failureFeedbackRoleArn'] as String).input(),
+      logFormat: map['logFormat'] == null ? null : (map['logFormat'] as String).input(),
+      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      successFeedbackRoleArn: map['successFeedbackRoleArn'] == null ? null : (map['successFeedbackRoleArn'] as String).input(),
+      successFeedbackSampleRate: map['successFeedbackSampleRate'] == null ? null : (map['successFeedbackSampleRate'] as String).input(),
+      systemLogLevel: map['systemLogLevel'] == null ? null : (map['systemLogLevel'] as String).input(),
     );
   }
 }

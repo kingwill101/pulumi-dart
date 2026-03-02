@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AllowedUnauthorizedActionsExtension {
   /// The action.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// The intent.
-  final String? intent;
+  final pulumi.Input<String>? intent;
 
   /// Creates a new [AllowedUnauthorizedActionsExtension].
   /// [action] The action.
@@ -24,8 +25,8 @@ class AllowedUnauthorizedActionsExtension {
 
   factory AllowedUnauthorizedActionsExtension.fromMap(Map<String, dynamic> map) {
     return AllowedUnauthorizedActionsExtension(
-      action: map['action'] == null ? null : map['action'] as String,
-      intent: map['intent'] == null ? null : map['intent'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      intent: map['intent'] == null ? null : (map['intent'] as String).input(),
     );
   }
 }

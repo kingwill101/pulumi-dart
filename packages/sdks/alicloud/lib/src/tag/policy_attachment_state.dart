@@ -16,13 +16,10 @@ class PolicyAttachmentState {
   /// [targetId] The ID of the object.
   /// [targetType] The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
   PolicyAttachmentState({
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? targetId,
-    pulumi.Output<String>? targetType,
-  }) :
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      targetId = pulumi.Input.asOptionalInput<String>(targetId),
-      targetType = pulumi.Input.asOptionalInput<String>(targetType);
+    this.policyId,
+    this.targetId,
+    this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class PolicyAttachmentState {
 
   factory PolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentState(
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      targetId: map['targetId'] == null ? null : pulumi.Output.create<String>(map['targetId'] as String),
-      targetType: map['targetType'] == null ? null : pulumi.Output.create<String>(map['targetType'] as String),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
     );
   }
 }

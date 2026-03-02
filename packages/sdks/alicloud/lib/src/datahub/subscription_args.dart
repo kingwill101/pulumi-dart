@@ -19,13 +19,10 @@ class SubscriptionArgs {
   /// [projectName] The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   /// [topicName] The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   SubscriptionArgs({
-    pulumi.Output<String>? comment,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> topicName,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    this.comment,
+    required this.projectName,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

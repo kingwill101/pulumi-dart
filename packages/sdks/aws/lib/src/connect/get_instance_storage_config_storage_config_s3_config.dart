@@ -5,11 +5,11 @@ import 'get_instance_storage_config_storage_config_s3_config_encryption_config.d
 
 class GetInstanceStorageConfigStorageConfigS3Config {
   /// The S3 bucket name.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// The S3 bucket prefix.
-  final String bucketPrefix;
+  final pulumi.Input<String> bucketPrefix;
   /// The encryption configuration. Documented below.
-  final List<GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig> encryptionConfigs;
+  final pulumi.Input<List<GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig>> encryptionConfigs;
 
   /// Creates a new [GetInstanceStorageConfigStorageConfigS3Config].
   /// [bucketName] The S3 bucket name.
@@ -25,15 +25,15 @@ class GetInstanceStorageConfigStorageConfigS3Config {
     return <String, dynamic>{
       'bucketName': bucketName,
       'bucketPrefix': bucketPrefix,
-      'encryptionConfigs': pulumi.Input.encodeList<GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig, Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap()),
+      'encryptionConfigs': pulumi.Input.mapInputValue<List<GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig>, List<Map<String, dynamic>>>(encryptionConfigs, (value) => pulumi.Input.encodeList<GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetInstanceStorageConfigStorageConfigS3Config.fromMap(Map<String, dynamic> map) {
     return GetInstanceStorageConfigStorageConfigS3Config(
-      bucketName: map['bucketName'] as String,
-      bucketPrefix: map['bucketPrefix'] as String,
-      encryptionConfigs: pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig>(map['encryptionConfigs'], (value) => GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig.fromMap((value as Map).cast<String, dynamic>())),
+      bucketName: (map['bucketName'] as String).input(),
+      bucketPrefix: (map['bucketPrefix'] as String).input(),
+      encryptionConfigs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig>(map['encryptionConfigs'], (value) => GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

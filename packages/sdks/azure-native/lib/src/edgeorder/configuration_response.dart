@@ -14,33 +14,33 @@ import 'specification_response.dart';
 /// Configuration object.
 class ConfigurationResponse {
   /// Availability information of the product system.
-  final AvailabilityInformationResponse availabilityInformation;
+  final pulumi.Input<AvailabilityInformationResponse> availabilityInformation;
   /// Different types of child configurations which exist for this configuration, these can be used to populate the child configuration filter.
-  final List<String> childConfigurationTypes;
+  final pulumi.Input<List<String>> childConfigurationTypes;
   /// Cost information for the product system.
-  final CostInformationResponse costInformation;
+  final pulumi.Input<CostInformationResponse> costInformation;
   /// Description related to the product system.
-  final DescriptionResponse description;
+  final pulumi.Input<DescriptionResponse> description;
   /// Dimensions of the configuration.
-  final DimensionsResponse dimensions;
+  final pulumi.Input<DimensionsResponse> dimensions;
   /// Display Name for the product system.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// List of filters supported for a product.
-  final List<FilterablePropertyResponse> filterableProperties;
+  final pulumi.Input<List<FilterablePropertyResponse>> filterableProperties;
   /// The entity responsible for fulfillment of the item at the given hierarchy level.
-  final String fulfilledBy;
+  final pulumi.Input<String> fulfilledBy;
   /// Child configurations present for the configuration after applying child configuration filter, grouped by the category name of the child configuration.
-  final List<GroupedChildConfigurationsResponse> groupedChildConfigurations;
+  final pulumi.Input<List<GroupedChildConfigurationsResponse>> groupedChildConfigurations;
   /// Hierarchy information of a product.
-  final HierarchyInformationResponse hierarchyInformation;
+  final pulumi.Input<HierarchyInformationResponse> hierarchyInformation;
   /// Image information for the product system.
-  final List<ImageInformationResponse> imageInformation;
+  final pulumi.Input<List<ImageInformationResponse>> imageInformation;
   /// Determining nature of provisioning that the configuration supports.
-  final String provisioningSupport;
+  final pulumi.Input<String> provisioningSupport;
   /// Specifications of the configuration.
-  final List<SpecificationResponse> specifications;
+  final pulumi.Input<List<SpecificationResponse>> specifications;
   /// The Term Commitment Durations that are supported for a configuration.
-  final List<String> supportedTermCommitmentDurations;
+  final pulumi.Input<List<String>> supportedTermCommitmentDurations;
 
   /// Creates a new [ConfigurationResponse].
   /// [availabilityInformation] Availability information of the product system.
@@ -76,39 +76,39 @@ class ConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availabilityInformation': availabilityInformation.toMap(),
+      'availabilityInformation': pulumi.Input.mapInputValue<AvailabilityInformationResponse, Map<String, dynamic>>(availabilityInformation, (value) => value.toMap()),
       'childConfigurationTypes': childConfigurationTypes,
-      'costInformation': costInformation.toMap(),
-      'description': description.toMap(),
-      'dimensions': dimensions.toMap(),
+      'costInformation': pulumi.Input.mapInputValue<CostInformationResponse, Map<String, dynamic>>(costInformation, (value) => value.toMap()),
+      'description': pulumi.Input.mapInputValue<DescriptionResponse, Map<String, dynamic>>(description, (value) => value.toMap()),
+      'dimensions': pulumi.Input.mapInputValue<DimensionsResponse, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
       'displayName': displayName,
-      'filterableProperties': pulumi.Input.encodeList<FilterablePropertyResponse, Map<String, dynamic>>(filterableProperties, (value) => value.toMap()),
+      'filterableProperties': pulumi.Input.mapInputValue<List<FilterablePropertyResponse>, List<Map<String, dynamic>>>(filterableProperties, (value) => pulumi.Input.encodeList<FilterablePropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'fulfilledBy': fulfilledBy,
-      'groupedChildConfigurations': pulumi.Input.encodeList<GroupedChildConfigurationsResponse, Map<String, dynamic>>(groupedChildConfigurations, (value) => value.toMap()),
-      'hierarchyInformation': hierarchyInformation.toMap(),
-      'imageInformation': pulumi.Input.encodeList<ImageInformationResponse, Map<String, dynamic>>(imageInformation, (value) => value.toMap()),
+      'groupedChildConfigurations': pulumi.Input.mapInputValue<List<GroupedChildConfigurationsResponse>, List<Map<String, dynamic>>>(groupedChildConfigurations, (value) => pulumi.Input.encodeList<GroupedChildConfigurationsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'hierarchyInformation': pulumi.Input.mapInputValue<HierarchyInformationResponse, Map<String, dynamic>>(hierarchyInformation, (value) => value.toMap()),
+      'imageInformation': pulumi.Input.mapInputValue<List<ImageInformationResponse>, List<Map<String, dynamic>>>(imageInformation, (value) => pulumi.Input.encodeList<ImageInformationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningSupport': provisioningSupport,
-      'specifications': pulumi.Input.encodeList<SpecificationResponse, Map<String, dynamic>>(specifications, (value) => value.toMap()),
+      'specifications': pulumi.Input.mapInputValue<List<SpecificationResponse>, List<Map<String, dynamic>>>(specifications, (value) => pulumi.Input.encodeList<SpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'supportedTermCommitmentDurations': supportedTermCommitmentDurations,
     };
   }
 
   factory ConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationResponse(
-      availabilityInformation: AvailabilityInformationResponse.fromMap((map['availabilityInformation'] as Map).cast<String, dynamic>()),
-      childConfigurationTypes: (map['childConfigurationTypes'] as List).cast<String>(),
-      costInformation: CostInformationResponse.fromMap((map['costInformation'] as Map).cast<String, dynamic>()),
-      description: DescriptionResponse.fromMap((map['description'] as Map).cast<String, dynamic>()),
-      dimensions: DimensionsResponse.fromMap((map['dimensions'] as Map).cast<String, dynamic>()),
-      displayName: map['displayName'] as String,
-      filterableProperties: pulumi.Input.decodeList<FilterablePropertyResponse>(map['filterableProperties'], (value) => FilterablePropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      fulfilledBy: map['fulfilledBy'] as String,
-      groupedChildConfigurations: pulumi.Input.decodeList<GroupedChildConfigurationsResponse>(map['groupedChildConfigurations'], (value) => GroupedChildConfigurationsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      hierarchyInformation: HierarchyInformationResponse.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>()),
-      imageInformation: pulumi.Input.decodeList<ImageInformationResponse>(map['imageInformation'], (value) => ImageInformationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningSupport: map['provisioningSupport'] as String,
-      specifications: pulumi.Input.decodeList<SpecificationResponse>(map['specifications'], (value) => SpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      supportedTermCommitmentDurations: (map['supportedTermCommitmentDurations'] as List).cast<String>(),
+      availabilityInformation: (AvailabilityInformationResponse.fromMap((map['availabilityInformation'] as Map).cast<String, dynamic>())).input(),
+      childConfigurationTypes: ((map['childConfigurationTypes'] as List).cast<String>()).input(),
+      costInformation: (CostInformationResponse.fromMap((map['costInformation'] as Map).cast<String, dynamic>())).input(),
+      description: (DescriptionResponse.fromMap((map['description'] as Map).cast<String, dynamic>())).input(),
+      dimensions: (DimensionsResponse.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      filterableProperties: (pulumi.Input.decodeList<FilterablePropertyResponse>(map['filterableProperties'], (value) => FilterablePropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fulfilledBy: (map['fulfilledBy'] as String).input(),
+      groupedChildConfigurations: (pulumi.Input.decodeList<GroupedChildConfigurationsResponse>(map['groupedChildConfigurations'], (value) => GroupedChildConfigurationsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hierarchyInformation: (HierarchyInformationResponse.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>())).input(),
+      imageInformation: (pulumi.Input.decodeList<ImageInformationResponse>(map['imageInformation'], (value) => ImageInformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningSupport: (map['provisioningSupport'] as String).input(),
+      specifications: (pulumi.Input.decodeList<SpecificationResponse>(map['specifications'], (value) => SpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      supportedTermCommitmentDurations: ((map['supportedTermCommitmentDurations'] as List).cast<String>()).input(),
     );
   }
 }

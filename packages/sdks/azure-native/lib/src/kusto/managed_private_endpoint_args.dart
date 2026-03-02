@@ -31,21 +31,14 @@ class ManagedPrivateEndpointArgs {
   /// [requestMessage] The user request message.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ManagedPrivateEndpointArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> groupId,
-    pulumi.Output<String>? managedPrivateEndpointName,
-    required pulumi.Output<String> privateLinkResourceId,
-    pulumi.Output<String>? privateLinkResourceRegion,
-    pulumi.Output<String>? requestMessage,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      managedPrivateEndpointName = pulumi.Input.asOptionalInput<String>(managedPrivateEndpointName),
-      privateLinkResourceId = pulumi.Input.asInput<String>(privateLinkResourceId),
-      privateLinkResourceRegion = pulumi.Input.asOptionalInput<String>(privateLinkResourceRegion),
-      requestMessage = pulumi.Input.asOptionalInput<String>(requestMessage),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.groupId,
+    this.managedPrivateEndpointName,
+    required this.privateLinkResourceId,
+    this.privateLinkResourceRegion,
+    this.requestMessage,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ManagedPrivateEndpointArgs {
 
   factory ManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      managedPrivateEndpointName: map['managedPrivateEndpointName'] == null ? null : pulumi.Output.create<String>(map['managedPrivateEndpointName'] as String),
-      privateLinkResourceId: pulumi.Output.create<String>(map['privateLinkResourceId'] as String),
-      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : pulumi.Output.create<String>(map['privateLinkResourceRegion'] as String),
-      requestMessage: map['requestMessage'] == null ? null : pulumi.Output.create<String>(map['requestMessage'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      managedPrivateEndpointName: map['managedPrivateEndpointName'] == null ? null : (map['managedPrivateEndpointName'] as String).input(),
+      privateLinkResourceId: (map['privateLinkResourceId'] as String).input(),
+      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : (map['privateLinkResourceRegion'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

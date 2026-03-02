@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFleetScalingConfigurationTargetTrackingScalingConfig {
   /// The metric type to determine auto-scaling.
-  final String metricType;
+  final pulumi.Input<String> metricType;
   /// The value of metric_type when to start scaling.
-  final double targetValue;
+  final pulumi.Input<double> targetValue;
 
   /// Creates a new [GetFleetScalingConfigurationTargetTrackingScalingConfig].
   /// [metricType] The metric type to determine auto-scaling.
@@ -24,8 +25,8 @@ class GetFleetScalingConfigurationTargetTrackingScalingConfig {
 
   factory GetFleetScalingConfigurationTargetTrackingScalingConfig.fromMap(Map<String, dynamic> map) {
     return GetFleetScalingConfigurationTargetTrackingScalingConfig(
-      metricType: map['metricType'] as String,
-      targetValue: map['targetValue'] as double,
+      metricType: (map['metricType'] as String).input(),
+      targetValue: (map['targetValue'] as double).input(),
     );
   }
 }

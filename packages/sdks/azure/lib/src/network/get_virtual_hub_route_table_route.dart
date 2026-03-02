@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualHubRouteTableRoute {
   /// A list of destination addresses for this route.
-  final List<String> destinations;
+  final pulumi.Input<List<String>> destinations;
   /// The type of destinations.
-  final String destinationsType;
+  final pulumi.Input<String> destinationsType;
   /// The name of the Virtual Hub Route Table.
-  final String name;
+  final pulumi.Input<String> name;
   /// The next hop's resource ID.
-  final String nextHop;
+  final pulumi.Input<String> nextHop;
   /// The type of next hop.
-  final String nextHopType;
+  final pulumi.Input<String> nextHopType;
 
   /// Creates a new [GetVirtualHubRouteTableRoute].
   /// [destinations] A list of destination addresses for this route.
@@ -39,11 +40,11 @@ class GetVirtualHubRouteTableRoute {
 
   factory GetVirtualHubRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return GetVirtualHubRouteTableRoute(
-      destinations: (map['destinations'] as List).cast<String>(),
-      destinationsType: map['destinationsType'] as String,
-      name: map['name'] as String,
-      nextHop: map['nextHop'] as String,
-      nextHopType: map['nextHopType'] as String,
+      destinations: ((map['destinations'] as List).cast<String>()).input(),
+      destinationsType: (map['destinationsType'] as String).input(),
+      name: (map['name'] as String).input(),
+      nextHop: (map['nextHop'] as String).input(),
+      nextHopType: (map['nextHopType'] as String).input(),
     );
   }
 }

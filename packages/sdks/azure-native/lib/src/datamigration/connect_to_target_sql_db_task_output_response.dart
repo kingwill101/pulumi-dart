@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Output for the task that validates connection to SQL DB and target server requirements
 class ConnectToTargetSqlDbTaskOutputResponse {
   /// Source databases as a map from database name to database id
-  final Map<String, String> databases;
+  final pulumi.Input<Map<String, String>> databases;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Target server brand version
-  final String targetServerBrandVersion;
+  final pulumi.Input<String> targetServerBrandVersion;
   /// Version of the target server
-  final String targetServerVersion;
+  final pulumi.Input<String> targetServerVersion;
 
   /// Creates a new [ConnectToTargetSqlDbTaskOutputResponse].
   /// [databases] Source databases as a map from database name to database id
@@ -35,10 +36,10 @@ class ConnectToTargetSqlDbTaskOutputResponse {
 
   factory ConnectToTargetSqlDbTaskOutputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlDbTaskOutputResponse(
-      databases: (map['databases'] as Map).cast<String, String>(),
-      id: map['id'] as String,
-      targetServerBrandVersion: map['targetServerBrandVersion'] as String,
-      targetServerVersion: map['targetServerVersion'] as String,
+      databases: ((map['databases'] as Map).cast<String, String>()).input(),
+      id: (map['id'] as String).input(),
+      targetServerBrandVersion: (map['targetServerBrandVersion'] as String).input(),
+      targetServerVersion: (map['targetServerVersion'] as String).input(),
     );
   }
 }

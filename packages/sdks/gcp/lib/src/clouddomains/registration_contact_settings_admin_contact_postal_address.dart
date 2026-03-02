@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistrationContactSettingsAdminContactPostalAddress {
   /// Unstructured address lines describing the lower levels of an address.
@@ -8,27 +9,27 @@ class RegistrationContactSettingsAdminContactPostalAddress {
   /// "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language
   /// is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
   /// the most specific line of an address can be selected based on the language.
-  final List<String>? addressLines;
+  final pulumi.Input<List<String>>? addressLines;
   /// Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
   /// a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
   /// (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
   /// this should be left unpopulated.
-  final String? administrativeArea;
+  final pulumi.Input<String>? administrativeArea;
   /// Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
   /// where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
-  final String? locality;
+  final pulumi.Input<String>? locality;
   /// The name of the organization at the address.
-  final String? organization;
+  final pulumi.Input<String>? organization;
   /// Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
   /// they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
-  final String? postalCode;
+  final pulumi.Input<String>? postalCode;
   /// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
   /// it might contain "care of" information.
-  final List<String>? recipients;
+  final pulumi.Input<List<String>>? recipients;
   /// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
   /// ensure the value is correct. See https://cldr.unicode.org/ and
   /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-  final String regionCode;
+  final pulumi.Input<String> regionCode;
 
   /// Creates a new [RegistrationContactSettingsAdminContactPostalAddress].
   /// [addressLines] Unstructured address lines describing the lower levels of an address.
@@ -62,13 +63,13 @@ class RegistrationContactSettingsAdminContactPostalAddress {
 
   factory RegistrationContactSettingsAdminContactPostalAddress.fromMap(Map<String, dynamic> map) {
     return RegistrationContactSettingsAdminContactPostalAddress(
-      addressLines: map['addressLines'] == null ? null : (map['addressLines'] as List).cast<String>(),
-      administrativeArea: map['administrativeArea'] == null ? null : map['administrativeArea'] as String,
-      locality: map['locality'] == null ? null : map['locality'] as String,
-      organization: map['organization'] == null ? null : map['organization'] as String,
-      postalCode: map['postalCode'] == null ? null : map['postalCode'] as String,
-      recipients: map['recipients'] == null ? null : (map['recipients'] as List).cast<String>(),
-      regionCode: map['regionCode'] as String,
+      addressLines: map['addressLines'] == null ? null : ((map['addressLines'] as List).cast<String>()).input(),
+      administrativeArea: map['administrativeArea'] == null ? null : (map['administrativeArea'] as String).input(),
+      locality: map['locality'] == null ? null : (map['locality'] as String).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
+      recipients: map['recipients'] == null ? null : ((map['recipients'] as List).cast<String>()).input(),
+      regionCode: (map['regionCode'] as String).input(),
     );
   }
 }

@@ -9,9 +9,9 @@ class DeviceAllocationResultPatch {
   /// This field is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag.
   ///
   /// This includes configuration parameters for drivers which have no allocated devices in the result because it is up to the drivers which configuration parameters they support. They can silently ignore unknown configuration parameters.
-  final List<DeviceAllocationConfigurationPatch>? config;
+  final pulumi.Input<List<DeviceAllocationConfigurationPatch>>? config;
   /// Results lists all allocated devices.
-  final List<DeviceRequestAllocationResultPatch>? results;
+  final pulumi.Input<List<DeviceRequestAllocationResultPatch>>? results;
 
   /// Creates a new [DeviceAllocationResultPatch].
   /// [config] This field is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag.
@@ -23,15 +23,15 @@ class DeviceAllocationResultPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': ?config == null ? null : pulumi.Input.encodeList<DeviceAllocationConfigurationPatch, Map<String, dynamic>>(config!, (value) => value.toMap()),
-      'results': ?results == null ? null : pulumi.Input.encodeList<DeviceRequestAllocationResultPatch, Map<String, dynamic>>(results!, (value) => value.toMap()),
+      'config': ?pulumi.Input.mapOptionalInputValue<List<DeviceAllocationConfigurationPatch>, List<Map<String, dynamic>>>(config, (value) => pulumi.Input.encodeList<DeviceAllocationConfigurationPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'results': ?pulumi.Input.mapOptionalInputValue<List<DeviceRequestAllocationResultPatch>, List<Map<String, dynamic>>>(results, (value) => pulumi.Input.encodeList<DeviceRequestAllocationResultPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DeviceAllocationResultPatch.fromMap(Map<String, dynamic> map) {
     return DeviceAllocationResultPatch(
-      config: map['config'] == null ? null : pulumi.Input.decodeList<DeviceAllocationConfigurationPatch>(map['config'], (value) => DeviceAllocationConfigurationPatch.fromMap((value as Map).cast<String, dynamic>())),
-      results: map['results'] == null ? null : pulumi.Input.decodeList<DeviceRequestAllocationResultPatch>(map['results'], (value) => DeviceRequestAllocationResultPatch.fromMap((value as Map).cast<String, dynamic>())),
+      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceAllocationConfigurationPatch>(map['config'], (value) => DeviceAllocationConfigurationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      results: map['results'] == null ? null : (pulumi.Input.decodeList<DeviceRequestAllocationResultPatch>(map['results'], (value) => DeviceRequestAllocationResultPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

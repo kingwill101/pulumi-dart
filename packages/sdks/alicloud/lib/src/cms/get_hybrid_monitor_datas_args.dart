@@ -28,19 +28,13 @@ class GetHybridMonitorDatasArgs {
   /// [promSql] The name of the metric. Note PromQL statements are supported.
   /// [start] The timestamp that specifies the beginning of the time range to query.
   GetHybridMonitorDatasArgs({
-    required pulumi.Output<String> end,
-    required pulumi.Output<String> namespace,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? period,
-    required pulumi.Output<String> promSql,
-    required pulumi.Output<String> start,
-  }) :
-      end = pulumi.Input.asInput<String>(end),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      period = pulumi.Input.asOptionalInput<String>(period),
-      promSql = pulumi.Input.asInput<String>(promSql),
-      start = pulumi.Input.asInput<String>(start);
+    required this.end,
+    required this.namespace,
+    this.outputFile,
+    this.period,
+    required this.promSql,
+    required this.start,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetHybridMonitorDatasArgs {
 
   factory GetHybridMonitorDatasArgs.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorDatasArgs(
-      end: pulumi.Output.create<String>(map['end'] as String),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<String>(map['period'] as String),
-      promSql: pulumi.Output.create<String>(map['promSql'] as String),
-      start: pulumi.Output.create<String>(map['start'] as String),
+      end: (map['end'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as String).input(),
+      promSql: (map['promSql'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

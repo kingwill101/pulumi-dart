@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentIdentifier {
   /// The environment name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The organization name.
-  final String organization;
+  final pulumi.Input<String> organization;
   /// The project name.
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [EnvironmentIdentifier].
   /// [name] The environment name.
@@ -29,9 +30,9 @@ class EnvironmentIdentifier {
 
   factory EnvironmentIdentifier.fromMap(Map<String, dynamic> map) {
     return EnvironmentIdentifier(
-      name: map['name'] as String,
-      organization: map['organization'] as String,
-      project: map['project'] as String,
+      name: (map['name'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

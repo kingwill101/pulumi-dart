@@ -44,23 +44,15 @@ class QosPolicyArgs {
   /// [tags] A set of string tags for the QoS policy.
   /// [valueSpecs] Map of additional options.
   QosPolicyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? isDefault,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? shared,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      isDefault = pulumi.Input.asOptionalInput<bool>(isDefault),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shared = pulumi.Input.asOptionalInput<bool>(shared),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs);
+    this.description,
+    this.isDefault,
+    this.name,
+    this.projectId,
+    this.region,
+    this.shared,
+    this.tags,
+    this.valueSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,14 +69,14 @@ class QosPolicyArgs {
 
   factory QosPolicyArgs.fromMap(Map<String, dynamic> map) {
     return QosPolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      isDefault: map['isDefault'] == null ? null : pulumi.Output.create<bool>(map['isDefault'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shared: map['shared'] == null ? null : pulumi.Output.create<bool>(map['shared'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
     );
   }
 }

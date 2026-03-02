@@ -8,17 +8,17 @@ class VpnConnectionDetail {
   /// (Output)
   /// The Cloud Router info.
   /// Structure is documented below.
-  final List<VpnConnectionDetailCloudRouter>? cloudRouters;
+  final pulumi.Input<List<VpnConnectionDetailCloudRouter>>? cloudRouters;
   /// (Output)
   /// Each connection has multiple Cloud VPN gateways.
   /// Structure is documented below.
-  final List<VpnConnectionDetailCloudVpn>? cloudVpns;
+  final pulumi.Input<List<VpnConnectionDetailCloudVpn>>? cloudVpns;
   /// (Output)
   /// The error message. This is only populated when state=ERROR.
-  final String? error;
+  final pulumi.Input<String>? error;
   /// (Output)
   /// The current connection state.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [VpnConnectionDetail].
   /// [cloudRouters] (Output)
@@ -34,8 +34,8 @@ class VpnConnectionDetail {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudRouters': ?cloudRouters == null ? null : pulumi.Input.encodeList<VpnConnectionDetailCloudRouter, Map<String, dynamic>>(cloudRouters!, (value) => value.toMap()),
-      'cloudVpns': ?cloudVpns == null ? null : pulumi.Input.encodeList<VpnConnectionDetailCloudVpn, Map<String, dynamic>>(cloudVpns!, (value) => value.toMap()),
+      'cloudRouters': ?pulumi.Input.mapOptionalInputValue<List<VpnConnectionDetailCloudRouter>, List<Map<String, dynamic>>>(cloudRouters, (value) => pulumi.Input.encodeList<VpnConnectionDetailCloudRouter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cloudVpns': ?pulumi.Input.mapOptionalInputValue<List<VpnConnectionDetailCloudVpn>, List<Map<String, dynamic>>>(cloudVpns, (value) => pulumi.Input.encodeList<VpnConnectionDetailCloudVpn, Map<String, dynamic>>(value, (value) => value.toMap())),
       'error': ?error,
       'state': ?state,
     };
@@ -43,10 +43,10 @@ class VpnConnectionDetail {
 
   factory VpnConnectionDetail.fromMap(Map<String, dynamic> map) {
     return VpnConnectionDetail(
-      cloudRouters: map['cloudRouters'] == null ? null : pulumi.Input.decodeList<VpnConnectionDetailCloudRouter>(map['cloudRouters'], (value) => VpnConnectionDetailCloudRouter.fromMap((value as Map).cast<String, dynamic>())),
-      cloudVpns: map['cloudVpns'] == null ? null : pulumi.Input.decodeList<VpnConnectionDetailCloudVpn>(map['cloudVpns'], (value) => VpnConnectionDetailCloudVpn.fromMap((value as Map).cast<String, dynamic>())),
-      error: map['error'] == null ? null : map['error'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      cloudRouters: map['cloudRouters'] == null ? null : (pulumi.Input.decodeList<VpnConnectionDetailCloudRouter>(map['cloudRouters'], (value) => VpnConnectionDetailCloudRouter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudVpns: map['cloudVpns'] == null ? null : (pulumi.Input.decodeList<VpnConnectionDetailCloudVpn>(map['cloudVpns'], (value) => VpnConnectionDetailCloudVpn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      error: map['error'] == null ? null : (map['error'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

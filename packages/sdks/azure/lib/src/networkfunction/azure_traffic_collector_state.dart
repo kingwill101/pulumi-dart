@@ -25,19 +25,13 @@ class AzureTrafficCollectorState {
   /// [tags] A mapping of tags which should be assigned to the Network Function Azure Traffic Collector.
   /// [virtualHubIds] The Resource ID of virtual hub.
   AzureTrafficCollectorState({
-    pulumi.Output<List<String>>? collectorPolicyIds,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? virtualHubIds,
-  }) :
-      collectorPolicyIds = pulumi.Input.asOptionalInput<List<String>>(collectorPolicyIds),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualHubIds = pulumi.Input.asOptionalInput<List<String>>(virtualHubIds);
+    this.collectorPolicyIds,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.tags,
+    this.virtualHubIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class AzureTrafficCollectorState {
 
   factory AzureTrafficCollectorState.fromMap(Map<String, dynamic> map) {
     return AzureTrafficCollectorState(
-      collectorPolicyIds: map['collectorPolicyIds'] == null ? null : pulumi.Output.create<List<String>>((map['collectorPolicyIds'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualHubIds: map['virtualHubIds'] == null ? null : pulumi.Output.create<List<String>>((map['virtualHubIds'] as List).cast<String>()),
+      collectorPolicyIds: map['collectorPolicyIds'] == null ? null : ((map['collectorPolicyIds'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualHubIds: map['virtualHubIds'] == null ? null : ((map['virtualHubIds'] as List).cast<String>()).input(),
     );
   }
 }

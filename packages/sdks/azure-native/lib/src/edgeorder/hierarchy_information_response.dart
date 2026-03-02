@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Holds details about product hierarchy information.
 class HierarchyInformationResponse {
   /// Represents Model Display Name.
-  final String? configurationIdDisplayName;
+  final pulumi.Input<String>? configurationIdDisplayName;
   /// Represents configuration name that uniquely identifies configuration.
-  final String? configurationName;
+  final pulumi.Input<String>? configurationName;
   /// Represents product family name that uniquely identifies product family.
-  final String? productFamilyName;
+  final pulumi.Input<String>? productFamilyName;
   /// Represents product line name that uniquely identifies product line.
-  final String? productLineName;
+  final pulumi.Input<String>? productLineName;
   /// Represents product name that uniquely identifies product.
-  final String? productName;
+  final pulumi.Input<String>? productName;
 
   /// Creates a new [HierarchyInformationResponse].
   /// [configurationIdDisplayName] Represents Model Display Name.
@@ -40,11 +41,11 @@ class HierarchyInformationResponse {
 
   factory HierarchyInformationResponse.fromMap(Map<String, dynamic> map) {
     return HierarchyInformationResponse(
-      configurationIdDisplayName: map['configurationIdDisplayName'] == null ? null : map['configurationIdDisplayName'] as String,
-      configurationName: map['configurationName'] == null ? null : map['configurationName'] as String,
-      productFamilyName: map['productFamilyName'] == null ? null : map['productFamilyName'] as String,
-      productLineName: map['productLineName'] == null ? null : map['productLineName'] as String,
-      productName: map['productName'] == null ? null : map['productName'] as String,
+      configurationIdDisplayName: map['configurationIdDisplayName'] == null ? null : (map['configurationIdDisplayName'] as String).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
+      productFamilyName: map['productFamilyName'] == null ? null : (map['productFamilyName'] as String).input(),
+      productLineName: map['productLineName'] == null ? null : (map['productLineName'] as String).input(),
+      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserProvisioningUserProvisioningStatistic {
   /// Number of failed events
-  final int? failedEventCount;
+  final pulumi.Input<int>? failedEventCount;
   /// Last Provisioning time
-  final String? gmtLatestSync;
+  final pulumi.Input<String>? gmtLatestSync;
 
   /// Creates a new [UserProvisioningUserProvisioningStatistic].
   /// [failedEventCount] Number of failed events
@@ -24,8 +25,8 @@ class UserProvisioningUserProvisioningStatistic {
 
   factory UserProvisioningUserProvisioningStatistic.fromMap(Map<String, dynamic> map) {
     return UserProvisioningUserProvisioningStatistic(
-      failedEventCount: map['failedEventCount'] == null ? null : map['failedEventCount'] as int,
-      gmtLatestSync: map['gmtLatestSync'] == null ? null : map['gmtLatestSync'] as String,
+      failedEventCount: map['failedEventCount'] == null ? null : (map['failedEventCount'] as int).input(),
+      gmtLatestSync: map['gmtLatestSync'] == null ? null : (map['gmtLatestSync'] as String).input(),
     );
   }
 }

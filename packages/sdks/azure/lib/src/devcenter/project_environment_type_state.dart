@@ -33,23 +33,15 @@ class ProjectEnvironmentTypeState {
   /// [tags] A mapping of tags which should be assigned to the Dev Center Project Environment Type.
   /// [userRoleAssignments] A `user_role_assignment` block as defined below.
   ProjectEnvironmentTypeState({
-    pulumi.Output<List<String>>? creatorRoleAssignmentRoles,
-    pulumi.Output<String>? deploymentTargetId,
-    pulumi.Output<String>? devCenterProjectId,
-    pulumi.Output<ProjectEnvironmentTypeIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<ProjectEnvironmentTypeUserRoleAssignment>>? userRoleAssignments,
-  }) :
-      creatorRoleAssignmentRoles = pulumi.Input.asOptionalInput<List<String>>(creatorRoleAssignmentRoles),
-      deploymentTargetId = pulumi.Input.asOptionalInput<String>(deploymentTargetId),
-      devCenterProjectId = pulumi.Input.asOptionalInput<String>(devCenterProjectId),
-      identity = pulumi.Input.asOptionalInput<ProjectEnvironmentTypeIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userRoleAssignments = pulumi.Input.asOptionalInput<List<ProjectEnvironmentTypeUserRoleAssignment>>(userRoleAssignments);
+    this.creatorRoleAssignmentRoles,
+    this.deploymentTargetId,
+    this.devCenterProjectId,
+    this.identity,
+    this.location,
+    this.name,
+    this.tags,
+    this.userRoleAssignments,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ProjectEnvironmentTypeState {
 
   factory ProjectEnvironmentTypeState.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentTypeState(
-      creatorRoleAssignmentRoles: map['creatorRoleAssignmentRoles'] == null ? null : pulumi.Output.create<List<String>>((map['creatorRoleAssignmentRoles'] as List).cast<String>()),
-      deploymentTargetId: map['deploymentTargetId'] == null ? null : pulumi.Output.create<String>(map['deploymentTargetId'] as String),
-      devCenterProjectId: map['devCenterProjectId'] == null ? null : pulumi.Output.create<String>(map['devCenterProjectId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ProjectEnvironmentTypeIdentity>(ProjectEnvironmentTypeIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userRoleAssignments: map['userRoleAssignments'] == null ? null : pulumi.Output.create<List<ProjectEnvironmentTypeUserRoleAssignment>>(pulumi.Input.decodeList<ProjectEnvironmentTypeUserRoleAssignment>(map['userRoleAssignments'], (value) => ProjectEnvironmentTypeUserRoleAssignment.fromMap((value as Map).cast<String, dynamic>()))),
+      creatorRoleAssignmentRoles: map['creatorRoleAssignmentRoles'] == null ? null : ((map['creatorRoleAssignmentRoles'] as List).cast<String>()).input(),
+      deploymentTargetId: map['deploymentTargetId'] == null ? null : (map['deploymentTargetId'] as String).input(),
+      devCenterProjectId: map['devCenterProjectId'] == null ? null : (map['devCenterProjectId'] as String).input(),
+      identity: map['identity'] == null ? null : (ProjectEnvironmentTypeIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userRoleAssignments: map['userRoleAssignments'] == null ? null : (pulumi.Input.decodeList<ProjectEnvironmentTypeUserRoleAssignment>(map['userRoleAssignments'], (value) => ProjectEnvironmentTypeUserRoleAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

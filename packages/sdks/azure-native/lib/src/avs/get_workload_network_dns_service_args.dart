@@ -19,13 +19,10 @@ class GetWorkloadNetworkDnsServiceArgs {
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetWorkloadNetworkDnsServiceArgs({
-    required pulumi.Output<String> dnsServiceId,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dnsServiceId = pulumi.Input.asInput<String>(dnsServiceId),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dnsServiceId,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWorkloadNetworkDnsServiceArgs {
 
   factory GetWorkloadNetworkDnsServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkDnsServiceArgs(
-      dnsServiceId: pulumi.Output.create<String>(map['dnsServiceId'] as String),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dnsServiceId: (map['dnsServiceId'] as String).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

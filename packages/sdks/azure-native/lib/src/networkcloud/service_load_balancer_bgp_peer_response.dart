@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceLoadBalancerBgpPeerResponse {
   /// The indicator of BFD enablement for this BgpPeer.
-  final String? bfdEnabled;
+  final pulumi.Input<String>? bfdEnabled;
   /// The indicator to enable multi-hop peering support.
-  final String? bgpMultiHop;
+  final pulumi.Input<String>? bgpMultiHop;
   /// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
-  final String? holdTime;
+  final pulumi.Input<String>? holdTime;
   /// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
-  final String? keepAliveTime;
+  final pulumi.Input<String>? keepAliveTime;
   /// The autonomous system number used for the local end of the BGP session.
-  final double? myAsn;
+  final pulumi.Input<double>? myAsn;
   /// The name used to identify this BGP peer for association with a BGP advertisement.
-  final String name;
+  final pulumi.Input<String> name;
   /// The IPv4 or IPv6 address used to connect this BGP session.
-  final String peerAddress;
+  final pulumi.Input<String> peerAddress;
   /// The autonomous system number expected from the remote end of the BGP session.
-  final double peerAsn;
+  final pulumi.Input<double> peerAsn;
   /// The port used to connect this BGP session.
-  final double? peerPort;
+  final pulumi.Input<double>? peerPort;
 
   /// Creates a new [ServiceLoadBalancerBgpPeerResponse].
   /// [bfdEnabled] The indicator of BFD enablement for this BgpPeer.
@@ -59,15 +60,15 @@ class ServiceLoadBalancerBgpPeerResponse {
 
   factory ServiceLoadBalancerBgpPeerResponse.fromMap(Map<String, dynamic> map) {
     return ServiceLoadBalancerBgpPeerResponse(
-      bfdEnabled: map['bfdEnabled'] == null ? null : map['bfdEnabled'] as String,
-      bgpMultiHop: map['bgpMultiHop'] == null ? null : map['bgpMultiHop'] as String,
-      holdTime: map['holdTime'] == null ? null : map['holdTime'] as String,
-      keepAliveTime: map['keepAliveTime'] == null ? null : map['keepAliveTime'] as String,
-      myAsn: map['myAsn'] == null ? null : map['myAsn'] as double,
-      name: map['name'] as String,
-      peerAddress: map['peerAddress'] as String,
-      peerAsn: map['peerAsn'] as double,
-      peerPort: map['peerPort'] == null ? null : map['peerPort'] as double,
+      bfdEnabled: map['bfdEnabled'] == null ? null : (map['bfdEnabled'] as String).input(),
+      bgpMultiHop: map['bgpMultiHop'] == null ? null : (map['bgpMultiHop'] as String).input(),
+      holdTime: map['holdTime'] == null ? null : (map['holdTime'] as String).input(),
+      keepAliveTime: map['keepAliveTime'] == null ? null : (map['keepAliveTime'] as String).input(),
+      myAsn: map['myAsn'] == null ? null : (map['myAsn'] as double).input(),
+      name: (map['name'] as String).input(),
+      peerAddress: (map['peerAddress'] as String).input(),
+      peerAsn: (map['peerAsn'] as double).input(),
+      peerPort: map['peerPort'] == null ? null : (map['peerPort'] as double).input(),
     );
   }
 }

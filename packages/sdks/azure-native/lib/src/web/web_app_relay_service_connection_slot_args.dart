@@ -36,29 +36,18 @@ class WebAppRelayServiceConnectionSlotArgs {
   /// [resourceType] Optional.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will create or update a hybrid connection for the production slot.
   WebAppRelayServiceConnectionSlotArgs({
-    pulumi.Output<String>? biztalkUri,
-    pulumi.Output<String>? entityConnectionString,
-    pulumi.Output<String>? entityName,
-    pulumi.Output<String>? hostname,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? resourceConnectionString,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceType,
-    required pulumi.Output<String> slot,
-  }) :
-      biztalkUri = pulumi.Input.asOptionalInput<String>(biztalkUri),
-      entityConnectionString = pulumi.Input.asOptionalInput<String>(entityConnectionString),
-      entityName = pulumi.Input.asOptionalInput<String>(entityName),
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      resourceConnectionString = pulumi.Input.asOptionalInput<String>(resourceConnectionString),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      slot = pulumi.Input.asInput<String>(slot);
+    this.biztalkUri,
+    this.entityConnectionString,
+    this.entityName,
+    this.hostname,
+    this.kind,
+    required this.name,
+    this.port,
+    this.resourceConnectionString,
+    required this.resourceGroupName,
+    this.resourceType,
+    required this.slot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,17 +67,17 @@ class WebAppRelayServiceConnectionSlotArgs {
 
   factory WebAppRelayServiceConnectionSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppRelayServiceConnectionSlotArgs(
-      biztalkUri: map['biztalkUri'] == null ? null : pulumi.Output.create<String>(map['biztalkUri'] as String),
-      entityConnectionString: map['entityConnectionString'] == null ? null : pulumi.Output.create<String>(map['entityConnectionString'] as String),
-      entityName: map['entityName'] == null ? null : pulumi.Output.create<String>(map['entityName'] as String),
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      resourceConnectionString: map['resourceConnectionString'] == null ? null : pulumi.Output.create<String>(map['resourceConnectionString'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
+      biztalkUri: map['biztalkUri'] == null ? null : (map['biztalkUri'] as String).input(),
+      entityConnectionString: map['entityConnectionString'] == null ? null : (map['entityConnectionString'] as String).input(),
+      entityName: map['entityName'] == null ? null : (map['entityName'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      resourceConnectionString: map['resourceConnectionString'] == null ? null : (map['resourceConnectionString'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      slot: (map['slot'] as String).input(),
     );
   }
 }

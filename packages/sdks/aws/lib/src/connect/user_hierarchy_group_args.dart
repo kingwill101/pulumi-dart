@@ -26,17 +26,12 @@ class UserHierarchyGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the hierarchy group. If configured with a provider
   UserHierarchyGroupArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentGroupId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentGroupId = pulumi.Input.asOptionalInput<String>(parentGroupId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.instanceId,
+    this.name,
+    this.parentGroupId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class UserHierarchyGroupArgs {
 
   factory UserHierarchyGroupArgs.fromMap(Map<String, dynamic> map) {
     return UserHierarchyGroupArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentGroupId: map['parentGroupId'] == null ? null : pulumi.Output.create<String>(map['parentGroupId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentGroupId: map['parentGroupId'] == null ? null : (map['parentGroupId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

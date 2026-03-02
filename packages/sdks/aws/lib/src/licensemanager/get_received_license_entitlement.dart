@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReceivedLicenseEntitlement {
   /// Indicates whether check-ins are allowed.
-  final bool allowCheckIn;
+  final pulumi.Input<bool> allowCheckIn;
   /// Maximum entitlement count. Use if the unit is not None.
-  final int maxCount;
+  final pulumi.Input<int> maxCount;
   /// The key name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates whether overages are allowed.
-  final bool overage;
+  final pulumi.Input<bool> overage;
   /// Entitlement unit.
-  final String unit;
+  final pulumi.Input<String> unit;
   /// The value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetReceivedLicenseEntitlement].
   /// [allowCheckIn] Indicates whether check-ins are allowed.
@@ -44,12 +45,12 @@ class GetReceivedLicenseEntitlement {
 
   factory GetReceivedLicenseEntitlement.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseEntitlement(
-      allowCheckIn: map['allowCheckIn'] as bool,
-      maxCount: map['maxCount'] as int,
-      name: map['name'] as String,
-      overage: map['overage'] as bool,
-      unit: map['unit'] as String,
-      value: map['value'] as String,
+      allowCheckIn: (map['allowCheckIn'] as bool).input(),
+      maxCount: (map['maxCount'] as int).input(),
+      name: (map['name'] as String).input(),
+      overage: (map['overage'] as bool).input(),
+      unit: (map['unit'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cloud Storage object representation.
 class GcsObjectResponse {
   /// Bucket of the Cloud Storage object.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-  final String generationNumber;
+  final pulumi.Input<String> generationNumber;
   /// Name of the Cloud Storage object.
-  final String object;
+  final pulumi.Input<String> object;
 
   /// Creates a new [GcsObjectResponse].
   /// [bucket] Bucket of the Cloud Storage object.
@@ -30,9 +31,9 @@ class GcsObjectResponse {
 
   factory GcsObjectResponse.fromMap(Map<String, dynamic> map) {
     return GcsObjectResponse(
-      bucket: map['bucket'] as String,
-      generationNumber: map['generationNumber'] as String,
-      object: map['object'] as String,
+      bucket: (map['bucket'] as String).input(),
+      generationNumber: (map['generationNumber'] as String).input(),
+      object: (map['object'] as String).input(),
     );
   }
 }

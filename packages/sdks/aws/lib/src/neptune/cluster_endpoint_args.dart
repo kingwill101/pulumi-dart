@@ -31,21 +31,14 @@ class ClusterEndpointArgs {
   /// [staticMembers] List of DB instance identifiers that are part of the custom endpoint group.
   /// [tags] A map of tags to assign to the Neptune cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ClusterEndpointArgs({
-    required pulumi.Output<String> clusterEndpointIdentifier,
-    required pulumi.Output<String> clusterIdentifier,
-    required pulumi.Output<String> endpointType,
-    pulumi.Output<List<String>>? excludedMembers,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? staticMembers,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterEndpointIdentifier = pulumi.Input.asInput<String>(clusterEndpointIdentifier),
-      clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
-      endpointType = pulumi.Input.asInput<String>(endpointType),
-      excludedMembers = pulumi.Input.asOptionalInput<List<String>>(excludedMembers),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      staticMembers = pulumi.Input.asOptionalInput<List<String>>(staticMembers),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.clusterEndpointIdentifier,
+    required this.clusterIdentifier,
+    required this.endpointType,
+    this.excludedMembers,
+    this.region,
+    this.staticMembers,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ClusterEndpointArgs {
 
   factory ClusterEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ClusterEndpointArgs(
-      clusterEndpointIdentifier: pulumi.Output.create<String>(map['clusterEndpointIdentifier'] as String),
-      clusterIdentifier: pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      endpointType: pulumi.Output.create<String>(map['endpointType'] as String),
-      excludedMembers: map['excludedMembers'] == null ? null : pulumi.Output.create<List<String>>((map['excludedMembers'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      staticMembers: map['staticMembers'] == null ? null : pulumi.Output.create<List<String>>((map['staticMembers'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterEndpointIdentifier: (map['clusterEndpointIdentifier'] as String).input(),
+      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      excludedMembers: map['excludedMembers'] == null ? null : ((map['excludedMembers'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      staticMembers: map['staticMembers'] == null ? null : ((map['staticMembers'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

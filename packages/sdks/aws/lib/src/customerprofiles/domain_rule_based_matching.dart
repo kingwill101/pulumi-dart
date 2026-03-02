@@ -8,20 +8,20 @@ import 'domain_rule_based_matching_matching_rule.dart';
 
 class DomainRuleBasedMatching {
   /// A block that configures information about the `AttributeTypesSelector` where the rule-based identity resolution uses to match profiles. Documented below.
-  final DomainRuleBasedMatchingAttributeTypesSelector? attributeTypesSelector;
+  final pulumi.Input<DomainRuleBasedMatchingAttributeTypesSelector>? attributeTypesSelector;
   /// A block that specifies how the auto-merging process should resolve conflicts between different profiles. Documented below.
-  final DomainRuleBasedMatchingConflictResolution? conflictResolution;
+  final pulumi.Input<DomainRuleBasedMatchingConflictResolution>? conflictResolution;
   /// The flag that enables the rule-based matching process of duplicate profiles.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// A block that specifies the configuration for exporting Identity Resolution results. Documented below.
-  final DomainRuleBasedMatchingExportingConfig? exportingConfig;
+  final pulumi.Input<DomainRuleBasedMatchingExportingConfig>? exportingConfig;
   /// A block that configures how the rule-based matching process should match profiles. You can have up to 15 `rule` in the `natching_rules`. Documented below.
-  final List<DomainRuleBasedMatchingMatchingRule>? matchingRules;
+  final pulumi.Input<List<DomainRuleBasedMatchingMatchingRule>>? matchingRules;
   /// Indicates the maximum allowed rule level for matching.
-  final int? maxAllowedRuleLevelForMatching;
+  final pulumi.Input<int>? maxAllowedRuleLevelForMatching;
   /// Indicates the maximum allowed rule level for merging.
-  final int? maxAllowedRuleLevelForMerging;
-  final String? status;
+  final pulumi.Input<int>? maxAllowedRuleLevelForMerging;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [DomainRuleBasedMatching].
   /// [attributeTypesSelector] A block that configures information about the `AttributeTypesSelector` where the rule-based identity resolution uses to match profiles. Documented below.
@@ -45,11 +45,11 @@ class DomainRuleBasedMatching {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributeTypesSelector': ?attributeTypesSelector == null ? null : attributeTypesSelector!.toMap(),
-      'conflictResolution': ?conflictResolution == null ? null : conflictResolution!.toMap(),
+      'attributeTypesSelector': ?pulumi.Input.mapOptionalInputValue<DomainRuleBasedMatchingAttributeTypesSelector, Map<String, dynamic>>(attributeTypesSelector, (value) => value.toMap()),
+      'conflictResolution': ?pulumi.Input.mapOptionalInputValue<DomainRuleBasedMatchingConflictResolution, Map<String, dynamic>>(conflictResolution, (value) => value.toMap()),
       'enabled': enabled,
-      'exportingConfig': ?exportingConfig == null ? null : exportingConfig!.toMap(),
-      'matchingRules': ?matchingRules == null ? null : pulumi.Input.encodeList<DomainRuleBasedMatchingMatchingRule, Map<String, dynamic>>(matchingRules!, (value) => value.toMap()),
+      'exportingConfig': ?pulumi.Input.mapOptionalInputValue<DomainRuleBasedMatchingExportingConfig, Map<String, dynamic>>(exportingConfig, (value) => value.toMap()),
+      'matchingRules': ?pulumi.Input.mapOptionalInputValue<List<DomainRuleBasedMatchingMatchingRule>, List<Map<String, dynamic>>>(matchingRules, (value) => pulumi.Input.encodeList<DomainRuleBasedMatchingMatchingRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'maxAllowedRuleLevelForMatching': ?maxAllowedRuleLevelForMatching,
       'maxAllowedRuleLevelForMerging': ?maxAllowedRuleLevelForMerging,
       'status': ?status,
@@ -58,14 +58,14 @@ class DomainRuleBasedMatching {
 
   factory DomainRuleBasedMatching.fromMap(Map<String, dynamic> map) {
     return DomainRuleBasedMatching(
-      attributeTypesSelector: map['attributeTypesSelector'] == null ? null : DomainRuleBasedMatchingAttributeTypesSelector.fromMap((map['attributeTypesSelector'] as Map).cast<String, dynamic>()),
-      conflictResolution: map['conflictResolution'] == null ? null : DomainRuleBasedMatchingConflictResolution.fromMap((map['conflictResolution'] as Map).cast<String, dynamic>()),
-      enabled: map['enabled'] as bool,
-      exportingConfig: map['exportingConfig'] == null ? null : DomainRuleBasedMatchingExportingConfig.fromMap((map['exportingConfig'] as Map).cast<String, dynamic>()),
-      matchingRules: map['matchingRules'] == null ? null : pulumi.Input.decodeList<DomainRuleBasedMatchingMatchingRule>(map['matchingRules'], (value) => DomainRuleBasedMatchingMatchingRule.fromMap((value as Map).cast<String, dynamic>())),
-      maxAllowedRuleLevelForMatching: map['maxAllowedRuleLevelForMatching'] == null ? null : map['maxAllowedRuleLevelForMatching'] as int,
-      maxAllowedRuleLevelForMerging: map['maxAllowedRuleLevelForMerging'] == null ? null : map['maxAllowedRuleLevelForMerging'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      attributeTypesSelector: map['attributeTypesSelector'] == null ? null : (DomainRuleBasedMatchingAttributeTypesSelector.fromMap((map['attributeTypesSelector'] as Map).cast<String, dynamic>())).input(),
+      conflictResolution: map['conflictResolution'] == null ? null : (DomainRuleBasedMatchingConflictResolution.fromMap((map['conflictResolution'] as Map).cast<String, dynamic>())).input(),
+      enabled: (map['enabled'] as bool).input(),
+      exportingConfig: map['exportingConfig'] == null ? null : (DomainRuleBasedMatchingExportingConfig.fromMap((map['exportingConfig'] as Map).cast<String, dynamic>())).input(),
+      matchingRules: map['matchingRules'] == null ? null : (pulumi.Input.decodeList<DomainRuleBasedMatchingMatchingRule>(map['matchingRules'], (value) => DomainRuleBasedMatchingMatchingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxAllowedRuleLevelForMatching: map['maxAllowedRuleLevelForMatching'] == null ? null : (map['maxAllowedRuleLevelForMatching'] as int).input(),
+      maxAllowedRuleLevelForMerging: map['maxAllowedRuleLevelForMerging'] == null ? null : (map['maxAllowedRuleLevelForMerging'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

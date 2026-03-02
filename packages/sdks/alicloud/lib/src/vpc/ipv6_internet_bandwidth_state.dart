@@ -22,17 +22,12 @@ class Ipv6InternetBandwidthState {
   /// [ipv6GatewayId] The ID of the IPv6 gateway to which the IPv6 address belongs.
   /// [status] The status of the resource.
   Ipv6InternetBandwidthState({
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<String>? internetChargeType,
-    pulumi.Output<String>? ipv6AddressId,
-    pulumi.Output<String>? ipv6GatewayId,
-    pulumi.Output<String>? status,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      internetChargeType = pulumi.Input.asOptionalInput<String>(internetChargeType),
-      ipv6AddressId = pulumi.Input.asOptionalInput<String>(ipv6AddressId),
-      ipv6GatewayId = pulumi.Input.asOptionalInput<String>(ipv6GatewayId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bandwidth,
+    this.internetChargeType,
+    this.ipv6AddressId,
+    this.ipv6GatewayId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class Ipv6InternetBandwidthState {
 
   factory Ipv6InternetBandwidthState.fromMap(Map<String, dynamic> map) {
     return Ipv6InternetBandwidthState(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      internetChargeType: map['internetChargeType'] == null ? null : pulumi.Output.create<String>(map['internetChargeType'] as String),
-      ipv6AddressId: map['ipv6AddressId'] == null ? null : pulumi.Output.create<String>(map['ipv6AddressId'] as String),
-      ipv6GatewayId: map['ipv6GatewayId'] == null ? null : pulumi.Output.create<String>(map['ipv6GatewayId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
+      ipv6AddressId: map['ipv6AddressId'] == null ? null : (map['ipv6AddressId'] as String).input(),
+      ipv6GatewayId: map['ipv6GatewayId'] == null ? null : (map['ipv6GatewayId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

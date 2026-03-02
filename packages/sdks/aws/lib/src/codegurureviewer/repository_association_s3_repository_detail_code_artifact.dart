@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryAssociationS3RepositoryDetailCodeArtifact {
-  final String? buildArtifactsObjectKey;
-  final String? sourceCodeArtifactsObjectKey;
+  final pulumi.Input<String>? buildArtifactsObjectKey;
+  final pulumi.Input<String>? sourceCodeArtifactsObjectKey;
 
   /// Creates a new [RepositoryAssociationS3RepositoryDetailCodeArtifact].
   /// [buildArtifactsObjectKey] Optional.
@@ -22,8 +23,8 @@ class RepositoryAssociationS3RepositoryDetailCodeArtifact {
 
   factory RepositoryAssociationS3RepositoryDetailCodeArtifact.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationS3RepositoryDetailCodeArtifact(
-      buildArtifactsObjectKey: map['buildArtifactsObjectKey'] == null ? null : map['buildArtifactsObjectKey'] as String,
-      sourceCodeArtifactsObjectKey: map['sourceCodeArtifactsObjectKey'] == null ? null : map['sourceCodeArtifactsObjectKey'] as String,
+      buildArtifactsObjectKey: map['buildArtifactsObjectKey'] == null ? null : (map['buildArtifactsObjectKey'] as String).input(),
+      sourceCodeArtifactsObjectKey: map['sourceCodeArtifactsObjectKey'] == null ? null : (map['sourceCodeArtifactsObjectKey'] as String).input(),
     );
   }
 }

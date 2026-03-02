@@ -27,17 +27,12 @@ class AccessPointArgs {
   /// [rootDirectory] Directory on the Amazon EFS file system that the access point provides access to. Detailed below.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   AccessPointArgs({
-    required pulumi.Output<String> fileSystemId,
-    pulumi.Output<AccessPointPosixUser>? posixUser,
-    pulumi.Output<String>? region,
-    pulumi.Output<AccessPointRootDirectory>? rootDirectory,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      posixUser = pulumi.Input.asOptionalInput<AccessPointPosixUser>(posixUser),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rootDirectory = pulumi.Input.asOptionalInput<AccessPointRootDirectory>(rootDirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.fileSystemId,
+    this.posixUser,
+    this.region,
+    this.rootDirectory,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class AccessPointArgs {
 
   factory AccessPointArgs.fromMap(Map<String, dynamic> map) {
     return AccessPointArgs(
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      posixUser: map['posixUser'] == null ? null : pulumi.Output.create<AccessPointPosixUser>(AccessPointPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rootDirectory: map['rootDirectory'] == null ? null : pulumi.Output.create<AccessPointRootDirectory>(AccessPointRootDirectory.fromMap((map['rootDirectory'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      posixUser: map['posixUser'] == null ? null : (AccessPointPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rootDirectory: map['rootDirectory'] == null ? null : (AccessPointRootDirectory.fromMap((map['rootDirectory'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

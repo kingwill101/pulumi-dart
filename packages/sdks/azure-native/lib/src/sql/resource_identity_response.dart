@@ -6,13 +6,13 @@ import 'user_identity_response.dart';
 /// Azure Active Directory identity configuration for a resource.
 class ResourceIdentityResponse {
   /// The Azure Active Directory principal id.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The Azure Active Directory tenant id.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The resource ids of the user assigned identities to use
-  final Map<String, UserIdentityResponse>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserIdentityResponse>>? userAssignedIdentities;
 
   /// Creates a new [ResourceIdentityResponse].
   /// [principalId] The Azure Active Directory principal id.
@@ -31,16 +31,16 @@ class ResourceIdentityResponse {
       'principalId': principalId,
       'tenantId': tenantId,
       'type': ?type,
-      'userAssignedIdentities': ?userAssignedIdentities == null ? null : pulumi.Input.encodeMapValues<UserIdentityResponse, Map<String, dynamic>>(userAssignedIdentities!, (value) => value.toMap()),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, UserIdentityResponse>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<UserIdentityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResourceIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ResourceIdentityResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : pulumi.Input.decodeMapValues<UserIdentityResponse>(map['userAssignedIdentities'], (value) => UserIdentityResponse.fromMap((value as Map).cast<String, dynamic>())),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserIdentityResponse>(map['userAssignedIdentities'], (value) => UserIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

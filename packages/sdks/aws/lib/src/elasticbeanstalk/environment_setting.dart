@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentSetting {
   /// A unique name for this Environment. This name is used
   /// in the application URL
-  final String name;
-  final String namespace;
-  final String? resource;
-  final String value;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> namespace;
+  final pulumi.Input<String>? resource;
+  final pulumi.Input<String> value;
 
   /// Creates a new [EnvironmentSetting].
   /// [name] A unique name for this Environment. This name is used
@@ -32,10 +33,10 @@ class EnvironmentSetting {
 
   factory EnvironmentSetting.fromMap(Map<String, dynamic> map) {
     return EnvironmentSetting(
-      name: map['name'] as String,
-      namespace: map['namespace'] as String,
-      resource: map['resource'] == null ? null : map['resource'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

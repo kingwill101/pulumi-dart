@@ -25,15 +25,11 @@ class GetDedicatedHostArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
   GetDedicatedHostArgs({
-    pulumi.Output<List<GetDedicatedHostFilter>>? filters,
-    pulumi.Output<String>? hostId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetDedicatedHostFilter>>(filters),
-      hostId = pulumi.Input.asOptionalInput<String>(hostId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.hostId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class GetDedicatedHostArgs {
 
   factory GetDedicatedHostArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetDedicatedHostFilter>>(pulumi.Input.decodeList<GetDedicatedHostFilter>(map['filters'], (value) => GetDedicatedHostFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      hostId: map['hostId'] == null ? null : pulumi.Output.create<String>(map['hostId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDedicatedHostFilter>(map['filters'], (value) => GetDedicatedHostFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

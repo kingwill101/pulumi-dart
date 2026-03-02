@@ -30,21 +30,14 @@ class GetResolutionLinesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [userClientIp] The ip of user client.
   GetResolutionLinesArgs({
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? lang,
-    pulumi.Output<List<String>>? lineCodes,
-    pulumi.Output<List<String>>? lineDisplayNames,
-    pulumi.Output<List<String>>? lineNames,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? userClientIp,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      lineCodes = pulumi.Input.asOptionalInput<List<String>>(lineCodes),
-      lineDisplayNames = pulumi.Input.asOptionalInput<List<String>>(lineDisplayNames),
-      lineNames = pulumi.Input.asOptionalInput<List<String>>(lineNames),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      userClientIp = pulumi.Input.asOptionalInput<String>(userClientIp);
+    this.domainName,
+    this.lang,
+    this.lineCodes,
+    this.lineDisplayNames,
+    this.lineNames,
+    this.outputFile,
+    this.userClientIp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class GetResolutionLinesArgs {
 
   factory GetResolutionLinesArgs.fromMap(Map<String, dynamic> map) {
     return GetResolutionLinesArgs(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      lineCodes: map['lineCodes'] == null ? null : pulumi.Output.create<List<String>>((map['lineCodes'] as List).cast<String>()),
-      lineDisplayNames: map['lineDisplayNames'] == null ? null : pulumi.Output.create<List<String>>((map['lineDisplayNames'] as List).cast<String>()),
-      lineNames: map['lineNames'] == null ? null : pulumi.Output.create<List<String>>((map['lineNames'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      userClientIp: map['userClientIp'] == null ? null : pulumi.Output.create<String>(map['userClientIp'] as String),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      lineCodes: map['lineCodes'] == null ? null : ((map['lineCodes'] as List).cast<String>()).input(),
+      lineDisplayNames: map['lineDisplayNames'] == null ? null : ((map['lineDisplayNames'] as List).cast<String>()).input(),
+      lineNames: map['lineNames'] == null ? null : ((map['lineNames'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_interface_source_vhost_user_chardev_tcp_reconnect.dart';
 
 class DomainDevicesInterfaceSourceVhostUserChardevTcp {
   /// Sets the host address for the TCP connection in the random number generator backend.
-  final String? host;
+  final pulumi.Input<String>? host;
   /// Specifies the operation mode for TCP in the random number generator backend.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Configures reconnect settings for the UNIX domain socket in the backend.
-  final DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect? reconnect;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect>? reconnect;
   /// Defines the service attribute for the TCP connection in the random number generator backend.
-  final String? service;
+  final pulumi.Input<String>? service;
   /// Enables or disables TLS encryption for the TCP connection in the backend.
-  final String? tls;
+  final pulumi.Input<String>? tls;
 
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardevTcp].
   /// [host] Sets the host address for the TCP connection in the random number generator backend.
@@ -32,7 +33,7 @@ class DomainDevicesInterfaceSourceVhostUserChardevTcp {
     return <String, dynamic>{
       'host': ?host,
       'mode': ?mode,
-      'reconnect': ?reconnect == null ? null : reconnect!.toMap(),
+      'reconnect': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect, Map<String, dynamic>>(reconnect, (value) => value.toMap()),
       'service': ?service,
       'tls': ?tls,
     };
@@ -40,11 +41,11 @@ class DomainDevicesInterfaceSourceVhostUserChardevTcp {
 
   factory DomainDevicesInterfaceSourceVhostUserChardevTcp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceVhostUserChardevTcp(
-      host: map['host'] == null ? null : map['host'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      reconnect: map['reconnect'] == null ? null : DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>()),
-      service: map['service'] == null ? null : map['service'] as String,
-      tls: map['tls'] == null ? null : map['tls'] as String,
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      reconnect: map['reconnect'] == null ? null : (DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>())).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
+      tls: map['tls'] == null ? null : (map['tls'] as String).input(),
     );
   }
 }

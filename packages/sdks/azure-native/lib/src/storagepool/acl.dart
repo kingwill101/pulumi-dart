@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
 class Acl {
   /// iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
-  final String initiatorIqn;
+  final pulumi.Input<String> initiatorIqn;
   /// List of LUN names mapped to the ACL.
-  final List<String> mappedLuns;
+  final pulumi.Input<List<String>> mappedLuns;
 
   /// Creates a new [Acl].
   /// [initiatorIqn] iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
@@ -25,8 +26,8 @@ class Acl {
 
   factory Acl.fromMap(Map<String, dynamic> map) {
     return Acl(
-      initiatorIqn: map['initiatorIqn'] as String,
-      mappedLuns: (map['mappedLuns'] as List).cast<String>(),
+      initiatorIqn: (map['initiatorIqn'] as String).input(),
+      mappedLuns: ((map['mappedLuns'] as List).cast<String>()).input(),
     );
   }
 }

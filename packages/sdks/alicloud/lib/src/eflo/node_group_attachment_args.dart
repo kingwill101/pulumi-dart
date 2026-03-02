@@ -38,25 +38,16 @@ class NodeGroupAttachmentArgs {
   /// [vpcId] Vpc id
   /// [vswitchId] vswitch id
   NodeGroupAttachmentArgs({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<List<NodeGroupAttachmentDataDisk>>? dataDisks,
-    required pulumi.Output<String> hostname,
-    pulumi.Output<String>? loginPassword,
-    pulumi.Output<String>? nodeGroupId,
-    pulumi.Output<String>? nodeId,
-    pulumi.Output<String>? userData,
-    required pulumi.Output<String> vpcId,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      dataDisks = pulumi.Input.asOptionalInput<List<NodeGroupAttachmentDataDisk>>(dataDisks),
-      hostname = pulumi.Input.asInput<String>(hostname),
-      loginPassword = pulumi.Input.asOptionalInput<String>(loginPassword),
-      nodeGroupId = pulumi.Input.asOptionalInput<String>(nodeGroupId),
-      nodeId = pulumi.Input.asOptionalInput<String>(nodeId),
-      userData = pulumi.Input.asOptionalInput<String>(userData),
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    this.clusterId,
+    this.dataDisks,
+    required this.hostname,
+    this.loginPassword,
+    this.nodeGroupId,
+    this.nodeId,
+    this.userData,
+    required this.vpcId,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class NodeGroupAttachmentArgs {
 
   factory NodeGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupAttachmentArgs(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      dataDisks: map['dataDisks'] == null ? null : pulumi.Output.create<List<NodeGroupAttachmentDataDisk>>(pulumi.Input.decodeList<NodeGroupAttachmentDataDisk>(map['dataDisks'], (value) => NodeGroupAttachmentDataDisk.fromMap((value as Map).cast<String, dynamic>()))),
-      hostname: pulumi.Output.create<String>(map['hostname'] as String),
-      loginPassword: map['loginPassword'] == null ? null : pulumi.Output.create<String>(map['loginPassword'] as String),
-      nodeGroupId: map['nodeGroupId'] == null ? null : pulumi.Output.create<String>(map['nodeGroupId'] as String),
-      nodeId: map['nodeId'] == null ? null : pulumi.Output.create<String>(map['nodeId'] as String),
-      userData: map['userData'] == null ? null : pulumi.Output.create<String>(map['userData'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<NodeGroupAttachmentDataDisk>(map['dataDisks'], (value) => NodeGroupAttachmentDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostname: (map['hostname'] as String).input(),
+      loginPassword: map['loginPassword'] == null ? null : (map['loginPassword'] as String).input(),
+      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FloorsettingFilterConfigSdpSettingsBasicConfig {
   /// Tells whether the Sensitive Data Protection basic config is enabled or
@@ -7,7 +8,7 @@ class FloorsettingFilterConfigSdpSettingsBasicConfig {
   /// Possible values:
   /// ENABLED
   /// DISABLED
-  final String? filterEnforcement;
+  final pulumi.Input<String>? filterEnforcement;
 
   /// Creates a new [FloorsettingFilterConfigSdpSettingsBasicConfig].
   /// [filterEnforcement] Tells whether the Sensitive Data Protection basic config is enabled or
@@ -23,7 +24,7 @@ class FloorsettingFilterConfigSdpSettingsBasicConfig {
 
   factory FloorsettingFilterConfigSdpSettingsBasicConfig.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigSdpSettingsBasicConfig(
-      filterEnforcement: map['filterEnforcement'] == null ? null : map['filterEnforcement'] as String,
+      filterEnforcement: map['filterEnforcement'] == null ? null : (map['filterEnforcement'] as String).input(),
     );
   }
 }

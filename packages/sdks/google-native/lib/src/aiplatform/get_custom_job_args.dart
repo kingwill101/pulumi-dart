@@ -16,13 +16,10 @@ class GetCustomJobArgs {
   /// [location] Required.
   /// [project] Optional.
   GetCustomJobArgs({
-    required pulumi.Output<String> customJobId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      customJobId = pulumi.Input.asInput<String>(customJobId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.customJobId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetCustomJobArgs {
 
   factory GetCustomJobArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomJobArgs(
-      customJobId: pulumi.Output.create<String>(map['customJobId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      customJobId: (map['customJobId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

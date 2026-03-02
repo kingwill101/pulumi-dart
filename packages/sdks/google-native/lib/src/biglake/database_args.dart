@@ -27,19 +27,13 @@ class DatabaseArgs {
   /// [project] Optional.
   /// [type] The database type.
   DatabaseArgs({
-    required pulumi.Output<String> catalogId,
-    required pulumi.Output<String> databaseId,
-    pulumi.Output<HiveDatabaseOptions>? hiveOptions,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<DatabaseType>? type,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      hiveOptions = pulumi.Input.asOptionalInput<HiveDatabaseOptions>(hiveOptions),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asOptionalInput<DatabaseType>(type);
+    required this.catalogId,
+    required this.databaseId,
+    this.hiveOptions,
+    this.location,
+    this.project,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      hiveOptions: map['hiveOptions'] == null ? null : pulumi.Output.create<HiveDatabaseOptions>(HiveDatabaseOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<DatabaseType>(DatabaseType.fromValue(map['type'] as String)),
+      catalogId: (map['catalogId'] as String).input(),
+      databaseId: (map['databaseId'] as String).input(),
+      hiveOptions: map['hiveOptions'] == null ? null : (HiveDatabaseOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: map['type'] == null ? null : (DatabaseType.fromValue(map['type'] as String)).input(),
     );
   }
 }

@@ -24,15 +24,11 @@ class GetServiceQuotaArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceCode] Service code for the quota. Available values can be found with the `aws.servicequotas.getService` data source or [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
   GetServiceQuotaArgs({
-    pulumi.Output<String>? quotaCode,
-    pulumi.Output<String>? quotaName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceCode,
-  }) :
-      quotaCode = pulumi.Input.asOptionalInput<String>(quotaCode),
-      quotaName = pulumi.Input.asOptionalInput<String>(quotaName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceCode = pulumi.Input.asInput<String>(serviceCode);
+    this.quotaCode,
+    this.quotaName,
+    this.region,
+    required this.serviceCode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetServiceQuotaArgs {
 
   factory GetServiceQuotaArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceQuotaArgs(
-      quotaCode: map['quotaCode'] == null ? null : pulumi.Output.create<String>(map['quotaCode'] as String),
-      quotaName: map['quotaName'] == null ? null : pulumi.Output.create<String>(map['quotaName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceCode: pulumi.Output.create<String>(map['serviceCode'] as String),
+      quotaCode: map['quotaCode'] == null ? null : (map['quotaCode'] as String).input(),
+      quotaName: map['quotaName'] == null ? null : (map['quotaName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceCode: (map['serviceCode'] as String).input(),
     );
   }
 }

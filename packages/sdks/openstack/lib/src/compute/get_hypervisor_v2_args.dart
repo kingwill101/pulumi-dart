@@ -17,11 +17,9 @@ class GetHypervisorV2Args {
   /// [hostname] The hostname of the hypervisor.
   /// [region] The region in which to obtain the V2 Compute client.
   GetHypervisorV2Args({
-    pulumi.Output<String>? hostname,
-    pulumi.Output<String>? region,
-  }) :
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.hostname,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetHypervisorV2Args {
 
   factory GetHypervisorV2Args.fromMap(Map<String, dynamic> map) {
     return GetHypervisorV2Args(
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class VirtualNetworkRuleArgs {
   /// [virtualNetworkRuleName] The name of the virtual network rule.
   /// [virtualNetworkSubnetId] The ARM resource id of the virtual network subnet.
   VirtualNetworkRuleArgs({
-    pulumi.Output<bool>? ignoreMissingVnetServiceEndpoint,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? virtualNetworkRuleName,
-    required pulumi.Output<String> virtualNetworkSubnetId,
-  }) :
-      ignoreMissingVnetServiceEndpoint = pulumi.Input.asOptionalInput<bool>(ignoreMissingVnetServiceEndpoint),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      virtualNetworkRuleName = pulumi.Input.asOptionalInput<String>(virtualNetworkRuleName),
-      virtualNetworkSubnetId = pulumi.Input.asInput<String>(virtualNetworkSubnetId);
+    this.ignoreMissingVnetServiceEndpoint,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.virtualNetworkRuleName,
+    required this.virtualNetworkSubnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class VirtualNetworkRuleArgs {
 
   factory VirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleArgs(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : pulumi.Output.create<bool>(map['ignoreMissingVnetServiceEndpoint'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkRuleName'] as String),
-      virtualNetworkSubnetId: pulumi.Output.create<String>(map['virtualNetworkSubnetId'] as String),
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : (map['virtualNetworkRuleName'] as String).input(),
+      virtualNetworkSubnetId: (map['virtualNetworkSubnetId'] as String).input(),
     );
   }
 }

@@ -6,25 +6,25 @@ import 'git_pattern_repository.dart';
 /// Property of git.
 class ConfigServerGitProperty {
   /// Public sshKey of git repository.
-  final String? hostKey;
+  final pulumi.Input<String>? hostKey;
   /// SshKey algorithm of git repository.
-  final String? hostKeyAlgorithm;
+  final pulumi.Input<String>? hostKeyAlgorithm;
   /// Label of the repository
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Password of git repository basic auth.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Private sshKey algorithm of git repository.
-  final String? privateKey;
+  final pulumi.Input<String>? privateKey;
   /// Repositories of git.
-  final List<GitPatternRepository>? repositories;
+  final pulumi.Input<List<GitPatternRepository>>? repositories;
   /// Searching path of the repository
-  final List<String>? searchPaths;
+  final pulumi.Input<List<String>>? searchPaths;
   /// Strict host key checking or not.
-  final bool? strictHostKeyChecking;
+  final pulumi.Input<bool>? strictHostKeyChecking;
   /// URI of the repository
-  final String uri;
+  final pulumi.Input<String> uri;
   /// Username of git repository basic auth.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [ConfigServerGitProperty].
   /// [hostKey] Public sshKey of git repository.
@@ -57,7 +57,7 @@ class ConfigServerGitProperty {
       'label': ?label,
       'password': ?password,
       'privateKey': ?privateKey,
-      'repositories': ?repositories == null ? null : pulumi.Input.encodeList<GitPatternRepository, Map<String, dynamic>>(repositories!, (value) => value.toMap()),
+      'repositories': ?pulumi.Input.mapOptionalInputValue<List<GitPatternRepository>, List<Map<String, dynamic>>>(repositories, (value) => pulumi.Input.encodeList<GitPatternRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
       'searchPaths': ?searchPaths,
       'strictHostKeyChecking': ?strictHostKeyChecking,
       'uri': uri,
@@ -67,16 +67,16 @@ class ConfigServerGitProperty {
 
   factory ConfigServerGitProperty.fromMap(Map<String, dynamic> map) {
     return ConfigServerGitProperty(
-      hostKey: map['hostKey'] == null ? null : map['hostKey'] as String,
-      hostKeyAlgorithm: map['hostKeyAlgorithm'] == null ? null : map['hostKeyAlgorithm'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
-      repositories: map['repositories'] == null ? null : pulumi.Input.decodeList<GitPatternRepository>(map['repositories'], (value) => GitPatternRepository.fromMap((value as Map).cast<String, dynamic>())),
-      searchPaths: map['searchPaths'] == null ? null : (map['searchPaths'] as List).cast<String>(),
-      strictHostKeyChecking: map['strictHostKeyChecking'] == null ? null : map['strictHostKeyChecking'] as bool,
-      uri: map['uri'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      hostKey: map['hostKey'] == null ? null : (map['hostKey'] as String).input(),
+      hostKeyAlgorithm: map['hostKeyAlgorithm'] == null ? null : (map['hostKeyAlgorithm'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<GitPatternRepository>(map['repositories'], (value) => GitPatternRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      searchPaths: map['searchPaths'] == null ? null : ((map['searchPaths'] as List).cast<String>()).input(),
+      strictHostKeyChecking: map['strictHostKeyChecking'] == null ? null : (map['strictHostKeyChecking'] as bool).input(),
+      uri: (map['uri'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

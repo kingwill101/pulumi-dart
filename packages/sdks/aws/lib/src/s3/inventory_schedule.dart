@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InventorySchedule {
   /// Specifies how frequently inventory results are produced. Valid values: `Daily`, `Weekly`.
-  final String frequency;
+  final pulumi.Input<String> frequency;
 
   /// Creates a new [InventorySchedule].
   /// [frequency] Specifies how frequently inventory results are produced. Valid values: `Daily`, `Weekly`.
@@ -19,7 +20,7 @@ class InventorySchedule {
 
   factory InventorySchedule.fromMap(Map<String, dynamic> map) {
     return InventorySchedule(
-      frequency: map['frequency'] as String,
+      frequency: (map['frequency'] as String).input(),
     );
   }
 }

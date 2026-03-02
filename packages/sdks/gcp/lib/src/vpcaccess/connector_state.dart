@@ -58,35 +58,21 @@ class ConnectorState {
   /// [state] State of the VPC access connector.
   /// [subnet] The subnet in which to house the connector
   ConnectorState({
-    pulumi.Output<List<String>>? connectedProjects,
-    pulumi.Output<String>? ipCidrRange,
-    pulumi.Output<String>? machineType,
-    pulumi.Output<int>? maxInstances,
-    pulumi.Output<int>? maxThroughput,
-    pulumi.Output<int>? minInstances,
-    pulumi.Output<int>? minThroughput,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? state,
-    pulumi.Output<ConnectorSubnet>? subnet,
-  }) :
-      connectedProjects = pulumi.Input.asOptionalInput<List<String>>(connectedProjects),
-      ipCidrRange = pulumi.Input.asOptionalInput<String>(ipCidrRange),
-      machineType = pulumi.Input.asOptionalInput<String>(machineType),
-      maxInstances = pulumi.Input.asOptionalInput<int>(maxInstances),
-      maxThroughput = pulumi.Input.asOptionalInput<int>(maxThroughput),
-      minInstances = pulumi.Input.asOptionalInput<int>(minInstances),
-      minThroughput = pulumi.Input.asOptionalInput<int>(minThroughput),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      subnet = pulumi.Input.asOptionalInput<ConnectorSubnet>(subnet);
+    this.connectedProjects,
+    this.ipCidrRange,
+    this.machineType,
+    this.maxInstances,
+    this.maxThroughput,
+    this.minInstances,
+    this.minThroughput,
+    this.name,
+    this.network,
+    this.project,
+    this.region,
+    this.selfLink,
+    this.state,
+    this.subnet,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class ConnectorState {
 
   factory ConnectorState.fromMap(Map<String, dynamic> map) {
     return ConnectorState(
-      connectedProjects: map['connectedProjects'] == null ? null : pulumi.Output.create<List<String>>((map['connectedProjects'] as List).cast<String>()),
-      ipCidrRange: map['ipCidrRange'] == null ? null : pulumi.Output.create<String>(map['ipCidrRange'] as String),
-      machineType: map['machineType'] == null ? null : pulumi.Output.create<String>(map['machineType'] as String),
-      maxInstances: map['maxInstances'] == null ? null : pulumi.Output.create<int>(map['maxInstances'] as int),
-      maxThroughput: map['maxThroughput'] == null ? null : pulumi.Output.create<int>(map['maxThroughput'] as int),
-      minInstances: map['minInstances'] == null ? null : pulumi.Output.create<int>(map['minInstances'] as int),
-      minThroughput: map['minThroughput'] == null ? null : pulumi.Output.create<int>(map['minThroughput'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      subnet: map['subnet'] == null ? null : pulumi.Output.create<ConnectorSubnet>(ConnectorSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())),
+      connectedProjects: map['connectedProjects'] == null ? null : ((map['connectedProjects'] as List).cast<String>()).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances'] as int).input(),
+      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput'] as int).input(),
+      minInstances: map['minInstances'] == null ? null : (map['minInstances'] as int).input(),
+      minThroughput: map['minThroughput'] == null ? null : (map['minThroughput'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      subnet: map['subnet'] == null ? null : (ConnectorSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

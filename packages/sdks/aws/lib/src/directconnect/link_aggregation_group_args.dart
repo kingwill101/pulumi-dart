@@ -34,23 +34,15 @@ class LinkAggregationGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   LinkAggregationGroupArgs({
-    pulumi.Output<String>? connectionId,
-    required pulumi.Output<String> connectionsBandwidth,
-    pulumi.Output<bool>? forceDestroy,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? providerName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      connectionId = pulumi.Input.asOptionalInput<String>(connectionId),
-      connectionsBandwidth = pulumi.Input.asInput<String>(connectionsBandwidth),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      providerName = pulumi.Input.asOptionalInput<String>(providerName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.connectionId,
+    required this.connectionsBandwidth,
+    this.forceDestroy,
+    required this.location,
+    this.name,
+    this.providerName,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class LinkAggregationGroupArgs {
 
   factory LinkAggregationGroupArgs.fromMap(Map<String, dynamic> map) {
     return LinkAggregationGroupArgs(
-      connectionId: map['connectionId'] == null ? null : pulumi.Output.create<String>(map['connectionId'] as String),
-      connectionsBandwidth: pulumi.Output.create<String>(map['connectionsBandwidth'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      providerName: map['providerName'] == null ? null : pulumi.Output.create<String>(map['providerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      connectionsBandwidth: (map['connectionsBandwidth'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

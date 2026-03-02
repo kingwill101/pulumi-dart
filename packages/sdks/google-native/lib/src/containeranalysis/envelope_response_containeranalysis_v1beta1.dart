@@ -5,9 +5,9 @@ import 'envelope_signature_response_containeranalysis_v1beta1.dart';
 
 /// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
 class EnvelopeResponseContaineranalysisV1beta1 {
-  final String payload;
-  final String payloadType;
-  final List<EnvelopeSignatureResponseContaineranalysisV1beta1> signatures;
+  final pulumi.Input<String> payload;
+  final pulumi.Input<String> payloadType;
+  final pulumi.Input<List<EnvelopeSignatureResponseContaineranalysisV1beta1>> signatures;
 
   /// Creates a new [EnvelopeResponseContaineranalysisV1beta1].
   /// [payload] Required.
@@ -23,15 +23,15 @@ class EnvelopeResponseContaineranalysisV1beta1 {
     return <String, dynamic>{
       'payload': payload,
       'payloadType': payloadType,
-      'signatures': pulumi.Input.encodeList<EnvelopeSignatureResponseContaineranalysisV1beta1, Map<String, dynamic>>(signatures, (value) => value.toMap()),
+      'signatures': pulumi.Input.mapInputValue<List<EnvelopeSignatureResponseContaineranalysisV1beta1>, List<Map<String, dynamic>>>(signatures, (value) => pulumi.Input.encodeList<EnvelopeSignatureResponseContaineranalysisV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EnvelopeResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return EnvelopeResponseContaineranalysisV1beta1(
-      payload: map['payload'] as String,
-      payloadType: map['payloadType'] as String,
-      signatures: pulumi.Input.decodeList<EnvelopeSignatureResponseContaineranalysisV1beta1>(map['signatures'], (value) => EnvelopeSignatureResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      payload: (map['payload'] as String).input(),
+      payloadType: (map['payloadType'] as String).input(),
+      signatures: (pulumi.Input.decodeList<EnvelopeSignatureResponseContaineranalysisV1beta1>(map['signatures'], (value) => EnvelopeSignatureResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

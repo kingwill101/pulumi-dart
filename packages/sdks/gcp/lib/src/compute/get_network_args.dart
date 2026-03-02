@@ -23,13 +23,10 @@ class GetNetworkArgs {
   /// [networkProfile] A full or partial URL of the network profile to apply to this network.
   /// [project] The ID of the project in which the resource belongs. If it
   GetNetworkArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? networkProfile,
-    pulumi.Output<String>? project,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      networkProfile = pulumi.Input.asOptionalInput<String>(networkProfile),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.name,
+    this.networkProfile,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetNetworkArgs {
 
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      networkProfile: map['networkProfile'] == null ? null : pulumi.Output.create<String>(map['networkProfile'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      name: (map['name'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (map['networkProfile'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

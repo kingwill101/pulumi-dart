@@ -45,29 +45,18 @@ class EnterpriseDatabaseState {
   /// [primaryAccessKey] The Primary Access Key for the Redis Enterprise Database Instance.
   /// [secondaryAccessKey] The Secondary Access Key for the Redis Enterprise Database Instance.
   EnterpriseDatabaseState({
-    pulumi.Output<String>? clientProtocol,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? clusteringPolicy,
-    pulumi.Output<String>? evictionPolicy,
-    pulumi.Output<String>? linkedDatabaseGroupNickname,
-    pulumi.Output<List<String>>? linkedDatabaseIds,
-    pulumi.Output<List<EnterpriseDatabaseModule>>? modules,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? primaryAccessKey,
-    pulumi.Output<String>? secondaryAccessKey,
-  }) :
-      clientProtocol = pulumi.Input.asOptionalInput<String>(clientProtocol),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      clusteringPolicy = pulumi.Input.asOptionalInput<String>(clusteringPolicy),
-      evictionPolicy = pulumi.Input.asOptionalInput<String>(evictionPolicy),
-      linkedDatabaseGroupNickname = pulumi.Input.asOptionalInput<String>(linkedDatabaseGroupNickname),
-      linkedDatabaseIds = pulumi.Input.asOptionalInput<List<String>>(linkedDatabaseIds),
-      modules = pulumi.Input.asOptionalInput<List<EnterpriseDatabaseModule>>(modules),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      primaryAccessKey = pulumi.Input.asOptionalInput<String>(primaryAccessKey),
-      secondaryAccessKey = pulumi.Input.asOptionalInput<String>(secondaryAccessKey);
+    this.clientProtocol,
+    this.clusterId,
+    this.clusteringPolicy,
+    this.evictionPolicy,
+    this.linkedDatabaseGroupNickname,
+    this.linkedDatabaseIds,
+    this.modules,
+    this.name,
+    this.port,
+    this.primaryAccessKey,
+    this.secondaryAccessKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class EnterpriseDatabaseState {
 
   factory EnterpriseDatabaseState.fromMap(Map<String, dynamic> map) {
     return EnterpriseDatabaseState(
-      clientProtocol: map['clientProtocol'] == null ? null : pulumi.Output.create<String>(map['clientProtocol'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      clusteringPolicy: map['clusteringPolicy'] == null ? null : pulumi.Output.create<String>(map['clusteringPolicy'] as String),
-      evictionPolicy: map['evictionPolicy'] == null ? null : pulumi.Output.create<String>(map['evictionPolicy'] as String),
-      linkedDatabaseGroupNickname: map['linkedDatabaseGroupNickname'] == null ? null : pulumi.Output.create<String>(map['linkedDatabaseGroupNickname'] as String),
-      linkedDatabaseIds: map['linkedDatabaseIds'] == null ? null : pulumi.Output.create<List<String>>((map['linkedDatabaseIds'] as List).cast<String>()),
-      modules: map['modules'] == null ? null : pulumi.Output.create<List<EnterpriseDatabaseModule>>(pulumi.Input.decodeList<EnterpriseDatabaseModule>(map['modules'], (value) => EnterpriseDatabaseModule.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      primaryAccessKey: map['primaryAccessKey'] == null ? null : pulumi.Output.create<String>(map['primaryAccessKey'] as String),
-      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : pulumi.Output.create<String>(map['secondaryAccessKey'] as String),
+      clientProtocol: map['clientProtocol'] == null ? null : (map['clientProtocol'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      clusteringPolicy: map['clusteringPolicy'] == null ? null : (map['clusteringPolicy'] as String).input(),
+      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy'] as String).input(),
+      linkedDatabaseGroupNickname: map['linkedDatabaseGroupNickname'] == null ? null : (map['linkedDatabaseGroupNickname'] as String).input(),
+      linkedDatabaseIds: map['linkedDatabaseIds'] == null ? null : ((map['linkedDatabaseIds'] as List).cast<String>()).input(),
+      modules: map['modules'] == null ? null : (pulumi.Input.decodeList<EnterpriseDatabaseModule>(map['modules'], (value) => EnterpriseDatabaseModule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      primaryAccessKey: map['primaryAccessKey'] == null ? null : (map['primaryAccessKey'] as String).input(),
+      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : (map['secondaryAccessKey'] as String).input(),
     );
   }
 }

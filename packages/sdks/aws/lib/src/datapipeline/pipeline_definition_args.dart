@@ -30,17 +30,12 @@ class PipelineDefinitionArgs {
   /// [pipelineObjects] Configuration block for the objects that define the pipeline. See below
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PipelineDefinitionArgs({
-    pulumi.Output<List<PipelineDefinitionParameterObject>>? parameterObjects,
-    pulumi.Output<List<PipelineDefinitionParameterValue>>? parameterValues,
-    required pulumi.Output<String> pipelineId,
-    required pulumi.Output<List<PipelineDefinitionPipelineObject>> pipelineObjects,
-    pulumi.Output<String>? region,
-  }) :
-      parameterObjects = pulumi.Input.asOptionalInput<List<PipelineDefinitionParameterObject>>(parameterObjects),
-      parameterValues = pulumi.Input.asOptionalInput<List<PipelineDefinitionParameterValue>>(parameterValues),
-      pipelineId = pulumi.Input.asInput<String>(pipelineId),
-      pipelineObjects = pulumi.Input.asInput<List<PipelineDefinitionPipelineObject>>(pipelineObjects),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.parameterObjects,
+    this.parameterValues,
+    required this.pipelineId,
+    required this.pipelineObjects,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class PipelineDefinitionArgs {
 
   factory PipelineDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return PipelineDefinitionArgs(
-      parameterObjects: map['parameterObjects'] == null ? null : pulumi.Output.create<List<PipelineDefinitionParameterObject>>(pulumi.Input.decodeList<PipelineDefinitionParameterObject>(map['parameterObjects'], (value) => PipelineDefinitionParameterObject.fromMap((value as Map).cast<String, dynamic>()))),
-      parameterValues: map['parameterValues'] == null ? null : pulumi.Output.create<List<PipelineDefinitionParameterValue>>(pulumi.Input.decodeList<PipelineDefinitionParameterValue>(map['parameterValues'], (value) => PipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>()))),
-      pipelineId: pulumi.Output.create<String>(map['pipelineId'] as String),
-      pipelineObjects: pulumi.Output.create<List<PipelineDefinitionPipelineObject>>(pulumi.Input.decodeList<PipelineDefinitionPipelineObject>(map['pipelineObjects'], (value) => PipelineDefinitionPipelineObject.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      parameterObjects: map['parameterObjects'] == null ? null : (pulumi.Input.decodeList<PipelineDefinitionParameterObject>(map['parameterObjects'], (value) => PipelineDefinitionParameterObject.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameterValues: map['parameterValues'] == null ? null : (pulumi.Input.decodeList<PipelineDefinitionParameterValue>(map['parameterValues'], (value) => PipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pipelineId: (map['pipelineId'] as String).input(),
+      pipelineObjects: (pulumi.Input.decodeList<PipelineDefinitionPipelineObject>(map['pipelineObjects'], (value) => PipelineDefinitionPipelineObject.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

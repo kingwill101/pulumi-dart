@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiJobJobSettingsColumnDataTypeSetting {
   /// The destination type of the mapping relationship
-  final String? destinationDataType;
+  final pulumi.Input<String>? destinationDataType;
   /// The source type of the mapping type
-  final String? sourceDataType;
+  final pulumi.Input<String>? sourceDataType;
 
   /// Creates a new [DiJobJobSettingsColumnDataTypeSetting].
   /// [destinationDataType] The destination type of the mapping relationship
@@ -24,8 +25,8 @@ class DiJobJobSettingsColumnDataTypeSetting {
 
   factory DiJobJobSettingsColumnDataTypeSetting.fromMap(Map<String, dynamic> map) {
     return DiJobJobSettingsColumnDataTypeSetting(
-      destinationDataType: map['destinationDataType'] == null ? null : map['destinationDataType'] as String,
-      sourceDataType: map['sourceDataType'] == null ? null : map['sourceDataType'] as String,
+      destinationDataType: map['destinationDataType'] == null ? null : (map['destinationDataType'] as String).input(),
+      sourceDataType: map['sourceDataType'] == null ? null : (map['sourceDataType'] as String).input(),
     );
   }
 }

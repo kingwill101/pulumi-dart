@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAmiBlockDeviceMapping {
   /// Physical name of the device.
-  final String deviceName;
+  final pulumi.Input<String> deviceName;
   /// Map containing EBS information, if the device is EBS based. Unlike most object attributes, these are accessed directly (e.g., `ebs.volume_size` or `ebs["volume_size"]`) rather than accessed through the first element of a list (e.g., `ebs[0].volume_size`).
-  final Map<String, String> ebs;
+  final pulumi.Input<Map<String, String>> ebs;
   /// Suppresses the specified device included in the block device mapping of the AMI.
-  final String noDevice;
+  final pulumi.Input<String> noDevice;
   /// Virtual device name (for instance stores).
-  final String virtualName;
+  final pulumi.Input<String> virtualName;
 
   /// Creates a new [GetAmiBlockDeviceMapping].
   /// [deviceName] Physical name of the device.
@@ -34,10 +35,10 @@ class GetAmiBlockDeviceMapping {
 
   factory GetAmiBlockDeviceMapping.fromMap(Map<String, dynamic> map) {
     return GetAmiBlockDeviceMapping(
-      deviceName: map['deviceName'] as String,
-      ebs: (map['ebs'] as Map).cast<String, String>(),
-      noDevice: map['noDevice'] as String,
-      virtualName: map['virtualName'] as String,
+      deviceName: (map['deviceName'] as String).input(),
+      ebs: ((map['ebs'] as Map).cast<String, String>()).input(),
+      noDevice: (map['noDevice'] as String).input(),
+      virtualName: (map['virtualName'] as String).input(),
     );
   }
 }

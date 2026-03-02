@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// New recovery services vault.
 class NewRecoveryServicesVaultResponse {
   /// The name of the recovery services vault has to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the resource group where the recovery services vault has to be created.
-  final String resourceGroup;
+  final pulumi.Input<String> resourceGroup;
   /// The vault type, whether it is existing or has to be created.
   /// Expected value is 'New'.
-  final String vaultType;
+  final pulumi.Input<String> vaultType;
 
   /// Creates a new [NewRecoveryServicesVaultResponse].
   /// [name] The name of the recovery services vault has to be created.
@@ -31,9 +32,9 @@ class NewRecoveryServicesVaultResponse {
 
   factory NewRecoveryServicesVaultResponse.fromMap(Map<String, dynamic> map) {
     return NewRecoveryServicesVaultResponse(
-      name: map['name'] as String,
-      resourceGroup: map['resourceGroup'] as String,
-      vaultType: map['vaultType'] as String,
+      name: (map['name'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      vaultType: (map['vaultType'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data Lake Store firewall rule information.
 class FirewallRuleResponse {
   /// The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
-  final String endIpAddress;
+  final pulumi.Input<String> endIpAddress;
   /// The resource identifier.
-  final String id;
+  final pulumi.Input<String> id;
   /// The resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
-  final String startIpAddress;
+  final pulumi.Input<String> startIpAddress;
   /// The resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FirewallRuleResponse].
   /// [endIpAddress] The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
@@ -40,11 +41,11 @@ class FirewallRuleResponse {
 
   factory FirewallRuleResponse.fromMap(Map<String, dynamic> map) {
     return FirewallRuleResponse(
-      endIpAddress: map['endIpAddress'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      startIpAddress: map['startIpAddress'] as String,
-      type: map['type'] as String,
+      endIpAddress: (map['endIpAddress'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      startIpAddress: (map['startIpAddress'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

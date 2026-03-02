@@ -6,10 +6,10 @@ import 'certificate_tags_response.dart';
 /// Object representing MemberIdentityCertificate for Managed CCF.
 class MemberIdentityCertificateResponse {
   /// Member Identity Certificate
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// Member Identity Certificate Encryption Key
-  final String? encryptionkey;
-  final List<CertificateTagsResponse>? tags;
+  final pulumi.Input<String>? encryptionkey;
+  final pulumi.Input<List<CertificateTagsResponse>>? tags;
 
   /// Creates a new [MemberIdentityCertificateResponse].
   /// [certificate] Member Identity Certificate
@@ -25,15 +25,15 @@ class MemberIdentityCertificateResponse {
     return <String, dynamic>{
       'certificate': ?certificate,
       'encryptionkey': ?encryptionkey,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<CertificateTagsResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<CertificateTagsResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<CertificateTagsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MemberIdentityCertificateResponse.fromMap(Map<String, dynamic> map) {
     return MemberIdentityCertificateResponse(
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      encryptionkey: map['encryptionkey'] == null ? null : map['encryptionkey'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<CertificateTagsResponse>(map['tags'], (value) => CertificateTagsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      encryptionkey: map['encryptionkey'] == null ? null : (map['encryptionkey'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<CertificateTagsResponse>(map['tags'], (value) => CertificateTagsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -17,11 +17,9 @@ class TagAtScopeArgs {
   /// [properties] The set of tags.
   /// [scope] The resource scope.
   TagAtScopeArgs({
-    required pulumi.Output<Tags> properties,
-    required pulumi.Output<String> scope,
-  }) :
-      properties = pulumi.Input.asInput<Tags>(properties),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.properties,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class TagAtScopeArgs {
 
   factory TagAtScopeArgs.fromMap(Map<String, dynamic> map) {
     return TagAtScopeArgs(
-      properties: pulumi.Output.create<Tags>(Tags.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      properties: (Tags.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

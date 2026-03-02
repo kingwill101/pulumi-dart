@@ -22,15 +22,11 @@ class BasicIpSetArgs {
   /// [bandwidth] The bandwidth of the acceleration region. Unit: Mbit/s.
   /// [ispType] The line type of the elastic IP address (EIP) in the acceleration region. Default value: `BGP`. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`.
   BasicIpSetArgs({
-    required pulumi.Output<String> accelerateRegionId,
-    required pulumi.Output<String> acceleratorId,
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<String>? ispType,
-  }) :
-      accelerateRegionId = pulumi.Input.asInput<String>(accelerateRegionId),
-      acceleratorId = pulumi.Input.asInput<String>(acceleratorId),
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      ispType = pulumi.Input.asOptionalInput<String>(ispType);
+    required this.accelerateRegionId,
+    required this.acceleratorId,
+    this.bandwidth,
+    this.ispType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class BasicIpSetArgs {
 
   factory BasicIpSetArgs.fromMap(Map<String, dynamic> map) {
     return BasicIpSetArgs(
-      accelerateRegionId: pulumi.Output.create<String>(map['accelerateRegionId'] as String),
-      acceleratorId: pulumi.Output.create<String>(map['acceleratorId'] as String),
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      ispType: map['ispType'] == null ? null : pulumi.Output.create<String>(map['ispType'] as String),
+      accelerateRegionId: (map['accelerateRegionId'] as String).input(),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      ispType: map['ispType'] == null ? null : (map['ispType'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Server info for the server trust group.
 class ServerInfoResponse {
   /// Server Id.
-  final String serverId;
+  final pulumi.Input<String> serverId;
 
   /// Creates a new [ServerInfoResponse].
   /// [serverId] Server Id.
@@ -20,7 +21,7 @@ class ServerInfoResponse {
 
   factory ServerInfoResponse.fromMap(Map<String, dynamic> map) {
     return ServerInfoResponse(
-      serverId: map['serverId'] as String,
+      serverId: (map['serverId'] as String).input(),
     );
   }
 }

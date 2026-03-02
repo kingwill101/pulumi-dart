@@ -25,17 +25,12 @@ class AwsEuSovereignIntegrationsState {
   /// [linkedAccountId] The ID of the linked AWS EU Sovereign account in New Relic.
   /// [xRay] X-Ray integration
   AwsEuSovereignIntegrationsState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<AwsEuSovereignIntegrationsBilling>? billing,
-    pulumi.Output<AwsEuSovereignIntegrationsCloudtrail>? cloudtrail,
-    pulumi.Output<String>? linkedAccountId,
-    pulumi.Output<AwsEuSovereignIntegrationsXRay>? xRay,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      billing = pulumi.Input.asOptionalInput<AwsEuSovereignIntegrationsBilling>(billing),
-      cloudtrail = pulumi.Input.asOptionalInput<AwsEuSovereignIntegrationsCloudtrail>(cloudtrail),
-      linkedAccountId = pulumi.Input.asOptionalInput<String>(linkedAccountId),
-      xRay = pulumi.Input.asOptionalInput<AwsEuSovereignIntegrationsXRay>(xRay);
+    this.accountId,
+    this.billing,
+    this.cloudtrail,
+    this.linkedAccountId,
+    this.xRay,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class AwsEuSovereignIntegrationsState {
 
   factory AwsEuSovereignIntegrationsState.fromMap(Map<String, dynamic> map) {
     return AwsEuSovereignIntegrationsState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      billing: map['billing'] == null ? null : pulumi.Output.create<AwsEuSovereignIntegrationsBilling>(AwsEuSovereignIntegrationsBilling.fromMap((map['billing'] as Map).cast<String, dynamic>())),
-      cloudtrail: map['cloudtrail'] == null ? null : pulumi.Output.create<AwsEuSovereignIntegrationsCloudtrail>(AwsEuSovereignIntegrationsCloudtrail.fromMap((map['cloudtrail'] as Map).cast<String, dynamic>())),
-      linkedAccountId: map['linkedAccountId'] == null ? null : pulumi.Output.create<String>(map['linkedAccountId'] as String),
-      xRay: map['xRay'] == null ? null : pulumi.Output.create<AwsEuSovereignIntegrationsXRay>(AwsEuSovereignIntegrationsXRay.fromMap((map['xRay'] as Map).cast<String, dynamic>())),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      billing: map['billing'] == null ? null : (AwsEuSovereignIntegrationsBilling.fromMap((map['billing'] as Map).cast<String, dynamic>())).input(),
+      cloudtrail: map['cloudtrail'] == null ? null : (AwsEuSovereignIntegrationsCloudtrail.fromMap((map['cloudtrail'] as Map).cast<String, dynamic>())).input(),
+      linkedAccountId: map['linkedAccountId'] == null ? null : (map['linkedAccountId'] as String).input(),
+      xRay: map['xRay'] == null ? null : (AwsEuSovereignIntegrationsXRay.fromMap((map['xRay'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

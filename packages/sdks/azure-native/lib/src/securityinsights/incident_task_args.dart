@@ -38,25 +38,16 @@ class IncidentTaskArgs {
   /// [title] The title of the task
   /// [workspaceName] The name of the workspace.
   IncidentTaskArgs({
-    pulumi.Output<ClientInfo>? createdBy,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> incidentId,
-    pulumi.Output<String>? incidentTaskId,
-    pulumi.Output<ClientInfo>? lastModifiedBy,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> status,
-    required pulumi.Output<String> title,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      createdBy = pulumi.Input.asOptionalInput<ClientInfo>(createdBy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      incidentId = pulumi.Input.asInput<String>(incidentId),
-      incidentTaskId = pulumi.Input.asOptionalInput<String>(incidentTaskId),
-      lastModifiedBy = pulumi.Input.asOptionalInput<ClientInfo>(lastModifiedBy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      status = pulumi.Input.asInput<String>(status),
-      title = pulumi.Input.asInput<String>(title),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.createdBy,
+    this.description,
+    required this.incidentId,
+    this.incidentTaskId,
+    this.lastModifiedBy,
+    required this.resourceGroupName,
+    required this.status,
+    required this.title,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class IncidentTaskArgs {
 
   factory IncidentTaskArgs.fromMap(Map<String, dynamic> map) {
     return IncidentTaskArgs(
-      createdBy: map['createdBy'] == null ? null : pulumi.Output.create<ClientInfo>(ClientInfo.fromMap((map['createdBy'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      incidentId: pulumi.Output.create<String>(map['incidentId'] as String),
-      incidentTaskId: map['incidentTaskId'] == null ? null : pulumi.Output.create<String>(map['incidentTaskId'] as String),
-      lastModifiedBy: map['lastModifiedBy'] == null ? null : pulumi.Output.create<ClientInfo>(ClientInfo.fromMap((map['lastModifiedBy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      status: pulumi.Output.create<String>(map['status'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      createdBy: map['createdBy'] == null ? null : (ClientInfo.fromMap((map['createdBy'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      incidentId: (map['incidentId'] as String).input(),
+      incidentTaskId: map['incidentTaskId'] == null ? null : (map['incidentTaskId'] as String).input(),
+      lastModifiedBy: map['lastModifiedBy'] == null ? null : (ClientInfo.fromMap((map['lastModifiedBy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      status: (map['status'] as String).input(),
+      title: (map['title'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

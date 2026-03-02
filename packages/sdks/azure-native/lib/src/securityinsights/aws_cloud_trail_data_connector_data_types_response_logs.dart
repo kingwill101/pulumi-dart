@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Logs data type.
 class AwsCloudTrailDataConnectorDataTypesResponseLogs {
   /// Describe whether this data type connection is enabled or not.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [AwsCloudTrailDataConnectorDataTypesResponseLogs].
   /// [state] Describe whether this data type connection is enabled or not.
@@ -20,7 +21,7 @@ class AwsCloudTrailDataConnectorDataTypesResponseLogs {
 
   factory AwsCloudTrailDataConnectorDataTypesResponseLogs.fromMap(Map<String, dynamic> map) {
     return AwsCloudTrailDataConnectorDataTypesResponseLogs(
-      state: map['state'] as String,
+      state: (map['state'] as String).input(),
     );
   }
 }

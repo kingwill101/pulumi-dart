@@ -6,7 +6,7 @@ import 'upstream_template_response.dart';
 /// The settings for the Upstream when the service is in server-less mode.
 class ServerlessUpstreamSettingsResponse {
   /// Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects.
-  final List<UpstreamTemplateResponse>? templates;
+  final pulumi.Input<List<UpstreamTemplateResponse>>? templates;
 
   /// Creates a new [ServerlessUpstreamSettingsResponse].
   /// [templates] Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects.
@@ -16,13 +16,13 @@ class ServerlessUpstreamSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'templates': ?templates == null ? null : pulumi.Input.encodeList<UpstreamTemplateResponse, Map<String, dynamic>>(templates!, (value) => value.toMap()),
+      'templates': ?pulumi.Input.mapOptionalInputValue<List<UpstreamTemplateResponse>, List<Map<String, dynamic>>>(templates, (value) => pulumi.Input.encodeList<UpstreamTemplateResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ServerlessUpstreamSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ServerlessUpstreamSettingsResponse(
-      templates: map['templates'] == null ? null : pulumi.Input.decodeList<UpstreamTemplateResponse>(map['templates'], (value) => UpstreamTemplateResponse.fromMap((value as Map).cast<String, dynamic>())),
+      templates: map['templates'] == null ? null : (pulumi.Input.decodeList<UpstreamTemplateResponse>(map['templates'], (value) => UpstreamTemplateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

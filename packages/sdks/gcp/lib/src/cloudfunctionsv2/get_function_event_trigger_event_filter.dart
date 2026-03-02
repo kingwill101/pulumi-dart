@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionEventTriggerEventFilter {
   /// 'Required. The name of a CloudEvents attribute.
   /// Currently, only a subset of attributes are supported for filtering. Use the 'gcloud eventarc providers describe' command to learn more about events and their attributes.
   /// Do not filter for the 'type' attribute here, as this is already achieved by the resource's 'event_type' attribute.
-  final String attribute;
+  final pulumi.Input<String> attribute;
   /// Optional. The operator used for matching the events with the value of
   /// the filter. If not specified, only events that have an exact key-value
   /// pair specified in the filter are matched.
   /// The only allowed value is 'match-path-pattern'.
   /// [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Required. The value for the attribute.
   /// If the operator field is set as 'match-path-pattern', this value can be a path pattern instead of an exact value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetFunctionEventTriggerEventFilter].
   /// [attribute] 'Required. The name of a CloudEvents attribute.
@@ -36,9 +37,9 @@ class GetFunctionEventTriggerEventFilter {
 
   factory GetFunctionEventTriggerEventFilter.fromMap(Map<String, dynamic> map) {
     return GetFunctionEventTriggerEventFilter(
-      attribute: map['attribute'] as String,
-      operator: map['operator'] as String,
-      value: map['value'] as String,
+      attribute: (map['attribute'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

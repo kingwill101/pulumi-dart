@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CooWebCcRuleRuleDetailCondition {
   /// Matching content.
-  final String content;
+  final pulumi.Input<String> content;
   /// The statistic source. Valid values:
-  final String field;
+  final pulumi.Input<String> field;
   /// Set this parameter only when the statistic source is `header`.
-  final String? headerName;
+  final pulumi.Input<String>? headerName;
   /// Matching method.
-  final String matchMethod;
+  final pulumi.Input<String> matchMethod;
 
   /// Creates a new [CooWebCcRuleRuleDetailCondition].
   /// [content] Matching content.
@@ -34,10 +35,10 @@ class CooWebCcRuleRuleDetailCondition {
 
   factory CooWebCcRuleRuleDetailCondition.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleRuleDetailCondition(
-      content: map['content'] as String,
-      field: map['field'] as String,
-      headerName: map['headerName'] == null ? null : map['headerName'] as String,
-      matchMethod: map['matchMethod'] as String,
+      content: (map['content'] as String).input(),
+      field: (map['field'] as String).input(),
+      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
+      matchMethod: (map['matchMethod'] as String).input(),
     );
   }
 }

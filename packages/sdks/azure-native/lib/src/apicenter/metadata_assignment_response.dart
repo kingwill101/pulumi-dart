@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Assignment metadata
 class MetadataAssignmentResponse {
   /// Deprecated assignment
-  final bool? deprecated;
+  final pulumi.Input<bool>? deprecated;
   /// The entities this metadata schema component gets applied to.
-  final String? entity;
+  final pulumi.Input<String>? entity;
   /// Required assignment
-  final bool? required;
+  final pulumi.Input<bool>? required;
 
   /// Creates a new [MetadataAssignmentResponse].
   /// [deprecated] Deprecated assignment
@@ -30,9 +31,9 @@ class MetadataAssignmentResponse {
 
   factory MetadataAssignmentResponse.fromMap(Map<String, dynamic> map) {
     return MetadataAssignmentResponse(
-      deprecated: map['deprecated'] == null ? null : map['deprecated'] as bool,
-      entity: map['entity'] == null ? null : map['entity'] as String,
-      required: map['required'] == null ? null : map['required'] as bool,
+      deprecated: map['deprecated'] == null ? null : (map['deprecated'] as bool).input(),
+      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
+      required: map['required'] == null ? null : (map['required'] as bool).input(),
     );
   }
 }

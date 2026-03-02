@@ -42,27 +42,17 @@ class WorkspaceCodeSourceArgs {
   /// [mountPath] The local Mount Directory of the code.
   /// [workspaceId] The ID of the workspace.
   WorkspaceCodeSourceArgs({
-    required pulumi.Output<String> accessibility,
-    pulumi.Output<String>? codeBranch,
-    pulumi.Output<String>? codeCommit,
-    required pulumi.Output<String> codeRepo,
-    pulumi.Output<String>? codeRepoAccessToken,
-    pulumi.Output<String>? codeRepoUserName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> mountPath,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      accessibility = pulumi.Input.asInput<String>(accessibility),
-      codeBranch = pulumi.Input.asOptionalInput<String>(codeBranch),
-      codeCommit = pulumi.Input.asOptionalInput<String>(codeCommit),
-      codeRepo = pulumi.Input.asInput<String>(codeRepo),
-      codeRepoAccessToken = pulumi.Input.asOptionalInput<String>(codeRepoAccessToken),
-      codeRepoUserName = pulumi.Input.asOptionalInput<String>(codeRepoUserName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      mountPath = pulumi.Input.asInput<String>(mountPath),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.accessibility,
+    this.codeBranch,
+    this.codeCommit,
+    required this.codeRepo,
+    this.codeRepoAccessToken,
+    this.codeRepoUserName,
+    this.description,
+    required this.displayName,
+    required this.mountPath,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class WorkspaceCodeSourceArgs {
 
   factory WorkspaceCodeSourceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceCodeSourceArgs(
-      accessibility: pulumi.Output.create<String>(map['accessibility'] as String),
-      codeBranch: map['codeBranch'] == null ? null : pulumi.Output.create<String>(map['codeBranch'] as String),
-      codeCommit: map['codeCommit'] == null ? null : pulumi.Output.create<String>(map['codeCommit'] as String),
-      codeRepo: pulumi.Output.create<String>(map['codeRepo'] as String),
-      codeRepoAccessToken: map['codeRepoAccessToken'] == null ? null : pulumi.Output.create<String>(map['codeRepoAccessToken'] as String),
-      codeRepoUserName: map['codeRepoUserName'] == null ? null : pulumi.Output.create<String>(map['codeRepoUserName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      mountPath: pulumi.Output.create<String>(map['mountPath'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      accessibility: (map['accessibility'] as String).input(),
+      codeBranch: map['codeBranch'] == null ? null : (map['codeBranch'] as String).input(),
+      codeCommit: map['codeCommit'] == null ? null : (map['codeCommit'] as String).input(),
+      codeRepo: (map['codeRepo'] as String).input(),
+      codeRepoAccessToken: map['codeRepoAccessToken'] == null ? null : (map['codeRepoAccessToken'] as String).input(),
+      codeRepoUserName: map['codeRepoUserName'] == null ? null : (map['codeRepoUserName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      mountPath: (map['mountPath'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

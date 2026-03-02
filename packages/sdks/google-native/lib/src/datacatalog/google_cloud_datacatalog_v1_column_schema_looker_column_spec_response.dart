@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Column info specific to Looker System.
 class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse {
   /// Looker specific column type of this column.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse].
   /// [type] Looker specific column type of this column.
@@ -20,7 +21,7 @@ class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse {
 
   factory GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

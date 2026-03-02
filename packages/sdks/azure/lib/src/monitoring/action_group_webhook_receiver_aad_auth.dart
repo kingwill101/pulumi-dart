@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ActionGroupWebhookReceiverAadAuth {
   /// The identifier URI for AAD auth.
-  final String? identifierUri;
+  final pulumi.Input<String>? identifierUri;
   /// The webhook application object Id for AAD auth.
-  final String objectId;
+  final pulumi.Input<String> objectId;
   /// The tenant id for AAD auth.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [ActionGroupWebhookReceiverAadAuth].
   /// [identifierUri] The identifier URI for AAD auth.
@@ -29,9 +30,9 @@ class ActionGroupWebhookReceiverAadAuth {
 
   factory ActionGroupWebhookReceiverAadAuth.fromMap(Map<String, dynamic> map) {
     return ActionGroupWebhookReceiverAadAuth(
-      identifierUri: map['identifierUri'] == null ? null : map['identifierUri'] as String,
-      objectId: map['objectId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

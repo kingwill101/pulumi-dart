@@ -19,13 +19,10 @@ class GetImportJobArgs {
   /// [importJobName] Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetImportJobArgs({
-    required pulumi.Output<String> amlFilesystemName,
-    required pulumi.Output<String> importJobName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      amlFilesystemName = pulumi.Input.asInput<String>(amlFilesystemName),
-      importJobName = pulumi.Input.asInput<String>(importJobName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.amlFilesystemName,
+    required this.importJobName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetImportJobArgs {
 
   factory GetImportJobArgs.fromMap(Map<String, dynamic> map) {
     return GetImportJobArgs(
-      amlFilesystemName: pulumi.Output.create<String>(map['amlFilesystemName'] as String),
-      importJobName: pulumi.Output.create<String>(map['importJobName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      amlFilesystemName: (map['amlFilesystemName'] as String).input(),
+      importJobName: (map['importJobName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

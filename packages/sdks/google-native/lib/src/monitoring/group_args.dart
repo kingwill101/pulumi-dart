@@ -24,17 +24,12 @@ class GroupArgs {
   /// [parentName] The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
   /// [project] Optional.
   GroupArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? filter,
-    pulumi.Output<bool>? isCluster,
-    pulumi.Output<String>? parentName,
-    pulumi.Output<String>? project,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      isCluster = pulumi.Input.asOptionalInput<bool>(isCluster),
-      parentName = pulumi.Input.asOptionalInput<String>(parentName),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.displayName,
+    this.filter,
+    this.isCluster,
+    this.parentName,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      isCluster: map['isCluster'] == null ? null : pulumi.Output.create<bool>(map['isCluster'] as bool),
-      parentName: map['parentName'] == null ? null : pulumi.Output.create<String>(map['parentName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      isCluster: map['isCluster'] == null ? null : (map['isCluster'] as bool).input(),
+      parentName: map['parentName'] == null ? null : (map['parentName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

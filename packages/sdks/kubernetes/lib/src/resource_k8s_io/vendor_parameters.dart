@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VendorParameters are opaque parameters for one particular driver.
 class VendorParameters {
   /// DriverName is the name used by the DRA driver kubelet plugin.
-  final String? driverName;
+  final pulumi.Input<String>? driverName;
   /// Parameters can be arbitrary setup parameters. They are ignored while allocating a claim.
-  final dynamic parameters;
+  final pulumi.Input<dynamic>? parameters;
 
   /// Creates a new [VendorParameters].
   /// [driverName] DriverName is the name used by the DRA driver kubelet plugin.
@@ -25,8 +26,8 @@ class VendorParameters {
 
   factory VendorParameters.fromMap(Map<String, dynamic> map) {
     return VendorParameters(
-      driverName: map['driverName'] == null ? null : map['driverName'] as String,
-      parameters: map['parameters'] == null ? null : map['parameters'],
+      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']).input(),
     );
   }
 }

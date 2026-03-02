@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The monitoring configuration.
 class Monitoring {
   /// Indicates if monitoring is enabled for this SQL Server instance.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [Monitoring].
   /// [enabled] Indicates if monitoring is enabled for this SQL Server instance.
@@ -20,7 +21,7 @@ class Monitoring {
 
   factory Monitoring.fromMap(Map<String, dynamic> map) {
     return Monitoring(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

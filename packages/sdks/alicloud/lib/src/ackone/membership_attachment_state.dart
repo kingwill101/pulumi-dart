@@ -13,11 +13,9 @@ class MembershipAttachmentState {
   /// [clusterId] The ID of the cluster to which the membership is being attached.
   /// [subClusterId] The ID of the member being attached to the cluster.
   MembershipAttachmentState({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? subClusterId,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      subClusterId = pulumi.Input.asOptionalInput<String>(subClusterId);
+    this.clusterId,
+    this.subClusterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class MembershipAttachmentState {
 
   factory MembershipAttachmentState.fromMap(Map<String, dynamic> map) {
     return MembershipAttachmentState(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      subClusterId: map['subClusterId'] == null ? null : pulumi.Output.create<String>(map['subClusterId'] as String),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      subClusterId: map['subClusterId'] == null ? null : (map['subClusterId'] as String).input(),
     );
   }
 }

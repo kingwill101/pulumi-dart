@@ -17,13 +17,10 @@ class BotAssociationState {
   /// [lexBot] Configuration information of an Amazon Lex (V1) bot. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   BotAssociationState({
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<BotAssociationLexBot>? lexBot,
-    pulumi.Output<String>? region,
-  }) :
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      lexBot = pulumi.Input.asOptionalInput<BotAssociationLexBot>(lexBot),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.instanceId,
+    this.lexBot,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class BotAssociationState {
 
   factory BotAssociationState.fromMap(Map<String, dynamic> map) {
     return BotAssociationState(
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      lexBot: map['lexBot'] == null ? null : pulumi.Output.create<BotAssociationLexBot>(BotAssociationLexBot.fromMap((map['lexBot'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      lexBot: map['lexBot'] == null ? null : (BotAssociationLexBot.fromMap((map['lexBot'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

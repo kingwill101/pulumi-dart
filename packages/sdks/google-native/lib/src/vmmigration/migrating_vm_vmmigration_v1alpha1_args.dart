@@ -53,35 +53,21 @@ class MigratingVmVmmigrationV1alpha1Args {
   /// [sourceVmId] The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
   /// [targetDefaults] The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
   MigratingVmVmmigrationV1alpha1Args({
-    pulumi.Output<ComputeEngineDisksTargetDefaultsVmmigrationV1alpha1>? computeEngineDisksTargetDefaults,
-    pulumi.Output<ComputeEngineTargetDefaultsVmmigrationV1alpha1>? computeEngineTargetDefaults,
-    pulumi.Output<TargetVMDetails>? computeEngineVmDefaults,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> migratingVmId,
-    pulumi.Output<SchedulePolicyVmmigrationV1alpha1>? policy,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> sourceId,
-    pulumi.Output<String>? sourceVmId,
-    pulumi.Output<TargetVMDetails>? targetDefaults,
-  }) :
-      computeEngineDisksTargetDefaults = pulumi.Input.asOptionalInput<ComputeEngineDisksTargetDefaultsVmmigrationV1alpha1>(computeEngineDisksTargetDefaults),
-      computeEngineTargetDefaults = pulumi.Input.asOptionalInput<ComputeEngineTargetDefaultsVmmigrationV1alpha1>(computeEngineTargetDefaults),
-      computeEngineVmDefaults = pulumi.Input.asOptionalInput<TargetVMDetails>(computeEngineVmDefaults),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
-      policy = pulumi.Input.asOptionalInput<SchedulePolicyVmmigrationV1alpha1>(policy),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      sourceId = pulumi.Input.asInput<String>(sourceId),
-      sourceVmId = pulumi.Input.asOptionalInput<String>(sourceVmId),
-      targetDefaults = pulumi.Input.asOptionalInput<TargetVMDetails>(targetDefaults);
+    this.computeEngineDisksTargetDefaults,
+    this.computeEngineTargetDefaults,
+    this.computeEngineVmDefaults,
+    this.description,
+    this.displayName,
+    this.labels,
+    this.location,
+    required this.migratingVmId,
+    this.policy,
+    this.project,
+    this.requestId,
+    required this.sourceId,
+    this.sourceVmId,
+    this.targetDefaults,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class MigratingVmVmmigrationV1alpha1Args {
 
   factory MigratingVmVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return MigratingVmVmmigrationV1alpha1Args(
-      computeEngineDisksTargetDefaults: map['computeEngineDisksTargetDefaults'] == null ? null : pulumi.Output.create<ComputeEngineDisksTargetDefaultsVmmigrationV1alpha1>(ComputeEngineDisksTargetDefaultsVmmigrationV1alpha1.fromMap((map['computeEngineDisksTargetDefaults'] as Map).cast<String, dynamic>())),
-      computeEngineTargetDefaults: map['computeEngineTargetDefaults'] == null ? null : pulumi.Output.create<ComputeEngineTargetDefaultsVmmigrationV1alpha1>(ComputeEngineTargetDefaultsVmmigrationV1alpha1.fromMap((map['computeEngineTargetDefaults'] as Map).cast<String, dynamic>())),
-      computeEngineVmDefaults: map['computeEngineVmDefaults'] == null ? null : pulumi.Output.create<TargetVMDetails>(TargetVMDetails.fromMap((map['computeEngineVmDefaults'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      migratingVmId: pulumi.Output.create<String>(map['migratingVmId'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<SchedulePolicyVmmigrationV1alpha1>(SchedulePolicyVmmigrationV1alpha1.fromMap((map['policy'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      sourceId: pulumi.Output.create<String>(map['sourceId'] as String),
-      sourceVmId: map['sourceVmId'] == null ? null : pulumi.Output.create<String>(map['sourceVmId'] as String),
-      targetDefaults: map['targetDefaults'] == null ? null : pulumi.Output.create<TargetVMDetails>(TargetVMDetails.fromMap((map['targetDefaults'] as Map).cast<String, dynamic>())),
+      computeEngineDisksTargetDefaults: map['computeEngineDisksTargetDefaults'] == null ? null : (ComputeEngineDisksTargetDefaultsVmmigrationV1alpha1.fromMap((map['computeEngineDisksTargetDefaults'] as Map).cast<String, dynamic>())).input(),
+      computeEngineTargetDefaults: map['computeEngineTargetDefaults'] == null ? null : (ComputeEngineTargetDefaultsVmmigrationV1alpha1.fromMap((map['computeEngineTargetDefaults'] as Map).cast<String, dynamic>())).input(),
+      computeEngineVmDefaults: map['computeEngineVmDefaults'] == null ? null : (TargetVMDetails.fromMap((map['computeEngineVmDefaults'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      migratingVmId: (map['migratingVmId'] as String).input(),
+      policy: map['policy'] == null ? null : (SchedulePolicyVmmigrationV1alpha1.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      sourceId: (map['sourceId'] as String).input(),
+      sourceVmId: map['sourceVmId'] == null ? null : (map['sourceVmId'] as String).input(),
+      targetDefaults: map['targetDefaults'] == null ? null : (TargetVMDetails.fromMap((map['targetDefaults'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

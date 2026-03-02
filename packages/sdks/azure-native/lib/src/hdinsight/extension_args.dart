@@ -25,17 +25,12 @@ class ExtensionArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [workspaceId] The workspace ID for the cluster monitoring extension.
   ExtensionArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? extensionName,
-    pulumi.Output<String>? primaryKey,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      extensionName = pulumi.Input.asOptionalInput<String>(extensionName),
-      primaryKey = pulumi.Input.asOptionalInput<String>(primaryKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    required this.clusterName,
+    this.extensionName,
+    this.primaryKey,
+    required this.resourceGroupName,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ExtensionArgs {
 
   factory ExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      extensionName: map['extensionName'] == null ? null : pulumi.Output.create<String>(map['extensionName'] as String),
-      primaryKey: map['primaryKey'] == null ? null : pulumi.Output.create<String>(map['primaryKey'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      extensionName: map['extensionName'] == null ? null : (map['extensionName'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

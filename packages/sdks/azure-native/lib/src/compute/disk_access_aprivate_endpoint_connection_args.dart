@@ -23,15 +23,11 @@ class DiskAccessAPrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between DiskAccess and Virtual Network.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   DiskAccessAPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> diskAccessName,
-    pulumi.Output<String>? privateEndpointConnectionName,
-    required pulumi.Output<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      diskAccessName = pulumi.Input.asInput<String>(diskAccessName),
-      privateEndpointConnectionName = pulumi.Input.asOptionalInput<String>(privateEndpointConnectionName),
-      privateLinkServiceConnectionState = pulumi.Input.asInput<PrivateLinkServiceConnectionState>(privateLinkServiceConnectionState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.diskAccessName,
+    this.privateEndpointConnectionName,
+    required this.privateLinkServiceConnectionState,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class DiskAccessAPrivateEndpointConnectionArgs {
 
   factory DiskAccessAPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return DiskAccessAPrivateEndpointConnectionArgs(
-      diskAccessName: pulumi.Output.create<String>(map['diskAccessName'] as String),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      privateLinkServiceConnectionState: pulumi.Output.create<PrivateLinkServiceConnectionState>(PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      diskAccessName: (map['diskAccessName'] as String).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
+      privateLinkServiceConnectionState: (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

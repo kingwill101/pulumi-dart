@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAggregatorsAggregatorAggregatorAccount {
   /// Aggregator account uid.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// Aggregator account name.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// Aggregator account source type.
-  final String accountType;
+  final pulumi.Input<String> accountType;
 
   /// Creates a new [GetAggregatorsAggregatorAggregatorAccount].
   /// [accountId] Aggregator account uid.
@@ -29,9 +30,9 @@ class GetAggregatorsAggregatorAggregatorAccount {
 
   factory GetAggregatorsAggregatorAggregatorAccount.fromMap(Map<String, dynamic> map) {
     return GetAggregatorsAggregatorAggregatorAccount(
-      accountId: map['accountId'] as String,
-      accountName: map['accountName'] as String,
-      accountType: map['accountType'] as String,
+      accountId: (map['accountId'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      accountType: (map['accountType'] as String).input(),
     );
   }
 }

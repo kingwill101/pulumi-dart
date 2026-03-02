@@ -46,31 +46,19 @@ class ProviderArgs {
   /// [workloadIdentityPoolId] Required.
   /// [workloadIdentityPoolProviderId] Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
   ProviderArgs({
-    pulumi.Output<String>? attributeCondition,
-    pulumi.Output<Map<String, String>>? attributeMapping,
-    pulumi.Output<Aws>? aws,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<Oidc>? oidc,
-    pulumi.Output<String>? project,
-    pulumi.Output<Saml>? saml,
-    required pulumi.Output<String> workloadIdentityPoolId,
-    required pulumi.Output<String> workloadIdentityPoolProviderId,
-  }) :
-      attributeCondition = pulumi.Input.asOptionalInput<String>(attributeCondition),
-      attributeMapping = pulumi.Input.asOptionalInput<Map<String, String>>(attributeMapping),
-      aws = pulumi.Input.asOptionalInput<Aws>(aws),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      oidc = pulumi.Input.asOptionalInput<Oidc>(oidc),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      saml = pulumi.Input.asOptionalInput<Saml>(saml),
-      workloadIdentityPoolId = pulumi.Input.asInput<String>(workloadIdentityPoolId),
-      workloadIdentityPoolProviderId = pulumi.Input.asInput<String>(workloadIdentityPoolProviderId);
+    this.attributeCondition,
+    this.attributeMapping,
+    this.aws,
+    this.description,
+    this.disabled,
+    this.displayName,
+    this.location,
+    this.oidc,
+    this.project,
+    this.saml,
+    required this.workloadIdentityPoolId,
+    required this.workloadIdentityPoolProviderId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      attributeCondition: map['attributeCondition'] == null ? null : pulumi.Output.create<String>(map['attributeCondition'] as String),
-      attributeMapping: map['attributeMapping'] == null ? null : pulumi.Output.create<Map<String, String>>((map['attributeMapping'] as Map).cast<String, String>()),
-      aws: map['aws'] == null ? null : pulumi.Output.create<Aws>(Aws.fromMap((map['aws'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      oidc: map['oidc'] == null ? null : pulumi.Output.create<Oidc>(Oidc.fromMap((map['oidc'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      saml: map['saml'] == null ? null : pulumi.Output.create<Saml>(Saml.fromMap((map['saml'] as Map).cast<String, dynamic>())),
-      workloadIdentityPoolId: pulumi.Output.create<String>(map['workloadIdentityPoolId'] as String),
-      workloadIdentityPoolProviderId: pulumi.Output.create<String>(map['workloadIdentityPoolProviderId'] as String),
+      attributeCondition: map['attributeCondition'] == null ? null : (map['attributeCondition'] as String).input(),
+      attributeMapping: map['attributeMapping'] == null ? null : ((map['attributeMapping'] as Map).cast<String, String>()).input(),
+      aws: map['aws'] == null ? null : (Aws.fromMap((map['aws'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      oidc: map['oidc'] == null ? null : (Oidc.fromMap((map['oidc'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      saml: map['saml'] == null ? null : (Saml.fromMap((map['saml'] as Map).cast<String, dynamic>())).input(),
+      workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
+      workloadIdentityPoolProviderId: (map['workloadIdentityPoolProviderId'] as String).input(),
     );
   }
 }

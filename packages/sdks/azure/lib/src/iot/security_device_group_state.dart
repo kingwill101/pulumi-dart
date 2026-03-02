@@ -21,15 +21,11 @@ class SecurityDeviceGroupState {
   /// [name] Specifies the name of the Device Security Group. Changing this forces a new resource to be created.
   /// [rangeRules] One or more `range_rule` blocks as defined below.
   SecurityDeviceGroupState({
-    pulumi.Output<SecurityDeviceGroupAllowRule>? allowRule,
-    pulumi.Output<String>? iothubId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<SecurityDeviceGroupRangeRule>>? rangeRules,
-  }) :
-      allowRule = pulumi.Input.asOptionalInput<SecurityDeviceGroupAllowRule>(allowRule),
-      iothubId = pulumi.Input.asOptionalInput<String>(iothubId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      rangeRules = pulumi.Input.asOptionalInput<List<SecurityDeviceGroupRangeRule>>(rangeRules);
+    this.allowRule,
+    this.iothubId,
+    this.name,
+    this.rangeRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class SecurityDeviceGroupState {
 
   factory SecurityDeviceGroupState.fromMap(Map<String, dynamic> map) {
     return SecurityDeviceGroupState(
-      allowRule: map['allowRule'] == null ? null : pulumi.Output.create<SecurityDeviceGroupAllowRule>(SecurityDeviceGroupAllowRule.fromMap((map['allowRule'] as Map).cast<String, dynamic>())),
-      iothubId: map['iothubId'] == null ? null : pulumi.Output.create<String>(map['iothubId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      rangeRules: map['rangeRules'] == null ? null : pulumi.Output.create<List<SecurityDeviceGroupRangeRule>>(pulumi.Input.decodeList<SecurityDeviceGroupRangeRule>(map['rangeRules'], (value) => SecurityDeviceGroupRangeRule.fromMap((value as Map).cast<String, dynamic>()))),
+      allowRule: map['allowRule'] == null ? null : (SecurityDeviceGroupAllowRule.fromMap((map['allowRule'] as Map).cast<String, dynamic>())).input(),
+      iothubId: map['iothubId'] == null ? null : (map['iothubId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rangeRules: map['rangeRules'] == null ? null : (pulumi.Input.decodeList<SecurityDeviceGroupRangeRule>(map['rangeRules'], (value) => SecurityDeviceGroupRangeRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

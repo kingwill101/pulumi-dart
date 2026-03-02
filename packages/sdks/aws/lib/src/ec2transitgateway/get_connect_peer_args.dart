@@ -23,15 +23,11 @@ class GetConnectPeerArgs {
   /// [tags] Key-value tags for the EC2 Transit Gateway Connect Peer
   /// [transitGatewayConnectPeerId] Identifier of the EC2 Transit Gateway Connect Peer.
   GetConnectPeerArgs({
-    pulumi.Output<List<GetConnectPeerFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitGatewayConnectPeerId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetConnectPeerFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayConnectPeerId = pulumi.Input.asOptionalInput<String>(transitGatewayConnectPeerId);
+    this.filters,
+    this.region,
+    this.tags,
+    this.transitGatewayConnectPeerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetConnectPeerArgs {
 
   factory GetConnectPeerArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectPeerArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetConnectPeerFilter>>(pulumi.Input.decodeList<GetConnectPeerFilter>(map['filters'], (value) => GetConnectPeerFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayConnectPeerId: map['transitGatewayConnectPeerId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayConnectPeerId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetConnectPeerFilter>(map['filters'], (value) => GetConnectPeerFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayConnectPeerId: map['transitGatewayConnectPeerId'] == null ? null : (map['transitGatewayConnectPeerId'] as String).input(),
     );
   }
 }

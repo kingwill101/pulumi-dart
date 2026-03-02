@@ -22,17 +22,12 @@ class FirewallRuleState {
   /// [remark] The remarks of the firewall rule.
   /// [ruleProtocol] The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
   FirewallRuleState({
-    pulumi.Output<String>? firewallRuleId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? port,
-    pulumi.Output<String>? remark,
-    pulumi.Output<String>? ruleProtocol,
-  }) :
-      firewallRuleId = pulumi.Input.asOptionalInput<String>(firewallRuleId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      port = pulumi.Input.asOptionalInput<String>(port),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      ruleProtocol = pulumi.Input.asOptionalInput<String>(ruleProtocol);
+    this.firewallRuleId,
+    this.instanceId,
+    this.port,
+    this.remark,
+    this.ruleProtocol,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class FirewallRuleState {
 
   factory FirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FirewallRuleState(
-      firewallRuleId: map['firewallRuleId'] == null ? null : pulumi.Output.create<String>(map['firewallRuleId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      ruleProtocol: map['ruleProtocol'] == null ? null : pulumi.Output.create<String>(map['ruleProtocol'] as String),
+      firewallRuleId: map['firewallRuleId'] == null ? null : (map['firewallRuleId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      ruleProtocol: map['ruleProtocol'] == null ? null : (map['ruleProtocol'] as String).input(),
     );
   }
 }

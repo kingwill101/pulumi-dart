@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuestPoliciesRecipeInstallStepFileExec {
   /// A list of possible return values that the program can return to indicate a success. Defaults to [0].
-  final String? allowedExitCodes;
+  final pulumi.Input<String>? allowedExitCodes;
   /// Arguments to be passed to the provided executable.
-  final List<String>? args;
+  final pulumi.Input<List<String>>? args;
   /// The id of the relevant artifact in the recipe.
-  final String? artifactId;
+  final pulumi.Input<String>? artifactId;
   /// The absolute path of the file on the local filesystem.
-  final String? localPath;
+  final pulumi.Input<String>? localPath;
 
   /// Creates a new [GuestPoliciesRecipeInstallStepFileExec].
   /// [allowedExitCodes] A list of possible return values that the program can return to indicate a success. Defaults to [0].
@@ -34,10 +35,10 @@ class GuestPoliciesRecipeInstallStepFileExec {
 
   factory GuestPoliciesRecipeInstallStepFileExec.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeInstallStepFileExec(
-      allowedExitCodes: map['allowedExitCodes'] == null ? null : map['allowedExitCodes'] as String,
-      args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      artifactId: map['artifactId'] == null ? null : map['artifactId'] as String,
-      localPath: map['localPath'] == null ? null : map['localPath'] as String,
+      allowedExitCodes: map['allowedExitCodes'] == null ? null : (map['allowedExitCodes'] as String).input(),
+      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      artifactId: map['artifactId'] == null ? null : (map['artifactId'] as String).input(),
+      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
     );
   }
 }

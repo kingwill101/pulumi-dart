@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt {
   /// Type of archive files in this repository.
   /// Possible values are: `DEB`, `DEB_SRC`.
-  final String archiveType;
+  final pulumi.Input<String> archiveType;
   /// List of components for this repository. Must contain at least one
   /// item.
-  final List<String> components;
+  final pulumi.Input<List<String>> components;
   /// Distribution of this repository.
-  final String distribution;
+  final pulumi.Input<String> distribution;
   /// URI of the key file for this repository. The agent maintains a
   /// keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
-  final String? gpgKey;
+  final pulumi.Input<String>? gpgKey;
   /// URI for this repository.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt].
   /// [archiveType] Type of archive files in this repository.
@@ -42,11 +43,11 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
   factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt(
-      archiveType: map['archiveType'] as String,
-      components: (map['components'] as List).cast<String>(),
-      distribution: map['distribution'] as String,
-      gpgKey: map['gpgKey'] == null ? null : map['gpgKey'] as String,
-      uri: map['uri'] as String,
+      archiveType: (map['archiveType'] as String).input(),
+      components: ((map['components'] as List).cast<String>()).input(),
+      distribution: (map['distribution'] as String).input(),
+      gpgKey: map['gpgKey'] == null ? null : (map['gpgKey'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

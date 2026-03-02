@@ -41,27 +41,17 @@ class RegionSslCertificateComputeV1Args {
   /// [selfManaged] Configuration and status of a self-managed SSL certificate.
   /// [type] (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
   RegionSslCertificateComputeV1Args({
-    pulumi.Output<String>? certificate,
-    pulumi.Output<String>? description,
-    pulumi.Output<SslCertificateManagedSslCertificateComputeV1>? managed,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<SslCertificateSelfManagedSslCertificateComputeV1>? selfManaged,
-    pulumi.Output<RegionSslCertificateTypeComputeV1>? type,
-  }) :
-      certificate = pulumi.Input.asOptionalInput<String>(certificate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      managed = pulumi.Input.asOptionalInput<SslCertificateManagedSslCertificateComputeV1>(managed),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      selfManaged = pulumi.Input.asOptionalInput<SslCertificateSelfManagedSslCertificateComputeV1>(selfManaged),
-      type = pulumi.Input.asOptionalInput<RegionSslCertificateTypeComputeV1>(type);
+    this.certificate,
+    this.description,
+    this.managed,
+    this.name,
+    this.privateKey,
+    this.project,
+    required this.region,
+    this.requestId,
+    this.selfManaged,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class RegionSslCertificateComputeV1Args {
 
   factory RegionSslCertificateComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionSslCertificateComputeV1Args(
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<String>(map['certificate'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      managed: map['managed'] == null ? null : pulumi.Output.create<SslCertificateManagedSslCertificateComputeV1>(SslCertificateManagedSslCertificateComputeV1.fromMap((map['managed'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      selfManaged: map['selfManaged'] == null ? null : pulumi.Output.create<SslCertificateSelfManagedSslCertificateComputeV1>(SslCertificateSelfManagedSslCertificateComputeV1.fromMap((map['selfManaged'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<RegionSslCertificateTypeComputeV1>(RegionSslCertificateTypeComputeV1.fromValue(map['type'] as String)),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      managed: map['managed'] == null ? null : (SslCertificateManagedSslCertificateComputeV1.fromMap((map['managed'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      selfManaged: map['selfManaged'] == null ? null : (SslCertificateSelfManagedSslCertificateComputeV1.fromMap((map['selfManaged'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (RegionSslCertificateTypeComputeV1.fromValue(map['type'] as String)).input(),
     );
   }
 }

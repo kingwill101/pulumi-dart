@@ -24,17 +24,12 @@ class GetAccessEntryArgs {
   /// [tags] Optional.
   /// [tagsAll] (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
   GetAccessEntryArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> principalArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      principalArn = pulumi.Input.asInput<String>(principalArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    required this.clusterName,
+    required this.principalArn,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class GetAccessEntryArgs {
 
   factory GetAccessEntryArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessEntryArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      principalArn: pulumi.Output.create<String>(map['principalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      clusterName: (map['clusterName'] as String).input(),
+      principalArn: (map['principalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

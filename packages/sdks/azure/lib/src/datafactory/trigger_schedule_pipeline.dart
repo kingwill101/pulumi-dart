@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerSchedulePipeline {
   /// Reference pipeline name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The pipeline parameters that the trigger will act upon.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
 
   /// Creates a new [TriggerSchedulePipeline].
   /// [name] Reference pipeline name.
@@ -24,8 +25,8 @@ class TriggerSchedulePipeline {
 
   factory TriggerSchedulePipeline.fromMap(Map<String, dynamic> map) {
     return TriggerSchedulePipeline(
-      name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
+      name: (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

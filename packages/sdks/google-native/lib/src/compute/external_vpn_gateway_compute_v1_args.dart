@@ -32,21 +32,14 @@ class ExternalVpnGatewayComputeV1Args {
   /// [redundancyType] Indicates the user-supplied redundancy type of this external VPN gateway.
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   ExternalVpnGatewayComputeV1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<ExternalVpnGatewayInterfaceComputeV1>>? interfaces,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ExternalVpnGatewayRedundancyTypeComputeV1>? redundancyType,
-    pulumi.Output<String>? requestId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      interfaces = pulumi.Input.asOptionalInput<List<ExternalVpnGatewayInterfaceComputeV1>>(interfaces),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      redundancyType = pulumi.Input.asOptionalInput<ExternalVpnGatewayRedundancyTypeComputeV1>(redundancyType),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    this.description,
+    this.interfaces,
+    this.labels,
+    this.name,
+    this.project,
+    this.redundancyType,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ExternalVpnGatewayComputeV1Args {
 
   factory ExternalVpnGatewayComputeV1Args.fromMap(Map<String, dynamic> map) {
     return ExternalVpnGatewayComputeV1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      interfaces: map['interfaces'] == null ? null : pulumi.Output.create<List<ExternalVpnGatewayInterfaceComputeV1>>(pulumi.Input.decodeList<ExternalVpnGatewayInterfaceComputeV1>(map['interfaces'], (value) => ExternalVpnGatewayInterfaceComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      redundancyType: map['redundancyType'] == null ? null : pulumi.Output.create<ExternalVpnGatewayRedundancyTypeComputeV1>(ExternalVpnGatewayRedundancyTypeComputeV1.fromValue(map['redundancyType'] as String)),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<ExternalVpnGatewayInterfaceComputeV1>(map['interfaces'], (value) => ExternalVpnGatewayInterfaceComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      redundancyType: map['redundancyType'] == null ? null : (ExternalVpnGatewayRedundancyTypeComputeV1.fromValue(map['redundancyType'] as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

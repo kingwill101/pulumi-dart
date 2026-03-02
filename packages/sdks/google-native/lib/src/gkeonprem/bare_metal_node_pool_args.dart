@@ -39,27 +39,17 @@ class BareMetalNodePoolArgs {
   /// [project] Optional.
   /// [upgradePolicy] The worker node pool upgrade policy.
   BareMetalNodePoolArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> bareMetalClusterId,
-    pulumi.Output<String>? bareMetalNodePoolId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<BareMetalNodePoolConfig> nodePoolConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<BareMetalNodePoolUpgradePolicy>? upgradePolicy,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      bareMetalClusterId = pulumi.Input.asInput<String>(bareMetalClusterId),
-      bareMetalNodePoolId = pulumi.Input.asOptionalInput<String>(bareMetalNodePoolId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodePoolConfig = pulumi.Input.asInput<BareMetalNodePoolConfig>(nodePoolConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      upgradePolicy = pulumi.Input.asOptionalInput<BareMetalNodePoolUpgradePolicy>(upgradePolicy);
+    this.annotations,
+    required this.bareMetalClusterId,
+    this.bareMetalNodePoolId,
+    this.displayName,
+    this.etag,
+    this.location,
+    this.name,
+    required this.nodePoolConfig,
+    this.project,
+    this.upgradePolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class BareMetalNodePoolArgs {
 
   factory BareMetalNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      bareMetalClusterId: pulumi.Output.create<String>(map['bareMetalClusterId'] as String),
-      bareMetalNodePoolId: map['bareMetalNodePoolId'] == null ? null : pulumi.Output.create<String>(map['bareMetalNodePoolId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodePoolConfig: pulumi.Output.create<BareMetalNodePoolConfig>(BareMetalNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      upgradePolicy: map['upgradePolicy'] == null ? null : pulumi.Output.create<BareMetalNodePoolUpgradePolicy>(BareMetalNodePoolUpgradePolicy.fromMap((map['upgradePolicy'] as Map).cast<String, dynamic>())),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      bareMetalClusterId: (map['bareMetalClusterId'] as String).input(),
+      bareMetalNodePoolId: map['bareMetalNodePoolId'] == null ? null : (map['bareMetalNodePoolId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodePoolConfig: (BareMetalNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      upgradePolicy: map['upgradePolicy'] == null ? null : (BareMetalNodePoolUpgradePolicy.fromMap((map['upgradePolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,17 +22,12 @@ class MailAddressState {
   /// [sendtype] Account type. Valid values: `batch`, `trigger`.
   /// [status] Account Status freeze: 1, normal: 0.
   MailAddressState({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? replyAddress,
-    pulumi.Output<String>? sendtype,
-    pulumi.Output<String>? status,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      replyAddress = pulumi.Input.asOptionalInput<String>(replyAddress),
-      sendtype = pulumi.Input.asOptionalInput<String>(sendtype),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.accountName,
+    this.password,
+    this.replyAddress,
+    this.sendtype,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class MailAddressState {
 
   factory MailAddressState.fromMap(Map<String, dynamic> map) {
     return MailAddressState(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      replyAddress: map['replyAddress'] == null ? null : pulumi.Output.create<String>(map['replyAddress'] as String),
-      sendtype: map['sendtype'] == null ? null : pulumi.Output.create<String>(map['sendtype'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      replyAddress: map['replyAddress'] == null ? null : (map['replyAddress'] as String).input(),
+      sendtype: map['sendtype'] == null ? null : (map['sendtype'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

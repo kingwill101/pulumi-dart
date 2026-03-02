@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'batching_configuration_response.dart';
 import 'dataflow_endpoint_data_lake_storage_authentication_response.dart';
 
 /// Azure Data Lake endpoint properties
 class DataflowEndpointDataLakeStorageResponse {
   /// Authentication configuration. NOTE - only authentication property is allowed per entry.
-  final DataflowEndpointDataLakeStorageAuthenticationResponse authentication;
+  final pulumi.Input<DataflowEndpointDataLakeStorageAuthenticationResponse> authentication;
   /// Azure Data Lake endpoint batching configuration.
-  final BatchingConfigurationResponse? batching;
+  final pulumi.Input<BatchingConfigurationResponse>? batching;
   /// Host of the Azure Data Lake in the form of <account>.blob.core.windows.net .
-  final String host;
+  final pulumi.Input<String> host;
 
   /// Creates a new [DataflowEndpointDataLakeStorageResponse].
   /// [authentication] Authentication configuration. NOTE - only authentication property is allowed per entry.
@@ -24,17 +25,17 @@ class DataflowEndpointDataLakeStorageResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': authentication.toMap(),
-      'batching': ?batching == null ? null : batching!.toMap(),
+      'authentication': pulumi.Input.mapInputValue<DataflowEndpointDataLakeStorageAuthenticationResponse, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'batching': ?pulumi.Input.mapOptionalInputValue<BatchingConfigurationResponse, Map<String, dynamic>>(batching, (value) => value.toMap()),
       'host': host,
     };
   }
 
   factory DataflowEndpointDataLakeStorageResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointDataLakeStorageResponse(
-      authentication: DataflowEndpointDataLakeStorageAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      batching: map['batching'] == null ? null : BatchingConfigurationResponse.fromMap((map['batching'] as Map).cast<String, dynamic>()),
-      host: map['host'] as String,
+      authentication: (DataflowEndpointDataLakeStorageAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      batching: map['batching'] == null ? null : (BatchingConfigurationResponse.fromMap((map['batching'] as Map).cast<String, dynamic>())).input(),
+      host: (map['host'] as String).input(),
     );
   }
 }

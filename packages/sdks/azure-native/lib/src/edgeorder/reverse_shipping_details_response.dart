@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reverse shipment details.
 class ReverseShippingDetailsResponse {
   /// Carrier Name for display purpose. Not to be used for any processing.
-  final String carrierDisplayName;
+  final pulumi.Input<String> carrierDisplayName;
   /// Name of the carrier.
-  final String carrierName;
+  final pulumi.Input<String> carrierName;
   /// SAS key to download the reverse shipment label of the package.
-  final String sasKeyForLabel;
+  final pulumi.Input<String> sasKeyForLabel;
   /// TrackingId of the package.
-  final String trackingId;
+  final pulumi.Input<String> trackingId;
   /// TrackingUrl of the package.
-  final String trackingUrl;
+  final pulumi.Input<String> trackingUrl;
 
   /// Creates a new [ReverseShippingDetailsResponse].
   /// [carrierDisplayName] Carrier Name for display purpose. Not to be used for any processing.
@@ -40,11 +41,11 @@ class ReverseShippingDetailsResponse {
 
   factory ReverseShippingDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ReverseShippingDetailsResponse(
-      carrierDisplayName: map['carrierDisplayName'] as String,
-      carrierName: map['carrierName'] as String,
-      sasKeyForLabel: map['sasKeyForLabel'] as String,
-      trackingId: map['trackingId'] as String,
-      trackingUrl: map['trackingUrl'] as String,
+      carrierDisplayName: (map['carrierDisplayName'] as String).input(),
+      carrierName: (map['carrierName'] as String).input(),
+      sasKeyForLabel: (map['sasKeyForLabel'] as String).input(),
+      trackingId: (map['trackingId'] as String).input(),
+      trackingUrl: (map['trackingUrl'] as String).input(),
     );
   }
 }

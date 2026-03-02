@@ -17,13 +17,10 @@ class SshKeyState {
   /// [name] The name of the SSH key for identification
   /// [publicKey] The public key. If this is a file, it
   SshKeyState({
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? publicKey,
-  }) :
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey);
+    this.fingerprint,
+    this.name,
+    this.publicKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class SshKeyState {
 
   factory SshKeyState.fromMap(Map<String, dynamic> map) {
     return SshKeyState(
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
     );
   }
 }

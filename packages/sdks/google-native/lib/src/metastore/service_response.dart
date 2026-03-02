@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_config_response.dart';
 import 'hive_metastore_config_response.dart';
 import 'maintenance_window_response.dart';
@@ -12,49 +13,49 @@ import 'telemetry_config_response.dart';
 /// A managed metastore service that serves metadata queries.
 class ServiceResponse {
   /// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
-  final String artifactGcsUri;
+  final pulumi.Input<String> artifactGcsUri;
   /// The time when the metastore service was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Immutable. The database type that the Metastore service stores its data.
-  final String databaseType;
+  final pulumi.Input<String> databaseType;
   /// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
-  final EncryptionConfigResponse encryptionConfig;
+  final pulumi.Input<EncryptionConfigResponse> encryptionConfig;
   /// The URI of the endpoint used to access the metastore service.
-  final String endpointUri;
+  final pulumi.Input<String> endpointUri;
   /// Configuration information specific to running Hive metastore software as the metastore service.
-  final HiveMetastoreConfigResponse hiveMetastoreConfig;
+  final pulumi.Input<HiveMetastoreConfigResponse> hiveMetastoreConfig;
   /// User-defined labels for the metastore service.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
-  final MaintenanceWindowResponse maintenanceWindow;
+  final pulumi.Input<MaintenanceWindowResponse> maintenanceWindow;
   /// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
-  final MetadataIntegrationResponse metadataIntegration;
+  final pulumi.Input<MetadataIntegrationResponse> metadataIntegration;
   /// The metadata management activities of the metastore service.
-  final MetadataManagementActivityResponse metadataManagementActivity;
+  final pulumi.Input<MetadataManagementActivityResponse> metadataManagementActivity;
   /// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
-  final String name;
+  final pulumi.Input<String> name;
   /// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
-  final String network;
+  final pulumi.Input<String> network;
   /// The configuration specifying the network settings for the Dataproc Metastore service.
-  final NetworkConfigResponse networkConfig;
+  final pulumi.Input<NetworkConfigResponse> networkConfig;
   /// The TCP port at which the metastore service is reached. Default: 9083.
-  final int port;
+  final pulumi.Input<int> port;
   /// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
-  final String releaseChannel;
+  final pulumi.Input<String> releaseChannel;
   /// Scaling configuration of the metastore service.
-  final ScalingConfigResponse scalingConfig;
+  final pulumi.Input<ScalingConfigResponse> scalingConfig;
   /// The current state of the metastore service.
-  final String state;
+  final pulumi.Input<String> state;
   /// Additional information about the current state of the metastore service, if available.
-  final String stateMessage;
+  final pulumi.Input<String> stateMessage;
   /// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
-  final TelemetryConfigResponse telemetryConfig;
+  final pulumi.Input<TelemetryConfigResponse> telemetryConfig;
   /// The tier of the service.
-  final String tier;
+  final pulumi.Input<String> tier;
   /// The globally unique resource identifier of the metastore service.
-  final String uid;
+  final pulumi.Input<String> uid;
   /// The time when the metastore service was last updated.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [ServiceResponse].
   /// [artifactGcsUri] A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
@@ -109,22 +110,22 @@ class ServiceResponse {
       'artifactGcsUri': artifactGcsUri,
       'createTime': createTime,
       'databaseType': databaseType,
-      'encryptionConfig': encryptionConfig.toMap(),
+      'encryptionConfig': pulumi.Input.mapInputValue<EncryptionConfigResponse, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
       'endpointUri': endpointUri,
-      'hiveMetastoreConfig': hiveMetastoreConfig.toMap(),
+      'hiveMetastoreConfig': pulumi.Input.mapInputValue<HiveMetastoreConfigResponse, Map<String, dynamic>>(hiveMetastoreConfig, (value) => value.toMap()),
       'labels': labels,
-      'maintenanceWindow': maintenanceWindow.toMap(),
-      'metadataIntegration': metadataIntegration.toMap(),
-      'metadataManagementActivity': metadataManagementActivity.toMap(),
+      'maintenanceWindow': pulumi.Input.mapInputValue<MaintenanceWindowResponse, Map<String, dynamic>>(maintenanceWindow, (value) => value.toMap()),
+      'metadataIntegration': pulumi.Input.mapInputValue<MetadataIntegrationResponse, Map<String, dynamic>>(metadataIntegration, (value) => value.toMap()),
+      'metadataManagementActivity': pulumi.Input.mapInputValue<MetadataManagementActivityResponse, Map<String, dynamic>>(metadataManagementActivity, (value) => value.toMap()),
       'name': name,
       'network': network,
-      'networkConfig': networkConfig.toMap(),
+      'networkConfig': pulumi.Input.mapInputValue<NetworkConfigResponse, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
       'port': port,
       'releaseChannel': releaseChannel,
-      'scalingConfig': scalingConfig.toMap(),
+      'scalingConfig': pulumi.Input.mapInputValue<ScalingConfigResponse, Map<String, dynamic>>(scalingConfig, (value) => value.toMap()),
       'state': state,
       'stateMessage': stateMessage,
-      'telemetryConfig': telemetryConfig.toMap(),
+      'telemetryConfig': pulumi.Input.mapInputValue<TelemetryConfigResponse, Map<String, dynamic>>(telemetryConfig, (value) => value.toMap()),
       'tier': tier,
       'uid': uid,
       'updateTime': updateTime,
@@ -133,28 +134,28 @@ class ServiceResponse {
 
   factory ServiceResponse.fromMap(Map<String, dynamic> map) {
     return ServiceResponse(
-      artifactGcsUri: map['artifactGcsUri'] as String,
-      createTime: map['createTime'] as String,
-      databaseType: map['databaseType'] as String,
-      encryptionConfig: EncryptionConfigResponse.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
-      endpointUri: map['endpointUri'] as String,
-      hiveMetastoreConfig: HiveMetastoreConfigResponse.fromMap((map['hiveMetastoreConfig'] as Map).cast<String, dynamic>()),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      maintenanceWindow: MaintenanceWindowResponse.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>()),
-      metadataIntegration: MetadataIntegrationResponse.fromMap((map['metadataIntegration'] as Map).cast<String, dynamic>()),
-      metadataManagementActivity: MetadataManagementActivityResponse.fromMap((map['metadataManagementActivity'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      network: map['network'] as String,
-      networkConfig: NetworkConfigResponse.fromMap((map['networkConfig'] as Map).cast<String, dynamic>()),
-      port: map['port'] as int,
-      releaseChannel: map['releaseChannel'] as String,
-      scalingConfig: ScalingConfigResponse.fromMap((map['scalingConfig'] as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
-      stateMessage: map['stateMessage'] as String,
-      telemetryConfig: TelemetryConfigResponse.fromMap((map['telemetryConfig'] as Map).cast<String, dynamic>()),
-      tier: map['tier'] as String,
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
+      artifactGcsUri: (map['artifactGcsUri'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      databaseType: (map['databaseType'] as String).input(),
+      encryptionConfig: (EncryptionConfigResponse.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      endpointUri: (map['endpointUri'] as String).input(),
+      hiveMetastoreConfig: (HiveMetastoreConfigResponse.fromMap((map['hiveMetastoreConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      maintenanceWindow: (MaintenanceWindowResponse.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
+      metadataIntegration: (MetadataIntegrationResponse.fromMap((map['metadataIntegration'] as Map).cast<String, dynamic>())).input(),
+      metadataManagementActivity: (MetadataManagementActivityResponse.fromMap((map['metadataManagementActivity'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      network: (map['network'] as String).input(),
+      networkConfig: (NetworkConfigResponse.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
+      port: (map['port'] as int).input(),
+      releaseChannel: (map['releaseChannel'] as String).input(),
+      scalingConfig: (ScalingConfigResponse.fromMap((map['scalingConfig'] as Map).cast<String, dynamic>())).input(),
+      state: (map['state'] as String).input(),
+      stateMessage: (map['stateMessage'] as String).input(),
+      telemetryConfig: (TelemetryConfigResponse.fromMap((map['telemetryConfig'] as Map).cast<String, dynamic>())).input(),
+      tier: (map['tier'] as String).input(),
+      uid: (map['uid'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

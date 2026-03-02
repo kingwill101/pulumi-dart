@@ -19,13 +19,10 @@ class DhcpOptionsSetAttachmentArgs {
   /// [dryRun] Specifies whether to precheck this request only. Default values: `false`. Valid values:
   /// [vpcId] The ID of the VPC network that is to be associated with the DHCP options set..
   DhcpOptionsSetAttachmentArgs({
-    required pulumi.Output<String> dhcpOptionsSetId,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> vpcId,
-  }) :
-      dhcpOptionsSetId = pulumi.Input.asInput<String>(dhcpOptionsSetId),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    required this.dhcpOptionsSetId,
+    this.dryRun,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DhcpOptionsSetAttachmentArgs {
 
   factory DhcpOptionsSetAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DhcpOptionsSetAttachmentArgs(
-      dhcpOptionsSetId: pulumi.Output.create<String>(map['dhcpOptionsSetId'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      dhcpOptionsSetId: (map['dhcpOptionsSetId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

@@ -54,29 +54,18 @@ class SecurityScanConfigState {
   /// [targetPlatforms] Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
   /// [userAgent] Type of the user agents used for scanning
   SecurityScanConfigState({
-    pulumi.Output<SecurityScanConfigAuthentication>? authentication,
-    pulumi.Output<List<String>>? blacklistPatterns,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? exportToSecurityCommandCenter,
-    pulumi.Output<int>? maxQps,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<SecurityScanConfigSchedule>? schedule,
-    pulumi.Output<List<String>>? startingUrls,
-    pulumi.Output<List<String>>? targetPlatforms,
-    pulumi.Output<String>? userAgent,
-  }) :
-      authentication = pulumi.Input.asOptionalInput<SecurityScanConfigAuthentication>(authentication),
-      blacklistPatterns = pulumi.Input.asOptionalInput<List<String>>(blacklistPatterns),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      exportToSecurityCommandCenter = pulumi.Input.asOptionalInput<String>(exportToSecurityCommandCenter),
-      maxQps = pulumi.Input.asOptionalInput<int>(maxQps),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schedule = pulumi.Input.asOptionalInput<SecurityScanConfigSchedule>(schedule),
-      startingUrls = pulumi.Input.asOptionalInput<List<String>>(startingUrls),
-      targetPlatforms = pulumi.Input.asOptionalInput<List<String>>(targetPlatforms),
-      userAgent = pulumi.Input.asOptionalInput<String>(userAgent);
+    this.authentication,
+    this.blacklistPatterns,
+    this.displayName,
+    this.exportToSecurityCommandCenter,
+    this.maxQps,
+    this.name,
+    this.project,
+    this.schedule,
+    this.startingUrls,
+    this.targetPlatforms,
+    this.userAgent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,17 +85,17 @@ class SecurityScanConfigState {
 
   factory SecurityScanConfigState.fromMap(Map<String, dynamic> map) {
     return SecurityScanConfigState(
-      authentication: map['authentication'] == null ? null : pulumi.Output.create<SecurityScanConfigAuthentication>(SecurityScanConfigAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())),
-      blacklistPatterns: map['blacklistPatterns'] == null ? null : pulumi.Output.create<List<String>>((map['blacklistPatterns'] as List).cast<String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      exportToSecurityCommandCenter: map['exportToSecurityCommandCenter'] == null ? null : pulumi.Output.create<String>(map['exportToSecurityCommandCenter'] as String),
-      maxQps: map['maxQps'] == null ? null : pulumi.Output.create<int>(map['maxQps'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<SecurityScanConfigSchedule>(SecurityScanConfigSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      startingUrls: map['startingUrls'] == null ? null : pulumi.Output.create<List<String>>((map['startingUrls'] as List).cast<String>()),
-      targetPlatforms: map['targetPlatforms'] == null ? null : pulumi.Output.create<List<String>>((map['targetPlatforms'] as List).cast<String>()),
-      userAgent: map['userAgent'] == null ? null : pulumi.Output.create<String>(map['userAgent'] as String),
+      authentication: map['authentication'] == null ? null : (SecurityScanConfigAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      exportToSecurityCommandCenter: map['exportToSecurityCommandCenter'] == null ? null : (map['exportToSecurityCommandCenter'] as String).input(),
+      maxQps: map['maxQps'] == null ? null : (map['maxQps'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schedule: map['schedule'] == null ? null : (SecurityScanConfigSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      startingUrls: map['startingUrls'] == null ? null : ((map['startingUrls'] as List).cast<String>()).input(),
+      targetPlatforms: map['targetPlatforms'] == null ? null : ((map['targetPlatforms'] as List).cast<String>()).input(),
+      userAgent: map['userAgent'] == null ? null : (map['userAgent'] as String).input(),
     );
   }
 }

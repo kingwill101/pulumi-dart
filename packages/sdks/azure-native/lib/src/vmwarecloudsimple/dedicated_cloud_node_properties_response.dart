@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of dedicated cloud node
 class DedicatedCloudNodePropertiesResponse {
   /// Availability Zone id, e.g. "az1"
-  final String availabilityZoneId;
+  final pulumi.Input<String> availabilityZoneId;
   /// Availability Zone name, e.g. "Availability Zone 1"
-  final String availabilityZoneName;
+  final pulumi.Input<String> availabilityZoneName;
   /// VMWare Cloud Rack Name
-  final String cloudRackName;
+  final pulumi.Input<String> cloudRackName;
   /// date time the resource was created
-  final String created;
+  final pulumi.Input<String> created;
   /// SKU's id
-  final String id;
+  final pulumi.Input<String> id;
   /// SKU's name
-  final String name;
+  final pulumi.Input<String> name;
   /// count of nodes to create
-  final int nodesCount;
+  final pulumi.Input<int> nodesCount;
   /// Placement Group id, e.g. "n1"
-  final String placementGroupId;
+  final pulumi.Input<String> placementGroupId;
   /// Placement Name, e.g. "Placement Group 1"
-  final String placementGroupName;
+  final pulumi.Input<String> placementGroupName;
   /// Private Cloud Id
-  final String privateCloudId;
+  final pulumi.Input<String> privateCloudId;
   /// Resource Pool Name
-  final String privateCloudName;
+  final pulumi.Input<String> privateCloudName;
   /// The provisioning status of the resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// purchase id
-  final String purchaseId;
+  final pulumi.Input<String> purchaseId;
   /// Node status, indicates is private cloud set up on this node or not
-  final String status;
+  final pulumi.Input<String> status;
   /// VMWare Cluster Name
-  final String vmwareClusterName;
+  final pulumi.Input<String> vmwareClusterName;
 
   /// Creates a new [DedicatedCloudNodePropertiesResponse].
   /// [availabilityZoneId] Availability Zone id, e.g. "az1"
@@ -90,21 +91,21 @@ class DedicatedCloudNodePropertiesResponse {
 
   factory DedicatedCloudNodePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DedicatedCloudNodePropertiesResponse(
-      availabilityZoneId: map['availabilityZoneId'] as String,
-      availabilityZoneName: map['availabilityZoneName'] as String,
-      cloudRackName: map['cloudRackName'] as String,
-      created: map['created'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      nodesCount: map['nodesCount'] as int,
-      placementGroupId: map['placementGroupId'] as String,
-      placementGroupName: map['placementGroupName'] as String,
-      privateCloudId: map['privateCloudId'] as String,
-      privateCloudName: map['privateCloudName'] as String,
-      provisioningState: map['provisioningState'] as String,
-      purchaseId: map['purchaseId'] as String,
-      status: map['status'] as String,
-      vmwareClusterName: map['vmwareClusterName'] as String,
+      availabilityZoneId: (map['availabilityZoneId'] as String).input(),
+      availabilityZoneName: (map['availabilityZoneName'] as String).input(),
+      cloudRackName: (map['cloudRackName'] as String).input(),
+      created: (map['created'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      nodesCount: (map['nodesCount'] as int).input(),
+      placementGroupId: (map['placementGroupId'] as String).input(),
+      placementGroupName: (map['placementGroupName'] as String).input(),
+      privateCloudId: (map['privateCloudId'] as String).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      purchaseId: (map['purchaseId'] as String).input(),
+      status: (map['status'] as String).input(),
+      vmwareClusterName: (map['vmwareClusterName'] as String).input(),
     );
   }
 }

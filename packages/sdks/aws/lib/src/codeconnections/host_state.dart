@@ -33,25 +33,16 @@ class HostState {
   /// [timeouts] Optional.
   /// [vpcConfiguration] The VPC configuration to be provisioned for the host. A VPC must be configured, and the infrastructure to be represented by the host must already be connected to the VPC.
   HostState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? providerEndpoint,
-    pulumi.Output<String>? providerType,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<HostTimeouts>? timeouts,
-    pulumi.Output<HostVpcConfiguration>? vpcConfiguration,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      providerEndpoint = pulumi.Input.asOptionalInput<String>(providerEndpoint),
-      providerType = pulumi.Input.asOptionalInput<String>(providerType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<HostTimeouts>(timeouts),
-      vpcConfiguration = pulumi.Input.asOptionalInput<HostVpcConfiguration>(vpcConfiguration);
+    this.arn,
+    this.name,
+    this.providerEndpoint,
+    this.providerType,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.vpcConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,15 +60,15 @@ class HostState {
 
   factory HostState.fromMap(Map<String, dynamic> map) {
     return HostState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      providerEndpoint: map['providerEndpoint'] == null ? null : pulumi.Output.create<String>(map['providerEndpoint'] as String),
-      providerType: map['providerType'] == null ? null : pulumi.Output.create<String>(map['providerType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<HostTimeouts>(HostTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : pulumi.Output.create<HostVpcConfiguration>(HostVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      providerEndpoint: map['providerEndpoint'] == null ? null : (map['providerEndpoint'] as String).input(),
+      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (HostTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : (HostVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

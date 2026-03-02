@@ -40,25 +40,16 @@ class ExternalAddressState {
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last updated time of this resource.
   ExternalAddressState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? externalIp,
-    pulumi.Output<String>? internalIp,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      externalIp = pulumi.Input.asOptionalInput<String>(externalIp),
-      internalIp = pulumi.Input.asOptionalInput<String>(internalIp),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.externalIp,
+    this.internalIp,
+    this.name,
+    this.parent,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class ExternalAddressState {
 
   factory ExternalAddressState.fromMap(Map<String, dynamic> map) {
     return ExternalAddressState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      externalIp: map['externalIp'] == null ? null : pulumi.Output.create<String>(map['externalIp'] as String),
-      internalIp: map['internalIp'] == null ? null : pulumi.Output.create<String>(map['internalIp'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

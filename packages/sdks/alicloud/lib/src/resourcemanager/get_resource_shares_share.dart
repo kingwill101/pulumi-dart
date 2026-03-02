@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourceSharesShare {
   /// The ID of the Resource Share.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the resource share.
-  final String resourceShareId;
+  final pulumi.Input<String> resourceShareId;
   /// The name of resource share.
-  final String resourceShareName;
+  final pulumi.Input<String> resourceShareName;
   /// The owner of resource share.
-  final String resourceShareOwner;
+  final pulumi.Input<String> resourceShareOwner;
   /// The status of resource share.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetResourceSharesShare].
   /// [id] The ID of the Resource Share.
@@ -39,11 +40,11 @@ class GetResourceSharesShare {
 
   factory GetResourceSharesShare.fromMap(Map<String, dynamic> map) {
     return GetResourceSharesShare(
-      id: map['id'] as String,
-      resourceShareId: map['resourceShareId'] as String,
-      resourceShareName: map['resourceShareName'] as String,
-      resourceShareOwner: map['resourceShareOwner'] as String,
-      status: map['status'] as String,
+      id: (map['id'] as String).input(),
+      resourceShareId: (map['resourceShareId'] as String).input(),
+      resourceShareName: (map['resourceShareName'] as String).input(),
+      resourceShareOwner: (map['resourceShareOwner'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

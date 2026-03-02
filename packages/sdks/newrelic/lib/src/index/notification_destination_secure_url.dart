@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotificationDestinationSecureUrl {
   /// The prefix of the URL.
-  final String prefix;
+  final pulumi.Input<String> prefix;
   /// The suffix of the URL, which contains sensitive data.
-  final String secureSuffix;
+  final pulumi.Input<String> secureSuffix;
 
   /// Creates a new [NotificationDestinationSecureUrl].
   /// [prefix] The prefix of the URL.
@@ -24,8 +25,8 @@ class NotificationDestinationSecureUrl {
 
   factory NotificationDestinationSecureUrl.fromMap(Map<String, dynamic> map) {
     return NotificationDestinationSecureUrl(
-      prefix: map['prefix'] as String,
-      secureSuffix: map['secureSuffix'] as String,
+      prefix: (map['prefix'] as String).input(),
+      secureSuffix: (map['secureSuffix'] as String).input(),
     );
   }
 }

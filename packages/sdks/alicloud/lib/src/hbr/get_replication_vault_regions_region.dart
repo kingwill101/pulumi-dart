@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReplicationVaultRegionsRegion {
   /// The ID of the replication region.
-  final String replicationRegionId;
+  final pulumi.Input<String> replicationRegionId;
 
   /// Creates a new [GetReplicationVaultRegionsRegion].
   /// [replicationRegionId] The ID of the replication region.
@@ -19,7 +20,7 @@ class GetReplicationVaultRegionsRegion {
 
   factory GetReplicationVaultRegionsRegion.fromMap(Map<String, dynamic> map) {
     return GetReplicationVaultRegionsRegion(
-      replicationRegionId: map['replicationRegionId'] as String,
+      replicationRegionId: (map['replicationRegionId'] as String).input(),
     );
   }
 }

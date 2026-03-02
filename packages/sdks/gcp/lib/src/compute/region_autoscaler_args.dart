@@ -39,19 +39,13 @@ class RegionAutoscalerArgs {
   /// [region] URL of the region where the instance group resides.
   /// [target] URL of the managed instance group that this autoscaler will scale.
   RegionAutoscalerArgs({
-    required pulumi.Output<RegionAutoscalerAutoscalingPolicy> autoscalingPolicy,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> target,
-  }) :
-      autoscalingPolicy = pulumi.Input.asInput<RegionAutoscalerAutoscalingPolicy>(autoscalingPolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      target = pulumi.Input.asInput<String>(target);
+    required this.autoscalingPolicy,
+    this.description,
+    this.name,
+    this.project,
+    this.region,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class RegionAutoscalerArgs {
 
   factory RegionAutoscalerArgs.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerArgs(
-      autoscalingPolicy: pulumi.Output.create<RegionAutoscalerAutoscalingPolicy>(RegionAutoscalerAutoscalingPolicy.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      target: pulumi.Output.create<String>(map['target'] as String),
+      autoscalingPolicy: (RegionAutoscalerAutoscalingPolicy.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

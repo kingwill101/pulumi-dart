@@ -6,11 +6,11 @@ import 'mcc_cache_node_auto_update_info_response.dart';
 /// Mcc cache node resource auto update history properties.
 class MccCacheNodeAutoUpdateHistoryPropertiesResponse {
   /// Cache node resource auto update history information.
-  final List<MccCacheNodeAutoUpdateInfoResponse>? autoUpdateHistory;
+  final pulumi.Input<List<MccCacheNodeAutoUpdateInfoResponse>>? autoUpdateHistory;
   /// Mcc cache node resource Id.
-  final String cacheNodeId;
+  final pulumi.Input<String> cacheNodeId;
   /// Mcc customer resource Id.
-  final String customerId;
+  final pulumi.Input<String> customerId;
 
   /// Creates a new [MccCacheNodeAutoUpdateHistoryPropertiesResponse].
   /// [autoUpdateHistory] Cache node resource auto update history information.
@@ -24,7 +24,7 @@ class MccCacheNodeAutoUpdateHistoryPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoUpdateHistory': ?autoUpdateHistory == null ? null : pulumi.Input.encodeList<MccCacheNodeAutoUpdateInfoResponse, Map<String, dynamic>>(autoUpdateHistory!, (value) => value.toMap()),
+      'autoUpdateHistory': ?pulumi.Input.mapOptionalInputValue<List<MccCacheNodeAutoUpdateInfoResponse>, List<Map<String, dynamic>>>(autoUpdateHistory, (value) => pulumi.Input.encodeList<MccCacheNodeAutoUpdateInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cacheNodeId': cacheNodeId,
       'customerId': customerId,
     };
@@ -32,9 +32,9 @@ class MccCacheNodeAutoUpdateHistoryPropertiesResponse {
 
   factory MccCacheNodeAutoUpdateHistoryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MccCacheNodeAutoUpdateHistoryPropertiesResponse(
-      autoUpdateHistory: map['autoUpdateHistory'] == null ? null : pulumi.Input.decodeList<MccCacheNodeAutoUpdateInfoResponse>(map['autoUpdateHistory'], (value) => MccCacheNodeAutoUpdateInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      cacheNodeId: map['cacheNodeId'] as String,
-      customerId: map['customerId'] as String,
+      autoUpdateHistory: map['autoUpdateHistory'] == null ? null : (pulumi.Input.decodeList<MccCacheNodeAutoUpdateInfoResponse>(map['autoUpdateHistory'], (value) => MccCacheNodeAutoUpdateInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cacheNodeId: (map['cacheNodeId'] as String).input(),
+      customerId: (map['customerId'] as String).input(),
     );
   }
 }

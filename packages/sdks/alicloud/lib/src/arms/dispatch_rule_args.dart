@@ -35,21 +35,14 @@ class DispatchRuleArgs {
   /// [notifyRules] Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
   /// [notifyTemplates] Sets the notification template. See `notify_template` below.
   DispatchRuleArgs({
-    required pulumi.Output<String> dispatchRuleName,
-    pulumi.Output<String>? dispatchType,
-    required pulumi.Output<List<DispatchRuleGroupRule>> groupRules,
-    pulumi.Output<bool>? isRecover,
-    required pulumi.Output<List<DispatchRuleLabelMatchExpressionGrid>> labelMatchExpressionGrids,
-    required pulumi.Output<List<DispatchRuleNotifyRule>> notifyRules,
-    pulumi.Output<List<DispatchRuleNotifyTemplate>>? notifyTemplates,
-  }) :
-      dispatchRuleName = pulumi.Input.asInput<String>(dispatchRuleName),
-      dispatchType = pulumi.Input.asOptionalInput<String>(dispatchType),
-      groupRules = pulumi.Input.asInput<List<DispatchRuleGroupRule>>(groupRules),
-      isRecover = pulumi.Input.asOptionalInput<bool>(isRecover),
-      labelMatchExpressionGrids = pulumi.Input.asInput<List<DispatchRuleLabelMatchExpressionGrid>>(labelMatchExpressionGrids),
-      notifyRules = pulumi.Input.asInput<List<DispatchRuleNotifyRule>>(notifyRules),
-      notifyTemplates = pulumi.Input.asOptionalInput<List<DispatchRuleNotifyTemplate>>(notifyTemplates);
+    required this.dispatchRuleName,
+    this.dispatchType,
+    required this.groupRules,
+    this.isRecover,
+    required this.labelMatchExpressionGrids,
+    required this.notifyRules,
+    this.notifyTemplates,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class DispatchRuleArgs {
 
   factory DispatchRuleArgs.fromMap(Map<String, dynamic> map) {
     return DispatchRuleArgs(
-      dispatchRuleName: pulumi.Output.create<String>(map['dispatchRuleName'] as String),
-      dispatchType: map['dispatchType'] == null ? null : pulumi.Output.create<String>(map['dispatchType'] as String),
-      groupRules: pulumi.Output.create<List<DispatchRuleGroupRule>>(pulumi.Input.decodeList<DispatchRuleGroupRule>(map['groupRules'], (value) => DispatchRuleGroupRule.fromMap((value as Map).cast<String, dynamic>()))),
-      isRecover: map['isRecover'] == null ? null : pulumi.Output.create<bool>(map['isRecover'] as bool),
-      labelMatchExpressionGrids: pulumi.Output.create<List<DispatchRuleLabelMatchExpressionGrid>>(pulumi.Input.decodeList<DispatchRuleLabelMatchExpressionGrid>(map['labelMatchExpressionGrids'], (value) => DispatchRuleLabelMatchExpressionGrid.fromMap((value as Map).cast<String, dynamic>()))),
-      notifyRules: pulumi.Output.create<List<DispatchRuleNotifyRule>>(pulumi.Input.decodeList<DispatchRuleNotifyRule>(map['notifyRules'], (value) => DispatchRuleNotifyRule.fromMap((value as Map).cast<String, dynamic>()))),
-      notifyTemplates: map['notifyTemplates'] == null ? null : pulumi.Output.create<List<DispatchRuleNotifyTemplate>>(pulumi.Input.decodeList<DispatchRuleNotifyTemplate>(map['notifyTemplates'], (value) => DispatchRuleNotifyTemplate.fromMap((value as Map).cast<String, dynamic>()))),
+      dispatchRuleName: (map['dispatchRuleName'] as String).input(),
+      dispatchType: map['dispatchType'] == null ? null : (map['dispatchType'] as String).input(),
+      groupRules: (pulumi.Input.decodeList<DispatchRuleGroupRule>(map['groupRules'], (value) => DispatchRuleGroupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isRecover: map['isRecover'] == null ? null : (map['isRecover'] as bool).input(),
+      labelMatchExpressionGrids: (pulumi.Input.decodeList<DispatchRuleLabelMatchExpressionGrid>(map['labelMatchExpressionGrids'], (value) => DispatchRuleLabelMatchExpressionGrid.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notifyRules: (pulumi.Input.decodeList<DispatchRuleNotifyRule>(map['notifyRules'], (value) => DispatchRuleNotifyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notifyTemplates: map['notifyTemplates'] == null ? null : (pulumi.Input.decodeList<DispatchRuleNotifyTemplate>(map['notifyTemplates'], (value) => DispatchRuleNotifyTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ConsumerChannelArgs {
   /// [consumerGroupUserName] The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
   /// [dtsInstanceId] The ID of the subscription instance.
   ConsumerChannelArgs({
-    required pulumi.Output<String> consumerGroupName,
-    required pulumi.Output<String> consumerGroupPassword,
-    required pulumi.Output<String> consumerGroupUserName,
-    required pulumi.Output<String> dtsInstanceId,
-  }) :
-      consumerGroupName = pulumi.Input.asInput<String>(consumerGroupName),
-      consumerGroupPassword = pulumi.Input.asInput<String>(consumerGroupPassword),
-      consumerGroupUserName = pulumi.Input.asInput<String>(consumerGroupUserName),
-      dtsInstanceId = pulumi.Input.asInput<String>(dtsInstanceId);
+    required this.consumerGroupName,
+    required this.consumerGroupPassword,
+    required this.consumerGroupUserName,
+    required this.dtsInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ConsumerChannelArgs {
 
   factory ConsumerChannelArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerChannelArgs(
-      consumerGroupName: pulumi.Output.create<String>(map['consumerGroupName'] as String),
-      consumerGroupPassword: pulumi.Output.create<String>(map['consumerGroupPassword'] as String),
-      consumerGroupUserName: pulumi.Output.create<String>(map['consumerGroupUserName'] as String),
-      dtsInstanceId: pulumi.Output.create<String>(map['dtsInstanceId'] as String),
+      consumerGroupName: (map['consumerGroupName'] as String).input(),
+      consumerGroupPassword: (map['consumerGroupPassword'] as String).input(),
+      consumerGroupUserName: (map['consumerGroupUserName'] as String).input(),
+      dtsInstanceId: (map['dtsInstanceId'] as String).input(),
     );
   }
 }

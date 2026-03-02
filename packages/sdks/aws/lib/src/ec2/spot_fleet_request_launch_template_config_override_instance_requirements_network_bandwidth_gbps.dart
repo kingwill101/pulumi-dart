@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps {
   /// Maximum.
-  final double? max;
+  final pulumi.Input<double>? max;
   /// Minimum.
-  final double? min;
+  final pulumi.Input<double>? min;
 
   /// Creates a new [SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps].
   /// [max] Maximum.
@@ -24,8 +25,8 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkBan
 
   factory SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps.fromMap(Map<String, dynamic> map) {
     return SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps(
-      max: map['max'] == null ? null : map['max'] as double,
-      min: map['min'] == null ? null : map['min'] as double,
+      max: map['max'] == null ? null : (map['max'] as double).input(),
+      min: map['min'] == null ? null : (map['min'] as double).input(),
     );
   }
 }

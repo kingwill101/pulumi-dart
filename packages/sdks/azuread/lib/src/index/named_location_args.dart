@@ -23,13 +23,10 @@ class NamedLocationArgs {
   /// [displayName] The friendly name for this named location.
   /// [ip] An `ip` block as documented below, which configures an IP-based named location.
   NamedLocationArgs({
-    pulumi.Output<NamedLocationCountry>? country,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<NamedLocationIp>? ip,
-  }) :
-      country = pulumi.Input.asOptionalInput<NamedLocationCountry>(country),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      ip = pulumi.Input.asOptionalInput<NamedLocationIp>(ip);
+    this.country,
+    required this.displayName,
+    this.ip,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class NamedLocationArgs {
 
   factory NamedLocationArgs.fromMap(Map<String, dynamic> map) {
     return NamedLocationArgs(
-      country: map['country'] == null ? null : pulumi.Output.create<NamedLocationCountry>(NamedLocationCountry.fromMap((map['country'] as Map).cast<String, dynamic>())),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      ip: map['ip'] == null ? null : pulumi.Output.create<NamedLocationIp>(NamedLocationIp.fromMap((map['ip'] as Map).cast<String, dynamic>())),
+      country: map['country'] == null ? null : (NamedLocationCountry.fromMap((map['country'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      ip: map['ip'] == null ? null : (NamedLocationIp.fromMap((map['ip'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

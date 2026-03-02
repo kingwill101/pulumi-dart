@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterCertificateCommonNamesCommonName {
   /// The common or subject name of the certificate.
-  final String certificateCommonName;
+  final pulumi.Input<String> certificateCommonName;
   /// The Issuer Thumbprint of the Certificate.
   ///
   /// > **Note:** Certificate Issuer Thumbprint may become required in the future, `https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn#download-and-update-a-sample-template`.
-  final String? certificateIssuerThumbprint;
+  final pulumi.Input<String>? certificateIssuerThumbprint;
 
   /// Creates a new [ClusterCertificateCommonNamesCommonName].
   /// [certificateCommonName] The common or subject name of the certificate.
@@ -26,8 +27,8 @@ class ClusterCertificateCommonNamesCommonName {
 
   factory ClusterCertificateCommonNamesCommonName.fromMap(Map<String, dynamic> map) {
     return ClusterCertificateCommonNamesCommonName(
-      certificateCommonName: map['certificateCommonName'] as String,
-      certificateIssuerThumbprint: map['certificateIssuerThumbprint'] == null ? null : map['certificateIssuerThumbprint'] as String,
+      certificateCommonName: (map['certificateCommonName'] as String).input(),
+      certificateIssuerThumbprint: map['certificateIssuerThumbprint'] == null ? null : (map['certificateIssuerThumbprint'] as String).input(),
     );
   }
 }

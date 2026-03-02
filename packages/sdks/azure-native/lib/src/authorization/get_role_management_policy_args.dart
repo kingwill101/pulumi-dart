@@ -16,11 +16,9 @@ class GetRoleManagementPolicyArgs {
   /// [roleManagementPolicyName] The name (guid) of the role management policy to get.
   /// [scope] The scope of the role management policy.
   GetRoleManagementPolicyArgs({
-    required pulumi.Output<String> roleManagementPolicyName,
-    required pulumi.Output<String> scope,
-  }) :
-      roleManagementPolicyName = pulumi.Input.asInput<String>(roleManagementPolicyName),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.roleManagementPolicyName,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRoleManagementPolicyArgs {
 
   factory GetRoleManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleManagementPolicyArgs(
-      roleManagementPolicyName: pulumi.Output.create<String>(map['roleManagementPolicyName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      roleManagementPolicyName: (map['roleManagementPolicyName'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetProjectArgs {
   /// Creates a new [GetProjectArgs].
   /// [projectId] The project ID. If it is not provided, the provider project is used.
   GetProjectArgs({
-    pulumi.Output<String>? projectId,
-  }) :
-      projectId = pulumi.Input.asOptionalInput<String>(projectId);
+    this.projectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetProjectArgs {
 
   factory GetProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectArgs(
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
     );
   }
 }

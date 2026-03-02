@@ -21,13 +21,10 @@ class SourceControlTokenArgs {
   /// [tokenSecret] The Access Token Secret.
   /// [type] The Token type. Possible values include `Bitbucket`, `Dropbox`, `Github`, and `OneDrive`.
   SourceControlTokenArgs({
-    required pulumi.Output<String> token,
-    pulumi.Output<String>? tokenSecret,
-    required pulumi.Output<String> type,
-  }) :
-      token = pulumi.Input.asInput<String>(token),
-      tokenSecret = pulumi.Input.asOptionalInput<String>(tokenSecret),
-      type = pulumi.Input.asInput<String>(type);
+    required this.token,
+    this.tokenSecret,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class SourceControlTokenArgs {
 
   factory SourceControlTokenArgs.fromMap(Map<String, dynamic> map) {
     return SourceControlTokenArgs(
-      token: pulumi.Output.create<String>(map['token'] as String),
-      tokenSecret: map['tokenSecret'] == null ? null : pulumi.Output.create<String>(map['tokenSecret'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      token: (map['token'] as String).input(),
+      tokenSecret: map['tokenSecret'] == null ? null : (map['tokenSecret'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

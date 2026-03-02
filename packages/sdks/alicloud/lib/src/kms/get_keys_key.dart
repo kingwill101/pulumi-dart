@@ -1,43 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKeysKey {
   /// The Alibaba Cloud Resource Name (ARN) of the key.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// (Available in 1.123.1+) Specifies whether to enable automatic key rotation.
-  final String automaticRotation;
+  final pulumi.Input<String> automaticRotation;
   /// Creation date of key.
-  final String creationDate;
+  final pulumi.Input<String> creationDate;
   /// The owner of the key.
-  final String creator;
+  final pulumi.Input<String> creator;
   /// Deletion date of key.
-  final String deleteDate;
+  final pulumi.Input<String> deleteDate;
   /// Description of the key.
-  final String description;
+  final pulumi.Input<String> description;
   /// ID of the key.
-  final String id;
+  final pulumi.Input<String> id;
   /// (Available in 1.123.1+)  ID of the key.
-  final String keyId;
+  final pulumi.Input<String> keyId;
   /// (Available in 1.123.1+)  The type of the CMK.
-  final String keySpec;
+  final pulumi.Input<String> keySpec;
   /// (Available in 1.123.1+)  The usage of CMK.
-  final String keyUsage;
+  final pulumi.Input<String> keyUsage;
   /// (Available in 1.123.1+)  The date and time the last rotation was performed.
-  final String lastRotationDate;
+  final pulumi.Input<String> lastRotationDate;
   /// (Available in 1.123.1+)  The time and date the key material for the CMK expires.
-  final String materialExpireTime;
+  final pulumi.Input<String> materialExpireTime;
   /// (Available in 1.123.1+)  The time the next rotation is scheduled for execution.
-  final String nextRotationDate;
+  final pulumi.Input<String> nextRotationDate;
   /// (Available in 1.123.1+)  The source of the key material for the CMK.
-  final String origin;
+  final pulumi.Input<String> origin;
   /// (Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
-  final String primaryKeyVersion;
+  final pulumi.Input<String> primaryKeyVersion;
   /// (Available in 1.123.1+)  The protection level of the CMK.
-  final String protectionLevel;
+  final pulumi.Input<String> protectionLevel;
   /// (Available in 1.123.1+)  The period of automatic key rotation.
-  final String rotationInterval;
+  final pulumi.Input<String> rotationInterval;
   /// Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetKeysKey].
   /// [arn] The Alibaba Cloud Resource Name (ARN) of the key.
@@ -104,24 +105,24 @@ class GetKeysKey {
 
   factory GetKeysKey.fromMap(Map<String, dynamic> map) {
     return GetKeysKey(
-      arn: map['arn'] as String,
-      automaticRotation: map['automaticRotation'] as String,
-      creationDate: map['creationDate'] as String,
-      creator: map['creator'] as String,
-      deleteDate: map['deleteDate'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      keyId: map['keyId'] as String,
-      keySpec: map['keySpec'] as String,
-      keyUsage: map['keyUsage'] as String,
-      lastRotationDate: map['lastRotationDate'] as String,
-      materialExpireTime: map['materialExpireTime'] as String,
-      nextRotationDate: map['nextRotationDate'] as String,
-      origin: map['origin'] as String,
-      primaryKeyVersion: map['primaryKeyVersion'] as String,
-      protectionLevel: map['protectionLevel'] as String,
-      rotationInterval: map['rotationInterval'] as String,
-      status: map['status'] as String,
+      arn: (map['arn'] as String).input(),
+      automaticRotation: (map['automaticRotation'] as String).input(),
+      creationDate: (map['creationDate'] as String).input(),
+      creator: (map['creator'] as String).input(),
+      deleteDate: (map['deleteDate'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      keyId: (map['keyId'] as String).input(),
+      keySpec: (map['keySpec'] as String).input(),
+      keyUsage: (map['keyUsage'] as String).input(),
+      lastRotationDate: (map['lastRotationDate'] as String).input(),
+      materialExpireTime: (map['materialExpireTime'] as String).input(),
+      nextRotationDate: (map['nextRotationDate'] as String).input(),
+      origin: (map['origin'] as String).input(),
+      primaryKeyVersion: (map['primaryKeyVersion'] as String).input(),
+      protectionLevel: (map['protectionLevel'] as String).input(),
+      rotationInterval: (map['rotationInterval'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

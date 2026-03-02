@@ -40,7 +40,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// This field corresponds to the `args` field of the Kubernetes Containers
   /// [v1 core
   /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
-  final List<String>? args;
+  final pulumi.Input<List<String>>? args;
   /// Specifies the command that runs when the container starts. This overrides
   /// the container's
   /// [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint).
@@ -72,10 +72,10 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// This field corresponds to the `command` field of the Kubernetes Containers
   /// [v1 core
   /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
-  final List<String>? commands;
+  final pulumi.Input<List<String>>? commands;
   /// Deployment timeout.
   /// Limit for deployment timeout is 2 hours.
-  final String? deploymentTimeout;
+  final pulumi.Input<String>? deploymentTimeout;
   /// List of environment variables to set in the container. After the container
   /// starts running, code running in the container can read these environment
   /// variables.
@@ -101,7 +101,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// [v1 core
   /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
   /// Structure is documented below.
-  final List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv>? envs;
+  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv>>? envs;
   /// List of ports to expose from the container. Vertex AI sends gRPC
   /// prediction requests that it receives to the first port on this list. Vertex
   /// AI also sends liveness and health checks to this port.
@@ -110,11 +110,11 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// Vertex AI does not use ports other than the first one listed. This field
   /// corresponds to the `ports` field of the Kubernetes Containers v1 core API.
   /// Structure is documented below.
-  final List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort>? grpcPorts;
+  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort>>? grpcPorts;
   /// Probe describes a health check to be performed against a container to
   /// determine whether it is alive or ready to receive traffic.
   /// Structure is documented below.
-  final AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe? healthProbe;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe>? healthProbe;
   /// HTTP path on the container to send health checks to. Vertex AI
   /// intermittently sends GET requests to this path on the container's IP
   /// address and port to check that the container is healthy. Read more about
@@ -136,7 +136,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// (Vertex AI makes this value available to your container code as the
   /// [`AIP_DEPLOYED_MODEL_ID` environment
   /// variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
-  final String? healthRoute;
+  final pulumi.Input<String>? healthRoute;
   /// URI of the Docker image to be used as the custom container for serving
   /// predictions. This URI must identify an image in Artifact Registry or
   /// Container Registry. Learn more about the [container publishing
@@ -150,11 +150,11 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// You can use the URI to one of Vertex AI's [pre-built container images for
   /// prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
   /// in this field.
-  final String imageUri;
+  final pulumi.Input<String> imageUri;
   /// Probe describes a health check to be performed against a container to
   /// determine whether it is alive or ready to receive traffic.
   /// Structure is documented below.
-  final AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe? livenessProbe;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe>? livenessProbe;
   /// List of ports to expose from the container. Vertex AI sends any
   /// prediction requests that it receives to the first port on this list. Vertex
   /// AI also sends
@@ -174,7 +174,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// [v1 core
   /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
   /// Structure is documented below.
-  final List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort>? ports;
+  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort>>? ports;
   /// HTTP path on the container to send prediction requests to. Vertex AI
   /// forwards requests sent using
   /// projects.locations.endpoints.predict to this
@@ -197,14 +197,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// (Vertex AI makes this value available to your container code
   /// as the [`AIP_DEPLOYED_MODEL_ID` environment
   /// variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
-  final String? predictRoute;
+  final pulumi.Input<String>? predictRoute;
   /// The amount of the VM memory to reserve as the shared memory for the model
   /// in megabytes.
-  final String? sharedMemorySizeMb;
+  final pulumi.Input<String>? sharedMemorySizeMb;
   /// Probe describes a health check to be performed against a container to
   /// determine whether it is alive or ready to receive traffic.
   /// Structure is documented below.
-  final AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe? startupProbe;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe>? startupProbe;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpec].
   /// [args] Specifies arguments for the command that runs when the container starts.
@@ -241,34 +241,34 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
       'args': ?args,
       'commands': ?commands,
       'deploymentTimeout': ?deploymentTimeout,
-      'envs': ?envs == null ? null : pulumi.Input.encodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv, Map<String, dynamic>>(envs!, (value) => value.toMap()),
-      'grpcPorts': ?grpcPorts == null ? null : pulumi.Input.encodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort, Map<String, dynamic>>(grpcPorts!, (value) => value.toMap()),
-      'healthProbe': ?healthProbe == null ? null : healthProbe!.toMap(),
+      'envs': ?pulumi.Input.mapOptionalInputValue<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv>, List<Map<String, dynamic>>>(envs, (value) => pulumi.Input.encodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'grpcPorts': ?pulumi.Input.mapOptionalInputValue<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort>, List<Map<String, dynamic>>>(grpcPorts, (value) => pulumi.Input.encodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'healthProbe': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe, Map<String, dynamic>>(healthProbe, (value) => value.toMap()),
       'healthRoute': ?healthRoute,
       'imageUri': imageUri,
-      'livenessProbe': ?livenessProbe == null ? null : livenessProbe!.toMap(),
-      'ports': ?ports == null ? null : pulumi.Input.encodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort, Map<String, dynamic>>(ports!, (value) => value.toMap()),
+      'livenessProbe': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe, Map<String, dynamic>>(livenessProbe, (value) => value.toMap()),
+      'ports': ?pulumi.Input.mapOptionalInputValue<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort, Map<String, dynamic>>(value, (value) => value.toMap())),
       'predictRoute': ?predictRoute,
       'sharedMemorySizeMb': ?sharedMemorySizeMb,
-      'startupProbe': ?startupProbe == null ? null : startupProbe!.toMap(),
+      'startupProbe': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe, Map<String, dynamic>>(startupProbe, (value) => value.toMap()),
     };
   }
 
   factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpec.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpec(
-      args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
-      deploymentTimeout: map['deploymentTimeout'] == null ? null : map['deploymentTimeout'] as String,
-      envs: map['envs'] == null ? null : pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv>(map['envs'], (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv.fromMap((value as Map).cast<String, dynamic>())),
-      grpcPorts: map['grpcPorts'] == null ? null : pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort>(map['grpcPorts'], (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort.fromMap((value as Map).cast<String, dynamic>())),
-      healthProbe: map['healthProbe'] == null ? null : AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe.fromMap((map['healthProbe'] as Map).cast<String, dynamic>()),
-      healthRoute: map['healthRoute'] == null ? null : map['healthRoute'] as String,
-      imageUri: map['imageUri'] as String,
-      livenessProbe: map['livenessProbe'] == null ? null : AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>()),
-      ports: map['ports'] == null ? null : pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort>(map['ports'], (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort.fromMap((value as Map).cast<String, dynamic>())),
-      predictRoute: map['predictRoute'] == null ? null : map['predictRoute'] as String,
-      sharedMemorySizeMb: map['sharedMemorySizeMb'] == null ? null : map['sharedMemorySizeMb'] as String,
-      startupProbe: map['startupProbe'] == null ? null : AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>()),
+      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      deploymentTimeout: map['deploymentTimeout'] == null ? null : (map['deploymentTimeout'] as String).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv>(map['envs'], (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grpcPorts: map['grpcPorts'] == null ? null : (pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort>(map['grpcPorts'], (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthProbe: map['healthProbe'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe.fromMap((map['healthProbe'] as Map).cast<String, dynamic>())).input(),
+      healthRoute: map['healthRoute'] == null ? null : (map['healthRoute'] as String).input(),
+      imageUri: (map['imageUri'] as String).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort>(map['ports'], (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      predictRoute: map['predictRoute'] == null ? null : (map['predictRoute'] as String).input(),
+      sharedMemorySizeMb: map['sharedMemorySizeMb'] == null ? null : (map['sharedMemorySizeMb'] as String).input(),
+      startupProbe: map['startupProbe'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

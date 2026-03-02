@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed identity authentication details.
 class ManagedIdentityAuthenticationResponse {
   /// Token audience.
-  final String audience;
+  final pulumi.Input<String> audience;
   /// Arc Extension name.
-  final String? extensionName;
+  final pulumi.Input<String>? extensionName;
 
   /// Creates a new [ManagedIdentityAuthenticationResponse].
   /// [audience] Token audience.
@@ -25,8 +26,8 @@ class ManagedIdentityAuthenticationResponse {
 
   factory ManagedIdentityAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityAuthenticationResponse(
-      audience: map['audience'] as String,
-      extensionName: map['extensionName'] == null ? null : map['extensionName'] as String,
+      audience: (map['audience'] as String).input(),
+      extensionName: map['extensionName'] == null ? null : (map['extensionName'] as String).input(),
     );
   }
 }

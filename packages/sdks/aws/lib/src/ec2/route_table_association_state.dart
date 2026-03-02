@@ -21,15 +21,11 @@ class RouteTableAssociationState {
   /// [routeTableId] The ID of the routing table to associate with.
   /// [subnetId] The subnet ID to create an association. Conflicts with `gateway_id`.
   RouteTableAssociationState({
-    pulumi.Output<String>? gatewayId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routeTableId,
-    pulumi.Output<String>? subnetId,
-  }) :
-      gatewayId = pulumi.Input.asOptionalInput<String>(gatewayId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
+    this.gatewayId,
+    this.region,
+    this.routeTableId,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class RouteTableAssociationState {
 
   factory RouteTableAssociationState.fromMap(Map<String, dynamic> map) {
     return RouteTableAssociationState(
-      gatewayId: map['gatewayId'] == null ? null : pulumi.Output.create<String>(map['gatewayId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeTableId: map['routeTableId'] == null ? null : pulumi.Output.create<String>(map['routeTableId'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

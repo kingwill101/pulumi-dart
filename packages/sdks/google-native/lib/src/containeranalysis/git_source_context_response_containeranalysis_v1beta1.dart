@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
 class GitSourceContextResponseContaineranalysisV1beta1 {
   /// Git commit hash.
-  final String revisionId;
+  final pulumi.Input<String> revisionId;
   /// Git repository URL.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [GitSourceContextResponseContaineranalysisV1beta1].
   /// [revisionId] Git commit hash.
@@ -25,8 +26,8 @@ class GitSourceContextResponseContaineranalysisV1beta1 {
 
   factory GitSourceContextResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return GitSourceContextResponseContaineranalysisV1beta1(
-      revisionId: map['revisionId'] as String,
-      url: map['url'] as String,
+      revisionId: (map['revisionId'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

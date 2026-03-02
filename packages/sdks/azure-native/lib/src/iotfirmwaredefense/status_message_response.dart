@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Error and status message
 class StatusMessageResponse {
   /// The error code
-  final double? errorCode;
+  final pulumi.Input<double>? errorCode;
   /// The error or status message
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [StatusMessageResponse].
   /// [errorCode] The error code
@@ -25,8 +26,8 @@ class StatusMessageResponse {
 
   factory StatusMessageResponse.fromMap(Map<String, dynamic> map) {
     return StatusMessageResponse(
-      errorCode: map['errorCode'] == null ? null : map['errorCode'] as double,
-      message: map['message'] == null ? null : map['message'] as String,
+      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as double).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

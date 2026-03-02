@@ -14,11 +14,9 @@ class GetGlobalPublicDelegatedPrefixComputeV1Args {
   /// [project] Optional.
   /// [publicDelegatedPrefix] Required.
   GetGlobalPublicDelegatedPrefixComputeV1Args({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> publicDelegatedPrefix,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publicDelegatedPrefix = pulumi.Input.asInput<String>(publicDelegatedPrefix);
+    this.project,
+    required this.publicDelegatedPrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetGlobalPublicDelegatedPrefixComputeV1Args {
 
   factory GetGlobalPublicDelegatedPrefixComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetGlobalPublicDelegatedPrefixComputeV1Args(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      publicDelegatedPrefix: pulumi.Output.create<String>(map['publicDelegatedPrefix'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      publicDelegatedPrefix: (map['publicDelegatedPrefix'] as String).input(),
     );
   }
 }

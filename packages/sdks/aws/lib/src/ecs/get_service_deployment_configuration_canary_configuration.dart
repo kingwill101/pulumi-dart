@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceDeploymentConfigurationCanaryConfiguration {
   /// Time to wait before shifting remaining traffic
-  final String canaryBakeTimeInMinutes;
+  final pulumi.Input<String> canaryBakeTimeInMinutes;
   /// Percentage of traffic to route to canary deployment
-  final double canaryPercent;
+  final pulumi.Input<double> canaryPercent;
 
   /// Creates a new [GetServiceDeploymentConfigurationCanaryConfiguration].
   /// [canaryBakeTimeInMinutes] Time to wait before shifting remaining traffic
@@ -24,8 +25,8 @@ class GetServiceDeploymentConfigurationCanaryConfiguration {
 
   factory GetServiceDeploymentConfigurationCanaryConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceDeploymentConfigurationCanaryConfiguration(
-      canaryBakeTimeInMinutes: map['canaryBakeTimeInMinutes'] as String,
-      canaryPercent: map['canaryPercent'] as double,
+      canaryBakeTimeInMinutes: (map['canaryBakeTimeInMinutes'] as String).input(),
+      canaryPercent: (map['canaryPercent'] as double).input(),
     );
   }
 }

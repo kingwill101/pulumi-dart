@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the Connector.
 class ConnectorPropertiesResponse {
   /// unique id of the connector.
-  final String connectorId;
+  final pulumi.Input<String> connectorId;
   /// connector type
-  final String connectorType;
+  final pulumi.Input<String> connectorType;
   /// last run time stamp of this connector in UTC time zone
-  final String lastRunTimeStamp;
+  final pulumi.Input<String> lastRunTimeStamp;
   /// Resource provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// tenant id of this connector
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [ConnectorPropertiesResponse].
   /// [connectorId] unique id of the connector.
@@ -40,11 +41,11 @@ class ConnectorPropertiesResponse {
 
   factory ConnectorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorPropertiesResponse(
-      connectorId: map['connectorId'] as String,
-      connectorType: map['connectorType'] as String,
-      lastRunTimeStamp: map['lastRunTimeStamp'] as String,
-      provisioningState: map['provisioningState'] as String,
-      tenantId: map['tenantId'] as String,
+      connectorId: (map['connectorId'] as String).input(),
+      connectorType: (map['connectorType'] as String).input(),
+      lastRunTimeStamp: (map['lastRunTimeStamp'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFactoryGithubConfiguration {
   /// The VSTS account name.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// The branch of the repository to get code from.
-  final String branchName;
+  final pulumi.Input<String> branchName;
   /// The GitHub repository url.
-  final String gitUrl;
+  final pulumi.Input<String> gitUrl;
   /// The name of the git repository.
-  final String repositoryName;
+  final pulumi.Input<String> repositoryName;
   /// The root folder within the repository.
-  final String rootFolder;
+  final pulumi.Input<String> rootFolder;
 
   /// Creates a new [GetFactoryGithubConfiguration].
   /// [accountName] The VSTS account name.
@@ -39,11 +40,11 @@ class GetFactoryGithubConfiguration {
 
   factory GetFactoryGithubConfiguration.fromMap(Map<String, dynamic> map) {
     return GetFactoryGithubConfiguration(
-      accountName: map['accountName'] as String,
-      branchName: map['branchName'] as String,
-      gitUrl: map['gitUrl'] as String,
-      repositoryName: map['repositoryName'] as String,
-      rootFolder: map['rootFolder'] as String,
+      accountName: (map['accountName'] as String).input(),
+      branchName: (map['branchName'] as String).input(),
+      gitUrl: (map['gitUrl'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
+      rootFolder: (map['rootFolder'] as String).input(),
     );
   }
 }

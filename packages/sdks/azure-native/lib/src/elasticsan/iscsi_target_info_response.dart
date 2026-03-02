@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Iscsi target information
 class IscsiTargetInfoResponse {
   /// State of the operation on the resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Operational status of the iSCSI Target.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server".
-  final String targetIqn;
+  final pulumi.Input<String> targetIqn;
   /// iSCSI Target Portal Host Name
-  final String targetPortalHostname;
+  final pulumi.Input<String> targetPortalHostname;
   /// iSCSI Target Portal Port
-  final int targetPortalPort;
+  final pulumi.Input<int> targetPortalPort;
 
   /// Creates a new [IscsiTargetInfoResponse].
   /// [provisioningState] State of the operation on the resource.
@@ -40,11 +41,11 @@ class IscsiTargetInfoResponse {
 
   factory IscsiTargetInfoResponse.fromMap(Map<String, dynamic> map) {
     return IscsiTargetInfoResponse(
-      provisioningState: map['provisioningState'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      targetIqn: map['targetIqn'] as String,
-      targetPortalHostname: map['targetPortalHostname'] as String,
-      targetPortalPort: map['targetPortalPort'] as int,
+      provisioningState: (map['provisioningState'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      targetIqn: (map['targetIqn'] as String).input(),
+      targetPortalHostname: (map['targetPortalHostname'] as String).input(),
+      targetPortalPort: (map['targetPortalPort'] as int).input(),
     );
   }
 }

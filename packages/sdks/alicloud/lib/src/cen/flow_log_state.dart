@@ -50,33 +50,20 @@ class FlowLogState {
   /// [transitRouterAttachmentId] Cross-region Connection ID or VBR connection ID.
   /// [transitRouterId] Transit Router ID
   FlowLogState({
-    pulumi.Output<String>? cenId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? flowLogName,
-    pulumi.Output<int>? interval,
-    pulumi.Output<String>? logFormatString,
-    pulumi.Output<String>? logStoreName,
-    pulumi.Output<String>? projectName,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitRouterAttachmentId,
-    pulumi.Output<String>? transitRouterId,
-  }) :
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      flowLogName = pulumi.Input.asOptionalInput<String>(flowLogName),
-      interval = pulumi.Input.asOptionalInput<int>(interval),
-      logFormatString = pulumi.Input.asOptionalInput<String>(logFormatString),
-      logStoreName = pulumi.Input.asOptionalInput<String>(logStoreName),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitRouterAttachmentId = pulumi.Input.asOptionalInput<String>(transitRouterAttachmentId),
-      transitRouterId = pulumi.Input.asOptionalInput<String>(transitRouterId);
+    this.cenId,
+    this.createTime,
+    this.description,
+    this.flowLogName,
+    this.interval,
+    this.logFormatString,
+    this.logStoreName,
+    this.projectName,
+    this.regionId,
+    this.status,
+    this.tags,
+    this.transitRouterAttachmentId,
+    this.transitRouterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class FlowLogState {
 
   factory FlowLogState.fromMap(Map<String, dynamic> map) {
     return FlowLogState(
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      flowLogName: map['flowLogName'] == null ? null : pulumi.Output.create<String>(map['flowLogName'] as String),
-      interval: map['interval'] == null ? null : pulumi.Output.create<int>(map['interval'] as int),
-      logFormatString: map['logFormatString'] == null ? null : pulumi.Output.create<String>(map['logFormatString'] as String),
-      logStoreName: map['logStoreName'] == null ? null : pulumi.Output.create<String>(map['logStoreName'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
-      transitRouterId: map['transitRouterId'] == null ? null : pulumi.Output.create<String>(map['transitRouterId'] as String),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      logFormatString: map['logFormatString'] == null ? null : (map['logFormatString'] as String).input(),
+      logStoreName: map['logStoreName'] == null ? null : (map['logStoreName'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
     );
   }
 }

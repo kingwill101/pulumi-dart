@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Admin credentials for virtual machine
 class VirtualMachineSshCredentials {
   /// Password of admin account
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Private key data
-  final String? privateKeyData;
+  final pulumi.Input<String>? privateKeyData;
   /// Public key data
-  final String? publicKeyData;
+  final pulumi.Input<String>? publicKeyData;
   /// Username of admin account
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [VirtualMachineSshCredentials].
   /// [password] Password of admin account
@@ -35,10 +36,10 @@ class VirtualMachineSshCredentials {
 
   factory VirtualMachineSshCredentials.fromMap(Map<String, dynamic> map) {
     return VirtualMachineSshCredentials(
-      password: map['password'] == null ? null : map['password'] as String,
-      privateKeyData: map['privateKeyData'] == null ? null : map['privateKeyData'] as String,
-      publicKeyData: map['publicKeyData'] == null ? null : map['publicKeyData'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      privateKeyData: map['privateKeyData'] == null ? null : (map['privateKeyData'] as String).input(),
+      publicKeyData: map['publicKeyData'] == null ? null : (map['publicKeyData'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

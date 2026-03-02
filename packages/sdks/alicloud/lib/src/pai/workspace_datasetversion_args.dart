@@ -60,29 +60,18 @@ class WorkspaceDatasetversionArgs {
   /// [sourceType] The data source type. The default value is USER.
   /// [uri] The Uri configuration sample is as follows:
   WorkspaceDatasetversionArgs({
-    pulumi.Output<int>? dataCount,
-    pulumi.Output<int>? dataSize,
-    required pulumi.Output<String> dataSourceType,
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<WorkspaceDatasetversionLabel>>? labels,
-    pulumi.Output<String>? options,
-    required pulumi.Output<String> property,
-    pulumi.Output<String>? sourceId,
-    pulumi.Output<String>? sourceType,
-    required pulumi.Output<String> uri,
-  }) :
-      dataCount = pulumi.Input.asOptionalInput<int>(dataCount),
-      dataSize = pulumi.Input.asOptionalInput<int>(dataSize),
-      dataSourceType = pulumi.Input.asInput<String>(dataSourceType),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<List<WorkspaceDatasetversionLabel>>(labels),
-      options = pulumi.Input.asOptionalInput<String>(options),
-      property = pulumi.Input.asInput<String>(property),
-      sourceId = pulumi.Input.asOptionalInput<String>(sourceId),
-      sourceType = pulumi.Input.asOptionalInput<String>(sourceType),
-      uri = pulumi.Input.asInput<String>(uri);
+    this.dataCount,
+    this.dataSize,
+    required this.dataSourceType,
+    required this.datasetId,
+    this.description,
+    this.labels,
+    this.options,
+    required this.property,
+    this.sourceId,
+    this.sourceType,
+    required this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,17 +91,17 @@ class WorkspaceDatasetversionArgs {
 
   factory WorkspaceDatasetversionArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceDatasetversionArgs(
-      dataCount: map['dataCount'] == null ? null : pulumi.Output.create<int>(map['dataCount'] as int),
-      dataSize: map['dataSize'] == null ? null : pulumi.Output.create<int>(map['dataSize'] as int),
-      dataSourceType: pulumi.Output.create<String>(map['dataSourceType'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<WorkspaceDatasetversionLabel>>(pulumi.Input.decodeList<WorkspaceDatasetversionLabel>(map['labels'], (value) => WorkspaceDatasetversionLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      options: map['options'] == null ? null : pulumi.Output.create<String>(map['options'] as String),
-      property: pulumi.Output.create<String>(map['property'] as String),
-      sourceId: map['sourceId'] == null ? null : pulumi.Output.create<String>(map['sourceId'] as String),
-      sourceType: map['sourceType'] == null ? null : pulumi.Output.create<String>(map['sourceType'] as String),
-      uri: pulumi.Output.create<String>(map['uri'] as String),
+      dataCount: map['dataCount'] == null ? null : (map['dataCount'] as int).input(),
+      dataSize: map['dataSize'] == null ? null : (map['dataSize'] as int).input(),
+      dataSourceType: (map['dataSourceType'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceDatasetversionLabel>(map['labels'], (value) => WorkspaceDatasetversionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      options: map['options'] == null ? null : (map['options'] as String).input(),
+      property: (map['property'] as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

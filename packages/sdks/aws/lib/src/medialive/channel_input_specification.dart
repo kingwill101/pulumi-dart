@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputSpecification {
-  final String codec;
-  final String inputResolution;
-  final String maximumBitrate;
+  final pulumi.Input<String> codec;
+  final pulumi.Input<String> inputResolution;
+  final pulumi.Input<String> maximumBitrate;
 
   /// Creates a new [ChannelInputSpecification].
   /// [codec] Required.
@@ -26,9 +27,9 @@ class ChannelInputSpecification {
 
   factory ChannelInputSpecification.fromMap(Map<String, dynamic> map) {
     return ChannelInputSpecification(
-      codec: map['codec'] as String,
-      inputResolution: map['inputResolution'] as String,
-      maximumBitrate: map['maximumBitrate'] as String,
+      codec: (map['codec'] as String).input(),
+      inputResolution: (map['inputResolution'] as String).input(),
+      maximumBitrate: (map['maximumBitrate'] as String).input(),
     );
   }
 }

@@ -55,27 +55,17 @@ class FolderSinkArgs {
   /// [interceptChildren] Whether or not to intercept logs from child projects. If true, matching logs will not
   /// [name] The name of the logging sink.
   FolderSinkArgs({
-    pulumi.Output<FolderSinkBigqueryOptions>? bigqueryOptions,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> destination,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<List<FolderSinkExclusion>>? exclusions,
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> folder,
-    pulumi.Output<bool>? includeChildren,
-    pulumi.Output<bool>? interceptChildren,
-    pulumi.Output<String>? name,
-  }) :
-      bigqueryOptions = pulumi.Input.asOptionalInput<FolderSinkBigqueryOptions>(bigqueryOptions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destination = pulumi.Input.asInput<String>(destination),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      exclusions = pulumi.Input.asOptionalInput<List<FolderSinkExclusion>>(exclusions),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      folder = pulumi.Input.asInput<String>(folder),
-      includeChildren = pulumi.Input.asOptionalInput<bool>(includeChildren),
-      interceptChildren = pulumi.Input.asOptionalInput<bool>(interceptChildren),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.bigqueryOptions,
+    this.description,
+    required this.destination,
+    this.disabled,
+    this.exclusions,
+    this.filter,
+    required this.folder,
+    this.includeChildren,
+    this.interceptChildren,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,16 +84,16 @@ class FolderSinkArgs {
 
   factory FolderSinkArgs.fromMap(Map<String, dynamic> map) {
     return FolderSinkArgs(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : pulumi.Output.create<FolderSinkBigqueryOptions>(FolderSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destination: pulumi.Output.create<String>(map['destination'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      exclusions: map['exclusions'] == null ? null : pulumi.Output.create<List<FolderSinkExclusion>>(pulumi.Input.decodeList<FolderSinkExclusion>(map['exclusions'], (value) => FolderSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      folder: pulumi.Output.create<String>(map['folder'] as String),
-      includeChildren: map['includeChildren'] == null ? null : pulumi.Output.create<bool>(map['includeChildren'] as bool),
-      interceptChildren: map['interceptChildren'] == null ? null : pulumi.Output.create<bool>(map['interceptChildren'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (FolderSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destination: (map['destination'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<FolderSinkExclusion>(map['exclusions'], (value) => FolderSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      folder: (map['folder'] as String).input(),
+      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren'] as bool).input(),
+      interceptChildren: map['interceptChildren'] == null ? null : (map['interceptChildren'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

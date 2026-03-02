@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'preferences.dart';
 import 'product_details.dart';
 import 'site_details.dart';
@@ -7,17 +8,17 @@ import 'site_details.dart';
 /// Order item details.
 class OrderItemDetails {
   /// Additional notification email list.
-  final List<String>? notificationEmailList;
+  final pulumi.Input<List<String>>? notificationEmailList;
   /// Defines the mode of the Order item.
-  final String? orderItemMode;
+  final pulumi.Input<String>? orderItemMode;
   /// Order item type.
-  final String orderItemType;
+  final pulumi.Input<String> orderItemType;
   /// Customer notification Preferences.
-  final Preferences? preferences;
+  final pulumi.Input<Preferences>? preferences;
   /// Represents product details.
-  final ProductDetails productDetails;
+  final pulumi.Input<ProductDetails> productDetails;
   /// Site Related Details.
-  final SiteDetails? siteDetails;
+  final pulumi.Input<SiteDetails>? siteDetails;
 
   /// Creates a new [OrderItemDetails].
   /// [notificationEmailList] Additional notification email list.
@@ -40,20 +41,20 @@ class OrderItemDetails {
       'notificationEmailList': ?notificationEmailList,
       'orderItemMode': ?orderItemMode,
       'orderItemType': orderItemType,
-      'preferences': ?preferences == null ? null : preferences!.toMap(),
-      'productDetails': productDetails.toMap(),
-      'siteDetails': ?siteDetails == null ? null : siteDetails!.toMap(),
+      'preferences': ?pulumi.Input.mapOptionalInputValue<Preferences, Map<String, dynamic>>(preferences, (value) => value.toMap()),
+      'productDetails': pulumi.Input.mapInputValue<ProductDetails, Map<String, dynamic>>(productDetails, (value) => value.toMap()),
+      'siteDetails': ?pulumi.Input.mapOptionalInputValue<SiteDetails, Map<String, dynamic>>(siteDetails, (value) => value.toMap()),
     };
   }
 
   factory OrderItemDetails.fromMap(Map<String, dynamic> map) {
     return OrderItemDetails(
-      notificationEmailList: map['notificationEmailList'] == null ? null : (map['notificationEmailList'] as List).cast<String>(),
-      orderItemMode: map['orderItemMode'] == null ? null : map['orderItemMode'] as String,
-      orderItemType: map['orderItemType'] as String,
-      preferences: map['preferences'] == null ? null : Preferences.fromMap((map['preferences'] as Map).cast<String, dynamic>()),
-      productDetails: ProductDetails.fromMap((map['productDetails'] as Map).cast<String, dynamic>()),
-      siteDetails: map['siteDetails'] == null ? null : SiteDetails.fromMap((map['siteDetails'] as Map).cast<String, dynamic>()),
+      notificationEmailList: map['notificationEmailList'] == null ? null : ((map['notificationEmailList'] as List).cast<String>()).input(),
+      orderItemMode: map['orderItemMode'] == null ? null : (map['orderItemMode'] as String).input(),
+      orderItemType: (map['orderItemType'] as String).input(),
+      preferences: map['preferences'] == null ? null : (Preferences.fromMap((map['preferences'] as Map).cast<String, dynamic>())).input(),
+      productDetails: (ProductDetails.fromMap((map['productDetails'] as Map).cast<String, dynamic>())).input(),
+      siteDetails: map['siteDetails'] == null ? null : (SiteDetails.fromMap((map['siteDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

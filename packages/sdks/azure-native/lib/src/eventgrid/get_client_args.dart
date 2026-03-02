@@ -19,13 +19,10 @@ class GetClientArgs {
   /// [namespaceName] Name of the namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   GetClientArgs({
-    required pulumi.Output<String> clientName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clientName = pulumi.Input.asInput<String>(clientName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clientName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetClientArgs {
 
   factory GetClientArgs.fromMap(Map<String, dynamic> map) {
     return GetClientArgs(
-      clientName: pulumi.Output.create<String>(map['clientName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clientName: (map['clientName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

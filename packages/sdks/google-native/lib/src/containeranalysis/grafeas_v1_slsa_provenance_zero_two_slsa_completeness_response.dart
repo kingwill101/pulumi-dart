@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Indicates that the builder claims certain fields in this message to be complete.
 class GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse {
-  final bool environment;
-  final bool materials;
-  final bool parameters;
+  final pulumi.Input<bool> environment;
+  final pulumi.Input<bool> materials;
+  final pulumi.Input<bool> parameters;
 
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse].
   /// [environment] Required.
@@ -27,9 +28,9 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse {
 
   factory GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse(
-      environment: map['environment'] as bool,
-      materials: map['materials'] as bool,
-      parameters: map['parameters'] as bool,
+      environment: (map['environment'] as bool).input(),
+      materials: (map['materials'] as bool).input(),
+      parameters: (map['parameters'] as bool).input(),
     );
   }
 }

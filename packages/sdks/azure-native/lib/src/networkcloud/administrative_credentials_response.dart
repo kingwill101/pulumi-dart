@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AdministrativeCredentialsResponse {
   /// The password of the administrator of the device used during initialization.
-  final String password;
+  final pulumi.Input<String> password;
   /// The username of the administrator of the device used during initialization.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [AdministrativeCredentialsResponse].
   /// [password] The password of the administrator of the device used during initialization.
@@ -24,8 +25,8 @@ class AdministrativeCredentialsResponse {
 
   factory AdministrativeCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return AdministrativeCredentialsResponse(
-      password: map['password'] as String,
-      username: map['username'] as String,
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

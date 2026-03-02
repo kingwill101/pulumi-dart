@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyRuleFilterMatchBlobIndexTag {
   /// The filter tag name used for tag based filtering for blob objects.
-  final String name;
+  final pulumi.Input<String> name;
   /// The comparison operator which is used for object comparison and filtering. Possible value is `==`. Defaults to `==`.
-  final String operation;
+  final pulumi.Input<String> operation;
   /// The filter tag value used for tag based filtering for blob objects.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetPolicyRuleFilterMatchBlobIndexTag].
   /// [name] The filter tag name used for tag based filtering for blob objects.
@@ -29,9 +30,9 @@ class GetPolicyRuleFilterMatchBlobIndexTag {
 
   factory GetPolicyRuleFilterMatchBlobIndexTag.fromMap(Map<String, dynamic> map) {
     return GetPolicyRuleFilterMatchBlobIndexTag(
-      name: map['name'] as String,
-      operation: map['operation'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      operation: (map['operation'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

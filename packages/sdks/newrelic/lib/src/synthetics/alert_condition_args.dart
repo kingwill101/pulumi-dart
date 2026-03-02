@@ -29,17 +29,12 @@ class AlertConditionArgs {
   /// [policyId] The ID of the policy where this condition should be used.
   /// [runbookUrl] Runbook URL to display in notifications.
   AlertConditionArgs({
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> monitorId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> policyId,
-    pulumi.Output<String>? runbookUrl,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      monitorId = pulumi.Input.asInput<String>(monitorId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyId = pulumi.Input.asInput<String>(policyId),
-      runbookUrl = pulumi.Input.asOptionalInput<String>(runbookUrl);
+    this.enabled,
+    required this.monitorId,
+    this.name,
+    required this.policyId,
+    this.runbookUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class AlertConditionArgs {
 
   factory AlertConditionArgs.fromMap(Map<String, dynamic> map) {
     return AlertConditionArgs(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      monitorId: pulumi.Output.create<String>(map['monitorId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
-      runbookUrl: map['runbookUrl'] == null ? null : pulumi.Output.create<String>(map['runbookUrl'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      monitorId: (map['monitorId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
+      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl'] as String).input(),
     );
   }
 }

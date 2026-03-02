@@ -39,25 +39,16 @@ class ApplicationArgs {
   /// [resourceGroupName] Name of the resource group.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ApplicationArgs({
-    pulumi.Output<bool>? autoConfigEnabled,
-    pulumi.Output<bool>? autoCreate,
-    pulumi.Output<bool>? cweMonitorEnabled,
-    pulumi.Output<String>? groupingType,
-    pulumi.Output<bool>? opsCenterEnabled,
-    pulumi.Output<String>? opsItemSnsTopicArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoConfigEnabled = pulumi.Input.asOptionalInput<bool>(autoConfigEnabled),
-      autoCreate = pulumi.Input.asOptionalInput<bool>(autoCreate),
-      cweMonitorEnabled = pulumi.Input.asOptionalInput<bool>(cweMonitorEnabled),
-      groupingType = pulumi.Input.asOptionalInput<String>(groupingType),
-      opsCenterEnabled = pulumi.Input.asOptionalInput<bool>(opsCenterEnabled),
-      opsItemSnsTopicArn = pulumi.Input.asOptionalInput<String>(opsItemSnsTopicArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.autoConfigEnabled,
+    this.autoCreate,
+    this.cweMonitorEnabled,
+    this.groupingType,
+    this.opsCenterEnabled,
+    this.opsItemSnsTopicArn,
+    this.region,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      autoConfigEnabled: map['autoConfigEnabled'] == null ? null : pulumi.Output.create<bool>(map['autoConfigEnabled'] as bool),
-      autoCreate: map['autoCreate'] == null ? null : pulumi.Output.create<bool>(map['autoCreate'] as bool),
-      cweMonitorEnabled: map['cweMonitorEnabled'] == null ? null : pulumi.Output.create<bool>(map['cweMonitorEnabled'] as bool),
-      groupingType: map['groupingType'] == null ? null : pulumi.Output.create<String>(map['groupingType'] as String),
-      opsCenterEnabled: map['opsCenterEnabled'] == null ? null : pulumi.Output.create<bool>(map['opsCenterEnabled'] as bool),
-      opsItemSnsTopicArn: map['opsItemSnsTopicArn'] == null ? null : pulumi.Output.create<String>(map['opsItemSnsTopicArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoConfigEnabled: map['autoConfigEnabled'] == null ? null : (map['autoConfigEnabled'] as bool).input(),
+      autoCreate: map['autoCreate'] == null ? null : (map['autoCreate'] as bool).input(),
+      cweMonitorEnabled: map['cweMonitorEnabled'] == null ? null : (map['cweMonitorEnabled'] as bool).input(),
+      groupingType: map['groupingType'] == null ? null : (map['groupingType'] as String).input(),
+      opsCenterEnabled: map['opsCenterEnabled'] == null ? null : (map['opsCenterEnabled'] as bool).input(),
+      opsItemSnsTopicArn: map['opsItemSnsTopicArn'] == null ? null : (map['opsItemSnsTopicArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

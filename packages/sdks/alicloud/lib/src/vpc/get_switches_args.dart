@@ -52,35 +52,21 @@ class GetSwitchesArgs {
   /// [vswitchOwnerId] The vSwitch owner id.
   /// [zoneId] The availability zone of the vSwitch.
   GetSwitchesArgs({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<bool>? isDefault,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? routeTableId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchName,
-    pulumi.Output<int>? vswitchOwnerId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      isDefault = pulumi.Input.asOptionalInput<bool>(isDefault),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchName = pulumi.Input.asOptionalInput<String>(vswitchName),
-      vswitchOwnerId = pulumi.Input.asOptionalInput<int>(vswitchOwnerId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.cidrBlock,
+    this.dryRun,
+    this.ids,
+    this.isDefault,
+    this.nameRegex,
+    this.outputFile,
+    this.resourceGroupId,
+    this.routeTableId,
+    this.status,
+    this.tags,
+    this.vpcId,
+    this.vswitchName,
+    this.vswitchOwnerId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class GetSwitchesArgs {
 
   factory GetSwitchesArgs.fromMap(Map<String, dynamic> map) {
     return GetSwitchesArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      isDefault: map['isDefault'] == null ? null : pulumi.Output.create<bool>(map['isDefault'] as bool),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      routeTableId: map['routeTableId'] == null ? null : pulumi.Output.create<String>(map['routeTableId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchName: map['vswitchName'] == null ? null : pulumi.Output.create<String>(map['vswitchName'] as String),
-      vswitchOwnerId: map['vswitchOwnerId'] == null ? null : pulumi.Output.create<int>(map['vswitchOwnerId'] as int),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchName: map['vswitchName'] == null ? null : (map['vswitchName'] as String).input(),
+      vswitchOwnerId: map['vswitchOwnerId'] == null ? null : (map['vswitchOwnerId'] as int).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

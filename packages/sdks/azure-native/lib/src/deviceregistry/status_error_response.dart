@@ -6,11 +6,11 @@ import 'error_details_response.dart';
 /// Defines the status config error properties.
 class StatusErrorResponse {
   /// Error code for classification of errors (ex: '400', '404', '500', etc.).
-  final String code;
+  final pulumi.Input<String> code;
   /// Array of error details that describe the status of each error.
-  final List<ErrorDetailsResponse> details;
+  final pulumi.Input<List<ErrorDetailsResponse>> details;
   /// Human-readable helpful error message to provide additional context for error (e.g.,: “Capability ID 'foo' does not exist”).
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [StatusErrorResponse].
   /// [code] Error code for classification of errors (ex: '400', '404', '500', etc.).
@@ -25,16 +25,16 @@ class StatusErrorResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'details': pulumi.Input.encodeList<ErrorDetailsResponse, Map<String, dynamic>>(details, (value) => value.toMap()),
+      'details': pulumi.Input.mapInputValue<List<ErrorDetailsResponse>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<ErrorDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'message': message,
     };
   }
 
   factory StatusErrorResponse.fromMap(Map<String, dynamic> map) {
     return StatusErrorResponse(
-      code: map['code'] as String,
-      details: pulumi.Input.decodeList<ErrorDetailsResponse>(map['details'], (value) => ErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      details: (pulumi.Input.decodeList<ErrorDetailsResponse>(map['details'], (value) => ErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

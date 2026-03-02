@@ -28,19 +28,13 @@ class GetZnodesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [path] The Node path.
   GetZnodesArgs({
-    pulumi.Output<String>? acceptLanguage,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> path,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      path = pulumi.Input.asInput<String>(path);
+    this.acceptLanguage,
+    required this.clusterId,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    required this.path,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetZnodesArgs {
 
   factory GetZnodesArgs.fromMap(Map<String, dynamic> map) {
     return GetZnodesArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      path: pulumi.Output.create<String>(map['path'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

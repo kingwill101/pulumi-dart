@@ -55,29 +55,18 @@ class WireGroupState {
   /// [wireProperties] Default properties for wires within the group.
   /// [wires] The single/redundant wire(s) managed by the wire group.
   WireGroupState({
-    pulumi.Output<bool>? adminEnabled,
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? crossSiteNetwork,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<WireGroupEndpoint>>? endpoints,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<WireGroupTopology>>? topologies,
-    pulumi.Output<WireGroupWireGroupProperties>? wireGroupProperties,
-    pulumi.Output<WireGroupWireProperties>? wireProperties,
-    pulumi.Output<List<WireGroupWire>>? wires,
-  }) :
-      adminEnabled = pulumi.Input.asOptionalInput<bool>(adminEnabled),
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      crossSiteNetwork = pulumi.Input.asOptionalInput<String>(crossSiteNetwork),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpoints = pulumi.Input.asOptionalInput<List<WireGroupEndpoint>>(endpoints),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      topologies = pulumi.Input.asOptionalInput<List<WireGroupTopology>>(topologies),
-      wireGroupProperties = pulumi.Input.asOptionalInput<WireGroupWireGroupProperties>(wireGroupProperties),
-      wireProperties = pulumi.Input.asOptionalInput<WireGroupWireProperties>(wireProperties),
-      wires = pulumi.Input.asOptionalInput<List<WireGroupWire>>(wires);
+    this.adminEnabled,
+    this.creationTimestamp,
+    this.crossSiteNetwork,
+    this.description,
+    this.endpoints,
+    this.name,
+    this.project,
+    this.topologies,
+    this.wireGroupProperties,
+    this.wireProperties,
+    this.wires,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,17 +86,17 @@ class WireGroupState {
 
   factory WireGroupState.fromMap(Map<String, dynamic> map) {
     return WireGroupState(
-      adminEnabled: map['adminEnabled'] == null ? null : pulumi.Output.create<bool>(map['adminEnabled'] as bool),
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      crossSiteNetwork: map['crossSiteNetwork'] == null ? null : pulumi.Output.create<String>(map['crossSiteNetwork'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpoints: map['endpoints'] == null ? null : pulumi.Output.create<List<WireGroupEndpoint>>(pulumi.Input.decodeList<WireGroupEndpoint>(map['endpoints'], (value) => WireGroupEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      topologies: map['topologies'] == null ? null : pulumi.Output.create<List<WireGroupTopology>>(pulumi.Input.decodeList<WireGroupTopology>(map['topologies'], (value) => WireGroupTopology.fromMap((value as Map).cast<String, dynamic>()))),
-      wireGroupProperties: map['wireGroupProperties'] == null ? null : pulumi.Output.create<WireGroupWireGroupProperties>(WireGroupWireGroupProperties.fromMap((map['wireGroupProperties'] as Map).cast<String, dynamic>())),
-      wireProperties: map['wireProperties'] == null ? null : pulumi.Output.create<WireGroupWireProperties>(WireGroupWireProperties.fromMap((map['wireProperties'] as Map).cast<String, dynamic>())),
-      wires: map['wires'] == null ? null : pulumi.Output.create<List<WireGroupWire>>(pulumi.Input.decodeList<WireGroupWire>(map['wires'], (value) => WireGroupWire.fromMap((value as Map).cast<String, dynamic>()))),
+      adminEnabled: map['adminEnabled'] == null ? null : (map['adminEnabled'] as bool).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      crossSiteNetwork: map['crossSiteNetwork'] == null ? null : (map['crossSiteNetwork'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<WireGroupEndpoint>(map['endpoints'], (value) => WireGroupEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      topologies: map['topologies'] == null ? null : (pulumi.Input.decodeList<WireGroupTopology>(map['topologies'], (value) => WireGroupTopology.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      wireGroupProperties: map['wireGroupProperties'] == null ? null : (WireGroupWireGroupProperties.fromMap((map['wireGroupProperties'] as Map).cast<String, dynamic>())).input(),
+      wireProperties: map['wireProperties'] == null ? null : (WireGroupWireProperties.fromMap((map['wireProperties'] as Map).cast<String, dynamic>())).input(),
+      wires: map['wires'] == null ? null : (pulumi.Input.decodeList<WireGroupWire>(map['wires'], (value) => WireGroupWire.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

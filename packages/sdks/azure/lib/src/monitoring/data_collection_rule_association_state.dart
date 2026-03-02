@@ -26,17 +26,12 @@ class DataCollectionRuleAssociationState {
   /// [name] The name which should be used for this Data Collection Rule Association. Changing this forces a new Data Collection Rule Association to be created. Defaults to `configurationAccessEndpoint`.
   /// [targetResourceId] The ID of the Azure Resource which to associate to a Data Collection Rule or a Data Collection Endpoint. Changing this forces a new resource to be created.
   DataCollectionRuleAssociationState({
-    pulumi.Output<String>? dataCollectionEndpointId,
-    pulumi.Output<String>? dataCollectionRuleId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? targetResourceId,
-  }) :
-      dataCollectionEndpointId = pulumi.Input.asOptionalInput<String>(dataCollectionEndpointId),
-      dataCollectionRuleId = pulumi.Input.asOptionalInput<String>(dataCollectionRuleId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId);
+    this.dataCollectionEndpointId,
+    this.dataCollectionRuleId,
+    this.description,
+    this.name,
+    this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DataCollectionRuleAssociationState {
 
   factory DataCollectionRuleAssociationState.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleAssociationState(
-      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : pulumi.Output.create<String>(map['dataCollectionEndpointId'] as String),
-      dataCollectionRuleId: map['dataCollectionRuleId'] == null ? null : pulumi.Output.create<String>(map['dataCollectionRuleId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
+      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : (map['dataCollectionEndpointId'] as String).input(),
+      dataCollectionRuleId: map['dataCollectionRuleId'] == null ? null : (map['dataCollectionRuleId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
     );
   }
 }

@@ -34,21 +34,14 @@ class VpnGatewayConnectionArgs {
   /// [vpnGatewayId] The ID of the VPN Gateway that this VPN Gateway Connection belongs to. Changing this forces a new VPN Gateway Connection to be created.
   /// [vpnLinks] One or more `vpn_link` blocks as defined below.
   VpnGatewayConnectionArgs({
-    pulumi.Output<bool>? internetSecurityEnabled,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> remoteVpnSiteId,
-    pulumi.Output<VpnGatewayConnectionRouting>? routing,
-    pulumi.Output<List<VpnGatewayConnectionTrafficSelectorPolicy>>? trafficSelectorPolicies,
-    required pulumi.Output<String> vpnGatewayId,
-    required pulumi.Output<List<VpnGatewayConnectionVpnLink>> vpnLinks,
-  }) :
-      internetSecurityEnabled = pulumi.Input.asOptionalInput<bool>(internetSecurityEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      remoteVpnSiteId = pulumi.Input.asInput<String>(remoteVpnSiteId),
-      routing = pulumi.Input.asOptionalInput<VpnGatewayConnectionRouting>(routing),
-      trafficSelectorPolicies = pulumi.Input.asOptionalInput<List<VpnGatewayConnectionTrafficSelectorPolicy>>(trafficSelectorPolicies),
-      vpnGatewayId = pulumi.Input.asInput<String>(vpnGatewayId),
-      vpnLinks = pulumi.Input.asInput<List<VpnGatewayConnectionVpnLink>>(vpnLinks);
+    this.internetSecurityEnabled,
+    this.name,
+    required this.remoteVpnSiteId,
+    this.routing,
+    this.trafficSelectorPolicies,
+    required this.vpnGatewayId,
+    required this.vpnLinks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class VpnGatewayConnectionArgs {
 
   factory VpnGatewayConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VpnGatewayConnectionArgs(
-      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : pulumi.Output.create<bool>(map['internetSecurityEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      remoteVpnSiteId: pulumi.Output.create<String>(map['remoteVpnSiteId'] as String),
-      routing: map['routing'] == null ? null : pulumi.Output.create<VpnGatewayConnectionRouting>(VpnGatewayConnectionRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())),
-      trafficSelectorPolicies: map['trafficSelectorPolicies'] == null ? null : pulumi.Output.create<List<VpnGatewayConnectionTrafficSelectorPolicy>>(pulumi.Input.decodeList<VpnGatewayConnectionTrafficSelectorPolicy>(map['trafficSelectorPolicies'], (value) => VpnGatewayConnectionTrafficSelectorPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      vpnGatewayId: pulumi.Output.create<String>(map['vpnGatewayId'] as String),
-      vpnLinks: pulumi.Output.create<List<VpnGatewayConnectionVpnLink>>(pulumi.Input.decodeList<VpnGatewayConnectionVpnLink>(map['vpnLinks'], (value) => VpnGatewayConnectionVpnLink.fromMap((value as Map).cast<String, dynamic>()))),
+      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : (map['internetSecurityEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      remoteVpnSiteId: (map['remoteVpnSiteId'] as String).input(),
+      routing: map['routing'] == null ? null : (VpnGatewayConnectionRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())).input(),
+      trafficSelectorPolicies: map['trafficSelectorPolicies'] == null ? null : (pulumi.Input.decodeList<VpnGatewayConnectionTrafficSelectorPolicy>(map['trafficSelectorPolicies'], (value) => VpnGatewayConnectionTrafficSelectorPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnGatewayId: (map['vpnGatewayId'] as String).input(),
+      vpnLinks: (pulumi.Input.decodeList<VpnGatewayConnectionVpnLink>(map['vpnLinks'], (value) => VpnGatewayConnectionVpnLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

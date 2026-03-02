@@ -39,25 +39,16 @@ class AccessPointArgs {
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The vSwitch ID.
   AccessPointArgs({
-    required pulumi.Output<String> accessGroup,
-    pulumi.Output<String>? accessPointName,
-    pulumi.Output<bool>? enabledRam,
-    required pulumi.Output<String> fileSystemId,
-    pulumi.Output<AccessPointPosixUser>? posixUser,
-    pulumi.Output<String>? rootPath,
-    pulumi.Output<AccessPointRootPathPermission>? rootPathPermission,
-    required pulumi.Output<String> vpcId,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      accessGroup = pulumi.Input.asInput<String>(accessGroup),
-      accessPointName = pulumi.Input.asOptionalInput<String>(accessPointName),
-      enabledRam = pulumi.Input.asOptionalInput<bool>(enabledRam),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      posixUser = pulumi.Input.asOptionalInput<AccessPointPosixUser>(posixUser),
-      rootPath = pulumi.Input.asOptionalInput<String>(rootPath),
-      rootPathPermission = pulumi.Input.asOptionalInput<AccessPointRootPathPermission>(rootPathPermission),
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    required this.accessGroup,
+    this.accessPointName,
+    this.enabledRam,
+    required this.fileSystemId,
+    this.posixUser,
+    this.rootPath,
+    this.rootPathPermission,
+    required this.vpcId,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class AccessPointArgs {
 
   factory AccessPointArgs.fromMap(Map<String, dynamic> map) {
     return AccessPointArgs(
-      accessGroup: pulumi.Output.create<String>(map['accessGroup'] as String),
-      accessPointName: map['accessPointName'] == null ? null : pulumi.Output.create<String>(map['accessPointName'] as String),
-      enabledRam: map['enabledRam'] == null ? null : pulumi.Output.create<bool>(map['enabledRam'] as bool),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      posixUser: map['posixUser'] == null ? null : pulumi.Output.create<AccessPointPosixUser>(AccessPointPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())),
-      rootPath: map['rootPath'] == null ? null : pulumi.Output.create<String>(map['rootPath'] as String),
-      rootPathPermission: map['rootPathPermission'] == null ? null : pulumi.Output.create<AccessPointRootPathPermission>(AccessPointRootPathPermission.fromMap((map['rootPathPermission'] as Map).cast<String, dynamic>())),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      accessGroup: (map['accessGroup'] as String).input(),
+      accessPointName: map['accessPointName'] == null ? null : (map['accessPointName'] as String).input(),
+      enabledRam: map['enabledRam'] == null ? null : (map['enabledRam'] as bool).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      posixUser: map['posixUser'] == null ? null : (AccessPointPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())).input(),
+      rootPath: map['rootPath'] == null ? null : (map['rootPath'] as String).input(),
+      rootPathPermission: map['rootPathPermission'] == null ? null : (AccessPointRootPathPermission.fromMap((map['rootPathPermission'] as Map).cast<String, dynamic>())).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

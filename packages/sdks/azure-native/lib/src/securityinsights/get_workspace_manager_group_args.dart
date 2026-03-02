@@ -19,13 +19,10 @@ class GetWorkspaceManagerGroupArgs {
   /// [workspaceManagerGroupName] The name of the workspace manager group
   /// [workspaceName] The name of the workspace.
   GetWorkspaceManagerGroupArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceManagerGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceManagerGroupName = pulumi.Input.asInput<String>(workspaceManagerGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.workspaceManagerGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWorkspaceManagerGroupArgs {
 
   factory GetWorkspaceManagerGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceManagerGroupArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceManagerGroupName: pulumi.Output.create<String>(map['workspaceManagerGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceManagerGroupName: (map['workspaceManagerGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

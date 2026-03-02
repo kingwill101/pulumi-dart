@@ -43,27 +43,17 @@ class TagKeyState {
   /// [shortName] Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
   /// [updateTime] Output only. Update time.
   TagKeyState({
-    pulumi.Output<String>? allowedValuesRegex,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespacedName,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? purpose,
-    pulumi.Output<Map<String, String>>? purposeData,
-    pulumi.Output<String>? shortName,
-    pulumi.Output<String>? updateTime,
-  }) :
-      allowedValuesRegex = pulumi.Input.asOptionalInput<String>(allowedValuesRegex),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespacedName = pulumi.Input.asOptionalInput<String>(namespacedName),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      purpose = pulumi.Input.asOptionalInput<String>(purpose),
-      purposeData = pulumi.Input.asOptionalInput<Map<String, String>>(purposeData),
-      shortName = pulumi.Input.asOptionalInput<String>(shortName),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.allowedValuesRegex,
+    this.createTime,
+    this.description,
+    this.name,
+    this.namespacedName,
+    this.parent,
+    this.purpose,
+    this.purposeData,
+    this.shortName,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class TagKeyState {
 
   factory TagKeyState.fromMap(Map<String, dynamic> map) {
     return TagKeyState(
-      allowedValuesRegex: map['allowedValuesRegex'] == null ? null : pulumi.Output.create<String>(map['allowedValuesRegex'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespacedName: map['namespacedName'] == null ? null : pulumi.Output.create<String>(map['namespacedName'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      purpose: map['purpose'] == null ? null : pulumi.Output.create<String>(map['purpose'] as String),
-      purposeData: map['purposeData'] == null ? null : pulumi.Output.create<Map<String, String>>((map['purposeData'] as Map).cast<String, String>()),
-      shortName: map['shortName'] == null ? null : pulumi.Output.create<String>(map['shortName'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      allowedValuesRegex: map['allowedValuesRegex'] == null ? null : (map['allowedValuesRegex'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespacedName: map['namespacedName'] == null ? null : (map['namespacedName'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
+      purposeData: map['purposeData'] == null ? null : ((map['purposeData'] as Map).cast<String, String>()).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

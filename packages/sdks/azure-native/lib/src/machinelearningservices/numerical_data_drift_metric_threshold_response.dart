@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monitoring_threshold_response.dart';
 
 class NumericalDataDriftMetricThresholdResponse {
   /// Expected value is 'Numerical'.
-  final String dataType;
+  final pulumi.Input<String> dataType;
   /// [Required] The numerical data drift metric to calculate.
-  final String metric;
+  final pulumi.Input<String> metric;
   /// The threshold value. If null, a default value will be set depending on the selected metric.
-  final MonitoringThresholdResponse? threshold;
+  final pulumi.Input<MonitoringThresholdResponse>? threshold;
 
   /// Creates a new [NumericalDataDriftMetricThresholdResponse].
   /// [dataType] Expected value is 'Numerical'.
@@ -24,15 +25,15 @@ class NumericalDataDriftMetricThresholdResponse {
     return <String, dynamic>{
       'dataType': dataType,
       'metric': metric,
-      'threshold': ?threshold == null ? null : threshold!.toMap(),
+      'threshold': ?pulumi.Input.mapOptionalInputValue<MonitoringThresholdResponse, Map<String, dynamic>>(threshold, (value) => value.toMap()),
     };
   }
 
   factory NumericalDataDriftMetricThresholdResponse.fromMap(Map<String, dynamic> map) {
     return NumericalDataDriftMetricThresholdResponse(
-      dataType: map['dataType'] as String,
-      metric: map['metric'] as String,
-      threshold: map['threshold'] == null ? null : MonitoringThresholdResponse.fromMap((map['threshold'] as Map).cast<String, dynamic>()),
+      dataType: (map['dataType'] as String).input(),
+      metric: (map['metric'] as String).input(),
+      threshold: map['threshold'] == null ? null : (MonitoringThresholdResponse.fromMap((map['threshold'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

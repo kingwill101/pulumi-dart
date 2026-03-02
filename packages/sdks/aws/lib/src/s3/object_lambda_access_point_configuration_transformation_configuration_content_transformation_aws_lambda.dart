@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda {
   /// The Amazon Resource Name (ARN) of the AWS Lambda function.
-  final String functionArn;
+  final pulumi.Input<String> functionArn;
   /// Additional JSON that provides supplemental data to the Lambda function used to transform objects.
-  final String? functionPayload;
+  final pulumi.Input<String>? functionPayload;
 
   /// Creates a new [ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda].
   /// [functionArn] The Amazon Resource Name (ARN) of the AWS Lambda function.
@@ -24,8 +25,8 @@ class ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTran
 
   factory ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda(
-      functionArn: map['functionArn'] as String,
-      functionPayload: map['functionPayload'] == null ? null : map['functionPayload'] as String,
+      functionArn: (map['functionArn'] as String).input(),
+      functionPayload: map['functionPayload'] == null ? null : (map['functionPayload'] as String).input(),
     );
   }
 }

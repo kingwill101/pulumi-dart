@@ -19,13 +19,10 @@ class ApplicationRedirectUrisArgs {
   /// [redirectUris] A set of redirect URIs to assign to the application.
   /// [type] The type of redirect URIs to manage. Must be one of: `PublicClient`, `SPA`, or `Web`. Changing this forces a new resource to be created.
   ApplicationRedirectUrisArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<List<String>> redirectUris,
-    required pulumi.Output<String> type,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      redirectUris = pulumi.Input.asInput<List<String>>(redirectUris),
-      type = pulumi.Input.asInput<String>(type);
+    required this.applicationId,
+    required this.redirectUris,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ApplicationRedirectUrisArgs {
 
   factory ApplicationRedirectUrisArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationRedirectUrisArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      redirectUris: pulumi.Output.create<List<String>>((map['redirectUris'] as List).cast<String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      redirectUris: ((map['redirectUris'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

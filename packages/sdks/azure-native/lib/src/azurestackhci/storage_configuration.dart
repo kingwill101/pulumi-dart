@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Storage configuration.
 class StorageConfiguration {
   /// Partition size.
-  final String? partitionSize;
+  final pulumi.Input<String>? partitionSize;
 
   /// Creates a new [StorageConfiguration].
   /// [partitionSize] Partition size.
@@ -20,7 +21,7 @@ class StorageConfiguration {
 
   factory StorageConfiguration.fromMap(Map<String, dynamic> map) {
     return StorageConfiguration(
-      partitionSize: map['partitionSize'] == null ? null : map['partitionSize'] as String,
+      partitionSize: map['partitionSize'] == null ? null : (map['partitionSize'] as String).input(),
     );
   }
 }

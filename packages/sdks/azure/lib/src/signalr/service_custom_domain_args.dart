@@ -24,15 +24,11 @@ class ServiceCustomDomainArgs {
   /// [signalrCustomCertificateId] Specifies the SignalR Custom Certificate ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
   /// [signalrServiceId] Specifies the SignalR ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
   ServiceCustomDomainArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> signalrCustomCertificateId,
-    required pulumi.Output<String> signalrServiceId,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      signalrCustomCertificateId = pulumi.Input.asInput<String>(signalrCustomCertificateId),
-      signalrServiceId = pulumi.Input.asInput<String>(signalrServiceId);
+    required this.domainName,
+    this.name,
+    required this.signalrCustomCertificateId,
+    required this.signalrServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ServiceCustomDomainArgs {
 
   factory ServiceCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return ServiceCustomDomainArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      signalrCustomCertificateId: pulumi.Output.create<String>(map['signalrCustomCertificateId'] as String),
-      signalrServiceId: pulumi.Output.create<String>(map['signalrServiceId'] as String),
+      domainName: (map['domainName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      signalrCustomCertificateId: (map['signalrCustomCertificateId'] as String).input(),
+      signalrServiceId: (map['signalrServiceId'] as String).input(),
     );
   }
 }

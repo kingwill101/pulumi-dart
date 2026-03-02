@@ -31,21 +31,14 @@ class GetInstancesArgs {
   /// [status] Instance status, Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
   /// [supportEngine] The support engine. Valid values: `1` to `7`.
   GetInstancesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? queryStr,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? supportEngine,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      queryStr = pulumi.Input.asOptionalInput<String>(queryStr),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      supportEngine = pulumi.Input.asOptionalInput<int>(supportEngine);
+    this.enableDetails,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.queryStr,
+    this.status,
+    this.supportEngine,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      queryStr: map['queryStr'] == null ? null : pulumi.Output.create<String>(map['queryStr'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      supportEngine: map['supportEngine'] == null ? null : pulumi.Output.create<int>(map['supportEngine'] as int),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      queryStr: map['queryStr'] == null ? null : (map['queryStr'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      supportEngine: map['supportEngine'] == null ? null : (map['supportEngine'] as int).input(),
     );
   }
 }

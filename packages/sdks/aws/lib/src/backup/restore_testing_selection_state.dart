@@ -35,25 +35,16 @@ class RestoreTestingSelectionState {
   /// [restoreTestingPlanName] The name of the restore testing plan.
   /// [validationWindowHours] The amount of hours available to run a validation script on the data. Valid range is `1` to `168`.
   RestoreTestingSelectionState({
-    pulumi.Output<String>? iamRoleArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? protectedResourceArns,
-    pulumi.Output<RestoreTestingSelectionProtectedResourceConditions>? protectedResourceConditions,
-    pulumi.Output<String>? protectedResourceType,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? restoreMetadataOverrides,
-    pulumi.Output<String>? restoreTestingPlanName,
-    pulumi.Output<int>? validationWindowHours,
-  }) :
-      iamRoleArn = pulumi.Input.asOptionalInput<String>(iamRoleArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protectedResourceArns = pulumi.Input.asOptionalInput<List<String>>(protectedResourceArns),
-      protectedResourceConditions = pulumi.Input.asOptionalInput<RestoreTestingSelectionProtectedResourceConditions>(protectedResourceConditions),
-      protectedResourceType = pulumi.Input.asOptionalInput<String>(protectedResourceType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restoreMetadataOverrides = pulumi.Input.asOptionalInput<Map<String, String>>(restoreMetadataOverrides),
-      restoreTestingPlanName = pulumi.Input.asOptionalInput<String>(restoreTestingPlanName),
-      validationWindowHours = pulumi.Input.asOptionalInput<int>(validationWindowHours);
+    this.iamRoleArn,
+    this.name,
+    this.protectedResourceArns,
+    this.protectedResourceConditions,
+    this.protectedResourceType,
+    this.region,
+    this.restoreMetadataOverrides,
+    this.restoreTestingPlanName,
+    this.validationWindowHours,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class RestoreTestingSelectionState {
 
   factory RestoreTestingSelectionState.fromMap(Map<String, dynamic> map) {
     return RestoreTestingSelectionState(
-      iamRoleArn: map['iamRoleArn'] == null ? null : pulumi.Output.create<String>(map['iamRoleArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protectedResourceArns: map['protectedResourceArns'] == null ? null : pulumi.Output.create<List<String>>((map['protectedResourceArns'] as List).cast<String>()),
-      protectedResourceConditions: map['protectedResourceConditions'] == null ? null : pulumi.Output.create<RestoreTestingSelectionProtectedResourceConditions>(RestoreTestingSelectionProtectedResourceConditions.fromMap((map['protectedResourceConditions'] as Map).cast<String, dynamic>())),
-      protectedResourceType: map['protectedResourceType'] == null ? null : pulumi.Output.create<String>(map['protectedResourceType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restoreMetadataOverrides: map['restoreMetadataOverrides'] == null ? null : pulumi.Output.create<Map<String, String>>((map['restoreMetadataOverrides'] as Map).cast<String, String>()),
-      restoreTestingPlanName: map['restoreTestingPlanName'] == null ? null : pulumi.Output.create<String>(map['restoreTestingPlanName'] as String),
-      validationWindowHours: map['validationWindowHours'] == null ? null : pulumi.Output.create<int>(map['validationWindowHours'] as int),
+      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protectedResourceArns: map['protectedResourceArns'] == null ? null : ((map['protectedResourceArns'] as List).cast<String>()).input(),
+      protectedResourceConditions: map['protectedResourceConditions'] == null ? null : (RestoreTestingSelectionProtectedResourceConditions.fromMap((map['protectedResourceConditions'] as Map).cast<String, dynamic>())).input(),
+      protectedResourceType: map['protectedResourceType'] == null ? null : (map['protectedResourceType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restoreMetadataOverrides: map['restoreMetadataOverrides'] == null ? null : ((map['restoreMetadataOverrides'] as Map).cast<String, String>()).input(),
+      restoreTestingPlanName: map['restoreTestingPlanName'] == null ? null : (map['restoreTestingPlanName'] as String).input(),
+      validationWindowHours: map['validationWindowHours'] == null ? null : (map['validationWindowHours'] as int).input(),
     );
   }
 }

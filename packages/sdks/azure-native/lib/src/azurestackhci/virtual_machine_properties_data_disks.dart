@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachinePropertiesDataDisks {
   /// Resource ID of the data disk
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [VirtualMachinePropertiesDataDisks].
   /// [id] Resource ID of the data disk
@@ -19,7 +20,7 @@ class VirtualMachinePropertiesDataDisks {
 
   factory VirtualMachinePropertiesDataDisks.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesDataDisks(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

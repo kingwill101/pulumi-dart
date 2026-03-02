@@ -20,15 +20,11 @@ class VirtualMachineConfigurationAssignmentState {
   /// [name] The name of the Guest Configuration that will be assigned in this Guest Configuration Assignment. Changing this forces a new resource to be created.
   /// [virtualMachineId] The resource ID of the Policy Virtual Machine which this Guest Configuration Assignment should apply to. Changing this forces a new resource to be created.
   VirtualMachineConfigurationAssignmentState({
-    pulumi.Output<VirtualMachineConfigurationAssignmentConfiguration>? configuration,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? virtualMachineId,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<VirtualMachineConfigurationAssignmentConfiguration>(configuration),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      virtualMachineId = pulumi.Input.asOptionalInput<String>(virtualMachineId);
+    this.configuration,
+    this.location,
+    this.name,
+    this.virtualMachineId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class VirtualMachineConfigurationAssignmentState {
 
   factory VirtualMachineConfigurationAssignmentState.fromMap(Map<String, dynamic> map) {
     return VirtualMachineConfigurationAssignmentState(
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<VirtualMachineConfigurationAssignmentConfiguration>(VirtualMachineConfigurationAssignmentConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      virtualMachineId: map['virtualMachineId'] == null ? null : pulumi.Output.create<String>(map['virtualMachineId'] as String),
+      configuration: map['configuration'] == null ? null : (VirtualMachineConfigurationAssignmentConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
     );
   }
 }

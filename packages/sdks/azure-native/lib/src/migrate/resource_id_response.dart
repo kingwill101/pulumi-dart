@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ARM id for a resource.
 class ResourceIdResponse {
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [ResourceIdResponse].
   /// [id] Required.
@@ -19,7 +20,7 @@ class ResourceIdResponse {
 
   factory ResourceIdResponse.fromMap(Map<String, dynamic> map) {
     return ResourceIdResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

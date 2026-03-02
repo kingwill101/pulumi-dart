@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contact Profile third-party partner configuration.
 class ContactProfileThirdPartyConfiguration {
   /// Name of string referencing the configuration describing contact set-up for a particular mission. Expected values are those which have been created in collaboration with the partner network.
-  final String missionConfiguration;
+  final pulumi.Input<String> missionConfiguration;
   /// Name of the third-party provider.
-  final String providerName;
+  final pulumi.Input<String> providerName;
 
   /// Creates a new [ContactProfileThirdPartyConfiguration].
   /// [missionConfiguration] Name of string referencing the configuration describing contact set-up for a particular mission. Expected values are those which have been created in collaboration with the partner network.
@@ -25,8 +26,8 @@ class ContactProfileThirdPartyConfiguration {
 
   factory ContactProfileThirdPartyConfiguration.fromMap(Map<String, dynamic> map) {
     return ContactProfileThirdPartyConfiguration(
-      missionConfiguration: map['missionConfiguration'] as String,
-      providerName: map['providerName'] as String,
+      missionConfiguration: (map['missionConfiguration'] as String).input(),
+      providerName: (map['providerName'] as String).input(),
     );
   }
 }

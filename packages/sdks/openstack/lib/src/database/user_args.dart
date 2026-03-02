@@ -28,19 +28,13 @@ class UserArgs {
   /// [password] User's password.
   /// [region] The region in which to create the db user. Changing
   UserArgs({
-    pulumi.Output<List<String>>? databases,
-    pulumi.Output<String>? host,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> password,
-    pulumi.Output<String>? region,
-  }) :
-      databases = pulumi.Input.asOptionalInput<List<String>>(databases),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asInput<String>(password),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.databases,
+    this.host,
+    required this.instanceId,
+    this.name,
+    required this.password,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      databases: map['databases'] == null ? null : pulumi.Output.create<List<String>>((map['databases'] as List).cast<String>()),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      databases: map['databases'] == null ? null : ((map['databases'] as List).cast<String>()).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: (map['password'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

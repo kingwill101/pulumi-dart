@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Key Vault container for a certificate that is purchased through Azure.
 class AppServiceCertificateResponse {
   /// Key Vault resource Id.
-  final String? keyVaultId;
+  final pulumi.Input<String>? keyVaultId;
   /// Key Vault secret name.
-  final String? keyVaultSecretName;
+  final pulumi.Input<String>? keyVaultSecretName;
   /// Status of the Key Vault secret.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [AppServiceCertificateResponse].
   /// [keyVaultId] Key Vault resource Id.
@@ -30,9 +31,9 @@ class AppServiceCertificateResponse {
 
   factory AppServiceCertificateResponse.fromMap(Map<String, dynamic> map) {
     return AppServiceCertificateResponse(
-      keyVaultId: map['keyVaultId'] == null ? null : map['keyVaultId'] as String,
-      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : map['keyVaultSecretName'] as String,
-      provisioningState: map['provisioningState'] as String,
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

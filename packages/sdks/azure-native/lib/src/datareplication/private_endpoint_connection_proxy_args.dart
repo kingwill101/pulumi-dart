@@ -23,15 +23,11 @@ class PrivateEndpointConnectionProxyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
   PrivateEndpointConnectionProxyArgs({
-    pulumi.Output<String>? privateEndpointConnectionProxyName,
-    pulumi.Output<PrivateEndpointConnectionProxyProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      privateEndpointConnectionProxyName = pulumi.Input.asOptionalInput<String>(privateEndpointConnectionProxyName),
-      properties = pulumi.Input.asOptionalInput<PrivateEndpointConnectionProxyProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    this.privateEndpointConnectionProxyName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class PrivateEndpointConnectionProxyArgs {
 
   factory PrivateEndpointConnectionProxyArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionProxyArgs(
-      privateEndpointConnectionProxyName: map['privateEndpointConnectionProxyName'] == null ? null : pulumi.Output.create<String>(map['privateEndpointConnectionProxyName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<PrivateEndpointConnectionProxyProperties>(PrivateEndpointConnectionProxyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      privateEndpointConnectionProxyName: map['privateEndpointConnectionProxyName'] == null ? null : (map['privateEndpointConnectionProxyName'] as String).input(),
+      properties: map['properties'] == null ? null : (PrivateEndpointConnectionProxyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

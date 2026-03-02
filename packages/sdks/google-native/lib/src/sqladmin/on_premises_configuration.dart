@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_reference.dart';
 
 /// On-premises instance configuration.
 class OnPremisesConfiguration {
   /// PEM representation of the trusted CA's x509 certificate.
-  final String? caCertificate;
+  final pulumi.Input<String>? caCertificate;
   /// PEM representation of the replica's x509 certificate.
-  final String? clientCertificate;
+  final pulumi.Input<String>? clientCertificate;
   /// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
-  final String? clientKey;
+  final pulumi.Input<String>? clientKey;
   /// The dump file to create the Cloud SQL replica.
-  final String? dumpFilePath;
+  final pulumi.Input<String>? dumpFilePath;
   /// The host and port of the on-premises instance in host:port format
-  final String? hostPort;
+  final pulumi.Input<String>? hostPort;
   /// This is always `sql#onPremisesConfiguration`.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// The password for connecting to on-premises instance.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The reference to Cloud SQL instance if the source is Cloud SQL.
-  final InstanceReference? sourceInstance;
+  final pulumi.Input<InstanceReference>? sourceInstance;
   /// The username for connecting to on-premises instance.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [OnPremisesConfiguration].
   /// [caCertificate] PEM representation of the trusted CA's x509 certificate.
@@ -54,22 +55,22 @@ class OnPremisesConfiguration {
       'hostPort': ?hostPort,
       'kind': ?kind,
       'password': ?password,
-      'sourceInstance': ?sourceInstance == null ? null : sourceInstance!.toMap(),
+      'sourceInstance': ?pulumi.Input.mapOptionalInputValue<InstanceReference, Map<String, dynamic>>(sourceInstance, (value) => value.toMap()),
       'username': ?username,
     };
   }
 
   factory OnPremisesConfiguration.fromMap(Map<String, dynamic> map) {
     return OnPremisesConfiguration(
-      caCertificate: map['caCertificate'] == null ? null : map['caCertificate'] as String,
-      clientCertificate: map['clientCertificate'] == null ? null : map['clientCertificate'] as String,
-      clientKey: map['clientKey'] == null ? null : map['clientKey'] as String,
-      dumpFilePath: map['dumpFilePath'] == null ? null : map['dumpFilePath'] as String,
-      hostPort: map['hostPort'] == null ? null : map['hostPort'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      sourceInstance: map['sourceInstance'] == null ? null : InstanceReference.fromMap((map['sourceInstance'] as Map).cast<String, dynamic>()),
-      username: map['username'] == null ? null : map['username'] as String,
+      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate'] as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
+      dumpFilePath: map['dumpFilePath'] == null ? null : (map['dumpFilePath'] as String).input(),
+      hostPort: map['hostPort'] == null ? null : (map['hostPort'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      sourceInstance: map['sourceInstance'] == null ? null : (InstanceReference.fromMap((map['sourceInstance'] as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

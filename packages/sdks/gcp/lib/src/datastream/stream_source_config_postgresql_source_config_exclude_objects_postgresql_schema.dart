@@ -6,9 +6,9 @@ import 'stream_source_config_postgresql_source_config_exclude_objects_postgresql
 class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema {
   /// Tables in the schema.
   /// Structure is documented below.
-  final List<StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable>? postgresqlTables;
+  final pulumi.Input<List<StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable>>? postgresqlTables;
   /// Database name.
-  final String schema;
+  final pulumi.Input<String> schema;
 
   /// Creates a new [StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema].
   /// [postgresqlTables] Tables in the schema.
@@ -20,15 +20,15 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postgresqlTables': ?postgresqlTables == null ? null : pulumi.Input.encodeList<StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable, Map<String, dynamic>>(postgresqlTables!, (value) => value.toMap()),
+      'postgresqlTables': ?pulumi.Input.mapOptionalInputValue<List<StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable>, List<Map<String, dynamic>>>(postgresqlTables, (value) => pulumi.Input.encodeList<StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schema': schema,
     };
   }
 
   factory StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema(
-      postgresqlTables: map['postgresqlTables'] == null ? null : pulumi.Input.decodeList<StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable>(map['postgresqlTables'], (value) => StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable.fromMap((value as Map).cast<String, dynamic>())),
-      schema: map['schema'] as String,
+      postgresqlTables: map['postgresqlTables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable>(map['postgresqlTables'], (value) => StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schema: (map['schema'] as String).input(),
     );
   }
 }

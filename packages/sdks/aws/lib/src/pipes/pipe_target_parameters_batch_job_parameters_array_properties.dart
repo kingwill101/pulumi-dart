@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeTargetParametersBatchJobParametersArrayProperties {
   /// The size of the array, if this is an array batch job. Minimum value of 2. Maximum value of 10,000.
-  final int? size;
+  final pulumi.Input<int>? size;
 
   /// Creates a new [PipeTargetParametersBatchJobParametersArrayProperties].
   /// [size] The size of the array, if this is an array batch job. Minimum value of 2. Maximum value of 10,000.
@@ -19,7 +20,7 @@ class PipeTargetParametersBatchJobParametersArrayProperties {
 
   factory PipeTargetParametersBatchJobParametersArrayProperties.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersBatchJobParametersArrayProperties(
-      size: map['size'] == null ? null : map['size'] as int,
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

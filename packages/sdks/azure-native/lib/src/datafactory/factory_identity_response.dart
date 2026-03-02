@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identity properties of the factory resource.
 class FactoryIdentityResponse {
   /// The principal id of the identity.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The client tenant id of the identity.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The identity type.
-  final String type;
+  final pulumi.Input<String> type;
   /// List of user assigned identities for the factory.
-  final Map<String, dynamic>? userAssignedIdentities;
+  final pulumi.Input<Map<String, dynamic>>? userAssignedIdentities;
 
   /// Creates a new [FactoryIdentityResponse].
   /// [principalId] The principal id of the identity.
@@ -35,10 +36,10 @@ class FactoryIdentityResponse {
 
   factory FactoryIdentityResponse.fromMap(Map<String, dynamic> map) {
     return FactoryIdentityResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (map['userAssignedIdentities'] as Map).cast<String, dynamic>(),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

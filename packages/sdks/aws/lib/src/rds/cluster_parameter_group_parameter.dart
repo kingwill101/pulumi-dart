@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterParameterGroupParameter {
   /// "immediate" (default), or "pending-reboot". Some
   /// engines can't apply some parameters without a reboot, and you will need to
   /// specify "pending-reboot" here.
-  final String? applyMethod;
+  final pulumi.Input<String>? applyMethod;
   /// The name of the DB parameter.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the DB parameter.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ClusterParameterGroupParameter].
   /// [applyMethod] "immediate" (default), or "pending-reboot". Some
@@ -31,9 +32,9 @@ class ClusterParameterGroupParameter {
 
   factory ClusterParameterGroupParameter.fromMap(Map<String, dynamic> map) {
     return ClusterParameterGroupParameter(
-      applyMethod: map['applyMethod'] == null ? null : map['applyMethod'] as String,
-      name: map['name'] as String,
-      value: map['value'] as String,
+      applyMethod: map['applyMethod'] == null ? null : (map['applyMethod'] as String).input(),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Qos Traffic Profiler IP Range properties.
 class QosIpRangeResponse {
   /// End IP Address.
-  final String? endIP;
+  final pulumi.Input<String>? endIP;
   /// Start IP Address.
-  final String? startIP;
+  final pulumi.Input<String>? startIP;
 
   /// Creates a new [QosIpRangeResponse].
   /// [endIP] End IP Address.
@@ -25,8 +26,8 @@ class QosIpRangeResponse {
 
   factory QosIpRangeResponse.fromMap(Map<String, dynamic> map) {
     return QosIpRangeResponse(
-      endIP: map['endIP'] == null ? null : map['endIP'] as String,
-      startIP: map['startIP'] == null ? null : map['startIP'] as String,
+      endIP: map['endIP'] == null ? null : (map['endIP'] as String).input(),
+      startIP: map['startIP'] == null ? null : (map['startIP'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for a service.
 class ServiceConfigResponse {
   /// Optional. Domain name of the service. Example: console.cloud.google
-  final String domain;
+  final pulumi.Input<String> domain;
 
   /// Creates a new [ServiceConfigResponse].
   /// [domain] Optional. Domain name of the service. Example: console.cloud.google
@@ -20,7 +21,7 @@ class ServiceConfigResponse {
 
   factory ServiceConfigResponse.fromMap(Map<String, dynamic> map) {
     return ServiceConfigResponse(
-      domain: map['domain'] as String,
+      domain: (map['domain'] as String).input(),
     );
   }
 }

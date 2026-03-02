@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy {
   /// The full or partial URL to the BackendService resource being mirrored to.
-  final String backendService;
+  final pulumi.Input<String> backendService;
   /// The percentage of requests to be mirrored to backendService.
   /// The value must be between 0.0 and 100.0 inclusive.
-  final double? mirrorPercent;
+  final pulumi.Input<double>? mirrorPercent;
 
   /// Creates a new [URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy].
   /// [backendService] The full or partial URL to the BackendService resource being mirrored to.
@@ -25,8 +26,8 @@ class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy {
 
   factory URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy(
-      backendService: map['backendService'] as String,
-      mirrorPercent: map['mirrorPercent'] == null ? null : map['mirrorPercent'] as double,
+      backendService: (map['backendService'] as String).input(),
+      mirrorPercent: map['mirrorPercent'] == null ? null : (map['mirrorPercent'] as double).input(),
     );
   }
 }

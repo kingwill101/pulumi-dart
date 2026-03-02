@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexLine {
   /// Is case sensitive
-  final bool caseSensitive;
+  final pulumi.Input<bool> caseSensitive;
   /// Does it include Chinese
-  final bool chn;
+  final pulumi.Input<bool> chn;
   /// List of excluded fields
-  final List<String>? excludeKeys;
+  final pulumi.Input<List<String>>? excludeKeys;
   /// Include field list
-  final List<String>? includeKeys;
+  final pulumi.Input<List<String>>? includeKeys;
   /// Delimiter
-  final List<String> tokens;
+  final pulumi.Input<List<String>> tokens;
 
   /// Creates a new [IndexLine].
   /// [caseSensitive] Is case sensitive
@@ -39,11 +40,11 @@ class IndexLine {
 
   factory IndexLine.fromMap(Map<String, dynamic> map) {
     return IndexLine(
-      caseSensitive: map['caseSensitive'] as bool,
-      chn: map['chn'] as bool,
-      excludeKeys: map['excludeKeys'] == null ? null : (map['excludeKeys'] as List).cast<String>(),
-      includeKeys: map['includeKeys'] == null ? null : (map['includeKeys'] as List).cast<String>(),
-      tokens: (map['tokens'] as List).cast<String>(),
+      caseSensitive: (map['caseSensitive'] as bool).input(),
+      chn: (map['chn'] as bool).input(),
+      excludeKeys: map['excludeKeys'] == null ? null : ((map['excludeKeys'] as List).cast<String>()).input(),
+      includeKeys: map['includeKeys'] == null ? null : ((map['includeKeys'] as List).cast<String>()).input(),
+      tokens: ((map['tokens'] as List).cast<String>()).input(),
     );
   }
 }

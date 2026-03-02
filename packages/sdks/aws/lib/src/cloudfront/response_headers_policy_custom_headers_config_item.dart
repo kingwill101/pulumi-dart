@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResponseHeadersPolicyCustomHeadersConfigItem {
-  final String header;
-  final bool override;
+  final pulumi.Input<String> header;
+  final pulumi.Input<bool> override;
   /// The value for the HTTP response header.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ResponseHeadersPolicyCustomHeadersConfigItem].
   /// [header] Required.
@@ -27,9 +28,9 @@ class ResponseHeadersPolicyCustomHeadersConfigItem {
 
   factory ResponseHeadersPolicyCustomHeadersConfigItem.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicyCustomHeadersConfigItem(
-      header: map['header'] as String,
-      override: map['override'] as bool,
-      value: map['value'] as String,
+      header: (map['header'] as String).input(),
+      override: (map['override'] as bool).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

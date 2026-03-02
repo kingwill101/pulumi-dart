@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupWarmPoolInstanceReusePolicy {
   /// Indicates whether instances in the Auto Scaling group can be returned to the warm pool on scale in.
-  final bool reuseOnScaleIn;
+  final pulumi.Input<bool> reuseOnScaleIn;
 
   /// Creates a new [GetGroupWarmPoolInstanceReusePolicy].
   /// [reuseOnScaleIn] Indicates whether instances in the Auto Scaling group can be returned to the warm pool on scale in.
@@ -19,7 +20,7 @@ class GetGroupWarmPoolInstanceReusePolicy {
 
   factory GetGroupWarmPoolInstanceReusePolicy.fromMap(Map<String, dynamic> map) {
     return GetGroupWarmPoolInstanceReusePolicy(
-      reuseOnScaleIn: map['reuseOnScaleIn'] as bool,
+      reuseOnScaleIn: (map['reuseOnScaleIn'] as bool).input(),
     );
   }
 }

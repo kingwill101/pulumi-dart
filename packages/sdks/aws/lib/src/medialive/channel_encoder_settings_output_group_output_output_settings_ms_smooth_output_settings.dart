@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings {
-  final String? h265PackagingType;
+  final pulumi.Input<String>? h265PackagingType;
   /// String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
-  final String? nameModifier;
+  final pulumi.Input<String>? nameModifier;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings].
   /// [h265PackagingType] Optional.
@@ -23,8 +24,8 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSetting
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings(
-      h265PackagingType: map['h265PackagingType'] == null ? null : map['h265PackagingType'] as String,
-      nameModifier: map['nameModifier'] == null ? null : map['nameModifier'] as String,
+      h265PackagingType: map['h265PackagingType'] == null ? null : (map['h265PackagingType'] as String).input(),
+      nameModifier: map['nameModifier'] == null ? null : (map['nameModifier'] as String).input(),
     );
   }
 }

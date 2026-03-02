@@ -14,11 +14,9 @@ class GetBackendServiceArgs {
   /// [backendService] Required.
   /// [project] Optional.
   GetBackendServiceArgs({
-    required pulumi.Output<String> backendService,
-    pulumi.Output<String>? project,
-  }) :
-      backendService = pulumi.Input.asInput<String>(backendService),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.backendService,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetBackendServiceArgs {
 
   factory GetBackendServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceArgs(
-      backendService: pulumi.Output.create<String>(map['backendService'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backendService: (map['backendService'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

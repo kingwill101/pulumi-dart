@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers.
 class ApiConfigHandlerResponseAppengineV1beta {
   /// Action to take when users access resources that require authentication. Defaults to redirect.
-  final String authFailAction;
+  final pulumi.Input<String> authFailAction;
   /// Level of login required to access this resource. Defaults to optional.
-  final String login;
+  final pulumi.Input<String> login;
   /// Path to the script from the application root directory.
-  final String script;
+  final pulumi.Input<String> script;
   /// Security (HTTPS) enforcement for this URL.
-  final String securityLevel;
+  final pulumi.Input<String> securityLevel;
   /// URL to serve the endpoint at.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [ApiConfigHandlerResponseAppengineV1beta].
   /// [authFailAction] Action to take when users access resources that require authentication. Defaults to redirect.
@@ -40,11 +41,11 @@ class ApiConfigHandlerResponseAppengineV1beta {
 
   factory ApiConfigHandlerResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ApiConfigHandlerResponseAppengineV1beta(
-      authFailAction: map['authFailAction'] as String,
-      login: map['login'] as String,
-      script: map['script'] as String,
-      securityLevel: map['securityLevel'] as String,
-      url: map['url'] as String,
+      authFailAction: (map['authFailAction'] as String).input(),
+      login: (map['login'] as String).input(),
+      script: (map['script'] as String).input(),
+      securityLevel: (map['securityLevel'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

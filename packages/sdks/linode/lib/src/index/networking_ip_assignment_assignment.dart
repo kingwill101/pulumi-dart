@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkingIpAssignmentAssignment {
   /// The IPv4 address or IPv6 range to assign.
-  final String address;
+  final pulumi.Input<String> address;
   /// The ID of the Linode to which the IP address will be assigned.
-  final int linodeId;
+  final pulumi.Input<int> linodeId;
 
   /// Creates a new [NetworkingIpAssignmentAssignment].
   /// [address] The IPv4 address or IPv6 range to assign.
@@ -24,8 +25,8 @@ class NetworkingIpAssignmentAssignment {
 
   factory NetworkingIpAssignmentAssignment.fromMap(Map<String, dynamic> map) {
     return NetworkingIpAssignmentAssignment(
-      address: map['address'] as String,
-      linodeId: map['linodeId'] as int,
+      address: (map['address'] as String).input(),
+      linodeId: (map['linodeId'] as int).input(),
     );
   }
 }

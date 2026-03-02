@@ -32,21 +32,14 @@ class RoutingRuleCollectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleCollectionName] The name of the network manager routing Configuration rule collection.
   RoutingRuleCollectionArgs({
-    required pulumi.Output<List<NetworkManagerRoutingGroupItem>> appliesTo,
-    required pulumi.Output<String> configurationName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? disableBgpRoutePropagation,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? ruleCollectionName,
-  }) :
-      appliesTo = pulumi.Input.asInput<List<NetworkManagerRoutingGroupItem>>(appliesTo),
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disableBgpRoutePropagation = pulumi.Input.asOptionalInput<String>(disableBgpRoutePropagation),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleCollectionName = pulumi.Input.asOptionalInput<String>(ruleCollectionName);
+    required this.appliesTo,
+    required this.configurationName,
+    this.description,
+    this.disableBgpRoutePropagation,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+    this.ruleCollectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class RoutingRuleCollectionArgs {
 
   factory RoutingRuleCollectionArgs.fromMap(Map<String, dynamic> map) {
     return RoutingRuleCollectionArgs(
-      appliesTo: pulumi.Output.create<List<NetworkManagerRoutingGroupItem>>(pulumi.Input.decodeList<NetworkManagerRoutingGroupItem>(map['appliesTo'], (value) => NetworkManagerRoutingGroupItem.fromMap((value as Map).cast<String, dynamic>()))),
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : pulumi.Output.create<String>(map['disableBgpRoutePropagation'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleCollectionName: map['ruleCollectionName'] == null ? null : pulumi.Output.create<String>(map['ruleCollectionName'] as String),
+      appliesTo: (pulumi.Input.decodeList<NetworkManagerRoutingGroupItem>(map['appliesTo'], (value) => NetworkManagerRoutingGroupItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationName: (map['configurationName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : (map['disableBgpRoutePropagation'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleCollectionName: map['ruleCollectionName'] == null ? null : (map['ruleCollectionName'] as String).input(),
     );
   }
 }

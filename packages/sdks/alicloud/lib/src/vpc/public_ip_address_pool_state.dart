@@ -47,33 +47,20 @@ class PublicIpAddressPoolState {
   /// [totalIpNum] The total number of public IP address pools.
   /// [usedIpNum] The number of used IP addresses in the public IP address pool.
   PublicIpAddressPoolState({
-    pulumi.Output<String>? bizType,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? ipAddressRemaining,
-    pulumi.Output<String>? isp,
-    pulumi.Output<String>? publicIpAddressPoolId,
-    pulumi.Output<String>? publicIpAddressPoolName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<List<String>>? securityProtectionTypes,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? totalIpNum,
-    pulumi.Output<int>? usedIpNum,
-  }) :
-      bizType = pulumi.Input.asOptionalInput<String>(bizType),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipAddressRemaining = pulumi.Input.asOptionalInput<bool>(ipAddressRemaining),
-      isp = pulumi.Input.asOptionalInput<String>(isp),
-      publicIpAddressPoolId = pulumi.Input.asOptionalInput<String>(publicIpAddressPoolId),
-      publicIpAddressPoolName = pulumi.Input.asOptionalInput<String>(publicIpAddressPoolName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      securityProtectionTypes = pulumi.Input.asOptionalInput<List<String>>(securityProtectionTypes),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      totalIpNum = pulumi.Input.asOptionalInput<int>(totalIpNum),
-      usedIpNum = pulumi.Input.asOptionalInput<int>(usedIpNum);
+    this.bizType,
+    this.createTime,
+    this.description,
+    this.ipAddressRemaining,
+    this.isp,
+    this.publicIpAddressPoolId,
+    this.publicIpAddressPoolName,
+    this.resourceGroupId,
+    this.securityProtectionTypes,
+    this.status,
+    this.tags,
+    this.totalIpNum,
+    this.usedIpNum,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class PublicIpAddressPoolState {
 
   factory PublicIpAddressPoolState.fromMap(Map<String, dynamic> map) {
     return PublicIpAddressPoolState(
-      bizType: map['bizType'] == null ? null : pulumi.Output.create<String>(map['bizType'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipAddressRemaining: map['ipAddressRemaining'] == null ? null : pulumi.Output.create<bool>(map['ipAddressRemaining'] as bool),
-      isp: map['isp'] == null ? null : pulumi.Output.create<String>(map['isp'] as String),
-      publicIpAddressPoolId: map['publicIpAddressPoolId'] == null ? null : pulumi.Output.create<String>(map['publicIpAddressPoolId'] as String),
-      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : pulumi.Output.create<String>(map['publicIpAddressPoolName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      securityProtectionTypes: map['securityProtectionTypes'] == null ? null : pulumi.Output.create<List<String>>((map['securityProtectionTypes'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      totalIpNum: map['totalIpNum'] == null ? null : pulumi.Output.create<int>(map['totalIpNum'] as int),
-      usedIpNum: map['usedIpNum'] == null ? null : pulumi.Output.create<int>(map['usedIpNum'] as int),
+      bizType: map['bizType'] == null ? null : (map['bizType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipAddressRemaining: map['ipAddressRemaining'] == null ? null : (map['ipAddressRemaining'] as bool).input(),
+      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
+      publicIpAddressPoolId: map['publicIpAddressPoolId'] == null ? null : (map['publicIpAddressPoolId'] as String).input(),
+      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : (map['publicIpAddressPoolName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      securityProtectionTypes: map['securityProtectionTypes'] == null ? null : ((map['securityProtectionTypes'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      totalIpNum: map['totalIpNum'] == null ? null : (map['totalIpNum'] as int).input(),
+      usedIpNum: map['usedIpNum'] == null ? null : (map['usedIpNum'] as int).input(),
     );
   }
 }

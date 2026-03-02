@@ -22,15 +22,11 @@ class GetCustomizedAcceleratorArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   GetCustomizedAcceleratorArgs({
-    required pulumi.Output<String> applicationAcceleratorName,
-    required pulumi.Output<String> customizedAcceleratorName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      applicationAcceleratorName = pulumi.Input.asInput<String>(applicationAcceleratorName),
-      customizedAcceleratorName = pulumi.Input.asInput<String>(customizedAcceleratorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.applicationAcceleratorName,
+    required this.customizedAcceleratorName,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetCustomizedAcceleratorArgs {
 
   factory GetCustomizedAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomizedAcceleratorArgs(
-      applicationAcceleratorName: pulumi.Output.create<String>(map['applicationAcceleratorName'] as String),
-      customizedAcceleratorName: pulumi.Output.create<String>(map['customizedAcceleratorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      applicationAcceleratorName: (map['applicationAcceleratorName'] as String).input(),
+      customizedAcceleratorName: (map['customizedAcceleratorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

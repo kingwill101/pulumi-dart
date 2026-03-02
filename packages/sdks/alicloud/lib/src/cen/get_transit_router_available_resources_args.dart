@@ -16,11 +16,9 @@ class GetTransitRouterAvailableResourcesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [supportMulticast] Specifies whether to query only the zones in which the multicast feature is supported.
   GetTransitRouterAvailableResourcesArgs({
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<bool>? supportMulticast,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      supportMulticast = pulumi.Input.asOptionalInput<bool>(supportMulticast);
+    this.outputFile,
+    this.supportMulticast,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetTransitRouterAvailableResourcesArgs {
 
   factory GetTransitRouterAvailableResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterAvailableResourcesArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      supportMulticast: map['supportMulticast'] == null ? null : pulumi.Output.create<bool>(map['supportMulticast'] as bool),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      supportMulticast: map['supportMulticast'] == null ? null : (map['supportMulticast'] as bool).input(),
     );
   }
 }

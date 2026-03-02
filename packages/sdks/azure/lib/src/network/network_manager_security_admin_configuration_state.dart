@@ -19,15 +19,11 @@ class NetworkManagerSecurityAdminConfigurationState {
   /// [name] Specifies the name which should be used for this Network Manager Security Admin Configuration. Changing this forces a new Network Manager Security Admin Configuration to be created.
   /// [networkManagerId] Specifies the ID of the Network Manager Security Admin Configuration. Changing this forces a new Network Manager Security Admin Configuration to be created.
   NetworkManagerSecurityAdminConfigurationState({
-    pulumi.Output<String>? applyOnNetworkIntentPolicyBasedServices,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkManagerId,
-  }) :
-      applyOnNetworkIntentPolicyBasedServices = pulumi.Input.asOptionalInput<String>(applyOnNetworkIntentPolicyBasedServices),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkManagerId = pulumi.Input.asOptionalInput<String>(networkManagerId);
+    this.applyOnNetworkIntentPolicyBasedServices,
+    this.description,
+    this.name,
+    this.networkManagerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class NetworkManagerSecurityAdminConfigurationState {
 
   factory NetworkManagerSecurityAdminConfigurationState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerSecurityAdminConfigurationState(
-      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : pulumi.Output.create<String>(map['applyOnNetworkIntentPolicyBasedServices'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkManagerId: map['networkManagerId'] == null ? null : pulumi.Output.create<String>(map['networkManagerId'] as String),
+      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : (map['applyOnNetworkIntentPolicyBasedServices'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class BucketCnameTokenArgs {
   /// [bucket] The name of the bucket
   /// [domain] The custom domain
   BucketCnameTokenArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<String> domain,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      domain = pulumi.Input.asInput<String>(domain);
+    required this.bucket,
+    required this.domain,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class BucketCnameTokenArgs {
 
   factory BucketCnameTokenArgs.fromMap(Map<String, dynamic> map) {
     return BucketCnameTokenArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      domain: pulumi.Output.create<String>(map['domain'] as String),
+      bucket: (map['bucket'] as String).input(),
+      domain: (map['domain'] as String).input(),
     );
   }
 }

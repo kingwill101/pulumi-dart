@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines whether a feature can be used or what values are accepted.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
   /// A list of acceptable values. Only effective when the policy is `RESTRICTED`.
-  final List<String> allowedValues;
+  final pulumi.Input<List<String>> allowedValues;
   /// The policy of the feature.
-  final String policy;
+  final pulumi.Input<String> policy;
 
   /// Creates a new [GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse].
   /// [allowedValues] A list of acceptable values. Only effective when the policy is `RESTRICTED`.
@@ -25,8 +26,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse
 
   factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse(
-      allowedValues: (map['allowedValues'] as List).cast<String>(),
-      policy: map['policy'] as String,
+      allowedValues: ((map['allowedValues'] as List).cast<String>()).input(),
+      policy: (map['policy'] as String).input(),
     );
   }
 }

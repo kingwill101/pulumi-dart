@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'diagnostics_logs_response.dart';
 import 'metrics_response.dart';
 import 'self_check_response.dart';
@@ -8,13 +9,13 @@ import 'traces_response.dart';
 /// Broker Diagnostic Setting properties
 class BrokerDiagnosticsResponse {
   /// Diagnostic log settings for the resource.
-  final DiagnosticsLogsResponse? logs;
+  final pulumi.Input<DiagnosticsLogsResponse>? logs;
   /// The metrics settings for the resource.
-  final MetricsResponse? metrics;
+  final pulumi.Input<MetricsResponse>? metrics;
   /// The self check properties.
-  final SelfCheckResponse? selfCheck;
+  final pulumi.Input<SelfCheckResponse>? selfCheck;
   /// The trace properties.
-  final TracesResponse? traces;
+  final pulumi.Input<TracesResponse>? traces;
 
   /// Creates a new [BrokerDiagnosticsResponse].
   /// [logs] Diagnostic log settings for the resource.
@@ -30,19 +31,19 @@ class BrokerDiagnosticsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logs': ?logs == null ? null : logs!.toMap(),
-      'metrics': ?metrics == null ? null : metrics!.toMap(),
-      'selfCheck': ?selfCheck == null ? null : selfCheck!.toMap(),
-      'traces': ?traces == null ? null : traces!.toMap(),
+      'logs': ?pulumi.Input.mapOptionalInputValue<DiagnosticsLogsResponse, Map<String, dynamic>>(logs, (value) => value.toMap()),
+      'metrics': ?pulumi.Input.mapOptionalInputValue<MetricsResponse, Map<String, dynamic>>(metrics, (value) => value.toMap()),
+      'selfCheck': ?pulumi.Input.mapOptionalInputValue<SelfCheckResponse, Map<String, dynamic>>(selfCheck, (value) => value.toMap()),
+      'traces': ?pulumi.Input.mapOptionalInputValue<TracesResponse, Map<String, dynamic>>(traces, (value) => value.toMap()),
     };
   }
 
   factory BrokerDiagnosticsResponse.fromMap(Map<String, dynamic> map) {
     return BrokerDiagnosticsResponse(
-      logs: map['logs'] == null ? null : DiagnosticsLogsResponse.fromMap((map['logs'] as Map).cast<String, dynamic>()),
-      metrics: map['metrics'] == null ? null : MetricsResponse.fromMap((map['metrics'] as Map).cast<String, dynamic>()),
-      selfCheck: map['selfCheck'] == null ? null : SelfCheckResponse.fromMap((map['selfCheck'] as Map).cast<String, dynamic>()),
-      traces: map['traces'] == null ? null : TracesResponse.fromMap((map['traces'] as Map).cast<String, dynamic>()),
+      logs: map['logs'] == null ? null : (DiagnosticsLogsResponse.fromMap((map['logs'] as Map).cast<String, dynamic>())).input(),
+      metrics: map['metrics'] == null ? null : (MetricsResponse.fromMap((map['metrics'] as Map).cast<String, dynamic>())).input(),
+      selfCheck: map['selfCheck'] == null ? null : (SelfCheckResponse.fromMap((map['selfCheck'] as Map).cast<String, dynamic>())).input(),
+      traces: map['traces'] == null ? null : (TracesResponse.fromMap((map['traces'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

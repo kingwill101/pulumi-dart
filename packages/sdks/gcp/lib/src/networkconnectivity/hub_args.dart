@@ -36,21 +36,14 @@ class HubArgs {
   /// [presetTopology] Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
   /// [project] The ID of the project in which the resource belongs.
   HubArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? exportPsc,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyMode,
-    pulumi.Output<String>? presetTopology,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      exportPsc = pulumi.Input.asOptionalInput<bool>(exportPsc),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyMode = pulumi.Input.asOptionalInput<String>(policyMode),
-      presetTopology = pulumi.Input.asOptionalInput<String>(presetTopology),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    this.exportPsc,
+    this.labels,
+    this.name,
+    this.policyMode,
+    this.presetTopology,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class HubArgs {
 
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      exportPsc: map['exportPsc'] == null ? null : pulumi.Output.create<bool>(map['exportPsc'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyMode: map['policyMode'] == null ? null : pulumi.Output.create<String>(map['policyMode'] as String),
-      presetTopology: map['presetTopology'] == null ? null : pulumi.Output.create<String>(map['presetTopology'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      exportPsc: map['exportPsc'] == null ? null : (map['exportPsc'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyMode: map['policyMode'] == null ? null : (map['policyMode'] as String).input(),
+      presetTopology: map['presetTopology'] == null ? null : (map['presetTopology'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

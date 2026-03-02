@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Country Description
 class CountryResponse {
   /// country code
-  final String code;
+  final pulumi.Input<String> code;
   /// code description
-  final String? description;
+  final pulumi.Input<String>? description;
 
   /// Creates a new [CountryResponse].
   /// [code] country code
@@ -25,8 +26,8 @@ class CountryResponse {
 
   factory CountryResponse.fromMap(Map<String, dynamic> map) {
     return CountryResponse(
-      code: map['code'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      code: (map['code'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
     );
   }
 }

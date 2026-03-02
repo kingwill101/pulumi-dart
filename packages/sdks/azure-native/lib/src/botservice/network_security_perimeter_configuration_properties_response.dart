@@ -9,14 +9,14 @@ import 'resource_association_response.dart';
 /// Properties of Network Security Perimeter configuration
 class NetworkSecurityPerimeterConfigurationPropertiesResponse {
   /// Information about Network Security Perimeter
-  final NetworkSecurityPerimeterResponse networkSecurityPerimeter;
+  final pulumi.Input<NetworkSecurityPerimeterResponse> networkSecurityPerimeter;
   /// Information about profile
-  final ProfileResponse profile;
+  final pulumi.Input<ProfileResponse> profile;
   /// List of Provisioning Issues if any
-  final List<ProvisioningIssueResponse>? provisioningIssues;
-  final String? provisioningState;
+  final pulumi.Input<List<ProvisioningIssueResponse>>? provisioningIssues;
+  final pulumi.Input<String>? provisioningState;
   /// Information about resource association
-  final ResourceAssociationResponse resourceAssociation;
+  final pulumi.Input<ResourceAssociationResponse> resourceAssociation;
 
   /// Creates a new [NetworkSecurityPerimeterConfigurationPropertiesResponse].
   /// [networkSecurityPerimeter] Information about Network Security Perimeter
@@ -34,21 +34,21 @@ class NetworkSecurityPerimeterConfigurationPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkSecurityPerimeter': networkSecurityPerimeter.toMap(),
-      'profile': profile.toMap(),
-      'provisioningIssues': ?provisioningIssues == null ? null : pulumi.Input.encodeList<ProvisioningIssueResponse, Map<String, dynamic>>(provisioningIssues!, (value) => value.toMap()),
+      'networkSecurityPerimeter': pulumi.Input.mapInputValue<NetworkSecurityPerimeterResponse, Map<String, dynamic>>(networkSecurityPerimeter, (value) => value.toMap()),
+      'profile': pulumi.Input.mapInputValue<ProfileResponse, Map<String, dynamic>>(profile, (value) => value.toMap()),
+      'provisioningIssues': ?pulumi.Input.mapOptionalInputValue<List<ProvisioningIssueResponse>, List<Map<String, dynamic>>>(provisioningIssues, (value) => pulumi.Input.encodeList<ProvisioningIssueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': ?provisioningState,
-      'resourceAssociation': resourceAssociation.toMap(),
+      'resourceAssociation': pulumi.Input.mapInputValue<ResourceAssociationResponse, Map<String, dynamic>>(resourceAssociation, (value) => value.toMap()),
     };
   }
 
   factory NetworkSecurityPerimeterConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterConfigurationPropertiesResponse(
-      networkSecurityPerimeter: NetworkSecurityPerimeterResponse.fromMap((map['networkSecurityPerimeter'] as Map).cast<String, dynamic>()),
-      profile: ProfileResponse.fromMap((map['profile'] as Map).cast<String, dynamic>()),
-      provisioningIssues: map['provisioningIssues'] == null ? null : pulumi.Input.decodeList<ProvisioningIssueResponse>(map['provisioningIssues'], (value) => ProvisioningIssueResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      resourceAssociation: ResourceAssociationResponse.fromMap((map['resourceAssociation'] as Map).cast<String, dynamic>()),
+      networkSecurityPerimeter: (NetworkSecurityPerimeterResponse.fromMap((map['networkSecurityPerimeter'] as Map).cast<String, dynamic>())).input(),
+      profile: (ProfileResponse.fromMap((map['profile'] as Map).cast<String, dynamic>())).input(),
+      provisioningIssues: map['provisioningIssues'] == null ? null : (pulumi.Input.decodeList<ProvisioningIssueResponse>(map['provisioningIssues'], (value) => ProvisioningIssueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceAssociation: (ResourceAssociationResponse.fromMap((map['resourceAssociation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

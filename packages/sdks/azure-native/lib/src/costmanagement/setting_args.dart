@@ -23,15 +23,11 @@ class SettingArgs {
   /// [settingName] Name of the setting. Allowed values: myscope
   /// [startOn] Indicates what scope Cost Management in the Azure portal should default to. Allowed values: LastUsed.
   SettingArgs({
-    pulumi.Output<List<SettingsPropertiesCache>>? cache,
-    required pulumi.Output<String> scope,
-    pulumi.Output<String>? settingName,
-    pulumi.Output<String>? startOn,
-  }) :
-      cache = pulumi.Input.asOptionalInput<List<SettingsPropertiesCache>>(cache),
-      scope = pulumi.Input.asInput<String>(scope),
-      settingName = pulumi.Input.asOptionalInput<String>(settingName),
-      startOn = pulumi.Input.asOptionalInput<String>(startOn);
+    this.cache,
+    required this.scope,
+    this.settingName,
+    this.startOn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SettingArgs {
 
   factory SettingArgs.fromMap(Map<String, dynamic> map) {
     return SettingArgs(
-      cache: map['cache'] == null ? null : pulumi.Output.create<List<SettingsPropertiesCache>>(pulumi.Input.decodeList<SettingsPropertiesCache>(map['cache'], (value) => SettingsPropertiesCache.fromMap((value as Map).cast<String, dynamic>()))),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      settingName: map['settingName'] == null ? null : pulumi.Output.create<String>(map['settingName'] as String),
-      startOn: map['startOn'] == null ? null : pulumi.Output.create<String>(map['startOn'] as String),
+      cache: map['cache'] == null ? null : (pulumi.Input.decodeList<SettingsPropertiesCache>(map['cache'], (value) => SettingsPropertiesCache.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scope: (map['scope'] as String).input(),
+      settingName: map['settingName'] == null ? null : (map['settingName'] as String).input(),
+      startOn: map['startOn'] == null ? null : (map['startOn'] as String).input(),
     );
   }
 }

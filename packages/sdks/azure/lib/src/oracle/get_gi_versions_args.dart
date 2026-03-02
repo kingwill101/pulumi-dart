@@ -19,13 +19,10 @@ class GetGiVersionsArgs {
   /// [shape] The model name of the Cloud Exadata Infrastructure resource. Possible values are `ExaDbXS`, `Exadata.X9M`, and `Exadata.X11M`. This is used to filter out the available GI versions compatible with the given model.
   /// [zone] Indicates the Azure zone for the Cloud Exadata Infrastructure, used to filter the available GI versions within a given zone.
   GetGiVersionsArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? shape,
-    pulumi.Output<String>? zone,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      shape = pulumi.Input.asOptionalInput<String>(shape),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.location,
+    this.shape,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGiVersionsArgs {
 
   factory GetGiVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetGiVersionsArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      shape: map['shape'] == null ? null : pulumi.Output.create<String>(map['shape'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      location: (map['location'] as String).input(),
+      shape: map['shape'] == null ? null : (map['shape'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

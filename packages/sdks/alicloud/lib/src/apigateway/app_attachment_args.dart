@@ -22,15 +22,11 @@ class AppAttachmentArgs {
   /// [groupId] The group that the api belongs to.
   /// [stageName] Stage that the app apply to access.
   AppAttachmentArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> stageName,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      appId = pulumi.Input.asInput<String>(appId),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      stageName = pulumi.Input.asInput<String>(stageName);
+    required this.apiId,
+    required this.appId,
+    required this.groupId,
+    required this.stageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AppAttachmentArgs {
 
   factory AppAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AppAttachmentArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      stageName: pulumi.Output.create<String>(map['stageName'] as String),
+      apiId: (map['apiId'] as String).input(),
+      appId: (map['appId'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      stageName: (map['stageName'] as String).input(),
     );
   }
 }

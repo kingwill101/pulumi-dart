@@ -19,13 +19,10 @@ class GetServiceTagsArgs {
   /// [locationFilter] Changes the scope of the service tags. Can be any value that is also valid for `location`. If this field is empty then all address prefixes are considered instead of only location specific ones.
   /// [service] The type of the service for which address prefixes will be fetched. Available service tags can be found here: [Available service tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags).
   GetServiceTagsArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? locationFilter,
-    required pulumi.Output<String> service,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      locationFilter = pulumi.Input.asOptionalInput<String>(locationFilter),
-      service = pulumi.Input.asInput<String>(service);
+    required this.location,
+    this.locationFilter,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetServiceTagsArgs {
 
   factory GetServiceTagsArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceTagsArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      locationFilter: map['locationFilter'] == null ? null : pulumi.Output.create<String>(map['locationFilter'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
+      location: (map['location'] as String).input(),
+      locationFilter: map['locationFilter'] == null ? null : (map['locationFilter'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

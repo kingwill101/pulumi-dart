@@ -40,27 +40,17 @@ class OutputTableArgs {
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   /// [table] The name of the table where the stream should be output to.
   OutputTableArgs({
-    required pulumi.Output<int> batchSize,
-    pulumi.Output<List<String>>? columnsToRemoves,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> partitionKey,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> rowKey,
-    required pulumi.Output<String> storageAccountKey,
-    required pulumi.Output<String> storageAccountName,
-    required pulumi.Output<String> streamAnalyticsJobName,
-    required pulumi.Output<String> table,
-  }) :
-      batchSize = pulumi.Input.asInput<int>(batchSize),
-      columnsToRemoves = pulumi.Input.asOptionalInput<List<String>>(columnsToRemoves),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partitionKey = pulumi.Input.asInput<String>(partitionKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rowKey = pulumi.Input.asInput<String>(rowKey),
-      storageAccountKey = pulumi.Input.asInput<String>(storageAccountKey),
-      storageAccountName = pulumi.Input.asInput<String>(storageAccountName),
-      streamAnalyticsJobName = pulumi.Input.asInput<String>(streamAnalyticsJobName),
-      table = pulumi.Input.asInput<String>(table);
+    required this.batchSize,
+    this.columnsToRemoves,
+    this.name,
+    required this.partitionKey,
+    required this.resourceGroupName,
+    required this.rowKey,
+    required this.storageAccountKey,
+    required this.storageAccountName,
+    required this.streamAnalyticsJobName,
+    required this.table,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class OutputTableArgs {
 
   factory OutputTableArgs.fromMap(Map<String, dynamic> map) {
     return OutputTableArgs(
-      batchSize: pulumi.Output.create<int>(map['batchSize'] as int),
-      columnsToRemoves: map['columnsToRemoves'] == null ? null : pulumi.Output.create<List<String>>((map['columnsToRemoves'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partitionKey: pulumi.Output.create<String>(map['partitionKey'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rowKey: pulumi.Output.create<String>(map['rowKey'] as String),
-      storageAccountKey: pulumi.Output.create<String>(map['storageAccountKey'] as String),
-      storageAccountName: pulumi.Output.create<String>(map['storageAccountName'] as String),
-      streamAnalyticsJobName: pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
-      table: pulumi.Output.create<String>(map['table'] as String),
+      batchSize: (map['batchSize'] as int).input(),
+      columnsToRemoves: map['columnsToRemoves'] == null ? null : ((map['columnsToRemoves'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partitionKey: (map['partitionKey'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rowKey: (map['rowKey'] as String).input(),
+      storageAccountKey: (map['storageAccountKey'] as String).input(),
+      storageAccountName: (map['storageAccountName'] as String).input(),
+      streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
+      table: (map['table'] as String).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class GetEngineNamespacesArgs {
   /// [instanceId] The ID of the MSE Cluster Instance.It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetEngineNamespacesArgs({
-    pulumi.Output<String>? acceptLanguage,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.acceptLanguage,
+    this.clusterId,
+    this.ids,
+    this.instanceId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GetEngineNamespacesArgs {
 
   factory GetEngineNamespacesArgs.fromMap(Map<String, dynamic> map) {
     return GetEngineNamespacesArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class NetworkManagerManagementGroupConnectionArgs {
   /// [name] Specifies the name which should be used for this Network Manager Management Group Connection. Changing this forces a new Network Manager Management Group Connection to be created.
   /// [networkManagerId] Specifies the ID of the Network Manager which the Management Group is connected to. Changing this forces a new resource to be created.
   NetworkManagerManagementGroupConnectionArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> managementGroupId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkManagerId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkManagerId = pulumi.Input.asInput<String>(networkManagerId);
+    this.description,
+    required this.managementGroupId,
+    this.name,
+    required this.networkManagerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class NetworkManagerManagementGroupConnectionArgs {
 
   factory NetworkManagerManagementGroupConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerManagementGroupConnectionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkManagerId: pulumi.Output.create<String>(map['networkManagerId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkManagerId: (map['networkManagerId'] as String).input(),
     );
   }
 }

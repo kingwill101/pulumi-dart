@@ -27,19 +27,13 @@ class RuntimeManagementConfigState {
   /// [runtimeVersionArn] ARN of the runtime version. Only required when `update_runtime_on` is `Manual`.
   /// [updateRuntimeOn] Runtime update mode. Valid values are `Auto`, `FunctionUpdate`, and `Manual`. When a function is created, the default mode is `Auto`.
   RuntimeManagementConfigState({
-    pulumi.Output<String>? functionArn,
-    pulumi.Output<String>? functionName,
-    pulumi.Output<String>? qualifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? runtimeVersionArn,
-    pulumi.Output<String>? updateRuntimeOn,
-  }) :
-      functionArn = pulumi.Input.asOptionalInput<String>(functionArn),
-      functionName = pulumi.Input.asOptionalInput<String>(functionName),
-      qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      runtimeVersionArn = pulumi.Input.asOptionalInput<String>(runtimeVersionArn),
-      updateRuntimeOn = pulumi.Input.asOptionalInput<String>(updateRuntimeOn);
+    this.functionArn,
+    this.functionName,
+    this.qualifier,
+    this.region,
+    this.runtimeVersionArn,
+    this.updateRuntimeOn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class RuntimeManagementConfigState {
 
   factory RuntimeManagementConfigState.fromMap(Map<String, dynamic> map) {
     return RuntimeManagementConfigState(
-      functionArn: map['functionArn'] == null ? null : pulumi.Output.create<String>(map['functionArn'] as String),
-      functionName: map['functionName'] == null ? null : pulumi.Output.create<String>(map['functionName'] as String),
-      qualifier: map['qualifier'] == null ? null : pulumi.Output.create<String>(map['qualifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      runtimeVersionArn: map['runtimeVersionArn'] == null ? null : pulumi.Output.create<String>(map['runtimeVersionArn'] as String),
-      updateRuntimeOn: map['updateRuntimeOn'] == null ? null : pulumi.Output.create<String>(map['updateRuntimeOn'] as String),
+      functionArn: map['functionArn'] == null ? null : (map['functionArn'] as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      runtimeVersionArn: map['runtimeVersionArn'] == null ? null : (map['runtimeVersionArn'] as String).input(),
+      updateRuntimeOn: map['updateRuntimeOn'] == null ? null : (map['updateRuntimeOn'] as String).input(),
     );
   }
 }

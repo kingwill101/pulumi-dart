@@ -16,13 +16,10 @@ class EcsAutoSnapshotPolicyAttachmentState {
   /// [diskId] The ID of the disk.
   /// [regionId] (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
   EcsAutoSnapshotPolicyAttachmentState({
-    pulumi.Output<String>? autoSnapshotPolicyId,
-    pulumi.Output<String>? diskId,
-    pulumi.Output<String>? regionId,
-  }) :
-      autoSnapshotPolicyId = pulumi.Input.asOptionalInput<String>(autoSnapshotPolicyId),
-      diskId = pulumi.Input.asOptionalInput<String>(diskId),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId);
+    this.autoSnapshotPolicyId,
+    this.diskId,
+    this.regionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class EcsAutoSnapshotPolicyAttachmentState {
 
   factory EcsAutoSnapshotPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return EcsAutoSnapshotPolicyAttachmentState(
-      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] == null ? null : pulumi.Output.create<String>(map['autoSnapshotPolicyId'] as String),
-      diskId: map['diskId'] == null ? null : pulumi.Output.create<String>(map['diskId'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
+      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] == null ? null : (map['autoSnapshotPolicyId'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
     );
   }
 }

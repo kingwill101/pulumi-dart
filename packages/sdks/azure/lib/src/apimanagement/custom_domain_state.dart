@@ -30,19 +30,13 @@ class CustomDomainState {
   /// [portals] One or more `portal` blocks as defined below.
   /// [scms] One or more `scm` blocks as defined below.
   CustomDomainState({
-    pulumi.Output<String>? apiManagementId,
-    pulumi.Output<List<CustomDomainDeveloperPortal>>? developerPortals,
-    pulumi.Output<List<CustomDomainGateway>>? gateways,
-    pulumi.Output<List<CustomDomainManagement>>? managements,
-    pulumi.Output<List<CustomDomainPortal>>? portals,
-    pulumi.Output<List<CustomDomainScm>>? scms,
-  }) :
-      apiManagementId = pulumi.Input.asOptionalInput<String>(apiManagementId),
-      developerPortals = pulumi.Input.asOptionalInput<List<CustomDomainDeveloperPortal>>(developerPortals),
-      gateways = pulumi.Input.asOptionalInput<List<CustomDomainGateway>>(gateways),
-      managements = pulumi.Input.asOptionalInput<List<CustomDomainManagement>>(managements),
-      portals = pulumi.Input.asOptionalInput<List<CustomDomainPortal>>(portals),
-      scms = pulumi.Input.asOptionalInput<List<CustomDomainScm>>(scms);
+    this.apiManagementId,
+    this.developerPortals,
+    this.gateways,
+    this.managements,
+    this.portals,
+    this.scms,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class CustomDomainState {
 
   factory CustomDomainState.fromMap(Map<String, dynamic> map) {
     return CustomDomainState(
-      apiManagementId: map['apiManagementId'] == null ? null : pulumi.Output.create<String>(map['apiManagementId'] as String),
-      developerPortals: map['developerPortals'] == null ? null : pulumi.Output.create<List<CustomDomainDeveloperPortal>>(pulumi.Input.decodeList<CustomDomainDeveloperPortal>(map['developerPortals'], (value) => CustomDomainDeveloperPortal.fromMap((value as Map).cast<String, dynamic>()))),
-      gateways: map['gateways'] == null ? null : pulumi.Output.create<List<CustomDomainGateway>>(pulumi.Input.decodeList<CustomDomainGateway>(map['gateways'], (value) => CustomDomainGateway.fromMap((value as Map).cast<String, dynamic>()))),
-      managements: map['managements'] == null ? null : pulumi.Output.create<List<CustomDomainManagement>>(pulumi.Input.decodeList<CustomDomainManagement>(map['managements'], (value) => CustomDomainManagement.fromMap((value as Map).cast<String, dynamic>()))),
-      portals: map['portals'] == null ? null : pulumi.Output.create<List<CustomDomainPortal>>(pulumi.Input.decodeList<CustomDomainPortal>(map['portals'], (value) => CustomDomainPortal.fromMap((value as Map).cast<String, dynamic>()))),
-      scms: map['scms'] == null ? null : pulumi.Output.create<List<CustomDomainScm>>(pulumi.Input.decodeList<CustomDomainScm>(map['scms'], (value) => CustomDomainScm.fromMap((value as Map).cast<String, dynamic>()))),
+      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId'] as String).input(),
+      developerPortals: map['developerPortals'] == null ? null : (pulumi.Input.decodeList<CustomDomainDeveloperPortal>(map['developerPortals'], (value) => CustomDomainDeveloperPortal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gateways: map['gateways'] == null ? null : (pulumi.Input.decodeList<CustomDomainGateway>(map['gateways'], (value) => CustomDomainGateway.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managements: map['managements'] == null ? null : (pulumi.Input.decodeList<CustomDomainManagement>(map['managements'], (value) => CustomDomainManagement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portals: map['portals'] == null ? null : (pulumi.Input.decodeList<CustomDomainPortal>(map['portals'], (value) => CustomDomainPortal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scms: map['scms'] == null ? null : (pulumi.Input.decodeList<CustomDomainScm>(map['scms'], (value) => CustomDomainScm.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

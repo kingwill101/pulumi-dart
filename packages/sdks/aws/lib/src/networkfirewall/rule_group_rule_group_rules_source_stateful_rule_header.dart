@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleGroupRulesSourceStatefulRuleHeader {
   /// The destination IP address or address range to inspect for, in CIDR notation. To match with any address, specify `ANY`.
-  final String destination;
+  final pulumi.Input<String> destination;
   /// The destination port to inspect for. To match with any address, specify `ANY`.
-  final String destinationPort;
+  final pulumi.Input<String> destinationPort;
   /// The direction of traffic flow to inspect. Valid values: `ANY` or `FORWARD`.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// The protocol to inspect. Valid values: `IP`, `TCP`, `UDP`, `ICMP`, `HTTP`, `FTP`, `TLS`, `SMB`, `DNS`, `DCERPC`, `SSH`, `SMTP`, `IMAP`, `MSN`, `KRB5`, `IKEV2`, `TFTP`, `NTP`, `DHCP`.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The source IP address or address range for, in CIDR notation. To match with any address, specify `ANY`.
-  final String source;
+  final pulumi.Input<String> source;
   /// The source port to inspect for. To match with any address, specify `ANY`.
-  final String sourcePort;
+  final pulumi.Input<String> sourcePort;
 
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatefulRuleHeader].
   /// [destination] The destination IP address or address range to inspect for, in CIDR notation. To match with any address, specify `ANY`.
@@ -44,12 +45,12 @@ class RuleGroupRuleGroupRulesSourceStatefulRuleHeader {
 
   factory RuleGroupRuleGroupRulesSourceStatefulRuleHeader.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSourceStatefulRuleHeader(
-      destination: map['destination'] as String,
-      destinationPort: map['destinationPort'] as String,
-      direction: map['direction'] as String,
-      protocol: map['protocol'] as String,
-      source: map['source'] as String,
-      sourcePort: map['sourcePort'] as String,
+      destination: (map['destination'] as String).input(),
+      destinationPort: (map['destinationPort'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      source: (map['source'] as String).input(),
+      sourcePort: (map['sourcePort'] as String).input(),
     );
   }
 }

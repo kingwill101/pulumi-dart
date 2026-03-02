@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Owner
 class OwnerResponse {
   /// <p>Container for the display name of the owner. This value is only supported in the following Amazon Web Services Regions:</p> <ul> <li> <p>US East (N. Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p>US West (Oregon)</p> </li> <li> <p>Asia Pacific (Singapore)</p> </li> <li> <p>Asia Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul> <note> <p>This functionality is not supported for directory buckets.</p> </note>
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// <p>Container for the ID of the owner.</p>
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [OwnerResponse].
   /// [displayName] <p>Container for the display name of the owner. This value is only supported in the following Amazon Web Services Regions:</p> <ul> <li> <p>US East (N. Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p>US West (Oregon)</p> </li> <li> <p>Asia Pacific (Singapore)</p> </li> <li> <p>Asia Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul> <note> <p>This functionality is not supported for directory buckets.</p> </note>
@@ -25,8 +26,8 @@ class OwnerResponse {
 
   factory OwnerResponse.fromMap(Map<String, dynamic> map) {
     return OwnerResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

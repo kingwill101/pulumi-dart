@@ -31,21 +31,14 @@ class PlanMemberArgs {
   /// [tags] Resource tags.
   /// [tier] The tier of the member.
   PlanMemberArgs({
-    pulumi.Output<String>? memberId,
-    pulumi.Output<String>? memberName,
-    pulumi.Output<String>? memberType,
-    required pulumi.Output<String> planName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tier,
-  }) :
-      memberId = pulumi.Input.asOptionalInput<String>(memberId),
-      memberName = pulumi.Input.asOptionalInput<String>(memberName),
-      memberType = pulumi.Input.asOptionalInput<String>(memberType),
-      planName = pulumi.Input.asInput<String>(planName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tier = pulumi.Input.asOptionalInput<String>(tier);
+    this.memberId,
+    this.memberName,
+    this.memberType,
+    required this.planName,
+    required this.resourceGroupName,
+    this.tags,
+    this.tier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class PlanMemberArgs {
 
   factory PlanMemberArgs.fromMap(Map<String, dynamic> map) {
     return PlanMemberArgs(
-      memberId: map['memberId'] == null ? null : pulumi.Output.create<String>(map['memberId'] as String),
-      memberName: map['memberName'] == null ? null : pulumi.Output.create<String>(map['memberName'] as String),
-      memberType: map['memberType'] == null ? null : pulumi.Output.create<String>(map['memberType'] as String),
-      planName: pulumi.Output.create<String>(map['planName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tier: map['tier'] == null ? null : pulumi.Output.create<String>(map['tier'] as String),
+      memberId: map['memberId'] == null ? null : (map['memberId'] as String).input(),
+      memberName: map['memberName'] == null ? null : (map['memberName'] as String).input(),
+      memberType: map['memberType'] == null ? null : (map['memberType'] as String).input(),
+      planName: (map['planName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

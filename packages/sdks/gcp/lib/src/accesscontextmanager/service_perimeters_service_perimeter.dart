@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_perimeters_service_perimeter_spec.dart';
 import 'service_perimeters_service_perimeter_status.dart';
 
 class ServicePerimetersServicePerimeter {
   /// (Output)
   /// Time the AccessPolicy was created in UTC.
-  final String? createTime;
+  final pulumi.Input<String>? createTime;
   /// Description of the ServicePerimeter and its use. Does not affect
   /// behavior.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Resource name for the ServicePerimeter. The short_name component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the type of the Perimeter. There are two types: regular and
   /// bridge. Regular Service Perimeter contains resources, access levels,
   /// and restricted services. Every resource can be in at most
@@ -30,23 +31,23 @@ class ServicePerimetersServicePerimeter {
   /// themselves.
   /// Default value is `PERIMETER_TYPE_REGULAR`.
   /// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
-  final String? perimeterType;
+  final pulumi.Input<String>? perimeterType;
   /// Proposed (or dry run) ServicePerimeter configuration.
   /// This configuration allows to specify and test ServicePerimeter configuration
   /// without enforcing actual access restrictions. Only allowed to be set when
   /// the `useExplicitDryRunSpec` flag is set.
   /// Structure is documented below.
-  final ServicePerimetersServicePerimeterSpec? spec;
+  final pulumi.Input<ServicePerimetersServicePerimeterSpec>? spec;
   /// ServicePerimeter configuration. Specifies sets of resources,
   /// restricted services and access levels that determine
   /// perimeter content and boundaries.
   /// Structure is documented below.
-  final ServicePerimetersServicePerimeterStatus? status;
+  final pulumi.Input<ServicePerimetersServicePerimeterStatus>? status;
   /// Human readable title. Must be unique within the Policy.
-  final String title;
+  final pulumi.Input<String> title;
   /// (Output)
   /// Time the AccessPolicy was updated in UTC.
-  final String? updateTime;
+  final pulumi.Input<String>? updateTime;
   /// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
   /// for all Service Perimeters, and that spec is identical to the status for those
   /// Service Perimeters. When this flag is set, it inhibits the generation of the
@@ -56,7 +57,7 @@ class ServicePerimetersServicePerimeter {
   /// actually enforcing them. This testing is done through analyzing the differences
   /// between currently enforced and suggested restrictions. useExplicitDryRunSpec must
   /// bet set to True if any of the fields in the spec are set to non-default values.
-  final bool? useExplicitDryRunSpec;
+  final pulumi.Input<bool>? useExplicitDryRunSpec;
 
   /// Creates a new [ServicePerimetersServicePerimeter].
   /// [createTime] (Output)
@@ -86,8 +87,8 @@ class ServicePerimetersServicePerimeter {
       'description': ?description,
       'name': name,
       'perimeterType': ?perimeterType,
-      'spec': ?spec == null ? null : spec!.toMap(),
-      'status': ?status == null ? null : status!.toMap(),
+      'spec': ?pulumi.Input.mapOptionalInputValue<ServicePerimetersServicePerimeterSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<ServicePerimetersServicePerimeterStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
       'title': title,
       'updateTime': ?updateTime,
       'useExplicitDryRunSpec': ?useExplicitDryRunSpec,
@@ -96,15 +97,15 @@ class ServicePerimetersServicePerimeter {
 
   factory ServicePerimetersServicePerimeter.fromMap(Map<String, dynamic> map) {
     return ServicePerimetersServicePerimeter(
-      createTime: map['createTime'] == null ? null : map['createTime'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] as String,
-      perimeterType: map['perimeterType'] == null ? null : map['perimeterType'] as String,
-      spec: map['spec'] == null ? null : ServicePerimetersServicePerimeterSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : ServicePerimetersServicePerimeterStatus.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      title: map['title'] as String,
-      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
-      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null ? null : map['useExplicitDryRunSpec'] as bool,
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      perimeterType: map['perimeterType'] == null ? null : (map['perimeterType'] as String).input(),
+      spec: map['spec'] == null ? null : (ServicePerimetersServicePerimeterSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ServicePerimetersServicePerimeterStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      title: (map['title'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null ? null : (map['useExplicitDryRunSpec'] as bool).input(),
     );
   }
 }

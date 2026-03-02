@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The certificate authentication properties for the client.
 class ClientCertificateAuthentication {
   /// The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'.
-  final List<String>? allowedThumbprints;
+  final pulumi.Input<List<String>>? allowedThumbprints;
   /// The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
-  final String? validationScheme;
+  final pulumi.Input<String>? validationScheme;
 
   /// Creates a new [ClientCertificateAuthentication].
   /// [allowedThumbprints] The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'.
@@ -25,8 +26,8 @@ class ClientCertificateAuthentication {
 
   factory ClientCertificateAuthentication.fromMap(Map<String, dynamic> map) {
     return ClientCertificateAuthentication(
-      allowedThumbprints: map['allowedThumbprints'] == null ? null : (map['allowedThumbprints'] as List).cast<String>(),
-      validationScheme: map['validationScheme'] == null ? null : map['validationScheme'] as String,
+      allowedThumbprints: map['allowedThumbprints'] == null ? null : ((map['allowedThumbprints'] as List).cast<String>()).input(),
+      validationScheme: map['validationScheme'] == null ? null : (map['validationScheme'] as String).input(),
     );
   }
 }

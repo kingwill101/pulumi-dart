@@ -19,15 +19,11 @@ class HostGroupAccountUserGroupAttachmentState {
   /// [instanceId] The ID of the Bastionhost instance where you want to authorize the user to manage the specified hosts and host accounts.
   /// [userGroupId] The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
   HostGroupAccountUserGroupAttachmentState({
-    pulumi.Output<List<String>>? hostAccountNames,
-    pulumi.Output<String>? hostGroupId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? userGroupId,
-  }) :
-      hostAccountNames = pulumi.Input.asOptionalInput<List<String>>(hostAccountNames),
-      hostGroupId = pulumi.Input.asOptionalInput<String>(hostGroupId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      userGroupId = pulumi.Input.asOptionalInput<String>(userGroupId);
+    this.hostAccountNames,
+    this.hostGroupId,
+    this.instanceId,
+    this.userGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class HostGroupAccountUserGroupAttachmentState {
 
   factory HostGroupAccountUserGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return HostGroupAccountUserGroupAttachmentState(
-      hostAccountNames: map['hostAccountNames'] == null ? null : pulumi.Output.create<List<String>>((map['hostAccountNames'] as List).cast<String>()),
-      hostGroupId: map['hostGroupId'] == null ? null : pulumi.Output.create<String>(map['hostGroupId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      userGroupId: map['userGroupId'] == null ? null : pulumi.Output.create<String>(map['userGroupId'] as String),
+      hostAccountNames: map['hostAccountNames'] == null ? null : ((map['hostAccountNames'] as List).cast<String>()).input(),
+      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      userGroupId: map['userGroupId'] == null ? null : (map['userGroupId'] as String).input(),
     );
   }
 }

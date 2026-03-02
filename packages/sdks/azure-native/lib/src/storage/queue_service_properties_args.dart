@@ -23,15 +23,11 @@ class QueueServicePropertiesArgs {
   /// [queueServiceName] The name of the Queue Service within the specified storage account. Queue Service Name must be 'default'
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   QueueServicePropertiesArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<CorsRules>? cors,
-    pulumi.Output<String>? queueServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      cors = pulumi.Input.asOptionalInput<CorsRules>(cors),
-      queueServiceName = pulumi.Input.asOptionalInput<String>(queueServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.cors,
+    this.queueServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class QueueServicePropertiesArgs {
 
   factory QueueServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return QueueServicePropertiesArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      cors: map['cors'] == null ? null : pulumi.Output.create<CorsRules>(CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())),
-      queueServiceName: map['queueServiceName'] == null ? null : pulumi.Output.create<String>(map['queueServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      cors: map['cors'] == null ? null : (CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      queueServiceName: map['queueServiceName'] == null ? null : (map['queueServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

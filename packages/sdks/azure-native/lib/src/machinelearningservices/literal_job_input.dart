@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Literal input type.
 class LiteralJobInput {
   /// Description for the input.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Enum to determine the Job Input Type.
   /// Expected value is 'literal'.
-  final String jobInputType;
+  final pulumi.Input<String> jobInputType;
   /// [Required] Literal value for the input.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [LiteralJobInput].
   /// [description] Description for the input.
@@ -31,9 +32,9 @@ class LiteralJobInput {
 
   factory LiteralJobInput.fromMap(Map<String, dynamic> map) {
     return LiteralJobInput(
-      description: map['description'] == null ? null : map['description'] as String,
-      jobInputType: map['jobInputType'] as String,
-      value: map['value'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      jobInputType: (map['jobInputType'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

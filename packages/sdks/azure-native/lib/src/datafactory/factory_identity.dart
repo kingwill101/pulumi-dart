@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identity properties of the factory resource.
 class FactoryIdentity {
   /// The identity type.
-  final String type;
+  final pulumi.Input<String> type;
   /// List of user assigned identities for the factory.
-  final Map<String, dynamic>? userAssignedIdentities;
+  final pulumi.Input<Map<String, dynamic>>? userAssignedIdentities;
 
   /// Creates a new [FactoryIdentity].
   /// [type] The identity type.
@@ -25,8 +26,8 @@ class FactoryIdentity {
 
   factory FactoryIdentity.fromMap(Map<String, dynamic> map) {
     return FactoryIdentity(
-      type: map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (map['userAssignedIdentities'] as Map).cast<String, dynamic>(),
+      type: (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

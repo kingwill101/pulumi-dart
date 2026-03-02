@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInterfaceVpcIpv4Range {
   /// The VPC IPv4 range.
-  final String range;
+  final pulumi.Input<String> range;
 
   /// Creates a new [GetInterfaceVpcIpv4Range].
   /// [range] The VPC IPv4 range.
@@ -19,7 +20,7 @@ class GetInterfaceVpcIpv4Range {
 
   factory GetInterfaceVpcIpv4Range.fromMap(Map<String, dynamic> map) {
     return GetInterfaceVpcIpv4Range(
-      range: map['range'] as String,
+      range: (map['range'] as String).input(),
     );
   }
 }

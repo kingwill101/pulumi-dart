@@ -34,17 +34,12 @@ class RouterAssociateV2Args {
   /// [region] The region in which to obtain the V2 Networking client.
   /// [routerId] The ID of the router to be associated with the BGP
   RouterAssociateV2Args({
-    pulumi.Output<bool>? advertiseExtraRoutes,
-    required pulumi.Output<String> bgpvpnId,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> routerId,
-  }) :
-      advertiseExtraRoutes = pulumi.Input.asOptionalInput<bool>(advertiseExtraRoutes),
-      bgpvpnId = pulumi.Input.asInput<String>(bgpvpnId),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routerId = pulumi.Input.asInput<String>(routerId);
+    this.advertiseExtraRoutes,
+    required this.bgpvpnId,
+    this.projectId,
+    this.region,
+    required this.routerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,11 +53,11 @@ class RouterAssociateV2Args {
 
   factory RouterAssociateV2Args.fromMap(Map<String, dynamic> map) {
     return RouterAssociateV2Args(
-      advertiseExtraRoutes: map['advertiseExtraRoutes'] == null ? null : pulumi.Output.create<bool>(map['advertiseExtraRoutes'] as bool),
-      bgpvpnId: pulumi.Output.create<String>(map['bgpvpnId'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routerId: pulumi.Output.create<String>(map['routerId'] as String),
+      advertiseExtraRoutes: map['advertiseExtraRoutes'] == null ? null : (map['advertiseExtraRoutes'] as bool).input(),
+      bgpvpnId: (map['bgpvpnId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routerId: (map['routerId'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class EndpointAccessArgs {
   /// [subnetGroupName] The subnet group from which Amazon Redshift chooses the subnet to deploy the endpoint.
   /// [vpcSecurityGroupIds] The security group that defines the ports, protocols, and sources for inbound traffic that you are authorizing into your endpoint.
   EndpointAccessArgs({
-    required pulumi.Output<String> clusterIdentifier,
-    required pulumi.Output<String> endpointName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceOwner,
-    required pulumi.Output<String> subnetGroupName,
-    pulumi.Output<List<String>>? vpcSecurityGroupIds,
-  }) :
-      clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceOwner = pulumi.Input.asOptionalInput<String>(resourceOwner),
-      subnetGroupName = pulumi.Input.asInput<String>(subnetGroupName),
-      vpcSecurityGroupIds = pulumi.Input.asOptionalInput<List<String>>(vpcSecurityGroupIds);
+    required this.clusterIdentifier,
+    required this.endpointName,
+    this.region,
+    this.resourceOwner,
+    required this.subnetGroupName,
+    this.vpcSecurityGroupIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class EndpointAccessArgs {
 
   factory EndpointAccessArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAccessArgs(
-      clusterIdentifier: pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceOwner: map['resourceOwner'] == null ? null : pulumi.Output.create<String>(map['resourceOwner'] as String),
-      subnetGroupName: pulumi.Output.create<String>(map['subnetGroupName'] as String),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcSecurityGroupIds'] as List).cast<String>()),
+      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
+      endpointName: (map['endpointName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceOwner: map['resourceOwner'] == null ? null : (map['resourceOwner'] as String).input(),
+      subnetGroupName: (map['subnetGroupName'] as String).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
     );
   }
 }

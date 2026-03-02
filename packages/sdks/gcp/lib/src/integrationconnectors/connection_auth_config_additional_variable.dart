@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_auth_config_additional_variable_encryption_key_value.dart';
 import 'connection_auth_config_additional_variable_secret_value.dart';
 
 class ConnectionAuthConfigAdditionalVariable {
   /// Boolean Value of configVariable.
-  final bool? booleanValue;
+  final pulumi.Input<bool>? booleanValue;
   /// Encryption key value of configVariable.
   /// Structure is documented below.
-  final ConnectionAuthConfigAdditionalVariableEncryptionKeyValue? encryptionKeyValue;
+  final pulumi.Input<ConnectionAuthConfigAdditionalVariableEncryptionKeyValue>? encryptionKeyValue;
   /// Integer Value of configVariable.
-  final int? integerValue;
+  final pulumi.Input<int>? integerValue;
   /// Key for the configVariable
-  final String key;
+  final pulumi.Input<String> key;
   /// Secret value of configVariable
   /// Structure is documented below.
-  final ConnectionAuthConfigAdditionalVariableSecretValue? secretValue;
+  final pulumi.Input<ConnectionAuthConfigAdditionalVariableSecretValue>? secretValue;
   /// String Value of configVariabley.
-  final String? stringValue;
+  final pulumi.Input<String>? stringValue;
 
   /// Creates a new [ConnectionAuthConfigAdditionalVariable].
   /// [booleanValue] Boolean Value of configVariable.
@@ -38,22 +39,22 @@ class ConnectionAuthConfigAdditionalVariable {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'booleanValue': ?booleanValue,
-      'encryptionKeyValue': ?encryptionKeyValue == null ? null : encryptionKeyValue!.toMap(),
+      'encryptionKeyValue': ?pulumi.Input.mapOptionalInputValue<ConnectionAuthConfigAdditionalVariableEncryptionKeyValue, Map<String, dynamic>>(encryptionKeyValue, (value) => value.toMap()),
       'integerValue': ?integerValue,
       'key': key,
-      'secretValue': ?secretValue == null ? null : secretValue!.toMap(),
+      'secretValue': ?pulumi.Input.mapOptionalInputValue<ConnectionAuthConfigAdditionalVariableSecretValue, Map<String, dynamic>>(secretValue, (value) => value.toMap()),
       'stringValue': ?stringValue,
     };
   }
 
   factory ConnectionAuthConfigAdditionalVariable.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigAdditionalVariable(
-      booleanValue: map['booleanValue'] == null ? null : map['booleanValue'] as bool,
-      encryptionKeyValue: map['encryptionKeyValue'] == null ? null : ConnectionAuthConfigAdditionalVariableEncryptionKeyValue.fromMap((map['encryptionKeyValue'] as Map).cast<String, dynamic>()),
-      integerValue: map['integerValue'] == null ? null : map['integerValue'] as int,
-      key: map['key'] as String,
-      secretValue: map['secretValue'] == null ? null : ConnectionAuthConfigAdditionalVariableSecretValue.fromMap((map['secretValue'] as Map).cast<String, dynamic>()),
-      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
+      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue'] as bool).input(),
+      encryptionKeyValue: map['encryptionKeyValue'] == null ? null : (ConnectionAuthConfigAdditionalVariableEncryptionKeyValue.fromMap((map['encryptionKeyValue'] as Map).cast<String, dynamic>())).input(),
+      integerValue: map['integerValue'] == null ? null : (map['integerValue'] as int).input(),
+      key: (map['key'] as String).input(),
+      secretValue: map['secretValue'] == null ? null : (ConnectionAuthConfigAdditionalVariableSecretValue.fromMap((map['secretValue'] as Map).cast<String, dynamic>())).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
     );
   }
 }

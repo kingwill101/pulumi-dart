@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyAssignmentNonComplianceMessage {
   /// The non-compliance message text.
-  final String content;
+  final pulumi.Input<String> content;
   /// The ID of the Policy Definition that the non-compliance message applies to.
-  final String policyDefinitionReferenceId;
+  final pulumi.Input<String> policyDefinitionReferenceId;
 
   /// Creates a new [GetPolicyAssignmentNonComplianceMessage].
   /// [content] The non-compliance message text.
@@ -24,8 +25,8 @@ class GetPolicyAssignmentNonComplianceMessage {
 
   factory GetPolicyAssignmentNonComplianceMessage.fromMap(Map<String, dynamic> map) {
     return GetPolicyAssignmentNonComplianceMessage(
-      content: map['content'] as String,
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] as String,
+      content: (map['content'] as String).input(),
+      policyDefinitionReferenceId: (map['policyDefinitionReferenceId'] as String).input(),
     );
   }
 }

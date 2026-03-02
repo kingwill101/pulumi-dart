@@ -28,19 +28,13 @@ class FirewallRuleArgs {
   /// [serverName] The name of the server.
   /// [startIpAddress] The start IP address of the firewall rule. Must be IPv4 format. Use value '0.0.0.0' for all Azure-internal IP addresses.
   FirewallRuleArgs({
-    pulumi.Output<String>? endIpAddress,
-    pulumi.Output<String>? firewallRuleName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? startIpAddress,
-  }) :
-      endIpAddress = pulumi.Input.asOptionalInput<String>(endIpAddress),
-      firewallRuleName = pulumi.Input.asOptionalInput<String>(firewallRuleName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      startIpAddress = pulumi.Input.asOptionalInput<String>(startIpAddress);
+    this.endIpAddress,
+    this.firewallRuleName,
+    this.name,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.startIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      endIpAddress: map['endIpAddress'] == null ? null : pulumi.Output.create<String>(map['endIpAddress'] as String),
-      firewallRuleName: map['firewallRuleName'] == null ? null : pulumi.Output.create<String>(map['firewallRuleName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      startIpAddress: map['startIpAddress'] == null ? null : pulumi.Output.create<String>(map['startIpAddress'] as String),
+      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress'] as String).input(),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress'] as String).input(),
     );
   }
 }

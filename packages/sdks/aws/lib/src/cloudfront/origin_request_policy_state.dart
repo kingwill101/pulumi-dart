@@ -31,21 +31,14 @@ class OriginRequestPolicyState {
   /// [name] Unique name to identify the origin request policy.
   /// [queryStringsConfig] Object that determines whether any URL query strings in viewer requests (and if so, which query strings) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Query String Config for more information.
   OriginRequestPolicyState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? comment,
-    pulumi.Output<OriginRequestPolicyCookiesConfig>? cookiesConfig,
-    pulumi.Output<String>? etag,
-    pulumi.Output<OriginRequestPolicyHeadersConfig>? headersConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<OriginRequestPolicyQueryStringsConfig>? queryStringsConfig,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      cookiesConfig = pulumi.Input.asOptionalInput<OriginRequestPolicyCookiesConfig>(cookiesConfig),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      headersConfig = pulumi.Input.asOptionalInput<OriginRequestPolicyHeadersConfig>(headersConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queryStringsConfig = pulumi.Input.asOptionalInput<OriginRequestPolicyQueryStringsConfig>(queryStringsConfig);
+    this.arn,
+    this.comment,
+    this.cookiesConfig,
+    this.etag,
+    this.headersConfig,
+    this.name,
+    this.queryStringsConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class OriginRequestPolicyState {
 
   factory OriginRequestPolicyState.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      cookiesConfig: map['cookiesConfig'] == null ? null : pulumi.Output.create<OriginRequestPolicyCookiesConfig>(OriginRequestPolicyCookiesConfig.fromMap((map['cookiesConfig'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      headersConfig: map['headersConfig'] == null ? null : pulumi.Output.create<OriginRequestPolicyHeadersConfig>(OriginRequestPolicyHeadersConfig.fromMap((map['headersConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queryStringsConfig: map['queryStringsConfig'] == null ? null : pulumi.Output.create<OriginRequestPolicyQueryStringsConfig>(OriginRequestPolicyQueryStringsConfig.fromMap((map['queryStringsConfig'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      cookiesConfig: map['cookiesConfig'] == null ? null : (OriginRequestPolicyCookiesConfig.fromMap((map['cookiesConfig'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      headersConfig: map['headersConfig'] == null ? null : (OriginRequestPolicyHeadersConfig.fromMap((map['headersConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queryStringsConfig: map['queryStringsConfig'] == null ? null : (OriginRequestPolicyQueryStringsConfig.fromMap((map['queryStringsConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

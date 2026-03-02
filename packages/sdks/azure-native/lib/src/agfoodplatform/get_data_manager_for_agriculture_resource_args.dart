@@ -16,11 +16,9 @@ class GetDataManagerForAgricultureResourceArgs {
   /// [dataManagerForAgricultureResourceName] DataManagerForAgriculture resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDataManagerForAgricultureResourceArgs({
-    required pulumi.Output<String> dataManagerForAgricultureResourceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dataManagerForAgricultureResourceName = pulumi.Input.asInput<String>(dataManagerForAgricultureResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dataManagerForAgricultureResourceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDataManagerForAgricultureResourceArgs {
 
   factory GetDataManagerForAgricultureResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetDataManagerForAgricultureResourceArgs(
-      dataManagerForAgricultureResourceName: pulumi.Output.create<String>(map['dataManagerForAgricultureResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dataManagerForAgricultureResourceName: (map['dataManagerForAgricultureResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

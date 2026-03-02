@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice {
   /// Sets the offset for the specific slice in the mirror source configuration.
-  final double offset;
+  final pulumi.Input<double> offset;
   /// Configures the size of the slice in the mirror source.
-  final double size;
+  final pulumi.Input<double> size;
   /// Specifies the type of the slice in the mirror source configuration.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice].
   /// [offset] Sets the offset for the specific slice in the mirror source configuration.
@@ -29,9 +30,9 @@ class DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice {
 
   factory DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice(
-      offset: map['offset'] as double,
-      size: map['size'] as double,
-      type: map['type'] as String,
+      offset: (map['offset'] as double).input(),
+      size: (map['size'] as double).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

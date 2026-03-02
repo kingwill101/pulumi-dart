@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identity provider input.
 class IdentityProviderInput {
   /// The base authority for Azure Active Directory authentication.
-  final String aadAuthority;
+  final pulumi.Input<String> aadAuthority;
   /// The application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final String applicationId;
+  final pulumi.Input<String> applicationId;
   /// The intended Audience of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final String audience;
+  final pulumi.Input<String> audience;
   /// The object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final String objectId;
+  final pulumi.Input<String> objectId;
   /// The tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [IdentityProviderInput].
   /// [aadAuthority] The base authority for Azure Active Directory authentication.
@@ -40,11 +41,11 @@ class IdentityProviderInput {
 
   factory IdentityProviderInput.fromMap(Map<String, dynamic> map) {
     return IdentityProviderInput(
-      aadAuthority: map['aadAuthority'] as String,
-      applicationId: map['applicationId'] as String,
-      audience: map['audience'] as String,
-      objectId: map['objectId'] as String,
-      tenantId: map['tenantId'] as String,
+      aadAuthority: (map['aadAuthority'] as String).input(),
+      applicationId: (map['applicationId'] as String).input(),
+      audience: (map['audience'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

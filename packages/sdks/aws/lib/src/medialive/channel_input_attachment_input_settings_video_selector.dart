@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsVideoSelector {
-  final String? colorSpace;
-  final String? colorSpaceUsage;
+  final pulumi.Input<String>? colorSpace;
+  final pulumi.Input<String>? colorSpaceUsage;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsVideoSelector].
   /// [colorSpace] Optional.
@@ -22,8 +23,8 @@ class ChannelInputAttachmentInputSettingsVideoSelector {
 
   factory ChannelInputAttachmentInputSettingsVideoSelector.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsVideoSelector(
-      colorSpace: map['colorSpace'] == null ? null : map['colorSpace'] as String,
-      colorSpaceUsage: map['colorSpaceUsage'] == null ? null : map['colorSpaceUsage'] as String,
+      colorSpace: map['colorSpace'] == null ? null : (map['colorSpace'] as String).input(),
+      colorSpaceUsage: map['colorSpaceUsage'] == null ? null : (map['colorSpaceUsage'] as String).input(),
     );
   }
 }

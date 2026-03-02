@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of CFNScanEc2InstanceWithFindingsConfiguration
 class CFNScanEc2InstanceWithFindingsConfigurationResponse {
   /// Property ebsVolumes
-  final bool? ebsVolumes;
+  final pulumi.Input<bool>? ebsVolumes;
 
   /// Creates a new [CFNScanEc2InstanceWithFindingsConfigurationResponse].
   /// [ebsVolumes] Property ebsVolumes
@@ -20,7 +21,7 @@ class CFNScanEc2InstanceWithFindingsConfigurationResponse {
 
   factory CFNScanEc2InstanceWithFindingsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CFNScanEc2InstanceWithFindingsConfigurationResponse(
-      ebsVolumes: map['ebsVolumes'] == null ? null : map['ebsVolumes'] as bool,
+      ebsVolumes: map['ebsVolumes'] == null ? null : (map['ebsVolumes'] as bool).input(),
     );
   }
 }

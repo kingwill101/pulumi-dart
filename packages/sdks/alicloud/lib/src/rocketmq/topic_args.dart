@@ -35,21 +35,14 @@ class TopicArgs {
   /// [topic] Replaced by `topic_name` after version 1.97.0.
   /// [topicName] Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
   TopicArgs({
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<int> messageType,
-    pulumi.Output<int>? perm,
-    pulumi.Output<String>? remark,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? topic,
-    pulumi.Output<String>? topicName,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      messageType = pulumi.Input.asInput<int>(messageType),
-      perm = pulumi.Input.asOptionalInput<int>(perm),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      topic = pulumi.Input.asOptionalInput<String>(topic),
-      topicName = pulumi.Input.asOptionalInput<String>(topicName);
+    required this.instanceId,
+    required this.messageType,
+    this.perm,
+    this.remark,
+    this.tags,
+    this.topic,
+    this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      messageType: pulumi.Output.create<int>(map['messageType'] as int),
-      perm: map['perm'] == null ? null : pulumi.Output.create<int>(map['perm'] as int),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      topic: map['topic'] == null ? null : pulumi.Output.create<String>(map['topic'] as String),
-      topicName: map['topicName'] == null ? null : pulumi.Output.create<String>(map['topicName'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      messageType: (map['messageType'] as int).input(),
+      perm: map['perm'] == null ? null : (map['perm'] as int).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
     );
   }
 }

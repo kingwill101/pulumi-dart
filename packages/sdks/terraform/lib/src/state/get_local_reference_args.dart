@@ -16,11 +16,9 @@ class GetLocalReferenceArgs {
   /// [path] The path to the tfstate file. This defaults to "terraform.tfstate" relative to the root module by default.
   /// [workspaceDir] The path to non-default workspaces.
   GetLocalReferenceArgs({
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? workspaceDir,
-  }) :
-      path = pulumi.Input.asOptionalInput<String>(path),
-      workspaceDir = pulumi.Input.asOptionalInput<String>(workspaceDir);
+    this.path,
+    this.workspaceDir,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLocalReferenceArgs {
 
   factory GetLocalReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalReferenceArgs(
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      workspaceDir: map['workspaceDir'] == null ? null : pulumi.Output.create<String>(map['workspaceDir'] as String),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      workspaceDir: map['workspaceDir'] == null ? null : (map['workspaceDir'] as String).input(),
     );
   }
 }

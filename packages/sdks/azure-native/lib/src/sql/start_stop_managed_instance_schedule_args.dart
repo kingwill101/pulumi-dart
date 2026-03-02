@@ -29,19 +29,13 @@ class StartStopManagedInstanceScheduleArgs {
   /// [startStopScheduleName] Name of the managed instance Start/Stop schedule.
   /// [timeZoneId] The time zone of the schedule.
   StartStopManagedInstanceScheduleArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<ScheduleItem>> scheduleList,
-    pulumi.Output<String>? startStopScheduleName,
-    pulumi.Output<String>? timeZoneId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scheduleList = pulumi.Input.asInput<List<ScheduleItem>>(scheduleList),
-      startStopScheduleName = pulumi.Input.asOptionalInput<String>(startStopScheduleName),
-      timeZoneId = pulumi.Input.asOptionalInput<String>(timeZoneId);
+    this.description,
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+    required this.scheduleList,
+    this.startStopScheduleName,
+    this.timeZoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class StartStopManagedInstanceScheduleArgs {
 
   factory StartStopManagedInstanceScheduleArgs.fromMap(Map<String, dynamic> map) {
     return StartStopManagedInstanceScheduleArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scheduleList: pulumi.Output.create<List<ScheduleItem>>(pulumi.Input.decodeList<ScheduleItem>(map['scheduleList'], (value) => ScheduleItem.fromMap((value as Map).cast<String, dynamic>()))),
-      startStopScheduleName: map['startStopScheduleName'] == null ? null : pulumi.Output.create<String>(map['startStopScheduleName'] as String),
-      timeZoneId: map['timeZoneId'] == null ? null : pulumi.Output.create<String>(map['timeZoneId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scheduleList: (pulumi.Input.decodeList<ScheduleItem>(map['scheduleList'], (value) => ScheduleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startStopScheduleName: map['startStopScheduleName'] == null ? null : (map['startStopScheduleName'] as String).input(),
+      timeZoneId: map['timeZoneId'] == null ? null : (map['timeZoneId'] as String).input(),
     );
   }
 }

@@ -6,18 +6,18 @@ import 'get_acls_acl_related_listener.dart';
 
 class GetAclsAcl {
   /// A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
-  final List<GetAclsAclEntryList> entryLists;
+  final pulumi.Input<List<GetAclsAclEntryList>> entryLists;
   /// Acl ID.
-  final String id;
-  final String ipVersion;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> ipVersion;
   /// Acl name.
-  final String name;
+  final pulumi.Input<String> name;
   /// A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
-  final List<GetAclsAclRelatedListener> relatedListeners;
+  final pulumi.Input<List<GetAclsAclRelatedListener>> relatedListeners;
   /// The Id of resource group which acl belongs.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetAclsAcl].
   /// [entryLists] A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
@@ -39,11 +39,11 @@ class GetAclsAcl {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entryLists': pulumi.Input.encodeList<GetAclsAclEntryList, Map<String, dynamic>>(entryLists, (value) => value.toMap()),
+      'entryLists': pulumi.Input.mapInputValue<List<GetAclsAclEntryList>, List<Map<String, dynamic>>>(entryLists, (value) => pulumi.Input.encodeList<GetAclsAclEntryList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'ipVersion': ipVersion,
       'name': name,
-      'relatedListeners': pulumi.Input.encodeList<GetAclsAclRelatedListener, Map<String, dynamic>>(relatedListeners, (value) => value.toMap()),
+      'relatedListeners': pulumi.Input.mapInputValue<List<GetAclsAclRelatedListener>, List<Map<String, dynamic>>>(relatedListeners, (value) => pulumi.Input.encodeList<GetAclsAclRelatedListener, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupId': resourceGroupId,
       'tags': ?tags,
     };
@@ -51,13 +51,13 @@ class GetAclsAcl {
 
   factory GetAclsAcl.fromMap(Map<String, dynamic> map) {
     return GetAclsAcl(
-      entryLists: pulumi.Input.decodeList<GetAclsAclEntryList>(map['entryLists'], (value) => GetAclsAclEntryList.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      ipVersion: map['ipVersion'] as String,
-      name: map['name'] as String,
-      relatedListeners: pulumi.Input.decodeList<GetAclsAclRelatedListener>(map['relatedListeners'], (value) => GetAclsAclRelatedListener.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupId: map['resourceGroupId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      entryLists: (pulumi.Input.decodeList<GetAclsAclEntryList>(map['entryLists'], (value) => GetAclsAclEntryList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      ipVersion: (map['ipVersion'] as String).input(),
+      name: (map['name'] as String).input(),
+      relatedListeners: (pulumi.Input.decodeList<GetAclsAclRelatedListener>(map['relatedListeners'], (value) => GetAclsAclRelatedListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

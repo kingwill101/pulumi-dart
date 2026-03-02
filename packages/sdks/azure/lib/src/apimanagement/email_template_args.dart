@@ -27,17 +27,12 @@ class EmailTemplateArgs {
   /// [subject] The subject of the Email.
   /// [templateName] The name of the Email Template. Possible values are `AccountClosedDeveloper`, `ApplicationApprovedNotificationMessage`, `ConfirmSignUpIdentityDefault`, `EmailChangeIdentityDefault`, `InviteUserNotificationMessage`, `NewCommentNotificationMessage`, `NewDeveloperNotificationMessage`, `NewIssueNotificationMessage`, `PasswordResetByAdminNotificationMessage`, `PasswordResetIdentityDefault`, `PurchaseDeveloperNotificationMessage`, `QuotaLimitApproachingDeveloperNotificationMessage`, `RejectDeveloperNotificationMessage`, `RequestDeveloperNotificationMessage`. Changing this forces a new API Management Email Template to be created.
   EmailTemplateArgs({
-    required pulumi.Output<String> apiManagementName,
-    required pulumi.Output<String> body,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> subject,
-    required pulumi.Output<String> templateName,
-  }) :
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      body = pulumi.Input.asInput<String>(body),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subject = pulumi.Input.asInput<String>(subject),
-      templateName = pulumi.Input.asInput<String>(templateName);
+    required this.apiManagementName,
+    required this.body,
+    required this.resourceGroupName,
+    required this.subject,
+    required this.templateName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class EmailTemplateArgs {
 
   factory EmailTemplateArgs.fromMap(Map<String, dynamic> map) {
     return EmailTemplateArgs(
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      body: pulumi.Output.create<String>(map['body'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subject: pulumi.Output.create<String>(map['subject'] as String),
-      templateName: pulumi.Output.create<String>(map['templateName'] as String),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      body: (map['body'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      templateName: (map['templateName'] as String).input(),
     );
   }
 }

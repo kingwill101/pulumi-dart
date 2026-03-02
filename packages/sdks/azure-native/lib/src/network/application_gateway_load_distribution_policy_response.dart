@@ -6,19 +6,19 @@ import 'application_gateway_load_distribution_target_response.dart';
 /// Load Distribution Policy of an application gateway.
 class ApplicationGatewayLoadDistributionPolicyResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Load Distribution Targets resource of an application gateway.
-  final String? loadDistributionAlgorithm;
+  final pulumi.Input<String>? loadDistributionAlgorithm;
   /// Load Distribution Targets resource of an application gateway.
-  final List<ApplicationGatewayLoadDistributionTargetResponse>? loadDistributionTargets;
+  final pulumi.Input<List<ApplicationGatewayLoadDistributionTargetResponse>>? loadDistributionTargets;
   /// Name of the load distribution policy that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the Load Distribution Policy resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Type of the resource.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ApplicationGatewayLoadDistributionPolicyResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.
@@ -43,7 +43,7 @@ class ApplicationGatewayLoadDistributionPolicyResponse {
       'etag': etag,
       'id': ?id,
       'loadDistributionAlgorithm': ?loadDistributionAlgorithm,
-      'loadDistributionTargets': ?loadDistributionTargets == null ? null : pulumi.Input.encodeList<ApplicationGatewayLoadDistributionTargetResponse, Map<String, dynamic>>(loadDistributionTargets!, (value) => value.toMap()),
+      'loadDistributionTargets': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayLoadDistributionTargetResponse>, List<Map<String, dynamic>>>(loadDistributionTargets, (value) => pulumi.Input.encodeList<ApplicationGatewayLoadDistributionTargetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'provisioningState': provisioningState,
       'type': type,
@@ -52,13 +52,13 @@ class ApplicationGatewayLoadDistributionPolicyResponse {
 
   factory ApplicationGatewayLoadDistributionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayLoadDistributionPolicyResponse(
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      loadDistributionAlgorithm: map['loadDistributionAlgorithm'] == null ? null : map['loadDistributionAlgorithm'] as String,
-      loadDistributionTargets: map['loadDistributionTargets'] == null ? null : pulumi.Input.decodeList<ApplicationGatewayLoadDistributionTargetResponse>(map['loadDistributionTargets'], (value) => ApplicationGatewayLoadDistributionTargetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      loadDistributionAlgorithm: map['loadDistributionAlgorithm'] == null ? null : (map['loadDistributionAlgorithm'] as String).input(),
+      loadDistributionTargets: map['loadDistributionTargets'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayLoadDistributionTargetResponse>(map['loadDistributionTargets'], (value) => ApplicationGatewayLoadDistributionTargetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

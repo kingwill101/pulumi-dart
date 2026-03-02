@@ -9,60 +9,60 @@ import 'user_created_resource_tag.dart';
 /// InMageRcm specific enable protection input.
 class InMageRcmEnableProtectionInput {
   /// The default disk input.
-  final InMageRcmDisksDefaultInput? disksDefault;
+  final pulumi.Input<InMageRcmDisksDefaultInput>? disksDefault;
   /// The disks to include list.
-  final List<InMageRcmDiskInput>? disksToInclude;
+  final pulumi.Input<List<InMageRcmDiskInput>>? disksToInclude;
   /// The ARM Id of discovered machine.
-  final String fabricDiscoveryMachineId;
+  final pulumi.Input<String> fabricDiscoveryMachineId;
   /// The class type.
   /// Expected value is 'InMageRcm'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The license type.
-  final String? licenseType;
+  final pulumi.Input<String>? licenseType;
   /// The license type for Linux VM's.
-  final String? linuxLicenseType;
+  final pulumi.Input<String>? linuxLicenseType;
   /// The multi VM group name.
-  final String? multiVmGroupName;
+  final pulumi.Input<String>? multiVmGroupName;
   /// The process server Id.
-  final String processServerId;
+  final pulumi.Input<String> processServerId;
   /// The run-as account Id.
-  final String? runAsAccountId;
+  final pulumi.Input<String>? runAsAccountId;
   /// The tags for the seed managed disks.
-  final List<UserCreatedResourceTag>? seedManagedDiskTags;
+  final pulumi.Input<List<UserCreatedResourceTag>>? seedManagedDiskTags;
   /// The SQL Server license type.
-  final String? sqlServerLicenseType;
+  final pulumi.Input<String>? sqlServerLicenseType;
   /// The target availability set ARM Id.
-  final String? targetAvailabilitySetId;
+  final pulumi.Input<String>? targetAvailabilitySetId;
   /// The target availability zone.
-  final String? targetAvailabilityZone;
+  final pulumi.Input<String>? targetAvailabilityZone;
   /// The target boot diagnostics storage account ARM Id.
-  final String? targetBootDiagnosticsStorageAccountId;
+  final pulumi.Input<String>? targetBootDiagnosticsStorageAccountId;
   /// The tags for the target managed disks.
-  final List<UserCreatedResourceTag>? targetManagedDiskTags;
+  final pulumi.Input<List<UserCreatedResourceTag>>? targetManagedDiskTags;
   /// The selected target network ARM Id.
-  final String? targetNetworkId;
+  final pulumi.Input<String>? targetNetworkId;
   /// The tags for the target NICs.
-  final List<UserCreatedResourceTag>? targetNicTags;
+  final pulumi.Input<List<UserCreatedResourceTag>>? targetNicTags;
   /// The target proximity placement group Id.
-  final String? targetProximityPlacementGroupId;
+  final pulumi.Input<String>? targetProximityPlacementGroupId;
   /// The target resource group ARM Id.
-  final String targetResourceGroupId;
+  final pulumi.Input<String> targetResourceGroupId;
   /// The selected target subnet name.
-  final String? targetSubnetName;
+  final pulumi.Input<String>? targetSubnetName;
   /// The target VM name.
-  final String? targetVmName;
+  final pulumi.Input<String>? targetVmName;
   /// The target VM security profile.
-  final SecurityProfileProperties? targetVmSecurityProfile;
+  final pulumi.Input<SecurityProfileProperties>? targetVmSecurityProfile;
   /// The target VM size.
-  final String? targetVmSize;
+  final pulumi.Input<String>? targetVmSize;
   /// The target VM tags.
-  final List<UserCreatedResourceTag>? targetVmTags;
+  final pulumi.Input<List<UserCreatedResourceTag>>? targetVmTags;
   /// The selected test network ARM Id.
-  final String? testNetworkId;
+  final pulumi.Input<String>? testNetworkId;
   /// The selected test subnet name.
-  final String? testSubnetName;
+  final pulumi.Input<String>? testSubnetName;
   /// The OS name selected by user.
-  final String? userSelectedOSName;
+  final pulumi.Input<String>? userSelectedOSName;
 
   /// Creates a new [InMageRcmEnableProtectionInput].
   /// [disksDefault] The default disk input.
@@ -124,8 +124,8 @@ class InMageRcmEnableProtectionInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disksDefault': ?disksDefault == null ? null : disksDefault!.toMap(),
-      'disksToInclude': ?disksToInclude == null ? null : pulumi.Input.encodeList<InMageRcmDiskInput, Map<String, dynamic>>(disksToInclude!, (value) => value.toMap()),
+      'disksDefault': ?pulumi.Input.mapOptionalInputValue<InMageRcmDisksDefaultInput, Map<String, dynamic>>(disksDefault, (value) => value.toMap()),
+      'disksToInclude': ?pulumi.Input.mapOptionalInputValue<List<InMageRcmDiskInput>, List<Map<String, dynamic>>>(disksToInclude, (value) => pulumi.Input.encodeList<InMageRcmDiskInput, Map<String, dynamic>>(value, (value) => value.toMap())),
       'fabricDiscoveryMachineId': fabricDiscoveryMachineId,
       'instanceType': instanceType,
       'licenseType': ?licenseType,
@@ -133,21 +133,21 @@ class InMageRcmEnableProtectionInput {
       'multiVmGroupName': ?multiVmGroupName,
       'processServerId': processServerId,
       'runAsAccountId': ?runAsAccountId,
-      'seedManagedDiskTags': ?seedManagedDiskTags == null ? null : pulumi.Input.encodeList<UserCreatedResourceTag, Map<String, dynamic>>(seedManagedDiskTags!, (value) => value.toMap()),
+      'seedManagedDiskTags': ?pulumi.Input.mapOptionalInputValue<List<UserCreatedResourceTag>, List<Map<String, dynamic>>>(seedManagedDiskTags, (value) => pulumi.Input.encodeList<UserCreatedResourceTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sqlServerLicenseType': ?sqlServerLicenseType,
       'targetAvailabilitySetId': ?targetAvailabilitySetId,
       'targetAvailabilityZone': ?targetAvailabilityZone,
       'targetBootDiagnosticsStorageAccountId': ?targetBootDiagnosticsStorageAccountId,
-      'targetManagedDiskTags': ?targetManagedDiskTags == null ? null : pulumi.Input.encodeList<UserCreatedResourceTag, Map<String, dynamic>>(targetManagedDiskTags!, (value) => value.toMap()),
+      'targetManagedDiskTags': ?pulumi.Input.mapOptionalInputValue<List<UserCreatedResourceTag>, List<Map<String, dynamic>>>(targetManagedDiskTags, (value) => pulumi.Input.encodeList<UserCreatedResourceTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetNetworkId': ?targetNetworkId,
-      'targetNicTags': ?targetNicTags == null ? null : pulumi.Input.encodeList<UserCreatedResourceTag, Map<String, dynamic>>(targetNicTags!, (value) => value.toMap()),
+      'targetNicTags': ?pulumi.Input.mapOptionalInputValue<List<UserCreatedResourceTag>, List<Map<String, dynamic>>>(targetNicTags, (value) => pulumi.Input.encodeList<UserCreatedResourceTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetProximityPlacementGroupId': ?targetProximityPlacementGroupId,
       'targetResourceGroupId': targetResourceGroupId,
       'targetSubnetName': ?targetSubnetName,
       'targetVmName': ?targetVmName,
-      'targetVmSecurityProfile': ?targetVmSecurityProfile == null ? null : targetVmSecurityProfile!.toMap(),
+      'targetVmSecurityProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfileProperties, Map<String, dynamic>>(targetVmSecurityProfile, (value) => value.toMap()),
       'targetVmSize': ?targetVmSize,
-      'targetVmTags': ?targetVmTags == null ? null : pulumi.Input.encodeList<UserCreatedResourceTag, Map<String, dynamic>>(targetVmTags!, (value) => value.toMap()),
+      'targetVmTags': ?pulumi.Input.mapOptionalInputValue<List<UserCreatedResourceTag>, List<Map<String, dynamic>>>(targetVmTags, (value) => pulumi.Input.encodeList<UserCreatedResourceTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'testNetworkId': ?testNetworkId,
       'testSubnetName': ?testSubnetName,
       'userSelectedOSName': ?userSelectedOSName,
@@ -156,33 +156,33 @@ class InMageRcmEnableProtectionInput {
 
   factory InMageRcmEnableProtectionInput.fromMap(Map<String, dynamic> map) {
     return InMageRcmEnableProtectionInput(
-      disksDefault: map['disksDefault'] == null ? null : InMageRcmDisksDefaultInput.fromMap((map['disksDefault'] as Map).cast<String, dynamic>()),
-      disksToInclude: map['disksToInclude'] == null ? null : pulumi.Input.decodeList<InMageRcmDiskInput>(map['disksToInclude'], (value) => InMageRcmDiskInput.fromMap((value as Map).cast<String, dynamic>())),
-      fabricDiscoveryMachineId: map['fabricDiscoveryMachineId'] as String,
-      instanceType: map['instanceType'] as String,
-      licenseType: map['licenseType'] == null ? null : map['licenseType'] as String,
-      linuxLicenseType: map['linuxLicenseType'] == null ? null : map['linuxLicenseType'] as String,
-      multiVmGroupName: map['multiVmGroupName'] == null ? null : map['multiVmGroupName'] as String,
-      processServerId: map['processServerId'] as String,
-      runAsAccountId: map['runAsAccountId'] == null ? null : map['runAsAccountId'] as String,
-      seedManagedDiskTags: map['seedManagedDiskTags'] == null ? null : pulumi.Input.decodeList<UserCreatedResourceTag>(map['seedManagedDiskTags'], (value) => UserCreatedResourceTag.fromMap((value as Map).cast<String, dynamic>())),
-      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : map['sqlServerLicenseType'] as String,
-      targetAvailabilitySetId: map['targetAvailabilitySetId'] == null ? null : map['targetAvailabilitySetId'] as String,
-      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : map['targetAvailabilityZone'] as String,
-      targetBootDiagnosticsStorageAccountId: map['targetBootDiagnosticsStorageAccountId'] == null ? null : map['targetBootDiagnosticsStorageAccountId'] as String,
-      targetManagedDiskTags: map['targetManagedDiskTags'] == null ? null : pulumi.Input.decodeList<UserCreatedResourceTag>(map['targetManagedDiskTags'], (value) => UserCreatedResourceTag.fromMap((value as Map).cast<String, dynamic>())),
-      targetNetworkId: map['targetNetworkId'] == null ? null : map['targetNetworkId'] as String,
-      targetNicTags: map['targetNicTags'] == null ? null : pulumi.Input.decodeList<UserCreatedResourceTag>(map['targetNicTags'], (value) => UserCreatedResourceTag.fromMap((value as Map).cast<String, dynamic>())),
-      targetProximityPlacementGroupId: map['targetProximityPlacementGroupId'] == null ? null : map['targetProximityPlacementGroupId'] as String,
-      targetResourceGroupId: map['targetResourceGroupId'] as String,
-      targetSubnetName: map['targetSubnetName'] == null ? null : map['targetSubnetName'] as String,
-      targetVmName: map['targetVmName'] == null ? null : map['targetVmName'] as String,
-      targetVmSecurityProfile: map['targetVmSecurityProfile'] == null ? null : SecurityProfileProperties.fromMap((map['targetVmSecurityProfile'] as Map).cast<String, dynamic>()),
-      targetVmSize: map['targetVmSize'] == null ? null : map['targetVmSize'] as String,
-      targetVmTags: map['targetVmTags'] == null ? null : pulumi.Input.decodeList<UserCreatedResourceTag>(map['targetVmTags'], (value) => UserCreatedResourceTag.fromMap((value as Map).cast<String, dynamic>())),
-      testNetworkId: map['testNetworkId'] == null ? null : map['testNetworkId'] as String,
-      testSubnetName: map['testSubnetName'] == null ? null : map['testSubnetName'] as String,
-      userSelectedOSName: map['userSelectedOSName'] == null ? null : map['userSelectedOSName'] as String,
+      disksDefault: map['disksDefault'] == null ? null : (InMageRcmDisksDefaultInput.fromMap((map['disksDefault'] as Map).cast<String, dynamic>())).input(),
+      disksToInclude: map['disksToInclude'] == null ? null : (pulumi.Input.decodeList<InMageRcmDiskInput>(map['disksToInclude'], (value) => InMageRcmDiskInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fabricDiscoveryMachineId: (map['fabricDiscoveryMachineId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      linuxLicenseType: map['linuxLicenseType'] == null ? null : (map['linuxLicenseType'] as String).input(),
+      multiVmGroupName: map['multiVmGroupName'] == null ? null : (map['multiVmGroupName'] as String).input(),
+      processServerId: (map['processServerId'] as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
+      seedManagedDiskTags: map['seedManagedDiskTags'] == null ? null : (pulumi.Input.decodeList<UserCreatedResourceTag>(map['seedManagedDiskTags'], (value) => UserCreatedResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : (map['sqlServerLicenseType'] as String).input(),
+      targetAvailabilitySetId: map['targetAvailabilitySetId'] == null ? null : (map['targetAvailabilitySetId'] as String).input(),
+      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : (map['targetAvailabilityZone'] as String).input(),
+      targetBootDiagnosticsStorageAccountId: map['targetBootDiagnosticsStorageAccountId'] == null ? null : (map['targetBootDiagnosticsStorageAccountId'] as String).input(),
+      targetManagedDiskTags: map['targetManagedDiskTags'] == null ? null : (pulumi.Input.decodeList<UserCreatedResourceTag>(map['targetManagedDiskTags'], (value) => UserCreatedResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetNetworkId: map['targetNetworkId'] == null ? null : (map['targetNetworkId'] as String).input(),
+      targetNicTags: map['targetNicTags'] == null ? null : (pulumi.Input.decodeList<UserCreatedResourceTag>(map['targetNicTags'], (value) => UserCreatedResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetProximityPlacementGroupId: map['targetProximityPlacementGroupId'] == null ? null : (map['targetProximityPlacementGroupId'] as String).input(),
+      targetResourceGroupId: (map['targetResourceGroupId'] as String).input(),
+      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName'] as String).input(),
+      targetVmName: map['targetVmName'] == null ? null : (map['targetVmName'] as String).input(),
+      targetVmSecurityProfile: map['targetVmSecurityProfile'] == null ? null : (SecurityProfileProperties.fromMap((map['targetVmSecurityProfile'] as Map).cast<String, dynamic>())).input(),
+      targetVmSize: map['targetVmSize'] == null ? null : (map['targetVmSize'] as String).input(),
+      targetVmTags: map['targetVmTags'] == null ? null : (pulumi.Input.decodeList<UserCreatedResourceTag>(map['targetVmTags'], (value) => UserCreatedResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testNetworkId: map['testNetworkId'] == null ? null : (map['testNetworkId'] as String).input(),
+      testSubnetName: map['testSubnetName'] == null ? null : (map['testSubnetName'] as String).input(),
+      userSelectedOSName: map['userSelectedOSName'] == null ? null : (map['userSelectedOSName'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetTopicIamPolicyPubsubV1beta2Args {
   /// [project] Optional.
   /// [topicId] Required.
   GetTopicIamPolicyPubsubV1beta2Args({
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> topicId,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      topicId = pulumi.Input.asInput<String>(topicId);
+    this.optionsRequestedPolicyVersion,
+    this.project,
+    required this.topicId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetTopicIamPolicyPubsubV1beta2Args {
 
   factory GetTopicIamPolicyPubsubV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetTopicIamPolicyPubsubV1beta2Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      topicId: pulumi.Output.create<String>(map['topicId'] as String),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      topicId: (map['topicId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoggerApplicationInsights {
   /// The connection string of Application Insights.
-  final String? connectionString;
+  final pulumi.Input<String>? connectionString;
   /// The instrumentation key used to push data to Application Insights.
   ///
   /// > **Note:** Either `connection_string` or `instrumentation_key` have to be specified.
-  final String? instrumentationKey;
+  final pulumi.Input<String>? instrumentationKey;
 
   /// Creates a new [LoggerApplicationInsights].
   /// [connectionString] The connection string of Application Insights.
@@ -26,8 +27,8 @@ class LoggerApplicationInsights {
 
   factory LoggerApplicationInsights.fromMap(Map<String, dynamic> map) {
     return LoggerApplicationInsights(
-      connectionString: map['connectionString'] == null ? null : map['connectionString'] as String,
-      instrumentationKey: map['instrumentationKey'] == null ? null : map['instrumentationKey'] as String,
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      instrumentationKey: map['instrumentationKey'] == null ? null : (map['instrumentationKey'] as String).input(),
     );
   }
 }

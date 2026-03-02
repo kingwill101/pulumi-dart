@@ -22,15 +22,11 @@ class GetScriptArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scriptName] The name of the Kusto database script.
   GetScriptArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scriptName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scriptName = pulumi.Input.asInput<String>(scriptName);
+    required this.clusterName,
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.scriptName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetScriptArgs {
 
   factory GetScriptArgs.fromMap(Map<String, dynamic> map) {
     return GetScriptArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scriptName: pulumi.Output.create<String>(map['scriptName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scriptName: (map['scriptName'] as String).input(),
     );
   }
 }

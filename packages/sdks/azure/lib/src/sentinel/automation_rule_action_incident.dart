@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleActionIncident {
   /// The classification of the incident, when closing it. Possible values are: `BenignPositive_SuspiciousButExpected`, `FalsePositive_InaccurateData`, `FalsePositive_IncorrectAlertLogic`, `TruePositive_SuspiciousActivity` and `Undetermined`.
   ///
   /// > **Note:** The `classification` is required when `status` is `Closed`.
-  final String? classification;
+  final pulumi.Input<String>? classification;
   /// The comment why the incident is to be closed.
   ///
   /// > **Note:** The `classification_comment` is allowed to set only when `status` is `Closed`.
-  final String? classificationComment;
+  final pulumi.Input<String>? classificationComment;
   /// Specifies a list of labels to add to the incident.
-  final List<String>? labels;
+  final pulumi.Input<List<String>>? labels;
   /// The execution order of this action.
-  final int order;
+  final pulumi.Input<int> order;
   /// The object ID of the entity this incident is assigned to.
-  final String? ownerId;
+  final pulumi.Input<String>? ownerId;
   /// The severity to add to the incident. Possible values are `High`, `Informational`, `Low` and `Medium`.
   ///
   /// > **Note:** At least one of `status`, `labels`, `owner_id` and `severity` has to be set.
-  final String? severity;
+  final pulumi.Input<String>? severity;
   /// The status to set to the incident. Possible values are: `Active`, `Closed`, `New`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [AutomationRuleActionIncident].
   /// [classification] The classification of the incident, when closing it. Possible values are: `BenignPositive_SuspiciousButExpected`, `FalsePositive_InaccurateData`, `FalsePositive_IncorrectAlertLogic`, `TruePositive_SuspiciousActivity` and `Undetermined`.
@@ -55,13 +56,13 @@ class AutomationRuleActionIncident {
 
   factory AutomationRuleActionIncident.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionIncident(
-      classification: map['classification'] == null ? null : map['classification'] as String,
-      classificationComment: map['classificationComment'] == null ? null : map['classificationComment'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as List).cast<String>(),
-      order: map['order'] as int,
-      ownerId: map['ownerId'] == null ? null : map['ownerId'] as String,
-      severity: map['severity'] == null ? null : map['severity'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      classification: map['classification'] == null ? null : (map['classification'] as String).input(),
+      classificationComment: map['classificationComment'] == null ? null : (map['classificationComment'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      order: (map['order'] as int).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

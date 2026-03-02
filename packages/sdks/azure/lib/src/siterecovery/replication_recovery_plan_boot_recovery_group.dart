@@ -6,11 +6,11 @@ import 'replication_recovery_plan_boot_recovery_group_pre_action.dart';
 
 class ReplicationRecoveryPlanBootRecoveryGroup {
   /// one or more `action` block as defined below. which will be executed after the group recovery.
-  final List<ReplicationRecoveryPlanBootRecoveryGroupPostAction>? postActions;
+  final pulumi.Input<List<ReplicationRecoveryPlanBootRecoveryGroupPostAction>>? postActions;
   /// one or more `action` block as defined below. which will be executed before the group recovery.
-  final List<ReplicationRecoveryPlanBootRecoveryGroupPreAction>? preActions;
+  final pulumi.Input<List<ReplicationRecoveryPlanBootRecoveryGroupPreAction>>? preActions;
   /// One or more protected VM IDs.
-  final List<String>? replicatedProtectedItems;
+  final pulumi.Input<List<String>>? replicatedProtectedItems;
 
   /// Creates a new [ReplicationRecoveryPlanBootRecoveryGroup].
   /// [postActions] one or more `action` block as defined below. which will be executed after the group recovery.
@@ -24,17 +24,17 @@ class ReplicationRecoveryPlanBootRecoveryGroup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postActions': ?postActions == null ? null : pulumi.Input.encodeList<ReplicationRecoveryPlanBootRecoveryGroupPostAction, Map<String, dynamic>>(postActions!, (value) => value.toMap()),
-      'preActions': ?preActions == null ? null : pulumi.Input.encodeList<ReplicationRecoveryPlanBootRecoveryGroupPreAction, Map<String, dynamic>>(preActions!, (value) => value.toMap()),
+      'postActions': ?pulumi.Input.mapOptionalInputValue<List<ReplicationRecoveryPlanBootRecoveryGroupPostAction>, List<Map<String, dynamic>>>(postActions, (value) => pulumi.Input.encodeList<ReplicationRecoveryPlanBootRecoveryGroupPostAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'preActions': ?pulumi.Input.mapOptionalInputValue<List<ReplicationRecoveryPlanBootRecoveryGroupPreAction>, List<Map<String, dynamic>>>(preActions, (value) => pulumi.Input.encodeList<ReplicationRecoveryPlanBootRecoveryGroupPreAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'replicatedProtectedItems': ?replicatedProtectedItems,
     };
   }
 
   factory ReplicationRecoveryPlanBootRecoveryGroup.fromMap(Map<String, dynamic> map) {
     return ReplicationRecoveryPlanBootRecoveryGroup(
-      postActions: map['postActions'] == null ? null : pulumi.Input.decodeList<ReplicationRecoveryPlanBootRecoveryGroupPostAction>(map['postActions'], (value) => ReplicationRecoveryPlanBootRecoveryGroupPostAction.fromMap((value as Map).cast<String, dynamic>())),
-      preActions: map['preActions'] == null ? null : pulumi.Input.decodeList<ReplicationRecoveryPlanBootRecoveryGroupPreAction>(map['preActions'], (value) => ReplicationRecoveryPlanBootRecoveryGroupPreAction.fromMap((value as Map).cast<String, dynamic>())),
-      replicatedProtectedItems: map['replicatedProtectedItems'] == null ? null : (map['replicatedProtectedItems'] as List).cast<String>(),
+      postActions: map['postActions'] == null ? null : (pulumi.Input.decodeList<ReplicationRecoveryPlanBootRecoveryGroupPostAction>(map['postActions'], (value) => ReplicationRecoveryPlanBootRecoveryGroupPostAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      preActions: map['preActions'] == null ? null : (pulumi.Input.decodeList<ReplicationRecoveryPlanBootRecoveryGroupPreAction>(map['preActions'], (value) => ReplicationRecoveryPlanBootRecoveryGroupPreAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicatedProtectedItems: map['replicatedProtectedItems'] == null ? null : ((map['replicatedProtectedItems'] as List).cast<String>()).input(),
     );
   }
 }

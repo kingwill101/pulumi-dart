@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton {
   /// Text that appears on the button. Use this to tell the user what value is returned when they choose this button.
-  final String text;
+  final pulumi.Input<String> text;
   /// Value returned to Amazon Lex when the user chooses this button. This must be one of the slot values configured for the slot.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton].
   /// [text] Text that appears on the button. Use this to tell the user what value is returned when they choose this button.
@@ -24,8 +25,8 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSucce
 
   factory V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton(
-      text: map['text'] as String,
-      value: map['value'] as String,
+      text: (map['text'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

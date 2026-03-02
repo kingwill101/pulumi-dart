@@ -25,17 +25,12 @@ class InventoryItemArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [vmmServerName] Name of the VMMServer.
   InventoryItemArgs({
-    pulumi.Output<String>? inventoryItemName,
-    required pulumi.Output<String> inventoryType,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vmmServerName,
-  }) :
-      inventoryItemName = pulumi.Input.asOptionalInput<String>(inventoryItemName),
-      inventoryType = pulumi.Input.asInput<String>(inventoryType),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmmServerName = pulumi.Input.asInput<String>(vmmServerName);
+    this.inventoryItemName,
+    required this.inventoryType,
+    this.kind,
+    required this.resourceGroupName,
+    required this.vmmServerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class InventoryItemArgs {
 
   factory InventoryItemArgs.fromMap(Map<String, dynamic> map) {
     return InventoryItemArgs(
-      inventoryItemName: map['inventoryItemName'] == null ? null : pulumi.Output.create<String>(map['inventoryItemName'] as String),
-      inventoryType: pulumi.Output.create<String>(map['inventoryType'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmmServerName: pulumi.Output.create<String>(map['vmmServerName'] as String),
+      inventoryItemName: map['inventoryItemName'] == null ? null : (map['inventoryItemName'] as String).input(),
+      inventoryType: (map['inventoryType'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmmServerName: (map['vmmServerName'] as String).input(),
     );
   }
 }

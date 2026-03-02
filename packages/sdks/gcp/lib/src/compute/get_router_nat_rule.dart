@@ -5,9 +5,9 @@ import 'get_router_nat_rule_action.dart';
 
 class GetRouterNatRule {
   /// The action to be enforced for traffic that matches this rule.
-  final List<GetRouterNatRuleAction> actions;
+  final pulumi.Input<List<GetRouterNatRuleAction>> actions;
   /// An optional description of this rule.
-  final String description;
+  final pulumi.Input<String> description;
   /// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
   /// If it evaluates to true, the corresponding action is enforced.
   ///
@@ -20,10 +20,10 @@ class GetRouterNatRule {
   /// The following example is a valid match expression for private NAT:
   ///
   /// "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
-  final String match;
+  final pulumi.Input<String> match;
   /// An integer uniquely identifying a rule in the list.
   /// The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
-  final int ruleNumber;
+  final pulumi.Input<int> ruleNumber;
 
   /// Creates a new [GetRouterNatRule].
   /// [actions] The action to be enforced for traffic that matches this rule.
@@ -39,7 +39,7 @@ class GetRouterNatRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.encodeList<GetRouterNatRuleAction, Map<String, dynamic>>(actions, (value) => value.toMap()),
+      'actions': pulumi.Input.mapInputValue<List<GetRouterNatRuleAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<GetRouterNatRuleAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': description,
       'match': match,
       'ruleNumber': ruleNumber,
@@ -48,10 +48,10 @@ class GetRouterNatRule {
 
   factory GetRouterNatRule.fromMap(Map<String, dynamic> map) {
     return GetRouterNatRule(
-      actions: pulumi.Input.decodeList<GetRouterNatRuleAction>(map['actions'], (value) => GetRouterNatRuleAction.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] as String,
-      match: map['match'] as String,
-      ruleNumber: map['ruleNumber'] as int,
+      actions: (pulumi.Input.decodeList<GetRouterNatRuleAction>(map['actions'], (value) => GetRouterNatRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: (map['description'] as String).input(),
+      match: (map['match'] as String).input(),
+      ruleNumber: (map['ruleNumber'] as int).input(),
     );
   }
 }

@@ -39,25 +39,16 @@ class ActivityLogAlertArgs {
   /// [scopes] A list of resource IDs that will be used as prefixes. The alert will only apply to Activity Log events with resource IDs that fall under one of these prefixes. This list must include at least one item.
   /// [tags] The tags of the resource.
   ActivityLogAlertArgs({
-    required pulumi.Output<ActionList> actions,
-    pulumi.Output<String>? activityLogAlertName,
-    required pulumi.Output<AlertRuleAllOfCondition> condition,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<String>> scopes,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      actions = pulumi.Input.asInput<ActionList>(actions),
-      activityLogAlertName = pulumi.Input.asOptionalInput<String>(activityLogAlertName),
-      condition = pulumi.Input.asInput<AlertRuleAllOfCondition>(condition),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopes = pulumi.Input.asInput<List<String>>(scopes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.actions,
+    this.activityLogAlertName,
+    required this.condition,
+    this.description,
+    this.enabled,
+    this.location,
+    required this.resourceGroupName,
+    required this.scopes,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ActivityLogAlertArgs {
 
   factory ActivityLogAlertArgs.fromMap(Map<String, dynamic> map) {
     return ActivityLogAlertArgs(
-      actions: pulumi.Output.create<ActionList>(ActionList.fromMap((map['actions'] as Map).cast<String, dynamic>())),
-      activityLogAlertName: map['activityLogAlertName'] == null ? null : pulumi.Output.create<String>(map['activityLogAlertName'] as String),
-      condition: pulumi.Output.create<AlertRuleAllOfCondition>(AlertRuleAllOfCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopes: pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      actions: (ActionList.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
+      activityLogAlertName: map['activityLogAlertName'] == null ? null : (map['activityLogAlertName'] as String).input(),
+      condition: (AlertRuleAllOfCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

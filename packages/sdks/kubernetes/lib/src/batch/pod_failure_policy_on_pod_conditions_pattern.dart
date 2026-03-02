@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PodFailurePolicyOnPodConditionsPattern describes a pattern for matching an actual pod condition type.
 class PodFailurePolicyOnPodConditionsPattern {
   /// Specifies the required Pod condition status. To match a pod condition it is required that the specified status equals the pod condition status. Defaults to True.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Specifies the required Pod condition type. To match a pod condition it is required that specified type equals the pod condition type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PodFailurePolicyOnPodConditionsPattern].
   /// [status] Specifies the required Pod condition status. To match a pod condition it is required that the specified status equals the pod condition status. Defaults to True.
@@ -25,8 +26,8 @@ class PodFailurePolicyOnPodConditionsPattern {
 
   factory PodFailurePolicyOnPodConditionsPattern.fromMap(Map<String, dynamic> map) {
     return PodFailurePolicyOnPodConditionsPattern(
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

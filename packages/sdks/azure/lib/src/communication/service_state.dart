@@ -34,25 +34,16 @@ class ServiceState {
   /// [secondaryKey] The secondary key of the Communication Service.
   /// [tags] A mapping of tags which should be assigned to the Communication Service.
   ServiceState({
-    pulumi.Output<String>? dataLocation,
-    pulumi.Output<String>? hostname,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? primaryConnectionString,
-    pulumi.Output<String>? primaryKey,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? secondaryConnectionString,
-    pulumi.Output<String>? secondaryKey,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dataLocation = pulumi.Input.asOptionalInput<String>(dataLocation),
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryConnectionString = pulumi.Input.asOptionalInput<String>(primaryConnectionString),
-      primaryKey = pulumi.Input.asOptionalInput<String>(primaryKey),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      secondaryConnectionString = pulumi.Input.asOptionalInput<String>(secondaryConnectionString),
-      secondaryKey = pulumi.Input.asOptionalInput<String>(secondaryKey),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dataLocation,
+    this.hostname,
+    this.name,
+    this.primaryConnectionString,
+    this.primaryKey,
+    this.resourceGroupName,
+    this.secondaryConnectionString,
+    this.secondaryKey,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      dataLocation: map['dataLocation'] == null ? null : pulumi.Output.create<String>(map['dataLocation'] as String),
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : pulumi.Output.create<String>(map['primaryConnectionString'] as String),
-      primaryKey: map['primaryKey'] == null ? null : pulumi.Output.create<String>(map['primaryKey'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : pulumi.Output.create<String>(map['secondaryConnectionString'] as String),
-      secondaryKey: map['secondaryKey'] == null ? null : pulumi.Output.create<String>(map['secondaryKey'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dataLocation: map['dataLocation'] == null ? null : (map['dataLocation'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

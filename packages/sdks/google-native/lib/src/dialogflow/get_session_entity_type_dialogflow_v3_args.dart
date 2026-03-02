@@ -22,19 +22,13 @@ class GetSessionEntityTypeDialogflowV3Args {
   /// [project] Optional.
   /// [sessionId] Required.
   GetSessionEntityTypeDialogflowV3Args({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<String> entityTypeId,
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sessionId,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sessionId = pulumi.Input.asInput<String>(sessionId);
+    required this.agentId,
+    required this.entityTypeId,
+    required this.environmentId,
+    required this.location,
+    this.project,
+    required this.sessionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,12 +43,12 @@ class GetSessionEntityTypeDialogflowV3Args {
 
   factory GetSessionEntityTypeDialogflowV3Args.fromMap(Map<String, dynamic> map) {
     return GetSessionEntityTypeDialogflowV3Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      entityTypeId: pulumi.Output.create<String>(map['entityTypeId'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sessionId: pulumi.Output.create<String>(map['sessionId'] as String),
+      agentId: (map['agentId'] as String).input(),
+      entityTypeId: (map['entityTypeId'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sessionId: (map['sessionId'] as String).input(),
     );
   }
 }

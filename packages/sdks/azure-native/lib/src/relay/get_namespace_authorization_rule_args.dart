@@ -19,13 +19,10 @@ class GetNamespaceAuthorizationRuleArgs {
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNamespaceAuthorizationRuleArgs({
-    required pulumi.Output<String> authorizationRuleName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authorizationRuleName = pulumi.Input.asInput<String>(authorizationRuleName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.authorizationRuleName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNamespaceAuthorizationRuleArgs {
 
   factory GetNamespaceAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceAuthorizationRuleArgs(
-      authorizationRuleName: pulumi.Output.create<String>(map['authorizationRuleName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authorizationRuleName: (map['authorizationRuleName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

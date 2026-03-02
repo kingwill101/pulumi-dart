@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Virtual Enclave Default Settings
 class EnclaveDefaultSettingsModelResponse {
   /// Diagnostic Destination.
-  final String? diagnosticDestination;
+  final pulumi.Input<String>? diagnosticDestination;
   /// Key Vault Resource Id.
-  final String keyVaultResourceId;
+  final pulumi.Input<String> keyVaultResourceId;
   /// Log Analytics Resource Ids.
-  final List<String> logAnalyticsResourceIdCollection;
+  final pulumi.Input<List<String>> logAnalyticsResourceIdCollection;
   /// Storage Account Resource Id.
-  final String storageAccountResourceId;
+  final pulumi.Input<String> storageAccountResourceId;
 
   /// Creates a new [EnclaveDefaultSettingsModelResponse].
   /// [diagnosticDestination] Diagnostic Destination.
@@ -35,10 +36,10 @@ class EnclaveDefaultSettingsModelResponse {
 
   factory EnclaveDefaultSettingsModelResponse.fromMap(Map<String, dynamic> map) {
     return EnclaveDefaultSettingsModelResponse(
-      diagnosticDestination: map['diagnosticDestination'] == null ? null : map['diagnosticDestination'] as String,
-      keyVaultResourceId: map['keyVaultResourceId'] as String,
-      logAnalyticsResourceIdCollection: (map['logAnalyticsResourceIdCollection'] as List).cast<String>(),
-      storageAccountResourceId: map['storageAccountResourceId'] as String,
+      diagnosticDestination: map['diagnosticDestination'] == null ? null : (map['diagnosticDestination'] as String).input(),
+      keyVaultResourceId: (map['keyVaultResourceId'] as String).input(),
+      logAnalyticsResourceIdCollection: ((map['logAnalyticsResourceIdCollection'] as List).cast<String>()).input(),
+      storageAccountResourceId: (map['storageAccountResourceId'] as String).input(),
     );
   }
 }

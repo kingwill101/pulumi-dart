@@ -18,11 +18,9 @@ class GetAccountKeyArgs {
   /// [name] The name of the service account key. This must have format
   /// [publicKeyType] The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
   GetAccountKeyArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? publicKeyType,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      publicKeyType = pulumi.Input.asOptionalInput<String>(publicKeyType);
+    required this.name,
+    this.publicKeyType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetAccountKeyArgs {
 
   factory GetAccountKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountKeyArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      publicKeyType: map['publicKeyType'] == null ? null : pulumi.Output.create<String>(map['publicKeyType'] as String),
+      name: (map['name'] as String).input(),
+      publicKeyType: map['publicKeyType'] == null ? null : (map['publicKeyType'] as String).input(),
     );
   }
 }

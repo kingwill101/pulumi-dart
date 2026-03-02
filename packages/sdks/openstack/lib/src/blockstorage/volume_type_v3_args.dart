@@ -30,17 +30,12 @@ class VolumeTypeV3Args {
   /// [name] Name of the volume type.  Changing this
   /// [region] The region in which to create the volume. If
   VolumeTypeV3Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? extraSpecs,
-    pulumi.Output<bool>? isPublic,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      extraSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(extraSpecs),
-      isPublic = pulumi.Input.asOptionalInput<bool>(isPublic),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.description,
+    this.extraSpecs,
+    this.isPublic,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class VolumeTypeV3Args {
 
   factory VolumeTypeV3Args.fromMap(Map<String, dynamic> map) {
     return VolumeTypeV3Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      extraSpecs: map['extraSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['extraSpecs'] as Map).cast<String, String>()),
-      isPublic: map['isPublic'] == null ? null : pulumi.Output.create<bool>(map['isPublic'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      extraSpecs: map['extraSpecs'] == null ? null : ((map['extraSpecs'] as Map).cast<String, String>()).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

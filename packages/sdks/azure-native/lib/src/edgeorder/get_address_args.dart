@@ -16,11 +16,9 @@ class GetAddressArgs {
   /// [addressName] The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAddressArgs({
-    required pulumi.Output<String> addressName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      addressName = pulumi.Input.asInput<String>(addressName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.addressName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAddressArgs {
 
   factory GetAddressArgs.fromMap(Map<String, dynamic> map) {
     return GetAddressArgs(
-      addressName: pulumi.Output.create<String>(map['addressName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      addressName: (map['addressName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

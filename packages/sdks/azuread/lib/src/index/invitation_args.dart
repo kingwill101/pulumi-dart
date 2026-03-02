@@ -26,17 +26,12 @@ class InvitationArgs {
   /// [userEmailAddress] The email address of the user being invited.
   /// [userType] The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
   InvitationArgs({
-    pulumi.Output<InvitationMessage>? message,
-    required pulumi.Output<String> redirectUrl,
-    pulumi.Output<String>? userDisplayName,
-    required pulumi.Output<String> userEmailAddress,
-    pulumi.Output<String>? userType,
-  }) :
-      message = pulumi.Input.asOptionalInput<InvitationMessage>(message),
-      redirectUrl = pulumi.Input.asInput<String>(redirectUrl),
-      userDisplayName = pulumi.Input.asOptionalInput<String>(userDisplayName),
-      userEmailAddress = pulumi.Input.asInput<String>(userEmailAddress),
-      userType = pulumi.Input.asOptionalInput<String>(userType);
+    this.message,
+    required this.redirectUrl,
+    this.userDisplayName,
+    required this.userEmailAddress,
+    this.userType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class InvitationArgs {
 
   factory InvitationArgs.fromMap(Map<String, dynamic> map) {
     return InvitationArgs(
-      message: map['message'] == null ? null : pulumi.Output.create<InvitationMessage>(InvitationMessage.fromMap((map['message'] as Map).cast<String, dynamic>())),
-      redirectUrl: pulumi.Output.create<String>(map['redirectUrl'] as String),
-      userDisplayName: map['userDisplayName'] == null ? null : pulumi.Output.create<String>(map['userDisplayName'] as String),
-      userEmailAddress: pulumi.Output.create<String>(map['userEmailAddress'] as String),
-      userType: map['userType'] == null ? null : pulumi.Output.create<String>(map['userType'] as String),
+      message: map['message'] == null ? null : (InvitationMessage.fromMap((map['message'] as Map).cast<String, dynamic>())).input(),
+      redirectUrl: (map['redirectUrl'] as String).input(),
+      userDisplayName: map['userDisplayName'] == null ? null : (map['userDisplayName'] as String).input(),
+      userEmailAddress: (map['userEmailAddress'] as String).input(),
+      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
     );
   }
 }

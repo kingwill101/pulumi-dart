@@ -20,17 +20,12 @@ class GetPrivateCloudHcxActivationKeyIamPolicyArgs {
   /// [privateCloudId] Required.
   /// [project] Optional.
   GetPrivateCloudHcxActivationKeyIamPolicyArgs({
-    required pulumi.Output<String> hcxActivationKeyId,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    required pulumi.Output<String> privateCloudId,
-    pulumi.Output<String>? project,
-  }) :
-      hcxActivationKeyId = pulumi.Input.asInput<String>(hcxActivationKeyId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.hcxActivationKeyId,
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    required this.privateCloudId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetPrivateCloudHcxActivationKeyIamPolicyArgs {
 
   factory GetPrivateCloudHcxActivationKeyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudHcxActivationKeyIamPolicyArgs(
-      hcxActivationKeyId: pulumi.Output.create<String>(map['hcxActivationKeyId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      privateCloudId: pulumi.Output.create<String>(map['privateCloudId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      hcxActivationKeyId: (map['hcxActivationKeyId'] as String).input(),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      privateCloudId: (map['privateCloudId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

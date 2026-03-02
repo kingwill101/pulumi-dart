@@ -35,25 +35,16 @@ class EndpointAccessState {
   /// [vpcEndpoints] The connection endpoint for connecting to an Amazon Redshift cluster through the proxy. See details below.
   /// [vpcSecurityGroupIds] The security group that defines the ports, protocols, and sources for inbound traffic that you are authorizing into your endpoint.
   EndpointAccessState({
-    pulumi.Output<String>? address,
-    pulumi.Output<String>? clusterIdentifier,
-    pulumi.Output<String>? endpointName,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceOwner,
-    pulumi.Output<String>? subnetGroupName,
-    pulumi.Output<List<EndpointAccessVpcEndpoint>>? vpcEndpoints,
-    pulumi.Output<List<String>>? vpcSecurityGroupIds,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      clusterIdentifier = pulumi.Input.asOptionalInput<String>(clusterIdentifier),
-      endpointName = pulumi.Input.asOptionalInput<String>(endpointName),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceOwner = pulumi.Input.asOptionalInput<String>(resourceOwner),
-      subnetGroupName = pulumi.Input.asOptionalInput<String>(subnetGroupName),
-      vpcEndpoints = pulumi.Input.asOptionalInput<List<EndpointAccessVpcEndpoint>>(vpcEndpoints),
-      vpcSecurityGroupIds = pulumi.Input.asOptionalInput<List<String>>(vpcSecurityGroupIds);
+    this.address,
+    this.clusterIdentifier,
+    this.endpointName,
+    this.port,
+    this.region,
+    this.resourceOwner,
+    this.subnetGroupName,
+    this.vpcEndpoints,
+    this.vpcSecurityGroupIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class EndpointAccessState {
 
   factory EndpointAccessState.fromMap(Map<String, dynamic> map) {
     return EndpointAccessState(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      endpointName: map['endpointName'] == null ? null : pulumi.Output.create<String>(map['endpointName'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceOwner: map['resourceOwner'] == null ? null : pulumi.Output.create<String>(map['resourceOwner'] as String),
-      subnetGroupName: map['subnetGroupName'] == null ? null : pulumi.Output.create<String>(map['subnetGroupName'] as String),
-      vpcEndpoints: map['vpcEndpoints'] == null ? null : pulumi.Output.create<List<EndpointAccessVpcEndpoint>>(pulumi.Input.decodeList<EndpointAccessVpcEndpoint>(map['vpcEndpoints'], (value) => EndpointAccessVpcEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcSecurityGroupIds'] as List).cast<String>()),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
+      endpointName: map['endpointName'] == null ? null : (map['endpointName'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceOwner: map['resourceOwner'] == null ? null : (map['resourceOwner'] as String).input(),
+      subnetGroupName: map['subnetGroupName'] == null ? null : (map['subnetGroupName'] as String).input(),
+      vpcEndpoints: map['vpcEndpoints'] == null ? null : (pulumi.Input.decodeList<EndpointAccessVpcEndpoint>(map['vpcEndpoints'], (value) => EndpointAccessVpcEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
     );
   }
 }

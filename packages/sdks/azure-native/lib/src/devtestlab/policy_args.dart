@@ -46,31 +46,19 @@ class PolicyArgs {
   /// [tags] The tags of the resource.
   /// [threshold] The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
   PolicyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? evaluatorType,
-    pulumi.Output<String>? factData,
-    pulumi.Output<String>? factName,
-    required pulumi.Output<String> labName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> policySetName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? threshold,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      evaluatorType = pulumi.Input.asOptionalInput<String>(evaluatorType),
-      factData = pulumi.Input.asOptionalInput<String>(factData),
-      factName = pulumi.Input.asOptionalInput<String>(factName),
-      labName = pulumi.Input.asInput<String>(labName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policySetName = pulumi.Input.asInput<String>(policySetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      threshold = pulumi.Input.asOptionalInput<String>(threshold);
+    this.description,
+    this.evaluatorType,
+    this.factData,
+    this.factName,
+    required this.labName,
+    this.location,
+    this.name,
+    required this.policySetName,
+    required this.resourceGroupName,
+    this.status,
+    this.tags,
+    this.threshold,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      evaluatorType: map['evaluatorType'] == null ? null : pulumi.Output.create<String>(map['evaluatorType'] as String),
-      factData: map['factData'] == null ? null : pulumi.Output.create<String>(map['factData'] as String),
-      factName: map['factName'] == null ? null : pulumi.Output.create<String>(map['factName'] as String),
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policySetName: pulumi.Output.create<String>(map['policySetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      threshold: map['threshold'] == null ? null : pulumi.Output.create<String>(map['threshold'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      evaluatorType: map['evaluatorType'] == null ? null : (map['evaluatorType'] as String).input(),
+      factData: map['factData'] == null ? null : (map['factData'] as String).input(),
+      factName: map['factName'] == null ? null : (map['factName'] as String).input(),
+      labName: (map['labName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policySetName: (map['policySetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold'] as String).input(),
     );
   }
 }

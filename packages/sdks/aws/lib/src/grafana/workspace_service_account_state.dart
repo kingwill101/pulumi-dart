@@ -22,17 +22,12 @@ class WorkspaceServiceAccountState {
   /// [serviceAccountId] Identifier of the service account in the given Grafana workspace
   /// [workspaceId] The Grafana workspace with which the service account is associated.
   WorkspaceServiceAccountState({
-    pulumi.Output<String>? grafanaRole,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceAccountId,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      grafanaRole = pulumi.Input.asOptionalInput<String>(grafanaRole),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceAccountId = pulumi.Input.asOptionalInput<String>(serviceAccountId),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.grafanaRole,
+    this.name,
+    this.region,
+    this.serviceAccountId,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class WorkspaceServiceAccountState {
 
   factory WorkspaceServiceAccountState.fromMap(Map<String, dynamic> map) {
     return WorkspaceServiceAccountState(
-      grafanaRole: map['grafanaRole'] == null ? null : pulumi.Output.create<String>(map['grafanaRole'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceAccountId: map['serviceAccountId'] == null ? null : pulumi.Output.create<String>(map['serviceAccountId'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      grafanaRole: map['grafanaRole'] == null ? null : (map['grafanaRole'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

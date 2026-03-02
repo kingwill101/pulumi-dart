@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionSharedAccessSignatureResponse {
-  final String? sas;
+  final pulumi.Input<String>? sas;
 
   /// Creates a new [ConnectionSharedAccessSignatureResponse].
   /// [sas] Optional.
@@ -18,7 +19,7 @@ class ConnectionSharedAccessSignatureResponse {
 
   factory ConnectionSharedAccessSignatureResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionSharedAccessSignatureResponse(
-      sas: map['sas'] == null ? null : map['sas'] as String,
+      sas: map['sas'] == null ? null : (map['sas'] as String).input(),
     );
   }
 }

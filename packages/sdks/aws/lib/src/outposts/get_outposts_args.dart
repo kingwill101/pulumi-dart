@@ -25,17 +25,12 @@ class GetOutpostsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [siteId] Site identifier.
   GetOutpostsArgs({
-    pulumi.Output<String>? availabilityZone,
-    pulumi.Output<String>? availabilityZoneId,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? siteId,
-  }) :
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      availabilityZoneId = pulumi.Input.asOptionalInput<String>(availabilityZoneId),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId);
+    this.availabilityZone,
+    this.availabilityZoneId,
+    this.ownerId,
+    this.region,
+    this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetOutpostsArgs {
 
   factory GetOutpostsArgs.fromMap(Map<String, dynamic> map) {
     return GetOutpostsArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : pulumi.Output.create<String>(map['availabilityZoneId'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
     );
   }
 }

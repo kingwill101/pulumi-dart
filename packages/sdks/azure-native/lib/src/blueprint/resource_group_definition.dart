@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents an Azure resource group in a blueprint definition.
 class ResourceGroupDefinition {
   /// Artifacts which need to be deployed before this resource group.
-  final List<String>? dependsOn;
+  final pulumi.Input<List<String>>? dependsOn;
   /// Description of this parameter/resourceGroup.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// DisplayName of this parameter/resourceGroup.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Location of this resourceGroup. Leave empty if the resource group location will be specified during the blueprint assignment.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Name of this resourceGroup. Leave empty if the resource group name will be specified during the blueprint assignment.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
-  final String? strongType;
+  final pulumi.Input<String>? strongType;
   /// Tags to be assigned to this resource group.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ResourceGroupDefinition].
   /// [dependsOn] Artifacts which need to be deployed before this resource group.
@@ -50,13 +51,13 @@ class ResourceGroupDefinition {
 
   factory ResourceGroupDefinition.fromMap(Map<String, dynamic> map) {
     return ResourceGroupDefinition(
-      dependsOn: map['dependsOn'] == null ? null : (map['dependsOn'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      strongType: map['strongType'] == null ? null : map['strongType'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      strongType: map['strongType'] == null ? null : (map['strongType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

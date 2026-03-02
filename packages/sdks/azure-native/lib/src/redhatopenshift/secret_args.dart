@@ -22,15 +22,11 @@ class SecretArgs {
   /// [resourceName] The name of the OpenShift cluster resource.
   /// [secretResources] The Secrets Resources.
   SecretArgs({
-    pulumi.Output<String>? childResourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? secretResources,
-  }) :
-      childResourceName = pulumi.Input.asOptionalInput<String>(childResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      secretResources = pulumi.Input.asOptionalInput<String>(secretResources);
+    this.childResourceName,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.secretResources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      childResourceName: map['childResourceName'] == null ? null : pulumi.Output.create<String>(map['childResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      secretResources: map['secretResources'] == null ? null : pulumi.Output.create<String>(map['secretResources'] as String),
+      childResourceName: map['childResourceName'] == null ? null : (map['childResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      secretResources: map['secretResources'] == null ? null : (map['secretResources'] as String).input(),
     );
   }
 }

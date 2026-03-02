@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUsersUser {
   /// Creation date of the user.
-  final String createDate;
+  final pulumi.Input<String> createDate;
   /// The original id is user's name, but it is user id in 1.37.0+.
-  final String id;
+  final pulumi.Input<String> id;
   /// (Removed) Last login date of the user. Removed from version 1.79.0.
-  final String lastLoginDate;
+  final pulumi.Input<String> lastLoginDate;
   /// Name of the user.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetUsersUser].
   /// [createDate] Creation date of the user.
@@ -34,10 +35,10 @@ class GetUsersUser {
 
   factory GetUsersUser.fromMap(Map<String, dynamic> map) {
     return GetUsersUser(
-      createDate: map['createDate'] as String,
-      id: map['id'] as String,
-      lastLoginDate: map['lastLoginDate'] as String,
-      name: map['name'] as String,
+      createDate: (map['createDate'] as String).input(),
+      id: (map['id'] as String).input(),
+      lastLoginDate: (map['lastLoginDate'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

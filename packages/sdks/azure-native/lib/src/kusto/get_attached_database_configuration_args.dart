@@ -19,13 +19,10 @@ class GetAttachedDatabaseConfigurationArgs {
   /// [clusterName] The name of the Kusto cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAttachedDatabaseConfigurationArgs({
-    required pulumi.Output<String> attachedDatabaseConfigurationName,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      attachedDatabaseConfigurationName = pulumi.Input.asInput<String>(attachedDatabaseConfigurationName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.attachedDatabaseConfigurationName,
+    required this.clusterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAttachedDatabaseConfigurationArgs {
 
   factory GetAttachedDatabaseConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetAttachedDatabaseConfigurationArgs(
-      attachedDatabaseConfigurationName: pulumi.Output.create<String>(map['attachedDatabaseConfigurationName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      attachedDatabaseConfigurationName: (map['attachedDatabaseConfigurationName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetEncryptionScopeArgs {
   /// [name] The name of this Storage Encryption Scope.
   /// [storageAccountId] The ID of the Storage Account where this Storage Encryption Scope exists.
   GetEncryptionScopeArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> storageAccountId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId);
+    required this.name,
+    required this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEncryptionScopeArgs {
 
   factory GetEncryptionScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetEncryptionScopeArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
+      name: (map['name'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

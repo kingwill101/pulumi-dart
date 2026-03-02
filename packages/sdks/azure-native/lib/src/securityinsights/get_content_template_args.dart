@@ -19,13 +19,10 @@ class GetContentTemplateArgs {
   /// [templateId] template Id
   /// [workspaceName] The name of the workspace.
   GetContentTemplateArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> templateId,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      templateId = pulumi.Input.asInput<String>(templateId),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.templateId,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetContentTemplateArgs {
 
   factory GetContentTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetContentTemplateArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      templateId: pulumi.Output.create<String>(map['templateId'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

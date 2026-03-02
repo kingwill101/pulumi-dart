@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The request that generated the event.
 class RequestResponse {
   /// The IP or hostname and possibly port of the client connection that initiated the event. This is the RemoteAddr from the standard http request.
-  final String? addr;
+  final pulumi.Input<String>? addr;
   /// The externally accessible hostname of the registry instance, as specified by the http host header on incoming requests.
-  final String? host;
+  final pulumi.Input<String>? host;
   /// The ID of the request that initiated the event.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The request method that generated the event.
-  final String? method;
+  final pulumi.Input<String>? method;
   /// The user agent header of the request.
-  final String? useragent;
+  final pulumi.Input<String>? useragent;
 
   /// Creates a new [RequestResponse].
   /// [addr] The IP or hostname and possibly port of the client connection that initiated the event. This is the RemoteAddr from the standard http request.
@@ -40,11 +41,11 @@ class RequestResponse {
 
   factory RequestResponse.fromMap(Map<String, dynamic> map) {
     return RequestResponse(
-      addr: map['addr'] == null ? null : map['addr'] as String,
-      host: map['host'] == null ? null : map['host'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      method: map['method'] == null ? null : map['method'] as String,
-      useragent: map['useragent'] == null ? null : map['useragent'] as String,
+      addr: map['addr'] == null ? null : (map['addr'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      useragent: map['useragent'] == null ? null : (map['useragent'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SparkJobPythonEntryResponse {
   /// [Required] Relative python file path for job entry point.
-  final String file;
+  final pulumi.Input<String> file;
   /// Expected value is 'SparkJobPythonEntry'.
-  final String sparkJobEntryType;
+  final pulumi.Input<String> sparkJobEntryType;
 
   /// Creates a new [SparkJobPythonEntryResponse].
   /// [file] [Required] Relative python file path for job entry point.
@@ -24,8 +25,8 @@ class SparkJobPythonEntryResponse {
 
   factory SparkJobPythonEntryResponse.fromMap(Map<String, dynamic> map) {
     return SparkJobPythonEntryResponse(
-      file: map['file'] as String,
-      sparkJobEntryType: map['sparkJobEntryType'] as String,
+      file: (map['file'] as String).input(),
+      sparkJobEntryType: (map['sparkJobEntryType'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class ServiceFabricArgs {
   /// [tags] The tags of the resource.
   /// [userName] The name of the user profile.
   ServiceFabricArgs({
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<String>? externalServiceFabricId,
-    required pulumi.Output<String> labName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> userName,
-  }) :
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      externalServiceFabricId = pulumi.Input.asOptionalInput<String>(externalServiceFabricId),
-      labName = pulumi.Input.asInput<String>(labName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userName = pulumi.Input.asInput<String>(userName);
+    this.environmentId,
+    this.externalServiceFabricId,
+    required this.labName,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ServiceFabricArgs {
 
   factory ServiceFabricArgs.fromMap(Map<String, dynamic> map) {
     return ServiceFabricArgs(
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      externalServiceFabricId: map['externalServiceFabricId'] == null ? null : pulumi.Output.create<String>(map['externalServiceFabricId'] as String),
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      externalServiceFabricId: map['externalServiceFabricId'] == null ? null : (map['externalServiceFabricId'] as String).input(),
+      labName: (map['labName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

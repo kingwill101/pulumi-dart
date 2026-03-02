@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the gateway operation.
 class GatewayOperationDetailsResponse {
   /// A value indicating the datastore collection.
-  final List<String> dataStores;
+  final pulumi.Input<List<String>> dataStores;
   /// A value indicating the ESXi host name.
-  final String hostName;
+  final pulumi.Input<String> hostName;
   /// A value indicating the progress percentage of gateway operation.
-  final int progressPercentage;
+  final pulumi.Input<int> progressPercentage;
   /// A value indicating the state of gateway operation.
-  final String state;
+  final pulumi.Input<String> state;
   /// A value indicating the time elapsed for the operation in milliseconds.
-  final double timeElapsed;
+  final pulumi.Input<double> timeElapsed;
   /// A value indicating the time remaining for the operation in milliseconds.
-  final double timeRemaining;
+  final pulumi.Input<double> timeRemaining;
   /// A value indicating the upload speed in bytes per second.
-  final double uploadSpeed;
+  final pulumi.Input<double> uploadSpeed;
   /// A value indicating the VMware read throughput in bytes per second.
-  final double vmwareReadThroughput;
+  final pulumi.Input<double> vmwareReadThroughput;
 
   /// Creates a new [GatewayOperationDetailsResponse].
   /// [dataStores] A value indicating the datastore collection.
@@ -55,14 +56,14 @@ class GatewayOperationDetailsResponse {
 
   factory GatewayOperationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GatewayOperationDetailsResponse(
-      dataStores: (map['dataStores'] as List).cast<String>(),
-      hostName: map['hostName'] as String,
-      progressPercentage: map['progressPercentage'] as int,
-      state: map['state'] as String,
-      timeElapsed: map['timeElapsed'] as double,
-      timeRemaining: map['timeRemaining'] as double,
-      uploadSpeed: map['uploadSpeed'] as double,
-      vmwareReadThroughput: map['vmwareReadThroughput'] as double,
+      dataStores: ((map['dataStores'] as List).cast<String>()).input(),
+      hostName: (map['hostName'] as String).input(),
+      progressPercentage: (map['progressPercentage'] as int).input(),
+      state: (map['state'] as String).input(),
+      timeElapsed: (map['timeElapsed'] as double).input(),
+      timeRemaining: (map['timeRemaining'] as double).input(),
+      uploadSpeed: (map['uploadSpeed'] as double).input(),
+      vmwareReadThroughput: (map['vmwareReadThroughput'] as double).input(),
     );
   }
 }

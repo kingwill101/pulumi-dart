@@ -51,31 +51,19 @@ class DpsSharedAccessPolicyState {
   /// [secondaryKey] The secondary key used to create the authentication token.
   /// [serviceConfig] Adds `ServiceConfig` permission to this Shared Access Account. It allows configuration of the Device Provisioning Service.
   DpsSharedAccessPolicyState({
-    pulumi.Output<bool>? enrollmentRead,
-    pulumi.Output<bool>? enrollmentWrite,
-    pulumi.Output<String>? iothubDpsName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? primaryConnectionString,
-    pulumi.Output<String>? primaryKey,
-    pulumi.Output<bool>? registrationRead,
-    pulumi.Output<bool>? registrationWrite,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? secondaryConnectionString,
-    pulumi.Output<String>? secondaryKey,
-    pulumi.Output<bool>? serviceConfig,
-  }) :
-      enrollmentRead = pulumi.Input.asOptionalInput<bool>(enrollmentRead),
-      enrollmentWrite = pulumi.Input.asOptionalInput<bool>(enrollmentWrite),
-      iothubDpsName = pulumi.Input.asOptionalInput<String>(iothubDpsName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryConnectionString = pulumi.Input.asOptionalInput<String>(primaryConnectionString),
-      primaryKey = pulumi.Input.asOptionalInput<String>(primaryKey),
-      registrationRead = pulumi.Input.asOptionalInput<bool>(registrationRead),
-      registrationWrite = pulumi.Input.asOptionalInput<bool>(registrationWrite),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      secondaryConnectionString = pulumi.Input.asOptionalInput<String>(secondaryConnectionString),
-      secondaryKey = pulumi.Input.asOptionalInput<String>(secondaryKey),
-      serviceConfig = pulumi.Input.asOptionalInput<bool>(serviceConfig);
+    this.enrollmentRead,
+    this.enrollmentWrite,
+    this.iothubDpsName,
+    this.name,
+    this.primaryConnectionString,
+    this.primaryKey,
+    this.registrationRead,
+    this.registrationWrite,
+    this.resourceGroupName,
+    this.secondaryConnectionString,
+    this.secondaryKey,
+    this.serviceConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,18 +84,18 @@ class DpsSharedAccessPolicyState {
 
   factory DpsSharedAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return DpsSharedAccessPolicyState(
-      enrollmentRead: map['enrollmentRead'] == null ? null : pulumi.Output.create<bool>(map['enrollmentRead'] as bool),
-      enrollmentWrite: map['enrollmentWrite'] == null ? null : pulumi.Output.create<bool>(map['enrollmentWrite'] as bool),
-      iothubDpsName: map['iothubDpsName'] == null ? null : pulumi.Output.create<String>(map['iothubDpsName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : pulumi.Output.create<String>(map['primaryConnectionString'] as String),
-      primaryKey: map['primaryKey'] == null ? null : pulumi.Output.create<String>(map['primaryKey'] as String),
-      registrationRead: map['registrationRead'] == null ? null : pulumi.Output.create<bool>(map['registrationRead'] as bool),
-      registrationWrite: map['registrationWrite'] == null ? null : pulumi.Output.create<bool>(map['registrationWrite'] as bool),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : pulumi.Output.create<String>(map['secondaryConnectionString'] as String),
-      secondaryKey: map['secondaryKey'] == null ? null : pulumi.Output.create<String>(map['secondaryKey'] as String),
-      serviceConfig: map['serviceConfig'] == null ? null : pulumi.Output.create<bool>(map['serviceConfig'] as bool),
+      enrollmentRead: map['enrollmentRead'] == null ? null : (map['enrollmentRead'] as bool).input(),
+      enrollmentWrite: map['enrollmentWrite'] == null ? null : (map['enrollmentWrite'] as bool).input(),
+      iothubDpsName: map['iothubDpsName'] == null ? null : (map['iothubDpsName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      registrationRead: map['registrationRead'] == null ? null : (map['registrationRead'] as bool).input(),
+      registrationWrite: map['registrationWrite'] == null ? null : (map['registrationWrite'] as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      serviceConfig: map['serviceConfig'] == null ? null : (map['serviceConfig'] as bool).input(),
     );
   }
 }

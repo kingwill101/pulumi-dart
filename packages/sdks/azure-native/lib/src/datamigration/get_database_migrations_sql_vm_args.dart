@@ -24,17 +24,12 @@ class GetDatabaseMigrationsSqlVmArgs {
   /// [sqlVirtualMachineName] Required.
   /// [targetDbName] The name of the target database.
   GetDatabaseMigrationsSqlVmArgs({
-    pulumi.Output<String>? expand,
-    pulumi.Output<String>? migrationOperationId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlVirtualMachineName,
-    required pulumi.Output<String> targetDbName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      migrationOperationId = pulumi.Input.asOptionalInput<String>(migrationOperationId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlVirtualMachineName = pulumi.Input.asInput<String>(sqlVirtualMachineName),
-      targetDbName = pulumi.Input.asInput<String>(targetDbName);
+    this.expand,
+    this.migrationOperationId,
+    required this.resourceGroupName,
+    required this.sqlVirtualMachineName,
+    required this.targetDbName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class GetDatabaseMigrationsSqlVmArgs {
 
   factory GetDatabaseMigrationsSqlVmArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMigrationsSqlVmArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      migrationOperationId: map['migrationOperationId'] == null ? null : pulumi.Output.create<String>(map['migrationOperationId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlVirtualMachineName: pulumi.Output.create<String>(map['sqlVirtualMachineName'] as String),
-      targetDbName: pulumi.Output.create<String>(map['targetDbName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlVirtualMachineName: (map['sqlVirtualMachineName'] as String).input(),
+      targetDbName: (map['targetDbName'] as String).input(),
     );
   }
 }

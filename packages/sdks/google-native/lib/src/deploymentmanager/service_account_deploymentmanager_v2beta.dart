@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Service Account used as a credential.
 class ServiceAccountDeploymentmanagerV2beta {
   /// The IAM service account email address like test@myproject.iam.gserviceaccount.com
-  final String? email;
+  final pulumi.Input<String>? email;
 
   /// Creates a new [ServiceAccountDeploymentmanagerV2beta].
   /// [email] The IAM service account email address like test@myproject.iam.gserviceaccount.com
@@ -20,7 +21,7 @@ class ServiceAccountDeploymentmanagerV2beta {
 
   factory ServiceAccountDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return ServiceAccountDeploymentmanagerV2beta(
-      email: map['email'] == null ? null : map['email'] as String,
+      email: map['email'] == null ? null : (map['email'] as String).input(),
     );
   }
 }

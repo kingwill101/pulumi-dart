@@ -15,11 +15,9 @@ class GetDatabaseClusterArgs {
   /// [name] The name of the database cluster.
   /// [tags] Optional.
   GetDatabaseClusterArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<List<String>>? tags,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags);
+    required this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class GetDatabaseClusterArgs {
 
   factory GetDatabaseClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseClusterArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      name: (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

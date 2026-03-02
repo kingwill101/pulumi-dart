@@ -16,11 +16,9 @@ class GetSshKeyArgs {
   /// [id] The ID of the SSH Key
   /// [label] The label of the SSH Key to select.
   GetSshKeyArgs({
-    pulumi.Output<String>? id,
-    required pulumi.Output<String> label,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      label = pulumi.Input.asInput<String>(label);
+    this.id,
+    required this.label,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSshKeyArgs {
 
   factory GetSshKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetSshKeyArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      label: pulumi.Output.create<String>(map['label'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      label: (map['label'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class ManagedEnvironmentsStorageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageName] Name of the storage.
   ManagedEnvironmentsStorageArgs({
-    required pulumi.Output<String> environmentName,
-    pulumi.Output<ManagedEnvironmentStorageProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      properties = pulumi.Input.asOptionalInput<ManagedEnvironmentStorageProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageName = pulumi.Input.asOptionalInput<String>(storageName);
+    required this.environmentName,
+    this.properties,
+    required this.resourceGroupName,
+    this.storageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ManagedEnvironmentsStorageArgs {
 
   factory ManagedEnvironmentsStorageArgs.fromMap(Map<String, dynamic> map) {
     return ManagedEnvironmentsStorageArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ManagedEnvironmentStorageProperties>(ManagedEnvironmentStorageProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageName: map['storageName'] == null ? null : pulumi.Output.create<String>(map['storageName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      properties: map['properties'] == null ? null : (ManagedEnvironmentStorageProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageName: map['storageName'] == null ? null : (map['storageName'] as String).input(),
     );
   }
 }

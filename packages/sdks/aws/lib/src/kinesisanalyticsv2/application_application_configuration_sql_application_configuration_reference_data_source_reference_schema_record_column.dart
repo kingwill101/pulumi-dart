@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn {
   /// A reference to the data element in the streaming input or the reference data source.
-  final String? mapping;
+  final pulumi.Input<String>? mapping;
   /// The name of the column that is created in the in-application input stream or reference table.
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of column created in the in-application input stream or reference table.
-  final String sqlType;
+  final pulumi.Input<String> sqlType;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn].
   /// [mapping] A reference to the data element in the streaming input or the reference data source.
@@ -29,9 +30,9 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn(
-      mapping: map['mapping'] == null ? null : map['mapping'] as String,
-      name: map['name'] as String,
-      sqlType: map['sqlType'] as String,
+      mapping: map['mapping'] == null ? null : (map['mapping'] as String).input(),
+      name: (map['name'] as String).input(),
+      sqlType: (map['sqlType'] as String).input(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'policy_binding_response.dart';
 /// BinaryAuthorizationConfig defines the fleet level configuration of binary authorization feature.
 class BinaryAuthorizationConfigResponse {
   /// Optional. Mode of operation for binauthz policy evaluation.
-  final String evaluationMode;
+  final pulumi.Input<String> evaluationMode;
   /// Optional. Binauthz policies that apply to this cluster.
-  final List<PolicyBindingResponse> policyBindings;
+  final pulumi.Input<List<PolicyBindingResponse>> policyBindings;
 
   /// Creates a new [BinaryAuthorizationConfigResponse].
   /// [evaluationMode] Optional. Mode of operation for binauthz policy evaluation.
@@ -21,14 +21,14 @@ class BinaryAuthorizationConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'evaluationMode': evaluationMode,
-      'policyBindings': pulumi.Input.encodeList<PolicyBindingResponse, Map<String, dynamic>>(policyBindings, (value) => value.toMap()),
+      'policyBindings': pulumi.Input.mapInputValue<List<PolicyBindingResponse>, List<Map<String, dynamic>>>(policyBindings, (value) => pulumi.Input.encodeList<PolicyBindingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BinaryAuthorizationConfigResponse.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorizationConfigResponse(
-      evaluationMode: map['evaluationMode'] as String,
-      policyBindings: pulumi.Input.decodeList<PolicyBindingResponse>(map['policyBindings'], (value) => PolicyBindingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      evaluationMode: (map['evaluationMode'] as String).input(),
+      policyBindings: (pulumi.Input.decodeList<PolicyBindingResponse>(map['policyBindings'], (value) => PolicyBindingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

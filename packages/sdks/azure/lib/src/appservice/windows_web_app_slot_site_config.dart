@@ -11,78 +11,78 @@ import 'windows_web_app_slot_site_config_virtual_application.dart';
 
 class WindowsWebAppSlotSiteConfig {
   /// If this Windows Web App Slot is Always On enabled. Defaults to `true`.
-  final bool? alwaysOn;
+  final pulumi.Input<bool>? alwaysOn;
   /// The URL to the API Definition for this Windows Web App Slot.
-  final String? apiDefinitionUrl;
+  final pulumi.Input<String>? apiDefinitionUrl;
   /// The API Management API ID this Windows Web App Slot os associated with.
-  final String? apiManagementApiId;
+  final pulumi.Input<String>? apiManagementApiId;
   /// The App command line to launch.
-  final String? appCommandLine;
+  final pulumi.Input<String>? appCommandLine;
   /// A `application_stack` block as defined above.
-  final WindowsWebAppSlotSiteConfigApplicationStack? applicationStack;
+  final pulumi.Input<WindowsWebAppSlotSiteConfigApplicationStack>? applicationStack;
   /// A `auto_heal_setting` block as defined above. Required with `auto_heal`.
-  final WindowsWebAppSlotSiteConfigAutoHealSetting? autoHealSetting;
+  final pulumi.Input<WindowsWebAppSlotSiteConfigAutoHealSetting>? autoHealSetting;
   /// The Windows Web App Slot Name to automatically swap to when deployment to that slot is successfully completed.
   ///
   /// > **Note:** This must be a valid slot name on the target Windows Web App Slot.
-  final String? autoSwapSlotName;
+  final pulumi.Input<String>? autoSwapSlotName;
   /// The Client ID of the Managed Service Identity to use for connections to the Azure Container Registry.
-  final String? containerRegistryManagedIdentityClientId;
+  final pulumi.Input<String>? containerRegistryManagedIdentityClientId;
   /// Should connections for Azure Container Registry use Managed Identity.
-  final bool? containerRegistryUseManagedIdentity;
+  final pulumi.Input<bool>? containerRegistryUseManagedIdentity;
   /// A `cors` block as defined above.
-  final WindowsWebAppSlotSiteConfigCors? cors;
+  final pulumi.Input<WindowsWebAppSlotSiteConfigCors>? cors;
   /// Specifies a list of Default Documents for the Windows Web App Slot.
-  final List<String>? defaultDocuments;
-  final bool? detailedErrorLoggingEnabled;
+  final pulumi.Input<List<String>>? defaultDocuments;
+  final pulumi.Input<bool>? detailedErrorLoggingEnabled;
   /// The State of FTP / FTPS service. Possible values include: `AllAllowed`, `FtpsOnly`, `Disabled`. Defaults to `Disabled`.
   ///
   /// > **Note:** Azure defaults this value to `AllAllowed`, however, in the interests of security Terraform will default this to `Disabled` to ensure the user makes a conscious choice to enable it.
-  final String? ftpsState;
+  final pulumi.Input<String>? ftpsState;
   /// One or more `handler_mapping` blocks as defined below.
-  final List<WindowsWebAppSlotSiteConfigHandlerMapping>? handlerMappings;
+  final pulumi.Input<List<WindowsWebAppSlotSiteConfigHandlerMapping>>? handlerMappings;
   /// The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `health_check_path`.
-  final int? healthCheckEvictionTimeInMin;
+  final pulumi.Input<int>? healthCheckEvictionTimeInMin;
   /// The path to the Health Check.
-  final String? healthCheckPath;
+  final pulumi.Input<String>? healthCheckPath;
   /// Should the HTTP2 be enabled?
-  final bool? http2Enabled;
+  final pulumi.Input<bool>? http2Enabled;
   /// The Default action for traffic that does not match any `ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
-  final String? ipRestrictionDefaultAction;
+  final pulumi.Input<String>? ipRestrictionDefaultAction;
   /// One or more `ip_restriction` blocks as defined above.
-  final List<WindowsWebAppSlotSiteConfigIpRestriction>? ipRestrictions;
+  final pulumi.Input<List<WindowsWebAppSlotSiteConfigIpRestriction>>? ipRestrictions;
   /// The Site load balancing. Possible values include: `WeightedRoundRobin`, `LeastRequests`, `LeastResponseTime`, `WeightedTotalTraffic`, `RequestHash`, `PerSiteRoundRobin`. Defaults to `LeastRequests` if omitted.
-  final String? loadBalancingMode;
+  final pulumi.Input<String>? loadBalancingMode;
   /// Use Local MySQL. Defaults to `false`.
-  final bool? localMysqlEnabled;
+  final pulumi.Input<bool>? localMysqlEnabled;
   /// Managed pipeline mode. Possible values include: `Integrated`, `Classic`. Defaults to `Integrated`.
-  final String? managedPipelineMode;
+  final pulumi.Input<String>? managedPipelineMode;
   /// The configures the minimum version of TLS required for SSL requests. Possible values are `1.1`, `1.3`, `1.2` and `1.0`. Defaults to `1.2`.
-  final String? minimumTlsVersion;
+  final pulumi.Input<String>? minimumTlsVersion;
   /// Should Remote Debugging be enabled. Defaults to `false`.
-  final bool? remoteDebuggingEnabled;
+  final pulumi.Input<bool>? remoteDebuggingEnabled;
   /// The Remote Debugging Version. Currently only `VS2022` is supported.
-  final String? remoteDebuggingVersion;
+  final pulumi.Input<String>? remoteDebuggingVersion;
   /// The Default action for traffic that does not match any `scm_ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
-  final String? scmIpRestrictionDefaultAction;
+  final pulumi.Input<String>? scmIpRestrictionDefaultAction;
   /// One or more `scm_ip_restriction` blocks as defined above.
-  final List<WindowsWebAppSlotSiteConfigScmIpRestriction>? scmIpRestrictions;
+  final pulumi.Input<List<WindowsWebAppSlotSiteConfigScmIpRestriction>>? scmIpRestrictions;
   /// The configures the minimum version of TLS required for SSL requests to the SCM site Possible values are `1.1`, `1.3`, `1.2` and `1.0`. Defaults to `1.2`.
-  final String? scmMinimumTlsVersion;
-  final String? scmType;
+  final pulumi.Input<String>? scmMinimumTlsVersion;
+  final pulumi.Input<String>? scmType;
   /// Should the Windows Web App Slot `ip_restriction` configuration be used for the SCM also.
-  final bool? scmUseMainIpRestriction;
+  final pulumi.Input<bool>? scmUseMainIpRestriction;
   /// Should the Windows Web App Slot use a 32-bit worker. The default value varies from different service plans.
-  final bool? use32BitWorker;
+  final pulumi.Input<bool>? use32BitWorker;
   /// One or more `virtual_application` blocks as defined below.
-  final List<WindowsWebAppSlotSiteConfigVirtualApplication>? virtualApplications;
+  final pulumi.Input<List<WindowsWebAppSlotSiteConfigVirtualApplication>>? virtualApplications;
   /// Should all outbound traffic to have NAT Gateways, Network Security Groups and User Defined Routes applied? Defaults to `false`.
-  final bool? vnetRouteAllEnabled;
+  final pulumi.Input<bool>? vnetRouteAllEnabled;
   /// Should Web Sockets be enabled. Defaults to `false`.
-  final bool? websocketsEnabled;
-  final String? windowsFxVersion;
+  final pulumi.Input<bool>? websocketsEnabled;
+  final pulumi.Input<String>? windowsFxVersion;
   /// The number of Workers for this Windows App Service Slot.
-  final int? workerCount;
+  final pulumi.Input<int>? workerCount;
 
   /// Creates a new [WindowsWebAppSlotSiteConfig].
   /// [alwaysOn] If this Windows Web App Slot is Always On enabled. Defaults to `true`.
@@ -166,21 +166,21 @@ class WindowsWebAppSlotSiteConfig {
       'apiDefinitionUrl': ?apiDefinitionUrl,
       'apiManagementApiId': ?apiManagementApiId,
       'appCommandLine': ?appCommandLine,
-      'applicationStack': ?applicationStack == null ? null : applicationStack!.toMap(),
-      'autoHealSetting': ?autoHealSetting == null ? null : autoHealSetting!.toMap(),
+      'applicationStack': ?pulumi.Input.mapOptionalInputValue<WindowsWebAppSlotSiteConfigApplicationStack, Map<String, dynamic>>(applicationStack, (value) => value.toMap()),
+      'autoHealSetting': ?pulumi.Input.mapOptionalInputValue<WindowsWebAppSlotSiteConfigAutoHealSetting, Map<String, dynamic>>(autoHealSetting, (value) => value.toMap()),
       'autoSwapSlotName': ?autoSwapSlotName,
       'containerRegistryManagedIdentityClientId': ?containerRegistryManagedIdentityClientId,
       'containerRegistryUseManagedIdentity': ?containerRegistryUseManagedIdentity,
-      'cors': ?cors == null ? null : cors!.toMap(),
+      'cors': ?pulumi.Input.mapOptionalInputValue<WindowsWebAppSlotSiteConfigCors, Map<String, dynamic>>(cors, (value) => value.toMap()),
       'defaultDocuments': ?defaultDocuments,
       'detailedErrorLoggingEnabled': ?detailedErrorLoggingEnabled,
       'ftpsState': ?ftpsState,
-      'handlerMappings': ?handlerMappings == null ? null : pulumi.Input.encodeList<WindowsWebAppSlotSiteConfigHandlerMapping, Map<String, dynamic>>(handlerMappings!, (value) => value.toMap()),
+      'handlerMappings': ?pulumi.Input.mapOptionalInputValue<List<WindowsWebAppSlotSiteConfigHandlerMapping>, List<Map<String, dynamic>>>(handlerMappings, (value) => pulumi.Input.encodeList<WindowsWebAppSlotSiteConfigHandlerMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
       'healthCheckEvictionTimeInMin': ?healthCheckEvictionTimeInMin,
       'healthCheckPath': ?healthCheckPath,
       'http2Enabled': ?http2Enabled,
       'ipRestrictionDefaultAction': ?ipRestrictionDefaultAction,
-      'ipRestrictions': ?ipRestrictions == null ? null : pulumi.Input.encodeList<WindowsWebAppSlotSiteConfigIpRestriction, Map<String, dynamic>>(ipRestrictions!, (value) => value.toMap()),
+      'ipRestrictions': ?pulumi.Input.mapOptionalInputValue<List<WindowsWebAppSlotSiteConfigIpRestriction>, List<Map<String, dynamic>>>(ipRestrictions, (value) => pulumi.Input.encodeList<WindowsWebAppSlotSiteConfigIpRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'loadBalancingMode': ?loadBalancingMode,
       'localMysqlEnabled': ?localMysqlEnabled,
       'managedPipelineMode': ?managedPipelineMode,
@@ -188,12 +188,12 @@ class WindowsWebAppSlotSiteConfig {
       'remoteDebuggingEnabled': ?remoteDebuggingEnabled,
       'remoteDebuggingVersion': ?remoteDebuggingVersion,
       'scmIpRestrictionDefaultAction': ?scmIpRestrictionDefaultAction,
-      'scmIpRestrictions': ?scmIpRestrictions == null ? null : pulumi.Input.encodeList<WindowsWebAppSlotSiteConfigScmIpRestriction, Map<String, dynamic>>(scmIpRestrictions!, (value) => value.toMap()),
+      'scmIpRestrictions': ?pulumi.Input.mapOptionalInputValue<List<WindowsWebAppSlotSiteConfigScmIpRestriction>, List<Map<String, dynamic>>>(scmIpRestrictions, (value) => pulumi.Input.encodeList<WindowsWebAppSlotSiteConfigScmIpRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scmMinimumTlsVersion': ?scmMinimumTlsVersion,
       'scmType': ?scmType,
       'scmUseMainIpRestriction': ?scmUseMainIpRestriction,
       'use32BitWorker': ?use32BitWorker,
-      'virtualApplications': ?virtualApplications == null ? null : pulumi.Input.encodeList<WindowsWebAppSlotSiteConfigVirtualApplication, Map<String, dynamic>>(virtualApplications!, (value) => value.toMap()),
+      'virtualApplications': ?pulumi.Input.mapOptionalInputValue<List<WindowsWebAppSlotSiteConfigVirtualApplication>, List<Map<String, dynamic>>>(virtualApplications, (value) => pulumi.Input.encodeList<WindowsWebAppSlotSiteConfigVirtualApplication, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vnetRouteAllEnabled': ?vnetRouteAllEnabled,
       'websocketsEnabled': ?websocketsEnabled,
       'windowsFxVersion': ?windowsFxVersion,
@@ -203,42 +203,42 @@ class WindowsWebAppSlotSiteConfig {
 
   factory WindowsWebAppSlotSiteConfig.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotSiteConfig(
-      alwaysOn: map['alwaysOn'] == null ? null : map['alwaysOn'] as bool,
-      apiDefinitionUrl: map['apiDefinitionUrl'] == null ? null : map['apiDefinitionUrl'] as String,
-      apiManagementApiId: map['apiManagementApiId'] == null ? null : map['apiManagementApiId'] as String,
-      appCommandLine: map['appCommandLine'] == null ? null : map['appCommandLine'] as String,
-      applicationStack: map['applicationStack'] == null ? null : WindowsWebAppSlotSiteConfigApplicationStack.fromMap((map['applicationStack'] as Map).cast<String, dynamic>()),
-      autoHealSetting: map['autoHealSetting'] == null ? null : WindowsWebAppSlotSiteConfigAutoHealSetting.fromMap((map['autoHealSetting'] as Map).cast<String, dynamic>()),
-      autoSwapSlotName: map['autoSwapSlotName'] == null ? null : map['autoSwapSlotName'] as String,
-      containerRegistryManagedIdentityClientId: map['containerRegistryManagedIdentityClientId'] == null ? null : map['containerRegistryManagedIdentityClientId'] as String,
-      containerRegistryUseManagedIdentity: map['containerRegistryUseManagedIdentity'] == null ? null : map['containerRegistryUseManagedIdentity'] as bool,
-      cors: map['cors'] == null ? null : WindowsWebAppSlotSiteConfigCors.fromMap((map['cors'] as Map).cast<String, dynamic>()),
-      defaultDocuments: map['defaultDocuments'] == null ? null : (map['defaultDocuments'] as List).cast<String>(),
-      detailedErrorLoggingEnabled: map['detailedErrorLoggingEnabled'] == null ? null : map['detailedErrorLoggingEnabled'] as bool,
-      ftpsState: map['ftpsState'] == null ? null : map['ftpsState'] as String,
-      handlerMappings: map['handlerMappings'] == null ? null : pulumi.Input.decodeList<WindowsWebAppSlotSiteConfigHandlerMapping>(map['handlerMappings'], (value) => WindowsWebAppSlotSiteConfigHandlerMapping.fromMap((value as Map).cast<String, dynamic>())),
-      healthCheckEvictionTimeInMin: map['healthCheckEvictionTimeInMin'] == null ? null : map['healthCheckEvictionTimeInMin'] as int,
-      healthCheckPath: map['healthCheckPath'] == null ? null : map['healthCheckPath'] as String,
-      http2Enabled: map['http2Enabled'] == null ? null : map['http2Enabled'] as bool,
-      ipRestrictionDefaultAction: map['ipRestrictionDefaultAction'] == null ? null : map['ipRestrictionDefaultAction'] as String,
-      ipRestrictions: map['ipRestrictions'] == null ? null : pulumi.Input.decodeList<WindowsWebAppSlotSiteConfigIpRestriction>(map['ipRestrictions'], (value) => WindowsWebAppSlotSiteConfigIpRestriction.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancingMode: map['loadBalancingMode'] == null ? null : map['loadBalancingMode'] as String,
-      localMysqlEnabled: map['localMysqlEnabled'] == null ? null : map['localMysqlEnabled'] as bool,
-      managedPipelineMode: map['managedPipelineMode'] == null ? null : map['managedPipelineMode'] as String,
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : map['minimumTlsVersion'] as String,
-      remoteDebuggingEnabled: map['remoteDebuggingEnabled'] == null ? null : map['remoteDebuggingEnabled'] as bool,
-      remoteDebuggingVersion: map['remoteDebuggingVersion'] == null ? null : map['remoteDebuggingVersion'] as String,
-      scmIpRestrictionDefaultAction: map['scmIpRestrictionDefaultAction'] == null ? null : map['scmIpRestrictionDefaultAction'] as String,
-      scmIpRestrictions: map['scmIpRestrictions'] == null ? null : pulumi.Input.decodeList<WindowsWebAppSlotSiteConfigScmIpRestriction>(map['scmIpRestrictions'], (value) => WindowsWebAppSlotSiteConfigScmIpRestriction.fromMap((value as Map).cast<String, dynamic>())),
-      scmMinimumTlsVersion: map['scmMinimumTlsVersion'] == null ? null : map['scmMinimumTlsVersion'] as String,
-      scmType: map['scmType'] == null ? null : map['scmType'] as String,
-      scmUseMainIpRestriction: map['scmUseMainIpRestriction'] == null ? null : map['scmUseMainIpRestriction'] as bool,
-      use32BitWorker: map['use32BitWorker'] == null ? null : map['use32BitWorker'] as bool,
-      virtualApplications: map['virtualApplications'] == null ? null : pulumi.Input.decodeList<WindowsWebAppSlotSiteConfigVirtualApplication>(map['virtualApplications'], (value) => WindowsWebAppSlotSiteConfigVirtualApplication.fromMap((value as Map).cast<String, dynamic>())),
-      vnetRouteAllEnabled: map['vnetRouteAllEnabled'] == null ? null : map['vnetRouteAllEnabled'] as bool,
-      websocketsEnabled: map['websocketsEnabled'] == null ? null : map['websocketsEnabled'] as bool,
-      windowsFxVersion: map['windowsFxVersion'] == null ? null : map['windowsFxVersion'] as String,
-      workerCount: map['workerCount'] == null ? null : map['workerCount'] as int,
+      alwaysOn: map['alwaysOn'] == null ? null : (map['alwaysOn'] as bool).input(),
+      apiDefinitionUrl: map['apiDefinitionUrl'] == null ? null : (map['apiDefinitionUrl'] as String).input(),
+      apiManagementApiId: map['apiManagementApiId'] == null ? null : (map['apiManagementApiId'] as String).input(),
+      appCommandLine: map['appCommandLine'] == null ? null : (map['appCommandLine'] as String).input(),
+      applicationStack: map['applicationStack'] == null ? null : (WindowsWebAppSlotSiteConfigApplicationStack.fromMap((map['applicationStack'] as Map).cast<String, dynamic>())).input(),
+      autoHealSetting: map['autoHealSetting'] == null ? null : (WindowsWebAppSlotSiteConfigAutoHealSetting.fromMap((map['autoHealSetting'] as Map).cast<String, dynamic>())).input(),
+      autoSwapSlotName: map['autoSwapSlotName'] == null ? null : (map['autoSwapSlotName'] as String).input(),
+      containerRegistryManagedIdentityClientId: map['containerRegistryManagedIdentityClientId'] == null ? null : (map['containerRegistryManagedIdentityClientId'] as String).input(),
+      containerRegistryUseManagedIdentity: map['containerRegistryUseManagedIdentity'] == null ? null : (map['containerRegistryUseManagedIdentity'] as bool).input(),
+      cors: map['cors'] == null ? null : (WindowsWebAppSlotSiteConfigCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      defaultDocuments: map['defaultDocuments'] == null ? null : ((map['defaultDocuments'] as List).cast<String>()).input(),
+      detailedErrorLoggingEnabled: map['detailedErrorLoggingEnabled'] == null ? null : (map['detailedErrorLoggingEnabled'] as bool).input(),
+      ftpsState: map['ftpsState'] == null ? null : (map['ftpsState'] as String).input(),
+      handlerMappings: map['handlerMappings'] == null ? null : (pulumi.Input.decodeList<WindowsWebAppSlotSiteConfigHandlerMapping>(map['handlerMappings'], (value) => WindowsWebAppSlotSiteConfigHandlerMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthCheckEvictionTimeInMin: map['healthCheckEvictionTimeInMin'] == null ? null : (map['healthCheckEvictionTimeInMin'] as int).input(),
+      healthCheckPath: map['healthCheckPath'] == null ? null : (map['healthCheckPath'] as String).input(),
+      http2Enabled: map['http2Enabled'] == null ? null : (map['http2Enabled'] as bool).input(),
+      ipRestrictionDefaultAction: map['ipRestrictionDefaultAction'] == null ? null : (map['ipRestrictionDefaultAction'] as String).input(),
+      ipRestrictions: map['ipRestrictions'] == null ? null : (pulumi.Input.decodeList<WindowsWebAppSlotSiteConfigIpRestriction>(map['ipRestrictions'], (value) => WindowsWebAppSlotSiteConfigIpRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancingMode: map['loadBalancingMode'] == null ? null : (map['loadBalancingMode'] as String).input(),
+      localMysqlEnabled: map['localMysqlEnabled'] == null ? null : (map['localMysqlEnabled'] as bool).input(),
+      managedPipelineMode: map['managedPipelineMode'] == null ? null : (map['managedPipelineMode'] as String).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
+      remoteDebuggingEnabled: map['remoteDebuggingEnabled'] == null ? null : (map['remoteDebuggingEnabled'] as bool).input(),
+      remoteDebuggingVersion: map['remoteDebuggingVersion'] == null ? null : (map['remoteDebuggingVersion'] as String).input(),
+      scmIpRestrictionDefaultAction: map['scmIpRestrictionDefaultAction'] == null ? null : (map['scmIpRestrictionDefaultAction'] as String).input(),
+      scmIpRestrictions: map['scmIpRestrictions'] == null ? null : (pulumi.Input.decodeList<WindowsWebAppSlotSiteConfigScmIpRestriction>(map['scmIpRestrictions'], (value) => WindowsWebAppSlotSiteConfigScmIpRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scmMinimumTlsVersion: map['scmMinimumTlsVersion'] == null ? null : (map['scmMinimumTlsVersion'] as String).input(),
+      scmType: map['scmType'] == null ? null : (map['scmType'] as String).input(),
+      scmUseMainIpRestriction: map['scmUseMainIpRestriction'] == null ? null : (map['scmUseMainIpRestriction'] as bool).input(),
+      use32BitWorker: map['use32BitWorker'] == null ? null : (map['use32BitWorker'] as bool).input(),
+      virtualApplications: map['virtualApplications'] == null ? null : (pulumi.Input.decodeList<WindowsWebAppSlotSiteConfigVirtualApplication>(map['virtualApplications'], (value) => WindowsWebAppSlotSiteConfigVirtualApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vnetRouteAllEnabled: map['vnetRouteAllEnabled'] == null ? null : (map['vnetRouteAllEnabled'] as bool).input(),
+      websocketsEnabled: map['websocketsEnabled'] == null ? null : (map['websocketsEnabled'] as bool).input(),
+      windowsFxVersion: map['windowsFxVersion'] == null ? null : (map['windowsFxVersion'] as String).input(),
+      workerCount: map['workerCount'] == null ? null : (map['workerCount'] as int).input(),
     );
   }
 }

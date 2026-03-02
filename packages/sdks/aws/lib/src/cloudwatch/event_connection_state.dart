@@ -36,25 +36,16 @@ class EventConnectionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretArn] The Amazon Resource Name (ARN) of the secret created from the authorization parameters specified for the connection.
   EventConnectionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<EventConnectionAuthParameters>? authParameters,
-    pulumi.Output<String>? authorizationType,
-    pulumi.Output<String>? description,
-    pulumi.Output<EventConnectionInvocationConnectivityParameters>? invocationConnectivityParameters,
-    pulumi.Output<String>? kmsKeyIdentifier,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secretArn,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      authParameters = pulumi.Input.asOptionalInput<EventConnectionAuthParameters>(authParameters),
-      authorizationType = pulumi.Input.asOptionalInput<String>(authorizationType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      invocationConnectivityParameters = pulumi.Input.asOptionalInput<EventConnectionInvocationConnectivityParameters>(invocationConnectivityParameters),
-      kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(kmsKeyIdentifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretArn = pulumi.Input.asOptionalInput<String>(secretArn);
+    this.arn,
+    this.authParameters,
+    this.authorizationType,
+    this.description,
+    this.invocationConnectivityParameters,
+    this.kmsKeyIdentifier,
+    this.name,
+    this.region,
+    this.secretArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class EventConnectionState {
 
   factory EventConnectionState.fromMap(Map<String, dynamic> map) {
     return EventConnectionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      authParameters: map['authParameters'] == null ? null : pulumi.Output.create<EventConnectionAuthParameters>(EventConnectionAuthParameters.fromMap((map['authParameters'] as Map).cast<String, dynamic>())),
-      authorizationType: map['authorizationType'] == null ? null : pulumi.Output.create<String>(map['authorizationType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      invocationConnectivityParameters: map['invocationConnectivityParameters'] == null ? null : pulumi.Output.create<EventConnectionInvocationConnectivityParameters>(EventConnectionInvocationConnectivityParameters.fromMap((map['invocationConnectivityParameters'] as Map).cast<String, dynamic>())),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : pulumi.Output.create<String>(map['kmsKeyIdentifier'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretArn: map['secretArn'] == null ? null : pulumi.Output.create<String>(map['secretArn'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authParameters: map['authParameters'] == null ? null : (EventConnectionAuthParameters.fromMap((map['authParameters'] as Map).cast<String, dynamic>())).input(),
+      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      invocationConnectivityParameters: map['invocationConnectivityParameters'] == null ? null : (EventConnectionInvocationConnectivityParameters.fromMap((map['invocationConnectivityParameters'] as Map).cast<String, dynamic>())).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
     );
   }
 }

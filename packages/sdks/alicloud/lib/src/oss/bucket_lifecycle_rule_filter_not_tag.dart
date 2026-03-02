@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketLifecycleRuleFilterNotTag {
   /// The key of the tag that is specified for the objects.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the tag that is specified for the objects.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [BucketLifecycleRuleFilterNotTag].
   /// [key] The key of the tag that is specified for the objects.
@@ -24,8 +25,8 @@ class BucketLifecycleRuleFilterNotTag {
 
   factory BucketLifecycleRuleFilterNotTag.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleFilterNotTag(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

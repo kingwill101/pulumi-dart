@@ -41,25 +41,16 @@ class CertificateArgs {
   /// [resourceGroupName] The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
   /// [tags] Optional.
   CertificateArgs({
-    pulumi.Output<String>? appServicePlanId,
-    pulumi.Output<String>? keyVaultId,
-    pulumi.Output<String>? keyVaultSecretId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? pfxBlob,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      appServicePlanId = pulumi.Input.asOptionalInput<String>(appServicePlanId),
-      keyVaultId = pulumi.Input.asOptionalInput<String>(keyVaultId),
-      keyVaultSecretId = pulumi.Input.asOptionalInput<String>(keyVaultSecretId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      pfxBlob = pulumi.Input.asOptionalInput<String>(pfxBlob),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.appServicePlanId,
+    this.keyVaultId,
+    this.keyVaultSecretId,
+    this.location,
+    this.name,
+    this.password,
+    this.pfxBlob,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      appServicePlanId: map['appServicePlanId'] == null ? null : pulumi.Output.create<String>(map['appServicePlanId'] as String),
-      keyVaultId: map['keyVaultId'] == null ? null : pulumi.Output.create<String>(map['keyVaultId'] as String),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : pulumi.Output.create<String>(map['keyVaultSecretId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      pfxBlob: map['pfxBlob'] == null ? null : pulumi.Output.create<String>(map['pfxBlob'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      appServicePlanId: map['appServicePlanId'] == null ? null : (map['appServicePlanId'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      pfxBlob: map['pfxBlob'] == null ? null : (map['pfxBlob'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

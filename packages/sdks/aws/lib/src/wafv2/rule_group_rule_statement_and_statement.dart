@@ -5,7 +5,7 @@ import 'rule_group_rule_statement.dart';
 
 class RuleGroupRuleStatementAndStatement {
   /// The statements to combine.
-  final List<RuleGroupRuleStatement> statements;
+  final pulumi.Input<List<RuleGroupRuleStatement>> statements;
 
   /// Creates a new [RuleGroupRuleStatementAndStatement].
   /// [statements] The statements to combine.
@@ -15,13 +15,13 @@ class RuleGroupRuleStatementAndStatement {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statements': pulumi.Input.encodeList<RuleGroupRuleStatement, Map<String, dynamic>>(statements, (value) => value.toMap()),
+      'statements': pulumi.Input.mapInputValue<List<RuleGroupRuleStatement>, List<Map<String, dynamic>>>(statements, (value) => pulumi.Input.encodeList<RuleGroupRuleStatement, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RuleGroupRuleStatementAndStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementAndStatement(
-      statements: pulumi.Input.decodeList<RuleGroupRuleStatement>(map['statements'], (value) => RuleGroupRuleStatement.fromMap((value as Map).cast<String, dynamic>())),
+      statements: (pulumi.Input.decodeList<RuleGroupRuleStatement>(map['statements'], (value) => RuleGroupRuleStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

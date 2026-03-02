@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_spec_entity_response.dart';
 import 'cluster_status_entity_response.dart';
 import 'metadata_entity_response.dart';
@@ -7,17 +8,17 @@ import 'metadata_entity_response.dart';
 /// Details of cluster record
 class ClusterRecordResponse {
   /// Display name of the cluster
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Id of the cluster
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Type of cluster
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Metadata of the record
-  final MetadataEntityResponse? metadata;
+  final pulumi.Input<MetadataEntityResponse>? metadata;
   /// Specification of the cluster
-  final ClusterSpecEntityResponse? spec;
+  final pulumi.Input<ClusterSpecEntityResponse>? spec;
   /// Specification of the cluster
-  final ClusterStatusEntityResponse? status;
+  final pulumi.Input<ClusterStatusEntityResponse>? status;
 
   /// Creates a new [ClusterRecordResponse].
   /// [displayName] Display name of the cluster
@@ -40,20 +41,20 @@ class ClusterRecordResponse {
       'displayName': ?displayName,
       'id': ?id,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'spec': ?spec == null ? null : spec!.toMap(),
-      'status': ?status == null ? null : status!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<MetadataEntityResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<ClusterSpecEntityResponse, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<ClusterStatusEntityResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory ClusterRecordResponse.fromMap(Map<String, dynamic> map) {
     return ClusterRecordResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      spec: map['spec'] == null ? null : ClusterSpecEntityResponse.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : ClusterStatusEntityResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ClusterSpecEntityResponse.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ClusterStatusEntityResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

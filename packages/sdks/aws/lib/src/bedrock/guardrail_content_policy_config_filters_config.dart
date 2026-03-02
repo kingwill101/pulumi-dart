@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuardrailContentPolicyConfigFiltersConfig {
   /// Action to take when harmful content is detected. Valid values: `BLOCK`, `NONE`.
-  final String? inputAction;
+  final pulumi.Input<String>? inputAction;
   /// Toggles guardrail evaluation on input.
-  final bool? inputEnabled;
+  final pulumi.Input<bool>? inputEnabled;
   /// List of selected input modalities. Valid values: `IMAGE`, `TEXT`.
-  final List<String>? inputModalities;
+  final pulumi.Input<List<String>>? inputModalities;
   /// Strength for filters. Valid values: `NONE`, `LOW`, `MEDIUM`, `HIGH`.
-  final String inputStrength;
+  final pulumi.Input<String> inputStrength;
   /// Action to take when harmful content is detected. Valid values: `BLOCK`, `NONE`.
-  final String? outputAction;
+  final pulumi.Input<String>? outputAction;
   /// Toggles guardrail evaluation on output.
-  final bool? outputEnabled;
+  final pulumi.Input<bool>? outputEnabled;
   /// List of selected output modalities. Valid values: `IMAGE`, `TEXT`.
-  final List<String>? outputModalities;
+  final pulumi.Input<List<String>>? outputModalities;
   /// Strength for filters. Valid values: `NONE`, `LOW`, `MEDIUM`, `HIGH`.
-  final String outputStrength;
+  final pulumi.Input<String> outputStrength;
   /// Type of contextual grounding filter.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GuardrailContentPolicyConfigFiltersConfig].
   /// [inputAction] Action to take when harmful content is detected. Valid values: `BLOCK`, `NONE`.
@@ -59,15 +60,15 @@ class GuardrailContentPolicyConfigFiltersConfig {
 
   factory GuardrailContentPolicyConfigFiltersConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailContentPolicyConfigFiltersConfig(
-      inputAction: map['inputAction'] == null ? null : map['inputAction'] as String,
-      inputEnabled: map['inputEnabled'] == null ? null : map['inputEnabled'] as bool,
-      inputModalities: map['inputModalities'] == null ? null : (map['inputModalities'] as List).cast<String>(),
-      inputStrength: map['inputStrength'] as String,
-      outputAction: map['outputAction'] == null ? null : map['outputAction'] as String,
-      outputEnabled: map['outputEnabled'] == null ? null : map['outputEnabled'] as bool,
-      outputModalities: map['outputModalities'] == null ? null : (map['outputModalities'] as List).cast<String>(),
-      outputStrength: map['outputStrength'] as String,
-      type: map['type'] as String,
+      inputAction: map['inputAction'] == null ? null : (map['inputAction'] as String).input(),
+      inputEnabled: map['inputEnabled'] == null ? null : (map['inputEnabled'] as bool).input(),
+      inputModalities: map['inputModalities'] == null ? null : ((map['inputModalities'] as List).cast<String>()).input(),
+      inputStrength: (map['inputStrength'] as String).input(),
+      outputAction: map['outputAction'] == null ? null : (map['outputAction'] as String).input(),
+      outputEnabled: map['outputEnabled'] == null ? null : (map['outputEnabled'] as bool).input(),
+      outputModalities: map['outputModalities'] == null ? null : ((map['outputModalities'] as List).cast<String>()).input(),
+      outputStrength: (map['outputStrength'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

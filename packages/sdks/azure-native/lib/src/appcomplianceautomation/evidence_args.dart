@@ -37,25 +37,16 @@ class EvidenceArgs {
   /// [reportName] Report Name.
   /// [responsibilityId] Responsibility id.
   EvidenceArgs({
-    pulumi.Output<String>? controlId,
-    pulumi.Output<String>? evidenceName,
-    pulumi.Output<String>? evidenceType,
-    pulumi.Output<String>? extraData,
-    required pulumi.Output<String> filePath,
-    pulumi.Output<String>? offerGuid,
-    pulumi.Output<String>? reportCreatorTenantId,
-    required pulumi.Output<String> reportName,
-    pulumi.Output<String>? responsibilityId,
-  }) :
-      controlId = pulumi.Input.asOptionalInput<String>(controlId),
-      evidenceName = pulumi.Input.asOptionalInput<String>(evidenceName),
-      evidenceType = pulumi.Input.asOptionalInput<String>(evidenceType),
-      extraData = pulumi.Input.asOptionalInput<String>(extraData),
-      filePath = pulumi.Input.asInput<String>(filePath),
-      offerGuid = pulumi.Input.asOptionalInput<String>(offerGuid),
-      reportCreatorTenantId = pulumi.Input.asOptionalInput<String>(reportCreatorTenantId),
-      reportName = pulumi.Input.asInput<String>(reportName),
-      responsibilityId = pulumi.Input.asOptionalInput<String>(responsibilityId);
+    this.controlId,
+    this.evidenceName,
+    this.evidenceType,
+    this.extraData,
+    required this.filePath,
+    this.offerGuid,
+    this.reportCreatorTenantId,
+    required this.reportName,
+    this.responsibilityId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class EvidenceArgs {
 
   factory EvidenceArgs.fromMap(Map<String, dynamic> map) {
     return EvidenceArgs(
-      controlId: map['controlId'] == null ? null : pulumi.Output.create<String>(map['controlId'] as String),
-      evidenceName: map['evidenceName'] == null ? null : pulumi.Output.create<String>(map['evidenceName'] as String),
-      evidenceType: map['evidenceType'] == null ? null : pulumi.Output.create<String>(map['evidenceType'] as String),
-      extraData: map['extraData'] == null ? null : pulumi.Output.create<String>(map['extraData'] as String),
-      filePath: pulumi.Output.create<String>(map['filePath'] as String),
-      offerGuid: map['offerGuid'] == null ? null : pulumi.Output.create<String>(map['offerGuid'] as String),
-      reportCreatorTenantId: map['reportCreatorTenantId'] == null ? null : pulumi.Output.create<String>(map['reportCreatorTenantId'] as String),
-      reportName: pulumi.Output.create<String>(map['reportName'] as String),
-      responsibilityId: map['responsibilityId'] == null ? null : pulumi.Output.create<String>(map['responsibilityId'] as String),
+      controlId: map['controlId'] == null ? null : (map['controlId'] as String).input(),
+      evidenceName: map['evidenceName'] == null ? null : (map['evidenceName'] as String).input(),
+      evidenceType: map['evidenceType'] == null ? null : (map['evidenceType'] as String).input(),
+      extraData: map['extraData'] == null ? null : (map['extraData'] as String).input(),
+      filePath: (map['filePath'] as String).input(),
+      offerGuid: map['offerGuid'] == null ? null : (map['offerGuid'] as String).input(),
+      reportCreatorTenantId: map['reportCreatorTenantId'] == null ? null : (map['reportCreatorTenantId'] as String).input(),
+      reportName: (map['reportName'] as String).input(),
+      responsibilityId: map['responsibilityId'] == null ? null : (map['responsibilityId'] as String).input(),
     );
   }
 }

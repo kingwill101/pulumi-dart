@@ -45,33 +45,20 @@ class RolloutArgs {
   /// [startingPhaseId] Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
   /// [targetId] The ID of Target to which this `Rollout` is deploying.
   RolloutArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> deliveryPipelineId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> releaseId,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> rolloutId,
-    pulumi.Output<String>? startingPhaseId,
-    required pulumi.Output<String> targetId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      deliveryPipelineId = pulumi.Input.asInput<String>(deliveryPipelineId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      releaseId = pulumi.Input.asInput<String>(releaseId),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      rolloutId = pulumi.Input.asInput<String>(rolloutId),
-      startingPhaseId = pulumi.Input.asOptionalInput<String>(startingPhaseId),
-      targetId = pulumi.Input.asInput<String>(targetId);
+    this.annotations,
+    required this.deliveryPipelineId,
+    this.description,
+    this.etag,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    required this.releaseId,
+    this.requestId,
+    required this.rolloutId,
+    this.startingPhaseId,
+    required this.targetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,19 +80,19 @@ class RolloutArgs {
 
   factory RolloutArgs.fromMap(Map<String, dynamic> map) {
     return RolloutArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      deliveryPipelineId: pulumi.Output.create<String>(map['deliveryPipelineId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      releaseId: pulumi.Output.create<String>(map['releaseId'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      rolloutId: pulumi.Output.create<String>(map['rolloutId'] as String),
-      startingPhaseId: map['startingPhaseId'] == null ? null : pulumi.Output.create<String>(map['startingPhaseId'] as String),
-      targetId: pulumi.Output.create<String>(map['targetId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      deliveryPipelineId: (map['deliveryPipelineId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      releaseId: (map['releaseId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      rolloutId: (map['rolloutId'] as String).input(),
+      startingPhaseId: map['startingPhaseId'] == null ? null : (map['startingPhaseId'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
     );
   }
 }

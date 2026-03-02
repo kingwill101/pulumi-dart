@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayGatewayNetworkInterface {
   /// The Internet Protocol version 4 (IPv4) address of the interface.
-  final String? ipv4Address;
+  final pulumi.Input<String>? ipv4Address;
 
   /// Creates a new [GatewayGatewayNetworkInterface].
   /// [ipv4Address] The Internet Protocol version 4 (IPv4) address of the interface.
@@ -19,7 +20,7 @@ class GatewayGatewayNetworkInterface {
 
   factory GatewayGatewayNetworkInterface.fromMap(Map<String, dynamic> map) {
     return GatewayGatewayNetworkInterface(
-      ipv4Address: map['ipv4Address'] == null ? null : map['ipv4Address'] as String,
+      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address'] as String).input(),
     );
   }
 }

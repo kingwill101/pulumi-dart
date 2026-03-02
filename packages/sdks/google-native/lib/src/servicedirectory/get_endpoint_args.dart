@@ -20,17 +20,12 @@ class GetEndpointArgs {
   /// [project] Optional.
   /// [serviceId] Required.
   GetEndpointArgs({
-    required pulumi.Output<String> endpointId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> namespaceId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceId,
-  }) :
-      endpointId = pulumi.Input.asInput<String>(endpointId),
-      location = pulumi.Input.asInput<String>(location),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    required this.endpointId,
+    required this.location,
+    required this.namespaceId,
+    this.project,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      endpointId: pulumi.Output.create<String>(map['endpointId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      endpointId: (map['endpointId'] as String).input(),
+      location: (map['location'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogDatabaseFederatedDatabase {
   /// Name of the connection to the external metastore.
-  final String? connectionName;
+  final pulumi.Input<String>? connectionName;
   /// Unique identifier for the federated database.
-  final String? identifier;
+  final pulumi.Input<String>? identifier;
 
   /// Creates a new [CatalogDatabaseFederatedDatabase].
   /// [connectionName] Name of the connection to the external metastore.
@@ -24,8 +25,8 @@ class CatalogDatabaseFederatedDatabase {
 
   factory CatalogDatabaseFederatedDatabase.fromMap(Map<String, dynamic> map) {
     return CatalogDatabaseFederatedDatabase(
-      connectionName: map['connectionName'] == null ? null : map['connectionName'] as String,
-      identifier: map['identifier'] == null ? null : map['identifier'] as String,
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
     );
   }
 }

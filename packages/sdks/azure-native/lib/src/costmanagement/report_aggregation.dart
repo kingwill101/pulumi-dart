@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The aggregation expression to be used in the report.
 class ReportAggregation {
   /// The name of the aggregation function to use.
-  final String function;
+  final pulumi.Input<String> function;
   /// The name of the column to aggregate.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ReportAggregation].
   /// [function] The name of the aggregation function to use.
@@ -25,8 +26,8 @@ class ReportAggregation {
 
   factory ReportAggregation.fromMap(Map<String, dynamic> map) {
     return ReportAggregation(
-      function: map['function'] as String,
-      name: map['name'] as String,
+      function: (map['function'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

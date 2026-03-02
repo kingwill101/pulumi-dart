@@ -46,31 +46,19 @@ class CompanyArgs {
   /// [size] Optional. The employer's company size.
   /// [websiteUri] Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
   CompanyArgs({
-    pulumi.Output<String>? careerSiteUri,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? eeoText,
-    required pulumi.Output<String> externalId,
-    pulumi.Output<String>? headquartersAddress,
-    pulumi.Output<bool>? hiringAgency,
-    pulumi.Output<String>? imageUri,
-    pulumi.Output<List<String>>? keywordSearchableJobCustomAttributes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<CompanySize>? size,
-    pulumi.Output<String>? websiteUri,
-  }) :
-      careerSiteUri = pulumi.Input.asOptionalInput<String>(careerSiteUri),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      eeoText = pulumi.Input.asOptionalInput<String>(eeoText),
-      externalId = pulumi.Input.asInput<String>(externalId),
-      headquartersAddress = pulumi.Input.asOptionalInput<String>(headquartersAddress),
-      hiringAgency = pulumi.Input.asOptionalInput<bool>(hiringAgency),
-      imageUri = pulumi.Input.asOptionalInput<String>(imageUri),
-      keywordSearchableJobCustomAttributes = pulumi.Input.asOptionalInput<List<String>>(keywordSearchableJobCustomAttributes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      size = pulumi.Input.asOptionalInput<CompanySize>(size),
-      websiteUri = pulumi.Input.asOptionalInput<String>(websiteUri);
+    this.careerSiteUri,
+    required this.displayName,
+    this.eeoText,
+    required this.externalId,
+    this.headquartersAddress,
+    this.hiringAgency,
+    this.imageUri,
+    this.keywordSearchableJobCustomAttributes,
+    this.name,
+    this.project,
+    this.size,
+    this.websiteUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class CompanyArgs {
 
   factory CompanyArgs.fromMap(Map<String, dynamic> map) {
     return CompanyArgs(
-      careerSiteUri: map['careerSiteUri'] == null ? null : pulumi.Output.create<String>(map['careerSiteUri'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      eeoText: map['eeoText'] == null ? null : pulumi.Output.create<String>(map['eeoText'] as String),
-      externalId: pulumi.Output.create<String>(map['externalId'] as String),
-      headquartersAddress: map['headquartersAddress'] == null ? null : pulumi.Output.create<String>(map['headquartersAddress'] as String),
-      hiringAgency: map['hiringAgency'] == null ? null : pulumi.Output.create<bool>(map['hiringAgency'] as bool),
-      imageUri: map['imageUri'] == null ? null : pulumi.Output.create<String>(map['imageUri'] as String),
-      keywordSearchableJobCustomAttributes: map['keywordSearchableJobCustomAttributes'] == null ? null : pulumi.Output.create<List<String>>((map['keywordSearchableJobCustomAttributes'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<CompanySize>(CompanySize.fromValue(map['size'] as String)),
-      websiteUri: map['websiteUri'] == null ? null : pulumi.Output.create<String>(map['websiteUri'] as String),
+      careerSiteUri: map['careerSiteUri'] == null ? null : (map['careerSiteUri'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      eeoText: map['eeoText'] == null ? null : (map['eeoText'] as String).input(),
+      externalId: (map['externalId'] as String).input(),
+      headquartersAddress: map['headquartersAddress'] == null ? null : (map['headquartersAddress'] as String).input(),
+      hiringAgency: map['hiringAgency'] == null ? null : (map['hiringAgency'] as bool).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
+      keywordSearchableJobCustomAttributes: map['keywordSearchableJobCustomAttributes'] == null ? null : ((map['keywordSearchableJobCustomAttributes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      size: map['size'] == null ? null : (CompanySize.fromValue(map['size'] as String)).input(),
+      websiteUri: map['websiteUri'] == null ? null : (map['websiteUri'] as String).input(),
     );
   }
 }

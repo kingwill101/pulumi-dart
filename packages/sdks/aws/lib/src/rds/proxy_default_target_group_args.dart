@@ -20,13 +20,10 @@ class ProxyDefaultTargetGroupArgs {
   /// [dbProxyName] Name of the RDS DB Proxy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ProxyDefaultTargetGroupArgs({
-    pulumi.Output<ProxyDefaultTargetGroupConnectionPoolConfig>? connectionPoolConfig,
-    required pulumi.Output<String> dbProxyName,
-    pulumi.Output<String>? region,
-  }) :
-      connectionPoolConfig = pulumi.Input.asOptionalInput<ProxyDefaultTargetGroupConnectionPoolConfig>(connectionPoolConfig),
-      dbProxyName = pulumi.Input.asInput<String>(dbProxyName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.connectionPoolConfig,
+    required this.dbProxyName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class ProxyDefaultTargetGroupArgs {
 
   factory ProxyDefaultTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProxyDefaultTargetGroupArgs(
-      connectionPoolConfig: map['connectionPoolConfig'] == null ? null : pulumi.Output.create<ProxyDefaultTargetGroupConnectionPoolConfig>(ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((map['connectionPoolConfig'] as Map).cast<String, dynamic>())),
-      dbProxyName: pulumi.Output.create<String>(map['dbProxyName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      connectionPoolConfig: map['connectionPoolConfig'] == null ? null : (ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((map['connectionPoolConfig'] as Map).cast<String, dynamic>())).input(),
+      dbProxyName: (map['dbProxyName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

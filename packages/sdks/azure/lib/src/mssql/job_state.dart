@@ -16,13 +16,10 @@ class JobState {
   /// [jobAgentId] The ID of the Elastic Job Agent. Changing this forces a new Elastic Job to be created.
   /// [name] The name which should be used for this Elastic Job. Changing this forces a new Elastic Job to be created.
   JobState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? jobAgentId,
-    pulumi.Output<String>? name,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      jobAgentId = pulumi.Input.asOptionalInput<String>(jobAgentId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.description,
+    this.jobAgentId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class JobState {
 
   factory JobState.fromMap(Map<String, dynamic> map) {
     return JobState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      jobAgentId: map['jobAgentId'] == null ? null : pulumi.Output.create<String>(map['jobAgentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      jobAgentId: map['jobAgentId'] == null ? null : (map['jobAgentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

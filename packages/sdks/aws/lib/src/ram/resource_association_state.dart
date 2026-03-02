@@ -16,13 +16,10 @@ class ResourceAssociationState {
   /// [resourceArn] Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
   /// [resourceShareArn] Amazon Resource Name (ARN) of the RAM Resource Share.
   ResourceAssociationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? resourceShareArn,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      resourceShareArn = pulumi.Input.asOptionalInput<String>(resourceShareArn);
+    this.region,
+    this.resourceArn,
+    this.resourceShareArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ResourceAssociationState {
 
   factory ResourceAssociationState.fromMap(Map<String, dynamic> map) {
     return ResourceAssociationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      resourceShareArn: map['resourceShareArn'] == null ? null : pulumi.Output.create<String>(map['resourceShareArn'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      resourceShareArn: map['resourceShareArn'] == null ? null : (map['resourceShareArn'] as String).input(),
     );
   }
 }

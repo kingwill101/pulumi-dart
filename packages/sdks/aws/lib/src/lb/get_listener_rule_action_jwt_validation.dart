@@ -5,11 +5,11 @@ import 'get_listener_rule_action_jwt_validation_additional_claim.dart';
 
 class GetListenerRuleActionJwtValidation {
   /// Additional claims to validate.
-  final List<GetListenerRuleActionJwtValidationAdditionalClaim>? additionalClaims;
+  final pulumi.Input<List<GetListenerRuleActionJwtValidationAdditionalClaim>>? additionalClaims;
   /// Issuer of the JWT.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// JSON Web Key Set (JWKS) endpoint.
-  final String jwksEndpoint;
+  final pulumi.Input<String> jwksEndpoint;
 
   /// Creates a new [GetListenerRuleActionJwtValidation].
   /// [additionalClaims] Additional claims to validate.
@@ -23,7 +23,7 @@ class GetListenerRuleActionJwtValidation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalClaims': ?additionalClaims == null ? null : pulumi.Input.encodeList<GetListenerRuleActionJwtValidationAdditionalClaim, Map<String, dynamic>>(additionalClaims!, (value) => value.toMap()),
+      'additionalClaims': ?pulumi.Input.mapOptionalInputValue<List<GetListenerRuleActionJwtValidationAdditionalClaim>, List<Map<String, dynamic>>>(additionalClaims, (value) => pulumi.Input.encodeList<GetListenerRuleActionJwtValidationAdditionalClaim, Map<String, dynamic>>(value, (value) => value.toMap())),
       'issuer': issuer,
       'jwksEndpoint': jwksEndpoint,
     };
@@ -31,9 +31,9 @@ class GetListenerRuleActionJwtValidation {
 
   factory GetListenerRuleActionJwtValidation.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionJwtValidation(
-      additionalClaims: map['additionalClaims'] == null ? null : pulumi.Input.decodeList<GetListenerRuleActionJwtValidationAdditionalClaim>(map['additionalClaims'], (value) => GetListenerRuleActionJwtValidationAdditionalClaim.fromMap((value as Map).cast<String, dynamic>())),
-      issuer: map['issuer'] as String,
-      jwksEndpoint: map['jwksEndpoint'] as String,
+      additionalClaims: map['additionalClaims'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleActionJwtValidationAdditionalClaim>(map['additionalClaims'], (value) => GetListenerRuleActionJwtValidationAdditionalClaim.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      issuer: (map['issuer'] as String).input(),
+      jwksEndpoint: (map['jwksEndpoint'] as String).input(),
     );
   }
 }

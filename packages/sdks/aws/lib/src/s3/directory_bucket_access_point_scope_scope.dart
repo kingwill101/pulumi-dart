@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryBucketAccessPointScopeScope {
   /// You can specify a list of API operations as permissions for the access point.
-  final List<String>? permissions;
+  final pulumi.Input<List<String>>? permissions;
   /// You can specify a list of prefixes, but the total length of characters of all prefixes must be less than 256 bytes.
   ///
   /// * For more information on access point scope, see [AWS Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets-manage-scope.html).
-  final List<String>? prefixes;
+  final pulumi.Input<List<String>>? prefixes;
 
   /// Creates a new [DirectoryBucketAccessPointScopeScope].
   /// [permissions] You can specify a list of API operations as permissions for the access point.
@@ -26,8 +27,8 @@ class DirectoryBucketAccessPointScopeScope {
 
   factory DirectoryBucketAccessPointScopeScope.fromMap(Map<String, dynamic> map) {
     return DirectoryBucketAccessPointScopeScope(
-      permissions: map['permissions'] == null ? null : (map['permissions'] as List).cast<String>(),
-      prefixes: map['prefixes'] == null ? null : (map['prefixes'] as List).cast<String>(),
+      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
+      prefixes: map['prefixes'] == null ? null : ((map['prefixes'] as List).cast<String>()).input(),
     );
   }
 }

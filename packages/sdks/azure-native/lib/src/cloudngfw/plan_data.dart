@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Billing plan information.
 class PlanData {
   /// different billing cycles like MONTHLY/WEEKLY
-  final String billingCycle;
+  final pulumi.Input<String> billingCycle;
   /// plan id as published by Liftr.PAN
-  final String planId;
+  final pulumi.Input<String> planId;
   /// different usage type like PAYG/COMMITTED
-  final String? usageType;
+  final pulumi.Input<String>? usageType;
 
   /// Creates a new [PlanData].
   /// [billingCycle] different billing cycles like MONTHLY/WEEKLY
@@ -30,9 +31,9 @@ class PlanData {
 
   factory PlanData.fromMap(Map<String, dynamic> map) {
     return PlanData(
-      billingCycle: map['billingCycle'] as String,
-      planId: map['planId'] as String,
-      usageType: map['usageType'] == null ? null : map['usageType'] as String,
+      billingCycle: (map['billingCycle'] as String).input(),
+      planId: (map['planId'] as String).input(),
+      usageType: map['usageType'] == null ? null : (map['usageType'] as String).input(),
     );
   }
 }

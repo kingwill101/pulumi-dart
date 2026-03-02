@@ -44,31 +44,19 @@ class ServerlessCollectionState {
   /// [timeouts] Optional.
   /// [type] Type of collection. One of `SEARCH`, `TIMESERIES`, or `VECTORSEARCH`. Defaults to `TIMESERIES`.
   ServerlessCollectionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? collectionEndpoint,
-    pulumi.Output<String>? dashboardEndpoint,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kmsKeyArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? standbyReplicas,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<ServerlessCollectionTimeouts>? timeouts,
-    pulumi.Output<String>? type,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      collectionEndpoint = pulumi.Input.asOptionalInput<String>(collectionEndpoint),
-      dashboardEndpoint = pulumi.Input.asOptionalInput<String>(dashboardEndpoint),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      standbyReplicas = pulumi.Input.asOptionalInput<String>(standbyReplicas),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<ServerlessCollectionTimeouts>(timeouts),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.arn,
+    this.collectionEndpoint,
+    this.dashboardEndpoint,
+    this.description,
+    this.kmsKeyArn,
+    this.name,
+    this.region,
+    this.standbyReplicas,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class ServerlessCollectionState {
 
   factory ServerlessCollectionState.fromMap(Map<String, dynamic> map) {
     return ServerlessCollectionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      collectionEndpoint: map['collectionEndpoint'] == null ? null : pulumi.Output.create<String>(map['collectionEndpoint'] as String),
-      dashboardEndpoint: map['dashboardEndpoint'] == null ? null : pulumi.Output.create<String>(map['dashboardEndpoint'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['kmsKeyArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      standbyReplicas: map['standbyReplicas'] == null ? null : pulumi.Output.create<String>(map['standbyReplicas'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ServerlessCollectionTimeouts>(ServerlessCollectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      collectionEndpoint: map['collectionEndpoint'] == null ? null : (map['collectionEndpoint'] as String).input(),
+      dashboardEndpoint: map['dashboardEndpoint'] == null ? null : (map['dashboardEndpoint'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      standbyReplicas: map['standbyReplicas'] == null ? null : (map['standbyReplicas'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ServerlessCollectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

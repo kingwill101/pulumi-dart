@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of the shared access key.
 class SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse {
   /// Name of the key.
-  final String keyName;
+  final pulumi.Input<String> keyName;
   /// Primary SAS key value.
-  final String? primaryKey;
+  final pulumi.Input<String>? primaryKey;
   /// Rights that this key has.
-  final String rights;
+  final pulumi.Input<String> rights;
   /// Secondary SAS key value.
-  final String? secondaryKey;
+  final pulumi.Input<String>? secondaryKey;
 
   /// Creates a new [SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse].
   /// [keyName] Name of the key.
@@ -35,10 +36,10 @@ class SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse {
 
   factory SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse(
-      keyName: map['keyName'] as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as String,
-      rights: map['rights'] as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey'] as String,
+      keyName: (map['keyName'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      rights: (map['rights'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
     );
   }
 }

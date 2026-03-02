@@ -20,13 +20,10 @@ class FleetUpdateStrategyArgs {
   /// [name] The name which should be used for this Kubernetes Fleet Update Strategy. Changing this forces a new Kubernetes Fleet Update Strategy to be created.
   /// [stages] One or more `stage` blocks as defined below.
   FleetUpdateStrategyArgs({
-    required pulumi.Output<String> kubernetesFleetManagerId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<FleetUpdateStrategyStage>> stages,
-  }) :
-      kubernetesFleetManagerId = pulumi.Input.asInput<String>(kubernetesFleetManagerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      stages = pulumi.Input.asInput<List<FleetUpdateStrategyStage>>(stages);
+    required this.kubernetesFleetManagerId,
+    this.name,
+    required this.stages,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class FleetUpdateStrategyArgs {
 
   factory FleetUpdateStrategyArgs.fromMap(Map<String, dynamic> map) {
     return FleetUpdateStrategyArgs(
-      kubernetesFleetManagerId: pulumi.Output.create<String>(map['kubernetesFleetManagerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      stages: pulumi.Output.create<List<FleetUpdateStrategyStage>>(pulumi.Input.decodeList<FleetUpdateStrategyStage>(map['stages'], (value) => FleetUpdateStrategyStage.fromMap((value as Map).cast<String, dynamic>()))),
+      kubernetesFleetManagerId: (map['kubernetesFleetManagerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      stages: (pulumi.Input.decodeList<FleetUpdateStrategyStage>(map['stages'], (value) => FleetUpdateStrategyStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

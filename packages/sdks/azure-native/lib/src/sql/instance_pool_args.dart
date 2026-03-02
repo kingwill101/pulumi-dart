@@ -38,25 +38,16 @@ class InstancePoolArgs {
   /// [tags] Resource tags.
   /// [vCores] Count of vCores belonging to this instance pool.
   InstancePoolArgs({
-    pulumi.Output<String>? instancePoolName,
-    required pulumi.Output<String> licenseType,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? maintenanceConfigurationId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<int> vCores,
-  }) :
-      instancePoolName = pulumi.Input.asOptionalInput<String>(instancePoolName),
-      licenseType = pulumi.Input.asInput<String>(licenseType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maintenanceConfigurationId = pulumi.Input.asOptionalInput<String>(maintenanceConfigurationId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vCores = pulumi.Input.asInput<int>(vCores);
+    this.instancePoolName,
+    required this.licenseType,
+    this.location,
+    this.maintenanceConfigurationId,
+    required this.resourceGroupName,
+    this.sku,
+    required this.subnetId,
+    this.tags,
+    required this.vCores,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class InstancePoolArgs {
 
   factory InstancePoolArgs.fromMap(Map<String, dynamic> map) {
     return InstancePoolArgs(
-      instancePoolName: map['instancePoolName'] == null ? null : pulumi.Output.create<String>(map['instancePoolName'] as String),
-      licenseType: pulumi.Output.create<String>(map['licenseType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : pulumi.Output.create<String>(map['maintenanceConfigurationId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vCores: pulumi.Output.create<int>(map['vCores'] as int),
+      instancePoolName: map['instancePoolName'] == null ? null : (map['instancePoolName'] as String).input(),
+      licenseType: (map['licenseType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vCores: (map['vCores'] as int).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class SharedPrivateLinkResourceArgs {
   /// [sharedPrivateLinkResourceName] The Shared Private Link resource name.
   /// [watcherName] The database watcher name.
   SharedPrivateLinkResourceArgs({
-    pulumi.Output<String>? dnsZone,
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> privateLinkResourceId,
-    required pulumi.Output<String> requestMessage,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sharedPrivateLinkResourceName,
-    required pulumi.Output<String> watcherName,
-  }) :
-      dnsZone = pulumi.Input.asOptionalInput<String>(dnsZone),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      privateLinkResourceId = pulumi.Input.asInput<String>(privateLinkResourceId),
-      requestMessage = pulumi.Input.asInput<String>(requestMessage),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sharedPrivateLinkResourceName = pulumi.Input.asOptionalInput<String>(sharedPrivateLinkResourceName),
-      watcherName = pulumi.Input.asInput<String>(watcherName);
+    this.dnsZone,
+    required this.groupId,
+    required this.privateLinkResourceId,
+    required this.requestMessage,
+    required this.resourceGroupName,
+    this.sharedPrivateLinkResourceName,
+    required this.watcherName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class SharedPrivateLinkResourceArgs {
 
   factory SharedPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceArgs(
-      dnsZone: map['dnsZone'] == null ? null : pulumi.Output.create<String>(map['dnsZone'] as String),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      privateLinkResourceId: pulumi.Output.create<String>(map['privateLinkResourceId'] as String),
-      requestMessage: pulumi.Output.create<String>(map['requestMessage'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : pulumi.Output.create<String>(map['sharedPrivateLinkResourceName'] as String),
-      watcherName: pulumi.Output.create<String>(map['watcherName'] as String),
+      dnsZone: map['dnsZone'] == null ? null : (map['dnsZone'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      privateLinkResourceId: (map['privateLinkResourceId'] as String).input(),
+      requestMessage: (map['requestMessage'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : (map['sharedPrivateLinkResourceName'] as String).input(),
+      watcherName: (map['watcherName'] as String).input(),
     );
   }
 }

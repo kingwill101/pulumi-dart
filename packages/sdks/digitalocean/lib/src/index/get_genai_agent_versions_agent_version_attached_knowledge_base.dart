@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase {
   /// Whether the knowledge base is deleted
-  final bool isDeleted;
+  final pulumi.Input<bool> isDeleted;
   /// Name of the knowledge base
-  final String name;
+  final pulumi.Input<String> name;
   /// Knowledge base UUID
-  final String uuid;
+  final pulumi.Input<String> uuid;
 
   /// Creates a new [GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase].
   /// [isDeleted] Whether the knowledge base is deleted
@@ -29,9 +30,9 @@ class GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase {
 
   factory GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase(
-      isDeleted: map['isDeleted'] as bool,
-      name: map['name'] as String,
-      uuid: map['uuid'] as String,
+      isDeleted: (map['isDeleted'] as bool).input(),
+      name: (map['name'] as String).input(),
+      uuid: (map['uuid'] as String).input(),
     );
   }
 }

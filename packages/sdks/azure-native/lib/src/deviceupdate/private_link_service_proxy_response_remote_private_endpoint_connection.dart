@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Remote private endpoint connection details.
 class PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection {
   /// Remote private endpoint connection ID.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection].
   /// [id] Remote private endpoint connection ID.
@@ -20,7 +21,7 @@ class PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection {
 
   factory PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

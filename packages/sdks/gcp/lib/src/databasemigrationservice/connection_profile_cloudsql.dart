@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_profile_cloudsql_settings.dart';
 
 class ConnectionProfileCloudsql {
   /// (Output)
   /// Output only. The Cloud SQL instance ID that this connection profile is associated with.
-  final String? cloudSqlId;
+  final pulumi.Input<String>? cloudSqlId;
   /// (Output)
   /// Output only. The Cloud SQL database instance's private IP.
-  final String? privateIp;
+  final pulumi.Input<String>? privateIp;
   /// (Output)
   /// Output only. The Cloud SQL database instance's public IP.
-  final String? publicIp;
+  final pulumi.Input<String>? publicIp;
   /// Immutable. Metadata used to create the destination Cloud SQL database.
   /// Structure is documented below.
-  final ConnectionProfileCloudsqlSettings? settings;
+  final pulumi.Input<ConnectionProfileCloudsqlSettings>? settings;
 
   /// Creates a new [ConnectionProfileCloudsql].
   /// [cloudSqlId] (Output)
@@ -33,16 +34,16 @@ class ConnectionProfileCloudsql {
       'cloudSqlId': ?cloudSqlId,
       'privateIp': ?privateIp,
       'publicIp': ?publicIp,
-      'settings': ?settings == null ? null : settings!.toMap(),
+      'settings': ?pulumi.Input.mapOptionalInputValue<ConnectionProfileCloudsqlSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
     };
   }
 
   factory ConnectionProfileCloudsql.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileCloudsql(
-      cloudSqlId: map['cloudSqlId'] == null ? null : map['cloudSqlId'] as String,
-      privateIp: map['privateIp'] == null ? null : map['privateIp'] as String,
-      publicIp: map['publicIp'] == null ? null : map['publicIp'] as String,
-      settings: map['settings'] == null ? null : ConnectionProfileCloudsqlSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId'] as String).input(),
+      privateIp: map['privateIp'] == null ? null : (map['privateIp'] as String).input(),
+      publicIp: map['publicIp'] == null ? null : (map['publicIp'] as String).input(),
+      settings: map['settings'] == null ? null : (ConnectionProfileCloudsqlSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

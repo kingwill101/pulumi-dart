@@ -27,17 +27,12 @@ class GreyTagRouteArgs {
   /// [greyTagRouteName] The name of GreyTagRoute.
   /// [scRules] The grayscale rule created for SpringCloud Application. See `sc_rules` below.
   GreyTagRouteArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<GreyTagRouteDubboRule>>? dubboRules,
-    required pulumi.Output<String> greyTagRouteName,
-    pulumi.Output<List<GreyTagRouteScRule>>? scRules,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dubboRules = pulumi.Input.asOptionalInput<List<GreyTagRouteDubboRule>>(dubboRules),
-      greyTagRouteName = pulumi.Input.asInput<String>(greyTagRouteName),
-      scRules = pulumi.Input.asOptionalInput<List<GreyTagRouteScRule>>(scRules);
+    required this.appId,
+    this.description,
+    this.dubboRules,
+    required this.greyTagRouteName,
+    this.scRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GreyTagRouteArgs {
 
   factory GreyTagRouteArgs.fromMap(Map<String, dynamic> map) {
     return GreyTagRouteArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dubboRules: map['dubboRules'] == null ? null : pulumi.Output.create<List<GreyTagRouteDubboRule>>(pulumi.Input.decodeList<GreyTagRouteDubboRule>(map['dubboRules'], (value) => GreyTagRouteDubboRule.fromMap((value as Map).cast<String, dynamic>()))),
-      greyTagRouteName: pulumi.Output.create<String>(map['greyTagRouteName'] as String),
-      scRules: map['scRules'] == null ? null : pulumi.Output.create<List<GreyTagRouteScRule>>(pulumi.Input.decodeList<GreyTagRouteScRule>(map['scRules'], (value) => GreyTagRouteScRule.fromMap((value as Map).cast<String, dynamic>()))),
+      appId: (map['appId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dubboRules: map['dubboRules'] == null ? null : (pulumi.Input.decodeList<GreyTagRouteDubboRule>(map['dubboRules'], (value) => GreyTagRouteDubboRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      greyTagRouteName: (map['greyTagRouteName'] as String).input(),
+      scRules: map['scRules'] == null ? null : (pulumi.Input.decodeList<GreyTagRouteScRule>(map['scRules'], (value) => GreyTagRouteScRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

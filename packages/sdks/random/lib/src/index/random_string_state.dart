@@ -46,33 +46,20 @@ class RandomStringState {
   /// [special] Include special characters in the result. These are `!@#$%&*()-_=+[]{}<>:?`. Default value is `true`.
   /// [upper] Include uppercase alphabet characters in the result. Default value is `true`.
   RandomStringState({
-    pulumi.Output<Map<String, String>>? keepers,
-    pulumi.Output<int>? length,
-    pulumi.Output<bool>? lower,
-    pulumi.Output<int>? minLower,
-    pulumi.Output<int>? minNumeric,
-    pulumi.Output<int>? minSpecial,
-    pulumi.Output<int>? minUpper,
-    pulumi.Output<bool>? number,
-    pulumi.Output<bool>? numeric,
-    pulumi.Output<String>? overrideSpecial,
-    pulumi.Output<String>? result,
-    pulumi.Output<bool>? special,
-    pulumi.Output<bool>? upper,
-  }) :
-      keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
-      length = pulumi.Input.asOptionalInput<int>(length),
-      lower = pulumi.Input.asOptionalInput<bool>(lower),
-      minLower = pulumi.Input.asOptionalInput<int>(minLower),
-      minNumeric = pulumi.Input.asOptionalInput<int>(minNumeric),
-      minSpecial = pulumi.Input.asOptionalInput<int>(minSpecial),
-      minUpper = pulumi.Input.asOptionalInput<int>(minUpper),
-      number = pulumi.Input.asOptionalInput<bool>(number),
-      numeric = pulumi.Input.asOptionalInput<bool>(numeric),
-      overrideSpecial = pulumi.Input.asOptionalInput<String>(overrideSpecial),
-      result = pulumi.Input.asOptionalInput<String>(result),
-      special = pulumi.Input.asOptionalInput<bool>(special),
-      upper = pulumi.Input.asOptionalInput<bool>(upper);
+    this.keepers,
+    this.length,
+    this.lower,
+    this.minLower,
+    this.minNumeric,
+    this.minSpecial,
+    this.minUpper,
+    this.number,
+    this.numeric,
+    this.overrideSpecial,
+    this.result,
+    this.special,
+    this.upper,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,19 +81,19 @@ class RandomStringState {
 
   factory RandomStringState.fromMap(Map<String, dynamic> map) {
     return RandomStringState(
-      keepers: map['keepers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['keepers'] as Map).cast<String, String>()),
-      length: map['length'] == null ? null : pulumi.Output.create<int>(map['length'] as int),
-      lower: map['lower'] == null ? null : pulumi.Output.create<bool>(map['lower'] as bool),
-      minLower: map['minLower'] == null ? null : pulumi.Output.create<int>(map['minLower'] as int),
-      minNumeric: map['minNumeric'] == null ? null : pulumi.Output.create<int>(map['minNumeric'] as int),
-      minSpecial: map['minSpecial'] == null ? null : pulumi.Output.create<int>(map['minSpecial'] as int),
-      minUpper: map['minUpper'] == null ? null : pulumi.Output.create<int>(map['minUpper'] as int),
-      number: map['number'] == null ? null : pulumi.Output.create<bool>(map['number'] as bool),
-      numeric: map['numeric'] == null ? null : pulumi.Output.create<bool>(map['numeric'] as bool),
-      overrideSpecial: map['overrideSpecial'] == null ? null : pulumi.Output.create<String>(map['overrideSpecial'] as String),
-      result: map['result'] == null ? null : pulumi.Output.create<String>(map['result'] as String),
-      special: map['special'] == null ? null : pulumi.Output.create<bool>(map['special'] as bool),
-      upper: map['upper'] == null ? null : pulumi.Output.create<bool>(map['upper'] as bool),
+      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      length: map['length'] == null ? null : (map['length'] as int).input(),
+      lower: map['lower'] == null ? null : (map['lower'] as bool).input(),
+      minLower: map['minLower'] == null ? null : (map['minLower'] as int).input(),
+      minNumeric: map['minNumeric'] == null ? null : (map['minNumeric'] as int).input(),
+      minSpecial: map['minSpecial'] == null ? null : (map['minSpecial'] as int).input(),
+      minUpper: map['minUpper'] == null ? null : (map['minUpper'] as int).input(),
+      number: map['number'] == null ? null : (map['number'] as bool).input(),
+      numeric: map['numeric'] == null ? null : (map['numeric'] as bool).input(),
+      overrideSpecial: map['overrideSpecial'] == null ? null : (map['overrideSpecial'] as String).input(),
+      result: map['result'] == null ? null : (map['result'] as String).input(),
+      special: map['special'] == null ? null : (map['special'] as bool).input(),
+      upper: map['upper'] == null ? null : (map['upper'] as bool).input(),
     );
   }
 }

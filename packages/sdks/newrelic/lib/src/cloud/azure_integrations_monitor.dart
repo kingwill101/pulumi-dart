@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureIntegrationsMonitor {
   /// A flag that specifies if the integration is active
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Specify resource tags in 'key:value' form to be excluded from monitoring
-  final List<String>? excludeTags;
+  final pulumi.Input<List<String>>? excludeTags;
   /// Specify resource tags in 'key:value' form to be monitored
-  final List<String>? includeTags;
+  final pulumi.Input<List<String>>? includeTags;
   /// The data polling interval in seconds
-  final int? metricsPollingInterval;
+  final pulumi.Input<int>? metricsPollingInterval;
   /// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  final List<String>? resourceGroups;
+  final pulumi.Input<List<String>>? resourceGroups;
   /// Specify each Azure resource type that needs to be monitored
-  final List<String>? resourceTypes;
+  final pulumi.Input<List<String>>? resourceTypes;
 
   /// Creates a new [AzureIntegrationsMonitor].
   /// [enabled] A flag that specifies if the integration is active
@@ -44,12 +45,12 @@ class AzureIntegrationsMonitor {
 
   factory AzureIntegrationsMonitor.fromMap(Map<String, dynamic> map) {
     return AzureIntegrationsMonitor(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      excludeTags: map['excludeTags'] == null ? null : (map['excludeTags'] as List).cast<String>(),
-      includeTags: map['includeTags'] == null ? null : (map['includeTags'] as List).cast<String>(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : map['metricsPollingInterval'] as int,
-      resourceGroups: map['resourceGroups'] == null ? null : (map['resourceGroups'] as List).cast<String>(),
-      resourceTypes: map['resourceTypes'] == null ? null : (map['resourceTypes'] as List).cast<String>(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      excludeTags: map['excludeTags'] == null ? null : ((map['excludeTags'] as List).cast<String>()).input(),
+      includeTags: map['includeTags'] == null ? null : ((map['includeTags'] as List).cast<String>()).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups'] as List).cast<String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
     );
   }
 }

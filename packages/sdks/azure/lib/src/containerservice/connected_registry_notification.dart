@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectedRegistryNotification {
   /// The action of the artifact that wants to be subscribed for the Connected Registry. Possible values are `push`, `delete` and `*` (i.e. any).
-  final String action;
+  final pulumi.Input<String> action;
   /// The digest of the artifact that wants to be subscribed for the Connected Registry.
   ///
   /// > **Note:** One of either `tag` or `digest` can be specified.
-  final String? digest;
+  final pulumi.Input<String>? digest;
   /// The name of the artifact that wants to be subscribed for the Connected Registry.
-  final String name;
+  final pulumi.Input<String> name;
   /// The tag of the artifact that wants to be subscribed for the Connected Registry.
-  final String? tag;
+  final pulumi.Input<String>? tag;
 
   /// Creates a new [ConnectedRegistryNotification].
   /// [action] The action of the artifact that wants to be subscribed for the Connected Registry. Possible values are `push`, `delete` and `*` (i.e. any).
@@ -36,10 +37,10 @@ class ConnectedRegistryNotification {
 
   factory ConnectedRegistryNotification.fromMap(Map<String, dynamic> map) {
     return ConnectedRegistryNotification(
-      action: map['action'] as String,
-      digest: map['digest'] == null ? null : map['digest'] as String,
-      name: map['name'] as String,
-      tag: map['tag'] == null ? null : map['tag'] as String,
+      action: (map['action'] as String).input(),
+      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
+      name: (map['name'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
     );
   }
 }

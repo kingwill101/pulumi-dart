@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsS3BucketPolicy
 class AwsS3BucketPolicyProperties {
   /// <p>The bucket policy as a JSON document.</p>
-  final String? policy;
+  final pulumi.Input<String>? policy;
 
   /// Creates a new [AwsS3BucketPolicyProperties].
   /// [policy] <p>The bucket policy as a JSON document.</p>
@@ -20,7 +21,7 @@ class AwsS3BucketPolicyProperties {
 
   factory AwsS3BucketPolicyProperties.fromMap(Map<String, dynamic> map) {
     return AwsS3BucketPolicyProperties(
-      policy: map['policy'] == null ? null : map['policy'] as String,
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
     );
   }
 }

@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesIommuDriver {
   /// Configures the address width bits for the IOMMU driver.
-  final double? awBits;
+  final pulumi.Input<double>? awBits;
   /// Sets the caching mode for the IOMMU device.
-  final String? cachingMode;
+  final pulumi.Input<String>? cachingMode;
   /// Indicates if DMA address translation is enabled for the IOMMU driver.
-  final String? dmaTranslation;
+  final pulumi.Input<String>? dmaTranslation;
   /// Configures the EIM (External Interrupt Management) setting for the IOMMU driver.
-  final String? eim;
+  final pulumi.Input<String>? eim;
   /// Sets the interrupt remapping feature for the IOMMU driver, allowing for improved handling of interrupts.
-  final String? intRemap;
+  final pulumi.Input<String>? intRemap;
   /// Enables the IOTLB (Input/Output Translation Lookaside Buffer) feature for the IOMMU driver, optimizing memory translation for I/O devices.
-  final String? iotlb;
+  final pulumi.Input<String>? iotlb;
   /// Controls the passthrough capability of the IOMMU driver, allowing direct device assignments.
-  final String? passthrough;
+  final pulumi.Input<String>? passthrough;
   /// Configures the XT (Extended Translation) support for the IOMMU driver, enabling advanced memory translation features.
-  final String? xtSup;
+  final pulumi.Input<String>? xtSup;
 
   /// Creates a new [DomainDevicesIommuDriver].
   /// [awBits] Configures the address width bits for the IOMMU driver.
@@ -54,14 +55,14 @@ class DomainDevicesIommuDriver {
 
   factory DomainDevicesIommuDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesIommuDriver(
-      awBits: map['awBits'] == null ? null : map['awBits'] as double,
-      cachingMode: map['cachingMode'] == null ? null : map['cachingMode'] as String,
-      dmaTranslation: map['dmaTranslation'] == null ? null : map['dmaTranslation'] as String,
-      eim: map['eim'] == null ? null : map['eim'] as String,
-      intRemap: map['intRemap'] == null ? null : map['intRemap'] as String,
-      iotlb: map['iotlb'] == null ? null : map['iotlb'] as String,
-      passthrough: map['passthrough'] == null ? null : map['passthrough'] as String,
-      xtSup: map['xtSup'] == null ? null : map['xtSup'] as String,
+      awBits: map['awBits'] == null ? null : (map['awBits'] as double).input(),
+      cachingMode: map['cachingMode'] == null ? null : (map['cachingMode'] as String).input(),
+      dmaTranslation: map['dmaTranslation'] == null ? null : (map['dmaTranslation'] as String).input(),
+      eim: map['eim'] == null ? null : (map['eim'] as String).input(),
+      intRemap: map['intRemap'] == null ? null : (map['intRemap'] as String).input(),
+      iotlb: map['iotlb'] == null ? null : (map['iotlb'] as String).input(),
+      passthrough: map['passthrough'] == null ? null : (map['passthrough'] as String).input(),
+      xtSup: map['xtSup'] == null ? null : (map['xtSup'] as String).input(),
     );
   }
 }

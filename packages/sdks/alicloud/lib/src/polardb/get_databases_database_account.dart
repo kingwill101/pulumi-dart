@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabasesDatabaseAccount {
   /// Account name.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// Account status.
-  final String accountStatus;
+  final pulumi.Input<String> accountStatus;
   /// The privilege status of account.
-  final String privilegeStatus;
+  final pulumi.Input<String> privilegeStatus;
 
   /// Creates a new [GetDatabasesDatabaseAccount].
   /// [accountName] Account name.
@@ -29,9 +30,9 @@ class GetDatabasesDatabaseAccount {
 
   factory GetDatabasesDatabaseAccount.fromMap(Map<String, dynamic> map) {
     return GetDatabasesDatabaseAccount(
-      accountName: map['accountName'] as String,
-      accountStatus: map['accountStatus'] as String,
-      privilegeStatus: map['privilegeStatus'] as String,
+      accountName: (map['accountName'] as String).input(),
+      accountStatus: (map['accountStatus'] as String).input(),
+      privilegeStatus: (map['privilegeStatus'] as String).input(),
     );
   }
 }

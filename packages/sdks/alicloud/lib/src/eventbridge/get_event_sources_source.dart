@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEventSourcesSource {
   /// The detail describe of event source.
-  final String description;
+  final pulumi.Input<String> description;
   /// The code name of event source.
-  final String eventSourceName;
+  final pulumi.Input<String> eventSourceName;
   /// The config of external data source.
-  final Map<String, String> externalSourceConfig;
+  final pulumi.Input<Map<String, String>> externalSourceConfig;
   /// The type of external data source.
-  final String externalSourceType;
+  final pulumi.Input<String> externalSourceType;
   /// The ID of the Event Source.
-  final String id;
+  final pulumi.Input<String> id;
   /// Whether to connect to an external data source.
-  final bool linkedExternalSource;
-  final String type;
+  final pulumi.Input<bool> linkedExternalSource;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetEventSourcesSource].
   /// [description] The detail describe of event source.
@@ -48,13 +49,13 @@ class GetEventSourcesSource {
 
   factory GetEventSourcesSource.fromMap(Map<String, dynamic> map) {
     return GetEventSourcesSource(
-      description: map['description'] as String,
-      eventSourceName: map['eventSourceName'] as String,
-      externalSourceConfig: (map['externalSourceConfig'] as Map).cast<String, String>(),
-      externalSourceType: map['externalSourceType'] as String,
-      id: map['id'] as String,
-      linkedExternalSource: map['linkedExternalSource'] as bool,
-      type: map['type'] as String,
+      description: (map['description'] as String).input(),
+      eventSourceName: (map['eventSourceName'] as String).input(),
+      externalSourceConfig: ((map['externalSourceConfig'] as Map).cast<String, String>()).input(),
+      externalSourceType: (map['externalSourceType'] as String).input(),
+      id: (map['id'] as String).input(),
+      linkedExternalSource: (map['linkedExternalSource'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

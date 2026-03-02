@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExcludedPathResponse {
   /// The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
-  final String? path;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [ExcludedPathResponse].
   /// [path] The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
@@ -19,7 +20,7 @@ class ExcludedPathResponse {
 
   factory ExcludedPathResponse.fromMap(Map<String, dynamic> map) {
     return ExcludedPathResponse(
-      path: map['path'] == null ? null : map['path'] as String,
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class OriginAccessIdentityArgs {
   /// Creates a new [OriginAccessIdentityArgs].
   /// [comment] An optional comment for the origin access identity.
   OriginAccessIdentityArgs({
-    pulumi.Output<String>? comment,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment);
+    this.comment,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class OriginAccessIdentityArgs {
 
   factory OriginAccessIdentityArgs.fromMap(Map<String, dynamic> map) {
     return OriginAccessIdentityArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
     );
   }
 }

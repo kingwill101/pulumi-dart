@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountCostManagementExportExportDataStorageLocation {
   /// The Resource Manager ID of the container where exports will be uploaded. Changing this forces a new resource to be created.
-  final String containerId;
+  final pulumi.Input<String> containerId;
   /// The path of the directory where exports will be uploaded. Changing this forces a new resource to be created.
   ///
   /// > **Note:** The Resource Manager ID of a Storage Container is exposed via the `resource_manager_id` attribute of the `azure.storage.Container` resource.
-  final String rootFolderPath;
+  final pulumi.Input<String> rootFolderPath;
 
   /// Creates a new [AccountCostManagementExportExportDataStorageLocation].
   /// [containerId] The Resource Manager ID of the container where exports will be uploaded. Changing this forces a new resource to be created.
@@ -26,8 +27,8 @@ class AccountCostManagementExportExportDataStorageLocation {
 
   factory AccountCostManagementExportExportDataStorageLocation.fromMap(Map<String, dynamic> map) {
     return AccountCostManagementExportExportDataStorageLocation(
-      containerId: map['containerId'] as String,
-      rootFolderPath: map['rootFolderPath'] as String,
+      containerId: (map['containerId'] as String).input(),
+      rootFolderPath: (map['rootFolderPath'] as String).input(),
     );
   }
 }

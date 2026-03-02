@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceStatusSchedulingResponse {
   /// Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
-  final int availabilityDomain;
+  final pulumi.Input<int> availabilityDomain;
   /// Time in future when the instance will be terminated in RFC3339 text format.
-  final String terminationTimestamp;
+  final pulumi.Input<String> terminationTimestamp;
 
   /// Creates a new [ResourceStatusSchedulingResponse].
   /// [availabilityDomain] Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
@@ -24,8 +25,8 @@ class ResourceStatusSchedulingResponse {
 
   factory ResourceStatusSchedulingResponse.fromMap(Map<String, dynamic> map) {
     return ResourceStatusSchedulingResponse(
-      availabilityDomain: map['availabilityDomain'] as int,
-      terminationTimestamp: map['terminationTimestamp'] as String,
+      availabilityDomain: (map['availabilityDomain'] as int).input(),
+      terminationTimestamp: (map['terminationTimestamp'] as String).input(),
     );
   }
 }

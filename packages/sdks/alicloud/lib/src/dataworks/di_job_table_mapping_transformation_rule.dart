@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiJobTableMappingTransformationRule {
   /// Action type, optional enumeration value:
@@ -13,15 +14,15 @@ class DiJobTableMappingTransformationRule {
   /// HandleDml(DML handling)
   ///
   /// DefineIncrementalCondition
-  final String? ruleActionType;
+  final pulumi.Input<String>? ruleActionType;
   /// Rule Name
-  final String? ruleName;
+  final pulumi.Input<String>? ruleName;
   /// Target type of action, optional enumeration value:
   ///
   /// Table (Table)
   ///
   /// Schema(schema)
-  final String? ruleTargetType;
+  final pulumi.Input<String>? ruleTargetType;
 
   /// Creates a new [DiJobTableMappingTransformationRule].
   /// [ruleActionType] Action type, optional enumeration value:
@@ -43,9 +44,9 @@ class DiJobTableMappingTransformationRule {
 
   factory DiJobTableMappingTransformationRule.fromMap(Map<String, dynamic> map) {
     return DiJobTableMappingTransformationRule(
-      ruleActionType: map['ruleActionType'] == null ? null : map['ruleActionType'] as String,
-      ruleName: map['ruleName'] == null ? null : map['ruleName'] as String,
-      ruleTargetType: map['ruleTargetType'] == null ? null : map['ruleTargetType'] as String,
+      ruleActionType: map['ruleActionType'] == null ? null : (map['ruleActionType'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      ruleTargetType: map['ruleTargetType'] == null ? null : (map['ruleTargetType'] as String).input(),
     );
   }
 }

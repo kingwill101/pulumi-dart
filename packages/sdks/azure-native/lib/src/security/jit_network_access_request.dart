@@ -5,12 +5,12 @@ import 'jit_network_access_request_virtual_machine.dart';
 
 class JitNetworkAccessRequest {
   /// The justification for making the initiate request
-  final String? justification;
+  final pulumi.Input<String>? justification;
   /// The identity of the person who made the request
-  final String requestor;
+  final pulumi.Input<String> requestor;
   /// The start time of the request in UTC
-  final String startTimeUtc;
-  final List<JitNetworkAccessRequestVirtualMachine> virtualMachines;
+  final pulumi.Input<String> startTimeUtc;
+  final pulumi.Input<List<JitNetworkAccessRequestVirtualMachine>> virtualMachines;
 
   /// Creates a new [JitNetworkAccessRequest].
   /// [justification] The justification for making the initiate request
@@ -29,16 +29,16 @@ class JitNetworkAccessRequest {
       'justification': ?justification,
       'requestor': requestor,
       'startTimeUtc': startTimeUtc,
-      'virtualMachines': pulumi.Input.encodeList<JitNetworkAccessRequestVirtualMachine, Map<String, dynamic>>(virtualMachines, (value) => value.toMap()),
+      'virtualMachines': pulumi.Input.mapInputValue<List<JitNetworkAccessRequestVirtualMachine>, List<Map<String, dynamic>>>(virtualMachines, (value) => pulumi.Input.encodeList<JitNetworkAccessRequestVirtualMachine, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory JitNetworkAccessRequest.fromMap(Map<String, dynamic> map) {
     return JitNetworkAccessRequest(
-      justification: map['justification'] == null ? null : map['justification'] as String,
-      requestor: map['requestor'] as String,
-      startTimeUtc: map['startTimeUtc'] as String,
-      virtualMachines: pulumi.Input.decodeList<JitNetworkAccessRequestVirtualMachine>(map['virtualMachines'], (value) => JitNetworkAccessRequestVirtualMachine.fromMap((value as Map).cast<String, dynamic>())),
+      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      requestor: (map['requestor'] as String).input(),
+      startTimeUtc: (map['startTimeUtc'] as String).input(),
+      virtualMachines: (pulumi.Input.decodeList<JitNetworkAccessRequestVirtualMachine>(map['virtualMachines'], (value) => JitNetworkAccessRequestVirtualMachine.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

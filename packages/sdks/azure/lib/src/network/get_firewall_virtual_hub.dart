@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallVirtualHub {
   /// The private IP address associated with the Azure Firewall.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// The list of public IP addresses associated with the Azure Firewall.
-  final List<String> publicIpAddresses;
+  final pulumi.Input<List<String>> publicIpAddresses;
   /// The number of public IPs assigned to the Azure Firewall.
-  final int publicIpCount;
+  final pulumi.Input<int> publicIpCount;
   /// The ID of the Virtual Hub where the Azure Firewall resides in.
-  final String virtualHubId;
+  final pulumi.Input<String> virtualHubId;
 
   /// Creates a new [GetFirewallVirtualHub].
   /// [privateIpAddress] The private IP address associated with the Azure Firewall.
@@ -34,10 +35,10 @@ class GetFirewallVirtualHub {
 
   factory GetFirewallVirtualHub.fromMap(Map<String, dynamic> map) {
     return GetFirewallVirtualHub(
-      privateIpAddress: map['privateIpAddress'] as String,
-      publicIpAddresses: (map['publicIpAddresses'] as List).cast<String>(),
-      publicIpCount: map['publicIpCount'] as int,
-      virtualHubId: map['virtualHubId'] as String,
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      publicIpAddresses: ((map['publicIpAddresses'] as List).cast<String>()).input(),
+      publicIpCount: (map['publicIpCount'] as int).input(),
+      virtualHubId: (map['virtualHubId'] as String).input(),
     );
   }
 }

@@ -5,11 +5,11 @@ import 'location_quota_rule_response.dart';
 
 class QuotaRuleResponse {
   /// The location rules.
-  final List<LocationQuotaRuleResponse>? locationRules;
+  final pulumi.Input<List<LocationQuotaRuleResponse>>? locationRules;
   /// The quota policy.
-  final String? quotaPolicy;
+  final pulumi.Input<String>? quotaPolicy;
   /// The required features.
-  final List<String>? requiredFeatures;
+  final pulumi.Input<List<String>>? requiredFeatures;
 
   /// Creates a new [QuotaRuleResponse].
   /// [locationRules] The location rules.
@@ -23,7 +23,7 @@ class QuotaRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'locationRules': ?locationRules == null ? null : pulumi.Input.encodeList<LocationQuotaRuleResponse, Map<String, dynamic>>(locationRules!, (value) => value.toMap()),
+      'locationRules': ?pulumi.Input.mapOptionalInputValue<List<LocationQuotaRuleResponse>, List<Map<String, dynamic>>>(locationRules, (value) => pulumi.Input.encodeList<LocationQuotaRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'quotaPolicy': ?quotaPolicy,
       'requiredFeatures': ?requiredFeatures,
     };
@@ -31,9 +31,9 @@ class QuotaRuleResponse {
 
   factory QuotaRuleResponse.fromMap(Map<String, dynamic> map) {
     return QuotaRuleResponse(
-      locationRules: map['locationRules'] == null ? null : pulumi.Input.decodeList<LocationQuotaRuleResponse>(map['locationRules'], (value) => LocationQuotaRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      quotaPolicy: map['quotaPolicy'] == null ? null : map['quotaPolicy'] as String,
-      requiredFeatures: map['requiredFeatures'] == null ? null : (map['requiredFeatures'] as List).cast<String>(),
+      locationRules: map['locationRules'] == null ? null : (pulumi.Input.decodeList<LocationQuotaRuleResponse>(map['locationRules'], (value) => LocationQuotaRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      quotaPolicy: map['quotaPolicy'] == null ? null : (map['quotaPolicy'] as String).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
     );
   }
 }

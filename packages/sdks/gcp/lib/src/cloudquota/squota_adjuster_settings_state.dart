@@ -32,19 +32,13 @@ class SQuotaAdjusterSettingsState {
   /// [inheritedFrom] The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
   /// [parent] The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
   SQuotaAdjusterSettingsState({
-    pulumi.Output<String>? effectiveContainer,
-    pulumi.Output<String>? effectiveEnablement,
-    pulumi.Output<String>? enablement,
-    pulumi.Output<bool>? inherited,
-    pulumi.Output<String>? inheritedFrom,
-    pulumi.Output<String>? parent,
-  }) :
-      effectiveContainer = pulumi.Input.asOptionalInput<String>(effectiveContainer),
-      effectiveEnablement = pulumi.Input.asOptionalInput<String>(effectiveEnablement),
-      enablement = pulumi.Input.asOptionalInput<String>(enablement),
-      inherited = pulumi.Input.asOptionalInput<bool>(inherited),
-      inheritedFrom = pulumi.Input.asOptionalInput<String>(inheritedFrom),
-      parent = pulumi.Input.asOptionalInput<String>(parent);
+    this.effectiveContainer,
+    this.effectiveEnablement,
+    this.enablement,
+    this.inherited,
+    this.inheritedFrom,
+    this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class SQuotaAdjusterSettingsState {
 
   factory SQuotaAdjusterSettingsState.fromMap(Map<String, dynamic> map) {
     return SQuotaAdjusterSettingsState(
-      effectiveContainer: map['effectiveContainer'] == null ? null : pulumi.Output.create<String>(map['effectiveContainer'] as String),
-      effectiveEnablement: map['effectiveEnablement'] == null ? null : pulumi.Output.create<String>(map['effectiveEnablement'] as String),
-      enablement: map['enablement'] == null ? null : pulumi.Output.create<String>(map['enablement'] as String),
-      inherited: map['inherited'] == null ? null : pulumi.Output.create<bool>(map['inherited'] as bool),
-      inheritedFrom: map['inheritedFrom'] == null ? null : pulumi.Output.create<String>(map['inheritedFrom'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
+      effectiveContainer: map['effectiveContainer'] == null ? null : (map['effectiveContainer'] as String).input(),
+      effectiveEnablement: map['effectiveEnablement'] == null ? null : (map['effectiveEnablement'] as String).input(),
+      enablement: map['enablement'] == null ? null : (map['enablement'] as String).input(),
+      inherited: map['inherited'] == null ? null : (map['inherited'] as bool).input(),
+      inheritedFrom: map['inheritedFrom'] == null ? null : (map['inheritedFrom'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
     );
   }
 }

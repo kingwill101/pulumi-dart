@@ -5,8 +5,8 @@ import 'get_plan_stage_target_channel_target_info.dart';
 import 'get_plan_stage_target_contact_target_info.dart';
 
 class GetPlanStageTarget {
-  final List<GetPlanStageTargetChannelTargetInfo> channelTargetInfos;
-  final List<GetPlanStageTargetContactTargetInfo> contactTargetInfos;
+  final pulumi.Input<List<GetPlanStageTargetChannelTargetInfo>> channelTargetInfos;
+  final pulumi.Input<List<GetPlanStageTargetContactTargetInfo>> contactTargetInfos;
 
   /// Creates a new [GetPlanStageTarget].
   /// [channelTargetInfos] Required.
@@ -18,15 +18,15 @@ class GetPlanStageTarget {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channelTargetInfos': pulumi.Input.encodeList<GetPlanStageTargetChannelTargetInfo, Map<String, dynamic>>(channelTargetInfos, (value) => value.toMap()),
-      'contactTargetInfos': pulumi.Input.encodeList<GetPlanStageTargetContactTargetInfo, Map<String, dynamic>>(contactTargetInfos, (value) => value.toMap()),
+      'channelTargetInfos': pulumi.Input.mapInputValue<List<GetPlanStageTargetChannelTargetInfo>, List<Map<String, dynamic>>>(channelTargetInfos, (value) => pulumi.Input.encodeList<GetPlanStageTargetChannelTargetInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'contactTargetInfos': pulumi.Input.mapInputValue<List<GetPlanStageTargetContactTargetInfo>, List<Map<String, dynamic>>>(contactTargetInfos, (value) => pulumi.Input.encodeList<GetPlanStageTargetContactTargetInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetPlanStageTarget.fromMap(Map<String, dynamic> map) {
     return GetPlanStageTarget(
-      channelTargetInfos: pulumi.Input.decodeList<GetPlanStageTargetChannelTargetInfo>(map['channelTargetInfos'], (value) => GetPlanStageTargetChannelTargetInfo.fromMap((value as Map).cast<String, dynamic>())),
-      contactTargetInfos: pulumi.Input.decodeList<GetPlanStageTargetContactTargetInfo>(map['contactTargetInfos'], (value) => GetPlanStageTargetContactTargetInfo.fromMap((value as Map).cast<String, dynamic>())),
+      channelTargetInfos: (pulumi.Input.decodeList<GetPlanStageTargetChannelTargetInfo>(map['channelTargetInfos'], (value) => GetPlanStageTargetChannelTargetInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contactTargetInfos: (pulumi.Input.decodeList<GetPlanStageTargetContactTargetInfo>(map['contactTargetInfos'], (value) => GetPlanStageTargetContactTargetInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

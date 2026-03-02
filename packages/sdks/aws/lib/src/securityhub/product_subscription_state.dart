@@ -54,13 +54,10 @@ class ProductSubscriptionState {
   /// [productArn] The ARN of the product that generates findings that you want to import into Security Hub - see below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ProductSubscriptionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? productArn,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      productArn = pulumi.Input.asOptionalInput<String>(productArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.arn,
+    this.productArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,9 +69,9 @@ class ProductSubscriptionState {
 
   factory ProductSubscriptionState.fromMap(Map<String, dynamic> map) {
     return ProductSubscriptionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      productArn: map['productArn'] == null ? null : pulumi.Output.create<String>(map['productArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      productArn: map['productArn'] == null ? null : (map['productArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

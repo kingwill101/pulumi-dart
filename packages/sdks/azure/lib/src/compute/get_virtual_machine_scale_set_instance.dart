@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualMachineScaleSetInstance {
   /// The Hostname of this Virtual Machine.
-  final String computerName;
+  final pulumi.Input<String> computerName;
   /// The Instance ID of this Virtual Machine.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Whether the latest model has been applied to this Virtual Machine.
-  final bool latestModelApplied;
+  final pulumi.Input<bool> latestModelApplied;
   /// The name of this Virtual Machine Scale Set.
-  final String name;
+  final pulumi.Input<String> name;
   /// The power state of the virtual machine.
-  final String powerState;
+  final pulumi.Input<String> powerState;
   /// The Primary Private IP Address assigned to this Virtual Machine.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// A list of Private IP Addresses assigned to this Virtual Machine.
-  final List<String> privateIpAddresses;
+  final pulumi.Input<List<String>> privateIpAddresses;
   /// A `public_ip_address` block as defined below.
-  final String publicIpAddress;
+  final pulumi.Input<String> publicIpAddress;
   /// A list of the Public IP Addresses assigned to this Virtual Machine.
-  final List<String> publicIpAddresses;
+  final pulumi.Input<List<String>> publicIpAddresses;
   /// The unique ID of the virtual machine.
-  final String virtualMachineId;
+  final pulumi.Input<String> virtualMachineId;
   /// The zones of the virtual machine.
-  final String zone;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [GetVirtualMachineScaleSetInstance].
   /// [computerName] The Hostname of this Virtual Machine.
@@ -69,17 +70,17 @@ class GetVirtualMachineScaleSetInstance {
 
   factory GetVirtualMachineScaleSetInstance.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetInstance(
-      computerName: map['computerName'] as String,
-      instanceId: map['instanceId'] as String,
-      latestModelApplied: map['latestModelApplied'] as bool,
-      name: map['name'] as String,
-      powerState: map['powerState'] as String,
-      privateIpAddress: map['privateIpAddress'] as String,
-      privateIpAddresses: (map['privateIpAddresses'] as List).cast<String>(),
-      publicIpAddress: map['publicIpAddress'] as String,
-      publicIpAddresses: (map['publicIpAddresses'] as List).cast<String>(),
-      virtualMachineId: map['virtualMachineId'] as String,
-      zone: map['zone'] as String,
+      computerName: (map['computerName'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      latestModelApplied: (map['latestModelApplied'] as bool).input(),
+      name: (map['name'] as String).input(),
+      powerState: (map['powerState'] as String).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      privateIpAddresses: ((map['privateIpAddresses'] as List).cast<String>()).input(),
+      publicIpAddress: (map['publicIpAddress'] as String).input(),
+      publicIpAddresses: ((map['publicIpAddresses'] as List).cast<String>()).input(),
+      virtualMachineId: (map['virtualMachineId'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

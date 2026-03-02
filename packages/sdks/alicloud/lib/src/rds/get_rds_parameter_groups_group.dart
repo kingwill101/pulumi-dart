@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_rds_parameter_groups_group_param_detail.dart';
 
 class GetRdsParameterGroupsGroup {
-  final String engine;
-  final String engineVersion;
-  final int forceRestart;
-  final String id;
-  final int paramCounts;
-  final List<GetRdsParameterGroupsGroupParamDetail> paramDetails;
-  final String parameterGroupDesc;
-  final String parameterGroupId;
-  final String parameterGroupName;
-  final int parameterGroupType;
+  final pulumi.Input<String> engine;
+  final pulumi.Input<String> engineVersion;
+  final pulumi.Input<int> forceRestart;
+  final pulumi.Input<String> id;
+  final pulumi.Input<int> paramCounts;
+  final pulumi.Input<List<GetRdsParameterGroupsGroupParamDetail>> paramDetails;
+  final pulumi.Input<String> parameterGroupDesc;
+  final pulumi.Input<String> parameterGroupId;
+  final pulumi.Input<String> parameterGroupName;
+  final pulumi.Input<int> parameterGroupType;
 
   /// Creates a new [GetRdsParameterGroupsGroup].
   /// [engine] Required.
@@ -46,7 +46,7 @@ class GetRdsParameterGroupsGroup {
       'forceRestart': forceRestart,
       'id': id,
       'paramCounts': paramCounts,
-      'paramDetails': pulumi.Input.encodeList<GetRdsParameterGroupsGroupParamDetail, Map<String, dynamic>>(paramDetails, (value) => value.toMap()),
+      'paramDetails': pulumi.Input.mapInputValue<List<GetRdsParameterGroupsGroupParamDetail>, List<Map<String, dynamic>>>(paramDetails, (value) => pulumi.Input.encodeList<GetRdsParameterGroupsGroupParamDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'parameterGroupDesc': parameterGroupDesc,
       'parameterGroupId': parameterGroupId,
       'parameterGroupName': parameterGroupName,
@@ -56,16 +56,16 @@ class GetRdsParameterGroupsGroup {
 
   factory GetRdsParameterGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetRdsParameterGroupsGroup(
-      engine: map['engine'] as String,
-      engineVersion: map['engineVersion'] as String,
-      forceRestart: map['forceRestart'] as int,
-      id: map['id'] as String,
-      paramCounts: map['paramCounts'] as int,
-      paramDetails: pulumi.Input.decodeList<GetRdsParameterGroupsGroupParamDetail>(map['paramDetails'], (value) => GetRdsParameterGroupsGroupParamDetail.fromMap((value as Map).cast<String, dynamic>())),
-      parameterGroupDesc: map['parameterGroupDesc'] as String,
-      parameterGroupId: map['parameterGroupId'] as String,
-      parameterGroupName: map['parameterGroupName'] as String,
-      parameterGroupType: map['parameterGroupType'] as int,
+      engine: (map['engine'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
+      forceRestart: (map['forceRestart'] as int).input(),
+      id: (map['id'] as String).input(),
+      paramCounts: (map['paramCounts'] as int).input(),
+      paramDetails: (pulumi.Input.decodeList<GetRdsParameterGroupsGroupParamDetail>(map['paramDetails'], (value) => GetRdsParameterGroupsGroupParamDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameterGroupDesc: (map['parameterGroupDesc'] as String).input(),
+      parameterGroupId: (map['parameterGroupId'] as String).input(),
+      parameterGroupName: (map['parameterGroupName'] as String).input(),
+      parameterGroupType: (map['parameterGroupType'] as int).input(),
     );
   }
 }

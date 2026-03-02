@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsIamMFADevice
 class AwsIamMFADeviceProperties {
   /// <p>The date when the MFA device was enabled for the user.</p>
-  final String? enableDate;
+  final pulumi.Input<String>? enableDate;
   /// <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.</p>
-  final String? serialNumber;
+  final pulumi.Input<String>? serialNumber;
   /// <p>The user with whom the MFA device is associated.</p>
-  final String? userName;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [AwsIamMFADeviceProperties].
   /// [enableDate] <p>The date when the MFA device was enabled for the user.</p>
@@ -30,9 +31,9 @@ class AwsIamMFADeviceProperties {
 
   factory AwsIamMFADeviceProperties.fromMap(Map<String, dynamic> map) {
     return AwsIamMFADeviceProperties(
-      enableDate: map['enableDate'] == null ? null : map['enableDate'] as String,
-      serialNumber: map['serialNumber'] == null ? null : map['serialNumber'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      enableDate: map['enableDate'] == null ? null : (map['enableDate'] as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

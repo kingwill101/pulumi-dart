@@ -24,15 +24,11 @@ class DataConnectorMicrosoftThreatIntelligenceArgs {
   /// [name] The name which should be used for this Microsoft Threat Intelligence Data Connector. Changing this forces a new Microsoft Threat Intelligence Data Connector to be created.
   /// [tenantId] The ID of the tenant that this Microsoft Threat Intelligence Data Connector connects to. Changing this forces a new Microsoft Threat Intelligence Data Connector to be created.
   DataConnectorMicrosoftThreatIntelligenceArgs({
-    required pulumi.Output<String> logAnalyticsWorkspaceId,
-    required pulumi.Output<String> microsoftEmergingThreatFeedLookbackDate,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? tenantId,
-  }) :
-      logAnalyticsWorkspaceId = pulumi.Input.asInput<String>(logAnalyticsWorkspaceId),
-      microsoftEmergingThreatFeedLookbackDate = pulumi.Input.asInput<String>(microsoftEmergingThreatFeedLookbackDate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    required this.logAnalyticsWorkspaceId,
+    required this.microsoftEmergingThreatFeedLookbackDate,
+    this.name,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class DataConnectorMicrosoftThreatIntelligenceArgs {
 
   factory DataConnectorMicrosoftThreatIntelligenceArgs.fromMap(Map<String, dynamic> map) {
     return DataConnectorMicrosoftThreatIntelligenceArgs(
-      logAnalyticsWorkspaceId: pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      microsoftEmergingThreatFeedLookbackDate: pulumi.Output.create<String>(map['microsoftEmergingThreatFeedLookbackDate'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      microsoftEmergingThreatFeedLookbackDate: (map['microsoftEmergingThreatFeedLookbackDate'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

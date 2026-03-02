@@ -20,17 +20,12 @@ class GetBucketArgs {
   /// [projection] Optional.
   /// [userProject] Optional.
   GetBucketArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? ifMetagenerationMatch,
-    pulumi.Output<String>? ifMetagenerationNotMatch,
-    pulumi.Output<String>? projection,
-    pulumi.Output<String>? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      ifMetagenerationMatch = pulumi.Input.asOptionalInput<String>(ifMetagenerationMatch),
-      ifMetagenerationNotMatch = pulumi.Input.asOptionalInput<String>(ifMetagenerationNotMatch),
-      projection = pulumi.Input.asOptionalInput<String>(projection),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+    required this.bucket,
+    this.ifMetagenerationMatch,
+    this.ifMetagenerationNotMatch,
+    this.projection,
+    this.userProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetBucketArgs {
 
   factory GetBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : pulumi.Output.create<String>(map['ifMetagenerationMatch'] as String),
-      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : pulumi.Output.create<String>(map['ifMetagenerationNotMatch'] as String),
-      projection: map['projection'] == null ? null : pulumi.Output.create<String>(map['projection'] as String),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
+      bucket: (map['bucket'] as String).input(),
+      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : (map['ifMetagenerationMatch'] as String).input(),
+      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : (map['ifMetagenerationNotMatch'] as String).input(),
+      projection: map['projection'] == null ? null : (map['projection'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
     );
   }
 }

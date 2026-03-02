@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersRedshift {
   /// The ID of the cluster to which to connect.
-  final String? clusterId;
+  final pulumi.Input<String>? clusterId;
   /// The database to which to connect.
-  final String database;
+  final pulumi.Input<String> database;
   /// The host to which to connect.
-  final String? host;
+  final pulumi.Input<String>? host;
   /// The port to which to connect.
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [DataSourceParametersRedshift].
   /// [clusterId] The ID of the cluster to which to connect.
@@ -34,10 +35,10 @@ class DataSourceParametersRedshift {
 
   factory DataSourceParametersRedshift.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersRedshift(
-      clusterId: map['clusterId'] == null ? null : map['clusterId'] as String,
-      database: map['database'] as String,
-      host: map['host'] == null ? null : map['host'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      database: (map['database'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

@@ -43,29 +43,18 @@ class VpcAttachmentArgs {
   /// [transitGatewayId] Identifier of EC2 Transit Gateway.
   /// [vpcId] Identifier of EC2 VPC.
   VpcAttachmentArgs({
-    pulumi.Output<String>? applianceModeSupport,
-    pulumi.Output<String>? dnsSupport,
-    pulumi.Output<String>? ipv6Support,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityGroupReferencingSupport,
-    required pulumi.Output<List<String>> subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? transitGatewayDefaultRouteTableAssociation,
-    pulumi.Output<bool>? transitGatewayDefaultRouteTablePropagation,
-    required pulumi.Output<String> transitGatewayId,
-    required pulumi.Output<String> vpcId,
-  }) :
-      applianceModeSupport = pulumi.Input.asOptionalInput<String>(applianceModeSupport),
-      dnsSupport = pulumi.Input.asOptionalInput<String>(dnsSupport),
-      ipv6Support = pulumi.Input.asOptionalInput<String>(ipv6Support),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupReferencingSupport = pulumi.Input.asOptionalInput<String>(securityGroupReferencingSupport),
-      subnetIds = pulumi.Input.asInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayDefaultRouteTableAssociation = pulumi.Input.asOptionalInput<bool>(transitGatewayDefaultRouteTableAssociation),
-      transitGatewayDefaultRouteTablePropagation = pulumi.Input.asOptionalInput<bool>(transitGatewayDefaultRouteTablePropagation),
-      transitGatewayId = pulumi.Input.asInput<String>(transitGatewayId),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.applianceModeSupport,
+    this.dnsSupport,
+    this.ipv6Support,
+    this.region,
+    this.securityGroupReferencingSupport,
+    required this.subnetIds,
+    this.tags,
+    this.transitGatewayDefaultRouteTableAssociation,
+    this.transitGatewayDefaultRouteTablePropagation,
+    required this.transitGatewayId,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class VpcAttachmentArgs {
 
   factory VpcAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentArgs(
-      applianceModeSupport: map['applianceModeSupport'] == null ? null : pulumi.Output.create<String>(map['applianceModeSupport'] as String),
-      dnsSupport: map['dnsSupport'] == null ? null : pulumi.Output.create<String>(map['dnsSupport'] as String),
-      ipv6Support: map['ipv6Support'] == null ? null : pulumi.Output.create<String>(map['ipv6Support'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] == null ? null : pulumi.Output.create<String>(map['securityGroupReferencingSupport'] as String),
-      subnetIds: pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayDefaultRouteTableAssociation: map['transitGatewayDefaultRouteTableAssociation'] == null ? null : pulumi.Output.create<bool>(map['transitGatewayDefaultRouteTableAssociation'] as bool),
-      transitGatewayDefaultRouteTablePropagation: map['transitGatewayDefaultRouteTablePropagation'] == null ? null : pulumi.Output.create<bool>(map['transitGatewayDefaultRouteTablePropagation'] as bool),
-      transitGatewayId: pulumi.Output.create<String>(map['transitGatewayId'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      applianceModeSupport: map['applianceModeSupport'] == null ? null : (map['applianceModeSupport'] as String).input(),
+      dnsSupport: map['dnsSupport'] == null ? null : (map['dnsSupport'] as String).input(),
+      ipv6Support: map['ipv6Support'] == null ? null : (map['ipv6Support'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] == null ? null : (map['securityGroupReferencingSupport'] as String).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayDefaultRouteTableAssociation: map['transitGatewayDefaultRouteTableAssociation'] == null ? null : (map['transitGatewayDefaultRouteTableAssociation'] as bool).input(),
+      transitGatewayDefaultRouteTablePropagation: map['transitGatewayDefaultRouteTablePropagation'] == null ? null : (map['transitGatewayDefaultRouteTablePropagation'] as bool).input(),
+      transitGatewayId: (map['transitGatewayId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

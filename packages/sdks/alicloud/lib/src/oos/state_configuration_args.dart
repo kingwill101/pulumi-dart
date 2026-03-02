@@ -40,27 +40,17 @@ class StateConfigurationArgs {
   /// [templateName] The name of the template.
   /// [templateVersion] The version number. If you do not specify this parameter, the system uses the latest version.
   StateConfigurationArgs({
-    pulumi.Output<String>? configureMode,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? parameters,
-    pulumi.Output<String>? resourceGroupId,
-    required pulumi.Output<String> scheduleExpression,
-    required pulumi.Output<String> scheduleType,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targets,
-    required pulumi.Output<String> templateName,
-    pulumi.Output<String>? templateVersion,
-  }) :
-      configureMode = pulumi.Input.asOptionalInput<String>(configureMode),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      parameters = pulumi.Input.asOptionalInput<String>(parameters),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      scheduleExpression = pulumi.Input.asInput<String>(scheduleExpression),
-      scheduleType = pulumi.Input.asInput<String>(scheduleType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targets = pulumi.Input.asInput<String>(targets),
-      templateName = pulumi.Input.asInput<String>(templateName),
-      templateVersion = pulumi.Input.asOptionalInput<String>(templateVersion);
+    this.configureMode,
+    this.description,
+    this.parameters,
+    this.resourceGroupId,
+    required this.scheduleExpression,
+    required this.scheduleType,
+    this.tags,
+    required this.targets,
+    required this.templateName,
+    this.templateVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class StateConfigurationArgs {
 
   factory StateConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return StateConfigurationArgs(
-      configureMode: map['configureMode'] == null ? null : pulumi.Output.create<String>(map['configureMode'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<String>(map['parameters'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      scheduleExpression: pulumi.Output.create<String>(map['scheduleExpression'] as String),
-      scheduleType: pulumi.Output.create<String>(map['scheduleType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targets: pulumi.Output.create<String>(map['targets'] as String),
-      templateName: pulumi.Output.create<String>(map['templateName'] as String),
-      templateVersion: map['templateVersion'] == null ? null : pulumi.Output.create<String>(map['templateVersion'] as String),
+      configureMode: map['configureMode'] == null ? null : (map['configureMode'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      scheduleExpression: (map['scheduleExpression'] as String).input(),
+      scheduleType: (map['scheduleType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targets: (map['targets'] as String).input(),
+      templateName: (map['templateName'] as String).input(),
+      templateVersion: map['templateVersion'] == null ? null : (map['templateVersion'] as String).input(),
     );
   }
 }

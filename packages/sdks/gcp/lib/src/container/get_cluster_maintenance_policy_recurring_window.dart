@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterMaintenancePolicyRecurringWindow {
-  final String endTime;
-  final String recurrence;
-  final String startTime;
+  final pulumi.Input<String> endTime;
+  final pulumi.Input<String> recurrence;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [GetClusterMaintenancePolicyRecurringWindow].
   /// [endTime] Required.
@@ -26,9 +27,9 @@ class GetClusterMaintenancePolicyRecurringWindow {
 
   factory GetClusterMaintenancePolicyRecurringWindow.fromMap(Map<String, dynamic> map) {
     return GetClusterMaintenancePolicyRecurringWindow(
-      endTime: map['endTime'] as String,
-      recurrence: map['recurrence'] as String,
-      startTime: map['startTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      recurrence: (map['recurrence'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

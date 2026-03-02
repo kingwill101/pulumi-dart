@@ -28,19 +28,13 @@ class HistoryArgs {
   /// [requestId] A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
   /// [testPlatform] The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
   HistoryArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? historyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<HistoryTestPlatform>? testPlatform,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      historyId = pulumi.Input.asOptionalInput<String>(historyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      testPlatform = pulumi.Input.asOptionalInput<HistoryTestPlatform>(testPlatform);
+    this.displayName,
+    this.historyId,
+    this.name,
+    this.project,
+    this.requestId,
+    this.testPlatform,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class HistoryArgs {
 
   factory HistoryArgs.fromMap(Map<String, dynamic> map) {
     return HistoryArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      historyId: map['historyId'] == null ? null : pulumi.Output.create<String>(map['historyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      testPlatform: map['testPlatform'] == null ? null : pulumi.Output.create<HistoryTestPlatform>(HistoryTestPlatform.fromValue(map['testPlatform'] as String)),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      historyId: map['historyId'] == null ? null : (map['historyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      testPlatform: map['testPlatform'] == null ? null : (HistoryTestPlatform.fromValue(map['testPlatform'] as String)).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'asymmetric_encrypted_secret.dart';
 
 /// Symmetric key for authentication.
 class SymmetricKey {
   /// Connection string based on the symmetric key.
-  final AsymmetricEncryptedSecret? connectionString;
+  final pulumi.Input<AsymmetricEncryptedSecret>? connectionString;
 
   /// Creates a new [SymmetricKey].
   /// [connectionString] Connection string based on the symmetric key.
@@ -15,13 +16,13 @@ class SymmetricKey {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionString': ?connectionString == null ? null : connectionString!.toMap(),
+      'connectionString': ?pulumi.Input.mapOptionalInputValue<AsymmetricEncryptedSecret, Map<String, dynamic>>(connectionString, (value) => value.toMap()),
     };
   }
 
   factory SymmetricKey.fromMap(Map<String, dynamic> map) {
     return SymmetricKey(
-      connectionString: map['connectionString'] == null ? null : AsymmetricEncryptedSecret.fromMap((map['connectionString'] as Map).cast<String, dynamic>()),
+      connectionString: map['connectionString'] == null ? null : (AsymmetricEncryptedSecret.fromMap((map['connectionString'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

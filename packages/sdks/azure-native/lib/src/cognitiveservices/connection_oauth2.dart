@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ClientId and ClientSecret are required. Other properties are optional
 /// depending on each OAuth2 provider's implementation.
 class ConnectionOAuth2 {
   /// Required by Concur connection category
-  final String? authUrl;
+  final pulumi.Input<String>? authUrl;
   /// Client id in the format of UUID
-  final String? clientId;
-  final String? clientSecret;
+  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String>? clientSecret;
   /// Required by GoogleAdWords connection category
-  final String? developerToken;
-  final String? password;
+  final pulumi.Input<String>? developerToken;
+  final pulumi.Input<String>? password;
   /// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
   /// where user needs to get RefreshToken offline
-  final String? refreshToken;
+  final pulumi.Input<String>? refreshToken;
   /// Required by QuickBooks and Xero connection categories
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// Concur, ServiceNow auth server AccessToken grant type is 'Password'
   /// which requires UsernamePassword
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [ConnectionOAuth2].
   /// [authUrl] Required by Concur connection category
@@ -56,14 +57,14 @@ class ConnectionOAuth2 {
 
   factory ConnectionOAuth2.fromMap(Map<String, dynamic> map) {
     return ConnectionOAuth2(
-      authUrl: map['authUrl'] == null ? null : map['authUrl'] as String,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      developerToken: map['developerToken'] == null ? null : map['developerToken'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      authUrl: map['authUrl'] == null ? null : (map['authUrl'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      developerToken: map['developerToken'] == null ? null : (map['developerToken'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceMaintenanceTime {
   /// The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [InstanceMaintenanceTime].
   /// [endTime] The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
@@ -24,8 +25,8 @@ class InstanceMaintenanceTime {
 
   factory InstanceMaintenanceTime.fromMap(Map<String, dynamic> map) {
     return InstanceMaintenanceTime(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

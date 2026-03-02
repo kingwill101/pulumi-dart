@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains the REP (rendezvous endpoint) and “Listener” access token from notification service (NS).
 class HybridConnectionConfigResponse {
   /// Timestamp when this token will be expired.
-  final double expirationTime;
+  final pulumi.Input<double> expirationTime;
   /// Name of the connection
-  final String hybridConnectionName;
+  final pulumi.Input<String> hybridConnectionName;
   /// Name of the notification service.
-  final String relay;
+  final pulumi.Input<String> relay;
   /// Listener access token
-  final String token;
+  final pulumi.Input<String> token;
 
   /// Creates a new [HybridConnectionConfigResponse].
   /// [expirationTime] Timestamp when this token will be expired.
@@ -35,10 +36,10 @@ class HybridConnectionConfigResponse {
 
   factory HybridConnectionConfigResponse.fromMap(Map<String, dynamic> map) {
     return HybridConnectionConfigResponse(
-      expirationTime: map['expirationTime'] as double,
-      hybridConnectionName: map['hybridConnectionName'] as String,
-      relay: map['relay'] as String,
-      token: map['token'] as String,
+      expirationTime: (map['expirationTime'] as double).input(),
+      hybridConnectionName: (map['hybridConnectionName'] as String).input(),
+      relay: (map['relay'] as String).input(),
+      token: (map['token'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class WorkforcePoolProviderScimTokenArgs {
   /// [scimTokenId] The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
   /// [workforcePoolId] The ID of the Workforce Pool.
   WorkforcePoolProviderScimTokenArgs({
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> providerId,
-    required pulumi.Output<String> scimTenantId,
-    required pulumi.Output<String> scimTokenId,
-    required pulumi.Output<String> workforcePoolId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      providerId = pulumi.Input.asInput<String>(providerId),
-      scimTenantId = pulumi.Input.asInput<String>(scimTenantId),
-      scimTokenId = pulumi.Input.asInput<String>(scimTokenId),
-      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+    this.displayName,
+    required this.location,
+    required this.providerId,
+    required this.scimTenantId,
+    required this.scimTokenId,
+    required this.workforcePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class WorkforcePoolProviderScimTokenArgs {
 
   factory WorkforcePoolProviderScimTokenArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTokenArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      providerId: pulumi.Output.create<String>(map['providerId'] as String),
-      scimTenantId: pulumi.Output.create<String>(map['scimTenantId'] as String),
-      scimTokenId: pulumi.Output.create<String>(map['scimTokenId'] as String),
-      workforcePoolId: pulumi.Output.create<String>(map['workforcePoolId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      providerId: (map['providerId'] as String).input(),
+      scimTenantId: (map['scimTenantId'] as String).input(),
+      scimTokenId: (map['scimTokenId'] as String).input(),
+      workforcePoolId: (map['workforcePoolId'] as String).input(),
     );
   }
 }

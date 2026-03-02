@@ -44,29 +44,18 @@ class GroundStationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   GroundStationArgs({
-    pulumi.Output<double>? altitudeMeters,
-    required pulumi.Output<List<String>> capabilities,
-    pulumi.Output<String>? city,
-    required pulumi.Output<GroundStationsPropertiesGlobalCommunicationsSite> globalCommunicationsSite,
-    pulumi.Output<String>? groundStationName,
-    pulumi.Output<double>? latitudeDegrees,
-    pulumi.Output<String>? location,
-    pulumi.Output<double>? longitudeDegrees,
-    pulumi.Output<String>? providerName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      altitudeMeters = pulumi.Input.asOptionalInput<double>(altitudeMeters),
-      capabilities = pulumi.Input.asInput<List<String>>(capabilities),
-      city = pulumi.Input.asOptionalInput<String>(city),
-      globalCommunicationsSite = pulumi.Input.asInput<GroundStationsPropertiesGlobalCommunicationsSite>(globalCommunicationsSite),
-      groundStationName = pulumi.Input.asOptionalInput<String>(groundStationName),
-      latitudeDegrees = pulumi.Input.asOptionalInput<double>(latitudeDegrees),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      longitudeDegrees = pulumi.Input.asOptionalInput<double>(longitudeDegrees),
-      providerName = pulumi.Input.asOptionalInput<String>(providerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.altitudeMeters,
+    required this.capabilities,
+    this.city,
+    required this.globalCommunicationsSite,
+    this.groundStationName,
+    this.latitudeDegrees,
+    this.location,
+    this.longitudeDegrees,
+    this.providerName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class GroundStationArgs {
 
   factory GroundStationArgs.fromMap(Map<String, dynamic> map) {
     return GroundStationArgs(
-      altitudeMeters: map['altitudeMeters'] == null ? null : pulumi.Output.create<double>(map['altitudeMeters'] as double),
-      capabilities: pulumi.Output.create<List<String>>((map['capabilities'] as List).cast<String>()),
-      city: map['city'] == null ? null : pulumi.Output.create<String>(map['city'] as String),
-      globalCommunicationsSite: pulumi.Output.create<GroundStationsPropertiesGlobalCommunicationsSite>(GroundStationsPropertiesGlobalCommunicationsSite.fromMap((map['globalCommunicationsSite'] as Map).cast<String, dynamic>())),
-      groundStationName: map['groundStationName'] == null ? null : pulumi.Output.create<String>(map['groundStationName'] as String),
-      latitudeDegrees: map['latitudeDegrees'] == null ? null : pulumi.Output.create<double>(map['latitudeDegrees'] as double),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      longitudeDegrees: map['longitudeDegrees'] == null ? null : pulumi.Output.create<double>(map['longitudeDegrees'] as double),
-      providerName: map['providerName'] == null ? null : pulumi.Output.create<String>(map['providerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      altitudeMeters: map['altitudeMeters'] == null ? null : (map['altitudeMeters'] as double).input(),
+      capabilities: ((map['capabilities'] as List).cast<String>()).input(),
+      city: map['city'] == null ? null : (map['city'] as String).input(),
+      globalCommunicationsSite: (GroundStationsPropertiesGlobalCommunicationsSite.fromMap((map['globalCommunicationsSite'] as Map).cast<String, dynamic>())).input(),
+      groundStationName: map['groundStationName'] == null ? null : (map['groundStationName'] as String).input(),
+      latitudeDegrees: map['latitudeDegrees'] == null ? null : (map['latitudeDegrees'] as double).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      longitudeDegrees: map['longitudeDegrees'] == null ? null : (map['longitudeDegrees'] as double).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

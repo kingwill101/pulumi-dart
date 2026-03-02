@@ -55,25 +55,16 @@ class MonitorAlertArgs {
   /// [value] The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
   /// [window] The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
   MonitorAlertArgs({
-    required pulumi.Output<MonitorAlertAlerts> alerts,
-    required pulumi.Output<String> compare,
-    required pulumi.Output<String> description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<String>>? entities,
-    pulumi.Output<List<String>>? tags,
-    required pulumi.Output<String> type,
-    required pulumi.Output<double> value,
-    required pulumi.Output<String> window,
-  }) :
-      alerts = pulumi.Input.asInput<MonitorAlertAlerts>(alerts),
-      compare = pulumi.Input.asInput<String>(compare),
-      description = pulumi.Input.asInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      entities = pulumi.Input.asOptionalInput<List<String>>(entities),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      type = pulumi.Input.asInput<String>(type),
-      value = pulumi.Input.asInput<double>(value),
-      window = pulumi.Input.asInput<String>(window);
+    required this.alerts,
+    required this.compare,
+    required this.description,
+    this.enabled,
+    this.entities,
+    this.tags,
+    required this.type,
+    required this.value,
+    required this.window,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,15 +82,15 @@ class MonitorAlertArgs {
 
   factory MonitorAlertArgs.fromMap(Map<String, dynamic> map) {
     return MonitorAlertArgs(
-      alerts: pulumi.Output.create<MonitorAlertAlerts>(MonitorAlertAlerts.fromMap((map['alerts'] as Map).cast<String, dynamic>())),
-      compare: pulumi.Output.create<String>(map['compare'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      entities: map['entities'] == null ? null : pulumi.Output.create<List<String>>((map['entities'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      value: pulumi.Output.create<double>(map['value'] as double),
-      window: pulumi.Output.create<String>(map['window'] as String),
+      alerts: (MonitorAlertAlerts.fromMap((map['alerts'] as Map).cast<String, dynamic>())).input(),
+      compare: (map['compare'] as String).input(),
+      description: (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      entities: map['entities'] == null ? null : ((map['entities'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as double).input(),
+      window: (map['window'] as String).input(),
     );
   }
 }

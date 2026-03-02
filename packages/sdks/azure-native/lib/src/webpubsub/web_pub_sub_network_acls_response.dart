@@ -8,13 +8,13 @@ import 'private_endpoint_aclresponse.dart';
 /// Network ACLs for the resource
 class WebPubSubNetworkACLsResponse {
   /// Azure Networking ACL Action.
-  final String? defaultAction;
+  final pulumi.Input<String>? defaultAction;
   /// IP rules for filtering public traffic
-  final List<IPRuleResponse>? ipRules;
+  final pulumi.Input<List<IPRuleResponse>>? ipRules;
   /// ACLs for requests from private endpoints
-  final List<PrivateEndpointACLResponse>? privateEndpoints;
+  final pulumi.Input<List<PrivateEndpointACLResponse>>? privateEndpoints;
   /// Network ACL
-  final NetworkACLResponse? publicNetwork;
+  final pulumi.Input<NetworkACLResponse>? publicNetwork;
 
   /// Creates a new [WebPubSubNetworkACLsResponse].
   /// [defaultAction] Azure Networking ACL Action.
@@ -31,18 +31,18 @@ class WebPubSubNetworkACLsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultAction': ?defaultAction,
-      'ipRules': ?ipRules == null ? null : pulumi.Input.encodeList<IPRuleResponse, Map<String, dynamic>>(ipRules!, (value) => value.toMap()),
-      'privateEndpoints': ?privateEndpoints == null ? null : pulumi.Input.encodeList<PrivateEndpointACLResponse, Map<String, dynamic>>(privateEndpoints!, (value) => value.toMap()),
-      'publicNetwork': ?publicNetwork == null ? null : publicNetwork!.toMap(),
+      'ipRules': ?pulumi.Input.mapOptionalInputValue<List<IPRuleResponse>, List<Map<String, dynamic>>>(ipRules, (value) => pulumi.Input.encodeList<IPRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'privateEndpoints': ?pulumi.Input.mapOptionalInputValue<List<PrivateEndpointACLResponse>, List<Map<String, dynamic>>>(privateEndpoints, (value) => pulumi.Input.encodeList<PrivateEndpointACLResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'publicNetwork': ?pulumi.Input.mapOptionalInputValue<NetworkACLResponse, Map<String, dynamic>>(publicNetwork, (value) => value.toMap()),
     };
   }
 
   factory WebPubSubNetworkACLsResponse.fromMap(Map<String, dynamic> map) {
     return WebPubSubNetworkACLsResponse(
-      defaultAction: map['defaultAction'] == null ? null : map['defaultAction'] as String,
-      ipRules: map['ipRules'] == null ? null : pulumi.Input.decodeList<IPRuleResponse>(map['ipRules'], (value) => IPRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      privateEndpoints: map['privateEndpoints'] == null ? null : pulumi.Input.decodeList<PrivateEndpointACLResponse>(map['privateEndpoints'], (value) => PrivateEndpointACLResponse.fromMap((value as Map).cast<String, dynamic>())),
-      publicNetwork: map['publicNetwork'] == null ? null : NetworkACLResponse.fromMap((map['publicNetwork'] as Map).cast<String, dynamic>()),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRuleResponse>(map['ipRules'], (value) => IPRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<PrivateEndpointACLResponse>(map['privateEndpoints'], (value) => PrivateEndpointACLResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetwork: map['publicNetwork'] == null ? null : (NetworkACLResponse.fromMap((map['publicNetwork'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

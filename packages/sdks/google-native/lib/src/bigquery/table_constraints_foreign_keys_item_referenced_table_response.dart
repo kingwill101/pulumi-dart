@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableConstraintsForeignKeysItemReferencedTableResponse {
-  final String datasetId;
-  final String project;
-  final String tableId;
+  final pulumi.Input<String> datasetId;
+  final pulumi.Input<String> project;
+  final pulumi.Input<String> tableId;
 
   /// Creates a new [TableConstraintsForeignKeysItemReferencedTableResponse].
   /// [datasetId] Required.
@@ -26,9 +27,9 @@ class TableConstraintsForeignKeysItemReferencedTableResponse {
 
   factory TableConstraintsForeignKeysItemReferencedTableResponse.fromMap(Map<String, dynamic> map) {
     return TableConstraintsForeignKeysItemReferencedTableResponse(
-      datasetId: map['datasetId'] as String,
-      project: map['project'] as String,
-      tableId: map['tableId'] as String,
+      datasetId: (map['datasetId'] as String).input(),
+      project: (map['project'] as String).input(),
+      tableId: (map['tableId'] as String).input(),
     );
   }
 }

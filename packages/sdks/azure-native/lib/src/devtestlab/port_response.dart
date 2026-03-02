@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a network port.
 class PortResponse {
   /// Backend port of the target virtual machine.
-  final int? backendPort;
+  final pulumi.Input<int>? backendPort;
   /// Protocol type of the port.
-  final String? transportProtocol;
+  final pulumi.Input<String>? transportProtocol;
 
   /// Creates a new [PortResponse].
   /// [backendPort] Backend port of the target virtual machine.
@@ -25,8 +26,8 @@ class PortResponse {
 
   factory PortResponse.fromMap(Map<String, dynamic> map) {
     return PortResponse(
-      backendPort: map['backendPort'] == null ? null : map['backendPort'] as int,
-      transportProtocol: map['transportProtocol'] == null ? null : map['transportProtocol'] as String,
+      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
+      transportProtocol: map['transportProtocol'] == null ? null : (map['transportProtocol'] as String).input(),
     );
   }
 }

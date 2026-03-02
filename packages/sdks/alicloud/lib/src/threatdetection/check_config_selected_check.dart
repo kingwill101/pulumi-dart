@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CheckConfigSelectedCheck {
   /// The ID of the check item.
-  final int? checkId;
+  final pulumi.Input<int>? checkId;
   /// The section ID of the check item.
-  final int? sectionId;
+  final pulumi.Input<int>? sectionId;
 
   /// Creates a new [CheckConfigSelectedCheck].
   /// [checkId] The ID of the check item.
@@ -24,8 +25,8 @@ class CheckConfigSelectedCheck {
 
   factory CheckConfigSelectedCheck.fromMap(Map<String, dynamic> map) {
     return CheckConfigSelectedCheck(
-      checkId: map['checkId'] == null ? null : map['checkId'] as int,
-      sectionId: map['sectionId'] == null ? null : map['sectionId'] as int,
+      checkId: map['checkId'] == null ? null : (map['checkId'] as int).input(),
+      sectionId: map['sectionId'] == null ? null : (map['sectionId'] as int).input(),
     );
   }
 }

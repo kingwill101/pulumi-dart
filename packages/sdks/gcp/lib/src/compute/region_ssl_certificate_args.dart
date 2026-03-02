@@ -51,21 +51,14 @@ class RegionSslCertificateArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The Region in which the created regional ssl certificate should reside.
   RegionSslCertificateArgs({
-    required pulumi.Output<String> certificate,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    required pulumi.Output<String> privateKey,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      certificate = pulumi.Input.asInput<String>(certificate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      privateKey = pulumi.Input.asInput<String>(privateKey),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.certificate,
+    this.description,
+    this.name,
+    this.namePrefix,
+    required this.privateKey,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,13 +74,13 @@ class RegionSslCertificateArgs {
 
   factory RegionSslCertificateArgs.fromMap(Map<String, dynamic> map) {
     return RegionSslCertificateArgs(
-      certificate: pulumi.Output.create<String>(map['certificate'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      privateKey: pulumi.Output.create<String>(map['privateKey'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      certificate: (map['certificate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      privateKey: (map['privateKey'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

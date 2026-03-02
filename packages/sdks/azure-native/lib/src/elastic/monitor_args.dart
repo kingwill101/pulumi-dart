@@ -34,21 +34,14 @@ class MonitorArgs {
   /// [sku] SKU of the monitor resource.
   /// [tags] The tags of the monitor resource.
   MonitorArgs({
-    pulumi.Output<IdentityProperties>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? monitorName,
-    pulumi.Output<MonitorProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<ResourceSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asOptionalInput<IdentityProperties>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      monitorName = pulumi.Input.asOptionalInput<String>(monitorName),
-      properties = pulumi.Input.asOptionalInput<MonitorProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<ResourceSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.identity,
+    this.location,
+    this.monitorName,
+    this.properties,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class MonitorArgs {
 
   factory MonitorArgs.fromMap(Map<String, dynamic> map) {
     return MonitorArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<IdentityProperties>(IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      monitorName: map['monitorName'] == null ? null : pulumi.Output.create<String>(map['monitorName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<MonitorProperties>(MonitorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<ResourceSku>(ResourceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      monitorName: map['monitorName'] == null ? null : (map['monitorName'] as String).input(),
+      properties: map['properties'] == null ? null : (MonitorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (ResourceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

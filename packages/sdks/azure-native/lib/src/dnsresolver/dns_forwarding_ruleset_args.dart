@@ -26,17 +26,12 @@ class DnsForwardingRulesetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   DnsForwardingRulesetArgs({
-    pulumi.Output<String>? dnsForwardingRulesetName,
-    required pulumi.Output<List<SubResource>> dnsResolverOutboundEndpoints,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dnsForwardingRulesetName = pulumi.Input.asOptionalInput<String>(dnsForwardingRulesetName),
-      dnsResolverOutboundEndpoints = pulumi.Input.asInput<List<SubResource>>(dnsResolverOutboundEndpoints),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dnsForwardingRulesetName,
+    required this.dnsResolverOutboundEndpoints,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DnsForwardingRulesetArgs {
 
   factory DnsForwardingRulesetArgs.fromMap(Map<String, dynamic> map) {
     return DnsForwardingRulesetArgs(
-      dnsForwardingRulesetName: map['dnsForwardingRulesetName'] == null ? null : pulumi.Output.create<String>(map['dnsForwardingRulesetName'] as String),
-      dnsResolverOutboundEndpoints: pulumi.Output.create<List<SubResource>>(pulumi.Input.decodeList<SubResource>(map['dnsResolverOutboundEndpoints'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dnsForwardingRulesetName: map['dnsForwardingRulesetName'] == null ? null : (map['dnsForwardingRulesetName'] as String).input(),
+      dnsResolverOutboundEndpoints: (pulumi.Input.decodeList<SubResource>(map['dnsResolverOutboundEndpoints'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

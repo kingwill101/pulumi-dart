@@ -11,25 +11,25 @@ import 'setup_scripts.dart';
 /// Compute Instance properties
 class ComputeInstanceProperties {
   /// Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
-  final String? applicationSharingPolicy;
+  final pulumi.Input<String>? applicationSharingPolicy;
   /// The Compute Instance Authorization type. Available values are personal (default).
-  final String? computeInstanceAuthorizationType;
+  final pulumi.Input<String>? computeInstanceAuthorizationType;
   /// List of Custom Services added to the compute.
-  final List<CustomService>? customServices;
+  final pulumi.Input<List<CustomService>>? customServices;
   /// Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
-  final bool? enableNodePublicIp;
+  final pulumi.Input<bool>? enableNodePublicIp;
   /// Settings for a personal compute instance.
-  final PersonalComputeInstanceSettings? personalComputeInstanceSettings;
+  final pulumi.Input<PersonalComputeInstanceSettings>? personalComputeInstanceSettings;
   /// The list of schedules to be applied on the computes.
-  final ComputeSchedules? schedules;
+  final pulumi.Input<ComputeSchedules>? schedules;
   /// Details of customized scripts to execute for setting up the cluster.
-  final SetupScripts? setupScripts;
+  final pulumi.Input<SetupScripts>? setupScripts;
   /// Specifies policy and settings for SSH access.
-  final ComputeInstanceSshSettings? sshSettings;
+  final pulumi.Input<ComputeInstanceSshSettings>? sshSettings;
   /// Virtual network subnet resource ID the compute nodes belong to.
-  final ResourceId? subnet;
+  final pulumi.Input<ResourceId>? subnet;
   /// Virtual Machine Size
-  final String? vmSize;
+  final pulumi.Input<String>? vmSize;
 
   /// Creates a new [ComputeInstanceProperties].
   /// [applicationSharingPolicy] Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
@@ -59,29 +59,29 @@ class ComputeInstanceProperties {
     return <String, dynamic>{
       'applicationSharingPolicy': ?applicationSharingPolicy,
       'computeInstanceAuthorizationType': ?computeInstanceAuthorizationType,
-      'customServices': ?customServices == null ? null : pulumi.Input.encodeList<CustomService, Map<String, dynamic>>(customServices!, (value) => value.toMap()),
+      'customServices': ?pulumi.Input.mapOptionalInputValue<List<CustomService>, List<Map<String, dynamic>>>(customServices, (value) => pulumi.Input.encodeList<CustomService, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableNodePublicIp': ?enableNodePublicIp,
-      'personalComputeInstanceSettings': ?personalComputeInstanceSettings == null ? null : personalComputeInstanceSettings!.toMap(),
-      'schedules': ?schedules == null ? null : schedules!.toMap(),
-      'setupScripts': ?setupScripts == null ? null : setupScripts!.toMap(),
-      'sshSettings': ?sshSettings == null ? null : sshSettings!.toMap(),
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'personalComputeInstanceSettings': ?pulumi.Input.mapOptionalInputValue<PersonalComputeInstanceSettings, Map<String, dynamic>>(personalComputeInstanceSettings, (value) => value.toMap()),
+      'schedules': ?pulumi.Input.mapOptionalInputValue<ComputeSchedules, Map<String, dynamic>>(schedules, (value) => value.toMap()),
+      'setupScripts': ?pulumi.Input.mapOptionalInputValue<SetupScripts, Map<String, dynamic>>(setupScripts, (value) => value.toMap()),
+      'sshSettings': ?pulumi.Input.mapOptionalInputValue<ComputeInstanceSshSettings, Map<String, dynamic>>(sshSettings, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<ResourceId, Map<String, dynamic>>(subnet, (value) => value.toMap()),
       'vmSize': ?vmSize,
     };
   }
 
   factory ComputeInstanceProperties.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceProperties(
-      applicationSharingPolicy: map['applicationSharingPolicy'] == null ? null : map['applicationSharingPolicy'] as String,
-      computeInstanceAuthorizationType: map['computeInstanceAuthorizationType'] == null ? null : map['computeInstanceAuthorizationType'] as String,
-      customServices: map['customServices'] == null ? null : pulumi.Input.decodeList<CustomService>(map['customServices'], (value) => CustomService.fromMap((value as Map).cast<String, dynamic>())),
-      enableNodePublicIp: map['enableNodePublicIp'] == null ? null : map['enableNodePublicIp'] as bool,
-      personalComputeInstanceSettings: map['personalComputeInstanceSettings'] == null ? null : PersonalComputeInstanceSettings.fromMap((map['personalComputeInstanceSettings'] as Map).cast<String, dynamic>()),
-      schedules: map['schedules'] == null ? null : ComputeSchedules.fromMap((map['schedules'] as Map).cast<String, dynamic>()),
-      setupScripts: map['setupScripts'] == null ? null : SetupScripts.fromMap((map['setupScripts'] as Map).cast<String, dynamic>()),
-      sshSettings: map['sshSettings'] == null ? null : ComputeInstanceSshSettings.fromMap((map['sshSettings'] as Map).cast<String, dynamic>()),
-      subnet: map['subnet'] == null ? null : ResourceId.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
-      vmSize: map['vmSize'] == null ? null : map['vmSize'] as String,
+      applicationSharingPolicy: map['applicationSharingPolicy'] == null ? null : (map['applicationSharingPolicy'] as String).input(),
+      computeInstanceAuthorizationType: map['computeInstanceAuthorizationType'] == null ? null : (map['computeInstanceAuthorizationType'] as String).input(),
+      customServices: map['customServices'] == null ? null : (pulumi.Input.decodeList<CustomService>(map['customServices'], (value) => CustomService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableNodePublicIp: map['enableNodePublicIp'] == null ? null : (map['enableNodePublicIp'] as bool).input(),
+      personalComputeInstanceSettings: map['personalComputeInstanceSettings'] == null ? null : (PersonalComputeInstanceSettings.fromMap((map['personalComputeInstanceSettings'] as Map).cast<String, dynamic>())).input(),
+      schedules: map['schedules'] == null ? null : (ComputeSchedules.fromMap((map['schedules'] as Map).cast<String, dynamic>())).input(),
+      setupScripts: map['setupScripts'] == null ? null : (SetupScripts.fromMap((map['setupScripts'] as Map).cast<String, dynamic>())).input(),
+      sshSettings: map['sshSettings'] == null ? null : (ComputeInstanceSshSettings.fromMap((map['sshSettings'] as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (ResourceId.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
     );
   }
 }

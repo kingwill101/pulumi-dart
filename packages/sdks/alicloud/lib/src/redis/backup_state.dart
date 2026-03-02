@@ -21,15 +21,11 @@ class BackupState {
   /// [instanceId] InstanceId
   /// [status] Backup status.
   BackupState({
-    pulumi.Output<int>? backupId,
-    pulumi.Output<int>? backupRetentionPeriod,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? status,
-  }) :
-      backupId = pulumi.Input.asOptionalInput<int>(backupId),
-      backupRetentionPeriod = pulumi.Input.asOptionalInput<int>(backupRetentionPeriod),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.backupId,
+    this.backupRetentionPeriod,
+    this.instanceId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class BackupState {
 
   factory BackupState.fromMap(Map<String, dynamic> map) {
     return BackupState(
-      backupId: map['backupId'] == null ? null : pulumi.Output.create<int>(map['backupId'] as int),
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : pulumi.Output.create<int>(map['backupRetentionPeriod'] as int),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      backupId: map['backupId'] == null ? null : (map['backupId'] as int).input(),
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod'] as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

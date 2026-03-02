@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'defender_cspm_jfrog_offering_mdc_containers_image_assessment.dart';
 
 /// The CSPM P1 for JFrog Artifactory offering
 class DefenderCspmJFrogOffering {
   /// The Microsoft Defender Container image assessment configuration
-  final DefenderCspmJFrogOfferingMdcContainersImageAssessment? mdcContainersImageAssessment;
+  final pulumi.Input<DefenderCspmJFrogOfferingMdcContainersImageAssessment>? mdcContainersImageAssessment;
   /// The type of the security offering.
   /// Expected value is 'DefenderCspmJFrog'.
-  final String offeringType;
+  final pulumi.Input<String> offeringType;
 
   /// Creates a new [DefenderCspmJFrogOffering].
   /// [mdcContainersImageAssessment] The Microsoft Defender Container image assessment configuration
@@ -20,15 +21,15 @@ class DefenderCspmJFrogOffering {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mdcContainersImageAssessment': ?mdcContainersImageAssessment == null ? null : mdcContainersImageAssessment!.toMap(),
+      'mdcContainersImageAssessment': ?pulumi.Input.mapOptionalInputValue<DefenderCspmJFrogOfferingMdcContainersImageAssessment, Map<String, dynamic>>(mdcContainersImageAssessment, (value) => value.toMap()),
       'offeringType': offeringType,
     };
   }
 
   factory DefenderCspmJFrogOffering.fromMap(Map<String, dynamic> map) {
     return DefenderCspmJFrogOffering(
-      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : DefenderCspmJFrogOfferingMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment'] as Map).cast<String, dynamic>()),
-      offeringType: map['offeringType'] as String,
+      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderCspmJFrogOfferingMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment'] as Map).cast<String, dynamic>())).input(),
+      offeringType: (map['offeringType'] as String).input(),
     );
   }
 }

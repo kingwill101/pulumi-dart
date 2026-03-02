@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about the Kubernetes Gateway API service mesh configuration.
 class GatewayServiceMeshResponse {
   /// Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
-  final String deployment;
+  final pulumi.Input<String> deployment;
   /// Name of the Gateway API HTTPRoute.
-  final String httpRoute;
+  final pulumi.Input<String> httpRoute;
   /// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
-  final String routeUpdateWaitTime;
+  final pulumi.Input<String> routeUpdateWaitTime;
   /// Name of the Kubernetes Service.
-  final String service;
+  final pulumi.Input<String> service;
 
   /// Creates a new [GatewayServiceMeshResponse].
   /// [deployment] Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
@@ -35,10 +36,10 @@ class GatewayServiceMeshResponse {
 
   factory GatewayServiceMeshResponse.fromMap(Map<String, dynamic> map) {
     return GatewayServiceMeshResponse(
-      deployment: map['deployment'] as String,
-      httpRoute: map['httpRoute'] as String,
-      routeUpdateWaitTime: map['routeUpdateWaitTime'] as String,
-      service: map['service'] as String,
+      deployment: (map['deployment'] as String).input(),
+      httpRoute: (map['httpRoute'] as String).input(),
+      routeUpdateWaitTime: (map['routeUpdateWaitTime'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

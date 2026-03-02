@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ServiceDirectoryConfig represents Service Directory configuration for a connection.
 class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse {
   /// The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-  final String service;
+  final pulumi.Input<String> service;
 
   /// Creates a new [GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse].
   /// [service] The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
@@ -20,7 +21,7 @@ class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse {
 
   factory GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse(
-      service: map['service'] as String,
+      service: (map['service'] as String).input(),
     );
   }
 }

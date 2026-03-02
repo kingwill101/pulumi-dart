@@ -28,19 +28,13 @@ class GetImageArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] The type of image which must be (`PUBLIC`, `PRIVATE`, or `SHARED`).
   GetImageArgs({
-    pulumi.Output<String>? arn,
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? type,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.arn,
+    this.mostRecent,
+    this.name,
+    this.nameRegex,
+    this.region,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

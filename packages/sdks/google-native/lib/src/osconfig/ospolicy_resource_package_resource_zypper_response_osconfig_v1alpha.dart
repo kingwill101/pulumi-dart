@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A package managed by Zypper. - install: `zypper -y install package` - remove: `zypper -y rm package`
 class OSPolicyResourcePackageResourceZypperResponseOsconfigV1alpha {
   /// Package name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [OSPolicyResourcePackageResourceZypperResponseOsconfigV1alpha].
   /// [name] Package name.
@@ -20,7 +21,7 @@ class OSPolicyResourcePackageResourceZypperResponseOsconfigV1alpha {
 
   factory OSPolicyResourcePackageResourceZypperResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceZypperResponseOsconfigV1alpha(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

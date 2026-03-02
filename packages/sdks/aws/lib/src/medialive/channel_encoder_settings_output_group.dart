@@ -6,11 +6,11 @@ import 'channel_encoder_settings_output_group_output_group_settings.dart';
 
 class ChannelEncoderSettingsOutputGroup {
   /// Custom output group name defined by the user.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Settings associated with the output group. See Output Group Settings for more details.
-  final ChannelEncoderSettingsOutputGroupOutputGroupSettings outputGroupSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettings> outputGroupSettings;
   /// List of outputs. See Outputs for more details.
-  final List<ChannelEncoderSettingsOutputGroupOutput> outputs;
+  final pulumi.Input<List<ChannelEncoderSettingsOutputGroupOutput>> outputs;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroup].
   /// [name] Custom output group name defined by the user.
@@ -25,16 +25,16 @@ class ChannelEncoderSettingsOutputGroup {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'outputGroupSettings': outputGroupSettings.toMap(),
-      'outputs': pulumi.Input.encodeList<ChannelEncoderSettingsOutputGroupOutput, Map<String, dynamic>>(outputs, (value) => value.toMap()),
+      'outputGroupSettings': pulumi.Input.mapInputValue<ChannelEncoderSettingsOutputGroupOutputGroupSettings, Map<String, dynamic>>(outputGroupSettings, (value) => value.toMap()),
+      'outputs': pulumi.Input.mapInputValue<List<ChannelEncoderSettingsOutputGroupOutput>, List<Map<String, dynamic>>>(outputs, (value) => pulumi.Input.encodeList<ChannelEncoderSettingsOutputGroupOutput, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ChannelEncoderSettingsOutputGroup.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroup(
-      name: map['name'] == null ? null : map['name'] as String,
-      outputGroupSettings: ChannelEncoderSettingsOutputGroupOutputGroupSettings.fromMap((map['outputGroupSettings'] as Map).cast<String, dynamic>()),
-      outputs: pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroupOutput>(map['outputs'], (value) => ChannelEncoderSettingsOutputGroupOutput.fromMap((value as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputGroupSettings: (ChannelEncoderSettingsOutputGroupOutputGroupSettings.fromMap((map['outputGroupSettings'] as Map).cast<String, dynamic>())).input(),
+      outputs: (pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroupOutput>(map['outputs'], (value) => ChannelEncoderSettingsOutputGroupOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

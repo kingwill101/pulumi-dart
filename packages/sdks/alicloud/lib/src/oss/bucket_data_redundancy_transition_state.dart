@@ -19,15 +19,11 @@ class BucketDataRedundancyTransitionState {
   /// [status] Stores the state of the redundant translation task. The values are as follows:  Queueing: in the queue.  Processing: In progress.  Finished: Finished.
   /// [taskId] Unique identification of the storage redundancy conversion task.
   BucketDataRedundancyTransitionState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? taskId,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      taskId = pulumi.Input.asOptionalInput<String>(taskId);
+    this.bucket,
+    this.createTime,
+    this.status,
+    this.taskId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class BucketDataRedundancyTransitionState {
 
   factory BucketDataRedundancyTransitionState.fromMap(Map<String, dynamic> map) {
     return BucketDataRedundancyTransitionState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      taskId: map['taskId'] == null ? null : pulumi.Output.create<String>(map['taskId'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
     );
   }
 }

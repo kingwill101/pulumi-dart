@@ -31,19 +31,13 @@ class TaskIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [taskId] Used to find the parent resource to bind the IAM policy to
   TaskIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? lake,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? taskId,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      lake = pulumi.Input.asOptionalInput<String>(lake),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      taskId = pulumi.Input.asOptionalInput<String>(taskId);
+    this.etag,
+    this.lake,
+    this.location,
+    this.policyData,
+    this.project,
+    this.taskId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class TaskIamPolicyState {
 
   factory TaskIamPolicyState.fromMap(Map<String, dynamic> map) {
     return TaskIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      lake: map['lake'] == null ? null : pulumi.Output.create<String>(map['lake'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      taskId: map['taskId'] == null ? null : pulumi.Output.create<String>(map['taskId'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      lake: map['lake'] == null ? null : (map['lake'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
     );
   }
 }

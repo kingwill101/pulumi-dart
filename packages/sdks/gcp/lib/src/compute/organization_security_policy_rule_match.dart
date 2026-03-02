@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organization_security_policy_rule_match_config.dart';
 
 class OrganizationSecurityPolicyRuleMatch {
   /// The configuration options for matching the rule.
   /// Structure is documented below.
-  final OrganizationSecurityPolicyRuleMatchConfig config;
+  final pulumi.Input<OrganizationSecurityPolicyRuleMatchConfig> config;
   /// A description of the rule.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Preconfigured versioned expression. For organization security policy rules,
   /// the only supported type is "FIREWALL".
   /// Default value is `FIREWALL`.
   /// Possible values are: `FIREWALL`.
-  final String? versionedExpr;
+  final pulumi.Input<String>? versionedExpr;
 
   /// Creates a new [OrganizationSecurityPolicyRuleMatch].
   /// [config] The configuration options for matching the rule.
@@ -26,7 +27,7 @@ class OrganizationSecurityPolicyRuleMatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': config.toMap(),
+      'config': pulumi.Input.mapInputValue<OrganizationSecurityPolicyRuleMatchConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'description': ?description,
       'versionedExpr': ?versionedExpr,
     };
@@ -34,9 +35,9 @@ class OrganizationSecurityPolicyRuleMatch {
 
   factory OrganizationSecurityPolicyRuleMatch.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyRuleMatch(
-      config: OrganizationSecurityPolicyRuleMatchConfig.fromMap((map['config'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      versionedExpr: map['versionedExpr'] == null ? null : map['versionedExpr'] as String,
+      config: (OrganizationSecurityPolicyRuleMatchConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      versionedExpr: map['versionedExpr'] == null ? null : (map['versionedExpr'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Outstanding conditions that will need to be resolved.
 class ConditionResponse {
   /// The issue requiring attention.
-  final String message;
+  final pulumi.Input<String> message;
   /// The time when the condition was raised.
-  final String timestamp;
+  final pulumi.Input<String> timestamp;
 
   /// Creates a new [ConditionResponse].
   /// [message] The issue requiring attention.
@@ -25,8 +26,8 @@ class ConditionResponse {
 
   factory ConditionResponse.fromMap(Map<String, dynamic> map) {
     return ConditionResponse(
-      message: map['message'] as String,
-      timestamp: map['timestamp'] as String,
+      message: (map['message'] as String).input(),
+      timestamp: (map['timestamp'] as String).input(),
     );
   }
 }

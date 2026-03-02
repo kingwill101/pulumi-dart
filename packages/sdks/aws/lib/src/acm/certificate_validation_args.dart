@@ -19,13 +19,10 @@ class CertificateValidationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [validationRecordFqdns] List of FQDNs that implement the validation. Only valid for DNS validation method ACM certificates. If this is set, the resource can implement additional sanity checks and has an explicit dependency on the resource that is implementing the validation
   CertificateValidationArgs({
-    required pulumi.Output<String> certificateArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? validationRecordFqdns,
-  }) :
-      certificateArn = pulumi.Input.asInput<String>(certificateArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      validationRecordFqdns = pulumi.Input.asOptionalInput<List<String>>(validationRecordFqdns);
+    required this.certificateArn,
+    this.region,
+    this.validationRecordFqdns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class CertificateValidationArgs {
 
   factory CertificateValidationArgs.fromMap(Map<String, dynamic> map) {
     return CertificateValidationArgs(
-      certificateArn: pulumi.Output.create<String>(map['certificateArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      validationRecordFqdns: map['validationRecordFqdns'] == null ? null : pulumi.Output.create<List<String>>((map['validationRecordFqdns'] as List).cast<String>()),
+      certificateArn: (map['certificateArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      validationRecordFqdns: map['validationRecordFqdns'] == null ? null : ((map['validationRecordFqdns'] as List).cast<String>()).input(),
     );
   }
 }

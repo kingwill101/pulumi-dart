@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ArchiveRuleFilter {
   /// Contains comparator.
-  final List<String>? contains;
+  final pulumi.Input<List<String>>? contains;
   /// Filter criteria.
-  final String criteria;
+  final pulumi.Input<String> criteria;
   /// Equals comparator.
-  final List<String>? eqs;
+  final pulumi.Input<List<String>>? eqs;
   /// Boolean comparator.
-  final String? exists;
+  final pulumi.Input<String>? exists;
   /// Not Equals comparator.
-  final List<String>? neqs;
+  final pulumi.Input<List<String>>? neqs;
 
   /// Creates a new [ArchiveRuleFilter].
   /// [contains] Contains comparator.
@@ -39,11 +40,11 @@ class ArchiveRuleFilter {
 
   factory ArchiveRuleFilter.fromMap(Map<String, dynamic> map) {
     return ArchiveRuleFilter(
-      contains: map['contains'] == null ? null : (map['contains'] as List).cast<String>(),
-      criteria: map['criteria'] as String,
-      eqs: map['eqs'] == null ? null : (map['eqs'] as List).cast<String>(),
-      exists: map['exists'] == null ? null : map['exists'] as String,
-      neqs: map['neqs'] == null ? null : (map['neqs'] as List).cast<String>(),
+      contains: map['contains'] == null ? null : ((map['contains'] as List).cast<String>()).input(),
+      criteria: (map['criteria'] as String).input(),
+      eqs: map['eqs'] == null ? null : ((map['eqs'] as List).cast<String>()).input(),
+      exists: map['exists'] == null ? null : (map['exists'] as String).input(),
+      neqs: map['neqs'] == null ? null : ((map['neqs'] as List).cast<String>()).input(),
     );
   }
 }

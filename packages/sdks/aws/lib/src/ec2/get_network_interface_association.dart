@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkInterfaceAssociation {
   /// Allocation ID.
-  final String allocationId;
+  final pulumi.Input<String> allocationId;
   /// Association ID.
-  final String associationId;
+  final pulumi.Input<String> associationId;
   /// Carrier IP address associated with the network interface. This attribute is only set when the network interface is in a subnet which is associated with a Wavelength Zone.
-  final String carrierIp;
+  final pulumi.Input<String> carrierIp;
   /// Customer-owned IP address.
-  final String customerOwnedIp;
+  final pulumi.Input<String> customerOwnedIp;
   /// ID of the Elastic IP address owner.
-  final String ipOwnerId;
+  final pulumi.Input<String> ipOwnerId;
   /// Public DNS name.
-  final String publicDnsName;
+  final pulumi.Input<String> publicDnsName;
   /// Address of the Elastic IP address bound to the network interface.
-  final String publicIp;
+  final pulumi.Input<String> publicIp;
 
   /// Creates a new [GetNetworkInterfaceAssociation].
   /// [allocationId] Allocation ID.
@@ -49,13 +50,13 @@ class GetNetworkInterfaceAssociation {
 
   factory GetNetworkInterfaceAssociation.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceAssociation(
-      allocationId: map['allocationId'] as String,
-      associationId: map['associationId'] as String,
-      carrierIp: map['carrierIp'] as String,
-      customerOwnedIp: map['customerOwnedIp'] as String,
-      ipOwnerId: map['ipOwnerId'] as String,
-      publicDnsName: map['publicDnsName'] as String,
-      publicIp: map['publicIp'] as String,
+      allocationId: (map['allocationId'] as String).input(),
+      associationId: (map['associationId'] as String).input(),
+      carrierIp: (map['carrierIp'] as String).input(),
+      customerOwnedIp: (map['customerOwnedIp'] as String).input(),
+      ipOwnerId: (map['ipOwnerId'] as String).input(),
+      publicDnsName: (map['publicDnsName'] as String).input(),
+      publicIp: (map['publicIp'] as String).input(),
     );
   }
 }

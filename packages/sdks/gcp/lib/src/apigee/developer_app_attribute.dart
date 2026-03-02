@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeveloperAppAttribute {
   /// Key of the attribute
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Value of the attribute
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [DeveloperAppAttribute].
   /// [name] Key of the attribute
@@ -24,8 +25,8 @@ class DeveloperAppAttribute {
 
   factory DeveloperAppAttribute.fromMap(Map<String, dynamic> map) {
     return DeveloperAppAttribute(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetPrivateConnectionDatastreamV1alpha1Args {
   /// [privateConnectionId] Required.
   /// [project] Optional.
   GetPrivateConnectionDatastreamV1alpha1Args({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> privateConnectionId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      privateConnectionId = pulumi.Input.asInput<String>(privateConnectionId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    required this.privateConnectionId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetPrivateConnectionDatastreamV1alpha1Args {
 
   factory GetPrivateConnectionDatastreamV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetPrivateConnectionDatastreamV1alpha1Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      privateConnectionId: pulumi.Output.create<String>(map['privateConnectionId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      privateConnectionId: (map['privateConnectionId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

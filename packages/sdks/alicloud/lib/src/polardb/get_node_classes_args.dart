@@ -34,23 +34,15 @@ class GetNodeClassesArgs {
   /// [regionId] The Region to launch the PolarDB cluster.
   /// [zoneId] The Zone to launch the PolarDB cluster.
   GetNodeClassesArgs({
-    pulumi.Output<String>? category,
-    pulumi.Output<String>? dbNodeClass,
-    pulumi.Output<String>? dbType,
-    pulumi.Output<String>? dbVersion,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> payType,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      category = pulumi.Input.asOptionalInput<String>(category),
-      dbNodeClass = pulumi.Input.asOptionalInput<String>(dbNodeClass),
-      dbType = pulumi.Input.asOptionalInput<String>(dbType),
-      dbVersion = pulumi.Input.asOptionalInput<String>(dbVersion),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      payType = pulumi.Input.asInput<String>(payType),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.category,
+    this.dbNodeClass,
+    this.dbType,
+    this.dbVersion,
+    this.outputFile,
+    required this.payType,
+    this.regionId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetNodeClassesArgs {
 
   factory GetNodeClassesArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeClassesArgs(
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      dbNodeClass: map['dbNodeClass'] == null ? null : pulumi.Output.create<String>(map['dbNodeClass'] as String),
-      dbType: map['dbType'] == null ? null : pulumi.Output.create<String>(map['dbType'] as String),
-      dbVersion: map['dbVersion'] == null ? null : pulumi.Output.create<String>(map['dbVersion'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      payType: pulumi.Output.create<String>(map['payType'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      dbNodeClass: map['dbNodeClass'] == null ? null : (map['dbNodeClass'] as String).input(),
+      dbType: map['dbType'] == null ? null : (map['dbType'] as String).input(),
+      dbVersion: map['dbVersion'] == null ? null : (map['dbVersion'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      payType: (map['payType'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

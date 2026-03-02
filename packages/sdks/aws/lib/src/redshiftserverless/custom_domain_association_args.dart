@@ -22,15 +22,11 @@ class CustomDomainAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroupName] Name of the workgroup.
   CustomDomainAssociationArgs({
-    required pulumi.Output<String> customDomainCertificateArn,
-    required pulumi.Output<String> customDomainName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> workgroupName,
-  }) :
-      customDomainCertificateArn = pulumi.Input.asInput<String>(customDomainCertificateArn),
-      customDomainName = pulumi.Input.asInput<String>(customDomainName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workgroupName = pulumi.Input.asInput<String>(workgroupName);
+    required this.customDomainCertificateArn,
+    required this.customDomainName,
+    this.region,
+    required this.workgroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class CustomDomainAssociationArgs {
 
   factory CustomDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationArgs(
-      customDomainCertificateArn: pulumi.Output.create<String>(map['customDomainCertificateArn'] as String),
-      customDomainName: pulumi.Output.create<String>(map['customDomainName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workgroupName: pulumi.Output.create<String>(map['workgroupName'] as String),
+      customDomainCertificateArn: (map['customDomainCertificateArn'] as String).input(),
+      customDomainName: (map['customDomainName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workgroupName: (map['workgroupName'] as String).input(),
     );
   }
 }

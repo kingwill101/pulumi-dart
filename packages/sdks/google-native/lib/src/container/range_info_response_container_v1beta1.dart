@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RangeInfo contains the range name and the range utilization by this cluster.
 class RangeInfoResponseContainerV1beta1 {
   /// [Output only] Name of a range.
-  final String rangeName;
+  final pulumi.Input<String> rangeName;
   /// [Output only] The utilization of the range.
-  final double utilization;
+  final pulumi.Input<double> utilization;
 
   /// Creates a new [RangeInfoResponseContainerV1beta1].
   /// [rangeName] [Output only] Name of a range.
@@ -25,8 +26,8 @@ class RangeInfoResponseContainerV1beta1 {
 
   factory RangeInfoResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return RangeInfoResponseContainerV1beta1(
-      rangeName: map['rangeName'] as String,
-      utilization: map['utilization'] as double,
+      rangeName: (map['rangeName'] as String).input(),
+      utilization: (map['utilization'] as double).input(),
     );
   }
 }

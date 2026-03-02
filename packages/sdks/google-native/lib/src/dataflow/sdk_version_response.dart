@@ -6,13 +6,13 @@ import 'sdk_bug_response.dart';
 /// The version of the SDK used to run the job.
 class SdkVersionResponse {
   /// Known bugs found in this SDK version.
-  final List<SdkBugResponse> bugs;
+  final pulumi.Input<List<SdkBugResponse>> bugs;
   /// The support status for this SDK version.
-  final String sdkSupportStatus;
+  final pulumi.Input<String> sdkSupportStatus;
   /// The version of the SDK used to run the job.
-  final String version;
+  final pulumi.Input<String> version;
   /// A readable string describing the version of the SDK.
-  final String versionDisplayName;
+  final pulumi.Input<String> versionDisplayName;
 
   /// Creates a new [SdkVersionResponse].
   /// [bugs] Known bugs found in this SDK version.
@@ -28,7 +28,7 @@ class SdkVersionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bugs': pulumi.Input.encodeList<SdkBugResponse, Map<String, dynamic>>(bugs, (value) => value.toMap()),
+      'bugs': pulumi.Input.mapInputValue<List<SdkBugResponse>, List<Map<String, dynamic>>>(bugs, (value) => pulumi.Input.encodeList<SdkBugResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sdkSupportStatus': sdkSupportStatus,
       'version': version,
       'versionDisplayName': versionDisplayName,
@@ -37,10 +37,10 @@ class SdkVersionResponse {
 
   factory SdkVersionResponse.fromMap(Map<String, dynamic> map) {
     return SdkVersionResponse(
-      bugs: pulumi.Input.decodeList<SdkBugResponse>(map['bugs'], (value) => SdkBugResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sdkSupportStatus: map['sdkSupportStatus'] as String,
-      version: map['version'] as String,
-      versionDisplayName: map['versionDisplayName'] as String,
+      bugs: (pulumi.Input.decodeList<SdkBugResponse>(map['bugs'], (value) => SdkBugResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sdkSupportStatus: (map['sdkSupportStatus'] as String).input(),
+      version: (map['version'] as String).input(),
+      versionDisplayName: (map['versionDisplayName'] as String).input(),
     );
   }
 }

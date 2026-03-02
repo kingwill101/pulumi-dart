@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The azure resource id.
 class ResourceIdResponse {
   /// The azure resource id.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [ResourceIdResponse].
   /// [id] The azure resource id.
@@ -20,7 +21,7 @@ class ResourceIdResponse {
 
   factory ResourceIdResponse.fromMap(Map<String, dynamic> map) {
     return ResourceIdResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

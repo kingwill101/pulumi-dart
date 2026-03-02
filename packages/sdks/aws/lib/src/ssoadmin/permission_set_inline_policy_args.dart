@@ -22,15 +22,11 @@ class PermissionSetInlinePolicyArgs {
   /// [permissionSetArn] The Amazon Resource Name (ARN) of the Permission Set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PermissionSetInlinePolicyArgs({
-    required pulumi.Output<String> inlinePolicy,
-    required pulumi.Output<String> instanceArn,
-    required pulumi.Output<String> permissionSetArn,
-    pulumi.Output<String>? region,
-  }) :
-      inlinePolicy = pulumi.Input.asInput<String>(inlinePolicy),
-      instanceArn = pulumi.Input.asInput<String>(instanceArn),
-      permissionSetArn = pulumi.Input.asInput<String>(permissionSetArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.inlinePolicy,
+    required this.instanceArn,
+    required this.permissionSetArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class PermissionSetInlinePolicyArgs {
 
   factory PermissionSetInlinePolicyArgs.fromMap(Map<String, dynamic> map) {
     return PermissionSetInlinePolicyArgs(
-      inlinePolicy: pulumi.Output.create<String>(map['inlinePolicy'] as String),
-      instanceArn: pulumi.Output.create<String>(map['instanceArn'] as String),
-      permissionSetArn: pulumi.Output.create<String>(map['permissionSetArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      inlinePolicy: (map['inlinePolicy'] as String).input(),
+      instanceArn: (map['instanceArn'] as String).input(),
+      permissionSetArn: (map['permissionSetArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

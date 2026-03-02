@@ -17,11 +17,9 @@ class SitesBySubscriptionArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [siteName] The name of the Site
   SitesBySubscriptionArgs({
-    pulumi.Output<SiteProperties>? properties,
-    pulumi.Output<String>? siteName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<SiteProperties>(properties),
-      siteName = pulumi.Input.asOptionalInput<String>(siteName);
+    this.properties,
+    this.siteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class SitesBySubscriptionArgs {
 
   factory SitesBySubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SitesBySubscriptionArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<SiteProperties>(SiteProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      siteName: map['siteName'] == null ? null : pulumi.Output.create<String>(map['siteName'] as String),
+      properties: map['properties'] == null ? null : (SiteProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
     );
   }
 }

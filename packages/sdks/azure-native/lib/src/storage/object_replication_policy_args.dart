@@ -33,21 +33,14 @@ class ObjectReplicationPolicyArgs {
   /// [rules] The storage account object replication rules.
   /// [sourceAccount] Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
   ObjectReplicationPolicyArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> destinationAccount,
-    pulumi.Output<ObjectReplicationPolicyPropertiesMetrics>? metrics,
-    pulumi.Output<String>? objectReplicationPolicyId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<ObjectReplicationPolicyRule>>? rules,
-    required pulumi.Output<String> sourceAccount,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      destinationAccount = pulumi.Input.asInput<String>(destinationAccount),
-      metrics = pulumi.Input.asOptionalInput<ObjectReplicationPolicyPropertiesMetrics>(metrics),
-      objectReplicationPolicyId = pulumi.Input.asOptionalInput<String>(objectReplicationPolicyId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rules = pulumi.Input.asOptionalInput<List<ObjectReplicationPolicyRule>>(rules),
-      sourceAccount = pulumi.Input.asInput<String>(sourceAccount);
+    required this.accountName,
+    required this.destinationAccount,
+    this.metrics,
+    this.objectReplicationPolicyId,
+    required this.resourceGroupName,
+    this.rules,
+    required this.sourceAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ObjectReplicationPolicyArgs {
 
   factory ObjectReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ObjectReplicationPolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      destinationAccount: pulumi.Output.create<String>(map['destinationAccount'] as String),
-      metrics: map['metrics'] == null ? null : pulumi.Output.create<ObjectReplicationPolicyPropertiesMetrics>(ObjectReplicationPolicyPropertiesMetrics.fromMap((map['metrics'] as Map).cast<String, dynamic>())),
-      objectReplicationPolicyId: map['objectReplicationPolicyId'] == null ? null : pulumi.Output.create<String>(map['objectReplicationPolicyId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<ObjectReplicationPolicyRule>>(pulumi.Input.decodeList<ObjectReplicationPolicyRule>(map['rules'], (value) => ObjectReplicationPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
-      sourceAccount: pulumi.Output.create<String>(map['sourceAccount'] as String),
+      accountName: (map['accountName'] as String).input(),
+      destinationAccount: (map['destinationAccount'] as String).input(),
+      metrics: map['metrics'] == null ? null : (ObjectReplicationPolicyPropertiesMetrics.fromMap((map['metrics'] as Map).cast<String, dynamic>())).input(),
+      objectReplicationPolicyId: map['objectReplicationPolicyId'] == null ? null : (map['objectReplicationPolicyId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ObjectReplicationPolicyRule>(map['rules'], (value) => ObjectReplicationPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceAccount: (map['sourceAccount'] as String).input(),
     );
   }
 }

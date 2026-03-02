@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSnapshotClusterConfiguration {
   /// Description for the cluster.
-  final String description;
+  final pulumi.Input<String> description;
   /// The engine that will run on cluster nodes.
-  final String engine;
+  final pulumi.Input<String> engine;
   /// Version number of the engine used by the cluster.
-  final String engineVersion;
+  final pulumi.Input<String> engineVersion;
   /// The weekly time range during which maintenance on the cluster is performed.
-  final String maintenanceWindow;
+  final pulumi.Input<String> maintenanceWindow;
   /// Name of the snapshot.
-  final String name;
+  final pulumi.Input<String> name;
   /// Compute and memory capacity of the nodes in the cluster.
-  final String nodeType;
+  final pulumi.Input<String> nodeType;
   /// Number of shards in the cluster.
-  final int numShards;
+  final pulumi.Input<int> numShards;
   /// Name of the parameter group associated with the cluster.
-  final String parameterGroupName;
+  final pulumi.Input<String> parameterGroupName;
   /// Port number on which the cluster accepts connections.
-  final int port;
+  final pulumi.Input<int> port;
   /// Number of days for which MemoryDB retains automatic snapshots before deleting them.
-  final int snapshotRetentionLimit;
+  final pulumi.Input<int> snapshotRetentionLimit;
   /// The daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of the shard.
-  final String snapshotWindow;
+  final pulumi.Input<String> snapshotWindow;
   /// Name of the subnet group used by the cluster.
-  final String subnetGroupName;
+  final pulumi.Input<String> subnetGroupName;
   /// ARN of the SNS topic to which cluster notifications are sent.
-  final String topicArn;
+  final pulumi.Input<String> topicArn;
   /// The VPC in which the cluster exists.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetSnapshotClusterConfiguration].
   /// [description] Description for the cluster.
@@ -84,20 +85,20 @@ class GetSnapshotClusterConfiguration {
 
   factory GetSnapshotClusterConfiguration.fromMap(Map<String, dynamic> map) {
     return GetSnapshotClusterConfiguration(
-      description: map['description'] as String,
-      engine: map['engine'] as String,
-      engineVersion: map['engineVersion'] as String,
-      maintenanceWindow: map['maintenanceWindow'] as String,
-      name: map['name'] as String,
-      nodeType: map['nodeType'] as String,
-      numShards: map['numShards'] as int,
-      parameterGroupName: map['parameterGroupName'] as String,
-      port: map['port'] as int,
-      snapshotRetentionLimit: map['snapshotRetentionLimit'] as int,
-      snapshotWindow: map['snapshotWindow'] as String,
-      subnetGroupName: map['subnetGroupName'] as String,
-      topicArn: map['topicArn'] as String,
-      vpcId: map['vpcId'] as String,
+      description: (map['description'] as String).input(),
+      engine: (map['engine'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
+      maintenanceWindow: (map['maintenanceWindow'] as String).input(),
+      name: (map['name'] as String).input(),
+      nodeType: (map['nodeType'] as String).input(),
+      numShards: (map['numShards'] as int).input(),
+      parameterGroupName: (map['parameterGroupName'] as String).input(),
+      port: (map['port'] as int).input(),
+      snapshotRetentionLimit: (map['snapshotRetentionLimit'] as int).input(),
+      snapshotWindow: (map['snapshotWindow'] as String).input(),
+      subnetGroupName: (map['subnetGroupName'] as String).input(),
+      topicArn: (map['topicArn'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

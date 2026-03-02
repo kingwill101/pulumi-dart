@@ -46,23 +46,15 @@ class TrunkArgs {
   /// [tags] A set of string tags for the port.
   /// [tenantId] The owner of the Trunk. Required if admin wants
   TrunkArgs({
-    pulumi.Output<bool>? adminStateUp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> portId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<TrunkSubPort>>? subPorts,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? tenantId,
-  }) :
-      adminStateUp = pulumi.Input.asOptionalInput<bool>(adminStateUp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      portId = pulumi.Input.asInput<String>(portId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subPorts = pulumi.Input.asOptionalInput<List<TrunkSubPort>>(subPorts),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.adminStateUp,
+    this.description,
+    this.name,
+    required this.portId,
+    this.region,
+    this.subPorts,
+    this.tags,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,14 +71,14 @@ class TrunkArgs {
 
   factory TrunkArgs.fromMap(Map<String, dynamic> map) {
     return TrunkArgs(
-      adminStateUp: map['adminStateUp'] == null ? null : pulumi.Output.create<bool>(map['adminStateUp'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      portId: pulumi.Output.create<String>(map['portId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subPorts: map['subPorts'] == null ? null : pulumi.Output.create<List<TrunkSubPort>>(pulumi.Input.decodeList<TrunkSubPort>(map['subPorts'], (value) => TrunkSubPort.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      portId: (map['portId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subPorts: map['subPorts'] == null ? null : (pulumi.Input.decodeList<TrunkSubPort>(map['subPorts'], (value) => TrunkSubPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

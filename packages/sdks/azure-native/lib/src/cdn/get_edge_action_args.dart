@@ -16,11 +16,9 @@ class GetEdgeActionArgs {
   /// [edgeActionName] The name of the Edge Action
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetEdgeActionArgs({
-    required pulumi.Output<String> edgeActionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      edgeActionName = pulumi.Input.asInput<String>(edgeActionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.edgeActionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEdgeActionArgs {
 
   factory GetEdgeActionArgs.fromMap(Map<String, dynamic> map) {
     return GetEdgeActionArgs(
-      edgeActionName: pulumi.Output.create<String>(map['edgeActionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      edgeActionName: (map['edgeActionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

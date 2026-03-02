@@ -38,17 +38,12 @@ class AiFeatureStoreEntityTypeIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   AiFeatureStoreEntityTypeIamMemberArgs({
-    pulumi.Output<AiFeatureStoreEntityTypeIamMemberCondition>? condition,
-    required pulumi.Output<String> entitytype,
-    required pulumi.Output<String> featurestore,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<AiFeatureStoreEntityTypeIamMemberCondition>(condition),
-      entitytype = pulumi.Input.asInput<String>(entitytype),
-      featurestore = pulumi.Input.asInput<String>(featurestore),
-      member = pulumi.Input.asInput<String>(member),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.entitytype,
+    required this.featurestore,
+    required this.member,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,11 +57,11 @@ class AiFeatureStoreEntityTypeIamMemberArgs {
 
   factory AiFeatureStoreEntityTypeIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<AiFeatureStoreEntityTypeIamMemberCondition>(AiFeatureStoreEntityTypeIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      entitytype: pulumi.Output.create<String>(map['entitytype'] as String),
-      featurestore: pulumi.Output.create<String>(map['featurestore'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (AiFeatureStoreEntityTypeIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      entitytype: (map['entitytype'] as String).input(),
+      featurestore: (map['featurestore'] as String).input(),
+      member: (map['member'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

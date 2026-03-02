@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotificationDestinationAuthBasic {
   /// Specifies an authentication password for use with a destination.
-  final String password;
+  final pulumi.Input<String> password;
   /// The username of the basic auth.
-  final String user;
+  final pulumi.Input<String> user;
 
   /// Creates a new [NotificationDestinationAuthBasic].
   /// [password] Specifies an authentication password for use with a destination.
@@ -24,8 +25,8 @@ class NotificationDestinationAuthBasic {
 
   factory NotificationDestinationAuthBasic.fromMap(Map<String, dynamic> map) {
     return NotificationDestinationAuthBasic(
-      password: map['password'] as String,
-      user: map['user'] as String,
+      password: (map['password'] as String).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class ActionHttpState {
   /// [runAfters] Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `run_after` block is as defined below.
   /// [uri] Specifies the URI which will be called when this HTTP Action is triggered.
   ActionHttpState({
-    pulumi.Output<String>? body,
-    pulumi.Output<Map<String, String>>? headers,
-    pulumi.Output<String>? logicAppId,
-    pulumi.Output<String>? method,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? queries,
-    pulumi.Output<List<ActionHttpRunAfter>>? runAfters,
-    pulumi.Output<String>? uri,
-  }) :
-      body = pulumi.Input.asOptionalInput<String>(body),
-      headers = pulumi.Input.asOptionalInput<Map<String, String>>(headers),
-      logicAppId = pulumi.Input.asOptionalInput<String>(logicAppId),
-      method = pulumi.Input.asOptionalInput<String>(method),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queries = pulumi.Input.asOptionalInput<Map<String, String>>(queries),
-      runAfters = pulumi.Input.asOptionalInput<List<ActionHttpRunAfter>>(runAfters),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.body,
+    this.headers,
+    this.logicAppId,
+    this.method,
+    this.name,
+    this.queries,
+    this.runAfters,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ActionHttpState {
 
   factory ActionHttpState.fromMap(Map<String, dynamic> map) {
     return ActionHttpState(
-      body: map['body'] == null ? null : pulumi.Output.create<String>(map['body'] as String),
-      headers: map['headers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['headers'] as Map).cast<String, String>()),
-      logicAppId: map['logicAppId'] == null ? null : pulumi.Output.create<String>(map['logicAppId'] as String),
-      method: map['method'] == null ? null : pulumi.Output.create<String>(map['method'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queries: map['queries'] == null ? null : pulumi.Output.create<Map<String, String>>((map['queries'] as Map).cast<String, String>()),
-      runAfters: map['runAfters'] == null ? null : pulumi.Output.create<List<ActionHttpRunAfter>>(pulumi.Input.decodeList<ActionHttpRunAfter>(map['runAfters'], (value) => ActionHttpRunAfter.fromMap((value as Map).cast<String, dynamic>()))),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
+      logicAppId: map['logicAppId'] == null ? null : (map['logicAppId'] as String).input(),
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queries: map['queries'] == null ? null : ((map['queries'] as Map).cast<String, String>()).input(),
+      runAfters: map['runAfters'] == null ? null : (pulumi.Input.decodeList<ActionHttpRunAfter>(map['runAfters'], (value) => ActionHttpRunAfter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

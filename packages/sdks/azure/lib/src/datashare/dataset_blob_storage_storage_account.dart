@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetBlobStorageStorageAccount {
   /// The name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// The resource group name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  final String resourceGroupName;
+  final pulumi.Input<String> resourceGroupName;
   /// The subscription id of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  final String subscriptionId;
+  final pulumi.Input<String> subscriptionId;
 
   /// Creates a new [DatasetBlobStorageStorageAccount].
   /// [name] The name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
@@ -29,9 +30,9 @@ class DatasetBlobStorageStorageAccount {
 
   factory DatasetBlobStorageStorageAccount.fromMap(Map<String, dynamic> map) {
     return DatasetBlobStorageStorageAccount(
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      subscriptionId: map['subscriptionId'] as String,
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }
 }

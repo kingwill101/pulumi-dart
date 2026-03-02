@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LiteTopicPartitionConfigCapacity {
   /// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
-  final int publishMibPerSec;
+  final pulumi.Input<int> publishMibPerSec;
   /// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
-  final int subscribeMibPerSec;
+  final pulumi.Input<int> subscribeMibPerSec;
 
   /// Creates a new [LiteTopicPartitionConfigCapacity].
   /// [publishMibPerSec] Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
@@ -24,8 +25,8 @@ class LiteTopicPartitionConfigCapacity {
 
   factory LiteTopicPartitionConfigCapacity.fromMap(Map<String, dynamic> map) {
     return LiteTopicPartitionConfigCapacity(
-      publishMibPerSec: map['publishMibPerSec'] as int,
-      subscribeMibPerSec: map['subscribeMibPerSec'] as int,
+      publishMibPerSec: (map['publishMibPerSec'] as int).input(),
+      subscribeMibPerSec: (map['subscribeMibPerSec'] as int).input(),
     );
   }
 }

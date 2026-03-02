@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aml_token_compute_identity.dart';
 
 /// Monitor serverless spark compute definition.
 class MonitorServerlessSparkCompute {
   /// [Required] The identity scheme leveraged to by the spark jobs running on serverless Spark.
-  final AmlTokenComputeIdentity computeIdentity;
+  final pulumi.Input<AmlTokenComputeIdentity> computeIdentity;
   /// Monitor compute type enum.
   /// Expected value is 'ServerlessSpark'.
-  final String computeType;
+  final pulumi.Input<String> computeType;
   /// [Required] The instance type running the Spark job.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// [Required] The Spark runtime version.
-  final String runtimeVersion;
+  final pulumi.Input<String> runtimeVersion;
 
   /// Creates a new [MonitorServerlessSparkCompute].
   /// [computeIdentity] [Required] The identity scheme leveraged to by the spark jobs running on serverless Spark.
@@ -28,7 +29,7 @@ class MonitorServerlessSparkCompute {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeIdentity': computeIdentity.toMap(),
+      'computeIdentity': pulumi.Input.mapInputValue<AmlTokenComputeIdentity, Map<String, dynamic>>(computeIdentity, (value) => value.toMap()),
       'computeType': computeType,
       'instanceType': instanceType,
       'runtimeVersion': runtimeVersion,
@@ -37,10 +38,10 @@ class MonitorServerlessSparkCompute {
 
   factory MonitorServerlessSparkCompute.fromMap(Map<String, dynamic> map) {
     return MonitorServerlessSparkCompute(
-      computeIdentity: AmlTokenComputeIdentity.fromMap((map['computeIdentity'] as Map).cast<String, dynamic>()),
-      computeType: map['computeType'] as String,
-      instanceType: map['instanceType'] as String,
-      runtimeVersion: map['runtimeVersion'] as String,
+      computeIdentity: (AmlTokenComputeIdentity.fromMap((map['computeIdentity'] as Map).cast<String, dynamic>())).input(),
+      computeType: (map['computeType'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      runtimeVersion: (map['runtimeVersion'] as String).input(),
     );
   }
 }

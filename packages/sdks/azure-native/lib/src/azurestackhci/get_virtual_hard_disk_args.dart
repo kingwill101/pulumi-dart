@@ -16,11 +16,9 @@ class GetVirtualHardDiskArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualHardDiskName] Name of the virtual hard disk
   GetVirtualHardDiskArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualHardDiskName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualHardDiskName = pulumi.Input.asInput<String>(virtualHardDiskName);
+    required this.resourceGroupName,
+    required this.virtualHardDiskName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVirtualHardDiskArgs {
 
   factory GetVirtualHardDiskArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualHardDiskArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualHardDiskName: pulumi.Output.create<String>(map['virtualHardDiskName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualHardDiskName: (map['virtualHardDiskName'] as String).input(),
     );
   }
 }

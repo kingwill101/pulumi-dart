@@ -37,23 +37,15 @@ class SslVpnServerArgs {
   /// [protocol] The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
   /// [vpnGatewayId] The ID of the VPN gateway.
   SslVpnServerArgs({
-    pulumi.Output<String>? cipher,
-    required pulumi.Output<String> clientIpPool,
-    pulumi.Output<bool>? compress,
-    required pulumi.Output<String> localSubnet,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? protocol,
-    required pulumi.Output<String> vpnGatewayId,
-  }) :
-      cipher = pulumi.Input.asOptionalInput<String>(cipher),
-      clientIpPool = pulumi.Input.asInput<String>(clientIpPool),
-      compress = pulumi.Input.asOptionalInput<bool>(compress),
-      localSubnet = pulumi.Input.asInput<String>(localSubnet),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      vpnGatewayId = pulumi.Input.asInput<String>(vpnGatewayId);
+    this.cipher,
+    required this.clientIpPool,
+    this.compress,
+    required this.localSubnet,
+    this.name,
+    this.port,
+    this.protocol,
+    required this.vpnGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class SslVpnServerArgs {
 
   factory SslVpnServerArgs.fromMap(Map<String, dynamic> map) {
     return SslVpnServerArgs(
-      cipher: map['cipher'] == null ? null : pulumi.Output.create<String>(map['cipher'] as String),
-      clientIpPool: pulumi.Output.create<String>(map['clientIpPool'] as String),
-      compress: map['compress'] == null ? null : pulumi.Output.create<bool>(map['compress'] as bool),
-      localSubnet: pulumi.Output.create<String>(map['localSubnet'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      vpnGatewayId: pulumi.Output.create<String>(map['vpnGatewayId'] as String),
+      cipher: map['cipher'] == null ? null : (map['cipher'] as String).input(),
+      clientIpPool: (map['clientIpPool'] as String).input(),
+      compress: map['compress'] == null ? null : (map['compress'] as bool).input(),
+      localSubnet: (map['localSubnet'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      vpnGatewayId: (map['vpnGatewayId'] as String).input(),
     );
   }
 }

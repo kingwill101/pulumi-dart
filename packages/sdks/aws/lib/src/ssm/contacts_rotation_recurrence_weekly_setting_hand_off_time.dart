@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContactsRotationRecurrenceWeeklySettingHandOffTime {
   /// (Required) The hour of the day.
-  final int hourOfDay;
+  final pulumi.Input<int> hourOfDay;
   /// (Required) The minutes of the hour.
-  final int minuteOfHour;
+  final pulumi.Input<int> minuteOfHour;
 
   /// Creates a new [ContactsRotationRecurrenceWeeklySettingHandOffTime].
   /// [hourOfDay] (Required) The hour of the day.
@@ -24,8 +25,8 @@ class ContactsRotationRecurrenceWeeklySettingHandOffTime {
 
   factory ContactsRotationRecurrenceWeeklySettingHandOffTime.fromMap(Map<String, dynamic> map) {
     return ContactsRotationRecurrenceWeeklySettingHandOffTime(
-      hourOfDay: map['hourOfDay'] as int,
-      minuteOfHour: map['minuteOfHour'] as int,
+      hourOfDay: (map['hourOfDay'] as int).input(),
+      minuteOfHour: (map['minuteOfHour'] as int).input(),
     );
   }
 }

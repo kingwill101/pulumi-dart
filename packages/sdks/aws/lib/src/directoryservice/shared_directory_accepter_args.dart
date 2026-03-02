@@ -16,11 +16,9 @@ class SharedDirectoryAccepterArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sharedDirectoryId] Identifier of the directory that is stored in the directory consumer account that corresponds to the shared directory in the owner account.
   SharedDirectoryAccepterArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> sharedDirectoryId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sharedDirectoryId = pulumi.Input.asInput<String>(sharedDirectoryId);
+    this.region,
+    required this.sharedDirectoryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class SharedDirectoryAccepterArgs {
 
   factory SharedDirectoryAccepterArgs.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryAccepterArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sharedDirectoryId: pulumi.Output.create<String>(map['sharedDirectoryId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sharedDirectoryId: (map['sharedDirectoryId'] as String).input(),
     );
   }
 }

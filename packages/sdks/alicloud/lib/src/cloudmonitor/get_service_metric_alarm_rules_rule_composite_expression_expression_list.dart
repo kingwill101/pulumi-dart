@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
   /// The comparison operator that is used to compare the metric value with the threshold.
-  final String comparisonOperator;
+  final pulumi.Input<String> comparisonOperator;
   /// The name of the metric.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The aggregation period of the metric.
-  final int period;
+  final pulumi.Input<int> period;
   /// The statistical methods for Warn-level alerts.
-  final String statistics;
+  final pulumi.Input<String> statistics;
   /// The threshold for Warn-level alerts.
-  final String threshold;
+  final pulumi.Input<String> threshold;
 
   /// Creates a new [GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList].
   /// [comparisonOperator] The comparison operator that is used to compare the metric value with the threshold.
@@ -39,11 +40,11 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
 
   factory GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList(
-      comparisonOperator: map['comparisonOperator'] as String,
-      metricName: map['metricName'] as String,
-      period: map['period'] as int,
-      statistics: map['statistics'] as String,
-      threshold: map['threshold'] as String,
+      comparisonOperator: (map['comparisonOperator'] as String).input(),
+      metricName: (map['metricName'] as String).input(),
+      period: (map['period'] as int).input(),
+      statistics: (map['statistics'] as String).input(),
+      threshold: (map['threshold'] as String).input(),
     );
   }
 }

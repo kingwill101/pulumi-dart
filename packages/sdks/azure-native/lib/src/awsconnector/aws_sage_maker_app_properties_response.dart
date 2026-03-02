@@ -7,19 +7,19 @@ import 'tag_response.dart';
 /// Definition of awsSageMakerApp
 class AwsSageMakerAppPropertiesResponse {
   /// The Amazon Resource Name (ARN) of the app.
-  final String? appArn;
+  final pulumi.Input<String>? appArn;
   /// The name of the app.
-  final String? appName;
+  final pulumi.Input<String>? appName;
   /// The type of app.
-  final String? appType;
+  final pulumi.Input<String>? appType;
   /// The domain ID.
-  final String? domainId;
+  final pulumi.Input<String>? domainId;
   /// The instance type and the Amazon Resource Name (ARN) of the SageMaker image created on the instance.
-  final ResourceSpecResponse? resourceSpec;
+  final pulumi.Input<ResourceSpecResponse>? resourceSpec;
   /// A list of tags to apply to the app.
-  final List<TagResponse>? tags;
+  final pulumi.Input<List<TagResponse>>? tags;
   /// The user profile name.
-  final String? userProfileName;
+  final pulumi.Input<String>? userProfileName;
 
   /// Creates a new [AwsSageMakerAppPropertiesResponse].
   /// [appArn] The Amazon Resource Name (ARN) of the app.
@@ -45,21 +45,21 @@ class AwsSageMakerAppPropertiesResponse {
       'appName': ?appName,
       'appType': ?appType,
       'domainId': ?domainId,
-      'resourceSpec': ?resourceSpec == null ? null : resourceSpec!.toMap(),
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'resourceSpec': ?pulumi.Input.mapOptionalInputValue<ResourceSpecResponse, Map<String, dynamic>>(resourceSpec, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'userProfileName': ?userProfileName,
     };
   }
 
   factory AwsSageMakerAppPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsSageMakerAppPropertiesResponse(
-      appArn: map['appArn'] == null ? null : map['appArn'] as String,
-      appName: map['appName'] == null ? null : map['appName'] as String,
-      appType: map['appType'] == null ? null : map['appType'] as String,
-      domainId: map['domainId'] == null ? null : map['domainId'] as String,
-      resourceSpec: map['resourceSpec'] == null ? null : ResourceSpecResponse.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
-      userProfileName: map['userProfileName'] == null ? null : map['userProfileName'] as String,
+      appArn: map['appArn'] == null ? null : (map['appArn'] as String).input(),
+      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
+      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      resourceSpec: map['resourceSpec'] == null ? null : (ResourceSpecResponse.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProfileName: map['userProfileName'] == null ? null : (map['userProfileName'] as String).input(),
     );
   }
 }

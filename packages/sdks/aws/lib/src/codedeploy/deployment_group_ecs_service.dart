@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentGroupEcsService {
   /// The name of the ECS cluster.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
   /// The name of the ECS service.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [DeploymentGroupEcsService].
   /// [clusterName] The name of the ECS cluster.
@@ -24,8 +25,8 @@ class DeploymentGroupEcsService {
 
   factory DeploymentGroupEcsService.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupEcsService(
-      clusterName: map['clusterName'] as String,
-      serviceName: map['serviceName'] as String,
+      clusterName: (map['clusterName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

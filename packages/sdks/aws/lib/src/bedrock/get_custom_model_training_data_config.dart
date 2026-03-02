@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCustomModelTrainingDataConfig {
   /// The S3 URI where the validation data is stored..
-  final String s3Uri;
+  final pulumi.Input<String> s3Uri;
 
   /// Creates a new [GetCustomModelTrainingDataConfig].
   /// [s3Uri] The S3 URI where the validation data is stored..
@@ -19,7 +20,7 @@ class GetCustomModelTrainingDataConfig {
 
   factory GetCustomModelTrainingDataConfig.fromMap(Map<String, dynamic> map) {
     return GetCustomModelTrainingDataConfig(
-      s3Uri: map['s3Uri'] as String,
+      s3Uri: (map['s3Uri'] as String).input(),
     );
   }
 }

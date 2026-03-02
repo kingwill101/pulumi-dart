@@ -34,21 +34,14 @@ class SingleServerArgs {
   /// [sku] The SKU (pricing tier) of the server.
   /// [tags] Application-specific metadata in the form of key-value pairs.
   SingleServerArgs({
-    pulumi.Output<ResourceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<ServerPropertiesForDefaultCreate> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serverName,
-    pulumi.Output<SingleServerSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ResourceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<ServerPropertiesForDefaultCreate>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asOptionalInput<String>(serverName),
-      sku = pulumi.Input.asOptionalInput<SingleServerSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.identity,
+    this.location,
+    required this.properties,
+    required this.resourceGroupName,
+    this.serverName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class SingleServerArgs {
 
   factory SingleServerArgs.fromMap(Map<String, dynamic> map) {
     return SingleServerArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ResourceIdentity>(ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<ServerPropertiesForDefaultCreate>(ServerPropertiesForDefaultCreate.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: map['serverName'] == null ? null : pulumi.Output.create<String>(map['serverName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<SingleServerSku>(SingleServerSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (ServerPropertiesForDefaultCreate.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      sku: map['sku'] == null ? null : (SingleServerSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

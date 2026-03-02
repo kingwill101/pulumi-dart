@@ -8,10 +8,10 @@ class GetAuthoritySubordinateConfig {
   /// subordinate CertificateAuthority. This field is used for information
   /// and usability purposes only. The resource name is in the format
   /// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
-  final String certificateAuthority;
+  final pulumi.Input<String> certificateAuthority;
   /// Contains the PEM certificate chain for the issuers of this CertificateAuthority,
   /// but not pem certificate for this CA itself.
-  final List<GetAuthoritySubordinateConfigPemIssuerChain> pemIssuerChains;
+  final pulumi.Input<List<GetAuthoritySubordinateConfigPemIssuerChain>> pemIssuerChains;
 
   /// Creates a new [GetAuthoritySubordinateConfig].
   /// [certificateAuthority] This can refer to a CertificateAuthority that was used to create a
@@ -24,14 +24,14 @@ class GetAuthoritySubordinateConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificateAuthority': certificateAuthority,
-      'pemIssuerChains': pulumi.Input.encodeList<GetAuthoritySubordinateConfigPemIssuerChain, Map<String, dynamic>>(pemIssuerChains, (value) => value.toMap()),
+      'pemIssuerChains': pulumi.Input.mapInputValue<List<GetAuthoritySubordinateConfigPemIssuerChain>, List<Map<String, dynamic>>>(pemIssuerChains, (value) => pulumi.Input.encodeList<GetAuthoritySubordinateConfigPemIssuerChain, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetAuthoritySubordinateConfig.fromMap(Map<String, dynamic> map) {
     return GetAuthoritySubordinateConfig(
-      certificateAuthority: map['certificateAuthority'] as String,
-      pemIssuerChains: pulumi.Input.decodeList<GetAuthoritySubordinateConfigPemIssuerChain>(map['pemIssuerChains'], (value) => GetAuthoritySubordinateConfigPemIssuerChain.fromMap((value as Map).cast<String, dynamic>())),
+      certificateAuthority: (map['certificateAuthority'] as String).input(),
+      pemIssuerChains: (pulumi.Input.decodeList<GetAuthoritySubordinateConfigPemIssuerChain>(map['pemIssuerChains'], (value) => GetAuthoritySubordinateConfigPemIssuerChain.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

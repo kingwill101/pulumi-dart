@@ -19,13 +19,10 @@ class GetConfigurationGroupSchemaArgs {
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetConfigurationGroupSchemaArgs({
-    required pulumi.Output<String> configurationGroupSchemaName,
-    required pulumi.Output<String> publisherName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configurationGroupSchemaName = pulumi.Input.asInput<String>(configurationGroupSchemaName),
-      publisherName = pulumi.Input.asInput<String>(publisherName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.configurationGroupSchemaName,
+    required this.publisherName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConfigurationGroupSchemaArgs {
 
   factory GetConfigurationGroupSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationGroupSchemaArgs(
-      configurationGroupSchemaName: pulumi.Output.create<String>(map['configurationGroupSchemaName'] as String),
-      publisherName: pulumi.Output.create<String>(map['publisherName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configurationGroupSchemaName: (map['configurationGroupSchemaName'] as String).input(),
+      publisherName: (map['publisherName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

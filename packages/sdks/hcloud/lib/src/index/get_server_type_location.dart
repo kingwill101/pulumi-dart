@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerTypeLocation {
   /// Date of the Server Type deprecation announcement.
-  final String deprecationAnnounced;
+  final pulumi.Input<String> deprecationAnnounced;
   /// ID of the Location.
-  final int id;
+  final pulumi.Input<int> id;
   /// Whether the Server Type is deprecated.
-  final bool isDeprecated;
+  final pulumi.Input<bool> isDeprecated;
   /// Name of the Location.
-  final String name;
+  final pulumi.Input<String> name;
   /// Date of the Server Type removal. After this date, the Server Type cannot be used anymore.
-  final String unavailableAfter;
+  final pulumi.Input<String> unavailableAfter;
 
   /// Creates a new [GetServerTypeLocation].
   /// [deprecationAnnounced] Date of the Server Type deprecation announcement.
@@ -39,11 +40,11 @@ class GetServerTypeLocation {
 
   factory GetServerTypeLocation.fromMap(Map<String, dynamic> map) {
     return GetServerTypeLocation(
-      deprecationAnnounced: map['deprecationAnnounced'] as String,
-      id: map['id'] as int,
-      isDeprecated: map['isDeprecated'] as bool,
-      name: map['name'] as String,
-      unavailableAfter: map['unavailableAfter'] as String,
+      deprecationAnnounced: (map['deprecationAnnounced'] as String).input(),
+      id: (map['id'] as int).input(),
+      isDeprecated: (map['isDeprecated'] as bool).input(),
+      name: (map['name'] as String).input(),
+      unavailableAfter: (map['unavailableAfter'] as String).input(),
     );
   }
 }

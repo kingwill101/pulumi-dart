@@ -8,18 +8,18 @@ import 'volume.dart';
 /// RevisionSpec holds the desired state of the Revision (from the client).
 class RevisionSpec {
   /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
-  final int? containerConcurrency;
+  final pulumi.Input<int>? containerConcurrency;
   /// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
-  final List<Container>? containers;
+  final pulumi.Input<List<Container>>? containers;
   /// Not supported by Cloud Run.
-  final bool? enableServiceLinks;
+  final pulumi.Input<bool>? enableServiceLinks;
   /// Not supported by Cloud Run.
-  final List<LocalObjectReference>? imagePullSecrets;
+  final pulumi.Input<List<LocalObjectReference>>? imagePullSecrets;
   /// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-  final String? serviceAccountName;
+  final pulumi.Input<String>? serviceAccountName;
   /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour).
-  final int? timeoutSeconds;
-  final List<Volume>? volumes;
+  final pulumi.Input<int>? timeoutSeconds;
+  final pulumi.Input<List<Volume>>? volumes;
 
   /// Creates a new [RevisionSpec].
   /// [containerConcurrency] ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
@@ -42,24 +42,24 @@ class RevisionSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'containerConcurrency': ?containerConcurrency,
-      'containers': ?containers == null ? null : pulumi.Input.encodeList<Container, Map<String, dynamic>>(containers!, (value) => value.toMap()),
+      'containers': ?pulumi.Input.mapOptionalInputValue<List<Container>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<Container, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableServiceLinks': ?enableServiceLinks,
-      'imagePullSecrets': ?imagePullSecrets == null ? null : pulumi.Input.encodeList<LocalObjectReference, Map<String, dynamic>>(imagePullSecrets!, (value) => value.toMap()),
+      'imagePullSecrets': ?pulumi.Input.mapOptionalInputValue<List<LocalObjectReference>, List<Map<String, dynamic>>>(imagePullSecrets, (value) => pulumi.Input.encodeList<LocalObjectReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceAccountName': ?serviceAccountName,
       'timeoutSeconds': ?timeoutSeconds,
-      'volumes': ?volumes == null ? null : pulumi.Input.encodeList<Volume, Map<String, dynamic>>(volumes!, (value) => value.toMap()),
+      'volumes': ?pulumi.Input.mapOptionalInputValue<List<Volume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<Volume, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RevisionSpec.fromMap(Map<String, dynamic> map) {
     return RevisionSpec(
-      containerConcurrency: map['containerConcurrency'] == null ? null : map['containerConcurrency'] as int,
-      containers: map['containers'] == null ? null : pulumi.Input.decodeList<Container>(map['containers'], (value) => Container.fromMap((value as Map).cast<String, dynamic>())),
-      enableServiceLinks: map['enableServiceLinks'] == null ? null : map['enableServiceLinks'] as bool,
-      imagePullSecrets: map['imagePullSecrets'] == null ? null : pulumi.Input.decodeList<LocalObjectReference>(map['imagePullSecrets'], (value) => LocalObjectReference.fromMap((value as Map).cast<String, dynamic>())),
-      serviceAccountName: map['serviceAccountName'] == null ? null : map['serviceAccountName'] as String,
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : map['timeoutSeconds'] as int,
-      volumes: map['volumes'] == null ? null : pulumi.Input.decodeList<Volume>(map['volumes'], (value) => Volume.fromMap((value as Map).cast<String, dynamic>())),
+      containerConcurrency: map['containerConcurrency'] == null ? null : (map['containerConcurrency'] as int).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<Container>(map['containers'], (value) => Container.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableServiceLinks: map['enableServiceLinks'] == null ? null : (map['enableServiceLinks'] as bool).input(),
+      imagePullSecrets: map['imagePullSecrets'] == null ? null : (pulumi.Input.decodeList<LocalObjectReference>(map['imagePullSecrets'], (value) => LocalObjectReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAccountName: map['serviceAccountName'] == null ? null : (map['serviceAccountName'] as String).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes'], (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

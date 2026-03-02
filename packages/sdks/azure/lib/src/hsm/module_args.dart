@@ -41,25 +41,16 @@ class ModuleArgs {
   /// [tags] A mapping of tags which should be assigned to the Dedicated Hardware Security Module.
   /// [zones] Specifies a list of Availability Zones in which this Dedicated Hardware Security Module should be located. Changing this forces a new Dedicated Hardware Security Module to be created.
   ModuleArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<ModuleManagementNetworkProfile>? managementNetworkProfile,
-    pulumi.Output<String>? name,
-    required pulumi.Output<ModuleNetworkProfile> networkProfile,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> skuName,
-    pulumi.Output<String>? stampId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managementNetworkProfile = pulumi.Input.asOptionalInput<ModuleManagementNetworkProfile>(managementNetworkProfile),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkProfile = pulumi.Input.asInput<ModuleNetworkProfile>(networkProfile),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asInput<String>(skuName),
-      stampId = pulumi.Input.asOptionalInput<String>(stampId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.location,
+    this.managementNetworkProfile,
+    this.name,
+    required this.networkProfile,
+    required this.resourceGroupName,
+    required this.skuName,
+    this.stampId,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class ModuleArgs {
 
   factory ModuleArgs.fromMap(Map<String, dynamic> map) {
     return ModuleArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managementNetworkProfile: map['managementNetworkProfile'] == null ? null : pulumi.Output.create<ModuleManagementNetworkProfile>(ModuleManagementNetworkProfile.fromMap((map['managementNetworkProfile'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkProfile: pulumi.Output.create<ModuleNetworkProfile>(ModuleNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: pulumi.Output.create<String>(map['skuName'] as String),
-      stampId: map['stampId'] == null ? null : pulumi.Output.create<String>(map['stampId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managementNetworkProfile: map['managementNetworkProfile'] == null ? null : (ModuleManagementNetworkProfile.fromMap((map['managementNetworkProfile'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkProfile: (ModuleNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skuName: (map['skuName'] as String).input(),
+      stampId: map['stampId'] == null ? null : (map['stampId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

@@ -40,27 +40,17 @@ class MscSubSubscriptionState {
   /// [webhookIds] The ids of subscribed webhooks.
   /// [webhookStatus] The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
   MscSubSubscriptionState({
-    pulumi.Output<String>? channel,
-    pulumi.Output<List<String>>? contactIds,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? emailStatus,
-    pulumi.Output<String>? itemName,
-    pulumi.Output<int>? pmsgStatus,
-    pulumi.Output<int>? smsStatus,
-    pulumi.Output<int>? ttsStatus,
-    pulumi.Output<List<String>>? webhookIds,
-    pulumi.Output<int>? webhookStatus,
-  }) :
-      channel = pulumi.Input.asOptionalInput<String>(channel),
-      contactIds = pulumi.Input.asOptionalInput<List<String>>(contactIds),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      emailStatus = pulumi.Input.asOptionalInput<int>(emailStatus),
-      itemName = pulumi.Input.asOptionalInput<String>(itemName),
-      pmsgStatus = pulumi.Input.asOptionalInput<int>(pmsgStatus),
-      smsStatus = pulumi.Input.asOptionalInput<int>(smsStatus),
-      ttsStatus = pulumi.Input.asOptionalInput<int>(ttsStatus),
-      webhookIds = pulumi.Input.asOptionalInput<List<String>>(webhookIds),
-      webhookStatus = pulumi.Input.asOptionalInput<int>(webhookStatus);
+    this.channel,
+    this.contactIds,
+    this.description,
+    this.emailStatus,
+    this.itemName,
+    this.pmsgStatus,
+    this.smsStatus,
+    this.ttsStatus,
+    this.webhookIds,
+    this.webhookStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class MscSubSubscriptionState {
 
   factory MscSubSubscriptionState.fromMap(Map<String, dynamic> map) {
     return MscSubSubscriptionState(
-      channel: map['channel'] == null ? null : pulumi.Output.create<String>(map['channel'] as String),
-      contactIds: map['contactIds'] == null ? null : pulumi.Output.create<List<String>>((map['contactIds'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      emailStatus: map['emailStatus'] == null ? null : pulumi.Output.create<int>(map['emailStatus'] as int),
-      itemName: map['itemName'] == null ? null : pulumi.Output.create<String>(map['itemName'] as String),
-      pmsgStatus: map['pmsgStatus'] == null ? null : pulumi.Output.create<int>(map['pmsgStatus'] as int),
-      smsStatus: map['smsStatus'] == null ? null : pulumi.Output.create<int>(map['smsStatus'] as int),
-      ttsStatus: map['ttsStatus'] == null ? null : pulumi.Output.create<int>(map['ttsStatus'] as int),
-      webhookIds: map['webhookIds'] == null ? null : pulumi.Output.create<List<String>>((map['webhookIds'] as List).cast<String>()),
-      webhookStatus: map['webhookStatus'] == null ? null : pulumi.Output.create<int>(map['webhookStatus'] as int),
+      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
+      contactIds: map['contactIds'] == null ? null : ((map['contactIds'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      emailStatus: map['emailStatus'] == null ? null : (map['emailStatus'] as int).input(),
+      itemName: map['itemName'] == null ? null : (map['itemName'] as String).input(),
+      pmsgStatus: map['pmsgStatus'] == null ? null : (map['pmsgStatus'] as int).input(),
+      smsStatus: map['smsStatus'] == null ? null : (map['smsStatus'] as int).input(),
+      ttsStatus: map['ttsStatus'] == null ? null : (map['ttsStatus'] as int).input(),
+      webhookIds: map['webhookIds'] == null ? null : ((map['webhookIds'] as List).cast<String>()).input(),
+      webhookStatus: map['webhookStatus'] == null ? null : (map['webhookStatus'] as int).input(),
     );
   }
 }

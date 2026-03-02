@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'content_link.dart';
 
 /// The assembly properties definition.
 class AssemblyProperties {
   /// The assembly culture.
-  final String? assemblyCulture;
+  final pulumi.Input<String>? assemblyCulture;
   /// The assembly name.
-  final String assemblyName;
+  final pulumi.Input<String> assemblyName;
   /// The assembly public key token.
-  final String? assemblyPublicKeyToken;
+  final pulumi.Input<String>? assemblyPublicKeyToken;
   /// The assembly version.
-  final String? assemblyVersion;
+  final pulumi.Input<String>? assemblyVersion;
   /// The artifact changed time.
-  final String? changedTime;
-  final dynamic content;
+  final pulumi.Input<String>? changedTime;
+  final pulumi.Input<dynamic>? content;
   /// The content link.
-  final ContentLink? contentLink;
+  final pulumi.Input<ContentLink>? contentLink;
   /// The content type.
-  final String? contentType;
+  final pulumi.Input<String>? contentType;
   /// The artifact creation time.
-  final String? createdTime;
-  final dynamic metadata;
+  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<dynamic>? metadata;
 
   /// Creates a new [AssemblyProperties].
   /// [assemblyCulture] The assembly culture.
@@ -55,7 +56,7 @@ class AssemblyProperties {
       'assemblyVersion': ?assemblyVersion,
       'changedTime': ?changedTime,
       'content': ?content,
-      'contentLink': ?contentLink == null ? null : contentLink!.toMap(),
+      'contentLink': ?pulumi.Input.mapOptionalInputValue<ContentLink, Map<String, dynamic>>(contentLink, (value) => value.toMap()),
       'contentType': ?contentType,
       'createdTime': ?createdTime,
       'metadata': ?metadata,
@@ -64,16 +65,16 @@ class AssemblyProperties {
 
   factory AssemblyProperties.fromMap(Map<String, dynamic> map) {
     return AssemblyProperties(
-      assemblyCulture: map['assemblyCulture'] == null ? null : map['assemblyCulture'] as String,
-      assemblyName: map['assemblyName'] as String,
-      assemblyPublicKeyToken: map['assemblyPublicKeyToken'] == null ? null : map['assemblyPublicKeyToken'] as String,
-      assemblyVersion: map['assemblyVersion'] == null ? null : map['assemblyVersion'] as String,
-      changedTime: map['changedTime'] == null ? null : map['changedTime'] as String,
-      content: map['content'] == null ? null : map['content'],
-      contentLink: map['contentLink'] == null ? null : ContentLink.fromMap((map['contentLink'] as Map).cast<String, dynamic>()),
-      contentType: map['contentType'] == null ? null : map['contentType'] as String,
-      createdTime: map['createdTime'] == null ? null : map['createdTime'] as String,
-      metadata: map['metadata'] == null ? null : map['metadata'],
+      assemblyCulture: map['assemblyCulture'] == null ? null : (map['assemblyCulture'] as String).input(),
+      assemblyName: (map['assemblyName'] as String).input(),
+      assemblyPublicKeyToken: map['assemblyPublicKeyToken'] == null ? null : (map['assemblyPublicKeyToken'] as String).input(),
+      assemblyVersion: map['assemblyVersion'] == null ? null : (map['assemblyVersion'] as String).input(),
+      changedTime: map['changedTime'] == null ? null : (map['changedTime'] as String).input(),
+      content: map['content'] == null ? null : (map['content']).input(),
+      contentLink: map['contentLink'] == null ? null : (ContentLink.fromMap((map['contentLink'] as Map).cast<String, dynamic>())).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
     );
   }
 }

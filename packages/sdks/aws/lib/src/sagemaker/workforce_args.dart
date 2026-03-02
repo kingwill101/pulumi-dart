@@ -32,19 +32,13 @@ class WorkforceArgs {
   /// [workforceName] The name of the Workforce (must be unique).
   /// [workforceVpcConfig] configure a workforce using VPC. see Workforce VPC Config details below.
   WorkforceArgs({
-    pulumi.Output<WorkforceCognitoConfig>? cognitoConfig,
-    pulumi.Output<WorkforceOidcConfig>? oidcConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<WorkforceSourceIpConfig>? sourceIpConfig,
-    required pulumi.Output<String> workforceName,
-    pulumi.Output<WorkforceWorkforceVpcConfig>? workforceVpcConfig,
-  }) :
-      cognitoConfig = pulumi.Input.asOptionalInput<WorkforceCognitoConfig>(cognitoConfig),
-      oidcConfig = pulumi.Input.asOptionalInput<WorkforceOidcConfig>(oidcConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceIpConfig = pulumi.Input.asOptionalInput<WorkforceSourceIpConfig>(sourceIpConfig),
-      workforceName = pulumi.Input.asInput<String>(workforceName),
-      workforceVpcConfig = pulumi.Input.asOptionalInput<WorkforceWorkforceVpcConfig>(workforceVpcConfig);
+    this.cognitoConfig,
+    this.oidcConfig,
+    this.region,
+    this.sourceIpConfig,
+    required this.workforceName,
+    this.workforceVpcConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class WorkforceArgs {
 
   factory WorkforceArgs.fromMap(Map<String, dynamic> map) {
     return WorkforceArgs(
-      cognitoConfig: map['cognitoConfig'] == null ? null : pulumi.Output.create<WorkforceCognitoConfig>(WorkforceCognitoConfig.fromMap((map['cognitoConfig'] as Map).cast<String, dynamic>())),
-      oidcConfig: map['oidcConfig'] == null ? null : pulumi.Output.create<WorkforceOidcConfig>(WorkforceOidcConfig.fromMap((map['oidcConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceIpConfig: map['sourceIpConfig'] == null ? null : pulumi.Output.create<WorkforceSourceIpConfig>(WorkforceSourceIpConfig.fromMap((map['sourceIpConfig'] as Map).cast<String, dynamic>())),
-      workforceName: pulumi.Output.create<String>(map['workforceName'] as String),
-      workforceVpcConfig: map['workforceVpcConfig'] == null ? null : pulumi.Output.create<WorkforceWorkforceVpcConfig>(WorkforceWorkforceVpcConfig.fromMap((map['workforceVpcConfig'] as Map).cast<String, dynamic>())),
+      cognitoConfig: map['cognitoConfig'] == null ? null : (WorkforceCognitoConfig.fromMap((map['cognitoConfig'] as Map).cast<String, dynamic>())).input(),
+      oidcConfig: map['oidcConfig'] == null ? null : (WorkforceOidcConfig.fromMap((map['oidcConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceIpConfig: map['sourceIpConfig'] == null ? null : (WorkforceSourceIpConfig.fromMap((map['sourceIpConfig'] as Map).cast<String, dynamic>())).input(),
+      workforceName: (map['workforceName'] as String).input(),
+      workforceVpcConfig: map['workforceVpcConfig'] == null ? null : (WorkforceWorkforceVpcConfig.fromMap((map['workforceVpcConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

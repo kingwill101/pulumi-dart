@@ -5,24 +5,24 @@ import 'reportable_exception_response.dart';
 
 class MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse {
   /// Migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Migration errors and warnings per job
-  final List<ReportableExceptionResponse> exceptionsAndWarnings;
+  final pulumi.Input<List<ReportableExceptionResponse>> exceptionsAndWarnings;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// The state of the original Agent Job.
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
   /// Migration progress message
-  final String message;
+  final pulumi.Input<String> message;
   /// Agent Job name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Result type
   /// Expected value is 'AgentJobLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Current state of migration
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse].
   /// [endedOn] Migration end time
@@ -49,7 +49,7 @@ class MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endedOn': endedOn,
-      'exceptionsAndWarnings': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(exceptionsAndWarnings, (value) => value.toMap()),
+      'exceptionsAndWarnings': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(exceptionsAndWarnings, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'isEnabled': isEnabled,
       'message': message,
@@ -62,15 +62,15 @@ class MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse {
 
   factory MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse(
-      endedOn: map['endedOn'] as String,
-      exceptionsAndWarnings: pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      isEnabled: map['isEnabled'] as bool,
-      message: map['message'] as String,
-      name: map['name'] as String,
-      resultType: map['resultType'] as String,
-      startedOn: map['startedOn'] as String,
-      state: map['state'] as String,
+      endedOn: (map['endedOn'] as String).input(),
+      exceptionsAndWarnings: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      isEnabled: (map['isEnabled'] as bool).input(),
+      message: (map['message'] as String).input(),
+      name: (map['name'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

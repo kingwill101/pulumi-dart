@@ -45,27 +45,17 @@ class ResolverEndpointArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetNameServerMetricsEnabled] Boolean indicating whether target name server metrics are enabled for the outbound Resolver endpoints. Defaults to `false`. This argument is supported only for outbound endpoints. Once set, changing the value back to `false` requires explicitly specifying `false` rather than removing the argument.
   ResolverEndpointArgs({
-    required pulumi.Output<String> direction,
-    required pulumi.Output<List<ResolverEndpointIpAddress>> ipAddresses,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? protocols,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resolverEndpointType,
-    pulumi.Output<bool>? rniEnhancedMetricsEnabled,
-    required pulumi.Output<List<String>> securityGroupIds,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? targetNameServerMetricsEnabled,
-  }) :
-      direction = pulumi.Input.asInput<String>(direction),
-      ipAddresses = pulumi.Input.asInput<List<ResolverEndpointIpAddress>>(ipAddresses),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protocols = pulumi.Input.asOptionalInput<List<String>>(protocols),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resolverEndpointType = pulumi.Input.asOptionalInput<String>(resolverEndpointType),
-      rniEnhancedMetricsEnabled = pulumi.Input.asOptionalInput<bool>(rniEnhancedMetricsEnabled),
-      securityGroupIds = pulumi.Input.asInput<List<String>>(securityGroupIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetNameServerMetricsEnabled = pulumi.Input.asOptionalInput<bool>(targetNameServerMetricsEnabled);
+    required this.direction,
+    required this.ipAddresses,
+    this.name,
+    this.protocols,
+    this.region,
+    this.resolverEndpointType,
+    this.rniEnhancedMetricsEnabled,
+    required this.securityGroupIds,
+    this.tags,
+    this.targetNameServerMetricsEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class ResolverEndpointArgs {
 
   factory ResolverEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ResolverEndpointArgs(
-      direction: pulumi.Output.create<String>(map['direction'] as String),
-      ipAddresses: pulumi.Output.create<List<ResolverEndpointIpAddress>>(pulumi.Input.decodeList<ResolverEndpointIpAddress>(map['ipAddresses'], (value) => ResolverEndpointIpAddress.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protocols: map['protocols'] == null ? null : pulumi.Output.create<List<String>>((map['protocols'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resolverEndpointType: map['resolverEndpointType'] == null ? null : pulumi.Output.create<String>(map['resolverEndpointType'] as String),
-      rniEnhancedMetricsEnabled: map['rniEnhancedMetricsEnabled'] == null ? null : pulumi.Output.create<bool>(map['rniEnhancedMetricsEnabled'] as bool),
-      securityGroupIds: pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetNameServerMetricsEnabled: map['targetNameServerMetricsEnabled'] == null ? null : pulumi.Output.create<bool>(map['targetNameServerMetricsEnabled'] as bool),
+      direction: (map['direction'] as String).input(),
+      ipAddresses: (pulumi.Input.decodeList<ResolverEndpointIpAddress>(map['ipAddresses'], (value) => ResolverEndpointIpAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resolverEndpointType: map['resolverEndpointType'] == null ? null : (map['resolverEndpointType'] as String).input(),
+      rniEnhancedMetricsEnabled: map['rniEnhancedMetricsEnabled'] == null ? null : (map['rniEnhancedMetricsEnabled'] as bool).input(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetNameServerMetricsEnabled: map['targetNameServerMetricsEnabled'] == null ? null : (map['targetNameServerMetricsEnabled'] as bool).input(),
     );
   }
 }

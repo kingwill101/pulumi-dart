@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeyVaultNetworkAcls {
   /// Specifies which traffic can bypass the network rules. Possible values are `AzureServices` and `None`.
-  final String bypass;
+  final pulumi.Input<String> bypass;
   /// The Default Action to use when no rules match from `ip_rules` / `virtual_network_subnet_ids`. Possible values are `Allow` and `Deny`.
-  final String defaultAction;
+  final pulumi.Input<String> defaultAction;
   /// One or more IP Addresses, or CIDR Blocks which should be able to access the Key Vault.
-  final List<String>? ipRules;
+  final pulumi.Input<List<String>>? ipRules;
   /// One or more Subnet IDs which should be able to access this Key Vault.
-  final List<String>? virtualNetworkSubnetIds;
+  final pulumi.Input<List<String>>? virtualNetworkSubnetIds;
 
   /// Creates a new [KeyVaultNetworkAcls].
   /// [bypass] Specifies which traffic can bypass the network rules. Possible values are `AzureServices` and `None`.
@@ -34,10 +35,10 @@ class KeyVaultNetworkAcls {
 
   factory KeyVaultNetworkAcls.fromMap(Map<String, dynamic> map) {
     return KeyVaultNetworkAcls(
-      bypass: map['bypass'] as String,
-      defaultAction: map['defaultAction'] as String,
-      ipRules: map['ipRules'] == null ? null : (map['ipRules'] as List).cast<String>(),
-      virtualNetworkSubnetIds: map['virtualNetworkSubnetIds'] == null ? null : (map['virtualNetworkSubnetIds'] as List).cast<String>(),
+      bypass: (map['bypass'] as String).input(),
+      defaultAction: (map['defaultAction'] as String).input(),
+      ipRules: map['ipRules'] == null ? null : ((map['ipRules'] as List).cast<String>()).input(),
+      virtualNetworkSubnetIds: map['virtualNetworkSubnetIds'] == null ? null : ((map['virtualNetworkSubnetIds'] as List).cast<String>()).input(),
     );
   }
 }

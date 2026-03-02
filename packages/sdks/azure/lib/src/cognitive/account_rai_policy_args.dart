@@ -29,19 +29,13 @@ class AccountRaiPolicyArgs {
   /// [name] The name of the Cognitive Service Account RAI Policy. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   AccountRaiPolicyArgs({
-    required pulumi.Output<String> basePolicyName,
-    required pulumi.Output<String> cognitiveAccountId,
-    required pulumi.Output<List<AccountRaiPolicyContentFilter>> contentFilters,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      basePolicyName = pulumi.Input.asInput<String>(basePolicyName),
-      cognitiveAccountId = pulumi.Input.asInput<String>(cognitiveAccountId),
-      contentFilters = pulumi.Input.asInput<List<AccountRaiPolicyContentFilter>>(contentFilters),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.basePolicyName,
+    required this.cognitiveAccountId,
+    required this.contentFilters,
+    this.mode,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class AccountRaiPolicyArgs {
 
   factory AccountRaiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccountRaiPolicyArgs(
-      basePolicyName: pulumi.Output.create<String>(map['basePolicyName'] as String),
-      cognitiveAccountId: pulumi.Output.create<String>(map['cognitiveAccountId'] as String),
-      contentFilters: pulumi.Output.create<List<AccountRaiPolicyContentFilter>>(pulumi.Input.decodeList<AccountRaiPolicyContentFilter>(map['contentFilters'], (value) => AccountRaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      basePolicyName: (map['basePolicyName'] as String).input(),
+      cognitiveAccountId: (map['cognitiveAccountId'] as String).input(),
+      contentFilters: (pulumi.Input.decodeList<AccountRaiPolicyContentFilter>(map['contentFilters'], (value) => AccountRaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

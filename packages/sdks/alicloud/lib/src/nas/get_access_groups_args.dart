@@ -34,23 +34,15 @@ class GetAccessGroupsArgs {
   /// [type] Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
   /// [useutcDateTime] Specifies whether the time to return is in UTC. Valid values: true and false.
   GetAccessGroupsArgs({
-    pulumi.Output<String>? accessGroupName,
-    pulumi.Output<String>? accessGroupType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fileSystemType,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? type,
-    pulumi.Output<bool>? useutcDateTime,
-  }) :
-      accessGroupName = pulumi.Input.asOptionalInput<String>(accessGroupName),
-      accessGroupType = pulumi.Input.asOptionalInput<String>(accessGroupType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileSystemType = pulumi.Input.asOptionalInput<String>(fileSystemType),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      useutcDateTime = pulumi.Input.asOptionalInput<bool>(useutcDateTime);
+    this.accessGroupName,
+    this.accessGroupType,
+    this.description,
+    this.fileSystemType,
+    this.nameRegex,
+    this.outputFile,
+    this.type,
+    this.useutcDateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetAccessGroupsArgs {
 
   factory GetAccessGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessGroupsArgs(
-      accessGroupName: map['accessGroupName'] == null ? null : pulumi.Output.create<String>(map['accessGroupName'] as String),
-      accessGroupType: map['accessGroupType'] == null ? null : pulumi.Output.create<String>(map['accessGroupType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileSystemType: map['fileSystemType'] == null ? null : pulumi.Output.create<String>(map['fileSystemType'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      useutcDateTime: map['useutcDateTime'] == null ? null : pulumi.Output.create<bool>(map['useutcDateTime'] as bool),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
+      accessGroupType: map['accessGroupType'] == null ? null : (map['accessGroupType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      useutcDateTime: map['useutcDateTime'] == null ? null : (map['useutcDateTime'] as bool).input(),
     );
   }
 }

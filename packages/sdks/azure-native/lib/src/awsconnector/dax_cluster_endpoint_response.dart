@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Endpoint
 class DaxClusterEndpointResponse {
   /// <p>The DNS hostname of the endpoint.</p>
-  final String? address;
+  final pulumi.Input<String>? address;
   /// <p>The port number that applications should use to connect to the endpoint.</p>
-  final int? port;
+  final pulumi.Input<int>? port;
   /// <p>The URL that applications should use to connect to the endpoint. The default ports are 8111 for the 'dax' protocol and 9111 for the 'daxs' protocol.</p>
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [DaxClusterEndpointResponse].
   /// [address] <p>The DNS hostname of the endpoint.</p>
@@ -30,9 +31,9 @@ class DaxClusterEndpointResponse {
 
   factory DaxClusterEndpointResponse.fromMap(Map<String, dynamic> map) {
     return DaxClusterEndpointResponse(
-      address: map['address'] == null ? null : map['address'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      url: map['url'] == null ? null : map['url'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

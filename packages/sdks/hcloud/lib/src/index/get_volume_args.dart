@@ -30,21 +30,14 @@ class GetVolumeArgs {
   /// [withSelector] Label Selector. For more information about possible values, visit the [Hetzner Cloud Documentation](https://docs.hetzner.cloud/reference/cloud#label-selector).
   /// [withStatuses] List only volumes with the specified status, could contain `creating` or `available`.
   GetVolumeArgs({
-    pulumi.Output<int>? id,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? selector,
-    pulumi.Output<int>? serverId,
-    pulumi.Output<String>? withSelector,
-    pulumi.Output<List<String>>? withStatuses,
-  }) :
-      id = pulumi.Input.asOptionalInput<int>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      selector = pulumi.Input.asOptionalInput<String>(selector),
-      serverId = pulumi.Input.asOptionalInput<int>(serverId),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector),
-      withStatuses = pulumi.Input.asOptionalInput<List<String>>(withStatuses);
+    this.id,
+    this.location,
+    this.name,
+    this.selector,
+    this.serverId,
+    this.withSelector,
+    this.withStatuses,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class GetVolumeArgs {
 
   factory GetVolumeArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      selector: map['selector'] == null ? null : pulumi.Output.create<String>(map['selector'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<int>(map['serverId'] as int),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
-      withStatuses: map['withStatuses'] == null ? null : pulumi.Output.create<List<String>>((map['withStatuses'] as List).cast<String>()),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses'] as List).cast<String>()).input(),
     );
   }
 }

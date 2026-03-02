@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An application security group in a resource group.
 class ApplicationSecurityGroupResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The provisioning state of the application security group resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The resource GUID property of the application security group resource. It uniquely identifies a resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
-  final String resourceGuid;
+  final pulumi.Input<String> resourceGuid;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ApplicationSecurityGroupResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.
@@ -55,14 +56,14 @@ class ApplicationSecurityGroupResponse {
 
   factory ApplicationSecurityGroupResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationSecurityGroupResponse(
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceGuid: (map['resourceGuid'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

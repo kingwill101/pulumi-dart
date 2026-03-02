@@ -40,27 +40,17 @@ class WorkforcePoolProviderArgs {
   /// [workforcePoolId] Required.
   /// [workforcePoolProviderId] Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
   WorkforcePoolProviderArgs({
-    pulumi.Output<String>? attributeCondition,
-    required pulumi.Output<Map<String, String>> attributeMapping,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<GoogleIamAdminV1WorkforcePoolProviderOidc>? oidc,
-    pulumi.Output<GoogleIamAdminV1WorkforcePoolProviderSaml>? saml,
-    required pulumi.Output<String> workforcePoolId,
-    required pulumi.Output<String> workforcePoolProviderId,
-  }) :
-      attributeCondition = pulumi.Input.asOptionalInput<String>(attributeCondition),
-      attributeMapping = pulumi.Input.asInput<Map<String, String>>(attributeMapping),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      oidc = pulumi.Input.asOptionalInput<GoogleIamAdminV1WorkforcePoolProviderOidc>(oidc),
-      saml = pulumi.Input.asOptionalInput<GoogleIamAdminV1WorkforcePoolProviderSaml>(saml),
-      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId),
-      workforcePoolProviderId = pulumi.Input.asInput<String>(workforcePoolProviderId);
+    this.attributeCondition,
+    required this.attributeMapping,
+    this.description,
+    this.disabled,
+    this.displayName,
+    this.location,
+    this.oidc,
+    this.saml,
+    required this.workforcePoolId,
+    required this.workforcePoolProviderId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class WorkforcePoolProviderArgs {
 
   factory WorkforcePoolProviderArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderArgs(
-      attributeCondition: map['attributeCondition'] == null ? null : pulumi.Output.create<String>(map['attributeCondition'] as String),
-      attributeMapping: pulumi.Output.create<Map<String, String>>((map['attributeMapping'] as Map).cast<String, String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      oidc: map['oidc'] == null ? null : pulumi.Output.create<GoogleIamAdminV1WorkforcePoolProviderOidc>(GoogleIamAdminV1WorkforcePoolProviderOidc.fromMap((map['oidc'] as Map).cast<String, dynamic>())),
-      saml: map['saml'] == null ? null : pulumi.Output.create<GoogleIamAdminV1WorkforcePoolProviderSaml>(GoogleIamAdminV1WorkforcePoolProviderSaml.fromMap((map['saml'] as Map).cast<String, dynamic>())),
-      workforcePoolId: pulumi.Output.create<String>(map['workforcePoolId'] as String),
-      workforcePoolProviderId: pulumi.Output.create<String>(map['workforcePoolProviderId'] as String),
+      attributeCondition: map['attributeCondition'] == null ? null : (map['attributeCondition'] as String).input(),
+      attributeMapping: ((map['attributeMapping'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      oidc: map['oidc'] == null ? null : (GoogleIamAdminV1WorkforcePoolProviderOidc.fromMap((map['oidc'] as Map).cast<String, dynamic>())).input(),
+      saml: map['saml'] == null ? null : (GoogleIamAdminV1WorkforcePoolProviderSaml.fromMap((map['saml'] as Map).cast<String, dynamic>())).input(),
+      workforcePoolId: (map['workforcePoolId'] as String).input(),
+      workforcePoolProviderId: (map['workforcePoolProviderId'] as String).input(),
     );
   }
 }

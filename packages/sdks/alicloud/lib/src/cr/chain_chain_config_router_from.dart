@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChainChainConfigRouterFrom {
   /// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
-  final String? nodeName;
+  final pulumi.Input<String>? nodeName;
 
   /// Creates a new [ChainChainConfigRouterFrom].
   /// [nodeName] The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
@@ -19,7 +20,7 @@ class ChainChainConfigRouterFrom {
 
   factory ChainChainConfigRouterFrom.fromMap(Map<String, dynamic> map) {
     return ChainChainConfigRouterFrom(
-      nodeName: map['nodeName'] == null ? null : map['nodeName'] as String,
+      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
     );
   }
 }

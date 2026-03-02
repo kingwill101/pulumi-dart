@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyAssignmentIdentity {
   /// A `identity_ids` block as defined below.
-  final List<String> identityIds;
+  final pulumi.Input<List<String>> identityIds;
   /// The Principal ID of the Policy Assignment for this Resource.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The Tenant ID of the Policy Assignment for this Resource.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The Type of Managed Identity which is added to this Policy Assignment.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetPolicyAssignmentIdentity].
   /// [identityIds] A `identity_ids` block as defined below.
@@ -34,10 +35,10 @@ class GetPolicyAssignmentIdentity {
 
   factory GetPolicyAssignmentIdentity.fromMap(Map<String, dynamic> map) {
     return GetPolicyAssignmentIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

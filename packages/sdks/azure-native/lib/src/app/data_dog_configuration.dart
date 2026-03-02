@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of datadog
 class DataDogConfiguration {
   /// The data dog api key
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The data dog site
-  final String? site;
+  final pulumi.Input<String>? site;
 
   /// Creates a new [DataDogConfiguration].
   /// [key] The data dog api key
@@ -25,8 +26,8 @@ class DataDogConfiguration {
 
   factory DataDogConfiguration.fromMap(Map<String, dynamic> map) {
     return DataDogConfiguration(
-      key: map['key'] == null ? null : map['key'] as String,
-      site: map['site'] == null ? null : map['site'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      site: map['site'] == null ? null : (map['site'] as String).input(),
     );
   }
 }

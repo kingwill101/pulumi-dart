@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Deprecated. Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
 class CVSSv3ResponseContaineranalysisV1beta1 {
-  final String attackComplexity;
+  final pulumi.Input<String> attackComplexity;
   /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
-  final String attackVector;
-  final String availabilityImpact;
+  final pulumi.Input<String> attackVector;
+  final pulumi.Input<String> availabilityImpact;
   /// The base score is a function of the base metric scores.
-  final double baseScore;
-  final String confidentialityImpact;
-  final double exploitabilityScore;
-  final double impactScore;
-  final String integrityImpact;
-  final String privilegesRequired;
-  final String scope;
-  final String userInteraction;
+  final pulumi.Input<double> baseScore;
+  final pulumi.Input<String> confidentialityImpact;
+  final pulumi.Input<double> exploitabilityScore;
+  final pulumi.Input<double> impactScore;
+  final pulumi.Input<String> integrityImpact;
+  final pulumi.Input<String> privilegesRequired;
+  final pulumi.Input<String> scope;
+  final pulumi.Input<String> userInteraction;
 
   /// Creates a new [CVSSv3ResponseContaineranalysisV1beta1].
   /// [attackComplexity] Required.
@@ -61,17 +62,17 @@ class CVSSv3ResponseContaineranalysisV1beta1 {
 
   factory CVSSv3ResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return CVSSv3ResponseContaineranalysisV1beta1(
-      attackComplexity: map['attackComplexity'] as String,
-      attackVector: map['attackVector'] as String,
-      availabilityImpact: map['availabilityImpact'] as String,
-      baseScore: map['baseScore'] as double,
-      confidentialityImpact: map['confidentialityImpact'] as String,
-      exploitabilityScore: map['exploitabilityScore'] as double,
-      impactScore: map['impactScore'] as double,
-      integrityImpact: map['integrityImpact'] as String,
-      privilegesRequired: map['privilegesRequired'] as String,
-      scope: map['scope'] as String,
-      userInteraction: map['userInteraction'] as String,
+      attackComplexity: (map['attackComplexity'] as String).input(),
+      attackVector: (map['attackVector'] as String).input(),
+      availabilityImpact: (map['availabilityImpact'] as String).input(),
+      baseScore: (map['baseScore'] as double).input(),
+      confidentialityImpact: (map['confidentialityImpact'] as String).input(),
+      exploitabilityScore: (map['exploitabilityScore'] as double).input(),
+      impactScore: (map['impactScore'] as double).input(),
+      integrityImpact: (map['integrityImpact'] as String).input(),
+      privilegesRequired: (map['privilegesRequired'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      userInteraction: (map['userInteraction'] as String).input(),
     );
   }
 }

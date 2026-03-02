@@ -35,21 +35,14 @@ class ConsumerQuotaOverrideArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The service that the metrics belong to, e.g. `compute.googleapis.com`.
   ConsumerQuotaOverrideArgs({
-    pulumi.Output<Map<String, String>>? dimensions,
-    pulumi.Output<bool>? force,
-    required pulumi.Output<String> limit,
-    required pulumi.Output<String> metric,
-    required pulumi.Output<String> overrideValue,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> service,
-  }) :
-      dimensions = pulumi.Input.asOptionalInput<Map<String, String>>(dimensions),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      limit = pulumi.Input.asInput<String>(limit),
-      metric = pulumi.Input.asInput<String>(metric),
-      overrideValue = pulumi.Input.asInput<String>(overrideValue),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asInput<String>(service);
+    this.dimensions,
+    this.force,
+    required this.limit,
+    required this.metric,
+    required this.overrideValue,
+    this.project,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class ConsumerQuotaOverrideArgs {
 
   factory ConsumerQuotaOverrideArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerQuotaOverrideArgs(
-      dimensions: map['dimensions'] == null ? null : pulumi.Output.create<Map<String, String>>((map['dimensions'] as Map).cast<String, String>()),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      limit: pulumi.Output.create<String>(map['limit'] as String),
-      metric: pulumi.Output.create<String>(map['metric'] as String),
-      overrideValue: pulumi.Output.create<String>(map['overrideValue'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      limit: (map['limit'] as String).input(),
+      metric: (map['metric'] as String).input(),
+      overrideValue: (map['overrideValue'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

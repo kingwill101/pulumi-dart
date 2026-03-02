@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketObjectContentCustomerEncryption {
   /// The encryption algorithm. Default: AES256
-  final String encryptionAlgorithm;
+  final pulumi.Input<String> encryptionAlgorithm;
   /// Base64 encoded customer supplied encryption key.
-  final String encryptionKey;
+  final pulumi.Input<String> encryptionKey;
 
   /// Creates a new [GetBucketObjectContentCustomerEncryption].
   /// [encryptionAlgorithm] The encryption algorithm. Default: AES256
@@ -24,8 +25,8 @@ class GetBucketObjectContentCustomerEncryption {
 
   factory GetBucketObjectContentCustomerEncryption.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectContentCustomerEncryption(
-      encryptionAlgorithm: map['encryptionAlgorithm'] as String,
-      encryptionKey: map['encryptionKey'] as String,
+      encryptionAlgorithm: (map['encryptionAlgorithm'] as String).input(),
+      encryptionKey: (map['encryptionKey'] as String).input(),
     );
   }
 }

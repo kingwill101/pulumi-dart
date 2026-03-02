@@ -35,23 +35,15 @@ class IntegrationAccountCertificateArgs {
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
   IntegrationAccountCertificateArgs({
-    pulumi.Output<String>? certificateName,
-    required pulumi.Output<String> integrationAccountName,
-    pulumi.Output<KeyVaultKeyReference>? key,
-    pulumi.Output<String>? location,
-    pulumi.Output<dynamic>? metadata,
-    pulumi.Output<String>? publicCertificate,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      key = pulumi.Input.asOptionalInput<KeyVaultKeyReference>(key),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<dynamic>(metadata),
-      publicCertificate = pulumi.Input.asOptionalInput<String>(publicCertificate),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.certificateName,
+    required this.integrationAccountName,
+    this.key,
+    this.location,
+    this.metadata,
+    this.publicCertificate,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class IntegrationAccountCertificateArgs {
 
   factory IntegrationAccountCertificateArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountCertificateArgs(
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      key: map['key'] == null ? null : pulumi.Output.create<KeyVaultKeyReference>(KeyVaultKeyReference.fromMap((map['key'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<dynamic>(map['metadata']),
-      publicCertificate: map['publicCertificate'] == null ? null : pulumi.Output.create<String>(map['publicCertificate'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      key: map['key'] == null ? null : (KeyVaultKeyReference.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      publicCertificate: map['publicCertificate'] == null ? null : (map['publicCertificate'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A filter to reduce the amount of data charted in relevant widgets.
 class DashboardFilterResponse {
   /// The specified filter type
-  final String filterType;
+  final pulumi.Input<String> filterType;
   /// The key for the label
-  final String labelKey;
+  final pulumi.Input<String> labelKey;
   /// A variable-length string value.
-  final String stringValue;
+  final pulumi.Input<String> stringValue;
   /// The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
-  final String templateVariable;
+  final pulumi.Input<String> templateVariable;
 
   /// Creates a new [DashboardFilterResponse].
   /// [filterType] The specified filter type
@@ -35,10 +36,10 @@ class DashboardFilterResponse {
 
   factory DashboardFilterResponse.fromMap(Map<String, dynamic> map) {
     return DashboardFilterResponse(
-      filterType: map['filterType'] as String,
-      labelKey: map['labelKey'] as String,
-      stringValue: map['stringValue'] as String,
-      templateVariable: map['templateVariable'] as String,
+      filterType: (map['filterType'] as String).input(),
+      labelKey: (map['labelKey'] as String).input(),
+      stringValue: (map['stringValue'] as String).input(),
+      templateVariable: (map['templateVariable'] as String).input(),
     );
   }
 }

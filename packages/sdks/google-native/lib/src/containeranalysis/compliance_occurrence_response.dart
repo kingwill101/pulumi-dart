@@ -5,8 +5,8 @@ import 'non_compliant_file_response.dart';
 
 /// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
 class ComplianceOccurrenceResponse {
-  final String nonComplianceReason;
-  final List<NonCompliantFileResponse> nonCompliantFiles;
+  final pulumi.Input<String> nonComplianceReason;
+  final pulumi.Input<List<NonCompliantFileResponse>> nonCompliantFiles;
 
   /// Creates a new [ComplianceOccurrenceResponse].
   /// [nonComplianceReason] Required.
@@ -19,14 +19,14 @@ class ComplianceOccurrenceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nonComplianceReason': nonComplianceReason,
-      'nonCompliantFiles': pulumi.Input.encodeList<NonCompliantFileResponse, Map<String, dynamic>>(nonCompliantFiles, (value) => value.toMap()),
+      'nonCompliantFiles': pulumi.Input.mapInputValue<List<NonCompliantFileResponse>, List<Map<String, dynamic>>>(nonCompliantFiles, (value) => pulumi.Input.encodeList<NonCompliantFileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ComplianceOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return ComplianceOccurrenceResponse(
-      nonComplianceReason: map['nonComplianceReason'] as String,
-      nonCompliantFiles: pulumi.Input.decodeList<NonCompliantFileResponse>(map['nonCompliantFiles'], (value) => NonCompliantFileResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nonComplianceReason: (map['nonComplianceReason'] as String).input(),
+      nonCompliantFiles: (pulumi.Input.decodeList<NonCompliantFileResponse>(map['nonCompliantFiles'], (value) => NonCompliantFileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolStorageImageReference {
   /// The Batch pool ID.
-  final String id;
-  final String offer;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> offer;
   /// The name of the extension handler publisher.The name of the extension handler publisher.
-  final String publisher;
-  final String sku;
-  final String version;
+  final pulumi.Input<String> publisher;
+  final pulumi.Input<String> sku;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetPoolStorageImageReference].
   /// [id] The Batch pool ID.
@@ -36,11 +37,11 @@ class GetPoolStorageImageReference {
 
   factory GetPoolStorageImageReference.fromMap(Map<String, dynamic> map) {
     return GetPoolStorageImageReference(
-      id: map['id'] as String,
-      offer: map['offer'] as String,
-      publisher: map['publisher'] as String,
-      sku: map['sku'] as String,
-      version: map['version'] as String,
+      id: (map['id'] as String).input(),
+      offer: (map['offer'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      sku: (map['sku'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

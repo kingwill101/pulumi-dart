@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionSslConfigClientPrivateKeyPass {
   /// Secret version of Secret Value for Config variable.
-  final String secretVersion;
+  final pulumi.Input<String> secretVersion;
 
   /// Creates a new [ConnectionSslConfigClientPrivateKeyPass].
   /// [secretVersion] Secret version of Secret Value for Config variable.
@@ -19,7 +20,7 @@ class ConnectionSslConfigClientPrivateKeyPass {
 
   factory ConnectionSslConfigClientPrivateKeyPass.fromMap(Map<String, dynamic> map) {
     return ConnectionSslConfigClientPrivateKeyPass(
-      secretVersion: map['secretVersion'] as String,
+      secretVersion: (map['secretVersion'] as String).input(),
     );
   }
 }

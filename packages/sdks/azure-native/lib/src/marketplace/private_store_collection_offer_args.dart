@@ -35,23 +35,15 @@ class PrivateStoreCollectionOfferArgs {
   /// [specificPlanIdsLimitation] Plan ids limitation for this offer
   /// [updateSuppressedDueIdempotence] Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed one in db, the offer would not be updated.
   PrivateStoreCollectionOfferArgs({
-    required pulumi.Output<String> collectionId,
-    pulumi.Output<String>? eTag,
-    pulumi.Output<Map<String, String>>? iconFileUris,
-    pulumi.Output<String>? offerId,
-    pulumi.Output<List<Plan>>? plans,
-    required pulumi.Output<String> privateStoreId,
-    pulumi.Output<List<String>>? specificPlanIdsLimitation,
-    pulumi.Output<bool>? updateSuppressedDueIdempotence,
-  }) :
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      iconFileUris = pulumi.Input.asOptionalInput<Map<String, String>>(iconFileUris),
-      offerId = pulumi.Input.asOptionalInput<String>(offerId),
-      plans = pulumi.Input.asOptionalInput<List<Plan>>(plans),
-      privateStoreId = pulumi.Input.asInput<String>(privateStoreId),
-      specificPlanIdsLimitation = pulumi.Input.asOptionalInput<List<String>>(specificPlanIdsLimitation),
-      updateSuppressedDueIdempotence = pulumi.Input.asOptionalInput<bool>(updateSuppressedDueIdempotence);
+    required this.collectionId,
+    this.eTag,
+    this.iconFileUris,
+    this.offerId,
+    this.plans,
+    required this.privateStoreId,
+    this.specificPlanIdsLimitation,
+    this.updateSuppressedDueIdempotence,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class PrivateStoreCollectionOfferArgs {
 
   factory PrivateStoreCollectionOfferArgs.fromMap(Map<String, dynamic> map) {
     return PrivateStoreCollectionOfferArgs(
-      collectionId: pulumi.Output.create<String>(map['collectionId'] as String),
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      iconFileUris: map['iconFileUris'] == null ? null : pulumi.Output.create<Map<String, String>>((map['iconFileUris'] as Map).cast<String, String>()),
-      offerId: map['offerId'] == null ? null : pulumi.Output.create<String>(map['offerId'] as String),
-      plans: map['plans'] == null ? null : pulumi.Output.create<List<Plan>>(pulumi.Input.decodeList<Plan>(map['plans'], (value) => Plan.fromMap((value as Map).cast<String, dynamic>()))),
-      privateStoreId: pulumi.Output.create<String>(map['privateStoreId'] as String),
-      specificPlanIdsLimitation: map['specificPlanIdsLimitation'] == null ? null : pulumi.Output.create<List<String>>((map['specificPlanIdsLimitation'] as List).cast<String>()),
-      updateSuppressedDueIdempotence: map['updateSuppressedDueIdempotence'] == null ? null : pulumi.Output.create<bool>(map['updateSuppressedDueIdempotence'] as bool),
+      collectionId: (map['collectionId'] as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      iconFileUris: map['iconFileUris'] == null ? null : ((map['iconFileUris'] as Map).cast<String, String>()).input(),
+      offerId: map['offerId'] == null ? null : (map['offerId'] as String).input(),
+      plans: map['plans'] == null ? null : (pulumi.Input.decodeList<Plan>(map['plans'], (value) => Plan.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateStoreId: (map['privateStoreId'] as String).input(),
+      specificPlanIdsLimitation: map['specificPlanIdsLimitation'] == null ? null : ((map['specificPlanIdsLimitation'] as List).cast<String>()).input(),
+      updateSuppressedDueIdempotence: map['updateSuppressedDueIdempotence'] == null ? null : (map['updateSuppressedDueIdempotence'] as bool).input(),
     );
   }
 }

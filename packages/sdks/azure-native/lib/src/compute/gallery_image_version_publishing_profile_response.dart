@@ -7,21 +7,21 @@ import 'target_region_response.dart';
 /// The publishing profile of a gallery image Version.
 class GalleryImageVersionPublishingProfileResponse {
   /// The end of life date of the gallery image version. This property can be used for decommissioning purposes. This property is updatable.
-  final String? endOfLifeDate;
+  final pulumi.Input<String>? endOfLifeDate;
   /// If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
-  final bool? excludeFromLatest;
+  final pulumi.Input<bool>? excludeFromLatest;
   /// The timestamp for when the gallery image version is published.
-  final String publishedDate;
+  final pulumi.Input<String> publishedDate;
   /// The number of replicas of the Image Version to be created per region. This property would take effect for a region when regionalReplicaCount is not specified. This property is updatable.
-  final int? replicaCount;
+  final pulumi.Input<int>? replicaCount;
   /// Optional parameter which specifies the mode to be used for replication. This property is not updatable.
-  final String? replicationMode;
+  final pulumi.Input<String>? replicationMode;
   /// Specifies the storage account type to be used to store the image. Cannot be specified along with storageAccountStrategy. This property is not updatable.
-  final String? storageAccountType;
+  final pulumi.Input<String>? storageAccountType;
   /// The target extended locations where the Image Version is going to be replicated to. This property is updatable.
-  final List<GalleryTargetExtendedLocationResponse>? targetExtendedLocations;
+  final pulumi.Input<List<GalleryTargetExtendedLocationResponse>>? targetExtendedLocations;
   /// The target regions where the Image Version is going to be replicated to. This property is updatable.
-  final List<TargetRegionResponse>? targetRegions;
+  final pulumi.Input<List<TargetRegionResponse>>? targetRegions;
 
   /// Creates a new [GalleryImageVersionPublishingProfileResponse].
   /// [endOfLifeDate] The end of life date of the gallery image version. This property can be used for decommissioning purposes. This property is updatable.
@@ -51,21 +51,21 @@ class GalleryImageVersionPublishingProfileResponse {
       'replicaCount': ?replicaCount,
       'replicationMode': ?replicationMode,
       'storageAccountType': ?storageAccountType,
-      'targetExtendedLocations': ?targetExtendedLocations == null ? null : pulumi.Input.encodeList<GalleryTargetExtendedLocationResponse, Map<String, dynamic>>(targetExtendedLocations!, (value) => value.toMap()),
-      'targetRegions': ?targetRegions == null ? null : pulumi.Input.encodeList<TargetRegionResponse, Map<String, dynamic>>(targetRegions!, (value) => value.toMap()),
+      'targetExtendedLocations': ?pulumi.Input.mapOptionalInputValue<List<GalleryTargetExtendedLocationResponse>, List<Map<String, dynamic>>>(targetExtendedLocations, (value) => pulumi.Input.encodeList<GalleryTargetExtendedLocationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetRegions': ?pulumi.Input.mapOptionalInputValue<List<TargetRegionResponse>, List<Map<String, dynamic>>>(targetRegions, (value) => pulumi.Input.encodeList<TargetRegionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GalleryImageVersionPublishingProfileResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionPublishingProfileResponse(
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : map['endOfLifeDate'] as String,
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : map['excludeFromLatest'] as bool,
-      publishedDate: map['publishedDate'] as String,
-      replicaCount: map['replicaCount'] == null ? null : map['replicaCount'] as int,
-      replicationMode: map['replicationMode'] == null ? null : map['replicationMode'] as String,
-      storageAccountType: map['storageAccountType'] == null ? null : map['storageAccountType'] as String,
-      targetExtendedLocations: map['targetExtendedLocations'] == null ? null : pulumi.Input.decodeList<GalleryTargetExtendedLocationResponse>(map['targetExtendedLocations'], (value) => GalleryTargetExtendedLocationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      targetRegions: map['targetRegions'] == null ? null : pulumi.Input.decodeList<TargetRegionResponse>(map['targetRegions'], (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
+      publishedDate: (map['publishedDate'] as String).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
+      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode'] as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      targetExtendedLocations: map['targetExtendedLocations'] == null ? null : (pulumi.Input.decodeList<GalleryTargetExtendedLocationResponse>(map['targetExtendedLocations'], (value) => GalleryTargetExtendedLocationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegionResponse>(map['targetRegions'], (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

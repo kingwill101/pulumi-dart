@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// UrlMaps A host-matching rule for a URL. If matched, will use the named PathMatcher to select the BackendService.
 class HostRuleResponseComputeV1 {
   /// An optional description of this resource. Provide this property when you create the resource.
-  final String description;
+  final pulumi.Input<String> description;
   /// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character, and if followed by anything, the immediate following character must be either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
-  final List<String> hosts;
+  final pulumi.Input<List<String>> hosts;
   /// The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
-  final String pathMatcher;
+  final pulumi.Input<String> pathMatcher;
 
   /// Creates a new [HostRuleResponseComputeV1].
   /// [description] An optional description of this resource. Provide this property when you create the resource.
@@ -30,9 +31,9 @@ class HostRuleResponseComputeV1 {
 
   factory HostRuleResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return HostRuleResponseComputeV1(
-      description: map['description'] as String,
-      hosts: (map['hosts'] as List).cast<String>(),
-      pathMatcher: map['pathMatcher'] as String,
+      description: (map['description'] as String).input(),
+      hosts: ((map['hosts'] as List).cast<String>()).input(),
+      pathMatcher: (map['pathMatcher'] as String).input(),
     );
   }
 }

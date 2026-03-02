@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SKU that defines the tier and kind of the peering.
 class PeeringSku {
   /// The name of the peering SKU.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [PeeringSku].
   /// [name] The name of the peering SKU.
@@ -20,7 +21,7 @@ class PeeringSku {
 
   factory PeeringSku.fromMap(Map<String, dynamic> map) {
     return PeeringSku(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

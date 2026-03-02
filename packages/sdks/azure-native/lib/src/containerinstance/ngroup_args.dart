@@ -45,27 +45,17 @@ class NGroupArgs {
   /// [updateProfile] Used by the customer to specify the way to update the Container Groups in NGroup.
   /// [zones] The zones for the container group.
   NGroupArgs({
-    pulumi.Output<List<ContainerGroupProfileStub>>? containerGroupProfiles,
-    pulumi.Output<ElasticProfile>? elasticProfile,
-    pulumi.Output<NGroupIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? ngroupsName,
-    pulumi.Output<PlacementProfile>? placementProfile,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<UpdateProfile>? updateProfile,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      containerGroupProfiles = pulumi.Input.asOptionalInput<List<ContainerGroupProfileStub>>(containerGroupProfiles),
-      elasticProfile = pulumi.Input.asOptionalInput<ElasticProfile>(elasticProfile),
-      identity = pulumi.Input.asOptionalInput<NGroupIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      ngroupsName = pulumi.Input.asOptionalInput<String>(ngroupsName),
-      placementProfile = pulumi.Input.asOptionalInput<PlacementProfile>(placementProfile),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      updateProfile = pulumi.Input.asOptionalInput<UpdateProfile>(updateProfile),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.containerGroupProfiles,
+    this.elasticProfile,
+    this.identity,
+    this.location,
+    this.ngroupsName,
+    this.placementProfile,
+    required this.resourceGroupName,
+    this.tags,
+    this.updateProfile,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class NGroupArgs {
 
   factory NGroupArgs.fromMap(Map<String, dynamic> map) {
     return NGroupArgs(
-      containerGroupProfiles: map['containerGroupProfiles'] == null ? null : pulumi.Output.create<List<ContainerGroupProfileStub>>(pulumi.Input.decodeList<ContainerGroupProfileStub>(map['containerGroupProfiles'], (value) => ContainerGroupProfileStub.fromMap((value as Map).cast<String, dynamic>()))),
-      elasticProfile: map['elasticProfile'] == null ? null : pulumi.Output.create<ElasticProfile>(ElasticProfile.fromMap((map['elasticProfile'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<NGroupIdentity>(NGroupIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      ngroupsName: map['ngroupsName'] == null ? null : pulumi.Output.create<String>(map['ngroupsName'] as String),
-      placementProfile: map['placementProfile'] == null ? null : pulumi.Output.create<PlacementProfile>(PlacementProfile.fromMap((map['placementProfile'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      updateProfile: map['updateProfile'] == null ? null : pulumi.Output.create<UpdateProfile>(UpdateProfile.fromMap((map['updateProfile'] as Map).cast<String, dynamic>())),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      containerGroupProfiles: map['containerGroupProfiles'] == null ? null : (pulumi.Input.decodeList<ContainerGroupProfileStub>(map['containerGroupProfiles'], (value) => ContainerGroupProfileStub.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      elasticProfile: map['elasticProfile'] == null ? null : (ElasticProfile.fromMap((map['elasticProfile'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (NGroupIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      ngroupsName: map['ngroupsName'] == null ? null : (map['ngroupsName'] as String).input(),
+      placementProfile: map['placementProfile'] == null ? null : (PlacementProfile.fromMap((map['placementProfile'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      updateProfile: map['updateProfile'] == null ? null : (UpdateProfile.fromMap((map['updateProfile'] as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

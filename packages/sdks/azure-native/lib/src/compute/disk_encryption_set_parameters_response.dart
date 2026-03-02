@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the parameter of customer managed disk encryption set resource id that can be specified for disk. **Note:** The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview for more details.
 class DiskEncryptionSetParametersResponse {
   /// Resource Id
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [DiskEncryptionSetParametersResponse].
   /// [id] Resource Id
@@ -20,7 +21,7 @@ class DiskEncryptionSetParametersResponse {
 
   factory DiskEncryptionSetParametersResponse.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionSetParametersResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

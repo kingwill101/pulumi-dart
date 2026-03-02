@@ -25,17 +25,12 @@ class GetUserGroupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [userGroupName] Specify the New Group Name. Supports up to 128 Characters.
   GetUserGroupsArgs({
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? userGroupName,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      userGroupName = pulumi.Input.asOptionalInput<String>(userGroupName);
+    this.ids,
+    required this.instanceId,
+    this.nameRegex,
+    this.outputFile,
+    this.userGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetUserGroupsArgs {
 
   factory GetUserGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetUserGroupsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      userGroupName: map['userGroupName'] == null ? null : pulumi.Output.create<String>(map['userGroupName'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      userGroupName: map['userGroupName'] == null ? null : (map['userGroupName'] as String).input(),
     );
   }
 }

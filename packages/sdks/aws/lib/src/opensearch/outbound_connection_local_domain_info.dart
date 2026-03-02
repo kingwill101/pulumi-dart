@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OutboundConnectionLocalDomainInfo {
   /// The name of the local domain.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The Account ID of the owner of the local domain.
-  final String ownerId;
+  final pulumi.Input<String> ownerId;
   /// The region of the local domain.
-  final String region;
+  final pulumi.Input<String> region;
 
   /// Creates a new [OutboundConnectionLocalDomainInfo].
   /// [domainName] The name of the local domain.
@@ -29,9 +30,9 @@ class OutboundConnectionLocalDomainInfo {
 
   factory OutboundConnectionLocalDomainInfo.fromMap(Map<String, dynamic> map) {
     return OutboundConnectionLocalDomainInfo(
-      domainName: map['domainName'] as String,
-      ownerId: map['ownerId'] as String,
-      region: map['region'] as String,
+      domainName: (map['domainName'] as String).input(),
+      ownerId: (map['ownerId'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

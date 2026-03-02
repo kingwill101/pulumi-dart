@@ -19,13 +19,10 @@ class ThreatIntelligenceSwitchArgs {
   /// [categoryId] The threat intelligence classification ID.
   /// [enableStatus] Switch status. Value:
   ThreatIntelligenceSwitchArgs({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? categoryId,
-    pulumi.Output<int>? enableStatus,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      categoryId = pulumi.Input.asOptionalInput<String>(categoryId),
-      enableStatus = pulumi.Input.asOptionalInput<int>(enableStatus);
+    this.action,
+    this.categoryId,
+    this.enableStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ThreatIntelligenceSwitchArgs {
 
   factory ThreatIntelligenceSwitchArgs.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceSwitchArgs(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      categoryId: map['categoryId'] == null ? null : pulumi.Output.create<String>(map['categoryId'] as String),
-      enableStatus: map['enableStatus'] == null ? null : pulumi.Output.create<int>(map['enableStatus'] as int),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      categoryId: map['categoryId'] == null ? null : (map['categoryId'] as String).input(),
+      enableStatus: map['enableStatus'] == null ? null : (map['enableStatus'] as int).input(),
     );
   }
 }

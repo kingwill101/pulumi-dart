@@ -35,19 +35,13 @@ class GetZoneShareV2Args {
   /// [targetProjectId] If provided, the data source returns the
   /// [zoneId] The ID of the DNS zone for which to get share.
   GetZoneShareV2Args({
-    pulumi.Output<String>? allProjects,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? shareId,
-    pulumi.Output<String>? targetProjectId,
-    required pulumi.Output<String> zoneId,
-  }) :
-      allProjects = pulumi.Input.asOptionalInput<String>(allProjects),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shareId = pulumi.Input.asOptionalInput<String>(shareId),
-      targetProjectId = pulumi.Input.asOptionalInput<String>(targetProjectId),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.allProjects,
+    this.projectId,
+    this.region,
+    this.shareId,
+    this.targetProjectId,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class GetZoneShareV2Args {
 
   factory GetZoneShareV2Args.fromMap(Map<String, dynamic> map) {
     return GetZoneShareV2Args(
-      allProjects: map['allProjects'] == null ? null : pulumi.Output.create<String>(map['allProjects'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shareId: map['shareId'] == null ? null : pulumi.Output.create<String>(map['shareId'] as String),
-      targetProjectId: map['targetProjectId'] == null ? null : pulumi.Output.create<String>(map['targetProjectId'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      allProjects: map['allProjects'] == null ? null : (map['allProjects'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
+      targetProjectId: map['targetProjectId'] == null ? null : (map['targetProjectId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkerPoolTemplateVolumeNfs {
   /// Path that is exported by the NFS server.
-  final String path;
+  final pulumi.Input<String> path;
   /// If true, mount the NFS volume as read only
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// Hostname or IP address of the NFS server
-  final String server;
+  final pulumi.Input<String> server;
 
   /// Creates a new [WorkerPoolTemplateVolumeNfs].
   /// [path] Path that is exported by the NFS server.
@@ -29,9 +30,9 @@ class WorkerPoolTemplateVolumeNfs {
 
   factory WorkerPoolTemplateVolumeNfs.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateVolumeNfs(
-      path: map['path'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      server: map['server'] as String,
+      path: (map['path'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      server: (map['server'] as String).input(),
     );
   }
 }

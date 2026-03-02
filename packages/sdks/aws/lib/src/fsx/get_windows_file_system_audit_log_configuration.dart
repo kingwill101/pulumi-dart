@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsFileSystemAuditLogConfiguration {
-  final String auditLogDestination;
-  final String fileAccessAuditLogLevel;
-  final String fileShareAccessAuditLogLevel;
+  final pulumi.Input<String> auditLogDestination;
+  final pulumi.Input<String> fileAccessAuditLogLevel;
+  final pulumi.Input<String> fileShareAccessAuditLogLevel;
 
   /// Creates a new [GetWindowsFileSystemAuditLogConfiguration].
   /// [auditLogDestination] Required.
@@ -26,9 +27,9 @@ class GetWindowsFileSystemAuditLogConfiguration {
 
   factory GetWindowsFileSystemAuditLogConfiguration.fromMap(Map<String, dynamic> map) {
     return GetWindowsFileSystemAuditLogConfiguration(
-      auditLogDestination: map['auditLogDestination'] as String,
-      fileAccessAuditLogLevel: map['fileAccessAuditLogLevel'] as String,
-      fileShareAccessAuditLogLevel: map['fileShareAccessAuditLogLevel'] as String,
+      auditLogDestination: (map['auditLogDestination'] as String).input(),
+      fileAccessAuditLogLevel: (map['fileAccessAuditLogLevel'] as String).input(),
+      fileShareAccessAuditLogLevel: (map['fileShareAccessAuditLogLevel'] as String).input(),
     );
   }
 }

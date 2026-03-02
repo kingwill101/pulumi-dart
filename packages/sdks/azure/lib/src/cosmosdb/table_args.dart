@@ -30,17 +30,12 @@ class TableArgs {
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB Table is created. Changing this forces a new resource to be created.
   /// [throughput] The throughput of Table (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
   TableArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<TableAutoscaleSettings>? autoscaleSettings,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? throughput,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      autoscaleSettings = pulumi.Input.asOptionalInput<TableAutoscaleSettings>(autoscaleSettings),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      throughput = pulumi.Input.asOptionalInput<int>(throughput);
+    required this.accountName,
+    this.autoscaleSettings,
+    this.name,
+    required this.resourceGroupName,
+    this.throughput,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : pulumi.Output.create<TableAutoscaleSettings>(TableAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      throughput: map['throughput'] == null ? null : pulumi.Output.create<int>(map['throughput'] as int),
+      accountName: (map['accountName'] as String).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (TableAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
     );
   }
 }

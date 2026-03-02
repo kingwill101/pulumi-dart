@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource limits defined for connection pods of a given connector type.
 class ResourceLimitsResponse {
   /// CPU limit.
-  final String cpu;
+  final pulumi.Input<String> cpu;
   /// Memory limit.
-  final String memory;
+  final pulumi.Input<String> memory;
 
   /// Creates a new [ResourceLimitsResponse].
   /// [cpu] CPU limit.
@@ -25,8 +26,8 @@ class ResourceLimitsResponse {
 
   factory ResourceLimitsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceLimitsResponse(
-      cpu: map['cpu'] as String,
-      memory: map['memory'] as String,
+      cpu: (map['cpu'] as String).input(),
+      memory: (map['memory'] as String).input(),
     );
   }
 }

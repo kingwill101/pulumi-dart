@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FactoryGithubConfiguration {
   /// Specifies the GitHub account name.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// Specifies the branch of the repository to get code from.
-  final String branchName;
+  final pulumi.Input<String> branchName;
   /// Specifies the GitHub Enterprise host name. For example: <https://github.mydomain.com>. Use <https://github.com> for open source repositories.
-  final String? gitUrl;
+  final pulumi.Input<String>? gitUrl;
   /// Is automated publishing enabled? Defaults to `true`.
   ///
   /// > **Note:** You must log in to the Data Factory management UI to complete the authentication to the GitHub repository.
-  final bool? publishingEnabled;
+  final pulumi.Input<bool>? publishingEnabled;
   /// Specifies the name of the git repository.
-  final String repositoryName;
+  final pulumi.Input<String> repositoryName;
   /// Specifies the root folder within the repository. Set to `/` for the top level.
-  final String rootFolder;
+  final pulumi.Input<String> rootFolder;
 
   /// Creates a new [FactoryGithubConfiguration].
   /// [accountName] Specifies the GitHub account name.
@@ -46,12 +47,12 @@ class FactoryGithubConfiguration {
 
   factory FactoryGithubConfiguration.fromMap(Map<String, dynamic> map) {
     return FactoryGithubConfiguration(
-      accountName: map['accountName'] as String,
-      branchName: map['branchName'] as String,
-      gitUrl: map['gitUrl'] == null ? null : map['gitUrl'] as String,
-      publishingEnabled: map['publishingEnabled'] == null ? null : map['publishingEnabled'] as bool,
-      repositoryName: map['repositoryName'] as String,
-      rootFolder: map['rootFolder'] as String,
+      accountName: (map['accountName'] as String).input(),
+      branchName: (map['branchName'] as String).input(),
+      gitUrl: map['gitUrl'] == null ? null : (map['gitUrl'] as String).input(),
+      publishingEnabled: map['publishingEnabled'] == null ? null : (map['publishingEnabled'] as bool).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
+      rootFolder: (map['rootFolder'] as String).input(),
     );
   }
 }

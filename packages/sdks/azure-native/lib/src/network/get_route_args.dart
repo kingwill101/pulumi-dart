@@ -19,13 +19,10 @@ class GetRouteArgs {
   /// [routeName] The name of the route.
   /// [routeTableName] The name of the route table.
   GetRouteArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> routeName,
-    required pulumi.Output<String> routeTableName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeName = pulumi.Input.asInput<String>(routeName),
-      routeTableName = pulumi.Input.asInput<String>(routeTableName);
+    required this.resourceGroupName,
+    required this.routeName,
+    required this.routeTableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRouteArgs {
 
   factory GetRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeName: pulumi.Output.create<String>(map['routeName'] as String),
-      routeTableName: pulumi.Output.create<String>(map['routeTableName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeName: (map['routeName'] as String).input(),
+      routeTableName: (map['routeTableName'] as String).input(),
     );
   }
 }

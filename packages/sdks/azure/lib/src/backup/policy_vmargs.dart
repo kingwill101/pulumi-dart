@@ -58,33 +58,20 @@ class PolicyVMArgs {
   /// [tieringPolicy] A `tiering_policy` block as defined below.
   /// [timezone] Specifies the timezone. [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/). Defaults to `UTC`
   PolicyVMArgs({
-    required pulumi.Output<PolicyVMBackup> backup,
-    pulumi.Output<PolicyVMInstantRestoreResourceGroup>? instantRestoreResourceGroup,
-    pulumi.Output<int>? instantRestoreRetentionDays,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyType,
-    required pulumi.Output<String> recoveryVaultName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<PolicyVMRetentionDaily>? retentionDaily,
-    pulumi.Output<PolicyVMRetentionMonthly>? retentionMonthly,
-    pulumi.Output<PolicyVMRetentionWeekly>? retentionWeekly,
-    pulumi.Output<PolicyVMRetentionYearly>? retentionYearly,
-    pulumi.Output<PolicyVMTieringPolicy>? tieringPolicy,
-    pulumi.Output<String>? timezone,
-  }) :
-      backup = pulumi.Input.asInput<PolicyVMBackup>(backup),
-      instantRestoreResourceGroup = pulumi.Input.asOptionalInput<PolicyVMInstantRestoreResourceGroup>(instantRestoreResourceGroup),
-      instantRestoreRetentionDays = pulumi.Input.asOptionalInput<int>(instantRestoreRetentionDays),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      recoveryVaultName = pulumi.Input.asInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      retentionDaily = pulumi.Input.asOptionalInput<PolicyVMRetentionDaily>(retentionDaily),
-      retentionMonthly = pulumi.Input.asOptionalInput<PolicyVMRetentionMonthly>(retentionMonthly),
-      retentionWeekly = pulumi.Input.asOptionalInput<PolicyVMRetentionWeekly>(retentionWeekly),
-      retentionYearly = pulumi.Input.asOptionalInput<PolicyVMRetentionYearly>(retentionYearly),
-      tieringPolicy = pulumi.Input.asOptionalInput<PolicyVMTieringPolicy>(tieringPolicy),
-      timezone = pulumi.Input.asOptionalInput<String>(timezone);
+    required this.backup,
+    this.instantRestoreResourceGroup,
+    this.instantRestoreRetentionDays,
+    this.name,
+    this.policyType,
+    required this.recoveryVaultName,
+    required this.resourceGroupName,
+    this.retentionDaily,
+    this.retentionMonthly,
+    this.retentionWeekly,
+    this.retentionYearly,
+    this.tieringPolicy,
+    this.timezone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,19 +93,19 @@ class PolicyVMArgs {
 
   factory PolicyVMArgs.fromMap(Map<String, dynamic> map) {
     return PolicyVMArgs(
-      backup: pulumi.Output.create<PolicyVMBackup>(PolicyVMBackup.fromMap((map['backup'] as Map).cast<String, dynamic>())),
-      instantRestoreResourceGroup: map['instantRestoreResourceGroup'] == null ? null : pulumi.Output.create<PolicyVMInstantRestoreResourceGroup>(PolicyVMInstantRestoreResourceGroup.fromMap((map['instantRestoreResourceGroup'] as Map).cast<String, dynamic>())),
-      instantRestoreRetentionDays: map['instantRestoreRetentionDays'] == null ? null : pulumi.Output.create<int>(map['instantRestoreRetentionDays'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      recoveryVaultName: pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retentionDaily: map['retentionDaily'] == null ? null : pulumi.Output.create<PolicyVMRetentionDaily>(PolicyVMRetentionDaily.fromMap((map['retentionDaily'] as Map).cast<String, dynamic>())),
-      retentionMonthly: map['retentionMonthly'] == null ? null : pulumi.Output.create<PolicyVMRetentionMonthly>(PolicyVMRetentionMonthly.fromMap((map['retentionMonthly'] as Map).cast<String, dynamic>())),
-      retentionWeekly: map['retentionWeekly'] == null ? null : pulumi.Output.create<PolicyVMRetentionWeekly>(PolicyVMRetentionWeekly.fromMap((map['retentionWeekly'] as Map).cast<String, dynamic>())),
-      retentionYearly: map['retentionYearly'] == null ? null : pulumi.Output.create<PolicyVMRetentionYearly>(PolicyVMRetentionYearly.fromMap((map['retentionYearly'] as Map).cast<String, dynamic>())),
-      tieringPolicy: map['tieringPolicy'] == null ? null : pulumi.Output.create<PolicyVMTieringPolicy>(PolicyVMTieringPolicy.fromMap((map['tieringPolicy'] as Map).cast<String, dynamic>())),
-      timezone: map['timezone'] == null ? null : pulumi.Output.create<String>(map['timezone'] as String),
+      backup: (PolicyVMBackup.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
+      instantRestoreResourceGroup: map['instantRestoreResourceGroup'] == null ? null : (PolicyVMInstantRestoreResourceGroup.fromMap((map['instantRestoreResourceGroup'] as Map).cast<String, dynamic>())).input(),
+      instantRestoreRetentionDays: map['instantRestoreRetentionDays'] == null ? null : (map['instantRestoreRetentionDays'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      recoveryVaultName: (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      retentionDaily: map['retentionDaily'] == null ? null : (PolicyVMRetentionDaily.fromMap((map['retentionDaily'] as Map).cast<String, dynamic>())).input(),
+      retentionMonthly: map['retentionMonthly'] == null ? null : (PolicyVMRetentionMonthly.fromMap((map['retentionMonthly'] as Map).cast<String, dynamic>())).input(),
+      retentionWeekly: map['retentionWeekly'] == null ? null : (PolicyVMRetentionWeekly.fromMap((map['retentionWeekly'] as Map).cast<String, dynamic>())).input(),
+      retentionYearly: map['retentionYearly'] == null ? null : (PolicyVMRetentionYearly.fromMap((map['retentionYearly'] as Map).cast<String, dynamic>())).input(),
+      tieringPolicy: map['tieringPolicy'] == null ? null : (PolicyVMTieringPolicy.fromMap((map['tieringPolicy'] as Map).cast<String, dynamic>())).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
     );
   }
 }

@@ -37,25 +37,16 @@ class DeploymentArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DeploymentArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> configurationProfileId,
-    required pulumi.Output<String> configurationVersion,
-    required pulumi.Output<String> deploymentStrategyId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? kmsKeyIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      configurationProfileId = pulumi.Input.asInput<String>(configurationProfileId),
-      configurationVersion = pulumi.Input.asInput<String>(configurationVersion),
-      deploymentStrategyId = pulumi.Input.asInput<String>(deploymentStrategyId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(kmsKeyIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.applicationId,
+    required this.configurationProfileId,
+    required this.configurationVersion,
+    required this.deploymentStrategyId,
+    this.description,
+    required this.environmentId,
+    this.kmsKeyIdentifier,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      configurationProfileId: pulumi.Output.create<String>(map['configurationProfileId'] as String),
-      configurationVersion: pulumi.Output.create<String>(map['configurationVersion'] as String),
-      deploymentStrategyId: pulumi.Output.create<String>(map['deploymentStrategyId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : pulumi.Output.create<String>(map['kmsKeyIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationId: (map['applicationId'] as String).input(),
+      configurationProfileId: (map['configurationProfileId'] as String).input(),
+      configurationVersion: (map['configurationVersion'] as String).input(),
+      deploymentStrategyId: (map['deploymentStrategyId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

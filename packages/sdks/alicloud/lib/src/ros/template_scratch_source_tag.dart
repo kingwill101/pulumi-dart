@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TemplateScratchSourceTag {
   /// Source label. **NOTE:** A maximum of 10 source labels can be configured.
-  final Map<String, String> resourceTags;
-  final List<String>? resourceTypeFilters;
+  final pulumi.Input<Map<String, String>> resourceTags;
+  final pulumi.Input<List<String>>? resourceTypeFilters;
 
   /// Creates a new [TemplateScratchSourceTag].
   /// [resourceTags] Source label. **NOTE:** A maximum of 10 source labels can be configured.
@@ -23,8 +24,8 @@ class TemplateScratchSourceTag {
 
   factory TemplateScratchSourceTag.fromMap(Map<String, dynamic> map) {
     return TemplateScratchSourceTag(
-      resourceTags: (map['resourceTags'] as Map).cast<String, String>(),
-      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : (map['resourceTypeFilters'] as List).cast<String>(),
+      resourceTags: ((map['resourceTags'] as Map).cast<String, String>()).input(),
+      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : ((map['resourceTypeFilters'] as List).cast<String>()).input(),
     );
   }
 }

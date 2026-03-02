@@ -34,23 +34,15 @@ class SqlServerArgs {
   /// [sqlServerRegistrationName] Name of the SQL Server registration.
   /// [version] Version of the Sql Server.
   SqlServerArgs({
-    pulumi.Output<int>? cores,
-    pulumi.Output<String>? edition,
-    pulumi.Output<String>? propertyBag,
-    pulumi.Output<String>? registrationID,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sqlServerName,
-    required pulumi.Output<String> sqlServerRegistrationName,
-    pulumi.Output<String>? version,
-  }) :
-      cores = pulumi.Input.asOptionalInput<int>(cores),
-      edition = pulumi.Input.asOptionalInput<String>(edition),
-      propertyBag = pulumi.Input.asOptionalInput<String>(propertyBag),
-      registrationID = pulumi.Input.asOptionalInput<String>(registrationID),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlServerName = pulumi.Input.asOptionalInput<String>(sqlServerName),
-      sqlServerRegistrationName = pulumi.Input.asInput<String>(sqlServerRegistrationName),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.cores,
+    this.edition,
+    this.propertyBag,
+    this.registrationID,
+    required this.resourceGroupName,
+    this.sqlServerName,
+    required this.sqlServerRegistrationName,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class SqlServerArgs {
 
   factory SqlServerArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerArgs(
-      cores: map['cores'] == null ? null : pulumi.Output.create<int>(map['cores'] as int),
-      edition: map['edition'] == null ? null : pulumi.Output.create<String>(map['edition'] as String),
-      propertyBag: map['propertyBag'] == null ? null : pulumi.Output.create<String>(map['propertyBag'] as String),
-      registrationID: map['registrationID'] == null ? null : pulumi.Output.create<String>(map['registrationID'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlServerName: map['sqlServerName'] == null ? null : pulumi.Output.create<String>(map['sqlServerName'] as String),
-      sqlServerRegistrationName: pulumi.Output.create<String>(map['sqlServerRegistrationName'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      cores: map['cores'] == null ? null : (map['cores'] as int).input(),
+      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      propertyBag: map['propertyBag'] == null ? null : (map['propertyBag'] as String).input(),
+      registrationID: map['registrationID'] == null ? null : (map['registrationID'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlServerName: map['sqlServerName'] == null ? null : (map['sqlServerName'] as String).input(),
+      sqlServerRegistrationName: (map['sqlServerRegistrationName'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

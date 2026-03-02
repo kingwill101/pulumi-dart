@@ -24,17 +24,12 @@ class IamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [tableId] Used to find the parent resource to bind the IAM policy to
   IamPolicyState({
-    pulumi.Output<String>? datasetId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? tableId,
-  }) :
-      datasetId = pulumi.Input.asOptionalInput<String>(datasetId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tableId = pulumi.Input.asOptionalInput<String>(tableId);
+    this.datasetId,
+    this.etag,
+    this.policyData,
+    this.project,
+    this.tableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class IamPolicyState {
 
   factory IamPolicyState.fromMap(Map<String, dynamic> map) {
     return IamPolicyState(
-      datasetId: map['datasetId'] == null ? null : pulumi.Output.create<String>(map['datasetId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tableId: map['tableId'] == null ? null : pulumi.Output.create<String>(map['tableId'] as String),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tableId: map['tableId'] == null ? null : (map['tableId'] as String).input(),
     );
   }
 }

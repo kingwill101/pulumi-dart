@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSharedImagePurchasePlan {
   /// The name of the Shared Image.
-  final String name;
+  final pulumi.Input<String> name;
   /// (Optional) The Purchase Plan Product for this Gallery Image.
-  final String product;
+  final pulumi.Input<String> product;
   /// (Optional) The Purchase Plan Publisher for this Gallery Image.
-  final String publisher;
+  final pulumi.Input<String> publisher;
 
   /// Creates a new [GetSharedImagePurchasePlan].
   /// [name] The name of the Shared Image.
@@ -29,9 +30,9 @@ class GetSharedImagePurchasePlan {
 
   factory GetSharedImagePurchasePlan.fromMap(Map<String, dynamic> map) {
     return GetSharedImagePurchasePlan(
-      name: map['name'] as String,
-      product: map['product'] as String,
-      publisher: map['publisher'] as String,
+      name: (map['name'] as String).input(),
+      product: (map['product'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
     );
   }
 }

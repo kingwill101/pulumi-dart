@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField {
   /// The name of the password field.
-  final String identifier;
+  final pulumi.Input<String> identifier;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField].
   /// [identifier] The name of the password field.
@@ -19,7 +20,7 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPassword
 
   factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField(
-      identifier: map['identifier'] as String,
+      identifier: (map['identifier'] as String).input(),
     );
   }
 }

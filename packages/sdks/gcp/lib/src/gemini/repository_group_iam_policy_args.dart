@@ -29,17 +29,12 @@ class RepositoryGroupIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [repositoryGroupId] Used to find the parent resource to bind the IAM policy to
   RepositoryGroupIamPolicyArgs({
-    required pulumi.Output<String> codeRepositoryIndex,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryGroupId,
-  }) :
-      codeRepositoryIndex = pulumi.Input.asInput<String>(codeRepositoryIndex),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryGroupId = pulumi.Input.asInput<String>(repositoryGroupId);
+    required this.codeRepositoryIndex,
+    this.location,
+    required this.policyData,
+    this.project,
+    required this.repositoryGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class RepositoryGroupIamPolicyArgs {
 
   factory RepositoryGroupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryGroupIamPolicyArgs(
-      codeRepositoryIndex: pulumi.Output.create<String>(map['codeRepositoryIndex'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryGroupId: pulumi.Output.create<String>(map['repositoryGroupId'] as String),
+      codeRepositoryIndex: (map['codeRepositoryIndex'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryGroupId: (map['repositoryGroupId'] as String).input(),
     );
   }
 }

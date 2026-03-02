@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DNS server details
 class ActiveDirectoryConnectorDNSDetailsResponse {
   /// DNS domain name for which DNS lookups should be forwarded to the Active Directory DNS servers.
-  final String? domainName;
+  final pulumi.Input<String>? domainName;
   /// List of Active Directory DNS server IP addresses.
-  final List<String> nameserverIPAddresses;
+  final pulumi.Input<List<String>> nameserverIPAddresses;
   /// Flag indicating whether to prefer Kubernetes DNS server response over AD DNS server response for IP address lookups.
-  final bool? preferK8sDnsForPtrLookups;
+  final pulumi.Input<bool>? preferK8sDnsForPtrLookups;
   /// Replica count for DNS proxy service. Default value is 1.
-  final double? replicas;
+  final pulumi.Input<double>? replicas;
 
   /// Creates a new [ActiveDirectoryConnectorDNSDetailsResponse].
   /// [domainName] DNS domain name for which DNS lookups should be forwarded to the Active Directory DNS servers.
@@ -35,10 +36,10 @@ class ActiveDirectoryConnectorDNSDetailsResponse {
 
   factory ActiveDirectoryConnectorDNSDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorDNSDetailsResponse(
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      nameserverIPAddresses: (map['nameserverIPAddresses'] as List).cast<String>(),
-      preferK8sDnsForPtrLookups: map['preferK8sDnsForPtrLookups'] == null ? null : map['preferK8sDnsForPtrLookups'] as bool,
-      replicas: map['replicas'] == null ? null : map['replicas'] as double,
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      nameserverIPAddresses: ((map['nameserverIPAddresses'] as List).cast<String>()).input(),
+      preferK8sDnsForPtrLookups: map['preferK8sDnsForPtrLookups'] == null ? null : (map['preferK8sDnsForPtrLookups'] as bool).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas'] as double).input(),
     );
   }
 }

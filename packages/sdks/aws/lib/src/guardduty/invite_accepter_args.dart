@@ -19,13 +19,10 @@ class InviteAccepterArgs {
   /// [masterAccountId] AWS account ID for primary account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   InviteAccepterArgs({
-    required pulumi.Output<String> detectorId,
-    required pulumi.Output<String> masterAccountId,
-    pulumi.Output<String>? region,
-  }) :
-      detectorId = pulumi.Input.asInput<String>(detectorId),
-      masterAccountId = pulumi.Input.asInput<String>(masterAccountId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.detectorId,
+    required this.masterAccountId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class InviteAccepterArgs {
 
   factory InviteAccepterArgs.fromMap(Map<String, dynamic> map) {
     return InviteAccepterArgs(
-      detectorId: pulumi.Output.create<String>(map['detectorId'] as String),
-      masterAccountId: pulumi.Output.create<String>(map['masterAccountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      detectorId: (map['detectorId'] as String).input(),
+      masterAccountId: (map['masterAccountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

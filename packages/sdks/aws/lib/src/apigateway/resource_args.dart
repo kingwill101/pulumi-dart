@@ -22,15 +22,11 @@ class ResourceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApi] ID of the associated REST API
   ResourceArgs({
-    required pulumi.Output<String> parentId,
-    required pulumi.Output<String> pathPart,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> restApi,
-  }) :
-      parentId = pulumi.Input.asInput<String>(parentId),
-      pathPart = pulumi.Input.asInput<String>(pathPart),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApi = pulumi.Input.asInput<String>(restApi);
+    required this.parentId,
+    required this.pathPart,
+    this.region,
+    required this.restApi,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      parentId: pulumi.Output.create<String>(map['parentId'] as String),
-      pathPart: pulumi.Output.create<String>(map['pathPart'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApi: pulumi.Output.create<String>(map['restApi'] as String),
+      parentId: (map['parentId'] as String).input(),
+      pathPart: (map['pathPart'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApi: (map['restApi'] as String).input(),
     );
   }
 }

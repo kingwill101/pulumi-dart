@@ -16,11 +16,9 @@ class ApplicationIdentifierUriArgs {
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [identifierUri] The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
   ApplicationIdentifierUriArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> identifierUri,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      identifierUri = pulumi.Input.asInput<String>(identifierUri);
+    required this.applicationId,
+    required this.identifierUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ApplicationIdentifierUriArgs {
 
   factory ApplicationIdentifierUriArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationIdentifierUriArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      identifierUri: pulumi.Output.create<String>(map['identifierUri'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      identifierUri: (map['identifierUri'] as String).input(),
     );
   }
 }

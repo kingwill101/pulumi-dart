@@ -37,25 +37,16 @@ class LbCertificateState {
   /// [subjectAlternativeNames] Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
   /// [supportCode] Support code for the certificate.
   LbCertificateState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<List<LbCertificateDomainValidationRecord>>? domainValidationRecords,
-    pulumi.Output<String>? lbName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? subjectAlternativeNames,
-    pulumi.Output<String>? supportCode,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      domainValidationRecords = pulumi.Input.asOptionalInput<List<LbCertificateDomainValidationRecord>>(domainValidationRecords),
-      lbName = pulumi.Input.asOptionalInput<String>(lbName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subjectAlternativeNames = pulumi.Input.asOptionalInput<List<String>>(subjectAlternativeNames),
-      supportCode = pulumi.Input.asOptionalInput<String>(supportCode);
+    this.arn,
+    this.createdAt,
+    this.domainName,
+    this.domainValidationRecords,
+    this.lbName,
+    this.name,
+    this.region,
+    this.subjectAlternativeNames,
+    this.supportCode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class LbCertificateState {
 
   factory LbCertificateState.fromMap(Map<String, dynamic> map) {
     return LbCertificateState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      domainValidationRecords: map['domainValidationRecords'] == null ? null : pulumi.Output.create<List<LbCertificateDomainValidationRecord>>(pulumi.Input.decodeList<LbCertificateDomainValidationRecord>(map['domainValidationRecords'], (value) => LbCertificateDomainValidationRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      lbName: map['lbName'] == null ? null : pulumi.Output.create<String>(map['lbName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : pulumi.Output.create<List<String>>((map['subjectAlternativeNames'] as List).cast<String>()),
-      supportCode: map['supportCode'] == null ? null : pulumi.Output.create<String>(map['supportCode'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainValidationRecords: map['domainValidationRecords'] == null ? null : (pulumi.Input.decodeList<LbCertificateDomainValidationRecord>(map['domainValidationRecords'], (value) => LbCertificateDomainValidationRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lbName: map['lbName'] == null ? null : (map['lbName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
+      supportCode: map['supportCode'] == null ? null : (map['supportCode'] as String).input(),
     );
   }
 }

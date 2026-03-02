@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of KerberosAttributes
 class KerberosAttributesResponse {
   /// <p>The Active Directory password for <code>ADDomainJoinUser</code>.</p>
-  final String? adDomainJoinPassword;
+  final pulumi.Input<String>? adDomainJoinPassword;
   /// <p>Required only when establishing a cross-realm trust with an Active Directory domain. A user with sufficient privileges to join resources to the domain.</p>
-  final String? adDomainJoinUser;
+  final pulumi.Input<String>? adDomainJoinUser;
   /// <p>Required only when establishing a cross-realm trust with a KDC in a different realm. The cross-realm principal password, which must be identical across realms.</p>
-  final String? crossRealmTrustPrincipalPassword;
+  final pulumi.Input<String>? crossRealmTrustPrincipalPassword;
   /// <p>The password used within the cluster for the kadmin service on the cluster-dedicated KDC, which maintains Kerberos principals, password policies, and keytabs for the cluster.</p>
-  final String? kdcAdminPassword;
+  final pulumi.Input<String>? kdcAdminPassword;
   /// <p>The name of the Kerberos realm to which all nodes in a cluster belong. For example, <code>EC2.INTERNAL</code>. </p>
-  final String? realm;
+  final pulumi.Input<String>? realm;
 
   /// Creates a new [KerberosAttributesResponse].
   /// [adDomainJoinPassword] <p>The Active Directory password for <code>ADDomainJoinUser</code>.</p>
@@ -40,11 +41,11 @@ class KerberosAttributesResponse {
 
   factory KerberosAttributesResponse.fromMap(Map<String, dynamic> map) {
     return KerberosAttributesResponse(
-      adDomainJoinPassword: map['adDomainJoinPassword'] == null ? null : map['adDomainJoinPassword'] as String,
-      adDomainJoinUser: map['adDomainJoinUser'] == null ? null : map['adDomainJoinUser'] as String,
-      crossRealmTrustPrincipalPassword: map['crossRealmTrustPrincipalPassword'] == null ? null : map['crossRealmTrustPrincipalPassword'] as String,
-      kdcAdminPassword: map['kdcAdminPassword'] == null ? null : map['kdcAdminPassword'] as String,
-      realm: map['realm'] == null ? null : map['realm'] as String,
+      adDomainJoinPassword: map['adDomainJoinPassword'] == null ? null : (map['adDomainJoinPassword'] as String).input(),
+      adDomainJoinUser: map['adDomainJoinUser'] == null ? null : (map['adDomainJoinUser'] as String).input(),
+      crossRealmTrustPrincipalPassword: map['crossRealmTrustPrincipalPassword'] == null ? null : (map['crossRealmTrustPrincipalPassword'] as String).input(),
+      kdcAdminPassword: map['kdcAdminPassword'] == null ? null : (map['kdcAdminPassword'] as String).input(),
+      realm: map['realm'] == null ? null : (map['realm'] as String).input(),
     );
   }
 }

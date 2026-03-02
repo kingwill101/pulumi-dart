@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sso_properties.dart';
 
 /// API portal properties payload
 class ApiPortalProperties {
   /// Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
-  final String? apiTryOutEnabledState;
+  final pulumi.Input<String>? apiTryOutEnabledState;
   /// The array of resource Ids of gateway to integrate with API portal.
-  final List<String>? gatewayIds;
+  final pulumi.Input<List<String>>? gatewayIds;
   /// Indicate if only https is allowed.
-  final bool? httpsOnly;
+  final pulumi.Input<bool>? httpsOnly;
   /// Indicates whether the API portal exposes endpoint.
-  final bool? public;
+  final pulumi.Input<bool>? public;
   /// Collection of OpenAPI source URL locations.
-  final List<String>? sourceUrls;
+  final pulumi.Input<List<String>>? sourceUrls;
   /// Single sign-on related configuration
-  final SsoProperties? ssoProperties;
+  final pulumi.Input<SsoProperties>? ssoProperties;
 
   /// Creates a new [ApiPortalProperties].
   /// [apiTryOutEnabledState] Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
@@ -40,18 +41,18 @@ class ApiPortalProperties {
       'httpsOnly': ?httpsOnly,
       'public': ?public,
       'sourceUrls': ?sourceUrls,
-      'ssoProperties': ?ssoProperties == null ? null : ssoProperties!.toMap(),
+      'ssoProperties': ?pulumi.Input.mapOptionalInputValue<SsoProperties, Map<String, dynamic>>(ssoProperties, (value) => value.toMap()),
     };
   }
 
   factory ApiPortalProperties.fromMap(Map<String, dynamic> map) {
     return ApiPortalProperties(
-      apiTryOutEnabledState: map['apiTryOutEnabledState'] == null ? null : map['apiTryOutEnabledState'] as String,
-      gatewayIds: map['gatewayIds'] == null ? null : (map['gatewayIds'] as List).cast<String>(),
-      httpsOnly: map['httpsOnly'] == null ? null : map['httpsOnly'] as bool,
-      public: map['public'] == null ? null : map['public'] as bool,
-      sourceUrls: map['sourceUrls'] == null ? null : (map['sourceUrls'] as List).cast<String>(),
-      ssoProperties: map['ssoProperties'] == null ? null : SsoProperties.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>()),
+      apiTryOutEnabledState: map['apiTryOutEnabledState'] == null ? null : (map['apiTryOutEnabledState'] as String).input(),
+      gatewayIds: map['gatewayIds'] == null ? null : ((map['gatewayIds'] as List).cast<String>()).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
+      public: map['public'] == null ? null : (map['public'] as bool).input(),
+      sourceUrls: map['sourceUrls'] == null ? null : ((map['sourceUrls'] as List).cast<String>()).input(),
+      ssoProperties: map['ssoProperties'] == null ? null : (SsoProperties.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

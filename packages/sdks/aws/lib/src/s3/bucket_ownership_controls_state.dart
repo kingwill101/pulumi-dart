@@ -17,13 +17,10 @@ class BucketOwnershipControlsState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rule] Configuration block(s) with Ownership Controls rules. Detailed below.
   BucketOwnershipControlsState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? region,
-    pulumi.Output<BucketOwnershipControlsRule>? rule,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rule = pulumi.Input.asOptionalInput<BucketOwnershipControlsRule>(rule);
+    this.bucket,
+    this.region,
+    this.rule,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class BucketOwnershipControlsState {
 
   factory BucketOwnershipControlsState.fromMap(Map<String, dynamic> map) {
     return BucketOwnershipControlsState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<BucketOwnershipControlsRule>(BucketOwnershipControlsRule.fromMap((map['rule'] as Map).cast<String, dynamic>())),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rule: map['rule'] == null ? null : (BucketOwnershipControlsRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

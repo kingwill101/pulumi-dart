@@ -54,35 +54,21 @@ class SyncGroupArgs {
   /// [syncGroupName] The name of the sync group.
   /// [usePrivateLinkConnection] If use private link connection is enabled.
   SyncGroupArgs({
-    pulumi.Output<int>? conflictLoggingRetentionInDays,
-    pulumi.Output<String>? conflictResolutionPolicy,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<bool>? enableConflictLogging,
-    pulumi.Output<String>? hubDatabasePassword,
-    pulumi.Output<String>? hubDatabaseUserName,
-    pulumi.Output<int>? interval,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SyncGroupSchema>? schema,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<String>? syncDatabaseId,
-    pulumi.Output<String>? syncGroupName,
-    pulumi.Output<bool>? usePrivateLinkConnection,
-  }) :
-      conflictLoggingRetentionInDays = pulumi.Input.asOptionalInput<int>(conflictLoggingRetentionInDays),
-      conflictResolutionPolicy = pulumi.Input.asOptionalInput<String>(conflictResolutionPolicy),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      enableConflictLogging = pulumi.Input.asOptionalInput<bool>(enableConflictLogging),
-      hubDatabasePassword = pulumi.Input.asOptionalInput<String>(hubDatabasePassword),
-      hubDatabaseUserName = pulumi.Input.asOptionalInput<String>(hubDatabaseUserName),
-      interval = pulumi.Input.asOptionalInput<int>(interval),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schema = pulumi.Input.asOptionalInput<SyncGroupSchema>(schema),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      syncDatabaseId = pulumi.Input.asOptionalInput<String>(syncDatabaseId),
-      syncGroupName = pulumi.Input.asOptionalInput<String>(syncGroupName),
-      usePrivateLinkConnection = pulumi.Input.asOptionalInput<bool>(usePrivateLinkConnection);
+    this.conflictLoggingRetentionInDays,
+    this.conflictResolutionPolicy,
+    required this.databaseName,
+    this.enableConflictLogging,
+    this.hubDatabasePassword,
+    this.hubDatabaseUserName,
+    this.interval,
+    required this.resourceGroupName,
+    this.schema,
+    required this.serverName,
+    this.sku,
+    this.syncDatabaseId,
+    this.syncGroupName,
+    this.usePrivateLinkConnection,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class SyncGroupArgs {
 
   factory SyncGroupArgs.fromMap(Map<String, dynamic> map) {
     return SyncGroupArgs(
-      conflictLoggingRetentionInDays: map['conflictLoggingRetentionInDays'] == null ? null : pulumi.Output.create<int>(map['conflictLoggingRetentionInDays'] as int),
-      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : pulumi.Output.create<String>(map['conflictResolutionPolicy'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      enableConflictLogging: map['enableConflictLogging'] == null ? null : pulumi.Output.create<bool>(map['enableConflictLogging'] as bool),
-      hubDatabasePassword: map['hubDatabasePassword'] == null ? null : pulumi.Output.create<String>(map['hubDatabasePassword'] as String),
-      hubDatabaseUserName: map['hubDatabaseUserName'] == null ? null : pulumi.Output.create<String>(map['hubDatabaseUserName'] as String),
-      interval: map['interval'] == null ? null : pulumi.Output.create<int>(map['interval'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<SyncGroupSchema>(SyncGroupSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      syncDatabaseId: map['syncDatabaseId'] == null ? null : pulumi.Output.create<String>(map['syncDatabaseId'] as String),
-      syncGroupName: map['syncGroupName'] == null ? null : pulumi.Output.create<String>(map['syncGroupName'] as String),
-      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : pulumi.Output.create<bool>(map['usePrivateLinkConnection'] as bool),
+      conflictLoggingRetentionInDays: map['conflictLoggingRetentionInDays'] == null ? null : (map['conflictLoggingRetentionInDays'] as int).input(),
+      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : (map['conflictResolutionPolicy'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      enableConflictLogging: map['enableConflictLogging'] == null ? null : (map['enableConflictLogging'] as bool).input(),
+      hubDatabasePassword: map['hubDatabasePassword'] == null ? null : (map['hubDatabasePassword'] as String).input(),
+      hubDatabaseUserName: map['hubDatabaseUserName'] == null ? null : (map['hubDatabaseUserName'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schema: map['schema'] == null ? null : (SyncGroupSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      serverName: (map['serverName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      syncDatabaseId: map['syncDatabaseId'] == null ? null : (map['syncDatabaseId'] as String).input(),
+      syncGroupName: map['syncGroupName'] == null ? null : (map['syncGroupName'] as String).input(),
+      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : (map['usePrivateLinkConnection'] as bool).input(),
     );
   }
 }

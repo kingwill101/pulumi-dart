@@ -6,29 +6,29 @@ import 'developer_app_credential_attribute.dart';
 
 class DeveloperAppCredential {
   /// List of API products associated with the developer app.
-  final List<DeveloperAppCredentialApiProduct>? apiProducts;
+  final pulumi.Input<List<DeveloperAppCredentialApiProduct>>? apiProducts;
   /// Developer attributes (name/value pairs). The custom attribute limit is 18.
   /// Structure is documented below.
-  final List<DeveloperAppCredentialAttribute>? attributes;
+  final pulumi.Input<List<DeveloperAppCredentialAttribute>>? attributes;
   /// (Output)
   /// Consumer key.
-  final String? consumerKey;
+  final pulumi.Input<String>? consumerKey;
   /// (Output)
   /// Secret key.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final String? consumerSecret;
+  final pulumi.Input<String>? consumerSecret;
   /// (Output)
   /// Time the credential will expire in milliseconds since epoch.
-  final String? expiresAt;
+  final pulumi.Input<String>? expiresAt;
   /// (Output)
   /// Time the credential was issued in milliseconds since epoch.
-  final String? issuedAt;
+  final pulumi.Input<String>? issuedAt;
   /// Scopes to apply to the developer app.
   /// The specified scopes must already exist for the API product that
   /// you associate with the developer app.
-  final List<String>? scopes;
+  final pulumi.Input<List<String>>? scopes;
   /// Status of the credential. Valid values include approved or revoked.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [DeveloperAppCredential].
   /// [apiProducts] List of API products associated with the developer app.
@@ -52,8 +52,8 @@ class DeveloperAppCredential {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiProducts': ?apiProducts == null ? null : pulumi.Input.encodeList<DeveloperAppCredentialApiProduct, Map<String, dynamic>>(apiProducts!, (value) => value.toMap()),
-      'attributes': ?attributes == null ? null : pulumi.Input.encodeList<DeveloperAppCredentialAttribute, Map<String, dynamic>>(attributes!, (value) => value.toMap()),
+      'apiProducts': ?pulumi.Input.mapOptionalInputValue<List<DeveloperAppCredentialApiProduct>, List<Map<String, dynamic>>>(apiProducts, (value) => pulumi.Input.encodeList<DeveloperAppCredentialApiProduct, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attributes': ?pulumi.Input.mapOptionalInputValue<List<DeveloperAppCredentialAttribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<DeveloperAppCredentialAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'consumerKey': ?consumerKey,
       'consumerSecret': ?consumerSecret,
       'expiresAt': ?expiresAt,
@@ -65,14 +65,14 @@ class DeveloperAppCredential {
 
   factory DeveloperAppCredential.fromMap(Map<String, dynamic> map) {
     return DeveloperAppCredential(
-      apiProducts: map['apiProducts'] == null ? null : pulumi.Input.decodeList<DeveloperAppCredentialApiProduct>(map['apiProducts'], (value) => DeveloperAppCredentialApiProduct.fromMap((value as Map).cast<String, dynamic>())),
-      attributes: map['attributes'] == null ? null : pulumi.Input.decodeList<DeveloperAppCredentialAttribute>(map['attributes'], (value) => DeveloperAppCredentialAttribute.fromMap((value as Map).cast<String, dynamic>())),
-      consumerKey: map['consumerKey'] == null ? null : map['consumerKey'] as String,
-      consumerSecret: map['consumerSecret'] == null ? null : map['consumerSecret'] as String,
-      expiresAt: map['expiresAt'] == null ? null : map['expiresAt'] as String,
-      issuedAt: map['issuedAt'] == null ? null : map['issuedAt'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
-      status: map['status'] == null ? null : map['status'] as String,
+      apiProducts: map['apiProducts'] == null ? null : (pulumi.Input.decodeList<DeveloperAppCredentialApiProduct>(map['apiProducts'], (value) => DeveloperAppCredentialApiProduct.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAppCredentialAttribute>(map['attributes'], (value) => DeveloperAppCredentialAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumerKey: map['consumerKey'] == null ? null : (map['consumerKey'] as String).input(),
+      consumerSecret: map['consumerSecret'] == null ? null : (map['consumerSecret'] as String).input(),
+      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt'] as String).input(),
+      issuedAt: map['issuedAt'] == null ? null : (map['issuedAt'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

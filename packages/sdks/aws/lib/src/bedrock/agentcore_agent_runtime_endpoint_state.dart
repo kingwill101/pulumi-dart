@@ -39,27 +39,17 @@ class AgentcoreAgentRuntimeEndpointState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   AgentcoreAgentRuntimeEndpointState({
-    pulumi.Output<String>? agentRuntimeArn,
-    pulumi.Output<String>? agentRuntimeEndpointArn,
-    pulumi.Output<String>? agentRuntimeId,
-    pulumi.Output<String>? agentRuntimeVersion,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<AgentcoreAgentRuntimeEndpointTimeouts>? timeouts,
-  }) :
-      agentRuntimeArn = pulumi.Input.asOptionalInput<String>(agentRuntimeArn),
-      agentRuntimeEndpointArn = pulumi.Input.asOptionalInput<String>(agentRuntimeEndpointArn),
-      agentRuntimeId = pulumi.Input.asOptionalInput<String>(agentRuntimeId),
-      agentRuntimeVersion = pulumi.Input.asOptionalInput<String>(agentRuntimeVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<AgentcoreAgentRuntimeEndpointTimeouts>(timeouts);
+    this.agentRuntimeArn,
+    this.agentRuntimeEndpointArn,
+    this.agentRuntimeId,
+    this.agentRuntimeVersion,
+    this.description,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class AgentcoreAgentRuntimeEndpointState {
 
   factory AgentcoreAgentRuntimeEndpointState.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeEndpointState(
-      agentRuntimeArn: map['agentRuntimeArn'] == null ? null : pulumi.Output.create<String>(map['agentRuntimeArn'] as String),
-      agentRuntimeEndpointArn: map['agentRuntimeEndpointArn'] == null ? null : pulumi.Output.create<String>(map['agentRuntimeEndpointArn'] as String),
-      agentRuntimeId: map['agentRuntimeId'] == null ? null : pulumi.Output.create<String>(map['agentRuntimeId'] as String),
-      agentRuntimeVersion: map['agentRuntimeVersion'] == null ? null : pulumi.Output.create<String>(map['agentRuntimeVersion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentcoreAgentRuntimeEndpointTimeouts>(AgentcoreAgentRuntimeEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      agentRuntimeArn: map['agentRuntimeArn'] == null ? null : (map['agentRuntimeArn'] as String).input(),
+      agentRuntimeEndpointArn: map['agentRuntimeEndpointArn'] == null ? null : (map['agentRuntimeEndpointArn'] as String).input(),
+      agentRuntimeId: map['agentRuntimeId'] == null ? null : (map['agentRuntimeId'] as String).input(),
+      agentRuntimeVersion: map['agentRuntimeVersion'] == null ? null : (map['agentRuntimeVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentcoreAgentRuntimeEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_migration_state.dart';
 import 'continuous_mode_properties.dart';
 
 /// The object representing continuous mode backup policy.
 class ContinuousModeBackupPolicy {
   /// Configuration values for continuous mode backup
-  final ContinuousModeProperties? continuousModeProperties;
+  final pulumi.Input<ContinuousModeProperties>? continuousModeProperties;
   /// The object representing the state of the migration between the backup policies.
-  final BackupPolicyMigrationState? migrationState;
+  final pulumi.Input<BackupPolicyMigrationState>? migrationState;
   /// Describes the mode of backups.
   /// Expected value is 'Continuous'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ContinuousModeBackupPolicy].
   /// [continuousModeProperties] Configuration values for continuous mode backup
@@ -25,17 +26,17 @@ class ContinuousModeBackupPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'continuousModeProperties': ?continuousModeProperties == null ? null : continuousModeProperties!.toMap(),
-      'migrationState': ?migrationState == null ? null : migrationState!.toMap(),
+      'continuousModeProperties': ?pulumi.Input.mapOptionalInputValue<ContinuousModeProperties, Map<String, dynamic>>(continuousModeProperties, (value) => value.toMap()),
+      'migrationState': ?pulumi.Input.mapOptionalInputValue<BackupPolicyMigrationState, Map<String, dynamic>>(migrationState, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory ContinuousModeBackupPolicy.fromMap(Map<String, dynamic> map) {
     return ContinuousModeBackupPolicy(
-      continuousModeProperties: map['continuousModeProperties'] == null ? null : ContinuousModeProperties.fromMap((map['continuousModeProperties'] as Map).cast<String, dynamic>()),
-      migrationState: map['migrationState'] == null ? null : BackupPolicyMigrationState.fromMap((map['migrationState'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      continuousModeProperties: map['continuousModeProperties'] == null ? null : (ContinuousModeProperties.fromMap((map['continuousModeProperties'] as Map).cast<String, dynamic>())).input(),
+      migrationState: map['migrationState'] == null ? null : (BackupPolicyMigrationState.fromMap((map['migrationState'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

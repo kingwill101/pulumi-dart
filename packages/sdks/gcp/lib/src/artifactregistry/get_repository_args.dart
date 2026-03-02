@@ -22,13 +22,10 @@ class GetRepositoryArgs {
   /// [project] The project in which the resource belongs. If it
   /// [repositoryId] The last part of the repository name.
   GetRepositoryArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId);
+    required this.location,
+    this.project,
+    required this.repositoryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetRepositoryArgs {
 
   factory GetRepositoryArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
     );
   }
 }

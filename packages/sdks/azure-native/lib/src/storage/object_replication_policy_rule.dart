@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_replication_policy_filter.dart';
 
 /// The replication policy rule between two containers.
 class ObjectReplicationPolicyRule {
   /// Required. Destination container name.
-  final String destinationContainer;
+  final pulumi.Input<String> destinationContainer;
   /// Optional. An object that defines the filter set.
-  final ObjectReplicationPolicyFilter? filters;
+  final pulumi.Input<ObjectReplicationPolicyFilter>? filters;
   /// Rule Id is auto-generated for each new rule on destination account. It is required for put policy on source account.
-  final String? ruleId;
+  final pulumi.Input<String>? ruleId;
   /// Required. Source container name.
-  final String sourceContainer;
+  final pulumi.Input<String> sourceContainer;
 
   /// Creates a new [ObjectReplicationPolicyRule].
   /// [destinationContainer] Required. Destination container name.
@@ -28,7 +29,7 @@ class ObjectReplicationPolicyRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destinationContainer': destinationContainer,
-      'filters': ?filters == null ? null : filters!.toMap(),
+      'filters': ?pulumi.Input.mapOptionalInputValue<ObjectReplicationPolicyFilter, Map<String, dynamic>>(filters, (value) => value.toMap()),
       'ruleId': ?ruleId,
       'sourceContainer': sourceContainer,
     };
@@ -36,10 +37,10 @@ class ObjectReplicationPolicyRule {
 
   factory ObjectReplicationPolicyRule.fromMap(Map<String, dynamic> map) {
     return ObjectReplicationPolicyRule(
-      destinationContainer: map['destinationContainer'] as String,
-      filters: map['filters'] == null ? null : ObjectReplicationPolicyFilter.fromMap((map['filters'] as Map).cast<String, dynamic>()),
-      ruleId: map['ruleId'] == null ? null : map['ruleId'] as String,
-      sourceContainer: map['sourceContainer'] as String,
+      destinationContainer: (map['destinationContainer'] as String).input(),
+      filters: map['filters'] == null ? null : (ObjectReplicationPolicyFilter.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      sourceContainer: (map['sourceContainer'] as String).input(),
     );
   }
 }

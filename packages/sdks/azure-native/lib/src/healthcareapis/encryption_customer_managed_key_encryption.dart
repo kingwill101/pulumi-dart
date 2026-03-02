@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The encryption settings for the customer-managed key
 class EncryptionCustomerManagedKeyEncryption {
   /// The URL of the key to use for encryption
-  final String? keyEncryptionKeyUrl;
+  final pulumi.Input<String>? keyEncryptionKeyUrl;
 
   /// Creates a new [EncryptionCustomerManagedKeyEncryption].
   /// [keyEncryptionKeyUrl] The URL of the key to use for encryption
@@ -20,7 +21,7 @@ class EncryptionCustomerManagedKeyEncryption {
 
   factory EncryptionCustomerManagedKeyEncryption.fromMap(Map<String, dynamic> map) {
     return EncryptionCustomerManagedKeyEncryption(
-      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : map['keyEncryptionKeyUrl'] as String,
+      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : (map['keyEncryptionKeyUrl'] as String).input(),
     );
   }
 }

@@ -29,21 +29,14 @@ class CompilationResultArgs {
   /// [repositoryId] Required.
   /// [workspace] Immutable. The name of the workspace to compile. Must be in the format `projects/*/locations/*/repositories/*/workspaces/*`.
   CompilationResultArgs({
-    pulumi.Output<CodeCompilationConfig>? codeCompilationConfig,
-    pulumi.Output<String>? gitCommitish,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? releaseConfig,
-    required pulumi.Output<String> repositoryId,
-    pulumi.Output<String>? workspace,
-  }) :
-      codeCompilationConfig = pulumi.Input.asOptionalInput<CodeCompilationConfig>(codeCompilationConfig),
-      gitCommitish = pulumi.Input.asOptionalInput<String>(gitCommitish),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      releaseConfig = pulumi.Input.asOptionalInput<String>(releaseConfig),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      workspace = pulumi.Input.asOptionalInput<String>(workspace);
+    this.codeCompilationConfig,
+    this.gitCommitish,
+    this.location,
+    this.project,
+    this.releaseConfig,
+    required this.repositoryId,
+    this.workspace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class CompilationResultArgs {
 
   factory CompilationResultArgs.fromMap(Map<String, dynamic> map) {
     return CompilationResultArgs(
-      codeCompilationConfig: map['codeCompilationConfig'] == null ? null : pulumi.Output.create<CodeCompilationConfig>(CodeCompilationConfig.fromMap((map['codeCompilationConfig'] as Map).cast<String, dynamic>())),
-      gitCommitish: map['gitCommitish'] == null ? null : pulumi.Output.create<String>(map['gitCommitish'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      releaseConfig: map['releaseConfig'] == null ? null : pulumi.Output.create<String>(map['releaseConfig'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
-      workspace: map['workspace'] == null ? null : pulumi.Output.create<String>(map['workspace'] as String),
+      codeCompilationConfig: map['codeCompilationConfig'] == null ? null : (CodeCompilationConfig.fromMap((map['codeCompilationConfig'] as Map).cast<String, dynamic>())).input(),
+      gitCommitish: map['gitCommitish'] == null ? null : (map['gitCommitish'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      releaseConfig: map['releaseConfig'] == null ? null : (map['releaseConfig'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
+      workspace: map['workspace'] == null ? null : (map['workspace'] as String).input(),
     );
   }
 }

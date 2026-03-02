@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigEphemeralStorageConfig {
   /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-  final int localSsdCount;
+  final pulumi.Input<int> localSsdCount;
 
   /// Creates a new [ClusterNodeConfigEphemeralStorageConfig].
   /// [localSsdCount] Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
@@ -19,7 +20,7 @@ class ClusterNodeConfigEphemeralStorageConfig {
 
   factory ClusterNodeConfigEphemeralStorageConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigEphemeralStorageConfig(
-      localSsdCount: map['localSsdCount'] as int,
+      localSsdCount: (map['localSsdCount'] as int).input(),
     );
   }
 }

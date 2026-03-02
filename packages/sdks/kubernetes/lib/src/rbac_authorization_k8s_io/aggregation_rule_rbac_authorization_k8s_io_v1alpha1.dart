@@ -6,7 +6,7 @@ import '../meta/label_selector.dart';
 /// AggregationRule describes how to locate ClusterRoles to aggregate into the ClusterRole
 class AggregationRuleRbacAuthorizationK8sIoV1alpha1 {
   /// ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added
-  final List<LabelSelector>? clusterRoleSelectors;
+  final pulumi.Input<List<LabelSelector>>? clusterRoleSelectors;
 
   /// Creates a new [AggregationRuleRbacAuthorizationK8sIoV1alpha1].
   /// [clusterRoleSelectors] ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added
@@ -16,13 +16,13 @@ class AggregationRuleRbacAuthorizationK8sIoV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterRoleSelectors': ?clusterRoleSelectors == null ? null : pulumi.Input.encodeList<LabelSelector, Map<String, dynamic>>(clusterRoleSelectors!, (value) => value.toMap()),
+      'clusterRoleSelectors': ?pulumi.Input.mapOptionalInputValue<List<LabelSelector>, List<Map<String, dynamic>>>(clusterRoleSelectors, (value) => pulumi.Input.encodeList<LabelSelector, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AggregationRuleRbacAuthorizationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return AggregationRuleRbacAuthorizationK8sIoV1alpha1(
-      clusterRoleSelectors: map['clusterRoleSelectors'] == null ? null : pulumi.Input.decodeList<LabelSelector>(map['clusterRoleSelectors'], (value) => LabelSelector.fromMap((value as Map).cast<String, dynamic>())),
+      clusterRoleSelectors: map['clusterRoleSelectors'] == null ? null : (pulumi.Input.decodeList<LabelSelector>(map['clusterRoleSelectors'], (value) => LabelSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

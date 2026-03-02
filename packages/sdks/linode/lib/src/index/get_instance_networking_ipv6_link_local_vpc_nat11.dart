@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceNetworkingIpv6LinkLocalVpcNat11 {
   /// The address.
-  final String address;
+  final pulumi.Input<String> address;
   /// The unique globally general API entity identifier for the VPC subnet.
-  final int subnetId;
+  final pulumi.Input<int> subnetId;
   /// The unique globally general API entity identifier for the VPC.
-  final int vpcId;
+  final pulumi.Input<int> vpcId;
 
   /// Creates a new [GetInstanceNetworkingIpv6LinkLocalVpcNat11].
   /// [address] The address.
@@ -29,9 +30,9 @@ class GetInstanceNetworkingIpv6LinkLocalVpcNat11 {
 
   factory GetInstanceNetworkingIpv6LinkLocalVpcNat11.fromMap(Map<String, dynamic> map) {
     return GetInstanceNetworkingIpv6LinkLocalVpcNat11(
-      address: map['address'] as String,
-      subnetId: map['subnetId'] as int,
-      vpcId: map['vpcId'] as int,
+      address: (map['address'] as String).input(),
+      subnetId: (map['subnetId'] as int).input(),
+      vpcId: (map['vpcId'] as int).input(),
     );
   }
 }

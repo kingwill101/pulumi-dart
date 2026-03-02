@@ -24,15 +24,11 @@ class SpringCloudBuilderArgs {
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Builder to be created.
   /// [stack] A `stack` block as defined below.
   SpringCloudBuilderArgs({
-    required pulumi.Output<List<SpringCloudBuilderBuildPackGroup>> buildPackGroups,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> springCloudServiceId,
-    required pulumi.Output<SpringCloudBuilderStack> stack,
-  }) :
-      buildPackGroups = pulumi.Input.asInput<List<SpringCloudBuilderBuildPackGroup>>(buildPackGroups),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      springCloudServiceId = pulumi.Input.asInput<String>(springCloudServiceId),
-      stack = pulumi.Input.asInput<SpringCloudBuilderStack>(stack);
+    required this.buildPackGroups,
+    this.name,
+    required this.springCloudServiceId,
+    required this.stack,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class SpringCloudBuilderArgs {
 
   factory SpringCloudBuilderArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudBuilderArgs(
-      buildPackGroups: pulumi.Output.create<List<SpringCloudBuilderBuildPackGroup>>(pulumi.Input.decodeList<SpringCloudBuilderBuildPackGroup>(map['buildPackGroups'], (value) => SpringCloudBuilderBuildPackGroup.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      springCloudServiceId: pulumi.Output.create<String>(map['springCloudServiceId'] as String),
-      stack: pulumi.Output.create<SpringCloudBuilderStack>(SpringCloudBuilderStack.fromMap((map['stack'] as Map).cast<String, dynamic>())),
+      buildPackGroups: (pulumi.Input.decodeList<SpringCloudBuilderBuildPackGroup>(map['buildPackGroups'], (value) => SpringCloudBuilderBuildPackGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      springCloudServiceId: (map['springCloudServiceId'] as String).input(),
+      stack: (SpringCloudBuilderStack.fromMap((map['stack'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

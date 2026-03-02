@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_lifecycle_rule_filter_not_tag.dart';
 
 class BucketLifecycleRuleFilterNot {
   /// The prefix in the names of the objects to which the lifecycle rule does not apply.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
-  final BucketLifecycleRuleFilterNotTag? tag;
+  final pulumi.Input<BucketLifecycleRuleFilterNotTag>? tag;
 
   /// Creates a new [BucketLifecycleRuleFilterNot].
   /// [prefix] The prefix in the names of the objects to which the lifecycle rule does not apply.
@@ -19,14 +20,14 @@ class BucketLifecycleRuleFilterNot {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'prefix': ?prefix,
-      'tag': ?tag == null ? null : tag!.toMap(),
+      'tag': ?pulumi.Input.mapOptionalInputValue<BucketLifecycleRuleFilterNotTag, Map<String, dynamic>>(tag, (value) => value.toMap()),
     };
   }
 
   factory BucketLifecycleRuleFilterNot.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleFilterNot(
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      tag: map['tag'] == null ? null : BucketLifecycleRuleFilterNotTag.fromMap((map['tag'] as Map).cast<String, dynamic>()),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      tag: map['tag'] == null ? null : (BucketLifecycleRuleFilterNotTag.fromMap((map['tag'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

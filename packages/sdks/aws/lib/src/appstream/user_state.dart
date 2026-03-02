@@ -36,25 +36,16 @@ class UserState {
   /// [sendEmailNotification] Send an email notification.
   /// [userName] Email address of the user.
   UserState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? authenticationType,
-    pulumi.Output<String>? createdTime,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? firstName,
-    pulumi.Output<String>? lastName,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? sendEmailNotification,
-    pulumi.Output<String>? userName,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      authenticationType = pulumi.Input.asOptionalInput<String>(authenticationType),
-      createdTime = pulumi.Input.asOptionalInput<String>(createdTime),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      firstName = pulumi.Input.asOptionalInput<String>(firstName),
-      lastName = pulumi.Input.asOptionalInput<String>(lastName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sendEmailNotification = pulumi.Input.asOptionalInput<bool>(sendEmailNotification),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.arn,
+    this.authenticationType,
+    this.createdTime,
+    this.enabled,
+    this.firstName,
+    this.lastName,
+    this.region,
+    this.sendEmailNotification,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      authenticationType: map['authenticationType'] == null ? null : pulumi.Output.create<String>(map['authenticationType'] as String),
-      createdTime: map['createdTime'] == null ? null : pulumi.Output.create<String>(map['createdTime'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      firstName: map['firstName'] == null ? null : pulumi.Output.create<String>(map['firstName'] as String),
-      lastName: map['lastName'] == null ? null : pulumi.Output.create<String>(map['lastName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sendEmailNotification: map['sendEmailNotification'] == null ? null : pulumi.Output.create<bool>(map['sendEmailNotification'] as bool),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sendEmailNotification: map['sendEmailNotification'] == null ? null : (map['sendEmailNotification'] as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

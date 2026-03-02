@@ -40,19 +40,13 @@ class DatabaseIAMMemberArgs {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [role] The role that should be applied. Only one
   DatabaseIAMMemberArgs({
-    pulumi.Output<DatabaseIAMMemberCondition>? condition,
-    required pulumi.Output<String> database,
-    required pulumi.Output<String> instance,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<DatabaseIAMMemberCondition>(condition),
-      database = pulumi.Input.asInput<String>(database),
-      instance = pulumi.Input.asInput<String>(instance),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.database,
+    required this.instance,
+    required this.member,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,12 +61,12 @@ class DatabaseIAMMemberArgs {
 
   factory DatabaseIAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseIAMMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<DatabaseIAMMemberCondition>(DatabaseIAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      database: pulumi.Output.create<String>(map['database'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (DatabaseIAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      database: (map['database'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

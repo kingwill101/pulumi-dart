@@ -28,19 +28,13 @@ class ChannelSmsArgs {
   /// [smsChannelAccountSecurityId] The account security identifier (SID) for the SMS Channel.
   /// [smsChannelAuthToken] The authorization token for the SMS Channel.
   ChannelSmsArgs({
-    required pulumi.Output<String> botName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> phoneNumber,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> smsChannelAccountSecurityId,
-    required pulumi.Output<String> smsChannelAuthToken,
-  }) :
-      botName = pulumi.Input.asInput<String>(botName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      phoneNumber = pulumi.Input.asInput<String>(phoneNumber),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      smsChannelAccountSecurityId = pulumi.Input.asInput<String>(smsChannelAccountSecurityId),
-      smsChannelAuthToken = pulumi.Input.asInput<String>(smsChannelAuthToken);
+    required this.botName,
+    this.location,
+    required this.phoneNumber,
+    required this.resourceGroupName,
+    required this.smsChannelAccountSecurityId,
+    required this.smsChannelAuthToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ChannelSmsArgs {
 
   factory ChannelSmsArgs.fromMap(Map<String, dynamic> map) {
     return ChannelSmsArgs(
-      botName: pulumi.Output.create<String>(map['botName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      phoneNumber: pulumi.Output.create<String>(map['phoneNumber'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      smsChannelAccountSecurityId: pulumi.Output.create<String>(map['smsChannelAccountSecurityId'] as String),
-      smsChannelAuthToken: pulumi.Output.create<String>(map['smsChannelAuthToken'] as String),
+      botName: (map['botName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      phoneNumber: (map['phoneNumber'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      smsChannelAccountSecurityId: (map['smsChannelAccountSecurityId'] as String).input(),
+      smsChannelAuthToken: (map['smsChannelAuthToken'] as String).input(),
     );
   }
 }

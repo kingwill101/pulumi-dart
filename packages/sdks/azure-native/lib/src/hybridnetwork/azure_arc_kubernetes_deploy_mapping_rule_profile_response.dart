@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'helm_mapping_rule_profile_response.dart';
 
 /// Azure arc kubernetes deploy mapping rule profile.
 class AzureArcKubernetesDeployMappingRuleProfileResponse {
   /// The application enablement.
-  final String? applicationEnablement;
+  final pulumi.Input<String>? applicationEnablement;
   /// The helm mapping rule profile.
-  final HelmMappingRuleProfileResponse? helmMappingRuleProfile;
+  final pulumi.Input<HelmMappingRuleProfileResponse>? helmMappingRuleProfile;
 
   /// Creates a new [AzureArcKubernetesDeployMappingRuleProfileResponse].
   /// [applicationEnablement] The application enablement.
@@ -20,14 +21,14 @@ class AzureArcKubernetesDeployMappingRuleProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationEnablement': ?applicationEnablement,
-      'helmMappingRuleProfile': ?helmMappingRuleProfile == null ? null : helmMappingRuleProfile!.toMap(),
+      'helmMappingRuleProfile': ?pulumi.Input.mapOptionalInputValue<HelmMappingRuleProfileResponse, Map<String, dynamic>>(helmMappingRuleProfile, (value) => value.toMap()),
     };
   }
 
   factory AzureArcKubernetesDeployMappingRuleProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureArcKubernetesDeployMappingRuleProfileResponse(
-      applicationEnablement: map['applicationEnablement'] == null ? null : map['applicationEnablement'] as String,
-      helmMappingRuleProfile: map['helmMappingRuleProfile'] == null ? null : HelmMappingRuleProfileResponse.fromMap((map['helmMappingRuleProfile'] as Map).cast<String, dynamic>()),
+      applicationEnablement: map['applicationEnablement'] == null ? null : (map['applicationEnablement'] as String).input(),
+      helmMappingRuleProfile: map['helmMappingRuleProfile'] == null ? null : (HelmMappingRuleProfileResponse.fromMap((map['helmMappingRuleProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

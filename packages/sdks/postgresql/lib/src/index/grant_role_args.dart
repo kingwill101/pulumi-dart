@@ -19,13 +19,10 @@ class GrantRoleArgs {
   /// [role] The name of the role that is granted a new membership.
   /// [withAdminOption] Giving ability to grant membership to others or not for `role`. (Default: false)
   GrantRoleArgs({
-    required pulumi.Output<String> grantRole,
-    required pulumi.Output<String> role,
-    pulumi.Output<bool>? withAdminOption,
-  }) :
-      grantRole = pulumi.Input.asInput<String>(grantRole),
-      role = pulumi.Input.asInput<String>(role),
-      withAdminOption = pulumi.Input.asOptionalInput<bool>(withAdminOption);
+    required this.grantRole,
+    required this.role,
+    this.withAdminOption,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GrantRoleArgs {
 
   factory GrantRoleArgs.fromMap(Map<String, dynamic> map) {
     return GrantRoleArgs(
-      grantRole: pulumi.Output.create<String>(map['grantRole'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      withAdminOption: map['withAdminOption'] == null ? null : pulumi.Output.create<bool>(map['withAdminOption'] as bool),
+      grantRole: (map['grantRole'] as String).input(),
+      role: (map['role'] as String).input(),
+      withAdminOption: map['withAdminOption'] == null ? null : (map['withAdminOption'] as bool).input(),
     );
   }
 }

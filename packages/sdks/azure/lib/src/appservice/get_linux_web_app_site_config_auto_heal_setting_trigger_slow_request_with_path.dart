@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath {
   /// The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
-  final int count;
+  final pulumi.Input<int> count;
   /// The time interval in the form `hh:mm:ss`.
-  final String interval;
+  final pulumi.Input<String> interval;
   /// The path to which this rule status code applies.
-  final String path;
+  final pulumi.Input<String> path;
   /// (Required) The threshold of time passed to qualify as a Slow Request in `hh:mm:ss`.
-  final String timeTaken;
+  final pulumi.Input<String> timeTaken;
 
   /// Creates a new [GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath].
   /// [count] The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
@@ -34,10 +35,10 @@ class GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath {
 
   factory GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath(
-      count: map['count'] as int,
-      interval: map['interval'] as String,
-      path: map['path'] as String,
-      timeTaken: map['timeTaken'] as String,
+      count: (map['count'] as int).input(),
+      interval: (map['interval'] as String).input(),
+      path: (map['path'] as String).input(),
+      timeTaken: (map['timeTaken'] as String).input(),
     );
   }
 }

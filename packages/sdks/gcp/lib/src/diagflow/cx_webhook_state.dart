@@ -46,29 +46,18 @@ class CxWebhookState {
   /// [startFlow] Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
   /// [timeout] Webhook execution timeout.
   CxWebhookState({
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enableSpellCorrection,
-    pulumi.Output<bool>? enableStackdriverLogging,
-    pulumi.Output<CxWebhookGenericWebService>? genericWebService,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? securitySettings,
-    pulumi.Output<CxWebhookServiceDirectory>? serviceDirectory,
-    pulumi.Output<String>? startFlow,
-    pulumi.Output<String>? timeout,
-  }) :
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enableSpellCorrection = pulumi.Input.asOptionalInput<bool>(enableSpellCorrection),
-      enableStackdriverLogging = pulumi.Input.asOptionalInput<bool>(enableStackdriverLogging),
-      genericWebService = pulumi.Input.asOptionalInput<CxWebhookGenericWebService>(genericWebService),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      securitySettings = pulumi.Input.asOptionalInput<String>(securitySettings),
-      serviceDirectory = pulumi.Input.asOptionalInput<CxWebhookServiceDirectory>(serviceDirectory),
-      startFlow = pulumi.Input.asOptionalInput<String>(startFlow),
-      timeout = pulumi.Input.asOptionalInput<String>(timeout);
+    this.disabled,
+    this.displayName,
+    this.enableSpellCorrection,
+    this.enableStackdriverLogging,
+    this.genericWebService,
+    this.name,
+    this.parent,
+    this.securitySettings,
+    this.serviceDirectory,
+    this.startFlow,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class CxWebhookState {
 
   factory CxWebhookState.fromMap(Map<String, dynamic> map) {
     return CxWebhookState(
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enableSpellCorrection: map['enableSpellCorrection'] == null ? null : pulumi.Output.create<bool>(map['enableSpellCorrection'] as bool),
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : pulumi.Output.create<bool>(map['enableStackdriverLogging'] as bool),
-      genericWebService: map['genericWebService'] == null ? null : pulumi.Output.create<CxWebhookGenericWebService>(CxWebhookGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      securitySettings: map['securitySettings'] == null ? null : pulumi.Output.create<String>(map['securitySettings'] as String),
-      serviceDirectory: map['serviceDirectory'] == null ? null : pulumi.Output.create<CxWebhookServiceDirectory>(CxWebhookServiceDirectory.fromMap((map['serviceDirectory'] as Map).cast<String, dynamic>())),
-      startFlow: map['startFlow'] == null ? null : pulumi.Output.create<String>(map['startFlow'] as String),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<String>(map['timeout'] as String),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enableSpellCorrection: map['enableSpellCorrection'] == null ? null : (map['enableSpellCorrection'] as bool).input(),
+      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging'] as bool).input(),
+      genericWebService: map['genericWebService'] == null ? null : (CxWebhookGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      securitySettings: map['securitySettings'] == null ? null : (map['securitySettings'] as String).input(),
+      serviceDirectory: map['serviceDirectory'] == null ? null : (CxWebhookServiceDirectory.fromMap((map['serviceDirectory'] as Map).cast<String, dynamic>())).input(),
+      startFlow: map['startFlow'] == null ? null : (map['startFlow'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

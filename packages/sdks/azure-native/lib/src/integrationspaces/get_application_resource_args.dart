@@ -22,15 +22,11 @@ class GetApplicationResourceArgs {
   /// [resourceName] The name of the application resource.
   /// [spaceName] The name of the space
   GetApplicationResourceArgs({
-    required pulumi.Output<String> applicationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<String> spaceName,
-  }) :
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      spaceName = pulumi.Input.asInput<String>(spaceName);
+    required this.applicationName,
+    required this.resourceGroupName,
+    required this.resourceName,
+    required this.spaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetApplicationResourceArgs {
 
   factory GetApplicationResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationResourceArgs(
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      spaceName: pulumi.Output.create<String>(map['spaceName'] as String),
+      applicationName: (map['applicationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      spaceName: (map['spaceName'] as String).input(),
     );
   }
 }

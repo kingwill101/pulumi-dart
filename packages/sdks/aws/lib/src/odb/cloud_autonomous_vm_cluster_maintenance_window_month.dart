@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudAutonomousVmClusterMaintenanceWindowMonth {
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [CloudAutonomousVmClusterMaintenanceWindowMonth].
   /// [name] Required.
@@ -18,7 +19,7 @@ class CloudAutonomousVmClusterMaintenanceWindowMonth {
 
   factory CloudAutonomousVmClusterMaintenanceWindowMonth.fromMap(Map<String, dynamic> map) {
     return CloudAutonomousVmClusterMaintenanceWindowMonth(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

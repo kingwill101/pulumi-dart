@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The comparison expression to be used in the report.
 class ReportConfigComparisonExpressionResponse {
   /// The name of the column to use in comparison.
-  final String name;
+  final pulumi.Input<String> name;
   /// The operator to use for comparison.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Array of values to use for comparison
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ReportConfigComparisonExpressionResponse].
   /// [name] The name of the column to use in comparison.
@@ -30,9 +31,9 @@ class ReportConfigComparisonExpressionResponse {
 
   factory ReportConfigComparisonExpressionResponse.fromMap(Map<String, dynamic> map) {
     return ReportConfigComparisonExpressionResponse(
-      name: map['name'] as String,
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

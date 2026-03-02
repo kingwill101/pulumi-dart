@@ -31,23 +31,15 @@ class ProductVersionState {
   /// [templateType] Template Type
   /// [templateUrl] Template URL
   ProductVersionState({
-    pulumi.Output<bool>? active,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? guidance,
-    pulumi.Output<String>? productId,
-    pulumi.Output<String>? productVersionName,
-    pulumi.Output<String>? templateType,
-    pulumi.Output<String>? templateUrl,
-  }) :
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      guidance = pulumi.Input.asOptionalInput<String>(guidance),
-      productId = pulumi.Input.asOptionalInput<String>(productId),
-      productVersionName = pulumi.Input.asOptionalInput<String>(productVersionName),
-      templateType = pulumi.Input.asOptionalInput<String>(templateType),
-      templateUrl = pulumi.Input.asOptionalInput<String>(templateUrl);
+    this.active,
+    this.createTime,
+    this.description,
+    this.guidance,
+    this.productId,
+    this.productVersionName,
+    this.templateType,
+    this.templateUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class ProductVersionState {
 
   factory ProductVersionState.fromMap(Map<String, dynamic> map) {
     return ProductVersionState(
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      guidance: map['guidance'] == null ? null : pulumi.Output.create<String>(map['guidance'] as String),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
-      productVersionName: map['productVersionName'] == null ? null : pulumi.Output.create<String>(map['productVersionName'] as String),
-      templateType: map['templateType'] == null ? null : pulumi.Output.create<String>(map['templateType'] as String),
-      templateUrl: map['templateUrl'] == null ? null : pulumi.Output.create<String>(map['templateUrl'] as String),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      guidance: map['guidance'] == null ? null : (map['guidance'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      productVersionName: map['productVersionName'] == null ? null : (map['productVersionName'] as String).input(),
+      templateType: map['templateType'] == null ? null : (map['templateType'] as String).input(),
+      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl'] as String).input(),
     );
   }
 }

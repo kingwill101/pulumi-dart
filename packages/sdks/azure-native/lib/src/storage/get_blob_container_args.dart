@@ -19,13 +19,10 @@ class GetBlobContainerArgs {
   /// [containerName] The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetBlobContainerArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      containerName = pulumi.Input.asInput<String>(containerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.containerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBlobContainerArgs {
 
   factory GetBlobContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetBlobContainerArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

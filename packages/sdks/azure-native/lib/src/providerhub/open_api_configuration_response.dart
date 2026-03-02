@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'open_api_validation_response.dart';
 
 class OpenApiConfigurationResponse {
   /// The open api validation.
-  final OpenApiValidationResponse? validation;
+  final pulumi.Input<OpenApiValidationResponse>? validation;
 
   /// Creates a new [OpenApiConfigurationResponse].
   /// [validation] The open api validation.
@@ -14,13 +15,13 @@ class OpenApiConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'validation': ?validation == null ? null : validation!.toMap(),
+      'validation': ?pulumi.Input.mapOptionalInputValue<OpenApiValidationResponse, Map<String, dynamic>>(validation, (value) => value.toMap()),
     };
   }
 
   factory OpenApiConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return OpenApiConfigurationResponse(
-      validation: map['validation'] == null ? null : OpenApiValidationResponse.fromMap((map['validation'] as Map).cast<String, dynamic>()),
+      validation: map['validation'] == null ? null : (OpenApiValidationResponse.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

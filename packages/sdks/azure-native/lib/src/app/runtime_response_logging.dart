@@ -6,7 +6,7 @@ import 'logger_setting_response.dart';
 /// Capabilities on the java logging scenario.
 class RuntimeResponseLogging {
   /// Settings of the logger for the java app.
-  final List<LoggerSettingResponse>? loggerSettings;
+  final pulumi.Input<List<LoggerSettingResponse>>? loggerSettings;
 
   /// Creates a new [RuntimeResponseLogging].
   /// [loggerSettings] Settings of the logger for the java app.
@@ -16,13 +16,13 @@ class RuntimeResponseLogging {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'loggerSettings': ?loggerSettings == null ? null : pulumi.Input.encodeList<LoggerSettingResponse, Map<String, dynamic>>(loggerSettings!, (value) => value.toMap()),
+      'loggerSettings': ?pulumi.Input.mapOptionalInputValue<List<LoggerSettingResponse>, List<Map<String, dynamic>>>(loggerSettings, (value) => pulumi.Input.encodeList<LoggerSettingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RuntimeResponseLogging.fromMap(Map<String, dynamic> map) {
     return RuntimeResponseLogging(
-      loggerSettings: map['loggerSettings'] == null ? null : pulumi.Input.decodeList<LoggerSettingResponse>(map['loggerSettings'], (value) => LoggerSettingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      loggerSettings: map['loggerSettings'] == null ? null : (pulumi.Input.decodeList<LoggerSettingResponse>(map['loggerSettings'], (value) => LoggerSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

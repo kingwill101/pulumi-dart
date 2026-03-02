@@ -40,29 +40,18 @@ class MountPointState {
   /// [vpcId] The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
   /// [vswitchId] VSwitch ID, which specifies the VSwitch resource used to create the mount point.
   MountPointState({
-    pulumi.Output<String>? accessGroupId,
-    pulumi.Output<String>? aliasPrefix,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? mountPointId,
-    pulumi.Output<String>? networkType,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      accessGroupId = pulumi.Input.asOptionalInput<String>(accessGroupId),
-      aliasPrefix = pulumi.Input.asOptionalInput<String>(aliasPrefix),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      mountPointId = pulumi.Input.asOptionalInput<String>(mountPointId),
-      networkType = pulumi.Input.asOptionalInput<String>(networkType),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.accessGroupId,
+    this.aliasPrefix,
+    this.createTime,
+    this.description,
+    this.fileSystemId,
+    this.mountPointId,
+    this.networkType,
+    this.regionId,
+    this.status,
+    this.vpcId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class MountPointState {
 
   factory MountPointState.fromMap(Map<String, dynamic> map) {
     return MountPointState(
-      accessGroupId: map['accessGroupId'] == null ? null : pulumi.Output.create<String>(map['accessGroupId'] as String),
-      aliasPrefix: map['aliasPrefix'] == null ? null : pulumi.Output.create<String>(map['aliasPrefix'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      mountPointId: map['mountPointId'] == null ? null : pulumi.Output.create<String>(map['mountPointId'] as String),
-      networkType: map['networkType'] == null ? null : pulumi.Output.create<String>(map['networkType'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      accessGroupId: map['accessGroupId'] == null ? null : (map['accessGroupId'] as String).input(),
+      aliasPrefix: map['aliasPrefix'] == null ? null : (map['aliasPrefix'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      mountPointId: map['mountPointId'] == null ? null : (map['mountPointId'] as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

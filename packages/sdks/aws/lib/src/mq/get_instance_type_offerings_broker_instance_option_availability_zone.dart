@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypeOfferingsBrokerInstanceOptionAvailabilityZone {
   /// Name of the Availability Zone.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetInstanceTypeOfferingsBrokerInstanceOptionAvailabilityZone].
   /// [name] Name of the Availability Zone.
@@ -19,7 +20,7 @@ class GetInstanceTypeOfferingsBrokerInstanceOptionAvailabilityZone {
 
   factory GetInstanceTypeOfferingsBrokerInstanceOptionAvailabilityZone.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeOfferingsBrokerInstanceOptionAvailabilityZone(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autopilot_conversion_status_response.dart';
 import 'workload_policy_config_response_container_v1beta1.dart';
 
 /// Autopilot is the configuration for Autopilot settings on the cluster.
 class AutopilotResponseContainerV1beta1 {
   /// ConversionStatus shows conversion status.
-  final AutopilotConversionStatusResponse conversionStatus;
+  final pulumi.Input<AutopilotConversionStatusResponse> conversionStatus;
   /// Enable Autopilot
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Workload policy configuration for Autopilot.
-  final WorkloadPolicyConfigResponseContainerV1beta1 workloadPolicyConfig;
+  final pulumi.Input<WorkloadPolicyConfigResponseContainerV1beta1> workloadPolicyConfig;
 
   /// Creates a new [AutopilotResponseContainerV1beta1].
   /// [conversionStatus] ConversionStatus shows conversion status.
@@ -24,17 +25,17 @@ class AutopilotResponseContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conversionStatus': conversionStatus.toMap(),
+      'conversionStatus': pulumi.Input.mapInputValue<AutopilotConversionStatusResponse, Map<String, dynamic>>(conversionStatus, (value) => value.toMap()),
       'enabled': enabled,
-      'workloadPolicyConfig': workloadPolicyConfig.toMap(),
+      'workloadPolicyConfig': pulumi.Input.mapInputValue<WorkloadPolicyConfigResponseContainerV1beta1, Map<String, dynamic>>(workloadPolicyConfig, (value) => value.toMap()),
     };
   }
 
   factory AutopilotResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AutopilotResponseContainerV1beta1(
-      conversionStatus: AutopilotConversionStatusResponse.fromMap((map['conversionStatus'] as Map).cast<String, dynamic>()),
-      enabled: map['enabled'] as bool,
-      workloadPolicyConfig: WorkloadPolicyConfigResponseContainerV1beta1.fromMap((map['workloadPolicyConfig'] as Map).cast<String, dynamic>()),
+      conversionStatus: (AutopilotConversionStatusResponse.fromMap((map['conversionStatus'] as Map).cast<String, dynamic>())).input(),
+      enabled: (map['enabled'] as bool).input(),
+      workloadPolicyConfig: (WorkloadPolicyConfigResponseContainerV1beta1.fromMap((map['workloadPolicyConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

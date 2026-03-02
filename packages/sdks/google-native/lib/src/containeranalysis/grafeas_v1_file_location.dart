@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Indicates the location at which a package was found.
 class GrafeasV1FileLocation {
   /// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
-  final String? filePath;
+  final pulumi.Input<String>? filePath;
 
   /// Creates a new [GrafeasV1FileLocation].
   /// [filePath] For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
@@ -20,7 +21,7 @@ class GrafeasV1FileLocation {
 
   factory GrafeasV1FileLocation.fromMap(Map<String, dynamic> map) {
     return GrafeasV1FileLocation(
-      filePath: map['filePath'] == null ? null : map['filePath'] as String,
+      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
     );
   }
 }

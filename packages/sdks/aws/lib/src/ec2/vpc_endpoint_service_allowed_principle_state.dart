@@ -16,13 +16,10 @@ class VpcEndpointServiceAllowedPrincipleState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcEndpointServiceId] The ID of the VPC endpoint service to allow permission.
   VpcEndpointServiceAllowedPrincipleState({
-    pulumi.Output<String>? principalArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? vpcEndpointServiceId,
-  }) :
-      principalArn = pulumi.Input.asOptionalInput<String>(principalArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcEndpointServiceId = pulumi.Input.asOptionalInput<String>(vpcEndpointServiceId);
+    this.principalArn,
+    this.region,
+    this.vpcEndpointServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class VpcEndpointServiceAllowedPrincipleState {
 
   factory VpcEndpointServiceAllowedPrincipleState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceAllowedPrincipleState(
-      principalArn: map['principalArn'] == null ? null : pulumi.Output.create<String>(map['principalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointServiceId'] as String),
+      principalArn: map['principalArn'] == null ? null : (map['principalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : (map['vpcEndpointServiceId'] as String).input(),
     );
   }
 }

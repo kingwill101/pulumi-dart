@@ -25,15 +25,11 @@ class VpcSubnetArgs {
   /// [label] The label of the VPC. Only contains ASCII letters, digits and dashes.
   /// [vpcId] The id of the parent VPC for this VPC subnet.
   VpcSubnetArgs({
-    pulumi.Output<String>? ipv4,
-    pulumi.Output<List<VpcSubnetIpv6>>? ipv6s,
-    required pulumi.Output<String> label,
-    required pulumi.Output<int> vpcId,
-  }) :
-      ipv4 = pulumi.Input.asOptionalInput<String>(ipv4),
-      ipv6s = pulumi.Input.asOptionalInput<List<VpcSubnetIpv6>>(ipv6s),
-      label = pulumi.Input.asInput<String>(label),
-      vpcId = pulumi.Input.asInput<int>(vpcId);
+    this.ipv4,
+    this.ipv6s,
+    required this.label,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class VpcSubnetArgs {
 
   factory VpcSubnetArgs.fromMap(Map<String, dynamic> map) {
     return VpcSubnetArgs(
-      ipv4: map['ipv4'] == null ? null : pulumi.Output.create<String>(map['ipv4'] as String),
-      ipv6s: map['ipv6s'] == null ? null : pulumi.Output.create<List<VpcSubnetIpv6>>(pulumi.Input.decodeList<VpcSubnetIpv6>(map['ipv6s'], (value) => VpcSubnetIpv6.fromMap((value as Map).cast<String, dynamic>()))),
-      label: pulumi.Output.create<String>(map['label'] as String),
-      vpcId: pulumi.Output.create<int>(map['vpcId'] as int),
+      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as String).input(),
+      ipv6s: map['ipv6s'] == null ? null : (pulumi.Input.decodeList<VpcSubnetIpv6>(map['ipv6s'], (value) => VpcSubnetIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      label: (map['label'] as String).input(),
+      vpcId: (map['vpcId'] as int).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class LicenseConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   LicenseConfigurationArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? licenseCount,
-    pulumi.Output<bool>? licenseCountHardLimit,
-    required pulumi.Output<String> licenseCountingType,
-    pulumi.Output<List<String>>? licenseRules,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      licenseCount = pulumi.Input.asOptionalInput<int>(licenseCount),
-      licenseCountHardLimit = pulumi.Input.asOptionalInput<bool>(licenseCountHardLimit),
-      licenseCountingType = pulumi.Input.asInput<String>(licenseCountingType),
-      licenseRules = pulumi.Input.asOptionalInput<List<String>>(licenseRules),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.licenseCount,
+    this.licenseCountHardLimit,
+    required this.licenseCountingType,
+    this.licenseRules,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class LicenseConfigurationArgs {
 
   factory LicenseConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return LicenseConfigurationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      licenseCount: map['licenseCount'] == null ? null : pulumi.Output.create<int>(map['licenseCount'] as int),
-      licenseCountHardLimit: map['licenseCountHardLimit'] == null ? null : pulumi.Output.create<bool>(map['licenseCountHardLimit'] as bool),
-      licenseCountingType: pulumi.Output.create<String>(map['licenseCountingType'] as String),
-      licenseRules: map['licenseRules'] == null ? null : pulumi.Output.create<List<String>>((map['licenseRules'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      licenseCount: map['licenseCount'] == null ? null : (map['licenseCount'] as int).input(),
+      licenseCountHardLimit: map['licenseCountHardLimit'] == null ? null : (map['licenseCountHardLimit'] as bool).input(),
+      licenseCountingType: (map['licenseCountingType'] as String).input(),
+      licenseRules: map['licenseRules'] == null ? null : ((map['licenseRules'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

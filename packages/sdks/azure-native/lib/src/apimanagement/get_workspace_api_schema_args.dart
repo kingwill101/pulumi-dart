@@ -25,17 +25,12 @@ class GetWorkspaceApiSchemaArgs {
   /// [serviceName] The name of the API Management service.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   GetWorkspaceApiSchemaArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaId,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaId = pulumi.Input.asInput<String>(schemaId),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.apiId,
+    required this.resourceGroupName,
+    required this.schemaId,
+    required this.serviceName,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetWorkspaceApiSchemaArgs {
 
   factory GetWorkspaceApiSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceApiSchemaArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaId: pulumi.Output.create<String>(map['schemaId'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      apiId: (map['apiId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaId: (map['schemaId'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

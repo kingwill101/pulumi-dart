@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImageOutputResourceAmi {
   /// Account identifier of the AMI.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// Description of the AMI.
-  final String description;
+  final pulumi.Input<String> description;
   /// Identifier of the AMI.
-  final String image;
+  final pulumi.Input<String> image;
   /// Name of the AMI.
-  final String name;
+  final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final String region;
+  final pulumi.Input<String> region;
 
   /// Creates a new [GetImageOutputResourceAmi].
   /// [accountId] Account identifier of the AMI.
@@ -39,11 +40,11 @@ class GetImageOutputResourceAmi {
 
   factory GetImageOutputResourceAmi.fromMap(Map<String, dynamic> map) {
     return GetImageOutputResourceAmi(
-      accountId: map['accountId'] as String,
-      description: map['description'] as String,
-      image: map['image'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
+      accountId: (map['accountId'] as String).input(),
+      description: (map['description'] as String).input(),
+      image: (map['image'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

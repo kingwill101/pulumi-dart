@@ -13,25 +13,25 @@ import 'resource_provider_details_response.dart';
 /// Product Family.
 class ProductFamilyResponse {
   /// Availability information of the product system.
-  final AvailabilityInformationResponse availabilityInformation;
+  final pulumi.Input<AvailabilityInformationResponse> availabilityInformation;
   /// Cost information for the product system.
-  final CostInformationResponse costInformation;
+  final pulumi.Input<CostInformationResponse> costInformation;
   /// Description related to the product system.
-  final DescriptionResponse description;
+  final pulumi.Input<DescriptionResponse> description;
   /// Display Name for the product system.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// List of filters supported for a product.
-  final List<FilterablePropertyResponse> filterableProperties;
+  final pulumi.Input<List<FilterablePropertyResponse>> filterableProperties;
   /// The entity responsible for fulfillment of the item at the given hierarchy level.
-  final String fulfilledBy;
+  final pulumi.Input<String> fulfilledBy;
   /// Hierarchy information of a product.
-  final HierarchyInformationResponse hierarchyInformation;
+  final pulumi.Input<HierarchyInformationResponse> hierarchyInformation;
   /// Image information for the product system.
-  final List<ImageInformationResponse> imageInformation;
+  final pulumi.Input<List<ImageInformationResponse>> imageInformation;
   /// List of product lines supported in the product family.
-  final List<ProductLineResponse> productLines;
+  final pulumi.Input<List<ProductLineResponse>> productLines;
   /// Contains details related to resource provider.
-  final List<ResourceProviderDetailsResponse>? resourceProviderDetails;
+  final pulumi.Input<List<ResourceProviderDetailsResponse>>? resourceProviderDetails;
 
   /// Creates a new [ProductFamilyResponse].
   /// [availabilityInformation] Availability information of the product system.
@@ -59,31 +59,31 @@ class ProductFamilyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availabilityInformation': availabilityInformation.toMap(),
-      'costInformation': costInformation.toMap(),
-      'description': description.toMap(),
+      'availabilityInformation': pulumi.Input.mapInputValue<AvailabilityInformationResponse, Map<String, dynamic>>(availabilityInformation, (value) => value.toMap()),
+      'costInformation': pulumi.Input.mapInputValue<CostInformationResponse, Map<String, dynamic>>(costInformation, (value) => value.toMap()),
+      'description': pulumi.Input.mapInputValue<DescriptionResponse, Map<String, dynamic>>(description, (value) => value.toMap()),
       'displayName': displayName,
-      'filterableProperties': pulumi.Input.encodeList<FilterablePropertyResponse, Map<String, dynamic>>(filterableProperties, (value) => value.toMap()),
+      'filterableProperties': pulumi.Input.mapInputValue<List<FilterablePropertyResponse>, List<Map<String, dynamic>>>(filterableProperties, (value) => pulumi.Input.encodeList<FilterablePropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'fulfilledBy': fulfilledBy,
-      'hierarchyInformation': hierarchyInformation.toMap(),
-      'imageInformation': pulumi.Input.encodeList<ImageInformationResponse, Map<String, dynamic>>(imageInformation, (value) => value.toMap()),
-      'productLines': pulumi.Input.encodeList<ProductLineResponse, Map<String, dynamic>>(productLines, (value) => value.toMap()),
-      'resourceProviderDetails': ?resourceProviderDetails == null ? null : pulumi.Input.encodeList<ResourceProviderDetailsResponse, Map<String, dynamic>>(resourceProviderDetails!, (value) => value.toMap()),
+      'hierarchyInformation': pulumi.Input.mapInputValue<HierarchyInformationResponse, Map<String, dynamic>>(hierarchyInformation, (value) => value.toMap()),
+      'imageInformation': pulumi.Input.mapInputValue<List<ImageInformationResponse>, List<Map<String, dynamic>>>(imageInformation, (value) => pulumi.Input.encodeList<ImageInformationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'productLines': pulumi.Input.mapInputValue<List<ProductLineResponse>, List<Map<String, dynamic>>>(productLines, (value) => pulumi.Input.encodeList<ProductLineResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resourceProviderDetails': ?pulumi.Input.mapOptionalInputValue<List<ResourceProviderDetailsResponse>, List<Map<String, dynamic>>>(resourceProviderDetails, (value) => pulumi.Input.encodeList<ResourceProviderDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ProductFamilyResponse.fromMap(Map<String, dynamic> map) {
     return ProductFamilyResponse(
-      availabilityInformation: AvailabilityInformationResponse.fromMap((map['availabilityInformation'] as Map).cast<String, dynamic>()),
-      costInformation: CostInformationResponse.fromMap((map['costInformation'] as Map).cast<String, dynamic>()),
-      description: DescriptionResponse.fromMap((map['description'] as Map).cast<String, dynamic>()),
-      displayName: map['displayName'] as String,
-      filterableProperties: pulumi.Input.decodeList<FilterablePropertyResponse>(map['filterableProperties'], (value) => FilterablePropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      fulfilledBy: map['fulfilledBy'] as String,
-      hierarchyInformation: HierarchyInformationResponse.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>()),
-      imageInformation: pulumi.Input.decodeList<ImageInformationResponse>(map['imageInformation'], (value) => ImageInformationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      productLines: pulumi.Input.decodeList<ProductLineResponse>(map['productLines'], (value) => ProductLineResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resourceProviderDetails: map['resourceProviderDetails'] == null ? null : pulumi.Input.decodeList<ResourceProviderDetailsResponse>(map['resourceProviderDetails'], (value) => ResourceProviderDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      availabilityInformation: (AvailabilityInformationResponse.fromMap((map['availabilityInformation'] as Map).cast<String, dynamic>())).input(),
+      costInformation: (CostInformationResponse.fromMap((map['costInformation'] as Map).cast<String, dynamic>())).input(),
+      description: (DescriptionResponse.fromMap((map['description'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      filterableProperties: (pulumi.Input.decodeList<FilterablePropertyResponse>(map['filterableProperties'], (value) => FilterablePropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fulfilledBy: (map['fulfilledBy'] as String).input(),
+      hierarchyInformation: (HierarchyInformationResponse.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>())).input(),
+      imageInformation: (pulumi.Input.decodeList<ImageInformationResponse>(map['imageInformation'], (value) => ImageInformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      productLines: (pulumi.Input.decodeList<ProductLineResponse>(map['productLines'], (value) => ProductLineResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceProviderDetails: map['resourceProviderDetails'] == null ? null : (pulumi.Input.decodeList<ResourceProviderDetailsResponse>(map['resourceProviderDetails'], (value) => ResourceProviderDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

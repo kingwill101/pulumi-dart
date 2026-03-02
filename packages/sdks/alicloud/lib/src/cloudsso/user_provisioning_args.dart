@@ -34,23 +34,15 @@ class UserProvisioningArgs {
   /// [targetId] The ID of the destination associated with the synchronization.
   /// [targetType] The target type associated with the synchronization
   UserProvisioningArgs({
-    required pulumi.Output<String> deletionStrategy,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> directoryId,
-    required pulumi.Output<String> duplicationStrategy,
-    required pulumi.Output<String> principalId,
-    required pulumi.Output<String> principalType,
-    required pulumi.Output<String> targetId,
-    required pulumi.Output<String> targetType,
-  }) :
-      deletionStrategy = pulumi.Input.asInput<String>(deletionStrategy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      duplicationStrategy = pulumi.Input.asInput<String>(duplicationStrategy),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      principalType = pulumi.Input.asInput<String>(principalType),
-      targetId = pulumi.Input.asInput<String>(targetId),
-      targetType = pulumi.Input.asInput<String>(targetType);
+    required this.deletionStrategy,
+    this.description,
+    required this.directoryId,
+    required this.duplicationStrategy,
+    required this.principalId,
+    required this.principalType,
+    required this.targetId,
+    required this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class UserProvisioningArgs {
 
   factory UserProvisioningArgs.fromMap(Map<String, dynamic> map) {
     return UserProvisioningArgs(
-      deletionStrategy: pulumi.Output.create<String>(map['deletionStrategy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      duplicationStrategy: pulumi.Output.create<String>(map['duplicationStrategy'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: pulumi.Output.create<String>(map['principalType'] as String),
-      targetId: pulumi.Output.create<String>(map['targetId'] as String),
-      targetType: pulumi.Output.create<String>(map['targetType'] as String),
+      deletionStrategy: (map['deletionStrategy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      duplicationStrategy: (map['duplicationStrategy'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetManagedDatabaseArgs {
   /// [managedInstanceId] The SQL Managed Instance ID.
   /// [name] The name of this Azure SQL Azure Managed Database.
   GetManagedDatabaseArgs({
-    required pulumi.Output<String> managedInstanceId,
-    required pulumi.Output<String> name,
-  }) :
-      managedInstanceId = pulumi.Input.asInput<String>(managedInstanceId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.managedInstanceId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetManagedDatabaseArgs {
 
   factory GetManagedDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedDatabaseArgs(
-      managedInstanceId: pulumi.Output.create<String>(map['managedInstanceId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      managedInstanceId: (map['managedInstanceId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

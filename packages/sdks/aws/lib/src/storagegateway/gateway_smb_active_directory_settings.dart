@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewaySmbActiveDirectorySettings {
-  final String? activeDirectoryStatus;
+  final pulumi.Input<String>? activeDirectoryStatus;
   /// List of IPv4 addresses, NetBIOS names, or host names of your domain server.
   /// If you need to specify the port number include it after the colon (“:”). For example, `mydc.mydomain.com:389`.
-  final List<String>? domainControllers;
+  final pulumi.Input<List<String>>? domainControllers;
   /// The name of the domain that you want the gateway to join.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The organizational unit (OU) is a container in an Active Directory that can hold users, groups,
   /// computers, and other OUs and this parameter specifies the OU that the gateway will join within the AD domain.
-  final String? organizationalUnit;
+  final pulumi.Input<String>? organizationalUnit;
   /// The password of the user who has permission to add the gateway to the Active Directory domain.
-  final String password;
+  final pulumi.Input<String> password;
   /// Specifies the time in seconds, in which the JoinDomain operation must complete. The default is `20` seconds.
-  final int? timeoutInSeconds;
+  final pulumi.Input<int>? timeoutInSeconds;
   /// The user name of user who has permission to add the gateway to the Active Directory domain.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GatewaySmbActiveDirectorySettings].
   /// [activeDirectoryStatus] Optional.
@@ -50,13 +51,13 @@ class GatewaySmbActiveDirectorySettings {
 
   factory GatewaySmbActiveDirectorySettings.fromMap(Map<String, dynamic> map) {
     return GatewaySmbActiveDirectorySettings(
-      activeDirectoryStatus: map['activeDirectoryStatus'] == null ? null : map['activeDirectoryStatus'] as String,
-      domainControllers: map['domainControllers'] == null ? null : (map['domainControllers'] as List).cast<String>(),
-      domainName: map['domainName'] as String,
-      organizationalUnit: map['organizationalUnit'] == null ? null : map['organizationalUnit'] as String,
-      password: map['password'] as String,
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : map['timeoutInSeconds'] as int,
-      username: map['username'] as String,
+      activeDirectoryStatus: map['activeDirectoryStatus'] == null ? null : (map['activeDirectoryStatus'] as String).input(),
+      domainControllers: map['domainControllers'] == null ? null : ((map['domainControllers'] as List).cast<String>()).input(),
+      domainName: (map['domainName'] as String).input(),
+      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit'] as String).input(),
+      password: (map['password'] as String).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

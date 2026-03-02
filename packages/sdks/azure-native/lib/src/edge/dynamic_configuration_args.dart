@@ -23,15 +23,11 @@ class DynamicConfigurationArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   DynamicConfigurationArgs({
-    required pulumi.Output<String> configurationName,
-    pulumi.Output<String>? dynamicConfigurationName,
-    pulumi.Output<DynamicConfigurationProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      dynamicConfigurationName = pulumi.Input.asOptionalInput<String>(dynamicConfigurationName),
-      properties = pulumi.Input.asOptionalInput<DynamicConfigurationProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.configurationName,
+    this.dynamicConfigurationName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class DynamicConfigurationArgs {
 
   factory DynamicConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DynamicConfigurationArgs(
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      dynamicConfigurationName: map['dynamicConfigurationName'] == null ? null : pulumi.Output.create<String>(map['dynamicConfigurationName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DynamicConfigurationProperties>(DynamicConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configurationName: (map['configurationName'] as String).input(),
+      dynamicConfigurationName: map['dynamicConfigurationName'] == null ? null : (map['dynamicConfigurationName'] as String).input(),
+      properties: map['properties'] == null ? null : (DynamicConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

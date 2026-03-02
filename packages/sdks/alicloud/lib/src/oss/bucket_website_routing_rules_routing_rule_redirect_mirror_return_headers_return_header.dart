@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader {
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader].
   /// [key] Optional.
@@ -23,8 +24,8 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeade
 
   factory BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader(
-      key: map['key'] == null ? null : map['key'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

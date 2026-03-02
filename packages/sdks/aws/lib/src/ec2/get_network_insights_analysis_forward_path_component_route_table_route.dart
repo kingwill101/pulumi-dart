@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute {
-  final String destinationCidr;
-  final String destinationPrefixListId;
-  final String egressOnlyInternetGatewayId;
-  final String gatewayId;
-  final String instanceId;
-  final String natGatewayId;
-  final String networkInterfaceId;
-  final String origin;
-  final String transitGatewayId;
-  final String vpcPeeringConnectionId;
+  final pulumi.Input<String> destinationCidr;
+  final pulumi.Input<String> destinationPrefixListId;
+  final pulumi.Input<String> egressOnlyInternetGatewayId;
+  final pulumi.Input<String> gatewayId;
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<String> natGatewayId;
+  final pulumi.Input<String> networkInterfaceId;
+  final pulumi.Input<String> origin;
+  final pulumi.Input<String> transitGatewayId;
+  final pulumi.Input<String> vpcPeeringConnectionId;
 
   /// Creates a new [GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute].
   /// [destinationCidr] Required.
@@ -54,16 +55,16 @@ class GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute {
 
   factory GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute(
-      destinationCidr: map['destinationCidr'] as String,
-      destinationPrefixListId: map['destinationPrefixListId'] as String,
-      egressOnlyInternetGatewayId: map['egressOnlyInternetGatewayId'] as String,
-      gatewayId: map['gatewayId'] as String,
-      instanceId: map['instanceId'] as String,
-      natGatewayId: map['natGatewayId'] as String,
-      networkInterfaceId: map['networkInterfaceId'] as String,
-      origin: map['origin'] as String,
-      transitGatewayId: map['transitGatewayId'] as String,
-      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] as String,
+      destinationCidr: (map['destinationCidr'] as String).input(),
+      destinationPrefixListId: (map['destinationPrefixListId'] as String).input(),
+      egressOnlyInternetGatewayId: (map['egressOnlyInternetGatewayId'] as String).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      natGatewayId: (map['natGatewayId'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      origin: (map['origin'] as String).input(),
+      transitGatewayId: (map['transitGatewayId'] as String).input(),
+      vpcPeeringConnectionId: (map['vpcPeeringConnectionId'] as String).input(),
     );
   }
 }

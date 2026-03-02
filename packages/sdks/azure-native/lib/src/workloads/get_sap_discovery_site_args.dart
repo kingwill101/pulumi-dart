@@ -16,11 +16,9 @@ class GetSapDiscoverySiteArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sapDiscoverySiteName] The name of the discovery site resource for SAP Migration.
   GetSapDiscoverySiteArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sapDiscoverySiteName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sapDiscoverySiteName = pulumi.Input.asInput<String>(sapDiscoverySiteName);
+    required this.resourceGroupName,
+    required this.sapDiscoverySiteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSapDiscoverySiteArgs {
 
   factory GetSapDiscoverySiteArgs.fromMap(Map<String, dynamic> map) {
     return GetSapDiscoverySiteArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sapDiscoverySiteName: pulumi.Output.create<String>(map['sapDiscoverySiteName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sapDiscoverySiteName: (map['sapDiscoverySiteName'] as String).input(),
     );
   }
 }

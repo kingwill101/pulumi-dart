@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// (Available in 1.196.0+) The connection string of the DRDS instance.
-  final String connectionString;
+  final pulumi.Input<String> connectionString;
   /// Creation time of the instance.
-  final int createTime;
+  final pulumi.Input<int> createTime;
   /// The DRDS instance description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the DRDS instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// `Classic` for public classic network or `VPC` for private network.
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// (Available in 1.196.0+) The connection port of the DRDS instance.
-  final String port;
+  final pulumi.Input<String> port;
   /// Status of the instance.
-  final String status;
+  final pulumi.Input<String> status;
   /// The DRDS Instance type.
-  final String type;
+  final pulumi.Input<String> type;
   /// The DRDS Instance version.
-  final int version;
+  final pulumi.Input<int> version;
   /// Zone ID the instance belongs to.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetInstancesInstance].
   /// [connectionString] (Available in 1.196.0+) The connection string of the DRDS instance.
@@ -64,16 +65,16 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      connectionString: map['connectionString'] as String,
-      createTime: map['createTime'] as int,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      networkType: map['networkType'] as String,
-      port: map['port'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
-      version: map['version'] as int,
-      zoneId: map['zoneId'] as String,
+      connectionString: (map['connectionString'] as String).input(),
+      createTime: (map['createTime'] as int).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      port: (map['port'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
+      version: (map['version'] as int).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataCollectionRuleDataFlow {
   /// The built-in transform to transform stream data.
-  final String builtInTransform;
+  final pulumi.Input<String> builtInTransform;
   /// Specifies a list of destination names. A `azure_monitor_metrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
-  final List<String> destinations;
+  final pulumi.Input<List<String>> destinations;
   /// The output stream of the transform. Only required if the data flow changes data to a different stream.
-  final String outputStream;
+  final pulumi.Input<String> outputStream;
   /// Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
-  final List<String> streams;
+  final pulumi.Input<List<String>> streams;
   /// The KQL query to transform stream data.
-  final String transformKql;
+  final pulumi.Input<String> transformKql;
 
   /// Creates a new [GetDataCollectionRuleDataFlow].
   /// [builtInTransform] The built-in transform to transform stream data.
@@ -39,11 +40,11 @@ class GetDataCollectionRuleDataFlow {
 
   factory GetDataCollectionRuleDataFlow.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleDataFlow(
-      builtInTransform: map['builtInTransform'] as String,
-      destinations: (map['destinations'] as List).cast<String>(),
-      outputStream: map['outputStream'] as String,
-      streams: (map['streams'] as List).cast<String>(),
-      transformKql: map['transformKql'] as String,
+      builtInTransform: (map['builtInTransform'] as String).input(),
+      destinations: ((map['destinations'] as List).cast<String>()).input(),
+      outputStream: (map['outputStream'] as String).input(),
+      streams: ((map['streams'] as List).cast<String>()).input(),
+      transformKql: (map['transformKql'] as String).input(),
     );
   }
 }

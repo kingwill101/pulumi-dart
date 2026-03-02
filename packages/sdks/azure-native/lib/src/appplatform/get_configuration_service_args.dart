@@ -19,13 +19,10 @@ class GetConfigurationServiceArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   GetConfigurationServiceArgs({
-    required pulumi.Output<String> configurationServiceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      configurationServiceName = pulumi.Input.asInput<String>(configurationServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.configurationServiceName,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConfigurationServiceArgs {
 
   factory GetConfigurationServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationServiceArgs(
-      configurationServiceName: pulumi.Output.create<String>(map['configurationServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      configurationServiceName: (map['configurationServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

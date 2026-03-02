@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard {
   /// Enables or disables clipboard copy-paste functionality through the QEMU guest agent.
-  final String copyPaste;
+  final pulumi.Input<String> copyPaste;
 
   /// Creates a new [DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard].
   /// [copyPaste] Enables or disables clipboard copy-paste functionality through the QEMU guest agent.
@@ -19,7 +20,7 @@ class DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard {
 
   factory DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard(
-      copyPaste: map['copyPaste'] as String,
+      copyPaste: (map['copyPaste'] as String).input(),
     );
   }
 }

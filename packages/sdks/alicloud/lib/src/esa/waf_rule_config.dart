@@ -11,29 +11,29 @@ import 'waf_rule_config_timer.dart';
 
 class WafRuleConfig {
   /// The action performed on requests that match the managed rule.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// Extended action configurations, including custom responses and bypass settings. See `actions` below.
-  final WafRuleConfigActions? actions;
+  final pulumi.Input<WafRuleConfigActions>? actions;
   /// Security mechanism to prevent apps from being repackaged. See `app_package` below.
-  final WafRuleConfigAppPackage? appPackage;
+  final pulumi.Input<WafRuleConfigAppPackage>? appPackage;
   /// Mobile app SDK-related configurations. See `app_sdk` below.
-  final WafRuleConfigAppSdk? appSdk;
+  final pulumi.Input<WafRuleConfigAppSdk>? appSdk;
   /// The match expression used to evaluate incoming requests.
-  final String? expression;
+  final pulumi.Input<String>? expression;
   /// The ID of the custom error page, which can be obtained by calling the ListPages operation.
-  final int? id;
+  final pulumi.Input<int>? id;
   /// The ID of the managed rule group (deprecated).
-  final int? managedGroupId;
+  final pulumi.Input<int>? managedGroupId;
   /// The name of the managed list applied to this rule.
-  final String? managedList;
+  final pulumi.Input<String>? managedList;
   /// The managed rulesets referenced by this rule and their configurations. See `managed_rulesets` below.
-  final List<WafRuleConfigManagedRuleset>? managedRulesets;
+  final pulumi.Input<List<WafRuleConfigManagedRuleset>>? managedRulesets;
   /// The package name of an authorized application.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Additional notes about this rule.
-  final String? notes;
+  final pulumi.Input<String>? notes;
   /// Configuration of the rate limiting rule. See `rate_limit` below.
-  final WafRuleConfigRateLimit? rateLimit;
+  final pulumi.Input<WafRuleConfigRateLimit>? rateLimit;
   /// The overall security protection level of WAF.
   /// Valid values:
   /// - off
@@ -42,17 +42,17 @@ class WafRuleConfig {
   /// - medium
   /// - high
   /// - under_attack See `security_level` below.
-  final WafRuleConfigSecurityLevel? securityLevel;
+  final pulumi.Input<WafRuleConfigSecurityLevel>? securityLevel;
   /// Configuration items for token verification mechanisms.
-  final List<String>? sigchls;
+  final pulumi.Input<List<String>>? sigchls;
   /// The status of the managed rule: whether it is enabled or disabled.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Configuration for the time schedule when the rule takes effect. See `timer` below.
-  final WafRuleConfigTimer? timer;
+  final pulumi.Input<WafRuleConfigTimer>? timer;
   /// The type category of the WAF rule.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The value of the custom signature field used for validation.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [WafRuleConfig].
   /// [action] The action performed on requests that match the managed rule.
@@ -97,21 +97,21 @@ class WafRuleConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': ?action,
-      'actions': ?actions == null ? null : actions!.toMap(),
-      'appPackage': ?appPackage == null ? null : appPackage!.toMap(),
-      'appSdk': ?appSdk == null ? null : appSdk!.toMap(),
+      'actions': ?pulumi.Input.mapOptionalInputValue<WafRuleConfigActions, Map<String, dynamic>>(actions, (value) => value.toMap()),
+      'appPackage': ?pulumi.Input.mapOptionalInputValue<WafRuleConfigAppPackage, Map<String, dynamic>>(appPackage, (value) => value.toMap()),
+      'appSdk': ?pulumi.Input.mapOptionalInputValue<WafRuleConfigAppSdk, Map<String, dynamic>>(appSdk, (value) => value.toMap()),
       'expression': ?expression,
       'id': ?id,
       'managedGroupId': ?managedGroupId,
       'managedList': ?managedList,
-      'managedRulesets': ?managedRulesets == null ? null : pulumi.Input.encodeList<WafRuleConfigManagedRuleset, Map<String, dynamic>>(managedRulesets!, (value) => value.toMap()),
+      'managedRulesets': ?pulumi.Input.mapOptionalInputValue<List<WafRuleConfigManagedRuleset>, List<Map<String, dynamic>>>(managedRulesets, (value) => pulumi.Input.encodeList<WafRuleConfigManagedRuleset, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'notes': ?notes,
-      'rateLimit': ?rateLimit == null ? null : rateLimit!.toMap(),
-      'securityLevel': ?securityLevel == null ? null : securityLevel!.toMap(),
+      'rateLimit': ?pulumi.Input.mapOptionalInputValue<WafRuleConfigRateLimit, Map<String, dynamic>>(rateLimit, (value) => value.toMap()),
+      'securityLevel': ?pulumi.Input.mapOptionalInputValue<WafRuleConfigSecurityLevel, Map<String, dynamic>>(securityLevel, (value) => value.toMap()),
       'sigchls': ?sigchls,
       'status': ?status,
-      'timer': ?timer == null ? null : timer!.toMap(),
+      'timer': ?pulumi.Input.mapOptionalInputValue<WafRuleConfigTimer, Map<String, dynamic>>(timer, (value) => value.toMap()),
       'type': ?type,
       'value': ?value,
     };
@@ -119,24 +119,24 @@ class WafRuleConfig {
 
   factory WafRuleConfig.fromMap(Map<String, dynamic> map) {
     return WafRuleConfig(
-      action: map['action'] == null ? null : map['action'] as String,
-      actions: map['actions'] == null ? null : WafRuleConfigActions.fromMap((map['actions'] as Map).cast<String, dynamic>()),
-      appPackage: map['appPackage'] == null ? null : WafRuleConfigAppPackage.fromMap((map['appPackage'] as Map).cast<String, dynamic>()),
-      appSdk: map['appSdk'] == null ? null : WafRuleConfigAppSdk.fromMap((map['appSdk'] as Map).cast<String, dynamic>()),
-      expression: map['expression'] == null ? null : map['expression'] as String,
-      id: map['id'] == null ? null : map['id'] as int,
-      managedGroupId: map['managedGroupId'] == null ? null : map['managedGroupId'] as int,
-      managedList: map['managedList'] == null ? null : map['managedList'] as String,
-      managedRulesets: map['managedRulesets'] == null ? null : pulumi.Input.decodeList<WafRuleConfigManagedRuleset>(map['managedRulesets'], (value) => WafRuleConfigManagedRuleset.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      notes: map['notes'] == null ? null : map['notes'] as String,
-      rateLimit: map['rateLimit'] == null ? null : WafRuleConfigRateLimit.fromMap((map['rateLimit'] as Map).cast<String, dynamic>()),
-      securityLevel: map['securityLevel'] == null ? null : WafRuleConfigSecurityLevel.fromMap((map['securityLevel'] as Map).cast<String, dynamic>()),
-      sigchls: map['sigchls'] == null ? null : (map['sigchls'] as List).cast<String>(),
-      status: map['status'] == null ? null : map['status'] as String,
-      timer: map['timer'] == null ? null : WafRuleConfigTimer.fromMap((map['timer'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      actions: map['actions'] == null ? null : (WafRuleConfigActions.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
+      appPackage: map['appPackage'] == null ? null : (WafRuleConfigAppPackage.fromMap((map['appPackage'] as Map).cast<String, dynamic>())).input(),
+      appSdk: map['appSdk'] == null ? null : (WafRuleConfigAppSdk.fromMap((map['appSdk'] as Map).cast<String, dynamic>())).input(),
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      managedGroupId: map['managedGroupId'] == null ? null : (map['managedGroupId'] as int).input(),
+      managedList: map['managedList'] == null ? null : (map['managedList'] as String).input(),
+      managedRulesets: map['managedRulesets'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigManagedRuleset>(map['managedRulesets'], (value) => WafRuleConfigManagedRuleset.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      rateLimit: map['rateLimit'] == null ? null : (WafRuleConfigRateLimit.fromMap((map['rateLimit'] as Map).cast<String, dynamic>())).input(),
+      securityLevel: map['securityLevel'] == null ? null : (WafRuleConfigSecurityLevel.fromMap((map['securityLevel'] as Map).cast<String, dynamic>())).input(),
+      sigchls: map['sigchls'] == null ? null : ((map['sigchls'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      timer: map['timer'] == null ? null : (WafRuleConfigTimer.fromMap((map['timer'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

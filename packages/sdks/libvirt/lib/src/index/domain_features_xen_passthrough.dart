@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesXenPassthrough {
   /// Sets the mode of the passthrough feature, which affects how devices are exposed to the guest.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Configures the state of the passthrough feature, indicating its activation status.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [DomainFeaturesXenPassthrough].
   /// [mode] Sets the mode of the passthrough feature, which affects how devices are exposed to the guest.
@@ -24,8 +25,8 @@ class DomainFeaturesXenPassthrough {
 
   factory DomainFeaturesXenPassthrough.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesXenPassthrough(
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerDefaultActionRedirect {
-  final String host;
-  final String path;
+  final pulumi.Input<String> host;
+  final pulumi.Input<String> path;
   /// Port of the listener. Required if `arn` is not set.
-  final String port;
-  final String protocol;
-  final String query;
-  final String statusCode;
+  final pulumi.Input<String> port;
+  final pulumi.Input<String> protocol;
+  final pulumi.Input<String> query;
+  final pulumi.Input<String> statusCode;
 
   /// Creates a new [GetListenerDefaultActionRedirect].
   /// [host] Required.
@@ -39,12 +40,12 @@ class GetListenerDefaultActionRedirect {
 
   factory GetListenerDefaultActionRedirect.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionRedirect(
-      host: map['host'] as String,
-      path: map['path'] as String,
-      port: map['port'] as String,
-      protocol: map['protocol'] as String,
-      query: map['query'] as String,
-      statusCode: map['statusCode'] as String,
+      host: (map['host'] as String).input(),
+      path: (map['path'] as String).input(),
+      port: (map['port'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      query: (map['query'] as String).input(),
+      statusCode: (map['statusCode'] as String).input(),
     );
   }
 }

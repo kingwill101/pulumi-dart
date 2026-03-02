@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification {
-  final int endTimeoutMs;
-  final int maxLengthMs;
+  final pulumi.Input<int> endTimeoutMs;
+  final pulumi.Input<int> maxLengthMs;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification].
   /// [endTimeoutMs] Required.
@@ -22,8 +23,8 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
 
   factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification(
-      endTimeoutMs: map['endTimeoutMs'] as int,
-      maxLengthMs: map['maxLengthMs'] as int,
+      endTimeoutMs: (map['endTimeoutMs'] as int).input(),
+      maxLengthMs: (map['maxLengthMs'] as int).input(),
     );
   }
 }

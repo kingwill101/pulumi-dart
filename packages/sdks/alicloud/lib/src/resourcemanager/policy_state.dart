@@ -22,17 +22,12 @@ class PolicyState {
   /// [policyName] The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
   /// [policyType] The type of the policy. Valid values: `Custom`, `System`.
   PolicyState({
-    pulumi.Output<String>? defaultVersion,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? policyName,
-    pulumi.Output<String>? policyType,
-  }) :
-      defaultVersion = pulumi.Input.asOptionalInput<String>(defaultVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType);
+    this.defaultVersion,
+    this.description,
+    this.policyDocument,
+    this.policyName,
+    this.policyType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      defaultVersion: map['defaultVersion'] == null ? null : pulumi.Output.create<String>(map['defaultVersion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
+      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
     );
   }
 }

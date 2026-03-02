@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem {
-  final String profileId;
+  final pulumi.Input<String> profileId;
   /// Query argument for field-level encryption query argument-profile mapping.
-  final String queryArg;
+  final pulumi.Input<String> queryArg;
 
   /// Creates a new [FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem].
   /// [profileId] Required.
@@ -23,8 +24,8 @@ class FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem {
 
   factory FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem(
-      profileId: map['profileId'] as String,
-      queryArg: map['queryArg'] as String,
+      profileId: (map['profileId'] as String).input(),
+      queryArg: (map['queryArg'] as String).input(),
     );
   }
 }

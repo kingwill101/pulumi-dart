@@ -21,13 +21,10 @@ class JobScheduleArgs {
   /// [startTime] The time in ISO8601 format at which the Stream Analytics Job should be started e.g. `2022-04-01T00:00:00Z`. This property can only be specified if `start_mode` is set to `CustomTime`
   /// [streamAnalyticsJobId] The ID of the Stream Analytics Job that should be scheduled or started. Changing this forces a new resource to be created.
   JobScheduleArgs({
-    required pulumi.Output<String> startMode,
-    pulumi.Output<String>? startTime,
-    required pulumi.Output<String> streamAnalyticsJobId,
-  }) :
-      startMode = pulumi.Input.asInput<String>(startMode),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      streamAnalyticsJobId = pulumi.Input.asInput<String>(streamAnalyticsJobId);
+    required this.startMode,
+    this.startTime,
+    required this.streamAnalyticsJobId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class JobScheduleArgs {
 
   factory JobScheduleArgs.fromMap(Map<String, dynamic> map) {
     return JobScheduleArgs(
-      startMode: pulumi.Output.create<String>(map['startMode'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      streamAnalyticsJobId: pulumi.Output.create<String>(map['streamAnalyticsJobId'] as String),
+      startMode: (map['startMode'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      streamAnalyticsJobId: (map['streamAnalyticsJobId'] as String).input(),
     );
   }
 }

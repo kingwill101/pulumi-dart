@@ -19,13 +19,10 @@ class GetMetadataSchemaArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of Azure API Center service.
   GetMetadataSchemaArgs({
-    required pulumi.Output<String> metadataSchemaName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      metadataSchemaName = pulumi.Input.asInput<String>(metadataSchemaName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.metadataSchemaName,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMetadataSchemaArgs {
 
   factory GetMetadataSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetMetadataSchemaArgs(
-      metadataSchemaName: pulumi.Output.create<String>(map['metadataSchemaName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      metadataSchemaName: (map['metadataSchemaName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetChainsChainChainConfigRouterFrom {
   /// The name of delivery chain node.
-  final String nodeName;
+  final pulumi.Input<String> nodeName;
 
   /// Creates a new [GetChainsChainChainConfigRouterFrom].
   /// [nodeName] The name of delivery chain node.
@@ -19,7 +20,7 @@ class GetChainsChainChainConfigRouterFrom {
 
   factory GetChainsChainChainConfigRouterFrom.fromMap(Map<String, dynamic> map) {
     return GetChainsChainChainConfigRouterFrom(
-      nodeName: map['nodeName'] as String,
+      nodeName: (map['nodeName'] as String).input(),
     );
   }
 }

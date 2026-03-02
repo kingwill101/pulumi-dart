@@ -49,31 +49,19 @@ class EntryState {
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] The time when the entry was last updated in Dataplex.
   EntryState({
-    pulumi.Output<List<EntryAspect>>? aspects,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? entryGroupId,
-    pulumi.Output<String>? entryId,
-    pulumi.Output<EntryEntrySource>? entrySource,
-    pulumi.Output<String>? entryType,
-    pulumi.Output<String>? fullyQualifiedName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentEntry,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateTime,
-  }) :
-      aspects = pulumi.Input.asOptionalInput<List<EntryAspect>>(aspects),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      entryGroupId = pulumi.Input.asOptionalInput<String>(entryGroupId),
-      entryId = pulumi.Input.asOptionalInput<String>(entryId),
-      entrySource = pulumi.Input.asOptionalInput<EntryEntrySource>(entrySource),
-      entryType = pulumi.Input.asOptionalInput<String>(entryType),
-      fullyQualifiedName = pulumi.Input.asOptionalInput<String>(fullyQualifiedName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentEntry = pulumi.Input.asOptionalInput<String>(parentEntry),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.aspects,
+    this.createTime,
+    this.entryGroupId,
+    this.entryId,
+    this.entrySource,
+    this.entryType,
+    this.fullyQualifiedName,
+    this.location,
+    this.name,
+    this.parentEntry,
+    this.project,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class EntryState {
 
   factory EntryState.fromMap(Map<String, dynamic> map) {
     return EntryState(
-      aspects: map['aspects'] == null ? null : pulumi.Output.create<List<EntryAspect>>(pulumi.Input.decodeList<EntryAspect>(map['aspects'], (value) => EntryAspect.fromMap((value as Map).cast<String, dynamic>()))),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      entryGroupId: map['entryGroupId'] == null ? null : pulumi.Output.create<String>(map['entryGroupId'] as String),
-      entryId: map['entryId'] == null ? null : pulumi.Output.create<String>(map['entryId'] as String),
-      entrySource: map['entrySource'] == null ? null : pulumi.Output.create<EntryEntrySource>(EntryEntrySource.fromMap((map['entrySource'] as Map).cast<String, dynamic>())),
-      entryType: map['entryType'] == null ? null : pulumi.Output.create<String>(map['entryType'] as String),
-      fullyQualifiedName: map['fullyQualifiedName'] == null ? null : pulumi.Output.create<String>(map['fullyQualifiedName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentEntry: map['parentEntry'] == null ? null : pulumi.Output.create<String>(map['parentEntry'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      aspects: map['aspects'] == null ? null : (pulumi.Input.decodeList<EntryAspect>(map['aspects'], (value) => EntryAspect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      entryGroupId: map['entryGroupId'] == null ? null : (map['entryGroupId'] as String).input(),
+      entryId: map['entryId'] == null ? null : (map['entryId'] as String).input(),
+      entrySource: map['entrySource'] == null ? null : (EntryEntrySource.fromMap((map['entrySource'] as Map).cast<String, dynamic>())).input(),
+      entryType: map['entryType'] == null ? null : (map['entryType'] as String).input(),
+      fullyQualifiedName: map['fullyQualifiedName'] == null ? null : (map['fullyQualifiedName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentEntry: map['parentEntry'] == null ? null : (map['parentEntry'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

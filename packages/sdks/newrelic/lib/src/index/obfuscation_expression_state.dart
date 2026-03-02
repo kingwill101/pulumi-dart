@@ -19,15 +19,11 @@ class ObfuscationExpressionState {
   /// [name] Name of expression.
   /// [regex] Regex of expression. Must be wrapped in parentheses, e.g. (regex.*).
   ObfuscationExpressionState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? regex,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      regex = pulumi.Input.asOptionalInput<String>(regex);
+    this.accountId,
+    this.description,
+    this.name,
+    this.regex,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ObfuscationExpressionState {
 
   factory ObfuscationExpressionState.fromMap(Map<String, dynamic> map) {
     return ObfuscationExpressionState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      regex: map['regex'] == null ? null : pulumi.Output.create<String>(map['regex'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
     );
   }
 }

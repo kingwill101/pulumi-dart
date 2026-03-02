@@ -25,17 +25,12 @@ class StaticMemberArgs {
   /// [resourceId] Resource Id.
   /// [staticMemberName] The name of the static member.
   StaticMemberArgs({
-    required pulumi.Output<String> networkGroupName,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? staticMemberName,
-  }) :
-      networkGroupName = pulumi.Input.asInput<String>(networkGroupName),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      staticMemberName = pulumi.Input.asOptionalInput<String>(staticMemberName);
+    required this.networkGroupName,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+    this.resourceId,
+    this.staticMemberName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class StaticMemberArgs {
 
   factory StaticMemberArgs.fromMap(Map<String, dynamic> map) {
     return StaticMemberArgs(
-      networkGroupName: pulumi.Output.create<String>(map['networkGroupName'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      staticMemberName: map['staticMemberName'] == null ? null : pulumi.Output.create<String>(map['staticMemberName'] as String),
+      networkGroupName: (map['networkGroupName'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      staticMemberName: map['staticMemberName'] == null ? null : (map['staticMemberName'] as String).input(),
     );
   }
 }

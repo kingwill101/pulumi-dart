@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RevisionAssetsAssetImportAssetsFromSignedUrl {
   /// The name of the file to import.
-  final String filename;
+  final pulumi.Input<String> filename;
 
   /// Creates a new [RevisionAssetsAssetImportAssetsFromSignedUrl].
   /// [filename] The name of the file to import.
@@ -19,7 +20,7 @@ class RevisionAssetsAssetImportAssetsFromSignedUrl {
 
   factory RevisionAssetsAssetImportAssetsFromSignedUrl.fromMap(Map<String, dynamic> map) {
     return RevisionAssetsAssetImportAssetsFromSignedUrl(
-      filename: map['filename'] as String,
+      filename: (map['filename'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetSecuritySettingArgs {
   /// [project] Optional.
   /// [securitySettingId] Required.
   GetSecuritySettingArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> securitySettingId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      securitySettingId = pulumi.Input.asInput<String>(securitySettingId);
+    required this.location,
+    this.project,
+    required this.securitySettingId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetSecuritySettingArgs {
 
   factory GetSecuritySettingArgs.fromMap(Map<String, dynamic> map) {
     return GetSecuritySettingArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      securitySettingId: pulumi.Output.create<String>(map['securitySettingId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      securitySettingId: (map['securitySettingId'] as String).input(),
     );
   }
 }

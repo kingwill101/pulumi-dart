@@ -13,9 +13,8 @@ class GetTenantConfigurationArgs {
   /// Creates a new [GetTenantConfigurationArgs].
   /// [configurationName] The name of the Configuration
   GetTenantConfigurationArgs({
-    required pulumi.Output<String> configurationName,
-  }) :
-      configurationName = pulumi.Input.asInput<String>(configurationName);
+    required this.configurationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetTenantConfigurationArgs {
 
   factory GetTenantConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetTenantConfigurationArgs(
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
+      configurationName: (map['configurationName'] as String).input(),
     );
   }
 }

@@ -25,15 +25,11 @@ class SiteArgs {
   /// [location] Site location. See below.
   /// [tags] Key-value tags for the Site. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   SiteArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> globalNetworkId,
-    pulumi.Output<SiteLocation>? location,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      location = pulumi.Input.asOptionalInput<SiteLocation>(location),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.globalNetworkId,
+    this.location,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class SiteArgs {
 
   factory SiteArgs.fromMap(Map<String, dynamic> map) {
     return SiteArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      globalNetworkId: pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<SiteLocation>(SiteLocation.fromMap((map['location'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      globalNetworkId: (map['globalNetworkId'] as String).input(),
+      location: map['location'] == null ? null : (SiteLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

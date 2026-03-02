@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Delete option with duration
 class AbsoluteDeleteOptionResponse {
   /// Duration of deletion after given timespan
-  final String duration;
+  final pulumi.Input<String> duration;
   /// Type of the specific object - used for deserializing
   /// Expected value is 'AbsoluteDeleteOption'.
-  final String objectType;
+  final pulumi.Input<String> objectType;
 
   /// Creates a new [AbsoluteDeleteOptionResponse].
   /// [duration] Duration of deletion after given timespan
@@ -26,8 +27,8 @@ class AbsoluteDeleteOptionResponse {
 
   factory AbsoluteDeleteOptionResponse.fromMap(Map<String, dynamic> map) {
     return AbsoluteDeleteOptionResponse(
-      duration: map['duration'] as String,
-      objectType: map['objectType'] as String,
+      duration: (map['duration'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
     );
   }
 }

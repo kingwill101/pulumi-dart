@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_operator_nexus_image_artifact_profile_response.dart';
 import 'azure_operator_nexus_image_deploy_mapping_rule_profile_response.dart';
 import 'depends_on_profile_response.dart';
@@ -7,16 +8,16 @@ import 'depends_on_profile_response.dart';
 /// Azure Operator Distributed Services network function image application definition.
 class AzureOperatorNexusNetworkFunctionImageApplicationResponse {
   /// Azure Operator Distributed Services image artifact profile.
-  final AzureOperatorNexusImageArtifactProfileResponse? artifactProfile;
+  final pulumi.Input<AzureOperatorNexusImageArtifactProfileResponse>? artifactProfile;
   /// The artifact type.
   /// Expected value is 'ImageFile'.
-  final String artifactType;
+  final pulumi.Input<String> artifactType;
   /// Depends on profile definition.
-  final DependsOnProfileResponse? dependsOnProfile;
+  final pulumi.Input<DependsOnProfileResponse>? dependsOnProfile;
   /// Deploy mapping rule profile.
-  final AzureOperatorNexusImageDeployMappingRuleProfileResponse? deployParametersMappingRuleProfile;
+  final pulumi.Input<AzureOperatorNexusImageDeployMappingRuleProfileResponse>? deployParametersMappingRuleProfile;
   /// The name of the network function application.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [AzureOperatorNexusNetworkFunctionImageApplicationResponse].
   /// [artifactProfile] Azure Operator Distributed Services image artifact profile.
@@ -34,21 +35,21 @@ class AzureOperatorNexusNetworkFunctionImageApplicationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactProfile': ?artifactProfile == null ? null : artifactProfile!.toMap(),
+      'artifactProfile': ?pulumi.Input.mapOptionalInputValue<AzureOperatorNexusImageArtifactProfileResponse, Map<String, dynamic>>(artifactProfile, (value) => value.toMap()),
       'artifactType': artifactType,
-      'dependsOnProfile': ?dependsOnProfile == null ? null : dependsOnProfile!.toMap(),
-      'deployParametersMappingRuleProfile': ?deployParametersMappingRuleProfile == null ? null : deployParametersMappingRuleProfile!.toMap(),
+      'dependsOnProfile': ?pulumi.Input.mapOptionalInputValue<DependsOnProfileResponse, Map<String, dynamic>>(dependsOnProfile, (value) => value.toMap()),
+      'deployParametersMappingRuleProfile': ?pulumi.Input.mapOptionalInputValue<AzureOperatorNexusImageDeployMappingRuleProfileResponse, Map<String, dynamic>>(deployParametersMappingRuleProfile, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
   factory AzureOperatorNexusNetworkFunctionImageApplicationResponse.fromMap(Map<String, dynamic> map) {
     return AzureOperatorNexusNetworkFunctionImageApplicationResponse(
-      artifactProfile: map['artifactProfile'] == null ? null : AzureOperatorNexusImageArtifactProfileResponse.fromMap((map['artifactProfile'] as Map).cast<String, dynamic>()),
-      artifactType: map['artifactType'] as String,
-      dependsOnProfile: map['dependsOnProfile'] == null ? null : DependsOnProfileResponse.fromMap((map['dependsOnProfile'] as Map).cast<String, dynamic>()),
-      deployParametersMappingRuleProfile: map['deployParametersMappingRuleProfile'] == null ? null : AzureOperatorNexusImageDeployMappingRuleProfileResponse.fromMap((map['deployParametersMappingRuleProfile'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
+      artifactProfile: map['artifactProfile'] == null ? null : (AzureOperatorNexusImageArtifactProfileResponse.fromMap((map['artifactProfile'] as Map).cast<String, dynamic>())).input(),
+      artifactType: (map['artifactType'] as String).input(),
+      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfileResponse.fromMap((map['dependsOnProfile'] as Map).cast<String, dynamic>())).input(),
+      deployParametersMappingRuleProfile: map['deployParametersMappingRuleProfile'] == null ? null : (AzureOperatorNexusImageDeployMappingRuleProfileResponse.fromMap((map['deployParametersMappingRuleProfile'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

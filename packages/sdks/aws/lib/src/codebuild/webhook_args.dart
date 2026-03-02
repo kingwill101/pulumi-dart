@@ -37,23 +37,15 @@ class WebhookArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scopeConfiguration] Scope configuration for global or organization webhooks. See scope_configuration for details.
   WebhookArgs({
-    pulumi.Output<String>? branchFilter,
-    pulumi.Output<String>? buildType,
-    pulumi.Output<List<WebhookFilterGroup>>? filterGroups,
-    pulumi.Output<bool>? manualCreation,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<WebhookPullRequestBuildPolicy>? pullRequestBuildPolicy,
-    pulumi.Output<String>? region,
-    pulumi.Output<WebhookScopeConfiguration>? scopeConfiguration,
-  }) :
-      branchFilter = pulumi.Input.asOptionalInput<String>(branchFilter),
-      buildType = pulumi.Input.asOptionalInput<String>(buildType),
-      filterGroups = pulumi.Input.asOptionalInput<List<WebhookFilterGroup>>(filterGroups),
-      manualCreation = pulumi.Input.asOptionalInput<bool>(manualCreation),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      pullRequestBuildPolicy = pulumi.Input.asOptionalInput<WebhookPullRequestBuildPolicy>(pullRequestBuildPolicy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scopeConfiguration = pulumi.Input.asOptionalInput<WebhookScopeConfiguration>(scopeConfiguration);
+    this.branchFilter,
+    this.buildType,
+    this.filterGroups,
+    this.manualCreation,
+    required this.projectName,
+    this.pullRequestBuildPolicy,
+    this.region,
+    this.scopeConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      branchFilter: map['branchFilter'] == null ? null : pulumi.Output.create<String>(map['branchFilter'] as String),
-      buildType: map['buildType'] == null ? null : pulumi.Output.create<String>(map['buildType'] as String),
-      filterGroups: map['filterGroups'] == null ? null : pulumi.Output.create<List<WebhookFilterGroup>>(pulumi.Input.decodeList<WebhookFilterGroup>(map['filterGroups'], (value) => WebhookFilterGroup.fromMap((value as Map).cast<String, dynamic>()))),
-      manualCreation: map['manualCreation'] == null ? null : pulumi.Output.create<bool>(map['manualCreation'] as bool),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      pullRequestBuildPolicy: map['pullRequestBuildPolicy'] == null ? null : pulumi.Output.create<WebhookPullRequestBuildPolicy>(WebhookPullRequestBuildPolicy.fromMap((map['pullRequestBuildPolicy'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scopeConfiguration: map['scopeConfiguration'] == null ? null : pulumi.Output.create<WebhookScopeConfiguration>(WebhookScopeConfiguration.fromMap((map['scopeConfiguration'] as Map).cast<String, dynamic>())),
+      branchFilter: map['branchFilter'] == null ? null : (map['branchFilter'] as String).input(),
+      buildType: map['buildType'] == null ? null : (map['buildType'] as String).input(),
+      filterGroups: map['filterGroups'] == null ? null : (pulumi.Input.decodeList<WebhookFilterGroup>(map['filterGroups'], (value) => WebhookFilterGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manualCreation: map['manualCreation'] == null ? null : (map['manualCreation'] as bool).input(),
+      projectName: (map['projectName'] as String).input(),
+      pullRequestBuildPolicy: map['pullRequestBuildPolicy'] == null ? null : (WebhookPullRequestBuildPolicy.fromMap((map['pullRequestBuildPolicy'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scopeConfiguration: map['scopeConfiguration'] == null ? null : (WebhookScopeConfiguration.fromMap((map['scopeConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

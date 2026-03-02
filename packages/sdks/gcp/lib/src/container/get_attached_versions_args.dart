@@ -17,11 +17,9 @@ class GetAttachedVersionsArgs {
   /// [location] The location to list versions for.
   /// [project] ID of the project to list available platform versions for. Should match the project the cluster will be deployed to.
   GetAttachedVersionsArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asInput<String>(project);
+    required this.location,
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetAttachedVersionsArgs {
 
   factory GetAttachedVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetAttachedVersionsArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

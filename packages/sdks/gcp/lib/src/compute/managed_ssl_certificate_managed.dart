@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedSslCertificateManaged {
   /// Domains for which a managed SSL certificate will be valid.  Currently,
   /// there can be up to 100 domains in this list.
-  final List<String> domains;
+  final pulumi.Input<List<String>> domains;
 
   /// Creates a new [ManagedSslCertificateManaged].
   /// [domains] Domains for which a managed SSL certificate will be valid.  Currently,
@@ -20,7 +21,7 @@ class ManagedSslCertificateManaged {
 
   factory ManagedSslCertificateManaged.fromMap(Map<String, dynamic> map) {
     return ManagedSslCertificateManaged(
-      domains: (map['domains'] as List).cast<String>(),
+      domains: ((map['domains'] as List).cast<String>()).input(),
     );
   }
 }

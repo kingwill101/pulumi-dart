@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Kubernetes role compute resource
 class KubernetesRoleComputeResponse {
   /// Memory in bytes
-  final double memoryInBytes;
+  final pulumi.Input<double> memoryInBytes;
   /// Processor count
-  final int processorCount;
+  final pulumi.Input<int> processorCount;
   /// VM profile
-  final String vmProfile;
+  final pulumi.Input<String> vmProfile;
 
   /// Creates a new [KubernetesRoleComputeResponse].
   /// [memoryInBytes] Memory in bytes
@@ -30,9 +31,9 @@ class KubernetesRoleComputeResponse {
 
   factory KubernetesRoleComputeResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesRoleComputeResponse(
-      memoryInBytes: map['memoryInBytes'] as double,
-      processorCount: map['processorCount'] as int,
-      vmProfile: map['vmProfile'] as String,
+      memoryInBytes: (map['memoryInBytes'] as double).input(),
+      processorCount: (map['processorCount'] as int).input(),
+      vmProfile: (map['vmProfile'] as String).input(),
     );
   }
 }

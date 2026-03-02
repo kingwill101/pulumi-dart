@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Appliance SSHKey definition.
 class SSHKeyResponse {
   /// Certificate associated with the public key if the key is signed.
-  final String certificate;
+  final pulumi.Input<String> certificate;
   /// Certificate creation timestamp (Unix).
-  final double creationTimeStamp;
+  final pulumi.Input<double> creationTimeStamp;
   /// Certificate expiration timestamp (Unix).
-  final double expirationTimeStamp;
+  final pulumi.Input<double> expirationTimeStamp;
   /// Private Key.
-  final String privateKey;
+  final pulumi.Input<String> privateKey;
   /// Public Key.
-  final String publicKey;
+  final pulumi.Input<String> publicKey;
 
   /// Creates a new [SSHKeyResponse].
   /// [certificate] Certificate associated with the public key if the key is signed.
@@ -40,11 +41,11 @@ class SSHKeyResponse {
 
   factory SSHKeyResponse.fromMap(Map<String, dynamic> map) {
     return SSHKeyResponse(
-      certificate: map['certificate'] as String,
-      creationTimeStamp: map['creationTimeStamp'] as double,
-      expirationTimeStamp: map['expirationTimeStamp'] as double,
-      privateKey: map['privateKey'] as String,
-      publicKey: map['publicKey'] as String,
+      certificate: (map['certificate'] as String).input(),
+      creationTimeStamp: (map['creationTimeStamp'] as double).input(),
+      expirationTimeStamp: (map['expirationTimeStamp'] as double).input(),
+      privateKey: (map['privateKey'] as String).input(),
+      publicKey: (map['publicKey'] as String).input(),
     );
   }
 }

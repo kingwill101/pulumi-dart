@@ -46,21 +46,14 @@ class BudgetArgs {
   /// [ownershipScope] The ownership scope of the budget. The ownership scope and users'
   /// [thresholdRules] Rules that trigger alerts (notifications of thresholds being
   BudgetArgs({
-    pulumi.Output<BudgetAllUpdatesRule>? allUpdatesRule,
-    required pulumi.Output<BudgetAmount> amount,
-    required pulumi.Output<String> billingAccount,
-    pulumi.Output<BudgetBudgetFilter>? budgetFilter,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? ownershipScope,
-    pulumi.Output<List<BudgetThresholdRule>>? thresholdRules,
-  }) :
-      allUpdatesRule = pulumi.Input.asOptionalInput<BudgetAllUpdatesRule>(allUpdatesRule),
-      amount = pulumi.Input.asInput<BudgetAmount>(amount),
-      billingAccount = pulumi.Input.asInput<String>(billingAccount),
-      budgetFilter = pulumi.Input.asOptionalInput<BudgetBudgetFilter>(budgetFilter),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      ownershipScope = pulumi.Input.asOptionalInput<String>(ownershipScope),
-      thresholdRules = pulumi.Input.asOptionalInput<List<BudgetThresholdRule>>(thresholdRules);
+    this.allUpdatesRule,
+    required this.amount,
+    required this.billingAccount,
+    this.budgetFilter,
+    this.displayName,
+    this.ownershipScope,
+    this.thresholdRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,13 +69,13 @@ class BudgetArgs {
 
   factory BudgetArgs.fromMap(Map<String, dynamic> map) {
     return BudgetArgs(
-      allUpdatesRule: map['allUpdatesRule'] == null ? null : pulumi.Output.create<BudgetAllUpdatesRule>(BudgetAllUpdatesRule.fromMap((map['allUpdatesRule'] as Map).cast<String, dynamic>())),
-      amount: pulumi.Output.create<BudgetAmount>(BudgetAmount.fromMap((map['amount'] as Map).cast<String, dynamic>())),
-      billingAccount: pulumi.Output.create<String>(map['billingAccount'] as String),
-      budgetFilter: map['budgetFilter'] == null ? null : pulumi.Output.create<BudgetBudgetFilter>(BudgetBudgetFilter.fromMap((map['budgetFilter'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      ownershipScope: map['ownershipScope'] == null ? null : pulumi.Output.create<String>(map['ownershipScope'] as String),
-      thresholdRules: map['thresholdRules'] == null ? null : pulumi.Output.create<List<BudgetThresholdRule>>(pulumi.Input.decodeList<BudgetThresholdRule>(map['thresholdRules'], (value) => BudgetThresholdRule.fromMap((value as Map).cast<String, dynamic>()))),
+      allUpdatesRule: map['allUpdatesRule'] == null ? null : (BudgetAllUpdatesRule.fromMap((map['allUpdatesRule'] as Map).cast<String, dynamic>())).input(),
+      amount: (BudgetAmount.fromMap((map['amount'] as Map).cast<String, dynamic>())).input(),
+      billingAccount: (map['billingAccount'] as String).input(),
+      budgetFilter: map['budgetFilter'] == null ? null : (BudgetBudgetFilter.fromMap((map['budgetFilter'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      ownershipScope: map['ownershipScope'] == null ? null : (map['ownershipScope'] as String).input(),
+      thresholdRules: map['thresholdRules'] == null ? null : (pulumi.Input.decodeList<BudgetThresholdRule>(map['thresholdRules'], (value) => BudgetThresholdRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetTenantActionGroupArgs {
   /// [managementGroupId] The management group id.
   /// [tenantActionGroupName] The name of the action group.
   GetTenantActionGroupArgs({
-    required pulumi.Output<String> managementGroupId,
-    required pulumi.Output<String> tenantActionGroupName,
-  }) :
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      tenantActionGroupName = pulumi.Input.asInput<String>(tenantActionGroupName);
+    required this.managementGroupId,
+    required this.tenantActionGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetTenantActionGroupArgs {
 
   factory GetTenantActionGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetTenantActionGroupArgs(
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      tenantActionGroupName: pulumi.Output.create<String>(map['tenantActionGroupName'] as String),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      tenantActionGroupName: (map['tenantActionGroupName'] as String).input(),
     );
   }
 }

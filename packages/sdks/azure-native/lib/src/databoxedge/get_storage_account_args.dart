@@ -19,13 +19,10 @@ class GetStorageAccountArgs {
   /// [resourceGroupName] The resource group name.
   /// [storageAccountName] The storage account name.
   GetStorageAccountArgs({
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageAccountName,
-  }) :
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageAccountName = pulumi.Input.asInput<String>(storageAccountName);
+    required this.deviceName,
+    required this.resourceGroupName,
+    required this.storageAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetStorageAccountArgs {
 
   factory GetStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageAccountArgs(
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageAccountName: pulumi.Output.create<String>(map['storageAccountName'] as String),
+      deviceName: (map['deviceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageAccountName: (map['storageAccountName'] as String).input(),
     );
   }
 }

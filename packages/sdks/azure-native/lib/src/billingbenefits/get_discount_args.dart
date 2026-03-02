@@ -16,11 +16,9 @@ class GetDiscountArgs {
   /// [discountName] Name of the discount
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDiscountArgs({
-    required pulumi.Output<String> discountName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      discountName = pulumi.Input.asInput<String>(discountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.discountName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDiscountArgs {
 
   factory GetDiscountArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscountArgs(
-      discountName: pulumi.Output.create<String>(map['discountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      discountName: (map['discountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

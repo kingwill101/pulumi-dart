@@ -42,27 +42,17 @@ class KustoPoolArgs {
   /// [workspaceName] The name of the workspace.
   /// [workspaceUID] The workspace unique identifier.
   KustoPoolArgs({
-    pulumi.Output<bool>? enablePurge,
-    pulumi.Output<bool>? enableStreamingIngest,
-    pulumi.Output<String>? kustoPoolName,
-    pulumi.Output<String>? location,
-    pulumi.Output<OptimizedAutoscale>? optimizedAutoscale,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<AzureSku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> workspaceName,
-    pulumi.Output<String>? workspaceUID,
-  }) :
-      enablePurge = pulumi.Input.asOptionalInput<bool>(enablePurge),
-      enableStreamingIngest = pulumi.Input.asOptionalInput<bool>(enableStreamingIngest),
-      kustoPoolName = pulumi.Input.asOptionalInput<String>(kustoPoolName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      optimizedAutoscale = pulumi.Input.asOptionalInput<OptimizedAutoscale>(optimizedAutoscale),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<AzureSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName),
-      workspaceUID = pulumi.Input.asOptionalInput<String>(workspaceUID);
+    this.enablePurge,
+    this.enableStreamingIngest,
+    this.kustoPoolName,
+    this.location,
+    this.optimizedAutoscale,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+    required this.workspaceName,
+    this.workspaceUID,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class KustoPoolArgs {
 
   factory KustoPoolArgs.fromMap(Map<String, dynamic> map) {
     return KustoPoolArgs(
-      enablePurge: map['enablePurge'] == null ? null : pulumi.Output.create<bool>(map['enablePurge'] as bool),
-      enableStreamingIngest: map['enableStreamingIngest'] == null ? null : pulumi.Output.create<bool>(map['enableStreamingIngest'] as bool),
-      kustoPoolName: map['kustoPoolName'] == null ? null : pulumi.Output.create<String>(map['kustoPoolName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      optimizedAutoscale: map['optimizedAutoscale'] == null ? null : pulumi.Output.create<OptimizedAutoscale>(OptimizedAutoscale.fromMap((map['optimizedAutoscale'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<AzureSku>(AzureSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
-      workspaceUID: map['workspaceUID'] == null ? null : pulumi.Output.create<String>(map['workspaceUID'] as String),
+      enablePurge: map['enablePurge'] == null ? null : (map['enablePurge'] as bool).input(),
+      enableStreamingIngest: map['enableStreamingIngest'] == null ? null : (map['enableStreamingIngest'] as bool).input(),
+      kustoPoolName: map['kustoPoolName'] == null ? null : (map['kustoPoolName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      optimizedAutoscale: map['optimizedAutoscale'] == null ? null : (OptimizedAutoscale.fromMap((map['optimizedAutoscale'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (AzureSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
+      workspaceUID: map['workspaceUID'] == null ? null : (map['workspaceUID'] as String).input(),
     );
   }
 }

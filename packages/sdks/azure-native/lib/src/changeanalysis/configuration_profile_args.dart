@@ -24,15 +24,11 @@ class ConfigurationProfileArgs {
   /// [profileName] The name of the configuration profile. The profile name should be set to 'default', all other names will be overwritten.
   /// [properties] The properties of a configuration profile.
   ConfigurationProfileArgs({
-    pulumi.Output<ResourceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? profileName,
-    pulumi.Output<ConfigurationProfileResourceProperties>? properties,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ResourceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      profileName = pulumi.Input.asOptionalInput<String>(profileName),
-      properties = pulumi.Input.asOptionalInput<ConfigurationProfileResourceProperties>(properties);
+    this.identity,
+    this.location,
+    this.profileName,
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ConfigurationProfileArgs {
 
   factory ConfigurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ResourceIdentity>(ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      profileName: map['profileName'] == null ? null : pulumi.Output.create<String>(map['profileName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ConfigurationProfileResourceProperties>(ConfigurationProfileResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
+      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationProfileResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -42,27 +42,17 @@ class CertificateOrderArgs {
   /// [tags] (Optional) A mapping of tags to assign to the resource.
   /// [validityInYears] Duration in years (must be between `1` and `3`). Defaults to `1`.
   CertificateOrderArgs({
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<String>? csr,
-    pulumi.Output<String>? distinguishedName,
-    pulumi.Output<int>? keySize,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? productType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? validityInYears,
-  }) :
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      csr = pulumi.Input.asOptionalInput<String>(csr),
-      distinguishedName = pulumi.Input.asOptionalInput<String>(distinguishedName),
-      keySize = pulumi.Input.asOptionalInput<int>(keySize),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      productType = pulumi.Input.asOptionalInput<String>(productType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      validityInYears = pulumi.Input.asOptionalInput<int>(validityInYears);
+    this.autoRenew,
+    this.csr,
+    this.distinguishedName,
+    this.keySize,
+    this.location,
+    this.name,
+    this.productType,
+    required this.resourceGroupName,
+    this.tags,
+    this.validityInYears,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class CertificateOrderArgs {
 
   factory CertificateOrderArgs.fromMap(Map<String, dynamic> map) {
     return CertificateOrderArgs(
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      csr: map['csr'] == null ? null : pulumi.Output.create<String>(map['csr'] as String),
-      distinguishedName: map['distinguishedName'] == null ? null : pulumi.Output.create<String>(map['distinguishedName'] as String),
-      keySize: map['keySize'] == null ? null : pulumi.Output.create<int>(map['keySize'] as int),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      productType: map['productType'] == null ? null : pulumi.Output.create<String>(map['productType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      validityInYears: map['validityInYears'] == null ? null : pulumi.Output.create<int>(map['validityInYears'] as int),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      csr: map['csr'] == null ? null : (map['csr'] as String).input(),
+      distinguishedName: map['distinguishedName'] == null ? null : (map['distinguishedName'] as String).input(),
+      keySize: map['keySize'] == null ? null : (map['keySize'] as int).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      validityInYears: map['validityInYears'] == null ? null : (map['validityInYears'] as int).input(),
     );
   }
 }

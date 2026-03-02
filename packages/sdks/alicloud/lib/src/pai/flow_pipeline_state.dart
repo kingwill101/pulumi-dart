@@ -16,13 +16,10 @@ class FlowPipelineState {
   /// [manifest] The pipeline definition. For more information, see the sample pipeline definition).
   /// [workspaceId] The ID of the workspace.
   FlowPipelineState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? manifest,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      manifest = pulumi.Input.asOptionalInput<String>(manifest),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.createTime,
+    this.manifest,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class FlowPipelineState {
 
   factory FlowPipelineState.fromMap(Map<String, dynamic> map) {
     return FlowPipelineState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      manifest: map['manifest'] == null ? null : pulumi.Output.create<String>(map['manifest'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      manifest: map['manifest'] == null ? null : (map['manifest'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

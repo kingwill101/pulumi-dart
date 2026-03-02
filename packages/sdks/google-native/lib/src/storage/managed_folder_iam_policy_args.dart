@@ -33,23 +33,15 @@ class ManagedFolderIamPolicyArgs {
   /// [userProject] The project to be billed for this request. Required for Requester Pays buckets.
   /// [version] The IAM policy format version.
   ManagedFolderIamPolicyArgs({
-    pulumi.Output<List<ManagedFolderIamPolicyBindingsItem>>? bindings,
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> managedFolder,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? userProject,
-    pulumi.Output<int>? version,
-  }) :
-      bindings = pulumi.Input.asOptionalInput<List<ManagedFolderIamPolicyBindingsItem>>(bindings),
-      bucket = pulumi.Input.asInput<String>(bucket),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      managedFolder = pulumi.Input.asInput<String>(managedFolder),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.bindings,
+    required this.bucket,
+    this.etag,
+    this.kind,
+    required this.managedFolder,
+    this.resourceId,
+    this.userProject,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ManagedFolderIamPolicyArgs {
 
   factory ManagedFolderIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedFolderIamPolicyArgs(
-      bindings: map['bindings'] == null ? null : pulumi.Output.create<List<ManagedFolderIamPolicyBindingsItem>>(pulumi.Input.decodeList<ManagedFolderIamPolicyBindingsItem>(map['bindings'], (value) => ManagedFolderIamPolicyBindingsItem.fromMap((value as Map).cast<String, dynamic>()))),
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      managedFolder: pulumi.Output.create<String>(map['managedFolder'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<ManagedFolderIamPolicyBindingsItem>(map['bindings'], (value) => ManagedFolderIamPolicyBindingsItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bucket: (map['bucket'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      managedFolder: (map['managedFolder'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

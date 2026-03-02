@@ -34,23 +34,15 @@ class NfsShareArgs {
   /// [requestedSizeGib] The requested size, in GiB.
   /// [storageType] Immutable. The storage type of the underlying volume.
   NfsShareArgs({
-    pulumi.Output<List<AllowedClient>>? allowedClients,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pod,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestedSizeGib,
-    pulumi.Output<NfsShareStorageType>? storageType,
-  }) :
-      allowedClients = pulumi.Input.asOptionalInput<List<AllowedClient>>(allowedClients),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pod = pulumi.Input.asOptionalInput<String>(pod),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestedSizeGib = pulumi.Input.asOptionalInput<String>(requestedSizeGib),
-      storageType = pulumi.Input.asOptionalInput<NfsShareStorageType>(storageType);
+    this.allowedClients,
+    this.labels,
+    this.location,
+    this.name,
+    this.pod,
+    this.project,
+    this.requestedSizeGib,
+    this.storageType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class NfsShareArgs {
 
   factory NfsShareArgs.fromMap(Map<String, dynamic> map) {
     return NfsShareArgs(
-      allowedClients: map['allowedClients'] == null ? null : pulumi.Output.create<List<AllowedClient>>(pulumi.Input.decodeList<AllowedClient>(map['allowedClients'], (value) => AllowedClient.fromMap((value as Map).cast<String, dynamic>()))),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pod: map['pod'] == null ? null : pulumi.Output.create<String>(map['pod'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestedSizeGib: map['requestedSizeGib'] == null ? null : pulumi.Output.create<String>(map['requestedSizeGib'] as String),
-      storageType: map['storageType'] == null ? null : pulumi.Output.create<NfsShareStorageType>(NfsShareStorageType.fromValue(map['storageType'] as String)),
+      allowedClients: map['allowedClients'] == null ? null : (pulumi.Input.decodeList<AllowedClient>(map['allowedClients'], (value) => AllowedClient.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pod: map['pod'] == null ? null : (map['pod'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestedSizeGib: map['requestedSizeGib'] == null ? null : (map['requestedSizeGib'] as String).input(),
+      storageType: map['storageType'] == null ? null : (NfsShareStorageType.fromValue(map['storageType'] as String)).input(),
     );
   }
 }

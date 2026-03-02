@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of the volume mount.
 class VolumeMountResponse {
   /// The path within the container where the volume should be mounted. Must not contain colon (:).
-  final String mountPath;
+  final pulumi.Input<String> mountPath;
   /// The name of the volume mount.
-  final String name;
+  final pulumi.Input<String> name;
   /// The flag indicating whether the volume mount is read-only.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
 
   /// Creates a new [VolumeMountResponse].
   /// [mountPath] The path within the container where the volume should be mounted. Must not contain colon (:).
@@ -30,9 +31,9 @@ class VolumeMountResponse {
 
   factory VolumeMountResponse.fromMap(Map<String, dynamic> map) {
     return VolumeMountResponse(
-      mountPath: map['mountPath'] as String,
-      name: map['name'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
+      mountPath: (map['mountPath'] as String).input(),
+      name: (map['name'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
     );
   }
 }

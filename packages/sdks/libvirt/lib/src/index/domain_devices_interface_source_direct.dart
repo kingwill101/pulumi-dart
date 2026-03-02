@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceSourceDirect {
   /// Defines the physical device name for the direct attachment of the network interface.
-  final String? dev;
+  final pulumi.Input<String>? dev;
   /// Sets the mode for the direct connection of the network interface, specifying how it interacts with the host.
-  final String? mode;
+  final pulumi.Input<String>? mode;
 
   /// Creates a new [DomainDevicesInterfaceSourceDirect].
   /// [dev] Defines the physical device name for the direct attachment of the network interface.
@@ -24,8 +25,8 @@ class DomainDevicesInterfaceSourceDirect {
 
   factory DomainDevicesInterfaceSourceDirect.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceDirect(
-      dev: map['dev'] == null ? null : map['dev'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
     );
   }
 }

@@ -6,19 +6,19 @@ import 'investigation_metadata_response.dart';
 /// The issue properties
 class IssuePropertiesResponse {
   /// The issue impact time (in UTC)
-  final String impactTime;
+  final pulumi.Input<String> impactTime;
   /// The list of investigations in the issue
-  final List<InvestigationMetadataResponse> investigations;
+  final pulumi.Input<List<InvestigationMetadataResponse>> investigations;
   /// The number of investigations in the issue
-  final int investigationsCount;
+  final pulumi.Input<int> investigationsCount;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The issue severity
-  final String severity;
+  final pulumi.Input<String> severity;
   /// The issue status
-  final String status;
+  final pulumi.Input<String> status;
   /// The issue title
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [IssuePropertiesResponse].
   /// [impactTime] The issue impact time (in UTC)
@@ -41,7 +41,7 @@ class IssuePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'impactTime': impactTime,
-      'investigations': pulumi.Input.encodeList<InvestigationMetadataResponse, Map<String, dynamic>>(investigations, (value) => value.toMap()),
+      'investigations': pulumi.Input.mapInputValue<List<InvestigationMetadataResponse>, List<Map<String, dynamic>>>(investigations, (value) => pulumi.Input.encodeList<InvestigationMetadataResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'investigationsCount': investigationsCount,
       'provisioningState': provisioningState,
       'severity': severity,
@@ -52,13 +52,13 @@ class IssuePropertiesResponse {
 
   factory IssuePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IssuePropertiesResponse(
-      impactTime: map['impactTime'] as String,
-      investigations: pulumi.Input.decodeList<InvestigationMetadataResponse>(map['investigations'], (value) => InvestigationMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
-      investigationsCount: map['investigationsCount'] as int,
-      provisioningState: map['provisioningState'] as String,
-      severity: map['severity'] as String,
-      status: map['status'] as String,
-      title: map['title'] as String,
+      impactTime: (map['impactTime'] as String).input(),
+      investigations: (pulumi.Input.decodeList<InvestigationMetadataResponse>(map['investigations'], (value) => InvestigationMetadataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      investigationsCount: (map['investigationsCount'] as int).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      status: (map['status'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

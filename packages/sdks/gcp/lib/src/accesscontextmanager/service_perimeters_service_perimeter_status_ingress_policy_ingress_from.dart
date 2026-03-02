@@ -7,15 +7,15 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
   /// A list of identities that are allowed access through this ingress policy.
   /// Should be in the format of email address. The email address should represent
   /// individual user or service account only.
-  final List<String>? identities;
+  final pulumi.Input<List<String>>? identities;
   /// Specifies the type of identities that are allowed access from outside the
   /// perimeter. If left unspecified, then members of `identities` field will be
   /// allowed access.
   /// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-  final String? identityType;
+  final pulumi.Input<String>? identityType;
   /// Sources that this `IngressPolicy` authorizes access from.
   /// Structure is documented below.
-  final List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource>? sources;
+  final pulumi.Input<List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource>>? sources;
 
   /// Creates a new [ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom].
   /// [identities] A list of identities that are allowed access through this ingress policy.
@@ -31,15 +31,15 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
     return <String, dynamic>{
       'identities': ?identities,
       'identityType': ?identityType,
-      'sources': ?sources == null ? null : pulumi.Input.encodeList<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource, Map<String, dynamic>>(sources!, (value) => value.toMap()),
+      'sources': ?pulumi.Input.mapOptionalInputValue<List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom.fromMap(Map<String, dynamic> map) {
     return ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom(
-      identities: map['identities'] == null ? null : (map['identities'] as List).cast<String>(),
-      identityType: map['identityType'] == null ? null : map['identityType'] as String,
-      sources: map['sources'] == null ? null : pulumi.Input.decodeList<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource>(map['sources'], (value) => ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource.fromMap((value as Map).cast<String, dynamic>())),
+      identities: map['identities'] == null ? null : ((map['identities'] as List).cast<String>()).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource>(map['sources'], (value) => ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RiskConfigurationRiskExceptionConfiguration {
   /// Overrides the risk decision to always block the pre-authentication requests.
   /// The IP range is in CIDR notation, a compact representation of an IP address and its routing prefix.
   /// Can contain a maximum of 200 items.
-  final List<String>? blockedIpRangeLists;
+  final pulumi.Input<List<String>>? blockedIpRangeLists;
   /// Risk detection isn't performed on the IP addresses in this range list.
   /// The IP range is in CIDR notation.
   /// Can contain a maximum of 200 items.
-  final List<String>? skippedIpRangeLists;
+  final pulumi.Input<List<String>>? skippedIpRangeLists;
 
   /// Creates a new [RiskConfigurationRiskExceptionConfiguration].
   /// [blockedIpRangeLists] Overrides the risk decision to always block the pre-authentication requests.
@@ -28,8 +29,8 @@ class RiskConfigurationRiskExceptionConfiguration {
 
   factory RiskConfigurationRiskExceptionConfiguration.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationRiskExceptionConfiguration(
-      blockedIpRangeLists: map['blockedIpRangeLists'] == null ? null : (map['blockedIpRangeLists'] as List).cast<String>(),
-      skippedIpRangeLists: map['skippedIpRangeLists'] == null ? null : (map['skippedIpRangeLists'] as List).cast<String>(),
+      blockedIpRangeLists: map['blockedIpRangeLists'] == null ? null : ((map['blockedIpRangeLists'] as List).cast<String>()).input(),
+      skippedIpRangeLists: map['skippedIpRangeLists'] == null ? null : ((map['skippedIpRangeLists'] as List).cast<String>()).input(),
     );
   }
 }

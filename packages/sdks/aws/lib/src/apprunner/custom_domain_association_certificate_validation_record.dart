@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomDomainAssociationCertificateValidationRecord {
   /// Certificate CNAME record name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Current state of the certificate CNAME record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Record type, always `CNAME`.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Certificate CNAME record value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [CustomDomainAssociationCertificateValidationRecord].
   /// [name] Certificate CNAME record name.
@@ -34,10 +35,10 @@ class CustomDomainAssociationCertificateValidationRecord {
 
   factory CustomDomainAssociationCertificateValidationRecord.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationCertificateValidationRecord(
-      name: map['name'] == null ? null : map['name'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

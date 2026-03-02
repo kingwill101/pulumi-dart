@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp {
   /// Sets the bind host address for the UDP connection in the random number generator backend.
-  final String bindHost;
+  final pulumi.Input<String> bindHost;
   /// Specifies the service attribute for binding in the UDP settings.
-  final String bindService;
+  final pulumi.Input<String> bindService;
   /// Configures the host address used for the connection in the UDP settings.
-  final String connectHost;
+  final pulumi.Input<String> connectHost;
   /// Defines the service attribute for the connection in the UDP settings.
-  final String connectService;
+  final pulumi.Input<String> connectService;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp].
   /// [bindHost] Sets the bind host address for the UDP connection in the random number generator backend.
@@ -34,10 +35,10 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp {
 
   factory DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp(
-      bindHost: map['bindHost'] as String,
-      bindService: map['bindService'] as String,
-      connectHost: map['connectHost'] as String,
-      connectService: map['connectService'] as String,
+      bindHost: (map['bindHost'] as String).input(),
+      bindService: (map['bindService'] as String).input(),
+      connectHost: (map['connectHost'] as String).input(),
+      connectService: (map['connectService'] as String).input(),
     );
   }
 }

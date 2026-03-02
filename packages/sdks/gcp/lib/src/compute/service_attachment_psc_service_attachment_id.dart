@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceAttachmentPscServiceAttachmentId {
   /// (Output)
   /// The high 64 bits of the PSC service attachment ID.
-  final String? high;
+  final pulumi.Input<String>? high;
   /// (Output)
   /// The low 64 bits of the PSC service attachment ID.
-  final String? low;
+  final pulumi.Input<String>? low;
 
   /// Creates a new [ServiceAttachmentPscServiceAttachmentId].
   /// [high] (Output)
@@ -26,8 +27,8 @@ class ServiceAttachmentPscServiceAttachmentId {
 
   factory ServiceAttachmentPscServiceAttachmentId.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentPscServiceAttachmentId(
-      high: map['high'] == null ? null : map['high'] as String,
-      low: map['low'] == null ? null : map['low'] as String,
+      high: map['high'] == null ? null : (map['high'] as String).input(),
+      low: map['low'] == null ? null : (map['low'] as String).input(),
     );
   }
 }

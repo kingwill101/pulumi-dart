@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterConfigMetastoreConfig {
   /// Resource name of an existing Dataproc Metastore service.
@@ -7,7 +8,7 @@ class ClusterClusterConfigMetastoreConfig {
   /// Only resource names including projectid and location (region) are valid. Examples:
   ///
   /// `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
-  final String dataprocMetastoreService;
+  final pulumi.Input<String> dataprocMetastoreService;
 
   /// Creates a new [ClusterClusterConfigMetastoreConfig].
   /// [dataprocMetastoreService] Resource name of an existing Dataproc Metastore service.
@@ -23,7 +24,7 @@ class ClusterClusterConfigMetastoreConfig {
 
   factory ClusterClusterConfigMetastoreConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigMetastoreConfig(
-      dataprocMetastoreService: map['dataprocMetastoreService'] as String,
+      dataprocMetastoreService: (map['dataprocMetastoreService'] as String).input(),
     );
   }
 }

@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Database mirroring endpoint related properties.
 class DBMEndpointResponse {
   /// Name of the certificate.
-  final String certificateName;
+  final pulumi.Input<String> certificateName;
   /// The type of connection authentication required for connections to this endpoint
-  final String connectionAuth;
+  final pulumi.Input<String> connectionAuth;
   /// Encryption Algorithm
-  final String encryptionAlgorithm;
+  final pulumi.Input<String> encryptionAlgorithm;
   /// Name of the database mirroring endpoint.
-  final String endpointName;
+  final pulumi.Input<String> endpointName;
   /// Listener IP address.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// Is the port number dynamically assigned.
-  final bool isDynamicPort;
+  final pulumi.Input<bool> isDynamicPort;
   /// Is Encryption enabled
-  final bool isEncryptionEnabled;
+  final pulumi.Input<bool> isEncryptionEnabled;
   /// The port number that the endpoint is listening on.
-  final int port;
+  final pulumi.Input<int> port;
   /// Mirroring Role
-  final String role;
+  final pulumi.Input<String> role;
 
   /// Creates a new [DBMEndpointResponse].
   /// [certificateName] Name of the certificate.
@@ -60,15 +61,15 @@ class DBMEndpointResponse {
 
   factory DBMEndpointResponse.fromMap(Map<String, dynamic> map) {
     return DBMEndpointResponse(
-      certificateName: map['certificateName'] as String,
-      connectionAuth: map['connectionAuth'] as String,
-      encryptionAlgorithm: map['encryptionAlgorithm'] as String,
-      endpointName: map['endpointName'] as String,
-      ipAddress: map['ipAddress'] as String,
-      isDynamicPort: map['isDynamicPort'] as bool,
-      isEncryptionEnabled: map['isEncryptionEnabled'] as bool,
-      port: map['port'] as int,
-      role: map['role'] as String,
+      certificateName: (map['certificateName'] as String).input(),
+      connectionAuth: (map['connectionAuth'] as String).input(),
+      encryptionAlgorithm: (map['encryptionAlgorithm'] as String).input(),
+      endpointName: (map['endpointName'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      isDynamicPort: (map['isDynamicPort'] as bool).input(),
+      isEncryptionEnabled: (map['isEncryptionEnabled'] as bool).input(),
+      port: (map['port'] as int).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

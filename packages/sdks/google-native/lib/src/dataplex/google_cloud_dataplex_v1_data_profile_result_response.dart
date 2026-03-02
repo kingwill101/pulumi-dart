@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataplex_v1_data_profile_result_post_scan_actions_result_response.dart';
 import 'google_cloud_dataplex_v1_data_profile_result_profile_response.dart';
 import 'google_cloud_dataplex_v1_scanned_data_response.dart';
@@ -7,13 +8,13 @@ import 'google_cloud_dataplex_v1_scanned_data_response.dart';
 /// DataProfileResult defines the output of DataProfileScan. Each field of the table will have field type specific profile result.
 class GoogleCloudDataplexV1DataProfileResultResponse {
   /// The result of post scan actions.
-  final GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse postScanActionsResult;
+  final pulumi.Input<GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse> postScanActionsResult;
   /// The profile information per field.
-  final GoogleCloudDataplexV1DataProfileResultProfileResponse profile;
+  final pulumi.Input<GoogleCloudDataplexV1DataProfileResultProfileResponse> profile;
   /// The count of rows scanned.
-  final String rowCount;
+  final pulumi.Input<String> rowCount;
   /// The data scanned for this result.
-  final GoogleCloudDataplexV1ScannedDataResponse scannedData;
+  final pulumi.Input<GoogleCloudDataplexV1ScannedDataResponse> scannedData;
 
   /// Creates a new [GoogleCloudDataplexV1DataProfileResultResponse].
   /// [postScanActionsResult] The result of post scan actions.
@@ -29,19 +30,19 @@ class GoogleCloudDataplexV1DataProfileResultResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postScanActionsResult': postScanActionsResult.toMap(),
-      'profile': profile.toMap(),
+      'postScanActionsResult': pulumi.Input.mapInputValue<GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse, Map<String, dynamic>>(postScanActionsResult, (value) => value.toMap()),
+      'profile': pulumi.Input.mapInputValue<GoogleCloudDataplexV1DataProfileResultProfileResponse, Map<String, dynamic>>(profile, (value) => value.toMap()),
       'rowCount': rowCount,
-      'scannedData': scannedData.toMap(),
+      'scannedData': pulumi.Input.mapInputValue<GoogleCloudDataplexV1ScannedDataResponse, Map<String, dynamic>>(scannedData, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDataplexV1DataProfileResultResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultResponse(
-      postScanActionsResult: GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse.fromMap((map['postScanActionsResult'] as Map).cast<String, dynamic>()),
-      profile: GoogleCloudDataplexV1DataProfileResultProfileResponse.fromMap((map['profile'] as Map).cast<String, dynamic>()),
-      rowCount: map['rowCount'] as String,
-      scannedData: GoogleCloudDataplexV1ScannedDataResponse.fromMap((map['scannedData'] as Map).cast<String, dynamic>()),
+      postScanActionsResult: (GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse.fromMap((map['postScanActionsResult'] as Map).cast<String, dynamic>())).input(),
+      profile: (GoogleCloudDataplexV1DataProfileResultProfileResponse.fromMap((map['profile'] as Map).cast<String, dynamic>())).input(),
+      rowCount: (map['rowCount'] as String).input(),
+      scannedData: (GoogleCloudDataplexV1ScannedDataResponse.fromMap((map['scannedData'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

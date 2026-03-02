@@ -19,13 +19,10 @@ class EgressOnlyInternetGatewayArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] The VPC ID to create in.
   EgressOnlyInternetGatewayArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.region,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EgressOnlyInternetGatewayArgs {
 
   factory EgressOnlyInternetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return EgressOnlyInternetGatewayArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

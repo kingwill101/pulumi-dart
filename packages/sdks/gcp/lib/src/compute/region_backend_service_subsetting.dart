@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionBackendServiceSubsetting {
   /// The algorithm used for subsetting.
   /// Possible values are: `CONSISTENT_HASH_SUBSETTING`.
-  final String policy;
+  final pulumi.Input<String> policy;
   /// The number of backends per backend group assigned to each proxy instance or each service mesh client.
   /// An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
   /// CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
@@ -12,7 +13,7 @@ class RegionBackendServiceSubsetting {
   /// If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
   /// of proxies/clients visible to each backend and vice versa.
   /// Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
-  final int? subsetSize;
+  final pulumi.Input<int>? subsetSize;
 
   /// Creates a new [RegionBackendServiceSubsetting].
   /// [policy] The algorithm used for subsetting.
@@ -31,8 +32,8 @@ class RegionBackendServiceSubsetting {
 
   factory RegionBackendServiceSubsetting.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceSubsetting(
-      policy: map['policy'] as String,
-      subsetSize: map['subsetSize'] == null ? null : map['subsetSize'] as int,
+      policy: (map['policy'] as String).input(),
+      subsetSize: map['subsetSize'] == null ? null : (map['subsetSize'] as int).input(),
     );
   }
 }

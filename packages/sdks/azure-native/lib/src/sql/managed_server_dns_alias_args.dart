@@ -21,15 +21,11 @@ class ManagedServerDnsAliasArgs {
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   ManagedServerDnsAliasArgs({
-    pulumi.Output<bool>? createDnsRecord,
-    pulumi.Output<String>? dnsAliasName,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      createDnsRecord = pulumi.Input.asOptionalInput<bool>(createDnsRecord),
-      dnsAliasName = pulumi.Input.asOptionalInput<String>(dnsAliasName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.createDnsRecord,
+    this.dnsAliasName,
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class ManagedServerDnsAliasArgs {
 
   factory ManagedServerDnsAliasArgs.fromMap(Map<String, dynamic> map) {
     return ManagedServerDnsAliasArgs(
-      createDnsRecord: map['createDnsRecord'] == null ? null : pulumi.Output.create<bool>(map['createDnsRecord'] as bool),
-      dnsAliasName: map['dnsAliasName'] == null ? null : pulumi.Output.create<String>(map['dnsAliasName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      createDnsRecord: map['createDnsRecord'] == null ? null : (map['createDnsRecord'] as bool).input(),
+      dnsAliasName: map['dnsAliasName'] == null ? null : (map['dnsAliasName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

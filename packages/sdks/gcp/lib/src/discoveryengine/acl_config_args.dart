@@ -23,13 +23,10 @@ class AclConfigArgs {
   /// [location] The geographic location where the data store should reside. The value can
   /// [project] The ID of the project in which the resource belongs.
   AclConfigArgs({
-    pulumi.Output<AclConfigIdpConfig>? idpConfig,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      idpConfig = pulumi.Input.asOptionalInput<AclConfigIdpConfig>(idpConfig),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.idpConfig,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class AclConfigArgs {
 
   factory AclConfigArgs.fromMap(Map<String, dynamic> map) {
     return AclConfigArgs(
-      idpConfig: map['idpConfig'] == null ? null : pulumi.Output.create<AclConfigIdpConfig>(AclConfigIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      idpConfig: map['idpConfig'] == null ? null : (AclConfigIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

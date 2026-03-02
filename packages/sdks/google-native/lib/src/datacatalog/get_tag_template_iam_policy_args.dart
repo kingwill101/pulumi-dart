@@ -16,13 +16,10 @@ class GetTagTemplateIamPolicyArgs {
   /// [project] Optional.
   /// [tagTemplateId] Required.
   GetTagTemplateIamPolicyArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tagTemplateId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tagTemplateId = pulumi.Input.asInput<String>(tagTemplateId);
+    required this.location,
+    this.project,
+    required this.tagTemplateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetTagTemplateIamPolicyArgs {
 
   factory GetTagTemplateIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTagTemplateIamPolicyArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tagTemplateId: pulumi.Output.create<String>(map['tagTemplateId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tagTemplateId: (map['tagTemplateId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to a LoadBalancer health probe
 class LoadBalancerProbeReferenceResponse {
   /// name of the health probe
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [LoadBalancerProbeReferenceResponse].
   /// [name] name of the health probe
@@ -20,7 +21,7 @@ class LoadBalancerProbeReferenceResponse {
 
   factory LoadBalancerProbeReferenceResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerProbeReferenceResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

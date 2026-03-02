@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the Reachability Analysis Run properties.
 class ReachabilityAnalysisRunProperties {
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Id of the intent resource to run analysis on.
-  final String intentId;
+  final pulumi.Input<String> intentId;
 
   /// Creates a new [ReachabilityAnalysisRunProperties].
   /// [description] Optional.
@@ -24,8 +25,8 @@ class ReachabilityAnalysisRunProperties {
 
   factory ReachabilityAnalysisRunProperties.fromMap(Map<String, dynamic> map) {
     return ReachabilityAnalysisRunProperties(
-      description: map['description'] == null ? null : map['description'] as String,
-      intentId: map['intentId'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      intentId: (map['intentId'] as String).input(),
     );
   }
 }

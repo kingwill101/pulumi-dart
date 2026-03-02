@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAdConnectorDirectoriesDirectoryAdConnector {
   /// The address of AD connector.
-  final String adConnectorAddress;
+  final pulumi.Input<String> adConnectorAddress;
   /// The status of connector.
-  final String connectorStatus;
+  final pulumi.Input<String> connectorStatus;
   /// The ID of the network interface.
-  final String networkInterfaceId;
+  final pulumi.Input<String> networkInterfaceId;
   /// The AD Connector specifications.
-  final String specification;
+  final pulumi.Input<String> specification;
   /// The AD Connector control trust password.
-  final String trustKey;
+  final pulumi.Input<String> trustKey;
   /// The ID of vSwitch.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetAdConnectorDirectoriesDirectoryAdConnector].
   /// [adConnectorAddress] The address of AD connector.
@@ -44,12 +45,12 @@ class GetAdConnectorDirectoriesDirectoryAdConnector {
 
   factory GetAdConnectorDirectoriesDirectoryAdConnector.fromMap(Map<String, dynamic> map) {
     return GetAdConnectorDirectoriesDirectoryAdConnector(
-      adConnectorAddress: map['adConnectorAddress'] as String,
-      connectorStatus: map['connectorStatus'] as String,
-      networkInterfaceId: map['networkInterfaceId'] as String,
-      specification: map['specification'] as String,
-      trustKey: map['trustKey'] as String,
-      vswitchId: map['vswitchId'] as String,
+      adConnectorAddress: (map['adConnectorAddress'] as String).input(),
+      connectorStatus: (map['connectorStatus'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      specification: (map['specification'] as String).input(),
+      trustKey: (map['trustKey'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

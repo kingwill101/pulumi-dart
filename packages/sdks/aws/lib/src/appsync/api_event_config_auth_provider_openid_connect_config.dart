@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiEventConfigAuthProviderOpenidConnectConfig {
   /// TTL in seconds for the authentication token.
-  final int? authTtl;
+  final pulumi.Input<int>? authTtl;
   /// Client ID for the OpenID Connect provider.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// TTL in seconds for the issued at time.
-  final int? iatTtl;
+  final pulumi.Input<int>? iatTtl;
   /// Issuer URL for the OpenID Connect provider.
-  final String issuer;
+  final pulumi.Input<String> issuer;
 
   /// Creates a new [ApiEventConfigAuthProviderOpenidConnectConfig].
   /// [authTtl] TTL in seconds for the authentication token.
@@ -34,10 +35,10 @@ class ApiEventConfigAuthProviderOpenidConnectConfig {
 
   factory ApiEventConfigAuthProviderOpenidConnectConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigAuthProviderOpenidConnectConfig(
-      authTtl: map['authTtl'] == null ? null : map['authTtl'] as int,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      iatTtl: map['iatTtl'] == null ? null : map['iatTtl'] as int,
-      issuer: map['issuer'] as String,
+      authTtl: map['authTtl'] == null ? null : (map['authTtl'] as int).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      iatTtl: map['iatTtl'] == null ? null : (map['iatTtl'] as int).input(),
+      issuer: (map['issuer'] as String).input(),
     );
   }
 }

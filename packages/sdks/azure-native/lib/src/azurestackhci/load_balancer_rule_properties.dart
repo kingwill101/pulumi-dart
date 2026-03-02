@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_backend_address_pool_reference.dart';
 import 'load_balancer_frontend_ipconfiguration_reference.dart';
 import 'load_balancer_probe_reference.dart';
@@ -7,21 +8,21 @@ import 'load_balancer_probe_reference.dart';
 /// Properties for LoadBalancerRules
 class LoadBalancerRuleProperties {
   /// arm reference to backend pool being used by ths pool
-  final LoadBalancerBackendAddressPoolReference backendAddressPool;
+  final pulumi.Input<LoadBalancerBackendAddressPoolReference> backendAddressPool;
   /// backendPort to forward connections
-  final int backendPort;
+  final pulumi.Input<int> backendPort;
   /// arm reference to frontend IP being used by this LB
-  final LoadBalancerFrontendIPConfigurationReference frontendIPConfiguration;
+  final pulumi.Input<LoadBalancerFrontendIPConfigurationReference> frontendIPConfiguration;
   /// Frontend port to accept connections
-  final int frontendPort;
+  final pulumi.Input<int> frontendPort;
   /// Time for which connections are preserved before being torn down.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// SessionPersistence: Default (5-tuple), SourceIP(2-tuple), sourceIPProtocol(3-tuple)
-  final String? loadDistribution;
+  final pulumi.Input<String>? loadDistribution;
   /// Reference for the health probe for this connection
-  final LoadBalancerProbeReference? probe;
+  final pulumi.Input<LoadBalancerProbeReference>? probe;
   /// IP Protocol that the rule must load-balance
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [LoadBalancerRuleProperties].
   /// [backendAddressPool] arm reference to backend pool being used by ths pool
@@ -45,27 +46,27 @@ class LoadBalancerRuleProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddressPool': backendAddressPool.toMap(),
+      'backendAddressPool': pulumi.Input.mapInputValue<LoadBalancerBackendAddressPoolReference, Map<String, dynamic>>(backendAddressPool, (value) => value.toMap()),
       'backendPort': backendPort,
-      'frontendIPConfiguration': frontendIPConfiguration.toMap(),
+      'frontendIPConfiguration': pulumi.Input.mapInputValue<LoadBalancerFrontendIPConfigurationReference, Map<String, dynamic>>(frontendIPConfiguration, (value) => value.toMap()),
       'frontendPort': frontendPort,
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
       'loadDistribution': ?loadDistribution,
-      'probe': ?probe == null ? null : probe!.toMap(),
+      'probe': ?pulumi.Input.mapOptionalInputValue<LoadBalancerProbeReference, Map<String, dynamic>>(probe, (value) => value.toMap()),
       'protocol': protocol,
     };
   }
 
   factory LoadBalancerRuleProperties.fromMap(Map<String, dynamic> map) {
     return LoadBalancerRuleProperties(
-      backendAddressPool: LoadBalancerBackendAddressPoolReference.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>()),
-      backendPort: map['backendPort'] as int,
-      frontendIPConfiguration: LoadBalancerFrontendIPConfigurationReference.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>()),
-      frontendPort: map['frontendPort'] as int,
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      loadDistribution: map['loadDistribution'] == null ? null : map['loadDistribution'] as String,
-      probe: map['probe'] == null ? null : LoadBalancerProbeReference.fromMap((map['probe'] as Map).cast<String, dynamic>()),
-      protocol: map['protocol'] as String,
+      backendAddressPool: (LoadBalancerBackendAddressPoolReference.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
+      backendPort: (map['backendPort'] as int).input(),
+      frontendIPConfiguration: (LoadBalancerFrontendIPConfigurationReference.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      frontendPort: (map['frontendPort'] as int).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      loadDistribution: map['loadDistribution'] == null ? null : (map['loadDistribution'] as String).input(),
+      probe: map['probe'] == null ? null : (LoadBalancerProbeReference.fromMap((map['probe'] as Map).cast<String, dynamic>())).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

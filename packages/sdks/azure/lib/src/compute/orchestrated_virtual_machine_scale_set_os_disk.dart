@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'orchestrated_virtual_machine_scale_set_os_disk_diff_disk_settings.dart';
 
 class OrchestratedVirtualMachineScaleSetOsDisk {
   /// The Type of Caching which should be used for the Internal OS Disk. Possible values are `None`, `ReadOnly` and `ReadWrite`.
-  final String caching;
+  final pulumi.Input<String> caching;
   /// A `diff_disk_settings` block as defined above. Changing this forces a new resource to be created.
-  final OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings? diffDiskSettings;
+  final pulumi.Input<OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings>? diffDiskSettings;
   /// The ID of the Disk Encryption Set which should be used to encrypt this OS Disk. Changing this forces a new resource to be created.
   ///
   /// > **Note:** Disk Encryption Sets are in Public Preview in a limited set of regions
-  final String? diskEncryptionSetId;
+  final pulumi.Input<String>? diskEncryptionSetId;
   /// The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine Scale Set is sourced from.
-  final int? diskSizeGb;
+  final pulumi.Input<int>? diskSizeGb;
   /// The Type of Storage Account which should back this the Internal OS Disk. Possible values include `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS`, `Premium_LRS` and `Premium_ZRS`. Changing this forces a new resource to be created.
-  final String storageAccountType;
+  final pulumi.Input<String> storageAccountType;
   /// Specifies if Write Accelerator is enabled on the OS Disk. Defaults to `false`.
-  final bool? writeAcceleratorEnabled;
+  final pulumi.Input<bool>? writeAcceleratorEnabled;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsDisk].
   /// [caching] The Type of Caching which should be used for the Internal OS Disk. Possible values are `None`, `ReadOnly` and `ReadWrite`.
@@ -37,7 +38,7 @@ class OrchestratedVirtualMachineScaleSetOsDisk {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'caching': caching,
-      'diffDiskSettings': ?diffDiskSettings == null ? null : diffDiskSettings!.toMap(),
+      'diffDiskSettings': ?pulumi.Input.mapOptionalInputValue<OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings, Map<String, dynamic>>(diffDiskSettings, (value) => value.toMap()),
       'diskEncryptionSetId': ?diskEncryptionSetId,
       'diskSizeGb': ?diskSizeGb,
       'storageAccountType': storageAccountType,
@@ -47,12 +48,12 @@ class OrchestratedVirtualMachineScaleSetOsDisk {
 
   factory OrchestratedVirtualMachineScaleSetOsDisk.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetOsDisk(
-      caching: map['caching'] as String,
-      diffDiskSettings: map['diffDiskSettings'] == null ? null : OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings.fromMap((map['diffDiskSettings'] as Map).cast<String, dynamic>()),
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : map['diskEncryptionSetId'] as String,
-      diskSizeGb: map['diskSizeGb'] == null ? null : map['diskSizeGb'] as int,
-      storageAccountType: map['storageAccountType'] as String,
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : map['writeAcceleratorEnabled'] as bool,
+      caching: (map['caching'] as String).input(),
+      diffDiskSettings: map['diffDiskSettings'] == null ? null : (OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings.fromMap((map['diffDiskSettings'] as Map).cast<String, dynamic>())).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
+      storageAccountType: (map['storageAccountType'] as String).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
     );
   }
 }

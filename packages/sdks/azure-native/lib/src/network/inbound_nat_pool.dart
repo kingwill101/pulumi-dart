@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sub_resource.dart';
 
 /// Inbound NAT pool of the load balancer.
 class InboundNatPool {
   /// The port used for internal connections on the endpoint. Acceptable values are between 1 and 65535.
-  final int backendPort;
+  final pulumi.Input<int> backendPort;
   /// Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
-  final bool? enableFloatingIP;
+  final pulumi.Input<bool>? enableFloatingIP;
   /// Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-  final bool? enableTcpReset;
+  final pulumi.Input<bool>? enableTcpReset;
   /// A reference to frontend IP addresses.
-  final SubResource? frontendIPConfiguration;
+  final pulumi.Input<SubResource>? frontendIPConfiguration;
   /// The last port number in the range of external ports that will be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range between 1 and 65535.
-  final int frontendPortRangeEnd;
+  final pulumi.Input<int> frontendPortRangeEnd;
   /// The first port number in the range of external ports that will be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range between 1 and 65534.
-  final int frontendPortRangeStart;
+  final pulumi.Input<int> frontendPortRangeStart;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// The name of the resource that is unique within the set of inbound NAT pools used by the load balancer. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The reference to the transport protocol used by the inbound NAT pool.
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [InboundNatPool].
   /// [backendPort] The port used for internal connections on the endpoint. Acceptable values are between 1 and 65535.
@@ -54,7 +55,7 @@ class InboundNatPool {
       'backendPort': backendPort,
       'enableFloatingIP': ?enableFloatingIP,
       'enableTcpReset': ?enableTcpReset,
-      'frontendIPConfiguration': ?frontendIPConfiguration == null ? null : frontendIPConfiguration!.toMap(),
+      'frontendIPConfiguration': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(frontendIPConfiguration, (value) => value.toMap()),
       'frontendPortRangeEnd': frontendPortRangeEnd,
       'frontendPortRangeStart': frontendPortRangeStart,
       'id': ?id,
@@ -66,16 +67,16 @@ class InboundNatPool {
 
   factory InboundNatPool.fromMap(Map<String, dynamic> map) {
     return InboundNatPool(
-      backendPort: map['backendPort'] as int,
-      enableFloatingIP: map['enableFloatingIP'] == null ? null : map['enableFloatingIP'] as bool,
-      enableTcpReset: map['enableTcpReset'] == null ? null : map['enableTcpReset'] as bool,
-      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : SubResource.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>()),
-      frontendPortRangeEnd: map['frontendPortRangeEnd'] as int,
-      frontendPortRangeStart: map['frontendPortRangeStart'] as int,
-      id: map['id'] == null ? null : map['id'] as String,
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      protocol: map['protocol'] as String,
+      backendPort: (map['backendPort'] as int).input(),
+      enableFloatingIP: map['enableFloatingIP'] == null ? null : (map['enableFloatingIP'] as bool).input(),
+      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset'] as bool).input(),
+      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      frontendPortRangeEnd: (map['frontendPortRangeEnd'] as int).input(),
+      frontendPortRangeStart: (map['frontendPortRangeStart'] as int).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

@@ -50,19 +50,13 @@ class ConnectionIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   ConnectionIamBindingArgs({
-    pulumi.Output<ConnectionIamBindingCondition>? condition,
-    required pulumi.Output<String> connectionId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ConnectionIamBindingCondition>(condition),
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.connectionId,
+    this.location,
+    required this.members,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,12 +71,12 @@ class ConnectionIamBindingArgs {
 
   factory ConnectionIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<ConnectionIamBindingCondition>(ConnectionIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      connectionId: pulumi.Output.create<String>(map['connectionId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (ConnectionIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      connectionId: (map['connectionId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

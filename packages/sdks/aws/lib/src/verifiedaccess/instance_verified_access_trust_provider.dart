@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceVerifiedAccessTrustProvider {
   /// A description for the AWS Verified Access Instance.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The type of device-based trust provider.
-  final String? deviceTrustProviderType;
+  final pulumi.Input<String>? deviceTrustProviderType;
   /// The type of trust provider (user- or device-based).
-  final String? trustProviderType;
+  final pulumi.Input<String>? trustProviderType;
   /// The type of user-based trust provider.
-  final String? userTrustProviderType;
+  final pulumi.Input<String>? userTrustProviderType;
   /// The ID of the trust provider.
-  final String? verifiedAccessTrustProviderId;
+  final pulumi.Input<String>? verifiedAccessTrustProviderId;
 
   /// Creates a new [InstanceVerifiedAccessTrustProvider].
   /// [description] A description for the AWS Verified Access Instance.
@@ -39,11 +40,11 @@ class InstanceVerifiedAccessTrustProvider {
 
   factory InstanceVerifiedAccessTrustProvider.fromMap(Map<String, dynamic> map) {
     return InstanceVerifiedAccessTrustProvider(
-      description: map['description'] == null ? null : map['description'] as String,
-      deviceTrustProviderType: map['deviceTrustProviderType'] == null ? null : map['deviceTrustProviderType'] as String,
-      trustProviderType: map['trustProviderType'] == null ? null : map['trustProviderType'] as String,
-      userTrustProviderType: map['userTrustProviderType'] == null ? null : map['userTrustProviderType'] as String,
-      verifiedAccessTrustProviderId: map['verifiedAccessTrustProviderId'] == null ? null : map['verifiedAccessTrustProviderId'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      deviceTrustProviderType: map['deviceTrustProviderType'] == null ? null : (map['deviceTrustProviderType'] as String).input(),
+      trustProviderType: map['trustProviderType'] == null ? null : (map['trustProviderType'] as String).input(),
+      userTrustProviderType: map['userTrustProviderType'] == null ? null : (map['userTrustProviderType'] as String).input(),
+      verifiedAccessTrustProviderId: map['verifiedAccessTrustProviderId'] == null ? null : (map['verifiedAccessTrustProviderId'] as String).input(),
     );
   }
 }

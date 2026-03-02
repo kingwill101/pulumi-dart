@@ -16,13 +16,10 @@ class GetApplicationArgs {
   /// [location] Required.
   /// [project] Required.
   GetApplicationArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> project,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asInput<String>(project);
+    required this.applicationId,
+    required this.location,
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetApplicationArgs {
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

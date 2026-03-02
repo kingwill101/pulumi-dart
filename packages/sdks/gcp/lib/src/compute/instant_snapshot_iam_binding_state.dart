@@ -46,21 +46,14 @@ class InstantSnapshotIamBindingState {
   /// [role] The role that should be applied. Only one
   /// [zone] A reference to the zone where the disk is located. Used to find the parent resource to bind the IAM policy to. If not specified,
   InstantSnapshotIamBindingState({
-    pulumi.Output<InstantSnapshotIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? zone,
-  }) :
-      condition = pulumi.Input.asOptionalInput<InstantSnapshotIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.condition,
+    this.etag,
+    this.members,
+    this.name,
+    this.project,
+    this.role,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,13 +69,13 @@ class InstantSnapshotIamBindingState {
 
   factory InstantSnapshotIamBindingState.fromMap(Map<String, dynamic> map) {
     return InstantSnapshotIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<InstantSnapshotIamBindingCondition>(InstantSnapshotIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      condition: map['condition'] == null ? null : (InstantSnapshotIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

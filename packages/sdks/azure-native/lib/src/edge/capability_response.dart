@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Capability, to match in Solution Templates and Targets
 class CapabilityResponse {
   /// Description of Capability
-  final String description;
+  final pulumi.Input<String> description;
   /// Name of Capability
-  final String name;
+  final pulumi.Input<String> name;
   /// State of resource
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [CapabilityResponse].
   /// [description] Description of Capability
@@ -30,9 +31,9 @@ class CapabilityResponse {
 
   factory CapabilityResponse.fromMap(Map<String, dynamic> map) {
     return CapabilityResponse(
-      description: map['description'] as String,
-      name: map['name'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      description: (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class DiskInstanceAttachmentState {
   /// [diskId] The ID of the cloud disk to be mounted. The Cloud Disk (DiskId) and the instance (InstanceId) must be on the same node.
   /// [instanceId] Instance ID.
   DiskInstanceAttachmentState({
-    pulumi.Output<String>? deleteWithInstance,
-    pulumi.Output<String>? diskId,
-    pulumi.Output<String>? instanceId,
-  }) :
-      deleteWithInstance = pulumi.Input.asOptionalInput<String>(deleteWithInstance),
-      diskId = pulumi.Input.asOptionalInput<String>(diskId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId);
+    this.deleteWithInstance,
+    this.diskId,
+    this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class DiskInstanceAttachmentState {
 
   factory DiskInstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return DiskInstanceAttachmentState(
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : pulumi.Output.create<String>(map['deleteWithInstance'] as String),
-      diskId: map['diskId'] == null ? null : pulumi.Output.create<String>(map['diskId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
+      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
     );
   }
 }

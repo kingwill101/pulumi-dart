@@ -22,15 +22,11 @@ class GetSenderUsernameArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [senderUsername] The valid sender Username.
   GetSenderUsernameArgs({
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> emailServiceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> senderUsername,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      emailServiceName = pulumi.Input.asInput<String>(emailServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      senderUsername = pulumi.Input.asInput<String>(senderUsername);
+    required this.domainName,
+    required this.emailServiceName,
+    required this.resourceGroupName,
+    required this.senderUsername,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSenderUsernameArgs {
 
   factory GetSenderUsernameArgs.fromMap(Map<String, dynamic> map) {
     return GetSenderUsernameArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      emailServiceName: pulumi.Output.create<String>(map['emailServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      senderUsername: pulumi.Output.create<String>(map['senderUsername'] as String),
+      domainName: (map['domainName'] as String).input(),
+      emailServiceName: (map['emailServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      senderUsername: (map['senderUsername'] as String).input(),
     );
   }
 }

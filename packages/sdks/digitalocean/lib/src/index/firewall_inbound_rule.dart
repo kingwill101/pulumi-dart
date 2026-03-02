@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallInboundRule {
   /// The ports on which traffic will be allowed
   /// specified as a string containing a single port, a range (e.g. "8000-9000"),
   /// or "1-65535" to open all ports for a protocol. Required for when protocol is
   /// `tcp` or `udp`.
-  final String? portRange;
+  final pulumi.Input<String>? portRange;
   /// The type of traffic to be allowed.
   /// This may be one of "tcp", "udp", or "icmp".
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// An array of strings containing the IPv4
   /// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
   /// inbound traffic will be accepted.
-  final List<String>? sourceAddresses;
+  final pulumi.Input<List<String>>? sourceAddresses;
   /// An array containing the IDs of
   /// the Droplets from which the inbound traffic will be accepted.
-  final List<int>? sourceDropletIds;
+  final pulumi.Input<List<int>>? sourceDropletIds;
   /// An array containing the IDs of
   /// the Kubernetes clusters from which the inbound traffic will be accepted.
-  final List<String>? sourceKubernetesIds;
+  final pulumi.Input<List<String>>? sourceKubernetesIds;
   /// An array containing the IDs
   /// of the Load Balancers from which the inbound traffic will be accepted.
-  final List<String>? sourceLoadBalancerUids;
+  final pulumi.Input<List<String>>? sourceLoadBalancerUids;
   /// An array containing the names of Tags
   /// corresponding to groups of Droplets from which the inbound traffic
   /// will be accepted.
-  final List<String>? sourceTags;
+  final pulumi.Input<List<String>>? sourceTags;
 
   /// Creates a new [FirewallInboundRule].
   /// [portRange] The ports on which traffic will be allowed
@@ -60,13 +61,13 @@ class FirewallInboundRule {
 
   factory FirewallInboundRule.fromMap(Map<String, dynamic> map) {
     return FirewallInboundRule(
-      portRange: map['portRange'] == null ? null : map['portRange'] as String,
-      protocol: map['protocol'] as String,
-      sourceAddresses: map['sourceAddresses'] == null ? null : (map['sourceAddresses'] as List).cast<String>(),
-      sourceDropletIds: map['sourceDropletIds'] == null ? null : (map['sourceDropletIds'] as List).cast<int>(),
-      sourceKubernetesIds: map['sourceKubernetesIds'] == null ? null : (map['sourceKubernetesIds'] as List).cast<String>(),
-      sourceLoadBalancerUids: map['sourceLoadBalancerUids'] == null ? null : (map['sourceLoadBalancerUids'] as List).cast<String>(),
-      sourceTags: map['sourceTags'] == null ? null : (map['sourceTags'] as List).cast<String>(),
+      portRange: map['portRange'] == null ? null : (map['portRange'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
+      sourceDropletIds: map['sourceDropletIds'] == null ? null : ((map['sourceDropletIds'] as List).cast<int>()).input(),
+      sourceKubernetesIds: map['sourceKubernetesIds'] == null ? null : ((map['sourceKubernetesIds'] as List).cast<String>()).input(),
+      sourceLoadBalancerUids: map['sourceLoadBalancerUids'] == null ? null : ((map['sourceLoadBalancerUids'] as List).cast<String>()).input(),
+      sourceTags: map['sourceTags'] == null ? null : ((map['sourceTags'] as List).cast<String>()).input(),
     );
   }
 }

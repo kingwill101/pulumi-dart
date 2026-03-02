@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Delta table schema properties
 class DeltaTableSchemaResponse {
   /// Delta table format supported.
-  final String format;
+  final pulumi.Input<String> format;
   /// Delta table schema mapping.
-  final String mapping;
+  final pulumi.Input<String> mapping;
   /// Delta table schema name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Delta table schema optional.
-  final bool optional;
+  final pulumi.Input<bool> optional;
 
   /// Creates a new [DeltaTableSchemaResponse].
   /// [format] Delta table format supported.
@@ -35,10 +36,10 @@ class DeltaTableSchemaResponse {
 
   factory DeltaTableSchemaResponse.fromMap(Map<String, dynamic> map) {
     return DeltaTableSchemaResponse(
-      format: map['format'] as String,
-      mapping: map['mapping'] as String,
-      name: map['name'] as String,
-      optional: map['optional'] as bool,
+      format: (map['format'] as String).input(),
+      mapping: (map['mapping'] as String).input(),
+      name: (map['name'] as String).input(),
+      optional: (map['optional'] as bool).input(),
     );
   }
 }

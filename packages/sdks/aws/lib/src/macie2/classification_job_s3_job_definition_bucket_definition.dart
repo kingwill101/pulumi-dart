@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassificationJobS3JobDefinitionBucketDefinition {
   /// The unique identifier for the AWS account that owns the buckets.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// An array that lists the names of the buckets.
-  final List<String> buckets;
+  final pulumi.Input<List<String>> buckets;
 
   /// Creates a new [ClassificationJobS3JobDefinitionBucketDefinition].
   /// [accountId] The unique identifier for the AWS account that owns the buckets.
@@ -24,8 +25,8 @@ class ClassificationJobS3JobDefinitionBucketDefinition {
 
   factory ClassificationJobS3JobDefinitionBucketDefinition.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionBucketDefinition(
-      accountId: map['accountId'] as String,
-      buckets: (map['buckets'] as List).cast<String>(),
+      accountId: (map['accountId'] as String).input(),
+      buckets: ((map['buckets'] as List).cast<String>()).input(),
     );
   }
 }

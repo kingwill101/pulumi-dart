@@ -38,25 +38,16 @@ class TargetArgs {
   /// [suspendedState] Specifies whether the scaling activities for a scalable target are in a suspended state.
   /// [tags] Map of tags to assign to the scalable target. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   TargetArgs({
-    required pulumi.Output<int> maxCapacity,
-    required pulumi.Output<int> minCapacity,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceId,
-    pulumi.Output<String>? roleArn,
-    required pulumi.Output<String> scalableDimension,
-    required pulumi.Output<String> serviceNamespace,
-    pulumi.Output<TargetSuspendedState>? suspendedState,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      maxCapacity = pulumi.Input.asInput<int>(maxCapacity),
-      minCapacity = pulumi.Input.asInput<int>(minCapacity),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      scalableDimension = pulumi.Input.asInput<String>(scalableDimension),
-      serviceNamespace = pulumi.Input.asInput<String>(serviceNamespace),
-      suspendedState = pulumi.Input.asOptionalInput<TargetSuspendedState>(suspendedState),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.maxCapacity,
+    required this.minCapacity,
+    this.region,
+    required this.resourceId,
+    this.roleArn,
+    required this.scalableDimension,
+    required this.serviceNamespace,
+    this.suspendedState,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      maxCapacity: pulumi.Output.create<int>(map['maxCapacity'] as int),
-      minCapacity: pulumi.Output.create<int>(map['minCapacity'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      scalableDimension: pulumi.Output.create<String>(map['scalableDimension'] as String),
-      serviceNamespace: pulumi.Output.create<String>(map['serviceNamespace'] as String),
-      suspendedState: map['suspendedState'] == null ? null : pulumi.Output.create<TargetSuspendedState>(TargetSuspendedState.fromMap((map['suspendedState'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      maxCapacity: (map['maxCapacity'] as int).input(),
+      minCapacity: (map['minCapacity'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      scalableDimension: (map['scalableDimension'] as String).input(),
+      serviceNamespace: (map['serviceNamespace'] as String).input(),
+      suspendedState: map['suspendedState'] == null ? null : (TargetSuspendedState.fromMap((map['suspendedState'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

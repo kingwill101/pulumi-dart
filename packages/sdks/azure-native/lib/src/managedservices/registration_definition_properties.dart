@@ -7,15 +7,15 @@ import 'eligible_authorization.dart';
 /// The properties of a registration definition.
 class RegistrationDefinitionProperties {
   /// The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-  final List<Authorization> authorizations;
+  final pulumi.Input<List<Authorization>> authorizations;
   /// The description of the registration definition.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-  final List<EligibleAuthorization>? eligibleAuthorizations;
+  final pulumi.Input<List<EligibleAuthorization>>? eligibleAuthorizations;
   /// The identifier of the managedBy tenant.
-  final String managedByTenantId;
+  final pulumi.Input<String> managedByTenantId;
   /// The name of the registration definition.
-  final String? registrationDefinitionName;
+  final pulumi.Input<String>? registrationDefinitionName;
 
   /// Creates a new [RegistrationDefinitionProperties].
   /// [authorizations] The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
@@ -33,9 +33,9 @@ class RegistrationDefinitionProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizations': pulumi.Input.encodeList<Authorization, Map<String, dynamic>>(authorizations, (value) => value.toMap()),
+      'authorizations': pulumi.Input.mapInputValue<List<Authorization>, List<Map<String, dynamic>>>(authorizations, (value) => pulumi.Input.encodeList<Authorization, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
-      'eligibleAuthorizations': ?eligibleAuthorizations == null ? null : pulumi.Input.encodeList<EligibleAuthorization, Map<String, dynamic>>(eligibleAuthorizations!, (value) => value.toMap()),
+      'eligibleAuthorizations': ?pulumi.Input.mapOptionalInputValue<List<EligibleAuthorization>, List<Map<String, dynamic>>>(eligibleAuthorizations, (value) => pulumi.Input.encodeList<EligibleAuthorization, Map<String, dynamic>>(value, (value) => value.toMap())),
       'managedByTenantId': managedByTenantId,
       'registrationDefinitionName': ?registrationDefinitionName,
     };
@@ -43,11 +43,11 @@ class RegistrationDefinitionProperties {
 
   factory RegistrationDefinitionProperties.fromMap(Map<String, dynamic> map) {
     return RegistrationDefinitionProperties(
-      authorizations: pulumi.Input.decodeList<Authorization>(map['authorizations'], (value) => Authorization.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : pulumi.Input.decodeList<EligibleAuthorization>(map['eligibleAuthorizations'], (value) => EligibleAuthorization.fromMap((value as Map).cast<String, dynamic>())),
-      managedByTenantId: map['managedByTenantId'] as String,
-      registrationDefinitionName: map['registrationDefinitionName'] == null ? null : map['registrationDefinitionName'] as String,
+      authorizations: (pulumi.Input.decodeList<Authorization>(map['authorizations'], (value) => Authorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : (pulumi.Input.decodeList<EligibleAuthorization>(map['eligibleAuthorizations'], (value) => EligibleAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedByTenantId: (map['managedByTenantId'] as String).input(),
+      registrationDefinitionName: map['registrationDefinitionName'] == null ? null : (map['registrationDefinitionName'] as String).input(),
     );
   }
 }

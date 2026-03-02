@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesSlack {
-  final String object;
+  final pulumi.Input<String> object;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSlack].
   /// [object] Required.
@@ -18,7 +19,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSlack {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesSlack.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSlack(
-      object: map['object'] as String,
+      object: (map['object'] as String).input(),
     );
   }
 }

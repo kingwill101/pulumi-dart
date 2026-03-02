@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_pool_node_config_guest_accelerator_gpu_driver_installation_config.dart';
 import 'node_pool_node_config_guest_accelerator_gpu_sharing_config.dart';
 
 class NodePoolNodeConfigGuestAccelerator {
   /// The number of the accelerator cards exposed to an instance.
-  final int count;
+  final pulumi.Input<int> count;
   /// Configuration for auto installation of GPU driver.
-  final NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig? gpuDriverInstallationConfig;
+  final pulumi.Input<NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig>? gpuDriverInstallationConfig;
   /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
-  final String? gpuPartitionSize;
+  final pulumi.Input<String>? gpuPartitionSize;
   /// Configuration for GPU sharing.
-  final NodePoolNodeConfigGuestAcceleratorGpuSharingConfig? gpuSharingConfig;
+  final pulumi.Input<NodePoolNodeConfigGuestAcceleratorGpuSharingConfig>? gpuSharingConfig;
   /// The accelerator type resource name.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [NodePoolNodeConfigGuestAccelerator].
   /// [count] The number of the accelerator cards exposed to an instance.
@@ -32,20 +33,20 @@ class NodePoolNodeConfigGuestAccelerator {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'count': count,
-      'gpuDriverInstallationConfig': ?gpuDriverInstallationConfig == null ? null : gpuDriverInstallationConfig!.toMap(),
+      'gpuDriverInstallationConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig, Map<String, dynamic>>(gpuDriverInstallationConfig, (value) => value.toMap()),
       'gpuPartitionSize': ?gpuPartitionSize,
-      'gpuSharingConfig': ?gpuSharingConfig == null ? null : gpuSharingConfig!.toMap(),
+      'gpuSharingConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigGuestAcceleratorGpuSharingConfig, Map<String, dynamic>>(gpuSharingConfig, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory NodePoolNodeConfigGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigGuestAccelerator(
-      count: map['count'] as int,
-      gpuDriverInstallationConfig: map['gpuDriverInstallationConfig'] == null ? null : NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap((map['gpuDriverInstallationConfig'] as Map).cast<String, dynamic>()),
-      gpuPartitionSize: map['gpuPartitionSize'] == null ? null : map['gpuPartitionSize'] as String,
-      gpuSharingConfig: map['gpuSharingConfig'] == null ? null : NodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap((map['gpuSharingConfig'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      count: (map['count'] as int).input(),
+      gpuDriverInstallationConfig: map['gpuDriverInstallationConfig'] == null ? null : (NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap((map['gpuDriverInstallationConfig'] as Map).cast<String, dynamic>())).input(),
+      gpuPartitionSize: map['gpuPartitionSize'] == null ? null : (map['gpuPartitionSize'] as String).input(),
+      gpuSharingConfig: map['gpuSharingConfig'] == null ? null : (NodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap((map['gpuSharingConfig'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceVpcConfiguration {
   /// The list of Amazon EC2 security group IDs attached to the Amazon VPC for your Grafana workspace to connect.
-  final List<String> securityGroupIds;
+  final pulumi.Input<List<String>> securityGroupIds;
   /// The list of Amazon EC2 subnet IDs created in the Amazon VPC for your Grafana workspace to connect.
-  final List<String> subnetIds;
+  final pulumi.Input<List<String>> subnetIds;
 
   /// Creates a new [WorkspaceVpcConfiguration].
   /// [securityGroupIds] The list of Amazon EC2 security group IDs attached to the Amazon VPC for your Grafana workspace to connect.
@@ -24,8 +25,8 @@ class WorkspaceVpcConfiguration {
 
   factory WorkspaceVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkspaceVpcConfiguration(
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
     );
   }
 }

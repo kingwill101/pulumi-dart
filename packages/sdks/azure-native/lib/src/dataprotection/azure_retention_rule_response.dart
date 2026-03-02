@@ -5,11 +5,11 @@ import 'source_life_cycle_response.dart';
 
 /// Azure retention rule
 class AzureRetentionRuleResponse {
-  final bool? isDefault;
-  final List<SourceLifeCycleResponse> lifecycles;
-  final String name;
+  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<List<SourceLifeCycleResponse>> lifecycles;
+  final pulumi.Input<String> name;
   /// Expected value is 'AzureRetentionRule'.
-  final String objectType;
+  final pulumi.Input<String> objectType;
 
   /// Creates a new [AzureRetentionRuleResponse].
   /// [isDefault] Optional.
@@ -26,7 +26,7 @@ class AzureRetentionRuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'isDefault': ?isDefault,
-      'lifecycles': pulumi.Input.encodeList<SourceLifeCycleResponse, Map<String, dynamic>>(lifecycles, (value) => value.toMap()),
+      'lifecycles': pulumi.Input.mapInputValue<List<SourceLifeCycleResponse>, List<Map<String, dynamic>>>(lifecycles, (value) => pulumi.Input.encodeList<SourceLifeCycleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'objectType': objectType,
     };
@@ -34,10 +34,10 @@ class AzureRetentionRuleResponse {
 
   factory AzureRetentionRuleResponse.fromMap(Map<String, dynamic> map) {
     return AzureRetentionRuleResponse(
-      isDefault: map['isDefault'] == null ? null : map['isDefault'] as bool,
-      lifecycles: pulumi.Input.decodeList<SourceLifeCycleResponse>(map['lifecycles'], (value) => SourceLifeCycleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      objectType: map['objectType'] as String,
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      lifecycles: (pulumi.Input.decodeList<SourceLifeCycleResponse>(map['lifecycles'], (value) => SourceLifeCycleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterServicePrincipal {
   /// The Client ID for the Service Principal.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The Client Secret for the Service Principal.
-  final String clientSecret;
+  final pulumi.Input<String> clientSecret;
 
   /// Creates a new [KubernetesClusterServicePrincipal].
   /// [clientId] The Client ID for the Service Principal.
@@ -24,8 +25,8 @@ class KubernetesClusterServicePrincipal {
 
   factory KubernetesClusterServicePrincipal.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterServicePrincipal(
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] as String,
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
     );
   }
 }

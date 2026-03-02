@@ -13,9 +13,8 @@ class ListPolicyDefinitionVersionAllAtManagementGroupArgs {
   /// Creates a new [ListPolicyDefinitionVersionAllAtManagementGroupArgs].
   /// [managementGroupName] The name of the management group. The name is case insensitive.
   ListPolicyDefinitionVersionAllAtManagementGroupArgs({
-    required pulumi.Output<String> managementGroupName,
-  }) :
-      managementGroupName = pulumi.Input.asInput<String>(managementGroupName);
+    required this.managementGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class ListPolicyDefinitionVersionAllAtManagementGroupArgs {
 
   factory ListPolicyDefinitionVersionAllAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return ListPolicyDefinitionVersionAllAtManagementGroupArgs(
-      managementGroupName: pulumi.Output.create<String>(map['managementGroupName'] as String),
+      managementGroupName: (map['managementGroupName'] as String).input(),
     );
   }
 }

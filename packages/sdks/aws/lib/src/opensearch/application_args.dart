@@ -37,23 +37,15 @@ class ApplicationArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   ApplicationArgs({
-    pulumi.Output<List<ApplicationAppConfig>>? appConfigs,
-    pulumi.Output<List<ApplicationDataSource>>? dataSources,
-    pulumi.Output<ApplicationIamIdentityCenterOptions>? iamIdentityCenterOptions,
-    pulumi.Output<String>? kmsKeyArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ApplicationTimeouts>? timeouts,
-  }) :
-      appConfigs = pulumi.Input.asOptionalInput<List<ApplicationAppConfig>>(appConfigs),
-      dataSources = pulumi.Input.asOptionalInput<List<ApplicationDataSource>>(dataSources),
-      iamIdentityCenterOptions = pulumi.Input.asOptionalInput<ApplicationIamIdentityCenterOptions>(iamIdentityCenterOptions),
-      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ApplicationTimeouts>(timeouts);
+    this.appConfigs,
+    this.dataSources,
+    this.iamIdentityCenterOptions,
+    this.kmsKeyArn,
+    this.name,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      appConfigs: map['appConfigs'] == null ? null : pulumi.Output.create<List<ApplicationAppConfig>>(pulumi.Input.decodeList<ApplicationAppConfig>(map['appConfigs'], (value) => ApplicationAppConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      dataSources: map['dataSources'] == null ? null : pulumi.Output.create<List<ApplicationDataSource>>(pulumi.Input.decodeList<ApplicationDataSource>(map['dataSources'], (value) => ApplicationDataSource.fromMap((value as Map).cast<String, dynamic>()))),
-      iamIdentityCenterOptions: map['iamIdentityCenterOptions'] == null ? null : pulumi.Output.create<ApplicationIamIdentityCenterOptions>(ApplicationIamIdentityCenterOptions.fromMap((map['iamIdentityCenterOptions'] as Map).cast<String, dynamic>())),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['kmsKeyArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ApplicationTimeouts>(ApplicationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      appConfigs: map['appConfigs'] == null ? null : (pulumi.Input.decodeList<ApplicationAppConfig>(map['appConfigs'], (value) => ApplicationAppConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSources: map['dataSources'] == null ? null : (pulumi.Input.decodeList<ApplicationDataSource>(map['dataSources'], (value) => ApplicationDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      iamIdentityCenterOptions: map['iamIdentityCenterOptions'] == null ? null : (ApplicationIamIdentityCenterOptions.fromMap((map['iamIdentityCenterOptions'] as Map).cast<String, dynamic>())).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ApplicationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

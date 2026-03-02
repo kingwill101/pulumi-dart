@@ -25,17 +25,12 @@ class RedisFirewallRuleArgs {
   /// [ruleName] The name of the firewall rule.
   /// [startIP] lowest IP address included in the range
   RedisFirewallRuleArgs({
-    required pulumi.Output<String> cacheName,
-    required pulumi.Output<String> endIP,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? ruleName,
-    required pulumi.Output<String> startIP,
-  }) :
-      cacheName = pulumi.Input.asInput<String>(cacheName),
-      endIP = pulumi.Input.asInput<String>(endIP),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      startIP = pulumi.Input.asInput<String>(startIP);
+    required this.cacheName,
+    required this.endIP,
+    required this.resourceGroupName,
+    this.ruleName,
+    required this.startIP,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class RedisFirewallRuleArgs {
 
   factory RedisFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return RedisFirewallRuleArgs(
-      cacheName: pulumi.Output.create<String>(map['cacheName'] as String),
-      endIP: pulumi.Output.create<String>(map['endIP'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      startIP: pulumi.Output.create<String>(map['startIP'] as String),
+      cacheName: (map['cacheName'] as String).input(),
+      endIP: (map['endIP'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      startIP: (map['startIP'] as String).input(),
     );
   }
 }

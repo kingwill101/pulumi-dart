@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationAccount {
   /// ARN of the root.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// Email of the account.
-  final String? email;
+  final pulumi.Input<String>? email;
   /// Identifier of the root.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Method by which the account joined the organization.
-  final String? joinedMethod;
+  final pulumi.Input<String>? joinedMethod;
   /// Date the account became a part of the organization.
-  final String? joinedTimestamp;
+  final pulumi.Input<String>? joinedTimestamp;
   /// Name of the policy type.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// State of the account.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Status of the policy type as it relates to the associated root.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [OrganizationAccount].
   /// [arn] ARN of the root.
@@ -54,14 +55,14 @@ class OrganizationAccount {
 
   factory OrganizationAccount.fromMap(Map<String, dynamic> map) {
     return OrganizationAccount(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      email: map['email'] == null ? null : map['email'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      joinedMethod: map['joinedMethod'] == null ? null : map['joinedMethod'] as String,
-      joinedTimestamp: map['joinedTimestamp'] == null ? null : map['joinedTimestamp'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      joinedMethod: map['joinedMethod'] == null ? null : (map['joinedMethod'] as String).input(),
+      joinedTimestamp: map['joinedTimestamp'] == null ? null : (map['joinedTimestamp'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

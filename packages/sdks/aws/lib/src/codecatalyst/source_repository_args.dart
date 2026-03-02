@@ -27,17 +27,12 @@ class SourceRepositoryArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [spaceName] The name of the CodeCatalyst space.
   SourceRepositoryArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> spaceName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      spaceName = pulumi.Input.asInput<String>(spaceName);
+    this.description,
+    this.name,
+    required this.projectName,
+    this.region,
+    required this.spaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class SourceRepositoryArgs {
 
   factory SourceRepositoryArgs.fromMap(Map<String, dynamic> map) {
     return SourceRepositoryArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      spaceName: pulumi.Output.create<String>(map['spaceName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      spaceName: (map['spaceName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouterExternalFixedIp {
   /// The IP address to set on the router.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// Subnet in which the fixed IP belongs to.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Creates a new [RouterExternalFixedIp].
   /// [ipAddress] The IP address to set on the router.
@@ -24,8 +25,8 @@ class RouterExternalFixedIp {
 
   factory RouterExternalFixedIp.fromMap(Map<String, dynamic> map) {
     return RouterExternalFixedIp(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

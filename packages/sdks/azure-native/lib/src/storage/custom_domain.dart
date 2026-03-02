@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The custom domain assigned to this storage account. This can be set via Update.
 class CustomDomain {
   /// Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates.
-  final bool? useSubDomainName;
+  final pulumi.Input<bool>? useSubDomainName;
 
   /// Creates a new [CustomDomain].
   /// [name] Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.
@@ -25,8 +26,8 @@ class CustomDomain {
 
   factory CustomDomain.fromMap(Map<String, dynamic> map) {
     return CustomDomain(
-      name: map['name'] as String,
-      useSubDomainName: map['useSubDomainName'] == null ? null : map['useSubDomainName'] as bool,
+      name: (map['name'] as String).input(),
+      useSubDomainName: map['useSubDomainName'] == null ? null : (map['useSubDomainName'] as bool).input(),
     );
   }
 }

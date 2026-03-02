@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskSourceNetworkSnapshot {
   /// Configures the name attribute for the snapshot used in network storage operations.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DomainDevicesDiskSourceNetworkSnapshot].
   /// [name] Configures the name attribute for the snapshot used in network storage operations.
@@ -19,7 +20,7 @@ class DomainDevicesDiskSourceNetworkSnapshot {
 
   factory DomainDevicesDiskSourceNetworkSnapshot.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceNetworkSnapshot(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

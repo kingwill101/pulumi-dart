@@ -25,19 +25,13 @@ class HttpApiState {
   /// [resourceGroupId] The ID of the resource group
   /// [type] API type
   HttpApiState({
-    pulumi.Output<String>? basePath,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? httpApiName,
-    pulumi.Output<List<String>>? protocols,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? type,
-  }) :
-      basePath = pulumi.Input.asOptionalInput<String>(basePath),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      httpApiName = pulumi.Input.asOptionalInput<String>(httpApiName),
-      protocols = pulumi.Input.asOptionalInput<List<String>>(protocols),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.basePath,
+    this.description,
+    this.httpApiName,
+    this.protocols,
+    this.resourceGroupId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class HttpApiState {
 
   factory HttpApiState.fromMap(Map<String, dynamic> map) {
     return HttpApiState(
-      basePath: map['basePath'] == null ? null : pulumi.Output.create<String>(map['basePath'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      httpApiName: map['httpApiName'] == null ? null : pulumi.Output.create<String>(map['httpApiName'] as String),
-      protocols: map['protocols'] == null ? null : pulumi.Output.create<List<String>>((map['protocols'] as List).cast<String>()),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      basePath: map['basePath'] == null ? null : (map['basePath'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpApiName: map['httpApiName'] == null ? null : (map['httpApiName'] as String).input(),
+      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

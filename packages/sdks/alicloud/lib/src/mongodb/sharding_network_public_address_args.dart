@@ -16,11 +16,9 @@ class ShardingNetworkPublicAddressArgs {
   /// [dbInstanceId] The ID of the instance.
   /// [nodeId] The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
   ShardingNetworkPublicAddressArgs({
-    required pulumi.Output<String> dbInstanceId,
-    required pulumi.Output<String> nodeId,
-  }) :
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      nodeId = pulumi.Input.asInput<String>(nodeId);
+    required this.dbInstanceId,
+    required this.nodeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ShardingNetworkPublicAddressArgs {
 
   factory ShardingNetworkPublicAddressArgs.fromMap(Map<String, dynamic> map) {
     return ShardingNetworkPublicAddressArgs(
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      nodeId: pulumi.Output.create<String>(map['nodeId'] as String),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      nodeId: (map['nodeId'] as String).input(),
     );
   }
 }

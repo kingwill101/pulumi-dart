@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationAcceleratorResourceRequestsResponse {
   /// Cpu allocated to each application accelerator component. 1 core can be represented by 1 or 1000m
-  final String cpu;
+  final pulumi.Input<String> cpu;
   /// Instance count of the application accelerator component.
-  final int instanceCount;
+  final pulumi.Input<int> instanceCount;
   /// Memory allocated to each application accelerator component. 1 GB can be represented by 1Gi or 1024Mi.
-  final String memory;
+  final pulumi.Input<String> memory;
 
   /// Creates a new [ApplicationAcceleratorResourceRequestsResponse].
   /// [cpu] Cpu allocated to each application accelerator component. 1 core can be represented by 1 or 1000m
@@ -29,9 +30,9 @@ class ApplicationAcceleratorResourceRequestsResponse {
 
   factory ApplicationAcceleratorResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationAcceleratorResourceRequestsResponse(
-      cpu: map['cpu'] as String,
-      instanceCount: map['instanceCount'] as int,
-      memory: map['memory'] as String,
+      cpu: (map['cpu'] as String).input(),
+      instanceCount: (map['instanceCount'] as int).input(),
+      memory: (map['memory'] as String).input(),
     );
   }
 }

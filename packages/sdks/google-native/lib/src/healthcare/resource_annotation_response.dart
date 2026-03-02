@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource level annotation.
 class ResourceAnnotationResponse {
   /// A description of the annotation record.
-  final String label;
+  final pulumi.Input<String> label;
 
   /// Creates a new [ResourceAnnotationResponse].
   /// [label] A description of the annotation record.
@@ -20,7 +21,7 @@ class ResourceAnnotationResponse {
 
   factory ResourceAnnotationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceAnnotationResponse(
-      label: map['label'] as String,
+      label: (map['label'] as String).input(),
     );
   }
 }

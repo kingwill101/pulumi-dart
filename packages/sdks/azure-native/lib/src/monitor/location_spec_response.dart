@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LocationSpecResponse {
   /// Name of location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The resource provisioning state in this location.
-  final String? provisioningStatus;
+  final pulumi.Input<String>? provisioningStatus;
 
   /// Creates a new [LocationSpecResponse].
   /// [location] Name of location.
@@ -24,8 +25,8 @@ class LocationSpecResponse {
 
   factory LocationSpecResponse.fromMap(Map<String, dynamic> map) {
     return LocationSpecResponse(
-      location: map['location'] == null ? null : map['location'] as String,
-      provisioningStatus: map['provisioningStatus'] == null ? null : map['provisioningStatus'] as String,
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (map['provisioningStatus'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetFleetManagedNamespaceArgs {
   /// [managedNamespaceName] The name of the fleet managed namespace resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFleetManagedNamespaceArgs({
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<String> managedNamespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      managedNamespaceName = pulumi.Input.asInput<String>(managedNamespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.fleetName,
+    required this.managedNamespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFleetManagedNamespaceArgs {
 
   factory GetFleetManagedNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetManagedNamespaceArgs(
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      managedNamespaceName: pulumi.Output.create<String>(map['managedNamespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      fleetName: (map['fleetName'] as String).input(),
+      managedNamespaceName: (map['managedNamespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

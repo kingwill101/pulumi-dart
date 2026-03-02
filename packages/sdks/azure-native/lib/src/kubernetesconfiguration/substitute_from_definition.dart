@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization.
 class SubstituteFromDefinition {
   /// Define whether it is ConfigMap or Secret that holds the variables to be used in substitution.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Name of the ConfigMap/Secret that holds the variables to be used in substitution.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Set to True to proceed without ConfigMap/Secret, if it is not present.
-  final bool? optional;
+  final pulumi.Input<bool>? optional;
 
   /// Creates a new [SubstituteFromDefinition].
   /// [kind] Define whether it is ConfigMap or Secret that holds the variables to be used in substitution.
@@ -30,9 +31,9 @@ class SubstituteFromDefinition {
 
   factory SubstituteFromDefinition.fromMap(Map<String, dynamic> map) {
     return SubstituteFromDefinition(
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      optional: map['optional'] == null ? null : map['optional'] as bool,
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
     );
   }
 }

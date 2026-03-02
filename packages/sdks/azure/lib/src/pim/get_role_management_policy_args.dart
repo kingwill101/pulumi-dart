@@ -16,11 +16,9 @@ class GetRoleManagementPolicyArgs {
   /// [roleDefinitionId] The scoped Role Definition ID of the role for which this policy applies.
   /// [scope] The scope to which this Role Management Policy applies. Can refer to a management group, a subscription, a resource group or a resource.
   GetRoleManagementPolicyArgs({
-    required pulumi.Output<String> roleDefinitionId,
-    required pulumi.Output<String> scope,
-  }) :
-      roleDefinitionId = pulumi.Input.asInput<String>(roleDefinitionId),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.roleDefinitionId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRoleManagementPolicyArgs {
 
   factory GetRoleManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleManagementPolicyArgs(
-      roleDefinitionId: pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

@@ -59,35 +59,21 @@ class FrontdoorRouteArgs {
   /// [patternsToMatches] The route patterns of the rule.
   /// [supportedProtocols] One or more Protocols supported by this Front Door Route. Possible values are `Http` or `Https`.
   FrontdoorRouteArgs({
-    pulumi.Output<FrontdoorRouteCache>? cache,
-    pulumi.Output<List<String>>? cdnFrontdoorCustomDomainIds,
-    required pulumi.Output<String> cdnFrontdoorEndpointId,
-    required pulumi.Output<String> cdnFrontdoorOriginGroupId,
-    required pulumi.Output<List<String>> cdnFrontdoorOriginIds,
-    pulumi.Output<String>? cdnFrontdoorOriginPath,
-    pulumi.Output<List<String>>? cdnFrontdoorRuleSetIds,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? forwardingProtocol,
-    pulumi.Output<bool>? httpsRedirectEnabled,
-    pulumi.Output<bool>? linkToDefaultDomain,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<String>> patternsToMatches,
-    required pulumi.Output<List<String>> supportedProtocols,
-  }) :
-      cache = pulumi.Input.asOptionalInput<FrontdoorRouteCache>(cache),
-      cdnFrontdoorCustomDomainIds = pulumi.Input.asOptionalInput<List<String>>(cdnFrontdoorCustomDomainIds),
-      cdnFrontdoorEndpointId = pulumi.Input.asInput<String>(cdnFrontdoorEndpointId),
-      cdnFrontdoorOriginGroupId = pulumi.Input.asInput<String>(cdnFrontdoorOriginGroupId),
-      cdnFrontdoorOriginIds = pulumi.Input.asInput<List<String>>(cdnFrontdoorOriginIds),
-      cdnFrontdoorOriginPath = pulumi.Input.asOptionalInput<String>(cdnFrontdoorOriginPath),
-      cdnFrontdoorRuleSetIds = pulumi.Input.asOptionalInput<List<String>>(cdnFrontdoorRuleSetIds),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      forwardingProtocol = pulumi.Input.asOptionalInput<String>(forwardingProtocol),
-      httpsRedirectEnabled = pulumi.Input.asOptionalInput<bool>(httpsRedirectEnabled),
-      linkToDefaultDomain = pulumi.Input.asOptionalInput<bool>(linkToDefaultDomain),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      patternsToMatches = pulumi.Input.asInput<List<String>>(patternsToMatches),
-      supportedProtocols = pulumi.Input.asInput<List<String>>(supportedProtocols);
+    this.cache,
+    this.cdnFrontdoorCustomDomainIds,
+    required this.cdnFrontdoorEndpointId,
+    required this.cdnFrontdoorOriginGroupId,
+    required this.cdnFrontdoorOriginIds,
+    this.cdnFrontdoorOriginPath,
+    this.cdnFrontdoorRuleSetIds,
+    this.enabled,
+    this.forwardingProtocol,
+    this.httpsRedirectEnabled,
+    this.linkToDefaultDomain,
+    this.name,
+    required this.patternsToMatches,
+    required this.supportedProtocols,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -110,20 +96,20 @@ class FrontdoorRouteArgs {
 
   factory FrontdoorRouteArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorRouteArgs(
-      cache: map['cache'] == null ? null : pulumi.Output.create<FrontdoorRouteCache>(FrontdoorRouteCache.fromMap((map['cache'] as Map).cast<String, dynamic>())),
-      cdnFrontdoorCustomDomainIds: map['cdnFrontdoorCustomDomainIds'] == null ? null : pulumi.Output.create<List<String>>((map['cdnFrontdoorCustomDomainIds'] as List).cast<String>()),
-      cdnFrontdoorEndpointId: pulumi.Output.create<String>(map['cdnFrontdoorEndpointId'] as String),
-      cdnFrontdoorOriginGroupId: pulumi.Output.create<String>(map['cdnFrontdoorOriginGroupId'] as String),
-      cdnFrontdoorOriginIds: pulumi.Output.create<List<String>>((map['cdnFrontdoorOriginIds'] as List).cast<String>()),
-      cdnFrontdoorOriginPath: map['cdnFrontdoorOriginPath'] == null ? null : pulumi.Output.create<String>(map['cdnFrontdoorOriginPath'] as String),
-      cdnFrontdoorRuleSetIds: map['cdnFrontdoorRuleSetIds'] == null ? null : pulumi.Output.create<List<String>>((map['cdnFrontdoorRuleSetIds'] as List).cast<String>()),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      forwardingProtocol: map['forwardingProtocol'] == null ? null : pulumi.Output.create<String>(map['forwardingProtocol'] as String),
-      httpsRedirectEnabled: map['httpsRedirectEnabled'] == null ? null : pulumi.Output.create<bool>(map['httpsRedirectEnabled'] as bool),
-      linkToDefaultDomain: map['linkToDefaultDomain'] == null ? null : pulumi.Output.create<bool>(map['linkToDefaultDomain'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      patternsToMatches: pulumi.Output.create<List<String>>((map['patternsToMatches'] as List).cast<String>()),
-      supportedProtocols: pulumi.Output.create<List<String>>((map['supportedProtocols'] as List).cast<String>()),
+      cache: map['cache'] == null ? null : (FrontdoorRouteCache.fromMap((map['cache'] as Map).cast<String, dynamic>())).input(),
+      cdnFrontdoorCustomDomainIds: map['cdnFrontdoorCustomDomainIds'] == null ? null : ((map['cdnFrontdoorCustomDomainIds'] as List).cast<String>()).input(),
+      cdnFrontdoorEndpointId: (map['cdnFrontdoorEndpointId'] as String).input(),
+      cdnFrontdoorOriginGroupId: (map['cdnFrontdoorOriginGroupId'] as String).input(),
+      cdnFrontdoorOriginIds: ((map['cdnFrontdoorOriginIds'] as List).cast<String>()).input(),
+      cdnFrontdoorOriginPath: map['cdnFrontdoorOriginPath'] == null ? null : (map['cdnFrontdoorOriginPath'] as String).input(),
+      cdnFrontdoorRuleSetIds: map['cdnFrontdoorRuleSetIds'] == null ? null : ((map['cdnFrontdoorRuleSetIds'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol'] as String).input(),
+      httpsRedirectEnabled: map['httpsRedirectEnabled'] == null ? null : (map['httpsRedirectEnabled'] as bool).input(),
+      linkToDefaultDomain: map['linkToDefaultDomain'] == null ? null : (map['linkToDefaultDomain'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      patternsToMatches: ((map['patternsToMatches'] as List).cast<String>()).input(),
+      supportedProtocols: ((map['supportedProtocols'] as List).cast<String>()).input(),
     );
   }
 }

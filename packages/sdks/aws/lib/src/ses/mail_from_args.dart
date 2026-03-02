@@ -24,15 +24,11 @@ class MailFromArgs {
   /// [mailFromDomain] Subdomain (of above domain) which is to be used as MAIL FROM address (Required for DMARC validation)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   MailFromArgs({
-    pulumi.Output<String>? behaviorOnMxFailure,
-    required pulumi.Output<String> domain,
-    required pulumi.Output<String> mailFromDomain,
-    pulumi.Output<String>? region,
-  }) :
-      behaviorOnMxFailure = pulumi.Input.asOptionalInput<String>(behaviorOnMxFailure),
-      domain = pulumi.Input.asInput<String>(domain),
-      mailFromDomain = pulumi.Input.asInput<String>(mailFromDomain),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.behaviorOnMxFailure,
+    required this.domain,
+    required this.mailFromDomain,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class MailFromArgs {
 
   factory MailFromArgs.fromMap(Map<String, dynamic> map) {
     return MailFromArgs(
-      behaviorOnMxFailure: map['behaviorOnMxFailure'] == null ? null : pulumi.Output.create<String>(map['behaviorOnMxFailure'] as String),
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      mailFromDomain: pulumi.Output.create<String>(map['mailFromDomain'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      behaviorOnMxFailure: map['behaviorOnMxFailure'] == null ? null : (map['behaviorOnMxFailure'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      mailFromDomain: (map['mailFromDomain'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

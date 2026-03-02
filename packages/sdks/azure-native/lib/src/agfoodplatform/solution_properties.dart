@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Solution resource properties.
 class SolutionProperties {
   /// SaaS application Marketplace Publisher Id.
-  final String marketplacePublisherId;
+  final pulumi.Input<String> marketplacePublisherId;
   /// SaaS application Offer Id.
-  final String offerId;
+  final pulumi.Input<String> offerId;
   /// SaaS application Plan Id.
-  final String planId;
+  final pulumi.Input<String> planId;
   /// Role Assignment Id.
-  final String? roleAssignmentId;
+  final pulumi.Input<String>? roleAssignmentId;
   /// SaaS subscriptionId of the installed SaaS application.
-  final String saasSubscriptionId;
+  final pulumi.Input<String> saasSubscriptionId;
   /// SaaS subscription name of the installed SaaS application.
-  final String saasSubscriptionName;
+  final pulumi.Input<String> saasSubscriptionName;
   /// SaaS application Term Id.
-  final String termId;
+  final pulumi.Input<String> termId;
 
   /// Creates a new [SolutionProperties].
   /// [marketplacePublisherId] SaaS application Marketplace Publisher Id.
@@ -50,13 +51,13 @@ class SolutionProperties {
 
   factory SolutionProperties.fromMap(Map<String, dynamic> map) {
     return SolutionProperties(
-      marketplacePublisherId: map['marketplacePublisherId'] as String,
-      offerId: map['offerId'] as String,
-      planId: map['planId'] as String,
-      roleAssignmentId: map['roleAssignmentId'] == null ? null : map['roleAssignmentId'] as String,
-      saasSubscriptionId: map['saasSubscriptionId'] as String,
-      saasSubscriptionName: map['saasSubscriptionName'] as String,
-      termId: map['termId'] as String,
+      marketplacePublisherId: (map['marketplacePublisherId'] as String).input(),
+      offerId: (map['offerId'] as String).input(),
+      planId: (map['planId'] as String).input(),
+      roleAssignmentId: map['roleAssignmentId'] == null ? null : (map['roleAssignmentId'] as String).input(),
+      saasSubscriptionId: (map['saasSubscriptionId'] as String).input(),
+      saasSubscriptionName: (map['saasSubscriptionName'] as String).input(),
+      termId: (map['termId'] as String).input(),
     );
   }
 }

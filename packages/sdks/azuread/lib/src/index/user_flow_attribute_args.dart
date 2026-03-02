@@ -19,13 +19,10 @@ class UserFlowAttributeArgs {
   /// [description] The description of the user flow attribute that is shown to the user at the time of sign-up.
   /// [displayName] The display name of the user flow attribute. Changing this forces a new resource to be created.
   UserFlowAttributeArgs({
-    required pulumi.Output<String> dataType,
-    required pulumi.Output<String> description,
-    required pulumi.Output<String> displayName,
-  }) :
-      dataType = pulumi.Input.asInput<String>(dataType),
-      description = pulumi.Input.asInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName);
+    required this.dataType,
+    required this.description,
+    required this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class UserFlowAttributeArgs {
 
   factory UserFlowAttributeArgs.fromMap(Map<String, dynamic> map) {
     return UserFlowAttributeArgs(
-      dataType: pulumi.Output.create<String>(map['dataType'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
+      dataType: (map['dataType'] as String).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
     );
   }
 }

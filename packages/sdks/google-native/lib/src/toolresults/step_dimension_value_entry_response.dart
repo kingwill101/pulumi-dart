@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StepDimensionValueEntryResponse {
-  final String key;
-  final String value;
+  final pulumi.Input<String> key;
+  final pulumi.Input<String> value;
 
   /// Creates a new [StepDimensionValueEntryResponse].
   /// [key] Required.
@@ -22,8 +23,8 @@ class StepDimensionValueEntryResponse {
 
   factory StepDimensionValueEntryResponse.fromMap(Map<String, dynamic> map) {
     return StepDimensionValueEntryResponse(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

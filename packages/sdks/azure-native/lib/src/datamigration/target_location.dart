@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Target Location details for optional copy of backups
 class TargetLocation {
   /// Storage Account Key.
-  final String? accountKey;
+  final pulumi.Input<String>? accountKey;
   /// Resource Id of the storage account copying backups.
-  final String? storageAccountResourceId;
+  final pulumi.Input<String>? storageAccountResourceId;
 
   /// Creates a new [TargetLocation].
   /// [accountKey] Storage Account Key.
@@ -25,8 +26,8 @@ class TargetLocation {
 
   factory TargetLocation.fromMap(Map<String, dynamic> map) {
     return TargetLocation(
-      accountKey: map['accountKey'] == null ? null : map['accountKey'] as String,
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : map['storageAccountResourceId'] as String,
+      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
     );
   }
 }

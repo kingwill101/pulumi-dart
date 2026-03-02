@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'related_url_response.dart';
 
 /// Specifies details on how to handle (and presumably, fix) a vulnerability.
 class RemediationResponse {
   /// Contains a comprehensive human-readable discussion of the remediation.
-  final String details;
+  final pulumi.Input<String> details;
   /// The type of remediation that can be applied.
-  final String remediationType;
+  final pulumi.Input<String> remediationType;
   /// Contains the URL where to obtain the remediation.
-  final RelatedUrlResponse remediationUri;
+  final pulumi.Input<RelatedUrlResponse> remediationUri;
 
   /// Creates a new [RemediationResponse].
   /// [details] Contains a comprehensive human-readable discussion of the remediation.
@@ -25,15 +26,15 @@ class RemediationResponse {
     return <String, dynamic>{
       'details': details,
       'remediationType': remediationType,
-      'remediationUri': remediationUri.toMap(),
+      'remediationUri': pulumi.Input.mapInputValue<RelatedUrlResponse, Map<String, dynamic>>(remediationUri, (value) => value.toMap()),
     };
   }
 
   factory RemediationResponse.fromMap(Map<String, dynamic> map) {
     return RemediationResponse(
-      details: map['details'] as String,
-      remediationType: map['remediationType'] as String,
-      remediationUri: RelatedUrlResponse.fromMap((map['remediationUri'] as Map).cast<String, dynamic>()),
+      details: (map['details'] as String).input(),
+      remediationType: (map['remediationType'] as String).input(),
+      remediationUri: (RelatedUrlResponse.fromMap((map['remediationUri'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

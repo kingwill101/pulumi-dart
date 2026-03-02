@@ -5,19 +5,19 @@ import 'linux_virtual_machine_scale_set_network_interface_ip_configuration_publi
 
 class LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress {
   /// The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance. Azure concatenates the Domain Name Label and Virtual Machine Index to create a unique Domain Name Label for each Virtual Machine.
-  final String? domainNameLabel;
+  final pulumi.Input<String>? domainNameLabel;
   /// The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// One or more `ip_tag` blocks as defined above. Changing this forces a new resource to be created.
-  final List<LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>? ipTags;
+  final pulumi.Input<List<LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>>? ipTags;
   /// The Name of the Public IP Address Configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of the Public IP Address Prefix from where Public IP Addresses should be allocated. Changing this forces a new resource to be created.
   ///
   /// > **Note:** This functionality is in Preview and must be opted into via `az feature register --namespace Microsoft.Network --name AllowBringYourOwnPublicIpAddress` and then `az provider register -n Microsoft.Network`.
-  final String? publicIpPrefixId;
+  final pulumi.Input<String>? publicIpPrefixId;
   /// The Internet Protocol Version which should be used for this public IP address. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`. Changing this forces a new resource to be created.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress].
   /// [domainNameLabel] The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance. Azure concatenates the Domain Name Label and Virtual Machine Index to create a unique Domain Name Label for each Virtual Machine.
@@ -39,7 +39,7 @@ class LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress 
     return <String, dynamic>{
       'domainNameLabel': ?domainNameLabel,
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
-      'ipTags': ?ipTags == null ? null : pulumi.Input.encodeList<LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag, Map<String, dynamic>>(ipTags!, (value) => value.toMap()),
+      'ipTags': ?pulumi.Input.mapOptionalInputValue<List<LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>, List<Map<String, dynamic>>>(ipTags, (value) => pulumi.Input.encodeList<LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'publicIpPrefixId': ?publicIpPrefixId,
       'version': ?version,
@@ -48,12 +48,12 @@ class LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress 
 
   factory LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress(
-      domainNameLabel: map['domainNameLabel'] == null ? null : map['domainNameLabel'] as String,
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      ipTags: map['ipTags'] == null ? null : pulumi.Input.decodeList<LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>(map['ipTags'], (value) => LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      publicIpPrefixId: map['publicIpPrefixId'] == null ? null : map['publicIpPrefixId'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      domainNameLabel: map['domainNameLabel'] == null ? null : (map['domainNameLabel'] as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>(map['ipTags'], (value) => LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      publicIpPrefixId: map['publicIpPrefixId'] == null ? null : (map['publicIpPrefixId'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

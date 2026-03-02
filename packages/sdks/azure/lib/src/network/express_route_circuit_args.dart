@@ -56,33 +56,20 @@ class ExpressRouteCircuitArgs {
   /// [sku] A `sku` block for the ExpressRoute circuit as documented below.
   /// [tags] A mapping of tags to assign to the resource.
   ExpressRouteCircuitArgs({
-    pulumi.Output<bool>? allowClassicOperations,
-    pulumi.Output<String>? authorizationKey,
-    pulumi.Output<double>? bandwidthInGbps,
-    pulumi.Output<int>? bandwidthInMbps,
-    pulumi.Output<String>? expressRoutePortId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? peeringLocation,
-    pulumi.Output<bool>? rateLimitingEnabled,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serviceProviderName,
-    required pulumi.Output<ExpressRouteCircuitSku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      allowClassicOperations = pulumi.Input.asOptionalInput<bool>(allowClassicOperations),
-      authorizationKey = pulumi.Input.asOptionalInput<String>(authorizationKey),
-      bandwidthInGbps = pulumi.Input.asOptionalInput<double>(bandwidthInGbps),
-      bandwidthInMbps = pulumi.Input.asOptionalInput<int>(bandwidthInMbps),
-      expressRoutePortId = pulumi.Input.asOptionalInput<String>(expressRoutePortId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peeringLocation = pulumi.Input.asOptionalInput<String>(peeringLocation),
-      rateLimitingEnabled = pulumi.Input.asOptionalInput<bool>(rateLimitingEnabled),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceProviderName = pulumi.Input.asOptionalInput<String>(serviceProviderName),
-      sku = pulumi.Input.asInput<ExpressRouteCircuitSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.allowClassicOperations,
+    this.authorizationKey,
+    this.bandwidthInGbps,
+    this.bandwidthInMbps,
+    this.expressRoutePortId,
+    this.location,
+    this.name,
+    this.peeringLocation,
+    this.rateLimitingEnabled,
+    required this.resourceGroupName,
+    this.serviceProviderName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,19 +91,19 @@ class ExpressRouteCircuitArgs {
 
   factory ExpressRouteCircuitArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitArgs(
-      allowClassicOperations: map['allowClassicOperations'] == null ? null : pulumi.Output.create<bool>(map['allowClassicOperations'] as bool),
-      authorizationKey: map['authorizationKey'] == null ? null : pulumi.Output.create<String>(map['authorizationKey'] as String),
-      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : pulumi.Output.create<double>(map['bandwidthInGbps'] as double),
-      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : pulumi.Output.create<int>(map['bandwidthInMbps'] as int),
-      expressRoutePortId: map['expressRoutePortId'] == null ? null : pulumi.Output.create<String>(map['expressRoutePortId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peeringLocation: map['peeringLocation'] == null ? null : pulumi.Output.create<String>(map['peeringLocation'] as String),
-      rateLimitingEnabled: map['rateLimitingEnabled'] == null ? null : pulumi.Output.create<bool>(map['rateLimitingEnabled'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceProviderName: map['serviceProviderName'] == null ? null : pulumi.Output.create<String>(map['serviceProviderName'] as String),
-      sku: pulumi.Output.create<ExpressRouteCircuitSku>(ExpressRouteCircuitSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      allowClassicOperations: map['allowClassicOperations'] == null ? null : (map['allowClassicOperations'] as bool).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
+      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : (map['bandwidthInGbps'] as double).input(),
+      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : (map['bandwidthInMbps'] as int).input(),
+      expressRoutePortId: map['expressRoutePortId'] == null ? null : (map['expressRoutePortId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peeringLocation: map['peeringLocation'] == null ? null : (map['peeringLocation'] as String).input(),
+      rateLimitingEnabled: map['rateLimitingEnabled'] == null ? null : (map['rateLimitingEnabled'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceProviderName: map['serviceProviderName'] == null ? null : (map['serviceProviderName'] as String).input(),
+      sku: (ExpressRouteCircuitSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

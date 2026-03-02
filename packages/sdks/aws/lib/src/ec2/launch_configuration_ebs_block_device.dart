@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchConfigurationEbsBlockDevice {
-  final bool? deleteOnTermination;
-  final String deviceName;
-  final bool? encrypted;
-  final int? iops;
-  final bool? noDevice;
-  final String? snapshotId;
-  final int? throughput;
-  final int? volumeSize;
-  final String? volumeType;
+  final pulumi.Input<bool>? deleteOnTermination;
+  final pulumi.Input<String> deviceName;
+  final pulumi.Input<bool>? encrypted;
+  final pulumi.Input<int>? iops;
+  final pulumi.Input<bool>? noDevice;
+  final pulumi.Input<String>? snapshotId;
+  final pulumi.Input<int>? throughput;
+  final pulumi.Input<int>? volumeSize;
+  final pulumi.Input<String>? volumeType;
 
   /// Creates a new [LaunchConfigurationEbsBlockDevice].
   /// [deleteOnTermination] Optional.
@@ -50,15 +51,15 @@ class LaunchConfigurationEbsBlockDevice {
 
   factory LaunchConfigurationEbsBlockDevice.fromMap(Map<String, dynamic> map) {
     return LaunchConfigurationEbsBlockDevice(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : map['deleteOnTermination'] as bool,
-      deviceName: map['deviceName'] as String,
-      encrypted: map['encrypted'] == null ? null : map['encrypted'] as bool,
-      iops: map['iops'] == null ? null : map['iops'] as int,
-      noDevice: map['noDevice'] == null ? null : map['noDevice'] as bool,
-      snapshotId: map['snapshotId'] == null ? null : map['snapshotId'] as String,
-      throughput: map['throughput'] == null ? null : map['throughput'] as int,
-      volumeSize: map['volumeSize'] == null ? null : map['volumeSize'] as int,
-      volumeType: map['volumeType'] == null ? null : map['volumeType'] as String,
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
+      noDevice: map['noDevice'] == null ? null : (map['noDevice'] as bool).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize'] as int).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
     );
   }
 }

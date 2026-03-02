@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterInitialUser {
   /// The initial password for the user.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The database username.
-  final String? user;
+  final pulumi.Input<String>? user;
 
   /// Creates a new [ClusterInitialUser].
   /// [password] The initial password for the user.
@@ -25,8 +26,8 @@ class ClusterInitialUser {
 
   factory ClusterInitialUser.fromMap(Map<String, dynamic> map) {
     return ClusterInitialUser(
-      password: map['password'] == null ? null : map['password'] as String,
-      user: map['user'] == null ? null : map['user'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

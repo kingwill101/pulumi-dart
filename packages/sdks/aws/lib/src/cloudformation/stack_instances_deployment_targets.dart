@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StackInstancesDeploymentTargets {
   /// Limit deployment targets to individual accounts or include additional accounts with provided OUs. Valid values: `INTERSECTION`, `DIFFERENCE`, `UNION`, `NONE`.
-  final String? accountFilterType;
+  final pulumi.Input<String>? accountFilterType;
   /// List of accounts to deploy stack set updates.
-  final List<String>? accounts;
+  final pulumi.Input<List<String>>? accounts;
   /// S3 URL of the file containing the list of accounts.
-  final String? accountsUrl;
+  final pulumi.Input<String>? accountsUrl;
   /// Organization root ID or organizational unit (OU) IDs to which stack sets deploy.
-  final List<String>? organizationalUnitIds;
+  final pulumi.Input<List<String>>? organizationalUnitIds;
 
   /// Creates a new [StackInstancesDeploymentTargets].
   /// [accountFilterType] Limit deployment targets to individual accounts or include additional accounts with provided OUs. Valid values: `INTERSECTION`, `DIFFERENCE`, `UNION`, `NONE`.
@@ -34,10 +35,10 @@ class StackInstancesDeploymentTargets {
 
   factory StackInstancesDeploymentTargets.fromMap(Map<String, dynamic> map) {
     return StackInstancesDeploymentTargets(
-      accountFilterType: map['accountFilterType'] == null ? null : map['accountFilterType'] as String,
-      accounts: map['accounts'] == null ? null : (map['accounts'] as List).cast<String>(),
-      accountsUrl: map['accountsUrl'] == null ? null : map['accountsUrl'] as String,
-      organizationalUnitIds: map['organizationalUnitIds'] == null ? null : (map['organizationalUnitIds'] as List).cast<String>(),
+      accountFilterType: map['accountFilterType'] == null ? null : (map['accountFilterType'] as String).input(),
+      accounts: map['accounts'] == null ? null : ((map['accounts'] as List).cast<String>()).input(),
+      accountsUrl: map['accountsUrl'] == null ? null : (map['accountsUrl'] as String).input(),
+      organizationalUnitIds: map['organizationalUnitIds'] == null ? null : ((map['organizationalUnitIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -67,29 +67,18 @@ class UserArgs {
   /// [status] The status of the resource. Valid values: `Frozen`, `Normal`.
   /// [userName] Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
   UserArgs({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? email,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? mobile,
-    pulumi.Output<String>? mobileCountryCode,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> source,
-    pulumi.Output<String>? sourceUserId,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> userName,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      mobile = pulumi.Input.asOptionalInput<String>(mobile),
-      mobileCountryCode = pulumi.Input.asOptionalInput<String>(mobileCountryCode),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      source = pulumi.Input.asInput<String>(source),
-      sourceUserId = pulumi.Input.asOptionalInput<String>(sourceUserId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      userName = pulumi.Input.asInput<String>(userName);
+    this.comment,
+    this.displayName,
+    this.email,
+    required this.instanceId,
+    this.mobile,
+    this.mobileCountryCode,
+    this.password,
+    required this.source,
+    this.sourceUserId,
+    this.status,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,17 +98,17 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      mobile: map['mobile'] == null ? null : pulumi.Output.create<String>(map['mobile'] as String),
-      mobileCountryCode: map['mobileCountryCode'] == null ? null : pulumi.Output.create<String>(map['mobileCountryCode'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      source: pulumi.Output.create<String>(map['source'] as String),
-      sourceUserId: map['sourceUserId'] == null ? null : pulumi.Output.create<String>(map['sourceUserId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
+      mobileCountryCode: map['mobileCountryCode'] == null ? null : (map['mobileCountryCode'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      source: (map['source'] as String).input(),
+      sourceUserId: map['sourceUserId'] == null ? null : (map['sourceUserId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The node image upgrade to be applied to the target nodes in update run.
 class NodeImageSelection {
   /// The node image upgrade type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [NodeImageSelection].
   /// [type] The node image upgrade type.
@@ -20,7 +21,7 @@ class NodeImageSelection {
 
   factory NodeImageSelection.fromMap(Map<String, dynamic> map) {
     return NodeImageSelection(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

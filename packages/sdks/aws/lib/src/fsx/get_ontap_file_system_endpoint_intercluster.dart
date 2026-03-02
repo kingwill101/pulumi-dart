@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOntapFileSystemEndpointIntercluster {
   /// DNS name for the file system.
-  final String dnsName;
-  final List<String> ipAddresses;
+  final pulumi.Input<String> dnsName;
+  final pulumi.Input<List<String>> ipAddresses;
 
   /// Creates a new [GetOntapFileSystemEndpointIntercluster].
   /// [dnsName] DNS name for the file system.
@@ -23,8 +24,8 @@ class GetOntapFileSystemEndpointIntercluster {
 
   factory GetOntapFileSystemEndpointIntercluster.fromMap(Map<String, dynamic> map) {
     return GetOntapFileSystemEndpointIntercluster(
-      dnsName: map['dnsName'] as String,
-      ipAddresses: (map['ipAddresses'] as List).cast<String>(),
+      dnsName: (map['dnsName'] as String).input(),
+      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
     );
   }
 }

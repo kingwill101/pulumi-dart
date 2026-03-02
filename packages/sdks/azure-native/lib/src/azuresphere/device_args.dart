@@ -28,19 +28,13 @@ class DeviceArgs {
   /// [productName] Name of product.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   DeviceArgs({
-    required pulumi.Output<String> catalogName,
-    required pulumi.Output<String> deviceGroupName,
-    pulumi.Output<String>? deviceId,
-    pulumi.Output<String>? deviceName,
-    required pulumi.Output<String> productName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      catalogName = pulumi.Input.asInput<String>(catalogName),
-      deviceGroupName = pulumi.Input.asInput<String>(deviceGroupName),
-      deviceId = pulumi.Input.asOptionalInput<String>(deviceId),
-      deviceName = pulumi.Input.asOptionalInput<String>(deviceName),
-      productName = pulumi.Input.asInput<String>(productName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.catalogName,
+    required this.deviceGroupName,
+    this.deviceId,
+    this.deviceName,
+    required this.productName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class DeviceArgs {
 
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
-      catalogName: pulumi.Output.create<String>(map['catalogName'] as String),
-      deviceGroupName: pulumi.Output.create<String>(map['deviceGroupName'] as String),
-      deviceId: map['deviceId'] == null ? null : pulumi.Output.create<String>(map['deviceId'] as String),
-      deviceName: map['deviceName'] == null ? null : pulumi.Output.create<String>(map['deviceName'] as String),
-      productName: pulumi.Output.create<String>(map['productName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      catalogName: (map['catalogName'] as String).input(),
+      deviceGroupName: (map['deviceGroupName'] as String).input(),
+      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      productName: (map['productName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

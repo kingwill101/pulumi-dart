@@ -19,13 +19,10 @@ class GetConnectionMonitorTestArgs {
   /// [peeringServiceName] The name of the peering service.
   /// [resourceGroupName] The name of the resource group.
   GetConnectionMonitorTestArgs({
-    required pulumi.Output<String> connectionMonitorTestName,
-    required pulumi.Output<String> peeringServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      connectionMonitorTestName = pulumi.Input.asInput<String>(connectionMonitorTestName),
-      peeringServiceName = pulumi.Input.asInput<String>(peeringServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.connectionMonitorTestName,
+    required this.peeringServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConnectionMonitorTestArgs {
 
   factory GetConnectionMonitorTestArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionMonitorTestArgs(
-      connectionMonitorTestName: pulumi.Output.create<String>(map['connectionMonitorTestName'] as String),
-      peeringServiceName: pulumi.Output.create<String>(map['peeringServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      connectionMonitorTestName: (map['connectionMonitorTestName'] as String).input(),
+      peeringServiceName: (map['peeringServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

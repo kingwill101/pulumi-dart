@@ -25,17 +25,12 @@ class CustomDomainArgs {
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   CustomDomainArgs({
-    pulumi.Output<String>? customDomainName,
-    required pulumi.Output<String> endpointName,
-    required pulumi.Output<String> hostName,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      customDomainName = pulumi.Input.asOptionalInput<String>(customDomainName),
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      hostName = pulumi.Input.asInput<String>(hostName),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.customDomainName,
+    required this.endpointName,
+    required this.hostName,
+    required this.profileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CustomDomainArgs {
 
   factory CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainArgs(
-      customDomainName: map['customDomainName'] == null ? null : pulumi.Output.create<String>(map['customDomainName'] as String),
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      hostName: pulumi.Output.create<String>(map['hostName'] as String),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
+      endpointName: (map['endpointName'] as String).input(),
+      hostName: (map['hostName'] as String).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

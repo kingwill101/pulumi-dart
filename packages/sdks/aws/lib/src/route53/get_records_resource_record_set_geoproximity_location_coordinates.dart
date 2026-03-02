@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRecordsResourceRecordSetGeoproximityLocationCoordinates {
   /// Latitude.
-  final String latitude;
+  final pulumi.Input<String> latitude;
   /// Longitude.
-  final String longitude;
+  final pulumi.Input<String> longitude;
 
   /// Creates a new [GetRecordsResourceRecordSetGeoproximityLocationCoordinates].
   /// [latitude] Latitude.
@@ -24,8 +25,8 @@ class GetRecordsResourceRecordSetGeoproximityLocationCoordinates {
 
   factory GetRecordsResourceRecordSetGeoproximityLocationCoordinates.fromMap(Map<String, dynamic> map) {
     return GetRecordsResourceRecordSetGeoproximityLocationCoordinates(
-      latitude: map['latitude'] as String,
-      longitude: map['longitude'] as String,
+      latitude: (map['latitude'] as String).input(),
+      longitude: (map['longitude'] as String).input(),
     );
   }
 }

@@ -28,21 +28,14 @@ class KvState {
   /// [url] The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
   /// [value] The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
   KvState({
-    pulumi.Output<int>? expiration,
-    pulumi.Output<int>? expirationTtl,
-    pulumi.Output<bool>? isbase,
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? url,
-    pulumi.Output<String>? value,
-  }) :
-      expiration = pulumi.Input.asOptionalInput<int>(expiration),
-      expirationTtl = pulumi.Input.asOptionalInput<int>(expirationTtl),
-      isbase = pulumi.Input.asOptionalInput<bool>(isbase),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      url = pulumi.Input.asOptionalInput<String>(url),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.expiration,
+    this.expirationTtl,
+    this.isbase,
+    this.key,
+    this.namespace,
+    this.url,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class KvState {
 
   factory KvState.fromMap(Map<String, dynamic> map) {
     return KvState(
-      expiration: map['expiration'] == null ? null : pulumi.Output.create<int>(map['expiration'] as int),
-      expirationTtl: map['expirationTtl'] == null ? null : pulumi.Output.create<int>(map['expirationTtl'] as int),
-      isbase: map['isbase'] == null ? null : pulumi.Output.create<bool>(map['isbase'] as bool),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      expiration: map['expiration'] == null ? null : (map['expiration'] as int).input(),
+      expirationTtl: map['expirationTtl'] == null ? null : (map['expirationTtl'] as int).input(),
+      isbase: map['isbase'] == null ? null : (map['isbase'] as bool).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

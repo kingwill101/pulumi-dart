@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration values for periodic mode backup
 class PeriodicModePropertiesResponse {
   /// An integer representing the interval in minutes between two backups
-  final int? backupIntervalInMinutes;
+  final pulumi.Input<int>? backupIntervalInMinutes;
   /// An integer representing the time (in hours) that each backup is retained
-  final int? backupRetentionIntervalInHours;
+  final pulumi.Input<int>? backupRetentionIntervalInHours;
   /// Enum to indicate type of backup residency
-  final String? backupStorageRedundancy;
+  final pulumi.Input<String>? backupStorageRedundancy;
 
   /// Creates a new [PeriodicModePropertiesResponse].
   /// [backupIntervalInMinutes] An integer representing the interval in minutes between two backups
@@ -30,9 +31,9 @@ class PeriodicModePropertiesResponse {
 
   factory PeriodicModePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PeriodicModePropertiesResponse(
-      backupIntervalInMinutes: map['backupIntervalInMinutes'] == null ? null : map['backupIntervalInMinutes'] as int,
-      backupRetentionIntervalInHours: map['backupRetentionIntervalInHours'] == null ? null : map['backupRetentionIntervalInHours'] as int,
-      backupStorageRedundancy: map['backupStorageRedundancy'] == null ? null : map['backupStorageRedundancy'] as String,
+      backupIntervalInMinutes: map['backupIntervalInMinutes'] == null ? null : (map['backupIntervalInMinutes'] as int).input(),
+      backupRetentionIntervalInHours: map['backupRetentionIntervalInHours'] == null ? null : (map['backupRetentionIntervalInHours'] as int).input(),
+      backupStorageRedundancy: map['backupStorageRedundancy'] == null ? null : (map['backupStorageRedundancy'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InteractiveQueryClusterComponentVersion {
   /// The version of Interactive Query which should be used for this HDInsight Interactive Query Cluster. Changing this forces a new resource to be created.
-  final String interactiveHive;
+  final pulumi.Input<String> interactiveHive;
 
   /// Creates a new [InteractiveQueryClusterComponentVersion].
   /// [interactiveHive] The version of Interactive Query which should be used for this HDInsight Interactive Query Cluster. Changing this forces a new resource to be created.
@@ -19,7 +20,7 @@ class InteractiveQueryClusterComponentVersion {
 
   factory InteractiveQueryClusterComponentVersion.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryClusterComponentVersion(
-      interactiveHive: map['interactiveHive'] as String,
+      interactiveHive: (map['interactiveHive'] as String).input(),
     );
   }
 }

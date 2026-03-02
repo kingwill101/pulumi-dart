@@ -7,11 +7,11 @@ import 'table_data_set_response.dart';
 /// A table that displays time series data.
 class TimeSeriesTableResponse {
   /// Optional. The list of the persistent column settings for the table.
-  final List<ColumnSettingsResponse> columnSettings;
+  final pulumi.Input<List<ColumnSettingsResponse>> columnSettings;
   /// The data displayed in this table.
-  final List<TableDataSetResponse> dataSets;
+  final pulumi.Input<List<TableDataSetResponse>> dataSets;
   /// Optional. Store rendering strategy
-  final String metricVisualization;
+  final pulumi.Input<String> metricVisualization;
 
   /// Creates a new [TimeSeriesTableResponse].
   /// [columnSettings] Optional. The list of the persistent column settings for the table.
@@ -25,17 +25,17 @@ class TimeSeriesTableResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columnSettings': pulumi.Input.encodeList<ColumnSettingsResponse, Map<String, dynamic>>(columnSettings, (value) => value.toMap()),
-      'dataSets': pulumi.Input.encodeList<TableDataSetResponse, Map<String, dynamic>>(dataSets, (value) => value.toMap()),
+      'columnSettings': pulumi.Input.mapInputValue<List<ColumnSettingsResponse>, List<Map<String, dynamic>>>(columnSettings, (value) => pulumi.Input.encodeList<ColumnSettingsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataSets': pulumi.Input.mapInputValue<List<TableDataSetResponse>, List<Map<String, dynamic>>>(dataSets, (value) => pulumi.Input.encodeList<TableDataSetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metricVisualization': metricVisualization,
     };
   }
 
   factory TimeSeriesTableResponse.fromMap(Map<String, dynamic> map) {
     return TimeSeriesTableResponse(
-      columnSettings: pulumi.Input.decodeList<ColumnSettingsResponse>(map['columnSettings'], (value) => ColumnSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dataSets: pulumi.Input.decodeList<TableDataSetResponse>(map['dataSets'], (value) => TableDataSetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      metricVisualization: map['metricVisualization'] as String,
+      columnSettings: (pulumi.Input.decodeList<ColumnSettingsResponse>(map['columnSettings'], (value) => ColumnSettingsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSets: (pulumi.Input.decodeList<TableDataSetResponse>(map['dataSets'], (value) => TableDataSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricVisualization: (map['metricVisualization'] as String).input(),
     );
   }
 }

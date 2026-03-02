@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainInputMappingDefaultValue {
   /// Specifies the default data version of the EventGrid Event associated with the domain.
-  final String dataVersion;
+  final pulumi.Input<String> dataVersion;
   /// Specifies the default event type of the EventGrid Event associated with the domain.
-  final String eventType;
+  final pulumi.Input<String> eventType;
   /// Specifies the default subject of the EventGrid Event associated with the domain.
-  final String subject;
+  final pulumi.Input<String> subject;
 
   /// Creates a new [GetDomainInputMappingDefaultValue].
   /// [dataVersion] Specifies the default data version of the EventGrid Event associated with the domain.
@@ -29,9 +30,9 @@ class GetDomainInputMappingDefaultValue {
 
   factory GetDomainInputMappingDefaultValue.fromMap(Map<String, dynamic> map) {
     return GetDomainInputMappingDefaultValue(
-      dataVersion: map['dataVersion'] as String,
-      eventType: map['eventType'] as String,
-      subject: map['subject'] as String,
+      dataVersion: (map['dataVersion'] as String).input(),
+      eventType: (map['eventType'] as String).input(),
+      subject: (map['subject'] as String).input(),
     );
   }
 }

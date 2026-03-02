@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceV2EngineListNodeGroup {
   /// Node Type
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Number of CPU cores
-  final int? cpuCoreCount;
+  final pulumi.Input<int>? cpuCoreCount;
   /// Whether to mount  local cloud disks
-  final bool? enableAttachLocalDisk;
+  final pulumi.Input<bool>? enableAttachLocalDisk;
   /// Node memory size
-  final int? memorySizeGiB;
+  final pulumi.Input<int>? memorySizeGiB;
   /// Number of nodes
-  final int nodeCount;
+  final pulumi.Input<int> nodeCount;
   /// Local cloud disk storage capacity
-  final int? nodeDiskSize;
+  final pulumi.Input<int>? nodeDiskSize;
   /// Node Disk Type
-  final String? nodeDiskType;
+  final pulumi.Input<String>? nodeDiskType;
   /// Node Specifications
   /// - Valid values when selecting cloud storage:
   /// - **lindorm.c.2xlarge**, 8 cores 16GB
@@ -52,13 +53,13 @@ class InstanceV2EngineListNodeGroup {
   /// - **lindorm.i2.2xlarge**, 8 core 64GB(I2)
   /// - **lindorm.i2.4xlarge**, 16 cores 128GB(I2)
   /// - **lindorm.i2.8xlarge**, 32 cores 256GB(I2)
-  final String nodeSpec;
+  final pulumi.Input<String> nodeSpec;
   /// Resource group name
-  final String resourceGroupName;
+  final pulumi.Input<String> resourceGroupName;
   /// Spec Id
-  final String? specId;
+  final pulumi.Input<String>? specId;
   /// Node Status
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [InstanceV2EngineListNodeGroup].
   /// [category] Node Type
@@ -104,17 +105,17 @@ class InstanceV2EngineListNodeGroup {
 
   factory InstanceV2EngineListNodeGroup.fromMap(Map<String, dynamic> map) {
     return InstanceV2EngineListNodeGroup(
-      category: map['category'] == null ? null : map['category'] as String,
-      cpuCoreCount: map['cpuCoreCount'] == null ? null : map['cpuCoreCount'] as int,
-      enableAttachLocalDisk: map['enableAttachLocalDisk'] == null ? null : map['enableAttachLocalDisk'] as bool,
-      memorySizeGiB: map['memorySizeGiB'] == null ? null : map['memorySizeGiB'] as int,
-      nodeCount: map['nodeCount'] as int,
-      nodeDiskSize: map['nodeDiskSize'] == null ? null : map['nodeDiskSize'] as int,
-      nodeDiskType: map['nodeDiskType'] == null ? null : map['nodeDiskType'] as String,
-      nodeSpec: map['nodeSpec'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      specId: map['specId'] == null ? null : map['specId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      cpuCoreCount: map['cpuCoreCount'] == null ? null : (map['cpuCoreCount'] as int).input(),
+      enableAttachLocalDisk: map['enableAttachLocalDisk'] == null ? null : (map['enableAttachLocalDisk'] as bool).input(),
+      memorySizeGiB: map['memorySizeGiB'] == null ? null : (map['memorySizeGiB'] as int).input(),
+      nodeCount: (map['nodeCount'] as int).input(),
+      nodeDiskSize: map['nodeDiskSize'] == null ? null : (map['nodeDiskSize'] as int).input(),
+      nodeDiskType: map['nodeDiskType'] == null ? null : (map['nodeDiskType'] as String).input(),
+      nodeSpec: (map['nodeSpec'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      specId: map['specId'] == null ? null : (map['specId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

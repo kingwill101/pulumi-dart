@@ -30,21 +30,14 @@ class DeploymentArgs {
   /// [start] Start the application once deployed.
   /// [timeouts] Optional.
   DeploymentArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<int> applicationVersion,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<bool>? forceStop,
-    pulumi.Output<String>? region,
-    required pulumi.Output<bool> start,
-    pulumi.Output<DeploymentTimeouts>? timeouts,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      applicationVersion = pulumi.Input.asInput<int>(applicationVersion),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      forceStop = pulumi.Input.asOptionalInput<bool>(forceStop),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      start = pulumi.Input.asInput<bool>(start),
-      timeouts = pulumi.Input.asOptionalInput<DeploymentTimeouts>(timeouts);
+    required this.applicationId,
+    required this.applicationVersion,
+    required this.environmentId,
+    this.forceStop,
+    this.region,
+    required this.start,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      applicationVersion: pulumi.Output.create<int>(map['applicationVersion'] as int),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      forceStop: map['forceStop'] == null ? null : pulumi.Output.create<bool>(map['forceStop'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      start: pulumi.Output.create<bool>(map['start'] as bool),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DeploymentTimeouts>(DeploymentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      applicationId: (map['applicationId'] as String).input(),
+      applicationVersion: (map['applicationVersion'] as int).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      forceStop: map['forceStop'] == null ? null : (map['forceStop'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      start: (map['start'] as bool).input(),
+      timeouts: map['timeouts'] == null ? null : (DeploymentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

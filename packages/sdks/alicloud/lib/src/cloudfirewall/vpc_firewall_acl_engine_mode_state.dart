@@ -16,13 +16,10 @@ class VpcFirewallAclEngineModeState {
   /// [strictMode] The mode of the ACL engine. Possible values are `0`, `1`.
   /// [vpcFirewallId] The ID of the VPC firewall.
   VpcFirewallAclEngineModeState({
-    pulumi.Output<String>? memberUid,
-    pulumi.Output<int>? strictMode,
-    pulumi.Output<String>? vpcFirewallId,
-  }) :
-      memberUid = pulumi.Input.asOptionalInput<String>(memberUid),
-      strictMode = pulumi.Input.asOptionalInput<int>(strictMode),
-      vpcFirewallId = pulumi.Input.asOptionalInput<String>(vpcFirewallId);
+    this.memberUid,
+    this.strictMode,
+    this.vpcFirewallId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class VpcFirewallAclEngineModeState {
 
   factory VpcFirewallAclEngineModeState.fromMap(Map<String, dynamic> map) {
     return VpcFirewallAclEngineModeState(
-      memberUid: map['memberUid'] == null ? null : pulumi.Output.create<String>(map['memberUid'] as String),
-      strictMode: map['strictMode'] == null ? null : pulumi.Output.create<int>(map['strictMode'] as int),
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : pulumi.Output.create<String>(map['vpcFirewallId'] as String),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
+      strictMode: map['strictMode'] == null ? null : (map['strictMode'] as int).input(),
+      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId'] as String).input(),
     );
   }
 }

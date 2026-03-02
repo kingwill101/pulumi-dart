@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceZoneDistributionConfig {
   /// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
   /// Possible values:
   /// MULTI_ZONE
   /// SINGLE_ZONE Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
   /// Ignored for MULTI_ZONE mode.
-  final String zone;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [GetInstanceZoneDistributionConfig].
   /// [mode] Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
@@ -28,8 +29,8 @@ class GetInstanceZoneDistributionConfig {
 
   factory GetInstanceZoneDistributionConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceZoneDistributionConfig(
-      mode: map['mode'] as String,
-      zone: map['zone'] as String,
+      mode: (map['mode'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

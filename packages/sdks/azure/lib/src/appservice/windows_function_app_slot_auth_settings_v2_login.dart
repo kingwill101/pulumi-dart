@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsFunctionAppSlotAuthSettingsV2Login {
   /// External URLs that can be redirected to as part of logging in or logging out of the app. This is an advanced setting typically only needed by Windows Store application backends.
   ///
   /// > **Note:** URLs within the current domain are always implicitly allowed.
-  final List<String>? allowedExternalRedirectUrls;
+  final pulumi.Input<List<String>>? allowedExternalRedirectUrls;
   /// The method by which cookies expire. Possible values include: `FixedTime`, and `IdentityProviderDerived`. Defaults to `FixedTime`.
-  final String? cookieExpirationConvention;
+  final pulumi.Input<String>? cookieExpirationConvention;
   /// The time after the request is made when the session cookie should expire. Defaults to `08:00:00`.
-  final String? cookieExpirationTime;
+  final pulumi.Input<String>? cookieExpirationTime;
   /// The endpoint to which logout requests should be made.
-  final String? logoutEndpoint;
+  final pulumi.Input<String>? logoutEndpoint;
   /// The time after the request is made when the nonce should expire. Defaults to `00:05:00`.
-  final String? nonceExpirationTime;
+  final pulumi.Input<String>? nonceExpirationTime;
   /// Should the fragments from the request be preserved after the login request is made. Defaults to `false`.
-  final bool? preserveUrlFragmentsForLogins;
+  final pulumi.Input<bool>? preserveUrlFragmentsForLogins;
   /// The number of hours after session token expiration that a session token can be used to call the token refresh API. Defaults to `72` hours.
-  final double? tokenRefreshExtensionTime;
+  final pulumi.Input<double>? tokenRefreshExtensionTime;
   /// Should the Token Store configuration Enabled. Defaults to `false`
-  final bool? tokenStoreEnabled;
+  final pulumi.Input<bool>? tokenStoreEnabled;
   /// The directory path in the App Filesystem in which the tokens will be stored.
-  final String? tokenStorePath;
+  final pulumi.Input<String>? tokenStorePath;
   /// The name of the app setting which contains the SAS URL of the blob storage containing the tokens.
-  final String? tokenStoreSasSettingName;
+  final pulumi.Input<String>? tokenStoreSasSettingName;
   /// Should the nonce be validated while completing the login flow. Defaults to `true`.
-  final bool? validateNonce;
+  final pulumi.Input<bool>? validateNonce;
 
   /// Creates a new [WindowsFunctionAppSlotAuthSettingsV2Login].
   /// [allowedExternalRedirectUrls] External URLs that can be redirected to as part of logging in or logging out of the app. This is an advanced setting typically only needed by Windows Store application backends.
@@ -71,17 +72,17 @@ class WindowsFunctionAppSlotAuthSettingsV2Login {
 
   factory WindowsFunctionAppSlotAuthSettingsV2Login.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppSlotAuthSettingsV2Login(
-      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : (map['allowedExternalRedirectUrls'] as List).cast<String>(),
-      cookieExpirationConvention: map['cookieExpirationConvention'] == null ? null : map['cookieExpirationConvention'] as String,
-      cookieExpirationTime: map['cookieExpirationTime'] == null ? null : map['cookieExpirationTime'] as String,
-      logoutEndpoint: map['logoutEndpoint'] == null ? null : map['logoutEndpoint'] as String,
-      nonceExpirationTime: map['nonceExpirationTime'] == null ? null : map['nonceExpirationTime'] as String,
-      preserveUrlFragmentsForLogins: map['preserveUrlFragmentsForLogins'] == null ? null : map['preserveUrlFragmentsForLogins'] as bool,
-      tokenRefreshExtensionTime: map['tokenRefreshExtensionTime'] == null ? null : map['tokenRefreshExtensionTime'] as double,
-      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : map['tokenStoreEnabled'] as bool,
-      tokenStorePath: map['tokenStorePath'] == null ? null : map['tokenStorePath'] as String,
-      tokenStoreSasSettingName: map['tokenStoreSasSettingName'] == null ? null : map['tokenStoreSasSettingName'] as String,
-      validateNonce: map['validateNonce'] == null ? null : map['validateNonce'] as bool,
+      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : ((map['allowedExternalRedirectUrls'] as List).cast<String>()).input(),
+      cookieExpirationConvention: map['cookieExpirationConvention'] == null ? null : (map['cookieExpirationConvention'] as String).input(),
+      cookieExpirationTime: map['cookieExpirationTime'] == null ? null : (map['cookieExpirationTime'] as String).input(),
+      logoutEndpoint: map['logoutEndpoint'] == null ? null : (map['logoutEndpoint'] as String).input(),
+      nonceExpirationTime: map['nonceExpirationTime'] == null ? null : (map['nonceExpirationTime'] as String).input(),
+      preserveUrlFragmentsForLogins: map['preserveUrlFragmentsForLogins'] == null ? null : (map['preserveUrlFragmentsForLogins'] as bool).input(),
+      tokenRefreshExtensionTime: map['tokenRefreshExtensionTime'] == null ? null : (map['tokenRefreshExtensionTime'] as double).input(),
+      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : (map['tokenStoreEnabled'] as bool).input(),
+      tokenStorePath: map['tokenStorePath'] == null ? null : (map['tokenStorePath'] as String).input(),
+      tokenStoreSasSettingName: map['tokenStoreSasSettingName'] == null ? null : (map['tokenStoreSasSettingName'] as String).input(),
+      validateNonce: map['validateNonce'] == null ? null : (map['validateNonce'] as bool).input(),
     );
   }
 }

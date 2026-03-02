@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SAP Availability Zone Pair.
 class SAPAvailabilityZonePairResponse {
   /// The zone A.
-  final double? zoneA;
+  final pulumi.Input<double>? zoneA;
   /// The zone B.
-  final double? zoneB;
+  final pulumi.Input<double>? zoneB;
 
   /// Creates a new [SAPAvailabilityZonePairResponse].
   /// [zoneA] The zone A.
@@ -25,8 +26,8 @@ class SAPAvailabilityZonePairResponse {
 
   factory SAPAvailabilityZonePairResponse.fromMap(Map<String, dynamic> map) {
     return SAPAvailabilityZonePairResponse(
-      zoneA: map['zoneA'] == null ? null : map['zoneA'] as double,
-      zoneB: map['zoneB'] == null ? null : map['zoneB'] as double,
+      zoneA: map['zoneA'] == null ? null : (map['zoneA'] as double).input(),
+      zoneB: map['zoneB'] == null ? null : (map['zoneB'] as double).input(),
     );
   }
 }

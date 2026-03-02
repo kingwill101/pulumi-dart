@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties related to OpenAI Resource
 class OpenAIProfile {
   /// Embedding Model Capacity
-  final int? embeddingModelCapacity;
+  final pulumi.Input<int>? embeddingModelCapacity;
   /// Embedding Model Name
-  final String? embeddingModelName;
+  final pulumi.Input<String>? embeddingModelName;
   /// Embedding Model SKU Name
-  final String? embeddingModelSkuName;
+  final pulumi.Input<String>? embeddingModelSkuName;
   /// Embedding Model Version
-  final String? embeddingModelVersion;
+  final pulumi.Input<String>? embeddingModelVersion;
   /// GPT Model Capacity
-  final int? gptModelCapacity;
+  final pulumi.Input<int>? gptModelCapacity;
   /// GPT Model Name
-  final String? gptModelName;
+  final pulumi.Input<String>? gptModelName;
   /// GPT Model SKU Name
-  final String? gptModelSkuName;
+  final pulumi.Input<String>? gptModelSkuName;
   /// GPT Model Version
-  final String? gptModelVersion;
+  final pulumi.Input<String>? gptModelVersion;
 
   /// Creates a new [OpenAIProfile].
   /// [embeddingModelCapacity] Embedding Model Capacity
@@ -55,14 +56,14 @@ class OpenAIProfile {
 
   factory OpenAIProfile.fromMap(Map<String, dynamic> map) {
     return OpenAIProfile(
-      embeddingModelCapacity: map['embeddingModelCapacity'] == null ? null : map['embeddingModelCapacity'] as int,
-      embeddingModelName: map['embeddingModelName'] == null ? null : map['embeddingModelName'] as String,
-      embeddingModelSkuName: map['embeddingModelSkuName'] == null ? null : map['embeddingModelSkuName'] as String,
-      embeddingModelVersion: map['embeddingModelVersion'] == null ? null : map['embeddingModelVersion'] as String,
-      gptModelCapacity: map['gptModelCapacity'] == null ? null : map['gptModelCapacity'] as int,
-      gptModelName: map['gptModelName'] == null ? null : map['gptModelName'] as String,
-      gptModelSkuName: map['gptModelSkuName'] == null ? null : map['gptModelSkuName'] as String,
-      gptModelVersion: map['gptModelVersion'] == null ? null : map['gptModelVersion'] as String,
+      embeddingModelCapacity: map['embeddingModelCapacity'] == null ? null : (map['embeddingModelCapacity'] as int).input(),
+      embeddingModelName: map['embeddingModelName'] == null ? null : (map['embeddingModelName'] as String).input(),
+      embeddingModelSkuName: map['embeddingModelSkuName'] == null ? null : (map['embeddingModelSkuName'] as String).input(),
+      embeddingModelVersion: map['embeddingModelVersion'] == null ? null : (map['embeddingModelVersion'] as String).input(),
+      gptModelCapacity: map['gptModelCapacity'] == null ? null : (map['gptModelCapacity'] as int).input(),
+      gptModelName: map['gptModelName'] == null ? null : (map['gptModelName'] as String).input(),
+      gptModelSkuName: map['gptModelSkuName'] == null ? null : (map['gptModelSkuName'] as String).input(),
+      gptModelVersion: map['gptModelVersion'] == null ? null : (map['gptModelVersion'] as String).input(),
     );
   }
 }

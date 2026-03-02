@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
 class GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse {
   /// The Data Catalog resource name of the dataset entry the current table belongs to. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
-  final String dataset;
+  final pulumi.Input<String> dataset;
   /// BigQuery resource name of the latest shard.
-  final String latestShardResource;
+  final pulumi.Input<String> latestShardResource;
   /// Total number of shards.
-  final String shardCount;
+  final pulumi.Input<String> shardCount;
   /// The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`. For example, for the `MyTable20180101` shard, the `table_prefix` is `MyTable`.
-  final String tablePrefix;
+  final pulumi.Input<String> tablePrefix;
 
   /// Creates a new [GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse].
   /// [dataset] The Data Catalog resource name of the dataset entry the current table belongs to. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
@@ -35,10 +36,10 @@ class GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse {
 
   factory GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse(
-      dataset: map['dataset'] as String,
-      latestShardResource: map['latestShardResource'] as String,
-      shardCount: map['shardCount'] as String,
-      tablePrefix: map['tablePrefix'] as String,
+      dataset: (map['dataset'] as String).input(),
+      latestShardResource: (map['latestShardResource'] as String).input(),
+      shardCount: (map['shardCount'] as String).input(),
+      tablePrefix: (map['tablePrefix'] as String).input(),
     );
   }
 }

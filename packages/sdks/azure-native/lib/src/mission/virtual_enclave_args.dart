@@ -55,33 +55,20 @@ class VirtualEnclaveArgs {
   /// [virtualEnclaveName] The name of the enclaveResource Resource
   /// [workloadRoleAssignments] Workload role assignments
   VirtualEnclaveArgs({
-    pulumi.Output<bool>? bastionEnabled,
-    required pulumi.Output<String> communityResourceId,
-    pulumi.Output<EnclaveDefaultSettingsModel>? enclaveDefaultSettings,
-    pulumi.Output<List<RoleAssignmentItem>>? enclaveRoleAssignments,
-    required pulumi.Output<EnclaveVirtualNetworkModel> enclaveVirtualNetwork,
-    pulumi.Output<List<GovernedServiceItem>>? governedServiceList,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<MaintenanceModeConfigurationModel>? maintenanceModeConfiguration,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? virtualEnclaveName,
-    pulumi.Output<List<RoleAssignmentItem>>? workloadRoleAssignments,
-  }) :
-      bastionEnabled = pulumi.Input.asOptionalInput<bool>(bastionEnabled),
-      communityResourceId = pulumi.Input.asInput<String>(communityResourceId),
-      enclaveDefaultSettings = pulumi.Input.asOptionalInput<EnclaveDefaultSettingsModel>(enclaveDefaultSettings),
-      enclaveRoleAssignments = pulumi.Input.asOptionalInput<List<RoleAssignmentItem>>(enclaveRoleAssignments),
-      enclaveVirtualNetwork = pulumi.Input.asInput<EnclaveVirtualNetworkModel>(enclaveVirtualNetwork),
-      governedServiceList = pulumi.Input.asOptionalInput<List<GovernedServiceItem>>(governedServiceList),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maintenanceModeConfiguration = pulumi.Input.asOptionalInput<MaintenanceModeConfigurationModel>(maintenanceModeConfiguration),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualEnclaveName = pulumi.Input.asOptionalInput<String>(virtualEnclaveName),
-      workloadRoleAssignments = pulumi.Input.asOptionalInput<List<RoleAssignmentItem>>(workloadRoleAssignments);
+    this.bastionEnabled,
+    required this.communityResourceId,
+    this.enclaveDefaultSettings,
+    this.enclaveRoleAssignments,
+    required this.enclaveVirtualNetwork,
+    this.governedServiceList,
+    this.identity,
+    this.location,
+    this.maintenanceModeConfiguration,
+    required this.resourceGroupName,
+    this.tags,
+    this.virtualEnclaveName,
+    this.workloadRoleAssignments,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,19 +90,19 @@ class VirtualEnclaveArgs {
 
   factory VirtualEnclaveArgs.fromMap(Map<String, dynamic> map) {
     return VirtualEnclaveArgs(
-      bastionEnabled: map['bastionEnabled'] == null ? null : pulumi.Output.create<bool>(map['bastionEnabled'] as bool),
-      communityResourceId: pulumi.Output.create<String>(map['communityResourceId'] as String),
-      enclaveDefaultSettings: map['enclaveDefaultSettings'] == null ? null : pulumi.Output.create<EnclaveDefaultSettingsModel>(EnclaveDefaultSettingsModel.fromMap((map['enclaveDefaultSettings'] as Map).cast<String, dynamic>())),
-      enclaveRoleAssignments: map['enclaveRoleAssignments'] == null ? null : pulumi.Output.create<List<RoleAssignmentItem>>(pulumi.Input.decodeList<RoleAssignmentItem>(map['enclaveRoleAssignments'], (value) => RoleAssignmentItem.fromMap((value as Map).cast<String, dynamic>()))),
-      enclaveVirtualNetwork: pulumi.Output.create<EnclaveVirtualNetworkModel>(EnclaveVirtualNetworkModel.fromMap((map['enclaveVirtualNetwork'] as Map).cast<String, dynamic>())),
-      governedServiceList: map['governedServiceList'] == null ? null : pulumi.Output.create<List<GovernedServiceItem>>(pulumi.Input.decodeList<GovernedServiceItem>(map['governedServiceList'], (value) => GovernedServiceItem.fromMap((value as Map).cast<String, dynamic>()))),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maintenanceModeConfiguration: map['maintenanceModeConfiguration'] == null ? null : pulumi.Output.create<MaintenanceModeConfigurationModel>(MaintenanceModeConfigurationModel.fromMap((map['maintenanceModeConfiguration'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualEnclaveName: map['virtualEnclaveName'] == null ? null : pulumi.Output.create<String>(map['virtualEnclaveName'] as String),
-      workloadRoleAssignments: map['workloadRoleAssignments'] == null ? null : pulumi.Output.create<List<RoleAssignmentItem>>(pulumi.Input.decodeList<RoleAssignmentItem>(map['workloadRoleAssignments'], (value) => RoleAssignmentItem.fromMap((value as Map).cast<String, dynamic>()))),
+      bastionEnabled: map['bastionEnabled'] == null ? null : (map['bastionEnabled'] as bool).input(),
+      communityResourceId: (map['communityResourceId'] as String).input(),
+      enclaveDefaultSettings: map['enclaveDefaultSettings'] == null ? null : (EnclaveDefaultSettingsModel.fromMap((map['enclaveDefaultSettings'] as Map).cast<String, dynamic>())).input(),
+      enclaveRoleAssignments: map['enclaveRoleAssignments'] == null ? null : (pulumi.Input.decodeList<RoleAssignmentItem>(map['enclaveRoleAssignments'], (value) => RoleAssignmentItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enclaveVirtualNetwork: (EnclaveVirtualNetworkModel.fromMap((map['enclaveVirtualNetwork'] as Map).cast<String, dynamic>())).input(),
+      governedServiceList: map['governedServiceList'] == null ? null : (pulumi.Input.decodeList<GovernedServiceItem>(map['governedServiceList'], (value) => GovernedServiceItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maintenanceModeConfiguration: map['maintenanceModeConfiguration'] == null ? null : (MaintenanceModeConfigurationModel.fromMap((map['maintenanceModeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualEnclaveName: map['virtualEnclaveName'] == null ? null : (map['virtualEnclaveName'] as String).input(),
+      workloadRoleAssignments: map['workloadRoleAssignments'] == null ? null : (pulumi.Input.decodeList<RoleAssignmentItem>(map['workloadRoleAssignments'], (value) => RoleAssignmentItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

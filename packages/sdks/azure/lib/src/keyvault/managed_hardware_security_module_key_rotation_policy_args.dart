@@ -22,15 +22,11 @@ class ManagedHardwareSecurityModuleKeyRotationPolicyArgs {
   /// [timeAfterCreation] Rotate automatically at a duration after key creation as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Exactly one of `time_after_creation` or `time_before_expiry` should be specified.
   /// [timeBeforeExpiry] Rotate automatically at a duration before key expiry as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Exactly one of `time_after_creation` or `time_before_expiry` should be specified.
   ManagedHardwareSecurityModuleKeyRotationPolicyArgs({
-    required pulumi.Output<String> expireAfter,
-    required pulumi.Output<String> managedHsmKeyId,
-    pulumi.Output<String>? timeAfterCreation,
-    pulumi.Output<String>? timeBeforeExpiry,
-  }) :
-      expireAfter = pulumi.Input.asInput<String>(expireAfter),
-      managedHsmKeyId = pulumi.Input.asInput<String>(managedHsmKeyId),
-      timeAfterCreation = pulumi.Input.asOptionalInput<String>(timeAfterCreation),
-      timeBeforeExpiry = pulumi.Input.asOptionalInput<String>(timeBeforeExpiry);
+    required this.expireAfter,
+    required this.managedHsmKeyId,
+    this.timeAfterCreation,
+    this.timeBeforeExpiry,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ManagedHardwareSecurityModuleKeyRotationPolicyArgs {
 
   factory ManagedHardwareSecurityModuleKeyRotationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleKeyRotationPolicyArgs(
-      expireAfter: pulumi.Output.create<String>(map['expireAfter'] as String),
-      managedHsmKeyId: pulumi.Output.create<String>(map['managedHsmKeyId'] as String),
-      timeAfterCreation: map['timeAfterCreation'] == null ? null : pulumi.Output.create<String>(map['timeAfterCreation'] as String),
-      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : pulumi.Output.create<String>(map['timeBeforeExpiry'] as String),
+      expireAfter: (map['expireAfter'] as String).input(),
+      managedHsmKeyId: (map['managedHsmKeyId'] as String).input(),
+      timeAfterCreation: map['timeAfterCreation'] == null ? null : (map['timeAfterCreation'] as String).input(),
+      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry'] as String).input(),
     );
   }
 }

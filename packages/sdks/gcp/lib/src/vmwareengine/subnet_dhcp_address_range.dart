@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubnetDhcpAddressRange {
   /// (Output)
   /// The first IP address of the range.
-  final String? firstAddress;
+  final pulumi.Input<String>? firstAddress;
   /// (Output)
   /// The last IP address of the range.
-  final String? lastAddress;
+  final pulumi.Input<String>? lastAddress;
 
   /// Creates a new [SubnetDhcpAddressRange].
   /// [firstAddress] (Output)
@@ -26,8 +27,8 @@ class SubnetDhcpAddressRange {
 
   factory SubnetDhcpAddressRange.fromMap(Map<String, dynamic> map) {
     return SubnetDhcpAddressRange(
-      firstAddress: map['firstAddress'] == null ? null : map['firstAddress'] as String,
-      lastAddress: map['lastAddress'] == null ? null : map['lastAddress'] as String,
+      firstAddress: map['firstAddress'] == null ? null : (map['firstAddress'] as String).input(),
+      lastAddress: map['lastAddress'] == null ? null : (map['lastAddress'] as String).input(),
     );
   }
 }

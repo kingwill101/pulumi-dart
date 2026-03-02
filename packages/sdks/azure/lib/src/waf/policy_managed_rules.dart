@@ -6,9 +6,9 @@ import 'policy_managed_rules_managed_rule_set.dart';
 
 class PolicyManagedRules {
   /// One or more `exclusion` block defined below.
-  final List<PolicyManagedRulesExclusion>? exclusions;
+  final pulumi.Input<List<PolicyManagedRulesExclusion>>? exclusions;
   /// One or more `managed_rule_set` block defined below.
-  final List<PolicyManagedRulesManagedRuleSet> managedRuleSets;
+  final pulumi.Input<List<PolicyManagedRulesManagedRuleSet>> managedRuleSets;
 
   /// Creates a new [PolicyManagedRules].
   /// [exclusions] One or more `exclusion` block defined below.
@@ -20,15 +20,15 @@ class PolicyManagedRules {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exclusions': ?exclusions == null ? null : pulumi.Input.encodeList<PolicyManagedRulesExclusion, Map<String, dynamic>>(exclusions!, (value) => value.toMap()),
-      'managedRuleSets': pulumi.Input.encodeList<PolicyManagedRulesManagedRuleSet, Map<String, dynamic>>(managedRuleSets, (value) => value.toMap()),
+      'exclusions': ?pulumi.Input.mapOptionalInputValue<List<PolicyManagedRulesExclusion>, List<Map<String, dynamic>>>(exclusions, (value) => pulumi.Input.encodeList<PolicyManagedRulesExclusion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'managedRuleSets': pulumi.Input.mapInputValue<List<PolicyManagedRulesManagedRuleSet>, List<Map<String, dynamic>>>(managedRuleSets, (value) => pulumi.Input.encodeList<PolicyManagedRulesManagedRuleSet, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PolicyManagedRules.fromMap(Map<String, dynamic> map) {
     return PolicyManagedRules(
-      exclusions: map['exclusions'] == null ? null : pulumi.Input.decodeList<PolicyManagedRulesExclusion>(map['exclusions'], (value) => PolicyManagedRulesExclusion.fromMap((value as Map).cast<String, dynamic>())),
-      managedRuleSets: pulumi.Input.decodeList<PolicyManagedRulesManagedRuleSet>(map['managedRuleSets'], (value) => PolicyManagedRulesManagedRuleSet.fromMap((value as Map).cast<String, dynamic>())),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<PolicyManagedRulesExclusion>(map['exclusions'], (value) => PolicyManagedRulesExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedRuleSets: (pulumi.Input.decodeList<PolicyManagedRulesManagedRuleSet>(map['managedRuleSets'], (value) => PolicyManagedRulesManagedRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIpSetsSet {
   /// The ID of an acceleration region.
-  final String accelerateRegionId;
+  final pulumi.Input<String> accelerateRegionId;
   /// The bandwidth allocated to the acceleration region.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// The ID of the Ip Set.
-  final String id;
+  final pulumi.Input<String> id;
   /// The list of accelerated IP addresses in the acceleration region.
-  final List<String> ipAddressLists;
+  final pulumi.Input<List<String>> ipAddressLists;
   /// Accelerated area ID.
-  final String ipSetId;
+  final pulumi.Input<String> ipSetId;
   /// The IP protocol used by the GA instance.
-  final String ipVersion;
+  final pulumi.Input<String> ipVersion;
   /// The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetIpSetsSet].
   /// [accelerateRegionId] The ID of an acceleration region.
@@ -49,13 +50,13 @@ class GetIpSetsSet {
 
   factory GetIpSetsSet.fromMap(Map<String, dynamic> map) {
     return GetIpSetsSet(
-      accelerateRegionId: map['accelerateRegionId'] as String,
-      bandwidth: map['bandwidth'] as int,
-      id: map['id'] as String,
-      ipAddressLists: (map['ipAddressLists'] as List).cast<String>(),
-      ipSetId: map['ipSetId'] as String,
-      ipVersion: map['ipVersion'] as String,
-      status: map['status'] as String,
+      accelerateRegionId: (map['accelerateRegionId'] as String).input(),
+      bandwidth: (map['bandwidth'] as int).input(),
+      id: (map['id'] as String).input(),
+      ipAddressLists: ((map['ipAddressLists'] as List).cast<String>()).input(),
+      ipSetId: (map['ipSetId'] as String).input(),
+      ipVersion: (map['ipVersion'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

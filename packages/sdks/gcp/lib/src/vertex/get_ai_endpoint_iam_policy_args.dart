@@ -22,13 +22,10 @@ class GetAiEndpointIamPolicyArgs {
   /// [location] The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
   GetAiEndpointIamPolicyArgs({
-    required pulumi.Output<String> endpoint,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      endpoint = pulumi.Input.asInput<String>(endpoint),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.endpoint,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetAiEndpointIamPolicyArgs {
 
   factory GetAiEndpointIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAiEndpointIamPolicyArgs(
-      endpoint: pulumi.Output.create<String>(map['endpoint'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      endpoint: (map['endpoint'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

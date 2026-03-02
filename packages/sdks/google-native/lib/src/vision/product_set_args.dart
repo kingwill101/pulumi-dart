@@ -23,17 +23,12 @@ class ProductSetArgs {
   /// [productSetId] A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
   /// [project] Optional.
   ProductSetArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? productSetId,
-    pulumi.Output<String>? project,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      productSetId = pulumi.Input.asOptionalInput<String>(productSetId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.displayName,
+    this.location,
+    this.name,
+    this.productSetId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class ProductSetArgs {
 
   factory ProductSetArgs.fromMap(Map<String, dynamic> map) {
     return ProductSetArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      productSetId: map['productSetId'] == null ? null : pulumi.Output.create<String>(map['productSetId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      productSetId: map['productSetId'] == null ? null : (map['productSetId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

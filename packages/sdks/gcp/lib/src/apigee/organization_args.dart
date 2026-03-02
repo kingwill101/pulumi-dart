@@ -73,35 +73,21 @@ class OrganizationArgs {
   /// [runtimeDatabaseEncryptionKeyName] Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
   /// [runtimeType_] Runtime type of the Apigee organization based on the Apigee subscription purchased.
   OrganizationArgs({
-    pulumi.Output<String>? analyticsRegion,
-    pulumi.Output<String>? apiConsumerDataEncryptionKeyName,
-    pulumi.Output<String>? apiConsumerDataLocation,
-    pulumi.Output<String>? authorizedNetwork,
-    pulumi.Output<String>? billingType,
-    pulumi.Output<String>? controlPlaneEncryptionKeyName,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disableVpcPeering,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> projectId,
-    pulumi.Output<OrganizationProperties>? properties,
-    pulumi.Output<String>? retention,
-    pulumi.Output<String>? runtimeDatabaseEncryptionKeyName,
-    pulumi.Output<String>? runtimeType_,
-  }) :
-      analyticsRegion = pulumi.Input.asOptionalInput<String>(analyticsRegion),
-      apiConsumerDataEncryptionKeyName = pulumi.Input.asOptionalInput<String>(apiConsumerDataEncryptionKeyName),
-      apiConsumerDataLocation = pulumi.Input.asOptionalInput<String>(apiConsumerDataLocation),
-      authorizedNetwork = pulumi.Input.asOptionalInput<String>(authorizedNetwork),
-      billingType = pulumi.Input.asOptionalInput<String>(billingType),
-      controlPlaneEncryptionKeyName = pulumi.Input.asOptionalInput<String>(controlPlaneEncryptionKeyName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disableVpcPeering = pulumi.Input.asOptionalInput<bool>(disableVpcPeering),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      projectId = pulumi.Input.asInput<String>(projectId),
-      properties = pulumi.Input.asOptionalInput<OrganizationProperties>(properties),
-      retention = pulumi.Input.asOptionalInput<String>(retention),
-      runtimeDatabaseEncryptionKeyName = pulumi.Input.asOptionalInput<String>(runtimeDatabaseEncryptionKeyName),
-      runtimeType_ = pulumi.Input.asOptionalInput<String>(runtimeType_);
+    this.analyticsRegion,
+    this.apiConsumerDataEncryptionKeyName,
+    this.apiConsumerDataLocation,
+    this.authorizedNetwork,
+    this.billingType,
+    this.controlPlaneEncryptionKeyName,
+    this.description,
+    this.disableVpcPeering,
+    this.displayName,
+    required this.projectId,
+    this.properties,
+    this.retention,
+    this.runtimeDatabaseEncryptionKeyName,
+    this.runtimeType_,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -124,20 +110,20 @@ class OrganizationArgs {
 
   factory OrganizationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationArgs(
-      analyticsRegion: map['analyticsRegion'] == null ? null : pulumi.Output.create<String>(map['analyticsRegion'] as String),
-      apiConsumerDataEncryptionKeyName: map['apiConsumerDataEncryptionKeyName'] == null ? null : pulumi.Output.create<String>(map['apiConsumerDataEncryptionKeyName'] as String),
-      apiConsumerDataLocation: map['apiConsumerDataLocation'] == null ? null : pulumi.Output.create<String>(map['apiConsumerDataLocation'] as String),
-      authorizedNetwork: map['authorizedNetwork'] == null ? null : pulumi.Output.create<String>(map['authorizedNetwork'] as String),
-      billingType: map['billingType'] == null ? null : pulumi.Output.create<String>(map['billingType'] as String),
-      controlPlaneEncryptionKeyName: map['controlPlaneEncryptionKeyName'] == null ? null : pulumi.Output.create<String>(map['controlPlaneEncryptionKeyName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disableVpcPeering: map['disableVpcPeering'] == null ? null : pulumi.Output.create<bool>(map['disableVpcPeering'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      projectId: pulumi.Output.create<String>(map['projectId'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<OrganizationProperties>(OrganizationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      retention: map['retention'] == null ? null : pulumi.Output.create<String>(map['retention'] as String),
-      runtimeDatabaseEncryptionKeyName: map['runtimeDatabaseEncryptionKeyName'] == null ? null : pulumi.Output.create<String>(map['runtimeDatabaseEncryptionKeyName'] as String),
-      runtimeType_: map['runtimeType'] == null ? null : pulumi.Output.create<String>(map['runtimeType'] as String),
+      analyticsRegion: map['analyticsRegion'] == null ? null : (map['analyticsRegion'] as String).input(),
+      apiConsumerDataEncryptionKeyName: map['apiConsumerDataEncryptionKeyName'] == null ? null : (map['apiConsumerDataEncryptionKeyName'] as String).input(),
+      apiConsumerDataLocation: map['apiConsumerDataLocation'] == null ? null : (map['apiConsumerDataLocation'] as String).input(),
+      authorizedNetwork: map['authorizedNetwork'] == null ? null : (map['authorizedNetwork'] as String).input(),
+      billingType: map['billingType'] == null ? null : (map['billingType'] as String).input(),
+      controlPlaneEncryptionKeyName: map['controlPlaneEncryptionKeyName'] == null ? null : (map['controlPlaneEncryptionKeyName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableVpcPeering: map['disableVpcPeering'] == null ? null : (map['disableVpcPeering'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
+      properties: map['properties'] == null ? null : (OrganizationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      retention: map['retention'] == null ? null : (map['retention'] as String).input(),
+      runtimeDatabaseEncryptionKeyName: map['runtimeDatabaseEncryptionKeyName'] == null ? null : (map['runtimeDatabaseEncryptionKeyName'] as String).input(),
+      runtimeType_: map['runtimeType'] == null ? null : (map['runtimeType'] as String).input(),
     );
   }
 }

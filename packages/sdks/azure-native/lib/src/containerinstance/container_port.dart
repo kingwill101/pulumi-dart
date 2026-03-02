@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The port exposed on the container instance.
 class ContainerPort {
   /// The port number exposed within the container group.
-  final int port;
+  final pulumi.Input<int> port;
   /// The protocol associated with the port.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
 
   /// Creates a new [ContainerPort].
   /// [port] The port number exposed within the container group.
@@ -25,8 +26,8 @@ class ContainerPort {
 
   factory ContainerPort.fromMap(Map<String, dynamic> map) {
     return ContainerPort(
-      port: map['port'] as int,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
+      port: (map['port'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
     );
   }
 }

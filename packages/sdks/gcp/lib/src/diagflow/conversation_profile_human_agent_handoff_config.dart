@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'conversation_profile_human_agent_handoff_config_live_person_config.dart';
 
 class ConversationProfileHumanAgentHandoffConfig {
   /// Config for using LivePerson.
   /// Structure is documented below.
-  final ConversationProfileHumanAgentHandoffConfigLivePersonConfig? livePersonConfig;
+  final pulumi.Input<ConversationProfileHumanAgentHandoffConfigLivePersonConfig>? livePersonConfig;
 
   /// Creates a new [ConversationProfileHumanAgentHandoffConfig].
   /// [livePersonConfig] Config for using LivePerson.
@@ -15,13 +16,13 @@ class ConversationProfileHumanAgentHandoffConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'livePersonConfig': ?livePersonConfig == null ? null : livePersonConfig!.toMap(),
+      'livePersonConfig': ?pulumi.Input.mapOptionalInputValue<ConversationProfileHumanAgentHandoffConfigLivePersonConfig, Map<String, dynamic>>(livePersonConfig, (value) => value.toMap()),
     };
   }
 
   factory ConversationProfileHumanAgentHandoffConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentHandoffConfig(
-      livePersonConfig: map['livePersonConfig'] == null ? null : ConversationProfileHumanAgentHandoffConfigLivePersonConfig.fromMap((map['livePersonConfig'] as Map).cast<String, dynamic>()),
+      livePersonConfig: map['livePersonConfig'] == null ? null : (ConversationProfileHumanAgentHandoffConfigLivePersonConfig.fromMap((map['livePersonConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

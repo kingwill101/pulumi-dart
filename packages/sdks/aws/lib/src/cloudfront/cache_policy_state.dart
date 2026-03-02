@@ -32,23 +32,15 @@ class CachePolicyState {
   /// [name] Unique name used to identify the cache policy.
   /// [parametersInCacheKeyAndForwardedToOrigin] Configuration for including HTTP headers, cookies, and URL query strings in the cache key. For more information, refer to the Parameters In Cache Key And Forwarded To Origin section.
   CachePolicyState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? comment,
-    pulumi.Output<int>? defaultTtl,
-    pulumi.Output<String>? etag,
-    pulumi.Output<int>? maxTtl,
-    pulumi.Output<int>? minTtl,
-    pulumi.Output<String>? name,
-    pulumi.Output<CachePolicyParametersInCacheKeyAndForwardedToOrigin>? parametersInCacheKeyAndForwardedToOrigin,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      defaultTtl = pulumi.Input.asOptionalInput<int>(defaultTtl),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      maxTtl = pulumi.Input.asOptionalInput<int>(maxTtl),
-      minTtl = pulumi.Input.asOptionalInput<int>(minTtl),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parametersInCacheKeyAndForwardedToOrigin = pulumi.Input.asOptionalInput<CachePolicyParametersInCacheKeyAndForwardedToOrigin>(parametersInCacheKeyAndForwardedToOrigin);
+    this.arn,
+    this.comment,
+    this.defaultTtl,
+    this.etag,
+    this.maxTtl,
+    this.minTtl,
+    this.name,
+    this.parametersInCacheKeyAndForwardedToOrigin,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class CachePolicyState {
 
   factory CachePolicyState.fromMap(Map<String, dynamic> map) {
     return CachePolicyState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      defaultTtl: map['defaultTtl'] == null ? null : pulumi.Output.create<int>(map['defaultTtl'] as int),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      maxTtl: map['maxTtl'] == null ? null : pulumi.Output.create<int>(map['maxTtl'] as int),
-      minTtl: map['minTtl'] == null ? null : pulumi.Output.create<int>(map['minTtl'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parametersInCacheKeyAndForwardedToOrigin: map['parametersInCacheKeyAndForwardedToOrigin'] == null ? null : pulumi.Output.create<CachePolicyParametersInCacheKeyAndForwardedToOrigin>(CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap((map['parametersInCacheKeyAndForwardedToOrigin'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      maxTtl: map['maxTtl'] == null ? null : (map['maxTtl'] as int).input(),
+      minTtl: map['minTtl'] == null ? null : (map['minTtl'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parametersInCacheKeyAndForwardedToOrigin: map['parametersInCacheKeyAndForwardedToOrigin'] == null ? null : (CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap((map['parametersInCacheKeyAndForwardedToOrigin'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

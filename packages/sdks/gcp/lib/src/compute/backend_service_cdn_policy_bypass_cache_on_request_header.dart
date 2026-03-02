@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendServiceCdnPolicyBypassCacheOnRequestHeader {
   /// The header field name to match on when bypassing cache. Values are case-insensitive.
-  final String headerName;
+  final pulumi.Input<String> headerName;
 
   /// Creates a new [BackendServiceCdnPolicyBypassCacheOnRequestHeader].
   /// [headerName] The header field name to match on when bypassing cache. Values are case-insensitive.
@@ -19,7 +20,7 @@ class BackendServiceCdnPolicyBypassCacheOnRequestHeader {
 
   factory BackendServiceCdnPolicyBypassCacheOnRequestHeader.fromMap(Map<String, dynamic> map) {
     return BackendServiceCdnPolicyBypassCacheOnRequestHeader(
-      headerName: map['headerName'] as String,
+      headerName: (map['headerName'] as String).input(),
     );
   }
 }

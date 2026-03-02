@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDefaultUserSettingsCustomPosixUserConfig {
   /// The POSIX group ID.
-  final int gid;
+  final pulumi.Input<int> gid;
   /// The POSIX user ID.
-  final int uid;
+  final pulumi.Input<int> uid;
 
   /// Creates a new [DomainDefaultUserSettingsCustomPosixUserConfig].
   /// [gid] The POSIX group ID.
@@ -24,8 +25,8 @@ class DomainDefaultUserSettingsCustomPosixUserConfig {
 
   factory DomainDefaultUserSettingsCustomPosixUserConfig.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCustomPosixUserConfig(
-      gid: map['gid'] as int,
-      uid: map['uid'] as int,
+      gid: (map['gid'] as int).input(),
+      uid: (map['uid'] as int).input(),
     );
   }
 }

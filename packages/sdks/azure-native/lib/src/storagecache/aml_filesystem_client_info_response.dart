@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aml_filesystem_container_storage_interface_response.dart';
 
 /// AML file system client information
 class AmlFilesystemClientInfoResponse {
   /// Container Storage Interface information for the AML file system.
-  final AmlFilesystemContainerStorageInterfaceResponse containerStorageInterface;
+  final pulumi.Input<AmlFilesystemContainerStorageInterfaceResponse> containerStorageInterface;
   /// The version of Lustre running in the AML file system
-  final String lustreVersion;
+  final pulumi.Input<String> lustreVersion;
   /// The IPv4 address used by clients to mount the AML file system's Lustre Management Service (MGS).
-  final String mgsAddress;
+  final pulumi.Input<String> mgsAddress;
   /// Recommended command to mount the AML file system
-  final String mountCommand;
+  final pulumi.Input<String> mountCommand;
 
   /// Creates a new [AmlFilesystemClientInfoResponse].
   /// [containerStorageInterface] Container Storage Interface information for the AML file system.
@@ -27,7 +28,7 @@ class AmlFilesystemClientInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerStorageInterface': containerStorageInterface.toMap(),
+      'containerStorageInterface': pulumi.Input.mapInputValue<AmlFilesystemContainerStorageInterfaceResponse, Map<String, dynamic>>(containerStorageInterface, (value) => value.toMap()),
       'lustreVersion': lustreVersion,
       'mgsAddress': mgsAddress,
       'mountCommand': mountCommand,
@@ -36,10 +37,10 @@ class AmlFilesystemClientInfoResponse {
 
   factory AmlFilesystemClientInfoResponse.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemClientInfoResponse(
-      containerStorageInterface: AmlFilesystemContainerStorageInterfaceResponse.fromMap((map['containerStorageInterface'] as Map).cast<String, dynamic>()),
-      lustreVersion: map['lustreVersion'] as String,
-      mgsAddress: map['mgsAddress'] as String,
-      mountCommand: map['mountCommand'] as String,
+      containerStorageInterface: (AmlFilesystemContainerStorageInterfaceResponse.fromMap((map['containerStorageInterface'] as Map).cast<String, dynamic>())).input(),
+      lustreVersion: (map['lustreVersion'] as String).input(),
+      mgsAddress: (map['mgsAddress'] as String).input(),
+      mountCommand: (map['mountCommand'] as String).input(),
     );
   }
 }

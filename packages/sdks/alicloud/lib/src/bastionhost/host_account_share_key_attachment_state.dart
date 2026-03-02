@@ -16,13 +16,10 @@ class HostAccountShareKeyAttachmentState {
   /// [hostShareKeyId] The ID of the host shared key.
   /// [instanceId] The ID of the Bastion machine instance.
   HostAccountShareKeyAttachmentState({
-    pulumi.Output<String>? hostAccountId,
-    pulumi.Output<String>? hostShareKeyId,
-    pulumi.Output<String>? instanceId,
-  }) :
-      hostAccountId = pulumi.Input.asOptionalInput<String>(hostAccountId),
-      hostShareKeyId = pulumi.Input.asOptionalInput<String>(hostShareKeyId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId);
+    this.hostAccountId,
+    this.hostShareKeyId,
+    this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class HostAccountShareKeyAttachmentState {
 
   factory HostAccountShareKeyAttachmentState.fromMap(Map<String, dynamic> map) {
     return HostAccountShareKeyAttachmentState(
-      hostAccountId: map['hostAccountId'] == null ? null : pulumi.Output.create<String>(map['hostAccountId'] as String),
-      hostShareKeyId: map['hostShareKeyId'] == null ? null : pulumi.Output.create<String>(map['hostShareKeyId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
+      hostAccountId: map['hostAccountId'] == null ? null : (map['hostAccountId'] as String).input(),
+      hostShareKeyId: map['hostShareKeyId'] == null ? null : (map['hostShareKeyId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
     );
   }
 }

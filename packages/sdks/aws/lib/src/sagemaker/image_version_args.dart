@@ -43,29 +43,18 @@ class ImageVersionArgs {
   /// [releaseNotes] The maintainer description of the image version.
   /// [vendorGuidance] The stability of the image version, specified by the maintainer. Valid values are: `NOT_PROVIDED`, `STABLE`, `TO_BE_ARCHIVED`, and `ARCHIVED`.
   ImageVersionArgs({
-    pulumi.Output<List<String>>? aliases,
-    required pulumi.Output<String> baseImage,
-    pulumi.Output<bool>? horovod,
-    required pulumi.Output<String> imageName,
-    pulumi.Output<String>? jobType,
-    pulumi.Output<String>? mlFramework,
-    pulumi.Output<String>? processor,
-    pulumi.Output<String>? programmingLang,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? releaseNotes,
-    pulumi.Output<String>? vendorGuidance,
-  }) :
-      aliases = pulumi.Input.asOptionalInput<List<String>>(aliases),
-      baseImage = pulumi.Input.asInput<String>(baseImage),
-      horovod = pulumi.Input.asOptionalInput<bool>(horovod),
-      imageName = pulumi.Input.asInput<String>(imageName),
-      jobType = pulumi.Input.asOptionalInput<String>(jobType),
-      mlFramework = pulumi.Input.asOptionalInput<String>(mlFramework),
-      processor = pulumi.Input.asOptionalInput<String>(processor),
-      programmingLang = pulumi.Input.asOptionalInput<String>(programmingLang),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      releaseNotes = pulumi.Input.asOptionalInput<String>(releaseNotes),
-      vendorGuidance = pulumi.Input.asOptionalInput<String>(vendorGuidance);
+    this.aliases,
+    required this.baseImage,
+    this.horovod,
+    required this.imageName,
+    this.jobType,
+    this.mlFramework,
+    this.processor,
+    this.programmingLang,
+    this.region,
+    this.releaseNotes,
+    this.vendorGuidance,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class ImageVersionArgs {
 
   factory ImageVersionArgs.fromMap(Map<String, dynamic> map) {
     return ImageVersionArgs(
-      aliases: map['aliases'] == null ? null : pulumi.Output.create<List<String>>((map['aliases'] as List).cast<String>()),
-      baseImage: pulumi.Output.create<String>(map['baseImage'] as String),
-      horovod: map['horovod'] == null ? null : pulumi.Output.create<bool>(map['horovod'] as bool),
-      imageName: pulumi.Output.create<String>(map['imageName'] as String),
-      jobType: map['jobType'] == null ? null : pulumi.Output.create<String>(map['jobType'] as String),
-      mlFramework: map['mlFramework'] == null ? null : pulumi.Output.create<String>(map['mlFramework'] as String),
-      processor: map['processor'] == null ? null : pulumi.Output.create<String>(map['processor'] as String),
-      programmingLang: map['programmingLang'] == null ? null : pulumi.Output.create<String>(map['programmingLang'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      releaseNotes: map['releaseNotes'] == null ? null : pulumi.Output.create<String>(map['releaseNotes'] as String),
-      vendorGuidance: map['vendorGuidance'] == null ? null : pulumi.Output.create<String>(map['vendorGuidance'] as String),
+      aliases: map['aliases'] == null ? null : ((map['aliases'] as List).cast<String>()).input(),
+      baseImage: (map['baseImage'] as String).input(),
+      horovod: map['horovod'] == null ? null : (map['horovod'] as bool).input(),
+      imageName: (map['imageName'] as String).input(),
+      jobType: map['jobType'] == null ? null : (map['jobType'] as String).input(),
+      mlFramework: map['mlFramework'] == null ? null : (map['mlFramework'] as String).input(),
+      processor: map['processor'] == null ? null : (map['processor'] as String).input(),
+      programmingLang: map['programmingLang'] == null ? null : (map['programmingLang'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      releaseNotes: map['releaseNotes'] == null ? null : (map['releaseNotes'] as String).input(),
+      vendorGuidance: map['vendorGuidance'] == null ? null : (map['vendorGuidance'] as String).input(),
     );
   }
 }

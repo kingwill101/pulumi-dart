@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPointPosixUser {
   /// POSIX group ID used for all file system operations using this access point.
-  final int gid;
+  final pulumi.Input<int> gid;
   /// Secondary POSIX group IDs used for all file system operations using this access point.
-  final List<int>? secondaryGids;
+  final pulumi.Input<List<int>>? secondaryGids;
   /// POSIX user ID used for all file system operations using this access point.
-  final int uid;
+  final pulumi.Input<int> uid;
 
   /// Creates a new [AccessPointPosixUser].
   /// [gid] POSIX group ID used for all file system operations using this access point.
@@ -29,9 +30,9 @@ class AccessPointPosixUser {
 
   factory AccessPointPosixUser.fromMap(Map<String, dynamic> map) {
     return AccessPointPosixUser(
-      gid: map['gid'] as int,
-      secondaryGids: map['secondaryGids'] == null ? null : (map['secondaryGids'] as List).cast<int>(),
-      uid: map['uid'] as int,
+      gid: (map['gid'] as int).input(),
+      secondaryGids: map['secondaryGids'] == null ? null : ((map['secondaryGids'] as List).cast<int>()).input(),
+      uid: (map['uid'] as int).input(),
     );
   }
 }

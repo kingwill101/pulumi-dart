@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCustomLocationAuthentication {
   /// The type of authentication.
-  final String type;
+  final pulumi.Input<String> type;
   /// The value of authentication.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetCustomLocationAuthentication].
   /// [type] The type of authentication.
@@ -24,8 +25,8 @@ class GetCustomLocationAuthentication {
 
   factory GetCustomLocationAuthentication.fromMap(Map<String, dynamic> map) {
     return GetCustomLocationAuthentication(
-      type: map['type'] as String,
-      value: map['value'] as String,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

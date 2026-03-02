@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionTrustedKeyGroupItem {
   /// ID of the key group that contains the public keys.
-  final String? keyGroupId;
+  final pulumi.Input<String>? keyGroupId;
   /// Set of active CloudFront key pairs associated with the signer account
-  final List<String>? keyPairIds;
+  final pulumi.Input<List<String>>? keyPairIds;
 
   /// Creates a new [DistributionTrustedKeyGroupItem].
   /// [keyGroupId] ID of the key group that contains the public keys.
@@ -24,8 +25,8 @@ class DistributionTrustedKeyGroupItem {
 
   factory DistributionTrustedKeyGroupItem.fromMap(Map<String, dynamic> map) {
     return DistributionTrustedKeyGroupItem(
-      keyGroupId: map['keyGroupId'] == null ? null : map['keyGroupId'] as String,
-      keyPairIds: map['keyPairIds'] == null ? null : (map['keyPairIds'] as List).cast<String>(),
+      keyGroupId: map['keyGroupId'] == null ? null : (map['keyGroupId'] as String).input(),
+      keyPairIds: map['keyPairIds'] == null ? null : ((map['keyPairIds'] as List).cast<String>()).input(),
     );
   }
 }

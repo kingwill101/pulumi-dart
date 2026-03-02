@@ -19,13 +19,10 @@ class GetServiceRegistryArgs {
   /// [serviceName] The name of the Service resource.
   /// [serviceRegistryName] The name of Service Registry.
   GetServiceRegistryArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> serviceRegistryName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      serviceRegistryName = pulumi.Input.asInput<String>(serviceRegistryName);
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.serviceRegistryName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetServiceRegistryArgs {
 
   factory GetServiceRegistryArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceRegistryArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      serviceRegistryName: pulumi.Output.create<String>(map['serviceRegistryName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      serviceRegistryName: (map['serviceRegistryName'] as String).input(),
     );
   }
 }

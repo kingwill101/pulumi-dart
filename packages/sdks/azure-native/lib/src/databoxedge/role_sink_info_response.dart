@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Compute role against which events will be raised.
 class RoleSinkInfoResponse {
   /// Compute role ID.
-  final String roleId;
+  final pulumi.Input<String> roleId;
 
   /// Creates a new [RoleSinkInfoResponse].
   /// [roleId] Compute role ID.
@@ -20,7 +21,7 @@ class RoleSinkInfoResponse {
 
   factory RoleSinkInfoResponse.fromMap(Map<String, dynamic> map) {
     return RoleSinkInfoResponse(
-      roleId: map['roleId'] as String,
+      roleId: (map['roleId'] as String).input(),
     );
   }
 }

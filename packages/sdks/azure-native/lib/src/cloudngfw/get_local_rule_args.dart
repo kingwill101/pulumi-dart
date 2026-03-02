@@ -19,13 +19,10 @@ class GetLocalRuleArgs {
   /// [priority] Local Rule priority
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetLocalRuleArgs({
-    required pulumi.Output<String> localRulestackName,
-    required pulumi.Output<String> priority,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      localRulestackName = pulumi.Input.asInput<String>(localRulestackName),
-      priority = pulumi.Input.asInput<String>(priority),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.localRulestackName,
+    required this.priority,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLocalRuleArgs {
 
   factory GetLocalRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalRuleArgs(
-      localRulestackName: pulumi.Output.create<String>(map['localRulestackName'] as String),
-      priority: pulumi.Output.create<String>(map['priority'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      localRulestackName: (map['localRulestackName'] as String).input(),
+      priority: (map['priority'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

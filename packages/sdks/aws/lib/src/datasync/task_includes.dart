@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskIncludes {
   /// The type of filter rule to apply. Valid values: `SIMPLE_PATTERN`.
-  final String? filterType;
+  final pulumi.Input<String>? filterType;
   /// A single filter string that consists of the patterns to include. The patterns are delimited by "|" (that is, a pipe), for example: `/folder1|/folder2`
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [TaskIncludes].
   /// [filterType] The type of filter rule to apply. Valid values: `SIMPLE_PATTERN`.
@@ -24,8 +25,8 @@ class TaskIncludes {
 
   factory TaskIncludes.fromMap(Map<String, dynamic> map) {
     return TaskIncludes(
-      filterType: map['filterType'] == null ? null : map['filterType'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      filterType: map['filterType'] == null ? null : (map['filterType'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

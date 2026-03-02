@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'appliance_cluster_response.dart';
 import 'edge_cluster_response.dart';
 import 'gke_cluster_response.dart';
@@ -11,21 +12,21 @@ import 'on_prem_cluster_response.dart';
 /// MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 class MembershipEndpointResponse {
   /// Optional. Specific information for a GDC Edge Appliance cluster.
-  final ApplianceClusterResponse applianceCluster;
+  final pulumi.Input<ApplianceClusterResponse> applianceCluster;
   /// Optional. Specific information for a Google Edge cluster.
-  final EdgeClusterResponse edgeCluster;
+  final pulumi.Input<EdgeClusterResponse> edgeCluster;
   /// Optional. Specific information for a GKE-on-GCP cluster.
-  final GkeClusterResponse gkeCluster;
+  final pulumi.Input<GkeClusterResponse> gkeCluster;
   /// Whether the lifecycle of this membership is managed by a google cluster platform service.
-  final bool googleManaged;
+  final pulumi.Input<bool> googleManaged;
   /// Useful Kubernetes-specific metadata.
-  final KubernetesMetadataResponse kubernetesMetadata;
+  final pulumi.Input<KubernetesMetadataResponse> kubernetesMetadata;
   /// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
-  final KubernetesResourceResponse kubernetesResource;
+  final pulumi.Input<KubernetesResourceResponse> kubernetesResource;
   /// Optional. Specific information for a GKE Multi-Cloud cluster.
-  final MultiCloudClusterResponse multiCloudCluster;
+  final pulumi.Input<MultiCloudClusterResponse> multiCloudCluster;
   /// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
-  final OnPremClusterResponse onPremCluster;
+  final pulumi.Input<OnPremClusterResponse> onPremCluster;
 
   /// Creates a new [MembershipEndpointResponse].
   /// [applianceCluster] Optional. Specific information for a GDC Edge Appliance cluster.
@@ -49,27 +50,27 @@ class MembershipEndpointResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applianceCluster': applianceCluster.toMap(),
-      'edgeCluster': edgeCluster.toMap(),
-      'gkeCluster': gkeCluster.toMap(),
+      'applianceCluster': pulumi.Input.mapInputValue<ApplianceClusterResponse, Map<String, dynamic>>(applianceCluster, (value) => value.toMap()),
+      'edgeCluster': pulumi.Input.mapInputValue<EdgeClusterResponse, Map<String, dynamic>>(edgeCluster, (value) => value.toMap()),
+      'gkeCluster': pulumi.Input.mapInputValue<GkeClusterResponse, Map<String, dynamic>>(gkeCluster, (value) => value.toMap()),
       'googleManaged': googleManaged,
-      'kubernetesMetadata': kubernetesMetadata.toMap(),
-      'kubernetesResource': kubernetesResource.toMap(),
-      'multiCloudCluster': multiCloudCluster.toMap(),
-      'onPremCluster': onPremCluster.toMap(),
+      'kubernetesMetadata': pulumi.Input.mapInputValue<KubernetesMetadataResponse, Map<String, dynamic>>(kubernetesMetadata, (value) => value.toMap()),
+      'kubernetesResource': pulumi.Input.mapInputValue<KubernetesResourceResponse, Map<String, dynamic>>(kubernetesResource, (value) => value.toMap()),
+      'multiCloudCluster': pulumi.Input.mapInputValue<MultiCloudClusterResponse, Map<String, dynamic>>(multiCloudCluster, (value) => value.toMap()),
+      'onPremCluster': pulumi.Input.mapInputValue<OnPremClusterResponse, Map<String, dynamic>>(onPremCluster, (value) => value.toMap()),
     };
   }
 
   factory MembershipEndpointResponse.fromMap(Map<String, dynamic> map) {
     return MembershipEndpointResponse(
-      applianceCluster: ApplianceClusterResponse.fromMap((map['applianceCluster'] as Map).cast<String, dynamic>()),
-      edgeCluster: EdgeClusterResponse.fromMap((map['edgeCluster'] as Map).cast<String, dynamic>()),
-      gkeCluster: GkeClusterResponse.fromMap((map['gkeCluster'] as Map).cast<String, dynamic>()),
-      googleManaged: map['googleManaged'] as bool,
-      kubernetesMetadata: KubernetesMetadataResponse.fromMap((map['kubernetesMetadata'] as Map).cast<String, dynamic>()),
-      kubernetesResource: KubernetesResourceResponse.fromMap((map['kubernetesResource'] as Map).cast<String, dynamic>()),
-      multiCloudCluster: MultiCloudClusterResponse.fromMap((map['multiCloudCluster'] as Map).cast<String, dynamic>()),
-      onPremCluster: OnPremClusterResponse.fromMap((map['onPremCluster'] as Map).cast<String, dynamic>()),
+      applianceCluster: (ApplianceClusterResponse.fromMap((map['applianceCluster'] as Map).cast<String, dynamic>())).input(),
+      edgeCluster: (EdgeClusterResponse.fromMap((map['edgeCluster'] as Map).cast<String, dynamic>())).input(),
+      gkeCluster: (GkeClusterResponse.fromMap((map['gkeCluster'] as Map).cast<String, dynamic>())).input(),
+      googleManaged: (map['googleManaged'] as bool).input(),
+      kubernetesMetadata: (KubernetesMetadataResponse.fromMap((map['kubernetesMetadata'] as Map).cast<String, dynamic>())).input(),
+      kubernetesResource: (KubernetesResourceResponse.fromMap((map['kubernetesResource'] as Map).cast<String, dynamic>())).input(),
+      multiCloudCluster: (MultiCloudClusterResponse.fromMap((map['multiCloudCluster'] as Map).cast<String, dynamic>())).input(),
+      onPremCluster: (OnPremClusterResponse.fromMap((map['onPremCluster'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

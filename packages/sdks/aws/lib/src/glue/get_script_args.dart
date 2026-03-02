@@ -24,15 +24,11 @@ class GetScriptArgs {
   /// [language] Programming language of the resulting code from the DAG. Defaults to `PYTHON`. Valid values are `PYTHON` and `SCALA`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetScriptArgs({
-    required pulumi.Output<List<GetScriptDagEdge>> dagEdges,
-    required pulumi.Output<List<GetScriptDagNode>> dagNodes,
-    pulumi.Output<String>? language,
-    pulumi.Output<String>? region,
-  }) :
-      dagEdges = pulumi.Input.asInput<List<GetScriptDagEdge>>(dagEdges),
-      dagNodes = pulumi.Input.asInput<List<GetScriptDagNode>>(dagNodes),
-      language = pulumi.Input.asOptionalInput<String>(language),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.dagEdges,
+    required this.dagNodes,
+    this.language,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetScriptArgs {
 
   factory GetScriptArgs.fromMap(Map<String, dynamic> map) {
     return GetScriptArgs(
-      dagEdges: pulumi.Output.create<List<GetScriptDagEdge>>(pulumi.Input.decodeList<GetScriptDagEdge>(map['dagEdges'], (value) => GetScriptDagEdge.fromMap((value as Map).cast<String, dynamic>()))),
-      dagNodes: pulumi.Output.create<List<GetScriptDagNode>>(pulumi.Input.decodeList<GetScriptDagNode>(map['dagNodes'], (value) => GetScriptDagNode.fromMap((value as Map).cast<String, dynamic>()))),
-      language: map['language'] == null ? null : pulumi.Output.create<String>(map['language'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      dagEdges: (pulumi.Input.decodeList<GetScriptDagEdge>(map['dagEdges'], (value) => GetScriptDagEdge.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dagNodes: (pulumi.Input.decodeList<GetScriptDagNode>(map['dagNodes'], (value) => GetScriptDagNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      language: map['language'] == null ? null : (map['language'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

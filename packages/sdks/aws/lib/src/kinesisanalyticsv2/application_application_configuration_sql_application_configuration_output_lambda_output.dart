@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput {
   /// The ARN of the destination Lambda function to write to.
-  final String resourceArn;
+  final pulumi.Input<String> resourceArn;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput].
   /// [resourceArn] The ARN of the destination Lambda function to write to.
@@ -19,7 +20,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambda
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput(
-      resourceArn: map['resourceArn'] as String,
+      resourceArn: (map['resourceArn'] as String).input(),
     );
   }
 }

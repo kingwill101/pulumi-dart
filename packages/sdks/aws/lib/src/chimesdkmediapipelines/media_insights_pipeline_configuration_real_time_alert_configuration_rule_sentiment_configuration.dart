@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration {
   /// Rule name.
-  final String ruleName;
+  final pulumi.Input<String> ruleName;
   /// Sentiment type to match.
-  final String sentimentType;
+  final pulumi.Input<String> sentimentType;
   /// Analysis interval.
-  final int timePeriod;
+  final pulumi.Input<int> timePeriod;
 
   /// Creates a new [MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration].
   /// [ruleName] Rule name.
@@ -29,9 +30,9 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentC
 
   factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration(
-      ruleName: map['ruleName'] as String,
-      sentimentType: map['sentimentType'] as String,
-      timePeriod: map['timePeriod'] as int,
+      ruleName: (map['ruleName'] as String).input(),
+      sentimentType: (map['sentimentType'] as String).input(),
+      timePeriod: (map['timePeriod'] as int).input(),
     );
   }
 }

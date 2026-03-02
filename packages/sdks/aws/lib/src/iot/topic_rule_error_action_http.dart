@@ -5,11 +5,11 @@ import 'topic_rule_error_action_http_http_header.dart';
 
 class TopicRuleErrorActionHttp {
   /// The HTTPS URL used to verify ownership of `url`.
-  final String? confirmationUrl;
+  final pulumi.Input<String>? confirmationUrl;
   /// Custom HTTP header IoT Core should send. It is possible to define more than one custom header.
-  final List<TopicRuleErrorActionHttpHttpHeader>? httpHeaders;
+  final pulumi.Input<List<TopicRuleErrorActionHttpHttpHeader>>? httpHeaders;
   /// The HTTPS URL.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [TopicRuleErrorActionHttp].
   /// [confirmationUrl] The HTTPS URL used to verify ownership of `url`.
@@ -24,16 +24,16 @@ class TopicRuleErrorActionHttp {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'confirmationUrl': ?confirmationUrl,
-      'httpHeaders': ?httpHeaders == null ? null : pulumi.Input.encodeList<TopicRuleErrorActionHttpHttpHeader, Map<String, dynamic>>(httpHeaders!, (value) => value.toMap()),
+      'httpHeaders': ?pulumi.Input.mapOptionalInputValue<List<TopicRuleErrorActionHttpHttpHeader>, List<Map<String, dynamic>>>(httpHeaders, (value) => pulumi.Input.encodeList<TopicRuleErrorActionHttpHttpHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'url': url,
     };
   }
 
   factory TopicRuleErrorActionHttp.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionHttp(
-      confirmationUrl: map['confirmationUrl'] == null ? null : map['confirmationUrl'] as String,
-      httpHeaders: map['httpHeaders'] == null ? null : pulumi.Input.decodeList<TopicRuleErrorActionHttpHttpHeader>(map['httpHeaders'], (value) => TopicRuleErrorActionHttpHttpHeader.fromMap((value as Map).cast<String, dynamic>())),
-      url: map['url'] as String,
+      confirmationUrl: map['confirmationUrl'] == null ? null : (map['confirmationUrl'] as String).input(),
+      httpHeaders: map['httpHeaders'] == null ? null : (pulumi.Input.decodeList<TopicRuleErrorActionHttpHttpHeader>(map['httpHeaders'], (value) => TopicRuleErrorActionHttpHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

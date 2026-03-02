@@ -47,25 +47,16 @@ class ClusterState {
   /// [region] The region in which the cluster and associated nodes will be created in.
   /// [virtualClusterConfig] Allows you to configure a virtual Dataproc on GKE cluster.
   ClusterState({
-    pulumi.Output<ClusterClusterConfig>? clusterConfig,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? gracefulDecommissionTimeout,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? region,
-    pulumi.Output<ClusterVirtualClusterConfig>? virtualClusterConfig,
-  }) :
-      clusterConfig = pulumi.Input.asOptionalInput<ClusterClusterConfig>(clusterConfig),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      gracefulDecommissionTimeout = pulumi.Input.asOptionalInput<String>(gracefulDecommissionTimeout),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      virtualClusterConfig = pulumi.Input.asOptionalInput<ClusterVirtualClusterConfig>(virtualClusterConfig);
+    this.clusterConfig,
+    this.effectiveLabels,
+    this.gracefulDecommissionTimeout,
+    this.labels,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.region,
+    this.virtualClusterConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,15 +74,15 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      clusterConfig: map['clusterConfig'] == null ? null : pulumi.Output.create<ClusterClusterConfig>(ClusterClusterConfig.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>())),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      gracefulDecommissionTimeout: map['gracefulDecommissionTimeout'] == null ? null : pulumi.Output.create<String>(map['gracefulDecommissionTimeout'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      virtualClusterConfig: map['virtualClusterConfig'] == null ? null : pulumi.Output.create<ClusterVirtualClusterConfig>(ClusterVirtualClusterConfig.fromMap((map['virtualClusterConfig'] as Map).cast<String, dynamic>())),
+      clusterConfig: map['clusterConfig'] == null ? null : (ClusterClusterConfig.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>())).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      gracefulDecommissionTimeout: map['gracefulDecommissionTimeout'] == null ? null : (map['gracefulDecommissionTimeout'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      virtualClusterConfig: map['virtualClusterConfig'] == null ? null : (ClusterVirtualClusterConfig.fromMap((map['virtualClusterConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

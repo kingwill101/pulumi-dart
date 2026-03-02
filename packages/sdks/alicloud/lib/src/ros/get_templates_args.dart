@@ -31,21 +31,14 @@ class GetTemplatesArgs {
   /// [tags] Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
   /// [templateName] The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
   GetTemplatesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? shareType,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? templateName,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      shareType = pulumi.Input.asOptionalInput<String>(shareType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateName = pulumi.Input.asOptionalInput<String>(templateName);
+    this.enableDetails,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.shareType,
+    this.tags,
+    this.templateName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetTemplatesArgs {
 
   factory GetTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplatesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      shareType: map['shareType'] == null ? null : pulumi.Output.create<String>(map['shareType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateName: map['templateName'] == null ? null : pulumi.Output.create<String>(map['templateName'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      shareType: map['shareType'] == null ? null : (map['shareType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
     );
   }
 }

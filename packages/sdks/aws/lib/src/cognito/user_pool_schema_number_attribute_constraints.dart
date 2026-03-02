@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolSchemaNumberAttributeConstraints {
   /// Maximum value of an attribute that is of the number data type.
-  final String? maxValue;
+  final pulumi.Input<String>? maxValue;
   /// Minimum value of an attribute that is of the number data type.
-  final String? minValue;
+  final pulumi.Input<String>? minValue;
 
   /// Creates a new [UserPoolSchemaNumberAttributeConstraints].
   /// [maxValue] Maximum value of an attribute that is of the number data type.
@@ -24,8 +25,8 @@ class UserPoolSchemaNumberAttributeConstraints {
 
   factory UserPoolSchemaNumberAttributeConstraints.fromMap(Map<String, dynamic> map) {
     return UserPoolSchemaNumberAttributeConstraints(
-      maxValue: map['maxValue'] == null ? null : map['maxValue'] as String,
-      minValue: map['minValue'] == null ? null : map['minValue'] as String,
+      maxValue: map['maxValue'] == null ? null : (map['maxValue'] as String).input(),
+      minValue: map['minValue'] == null ? null : (map['minValue'] as String).input(),
     );
   }
 }

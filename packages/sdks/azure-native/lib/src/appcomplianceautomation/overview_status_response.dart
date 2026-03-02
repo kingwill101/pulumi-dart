@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The overview of the compliance result for one report.
 class OverviewStatusResponse {
   /// The count of all failed control.
-  final int failedCount;
+  final pulumi.Input<int> failedCount;
   /// The count of all manual control.
-  final int manualCount;
+  final pulumi.Input<int> manualCount;
   /// The count of all not applicable control.
-  final int notApplicableCount;
+  final pulumi.Input<int> notApplicableCount;
   /// The count of all passed control.
-  final int passedCount;
+  final pulumi.Input<int> passedCount;
   /// The count of all pending for approval control.
-  final int pendingCount;
+  final pulumi.Input<int> pendingCount;
 
   /// Creates a new [OverviewStatusResponse].
   /// [failedCount] The count of all failed control.
@@ -40,11 +41,11 @@ class OverviewStatusResponse {
 
   factory OverviewStatusResponse.fromMap(Map<String, dynamic> map) {
     return OverviewStatusResponse(
-      failedCount: map['failedCount'] as int,
-      manualCount: map['manualCount'] as int,
-      notApplicableCount: map['notApplicableCount'] as int,
-      passedCount: map['passedCount'] as int,
-      pendingCount: map['pendingCount'] as int,
+      failedCount: (map['failedCount'] as int).input(),
+      manualCount: (map['manualCount'] as int).input(),
+      notApplicableCount: (map['notApplicableCount'] as int).input(),
+      passedCount: (map['passedCount'] as int).input(),
+      pendingCount: (map['pendingCount'] as int).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiSubscriptionKeyParameterNames {
   /// The name of the HTTP Header which should be used for the Subscription Key.
-  final String header;
+  final pulumi.Input<String> header;
   /// The name of the QueryString parameter which should be used for the Subscription Key.
-  final String query;
+  final pulumi.Input<String> query;
 
   /// Creates a new [ApiSubscriptionKeyParameterNames].
   /// [header] The name of the HTTP Header which should be used for the Subscription Key.
@@ -24,8 +25,8 @@ class ApiSubscriptionKeyParameterNames {
 
   factory ApiSubscriptionKeyParameterNames.fromMap(Map<String, dynamic> map) {
     return ApiSubscriptionKeyParameterNames(
-      header: map['header'] as String,
-      query: map['query'] as String,
+      header: (map['header'] as String).input(),
+      query: (map['query'] as String).input(),
     );
   }
 }

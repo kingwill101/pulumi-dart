@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAddonPodIdentityAssociation {
   /// ARN of the IAM role associated with the EKS add-on.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// Service account associated with the EKS add-on.
-  final String serviceAccount;
+  final pulumi.Input<String> serviceAccount;
 
   /// Creates a new [GetAddonPodIdentityAssociation].
   /// [roleArn] ARN of the IAM role associated with the EKS add-on.
@@ -24,8 +25,8 @@ class GetAddonPodIdentityAssociation {
 
   factory GetAddonPodIdentityAssociation.fromMap(Map<String, dynamic> map) {
     return GetAddonPodIdentityAssociation(
-      roleArn: map['roleArn'] as String,
-      serviceAccount: map['serviceAccount'] as String,
+      roleArn: (map['roleArn'] as String).input(),
+      serviceAccount: (map['serviceAccount'] as String).input(),
     );
   }
 }

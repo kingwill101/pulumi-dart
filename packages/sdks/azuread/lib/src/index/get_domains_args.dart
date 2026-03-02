@@ -30,19 +30,13 @@ class GetDomainsArgs {
   /// [onlyRoot] Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
   /// [supportsServices] A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
   GetDomainsArgs({
-    pulumi.Output<bool>? adminManaged,
-    pulumi.Output<bool>? includeUnverified,
-    pulumi.Output<bool>? onlyDefault,
-    pulumi.Output<bool>? onlyInitial,
-    pulumi.Output<bool>? onlyRoot,
-    pulumi.Output<List<String>>? supportsServices,
-  }) :
-      adminManaged = pulumi.Input.asOptionalInput<bool>(adminManaged),
-      includeUnverified = pulumi.Input.asOptionalInput<bool>(includeUnverified),
-      onlyDefault = pulumi.Input.asOptionalInput<bool>(onlyDefault),
-      onlyInitial = pulumi.Input.asOptionalInput<bool>(onlyInitial),
-      onlyRoot = pulumi.Input.asOptionalInput<bool>(onlyRoot),
-      supportsServices = pulumi.Input.asOptionalInput<List<String>>(supportsServices);
+    this.adminManaged,
+    this.includeUnverified,
+    this.onlyDefault,
+    this.onlyInitial,
+    this.onlyRoot,
+    this.supportsServices,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class GetDomainsArgs {
 
   factory GetDomainsArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainsArgs(
-      adminManaged: map['adminManaged'] == null ? null : pulumi.Output.create<bool>(map['adminManaged'] as bool),
-      includeUnverified: map['includeUnverified'] == null ? null : pulumi.Output.create<bool>(map['includeUnverified'] as bool),
-      onlyDefault: map['onlyDefault'] == null ? null : pulumi.Output.create<bool>(map['onlyDefault'] as bool),
-      onlyInitial: map['onlyInitial'] == null ? null : pulumi.Output.create<bool>(map['onlyInitial'] as bool),
-      onlyRoot: map['onlyRoot'] == null ? null : pulumi.Output.create<bool>(map['onlyRoot'] as bool),
-      supportsServices: map['supportsServices'] == null ? null : pulumi.Output.create<List<String>>((map['supportsServices'] as List).cast<String>()),
+      adminManaged: map['adminManaged'] == null ? null : (map['adminManaged'] as bool).input(),
+      includeUnverified: map['includeUnverified'] == null ? null : (map['includeUnverified'] as bool).input(),
+      onlyDefault: map['onlyDefault'] == null ? null : (map['onlyDefault'] as bool).input(),
+      onlyInitial: map['onlyInitial'] == null ? null : (map['onlyInitial'] as bool).input(),
+      onlyRoot: map['onlyRoot'] == null ? null : (map['onlyRoot'] as bool).input(),
+      supportsServices: map['supportsServices'] == null ? null : ((map['supportsServices'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryTaskRegistryCredentialCustom {
   /// The managed identity assigned to this custom credential. For user assigned identity, the value is the client ID of the identity. For system assigned identity, the value is `[system]`.
-  final String? identity;
+  final pulumi.Input<String>? identity;
   /// The login server of the custom Container Registry.
-  final String loginServer;
+  final pulumi.Input<String> loginServer;
   /// The password for logging into the custom Container Registry. It can be either a plain text of password, or a Keyvault Secret ID.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The username for logging into the custom Container Registry. It can be either a plain text of username, or a Keyvault Secret ID.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [RegistryTaskRegistryCredentialCustom].
   /// [identity] The managed identity assigned to this custom credential. For user assigned identity, the value is the client ID of the identity. For system assigned identity, the value is `[system]`.
@@ -34,10 +35,10 @@ class RegistryTaskRegistryCredentialCustom {
 
   factory RegistryTaskRegistryCredentialCustom.fromMap(Map<String, dynamic> map) {
     return RegistryTaskRegistryCredentialCustom(
-      identity: map['identity'] == null ? null : map['identity'] as String,
-      loginServer: map['loginServer'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      loginServer: (map['loginServer'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

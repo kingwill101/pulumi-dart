@@ -19,13 +19,10 @@ class GetAssetArgs {
   /// [assetId] ID of the asset.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetAssetArgs({
-    required pulumi.Output<String> arn,
-    required pulumi.Output<String> assetId,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asInput<String>(arn),
-      assetId = pulumi.Input.asInput<String>(assetId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.arn,
+    required this.assetId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAssetArgs {
 
   factory GetAssetArgs.fromMap(Map<String, dynamic> map) {
     return GetAssetArgs(
-      arn: pulumi.Output.create<String>(map['arn'] as String),
-      assetId: pulumi.Output.create<String>(map['assetId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: (map['arn'] as String).input(),
+      assetId: (map['assetId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

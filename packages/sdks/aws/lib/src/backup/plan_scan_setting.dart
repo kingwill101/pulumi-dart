@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanScanSetting {
   /// Malware scanner to use for the scan setting. Currently only `GUARDDUTY` is supported.
-  final String malwareScanner;
+  final pulumi.Input<String> malwareScanner;
   /// List of resource types to apply the scan setting to. Valid values are `EBS`, `EC2`, `S3` and `ALL`.
-  final List<String> resourceTypes;
+  final pulumi.Input<List<String>> resourceTypes;
   /// ARN of the IAM role that AWS Backup uses to scan resources. See [the AWS documentation](https://docs.aws.amazon.com/guardduty/latest/ug/malware-protection-backup-iam-permissions.html) for details.
-  final String scannerRoleArn;
+  final pulumi.Input<String> scannerRoleArn;
 
   /// Creates a new [PlanScanSetting].
   /// [malwareScanner] Malware scanner to use for the scan setting. Currently only `GUARDDUTY` is supported.
@@ -29,9 +30,9 @@ class PlanScanSetting {
 
   factory PlanScanSetting.fromMap(Map<String, dynamic> map) {
     return PlanScanSetting(
-      malwareScanner: map['malwareScanner'] as String,
-      resourceTypes: (map['resourceTypes'] as List).cast<String>(),
-      scannerRoleArn: map['scannerRoleArn'] as String,
+      malwareScanner: (map['malwareScanner'] as String).input(),
+      resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
+      scannerRoleArn: (map['scannerRoleArn'] as String).input(),
     );
   }
 }

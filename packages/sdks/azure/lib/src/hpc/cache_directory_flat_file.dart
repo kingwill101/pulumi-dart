@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CacheDirectoryFlatFile {
   /// The URI of the file containing group information (`/etc/group` file format in Unix-like OS).
-  final String groupFileUri;
+  final pulumi.Input<String> groupFileUri;
   /// The URI of the file containing user information (`/etc/passwd` file format in Unix-like OS).
-  final String passwordFileUri;
+  final pulumi.Input<String> passwordFileUri;
 
   /// Creates a new [CacheDirectoryFlatFile].
   /// [groupFileUri] The URI of the file containing group information (`/etc/group` file format in Unix-like OS).
@@ -24,8 +25,8 @@ class CacheDirectoryFlatFile {
 
   factory CacheDirectoryFlatFile.fromMap(Map<String, dynamic> map) {
     return CacheDirectoryFlatFile(
-      groupFileUri: map['groupFileUri'] as String,
-      passwordFileUri: map['passwordFileUri'] as String,
+      groupFileUri: (map['groupFileUri'] as String).input(),
+      passwordFileUri: (map['passwordFileUri'] as String).input(),
     );
   }
 }

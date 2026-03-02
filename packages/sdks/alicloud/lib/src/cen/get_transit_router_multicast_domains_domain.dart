@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTransitRouterMulticastDomainsDomain {
   /// The ID of the Transit Router Multicast Domain.
-  final String id;
+  final pulumi.Input<String> id;
   /// The status of the multicast domain. Valid Value: `Active`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the transit router.
-  final String transitRouterId;
+  final pulumi.Input<String> transitRouterId;
   /// The description of the Transit Router Multicast Domain.
-  final String transitRouterMulticastDomainDescription;
+  final pulumi.Input<String> transitRouterMulticastDomainDescription;
   /// The ID of the multicast domain.
-  final String transitRouterMulticastDomainId;
+  final pulumi.Input<String> transitRouterMulticastDomainId;
   /// The name of the Transit Router Multicast Domain.
-  final String transitRouterMulticastDomainName;
+  final pulumi.Input<String> transitRouterMulticastDomainName;
 
   /// Creates a new [GetTransitRouterMulticastDomainsDomain].
   /// [id] The ID of the Transit Router Multicast Domain.
@@ -44,12 +45,12 @@ class GetTransitRouterMulticastDomainsDomain {
 
   factory GetTransitRouterMulticastDomainsDomain.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterMulticastDomainsDomain(
-      id: map['id'] as String,
-      status: map['status'] as String,
-      transitRouterId: map['transitRouterId'] as String,
-      transitRouterMulticastDomainDescription: map['transitRouterMulticastDomainDescription'] as String,
-      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] as String,
-      transitRouterMulticastDomainName: map['transitRouterMulticastDomainName'] as String,
+      id: (map['id'] as String).input(),
+      status: (map['status'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
+      transitRouterMulticastDomainDescription: (map['transitRouterMulticastDomainDescription'] as String).input(),
+      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
+      transitRouterMulticastDomainName: (map['transitRouterMulticastDomainName'] as String).input(),
     );
   }
 }

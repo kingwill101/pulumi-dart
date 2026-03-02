@@ -30,17 +30,12 @@ class ApiArgs {
   /// [managedService] Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
   /// [project] The ID of the project in which the resource belongs.
   ApiArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? managedService,
-    pulumi.Output<String>? project,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      managedService = pulumi.Input.asOptionalInput<String>(managedService),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.apiId,
+    this.displayName,
+    this.labels,
+    this.managedService,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class ApiArgs {
 
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      managedService: map['managedService'] == null ? null : pulumi.Output.create<String>(map['managedService'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      apiId: (map['apiId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      managedService: map['managedService'] == null ? null : (map['managedService'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

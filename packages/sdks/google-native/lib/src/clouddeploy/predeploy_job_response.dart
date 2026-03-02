@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A predeploy Job.
 class PredeployJobResponse {
   /// The custom actions that the predeploy Job executes.
-  final List<String> actions;
+  final pulumi.Input<List<String>> actions;
 
   /// Creates a new [PredeployJobResponse].
   /// [actions] The custom actions that the predeploy Job executes.
@@ -20,7 +21,7 @@ class PredeployJobResponse {
 
   factory PredeployJobResponse.fromMap(Map<String, dynamic> map) {
     return PredeployJobResponse(
-      actions: (map['actions'] as List).cast<String>(),
+      actions: ((map['actions'] as List).cast<String>()).input(),
     );
   }
 }

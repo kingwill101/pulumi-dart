@@ -16,11 +16,9 @@ class ServerKeyArgs {
   /// [keyVaultKeyId] The URL to a Key Vault Key.
   /// [serverId] The ID of the PostgreSQL Server. Changing this forces a new resource to be created.
   ServerKeyArgs({
-    required pulumi.Output<String> keyVaultKeyId,
-    required pulumi.Output<String> serverId,
-  }) :
-      keyVaultKeyId = pulumi.Input.asInput<String>(keyVaultKeyId),
-      serverId = pulumi.Input.asInput<String>(serverId);
+    required this.keyVaultKeyId,
+    required this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ServerKeyArgs {
 
   factory ServerKeyArgs.fromMap(Map<String, dynamic> map) {
     return ServerKeyArgs(
-      keyVaultKeyId: pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualHubStrataCloudManagerIdentity {
   /// A list of User Assigned Managed Identity IDs to be assigned to this App Configuration.
-  final List<String> identityIds;
+  final pulumi.Input<List<String>> identityIds;
   /// The type of Managed Service Identity that should be configured on this App Configuration. The only possible value is `UserAssigned`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [NextGenerationFirewallVirtualHubStrataCloudManagerIdentity].
   /// [identityIds] A list of User Assigned Managed Identity IDs to be assigned to this App Configuration.
@@ -24,8 +25,8 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerIdentity {
 
   factory NextGenerationFirewallVirtualHubStrataCloudManagerIdentity.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubStrataCloudManagerIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

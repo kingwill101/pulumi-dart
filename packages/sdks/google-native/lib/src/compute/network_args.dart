@@ -44,29 +44,18 @@ class NetworkArgs {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [routingConfig] The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
   NetworkArgs({
-    pulumi.Output<bool>? autoCreateSubnetworks,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enableUlaInternalIpv6,
-    pulumi.Output<String>? internalIpv6Range,
-    pulumi.Output<String>? ipv4Range,
-    pulumi.Output<int>? mtu,
-    pulumi.Output<String>? name,
-    pulumi.Output<NetworkNetworkFirewallPolicyEnforcementOrder>? networkFirewallPolicyEnforcementOrder,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<NetworkRoutingConfig>? routingConfig,
-  }) :
-      autoCreateSubnetworks = pulumi.Input.asOptionalInput<bool>(autoCreateSubnetworks),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enableUlaInternalIpv6 = pulumi.Input.asOptionalInput<bool>(enableUlaInternalIpv6),
-      internalIpv6Range = pulumi.Input.asOptionalInput<String>(internalIpv6Range),
-      ipv4Range = pulumi.Input.asOptionalInput<String>(ipv4Range),
-      mtu = pulumi.Input.asOptionalInput<int>(mtu),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkFirewallPolicyEnforcementOrder = pulumi.Input.asOptionalInput<NetworkNetworkFirewallPolicyEnforcementOrder>(networkFirewallPolicyEnforcementOrder),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      routingConfig = pulumi.Input.asOptionalInput<NetworkRoutingConfig>(routingConfig);
+    this.autoCreateSubnetworks,
+    this.description,
+    this.enableUlaInternalIpv6,
+    this.internalIpv6Range,
+    this.ipv4Range,
+    this.mtu,
+    this.name,
+    this.networkFirewallPolicyEnforcementOrder,
+    this.project,
+    this.requestId,
+    this.routingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class NetworkArgs {
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      autoCreateSubnetworks: map['autoCreateSubnetworks'] == null ? null : pulumi.Output.create<bool>(map['autoCreateSubnetworks'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enableUlaInternalIpv6: map['enableUlaInternalIpv6'] == null ? null : pulumi.Output.create<bool>(map['enableUlaInternalIpv6'] as bool),
-      internalIpv6Range: map['internalIpv6Range'] == null ? null : pulumi.Output.create<String>(map['internalIpv6Range'] as String),
-      ipv4Range: map['ipv4Range'] == null ? null : pulumi.Output.create<String>(map['ipv4Range'] as String),
-      mtu: map['mtu'] == null ? null : pulumi.Output.create<int>(map['mtu'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkFirewallPolicyEnforcementOrder: map['networkFirewallPolicyEnforcementOrder'] == null ? null : pulumi.Output.create<NetworkNetworkFirewallPolicyEnforcementOrder>(NetworkNetworkFirewallPolicyEnforcementOrder.fromValue(map['networkFirewallPolicyEnforcementOrder'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      routingConfig: map['routingConfig'] == null ? null : pulumi.Output.create<NetworkRoutingConfig>(NetworkRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())),
+      autoCreateSubnetworks: map['autoCreateSubnetworks'] == null ? null : (map['autoCreateSubnetworks'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableUlaInternalIpv6: map['enableUlaInternalIpv6'] == null ? null : (map['enableUlaInternalIpv6'] as bool).input(),
+      internalIpv6Range: map['internalIpv6Range'] == null ? null : (map['internalIpv6Range'] as String).input(),
+      ipv4Range: map['ipv4Range'] == null ? null : (map['ipv4Range'] as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkFirewallPolicyEnforcementOrder: map['networkFirewallPolicyEnforcementOrder'] == null ? null : (NetworkNetworkFirewallPolicyEnforcementOrder.fromValue(map['networkFirewallPolicyEnforcementOrder'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      routingConfig: map['routingConfig'] == null ? null : (NetworkRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

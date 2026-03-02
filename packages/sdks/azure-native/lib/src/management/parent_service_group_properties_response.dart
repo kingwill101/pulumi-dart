@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The details of the parent serviceGroup.
 class ParentServiceGroupPropertiesResponse {
   /// The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [ParentServiceGroupPropertiesResponse].
   /// [resourceId] The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
@@ -20,7 +21,7 @@ class ParentServiceGroupPropertiesResponse {
 
   factory ParentServiceGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ParentServiceGroupPropertiesResponse(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

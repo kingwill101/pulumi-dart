@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataCollectionRuleDestinationsStorageBlob {
   /// The Storage Container name.
-  final String containerName;
+  final pulumi.Input<String> containerName;
   /// The name which should be used for this destination. This name should be unique across all destinations regardless of type within the Data Collection Rule.
-  final String name;
+  final pulumi.Input<String> name;
   /// The resource ID of the Storage Account.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
 
   /// Creates a new [DataCollectionRuleDestinationsStorageBlob].
   /// [containerName] The Storage Container name.
@@ -29,9 +30,9 @@ class DataCollectionRuleDestinationsStorageBlob {
 
   factory DataCollectionRuleDestinationsStorageBlob.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleDestinationsStorageBlob(
-      containerName: map['containerName'] as String,
-      name: map['name'] as String,
-      storageAccountId: map['storageAccountId'] as String,
+      containerName: (map['containerName'] as String).input(),
+      name: (map['name'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

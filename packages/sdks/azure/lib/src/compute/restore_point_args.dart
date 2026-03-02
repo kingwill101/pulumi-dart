@@ -22,15 +22,11 @@ class RestorePointArgs {
   /// [name] Specifies the name of the Virtual Machine Restore Point. Changing this forces a new resource to be created.
   /// [virtualMachineRestorePointCollectionId] Specifies the ID of the Virtual Machine Restore Point Collection the Virtual Machine Restore Point will be associated with. Changing this forces a new resource to be created.
   RestorePointArgs({
-    pulumi.Output<bool>? crashConsistencyModeEnabled,
-    pulumi.Output<List<String>>? excludedDisks,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> virtualMachineRestorePointCollectionId,
-  }) :
-      crashConsistencyModeEnabled = pulumi.Input.asOptionalInput<bool>(crashConsistencyModeEnabled),
-      excludedDisks = pulumi.Input.asOptionalInput<List<String>>(excludedDisks),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      virtualMachineRestorePointCollectionId = pulumi.Input.asInput<String>(virtualMachineRestorePointCollectionId);
+    this.crashConsistencyModeEnabled,
+    this.excludedDisks,
+    this.name,
+    required this.virtualMachineRestorePointCollectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class RestorePointArgs {
 
   factory RestorePointArgs.fromMap(Map<String, dynamic> map) {
     return RestorePointArgs(
-      crashConsistencyModeEnabled: map['crashConsistencyModeEnabled'] == null ? null : pulumi.Output.create<bool>(map['crashConsistencyModeEnabled'] as bool),
-      excludedDisks: map['excludedDisks'] == null ? null : pulumi.Output.create<List<String>>((map['excludedDisks'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      virtualMachineRestorePointCollectionId: pulumi.Output.create<String>(map['virtualMachineRestorePointCollectionId'] as String),
+      crashConsistencyModeEnabled: map['crashConsistencyModeEnabled'] == null ? null : (map['crashConsistencyModeEnabled'] as bool).input(),
+      excludedDisks: map['excludedDisks'] == null ? null : ((map['excludedDisks'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      virtualMachineRestorePointCollectionId: (map['virtualMachineRestorePointCollectionId'] as String).input(),
     );
   }
 }

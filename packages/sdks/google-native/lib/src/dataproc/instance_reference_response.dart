@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A reference to a Compute Engine instance.
 class InstanceReferenceResponse {
   /// The unique identifier of the Compute Engine instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The user-friendly name of the Compute Engine instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The public ECIES key used for sharing data with this instance.
-  final String publicEciesKey;
+  final pulumi.Input<String> publicEciesKey;
   /// The public RSA key used for sharing data with this instance.
-  final String publicKey;
+  final pulumi.Input<String> publicKey;
 
   /// Creates a new [InstanceReferenceResponse].
   /// [instanceId] The unique identifier of the Compute Engine instance.
@@ -35,10 +36,10 @@ class InstanceReferenceResponse {
 
   factory InstanceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return InstanceReferenceResponse(
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      publicEciesKey: map['publicEciesKey'] as String,
-      publicKey: map['publicKey'] as String,
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      publicEciesKey: (map['publicEciesKey'] as String).input(),
+      publicKey: (map['publicKey'] as String).input(),
     );
   }
 }

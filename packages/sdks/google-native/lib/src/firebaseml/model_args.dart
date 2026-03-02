@@ -29,19 +29,13 @@ class ModelArgs {
   /// [tags] User defined tags which can be used to group/filter models during listing
   /// [tfliteModel] A TFLite Model
   ModelArgs({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ModelState>? state,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<TfLiteModel>? tfliteModel,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<ModelState>(state),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      tfliteModel = pulumi.Input.asOptionalInput<TfLiteModel>(tfliteModel);
+    required this.displayName,
+    this.name,
+    this.project,
+    this.state,
+    this.tags,
+    this.tfliteModel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ModelArgs {
 
   factory ModelArgs.fromMap(Map<String, dynamic> map) {
     return ModelArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<ModelState>(ModelState.fromMap((map['state'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      tfliteModel: map['tfliteModel'] == null ? null : pulumi.Output.create<TfLiteModel>(TfLiteModel.fromMap((map['tfliteModel'] as Map).cast<String, dynamic>())),
+      displayName: (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: map['state'] == null ? null : (ModelState.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tfliteModel: map['tfliteModel'] == null ? null : (TfLiteModel.fromMap((map['tfliteModel'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

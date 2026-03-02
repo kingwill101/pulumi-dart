@@ -7,9 +7,9 @@ import 'import_error_response.dart';
 /// A resource that aggregates errors across import job files.
 class ValidationReportResponse {
   /// List of errors found in files.
-  final List<FileValidationReportResponse> fileValidations;
+  final pulumi.Input<List<FileValidationReportResponse>> fileValidations;
   /// List of job level errors.
-  final List<ImportErrorResponse> jobErrors;
+  final pulumi.Input<List<ImportErrorResponse>> jobErrors;
 
   /// Creates a new [ValidationReportResponse].
   /// [fileValidations] List of errors found in files.
@@ -21,15 +21,15 @@ class ValidationReportResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fileValidations': pulumi.Input.encodeList<FileValidationReportResponse, Map<String, dynamic>>(fileValidations, (value) => value.toMap()),
-      'jobErrors': pulumi.Input.encodeList<ImportErrorResponse, Map<String, dynamic>>(jobErrors, (value) => value.toMap()),
+      'fileValidations': pulumi.Input.mapInputValue<List<FileValidationReportResponse>, List<Map<String, dynamic>>>(fileValidations, (value) => pulumi.Input.encodeList<FileValidationReportResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'jobErrors': pulumi.Input.mapInputValue<List<ImportErrorResponse>, List<Map<String, dynamic>>>(jobErrors, (value) => pulumi.Input.encodeList<ImportErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ValidationReportResponse.fromMap(Map<String, dynamic> map) {
     return ValidationReportResponse(
-      fileValidations: pulumi.Input.decodeList<FileValidationReportResponse>(map['fileValidations'], (value) => FileValidationReportResponse.fromMap((value as Map).cast<String, dynamic>())),
-      jobErrors: pulumi.Input.decodeList<ImportErrorResponse>(map['jobErrors'], (value) => ImportErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
+      fileValidations: (pulumi.Input.decodeList<FileValidationReportResponse>(map['fileValidations'], (value) => FileValidationReportResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jobErrors: (pulumi.Input.decodeList<ImportErrorResponse>(map['jobErrors'], (value) => ImportErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

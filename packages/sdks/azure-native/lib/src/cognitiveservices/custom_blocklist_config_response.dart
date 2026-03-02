@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the source to which filter applies.
 class CustomBlocklistConfigResponse {
   /// If blocking would occur.
-  final bool? blocking;
+  final pulumi.Input<bool>? blocking;
   /// Name of ContentFilter.
-  final String? blocklistName;
+  final pulumi.Input<String>? blocklistName;
   /// Content source to apply the Content Filters.
-  final String? source;
+  final pulumi.Input<String>? source;
 
   /// Creates a new [CustomBlocklistConfigResponse].
   /// [blocking] If blocking would occur.
@@ -30,9 +31,9 @@ class CustomBlocklistConfigResponse {
 
   factory CustomBlocklistConfigResponse.fromMap(Map<String, dynamic> map) {
     return CustomBlocklistConfigResponse(
-      blocking: map['blocking'] == null ? null : map['blocking'] as bool,
-      blocklistName: map['blocklistName'] == null ? null : map['blocklistName'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      blocking: map['blocking'] == null ? null : (map['blocking'] as bool).input(),
+      blocklistName: map['blocklistName'] == null ? null : (map['blocklistName'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

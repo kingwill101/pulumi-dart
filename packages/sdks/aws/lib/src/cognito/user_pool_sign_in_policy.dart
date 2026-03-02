@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolSignInPolicy {
   /// The sign in methods your user pool supports as the first factor. This is a list of strings, allowed values are `PASSWORD`, `EMAIL_OTP`, `SMS_OTP`, and `WEB_AUTHN`.
-  final List<String>? allowedFirstAuthFactors;
+  final pulumi.Input<List<String>>? allowedFirstAuthFactors;
 
   /// Creates a new [UserPoolSignInPolicy].
   /// [allowedFirstAuthFactors] The sign in methods your user pool supports as the first factor. This is a list of strings, allowed values are `PASSWORD`, `EMAIL_OTP`, `SMS_OTP`, and `WEB_AUTHN`.
@@ -19,7 +20,7 @@ class UserPoolSignInPolicy {
 
   factory UserPoolSignInPolicy.fromMap(Map<String, dynamic> map) {
     return UserPoolSignInPolicy(
-      allowedFirstAuthFactors: map['allowedFirstAuthFactors'] == null ? null : (map['allowedFirstAuthFactors'] as List).cast<String>(),
+      allowedFirstAuthFactors: map['allowedFirstAuthFactors'] == null ? null : ((map['allowedFirstAuthFactors'] as List).cast<String>()).input(),
     );
   }
 }

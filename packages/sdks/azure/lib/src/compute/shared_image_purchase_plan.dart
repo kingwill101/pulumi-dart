@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SharedImagePurchasePlan {
   /// The Purchase Plan Name for this Shared Image. Changing this forces a new resource to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Purchase Plan Product for this Gallery Image. Changing this forces a new resource to be created.
-  final String? product;
+  final pulumi.Input<String>? product;
   /// The Purchase Plan Publisher for this Gallery Image. Changing this forces a new resource to be created.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
 
   /// Creates a new [SharedImagePurchasePlan].
   /// [name] The Purchase Plan Name for this Shared Image. Changing this forces a new resource to be created.
@@ -29,9 +30,9 @@ class SharedImagePurchasePlan {
 
   factory SharedImagePurchasePlan.fromMap(Map<String, dynamic> map) {
     return SharedImagePurchasePlan(
-      name: map['name'] as String,
-      product: map['product'] == null ? null : map['product'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
+      name: (map['name'] as String).input(),
+      product: map['product'] == null ? null : (map['product'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetQuickConnectQuickConnectConfigPhoneConfig {
   /// Phone number in in E.164 format.
-  final String phoneNumber;
+  final pulumi.Input<String> phoneNumber;
 
   /// Creates a new [GetQuickConnectQuickConnectConfigPhoneConfig].
   /// [phoneNumber] Phone number in in E.164 format.
@@ -19,7 +20,7 @@ class GetQuickConnectQuickConnectConfigPhoneConfig {
 
   factory GetQuickConnectQuickConnectConfigPhoneConfig.fromMap(Map<String, dynamic> map) {
     return GetQuickConnectQuickConnectConfigPhoneConfig(
-      phoneNumber: map['phoneNumber'] as String,
+      phoneNumber: (map['phoneNumber'] as String).input(),
     );
   }
 }

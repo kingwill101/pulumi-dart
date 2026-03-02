@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuildxBuilderRemote {
   /// Absolute path to the TLS certificate authority used for validation.
-  final String? cacert;
+  final pulumi.Input<String>? cacert;
   /// Absolute path to the TLS client certificate to present to buildkitd.
-  final String? cert;
+  final pulumi.Input<String>? cert;
   /// Automatically load images to the Docker Engine image store. Defaults to `false`
-  final bool? defaultLoad;
+  final pulumi.Input<bool>? defaultLoad;
   /// Sets the TLS client key.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// TLS server name used in requests.
-  final String? servername;
+  final pulumi.Input<String>? servername;
 
   /// Creates a new [BuildxBuilderRemote].
   /// [cacert] Absolute path to the TLS certificate authority used for validation.
@@ -39,11 +40,11 @@ class BuildxBuilderRemote {
 
   factory BuildxBuilderRemote.fromMap(Map<String, dynamic> map) {
     return BuildxBuilderRemote(
-      cacert: map['cacert'] == null ? null : map['cacert'] as String,
-      cert: map['cert'] == null ? null : map['cert'] as String,
-      defaultLoad: map['defaultLoad'] == null ? null : map['defaultLoad'] as bool,
-      key: map['key'] == null ? null : map['key'] as String,
-      servername: map['servername'] == null ? null : map['servername'] as String,
+      cacert: map['cacert'] == null ? null : (map['cacert'] as String).input(),
+      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
+      defaultLoad: map['defaultLoad'] == null ? null : (map['defaultLoad'] as bool).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      servername: map['servername'] == null ? null : (map['servername'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNatIpsIp {
   /// The ID of the Nat Ip.
-  final String id;
+  final pulumi.Input<String> id;
   /// Indicates whether the BGP Group is the default NAT IP ADDRESS. Valid values: `true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
-  final bool isDefault;
+  final pulumi.Input<bool> isDefault;
   /// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
-  final String natGatewayId;
+  final pulumi.Input<String> natGatewayId;
   /// The NAT IP address that is queried.
-  final String natIp;
+  final pulumi.Input<String> natIp;
   /// The CIDR block to which the NAT IP address belongs.
-  final String natIpCidr;
+  final pulumi.Input<String> natIpCidr;
   /// The description of the NAT IP address.
-  final String natIpDescription;
+  final pulumi.Input<String> natIpDescription;
   /// The ID of the NAT IP address.
-  final String natIpId;
+  final pulumi.Input<String> natIpId;
   /// The name of the NAT IP address.
-  final String natIpName;
+  final pulumi.Input<String> natIpName;
   /// The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetNatIpsIp].
   /// [id] The ID of the Nat Ip.
@@ -59,15 +60,15 @@ class GetNatIpsIp {
 
   factory GetNatIpsIp.fromMap(Map<String, dynamic> map) {
     return GetNatIpsIp(
-      id: map['id'] as String,
-      isDefault: map['isDefault'] as bool,
-      natGatewayId: map['natGatewayId'] as String,
-      natIp: map['natIp'] as String,
-      natIpCidr: map['natIpCidr'] as String,
-      natIpDescription: map['natIpDescription'] as String,
-      natIpId: map['natIpId'] as String,
-      natIpName: map['natIpName'] as String,
-      status: map['status'] as String,
+      id: (map['id'] as String).input(),
+      isDefault: (map['isDefault'] as bool).input(),
+      natGatewayId: (map['natGatewayId'] as String).input(),
+      natIp: (map['natIp'] as String).input(),
+      natIpCidr: (map['natIpCidr'] as String).input(),
+      natIpDescription: (map['natIpDescription'] as String).input(),
+      natIpId: (map['natIpId'] as String).input(),
+      natIpName: (map['natIpName'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

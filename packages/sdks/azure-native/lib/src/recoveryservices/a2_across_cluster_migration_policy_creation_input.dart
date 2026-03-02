@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A2A Cross-Cluster Migration Policy creation input.
 class A2ACrossClusterMigrationPolicyCreationInput {
   /// The class type.
   /// Expected value is 'A2ACrossClusterMigration'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Creates a new [A2ACrossClusterMigrationPolicyCreationInput].
   /// [instanceType] The class type.
@@ -21,7 +22,7 @@ class A2ACrossClusterMigrationPolicyCreationInput {
 
   factory A2ACrossClusterMigrationPolicyCreationInput.fromMap(Map<String, dynamic> map) {
     return A2ACrossClusterMigrationPolicyCreationInput(
-      instanceType: map['instanceType'] as String,
+      instanceType: (map['instanceType'] as String).input(),
     );
   }
 }

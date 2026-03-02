@@ -16,11 +16,9 @@ class GetVpcEndpointServiceResourcesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [serviceId] The ID of Vpc Endpoint Service.
   GetVpcEndpointServiceResourcesArgs({
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> serviceId,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    this.outputFile,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVpcEndpointServiceResourcesArgs {
 
   factory GetVpcEndpointServiceResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServiceResourcesArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

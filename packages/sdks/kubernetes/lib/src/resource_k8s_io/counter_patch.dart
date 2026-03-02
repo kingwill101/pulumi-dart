@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Counter describes a quantity associated with a device.
 class CounterPatch {
   /// Value defines how much of a certain device counter is available.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [CounterPatch].
   /// [value] Value defines how much of a certain device counter is available.
@@ -20,7 +21,7 @@ class CounterPatch {
 
   factory CounterPatch.fromMap(Map<String, dynamic> map) {
     return CounterPatch(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

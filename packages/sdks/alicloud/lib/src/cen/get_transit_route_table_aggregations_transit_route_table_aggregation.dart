@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTransitRouteTableAggregationsTransitRouteTableAggregation {
   /// The ID of the Transit Route Table Aggregation. It formats as `<transit_route_table_id>:<transit_route_table_aggregation_cidr>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The route type of the aggregate route.
-  final String routeType;
+  final pulumi.Input<String> routeType;
   /// The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The destination CIDR block of the aggregate route.
-  final String transitRouteTableAggregationCidr;
+  final pulumi.Input<String> transitRouteTableAggregationCidr;
   /// The description of the aggregate route.
-  final String transitRouteTableAggregationDescription;
+  final pulumi.Input<String> transitRouteTableAggregationDescription;
   /// The name of the aggregate route.
-  final String transitRouteTableAggregationName;
+  final pulumi.Input<String> transitRouteTableAggregationName;
   /// The scope of networks that you want to advertise the aggregate route.
-  final String transitRouteTableAggregationScope;
+  final pulumi.Input<String> transitRouteTableAggregationScope;
   /// The ID of the route table of the Enterprise Edition transit router.
-  final String transitRouteTableId;
+  final pulumi.Input<String> transitRouteTableId;
 
   /// Creates a new [GetTransitRouteTableAggregationsTransitRouteTableAggregation].
   /// [id] The ID of the Transit Route Table Aggregation. It formats as `<transit_route_table_id>:<transit_route_table_aggregation_cidr>`.
@@ -54,14 +55,14 @@ class GetTransitRouteTableAggregationsTransitRouteTableAggregation {
 
   factory GetTransitRouteTableAggregationsTransitRouteTableAggregation.fromMap(Map<String, dynamic> map) {
     return GetTransitRouteTableAggregationsTransitRouteTableAggregation(
-      id: map['id'] as String,
-      routeType: map['routeType'] as String,
-      status: map['status'] as String,
-      transitRouteTableAggregationCidr: map['transitRouteTableAggregationCidr'] as String,
-      transitRouteTableAggregationDescription: map['transitRouteTableAggregationDescription'] as String,
-      transitRouteTableAggregationName: map['transitRouteTableAggregationName'] as String,
-      transitRouteTableAggregationScope: map['transitRouteTableAggregationScope'] as String,
-      transitRouteTableId: map['transitRouteTableId'] as String,
+      id: (map['id'] as String).input(),
+      routeType: (map['routeType'] as String).input(),
+      status: (map['status'] as String).input(),
+      transitRouteTableAggregationCidr: (map['transitRouteTableAggregationCidr'] as String).input(),
+      transitRouteTableAggregationDescription: (map['transitRouteTableAggregationDescription'] as String).input(),
+      transitRouteTableAggregationName: (map['transitRouteTableAggregationName'] as String).input(),
+      transitRouteTableAggregationScope: (map['transitRouteTableAggregationScope'] as String).input(),
+      transitRouteTableId: (map['transitRouteTableId'] as String).input(),
     );
   }
 }

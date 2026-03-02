@@ -6,43 +6,43 @@ import 'get_region_instance_template_network_interface_alias_ip_range.dart';
 import 'get_region_instance_template_network_interface_ipv6_access_config.dart';
 
 class GetRegionInstanceTemplateNetworkInterface {
-  final List<GetRegionInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
+  final pulumi.Input<List<GetRegionInstanceTemplateNetworkInterfaceAccessConfig>> accessConfigs;
   /// An
   /// array of alias IP ranges for this network interface. Can only be specified for network
   /// interfaces on subnet-mode networks. Structure documented below.
-  final List<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+  final pulumi.Input<List<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange>> aliasIpRanges;
   /// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
-  final String igmpQuery;
+  final pulumi.Input<String> igmpQuery;
   /// The prefix length of the primary internal IPv6 range.
-  final int internalIpv6PrefixLength;
+  final pulumi.Input<int> internalIpv6PrefixLength;
   /// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
-  final List<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
+  final pulumi.Input<List<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>> ipv6AccessConfigs;
   /// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
-  final String ipv6AccessType;
+  final pulumi.Input<String> ipv6AccessType;
   /// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
-  final String ipv6Address;
+  final pulumi.Input<String> ipv6Address;
   /// The name of the instance template. One of `name` or `filter` must be provided.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name or self_link of the network to attach this interface to.
   /// Use `network` attribute for Legacy or Auto subnetted networks and
   /// `subnetwork` for custom subnetted networks.
-  final String network;
+  final pulumi.Input<String> network;
   /// The private IP address to assign to the instance. If
   /// empty, the address will be automatically assigned.
-  final String networkIp;
+  final pulumi.Input<String> networkIp;
   /// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
-  final String nicType;
+  final pulumi.Input<String> nicType;
   /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
-  final int queueCount;
+  final pulumi.Input<int> queueCount;
   /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
-  final String stackType;
+  final pulumi.Input<String> stackType;
   /// the name of the subnetwork to attach this interface
   /// to. The subnetwork must exist in the same `region` this instance will be
   /// created in. Either `network` or `subnetwork` must be provided.
-  final String subnetwork;
+  final pulumi.Input<String> subnetwork;
   /// The ID of the project in which the subnetwork belongs.
   /// If it is not provided, the provider project is used.
-  final String subnetworkProject;
+  final pulumi.Input<String> subnetworkProject;
 
   /// Creates a new [GetRegionInstanceTemplateNetworkInterface].
   /// [accessConfigs] Required.
@@ -80,11 +80,11 @@ class GetRegionInstanceTemplateNetworkInterface {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessConfigs': pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkInterfaceAccessConfig, Map<String, dynamic>>(accessConfigs, (value) => value.toMap()),
-      'aliasIpRanges': pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange, Map<String, dynamic>>(aliasIpRanges, (value) => value.toMap()),
+      'accessConfigs': pulumi.Input.mapInputValue<List<GetRegionInstanceTemplateNetworkInterfaceAccessConfig>, List<Map<String, dynamic>>>(accessConfigs, (value) => pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkInterfaceAccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'aliasIpRanges': pulumi.Input.mapInputValue<List<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange>, List<Map<String, dynamic>>>(aliasIpRanges, (value) => pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'igmpQuery': igmpQuery,
       'internalIpv6PrefixLength': internalIpv6PrefixLength,
-      'ipv6AccessConfigs': pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig, Map<String, dynamic>>(ipv6AccessConfigs, (value) => value.toMap()),
+      'ipv6AccessConfigs': pulumi.Input.mapInputValue<List<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>, List<Map<String, dynamic>>>(ipv6AccessConfigs, (value) => pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipv6AccessType': ipv6AccessType,
       'ipv6Address': ipv6Address,
       'name': name,
@@ -100,21 +100,21 @@ class GetRegionInstanceTemplateNetworkInterface {
 
   factory GetRegionInstanceTemplateNetworkInterface.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateNetworkInterface(
-      accessConfigs: pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterfaceAccessConfig>(map['accessConfigs'], (value) => GetRegionInstanceTemplateNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>())),
-      aliasIpRanges: pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange>(map['aliasIpRanges'], (value) => GetRegionInstanceTemplateNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>())),
-      igmpQuery: map['igmpQuery'] as String,
-      internalIpv6PrefixLength: map['internalIpv6PrefixLength'] as int,
-      ipv6AccessConfigs: pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>(map['ipv6AccessConfigs'], (value) => GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>())),
-      ipv6AccessType: map['ipv6AccessType'] as String,
-      ipv6Address: map['ipv6Address'] as String,
-      name: map['name'] as String,
-      network: map['network'] as String,
-      networkIp: map['networkIp'] as String,
-      nicType: map['nicType'] as String,
-      queueCount: map['queueCount'] as int,
-      stackType: map['stackType'] as String,
-      subnetwork: map['subnetwork'] as String,
-      subnetworkProject: map['subnetworkProject'] as String,
+      accessConfigs: (pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterfaceAccessConfig>(map['accessConfigs'], (value) => GetRegionInstanceTemplateNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aliasIpRanges: (pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange>(map['aliasIpRanges'], (value) => GetRegionInstanceTemplateNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      igmpQuery: (map['igmpQuery'] as String).input(),
+      internalIpv6PrefixLength: (map['internalIpv6PrefixLength'] as int).input(),
+      ipv6AccessConfigs: (pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>(map['ipv6AccessConfigs'], (value) => GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6AccessType: (map['ipv6AccessType'] as String).input(),
+      ipv6Address: (map['ipv6Address'] as String).input(),
+      name: (map['name'] as String).input(),
+      network: (map['network'] as String).input(),
+      networkIp: (map['networkIp'] as String).input(),
+      nicType: (map['nicType'] as String).input(),
+      queueCount: (map['queueCount'] as int).input(),
+      stackType: (map['stackType'] as String).input(),
+      subnetwork: (map['subnetwork'] as String).input(),
+      subnetworkProject: (map['subnetworkProject'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration {
   /// Configurations for a knowledge base connected to an Amazon Redshift database. See `redshift_configuration` block for details.
-  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration? redshiftConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration>? redshiftConfiguration;
   /// Type of SQL database to connect to the knowledge base. Valid values: `REDSHIFT`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration].
   /// [redshiftConfiguration] Configurations for a knowledge base connected to an Amazon Redshift database. See `redshift_configuration` block for details.
@@ -18,15 +19,15 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'redshiftConfiguration': ?redshiftConfiguration == null ? null : redshiftConfiguration!.toMap(),
+      'redshiftConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration, Map<String, dynamic>>(redshiftConfiguration, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration(
-      redshiftConfiguration: map['redshiftConfiguration'] == null ? null : AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration.fromMap((map['redshiftConfiguration'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      redshiftConfiguration: map['redshiftConfiguration'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration.fromMap((map['redshiftConfiguration'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

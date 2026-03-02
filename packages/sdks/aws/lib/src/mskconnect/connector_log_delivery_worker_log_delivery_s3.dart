@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorLogDeliveryWorkerLogDeliveryS3 {
   /// The name of the S3 bucket that is the destination for log delivery.
-  final String? bucket;
+  final pulumi.Input<String>? bucket;
   /// Specifies whether connector logs get sent to the specified Amazon S3 destination.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The S3 prefix that is the destination for log delivery.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [ConnectorLogDeliveryWorkerLogDeliveryS3].
   /// [bucket] The name of the S3 bucket that is the destination for log delivery.
@@ -29,9 +30,9 @@ class ConnectorLogDeliveryWorkerLogDeliveryS3 {
 
   factory ConnectorLogDeliveryWorkerLogDeliveryS3.fromMap(Map<String, dynamic> map) {
     return ConnectorLogDeliveryWorkerLogDeliveryS3(
-      bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      enabled: map['enabled'] as bool,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

@@ -7,11 +7,11 @@ import 'sub_resource.dart';
 /// The properties that define a direct peering.
 class PeeringPropertiesDirect {
   /// The set of connections that constitute a direct peering.
-  final List<DirectConnection>? connections;
+  final pulumi.Input<List<DirectConnection>>? connections;
   /// The type of direct peering.
-  final String? directPeeringType;
+  final pulumi.Input<String>? directPeeringType;
   /// The reference of the peer ASN.
-  final SubResource? peerAsn;
+  final pulumi.Input<SubResource>? peerAsn;
 
   /// Creates a new [PeeringPropertiesDirect].
   /// [connections] The set of connections that constitute a direct peering.
@@ -25,17 +25,17 @@ class PeeringPropertiesDirect {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connections': ?connections == null ? null : pulumi.Input.encodeList<DirectConnection, Map<String, dynamic>>(connections!, (value) => value.toMap()),
+      'connections': ?pulumi.Input.mapOptionalInputValue<List<DirectConnection>, List<Map<String, dynamic>>>(connections, (value) => pulumi.Input.encodeList<DirectConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
       'directPeeringType': ?directPeeringType,
-      'peerAsn': ?peerAsn == null ? null : peerAsn!.toMap(),
+      'peerAsn': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(peerAsn, (value) => value.toMap()),
     };
   }
 
   factory PeeringPropertiesDirect.fromMap(Map<String, dynamic> map) {
     return PeeringPropertiesDirect(
-      connections: map['connections'] == null ? null : pulumi.Input.decodeList<DirectConnection>(map['connections'], (value) => DirectConnection.fromMap((value as Map).cast<String, dynamic>())),
-      directPeeringType: map['directPeeringType'] == null ? null : map['directPeeringType'] as String,
-      peerAsn: map['peerAsn'] == null ? null : SubResource.fromMap((map['peerAsn'] as Map).cast<String, dynamic>()),
+      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<DirectConnection>(map['connections'], (value) => DirectConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      directPeeringType: map['directPeeringType'] == null ? null : (map['directPeeringType'] as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (SubResource.fromMap((map['peerAsn'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

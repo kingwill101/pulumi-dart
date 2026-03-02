@@ -13,9 +13,8 @@ class GetConfigurationArgs {
   /// Creates a new [GetConfigurationArgs].
   /// [nginxDeploymentId] The ID of the Nginx Deployment.
   GetConfigurationArgs({
-    required pulumi.Output<String> nginxDeploymentId,
-  }) :
-      nginxDeploymentId = pulumi.Input.asInput<String>(nginxDeploymentId);
+    required this.nginxDeploymentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetConfigurationArgs {
 
   factory GetConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationArgs(
-      nginxDeploymentId: pulumi.Output.create<String>(map['nginxDeploymentId'] as String),
+      nginxDeploymentId: (map['nginxDeploymentId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeGroupScalingConfig {
   /// Desired number of worker nodes.
-  final int desiredSize;
+  final pulumi.Input<int> desiredSize;
   /// Maximum number of worker nodes.
-  final int maxSize;
+  final pulumi.Input<int> maxSize;
   /// Minimum number of worker nodes.
-  final int minSize;
+  final pulumi.Input<int> minSize;
 
   /// Creates a new [NodeGroupScalingConfig].
   /// [desiredSize] Desired number of worker nodes.
@@ -29,9 +30,9 @@ class NodeGroupScalingConfig {
 
   factory NodeGroupScalingConfig.fromMap(Map<String, dynamic> map) {
     return NodeGroupScalingConfig(
-      desiredSize: map['desiredSize'] as int,
-      maxSize: map['maxSize'] as int,
-      minSize: map['minSize'] as int,
+      desiredSize: (map['desiredSize'] as int).input(),
+      maxSize: (map['maxSize'] as int).input(),
+      minSize: (map['minSize'] as int).input(),
     );
   }
 }

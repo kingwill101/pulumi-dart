@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainKeyWrapCipher {
   /// Sets the name of the cipher used for key wrapping in the domain.
-  final String name;
+  final pulumi.Input<String> name;
   /// Configures the state of the cipher used for key wrapping in the domain.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [DomainKeyWrapCipher].
   /// [name] Sets the name of the cipher used for key wrapping in the domain.
@@ -24,8 +25,8 @@ class DomainKeyWrapCipher {
 
   factory DomainKeyWrapCipher.fromMap(Map<String, dynamic> map) {
     return DomainKeyWrapCipher(
-      name: map['name'] as String,
-      state: map['state'] as String,
+      name: (map['name'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

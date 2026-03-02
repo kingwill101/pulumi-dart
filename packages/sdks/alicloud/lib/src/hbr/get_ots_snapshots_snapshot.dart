@@ -1,49 +1,50 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOtsSnapshotsSnapshot {
   /// The actual amount of backup snapshots after duplicates are removed. Unit: bytes.
-  final String actualBytes;
+  final pulumi.Input<String> actualBytes;
   /// The backup type. Valid value: `COMPLETE`, which indicates full backup.
-  final String backupType;
+  final pulumi.Input<String> backupType;
   /// The total amount of data. Unit: bytes.
-  final String bytesTotal;
+  final pulumi.Input<String> bytesTotal;
   /// The time when the backup snapshot was completed. This value is a UNIX timestamp. Unit: seconds.
-  final String completeTime;
+  final pulumi.Input<String> completeTime;
   /// The time when the Table store instance was created. This value is a UNIX timestamp. Unit: seconds.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The time when the backup snapshot was created. This value is a UNIX timestamp. Unit: seconds.
-  final String createdTime;
+  final pulumi.Input<String> createdTime;
   /// The ID of the backup snapshot.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the Table store instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The ID of the backup job.
-  final String jobId;
+  final pulumi.Input<String> jobId;
   /// The hash value of the parent backup snapshot.
-  final String parentSnapshotHash;
+  final pulumi.Input<String> parentSnapshotHash;
   /// The time when the backup job ended. This value is a UNIX timestamp. Unit: milliseconds.
-  final String rangeEnd;
+  final pulumi.Input<String> rangeEnd;
   /// The time when the backup job started. This value is a UNIX timestamp. Unit: milliseconds.
-  final String rangeStart;
+  final pulumi.Input<String> rangeStart;
   /// The retention period of the backup snapshot.
-  final String retention;
+  final pulumi.Input<String> retention;
   /// The hash value of the backup snapshot.
-  final String snapshotHash;
+  final pulumi.Input<String> snapshotHash;
   /// The ID of the backup snapshot.
-  final String snapshotId;
+  final pulumi.Input<String> snapshotId;
   /// The type of the data source. Valid values: `ECS_FILE`,`PARTIAL_COMPLETE`,`FAILED`
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
   /// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The status of the backup job. Valid values: `COMPLETE`,`PARTIAL_COMPLETE`,`FAILED`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The name of the table in the Table store instance.
-  final String tableName;
+  final pulumi.Input<String> tableName;
   /// The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
-  final String updatedTime;
+  final pulumi.Input<String> updatedTime;
   /// The ID of the backup vault that stores the backup snapshot.
-  final String vaultId;
+  final pulumi.Input<String> vaultId;
 
   /// Creates a new [GetOtsSnapshotsSnapshot].
   /// [actualBytes] The actual amount of backup snapshots after duplicates are removed. Unit: bytes.
@@ -119,27 +120,27 @@ class GetOtsSnapshotsSnapshot {
 
   factory GetOtsSnapshotsSnapshot.fromMap(Map<String, dynamic> map) {
     return GetOtsSnapshotsSnapshot(
-      actualBytes: map['actualBytes'] as String,
-      backupType: map['backupType'] as String,
-      bytesTotal: map['bytesTotal'] as String,
-      completeTime: map['completeTime'] as String,
-      createTime: map['createTime'] as String,
-      createdTime: map['createdTime'] as String,
-      id: map['id'] as String,
-      instanceName: map['instanceName'] as String,
-      jobId: map['jobId'] as String,
-      parentSnapshotHash: map['parentSnapshotHash'] as String,
-      rangeEnd: map['rangeEnd'] as String,
-      rangeStart: map['rangeStart'] as String,
-      retention: map['retention'] as String,
-      snapshotHash: map['snapshotHash'] as String,
-      snapshotId: map['snapshotId'] as String,
-      sourceType: map['sourceType'] as String,
-      startTime: map['startTime'] as String,
-      status: map['status'] as String,
-      tableName: map['tableName'] as String,
-      updatedTime: map['updatedTime'] as String,
-      vaultId: map['vaultId'] as String,
+      actualBytes: (map['actualBytes'] as String).input(),
+      backupType: (map['backupType'] as String).input(),
+      bytesTotal: (map['bytesTotal'] as String).input(),
+      completeTime: (map['completeTime'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      createdTime: (map['createdTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      jobId: (map['jobId'] as String).input(),
+      parentSnapshotHash: (map['parentSnapshotHash'] as String).input(),
+      rangeEnd: (map['rangeEnd'] as String).input(),
+      rangeStart: (map['rangeStart'] as String).input(),
+      retention: (map['retention'] as String).input(),
+      snapshotHash: (map['snapshotHash'] as String).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      status: (map['status'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      updatedTime: (map['updatedTime'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

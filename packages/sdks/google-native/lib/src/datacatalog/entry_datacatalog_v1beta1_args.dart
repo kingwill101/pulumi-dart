@@ -53,35 +53,21 @@ class EntryDatacatalogV1beta1Args {
   /// [userSpecifiedSystem] This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
   /// [userSpecifiedType] Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
   EntryDatacatalogV1beta1Args({
-    pulumi.Output<Map<String, dynamic>>? bigqueryDateShardedSpec,
-    pulumi.Output<GoogleCloudDatacatalogV1beta1BigQueryTableSpec>? bigqueryTableSpec,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> entryGroupId,
-    required pulumi.Output<String> entryId,
-    pulumi.Output<GoogleCloudDatacatalogV1beta1GcsFilesetSpec>? gcsFilesetSpec,
-    pulumi.Output<String>? linkedResource,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudDatacatalogV1beta1Schema>? schema,
-    pulumi.Output<EntryTypeDatacatalogV1beta1>? type,
-    pulumi.Output<String>? userSpecifiedSystem,
-    pulumi.Output<String>? userSpecifiedType,
-  }) :
-      bigqueryDateShardedSpec = pulumi.Input.asOptionalInput<Map<String, dynamic>>(bigqueryDateShardedSpec),
-      bigqueryTableSpec = pulumi.Input.asOptionalInput<GoogleCloudDatacatalogV1beta1BigQueryTableSpec>(bigqueryTableSpec),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
-      entryId = pulumi.Input.asInput<String>(entryId),
-      gcsFilesetSpec = pulumi.Input.asOptionalInput<GoogleCloudDatacatalogV1beta1GcsFilesetSpec>(gcsFilesetSpec),
-      linkedResource = pulumi.Input.asOptionalInput<String>(linkedResource),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schema = pulumi.Input.asOptionalInput<GoogleCloudDatacatalogV1beta1Schema>(schema),
-      type = pulumi.Input.asOptionalInput<EntryTypeDatacatalogV1beta1>(type),
-      userSpecifiedSystem = pulumi.Input.asOptionalInput<String>(userSpecifiedSystem),
-      userSpecifiedType = pulumi.Input.asOptionalInput<String>(userSpecifiedType);
+    this.bigqueryDateShardedSpec,
+    this.bigqueryTableSpec,
+    this.description,
+    this.displayName,
+    required this.entryGroupId,
+    required this.entryId,
+    this.gcsFilesetSpec,
+    this.linkedResource,
+    this.location,
+    this.project,
+    this.schema,
+    this.type,
+    this.userSpecifiedSystem,
+    this.userSpecifiedType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class EntryDatacatalogV1beta1Args {
 
   factory EntryDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return EntryDatacatalogV1beta1Args(
-      bigqueryDateShardedSpec: map['bigqueryDateShardedSpec'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['bigqueryDateShardedSpec'] as Map).cast<String, dynamic>()),
-      bigqueryTableSpec: map['bigqueryTableSpec'] == null ? null : pulumi.Output.create<GoogleCloudDatacatalogV1beta1BigQueryTableSpec>(GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromMap((map['bigqueryTableSpec'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      entryGroupId: pulumi.Output.create<String>(map['entryGroupId'] as String),
-      entryId: pulumi.Output.create<String>(map['entryId'] as String),
-      gcsFilesetSpec: map['gcsFilesetSpec'] == null ? null : pulumi.Output.create<GoogleCloudDatacatalogV1beta1GcsFilesetSpec>(GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromMap((map['gcsFilesetSpec'] as Map).cast<String, dynamic>())),
-      linkedResource: map['linkedResource'] == null ? null : pulumi.Output.create<String>(map['linkedResource'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<GoogleCloudDatacatalogV1beta1Schema>(GoogleCloudDatacatalogV1beta1Schema.fromMap((map['schema'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<EntryTypeDatacatalogV1beta1>(EntryTypeDatacatalogV1beta1.fromValue(map['type'] as String)),
-      userSpecifiedSystem: map['userSpecifiedSystem'] == null ? null : pulumi.Output.create<String>(map['userSpecifiedSystem'] as String),
-      userSpecifiedType: map['userSpecifiedType'] == null ? null : pulumi.Output.create<String>(map['userSpecifiedType'] as String),
+      bigqueryDateShardedSpec: map['bigqueryDateShardedSpec'] == null ? null : ((map['bigqueryDateShardedSpec'] as Map).cast<String, dynamic>()).input(),
+      bigqueryTableSpec: map['bigqueryTableSpec'] == null ? null : (GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromMap((map['bigqueryTableSpec'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      entryGroupId: (map['entryGroupId'] as String).input(),
+      entryId: (map['entryId'] as String).input(),
+      gcsFilesetSpec: map['gcsFilesetSpec'] == null ? null : (GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromMap((map['gcsFilesetSpec'] as Map).cast<String, dynamic>())).input(),
+      linkedResource: map['linkedResource'] == null ? null : (map['linkedResource'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schema: map['schema'] == null ? null : (GoogleCloudDatacatalogV1beta1Schema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (EntryTypeDatacatalogV1beta1.fromValue(map['type'] as String)).input(),
+      userSpecifiedSystem: map['userSpecifiedSystem'] == null ? null : (map['userSpecifiedSystem'] as String).input(),
+      userSpecifiedType: map['userSpecifiedType'] == null ? null : (map['userSpecifiedType'] as String).input(),
     );
   }
 }

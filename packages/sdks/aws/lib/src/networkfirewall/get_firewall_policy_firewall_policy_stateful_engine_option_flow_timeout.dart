@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout {
-  final int tcpIdleTimeoutSeconds;
+  final pulumi.Input<int> tcpIdleTimeoutSeconds;
 
   /// Creates a new [GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout].
   /// [tcpIdleTimeoutSeconds] Required.
@@ -18,7 +19,7 @@ class GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout {
 
   factory GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout(
-      tcpIdleTimeoutSeconds: map['tcpIdleTimeoutSeconds'] as int,
+      tcpIdleTimeoutSeconds: (map['tcpIdleTimeoutSeconds'] as int).input(),
     );
   }
 }

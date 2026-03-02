@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Container message for hash values.
 class HashResponseContaineranalysisV1beta1 {
   /// The type of hash that was performed.
-  final String type;
+  final pulumi.Input<String> type;
   /// The hash value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [HashResponseContaineranalysisV1beta1].
   /// [type] The type of hash that was performed.
@@ -25,8 +26,8 @@ class HashResponseContaineranalysisV1beta1 {
 
   factory HashResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return HashResponseContaineranalysisV1beta1(
-      type: map['type'] as String,
-      value: map['value'] as String,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

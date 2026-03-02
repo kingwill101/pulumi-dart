@@ -5,41 +5,41 @@ import 'managed_cluster_node_type_vm_secret.dart';
 
 class ManagedClusterNodeType {
   /// Sets the port range available for applications. Format is `<from_port>-<to_port>`, for example `10000-20000`.
-  final String applicationPortRange;
+  final pulumi.Input<String> applicationPortRange;
   /// Specifies a list of key/value pairs used to set capacity tags for this node type.
-  final Map<String, String>? capacities;
+  final pulumi.Input<Map<String, String>>? capacities;
   /// The size of the data disk in gigabytes..
-  final int dataDiskSizeGb;
+  final pulumi.Input<int> dataDiskSizeGb;
   /// The type of the disk to use for storing data. It can be one of `Premium_LRS`, `Standard_LRS`, or `StandardSSD_LRS`. Defaults to `Standard_LRS`.
-  final String? dataDiskType;
+  final pulumi.Input<String>? dataDiskType;
   /// Sets the port range available for the OS. Format is `<from_port>-<to_port>`, for example `10000-20000`. There has to be at least 255 ports available and cannot overlap with `application_port_range`..
-  final String ephemeralPortRange;
+  final pulumi.Input<String> ephemeralPortRange;
   /// The ID of the Resource Group.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// If set the node type can be composed of multiple placement groups.
-  final bool? multiplePlacementGroupsEnabled;
+  final pulumi.Input<bool>? multiplePlacementGroupsEnabled;
   /// The name which should be used for this node type.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies a list of placement tags that can be used to indicate where services should run..
-  final Map<String, String>? placementProperties;
+  final pulumi.Input<Map<String, String>>? placementProperties;
   /// If set to true, system services will run on this node type. Only one node type should be marked as primary. Primary node type cannot be deleted or changed once they're created.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// If set to true, only stateless workloads can run on this node type.
-  final bool? stateless;
+  final pulumi.Input<bool>? stateless;
   /// The offer type of the marketplace image cluster VMs will use.
-  final String vmImageOffer;
+  final pulumi.Input<String> vmImageOffer;
   /// The publisher of the marketplace image cluster VMs will use.
-  final String vmImagePublisher;
+  final pulumi.Input<String> vmImagePublisher;
   /// The SKU of the marketplace image cluster VMs will use.
-  final String vmImageSku;
+  final pulumi.Input<String> vmImageSku;
   /// The version of the marketplace image cluster VMs will use.
-  final String vmImageVersion;
+  final pulumi.Input<String> vmImageVersion;
   /// The number of instances this node type will launch.
-  final int vmInstanceCount;
+  final pulumi.Input<int> vmInstanceCount;
   /// One or more `vm_secrets` blocks as defined below.
-  final List<ManagedClusterNodeTypeVmSecret>? vmSecrets;
+  final pulumi.Input<List<ManagedClusterNodeTypeVmSecret>>? vmSecrets;
   /// The size of the instances in this node type.
-  final String vmSize;
+  final pulumi.Input<String> vmSize;
 
   /// Creates a new [ManagedClusterNodeType].
   /// [applicationPortRange] Sets the port range available for applications. Format is `<from_port>-<to_port>`, for example `10000-20000`.
@@ -99,31 +99,31 @@ class ManagedClusterNodeType {
       'vmImageSku': vmImageSku,
       'vmImageVersion': vmImageVersion,
       'vmInstanceCount': vmInstanceCount,
-      'vmSecrets': ?vmSecrets == null ? null : pulumi.Input.encodeList<ManagedClusterNodeTypeVmSecret, Map<String, dynamic>>(vmSecrets!, (value) => value.toMap()),
+      'vmSecrets': ?pulumi.Input.mapOptionalInputValue<List<ManagedClusterNodeTypeVmSecret>, List<Map<String, dynamic>>>(vmSecrets, (value) => pulumi.Input.encodeList<ManagedClusterNodeTypeVmSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmSize': vmSize,
     };
   }
 
   factory ManagedClusterNodeType.fromMap(Map<String, dynamic> map) {
     return ManagedClusterNodeType(
-      applicationPortRange: map['applicationPortRange'] as String,
-      capacities: map['capacities'] == null ? null : (map['capacities'] as Map).cast<String, String>(),
-      dataDiskSizeGb: map['dataDiskSizeGb'] as int,
-      dataDiskType: map['dataDiskType'] == null ? null : map['dataDiskType'] as String,
-      ephemeralPortRange: map['ephemeralPortRange'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      multiplePlacementGroupsEnabled: map['multiplePlacementGroupsEnabled'] == null ? null : map['multiplePlacementGroupsEnabled'] as bool,
-      name: map['name'] as String,
-      placementProperties: map['placementProperties'] == null ? null : (map['placementProperties'] as Map).cast<String, String>(),
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      stateless: map['stateless'] == null ? null : map['stateless'] as bool,
-      vmImageOffer: map['vmImageOffer'] as String,
-      vmImagePublisher: map['vmImagePublisher'] as String,
-      vmImageSku: map['vmImageSku'] as String,
-      vmImageVersion: map['vmImageVersion'] as String,
-      vmInstanceCount: map['vmInstanceCount'] as int,
-      vmSecrets: map['vmSecrets'] == null ? null : pulumi.Input.decodeList<ManagedClusterNodeTypeVmSecret>(map['vmSecrets'], (value) => ManagedClusterNodeTypeVmSecret.fromMap((value as Map).cast<String, dynamic>())),
-      vmSize: map['vmSize'] as String,
+      applicationPortRange: (map['applicationPortRange'] as String).input(),
+      capacities: map['capacities'] == null ? null : ((map['capacities'] as Map).cast<String, String>()).input(),
+      dataDiskSizeGb: (map['dataDiskSizeGb'] as int).input(),
+      dataDiskType: map['dataDiskType'] == null ? null : (map['dataDiskType'] as String).input(),
+      ephemeralPortRange: (map['ephemeralPortRange'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      multiplePlacementGroupsEnabled: map['multiplePlacementGroupsEnabled'] == null ? null : (map['multiplePlacementGroupsEnabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      placementProperties: map['placementProperties'] == null ? null : ((map['placementProperties'] as Map).cast<String, String>()).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      stateless: map['stateless'] == null ? null : (map['stateless'] as bool).input(),
+      vmImageOffer: (map['vmImageOffer'] as String).input(),
+      vmImagePublisher: (map['vmImagePublisher'] as String).input(),
+      vmImageSku: (map['vmImageSku'] as String).input(),
+      vmImageVersion: (map['vmImageVersion'] as String).input(),
+      vmInstanceCount: (map['vmInstanceCount'] as int).input(),
+      vmSecrets: map['vmSecrets'] == null ? null : (pulumi.Input.decodeList<ManagedClusterNodeTypeVmSecret>(map['vmSecrets'], (value) => ManagedClusterNodeTypeVmSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmSize: (map['vmSize'] as String).input(),
     );
   }
 }

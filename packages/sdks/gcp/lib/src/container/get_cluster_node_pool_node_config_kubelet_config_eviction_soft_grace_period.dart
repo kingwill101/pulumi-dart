@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod {
   /// Defines grace period for the imagefs.available soft eviction threshold
-  final String imagefsAvailable;
+  final pulumi.Input<String> imagefsAvailable;
   /// Defines grace period for the imagefs.inodesFree soft eviction threshold.
-  final String imagefsInodesFree;
+  final pulumi.Input<String> imagefsInodesFree;
   /// Defines grace period for the memory.available soft eviction threshold.
-  final String memoryAvailable;
+  final pulumi.Input<String> memoryAvailable;
   /// Defines grace period for the nodefs.available soft eviction threshold.
-  final String nodefsAvailable;
+  final pulumi.Input<String> nodefsAvailable;
   /// Defines grace period for the nodefs.inodesFree soft eviction threshold.
-  final String nodefsInodesFree;
+  final pulumi.Input<String> nodefsInodesFree;
   /// Defines grace period for the pid.available soft eviction threshold.
-  final String pidAvailable;
+  final pulumi.Input<String> pidAvailable;
 
   /// Creates a new [GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod].
   /// [imagefsAvailable] Defines grace period for the imagefs.available soft eviction threshold
@@ -44,12 +45,12 @@ class GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod {
 
   factory GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod(
-      imagefsAvailable: map['imagefsAvailable'] as String,
-      imagefsInodesFree: map['imagefsInodesFree'] as String,
-      memoryAvailable: map['memoryAvailable'] as String,
-      nodefsAvailable: map['nodefsAvailable'] as String,
-      nodefsInodesFree: map['nodefsInodesFree'] as String,
-      pidAvailable: map['pidAvailable'] as String,
+      imagefsAvailable: (map['imagefsAvailable'] as String).input(),
+      imagefsInodesFree: (map['imagefsInodesFree'] as String).input(),
+      memoryAvailable: (map['memoryAvailable'] as String).input(),
+      nodefsAvailable: (map['nodefsAvailable'] as String).input(),
+      nodefsInodesFree: (map['nodefsInodesFree'] as String).input(),
+      pidAvailable: (map['pidAvailable'] as String).input(),
     );
   }
 }

@@ -44,31 +44,19 @@ class CapabilityState {
   /// [type] Type of the capability. Valid values: `ACK`, `KRO`, `ARGOCD`.
   /// [version] Version of the capability.
   CapabilityState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? capabilityName,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<CapabilityConfiguration>? configuration,
-    pulumi.Output<String>? deletePropagationPolicy,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<CapabilityTimeouts>? timeouts,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? version,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      capabilityName = pulumi.Input.asOptionalInput<String>(capabilityName),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      configuration = pulumi.Input.asOptionalInput<CapabilityConfiguration>(configuration),
-      deletePropagationPolicy = pulumi.Input.asOptionalInput<String>(deletePropagationPolicy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<CapabilityTimeouts>(timeouts),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.arn,
+    this.capabilityName,
+    this.clusterName,
+    this.configuration,
+    this.deletePropagationPolicy,
+    this.region,
+    this.roleArn,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.type,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class CapabilityState {
 
   factory CapabilityState.fromMap(Map<String, dynamic> map) {
     return CapabilityState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      capabilityName: map['capabilityName'] == null ? null : pulumi.Output.create<String>(map['capabilityName'] as String),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<CapabilityConfiguration>(CapabilityConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      deletePropagationPolicy: map['deletePropagationPolicy'] == null ? null : pulumi.Output.create<String>(map['deletePropagationPolicy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<CapabilityTimeouts>(CapabilityTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      capabilityName: map['capabilityName'] == null ? null : (map['capabilityName'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      configuration: map['configuration'] == null ? null : (CapabilityConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      deletePropagationPolicy: map['deletePropagationPolicy'] == null ? null : (map['deletePropagationPolicy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (CapabilityTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

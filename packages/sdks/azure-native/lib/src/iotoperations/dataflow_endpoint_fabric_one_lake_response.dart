@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'batching_configuration_response.dart';
 import 'dataflow_endpoint_fabric_one_lake_authentication_response.dart';
 import 'dataflow_endpoint_fabric_one_lake_names_response.dart';
@@ -7,15 +8,15 @@ import 'dataflow_endpoint_fabric_one_lake_names_response.dart';
 /// Microsoft Fabric endpoint properties
 class DataflowEndpointFabricOneLakeResponse {
   /// Authentication configuration. NOTE - only one authentication property is allowed per entry.
-  final DataflowEndpointFabricOneLakeAuthenticationResponse authentication;
+  final pulumi.Input<DataflowEndpointFabricOneLakeAuthenticationResponse> authentication;
   /// Batching configuration.
-  final BatchingConfigurationResponse? batching;
+  final pulumi.Input<BatchingConfigurationResponse>? batching;
   /// Host of the Microsoft Fabric in the form of https://<host>.fabric.microsoft.com.
-  final String host;
+  final pulumi.Input<String> host;
   /// Names of the workspace and lakehouse.
-  final DataflowEndpointFabricOneLakeNamesResponse names;
+  final pulumi.Input<DataflowEndpointFabricOneLakeNamesResponse> names;
   /// Type of location of the data in the workspace. Can be either tables or files.
-  final String oneLakePathType;
+  final pulumi.Input<String> oneLakePathType;
 
   /// Creates a new [DataflowEndpointFabricOneLakeResponse].
   /// [authentication] Authentication configuration. NOTE - only one authentication property is allowed per entry.
@@ -33,21 +34,21 @@ class DataflowEndpointFabricOneLakeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': authentication.toMap(),
-      'batching': ?batching == null ? null : batching!.toMap(),
+      'authentication': pulumi.Input.mapInputValue<DataflowEndpointFabricOneLakeAuthenticationResponse, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'batching': ?pulumi.Input.mapOptionalInputValue<BatchingConfigurationResponse, Map<String, dynamic>>(batching, (value) => value.toMap()),
       'host': host,
-      'names': names.toMap(),
+      'names': pulumi.Input.mapInputValue<DataflowEndpointFabricOneLakeNamesResponse, Map<String, dynamic>>(names, (value) => value.toMap()),
       'oneLakePathType': oneLakePathType,
     };
   }
 
   factory DataflowEndpointFabricOneLakeResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointFabricOneLakeResponse(
-      authentication: DataflowEndpointFabricOneLakeAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      batching: map['batching'] == null ? null : BatchingConfigurationResponse.fromMap((map['batching'] as Map).cast<String, dynamic>()),
-      host: map['host'] as String,
-      names: DataflowEndpointFabricOneLakeNamesResponse.fromMap((map['names'] as Map).cast<String, dynamic>()),
-      oneLakePathType: map['oneLakePathType'] as String,
+      authentication: (DataflowEndpointFabricOneLakeAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      batching: map['batching'] == null ? null : (BatchingConfigurationResponse.fromMap((map['batching'] as Map).cast<String, dynamic>())).input(),
+      host: (map['host'] as String).input(),
+      names: (DataflowEndpointFabricOneLakeNamesResponse.fromMap((map['names'] as Map).cast<String, dynamic>())).input(),
+      oneLakePathType: (map['oneLakePathType'] as String).input(),
     );
   }
 }

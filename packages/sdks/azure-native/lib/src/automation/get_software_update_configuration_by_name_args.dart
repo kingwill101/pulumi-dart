@@ -19,13 +19,10 @@ class GetSoftwareUpdateConfigurationByNameArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [softwareUpdateConfigurationName] The name of the software update configuration to be created.
   GetSoftwareUpdateConfigurationByNameArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> softwareUpdateConfigurationName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      softwareUpdateConfigurationName = pulumi.Input.asInput<String>(softwareUpdateConfigurationName);
+    required this.automationAccountName,
+    required this.resourceGroupName,
+    required this.softwareUpdateConfigurationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSoftwareUpdateConfigurationByNameArgs {
 
   factory GetSoftwareUpdateConfigurationByNameArgs.fromMap(Map<String, dynamic> map) {
     return GetSoftwareUpdateConfigurationByNameArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      softwareUpdateConfigurationName: pulumi.Output.create<String>(map['softwareUpdateConfigurationName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      softwareUpdateConfigurationName: (map['softwareUpdateConfigurationName'] as String).input(),
     );
   }
 }

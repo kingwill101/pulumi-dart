@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IcebergCatalogReplica {
   /// (Output)
   /// The region of the replica, e.g., `us-east1`.
-  final String? region;
+  final pulumi.Input<String>? region;
   /// (Output)
   /// If the IcebergCatalog is replicated to multiple regions, this describes the current state of the replica. STATE_UNKNOWN - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all namespaces are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [IcebergCatalogReplica].
   /// [region] (Output)
@@ -26,8 +27,8 @@ class IcebergCatalogReplica {
 
   factory IcebergCatalogReplica.fromMap(Map<String, dynamic> map) {
     return IcebergCatalogReplica(
-      region: map['region'] == null ? null : map['region'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudMetadata {
   /// Specifies the cloud provider. For example `Azure`, `AWS` and `GCP`.
-  final String provider;
+  final pulumi.Input<String> provider;
 
   /// Creates a new [GetCloudMetadata].
   /// [provider] Specifies the cloud provider. For example `Azure`, `AWS` and `GCP`.
@@ -19,7 +20,7 @@ class GetCloudMetadata {
 
   factory GetCloudMetadata.fromMap(Map<String, dynamic> map) {
     return GetCloudMetadata(
-      provider: map['provider'] as String,
+      provider: (map['provider'] as String).input(),
     );
   }
 }

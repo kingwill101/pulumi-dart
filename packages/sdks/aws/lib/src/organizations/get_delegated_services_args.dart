@@ -13,9 +13,8 @@ class GetDelegatedServicesArgs {
   /// Creates a new [GetDelegatedServicesArgs].
   /// [accountId] Account ID number of a delegated administrator account in the organization.
   GetDelegatedServicesArgs({
-    required pulumi.Output<String> accountId,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId);
+    required this.accountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetDelegatedServicesArgs {
 
   factory GetDelegatedServicesArgs.fromMap(Map<String, dynamic> map) {
     return GetDelegatedServicesArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
+      accountId: (map['accountId'] as String).input(),
     );
   }
 }

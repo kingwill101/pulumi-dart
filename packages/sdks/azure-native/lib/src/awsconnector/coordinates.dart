@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Coordinates
 class Coordinates {
   /// <p> Specifies a coordinate of the north–south position of a geographic point on the surface of the Earth (-90 - 90). </p>
-  final String? latitude;
+  final pulumi.Input<String>? latitude;
   /// <p> Specifies a coordinate of the east–west position of a geographic point on the surface of the Earth (-180 - 180). </p>
-  final String? longitude;
+  final pulumi.Input<String>? longitude;
 
   /// Creates a new [Coordinates].
   /// [latitude] <p> Specifies a coordinate of the north–south position of a geographic point on the surface of the Earth (-90 - 90). </p>
@@ -25,8 +26,8 @@ class Coordinates {
 
   factory Coordinates.fromMap(Map<String, dynamic> map) {
     return Coordinates(
-      latitude: map['latitude'] == null ? null : map['latitude'] as String,
-      longitude: map['longitude'] == null ? null : map['longitude'] as String,
+      latitude: map['latitude'] == null ? null : (map['latitude'] as String).input(),
+      longitude: map['longitude'] == null ? null : (map['longitude'] as String).input(),
     );
   }
 }

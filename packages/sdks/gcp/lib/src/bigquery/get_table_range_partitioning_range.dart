@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableRangePartitioningRange {
   /// End of the range partitioning, exclusive.
-  final int end;
+  final pulumi.Input<int> end;
   /// The width of each range within the partition.
-  final int interval;
+  final pulumi.Input<int> interval;
   /// Start of the range partitioning, inclusive.
-  final int start;
+  final pulumi.Input<int> start;
 
   /// Creates a new [GetTableRangePartitioningRange].
   /// [end] End of the range partitioning, exclusive.
@@ -29,9 +30,9 @@ class GetTableRangePartitioningRange {
 
   factory GetTableRangePartitioningRange.fromMap(Map<String, dynamic> map) {
     return GetTableRangePartitioningRange(
-      end: map['end'] as int,
-      interval: map['interval'] as int,
-      start: map['start'] as int,
+      end: (map['end'] as int).input(),
+      interval: (map['interval'] as int).input(),
+      start: (map['start'] as int).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainHttpHeaderConfig {
-  final String? headerId;
-  final String headerKey;
-  final String headerValue;
+  final pulumi.Input<String>? headerId;
+  final pulumi.Input<String> headerKey;
+  final pulumi.Input<String> headerValue;
 
   /// Creates a new [DomainHttpHeaderConfig].
   /// [headerId] Optional.
@@ -26,9 +27,9 @@ class DomainHttpHeaderConfig {
 
   factory DomainHttpHeaderConfig.fromMap(Map<String, dynamic> map) {
     return DomainHttpHeaderConfig(
-      headerId: map['headerId'] == null ? null : map['headerId'] as String,
-      headerKey: map['headerKey'] as String,
-      headerValue: map['headerValue'] as String,
+      headerId: map['headerId'] == null ? null : (map['headerId'] as String).input(),
+      headerKey: (map['headerKey'] as String).input(),
+      headerValue: (map['headerValue'] as String).input(),
     );
   }
 }

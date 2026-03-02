@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status information about a virtual machine.
 class ComputeVmInstanceViewStatusResponse {
   /// Gets the status Code.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// Gets the short localizable label for the status.
-  final String? displayStatus;
+  final pulumi.Input<String>? displayStatus;
   /// Gets the message associated with the status.
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [ComputeVmInstanceViewStatusResponse].
   /// [code] Gets the status Code.
@@ -30,9 +31,9 @@ class ComputeVmInstanceViewStatusResponse {
 
   factory ComputeVmInstanceViewStatusResponse.fromMap(Map<String, dynamic> map) {
     return ComputeVmInstanceViewStatusResponse(
-      code: map['code'] == null ? null : map['code'] as String,
-      displayStatus: map['displayStatus'] == null ? null : map['displayStatus'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      displayStatus: map['displayStatus'] == null ? null : (map['displayStatus'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

@@ -14,11 +14,9 @@ class SynchronizationSecretState {
   /// [credentials] One or more `credential` blocks as documented below.
   /// [servicePrincipalId] The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
   SynchronizationSecretState({
-    pulumi.Output<List<SynchronizationSecretCredential>>? credentials,
-    pulumi.Output<String>? servicePrincipalId,
-  }) :
-      credentials = pulumi.Input.asOptionalInput<List<SynchronizationSecretCredential>>(credentials),
-      servicePrincipalId = pulumi.Input.asOptionalInput<String>(servicePrincipalId);
+    this.credentials,
+    this.servicePrincipalId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class SynchronizationSecretState {
 
   factory SynchronizationSecretState.fromMap(Map<String, dynamic> map) {
     return SynchronizationSecretState(
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<List<SynchronizationSecretCredential>>(pulumi.Input.decodeList<SynchronizationSecretCredential>(map['credentials'], (value) => SynchronizationSecretCredential.fromMap((value as Map).cast<String, dynamic>()))),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : pulumi.Output.create<String>(map['servicePrincipalId'] as String),
+      credentials: map['credentials'] == null ? null : (pulumi.Input.decodeList<SynchronizationSecretCredential>(map['credentials'], (value) => SynchronizationSecretCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
     );
   }
 }

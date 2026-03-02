@@ -56,35 +56,21 @@ class AgentAgentActionGroupState {
   /// [skipResourceInUseCheck] Whether the in-use check is skipped when deleting the action group.
   /// [timeouts] Optional.
   AgentAgentActionGroupState({
-    pulumi.Output<AgentAgentActionGroupActionGroupExecutor>? actionGroupExecutor,
-    pulumi.Output<String>? actionGroupId,
-    pulumi.Output<String>? actionGroupName,
-    pulumi.Output<String>? actionGroupState,
-    pulumi.Output<String>? agentId,
-    pulumi.Output<String>? agentVersion,
-    pulumi.Output<AgentAgentActionGroupApiSchema>? apiSchema,
-    pulumi.Output<String>? description,
-    pulumi.Output<AgentAgentActionGroupFunctionSchema>? functionSchema,
-    pulumi.Output<String>? parentActionGroupSignature,
-    pulumi.Output<bool>? prepareAgent,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? skipResourceInUseCheck,
-    pulumi.Output<AgentAgentActionGroupTimeouts>? timeouts,
-  }) :
-      actionGroupExecutor = pulumi.Input.asOptionalInput<AgentAgentActionGroupActionGroupExecutor>(actionGroupExecutor),
-      actionGroupId = pulumi.Input.asOptionalInput<String>(actionGroupId),
-      actionGroupName = pulumi.Input.asOptionalInput<String>(actionGroupName),
-      actionGroupState = pulumi.Input.asOptionalInput<String>(actionGroupState),
-      agentId = pulumi.Input.asOptionalInput<String>(agentId),
-      agentVersion = pulumi.Input.asOptionalInput<String>(agentVersion),
-      apiSchema = pulumi.Input.asOptionalInput<AgentAgentActionGroupApiSchema>(apiSchema),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      functionSchema = pulumi.Input.asOptionalInput<AgentAgentActionGroupFunctionSchema>(functionSchema),
-      parentActionGroupSignature = pulumi.Input.asOptionalInput<String>(parentActionGroupSignature),
-      prepareAgent = pulumi.Input.asOptionalInput<bool>(prepareAgent),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      skipResourceInUseCheck = pulumi.Input.asOptionalInput<bool>(skipResourceInUseCheck),
-      timeouts = pulumi.Input.asOptionalInput<AgentAgentActionGroupTimeouts>(timeouts);
+    this.actionGroupExecutor,
+    this.actionGroupId,
+    this.actionGroupName,
+    this.actionGroupState,
+    this.agentId,
+    this.agentVersion,
+    this.apiSchema,
+    this.description,
+    this.functionSchema,
+    this.parentActionGroupSignature,
+    this.prepareAgent,
+    this.region,
+    this.skipResourceInUseCheck,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class AgentAgentActionGroupState {
 
   factory AgentAgentActionGroupState.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupState(
-      actionGroupExecutor: map['actionGroupExecutor'] == null ? null : pulumi.Output.create<AgentAgentActionGroupActionGroupExecutor>(AgentAgentActionGroupActionGroupExecutor.fromMap((map['actionGroupExecutor'] as Map).cast<String, dynamic>())),
-      actionGroupId: map['actionGroupId'] == null ? null : pulumi.Output.create<String>(map['actionGroupId'] as String),
-      actionGroupName: map['actionGroupName'] == null ? null : pulumi.Output.create<String>(map['actionGroupName'] as String),
-      actionGroupState: map['actionGroupState'] == null ? null : pulumi.Output.create<String>(map['actionGroupState'] as String),
-      agentId: map['agentId'] == null ? null : pulumi.Output.create<String>(map['agentId'] as String),
-      agentVersion: map['agentVersion'] == null ? null : pulumi.Output.create<String>(map['agentVersion'] as String),
-      apiSchema: map['apiSchema'] == null ? null : pulumi.Output.create<AgentAgentActionGroupApiSchema>(AgentAgentActionGroupApiSchema.fromMap((map['apiSchema'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      functionSchema: map['functionSchema'] == null ? null : pulumi.Output.create<AgentAgentActionGroupFunctionSchema>(AgentAgentActionGroupFunctionSchema.fromMap((map['functionSchema'] as Map).cast<String, dynamic>())),
-      parentActionGroupSignature: map['parentActionGroupSignature'] == null ? null : pulumi.Output.create<String>(map['parentActionGroupSignature'] as String),
-      prepareAgent: map['prepareAgent'] == null ? null : pulumi.Output.create<bool>(map['prepareAgent'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      skipResourceInUseCheck: map['skipResourceInUseCheck'] == null ? null : pulumi.Output.create<bool>(map['skipResourceInUseCheck'] as bool),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentAgentActionGroupTimeouts>(AgentAgentActionGroupTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      actionGroupExecutor: map['actionGroupExecutor'] == null ? null : (AgentAgentActionGroupActionGroupExecutor.fromMap((map['actionGroupExecutor'] as Map).cast<String, dynamic>())).input(),
+      actionGroupId: map['actionGroupId'] == null ? null : (map['actionGroupId'] as String).input(),
+      actionGroupName: map['actionGroupName'] == null ? null : (map['actionGroupName'] as String).input(),
+      actionGroupState: map['actionGroupState'] == null ? null : (map['actionGroupState'] as String).input(),
+      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      apiSchema: map['apiSchema'] == null ? null : (AgentAgentActionGroupApiSchema.fromMap((map['apiSchema'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      functionSchema: map['functionSchema'] == null ? null : (AgentAgentActionGroupFunctionSchema.fromMap((map['functionSchema'] as Map).cast<String, dynamic>())).input(),
+      parentActionGroupSignature: map['parentActionGroupSignature'] == null ? null : (map['parentActionGroupSignature'] as String).input(),
+      prepareAgent: map['prepareAgent'] == null ? null : (map['prepareAgent'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      skipResourceInUseCheck: map['skipResourceInUseCheck'] == null ? null : (map['skipResourceInUseCheck'] as bool).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentAgentActionGroupTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

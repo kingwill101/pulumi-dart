@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The storage profile of the user settings.
 class StorageProfile {
   /// Size of file share
-  final int? diskSizeInGB;
+  final pulumi.Input<int>? diskSizeInGB;
   /// Name of the mounted file share. 63 characters or less, lowercase alphabet, numbers, and -
-  final String? fileShareName;
+  final pulumi.Input<String>? fileShareName;
   /// Full resource ID of storage account.
-  final String? storageAccountResourceId;
+  final pulumi.Input<String>? storageAccountResourceId;
 
   /// Creates a new [StorageProfile].
   /// [diskSizeInGB] Size of file share
@@ -30,9 +31,9 @@ class StorageProfile {
 
   factory StorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageProfile(
-      diskSizeInGB: map['diskSizeInGB'] == null ? null : map['diskSizeInGB'] as int,
-      fileShareName: map['fileShareName'] == null ? null : map['fileShareName'] as String,
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : map['storageAccountResourceId'] as String,
+      diskSizeInGB: map['diskSizeInGB'] == null ? null : (map['diskSizeInGB'] as int).input(),
+      fileShareName: map['fileShareName'] == null ? null : (map['fileShareName'] as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
     );
   }
 }

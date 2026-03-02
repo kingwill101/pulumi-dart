@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'status_response.dart';
 
 /// A record of an attempt to create a compilation result for this release config.
 class ScheduledReleaseRecordResponse {
   /// The name of the created compilation result, if one was successfully created. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
-  final String compilationResult;
+  final pulumi.Input<String> compilationResult;
   /// The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
-  final StatusResponse errorStatus;
+  final pulumi.Input<StatusResponse> errorStatus;
   /// The timestamp of this release attempt.
-  final String releaseTime;
+  final pulumi.Input<String> releaseTime;
 
   /// Creates a new [ScheduledReleaseRecordResponse].
   /// [compilationResult] The name of the created compilation result, if one was successfully created. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
@@ -24,16 +25,16 @@ class ScheduledReleaseRecordResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'compilationResult': compilationResult,
-      'errorStatus': errorStatus.toMap(),
+      'errorStatus': pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(errorStatus, (value) => value.toMap()),
       'releaseTime': releaseTime,
     };
   }
 
   factory ScheduledReleaseRecordResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledReleaseRecordResponse(
-      compilationResult: map['compilationResult'] as String,
-      errorStatus: StatusResponse.fromMap((map['errorStatus'] as Map).cast<String, dynamic>()),
-      releaseTime: map['releaseTime'] as String,
+      compilationResult: (map['compilationResult'] as String).input(),
+      errorStatus: (StatusResponse.fromMap((map['errorStatus'] as Map).cast<String, dynamic>())).input(),
+      releaseTime: (map['releaseTime'] as String).input(),
     );
   }
 }

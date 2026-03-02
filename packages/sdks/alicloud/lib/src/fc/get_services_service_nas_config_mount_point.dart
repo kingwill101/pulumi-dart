@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServicesServiceNasConfigMountPoint {
   /// The local address where to mount your remote NAS directory.
-  final String mountDir;
+  final pulumi.Input<String> mountDir;
   /// The address of the remote NAS directory.
-  final String serverAddr;
+  final pulumi.Input<String> serverAddr;
 
   /// Creates a new [GetServicesServiceNasConfigMountPoint].
   /// [mountDir] The local address where to mount your remote NAS directory.
@@ -24,8 +25,8 @@ class GetServicesServiceNasConfigMountPoint {
 
   factory GetServicesServiceNasConfigMountPoint.fromMap(Map<String, dynamic> map) {
     return GetServicesServiceNasConfigMountPoint(
-      mountDir: map['mountDir'] as String,
-      serverAddr: map['serverAddr'] as String,
+      mountDir: (map['mountDir'] as String).input(),
+      serverAddr: (map['serverAddr'] as String).input(),
     );
   }
 }

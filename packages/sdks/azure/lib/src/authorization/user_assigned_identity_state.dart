@@ -31,23 +31,15 @@ class UserAssignedIdentityState {
   /// [tags] A mapping of tags which should be assigned to the User Assigned Identity.
   /// [tenantId] The ID of the Tenant which the Identity belongs to.
   UserAssignedIdentityState({
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? isolationScope,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? principalId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tenantId,
-  }) :
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      isolationScope = pulumi.Input.asOptionalInput<String>(isolationScope),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.clientId,
+    this.isolationScope,
+    this.location,
+    this.name,
+    this.principalId,
+    this.resourceGroupName,
+    this.tags,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class UserAssignedIdentityState {
 
   factory UserAssignedIdentityState.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentityState(
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      isolationScope: map['isolationScope'] == null ? null : pulumi.Output.create<String>(map['isolationScope'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      isolationScope: map['isolationScope'] == null ? null : (map['isolationScope'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -33,23 +33,15 @@ class ControlPanelState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ControlPanelState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? clusterArn,
-    pulumi.Output<bool>? defaultControlPanel,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? routingControlCount,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      clusterArn = pulumi.Input.asOptionalInput<String>(clusterArn),
-      defaultControlPanel = pulumi.Input.asOptionalInput<bool>(defaultControlPanel),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      routingControlCount = pulumi.Input.asOptionalInput<int>(routingControlCount),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.clusterArn,
+    this.defaultControlPanel,
+    this.name,
+    this.routingControlCount,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ControlPanelState {
 
   factory ControlPanelState.fromMap(Map<String, dynamic> map) {
     return ControlPanelState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      clusterArn: map['clusterArn'] == null ? null : pulumi.Output.create<String>(map['clusterArn'] as String),
-      defaultControlPanel: map['defaultControlPanel'] == null ? null : pulumi.Output.create<bool>(map['defaultControlPanel'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      routingControlCount: map['routingControlCount'] == null ? null : pulumi.Output.create<int>(map['routingControlCount'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      clusterArn: map['clusterArn'] == null ? null : (map['clusterArn'] as String).input(),
+      defaultControlPanel: map['defaultControlPanel'] == null ? null : (map['defaultControlPanel'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      routingControlCount: map['routingControlCount'] == null ? null : (map['routingControlCount'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

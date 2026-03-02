@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Spark configuration reference.
 class SparkConfigurationParametrizationReference {
   /// Reference spark configuration name. Type: string (or Expression with resultType string).
-  final dynamic referenceName;
+  final pulumi.Input<dynamic> referenceName;
   /// Spark configuration reference type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SparkConfigurationParametrizationReference].
   /// [referenceName] Reference spark configuration name. Type: string (or Expression with resultType string).
@@ -25,8 +26,8 @@ class SparkConfigurationParametrizationReference {
 
   factory SparkConfigurationParametrizationReference.fromMap(Map<String, dynamic> map) {
     return SparkConfigurationParametrizationReference(
-      referenceName: map['referenceName'],
-      type: map['type'] as String,
+      referenceName: (map['referenceName']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

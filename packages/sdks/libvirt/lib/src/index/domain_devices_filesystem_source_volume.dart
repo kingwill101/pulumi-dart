@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemSourceVolume {
   /// Defines the pool from which the volume of the filesystem is sourced.
-  final String pool;
+  final pulumi.Input<String> pool;
   /// Indicates the specific volume name sourced for the filesystem.
-  final String volume;
+  final pulumi.Input<String> volume;
 
   /// Creates a new [DomainDevicesFilesystemSourceVolume].
   /// [pool] Defines the pool from which the volume of the filesystem is sourced.
@@ -24,8 +25,8 @@ class DomainDevicesFilesystemSourceVolume {
 
   factory DomainDevicesFilesystemSourceVolume.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemSourceVolume(
-      pool: map['pool'] as String,
-      volume: map['volume'] as String,
+      pool: (map['pool'] as String).input(),
+      volume: (map['volume'] as String).input(),
     );
   }
 }

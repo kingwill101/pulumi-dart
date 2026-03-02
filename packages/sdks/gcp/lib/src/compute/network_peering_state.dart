@@ -42,29 +42,18 @@ class NetworkPeeringState {
   /// [stateDetails] Details about the current state of the peering.
   /// [updateStrategy] The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
   NetworkPeeringState({
-    pulumi.Output<bool>? exportCustomRoutes,
-    pulumi.Output<bool>? exportSubnetRoutesWithPublicIp,
-    pulumi.Output<bool>? importCustomRoutes,
-    pulumi.Output<bool>? importSubnetRoutesWithPublicIp,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? peerNetwork,
-    pulumi.Output<String>? stackType,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? stateDetails,
-    pulumi.Output<String>? updateStrategy,
-  }) :
-      exportCustomRoutes = pulumi.Input.asOptionalInput<bool>(exportCustomRoutes),
-      exportSubnetRoutesWithPublicIp = pulumi.Input.asOptionalInput<bool>(exportSubnetRoutesWithPublicIp),
-      importCustomRoutes = pulumi.Input.asOptionalInput<bool>(importCustomRoutes),
-      importSubnetRoutesWithPublicIp = pulumi.Input.asOptionalInput<bool>(importSubnetRoutesWithPublicIp),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      peerNetwork = pulumi.Input.asOptionalInput<String>(peerNetwork),
-      stackType = pulumi.Input.asOptionalInput<String>(stackType),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      stateDetails = pulumi.Input.asOptionalInput<String>(stateDetails),
-      updateStrategy = pulumi.Input.asOptionalInput<String>(updateStrategy);
+    this.exportCustomRoutes,
+    this.exportSubnetRoutesWithPublicIp,
+    this.importCustomRoutes,
+    this.importSubnetRoutesWithPublicIp,
+    this.name,
+    this.network,
+    this.peerNetwork,
+    this.stackType,
+    this.state,
+    this.stateDetails,
+    this.updateStrategy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class NetworkPeeringState {
 
   factory NetworkPeeringState.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringState(
-      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : pulumi.Output.create<bool>(map['exportCustomRoutes'] as bool),
-      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] == null ? null : pulumi.Output.create<bool>(map['exportSubnetRoutesWithPublicIp'] as bool),
-      importCustomRoutes: map['importCustomRoutes'] == null ? null : pulumi.Output.create<bool>(map['importCustomRoutes'] as bool),
-      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] == null ? null : pulumi.Output.create<bool>(map['importSubnetRoutesWithPublicIp'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      peerNetwork: map['peerNetwork'] == null ? null : pulumi.Output.create<String>(map['peerNetwork'] as String),
-      stackType: map['stackType'] == null ? null : pulumi.Output.create<String>(map['stackType'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      stateDetails: map['stateDetails'] == null ? null : pulumi.Output.create<String>(map['stateDetails'] as String),
-      updateStrategy: map['updateStrategy'] == null ? null : pulumi.Output.create<String>(map['updateStrategy'] as String),
+      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes'] as bool).input(),
+      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] == null ? null : (map['exportSubnetRoutesWithPublicIp'] as bool).input(),
+      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes'] as bool).input(),
+      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] == null ? null : (map['importSubnetRoutesWithPublicIp'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      peerNetwork: map['peerNetwork'] == null ? null : (map['peerNetwork'] as String).input(),
+      stackType: map['stackType'] == null ? null : (map['stackType'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      stateDetails: map['stateDetails'] == null ? null : (map['stateDetails'] as String).input(),
+      updateStrategy: map['updateStrategy'] == null ? null : (map['updateStrategy'] as String).input(),
     );
   }
 }

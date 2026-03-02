@@ -41,27 +41,17 @@ class DatasetSqlServerTableArgs {
   /// [schemaColumns] A `schema_column` block as defined below.
   /// [tableName] The table name of the Data Factory Dataset SQL Server Table.
   DatasetSqlServerTableArgs({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? folder,
-    required pulumi.Output<String> linkedServiceName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<List<DatasetSqlServerTableSchemaColumn>>? schemaColumns,
-    pulumi.Output<String>? tableName,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      linkedServiceName = pulumi.Input.asInput<String>(linkedServiceName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      schemaColumns = pulumi.Input.asOptionalInput<List<DatasetSqlServerTableSchemaColumn>>(schemaColumns),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName);
+    this.additionalProperties,
+    this.annotations,
+    required this.dataFactoryId,
+    this.description,
+    this.folder,
+    required this.linkedServiceName,
+    this.name,
+    this.parameters,
+    this.schemaColumns,
+    this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class DatasetSqlServerTableArgs {
 
   factory DatasetSqlServerTableArgs.fromMap(Map<String, dynamic> map) {
     return DatasetSqlServerTableArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      linkedServiceName: pulumi.Output.create<String>(map['linkedServiceName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      schemaColumns: map['schemaColumns'] == null ? null : pulumi.Output.create<List<DatasetSqlServerTableSchemaColumn>>(pulumi.Input.decodeList<DatasetSqlServerTableSchemaColumn>(map['schemaColumns'], (value) => DatasetSqlServerTableSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      linkedServiceName: (map['linkedServiceName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      schemaColumns: map['schemaColumns'] == null ? null : (pulumi.Input.decodeList<DatasetSqlServerTableSchemaColumn>(map['schemaColumns'], (value) => DatasetSqlServerTableSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

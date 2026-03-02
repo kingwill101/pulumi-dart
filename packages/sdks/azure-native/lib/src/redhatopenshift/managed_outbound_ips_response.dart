@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ManagedOutboundIPs represents the desired managed outbound IPs for the cluster public load balancer.
 class ManagedOutboundIPsResponse {
   /// Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
-  final int? count;
+  final pulumi.Input<int>? count;
 
   /// Creates a new [ManagedOutboundIPsResponse].
   /// [count] Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
@@ -20,7 +21,7 @@ class ManagedOutboundIPsResponse {
 
   factory ManagedOutboundIPsResponse.fromMap(Map<String, dynamic> map) {
     return ManagedOutboundIPsResponse(
-      count: map['count'] == null ? null : map['count'] as int,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
     );
   }
 }

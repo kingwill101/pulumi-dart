@@ -34,23 +34,15 @@ class AppServiceCertificateOrderCertificateArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [tags] Resource tags.
   AppServiceCertificateOrderCertificateArgs({
-    required pulumi.Output<String> certificateOrderName,
-    pulumi.Output<String>? keyVaultId,
-    pulumi.Output<String>? keyVaultSecretName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      certificateOrderName = pulumi.Input.asInput<String>(certificateOrderName),
-      keyVaultId = pulumi.Input.asOptionalInput<String>(keyVaultId),
-      keyVaultSecretName = pulumi.Input.asOptionalInput<String>(keyVaultSecretName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.certificateOrderName,
+    this.keyVaultId,
+    this.keyVaultSecretName,
+    this.kind,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class AppServiceCertificateOrderCertificateArgs {
 
   factory AppServiceCertificateOrderCertificateArgs.fromMap(Map<String, dynamic> map) {
     return AppServiceCertificateOrderCertificateArgs(
-      certificateOrderName: pulumi.Output.create<String>(map['certificateOrderName'] as String),
-      keyVaultId: map['keyVaultId'] == null ? null : pulumi.Output.create<String>(map['keyVaultId'] as String),
-      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : pulumi.Output.create<String>(map['keyVaultSecretName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      certificateOrderName: (map['certificateOrderName'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

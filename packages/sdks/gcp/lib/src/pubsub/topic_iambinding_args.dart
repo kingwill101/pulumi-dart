@@ -39,17 +39,12 @@ class TopicIAMBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [topic] Used to find the parent resource to bind the IAM policy to
   TopicIAMBindingArgs({
-    pulumi.Output<TopicIAMBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> topic,
-  }) :
-      condition = pulumi.Input.asOptionalInput<TopicIAMBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      topic = pulumi.Input.asInput<String>(topic);
+    this.condition,
+    required this.members,
+    this.project,
+    required this.role,
+    required this.topic,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,11 +58,11 @@ class TopicIAMBindingArgs {
 
   factory TopicIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return TopicIAMBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<TopicIAMBindingCondition>(TopicIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      topic: pulumi.Output.create<String>(map['topic'] as String),
+      condition: map['condition'] == null ? null : (TopicIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

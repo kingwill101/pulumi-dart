@@ -22,15 +22,11 @@ class HostedTransitVirtualInterfaceAcceptorArgs {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [virtualInterfaceId] The ID of the Direct Connect virtual interface to accept.
   HostedTransitVirtualInterfaceAcceptorArgs({
-    required pulumi.Output<String> dxGatewayId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualInterfaceId,
-  }) :
-      dxGatewayId = pulumi.Input.asInput<String>(dxGatewayId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualInterfaceId = pulumi.Input.asInput<String>(virtualInterfaceId);
+    required this.dxGatewayId,
+    this.region,
+    this.tags,
+    required this.virtualInterfaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class HostedTransitVirtualInterfaceAcceptorArgs {
 
   factory HostedTransitVirtualInterfaceAcceptorArgs.fromMap(Map<String, dynamic> map) {
     return HostedTransitVirtualInterfaceAcceptorArgs(
-      dxGatewayId: pulumi.Output.create<String>(map['dxGatewayId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualInterfaceId: pulumi.Output.create<String>(map['virtualInterfaceId'] as String),
+      dxGatewayId: (map['dxGatewayId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualInterfaceId: (map['virtualInterfaceId'] as String).input(),
     );
   }
 }

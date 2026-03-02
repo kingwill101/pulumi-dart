@@ -7,25 +7,25 @@ import 'prometheus_rule_resolve_configuration.dart';
 /// An Azure Prometheus alerting or recording rule.
 class PrometheusRule {
   /// Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-  final List<PrometheusRuleGroupAction>? actions;
+  final pulumi.Input<List<PrometheusRuleGroupAction>>? actions;
   /// Alert rule name.
-  final String? alert;
+  final pulumi.Input<String>? alert;
   /// The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links. The annotation values can be templated.
-  final Map<String, String>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
   /// Enable/disable rule.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The PromQL expression to evaluate. https://prometheus.io/docs/prometheus/latest/querying/basics/. Evaluated periodically as given by 'interval', and the result recorded as a new set of time series with the metric name as given by 'record'.
-  final String expression;
+  final pulumi.Input<String> expression;
   /// The amount of time alert must be active before firing.
-  final String? for_;
+  final pulumi.Input<String>? for_;
   /// Labels to add or overwrite before storing the result.
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// Recorded metrics name.
-  final String? record;
+  final pulumi.Input<String>? record;
   /// Defines the configuration for resolving fired alerts. Only relevant for alerts.
-  final PrometheusRuleResolveConfiguration? resolveConfiguration;
+  final pulumi.Input<PrometheusRuleResolveConfiguration>? resolveConfiguration;
   /// The severity of the alerts fired by the rule. Must be between 0 and 4.
-  final int? severity;
+  final pulumi.Input<int>? severity;
 
   /// Creates a new [PrometheusRule].
   /// [actions] Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
@@ -53,7 +53,7 @@ class PrometheusRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?actions == null ? null : pulumi.Input.encodeList<PrometheusRuleGroupAction, Map<String, dynamic>>(actions!, (value) => value.toMap()),
+      'actions': ?pulumi.Input.mapOptionalInputValue<List<PrometheusRuleGroupAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<PrometheusRuleGroupAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'alert': ?alert,
       'annotations': ?annotations,
       'enabled': ?enabled,
@@ -61,23 +61,23 @@ class PrometheusRule {
       'for': ?for_,
       'labels': ?labels,
       'record': ?record,
-      'resolveConfiguration': ?resolveConfiguration == null ? null : resolveConfiguration!.toMap(),
+      'resolveConfiguration': ?pulumi.Input.mapOptionalInputValue<PrometheusRuleResolveConfiguration, Map<String, dynamic>>(resolveConfiguration, (value) => value.toMap()),
       'severity': ?severity,
     };
   }
 
   factory PrometheusRule.fromMap(Map<String, dynamic> map) {
     return PrometheusRule(
-      actions: map['actions'] == null ? null : pulumi.Input.decodeList<PrometheusRuleGroupAction>(map['actions'], (value) => PrometheusRuleGroupAction.fromMap((value as Map).cast<String, dynamic>())),
-      alert: map['alert'] == null ? null : map['alert'] as String,
-      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      expression: map['expression'] as String,
-      for_: map['for'] == null ? null : map['for'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      record: map['record'] == null ? null : map['record'] as String,
-      resolveConfiguration: map['resolveConfiguration'] == null ? null : PrometheusRuleResolveConfiguration.fromMap((map['resolveConfiguration'] as Map).cast<String, dynamic>()),
-      severity: map['severity'] == null ? null : map['severity'] as int,
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<PrometheusRuleGroupAction>(map['actions'], (value) => PrometheusRuleGroupAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alert: map['alert'] == null ? null : (map['alert'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      expression: (map['expression'] as String).input(),
+      for_: map['for'] == null ? null : (map['for'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      record: map['record'] == null ? null : (map['record'] as String).input(),
+      resolveConfiguration: map['resolveConfiguration'] == null ? null : (PrometheusRuleResolveConfiguration.fromMap((map['resolveConfiguration'] as Map).cast<String, dynamic>())).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as int).input(),
     );
   }
 }

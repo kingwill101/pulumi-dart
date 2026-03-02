@@ -6,19 +6,19 @@ import 'api_oauth_settings_parameter_response.dart';
 /// OAuth settings for the connection provider
 class ApiOAuthSettingsResponse {
   /// Resource provider client id
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Client Secret needed for OAuth
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// OAuth parameters key is the name of parameter
-  final Map<String, ApiOAuthSettingsParameterResponse>? customParameters;
+  final pulumi.Input<Map<String, ApiOAuthSettingsParameterResponse>>? customParameters;
   /// Identity provider
-  final String? identityProvider;
+  final pulumi.Input<String>? identityProvider;
   /// Read only properties for this oauth setting.
-  final dynamic properties;
+  final pulumi.Input<dynamic>? properties;
   /// Url
-  final String? redirectUrl;
+  final pulumi.Input<String>? redirectUrl;
   /// OAuth scopes
-  final List<String>? scopes;
+  final pulumi.Input<List<String>>? scopes;
 
   /// Creates a new [ApiOAuthSettingsResponse].
   /// [clientId] Resource provider client id
@@ -42,7 +42,7 @@ class ApiOAuthSettingsResponse {
     return <String, dynamic>{
       'clientId': ?clientId,
       'clientSecret': ?clientSecret,
-      'customParameters': ?customParameters == null ? null : pulumi.Input.encodeMapValues<ApiOAuthSettingsParameterResponse, Map<String, dynamic>>(customParameters!, (value) => value.toMap()),
+      'customParameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ApiOAuthSettingsParameterResponse>, Map<String, Map<String, dynamic>>>(customParameters, (value) => pulumi.Input.encodeMapValues<ApiOAuthSettingsParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'identityProvider': ?identityProvider,
       'properties': ?properties,
       'redirectUrl': ?redirectUrl,
@@ -52,13 +52,13 @@ class ApiOAuthSettingsResponse {
 
   factory ApiOAuthSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ApiOAuthSettingsResponse(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      customParameters: map['customParameters'] == null ? null : pulumi.Input.decodeMapValues<ApiOAuthSettingsParameterResponse>(map['customParameters'], (value) => ApiOAuthSettingsParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      identityProvider: map['identityProvider'] == null ? null : map['identityProvider'] as String,
-      properties: map['properties'] == null ? null : map['properties'],
-      redirectUrl: map['redirectUrl'] == null ? null : map['redirectUrl'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      customParameters: map['customParameters'] == null ? null : (pulumi.Input.decodeMapValues<ApiOAuthSettingsParameterResponse>(map['customParameters'], (value) => ApiOAuthSettingsParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identityProvider: map['identityProvider'] == null ? null : (map['identityProvider'] as String).input(),
+      properties: map['properties'] == null ? null : (map['properties']).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

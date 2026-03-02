@@ -49,33 +49,20 @@ class PrimaryContactArgs {
   /// [stateOrRegion] The state or region of the primary contact address. This field is required in selected countries.
   /// [websiteUrl] The URL of the website associated with the primary contact information, if any.
   PrimaryContactArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> addressLine1,
-    pulumi.Output<String>? addressLine2,
-    pulumi.Output<String>? addressLine3,
-    required pulumi.Output<String> city,
-    pulumi.Output<String>? companyName,
-    required pulumi.Output<String> countryCode,
-    pulumi.Output<String>? districtOrCounty,
-    required pulumi.Output<String> fullName,
-    required pulumi.Output<String> phoneNumber,
-    required pulumi.Output<String> postalCode,
-    pulumi.Output<String>? stateOrRegion,
-    pulumi.Output<String>? websiteUrl,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      addressLine1 = pulumi.Input.asInput<String>(addressLine1),
-      addressLine2 = pulumi.Input.asOptionalInput<String>(addressLine2),
-      addressLine3 = pulumi.Input.asOptionalInput<String>(addressLine3),
-      city = pulumi.Input.asInput<String>(city),
-      companyName = pulumi.Input.asOptionalInput<String>(companyName),
-      countryCode = pulumi.Input.asInput<String>(countryCode),
-      districtOrCounty = pulumi.Input.asOptionalInput<String>(districtOrCounty),
-      fullName = pulumi.Input.asInput<String>(fullName),
-      phoneNumber = pulumi.Input.asInput<String>(phoneNumber),
-      postalCode = pulumi.Input.asInput<String>(postalCode),
-      stateOrRegion = pulumi.Input.asOptionalInput<String>(stateOrRegion),
-      websiteUrl = pulumi.Input.asOptionalInput<String>(websiteUrl);
+    this.accountId,
+    required this.addressLine1,
+    this.addressLine2,
+    this.addressLine3,
+    required this.city,
+    this.companyName,
+    required this.countryCode,
+    this.districtOrCounty,
+    required this.fullName,
+    required this.phoneNumber,
+    required this.postalCode,
+    this.stateOrRegion,
+    this.websiteUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class PrimaryContactArgs {
 
   factory PrimaryContactArgs.fromMap(Map<String, dynamic> map) {
     return PrimaryContactArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      addressLine1: pulumi.Output.create<String>(map['addressLine1'] as String),
-      addressLine2: map['addressLine2'] == null ? null : pulumi.Output.create<String>(map['addressLine2'] as String),
-      addressLine3: map['addressLine3'] == null ? null : pulumi.Output.create<String>(map['addressLine3'] as String),
-      city: pulumi.Output.create<String>(map['city'] as String),
-      companyName: map['companyName'] == null ? null : pulumi.Output.create<String>(map['companyName'] as String),
-      countryCode: pulumi.Output.create<String>(map['countryCode'] as String),
-      districtOrCounty: map['districtOrCounty'] == null ? null : pulumi.Output.create<String>(map['districtOrCounty'] as String),
-      fullName: pulumi.Output.create<String>(map['fullName'] as String),
-      phoneNumber: pulumi.Output.create<String>(map['phoneNumber'] as String),
-      postalCode: pulumi.Output.create<String>(map['postalCode'] as String),
-      stateOrRegion: map['stateOrRegion'] == null ? null : pulumi.Output.create<String>(map['stateOrRegion'] as String),
-      websiteUrl: map['websiteUrl'] == null ? null : pulumi.Output.create<String>(map['websiteUrl'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      addressLine1: (map['addressLine1'] as String).input(),
+      addressLine2: map['addressLine2'] == null ? null : (map['addressLine2'] as String).input(),
+      addressLine3: map['addressLine3'] == null ? null : (map['addressLine3'] as String).input(),
+      city: (map['city'] as String).input(),
+      companyName: map['companyName'] == null ? null : (map['companyName'] as String).input(),
+      countryCode: (map['countryCode'] as String).input(),
+      districtOrCounty: map['districtOrCounty'] == null ? null : (map['districtOrCounty'] as String).input(),
+      fullName: (map['fullName'] as String).input(),
+      phoneNumber: (map['phoneNumber'] as String).input(),
+      postalCode: (map['postalCode'] as String).input(),
+      stateOrRegion: map['stateOrRegion'] == null ? null : (map['stateOrRegion'] as String).input(),
+      websiteUrl: map['websiteUrl'] == null ? null : (map['websiteUrl'] as String).input(),
     );
   }
 }

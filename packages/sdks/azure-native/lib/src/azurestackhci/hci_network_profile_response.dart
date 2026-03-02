@@ -8,11 +8,11 @@ import 'switch_detail_response.dart';
 /// The network profile of a device.
 class HciNetworkProfileResponse {
   /// HostNetwork config to deploy AzureStackHCI Cluster.
-  final HostNetworkResponse hostNetwork;
+  final pulumi.Input<HostNetworkResponse> hostNetwork;
   /// List of NIC Details of device.
-  final List<HciNicDetailResponse> nicDetails;
+  final pulumi.Input<List<HciNicDetailResponse>> nicDetails;
   /// List of switch details for edge device.
-  final List<SwitchDetailResponse> switchDetails;
+  final pulumi.Input<List<SwitchDetailResponse>> switchDetails;
 
   /// Creates a new [HciNetworkProfileResponse].
   /// [hostNetwork] HostNetwork config to deploy AzureStackHCI Cluster.
@@ -26,17 +26,17 @@ class HciNetworkProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hostNetwork': hostNetwork.toMap(),
-      'nicDetails': pulumi.Input.encodeList<HciNicDetailResponse, Map<String, dynamic>>(nicDetails, (value) => value.toMap()),
-      'switchDetails': pulumi.Input.encodeList<SwitchDetailResponse, Map<String, dynamic>>(switchDetails, (value) => value.toMap()),
+      'hostNetwork': pulumi.Input.mapInputValue<HostNetworkResponse, Map<String, dynamic>>(hostNetwork, (value) => value.toMap()),
+      'nicDetails': pulumi.Input.mapInputValue<List<HciNicDetailResponse>, List<Map<String, dynamic>>>(nicDetails, (value) => pulumi.Input.encodeList<HciNicDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'switchDetails': pulumi.Input.mapInputValue<List<SwitchDetailResponse>, List<Map<String, dynamic>>>(switchDetails, (value) => pulumi.Input.encodeList<SwitchDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory HciNetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return HciNetworkProfileResponse(
-      hostNetwork: HostNetworkResponse.fromMap((map['hostNetwork'] as Map).cast<String, dynamic>()),
-      nicDetails: pulumi.Input.decodeList<HciNicDetailResponse>(map['nicDetails'], (value) => HciNicDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
-      switchDetails: pulumi.Input.decodeList<SwitchDetailResponse>(map['switchDetails'], (value) => SwitchDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
+      hostNetwork: (HostNetworkResponse.fromMap((map['hostNetwork'] as Map).cast<String, dynamic>())).input(),
+      nicDetails: (pulumi.Input.decodeList<HciNicDetailResponse>(map['nicDetails'], (value) => HciNicDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      switchDetails: (pulumi.Input.decodeList<SwitchDetailResponse>(map['switchDetails'], (value) => SwitchDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

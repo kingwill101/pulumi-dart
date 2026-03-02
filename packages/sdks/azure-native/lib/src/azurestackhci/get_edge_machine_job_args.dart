@@ -19,13 +19,10 @@ class GetEdgeMachineJobArgs {
   /// [jobsName] Name of EdgeMachineJob
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetEdgeMachineJobArgs({
-    required pulumi.Output<String> edgeMachineName,
-    required pulumi.Output<String> jobsName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      edgeMachineName = pulumi.Input.asInput<String>(edgeMachineName),
-      jobsName = pulumi.Input.asInput<String>(jobsName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.edgeMachineName,
+    required this.jobsName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetEdgeMachineJobArgs {
 
   factory GetEdgeMachineJobArgs.fromMap(Map<String, dynamic> map) {
     return GetEdgeMachineJobArgs(
-      edgeMachineName: pulumi.Output.create<String>(map['edgeMachineName'] as String),
-      jobsName: pulumi.Output.create<String>(map['jobsName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      edgeMachineName: (map['edgeMachineName'] as String).input(),
+      jobsName: (map['jobsName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

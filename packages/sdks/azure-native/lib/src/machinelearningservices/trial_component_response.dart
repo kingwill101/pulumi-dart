@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_resource_configuration_response.dart';
 import 'mpi_response.dart';
 
 /// Trial component definition.
 class TrialComponentResponse {
   /// ARM resource ID of the code asset.
-  final String? codeId;
+  final pulumi.Input<String>? codeId;
   /// [Required] The command to execute on startup of the job. eg. "python train.py"
-  final String command;
+  final pulumi.Input<String> command;
   /// Distribution configuration of the job. If set, this should be one of Mpi, Tensorflow, PyTorch, or null.
-  final MpiResponse? distribution;
+  final pulumi.Input<MpiResponse>? distribution;
   /// [Required] The ARM resource ID of the Environment specification for the job.
-  final String environmentId;
+  final pulumi.Input<String> environmentId;
   /// Environment variables included in the job.
-  final Map<String, String>? environmentVariables;
+  final pulumi.Input<Map<String, String>>? environmentVariables;
   /// Compute Resource configuration for the job.
-  final JobResourceConfigurationResponse? resources;
+  final pulumi.Input<JobResourceConfigurationResponse>? resources;
 
   /// Creates a new [TrialComponentResponse].
   /// [codeId] ARM resource ID of the code asset.
@@ -38,21 +39,21 @@ class TrialComponentResponse {
     return <String, dynamic>{
       'codeId': ?codeId,
       'command': command,
-      'distribution': ?distribution == null ? null : distribution!.toMap(),
+      'distribution': ?pulumi.Input.mapOptionalInputValue<MpiResponse, Map<String, dynamic>>(distribution, (value) => value.toMap()),
       'environmentId': environmentId,
       'environmentVariables': ?environmentVariables,
-      'resources': ?resources == null ? null : resources!.toMap(),
+      'resources': ?pulumi.Input.mapOptionalInputValue<JobResourceConfigurationResponse, Map<String, dynamic>>(resources, (value) => value.toMap()),
     };
   }
 
   factory TrialComponentResponse.fromMap(Map<String, dynamic> map) {
     return TrialComponentResponse(
-      codeId: map['codeId'] == null ? null : map['codeId'] as String,
-      command: map['command'] as String,
-      distribution: map['distribution'] == null ? null : MpiResponse.fromMap((map['distribution'] as Map).cast<String, dynamic>()),
-      environmentId: map['environmentId'] as String,
-      environmentVariables: map['environmentVariables'] == null ? null : (map['environmentVariables'] as Map).cast<String, String>(),
-      resources: map['resources'] == null ? null : JobResourceConfigurationResponse.fromMap((map['resources'] as Map).cast<String, dynamic>()),
+      codeId: map['codeId'] == null ? null : (map['codeId'] as String).input(),
+      command: (map['command'] as String).input(),
+      distribution: map['distribution'] == null ? null : (MpiResponse.fromMap((map['distribution'] as Map).cast<String, dynamic>())).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
+      resources: map['resources'] == null ? null : (JobResourceConfigurationResponse.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

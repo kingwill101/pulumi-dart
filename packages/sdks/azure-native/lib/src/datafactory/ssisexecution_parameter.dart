@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SSIS execution parameter.
 class SSISExecutionParameter {
   /// SSIS package execution parameter value. Type: string (or Expression with resultType string).
-  final dynamic value;
+  final pulumi.Input<dynamic> value;
 
   /// Creates a new [SSISExecutionParameter].
   /// [value] SSIS package execution parameter value. Type: string (or Expression with resultType string).
@@ -20,7 +21,7 @@ class SSISExecutionParameter {
 
   factory SSISExecutionParameter.fromMap(Map<String, dynamic> map) {
     return SSISExecutionParameter(
-      value: map['value'],
+      value: (map['value']).input(),
     );
   }
 }

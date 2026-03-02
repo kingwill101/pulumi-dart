@@ -19,15 +19,11 @@ class DefaultCreditSpecificationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   DefaultCreditSpecificationState({
-    pulumi.Output<String>? cpuCredits,
-    pulumi.Output<String>? instanceFamily,
-    pulumi.Output<String>? region,
-    pulumi.Output<DefaultCreditSpecificationTimeouts>? timeouts,
-  }) :
-      cpuCredits = pulumi.Input.asOptionalInput<String>(cpuCredits),
-      instanceFamily = pulumi.Input.asOptionalInput<String>(instanceFamily),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<DefaultCreditSpecificationTimeouts>(timeouts);
+    this.cpuCredits,
+    this.instanceFamily,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class DefaultCreditSpecificationState {
 
   factory DefaultCreditSpecificationState.fromMap(Map<String, dynamic> map) {
     return DefaultCreditSpecificationState(
-      cpuCredits: map['cpuCredits'] == null ? null : pulumi.Output.create<String>(map['cpuCredits'] as String),
-      instanceFamily: map['instanceFamily'] == null ? null : pulumi.Output.create<String>(map['instanceFamily'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DefaultCreditSpecificationTimeouts>(DefaultCreditSpecificationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      cpuCredits: map['cpuCredits'] == null ? null : (map['cpuCredits'] as String).input(),
+      instanceFamily: map['instanceFamily'] == null ? null : (map['instanceFamily'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (DefaultCreditSpecificationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

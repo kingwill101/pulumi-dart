@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Published upcoming future maintenance schedule.
 class MaintenanceScheduleResponse {
   /// The scheduled end time for the maintenance.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The scheduled start time for the maintenance.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [MaintenanceScheduleResponse].
   /// [endTime] The scheduled end time for the maintenance.
@@ -25,8 +26,8 @@ class MaintenanceScheduleResponse {
 
   factory MaintenanceScheduleResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceScheduleResponse(
-      endTime: map['endTime'] as String,
-      startTime: map['startTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

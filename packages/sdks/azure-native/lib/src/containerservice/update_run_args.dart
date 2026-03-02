@@ -43,19 +43,13 @@ class UpdateRunArgs {
   /// [updateRunName] The name of the UpdateRun resource.
   /// [updateStrategyId] The resource id of the FleetUpdateStrategy resource to reference.
   UpdateRunArgs({
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<ManagedClusterUpdate> managedClusterUpdate,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<UpdateRunStrategy>? strategy,
-    pulumi.Output<String>? updateRunName,
-    pulumi.Output<String>? updateStrategyId,
-  }) :
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      managedClusterUpdate = pulumi.Input.asInput<ManagedClusterUpdate>(managedClusterUpdate),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      strategy = pulumi.Input.asOptionalInput<UpdateRunStrategy>(strategy),
-      updateRunName = pulumi.Input.asOptionalInput<String>(updateRunName),
-      updateStrategyId = pulumi.Input.asOptionalInput<String>(updateStrategyId);
+    required this.fleetName,
+    required this.managedClusterUpdate,
+    required this.resourceGroupName,
+    this.strategy,
+    this.updateRunName,
+    this.updateStrategyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,12 +64,12 @@ class UpdateRunArgs {
 
   factory UpdateRunArgs.fromMap(Map<String, dynamic> map) {
     return UpdateRunArgs(
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      managedClusterUpdate: pulumi.Output.create<ManagedClusterUpdate>(ManagedClusterUpdate.fromMap((map['managedClusterUpdate'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      strategy: map['strategy'] == null ? null : pulumi.Output.create<UpdateRunStrategy>(UpdateRunStrategy.fromMap((map['strategy'] as Map).cast<String, dynamic>())),
-      updateRunName: map['updateRunName'] == null ? null : pulumi.Output.create<String>(map['updateRunName'] as String),
-      updateStrategyId: map['updateStrategyId'] == null ? null : pulumi.Output.create<String>(map['updateStrategyId'] as String),
+      fleetName: (map['fleetName'] as String).input(),
+      managedClusterUpdate: (ManagedClusterUpdate.fromMap((map['managedClusterUpdate'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      strategy: map['strategy'] == null ? null : (UpdateRunStrategy.fromMap((map['strategy'] as Map).cast<String, dynamic>())).input(),
+      updateRunName: map['updateRunName'] == null ? null : (map['updateRunName'] as String).input(),
+      updateStrategyId: map['updateStrategyId'] == null ? null : (map['updateStrategyId'] as String).input(),
     );
   }
 }

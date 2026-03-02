@@ -27,19 +27,13 @@ class LogMetricFilterState {
   /// [pattern] A valid [CloudWatch Logs filter pattern](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/FilterAndPatternSyntax.html)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LogMetricFilterState({
-    pulumi.Output<bool>? applyOnTransformedLogs,
-    pulumi.Output<String>? logGroupName,
-    pulumi.Output<LogMetricFilterMetricTransformation>? metricTransformation,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pattern,
-    pulumi.Output<String>? region,
-  }) :
-      applyOnTransformedLogs = pulumi.Input.asOptionalInput<bool>(applyOnTransformedLogs),
-      logGroupName = pulumi.Input.asOptionalInput<String>(logGroupName),
-      metricTransformation = pulumi.Input.asOptionalInput<LogMetricFilterMetricTransformation>(metricTransformation),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pattern = pulumi.Input.asOptionalInput<String>(pattern),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.applyOnTransformedLogs,
+    this.logGroupName,
+    this.metricTransformation,
+    this.name,
+    this.pattern,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class LogMetricFilterState {
 
   factory LogMetricFilterState.fromMap(Map<String, dynamic> map) {
     return LogMetricFilterState(
-      applyOnTransformedLogs: map['applyOnTransformedLogs'] == null ? null : pulumi.Output.create<bool>(map['applyOnTransformedLogs'] as bool),
-      logGroupName: map['logGroupName'] == null ? null : pulumi.Output.create<String>(map['logGroupName'] as String),
-      metricTransformation: map['metricTransformation'] == null ? null : pulumi.Output.create<LogMetricFilterMetricTransformation>(LogMetricFilterMetricTransformation.fromMap((map['metricTransformation'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pattern: map['pattern'] == null ? null : pulumi.Output.create<String>(map['pattern'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      applyOnTransformedLogs: map['applyOnTransformedLogs'] == null ? null : (map['applyOnTransformedLogs'] as bool).input(),
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
+      metricTransformation: map['metricTransformation'] == null ? null : (LogMetricFilterMetricTransformation.fromMap((map['metricTransformation'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

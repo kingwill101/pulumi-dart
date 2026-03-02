@@ -19,13 +19,10 @@ class ListFeatureAccountArgs {
   /// [features] Set of features
   /// [resourceGroupName] The resource group name.
   ListFeatureAccountArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<List<String>>? features,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      features = pulumi.Input.asOptionalInput<List<String>>(features),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.features,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListFeatureAccountArgs {
 
   factory ListFeatureAccountArgs.fromMap(Map<String, dynamic> map) {
     return ListFeatureAccountArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      features: map['features'] == null ? null : pulumi.Output.create<List<String>>((map['features'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      features: map['features'] == null ? null : ((map['features'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

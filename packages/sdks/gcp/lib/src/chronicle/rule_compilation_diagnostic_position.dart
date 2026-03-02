@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleCompilationDiagnosticPosition {
   /// (Output)
   /// Output only. End column number, beginning at 1.
-  final int? endColumn;
+  final pulumi.Input<int>? endColumn;
   /// (Output)
   /// Output only. End line number, beginning at 1.
-  final int? endLine;
+  final pulumi.Input<int>? endLine;
   /// (Output)
   /// Output only. Start column number, beginning at 1.
-  final int? startColumn;
+  final pulumi.Input<int>? startColumn;
   /// (Output)
   /// Output only. Start line number, beginning at 1.
-  final int? startLine;
+  final pulumi.Input<int>? startLine;
 
   /// Creates a new [RuleCompilationDiagnosticPosition].
   /// [endColumn] (Output)
@@ -38,10 +39,10 @@ class RuleCompilationDiagnosticPosition {
 
   factory RuleCompilationDiagnosticPosition.fromMap(Map<String, dynamic> map) {
     return RuleCompilationDiagnosticPosition(
-      endColumn: map['endColumn'] == null ? null : map['endColumn'] as int,
-      endLine: map['endLine'] == null ? null : map['endLine'] as int,
-      startColumn: map['startColumn'] == null ? null : map['startColumn'] as int,
-      startLine: map['startLine'] == null ? null : map['startLine'] as int,
+      endColumn: map['endColumn'] == null ? null : (map['endColumn'] as int).input(),
+      endLine: map['endLine'] == null ? null : (map['endLine'] as int).input(),
+      startColumn: map['startColumn'] == null ? null : (map['startColumn'] as int).input(),
+      startLine: map['startLine'] == null ? null : (map['startLine'] as int).input(),
     );
   }
 }

@@ -57,33 +57,20 @@ class AppArgs {
   /// [template] A `template` block as detailed below.
   /// [workloadProfileName] The name of the Workload Profile in the Container App Environment to place this Container App.
   AppArgs({
-    required pulumi.Output<String> containerAppEnvironmentId,
-    pulumi.Output<AppDapr>? dapr,
-    pulumi.Output<AppIdentity>? identity,
-    pulumi.Output<AppIngress>? ingress,
-    pulumi.Output<int>? maxInactiveRevisions,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<AppRegistry>>? registries,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> revisionMode,
-    pulumi.Output<List<AppSecret>>? secrets,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<AppTemplate> template,
-    pulumi.Output<String>? workloadProfileName,
-  }) :
-      containerAppEnvironmentId = pulumi.Input.asInput<String>(containerAppEnvironmentId),
-      dapr = pulumi.Input.asOptionalInput<AppDapr>(dapr),
-      identity = pulumi.Input.asOptionalInput<AppIdentity>(identity),
-      ingress = pulumi.Input.asOptionalInput<AppIngress>(ingress),
-      maxInactiveRevisions = pulumi.Input.asOptionalInput<int>(maxInactiveRevisions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      registries = pulumi.Input.asOptionalInput<List<AppRegistry>>(registries),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      revisionMode = pulumi.Input.asInput<String>(revisionMode),
-      secrets = pulumi.Input.asOptionalInput<List<AppSecret>>(secrets),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      template = pulumi.Input.asInput<AppTemplate>(template),
-      workloadProfileName = pulumi.Input.asOptionalInput<String>(workloadProfileName);
+    required this.containerAppEnvironmentId,
+    this.dapr,
+    this.identity,
+    this.ingress,
+    this.maxInactiveRevisions,
+    this.name,
+    this.registries,
+    required this.resourceGroupName,
+    required this.revisionMode,
+    this.secrets,
+    this.tags,
+    required this.template,
+    this.workloadProfileName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,19 +92,19 @@ class AppArgs {
 
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
-      containerAppEnvironmentId: pulumi.Output.create<String>(map['containerAppEnvironmentId'] as String),
-      dapr: map['dapr'] == null ? null : pulumi.Output.create<AppDapr>(AppDapr.fromMap((map['dapr'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<AppIdentity>(AppIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      ingress: map['ingress'] == null ? null : pulumi.Output.create<AppIngress>(AppIngress.fromMap((map['ingress'] as Map).cast<String, dynamic>())),
-      maxInactiveRevisions: map['maxInactiveRevisions'] == null ? null : pulumi.Output.create<int>(map['maxInactiveRevisions'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      registries: map['registries'] == null ? null : pulumi.Output.create<List<AppRegistry>>(pulumi.Input.decodeList<AppRegistry>(map['registries'], (value) => AppRegistry.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      revisionMode: pulumi.Output.create<String>(map['revisionMode'] as String),
-      secrets: map['secrets'] == null ? null : pulumi.Output.create<List<AppSecret>>(pulumi.Input.decodeList<AppSecret>(map['secrets'], (value) => AppSecret.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      template: pulumi.Output.create<AppTemplate>(AppTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())),
-      workloadProfileName: map['workloadProfileName'] == null ? null : pulumi.Output.create<String>(map['workloadProfileName'] as String),
+      containerAppEnvironmentId: (map['containerAppEnvironmentId'] as String).input(),
+      dapr: map['dapr'] == null ? null : (AppDapr.fromMap((map['dapr'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (AppIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      ingress: map['ingress'] == null ? null : (AppIngress.fromMap((map['ingress'] as Map).cast<String, dynamic>())).input(),
+      maxInactiveRevisions: map['maxInactiveRevisions'] == null ? null : (map['maxInactiveRevisions'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<AppRegistry>(map['registries'], (value) => AppRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      revisionMode: (map['revisionMode'] as String).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<AppSecret>(map['secrets'], (value) => AppSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      template: (AppTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName'] as String).input(),
     );
   }
 }

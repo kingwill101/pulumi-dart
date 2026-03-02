@@ -31,23 +31,15 @@ class TapePoolState {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   TapePoolState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? poolName,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? retentionLockTimeInDays,
-    pulumi.Output<String>? retentionLockType,
-    pulumi.Output<String>? storageClass,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      poolName = pulumi.Input.asOptionalInput<String>(poolName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionLockTimeInDays = pulumi.Input.asOptionalInput<int>(retentionLockTimeInDays),
-      retentionLockType = pulumi.Input.asOptionalInput<String>(retentionLockType),
-      storageClass = pulumi.Input.asOptionalInput<String>(storageClass),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.poolName,
+    this.region,
+    this.retentionLockTimeInDays,
+    this.retentionLockType,
+    this.storageClass,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class TapePoolState {
 
   factory TapePoolState.fromMap(Map<String, dynamic> map) {
     return TapePoolState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      poolName: map['poolName'] == null ? null : pulumi.Output.create<String>(map['poolName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionLockTimeInDays: map['retentionLockTimeInDays'] == null ? null : pulumi.Output.create<int>(map['retentionLockTimeInDays'] as int),
-      retentionLockType: map['retentionLockType'] == null ? null : pulumi.Output.create<String>(map['retentionLockType'] as String),
-      storageClass: map['storageClass'] == null ? null : pulumi.Output.create<String>(map['storageClass'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionLockTimeInDays: map['retentionLockTimeInDays'] == null ? null : (map['retentionLockTimeInDays'] as int).input(),
+      retentionLockType: map['retentionLockType'] == null ? null : (map['retentionLockType'] as String).input(),
+      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

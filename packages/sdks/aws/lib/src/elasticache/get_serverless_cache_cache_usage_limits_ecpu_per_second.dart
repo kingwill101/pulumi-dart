@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerlessCacheCacheUsageLimitsEcpuPerSecond {
   /// The maximum number of ECPUs the cache can consume per second.
-  final int maximum;
+  final pulumi.Input<int> maximum;
   /// The minimum number of ECPUs the cache can consume per second.
-  final int minimum;
+  final pulumi.Input<int> minimum;
 
   /// Creates a new [GetServerlessCacheCacheUsageLimitsEcpuPerSecond].
   /// [maximum] The maximum number of ECPUs the cache can consume per second.
@@ -24,8 +25,8 @@ class GetServerlessCacheCacheUsageLimitsEcpuPerSecond {
 
   factory GetServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap(Map<String, dynamic> map) {
     return GetServerlessCacheCacheUsageLimitsEcpuPerSecond(
-      maximum: map['maximum'] as int,
-      minimum: map['minimum'] as int,
+      maximum: (map['maximum'] as int).input(),
+      minimum: (map['minimum'] as int).input(),
     );
   }
 }

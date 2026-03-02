@@ -22,15 +22,11 @@ class SecurityGroupVpcAssociationArgs {
   /// [timeouts] Optional.
   /// [vpcId] The ID of the VPC to make the association with.
   SecurityGroupVpcAssociationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> securityGroupId,
-    pulumi.Output<SecurityGroupVpcAssociationTimeouts>? timeouts,
-    required pulumi.Output<String> vpcId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
-      timeouts = pulumi.Input.asOptionalInput<SecurityGroupVpcAssociationTimeouts>(timeouts),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.region,
+    required this.securityGroupId,
+    this.timeouts,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SecurityGroupVpcAssociationArgs {
 
   factory SecurityGroupVpcAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGroupVpcAssociationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupId: pulumi.Output.create<String>(map['securityGroupId'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<SecurityGroupVpcAssociationTimeouts>(SecurityGroupVpcAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (SecurityGroupVpcAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

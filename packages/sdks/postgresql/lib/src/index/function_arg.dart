@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionArg {
   /// An expression to be used as default value if the parameter is not specified.
-  final String? default_;
+  final pulumi.Input<String>? default_;
   /// Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// The name of the argument.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The type of the argument.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FunctionArg].
   /// [default_] An expression to be used as default value if the parameter is not specified.
@@ -34,10 +35,10 @@ class FunctionArg {
 
   factory FunctionArg.fromMap(Map<String, dynamic> map) {
     return FunctionArg(
-      default_: map['default'] == null ? null : map['default'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] as String,
+      default_: map['default'] == null ? null : (map['default'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

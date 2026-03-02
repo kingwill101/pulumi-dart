@@ -23,15 +23,11 @@ class ActiveDirectoryConnectorArgs {
   /// [properties] null
   /// [resourceGroupName] The name of the Azure resource group
   ActiveDirectoryConnectorArgs({
-    pulumi.Output<String>? activeDirectoryConnectorName,
-    required pulumi.Output<String> dataControllerName,
-    required pulumi.Output<ActiveDirectoryConnectorProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      activeDirectoryConnectorName = pulumi.Input.asOptionalInput<String>(activeDirectoryConnectorName),
-      dataControllerName = pulumi.Input.asInput<String>(dataControllerName),
-      properties = pulumi.Input.asInput<ActiveDirectoryConnectorProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.activeDirectoryConnectorName,
+    required this.dataControllerName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ActiveDirectoryConnectorArgs {
 
   factory ActiveDirectoryConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorArgs(
-      activeDirectoryConnectorName: map['activeDirectoryConnectorName'] == null ? null : pulumi.Output.create<String>(map['activeDirectoryConnectorName'] as String),
-      dataControllerName: pulumi.Output.create<String>(map['dataControllerName'] as String),
-      properties: pulumi.Output.create<ActiveDirectoryConnectorProperties>(ActiveDirectoryConnectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      activeDirectoryConnectorName: map['activeDirectoryConnectorName'] == null ? null : (map['activeDirectoryConnectorName'] as String).input(),
+      dataControllerName: (map['dataControllerName'] as String).input(),
+      properties: (ActiveDirectoryConnectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

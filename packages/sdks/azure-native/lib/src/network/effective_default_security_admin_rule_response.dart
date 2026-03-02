@@ -8,48 +8,48 @@ import 'network_manager_security_group_item_response.dart';
 /// Network default admin rule.
 class EffectiveDefaultSecurityAdminRuleResponse {
   /// Indicates the access allowed for this particular rule
-  final String access;
+  final pulumi.Input<String> access;
   /// A description of the security admin configuration.
-  final String? configurationDescription;
+  final pulumi.Input<String>? configurationDescription;
   /// A display name of the security admin configuration.
-  final String? configurationDisplayName;
+  final pulumi.Input<String>? configurationDisplayName;
   /// A description for this rule. Restricted to 140 chars.
-  final String description;
+  final pulumi.Input<String> description;
   /// The destination port ranges.
-  final List<String> destinationPortRanges;
+  final pulumi.Input<List<String>> destinationPortRanges;
   /// The destination address prefixes. CIDR or destination IP ranges.
-  final List<AddressPrefixItemResponse> destinations;
+  final pulumi.Input<List<AddressPrefixItemResponse>> destinations;
   /// Indicates if the traffic matched against the rule in inbound or outbound.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// A friendly name for the rule.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Default rule flag.
-  final String? flag;
+  final pulumi.Input<String>? flag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Whether the rule is custom or default.
   /// Expected value is 'Default'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// Network protocol this rule applies to.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Unique identifier for this resource.
-  final String resourceGuid;
+  final pulumi.Input<String> resourceGuid;
   /// Groups for rule collection
-  final List<NetworkManagerSecurityGroupItemResponse>? ruleCollectionAppliesToGroups;
+  final pulumi.Input<List<NetworkManagerSecurityGroupItemResponse>>? ruleCollectionAppliesToGroups;
   /// A description of the rule collection.
-  final String? ruleCollectionDescription;
+  final pulumi.Input<String>? ruleCollectionDescription;
   /// A display name of the rule collection.
-  final String? ruleCollectionDisplayName;
+  final pulumi.Input<String>? ruleCollectionDisplayName;
   /// Effective configuration groups.
-  final List<ConfigurationGroupResponse>? ruleGroups;
+  final pulumi.Input<List<ConfigurationGroupResponse>>? ruleGroups;
   /// The source port ranges.
-  final List<String> sourcePortRanges;
+  final pulumi.Input<List<String>> sourcePortRanges;
   /// The CIDR or source IP ranges.
-  final List<AddressPrefixItemResponse> sources;
+  final pulumi.Input<List<AddressPrefixItemResponse>> sources;
 
   /// Creates a new [EffectiveDefaultSecurityAdminRuleResponse].
   /// [access] Indicates the access allowed for this particular rule
@@ -104,7 +104,7 @@ class EffectiveDefaultSecurityAdminRuleResponse {
       'configurationDisplayName': ?configurationDisplayName,
       'description': description,
       'destinationPortRanges': destinationPortRanges,
-      'destinations': pulumi.Input.encodeList<AddressPrefixItemResponse, Map<String, dynamic>>(destinations, (value) => value.toMap()),
+      'destinations': pulumi.Input.mapInputValue<List<AddressPrefixItemResponse>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<AddressPrefixItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'direction': direction,
       'displayName': ?displayName,
       'flag': ?flag,
@@ -114,38 +114,38 @@ class EffectiveDefaultSecurityAdminRuleResponse {
       'protocol': protocol,
       'provisioningState': provisioningState,
       'resourceGuid': resourceGuid,
-      'ruleCollectionAppliesToGroups': ?ruleCollectionAppliesToGroups == null ? null : pulumi.Input.encodeList<NetworkManagerSecurityGroupItemResponse, Map<String, dynamic>>(ruleCollectionAppliesToGroups!, (value) => value.toMap()),
+      'ruleCollectionAppliesToGroups': ?pulumi.Input.mapOptionalInputValue<List<NetworkManagerSecurityGroupItemResponse>, List<Map<String, dynamic>>>(ruleCollectionAppliesToGroups, (value) => pulumi.Input.encodeList<NetworkManagerSecurityGroupItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ruleCollectionDescription': ?ruleCollectionDescription,
       'ruleCollectionDisplayName': ?ruleCollectionDisplayName,
-      'ruleGroups': ?ruleGroups == null ? null : pulumi.Input.encodeList<ConfigurationGroupResponse, Map<String, dynamic>>(ruleGroups!, (value) => value.toMap()),
+      'ruleGroups': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationGroupResponse>, List<Map<String, dynamic>>>(ruleGroups, (value) => pulumi.Input.encodeList<ConfigurationGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sourcePortRanges': sourcePortRanges,
-      'sources': pulumi.Input.encodeList<AddressPrefixItemResponse, Map<String, dynamic>>(sources, (value) => value.toMap()),
+      'sources': pulumi.Input.mapInputValue<List<AddressPrefixItemResponse>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<AddressPrefixItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EffectiveDefaultSecurityAdminRuleResponse.fromMap(Map<String, dynamic> map) {
     return EffectiveDefaultSecurityAdminRuleResponse(
-      access: map['access'] as String,
-      configurationDescription: map['configurationDescription'] == null ? null : map['configurationDescription'] as String,
-      configurationDisplayName: map['configurationDisplayName'] == null ? null : map['configurationDisplayName'] as String,
-      description: map['description'] as String,
-      destinationPortRanges: (map['destinationPortRanges'] as List).cast<String>(),
-      destinations: pulumi.Input.decodeList<AddressPrefixItemResponse>(map['destinations'], (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      direction: map['direction'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      flag: map['flag'] == null ? null : map['flag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      kind: map['kind'] as String,
-      priority: map['priority'] as int,
-      protocol: map['protocol'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
-      ruleCollectionAppliesToGroups: map['ruleCollectionAppliesToGroups'] == null ? null : pulumi.Input.decodeList<NetworkManagerSecurityGroupItemResponse>(map['ruleCollectionAppliesToGroups'], (value) => NetworkManagerSecurityGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      ruleCollectionDescription: map['ruleCollectionDescription'] == null ? null : map['ruleCollectionDescription'] as String,
-      ruleCollectionDisplayName: map['ruleCollectionDisplayName'] == null ? null : map['ruleCollectionDisplayName'] as String,
-      ruleGroups: map['ruleGroups'] == null ? null : pulumi.Input.decodeList<ConfigurationGroupResponse>(map['ruleGroups'], (value) => ConfigurationGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sourcePortRanges: (map['sourcePortRanges'] as List).cast<String>(),
-      sources: pulumi.Input.decodeList<AddressPrefixItemResponse>(map['sources'], (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      access: (map['access'] as String).input(),
+      configurationDescription: map['configurationDescription'] == null ? null : (map['configurationDescription'] as String).input(),
+      configurationDisplayName: map['configurationDisplayName'] == null ? null : (map['configurationDisplayName'] as String).input(),
+      description: (map['description'] as String).input(),
+      destinationPortRanges: ((map['destinationPortRanges'] as List).cast<String>()).input(),
+      destinations: (pulumi.Input.decodeList<AddressPrefixItemResponse>(map['destinations'], (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      direction: (map['direction'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      flag: map['flag'] == null ? null : (map['flag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceGuid: (map['resourceGuid'] as String).input(),
+      ruleCollectionAppliesToGroups: map['ruleCollectionAppliesToGroups'] == null ? null : (pulumi.Input.decodeList<NetworkManagerSecurityGroupItemResponse>(map['ruleCollectionAppliesToGroups'], (value) => NetworkManagerSecurityGroupItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleCollectionDescription: map['ruleCollectionDescription'] == null ? null : (map['ruleCollectionDescription'] as String).input(),
+      ruleCollectionDisplayName: map['ruleCollectionDisplayName'] == null ? null : (map['ruleCollectionDisplayName'] as String).input(),
+      ruleGroups: map['ruleGroups'] == null ? null : (pulumi.Input.decodeList<ConfigurationGroupResponse>(map['ruleGroups'], (value) => ConfigurationGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePortRanges: ((map['sourcePortRanges'] as List).cast<String>()).input(),
+      sources: (pulumi.Input.decodeList<AddressPrefixItemResponse>(map['sources'], (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

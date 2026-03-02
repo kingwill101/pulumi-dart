@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Subscriber detail
 class UserDetailResponse {
   /// AAD email address
-  final String? aadEmail;
+  final pulumi.Input<String>? aadEmail;
   /// Email address
-  final String emailAddress;
+  final pulumi.Input<String> emailAddress;
   /// First name
-  final String? firstName;
+  final pulumi.Input<String>? firstName;
   /// Last name
-  final String? lastName;
+  final pulumi.Input<String>? lastName;
   /// User principal name
-  final String? userPrincipalName;
+  final pulumi.Input<String>? userPrincipalName;
 
   /// Creates a new [UserDetailResponse].
   /// [aadEmail] AAD email address
@@ -40,11 +41,11 @@ class UserDetailResponse {
 
   factory UserDetailResponse.fromMap(Map<String, dynamic> map) {
     return UserDetailResponse(
-      aadEmail: map['aadEmail'] == null ? null : map['aadEmail'] as String,
-      emailAddress: map['emailAddress'] as String,
-      firstName: map['firstName'] == null ? null : map['firstName'] as String,
-      lastName: map['lastName'] == null ? null : map['lastName'] as String,
-      userPrincipalName: map['userPrincipalName'] == null ? null : map['userPrincipalName'] as String,
+      aadEmail: map['aadEmail'] == null ? null : (map['aadEmail'] as String).input(),
+      emailAddress: (map['emailAddress'] as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
+      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName'] as String).input(),
     );
   }
 }

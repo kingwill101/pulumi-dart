@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prevention_discovery_config_target_cloud_storage_target_conditions_cloud_storage_conditions.dart';
 
 class PreventionDiscoveryConfigTargetCloudStorageTargetConditions {
   /// Cloud Storage conditions.
   /// Structure is documented below.
-  final PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions? cloudStorageConditions;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions>? cloudStorageConditions;
   /// File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
-  final String? createdAfter;
+  final pulumi.Input<String>? createdAfter;
   /// Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
-  final String? minAge;
+  final pulumi.Input<String>? minAge;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetConditions].
   /// [cloudStorageConditions] Cloud Storage conditions.
@@ -23,7 +24,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetConditions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudStorageConditions': ?cloudStorageConditions == null ? null : cloudStorageConditions!.toMap(),
+      'cloudStorageConditions': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions, Map<String, dynamic>>(cloudStorageConditions, (value) => value.toMap()),
       'createdAfter': ?createdAfter,
       'minAge': ?minAge,
     };
@@ -31,9 +32,9 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetConditions {
 
   factory PreventionDiscoveryConfigTargetCloudStorageTargetConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetConditions(
-      cloudStorageConditions: map['cloudStorageConditions'] == null ? null : PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions.fromMap((map['cloudStorageConditions'] as Map).cast<String, dynamic>()),
-      createdAfter: map['createdAfter'] == null ? null : map['createdAfter'] as String,
-      minAge: map['minAge'] == null ? null : map['minAge'] as String,
+      cloudStorageConditions: map['cloudStorageConditions'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions.fromMap((map['cloudStorageConditions'] as Map).cast<String, dynamic>())).input(),
+      createdAfter: map['createdAfter'] == null ? null : (map['createdAfter'] as String).input(),
+      minAge: map['minAge'] == null ? null : (map['minAge'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Security configurations to manage scoring.
 class GoogleCloudApigeeV1SecurityProfileScoringConfigResponse {
   /// Description of the config.
-  final String description;
+  final pulumi.Input<String> description;
   /// Path of the component config used for scoring.
-  final String scorePath;
+  final pulumi.Input<String> scorePath;
   /// Title of the config.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [GoogleCloudApigeeV1SecurityProfileScoringConfigResponse].
   /// [description] Description of the config.
@@ -30,9 +31,9 @@ class GoogleCloudApigeeV1SecurityProfileScoringConfigResponse {
 
   factory GoogleCloudApigeeV1SecurityProfileScoringConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityProfileScoringConfigResponse(
-      description: map['description'] as String,
-      scorePath: map['scorePath'] as String,
-      title: map['title'] as String,
+      description: (map['description'] as String).input(),
+      scorePath: (map['scorePath'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

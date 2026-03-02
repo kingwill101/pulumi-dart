@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_launch_template_instance_market_option_spot_option.dart';
 
 class GetLaunchTemplateInstanceMarketOption {
-  final String marketType;
-  final List<GetLaunchTemplateInstanceMarketOptionSpotOption> spotOptions;
+  final pulumi.Input<String> marketType;
+  final pulumi.Input<List<GetLaunchTemplateInstanceMarketOptionSpotOption>> spotOptions;
 
   /// Creates a new [GetLaunchTemplateInstanceMarketOption].
   /// [marketType] Required.
@@ -18,14 +18,14 @@ class GetLaunchTemplateInstanceMarketOption {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'marketType': marketType,
-      'spotOptions': pulumi.Input.encodeList<GetLaunchTemplateInstanceMarketOptionSpotOption, Map<String, dynamic>>(spotOptions, (value) => value.toMap()),
+      'spotOptions': pulumi.Input.mapInputValue<List<GetLaunchTemplateInstanceMarketOptionSpotOption>, List<Map<String, dynamic>>>(spotOptions, (value) => pulumi.Input.encodeList<GetLaunchTemplateInstanceMarketOptionSpotOption, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetLaunchTemplateInstanceMarketOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceMarketOption(
-      marketType: map['marketType'] as String,
-      spotOptions: pulumi.Input.decodeList<GetLaunchTemplateInstanceMarketOptionSpotOption>(map['spotOptions'], (value) => GetLaunchTemplateInstanceMarketOptionSpotOption.fromMap((value as Map).cast<String, dynamic>())),
+      marketType: (map['marketType'] as String).input(),
+      spotOptions: (pulumi.Input.decodeList<GetLaunchTemplateInstanceMarketOptionSpotOption>(map['spotOptions'], (value) => GetLaunchTemplateInstanceMarketOptionSpotOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

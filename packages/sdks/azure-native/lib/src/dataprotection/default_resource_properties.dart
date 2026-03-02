@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Default source properties
 class DefaultResourceProperties {
   /// Type of the specific object - used for deserializing
   /// Expected value is 'DefaultResourceProperties'.
-  final String objectType;
+  final pulumi.Input<String> objectType;
 
   /// Creates a new [DefaultResourceProperties].
   /// [objectType] Type of the specific object - used for deserializing
@@ -21,7 +22,7 @@ class DefaultResourceProperties {
 
   factory DefaultResourceProperties.fromMap(Map<String, dynamic> map) {
     return DefaultResourceProperties(
-      objectType: map['objectType'] as String,
+      objectType: (map['objectType'] as String).input(),
     );
   }
 }

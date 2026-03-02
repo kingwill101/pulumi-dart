@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The current status of a dynamic group along with timestamp.
 class DynamicGroupStatusResponse {
   /// Status of the dynamic group.
-  final String status;
+  final pulumi.Input<String> status;
   /// The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
-  final String statusTime;
+  final pulumi.Input<String> statusTime;
 
   /// Creates a new [DynamicGroupStatusResponse].
   /// [status] Status of the dynamic group.
@@ -25,8 +26,8 @@ class DynamicGroupStatusResponse {
 
   factory DynamicGroupStatusResponse.fromMap(Map<String, dynamic> map) {
     return DynamicGroupStatusResponse(
-      status: map['status'] as String,
-      statusTime: map['statusTime'] as String,
+      status: (map['status'] as String).input(),
+      statusTime: (map['statusTime'] as String).input(),
     );
   }
 }

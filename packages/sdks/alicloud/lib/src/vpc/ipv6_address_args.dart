@@ -33,21 +33,14 @@ class Ipv6AddressArgs {
   /// [tags] The tags for the resource.
   /// [vswitchId] The VSwitchId of the IPv6 address.
   Ipv6AddressArgs({
-    pulumi.Output<String>? addressType,
-    pulumi.Output<String>? ipv6Address,
-    pulumi.Output<String>? ipv6AddressDescription,
-    pulumi.Output<String>? ipv6AddressName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      addressType = pulumi.Input.asOptionalInput<String>(addressType),
-      ipv6Address = pulumi.Input.asOptionalInput<String>(ipv6Address),
-      ipv6AddressDescription = pulumi.Input.asOptionalInput<String>(ipv6AddressDescription),
-      ipv6AddressName = pulumi.Input.asOptionalInput<String>(ipv6AddressName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    this.addressType,
+    this.ipv6Address,
+    this.ipv6AddressDescription,
+    this.ipv6AddressName,
+    this.resourceGroupId,
+    this.tags,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class Ipv6AddressArgs {
 
   factory Ipv6AddressArgs.fromMap(Map<String, dynamic> map) {
     return Ipv6AddressArgs(
-      addressType: map['addressType'] == null ? null : pulumi.Output.create<String>(map['addressType'] as String),
-      ipv6Address: map['ipv6Address'] == null ? null : pulumi.Output.create<String>(map['ipv6Address'] as String),
-      ipv6AddressDescription: map['ipv6AddressDescription'] == null ? null : pulumi.Output.create<String>(map['ipv6AddressDescription'] as String),
-      ipv6AddressName: map['ipv6AddressName'] == null ? null : pulumi.Output.create<String>(map['ipv6AddressName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      addressType: map['addressType'] == null ? null : (map['addressType'] as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
+      ipv6AddressDescription: map['ipv6AddressDescription'] == null ? null : (map['ipv6AddressDescription'] as String).input(),
+      ipv6AddressName: map['ipv6AddressName'] == null ? null : (map['ipv6AddressName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

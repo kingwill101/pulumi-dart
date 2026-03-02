@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicatedVMNetworkInterface {
   /// Id of the public IP object to use when a test failover is done.
-  final String? failoverTestPublicIpAddressId;
+  final pulumi.Input<String>? failoverTestPublicIpAddressId;
   /// Static IP to assign when a test failover is done.
-  final String? failoverTestStaticIp;
+  final pulumi.Input<String>? failoverTestStaticIp;
   /// Name of the subnet to use when a test failover is done.
-  final String? failoverTestSubnetName;
+  final pulumi.Input<String>? failoverTestSubnetName;
   /// A list of IDs of Load Balancer Backend Address Pools to use when a failover is done.
-  final List<String>? recoveryLoadBalancerBackendAddressPoolIds;
+  final pulumi.Input<List<String>>? recoveryLoadBalancerBackendAddressPoolIds;
   /// Id of the public IP object to use when a failover is done.
-  final String? recoveryPublicIpAddressId;
+  final pulumi.Input<String>? recoveryPublicIpAddressId;
   /// (Required if the network_interface block is specified) Id source network interface.
-  final String? sourceNetworkInterfaceId;
+  final pulumi.Input<String>? sourceNetworkInterfaceId;
   /// Static IP to assign when a failover is done.
-  final String? targetStaticIp;
+  final pulumi.Input<String>? targetStaticIp;
   /// Name of the subnet to use when a failover is done.
-  final String? targetSubnetName;
+  final pulumi.Input<String>? targetSubnetName;
 
   /// Creates a new [ReplicatedVMNetworkInterface].
   /// [failoverTestPublicIpAddressId] Id of the public IP object to use when a test failover is done.
@@ -54,14 +55,14 @@ class ReplicatedVMNetworkInterface {
 
   factory ReplicatedVMNetworkInterface.fromMap(Map<String, dynamic> map) {
     return ReplicatedVMNetworkInterface(
-      failoverTestPublicIpAddressId: map['failoverTestPublicIpAddressId'] == null ? null : map['failoverTestPublicIpAddressId'] as String,
-      failoverTestStaticIp: map['failoverTestStaticIp'] == null ? null : map['failoverTestStaticIp'] as String,
-      failoverTestSubnetName: map['failoverTestSubnetName'] == null ? null : map['failoverTestSubnetName'] as String,
-      recoveryLoadBalancerBackendAddressPoolIds: map['recoveryLoadBalancerBackendAddressPoolIds'] == null ? null : (map['recoveryLoadBalancerBackendAddressPoolIds'] as List).cast<String>(),
-      recoveryPublicIpAddressId: map['recoveryPublicIpAddressId'] == null ? null : map['recoveryPublicIpAddressId'] as String,
-      sourceNetworkInterfaceId: map['sourceNetworkInterfaceId'] == null ? null : map['sourceNetworkInterfaceId'] as String,
-      targetStaticIp: map['targetStaticIp'] == null ? null : map['targetStaticIp'] as String,
-      targetSubnetName: map['targetSubnetName'] == null ? null : map['targetSubnetName'] as String,
+      failoverTestPublicIpAddressId: map['failoverTestPublicIpAddressId'] == null ? null : (map['failoverTestPublicIpAddressId'] as String).input(),
+      failoverTestStaticIp: map['failoverTestStaticIp'] == null ? null : (map['failoverTestStaticIp'] as String).input(),
+      failoverTestSubnetName: map['failoverTestSubnetName'] == null ? null : (map['failoverTestSubnetName'] as String).input(),
+      recoveryLoadBalancerBackendAddressPoolIds: map['recoveryLoadBalancerBackendAddressPoolIds'] == null ? null : ((map['recoveryLoadBalancerBackendAddressPoolIds'] as List).cast<String>()).input(),
+      recoveryPublicIpAddressId: map['recoveryPublicIpAddressId'] == null ? null : (map['recoveryPublicIpAddressId'] as String).input(),
+      sourceNetworkInterfaceId: map['sourceNetworkInterfaceId'] == null ? null : (map['sourceNetworkInterfaceId'] as String).input(),
+      targetStaticIp: map['targetStaticIp'] == null ? null : (map['targetStaticIp'] as String).input(),
+      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName'] as String).input(),
     );
   }
 }

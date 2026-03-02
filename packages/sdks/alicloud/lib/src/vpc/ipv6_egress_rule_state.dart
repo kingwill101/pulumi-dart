@@ -28,21 +28,14 @@ class Ipv6EgressRuleState {
   /// [ipv6GatewayId] The ID of the IPv6 gateway.
   /// [status] The status of the resource.
   Ipv6EgressRuleState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? ipv6EgressRuleId,
-    pulumi.Output<String>? ipv6EgressRuleName,
-    pulumi.Output<String>? ipv6GatewayId,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      ipv6EgressRuleId = pulumi.Input.asOptionalInput<String>(ipv6EgressRuleId),
-      ipv6EgressRuleName = pulumi.Input.asOptionalInput<String>(ipv6EgressRuleName),
-      ipv6GatewayId = pulumi.Input.asOptionalInput<String>(ipv6GatewayId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    this.instanceId,
+    this.instanceType,
+    this.ipv6EgressRuleId,
+    this.ipv6EgressRuleName,
+    this.ipv6GatewayId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class Ipv6EgressRuleState {
 
   factory Ipv6EgressRuleState.fromMap(Map<String, dynamic> map) {
     return Ipv6EgressRuleState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      ipv6EgressRuleId: map['ipv6EgressRuleId'] == null ? null : pulumi.Output.create<String>(map['ipv6EgressRuleId'] as String),
-      ipv6EgressRuleName: map['ipv6EgressRuleName'] == null ? null : pulumi.Output.create<String>(map['ipv6EgressRuleName'] as String),
-      ipv6GatewayId: map['ipv6GatewayId'] == null ? null : pulumi.Output.create<String>(map['ipv6GatewayId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      ipv6EgressRuleId: map['ipv6EgressRuleId'] == null ? null : (map['ipv6EgressRuleId'] as String).input(),
+      ipv6EgressRuleName: map['ipv6EgressRuleName'] == null ? null : (map['ipv6EgressRuleName'] as String).input(),
+      ipv6GatewayId: map['ipv6GatewayId'] == null ? null : (map['ipv6GatewayId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

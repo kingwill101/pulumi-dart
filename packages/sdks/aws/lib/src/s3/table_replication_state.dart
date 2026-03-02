@@ -22,17 +22,12 @@ class TableReplicationState {
   /// [tableArn] ARN referencing the Table that owns this replication configuration.
   /// [versionToken] Optional.
   TableReplicationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-    pulumi.Output<TableReplicationRule>? rule,
-    pulumi.Output<String>? tableArn,
-    pulumi.Output<String>? versionToken,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      rule = pulumi.Input.asOptionalInput<TableReplicationRule>(rule),
-      tableArn = pulumi.Input.asOptionalInput<String>(tableArn),
-      versionToken = pulumi.Input.asOptionalInput<String>(versionToken);
+    this.region,
+    this.role,
+    this.rule,
+    this.tableArn,
+    this.versionToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class TableReplicationState {
 
   factory TableReplicationState.fromMap(Map<String, dynamic> map) {
     return TableReplicationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<TableReplicationRule>(TableReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())),
-      tableArn: map['tableArn'] == null ? null : pulumi.Output.create<String>(map['tableArn'] as String),
-      versionToken: map['versionToken'] == null ? null : pulumi.Output.create<String>(map['versionToken'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      rule: map['rule'] == null ? null : (TableReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      tableArn: map['tableArn'] == null ? null : (map['tableArn'] as String).input(),
+      versionToken: map['versionToken'] == null ? null : (map['versionToken'] as String).input(),
     );
   }
 }

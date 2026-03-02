@@ -14,11 +14,9 @@ class GetOrganizationExclusionArgs {
   /// [exclusionId] Required.
   /// [organizationId] Required.
   GetOrganizationExclusionArgs({
-    required pulumi.Output<String> exclusionId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      exclusionId = pulumi.Input.asInput<String>(exclusionId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.exclusionId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetOrganizationExclusionArgs {
 
   factory GetOrganizationExclusionArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationExclusionArgs(
-      exclusionId: pulumi.Output.create<String>(map['exclusionId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      exclusionId: (map['exclusionId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

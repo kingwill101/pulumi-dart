@@ -22,17 +22,12 @@ class WorkspaceState {
   /// [resourceGroupName] Specifies the name of the Resource Group where the Healthcare Workspace should exist. Changing this forces a new Healthcare Workspace to be created.
   /// [tags] A mapping of tags to assign to the Healthcare Workspace.
   WorkspaceState({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<WorkspacePrivateEndpointConnection>>? privateEndpointConnections,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateEndpointConnections = pulumi.Input.asOptionalInput<List<WorkspacePrivateEndpointConnection>>(privateEndpointConnections),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.name,
+    this.privateEndpointConnections,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : pulumi.Output.create<List<WorkspacePrivateEndpointConnection>>(pulumi.Input.decodeList<WorkspacePrivateEndpointConnection>(map['privateEndpointConnections'], (value) => WorkspacePrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : (pulumi.Input.decodeList<WorkspacePrivateEndpointConnection>(map['privateEndpointConnections'], (value) => WorkspacePrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

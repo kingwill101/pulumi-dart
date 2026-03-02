@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSiteLocation {
   /// Address of the location.
-  final String address;
+  final pulumi.Input<String> address;
   /// Latitude of the location.
-  final String latitude;
+  final pulumi.Input<String> latitude;
   /// Longitude of the location.
-  final String longitude;
+  final pulumi.Input<String> longitude;
 
   /// Creates a new [GetSiteLocation].
   /// [address] Address of the location.
@@ -29,9 +30,9 @@ class GetSiteLocation {
 
   factory GetSiteLocation.fromMap(Map<String, dynamic> map) {
     return GetSiteLocation(
-      address: map['address'] as String,
-      latitude: map['latitude'] as String,
-      longitude: map['longitude'] as String,
+      address: (map['address'] as String).input(),
+      latitude: (map['latitude'] as String).input(),
+      longitude: (map['longitude'] as String).input(),
     );
   }
 }

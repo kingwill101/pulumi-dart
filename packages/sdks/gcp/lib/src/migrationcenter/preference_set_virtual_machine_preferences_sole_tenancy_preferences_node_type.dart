@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType {
   /// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
-  final String? nodeName;
+  final pulumi.Input<String>? nodeName;
 
   /// Creates a new [PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType].
   /// [nodeName] Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
@@ -19,7 +20,7 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType {
 
   factory PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType.fromMap(Map<String, dynamic> map) {
     return PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType(
-      nodeName: map['nodeName'] == null ? null : map['nodeName'] as String,
+      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
     );
   }
 }

@@ -26,19 +26,13 @@ class IotHubDeviceUpdateInstanceState {
   /// [name] Specifies the name which should be used for this IoT Hub Device Update Instance. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the IoT Hub Device Update Instance.
   IotHubDeviceUpdateInstanceState({
-    pulumi.Output<String>? deviceUpdateAccountId,
-    pulumi.Output<bool>? diagnosticEnabled,
-    pulumi.Output<IotHubDeviceUpdateInstanceDiagnosticStorageAccount>? diagnosticStorageAccount,
-    pulumi.Output<String>? iothubId,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deviceUpdateAccountId = pulumi.Input.asOptionalInput<String>(deviceUpdateAccountId),
-      diagnosticEnabled = pulumi.Input.asOptionalInput<bool>(diagnosticEnabled),
-      diagnosticStorageAccount = pulumi.Input.asOptionalInput<IotHubDeviceUpdateInstanceDiagnosticStorageAccount>(diagnosticStorageAccount),
-      iothubId = pulumi.Input.asOptionalInput<String>(iothubId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deviceUpdateAccountId,
+    this.diagnosticEnabled,
+    this.diagnosticStorageAccount,
+    this.iothubId,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class IotHubDeviceUpdateInstanceState {
 
   factory IotHubDeviceUpdateInstanceState.fromMap(Map<String, dynamic> map) {
     return IotHubDeviceUpdateInstanceState(
-      deviceUpdateAccountId: map['deviceUpdateAccountId'] == null ? null : pulumi.Output.create<String>(map['deviceUpdateAccountId'] as String),
-      diagnosticEnabled: map['diagnosticEnabled'] == null ? null : pulumi.Output.create<bool>(map['diagnosticEnabled'] as bool),
-      diagnosticStorageAccount: map['diagnosticStorageAccount'] == null ? null : pulumi.Output.create<IotHubDeviceUpdateInstanceDiagnosticStorageAccount>(IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap((map['diagnosticStorageAccount'] as Map).cast<String, dynamic>())),
-      iothubId: map['iothubId'] == null ? null : pulumi.Output.create<String>(map['iothubId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deviceUpdateAccountId: map['deviceUpdateAccountId'] == null ? null : (map['deviceUpdateAccountId'] as String).input(),
+      diagnosticEnabled: map['diagnosticEnabled'] == null ? null : (map['diagnosticEnabled'] as bool).input(),
+      diagnosticStorageAccount: map['diagnosticStorageAccount'] == null ? null : (IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap((map['diagnosticStorageAccount'] as Map).cast<String, dynamic>())).input(),
+      iothubId: map['iothubId'] == null ? null : (map['iothubId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

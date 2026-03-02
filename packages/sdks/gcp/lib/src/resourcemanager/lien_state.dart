@@ -35,19 +35,13 @@ class LienState {
   /// [reason] Concise user-visible strings indicating why an action cannot be performed
   /// [restrictions] The types of operations which should be blocked as a result of this Lien.
   LienState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? origin,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? reason,
-    pulumi.Output<List<String>>? restrictions,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      origin = pulumi.Input.asOptionalInput<String>(origin),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      reason = pulumi.Input.asOptionalInput<String>(reason),
-      restrictions = pulumi.Input.asOptionalInput<List<String>>(restrictions);
+    this.createTime,
+    this.name,
+    this.origin,
+    this.parent,
+    this.reason,
+    this.restrictions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class LienState {
 
   factory LienState.fromMap(Map<String, dynamic> map) {
     return LienState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      origin: map['origin'] == null ? null : pulumi.Output.create<String>(map['origin'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      reason: map['reason'] == null ? null : pulumi.Output.create<String>(map['reason'] as String),
-      restrictions: map['restrictions'] == null ? null : pulumi.Output.create<List<String>>((map['restrictions'] as List).cast<String>()),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      origin: map['origin'] == null ? null : (map['origin'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      restrictions: map['restrictions'] == null ? null : ((map['restrictions'] as List).cast<String>()).input(),
     );
   }
 }

@@ -24,15 +24,11 @@ class NodeGroupSecurityGroupArgs {
   /// [tags] Key-value mapping of tags to apply to this security group.
   /// [vpcId] The VPC in which to create the worker node group.
   NodeGroupSecurityGroupArgs({
-    required pulumi.Output<pulumi_aws_ec2.SecurityGroup> clusterSecurityGroup,
-    required pulumi.Output<pulumi_aws_eks.Cluster> eksCluster,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      clusterSecurityGroup = pulumi.Input.asInput<pulumi_aws_ec2.SecurityGroup>(clusterSecurityGroup),
-      eksCluster = pulumi.Input.asInput<pulumi_aws_eks.Cluster>(eksCluster),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    required this.clusterSecurityGroup,
+    required this.eksCluster,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class NodeGroupSecurityGroupArgs {
 
   factory NodeGroupSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupSecurityGroupArgs(
-      clusterSecurityGroup: pulumi.Output.create<pulumi_aws_ec2.SecurityGroup>(map['clusterSecurityGroup'] as pulumi_aws_ec2.SecurityGroup),
-      eksCluster: pulumi.Output.create<pulumi_aws_eks.Cluster>(map['eksCluster'] as pulumi_aws_eks.Cluster),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      clusterSecurityGroup: (map['clusterSecurityGroup'] as pulumi_aws_ec2.SecurityGroup).input(),
+      eksCluster: (map['eksCluster'] as pulumi_aws_eks.Cluster).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

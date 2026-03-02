@@ -18,13 +18,10 @@ class GetManagedServerDnsAliasArgs {
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   GetManagedServerDnsAliasArgs({
-    required pulumi.Output<String> dnsAliasName,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dnsAliasName = pulumi.Input.asInput<String>(dnsAliasName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dnsAliasName,
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetManagedServerDnsAliasArgs {
 
   factory GetManagedServerDnsAliasArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedServerDnsAliasArgs(
-      dnsAliasName: pulumi.Output.create<String>(map['dnsAliasName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dnsAliasName: (map['dnsAliasName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

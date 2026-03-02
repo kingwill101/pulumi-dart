@@ -51,33 +51,20 @@ class LocalUserArgs {
   /// [sshAuthorizedKeys] Optional, local user ssh authorized keys for SFTP.
   /// [username] The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
   LocalUserArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<bool>? allowAclAuthorization,
-    pulumi.Output<List<int>>? extendedGroups,
-    pulumi.Output<int>? groupId,
-    pulumi.Output<bool>? hasSharedKey,
-    pulumi.Output<bool>? hasSshKey,
-    pulumi.Output<bool>? hasSshPassword,
-    pulumi.Output<String>? homeDirectory,
-    pulumi.Output<bool>? isNFSv3Enabled,
-    pulumi.Output<List<PermissionScope>>? permissionScopes,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<SshPublicKey>>? sshAuthorizedKeys,
-    pulumi.Output<String>? username,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      allowAclAuthorization = pulumi.Input.asOptionalInput<bool>(allowAclAuthorization),
-      extendedGroups = pulumi.Input.asOptionalInput<List<int>>(extendedGroups),
-      groupId = pulumi.Input.asOptionalInput<int>(groupId),
-      hasSharedKey = pulumi.Input.asOptionalInput<bool>(hasSharedKey),
-      hasSshKey = pulumi.Input.asOptionalInput<bool>(hasSshKey),
-      hasSshPassword = pulumi.Input.asOptionalInput<bool>(hasSshPassword),
-      homeDirectory = pulumi.Input.asOptionalInput<String>(homeDirectory),
-      isNFSv3Enabled = pulumi.Input.asOptionalInput<bool>(isNFSv3Enabled),
-      permissionScopes = pulumi.Input.asOptionalInput<List<PermissionScope>>(permissionScopes),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sshAuthorizedKeys = pulumi.Input.asOptionalInput<List<SshPublicKey>>(sshAuthorizedKeys),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    required this.accountName,
+    this.allowAclAuthorization,
+    this.extendedGroups,
+    this.groupId,
+    this.hasSharedKey,
+    this.hasSshKey,
+    this.hasSshPassword,
+    this.homeDirectory,
+    this.isNFSv3Enabled,
+    this.permissionScopes,
+    required this.resourceGroupName,
+    this.sshAuthorizedKeys,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class LocalUserArgs {
 
   factory LocalUserArgs.fromMap(Map<String, dynamic> map) {
     return LocalUserArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      allowAclAuthorization: map['allowAclAuthorization'] == null ? null : pulumi.Output.create<bool>(map['allowAclAuthorization'] as bool),
-      extendedGroups: map['extendedGroups'] == null ? null : pulumi.Output.create<List<int>>((map['extendedGroups'] as List).cast<int>()),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<int>(map['groupId'] as int),
-      hasSharedKey: map['hasSharedKey'] == null ? null : pulumi.Output.create<bool>(map['hasSharedKey'] as bool),
-      hasSshKey: map['hasSshKey'] == null ? null : pulumi.Output.create<bool>(map['hasSshKey'] as bool),
-      hasSshPassword: map['hasSshPassword'] == null ? null : pulumi.Output.create<bool>(map['hasSshPassword'] as bool),
-      homeDirectory: map['homeDirectory'] == null ? null : pulumi.Output.create<String>(map['homeDirectory'] as String),
-      isNFSv3Enabled: map['isNFSv3Enabled'] == null ? null : pulumi.Output.create<bool>(map['isNFSv3Enabled'] as bool),
-      permissionScopes: map['permissionScopes'] == null ? null : pulumi.Output.create<List<PermissionScope>>(pulumi.Input.decodeList<PermissionScope>(map['permissionScopes'], (value) => PermissionScope.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sshAuthorizedKeys: map['sshAuthorizedKeys'] == null ? null : pulumi.Output.create<List<SshPublicKey>>(pulumi.Input.decodeList<SshPublicKey>(map['sshAuthorizedKeys'], (value) => SshPublicKey.fromMap((value as Map).cast<String, dynamic>()))),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      accountName: (map['accountName'] as String).input(),
+      allowAclAuthorization: map['allowAclAuthorization'] == null ? null : (map['allowAclAuthorization'] as bool).input(),
+      extendedGroups: map['extendedGroups'] == null ? null : ((map['extendedGroups'] as List).cast<int>()).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as int).input(),
+      hasSharedKey: map['hasSharedKey'] == null ? null : (map['hasSharedKey'] as bool).input(),
+      hasSshKey: map['hasSshKey'] == null ? null : (map['hasSshKey'] as bool).input(),
+      hasSshPassword: map['hasSshPassword'] == null ? null : (map['hasSshPassword'] as bool).input(),
+      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory'] as String).input(),
+      isNFSv3Enabled: map['isNFSv3Enabled'] == null ? null : (map['isNFSv3Enabled'] as bool).input(),
+      permissionScopes: map['permissionScopes'] == null ? null : (pulumi.Input.decodeList<PermissionScope>(map['permissionScopes'], (value) => PermissionScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sshAuthorizedKeys: map['sshAuthorizedKeys'] == null ? null : (pulumi.Input.decodeList<SshPublicKey>(map['sshAuthorizedKeys'], (value) => SshPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

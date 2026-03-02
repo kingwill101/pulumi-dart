@@ -16,11 +16,9 @@ class GetElasticAccountArgs {
   /// [accountName] The name of the ElasticAccount
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetElasticAccountArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetElasticAccountArgs {
 
   factory GetElasticAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetElasticAccountArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

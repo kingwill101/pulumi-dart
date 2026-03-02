@@ -32,21 +32,14 @@ class ContainerServiceDeploymentVersionState {
   /// [state] Current state of the container service.
   /// [version] Version number of the deployment.
   ContainerServiceDeploymentVersionState({
-    pulumi.Output<List<ContainerServiceDeploymentVersionContainer>>? containers,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<ContainerServiceDeploymentVersionPublicEndpoint>? publicEndpoint,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<String>? state,
-    pulumi.Output<int>? version,
-  }) :
-      containers = pulumi.Input.asOptionalInput<List<ContainerServiceDeploymentVersionContainer>>(containers),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      publicEndpoint = pulumi.Input.asOptionalInput<ContainerServiceDeploymentVersionPublicEndpoint>(publicEndpoint),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.containers,
+    this.createdAt,
+    this.publicEndpoint,
+    this.region,
+    this.serviceName,
+    this.state,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ContainerServiceDeploymentVersionState {
 
   factory ContainerServiceDeploymentVersionState.fromMap(Map<String, dynamic> map) {
     return ContainerServiceDeploymentVersionState(
-      containers: map['containers'] == null ? null : pulumi.Output.create<List<ContainerServiceDeploymentVersionContainer>>(pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(map['containers'], (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>()))),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      publicEndpoint: map['publicEndpoint'] == null ? null : pulumi.Output.create<ContainerServiceDeploymentVersionPublicEndpoint>(ContainerServiceDeploymentVersionPublicEndpoint.fromMap((map['publicEndpoint'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(map['containers'], (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      publicEndpoint: map['publicEndpoint'] == null ? null : (ContainerServiceDeploymentVersionPublicEndpoint.fromMap((map['publicEndpoint'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

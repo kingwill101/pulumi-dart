@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkGatewayVpnClientConfigurationRadiusServer {
   /// The address of the Radius Server.
-  final String address;
+  final pulumi.Input<String> address;
   /// The score of the Radius Server determines the priority of the server. Possible values are between `1` and `30`.
-  final int score;
+  final pulumi.Input<int> score;
   /// The secret that is used to communicate with the Radius Server.
-  final String secret;
+  final pulumi.Input<String> secret;
 
   /// Creates a new [VirtualNetworkGatewayVpnClientConfigurationRadiusServer].
   /// [address] The address of the Radius Server.
@@ -29,9 +30,9 @@ class VirtualNetworkGatewayVpnClientConfigurationRadiusServer {
 
   factory VirtualNetworkGatewayVpnClientConfigurationRadiusServer.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayVpnClientConfigurationRadiusServer(
-      address: map['address'] as String,
-      score: map['score'] as int,
-      secret: map['secret'] as String,
+      address: (map['address'] as String).input(),
+      score: (map['score'] as int).input(),
+      secret: (map['secret'] as String).input(),
     );
   }
 }

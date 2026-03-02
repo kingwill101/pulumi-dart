@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A bug found in the Dataflow SDK.
 class SdkBugResponse {
   /// How severe the SDK bug is.
-  final String severity;
+  final pulumi.Input<String> severity;
   /// Describes the impact of this SDK bug.
-  final String type;
+  final pulumi.Input<String> type;
   /// Link to more information on the bug.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [SdkBugResponse].
   /// [severity] How severe the SDK bug is.
@@ -30,9 +31,9 @@ class SdkBugResponse {
 
   factory SdkBugResponse.fromMap(Map<String, dynamic> map) {
     return SdkBugResponse(
-      severity: map['severity'] as String,
-      type: map['type'] as String,
-      uri: map['uri'] as String,
+      severity: (map['severity'] as String).input(),
+      type: (map['type'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

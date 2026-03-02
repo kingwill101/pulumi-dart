@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDdosCooDomainResourcesResourceProxyType {
   /// The forwarding port.
-  final List<int> proxyPorts;
+  final pulumi.Input<List<int>> proxyPorts;
   /// Protocol type.
-  final String proxyType;
+  final pulumi.Input<String> proxyType;
 
   /// Creates a new [GetDdosCooDomainResourcesResourceProxyType].
   /// [proxyPorts] The forwarding port.
@@ -24,8 +25,8 @@ class GetDdosCooDomainResourcesResourceProxyType {
 
   factory GetDdosCooDomainResourcesResourceProxyType.fromMap(Map<String, dynamic> map) {
     return GetDdosCooDomainResourcesResourceProxyType(
-      proxyPorts: (map['proxyPorts'] as List).cast<int>(),
-      proxyType: map['proxyType'] as String,
+      proxyPorts: ((map['proxyPorts'] as List).cast<int>()).input(),
+      proxyType: (map['proxyType'] as String).input(),
     );
   }
 }

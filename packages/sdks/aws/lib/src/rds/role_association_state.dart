@@ -19,15 +19,11 @@ class RoleAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] Amazon Resource Name (ARN) of the IAM Role to associate with the DB Instance.
   RoleAssociationState({
-    pulumi.Output<String>? dbInstanceIdentifier,
-    pulumi.Output<String>? featureName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-  }) :
-      dbInstanceIdentifier = pulumi.Input.asOptionalInput<String>(dbInstanceIdentifier),
-      featureName = pulumi.Input.asOptionalInput<String>(featureName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn);
+    this.dbInstanceIdentifier,
+    this.featureName,
+    this.region,
+    this.roleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class RoleAssociationState {
 
   factory RoleAssociationState.fromMap(Map<String, dynamic> map) {
     return RoleAssociationState(
-      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : pulumi.Output.create<String>(map['dbInstanceIdentifier'] as String),
-      featureName: map['featureName'] == null ? null : pulumi.Output.create<String>(map['featureName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
+      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : (map['dbInstanceIdentifier'] as String).input(),
+      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
     );
   }
 }

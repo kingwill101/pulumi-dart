@@ -30,21 +30,14 @@ class GetChainsArgs {
   /// [repoName] The name of CR Enterprise Edition repository.
   /// [repoNamespaceName] The name of CR Enterprise Edition namespace.
   GetChainsArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? repoName,
-    pulumi.Output<String>? repoNamespaceName,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      repoName = pulumi.Input.asOptionalInput<String>(repoName),
-      repoNamespaceName = pulumi.Input.asOptionalInput<String>(repoNamespaceName);
+    this.enableDetails,
+    this.ids,
+    required this.instanceId,
+    this.nameRegex,
+    this.outputFile,
+    this.repoName,
+    this.repoNamespaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class GetChainsArgs {
 
   factory GetChainsArgs.fromMap(Map<String, dynamic> map) {
     return GetChainsArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      repoName: map['repoName'] == null ? null : pulumi.Output.create<String>(map['repoName'] as String),
-      repoNamespaceName: map['repoNamespaceName'] == null ? null : pulumi.Output.create<String>(map['repoNamespaceName'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
+      repoNamespaceName: map['repoNamespaceName'] == null ? null : (map['repoNamespaceName'] as String).input(),
     );
   }
 }

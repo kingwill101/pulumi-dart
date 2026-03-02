@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// User configuration.
 class UserDetailsResponse {
   /// Location of the secret used for authentication.
-  final String? secretLocation;
+  final pulumi.Input<String>? secretLocation;
   /// Type of the secret used for authentication.
-  final String secretType;
+  final pulumi.Input<String> secretType;
   /// SSH Public Key for the user.
-  final List<String>? sshPubKey;
+  final pulumi.Input<List<String>>? sshPubKey;
   /// Name of the user.
-  final String userName;
+  final pulumi.Input<String> userName;
 
   /// Creates a new [UserDetailsResponse].
   /// [secretLocation] Location of the secret used for authentication.
@@ -35,10 +36,10 @@ class UserDetailsResponse {
 
   factory UserDetailsResponse.fromMap(Map<String, dynamic> map) {
     return UserDetailsResponse(
-      secretLocation: map['secretLocation'] == null ? null : map['secretLocation'] as String,
-      secretType: map['secretType'] as String,
-      sshPubKey: map['sshPubKey'] == null ? null : (map['sshPubKey'] as List).cast<String>(),
-      userName: map['userName'] as String,
+      secretLocation: map['secretLocation'] == null ? null : (map['secretLocation'] as String).input(),
+      secretType: (map['secretType'] as String).input(),
+      sshPubKey: map['sshPubKey'] == null ? null : ((map['sshPubKey'] as List).cast<String>()).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

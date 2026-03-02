@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Network Adapter configuration of a DataBox.
 class ApplianceNetworkConfigurationResponse {
   /// Mac Address.
-  final String macAddress;
+  final pulumi.Input<String> macAddress;
   /// Name of the network.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ApplianceNetworkConfigurationResponse].
   /// [macAddress] Mac Address.
@@ -25,8 +26,8 @@ class ApplianceNetworkConfigurationResponse {
 
   factory ApplianceNetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ApplianceNetworkConfigurationResponse(
-      macAddress: map['macAddress'] as String,
-      name: map['name'] as String,
+      macAddress: (map['macAddress'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

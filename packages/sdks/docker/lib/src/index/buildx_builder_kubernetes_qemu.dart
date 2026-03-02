@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuildxBuilderKubernetesQemu {
   /// Sets the QEMU emulation image.
-  final String? image;
+  final pulumi.Input<String>? image;
   /// Install QEMU emulation for multi-platform support.
-  final bool? install;
+  final pulumi.Input<bool>? install;
 
   /// Creates a new [BuildxBuilderKubernetesQemu].
   /// [image] Sets the QEMU emulation image.
@@ -24,8 +25,8 @@ class BuildxBuilderKubernetesQemu {
 
   factory BuildxBuilderKubernetesQemu.fromMap(Map<String, dynamic> map) {
     return BuildxBuilderKubernetesQemu(
-      image: map['image'] == null ? null : map['image'] as String,
-      install: map['install'] == null ? null : map['install'] as bool,
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      install: map['install'] == null ? null : (map['install'] as bool).input(),
     );
   }
 }

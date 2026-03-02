@@ -44,29 +44,18 @@ class TopicState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [topic] The topic name.
   TopicState({
-    pulumi.Output<bool>? compactTopic,
-    pulumi.Output<String>? configs,
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<bool>? localTopic,
-    pulumi.Output<int>? partitionNum,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? remark,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? topic,
-  }) :
-      compactTopic = pulumi.Input.asOptionalInput<bool>(compactTopic),
-      configs = pulumi.Input.asOptionalInput<String>(configs),
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      localTopic = pulumi.Input.asOptionalInput<bool>(localTopic),
-      partitionNum = pulumi.Input.asOptionalInput<int>(partitionNum),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      topic = pulumi.Input.asOptionalInput<String>(topic);
+    this.compactTopic,
+    this.configs,
+    this.createTime,
+    this.instanceId,
+    this.localTopic,
+    this.partitionNum,
+    this.regionId,
+    this.remark,
+    this.status,
+    this.tags,
+    this.topic,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class TopicState {
 
   factory TopicState.fromMap(Map<String, dynamic> map) {
     return TopicState(
-      compactTopic: map['compactTopic'] == null ? null : pulumi.Output.create<bool>(map['compactTopic'] as bool),
-      configs: map['configs'] == null ? null : pulumi.Output.create<String>(map['configs'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      localTopic: map['localTopic'] == null ? null : pulumi.Output.create<bool>(map['localTopic'] as bool),
-      partitionNum: map['partitionNum'] == null ? null : pulumi.Output.create<int>(map['partitionNum'] as int),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      topic: map['topic'] == null ? null : pulumi.Output.create<String>(map['topic'] as String),
+      compactTopic: map['compactTopic'] == null ? null : (map['compactTopic'] as bool).input(),
+      configs: map['configs'] == null ? null : (map['configs'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      localTopic: map['localTopic'] == null ? null : (map['localTopic'] as bool).input(),
+      partitionNum: map['partitionNum'] == null ? null : (map['partitionNum'] as int).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

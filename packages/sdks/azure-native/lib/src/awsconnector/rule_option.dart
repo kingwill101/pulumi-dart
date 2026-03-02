@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of RuleOption
 class RuleOption {
   /// Property keyword
-  final String? keyword;
+  final pulumi.Input<String>? keyword;
   /// Property settings
-  final List<String>? settings;
+  final pulumi.Input<List<String>>? settings;
 
   /// Creates a new [RuleOption].
   /// [keyword] Property keyword
@@ -25,8 +26,8 @@ class RuleOption {
 
   factory RuleOption.fromMap(Map<String, dynamic> map) {
     return RuleOption(
-      keyword: map['keyword'] == null ? null : map['keyword'] as String,
-      settings: map['settings'] == null ? null : (map['settings'] as List).cast<String>(),
+      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
+      settings: map['settings'] == null ? null : ((map['settings'] as List).cast<String>()).input(),
     );
   }
 }

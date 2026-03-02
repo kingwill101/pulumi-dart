@@ -19,15 +19,11 @@ class IntegrationExporterState {
   /// [integrationType] The type of prometheus integration.
   /// [param] Exporter configuration parameter json string.
   IntegrationExporterState({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<int>? instanceId,
-    pulumi.Output<String>? integrationType,
-    pulumi.Output<String>? param,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      instanceId = pulumi.Input.asOptionalInput<int>(instanceId),
-      integrationType = pulumi.Input.asOptionalInput<String>(integrationType),
-      param = pulumi.Input.asOptionalInput<String>(param);
+    this.clusterId,
+    this.instanceId,
+    this.integrationType,
+    this.param,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class IntegrationExporterState {
 
   factory IntegrationExporterState.fromMap(Map<String, dynamic> map) {
     return IntegrationExporterState(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<int>(map['instanceId'] as int),
-      integrationType: map['integrationType'] == null ? null : pulumi.Output.create<String>(map['integrationType'] as String),
-      param: map['param'] == null ? null : pulumi.Output.create<String>(map['param'] as String),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as int).input(),
+      integrationType: map['integrationType'] == null ? null : (map['integrationType'] as String).input(),
+      param: map['param'] == null ? null : (map['param'] as String).input(),
     );
   }
 }

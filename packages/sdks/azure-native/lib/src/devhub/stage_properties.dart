@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a Stage.
 class StageProperties {
-  final List<String>? dependencies;
-  final String? gitEnvironment;
+  final pulumi.Input<List<String>>? dependencies;
+  final pulumi.Input<String>? gitEnvironment;
   /// Stage Name
-  final String? stageName;
+  final pulumi.Input<String>? stageName;
 
   /// Creates a new [StageProperties].
   /// [dependencies] Optional.
@@ -28,9 +29,9 @@ class StageProperties {
 
   factory StageProperties.fromMap(Map<String, dynamic> map) {
     return StageProperties(
-      dependencies: map['dependencies'] == null ? null : (map['dependencies'] as List).cast<String>(),
-      gitEnvironment: map['gitEnvironment'] == null ? null : map['gitEnvironment'] as String,
-      stageName: map['stageName'] == null ? null : map['stageName'] as String,
+      dependencies: map['dependencies'] == null ? null : ((map['dependencies'] as List).cast<String>()).input(),
+      gitEnvironment: map['gitEnvironment'] == null ? null : (map['gitEnvironment'] as String).input(),
+      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
     );
   }
 }

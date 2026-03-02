@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CrawlerJdbcTarget {
   /// The name of the connection to use to connect to the JDBC target.
-  final String connectionName;
+  final pulumi.Input<String> connectionName;
   /// Specify a value of `RAWTYPES` or `COMMENTS` to enable additional metadata intable responses. `RAWTYPES` provides the native-level datatype. `COMMENTS` provides comments associated with a column or table in the database.
-  final List<String>? enableAdditionalMetadatas;
+  final pulumi.Input<List<String>>? enableAdditionalMetadatas;
   /// A list of glob patterns used to exclude from the crawl.
-  final List<String>? exclusions;
+  final pulumi.Input<List<String>>? exclusions;
   /// The path of the JDBC target.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [CrawlerJdbcTarget].
   /// [connectionName] The name of the connection to use to connect to the JDBC target.
@@ -34,10 +35,10 @@ class CrawlerJdbcTarget {
 
   factory CrawlerJdbcTarget.fromMap(Map<String, dynamic> map) {
     return CrawlerJdbcTarget(
-      connectionName: map['connectionName'] as String,
-      enableAdditionalMetadatas: map['enableAdditionalMetadatas'] == null ? null : (map['enableAdditionalMetadatas'] as List).cast<String>(),
-      exclusions: map['exclusions'] == null ? null : (map['exclusions'] as List).cast<String>(),
-      path: map['path'] as String,
+      connectionName: (map['connectionName'] as String).input(),
+      enableAdditionalMetadatas: map['enableAdditionalMetadatas'] == null ? null : ((map['enableAdditionalMetadatas'] as List).cast<String>()).input(),
+      exclusions: map['exclusions'] == null ? null : ((map['exclusions'] as List).cast<String>()).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

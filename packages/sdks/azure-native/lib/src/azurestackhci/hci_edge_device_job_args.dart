@@ -27,17 +27,12 @@ class HciEdgeDeviceJobArgs {
   /// [properties] HCI Edge device job properties
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   HciEdgeDeviceJobArgs({
-    required pulumi.Output<String> edgeDeviceName,
-    pulumi.Output<String>? jobsName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<HciCollectLogJobProperties> properties,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      edgeDeviceName = pulumi.Input.asInput<String>(edgeDeviceName),
-      jobsName = pulumi.Input.asOptionalInput<String>(jobsName),
-      kind = pulumi.Input.asInput<String>(kind),
-      properties = pulumi.Input.asInput<HciCollectLogJobProperties>(properties),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.edgeDeviceName,
+    this.jobsName,
+    required this.kind,
+    required this.properties,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class HciEdgeDeviceJobArgs {
 
   factory HciEdgeDeviceJobArgs.fromMap(Map<String, dynamic> map) {
     return HciEdgeDeviceJobArgs(
-      edgeDeviceName: pulumi.Output.create<String>(map['edgeDeviceName'] as String),
-      jobsName: map['jobsName'] == null ? null : pulumi.Output.create<String>(map['jobsName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      properties: pulumi.Output.create<HciCollectLogJobProperties>(HciCollectLogJobProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      edgeDeviceName: (map['edgeDeviceName'] as String).input(),
+      jobsName: map['jobsName'] == null ? null : (map['jobsName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      properties: (HciCollectLogJobProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

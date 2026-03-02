@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FileContentBufferResponse {
   /// The raw content in the secure keys file.
-  final String content;
+  final pulumi.Input<String> content;
   /// The file type of source file.
-  final String fileType;
+  final pulumi.Input<String> fileType;
 
   /// Creates a new [FileContentBufferResponse].
   /// [content] The raw content in the secure keys file.
@@ -24,8 +25,8 @@ class FileContentBufferResponse {
 
   factory FileContentBufferResponse.fromMap(Map<String, dynamic> map) {
     return FileContentBufferResponse(
-      content: map['content'] as String,
-      fileType: map['fileType'] as String,
+      content: (map['content'] as String).input(),
+      fileType: (map['fileType'] as String).input(),
     );
   }
 }

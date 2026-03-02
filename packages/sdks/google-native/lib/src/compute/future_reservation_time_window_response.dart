@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'duration_response.dart';
 
 class FutureReservationTimeWindowResponse {
-  final DurationResponse duration;
-  final String endTime;
+  final pulumi.Input<DurationResponse> duration;
+  final pulumi.Input<String> endTime;
   /// Start time of the Future Reservation. The start_time is an RFC3339 string.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [FutureReservationTimeWindowResponse].
   /// [duration] Required.
@@ -20,7 +21,7 @@ class FutureReservationTimeWindowResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'duration': duration.toMap(),
+      'duration': pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(duration, (value) => value.toMap()),
       'endTime': endTime,
       'startTime': startTime,
     };
@@ -28,9 +29,9 @@ class FutureReservationTimeWindowResponse {
 
   factory FutureReservationTimeWindowResponse.fromMap(Map<String, dynamic> map) {
     return FutureReservationTimeWindowResponse(
-      duration: DurationResponse.fromMap((map['duration'] as Map).cast<String, dynamic>()),
-      endTime: map['endTime'] as String,
-      startTime: map['startTime'] as String,
+      duration: (DurationResponse.fromMap((map['duration'] as Map).cast<String, dynamic>())).input(),
+      endTime: (map['endTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

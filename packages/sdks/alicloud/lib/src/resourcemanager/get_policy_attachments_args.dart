@@ -31,21 +31,14 @@ class GetPolicyAttachmentsArgs {
   /// [principalType] The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
   /// [resourceGroupId] The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
   GetPolicyAttachmentsArgs({
-    pulumi.Output<String>? language,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? policyName,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<String>? principalName,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? resourceGroupId,
-  }) :
-      language = pulumi.Input.asOptionalInput<String>(language),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      principalName = pulumi.Input.asOptionalInput<String>(principalName),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId);
+    this.language,
+    this.outputFile,
+    this.policyName,
+    this.policyType,
+    this.principalName,
+    this.principalType,
+    this.resourceGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetPolicyAttachmentsArgs {
 
   factory GetPolicyAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyAttachmentsArgs(
-      language: map['language'] == null ? null : pulumi.Output.create<String>(map['language'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      principalName: map['principalName'] == null ? null : pulumi.Output.create<String>(map['principalName'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
+      language: map['language'] == null ? null : (map['language'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      principalName: map['principalName'] == null ? null : (map['principalName'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
     );
   }
 }

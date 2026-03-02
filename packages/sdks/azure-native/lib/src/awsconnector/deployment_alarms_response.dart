@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of DeploymentAlarms
 class DeploymentAlarmsResponse {
   /// One or more CloudWatch alarm names. Use a ',' to separate the alarms.
-  final List<String>? alarmNames;
+  final pulumi.Input<List<String>>? alarmNames;
   /// Determines whether to use the CloudWatch alarm option in the service deployment process.
-  final bool? enable;
+  final pulumi.Input<bool>? enable;
   /// Determines whether to configure Amazon ECS to roll back the service if a service deployment fails. If rollback is used, when a service deployment fails, the service is rolled back to the last deployment that completed successfully.
-  final bool? rollback;
+  final pulumi.Input<bool>? rollback;
 
   /// Creates a new [DeploymentAlarmsResponse].
   /// [alarmNames] One or more CloudWatch alarm names. Use a ',' to separate the alarms.
@@ -30,9 +31,9 @@ class DeploymentAlarmsResponse {
 
   factory DeploymentAlarmsResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentAlarmsResponse(
-      alarmNames: map['alarmNames'] == null ? null : (map['alarmNames'] as List).cast<String>(),
-      enable: map['enable'] == null ? null : map['enable'] as bool,
-      rollback: map['rollback'] == null ? null : map['rollback'] as bool,
+      alarmNames: map['alarmNames'] == null ? null : ((map['alarmNames'] as List).cast<String>()).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      rollback: map['rollback'] == null ? null : (map['rollback'] as bool).input(),
     );
   }
 }

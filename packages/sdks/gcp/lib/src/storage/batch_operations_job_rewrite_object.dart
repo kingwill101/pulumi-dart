@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BatchOperationsJobRewriteObject {
   /// valid kms key
-  final String kmsKey;
+  final pulumi.Input<String> kmsKey;
 
   /// Creates a new [BatchOperationsJobRewriteObject].
   /// [kmsKey] valid kms key
@@ -19,7 +20,7 @@ class BatchOperationsJobRewriteObject {
 
   factory BatchOperationsJobRewriteObject.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobRewriteObject(
-      kmsKey: map['kmsKey'] as String,
+      kmsKey: (map['kmsKey'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The date range for data in the export. This should only be specified with timeFrame set to 'Custom'. The maximum date range is 3 months.
 class ExportTimePeriod {
   /// The start date for export data.
-  final String from;
+  final pulumi.Input<String> from;
   /// The end date for export data.
-  final String to;
+  final pulumi.Input<String> to;
 
   /// Creates a new [ExportTimePeriod].
   /// [from] The start date for export data.
@@ -25,8 +26,8 @@ class ExportTimePeriod {
 
   factory ExportTimePeriod.fromMap(Map<String, dynamic> map) {
     return ExportTimePeriod(
-      from: map['from'] as String,
-      to: map['to'] as String,
+      from: (map['from'] as String).input(),
+      to: (map['to'] as String).input(),
     );
   }
 }

@@ -49,33 +49,20 @@ class DataLabelingJobArgs {
   /// [project] Optional.
   /// [specialistPools] The SpecialistPools' resource names associated with this job.
   DataLabelingJobArgs({
-    pulumi.Output<GoogleCloudAiplatformV1ActiveLearningConfig>? activeLearningConfig,
-    pulumi.Output<Map<String, String>>? annotationLabels,
-    required pulumi.Output<List<String>> datasets,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec,
-    required pulumi.Output<dynamic> inputs,
-    required pulumi.Output<String> inputsSchemaUri,
-    required pulumi.Output<String> instructionUri,
-    required pulumi.Output<int> labelerCount,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? specialistPools,
-  }) :
-      activeLearningConfig = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1ActiveLearningConfig>(activeLearningConfig),
-      annotationLabels = pulumi.Input.asOptionalInput<Map<String, String>>(annotationLabels),
-      datasets = pulumi.Input.asInput<List<String>>(datasets),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(encryptionSpec),
-      inputs = pulumi.Input.asInput<dynamic>(inputs),
-      inputsSchemaUri = pulumi.Input.asInput<String>(inputsSchemaUri),
-      instructionUri = pulumi.Input.asInput<String>(instructionUri),
-      labelerCount = pulumi.Input.asInput<int>(labelerCount),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      specialistPools = pulumi.Input.asOptionalInput<List<String>>(specialistPools);
+    this.activeLearningConfig,
+    this.annotationLabels,
+    required this.datasets,
+    required this.displayName,
+    this.encryptionSpec,
+    required this.inputs,
+    required this.inputsSchemaUri,
+    required this.instructionUri,
+    required this.labelerCount,
+    this.labels,
+    this.location,
+    this.project,
+    this.specialistPools,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class DataLabelingJobArgs {
 
   factory DataLabelingJobArgs.fromMap(Map<String, dynamic> map) {
     return DataLabelingJobArgs(
-      activeLearningConfig: map['activeLearningConfig'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1ActiveLearningConfig>(GoogleCloudAiplatformV1ActiveLearningConfig.fromMap((map['activeLearningConfig'] as Map).cast<String, dynamic>())),
-      annotationLabels: map['annotationLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotationLabels'] as Map).cast<String, String>()),
-      datasets: pulumi.Output.create<List<String>>((map['datasets'] as List).cast<String>()),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1EncryptionSpec>(GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      inputs: pulumi.Output.create<dynamic>(map['inputs']),
-      inputsSchemaUri: pulumi.Output.create<String>(map['inputsSchemaUri'] as String),
-      instructionUri: pulumi.Output.create<String>(map['instructionUri'] as String),
-      labelerCount: pulumi.Output.create<int>(map['labelerCount'] as int),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      specialistPools: map['specialistPools'] == null ? null : pulumi.Output.create<List<String>>((map['specialistPools'] as List).cast<String>()),
+      activeLearningConfig: map['activeLearningConfig'] == null ? null : (GoogleCloudAiplatformV1ActiveLearningConfig.fromMap((map['activeLearningConfig'] as Map).cast<String, dynamic>())).input(),
+      annotationLabels: map['annotationLabels'] == null ? null : ((map['annotationLabels'] as Map).cast<String, String>()).input(),
+      datasets: ((map['datasets'] as List).cast<String>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      inputs: (map['inputs']).input(),
+      inputsSchemaUri: (map['inputsSchemaUri'] as String).input(),
+      instructionUri: (map['instructionUri'] as String).input(),
+      labelerCount: (map['labelerCount'] as int).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      specialistPools: map['specialistPools'] == null ? null : ((map['specialistPools'] as List).cast<String>()).input(),
     );
   }
 }

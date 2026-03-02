@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType {
   /// Type of worker to deliver logs to CloudWatch (for example, `SPARK_DRIVER` and `SPARK_EXECUTOR`).
-  final String key;
+  final pulumi.Input<String> key;
   /// List of log types to be delivered to CloudWatch (for example, `STDOUT` and `STDERR`).
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType].
   /// [key] Type of worker to deliver logs to CloudWatch (for example, `SPARK_DRIVER` and `SPARK_EXECUTOR`).
@@ -24,8 +25,8 @@ class WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguratio
 
   factory WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType(
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

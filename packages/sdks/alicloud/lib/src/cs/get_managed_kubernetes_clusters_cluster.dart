@@ -8,48 +8,48 @@ import 'get_managed_kubernetes_clusters_cluster_worker_node.dart';
 
 class GetManagedKubernetesClustersCluster {
   /// The ID of availability zone.
-  final String availabilityZone;
-  final String clusterNetworkType;
+  final pulumi.Input<String> availabilityZone;
+  final pulumi.Input<String> clusterNetworkType;
   /// Map of kubernetes cluster connection information.
-  final GetManagedKubernetesClustersClusterConnections connections;
+  final pulumi.Input<GetManagedKubernetesClustersClusterConnections> connections;
   /// ID of the node.
-  final String id;
-  final String imageId;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> imageId;
   /// The keypair of ssh login cluster node, you have to create it first.
-  final String keyName;
+  final pulumi.Input<String> keyName;
   /// A list of one element containing information about the associated log store. It contains the following attributes:
-  final List<GetManagedKubernetesClustersClusterLogConfig> logConfigs;
+  final pulumi.Input<List<GetManagedKubernetesClustersClusterLogConfig>> logConfigs;
   /// Node name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of nat gateway used to launch kubernetes cluster.
-  final String natGatewayId;
-  final String podCidr;
+  final pulumi.Input<String> natGatewayId;
+  final pulumi.Input<String> podCidr;
   /// (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
-  final GetManagedKubernetesClustersClusterRrsaConfig rrsaConfig;
+  final pulumi.Input<GetManagedKubernetesClustersClusterRrsaConfig> rrsaConfig;
   /// The ID of security group where the current cluster worker node is located.
-  final String securityGroupId;
-  final String serviceCidr;
-  final bool slbInternetEnabled;
+  final pulumi.Input<String> securityGroupId;
+  final pulumi.Input<String> serviceCidr;
+  final pulumi.Input<bool> slbInternetEnabled;
   /// (Available since v1.245.0) The state of cluster.
-  final String state;
+  final pulumi.Input<String> state;
   /// The ID of VPC where the current cluster is located.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The ID of VSwitches where the current cluster is located.
-  final List<String> vswitchIds;
-  final bool workerAutoRenew;
-  final int workerAutoRenewPeriod;
-  final String workerDataDiskCategory;
-  final int workerDataDiskSize;
-  final String workerDiskCategory;
-  final int workerDiskSize;
-  final String workerInstanceChargeType;
-  final List<String> workerInstanceTypes;
+  final pulumi.Input<List<String>> vswitchIds;
+  final pulumi.Input<bool> workerAutoRenew;
+  final pulumi.Input<int> workerAutoRenewPeriod;
+  final pulumi.Input<String> workerDataDiskCategory;
+  final pulumi.Input<int> workerDataDiskSize;
+  final pulumi.Input<String> workerDiskCategory;
+  final pulumi.Input<int> workerDiskSize;
+  final pulumi.Input<String> workerInstanceChargeType;
+  final pulumi.Input<List<String>> workerInstanceTypes;
   /// List of cluster worker nodes.
-  final List<GetManagedKubernetesClustersClusterWorkerNode> workerNodes;
+  final pulumi.Input<List<GetManagedKubernetesClustersClusterWorkerNode>> workerNodes;
   /// The ECS instance node number in the current container cluster.
-  final List<int> workerNumbers;
-  final int workerPeriod;
-  final String workerPeriodUnit;
+  final pulumi.Input<List<int>> workerNumbers;
+  final pulumi.Input<int> workerPeriod;
+  final pulumi.Input<String> workerPeriodUnit;
 
   /// Creates a new [GetManagedKubernetesClustersCluster].
   /// [availabilityZone] The ID of availability zone.
@@ -117,15 +117,15 @@ class GetManagedKubernetesClustersCluster {
     return <String, dynamic>{
       'availabilityZone': availabilityZone,
       'clusterNetworkType': clusterNetworkType,
-      'connections': connections.toMap(),
+      'connections': pulumi.Input.mapInputValue<GetManagedKubernetesClustersClusterConnections, Map<String, dynamic>>(connections, (value) => value.toMap()),
       'id': id,
       'imageId': imageId,
       'keyName': keyName,
-      'logConfigs': pulumi.Input.encodeList<GetManagedKubernetesClustersClusterLogConfig, Map<String, dynamic>>(logConfigs, (value) => value.toMap()),
+      'logConfigs': pulumi.Input.mapInputValue<List<GetManagedKubernetesClustersClusterLogConfig>, List<Map<String, dynamic>>>(logConfigs, (value) => pulumi.Input.encodeList<GetManagedKubernetesClustersClusterLogConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'natGatewayId': natGatewayId,
       'podCidr': podCidr,
-      'rrsaConfig': rrsaConfig.toMap(),
+      'rrsaConfig': pulumi.Input.mapInputValue<GetManagedKubernetesClustersClusterRrsaConfig, Map<String, dynamic>>(rrsaConfig, (value) => value.toMap()),
       'securityGroupId': securityGroupId,
       'serviceCidr': serviceCidr,
       'slbInternetEnabled': slbInternetEnabled,
@@ -140,7 +140,7 @@ class GetManagedKubernetesClustersCluster {
       'workerDiskSize': workerDiskSize,
       'workerInstanceChargeType': workerInstanceChargeType,
       'workerInstanceTypes': workerInstanceTypes,
-      'workerNodes': pulumi.Input.encodeList<GetManagedKubernetesClustersClusterWorkerNode, Map<String, dynamic>>(workerNodes, (value) => value.toMap()),
+      'workerNodes': pulumi.Input.mapInputValue<List<GetManagedKubernetesClustersClusterWorkerNode>, List<Map<String, dynamic>>>(workerNodes, (value) => pulumi.Input.encodeList<GetManagedKubernetesClustersClusterWorkerNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workerNumbers': workerNumbers,
       'workerPeriod': workerPeriod,
       'workerPeriodUnit': workerPeriodUnit,
@@ -149,35 +149,35 @@ class GetManagedKubernetesClustersCluster {
 
   factory GetManagedKubernetesClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetManagedKubernetesClustersCluster(
-      availabilityZone: map['availabilityZone'] as String,
-      clusterNetworkType: map['clusterNetworkType'] as String,
-      connections: GetManagedKubernetesClustersClusterConnections.fromMap((map['connections'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      imageId: map['imageId'] as String,
-      keyName: map['keyName'] as String,
-      logConfigs: pulumi.Input.decodeList<GetManagedKubernetesClustersClusterLogConfig>(map['logConfigs'], (value) => GetManagedKubernetesClustersClusterLogConfig.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      natGatewayId: map['natGatewayId'] as String,
-      podCidr: map['podCidr'] as String,
-      rrsaConfig: GetManagedKubernetesClustersClusterRrsaConfig.fromMap((map['rrsaConfig'] as Map).cast<String, dynamic>()),
-      securityGroupId: map['securityGroupId'] as String,
-      serviceCidr: map['serviceCidr'] as String,
-      slbInternetEnabled: map['slbInternetEnabled'] as bool,
-      state: map['state'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchIds: (map['vswitchIds'] as List).cast<String>(),
-      workerAutoRenew: map['workerAutoRenew'] as bool,
-      workerAutoRenewPeriod: map['workerAutoRenewPeriod'] as int,
-      workerDataDiskCategory: map['workerDataDiskCategory'] as String,
-      workerDataDiskSize: map['workerDataDiskSize'] as int,
-      workerDiskCategory: map['workerDiskCategory'] as String,
-      workerDiskSize: map['workerDiskSize'] as int,
-      workerInstanceChargeType: map['workerInstanceChargeType'] as String,
-      workerInstanceTypes: (map['workerInstanceTypes'] as List).cast<String>(),
-      workerNodes: pulumi.Input.decodeList<GetManagedKubernetesClustersClusterWorkerNode>(map['workerNodes'], (value) => GetManagedKubernetesClustersClusterWorkerNode.fromMap((value as Map).cast<String, dynamic>())),
-      workerNumbers: (map['workerNumbers'] as List).cast<int>(),
-      workerPeriod: map['workerPeriod'] as int,
-      workerPeriodUnit: map['workerPeriodUnit'] as String,
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      clusterNetworkType: (map['clusterNetworkType'] as String).input(),
+      connections: (GetManagedKubernetesClustersClusterConnections.fromMap((map['connections'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      keyName: (map['keyName'] as String).input(),
+      logConfigs: (pulumi.Input.decodeList<GetManagedKubernetesClustersClusterLogConfig>(map['logConfigs'], (value) => GetManagedKubernetesClustersClusterLogConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      natGatewayId: (map['natGatewayId'] as String).input(),
+      podCidr: (map['podCidr'] as String).input(),
+      rrsaConfig: (GetManagedKubernetesClustersClusterRrsaConfig.fromMap((map['rrsaConfig'] as Map).cast<String, dynamic>())).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      serviceCidr: (map['serviceCidr'] as String).input(),
+      slbInternetEnabled: (map['slbInternetEnabled'] as bool).input(),
+      state: (map['state'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchIds: ((map['vswitchIds'] as List).cast<String>()).input(),
+      workerAutoRenew: (map['workerAutoRenew'] as bool).input(),
+      workerAutoRenewPeriod: (map['workerAutoRenewPeriod'] as int).input(),
+      workerDataDiskCategory: (map['workerDataDiskCategory'] as String).input(),
+      workerDataDiskSize: (map['workerDataDiskSize'] as int).input(),
+      workerDiskCategory: (map['workerDiskCategory'] as String).input(),
+      workerDiskSize: (map['workerDiskSize'] as int).input(),
+      workerInstanceChargeType: (map['workerInstanceChargeType'] as String).input(),
+      workerInstanceTypes: ((map['workerInstanceTypes'] as List).cast<String>()).input(),
+      workerNodes: (pulumi.Input.decodeList<GetManagedKubernetesClustersClusterWorkerNode>(map['workerNodes'], (value) => GetManagedKubernetesClustersClusterWorkerNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workerNumbers: ((map['workerNumbers'] as List).cast<int>()).input(),
+      workerPeriod: (map['workerPeriod'] as int).input(),
+      workerPeriodUnit: (map['workerPeriodUnit'] as String).input(),
     );
   }
 }

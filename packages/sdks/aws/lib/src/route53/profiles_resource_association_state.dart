@@ -36,27 +36,17 @@ class ProfilesResourceAssociationState {
   /// [statusMessage] Status message of the Profile Resource Association.
   /// [timeouts] Optional.
   ProfilesResourceAssociationState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? profileId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? resourceProperties,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? statusMessage,
-    pulumi.Output<ProfilesResourceAssociationTimeouts>? timeouts,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      profileId = pulumi.Input.asOptionalInput<String>(profileId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      resourceProperties = pulumi.Input.asOptionalInput<String>(resourceProperties),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      statusMessage = pulumi.Input.asOptionalInput<String>(statusMessage),
-      timeouts = pulumi.Input.asOptionalInput<ProfilesResourceAssociationTimeouts>(timeouts);
+    this.name,
+    this.ownerId,
+    this.profileId,
+    this.region,
+    this.resourceArn,
+    this.resourceProperties,
+    this.resourceType,
+    this.status,
+    this.statusMessage,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,16 +65,16 @@ class ProfilesResourceAssociationState {
 
   factory ProfilesResourceAssociationState.fromMap(Map<String, dynamic> map) {
     return ProfilesResourceAssociationState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      profileId: map['profileId'] == null ? null : pulumi.Output.create<String>(map['profileId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      resourceProperties: map['resourceProperties'] == null ? null : pulumi.Output.create<String>(map['resourceProperties'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      statusMessage: map['statusMessage'] == null ? null : pulumi.Output.create<String>(map['statusMessage'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ProfilesResourceAssociationTimeouts>(ProfilesResourceAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      resourceProperties: map['resourceProperties'] == null ? null : (map['resourceProperties'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (ProfilesResourceAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

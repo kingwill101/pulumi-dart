@@ -6,17 +6,17 @@ import 'get_images_image_os_disk.dart';
 
 class GetImagesImage {
   /// One or more `data_disk` blocks as defined below.
-  final List<GetImagesImageDataDisk> dataDisks;
+  final pulumi.Input<List<GetImagesImageDataDisk>> dataDisks;
   /// The supported Azure location where the Image exists.
-  final String location;
+  final pulumi.Input<String> location;
   /// The name of the Image.
-  final String name;
+  final pulumi.Input<String> name;
   /// An `os_disk` block as defined below.
-  final List<GetImagesImageOsDisk> osDisks;
+  final pulumi.Input<List<GetImagesImageOsDisk>> osDisks;
   /// A mapping of tags assigned to the Image.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// Is zone resiliency enabled?
-  final bool zoneResilient;
+  final pulumi.Input<bool> zoneResilient;
 
   /// Creates a new [GetImagesImage].
   /// [dataDisks] One or more `data_disk` blocks as defined below.
@@ -36,10 +36,10 @@ class GetImagesImage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataDisks': pulumi.Input.encodeList<GetImagesImageDataDisk, Map<String, dynamic>>(dataDisks, (value) => value.toMap()),
+      'dataDisks': pulumi.Input.mapInputValue<List<GetImagesImageDataDisk>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<GetImagesImageDataDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': location,
       'name': name,
-      'osDisks': pulumi.Input.encodeList<GetImagesImageOsDisk, Map<String, dynamic>>(osDisks, (value) => value.toMap()),
+      'osDisks': pulumi.Input.mapInputValue<List<GetImagesImageOsDisk>, List<Map<String, dynamic>>>(osDisks, (value) => pulumi.Input.encodeList<GetImagesImageOsDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': tags,
       'zoneResilient': zoneResilient,
     };
@@ -47,12 +47,12 @@ class GetImagesImage {
 
   factory GetImagesImage.fromMap(Map<String, dynamic> map) {
     return GetImagesImage(
-      dataDisks: pulumi.Input.decodeList<GetImagesImageDataDisk>(map['dataDisks'], (value) => GetImagesImageDataDisk.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      osDisks: pulumi.Input.decodeList<GetImagesImageOsDisk>(map['osDisks'], (value) => GetImagesImageOsDisk.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      zoneResilient: map['zoneResilient'] as bool,
+      dataDisks: (pulumi.Input.decodeList<GetImagesImageDataDisk>(map['dataDisks'], (value) => GetImagesImageDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      osDisks: (pulumi.Input.decodeList<GetImagesImageOsDisk>(map['osDisks'], (value) => GetImagesImageOsDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneResilient: (map['zoneResilient'] as bool).input(),
     );
   }
 }

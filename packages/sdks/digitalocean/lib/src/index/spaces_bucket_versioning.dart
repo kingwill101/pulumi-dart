@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpacesBucketVersioning {
   /// Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
   /// state. You can, however, suspend versioning on that bucket.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [SpacesBucketVersioning].
   /// [enabled] Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
@@ -20,7 +21,7 @@ class SpacesBucketVersioning {
 
   factory SpacesBucketVersioning.fromMap(Map<String, dynamic> map) {
     return SpacesBucketVersioning(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

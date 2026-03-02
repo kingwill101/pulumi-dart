@@ -31,23 +31,15 @@ class OutputPowerbiState {
   /// [tokenUserDisplayName] The user display name of the user that was used to obtain the refresh token.
   /// [tokenUserPrincipalName] The user principal name (UPN) of the user that was used to obtain the refresh token.
   OutputPowerbiState({
-    pulumi.Output<String>? dataset,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? streamAnalyticsJobId,
-    pulumi.Output<String>? table,
-    pulumi.Output<String>? tokenUserDisplayName,
-    pulumi.Output<String>? tokenUserPrincipalName,
-  }) :
-      dataset = pulumi.Input.asOptionalInput<String>(dataset),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      streamAnalyticsJobId = pulumi.Input.asOptionalInput<String>(streamAnalyticsJobId),
-      table = pulumi.Input.asOptionalInput<String>(table),
-      tokenUserDisplayName = pulumi.Input.asOptionalInput<String>(tokenUserDisplayName),
-      tokenUserPrincipalName = pulumi.Input.asOptionalInput<String>(tokenUserPrincipalName);
+    this.dataset,
+    this.groupId,
+    this.groupName,
+    this.name,
+    this.streamAnalyticsJobId,
+    this.table,
+    this.tokenUserDisplayName,
+    this.tokenUserPrincipalName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class OutputPowerbiState {
 
   factory OutputPowerbiState.fromMap(Map<String, dynamic> map) {
     return OutputPowerbiState(
-      dataset: map['dataset'] == null ? null : pulumi.Output.create<String>(map['dataset'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : pulumi.Output.create<String>(map['streamAnalyticsJobId'] as String),
-      table: map['table'] == null ? null : pulumi.Output.create<String>(map['table'] as String),
-      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : pulumi.Output.create<String>(map['tokenUserDisplayName'] as String),
-      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : pulumi.Output.create<String>(map['tokenUserPrincipalName'] as String),
+      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId'] as String).input(),
+      table: map['table'] == null ? null : (map['table'] as String).input(),
+      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : (map['tokenUserDisplayName'] as String).input(),
+      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : (map['tokenUserPrincipalName'] as String).input(),
     );
   }
 }

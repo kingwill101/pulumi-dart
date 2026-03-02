@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex dependencies.
 class MetadataDependencies {
   /// Id of the content item we depend on
-  final String? contentId;
+  final pulumi.Input<String>? contentId;
   /// This is the list of dependencies we must fulfill, according to the AND/OR operator
-  final List<MetadataDependencies>? criteria;
+  final pulumi.Input<List<MetadataDependencies>>? criteria;
   /// Type of the content item we depend on
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Name of the content item
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Operator used for list of dependencies in criteria array.
-  final String? operator;
+  final pulumi.Input<String>? operator;
   /// Version of the the content item we depend on.  Can be blank, * or missing to indicate any version fulfills the dependency.  If version does not match our defined numeric format then an exact match is required.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [MetadataDependencies].
   /// [contentId] Id of the content item we depend on
@@ -36,7 +36,7 @@ class MetadataDependencies {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'contentId': ?contentId,
-      'criteria': ?criteria == null ? null : pulumi.Input.encodeList<MetadataDependencies, Map<String, dynamic>>(criteria!, (value) => value.toMap()),
+      'criteria': ?pulumi.Input.mapOptionalInputValue<List<MetadataDependencies>, List<Map<String, dynamic>>>(criteria, (value) => pulumi.Input.encodeList<MetadataDependencies, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
       'name': ?name,
       'operator': ?operator,
@@ -46,12 +46,12 @@ class MetadataDependencies {
 
   factory MetadataDependencies.fromMap(Map<String, dynamic> map) {
     return MetadataDependencies(
-      contentId: map['contentId'] == null ? null : map['contentId'] as String,
-      criteria: map['criteria'] == null ? null : pulumi.Input.decodeList<MetadataDependencies>(map['criteria'], (value) => MetadataDependencies.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      operator: map['operator'] == null ? null : map['operator'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      contentId: map['contentId'] == null ? null : (map['contentId'] as String).input(),
+      criteria: map['criteria'] == null ? null : (pulumi.Input.decodeList<MetadataDependencies>(map['criteria'], (value) => MetadataDependencies.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

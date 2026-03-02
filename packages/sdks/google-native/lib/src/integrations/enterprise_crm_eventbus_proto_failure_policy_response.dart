@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Policy that defines the task retry logic and failure type. If no FailurePolicy is defined for a task, all its dependent tasks will not be executed (i.e, a `retry_strategy` of NONE will be applied).
 class EnterpriseCrmEventbusProtoFailurePolicyResponse {
   /// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the initial interval for backoff.
-  final String intervalInSeconds;
+  final pulumi.Input<String> intervalInSeconds;
   /// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the number of times the task will be retried if failed.
-  final int maxNumRetries;
+  final pulumi.Input<int> maxNumRetries;
   /// Defines what happens to the task upon failure.
-  final String retryStrategy;
+  final pulumi.Input<String> retryStrategy;
 
   /// Creates a new [EnterpriseCrmEventbusProtoFailurePolicyResponse].
   /// [intervalInSeconds] Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the initial interval for backoff.
@@ -30,9 +31,9 @@ class EnterpriseCrmEventbusProtoFailurePolicyResponse {
 
   factory EnterpriseCrmEventbusProtoFailurePolicyResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoFailurePolicyResponse(
-      intervalInSeconds: map['intervalInSeconds'] as String,
-      maxNumRetries: map['maxNumRetries'] as int,
-      retryStrategy: map['retryStrategy'] as String,
+      intervalInSeconds: (map['intervalInSeconds'] as String).input(),
+      maxNumRetries: (map['maxNumRetries'] as int).input(),
+      retryStrategy: (map['retryStrategy'] as String).input(),
     );
   }
 }

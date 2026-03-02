@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains informations about the security report results.
 class GoogleCloudApigeeV1SecurityReportResultMetadataResponse {
   /// Expire_time is set to 7 days after report creation. Query result will be unaccessable after this time. Example: "2021-05-04T13:38:52-07:00"
-  final String expires;
+  final pulumi.Input<String> expires;
   /// Self link of the query results. Example: `/organizations/myorg/environments/myenv/securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
-  final String self;
+  final pulumi.Input<String> self;
 
   /// Creates a new [GoogleCloudApigeeV1SecurityReportResultMetadataResponse].
   /// [expires] Expire_time is set to 7 days after report creation. Query result will be unaccessable after this time. Example: "2021-05-04T13:38:52-07:00"
@@ -25,8 +26,8 @@ class GoogleCloudApigeeV1SecurityReportResultMetadataResponse {
 
   factory GoogleCloudApigeeV1SecurityReportResultMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityReportResultMetadataResponse(
-      expires: map['expires'] as String,
-      self: map['self'] as String,
+      expires: (map['expires'] as String).input(),
+      self: (map['self'] as String).input(),
     );
   }
 }

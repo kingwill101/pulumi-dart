@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDropletAutoscaleCurrentUtilization {
   /// Average CPU utilization
-  final double cpu;
+  final pulumi.Input<double> cpu;
   /// Average Memory utilization
-  final double memory;
+  final pulumi.Input<double> memory;
 
   /// Creates a new [GetDropletAutoscaleCurrentUtilization].
   /// [cpu] Average CPU utilization
@@ -24,8 +25,8 @@ class GetDropletAutoscaleCurrentUtilization {
 
   factory GetDropletAutoscaleCurrentUtilization.fromMap(Map<String, dynamic> map) {
     return GetDropletAutoscaleCurrentUtilization(
-      cpu: map['cpu'] as double,
-      memory: map['memory'] as double,
+      cpu: (map['cpu'] as double).input(),
+      memory: (map['memory'] as double).input(),
     );
   }
 }

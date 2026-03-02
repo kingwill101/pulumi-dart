@@ -19,15 +19,11 @@ class IgnitionState {
   /// [path] Full path to the generated ignition file
   /// [size] Size of the file in bytes
   IgnitionState({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? path,
-    pulumi.Output<double>? size,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      size = pulumi.Input.asOptionalInput<double>(size);
+    this.content,
+    this.name,
+    this.path,
+    this.size,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class IgnitionState {
 
   factory IgnitionState.fromMap(Map<String, dynamic> map) {
     return IgnitionState(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<double>(map['size'] as double),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as double).input(),
     );
   }
 }

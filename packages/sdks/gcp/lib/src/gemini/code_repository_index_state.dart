@@ -49,31 +49,19 @@ class CodeRepositoryIndexState {
   /// [state] Output only. Code Repository Index instance State.
   /// [updateTime] Output only. Update time stamp.
   CodeRepositoryIndexState({
-    pulumi.Output<String>? codeRepositoryIndexId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? updateTime,
-  }) :
-      codeRepositoryIndexId = pulumi.Input.asOptionalInput<String>(codeRepositoryIndexId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.codeRepositoryIndexId,
+    this.createTime,
+    this.effectiveLabels,
+    this.forceDestroy,
+    this.kmsKey,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.state,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class CodeRepositoryIndexState {
 
   factory CodeRepositoryIndexState.fromMap(Map<String, dynamic> map) {
     return CodeRepositoryIndexState(
-      codeRepositoryIndexId: map['codeRepositoryIndexId'] == null ? null : pulumi.Output.create<String>(map['codeRepositoryIndexId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      codeRepositoryIndexId: map['codeRepositoryIndexId'] == null ? null : (map['codeRepositoryIndexId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

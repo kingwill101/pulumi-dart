@@ -12,43 +12,43 @@ import 'sub_resource.dart';
 /// Public IP address resource.
 class PublicIPAddress {
   /// The DDoS protection custom policy associated with the public IP address.
-  final DdosSettings? ddosSettings;
+  final pulumi.Input<DdosSettings>? ddosSettings;
   /// Specify what happens to the public IP address when the VM using it is deleted
-  final String? deleteOption;
+  final pulumi.Input<String>? deleteOption;
   /// The FQDN of the DNS record associated with the public IP address.
-  final PublicIPAddressDnsSettings? dnsSettings;
+  final pulumi.Input<PublicIPAddressDnsSettings>? dnsSettings;
   /// The extended location of the public ip address.
-  final ExtendedLocation? extendedLocation;
+  final pulumi.Input<ExtendedLocation>? extendedLocation;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The idle timeout of the public IP address.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// The IP address associated with the public IP address resource.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The list of tags associated with the public IP address.
-  final List<IpTag>? ipTags;
+  final pulumi.Input<List<IpTag>>? ipTags;
   /// The linked public IP address of the public IP address resource.
-  final PublicIPAddress? linkedPublicIPAddress;
+  final pulumi.Input<PublicIPAddress>? linkedPublicIPAddress;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Migration phase of Public IP Address.
-  final String? migrationPhase;
+  final pulumi.Input<String>? migrationPhase;
   /// The NatGateway for the Public IP address.
-  final NatGateway? natGateway;
+  final pulumi.Input<NatGateway>? natGateway;
   /// The public IP address version.
-  final String? publicIPAddressVersion;
+  final pulumi.Input<String>? publicIPAddressVersion;
   /// The public IP address allocation method.
-  final String? publicIPAllocationMethod;
+  final pulumi.Input<String>? publicIPAllocationMethod;
   /// The Public IP Prefix this Public IP Address should be allocated from.
-  final SubResource? publicIPPrefix;
+  final pulumi.Input<SubResource>? publicIPPrefix;
   /// The service public IP address of the public IP address resource.
-  final PublicIPAddress? servicePublicIPAddress;
+  final pulumi.Input<PublicIPAddress>? servicePublicIPAddress;
   /// The public IP address SKU.
-  final PublicIPAddressSku? sku;
+  final pulumi.Input<PublicIPAddressSku>? sku;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
-  final List<String>? zones;
+  final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [PublicIPAddress].
   /// [ddosSettings] The DDoS protection custom policy associated with the public IP address.
@@ -94,23 +94,23 @@ class PublicIPAddress {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ddosSettings': ?ddosSettings == null ? null : ddosSettings!.toMap(),
+      'ddosSettings': ?pulumi.Input.mapOptionalInputValue<DdosSettings, Map<String, dynamic>>(ddosSettings, (value) => value.toMap()),
       'deleteOption': ?deleteOption,
-      'dnsSettings': ?dnsSettings == null ? null : dnsSettings!.toMap(),
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'dnsSettings': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressDnsSettings, Map<String, dynamic>>(dnsSettings, (value) => value.toMap()),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'id': ?id,
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
       'ipAddress': ?ipAddress,
-      'ipTags': ?ipTags == null ? null : pulumi.Input.encodeList<IpTag, Map<String, dynamic>>(ipTags!, (value) => value.toMap()),
-      'linkedPublicIPAddress': ?linkedPublicIPAddress == null ? null : linkedPublicIPAddress!.toMap(),
+      'ipTags': ?pulumi.Input.mapOptionalInputValue<List<IpTag>, List<Map<String, dynamic>>>(ipTags, (value) => pulumi.Input.encodeList<IpTag, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'linkedPublicIPAddress': ?pulumi.Input.mapOptionalInputValue<PublicIPAddress, Map<String, dynamic>>(linkedPublicIPAddress, (value) => value.toMap()),
       'location': ?location,
       'migrationPhase': ?migrationPhase,
-      'natGateway': ?natGateway == null ? null : natGateway!.toMap(),
+      'natGateway': ?pulumi.Input.mapOptionalInputValue<NatGateway, Map<String, dynamic>>(natGateway, (value) => value.toMap()),
       'publicIPAddressVersion': ?publicIPAddressVersion,
       'publicIPAllocationMethod': ?publicIPAllocationMethod,
-      'publicIPPrefix': ?publicIPPrefix == null ? null : publicIPPrefix!.toMap(),
-      'servicePublicIPAddress': ?servicePublicIPAddress == null ? null : servicePublicIPAddress!.toMap(),
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'publicIPPrefix': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(publicIPPrefix, (value) => value.toMap()),
+      'servicePublicIPAddress': ?pulumi.Input.mapOptionalInputValue<PublicIPAddress, Map<String, dynamic>>(servicePublicIPAddress, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
       'zones': ?zones,
     };
@@ -118,25 +118,25 @@ class PublicIPAddress {
 
   factory PublicIPAddress.fromMap(Map<String, dynamic> map) {
     return PublicIPAddress(
-      ddosSettings: map['ddosSettings'] == null ? null : DdosSettings.fromMap((map['ddosSettings'] as Map).cast<String, dynamic>()),
-      deleteOption: map['deleteOption'] == null ? null : map['deleteOption'] as String,
-      dnsSettings: map['dnsSettings'] == null ? null : PublicIPAddressDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>()),
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      ipTags: map['ipTags'] == null ? null : pulumi.Input.decodeList<IpTag>(map['ipTags'], (value) => IpTag.fromMap((value as Map).cast<String, dynamic>())),
-      linkedPublicIPAddress: map['linkedPublicIPAddress'] == null ? null : PublicIPAddress.fromMap((map['linkedPublicIPAddress'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
-      migrationPhase: map['migrationPhase'] == null ? null : map['migrationPhase'] as String,
-      natGateway: map['natGateway'] == null ? null : NatGateway.fromMap((map['natGateway'] as Map).cast<String, dynamic>()),
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : map['publicIPAddressVersion'] as String,
-      publicIPAllocationMethod: map['publicIPAllocationMethod'] == null ? null : map['publicIPAllocationMethod'] as String,
-      publicIPPrefix: map['publicIPPrefix'] == null ? null : SubResource.fromMap((map['publicIPPrefix'] as Map).cast<String, dynamic>()),
-      servicePublicIPAddress: map['servicePublicIPAddress'] == null ? null : PublicIPAddress.fromMap((map['servicePublicIPAddress'] as Map).cast<String, dynamic>()),
-      sku: map['sku'] == null ? null : PublicIPAddressSku.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      ddosSettings: map['ddosSettings'] == null ? null : (DdosSettings.fromMap((map['ddosSettings'] as Map).cast<String, dynamic>())).input(),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (PublicIPAddressDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<IpTag>(map['ipTags'], (value) => IpTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linkedPublicIPAddress: map['linkedPublicIPAddress'] == null ? null : (PublicIPAddress.fromMap((map['linkedPublicIPAddress'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      migrationPhase: map['migrationPhase'] == null ? null : (map['migrationPhase'] as String).input(),
+      natGateway: map['natGateway'] == null ? null : (NatGateway.fromMap((map['natGateway'] as Map).cast<String, dynamic>())).input(),
+      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion'] as String).input(),
+      publicIPAllocationMethod: map['publicIPAllocationMethod'] == null ? null : (map['publicIPAllocationMethod'] as String).input(),
+      publicIPPrefix: map['publicIPPrefix'] == null ? null : (SubResource.fromMap((map['publicIPPrefix'] as Map).cast<String, dynamic>())).input(),
+      servicePublicIPAddress: map['servicePublicIPAddress'] == null ? null : (PublicIPAddress.fromMap((map['servicePublicIPAddress'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (PublicIPAddressSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

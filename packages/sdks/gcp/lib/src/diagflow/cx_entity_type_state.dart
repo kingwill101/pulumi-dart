@@ -55,27 +55,17 @@ class CxEntityTypeState {
   /// [parent] The agent to create a entity type for.
   /// [redact] Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
   CxEntityTypeState({
-    pulumi.Output<String>? autoExpansionMode,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enableFuzzyExtraction,
-    pulumi.Output<List<CxEntityTypeEntity>>? entities,
-    pulumi.Output<List<CxEntityTypeExcludedPhrase>>? excludedPhrases,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<bool>? redact,
-  }) :
-      autoExpansionMode = pulumi.Input.asOptionalInput<String>(autoExpansionMode),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enableFuzzyExtraction = pulumi.Input.asOptionalInput<bool>(enableFuzzyExtraction),
-      entities = pulumi.Input.asOptionalInput<List<CxEntityTypeEntity>>(entities),
-      excludedPhrases = pulumi.Input.asOptionalInput<List<CxEntityTypeExcludedPhrase>>(excludedPhrases),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      redact = pulumi.Input.asOptionalInput<bool>(redact);
+    this.autoExpansionMode,
+    this.displayName,
+    this.enableFuzzyExtraction,
+    this.entities,
+    this.excludedPhrases,
+    this.kind,
+    this.languageCode,
+    this.name,
+    this.parent,
+    this.redact,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,16 +84,16 @@ class CxEntityTypeState {
 
   factory CxEntityTypeState.fromMap(Map<String, dynamic> map) {
     return CxEntityTypeState(
-      autoExpansionMode: map['autoExpansionMode'] == null ? null : pulumi.Output.create<String>(map['autoExpansionMode'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : pulumi.Output.create<bool>(map['enableFuzzyExtraction'] as bool),
-      entities: map['entities'] == null ? null : pulumi.Output.create<List<CxEntityTypeEntity>>(pulumi.Input.decodeList<CxEntityTypeEntity>(map['entities'], (value) => CxEntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))),
-      excludedPhrases: map['excludedPhrases'] == null ? null : pulumi.Output.create<List<CxEntityTypeExcludedPhrase>>(pulumi.Input.decodeList<CxEntityTypeExcludedPhrase>(map['excludedPhrases'], (value) => CxEntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>()))),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      redact: map['redact'] == null ? null : pulumi.Output.create<bool>(map['redact'] as bool),
+      autoExpansionMode: map['autoExpansionMode'] == null ? null : (map['autoExpansionMode'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction'] as bool).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<CxEntityTypeEntity>(map['entities'], (value) => CxEntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludedPhrases: map['excludedPhrases'] == null ? null : (pulumi.Input.decodeList<CxEntityTypeExcludedPhrase>(map['excludedPhrases'], (value) => CxEntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      redact: map['redact'] == null ? null : (map['redact'] as bool).input(),
     );
   }
 }

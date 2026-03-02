@@ -17,11 +17,9 @@ class GetRequiredAmlFSSubnetsSizeArgs {
   /// [sku] SKU for the resource.
   /// [storageCapacityTiB] The size of the AML file system, in TiB.
   GetRequiredAmlFSSubnetsSizeArgs({
-    pulumi.Output<SkuName>? sku,
-    pulumi.Output<double>? storageCapacityTiB,
-  }) :
-      sku = pulumi.Input.asOptionalInput<SkuName>(sku),
-      storageCapacityTiB = pulumi.Input.asOptionalInput<double>(storageCapacityTiB);
+    this.sku,
+    this.storageCapacityTiB,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetRequiredAmlFSSubnetsSizeArgs {
 
   factory GetRequiredAmlFSSubnetsSizeArgs.fromMap(Map<String, dynamic> map) {
     return GetRequiredAmlFSSubnetsSizeArgs(
-      sku: map['sku'] == null ? null : pulumi.Output.create<SkuName>(SkuName.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      storageCapacityTiB: map['storageCapacityTiB'] == null ? null : pulumi.Output.create<double>(map['storageCapacityTiB'] as double),
+      sku: map['sku'] == null ? null : (SkuName.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      storageCapacityTiB: map['storageCapacityTiB'] == null ? null : (map['storageCapacityTiB'] as double).input(),
     );
   }
 }

@@ -51,33 +51,20 @@ class TopicSubscriptionArgs {
   /// [subscriptionRoleArn] ARN of the IAM role to publish to Kinesis Data Firehose delivery stream. Refer to [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html).
   /// [topic] ARN of the SNS topic to subscribe to.
   TopicSubscriptionArgs({
-    pulumi.Output<int>? confirmationTimeoutInMinutes,
-    pulumi.Output<String>? deliveryPolicy,
-    required pulumi.Output<String> endpoint,
-    pulumi.Output<bool>? endpointAutoConfirms,
-    pulumi.Output<String>? filterPolicy,
-    pulumi.Output<String>? filterPolicyScope,
-    required pulumi.Output<String> protocol,
-    pulumi.Output<bool>? rawMessageDelivery,
-    pulumi.Output<String>? redrivePolicy,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? replayPolicy,
-    pulumi.Output<String>? subscriptionRoleArn,
-    required pulumi.Output<String> topic,
-  }) :
-      confirmationTimeoutInMinutes = pulumi.Input.asOptionalInput<int>(confirmationTimeoutInMinutes),
-      deliveryPolicy = pulumi.Input.asOptionalInput<String>(deliveryPolicy),
-      endpoint = pulumi.Input.asInput<String>(endpoint),
-      endpointAutoConfirms = pulumi.Input.asOptionalInput<bool>(endpointAutoConfirms),
-      filterPolicy = pulumi.Input.asOptionalInput<String>(filterPolicy),
-      filterPolicyScope = pulumi.Input.asOptionalInput<String>(filterPolicyScope),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      rawMessageDelivery = pulumi.Input.asOptionalInput<bool>(rawMessageDelivery),
-      redrivePolicy = pulumi.Input.asOptionalInput<String>(redrivePolicy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replayPolicy = pulumi.Input.asOptionalInput<String>(replayPolicy),
-      subscriptionRoleArn = pulumi.Input.asOptionalInput<String>(subscriptionRoleArn),
-      topic = pulumi.Input.asInput<String>(topic);
+    this.confirmationTimeoutInMinutes,
+    this.deliveryPolicy,
+    required this.endpoint,
+    this.endpointAutoConfirms,
+    this.filterPolicy,
+    this.filterPolicyScope,
+    required this.protocol,
+    this.rawMessageDelivery,
+    this.redrivePolicy,
+    this.region,
+    this.replayPolicy,
+    this.subscriptionRoleArn,
+    required this.topic,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class TopicSubscriptionArgs {
 
   factory TopicSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return TopicSubscriptionArgs(
-      confirmationTimeoutInMinutes: map['confirmationTimeoutInMinutes'] == null ? null : pulumi.Output.create<int>(map['confirmationTimeoutInMinutes'] as int),
-      deliveryPolicy: map['deliveryPolicy'] == null ? null : pulumi.Output.create<String>(map['deliveryPolicy'] as String),
-      endpoint: pulumi.Output.create<String>(map['endpoint'] as String),
-      endpointAutoConfirms: map['endpointAutoConfirms'] == null ? null : pulumi.Output.create<bool>(map['endpointAutoConfirms'] as bool),
-      filterPolicy: map['filterPolicy'] == null ? null : pulumi.Output.create<String>(map['filterPolicy'] as String),
-      filterPolicyScope: map['filterPolicyScope'] == null ? null : pulumi.Output.create<String>(map['filterPolicyScope'] as String),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      rawMessageDelivery: map['rawMessageDelivery'] == null ? null : pulumi.Output.create<bool>(map['rawMessageDelivery'] as bool),
-      redrivePolicy: map['redrivePolicy'] == null ? null : pulumi.Output.create<String>(map['redrivePolicy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replayPolicy: map['replayPolicy'] == null ? null : pulumi.Output.create<String>(map['replayPolicy'] as String),
-      subscriptionRoleArn: map['subscriptionRoleArn'] == null ? null : pulumi.Output.create<String>(map['subscriptionRoleArn'] as String),
-      topic: pulumi.Output.create<String>(map['topic'] as String),
+      confirmationTimeoutInMinutes: map['confirmationTimeoutInMinutes'] == null ? null : (map['confirmationTimeoutInMinutes'] as int).input(),
+      deliveryPolicy: map['deliveryPolicy'] == null ? null : (map['deliveryPolicy'] as String).input(),
+      endpoint: (map['endpoint'] as String).input(),
+      endpointAutoConfirms: map['endpointAutoConfirms'] == null ? null : (map['endpointAutoConfirms'] as bool).input(),
+      filterPolicy: map['filterPolicy'] == null ? null : (map['filterPolicy'] as String).input(),
+      filterPolicyScope: map['filterPolicyScope'] == null ? null : (map['filterPolicyScope'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      rawMessageDelivery: map['rawMessageDelivery'] == null ? null : (map['rawMessageDelivery'] as bool).input(),
+      redrivePolicy: map['redrivePolicy'] == null ? null : (map['redrivePolicy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replayPolicy: map['replayPolicy'] == null ? null : (map['replayPolicy'] as String).input(),
+      subscriptionRoleArn: map['subscriptionRoleArn'] == null ? null : (map['subscriptionRoleArn'] as String).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrchestratedVirtualMachineScaleSetDataDisk {
   /// The type of Caching which should be used for this Data Disk. Possible values are None, ReadOnly and ReadWrite.
-  final String caching;
+  final pulumi.Input<String> caching;
   /// The create option which should be used for this Data Disk. Possible values are Empty and FromImage. Defaults to `Empty`. (FromImage should only be used if the source image includes data disks).
-  final String? createOption;
+  final pulumi.Input<String>? createOption;
   /// The ID of the Disk Encryption Set which should be used to encrypt the Data Disk. Changing this forces a new resource to be created.
-  final String? diskEncryptionSetId;
+  final pulumi.Input<String>? diskEncryptionSetId;
   /// The size of the Data Disk which should be created. Required if `create_option` is specified as `Empty`.
-  final int? diskSizeGb;
+  final pulumi.Input<int>? diskSizeGb;
   /// The Logical Unit Number of the Data Disk, which must be unique within the Virtual Machine. Required if `create_option` is specified as `Empty`.
-  final int? lun;
+  final pulumi.Input<int>? lun;
   /// The Type of Storage Account which should back this Data Disk. Possible values include `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS`, `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS` and `UltraSSD_LRS`.
-  final String storageAccountType;
+  final pulumi.Input<String> storageAccountType;
   /// Specifies the Read-Write IOPS for this Data Disk. Only settable when `storage_account_type` is `PremiumV2_LRS` or `UltraSSD_LRS`.
-  final int? ultraSsdDiskIopsReadWrite;
+  final pulumi.Input<int>? ultraSsdDiskIopsReadWrite;
   /// Specifies the bandwidth in MB per second for this Data Disk. Only settable when `storage_account_type` is `PremiumV2_LRS` or `UltraSSD_LRS`.
-  final int? ultraSsdDiskMbpsReadWrite;
+  final pulumi.Input<int>? ultraSsdDiskMbpsReadWrite;
   /// Specifies if Write Accelerator is enabled on the Data Disk. Defaults to `false`.
-  final bool? writeAcceleratorEnabled;
+  final pulumi.Input<bool>? writeAcceleratorEnabled;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetDataDisk].
   /// [caching] The type of Caching which should be used for this Data Disk. Possible values are None, ReadOnly and ReadWrite.
@@ -59,15 +60,15 @@ class OrchestratedVirtualMachineScaleSetDataDisk {
 
   factory OrchestratedVirtualMachineScaleSetDataDisk.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetDataDisk(
-      caching: map['caching'] as String,
-      createOption: map['createOption'] == null ? null : map['createOption'] as String,
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : map['diskEncryptionSetId'] as String,
-      diskSizeGb: map['diskSizeGb'] == null ? null : map['diskSizeGb'] as int,
-      lun: map['lun'] == null ? null : map['lun'] as int,
-      storageAccountType: map['storageAccountType'] as String,
-      ultraSsdDiskIopsReadWrite: map['ultraSsdDiskIopsReadWrite'] == null ? null : map['ultraSsdDiskIopsReadWrite'] as int,
-      ultraSsdDiskMbpsReadWrite: map['ultraSsdDiskMbpsReadWrite'] == null ? null : map['ultraSsdDiskMbpsReadWrite'] as int,
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : map['writeAcceleratorEnabled'] as bool,
+      caching: (map['caching'] as String).input(),
+      createOption: map['createOption'] == null ? null : (map['createOption'] as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
+      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
+      storageAccountType: (map['storageAccountType'] as String).input(),
+      ultraSsdDiskIopsReadWrite: map['ultraSsdDiskIopsReadWrite'] == null ? null : (map['ultraSsdDiskIopsReadWrite'] as int).input(),
+      ultraSsdDiskMbpsReadWrite: map['ultraSsdDiskMbpsReadWrite'] == null ? null : (map['ultraSsdDiskMbpsReadWrite'] as int).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecretReplica {
   /// ARN, Key ID, or Alias of the AWS KMS key within the region secret is replicated to. If one is not specified, then Secrets Manager defaults to using the AWS account's default KMS key (`aws/secretsmanager`) in the region or creates one for use if non-existent.
-  final String? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
   /// Date that you last accessed the secret in the Region.
-  final String? lastAccessedDate;
+  final pulumi.Input<String>? lastAccessedDate;
   /// Region for replicating the secret.
-  final String region;
+  final pulumi.Input<String> region;
   /// Status can be `InProgress`, `Failed`, or `InSync`.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Message such as `Replication succeeded` or `Secret with this name already exists in this region`.
-  final String? statusMessage;
+  final pulumi.Input<String>? statusMessage;
 
   /// Creates a new [SecretReplica].
   /// [kmsKeyId] ARN, Key ID, or Alias of the AWS KMS key within the region secret is replicated to. If one is not specified, then Secrets Manager defaults to using the AWS account's default KMS key (`aws/secretsmanager`) in the region or creates one for use if non-existent.
@@ -39,11 +40,11 @@ class SecretReplica {
 
   factory SecretReplica.fromMap(Map<String, dynamic> map) {
     return SecretReplica(
-      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      lastAccessedDate: map['lastAccessedDate'] == null ? null : map['lastAccessedDate'] as String,
-      region: map['region'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      statusMessage: map['statusMessage'] == null ? null : map['statusMessage'] as String,
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      lastAccessedDate: map['lastAccessedDate'] == null ? null : (map['lastAccessedDate'] as String).input(),
+      region: (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
     );
   }
 }

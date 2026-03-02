@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VectorsVectorBucketEncryptionConfiguration {
   /// AWS KMS CMK ARN to use for the default encryption of the vector bucket. Allowed if and only if `sse_type` is set to `aws:kms`.
-  final String kmsKeyArn;
+  final pulumi.Input<String> kmsKeyArn;
   /// Server-side encryption type to use for the default encryption of the vector bucket. Valid values: `AES256`, `aws:kms`.
-  final String sseType;
+  final pulumi.Input<String> sseType;
 
   /// Creates a new [VectorsVectorBucketEncryptionConfiguration].
   /// [kmsKeyArn] AWS KMS CMK ARN to use for the default encryption of the vector bucket. Allowed if and only if `sse_type` is set to `aws:kms`.
@@ -24,8 +25,8 @@ class VectorsVectorBucketEncryptionConfiguration {
 
   factory VectorsVectorBucketEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return VectorsVectorBucketEncryptionConfiguration(
-      kmsKeyArn: map['kmsKeyArn'] as String,
-      sseType: map['sseType'] as String,
+      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
+      sseType: (map['sseType'] as String).input(),
     );
   }
 }

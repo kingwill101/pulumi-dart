@@ -30,19 +30,13 @@ class ServerArgs {
   /// [sku] The SKU (pricing tier) of the server.
   /// [tags] Application-specific metadata in the form of key-value pairs.
   ServerArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<ServerPropertiesForDefaultCreate> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serverName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<ServerPropertiesForDefaultCreate>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asOptionalInput<String>(serverName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    required this.properties,
+    required this.resourceGroupName,
+    this.serverName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class ServerArgs {
 
   factory ServerArgs.fromMap(Map<String, dynamic> map) {
     return ServerArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<ServerPropertiesForDefaultCreate>(ServerPropertiesForDefaultCreate.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: map['serverName'] == null ? null : pulumi.Output.create<String>(map['serverName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (ServerPropertiesForDefaultCreate.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

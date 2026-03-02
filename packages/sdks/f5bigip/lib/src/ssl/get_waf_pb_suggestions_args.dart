@@ -22,15 +22,11 @@ class GetWafPbSuggestionsArgs {
   /// [policyId] System generated id of the WAF policy
   /// [policyName] WAF policy name from which PB suggestions should be exported.
   GetWafPbSuggestionsArgs({
-    required pulumi.Output<int> minimumLearningScore,
-    required pulumi.Output<String> partition,
-    pulumi.Output<String>? policyId,
-    required pulumi.Output<String> policyName,
-  }) :
-      minimumLearningScore = pulumi.Input.asInput<int>(minimumLearningScore),
-      partition = pulumi.Input.asInput<String>(partition),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      policyName = pulumi.Input.asInput<String>(policyName);
+    required this.minimumLearningScore,
+    required this.partition,
+    this.policyId,
+    required this.policyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWafPbSuggestionsArgs {
 
   factory GetWafPbSuggestionsArgs.fromMap(Map<String, dynamic> map) {
     return GetWafPbSuggestionsArgs(
-      minimumLearningScore: pulumi.Output.create<int>(map['minimumLearningScore'] as int),
-      partition: pulumi.Output.create<String>(map['partition'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
+      minimumLearningScore: (map['minimumLearningScore'] as int).input(),
+      partition: (map['partition'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
     );
   }
 }

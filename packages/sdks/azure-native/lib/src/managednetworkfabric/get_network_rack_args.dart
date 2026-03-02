@@ -16,11 +16,9 @@ class GetNetworkRackArgs {
   /// [networkRackName] Name of the Network Rack.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNetworkRackArgs({
-    required pulumi.Output<String> networkRackName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkRackName = pulumi.Input.asInput<String>(networkRackName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkRackName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkRackArgs {
 
   factory GetNetworkRackArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkRackArgs(
-      networkRackName: pulumi.Output.create<String>(map['networkRackName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkRackName: (map['networkRackName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

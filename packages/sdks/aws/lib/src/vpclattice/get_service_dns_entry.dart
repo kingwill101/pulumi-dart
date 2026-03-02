@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceDnsEntry {
   /// DNS name for the service.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// Hosted zone ID where the DNS name is registered.
-  final String hostedZoneId;
+  final pulumi.Input<String> hostedZoneId;
 
   /// Creates a new [GetServiceDnsEntry].
   /// [domainName] DNS name for the service.
@@ -24,8 +25,8 @@ class GetServiceDnsEntry {
 
   factory GetServiceDnsEntry.fromMap(Map<String, dynamic> map) {
     return GetServiceDnsEntry(
-      domainName: map['domainName'] as String,
-      hostedZoneId: map['hostedZoneId'] as String,
+      domainName: (map['domainName'] as String).input(),
+      hostedZoneId: (map['hostedZoneId'] as String).input(),
     );
   }
 }

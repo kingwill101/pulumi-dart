@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionEventingConfigRegistrationDestinationConfigDestination {
   /// Host
-  final String? host;
+  final pulumi.Input<String>? host;
   /// port number
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Service Attachment
-  final String? serviceAttachment;
+  final pulumi.Input<String>? serviceAttachment;
 
   /// Creates a new [ConnectionEventingConfigRegistrationDestinationConfigDestination].
   /// [host] Host
@@ -29,9 +30,9 @@ class ConnectionEventingConfigRegistrationDestinationConfigDestination {
 
   factory ConnectionEventingConfigRegistrationDestinationConfigDestination.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingConfigRegistrationDestinationConfigDestination(
-      host: map['host'] == null ? null : map['host'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      serviceAttachment: map['serviceAttachment'] == null ? null : map['serviceAttachment'] as String,
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
     );
   }
 }

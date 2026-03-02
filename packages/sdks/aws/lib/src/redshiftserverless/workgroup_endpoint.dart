@@ -5,11 +5,11 @@ import 'workgroup_endpoint_vpc_endpoint.dart';
 
 class WorkgroupEndpoint {
   /// The DNS address of the VPC endpoint.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// The port number on which the cluster accepts incoming connections.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The VPC endpoint or the Redshift Serverless workgroup. See `VPC Endpoint` below.
-  final List<WorkgroupEndpointVpcEndpoint>? vpcEndpoints;
+  final pulumi.Input<List<WorkgroupEndpointVpcEndpoint>>? vpcEndpoints;
 
   /// Creates a new [WorkgroupEndpoint].
   /// [address] The DNS address of the VPC endpoint.
@@ -25,15 +25,15 @@ class WorkgroupEndpoint {
     return <String, dynamic>{
       'address': ?address,
       'port': ?port,
-      'vpcEndpoints': ?vpcEndpoints == null ? null : pulumi.Input.encodeList<WorkgroupEndpointVpcEndpoint, Map<String, dynamic>>(vpcEndpoints!, (value) => value.toMap()),
+      'vpcEndpoints': ?pulumi.Input.mapOptionalInputValue<List<WorkgroupEndpointVpcEndpoint>, List<Map<String, dynamic>>>(vpcEndpoints, (value) => pulumi.Input.encodeList<WorkgroupEndpointVpcEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WorkgroupEndpoint.fromMap(Map<String, dynamic> map) {
     return WorkgroupEndpoint(
-      address: map['address'] == null ? null : map['address'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      vpcEndpoints: map['vpcEndpoints'] == null ? null : pulumi.Input.decodeList<WorkgroupEndpointVpcEndpoint>(map['vpcEndpoints'], (value) => WorkgroupEndpointVpcEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      vpcEndpoints: map['vpcEndpoints'] == null ? null : (pulumi.Input.decodeList<WorkgroupEndpointVpcEndpoint>(map['vpcEndpoints'], (value) => WorkgroupEndpointVpcEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

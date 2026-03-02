@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VerticalPodAutoscaling contains global, per-cluster information required by Vertical Pod Autoscaler to automatically adjust the resources of pods controlled by it.
 class VerticalPodAutoscalingResponse {
   /// Enables vertical pod autoscaling.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [VerticalPodAutoscalingResponse].
   /// [enabled] Enables vertical pod autoscaling.
@@ -20,7 +21,7 @@ class VerticalPodAutoscalingResponse {
 
   factory VerticalPodAutoscalingResponse.fromMap(Map<String, dynamic> map) {
     return VerticalPodAutoscalingResponse(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

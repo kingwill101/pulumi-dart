@@ -16,11 +16,9 @@ class GetResolverFirewallRuleGroupAssociationArgs {
   /// [firewallRuleGroupAssociationId] The identifier for the association.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetResolverFirewallRuleGroupAssociationArgs({
-    required pulumi.Output<String> firewallRuleGroupAssociationId,
-    pulumi.Output<String>? region,
-  }) :
-      firewallRuleGroupAssociationId = pulumi.Input.asInput<String>(firewallRuleGroupAssociationId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.firewallRuleGroupAssociationId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResolverFirewallRuleGroupAssociationArgs {
 
   factory GetResolverFirewallRuleGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallRuleGroupAssociationArgs(
-      firewallRuleGroupAssociationId: pulumi.Output.create<String>(map['firewallRuleGroupAssociationId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      firewallRuleGroupAssociationId: (map['firewallRuleGroupAssociationId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

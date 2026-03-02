@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainConfigurationTlsConfig {
   /// The security policy for a domain configuration.
-  final String? securityPolicy;
+  final pulumi.Input<String>? securityPolicy;
 
   /// Creates a new [DomainConfigurationTlsConfig].
   /// [securityPolicy] The security policy for a domain configuration.
@@ -19,7 +20,7 @@ class DomainConfigurationTlsConfig {
 
   factory DomainConfigurationTlsConfig.fromMap(Map<String, dynamic> map) {
     return DomainConfigurationTlsConfig(
-      securityPolicy: map['securityPolicy'] == null ? null : map['securityPolicy'] as String,
+      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy'] as String).input(),
     );
   }
 }

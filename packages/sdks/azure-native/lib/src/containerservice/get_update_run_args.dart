@@ -19,13 +19,10 @@ class GetUpdateRunArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [updateRunName] The name of the UpdateRun resource.
   GetUpdateRunArgs({
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> updateRunName,
-  }) :
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      updateRunName = pulumi.Input.asInput<String>(updateRunName);
+    required this.fleetName,
+    required this.resourceGroupName,
+    required this.updateRunName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetUpdateRunArgs {
 
   factory GetUpdateRunArgs.fromMap(Map<String, dynamic> map) {
     return GetUpdateRunArgs(
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      updateRunName: pulumi.Output.create<String>(map['updateRunName'] as String),
+      fleetName: (map['fleetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      updateRunName: (map['updateRunName'] as String).input(),
     );
   }
 }

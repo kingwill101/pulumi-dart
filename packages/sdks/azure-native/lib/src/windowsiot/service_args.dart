@@ -34,23 +34,15 @@ class ServiceArgs {
   /// [resourceGroupName] The name of the resource group that contains the Windows IoT Device Service.
   /// [tags] Resource tags.
   ServiceArgs({
-    pulumi.Output<String>? adminDomainName,
-    pulumi.Output<String>? billingDomainName,
-    pulumi.Output<String>? deviceName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? notes,
-    pulumi.Output<double>? quantity,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      adminDomainName = pulumi.Input.asOptionalInput<String>(adminDomainName),
-      billingDomainName = pulumi.Input.asOptionalInput<String>(billingDomainName),
-      deviceName = pulumi.Input.asOptionalInput<String>(deviceName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      quantity = pulumi.Input.asOptionalInput<double>(quantity),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.adminDomainName,
+    this.billingDomainName,
+    this.deviceName,
+    this.location,
+    this.notes,
+    this.quantity,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      adminDomainName: map['adminDomainName'] == null ? null : pulumi.Output.create<String>(map['adminDomainName'] as String),
-      billingDomainName: map['billingDomainName'] == null ? null : pulumi.Output.create<String>(map['billingDomainName'] as String),
-      deviceName: map['deviceName'] == null ? null : pulumi.Output.create<String>(map['deviceName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      quantity: map['quantity'] == null ? null : pulumi.Output.create<double>(map['quantity'] as double),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      adminDomainName: map['adminDomainName'] == null ? null : (map['adminDomainName'] as String).input(),
+      billingDomainName: map['billingDomainName'] == null ? null : (map['billingDomainName'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity'] as double).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

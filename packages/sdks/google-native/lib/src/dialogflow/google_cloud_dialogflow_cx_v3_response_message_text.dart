@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The text response message.
 class GoogleCloudDialogflowCxV3ResponseMessageText {
   /// A collection of text responses.
-  final List<String> text;
+  final pulumi.Input<List<String>> text;
 
   /// Creates a new [GoogleCloudDialogflowCxV3ResponseMessageText].
   /// [text] A collection of text responses.
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageText {
 
   factory GoogleCloudDialogflowCxV3ResponseMessageText.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ResponseMessageText(
-      text: (map['text'] as List).cast<String>(),
+      text: ((map['text'] as List).cast<String>()).input(),
     );
   }
 }

@@ -18,13 +18,10 @@ class GetSystemSecurityPoliciesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tags] Optional.
   GetSystemSecurityPoliciesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.ids,
+    this.outputFile,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetSystemSecurityPoliciesArgs {
 
   factory GetSystemSecurityPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetSystemSecurityPoliciesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

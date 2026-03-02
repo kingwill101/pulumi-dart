@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'elastic_encryption_configuration_response.dart';
 
 /// Elastic capacity pool properties
 class ElasticCapacityPoolPropertiesResponse {
   /// The Azure Resource URI for an Active Directory configuration. This is used by all the SMB volumes within the pool
-  final String? activeDirectoryConfigResourceId;
+  final pulumi.Input<String>? activeDirectoryConfigResourceId;
   /// Current availability status of the resource.
-  final String availabilityStatus;
+  final pulumi.Input<String> availabilityStatus;
   /// Indicates the current zone of the pool. This can be changed for zoneRedundant service level pool with the changeZone action
-  final String currentZone;
+  final pulumi.Input<String> currentZone;
   /// Encryption settings
-  final ElasticEncryptionConfigurationResponse? encryption;
+  final pulumi.Input<ElasticEncryptionConfigurationResponse>? encryption;
   /// Azure lifecycle management.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The service level of the elastic capacity pool
-  final String serviceLevel;
+  final pulumi.Input<String> serviceLevel;
   /// Provisioned size of the pool (in bytes). For zoneRedundant service level pool, value must be in the range 1TiB to 16TiB or 1TiB to 128TiB for supported region. Values expressed in bytes as multiples of 1TiB till 16TiB and in multiples of 8TiB from 24TiB to 128TiB. Pool size can't be shrunk once it is created.
-  final double size;
+  final pulumi.Input<double> size;
   /// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/elasticVolumes, this is used by all the volumes within the pool
-  final String subnetResourceId;
+  final pulumi.Input<String> subnetResourceId;
   /// Total throughput of the pool in MiB/s
-  final double totalThroughputMibps;
+  final pulumi.Input<double> totalThroughputMibps;
 
   /// Creates a new [ElasticCapacityPoolPropertiesResponse].
   /// [activeDirectoryConfigResourceId] The Azure Resource URI for an Active Directory configuration. This is used by all the SMB volumes within the pool
@@ -50,7 +51,7 @@ class ElasticCapacityPoolPropertiesResponse {
       'activeDirectoryConfigResourceId': ?activeDirectoryConfigResourceId,
       'availabilityStatus': availabilityStatus,
       'currentZone': currentZone,
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<ElasticEncryptionConfigurationResponse, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'serviceLevel': serviceLevel,
       'size': size,
@@ -61,15 +62,15 @@ class ElasticCapacityPoolPropertiesResponse {
 
   factory ElasticCapacityPoolPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticCapacityPoolPropertiesResponse(
-      activeDirectoryConfigResourceId: map['activeDirectoryConfigResourceId'] == null ? null : map['activeDirectoryConfigResourceId'] as String,
-      availabilityStatus: map['availabilityStatus'] as String,
-      currentZone: map['currentZone'] as String,
-      encryption: map['encryption'] == null ? null : ElasticEncryptionConfigurationResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      serviceLevel: map['serviceLevel'] as String,
-      size: map['size'] as double,
-      subnetResourceId: map['subnetResourceId'] as String,
-      totalThroughputMibps: map['totalThroughputMibps'] as double,
+      activeDirectoryConfigResourceId: map['activeDirectoryConfigResourceId'] == null ? null : (map['activeDirectoryConfigResourceId'] as String).input(),
+      availabilityStatus: (map['availabilityStatus'] as String).input(),
+      currentZone: (map['currentZone'] as String).input(),
+      encryption: map['encryption'] == null ? null : (ElasticEncryptionConfigurationResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      serviceLevel: (map['serviceLevel'] as String).input(),
+      size: (map['size'] as double).input(),
+      subnetResourceId: (map['subnetResourceId'] as String).input(),
+      totalThroughputMibps: (map['totalThroughputMibps'] as double).input(),
     );
   }
 }

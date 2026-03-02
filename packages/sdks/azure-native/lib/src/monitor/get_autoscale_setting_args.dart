@@ -16,11 +16,9 @@ class GetAutoscaleSettingArgs {
   /// [autoscaleSettingName] The autoscale setting name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAutoscaleSettingArgs({
-    required pulumi.Output<String> autoscaleSettingName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      autoscaleSettingName = pulumi.Input.asInput<String>(autoscaleSettingName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.autoscaleSettingName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAutoscaleSettingArgs {
 
   factory GetAutoscaleSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoscaleSettingArgs(
-      autoscaleSettingName: pulumi.Output.create<String>(map['autoscaleSettingName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      autoscaleSettingName: (map['autoscaleSettingName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class RouteEntryArgs {
   /// [vpnGatewayId] The id of the vpn gateway.
   /// [weight] The value should be 0 or 100.
   RouteEntryArgs({
-    required pulumi.Output<String> nextHop,
-    required pulumi.Output<bool> publishVpc,
-    required pulumi.Output<String> routeDest,
-    required pulumi.Output<String> vpnGatewayId,
-    required pulumi.Output<int> weight,
-  }) :
-      nextHop = pulumi.Input.asInput<String>(nextHop),
-      publishVpc = pulumi.Input.asInput<bool>(publishVpc),
-      routeDest = pulumi.Input.asInput<String>(routeDest),
-      vpnGatewayId = pulumi.Input.asInput<String>(vpnGatewayId),
-      weight = pulumi.Input.asInput<int>(weight);
+    required this.nextHop,
+    required this.publishVpc,
+    required this.routeDest,
+    required this.vpnGatewayId,
+    required this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class RouteEntryArgs {
 
   factory RouteEntryArgs.fromMap(Map<String, dynamic> map) {
     return RouteEntryArgs(
-      nextHop: pulumi.Output.create<String>(map['nextHop'] as String),
-      publishVpc: pulumi.Output.create<bool>(map['publishVpc'] as bool),
-      routeDest: pulumi.Output.create<String>(map['routeDest'] as String),
-      vpnGatewayId: pulumi.Output.create<String>(map['vpnGatewayId'] as String),
-      weight: pulumi.Output.create<int>(map['weight'] as int),
+      nextHop: (map['nextHop'] as String).input(),
+      publishVpc: (map['publishVpc'] as bool).input(),
+      routeDest: (map['routeDest'] as String).input(),
+      vpnGatewayId: (map['vpnGatewayId'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

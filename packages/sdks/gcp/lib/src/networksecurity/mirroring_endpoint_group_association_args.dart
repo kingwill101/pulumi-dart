@@ -37,19 +37,13 @@ class MirroringEndpointGroupAssociationArgs {
   /// [network] The VPC network that is associated. for example:
   /// [project] The ID of the project in which the resource belongs.
   MirroringEndpointGroupAssociationArgs({
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> mirroringEndpointGroup,
-    pulumi.Output<String>? mirroringEndpointGroupAssociationId,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? project,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      mirroringEndpointGroup = pulumi.Input.asInput<String>(mirroringEndpointGroup),
-      mirroringEndpointGroupAssociationId = pulumi.Input.asOptionalInput<String>(mirroringEndpointGroupAssociationId),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.labels,
+    required this.location,
+    required this.mirroringEndpointGroup,
+    this.mirroringEndpointGroupAssociationId,
+    required this.network,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,12 +58,12 @@ class MirroringEndpointGroupAssociationArgs {
 
   factory MirroringEndpointGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MirroringEndpointGroupAssociationArgs(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      mirroringEndpointGroup: pulumi.Output.create<String>(map['mirroringEndpointGroup'] as String),
-      mirroringEndpointGroupAssociationId: map['mirroringEndpointGroupAssociationId'] == null ? null : pulumi.Output.create<String>(map['mirroringEndpointGroupAssociationId'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      mirroringEndpointGroup: (map['mirroringEndpointGroup'] as String).input(),
+      mirroringEndpointGroupAssociationId: map['mirroringEndpointGroupAssociationId'] == null ? null : (map['mirroringEndpointGroupAssociationId'] as String).input(),
+      network: (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

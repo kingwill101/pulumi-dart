@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupAlternateIdentifierUniqueAttribute {
   /// Attribute path that is used to specify which attribute name to search. For example: `DisplayName`. Refer to the [Group data type](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html).
-  final String attributePath;
+  final pulumi.Input<String> attributePath;
   /// Value for an attribute.
-  final String attributeValue;
+  final pulumi.Input<String> attributeValue;
 
   /// Creates a new [GetGroupAlternateIdentifierUniqueAttribute].
   /// [attributePath] Attribute path that is used to specify which attribute name to search. For example: `DisplayName`. Refer to the [Group data type](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html).
@@ -24,8 +25,8 @@ class GetGroupAlternateIdentifierUniqueAttribute {
 
   factory GetGroupAlternateIdentifierUniqueAttribute.fromMap(Map<String, dynamic> map) {
     return GetGroupAlternateIdentifierUniqueAttribute(
-      attributePath: map['attributePath'] as String,
-      attributeValue: map['attributeValue'] as String,
+      attributePath: (map['attributePath'] as String).input(),
+      attributeValue: (map['attributeValue'] as String).input(),
     );
   }
 }

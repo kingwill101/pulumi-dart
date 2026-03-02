@@ -28,17 +28,12 @@ class AutoscalingPolicyIamPolicyState {
   /// [policyId] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   AutoscalingPolicyIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? project,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.etag,
+    this.location,
+    this.policyData,
+    this.policyId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class AutoscalingPolicyIamPolicyState {
 
   factory AutoscalingPolicyIamPolicyState.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudGatewayLocalResponseCachePerRoute {
   /// Specifies the maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
-  final String? size;
+  final pulumi.Input<String>? size;
   /// Specifies the time before a cached entry is expired (300s, 5m, 1h...).
-  final String? timeToLive;
+  final pulumi.Input<String>? timeToLive;
 
   /// Creates a new [SpringCloudGatewayLocalResponseCachePerRoute].
   /// [size] Specifies the maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
@@ -24,8 +25,8 @@ class SpringCloudGatewayLocalResponseCachePerRoute {
 
   factory SpringCloudGatewayLocalResponseCachePerRoute.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayLocalResponseCachePerRoute(
-      size: map['size'] == null ? null : map['size'] as String,
-      timeToLive: map['timeToLive'] == null ? null : map['timeToLive'] as String,
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as String).input(),
     );
   }
 }

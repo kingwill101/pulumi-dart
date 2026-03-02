@@ -30,15 +30,11 @@ class GetIstioCanonicalServiceArgs {
   /// [meshUid] Identifier for the mesh in which this Istio service is defined.
   /// [project] The ID of the project in which the resource belongs.
   GetIstioCanonicalServiceArgs({
-    required pulumi.Output<String> canonicalService,
-    required pulumi.Output<String> canonicalServiceNamespace,
-    required pulumi.Output<String> meshUid,
-    pulumi.Output<String>? project,
-  }) :
-      canonicalService = pulumi.Input.asInput<String>(canonicalService),
-      canonicalServiceNamespace = pulumi.Input.asInput<String>(canonicalServiceNamespace),
-      meshUid = pulumi.Input.asInput<String>(meshUid),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.canonicalService,
+    required this.canonicalServiceNamespace,
+    required this.meshUid,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,10 +47,10 @@ class GetIstioCanonicalServiceArgs {
 
   factory GetIstioCanonicalServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetIstioCanonicalServiceArgs(
-      canonicalService: pulumi.Output.create<String>(map['canonicalService'] as String),
-      canonicalServiceNamespace: pulumi.Output.create<String>(map['canonicalServiceNamespace'] as String),
-      meshUid: pulumi.Output.create<String>(map['meshUid'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      canonicalService: (map['canonicalService'] as String).input(),
+      canonicalServiceNamespace: (map['canonicalServiceNamespace'] as String).input(),
+      meshUid: (map['meshUid'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

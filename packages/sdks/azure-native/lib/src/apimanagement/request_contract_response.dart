@@ -7,13 +7,13 @@ import 'representation_contract_response.dart';
 /// Operation request details.
 class RequestContractResponse {
   /// Operation request description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Collection of operation request headers.
-  final List<ParameterContractResponse>? headers;
+  final pulumi.Input<List<ParameterContractResponse>>? headers;
   /// Collection of operation request query parameters.
-  final List<ParameterContractResponse>? queryParameters;
+  final pulumi.Input<List<ParameterContractResponse>>? queryParameters;
   /// Collection of operation request representations.
-  final List<RepresentationContractResponse>? representations;
+  final pulumi.Input<List<RepresentationContractResponse>>? representations;
 
   /// Creates a new [RequestContractResponse].
   /// [description] Operation request description.
@@ -30,18 +30,18 @@ class RequestContractResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<ParameterContractResponse, Map<String, dynamic>>(headers!, (value) => value.toMap()),
-      'queryParameters': ?queryParameters == null ? null : pulumi.Input.encodeList<ParameterContractResponse, Map<String, dynamic>>(queryParameters!, (value) => value.toMap()),
-      'representations': ?representations == null ? null : pulumi.Input.encodeList<RepresentationContractResponse, Map<String, dynamic>>(representations!, (value) => value.toMap()),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<ParameterContractResponse>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<ParameterContractResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'queryParameters': ?pulumi.Input.mapOptionalInputValue<List<ParameterContractResponse>, List<Map<String, dynamic>>>(queryParameters, (value) => pulumi.Input.encodeList<ParameterContractResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'representations': ?pulumi.Input.mapOptionalInputValue<List<RepresentationContractResponse>, List<Map<String, dynamic>>>(representations, (value) => pulumi.Input.encodeList<RepresentationContractResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RequestContractResponse.fromMap(Map<String, dynamic> map) {
     return RequestContractResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<ParameterContractResponse>(map['headers'], (value) => ParameterContractResponse.fromMap((value as Map).cast<String, dynamic>())),
-      queryParameters: map['queryParameters'] == null ? null : pulumi.Input.decodeList<ParameterContractResponse>(map['queryParameters'], (value) => ParameterContractResponse.fromMap((value as Map).cast<String, dynamic>())),
-      representations: map['representations'] == null ? null : pulumi.Input.decodeList<RepresentationContractResponse>(map['representations'], (value) => RepresentationContractResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<ParameterContractResponse>(map['headers'], (value) => ParameterContractResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryParameters: map['queryParameters'] == null ? null : (pulumi.Input.decodeList<ParameterContractResponse>(map['queryParameters'], (value) => ParameterContractResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      representations: map['representations'] == null ? null : (pulumi.Input.decodeList<RepresentationContractResponse>(map['representations'], (value) => RepresentationContractResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

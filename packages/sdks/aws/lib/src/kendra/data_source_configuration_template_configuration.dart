@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceConfigurationTemplateConfiguration {
   /// JSON string containing a [data source template schema](https://docs.aws.amazon.com/kendra/latest/dg/ds-schemas.html).
-  final String template;
+  final pulumi.Input<String> template;
 
   /// Creates a new [DataSourceConfigurationTemplateConfiguration].
   /// [template] JSON string containing a [data source template schema](https://docs.aws.amazon.com/kendra/latest/dg/ds-schemas.html).
@@ -19,7 +20,7 @@ class DataSourceConfigurationTemplateConfiguration {
 
   factory DataSourceConfigurationTemplateConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationTemplateConfiguration(
-      template: map['template'] as String,
+      template: (map['template'] as String).input(),
     );
   }
 }

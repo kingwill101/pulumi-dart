@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRestorableDatabaseAccountsAccountRestorableLocation {
   /// The creation time of the regional Cosmos DB Restorable Database Account.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// The deletion time of the regional Cosmos DB Restorable Database Account.
-  final String deletionTime;
+  final pulumi.Input<String> deletionTime;
   /// The location where the Cosmos DB Database Account.
-  final String location;
+  final pulumi.Input<String> location;
   /// The instance ID of the regional Cosmos DB Restorable Database Account.
-  final String regionalDatabaseAccountInstanceId;
+  final pulumi.Input<String> regionalDatabaseAccountInstanceId;
 
   /// Creates a new [GetRestorableDatabaseAccountsAccountRestorableLocation].
   /// [creationTime] The creation time of the regional Cosmos DB Restorable Database Account.
@@ -34,10 +35,10 @@ class GetRestorableDatabaseAccountsAccountRestorableLocation {
 
   factory GetRestorableDatabaseAccountsAccountRestorableLocation.fromMap(Map<String, dynamic> map) {
     return GetRestorableDatabaseAccountsAccountRestorableLocation(
-      creationTime: map['creationTime'] as String,
-      deletionTime: map['deletionTime'] as String,
-      location: map['location'] as String,
-      regionalDatabaseAccountInstanceId: map['regionalDatabaseAccountInstanceId'] as String,
+      creationTime: (map['creationTime'] as String).input(),
+      deletionTime: (map['deletionTime'] as String).input(),
+      location: (map['location'] as String).input(),
+      regionalDatabaseAccountInstanceId: (map['regionalDatabaseAccountInstanceId'] as String).input(),
     );
   }
 }

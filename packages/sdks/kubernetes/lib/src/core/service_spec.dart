@@ -7,53 +7,53 @@ import 'session_affinity_config.dart';
 /// ServiceSpec describes the attributes that a user creates on a service.
 class ServiceSpec {
   /// allocateLoadBalancerNodePorts defines if NodePorts will be automatically allocated for services with type LoadBalancer.  Default is "true". It may be set to "false" if the cluster load-balancer does not rely on NodePorts.  If the caller requests specific NodePorts (by specifying a value), those requests will be respected, regardless of this field. This field may only be set for services with type LoadBalancer and will be cleared if the type is changed to any other type.
-  final bool? allocateLoadBalancerNodePorts;
+  final pulumi.Input<bool>? allocateLoadBalancerNodePorts;
   /// clusterIP is the IP address of the service and is usually assigned randomly. If an address is specified manually, is in-range (as per system configuration), and is not in use, it will be allocated to the service; otherwise creation of the service will fail. This field may not be changed through updates unless the type field is also being changed to ExternalName (which requires this field to be blank) or the type field is being changed from ExternalName (in which case this field may optionally be specified, as describe above).  Valid values are "None", empty string (""), or a valid IP address. Setting this to "None" makes a "headless service" (no virtual IP), which is useful when direct endpoint connections are preferred and proxying is not required.  Only applies to types ClusterIP, NodePort, and LoadBalancer. If this field is specified when creating a Service of type ExternalName, creation will fail. This field will be wiped when updating a Service to type ExternalName. More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
-  final String? clusterIP;
+  final pulumi.Input<String>? clusterIP;
   /// ClusterIPs is a list of IP addresses assigned to this service, and are usually assigned randomly.  If an address is specified manually, is in-range (as per system configuration), and is not in use, it will be allocated to the service; otherwise creation of the service will fail. This field may not be changed through updates unless the type field is also being changed to ExternalName (which requires this field to be empty) or the type field is being changed from ExternalName (in which case this field may optionally be specified, as describe above).  Valid values are "None", empty string (""), or a valid IP address.  Setting this to "None" makes a "headless service" (no virtual IP), which is useful when direct endpoint connections are preferred and proxying is not required.  Only applies to types ClusterIP, NodePort, and LoadBalancer. If this field is specified when creating a Service of type ExternalName, creation will fail. This field will be wiped when updating a Service to type ExternalName.  If this field is not specified, it will be initialized from the clusterIP field.  If this field is specified, clients must ensure that clusterIPs[0] and clusterIP have the same value.
   ///
   /// This field may hold a maximum of two entries (dual-stack IPs, in either order). These IPs must correspond to the values of the ipFamilies field. Both clusterIPs and ipFamilies are governed by the ipFamilyPolicy field. More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
-  final List<String>? clusterIPs;
+  final pulumi.Input<List<String>>? clusterIPs;
   /// externalIPs is a list of IP addresses for which nodes in the cluster will also accept traffic for this service.  These IPs are not managed by Kubernetes.  The user is responsible for ensuring that traffic arrives at a node with this IP.  A common example is external load-balancers that are not part of the Kubernetes system.
-  final List<String>? externalIPs;
+  final pulumi.Input<List<String>>? externalIPs;
   /// externalName is the external reference that discovery mechanisms will return as an alias for this service (e.g. a DNS CNAME record). No proxying will be involved.  Must be a lowercase RFC-1123 hostname (https://tools.ietf.org/html/rfc1123) and requires `type` to be "ExternalName".
-  final String? externalName;
+  final pulumi.Input<String>? externalName;
   /// externalTrafficPolicy describes how nodes distribute service traffic they receive on one of the Service's "externally-facing" addresses (NodePorts, ExternalIPs, and LoadBalancer IPs). If set to "Local", the proxy will configure the service in a way that assumes that external load balancers will take care of balancing the service traffic between nodes, and so each node will deliver traffic only to the node-local endpoints of the service, without masquerading the client source IP. (Traffic mistakenly sent to a node with no endpoints will be dropped.) The default value, "Cluster", uses the standard behavior of routing to all endpoints evenly (possibly modified by topology and other features). Note that traffic sent to an External IP or LoadBalancer IP from within the cluster will always get "Cluster" semantics, but clients sending to a NodePort from within the cluster may need to take traffic policy into account when picking a node.
-  final String? externalTrafficPolicy;
+  final pulumi.Input<String>? externalTrafficPolicy;
   /// healthCheckNodePort specifies the healthcheck nodePort for the service. This only applies when type is set to LoadBalancer and externalTrafficPolicy is set to Local. If a value is specified, is in-range, and is not in use, it will be used.  If not specified, a value will be automatically allocated.  External systems (e.g. load-balancers) can use this port to determine if a given node holds endpoints for this service or not.  If this field is specified when creating a Service which does not need it, creation will fail. This field will be wiped when updating a Service to no longer need it (e.g. changing type). This field cannot be updated once set.
-  final int? healthCheckNodePort;
+  final pulumi.Input<int>? healthCheckNodePort;
   /// InternalTrafficPolicy describes how nodes distribute service traffic they receive on the ClusterIP. If set to "Local", the proxy will assume that pods only want to talk to endpoints of the service on the same node as the pod, dropping the traffic if there are no local endpoints. The default value, "Cluster", uses the standard behavior of routing to all endpoints evenly (possibly modified by topology and other features).
-  final String? internalTrafficPolicy;
+  final pulumi.Input<String>? internalTrafficPolicy;
   /// IPFamilies is a list of IP families (e.g. IPv4, IPv6) assigned to this service. This field is usually assigned automatically based on cluster configuration and the ipFamilyPolicy field. If this field is specified manually, the requested family is available in the cluster, and ipFamilyPolicy allows it, it will be used; otherwise creation of the service will fail. This field is conditionally mutable: it allows for adding or removing a secondary IP family, but it does not allow changing the primary IP family of the Service. Valid values are "IPv4" and "IPv6".  This field only applies to Services of types ClusterIP, NodePort, and LoadBalancer, and does apply to "headless" services. This field will be wiped when updating a Service to type ExternalName.
   ///
   /// This field may hold a maximum of two entries (dual-stack families, in either order).  These families must correspond to the values of the clusterIPs field, if specified. Both clusterIPs and ipFamilies are governed by the ipFamilyPolicy field.
-  final List<String>? ipFamilies;
+  final pulumi.Input<List<String>>? ipFamilies;
   /// ipFamily specifies whether this Service has a preference for a particular IP family (e.g. IPv4 vs. IPv6).  If a specific IP family is requested, the clusterIP field will be allocated from that family, if it is available in the cluster.  If no IP family is requested, the cluster's primary IP family will be used. Other IP fields (loadBalancerIP, loadBalancerSourceRanges, externalIPs) and controllers which allocate external load-balancers should use the same IP family.  Endpoints for this Service will be of this family.  This field is immutable after creation. Assigning a ServiceIPFamily not available in the cluster (e.g. IPv6 in IPv4 only cluster) is an error condition and will fail during clusterIP assignment.
-  final String? ipFamily;
+  final pulumi.Input<String>? ipFamily;
   /// IPFamilyPolicy represents the dual-stack-ness requested or required by this Service. If there is no value provided, then this field will be set to SingleStack. Services can be "SingleStack" (a single IP family), "PreferDualStack" (two IP families on dual-stack configured clusters or a single IP family on single-stack clusters), or "RequireDualStack" (two IP families on dual-stack configured clusters, otherwise fail). The ipFamilies and clusterIPs fields depend on the value of this field. This field will be wiped when updating a service to type ExternalName.
-  final String? ipFamilyPolicy;
+  final pulumi.Input<String>? ipFamilyPolicy;
   /// loadBalancerClass is the class of the load balancer implementation this Service belongs to. If specified, the value of this field must be a label-style identifier, with an optional prefix, e.g. "internal-vip" or "example.com/internal-vip". Unprefixed names are reserved for end-users. This field can only be set when the Service type is 'LoadBalancer'. If not set, the default load balancer implementation is used, today this is typically done through the cloud provider integration, but should apply for any default implementation. If set, it is assumed that a load balancer implementation is watching for Services with a matching class. Any default load balancer implementation (e.g. cloud providers) should ignore Services that set this field. This field can only be set when creating or updating a Service to type 'LoadBalancer'. Once set, it can not be changed. This field will be wiped when a service is updated to a non 'LoadBalancer' type.
-  final String? loadBalancerClass;
+  final pulumi.Input<String>? loadBalancerClass;
   /// Only applies to Service Type: LoadBalancer. This feature depends on whether the underlying cloud-provider supports specifying the loadBalancerIP when a load balancer is created. This field will be ignored if the cloud-provider does not support the feature. Deprecated: This field was under-specified and its meaning varies across implementations. Using it is non-portable and it may not support dual-stack. Users are encouraged to use implementation-specific annotations when available.
-  final String? loadBalancerIP;
+  final pulumi.Input<String>? loadBalancerIP;
   /// If specified and supported by the platform, this will restrict traffic through the cloud-provider load-balancer will be restricted to the specified client IPs. This field will be ignored if the cloud-provider does not support the feature." More info: https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/
-  final List<String>? loadBalancerSourceRanges;
+  final pulumi.Input<List<String>>? loadBalancerSourceRanges;
   /// The list of ports that are exposed by this service. More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
-  final List<ServicePort>? ports;
+  final pulumi.Input<List<ServicePort>>? ports;
   /// publishNotReadyAddresses indicates that any agent which deals with endpoints for this Service should disregard any indications of ready/not-ready. The primary use case for setting this field is for a StatefulSet's Headless Service to propagate SRV DNS records for its Pods for the purpose of peer discovery. The Kubernetes controllers that generate Endpoints and EndpointSlice resources for Services interpret this to mean that all endpoints are considered "ready" even if the Pods themselves are not. Agents which consume only Kubernetes generated endpoints through the Endpoints or EndpointSlice resources can safely assume this behavior.
-  final bool? publishNotReadyAddresses;
+  final pulumi.Input<bool>? publishNotReadyAddresses;
   /// Route service traffic to pods with label keys and values matching this selector. If empty or not present, the service is assumed to have an external process managing its endpoints, which Kubernetes will not modify. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored if type is ExternalName. More info: https://kubernetes.io/docs/concepts/services-networking/service/
-  final Map<String, String>? selector;
+  final pulumi.Input<Map<String, String>>? selector;
   /// Supports "ClientIP" and "None". Used to maintain session affinity. Enable client IP based session affinity. Must be ClientIP or None. Defaults to None. More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
-  final String? sessionAffinity;
+  final pulumi.Input<String>? sessionAffinity;
   /// sessionAffinityConfig contains the configurations of session affinity.
-  final SessionAffinityConfig? sessionAffinityConfig;
+  final pulumi.Input<SessionAffinityConfig>? sessionAffinityConfig;
   /// topologyKeys is a preference-order list of topology keys which implementations of services should use to preferentially sort endpoints when accessing this Service, it can not be used at the same time as externalTrafficPolicy=Local. Topology keys must be valid label keys and at most 16 keys may be specified. Endpoints are chosen based on the first topology key with available backends. If this field is specified and all entries have no backends that match the topology of the client, the service has no backends for that client and connections should fail. The special value "*" may be used to mean "any topology". This catch-all value, if used, only makes sense as the last value in the list. If this is not specified or empty, no topology constraints will be applied.
-  final List<String>? topologyKeys;
+  final pulumi.Input<List<String>>? topologyKeys;
   /// TrafficDistribution offers a way to express preferences for how traffic is distributed to Service endpoints. Implementations can use this field as a hint, but are not required to guarantee strict adherence. If the field is not set, the implementation will apply its default routing strategy. If set to "PreferClose", implementations should prioritize endpoints that are in the same zone.
-  final String? trafficDistribution;
+  final pulumi.Input<String>? trafficDistribution;
   /// type determines how the Service is exposed. Defaults to ClusterIP. Valid options are ExternalName, ClusterIP, NodePort, and LoadBalancer. "ClusterIP" allocates a cluster-internal IP address for load-balancing to endpoints. Endpoints are determined by the selector or if that is not specified, by manual construction of an Endpoints object or EndpointSlice objects. If clusterIP is "None", no virtual IP is allocated and the endpoints are published as a set of endpoints rather than a virtual IP. "NodePort" builds on ClusterIP and allocates a port on every node which routes to the same endpoints as the clusterIP. "LoadBalancer" builds on NodePort and creates an external load-balancer (if supported in the current cloud) which routes to the same endpoints as the clusterIP. "ExternalName" aliases this service to the specified externalName. Several other fields do not apply to ExternalName services. More info: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ServiceSpec].
   /// [allocateLoadBalancerNodePorts] allocateLoadBalancerNodePorts defines if NodePorts will be automatically allocated for services with type LoadBalancer.  Default is "true". It may be set to "false" if the cluster load-balancer does not rely on NodePorts.  If the caller requests specific NodePorts (by specifying a value), those requests will be respected, regardless of this field. This field may only be set for services with type LoadBalancer and will be cleared if the type is changed to any other type.
@@ -119,11 +119,11 @@ class ServiceSpec {
       'loadBalancerClass': ?loadBalancerClass,
       'loadBalancerIP': ?loadBalancerIP,
       'loadBalancerSourceRanges': ?loadBalancerSourceRanges,
-      'ports': ?ports == null ? null : pulumi.Input.encodeList<ServicePort, Map<String, dynamic>>(ports!, (value) => value.toMap()),
+      'ports': ?pulumi.Input.mapOptionalInputValue<List<ServicePort>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<ServicePort, Map<String, dynamic>>(value, (value) => value.toMap())),
       'publishNotReadyAddresses': ?publishNotReadyAddresses,
       'selector': ?selector,
       'sessionAffinity': ?sessionAffinity,
-      'sessionAffinityConfig': ?sessionAffinityConfig == null ? null : sessionAffinityConfig!.toMap(),
+      'sessionAffinityConfig': ?pulumi.Input.mapOptionalInputValue<SessionAffinityConfig, Map<String, dynamic>>(sessionAffinityConfig, (value) => value.toMap()),
       'topologyKeys': ?topologyKeys,
       'trafficDistribution': ?trafficDistribution,
       'type': ?type,
@@ -132,28 +132,28 @@ class ServiceSpec {
 
   factory ServiceSpec.fromMap(Map<String, dynamic> map) {
     return ServiceSpec(
-      allocateLoadBalancerNodePorts: map['allocateLoadBalancerNodePorts'] == null ? null : map['allocateLoadBalancerNodePorts'] as bool,
-      clusterIP: map['clusterIP'] == null ? null : map['clusterIP'] as String,
-      clusterIPs: map['clusterIPs'] == null ? null : (map['clusterIPs'] as List).cast<String>(),
-      externalIPs: map['externalIPs'] == null ? null : (map['externalIPs'] as List).cast<String>(),
-      externalName: map['externalName'] == null ? null : map['externalName'] as String,
-      externalTrafficPolicy: map['externalTrafficPolicy'] == null ? null : map['externalTrafficPolicy'] as String,
-      healthCheckNodePort: map['healthCheckNodePort'] == null ? null : map['healthCheckNodePort'] as int,
-      internalTrafficPolicy: map['internalTrafficPolicy'] == null ? null : map['internalTrafficPolicy'] as String,
-      ipFamilies: map['ipFamilies'] == null ? null : (map['ipFamilies'] as List).cast<String>(),
-      ipFamily: map['ipFamily'] == null ? null : map['ipFamily'] as String,
-      ipFamilyPolicy: map['ipFamilyPolicy'] == null ? null : map['ipFamilyPolicy'] as String,
-      loadBalancerClass: map['loadBalancerClass'] == null ? null : map['loadBalancerClass'] as String,
-      loadBalancerIP: map['loadBalancerIP'] == null ? null : map['loadBalancerIP'] as String,
-      loadBalancerSourceRanges: map['loadBalancerSourceRanges'] == null ? null : (map['loadBalancerSourceRanges'] as List).cast<String>(),
-      ports: map['ports'] == null ? null : pulumi.Input.decodeList<ServicePort>(map['ports'], (value) => ServicePort.fromMap((value as Map).cast<String, dynamic>())),
-      publishNotReadyAddresses: map['publishNotReadyAddresses'] == null ? null : map['publishNotReadyAddresses'] as bool,
-      selector: map['selector'] == null ? null : (map['selector'] as Map).cast<String, String>(),
-      sessionAffinity: map['sessionAffinity'] == null ? null : map['sessionAffinity'] as String,
-      sessionAffinityConfig: map['sessionAffinityConfig'] == null ? null : SessionAffinityConfig.fromMap((map['sessionAffinityConfig'] as Map).cast<String, dynamic>()),
-      topologyKeys: map['topologyKeys'] == null ? null : (map['topologyKeys'] as List).cast<String>(),
-      trafficDistribution: map['trafficDistribution'] == null ? null : map['trafficDistribution'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      allocateLoadBalancerNodePorts: map['allocateLoadBalancerNodePorts'] == null ? null : (map['allocateLoadBalancerNodePorts'] as bool).input(),
+      clusterIP: map['clusterIP'] == null ? null : (map['clusterIP'] as String).input(),
+      clusterIPs: map['clusterIPs'] == null ? null : ((map['clusterIPs'] as List).cast<String>()).input(),
+      externalIPs: map['externalIPs'] == null ? null : ((map['externalIPs'] as List).cast<String>()).input(),
+      externalName: map['externalName'] == null ? null : (map['externalName'] as String).input(),
+      externalTrafficPolicy: map['externalTrafficPolicy'] == null ? null : (map['externalTrafficPolicy'] as String).input(),
+      healthCheckNodePort: map['healthCheckNodePort'] == null ? null : (map['healthCheckNodePort'] as int).input(),
+      internalTrafficPolicy: map['internalTrafficPolicy'] == null ? null : (map['internalTrafficPolicy'] as String).input(),
+      ipFamilies: map['ipFamilies'] == null ? null : ((map['ipFamilies'] as List).cast<String>()).input(),
+      ipFamily: map['ipFamily'] == null ? null : (map['ipFamily'] as String).input(),
+      ipFamilyPolicy: map['ipFamilyPolicy'] == null ? null : (map['ipFamilyPolicy'] as String).input(),
+      loadBalancerClass: map['loadBalancerClass'] == null ? null : (map['loadBalancerClass'] as String).input(),
+      loadBalancerIP: map['loadBalancerIP'] == null ? null : (map['loadBalancerIP'] as String).input(),
+      loadBalancerSourceRanges: map['loadBalancerSourceRanges'] == null ? null : ((map['loadBalancerSourceRanges'] as List).cast<String>()).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<ServicePort>(map['ports'], (value) => ServicePort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publishNotReadyAddresses: map['publishNotReadyAddresses'] == null ? null : (map['publishNotReadyAddresses'] as bool).input(),
+      selector: map['selector'] == null ? null : ((map['selector'] as Map).cast<String, String>()).input(),
+      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity'] as String).input(),
+      sessionAffinityConfig: map['sessionAffinityConfig'] == null ? null : (SessionAffinityConfig.fromMap((map['sessionAffinityConfig'] as Map).cast<String, dynamic>())).input(),
+      topologyKeys: map['topologyKeys'] == null ? null : ((map['topologyKeys'] as List).cast<String>()).input(),
+      trafficDistribution: map['trafficDistribution'] == null ? null : (map['trafficDistribution'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

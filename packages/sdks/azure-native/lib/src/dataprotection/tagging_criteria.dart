@@ -7,13 +7,13 @@ import 'schedule_based_backup_criteria.dart';
 /// Tagging criteria
 class TaggingCriteria {
   /// Criteria which decides whether the tag can be applied to a triggered backup.
-  final List<ScheduleBasedBackupCriteria>? criteria;
+  final pulumi.Input<List<ScheduleBasedBackupCriteria>>? criteria;
   /// Specifies if tag is default.
-  final bool isDefault;
+  final pulumi.Input<bool> isDefault;
   /// Retention tag information
-  final RetentionTag tagInfo;
+  final pulumi.Input<RetentionTag> tagInfo;
   /// Retention Tag priority.
-  final double taggingPriority;
+  final pulumi.Input<double> taggingPriority;
 
   /// Creates a new [TaggingCriteria].
   /// [criteria] Criteria which decides whether the tag can be applied to a triggered backup.
@@ -29,19 +29,19 @@ class TaggingCriteria {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'criteria': ?criteria == null ? null : pulumi.Input.encodeList<ScheduleBasedBackupCriteria, Map<String, dynamic>>(criteria!, (value) => value.toMap()),
+      'criteria': ?pulumi.Input.mapOptionalInputValue<List<ScheduleBasedBackupCriteria>, List<Map<String, dynamic>>>(criteria, (value) => pulumi.Input.encodeList<ScheduleBasedBackupCriteria, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isDefault': isDefault,
-      'tagInfo': tagInfo.toMap(),
+      'tagInfo': pulumi.Input.mapInputValue<RetentionTag, Map<String, dynamic>>(tagInfo, (value) => value.toMap()),
       'taggingPriority': taggingPriority,
     };
   }
 
   factory TaggingCriteria.fromMap(Map<String, dynamic> map) {
     return TaggingCriteria(
-      criteria: map['criteria'] == null ? null : pulumi.Input.decodeList<ScheduleBasedBackupCriteria>(map['criteria'], (value) => ScheduleBasedBackupCriteria.fromMap((value as Map).cast<String, dynamic>())),
-      isDefault: map['isDefault'] as bool,
-      tagInfo: RetentionTag.fromMap((map['tagInfo'] as Map).cast<String, dynamic>()),
-      taggingPriority: map['taggingPriority'] as double,
+      criteria: map['criteria'] == null ? null : (pulumi.Input.decodeList<ScheduleBasedBackupCriteria>(map['criteria'], (value) => ScheduleBasedBackupCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isDefault: (map['isDefault'] as bool).input(),
+      tagInfo: (RetentionTag.fromMap((map['tagInfo'] as Map).cast<String, dynamic>())).input(),
+      taggingPriority: (map['taggingPriority'] as double).input(),
     );
   }
 }

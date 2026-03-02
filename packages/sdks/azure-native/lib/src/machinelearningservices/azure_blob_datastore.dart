@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_key_datastore_credentials.dart';
 
 /// Azure Blob datastore configuration.
 class AzureBlobDatastore {
   /// Storage account name.
-  final String? accountName;
+  final pulumi.Input<String>? accountName;
   /// Storage account container name.
-  final String? containerName;
+  final pulumi.Input<String>? containerName;
   /// [Required] Account credentials.
-  final AccountKeyDatastoreCredentials credentials;
+  final pulumi.Input<AccountKeyDatastoreCredentials> credentials;
   /// Enum to determine the datastore contents type.
   /// Expected value is 'AzureBlob'.
-  final String datastoreType;
+  final pulumi.Input<String> datastoreType;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Azure cloud endpoint for the storage account.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Protocol used to communicate with the storage account.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Azure Resource Group name
-  final String? resourceGroup;
+  final pulumi.Input<String>? resourceGroup;
   /// Indicates which identity to use to authenticate service data access to customer's storage.
-  final String? serviceDataAccessAuthIdentity;
+  final pulumi.Input<String>? serviceDataAccessAuthIdentity;
   /// Azure Subscription Id
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AzureBlobDatastore].
   /// [accountName] Storage account name.
@@ -62,7 +63,7 @@ class AzureBlobDatastore {
     return <String, dynamic>{
       'accountName': ?accountName,
       'containerName': ?containerName,
-      'credentials': credentials.toMap(),
+      'credentials': pulumi.Input.mapInputValue<AccountKeyDatastoreCredentials, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'datastoreType': datastoreType,
       'description': ?description,
       'endpoint': ?endpoint,
@@ -77,18 +78,18 @@ class AzureBlobDatastore {
 
   factory AzureBlobDatastore.fromMap(Map<String, dynamic> map) {
     return AzureBlobDatastore(
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
-      containerName: map['containerName'] == null ? null : map['containerName'] as String,
-      credentials: AccountKeyDatastoreCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
-      datastoreType: map['datastoreType'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : map['serviceDataAccessAuthIdentity'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      credentials: (AccountKeyDatastoreCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      datastoreType: (map['datastoreType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : (map['serviceDataAccessAuthIdentity'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

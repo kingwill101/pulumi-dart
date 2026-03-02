@@ -10,51 +10,51 @@ import 'hci_deployment_setting_scale_unit_storage.dart';
 
 class HciDeploymentSettingScaleUnit {
   /// Specify the full name of the Active Directory Organizational Unit container object prepared for the deployment, including the domain components. For example:`OU=HCI01,DC=contoso,DC=com`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final String activeDirectoryOrganizationalUnitPath;
+  final pulumi.Input<String> activeDirectoryOrganizationalUnitPath;
   /// Whether to enable BitLocker for boot volume. Possible values are `true` and `false`. When set to `true`, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? bitlockerBootVolumeEnabled;
+  final pulumi.Input<bool>? bitlockerBootVolumeEnabled;
   /// Whether to enable BitLocker for data volume. Possible values are `true` and `false`. When set to `true`, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? bitlockerDataVolumeEnabled;
+  final pulumi.Input<bool>? bitlockerDataVolumeEnabled;
   /// A `cluster` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final HciDeploymentSettingScaleUnitCluster cluster;
+  final pulumi.Input<HciDeploymentSettingScaleUnitCluster> cluster;
   /// Whether to enable credential guard. Possible values are `true` and `false`. Defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? credentialGuardEnabled;
+  final pulumi.Input<bool>? credentialGuardEnabled;
   /// Specifies the FQDN for deploying cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final String domainFqdn;
+  final pulumi.Input<String> domainFqdn;
   /// Whether to enable drift control. Possible values are `true` and `false`. When set to `true`, the security baseline is re-applied regularly. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? driftControlEnabled;
+  final pulumi.Input<bool>? driftControlEnabled;
   /// Whether to enable DRTM protection. Possible values are `true` and `false`. When set to `true`, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? drtmProtectionEnabled;
+  final pulumi.Input<bool>? drtmProtectionEnabled;
   /// Whether to collect log data to facilitate quicker issue resolution. Possible values are `true` and `false`. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? episodicDataUploadEnabled;
+  final pulumi.Input<bool>? episodicDataUploadEnabled;
   /// Whether to store data sent to Microsoft in EU. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to `false` results in all data sent to Microsoft to be stored outside of the EU. Possible values are `true` and `false`. Defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? euLocationEnabled;
+  final pulumi.Input<bool>? euLocationEnabled;
   /// A `host_network` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final HciDeploymentSettingScaleUnitHostNetwork hostNetwork;
+  final pulumi.Input<HciDeploymentSettingScaleUnitHostNetwork> hostNetwork;
   /// Whether to enable HVCI protection. Possible values are `true` and `false`. When set to `true`, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? hvciProtectionEnabled;
+  final pulumi.Input<bool>? hvciProtectionEnabled;
   /// One or more `infrastructure_network` blocks as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final List<HciDeploymentSettingScaleUnitInfrastructureNetwork> infrastructureNetworks;
+  final pulumi.Input<List<HciDeploymentSettingScaleUnitInfrastructureNetwork>> infrastructureNetworks;
   /// Specifies the name prefix to deploy cluster. It must be 1-8 characters long and contain only letters, numbers and hyphens Changing this forces a new Stack HCI Deployment Setting to be created.
-  final String namePrefix;
+  final pulumi.Input<String> namePrefix;
   /// A `optional_service` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final HciDeploymentSettingScaleUnitOptionalService optionalService;
+  final pulumi.Input<HciDeploymentSettingScaleUnitOptionalService> optionalService;
   /// One or more `physical_node` blocks as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final List<HciDeploymentSettingScaleUnitPhysicalNode> physicalNodes;
+  final pulumi.Input<List<HciDeploymentSettingScaleUnitPhysicalNode>> physicalNodes;
   /// The URI to the Key Vault or secret store. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final String secretsLocation;
+  final pulumi.Input<String> secretsLocation;
   /// Whether to enable side channel mitigation. Possible values are `true` and `false`. When set to `true`, all side channel mitigations are enabled on your Azure HCI cluster. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? sideChannelMitigationEnabled;
+  final pulumi.Input<bool>? sideChannelMitigationEnabled;
   /// Whether to enable SMB cluster encryption. Possible values are `true` and `false`. When set to `true`, cluster east-west traffic is encrypted. Defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? smbClusterEncryptionEnabled;
+  final pulumi.Input<bool>? smbClusterEncryptionEnabled;
   /// Whether to enable SMB signing. Possible values are `true` and `false`. When set to `true`, the SMB default instance requires sign in for the client and server services. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? smbSigningEnabled;
+  final pulumi.Input<bool>? smbSigningEnabled;
   /// A `storage` block as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final HciDeploymentSettingScaleUnitStorage storage;
+  final pulumi.Input<HciDeploymentSettingScaleUnitStorage> storage;
   /// Whether the telemetry data will be sent to Microsoft. Possible values are `true` and `false`. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? streamingDataClientEnabled;
+  final pulumi.Input<bool>? streamingDataClientEnabled;
   /// Whether to enable WDAC. Possible values are `true` and `false`. When set to `true`, applications and the code that you can run on your Azure Stack HCI cluster are limited. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final bool? wdacEnabled;
+  final pulumi.Input<bool>? wdacEnabled;
 
   /// Creates a new [HciDeploymentSettingScaleUnit].
   /// [activeDirectoryOrganizationalUnitPath] Specify the full name of the Active Directory Organizational Unit container object prepared for the deployment, including the domain components. For example:`OU=HCI01,DC=contoso,DC=com`. Changing this forces a new Stack HCI Deployment Setting to be created.
@@ -111,24 +111,24 @@ class HciDeploymentSettingScaleUnit {
       'activeDirectoryOrganizationalUnitPath': activeDirectoryOrganizationalUnitPath,
       'bitlockerBootVolumeEnabled': ?bitlockerBootVolumeEnabled,
       'bitlockerDataVolumeEnabled': ?bitlockerDataVolumeEnabled,
-      'cluster': cluster.toMap(),
+      'cluster': pulumi.Input.mapInputValue<HciDeploymentSettingScaleUnitCluster, Map<String, dynamic>>(cluster, (value) => value.toMap()),
       'credentialGuardEnabled': ?credentialGuardEnabled,
       'domainFqdn': domainFqdn,
       'driftControlEnabled': ?driftControlEnabled,
       'drtmProtectionEnabled': ?drtmProtectionEnabled,
       'episodicDataUploadEnabled': ?episodicDataUploadEnabled,
       'euLocationEnabled': ?euLocationEnabled,
-      'hostNetwork': hostNetwork.toMap(),
+      'hostNetwork': pulumi.Input.mapInputValue<HciDeploymentSettingScaleUnitHostNetwork, Map<String, dynamic>>(hostNetwork, (value) => value.toMap()),
       'hvciProtectionEnabled': ?hvciProtectionEnabled,
-      'infrastructureNetworks': pulumi.Input.encodeList<HciDeploymentSettingScaleUnitInfrastructureNetwork, Map<String, dynamic>>(infrastructureNetworks, (value) => value.toMap()),
+      'infrastructureNetworks': pulumi.Input.mapInputValue<List<HciDeploymentSettingScaleUnitInfrastructureNetwork>, List<Map<String, dynamic>>>(infrastructureNetworks, (value) => pulumi.Input.encodeList<HciDeploymentSettingScaleUnitInfrastructureNetwork, Map<String, dynamic>>(value, (value) => value.toMap())),
       'namePrefix': namePrefix,
-      'optionalService': optionalService.toMap(),
-      'physicalNodes': pulumi.Input.encodeList<HciDeploymentSettingScaleUnitPhysicalNode, Map<String, dynamic>>(physicalNodes, (value) => value.toMap()),
+      'optionalService': pulumi.Input.mapInputValue<HciDeploymentSettingScaleUnitOptionalService, Map<String, dynamic>>(optionalService, (value) => value.toMap()),
+      'physicalNodes': pulumi.Input.mapInputValue<List<HciDeploymentSettingScaleUnitPhysicalNode>, List<Map<String, dynamic>>>(physicalNodes, (value) => pulumi.Input.encodeList<HciDeploymentSettingScaleUnitPhysicalNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'secretsLocation': secretsLocation,
       'sideChannelMitigationEnabled': ?sideChannelMitigationEnabled,
       'smbClusterEncryptionEnabled': ?smbClusterEncryptionEnabled,
       'smbSigningEnabled': ?smbSigningEnabled,
-      'storage': storage.toMap(),
+      'storage': pulumi.Input.mapInputValue<HciDeploymentSettingScaleUnitStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
       'streamingDataClientEnabled': ?streamingDataClientEnabled,
       'wdacEnabled': ?wdacEnabled,
     };
@@ -136,29 +136,29 @@ class HciDeploymentSettingScaleUnit {
 
   factory HciDeploymentSettingScaleUnit.fromMap(Map<String, dynamic> map) {
     return HciDeploymentSettingScaleUnit(
-      activeDirectoryOrganizationalUnitPath: map['activeDirectoryOrganizationalUnitPath'] as String,
-      bitlockerBootVolumeEnabled: map['bitlockerBootVolumeEnabled'] == null ? null : map['bitlockerBootVolumeEnabled'] as bool,
-      bitlockerDataVolumeEnabled: map['bitlockerDataVolumeEnabled'] == null ? null : map['bitlockerDataVolumeEnabled'] as bool,
-      cluster: HciDeploymentSettingScaleUnitCluster.fromMap((map['cluster'] as Map).cast<String, dynamic>()),
-      credentialGuardEnabled: map['credentialGuardEnabled'] == null ? null : map['credentialGuardEnabled'] as bool,
-      domainFqdn: map['domainFqdn'] as String,
-      driftControlEnabled: map['driftControlEnabled'] == null ? null : map['driftControlEnabled'] as bool,
-      drtmProtectionEnabled: map['drtmProtectionEnabled'] == null ? null : map['drtmProtectionEnabled'] as bool,
-      episodicDataUploadEnabled: map['episodicDataUploadEnabled'] == null ? null : map['episodicDataUploadEnabled'] as bool,
-      euLocationEnabled: map['euLocationEnabled'] == null ? null : map['euLocationEnabled'] as bool,
-      hostNetwork: HciDeploymentSettingScaleUnitHostNetwork.fromMap((map['hostNetwork'] as Map).cast<String, dynamic>()),
-      hvciProtectionEnabled: map['hvciProtectionEnabled'] == null ? null : map['hvciProtectionEnabled'] as bool,
-      infrastructureNetworks: pulumi.Input.decodeList<HciDeploymentSettingScaleUnitInfrastructureNetwork>(map['infrastructureNetworks'], (value) => HciDeploymentSettingScaleUnitInfrastructureNetwork.fromMap((value as Map).cast<String, dynamic>())),
-      namePrefix: map['namePrefix'] as String,
-      optionalService: HciDeploymentSettingScaleUnitOptionalService.fromMap((map['optionalService'] as Map).cast<String, dynamic>()),
-      physicalNodes: pulumi.Input.decodeList<HciDeploymentSettingScaleUnitPhysicalNode>(map['physicalNodes'], (value) => HciDeploymentSettingScaleUnitPhysicalNode.fromMap((value as Map).cast<String, dynamic>())),
-      secretsLocation: map['secretsLocation'] as String,
-      sideChannelMitigationEnabled: map['sideChannelMitigationEnabled'] == null ? null : map['sideChannelMitigationEnabled'] as bool,
-      smbClusterEncryptionEnabled: map['smbClusterEncryptionEnabled'] == null ? null : map['smbClusterEncryptionEnabled'] as bool,
-      smbSigningEnabled: map['smbSigningEnabled'] == null ? null : map['smbSigningEnabled'] as bool,
-      storage: HciDeploymentSettingScaleUnitStorage.fromMap((map['storage'] as Map).cast<String, dynamic>()),
-      streamingDataClientEnabled: map['streamingDataClientEnabled'] == null ? null : map['streamingDataClientEnabled'] as bool,
-      wdacEnabled: map['wdacEnabled'] == null ? null : map['wdacEnabled'] as bool,
+      activeDirectoryOrganizationalUnitPath: (map['activeDirectoryOrganizationalUnitPath'] as String).input(),
+      bitlockerBootVolumeEnabled: map['bitlockerBootVolumeEnabled'] == null ? null : (map['bitlockerBootVolumeEnabled'] as bool).input(),
+      bitlockerDataVolumeEnabled: map['bitlockerDataVolumeEnabled'] == null ? null : (map['bitlockerDataVolumeEnabled'] as bool).input(),
+      cluster: (HciDeploymentSettingScaleUnitCluster.fromMap((map['cluster'] as Map).cast<String, dynamic>())).input(),
+      credentialGuardEnabled: map['credentialGuardEnabled'] == null ? null : (map['credentialGuardEnabled'] as bool).input(),
+      domainFqdn: (map['domainFqdn'] as String).input(),
+      driftControlEnabled: map['driftControlEnabled'] == null ? null : (map['driftControlEnabled'] as bool).input(),
+      drtmProtectionEnabled: map['drtmProtectionEnabled'] == null ? null : (map['drtmProtectionEnabled'] as bool).input(),
+      episodicDataUploadEnabled: map['episodicDataUploadEnabled'] == null ? null : (map['episodicDataUploadEnabled'] as bool).input(),
+      euLocationEnabled: map['euLocationEnabled'] == null ? null : (map['euLocationEnabled'] as bool).input(),
+      hostNetwork: (HciDeploymentSettingScaleUnitHostNetwork.fromMap((map['hostNetwork'] as Map).cast<String, dynamic>())).input(),
+      hvciProtectionEnabled: map['hvciProtectionEnabled'] == null ? null : (map['hvciProtectionEnabled'] as bool).input(),
+      infrastructureNetworks: (pulumi.Input.decodeList<HciDeploymentSettingScaleUnitInfrastructureNetwork>(map['infrastructureNetworks'], (value) => HciDeploymentSettingScaleUnitInfrastructureNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namePrefix: (map['namePrefix'] as String).input(),
+      optionalService: (HciDeploymentSettingScaleUnitOptionalService.fromMap((map['optionalService'] as Map).cast<String, dynamic>())).input(),
+      physicalNodes: (pulumi.Input.decodeList<HciDeploymentSettingScaleUnitPhysicalNode>(map['physicalNodes'], (value) => HciDeploymentSettingScaleUnitPhysicalNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secretsLocation: (map['secretsLocation'] as String).input(),
+      sideChannelMitigationEnabled: map['sideChannelMitigationEnabled'] == null ? null : (map['sideChannelMitigationEnabled'] as bool).input(),
+      smbClusterEncryptionEnabled: map['smbClusterEncryptionEnabled'] == null ? null : (map['smbClusterEncryptionEnabled'] as bool).input(),
+      smbSigningEnabled: map['smbSigningEnabled'] == null ? null : (map['smbSigningEnabled'] as bool).input(),
+      storage: (HciDeploymentSettingScaleUnitStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      streamingDataClientEnabled: map['streamingDataClientEnabled'] == null ? null : (map['streamingDataClientEnabled'] as bool).input(),
+      wdacEnabled: map['wdacEnabled'] == null ? null : (map['wdacEnabled'] as bool).input(),
     );
   }
 }

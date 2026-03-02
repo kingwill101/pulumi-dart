@@ -54,33 +54,20 @@ class RegistryEnterpriseSyncRuleArgs {
   /// [targetRepoName] The image repository name of the destination instance.
   /// [targetUserId] The UID of the account to which the target instance belongs.
   RegistryEnterpriseSyncRuleArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<String>? repoName,
-    pulumi.Output<String>? syncRuleName,
-    pulumi.Output<String>? syncScope,
-    pulumi.Output<String>? syncTrigger,
-    required pulumi.Output<String> tagFilter,
-    required pulumi.Output<String> targetInstanceId,
-    required pulumi.Output<String> targetNamespaceName,
-    required pulumi.Output<String> targetRegionId,
-    pulumi.Output<String>? targetRepoName,
-    pulumi.Output<String>? targetUserId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      repoName = pulumi.Input.asOptionalInput<String>(repoName),
-      syncRuleName = pulumi.Input.asOptionalInput<String>(syncRuleName),
-      syncScope = pulumi.Input.asOptionalInput<String>(syncScope),
-      syncTrigger = pulumi.Input.asOptionalInput<String>(syncTrigger),
-      tagFilter = pulumi.Input.asInput<String>(tagFilter),
-      targetInstanceId = pulumi.Input.asInput<String>(targetInstanceId),
-      targetNamespaceName = pulumi.Input.asInput<String>(targetNamespaceName),
-      targetRegionId = pulumi.Input.asInput<String>(targetRegionId),
-      targetRepoName = pulumi.Input.asOptionalInput<String>(targetRepoName),
-      targetUserId = pulumi.Input.asOptionalInput<String>(targetUserId);
+    required this.instanceId,
+    this.name,
+    required this.namespaceName,
+    this.repoName,
+    this.syncRuleName,
+    this.syncScope,
+    this.syncTrigger,
+    required this.tagFilter,
+    required this.targetInstanceId,
+    required this.targetNamespaceName,
+    required this.targetRegionId,
+    this.targetRepoName,
+    this.targetUserId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class RegistryEnterpriseSyncRuleArgs {
 
   factory RegistryEnterpriseSyncRuleArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseSyncRuleArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      repoName: map['repoName'] == null ? null : pulumi.Output.create<String>(map['repoName'] as String),
-      syncRuleName: map['syncRuleName'] == null ? null : pulumi.Output.create<String>(map['syncRuleName'] as String),
-      syncScope: map['syncScope'] == null ? null : pulumi.Output.create<String>(map['syncScope'] as String),
-      syncTrigger: map['syncTrigger'] == null ? null : pulumi.Output.create<String>(map['syncTrigger'] as String),
-      tagFilter: pulumi.Output.create<String>(map['tagFilter'] as String),
-      targetInstanceId: pulumi.Output.create<String>(map['targetInstanceId'] as String),
-      targetNamespaceName: pulumi.Output.create<String>(map['targetNamespaceName'] as String),
-      targetRegionId: pulumi.Output.create<String>(map['targetRegionId'] as String),
-      targetRepoName: map['targetRepoName'] == null ? null : pulumi.Output.create<String>(map['targetRepoName'] as String),
-      targetUserId: map['targetUserId'] == null ? null : pulumi.Output.create<String>(map['targetUserId'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
+      syncRuleName: map['syncRuleName'] == null ? null : (map['syncRuleName'] as String).input(),
+      syncScope: map['syncScope'] == null ? null : (map['syncScope'] as String).input(),
+      syncTrigger: map['syncTrigger'] == null ? null : (map['syncTrigger'] as String).input(),
+      tagFilter: (map['tagFilter'] as String).input(),
+      targetInstanceId: (map['targetInstanceId'] as String).input(),
+      targetNamespaceName: (map['targetNamespaceName'] as String).input(),
+      targetRegionId: (map['targetRegionId'] as String).input(),
+      targetRepoName: map['targetRepoName'] == null ? null : (map['targetRepoName'] as String).input(),
+      targetUserId: map['targetUserId'] == null ? null : (map['targetUserId'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetRegionsArgs {
   /// [accountId] AWS account ID. Must be a member account in the same organization.
   /// [regionOptStatusContains] A list of region opt-in statuses to filter the results. Valid values are `ENABLED`, `ENABLING`, `DISABLING`, `DISABLED`, and `ENABLED_BY_DEFAULT`.
   GetRegionsArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<List<String>>? regionOptStatusContains,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      regionOptStatusContains = pulumi.Input.asOptionalInput<List<String>>(regionOptStatusContains);
+    this.accountId,
+    this.regionOptStatusContains,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      regionOptStatusContains: map['regionOptStatusContains'] == null ? null : pulumi.Output.create<List<String>>((map['regionOptStatusContains'] as List).cast<String>()),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      regionOptStatusContains: map['regionOptStatusContains'] == null ? null : ((map['regionOptStatusContains'] as List).cast<String>()).input(),
     );
   }
 }

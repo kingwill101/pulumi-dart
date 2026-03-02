@@ -54,31 +54,19 @@ class QosPolicyState {
   /// [updatedAt] The time at which QoS policy was created.
   /// [valueSpecs] Map of additional options.
   QosPolicyState({
-    pulumi.Output<List<String>>? allTags,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? isDefault,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? revisionNumber,
-    pulumi.Output<bool>? shared,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? updatedAt,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-  }) :
-      allTags = pulumi.Input.asOptionalInput<List<String>>(allTags),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      isDefault = pulumi.Input.asOptionalInput<bool>(isDefault),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      revisionNumber = pulumi.Input.asOptionalInput<int>(revisionNumber),
-      shared = pulumi.Input.asOptionalInput<bool>(shared),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs);
+    this.allTags,
+    this.createdAt,
+    this.description,
+    this.isDefault,
+    this.name,
+    this.projectId,
+    this.region,
+    this.revisionNumber,
+    this.shared,
+    this.tags,
+    this.updatedAt,
+    this.valueSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,18 +87,18 @@ class QosPolicyState {
 
   factory QosPolicyState.fromMap(Map<String, dynamic> map) {
     return QosPolicyState(
-      allTags: map['allTags'] == null ? null : pulumi.Output.create<List<String>>((map['allTags'] as List).cast<String>()),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      isDefault: map['isDefault'] == null ? null : pulumi.Output.create<bool>(map['isDefault'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      revisionNumber: map['revisionNumber'] == null ? null : pulumi.Output.create<int>(map['revisionNumber'] as int),
-      shared: map['shared'] == null ? null : pulumi.Output.create<bool>(map['shared'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
+      allTags: map['allTags'] == null ? null : ((map['allTags'] as List).cast<String>()).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      revisionNumber: map['revisionNumber'] == null ? null : (map['revisionNumber'] as int).input(),
+      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
     );
   }
 }

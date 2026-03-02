@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceAttachmentsAttachment {
   /// The time when the network is associated with the CEN instance.
-  final String childInstanceAttachTime;
+  final pulumi.Input<String> childInstanceAttachTime;
   /// The ID of the network.
-  final String childInstanceId;
+  final pulumi.Input<String> childInstanceId;
   /// The ID of the account to which the network belongs.
-  final int childInstanceOwnerId;
+  final pulumi.Input<int> childInstanceOwnerId;
   /// The region to which the network to be queried belongs.
-  final String childInstanceRegionId;
+  final pulumi.Input<String> childInstanceRegionId;
   /// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
-  final String childInstanceType;
+  final pulumi.Input<String> childInstanceType;
   /// The ID of the CEN Instance Attachment.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the CEN instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetInstanceAttachmentsAttachment].
   /// [childInstanceAttachTime] The time when the network is associated with the CEN instance.
@@ -54,14 +55,14 @@ class GetInstanceAttachmentsAttachment {
 
   factory GetInstanceAttachmentsAttachment.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentsAttachment(
-      childInstanceAttachTime: map['childInstanceAttachTime'] as String,
-      childInstanceId: map['childInstanceId'] as String,
-      childInstanceOwnerId: map['childInstanceOwnerId'] as int,
-      childInstanceRegionId: map['childInstanceRegionId'] as String,
-      childInstanceType: map['childInstanceType'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      status: map['status'] as String,
+      childInstanceAttachTime: (map['childInstanceAttachTime'] as String).input(),
+      childInstanceId: (map['childInstanceId'] as String).input(),
+      childInstanceOwnerId: (map['childInstanceOwnerId'] as int).input(),
+      childInstanceRegionId: (map['childInstanceRegionId'] as String).input(),
+      childInstanceType: (map['childInstanceType'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

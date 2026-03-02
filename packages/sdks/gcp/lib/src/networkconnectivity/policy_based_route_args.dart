@@ -54,29 +54,18 @@ class PolicyBasedRouteArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [virtualMachine] VM instances to which this policy-based route applies to.
   PolicyBasedRouteArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<PolicyBasedRouteFilter> filter,
-    pulumi.Output<PolicyBasedRouteInterconnectAttachment>? interconnectAttachment,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? nextHopIlbIp,
-    pulumi.Output<String>? nextHopOtherRoutes,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<PolicyBasedRouteVirtualMachine>? virtualMachine,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filter = pulumi.Input.asInput<PolicyBasedRouteFilter>(filter),
-      interconnectAttachment = pulumi.Input.asOptionalInput<PolicyBasedRouteInterconnectAttachment>(interconnectAttachment),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asInput<String>(network),
-      nextHopIlbIp = pulumi.Input.asOptionalInput<String>(nextHopIlbIp),
-      nextHopOtherRoutes = pulumi.Input.asOptionalInput<String>(nextHopOtherRoutes),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      virtualMachine = pulumi.Input.asOptionalInput<PolicyBasedRouteVirtualMachine>(virtualMachine);
+    this.description,
+    required this.filter,
+    this.interconnectAttachment,
+    this.labels,
+    this.name,
+    required this.network,
+    this.nextHopIlbIp,
+    this.nextHopOtherRoutes,
+    this.priority,
+    this.project,
+    this.virtualMachine,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,17 +85,17 @@ class PolicyBasedRouteArgs {
 
   factory PolicyBasedRouteArgs.fromMap(Map<String, dynamic> map) {
     return PolicyBasedRouteArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filter: pulumi.Output.create<PolicyBasedRouteFilter>(PolicyBasedRouteFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      interconnectAttachment: map['interconnectAttachment'] == null ? null : pulumi.Output.create<PolicyBasedRouteInterconnectAttachment>(PolicyBasedRouteInterconnectAttachment.fromMap((map['interconnectAttachment'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      nextHopIlbIp: map['nextHopIlbIp'] == null ? null : pulumi.Output.create<String>(map['nextHopIlbIp'] as String),
-      nextHopOtherRoutes: map['nextHopOtherRoutes'] == null ? null : pulumi.Output.create<String>(map['nextHopOtherRoutes'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      virtualMachine: map['virtualMachine'] == null ? null : pulumi.Output.create<PolicyBasedRouteVirtualMachine>(PolicyBasedRouteVirtualMachine.fromMap((map['virtualMachine'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filter: (PolicyBasedRouteFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      interconnectAttachment: map['interconnectAttachment'] == null ? null : (PolicyBasedRouteInterconnectAttachment.fromMap((map['interconnectAttachment'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: (map['network'] as String).input(),
+      nextHopIlbIp: map['nextHopIlbIp'] == null ? null : (map['nextHopIlbIp'] as String).input(),
+      nextHopOtherRoutes: map['nextHopOtherRoutes'] == null ? null : (map['nextHopOtherRoutes'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      virtualMachine: map['virtualMachine'] == null ? null : (PolicyBasedRouteVirtualMachine.fromMap((map['virtualMachine'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capture_identity_response.dart';
 
 /// Capture storage details for capture description
 class DestinationResponse {
   /// Blob naming convention for archive, e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order
-  final String? archiveNameFormat;
+  final pulumi.Input<String>? archiveNameFormat;
   /// Blob container Name
-  final String? blobContainer;
+  final pulumi.Input<String>? blobContainer;
   /// The Azure Data Lake Store name for the captured events
-  final String? dataLakeAccountName;
+  final pulumi.Input<String>? dataLakeAccountName;
   /// The destination folder path for the captured events
-  final String? dataLakeFolderPath;
+  final pulumi.Input<String>? dataLakeFolderPath;
   /// Subscription Id of Azure Data Lake Store
-  final String? dataLakeSubscriptionId;
+  final pulumi.Input<String>? dataLakeSubscriptionId;
   /// A value that indicates whether capture description is enabled.
-  final CaptureIdentityResponse? identity;
+  final pulumi.Input<CaptureIdentityResponse>? identity;
   /// Name for capture destination
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Resource id of the storage account to be used to create the blobs
-  final String? storageAccountResourceId;
+  final pulumi.Input<String>? storageAccountResourceId;
 
   /// Creates a new [DestinationResponse].
   /// [archiveNameFormat] Blob naming convention for archive, e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order
@@ -48,7 +49,7 @@ class DestinationResponse {
       'dataLakeAccountName': ?dataLakeAccountName,
       'dataLakeFolderPath': ?dataLakeFolderPath,
       'dataLakeSubscriptionId': ?dataLakeSubscriptionId,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<CaptureIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'name': ?name,
       'storageAccountResourceId': ?storageAccountResourceId,
     };
@@ -56,14 +57,14 @@ class DestinationResponse {
 
   factory DestinationResponse.fromMap(Map<String, dynamic> map) {
     return DestinationResponse(
-      archiveNameFormat: map['archiveNameFormat'] == null ? null : map['archiveNameFormat'] as String,
-      blobContainer: map['blobContainer'] == null ? null : map['blobContainer'] as String,
-      dataLakeAccountName: map['dataLakeAccountName'] == null ? null : map['dataLakeAccountName'] as String,
-      dataLakeFolderPath: map['dataLakeFolderPath'] == null ? null : map['dataLakeFolderPath'] as String,
-      dataLakeSubscriptionId: map['dataLakeSubscriptionId'] == null ? null : map['dataLakeSubscriptionId'] as String,
-      identity: map['identity'] == null ? null : CaptureIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : map['storageAccountResourceId'] as String,
+      archiveNameFormat: map['archiveNameFormat'] == null ? null : (map['archiveNameFormat'] as String).input(),
+      blobContainer: map['blobContainer'] == null ? null : (map['blobContainer'] as String).input(),
+      dataLakeAccountName: map['dataLakeAccountName'] == null ? null : (map['dataLakeAccountName'] as String).input(),
+      dataLakeFolderPath: map['dataLakeFolderPath'] == null ? null : (map['dataLakeFolderPath'] as String).input(),
+      dataLakeSubscriptionId: map['dataLakeSubscriptionId'] == null ? null : (map['dataLakeSubscriptionId'] as String).input(),
+      identity: map['identity'] == null ? null : (CaptureIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'step_status_response.dart';
 /// The information of the experiment run.
 class ExperimentExecutionDetailsPropertiesResponseRunInformation {
   /// The steps of the experiment run.
-  final List<StepStatusResponse> steps;
+  final pulumi.Input<List<StepStatusResponse>> steps;
 
   /// Creates a new [ExperimentExecutionDetailsPropertiesResponseRunInformation].
   /// [steps] The steps of the experiment run.
@@ -16,13 +16,13 @@ class ExperimentExecutionDetailsPropertiesResponseRunInformation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'steps': pulumi.Input.encodeList<StepStatusResponse, Map<String, dynamic>>(steps, (value) => value.toMap()),
+      'steps': pulumi.Input.mapInputValue<List<StepStatusResponse>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<StepStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ExperimentExecutionDetailsPropertiesResponseRunInformation.fromMap(Map<String, dynamic> map) {
     return ExperimentExecutionDetailsPropertiesResponseRunInformation(
-      steps: pulumi.Input.decodeList<StepStatusResponse>(map['steps'], (value) => StepStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
+      steps: (pulumi.Input.decodeList<StepStatusResponse>(map['steps'], (value) => StepStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

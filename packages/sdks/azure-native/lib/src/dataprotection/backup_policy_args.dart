@@ -23,15 +23,11 @@ class BackupPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The name of the backup vault.
   BackupPolicyArgs({
-    pulumi.Output<String>? backupPolicyName,
-    pulumi.Output<BackupPolicyDataprotection>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      backupPolicyName = pulumi.Input.asOptionalInput<String>(backupPolicyName),
-      properties = pulumi.Input.asOptionalInput<BackupPolicyDataprotection>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    this.backupPolicyName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      backupPolicyName: map['backupPolicyName'] == null ? null : pulumi.Output.create<String>(map['backupPolicyName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<BackupPolicyDataprotection>(map['properties'] as BackupPolicyDataprotection),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      backupPolicyName: map['backupPolicyName'] == null ? null : (map['backupPolicyName'] as String).input(),
+      properties: map['properties'] == null ? null : (map['properties'] as BackupPolicyDataprotection).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkerPoolTemplateVolumeEmptyDir {
   /// The different types of medium supported for EmptyDir.
   /// Default value is `MEMORY`.
   /// Possible values are: `MEMORY`.
-  final String? medium;
+  final pulumi.Input<String>? medium;
   /// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-  final String? sizeLimit;
+  final pulumi.Input<String>? sizeLimit;
 
   /// Creates a new [WorkerPoolTemplateVolumeEmptyDir].
   /// [medium] The different types of medium supported for EmptyDir.
@@ -26,8 +27,8 @@ class WorkerPoolTemplateVolumeEmptyDir {
 
   factory WorkerPoolTemplateVolumeEmptyDir.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateVolumeEmptyDir(
-      medium: map['medium'] == null ? null : map['medium'] as String,
-      sizeLimit: map['sizeLimit'] == null ? null : map['sizeLimit'] as String,
+      medium: map['medium'] == null ? null : (map['medium'] as String).input(),
+      sizeLimit: map['sizeLimit'] == null ? null : (map['sizeLimit'] as String).input(),
     );
   }
 }

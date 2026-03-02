@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'oracle_ssl_config_response.dart';
 
 /// Oracle database profile.
 class OracleProfileResponse {
   /// Connection string attributes
-  final Map<String, String> connectionAttributes;
+  final pulumi.Input<Map<String, String>> connectionAttributes;
   /// Database for the Oracle connection.
-  final String databaseService;
+  final pulumi.Input<String> databaseService;
   /// Hostname for the Oracle connection.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// Optional. SSL configuration for the Oracle connection.
-  final OracleSslConfigResponse oracleSslConfig;
+  final pulumi.Input<OracleSslConfigResponse> oracleSslConfig;
   /// Password for the Oracle connection.
-  final String password;
+  final pulumi.Input<String> password;
   /// Port for the Oracle connection, default value is 1521.
-  final int port;
+  final pulumi.Input<int> port;
   /// Username for the Oracle connection.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [OracleProfileResponse].
   /// [connectionAttributes] Connection string attributes
@@ -42,7 +43,7 @@ class OracleProfileResponse {
       'connectionAttributes': connectionAttributes,
       'databaseService': databaseService,
       'hostname': hostname,
-      'oracleSslConfig': oracleSslConfig.toMap(),
+      'oracleSslConfig': pulumi.Input.mapInputValue<OracleSslConfigResponse, Map<String, dynamic>>(oracleSslConfig, (value) => value.toMap()),
       'password': password,
       'port': port,
       'username': username,
@@ -51,13 +52,13 @@ class OracleProfileResponse {
 
   factory OracleProfileResponse.fromMap(Map<String, dynamic> map) {
     return OracleProfileResponse(
-      connectionAttributes: (map['connectionAttributes'] as Map).cast<String, String>(),
-      databaseService: map['databaseService'] as String,
-      hostname: map['hostname'] as String,
-      oracleSslConfig: OracleSslConfigResponse.fromMap((map['oracleSslConfig'] as Map).cast<String, dynamic>()),
-      password: map['password'] as String,
-      port: map['port'] as int,
-      username: map['username'] as String,
+      connectionAttributes: ((map['connectionAttributes'] as Map).cast<String, String>()).input(),
+      databaseService: (map['databaseService'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      oracleSslConfig: (OracleSslConfigResponse.fromMap((map['oracleSslConfig'] as Map).cast<String, dynamic>())).input(),
+      password: (map['password'] as String).input(),
+      port: (map['port'] as int).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

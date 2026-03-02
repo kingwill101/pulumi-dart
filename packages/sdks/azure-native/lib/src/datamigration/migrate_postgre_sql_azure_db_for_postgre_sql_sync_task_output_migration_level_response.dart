@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse {
   /// Number of databases to include
-  final double? databaseCount;
+  final pulumi.Input<double>? databaseCount;
   /// Migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Result type
   /// Expected value is 'MigrationLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Source server name
-  final String sourceServer;
+  final pulumi.Input<String> sourceServer;
   /// Source server type.
-  final String sourceServerType;
+  final pulumi.Input<String> sourceServerType;
   /// Source server version
-  final String sourceServerVersion;
+  final pulumi.Input<String> sourceServerVersion;
   /// Migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Migration status
-  final String state;
+  final pulumi.Input<String> state;
   /// Target server name
-  final String targetServer;
+  final pulumi.Input<String> targetServer;
   /// Target server type.
-  final String targetServerType;
+  final pulumi.Input<String> targetServerType;
   /// Target server version
-  final String targetServerVersion;
+  final pulumi.Input<String> targetServerVersion;
 
   /// Creates a new [MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse].
   /// [databaseCount] Number of databases to include
@@ -75,18 +76,18 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse 
 
   factory MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse(
-      databaseCount: map['databaseCount'] == null ? null : map['databaseCount'] as double,
-      endedOn: map['endedOn'] as String,
-      id: map['id'] as String,
-      resultType: map['resultType'] as String,
-      sourceServer: map['sourceServer'] as String,
-      sourceServerType: map['sourceServerType'] as String,
-      sourceServerVersion: map['sourceServerVersion'] as String,
-      startedOn: map['startedOn'] as String,
-      state: map['state'] as String,
-      targetServer: map['targetServer'] as String,
-      targetServerType: map['targetServerType'] as String,
-      targetServerVersion: map['targetServerVersion'] as String,
+      databaseCount: map['databaseCount'] == null ? null : (map['databaseCount'] as double).input(),
+      endedOn: (map['endedOn'] as String).input(),
+      id: (map['id'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
+      sourceServer: (map['sourceServer'] as String).input(),
+      sourceServerType: (map['sourceServerType'] as String).input(),
+      sourceServerVersion: (map['sourceServerVersion'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      state: (map['state'] as String).input(),
+      targetServer: (map['targetServer'] as String).input(),
+      targetServerType: (map['targetServerType'] as String).input(),
+      targetServerVersion: (map['targetServerVersion'] as String).input(),
     );
   }
 }

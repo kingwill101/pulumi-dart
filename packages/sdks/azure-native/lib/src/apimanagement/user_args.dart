@@ -50,33 +50,20 @@ class UserArgs {
   /// [state] Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
   /// [userId] User identifier. Must be unique in the current API Management service instance.
   UserArgs({
-    pulumi.Output<String>? appType,
-    pulumi.Output<String>? confirmation,
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> firstName,
-    pulumi.Output<List<UserIdentityContract>>? identities,
-    required pulumi.Output<String> lastName,
-    pulumi.Output<String>? note,
-    pulumi.Output<bool>? notify,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? userId,
-  }) :
-      appType = pulumi.Input.asOptionalInput<String>(appType),
-      confirmation = pulumi.Input.asOptionalInput<String>(confirmation),
-      email = pulumi.Input.asInput<String>(email),
-      firstName = pulumi.Input.asInput<String>(firstName),
-      identities = pulumi.Input.asOptionalInput<List<UserIdentityContract>>(identities),
-      lastName = pulumi.Input.asInput<String>(lastName),
-      note = pulumi.Input.asOptionalInput<String>(note),
-      notify = pulumi.Input.asOptionalInput<bool>(notify),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.appType,
+    this.confirmation,
+    required this.email,
+    required this.firstName,
+    this.identities,
+    required this.lastName,
+    this.note,
+    this.notify,
+    this.password,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.state,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      appType: map['appType'] == null ? null : pulumi.Output.create<String>(map['appType'] as String),
-      confirmation: map['confirmation'] == null ? null : pulumi.Output.create<String>(map['confirmation'] as String),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      firstName: pulumi.Output.create<String>(map['firstName'] as String),
-      identities: map['identities'] == null ? null : pulumi.Output.create<List<UserIdentityContract>>(pulumi.Input.decodeList<UserIdentityContract>(map['identities'], (value) => UserIdentityContract.fromMap((value as Map).cast<String, dynamic>()))),
-      lastName: pulumi.Output.create<String>(map['lastName'] as String),
-      note: map['note'] == null ? null : pulumi.Output.create<String>(map['note'] as String),
-      notify: map['notify'] == null ? null : pulumi.Output.create<bool>(map['notify'] as bool),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
+      confirmation: map['confirmation'] == null ? null : (map['confirmation'] as String).input(),
+      email: (map['email'] as String).input(),
+      firstName: (map['firstName'] as String).input(),
+      identities: map['identities'] == null ? null : (pulumi.Input.decodeList<UserIdentityContract>(map['identities'], (value) => UserIdentityContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastName: (map['lastName'] as String).input(),
+      note: map['note'] == null ? null : (map['note'] as String).input(),
+      notify: map['notify'] == null ? null : (map['notify'] as bool).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

@@ -40,25 +40,16 @@ class ConnectedRegistryArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ConnectedRegistryArgs({
-    pulumi.Output<List<String>>? clientTokenIds,
-    pulumi.Output<String>? connectedRegistryName,
-    pulumi.Output<GarbageCollectionProperties>? garbageCollection,
-    pulumi.Output<LoggingProperties>? logging,
-    required pulumi.Output<String> mode,
-    pulumi.Output<List<String>>? notificationsList,
-    required pulumi.Output<ParentProperties> parent,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clientTokenIds = pulumi.Input.asOptionalInput<List<String>>(clientTokenIds),
-      connectedRegistryName = pulumi.Input.asOptionalInput<String>(connectedRegistryName),
-      garbageCollection = pulumi.Input.asOptionalInput<GarbageCollectionProperties>(garbageCollection),
-      logging = pulumi.Input.asOptionalInput<LoggingProperties>(logging),
-      mode = pulumi.Input.asInput<String>(mode),
-      notificationsList = pulumi.Input.asOptionalInput<List<String>>(notificationsList),
-      parent = pulumi.Input.asInput<ParentProperties>(parent),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.clientTokenIds,
+    this.connectedRegistryName,
+    this.garbageCollection,
+    this.logging,
+    required this.mode,
+    this.notificationsList,
+    required this.parent,
+    required this.registryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class ConnectedRegistryArgs {
 
   factory ConnectedRegistryArgs.fromMap(Map<String, dynamic> map) {
     return ConnectedRegistryArgs(
-      clientTokenIds: map['clientTokenIds'] == null ? null : pulumi.Output.create<List<String>>((map['clientTokenIds'] as List).cast<String>()),
-      connectedRegistryName: map['connectedRegistryName'] == null ? null : pulumi.Output.create<String>(map['connectedRegistryName'] as String),
-      garbageCollection: map['garbageCollection'] == null ? null : pulumi.Output.create<GarbageCollectionProperties>(GarbageCollectionProperties.fromMap((map['garbageCollection'] as Map).cast<String, dynamic>())),
-      logging: map['logging'] == null ? null : pulumi.Output.create<LoggingProperties>(LoggingProperties.fromMap((map['logging'] as Map).cast<String, dynamic>())),
-      mode: pulumi.Output.create<String>(map['mode'] as String),
-      notificationsList: map['notificationsList'] == null ? null : pulumi.Output.create<List<String>>((map['notificationsList'] as List).cast<String>()),
-      parent: pulumi.Output.create<ParentProperties>(ParentProperties.fromMap((map['parent'] as Map).cast<String, dynamic>())),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clientTokenIds: map['clientTokenIds'] == null ? null : ((map['clientTokenIds'] as List).cast<String>()).input(),
+      connectedRegistryName: map['connectedRegistryName'] == null ? null : (map['connectedRegistryName'] as String).input(),
+      garbageCollection: map['garbageCollection'] == null ? null : (GarbageCollectionProperties.fromMap((map['garbageCollection'] as Map).cast<String, dynamic>())).input(),
+      logging: map['logging'] == null ? null : (LoggingProperties.fromMap((map['logging'] as Map).cast<String, dynamic>())).input(),
+      mode: (map['mode'] as String).input(),
+      notificationsList: map['notificationsList'] == null ? null : ((map['notificationsList'] as List).cast<String>()).input(),
+      parent: (ParentProperties.fromMap((map['parent'] as Map).cast<String, dynamic>())).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

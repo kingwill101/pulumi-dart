@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHpcClustersCluster {
   /// The description of ECS Hpc Cluster.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Hpc Cluster.
-  final String hpcClusterId;
+  final pulumi.Input<String> hpcClusterId;
   /// The ID of the Hpc Cluster.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of ECS Hpc Cluster.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetHpcClustersCluster].
   /// [description] The description of ECS Hpc Cluster.
@@ -34,10 +35,10 @@ class GetHpcClustersCluster {
 
   factory GetHpcClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetHpcClustersCluster(
-      description: map['description'] as String,
-      hpcClusterId: map['hpcClusterId'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      description: (map['description'] as String).input(),
+      hpcClusterId: (map['hpcClusterId'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

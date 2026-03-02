@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// TCPSocketAction describes an action based on opening a socket
 class GoogleCloudRunV2TCPSocketAction {
   /// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [GoogleCloudRunV2TCPSocketAction].
   /// [port] Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -20,7 +21,7 @@ class GoogleCloudRunV2TCPSocketAction {
 
   factory GoogleCloudRunV2TCPSocketAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2TCPSocketAction(
-      port: map['port'] == null ? null : map['port'] as int,
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

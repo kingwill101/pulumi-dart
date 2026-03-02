@@ -26,19 +26,13 @@ class RepoState {
   /// [repoType] `PUBLIC` or `PRIVATE`, repo's visibility.
   /// [summary] The repository general information. It can contain 1 to 80 characters.
   RepoState({
-    pulumi.Output<String>? detail,
-    pulumi.Output<RepoDomainList>? domainList,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? repoType,
-    pulumi.Output<String>? summary,
-  }) :
-      detail = pulumi.Input.asOptionalInput<String>(detail),
-      domainList = pulumi.Input.asOptionalInput<RepoDomainList>(domainList),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      repoType = pulumi.Input.asOptionalInput<String>(repoType),
-      summary = pulumi.Input.asOptionalInput<String>(summary);
+    this.detail,
+    this.domainList,
+    this.name,
+    this.namespace,
+    this.repoType,
+    this.summary,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class RepoState {
 
   factory RepoState.fromMap(Map<String, dynamic> map) {
     return RepoState(
-      detail: map['detail'] == null ? null : pulumi.Output.create<String>(map['detail'] as String),
-      domainList: map['domainList'] == null ? null : pulumi.Output.create<RepoDomainList>(RepoDomainList.fromMap((map['domainList'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      repoType: map['repoType'] == null ? null : pulumi.Output.create<String>(map['repoType'] as String),
-      summary: map['summary'] == null ? null : pulumi.Output.create<String>(map['summary'] as String),
+      detail: map['detail'] == null ? null : (map['detail'] as String).input(),
+      domainList: map['domainList'] == null ? null : (RepoDomainList.fromMap((map['domainList'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      repoType: map['repoType'] == null ? null : (map['repoType'] as String).input(),
+      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
     );
   }
 }

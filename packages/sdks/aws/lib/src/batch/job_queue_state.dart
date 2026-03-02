@@ -43,29 +43,18 @@ class JobQueueState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   JobQueueState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<JobQueueComputeEnvironmentOrder>>? computeEnvironmentOrders,
-    pulumi.Output<List<JobQueueJobStateTimeLimitAction>>? jobStateTimeLimitActions,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? schedulingPolicyArn,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<JobQueueTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      computeEnvironmentOrders = pulumi.Input.asOptionalInput<List<JobQueueComputeEnvironmentOrder>>(computeEnvironmentOrders),
-      jobStateTimeLimitActions = pulumi.Input.asOptionalInput<List<JobQueueJobStateTimeLimitAction>>(jobStateTimeLimitActions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      schedulingPolicyArn = pulumi.Input.asOptionalInput<String>(schedulingPolicyArn),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<JobQueueTimeouts>(timeouts);
+    this.arn,
+    this.computeEnvironmentOrders,
+    this.jobStateTimeLimitActions,
+    this.name,
+    this.priority,
+    this.region,
+    this.schedulingPolicyArn,
+    this.state,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class JobQueueState {
 
   factory JobQueueState.fromMap(Map<String, dynamic> map) {
     return JobQueueState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      computeEnvironmentOrders: map['computeEnvironmentOrders'] == null ? null : pulumi.Output.create<List<JobQueueComputeEnvironmentOrder>>(pulumi.Input.decodeList<JobQueueComputeEnvironmentOrder>(map['computeEnvironmentOrders'], (value) => JobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>()))),
-      jobStateTimeLimitActions: map['jobStateTimeLimitActions'] == null ? null : pulumi.Output.create<List<JobQueueJobStateTimeLimitAction>>(pulumi.Input.decodeList<JobQueueJobStateTimeLimitAction>(map['jobStateTimeLimitActions'], (value) => JobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      schedulingPolicyArn: map['schedulingPolicyArn'] == null ? null : pulumi.Output.create<String>(map['schedulingPolicyArn'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<JobQueueTimeouts>(JobQueueTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      computeEnvironmentOrders: map['computeEnvironmentOrders'] == null ? null : (pulumi.Input.decodeList<JobQueueComputeEnvironmentOrder>(map['computeEnvironmentOrders'], (value) => JobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jobStateTimeLimitActions: map['jobStateTimeLimitActions'] == null ? null : (pulumi.Input.decodeList<JobQueueJobStateTimeLimitAction>(map['jobStateTimeLimitActions'], (value) => JobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      schedulingPolicyArn: map['schedulingPolicyArn'] == null ? null : (map['schedulingPolicyArn'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (JobQueueTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class CaCertificateArgs {
   /// [namespaceName] Name of the namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   CaCertificateArgs({
-    pulumi.Output<String>? caCertificateName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? encodedCertificate,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      caCertificateName = pulumi.Input.asOptionalInput<String>(caCertificateName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encodedCertificate = pulumi.Input.asOptionalInput<String>(encodedCertificate),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.caCertificateName,
+    this.description,
+    this.encodedCertificate,
+    required this.namespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CaCertificateArgs {
 
   factory CaCertificateArgs.fromMap(Map<String, dynamic> map) {
     return CaCertificateArgs(
-      caCertificateName: map['caCertificateName'] == null ? null : pulumi.Output.create<String>(map['caCertificateName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encodedCertificate: map['encodedCertificate'] == null ? null : pulumi.Output.create<String>(map['encodedCertificate'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      caCertificateName: map['caCertificateName'] == null ? null : (map['caCertificateName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encodedCertificate: map['encodedCertificate'] == null ? null : (map['encodedCertificate'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

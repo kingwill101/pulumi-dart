@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionImageConfig {
   /// Parameters to pass to the container image.
-  final List<String>? commands;
+  final pulumi.Input<List<String>>? commands;
   /// Entry point to your application.
-  final List<String>? entryPoints;
+  final pulumi.Input<List<String>>? entryPoints;
   /// Working directory for the container image.
-  final String? workingDirectory;
+  final pulumi.Input<String>? workingDirectory;
 
   /// Creates a new [FunctionImageConfig].
   /// [commands] Parameters to pass to the container image.
@@ -29,9 +30,9 @@ class FunctionImageConfig {
 
   factory FunctionImageConfig.fromMap(Map<String, dynamic> map) {
     return FunctionImageConfig(
-      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
-      entryPoints: map['entryPoints'] == null ? null : (map['entryPoints'] as List).cast<String>(),
-      workingDirectory: map['workingDirectory'] == null ? null : map['workingDirectory'] as String,
+      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      entryPoints: map['entryPoints'] == null ? null : ((map['entryPoints'] as List).cast<String>()).input(),
+      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory'] as String).input(),
     );
   }
 }

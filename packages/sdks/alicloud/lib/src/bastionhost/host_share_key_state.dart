@@ -25,19 +25,13 @@ class HostShareKeyState {
   /// [privateKey] The private key. The value is a Base64-encoded string.
   /// [privateKeyFingerPrint] The fingerprint of the private key.
   HostShareKeyState({
-    pulumi.Output<String>? hostShareKeyId,
-    pulumi.Output<String>? hostShareKeyName,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? passPhrase,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? privateKeyFingerPrint,
-  }) :
-      hostShareKeyId = pulumi.Input.asOptionalInput<String>(hostShareKeyId),
-      hostShareKeyName = pulumi.Input.asOptionalInput<String>(hostShareKeyName),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      passPhrase = pulumi.Input.asOptionalInput<String>(passPhrase),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      privateKeyFingerPrint = pulumi.Input.asOptionalInput<String>(privateKeyFingerPrint);
+    this.hostShareKeyId,
+    this.hostShareKeyName,
+    this.instanceId,
+    this.passPhrase,
+    this.privateKey,
+    this.privateKeyFingerPrint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class HostShareKeyState {
 
   factory HostShareKeyState.fromMap(Map<String, dynamic> map) {
     return HostShareKeyState(
-      hostShareKeyId: map['hostShareKeyId'] == null ? null : pulumi.Output.create<String>(map['hostShareKeyId'] as String),
-      hostShareKeyName: map['hostShareKeyName'] == null ? null : pulumi.Output.create<String>(map['hostShareKeyName'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      passPhrase: map['passPhrase'] == null ? null : pulumi.Output.create<String>(map['passPhrase'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      privateKeyFingerPrint: map['privateKeyFingerPrint'] == null ? null : pulumi.Output.create<String>(map['privateKeyFingerPrint'] as String),
+      hostShareKeyId: map['hostShareKeyId'] == null ? null : (map['hostShareKeyId'] as String).input(),
+      hostShareKeyName: map['hostShareKeyName'] == null ? null : (map['hostShareKeyName'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      passPhrase: map['passPhrase'] == null ? null : (map['passPhrase'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      privateKeyFingerPrint: map['privateKeyFingerPrint'] == null ? null : (map['privateKeyFingerPrint'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description about a deployment.
 class DeploymentType {
   /// Deployment identifier.
-  final String? deploymentId;
+  final pulumi.Input<String>? deploymentId;
   /// Url to access repository action logs.
-  final String? deploymentLogsUrl;
+  final pulumi.Input<String>? deploymentLogsUrl;
   /// The outcome of the deployment.
-  final String? deploymentResult;
+  final pulumi.Input<String>? deploymentResult;
   /// Current status of the deployment.
-  final String? deploymentState;
+  final pulumi.Input<String>? deploymentState;
   /// The time when the deployment finished.
-  final String? deploymentTime;
+  final pulumi.Input<String>? deploymentTime;
 
   /// Creates a new [DeploymentType].
   /// [deploymentId] Deployment identifier.
@@ -40,11 +41,11 @@ class DeploymentType {
 
   factory DeploymentType.fromMap(Map<String, dynamic> map) {
     return DeploymentType(
-      deploymentId: map['deploymentId'] == null ? null : map['deploymentId'] as String,
-      deploymentLogsUrl: map['deploymentLogsUrl'] == null ? null : map['deploymentLogsUrl'] as String,
-      deploymentResult: map['deploymentResult'] == null ? null : map['deploymentResult'] as String,
-      deploymentState: map['deploymentState'] == null ? null : map['deploymentState'] as String,
-      deploymentTime: map['deploymentTime'] == null ? null : map['deploymentTime'] as String,
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
+      deploymentLogsUrl: map['deploymentLogsUrl'] == null ? null : (map['deploymentLogsUrl'] as String).input(),
+      deploymentResult: map['deploymentResult'] == null ? null : (map['deploymentResult'] as String).input(),
+      deploymentState: map['deploymentState'] == null ? null : (map['deploymentState'] as String).input(),
+      deploymentTime: map['deploymentTime'] == null ? null : (map['deploymentTime'] as String).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class ChainArgs {
   /// [repoName] The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
   /// [repoNamespaceName] The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
   ChainArgs({
-    pulumi.Output<List<ChainChainConfig>>? chainConfigs,
-    required pulumi.Output<String> chainName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? repoName,
-    pulumi.Output<String>? repoNamespaceName,
-  }) :
-      chainConfigs = pulumi.Input.asOptionalInput<List<ChainChainConfig>>(chainConfigs),
-      chainName = pulumi.Input.asInput<String>(chainName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      repoName = pulumi.Input.asOptionalInput<String>(repoName),
-      repoNamespaceName = pulumi.Input.asOptionalInput<String>(repoNamespaceName);
+    this.chainConfigs,
+    required this.chainName,
+    this.description,
+    required this.instanceId,
+    this.repoName,
+    this.repoNamespaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ChainArgs {
 
   factory ChainArgs.fromMap(Map<String, dynamic> map) {
     return ChainArgs(
-      chainConfigs: map['chainConfigs'] == null ? null : pulumi.Output.create<List<ChainChainConfig>>(pulumi.Input.decodeList<ChainChainConfig>(map['chainConfigs'], (value) => ChainChainConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      chainName: pulumi.Output.create<String>(map['chainName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      repoName: map['repoName'] == null ? null : pulumi.Output.create<String>(map['repoName'] as String),
-      repoNamespaceName: map['repoNamespaceName'] == null ? null : pulumi.Output.create<String>(map['repoNamespaceName'] as String),
+      chainConfigs: map['chainConfigs'] == null ? null : (pulumi.Input.decodeList<ChainChainConfig>(map['chainConfigs'], (value) => ChainChainConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      chainName: (map['chainName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
+      repoNamespaceName: map['repoNamespaceName'] == null ? null : (map['repoNamespaceName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Datastore account key secrets.
 class AccountKeyDatastoreSecrets {
   /// Storage account key.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Enum to determine the datastore secrets type.
   /// Expected value is 'AccountKey'.
-  final String secretsType;
+  final pulumi.Input<String> secretsType;
 
   /// Creates a new [AccountKeyDatastoreSecrets].
   /// [key] Storage account key.
@@ -26,8 +27,8 @@ class AccountKeyDatastoreSecrets {
 
   factory AccountKeyDatastoreSecrets.fromMap(Map<String, dynamic> map) {
     return AccountKeyDatastoreSecrets(
-      key: map['key'] == null ? null : map['key'] as String,
-      secretsType: map['secretsType'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      secretsType: (map['secretsType'] as String).input(),
     );
   }
 }

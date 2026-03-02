@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A custom response configuration for a rule.
 class CcpResponseConfigResponse {
   /// The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
-  final String? compressionAlgo;
+  final pulumi.Input<String>? compressionAlgo;
   /// The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
-  final bool? convertChildPropertiesToArray;
+  final pulumi.Input<bool>? convertChildPropertiesToArray;
   /// The csv delimiter, in case the response format is CSV.
-  final String? csvDelimiter;
+  final pulumi.Input<String>? csvDelimiter;
   /// The character used to escape characters in CSV.
-  final String? csvEscape;
+  final pulumi.Input<String>? csvEscape;
   /// The json paths, '$' char is the json root.
-  final List<String> eventsJsonPaths;
+  final pulumi.Input<List<String>> eventsJsonPaths;
   /// The response format. possible values are json,csv,xml
-  final String? format;
+  final pulumi.Input<String>? format;
   /// The value indicating whether the response has CSV boundary in case the response in CSV format.
-  final bool? hasCsvBoundary;
+  final pulumi.Input<bool>? hasCsvBoundary;
   /// The value indicating whether the response has headers in case the response in CSV format.
-  final bool? hasCsvHeader;
+  final pulumi.Input<bool>? hasCsvHeader;
   /// The value indicating whether the remote server support Gzip and we should expect Gzip response.
-  final bool? isGzipCompressed;
+  final pulumi.Input<bool>? isGzipCompressed;
   /// The value where the status message/code should appear in the response.
-  final String? successStatusJsonPath;
+  final pulumi.Input<String>? successStatusJsonPath;
   /// The status value.
-  final String? successStatusValue;
+  final pulumi.Input<String>? successStatusValue;
 
   /// Creates a new [CcpResponseConfigResponse].
   /// [compressionAlgo] The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
@@ -70,17 +71,17 @@ class CcpResponseConfigResponse {
 
   factory CcpResponseConfigResponse.fromMap(Map<String, dynamic> map) {
     return CcpResponseConfigResponse(
-      compressionAlgo: map['compressionAlgo'] == null ? null : map['compressionAlgo'] as String,
-      convertChildPropertiesToArray: map['convertChildPropertiesToArray'] == null ? null : map['convertChildPropertiesToArray'] as bool,
-      csvDelimiter: map['csvDelimiter'] == null ? null : map['csvDelimiter'] as String,
-      csvEscape: map['csvEscape'] == null ? null : map['csvEscape'] as String,
-      eventsJsonPaths: (map['eventsJsonPaths'] as List).cast<String>(),
-      format: map['format'] == null ? null : map['format'] as String,
-      hasCsvBoundary: map['hasCsvBoundary'] == null ? null : map['hasCsvBoundary'] as bool,
-      hasCsvHeader: map['hasCsvHeader'] == null ? null : map['hasCsvHeader'] as bool,
-      isGzipCompressed: map['isGzipCompressed'] == null ? null : map['isGzipCompressed'] as bool,
-      successStatusJsonPath: map['successStatusJsonPath'] == null ? null : map['successStatusJsonPath'] as String,
-      successStatusValue: map['successStatusValue'] == null ? null : map['successStatusValue'] as String,
+      compressionAlgo: map['compressionAlgo'] == null ? null : (map['compressionAlgo'] as String).input(),
+      convertChildPropertiesToArray: map['convertChildPropertiesToArray'] == null ? null : (map['convertChildPropertiesToArray'] as bool).input(),
+      csvDelimiter: map['csvDelimiter'] == null ? null : (map['csvDelimiter'] as String).input(),
+      csvEscape: map['csvEscape'] == null ? null : (map['csvEscape'] as String).input(),
+      eventsJsonPaths: ((map['eventsJsonPaths'] as List).cast<String>()).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      hasCsvBoundary: map['hasCsvBoundary'] == null ? null : (map['hasCsvBoundary'] as bool).input(),
+      hasCsvHeader: map['hasCsvHeader'] == null ? null : (map['hasCsvHeader'] as bool).input(),
+      isGzipCompressed: map['isGzipCompressed'] == null ? null : (map['isGzipCompressed'] as bool).input(),
+      successStatusJsonPath: map['successStatusJsonPath'] == null ? null : (map['successStatusJsonPath'] as String).input(),
+      successStatusValue: map['successStatusValue'] == null ? null : (map['successStatusValue'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetTagValuesArgs {
   /// Creates a new [GetTagValuesArgs].
   /// [parent] The resource name of the parent tagKey in format `tagKey/{name}`.
   GetTagValuesArgs({
-    required pulumi.Output<String> parent,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent);
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetTagValuesArgs {
 
   factory GetTagValuesArgs.fromMap(Map<String, dynamic> map) {
     return GetTagValuesArgs(
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

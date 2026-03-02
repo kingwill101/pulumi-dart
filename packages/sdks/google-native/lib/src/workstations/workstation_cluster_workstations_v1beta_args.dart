@@ -46,31 +46,19 @@ class WorkstationClusterWorkstationsV1betaArgs {
   /// [subnetwork] Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
   /// [workstationClusterId] Required. ID to use for the workstation cluster.
   WorkstationClusterWorkstationsV1betaArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<DomainConfig>? domainConfig,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<PrivateClusterConfigWorkstationsV1beta>? privateClusterConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? subnetwork,
-    required pulumi.Output<String> workstationClusterId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      domainConfig = pulumi.Input.asOptionalInput<DomainConfig>(domainConfig),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      privateClusterConfig = pulumi.Input.asOptionalInput<PrivateClusterConfigWorkstationsV1beta>(privateClusterConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      subnetwork = pulumi.Input.asOptionalInput<String>(subnetwork),
-      workstationClusterId = pulumi.Input.asInput<String>(workstationClusterId);
+    this.annotations,
+    this.displayName,
+    this.domainConfig,
+    this.etag,
+    this.labels,
+    this.location,
+    this.name,
+    this.network,
+    this.privateClusterConfig,
+    this.project,
+    this.subnetwork,
+    required this.workstationClusterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class WorkstationClusterWorkstationsV1betaArgs {
 
   factory WorkstationClusterWorkstationsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationClusterWorkstationsV1betaArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      domainConfig: map['domainConfig'] == null ? null : pulumi.Output.create<DomainConfig>(DomainConfig.fromMap((map['domainConfig'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      privateClusterConfig: map['privateClusterConfig'] == null ? null : pulumi.Output.create<PrivateClusterConfigWorkstationsV1beta>(PrivateClusterConfigWorkstationsV1beta.fromMap((map['privateClusterConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      subnetwork: map['subnetwork'] == null ? null : pulumi.Output.create<String>(map['subnetwork'] as String),
-      workstationClusterId: pulumi.Output.create<String>(map['workstationClusterId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      domainConfig: map['domainConfig'] == null ? null : (DomainConfig.fromMap((map['domainConfig'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      privateClusterConfig: map['privateClusterConfig'] == null ? null : (PrivateClusterConfigWorkstationsV1beta.fromMap((map['privateClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      workstationClusterId: (map['workstationClusterId'] as String).input(),
     );
   }
 }

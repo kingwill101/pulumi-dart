@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList {
   /// The target network segment of the VPC.
-  final String? destinationCidr;
+  final pulumi.Input<String>? destinationCidr;
   /// The ID of the next hop instance in the VPC.
-  final String? nextHopInstanceId;
+  final pulumi.Input<String>? nextHopInstanceId;
 
   /// Creates a new [FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList].
   /// [destinationCidr] The target network segment of the VPC.
@@ -24,8 +25,8 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList {
 
   factory FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList(
-      destinationCidr: map['destinationCidr'] == null ? null : map['destinationCidr'] as String,
-      nextHopInstanceId: map['nextHopInstanceId'] == null ? null : map['nextHopInstanceId'] as String,
+      destinationCidr: map['destinationCidr'] == null ? null : (map['destinationCidr'] as String).input(),
+      nextHopInstanceId: map['nextHopInstanceId'] == null ? null : (map['nextHopInstanceId'] as String).input(),
     );
   }
 }

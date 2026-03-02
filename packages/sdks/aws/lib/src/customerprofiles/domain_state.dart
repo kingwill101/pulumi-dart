@@ -41,27 +41,17 @@ class DomainState {
   /// [tags] Tags to apply to the domain. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   DomainState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? deadLetterQueueUrl,
-    pulumi.Output<String>? defaultEncryptionKey,
-    pulumi.Output<int>? defaultExpirationDays,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<DomainMatching>? matching,
-    pulumi.Output<String>? region,
-    pulumi.Output<DomainRuleBasedMatching>? ruleBasedMatching,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      deadLetterQueueUrl = pulumi.Input.asOptionalInput<String>(deadLetterQueueUrl),
-      defaultEncryptionKey = pulumi.Input.asOptionalInput<String>(defaultEncryptionKey),
-      defaultExpirationDays = pulumi.Input.asOptionalInput<int>(defaultExpirationDays),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      matching = pulumi.Input.asOptionalInput<DomainMatching>(matching),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleBasedMatching = pulumi.Input.asOptionalInput<DomainRuleBasedMatching>(ruleBasedMatching),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.deadLetterQueueUrl,
+    this.defaultEncryptionKey,
+    this.defaultExpirationDays,
+    this.domainName,
+    this.matching,
+    this.region,
+    this.ruleBasedMatching,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      deadLetterQueueUrl: map['deadLetterQueueUrl'] == null ? null : pulumi.Output.create<String>(map['deadLetterQueueUrl'] as String),
-      defaultEncryptionKey: map['defaultEncryptionKey'] == null ? null : pulumi.Output.create<String>(map['defaultEncryptionKey'] as String),
-      defaultExpirationDays: map['defaultExpirationDays'] == null ? null : pulumi.Output.create<int>(map['defaultExpirationDays'] as int),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      matching: map['matching'] == null ? null : pulumi.Output.create<DomainMatching>(DomainMatching.fromMap((map['matching'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleBasedMatching: map['ruleBasedMatching'] == null ? null : pulumi.Output.create<DomainRuleBasedMatching>(DomainRuleBasedMatching.fromMap((map['ruleBasedMatching'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      deadLetterQueueUrl: map['deadLetterQueueUrl'] == null ? null : (map['deadLetterQueueUrl'] as String).input(),
+      defaultEncryptionKey: map['defaultEncryptionKey'] == null ? null : (map['defaultEncryptionKey'] as String).input(),
+      defaultExpirationDays: map['defaultExpirationDays'] == null ? null : (map['defaultExpirationDays'] as int).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      matching: map['matching'] == null ? null : (DomainMatching.fromMap((map['matching'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleBasedMatching: map['ruleBasedMatching'] == null ? null : (DomainRuleBasedMatching.fromMap((map['ruleBasedMatching'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

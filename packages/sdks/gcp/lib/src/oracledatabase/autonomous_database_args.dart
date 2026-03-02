@@ -71,35 +71,21 @@ class AutonomousDatabaseArgs {
   /// [properties] The properties of an Autonomous Database.
   /// [sourceConfig] The source Autonomous Database configuration for the standby Autonomous Database.
   AutonomousDatabaseArgs({
-    pulumi.Output<String>? adminPassword,
-    required pulumi.Output<String> autonomousDatabaseId,
-    pulumi.Output<String>? cidr,
-    pulumi.Output<String>? database,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? odbNetwork,
-    pulumi.Output<String>? odbSubnet,
-    pulumi.Output<String>? project,
-    pulumi.Output<AutonomousDatabaseProperties>? properties,
-    pulumi.Output<AutonomousDatabaseSourceConfig>? sourceConfig,
-  }) :
-      adminPassword = pulumi.Input.asOptionalInput<String>(adminPassword),
-      autonomousDatabaseId = pulumi.Input.asInput<String>(autonomousDatabaseId),
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      odbNetwork = pulumi.Input.asOptionalInput<String>(odbNetwork),
-      odbSubnet = pulumi.Input.asOptionalInput<String>(odbSubnet),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      properties = pulumi.Input.asOptionalInput<AutonomousDatabaseProperties>(properties),
-      sourceConfig = pulumi.Input.asOptionalInput<AutonomousDatabaseSourceConfig>(sourceConfig);
+    this.adminPassword,
+    required this.autonomousDatabaseId,
+    this.cidr,
+    this.database,
+    this.deletionProtection,
+    this.displayName,
+    this.labels,
+    required this.location,
+    this.network,
+    this.odbNetwork,
+    this.odbSubnet,
+    this.project,
+    this.properties,
+    this.sourceConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -122,20 +108,20 @@ class AutonomousDatabaseArgs {
 
   factory AutonomousDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabaseArgs(
-      adminPassword: map['adminPassword'] == null ? null : pulumi.Output.create<String>(map['adminPassword'] as String),
-      autonomousDatabaseId: pulumi.Output.create<String>(map['autonomousDatabaseId'] as String),
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      odbNetwork: map['odbNetwork'] == null ? null : pulumi.Output.create<String>(map['odbNetwork'] as String),
-      odbSubnet: map['odbSubnet'] == null ? null : pulumi.Output.create<String>(map['odbSubnet'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<AutonomousDatabaseProperties>(AutonomousDatabaseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      sourceConfig: map['sourceConfig'] == null ? null : pulumi.Output.create<AutonomousDatabaseSourceConfig>(AutonomousDatabaseSourceConfig.fromMap((map['sourceConfig'] as Map).cast<String, dynamic>())),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
+      autonomousDatabaseId: (map['autonomousDatabaseId'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      odbNetwork: map['odbNetwork'] == null ? null : (map['odbNetwork'] as String).input(),
+      odbSubnet: map['odbSubnet'] == null ? null : (map['odbSubnet'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      properties: map['properties'] == null ? null : (AutonomousDatabaseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      sourceConfig: map['sourceConfig'] == null ? null : (AutonomousDatabaseSourceConfig.fromMap((map['sourceConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

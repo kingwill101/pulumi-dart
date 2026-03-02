@@ -32,21 +32,14 @@ class WCFRelayArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userMetadata] The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint. For example, it can be used to store descriptive data, such as list of teams and their contact information. Also, user-defined configuration settings can be stored.
   WCFRelayArgs({
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<String>? relayName,
-    pulumi.Output<Relaytype>? relayType,
-    pulumi.Output<bool>? requiresClientAuthorization,
-    pulumi.Output<bool>? requiresTransportSecurity,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? userMetadata,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      relayName = pulumi.Input.asOptionalInput<String>(relayName),
-      relayType = pulumi.Input.asOptionalInput<Relaytype>(relayType),
-      requiresClientAuthorization = pulumi.Input.asOptionalInput<bool>(requiresClientAuthorization),
-      requiresTransportSecurity = pulumi.Input.asOptionalInput<bool>(requiresTransportSecurity),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userMetadata = pulumi.Input.asOptionalInput<String>(userMetadata);
+    required this.namespaceName,
+    this.relayName,
+    this.relayType,
+    this.requiresClientAuthorization,
+    this.requiresTransportSecurity,
+    required this.resourceGroupName,
+    this.userMetadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class WCFRelayArgs {
 
   factory WCFRelayArgs.fromMap(Map<String, dynamic> map) {
     return WCFRelayArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      relayName: map['relayName'] == null ? null : pulumi.Output.create<String>(map['relayName'] as String),
-      relayType: map['relayType'] == null ? null : pulumi.Output.create<Relaytype>(Relaytype.fromValue(map['relayType'] as String)),
-      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : pulumi.Output.create<bool>(map['requiresClientAuthorization'] as bool),
-      requiresTransportSecurity: map['requiresTransportSecurity'] == null ? null : pulumi.Output.create<bool>(map['requiresTransportSecurity'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userMetadata: map['userMetadata'] == null ? null : pulumi.Output.create<String>(map['userMetadata'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      relayName: map['relayName'] == null ? null : (map['relayName'] as String).input(),
+      relayType: map['relayType'] == null ? null : (Relaytype.fromValue(map['relayType'] as String)).input(),
+      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : (map['requiresClientAuthorization'] as bool).input(),
+      requiresTransportSecurity: map['requiresTransportSecurity'] == null ? null : (map['requiresTransportSecurity'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata'] as String).input(),
     );
   }
 }

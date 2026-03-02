@@ -16,11 +16,9 @@ class GetDataCollectionEndpointArgs {
   /// [dataCollectionEndpointName] The name of the data collection endpoint. The name is case insensitive.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDataCollectionEndpointArgs({
-    required pulumi.Output<String> dataCollectionEndpointName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dataCollectionEndpointName = pulumi.Input.asInput<String>(dataCollectionEndpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dataCollectionEndpointName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDataCollectionEndpointArgs {
 
   factory GetDataCollectionEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionEndpointArgs(
-      dataCollectionEndpointName: pulumi.Output.create<String>(map['dataCollectionEndpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dataCollectionEndpointName: (map['dataCollectionEndpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

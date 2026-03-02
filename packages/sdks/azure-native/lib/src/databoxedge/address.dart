@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The shipping address of the customer.
 class Address {
   /// The address line1.
-  final String? addressLine1;
+  final pulumi.Input<String>? addressLine1;
   /// The address line2.
-  final String? addressLine2;
+  final pulumi.Input<String>? addressLine2;
   /// The address line3.
-  final String? addressLine3;
+  final pulumi.Input<String>? addressLine3;
   /// The city name.
-  final String? city;
+  final pulumi.Input<String>? city;
   /// The country name.
-  final String country;
+  final pulumi.Input<String> country;
   /// The postal code.
-  final String? postalCode;
+  final pulumi.Input<String>? postalCode;
   /// The state name.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [Address].
   /// [addressLine1] The address line1.
@@ -50,13 +51,13 @@ class Address {
 
   factory Address.fromMap(Map<String, dynamic> map) {
     return Address(
-      addressLine1: map['addressLine1'] == null ? null : map['addressLine1'] as String,
-      addressLine2: map['addressLine2'] == null ? null : map['addressLine2'] as String,
-      addressLine3: map['addressLine3'] == null ? null : map['addressLine3'] as String,
-      city: map['city'] == null ? null : map['city'] as String,
-      country: map['country'] as String,
-      postalCode: map['postalCode'] == null ? null : map['postalCode'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      addressLine1: map['addressLine1'] == null ? null : (map['addressLine1'] as String).input(),
+      addressLine2: map['addressLine2'] == null ? null : (map['addressLine2'] as String).input(),
+      addressLine3: map['addressLine3'] == null ? null : (map['addressLine3'] as String).input(),
+      city: map['city'] == null ? null : (map['city'] as String).input(),
+      country: (map['country'] as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

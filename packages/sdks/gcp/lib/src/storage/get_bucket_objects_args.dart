@@ -19,13 +19,10 @@ class GetBucketObjectsArgs {
   /// [matchGlob] A glob pattern used to filter results (for example, `foo*bar`).
   /// [prefix] Filter results to include only objects whose names begin with this prefix.
   GetBucketObjectsArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? matchGlob,
-    pulumi.Output<String>? prefix,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      matchGlob = pulumi.Input.asOptionalInput<String>(matchGlob),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix);
+    required this.bucket,
+    this.matchGlob,
+    this.prefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBucketObjectsArgs {
 
   factory GetBucketObjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectsArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      matchGlob: map['matchGlob'] == null ? null : pulumi.Output.create<String>(map['matchGlob'] as String),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
+      bucket: (map['bucket'] as String).input(),
+      matchGlob: map['matchGlob'] == null ? null : (map['matchGlob'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

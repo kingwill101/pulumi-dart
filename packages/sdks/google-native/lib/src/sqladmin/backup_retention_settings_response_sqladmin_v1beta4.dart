@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// We currently only support backup retention by specifying the number of backups we will retain.
 class BackupRetentionSettingsResponseSqladminV1beta4 {
   /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
-  final int retainedBackups;
+  final pulumi.Input<int> retainedBackups;
   /// The unit that 'retained_backups' represents.
-  final String retentionUnit;
+  final pulumi.Input<String> retentionUnit;
 
   /// Creates a new [BackupRetentionSettingsResponseSqladminV1beta4].
   /// [retainedBackups] Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
@@ -25,8 +26,8 @@ class BackupRetentionSettingsResponseSqladminV1beta4 {
 
   factory BackupRetentionSettingsResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return BackupRetentionSettingsResponseSqladminV1beta4(
-      retainedBackups: map['retainedBackups'] as int,
-      retentionUnit: map['retentionUnit'] as String,
+      retainedBackups: (map['retainedBackups'] as int).input(),
+      retentionUnit: (map['retentionUnit'] as String).input(),
     );
   }
 }

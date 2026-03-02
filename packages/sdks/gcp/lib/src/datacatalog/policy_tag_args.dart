@@ -29,15 +29,11 @@ class PolicyTagArgs {
   /// [parentPolicyTag] Resource name of this policy tag's parent policy tag.
   /// [taxonomy] Taxonomy the policy tag is associated with
   PolicyTagArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? parentPolicyTag,
-    required pulumi.Output<String> taxonomy,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      parentPolicyTag = pulumi.Input.asOptionalInput<String>(parentPolicyTag),
-      taxonomy = pulumi.Input.asInput<String>(taxonomy);
+    this.description,
+    required this.displayName,
+    this.parentPolicyTag,
+    required this.taxonomy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,10 +46,10 @@ class PolicyTagArgs {
 
   factory PolicyTagArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTagArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      parentPolicyTag: map['parentPolicyTag'] == null ? null : pulumi.Output.create<String>(map['parentPolicyTag'] as String),
-      taxonomy: pulumi.Output.create<String>(map['taxonomy'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      parentPolicyTag: map['parentPolicyTag'] == null ? null : (map['parentPolicyTag'] as String).input(),
+      taxonomy: (map['taxonomy'] as String).input(),
     );
   }
 }

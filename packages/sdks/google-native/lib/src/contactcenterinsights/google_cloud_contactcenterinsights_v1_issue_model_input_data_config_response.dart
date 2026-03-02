@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configs for the input data used to create the issue model.
 class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse {
   /// A filter to reduce the conversations used for training the model to a specific subset.
-  final String filter;
+  final pulumi.Input<String> filter;
   /// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
-  final String medium;
+  final pulumi.Input<String> medium;
   /// Number of conversations used in training. Output only.
-  final String trainingConversationsCount;
+  final pulumi.Input<String> trainingConversationsCount;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse].
   /// [filter] A filter to reduce the conversations used for training the model to a specific subset.
@@ -30,9 +31,9 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse {
 
   factory GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse(
-      filter: map['filter'] as String,
-      medium: map['medium'] as String,
-      trainingConversationsCount: map['trainingConversationsCount'] as String,
+      filter: (map['filter'] as String).input(),
+      medium: (map['medium'] as String).input(),
+      trainingConversationsCount: (map['trainingConversationsCount'] as String).input(),
     );
   }
 }

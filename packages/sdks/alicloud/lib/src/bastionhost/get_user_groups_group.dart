@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserGroupsGroup {
   /// Specify the New Group of Remark Information. Supports up to 500 Characters.
-  final String comment;
+  final pulumi.Input<String> comment;
   /// The ID of the User Group.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specify the New Group of the Bastion Host of Instance Id.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The User Group ID.
-  final String userGroupId;
+  final pulumi.Input<String> userGroupId;
   /// Specify the New Group Name. Supports up to 128 Characters.
-  final String userGroupName;
+  final pulumi.Input<String> userGroupName;
 
   /// Creates a new [GetUserGroupsGroup].
   /// [comment] Specify the New Group of Remark Information. Supports up to 500 Characters.
@@ -39,11 +40,11 @@ class GetUserGroupsGroup {
 
   factory GetUserGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetUserGroupsGroup(
-      comment: map['comment'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      userGroupId: map['userGroupId'] as String,
-      userGroupName: map['userGroupName'] as String,
+      comment: (map['comment'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      userGroupId: (map['userGroupId'] as String).input(),
+      userGroupName: (map['userGroupName'] as String).input(),
     );
   }
 }

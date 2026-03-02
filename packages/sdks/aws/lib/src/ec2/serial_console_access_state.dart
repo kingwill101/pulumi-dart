@@ -13,11 +13,9 @@ class SerialConsoleAccessState {
   /// [enabled] Whether or not serial console access is enabled. Valid values are `true` or `false`. Defaults to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   SerialConsoleAccessState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? region,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.enabled,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class SerialConsoleAccessState {
 
   factory SerialConsoleAccessState.fromMap(Map<String, dynamic> map) {
     return SerialConsoleAccessState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

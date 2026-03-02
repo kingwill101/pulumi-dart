@@ -19,13 +19,10 @@ class ResourceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] ARN of the resource to be added to the group.
   ResourceArgs({
-    required pulumi.Output<String> groupArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceArn,
-  }) :
-      groupArn = pulumi.Input.asInput<String>(groupArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn);
+    required this.groupArn,
+    this.region,
+    required this.resourceArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      groupArn: pulumi.Output.create<String>(map['groupArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
+      groupArn: (map['groupArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
     );
   }
 }

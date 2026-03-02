@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Long term policy schedule.
 class LongTermSchedulePolicy {
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'LongTermSchedulePolicy'.
-  final String schedulePolicyType;
+  final pulumi.Input<String> schedulePolicyType;
 
   /// Creates a new [LongTermSchedulePolicy].
   /// [schedulePolicyType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
@@ -21,7 +22,7 @@ class LongTermSchedulePolicy {
 
   factory LongTermSchedulePolicy.fromMap(Map<String, dynamic> map) {
     return LongTermSchedulePolicy(
-      schedulePolicyType: map['schedulePolicyType'] as String,
+      schedulePolicyType: (map['schedulePolicyType'] as String).input(),
     );
   }
 }

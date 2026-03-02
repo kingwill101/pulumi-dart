@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets status of current and latest SCOM managed instance operation.
 class ManagedInstanceOperationStatusResponse {
   /// Operation id
-  final String id;
+  final pulumi.Input<String> id;
   /// Operation Name
-  final String operationName;
+  final pulumi.Input<String> operationName;
   /// Operation status
-  final String operationState;
+  final pulumi.Input<String> operationState;
 
   /// Creates a new [ManagedInstanceOperationStatusResponse].
   /// [id] Operation id
@@ -30,9 +31,9 @@ class ManagedInstanceOperationStatusResponse {
 
   factory ManagedInstanceOperationStatusResponse.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceOperationStatusResponse(
-      id: map['id'] as String,
-      operationName: map['operationName'] as String,
-      operationState: map['operationState'] as String,
+      id: (map['id'] as String).input(),
+      operationName: (map['operationName'] as String).input(),
+      operationState: (map['operationState'] as String).input(),
     );
   }
 }

@@ -43,29 +43,18 @@ class DwResourceGroupArgs {
   /// [specification] Package year and package month resource group specifications, unit CU
   /// [tags] The tag of the resource
   DwResourceGroupArgs({
-    pulumi.Output<bool>? autoRenew,
-    required pulumi.Output<String> defaultVpcId,
-    required pulumi.Output<String> defaultVswitchId,
-    pulumi.Output<int>? paymentDuration,
-    pulumi.Output<String>? paymentDurationUnit,
-    pulumi.Output<String>? paymentType,
-    required pulumi.Output<String> remark,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<int>? specification,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      defaultVpcId = pulumi.Input.asInput<String>(defaultVpcId),
-      defaultVswitchId = pulumi.Input.asInput<String>(defaultVswitchId),
-      paymentDuration = pulumi.Input.asOptionalInput<int>(paymentDuration),
-      paymentDurationUnit = pulumi.Input.asOptionalInput<String>(paymentDurationUnit),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      remark = pulumi.Input.asInput<String>(remark),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      specification = pulumi.Input.asOptionalInput<int>(specification),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.autoRenew,
+    required this.defaultVpcId,
+    required this.defaultVswitchId,
+    this.paymentDuration,
+    this.paymentDurationUnit,
+    this.paymentType,
+    required this.remark,
+    this.resourceGroupId,
+    this.resourceGroupName,
+    this.specification,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class DwResourceGroupArgs {
 
   factory DwResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return DwResourceGroupArgs(
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      defaultVpcId: pulumi.Output.create<String>(map['defaultVpcId'] as String),
-      defaultVswitchId: pulumi.Output.create<String>(map['defaultVswitchId'] as String),
-      paymentDuration: map['paymentDuration'] == null ? null : pulumi.Output.create<int>(map['paymentDuration'] as int),
-      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : pulumi.Output.create<String>(map['paymentDurationUnit'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      remark: pulumi.Output.create<String>(map['remark'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      specification: map['specification'] == null ? null : pulumi.Output.create<int>(map['specification'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      defaultVpcId: (map['defaultVpcId'] as String).input(),
+      defaultVswitchId: (map['defaultVswitchId'] as String).input(),
+      paymentDuration: map['paymentDuration'] == null ? null : (map['paymentDuration'] as int).input(),
+      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : (map['paymentDurationUnit'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      remark: (map['remark'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      specification: map['specification'] == null ? null : (map['specification'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

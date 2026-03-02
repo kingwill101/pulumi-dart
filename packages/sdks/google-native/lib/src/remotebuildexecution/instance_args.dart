@@ -25,17 +25,12 @@ class InstanceArgs {
   /// [parent] Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
   /// [project] Optional.
   InstanceArgs({
-    pulumi.Output<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy>? featurePolicy,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? project,
-  }) :
-      featurePolicy = pulumi.Input.asOptionalInput<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy>(featurePolicy),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.featurePolicy,
+    this.instanceId,
+    this.location,
+    this.parent,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      featurePolicy: map['featurePolicy'] == null ? null : pulumi.Output.create<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy>(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy.fromMap((map['featurePolicy'] as Map).cast<String, dynamic>())),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      featurePolicy: map['featurePolicy'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy.fromMap((map['featurePolicy'] as Map).cast<String, dynamic>())).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

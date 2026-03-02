@@ -5,33 +5,33 @@ import 'get_anycast_eip_addresses_address_anycast_eip_bind_info_list.dart';
 
 class GetAnycastEipAddressesAddress {
   /// Anycast EIP instance account ID.
-  final int aliUid;
+  final pulumi.Input<int> aliUid;
   /// Anycast EIP instance name.
-  final String anycastEipAddressName;
+  final pulumi.Input<String> anycastEipAddressName;
   /// AnycastEip binding information.
-  final List<GetAnycastEipAddressesAddressAnycastEipBindInfoList> anycastEipBindInfoLists;
+  final pulumi.Input<List<GetAnycastEipAddressesAddressAnycastEipBindInfoList>> anycastEipBindInfoLists;
   /// Anycast EIP instance ID.
-  final String anycastId;
+  final pulumi.Input<String> anycastId;
   /// The peak bandwidth of the Anycast EIP instance, in Mbps.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// Anycast EIP instance account BID.
-  final String bid;
+  final pulumi.Input<String> bid;
   /// The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
-  final String businessStatus;
+  final pulumi.Input<String> businessStatus;
   /// Anycast EIP instance description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Anycast Eip Address.
-  final String id;
+  final pulumi.Input<String> id;
   /// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
-  final String internetChargeType;
+  final pulumi.Input<String> internetChargeType;
   /// Anycast EIP instance IP address.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
-  final String serviceLocation;
+  final pulumi.Input<String> serviceLocation;
   /// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetAnycastEipAddressesAddress].
   /// [aliUid] Anycast EIP instance account ID.
@@ -69,7 +69,7 @@ class GetAnycastEipAddressesAddress {
     return <String, dynamic>{
       'aliUid': aliUid,
       'anycastEipAddressName': anycastEipAddressName,
-      'anycastEipBindInfoLists': pulumi.Input.encodeList<GetAnycastEipAddressesAddressAnycastEipBindInfoList, Map<String, dynamic>>(anycastEipBindInfoLists, (value) => value.toMap()),
+      'anycastEipBindInfoLists': pulumi.Input.mapInputValue<List<GetAnycastEipAddressesAddressAnycastEipBindInfoList>, List<Map<String, dynamic>>>(anycastEipBindInfoLists, (value) => pulumi.Input.encodeList<GetAnycastEipAddressesAddressAnycastEipBindInfoList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'anycastId': anycastId,
       'bandwidth': bandwidth,
       'bid': bid,
@@ -86,20 +86,20 @@ class GetAnycastEipAddressesAddress {
 
   factory GetAnycastEipAddressesAddress.fromMap(Map<String, dynamic> map) {
     return GetAnycastEipAddressesAddress(
-      aliUid: map['aliUid'] as int,
-      anycastEipAddressName: map['anycastEipAddressName'] as String,
-      anycastEipBindInfoLists: pulumi.Input.decodeList<GetAnycastEipAddressesAddressAnycastEipBindInfoList>(map['anycastEipBindInfoLists'], (value) => GetAnycastEipAddressesAddressAnycastEipBindInfoList.fromMap((value as Map).cast<String, dynamic>())),
-      anycastId: map['anycastId'] as String,
-      bandwidth: map['bandwidth'] as int,
-      bid: map['bid'] as String,
-      businessStatus: map['businessStatus'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      internetChargeType: map['internetChargeType'] as String,
-      ipAddress: map['ipAddress'] as String,
-      paymentType: map['paymentType'] as String,
-      serviceLocation: map['serviceLocation'] as String,
-      status: map['status'] as String,
+      aliUid: (map['aliUid'] as int).input(),
+      anycastEipAddressName: (map['anycastEipAddressName'] as String).input(),
+      anycastEipBindInfoLists: (pulumi.Input.decodeList<GetAnycastEipAddressesAddressAnycastEipBindInfoList>(map['anycastEipBindInfoLists'], (value) => GetAnycastEipAddressesAddressAnycastEipBindInfoList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      anycastId: (map['anycastId'] as String).input(),
+      bandwidth: (map['bandwidth'] as int).input(),
+      bid: (map['bid'] as String).input(),
+      businessStatus: (map['businessStatus'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      internetChargeType: (map['internetChargeType'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      serviceLocation: (map['serviceLocation'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

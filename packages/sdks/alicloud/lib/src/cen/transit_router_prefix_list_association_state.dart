@@ -32,21 +32,14 @@ class TransitRouterPrefixListAssociationState {
   /// [transitRouterId] The ID of the transit router.
   /// [transitRouterTableId] The ID of the route table of the transit router.
   TransitRouterPrefixListAssociationState({
-    pulumi.Output<String>? nextHop,
-    pulumi.Output<String>? nextHopType,
-    pulumi.Output<int>? ownerUid,
-    pulumi.Output<String>? prefixListId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transitRouterId,
-    pulumi.Output<String>? transitRouterTableId,
-  }) :
-      nextHop = pulumi.Input.asOptionalInput<String>(nextHop),
-      nextHopType = pulumi.Input.asOptionalInput<String>(nextHopType),
-      ownerUid = pulumi.Input.asOptionalInput<int>(ownerUid),
-      prefixListId = pulumi.Input.asOptionalInput<String>(prefixListId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouterId = pulumi.Input.asOptionalInput<String>(transitRouterId),
-      transitRouterTableId = pulumi.Input.asOptionalInput<String>(transitRouterTableId);
+    this.nextHop,
+    this.nextHopType,
+    this.ownerUid,
+    this.prefixListId,
+    this.status,
+    this.transitRouterId,
+    this.transitRouterTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class TransitRouterPrefixListAssociationState {
 
   factory TransitRouterPrefixListAssociationState.fromMap(Map<String, dynamic> map) {
     return TransitRouterPrefixListAssociationState(
-      nextHop: map['nextHop'] == null ? null : pulumi.Output.create<String>(map['nextHop'] as String),
-      nextHopType: map['nextHopType'] == null ? null : pulumi.Output.create<String>(map['nextHopType'] as String),
-      ownerUid: map['ownerUid'] == null ? null : pulumi.Output.create<int>(map['ownerUid'] as int),
-      prefixListId: map['prefixListId'] == null ? null : pulumi.Output.create<String>(map['prefixListId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouterId: map['transitRouterId'] == null ? null : pulumi.Output.create<String>(map['transitRouterId'] as String),
-      transitRouterTableId: map['transitRouterTableId'] == null ? null : pulumi.Output.create<String>(map['transitRouterTableId'] as String),
+      nextHop: map['nextHop'] == null ? null : (map['nextHop'] as String).input(),
+      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType'] as String).input(),
+      ownerUid: map['ownerUid'] == null ? null : (map['ownerUid'] as int).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      transitRouterTableId: map['transitRouterTableId'] == null ? null : (map['transitRouterTableId'] as String).input(),
     );
   }
 }

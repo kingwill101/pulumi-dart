@@ -16,11 +16,9 @@ class GetReplicationGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicationGroupId] Identifier for the replication group.
   GetReplicationGroupArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> replicationGroupId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationGroupId = pulumi.Input.asInput<String>(replicationGroupId);
+    this.region,
+    required this.replicationGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetReplicationGroupArgs {
 
   factory GetReplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationGroupArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicationGroupId: pulumi.Output.create<String>(map['replicationGroupId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicationGroupId: (map['replicationGroupId'] as String).input(),
     );
   }
 }

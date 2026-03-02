@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings specific to keys that can be used by Android apps.
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse {
   /// Optional. If set to true, allowed_package_names are not enforced.
-  final bool allowAllPackageNames;
+  final pulumi.Input<bool> allowAllPackageNames;
   /// Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
-  final List<String> allowedPackageNames;
+  final pulumi.Input<List<String>> allowedPackageNames;
   /// Optional. Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
-  final bool supportNonGoogleAppStoreDistribution;
+  final pulumi.Input<bool> supportNonGoogleAppStoreDistribution;
 
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse].
   /// [allowAllPackageNames] Optional. If set to true, allowed_package_names are not enforced.
@@ -30,9 +31,9 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse {
 
   factory GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(
-      allowAllPackageNames: map['allowAllPackageNames'] as bool,
-      allowedPackageNames: (map['allowedPackageNames'] as List).cast<String>(),
-      supportNonGoogleAppStoreDistribution: map['supportNonGoogleAppStoreDistribution'] as bool,
+      allowAllPackageNames: (map['allowAllPackageNames'] as bool).input(),
+      allowedPackageNames: ((map['allowedPackageNames'] as List).cast<String>()).input(),
+      supportNonGoogleAppStoreDistribution: (map['supportNonGoogleAppStoreDistribution'] as bool).input(),
     );
   }
 }

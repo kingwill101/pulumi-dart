@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerPortRange {
   /// The initial listening port used to receive requests and forward them to terminal nodes.
-  final int fromPort;
+  final pulumi.Input<int> fromPort;
   /// The end listening port used to receive requests and forward them to terminal nodes.
-  final int toPort;
+  final pulumi.Input<int> toPort;
 
   /// Creates a new [ListenerPortRange].
   /// [fromPort] The initial listening port used to receive requests and forward them to terminal nodes.
@@ -24,8 +25,8 @@ class ListenerPortRange {
 
   factory ListenerPortRange.fromMap(Map<String, dynamic> map) {
     return ListenerPortRange(
-      fromPort: map['fromPort'] as int,
-      toPort: map['toPort'] as int,
+      fromPort: (map['fromPort'] as int).input(),
+      toPort: (map['toPort'] as int).input(),
     );
   }
 }

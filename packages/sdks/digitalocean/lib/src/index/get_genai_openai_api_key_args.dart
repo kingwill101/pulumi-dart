@@ -12,9 +12,8 @@ class GetGenaiOpenaiApiKeyArgs {
   /// Creates a new [GetGenaiOpenaiApiKeyArgs].
   /// [uuid] Required.
   GetGenaiOpenaiApiKeyArgs({
-    required pulumi.Output<String> uuid,
-  }) :
-      uuid = pulumi.Input.asInput<String>(uuid);
+    required this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetGenaiOpenaiApiKeyArgs {
 
   factory GetGenaiOpenaiApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiOpenaiApiKeyArgs(
-      uuid: pulumi.Output.create<String>(map['uuid'] as String),
+      uuid: (map['uuid'] as String).input(),
     );
   }
 }

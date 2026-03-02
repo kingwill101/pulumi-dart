@@ -17,11 +17,9 @@ class AliasArgs {
   /// [aliasName] AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
   /// [properties] Put alias request properties.
   AliasArgs({
-    pulumi.Output<String>? aliasName,
-    pulumi.Output<PutAliasRequestProperties>? properties,
-  }) :
-      aliasName = pulumi.Input.asOptionalInput<String>(aliasName),
-      properties = pulumi.Input.asOptionalInput<PutAliasRequestProperties>(properties);
+    this.aliasName,
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class AliasArgs {
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      aliasName: map['aliasName'] == null ? null : pulumi.Output.create<String>(map['aliasName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<PutAliasRequestProperties>(PutAliasRequestProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
+      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
+      properties: map['properties'] == null ? null : (PutAliasRequestProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PortFixedIp {
   /// IP address desired in the subnet for this port. If
@@ -7,10 +8,10 @@ class PortFixedIp {
   /// subnet will be allocated to this port. This field will not be populated if it
   /// is left blank or omitted. To retrieve the assigned IP address, use the
   /// `all_fixed_ips` attribute.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// Subnet in which to allocate IP address for
   /// this port.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Creates a new [PortFixedIp].
   /// [ipAddress] IP address desired in the subnet for this port. If
@@ -29,8 +30,8 @@ class PortFixedIp {
 
   factory PortFixedIp.fromMap(Map<String, dynamic> map) {
     return PortFixedIp(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

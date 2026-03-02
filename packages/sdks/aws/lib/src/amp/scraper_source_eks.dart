@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScraperSourceEks {
-  final String clusterArn;
+  final pulumi.Input<String> clusterArn;
   /// List of the security group IDs for the Amazon EKS cluster VPC configuration.
-  final List<String>? securityGroupIds;
+  final pulumi.Input<List<String>>? securityGroupIds;
   /// List of subnet IDs. Must be in at least two different availability zones.
-  final List<String> subnetIds;
+  final pulumi.Input<List<String>> subnetIds;
 
   /// Creates a new [ScraperSourceEks].
   /// [clusterArn] Required.
@@ -28,9 +29,9 @@ class ScraperSourceEks {
 
   factory ScraperSourceEks.fromMap(Map<String, dynamic> map) {
     return ScraperSourceEks(
-      clusterArn: map['clusterArn'] as String,
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
+      clusterArn: (map['clusterArn'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
     );
   }
 }

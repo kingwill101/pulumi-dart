@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Time configuration.
 class TimeConfigurationResponse {
   /// Primary NTP server.
-  final String? primaryTimeServer;
+  final pulumi.Input<String>? primaryTimeServer;
   /// Secondary NTP server.
-  final String? secondaryTimeServer;
+  final pulumi.Input<String>? secondaryTimeServer;
   /// Time zone.
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [TimeConfigurationResponse].
   /// [primaryTimeServer] Primary NTP server.
@@ -30,9 +31,9 @@ class TimeConfigurationResponse {
 
   factory TimeConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TimeConfigurationResponse(
-      primaryTimeServer: map['primaryTimeServer'] == null ? null : map['primaryTimeServer'] as String,
-      secondaryTimeServer: map['secondaryTimeServer'] == null ? null : map['secondaryTimeServer'] as String,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      primaryTimeServer: map['primaryTimeServer'] == null ? null : (map['primaryTimeServer'] as String).input(),
+      secondaryTimeServer: map['secondaryTimeServer'] == null ? null : (map['secondaryTimeServer'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

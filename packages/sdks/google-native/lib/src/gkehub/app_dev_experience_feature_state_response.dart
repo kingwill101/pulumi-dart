@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'status_response.dart';
 
 /// State for App Dev Exp Feature.
 class AppDevExperienceFeatureStateResponse {
   /// Status of subcomponent that detects configured Service Mesh resources.
-  final StatusResponse networkingInstallSucceeded;
+  final pulumi.Input<StatusResponse> networkingInstallSucceeded;
 
   /// Creates a new [AppDevExperienceFeatureStateResponse].
   /// [networkingInstallSucceeded] Status of subcomponent that detects configured Service Mesh resources.
@@ -15,13 +16,13 @@ class AppDevExperienceFeatureStateResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkingInstallSucceeded': networkingInstallSucceeded.toMap(),
+      'networkingInstallSucceeded': pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(networkingInstallSucceeded, (value) => value.toMap()),
     };
   }
 
   factory AppDevExperienceFeatureStateResponse.fromMap(Map<String, dynamic> map) {
     return AppDevExperienceFeatureStateResponse(
-      networkingInstallSucceeded: StatusResponse.fromMap((map['networkingInstallSucceeded'] as Map).cast<String, dynamic>()),
+      networkingInstallSucceeded: (StatusResponse.fromMap((map['networkingInstallSucceeded'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

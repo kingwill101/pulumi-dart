@@ -53,35 +53,21 @@ class ReplicaKeyState {
   /// [tags] A map of tags to assign to the replica key. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ReplicaKeyState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<bool>? bypassPolicyLockoutSafetyCheck,
-    pulumi.Output<int>? deletionWindowInDays,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? keyId,
-    pulumi.Output<bool>? keyRotationEnabled,
-    pulumi.Output<String>? keySpec,
-    pulumi.Output<String>? keyUsage,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? primaryKeyArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      bypassPolicyLockoutSafetyCheck = pulumi.Input.asOptionalInput<bool>(bypassPolicyLockoutSafetyCheck),
-      deletionWindowInDays = pulumi.Input.asOptionalInput<int>(deletionWindowInDays),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      keyId = pulumi.Input.asOptionalInput<String>(keyId),
-      keyRotationEnabled = pulumi.Input.asOptionalInput<bool>(keyRotationEnabled),
-      keySpec = pulumi.Input.asOptionalInput<String>(keySpec),
-      keyUsage = pulumi.Input.asOptionalInput<String>(keyUsage),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      primaryKeyArn = pulumi.Input.asOptionalInput<String>(primaryKeyArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.bypassPolicyLockoutSafetyCheck,
+    this.deletionWindowInDays,
+    this.description,
+    this.enabled,
+    this.keyId,
+    this.keyRotationEnabled,
+    this.keySpec,
+    this.keyUsage,
+    this.policy,
+    this.primaryKeyArn,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class ReplicaKeyState {
 
   factory ReplicaKeyState.fromMap(Map<String, dynamic> map) {
     return ReplicaKeyState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : pulumi.Output.create<bool>(map['bypassPolicyLockoutSafetyCheck'] as bool),
-      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : pulumi.Output.create<int>(map['deletionWindowInDays'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
-      keyRotationEnabled: map['keyRotationEnabled'] == null ? null : pulumi.Output.create<bool>(map['keyRotationEnabled'] as bool),
-      keySpec: map['keySpec'] == null ? null : pulumi.Output.create<String>(map['keySpec'] as String),
-      keyUsage: map['keyUsage'] == null ? null : pulumi.Output.create<String>(map['keyUsage'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      primaryKeyArn: map['primaryKeyArn'] == null ? null : pulumi.Output.create<String>(map['primaryKeyArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
+      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : (map['deletionWindowInDays'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      keyRotationEnabled: map['keyRotationEnabled'] == null ? null : (map['keyRotationEnabled'] as bool).input(),
+      keySpec: map['keySpec'] == null ? null : (map['keySpec'] as String).input(),
+      keyUsage: map['keyUsage'] == null ? null : (map['keyUsage'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      primaryKeyArn: map['primaryKeyArn'] == null ? null : (map['primaryKeyArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

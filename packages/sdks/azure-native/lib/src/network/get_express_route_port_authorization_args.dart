@@ -19,13 +19,10 @@ class GetExpressRoutePortAuthorizationArgs {
   /// [expressRoutePortName] The name of the express route port.
   /// [resourceGroupName] The name of the resource group.
   GetExpressRoutePortAuthorizationArgs({
-    required pulumi.Output<String> authorizationName,
-    required pulumi.Output<String> expressRoutePortName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authorizationName = pulumi.Input.asInput<String>(authorizationName),
-      expressRoutePortName = pulumi.Input.asInput<String>(expressRoutePortName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.authorizationName,
+    required this.expressRoutePortName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetExpressRoutePortAuthorizationArgs {
 
   factory GetExpressRoutePortAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return GetExpressRoutePortAuthorizationArgs(
-      authorizationName: pulumi.Output.create<String>(map['authorizationName'] as String),
-      expressRoutePortName: pulumi.Output.create<String>(map['expressRoutePortName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authorizationName: (map['authorizationName'] as String).input(),
+      expressRoutePortName: (map['expressRoutePortName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

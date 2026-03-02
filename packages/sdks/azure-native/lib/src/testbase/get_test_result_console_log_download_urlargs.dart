@@ -25,17 +25,12 @@ class GetTestResultConsoleLogDownloadURLArgs {
   /// [testBaseAccountName] The resource name of the Test Base Account.
   /// [testResultName] The Test Result Name. It equals to TestResult-{TestResultId} string.
   GetTestResultConsoleLogDownloadURLArgs({
-    required pulumi.Output<String> logFileName,
-    required pulumi.Output<String> packageName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> testBaseAccountName,
-    required pulumi.Output<String> testResultName,
-  }) :
-      logFileName = pulumi.Input.asInput<String>(logFileName),
-      packageName = pulumi.Input.asInput<String>(packageName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      testBaseAccountName = pulumi.Input.asInput<String>(testBaseAccountName),
-      testResultName = pulumi.Input.asInput<String>(testResultName);
+    required this.logFileName,
+    required this.packageName,
+    required this.resourceGroupName,
+    required this.testBaseAccountName,
+    required this.testResultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetTestResultConsoleLogDownloadURLArgs {
 
   factory GetTestResultConsoleLogDownloadURLArgs.fromMap(Map<String, dynamic> map) {
     return GetTestResultConsoleLogDownloadURLArgs(
-      logFileName: pulumi.Output.create<String>(map['logFileName'] as String),
-      packageName: pulumi.Output.create<String>(map['packageName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      testBaseAccountName: pulumi.Output.create<String>(map['testBaseAccountName'] as String),
-      testResultName: pulumi.Output.create<String>(map['testResultName'] as String),
+      logFileName: (map['logFileName'] as String).input(),
+      packageName: (map['packageName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
+      testResultName: (map['testResultName'] as String).input(),
     );
   }
 }

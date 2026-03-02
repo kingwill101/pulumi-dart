@@ -19,13 +19,10 @@ class GetGen2EnvironmentArgs {
   /// [expand] Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
   /// [resourceGroupName] Name of an Azure Resource group.
   GetGen2EnvironmentArgs({
-    required pulumi.Output<String> environmentName,
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentName,
+    this.expand,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGen2EnvironmentArgs {
 
   factory GetGen2EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetGen2EnvironmentArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

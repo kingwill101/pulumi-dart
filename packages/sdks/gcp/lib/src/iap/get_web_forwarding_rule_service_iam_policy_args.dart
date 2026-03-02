@@ -17,11 +17,9 @@ class GetWebForwardingRuleServiceIamPolicyArgs {
   /// [forwardingRuleServiceName] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   GetWebForwardingRuleServiceIamPolicyArgs({
-    required pulumi.Output<String> forwardingRuleServiceName,
-    pulumi.Output<String>? project,
-  }) :
-      forwardingRuleServiceName = pulumi.Input.asInput<String>(forwardingRuleServiceName),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.forwardingRuleServiceName,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetWebForwardingRuleServiceIamPolicyArgs {
 
   factory GetWebForwardingRuleServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWebForwardingRuleServiceIamPolicyArgs(
-      forwardingRuleServiceName: pulumi.Output.create<String>(map['forwardingRuleServiceName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      forwardingRuleServiceName: (map['forwardingRuleServiceName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cert_manager_cert_options_response.dart';
 import 'client_config_response.dart';
 
 /// Broker Advanced Settings
 class AdvancedSettingsResponse {
   /// Configurations related to All Clients.
-  final ClientConfigResponse? clients;
+  final pulumi.Input<ClientConfigResponse>? clients;
   /// The setting to enable or disable encryption of internal Traffic.
-  final String? encryptInternalTraffic;
+  final pulumi.Input<String>? encryptInternalTraffic;
   /// Certificate rotation and private key configuration.
-  final CertManagerCertOptionsResponse? internalCerts;
+  final pulumi.Input<CertManagerCertOptionsResponse>? internalCerts;
 
   /// Creates a new [AdvancedSettingsResponse].
   /// [clients] Configurations related to All Clients.
@@ -24,17 +25,17 @@ class AdvancedSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clients': ?clients == null ? null : clients!.toMap(),
+      'clients': ?pulumi.Input.mapOptionalInputValue<ClientConfigResponse, Map<String, dynamic>>(clients, (value) => value.toMap()),
       'encryptInternalTraffic': ?encryptInternalTraffic,
-      'internalCerts': ?internalCerts == null ? null : internalCerts!.toMap(),
+      'internalCerts': ?pulumi.Input.mapOptionalInputValue<CertManagerCertOptionsResponse, Map<String, dynamic>>(internalCerts, (value) => value.toMap()),
     };
   }
 
   factory AdvancedSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedSettingsResponse(
-      clients: map['clients'] == null ? null : ClientConfigResponse.fromMap((map['clients'] as Map).cast<String, dynamic>()),
-      encryptInternalTraffic: map['encryptInternalTraffic'] == null ? null : map['encryptInternalTraffic'] as String,
-      internalCerts: map['internalCerts'] == null ? null : CertManagerCertOptionsResponse.fromMap((map['internalCerts'] as Map).cast<String, dynamic>()),
+      clients: map['clients'] == null ? null : (ClientConfigResponse.fromMap((map['clients'] as Map).cast<String, dynamic>())).input(),
+      encryptInternalTraffic: map['encryptInternalTraffic'] == null ? null : (map['encryptInternalTraffic'] as String).input(),
+      internalCerts: map['internalCerts'] == null ? null : (CertManagerCertOptionsResponse.fromMap((map['internalCerts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

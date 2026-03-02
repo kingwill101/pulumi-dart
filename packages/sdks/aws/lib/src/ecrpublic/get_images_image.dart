@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagesImage {
   /// Media type of the artifact.
-  final String artifactMediaType;
+  final pulumi.Input<String> artifactMediaType;
   /// Digest of the image manifest.
-  final String imageDigest;
+  final pulumi.Input<String> imageDigest;
   /// Media type of the image manifest.
-  final String imageManifestMediaType;
-  final String imagePushedAt;
-  final int imageSizeInBytes;
-  final List<String> imageTags;
+  final pulumi.Input<String> imageManifestMediaType;
+  final pulumi.Input<String> imagePushedAt;
+  final pulumi.Input<int> imageSizeInBytes;
+  final pulumi.Input<List<String>> imageTags;
   /// AWS account ID associated with the public registry that contains the repository. If not specified, the default public registry is assumed.
-  final String registryId;
+  final pulumi.Input<String> registryId;
   /// Name of the public repository.
-  final String repositoryName;
+  final pulumi.Input<String> repositoryName;
 
   /// Creates a new [GetImagesImage].
   /// [artifactMediaType] Media type of the artifact.
@@ -51,14 +52,14 @@ class GetImagesImage {
 
   factory GetImagesImage.fromMap(Map<String, dynamic> map) {
     return GetImagesImage(
-      artifactMediaType: map['artifactMediaType'] as String,
-      imageDigest: map['imageDigest'] as String,
-      imageManifestMediaType: map['imageManifestMediaType'] as String,
-      imagePushedAt: map['imagePushedAt'] as String,
-      imageSizeInBytes: map['imageSizeInBytes'] as int,
-      imageTags: (map['imageTags'] as List).cast<String>(),
-      registryId: map['registryId'] as String,
-      repositoryName: map['repositoryName'] as String,
+      artifactMediaType: (map['artifactMediaType'] as String).input(),
+      imageDigest: (map['imageDigest'] as String).input(),
+      imageManifestMediaType: (map['imageManifestMediaType'] as String).input(),
+      imagePushedAt: (map['imagePushedAt'] as String).input(),
+      imageSizeInBytes: (map['imageSizeInBytes'] as int).input(),
+      imageTags: ((map['imageTags'] as List).cast<String>()).input(),
+      registryId: (map['registryId'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
     );
   }
 }

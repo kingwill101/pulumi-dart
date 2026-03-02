@@ -5,11 +5,11 @@ import 'get_workgroup_endpoint_vpc_endpoint.dart';
 
 class GetWorkgroupEndpoint {
   /// The DNS address of the VPC endpoint.
-  final String address;
+  final pulumi.Input<String> address;
   /// The port that Amazon Redshift Serverless listens on.
-  final int port;
+  final pulumi.Input<int> port;
   /// The VPC endpoint or the Redshift Serverless workgroup. See `VPC Endpoint` below.
-  final List<GetWorkgroupEndpointVpcEndpoint> vpcEndpoints;
+  final pulumi.Input<List<GetWorkgroupEndpointVpcEndpoint>> vpcEndpoints;
 
   /// Creates a new [GetWorkgroupEndpoint].
   /// [address] The DNS address of the VPC endpoint.
@@ -25,15 +25,15 @@ class GetWorkgroupEndpoint {
     return <String, dynamic>{
       'address': address,
       'port': port,
-      'vpcEndpoints': pulumi.Input.encodeList<GetWorkgroupEndpointVpcEndpoint, Map<String, dynamic>>(vpcEndpoints, (value) => value.toMap()),
+      'vpcEndpoints': pulumi.Input.mapInputValue<List<GetWorkgroupEndpointVpcEndpoint>, List<Map<String, dynamic>>>(vpcEndpoints, (value) => pulumi.Input.encodeList<GetWorkgroupEndpointVpcEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetWorkgroupEndpoint.fromMap(Map<String, dynamic> map) {
     return GetWorkgroupEndpoint(
-      address: map['address'] as String,
-      port: map['port'] as int,
-      vpcEndpoints: pulumi.Input.decodeList<GetWorkgroupEndpointVpcEndpoint>(map['vpcEndpoints'], (value) => GetWorkgroupEndpointVpcEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      address: (map['address'] as String).input(),
+      port: (map['port'] as int).input(),
+      vpcEndpoints: (pulumi.Input.decodeList<GetWorkgroupEndpointVpcEndpoint>(map['vpcEndpoints'], (value) => GetWorkgroupEndpointVpcEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

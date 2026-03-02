@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The RosettaNet ProcessConfiguration business document settings.
 class RosettaNetPipBusinessDocumentResponse {
   /// The business document description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The business document name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The business document version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [RosettaNetPipBusinessDocumentResponse].
   /// [description] The business document description.
@@ -30,9 +31,9 @@ class RosettaNetPipBusinessDocumentResponse {
 
   factory RosettaNetPipBusinessDocumentResponse.fromMap(Map<String, dynamic> map) {
     return RosettaNetPipBusinessDocumentResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] as String,
-      version: map['version'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -38,27 +38,17 @@ class TrafficSelectorState {
   /// [sourceAddress] Specifies the host or network IP address from which the application traffic originates.When creating a new traffic selector, this parameter is required.
   /// [sourcePort] Specifies the IP port used by the application. The default value is `All Ports (0)`.
   TrafficSelectorState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destinationAddress,
-    pulumi.Output<int>? destinationPort,
-    pulumi.Output<String>? direction,
-    pulumi.Output<int>? ipProtocol,
-    pulumi.Output<String>? ipsecPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? order,
-    pulumi.Output<String>? sourceAddress,
-    pulumi.Output<int>? sourcePort,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationAddress = pulumi.Input.asOptionalInput<String>(destinationAddress),
-      destinationPort = pulumi.Input.asOptionalInput<int>(destinationPort),
-      direction = pulumi.Input.asOptionalInput<String>(direction),
-      ipProtocol = pulumi.Input.asOptionalInput<int>(ipProtocol),
-      ipsecPolicy = pulumi.Input.asOptionalInput<String>(ipsecPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      order = pulumi.Input.asOptionalInput<int>(order),
-      sourceAddress = pulumi.Input.asOptionalInput<String>(sourceAddress),
-      sourcePort = pulumi.Input.asOptionalInput<int>(sourcePort);
+    this.description,
+    this.destinationAddress,
+    this.destinationPort,
+    this.direction,
+    this.ipProtocol,
+    this.ipsecPolicy,
+    this.name,
+    this.order,
+    this.sourceAddress,
+    this.sourcePort,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class TrafficSelectorState {
 
   factory TrafficSelectorState.fromMap(Map<String, dynamic> map) {
     return TrafficSelectorState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationAddress: map['destinationAddress'] == null ? null : pulumi.Output.create<String>(map['destinationAddress'] as String),
-      destinationPort: map['destinationPort'] == null ? null : pulumi.Output.create<int>(map['destinationPort'] as int),
-      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
-      ipProtocol: map['ipProtocol'] == null ? null : pulumi.Output.create<int>(map['ipProtocol'] as int),
-      ipsecPolicy: map['ipsecPolicy'] == null ? null : pulumi.Output.create<String>(map['ipsecPolicy'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      order: map['order'] == null ? null : pulumi.Output.create<int>(map['order'] as int),
-      sourceAddress: map['sourceAddress'] == null ? null : pulumi.Output.create<String>(map['sourceAddress'] as String),
-      sourcePort: map['sourcePort'] == null ? null : pulumi.Output.create<int>(map['sourcePort'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationAddress: map['destinationAddress'] == null ? null : (map['destinationAddress'] as String).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as int).input(),
+      ipsecPolicy: map['ipsecPolicy'] == null ? null : (map['ipsecPolicy'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as int).input(),
+      sourceAddress: map['sourceAddress'] == null ? null : (map['sourceAddress'] as String).input(),
+      sourcePort: map['sourcePort'] == null ? null : (map['sourcePort'] as int).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
 class VirtualNetworkPropertiesResponseDhcpOptions {
   /// The list of DNS servers IP addresses.
-  final List<String>? dnsServers;
+  final pulumi.Input<List<String>>? dnsServers;
 
   /// Creates a new [VirtualNetworkPropertiesResponseDhcpOptions].
   /// [dnsServers] The list of DNS servers IP addresses.
@@ -20,7 +21,7 @@ class VirtualNetworkPropertiesResponseDhcpOptions {
 
   factory VirtualNetworkPropertiesResponseDhcpOptions.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPropertiesResponseDhcpOptions(
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
     );
   }
 }

@@ -8,13 +8,13 @@ import 'referenced_resource.dart';
 /// Site network service properties.
 class SiteNetworkServicePropertiesFormat {
   /// The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service.
-  final Map<String, ReferencedResource>? desiredStateConfigurationGroupValueReferences;
+  final pulumi.Input<Map<String, ReferencedResource>>? desiredStateConfigurationGroupValueReferences;
   /// Managed resource group configuration.
-  final ManagedResourceGroupConfiguration? managedResourceGroupConfiguration;
+  final pulumi.Input<ManagedResourceGroupConfiguration>? managedResourceGroupConfiguration;
   /// The network service design version resource reference.
-  final OpenDeploymentResourceReference? networkServiceDesignVersionResourceReference;
+  final pulumi.Input<OpenDeploymentResourceReference>? networkServiceDesignVersionResourceReference;
   /// The site details
-  final ReferencedResource? siteReference;
+  final pulumi.Input<ReferencedResource>? siteReference;
 
   /// Creates a new [SiteNetworkServicePropertiesFormat].
   /// [desiredStateConfigurationGroupValueReferences] The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service.
@@ -30,19 +30,19 @@ class SiteNetworkServicePropertiesFormat {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'desiredStateConfigurationGroupValueReferences': ?desiredStateConfigurationGroupValueReferences == null ? null : pulumi.Input.encodeMapValues<ReferencedResource, Map<String, dynamic>>(desiredStateConfigurationGroupValueReferences!, (value) => value.toMap()),
-      'managedResourceGroupConfiguration': ?managedResourceGroupConfiguration == null ? null : managedResourceGroupConfiguration!.toMap(),
-      'networkServiceDesignVersionResourceReference': ?networkServiceDesignVersionResourceReference == null ? null : networkServiceDesignVersionResourceReference!.toMap(),
-      'siteReference': ?siteReference == null ? null : siteReference!.toMap(),
+      'desiredStateConfigurationGroupValueReferences': ?pulumi.Input.mapOptionalInputValue<Map<String, ReferencedResource>, Map<String, Map<String, dynamic>>>(desiredStateConfigurationGroupValueReferences, (value) => pulumi.Input.encodeMapValues<ReferencedResource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'managedResourceGroupConfiguration': ?pulumi.Input.mapOptionalInputValue<ManagedResourceGroupConfiguration, Map<String, dynamic>>(managedResourceGroupConfiguration, (value) => value.toMap()),
+      'networkServiceDesignVersionResourceReference': ?pulumi.Input.mapOptionalInputValue<OpenDeploymentResourceReference, Map<String, dynamic>>(networkServiceDesignVersionResourceReference, (value) => value.toMap()),
+      'siteReference': ?pulumi.Input.mapOptionalInputValue<ReferencedResource, Map<String, dynamic>>(siteReference, (value) => value.toMap()),
     };
   }
 
   factory SiteNetworkServicePropertiesFormat.fromMap(Map<String, dynamic> map) {
     return SiteNetworkServicePropertiesFormat(
-      desiredStateConfigurationGroupValueReferences: map['desiredStateConfigurationGroupValueReferences'] == null ? null : pulumi.Input.decodeMapValues<ReferencedResource>(map['desiredStateConfigurationGroupValueReferences'], (value) => ReferencedResource.fromMap((value as Map).cast<String, dynamic>())),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>()),
-      networkServiceDesignVersionResourceReference: map['networkServiceDesignVersionResourceReference'] == null ? null : OpenDeploymentResourceReference.fromMap((map['networkServiceDesignVersionResourceReference'] as Map).cast<String, dynamic>()),
-      siteReference: map['siteReference'] == null ? null : ReferencedResource.fromMap((map['siteReference'] as Map).cast<String, dynamic>()),
+      desiredStateConfigurationGroupValueReferences: map['desiredStateConfigurationGroupValueReferences'] == null ? null : (pulumi.Input.decodeMapValues<ReferencedResource>(map['desiredStateConfigurationGroupValueReferences'], (value) => ReferencedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      networkServiceDesignVersionResourceReference: map['networkServiceDesignVersionResourceReference'] == null ? null : (OpenDeploymentResourceReference.fromMap((map['networkServiceDesignVersionResourceReference'] as Map).cast<String, dynamic>())).input(),
+      siteReference: map['siteReference'] == null ? null : (ReferencedResource.fromMap((map['siteReference'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ProxyUrl configuration of cache node
 class ProxyUrlConfiguration {
   /// Host Proxy Address configuration along with port number. This can be a proxy or ip address. ex: xx.xx.xx.xxxx:80 or host name http://exampleproxy.com:80
-  final String? proxyUrl;
+  final pulumi.Input<String>? proxyUrl;
 
   /// Creates a new [ProxyUrlConfiguration].
   /// [proxyUrl] Host Proxy Address configuration along with port number. This can be a proxy or ip address. ex: xx.xx.xx.xxxx:80 or host name http://exampleproxy.com:80
@@ -20,7 +21,7 @@ class ProxyUrlConfiguration {
 
   factory ProxyUrlConfiguration.fromMap(Map<String, dynamic> map) {
     return ProxyUrlConfiguration(
-      proxyUrl: map['proxyUrl'] == null ? null : map['proxyUrl'] as String,
+      proxyUrl: map['proxyUrl'] == null ? null : (map['proxyUrl'] as String).input(),
     );
   }
 }

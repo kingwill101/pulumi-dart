@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkMtu {
   /// Defines the specific size of the MTU for network communication.
-  final double size;
+  final pulumi.Input<double> size;
 
   /// Creates a new [NetworkMtu].
   /// [size] Defines the specific size of the MTU for network communication.
@@ -19,7 +20,7 @@ class NetworkMtu {
 
   factory NetworkMtu.fromMap(Map<String, dynamic> map) {
     return NetworkMtu(
-      size: map['size'] as double,
+      size: (map['size'] as double).input(),
     );
   }
 }

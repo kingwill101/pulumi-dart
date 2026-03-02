@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets the resource identifiers of the managed resources.
 class AccountPropertiesResponseManagedResources {
   /// Gets the managed event hub namespace resource identifier.
-  final String eventHubNamespace;
+  final pulumi.Input<String> eventHubNamespace;
   /// Gets the managed resource group resource identifier. This resource group will host resource dependencies for the account.
-  final String resourceGroup;
+  final pulumi.Input<String> resourceGroup;
   /// Gets the managed storage account resource identifier.
-  final String storageAccount;
+  final pulumi.Input<String> storageAccount;
 
   /// Creates a new [AccountPropertiesResponseManagedResources].
   /// [eventHubNamespace] Gets the managed event hub namespace resource identifier.
@@ -30,9 +31,9 @@ class AccountPropertiesResponseManagedResources {
 
   factory AccountPropertiesResponseManagedResources.fromMap(Map<String, dynamic> map) {
     return AccountPropertiesResponseManagedResources(
-      eventHubNamespace: map['eventHubNamespace'] as String,
-      resourceGroup: map['resourceGroup'] as String,
-      storageAccount: map['storageAccount'] as String,
+      eventHubNamespace: (map['eventHubNamespace'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      storageAccount: (map['storageAccount'] as String).input(),
     );
   }
 }

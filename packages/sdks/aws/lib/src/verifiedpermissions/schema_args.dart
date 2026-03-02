@@ -20,13 +20,10 @@ class SchemaArgs {
   /// [policyStoreId] The ID of the Policy Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   SchemaArgs({
-    required pulumi.Output<SchemaDefinition> definition,
-    required pulumi.Output<String> policyStoreId,
-    pulumi.Output<String>? region,
-  }) :
-      definition = pulumi.Input.asInput<SchemaDefinition>(definition),
-      policyStoreId = pulumi.Input.asInput<String>(policyStoreId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.definition,
+    required this.policyStoreId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class SchemaArgs {
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      definition: pulumi.Output.create<SchemaDefinition>(SchemaDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())),
-      policyStoreId: pulumi.Output.create<String>(map['policyStoreId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      definition: (SchemaDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      policyStoreId: (map['policyStoreId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

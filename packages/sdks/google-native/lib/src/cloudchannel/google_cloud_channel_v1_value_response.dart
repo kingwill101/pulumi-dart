@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data type and value of a parameter.
 class GoogleCloudChannelV1ValueResponse {
   /// Represents a boolean value.
-  final bool boolValue;
+  final pulumi.Input<bool> boolValue;
   /// Represents a double value.
-  final double doubleValue;
+  final pulumi.Input<double> doubleValue;
   /// Represents an int64 value.
-  final String int64Value;
+  final pulumi.Input<String> int64Value;
   /// Represents an 'Any' proto value.
-  final Map<String, String> protoValue;
+  final pulumi.Input<Map<String, String>> protoValue;
   /// Represents a string value.
-  final String stringValue;
+  final pulumi.Input<String> stringValue;
 
   /// Creates a new [GoogleCloudChannelV1ValueResponse].
   /// [boolValue] Represents a boolean value.
@@ -40,11 +41,11 @@ class GoogleCloudChannelV1ValueResponse {
 
   factory GoogleCloudChannelV1ValueResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1ValueResponse(
-      boolValue: map['boolValue'] as bool,
-      doubleValue: map['doubleValue'] as double,
-      int64Value: map['int64Value'] as String,
-      protoValue: (map['protoValue'] as Map).cast<String, String>(),
-      stringValue: map['stringValue'] as String,
+      boolValue: (map['boolValue'] as bool).input(),
+      doubleValue: (map['doubleValue'] as double).input(),
+      int64Value: (map['int64Value'] as String).input(),
+      protoValue: ((map['protoValue'] as Map).cast<String, String>()).input(),
+      stringValue: (map['stringValue'] as String).input(),
     );
   }
 }

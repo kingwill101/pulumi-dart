@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayRouteSpecHttpRouteMatchHostname {
   /// Exact host name to match on.
-  final String? exact;
+  final pulumi.Input<String>? exact;
   /// Specified ending characters of the host name to match on.
-  final String? suffix;
+  final pulumi.Input<String>? suffix;
 
   /// Creates a new [GatewayRouteSpecHttpRouteMatchHostname].
   /// [exact] Exact host name to match on.
@@ -24,8 +25,8 @@ class GatewayRouteSpecHttpRouteMatchHostname {
 
   factory GatewayRouteSpecHttpRouteMatchHostname.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRouteMatchHostname(
-      exact: map['exact'] == null ? null : map['exact'] as String,
-      suffix: map['suffix'] == null ? null : map['suffix'] as String,
+      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
     );
   }
 }

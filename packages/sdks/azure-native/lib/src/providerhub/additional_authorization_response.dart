@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AdditionalAuthorizationResponse {
-  final String? applicationId;
-  final String? roleDefinitionId;
+  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String>? roleDefinitionId;
 
   /// Creates a new [AdditionalAuthorizationResponse].
   /// [applicationId] Optional.
@@ -22,8 +23,8 @@ class AdditionalAuthorizationResponse {
 
   factory AdditionalAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalAuthorizationResponse(
-      applicationId: map['applicationId'] == null ? null : map['applicationId'] as String,
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : map['roleDefinitionId'] as String,
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Trigger based on request execution time.
 class SlowRequestsBasedTrigger {
   /// Request Count.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Request Path.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Time interval.
-  final String? timeInterval;
+  final pulumi.Input<String>? timeInterval;
   /// Time taken.
-  final String? timeTaken;
+  final pulumi.Input<String>? timeTaken;
 
   /// Creates a new [SlowRequestsBasedTrigger].
   /// [count] Request Count.
@@ -35,10 +36,10 @@ class SlowRequestsBasedTrigger {
 
   factory SlowRequestsBasedTrigger.fromMap(Map<String, dynamic> map) {
     return SlowRequestsBasedTrigger(
-      count: map['count'] == null ? null : map['count'] as int,
-      path: map['path'] == null ? null : map['path'] as String,
-      timeInterval: map['timeInterval'] == null ? null : map['timeInterval'] as String,
-      timeTaken: map['timeTaken'] == null ? null : map['timeTaken'] as String,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval'] as String).input(),
+      timeTaken: map['timeTaken'] == null ? null : (map['timeTaken'] as String).input(),
     );
   }
 }

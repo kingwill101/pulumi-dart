@@ -25,17 +25,12 @@ class GetReplicationStorageClassificationMappingArgs {
   /// [storageClassificationMappingName] Storage classification mapping name.
   /// [storageClassificationName] Storage classification name.
   GetReplicationStorageClassificationMappingArgs({
-    required pulumi.Output<String> fabricName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<String> storageClassificationMappingName,
-    required pulumi.Output<String> storageClassificationName,
-  }) :
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      storageClassificationMappingName = pulumi.Input.asInput<String>(storageClassificationMappingName),
-      storageClassificationName = pulumi.Input.asInput<String>(storageClassificationName);
+    required this.fabricName,
+    required this.resourceGroupName,
+    required this.resourceName,
+    required this.storageClassificationMappingName,
+    required this.storageClassificationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetReplicationStorageClassificationMappingArgs {
 
   factory GetReplicationStorageClassificationMappingArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationStorageClassificationMappingArgs(
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      storageClassificationMappingName: pulumi.Output.create<String>(map['storageClassificationMappingName'] as String),
-      storageClassificationName: pulumi.Output.create<String>(map['storageClassificationName'] as String),
+      fabricName: (map['fabricName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      storageClassificationMappingName: (map['storageClassificationMappingName'] as String).input(),
+      storageClassificationName: (map['storageClassificationName'] as String).input(),
     );
   }
 }

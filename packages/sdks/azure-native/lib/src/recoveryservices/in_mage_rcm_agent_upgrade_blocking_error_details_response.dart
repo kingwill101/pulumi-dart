@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InMageRcm source agent upgrade blocking error details.
 class InMageRcmAgentUpgradeBlockingErrorDetailsResponse {
   /// The error code.
-  final String errorCode;
+  final pulumi.Input<String> errorCode;
   /// The error message.
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// The error message parameters.
-  final Map<String, String> errorMessageParameters;
+  final pulumi.Input<Map<String, String>> errorMessageParameters;
   /// The error tags.
-  final Map<String, String> errorTags;
+  final pulumi.Input<Map<String, String>> errorTags;
   /// The possible causes.
-  final String possibleCauses;
+  final pulumi.Input<String> possibleCauses;
   /// The recommended action.
-  final String recommendedAction;
+  final pulumi.Input<String> recommendedAction;
 
   /// Creates a new [InMageRcmAgentUpgradeBlockingErrorDetailsResponse].
   /// [errorCode] The error code.
@@ -45,12 +46,12 @@ class InMageRcmAgentUpgradeBlockingErrorDetailsResponse {
 
   factory InMageRcmAgentUpgradeBlockingErrorDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmAgentUpgradeBlockingErrorDetailsResponse(
-      errorCode: map['errorCode'] as String,
-      errorMessage: map['errorMessage'] as String,
-      errorMessageParameters: (map['errorMessageParameters'] as Map).cast<String, String>(),
-      errorTags: (map['errorTags'] as Map).cast<String, String>(),
-      possibleCauses: map['possibleCauses'] as String,
-      recommendedAction: map['recommendedAction'] as String,
+      errorCode: (map['errorCode'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      errorMessageParameters: ((map['errorMessageParameters'] as Map).cast<String, String>()).input(),
+      errorTags: ((map['errorTags'] as Map).cast<String, String>()).input(),
+      possibleCauses: (map['possibleCauses'] as String).input(),
+      recommendedAction: (map['recommendedAction'] as String).input(),
     );
   }
 }

@@ -24,15 +24,11 @@ class AnycastIpListArgs {
   /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   AnycastIpListArgs({
-    required pulumi.Output<int> ipCount,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<AnycastIpListTimeouts>? timeouts,
-  }) :
-      ipCount = pulumi.Input.asInput<int>(ipCount),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<AnycastIpListTimeouts>(timeouts);
+    required this.ipCount,
+    this.name,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class AnycastIpListArgs {
 
   factory AnycastIpListArgs.fromMap(Map<String, dynamic> map) {
     return AnycastIpListArgs(
-      ipCount: pulumi.Output.create<int>(map['ipCount'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AnycastIpListTimeouts>(AnycastIpListTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      ipCount: (map['ipCount'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (AnycastIpListTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

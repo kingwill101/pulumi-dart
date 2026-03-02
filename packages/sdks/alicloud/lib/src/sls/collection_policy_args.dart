@@ -44,25 +44,16 @@ class CollectionPolicyArgs {
   /// [productCode] Product code.
   /// [resourceDirectory] Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
   CollectionPolicyArgs({
-    pulumi.Output<CollectionPolicyCentralizeConfig>? centralizeConfig,
-    pulumi.Output<bool>? centralizeEnabled,
-    required pulumi.Output<String> dataCode,
-    pulumi.Output<CollectionPolicyDataConfig>? dataConfig,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<CollectionPolicyPolicyConfig> policyConfig,
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<String> productCode,
-    pulumi.Output<CollectionPolicyResourceDirectory>? resourceDirectory,
-  }) :
-      centralizeConfig = pulumi.Input.asOptionalInput<CollectionPolicyCentralizeConfig>(centralizeConfig),
-      centralizeEnabled = pulumi.Input.asOptionalInput<bool>(centralizeEnabled),
-      dataCode = pulumi.Input.asInput<String>(dataCode),
-      dataConfig = pulumi.Input.asOptionalInput<CollectionPolicyDataConfig>(dataConfig),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      policyConfig = pulumi.Input.asInput<CollectionPolicyPolicyConfig>(policyConfig),
-      policyName = pulumi.Input.asInput<String>(policyName),
-      productCode = pulumi.Input.asInput<String>(productCode),
-      resourceDirectory = pulumi.Input.asOptionalInput<CollectionPolicyResourceDirectory>(resourceDirectory);
+    this.centralizeConfig,
+    this.centralizeEnabled,
+    required this.dataCode,
+    this.dataConfig,
+    required this.enabled,
+    required this.policyConfig,
+    required this.policyName,
+    required this.productCode,
+    this.resourceDirectory,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,15 +71,15 @@ class CollectionPolicyArgs {
 
   factory CollectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return CollectionPolicyArgs(
-      centralizeConfig: map['centralizeConfig'] == null ? null : pulumi.Output.create<CollectionPolicyCentralizeConfig>(CollectionPolicyCentralizeConfig.fromMap((map['centralizeConfig'] as Map).cast<String, dynamic>())),
-      centralizeEnabled: map['centralizeEnabled'] == null ? null : pulumi.Output.create<bool>(map['centralizeEnabled'] as bool),
-      dataCode: pulumi.Output.create<String>(map['dataCode'] as String),
-      dataConfig: map['dataConfig'] == null ? null : pulumi.Output.create<CollectionPolicyDataConfig>(CollectionPolicyDataConfig.fromMap((map['dataConfig'] as Map).cast<String, dynamic>())),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      policyConfig: pulumi.Output.create<CollectionPolicyPolicyConfig>(CollectionPolicyPolicyConfig.fromMap((map['policyConfig'] as Map).cast<String, dynamic>())),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      productCode: pulumi.Output.create<String>(map['productCode'] as String),
-      resourceDirectory: map['resourceDirectory'] == null ? null : pulumi.Output.create<CollectionPolicyResourceDirectory>(CollectionPolicyResourceDirectory.fromMap((map['resourceDirectory'] as Map).cast<String, dynamic>())),
+      centralizeConfig: map['centralizeConfig'] == null ? null : (CollectionPolicyCentralizeConfig.fromMap((map['centralizeConfig'] as Map).cast<String, dynamic>())).input(),
+      centralizeEnabled: map['centralizeEnabled'] == null ? null : (map['centralizeEnabled'] as bool).input(),
+      dataCode: (map['dataCode'] as String).input(),
+      dataConfig: map['dataConfig'] == null ? null : (CollectionPolicyDataConfig.fromMap((map['dataConfig'] as Map).cast<String, dynamic>())).input(),
+      enabled: (map['enabled'] as bool).input(),
+      policyConfig: (CollectionPolicyPolicyConfig.fromMap((map['policyConfig'] as Map).cast<String, dynamic>())).input(),
+      policyName: (map['policyName'] as String).input(),
+      productCode: (map['productCode'] as String).input(),
+      resourceDirectory: map['resourceDirectory'] == null ? null : (CollectionPolicyResourceDirectory.fromMap((map['resourceDirectory'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

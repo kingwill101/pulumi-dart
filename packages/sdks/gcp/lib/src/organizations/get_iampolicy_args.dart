@@ -23,11 +23,9 @@ class GetIAMPolicyArgs {
   /// [auditConfigs] A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
   /// [bindings] A nested configuration block (described below)
   GetIAMPolicyArgs({
-    pulumi.Output<List<GetIAMPolicyAuditConfig>>? auditConfigs,
-    pulumi.Output<List<GetIAMPolicyBinding>>? bindings,
-  }) :
-      auditConfigs = pulumi.Input.asOptionalInput<List<GetIAMPolicyAuditConfig>>(auditConfigs),
-      bindings = pulumi.Input.asOptionalInput<List<GetIAMPolicyBinding>>(bindings);
+    this.auditConfigs,
+    this.bindings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,8 +36,8 @@ class GetIAMPolicyArgs {
 
   factory GetIAMPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetIAMPolicyArgs(
-      auditConfigs: map['auditConfigs'] == null ? null : pulumi.Output.create<List<GetIAMPolicyAuditConfig>>(pulumi.Input.decodeList<GetIAMPolicyAuditConfig>(map['auditConfigs'], (value) => GetIAMPolicyAuditConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      bindings: map['bindings'] == null ? null : pulumi.Output.create<List<GetIAMPolicyBinding>>(pulumi.Input.decodeList<GetIAMPolicyBinding>(map['bindings'], (value) => GetIAMPolicyBinding.fromMap((value as Map).cast<String, dynamic>()))),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GetIAMPolicyAuditConfig>(map['auditConfigs'], (value) => GetIAMPolicyAuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GetIAMPolicyBinding>(map['bindings'], (value) => GetIAMPolicyBinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

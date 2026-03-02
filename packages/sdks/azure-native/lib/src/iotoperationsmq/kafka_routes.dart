@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kafka_to_mqtt_routes.dart';
 import 'mqtt_to_kafka_routes.dart';
 
 /// Kafka Routes properties. NOTE - Enum only one method is allowed to be passed.
 class KafkaRoutes {
   /// Kafka to Mqtt route.
-  final KafkaToMqttRoutes? kafkaToMqtt;
+  final pulumi.Input<KafkaToMqttRoutes>? kafkaToMqtt;
   /// Mqtt to Kafka route.
-  final MqttToKafkaRoutes? mqttToKafka;
+  final pulumi.Input<MqttToKafkaRoutes>? mqttToKafka;
 
   /// Creates a new [KafkaRoutes].
   /// [kafkaToMqtt] Kafka to Mqtt route.
@@ -20,15 +21,15 @@ class KafkaRoutes {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kafkaToMqtt': ?kafkaToMqtt == null ? null : kafkaToMqtt!.toMap(),
-      'mqttToKafka': ?mqttToKafka == null ? null : mqttToKafka!.toMap(),
+      'kafkaToMqtt': ?pulumi.Input.mapOptionalInputValue<KafkaToMqttRoutes, Map<String, dynamic>>(kafkaToMqtt, (value) => value.toMap()),
+      'mqttToKafka': ?pulumi.Input.mapOptionalInputValue<MqttToKafkaRoutes, Map<String, dynamic>>(mqttToKafka, (value) => value.toMap()),
     };
   }
 
   factory KafkaRoutes.fromMap(Map<String, dynamic> map) {
     return KafkaRoutes(
-      kafkaToMqtt: map['kafkaToMqtt'] == null ? null : KafkaToMqttRoutes.fromMap((map['kafkaToMqtt'] as Map).cast<String, dynamic>()),
-      mqttToKafka: map['mqttToKafka'] == null ? null : MqttToKafkaRoutes.fromMap((map['mqttToKafka'] as Map).cast<String, dynamic>()),
+      kafkaToMqtt: map['kafkaToMqtt'] == null ? null : (KafkaToMqttRoutes.fromMap((map['kafkaToMqtt'] as Map).cast<String, dynamic>())).input(),
+      mqttToKafka: map['mqttToKafka'] == null ? null : (MqttToKafkaRoutes.fromMap((map['mqttToKafka'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

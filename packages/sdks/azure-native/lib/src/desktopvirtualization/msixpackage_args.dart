@@ -54,35 +54,21 @@ class MSIXPackageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Package version found in the appxmanifest.xml.
   MSIXPackageArgs({
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> hostPoolName,
-    pulumi.Output<String>? imagePath,
-    pulumi.Output<bool>? isActive,
-    pulumi.Output<bool>? isRegularRegistration,
-    pulumi.Output<String>? lastUpdated,
-    pulumi.Output<String>? msixPackageFullName,
-    pulumi.Output<List<MsixPackageApplications>>? packageApplications,
-    pulumi.Output<List<MsixPackageDependencies>>? packageDependencies,
-    pulumi.Output<String>? packageFamilyName,
-    pulumi.Output<String>? packageName,
-    pulumi.Output<String>? packageRelativePath,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? version,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      hostPoolName = pulumi.Input.asInput<String>(hostPoolName),
-      imagePath = pulumi.Input.asOptionalInput<String>(imagePath),
-      isActive = pulumi.Input.asOptionalInput<bool>(isActive),
-      isRegularRegistration = pulumi.Input.asOptionalInput<bool>(isRegularRegistration),
-      lastUpdated = pulumi.Input.asOptionalInput<String>(lastUpdated),
-      msixPackageFullName = pulumi.Input.asOptionalInput<String>(msixPackageFullName),
-      packageApplications = pulumi.Input.asOptionalInput<List<MsixPackageApplications>>(packageApplications),
-      packageDependencies = pulumi.Input.asOptionalInput<List<MsixPackageDependencies>>(packageDependencies),
-      packageFamilyName = pulumi.Input.asOptionalInput<String>(packageFamilyName),
-      packageName = pulumi.Input.asOptionalInput<String>(packageName),
-      packageRelativePath = pulumi.Input.asOptionalInput<String>(packageRelativePath),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.displayName,
+    required this.hostPoolName,
+    this.imagePath,
+    this.isActive,
+    this.isRegularRegistration,
+    this.lastUpdated,
+    this.msixPackageFullName,
+    this.packageApplications,
+    this.packageDependencies,
+    this.packageFamilyName,
+    this.packageName,
+    this.packageRelativePath,
+    required this.resourceGroupName,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class MSIXPackageArgs {
 
   factory MSIXPackageArgs.fromMap(Map<String, dynamic> map) {
     return MSIXPackageArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      hostPoolName: pulumi.Output.create<String>(map['hostPoolName'] as String),
-      imagePath: map['imagePath'] == null ? null : pulumi.Output.create<String>(map['imagePath'] as String),
-      isActive: map['isActive'] == null ? null : pulumi.Output.create<bool>(map['isActive'] as bool),
-      isRegularRegistration: map['isRegularRegistration'] == null ? null : pulumi.Output.create<bool>(map['isRegularRegistration'] as bool),
-      lastUpdated: map['lastUpdated'] == null ? null : pulumi.Output.create<String>(map['lastUpdated'] as String),
-      msixPackageFullName: map['msixPackageFullName'] == null ? null : pulumi.Output.create<String>(map['msixPackageFullName'] as String),
-      packageApplications: map['packageApplications'] == null ? null : pulumi.Output.create<List<MsixPackageApplications>>(pulumi.Input.decodeList<MsixPackageApplications>(map['packageApplications'], (value) => MsixPackageApplications.fromMap((value as Map).cast<String, dynamic>()))),
-      packageDependencies: map['packageDependencies'] == null ? null : pulumi.Output.create<List<MsixPackageDependencies>>(pulumi.Input.decodeList<MsixPackageDependencies>(map['packageDependencies'], (value) => MsixPackageDependencies.fromMap((value as Map).cast<String, dynamic>()))),
-      packageFamilyName: map['packageFamilyName'] == null ? null : pulumi.Output.create<String>(map['packageFamilyName'] as String),
-      packageName: map['packageName'] == null ? null : pulumi.Output.create<String>(map['packageName'] as String),
-      packageRelativePath: map['packageRelativePath'] == null ? null : pulumi.Output.create<String>(map['packageRelativePath'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      hostPoolName: (map['hostPoolName'] as String).input(),
+      imagePath: map['imagePath'] == null ? null : (map['imagePath'] as String).input(),
+      isActive: map['isActive'] == null ? null : (map['isActive'] as bool).input(),
+      isRegularRegistration: map['isRegularRegistration'] == null ? null : (map['isRegularRegistration'] as bool).input(),
+      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated'] as String).input(),
+      msixPackageFullName: map['msixPackageFullName'] == null ? null : (map['msixPackageFullName'] as String).input(),
+      packageApplications: map['packageApplications'] == null ? null : (pulumi.Input.decodeList<MsixPackageApplications>(map['packageApplications'], (value) => MsixPackageApplications.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packageDependencies: map['packageDependencies'] == null ? null : (pulumi.Input.decodeList<MsixPackageDependencies>(map['packageDependencies'], (value) => MsixPackageDependencies.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packageFamilyName: map['packageFamilyName'] == null ? null : (map['packageFamilyName'] as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      packageRelativePath: map['packageRelativePath'] == null ? null : (map['packageRelativePath'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

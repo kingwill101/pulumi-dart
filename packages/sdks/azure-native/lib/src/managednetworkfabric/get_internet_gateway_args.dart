@@ -16,11 +16,9 @@ class GetInternetGatewayArgs {
   /// [internetGatewayName] Name of the Internet Gateway.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetInternetGatewayArgs({
-    required pulumi.Output<String> internetGatewayName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      internetGatewayName = pulumi.Input.asInput<String>(internetGatewayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.internetGatewayName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetInternetGatewayArgs {
 
   factory GetInternetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetInternetGatewayArgs(
-      internetGatewayName: pulumi.Output.create<String>(map['internetGatewayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      internetGatewayName: (map['internetGatewayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

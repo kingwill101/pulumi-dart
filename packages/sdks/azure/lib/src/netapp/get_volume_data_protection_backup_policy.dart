@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVolumeDataProtectionBackupPolicy {
   /// The Resource ID of the backup policy.
-  final String backupPolicyId;
+  final pulumi.Input<String> backupPolicyId;
   /// The Resource ID of the backup backup vault.
-  final String backupVaultId;
+  final pulumi.Input<String> backupVaultId;
   /// Backup policy is enabled or not.
-  final bool policyEnabled;
+  final pulumi.Input<bool> policyEnabled;
 
   /// Creates a new [GetVolumeDataProtectionBackupPolicy].
   /// [backupPolicyId] The Resource ID of the backup policy.
@@ -29,9 +30,9 @@ class GetVolumeDataProtectionBackupPolicy {
 
   factory GetVolumeDataProtectionBackupPolicy.fromMap(Map<String, dynamic> map) {
     return GetVolumeDataProtectionBackupPolicy(
-      backupPolicyId: map['backupPolicyId'] as String,
-      backupVaultId: map['backupVaultId'] as String,
-      policyEnabled: map['policyEnabled'] as bool,
+      backupPolicyId: (map['backupPolicyId'] as String).input(),
+      backupVaultId: (map['backupVaultId'] as String).input(),
+      policyEnabled: (map['policyEnabled'] as bool).input(),
     );
   }
 }

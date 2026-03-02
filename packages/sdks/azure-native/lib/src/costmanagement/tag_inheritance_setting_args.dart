@@ -24,15 +24,11 @@ class TagInheritanceSettingArgs {
   /// [scope] The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
   /// [type] Setting type.
   TagInheritanceSettingArgs({
-    required pulumi.Output<String> kind,
-    pulumi.Output<TagInheritanceProperties>? properties,
-    required pulumi.Output<String> scope,
-    pulumi.Output<String>? type,
-  }) :
-      kind = pulumi.Input.asInput<String>(kind),
-      properties = pulumi.Input.asOptionalInput<TagInheritanceProperties>(properties),
-      scope = pulumi.Input.asInput<String>(scope),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    required this.kind,
+    this.properties,
+    required this.scope,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class TagInheritanceSettingArgs {
 
   factory TagInheritanceSettingArgs.fromMap(Map<String, dynamic> map) {
     return TagInheritanceSettingArgs(
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<TagInheritanceProperties>(TagInheritanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      kind: (map['kind'] as String).input(),
+      properties: map['properties'] == null ? null : (TagInheritanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      scope: (map['scope'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

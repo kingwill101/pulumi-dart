@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// User details for an organization
 class LiftrBaseUserDetailsResponse {
   /// Email address of the user
-  final String? emailAddress;
+  final pulumi.Input<String>? emailAddress;
   /// First name of the user
-  final String? firstName;
+  final pulumi.Input<String>? firstName;
   /// Last name of the user
-  final String? lastName;
+  final pulumi.Input<String>? lastName;
   /// User's phone number
-  final String? phoneNumber;
+  final pulumi.Input<String>? phoneNumber;
   /// User's principal name
-  final String? upn;
+  final pulumi.Input<String>? upn;
 
   /// Creates a new [LiftrBaseUserDetailsResponse].
   /// [emailAddress] Email address of the user
@@ -40,11 +41,11 @@ class LiftrBaseUserDetailsResponse {
 
   factory LiftrBaseUserDetailsResponse.fromMap(Map<String, dynamic> map) {
     return LiftrBaseUserDetailsResponse(
-      emailAddress: map['emailAddress'] == null ? null : map['emailAddress'] as String,
-      firstName: map['firstName'] == null ? null : map['firstName'] as String,
-      lastName: map['lastName'] == null ? null : map['lastName'] as String,
-      phoneNumber: map['phoneNumber'] == null ? null : map['phoneNumber'] as String,
-      upn: map['upn'] == null ? null : map['upn'] as String,
+      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      upn: map['upn'] == null ? null : (map['upn'] as String).input(),
     );
   }
 }

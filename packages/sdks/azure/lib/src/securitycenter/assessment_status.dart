@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssessmentStatus {
   /// Specifies the cause of the assessment status.
-  final String? cause;
+  final pulumi.Input<String>? cause;
   /// Specifies the programmatic code of the assessment status. Possible values are `Healthy`, `Unhealthy` and `NotApplicable`.
-  final String code;
+  final pulumi.Input<String> code;
   /// Specifies the human readable description of the assessment status.
-  final String? description;
+  final pulumi.Input<String>? description;
 
   /// Creates a new [AssessmentStatus].
   /// [cause] Specifies the cause of the assessment status.
@@ -29,9 +30,9 @@ class AssessmentStatus {
 
   factory AssessmentStatus.fromMap(Map<String, dynamic> map) {
     return AssessmentStatus(
-      cause: map['cause'] == null ? null : map['cause'] as String,
-      code: map['code'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      cause: map['cause'] == null ? null : (map['cause'] as String).input(),
+      code: (map['code'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
     );
   }
 }

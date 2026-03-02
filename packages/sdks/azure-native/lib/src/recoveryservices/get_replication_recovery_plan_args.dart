@@ -19,13 +19,10 @@ class GetReplicationRecoveryPlanArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
   GetReplicationRecoveryPlanArgs({
-    required pulumi.Output<String> recoveryPlanName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      recoveryPlanName = pulumi.Input.asInput<String>(recoveryPlanName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.recoveryPlanName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetReplicationRecoveryPlanArgs {
 
   factory GetReplicationRecoveryPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationRecoveryPlanArgs(
-      recoveryPlanName: pulumi.Output.create<String>(map['recoveryPlanName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      recoveryPlanName: (map['recoveryPlanName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

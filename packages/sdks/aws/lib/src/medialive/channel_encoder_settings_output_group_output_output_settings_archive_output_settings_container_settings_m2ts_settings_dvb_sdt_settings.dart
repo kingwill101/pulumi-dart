@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings {
-  final String? outputSdt;
-  final int? repInterval;
-  final String? serviceName;
-  final String? serviceProviderName;
+  final pulumi.Input<String>? outputSdt;
+  final pulumi.Input<int>? repInterval;
+  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String>? serviceProviderName;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings].
   /// [outputSdt] Optional.
@@ -30,10 +31,10 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings(
-      outputSdt: map['outputSdt'] == null ? null : map['outputSdt'] as String,
-      repInterval: map['repInterval'] == null ? null : map['repInterval'] as int,
-      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
-      serviceProviderName: map['serviceProviderName'] == null ? null : map['serviceProviderName'] as String,
+      outputSdt: map['outputSdt'] == null ? null : (map['outputSdt'] as String).input(),
+      repInterval: map['repInterval'] == null ? null : (map['repInterval'] as int).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      serviceProviderName: map['serviceProviderName'] == null ? null : (map['serviceProviderName'] as String).input(),
     );
   }
 }

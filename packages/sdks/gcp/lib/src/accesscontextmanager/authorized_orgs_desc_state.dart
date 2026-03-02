@@ -55,23 +55,15 @@ class AuthorizedOrgsDescState {
   /// [parent] Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
   /// [updateTime] Time the AuthorizedOrgsDesc was updated in UTC.
   AuthorizedOrgsDescState({
-    pulumi.Output<String>? assetType,
-    pulumi.Output<String>? authorizationDirection,
-    pulumi.Output<String>? authorizationType,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? orgs,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? updateTime,
-  }) :
-      assetType = pulumi.Input.asOptionalInput<String>(assetType),
-      authorizationDirection = pulumi.Input.asOptionalInput<String>(authorizationDirection),
-      authorizationType = pulumi.Input.asOptionalInput<String>(authorizationType),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgs = pulumi.Input.asOptionalInput<List<String>>(orgs),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.assetType,
+    this.authorizationDirection,
+    this.authorizationType,
+    this.createTime,
+    this.name,
+    this.orgs,
+    this.parent,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,14 +80,14 @@ class AuthorizedOrgsDescState {
 
   factory AuthorizedOrgsDescState.fromMap(Map<String, dynamic> map) {
     return AuthorizedOrgsDescState(
-      assetType: map['assetType'] == null ? null : pulumi.Output.create<String>(map['assetType'] as String),
-      authorizationDirection: map['authorizationDirection'] == null ? null : pulumi.Output.create<String>(map['authorizationDirection'] as String),
-      authorizationType: map['authorizationType'] == null ? null : pulumi.Output.create<String>(map['authorizationType'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgs: map['orgs'] == null ? null : pulumi.Output.create<List<String>>((map['orgs'] as List).cast<String>()),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      assetType: map['assetType'] == null ? null : (map['assetType'] as String).input(),
+      authorizationDirection: map['authorizationDirection'] == null ? null : (map['authorizationDirection'] as String).input(),
+      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgs: map['orgs'] == null ? null : ((map['orgs'] as List).cast<String>()).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

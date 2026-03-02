@@ -12,9 +12,8 @@ class GetInsightsAccountsArgs {
   /// Creates a new [GetInsightsAccountsArgs].
   /// [organizationName] Required.
   GetInsightsAccountsArgs({
-    required pulumi.Output<String> organizationName,
-  }) :
-      organizationName = pulumi.Input.asInput<String>(organizationName);
+    required this.organizationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetInsightsAccountsArgs {
 
   factory GetInsightsAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetInsightsAccountsArgs(
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
+      organizationName: (map['organizationName'] as String).input(),
     );
   }
 }

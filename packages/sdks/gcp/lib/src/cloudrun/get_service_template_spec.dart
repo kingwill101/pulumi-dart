@@ -8,27 +8,27 @@ class GetServiceTemplateSpec {
   /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
   /// requests per container of the Revision. If not specified or 0, defaults to 80 when
   /// requested CPU >= 1 and defaults to 1 when requested CPU < 1.
-  final int containerConcurrency;
+  final pulumi.Input<int> containerConcurrency;
   /// Containers defines the unit of execution for this Revision.
-  final List<GetServiceTemplateSpecContainer> containers;
+  final pulumi.Input<List<GetServiceTemplateSpecContainer>> containers;
   /// Node Selector describes the hardware requirements of the resources.
   /// Use the following node selector keys to configure features on a Revision:
   /// - 'run.googleapis.com/accelerator' sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
-  final Map<String, String> nodeSelector;
+  final pulumi.Input<Map<String, String>> nodeSelector;
   /// Email address of the IAM service account associated with the revision of the
   /// service. The service account represents the identity of the running revision,
   /// and determines what permissions the revision has. If not provided, the revision
   /// will use the project's default service account.
-  final String serviceAccountName;
+  final pulumi.Input<String> serviceAccountName;
   /// ServingState holds a value describing the state the resources
   /// are in for this Revision.
   /// It is expected
   /// that the system will manipulate this based on routability and load.
-  final String servingState;
+  final pulumi.Input<String> servingState;
   /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
-  final int timeoutSeconds;
+  final pulumi.Input<int> timeoutSeconds;
   /// Volume represents a named volume in a container.
-  final List<GetServiceTemplateSpecVolume> volumes;
+  final pulumi.Input<List<GetServiceTemplateSpecVolume>> volumes;
 
   /// Creates a new [GetServiceTemplateSpec].
   /// [containerConcurrency] ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
@@ -51,24 +51,24 @@ class GetServiceTemplateSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'containerConcurrency': containerConcurrency,
-      'containers': pulumi.Input.encodeList<GetServiceTemplateSpecContainer, Map<String, dynamic>>(containers, (value) => value.toMap()),
+      'containers': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainer>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nodeSelector': nodeSelector,
       'serviceAccountName': serviceAccountName,
       'servingState': servingState,
       'timeoutSeconds': timeoutSeconds,
-      'volumes': pulumi.Input.encodeList<GetServiceTemplateSpecVolume, Map<String, dynamic>>(volumes, (value) => value.toMap()),
+      'volumes': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetServiceTemplateSpec.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpec(
-      containerConcurrency: map['containerConcurrency'] as int,
-      containers: pulumi.Input.decodeList<GetServiceTemplateSpecContainer>(map['containers'], (value) => GetServiceTemplateSpecContainer.fromMap((value as Map).cast<String, dynamic>())),
-      nodeSelector: (map['nodeSelector'] as Map).cast<String, String>(),
-      serviceAccountName: map['serviceAccountName'] as String,
-      servingState: map['servingState'] as String,
-      timeoutSeconds: map['timeoutSeconds'] as int,
-      volumes: pulumi.Input.decodeList<GetServiceTemplateSpecVolume>(map['volumes'], (value) => GetServiceTemplateSpecVolume.fromMap((value as Map).cast<String, dynamic>())),
+      containerConcurrency: (map['containerConcurrency'] as int).input(),
+      containers: (pulumi.Input.decodeList<GetServiceTemplateSpecContainer>(map['containers'], (value) => GetServiceTemplateSpecContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeSelector: ((map['nodeSelector'] as Map).cast<String, String>()).input(),
+      serviceAccountName: (map['serviceAccountName'] as String).input(),
+      servingState: (map['servingState'] as String).input(),
+      timeoutSeconds: (map['timeoutSeconds'] as int).input(),
+      volumes: (pulumi.Input.decodeList<GetServiceTemplateSpecVolume>(map['volumes'], (value) => GetServiceTemplateSpecVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The reference to the Schema Registry for this AIO Instance.
 class SchemaRegistryRefResponse {
   /// The resource ID of the Schema Registry.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [SchemaRegistryRefResponse].
   /// [resourceId] The resource ID of the Schema Registry.
@@ -20,7 +21,7 @@ class SchemaRegistryRefResponse {
 
   factory SchemaRegistryRefResponse.fromMap(Map<String, dynamic> map) {
     return SchemaRegistryRefResponse(
-      resourceId: map['resourceId'] as String,
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

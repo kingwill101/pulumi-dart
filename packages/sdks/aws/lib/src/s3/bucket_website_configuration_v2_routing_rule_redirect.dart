@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketWebsiteConfigurationV2RoutingRuleRedirect {
   /// Host name to use in the redirect request.
-  final String? hostName;
+  final pulumi.Input<String>? hostName;
   /// HTTP redirect code to use on the response.
-  final String? httpRedirectCode;
+  final pulumi.Input<String>? httpRedirectCode;
   /// Protocol to use when redirecting requests. The default is the protocol that is used in the original request. Valid values: `http`, `https`.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix `docs/` (objects in the `docs/` folder) to `documents/`, you can set a `condition` block with `key_prefix_equals` set to `docs/` and in the `redirect` set `replace_key_prefix_with` to `/documents`.
-  final String? replaceKeyPrefixWith;
+  final pulumi.Input<String>? replaceKeyPrefixWith;
   /// Specific object key to use in the redirect request. For example, redirect request to `error.html`.
-  final String? replaceKeyWith;
+  final pulumi.Input<String>? replaceKeyWith;
 
   /// Creates a new [BucketWebsiteConfigurationV2RoutingRuleRedirect].
   /// [hostName] Host name to use in the redirect request.
@@ -39,11 +40,11 @@ class BucketWebsiteConfigurationV2RoutingRuleRedirect {
 
   factory BucketWebsiteConfigurationV2RoutingRuleRedirect.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteConfigurationV2RoutingRuleRedirect(
-      hostName: map['hostName'] == null ? null : map['hostName'] as String,
-      httpRedirectCode: map['httpRedirectCode'] == null ? null : map['httpRedirectCode'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      replaceKeyPrefixWith: map['replaceKeyPrefixWith'] == null ? null : map['replaceKeyPrefixWith'] as String,
-      replaceKeyWith: map['replaceKeyWith'] == null ? null : map['replaceKeyWith'] as String,
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      httpRedirectCode: map['httpRedirectCode'] == null ? null : (map['httpRedirectCode'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      replaceKeyPrefixWith: map['replaceKeyPrefixWith'] == null ? null : (map['replaceKeyPrefixWith'] as String).input(),
+      replaceKeyWith: map['replaceKeyWith'] == null ? null : (map['replaceKeyWith'] as String).input(),
     );
   }
 }

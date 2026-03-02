@@ -27,17 +27,12 @@ class ProxyTargetArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetGroupName] The name of the target group.
   ProxyTargetArgs({
-    pulumi.Output<String>? dbClusterIdentifier,
-    pulumi.Output<String>? dbInstanceIdentifier,
-    required pulumi.Output<String> dbProxyName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> targetGroupName,
-  }) :
-      dbClusterIdentifier = pulumi.Input.asOptionalInput<String>(dbClusterIdentifier),
-      dbInstanceIdentifier = pulumi.Input.asOptionalInput<String>(dbInstanceIdentifier),
-      dbProxyName = pulumi.Input.asInput<String>(dbProxyName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetGroupName = pulumi.Input.asInput<String>(targetGroupName);
+    this.dbClusterIdentifier,
+    this.dbInstanceIdentifier,
+    required this.dbProxyName,
+    this.region,
+    required this.targetGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ProxyTargetArgs {
 
   factory ProxyTargetArgs.fromMap(Map<String, dynamic> map) {
     return ProxyTargetArgs(
-      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['dbClusterIdentifier'] as String),
-      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : pulumi.Output.create<String>(map['dbInstanceIdentifier'] as String),
-      dbProxyName: pulumi.Output.create<String>(map['dbProxyName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetGroupName: pulumi.Output.create<String>(map['targetGroupName'] as String),
+      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : (map['dbClusterIdentifier'] as String).input(),
+      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : (map['dbInstanceIdentifier'] as String).input(),
+      dbProxyName: (map['dbProxyName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetGroupName: (map['targetGroupName'] as String).input(),
     );
   }
 }

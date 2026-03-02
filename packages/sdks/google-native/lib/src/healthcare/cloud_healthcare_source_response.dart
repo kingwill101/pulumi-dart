@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cloud Healthcare API resource.
 class CloudHealthcareSourceResponse {
   /// Full path of a Cloud Healthcare API resource.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [CloudHealthcareSourceResponse].
   /// [name] Full path of a Cloud Healthcare API resource.
@@ -20,7 +21,7 @@ class CloudHealthcareSourceResponse {
 
   factory CloudHealthcareSourceResponse.fromMap(Map<String, dynamic> map) {
     return CloudHealthcareSourceResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

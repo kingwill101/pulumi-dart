@@ -24,17 +24,12 @@ class OrganizationExclusionArgs {
   /// [name] A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
   /// [organizationId] Required.
   OrganizationExclusionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> filter,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      filter = pulumi.Input.asInput<String>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    this.description,
+    this.disabled,
+    required this.filter,
+    this.name,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class OrganizationExclusionArgs {
 
   factory OrganizationExclusionArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationExclusionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      filter: pulumi.Output.create<String>(map['filter'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      filter: (map['filter'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

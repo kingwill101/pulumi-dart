@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Compute information of a server.
 class SkuResponse {
   /// Name by which is known a given compute size assigned to a server.
-  final String name;
+  final pulumi.Input<String> name;
   /// Tier of the compute assigned to a server.
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [SkuResponse].
   /// [name] Name by which is known a given compute size assigned to a server.
@@ -25,8 +26,8 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      name: map['name'] as String,
-      tier: map['tier'] as String,
+      name: (map['name'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

@@ -36,21 +36,14 @@ class BackupPolicyBlobStorageArgs {
   /// [vaultDefaultRetentionDuration] The duration of vault default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Policy Blob Storage should exist. Changing this forces a new Backup Policy Blob Storage to be created.
   BackupPolicyBlobStorageArgs({
-    pulumi.Output<List<String>>? backupRepeatingTimeIntervals,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? operationalDefaultRetentionDuration,
-    pulumi.Output<List<BackupPolicyBlobStorageRetentionRule>>? retentionRules,
-    pulumi.Output<String>? timeZone,
-    pulumi.Output<String>? vaultDefaultRetentionDuration,
-    required pulumi.Output<String> vaultId,
-  }) :
-      backupRepeatingTimeIntervals = pulumi.Input.asOptionalInput<List<String>>(backupRepeatingTimeIntervals),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      operationalDefaultRetentionDuration = pulumi.Input.asOptionalInput<String>(operationalDefaultRetentionDuration),
-      retentionRules = pulumi.Input.asOptionalInput<List<BackupPolicyBlobStorageRetentionRule>>(retentionRules),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone),
-      vaultDefaultRetentionDuration = pulumi.Input.asOptionalInput<String>(vaultDefaultRetentionDuration),
-      vaultId = pulumi.Input.asInput<String>(vaultId);
+    this.backupRepeatingTimeIntervals,
+    this.name,
+    this.operationalDefaultRetentionDuration,
+    this.retentionRules,
+    this.timeZone,
+    this.vaultDefaultRetentionDuration,
+    required this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class BackupPolicyBlobStorageArgs {
 
   factory BackupPolicyBlobStorageArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyBlobStorageArgs(
-      backupRepeatingTimeIntervals: map['backupRepeatingTimeIntervals'] == null ? null : pulumi.Output.create<List<String>>((map['backupRepeatingTimeIntervals'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      operationalDefaultRetentionDuration: map['operationalDefaultRetentionDuration'] == null ? null : pulumi.Output.create<String>(map['operationalDefaultRetentionDuration'] as String),
-      retentionRules: map['retentionRules'] == null ? null : pulumi.Output.create<List<BackupPolicyBlobStorageRetentionRule>>(pulumi.Input.decodeList<BackupPolicyBlobStorageRetentionRule>(map['retentionRules'], (value) => BackupPolicyBlobStorageRetentionRule.fromMap((value as Map).cast<String, dynamic>()))),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
-      vaultDefaultRetentionDuration: map['vaultDefaultRetentionDuration'] == null ? null : pulumi.Output.create<String>(map['vaultDefaultRetentionDuration'] as String),
-      vaultId: pulumi.Output.create<String>(map['vaultId'] as String),
+      backupRepeatingTimeIntervals: map['backupRepeatingTimeIntervals'] == null ? null : ((map['backupRepeatingTimeIntervals'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operationalDefaultRetentionDuration: map['operationalDefaultRetentionDuration'] == null ? null : (map['operationalDefaultRetentionDuration'] as String).input(),
+      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyBlobStorageRetentionRule>(map['retentionRules'], (value) => BackupPolicyBlobStorageRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      vaultDefaultRetentionDuration: map['vaultDefaultRetentionDuration'] == null ? null : (map['vaultDefaultRetentionDuration'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

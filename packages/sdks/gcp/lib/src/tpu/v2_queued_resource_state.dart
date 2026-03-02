@@ -22,15 +22,11 @@ class V2QueuedResourceState {
   /// [tpu] Defines a TPU resource.
   /// [zone] The GCP location for the Queued Resource. If it is not provided, the provider zone is used.
   V2QueuedResourceState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<V2QueuedResourceTpu>? tpu,
-    pulumi.Output<String>? zone,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tpu = pulumi.Input.asOptionalInput<V2QueuedResourceTpu>(tpu),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.name,
+    this.project,
+    this.tpu,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class V2QueuedResourceState {
 
   factory V2QueuedResourceState.fromMap(Map<String, dynamic> map) {
     return V2QueuedResourceState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tpu: map['tpu'] == null ? null : pulumi.Output.create<V2QueuedResourceTpu>(V2QueuedResourceTpu.fromMap((map['tpu'] as Map).cast<String, dynamic>())),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tpu: map['tpu'] == null ? null : (V2QueuedResourceTpu.fromMap((map['tpu'] as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

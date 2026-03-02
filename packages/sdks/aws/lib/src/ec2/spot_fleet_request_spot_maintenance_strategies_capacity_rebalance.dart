@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance {
   /// The replacement strategy to use. Only available for spot fleets with `fleet_type` set to `maintain`. Valid values: `launch`.
-  final String? replacementStrategy;
+  final pulumi.Input<String>? replacementStrategy;
 
   /// Creates a new [SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance].
   /// [replacementStrategy] The replacement strategy to use. Only available for spot fleets with `fleet_type` set to `maintain`. Valid values: `launch`.
@@ -19,7 +20,7 @@ class SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance {
 
   factory SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance.fromMap(Map<String, dynamic> map) {
     return SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance(
-      replacementStrategy: map['replacementStrategy'] == null ? null : map['replacementStrategy'] as String,
+      replacementStrategy: map['replacementStrategy'] == null ? null : (map['replacementStrategy'] as String).input(),
     );
   }
 }

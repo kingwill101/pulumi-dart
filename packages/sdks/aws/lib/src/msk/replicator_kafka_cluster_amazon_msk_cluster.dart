@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicatorKafkaClusterAmazonMskCluster {
   /// The ARN of an Amazon MSK cluster.
-  final String mskClusterArn;
+  final pulumi.Input<String> mskClusterArn;
 
   /// Creates a new [ReplicatorKafkaClusterAmazonMskCluster].
   /// [mskClusterArn] The ARN of an Amazon MSK cluster.
@@ -19,7 +20,7 @@ class ReplicatorKafkaClusterAmazonMskCluster {
 
   factory ReplicatorKafkaClusterAmazonMskCluster.fromMap(Map<String, dynamic> map) {
     return ReplicatorKafkaClusterAmazonMskCluster(
-      mskClusterArn: map['mskClusterArn'] as String,
+      mskClusterArn: (map['mskClusterArn'] as String).input(),
     );
   }
 }

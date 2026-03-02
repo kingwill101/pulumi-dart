@@ -16,11 +16,9 @@ class GetDicomServiceArgs {
   /// [name] The name of the Healthcare DICOM Service
   /// [workspaceId] The ID of the Healthcare Workspace in which the Healthcare DICOM Service exists.
   GetDicomServiceArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.name,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDicomServiceArgs {
 
   factory GetDicomServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetDicomServiceArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      name: (map['name'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

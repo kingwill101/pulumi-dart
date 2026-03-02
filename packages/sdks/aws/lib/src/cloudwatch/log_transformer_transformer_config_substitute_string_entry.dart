@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigSubstituteStringEntry {
   /// Specifies the regular expression string to be replaced.
-  final String from;
+  final pulumi.Input<String> from;
   /// Specifies the key to modify.
-  final String source;
+  final pulumi.Input<String> source;
   /// Specifies the string to be substituted for each match of `from`.
-  final String to;
+  final pulumi.Input<String> to;
 
   /// Creates a new [LogTransformerTransformerConfigSubstituteStringEntry].
   /// [from] Specifies the regular expression string to be replaced.
@@ -29,9 +30,9 @@ class LogTransformerTransformerConfigSubstituteStringEntry {
 
   factory LogTransformerTransformerConfigSubstituteStringEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigSubstituteStringEntry(
-      from: map['from'] as String,
-      source: map['source'] as String,
-      to: map['to'] as String,
+      from: (map['from'] as String).input(),
+      source: (map['source'] as String).input(),
+      to: (map['to'] as String).input(),
     );
   }
 }

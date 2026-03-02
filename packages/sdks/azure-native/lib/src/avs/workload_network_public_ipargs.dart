@@ -25,17 +25,12 @@ class WorkloadNetworkPublicIPArgs {
   /// [publicIPId] ID of the DNS zone.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   WorkloadNetworkPublicIPArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<double>? numberOfPublicIPs,
-    required pulumi.Output<String> privateCloudName,
-    pulumi.Output<String>? publicIPId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      numberOfPublicIPs = pulumi.Input.asOptionalInput<double>(numberOfPublicIPs),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      publicIPId = pulumi.Input.asOptionalInput<String>(publicIPId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.displayName,
+    this.numberOfPublicIPs,
+    required this.privateCloudName,
+    this.publicIPId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class WorkloadNetworkPublicIPArgs {
 
   factory WorkloadNetworkPublicIPArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkPublicIPArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      numberOfPublicIPs: map['numberOfPublicIPs'] == null ? null : pulumi.Output.create<double>(map['numberOfPublicIPs'] as double),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      publicIPId: map['publicIPId'] == null ? null : pulumi.Output.create<String>(map['publicIPId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      numberOfPublicIPs: map['numberOfPublicIPs'] == null ? null : (map['numberOfPublicIPs'] as double).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      publicIPId: map['publicIPId'] == null ? null : (map['publicIPId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

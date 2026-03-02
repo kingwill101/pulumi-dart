@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorRoutingRuleForwardingConfiguration {
   /// Specifies the name of the Backend Pool to forward the incoming traffic to.
-  final String backendPoolName;
+  final pulumi.Input<String> backendPoolName;
   /// Specify the minimum caching duration (in ISO8601 notation e.g. `P1DT2H` for 1 day and 2 hours). Needs to be greater than 0 and smaller than 365 days. `cache_duration` works only in combination with `cache_enabled` set to `true`.
-  final String? cacheDuration;
+  final pulumi.Input<String>? cacheDuration;
   /// Specifies whether to Enable caching or not. Valid options are `true` or `false`. Defaults to `false`.
-  final bool? cacheEnabled;
+  final pulumi.Input<bool>? cacheEnabled;
   /// Defines cache behaviour in relation to query string parameters. Valid options are `StripAll`, `StripAllExcept`, `StripOnly` or `StripNone`. Defaults to `StripAll`.
-  final String? cacheQueryParameterStripDirective;
+  final pulumi.Input<String>? cacheQueryParameterStripDirective;
   /// Specify query parameters (array). Works only in combination with `cache_query_parameter_strip_directive` set to `StripAllExcept` or `StripOnly`.
-  final List<String>? cacheQueryParameters;
+  final pulumi.Input<List<String>>? cacheQueryParameters;
   /// Whether to use dynamic compression when caching. Valid options are `true` or `false`. Defaults to `false`.
-  final bool? cacheUseDynamicCompression;
+  final pulumi.Input<bool>? cacheUseDynamicCompression;
   /// Path to use when constructing the request to forward to the backend. This functions as a URL Rewrite. Default behaviour preserves the URL path.
-  final String? customForwardingPath;
+  final pulumi.Input<String>? customForwardingPath;
   /// Protocol to use when redirecting. Valid options are `HttpOnly`, `HttpsOnly`, or `MatchRequest`. Defaults to `HttpsOnly`.
-  final String? forwardingProtocol;
+  final pulumi.Input<String>? forwardingProtocol;
 
   /// Creates a new [FrontdoorRoutingRuleForwardingConfiguration].
   /// [backendPoolName] Specifies the name of the Backend Pool to forward the incoming traffic to.
@@ -54,14 +55,14 @@ class FrontdoorRoutingRuleForwardingConfiguration {
 
   factory FrontdoorRoutingRuleForwardingConfiguration.fromMap(Map<String, dynamic> map) {
     return FrontdoorRoutingRuleForwardingConfiguration(
-      backendPoolName: map['backendPoolName'] as String,
-      cacheDuration: map['cacheDuration'] == null ? null : map['cacheDuration'] as String,
-      cacheEnabled: map['cacheEnabled'] == null ? null : map['cacheEnabled'] as bool,
-      cacheQueryParameterStripDirective: map['cacheQueryParameterStripDirective'] == null ? null : map['cacheQueryParameterStripDirective'] as String,
-      cacheQueryParameters: map['cacheQueryParameters'] == null ? null : (map['cacheQueryParameters'] as List).cast<String>(),
-      cacheUseDynamicCompression: map['cacheUseDynamicCompression'] == null ? null : map['cacheUseDynamicCompression'] as bool,
-      customForwardingPath: map['customForwardingPath'] == null ? null : map['customForwardingPath'] as String,
-      forwardingProtocol: map['forwardingProtocol'] == null ? null : map['forwardingProtocol'] as String,
+      backendPoolName: (map['backendPoolName'] as String).input(),
+      cacheDuration: map['cacheDuration'] == null ? null : (map['cacheDuration'] as String).input(),
+      cacheEnabled: map['cacheEnabled'] == null ? null : (map['cacheEnabled'] as bool).input(),
+      cacheQueryParameterStripDirective: map['cacheQueryParameterStripDirective'] == null ? null : (map['cacheQueryParameterStripDirective'] as String).input(),
+      cacheQueryParameters: map['cacheQueryParameters'] == null ? null : ((map['cacheQueryParameters'] as List).cast<String>()).input(),
+      cacheUseDynamicCompression: map['cacheUseDynamicCompression'] == null ? null : (map['cacheUseDynamicCompression'] as bool).input(),
+      customForwardingPath: map['customForwardingPath'] == null ? null : (map['customForwardingPath'] as String).input(),
+      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol'] as String).input(),
     );
   }
 }

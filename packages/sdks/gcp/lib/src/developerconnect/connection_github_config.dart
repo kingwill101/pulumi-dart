@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_github_config_authorizer_credential.dart';
 
 class ConnectionGithubConfig {
   /// Optional. GitHub App installation id.
-  final String? appInstallationId;
+  final pulumi.Input<String>? appInstallationId;
   /// Represents an OAuth token of the account that authorized the Connection,
   /// and associated metadata.
   /// Structure is documented below.
-  final ConnectionGithubConfigAuthorizerCredential? authorizerCredential;
+  final pulumi.Input<ConnectionGithubConfigAuthorizerCredential>? authorizerCredential;
   /// Required. Immutable. The GitHub Application that was installed to the GitHub user or
   /// organization.
   /// Possible values:
   /// GIT_HUB_APP_UNSPECIFIED
   /// DEVELOPER_CONNECT
   /// FIREBASE
-  final String githubApp;
+  final pulumi.Input<String> githubApp;
   /// (Output)
   /// Output only. The URI to navigate to in order to manage the installation associated
   /// with this GitHubConfig.
-  final String? installationUri;
+  final pulumi.Input<String>? installationUri;
 
   /// Creates a new [ConnectionGithubConfig].
   /// [appInstallationId] Optional. GitHub App installation id.
@@ -36,7 +37,7 @@ class ConnectionGithubConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appInstallationId': ?appInstallationId,
-      'authorizerCredential': ?authorizerCredential == null ? null : authorizerCredential!.toMap(),
+      'authorizerCredential': ?pulumi.Input.mapOptionalInputValue<ConnectionGithubConfigAuthorizerCredential, Map<String, dynamic>>(authorizerCredential, (value) => value.toMap()),
       'githubApp': githubApp,
       'installationUri': ?installationUri,
     };
@@ -44,10 +45,10 @@ class ConnectionGithubConfig {
 
   factory ConnectionGithubConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionGithubConfig(
-      appInstallationId: map['appInstallationId'] == null ? null : map['appInstallationId'] as String,
-      authorizerCredential: map['authorizerCredential'] == null ? null : ConnectionGithubConfigAuthorizerCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>()),
-      githubApp: map['githubApp'] as String,
-      installationUri: map['installationUri'] == null ? null : map['installationUri'] as String,
+      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId'] as String).input(),
+      authorizerCredential: map['authorizerCredential'] == null ? null : (ConnectionGithubConfigAuthorizerCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>())).input(),
+      githubApp: (map['githubApp'] as String).input(),
+      installationUri: map['installationUri'] == null ? null : (map['installationUri'] as String).input(),
     );
   }
 }

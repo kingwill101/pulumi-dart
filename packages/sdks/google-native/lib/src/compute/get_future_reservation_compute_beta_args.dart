@@ -16,13 +16,10 @@ class GetFutureReservationComputeBetaArgs {
   /// [project] Optional.
   /// [zone] Required.
   GetFutureReservationComputeBetaArgs({
-    required pulumi.Output<String> futureReservation,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> zone,
-  }) :
-      futureReservation = pulumi.Input.asInput<String>(futureReservation),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+    required this.futureReservation,
+    this.project,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetFutureReservationComputeBetaArgs {
 
   factory GetFutureReservationComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetFutureReservationComputeBetaArgs(
-      futureReservation: pulumi.Output.create<String>(map['futureReservation'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      futureReservation: (map['futureReservation'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

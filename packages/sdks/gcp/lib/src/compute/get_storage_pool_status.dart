@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStoragePoolStatus {
   /// Number of disks used.
-  final String diskCount;
+  final pulumi.Input<String> diskCount;
   /// Timestamp of the last successful resize in RFC3339 text format.
-  final String lastResizeTimestamp;
+  final pulumi.Input<String> lastResizeTimestamp;
   /// Maximum allowed aggregate disk size in gigabytes.
-  final String maxTotalProvisionedDiskCapacityGb;
+  final pulumi.Input<String> maxTotalProvisionedDiskCapacityGb;
   /// Space used by data stored in disks within the storage pool (in bytes).
   /// This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
-  final String poolUsedCapacityBytes;
+  final pulumi.Input<String> poolUsedCapacityBytes;
   /// Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
-  final String poolUsedIops;
+  final pulumi.Input<String> poolUsedIops;
   /// Sum of all the disks' provisioned throughput in MB/s.
-  final String poolUsedThroughput;
+  final pulumi.Input<String> poolUsedThroughput;
   /// Amount of data written into the pool, before it is compacted.
-  final String poolUserWrittenBytes;
+  final pulumi.Input<String> poolUserWrittenBytes;
   /// Sum of all the capacity provisioned in disks in this storage pool.
   /// A disk's provisioned capacity is the same as its total capacity.
-  final String totalProvisionedDiskCapacityGb;
+  final pulumi.Input<String> totalProvisionedDiskCapacityGb;
   /// Sum of all the disks' provisioned IOPS.
-  final String totalProvisionedDiskIops;
+  final pulumi.Input<String> totalProvisionedDiskIops;
   /// Sum of all the disks' provisioned throughput in MB/s,
   /// minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
-  final String totalProvisionedDiskThroughput;
+  final pulumi.Input<String> totalProvisionedDiskThroughput;
 
   /// Creates a new [GetStoragePoolStatus].
   /// [diskCount] Number of disks used.
@@ -67,16 +68,16 @@ class GetStoragePoolStatus {
 
   factory GetStoragePoolStatus.fromMap(Map<String, dynamic> map) {
     return GetStoragePoolStatus(
-      diskCount: map['diskCount'] as String,
-      lastResizeTimestamp: map['lastResizeTimestamp'] as String,
-      maxTotalProvisionedDiskCapacityGb: map['maxTotalProvisionedDiskCapacityGb'] as String,
-      poolUsedCapacityBytes: map['poolUsedCapacityBytes'] as String,
-      poolUsedIops: map['poolUsedIops'] as String,
-      poolUsedThroughput: map['poolUsedThroughput'] as String,
-      poolUserWrittenBytes: map['poolUserWrittenBytes'] as String,
-      totalProvisionedDiskCapacityGb: map['totalProvisionedDiskCapacityGb'] as String,
-      totalProvisionedDiskIops: map['totalProvisionedDiskIops'] as String,
-      totalProvisionedDiskThroughput: map['totalProvisionedDiskThroughput'] as String,
+      diskCount: (map['diskCount'] as String).input(),
+      lastResizeTimestamp: (map['lastResizeTimestamp'] as String).input(),
+      maxTotalProvisionedDiskCapacityGb: (map['maxTotalProvisionedDiskCapacityGb'] as String).input(),
+      poolUsedCapacityBytes: (map['poolUsedCapacityBytes'] as String).input(),
+      poolUsedIops: (map['poolUsedIops'] as String).input(),
+      poolUsedThroughput: (map['poolUsedThroughput'] as String).input(),
+      poolUserWrittenBytes: (map['poolUserWrittenBytes'] as String).input(),
+      totalProvisionedDiskCapacityGb: (map['totalProvisionedDiskCapacityGb'] as String).input(),
+      totalProvisionedDiskIops: (map['totalProvisionedDiskIops'] as String).input(),
+      totalProvisionedDiskThroughput: (map['totalProvisionedDiskThroughput'] as String).input(),
     );
   }
 }

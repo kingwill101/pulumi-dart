@@ -24,15 +24,11 @@ class ProjectArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [spaceName] The name of the space.
   ProjectArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> spaceName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      spaceName = pulumi.Input.asInput<String>(spaceName);
+    this.description,
+    required this.displayName,
+    this.region,
+    required this.spaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      spaceName: pulumi.Output.create<String>(map['spaceName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      spaceName: (map['spaceName'] as String).input(),
     );
   }
 }

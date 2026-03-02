@@ -53,25 +53,16 @@ class PublicAdvertisedPrefixState {
   /// [selfLink] The URI of the created resource.
   /// [sharedSecret] Output Only. The shared secret to be used for reverse DNS verification.
   PublicAdvertisedPrefixState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? dnsVerificationIp,
-    pulumi.Output<String>? ipCidrRange,
-    pulumi.Output<String>? ipv6AccessType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pdpScope,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? sharedSecret,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dnsVerificationIp = pulumi.Input.asOptionalInput<String>(dnsVerificationIp),
-      ipCidrRange = pulumi.Input.asOptionalInput<String>(ipCidrRange),
-      ipv6AccessType = pulumi.Input.asOptionalInput<String>(ipv6AccessType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pdpScope = pulumi.Input.asOptionalInput<String>(pdpScope),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      sharedSecret = pulumi.Input.asOptionalInput<String>(sharedSecret);
+    this.description,
+    this.dnsVerificationIp,
+    this.ipCidrRange,
+    this.ipv6AccessType,
+    this.name,
+    this.pdpScope,
+    this.project,
+    this.selfLink,
+    this.sharedSecret,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,15 +80,15 @@ class PublicAdvertisedPrefixState {
 
   factory PublicAdvertisedPrefixState.fromMap(Map<String, dynamic> map) {
     return PublicAdvertisedPrefixState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dnsVerificationIp: map['dnsVerificationIp'] == null ? null : pulumi.Output.create<String>(map['dnsVerificationIp'] as String),
-      ipCidrRange: map['ipCidrRange'] == null ? null : pulumi.Output.create<String>(map['ipCidrRange'] as String),
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : pulumi.Output.create<String>(map['ipv6AccessType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pdpScope: map['pdpScope'] == null ? null : pulumi.Output.create<String>(map['pdpScope'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      sharedSecret: map['sharedSecret'] == null ? null : pulumi.Output.create<String>(map['sharedSecret'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dnsVerificationIp: map['dnsVerificationIp'] == null ? null : (map['dnsVerificationIp'] as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
+      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pdpScope: map['pdpScope'] == null ? null : (map['pdpScope'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      sharedSecret: map['sharedSecret'] == null ? null : (map['sharedSecret'] as String).input(),
     );
   }
 }

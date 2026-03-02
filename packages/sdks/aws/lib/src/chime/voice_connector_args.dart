@@ -27,17 +27,12 @@ class VoiceConnectorArgs {
   /// [requireEncryption] When enabled, requires encryption for the Amazon Chime Voice Connector.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   VoiceConnectorArgs({
-    pulumi.Output<String>? awsRegion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<bool> requireEncryption,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      awsRegion = pulumi.Input.asOptionalInput<String>(awsRegion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      requireEncryption = pulumi.Input.asInput<bool>(requireEncryption),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.awsRegion,
+    this.name,
+    this.region,
+    required this.requireEncryption,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class VoiceConnectorArgs {
 
   factory VoiceConnectorArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorArgs(
-      awsRegion: map['awsRegion'] == null ? null : pulumi.Output.create<String>(map['awsRegion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      requireEncryption: pulumi.Output.create<bool>(map['requireEncryption'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      requireEncryption: (map['requireEncryption'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

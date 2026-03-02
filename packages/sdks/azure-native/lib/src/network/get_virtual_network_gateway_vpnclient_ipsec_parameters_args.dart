@@ -16,11 +16,9 @@ class GetVirtualNetworkGatewayVpnclientIpsecParametersArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayName] The virtual network gateway name.
   GetVirtualNetworkGatewayVpnclientIpsecParametersArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualNetworkGatewayName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualNetworkGatewayName = pulumi.Input.asInput<String>(virtualNetworkGatewayName);
+    required this.resourceGroupName,
+    required this.virtualNetworkGatewayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVirtualNetworkGatewayVpnclientIpsecParametersArgs {
 
   factory GetVirtualNetworkGatewayVpnclientIpsecParametersArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayVpnclientIpsecParametersArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualNetworkGatewayName: pulumi.Output.create<String>(map['virtualNetworkGatewayName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualNetworkGatewayName: (map['virtualNetworkGatewayName'] as String).input(),
     );
   }
 }

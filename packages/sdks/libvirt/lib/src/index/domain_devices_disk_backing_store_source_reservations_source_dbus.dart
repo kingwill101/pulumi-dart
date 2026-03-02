@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskBackingStoreSourceReservationsSourceDbus {
   /// Specifies the channel used for the DBus source in the EGD backend.
-  final String? channel;
+  final pulumi.Input<String>? channel;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceReservationsSourceDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
@@ -19,7 +20,7 @@ class DomainDevicesDiskBackingStoreSourceReservationsSourceDbus {
 
   factory DomainDevicesDiskBackingStoreSourceReservationsSourceDbus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceReservationsSourceDbus(
-      channel: map['channel'] == null ? null : map['channel'] as String,
+      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
     );
   }
 }

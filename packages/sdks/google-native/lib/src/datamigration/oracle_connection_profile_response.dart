@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'forward_ssh_tunnel_connectivity_response.dart';
 import 'private_connectivity_response.dart';
 import 'ssl_config_response.dart';
@@ -7,25 +8,25 @@ import 'ssl_config_response.dart';
 /// Specifies connection parameters required specifically for Oracle databases.
 class OracleConnectionProfileResponse {
   /// Database service for the Oracle connection.
-  final String databaseService;
+  final pulumi.Input<String> databaseService;
   /// Forward SSH tunnel connectivity.
-  final ForwardSshTunnelConnectivityResponse forwardSshConnectivity;
+  final pulumi.Input<ForwardSshTunnelConnectivityResponse> forwardSshConnectivity;
   /// The IP or hostname of the source Oracle database.
-  final String host;
+  final pulumi.Input<String> host;
   /// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-  final String password;
+  final pulumi.Input<String> password;
   /// Indicates whether a new password is included in the request.
-  final bool passwordSet;
+  final pulumi.Input<bool> passwordSet;
   /// The network port of the source Oracle database.
-  final int port;
+  final pulumi.Input<int> port;
   /// Private connectivity.
-  final PrivateConnectivityResponse privateConnectivity;
+  final pulumi.Input<PrivateConnectivityResponse> privateConnectivity;
   /// SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
-  final SslConfigResponse ssl;
+  final pulumi.Input<SslConfigResponse> ssl;
   /// Static Service IP connectivity.
-  final Map<String, dynamic> staticServiceIpConnectivity;
+  final pulumi.Input<Map<String, dynamic>> staticServiceIpConnectivity;
   /// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [OracleConnectionProfileResponse].
   /// [databaseService] Database service for the Oracle connection.
@@ -54,13 +55,13 @@ class OracleConnectionProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'databaseService': databaseService,
-      'forwardSshConnectivity': forwardSshConnectivity.toMap(),
+      'forwardSshConnectivity': pulumi.Input.mapInputValue<ForwardSshTunnelConnectivityResponse, Map<String, dynamic>>(forwardSshConnectivity, (value) => value.toMap()),
       'host': host,
       'password': password,
       'passwordSet': passwordSet,
       'port': port,
-      'privateConnectivity': privateConnectivity.toMap(),
-      'ssl': ssl.toMap(),
+      'privateConnectivity': pulumi.Input.mapInputValue<PrivateConnectivityResponse, Map<String, dynamic>>(privateConnectivity, (value) => value.toMap()),
+      'ssl': pulumi.Input.mapInputValue<SslConfigResponse, Map<String, dynamic>>(ssl, (value) => value.toMap()),
       'staticServiceIpConnectivity': staticServiceIpConnectivity,
       'username': username,
     };
@@ -68,16 +69,16 @@ class OracleConnectionProfileResponse {
 
   factory OracleConnectionProfileResponse.fromMap(Map<String, dynamic> map) {
     return OracleConnectionProfileResponse(
-      databaseService: map['databaseService'] as String,
-      forwardSshConnectivity: ForwardSshTunnelConnectivityResponse.fromMap((map['forwardSshConnectivity'] as Map).cast<String, dynamic>()),
-      host: map['host'] as String,
-      password: map['password'] as String,
-      passwordSet: map['passwordSet'] as bool,
-      port: map['port'] as int,
-      privateConnectivity: PrivateConnectivityResponse.fromMap((map['privateConnectivity'] as Map).cast<String, dynamic>()),
-      ssl: SslConfigResponse.fromMap((map['ssl'] as Map).cast<String, dynamic>()),
-      staticServiceIpConnectivity: (map['staticServiceIpConnectivity'] as Map).cast<String, dynamic>(),
-      username: map['username'] as String,
+      databaseService: (map['databaseService'] as String).input(),
+      forwardSshConnectivity: (ForwardSshTunnelConnectivityResponse.fromMap((map['forwardSshConnectivity'] as Map).cast<String, dynamic>())).input(),
+      host: (map['host'] as String).input(),
+      password: (map['password'] as String).input(),
+      passwordSet: (map['passwordSet'] as bool).input(),
+      port: (map['port'] as int).input(),
+      privateConnectivity: (PrivateConnectivityResponse.fromMap((map['privateConnectivity'] as Map).cast<String, dynamic>())).input(),
+      ssl: (SslConfigResponse.fromMap((map['ssl'] as Map).cast<String, dynamic>())).input(),
+      staticServiceIpConnectivity: ((map['staticServiceIpConnectivity'] as Map).cast<String, dynamic>()).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

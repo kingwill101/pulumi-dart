@@ -22,15 +22,11 @@ class GetControlPolicyAttachmentsArgs {
   /// [policyType] The policy type of control policy. Valid values: `Custom` and `System`.
   /// [targetId] The Id of target.
   GetControlPolicyAttachmentsArgs({
-    pulumi.Output<String>? language,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? policyType,
-    required pulumi.Output<String> targetId,
-  }) :
-      language = pulumi.Input.asOptionalInput<String>(language),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      targetId = pulumi.Input.asInput<String>(targetId);
+    this.language,
+    this.outputFile,
+    this.policyType,
+    required this.targetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetControlPolicyAttachmentsArgs {
 
   factory GetControlPolicyAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetControlPolicyAttachmentsArgs(
-      language: map['language'] == null ? null : pulumi.Output.create<String>(map['language'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      targetId: pulumi.Output.create<String>(map['targetId'] as String),
+      language: map['language'] == null ? null : (map['language'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class ReplicaPairDrillState {
   /// [replicaPairDrillId] The first ID of the resource.
   /// [status] Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
   ReplicaPairDrillState({
-    pulumi.Output<String>? pairId,
-    pulumi.Output<String>? replicaPairDrillId,
-    pulumi.Output<String>? status,
-  }) :
-      pairId = pulumi.Input.asOptionalInput<String>(pairId),
-      replicaPairDrillId = pulumi.Input.asOptionalInput<String>(replicaPairDrillId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.pairId,
+    this.replicaPairDrillId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ReplicaPairDrillState {
 
   factory ReplicaPairDrillState.fromMap(Map<String, dynamic> map) {
     return ReplicaPairDrillState(
-      pairId: map['pairId'] == null ? null : pulumi.Output.create<String>(map['pairId'] as String),
-      replicaPairDrillId: map['replicaPairDrillId'] == null ? null : pulumi.Output.create<String>(map['replicaPairDrillId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      pairId: map['pairId'] == null ? null : (map['pairId'] as String).input(),
+      replicaPairDrillId: map['replicaPairDrillId'] == null ? null : (map['replicaPairDrillId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

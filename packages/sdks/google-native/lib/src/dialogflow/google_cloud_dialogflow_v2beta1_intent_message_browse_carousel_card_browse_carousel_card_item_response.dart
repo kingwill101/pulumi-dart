@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_browse_carousel_card_browse_carousel_card_item_open_url_action_response.dart';
 import 'google_cloud_dialogflow_v2beta1_intent_message_image_response.dart';
 
 /// Browsing carousel tile
 class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse {
   /// Optional. Description of the carousel item. Maximum of four lines of text.
-  final String description;
+  final pulumi.Input<String> description;
   /// Optional. Text that appears at the bottom of the Browse Carousel Card. Maximum of one line of text.
-  final String footer;
+  final pulumi.Input<String> footer;
   /// Optional. Hero image for the carousel item.
-  final GoogleCloudDialogflowV2beta1IntentMessageImageResponse image;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageImageResponse> image;
   /// Action to present to the user.
-  final GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse openUriAction;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse> openUriAction;
   /// Title of the carousel item. Maximum of two lines of text.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse].
   /// [description] Optional. Description of the carousel item. Maximum of four lines of text.
@@ -34,19 +35,19 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
     return <String, dynamic>{
       'description': description,
       'footer': footer,
-      'image': image.toMap(),
-      'openUriAction': openUriAction.toMap(),
+      'image': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageImageResponse, Map<String, dynamic>>(image, (value) => value.toMap()),
+      'openUriAction': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse, Map<String, dynamic>>(openUriAction, (value) => value.toMap()),
       'title': title,
     };
   }
 
   factory GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse(
-      description: map['description'] as String,
-      footer: map['footer'] as String,
-      image: GoogleCloudDialogflowV2beta1IntentMessageImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      openUriAction: GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse.fromMap((map['openUriAction'] as Map).cast<String, dynamic>()),
-      title: map['title'] as String,
+      description: (map['description'] as String).input(),
+      footer: (map['footer'] as String).input(),
+      image: (GoogleCloudDialogflowV2beta1IntentMessageImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      openUriAction: (GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse.fromMap((map['openUriAction'] as Map).cast<String, dynamic>())).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

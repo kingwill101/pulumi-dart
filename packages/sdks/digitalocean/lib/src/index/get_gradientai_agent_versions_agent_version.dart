@@ -8,56 +8,56 @@ import 'get_gradientai_agent_versions_agent_version_attached_knowledge_base.dart
 
 class GetGradientaiAgentVersionsAgentVersion {
   /// ID of the Agent to retrieve versions for
-  final String agentUuid;
+  final pulumi.Input<String> agentUuid;
   /// List of child agents attached to this version
-  final List<GetGradientaiAgentVersionsAgentVersionAttachedChildAgent> attachedChildAgents;
+  final pulumi.Input<List<GetGradientaiAgentVersionsAgentVersionAttachedChildAgent>> attachedChildAgents;
   /// List of functions attached to this version
-  final List<GetGradientaiAgentVersionsAgentVersionAttachedFunction> attachedFunctions;
+  final pulumi.Input<List<GetGradientaiAgentVersionsAgentVersionAttachedFunction>> attachedFunctions;
   /// List of guardrails attached to this version
-  final List<GetGradientaiAgentVersionsAgentVersionAttachedGuardrail> attachedGuardrails;
+  final pulumi.Input<List<GetGradientaiAgentVersionsAgentVersionAttachedGuardrail>> attachedGuardrails;
   /// List of Knowledge Bases agent versions
-  final List<GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase> attachedKnowledgeBases;
+  final pulumi.Input<List<GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase>> attachedKnowledgeBases;
   /// Indicates if the version can be rolled back
-  final bool canRollback;
+  final pulumi.Input<bool> canRollback;
   /// Timestamp when the Agent Version was created
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Email of the user who created this version
-  final String createdByEmail;
+  final pulumi.Input<String> createdByEmail;
   /// Indicates if this version is currently applied configuration
-  final bool currentlyApplied;
+  final pulumi.Input<bool> currentlyApplied;
   /// Description of the Agent Version
-  final String description;
+  final pulumi.Input<String> description;
   /// Id of the Agent Version
-  final String id;
+  final pulumi.Input<String> id;
   /// Instruction for the Agent Version
-  final String instruction;
+  final pulumi.Input<String> instruction;
   /// K value for the Agent Version
-  final int k;
+  final pulumi.Input<int> k;
   /// Maximum tokens allowed for the Agent
-  final int maxTokens;
+  final pulumi.Input<int> maxTokens;
   /// Name of model associated to the agent version
-  final String modelName;
+  final pulumi.Input<String> modelName;
   /// Name of the Agent
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates if the should provide in-response citations
-  final bool provideCitations;
+  final pulumi.Input<bool> provideCitations;
   /// Retrieval method used.
   /// - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
   /// - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
   /// - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
   /// - RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is sub queries
   /// - RETRIEVAL_METHOD_NONE: The retrieval method is none.
-  final String retrievalMethod;
+  final pulumi.Input<String> retrievalMethod;
   /// List of Tags
-  final List<String> tags;
+  final pulumi.Input<List<String>> tags;
   /// Temperature setting for the Agent Version
-  final double temperature;
+  final pulumi.Input<double> temperature;
   /// Top P sampling parameter for the Agent Version
-  final double topP;
+  final pulumi.Input<double> topP;
   /// Trigger action for the Agent Version
-  final String triggerAction;
+  final pulumi.Input<String> triggerAction;
   /// Hash of the Agent Version
-  final String versionHash;
+  final pulumi.Input<String> versionHash;
 
   /// Creates a new [GetGradientaiAgentVersionsAgentVersion].
   /// [agentUuid] ID of the Agent to retrieve versions for
@@ -112,10 +112,10 @@ class GetGradientaiAgentVersionsAgentVersion {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentUuid': agentUuid,
-      'attachedChildAgents': pulumi.Input.encodeList<GetGradientaiAgentVersionsAgentVersionAttachedChildAgent, Map<String, dynamic>>(attachedChildAgents, (value) => value.toMap()),
-      'attachedFunctions': pulumi.Input.encodeList<GetGradientaiAgentVersionsAgentVersionAttachedFunction, Map<String, dynamic>>(attachedFunctions, (value) => value.toMap()),
-      'attachedGuardrails': pulumi.Input.encodeList<GetGradientaiAgentVersionsAgentVersionAttachedGuardrail, Map<String, dynamic>>(attachedGuardrails, (value) => value.toMap()),
-      'attachedKnowledgeBases': pulumi.Input.encodeList<GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase, Map<String, dynamic>>(attachedKnowledgeBases, (value) => value.toMap()),
+      'attachedChildAgents': pulumi.Input.mapInputValue<List<GetGradientaiAgentVersionsAgentVersionAttachedChildAgent>, List<Map<String, dynamic>>>(attachedChildAgents, (value) => pulumi.Input.encodeList<GetGradientaiAgentVersionsAgentVersionAttachedChildAgent, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attachedFunctions': pulumi.Input.mapInputValue<List<GetGradientaiAgentVersionsAgentVersionAttachedFunction>, List<Map<String, dynamic>>>(attachedFunctions, (value) => pulumi.Input.encodeList<GetGradientaiAgentVersionsAgentVersionAttachedFunction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attachedGuardrails': pulumi.Input.mapInputValue<List<GetGradientaiAgentVersionsAgentVersionAttachedGuardrail>, List<Map<String, dynamic>>>(attachedGuardrails, (value) => pulumi.Input.encodeList<GetGradientaiAgentVersionsAgentVersionAttachedGuardrail, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attachedKnowledgeBases': pulumi.Input.mapInputValue<List<GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase>, List<Map<String, dynamic>>>(attachedKnowledgeBases, (value) => pulumi.Input.encodeList<GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase, Map<String, dynamic>>(value, (value) => value.toMap())),
       'canRollback': canRollback,
       'createdAt': createdAt,
       'createdByEmail': createdByEmail,
@@ -139,29 +139,29 @@ class GetGradientaiAgentVersionsAgentVersion {
 
   factory GetGradientaiAgentVersionsAgentVersion.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentVersionsAgentVersion(
-      agentUuid: map['agentUuid'] as String,
-      attachedChildAgents: pulumi.Input.decodeList<GetGradientaiAgentVersionsAgentVersionAttachedChildAgent>(map['attachedChildAgents'], (value) => GetGradientaiAgentVersionsAgentVersionAttachedChildAgent.fromMap((value as Map).cast<String, dynamic>())),
-      attachedFunctions: pulumi.Input.decodeList<GetGradientaiAgentVersionsAgentVersionAttachedFunction>(map['attachedFunctions'], (value) => GetGradientaiAgentVersionsAgentVersionAttachedFunction.fromMap((value as Map).cast<String, dynamic>())),
-      attachedGuardrails: pulumi.Input.decodeList<GetGradientaiAgentVersionsAgentVersionAttachedGuardrail>(map['attachedGuardrails'], (value) => GetGradientaiAgentVersionsAgentVersionAttachedGuardrail.fromMap((value as Map).cast<String, dynamic>())),
-      attachedKnowledgeBases: pulumi.Input.decodeList<GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase>(map['attachedKnowledgeBases'], (value) => GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase.fromMap((value as Map).cast<String, dynamic>())),
-      canRollback: map['canRollback'] as bool,
-      createdAt: map['createdAt'] as String,
-      createdByEmail: map['createdByEmail'] as String,
-      currentlyApplied: map['currentlyApplied'] as bool,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      instruction: map['instruction'] as String,
-      k: map['k'] as int,
-      maxTokens: map['maxTokens'] as int,
-      modelName: map['modelName'] as String,
-      name: map['name'] as String,
-      provideCitations: map['provideCitations'] as bool,
-      retrievalMethod: map['retrievalMethod'] as String,
-      tags: (map['tags'] as List).cast<String>(),
-      temperature: map['temperature'] as double,
-      topP: map['topP'] as double,
-      triggerAction: map['triggerAction'] as String,
-      versionHash: map['versionHash'] as String,
+      agentUuid: (map['agentUuid'] as String).input(),
+      attachedChildAgents: (pulumi.Input.decodeList<GetGradientaiAgentVersionsAgentVersionAttachedChildAgent>(map['attachedChildAgents'], (value) => GetGradientaiAgentVersionsAgentVersionAttachedChildAgent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attachedFunctions: (pulumi.Input.decodeList<GetGradientaiAgentVersionsAgentVersionAttachedFunction>(map['attachedFunctions'], (value) => GetGradientaiAgentVersionsAgentVersionAttachedFunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attachedGuardrails: (pulumi.Input.decodeList<GetGradientaiAgentVersionsAgentVersionAttachedGuardrail>(map['attachedGuardrails'], (value) => GetGradientaiAgentVersionsAgentVersionAttachedGuardrail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attachedKnowledgeBases: (pulumi.Input.decodeList<GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase>(map['attachedKnowledgeBases'], (value) => GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      canRollback: (map['canRollback'] as bool).input(),
+      createdAt: (map['createdAt'] as String).input(),
+      createdByEmail: (map['createdByEmail'] as String).input(),
+      currentlyApplied: (map['currentlyApplied'] as bool).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      instruction: (map['instruction'] as String).input(),
+      k: (map['k'] as int).input(),
+      maxTokens: (map['maxTokens'] as int).input(),
+      modelName: (map['modelName'] as String).input(),
+      name: (map['name'] as String).input(),
+      provideCitations: (map['provideCitations'] as bool).input(),
+      retrievalMethod: (map['retrievalMethod'] as String).input(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
+      temperature: (map['temperature'] as double).input(),
+      topP: (map['topP'] as double).input(),
+      triggerAction: (map['triggerAction'] as String).input(),
+      versionHash: (map['versionHash'] as String).input(),
     );
   }
 }

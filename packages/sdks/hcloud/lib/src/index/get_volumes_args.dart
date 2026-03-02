@@ -16,11 +16,9 @@ class GetVolumesArgs {
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   /// [withStatuses] List only volumes with the specified status, could contain `creating` or `available`.
   GetVolumesArgs({
-    pulumi.Output<String>? withSelector,
-    pulumi.Output<List<String>>? withStatuses,
-  }) :
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector),
-      withStatuses = pulumi.Input.asOptionalInput<List<String>>(withStatuses);
+    this.withSelector,
+    this.withStatuses,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVolumesArgs {
 
   factory GetVolumesArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumesArgs(
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
-      withStatuses: map['withStatuses'] == null ? null : pulumi.Output.create<List<String>>((map['withStatuses'] as List).cast<String>()),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses'] as List).cast<String>()).input(),
     );
   }
 }

@@ -25,19 +25,13 @@ class SnapshotState {
   /// [snapshotName] The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
   /// [status] The status of the Snapshot.
   SnapshotState({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? force,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<int>? retentionDays,
-    pulumi.Output<String>? snapshotName,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    this.force,
+    this.instanceId,
+    this.retentionDays,
+    this.snapshotName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

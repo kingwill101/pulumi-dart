@@ -41,27 +41,17 @@ class PeeringState {
   /// [status] The current state of this Peering.
   /// [statusMessage] Additional information about the current status of this peering, if available.
   PeeringState({
-    pulumi.Output<String>? authorizedNetwork,
-    pulumi.Output<String>? domainResource,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? peeringId,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? statusMessage,
-  }) :
-      authorizedNetwork = pulumi.Input.asOptionalInput<String>(authorizedNetwork),
-      domainResource = pulumi.Input.asOptionalInput<String>(domainResource),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peeringId = pulumi.Input.asOptionalInput<String>(peeringId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      statusMessage = pulumi.Input.asOptionalInput<String>(statusMessage);
+    this.authorizedNetwork,
+    this.domainResource,
+    this.effectiveLabels,
+    this.labels,
+    this.name,
+    this.peeringId,
+    this.project,
+    this.pulumiLabels,
+    this.status,
+    this.statusMessage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class PeeringState {
 
   factory PeeringState.fromMap(Map<String, dynamic> map) {
     return PeeringState(
-      authorizedNetwork: map['authorizedNetwork'] == null ? null : pulumi.Output.create<String>(map['authorizedNetwork'] as String),
-      domainResource: map['domainResource'] == null ? null : pulumi.Output.create<String>(map['domainResource'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peeringId: map['peeringId'] == null ? null : pulumi.Output.create<String>(map['peeringId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      statusMessage: map['statusMessage'] == null ? null : pulumi.Output.create<String>(map['statusMessage'] as String),
+      authorizedNetwork: map['authorizedNetwork'] == null ? null : (map['authorizedNetwork'] as String).input(),
+      domainResource: map['domainResource'] == null ? null : (map['domainResource'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peeringId: map['peeringId'] == null ? null : (map['peeringId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
     );
   }
 }

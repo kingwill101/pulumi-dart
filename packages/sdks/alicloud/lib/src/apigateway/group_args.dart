@@ -29,19 +29,13 @@ class GroupArgs {
   /// [userLogConfig] user_log_config defines the config of user log of the group. See `user_log_config` below.
   /// [vpcIntranetEnable] Whether to enable `vpc_domain`. Defaults to `false`.
   GroupArgs({
-    pulumi.Output<String>? basePath,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<GroupUserLogConfig>? userLogConfig,
-    pulumi.Output<bool>? vpcIntranetEnable,
-  }) :
-      basePath = pulumi.Input.asOptionalInput<String>(basePath),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      userLogConfig = pulumi.Input.asOptionalInput<GroupUserLogConfig>(userLogConfig),
-      vpcIntranetEnable = pulumi.Input.asOptionalInput<bool>(vpcIntranetEnable);
+    this.basePath,
+    this.description,
+    this.instanceId,
+    this.name,
+    this.userLogConfig,
+    this.vpcIntranetEnable,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      basePath: map['basePath'] == null ? null : pulumi.Output.create<String>(map['basePath'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      userLogConfig: map['userLogConfig'] == null ? null : pulumi.Output.create<GroupUserLogConfig>(GroupUserLogConfig.fromMap((map['userLogConfig'] as Map).cast<String, dynamic>())),
-      vpcIntranetEnable: map['vpcIntranetEnable'] == null ? null : pulumi.Output.create<bool>(map['vpcIntranetEnable'] as bool),
+      basePath: map['basePath'] == null ? null : (map['basePath'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      userLogConfig: map['userLogConfig'] == null ? null : (GroupUserLogConfig.fromMap((map['userLogConfig'] as Map).cast<String, dynamic>())).input(),
+      vpcIntranetEnable: map['vpcIntranetEnable'] == null ? null : (map['vpcIntranetEnable'] as bool).input(),
     );
   }
 }

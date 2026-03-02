@@ -19,13 +19,10 @@ class GetSmtpUsernameArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [smtpUsername] The name of the SmtpUsernameResource.
   GetSmtpUsernameArgs({
-    required pulumi.Output<String> communicationServiceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> smtpUsername,
-  }) :
-      communicationServiceName = pulumi.Input.asInput<String>(communicationServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      smtpUsername = pulumi.Input.asInput<String>(smtpUsername);
+    required this.communicationServiceName,
+    required this.resourceGroupName,
+    required this.smtpUsername,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSmtpUsernameArgs {
 
   factory GetSmtpUsernameArgs.fromMap(Map<String, dynamic> map) {
     return GetSmtpUsernameArgs(
-      communicationServiceName: pulumi.Output.create<String>(map['communicationServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      smtpUsername: pulumi.Output.create<String>(map['smtpUsername'] as String),
+      communicationServiceName: (map['communicationServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      smtpUsername: (map['smtpUsername'] as String).input(),
     );
   }
 }

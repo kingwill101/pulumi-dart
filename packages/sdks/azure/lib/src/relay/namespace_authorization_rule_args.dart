@@ -28,19 +28,13 @@ class NamespaceAuthorizationRuleArgs {
   /// [resourceGroupName] The name of the Resource Group where the Azure Relay Namespace Authorization Rule should exist. Changing this forces a new Azure Relay Namespace Authorization Rule to be created.
   /// [send] Grants send access to this Authorization Rule. Defaults to `false`.
   NamespaceAuthorizationRuleArgs({
-    pulumi.Output<bool>? listen,
-    pulumi.Output<bool>? manage,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? send,
-  }) :
-      listen = pulumi.Input.asOptionalInput<bool>(listen),
-      manage = pulumi.Input.asOptionalInput<bool>(manage),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      send = pulumi.Input.asOptionalInput<bool>(send);
+    this.listen,
+    this.manage,
+    this.name,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    this.send,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class NamespaceAuthorizationRuleArgs {
 
   factory NamespaceAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceAuthorizationRuleArgs(
-      listen: map['listen'] == null ? null : pulumi.Output.create<bool>(map['listen'] as bool),
-      manage: map['manage'] == null ? null : pulumi.Output.create<bool>(map['manage'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      send: map['send'] == null ? null : pulumi.Output.create<bool>(map['send'] as bool),
+      listen: map['listen'] == null ? null : (map['listen'] as bool).input(),
+      manage: map['manage'] == null ? null : (map['manage'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      send: map['send'] == null ? null : (map['send'] as bool).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Common settings field for backup management
 class Settings {
   /// Workload compression flag. This has been added so that 'isSqlCompression'
   /// will be deprecated once clients upgrade to consider this flag.
-  final bool? isCompression;
+  final pulumi.Input<bool>? isCompression;
   /// SQL compression flag
-  final bool? issqlcompression;
+  final pulumi.Input<bool>? issqlcompression;
   /// TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [Settings].
   /// [isCompression] Workload compression flag. This has been added so that 'isSqlCompression'
@@ -31,9 +32,9 @@ class Settings {
 
   factory Settings.fromMap(Map<String, dynamic> map) {
     return Settings(
-      isCompression: map['isCompression'] == null ? null : map['isCompression'] as bool,
-      issqlcompression: map['issqlcompression'] == null ? null : map['issqlcompression'] as bool,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      isCompression: map['isCompression'] == null ? null : (map['isCompression'] as bool).input(),
+      issqlcompression: map['issqlcompression'] == null ? null : (map['issqlcompression'] as bool).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

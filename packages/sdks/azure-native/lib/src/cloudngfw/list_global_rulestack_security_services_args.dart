@@ -19,15 +19,11 @@ class ListGlobalRulestackSecurityServicesArgs {
   /// [top] Optional.
   /// [type] Required.
   ListGlobalRulestackSecurityServicesArgs({
-    required pulumi.Output<String> globalRulestackName,
-    pulumi.Output<String>? skip,
-    pulumi.Output<int>? top,
-    required pulumi.Output<String> type,
-  }) :
-      globalRulestackName = pulumi.Input.asInput<String>(globalRulestackName),
-      skip = pulumi.Input.asOptionalInput<String>(skip),
-      top = pulumi.Input.asOptionalInput<int>(top),
-      type = pulumi.Input.asInput<String>(type);
+    required this.globalRulestackName,
+    this.skip,
+    this.top,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ListGlobalRulestackSecurityServicesArgs {
 
   factory ListGlobalRulestackSecurityServicesArgs.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackSecurityServicesArgs(
-      globalRulestackName: pulumi.Output.create<String>(map['globalRulestackName'] as String),
-      skip: map['skip'] == null ? null : pulumi.Output.create<String>(map['skip'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      globalRulestackName: (map['globalRulestackName'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

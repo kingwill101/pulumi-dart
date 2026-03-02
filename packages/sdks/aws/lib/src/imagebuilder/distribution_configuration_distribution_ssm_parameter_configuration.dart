@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionConfigurationDistributionSsmParameterConfiguration {
   /// AWS account ID that will own the parameter in the given region. This account must be specified as a target account in the distribution settings.
-  final String? amiAccountId;
+  final pulumi.Input<String>? amiAccountId;
   /// Data type of the SSM parameter. Valid values are `text` and `aws:ec2:image`. AWS recommends using `aws:ec2:image`.
-  final String? dataType;
+  final pulumi.Input<String>? dataType;
   /// Name of the SSM parameter that will store the AMI ID after distribution.
-  final String parameterName;
+  final pulumi.Input<String> parameterName;
 
   /// Creates a new [DistributionConfigurationDistributionSsmParameterConfiguration].
   /// [amiAccountId] AWS account ID that will own the parameter in the given region. This account must be specified as a target account in the distribution settings.
@@ -29,9 +30,9 @@ class DistributionConfigurationDistributionSsmParameterConfiguration {
 
   factory DistributionConfigurationDistributionSsmParameterConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionSsmParameterConfiguration(
-      amiAccountId: map['amiAccountId'] == null ? null : map['amiAccountId'] as String,
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      parameterName: map['parameterName'] as String,
+      amiAccountId: map['amiAccountId'] == null ? null : (map['amiAccountId'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      parameterName: (map['parameterName'] as String).input(),
     );
   }
 }

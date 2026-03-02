@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkIpv6CidrBlock {
   /// The IPv6 CIDR block of the default VPC.
   ///
   /// > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
-  final String? ipv6CidrBlock;
+  final pulumi.Input<String>? ipv6CidrBlock;
   /// The IPv6 address segment type of the VPC. Value:
   /// - `BGP` (default): Alibaba Cloud BGP IPv6.
   /// - `ChinaMobile`: China Mobile (single line).
@@ -13,7 +14,7 @@ class NetworkIpv6CidrBlock {
   /// - `ChinaTelecom`: China Telecom (single line).
   ///
   /// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
-  final String? ipv6Isp;
+  final pulumi.Input<String>? ipv6Isp;
 
   /// Creates a new [NetworkIpv6CidrBlock].
   /// [ipv6CidrBlock] The IPv6 CIDR block of the default VPC.
@@ -32,8 +33,8 @@ class NetworkIpv6CidrBlock {
 
   factory NetworkIpv6CidrBlock.fromMap(Map<String, dynamic> map) {
     return NetworkIpv6CidrBlock(
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : map['ipv6CidrBlock'] as String,
-      ipv6Isp: map['ipv6Isp'] == null ? null : map['ipv6Isp'] as String,
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      ipv6Isp: map['ipv6Isp'] == null ? null : (map['ipv6Isp'] as String).input(),
     );
   }
 }

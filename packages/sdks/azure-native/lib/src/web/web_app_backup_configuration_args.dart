@@ -36,23 +36,15 @@ class WebAppBackupConfigurationArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [storageAccountUrl] SAS URL to the container.
   WebAppBackupConfigurationArgs({
-    pulumi.Output<String>? backupName,
-    pulumi.Output<BackupSchedule>? backupSchedule,
-    pulumi.Output<List<DatabaseBackupSetting>>? databases,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageAccountUrl,
-  }) :
-      backupName = pulumi.Input.asOptionalInput<String>(backupName),
-      backupSchedule = pulumi.Input.asOptionalInput<BackupSchedule>(backupSchedule),
-      databases = pulumi.Input.asOptionalInput<List<DatabaseBackupSetting>>(databases),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageAccountUrl = pulumi.Input.asInput<String>(storageAccountUrl);
+    this.backupName,
+    this.backupSchedule,
+    this.databases,
+    this.enabled,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+    required this.storageAccountUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class WebAppBackupConfigurationArgs {
 
   factory WebAppBackupConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return WebAppBackupConfigurationArgs(
-      backupName: map['backupName'] == null ? null : pulumi.Output.create<String>(map['backupName'] as String),
-      backupSchedule: map['backupSchedule'] == null ? null : pulumi.Output.create<BackupSchedule>(BackupSchedule.fromMap((map['backupSchedule'] as Map).cast<String, dynamic>())),
-      databases: map['databases'] == null ? null : pulumi.Output.create<List<DatabaseBackupSetting>>(pulumi.Input.decodeList<DatabaseBackupSetting>(map['databases'], (value) => DatabaseBackupSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageAccountUrl: pulumi.Output.create<String>(map['storageAccountUrl'] as String),
+      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
+      backupSchedule: map['backupSchedule'] == null ? null : (BackupSchedule.fromMap((map['backupSchedule'] as Map).cast<String, dynamic>())).input(),
+      databases: map['databases'] == null ? null : (pulumi.Input.decodeList<DatabaseBackupSetting>(map['databases'], (value) => DatabaseBackupSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageAccountUrl: (map['storageAccountUrl'] as String).input(),
     );
   }
 }

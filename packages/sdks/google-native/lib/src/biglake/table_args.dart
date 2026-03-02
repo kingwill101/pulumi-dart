@@ -32,23 +32,15 @@ class TableArgs {
   /// [tableId] Required. The ID to use for the table, which will become the final component of the table's resource name.
   /// [type] The table type.
   TableArgs({
-    required pulumi.Output<String> catalogId,
-    required pulumi.Output<String> databaseId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<HiveTableOptions>? hiveOptions,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tableId,
-    pulumi.Output<TableType>? type,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      hiveOptions = pulumi.Input.asOptionalInput<HiveTableOptions>(hiveOptions),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tableId = pulumi.Input.asInput<String>(tableId),
-      type = pulumi.Input.asOptionalInput<TableType>(type);
+    required this.catalogId,
+    required this.databaseId,
+    this.etag,
+    this.hiveOptions,
+    this.location,
+    this.project,
+    required this.tableId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      hiveOptions: map['hiveOptions'] == null ? null : pulumi.Output.create<HiveTableOptions>(HiveTableOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tableId: pulumi.Output.create<String>(map['tableId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<TableType>(TableType.fromValue(map['type'] as String)),
+      catalogId: (map['catalogId'] as String).input(),
+      databaseId: (map['databaseId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      hiveOptions: map['hiveOptions'] == null ? null : (HiveTableOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tableId: (map['tableId'] as String).input(),
+      type: map['type'] == null ? null : (TableType.fromValue(map['type'] as String)).input(),
     );
   }
 }

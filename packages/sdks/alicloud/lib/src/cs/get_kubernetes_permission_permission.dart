@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesPermissionPermission {
   /// Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
-  final bool isOwner;
+  final pulumi.Input<bool> isOwner;
   /// Indicates whether the permissions are granted to the RAM role. Valid values `false`, `true`.
-  final bool isRamRole;
+  final pulumi.Input<bool> isRamRole;
   /// The permission settings to manage ACK clusters.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// The authorization type. Valid values `cluster`, `namespace` and `console`.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
-  final String roleName;
+  final pulumi.Input<String> roleName;
   /// The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
-  final String roleType;
+  final pulumi.Input<String> roleType;
 
   /// Creates a new [GetKubernetesPermissionPermission].
   /// [isOwner] Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
@@ -44,12 +45,12 @@ class GetKubernetesPermissionPermission {
 
   factory GetKubernetesPermissionPermission.fromMap(Map<String, dynamic> map) {
     return GetKubernetesPermissionPermission(
-      isOwner: map['isOwner'] as bool,
-      isRamRole: map['isRamRole'] as bool,
-      resourceId: map['resourceId'] as String,
-      resourceType: map['resourceType'] as String,
-      roleName: map['roleName'] as String,
-      roleType: map['roleType'] as String,
+      isOwner: (map['isOwner'] as bool).input(),
+      isRamRole: (map['isRamRole'] as bool).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      roleName: (map['roleName'] as String).input(),
+      roleType: (map['roleType'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rosetta_net_pip_acknowledgment_of_receipt_settings_response.dart';
 import 'rosetta_net_pip_activity_behavior_response.dart';
 
 /// The integration account RosettaNet ProcessConfiguration activity settings.
 class RosettaNetPipActivitySettingsResponse {
   /// The RosettaNet ProcessConfiguration acknowledgement settings.
-  final RosettaNetPipAcknowledgmentOfReceiptSettingsResponse acknowledgmentOfReceiptSettings;
+  final pulumi.Input<RosettaNetPipAcknowledgmentOfReceiptSettingsResponse> acknowledgmentOfReceiptSettings;
   /// The RosettaNet ProcessConfiguration activity behavior.
-  final RosettaNetPipActivityBehaviorResponse activityBehavior;
+  final pulumi.Input<RosettaNetPipActivityBehaviorResponse> activityBehavior;
   /// The RosettaNet ProcessConfiguration activity type.
-  final String activityType;
+  final pulumi.Input<String> activityType;
 
   /// Creates a new [RosettaNetPipActivitySettingsResponse].
   /// [acknowledgmentOfReceiptSettings] The RosettaNet ProcessConfiguration acknowledgement settings.
@@ -24,17 +25,17 @@ class RosettaNetPipActivitySettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acknowledgmentOfReceiptSettings': acknowledgmentOfReceiptSettings.toMap(),
-      'activityBehavior': activityBehavior.toMap(),
+      'acknowledgmentOfReceiptSettings': pulumi.Input.mapInputValue<RosettaNetPipAcknowledgmentOfReceiptSettingsResponse, Map<String, dynamic>>(acknowledgmentOfReceiptSettings, (value) => value.toMap()),
+      'activityBehavior': pulumi.Input.mapInputValue<RosettaNetPipActivityBehaviorResponse, Map<String, dynamic>>(activityBehavior, (value) => value.toMap()),
       'activityType': activityType,
     };
   }
 
   factory RosettaNetPipActivitySettingsResponse.fromMap(Map<String, dynamic> map) {
     return RosettaNetPipActivitySettingsResponse(
-      acknowledgmentOfReceiptSettings: RosettaNetPipAcknowledgmentOfReceiptSettingsResponse.fromMap((map['acknowledgmentOfReceiptSettings'] as Map).cast<String, dynamic>()),
-      activityBehavior: RosettaNetPipActivityBehaviorResponse.fromMap((map['activityBehavior'] as Map).cast<String, dynamic>()),
-      activityType: map['activityType'] as String,
+      acknowledgmentOfReceiptSettings: (RosettaNetPipAcknowledgmentOfReceiptSettingsResponse.fromMap((map['acknowledgmentOfReceiptSettings'] as Map).cast<String, dynamic>())).input(),
+      activityBehavior: (RosettaNetPipActivityBehaviorResponse.fromMap((map['activityBehavior'] as Map).cast<String, dynamic>())).input(),
+      activityType: (map['activityType'] as String).input(),
     );
   }
 }

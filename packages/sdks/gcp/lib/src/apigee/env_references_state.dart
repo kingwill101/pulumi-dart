@@ -23,17 +23,12 @@ class EnvReferencesState {
   /// [refers] Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
   /// [resourceType] The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
   EnvReferencesState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? envId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? refers,
-    pulumi.Output<String>? resourceType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      envId = pulumi.Input.asOptionalInput<String>(envId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      refers = pulumi.Input.asOptionalInput<String>(refers),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType);
+    this.description,
+    this.envId,
+    this.name,
+    this.refers,
+    this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class EnvReferencesState {
 
   factory EnvReferencesState.fromMap(Map<String, dynamic> map) {
     return EnvReferencesState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      envId: map['envId'] == null ? null : pulumi.Output.create<String>(map['envId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      refers: map['refers'] == null ? null : pulumi.Output.create<String>(map['refers'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      envId: map['envId'] == null ? null : (map['envId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      refers: map['refers'] == null ? null : (map['refers'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

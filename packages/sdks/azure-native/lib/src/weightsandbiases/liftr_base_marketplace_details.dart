@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'liftr_base_offer_details.dart';
 
 /// Marketplace details for an organization
 class LiftrBaseMarketplaceDetails {
   /// Offer details for the marketplace that is selected by the user
-  final LiftrBaseOfferDetails offerDetails;
+  final pulumi.Input<LiftrBaseOfferDetails> offerDetails;
   /// Azure subscription id for the the marketplace offer is purchased from
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
 
   /// Creates a new [LiftrBaseMarketplaceDetails].
   /// [offerDetails] Offer details for the marketplace that is selected by the user
@@ -19,15 +20,15 @@ class LiftrBaseMarketplaceDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'offerDetails': offerDetails.toMap(),
+      'offerDetails': pulumi.Input.mapInputValue<LiftrBaseOfferDetails, Map<String, dynamic>>(offerDetails, (value) => value.toMap()),
       'subscriptionId': ?subscriptionId,
     };
   }
 
   factory LiftrBaseMarketplaceDetails.fromMap(Map<String, dynamic> map) {
     return LiftrBaseMarketplaceDetails(
-      offerDetails: LiftrBaseOfferDetails.fromMap((map['offerDetails'] as Map).cast<String, dynamic>()),
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
+      offerDetails: (LiftrBaseOfferDetails.fromMap((map['offerDetails'] as Map).cast<String, dynamic>())).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

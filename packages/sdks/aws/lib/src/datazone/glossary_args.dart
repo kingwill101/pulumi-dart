@@ -29,19 +29,13 @@ class GlossaryArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Status of business glossary. Valid values are DISABLED and ENABLED.
   GlossaryArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> domainIdentifier,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> owningProjectIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainIdentifier = pulumi.Input.asInput<String>(domainIdentifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      owningProjectIdentifier = pulumi.Input.asInput<String>(owningProjectIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    required this.domainIdentifier,
+    this.name,
+    required this.owningProjectIdentifier,
+    this.region,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GlossaryArgs {
 
   factory GlossaryArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainIdentifier: pulumi.Output.create<String>(map['domainIdentifier'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      owningProjectIdentifier: pulumi.Output.create<String>(map['owningProjectIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainIdentifier: (map['domainIdentifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      owningProjectIdentifier: (map['owningProjectIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

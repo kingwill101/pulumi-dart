@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateSecondaryInterface {
   /// Whether the secondary interface is deleted when the instance is terminated. The only supported value is `true`.
-  final bool? deleteOnTermination;
+  final pulumi.Input<bool>? deleteOnTermination;
   /// Device index for the secondary interface attachment.
-  final int? deviceIndex;
+  final pulumi.Input<int>? deviceIndex;
   /// Type of secondary interface. The only supported value is: `secondary`.
-  final String? interfaceType;
+  final pulumi.Input<String>? interfaceType;
   /// Index of the network card.
-  final int? networkCardIndex;
+  final pulumi.Input<int>? networkCardIndex;
   /// Number of private IPv4 addresses to assign to the secondary interface.
-  final int? privateIpAddressCount;
+  final pulumi.Input<int>? privateIpAddressCount;
   /// Private IPv4 addresses to assign to the secondary interface.
-  final List<String>? privateIpAddresses;
+  final pulumi.Input<List<String>>? privateIpAddresses;
   /// ID of the secondary subnet.
-  final String? secondarySubnetId;
+  final pulumi.Input<String>? secondarySubnetId;
 
   /// Creates a new [LaunchTemplateSecondaryInterface].
   /// [deleteOnTermination] Whether the secondary interface is deleted when the instance is terminated. The only supported value is `true`.
@@ -49,13 +50,13 @@ class LaunchTemplateSecondaryInterface {
 
   factory LaunchTemplateSecondaryInterface.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateSecondaryInterface(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : map['deleteOnTermination'] as bool,
-      deviceIndex: map['deviceIndex'] == null ? null : map['deviceIndex'] as int,
-      interfaceType: map['interfaceType'] == null ? null : map['interfaceType'] as String,
-      networkCardIndex: map['networkCardIndex'] == null ? null : map['networkCardIndex'] as int,
-      privateIpAddressCount: map['privateIpAddressCount'] == null ? null : map['privateIpAddressCount'] as int,
-      privateIpAddresses: map['privateIpAddresses'] == null ? null : (map['privateIpAddresses'] as List).cast<String>(),
-      secondarySubnetId: map['secondarySubnetId'] == null ? null : map['secondarySubnetId'] as String,
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
+      deviceIndex: map['deviceIndex'] == null ? null : (map['deviceIndex'] as int).input(),
+      interfaceType: map['interfaceType'] == null ? null : (map['interfaceType'] as String).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
+      privateIpAddressCount: map['privateIpAddressCount'] == null ? null : (map['privateIpAddressCount'] as int).input(),
+      privateIpAddresses: map['privateIpAddresses'] == null ? null : ((map['privateIpAddresses'] as List).cast<String>()).input(),
+      secondarySubnetId: map['secondarySubnetId'] == null ? null : (map['secondarySubnetId'] as String).input(),
     );
   }
 }

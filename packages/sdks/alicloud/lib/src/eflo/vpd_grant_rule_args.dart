@@ -19,13 +19,10 @@ class VpdGrantRuleArgs {
   /// [grantTenantId] Cross-account authorized tenant ID.
   /// [instanceId] Instance ID of VPD.
   VpdGrantRuleArgs({
-    required pulumi.Output<String> erId,
-    required pulumi.Output<String> grantTenantId,
-    required pulumi.Output<String> instanceId,
-  }) :
-      erId = pulumi.Input.asInput<String>(erId),
-      grantTenantId = pulumi.Input.asInput<String>(grantTenantId),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    required this.erId,
+    required this.grantTenantId,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VpdGrantRuleArgs {
 
   factory VpdGrantRuleArgs.fromMap(Map<String, dynamic> map) {
     return VpdGrantRuleArgs(
-      erId: pulumi.Output.create<String>(map['erId'] as String),
-      grantTenantId: pulumi.Output.create<String>(map['grantTenantId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      erId: (map['erId'] as String).input(),
+      grantTenantId: (map['grantTenantId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

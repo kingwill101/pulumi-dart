@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
 class GoogleFirestoreAdminV1beta2IndexFieldResponse {
   /// Indicates that this field supports operations on `array_value`s.
-  final String arrayConfig;
+  final pulumi.Input<String> arrayConfig;
   /// Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
-  final String fieldPath;
+  final pulumi.Input<String> fieldPath;
   /// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-  final String order;
+  final pulumi.Input<String> order;
 
   /// Creates a new [GoogleFirestoreAdminV1beta2IndexFieldResponse].
   /// [arrayConfig] Indicates that this field supports operations on `array_value`s.
@@ -30,9 +31,9 @@ class GoogleFirestoreAdminV1beta2IndexFieldResponse {
 
   factory GoogleFirestoreAdminV1beta2IndexFieldResponse.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1beta2IndexFieldResponse(
-      arrayConfig: map['arrayConfig'] as String,
-      fieldPath: map['fieldPath'] as String,
-      order: map['order'] as String,
+      arrayConfig: (map['arrayConfig'] as String).input(),
+      fieldPath: (map['fieldPath'] as String).input(),
+      order: (map['order'] as String).input(),
     );
   }
 }

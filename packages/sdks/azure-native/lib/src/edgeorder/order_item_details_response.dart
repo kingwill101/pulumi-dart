@@ -13,39 +13,39 @@ import 'stage_details_response.dart';
 /// Order item details.
 class OrderItemDetailsResponse {
   /// Cancellation reason.
-  final String cancellationReason;
+  final pulumi.Input<String> cancellationReason;
   /// Describes whether the order item is cancellable or not.
-  final String cancellationStatus;
+  final pulumi.Input<String> cancellationStatus;
   /// Current Order item Status.
-  final StageDetailsResponse currentStage;
+  final pulumi.Input<StageDetailsResponse> currentStage;
   /// Describes whether the order item is deletable or not.
-  final String deletionStatus;
+  final pulumi.Input<String> deletionStatus;
   /// Top level error for the job.
-  final ErrorDetailResponse error;
+  final pulumi.Input<ErrorDetailResponse> error;
   /// Forward Package Shipping details.
-  final ForwardShippingDetailsResponse forwardShippingDetails;
+  final pulumi.Input<ForwardShippingDetailsResponse> forwardShippingDetails;
   /// List of parent RP details supported for configuration.
-  final List<ResourceProviderDetailsResponse> managementRpDetailsList;
+  final pulumi.Input<List<ResourceProviderDetailsResponse>> managementRpDetailsList;
   /// Additional notification email list.
-  final List<String>? notificationEmailList;
+  final pulumi.Input<List<String>>? notificationEmailList;
   /// Defines the mode of the Order item.
-  final String? orderItemMode;
+  final pulumi.Input<String>? orderItemMode;
   /// Order item status history.
-  final List<StageDetailsResponse> orderItemStageHistory;
+  final pulumi.Input<List<StageDetailsResponse>> orderItemStageHistory;
   /// Order item type.
-  final String orderItemType;
+  final pulumi.Input<String> orderItemType;
   /// Customer notification Preferences.
-  final PreferencesResponse? preferences;
+  final pulumi.Input<PreferencesResponse>? preferences;
   /// Represents product details.
-  final ProductDetailsResponse productDetails;
+  final pulumi.Input<ProductDetailsResponse> productDetails;
   /// Return reason.
-  final String returnReason;
+  final pulumi.Input<String> returnReason;
   /// Describes whether the order item is returnable or not.
-  final String returnStatus;
+  final pulumi.Input<String> returnStatus;
   /// Reverse Package Shipping details.
-  final ReverseShippingDetailsResponse reverseShippingDetails;
+  final pulumi.Input<ReverseShippingDetailsResponse> reverseShippingDetails;
   /// Site Related Details.
-  final SiteDetailsResponse? siteDetails;
+  final pulumi.Input<SiteDetailsResponse>? siteDetails;
 
   /// Creates a new [OrderItemDetailsResponse].
   /// [cancellationReason] Cancellation reason.
@@ -89,43 +89,43 @@ class OrderItemDetailsResponse {
     return <String, dynamic>{
       'cancellationReason': cancellationReason,
       'cancellationStatus': cancellationStatus,
-      'currentStage': currentStage.toMap(),
+      'currentStage': pulumi.Input.mapInputValue<StageDetailsResponse, Map<String, dynamic>>(currentStage, (value) => value.toMap()),
       'deletionStatus': deletionStatus,
-      'error': error.toMap(),
-      'forwardShippingDetails': forwardShippingDetails.toMap(),
-      'managementRpDetailsList': pulumi.Input.encodeList<ResourceProviderDetailsResponse, Map<String, dynamic>>(managementRpDetailsList, (value) => value.toMap()),
+      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'forwardShippingDetails': pulumi.Input.mapInputValue<ForwardShippingDetailsResponse, Map<String, dynamic>>(forwardShippingDetails, (value) => value.toMap()),
+      'managementRpDetailsList': pulumi.Input.mapInputValue<List<ResourceProviderDetailsResponse>, List<Map<String, dynamic>>>(managementRpDetailsList, (value) => pulumi.Input.encodeList<ResourceProviderDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'notificationEmailList': ?notificationEmailList,
       'orderItemMode': ?orderItemMode,
-      'orderItemStageHistory': pulumi.Input.encodeList<StageDetailsResponse, Map<String, dynamic>>(orderItemStageHistory, (value) => value.toMap()),
+      'orderItemStageHistory': pulumi.Input.mapInputValue<List<StageDetailsResponse>, List<Map<String, dynamic>>>(orderItemStageHistory, (value) => pulumi.Input.encodeList<StageDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'orderItemType': orderItemType,
-      'preferences': ?preferences == null ? null : preferences!.toMap(),
-      'productDetails': productDetails.toMap(),
+      'preferences': ?pulumi.Input.mapOptionalInputValue<PreferencesResponse, Map<String, dynamic>>(preferences, (value) => value.toMap()),
+      'productDetails': pulumi.Input.mapInputValue<ProductDetailsResponse, Map<String, dynamic>>(productDetails, (value) => value.toMap()),
       'returnReason': returnReason,
       'returnStatus': returnStatus,
-      'reverseShippingDetails': reverseShippingDetails.toMap(),
-      'siteDetails': ?siteDetails == null ? null : siteDetails!.toMap(),
+      'reverseShippingDetails': pulumi.Input.mapInputValue<ReverseShippingDetailsResponse, Map<String, dynamic>>(reverseShippingDetails, (value) => value.toMap()),
+      'siteDetails': ?pulumi.Input.mapOptionalInputValue<SiteDetailsResponse, Map<String, dynamic>>(siteDetails, (value) => value.toMap()),
     };
   }
 
   factory OrderItemDetailsResponse.fromMap(Map<String, dynamic> map) {
     return OrderItemDetailsResponse(
-      cancellationReason: map['cancellationReason'] as String,
-      cancellationStatus: map['cancellationStatus'] as String,
-      currentStage: StageDetailsResponse.fromMap((map['currentStage'] as Map).cast<String, dynamic>()),
-      deletionStatus: map['deletionStatus'] as String,
-      error: ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      forwardShippingDetails: ForwardShippingDetailsResponse.fromMap((map['forwardShippingDetails'] as Map).cast<String, dynamic>()),
-      managementRpDetailsList: pulumi.Input.decodeList<ResourceProviderDetailsResponse>(map['managementRpDetailsList'], (value) => ResourceProviderDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      notificationEmailList: map['notificationEmailList'] == null ? null : (map['notificationEmailList'] as List).cast<String>(),
-      orderItemMode: map['orderItemMode'] == null ? null : map['orderItemMode'] as String,
-      orderItemStageHistory: pulumi.Input.decodeList<StageDetailsResponse>(map['orderItemStageHistory'], (value) => StageDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      orderItemType: map['orderItemType'] as String,
-      preferences: map['preferences'] == null ? null : PreferencesResponse.fromMap((map['preferences'] as Map).cast<String, dynamic>()),
-      productDetails: ProductDetailsResponse.fromMap((map['productDetails'] as Map).cast<String, dynamic>()),
-      returnReason: map['returnReason'] as String,
-      returnStatus: map['returnStatus'] as String,
-      reverseShippingDetails: ReverseShippingDetailsResponse.fromMap((map['reverseShippingDetails'] as Map).cast<String, dynamic>()),
-      siteDetails: map['siteDetails'] == null ? null : SiteDetailsResponse.fromMap((map['siteDetails'] as Map).cast<String, dynamic>()),
+      cancellationReason: (map['cancellationReason'] as String).input(),
+      cancellationStatus: (map['cancellationStatus'] as String).input(),
+      currentStage: (StageDetailsResponse.fromMap((map['currentStage'] as Map).cast<String, dynamic>())).input(),
+      deletionStatus: (map['deletionStatus'] as String).input(),
+      error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      forwardShippingDetails: (ForwardShippingDetailsResponse.fromMap((map['forwardShippingDetails'] as Map).cast<String, dynamic>())).input(),
+      managementRpDetailsList: (pulumi.Input.decodeList<ResourceProviderDetailsResponse>(map['managementRpDetailsList'], (value) => ResourceProviderDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notificationEmailList: map['notificationEmailList'] == null ? null : ((map['notificationEmailList'] as List).cast<String>()).input(),
+      orderItemMode: map['orderItemMode'] == null ? null : (map['orderItemMode'] as String).input(),
+      orderItemStageHistory: (pulumi.Input.decodeList<StageDetailsResponse>(map['orderItemStageHistory'], (value) => StageDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      orderItemType: (map['orderItemType'] as String).input(),
+      preferences: map['preferences'] == null ? null : (PreferencesResponse.fromMap((map['preferences'] as Map).cast<String, dynamic>())).input(),
+      productDetails: (ProductDetailsResponse.fromMap((map['productDetails'] as Map).cast<String, dynamic>())).input(),
+      returnReason: (map['returnReason'] as String).input(),
+      returnStatus: (map['returnStatus'] as String).input(),
+      reverseShippingDetails: (ReverseShippingDetailsResponse.fromMap((map['reverseShippingDetails'] as Map).cast<String, dynamic>())).input(),
+      siteDetails: map['siteDetails'] == null ? null : (SiteDetailsResponse.fromMap((map['siteDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

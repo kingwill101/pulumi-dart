@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MemcacheParameters {
   /// User defined set of parameters to use in the memcached process.
-  final Map<String, String>? params;
+  final pulumi.Input<Map<String, String>>? params;
 
   /// Creates a new [MemcacheParameters].
   /// [params] User defined set of parameters to use in the memcached process.
@@ -19,7 +20,7 @@ class MemcacheParameters {
 
   factory MemcacheParameters.fromMap(Map<String, dynamic> map) {
     return MemcacheParameters(
-      params: map['params'] == null ? null : (map['params'] as Map).cast<String, String>(),
+      params: map['params'] == null ? null : ((map['params'] as Map).cast<String, String>()).input(),
     );
   }
 }

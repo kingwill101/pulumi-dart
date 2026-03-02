@@ -40,19 +40,13 @@ class RouteEntryArgs {
   /// [nexthopType] The type of Next Hop. Valid values:
   /// [routeTableId] The ID of the Route Table.
   RouteEntryArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destinationCidrblock,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nexthopId,
-    pulumi.Output<String>? nexthopType,
-    required pulumi.Output<String> routeTableId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationCidrblock = pulumi.Input.asOptionalInput<String>(destinationCidrblock),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nexthopId = pulumi.Input.asOptionalInput<String>(nexthopId),
-      nexthopType = pulumi.Input.asOptionalInput<String>(nexthopType),
-      routeTableId = pulumi.Input.asInput<String>(routeTableId);
+    this.description,
+    this.destinationCidrblock,
+    this.name,
+    this.nexthopId,
+    this.nexthopType,
+    required this.routeTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,12 +61,12 @@ class RouteEntryArgs {
 
   factory RouteEntryArgs.fromMap(Map<String, dynamic> map) {
     return RouteEntryArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationCidrblock: map['destinationCidrblock'] == null ? null : pulumi.Output.create<String>(map['destinationCidrblock'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nexthopId: map['nexthopId'] == null ? null : pulumi.Output.create<String>(map['nexthopId'] as String),
-      nexthopType: map['nexthopType'] == null ? null : pulumi.Output.create<String>(map['nexthopType'] as String),
-      routeTableId: pulumi.Output.create<String>(map['routeTableId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationCidrblock: map['destinationCidrblock'] == null ? null : (map['destinationCidrblock'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nexthopId: map['nexthopId'] == null ? null : (map['nexthopId'] as String).input(),
+      nexthopType: map['nexthopType'] == null ? null : (map['nexthopType'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
     );
   }
 }

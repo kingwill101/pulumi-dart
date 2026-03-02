@@ -6,15 +6,15 @@ import 'integration_runtime_ssis_express_custom_setup_component.dart';
 
 class IntegrationRuntimeSsisExpressCustomSetup {
   /// One or more `command_key` blocks as defined below.
-  final List<IntegrationRuntimeSsisExpressCustomSetupCommandKey>? commandKeys;
+  final pulumi.Input<List<IntegrationRuntimeSsisExpressCustomSetupCommandKey>>? commandKeys;
   /// One or more `component` blocks as defined below.
-  final List<IntegrationRuntimeSsisExpressCustomSetupComponent>? components;
+  final pulumi.Input<List<IntegrationRuntimeSsisExpressCustomSetupComponent>>? components;
   /// The Environment Variables for the Azure-SSIS Integration Runtime.
-  final Map<String, String>? environment;
+  final pulumi.Input<Map<String, String>>? environment;
   /// The version of Azure Powershell installed for the Azure-SSIS Integration Runtime.
   ///
   /// > **Note:** At least one of `env`, `powershell_version`, `component` and `command_key` should be specified.
-  final String? powershellVersion;
+  final pulumi.Input<String>? powershellVersion;
 
   /// Creates a new [IntegrationRuntimeSsisExpressCustomSetup].
   /// [commandKeys] One or more `command_key` blocks as defined below.
@@ -30,8 +30,8 @@ class IntegrationRuntimeSsisExpressCustomSetup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'commandKeys': ?commandKeys == null ? null : pulumi.Input.encodeList<IntegrationRuntimeSsisExpressCustomSetupCommandKey, Map<String, dynamic>>(commandKeys!, (value) => value.toMap()),
-      'components': ?components == null ? null : pulumi.Input.encodeList<IntegrationRuntimeSsisExpressCustomSetupComponent, Map<String, dynamic>>(components!, (value) => value.toMap()),
+      'commandKeys': ?pulumi.Input.mapOptionalInputValue<List<IntegrationRuntimeSsisExpressCustomSetupCommandKey>, List<Map<String, dynamic>>>(commandKeys, (value) => pulumi.Input.encodeList<IntegrationRuntimeSsisExpressCustomSetupCommandKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'components': ?pulumi.Input.mapOptionalInputValue<List<IntegrationRuntimeSsisExpressCustomSetupComponent>, List<Map<String, dynamic>>>(components, (value) => pulumi.Input.encodeList<IntegrationRuntimeSsisExpressCustomSetupComponent, Map<String, dynamic>>(value, (value) => value.toMap())),
       'environment': ?environment,
       'powershellVersion': ?powershellVersion,
     };
@@ -39,10 +39,10 @@ class IntegrationRuntimeSsisExpressCustomSetup {
 
   factory IntegrationRuntimeSsisExpressCustomSetup.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisExpressCustomSetup(
-      commandKeys: map['commandKeys'] == null ? null : pulumi.Input.decodeList<IntegrationRuntimeSsisExpressCustomSetupCommandKey>(map['commandKeys'], (value) => IntegrationRuntimeSsisExpressCustomSetupCommandKey.fromMap((value as Map).cast<String, dynamic>())),
-      components: map['components'] == null ? null : pulumi.Input.decodeList<IntegrationRuntimeSsisExpressCustomSetupComponent>(map['components'], (value) => IntegrationRuntimeSsisExpressCustomSetupComponent.fromMap((value as Map).cast<String, dynamic>())),
-      environment: map['environment'] == null ? null : (map['environment'] as Map).cast<String, String>(),
-      powershellVersion: map['powershellVersion'] == null ? null : map['powershellVersion'] as String,
+      commandKeys: map['commandKeys'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeSsisExpressCustomSetupCommandKey>(map['commandKeys'], (value) => IntegrationRuntimeSsisExpressCustomSetupCommandKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      components: map['components'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeSsisExpressCustomSetupComponent>(map['components'], (value) => IntegrationRuntimeSsisExpressCustomSetupComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
+      powershellVersion: map['powershellVersion'] == null ? null : (map['powershellVersion'] as String).input(),
     );
   }
 }

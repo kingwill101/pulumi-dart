@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Device messaging endpoint model.
 class DeviceMessagingEndpoint {
   /// The endpoint address to connect to.
-  final String address;
+  final pulumi.Input<String> address;
   /// Type of connection used for the messaging endpoint.
-  final String? endpointType;
+  final pulumi.Input<String>? endpointType;
 
   /// Creates a new [DeviceMessagingEndpoint].
   /// [address] The endpoint address to connect to.
@@ -25,8 +26,8 @@ class DeviceMessagingEndpoint {
 
   factory DeviceMessagingEndpoint.fromMap(Map<String, dynamic> map) {
     return DeviceMessagingEndpoint(
-      address: map['address'] as String,
-      endpointType: map['endpointType'] == null ? null : map['endpointType'] as String,
+      address: (map['address'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
     );
   }
 }

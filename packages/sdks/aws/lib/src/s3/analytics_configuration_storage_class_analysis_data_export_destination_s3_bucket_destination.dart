@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination {
   /// Account ID that owns the destination bucket.
-  final String? bucketAccountId;
+  final pulumi.Input<String>? bucketAccountId;
   /// ARN of the destination bucket.
-  final String bucketArn;
+  final pulumi.Input<String> bucketArn;
   /// Output format of exported analytics data. Allowed values: `CSV`. Default value: `CSV`.
-  final String? format;
+  final pulumi.Input<String>? format;
   /// Prefix to append to exported analytics data.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination].
   /// [bucketAccountId] Account ID that owns the destination bucket.
@@ -34,10 +35,10 @@ class AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDes
 
   factory AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination(
-      bucketAccountId: map['bucketAccountId'] == null ? null : map['bucketAccountId'] as String,
-      bucketArn: map['bucketArn'] as String,
-      format: map['format'] == null ? null : map['format'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      bucketAccountId: map['bucketAccountId'] == null ? null : (map['bucketAccountId'] as String).input(),
+      bucketArn: (map['bucketArn'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

@@ -42,25 +42,16 @@ class AgentDataSourceArgs {
   /// [timeouts] Optional.
   /// [vectorIngestionConfiguration] Details about the configuration of the server-side encryption. See `vector_ingestion_configuration` block for details.
   AgentDataSourceArgs({
-    pulumi.Output<String>? dataDeletionPolicy,
-    required pulumi.Output<AgentDataSourceDataSourceConfiguration> dataSourceConfiguration,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> knowledgeBaseId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<AgentDataSourceServerSideEncryptionConfiguration>? serverSideEncryptionConfiguration,
-    pulumi.Output<AgentDataSourceTimeouts>? timeouts,
-    pulumi.Output<AgentDataSourceVectorIngestionConfiguration>? vectorIngestionConfiguration,
-  }) :
-      dataDeletionPolicy = pulumi.Input.asOptionalInput<String>(dataDeletionPolicy),
-      dataSourceConfiguration = pulumi.Input.asInput<AgentDataSourceDataSourceConfiguration>(dataSourceConfiguration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      knowledgeBaseId = pulumi.Input.asInput<String>(knowledgeBaseId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverSideEncryptionConfiguration = pulumi.Input.asOptionalInput<AgentDataSourceServerSideEncryptionConfiguration>(serverSideEncryptionConfiguration),
-      timeouts = pulumi.Input.asOptionalInput<AgentDataSourceTimeouts>(timeouts),
-      vectorIngestionConfiguration = pulumi.Input.asOptionalInput<AgentDataSourceVectorIngestionConfiguration>(vectorIngestionConfiguration);
+    this.dataDeletionPolicy,
+    required this.dataSourceConfiguration,
+    this.description,
+    required this.knowledgeBaseId,
+    this.name,
+    this.region,
+    this.serverSideEncryptionConfiguration,
+    this.timeouts,
+    this.vectorIngestionConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,15 +69,15 @@ class AgentDataSourceArgs {
 
   factory AgentDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceArgs(
-      dataDeletionPolicy: map['dataDeletionPolicy'] == null ? null : pulumi.Output.create<String>(map['dataDeletionPolicy'] as String),
-      dataSourceConfiguration: pulumi.Output.create<AgentDataSourceDataSourceConfiguration>(AgentDataSourceDataSourceConfiguration.fromMap((map['dataSourceConfiguration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      knowledgeBaseId: pulumi.Output.create<String>(map['knowledgeBaseId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : pulumi.Output.create<AgentDataSourceServerSideEncryptionConfiguration>(AgentDataSourceServerSideEncryptionConfiguration.fromMap((map['serverSideEncryptionConfiguration'] as Map).cast<String, dynamic>())),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentDataSourceTimeouts>(AgentDataSourceTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vectorIngestionConfiguration: map['vectorIngestionConfiguration'] == null ? null : pulumi.Output.create<AgentDataSourceVectorIngestionConfiguration>(AgentDataSourceVectorIngestionConfiguration.fromMap((map['vectorIngestionConfiguration'] as Map).cast<String, dynamic>())),
+      dataDeletionPolicy: map['dataDeletionPolicy'] == null ? null : (map['dataDeletionPolicy'] as String).input(),
+      dataSourceConfiguration: (AgentDataSourceDataSourceConfiguration.fromMap((map['dataSourceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : (AgentDataSourceServerSideEncryptionConfiguration.fromMap((map['serverSideEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentDataSourceTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vectorIngestionConfiguration: map['vectorIngestionConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfiguration.fromMap((map['vectorIngestionConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

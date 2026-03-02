@@ -35,15 +35,11 @@ class TagValueIamBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [tagValue] Used to find the parent resource to bind the IAM policy to
   TagValueIamBindingArgs({
-    pulumi.Output<TagValueIamBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> tagValue,
-  }) :
-      condition = pulumi.Input.asOptionalInput<TagValueIamBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      role = pulumi.Input.asInput<String>(role),
-      tagValue = pulumi.Input.asInput<String>(tagValue);
+    this.condition,
+    required this.members,
+    required this.role,
+    required this.tagValue,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,10 +52,10 @@ class TagValueIamBindingArgs {
 
   factory TagValueIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return TagValueIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<TagValueIamBindingCondition>(TagValueIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      tagValue: pulumi.Output.create<String>(map['tagValue'] as String),
+      condition: map['condition'] == null ? null : (TagValueIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      role: (map['role'] as String).input(),
+      tagValue: (map['tagValue'] as String).input(),
     );
   }
 }

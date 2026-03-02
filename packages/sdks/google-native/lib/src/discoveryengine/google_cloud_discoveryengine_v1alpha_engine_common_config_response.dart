@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Common configurations for an Engine.
 class GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse {
   /// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
-  final String companyName;
+  final pulumi.Input<String> companyName;
 
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse].
   /// [companyName] The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
@@ -20,7 +21,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse {
 
   factory GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse(
-      companyName: map['companyName'] as String,
+      companyName: (map['companyName'] as String).input(),
     );
   }
 }

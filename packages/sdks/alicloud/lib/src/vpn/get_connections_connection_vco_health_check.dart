@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectionsConnectionVcoHealthCheck {
   /// The destination ip address.
-  final String? dip;
+  final pulumi.Input<String>? dip;
   /// The health check on status. Valid values: `true`, `false`.
-  final String? enable;
+  final pulumi.Input<String>? enable;
   /// The time interval between health checks.
-  final int? interval;
+  final pulumi.Input<int>? interval;
   /// The number of retries for health checks issued.
-  final int? retry;
+  final pulumi.Input<int>? retry;
   /// The source ip address.
-  final String? sip;
+  final pulumi.Input<String>? sip;
   /// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [GetConnectionsConnectionVcoHealthCheck].
   /// [dip] The destination ip address.
@@ -44,12 +45,12 @@ class GetConnectionsConnectionVcoHealthCheck {
 
   factory GetConnectionsConnectionVcoHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnectionVcoHealthCheck(
-      dip: map['dip'] == null ? null : map['dip'] as String,
-      enable: map['enable'] == null ? null : map['enable'] as String,
-      interval: map['interval'] == null ? null : map['interval'] as int,
-      retry: map['retry'] == null ? null : map['retry'] as int,
-      sip: map['sip'] == null ? null : map['sip'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      dip: map['dip'] == null ? null : (map['dip'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      retry: map['retry'] == null ? null : (map['retry'] as int).input(),
+      sip: map['sip'] == null ? null : (map['sip'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

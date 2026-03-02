@@ -20,13 +20,10 @@ class LoadBalancerInternetArgs {
   /// [internetSlbId] The internet SLB ID.
   /// [internets] The bound private network SLB. See `internet` below.
   LoadBalancerInternetArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<String>? internetSlbId,
-    required pulumi.Output<List<LoadBalancerInternetInternet>> internets,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      internetSlbId = pulumi.Input.asOptionalInput<String>(internetSlbId),
-      internets = pulumi.Input.asInput<List<LoadBalancerInternetInternet>>(internets);
+    required this.appId,
+    this.internetSlbId,
+    required this.internets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class LoadBalancerInternetArgs {
 
   factory LoadBalancerInternetArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerInternetArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      internetSlbId: map['internetSlbId'] == null ? null : pulumi.Output.create<String>(map['internetSlbId'] as String),
-      internets: pulumi.Output.create<List<LoadBalancerInternetInternet>>(pulumi.Input.decodeList<LoadBalancerInternetInternet>(map['internets'], (value) => LoadBalancerInternetInternet.fromMap((value as Map).cast<String, dynamic>()))),
+      appId: (map['appId'] as String).input(),
+      internetSlbId: map['internetSlbId'] == null ? null : (map['internetSlbId'] as String).input(),
+      internets: (pulumi.Input.decodeList<LoadBalancerInternetInternet>(map['internets'], (value) => LoadBalancerInternetInternet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

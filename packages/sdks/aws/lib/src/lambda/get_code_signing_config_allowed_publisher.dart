@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCodeSigningConfigAllowedPublisher {
   /// Set of ARNs for each of the signing profiles. A signing profile defines a trusted user who can sign a code package.
-  final List<String> signingProfileVersionArns;
+  final pulumi.Input<List<String>> signingProfileVersionArns;
 
   /// Creates a new [GetCodeSigningConfigAllowedPublisher].
   /// [signingProfileVersionArns] Set of ARNs for each of the signing profiles. A signing profile defines a trusted user who can sign a code package.
@@ -19,7 +20,7 @@ class GetCodeSigningConfigAllowedPublisher {
 
   factory GetCodeSigningConfigAllowedPublisher.fromMap(Map<String, dynamic> map) {
     return GetCodeSigningConfigAllowedPublisher(
-      signingProfileVersionArns: (map['signingProfileVersionArns'] as List).cast<String>(),
+      signingProfileVersionArns: ((map['signingProfileVersionArns'] as List).cast<String>()).input(),
     );
   }
 }

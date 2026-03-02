@@ -28,19 +28,13 @@ class SchemaVersionArgs {
   /// [schemaRegistryName] Schema registry name parameter.
   /// [schemaVersionName] Schema version name parameter.
   SchemaVersionArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaContent,
-    required pulumi.Output<String> schemaName,
-    required pulumi.Output<String> schemaRegistryName,
-    pulumi.Output<String>? schemaVersionName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaContent = pulumi.Input.asInput<String>(schemaContent),
-      schemaName = pulumi.Input.asInput<String>(schemaName),
-      schemaRegistryName = pulumi.Input.asInput<String>(schemaRegistryName),
-      schemaVersionName = pulumi.Input.asOptionalInput<String>(schemaVersionName);
+    this.description,
+    required this.resourceGroupName,
+    required this.schemaContent,
+    required this.schemaName,
+    required this.schemaRegistryName,
+    this.schemaVersionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SchemaVersionArgs {
 
   factory SchemaVersionArgs.fromMap(Map<String, dynamic> map) {
     return SchemaVersionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaContent: pulumi.Output.create<String>(map['schemaContent'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
-      schemaRegistryName: pulumi.Output.create<String>(map['schemaRegistryName'] as String),
-      schemaVersionName: map['schemaVersionName'] == null ? null : pulumi.Output.create<String>(map['schemaVersionName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaContent: (map['schemaContent'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      schemaRegistryName: (map['schemaRegistryName'] as String).input(),
+      schemaVersionName: map['schemaVersionName'] == null ? null : (map['schemaVersionName'] as String).input(),
     );
   }
 }

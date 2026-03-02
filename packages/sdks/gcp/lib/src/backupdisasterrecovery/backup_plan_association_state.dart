@@ -50,31 +50,19 @@ class BackupPlanAssociationState {
   /// [rulesConfigInfos] Message for rules config info
   /// [updateTime] The time when the instance was updated.
   BackupPlanAssociationState({
-    pulumi.Output<String>? backupPlan,
-    pulumi.Output<String>? backupPlanAssociationId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? dataSource,
-    pulumi.Output<String>? lastSuccessfulBackupConsistencyTime,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? resource,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<List<BackupPlanAssociationRulesConfigInfo>>? rulesConfigInfos,
-    pulumi.Output<String>? updateTime,
-  }) :
-      backupPlan = pulumi.Input.asOptionalInput<String>(backupPlan),
-      backupPlanAssociationId = pulumi.Input.asOptionalInput<String>(backupPlanAssociationId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dataSource = pulumi.Input.asOptionalInput<String>(dataSource),
-      lastSuccessfulBackupConsistencyTime = pulumi.Input.asOptionalInput<String>(lastSuccessfulBackupConsistencyTime),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resource = pulumi.Input.asOptionalInput<String>(resource),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      rulesConfigInfos = pulumi.Input.asOptionalInput<List<BackupPlanAssociationRulesConfigInfo>>(rulesConfigInfos),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.backupPlan,
+    this.backupPlanAssociationId,
+    this.createTime,
+    this.dataSource,
+    this.lastSuccessfulBackupConsistencyTime,
+    this.location,
+    this.name,
+    this.project,
+    this.resource,
+    this.resourceType,
+    this.rulesConfigInfos,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class BackupPlanAssociationState {
 
   factory BackupPlanAssociationState.fromMap(Map<String, dynamic> map) {
     return BackupPlanAssociationState(
-      backupPlan: map['backupPlan'] == null ? null : pulumi.Output.create<String>(map['backupPlan'] as String),
-      backupPlanAssociationId: map['backupPlanAssociationId'] == null ? null : pulumi.Output.create<String>(map['backupPlanAssociationId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dataSource: map['dataSource'] == null ? null : pulumi.Output.create<String>(map['dataSource'] as String),
-      lastSuccessfulBackupConsistencyTime: map['lastSuccessfulBackupConsistencyTime'] == null ? null : pulumi.Output.create<String>(map['lastSuccessfulBackupConsistencyTime'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resource: map['resource'] == null ? null : pulumi.Output.create<String>(map['resource'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      rulesConfigInfos: map['rulesConfigInfos'] == null ? null : pulumi.Output.create<List<BackupPlanAssociationRulesConfigInfo>>(pulumi.Input.decodeList<BackupPlanAssociationRulesConfigInfo>(map['rulesConfigInfos'], (value) => BackupPlanAssociationRulesConfigInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      backupPlan: map['backupPlan'] == null ? null : (map['backupPlan'] as String).input(),
+      backupPlanAssociationId: map['backupPlanAssociationId'] == null ? null : (map['backupPlanAssociationId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
+      lastSuccessfulBackupConsistencyTime: map['lastSuccessfulBackupConsistencyTime'] == null ? null : (map['lastSuccessfulBackupConsistencyTime'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      rulesConfigInfos: map['rulesConfigInfos'] == null ? null : (pulumi.Input.decodeList<BackupPlanAssociationRulesConfigInfo>(map['rulesConfigInfos'], (value) => BackupPlanAssociationRulesConfigInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

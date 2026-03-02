@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the parameters for using a user's KeyVault certificate for securing custom domain.
 class KeyVaultCertificateSourceParametersResponse {
   /// Describes the action that shall be taken when the certificate is removed from Key Vault.
-  final String deleteRule;
+  final pulumi.Input<String> deleteRule;
   /// Resource group of the user's Key Vault containing the SSL certificate
-  final String resourceGroupName;
+  final pulumi.Input<String> resourceGroupName;
   /// The name of Key Vault Secret (representing the full certificate PFX) in Key Vault.
-  final String secretName;
+  final pulumi.Input<String> secretName;
   /// The version(GUID) of Key Vault Secret in Key Vault.
-  final String? secretVersion;
+  final pulumi.Input<String>? secretVersion;
   /// Subscription Id of the user's Key Vault containing the SSL certificate
-  final String subscriptionId;
+  final pulumi.Input<String> subscriptionId;
   /// Expected value is 'KeyVaultCertificateSourceParameters'.
-  final String typeName;
+  final pulumi.Input<String> typeName;
   /// Describes the action that shall be taken when the certificate is updated in Key Vault.
-  final String updateRule;
+  final pulumi.Input<String> updateRule;
   /// The name of the user's Key Vault containing the SSL certificate
-  final String vaultName;
+  final pulumi.Input<String> vaultName;
 
   /// Creates a new [KeyVaultCertificateSourceParametersResponse].
   /// [deleteRule] Describes the action that shall be taken when the certificate is removed from Key Vault.
@@ -55,14 +56,14 @@ class KeyVaultCertificateSourceParametersResponse {
 
   factory KeyVaultCertificateSourceParametersResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultCertificateSourceParametersResponse(
-      deleteRule: map['deleteRule'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      secretName: map['secretName'] as String,
-      secretVersion: map['secretVersion'] == null ? null : map['secretVersion'] as String,
-      subscriptionId: map['subscriptionId'] as String,
-      typeName: map['typeName'] as String,
-      updateRule: map['updateRule'] as String,
-      vaultName: map['vaultName'] as String,
+      deleteRule: (map['deleteRule'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      typeName: (map['typeName'] as String).input(),
+      updateRule: (map['updateRule'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

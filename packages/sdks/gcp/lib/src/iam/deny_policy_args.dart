@@ -24,15 +24,11 @@ class DenyPolicyArgs {
   /// [parent] The attachment point is identified by its URL-encoded full resource name.
   /// [rules] Rules to be applied.
   DenyPolicyArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<List<DenyPolicyRule>> rules,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent),
-      rules = pulumi.Input.asInput<List<DenyPolicyRule>>(rules);
+    this.displayName,
+    this.name,
+    required this.parent,
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class DenyPolicyArgs {
 
   factory DenyPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DenyPolicyArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      rules: pulumi.Output.create<List<DenyPolicyRule>>(pulumi.Input.decodeList<DenyPolicyRule>(map['rules'], (value) => DenyPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      rules: (pulumi.Input.decodeList<DenyPolicyRule>(map['rules'], (value) => DenyPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

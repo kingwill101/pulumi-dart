@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceAutoscalingConfigAutoscalingTargets {
   /// Specifies the target high priority cpu utilization percentage that the autoscaler
   /// should be trying to achieve for the instance.
   /// This number is on a scale from 0 (no utilization) to 100 (full utilization)..
-  final int? highPriorityCpuUtilizationPercent;
+  final pulumi.Input<int>? highPriorityCpuUtilizationPercent;
   /// Specifies the target storage utilization percentage that the autoscaler
   /// should be trying to achieve for the instance.
   /// This number is on a scale from 0 (no utilization) to 100 (full utilization).
-  final int? storageUtilizationPercent;
+  final pulumi.Input<int>? storageUtilizationPercent;
   /// The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
   /// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
   /// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
   /// The value should be higher than high_priority_cpu_utilization_percent if present.
-  final int? totalCpuUtilizationPercent;
+  final pulumi.Input<int>? totalCpuUtilizationPercent;
 
   /// Creates a new [InstanceAutoscalingConfigAutoscalingTargets].
   /// [highPriorityCpuUtilizationPercent] Specifies the target high priority cpu utilization percentage that the autoscaler
@@ -36,9 +37,9 @@ class InstanceAutoscalingConfigAutoscalingTargets {
 
   factory InstanceAutoscalingConfigAutoscalingTargets.fromMap(Map<String, dynamic> map) {
     return InstanceAutoscalingConfigAutoscalingTargets(
-      highPriorityCpuUtilizationPercent: map['highPriorityCpuUtilizationPercent'] == null ? null : map['highPriorityCpuUtilizationPercent'] as int,
-      storageUtilizationPercent: map['storageUtilizationPercent'] == null ? null : map['storageUtilizationPercent'] as int,
-      totalCpuUtilizationPercent: map['totalCpuUtilizationPercent'] == null ? null : map['totalCpuUtilizationPercent'] as int,
+      highPriorityCpuUtilizationPercent: map['highPriorityCpuUtilizationPercent'] == null ? null : (map['highPriorityCpuUtilizationPercent'] as int).input(),
+      storageUtilizationPercent: map['storageUtilizationPercent'] == null ? null : (map['storageUtilizationPercent'] as int).input(),
+      totalCpuUtilizationPercent: map['totalCpuUtilizationPercent'] == null ? null : (map['totalCpuUtilizationPercent'] as int).input(),
     );
   }
 }

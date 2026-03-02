@@ -22,17 +22,12 @@ class GalleryApplicationAssignmentState {
   /// [tag] Specifies a passthrough value for more generic context. This field can be any valid `string` value. Changing this forces a new resource to be created.
   /// [virtualMachineId] The ID of the Virtual Machine. Changing this forces a new resource to be created.
   GalleryApplicationAssignmentState({
-    pulumi.Output<String>? configurationBlobUri,
-    pulumi.Output<String>? galleryApplicationVersionId,
-    pulumi.Output<int>? order,
-    pulumi.Output<String>? tag,
-    pulumi.Output<String>? virtualMachineId,
-  }) :
-      configurationBlobUri = pulumi.Input.asOptionalInput<String>(configurationBlobUri),
-      galleryApplicationVersionId = pulumi.Input.asOptionalInput<String>(galleryApplicationVersionId),
-      order = pulumi.Input.asOptionalInput<int>(order),
-      tag = pulumi.Input.asOptionalInput<String>(tag),
-      virtualMachineId = pulumi.Input.asOptionalInput<String>(virtualMachineId);
+    this.configurationBlobUri,
+    this.galleryApplicationVersionId,
+    this.order,
+    this.tag,
+    this.virtualMachineId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class GalleryApplicationAssignmentState {
 
   factory GalleryApplicationAssignmentState.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationAssignmentState(
-      configurationBlobUri: map['configurationBlobUri'] == null ? null : pulumi.Output.create<String>(map['configurationBlobUri'] as String),
-      galleryApplicationVersionId: map['galleryApplicationVersionId'] == null ? null : pulumi.Output.create<String>(map['galleryApplicationVersionId'] as String),
-      order: map['order'] == null ? null : pulumi.Output.create<int>(map['order'] as int),
-      tag: map['tag'] == null ? null : pulumi.Output.create<String>(map['tag'] as String),
-      virtualMachineId: map['virtualMachineId'] == null ? null : pulumi.Output.create<String>(map['virtualMachineId'] as String),
+      configurationBlobUri: map['configurationBlobUri'] == null ? null : (map['configurationBlobUri'] as String).input(),
+      galleryApplicationVersionId: map['galleryApplicationVersionId'] == null ? null : (map['galleryApplicationVersionId'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as int).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
     );
   }
 }

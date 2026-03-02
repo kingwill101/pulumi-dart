@@ -16,13 +16,10 @@ class GetBucketAccessControlArgs {
   /// [entity] Required.
   /// [userProject] Optional.
   GetBucketAccessControlArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<String> entity,
-    pulumi.Output<String>? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      entity = pulumi.Input.asInput<String>(entity),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+    required this.bucket,
+    required this.entity,
+    this.userProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetBucketAccessControlArgs {
 
   factory GetBucketAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketAccessControlArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      entity: pulumi.Output.create<String>(map['entity'] as String),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
+      bucket: (map['bucket'] as String).input(),
+      entity: (map['entity'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class GetNetworkAclsArgs {
   /// [status] The state of the network ACL. Valid values: `Available` and `Modifying`.
   /// [vpcId] The ID of the associated VPC.
   GetNetworkAclsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? networkAclName,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      networkAclName = pulumi.Input.asOptionalInput<String>(networkAclName),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.ids,
+    this.nameRegex,
+    this.networkAclName,
+    this.outputFile,
+    this.resourceId,
+    this.resourceType,
+    this.status,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetNetworkAclsArgs {
 
   factory GetNetworkAclsArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkAclsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      networkAclName: map['networkAclName'] == null ? null : pulumi.Output.create<String>(map['networkAclName'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      networkAclName: map['networkAclName'] == null ? null : (map['networkAclName'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

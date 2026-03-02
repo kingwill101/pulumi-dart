@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Task author would use this type to configure a config module.
 class EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse {
   /// ID of the config module.
-  final String moduleId;
+  final pulumi.Input<String> moduleId;
 
   /// Creates a new [EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse].
   /// [moduleId] ID of the config module.
@@ -20,7 +21,7 @@ class EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse {
 
   factory EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse(
-      moduleId: map['moduleId'] as String,
+      moduleId: (map['moduleId'] as String).input(),
     );
   }
 }

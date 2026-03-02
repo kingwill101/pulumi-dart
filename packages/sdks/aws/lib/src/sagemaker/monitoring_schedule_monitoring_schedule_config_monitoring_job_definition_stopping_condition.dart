@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition {
   /// Maximum runtime allowed in seconds.
-  final int? maxRuntimeInSeconds;
+  final pulumi.Input<int>? maxRuntimeInSeconds;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition].
   /// [maxRuntimeInSeconds] Maximum runtime allowed in seconds.
@@ -19,7 +20,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingC
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition(
-      maxRuntimeInSeconds: map['maxRuntimeInSeconds'] == null ? null : map['maxRuntimeInSeconds'] as int,
+      maxRuntimeInSeconds: map['maxRuntimeInSeconds'] == null ? null : (map['maxRuntimeInSeconds'] as int).input(),
     );
   }
 }

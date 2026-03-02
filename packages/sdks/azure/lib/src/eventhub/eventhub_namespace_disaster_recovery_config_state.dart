@@ -19,15 +19,11 @@ class EventhubNamespaceDisasterRecoveryConfigState {
   /// [partnerNamespaceId] The ID of the EventHub Namespace to replicate to.
   /// [resourceGroupName] The name of the resource group in which the Disaster Recovery Config exists. Changing this forces a new resource to be created.
   EventhubNamespaceDisasterRecoveryConfigState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespaceName,
-    pulumi.Output<String>? partnerNamespaceId,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      partnerNamespaceId = pulumi.Input.asOptionalInput<String>(partnerNamespaceId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.name,
+    this.namespaceName,
+    this.partnerNamespaceId,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class EventhubNamespaceDisasterRecoveryConfigState {
 
   factory EventhubNamespaceDisasterRecoveryConfigState.fromMap(Map<String, dynamic> map) {
     return EventhubNamespaceDisasterRecoveryConfigState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      partnerNamespaceId: map['partnerNamespaceId'] == null ? null : pulumi.Output.create<String>(map['partnerNamespaceId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      partnerNamespaceId: map['partnerNamespaceId'] == null ? null : (map['partnerNamespaceId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

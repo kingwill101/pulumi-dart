@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Vault properties.
 class VaultModelProperties {
   /// Gets or sets the type of vault.
-  final String? vaultType;
+  final pulumi.Input<String>? vaultType;
 
   /// Creates a new [VaultModelProperties].
   /// [vaultType] Gets or sets the type of vault.
@@ -20,7 +21,7 @@ class VaultModelProperties {
 
   factory VaultModelProperties.fromMap(Map<String, dynamic> map) {
     return VaultModelProperties(
-      vaultType: map['vaultType'] == null ? null : map['vaultType'] as String,
+      vaultType: map['vaultType'] == null ? null : (map['vaultType'] as String).input(),
     );
   }
 }

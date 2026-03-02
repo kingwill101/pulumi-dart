@@ -19,15 +19,11 @@ class HostAccountUserGroupAttachmentState {
   /// [instanceId] The ID of the Bastionhost instance where you want to authorize the user group to manage the specified hosts and host accounts.
   /// [userGroupId] The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
   HostAccountUserGroupAttachmentState({
-    pulumi.Output<List<String>>? hostAccountIds,
-    pulumi.Output<String>? hostId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? userGroupId,
-  }) :
-      hostAccountIds = pulumi.Input.asOptionalInput<List<String>>(hostAccountIds),
-      hostId = pulumi.Input.asOptionalInput<String>(hostId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      userGroupId = pulumi.Input.asOptionalInput<String>(userGroupId);
+    this.hostAccountIds,
+    this.hostId,
+    this.instanceId,
+    this.userGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class HostAccountUserGroupAttachmentState {
 
   factory HostAccountUserGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return HostAccountUserGroupAttachmentState(
-      hostAccountIds: map['hostAccountIds'] == null ? null : pulumi.Output.create<List<String>>((map['hostAccountIds'] as List).cast<String>()),
-      hostId: map['hostId'] == null ? null : pulumi.Output.create<String>(map['hostId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      userGroupId: map['userGroupId'] == null ? null : pulumi.Output.create<String>(map['userGroupId'] as String),
+      hostAccountIds: map['hostAccountIds'] == null ? null : ((map['hostAccountIds'] as List).cast<String>()).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      userGroupId: map['userGroupId'] == null ? null : (map['userGroupId'] as String).input(),
     );
   }
 }

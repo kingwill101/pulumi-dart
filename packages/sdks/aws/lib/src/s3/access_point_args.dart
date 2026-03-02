@@ -41,25 +41,16 @@ class AccessPointArgs {
   /// [tags] Map of tags to assign to the bucket. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcConfiguration] Configuration block to restrict access to this access point to requests from the specified Virtual Private Cloud (VPC). Required for S3 on Outposts. Detailed below.
   AccessPointArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? bucketAccountId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policy,
-    pulumi.Output<AccessPointPublicAccessBlockConfiguration>? publicAccessBlockConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<AccessPointVpcConfiguration>? vpcConfiguration,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      bucket = pulumi.Input.asInput<String>(bucket),
-      bucketAccountId = pulumi.Input.asOptionalInput<String>(bucketAccountId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      publicAccessBlockConfiguration = pulumi.Input.asOptionalInput<AccessPointPublicAccessBlockConfiguration>(publicAccessBlockConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcConfiguration = pulumi.Input.asOptionalInput<AccessPointVpcConfiguration>(vpcConfiguration);
+    this.accountId,
+    required this.bucket,
+    this.bucketAccountId,
+    this.name,
+    this.policy,
+    this.publicAccessBlockConfiguration,
+    this.region,
+    this.tags,
+    this.vpcConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class AccessPointArgs {
 
   factory AccessPointArgs.fromMap(Map<String, dynamic> map) {
     return AccessPointArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      bucketAccountId: map['bucketAccountId'] == null ? null : pulumi.Output.create<String>(map['bucketAccountId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : pulumi.Output.create<AccessPointPublicAccessBlockConfiguration>(AccessPointPublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : pulumi.Output.create<AccessPointVpcConfiguration>(AccessPointVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      bucket: (map['bucket'] as String).input(),
+      bucketAccountId: map['bucketAccountId'] == null ? null : (map['bucketAccountId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : (AccessPointPublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : (AccessPointVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

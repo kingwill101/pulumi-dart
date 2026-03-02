@@ -28,19 +28,13 @@ class WorkspaceAadAdminArgs {
   /// [tenantId] Tenant ID of the workspace active directory administrator
   /// [workspaceName] The name of the workspace.
   WorkspaceAadAdminArgs({
-    pulumi.Output<String>? administratorType,
-    pulumi.Output<String>? login,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sid,
-    pulumi.Output<String>? tenantId,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      administratorType = pulumi.Input.asOptionalInput<String>(administratorType),
-      login = pulumi.Input.asOptionalInput<String>(login),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sid = pulumi.Input.asOptionalInput<String>(sid),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.administratorType,
+    this.login,
+    required this.resourceGroupName,
+    this.sid,
+    this.tenantId,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class WorkspaceAadAdminArgs {
 
   factory WorkspaceAadAdminArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceAadAdminArgs(
-      administratorType: map['administratorType'] == null ? null : pulumi.Output.create<String>(map['administratorType'] as String),
-      login: map['login'] == null ? null : pulumi.Output.create<String>(map['login'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sid: map['sid'] == null ? null : pulumi.Output.create<String>(map['sid'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      administratorType: map['administratorType'] == null ? null : (map['administratorType'] as String).input(),
+      login: map['login'] == null ? null : (map['login'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

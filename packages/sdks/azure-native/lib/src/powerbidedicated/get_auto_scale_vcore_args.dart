@@ -16,11 +16,9 @@ class GetAutoScaleVCoreArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vcoreName] The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
   GetAutoScaleVCoreArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vcoreName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vcoreName = pulumi.Input.asInput<String>(vcoreName);
+    required this.resourceGroupName,
+    required this.vcoreName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAutoScaleVCoreArgs {
 
   factory GetAutoScaleVCoreArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoScaleVCoreArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vcoreName: pulumi.Output.create<String>(map['vcoreName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vcoreName: (map['vcoreName'] as String).input(),
     );
   }
 }

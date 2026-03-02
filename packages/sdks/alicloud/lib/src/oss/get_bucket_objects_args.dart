@@ -22,15 +22,11 @@ class GetBucketObjectsArgs {
   /// [keyRegex] A regex string to filter results by key.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetBucketObjectsArgs({
-    required pulumi.Output<String> bucketName,
-    pulumi.Output<String>? keyPrefix,
-    pulumi.Output<String>? keyRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      bucketName = pulumi.Input.asInput<String>(bucketName),
-      keyPrefix = pulumi.Input.asOptionalInput<String>(keyPrefix),
-      keyRegex = pulumi.Input.asOptionalInput<String>(keyRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.bucketName,
+    this.keyPrefix,
+    this.keyRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetBucketObjectsArgs {
 
   factory GetBucketObjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectsArgs(
-      bucketName: pulumi.Output.create<String>(map['bucketName'] as String),
-      keyPrefix: map['keyPrefix'] == null ? null : pulumi.Output.create<String>(map['keyPrefix'] as String),
-      keyRegex: map['keyRegex'] == null ? null : pulumi.Output.create<String>(map['keyRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      bucketName: (map['bucketName'] as String).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
+      keyRegex: map['keyRegex'] == null ? null : (map['keyRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

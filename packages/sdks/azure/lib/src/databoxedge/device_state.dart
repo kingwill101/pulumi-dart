@@ -26,19 +26,13 @@ class DeviceState {
   /// [skuName] The `sku_name` is comprised of two segments separated by a hyphen (e.g. `TEA_1Node_UPS_Heater-Standard`). The first segment of the `sku_name` defines the `name` of the SKU, possible values are `Gateway`, `EdgeMR_Mini`, `EdgeP_Base`, `EdgeP_High`, `EdgePR_Base`, `EdgePR_Base_UPS`, `GPU`, `RCA_Large`, `RCA_Small`, `RDC`, `TCA_Large`, `TCA_Small`, `TDC`, `TEA_1Node`, `TEA_1Node_UPS`, `TEA_1Node_Heater`, `TEA_1Node_UPS_Heater`, `TEA_4Node_Heater`, `TEA_4Node_UPS_Heater` or `TMA`. The second segment defines the `tier` of the `sku_name`, possible values are `Standard`. For more information see the product documentation. Changing this forces a new Databox Edge Device to be created.
   /// [tags] A mapping of tags which should be assigned to the Databox Edge Device.
   DeviceState({
-    pulumi.Output<List<DeviceDeviceProperty>>? deviceProperties,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deviceProperties = pulumi.Input.asOptionalInput<List<DeviceDeviceProperty>>(deviceProperties),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deviceProperties,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.skuName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class DeviceState {
 
   factory DeviceState.fromMap(Map<String, dynamic> map) {
     return DeviceState(
-      deviceProperties: map['deviceProperties'] == null ? null : pulumi.Output.create<List<DeviceDeviceProperty>>(pulumi.Input.decodeList<DeviceDeviceProperty>(map['deviceProperties'], (value) => DeviceDeviceProperty.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deviceProperties: map['deviceProperties'] == null ? null : (pulumi.Input.decodeList<DeviceDeviceProperty>(map['deviceProperties'], (value) => DeviceDeviceProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

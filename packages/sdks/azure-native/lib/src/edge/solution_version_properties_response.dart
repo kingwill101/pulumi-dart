@@ -7,35 +7,35 @@ import 'solution_dependency_response.dart';
 /// Solution Version Properties
 class SolutionVersionPropertiesResponse {
   /// The type of the latest action performed on this solution version.
-  final String actionType;
+  final pulumi.Input<String> actionType;
   /// Resolved configuration values
-  final String configuration;
+  final pulumi.Input<String> configuration;
   /// Error Details if any failure is there
-  final ErrorDetailResponse errorDetails;
+  final pulumi.Input<ErrorDetailResponse> errorDetails;
   /// External validation id
-  final String externalValidationId;
+  final pulumi.Input<String> externalValidationId;
   /// The URI for tracking the latest action performed on this solution version.
-  final String latestActionTrackingUri;
+  final pulumi.Input<String> latestActionTrackingUri;
   /// Provisioning state of resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Review id of resolved config for this solution version
-  final String reviewId;
+  final pulumi.Input<String> reviewId;
   /// Revision number of resolved config for this solution version
-  final int revision;
+  final pulumi.Input<int> revision;
   /// Solution Dependency Context
-  final List<SolutionDependencyResponse> solutionDependencies;
+  final pulumi.Input<List<SolutionDependencyResponse>> solutionDependencies;
   /// Solution instance name
-  final String solutionInstanceName;
+  final pulumi.Input<String> solutionInstanceName;
   /// Solution Template Version Id
-  final String solutionTemplateVersionId;
+  final pulumi.Input<String> solutionTemplateVersionId;
   /// App components spec
-  final dynamic specification;
+  final pulumi.Input<dynamic> specification;
   /// State of solution instance
-  final String state;
+  final pulumi.Input<String> state;
   /// Name of applicable target's display name
-  final String targetDisplayName;
+  final pulumi.Input<String> targetDisplayName;
   /// Configuration on the line level across all solution template versions
-  final String targetLevelConfiguration;
+  final pulumi.Input<String> targetLevelConfiguration;
 
   /// Creates a new [SolutionVersionPropertiesResponse].
   /// [actionType] The type of the latest action performed on this solution version.
@@ -75,13 +75,13 @@ class SolutionVersionPropertiesResponse {
     return <String, dynamic>{
       'actionType': actionType,
       'configuration': configuration,
-      'errorDetails': errorDetails.toMap(),
+      'errorDetails': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(errorDetails, (value) => value.toMap()),
       'externalValidationId': externalValidationId,
       'latestActionTrackingUri': latestActionTrackingUri,
       'provisioningState': provisioningState,
       'reviewId': reviewId,
       'revision': revision,
-      'solutionDependencies': pulumi.Input.encodeList<SolutionDependencyResponse, Map<String, dynamic>>(solutionDependencies, (value) => value.toMap()),
+      'solutionDependencies': pulumi.Input.mapInputValue<List<SolutionDependencyResponse>, List<Map<String, dynamic>>>(solutionDependencies, (value) => pulumi.Input.encodeList<SolutionDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'solutionInstanceName': solutionInstanceName,
       'solutionTemplateVersionId': solutionTemplateVersionId,
       'specification': specification,
@@ -93,21 +93,21 @@ class SolutionVersionPropertiesResponse {
 
   factory SolutionVersionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SolutionVersionPropertiesResponse(
-      actionType: map['actionType'] as String,
-      configuration: map['configuration'] as String,
-      errorDetails: ErrorDetailResponse.fromMap((map['errorDetails'] as Map).cast<String, dynamic>()),
-      externalValidationId: map['externalValidationId'] as String,
-      latestActionTrackingUri: map['latestActionTrackingUri'] as String,
-      provisioningState: map['provisioningState'] as String,
-      reviewId: map['reviewId'] as String,
-      revision: map['revision'] as int,
-      solutionDependencies: pulumi.Input.decodeList<SolutionDependencyResponse>(map['solutionDependencies'], (value) => SolutionDependencyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      solutionInstanceName: map['solutionInstanceName'] as String,
-      solutionTemplateVersionId: map['solutionTemplateVersionId'] as String,
-      specification: map['specification'],
-      state: map['state'] as String,
-      targetDisplayName: map['targetDisplayName'] as String,
-      targetLevelConfiguration: map['targetLevelConfiguration'] as String,
+      actionType: (map['actionType'] as String).input(),
+      configuration: (map['configuration'] as String).input(),
+      errorDetails: (ErrorDetailResponse.fromMap((map['errorDetails'] as Map).cast<String, dynamic>())).input(),
+      externalValidationId: (map['externalValidationId'] as String).input(),
+      latestActionTrackingUri: (map['latestActionTrackingUri'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      reviewId: (map['reviewId'] as String).input(),
+      revision: (map['revision'] as int).input(),
+      solutionDependencies: (pulumi.Input.decodeList<SolutionDependencyResponse>(map['solutionDependencies'], (value) => SolutionDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      solutionInstanceName: (map['solutionInstanceName'] as String).input(),
+      solutionTemplateVersionId: (map['solutionTemplateVersionId'] as String).input(),
+      specification: (map['specification']).input(),
+      state: (map['state'] as String).input(),
+      targetDisplayName: (map['targetDisplayName'] as String).input(),
+      targetLevelConfiguration: (map['targetLevelConfiguration'] as String).input(),
     );
   }
 }

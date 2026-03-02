@@ -16,11 +16,9 @@ class GetLoadTestProfileMappingArgs {
   /// [loadTestProfileMappingName] Load Test Profile Mapping name
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   GetLoadTestProfileMappingArgs({
-    required pulumi.Output<String> loadTestProfileMappingName,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      loadTestProfileMappingName = pulumi.Input.asInput<String>(loadTestProfileMappingName),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.loadTestProfileMappingName,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLoadTestProfileMappingArgs {
 
   factory GetLoadTestProfileMappingArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadTestProfileMappingArgs(
-      loadTestProfileMappingName: pulumi.Output.create<String>(map['loadTestProfileMappingName'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      loadTestProfileMappingName: (map['loadTestProfileMappingName'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

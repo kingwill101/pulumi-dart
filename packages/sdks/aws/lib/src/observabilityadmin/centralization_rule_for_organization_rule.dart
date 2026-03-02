@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'centralization_rule_for_organization_rule_destination.dart';
 import 'centralization_rule_for_organization_rule_source.dart';
 
 class CentralizationRuleForOrganizationRule {
   /// Configuration block for the destination where logs will be centralized. See `destination` below.
-  final CentralizationRuleForOrganizationRuleDestination destination;
+  final pulumi.Input<CentralizationRuleForOrganizationRuleDestination> destination;
   /// Configuration block for the source of logs to be centralized. See `source` below.
-  final CentralizationRuleForOrganizationRuleSource source;
+  final pulumi.Input<CentralizationRuleForOrganizationRuleSource> source;
 
   /// Creates a new [CentralizationRuleForOrganizationRule].
   /// [destination] Configuration block for the destination where logs will be centralized. See `destination` below.
@@ -19,15 +20,15 @@ class CentralizationRuleForOrganizationRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination': destination.toMap(),
-      'source': source.toMap(),
+      'destination': pulumi.Input.mapInputValue<CentralizationRuleForOrganizationRuleDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'source': pulumi.Input.mapInputValue<CentralizationRuleForOrganizationRuleSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
   factory CentralizationRuleForOrganizationRule.fromMap(Map<String, dynamic> map) {
     return CentralizationRuleForOrganizationRule(
-      destination: CentralizationRuleForOrganizationRuleDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
-      source: CentralizationRuleForOrganizationRuleSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      destination: (CentralizationRuleForOrganizationRuleDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      source: (CentralizationRuleForOrganizationRuleSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

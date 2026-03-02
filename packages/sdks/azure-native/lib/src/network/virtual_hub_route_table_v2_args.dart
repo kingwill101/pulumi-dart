@@ -32,21 +32,14 @@ class VirtualHubRouteTableV2Args {
   /// [routes] List of all routes.
   /// [virtualHubName] The name of the VirtualHub.
   VirtualHubRouteTableV2Args({
-    pulumi.Output<List<String>>? attachedConnections,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? routeTableName,
-    pulumi.Output<List<VirtualHubRouteV2>>? routes,
-    required pulumi.Output<String> virtualHubName,
-  }) :
-      attachedConnections = pulumi.Input.asOptionalInput<List<String>>(attachedConnections),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeTableName = pulumi.Input.asOptionalInput<String>(routeTableName),
-      routes = pulumi.Input.asOptionalInput<List<VirtualHubRouteV2>>(routes),
-      virtualHubName = pulumi.Input.asInput<String>(virtualHubName);
+    this.attachedConnections,
+    this.id,
+    this.name,
+    required this.resourceGroupName,
+    this.routeTableName,
+    this.routes,
+    required this.virtualHubName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class VirtualHubRouteTableV2Args {
 
   factory VirtualHubRouteTableV2Args.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteTableV2Args(
-      attachedConnections: map['attachedConnections'] == null ? null : pulumi.Output.create<List<String>>((map['attachedConnections'] as List).cast<String>()),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeTableName: map['routeTableName'] == null ? null : pulumi.Output.create<String>(map['routeTableName'] as String),
-      routes: map['routes'] == null ? null : pulumi.Output.create<List<VirtualHubRouteV2>>(pulumi.Input.decodeList<VirtualHubRouteV2>(map['routes'], (value) => VirtualHubRouteV2.fromMap((value as Map).cast<String, dynamic>()))),
-      virtualHubName: pulumi.Output.create<String>(map['virtualHubName'] as String),
+      attachedConnections: map['attachedConnections'] == null ? null : ((map['attachedConnections'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualHubRouteV2>(map['routes'], (value) => VirtualHubRouteV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }
 }

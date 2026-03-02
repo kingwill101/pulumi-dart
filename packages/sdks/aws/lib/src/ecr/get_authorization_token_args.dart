@@ -16,11 +16,9 @@ class GetAuthorizationTokenArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registryId] AWS account ID of the ECR Repository. If not specified the default account is assumed.
   GetAuthorizationTokenArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registryId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryId = pulumi.Input.asOptionalInput<String>(registryId);
+    this.region,
+    this.registryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAuthorizationTokenArgs {
 
   factory GetAuthorizationTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationTokenArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryId: map['registryId'] == null ? null : pulumi.Output.create<String>(map['registryId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
     );
   }
 }

@@ -22,17 +22,12 @@ class RandomIntegerState {
   /// [result] The random integer result.
   /// [seed] A custom seed to always produce the same value.
   RandomIntegerState({
-    pulumi.Output<Map<String, String>>? keepers,
-    pulumi.Output<int>? max,
-    pulumi.Output<int>? min,
-    pulumi.Output<int>? result,
-    pulumi.Output<String>? seed,
-  }) :
-      keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
-      max = pulumi.Input.asOptionalInput<int>(max),
-      min = pulumi.Input.asOptionalInput<int>(min),
-      result = pulumi.Input.asOptionalInput<int>(result),
-      seed = pulumi.Input.asOptionalInput<String>(seed);
+    this.keepers,
+    this.max,
+    this.min,
+    this.result,
+    this.seed,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class RandomIntegerState {
 
   factory RandomIntegerState.fromMap(Map<String, dynamic> map) {
     return RandomIntegerState(
-      keepers: map['keepers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['keepers'] as Map).cast<String, String>()),
-      max: map['max'] == null ? null : pulumi.Output.create<int>(map['max'] as int),
-      min: map['min'] == null ? null : pulumi.Output.create<int>(map['min'] as int),
-      result: map['result'] == null ? null : pulumi.Output.create<int>(map['result'] as int),
-      seed: map['seed'] == null ? null : pulumi.Output.create<String>(map['seed'] as String),
+      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      max: map['max'] == null ? null : (map['max'] as int).input(),
+      min: map['min'] == null ? null : (map['min'] as int).input(),
+      result: map['result'] == null ? null : (map['result'] as int).input(),
+      seed: map['seed'] == null ? null : (map['seed'] as String).input(),
     );
   }
 }

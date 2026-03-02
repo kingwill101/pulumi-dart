@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The private resource provider configuration.
 class ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse {
   /// The allowed subscriptions.
-  final List<String>? allowedSubscriptions;
+  final pulumi.Input<List<String>>? allowedSubscriptions;
 
   /// Creates a new [ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse].
   /// [allowedSubscriptions] The allowed subscriptions.
@@ -20,7 +21,7 @@ class ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse
 
   factory ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse(
-      allowedSubscriptions: map['allowedSubscriptions'] == null ? null : (map['allowedSubscriptions'] as List).cast<String>(),
+      allowedSubscriptions: map['allowedSubscriptions'] == null ? null : ((map['allowedSubscriptions'] as List).cast<String>()).input(),
     );
   }
 }

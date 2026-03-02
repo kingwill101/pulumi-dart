@@ -9,35 +9,35 @@ import 'get_records_resource_record_set_resource_record.dart';
 
 class GetRecordsResourceRecordSet {
   /// Information about the AWS resource traffic is routed to.
-  final GetRecordsResourceRecordSetAliasTarget aliasTarget;
+  final pulumi.Input<GetRecordsResourceRecordSetAliasTarget> aliasTarget;
   /// Information about the CIDR location traffic is routed to.
-  final GetRecordsResourceRecordSetCidrRoutingConfig cidrRoutingConfig;
+  final pulumi.Input<GetRecordsResourceRecordSetCidrRoutingConfig> cidrRoutingConfig;
   /// `PRIMARY` or `SECONDARY`.
-  final String failover;
+  final pulumi.Input<String> failover;
   /// Information about how Amazon Route 53 responds to DNS queries based on the geographic origin of the query.
-  final GetRecordsResourceRecordSetGeolocation geolocation;
+  final pulumi.Input<GetRecordsResourceRecordSetGeolocation> geolocation;
   /// Information about how Amazon Route 53 responds to DNS queries based on the geographic origin of the query.
-  final GetRecordsResourceRecordSetGeoproximityLocation geoproximityLocation;
+  final pulumi.Input<GetRecordsResourceRecordSetGeoproximityLocation> geoproximityLocation;
   /// ID of any applicable health check.
-  final String healthCheckId;
+  final pulumi.Input<String> healthCheckId;
   /// Traffic is routed approximately randomly to multiple resources.
-  final bool multiValueAnswer;
+  final pulumi.Input<bool> multiValueAnswer;
   /// The name of the record.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Amazon EC2 Region of the resource that this resource record set refers to.
-  final String region;
+  final pulumi.Input<String> region;
   /// The resource records.
-  final List<GetRecordsResourceRecordSetResourceRecord> resourceRecords;
+  final pulumi.Input<List<GetRecordsResourceRecordSetResourceRecord>> resourceRecords;
   /// An identifier that differentiates among multiple resource record sets that have the same combination of name and type.
-  final String setIdentifier;
+  final pulumi.Input<String> setIdentifier;
   /// The ID of any traffic policy instance that Route 53 created this resource record set for.
-  final String trafficPolicyInstanceId;
+  final pulumi.Input<String> trafficPolicyInstanceId;
   /// The resource record cache time to live (TTL), in seconds.
-  final int ttl;
+  final pulumi.Input<int> ttl;
   /// The DNS record type.
-  final String type;
+  final pulumi.Input<String> type;
   /// Among resource record sets that have the same combination of DNS name and type, a value that determines the proportion of DNS queries that Amazon Route 53 responds to using the current resource record set.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetRecordsResourceRecordSet].
   /// [aliasTarget] Information about the AWS resource traffic is routed to.
@@ -75,16 +75,16 @@ class GetRecordsResourceRecordSet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aliasTarget': aliasTarget.toMap(),
-      'cidrRoutingConfig': cidrRoutingConfig.toMap(),
+      'aliasTarget': pulumi.Input.mapInputValue<GetRecordsResourceRecordSetAliasTarget, Map<String, dynamic>>(aliasTarget, (value) => value.toMap()),
+      'cidrRoutingConfig': pulumi.Input.mapInputValue<GetRecordsResourceRecordSetCidrRoutingConfig, Map<String, dynamic>>(cidrRoutingConfig, (value) => value.toMap()),
       'failover': failover,
-      'geolocation': geolocation.toMap(),
-      'geoproximityLocation': geoproximityLocation.toMap(),
+      'geolocation': pulumi.Input.mapInputValue<GetRecordsResourceRecordSetGeolocation, Map<String, dynamic>>(geolocation, (value) => value.toMap()),
+      'geoproximityLocation': pulumi.Input.mapInputValue<GetRecordsResourceRecordSetGeoproximityLocation, Map<String, dynamic>>(geoproximityLocation, (value) => value.toMap()),
       'healthCheckId': healthCheckId,
       'multiValueAnswer': multiValueAnswer,
       'name': name,
       'region': region,
-      'resourceRecords': pulumi.Input.encodeList<GetRecordsResourceRecordSetResourceRecord, Map<String, dynamic>>(resourceRecords, (value) => value.toMap()),
+      'resourceRecords': pulumi.Input.mapInputValue<List<GetRecordsResourceRecordSetResourceRecord>, List<Map<String, dynamic>>>(resourceRecords, (value) => pulumi.Input.encodeList<GetRecordsResourceRecordSetResourceRecord, Map<String, dynamic>>(value, (value) => value.toMap())),
       'setIdentifier': setIdentifier,
       'trafficPolicyInstanceId': trafficPolicyInstanceId,
       'ttl': ttl,
@@ -95,21 +95,21 @@ class GetRecordsResourceRecordSet {
 
   factory GetRecordsResourceRecordSet.fromMap(Map<String, dynamic> map) {
     return GetRecordsResourceRecordSet(
-      aliasTarget: GetRecordsResourceRecordSetAliasTarget.fromMap((map['aliasTarget'] as Map).cast<String, dynamic>()),
-      cidrRoutingConfig: GetRecordsResourceRecordSetCidrRoutingConfig.fromMap((map['cidrRoutingConfig'] as Map).cast<String, dynamic>()),
-      failover: map['failover'] as String,
-      geolocation: GetRecordsResourceRecordSetGeolocation.fromMap((map['geolocation'] as Map).cast<String, dynamic>()),
-      geoproximityLocation: GetRecordsResourceRecordSetGeoproximityLocation.fromMap((map['geoproximityLocation'] as Map).cast<String, dynamic>()),
-      healthCheckId: map['healthCheckId'] as String,
-      multiValueAnswer: map['multiValueAnswer'] as bool,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      resourceRecords: pulumi.Input.decodeList<GetRecordsResourceRecordSetResourceRecord>(map['resourceRecords'], (value) => GetRecordsResourceRecordSetResourceRecord.fromMap((value as Map).cast<String, dynamic>())),
-      setIdentifier: map['setIdentifier'] as String,
-      trafficPolicyInstanceId: map['trafficPolicyInstanceId'] as String,
-      ttl: map['ttl'] as int,
-      type: map['type'] as String,
-      weight: map['weight'] as int,
+      aliasTarget: (GetRecordsResourceRecordSetAliasTarget.fromMap((map['aliasTarget'] as Map).cast<String, dynamic>())).input(),
+      cidrRoutingConfig: (GetRecordsResourceRecordSetCidrRoutingConfig.fromMap((map['cidrRoutingConfig'] as Map).cast<String, dynamic>())).input(),
+      failover: (map['failover'] as String).input(),
+      geolocation: (GetRecordsResourceRecordSetGeolocation.fromMap((map['geolocation'] as Map).cast<String, dynamic>())).input(),
+      geoproximityLocation: (GetRecordsResourceRecordSetGeoproximityLocation.fromMap((map['geoproximityLocation'] as Map).cast<String, dynamic>())).input(),
+      healthCheckId: (map['healthCheckId'] as String).input(),
+      multiValueAnswer: (map['multiValueAnswer'] as bool).input(),
+      name: (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
+      resourceRecords: (pulumi.Input.decodeList<GetRecordsResourceRecordSetResourceRecord>(map['resourceRecords'], (value) => GetRecordsResourceRecordSetResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      setIdentifier: (map['setIdentifier'] as String).input(),
+      trafficPolicyInstanceId: (map['trafficPolicyInstanceId'] as String).input(),
+      ttl: (map['ttl'] as int).input(),
+      type: (map['type'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

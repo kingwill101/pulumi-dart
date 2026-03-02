@@ -41,21 +41,14 @@ class FrameworkDeploymentArgs {
   /// [organization] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [targetResourceConfig] TargetResourceConfig contains either the name of the target_resource or
   FrameworkDeploymentArgs({
-    required pulumi.Output<List<FrameworkDeploymentCloudControlMetadata>> cloudControlMetadatas,
-    pulumi.Output<String>? description,
-    required pulumi.Output<FrameworkDeploymentFramework> framework,
-    required pulumi.Output<String> frameworkDeploymentId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<FrameworkDeploymentTargetResourceConfig> targetResourceConfig,
-  }) :
-      cloudControlMetadatas = pulumi.Input.asInput<List<FrameworkDeploymentCloudControlMetadata>>(cloudControlMetadatas),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      framework = pulumi.Input.asInput<FrameworkDeploymentFramework>(framework),
-      frameworkDeploymentId = pulumi.Input.asInput<String>(frameworkDeploymentId),
-      location = pulumi.Input.asInput<String>(location),
-      organization = pulumi.Input.asInput<String>(organization),
-      targetResourceConfig = pulumi.Input.asInput<FrameworkDeploymentTargetResourceConfig>(targetResourceConfig);
+    required this.cloudControlMetadatas,
+    this.description,
+    required this.framework,
+    required this.frameworkDeploymentId,
+    required this.location,
+    required this.organization,
+    required this.targetResourceConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,13 +64,13 @@ class FrameworkDeploymentArgs {
 
   factory FrameworkDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentArgs(
-      cloudControlMetadatas: pulumi.Output.create<List<FrameworkDeploymentCloudControlMetadata>>(pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(map['cloudControlMetadatas'], (value) => FrameworkDeploymentCloudControlMetadata.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      framework: pulumi.Output.create<FrameworkDeploymentFramework>(FrameworkDeploymentFramework.fromMap((map['framework'] as Map).cast<String, dynamic>())),
-      frameworkDeploymentId: pulumi.Output.create<String>(map['frameworkDeploymentId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      targetResourceConfig: pulumi.Output.create<FrameworkDeploymentTargetResourceConfig>(FrameworkDeploymentTargetResourceConfig.fromMap((map['targetResourceConfig'] as Map).cast<String, dynamic>())),
+      cloudControlMetadatas: (pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(map['cloudControlMetadatas'], (value) => FrameworkDeploymentCloudControlMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      framework: (FrameworkDeploymentFramework.fromMap((map['framework'] as Map).cast<String, dynamic>())).input(),
+      frameworkDeploymentId: (map['frameworkDeploymentId'] as String).input(),
+      location: (map['location'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      targetResourceConfig: (FrameworkDeploymentTargetResourceConfig.fromMap((map['targetResourceConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

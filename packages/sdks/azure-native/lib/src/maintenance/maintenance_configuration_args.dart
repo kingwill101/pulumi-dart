@@ -53,35 +53,21 @@ class MaintenanceConfigurationArgs {
   /// [timeZone] Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
   /// [visibility] Gets or sets the visibility of the configuration. The default value is 'Custom'
   MaintenanceConfigurationArgs({
-    pulumi.Output<String>? duration,
-    pulumi.Output<String>? expirationDateTime,
-    pulumi.Output<Map<String, String>>? extensionProperties,
-    pulumi.Output<InputPatchConfiguration>? installPatches,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? maintenanceScope,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? recurEvery,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<String>? startDateTime,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? timeZone,
-    pulumi.Output<String>? visibility,
-  }) :
-      duration = pulumi.Input.asOptionalInput<String>(duration),
-      expirationDateTime = pulumi.Input.asOptionalInput<String>(expirationDateTime),
-      extensionProperties = pulumi.Input.asOptionalInput<Map<String, String>>(extensionProperties),
-      installPatches = pulumi.Input.asOptionalInput<InputPatchConfiguration>(installPatches),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maintenanceScope = pulumi.Input.asOptionalInput<String>(maintenanceScope),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      recurEvery = pulumi.Input.asOptionalInput<String>(recurEvery),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      startDateTime = pulumi.Input.asOptionalInput<String>(startDateTime),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone),
-      visibility = pulumi.Input.asOptionalInput<String>(visibility);
+    this.duration,
+    this.expirationDateTime,
+    this.extensionProperties,
+    this.installPatches,
+    this.location,
+    this.maintenanceScope,
+    this.namespace,
+    this.recurEvery,
+    required this.resourceGroupName,
+    this.resourceName,
+    this.startDateTime,
+    this.tags,
+    this.timeZone,
+    this.visibility,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class MaintenanceConfigurationArgs {
 
   factory MaintenanceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceConfigurationArgs(
-      duration: map['duration'] == null ? null : pulumi.Output.create<String>(map['duration'] as String),
-      expirationDateTime: map['expirationDateTime'] == null ? null : pulumi.Output.create<String>(map['expirationDateTime'] as String),
-      extensionProperties: map['extensionProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['extensionProperties'] as Map).cast<String, String>()),
-      installPatches: map['installPatches'] == null ? null : pulumi.Output.create<InputPatchConfiguration>(InputPatchConfiguration.fromMap((map['installPatches'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maintenanceScope: map['maintenanceScope'] == null ? null : pulumi.Output.create<String>(map['maintenanceScope'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      recurEvery: map['recurEvery'] == null ? null : pulumi.Output.create<String>(map['recurEvery'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      startDateTime: map['startDateTime'] == null ? null : pulumi.Output.create<String>(map['startDateTime'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
-      visibility: map['visibility'] == null ? null : pulumi.Output.create<String>(map['visibility'] as String),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      expirationDateTime: map['expirationDateTime'] == null ? null : (map['expirationDateTime'] as String).input(),
+      extensionProperties: map['extensionProperties'] == null ? null : ((map['extensionProperties'] as Map).cast<String, String>()).input(),
+      installPatches: map['installPatches'] == null ? null : (InputPatchConfiguration.fromMap((map['installPatches'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maintenanceScope: map['maintenanceScope'] == null ? null : (map['maintenanceScope'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      recurEvery: map['recurEvery'] == null ? null : (map['recurEvery'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      startDateTime: map['startDateTime'] == null ? null : (map['startDateTime'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class ApplicationAppRoleState {
   /// [roleId] The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
   /// [value] The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
   ApplicationAppRoleState({
-    pulumi.Output<List<String>>? allowedMemberTypes,
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? roleId,
-    pulumi.Output<String>? value,
-  }) :
-      allowedMemberTypes = pulumi.Input.asOptionalInput<List<String>>(allowedMemberTypes),
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      roleId = pulumi.Input.asOptionalInput<String>(roleId),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.allowedMemberTypes,
+    this.applicationId,
+    this.description,
+    this.displayName,
+    this.roleId,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ApplicationAppRoleState {
 
   factory ApplicationAppRoleState.fromMap(Map<String, dynamic> map) {
     return ApplicationAppRoleState(
-      allowedMemberTypes: map['allowedMemberTypes'] == null ? null : pulumi.Output.create<List<String>>((map['allowedMemberTypes'] as List).cast<String>()),
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      roleId: map['roleId'] == null ? null : pulumi.Output.create<String>(map['roleId'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      allowedMemberTypes: map['allowedMemberTypes'] == null ? null : ((map['allowedMemberTypes'] as List).cast<String>()).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

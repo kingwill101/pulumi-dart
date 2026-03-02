@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Endpoint addresses
 class EndpointsResponse {
   /// Endpoint FQDN for the HCX Cloud Manager
-  final String hcxCloudManager;
+  final pulumi.Input<String> hcxCloudManager;
   /// Endpoint IP for the HCX Cloud Manager
-  final String hcxCloudManagerIp;
+  final pulumi.Input<String> hcxCloudManagerIp;
   /// Endpoint FQDN for the NSX-T Data Center manager
-  final String nsxtManager;
+  final pulumi.Input<String> nsxtManager;
   /// Endpoint IP for the NSX-T Data Center manager
-  final String nsxtManagerIp;
+  final pulumi.Input<String> nsxtManagerIp;
   /// Endpoint IP for Virtual Center Server Appliance
-  final String vcenterIp;
+  final pulumi.Input<String> vcenterIp;
   /// Endpoint FQDN for Virtual Center Server Appliance
-  final String vcsa;
+  final pulumi.Input<String> vcsa;
 
   /// Creates a new [EndpointsResponse].
   /// [hcxCloudManager] Endpoint FQDN for the HCX Cloud Manager
@@ -45,12 +46,12 @@ class EndpointsResponse {
 
   factory EndpointsResponse.fromMap(Map<String, dynamic> map) {
     return EndpointsResponse(
-      hcxCloudManager: map['hcxCloudManager'] as String,
-      hcxCloudManagerIp: map['hcxCloudManagerIp'] as String,
-      nsxtManager: map['nsxtManager'] as String,
-      nsxtManagerIp: map['nsxtManagerIp'] as String,
-      vcenterIp: map['vcenterIp'] as String,
-      vcsa: map['vcsa'] as String,
+      hcxCloudManager: (map['hcxCloudManager'] as String).input(),
+      hcxCloudManagerIp: (map['hcxCloudManagerIp'] as String).input(),
+      nsxtManager: (map['nsxtManager'] as String).input(),
+      nsxtManagerIp: (map['nsxtManagerIp'] as String).input(),
+      vcenterIp: (map['vcenterIp'] as String).input(),
+      vcsa: (map['vcsa'] as String).input(),
     );
   }
 }

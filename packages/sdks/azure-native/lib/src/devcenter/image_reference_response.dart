@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Image reference information
 class ImageReferenceResponse {
   /// The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use.
-  final String exactVersion;
+  final pulumi.Input<String> exactVersion;
   /// Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [ImageReferenceResponse].
   /// [exactVersion] The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use.
@@ -25,8 +26,8 @@ class ImageReferenceResponse {
 
   factory ImageReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ImageReferenceResponse(
-      exactVersion: map['exactVersion'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
+      exactVersion: (map['exactVersion'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

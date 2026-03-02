@@ -47,31 +47,19 @@ class BranchRuleArgs {
   /// [requireLinearHistory] Determines if require linear history before merging to the branch.
   /// [requirePullRequest] Determines if the branch rule requires a pull request or not.
   BranchRuleArgs({
-    pulumi.Output<bool>? allowStaleReviews,
-    required pulumi.Output<String> branchRuleId,
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> includePattern,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? minimumApprovalsCount,
-    pulumi.Output<int>? minimumReviewsCount,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-    pulumi.Output<bool>? requireCommentsResolved,
-    pulumi.Output<bool>? requireLinearHistory,
-    pulumi.Output<bool>? requirePullRequest,
-  }) :
-      allowStaleReviews = pulumi.Input.asOptionalInput<bool>(allowStaleReviews),
-      branchRuleId = pulumi.Input.asInput<String>(branchRuleId),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      includePattern = pulumi.Input.asInput<String>(includePattern),
-      location = pulumi.Input.asInput<String>(location),
-      minimumApprovalsCount = pulumi.Input.asOptionalInput<int>(minimumApprovalsCount),
-      minimumReviewsCount = pulumi.Input.asOptionalInput<int>(minimumReviewsCount),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      requireCommentsResolved = pulumi.Input.asOptionalInput<bool>(requireCommentsResolved),
-      requireLinearHistory = pulumi.Input.asOptionalInput<bool>(requireLinearHistory),
-      requirePullRequest = pulumi.Input.asOptionalInput<bool>(requirePullRequest);
+    this.allowStaleReviews,
+    required this.branchRuleId,
+    this.disabled,
+    required this.includePattern,
+    required this.location,
+    this.minimumApprovalsCount,
+    this.minimumReviewsCount,
+    this.project,
+    required this.repositoryId,
+    this.requireCommentsResolved,
+    this.requireLinearHistory,
+    this.requirePullRequest,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class BranchRuleArgs {
 
   factory BranchRuleArgs.fromMap(Map<String, dynamic> map) {
     return BranchRuleArgs(
-      allowStaleReviews: map['allowStaleReviews'] == null ? null : pulumi.Output.create<bool>(map['allowStaleReviews'] as bool),
-      branchRuleId: pulumi.Output.create<String>(map['branchRuleId'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      includePattern: pulumi.Output.create<String>(map['includePattern'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      minimumApprovalsCount: map['minimumApprovalsCount'] == null ? null : pulumi.Output.create<int>(map['minimumApprovalsCount'] as int),
-      minimumReviewsCount: map['minimumReviewsCount'] == null ? null : pulumi.Output.create<int>(map['minimumReviewsCount'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
-      requireCommentsResolved: map['requireCommentsResolved'] == null ? null : pulumi.Output.create<bool>(map['requireCommentsResolved'] as bool),
-      requireLinearHistory: map['requireLinearHistory'] == null ? null : pulumi.Output.create<bool>(map['requireLinearHistory'] as bool),
-      requirePullRequest: map['requirePullRequest'] == null ? null : pulumi.Output.create<bool>(map['requirePullRequest'] as bool),
+      allowStaleReviews: map['allowStaleReviews'] == null ? null : (map['allowStaleReviews'] as bool).input(),
+      branchRuleId: (map['branchRuleId'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      includePattern: (map['includePattern'] as String).input(),
+      location: (map['location'] as String).input(),
+      minimumApprovalsCount: map['minimumApprovalsCount'] == null ? null : (map['minimumApprovalsCount'] as int).input(),
+      minimumReviewsCount: map['minimumReviewsCount'] == null ? null : (map['minimumReviewsCount'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
+      requireCommentsResolved: map['requireCommentsResolved'] == null ? null : (map['requireCommentsResolved'] as bool).input(),
+      requireLinearHistory: map['requireLinearHistory'] == null ? null : (map['requireLinearHistory'] as bool).input(),
+      requirePullRequest: map['requirePullRequest'] == null ? null : (map['requirePullRequest'] as bool).input(),
     );
   }
 }

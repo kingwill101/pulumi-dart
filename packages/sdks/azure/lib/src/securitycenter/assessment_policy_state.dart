@@ -34,25 +34,16 @@ class AssessmentPolicyState {
   /// [threats] A list of the threat impacts for the Security Center Assessment. Possible values are `AccountBreach`, `DataExfiltration`, `DataSpillage`, `DenialOfService`, `ElevationOfPrivilege`, `MaliciousInsider`, `MissingCoverage` and `ThreatResistance`.
   /// [userImpact] The user impact of the Security Center Assessment. Possible values are `Low`, `Moderate` and `High`.
   AssessmentPolicyState({
-    pulumi.Output<List<String>>? categories,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? implementationEffort,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? remediationDescription,
-    pulumi.Output<String>? severity,
-    pulumi.Output<List<String>>? threats,
-    pulumi.Output<String>? userImpact,
-  }) :
-      categories = pulumi.Input.asOptionalInput<List<String>>(categories),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      implementationEffort = pulumi.Input.asOptionalInput<String>(implementationEffort),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      remediationDescription = pulumi.Input.asOptionalInput<String>(remediationDescription),
-      severity = pulumi.Input.asOptionalInput<String>(severity),
-      threats = pulumi.Input.asOptionalInput<List<String>>(threats),
-      userImpact = pulumi.Input.asOptionalInput<String>(userImpact);
+    this.categories,
+    this.description,
+    this.displayName,
+    this.implementationEffort,
+    this.name,
+    this.remediationDescription,
+    this.severity,
+    this.threats,
+    this.userImpact,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class AssessmentPolicyState {
 
   factory AssessmentPolicyState.fromMap(Map<String, dynamic> map) {
     return AssessmentPolicyState(
-      categories: map['categories'] == null ? null : pulumi.Output.create<List<String>>((map['categories'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      implementationEffort: map['implementationEffort'] == null ? null : pulumi.Output.create<String>(map['implementationEffort'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      remediationDescription: map['remediationDescription'] == null ? null : pulumi.Output.create<String>(map['remediationDescription'] as String),
-      severity: map['severity'] == null ? null : pulumi.Output.create<String>(map['severity'] as String),
-      threats: map['threats'] == null ? null : pulumi.Output.create<List<String>>((map['threats'] as List).cast<String>()),
-      userImpact: map['userImpact'] == null ? null : pulumi.Output.create<String>(map['userImpact'] as String),
+      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      implementationEffort: map['implementationEffort'] == null ? null : (map['implementationEffort'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription'] as String).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      threats: map['threats'] == null ? null : ((map['threats'] as List).cast<String>()).input(),
+      userImpact: map['userImpact'] == null ? null : (map['userImpact'] as String).input(),
     );
   }
 }

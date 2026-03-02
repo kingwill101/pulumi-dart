@@ -6,17 +6,17 @@ import 'get_repos_repo_tag.dart';
 
 class GetReposRepo {
   /// The repository domain list.
-  final GetReposRepoDomainList domainList;
+  final pulumi.Input<GetReposRepoDomainList> domainList;
   /// Name of container registry namespace.
-  final String name;
+  final pulumi.Input<String> name;
   /// Name of container registry namespace where the repositories are located in.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// `PUBLIC` or `PRIVATE`, repository's visibility.
-  final String repoType;
+  final pulumi.Input<String> repoType;
   /// The repository general information.
-  final String summary;
+  final pulumi.Input<String> summary;
   /// A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
-  final List<GetReposRepoTag> tags;
+  final pulumi.Input<List<GetReposRepoTag>> tags;
 
   /// Creates a new [GetReposRepo].
   /// [domainList] The repository domain list.
@@ -36,23 +36,23 @@ class GetReposRepo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'domainList': domainList.toMap(),
+      'domainList': pulumi.Input.mapInputValue<GetReposRepoDomainList, Map<String, dynamic>>(domainList, (value) => value.toMap()),
       'name': name,
       'namespace': namespace,
       'repoType': repoType,
       'summary': summary,
-      'tags': pulumi.Input.encodeList<GetReposRepoTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
+      'tags': pulumi.Input.mapInputValue<List<GetReposRepoTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<GetReposRepoTag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetReposRepo.fromMap(Map<String, dynamic> map) {
     return GetReposRepo(
-      domainList: GetReposRepoDomainList.fromMap((map['domainList'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      namespace: map['namespace'] as String,
-      repoType: map['repoType'] as String,
-      summary: map['summary'] as String,
-      tags: pulumi.Input.decodeList<GetReposRepoTag>(map['tags'], (value) => GetReposRepoTag.fromMap((value as Map).cast<String, dynamic>())),
+      domainList: (GetReposRepoDomainList.fromMap((map['domainList'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      repoType: (map['repoType'] as String).input(),
+      summary: (map['summary'] as String).input(),
+      tags: (pulumi.Input.decodeList<GetReposRepoTag>(map['tags'], (value) => GetReposRepoTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

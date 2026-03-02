@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersAwsIotAnalytics {
   /// The name of the data set to which to connect.
-  final String dataSetName;
+  final pulumi.Input<String> dataSetName;
 
   /// Creates a new [DataSourceParametersAwsIotAnalytics].
   /// [dataSetName] The name of the data set to which to connect.
@@ -19,7 +20,7 @@ class DataSourceParametersAwsIotAnalytics {
 
   factory DataSourceParametersAwsIotAnalytics.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersAwsIotAnalytics(
-      dataSetName: map['dataSetName'] as String,
+      dataSetName: (map['dataSetName'] as String).input(),
     );
   }
 }

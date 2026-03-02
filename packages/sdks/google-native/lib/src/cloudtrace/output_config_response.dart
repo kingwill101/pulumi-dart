@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// OutputConfig contains a destination for writing trace data.
 class OutputConfigResponse {
   /// The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-  final String destination;
+  final pulumi.Input<String> destination;
 
   /// Creates a new [OutputConfigResponse].
   /// [destination] The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
@@ -20,7 +21,7 @@ class OutputConfigResponse {
 
   factory OutputConfigResponse.fromMap(Map<String, dynamic> map) {
     return OutputConfigResponse(
-      destination: map['destination'] as String,
+      destination: (map['destination'] as String).input(),
     );
   }
 }

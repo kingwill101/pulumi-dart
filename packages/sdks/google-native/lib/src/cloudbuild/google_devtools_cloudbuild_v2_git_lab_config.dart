@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_devtools_cloudbuild_v2_service_directory_config.dart';
 import 'user_credential.dart';
 
 /// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
 class GoogleDevtoolsCloudbuildV2GitLabConfig {
   /// A GitLab personal access token with the `api` scope access.
-  final UserCredential authorizerCredential;
+  final pulumi.Input<UserCredential> authorizerCredential;
   /// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
-  final String? hostUri;
+  final pulumi.Input<String>? hostUri;
   /// A GitLab personal access token with the minimum `read_api` scope access.
-  final UserCredential readAuthorizerCredential;
+  final pulumi.Input<UserCredential> readAuthorizerCredential;
   /// Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
-  final GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig? serviceDirectoryConfig;
+  final pulumi.Input<GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig>? serviceDirectoryConfig;
   /// SSL certificate to use for requests to GitLab Enterprise.
-  final String? sslCa;
+  final pulumi.Input<String>? sslCa;
   /// Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
-  final String webhookSecretSecretVersion;
+  final pulumi.Input<String> webhookSecretSecretVersion;
 
   /// Creates a new [GoogleDevtoolsCloudbuildV2GitLabConfig].
   /// [authorizerCredential] A GitLab personal access token with the `api` scope access.
@@ -36,10 +37,10 @@ class GoogleDevtoolsCloudbuildV2GitLabConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizerCredential': authorizerCredential.toMap(),
+      'authorizerCredential': pulumi.Input.mapInputValue<UserCredential, Map<String, dynamic>>(authorizerCredential, (value) => value.toMap()),
       'hostUri': ?hostUri,
-      'readAuthorizerCredential': readAuthorizerCredential.toMap(),
-      'serviceDirectoryConfig': ?serviceDirectoryConfig == null ? null : serviceDirectoryConfig!.toMap(),
+      'readAuthorizerCredential': pulumi.Input.mapInputValue<UserCredential, Map<String, dynamic>>(readAuthorizerCredential, (value) => value.toMap()),
+      'serviceDirectoryConfig': ?pulumi.Input.mapOptionalInputValue<GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig, Map<String, dynamic>>(serviceDirectoryConfig, (value) => value.toMap()),
       'sslCa': ?sslCa,
       'webhookSecretSecretVersion': webhookSecretSecretVersion,
     };
@@ -47,12 +48,12 @@ class GoogleDevtoolsCloudbuildV2GitLabConfig {
 
   factory GoogleDevtoolsCloudbuildV2GitLabConfig.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsCloudbuildV2GitLabConfig(
-      authorizerCredential: UserCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>()),
-      hostUri: map['hostUri'] == null ? null : map['hostUri'] as String,
-      readAuthorizerCredential: UserCredential.fromMap((map['readAuthorizerCredential'] as Map).cast<String, dynamic>()),
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>()),
-      sslCa: map['sslCa'] == null ? null : map['sslCa'] as String,
-      webhookSecretSecretVersion: map['webhookSecretSecretVersion'] as String,
+      authorizerCredential: (UserCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>())).input(),
+      hostUri: map['hostUri'] == null ? null : (map['hostUri'] as String).input(),
+      readAuthorizerCredential: (UserCredential.fromMap((map['readAuthorizerCredential'] as Map).cast<String, dynamic>())).input(),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
+      webhookSecretSecretVersion: (map['webhookSecretSecretVersion'] as String).input(),
     );
   }
 }

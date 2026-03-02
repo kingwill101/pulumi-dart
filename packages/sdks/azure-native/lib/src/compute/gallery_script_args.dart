@@ -29,19 +29,13 @@ class GalleryScriptArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   GalleryScriptArgs({
-    required pulumi.Output<String> galleryName,
-    pulumi.Output<String>? galleryScriptName,
-    pulumi.Output<String>? location,
-    pulumi.Output<GalleryScriptProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      galleryScriptName = pulumi.Input.asOptionalInput<String>(galleryScriptName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<GalleryScriptProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.galleryName,
+    this.galleryScriptName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GalleryScriptArgs {
 
   factory GalleryScriptArgs.fromMap(Map<String, dynamic> map) {
     return GalleryScriptArgs(
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      galleryScriptName: map['galleryScriptName'] == null ? null : pulumi.Output.create<String>(map['galleryScriptName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<GalleryScriptProperties>(GalleryScriptProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      galleryName: (map['galleryName'] as String).input(),
+      galleryScriptName: map['galleryScriptName'] == null ? null : (map['galleryScriptName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (GalleryScriptProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'broker_authenticator_method_custom_response.dart';
 import 'broker_authenticator_method_sat_response.dart';
 import 'broker_authenticator_method_x509_response.dart';
@@ -7,13 +8,13 @@ import 'broker_authenticator_method_x509_response.dart';
 /// Set of broker authentication policies. Only one method is supported for each entry.
 class BrokerAuthenticatorMethodsResponse {
   /// Custom authentication configuration.
-  final BrokerAuthenticatorMethodCustomResponse? customSettings;
+  final pulumi.Input<BrokerAuthenticatorMethodCustomResponse>? customSettings;
   /// Custom authentication configuration.
-  final String method;
+  final pulumi.Input<String> method;
   /// ServiceAccountToken authentication configuration.
-  final BrokerAuthenticatorMethodSatResponse? serviceAccountTokenSettings;
+  final pulumi.Input<BrokerAuthenticatorMethodSatResponse>? serviceAccountTokenSettings;
   /// X.509 authentication configuration.
-  final BrokerAuthenticatorMethodX509Response? x509Settings;
+  final pulumi.Input<BrokerAuthenticatorMethodX509Response>? x509Settings;
 
   /// Creates a new [BrokerAuthenticatorMethodsResponse].
   /// [customSettings] Custom authentication configuration.
@@ -29,19 +30,19 @@ class BrokerAuthenticatorMethodsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customSettings': ?customSettings == null ? null : customSettings!.toMap(),
+      'customSettings': ?pulumi.Input.mapOptionalInputValue<BrokerAuthenticatorMethodCustomResponse, Map<String, dynamic>>(customSettings, (value) => value.toMap()),
       'method': method,
-      'serviceAccountTokenSettings': ?serviceAccountTokenSettings == null ? null : serviceAccountTokenSettings!.toMap(),
-      'x509Settings': ?x509Settings == null ? null : x509Settings!.toMap(),
+      'serviceAccountTokenSettings': ?pulumi.Input.mapOptionalInputValue<BrokerAuthenticatorMethodSatResponse, Map<String, dynamic>>(serviceAccountTokenSettings, (value) => value.toMap()),
+      'x509Settings': ?pulumi.Input.mapOptionalInputValue<BrokerAuthenticatorMethodX509Response, Map<String, dynamic>>(x509Settings, (value) => value.toMap()),
     };
   }
 
   factory BrokerAuthenticatorMethodsResponse.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodsResponse(
-      customSettings: map['customSettings'] == null ? null : BrokerAuthenticatorMethodCustomResponse.fromMap((map['customSettings'] as Map).cast<String, dynamic>()),
-      method: map['method'] as String,
-      serviceAccountTokenSettings: map['serviceAccountTokenSettings'] == null ? null : BrokerAuthenticatorMethodSatResponse.fromMap((map['serviceAccountTokenSettings'] as Map).cast<String, dynamic>()),
-      x509Settings: map['x509Settings'] == null ? null : BrokerAuthenticatorMethodX509Response.fromMap((map['x509Settings'] as Map).cast<String, dynamic>()),
+      customSettings: map['customSettings'] == null ? null : (BrokerAuthenticatorMethodCustomResponse.fromMap((map['customSettings'] as Map).cast<String, dynamic>())).input(),
+      method: (map['method'] as String).input(),
+      serviceAccountTokenSettings: map['serviceAccountTokenSettings'] == null ? null : (BrokerAuthenticatorMethodSatResponse.fromMap((map['serviceAccountTokenSettings'] as Map).cast<String, dynamic>())).input(),
+      x509Settings: map['x509Settings'] == null ? null : (BrokerAuthenticatorMethodX509Response.fromMap((map['x509Settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

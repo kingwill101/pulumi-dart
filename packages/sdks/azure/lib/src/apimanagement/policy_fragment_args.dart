@@ -29,17 +29,12 @@ class PolicyFragmentArgs {
   /// [name] The name which should be used for this Api Management Policy Fragment. Changing this forces a new Api Management Policy Fragment to be created.
   /// [value] The value of the Policy Fragment.
   PolicyFragmentArgs({
-    required pulumi.Output<String> apiManagementId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? format,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> value,
-  }) :
-      apiManagementId = pulumi.Input.asInput<String>(apiManagementId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      format = pulumi.Input.asOptionalInput<String>(format),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      value = pulumi.Input.asInput<String>(value);
+    required this.apiManagementId,
+    this.description,
+    this.format,
+    this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class PolicyFragmentArgs {
 
   factory PolicyFragmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyFragmentArgs(
-      apiManagementId: pulumi.Output.create<String>(map['apiManagementId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      apiManagementId: (map['apiManagementId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

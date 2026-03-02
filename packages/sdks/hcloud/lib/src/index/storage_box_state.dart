@@ -45,31 +45,19 @@ class StorageBoxState {
   /// [system] Host system of the Storage Box.
   /// [username] Primary username of the Storage Box.
   StorageBoxState({
-    pulumi.Output<StorageBoxAccessSettings>? accessSettings,
-    pulumi.Output<bool>? deleteProtection,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? server,
-    pulumi.Output<StorageBoxSnapshotPlan>? snapshotPlan,
-    pulumi.Output<List<String>>? sshKeys,
-    pulumi.Output<String>? storageBoxType,
-    pulumi.Output<String>? system,
-    pulumi.Output<String>? username,
-  }) :
-      accessSettings = pulumi.Input.asOptionalInput<StorageBoxAccessSettings>(accessSettings),
-      deleteProtection = pulumi.Input.asOptionalInput<bool>(deleteProtection),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      server = pulumi.Input.asOptionalInput<String>(server),
-      snapshotPlan = pulumi.Input.asOptionalInput<StorageBoxSnapshotPlan>(snapshotPlan),
-      sshKeys = pulumi.Input.asOptionalInput<List<String>>(sshKeys),
-      storageBoxType = pulumi.Input.asOptionalInput<String>(storageBoxType),
-      system = pulumi.Input.asOptionalInput<String>(system),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.accessSettings,
+    this.deleteProtection,
+    this.labels,
+    this.location,
+    this.name,
+    this.password,
+    this.server,
+    this.snapshotPlan,
+    this.sshKeys,
+    this.storageBoxType,
+    this.system,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class StorageBoxState {
 
   factory StorageBoxState.fromMap(Map<String, dynamic> map) {
     return StorageBoxState(
-      accessSettings: map['accessSettings'] == null ? null : pulumi.Output.create<StorageBoxAccessSettings>(StorageBoxAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())),
-      deleteProtection: map['deleteProtection'] == null ? null : pulumi.Output.create<bool>(map['deleteProtection'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      server: map['server'] == null ? null : pulumi.Output.create<String>(map['server'] as String),
-      snapshotPlan: map['snapshotPlan'] == null ? null : pulumi.Output.create<StorageBoxSnapshotPlan>(StorageBoxSnapshotPlan.fromMap((map['snapshotPlan'] as Map).cast<String, dynamic>())),
-      sshKeys: map['sshKeys'] == null ? null : pulumi.Output.create<List<String>>((map['sshKeys'] as List).cast<String>()),
-      storageBoxType: map['storageBoxType'] == null ? null : pulumi.Output.create<String>(map['storageBoxType'] as String),
-      system: map['system'] == null ? null : pulumi.Output.create<String>(map['system'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      accessSettings: map['accessSettings'] == null ? null : (StorageBoxAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      server: map['server'] == null ? null : (map['server'] as String).input(),
+      snapshotPlan: map['snapshotPlan'] == null ? null : (StorageBoxSnapshotPlan.fromMap((map['snapshotPlan'] as Map).cast<String, dynamic>())).input(),
+      sshKeys: map['sshKeys'] == null ? null : ((map['sshKeys'] as List).cast<String>()).input(),
+      storageBoxType: map['storageBoxType'] == null ? null : (map['storageBoxType'] as String).input(),
+      system: map['system'] == null ? null : (map['system'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

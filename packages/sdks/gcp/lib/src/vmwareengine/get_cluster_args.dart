@@ -16,11 +16,9 @@ class GetClusterArgs {
   /// [name] Name of the resource.
   /// [parent] The resource name of the private cloud that this cluster belongs.
   GetClusterArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> parent,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent);
+    required this.name,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetClusterArgs {
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      name: (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

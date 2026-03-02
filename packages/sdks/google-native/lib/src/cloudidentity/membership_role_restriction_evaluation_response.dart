@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The evaluated state of this restriction.
 class MembershipRoleRestrictionEvaluationResponse {
   /// The current state of the restriction
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [MembershipRoleRestrictionEvaluationResponse].
   /// [state] The current state of the restriction
@@ -20,7 +21,7 @@ class MembershipRoleRestrictionEvaluationResponse {
 
   factory MembershipRoleRestrictionEvaluationResponse.fromMap(Map<String, dynamic> map) {
     return MembershipRoleRestrictionEvaluationResponse(
-      state: map['state'] as String,
+      state: (map['state'] as String).input(),
     );
   }
 }

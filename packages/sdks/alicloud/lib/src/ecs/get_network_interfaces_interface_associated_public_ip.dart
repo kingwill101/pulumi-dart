@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkInterfacesInterfaceAssociatedPublicIp {
-  final String publicIpAddress;
+  final pulumi.Input<String> publicIpAddress;
 
   /// Creates a new [GetNetworkInterfacesInterfaceAssociatedPublicIp].
   /// [publicIpAddress] Required.
@@ -18,7 +19,7 @@ class GetNetworkInterfacesInterfaceAssociatedPublicIp {
 
   factory GetNetworkInterfacesInterfaceAssociatedPublicIp.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfacesInterfaceAssociatedPublicIp(
-      publicIpAddress: map['publicIpAddress'] as String,
+      publicIpAddress: (map['publicIpAddress'] as String).input(),
     );
   }
 }

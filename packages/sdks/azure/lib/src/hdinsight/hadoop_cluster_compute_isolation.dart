@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HadoopClusterComputeIsolation {
   /// This field indicates whether enable compute isolation or not. Possible values are `true` or `false`.
-  final bool? computeIsolationEnabled;
+  final pulumi.Input<bool>? computeIsolationEnabled;
   /// The name of the host SKU.
-  final String? hostSku;
+  final pulumi.Input<String>? hostSku;
 
   /// Creates a new [HadoopClusterComputeIsolation].
   /// [computeIsolationEnabled] This field indicates whether enable compute isolation or not. Possible values are `true` or `false`.
@@ -24,8 +25,8 @@ class HadoopClusterComputeIsolation {
 
   factory HadoopClusterComputeIsolation.fromMap(Map<String, dynamic> map) {
     return HadoopClusterComputeIsolation(
-      computeIsolationEnabled: map['computeIsolationEnabled'] == null ? null : map['computeIsolationEnabled'] as bool,
-      hostSku: map['hostSku'] == null ? null : map['hostSku'] as String,
+      computeIsolationEnabled: map['computeIsolationEnabled'] == null ? null : (map['computeIsolationEnabled'] as bool).input(),
+      hostSku: map['hostSku'] == null ? null : (map['hostSku'] as String).input(),
     );
   }
 }

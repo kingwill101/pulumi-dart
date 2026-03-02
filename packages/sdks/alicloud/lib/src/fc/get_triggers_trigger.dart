@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTriggersTrigger {
   /// JSON-encoded trigger configuration. See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
-  final String config;
+  final pulumi.Input<String> config;
   /// FC trigger creation time.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// FC trigger ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
-  final String invocationRole;
+  final pulumi.Input<String> invocationRole;
   /// FC trigger last modification time.
-  final String lastModificationTime;
+  final pulumi.Input<String> lastModificationTime;
   /// FC trigger name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
-  final String sourceArn;
+  final pulumi.Input<String> sourceArn;
   /// Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mns_topic`, `cdn_events` and `eventbridge`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetTriggersTrigger].
   /// [config] JSON-encoded trigger configuration. See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
@@ -54,14 +55,14 @@ class GetTriggersTrigger {
 
   factory GetTriggersTrigger.fromMap(Map<String, dynamic> map) {
     return GetTriggersTrigger(
-      config: map['config'] as String,
-      creationTime: map['creationTime'] as String,
-      id: map['id'] as String,
-      invocationRole: map['invocationRole'] as String,
-      lastModificationTime: map['lastModificationTime'] as String,
-      name: map['name'] as String,
-      sourceArn: map['sourceArn'] as String,
-      type: map['type'] as String,
+      config: (map['config'] as String).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      invocationRole: (map['invocationRole'] as String).input(),
+      lastModificationTime: (map['lastModificationTime'] as String).input(),
+      name: (map['name'] as String).input(),
+      sourceArn: (map['sourceArn'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

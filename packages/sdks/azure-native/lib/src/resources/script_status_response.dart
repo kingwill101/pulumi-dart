@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_response_response.dart';
 
 /// Generic object modeling results of script execution.
 class ScriptStatusResponse {
   /// ACI resource Id.
-  final String containerInstanceId;
+  final pulumi.Input<String> containerInstanceId;
   /// End time of the script execution.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Error that is relayed from the script execution.
-  final ErrorResponseResponse? error;
+  final pulumi.Input<ErrorResponseResponse>? error;
   /// Time the deployment script resource will expire.
-  final String expirationTime;
+  final pulumi.Input<String> expirationTime;
   /// Start time of the script execution.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Storage account resource Id.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
 
   /// Creates a new [ScriptStatusResponse].
   /// [containerInstanceId] ACI resource Id.
@@ -37,7 +38,7 @@ class ScriptStatusResponse {
     return <String, dynamic>{
       'containerInstanceId': containerInstanceId,
       'endTime': endTime,
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<ErrorResponseResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'expirationTime': expirationTime,
       'startTime': startTime,
       'storageAccountId': storageAccountId,
@@ -46,12 +47,12 @@ class ScriptStatusResponse {
 
   factory ScriptStatusResponse.fromMap(Map<String, dynamic> map) {
     return ScriptStatusResponse(
-      containerInstanceId: map['containerInstanceId'] as String,
-      endTime: map['endTime'] as String,
-      error: map['error'] == null ? null : ErrorResponseResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      expirationTime: map['expirationTime'] as String,
-      startTime: map['startTime'] as String,
-      storageAccountId: map['storageAccountId'] as String,
+      containerInstanceId: (map['containerInstanceId'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      error: map['error'] == null ? null : (ErrorResponseResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      expirationTime: (map['expirationTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

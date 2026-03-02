@@ -20,13 +20,10 @@ class LoadBalancerIntranetArgs {
   /// [intranetSlbId] The intranet SLB ID.
   /// [intranets] The bound private network SLB. See `intranet` below.
   LoadBalancerIntranetArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<String>? intranetSlbId,
-    required pulumi.Output<List<LoadBalancerIntranetIntranet>> intranets,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      intranetSlbId = pulumi.Input.asOptionalInput<String>(intranetSlbId),
-      intranets = pulumi.Input.asInput<List<LoadBalancerIntranetIntranet>>(intranets);
+    required this.appId,
+    this.intranetSlbId,
+    required this.intranets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class LoadBalancerIntranetArgs {
 
   factory LoadBalancerIntranetArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerIntranetArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      intranetSlbId: map['intranetSlbId'] == null ? null : pulumi.Output.create<String>(map['intranetSlbId'] as String),
-      intranets: pulumi.Output.create<List<LoadBalancerIntranetIntranet>>(pulumi.Input.decodeList<LoadBalancerIntranetIntranet>(map['intranets'], (value) => LoadBalancerIntranetIntranet.fromMap((value as Map).cast<String, dynamic>()))),
+      appId: (map['appId'] as String).input(),
+      intranetSlbId: map['intranetSlbId'] == null ? null : (map['intranetSlbId'] as String).input(),
+      intranets: (pulumi.Input.decodeList<LoadBalancerIntranetIntranet>(map['intranets'], (value) => LoadBalancerIntranetIntranet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

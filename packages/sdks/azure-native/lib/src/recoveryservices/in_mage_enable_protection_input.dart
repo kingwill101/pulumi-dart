@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'in_mage_disk_exclusion_input.dart';
 
 /// VMware Azure specific enable protection input.
 class InMageEnableProtectionInput {
   /// The target datastore name.
-  final String? datastoreName;
+  final pulumi.Input<String>? datastoreName;
   /// The enable disk exclusion input.
-  final InMageDiskExclusionInput? diskExclusionInput;
+  final pulumi.Input<InMageDiskExclusionInput>? diskExclusionInput;
   /// The disks to include list.
-  final List<String>? disksToInclude;
+  final pulumi.Input<List<String>>? disksToInclude;
   /// The class type.
   /// Expected value is 'InMage'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The Master Target Id.
-  final String masterTargetId;
+  final pulumi.Input<String> masterTargetId;
   /// The multi VM group Id.
-  final String multiVmGroupId;
+  final pulumi.Input<String> multiVmGroupId;
   /// The multi VM group name.
-  final String multiVmGroupName;
+  final pulumi.Input<String> multiVmGroupName;
   /// The Process Server Id.
-  final String processServerId;
+  final pulumi.Input<String> processServerId;
   /// The retention drive to use on the MT.
-  final String retentionDrive;
+  final pulumi.Input<String> retentionDrive;
   /// The CS account Id.
-  final String? runAsAccountId;
+  final pulumi.Input<String>? runAsAccountId;
   /// The VM Name.
-  final String? vmFriendlyName;
+  final pulumi.Input<String>? vmFriendlyName;
 
   /// Creates a new [InMageEnableProtectionInput].
   /// [datastoreName] The target datastore name.
@@ -57,7 +58,7 @@ class InMageEnableProtectionInput {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'datastoreName': ?datastoreName,
-      'diskExclusionInput': ?diskExclusionInput == null ? null : diskExclusionInput!.toMap(),
+      'diskExclusionInput': ?pulumi.Input.mapOptionalInputValue<InMageDiskExclusionInput, Map<String, dynamic>>(diskExclusionInput, (value) => value.toMap()),
       'disksToInclude': ?disksToInclude,
       'instanceType': instanceType,
       'masterTargetId': masterTargetId,
@@ -72,17 +73,17 @@ class InMageEnableProtectionInput {
 
   factory InMageEnableProtectionInput.fromMap(Map<String, dynamic> map) {
     return InMageEnableProtectionInput(
-      datastoreName: map['datastoreName'] == null ? null : map['datastoreName'] as String,
-      diskExclusionInput: map['diskExclusionInput'] == null ? null : InMageDiskExclusionInput.fromMap((map['diskExclusionInput'] as Map).cast<String, dynamic>()),
-      disksToInclude: map['disksToInclude'] == null ? null : (map['disksToInclude'] as List).cast<String>(),
-      instanceType: map['instanceType'] as String,
-      masterTargetId: map['masterTargetId'] as String,
-      multiVmGroupId: map['multiVmGroupId'] as String,
-      multiVmGroupName: map['multiVmGroupName'] as String,
-      processServerId: map['processServerId'] as String,
-      retentionDrive: map['retentionDrive'] as String,
-      runAsAccountId: map['runAsAccountId'] == null ? null : map['runAsAccountId'] as String,
-      vmFriendlyName: map['vmFriendlyName'] == null ? null : map['vmFriendlyName'] as String,
+      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName'] as String).input(),
+      diskExclusionInput: map['diskExclusionInput'] == null ? null : (InMageDiskExclusionInput.fromMap((map['diskExclusionInput'] as Map).cast<String, dynamic>())).input(),
+      disksToInclude: map['disksToInclude'] == null ? null : ((map['disksToInclude'] as List).cast<String>()).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      masterTargetId: (map['masterTargetId'] as String).input(),
+      multiVmGroupId: (map['multiVmGroupId'] as String).input(),
+      multiVmGroupName: (map['multiVmGroupName'] as String).input(),
+      processServerId: (map['processServerId'] as String).input(),
+      retentionDrive: (map['retentionDrive'] as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
+      vmFriendlyName: map['vmFriendlyName'] == null ? null : (map['vmFriendlyName'] as String).input(),
     );
   }
 }

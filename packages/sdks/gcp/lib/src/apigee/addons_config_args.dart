@@ -18,11 +18,9 @@ class AddonsConfigArgs {
   /// [addonsConfig] Addon configurations of the Apigee organization.
   /// [org] Name of the Apigee organization.
   AddonsConfigArgs({
-    pulumi.Output<AddonsConfigAddonsConfig>? addonsConfig,
-    required pulumi.Output<String> org,
-  }) :
-      addonsConfig = pulumi.Input.asOptionalInput<AddonsConfigAddonsConfig>(addonsConfig),
-      org = pulumi.Input.asInput<String>(org);
+    this.addonsConfig,
+    required this.org,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class AddonsConfigArgs {
 
   factory AddonsConfigArgs.fromMap(Map<String, dynamic> map) {
     return AddonsConfigArgs(
-      addonsConfig: map['addonsConfig'] == null ? null : pulumi.Output.create<AddonsConfigAddonsConfig>(AddonsConfigAddonsConfig.fromMap((map['addonsConfig'] as Map).cast<String, dynamic>())),
-      org: pulumi.Output.create<String>(map['org'] as String),
+      addonsConfig: map['addonsConfig'] == null ? null : (AddonsConfigAddonsConfig.fromMap((map['addonsConfig'] as Map).cast<String, dynamic>())).input(),
+      org: (map['org'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'schema_registry_ref_response.dart';
 
 /// The properties of the Instance resource.
 class InstancePropertiesResponse {
   /// Detailed description of the Instance.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The reference to the Schema Registry for this AIO Instance.
-  final SchemaRegistryRefResponse schemaRegistryRef;
+  final pulumi.Input<SchemaRegistryRefResponse> schemaRegistryRef;
   /// The Azure IoT Operations version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [InstancePropertiesResponse].
   /// [description] Detailed description of the Instance.
@@ -29,17 +30,17 @@ class InstancePropertiesResponse {
     return <String, dynamic>{
       'description': ?description,
       'provisioningState': provisioningState,
-      'schemaRegistryRef': schemaRegistryRef.toMap(),
+      'schemaRegistryRef': pulumi.Input.mapInputValue<SchemaRegistryRefResponse, Map<String, dynamic>>(schemaRegistryRef, (value) => value.toMap()),
       'version': version,
     };
   }
 
   factory InstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InstancePropertiesResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      provisioningState: map['provisioningState'] as String,
-      schemaRegistryRef: SchemaRegistryRefResponse.fromMap((map['schemaRegistryRef'] as Map).cast<String, dynamic>()),
-      version: map['version'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      schemaRegistryRef: (SchemaRegistryRefResponse.fromMap((map['schemaRegistryRef'] as Map).cast<String, dynamic>())).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

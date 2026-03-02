@@ -19,13 +19,10 @@ class GetTokenArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tokenName] The name of the token.
   GetTokenArgs({
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> tokenName,
-  }) :
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tokenName = pulumi.Input.asInput<String>(tokenName);
+    required this.registryName,
+    required this.resourceGroupName,
+    required this.tokenName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTokenArgs {
 
   factory GetTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetTokenArgs(
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tokenName: pulumi.Output.create<String>(map['tokenName'] as String),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tokenName: (map['tokenName'] as String).input(),
     );
   }
 }

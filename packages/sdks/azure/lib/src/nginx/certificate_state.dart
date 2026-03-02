@@ -22,17 +22,12 @@ class CertificateState {
   /// [name] The name which should be used for this NGINX Certificate. Changing this forces a new NGINX Certificate to be created.
   /// [nginxDeploymentId] The ID of the NGINX Deployment that this Certificate should be associated with. Changing this forces a new NGINX Certificate to be created.
   CertificateState({
-    pulumi.Output<String>? certificateVirtualPath,
-    pulumi.Output<String>? keyVaultSecretId,
-    pulumi.Output<String>? keyVirtualPath,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nginxDeploymentId,
-  }) :
-      certificateVirtualPath = pulumi.Input.asOptionalInput<String>(certificateVirtualPath),
-      keyVaultSecretId = pulumi.Input.asOptionalInput<String>(keyVaultSecretId),
-      keyVirtualPath = pulumi.Input.asOptionalInput<String>(keyVirtualPath),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nginxDeploymentId = pulumi.Input.asOptionalInput<String>(nginxDeploymentId);
+    this.certificateVirtualPath,
+    this.keyVaultSecretId,
+    this.keyVirtualPath,
+    this.name,
+    this.nginxDeploymentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      certificateVirtualPath: map['certificateVirtualPath'] == null ? null : pulumi.Output.create<String>(map['certificateVirtualPath'] as String),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : pulumi.Output.create<String>(map['keyVaultSecretId'] as String),
-      keyVirtualPath: map['keyVirtualPath'] == null ? null : pulumi.Output.create<String>(map['keyVirtualPath'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nginxDeploymentId: map['nginxDeploymentId'] == null ? null : pulumi.Output.create<String>(map['nginxDeploymentId'] as String),
+      certificateVirtualPath: map['certificateVirtualPath'] == null ? null : (map['certificateVirtualPath'] as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
+      keyVirtualPath: map['keyVirtualPath'] == null ? null : (map['keyVirtualPath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nginxDeploymentId: map['nginxDeploymentId'] == null ? null : (map['nginxDeploymentId'] as String).input(),
     );
   }
 }

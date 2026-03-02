@@ -37,25 +37,16 @@ class AgentPoolArgs {
   /// [tier] The Tier of agent machine
   /// [virtualNetworkSubnetResourceId] The Virtual Network Subnet Resource Id of the agent machine
   AgentPoolArgs({
-    pulumi.Output<String>? agentPoolName,
-    pulumi.Output<int>? count,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? os,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tier,
-    pulumi.Output<String>? virtualNetworkSubnetResourceId,
-  }) :
-      agentPoolName = pulumi.Input.asOptionalInput<String>(agentPoolName),
-      count = pulumi.Input.asOptionalInput<int>(count),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      os = pulumi.Input.asOptionalInput<String>(os),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tier = pulumi.Input.asOptionalInput<String>(tier),
-      virtualNetworkSubnetResourceId = pulumi.Input.asOptionalInput<String>(virtualNetworkSubnetResourceId);
+    this.agentPoolName,
+    this.count,
+    this.location,
+    this.os,
+    required this.registryName,
+    required this.resourceGroupName,
+    this.tags,
+    this.tier,
+    this.virtualNetworkSubnetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class AgentPoolArgs {
 
   factory AgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return AgentPoolArgs(
-      agentPoolName: map['agentPoolName'] == null ? null : pulumi.Output.create<String>(map['agentPoolName'] as String),
-      count: map['count'] == null ? null : pulumi.Output.create<int>(map['count'] as int),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      os: map['os'] == null ? null : pulumi.Output.create<String>(map['os'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tier: map['tier'] == null ? null : pulumi.Output.create<String>(map['tier'] as String),
-      virtualNetworkSubnetResourceId: map['virtualNetworkSubnetResourceId'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkSubnetResourceId'] as String),
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      os: map['os'] == null ? null : (map['os'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      virtualNetworkSubnetResourceId: map['virtualNetworkSubnetResourceId'] == null ? null : (map['virtualNetworkSubnetResourceId'] as String).input(),
     );
   }
 }

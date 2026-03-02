@@ -18,13 +18,10 @@ class GetReplicationTaskArgs {
   /// [replicationTaskId] The replication task identifier.
   /// [tags] Optional.
   GetReplicationTaskArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> replicationTaskId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationTaskId = pulumi.Input.asInput<String>(replicationTaskId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.region,
+    required this.replicationTaskId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetReplicationTaskArgs {
 
   factory GetReplicationTaskArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationTaskArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicationTaskId: pulumi.Output.create<String>(map['replicationTaskId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicationTaskId: (map['replicationTaskId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

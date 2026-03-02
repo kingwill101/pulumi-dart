@@ -23,15 +23,11 @@ class DigitalTwinsEndpointArgs {
   /// [resourceGroupName] The name of the resource group that contains the DigitalTwinsInstance.
   /// [resourceName] The name of the DigitalTwinsInstance.
   DigitalTwinsEndpointArgs({
-    pulumi.Output<String>? endpointName,
-    required pulumi.Output<EventGrid> properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      endpointName = pulumi.Input.asOptionalInput<String>(endpointName),
-      properties = pulumi.Input.asInput<EventGrid>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    this.endpointName,
+    required this.properties,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class DigitalTwinsEndpointArgs {
 
   factory DigitalTwinsEndpointArgs.fromMap(Map<String, dynamic> map) {
     return DigitalTwinsEndpointArgs(
-      endpointName: map['endpointName'] == null ? null : pulumi.Output.create<String>(map['endpointName'] as String),
-      properties: pulumi.Output.create<EventGrid>(EventGrid.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      endpointName: map['endpointName'] == null ? null : (map['endpointName'] as String).input(),
+      properties: (EventGrid.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

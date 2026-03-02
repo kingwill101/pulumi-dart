@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the natural language text to be processed.
 class GoogleCloudDialogflowCxV3beta1TextInputResponse {
   /// The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
-  final String text;
+  final pulumi.Input<String> text;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1TextInputResponse].
   /// [text] The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowCxV3beta1TextInputResponse {
 
   factory GoogleCloudDialogflowCxV3beta1TextInputResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1TextInputResponse(
-      text: map['text'] as String,
+      text: (map['text'] as String).input(),
     );
   }
 }

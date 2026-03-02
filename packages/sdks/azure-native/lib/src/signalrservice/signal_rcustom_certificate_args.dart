@@ -28,19 +28,13 @@ class SignalRCustomCertificateArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
   SignalRCustomCertificateArgs({
-    pulumi.Output<String>? certificateName,
-    required pulumi.Output<String> keyVaultBaseUri,
-    required pulumi.Output<String> keyVaultSecretName,
-    pulumi.Output<String>? keyVaultSecretVersion,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      keyVaultBaseUri = pulumi.Input.asInput<String>(keyVaultBaseUri),
-      keyVaultSecretName = pulumi.Input.asInput<String>(keyVaultSecretName),
-      keyVaultSecretVersion = pulumi.Input.asOptionalInput<String>(keyVaultSecretVersion),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    this.certificateName,
+    required this.keyVaultBaseUri,
+    required this.keyVaultSecretName,
+    this.keyVaultSecretVersion,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SignalRCustomCertificateArgs {
 
   factory SignalRCustomCertificateArgs.fromMap(Map<String, dynamic> map) {
     return SignalRCustomCertificateArgs(
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      keyVaultBaseUri: pulumi.Output.create<String>(map['keyVaultBaseUri'] as String),
-      keyVaultSecretName: pulumi.Output.create<String>(map['keyVaultSecretName'] as String),
-      keyVaultSecretVersion: map['keyVaultSecretVersion'] == null ? null : pulumi.Output.create<String>(map['keyVaultSecretVersion'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      keyVaultBaseUri: (map['keyVaultBaseUri'] as String).input(),
+      keyVaultSecretName: (map['keyVaultSecretName'] as String).input(),
+      keyVaultSecretVersion: map['keyVaultSecretVersion'] == null ? null : (map['keyVaultSecretVersion'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

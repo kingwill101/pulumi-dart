@@ -16,13 +16,10 @@ class GetGatewayApigatewayV1betaArgs {
   /// [location] Required.
   /// [project] Optional.
   GetGatewayApigatewayV1betaArgs({
-    required pulumi.Output<String> gatewayId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      gatewayId = pulumi.Input.asInput<String>(gatewayId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.gatewayId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetGatewayApigatewayV1betaArgs {
 
   factory GetGatewayApigatewayV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayApigatewayV1betaArgs(
-      gatewayId: pulumi.Output.create<String>(map['gatewayId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      gatewayId: (map['gatewayId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

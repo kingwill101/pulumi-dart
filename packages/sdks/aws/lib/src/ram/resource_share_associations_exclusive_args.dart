@@ -31,17 +31,12 @@ class ResourceShareAssociationsExclusiveArgs {
   /// [resourceShareArn] The Amazon Resource Name (ARN) of the resource share. Changing this value forces creation of a new resource.
   /// [sources] A set of AWS account IDs that restrict which accounts a service principal can access resources from. This argument can only be specified when `principals` contains only service principals. When specified, it limits the source accounts from which the service can access the shared resources.
   ResourceShareAssociationsExclusiveArgs({
-    pulumi.Output<List<String>>? principals,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? resourceArns,
-    required pulumi.Output<String> resourceShareArn,
-    pulumi.Output<List<String>>? sources,
-  }) :
-      principals = pulumi.Input.asOptionalInput<List<String>>(principals),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArns = pulumi.Input.asOptionalInput<List<String>>(resourceArns),
-      resourceShareArn = pulumi.Input.asInput<String>(resourceShareArn),
-      sources = pulumi.Input.asOptionalInput<List<String>>(sources);
+    this.principals,
+    this.region,
+    this.resourceArns,
+    required this.resourceShareArn,
+    this.sources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class ResourceShareAssociationsExclusiveArgs {
 
   factory ResourceShareAssociationsExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return ResourceShareAssociationsExclusiveArgs(
-      principals: map['principals'] == null ? null : pulumi.Output.create<List<String>>((map['principals'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArns: map['resourceArns'] == null ? null : pulumi.Output.create<List<String>>((map['resourceArns'] as List).cast<String>()),
-      resourceShareArn: pulumi.Output.create<String>(map['resourceShareArn'] as String),
-      sources: map['sources'] == null ? null : pulumi.Output.create<List<String>>((map['sources'] as List).cast<String>()),
+      principals: map['principals'] == null ? null : ((map['principals'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArns: map['resourceArns'] == null ? null : ((map['resourceArns'] as List).cast<String>()).input(),
+      resourceShareArn: (map['resourceShareArn'] as String).input(),
+      sources: map['sources'] == null ? null : ((map['sources'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_condition_operator.dart';
 import 'enterprise_crm_eventbus_proto_value_type.dart';
 
 /// Condition that uses `operator` to evaluate the key against the value.
 class EnterpriseCrmEventbusProtoCondition {
   /// Key that's evaluated against the `value`. Please note the data type of the runtime value associated with the key should match the data type of `value`, else an IllegalArgumentException is thrown.
-  final String? eventPropertyKey;
+  final pulumi.Input<String>? eventPropertyKey;
   /// Operator used to evaluate the condition. Please note that an operator with an inappropriate key/value operand will result in IllegalArgumentException, e.g. CONTAINS with boolean key/value pair.
-  final EnterpriseCrmEventbusProtoConditionOperator? operator;
+  final pulumi.Input<EnterpriseCrmEventbusProtoConditionOperator>? operator;
   /// Value that's checked for the key.
-  final EnterpriseCrmEventbusProtoValueType? value;
+  final pulumi.Input<EnterpriseCrmEventbusProtoValueType>? value;
 
   /// Creates a new [EnterpriseCrmEventbusProtoCondition].
   /// [eventPropertyKey] Key that's evaluated against the `value`. Please note the data type of the runtime value associated with the key should match the data type of `value`, else an IllegalArgumentException is thrown.
@@ -25,16 +26,16 @@ class EnterpriseCrmEventbusProtoCondition {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'eventPropertyKey': ?eventPropertyKey,
-      'operator': ?operator == null ? null : operator!.value,
-      'value': ?value == null ? null : value!.toMap(),
+      'operator': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmEventbusProtoConditionOperator, String>(operator, (value) => value.value),
+      'value': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmEventbusProtoValueType, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory EnterpriseCrmEventbusProtoCondition.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoCondition(
-      eventPropertyKey: map['eventPropertyKey'] == null ? null : map['eventPropertyKey'] as String,
-      operator: map['operator'] == null ? null : EnterpriseCrmEventbusProtoConditionOperator.fromValue(map['operator'] as String),
-      value: map['value'] == null ? null : EnterpriseCrmEventbusProtoValueType.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      eventPropertyKey: map['eventPropertyKey'] == null ? null : (map['eventPropertyKey'] as String).input(),
+      operator: map['operator'] == null ? null : (EnterpriseCrmEventbusProtoConditionOperator.fromValue(map['operator'] as String)).input(),
+      value: map['value'] == null ? null : (EnterpriseCrmEventbusProtoValueType.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

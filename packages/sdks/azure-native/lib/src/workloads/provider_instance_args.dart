@@ -23,15 +23,11 @@ class ProviderInstanceArgs {
   /// [providerSettings] Defines the provider specific properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ProviderInstanceArgs({
-    required pulumi.Output<String> monitorName,
-    pulumi.Output<String>? providerInstanceName,
-    pulumi.Output<Db2ProviderInstanceProperties>? providerSettings,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      monitorName = pulumi.Input.asInput<String>(monitorName),
-      providerInstanceName = pulumi.Input.asOptionalInput<String>(providerInstanceName),
-      providerSettings = pulumi.Input.asOptionalInput<Db2ProviderInstanceProperties>(providerSettings),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.monitorName,
+    this.providerInstanceName,
+    this.providerSettings,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ProviderInstanceArgs {
 
   factory ProviderInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ProviderInstanceArgs(
-      monitorName: pulumi.Output.create<String>(map['monitorName'] as String),
-      providerInstanceName: map['providerInstanceName'] == null ? null : pulumi.Output.create<String>(map['providerInstanceName'] as String),
-      providerSettings: map['providerSettings'] == null ? null : pulumi.Output.create<Db2ProviderInstanceProperties>(Db2ProviderInstanceProperties.fromMap((map['providerSettings'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      monitorName: (map['monitorName'] as String).input(),
+      providerInstanceName: map['providerInstanceName'] == null ? null : (map['providerInstanceName'] as String).input(),
+      providerSettings: map['providerSettings'] == null ? null : (Db2ProviderInstanceProperties.fromMap((map['providerSettings'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

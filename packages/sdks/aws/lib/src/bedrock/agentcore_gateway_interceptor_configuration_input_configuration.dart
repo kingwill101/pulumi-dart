@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayInterceptorConfigurationInputConfiguration {
   /// Whether to pass request headers to the interceptor.
-  final bool passRequestHeaders;
+  final pulumi.Input<bool> passRequestHeaders;
 
   /// Creates a new [AgentcoreGatewayInterceptorConfigurationInputConfiguration].
   /// [passRequestHeaders] Whether to pass request headers to the interceptor.
@@ -19,7 +20,7 @@ class AgentcoreGatewayInterceptorConfigurationInputConfiguration {
 
   factory AgentcoreGatewayInterceptorConfigurationInputConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayInterceptorConfigurationInputConfiguration(
-      passRequestHeaders: map['passRequestHeaders'] as bool,
+      passRequestHeaders: (map['passRequestHeaders'] as bool).input(),
     );
   }
 }

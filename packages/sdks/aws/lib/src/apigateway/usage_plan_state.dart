@@ -40,27 +40,17 @@ class UsagePlanState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [throttleSettings] The throttling limits of the usage plan.
   UsagePlanState({
-    pulumi.Output<List<UsagePlanApiStage>>? apiStages,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? productCode,
-    pulumi.Output<UsagePlanQuotaSettings>? quotaSettings,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<UsagePlanThrottleSettings>? throttleSettings,
-  }) :
-      apiStages = pulumi.Input.asOptionalInput<List<UsagePlanApiStage>>(apiStages),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      productCode = pulumi.Input.asOptionalInput<String>(productCode),
-      quotaSettings = pulumi.Input.asOptionalInput<UsagePlanQuotaSettings>(quotaSettings),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      throttleSettings = pulumi.Input.asOptionalInput<UsagePlanThrottleSettings>(throttleSettings);
+    this.apiStages,
+    this.arn,
+    this.description,
+    this.name,
+    this.productCode,
+    this.quotaSettings,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.throttleSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class UsagePlanState {
 
   factory UsagePlanState.fromMap(Map<String, dynamic> map) {
     return UsagePlanState(
-      apiStages: map['apiStages'] == null ? null : pulumi.Output.create<List<UsagePlanApiStage>>(pulumi.Input.decodeList<UsagePlanApiStage>(map['apiStages'], (value) => UsagePlanApiStage.fromMap((value as Map).cast<String, dynamic>()))),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      productCode: map['productCode'] == null ? null : pulumi.Output.create<String>(map['productCode'] as String),
-      quotaSettings: map['quotaSettings'] == null ? null : pulumi.Output.create<UsagePlanQuotaSettings>(UsagePlanQuotaSettings.fromMap((map['quotaSettings'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      throttleSettings: map['throttleSettings'] == null ? null : pulumi.Output.create<UsagePlanThrottleSettings>(UsagePlanThrottleSettings.fromMap((map['throttleSettings'] as Map).cast<String, dynamic>())),
+      apiStages: map['apiStages'] == null ? null : (pulumi.Input.decodeList<UsagePlanApiStage>(map['apiStages'], (value) => UsagePlanApiStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
+      quotaSettings: map['quotaSettings'] == null ? null : (UsagePlanQuotaSettings.fromMap((map['quotaSettings'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      throttleSettings: map['throttleSettings'] == null ? null : (UsagePlanThrottleSettings.fromMap((map['throttleSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

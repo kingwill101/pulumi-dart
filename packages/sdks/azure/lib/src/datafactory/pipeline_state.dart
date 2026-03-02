@@ -37,27 +37,17 @@ class PipelineState {
   /// [parameters] A map of parameters to associate with the Data Factory Pipeline.
   /// [variables] A map of variables to associate with the Data Factory Pipeline.
   PipelineState({
-    pulumi.Output<String>? activitiesJson,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<int>? concurrency,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? folder,
-    pulumi.Output<String>? moniterMetricsAfterDuration,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<Map<String, String>>? variables,
-  }) :
-      activitiesJson = pulumi.Input.asOptionalInput<String>(activitiesJson),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      concurrency = pulumi.Input.asOptionalInput<int>(concurrency),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      moniterMetricsAfterDuration = pulumi.Input.asOptionalInput<String>(moniterMetricsAfterDuration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      variables = pulumi.Input.asOptionalInput<Map<String, String>>(variables);
+    this.activitiesJson,
+    this.annotations,
+    this.concurrency,
+    this.dataFactoryId,
+    this.description,
+    this.folder,
+    this.moniterMetricsAfterDuration,
+    this.name,
+    this.parameters,
+    this.variables,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class PipelineState {
 
   factory PipelineState.fromMap(Map<String, dynamic> map) {
     return PipelineState(
-      activitiesJson: map['activitiesJson'] == null ? null : pulumi.Output.create<String>(map['activitiesJson'] as String),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      concurrency: map['concurrency'] == null ? null : pulumi.Output.create<int>(map['concurrency'] as int),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      moniterMetricsAfterDuration: map['moniterMetricsAfterDuration'] == null ? null : pulumi.Output.create<String>(map['moniterMetricsAfterDuration'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      variables: map['variables'] == null ? null : pulumi.Output.create<Map<String, String>>((map['variables'] as Map).cast<String, String>()),
+      activitiesJson: map['activitiesJson'] == null ? null : (map['activitiesJson'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as int).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      moniterMetricsAfterDuration: map['moniterMetricsAfterDuration'] == null ? null : (map['moniterMetricsAfterDuration'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, String>()).input(),
     );
   }
 }

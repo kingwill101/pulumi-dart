@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_template_spec_container_startup_probe_grpc.dart';
 import 'service_template_spec_container_startup_probe_http_get.dart';
 import 'service_template_spec_container_startup_probe_tcp_socket.dart';
@@ -7,27 +8,27 @@ import 'service_template_spec_container_startup_probe_tcp_socket.dart';
 class ServiceTemplateSpecContainerStartupProbe {
   /// Minimum consecutive failures for the probe to be considered failed after
   /// having succeeded. Defaults to 3. Minimum value is 1.
-  final int? failureThreshold;
+  final pulumi.Input<int>? failureThreshold;
   /// GRPC specifies an action involving a GRPC port.
   /// Structure is documented below.
-  final ServiceTemplateSpecContainerStartupProbeGrpc? grpc;
+  final pulumi.Input<ServiceTemplateSpecContainerStartupProbeGrpc>? grpc;
   /// HttpGet specifies the http request to perform.
   /// Structure is documented below.
-  final ServiceTemplateSpecContainerStartupProbeHttpGet? httpGet;
+  final pulumi.Input<ServiceTemplateSpecContainerStartupProbeHttpGet>? httpGet;
   /// Number of seconds after the container has started before the probe is
   /// initiated.
   /// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
-  final int? initialDelaySeconds;
+  final pulumi.Input<int>? initialDelaySeconds;
   /// How often (in seconds) to perform the probe.
   /// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
-  final int? periodSeconds;
+  final pulumi.Input<int>? periodSeconds;
   /// TcpSocket specifies an action involving a TCP port.
   /// Structure is documented below.
-  final ServiceTemplateSpecContainerStartupProbeTcpSocket? tcpSocket;
+  final pulumi.Input<ServiceTemplateSpecContainerStartupProbeTcpSocket>? tcpSocket;
   /// Number of seconds after which the probe times out.
   /// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
   /// Must be smaller than periodSeconds.
-  final int? timeoutSeconds;
+  final pulumi.Input<int>? timeoutSeconds;
 
   /// Creates a new [ServiceTemplateSpecContainerStartupProbe].
   /// [failureThreshold] Minimum consecutive failures for the probe to be considered failed after
@@ -50,24 +51,24 @@ class ServiceTemplateSpecContainerStartupProbe {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'failureThreshold': ?failureThreshold,
-      'grpc': ?grpc == null ? null : grpc!.toMap(),
-      'httpGet': ?httpGet == null ? null : httpGet!.toMap(),
+      'grpc': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateSpecContainerStartupProbeGrpc, Map<String, dynamic>>(grpc, (value) => value.toMap()),
+      'httpGet': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateSpecContainerStartupProbeHttpGet, Map<String, dynamic>>(httpGet, (value) => value.toMap()),
       'initialDelaySeconds': ?initialDelaySeconds,
       'periodSeconds': ?periodSeconds,
-      'tcpSocket': ?tcpSocket == null ? null : tcpSocket!.toMap(),
+      'tcpSocket': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateSpecContainerStartupProbeTcpSocket, Map<String, dynamic>>(tcpSocket, (value) => value.toMap()),
       'timeoutSeconds': ?timeoutSeconds,
     };
   }
 
   factory ServiceTemplateSpecContainerStartupProbe.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerStartupProbe(
-      failureThreshold: map['failureThreshold'] == null ? null : map['failureThreshold'] as int,
-      grpc: map['grpc'] == null ? null : ServiceTemplateSpecContainerStartupProbeGrpc.fromMap((map['grpc'] as Map).cast<String, dynamic>()),
-      httpGet: map['httpGet'] == null ? null : ServiceTemplateSpecContainerStartupProbeHttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>()),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : map['initialDelaySeconds'] as int,
-      periodSeconds: map['periodSeconds'] == null ? null : map['periodSeconds'] as int,
-      tcpSocket: map['tcpSocket'] == null ? null : ServiceTemplateSpecContainerStartupProbeTcpSocket.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>()),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : map['timeoutSeconds'] as int,
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
+      grpc: map['grpc'] == null ? null : (ServiceTemplateSpecContainerStartupProbeGrpc.fromMap((map['grpc'] as Map).cast<String, dynamic>())).input(),
+      httpGet: map['httpGet'] == null ? null : (ServiceTemplateSpecContainerStartupProbeHttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (ServiceTemplateSpecContainerStartupProbeTcpSocket.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
     );
   }
 }

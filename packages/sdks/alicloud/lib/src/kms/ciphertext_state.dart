@@ -19,15 +19,11 @@ class CiphertextState {
   /// [keyId] The globally unique ID of the CMK.
   /// [plaintext] The plaintext to be encrypted which must be encoded in Base64.
   CiphertextState({
-    pulumi.Output<String>? ciphertextBlob,
-    pulumi.Output<Map<String, String>>? encryptionContext,
-    pulumi.Output<String>? keyId,
-    pulumi.Output<String>? plaintext,
-  }) :
-      ciphertextBlob = pulumi.Input.asOptionalInput<String>(ciphertextBlob),
-      encryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(encryptionContext),
-      keyId = pulumi.Input.asOptionalInput<String>(keyId),
-      plaintext = pulumi.Input.asOptionalInput<String>(plaintext);
+    this.ciphertextBlob,
+    this.encryptionContext,
+    this.keyId,
+    this.plaintext,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class CiphertextState {
 
   factory CiphertextState.fromMap(Map<String, dynamic> map) {
     return CiphertextState(
-      ciphertextBlob: map['ciphertextBlob'] == null ? null : pulumi.Output.create<String>(map['ciphertextBlob'] as String),
-      encryptionContext: map['encryptionContext'] == null ? null : pulumi.Output.create<Map<String, String>>((map['encryptionContext'] as Map).cast<String, String>()),
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
-      plaintext: map['plaintext'] == null ? null : pulumi.Output.create<String>(map['plaintext'] as String),
+      ciphertextBlob: map['ciphertextBlob'] == null ? null : (map['ciphertextBlob'] as String).input(),
+      encryptionContext: map['encryptionContext'] == null ? null : ((map['encryptionContext'] as Map).cast<String, String>()).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      plaintext: map['plaintext'] == null ? null : (map['plaintext'] as String).input(),
     );
   }
 }

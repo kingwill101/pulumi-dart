@@ -51,33 +51,20 @@ class ClusterArgs {
   /// [type] Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
   /// [userAssignedIdentities] The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
   ClusterArgs({
-    pulumi.Output<String>? aadApplicationObjectId,
-    pulumi.Output<String>? aadClientId,
-    pulumi.Output<String>? aadServicePrincipalObjectId,
-    pulumi.Output<String>? aadTenantId,
-    pulumi.Output<String>? cloudManagementEndpoint,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<ClusterDesiredProperties>? desiredProperties,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SoftwareAssuranceProperties>? softwareAssuranceProperties,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-    pulumi.Output<List<String>>? userAssignedIdentities,
-  }) :
-      aadApplicationObjectId = pulumi.Input.asOptionalInput<String>(aadApplicationObjectId),
-      aadClientId = pulumi.Input.asOptionalInput<String>(aadClientId),
-      aadServicePrincipalObjectId = pulumi.Input.asOptionalInput<String>(aadServicePrincipalObjectId),
-      aadTenantId = pulumi.Input.asOptionalInput<String>(aadTenantId),
-      cloudManagementEndpoint = pulumi.Input.asOptionalInput<String>(cloudManagementEndpoint),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      desiredProperties = pulumi.Input.asOptionalInput<ClusterDesiredProperties>(desiredProperties),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      softwareAssuranceProperties = pulumi.Input.asOptionalInput<SoftwareAssuranceProperties>(softwareAssuranceProperties),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type),
-      userAssignedIdentities = pulumi.Input.asOptionalInput<List<String>>(userAssignedIdentities);
+    this.aadApplicationObjectId,
+    this.aadClientId,
+    this.aadServicePrincipalObjectId,
+    this.aadTenantId,
+    this.cloudManagementEndpoint,
+    this.clusterName,
+    this.desiredProperties,
+    this.location,
+    required this.resourceGroupName,
+    this.softwareAssuranceProperties,
+    this.tags,
+    required this.type,
+    this.userAssignedIdentities,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      aadApplicationObjectId: map['aadApplicationObjectId'] == null ? null : pulumi.Output.create<String>(map['aadApplicationObjectId'] as String),
-      aadClientId: map['aadClientId'] == null ? null : pulumi.Output.create<String>(map['aadClientId'] as String),
-      aadServicePrincipalObjectId: map['aadServicePrincipalObjectId'] == null ? null : pulumi.Output.create<String>(map['aadServicePrincipalObjectId'] as String),
-      aadTenantId: map['aadTenantId'] == null ? null : pulumi.Output.create<String>(map['aadTenantId'] as String),
-      cloudManagementEndpoint: map['cloudManagementEndpoint'] == null ? null : pulumi.Output.create<String>(map['cloudManagementEndpoint'] as String),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      desiredProperties: map['desiredProperties'] == null ? null : pulumi.Output.create<ClusterDesiredProperties>(ClusterDesiredProperties.fromMap((map['desiredProperties'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      softwareAssuranceProperties: map['softwareAssuranceProperties'] == null ? null : pulumi.Output.create<SoftwareAssuranceProperties>(SoftwareAssuranceProperties.fromMap((map['softwareAssuranceProperties'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : pulumi.Output.create<List<String>>((map['userAssignedIdentities'] as List).cast<String>()),
+      aadApplicationObjectId: map['aadApplicationObjectId'] == null ? null : (map['aadApplicationObjectId'] as String).input(),
+      aadClientId: map['aadClientId'] == null ? null : (map['aadClientId'] as String).input(),
+      aadServicePrincipalObjectId: map['aadServicePrincipalObjectId'] == null ? null : (map['aadServicePrincipalObjectId'] as String).input(),
+      aadTenantId: map['aadTenantId'] == null ? null : (map['aadTenantId'] as String).input(),
+      cloudManagementEndpoint: map['cloudManagementEndpoint'] == null ? null : (map['cloudManagementEndpoint'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      desiredProperties: map['desiredProperties'] == null ? null : (ClusterDesiredProperties.fromMap((map['desiredProperties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      softwareAssuranceProperties: map['softwareAssuranceProperties'] == null ? null : (SoftwareAssuranceProperties.fromMap((map['softwareAssuranceProperties'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
     );
   }
 }

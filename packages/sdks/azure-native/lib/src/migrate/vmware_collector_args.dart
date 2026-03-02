@@ -24,17 +24,12 @@ class VMwareCollectorArgs {
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [vmWareCollectorName] Unique name of a VMware collector within a project.
   VMwareCollectorArgs({
-    pulumi.Output<String>? eTag,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<CollectorProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? vmWareCollectorName,
-  }) :
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<CollectorProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmWareCollectorName = pulumi.Input.asOptionalInput<String>(vmWareCollectorName);
+    this.eTag,
+    required this.projectName,
+    this.properties,
+    required this.resourceGroupName,
+    this.vmWareCollectorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class VMwareCollectorArgs {
 
   factory VMwareCollectorArgs.fromMap(Map<String, dynamic> map) {
     return VMwareCollectorArgs(
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<CollectorProperties>(CollectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmWareCollectorName: map['vmWareCollectorName'] == null ? null : pulumi.Output.create<String>(map['vmWareCollectorName'] as String),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (CollectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmWareCollectorName: map['vmWareCollectorName'] == null ? null : (map['vmWareCollectorName'] as String).input(),
     );
   }
 }

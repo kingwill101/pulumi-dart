@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAnycastEipAddressesAddressAnycastEipBindInfoList {
   /// The bound cloud resource instance ID.
-  final String bindInstanceId;
+  final pulumi.Input<String> bindInstanceId;
   /// The region ID of the bound cloud resource instance.
-  final String bindInstanceRegionId;
+  final pulumi.Input<String> bindInstanceRegionId;
   /// Bind the cloud resource instance type.
-  final String bindInstanceType;
+  final pulumi.Input<String> bindInstanceType;
   /// Binding time.
-  final String bindTime;
+  final pulumi.Input<String> bindTime;
 
   /// Creates a new [GetAnycastEipAddressesAddressAnycastEipBindInfoList].
   /// [bindInstanceId] The bound cloud resource instance ID.
@@ -34,10 +35,10 @@ class GetAnycastEipAddressesAddressAnycastEipBindInfoList {
 
   factory GetAnycastEipAddressesAddressAnycastEipBindInfoList.fromMap(Map<String, dynamic> map) {
     return GetAnycastEipAddressesAddressAnycastEipBindInfoList(
-      bindInstanceId: map['bindInstanceId'] as String,
-      bindInstanceRegionId: map['bindInstanceRegionId'] as String,
-      bindInstanceType: map['bindInstanceType'] as String,
-      bindTime: map['bindTime'] as String,
+      bindInstanceId: (map['bindInstanceId'] as String).input(),
+      bindInstanceRegionId: (map['bindInstanceRegionId'] as String).input(),
+      bindInstanceType: (map['bindInstanceType'] as String).input(),
+      bindTime: (map['bindTime'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class ProfilesResourceAssociationArgs {
   /// [resourceProperties] Resource properties for the resource to be associated with the profile.
   /// [timeouts] Optional.
   ProfilesResourceAssociationArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> profileId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceArn,
-    pulumi.Output<String>? resourceProperties,
-    pulumi.Output<ProfilesResourceAssociationTimeouts>? timeouts,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      profileId = pulumi.Input.asInput<String>(profileId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn),
-      resourceProperties = pulumi.Input.asOptionalInput<String>(resourceProperties),
-      timeouts = pulumi.Input.asOptionalInput<ProfilesResourceAssociationTimeouts>(timeouts);
+    this.name,
+    required this.profileId,
+    this.region,
+    required this.resourceArn,
+    this.resourceProperties,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ProfilesResourceAssociationArgs {
 
   factory ProfilesResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ProfilesResourceAssociationArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      profileId: pulumi.Output.create<String>(map['profileId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
-      resourceProperties: map['resourceProperties'] == null ? null : pulumi.Output.create<String>(map['resourceProperties'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ProfilesResourceAssociationTimeouts>(ProfilesResourceAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      profileId: (map['profileId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
+      resourceProperties: map['resourceProperties'] == null ? null : (map['resourceProperties'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (ProfilesResourceAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

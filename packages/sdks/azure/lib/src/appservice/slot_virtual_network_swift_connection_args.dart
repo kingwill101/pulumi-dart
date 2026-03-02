@@ -19,13 +19,10 @@ class SlotVirtualNetworkSwiftConnectionArgs {
   /// [slotName] The name of the App Service Slot or Function App Slot. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the subnet the app service will be associated to (the subnet must have a `service_delegation` configured for `Microsoft.Web/serverFarms`).
   SlotVirtualNetworkSwiftConnectionArgs({
-    required pulumi.Output<String> appServiceId,
-    required pulumi.Output<String> slotName,
-    required pulumi.Output<String> subnetId,
-  }) :
-      appServiceId = pulumi.Input.asInput<String>(appServiceId),
-      slotName = pulumi.Input.asInput<String>(slotName),
-      subnetId = pulumi.Input.asInput<String>(subnetId);
+    required this.appServiceId,
+    required this.slotName,
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SlotVirtualNetworkSwiftConnectionArgs {
 
   factory SlotVirtualNetworkSwiftConnectionArgs.fromMap(Map<String, dynamic> map) {
     return SlotVirtualNetworkSwiftConnectionArgs(
-      appServiceId: pulumi.Output.create<String>(map['appServiceId'] as String),
-      slotName: pulumi.Output.create<String>(map['slotName'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
+      appServiceId: (map['appServiceId'] as String).input(),
+      slotName: (map['slotName'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

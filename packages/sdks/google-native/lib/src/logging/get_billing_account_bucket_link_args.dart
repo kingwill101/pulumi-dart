@@ -18,15 +18,11 @@ class GetBillingAccountBucketLinkArgs {
   /// [linkId] Required.
   /// [location] Required.
   GetBillingAccountBucketLinkArgs({
-    required pulumi.Output<String> billingAccountId,
-    required pulumi.Output<String> bucketId,
-    required pulumi.Output<String> linkId,
-    required pulumi.Output<String> location,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      linkId = pulumi.Input.asInput<String>(linkId),
-      location = pulumi.Input.asInput<String>(location);
+    required this.billingAccountId,
+    required this.bucketId,
+    required this.linkId,
+    required this.location,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetBillingAccountBucketLinkArgs {
 
   factory GetBillingAccountBucketLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountBucketLinkArgs(
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      bucketId: pulumi.Output.create<String>(map['bucketId'] as String),
-      linkId: pulumi.Output.create<String>(map['linkId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      bucketId: (map['bucketId'] as String).input(),
+      linkId: (map['linkId'] as String).input(),
+      location: (map['location'] as String).input(),
     );
   }
 }

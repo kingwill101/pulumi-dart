@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
 class ResourcePolicyGroupPlacementPolicyResponseComputeBeta {
   /// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
-  final int availabilityDomainCount;
+  final pulumi.Input<int> availabilityDomainCount;
   /// Specifies network collocation
-  final String collocation;
+  final pulumi.Input<String> collocation;
   /// Specifies the number of max logical switches.
-  final int maxDistance;
+  final pulumi.Input<int> maxDistance;
   /// Specifies the number of slices in a multislice workload.
-  final int sliceCount;
+  final pulumi.Input<int> sliceCount;
   /// Specifies the shape of the TPU slice
-  final String tpuTopology;
+  final pulumi.Input<String> tpuTopology;
   /// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
-  final int vmCount;
+  final pulumi.Input<int> vmCount;
 
   /// Creates a new [ResourcePolicyGroupPlacementPolicyResponseComputeBeta].
   /// [availabilityDomainCount] The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
@@ -45,12 +46,12 @@ class ResourcePolicyGroupPlacementPolicyResponseComputeBeta {
 
   factory ResourcePolicyGroupPlacementPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicyResponseComputeBeta(
-      availabilityDomainCount: map['availabilityDomainCount'] as int,
-      collocation: map['collocation'] as String,
-      maxDistance: map['maxDistance'] as int,
-      sliceCount: map['sliceCount'] as int,
-      tpuTopology: map['tpuTopology'] as String,
-      vmCount: map['vmCount'] as int,
+      availabilityDomainCount: (map['availabilityDomainCount'] as int).input(),
+      collocation: (map['collocation'] as String).input(),
+      maxDistance: (map['maxDistance'] as int).input(),
+      sliceCount: (map['sliceCount'] as int).input(),
+      tpuTopology: (map['tpuTopology'] as String).input(),
+      vmCount: (map['vmCount'] as int).input(),
     );
   }
 }

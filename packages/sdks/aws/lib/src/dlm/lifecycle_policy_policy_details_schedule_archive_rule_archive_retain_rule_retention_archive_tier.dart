@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier {
-  final int? count;
-  final int? interval;
-  final String? intervalUnit;
+  final pulumi.Input<int>? count;
+  final pulumi.Input<int>? interval;
+  final pulumi.Input<String>? intervalUnit;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier].
   /// [count] Optional.
@@ -26,9 +27,9 @@ class LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionA
 
   factory LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier(
-      count: map['count'] == null ? null : map['count'] as int,
-      interval: map['interval'] == null ? null : map['interval'] as int,
-      intervalUnit: map['intervalUnit'] == null ? null : map['intervalUnit'] as String,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      intervalUnit: map['intervalUnit'] == null ? null : (map['intervalUnit'] as String).input(),
     );
   }
 }

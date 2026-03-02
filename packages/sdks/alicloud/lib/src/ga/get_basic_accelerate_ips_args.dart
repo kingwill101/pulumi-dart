@@ -28,19 +28,13 @@ class GetBasicAccelerateIpsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
   GetBasicAccelerateIpsArgs({
-    pulumi.Output<String>? accelerateIpAddress,
-    pulumi.Output<String>? accelerateIpId,
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> ipSetId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      accelerateIpAddress = pulumi.Input.asOptionalInput<String>(accelerateIpAddress),
-      accelerateIpId = pulumi.Input.asOptionalInput<String>(accelerateIpId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      ipSetId = pulumi.Input.asInput<String>(ipSetId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.accelerateIpAddress,
+    this.accelerateIpId,
+    this.ids,
+    required this.ipSetId,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetBasicAccelerateIpsArgs {
 
   factory GetBasicAccelerateIpsArgs.fromMap(Map<String, dynamic> map) {
     return GetBasicAccelerateIpsArgs(
-      accelerateIpAddress: map['accelerateIpAddress'] == null ? null : pulumi.Output.create<String>(map['accelerateIpAddress'] as String),
-      accelerateIpId: map['accelerateIpId'] == null ? null : pulumi.Output.create<String>(map['accelerateIpId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      ipSetId: pulumi.Output.create<String>(map['ipSetId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accelerateIpAddress: map['accelerateIpAddress'] == null ? null : (map['accelerateIpAddress'] as String).input(),
+      accelerateIpId: map['accelerateIpId'] == null ? null : (map['accelerateIpId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ipSetId: (map['ipSetId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

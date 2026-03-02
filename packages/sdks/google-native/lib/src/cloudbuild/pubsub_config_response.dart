@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
 class PubsubConfigResponse {
   /// Service account that will make the push request.
-  final String serviceAccountEmail;
+  final pulumi.Input<String> serviceAccountEmail;
   /// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-  final String state;
+  final pulumi.Input<String> state;
   /// Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
-  final String subscription;
+  final pulumi.Input<String> subscription;
   /// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
-  final String topic;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [PubsubConfigResponse].
   /// [serviceAccountEmail] Service account that will make the push request.
@@ -35,10 +36,10 @@ class PubsubConfigResponse {
 
   factory PubsubConfigResponse.fromMap(Map<String, dynamic> map) {
     return PubsubConfigResponse(
-      serviceAccountEmail: map['serviceAccountEmail'] as String,
-      state: map['state'] as String,
-      subscription: map['subscription'] as String,
-      topic: map['topic'] as String,
+      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
+      state: (map['state'] as String).input(),
+      subscription: (map['subscription'] as String).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

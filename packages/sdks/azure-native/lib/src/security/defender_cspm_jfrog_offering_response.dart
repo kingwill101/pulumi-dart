@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'defender_cspm_jfrog_offering_response_mdc_containers_image_assessment.dart';
 
 /// The CSPM P1 for JFrog Artifactory offering
 class DefenderCspmJFrogOfferingResponse {
   /// The offering description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The Microsoft Defender Container image assessment configuration
-  final DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment? mdcContainersImageAssessment;
+  final pulumi.Input<DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment>? mdcContainersImageAssessment;
   /// The type of the security offering.
   /// Expected value is 'DefenderCspmJFrog'.
-  final String offeringType;
+  final pulumi.Input<String> offeringType;
 
   /// Creates a new [DefenderCspmJFrogOfferingResponse].
   /// [description] The offering description.
@@ -25,16 +26,16 @@ class DefenderCspmJFrogOfferingResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'mdcContainersImageAssessment': ?mdcContainersImageAssessment == null ? null : mdcContainersImageAssessment!.toMap(),
+      'mdcContainersImageAssessment': ?pulumi.Input.mapOptionalInputValue<DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment, Map<String, dynamic>>(mdcContainersImageAssessment, (value) => value.toMap()),
       'offeringType': offeringType,
     };
   }
 
   factory DefenderCspmJFrogOfferingResponse.fromMap(Map<String, dynamic> map) {
     return DefenderCspmJFrogOfferingResponse(
-      description: map['description'] as String,
-      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment'] as Map).cast<String, dynamic>()),
-      offeringType: map['offeringType'] as String,
+      description: (map['description'] as String).input(),
+      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment'] as Map).cast<String, dynamic>())).input(),
+      offeringType: (map['offeringType'] as String).input(),
     );
   }
 }

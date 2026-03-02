@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Android app information.
 class AndroidAppInfo {
   /// The name of the app. Optional
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The package name of the app. Required.
-  final String? packageName;
+  final pulumi.Input<String>? packageName;
   /// The internal version code of the app. Optional.
-  final String? versionCode;
+  final pulumi.Input<String>? versionCode;
   /// The version name of the app. Optional.
-  final String? versionName;
+  final pulumi.Input<String>? versionName;
 
   /// Creates a new [AndroidAppInfo].
   /// [name] The name of the app. Optional
@@ -35,10 +36,10 @@ class AndroidAppInfo {
 
   factory AndroidAppInfo.fromMap(Map<String, dynamic> map) {
     return AndroidAppInfo(
-      name: map['name'] == null ? null : map['name'] as String,
-      packageName: map['packageName'] == null ? null : map['packageName'] as String,
-      versionCode: map['versionCode'] == null ? null : map['versionCode'] as String,
-      versionName: map['versionName'] == null ? null : map['versionName'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      versionCode: map['versionCode'] == null ? null : (map['versionCode'] as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
     );
   }
 }

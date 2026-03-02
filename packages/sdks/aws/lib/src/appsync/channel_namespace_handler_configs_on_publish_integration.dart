@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_namespace_handler_configs_on_publish_integration_lambda_config.dart';
 
 class ChannelNamespaceHandlerConfigsOnPublishIntegration {
   /// Unique name of the data source that has been configured on the API.
-  final String dataSourceName;
+  final pulumi.Input<String> dataSourceName;
   /// Configuration for a Lambda data source. See Lambda Config below.
-  final ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig? lambdaConfig;
+  final pulumi.Input<ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig>? lambdaConfig;
 
   /// Creates a new [ChannelNamespaceHandlerConfigsOnPublishIntegration].
   /// [dataSourceName] Unique name of the data source that has been configured on the API.
@@ -19,14 +20,14 @@ class ChannelNamespaceHandlerConfigsOnPublishIntegration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataSourceName': dataSourceName,
-      'lambdaConfig': ?lambdaConfig == null ? null : lambdaConfig!.toMap(),
+      'lambdaConfig': ?pulumi.Input.mapOptionalInputValue<ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig, Map<String, dynamic>>(lambdaConfig, (value) => value.toMap()),
     };
   }
 
   factory ChannelNamespaceHandlerConfigsOnPublishIntegration.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigsOnPublishIntegration(
-      dataSourceName: map['dataSourceName'] as String,
-      lambdaConfig: map['lambdaConfig'] == null ? null : ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig.fromMap((map['lambdaConfig'] as Map).cast<String, dynamic>()),
+      dataSourceName: (map['dataSourceName'] as String).input(),
+      lambdaConfig: map['lambdaConfig'] == null ? null : (ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig.fromMap((map['lambdaConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

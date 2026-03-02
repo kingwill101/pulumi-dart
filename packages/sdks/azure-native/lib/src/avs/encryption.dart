@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_key_vault_properties.dart';
 
 /// The properties of customer managed encryption key
 class Encryption {
   /// The key vault where the encryption key is stored
-  final EncryptionKeyVaultProperties? keyVaultProperties;
+  final pulumi.Input<EncryptionKeyVaultProperties>? keyVaultProperties;
   /// Status of customer managed encryption key
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [Encryption].
   /// [keyVaultProperties] The key vault where the encryption key is stored
@@ -19,15 +20,15 @@ class Encryption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVaultProperties': ?keyVaultProperties == null ? null : keyVaultProperties!.toMap(),
+      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<EncryptionKeyVaultProperties, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : EncryptionKeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (EncryptionKeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

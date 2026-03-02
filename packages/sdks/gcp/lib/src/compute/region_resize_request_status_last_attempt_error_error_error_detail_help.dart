@@ -7,7 +7,7 @@ class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp {
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final List<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink>? links;
+  final pulumi.Input<List<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink>>? links;
 
   /// Creates a new [RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp].
   /// [links] (Output)
@@ -17,13 +17,13 @@ class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'links': ?links == null ? null : pulumi.Input.encodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink, Map<String, dynamic>>(links!, (value) => value.toMap()),
+      'links': ?pulumi.Input.mapOptionalInputValue<List<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink>, List<Map<String, dynamic>>>(links, (value) => pulumi.Input.encodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp.fromMap(Map<String, dynamic> map) {
     return RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp(
-      links: map['links'] == null ? null : pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink>(map['links'], (value) => RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink.fromMap((value as Map).cast<String, dynamic>())),
+      links: map['links'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink>(map['links'], (value) => RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

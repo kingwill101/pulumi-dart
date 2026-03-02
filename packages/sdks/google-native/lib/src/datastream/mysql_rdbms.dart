@@ -6,7 +6,7 @@ import 'mysql_database.dart';
 /// MySQL database structure
 class MysqlRdbms {
   /// Mysql databases on the server
-  final List<MysqlDatabase>? mysqlDatabases;
+  final pulumi.Input<List<MysqlDatabase>>? mysqlDatabases;
 
   /// Creates a new [MysqlRdbms].
   /// [mysqlDatabases] Mysql databases on the server
@@ -16,13 +16,13 @@ class MysqlRdbms {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlDatabases': ?mysqlDatabases == null ? null : pulumi.Input.encodeList<MysqlDatabase, Map<String, dynamic>>(mysqlDatabases!, (value) => value.toMap()),
+      'mysqlDatabases': ?pulumi.Input.mapOptionalInputValue<List<MysqlDatabase>, List<Map<String, dynamic>>>(mysqlDatabases, (value) => pulumi.Input.encodeList<MysqlDatabase, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MysqlRdbms.fromMap(Map<String, dynamic> map) {
     return MysqlRdbms(
-      mysqlDatabases: map['mysqlDatabases'] == null ? null : pulumi.Input.decodeList<MysqlDatabase>(map['mysqlDatabases'], (value) => MysqlDatabase.fromMap((value as Map).cast<String, dynamic>())),
+      mysqlDatabases: map['mysqlDatabases'] == null ? null : (pulumi.Input.decodeList<MysqlDatabase>(map['mysqlDatabases'], (value) => MysqlDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

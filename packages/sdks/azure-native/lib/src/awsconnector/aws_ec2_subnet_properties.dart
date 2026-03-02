@@ -7,45 +7,45 @@ import 'tag.dart';
 /// Definition of awsEc2Subnet
 class AwsEc2SubnetProperties {
   /// Indicates whether a network interface created in this subnet receives an IPv6 address. The default value is ``false``. If you specify ``AssignIpv6AddressOnCreation``, you must also specify an IPv6 CIDR block.
-  final bool? assignIpv6AddressOnCreation;
+  final pulumi.Input<bool>? assignIpv6AddressOnCreation;
   /// The Availability Zone of the subnet. If you update this property, you must also update the ``CidrBlock`` property.
-  final String? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
   /// The AZ ID of the subnet.
-  final String? availabilityZoneId;
+  final pulumi.Input<String>? availabilityZoneId;
   /// The IPv4 CIDR block assigned to the subnet. If you update this property, we create a new subnet, and then delete the existing one.
-  final String? cidrBlock;
+  final pulumi.Input<String>? cidrBlock;
   /// Indicates whether DNS queries made to the Amazon-provided DNS Resolver in this subnet should return synthetic IPv6 addresses for IPv4-only destinations. For more information, see [DNS64 and NAT64](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-nat64-dns64) in the *User Guide*.
-  final bool? enableDns64;
+  final pulumi.Input<bool>? enableDns64;
   /// Indicates the device position for local network interfaces in this subnet. For example, ``1`` indicates local network interfaces in this subnet are the secondary network interface (eth1).
-  final int? enableLniAtDeviceIndex;
+  final pulumi.Input<int>? enableLniAtDeviceIndex;
   /// An IPv4 IPAM pool ID for the subnet.
-  final String? ipv4IpamPoolId;
+  final pulumi.Input<String>? ipv4IpamPoolId;
   /// An IPv4 netmask length for the subnet.
-  final int? ipv4NetmaskLength;
+  final pulumi.Input<int>? ipv4NetmaskLength;
   /// The IPv6 CIDR block. If you specify ``AssignIpv6AddressOnCreation``, you must also specify an IPv6 CIDR block.
-  final String? ipv6CidrBlock;
+  final pulumi.Input<String>? ipv6CidrBlock;
   /// The IPv6 network ranges for the subnet, in CIDR notation.
-  final List<String>? ipv6CidrBlocks;
+  final pulumi.Input<List<String>>? ipv6CidrBlocks;
   /// An IPv6 IPAM pool ID for the subnet.
-  final String? ipv6IpamPoolId;
+  final pulumi.Input<String>? ipv6IpamPoolId;
   /// Indicates whether this is an IPv6 only subnet. For more information, see [Subnet basics](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#subnet-basics) in the *User Guide*.
-  final bool? ipv6Native;
+  final pulumi.Input<bool>? ipv6Native;
   /// An IPv6 netmask length for the subnet.
-  final int? ipv6NetmaskLength;
+  final pulumi.Input<int>? ipv6NetmaskLength;
   /// Indicates whether instances launched in this subnet receive a public IPv4 address. The default value is ``false``.  AWS charges for all public IPv4 addresses, including public IPv4 addresses associated with running instances and Elastic IP addresses. For more information, see the *Public IPv4 Address* tab on the [VPC pricing page](https://aws.amazon.com/vpc/pricing/).
-  final bool? mapPublicIpOnLaunch;
+  final pulumi.Input<bool>? mapPublicIpOnLaunch;
   /// Property networkAclAssociationId
-  final String? networkAclAssociationId;
+  final pulumi.Input<String>? networkAclAssociationId;
   /// The Amazon Resource Name (ARN) of the Outpost.
-  final String? outpostArn;
+  final pulumi.Input<String>? outpostArn;
   /// The hostname type for EC2 instances launched into this subnet and how DNS A and AAAA record queries to the instances should be handled. For more information, see [Amazon EC2 instance hostname types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-naming.html) in the *User Guide*. Available options:  +  EnableResourceNameDnsAAAARecord (true | false)  +  EnableResourceNameDnsARecord (true | false)  +  HostnameType (ip-name | resource-name)
-  final PrivateDnsNameOptionsOnLaunchModelProperties? privateDnsNameOptionsOnLaunch;
+  final pulumi.Input<PrivateDnsNameOptionsOnLaunchModelProperties>? privateDnsNameOptionsOnLaunch;
   /// Property subnetId
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
   /// Any tags assigned to the subnet.
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
   /// The ID of the VPC the subnet is in. If you update this property, you must also update the ``CidrBlock`` property.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [AwsEc2SubnetProperties].
   /// [assignIpv6AddressOnCreation] Indicates whether a network interface created in this subnet receives an IPv6 address. The default value is ``false``. If you specify ``AssignIpv6AddressOnCreation``, you must also specify an IPv6 CIDR block.
@@ -109,35 +109,35 @@ class AwsEc2SubnetProperties {
       'mapPublicIpOnLaunch': ?mapPublicIpOnLaunch,
       'networkAclAssociationId': ?networkAclAssociationId,
       'outpostArn': ?outpostArn,
-      'privateDnsNameOptionsOnLaunch': ?privateDnsNameOptionsOnLaunch == null ? null : privateDnsNameOptionsOnLaunch!.toMap(),
+      'privateDnsNameOptionsOnLaunch': ?pulumi.Input.mapOptionalInputValue<PrivateDnsNameOptionsOnLaunchModelProperties, Map<String, dynamic>>(privateDnsNameOptionsOnLaunch, (value) => value.toMap()),
       'subnetId': ?subnetId,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcId': ?vpcId,
     };
   }
 
   factory AwsEc2SubnetProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2SubnetProperties(
-      assignIpv6AddressOnCreation: map['assignIpv6AddressOnCreation'] == null ? null : map['assignIpv6AddressOnCreation'] as bool,
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : map['availabilityZoneId'] as String,
-      cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock'] as String,
-      enableDns64: map['enableDns64'] == null ? null : map['enableDns64'] as bool,
-      enableLniAtDeviceIndex: map['enableLniAtDeviceIndex'] == null ? null : map['enableLniAtDeviceIndex'] as int,
-      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : map['ipv4IpamPoolId'] as String,
-      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : map['ipv4NetmaskLength'] as int,
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : map['ipv6CidrBlock'] as String,
-      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : (map['ipv6CidrBlocks'] as List).cast<String>(),
-      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : map['ipv6IpamPoolId'] as String,
-      ipv6Native: map['ipv6Native'] == null ? null : map['ipv6Native'] as bool,
-      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : map['ipv6NetmaskLength'] as int,
-      mapPublicIpOnLaunch: map['mapPublicIpOnLaunch'] == null ? null : map['mapPublicIpOnLaunch'] as bool,
-      networkAclAssociationId: map['networkAclAssociationId'] == null ? null : map['networkAclAssociationId'] as String,
-      outpostArn: map['outpostArn'] == null ? null : map['outpostArn'] as String,
-      privateDnsNameOptionsOnLaunch: map['privateDnsNameOptionsOnLaunch'] == null ? null : PrivateDnsNameOptionsOnLaunchModelProperties.fromMap((map['privateDnsNameOptionsOnLaunch'] as Map).cast<String, dynamic>()),
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      assignIpv6AddressOnCreation: map['assignIpv6AddressOnCreation'] == null ? null : (map['assignIpv6AddressOnCreation'] as bool).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      enableDns64: map['enableDns64'] == null ? null : (map['enableDns64'] as bool).input(),
+      enableLniAtDeviceIndex: map['enableLniAtDeviceIndex'] == null ? null : (map['enableLniAtDeviceIndex'] as int).input(),
+      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : (map['ipv4IpamPoolId'] as String).input(),
+      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : (map['ipv4NetmaskLength'] as int).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : ((map['ipv6CidrBlocks'] as List).cast<String>()).input(),
+      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : (map['ipv6IpamPoolId'] as String).input(),
+      ipv6Native: map['ipv6Native'] == null ? null : (map['ipv6Native'] as bool).input(),
+      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : (map['ipv6NetmaskLength'] as int).input(),
+      mapPublicIpOnLaunch: map['mapPublicIpOnLaunch'] == null ? null : (map['mapPublicIpOnLaunch'] as bool).input(),
+      networkAclAssociationId: map['networkAclAssociationId'] == null ? null : (map['networkAclAssociationId'] as String).input(),
+      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
+      privateDnsNameOptionsOnLaunch: map['privateDnsNameOptionsOnLaunch'] == null ? null : (PrivateDnsNameOptionsOnLaunchModelProperties.fromMap((map['privateDnsNameOptionsOnLaunch'] as Map).cast<String, dynamic>())).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

@@ -37,23 +37,15 @@ class OrganizationClusterByIdArgs {
   /// [spec] Specification of the cluster
   /// [status] Specification of the cluster status
   OrganizationClusterByIdArgs({
-    pulumi.Output<String>? clusterId,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? kind,
-    pulumi.Output<SCMetadataEntity>? metadata,
-    required pulumi.Output<String> organizationName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SCClusterSpecEntity>? spec,
-    pulumi.Output<ClusterStatusEntity>? status,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<SCMetadataEntity>(metadata),
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      spec = pulumi.Input.asOptionalInput<SCClusterSpecEntity>(spec),
-      status = pulumi.Input.asOptionalInput<ClusterStatusEntity>(status);
+    this.clusterId,
+    required this.environmentId,
+    this.kind,
+    this.metadata,
+    required this.organizationName,
+    required this.resourceGroupName,
+    this.spec,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class OrganizationClusterByIdArgs {
 
   factory OrganizationClusterByIdArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationClusterByIdArgs(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<SCMetadataEntity>(SCMetadataEntity.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<SCClusterSpecEntity>(SCClusterSpecEntity.fromMap((map['spec'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<ClusterStatusEntity>(ClusterStatusEntity.fromMap((map['status'] as Map).cast<String, dynamic>())),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (SCMetadataEntity.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      organizationName: (map['organizationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      spec: map['spec'] == null ? null : (SCClusterSpecEntity.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ClusterStatusEntity.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

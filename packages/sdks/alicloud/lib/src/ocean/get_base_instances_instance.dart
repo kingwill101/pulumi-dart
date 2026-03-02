@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBaseInstancesInstance {
   /// The product code of the OceanBase cluster.
-  final String commodityCode;
+  final pulumi.Input<String> commodityCode;
   /// The number of CPU cores of the cluster.
-  final int cpu;
+  final pulumi.Input<int> cpu;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The size of the storage space, in GB.
-  final String diskSize;
+  final pulumi.Input<String> diskSize;
   /// The ID of the Instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// Cluster specification information.
-  final String instanceClass;
+  final pulumi.Input<String> instanceClass;
   /// OceanBase cluster ID.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// OceanBase cluster name.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The number of nodes in the cluster.
-  final String nodeNum;
+  final pulumi.Input<String> nodeNum;
   /// The payment method of the instance.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The ID of the enterprise resource group to which the instance resides.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// Series of OceanBase clusters.
-  final String series;
+  final pulumi.Input<String> series;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// Information about the zone where the cluster is deployed.
-  final List<String> zones;
+  final pulumi.Input<List<String>> zones;
 
   /// Creates a new [GetBaseInstancesInstance].
   /// [commodityCode] The product code of the OceanBase cluster.
@@ -84,20 +85,20 @@ class GetBaseInstancesInstance {
 
   factory GetBaseInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetBaseInstancesInstance(
-      commodityCode: map['commodityCode'] as String,
-      cpu: map['cpu'] as int,
-      createTime: map['createTime'] as String,
-      diskSize: map['diskSize'] as String,
-      id: map['id'] as String,
-      instanceClass: map['instanceClass'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      nodeNum: map['nodeNum'] as String,
-      paymentType: map['paymentType'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      series: map['series'] as String,
-      status: map['status'] as String,
-      zones: (map['zones'] as List).cast<String>(),
+      commodityCode: (map['commodityCode'] as String).input(),
+      cpu: (map['cpu'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      diskSize: (map['diskSize'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceClass: (map['instanceClass'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      nodeNum: (map['nodeNum'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      series: (map['series'] as String).input(),
+      status: (map['status'] as String).input(),
+      zones: ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes {
-  final bool allowAudioInput;
-  final bool allowDtmfInput;
+  final pulumi.Input<bool> allowAudioInput;
+  final pulumi.Input<bool> allowDtmfInput;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes].
   /// [allowAudioInput] Required.
@@ -22,8 +23,8 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
 
   factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes(
-      allowAudioInput: map['allowAudioInput'] as bool,
-      allowDtmfInput: map['allowDtmfInput'] as bool,
+      allowAudioInput: (map['allowAudioInput'] as bool).input(),
+      allowDtmfInput: (map['allowDtmfInput'] as bool).input(),
     );
   }
 }

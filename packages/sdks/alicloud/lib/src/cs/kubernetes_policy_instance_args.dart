@@ -25,17 +25,12 @@ class KubernetesPolicyInstanceArgs {
   /// [parameters] The parameter configuration of the current rule instance. For more information about the parameters supported by each policy rule, see [Container Security Policy Rule Base Description](https://www.alibabacloud.com/help/doc-detail/359819.html).
   /// [policyName] Policy Name
   KubernetesPolicyInstanceArgs({
-    pulumi.Output<String>? action,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<List<String>>? namespaces,
-    pulumi.Output<Map<String, String>>? parameters,
-    required pulumi.Output<String> policyName,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      namespaces = pulumi.Input.asOptionalInput<List<String>>(namespaces),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      policyName = pulumi.Input.asInput<String>(policyName);
+    this.action,
+    required this.clusterId,
+    this.namespaces,
+    this.parameters,
+    required this.policyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class KubernetesPolicyInstanceArgs {
 
   factory KubernetesPolicyInstanceArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesPolicyInstanceArgs(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      namespaces: map['namespaces'] == null ? null : pulumi.Output.create<List<String>>((map['namespaces'] as List).cast<String>()),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      policyName: (map['policyName'] as String).input(),
     );
   }
 }

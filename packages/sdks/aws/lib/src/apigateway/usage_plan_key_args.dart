@@ -22,15 +22,11 @@ class UsagePlanKeyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [usagePlanId] Id of the usage plan resource representing to associate the key to.
   UsagePlanKeyArgs({
-    required pulumi.Output<String> keyId,
-    required pulumi.Output<String> keyType,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> usagePlanId,
-  }) :
-      keyId = pulumi.Input.asInput<String>(keyId),
-      keyType = pulumi.Input.asInput<String>(keyType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      usagePlanId = pulumi.Input.asInput<String>(usagePlanId);
+    required this.keyId,
+    required this.keyType,
+    this.region,
+    required this.usagePlanId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class UsagePlanKeyArgs {
 
   factory UsagePlanKeyArgs.fromMap(Map<String, dynamic> map) {
     return UsagePlanKeyArgs(
-      keyId: pulumi.Output.create<String>(map['keyId'] as String),
-      keyType: pulumi.Output.create<String>(map['keyType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      usagePlanId: pulumi.Output.create<String>(map['usagePlanId'] as String),
+      keyId: (map['keyId'] as String).input(),
+      keyType: (map['keyType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      usagePlanId: (map['usagePlanId'] as String).input(),
     );
   }
 }

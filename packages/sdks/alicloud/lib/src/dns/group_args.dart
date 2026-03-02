@@ -13,9 +13,8 @@ class GroupArgs {
   /// Creates a new [GroupArgs].
   /// [name] Name of the domain group.
   GroupArgs({
-    pulumi.Output<String>? name,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SparkConfig Properties for a Big Data pool powered by Apache Spark
 class SparkConfigPropertiesResponse {
   /// The type of the spark config properties file.
-  final String? configurationType;
+  final pulumi.Input<String>? configurationType;
   /// The spark config properties.
-  final String? content;
+  final pulumi.Input<String>? content;
   /// The filename of the spark config properties file.
-  final String? filename;
+  final pulumi.Input<String>? filename;
   /// The last update time of the spark config properties file.
-  final String time;
+  final pulumi.Input<String> time;
 
   /// Creates a new [SparkConfigPropertiesResponse].
   /// [configurationType] The type of the spark config properties file.
@@ -35,10 +36,10 @@ class SparkConfigPropertiesResponse {
 
   factory SparkConfigPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SparkConfigPropertiesResponse(
-      configurationType: map['configurationType'] == null ? null : map['configurationType'] as String,
-      content: map['content'] == null ? null : map['content'] as String,
-      filename: map['filename'] == null ? null : map['filename'] as String,
-      time: map['time'] as String,
+      configurationType: map['configurationType'] == null ? null : (map['configurationType'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
+      time: (map['time'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceMetadataOption {
   /// State of the metadata service: `enabled`, `disabled`.
-  final String httpEndpoint;
+  final pulumi.Input<String> httpEndpoint;
   /// Whether the IPv6 endpoint for the instance metadata service is `enabled` or `disabled`
-  final String httpProtocolIpv6;
+  final pulumi.Input<String> httpProtocolIpv6;
   /// Desired HTTP PUT response hop limit for instance metadata requests.
-  final int httpPutResponseHopLimit;
+  final pulumi.Input<int> httpPutResponseHopLimit;
   /// If session tokens are required: `optional`, `required`.
-  final String httpTokens;
+  final pulumi.Input<String> httpTokens;
   /// If access to instance tags is allowed from the metadata service: `enabled`, `disabled`.
-  final String instanceMetadataTags;
+  final pulumi.Input<String> instanceMetadataTags;
 
   /// Creates a new [GetInstanceMetadataOption].
   /// [httpEndpoint] State of the metadata service: `enabled`, `disabled`.
@@ -39,11 +40,11 @@ class GetInstanceMetadataOption {
 
   factory GetInstanceMetadataOption.fromMap(Map<String, dynamic> map) {
     return GetInstanceMetadataOption(
-      httpEndpoint: map['httpEndpoint'] as String,
-      httpProtocolIpv6: map['httpProtocolIpv6'] as String,
-      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] as int,
-      httpTokens: map['httpTokens'] as String,
-      instanceMetadataTags: map['instanceMetadataTags'] as String,
+      httpEndpoint: (map['httpEndpoint'] as String).input(),
+      httpProtocolIpv6: (map['httpProtocolIpv6'] as String).input(),
+      httpPutResponseHopLimit: (map['httpPutResponseHopLimit'] as int).input(),
+      httpTokens: (map['httpTokens'] as String).input(),
+      instanceMetadataTags: (map['instanceMetadataTags'] as String).input(),
     );
   }
 }

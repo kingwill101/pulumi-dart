@@ -26,17 +26,12 @@ class JobTemplateArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   JobTemplateArgs({
-    required pulumi.Output<JobTemplateJobTemplateData> jobTemplateData,
-    pulumi.Output<String>? kmsKeyArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      jobTemplateData = pulumi.Input.asInput<JobTemplateJobTemplateData>(jobTemplateData),
-      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.jobTemplateData,
+    this.kmsKeyArn,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class JobTemplateArgs {
 
   factory JobTemplateArgs.fromMap(Map<String, dynamic> map) {
     return JobTemplateArgs(
-      jobTemplateData: pulumi.Output.create<JobTemplateJobTemplateData>(JobTemplateJobTemplateData.fromMap((map['jobTemplateData'] as Map).cast<String, dynamic>())),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['kmsKeyArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      jobTemplateData: (JobTemplateJobTemplateData.fromMap((map['jobTemplateData'] as Map).cast<String, dynamic>())).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

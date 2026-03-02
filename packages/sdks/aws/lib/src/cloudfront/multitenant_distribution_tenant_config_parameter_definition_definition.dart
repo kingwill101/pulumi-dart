@@ -5,7 +5,7 @@ import 'multitenant_distribution_tenant_config_parameter_definition_definition_s
 
 class MultitenantDistributionTenantConfigParameterDefinitionDefinition {
   /// String schema configuration. See String Schema below.
-  final List<MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema>? stringSchemas;
+  final pulumi.Input<List<MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema>>? stringSchemas;
 
   /// Creates a new [MultitenantDistributionTenantConfigParameterDefinitionDefinition].
   /// [stringSchemas] String schema configuration. See String Schema below.
@@ -15,13 +15,13 @@ class MultitenantDistributionTenantConfigParameterDefinitionDefinition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'stringSchemas': ?stringSchemas == null ? null : pulumi.Input.encodeList<MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema, Map<String, dynamic>>(stringSchemas!, (value) => value.toMap()),
+      'stringSchemas': ?pulumi.Input.mapOptionalInputValue<List<MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema>, List<Map<String, dynamic>>>(stringSchemas, (value) => pulumi.Input.encodeList<MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MultitenantDistributionTenantConfigParameterDefinitionDefinition.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionTenantConfigParameterDefinitionDefinition(
-      stringSchemas: map['stringSchemas'] == null ? null : pulumi.Input.decodeList<MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema>(map['stringSchemas'], (value) => MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema.fromMap((value as Map).cast<String, dynamic>())),
+      stringSchemas: map['stringSchemas'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema>(map['stringSchemas'], (value) => MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

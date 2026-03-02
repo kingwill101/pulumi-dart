@@ -5,11 +5,11 @@ import 'grey_tag_route_sc_rule_item.dart';
 
 class GreyTagRouteScRule {
   /// The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
-  final String? condition;
+  final pulumi.Input<String>? condition;
   /// A list of conditions items. See `items` below.
-  final List<GreyTagRouteScRuleItem>? items;
+  final pulumi.Input<List<GreyTagRouteScRuleItem>>? items;
   /// The path corresponding to the grayscale rule.
-  final String? path;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [GreyTagRouteScRule].
   /// [condition] The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
@@ -24,16 +24,16 @@ class GreyTagRouteScRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'condition': ?condition,
-      'items': ?items == null ? null : pulumi.Input.encodeList<GreyTagRouteScRuleItem, Map<String, dynamic>>(items!, (value) => value.toMap()),
+      'items': ?pulumi.Input.mapOptionalInputValue<List<GreyTagRouteScRuleItem>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<GreyTagRouteScRuleItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'path': ?path,
     };
   }
 
   factory GreyTagRouteScRule.fromMap(Map<String, dynamic> map) {
     return GreyTagRouteScRule(
-      condition: map['condition'] == null ? null : map['condition'] as String,
-      items: map['items'] == null ? null : pulumi.Input.decodeList<GreyTagRouteScRuleItem>(map['items'], (value) => GreyTagRouteScRuleItem.fromMap((value as Map).cast<String, dynamic>())),
-      path: map['path'] == null ? null : map['path'] as String,
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<GreyTagRouteScRuleItem>(map['items'], (value) => GreyTagRouteScRuleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

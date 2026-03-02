@@ -26,17 +26,12 @@ class RuntimeTemplateIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [runtimeTemplate] Used to find the parent resource to bind the IAM policy to
   RuntimeTemplateIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? runtimeTemplate,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runtimeTemplate = pulumi.Input.asOptionalInput<String>(runtimeTemplate);
+    this.etag,
+    this.location,
+    this.policyData,
+    this.project,
+    this.runtimeTemplate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RuntimeTemplateIamPolicyState {
 
   factory RuntimeTemplateIamPolicyState.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runtimeTemplate: map['runtimeTemplate'] == null ? null : pulumi.Output.create<String>(map['runtimeTemplate'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runtimeTemplate: map['runtimeTemplate'] == null ? null : (map['runtimeTemplate'] as String).input(),
     );
   }
 }

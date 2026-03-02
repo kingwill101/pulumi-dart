@@ -41,25 +41,16 @@ class EndpointServicebusQueueArgs {
   /// [resourceGroupName] The name of the resource group under which the Service Bus Queue has been created. Changing this forces a new resource to be created.
   /// [subscriptionId] The subscription ID for the endpoint.
   EndpointServicebusQueueArgs({
-    pulumi.Output<String>? authenticationType,
-    pulumi.Output<String>? connectionString,
-    pulumi.Output<String>? endpointUri,
-    pulumi.Output<String>? entityPath,
-    pulumi.Output<String>? identityId,
-    required pulumi.Output<String> iothubId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      authenticationType = pulumi.Input.asOptionalInput<String>(authenticationType),
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      endpointUri = pulumi.Input.asOptionalInput<String>(endpointUri),
-      entityPath = pulumi.Input.asOptionalInput<String>(entityPath),
-      identityId = pulumi.Input.asOptionalInput<String>(identityId),
-      iothubId = pulumi.Input.asInput<String>(iothubId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    this.authenticationType,
+    this.connectionString,
+    this.endpointUri,
+    this.entityPath,
+    this.identityId,
+    required this.iothubId,
+    this.name,
+    required this.resourceGroupName,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class EndpointServicebusQueueArgs {
 
   factory EndpointServicebusQueueArgs.fromMap(Map<String, dynamic> map) {
     return EndpointServicebusQueueArgs(
-      authenticationType: map['authenticationType'] == null ? null : pulumi.Output.create<String>(map['authenticationType'] as String),
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      endpointUri: map['endpointUri'] == null ? null : pulumi.Output.create<String>(map['endpointUri'] as String),
-      entityPath: map['entityPath'] == null ? null : pulumi.Output.create<String>(map['entityPath'] as String),
-      identityId: map['identityId'] == null ? null : pulumi.Output.create<String>(map['identityId'] as String),
-      iothubId: pulumi.Output.create<String>(map['iothubId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
+      entityPath: map['entityPath'] == null ? null : (map['entityPath'] as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
+      iothubId: (map['iothubId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

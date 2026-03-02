@@ -6,13 +6,13 @@ import 'access_review_reviewer.dart';
 /// Access Review Instance.
 class AccessReviewInstance {
   /// This is the collection of backup reviewers.
-  final List<AccessReviewReviewer>? backupReviewers;
+  final pulumi.Input<List<AccessReviewReviewer>>? backupReviewers;
   /// The DateTime when the review instance is scheduled to end.
-  final String? endDateTime;
+  final pulumi.Input<String>? endDateTime;
   /// This is the collection of reviewers.
-  final List<AccessReviewReviewer>? reviewers;
+  final pulumi.Input<List<AccessReviewReviewer>>? reviewers;
   /// The DateTime when the review instance is scheduled to be start.
-  final String? startDateTime;
+  final pulumi.Input<String>? startDateTime;
 
   /// Creates a new [AccessReviewInstance].
   /// [backupReviewers] This is the collection of backup reviewers.
@@ -28,19 +28,19 @@ class AccessReviewInstance {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupReviewers': ?backupReviewers == null ? null : pulumi.Input.encodeList<AccessReviewReviewer, Map<String, dynamic>>(backupReviewers!, (value) => value.toMap()),
+      'backupReviewers': ?pulumi.Input.mapOptionalInputValue<List<AccessReviewReviewer>, List<Map<String, dynamic>>>(backupReviewers, (value) => pulumi.Input.encodeList<AccessReviewReviewer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'endDateTime': ?endDateTime,
-      'reviewers': ?reviewers == null ? null : pulumi.Input.encodeList<AccessReviewReviewer, Map<String, dynamic>>(reviewers!, (value) => value.toMap()),
+      'reviewers': ?pulumi.Input.mapOptionalInputValue<List<AccessReviewReviewer>, List<Map<String, dynamic>>>(reviewers, (value) => pulumi.Input.encodeList<AccessReviewReviewer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'startDateTime': ?startDateTime,
     };
   }
 
   factory AccessReviewInstance.fromMap(Map<String, dynamic> map) {
     return AccessReviewInstance(
-      backupReviewers: map['backupReviewers'] == null ? null : pulumi.Input.decodeList<AccessReviewReviewer>(map['backupReviewers'], (value) => AccessReviewReviewer.fromMap((value as Map).cast<String, dynamic>())),
-      endDateTime: map['endDateTime'] == null ? null : map['endDateTime'] as String,
-      reviewers: map['reviewers'] == null ? null : pulumi.Input.decodeList<AccessReviewReviewer>(map['reviewers'], (value) => AccessReviewReviewer.fromMap((value as Map).cast<String, dynamic>())),
-      startDateTime: map['startDateTime'] == null ? null : map['startDateTime'] as String,
+      backupReviewers: map['backupReviewers'] == null ? null : (pulumi.Input.decodeList<AccessReviewReviewer>(map['backupReviewers'], (value) => AccessReviewReviewer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime'] as String).input(),
+      reviewers: map['reviewers'] == null ? null : (pulumi.Input.decodeList<AccessReviewReviewer>(map['reviewers'], (value) => AccessReviewReviewer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startDateTime: map['startDateTime'] == null ? null : (map['startDateTime'] as String).input(),
     );
   }
 }

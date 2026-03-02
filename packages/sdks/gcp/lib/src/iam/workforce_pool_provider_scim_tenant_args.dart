@@ -34,23 +34,15 @@ class WorkforcePoolProviderScimTenantArgs {
   /// [scimTenantId] The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   /// [workforcePoolId] The ID of the workforce pool.
   WorkforcePoolProviderScimTenantArgs({
-    pulumi.Output<Map<String, String>>? claimMapping,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? hardDelete,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> providerId,
-    required pulumi.Output<String> scimTenantId,
-    required pulumi.Output<String> workforcePoolId,
-  }) :
-      claimMapping = pulumi.Input.asOptionalInput<Map<String, String>>(claimMapping),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      hardDelete = pulumi.Input.asOptionalInput<bool>(hardDelete),
-      location = pulumi.Input.asInput<String>(location),
-      providerId = pulumi.Input.asInput<String>(providerId),
-      scimTenantId = pulumi.Input.asInput<String>(scimTenantId),
-      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+    this.claimMapping,
+    this.description,
+    this.displayName,
+    this.hardDelete,
+    required this.location,
+    required this.providerId,
+    required this.scimTenantId,
+    required this.workforcePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class WorkforcePoolProviderScimTenantArgs {
 
   factory WorkforcePoolProviderScimTenantArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTenantArgs(
-      claimMapping: map['claimMapping'] == null ? null : pulumi.Output.create<Map<String, String>>((map['claimMapping'] as Map).cast<String, String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      hardDelete: map['hardDelete'] == null ? null : pulumi.Output.create<bool>(map['hardDelete'] as bool),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      providerId: pulumi.Output.create<String>(map['providerId'] as String),
-      scimTenantId: pulumi.Output.create<String>(map['scimTenantId'] as String),
-      workforcePoolId: pulumi.Output.create<String>(map['workforcePoolId'] as String),
+      claimMapping: map['claimMapping'] == null ? null : ((map['claimMapping'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      hardDelete: map['hardDelete'] == null ? null : (map['hardDelete'] as bool).input(),
+      location: (map['location'] as String).input(),
+      providerId: (map['providerId'] as String).input(),
+      scimTenantId: (map['scimTenantId'] as String).input(),
+      workforcePoolId: (map['workforcePoolId'] as String).input(),
     );
   }
 }

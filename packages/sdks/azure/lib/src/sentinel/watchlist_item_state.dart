@@ -16,13 +16,10 @@ class WatchlistItemState {
   /// [properties] The key value pairs of the Sentinel Watchlist Item.
   /// [watchlistId] The ID of the Sentinel Watchlist that this Item resides in. Changing this forces a new Sentinel Watchlist Item to be created.
   WatchlistItemState({
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? properties,
-    pulumi.Output<String>? watchlistId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<Map<String, String>>(properties),
-      watchlistId = pulumi.Input.asOptionalInput<String>(watchlistId);
+    this.name,
+    this.properties,
+    this.watchlistId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class WatchlistItemState {
 
   factory WatchlistItemState.fromMap(Map<String, dynamic> map) {
     return WatchlistItemState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['properties'] as Map).cast<String, String>()),
-      watchlistId: map['watchlistId'] == null ? null : pulumi.Output.create<String>(map['watchlistId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      watchlistId: map['watchlistId'] == null ? null : (map['watchlistId'] as String).input(),
     );
   }
 }

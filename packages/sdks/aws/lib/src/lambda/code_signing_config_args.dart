@@ -29,17 +29,12 @@ class CodeSigningConfigArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   CodeSigningConfigArgs({
-    required pulumi.Output<CodeSigningConfigAllowedPublishers> allowedPublishers,
-    pulumi.Output<String>? description,
-    pulumi.Output<CodeSigningConfigPolicies>? policies,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      allowedPublishers = pulumi.Input.asInput<CodeSigningConfigAllowedPublishers>(allowedPublishers),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      policies = pulumi.Input.asOptionalInput<CodeSigningConfigPolicies>(policies),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.allowedPublishers,
+    this.description,
+    this.policies,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class CodeSigningConfigArgs {
 
   factory CodeSigningConfigArgs.fromMap(Map<String, dynamic> map) {
     return CodeSigningConfigArgs(
-      allowedPublishers: pulumi.Output.create<CodeSigningConfigAllowedPublishers>(CodeSigningConfigAllowedPublishers.fromMap((map['allowedPublishers'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      policies: map['policies'] == null ? null : pulumi.Output.create<CodeSigningConfigPolicies>(CodeSigningConfigPolicies.fromMap((map['policies'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      allowedPublishers: (CodeSigningConfigAllowedPublishers.fromMap((map['allowedPublishers'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      policies: map['policies'] == null ? null : (CodeSigningConfigPolicies.fromMap((map['policies'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

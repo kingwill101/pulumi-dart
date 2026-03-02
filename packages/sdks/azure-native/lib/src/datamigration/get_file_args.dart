@@ -22,15 +22,11 @@ class GetFileArgs {
   /// [projectName] Name of the project
   /// [serviceName] Name of the service
   GetFileArgs({
-    required pulumi.Output<String> fileName,
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      fileName = pulumi.Input.asInput<String>(fileName),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.fileName,
+    required this.groupName,
+    required this.projectName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetFileArgs {
 
   factory GetFileArgs.fromMap(Map<String, dynamic> map) {
     return GetFileArgs(
-      fileName: pulumi.Output.create<String>(map['fileName'] as String),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      fileName: (map['fileName'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

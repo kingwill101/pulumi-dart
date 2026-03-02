@@ -22,15 +22,11 @@ class GetFlowsArgs {
   /// [nameRegex] A regex string to filter results by Flow name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetFlowsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<int>? limit,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      limit = pulumi.Input.asOptionalInput<int>(limit),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.ids,
+    this.limit,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetFlowsArgs {
 
   factory GetFlowsArgs.fromMap(Map<String, dynamic> map) {
     return GetFlowsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      limit: map['limit'] == null ? null : pulumi.Output.create<int>(map['limit'] as int),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

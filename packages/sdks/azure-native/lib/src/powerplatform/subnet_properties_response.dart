@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a subnet.
 class SubnetPropertiesResponse {
   /// Subnet name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [SubnetPropertiesResponse].
   /// [name] Subnet name.
@@ -20,7 +21,7 @@ class SubnetPropertiesResponse {
 
   factory SubnetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SubnetPropertiesResponse(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

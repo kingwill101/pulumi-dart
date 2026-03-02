@@ -41,27 +41,17 @@ class SecretArgs {
   /// [replicas] Configuration block to support secret replication. See details below.
   /// [tags] Key-value map of user-defined tags that are attached to the secret. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   SecretArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? forceOverwriteReplicaSecret,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? policy,
-    pulumi.Output<int>? recoveryWindowInDays,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<SecretReplica>>? replicas,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      forceOverwriteReplicaSecret = pulumi.Input.asOptionalInput<bool>(forceOverwriteReplicaSecret),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      recoveryWindowInDays = pulumi.Input.asOptionalInput<int>(recoveryWindowInDays),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicas = pulumi.Input.asOptionalInput<List<SecretReplica>>(replicas),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.forceOverwriteReplicaSecret,
+    this.kmsKeyId,
+    this.name,
+    this.namePrefix,
+    this.policy,
+    this.recoveryWindowInDays,
+    this.region,
+    this.replicas,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      forceOverwriteReplicaSecret: map['forceOverwriteReplicaSecret'] == null ? null : pulumi.Output.create<bool>(map['forceOverwriteReplicaSecret'] as bool),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      recoveryWindowInDays: map['recoveryWindowInDays'] == null ? null : pulumi.Output.create<int>(map['recoveryWindowInDays'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicas: map['replicas'] == null ? null : pulumi.Output.create<List<SecretReplica>>(pulumi.Input.decodeList<SecretReplica>(map['replicas'], (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      forceOverwriteReplicaSecret: map['forceOverwriteReplicaSecret'] == null ? null : (map['forceOverwriteReplicaSecret'] as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      recoveryWindowInDays: map['recoveryWindowInDays'] == null ? null : (map['recoveryWindowInDays'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<SecretReplica>(map['replicas'], (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The current amount of cost which is being tracked for a budget.
 ///
 /// Supported for CategoryType(s): Cost.
 class CurrentSpendResponse {
   /// The total amount of cost which is being tracked by the budget.
-  final double amount;
+  final pulumi.Input<double> amount;
   /// The unit of measure for the budget amount.
-  final String unit;
+  final pulumi.Input<String> unit;
 
   /// Creates a new [CurrentSpendResponse].
   /// [amount] The total amount of cost which is being tracked by the budget.
@@ -27,8 +28,8 @@ class CurrentSpendResponse {
 
   factory CurrentSpendResponse.fromMap(Map<String, dynamic> map) {
     return CurrentSpendResponse(
-      amount: map['amount'] as double,
-      unit: map['unit'] as String,
+      amount: (map['amount'] as double).input(),
+      unit: (map['unit'] as String).input(),
     );
   }
 }

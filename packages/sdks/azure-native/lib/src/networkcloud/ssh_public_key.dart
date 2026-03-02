@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SshPublicKey {
   /// The SSH public key data.
-  final String keyData;
+  final pulumi.Input<String> keyData;
 
   /// Creates a new [SshPublicKey].
   /// [keyData] The SSH public key data.
@@ -19,7 +20,7 @@ class SshPublicKey {
 
   factory SshPublicKey.fromMap(Map<String, dynamic> map) {
     return SshPublicKey(
-      keyData: map['keyData'] as String,
+      keyData: (map['keyData'] as String).input(),
     );
   }
 }

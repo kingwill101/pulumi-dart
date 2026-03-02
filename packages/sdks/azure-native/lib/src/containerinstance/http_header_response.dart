@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The HTTP header.
 class HttpHeaderResponse {
   /// The header name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The header value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [HttpHeaderResponse].
   /// [name] The header name.
@@ -25,8 +26,8 @@ class HttpHeaderResponse {
 
   factory HttpHeaderResponse.fromMap(Map<String, dynamic> map) {
     return HttpHeaderResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

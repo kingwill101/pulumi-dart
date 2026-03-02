@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigFileResponse {
   /// The contents of the file.
-  final String content;
+  final pulumi.Input<String> content;
 
   /// Creates a new [ConfigFileResponse].
   /// [content] The contents of the file.
@@ -19,7 +20,7 @@ class ConfigFileResponse {
 
   factory ConfigFileResponse.fromMap(Map<String, dynamic> map) {
     return ConfigFileResponse(
-      content: map['content'] as String,
+      content: (map['content'] as String).input(),
     );
   }
 }

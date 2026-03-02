@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StackStreamingExperienceSettings {
   /// The preferred protocol that you want to use while streaming your application.
   /// Valid values are `TCP` and `UDP`.
-  final String? preferredProtocol;
+  final pulumi.Input<String>? preferredProtocol;
 
   /// Creates a new [StackStreamingExperienceSettings].
   /// [preferredProtocol] The preferred protocol that you want to use while streaming your application.
@@ -20,7 +21,7 @@ class StackStreamingExperienceSettings {
 
   factory StackStreamingExperienceSettings.fromMap(Map<String, dynamic> map) {
     return StackStreamingExperienceSettings(
-      preferredProtocol: map['preferredProtocol'] == null ? null : map['preferredProtocol'] as String,
+      preferredProtocol: map['preferredProtocol'] == null ? null : (map['preferredProtocol'] as String).input(),
     );
   }
 }

@@ -34,25 +34,16 @@ class ApprovalRuleTemplateState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleContentSha256] The SHA-256 hash signature for the content of the approval rule template.
   ApprovalRuleTemplateState({
-    pulumi.Output<String>? approvalRuleTemplateId,
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? creationDate,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? lastModifiedDate,
-    pulumi.Output<String>? lastModifiedUser,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? ruleContentSha256,
-  }) :
-      approvalRuleTemplateId = pulumi.Input.asOptionalInput<String>(approvalRuleTemplateId),
-      content = pulumi.Input.asOptionalInput<String>(content),
-      creationDate = pulumi.Input.asOptionalInput<String>(creationDate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      lastModifiedDate = pulumi.Input.asOptionalInput<String>(lastModifiedDate),
-      lastModifiedUser = pulumi.Input.asOptionalInput<String>(lastModifiedUser),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleContentSha256 = pulumi.Input.asOptionalInput<String>(ruleContentSha256);
+    this.approvalRuleTemplateId,
+    this.content,
+    this.creationDate,
+    this.description,
+    this.lastModifiedDate,
+    this.lastModifiedUser,
+    this.name,
+    this.region,
+    this.ruleContentSha256,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class ApprovalRuleTemplateState {
 
   factory ApprovalRuleTemplateState.fromMap(Map<String, dynamic> map) {
     return ApprovalRuleTemplateState(
-      approvalRuleTemplateId: map['approvalRuleTemplateId'] == null ? null : pulumi.Output.create<String>(map['approvalRuleTemplateId'] as String),
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      creationDate: map['creationDate'] == null ? null : pulumi.Output.create<String>(map['creationDate'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      lastModifiedDate: map['lastModifiedDate'] == null ? null : pulumi.Output.create<String>(map['lastModifiedDate'] as String),
-      lastModifiedUser: map['lastModifiedUser'] == null ? null : pulumi.Output.create<String>(map['lastModifiedUser'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleContentSha256: map['ruleContentSha256'] == null ? null : pulumi.Output.create<String>(map['ruleContentSha256'] as String),
+      approvalRuleTemplateId: map['approvalRuleTemplateId'] == null ? null : (map['approvalRuleTemplateId'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      creationDate: map['creationDate'] == null ? null : (map['creationDate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      lastModifiedDate: map['lastModifiedDate'] == null ? null : (map['lastModifiedDate'] as String).input(),
+      lastModifiedUser: map['lastModifiedUser'] == null ? null : (map['lastModifiedUser'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleContentSha256: map['ruleContentSha256'] == null ? null : (map['ruleContentSha256'] as String).input(),
     );
   }
 }

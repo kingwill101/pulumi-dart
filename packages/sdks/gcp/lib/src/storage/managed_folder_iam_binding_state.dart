@@ -39,19 +39,13 @@ class ManagedFolderIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   ManagedFolderIamBindingState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<ManagedFolderIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? managedFolder,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? role,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      condition = pulumi.Input.asOptionalInput<ManagedFolderIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      managedFolder = pulumi.Input.asOptionalInput<String>(managedFolder),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.bucket,
+    this.condition,
+    this.etag,
+    this.managedFolder,
+    this.members,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class ManagedFolderIamBindingState {
 
   factory ManagedFolderIamBindingState.fromMap(Map<String, dynamic> map) {
     return ManagedFolderIamBindingState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<ManagedFolderIamBindingCondition>(ManagedFolderIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      managedFolder: map['managedFolder'] == null ? null : pulumi.Output.create<String>(map['managedFolder'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      condition: map['condition'] == null ? null : (ManagedFolderIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      managedFolder: map['managedFolder'] == null ? null : (map['managedFolder'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

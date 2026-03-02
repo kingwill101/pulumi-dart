@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Offline configuration
 class SqlDbOfflineConfigurationResponse {
   /// Offline migration
-  final bool offline;
+  final pulumi.Input<bool> offline;
 
   /// Creates a new [SqlDbOfflineConfigurationResponse].
   /// [offline] Offline migration
@@ -20,7 +21,7 @@ class SqlDbOfflineConfigurationResponse {
 
   factory SqlDbOfflineConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SqlDbOfflineConfigurationResponse(
-      offline: map['offline'] as bool,
+      offline: (map['offline'] as bool).input(),
     );
   }
 }

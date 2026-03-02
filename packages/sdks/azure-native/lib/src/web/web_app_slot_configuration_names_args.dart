@@ -28,19 +28,13 @@ class WebAppSlotConfigurationNamesArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   WebAppSlotConfigurationNamesArgs({
-    pulumi.Output<List<String>>? appSettingNames,
-    pulumi.Output<List<String>>? azureStorageConfigNames,
-    pulumi.Output<List<String>>? connectionStringNames,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      appSettingNames = pulumi.Input.asOptionalInput<List<String>>(appSettingNames),
-      azureStorageConfigNames = pulumi.Input.asOptionalInput<List<String>>(azureStorageConfigNames),
-      connectionStringNames = pulumi.Input.asOptionalInput<List<String>>(connectionStringNames),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.appSettingNames,
+    this.azureStorageConfigNames,
+    this.connectionStringNames,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class WebAppSlotConfigurationNamesArgs {
 
   factory WebAppSlotConfigurationNamesArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSlotConfigurationNamesArgs(
-      appSettingNames: map['appSettingNames'] == null ? null : pulumi.Output.create<List<String>>((map['appSettingNames'] as List).cast<String>()),
-      azureStorageConfigNames: map['azureStorageConfigNames'] == null ? null : pulumi.Output.create<List<String>>((map['azureStorageConfigNames'] as List).cast<String>()),
-      connectionStringNames: map['connectionStringNames'] == null ? null : pulumi.Output.create<List<String>>((map['connectionStringNames'] as List).cast<String>()),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      appSettingNames: map['appSettingNames'] == null ? null : ((map['appSettingNames'] as List).cast<String>()).input(),
+      azureStorageConfigNames: map['azureStorageConfigNames'] == null ? null : ((map['azureStorageConfigNames'] as List).cast<String>()).input(),
+      connectionStringNames: map['connectionStringNames'] == null ? null : ((map['connectionStringNames'] as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

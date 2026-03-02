@@ -16,11 +16,9 @@ class GetGroupRoleManagementPolicyArgs {
   /// [groupId] The ID of the Azure AD group for which the policy applies.
   /// [roleId] The type of assignment this policy coveres. Can be either `member` or `owner`.
   GetGroupRoleManagementPolicyArgs({
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> roleId,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      roleId = pulumi.Input.asInput<String>(roleId);
+    required this.groupId,
+    required this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetGroupRoleManagementPolicyArgs {
 
   factory GetGroupRoleManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupRoleManagementPolicyArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      roleId: pulumi.Output.create<String>(map['roleId'] as String),
+      groupId: (map['groupId'] as String).input(),
+      roleId: (map['roleId'] as String).input(),
     );
   }
 }

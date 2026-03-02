@@ -35,21 +35,14 @@ class NetworkArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] The name of the target Distributed Cloud Edge zone.
   NetworkArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? mtu,
-    required pulumi.Output<String> networkId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> zone,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      mtu = pulumi.Input.asOptionalInput<int>(mtu),
-      networkId = pulumi.Input.asInput<String>(networkId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+    this.description,
+    this.labels,
+    required this.location,
+    this.mtu,
+    required this.networkId,
+    this.project,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class NetworkArgs {
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      mtu: map['mtu'] == null ? null : pulumi.Output.create<int>(map['mtu'] as int),
-      networkId: pulumi.Output.create<String>(map['networkId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      networkId: (map['networkId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

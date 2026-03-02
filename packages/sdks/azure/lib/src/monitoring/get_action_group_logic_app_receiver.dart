@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetActionGroupLogicAppReceiver {
   /// The callback url where HTTP request sent to.
-  final String callbackUrl;
+  final pulumi.Input<String> callbackUrl;
   /// Specifies the name of the Action Group.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Azure resource ID of the logic app.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// Indicates whether to use common alert schema.
-  final bool useCommonAlertSchema;
+  final pulumi.Input<bool> useCommonAlertSchema;
 
   /// Creates a new [GetActionGroupLogicAppReceiver].
   /// [callbackUrl] The callback url where HTTP request sent to.
@@ -34,10 +35,10 @@ class GetActionGroupLogicAppReceiver {
 
   factory GetActionGroupLogicAppReceiver.fromMap(Map<String, dynamic> map) {
     return GetActionGroupLogicAppReceiver(
-      callbackUrl: map['callbackUrl'] as String,
-      name: map['name'] as String,
-      resourceId: map['resourceId'] as String,
-      useCommonAlertSchema: map['useCommonAlertSchema'] as bool,
+      callbackUrl: (map['callbackUrl'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      useCommonAlertSchema: (map['useCommonAlertSchema'] as bool).input(),
     );
   }
 }

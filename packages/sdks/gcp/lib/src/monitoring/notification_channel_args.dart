@@ -54,25 +54,16 @@ class NotificationChannelArgs {
   /// [type] The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
   /// [userLabels] User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
   NotificationChannelArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? forceDelete,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    pulumi.Output<NotificationChannelSensitiveLabels>? sensitiveLabels,
-    required pulumi.Output<String> type,
-    pulumi.Output<Map<String, String>>? userLabels,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sensitiveLabels = pulumi.Input.asOptionalInput<NotificationChannelSensitiveLabels>(sensitiveLabels),
-      type = pulumi.Input.asInput<String>(type),
-      userLabels = pulumi.Input.asOptionalInput<Map<String, String>>(userLabels);
+    this.description,
+    this.displayName,
+    this.enabled,
+    this.forceDelete,
+    this.labels,
+    this.project,
+    this.sensitiveLabels,
+    required this.type,
+    this.userLabels,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,15 +81,15 @@ class NotificationChannelArgs {
 
   factory NotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return NotificationChannelArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sensitiveLabels: map['sensitiveLabels'] == null ? null : pulumi.Output.create<NotificationChannelSensitiveLabels>(NotificationChannelSensitiveLabels.fromMap((map['sensitiveLabels'] as Map).cast<String, dynamic>())),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      userLabels: map['userLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['userLabels'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sensitiveLabels: map['sensitiveLabels'] == null ? null : (NotificationChannelSensitiveLabels.fromMap((map['sensitiveLabels'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
     );
   }
 }

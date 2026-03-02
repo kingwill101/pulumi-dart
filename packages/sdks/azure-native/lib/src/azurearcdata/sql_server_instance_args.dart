@@ -26,17 +26,12 @@ class SqlServerInstanceArgs {
   /// [sqlServerInstanceName] Name of SQL Server Instance
   /// [tags] Resource tags.
   SqlServerInstanceArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<SqlServerInstanceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sqlServerInstanceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<SqlServerInstanceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlServerInstanceName = pulumi.Input.asOptionalInput<String>(sqlServerInstanceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.sqlServerInstanceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class SqlServerInstanceArgs {
 
   factory SqlServerInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerInstanceArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<SqlServerInstanceProperties>(SqlServerInstanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlServerInstanceName: map['sqlServerInstanceName'] == null ? null : pulumi.Output.create<String>(map['sqlServerInstanceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (SqlServerInstanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlServerInstanceName: map['sqlServerInstanceName'] == null ? null : (map['sqlServerInstanceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

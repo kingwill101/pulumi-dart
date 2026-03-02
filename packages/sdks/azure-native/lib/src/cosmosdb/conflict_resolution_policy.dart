@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The conflict resolution policy for the container.
 class ConflictResolutionPolicy {
   /// The conflict resolution path in the case of LastWriterWins mode.
-  final String? conflictResolutionPath;
+  final pulumi.Input<String>? conflictResolutionPath;
   /// The procedure to resolve conflicts in the case of custom mode.
-  final String? conflictResolutionProcedure;
+  final pulumi.Input<String>? conflictResolutionProcedure;
   /// Indicates the conflict resolution mode.
-  final String? mode;
+  final pulumi.Input<String>? mode;
 
   /// Creates a new [ConflictResolutionPolicy].
   /// [conflictResolutionPath] The conflict resolution path in the case of LastWriterWins mode.
@@ -30,9 +31,9 @@ class ConflictResolutionPolicy {
 
   factory ConflictResolutionPolicy.fromMap(Map<String, dynamic> map) {
     return ConflictResolutionPolicy(
-      conflictResolutionPath: map['conflictResolutionPath'] == null ? null : map['conflictResolutionPath'] as String,
-      conflictResolutionProcedure: map['conflictResolutionProcedure'] == null ? null : map['conflictResolutionProcedure'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      conflictResolutionPath: map['conflictResolutionPath'] == null ? null : (map['conflictResolutionPath'] as String).input(),
+      conflictResolutionProcedure: map['conflictResolutionProcedure'] == null ? null : (map['conflictResolutionProcedure'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
     );
   }
 }

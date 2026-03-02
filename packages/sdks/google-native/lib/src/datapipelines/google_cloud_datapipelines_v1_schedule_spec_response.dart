@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the schedule the pipeline runs on.
 class GoogleCloudDatapipelinesV1ScheduleSpecResponse {
   /// When the next Scheduler job is going to run.
-  final String nextJobTime;
+  final pulumi.Input<String> nextJobTime;
   /// Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
-  final String schedule;
+  final pulumi.Input<String> schedule;
   /// Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
-  final String timeZone;
+  final pulumi.Input<String> timeZone;
 
   /// Creates a new [GoogleCloudDatapipelinesV1ScheduleSpecResponse].
   /// [nextJobTime] When the next Scheduler job is going to run.
@@ -30,9 +31,9 @@ class GoogleCloudDatapipelinesV1ScheduleSpecResponse {
 
   factory GoogleCloudDatapipelinesV1ScheduleSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatapipelinesV1ScheduleSpecResponse(
-      nextJobTime: map['nextJobTime'] as String,
-      schedule: map['schedule'] as String,
-      timeZone: map['timeZone'] as String,
+      nextJobTime: (map['nextJobTime'] as String).input(),
+      schedule: (map['schedule'] as String).input(),
+      timeZone: (map['timeZone'] as String).input(),
     );
   }
 }

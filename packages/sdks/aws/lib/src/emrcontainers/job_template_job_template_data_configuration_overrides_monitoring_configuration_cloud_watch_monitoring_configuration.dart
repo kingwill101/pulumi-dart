@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration {
   /// The name of the log group for log publishing.
-  final String logGroupName;
+  final pulumi.Input<String> logGroupName;
   /// The specified name prefix for log streams.
-  final String? logStreamNamePrefix;
+  final pulumi.Input<String>? logStreamNamePrefix;
 
   /// Creates a new [JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration].
   /// [logGroupName] The name of the log group for log publishing.
@@ -24,8 +25,8 @@ class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationClo
 
   factory JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration(
-      logGroupName: map['logGroupName'] as String,
-      logStreamNamePrefix: map['logStreamNamePrefix'] == null ? null : map['logStreamNamePrefix'] as String,
+      logGroupName: (map['logGroupName'] as String).input(),
+      logStreamNamePrefix: map['logStreamNamePrefix'] == null ? null : (map['logStreamNamePrefix'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class SslVpnClientCertArgs {
   /// [name] The name of the client certificate.
   /// [sslVpnServerId] The ID of the SSL-VPN server.
   SslVpnClientCertArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> sslVpnServerId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sslVpnServerId = pulumi.Input.asInput<String>(sslVpnServerId);
+    this.name,
+    required this.sslVpnServerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class SslVpnClientCertArgs {
 
   factory SslVpnClientCertArgs.fromMap(Map<String, dynamic> map) {
     return SslVpnClientCertArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sslVpnServerId: pulumi.Output.create<String>(map['sslVpnServerId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sslVpnServerId: (map['sslVpnServerId'] as String).input(),
     );
   }
 }

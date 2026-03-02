@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Compliance Status details
 class ComplianceStatusResponse {
   /// The compliance state of the configuration.
-  final String complianceState;
+  final pulumi.Input<String> complianceState;
   /// Datetime the configuration was last applied.
-  final String? lastConfigApplied;
+  final pulumi.Input<String>? lastConfigApplied;
   /// Message from when the configuration was applied.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Level of the message.
-  final String? messageLevel;
+  final pulumi.Input<String>? messageLevel;
 
   /// Creates a new [ComplianceStatusResponse].
   /// [complianceState] The compliance state of the configuration.
@@ -35,10 +36,10 @@ class ComplianceStatusResponse {
 
   factory ComplianceStatusResponse.fromMap(Map<String, dynamic> map) {
     return ComplianceStatusResponse(
-      complianceState: map['complianceState'] as String,
-      lastConfigApplied: map['lastConfigApplied'] == null ? null : map['lastConfigApplied'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      messageLevel: map['messageLevel'] == null ? null : map['messageLevel'] as String,
+      complianceState: (map['complianceState'] as String).input(),
+      lastConfigApplied: map['lastConfigApplied'] == null ? null : (map['lastConfigApplied'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      messageLevel: map['messageLevel'] == null ? null : (map['messageLevel'] as String).input(),
     );
   }
 }

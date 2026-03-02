@@ -14,11 +14,9 @@ class GetManagedFolderIamPolicyArgs {
   /// [bucket] Required.
   /// [managedFolder] Required.
   GetManagedFolderIamPolicyArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<String> managedFolder,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      managedFolder = pulumi.Input.asInput<String>(managedFolder);
+    required this.bucket,
+    required this.managedFolder,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetManagedFolderIamPolicyArgs {
 
   factory GetManagedFolderIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedFolderIamPolicyArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      managedFolder: pulumi.Output.create<String>(map['managedFolder'] as String),
+      bucket: (map['bucket'] as String).input(),
+      managedFolder: (map['managedFolder'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class RequestValidatorArgs {
   /// [validateRequestBody] Boolean whether to validate request body. Defaults to `false`.
   /// [validateRequestParameters] Boolean whether to validate request parameters. Defaults to `false`.
   RequestValidatorArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> restApi,
-    pulumi.Output<bool>? validateRequestBody,
-    pulumi.Output<bool>? validateRequestParameters,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApi = pulumi.Input.asInput<String>(restApi),
-      validateRequestBody = pulumi.Input.asOptionalInput<bool>(validateRequestBody),
-      validateRequestParameters = pulumi.Input.asOptionalInput<bool>(validateRequestParameters);
+    this.name,
+    this.region,
+    required this.restApi,
+    this.validateRequestBody,
+    this.validateRequestParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class RequestValidatorArgs {
 
   factory RequestValidatorArgs.fromMap(Map<String, dynamic> map) {
     return RequestValidatorArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApi: pulumi.Output.create<String>(map['restApi'] as String),
-      validateRequestBody: map['validateRequestBody'] == null ? null : pulumi.Output.create<bool>(map['validateRequestBody'] as bool),
-      validateRequestParameters: map['validateRequestParameters'] == null ? null : pulumi.Output.create<bool>(map['validateRequestParameters'] as bool),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApi: (map['restApi'] as String).input(),
+      validateRequestBody: map['validateRequestBody'] == null ? null : (map['validateRequestBody'] as bool).input(),
+      validateRequestParameters: map['validateRequestParameters'] == null ? null : (map['validateRequestParameters'] as bool).input(),
     );
   }
 }

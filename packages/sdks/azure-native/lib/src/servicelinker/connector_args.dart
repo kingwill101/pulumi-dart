@@ -52,31 +52,19 @@ class ConnectorArgs {
   /// [targetService] The target service properties
   /// [vNetSolution] The VNet solution.
   ConnectorArgs({
-    pulumi.Output<AccessKeyInfoBase>? authInfo,
-    pulumi.Output<String>? clientType,
-    pulumi.Output<ConfigurationInfo>? configurationInfo,
-    pulumi.Output<String>? connectorName,
-    required pulumi.Output<String> location,
-    pulumi.Output<PublicNetworkSolution>? publicNetworkSolution,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scope,
-    pulumi.Output<SecretStore>? secretStore,
-    pulumi.Output<String>? subscriptionId,
-    pulumi.Output<AzureResource>? targetService,
-    pulumi.Output<VNetSolution>? vNetSolution,
-  }) :
-      authInfo = pulumi.Input.asOptionalInput<AccessKeyInfoBase>(authInfo),
-      clientType = pulumi.Input.asOptionalInput<String>(clientType),
-      configurationInfo = pulumi.Input.asOptionalInput<ConfigurationInfo>(configurationInfo),
-      connectorName = pulumi.Input.asOptionalInput<String>(connectorName),
-      location = pulumi.Input.asInput<String>(location),
-      publicNetworkSolution = pulumi.Input.asOptionalInput<PublicNetworkSolution>(publicNetworkSolution),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      secretStore = pulumi.Input.asOptionalInput<SecretStore>(secretStore),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      targetService = pulumi.Input.asOptionalInput<AzureResource>(targetService),
-      vNetSolution = pulumi.Input.asOptionalInput<VNetSolution>(vNetSolution);
+    this.authInfo,
+    this.clientType,
+    this.configurationInfo,
+    this.connectorName,
+    required this.location,
+    this.publicNetworkSolution,
+    required this.resourceGroupName,
+    this.scope,
+    this.secretStore,
+    this.subscriptionId,
+    this.targetService,
+    this.vNetSolution,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      authInfo: map['authInfo'] == null ? null : pulumi.Output.create<AccessKeyInfoBase>(AccessKeyInfoBase.fromMap((map['authInfo'] as Map).cast<String, dynamic>())),
-      clientType: map['clientType'] == null ? null : pulumi.Output.create<String>(map['clientType'] as String),
-      configurationInfo: map['configurationInfo'] == null ? null : pulumi.Output.create<ConfigurationInfo>(ConfigurationInfo.fromMap((map['configurationInfo'] as Map).cast<String, dynamic>())),
-      connectorName: map['connectorName'] == null ? null : pulumi.Output.create<String>(map['connectorName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      publicNetworkSolution: map['publicNetworkSolution'] == null ? null : pulumi.Output.create<PublicNetworkSolution>(PublicNetworkSolution.fromMap((map['publicNetworkSolution'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      secretStore: map['secretStore'] == null ? null : pulumi.Output.create<SecretStore>(SecretStore.fromMap((map['secretStore'] as Map).cast<String, dynamic>())),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      targetService: map['targetService'] == null ? null : pulumi.Output.create<AzureResource>(AzureResource.fromMap((map['targetService'] as Map).cast<String, dynamic>())),
-      vNetSolution: map['vNetSolution'] == null ? null : pulumi.Output.create<VNetSolution>(VNetSolution.fromMap((map['vNetSolution'] as Map).cast<String, dynamic>())),
+      authInfo: map['authInfo'] == null ? null : (AccessKeyInfoBase.fromMap((map['authInfo'] as Map).cast<String, dynamic>())).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
+      configurationInfo: map['configurationInfo'] == null ? null : (ConfigurationInfo.fromMap((map['configurationInfo'] as Map).cast<String, dynamic>())).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
+      location: (map['location'] as String).input(),
+      publicNetworkSolution: map['publicNetworkSolution'] == null ? null : (PublicNetworkSolution.fromMap((map['publicNetworkSolution'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      secretStore: map['secretStore'] == null ? null : (SecretStore.fromMap((map['secretStore'] as Map).cast<String, dynamic>())).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      targetService: map['targetService'] == null ? null : (AzureResource.fromMap((map['targetService'] as Map).cast<String, dynamic>())).input(),
+      vNetSolution: map['vNetSolution'] == null ? null : (VNetSolution.fromMap((map['vNetSolution'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

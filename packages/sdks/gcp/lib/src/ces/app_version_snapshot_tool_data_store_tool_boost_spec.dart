@@ -8,11 +8,11 @@ class AppVersionSnapshotToolDataStoreToolBoostSpec {
   /// The Data Store where the boosting configuration is applied. Full resource
   /// name of DataStore, such as
   /// projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
-  final List<String>? dataStores;
+  final pulumi.Input<List<String>>? dataStores;
   /// (Output)
   /// A list of boosting specifications.
   /// Structure is documented below.
-  final List<AppVersionSnapshotToolDataStoreToolBoostSpecSpec>? specs;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpec>>? specs;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolBoostSpec].
   /// [dataStores] (Output)
@@ -25,14 +25,14 @@ class AppVersionSnapshotToolDataStoreToolBoostSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataStores': ?dataStores,
-      'specs': ?specs == null ? null : pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpec, Map<String, dynamic>>(specs!, (value) => value.toMap()),
+      'specs': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpec>, List<Map<String, dynamic>>>(specs, (value) => pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AppVersionSnapshotToolDataStoreToolBoostSpec.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolBoostSpec(
-      dataStores: map['dataStores'] == null ? null : (map['dataStores'] as List).cast<String>(),
-      specs: map['specs'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpec>(map['specs'], (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpec.fromMap((value as Map).cast<String, dynamic>())),
+      dataStores: map['dataStores'] == null ? null : ((map['dataStores'] as List).cast<String>()).input(),
+      specs: map['specs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpec>(map['specs'], (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

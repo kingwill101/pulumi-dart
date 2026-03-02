@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FastHttpsAppPoolMember {
   /// List of server address to be used for FAST-Generated Pool.
-  final List<String> addresses;
+  final pulumi.Input<List<String>> addresses;
   /// connectionLimit value to be used for FAST-Generated Pool.
-  final int? connectionLimit;
+  final pulumi.Input<int>? connectionLimit;
   /// port number of serviceport to be used for FAST-Generated Pool.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// priorityGroup value to be used for FAST-Generated Pool.
-  final int? priorityGroup;
+  final pulumi.Input<int>? priorityGroup;
   /// shareNodes value to be used for FAST-Generated Pool.
-  final bool? shareNodes;
+  final pulumi.Input<bool>? shareNodes;
 
   /// Creates a new [FastHttpsAppPoolMember].
   /// [addresses] List of server address to be used for FAST-Generated Pool.
@@ -39,11 +40,11 @@ class FastHttpsAppPoolMember {
 
   factory FastHttpsAppPoolMember.fromMap(Map<String, dynamic> map) {
     return FastHttpsAppPoolMember(
-      addresses: (map['addresses'] as List).cast<String>(),
-      connectionLimit: map['connectionLimit'] == null ? null : map['connectionLimit'] as int,
-      port: map['port'] == null ? null : map['port'] as int,
-      priorityGroup: map['priorityGroup'] == null ? null : map['priorityGroup'] as int,
-      shareNodes: map['shareNodes'] == null ? null : map['shareNodes'] as bool,
+      addresses: ((map['addresses'] as List).cast<String>()).input(),
+      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit'] as int).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      priorityGroup: map['priorityGroup'] == null ? null : (map['priorityGroup'] as int).input(),
+      shareNodes: map['shareNodes'] == null ? null : (map['shareNodes'] as bool).input(),
     );
   }
 }

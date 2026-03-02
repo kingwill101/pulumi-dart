@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionTracingConfig {
   /// Tracing mode. Valid values: `Active`, `PassThrough`.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [GetFunctionTracingConfig].
   /// [mode] Tracing mode. Valid values: `Active`, `PassThrough`.
@@ -19,7 +20,7 @@ class GetFunctionTracingConfig {
 
   factory GetFunctionTracingConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionTracingConfig(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

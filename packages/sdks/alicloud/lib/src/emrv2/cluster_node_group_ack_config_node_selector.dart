@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeGroupAckConfigNodeSelector {
   /// The tag key for this scaling rule specific metrics trigger.
-  final String key;
+  final pulumi.Input<String> key;
   /// The tag value for this scaling rule specific metrics trigger.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ClusterNodeGroupAckConfigNodeSelector].
   /// [key] The tag key for this scaling rule specific metrics trigger.
@@ -24,8 +25,8 @@ class ClusterNodeGroupAckConfigNodeSelector {
 
   factory ClusterNodeGroupAckConfigNodeSelector.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAckConfigNodeSelector(
-      key: map['key'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

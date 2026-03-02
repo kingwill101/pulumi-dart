@@ -43,19 +43,13 @@ class GroupArgs {
   /// [labels] One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
   /// [parent] The resource name of the entity under which this Group resides in the
   GroupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<GroupGroupKey> groupKey,
-    pulumi.Output<String>? initialGroupConfig,
-    required pulumi.Output<Map<String, String>> labels,
-    required pulumi.Output<String> parent,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      groupKey = pulumi.Input.asInput<GroupGroupKey>(groupKey),
-      initialGroupConfig = pulumi.Input.asOptionalInput<String>(initialGroupConfig),
-      labels = pulumi.Input.asInput<Map<String, String>>(labels),
-      parent = pulumi.Input.asInput<String>(parent);
+    this.description,
+    this.displayName,
+    required this.groupKey,
+    this.initialGroupConfig,
+    required this.labels,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,12 +64,12 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      groupKey: pulumi.Output.create<GroupGroupKey>(GroupGroupKey.fromMap((map['groupKey'] as Map).cast<String, dynamic>())),
-      initialGroupConfig: map['initialGroupConfig'] == null ? null : pulumi.Output.create<String>(map['initialGroupConfig'] as String),
-      labels: pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      groupKey: (GroupGroupKey.fromMap((map['groupKey'] as Map).cast<String, dynamic>())).input(),
+      initialGroupConfig: map['initialGroupConfig'] == null ? null : (map['initialGroupConfig'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

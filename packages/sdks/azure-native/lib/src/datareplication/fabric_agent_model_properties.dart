@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_model.dart';
 import 'vmware_fabric_agent_model_custom_properties.dart';
 
 /// Fabric agent model properties.
 class FabricAgentModelProperties {
   /// Identity model.
-  final IdentityModel authenticationIdentity;
+  final pulumi.Input<IdentityModel> authenticationIdentity;
   /// Fabric agent model custom properties.
-  final VMwareFabricAgentModelCustomProperties customProperties;
+  final pulumi.Input<VMwareFabricAgentModelCustomProperties> customProperties;
   /// Gets or sets the machine Id where fabric agent is running.
-  final String machineId;
+  final pulumi.Input<String> machineId;
   /// Gets or sets the machine name where fabric agent is running.
-  final String machineName;
+  final pulumi.Input<String> machineName;
   /// Identity model.
-  final IdentityModel resourceAccessIdentity;
+  final pulumi.Input<IdentityModel> resourceAccessIdentity;
 
   /// Creates a new [FabricAgentModelProperties].
   /// [authenticationIdentity] Identity model.
@@ -32,21 +33,21 @@ class FabricAgentModelProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticationIdentity': authenticationIdentity.toMap(),
-      'customProperties': customProperties.toMap(),
+      'authenticationIdentity': pulumi.Input.mapInputValue<IdentityModel, Map<String, dynamic>>(authenticationIdentity, (value) => value.toMap()),
+      'customProperties': pulumi.Input.mapInputValue<VMwareFabricAgentModelCustomProperties, Map<String, dynamic>>(customProperties, (value) => value.toMap()),
       'machineId': machineId,
       'machineName': machineName,
-      'resourceAccessIdentity': resourceAccessIdentity.toMap(),
+      'resourceAccessIdentity': pulumi.Input.mapInputValue<IdentityModel, Map<String, dynamic>>(resourceAccessIdentity, (value) => value.toMap()),
     };
   }
 
   factory FabricAgentModelProperties.fromMap(Map<String, dynamic> map) {
     return FabricAgentModelProperties(
-      authenticationIdentity: IdentityModel.fromMap((map['authenticationIdentity'] as Map).cast<String, dynamic>()),
-      customProperties: VMwareFabricAgentModelCustomProperties.fromMap((map['customProperties'] as Map).cast<String, dynamic>()),
-      machineId: map['machineId'] as String,
-      machineName: map['machineName'] as String,
-      resourceAccessIdentity: IdentityModel.fromMap((map['resourceAccessIdentity'] as Map).cast<String, dynamic>()),
+      authenticationIdentity: (IdentityModel.fromMap((map['authenticationIdentity'] as Map).cast<String, dynamic>())).input(),
+      customProperties: (VMwareFabricAgentModelCustomProperties.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
+      machineId: (map['machineId'] as String).input(),
+      machineName: (map['machineName'] as String).input(),
+      resourceAccessIdentity: (IdentityModel.fromMap((map['resourceAccessIdentity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -46,31 +46,19 @@ class CatalogDatabaseState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetDatabase] Configuration block for a target database for resource linking. See `target_database` below.
   CatalogDatabaseState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<List<CatalogDatabaseCreateTableDefaultPermission>>? createTableDefaultPermissions,
-    pulumi.Output<String>? description,
-    pulumi.Output<CatalogDatabaseFederatedDatabase>? federatedDatabase,
-    pulumi.Output<String>? locationUri,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<CatalogDatabaseTargetDatabase>? targetDatabase,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      createTableDefaultPermissions = pulumi.Input.asOptionalInput<List<CatalogDatabaseCreateTableDefaultPermission>>(createTableDefaultPermissions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      federatedDatabase = pulumi.Input.asOptionalInput<CatalogDatabaseFederatedDatabase>(federatedDatabase),
-      locationUri = pulumi.Input.asOptionalInput<String>(locationUri),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      targetDatabase = pulumi.Input.asOptionalInput<CatalogDatabaseTargetDatabase>(targetDatabase);
+    this.arn,
+    this.catalogId,
+    this.createTableDefaultPermissions,
+    this.description,
+    this.federatedDatabase,
+    this.locationUri,
+    this.name,
+    this.parameters,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.targetDatabase,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class CatalogDatabaseState {
 
   factory CatalogDatabaseState.fromMap(Map<String, dynamic> map) {
     return CatalogDatabaseState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      createTableDefaultPermissions: map['createTableDefaultPermissions'] == null ? null : pulumi.Output.create<List<CatalogDatabaseCreateTableDefaultPermission>>(pulumi.Input.decodeList<CatalogDatabaseCreateTableDefaultPermission>(map['createTableDefaultPermissions'], (value) => CatalogDatabaseCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      federatedDatabase: map['federatedDatabase'] == null ? null : pulumi.Output.create<CatalogDatabaseFederatedDatabase>(CatalogDatabaseFederatedDatabase.fromMap((map['federatedDatabase'] as Map).cast<String, dynamic>())),
-      locationUri: map['locationUri'] == null ? null : pulumi.Output.create<String>(map['locationUri'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      targetDatabase: map['targetDatabase'] == null ? null : pulumi.Output.create<CatalogDatabaseTargetDatabase>(CatalogDatabaseTargetDatabase.fromMap((map['targetDatabase'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      createTableDefaultPermissions: map['createTableDefaultPermissions'] == null ? null : (pulumi.Input.decodeList<CatalogDatabaseCreateTableDefaultPermission>(map['createTableDefaultPermissions'], (value) => CatalogDatabaseCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      federatedDatabase: map['federatedDatabase'] == null ? null : (CatalogDatabaseFederatedDatabase.fromMap((map['federatedDatabase'] as Map).cast<String, dynamic>())).input(),
+      locationUri: map['locationUri'] == null ? null : (map['locationUri'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      targetDatabase: map['targetDatabase'] == null ? null : (CatalogDatabaseTargetDatabase.fromMap((map['targetDatabase'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

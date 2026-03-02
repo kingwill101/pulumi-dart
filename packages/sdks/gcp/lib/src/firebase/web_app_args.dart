@@ -24,15 +24,11 @@ class WebAppArgs {
   /// [displayName] The user-assigned display name of the App.
   /// [project] The ID of the project in which the resource belongs.
   WebAppArgs({
-    pulumi.Output<String>? apiKeyId,
-    pulumi.Output<String>? deletionPolicy,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? project,
-  }) :
-      apiKeyId = pulumi.Input.asOptionalInput<String>(apiKeyId),
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.apiKeyId,
+    this.deletionPolicy,
+    required this.displayName,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class WebAppArgs {
 
   factory WebAppArgs.fromMap(Map<String, dynamic> map) {
     return WebAppArgs(
-      apiKeyId: map['apiKeyId'] == null ? null : pulumi.Output.create<String>(map['apiKeyId'] as String),
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

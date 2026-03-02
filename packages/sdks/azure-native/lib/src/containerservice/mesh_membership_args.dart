@@ -26,17 +26,12 @@ class MeshMembershipArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
   MeshMembershipArgs({
-    pulumi.Output<String>? managedBy,
-    pulumi.Output<String>? meshMembershipName,
-    pulumi.Output<MeshMembershipProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      managedBy = pulumi.Input.asOptionalInput<String>(managedBy),
-      meshMembershipName = pulumi.Input.asOptionalInput<String>(meshMembershipName),
-      properties = pulumi.Input.asOptionalInput<MeshMembershipProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    this.managedBy,
+    this.meshMembershipName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class MeshMembershipArgs {
 
   factory MeshMembershipArgs.fromMap(Map<String, dynamic> map) {
     return MeshMembershipArgs(
-      managedBy: map['managedBy'] == null ? null : pulumi.Output.create<String>(map['managedBy'] as String),
-      meshMembershipName: map['meshMembershipName'] == null ? null : pulumi.Output.create<String>(map['meshMembershipName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<MeshMembershipProperties>(MeshMembershipProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
+      meshMembershipName: map['meshMembershipName'] == null ? null : (map['meshMembershipName'] as String).input(),
+      properties: map['properties'] == null ? null : (MeshMembershipProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

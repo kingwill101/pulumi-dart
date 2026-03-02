@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessGrantAccessGrantsLocationConfiguration {
   /// Sub-prefix.
-  final String? s3SubPrefix;
+  final pulumi.Input<String>? s3SubPrefix;
 
   /// Creates a new [AccessGrantAccessGrantsLocationConfiguration].
   /// [s3SubPrefix] Sub-prefix.
@@ -19,7 +20,7 @@ class AccessGrantAccessGrantsLocationConfiguration {
 
   factory AccessGrantAccessGrantsLocationConfiguration.fromMap(Map<String, dynamic> map) {
     return AccessGrantAccessGrantsLocationConfiguration(
-      s3SubPrefix: map['s3SubPrefix'] == null ? null : map['s3SubPrefix'] as String,
+      s3SubPrefix: map['s3SubPrefix'] == null ? null : (map['s3SubPrefix'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class InspectTemplateArgs {
   /// [project] Optional.
   /// [templateId] The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
   InspectTemplateArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GooglePrivacyDlpV2InspectConfig>? inspectConfig,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? templateId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      inspectConfig = pulumi.Input.asOptionalInput<GooglePrivacyDlpV2InspectConfig>(inspectConfig),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId);
+    this.description,
+    this.displayName,
+    this.inspectConfig,
+    this.location,
+    this.project,
+    this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class InspectTemplateArgs {
 
   factory InspectTemplateArgs.fromMap(Map<String, dynamic> map) {
     return InspectTemplateArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      inspectConfig: map['inspectConfig'] == null ? null : pulumi.Output.create<GooglePrivacyDlpV2InspectConfig>(GooglePrivacyDlpV2InspectConfig.fromMap((map['inspectConfig'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      inspectConfig: map['inspectConfig'] == null ? null : (GooglePrivacyDlpV2InspectConfig.fromMap((map['inspectConfig'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
     );
   }
 }

@@ -6,13 +6,13 @@ import 'rules_engine_rule_match_condition.dart';
 
 class RulesEngineRule {
   /// An `action` block as defined below.
-  final RulesEngineRuleAction? action;
+  final pulumi.Input<RulesEngineRuleAction>? action;
   /// One or more `match_condition` block as defined below.
-  final List<RulesEngineRuleMatchCondition>? matchConditions;
+  final pulumi.Input<List<RulesEngineRuleMatchCondition>>? matchConditions;
   /// The name of the rule.
-  final String name;
+  final pulumi.Input<String> name;
   /// Priority of the rule, must be unique per rules engine definition.
-  final int priority;
+  final pulumi.Input<int> priority;
 
   /// Creates a new [RulesEngineRule].
   /// [action] An `action` block as defined below.
@@ -28,8 +28,8 @@ class RulesEngineRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?action == null ? null : action!.toMap(),
-      'matchConditions': ?matchConditions == null ? null : pulumi.Input.encodeList<RulesEngineRuleMatchCondition, Map<String, dynamic>>(matchConditions!, (value) => value.toMap()),
+      'action': ?pulumi.Input.mapOptionalInputValue<RulesEngineRuleAction, Map<String, dynamic>>(action, (value) => value.toMap()),
+      'matchConditions': ?pulumi.Input.mapOptionalInputValue<List<RulesEngineRuleMatchCondition>, List<Map<String, dynamic>>>(matchConditions, (value) => pulumi.Input.encodeList<RulesEngineRuleMatchCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'priority': priority,
     };
@@ -37,10 +37,10 @@ class RulesEngineRule {
 
   factory RulesEngineRule.fromMap(Map<String, dynamic> map) {
     return RulesEngineRule(
-      action: map['action'] == null ? null : RulesEngineRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      matchConditions: map['matchConditions'] == null ? null : pulumi.Input.decodeList<RulesEngineRuleMatchCondition>(map['matchConditions'], (value) => RulesEngineRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      priority: map['priority'] as int,
+      action: map['action'] == null ? null : (RulesEngineRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<RulesEngineRuleMatchCondition>(map['matchConditions'], (value) => RulesEngineRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
     );
   }
 }

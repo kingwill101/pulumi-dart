@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FaqS3Path {
   /// The name of the S3 bucket that contains the file.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// The name of the file.
   ///
   /// The following arguments are optional:
-  final String key;
+  final pulumi.Input<String> key;
 
   /// Creates a new [FaqS3Path].
   /// [bucket] The name of the S3 bucket that contains the file.
@@ -26,8 +27,8 @@ class FaqS3Path {
 
   factory FaqS3Path.fromMap(Map<String, dynamic> map) {
     return FaqS3Path(
-      bucket: map['bucket'] as String,
-      key: map['key'] as String,
+      bucket: (map['bucket'] as String).input(),
+      key: (map['key'] as String).input(),
     );
   }
 }

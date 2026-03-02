@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This is the executed Validation.
 class ExecutedValidationResponse {
   /// This property specifies the starting timestamp.
-  final String? executionTime;
+  final pulumi.Input<String>? executionTime;
   /// This property specifies the status of the validationProfile of the image version.
-  final String status;
+  final pulumi.Input<String> status;
   /// This property specifies the type of image version validation.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// This property specifies the valid version of the validation.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ExecutedValidationResponse].
   /// [executionTime] This property specifies the starting timestamp.
@@ -35,10 +36,10 @@ class ExecutedValidationResponse {
 
   factory ExecutedValidationResponse.fromMap(Map<String, dynamic> map) {
     return ExecutedValidationResponse(
-      executionTime: map['executionTime'] == null ? null : map['executionTime'] as String,
-      status: map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      executionTime: map['executionTime'] == null ? null : (map['executionTime'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

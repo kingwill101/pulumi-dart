@@ -29,17 +29,12 @@ class ServiceLevelArgs {
   /// [name] A short name for the SLI that will help anyone understand what it is about.
   /// [objective] The objective of the SLI, only one can be defined.
   ServiceLevelArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<ServiceLevelEvents> events,
-    required pulumi.Output<String> guid,
-    pulumi.Output<String>? name,
-    required pulumi.Output<ServiceLevelObjective> objective,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      events = pulumi.Input.asInput<ServiceLevelEvents>(events),
-      guid = pulumi.Input.asInput<String>(guid),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      objective = pulumi.Input.asInput<ServiceLevelObjective>(objective);
+    this.description,
+    required this.events,
+    required this.guid,
+    this.name,
+    required this.objective,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class ServiceLevelArgs {
 
   factory ServiceLevelArgs.fromMap(Map<String, dynamic> map) {
     return ServiceLevelArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      events: pulumi.Output.create<ServiceLevelEvents>(ServiceLevelEvents.fromMap((map['events'] as Map).cast<String, dynamic>())),
-      guid: pulumi.Output.create<String>(map['guid'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      objective: pulumi.Output.create<ServiceLevelObjective>(ServiceLevelObjective.fromMap((map['objective'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      events: (ServiceLevelEvents.fromMap((map['events'] as Map).cast<String, dynamic>())).input(),
+      guid: (map['guid'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      objective: (ServiceLevelObjective.fromMap((map['objective'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

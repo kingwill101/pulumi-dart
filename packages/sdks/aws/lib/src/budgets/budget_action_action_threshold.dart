@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetActionActionThreshold {
   /// The type of threshold for a notification. Valid values are `PERCENTAGE` or `ABSOLUTE_VALUE`.
-  final String actionThresholdType;
+  final pulumi.Input<String> actionThresholdType;
   /// The threshold of a notification.
-  final double actionThresholdValue;
+  final pulumi.Input<double> actionThresholdValue;
 
   /// Creates a new [BudgetActionActionThreshold].
   /// [actionThresholdType] The type of threshold for a notification. Valid values are `PERCENTAGE` or `ABSOLUTE_VALUE`.
@@ -24,8 +25,8 @@ class BudgetActionActionThreshold {
 
   factory BudgetActionActionThreshold.fromMap(Map<String, dynamic> map) {
     return BudgetActionActionThreshold(
-      actionThresholdType: map['actionThresholdType'] as String,
-      actionThresholdValue: map['actionThresholdValue'] as double,
+      actionThresholdType: (map['actionThresholdType'] as String).input(),
+      actionThresholdValue: (map['actionThresholdValue'] as double).input(),
     );
   }
 }

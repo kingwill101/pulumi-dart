@@ -24,17 +24,12 @@ class GcpUserAccessBindingArgs {
   /// [name] Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
   /// [organizationId] Required.
   GcpUserAccessBindingArgs({
-    pulumi.Output<List<String>>? accessLevels,
-    pulumi.Output<List<String>>? dryRunAccessLevels,
-    required pulumi.Output<String> groupKey,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-  }) :
-      accessLevels = pulumi.Input.asOptionalInput<List<String>>(accessLevels),
-      dryRunAccessLevels = pulumi.Input.asOptionalInput<List<String>>(dryRunAccessLevels),
-      groupKey = pulumi.Input.asInput<String>(groupKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    this.accessLevels,
+    this.dryRunAccessLevels,
+    required this.groupKey,
+    this.name,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class GcpUserAccessBindingArgs {
 
   factory GcpUserAccessBindingArgs.fromMap(Map<String, dynamic> map) {
     return GcpUserAccessBindingArgs(
-      accessLevels: map['accessLevels'] == null ? null : pulumi.Output.create<List<String>>((map['accessLevels'] as List).cast<String>()),
-      dryRunAccessLevels: map['dryRunAccessLevels'] == null ? null : pulumi.Output.create<List<String>>((map['dryRunAccessLevels'] as List).cast<String>()),
-      groupKey: pulumi.Output.create<String>(map['groupKey'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      accessLevels: map['accessLevels'] == null ? null : ((map['accessLevels'] as List).cast<String>()).input(),
+      dryRunAccessLevels: map['dryRunAccessLevels'] == null ? null : ((map['dryRunAccessLevels'] as List).cast<String>()).input(),
+      groupKey: (map['groupKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

@@ -13,11 +13,9 @@ class EventBusState {
   /// [description] The description of event bus.
   /// [eventBusName] The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
   EventBusState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? eventBusName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventBusName = pulumi.Input.asOptionalInput<String>(eventBusName);
+    this.description,
+    this.eventBusName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class EventBusState {
 
   factory EventBusState.fromMap(Map<String, dynamic> map) {
     return EventBusState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventBusName: map['eventBusName'] == null ? null : pulumi.Output.create<String>(map['eventBusName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName'] as String).input(),
     );
   }
 }

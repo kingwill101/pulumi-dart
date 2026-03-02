@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure backup parameters
 class AzureBackupParams {
   /// BackupType ; Full/Incremental etc
-  final String backupType;
+  final pulumi.Input<String> backupType;
   /// Type of the specific object - used for deserializing
   /// Expected value is 'AzureBackupParams'.
-  final String objectType;
+  final pulumi.Input<String> objectType;
 
   /// Creates a new [AzureBackupParams].
   /// [backupType] BackupType ; Full/Incremental etc
@@ -26,8 +27,8 @@ class AzureBackupParams {
 
   factory AzureBackupParams.fromMap(Map<String, dynamic> map) {
     return AzureBackupParams(
-      backupType: map['backupType'] as String,
-      objectType: map['objectType'] as String,
+      backupType: (map['backupType'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
     );
   }
 }

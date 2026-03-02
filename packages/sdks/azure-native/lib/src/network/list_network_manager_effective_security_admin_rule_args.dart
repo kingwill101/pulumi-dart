@@ -19,13 +19,10 @@ class ListNetworkManagerEffectiveSecurityAdminRuleArgs {
   /// [skipToken] When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
   /// [virtualNetworkName] The name of the virtual network.
   ListNetworkManagerEffectiveSecurityAdminRuleArgs({
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skipToken,
-    required pulumi.Output<String> virtualNetworkName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken),
-      virtualNetworkName = pulumi.Input.asInput<String>(virtualNetworkName);
+    required this.resourceGroupName,
+    this.skipToken,
+    required this.virtualNetworkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListNetworkManagerEffectiveSecurityAdminRuleArgs {
 
   factory ListNetworkManagerEffectiveSecurityAdminRuleArgs.fromMap(Map<String, dynamic> map) {
     return ListNetworkManagerEffectiveSecurityAdminRuleArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
-      virtualNetworkName: pulumi.Output.create<String>(map['virtualNetworkName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetThemeConfigurationTypographyFontFamily {
   /// Font family name.
-  final String fontFamily;
+  final pulumi.Input<String> fontFamily;
 
   /// Creates a new [GetThemeConfigurationTypographyFontFamily].
   /// [fontFamily] Font family name.
@@ -19,7 +20,7 @@ class GetThemeConfigurationTypographyFontFamily {
 
   factory GetThemeConfigurationTypographyFontFamily.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationTypographyFontFamily(
-      fontFamily: map['fontFamily'] as String,
+      fontFamily: (map['fontFamily'] as String).input(),
     );
   }
 }

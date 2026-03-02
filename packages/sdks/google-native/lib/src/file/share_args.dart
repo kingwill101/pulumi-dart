@@ -38,27 +38,17 @@ class ShareArgs {
   /// [project] Optional.
   /// [shareId] Required. The ID to use for the share. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
   ShareArgs({
-    pulumi.Output<String>? backup,
-    pulumi.Output<String>? capacityGb,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? mountName,
-    pulumi.Output<List<NfsExportOptionsFileV1beta1>>? nfsExportOptions,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> shareId,
-  }) :
-      backup = pulumi.Input.asOptionalInput<String>(backup),
-      capacityGb = pulumi.Input.asOptionalInput<String>(capacityGb),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mountName = pulumi.Input.asOptionalInput<String>(mountName),
-      nfsExportOptions = pulumi.Input.asOptionalInput<List<NfsExportOptionsFileV1beta1>>(nfsExportOptions),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      shareId = pulumi.Input.asInput<String>(shareId);
+    this.backup,
+    this.capacityGb,
+    this.description,
+    required this.instanceId,
+    this.labels,
+    this.location,
+    this.mountName,
+    this.nfsExportOptions,
+    this.project,
+    required this.shareId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class ShareArgs {
 
   factory ShareArgs.fromMap(Map<String, dynamic> map) {
     return ShareArgs(
-      backup: map['backup'] == null ? null : pulumi.Output.create<String>(map['backup'] as String),
-      capacityGb: map['capacityGb'] == null ? null : pulumi.Output.create<String>(map['capacityGb'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mountName: map['mountName'] == null ? null : pulumi.Output.create<String>(map['mountName'] as String),
-      nfsExportOptions: map['nfsExportOptions'] == null ? null : pulumi.Output.create<List<NfsExportOptionsFileV1beta1>>(pulumi.Input.decodeList<NfsExportOptionsFileV1beta1>(map['nfsExportOptions'], (value) => NfsExportOptionsFileV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      shareId: pulumi.Output.create<String>(map['shareId'] as String),
+      backup: map['backup'] == null ? null : (map['backup'] as String).input(),
+      capacityGb: map['capacityGb'] == null ? null : (map['capacityGb'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mountName: map['mountName'] == null ? null : (map['mountName'] as String).input(),
+      nfsExportOptions: map['nfsExportOptions'] == null ? null : (pulumi.Input.decodeList<NfsExportOptionsFileV1beta1>(map['nfsExportOptions'], (value) => NfsExportOptionsFileV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      shareId: (map['shareId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the policy in case of function's execution failure. If empty, then defaults to ignoring failures (i.e. not retrying them).
 class FailurePolicyResponse {
   /// If specified, then the function will be retried in case of a failure.
-  final Map<String, dynamic> retry;
+  final pulumi.Input<Map<String, dynamic>> retry;
 
   /// Creates a new [FailurePolicyResponse].
   /// [retry] If specified, then the function will be retried in case of a failure.
@@ -20,7 +21,7 @@ class FailurePolicyResponse {
 
   factory FailurePolicyResponse.fromMap(Map<String, dynamic> map) {
     return FailurePolicyResponse(
-      retry: (map['retry'] as Map).cast<String, dynamic>(),
+      retry: ((map['retry'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

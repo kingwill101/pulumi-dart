@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetActionGroupArmRoleReceiver {
   /// Specifies the name of the Action Group.
-  final String name;
+  final pulumi.Input<String> name;
   /// The arm role id.
-  final String roleId;
+  final pulumi.Input<String> roleId;
   /// Indicates whether to use common alert schema.
-  final bool useCommonAlertSchema;
+  final pulumi.Input<bool> useCommonAlertSchema;
 
   /// Creates a new [GetActionGroupArmRoleReceiver].
   /// [name] Specifies the name of the Action Group.
@@ -29,9 +30,9 @@ class GetActionGroupArmRoleReceiver {
 
   factory GetActionGroupArmRoleReceiver.fromMap(Map<String, dynamic> map) {
     return GetActionGroupArmRoleReceiver(
-      name: map['name'] as String,
-      roleId: map['roleId'] as String,
-      useCommonAlertSchema: map['useCommonAlertSchema'] as bool,
+      name: (map['name'] as String).input(),
+      roleId: (map['roleId'] as String).input(),
+      useCommonAlertSchema: (map['useCommonAlertSchema'] as bool).input(),
     );
   }
 }

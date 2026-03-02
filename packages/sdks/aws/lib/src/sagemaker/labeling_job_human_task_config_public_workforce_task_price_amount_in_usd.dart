@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd {
   /// Fractional portion, in cents, of the amount.
-  final int? cents;
+  final pulumi.Input<int>? cents;
   /// Whole number of dollars in the amount.
-  final int? dollars;
+  final pulumi.Input<int>? dollars;
   /// Fractions of a cent, in tenths.
-  final int? tenthFractionsOfACent;
+  final pulumi.Input<int>? tenthFractionsOfACent;
 
   /// Creates a new [LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd].
   /// [cents] Fractional portion, in cents, of the amount.
@@ -29,9 +30,9 @@ class LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd {
 
   factory LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd.fromMap(Map<String, dynamic> map) {
     return LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd(
-      cents: map['cents'] == null ? null : map['cents'] as int,
-      dollars: map['dollars'] == null ? null : map['dollars'] as int,
-      tenthFractionsOfACent: map['tenthFractionsOfACent'] == null ? null : map['tenthFractionsOfACent'] as int,
+      cents: map['cents'] == null ? null : (map['cents'] as int).input(),
+      dollars: map['dollars'] == null ? null : (map['dollars'] as int).input(),
+      tenthFractionsOfACent: map['tenthFractionsOfACent'] == null ? null : (map['tenthFractionsOfACent'] as int).input(),
     );
   }
 }

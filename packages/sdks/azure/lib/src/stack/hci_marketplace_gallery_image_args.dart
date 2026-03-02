@@ -41,27 +41,17 @@ class HciMarketplaceGalleryImageArgs {
   /// [tags] A mapping of tags which should be assigned to the Azure Stack HCI Marketplace Gallery Image.
   /// [version] The version of the Azure Stack HCI Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   HciMarketplaceGalleryImageArgs({
-    required pulumi.Output<String> customLocationId,
-    required pulumi.Output<String> hypervGeneration,
-    required pulumi.Output<HciMarketplaceGalleryImageIdentifier> identifier,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> osType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storagePathId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> version,
-  }) :
-      customLocationId = pulumi.Input.asInput<String>(customLocationId),
-      hypervGeneration = pulumi.Input.asInput<String>(hypervGeneration),
-      identifier = pulumi.Input.asInput<HciMarketplaceGalleryImageIdentifier>(identifier),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      osType = pulumi.Input.asInput<String>(osType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storagePathId = pulumi.Input.asOptionalInput<String>(storagePathId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asInput<String>(version);
+    required this.customLocationId,
+    required this.hypervGeneration,
+    required this.identifier,
+    this.location,
+    this.name,
+    required this.osType,
+    required this.resourceGroupName,
+    this.storagePathId,
+    this.tags,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class HciMarketplaceGalleryImageArgs {
 
   factory HciMarketplaceGalleryImageArgs.fromMap(Map<String, dynamic> map) {
     return HciMarketplaceGalleryImageArgs(
-      customLocationId: pulumi.Output.create<String>(map['customLocationId'] as String),
-      hypervGeneration: pulumi.Output.create<String>(map['hypervGeneration'] as String),
-      identifier: pulumi.Output.create<HciMarketplaceGalleryImageIdentifier>(HciMarketplaceGalleryImageIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      osType: pulumi.Output.create<String>(map['osType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storagePathId: map['storagePathId'] == null ? null : pulumi.Output.create<String>(map['storagePathId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      customLocationId: (map['customLocationId'] as String).input(),
+      hypervGeneration: (map['hypervGeneration'] as String).input(),
+      identifier: (HciMarketplaceGalleryImageIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storagePathId: map['storagePathId'] == null ? null : (map['storagePathId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -17,11 +17,9 @@ class StorageBucketArgs {
   /// [bucketId] Required. Immutable. The ID of the underlying Google Cloud Storage bucket
   /// [project] The ID of the project in which the resource belongs.
   StorageBucketArgs({
-    pulumi.Output<String>? bucketId,
-    pulumi.Output<String>? project,
-  }) :
-      bucketId = pulumi.Input.asOptionalInput<String>(bucketId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.bucketId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class StorageBucketArgs {
 
   factory StorageBucketArgs.fromMap(Map<String, dynamic> map) {
     return StorageBucketArgs(
-      bucketId: map['bucketId'] == null ? null : pulumi.Output.create<String>(map['bucketId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bucketId: map['bucketId'] == null ? null : (map['bucketId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

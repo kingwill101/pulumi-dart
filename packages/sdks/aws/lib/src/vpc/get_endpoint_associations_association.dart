@@ -6,22 +6,22 @@ import 'get_endpoint_associations_association_private_dns_entry.dart';
 
 class GetEndpointAssociationsAssociation {
   /// Accessibility of the resource.
-  final String associatedResourceAccessibility;
+  final pulumi.Input<String> associatedResourceAccessibility;
   /// ARN of the resource for this association.
-  final String associatedResourceArn;
+  final pulumi.Input<String> associatedResourceArn;
   /// DNS entries for the Association. DNS entry blocks are documented below.
-  final List<GetEndpointAssociationsAssociationDnsEntry> dnsEntries;
-  final String id;
+  final pulumi.Input<List<GetEndpointAssociationsAssociationDnsEntry>> dnsEntries;
+  final pulumi.Input<String> id;
   /// DNS entries for the Association. Private DNS entry blocks are documented below.
-  final List<GetEndpointAssociationsAssociationPrivateDnsEntry> privateDnsEntries;
+  final pulumi.Input<List<GetEndpointAssociationsAssociationPrivateDnsEntry>> privateDnsEntries;
   /// ARN of the Resource Group if the Resource is a member of a group.
-  final String resourceConfigurationGroupArn;
+  final pulumi.Input<String> resourceConfigurationGroupArn;
   /// Service Network ARN. Applicable for endpoints of type `ServiceNetwork`.
-  final String serviceNetworkArn;
+  final pulumi.Input<String> serviceNetworkArn;
   /// Service Network Name. Applicable for endpoints of type `ServiceNetwork`.
-  final String serviceNetworkName;
+  final pulumi.Input<String> serviceNetworkName;
   /// Tags of the association.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetEndpointAssociationsAssociation].
   /// [associatedResourceAccessibility] Accessibility of the resource.
@@ -49,9 +49,9 @@ class GetEndpointAssociationsAssociation {
     return <String, dynamic>{
       'associatedResourceAccessibility': associatedResourceAccessibility,
       'associatedResourceArn': associatedResourceArn,
-      'dnsEntries': pulumi.Input.encodeList<GetEndpointAssociationsAssociationDnsEntry, Map<String, dynamic>>(dnsEntries, (value) => value.toMap()),
+      'dnsEntries': pulumi.Input.mapInputValue<List<GetEndpointAssociationsAssociationDnsEntry>, List<Map<String, dynamic>>>(dnsEntries, (value) => pulumi.Input.encodeList<GetEndpointAssociationsAssociationDnsEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
-      'privateDnsEntries': pulumi.Input.encodeList<GetEndpointAssociationsAssociationPrivateDnsEntry, Map<String, dynamic>>(privateDnsEntries, (value) => value.toMap()),
+      'privateDnsEntries': pulumi.Input.mapInputValue<List<GetEndpointAssociationsAssociationPrivateDnsEntry>, List<Map<String, dynamic>>>(privateDnsEntries, (value) => pulumi.Input.encodeList<GetEndpointAssociationsAssociationPrivateDnsEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceConfigurationGroupArn': resourceConfigurationGroupArn,
       'serviceNetworkArn': serviceNetworkArn,
       'serviceNetworkName': serviceNetworkName,
@@ -61,15 +61,15 @@ class GetEndpointAssociationsAssociation {
 
   factory GetEndpointAssociationsAssociation.fromMap(Map<String, dynamic> map) {
     return GetEndpointAssociationsAssociation(
-      associatedResourceAccessibility: map['associatedResourceAccessibility'] as String,
-      associatedResourceArn: map['associatedResourceArn'] as String,
-      dnsEntries: pulumi.Input.decodeList<GetEndpointAssociationsAssociationDnsEntry>(map['dnsEntries'], (value) => GetEndpointAssociationsAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      privateDnsEntries: pulumi.Input.decodeList<GetEndpointAssociationsAssociationPrivateDnsEntry>(map['privateDnsEntries'], (value) => GetEndpointAssociationsAssociationPrivateDnsEntry.fromMap((value as Map).cast<String, dynamic>())),
-      resourceConfigurationGroupArn: map['resourceConfigurationGroupArn'] as String,
-      serviceNetworkArn: map['serviceNetworkArn'] as String,
-      serviceNetworkName: map['serviceNetworkName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      associatedResourceAccessibility: (map['associatedResourceAccessibility'] as String).input(),
+      associatedResourceArn: (map['associatedResourceArn'] as String).input(),
+      dnsEntries: (pulumi.Input.decodeList<GetEndpointAssociationsAssociationDnsEntry>(map['dnsEntries'], (value) => GetEndpointAssociationsAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      privateDnsEntries: (pulumi.Input.decodeList<GetEndpointAssociationsAssociationPrivateDnsEntry>(map['privateDnsEntries'], (value) => GetEndpointAssociationsAssociationPrivateDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceConfigurationGroupArn: (map['resourceConfigurationGroupArn'] as String).input(),
+      serviceNetworkArn: (map['serviceNetworkArn'] as String).input(),
+      serviceNetworkName: (map['serviceNetworkName'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

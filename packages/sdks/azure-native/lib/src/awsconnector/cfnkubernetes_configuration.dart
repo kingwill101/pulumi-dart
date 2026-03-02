@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cfnkubernetes_audit_logs_configuration.dart';
 
 /// Definition of CFNKubernetesConfiguration
 class CFNKubernetesConfiguration {
   /// Property auditLogs
-  final CFNKubernetesAuditLogsConfiguration? auditLogs;
+  final pulumi.Input<CFNKubernetesAuditLogsConfiguration>? auditLogs;
 
   /// Creates a new [CFNKubernetesConfiguration].
   /// [auditLogs] Property auditLogs
@@ -15,13 +16,13 @@ class CFNKubernetesConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogs': ?auditLogs == null ? null : auditLogs!.toMap(),
+      'auditLogs': ?pulumi.Input.mapOptionalInputValue<CFNKubernetesAuditLogsConfiguration, Map<String, dynamic>>(auditLogs, (value) => value.toMap()),
     };
   }
 
   factory CFNKubernetesConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNKubernetesConfiguration(
-      auditLogs: map['auditLogs'] == null ? null : CFNKubernetesAuditLogsConfiguration.fromMap((map['auditLogs'] as Map).cast<String, dynamic>()),
+      auditLogs: map['auditLogs'] == null ? null : (CFNKubernetesAuditLogsConfiguration.fromMap((map['auditLogs'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

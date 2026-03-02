@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// APIServerProfile represents an API server profile.
 class APIServerProfileResponse {
   /// The IP of the cluster API server.
-  final String ip;
+  final pulumi.Input<String> ip;
   /// The URL to access the cluster API server.
-  final String url;
+  final pulumi.Input<String> url;
   /// API server visibility.
-  final String? visibility;
+  final pulumi.Input<String>? visibility;
 
   /// Creates a new [APIServerProfileResponse].
   /// [ip] The IP of the cluster API server.
@@ -30,9 +31,9 @@ class APIServerProfileResponse {
 
   factory APIServerProfileResponse.fromMap(Map<String, dynamic> map) {
     return APIServerProfileResponse(
-      ip: map['ip'] as String,
-      url: map['url'] as String,
-      visibility: map['visibility'] == null ? null : map['visibility'] as String,
+      ip: (map['ip'] as String).input(),
+      url: (map['url'] as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
     );
   }
 }

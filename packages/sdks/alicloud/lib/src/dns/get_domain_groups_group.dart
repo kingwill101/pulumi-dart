@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainGroupsGroup {
-  final String groupId;
-  final String groupName;
+  final pulumi.Input<String> groupId;
+  final pulumi.Input<String> groupName;
 
   /// Creates a new [GetDomainGroupsGroup].
   /// [groupId] Required.
@@ -22,8 +23,8 @@ class GetDomainGroupsGroup {
 
   factory GetDomainGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetDomainGroupsGroup(
-      groupId: map['groupId'] as String,
-      groupName: map['groupName'] as String,
+      groupId: (map['groupId'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
     );
   }
 }

@@ -1,43 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceCertificatesCertificate {
   /// Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buy_in_aliyun` takes effect only if `enable_details` is set to `true`.
-  final bool buyInAliyun;
+  final pulumi.Input<bool> buyInAliyun;
   /// The Cert of the certificate. **Note:** `cert` takes effect only if `enable_details` is set to `true`.
-  final String cert;
+  final pulumi.Input<String> cert;
   /// The ID of the certificate.
-  final String certId;
+  final pulumi.Input<String> certId;
   /// The name of the certificate.
-  final String certificateName;
+  final pulumi.Input<String> certificateName;
   /// The city in which the organization is located.
-  final String city;
+  final pulumi.Input<String> city;
   /// The parent domain name of the certificate.
-  final String common;
+  final pulumi.Input<String> common;
   /// The code of the country in which the organization is located.
-  final String country;
+  final pulumi.Input<String> country;
   /// The time at which the certificate expires.
-  final String endDate;
+  final pulumi.Input<String> endDate;
   /// Whether the certificate has expired.
-  final bool expired;
+  final pulumi.Input<bool> expired;
   /// The fingerprint of the certificate.
-  final String fingerprint;
+  final pulumi.Input<String> fingerprint;
   /// The ID of the Ssl Certificates Service Certificate.
-  final String id;
+  final pulumi.Input<String> id;
   /// The issuer of the certificate.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// The Key of the certificate. **Note:** `key` takes effect only if `enable_details` is set to `true`.
-  final String key;
+  final pulumi.Input<String> key;
   /// (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the organization that is associated with the certificate.
-  final String orgName;
+  final pulumi.Input<String> orgName;
   /// The province or autonomous region in which the organization is located.
-  final String province;
+  final pulumi.Input<String> province;
   /// All domain names that are bound to the certificate.
-  final String sans;
+  final pulumi.Input<String> sans;
   /// The time at which the certificate starts to take effect.
-  final String startDate;
+  final pulumi.Input<String> startDate;
 
   /// Creates a new [GetServiceCertificatesCertificate].
   /// [buyInAliyun] Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buy_in_aliyun` takes effect only if `enable_details` is set to `true`.
@@ -104,24 +105,24 @@ class GetServiceCertificatesCertificate {
 
   factory GetServiceCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetServiceCertificatesCertificate(
-      buyInAliyun: map['buyInAliyun'] as bool,
-      cert: map['cert'] as String,
-      certId: map['certId'] as String,
-      certificateName: map['certificateName'] as String,
-      city: map['city'] as String,
-      common: map['common'] as String,
-      country: map['country'] as String,
-      endDate: map['endDate'] as String,
-      expired: map['expired'] as bool,
-      fingerprint: map['fingerprint'] as String,
-      id: map['id'] as String,
-      issuer: map['issuer'] as String,
-      key: map['key'] as String,
-      name: map['name'] as String,
-      orgName: map['orgName'] as String,
-      province: map['province'] as String,
-      sans: map['sans'] as String,
-      startDate: map['startDate'] as String,
+      buyInAliyun: (map['buyInAliyun'] as bool).input(),
+      cert: (map['cert'] as String).input(),
+      certId: (map['certId'] as String).input(),
+      certificateName: (map['certificateName'] as String).input(),
+      city: (map['city'] as String).input(),
+      common: (map['common'] as String).input(),
+      country: (map['country'] as String).input(),
+      endDate: (map['endDate'] as String).input(),
+      expired: (map['expired'] as bool).input(),
+      fingerprint: (map['fingerprint'] as String).input(),
+      id: (map['id'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      key: (map['key'] as String).input(),
+      name: (map['name'] as String).input(),
+      orgName: (map['orgName'] as String).input(),
+      province: (map['province'] as String).input(),
+      sans: (map['sans'] as String).input(),
+      startDate: (map['startDate'] as String).input(),
     );
   }
 }

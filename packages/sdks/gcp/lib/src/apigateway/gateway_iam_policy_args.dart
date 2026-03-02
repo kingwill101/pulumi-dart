@@ -27,15 +27,11 @@ class GatewayIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the gateway for the API.
   GatewayIamPolicyArgs({
-    required pulumi.Output<String> gateway,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      gateway = pulumi.Input.asInput<String>(gateway),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.gateway,
+    required this.policyData,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class GatewayIamPolicyArgs {
 
   factory GatewayIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GatewayIamPolicyArgs(
-      gateway: pulumi.Output.create<String>(map['gateway'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      gateway: (map['gateway'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

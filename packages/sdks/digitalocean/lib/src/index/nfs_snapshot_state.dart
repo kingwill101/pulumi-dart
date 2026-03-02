@@ -24,19 +24,13 @@ class NfsSnapshotState {
   /// [size] The size of the snapshot in GiB.
   /// [status] Optional.
   NfsSnapshotState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? shareId,
-    pulumi.Output<int>? size,
-    pulumi.Output<String>? status,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shareId = pulumi.Input.asOptionalInput<String>(shareId),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createdAt,
+    this.name,
+    this.region,
+    this.shareId,
+    this.size,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +45,12 @@ class NfsSnapshotState {
 
   factory NfsSnapshotState.fromMap(Map<String, dynamic> map) {
     return NfsSnapshotState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shareId: map['shareId'] == null ? null : pulumi.Output.create<String>(map['shareId'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

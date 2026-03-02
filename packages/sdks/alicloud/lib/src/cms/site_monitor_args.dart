@@ -46,29 +46,18 @@ class SiteMonitorArgs {
   /// [taskName] The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
   /// [taskType] The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
   SiteMonitorArgs({
-    required pulumi.Output<String> address,
-    pulumi.Output<String>? agentGroup,
-    pulumi.Output<List<String>>? alertIds,
-    pulumi.Output<SiteMonitorCustomSchedule>? customSchedule,
-    pulumi.Output<String>? interval,
-    pulumi.Output<List<SiteMonitorIspCity>>? ispCities,
-    pulumi.Output<SiteMonitorOptionJson>? optionJson,
-    pulumi.Output<String>? optionsJson,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> taskName,
-    required pulumi.Output<String> taskType,
-  }) :
-      address = pulumi.Input.asInput<String>(address),
-      agentGroup = pulumi.Input.asOptionalInput<String>(agentGroup),
-      alertIds = pulumi.Input.asOptionalInput<List<String>>(alertIds),
-      customSchedule = pulumi.Input.asOptionalInput<SiteMonitorCustomSchedule>(customSchedule),
-      interval = pulumi.Input.asOptionalInput<String>(interval),
-      ispCities = pulumi.Input.asOptionalInput<List<SiteMonitorIspCity>>(ispCities),
-      optionJson = pulumi.Input.asOptionalInput<SiteMonitorOptionJson>(optionJson),
-      optionsJson = pulumi.Input.asOptionalInput<String>(optionsJson),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      taskName = pulumi.Input.asInput<String>(taskName),
-      taskType = pulumi.Input.asInput<String>(taskType);
+    required this.address,
+    this.agentGroup,
+    this.alertIds,
+    this.customSchedule,
+    this.interval,
+    this.ispCities,
+    this.optionJson,
+    this.optionsJson,
+    this.status,
+    required this.taskName,
+    required this.taskType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class SiteMonitorArgs {
 
   factory SiteMonitorArgs.fromMap(Map<String, dynamic> map) {
     return SiteMonitorArgs(
-      address: pulumi.Output.create<String>(map['address'] as String),
-      agentGroup: map['agentGroup'] == null ? null : pulumi.Output.create<String>(map['agentGroup'] as String),
-      alertIds: map['alertIds'] == null ? null : pulumi.Output.create<List<String>>((map['alertIds'] as List).cast<String>()),
-      customSchedule: map['customSchedule'] == null ? null : pulumi.Output.create<SiteMonitorCustomSchedule>(SiteMonitorCustomSchedule.fromMap((map['customSchedule'] as Map).cast<String, dynamic>())),
-      interval: map['interval'] == null ? null : pulumi.Output.create<String>(map['interval'] as String),
-      ispCities: map['ispCities'] == null ? null : pulumi.Output.create<List<SiteMonitorIspCity>>(pulumi.Input.decodeList<SiteMonitorIspCity>(map['ispCities'], (value) => SiteMonitorIspCity.fromMap((value as Map).cast<String, dynamic>()))),
-      optionJson: map['optionJson'] == null ? null : pulumi.Output.create<SiteMonitorOptionJson>(SiteMonitorOptionJson.fromMap((map['optionJson'] as Map).cast<String, dynamic>())),
-      optionsJson: map['optionsJson'] == null ? null : pulumi.Output.create<String>(map['optionsJson'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      taskName: pulumi.Output.create<String>(map['taskName'] as String),
-      taskType: pulumi.Output.create<String>(map['taskType'] as String),
+      address: (map['address'] as String).input(),
+      agentGroup: map['agentGroup'] == null ? null : (map['agentGroup'] as String).input(),
+      alertIds: map['alertIds'] == null ? null : ((map['alertIds'] as List).cast<String>()).input(),
+      customSchedule: map['customSchedule'] == null ? null : (SiteMonitorCustomSchedule.fromMap((map['customSchedule'] as Map).cast<String, dynamic>())).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      ispCities: map['ispCities'] == null ? null : (pulumi.Input.decodeList<SiteMonitorIspCity>(map['ispCities'], (value) => SiteMonitorIspCity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      optionJson: map['optionJson'] == null ? null : (SiteMonitorOptionJson.fromMap((map['optionJson'] as Map).cast<String, dynamic>())).input(),
+      optionsJson: map['optionsJson'] == null ? null : (map['optionsJson'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      taskName: (map['taskName'] as String).input(),
+      taskType: (map['taskType'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource Requirements.
 class ResourceRequirements {
   /// Gets or sets the Cpu requirement.
-  final String? cpu;
+  final pulumi.Input<String>? cpu;
   /// Gets or sets the Memory requirement.
-  final String? memory;
+  final pulumi.Input<String>? memory;
 
   /// Creates a new [ResourceRequirements].
   /// [cpu] Gets or sets the Cpu requirement.
@@ -25,8 +26,8 @@ class ResourceRequirements {
 
   factory ResourceRequirements.fromMap(Map<String, dynamic> map) {
     return ResourceRequirements(
-      cpu: map['cpu'] == null ? null : map['cpu'] as String,
-      memory: map['memory'] == null ? null : map['memory'] as String,
+      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
+      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
     );
   }
 }

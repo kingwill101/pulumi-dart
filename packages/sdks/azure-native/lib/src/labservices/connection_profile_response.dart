@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Connection profile for how users connect to lab virtual machines.
 class ConnectionProfileResponse {
   /// The enabled access level for Client Access over RDP.
-  final String? clientRdpAccess;
+  final pulumi.Input<String>? clientRdpAccess;
   /// The enabled access level for Client Access over SSH.
-  final String? clientSshAccess;
+  final pulumi.Input<String>? clientSshAccess;
   /// The enabled access level for Web Access over RDP.
-  final String? webRdpAccess;
+  final pulumi.Input<String>? webRdpAccess;
   /// The enabled access level for Web Access over SSH.
-  final String? webSshAccess;
+  final pulumi.Input<String>? webSshAccess;
 
   /// Creates a new [ConnectionProfileResponse].
   /// [clientRdpAccess] The enabled access level for Client Access over RDP.
@@ -35,10 +36,10 @@ class ConnectionProfileResponse {
 
   factory ConnectionProfileResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileResponse(
-      clientRdpAccess: map['clientRdpAccess'] == null ? null : map['clientRdpAccess'] as String,
-      clientSshAccess: map['clientSshAccess'] == null ? null : map['clientSshAccess'] as String,
-      webRdpAccess: map['webRdpAccess'] == null ? null : map['webRdpAccess'] as String,
-      webSshAccess: map['webSshAccess'] == null ? null : map['webSshAccess'] as String,
+      clientRdpAccess: map['clientRdpAccess'] == null ? null : (map['clientRdpAccess'] as String).input(),
+      clientSshAccess: map['clientSshAccess'] == null ? null : (map['clientSshAccess'] as String).input(),
+      webRdpAccess: map['webRdpAccess'] == null ? null : (map['webRdpAccess'] as String).input(),
+      webSshAccess: map['webSshAccess'] == null ? null : (map['webSshAccess'] as String).input(),
     );
   }
 }

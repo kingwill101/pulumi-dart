@@ -45,31 +45,19 @@ class DatabaseRedisConfigState {
   /// [ssl] A boolean indicating whether to require SSL to access Redis.
   /// [timeout] The Redis idle connection timeout in seconds.
   DatabaseRedisConfigState({
-    pulumi.Output<String>? aclChannelsDefault,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<int>? ioThreads,
-    pulumi.Output<int>? lfuDecayTime,
-    pulumi.Output<int>? lfuLogFactor,
-    pulumi.Output<String>? maxmemoryPolicy,
-    pulumi.Output<String>? notifyKeyspaceEvents,
-    pulumi.Output<int>? numberOfDatabases,
-    pulumi.Output<String>? persistence,
-    pulumi.Output<int>? pubsubClientOutputBufferLimit,
-    pulumi.Output<bool>? ssl,
-    pulumi.Output<int>? timeout,
-  }) :
-      aclChannelsDefault = pulumi.Input.asOptionalInput<String>(aclChannelsDefault),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      ioThreads = pulumi.Input.asOptionalInput<int>(ioThreads),
-      lfuDecayTime = pulumi.Input.asOptionalInput<int>(lfuDecayTime),
-      lfuLogFactor = pulumi.Input.asOptionalInput<int>(lfuLogFactor),
-      maxmemoryPolicy = pulumi.Input.asOptionalInput<String>(maxmemoryPolicy),
-      notifyKeyspaceEvents = pulumi.Input.asOptionalInput<String>(notifyKeyspaceEvents),
-      numberOfDatabases = pulumi.Input.asOptionalInput<int>(numberOfDatabases),
-      persistence = pulumi.Input.asOptionalInput<String>(persistence),
-      pubsubClientOutputBufferLimit = pulumi.Input.asOptionalInput<int>(pubsubClientOutputBufferLimit),
-      ssl = pulumi.Input.asOptionalInput<bool>(ssl),
-      timeout = pulumi.Input.asOptionalInput<int>(timeout);
+    this.aclChannelsDefault,
+    this.clusterId,
+    this.ioThreads,
+    this.lfuDecayTime,
+    this.lfuLogFactor,
+    this.maxmemoryPolicy,
+    this.notifyKeyspaceEvents,
+    this.numberOfDatabases,
+    this.persistence,
+    this.pubsubClientOutputBufferLimit,
+    this.ssl,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class DatabaseRedisConfigState {
 
   factory DatabaseRedisConfigState.fromMap(Map<String, dynamic> map) {
     return DatabaseRedisConfigState(
-      aclChannelsDefault: map['aclChannelsDefault'] == null ? null : pulumi.Output.create<String>(map['aclChannelsDefault'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      ioThreads: map['ioThreads'] == null ? null : pulumi.Output.create<int>(map['ioThreads'] as int),
-      lfuDecayTime: map['lfuDecayTime'] == null ? null : pulumi.Output.create<int>(map['lfuDecayTime'] as int),
-      lfuLogFactor: map['lfuLogFactor'] == null ? null : pulumi.Output.create<int>(map['lfuLogFactor'] as int),
-      maxmemoryPolicy: map['maxmemoryPolicy'] == null ? null : pulumi.Output.create<String>(map['maxmemoryPolicy'] as String),
-      notifyKeyspaceEvents: map['notifyKeyspaceEvents'] == null ? null : pulumi.Output.create<String>(map['notifyKeyspaceEvents'] as String),
-      numberOfDatabases: map['numberOfDatabases'] == null ? null : pulumi.Output.create<int>(map['numberOfDatabases'] as int),
-      persistence: map['persistence'] == null ? null : pulumi.Output.create<String>(map['persistence'] as String),
-      pubsubClientOutputBufferLimit: map['pubsubClientOutputBufferLimit'] == null ? null : pulumi.Output.create<int>(map['pubsubClientOutputBufferLimit'] as int),
-      ssl: map['ssl'] == null ? null : pulumi.Output.create<bool>(map['ssl'] as bool),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<int>(map['timeout'] as int),
+      aclChannelsDefault: map['aclChannelsDefault'] == null ? null : (map['aclChannelsDefault'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      ioThreads: map['ioThreads'] == null ? null : (map['ioThreads'] as int).input(),
+      lfuDecayTime: map['lfuDecayTime'] == null ? null : (map['lfuDecayTime'] as int).input(),
+      lfuLogFactor: map['lfuLogFactor'] == null ? null : (map['lfuLogFactor'] as int).input(),
+      maxmemoryPolicy: map['maxmemoryPolicy'] == null ? null : (map['maxmemoryPolicy'] as String).input(),
+      notifyKeyspaceEvents: map['notifyKeyspaceEvents'] == null ? null : (map['notifyKeyspaceEvents'] as String).input(),
+      numberOfDatabases: map['numberOfDatabases'] == null ? null : (map['numberOfDatabases'] as int).input(),
+      persistence: map['persistence'] == null ? null : (map['persistence'] as String).input(),
+      pubsubClientOutputBufferLimit: map['pubsubClientOutputBufferLimit'] == null ? null : (map['pubsubClientOutputBufferLimit'] as int).input(),
+      ssl: map['ssl'] == null ? null : (map['ssl'] as bool).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
     );
   }
 }

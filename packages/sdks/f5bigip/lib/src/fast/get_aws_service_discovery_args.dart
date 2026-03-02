@@ -51,35 +51,21 @@ class GetAwsServiceDiscoveryArgs {
   /// [undetectableAction] Action to take when node cannot be detected,default `remove`.
   /// [updateInterval] Update interval for service discovery.
   GetAwsServiceDiscoveryArgs({
-    pulumi.Output<String>? addressRealm,
-    pulumi.Output<String>? awsAccessKey,
-    pulumi.Output<String>? awsRegion,
-    pulumi.Output<String>? awsSecretAccessKey,
-    pulumi.Output<bool>? credentialUpdate,
-    pulumi.Output<String>? externalId,
-    pulumi.Output<String>? minimumMonitors,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? roleArn,
-    required pulumi.Output<String> tagKey,
-    required pulumi.Output<String> tagValue,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? undetectableAction,
-    pulumi.Output<String>? updateInterval,
-  }) :
-      addressRealm = pulumi.Input.asOptionalInput<String>(addressRealm),
-      awsAccessKey = pulumi.Input.asOptionalInput<String>(awsAccessKey),
-      awsRegion = pulumi.Input.asOptionalInput<String>(awsRegion),
-      awsSecretAccessKey = pulumi.Input.asOptionalInput<String>(awsSecretAccessKey),
-      credentialUpdate = pulumi.Input.asOptionalInput<bool>(credentialUpdate),
-      externalId = pulumi.Input.asOptionalInput<String>(externalId),
-      minimumMonitors = pulumi.Input.asOptionalInput<String>(minimumMonitors),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      tagKey = pulumi.Input.asInput<String>(tagKey),
-      tagValue = pulumi.Input.asInput<String>(tagValue),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      undetectableAction = pulumi.Input.asOptionalInput<String>(undetectableAction),
-      updateInterval = pulumi.Input.asOptionalInput<String>(updateInterval);
+    this.addressRealm,
+    this.awsAccessKey,
+    this.awsRegion,
+    this.awsSecretAccessKey,
+    this.credentialUpdate,
+    this.externalId,
+    this.minimumMonitors,
+    this.port,
+    this.roleArn,
+    required this.tagKey,
+    required this.tagValue,
+    this.type,
+    this.undetectableAction,
+    this.updateInterval,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class GetAwsServiceDiscoveryArgs {
 
   factory GetAwsServiceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return GetAwsServiceDiscoveryArgs(
-      addressRealm: map['addressRealm'] == null ? null : pulumi.Output.create<String>(map['addressRealm'] as String),
-      awsAccessKey: map['awsAccessKey'] == null ? null : pulumi.Output.create<String>(map['awsAccessKey'] as String),
-      awsRegion: map['awsRegion'] == null ? null : pulumi.Output.create<String>(map['awsRegion'] as String),
-      awsSecretAccessKey: map['awsSecretAccessKey'] == null ? null : pulumi.Output.create<String>(map['awsSecretAccessKey'] as String),
-      credentialUpdate: map['credentialUpdate'] == null ? null : pulumi.Output.create<bool>(map['credentialUpdate'] as bool),
-      externalId: map['externalId'] == null ? null : pulumi.Output.create<String>(map['externalId'] as String),
-      minimumMonitors: map['minimumMonitors'] == null ? null : pulumi.Output.create<String>(map['minimumMonitors'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      tagKey: pulumi.Output.create<String>(map['tagKey'] as String),
-      tagValue: pulumi.Output.create<String>(map['tagValue'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      undetectableAction: map['undetectableAction'] == null ? null : pulumi.Output.create<String>(map['undetectableAction'] as String),
-      updateInterval: map['updateInterval'] == null ? null : pulumi.Output.create<String>(map['updateInterval'] as String),
+      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm'] as String).input(),
+      awsAccessKey: map['awsAccessKey'] == null ? null : (map['awsAccessKey'] as String).input(),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
+      awsSecretAccessKey: map['awsSecretAccessKey'] == null ? null : (map['awsSecretAccessKey'] as String).input(),
+      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate'] as bool).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      tagKey: (map['tagKey'] as String).input(),
+      tagValue: (map['tagValue'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction'] as String).input(),
+      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval'] as String).input(),
     );
   }
 }

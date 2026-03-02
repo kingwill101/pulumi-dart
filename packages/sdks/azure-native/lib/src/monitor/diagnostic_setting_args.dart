@@ -45,29 +45,18 @@ class DiagnosticSettingArgs {
   /// [storageAccountId] The resource ID of the storage account to which you would like to send Diagnostic Logs.
   /// [workspaceId] The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
   DiagnosticSettingArgs({
-    pulumi.Output<String>? eventHubAuthorizationRuleId,
-    pulumi.Output<String>? eventHubName,
-    pulumi.Output<String>? logAnalyticsDestinationType,
-    pulumi.Output<List<LogSettings>>? logs,
-    pulumi.Output<String>? marketplacePartnerId,
-    pulumi.Output<List<MetricSettings>>? metrics,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceUri,
-    pulumi.Output<String>? serviceBusRuleId,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      eventHubAuthorizationRuleId = pulumi.Input.asOptionalInput<String>(eventHubAuthorizationRuleId),
-      eventHubName = pulumi.Input.asOptionalInput<String>(eventHubName),
-      logAnalyticsDestinationType = pulumi.Input.asOptionalInput<String>(logAnalyticsDestinationType),
-      logs = pulumi.Input.asOptionalInput<List<LogSettings>>(logs),
-      marketplacePartnerId = pulumi.Input.asOptionalInput<String>(marketplacePartnerId),
-      metrics = pulumi.Input.asOptionalInput<List<MetricSettings>>(metrics),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      serviceBusRuleId = pulumi.Input.asOptionalInput<String>(serviceBusRuleId),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.eventHubAuthorizationRuleId,
+    this.eventHubName,
+    this.logAnalyticsDestinationType,
+    this.logs,
+    this.marketplacePartnerId,
+    this.metrics,
+    this.name,
+    required this.resourceUri,
+    this.serviceBusRuleId,
+    this.storageAccountId,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class DiagnosticSettingArgs {
 
   factory DiagnosticSettingArgs.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingArgs(
-      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : pulumi.Output.create<String>(map['eventHubAuthorizationRuleId'] as String),
-      eventHubName: map['eventHubName'] == null ? null : pulumi.Output.create<String>(map['eventHubName'] as String),
-      logAnalyticsDestinationType: map['logAnalyticsDestinationType'] == null ? null : pulumi.Output.create<String>(map['logAnalyticsDestinationType'] as String),
-      logs: map['logs'] == null ? null : pulumi.Output.create<List<LogSettings>>(pulumi.Input.decodeList<LogSettings>(map['logs'], (value) => LogSettings.fromMap((value as Map).cast<String, dynamic>()))),
-      marketplacePartnerId: map['marketplacePartnerId'] == null ? null : pulumi.Output.create<String>(map['marketplacePartnerId'] as String),
-      metrics: map['metrics'] == null ? null : pulumi.Output.create<List<MetricSettings>>(pulumi.Input.decodeList<MetricSettings>(map['metrics'], (value) => MetricSettings.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : pulumi.Output.create<String>(map['serviceBusRuleId'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : (map['eventHubAuthorizationRuleId'] as String).input(),
+      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName'] as String).input(),
+      logAnalyticsDestinationType: map['logAnalyticsDestinationType'] == null ? null : (map['logAnalyticsDestinationType'] as String).input(),
+      logs: map['logs'] == null ? null : (pulumi.Input.decodeList<LogSettings>(map['logs'], (value) => LogSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      marketplacePartnerId: map['marketplacePartnerId'] == null ? null : (map['marketplacePartnerId'] as String).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<MetricSettings>(map['metrics'], (value) => MetricSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
+      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : (map['serviceBusRuleId'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

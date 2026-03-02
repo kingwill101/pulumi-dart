@@ -19,13 +19,10 @@ class OriginCaCertificateArgs {
   /// [name] The certificate name.
   /// [siteId] Site Id
   OriginCaCertificateArgs({
-    required pulumi.Output<String> certificate,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> siteId,
-  }) :
-      certificate = pulumi.Input.asInput<String>(certificate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      siteId = pulumi.Input.asInput<String>(siteId);
+    required this.certificate,
+    this.name,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class OriginCaCertificateArgs {
 
   factory OriginCaCertificateArgs.fromMap(Map<String, dynamic> map) {
     return OriginCaCertificateArgs(
-      certificate: pulumi.Output.create<String>(map['certificate'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
+      certificate: (map['certificate'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

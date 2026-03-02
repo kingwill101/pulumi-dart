@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Device insight report.
 class DeviceInsightResponse {
   /// Event description
-  final String description;
+  final pulumi.Input<String> description;
   /// Device ID
-  final String deviceId;
+  final pulumi.Input<String> deviceId;
   /// Event end timestamp
-  final String endTimestampUtc;
+  final pulumi.Input<String> endTimestampUtc;
   /// Event category
-  final String eventCategory;
+  final pulumi.Input<String> eventCategory;
   /// Event class
-  final String eventClass;
+  final pulumi.Input<String> eventClass;
   /// Event count
-  final int eventCount;
+  final pulumi.Input<int> eventCount;
   /// Event type
-  final String eventType;
+  final pulumi.Input<String> eventType;
   /// Event start timestamp
-  final String startTimestampUtc;
+  final pulumi.Input<String> startTimestampUtc;
 
   /// Creates a new [DeviceInsightResponse].
   /// [description] Event description
@@ -55,14 +56,14 @@ class DeviceInsightResponse {
 
   factory DeviceInsightResponse.fromMap(Map<String, dynamic> map) {
     return DeviceInsightResponse(
-      description: map['description'] as String,
-      deviceId: map['deviceId'] as String,
-      endTimestampUtc: map['endTimestampUtc'] as String,
-      eventCategory: map['eventCategory'] as String,
-      eventClass: map['eventClass'] as String,
-      eventCount: map['eventCount'] as int,
-      eventType: map['eventType'] as String,
-      startTimestampUtc: map['startTimestampUtc'] as String,
+      description: (map['description'] as String).input(),
+      deviceId: (map['deviceId'] as String).input(),
+      endTimestampUtc: (map['endTimestampUtc'] as String).input(),
+      eventCategory: (map['eventCategory'] as String).input(),
+      eventClass: (map['eventClass'] as String).input(),
+      eventCount: (map['eventCount'] as int).input(),
+      eventType: (map['eventType'] as String).input(),
+      startTimestampUtc: (map['startTimestampUtc'] as String).input(),
     );
   }
 }

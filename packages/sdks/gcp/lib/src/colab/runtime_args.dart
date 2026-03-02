@@ -40,25 +40,16 @@ class RuntimeArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [runtimeUser] The user email of the NotebookRuntime.
   RuntimeArgs({
-    pulumi.Output<bool>? autoUpgrade,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? desiredState,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<RuntimeNotebookRuntimeTemplateRef>? notebookRuntimeTemplateRef,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> runtimeUser,
-  }) :
-      autoUpgrade = pulumi.Input.asOptionalInput<bool>(autoUpgrade),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      desiredState = pulumi.Input.asOptionalInput<String>(desiredState),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notebookRuntimeTemplateRef = pulumi.Input.asOptionalInput<RuntimeNotebookRuntimeTemplateRef>(notebookRuntimeTemplateRef),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runtimeUser = pulumi.Input.asInput<String>(runtimeUser);
+    this.autoUpgrade,
+    this.description,
+    this.desiredState,
+    required this.displayName,
+    required this.location,
+    this.name,
+    this.notebookRuntimeTemplateRef,
+    this.project,
+    required this.runtimeUser,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class RuntimeArgs {
 
   factory RuntimeArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeArgs(
-      autoUpgrade: map['autoUpgrade'] == null ? null : pulumi.Output.create<bool>(map['autoUpgrade'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      desiredState: map['desiredState'] == null ? null : pulumi.Output.create<String>(map['desiredState'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notebookRuntimeTemplateRef: map['notebookRuntimeTemplateRef'] == null ? null : pulumi.Output.create<RuntimeNotebookRuntimeTemplateRef>(RuntimeNotebookRuntimeTemplateRef.fromMap((map['notebookRuntimeTemplateRef'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runtimeUser: pulumi.Output.create<String>(map['runtimeUser'] as String),
+      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notebookRuntimeTemplateRef: map['notebookRuntimeTemplateRef'] == null ? null : (RuntimeNotebookRuntimeTemplateRef.fromMap((map['notebookRuntimeTemplateRef'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runtimeUser: (map['runtimeUser'] as String).input(),
     );
   }
 }

@@ -42,31 +42,19 @@ class ServiceQuotaState {
   /// [usageMetrics] Information about the measurement.
   /// [value] Float specifying the desired value for the service quota. If the desired value is higher than the current value, a quota increase request is submitted. When a known request is submitted and pending, the value reflects the desired value of the pending request.
   ServiceQuotaState({
-    pulumi.Output<bool>? adjustable,
-    pulumi.Output<String>? arn,
-    pulumi.Output<double>? defaultValue,
-    pulumi.Output<String>? quotaCode,
-    pulumi.Output<String>? quotaName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? requestStatus,
-    pulumi.Output<String>? serviceCode,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<List<ServiceQuotaUsageMetric>>? usageMetrics,
-    pulumi.Output<double>? value,
-  }) :
-      adjustable = pulumi.Input.asOptionalInput<bool>(adjustable),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      defaultValue = pulumi.Input.asOptionalInput<double>(defaultValue),
-      quotaCode = pulumi.Input.asOptionalInput<String>(quotaCode),
-      quotaName = pulumi.Input.asOptionalInput<String>(quotaName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      requestStatus = pulumi.Input.asOptionalInput<String>(requestStatus),
-      serviceCode = pulumi.Input.asOptionalInput<String>(serviceCode),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      usageMetrics = pulumi.Input.asOptionalInput<List<ServiceQuotaUsageMetric>>(usageMetrics),
-      value = pulumi.Input.asOptionalInput<double>(value);
+    this.adjustable,
+    this.arn,
+    this.defaultValue,
+    this.quotaCode,
+    this.quotaName,
+    this.region,
+    this.requestId,
+    this.requestStatus,
+    this.serviceCode,
+    this.serviceName,
+    this.usageMetrics,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,18 +75,18 @@ class ServiceQuotaState {
 
   factory ServiceQuotaState.fromMap(Map<String, dynamic> map) {
     return ServiceQuotaState(
-      adjustable: map['adjustable'] == null ? null : pulumi.Output.create<bool>(map['adjustable'] as bool),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      defaultValue: map['defaultValue'] == null ? null : pulumi.Output.create<double>(map['defaultValue'] as double),
-      quotaCode: map['quotaCode'] == null ? null : pulumi.Output.create<String>(map['quotaCode'] as String),
-      quotaName: map['quotaName'] == null ? null : pulumi.Output.create<String>(map['quotaName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      requestStatus: map['requestStatus'] == null ? null : pulumi.Output.create<String>(map['requestStatus'] as String),
-      serviceCode: map['serviceCode'] == null ? null : pulumi.Output.create<String>(map['serviceCode'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      usageMetrics: map['usageMetrics'] == null ? null : pulumi.Output.create<List<ServiceQuotaUsageMetric>>(pulumi.Input.decodeList<ServiceQuotaUsageMetric>(map['usageMetrics'], (value) => ServiceQuotaUsageMetric.fromMap((value as Map).cast<String, dynamic>()))),
-      value: map['value'] == null ? null : pulumi.Output.create<double>(map['value'] as double),
+      adjustable: map['adjustable'] == null ? null : (map['adjustable'] as bool).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as double).input(),
+      quotaCode: map['quotaCode'] == null ? null : (map['quotaCode'] as String).input(),
+      quotaName: map['quotaName'] == null ? null : (map['quotaName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestStatus: map['requestStatus'] == null ? null : (map['requestStatus'] as String).input(),
+      serviceCode: map['serviceCode'] == null ? null : (map['serviceCode'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      usageMetrics: map['usageMetrics'] == null ? null : (pulumi.Input.decodeList<ServiceQuotaUsageMetric>(map['usageMetrics'], (value) => ServiceQuotaUsageMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: map['value'] == null ? null : (map['value'] as double).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Webhook details specific for Azure DevOps
 class AzureDevOpsWebhookResponse {
   /// Send callback on a specified notification event
-  final String? eventType;
+  final pulumi.Input<String>? eventType;
   /// Enum to determine the webhook callback service type.
   /// Expected value is 'AzureDevOps'.
-  final String webhookType;
+  final pulumi.Input<String> webhookType;
 
   /// Creates a new [AzureDevOpsWebhookResponse].
   /// [eventType] Send callback on a specified notification event
@@ -26,8 +27,8 @@ class AzureDevOpsWebhookResponse {
 
   factory AzureDevOpsWebhookResponse.fromMap(Map<String, dynamic> map) {
     return AzureDevOpsWebhookResponse(
-      eventType: map['eventType'] == null ? null : map['eventType'] as String,
-      webhookType: map['webhookType'] as String,
+      eventType: map['eventType'] == null ? null : (map['eventType'] as String).input(),
+      webhookType: (map['webhookType'] as String).input(),
     );
   }
 }

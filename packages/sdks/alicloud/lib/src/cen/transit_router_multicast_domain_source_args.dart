@@ -22,15 +22,11 @@ class TransitRouterMulticastDomainSourceArgs {
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast source belongs.
   /// [vpcId] The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
   TransitRouterMulticastDomainSourceArgs({
-    required pulumi.Output<String> groupIpAddress,
-    required pulumi.Output<String> networkInterfaceId,
-    required pulumi.Output<String> transitRouterMulticastDomainId,
-    pulumi.Output<String>? vpcId,
-  }) :
-      groupIpAddress = pulumi.Input.asInput<String>(groupIpAddress),
-      networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId),
-      transitRouterMulticastDomainId = pulumi.Input.asInput<String>(transitRouterMulticastDomainId),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    required this.groupIpAddress,
+    required this.networkInterfaceId,
+    required this.transitRouterMulticastDomainId,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class TransitRouterMulticastDomainSourceArgs {
 
   factory TransitRouterMulticastDomainSourceArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainSourceArgs(
-      groupIpAddress: pulumi.Output.create<String>(map['groupIpAddress'] as String),
-      networkInterfaceId: pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      transitRouterMulticastDomainId: pulumi.Output.create<String>(map['transitRouterMulticastDomainId'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      groupIpAddress: (map['groupIpAddress'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

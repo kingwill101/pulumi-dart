@@ -31,23 +31,15 @@ class SessionEntityTypeDialogflowV3beta1Args {
   /// [project] Optional.
   /// [sessionId] Required.
   SessionEntityTypeDialogflowV3beta1Args({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<List<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>> entities,
-    required pulumi.Output<SessionEntityTypeEntityOverrideModeDialogflowV3beta1> entityOverrideMode,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sessionId,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      entities = pulumi.Input.asInput<List<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>>(entities),
-      entityOverrideMode = pulumi.Input.asInput<SessionEntityTypeEntityOverrideModeDialogflowV3beta1>(entityOverrideMode),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sessionId = pulumi.Input.asInput<String>(sessionId);
+    required this.agentId,
+    required this.entities,
+    required this.entityOverrideMode,
+    required this.environmentId,
+    this.location,
+    this.name,
+    this.project,
+    required this.sessionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class SessionEntityTypeDialogflowV3beta1Args {
 
   factory SessionEntityTypeDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return SessionEntityTypeDialogflowV3beta1Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      entities: pulumi.Output.create<List<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>>(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>(map['entities'], (value) => GoogleCloudDialogflowCxV3beta1EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))),
-      entityOverrideMode: pulumi.Output.create<SessionEntityTypeEntityOverrideModeDialogflowV3beta1>(SessionEntityTypeEntityOverrideModeDialogflowV3beta1.fromValue(map['entityOverrideMode'] as String)),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sessionId: pulumi.Output.create<String>(map['sessionId'] as String),
+      agentId: (map['agentId'] as String).input(),
+      entities: (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>(map['entities'], (value) => GoogleCloudDialogflowCxV3beta1EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entityOverrideMode: (SessionEntityTypeEntityOverrideModeDialogflowV3beta1.fromValue(map['entityOverrideMode'] as String)).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sessionId: (map['sessionId'] as String).input(),
     );
   }
 }

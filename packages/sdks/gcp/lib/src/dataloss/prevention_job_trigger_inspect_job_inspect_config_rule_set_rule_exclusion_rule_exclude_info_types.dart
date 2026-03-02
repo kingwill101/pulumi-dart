@@ -6,7 +6,7 @@ import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_exclusio
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
   /// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
   /// Structure is documented below.
-  final List<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType> infoTypes;
+  final pulumi.Input<List<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType>> infoTypes;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes].
   /// [infoTypes] If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
@@ -16,13 +16,13 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'infoTypes': pulumi.Input.encodeList<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType, Map<String, dynamic>>(infoTypes, (value) => value.toMap()),
+      'infoTypes': pulumi.Input.mapInputValue<List<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType>, List<Map<String, dynamic>>>(infoTypes, (value) => pulumi.Input.encodeList<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes(
-      infoTypes: pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType>(map['infoTypes'], (value) => PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType.fromMap((value as Map).cast<String, dynamic>())),
+      infoTypes: (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType>(map['infoTypes'], (value) => PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

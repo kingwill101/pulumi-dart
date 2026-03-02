@@ -13,9 +13,8 @@ class GetPolicyDefinitionArgs {
   /// Creates a new [GetPolicyDefinitionArgs].
   /// [policyDefinitionName] The name of the policy definition to get.
   GetPolicyDefinitionArgs({
-    required pulumi.Output<String> policyDefinitionName,
-  }) :
-      policyDefinitionName = pulumi.Input.asInput<String>(policyDefinitionName);
+    required this.policyDefinitionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetPolicyDefinitionArgs {
 
   factory GetPolicyDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyDefinitionArgs(
-      policyDefinitionName: pulumi.Output.create<String>(map['policyDefinitionName'] as String),
+      policyDefinitionName: (map['policyDefinitionName'] as String).input(),
     );
   }
 }

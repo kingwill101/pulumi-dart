@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelFacebookPage {
   /// The Facebook Page Access Token for the Facebook Channel.
-  final String accessToken;
+  final pulumi.Input<String> accessToken;
   /// The Facebook Page ID for the Facebook Channel.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [ChannelFacebookPage].
   /// [accessToken] The Facebook Page Access Token for the Facebook Channel.
@@ -24,8 +25,8 @@ class ChannelFacebookPage {
 
   factory ChannelFacebookPage.fromMap(Map<String, dynamic> map) {
     return ChannelFacebookPage(
-      accessToken: map['accessToken'] as String,
-      id: map['id'] as String,
+      accessToken: (map['accessToken'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

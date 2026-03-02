@@ -16,11 +16,9 @@ class GetCertificateArgs {
   /// [name] The name of the NGINX Certificate.
   /// [nginxDeploymentId] The ID of the NGINX Deployment that the certificate is associated with.
   GetCertificateArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> nginxDeploymentId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      nginxDeploymentId = pulumi.Input.asInput<String>(nginxDeploymentId);
+    required this.name,
+    required this.nginxDeploymentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      nginxDeploymentId: pulumi.Output.create<String>(map['nginxDeploymentId'] as String),
+      name: (map['name'] as String).input(),
+      nginxDeploymentId: (map['nginxDeploymentId'] as String).input(),
     );
   }
 }

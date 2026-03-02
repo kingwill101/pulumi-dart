@@ -27,19 +27,13 @@ class ClusterCustomerManagedKeyState {
   /// [managedHsmKeyId] The Managed HSM Key ID for CMK encryption.
   /// [userIdentity] The user assigned identity that has access to the Key Vault Key. If not specified, system assigned identity will be used.
   ClusterCustomerManagedKeyState({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? keyName,
-    pulumi.Output<String>? keyVaultId,
-    pulumi.Output<String>? keyVersion,
-    pulumi.Output<String>? managedHsmKeyId,
-    pulumi.Output<String>? userIdentity,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      keyName = pulumi.Input.asOptionalInput<String>(keyName),
-      keyVaultId = pulumi.Input.asOptionalInput<String>(keyVaultId),
-      keyVersion = pulumi.Input.asOptionalInput<String>(keyVersion),
-      managedHsmKeyId = pulumi.Input.asOptionalInput<String>(managedHsmKeyId),
-      userIdentity = pulumi.Input.asOptionalInput<String>(userIdentity);
+    this.clusterId,
+    this.keyName,
+    this.keyVaultId,
+    this.keyVersion,
+    this.managedHsmKeyId,
+    this.userIdentity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class ClusterCustomerManagedKeyState {
 
   factory ClusterCustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return ClusterCustomerManagedKeyState(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      keyName: map['keyName'] == null ? null : pulumi.Output.create<String>(map['keyName'] as String),
-      keyVaultId: map['keyVaultId'] == null ? null : pulumi.Output.create<String>(map['keyVaultId'] as String),
-      keyVersion: map['keyVersion'] == null ? null : pulumi.Output.create<String>(map['keyVersion'] as String),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : pulumi.Output.create<String>(map['managedHsmKeyId'] as String),
-      userIdentity: map['userIdentity'] == null ? null : pulumi.Output.create<String>(map['userIdentity'] as String),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
+      userIdentity: map['userIdentity'] == null ? null : (map['userIdentity'] as String).input(),
     );
   }
 }

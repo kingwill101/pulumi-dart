@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'contact_details_response.dart';
 import 'shipping_address_response.dart';
 
 /// Address Properties.
 class AddressPropertiesResponse {
   /// Type of address based on its usage context.
-  final String? addressClassification;
+  final pulumi.Input<String>? addressClassification;
   /// Status of address validation.
-  final String addressValidationStatus;
+  final pulumi.Input<String> addressValidationStatus;
   /// Contact details for the address.
-  final ContactDetailsResponse? contactDetails;
+  final pulumi.Input<ContactDetailsResponse>? contactDetails;
   /// Provisioning state
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Shipping details for the address.
-  final ShippingAddressResponse? shippingAddress;
+  final pulumi.Input<ShippingAddressResponse>? shippingAddress;
 
   /// Creates a new [AddressPropertiesResponse].
   /// [addressClassification] Type of address based on its usage context.
@@ -34,19 +35,19 @@ class AddressPropertiesResponse {
     return <String, dynamic>{
       'addressClassification': ?addressClassification,
       'addressValidationStatus': addressValidationStatus,
-      'contactDetails': ?contactDetails == null ? null : contactDetails!.toMap(),
+      'contactDetails': ?pulumi.Input.mapOptionalInputValue<ContactDetailsResponse, Map<String, dynamic>>(contactDetails, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'shippingAddress': ?shippingAddress == null ? null : shippingAddress!.toMap(),
+      'shippingAddress': ?pulumi.Input.mapOptionalInputValue<ShippingAddressResponse, Map<String, dynamic>>(shippingAddress, (value) => value.toMap()),
     };
   }
 
   factory AddressPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AddressPropertiesResponse(
-      addressClassification: map['addressClassification'] == null ? null : map['addressClassification'] as String,
-      addressValidationStatus: map['addressValidationStatus'] as String,
-      contactDetails: map['contactDetails'] == null ? null : ContactDetailsResponse.fromMap((map['contactDetails'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      shippingAddress: map['shippingAddress'] == null ? null : ShippingAddressResponse.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>()),
+      addressClassification: map['addressClassification'] == null ? null : (map['addressClassification'] as String).input(),
+      addressValidationStatus: (map['addressValidationStatus'] as String).input(),
+      contactDetails: map['contactDetails'] == null ? null : (ContactDetailsResponse.fromMap((map['contactDetails'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddressResponse.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

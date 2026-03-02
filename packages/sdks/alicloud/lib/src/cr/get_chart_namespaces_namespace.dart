@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetChartNamespacesNamespace {
   /// Indicates whether a repository is automatically created when an image is pushed to the namespace.
-  final bool autoCreateRepo;
+  final pulumi.Input<bool> autoCreateRepo;
   /// The ID of the namespace.
-  final String chartNamespaceId;
+  final pulumi.Input<String> chartNamespaceId;
   /// The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
-  final String defaultRepoType;
+  final pulumi.Input<String> defaultRepoType;
   /// The ID of the Chart Namespace.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the namespace.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The name of the namespace.
-  final String namespaceName;
+  final pulumi.Input<String> namespaceName;
 
   /// Creates a new [GetChartNamespacesNamespace].
   /// [autoCreateRepo] Indicates whether a repository is automatically created when an image is pushed to the namespace.
@@ -44,12 +45,12 @@ class GetChartNamespacesNamespace {
 
   factory GetChartNamespacesNamespace.fromMap(Map<String, dynamic> map) {
     return GetChartNamespacesNamespace(
-      autoCreateRepo: map['autoCreateRepo'] as bool,
-      chartNamespaceId: map['chartNamespaceId'] as String,
-      defaultRepoType: map['defaultRepoType'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      namespaceName: map['namespaceName'] as String,
+      autoCreateRepo: (map['autoCreateRepo'] as bool).input(),
+      chartNamespaceId: (map['chartNamespaceId'] as String).input(),
+      defaultRepoType: (map['defaultRepoType'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
     );
   }
 }

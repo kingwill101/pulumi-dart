@@ -29,21 +29,14 @@ class DataLakeGen2PathState {
   /// [resource] Specifies the type for path to create. Currently only `directory` is supported. Changing this forces a new resource to be created.
   /// [storageAccountId] Specifies the ID of the Storage Account in which the Data Lake Gen2 File System should exist. Changing this forces a new resource to be created.
   DataLakeGen2PathState({
-    pulumi.Output<List<DataLakeGen2PathAce>>? aces,
-    pulumi.Output<String>? filesystemName,
-    pulumi.Output<String>? group,
-    pulumi.Output<String>? owner,
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? resource,
-    pulumi.Output<String>? storageAccountId,
-  }) :
-      aces = pulumi.Input.asOptionalInput<List<DataLakeGen2PathAce>>(aces),
-      filesystemName = pulumi.Input.asOptionalInput<String>(filesystemName),
-      group = pulumi.Input.asOptionalInput<String>(group),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      resource = pulumi.Input.asOptionalInput<String>(resource),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId);
+    this.aces,
+    this.filesystemName,
+    this.group,
+    this.owner,
+    this.path,
+    this.resource,
+    this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class DataLakeGen2PathState {
 
   factory DataLakeGen2PathState.fromMap(Map<String, dynamic> map) {
     return DataLakeGen2PathState(
-      aces: map['aces'] == null ? null : pulumi.Output.create<List<DataLakeGen2PathAce>>(pulumi.Input.decodeList<DataLakeGen2PathAce>(map['aces'], (value) => DataLakeGen2PathAce.fromMap((value as Map).cast<String, dynamic>()))),
-      filesystemName: map['filesystemName'] == null ? null : pulumi.Output.create<String>(map['filesystemName'] as String),
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      resource: map['resource'] == null ? null : pulumi.Output.create<String>(map['resource'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
+      aces: map['aces'] == null ? null : (pulumi.Input.decodeList<DataLakeGen2PathAce>(map['aces'], (value) => DataLakeGen2PathAce.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filesystemName: map['filesystemName'] == null ? null : (map['filesystemName'] as String).input(),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
     );
   }
 }

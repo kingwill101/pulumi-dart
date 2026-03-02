@@ -36,23 +36,15 @@ class ApplicationScalingRuleArgs {
   /// [scalingRuleTimer] Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
   /// [scalingRuleType] Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
   ApplicationScalingRuleArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<int>? minReadyInstanceRatio,
-    pulumi.Output<int>? minReadyInstances,
-    pulumi.Output<bool>? scalingRuleEnable,
-    pulumi.Output<ApplicationScalingRuleScalingRuleMetric>? scalingRuleMetric,
-    required pulumi.Output<String> scalingRuleName,
-    pulumi.Output<ApplicationScalingRuleScalingRuleTimer>? scalingRuleTimer,
-    required pulumi.Output<String> scalingRuleType,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      minReadyInstanceRatio = pulumi.Input.asOptionalInput<int>(minReadyInstanceRatio),
-      minReadyInstances = pulumi.Input.asOptionalInput<int>(minReadyInstances),
-      scalingRuleEnable = pulumi.Input.asOptionalInput<bool>(scalingRuleEnable),
-      scalingRuleMetric = pulumi.Input.asOptionalInput<ApplicationScalingRuleScalingRuleMetric>(scalingRuleMetric),
-      scalingRuleName = pulumi.Input.asInput<String>(scalingRuleName),
-      scalingRuleTimer = pulumi.Input.asOptionalInput<ApplicationScalingRuleScalingRuleTimer>(scalingRuleTimer),
-      scalingRuleType = pulumi.Input.asInput<String>(scalingRuleType);
+    required this.appId,
+    this.minReadyInstanceRatio,
+    this.minReadyInstances,
+    this.scalingRuleEnable,
+    this.scalingRuleMetric,
+    required this.scalingRuleName,
+    this.scalingRuleTimer,
+    required this.scalingRuleType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class ApplicationScalingRuleArgs {
 
   factory ApplicationScalingRuleArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationScalingRuleArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      minReadyInstanceRatio: map['minReadyInstanceRatio'] == null ? null : pulumi.Output.create<int>(map['minReadyInstanceRatio'] as int),
-      minReadyInstances: map['minReadyInstances'] == null ? null : pulumi.Output.create<int>(map['minReadyInstances'] as int),
-      scalingRuleEnable: map['scalingRuleEnable'] == null ? null : pulumi.Output.create<bool>(map['scalingRuleEnable'] as bool),
-      scalingRuleMetric: map['scalingRuleMetric'] == null ? null : pulumi.Output.create<ApplicationScalingRuleScalingRuleMetric>(ApplicationScalingRuleScalingRuleMetric.fromMap((map['scalingRuleMetric'] as Map).cast<String, dynamic>())),
-      scalingRuleName: pulumi.Output.create<String>(map['scalingRuleName'] as String),
-      scalingRuleTimer: map['scalingRuleTimer'] == null ? null : pulumi.Output.create<ApplicationScalingRuleScalingRuleTimer>(ApplicationScalingRuleScalingRuleTimer.fromMap((map['scalingRuleTimer'] as Map).cast<String, dynamic>())),
-      scalingRuleType: pulumi.Output.create<String>(map['scalingRuleType'] as String),
+      appId: (map['appId'] as String).input(),
+      minReadyInstanceRatio: map['minReadyInstanceRatio'] == null ? null : (map['minReadyInstanceRatio'] as int).input(),
+      minReadyInstances: map['minReadyInstances'] == null ? null : (map['minReadyInstances'] as int).input(),
+      scalingRuleEnable: map['scalingRuleEnable'] == null ? null : (map['scalingRuleEnable'] as bool).input(),
+      scalingRuleMetric: map['scalingRuleMetric'] == null ? null : (ApplicationScalingRuleScalingRuleMetric.fromMap((map['scalingRuleMetric'] as Map).cast<String, dynamic>())).input(),
+      scalingRuleName: (map['scalingRuleName'] as String).input(),
+      scalingRuleTimer: map['scalingRuleTimer'] == null ? null : (ApplicationScalingRuleScalingRuleTimer.fromMap((map['scalingRuleTimer'] as Map).cast<String, dynamic>())).input(),
+      scalingRuleType: (map['scalingRuleType'] as String).input(),
     );
   }
 }

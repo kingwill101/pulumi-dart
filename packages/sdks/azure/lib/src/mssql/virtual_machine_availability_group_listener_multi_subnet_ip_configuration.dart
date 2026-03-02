@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration {
   /// The private IP Address of the listener. Changing this forces a new resource to be created.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// The ID of the Sql Virtual Machine. Changing this forces a new resource to be created.
-  final String sqlVirtualMachineId;
+  final pulumi.Input<String> sqlVirtualMachineId;
   /// The ID of the Subnet to create the listener. Changing this forces a new resource to be created.
   ///
   /// > **Note:** `sql_virtual_machine_id` should match with the SQL Virtual Machines specified in `replica`.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration].
   /// [privateIpAddress] The private IP Address of the listener. Changing this forces a new resource to be created.
@@ -31,9 +32,9 @@ class VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration {
 
   factory VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration(
-      privateIpAddress: map['privateIpAddress'] as String,
-      sqlVirtualMachineId: map['sqlVirtualMachineId'] as String,
-      subnetId: map['subnetId'] as String,
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      sqlVirtualMachineId: (map['sqlVirtualMachineId'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZonesZone {
   /// ID of the zone.
-  final String id;
+  final pulumi.Input<String> id;
   /// A list of zone ids in which the multi zone.
-  final List<String> multiZoneIds;
+  final pulumi.Input<List<String>> multiZoneIds;
 
   /// Creates a new [GetZonesZone].
   /// [id] ID of the zone.
@@ -24,8 +25,8 @@ class GetZonesZone {
 
   factory GetZonesZone.fromMap(Map<String, dynamic> map) {
     return GetZonesZone(
-      id: map['id'] as String,
-      multiZoneIds: (map['multiZoneIds'] as List).cast<String>(),
+      id: (map['id'] as String).input(),
+      multiZoneIds: ((map['multiZoneIds'] as List).cast<String>()).input(),
     );
   }
 }

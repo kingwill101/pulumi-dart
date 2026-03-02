@@ -25,17 +25,12 @@ class GetManagedRuleGroupArgs {
   /// [vendorName] Managed rule group vendor name.
   /// [versionName] Version of the rule group.
   GetManagedRuleGroupArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> scope,
-    required pulumi.Output<String> vendorName,
-    pulumi.Output<String>? versionName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scope = pulumi.Input.asInput<String>(scope),
-      vendorName = pulumi.Input.asInput<String>(vendorName),
-      versionName = pulumi.Input.asOptionalInput<String>(versionName);
+    required this.name,
+    this.region,
+    required this.scope,
+    required this.vendorName,
+    this.versionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetManagedRuleGroupArgs {
 
   factory GetManagedRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      vendorName: pulumi.Output.create<String>(map['vendorName'] as String),
-      versionName: map['versionName'] == null ? null : pulumi.Output.create<String>(map['versionName'] as String),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      vendorName: (map['vendorName'] as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
     );
   }
 }

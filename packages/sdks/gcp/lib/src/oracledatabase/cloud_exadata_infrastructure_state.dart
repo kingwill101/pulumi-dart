@@ -56,33 +56,20 @@ class CloudExadataInfrastructureState {
   /// [properties] Various properties of Exadata Infrastructure.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   CloudExadataInfrastructureState({
-    pulumi.Output<String>? cloudExadataInfrastructureId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? entitlementId,
-    pulumi.Output<String>? gcpOracleZone,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<CloudExadataInfrastructureProperties>? properties,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-  }) :
-      cloudExadataInfrastructureId = pulumi.Input.asOptionalInput<String>(cloudExadataInfrastructureId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      entitlementId = pulumi.Input.asOptionalInput<String>(entitlementId),
-      gcpOracleZone = pulumi.Input.asOptionalInput<String>(gcpOracleZone),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      properties = pulumi.Input.asOptionalInput<CloudExadataInfrastructureProperties>(properties),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels);
+    this.cloudExadataInfrastructureId,
+    this.createTime,
+    this.deletionProtection,
+    this.displayName,
+    this.effectiveLabels,
+    this.entitlementId,
+    this.gcpOracleZone,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.properties,
+    this.pulumiLabels,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,19 +91,19 @@ class CloudExadataInfrastructureState {
 
   factory CloudExadataInfrastructureState.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructureState(
-      cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] == null ? null : pulumi.Output.create<String>(map['cloudExadataInfrastructureId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      entitlementId: map['entitlementId'] == null ? null : pulumi.Output.create<String>(map['entitlementId'] as String),
-      gcpOracleZone: map['gcpOracleZone'] == null ? null : pulumi.Output.create<String>(map['gcpOracleZone'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<CloudExadataInfrastructureProperties>(CloudExadataInfrastructureProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
+      cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] == null ? null : (map['cloudExadataInfrastructureId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      entitlementId: map['entitlementId'] == null ? null : (map['entitlementId'] as String).input(),
+      gcpOracleZone: map['gcpOracleZone'] == null ? null : (map['gcpOracleZone'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      properties: map['properties'] == null ? null : (CloudExadataInfrastructureProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
     );
   }
 }

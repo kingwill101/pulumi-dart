@@ -46,31 +46,19 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs {
   /// [name] The name which should be used for this Spring Cloud Application Performance Monitoring resource for App Dynamics. Changing this forces a new resource to be created.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs({
-    required pulumi.Output<String> agentAccountAccessKey,
-    required pulumi.Output<String> agentAccountName,
-    pulumi.Output<String>? agentApplicationName,
-    pulumi.Output<String>? agentNodeName,
-    pulumi.Output<String>? agentTierName,
-    pulumi.Output<String>? agentUniqueHostId,
-    required pulumi.Output<String> controllerHostName,
-    pulumi.Output<int>? controllerPort,
-    pulumi.Output<bool>? controllerSslEnabled,
-    pulumi.Output<bool>? globallyEnabled,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> springCloudServiceId,
-  }) :
-      agentAccountAccessKey = pulumi.Input.asInput<String>(agentAccountAccessKey),
-      agentAccountName = pulumi.Input.asInput<String>(agentAccountName),
-      agentApplicationName = pulumi.Input.asOptionalInput<String>(agentApplicationName),
-      agentNodeName = pulumi.Input.asOptionalInput<String>(agentNodeName),
-      agentTierName = pulumi.Input.asOptionalInput<String>(agentTierName),
-      agentUniqueHostId = pulumi.Input.asOptionalInput<String>(agentUniqueHostId),
-      controllerHostName = pulumi.Input.asInput<String>(controllerHostName),
-      controllerPort = pulumi.Input.asOptionalInput<int>(controllerPort),
-      controllerSslEnabled = pulumi.Input.asOptionalInput<bool>(controllerSslEnabled),
-      globallyEnabled = pulumi.Input.asOptionalInput<bool>(globallyEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      springCloudServiceId = pulumi.Input.asInput<String>(springCloudServiceId);
+    required this.agentAccountAccessKey,
+    required this.agentAccountName,
+    this.agentApplicationName,
+    this.agentNodeName,
+    this.agentTierName,
+    this.agentUniqueHostId,
+    required this.controllerHostName,
+    this.controllerPort,
+    this.controllerSslEnabled,
+    this.globallyEnabled,
+    this.name,
+    required this.springCloudServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs {
 
   factory SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs(
-      agentAccountAccessKey: pulumi.Output.create<String>(map['agentAccountAccessKey'] as String),
-      agentAccountName: pulumi.Output.create<String>(map['agentAccountName'] as String),
-      agentApplicationName: map['agentApplicationName'] == null ? null : pulumi.Output.create<String>(map['agentApplicationName'] as String),
-      agentNodeName: map['agentNodeName'] == null ? null : pulumi.Output.create<String>(map['agentNodeName'] as String),
-      agentTierName: map['agentTierName'] == null ? null : pulumi.Output.create<String>(map['agentTierName'] as String),
-      agentUniqueHostId: map['agentUniqueHostId'] == null ? null : pulumi.Output.create<String>(map['agentUniqueHostId'] as String),
-      controllerHostName: pulumi.Output.create<String>(map['controllerHostName'] as String),
-      controllerPort: map['controllerPort'] == null ? null : pulumi.Output.create<int>(map['controllerPort'] as int),
-      controllerSslEnabled: map['controllerSslEnabled'] == null ? null : pulumi.Output.create<bool>(map['controllerSslEnabled'] as bool),
-      globallyEnabled: map['globallyEnabled'] == null ? null : pulumi.Output.create<bool>(map['globallyEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      springCloudServiceId: pulumi.Output.create<String>(map['springCloudServiceId'] as String),
+      agentAccountAccessKey: (map['agentAccountAccessKey'] as String).input(),
+      agentAccountName: (map['agentAccountName'] as String).input(),
+      agentApplicationName: map['agentApplicationName'] == null ? null : (map['agentApplicationName'] as String).input(),
+      agentNodeName: map['agentNodeName'] == null ? null : (map['agentNodeName'] as String).input(),
+      agentTierName: map['agentTierName'] == null ? null : (map['agentTierName'] as String).input(),
+      agentUniqueHostId: map['agentUniqueHostId'] == null ? null : (map['agentUniqueHostId'] as String).input(),
+      controllerHostName: (map['controllerHostName'] as String).input(),
+      controllerPort: map['controllerPort'] == null ? null : (map['controllerPort'] as int).input(),
+      controllerSslEnabled: map['controllerSslEnabled'] == null ? null : (map['controllerSslEnabled'] as bool).input(),
+      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      springCloudServiceId: (map['springCloudServiceId'] as String).input(),
     );
   }
 }

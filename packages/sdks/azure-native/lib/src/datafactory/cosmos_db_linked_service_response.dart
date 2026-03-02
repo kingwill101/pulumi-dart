@@ -9,42 +9,42 @@ import 'parameter_specification_response.dart';
 /// Microsoft Azure Cosmos Database (CosmosDB) linked service.
 class CosmosDbLinkedServiceResponse {
   /// The endpoint of the Azure CosmosDB account. Type: string (or Expression with resultType string)
-  final dynamic accountEndpoint;
+  final pulumi.Input<dynamic>? accountEndpoint;
   /// The account key of the Azure CosmosDB account. Type: SecureString or AzureKeyVaultSecretReference.
-  final AzureKeyVaultSecretReferenceResponse? accountKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? accountKey;
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
-  final dynamic azureCloudType;
+  final pulumi.Input<dynamic>? azureCloudType;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// The connection mode used to access CosmosDB account. Type: string.
-  final String? connectionMode;
+  final pulumi.Input<String>? connectionMode;
   /// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
-  final dynamic connectionString;
+  final pulumi.Input<dynamic>? connectionString;
   /// The credential reference containing authentication information.
-  final CredentialReferenceResponse? credential;
+  final pulumi.Input<CredentialReferenceResponse>? credential;
   /// The name of the database. Type: string (or Expression with resultType string)
-  final dynamic database;
+  final pulumi.Input<dynamic>? database;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
-  final AzureKeyVaultSecretReferenceResponse? servicePrincipalCredential;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? servicePrincipalCredential;
   /// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string.
-  final dynamic servicePrincipalCredentialType;
+  final pulumi.Input<dynamic>? servicePrincipalCredentialType;
   /// The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
-  final dynamic servicePrincipalId;
+  final pulumi.Input<dynamic>? servicePrincipalId;
   /// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
-  final dynamic tenant;
+  final pulumi.Input<dynamic>? tenant;
   /// Type of linked service.
   /// Expected value is 'CosmosDb'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [CosmosDbLinkedServiceResponse].
   /// [accountEndpoint] The endpoint of the Azure CosmosDB account. Type: string (or Expression with resultType string)
@@ -89,18 +89,18 @@ class CosmosDbLinkedServiceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountEndpoint': ?accountEndpoint,
-      'accountKey': ?accountKey == null ? null : accountKey!.toMap(),
+      'accountKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(accountKey, (value) => value.toMap()),
       'annotations': ?annotations,
       'azureCloudType': ?azureCloudType,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionMode': ?connectionMode,
       'connectionString': ?connectionString,
-      'credential': ?credential == null ? null : credential!.toMap(),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReferenceResponse, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'database': ?database,
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'servicePrincipalCredential': ?servicePrincipalCredential == null ? null : servicePrincipalCredential!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'servicePrincipalCredential': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(servicePrincipalCredential, (value) => value.toMap()),
       'servicePrincipalCredentialType': ?servicePrincipalCredentialType,
       'servicePrincipalId': ?servicePrincipalId,
       'tenant': ?tenant,
@@ -111,24 +111,24 @@ class CosmosDbLinkedServiceResponse {
 
   factory CosmosDbLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return CosmosDbLinkedServiceResponse(
-      accountEndpoint: map['accountEndpoint'] == null ? null : map['accountEndpoint'],
-      accountKey: map['accountKey'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['accountKey'] as Map).cast<String, dynamic>()),
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      azureCloudType: map['azureCloudType'] == null ? null : map['azureCloudType'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      connectionMode: map['connectionMode'] == null ? null : map['connectionMode'] as String,
-      connectionString: map['connectionString'] == null ? null : map['connectionString'],
-      credential: map['credential'] == null ? null : CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      database: map['database'] == null ? null : map['database'],
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      servicePrincipalCredential: map['servicePrincipalCredential'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalCredential'] as Map).cast<String, dynamic>()),
-      servicePrincipalCredentialType: map['servicePrincipalCredentialType'] == null ? null : map['servicePrincipalCredentialType'],
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : map['servicePrincipalId'],
-      tenant: map['tenant'] == null ? null : map['tenant'],
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      accountEndpoint: map['accountEndpoint'] == null ? null : (map['accountEndpoint']).input(),
+      accountKey: map['accountKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['accountKey'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      azureCloudType: map['azureCloudType'] == null ? null : (map['azureCloudType']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      connectionMode: map['connectionMode'] == null ? null : (map['connectionMode'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      database: map['database'] == null ? null : (map['database']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servicePrincipalCredential: map['servicePrincipalCredential'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalCredential'] as Map).cast<String, dynamic>())).input(),
+      servicePrincipalCredentialType: map['servicePrincipalCredentialType'] == null ? null : (map['servicePrincipalCredentialType']).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

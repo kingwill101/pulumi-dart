@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_configuration_response.dart';
 
 /// Gets or sets the application server configuration.
 class ApplicationServerConfigurationResponse {
   /// The number of app server instances.
-  final double instanceCount;
+  final pulumi.Input<double> instanceCount;
   /// The subnet id.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
   /// Gets or sets the virtual machine configuration.
-  final VirtualMachineConfigurationResponse virtualMachineConfiguration;
+  final pulumi.Input<VirtualMachineConfigurationResponse> virtualMachineConfiguration;
 
   /// Creates a new [ApplicationServerConfigurationResponse].
   /// [instanceCount] The number of app server instances.
@@ -25,15 +26,15 @@ class ApplicationServerConfigurationResponse {
     return <String, dynamic>{
       'instanceCount': instanceCount,
       'subnetId': subnetId,
-      'virtualMachineConfiguration': virtualMachineConfiguration.toMap(),
+      'virtualMachineConfiguration': pulumi.Input.mapInputValue<VirtualMachineConfigurationResponse, Map<String, dynamic>>(virtualMachineConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ApplicationServerConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationServerConfigurationResponse(
-      instanceCount: map['instanceCount'] as double,
-      subnetId: map['subnetId'] as String,
-      virtualMachineConfiguration: VirtualMachineConfigurationResponse.fromMap((map['virtualMachineConfiguration'] as Map).cast<String, dynamic>()),
+      instanceCount: (map['instanceCount'] as double).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      virtualMachineConfiguration: (VirtualMachineConfigurationResponse.fromMap((map['virtualMachineConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_properties.dart';
 
 /// Settings concerning the virtual network.
 class VirtualNetworkProperties {
   /// Uri of the virtual network.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Properties of a subnet.
-  final SubnetProperties? subnet;
+  final pulumi.Input<SubnetProperties>? subnet;
 
   /// Creates a new [VirtualNetworkProperties].
   /// [id] Uri of the virtual network.
@@ -20,14 +21,14 @@ class VirtualNetworkProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<SubnetProperties, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
   factory VirtualNetworkProperties.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkProperties(
-      id: map['id'] == null ? null : map['id'] as String,
-      subnet: map['subnet'] == null ? null : SubnetProperties.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      subnet: map['subnet'] == null ? null : (SubnetProperties.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

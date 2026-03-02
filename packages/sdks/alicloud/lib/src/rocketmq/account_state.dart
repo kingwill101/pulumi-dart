@@ -19,15 +19,11 @@ class AccountState {
   /// [password] The password of the account.
   /// [username] The username of the account.
   AccountState({
-    pulumi.Output<String>? accountStatus,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? username,
-  }) :
-      accountStatus = pulumi.Input.asOptionalInput<String>(accountStatus),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.accountStatus,
+    this.instanceId,
+    this.password,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      accountStatus: map['accountStatus'] == null ? null : pulumi.Output.create<String>(map['accountStatus'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      accountStatus: map['accountStatus'] == null ? null : (map['accountStatus'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

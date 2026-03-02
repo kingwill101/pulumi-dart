@@ -16,11 +16,9 @@ class GetTagKeyArgs {
   /// [parent] The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
   /// [shortName] The tag key's short_name.
   GetTagKeyArgs({
-    required pulumi.Output<String> parent,
-    required pulumi.Output<String> shortName,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent),
-      shortName = pulumi.Input.asInput<String>(shortName);
+    required this.parent,
+    required this.shortName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetTagKeyArgs {
 
   factory GetTagKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetTagKeyArgs(
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      shortName: pulumi.Output.create<String>(map['shortName'] as String),
+      parent: (map['parent'] as String).input(),
+      shortName: (map['shortName'] as String).input(),
     );
   }
 }

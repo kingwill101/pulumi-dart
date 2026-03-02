@@ -36,23 +36,15 @@ class AccountV1State {
   /// [quotaBytes] The number of bytes allowed for the account.
   /// [region] The region in which to create the account. If omitted,
   AccountV1State({
-    pulumi.Output<int>? bytesUsed,
-    pulumi.Output<int>? containerCount,
-    pulumi.Output<Map<String, String>>? headers,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<int>? objectCount,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<int>? quotaBytes,
-    pulumi.Output<String>? region,
-  }) :
-      bytesUsed = pulumi.Input.asOptionalInput<int>(bytesUsed),
-      containerCount = pulumi.Input.asOptionalInput<int>(containerCount),
-      headers = pulumi.Input.asOptionalInput<Map<String, String>>(headers),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      objectCount = pulumi.Input.asOptionalInput<int>(objectCount),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      quotaBytes = pulumi.Input.asOptionalInput<int>(quotaBytes),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.bytesUsed,
+    this.containerCount,
+    this.headers,
+    this.metadata,
+    this.objectCount,
+    this.projectId,
+    this.quotaBytes,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class AccountV1State {
 
   factory AccountV1State.fromMap(Map<String, dynamic> map) {
     return AccountV1State(
-      bytesUsed: map['bytesUsed'] == null ? null : pulumi.Output.create<int>(map['bytesUsed'] as int),
-      containerCount: map['containerCount'] == null ? null : pulumi.Output.create<int>(map['containerCount'] as int),
-      headers: map['headers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['headers'] as Map).cast<String, String>()),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      objectCount: map['objectCount'] == null ? null : pulumi.Output.create<int>(map['objectCount'] as int),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      quotaBytes: map['quotaBytes'] == null ? null : pulumi.Output.create<int>(map['quotaBytes'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bytesUsed: map['bytesUsed'] == null ? null : (map['bytesUsed'] as int).input(),
+      containerCount: map['containerCount'] == null ? null : (map['containerCount'] as int).input(),
+      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      objectCount: map['objectCount'] == null ? null : (map['objectCount'] as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      quotaBytes: map['quotaBytes'] == null ? null : (map['quotaBytes'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

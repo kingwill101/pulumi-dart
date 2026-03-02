@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiJobJobSettingsRuntimeSetting {
   /// Set name, optional ENUM value:
@@ -19,9 +20,9 @@ class DiJobJobSettingsRuntimeSetting {
   /// src.offline.datasource.max.connection (maximum number of source connections for offline batch tasks)
   ///
   /// runtime.realtime.concurrent (real-time task concurrency)
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Runtime setting value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [DiJobJobSettingsRuntimeSetting].
   /// [name] Set name, optional ENUM value:
@@ -40,8 +41,8 @@ class DiJobJobSettingsRuntimeSetting {
 
   factory DiJobJobSettingsRuntimeSetting.fromMap(Map<String, dynamic> map) {
     return DiJobJobSettingsRuntimeSetting(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -57,33 +57,20 @@ class WasmPluginState {
   /// [usedBies] Output only. List of all extensions that use this WasmPlugin resource.
   /// [versions] All versions of this WasmPlugin resource in the key-value format. The key is the resource ID, and the value is the VersionDetails object.
   WasmPluginState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<WasmPluginLogConfig>? logConfig,
-    pulumi.Output<String>? mainVersionId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<List<WasmPluginUsedBy>>? usedBies,
-    pulumi.Output<List<WasmPluginVersion>>? versions,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logConfig = pulumi.Input.asOptionalInput<WasmPluginLogConfig>(logConfig),
-      mainVersionId = pulumi.Input.asOptionalInput<String>(mainVersionId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      usedBies = pulumi.Input.asOptionalInput<List<WasmPluginUsedBy>>(usedBies),
-      versions = pulumi.Input.asOptionalInput<List<WasmPluginVersion>>(versions);
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.logConfig,
+    this.mainVersionId,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.updateTime,
+    this.usedBies,
+    this.versions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,19 +92,19 @@ class WasmPluginState {
 
   factory WasmPluginState.fromMap(Map<String, dynamic> map) {
     return WasmPluginState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logConfig: map['logConfig'] == null ? null : pulumi.Output.create<WasmPluginLogConfig>(WasmPluginLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())),
-      mainVersionId: map['mainVersionId'] == null ? null : pulumi.Output.create<String>(map['mainVersionId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      usedBies: map['usedBies'] == null ? null : pulumi.Output.create<List<WasmPluginUsedBy>>(pulumi.Input.decodeList<WasmPluginUsedBy>(map['usedBies'], (value) => WasmPluginUsedBy.fromMap((value as Map).cast<String, dynamic>()))),
-      versions: map['versions'] == null ? null : pulumi.Output.create<List<WasmPluginVersion>>(pulumi.Input.decodeList<WasmPluginVersion>(map['versions'], (value) => WasmPluginVersion.fromMap((value as Map).cast<String, dynamic>()))),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logConfig: map['logConfig'] == null ? null : (WasmPluginLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      mainVersionId: map['mainVersionId'] == null ? null : (map['mainVersionId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      usedBies: map['usedBies'] == null ? null : (pulumi.Input.decodeList<WasmPluginUsedBy>(map['usedBies'], (value) => WasmPluginUsedBy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<WasmPluginVersion>(map['versions'], (value) => WasmPluginVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

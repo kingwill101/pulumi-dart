@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightFiltersNetworkSourceIpv4 {
   /// A finding's CIDR value.
-  final String cidr;
+  final pulumi.Input<String> cidr;
 
   /// Creates a new [InsightFiltersNetworkSourceIpv4].
   /// [cidr] A finding's CIDR value.
@@ -19,7 +20,7 @@ class InsightFiltersNetworkSourceIpv4 {
 
   factory InsightFiltersNetworkSourceIpv4.fromMap(Map<String, dynamic> map) {
     return InsightFiltersNetworkSourceIpv4(
-      cidr: map['cidr'] as String,
+      cidr: (map['cidr'] as String).input(),
     );
   }
 }

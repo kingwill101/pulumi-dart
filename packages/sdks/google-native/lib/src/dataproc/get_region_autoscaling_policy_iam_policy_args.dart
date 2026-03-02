@@ -16,13 +16,10 @@ class GetRegionAutoscalingPolicyIamPolicyArgs {
   /// [project] Optional.
   /// [regionId] Required.
   GetRegionAutoscalingPolicyIamPolicyArgs({
-    required pulumi.Output<String> autoscalingPolicyId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> regionId,
-  }) :
-      autoscalingPolicyId = pulumi.Input.asInput<String>(autoscalingPolicyId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regionId = pulumi.Input.asInput<String>(regionId);
+    required this.autoscalingPolicyId,
+    this.project,
+    required this.regionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetRegionAutoscalingPolicyIamPolicyArgs {
 
   factory GetRegionAutoscalingPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionAutoscalingPolicyIamPolicyArgs(
-      autoscalingPolicyId: pulumi.Output.create<String>(map['autoscalingPolicyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      regionId: pulumi.Output.create<String>(map['regionId'] as String),
+      autoscalingPolicyId: (map['autoscalingPolicyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
     );
   }
 }

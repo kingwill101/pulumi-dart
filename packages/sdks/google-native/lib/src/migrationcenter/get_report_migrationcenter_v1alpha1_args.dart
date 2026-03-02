@@ -20,17 +20,12 @@ class GetReportMigrationcenterV1alpha1Args {
   /// [reportId] Required.
   /// [view] Optional.
   GetReportMigrationcenterV1alpha1Args({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> reportConfigId,
-    required pulumi.Output<String> reportId,
-    pulumi.Output<String>? view,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reportConfigId = pulumi.Input.asInput<String>(reportConfigId),
-      reportId = pulumi.Input.asInput<String>(reportId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    required this.location,
+    this.project,
+    required this.reportConfigId,
+    required this.reportId,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetReportMigrationcenterV1alpha1Args {
 
   factory GetReportMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetReportMigrationcenterV1alpha1Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reportConfigId: pulumi.Output.create<String>(map['reportConfigId'] as String),
-      reportId: pulumi.Output.create<String>(map['reportId'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reportConfigId: (map['reportConfigId'] as String).input(),
+      reportId: (map['reportId'] as String).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

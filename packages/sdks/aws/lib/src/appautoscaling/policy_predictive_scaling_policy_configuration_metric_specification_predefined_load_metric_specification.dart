@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification {
   /// Metric type.
-  final String predefinedMetricType;
+  final pulumi.Input<String> predefinedMetricType;
   /// Label that uniquely identifies a target group.
-  final String? resourceLabel;
+  final pulumi.Input<String>? resourceLabel;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification].
   /// [predefinedMetricType] Metric type.
@@ -24,8 +25,8 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoa
 
   factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification(
-      predefinedMetricType: map['predefinedMetricType'] as String,
-      resourceLabel: map['resourceLabel'] == null ? null : map['resourceLabel'] as String,
+      predefinedMetricType: (map['predefinedMetricType'] as String).input(),
+      resourceLabel: map['resourceLabel'] == null ? null : (map['resourceLabel'] as String).input(),
     );
   }
 }

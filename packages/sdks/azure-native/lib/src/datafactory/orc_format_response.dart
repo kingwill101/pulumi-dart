@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The data stored in Optimized Row Columnar (ORC) format.
 class OrcFormatResponse {
   /// Deserializer. Type: string (or Expression with resultType string).
-  final dynamic deserializer;
+  final pulumi.Input<dynamic>? deserializer;
   /// Serializer. Type: string (or Expression with resultType string).
-  final dynamic serializer;
+  final pulumi.Input<dynamic>? serializer;
   /// Type of dataset storage format.
   /// Expected value is 'OrcFormat'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [OrcFormatResponse].
   /// [deserializer] Deserializer. Type: string (or Expression with resultType string).
@@ -31,9 +32,9 @@ class OrcFormatResponse {
 
   factory OrcFormatResponse.fromMap(Map<String, dynamic> map) {
     return OrcFormatResponse(
-      deserializer: map['deserializer'] == null ? null : map['deserializer'],
-      serializer: map['serializer'] == null ? null : map['serializer'],
-      type: map['type'] as String,
+      deserializer: map['deserializer'] == null ? null : (map['deserializer']).input(),
+      serializer: map['serializer'] == null ? null : (map['serializer']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

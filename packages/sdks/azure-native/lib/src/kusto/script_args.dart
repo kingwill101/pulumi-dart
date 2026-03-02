@@ -43,29 +43,18 @@ class ScriptArgs {
   /// [scriptUrl] The url to the KQL script blob file. Must not be used together with scriptContent property
   /// [scriptUrlSasToken] The SaS token that provide read access to the file which contain the script. Must be provided when using scriptUrl property.
   ScriptArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<bool>? continueOnErrors,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? forceUpdateTag,
-    pulumi.Output<String>? principalPermissionsAction,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scriptContent,
-    pulumi.Output<String>? scriptLevel,
-    pulumi.Output<String>? scriptName,
-    pulumi.Output<String>? scriptUrl,
-    pulumi.Output<String>? scriptUrlSasToken,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      continueOnErrors = pulumi.Input.asOptionalInput<bool>(continueOnErrors),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      forceUpdateTag = pulumi.Input.asOptionalInput<String>(forceUpdateTag),
-      principalPermissionsAction = pulumi.Input.asOptionalInput<String>(principalPermissionsAction),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scriptContent = pulumi.Input.asOptionalInput<String>(scriptContent),
-      scriptLevel = pulumi.Input.asOptionalInput<String>(scriptLevel),
-      scriptName = pulumi.Input.asOptionalInput<String>(scriptName),
-      scriptUrl = pulumi.Input.asOptionalInput<String>(scriptUrl),
-      scriptUrlSasToken = pulumi.Input.asOptionalInput<String>(scriptUrlSasToken);
+    required this.clusterName,
+    this.continueOnErrors,
+    required this.databaseName,
+    this.forceUpdateTag,
+    this.principalPermissionsAction,
+    required this.resourceGroupName,
+    this.scriptContent,
+    this.scriptLevel,
+    this.scriptName,
+    this.scriptUrl,
+    this.scriptUrlSasToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class ScriptArgs {
 
   factory ScriptArgs.fromMap(Map<String, dynamic> map) {
     return ScriptArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      continueOnErrors: map['continueOnErrors'] == null ? null : pulumi.Output.create<bool>(map['continueOnErrors'] as bool),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : pulumi.Output.create<String>(map['forceUpdateTag'] as String),
-      principalPermissionsAction: map['principalPermissionsAction'] == null ? null : pulumi.Output.create<String>(map['principalPermissionsAction'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scriptContent: map['scriptContent'] == null ? null : pulumi.Output.create<String>(map['scriptContent'] as String),
-      scriptLevel: map['scriptLevel'] == null ? null : pulumi.Output.create<String>(map['scriptLevel'] as String),
-      scriptName: map['scriptName'] == null ? null : pulumi.Output.create<String>(map['scriptName'] as String),
-      scriptUrl: map['scriptUrl'] == null ? null : pulumi.Output.create<String>(map['scriptUrl'] as String),
-      scriptUrlSasToken: map['scriptUrlSasToken'] == null ? null : pulumi.Output.create<String>(map['scriptUrlSasToken'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      continueOnErrors: map['continueOnErrors'] == null ? null : (map['continueOnErrors'] as bool).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
+      principalPermissionsAction: map['principalPermissionsAction'] == null ? null : (map['principalPermissionsAction'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scriptContent: map['scriptContent'] == null ? null : (map['scriptContent'] as String).input(),
+      scriptLevel: map['scriptLevel'] == null ? null : (map['scriptLevel'] as String).input(),
+      scriptName: map['scriptName'] == null ? null : (map['scriptName'] as String).input(),
+      scriptUrl: map['scriptUrl'] == null ? null : (map['scriptUrl'] as String).input(),
+      scriptUrlSasToken: map['scriptUrlSasToken'] == null ? null : (map['scriptUrlSasToken'] as String).input(),
     );
   }
 }

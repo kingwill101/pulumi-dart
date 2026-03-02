@@ -19,13 +19,10 @@ class ListTaskDetailsArgs {
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
   /// [taskName] The name of the container registry task.
   ListTaskDetailsArgs({
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> taskName,
-  }) :
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      taskName = pulumi.Input.asInput<String>(taskName);
+    required this.registryName,
+    required this.resourceGroupName,
+    required this.taskName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListTaskDetailsArgs {
 
   factory ListTaskDetailsArgs.fromMap(Map<String, dynamic> map) {
     return ListTaskDetailsArgs(
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      taskName: pulumi.Output.create<String>(map['taskName'] as String),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      taskName: (map['taskName'] as String).input(),
     );
   }
 }

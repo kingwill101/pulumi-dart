@@ -25,17 +25,12 @@ class UserArgs {
   /// [phone] The phone of the mobile phone number.
   /// [status] The status of the resource. Valid values: `Unlocked`, `Locked`.
   UserArgs({
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> endUserId,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? phone,
-    pulumi.Output<String>? status,
-  }) :
-      email = pulumi.Input.asInput<String>(email),
-      endUserId = pulumi.Input.asInput<String>(endUserId),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      phone = pulumi.Input.asOptionalInput<String>(phone),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.email,
+    required this.endUserId,
+    this.password,
+    this.phone,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      email: pulumi.Output.create<String>(map['email'] as String),
-      endUserId: pulumi.Output.create<String>(map['endUserId'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      phone: map['phone'] == null ? null : pulumi.Output.create<String>(map['phone'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      email: (map['email'] as String).input(),
+      endUserId: (map['endUserId'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

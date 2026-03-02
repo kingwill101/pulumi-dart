@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a Sampling Algorithm that exhaustively generates every value combination in the space
 class GridSamplingAlgorithmResponse {
   /// Expected value is 'Grid'.
-  final String samplingAlgorithmType;
+  final pulumi.Input<String> samplingAlgorithmType;
 
   /// Creates a new [GridSamplingAlgorithmResponse].
   /// [samplingAlgorithmType] Expected value is 'Grid'.
@@ -20,7 +21,7 @@ class GridSamplingAlgorithmResponse {
 
   factory GridSamplingAlgorithmResponse.fromMap(Map<String, dynamic> map) {
     return GridSamplingAlgorithmResponse(
-      samplingAlgorithmType: map['samplingAlgorithmType'] as String,
+      samplingAlgorithmType: (map['samplingAlgorithmType'] as String).input(),
     );
   }
 }

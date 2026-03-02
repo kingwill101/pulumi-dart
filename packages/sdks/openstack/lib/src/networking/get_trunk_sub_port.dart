@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTrunkSubPort {
   /// The ID of the trunk parent port.
-  final String portId;
+  final pulumi.Input<String> portId;
   /// The numeric id of the subport segment.
-  final int segmentationId;
+  final pulumi.Input<int> segmentationId;
   /// The segmenation tecnology used, e.g., "vlan".
-  final String segmentationType;
+  final pulumi.Input<String> segmentationType;
 
   /// Creates a new [GetTrunkSubPort].
   /// [portId] The ID of the trunk parent port.
@@ -29,9 +30,9 @@ class GetTrunkSubPort {
 
   factory GetTrunkSubPort.fromMap(Map<String, dynamic> map) {
     return GetTrunkSubPort(
-      portId: map['portId'] as String,
-      segmentationId: map['segmentationId'] as int,
-      segmentationType: map['segmentationType'] as String,
+      portId: (map['portId'] as String).input(),
+      segmentationId: (map['segmentationId'] as int).input(),
+      segmentationType: (map['segmentationType'] as String).input(),
     );
   }
 }

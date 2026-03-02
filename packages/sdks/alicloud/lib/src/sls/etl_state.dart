@@ -33,21 +33,14 @@ class EtlState {
   /// [project] Project name.
   /// [status] Task status.
   EtlState({
-    pulumi.Output<EtlConfiguration>? configuration,
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? jobName,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? status,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<EtlConfiguration>(configuration),
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      jobName = pulumi.Input.asOptionalInput<String>(jobName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.configuration,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.jobName,
+    this.project,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class EtlState {
 
   factory EtlState.fromMap(Map<String, dynamic> map) {
     return EtlState(
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<EtlConfiguration>(EtlConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      jobName: map['jobName'] == null ? null : pulumi.Output.create<String>(map['jobName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      configuration: map['configuration'] == null ? null : (EtlConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

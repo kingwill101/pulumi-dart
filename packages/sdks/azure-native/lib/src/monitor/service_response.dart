@@ -7,9 +7,9 @@ import 'pipeline_response.dart';
 /// Service Info.
 class ServiceResponse {
   /// Persistence options to all pipelines in the instance.
-  final PersistenceConfigurationsResponse? persistence;
+  final pulumi.Input<PersistenceConfigurationsResponse>? persistence;
   /// Pipelines belonging to a given pipeline group.
-  final List<PipelineResponse> pipelines;
+  final pulumi.Input<List<PipelineResponse>> pipelines;
 
   /// Creates a new [ServiceResponse].
   /// [persistence] Persistence options to all pipelines in the instance.
@@ -21,15 +21,15 @@ class ServiceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'persistence': ?persistence == null ? null : persistence!.toMap(),
-      'pipelines': pulumi.Input.encodeList<PipelineResponse, Map<String, dynamic>>(pipelines, (value) => value.toMap()),
+      'persistence': ?pulumi.Input.mapOptionalInputValue<PersistenceConfigurationsResponse, Map<String, dynamic>>(persistence, (value) => value.toMap()),
+      'pipelines': pulumi.Input.mapInputValue<List<PipelineResponse>, List<Map<String, dynamic>>>(pipelines, (value) => pulumi.Input.encodeList<PipelineResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ServiceResponse.fromMap(Map<String, dynamic> map) {
     return ServiceResponse(
-      persistence: map['persistence'] == null ? null : PersistenceConfigurationsResponse.fromMap((map['persistence'] as Map).cast<String, dynamic>()),
-      pipelines: pulumi.Input.decodeList<PipelineResponse>(map['pipelines'], (value) => PipelineResponse.fromMap((value as Map).cast<String, dynamic>())),
+      persistence: map['persistence'] == null ? null : (PersistenceConfigurationsResponse.fromMap((map['persistence'] as Map).cast<String, dynamic>())).input(),
+      pipelines: (pulumi.Input.decodeList<PipelineResponse>(map['pipelines'], (value) => PipelineResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetSavedSearchArgs {
   /// [savedSearchId] The id of the saved search.
   /// [workspaceName] The name of the workspace.
   GetSavedSearchArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> savedSearchId,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      savedSearchId = pulumi.Input.asInput<String>(savedSearchId),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.savedSearchId,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSavedSearchArgs {
 
   factory GetSavedSearchArgs.fromMap(Map<String, dynamic> map) {
     return GetSavedSearchArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      savedSearchId: pulumi.Output.create<String>(map['savedSearchId'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      savedSearchId: (map['savedSearchId'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

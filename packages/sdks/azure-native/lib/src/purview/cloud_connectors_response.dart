@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// External Cloud Service connectors
 class CloudConnectorsResponse {
   /// AWS external identifier.
   /// Configured in AWS to allow use of the role arn used for scanning
-  final String awsExternalId;
+  final pulumi.Input<String> awsExternalId;
 
   /// Creates a new [CloudConnectorsResponse].
   /// [awsExternalId] AWS external identifier.
@@ -21,7 +22,7 @@ class CloudConnectorsResponse {
 
   factory CloudConnectorsResponse.fromMap(Map<String, dynamic> map) {
     return CloudConnectorsResponse(
-      awsExternalId: map['awsExternalId'] as String,
+      awsExternalId: (map['awsExternalId'] as String).input(),
     );
   }
 }

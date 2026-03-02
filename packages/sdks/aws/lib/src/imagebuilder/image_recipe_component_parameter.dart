@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImageRecipeComponentParameter {
   /// The name of the component parameter.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value for the named component parameter.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ImageRecipeComponentParameter].
   /// [name] The name of the component parameter.
@@ -24,8 +25,8 @@ class ImageRecipeComponentParameter {
 
   factory ImageRecipeComponentParameter.fromMap(Map<String, dynamic> map) {
     return ImageRecipeComponentParameter(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

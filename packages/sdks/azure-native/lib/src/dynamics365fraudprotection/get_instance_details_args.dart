@@ -16,11 +16,9 @@ class GetInstanceDetailsArgs {
   /// [instanceName] The name of the instance. It must be a minimum of 3 characters, and a maximum of 63.
   /// [resourceGroupName] The name of the Azure Resource group of which a given DFP instance is part. This name must be at least 1 character in length, and no more than 90.
   GetInstanceDetailsArgs({
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.instanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetInstanceDetailsArgs {
 
   factory GetInstanceDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceDetailsArgs(
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      instanceName: (map['instanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

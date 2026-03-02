@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ssl_config_ca_source.dart';
 import 'ssl_config_ssl_mode.dart';
 
 /// SSL configuration.
 class SslConfig {
   /// Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
-  final SslConfigCaSource? caSource;
+  final pulumi.Input<SslConfigCaSource>? caSource;
   /// Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.
-  final SslConfigSslMode? sslMode;
+  final pulumi.Input<SslConfigSslMode>? sslMode;
 
   /// Creates a new [SslConfig].
   /// [caSource] Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
@@ -20,15 +21,15 @@ class SslConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caSource': ?caSource == null ? null : caSource!.value,
-      'sslMode': ?sslMode == null ? null : sslMode!.value,
+      'caSource': ?pulumi.Input.mapOptionalInputValue<SslConfigCaSource, String>(caSource, (value) => value.value),
+      'sslMode': ?pulumi.Input.mapOptionalInputValue<SslConfigSslMode, String>(sslMode, (value) => value.value),
     };
   }
 
   factory SslConfig.fromMap(Map<String, dynamic> map) {
     return SslConfig(
-      caSource: map['caSource'] == null ? null : SslConfigCaSource.fromValue(map['caSource'] as String),
-      sslMode: map['sslMode'] == null ? null : SslConfigSslMode.fromValue(map['sslMode'] as String),
+      caSource: map['caSource'] == null ? null : (SslConfigCaSource.fromValue(map['caSource'] as String)).input(),
+      sslMode: map['sslMode'] == null ? null : (SslConfigSslMode.fromValue(map['sslMode'] as String)).input(),
     );
   }
 }

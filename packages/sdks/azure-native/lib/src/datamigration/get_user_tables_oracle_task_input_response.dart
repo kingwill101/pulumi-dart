@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'oracle_connection_info_response.dart';
 
 /// Input for the task that gets the list of tables contained within a provided list of Oracle schemas.
 class GetUserTablesOracleTaskInputResponse {
   /// Information for connecting to Oracle source
-  final OracleConnectionInfoResponse connectionInfo;
+  final pulumi.Input<OracleConnectionInfoResponse> connectionInfo;
   /// List of Oracle schemas for which to collect tables
-  final List<String> selectedSchemas;
+  final pulumi.Input<List<String>> selectedSchemas;
 
   /// Creates a new [GetUserTablesOracleTaskInputResponse].
   /// [connectionInfo] Information for connecting to Oracle source
@@ -19,15 +20,15 @@ class GetUserTablesOracleTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionInfo': connectionInfo.toMap(),
+      'connectionInfo': pulumi.Input.mapInputValue<OracleConnectionInfoResponse, Map<String, dynamic>>(connectionInfo, (value) => value.toMap()),
       'selectedSchemas': selectedSchemas,
     };
   }
 
   factory GetUserTablesOracleTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return GetUserTablesOracleTaskInputResponse(
-      connectionInfo: OracleConnectionInfoResponse.fromMap((map['connectionInfo'] as Map).cast<String, dynamic>()),
-      selectedSchemas: (map['selectedSchemas'] as List).cast<String>(),
+      connectionInfo: (OracleConnectionInfoResponse.fromMap((map['connectionInfo'] as Map).cast<String, dynamic>())).input(),
+      selectedSchemas: ((map['selectedSchemas'] as List).cast<String>()).input(),
     );
   }
 }

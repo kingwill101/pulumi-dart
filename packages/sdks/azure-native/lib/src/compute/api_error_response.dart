@@ -7,15 +7,15 @@ import 'inner_error_response.dart';
 /// Api error.
 class ApiErrorResponse {
   /// The error code.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// The Api error details
-  final List<ApiErrorBaseResponse>? details;
+  final pulumi.Input<List<ApiErrorBaseResponse>>? details;
   /// The Api inner error
-  final InnerErrorResponse? innererror;
+  final pulumi.Input<InnerErrorResponse>? innererror;
   /// The error message.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// The target of the particular error.
-  final String? target;
+  final pulumi.Input<String>? target;
 
   /// Creates a new [ApiErrorResponse].
   /// [code] The error code.
@@ -34,8 +34,8 @@ class ApiErrorResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': ?code,
-      'details': ?details == null ? null : pulumi.Input.encodeList<ApiErrorBaseResponse, Map<String, dynamic>>(details!, (value) => value.toMap()),
-      'innererror': ?innererror == null ? null : innererror!.toMap(),
+      'details': ?pulumi.Input.mapOptionalInputValue<List<ApiErrorBaseResponse>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<ApiErrorBaseResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'innererror': ?pulumi.Input.mapOptionalInputValue<InnerErrorResponse, Map<String, dynamic>>(innererror, (value) => value.toMap()),
       'message': ?message,
       'target': ?target,
     };
@@ -43,11 +43,11 @@ class ApiErrorResponse {
 
   factory ApiErrorResponse.fromMap(Map<String, dynamic> map) {
     return ApiErrorResponse(
-      code: map['code'] == null ? null : map['code'] as String,
-      details: map['details'] == null ? null : pulumi.Input.decodeList<ApiErrorBaseResponse>(map['details'], (value) => ApiErrorBaseResponse.fromMap((value as Map).cast<String, dynamic>())),
-      innererror: map['innererror'] == null ? null : InnerErrorResponse.fromMap((map['innererror'] as Map).cast<String, dynamic>()),
-      message: map['message'] == null ? null : map['message'] as String,
-      target: map['target'] == null ? null : map['target'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<ApiErrorBaseResponse>(map['details'], (value) => ApiErrorBaseResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      innererror: map['innererror'] == null ? null : (InnerErrorResponse.fromMap((map['innererror'] as Map).cast<String, dynamic>())).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

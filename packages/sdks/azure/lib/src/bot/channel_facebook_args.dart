@@ -29,19 +29,13 @@ class ChannelFacebookArgs {
   /// [pages] One or more `page` blocks as defined below.
   /// [resourceGroupName] The name of the resource group where the Facebook Channel should be created. Changing this forces a new resource to be created.
   ChannelFacebookArgs({
-    required pulumi.Output<String> botName,
-    required pulumi.Output<String> facebookApplicationId,
-    required pulumi.Output<String> facebookApplicationSecret,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<ChannelFacebookPage>> pages,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      botName = pulumi.Input.asInput<String>(botName),
-      facebookApplicationId = pulumi.Input.asInput<String>(facebookApplicationId),
-      facebookApplicationSecret = pulumi.Input.asInput<String>(facebookApplicationSecret),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      pages = pulumi.Input.asInput<List<ChannelFacebookPage>>(pages),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.botName,
+    required this.facebookApplicationId,
+    required this.facebookApplicationSecret,
+    this.location,
+    required this.pages,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ChannelFacebookArgs {
 
   factory ChannelFacebookArgs.fromMap(Map<String, dynamic> map) {
     return ChannelFacebookArgs(
-      botName: pulumi.Output.create<String>(map['botName'] as String),
-      facebookApplicationId: pulumi.Output.create<String>(map['facebookApplicationId'] as String),
-      facebookApplicationSecret: pulumi.Output.create<String>(map['facebookApplicationSecret'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      pages: pulumi.Output.create<List<ChannelFacebookPage>>(pulumi.Input.decodeList<ChannelFacebookPage>(map['pages'], (value) => ChannelFacebookPage.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      botName: (map['botName'] as String).input(),
+      facebookApplicationId: (map['facebookApplicationId'] as String).input(),
+      facebookApplicationSecret: (map['facebookApplicationSecret'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      pages: (pulumi.Input.decodeList<ChannelFacebookPage>(map['pages'], (value) => ChannelFacebookPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

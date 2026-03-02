@@ -18,15 +18,11 @@ class GetVersionArgs {
   /// [versionId] Required.
   /// [view] Optional.
   GetVersionArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> serviceId,
-    required pulumi.Output<String> versionId,
-    pulumi.Output<String>? view,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      versionId = pulumi.Input.asInput<String>(versionId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    required this.appId,
+    required this.serviceId,
+    required this.versionId,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetVersionArgs {
 
   factory GetVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      versionId: pulumi.Output.create<String>(map['versionId'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      appId: (map['appId'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

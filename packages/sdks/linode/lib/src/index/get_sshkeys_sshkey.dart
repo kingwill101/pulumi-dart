@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSshkeysSshkey {
   /// The date this key was added.
-  final String created;
+  final pulumi.Input<String> created;
   /// The ID of the SSH Key.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The label of the SSH Key.
-  final String label;
+  final pulumi.Input<String> label;
   /// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-  final String sshKey;
+  final pulumi.Input<String> sshKey;
 
   /// Creates a new [GetSshkeysSshkey].
   /// [created] The date this key was added.
@@ -34,10 +35,10 @@ class GetSshkeysSshkey {
 
   factory GetSshkeysSshkey.fromMap(Map<String, dynamic> map) {
     return GetSshkeysSshkey(
-      created: map['created'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      label: map['label'] as String,
-      sshKey: map['sshKey'] as String,
+      created: (map['created'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      label: (map['label'] as String).input(),
+      sshKey: (map['sshKey'] as String).input(),
     );
   }
 }

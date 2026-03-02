@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_load_balancer_advanced_configuration.dart';
 
 class ServiceLoadBalancer {
   /// Configuration block for Blue/Green deployment settings. Required when using `BLUE_GREEN` deployment strategy. See below.
-  final ServiceLoadBalancerAdvancedConfiguration? advancedConfiguration;
+  final pulumi.Input<ServiceLoadBalancerAdvancedConfiguration>? advancedConfiguration;
   /// Name of the container to associate with the load balancer (as it appears in a container definition).
-  final String containerName;
+  final pulumi.Input<String> containerName;
   /// Port on the container to associate with the load balancer.
-  final int containerPort;
+  final pulumi.Input<int> containerPort;
   /// Name of the ELB (Classic) to associate with the service.
-  final String? elbName;
+  final pulumi.Input<String>? elbName;
   /// ARN of the Load Balancer target group to associate with the service.
   ///
   /// > **Version note:** Multiple `load_balancer` configuration block support was added in version 2.22.0 of the provider. This allows configuration of [ECS service support for multiple target groups](https://aws.amazon.com/about-aws/whats-new/2019/07/amazon-ecs-services-now-support-multiple-load-balancer-target-groups/).
-  final String? targetGroupArn;
+  final pulumi.Input<String>? targetGroupArn;
 
   /// Creates a new [ServiceLoadBalancer].
   /// [advancedConfiguration] Configuration block for Blue/Green deployment settings. Required when using `BLUE_GREEN` deployment strategy. See below.
@@ -32,7 +33,7 @@ class ServiceLoadBalancer {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedConfiguration': ?advancedConfiguration == null ? null : advancedConfiguration!.toMap(),
+      'advancedConfiguration': ?pulumi.Input.mapOptionalInputValue<ServiceLoadBalancerAdvancedConfiguration, Map<String, dynamic>>(advancedConfiguration, (value) => value.toMap()),
       'containerName': containerName,
       'containerPort': containerPort,
       'elbName': ?elbName,
@@ -42,11 +43,11 @@ class ServiceLoadBalancer {
 
   factory ServiceLoadBalancer.fromMap(Map<String, dynamic> map) {
     return ServiceLoadBalancer(
-      advancedConfiguration: map['advancedConfiguration'] == null ? null : ServiceLoadBalancerAdvancedConfiguration.fromMap((map['advancedConfiguration'] as Map).cast<String, dynamic>()),
-      containerName: map['containerName'] as String,
-      containerPort: map['containerPort'] as int,
-      elbName: map['elbName'] == null ? null : map['elbName'] as String,
-      targetGroupArn: map['targetGroupArn'] == null ? null : map['targetGroupArn'] as String,
+      advancedConfiguration: map['advancedConfiguration'] == null ? null : (ServiceLoadBalancerAdvancedConfiguration.fromMap((map['advancedConfiguration'] as Map).cast<String, dynamic>())).input(),
+      containerName: (map['containerName'] as String).input(),
+      containerPort: (map['containerPort'] as int).input(),
+      elbName: map['elbName'] == null ? null : (map['elbName'] as String).input(),
+      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'integration_service_environmen_encryption_key_reference.dart';
 
 /// The encryption configuration for the integration service environment.
 class IntegrationServiceEnvironmenEncryptionConfiguration {
   /// The encryption key reference.
-  final IntegrationServiceEnvironmenEncryptionKeyReference? encryptionKeyReference;
+  final pulumi.Input<IntegrationServiceEnvironmenEncryptionKeyReference>? encryptionKeyReference;
 
   /// Creates a new [IntegrationServiceEnvironmenEncryptionConfiguration].
   /// [encryptionKeyReference] The encryption key reference.
@@ -15,13 +16,13 @@ class IntegrationServiceEnvironmenEncryptionConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionKeyReference': ?encryptionKeyReference == null ? null : encryptionKeyReference!.toMap(),
+      'encryptionKeyReference': ?pulumi.Input.mapOptionalInputValue<IntegrationServiceEnvironmenEncryptionKeyReference, Map<String, dynamic>>(encryptionKeyReference, (value) => value.toMap()),
     };
   }
 
   factory IntegrationServiceEnvironmenEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmenEncryptionConfiguration(
-      encryptionKeyReference: map['encryptionKeyReference'] == null ? null : IntegrationServiceEnvironmenEncryptionKeyReference.fromMap((map['encryptionKeyReference'] as Map).cast<String, dynamic>()),
+      encryptionKeyReference: map['encryptionKeyReference'] == null ? null : (IntegrationServiceEnvironmenEncryptionKeyReference.fromMap((map['encryptionKeyReference'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVulWhitelistsWhitelist {
   /// The ID of the Vul Whitelist.
-  final String id;
+  final pulumi.Input<String> id;
   /// Reason for adding whitelist.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// Set the effective range of the whitelist.
-  final String targetInfo;
+  final pulumi.Input<String> targetInfo;
   /// The ID of the Vul Whitelist.
-  final String vulWhitelistId;
+  final pulumi.Input<String> vulWhitelistId;
   /// Information about the vulnerability to be added to the whitelist.
-  final String whitelist;
+  final pulumi.Input<String> whitelist;
 
   /// Creates a new [GetVulWhitelistsWhitelist].
   /// [id] The ID of the Vul Whitelist.
@@ -39,11 +40,11 @@ class GetVulWhitelistsWhitelist {
 
   factory GetVulWhitelistsWhitelist.fromMap(Map<String, dynamic> map) {
     return GetVulWhitelistsWhitelist(
-      id: map['id'] as String,
-      reason: map['reason'] as String,
-      targetInfo: map['targetInfo'] as String,
-      vulWhitelistId: map['vulWhitelistId'] as String,
-      whitelist: map['whitelist'] as String,
+      id: (map['id'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      targetInfo: (map['targetInfo'] as String).input(),
+      vulWhitelistId: (map['vulWhitelistId'] as String).input(),
+      whitelist: (map['whitelist'] as String).input(),
     );
   }
 }

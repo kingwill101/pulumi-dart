@@ -9,9 +9,9 @@ class PluginInstanceActionHubInstanceAction {
   /// CURRENT_EXECUTION_STATE_UNSPECIFIED
   /// RUNNING
   /// NOT_RUNNING
-  final String? currentExecutionState;
+  final pulumi.Input<String>? currentExecutionState;
   /// The result of the last execution of the plugin instance.
-  final List<PluginInstanceActionHubInstanceActionLastExecution>? lastExecutions;
+  final pulumi.Input<List<PluginInstanceActionHubInstanceActionLastExecution>>? lastExecutions;
 
   /// Creates a new [PluginInstanceActionHubInstanceAction].
   /// [currentExecutionState] The current state of the execution.
@@ -24,14 +24,14 @@ class PluginInstanceActionHubInstanceAction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'currentExecutionState': ?currentExecutionState,
-      'lastExecutions': ?lastExecutions == null ? null : pulumi.Input.encodeList<PluginInstanceActionHubInstanceActionLastExecution, Map<String, dynamic>>(lastExecutions!, (value) => value.toMap()),
+      'lastExecutions': ?pulumi.Input.mapOptionalInputValue<List<PluginInstanceActionHubInstanceActionLastExecution>, List<Map<String, dynamic>>>(lastExecutions, (value) => pulumi.Input.encodeList<PluginInstanceActionHubInstanceActionLastExecution, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PluginInstanceActionHubInstanceAction.fromMap(Map<String, dynamic> map) {
     return PluginInstanceActionHubInstanceAction(
-      currentExecutionState: map['currentExecutionState'] == null ? null : map['currentExecutionState'] as String,
-      lastExecutions: map['lastExecutions'] == null ? null : pulumi.Input.decodeList<PluginInstanceActionHubInstanceActionLastExecution>(map['lastExecutions'], (value) => PluginInstanceActionHubInstanceActionLastExecution.fromMap((value as Map).cast<String, dynamic>())),
+      currentExecutionState: map['currentExecutionState'] == null ? null : (map['currentExecutionState'] as String).input(),
+      lastExecutions: map['lastExecutions'] == null ? null : (pulumi.Input.decodeList<PluginInstanceActionHubInstanceActionLastExecution>(map['lastExecutions'], (value) => PluginInstanceActionHubInstanceActionLastExecution.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

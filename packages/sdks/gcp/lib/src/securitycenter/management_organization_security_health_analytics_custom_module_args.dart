@@ -32,17 +32,12 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs {
   /// [location] Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   /// [organization] Numerical ID of the parent organization.
   ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs({
-    pulumi.Output<ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig>? customConfig,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? enablementState,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> organization,
-  }) :
-      customConfig = pulumi.Input.asOptionalInput<ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig>(customConfig),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enablementState = pulumi.Input.asOptionalInput<String>(enablementState),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      organization = pulumi.Input.asInput<String>(organization);
+    this.customConfig,
+    this.displayName,
+    this.enablementState,
+    this.location,
+    required this.organization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs {
 
   factory ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : pulumi.Output.create<ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig>(ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enablementState: map['enablementState'] == null ? null : pulumi.Output.create<String>(map['enablementState'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
+      customConfig: map['customConfig'] == null ? null : (ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enablementState: map['enablementState'] == null ? null : (map['enablementState'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      organization: (map['organization'] as String).input(),
     );
   }
 }

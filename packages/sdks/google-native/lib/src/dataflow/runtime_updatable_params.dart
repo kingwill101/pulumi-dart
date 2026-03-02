@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
 class RuntimeUpdatableParams {
   /// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
-  final int? maxNumWorkers;
+  final pulumi.Input<int>? maxNumWorkers;
   /// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
-  final int? minNumWorkers;
+  final pulumi.Input<int>? minNumWorkers;
 
   /// Creates a new [RuntimeUpdatableParams].
   /// [maxNumWorkers] The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
@@ -25,8 +26,8 @@ class RuntimeUpdatableParams {
 
   factory RuntimeUpdatableParams.fromMap(Map<String, dynamic> map) {
     return RuntimeUpdatableParams(
-      maxNumWorkers: map['maxNumWorkers'] == null ? null : map['maxNumWorkers'] as int,
-      minNumWorkers: map['minNumWorkers'] == null ? null : map['minNumWorkers'] as int,
+      maxNumWorkers: map['maxNumWorkers'] == null ? null : (map['maxNumWorkers'] as int).input(),
+      minNumWorkers: map['minNumWorkers'] == null ? null : (map['minNumWorkers'] as int).input(),
     );
   }
 }

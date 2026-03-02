@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLocksLock {
   /// The ID of the locked entity.
-  final int entityId;
+  final pulumi.Input<int> entityId;
   /// The label of the locked entity.
-  final String entityLabel;
+  final pulumi.Input<String> entityLabel;
   /// The type of the locked entity.
-  final String entityType;
+  final pulumi.Input<String> entityType;
   /// The URL of the locked entity.
-  final String entityUrl;
+  final pulumi.Input<String> entityUrl;
   /// The unique ID of the Lock.
-  final int id;
+  final pulumi.Input<int> id;
   /// The type of lock.
-  final String lockType;
+  final pulumi.Input<String> lockType;
 
   /// Creates a new [GetLocksLock].
   /// [entityId] The ID of the locked entity.
@@ -44,12 +45,12 @@ class GetLocksLock {
 
   factory GetLocksLock.fromMap(Map<String, dynamic> map) {
     return GetLocksLock(
-      entityId: map['entityId'] as int,
-      entityLabel: map['entityLabel'] as String,
-      entityType: map['entityType'] as String,
-      entityUrl: map['entityUrl'] as String,
-      id: map['id'] as int,
-      lockType: map['lockType'] as String,
+      entityId: (map['entityId'] as int).input(),
+      entityLabel: (map['entityLabel'] as String).input(),
+      entityType: (map['entityType'] as String).input(),
+      entityUrl: (map['entityUrl'] as String).input(),
+      id: (map['id'] as int).input(),
+      lockType: (map['lockType'] as String).input(),
     );
   }
 }

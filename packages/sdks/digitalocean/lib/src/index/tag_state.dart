@@ -28,21 +28,14 @@ class TagState {
   /// [volumeSnapshotsCount] A count of the volume snapshots that the tag is applied to.
   /// [volumesCount] A count of the volumes that the tag is applied to.
   TagState({
-    pulumi.Output<int>? databasesCount,
-    pulumi.Output<int>? dropletsCount,
-    pulumi.Output<int>? imagesCount,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? totalResourceCount,
-    pulumi.Output<int>? volumeSnapshotsCount,
-    pulumi.Output<int>? volumesCount,
-  }) :
-      databasesCount = pulumi.Input.asOptionalInput<int>(databasesCount),
-      dropletsCount = pulumi.Input.asOptionalInput<int>(dropletsCount),
-      imagesCount = pulumi.Input.asOptionalInput<int>(imagesCount),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      totalResourceCount = pulumi.Input.asOptionalInput<int>(totalResourceCount),
-      volumeSnapshotsCount = pulumi.Input.asOptionalInput<int>(volumeSnapshotsCount),
-      volumesCount = pulumi.Input.asOptionalInput<int>(volumesCount);
+    this.databasesCount,
+    this.dropletsCount,
+    this.imagesCount,
+    this.name,
+    this.totalResourceCount,
+    this.volumeSnapshotsCount,
+    this.volumesCount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      databasesCount: map['databasesCount'] == null ? null : pulumi.Output.create<int>(map['databasesCount'] as int),
-      dropletsCount: map['dropletsCount'] == null ? null : pulumi.Output.create<int>(map['dropletsCount'] as int),
-      imagesCount: map['imagesCount'] == null ? null : pulumi.Output.create<int>(map['imagesCount'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      totalResourceCount: map['totalResourceCount'] == null ? null : pulumi.Output.create<int>(map['totalResourceCount'] as int),
-      volumeSnapshotsCount: map['volumeSnapshotsCount'] == null ? null : pulumi.Output.create<int>(map['volumeSnapshotsCount'] as int),
-      volumesCount: map['volumesCount'] == null ? null : pulumi.Output.create<int>(map['volumesCount'] as int),
+      databasesCount: map['databasesCount'] == null ? null : (map['databasesCount'] as int).input(),
+      dropletsCount: map['dropletsCount'] == null ? null : (map['dropletsCount'] as int).input(),
+      imagesCount: map['imagesCount'] == null ? null : (map['imagesCount'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      totalResourceCount: map['totalResourceCount'] == null ? null : (map['totalResourceCount'] as int).input(),
+      volumeSnapshotsCount: map['volumeSnapshotsCount'] == null ? null : (map['volumeSnapshotsCount'] as int).input(),
+      volumesCount: map['volumesCount'] == null ? null : (map['volumesCount'] as int).input(),
     );
   }
 }

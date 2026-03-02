@@ -19,13 +19,10 @@ class GatewayRouteTableAttachmentArgs {
   /// [ipv4GatewayId] The ID of the IPv4 Gateway instance.
   /// [routeTableId] The ID of the Gateway route table to be bound.
   GatewayRouteTableAttachmentArgs({
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> ipv4GatewayId,
-    required pulumi.Output<String> routeTableId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      ipv4GatewayId = pulumi.Input.asInput<String>(ipv4GatewayId),
-      routeTableId = pulumi.Input.asInput<String>(routeTableId);
+    this.dryRun,
+    required this.ipv4GatewayId,
+    required this.routeTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GatewayRouteTableAttachmentArgs {
 
   factory GatewayRouteTableAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GatewayRouteTableAttachmentArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      ipv4GatewayId: pulumi.Output.create<String>(map['ipv4GatewayId'] as String),
-      routeTableId: pulumi.Output.create<String>(map['routeTableId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      ipv4GatewayId: (map['ipv4GatewayId'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
     );
   }
 }

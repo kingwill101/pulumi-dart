@@ -42,27 +42,17 @@ class AssetEndpointProfileArgs {
   /// [tags] Resource tags.
   /// [targetAddress] The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
   AssetEndpointProfileArgs({
-    pulumi.Output<String>? additionalConfiguration,
-    pulumi.Output<String>? assetEndpointProfileName,
-    pulumi.Output<Authentication>? authentication,
-    pulumi.Output<String>? discoveredAssetEndpointProfileRef,
-    required pulumi.Output<String> endpointProfileType,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetAddress,
-  }) :
-      additionalConfiguration = pulumi.Input.asOptionalInput<String>(additionalConfiguration),
-      assetEndpointProfileName = pulumi.Input.asOptionalInput<String>(assetEndpointProfileName),
-      authentication = pulumi.Input.asOptionalInput<Authentication>(authentication),
-      discoveredAssetEndpointProfileRef = pulumi.Input.asOptionalInput<String>(discoveredAssetEndpointProfileRef),
-      endpointProfileType = pulumi.Input.asInput<String>(endpointProfileType),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetAddress = pulumi.Input.asInput<String>(targetAddress);
+    this.additionalConfiguration,
+    this.assetEndpointProfileName,
+    this.authentication,
+    this.discoveredAssetEndpointProfileRef,
+    required this.endpointProfileType,
+    required this.extendedLocation,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    required this.targetAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class AssetEndpointProfileArgs {
 
   factory AssetEndpointProfileArgs.fromMap(Map<String, dynamic> map) {
     return AssetEndpointProfileArgs(
-      additionalConfiguration: map['additionalConfiguration'] == null ? null : pulumi.Output.create<String>(map['additionalConfiguration'] as String),
-      assetEndpointProfileName: map['assetEndpointProfileName'] == null ? null : pulumi.Output.create<String>(map['assetEndpointProfileName'] as String),
-      authentication: map['authentication'] == null ? null : pulumi.Output.create<Authentication>(Authentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())),
-      discoveredAssetEndpointProfileRef: map['discoveredAssetEndpointProfileRef'] == null ? null : pulumi.Output.create<String>(map['discoveredAssetEndpointProfileRef'] as String),
-      endpointProfileType: pulumi.Output.create<String>(map['endpointProfileType'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetAddress: pulumi.Output.create<String>(map['targetAddress'] as String),
+      additionalConfiguration: map['additionalConfiguration'] == null ? null : (map['additionalConfiguration'] as String).input(),
+      assetEndpointProfileName: map['assetEndpointProfileName'] == null ? null : (map['assetEndpointProfileName'] as String).input(),
+      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      discoveredAssetEndpointProfileRef: map['discoveredAssetEndpointProfileRef'] == null ? null : (map['discoveredAssetEndpointProfileRef'] as String).input(),
+      endpointProfileType: (map['endpointProfileType'] as String).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetAddress: (map['targetAddress'] as String).input(),
     );
   }
 }

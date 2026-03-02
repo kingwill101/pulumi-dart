@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU parameters supplied to the create Redis operation.
 class SkuResponse {
   /// The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).
-  final int capacity;
+  final pulumi.Input<int> capacity;
   /// The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium).
-  final String family;
+  final pulumi.Input<String> family;
   /// The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium)
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [SkuResponse].
   /// [capacity] The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).
@@ -30,9 +31,9 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      capacity: map['capacity'] as int,
-      family: map['family'] as String,
-      name: map['name'] as String,
+      capacity: (map['capacity'] as int).input(),
+      family: (map['family'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

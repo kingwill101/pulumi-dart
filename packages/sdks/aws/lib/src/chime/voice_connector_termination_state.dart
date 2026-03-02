@@ -28,21 +28,14 @@ class VoiceConnectorTerminationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [voiceConnectorId] The Amazon Chime Voice Connector ID.
   VoiceConnectorTerminationState({
-    pulumi.Output<List<String>>? callingRegions,
-    pulumi.Output<List<String>>? cidrAllowLists,
-    pulumi.Output<int>? cpsLimit,
-    pulumi.Output<String>? defaultPhoneNumber,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? voiceConnectorId,
-  }) :
-      callingRegions = pulumi.Input.asOptionalInput<List<String>>(callingRegions),
-      cidrAllowLists = pulumi.Input.asOptionalInput<List<String>>(cidrAllowLists),
-      cpsLimit = pulumi.Input.asOptionalInput<int>(cpsLimit),
-      defaultPhoneNumber = pulumi.Input.asOptionalInput<String>(defaultPhoneNumber),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      voiceConnectorId = pulumi.Input.asOptionalInput<String>(voiceConnectorId);
+    this.callingRegions,
+    this.cidrAllowLists,
+    this.cpsLimit,
+    this.defaultPhoneNumber,
+    this.disabled,
+    this.region,
+    this.voiceConnectorId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class VoiceConnectorTerminationState {
 
   factory VoiceConnectorTerminationState.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorTerminationState(
-      callingRegions: map['callingRegions'] == null ? null : pulumi.Output.create<List<String>>((map['callingRegions'] as List).cast<String>()),
-      cidrAllowLists: map['cidrAllowLists'] == null ? null : pulumi.Output.create<List<String>>((map['cidrAllowLists'] as List).cast<String>()),
-      cpsLimit: map['cpsLimit'] == null ? null : pulumi.Output.create<int>(map['cpsLimit'] as int),
-      defaultPhoneNumber: map['defaultPhoneNumber'] == null ? null : pulumi.Output.create<String>(map['defaultPhoneNumber'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      voiceConnectorId: map['voiceConnectorId'] == null ? null : pulumi.Output.create<String>(map['voiceConnectorId'] as String),
+      callingRegions: map['callingRegions'] == null ? null : ((map['callingRegions'] as List).cast<String>()).input(),
+      cidrAllowLists: map['cidrAllowLists'] == null ? null : ((map['cidrAllowLists'] as List).cast<String>()).input(),
+      cpsLimit: map['cpsLimit'] == null ? null : (map['cpsLimit'] as int).input(),
+      defaultPhoneNumber: map['defaultPhoneNumber'] == null ? null : (map['defaultPhoneNumber'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      voiceConnectorId: map['voiceConnectorId'] == null ? null : (map['voiceConnectorId'] as String).input(),
     );
   }
 }

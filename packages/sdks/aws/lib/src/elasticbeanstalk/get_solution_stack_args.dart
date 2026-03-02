@@ -26,13 +26,10 @@ class GetSolutionStackArgs {
   /// [nameRegex] Regex string to apply to the solution stack list returned
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetSolutionStackArgs({
-    pulumi.Output<bool>? mostRecent,
-    required pulumi.Output<String> nameRegex,
-    pulumi.Output<String>? region,
-  }) :
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      nameRegex = pulumi.Input.asInput<String>(nameRegex),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.mostRecent,
+    required this.nameRegex,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,9 +41,9 @@ class GetSolutionStackArgs {
 
   factory GetSolutionStackArgs.fromMap(Map<String, dynamic> map) {
     return GetSolutionStackArgs(
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      nameRegex: pulumi.Output.create<String>(map['nameRegex'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      nameRegex: (map['nameRegex'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

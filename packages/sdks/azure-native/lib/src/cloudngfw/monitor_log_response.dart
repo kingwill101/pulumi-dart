@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MonitorLog configurations
 class MonitorLogResponse {
   /// Resource ID of MonitorLog
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Primary Key value for Monitor
-  final String? primaryKey;
+  final pulumi.Input<String>? primaryKey;
   /// Secondary Key value for Monitor
-  final String? secondaryKey;
+  final pulumi.Input<String>? secondaryKey;
   /// Subscription Id
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// MonitorLog workspace
-  final String? workspace;
+  final pulumi.Input<String>? workspace;
 
   /// Creates a new [MonitorLogResponse].
   /// [id] Resource ID of MonitorLog
@@ -40,11 +41,11 @@ class MonitorLogResponse {
 
   factory MonitorLogResponse.fromMap(Map<String, dynamic> map) {
     return MonitorLogResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      workspace: map['workspace'] == null ? null : map['workspace'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      workspace: map['workspace'] == null ? null : (map['workspace'] as String).input(),
     );
   }
 }

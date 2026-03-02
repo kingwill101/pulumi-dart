@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagesImageImageSharingSharedWith {
   /// The number of sharegroups the private image is present in.
-  final int sharegroupCount;
+  final pulumi.Input<int> sharegroupCount;
   /// The GET api url to view the sharegroups in which the image is shared.
-  final String sharegroupListUrl;
+  final pulumi.Input<String> sharegroupListUrl;
 
   /// Creates a new [GetImagesImageImageSharingSharedWith].
   /// [sharegroupCount] The number of sharegroups the private image is present in.
@@ -24,8 +25,8 @@ class GetImagesImageImageSharingSharedWith {
 
   factory GetImagesImageImageSharingSharedWith.fromMap(Map<String, dynamic> map) {
     return GetImagesImageImageSharingSharedWith(
-      sharegroupCount: map['sharegroupCount'] as int,
-      sharegroupListUrl: map['sharegroupListUrl'] as String,
+      sharegroupCount: (map['sharegroupCount'] as int).input(),
+      sharegroupListUrl: (map['sharegroupListUrl'] as String).input(),
     );
   }
 }

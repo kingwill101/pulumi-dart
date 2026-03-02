@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spark_logging_info_response.dart';
 
 class SparkStatisticsResponse {
   /// Endpoints generated for the Spark job.
-  final Map<String, String> endpoints;
+  final pulumi.Input<Map<String, String>> endpoints;
   /// Logging info is used to generate a link to Cloud Logging.
-  final SparkLoggingInfoResponse loggingInfo;
+  final pulumi.Input<SparkLoggingInfoResponse> loggingInfo;
   /// Spark job id if a Spark job is created successfully.
-  final String sparkJobId;
+  final pulumi.Input<String> sparkJobId;
   /// Location where the Spark job is executed.
-  final String sparkJobLocation;
+  final pulumi.Input<String> sparkJobLocation;
 
   /// Creates a new [SparkStatisticsResponse].
   /// [endpoints] Endpoints generated for the Spark job.
@@ -27,7 +28,7 @@ class SparkStatisticsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endpoints': endpoints,
-      'loggingInfo': loggingInfo.toMap(),
+      'loggingInfo': pulumi.Input.mapInputValue<SparkLoggingInfoResponse, Map<String, dynamic>>(loggingInfo, (value) => value.toMap()),
       'sparkJobId': sparkJobId,
       'sparkJobLocation': sparkJobLocation,
     };
@@ -35,10 +36,10 @@ class SparkStatisticsResponse {
 
   factory SparkStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return SparkStatisticsResponse(
-      endpoints: (map['endpoints'] as Map).cast<String, String>(),
-      loggingInfo: SparkLoggingInfoResponse.fromMap((map['loggingInfo'] as Map).cast<String, dynamic>()),
-      sparkJobId: map['sparkJobId'] as String,
-      sparkJobLocation: map['sparkJobLocation'] as String,
+      endpoints: ((map['endpoints'] as Map).cast<String, String>()).input(),
+      loggingInfo: (SparkLoggingInfoResponse.fromMap((map['loggingInfo'] as Map).cast<String, dynamic>())).input(),
+      sparkJobId: (map['sparkJobId'] as String).input(),
+      sparkJobLocation: (map['sparkJobLocation'] as String).input(),
     );
   }
 }

@@ -54,31 +54,19 @@ class BatchAccountArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The user-specified tags associated with the account.
   BatchAccountArgs({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<List<AuthenticationMode>>? allowedAuthenticationModes,
-    pulumi.Output<AutoStorageBaseProperties>? autoStorage,
-    pulumi.Output<EncryptionProperties>? encryption,
-    pulumi.Output<BatchAccountIdentity>? identity,
-    pulumi.Output<KeyVaultReference>? keyVaultReference,
-    pulumi.Output<String>? location,
-    pulumi.Output<NetworkProfile>? networkProfile,
-    pulumi.Output<PoolAllocationMode>? poolAllocationMode,
-    pulumi.Output<PublicNetworkAccessType>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      allowedAuthenticationModes = pulumi.Input.asOptionalInput<List<AuthenticationMode>>(allowedAuthenticationModes),
-      autoStorage = pulumi.Input.asOptionalInput<AutoStorageBaseProperties>(autoStorage),
-      encryption = pulumi.Input.asOptionalInput<EncryptionProperties>(encryption),
-      identity = pulumi.Input.asOptionalInput<BatchAccountIdentity>(identity),
-      keyVaultReference = pulumi.Input.asOptionalInput<KeyVaultReference>(keyVaultReference),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkProfile = pulumi.Input.asOptionalInput<NetworkProfile>(networkProfile),
-      poolAllocationMode = pulumi.Input.asOptionalInput<PoolAllocationMode>(poolAllocationMode),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<PublicNetworkAccessType>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accountName,
+    this.allowedAuthenticationModes,
+    this.autoStorage,
+    this.encryption,
+    this.identity,
+    this.keyVaultReference,
+    this.location,
+    this.networkProfile,
+    this.poolAllocationMode,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,18 +87,18 @@ class BatchAccountArgs {
 
   factory BatchAccountArgs.fromMap(Map<String, dynamic> map) {
     return BatchAccountArgs(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      allowedAuthenticationModes: map['allowedAuthenticationModes'] == null ? null : pulumi.Output.create<List<AuthenticationMode>>(pulumi.Input.decodeList<AuthenticationMode>(map['allowedAuthenticationModes'], (value) => AuthenticationMode.fromValue(value as String))),
-      autoStorage: map['autoStorage'] == null ? null : pulumi.Output.create<AutoStorageBaseProperties>(AutoStorageBaseProperties.fromMap((map['autoStorage'] as Map).cast<String, dynamic>())),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<EncryptionProperties>(EncryptionProperties.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<BatchAccountIdentity>(BatchAccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      keyVaultReference: map['keyVaultReference'] == null ? null : pulumi.Output.create<KeyVaultReference>(KeyVaultReference.fromMap((map['keyVaultReference'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkProfile: map['networkProfile'] == null ? null : pulumi.Output.create<NetworkProfile>(NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())),
-      poolAllocationMode: map['poolAllocationMode'] == null ? null : pulumi.Output.create<PoolAllocationMode>(PoolAllocationMode.fromValue(map['poolAllocationMode'] as String)),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<PublicNetworkAccessType>(PublicNetworkAccessType.fromValue(map['publicNetworkAccess'] as String)),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      allowedAuthenticationModes: map['allowedAuthenticationModes'] == null ? null : (pulumi.Input.decodeList<AuthenticationMode>(map['allowedAuthenticationModes'], (value) => AuthenticationMode.fromValue(value as String))).input(),
+      autoStorage: map['autoStorage'] == null ? null : (AutoStorageBaseProperties.fromMap((map['autoStorage'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionProperties.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (BatchAccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      keyVaultReference: map['keyVaultReference'] == null ? null : (KeyVaultReference.fromMap((map['keyVaultReference'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      poolAllocationMode: map['poolAllocationMode'] == null ? null : (PoolAllocationMode.fromValue(map['poolAllocationMode'] as String)).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (PublicNetworkAccessType.fromValue(map['publicNetworkAccess'] as String)).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -41,23 +41,15 @@ class DomainArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [reservedIpRange] The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
   DomainArgs({
-    pulumi.Output<String>? admin,
-    pulumi.Output<List<String>>? authorizedNetworks,
-    pulumi.Output<bool>? deletionProtection,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<List<String>> locations,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> reservedIpRange,
-  }) :
-      admin = pulumi.Input.asOptionalInput<String>(admin),
-      authorizedNetworks = pulumi.Input.asOptionalInput<List<String>>(authorizedNetworks),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      locations = pulumi.Input.asInput<List<String>>(locations),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservedIpRange = pulumi.Input.asInput<String>(reservedIpRange);
+    this.admin,
+    this.authorizedNetworks,
+    this.deletionProtection,
+    required this.domainName,
+    this.labels,
+    required this.locations,
+    this.project,
+    required this.reservedIpRange,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,14 +66,14 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      admin: map['admin'] == null ? null : pulumi.Output.create<String>(map['admin'] as String),
-      authorizedNetworks: map['authorizedNetworks'] == null ? null : pulumi.Output.create<List<String>>((map['authorizedNetworks'] as List).cast<String>()),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      locations: pulumi.Output.create<List<String>>((map['locations'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reservedIpRange: pulumi.Output.create<String>(map['reservedIpRange'] as String),
+      admin: map['admin'] == null ? null : (map['admin'] as String).input(),
+      authorizedNetworks: map['authorizedNetworks'] == null ? null : ((map['authorizedNetworks'] as List).cast<String>()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      domainName: (map['domainName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      locations: ((map['locations'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reservedIpRange: (map['reservedIpRange'] as String).input(),
     );
   }
 }

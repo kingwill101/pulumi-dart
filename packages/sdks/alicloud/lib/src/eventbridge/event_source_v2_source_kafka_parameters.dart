@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSourceV2SourceKafkaParameters {
   /// The Group ID of the consumer who subscribes to the Topic.
-  final String? consumerGroup;
+  final pulumi.Input<String>? consumerGroup;
   /// The instance ID.
-  final String? instanceId;
+  final pulumi.Input<String>? instanceId;
   /// Network configuration: Default (Default network) and public network (self-built network).
-  final String? network;
+  final pulumi.Input<String>? network;
   /// Consumption sites.
-  final String? offsetReset;
+  final pulumi.Input<String>? offsetReset;
   /// The region ID.
-  final String? regionId;
+  final pulumi.Input<String>? regionId;
   /// The ID of the security group.
-  final String? securityGroupId;
+  final pulumi.Input<String>? securityGroupId;
   /// The topic name.
-  final String? topic;
+  final pulumi.Input<String>? topic;
   /// The VPC ID.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
   /// The vSwitch ID.
-  final String? vswitchIds;
+  final pulumi.Input<String>? vswitchIds;
 
   /// Creates a new [EventSourceV2SourceKafkaParameters].
   /// [consumerGroup] The Group ID of the consumer who subscribes to the Topic.
@@ -59,15 +60,15 @@ class EventSourceV2SourceKafkaParameters {
 
   factory EventSourceV2SourceKafkaParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceKafkaParameters(
-      consumerGroup: map['consumerGroup'] == null ? null : map['consumerGroup'] as String,
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      network: map['network'] == null ? null : map['network'] as String,
-      offsetReset: map['offsetReset'] == null ? null : map['offsetReset'] as String,
-      regionId: map['regionId'] == null ? null : map['regionId'] as String,
-      securityGroupId: map['securityGroupId'] == null ? null : map['securityGroupId'] as String,
-      topic: map['topic'] == null ? null : map['topic'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vswitchIds: map['vswitchIds'] == null ? null : map['vswitchIds'] as String,
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      offsetReset: map['offsetReset'] == null ? null : (map['offsetReset'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : (map['vswitchIds'] as String).input(),
     );
   }
 }

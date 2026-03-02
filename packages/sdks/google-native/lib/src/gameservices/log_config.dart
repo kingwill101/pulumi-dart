@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_audit_options.dart';
 import 'counter_options.dart';
 import 'data_access_options.dart';
@@ -7,11 +8,11 @@ import 'data_access_options.dart';
 /// Specifies what kind of log the caller must write
 class LogConfig {
   /// Cloud audit options.
-  final CloudAuditOptions? cloudAudit;
+  final pulumi.Input<CloudAuditOptions>? cloudAudit;
   /// Counter options.
-  final CounterOptions? counter;
+  final pulumi.Input<CounterOptions>? counter;
   /// Data access options.
-  final DataAccessOptions? dataAccess;
+  final pulumi.Input<DataAccessOptions>? dataAccess;
 
   /// Creates a new [LogConfig].
   /// [cloudAudit] Cloud audit options.
@@ -25,17 +26,17 @@ class LogConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudAudit': ?cloudAudit == null ? null : cloudAudit!.toMap(),
-      'counter': ?counter == null ? null : counter!.toMap(),
-      'dataAccess': ?dataAccess == null ? null : dataAccess!.toMap(),
+      'cloudAudit': ?pulumi.Input.mapOptionalInputValue<CloudAuditOptions, Map<String, dynamic>>(cloudAudit, (value) => value.toMap()),
+      'counter': ?pulumi.Input.mapOptionalInputValue<CounterOptions, Map<String, dynamic>>(counter, (value) => value.toMap()),
+      'dataAccess': ?pulumi.Input.mapOptionalInputValue<DataAccessOptions, Map<String, dynamic>>(dataAccess, (value) => value.toMap()),
     };
   }
 
   factory LogConfig.fromMap(Map<String, dynamic> map) {
     return LogConfig(
-      cloudAudit: map['cloudAudit'] == null ? null : CloudAuditOptions.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>()),
-      counter: map['counter'] == null ? null : CounterOptions.fromMap((map['counter'] as Map).cast<String, dynamic>()),
-      dataAccess: map['dataAccess'] == null ? null : DataAccessOptions.fromMap((map['dataAccess'] as Map).cast<String, dynamic>()),
+      cloudAudit: map['cloudAudit'] == null ? null : (CloudAuditOptions.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>())).input(),
+      counter: map['counter'] == null ? null : (CounterOptions.fromMap((map['counter'] as Map).cast<String, dynamic>())).input(),
+      dataAccess: map['dataAccess'] == null ? null : (DataAccessOptions.fromMap((map['dataAccess'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

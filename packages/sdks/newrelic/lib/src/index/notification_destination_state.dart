@@ -48,31 +48,19 @@ class NotificationDestinationState {
   /// [status] The status of the destination.
   /// [type] The type of destination.  One of: `EMAIL`, `SERVICE_NOW`, `SERVICE_NOW_APP`, `WEBHOOK`, `JIRA`, `MOBILE_PUSH`, `EVENT_BRIDGE`, `PAGERDUTY_ACCOUNT_INTEGRATION` or `PAGERDUTY_SERVICE_INTEGRATION`, `MICROSOFT_TEAMS`, `WORKFLOW_AUTOMATION`. The types `SLACK` and `SLACK_COLLABORATION` can only be imported, updated and destroyed (cannot be created via terraform).
   NotificationDestinationState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<bool>? active,
-    pulumi.Output<NotificationDestinationAuthBasic>? authBasic,
-    pulumi.Output<List<NotificationDestinationAuthCustomHeader>>? authCustomHeaders,
-    pulumi.Output<NotificationDestinationAuthToken>? authToken,
-    pulumi.Output<String>? guid,
-    pulumi.Output<String>? lastSent,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<NotificationDestinationProperty>>? properties,
-    pulumi.Output<NotificationDestinationSecureUrl>? secureUrl,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? type,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      authBasic = pulumi.Input.asOptionalInput<NotificationDestinationAuthBasic>(authBasic),
-      authCustomHeaders = pulumi.Input.asOptionalInput<List<NotificationDestinationAuthCustomHeader>>(authCustomHeaders),
-      authToken = pulumi.Input.asOptionalInput<NotificationDestinationAuthToken>(authToken),
-      guid = pulumi.Input.asOptionalInput<String>(guid),
-      lastSent = pulumi.Input.asOptionalInput<String>(lastSent),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<List<NotificationDestinationProperty>>(properties),
-      secureUrl = pulumi.Input.asOptionalInput<NotificationDestinationSecureUrl>(secureUrl),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.accountId,
+    this.active,
+    this.authBasic,
+    this.authCustomHeaders,
+    this.authToken,
+    this.guid,
+    this.lastSent,
+    this.name,
+    this.properties,
+    this.secureUrl,
+    this.status,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class NotificationDestinationState {
 
   factory NotificationDestinationState.fromMap(Map<String, dynamic> map) {
     return NotificationDestinationState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      authBasic: map['authBasic'] == null ? null : pulumi.Output.create<NotificationDestinationAuthBasic>(NotificationDestinationAuthBasic.fromMap((map['authBasic'] as Map).cast<String, dynamic>())),
-      authCustomHeaders: map['authCustomHeaders'] == null ? null : pulumi.Output.create<List<NotificationDestinationAuthCustomHeader>>(pulumi.Input.decodeList<NotificationDestinationAuthCustomHeader>(map['authCustomHeaders'], (value) => NotificationDestinationAuthCustomHeader.fromMap((value as Map).cast<String, dynamic>()))),
-      authToken: map['authToken'] == null ? null : pulumi.Output.create<NotificationDestinationAuthToken>(NotificationDestinationAuthToken.fromMap((map['authToken'] as Map).cast<String, dynamic>())),
-      guid: map['guid'] == null ? null : pulumi.Output.create<String>(map['guid'] as String),
-      lastSent: map['lastSent'] == null ? null : pulumi.Output.create<String>(map['lastSent'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<List<NotificationDestinationProperty>>(pulumi.Input.decodeList<NotificationDestinationProperty>(map['properties'], (value) => NotificationDestinationProperty.fromMap((value as Map).cast<String, dynamic>()))),
-      secureUrl: map['secureUrl'] == null ? null : pulumi.Output.create<NotificationDestinationSecureUrl>(NotificationDestinationSecureUrl.fromMap((map['secureUrl'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      authBasic: map['authBasic'] == null ? null : (NotificationDestinationAuthBasic.fromMap((map['authBasic'] as Map).cast<String, dynamic>())).input(),
+      authCustomHeaders: map['authCustomHeaders'] == null ? null : (pulumi.Input.decodeList<NotificationDestinationAuthCustomHeader>(map['authCustomHeaders'], (value) => NotificationDestinationAuthCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authToken: map['authToken'] == null ? null : (NotificationDestinationAuthToken.fromMap((map['authToken'] as Map).cast<String, dynamic>())).input(),
+      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
+      lastSent: map['lastSent'] == null ? null : (map['lastSent'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<NotificationDestinationProperty>(map['properties'], (value) => NotificationDestinationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secureUrl: map['secureUrl'] == null ? null : (NotificationDestinationSecureUrl.fromMap((map['secureUrl'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

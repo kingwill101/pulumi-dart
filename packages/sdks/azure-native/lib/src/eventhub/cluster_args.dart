@@ -29,19 +29,13 @@ class ClusterArgs {
   /// [supportsScaling] A value that indicates whether Scaling is Supported.
   /// [tags] Resource tags.
   ClusterArgs({
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<ClusterSku>? sku,
-    pulumi.Output<bool>? supportsScaling,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<ClusterSku>(sku),
-      supportsScaling = pulumi.Input.asOptionalInput<bool>(supportsScaling),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.clusterName,
+    this.location,
+    required this.resourceGroupName,
+    this.sku,
+    this.supportsScaling,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<ClusterSku>(ClusterSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      supportsScaling: map['supportsScaling'] == null ? null : pulumi.Output.create<bool>(map['supportsScaling'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (ClusterSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      supportsScaling: map['supportsScaling'] == null ? null : (map['supportsScaling'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

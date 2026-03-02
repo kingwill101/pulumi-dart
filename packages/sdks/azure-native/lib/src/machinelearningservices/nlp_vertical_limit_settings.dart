@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Job execution constraints.
 class NlpVerticalLimitSettings {
   /// Maximum Concurrent AutoML iterations.
-  final int? maxConcurrentTrials;
+  final pulumi.Input<int>? maxConcurrentTrials;
   /// Number of AutoML iterations.
-  final int? maxTrials;
+  final pulumi.Input<int>? maxTrials;
   /// AutoML job timeout.
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
 
   /// Creates a new [NlpVerticalLimitSettings].
   /// [maxConcurrentTrials] Maximum Concurrent AutoML iterations.
@@ -30,9 +31,9 @@ class NlpVerticalLimitSettings {
 
   factory NlpVerticalLimitSettings.fromMap(Map<String, dynamic> map) {
     return NlpVerticalLimitSettings(
-      maxConcurrentTrials: map['maxConcurrentTrials'] == null ? null : map['maxConcurrentTrials'] as int,
-      maxTrials: map['maxTrials'] == null ? null : map['maxTrials'] as int,
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
+      maxConcurrentTrials: map['maxConcurrentTrials'] == null ? null : (map['maxConcurrentTrials'] as int).input(),
+      maxTrials: map['maxTrials'] == null ? null : (map['maxTrials'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

@@ -6,11 +6,11 @@ import 'vmware_vsphere_tag_response.dart';
 /// VmwareVsphereConfig represents configuration for the VMware VCenter for node pool.
 class VmwareVsphereConfigResponse {
   /// The name of the vCenter datastore. Inherited from the user cluster.
-  final String datastore;
+  final pulumi.Input<String> datastore;
   /// Vsphere host groups to apply to all VMs in the node pool
-  final List<String> hostGroups;
+  final pulumi.Input<List<String>> hostGroups;
   /// Tags to apply to VMs.
-  final List<VmwareVsphereTagResponse> tags;
+  final pulumi.Input<List<VmwareVsphereTagResponse>> tags;
 
   /// Creates a new [VmwareVsphereConfigResponse].
   /// [datastore] The name of the vCenter datastore. Inherited from the user cluster.
@@ -26,15 +26,15 @@ class VmwareVsphereConfigResponse {
     return <String, dynamic>{
       'datastore': datastore,
       'hostGroups': hostGroups,
-      'tags': pulumi.Input.encodeList<VmwareVsphereTagResponse, Map<String, dynamic>>(tags, (value) => value.toMap()),
+      'tags': pulumi.Input.mapInputValue<List<VmwareVsphereTagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<VmwareVsphereTagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VmwareVsphereConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareVsphereConfigResponse(
-      datastore: map['datastore'] as String,
-      hostGroups: (map['hostGroups'] as List).cast<String>(),
-      tags: pulumi.Input.decodeList<VmwareVsphereTagResponse>(map['tags'], (value) => VmwareVsphereTagResponse.fromMap((value as Map).cast<String, dynamic>())),
+      datastore: (map['datastore'] as String).input(),
+      hostGroups: ((map['hostGroups'] as List).cast<String>()).input(),
+      tags: (pulumi.Input.decodeList<VmwareVsphereTagResponse>(map['tags'], (value) => VmwareVsphereTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

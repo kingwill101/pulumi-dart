@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorCapacityAutoscalingScaleInPolicy {
   /// Specifies the CPU utilization percentage threshold at which you want connector scale in to be triggered.
-  final int? cpuUtilizationPercentage;
+  final pulumi.Input<int>? cpuUtilizationPercentage;
 
   /// Creates a new [ConnectorCapacityAutoscalingScaleInPolicy].
   /// [cpuUtilizationPercentage] Specifies the CPU utilization percentage threshold at which you want connector scale in to be triggered.
@@ -19,7 +20,7 @@ class ConnectorCapacityAutoscalingScaleInPolicy {
 
   factory ConnectorCapacityAutoscalingScaleInPolicy.fromMap(Map<String, dynamic> map) {
     return ConnectorCapacityAutoscalingScaleInPolicy(
-      cpuUtilizationPercentage: map['cpuUtilizationPercentage'] == null ? null : map['cpuUtilizationPercentage'] as int,
+      cpuUtilizationPercentage: map['cpuUtilizationPercentage'] == null ? null : (map['cpuUtilizationPercentage'] as int).input(),
     );
   }
 }

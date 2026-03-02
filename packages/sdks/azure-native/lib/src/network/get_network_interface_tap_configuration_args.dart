@@ -19,13 +19,10 @@ class GetNetworkInterfaceTapConfigurationArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tapConfigurationName] The name of the tap configuration.
   GetNetworkInterfaceTapConfigurationArgs({
-    required pulumi.Output<String> networkInterfaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> tapConfigurationName,
-  }) :
-      networkInterfaceName = pulumi.Input.asInput<String>(networkInterfaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tapConfigurationName = pulumi.Input.asInput<String>(tapConfigurationName);
+    required this.networkInterfaceName,
+    required this.resourceGroupName,
+    required this.tapConfigurationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNetworkInterfaceTapConfigurationArgs {
 
   factory GetNetworkInterfaceTapConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceTapConfigurationArgs(
-      networkInterfaceName: pulumi.Output.create<String>(map['networkInterfaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tapConfigurationName: pulumi.Output.create<String>(map['tapConfigurationName'] as String),
+      networkInterfaceName: (map['networkInterfaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tapConfigurationName: (map['tapConfigurationName'] as String).input(),
     );
   }
 }

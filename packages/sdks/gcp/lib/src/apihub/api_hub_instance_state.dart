@@ -68,33 +68,20 @@ class ApiHubInstanceState {
   /// [stateMessage] Output only. Extra information about ApiHub instance state. Currently the message
   /// [updateTime] Output only. Last update timestamp.
   ApiHubInstanceState({
-    pulumi.Output<String>? apiHubInstanceId,
-    pulumi.Output<ApiHubInstanceConfig>? config,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? stateMessage,
-    pulumi.Output<String>? updateTime,
-  }) :
-      apiHubInstanceId = pulumi.Input.asOptionalInput<String>(apiHubInstanceId),
-      config = pulumi.Input.asOptionalInput<ApiHubInstanceConfig>(config),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      stateMessage = pulumi.Input.asOptionalInput<String>(stateMessage),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.apiHubInstanceId,
+    this.config,
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.state,
+    this.stateMessage,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -116,19 +103,19 @@ class ApiHubInstanceState {
 
   factory ApiHubInstanceState.fromMap(Map<String, dynamic> map) {
     return ApiHubInstanceState(
-      apiHubInstanceId: map['apiHubInstanceId'] == null ? null : pulumi.Output.create<String>(map['apiHubInstanceId'] as String),
-      config: map['config'] == null ? null : pulumi.Output.create<ApiHubInstanceConfig>(ApiHubInstanceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      stateMessage: map['stateMessage'] == null ? null : pulumi.Output.create<String>(map['stateMessage'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      apiHubInstanceId: map['apiHubInstanceId'] == null ? null : (map['apiHubInstanceId'] as String).input(),
+      config: map['config'] == null ? null : (ApiHubInstanceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      stateMessage: map['stateMessage'] == null ? null : (map['stateMessage'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

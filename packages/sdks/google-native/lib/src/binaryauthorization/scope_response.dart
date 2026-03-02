@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A scope specifier for `CheckSet` objects.
 class ScopeResponse {
   /// Optional. Matches all Kubernetes service accounts in the provided namespace, unless a more specific `kubernetes_service_account` scope already matched.
-  final String kubernetesNamespace;
+  final pulumi.Input<String> kubernetesNamespace;
   /// Optional. Matches a single Kubernetes service account, e.g. `my-namespace:my-service-account`. `kubernetes_service_account` scope is always more specific than `kubernetes_namespace` scope for the same namespace.
-  final String kubernetesServiceAccount;
+  final pulumi.Input<String> kubernetesServiceAccount;
 
   /// Creates a new [ScopeResponse].
   /// [kubernetesNamespace] Optional. Matches all Kubernetes service accounts in the provided namespace, unless a more specific `kubernetes_service_account` scope already matched.
@@ -25,8 +26,8 @@ class ScopeResponse {
 
   factory ScopeResponse.fromMap(Map<String, dynamic> map) {
     return ScopeResponse(
-      kubernetesNamespace: map['kubernetesNamespace'] as String,
-      kubernetesServiceAccount: map['kubernetesServiceAccount'] as String,
+      kubernetesNamespace: (map['kubernetesNamespace'] as String).input(),
+      kubernetesServiceAccount: (map['kubernetesServiceAccount'] as String).input(),
     );
   }
 }

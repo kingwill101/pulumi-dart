@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_identity_response.dart';
 
 /// The properties related to a cosmos DB sql container endpoint.
 class RoutingCosmosDBSqlApiPropertiesResponse {
   /// Method used to authenticate against the cosmos DB sql container endpoint
-  final String? authenticationType;
+  final pulumi.Input<String>? authenticationType;
   /// The name of the cosmos DB sql container in the cosmos DB database.
-  final String containerName;
+  final pulumi.Input<String> containerName;
   /// The name of the cosmos DB database in the cosmos DB account.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// The url of the cosmos DB account. It must include the protocol https://
-  final String endpointUri;
+  final pulumi.Input<String> endpointUri;
   /// Id of the cosmos DB sql container endpoint
-  final String id;
+  final pulumi.Input<String> id;
   /// Managed identity properties of routing cosmos DB container endpoint.
-  final ManagedIdentityResponse? identity;
+  final pulumi.Input<ManagedIdentityResponse>? identity;
   /// The name that identifies this endpoint. The name can only include alphanumeric characters, periods, underscores, hyphens and has a maximum length of 64 characters. The following names are reserved:  events, fileNotifications, $default. Endpoint names must be unique across endpoint types.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the partition key associated with this cosmos DB sql container if one exists. This is an optional parameter.
-  final String? partitionKeyName;
+  final pulumi.Input<String>? partitionKeyName;
   /// The template for generating a synthetic partition key value for use with this cosmos DB sql container. The template must include at least one of the following placeholders: {iothub}, {deviceid}, {DD}, {MM}, and {YYYY}. Any one placeholder may be specified at most once, but order and non-placeholder components are arbitrary. This parameter is only required if PartitionKeyName is specified.
-  final String? partitionKeyTemplate;
+  final pulumi.Input<String>? partitionKeyTemplate;
   /// The primary key of the cosmos DB account.
-  final String? primaryKey;
+  final pulumi.Input<String>? primaryKey;
   /// The name of the resource group of the cosmos DB account.
-  final String? resourceGroup;
+  final pulumi.Input<String>? resourceGroup;
   /// The secondary key of the cosmos DB account.
-  final String? secondaryKey;
+  final pulumi.Input<String>? secondaryKey;
   /// The subscription identifier of the cosmos DB account.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
 
   /// Creates a new [RoutingCosmosDBSqlApiPropertiesResponse].
   /// [authenticationType] Method used to authenticate against the cosmos DB sql container endpoint
@@ -68,7 +69,7 @@ class RoutingCosmosDBSqlApiPropertiesResponse {
       'databaseName': databaseName,
       'endpointUri': endpointUri,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'name': name,
       'partitionKeyName': ?partitionKeyName,
       'partitionKeyTemplate': ?partitionKeyTemplate,
@@ -81,19 +82,19 @@ class RoutingCosmosDBSqlApiPropertiesResponse {
 
   factory RoutingCosmosDBSqlApiPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RoutingCosmosDBSqlApiPropertiesResponse(
-      authenticationType: map['authenticationType'] == null ? null : map['authenticationType'] as String,
-      containerName: map['containerName'] as String,
-      databaseName: map['databaseName'] as String,
-      endpointUri: map['endpointUri'] as String,
-      id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      partitionKeyName: map['partitionKeyName'] == null ? null : map['partitionKeyName'] as String,
-      partitionKeyTemplate: map['partitionKeyTemplate'] == null ? null : map['partitionKeyTemplate'] as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      endpointUri: (map['endpointUri'] as String).input(),
+      id: (map['id'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      partitionKeyName: map['partitionKeyName'] == null ? null : (map['partitionKeyName'] as String).input(),
+      partitionKeyTemplate: map['partitionKeyTemplate'] == null ? null : (map['partitionKeyTemplate'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

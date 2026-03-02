@@ -39,25 +39,16 @@ class AccountArgs {
   /// [skuName] The SKU of the account. Possible values are `Basic` and `Free`.
   /// [tags] A mapping of tags to assign to the resource.
   AccountArgs({
-    pulumi.Output<List<AccountEncryption>>? encryptions,
-    pulumi.Output<AccountIdentity>? identity,
-    pulumi.Output<bool>? localAuthenticationEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> skuName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      encryptions = pulumi.Input.asOptionalInput<List<AccountEncryption>>(encryptions),
-      identity = pulumi.Input.asOptionalInput<AccountIdentity>(identity),
-      localAuthenticationEnabled = pulumi.Input.asOptionalInput<bool>(localAuthenticationEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.encryptions,
+    this.identity,
+    this.localAuthenticationEnabled,
+    this.location,
+    this.name,
+    this.publicNetworkAccessEnabled,
+    required this.resourceGroupName,
+    required this.skuName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      encryptions: map['encryptions'] == null ? null : pulumi.Output.create<List<AccountEncryption>>(pulumi.Input.decodeList<AccountEncryption>(map['encryptions'], (value) => AccountEncryption.fromMap((value as Map).cast<String, dynamic>()))),
-      identity: map['identity'] == null ? null : pulumi.Output.create<AccountIdentity>(AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : pulumi.Output.create<bool>(map['localAuthenticationEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      encryptions: map['encryptions'] == null ? null : (pulumi.Input.decodeList<AccountEncryption>(map['encryptions'], (value) => AccountEncryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : (map['localAuthenticationEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skuName: (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

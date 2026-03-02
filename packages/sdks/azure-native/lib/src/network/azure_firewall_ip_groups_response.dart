@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IpGroups associated with azure firewall.
 class AzureFirewallIpGroupsResponse {
   /// The iteration number.
-  final String changeNumber;
+  final pulumi.Input<String> changeNumber;
   /// Resource ID.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [AzureFirewallIpGroupsResponse].
   /// [changeNumber] The iteration number.
@@ -25,8 +26,8 @@ class AzureFirewallIpGroupsResponse {
 
   factory AzureFirewallIpGroupsResponse.fromMap(Map<String, dynamic> map) {
     return AzureFirewallIpGroupsResponse(
-      changeNumber: map['changeNumber'] as String,
-      id: map['id'] as String,
+      changeNumber: (map['changeNumber'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

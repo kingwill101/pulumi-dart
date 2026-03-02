@@ -17,11 +17,9 @@ class GetServergroupV2Args {
   /// [name] The name of the server group.
   /// [region] The region in which to obtain the V2 Compute client.
   GetServergroupV2Args({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetServergroupV2Args {
 
   factory GetServergroupV2Args.fromMap(Map<String, dynamic> map) {
     return GetServergroupV2Args(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

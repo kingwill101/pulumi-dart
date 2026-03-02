@@ -53,35 +53,21 @@ class TopicArgs {
   /// [supportOrdering] Value that indicates whether the topic supports ordering.
   /// [topicName] The topic name.
   TopicArgs({
-    pulumi.Output<String>? autoDeleteOnIdle,
-    pulumi.Output<String>? defaultMessageTimeToLive,
-    pulumi.Output<String>? duplicateDetectionHistoryTimeWindow,
-    pulumi.Output<bool>? enableBatchedOperations,
-    pulumi.Output<bool>? enableExpress,
-    pulumi.Output<bool>? enablePartitioning,
-    pulumi.Output<double>? maxMessageSizeInKilobytes,
-    pulumi.Output<int>? maxSizeInMegabytes,
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<bool>? requiresDuplicateDetection,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<EntityStatus>? status,
-    pulumi.Output<bool>? supportOrdering,
-    pulumi.Output<String>? topicName,
-  }) :
-      autoDeleteOnIdle = pulumi.Input.asOptionalInput<String>(autoDeleteOnIdle),
-      defaultMessageTimeToLive = pulumi.Input.asOptionalInput<String>(defaultMessageTimeToLive),
-      duplicateDetectionHistoryTimeWindow = pulumi.Input.asOptionalInput<String>(duplicateDetectionHistoryTimeWindow),
-      enableBatchedOperations = pulumi.Input.asOptionalInput<bool>(enableBatchedOperations),
-      enableExpress = pulumi.Input.asOptionalInput<bool>(enableExpress),
-      enablePartitioning = pulumi.Input.asOptionalInput<bool>(enablePartitioning),
-      maxMessageSizeInKilobytes = pulumi.Input.asOptionalInput<double>(maxMessageSizeInKilobytes),
-      maxSizeInMegabytes = pulumi.Input.asOptionalInput<int>(maxSizeInMegabytes),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      requiresDuplicateDetection = pulumi.Input.asOptionalInput<bool>(requiresDuplicateDetection),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      status = pulumi.Input.asOptionalInput<EntityStatus>(status),
-      supportOrdering = pulumi.Input.asOptionalInput<bool>(supportOrdering),
-      topicName = pulumi.Input.asOptionalInput<String>(topicName);
+    this.autoDeleteOnIdle,
+    this.defaultMessageTimeToLive,
+    this.duplicateDetectionHistoryTimeWindow,
+    this.enableBatchedOperations,
+    this.enableExpress,
+    this.enablePartitioning,
+    this.maxMessageSizeInKilobytes,
+    this.maxSizeInMegabytes,
+    required this.namespaceName,
+    this.requiresDuplicateDetection,
+    required this.resourceGroupName,
+    this.status,
+    this.supportOrdering,
+    this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      autoDeleteOnIdle: map['autoDeleteOnIdle'] == null ? null : pulumi.Output.create<String>(map['autoDeleteOnIdle'] as String),
-      defaultMessageTimeToLive: map['defaultMessageTimeToLive'] == null ? null : pulumi.Output.create<String>(map['defaultMessageTimeToLive'] as String),
-      duplicateDetectionHistoryTimeWindow: map['duplicateDetectionHistoryTimeWindow'] == null ? null : pulumi.Output.create<String>(map['duplicateDetectionHistoryTimeWindow'] as String),
-      enableBatchedOperations: map['enableBatchedOperations'] == null ? null : pulumi.Output.create<bool>(map['enableBatchedOperations'] as bool),
-      enableExpress: map['enableExpress'] == null ? null : pulumi.Output.create<bool>(map['enableExpress'] as bool),
-      enablePartitioning: map['enablePartitioning'] == null ? null : pulumi.Output.create<bool>(map['enablePartitioning'] as bool),
-      maxMessageSizeInKilobytes: map['maxMessageSizeInKilobytes'] == null ? null : pulumi.Output.create<double>(map['maxMessageSizeInKilobytes'] as double),
-      maxSizeInMegabytes: map['maxSizeInMegabytes'] == null ? null : pulumi.Output.create<int>(map['maxSizeInMegabytes'] as int),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      requiresDuplicateDetection: map['requiresDuplicateDetection'] == null ? null : pulumi.Output.create<bool>(map['requiresDuplicateDetection'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<EntityStatus>(EntityStatus.fromValue(map['status'] as String)),
-      supportOrdering: map['supportOrdering'] == null ? null : pulumi.Output.create<bool>(map['supportOrdering'] as bool),
-      topicName: map['topicName'] == null ? null : pulumi.Output.create<String>(map['topicName'] as String),
+      autoDeleteOnIdle: map['autoDeleteOnIdle'] == null ? null : (map['autoDeleteOnIdle'] as String).input(),
+      defaultMessageTimeToLive: map['defaultMessageTimeToLive'] == null ? null : (map['defaultMessageTimeToLive'] as String).input(),
+      duplicateDetectionHistoryTimeWindow: map['duplicateDetectionHistoryTimeWindow'] == null ? null : (map['duplicateDetectionHistoryTimeWindow'] as String).input(),
+      enableBatchedOperations: map['enableBatchedOperations'] == null ? null : (map['enableBatchedOperations'] as bool).input(),
+      enableExpress: map['enableExpress'] == null ? null : (map['enableExpress'] as bool).input(),
+      enablePartitioning: map['enablePartitioning'] == null ? null : (map['enablePartitioning'] as bool).input(),
+      maxMessageSizeInKilobytes: map['maxMessageSizeInKilobytes'] == null ? null : (map['maxMessageSizeInKilobytes'] as double).input(),
+      maxSizeInMegabytes: map['maxSizeInMegabytes'] == null ? null : (map['maxSizeInMegabytes'] as int).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      requiresDuplicateDetection: map['requiresDuplicateDetection'] == null ? null : (map['requiresDuplicateDetection'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      status: map['status'] == null ? null : (EntityStatus.fromValue(map['status'] as String)).input(),
+      supportOrdering: map['supportOrdering'] == null ? null : (map['supportOrdering'] as bool).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
     );
   }
 }

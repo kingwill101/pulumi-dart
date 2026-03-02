@@ -1,40 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Utilization metrics values for a single VM.
 class VmUtilizationMetricsResponseVmmigrationV1alpha1 {
   /// Average CPU usage, percent.
-  final int cpuAverage;
+  final pulumi.Input<int> cpuAverage;
   /// Average CPU usage, percent.
-  final int cpuAveragePercent;
+  final pulumi.Input<int> cpuAveragePercent;
   /// Max CPU usage, percent.
-  final int cpuMax;
+  final pulumi.Input<int> cpuMax;
   /// Max CPU usage, percent.
-  final int cpuMaxPercent;
+  final pulumi.Input<int> cpuMaxPercent;
   /// Average disk IO rate, in kilobytes per second.
-  final String diskIoRateAverage;
+  final pulumi.Input<String> diskIoRateAverage;
   /// Average disk IO rate, in kilobytes per second.
-  final String diskIoRateAverageKbps;
+  final pulumi.Input<String> diskIoRateAverageKbps;
   /// Max disk IO rate, in kilobytes per second.
-  final String diskIoRateMax;
+  final pulumi.Input<String> diskIoRateMax;
   /// Max disk IO rate, in kilobytes per second.
-  final String diskIoRateMaxKbps;
+  final pulumi.Input<String> diskIoRateMaxKbps;
   /// Average memory usage, percent.
-  final int memoryAverage;
+  final pulumi.Input<int> memoryAverage;
   /// Average memory usage, percent.
-  final int memoryAveragePercent;
+  final pulumi.Input<int> memoryAveragePercent;
   /// Max memory usage, percent.
-  final int memoryMax;
+  final pulumi.Input<int> memoryMax;
   /// Max memory usage, percent.
-  final int memoryMaxPercent;
+  final pulumi.Input<int> memoryMaxPercent;
   /// Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
-  final String networkThroughputAverage;
+  final pulumi.Input<String> networkThroughputAverage;
   /// Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
-  final String networkThroughputAverageKbps;
+  final pulumi.Input<String> networkThroughputAverageKbps;
   /// Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
-  final String networkThroughputMax;
+  final pulumi.Input<String> networkThroughputMax;
   /// Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
-  final String networkThroughputMaxKbps;
+  final pulumi.Input<String> networkThroughputMaxKbps;
 
   /// Creates a new [VmUtilizationMetricsResponseVmmigrationV1alpha1].
   /// [cpuAverage] Average CPU usage, percent.
@@ -95,22 +96,22 @@ class VmUtilizationMetricsResponseVmmigrationV1alpha1 {
 
   factory VmUtilizationMetricsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return VmUtilizationMetricsResponseVmmigrationV1alpha1(
-      cpuAverage: map['cpuAverage'] as int,
-      cpuAveragePercent: map['cpuAveragePercent'] as int,
-      cpuMax: map['cpuMax'] as int,
-      cpuMaxPercent: map['cpuMaxPercent'] as int,
-      diskIoRateAverage: map['diskIoRateAverage'] as String,
-      diskIoRateAverageKbps: map['diskIoRateAverageKbps'] as String,
-      diskIoRateMax: map['diskIoRateMax'] as String,
-      diskIoRateMaxKbps: map['diskIoRateMaxKbps'] as String,
-      memoryAverage: map['memoryAverage'] as int,
-      memoryAveragePercent: map['memoryAveragePercent'] as int,
-      memoryMax: map['memoryMax'] as int,
-      memoryMaxPercent: map['memoryMaxPercent'] as int,
-      networkThroughputAverage: map['networkThroughputAverage'] as String,
-      networkThroughputAverageKbps: map['networkThroughputAverageKbps'] as String,
-      networkThroughputMax: map['networkThroughputMax'] as String,
-      networkThroughputMaxKbps: map['networkThroughputMaxKbps'] as String,
+      cpuAverage: (map['cpuAverage'] as int).input(),
+      cpuAveragePercent: (map['cpuAveragePercent'] as int).input(),
+      cpuMax: (map['cpuMax'] as int).input(),
+      cpuMaxPercent: (map['cpuMaxPercent'] as int).input(),
+      diskIoRateAverage: (map['diskIoRateAverage'] as String).input(),
+      diskIoRateAverageKbps: (map['diskIoRateAverageKbps'] as String).input(),
+      diskIoRateMax: (map['diskIoRateMax'] as String).input(),
+      diskIoRateMaxKbps: (map['diskIoRateMaxKbps'] as String).input(),
+      memoryAverage: (map['memoryAverage'] as int).input(),
+      memoryAveragePercent: (map['memoryAveragePercent'] as int).input(),
+      memoryMax: (map['memoryMax'] as int).input(),
+      memoryMaxPercent: (map['memoryMaxPercent'] as int).input(),
+      networkThroughputAverage: (map['networkThroughputAverage'] as String).input(),
+      networkThroughputAverageKbps: (map['networkThroughputAverageKbps'] as String).input(),
+      networkThroughputMax: (map['networkThroughputMax'] as String).input(),
+      networkThroughputMaxKbps: (map['networkThroughputMaxKbps'] as String).input(),
     );
   }
 }

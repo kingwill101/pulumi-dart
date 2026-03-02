@@ -13,11 +13,9 @@ class DomainState {
   /// [domainName] Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
   /// [status] The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
   DomainState({
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? status,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.domainName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

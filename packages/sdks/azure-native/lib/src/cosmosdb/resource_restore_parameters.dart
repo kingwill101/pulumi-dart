@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parameters to indicate the information about the restore.
 class ResourceRestoreParameters {
   /// The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}
-  final String? restoreSource;
+  final pulumi.Input<String>? restoreSource;
   /// Time to which the account has to be restored (ISO-8601 format).
-  final String? restoreTimestampInUtc;
+  final pulumi.Input<String>? restoreTimestampInUtc;
   /// Specifies whether the restored account will have Time-To-Live disabled upon the successful restore.
-  final bool? restoreWithTtlDisabled;
+  final pulumi.Input<bool>? restoreWithTtlDisabled;
 
   /// Creates a new [ResourceRestoreParameters].
   /// [restoreSource] The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}
@@ -30,9 +31,9 @@ class ResourceRestoreParameters {
 
   factory ResourceRestoreParameters.fromMap(Map<String, dynamic> map) {
     return ResourceRestoreParameters(
-      restoreSource: map['restoreSource'] == null ? null : map['restoreSource'] as String,
-      restoreTimestampInUtc: map['restoreTimestampInUtc'] == null ? null : map['restoreTimestampInUtc'] as String,
-      restoreWithTtlDisabled: map['restoreWithTtlDisabled'] == null ? null : map['restoreWithTtlDisabled'] as bool,
+      restoreSource: map['restoreSource'] == null ? null : (map['restoreSource'] as String).input(),
+      restoreTimestampInUtc: map['restoreTimestampInUtc'] == null ? null : (map['restoreTimestampInUtc'] as String).input(),
+      restoreWithTtlDisabled: map['restoreWithTtlDisabled'] == null ? null : (map['restoreWithTtlDisabled'] as bool).input(),
     );
   }
 }

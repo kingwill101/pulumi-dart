@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterIpAllocationPolicyAutoIpamConfig {
   /// The flag that enables Auto IPAM on this cluster.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ClusterIpAllocationPolicyAutoIpamConfig].
   /// [enabled] The flag that enables Auto IPAM on this cluster.
@@ -19,7 +20,7 @@ class ClusterIpAllocationPolicyAutoIpamConfig {
 
   factory ClusterIpAllocationPolicyAutoIpamConfig.fromMap(Map<String, dynamic> map) {
     return ClusterIpAllocationPolicyAutoIpamConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

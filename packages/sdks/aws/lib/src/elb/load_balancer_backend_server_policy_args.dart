@@ -22,15 +22,11 @@ class LoadBalancerBackendServerPolicyArgs {
   /// [policyNames] List of Policy Names to apply to the backend server.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LoadBalancerBackendServerPolicyArgs({
-    required pulumi.Output<int> instancePort,
-    required pulumi.Output<String> loadBalancerName,
-    pulumi.Output<List<String>>? policyNames,
-    pulumi.Output<String>? region,
-  }) :
-      instancePort = pulumi.Input.asInput<int>(instancePort),
-      loadBalancerName = pulumi.Input.asInput<String>(loadBalancerName),
-      policyNames = pulumi.Input.asOptionalInput<List<String>>(policyNames),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.instancePort,
+    required this.loadBalancerName,
+    this.policyNames,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class LoadBalancerBackendServerPolicyArgs {
 
   factory LoadBalancerBackendServerPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendServerPolicyArgs(
-      instancePort: pulumi.Output.create<int>(map['instancePort'] as int),
-      loadBalancerName: pulumi.Output.create<String>(map['loadBalancerName'] as String),
-      policyNames: map['policyNames'] == null ? null : pulumi.Output.create<List<String>>((map['policyNames'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      instancePort: (map['instancePort'] as int).input(),
+      loadBalancerName: (map['loadBalancerName'] as String).input(),
+      policyNames: map['policyNames'] == null ? null : ((map['policyNames'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

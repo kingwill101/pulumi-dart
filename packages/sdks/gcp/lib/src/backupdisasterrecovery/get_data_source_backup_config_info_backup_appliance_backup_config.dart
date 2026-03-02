@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSourceBackupConfigInfoBackupApplianceBackupConfig {
   /// The name of the application.
-  final String applicationName;
+  final pulumi.Input<String> applicationName;
   /// The ID of the backup appliance.
-  final String backupApplianceId;
+  final pulumi.Input<String> backupApplianceId;
   /// The name of the backup appliance.
-  final String backupApplianceName;
+  final pulumi.Input<String> backupApplianceName;
   /// The name of the host where the application is running.
-  final String hostName;
+  final pulumi.Input<String> hostName;
   /// The ID of the SLA of this application.
-  final String slaId;
+  final pulumi.Input<String> slaId;
   /// The name of the SLP associated with the application.
-  final String slpName;
+  final pulumi.Input<String> slpName;
   /// The name of the SLT associated with the application.
-  final String sltName;
+  final pulumi.Input<String> sltName;
 
   /// Creates a new [GetDataSourceBackupConfigInfoBackupApplianceBackupConfig].
   /// [applicationName] The name of the application.
@@ -49,13 +50,13 @@ class GetDataSourceBackupConfigInfoBackupApplianceBackupConfig {
 
   factory GetDataSourceBackupConfigInfoBackupApplianceBackupConfig.fromMap(Map<String, dynamic> map) {
     return GetDataSourceBackupConfigInfoBackupApplianceBackupConfig(
-      applicationName: map['applicationName'] as String,
-      backupApplianceId: map['backupApplianceId'] as String,
-      backupApplianceName: map['backupApplianceName'] as String,
-      hostName: map['hostName'] as String,
-      slaId: map['slaId'] as String,
-      slpName: map['slpName'] as String,
-      sltName: map['sltName'] as String,
+      applicationName: (map['applicationName'] as String).input(),
+      backupApplianceId: (map['backupApplianceId'] as String).input(),
+      backupApplianceName: (map['backupApplianceName'] as String).input(),
+      hostName: (map['hostName'] as String).input(),
+      slaId: (map['slaId'] as String).input(),
+      slpName: (map['slpName'] as String).input(),
+      sltName: (map['sltName'] as String).input(),
     );
   }
 }

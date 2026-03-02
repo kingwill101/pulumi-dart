@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_telemetry_type.dart';
 
 /// Telemetry integration for the cluster.
 class ClusterTelemetry {
   /// Type of the integration.
-  final ClusterTelemetryType? type;
+  final pulumi.Input<ClusterTelemetryType>? type;
 
   /// Creates a new [ClusterTelemetry].
   /// [type] Type of the integration.
@@ -15,13 +16,13 @@ class ClusterTelemetry {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<ClusterTelemetryType, String>(type, (value) => value.value),
     };
   }
 
   factory ClusterTelemetry.fromMap(Map<String, dynamic> map) {
     return ClusterTelemetry(
-      type: map['type'] == null ? null : ClusterTelemetryType.fromValue(map['type'] as String),
+      type: map['type'] == null ? null : (ClusterTelemetryType.fromValue(map['type'] as String)).input(),
     );
   }
 }

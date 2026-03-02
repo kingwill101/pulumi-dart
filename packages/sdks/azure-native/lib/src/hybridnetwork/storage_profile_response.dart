@@ -8,11 +8,11 @@ import 'os_disk_response.dart';
 /// Specifies the storage settings for the virtual machine disks.
 class StorageProfileResponse {
   /// Specifies the parameters that are used to add a data disk to a virtual machine.
-  final List<DataDiskResponse>? dataDisks;
+  final pulumi.Input<List<DataDiskResponse>>? dataDisks;
   /// The image reference properties.
-  final ImageReferenceResponse? imageReference;
+  final pulumi.Input<ImageReferenceResponse>? imageReference;
   /// Specifies information about the operating system disk used by the virtual machine.
-  final OsDiskResponse? osDisk;
+  final pulumi.Input<OsDiskResponse>? osDisk;
 
   /// Creates a new [StorageProfileResponse].
   /// [dataDisks] Specifies the parameters that are used to add a data disk to a virtual machine.
@@ -26,17 +26,17 @@ class StorageProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataDisks': ?dataDisks == null ? null : pulumi.Input.encodeList<DataDiskResponse, Map<String, dynamic>>(dataDisks!, (value) => value.toMap()),
-      'imageReference': ?imageReference == null ? null : imageReference!.toMap(),
-      'osDisk': ?osDisk == null ? null : osDisk!.toMap(),
+      'dataDisks': ?pulumi.Input.mapOptionalInputValue<List<DataDiskResponse>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<DataDiskResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'imageReference': ?pulumi.Input.mapOptionalInputValue<ImageReferenceResponse, Map<String, dynamic>>(imageReference, (value) => value.toMap()),
+      'osDisk': ?pulumi.Input.mapOptionalInputValue<OsDiskResponse, Map<String, dynamic>>(osDisk, (value) => value.toMap()),
     };
   }
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      dataDisks: map['dataDisks'] == null ? null : pulumi.Input.decodeList<DataDiskResponse>(map['dataDisks'], (value) => DataDiskResponse.fromMap((value as Map).cast<String, dynamic>())),
-      imageReference: map['imageReference'] == null ? null : ImageReferenceResponse.fromMap((map['imageReference'] as Map).cast<String, dynamic>()),
-      osDisk: map['osDisk'] == null ? null : OsDiskResponse.fromMap((map['osDisk'] as Map).cast<String, dynamic>()),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<DataDiskResponse>(map['dataDisks'], (value) => DataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageReference: map['imageReference'] == null ? null : (ImageReferenceResponse.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
+      osDisk: map['osDisk'] == null ? null : (OsDiskResponse.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

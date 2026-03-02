@@ -24,15 +24,11 @@ class IPAddressListNetworkingK8sIoV1beta1Args {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   IPAddressListNetworkingK8sIoV1beta1Args({
-    pulumi.Output<String>? apiVersion,
-    required pulumi.Output<List<IPAddressNetworkingK8sIoV1beta1Resource>> items,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ListMeta>? metadata,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      items = pulumi.Input.asInput<List<IPAddressNetworkingK8sIoV1beta1Resource>>(items),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ListMeta>(metadata);
+    this.apiVersion,
+    required this.items,
+    this.kind,
+    this.metadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class IPAddressListNetworkingK8sIoV1beta1Args {
 
   factory IPAddressListNetworkingK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return IPAddressListNetworkingK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      items: pulumi.Output.create<List<IPAddressNetworkingK8sIoV1beta1Resource>>((map['items'] as List).cast<IPAddressNetworkingK8sIoV1beta1Resource>()),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ListMeta>(ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      items: ((map['items'] as List).cast<IPAddressNetworkingK8sIoV1beta1Resource>()).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

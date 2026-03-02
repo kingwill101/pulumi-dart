@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Edit atom.
 class EditAtomResponse {
   /// End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
-  final String endTimeOffset;
+  final pulumi.Input<String> endTimeOffset;
   /// List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
-  final List<String> inputs;
+  final pulumi.Input<List<String>> inputs;
   /// A unique key for this atom. Must be specified when using advanced mapping.
-  final String key;
+  final pulumi.Input<String> key;
   /// Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
-  final String startTimeOffset;
+  final pulumi.Input<String> startTimeOffset;
 
   /// Creates a new [EditAtomResponse].
   /// [endTimeOffset] End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
@@ -35,10 +36,10 @@ class EditAtomResponse {
 
   factory EditAtomResponse.fromMap(Map<String, dynamic> map) {
     return EditAtomResponse(
-      endTimeOffset: map['endTimeOffset'] as String,
-      inputs: (map['inputs'] as List).cast<String>(),
-      key: map['key'] as String,
-      startTimeOffset: map['startTimeOffset'] as String,
+      endTimeOffset: (map['endTimeOffset'] as String).input(),
+      inputs: ((map['inputs'] as List).cast<String>()).input(),
+      key: (map['key'] as String).input(),
+      startTimeOffset: (map['startTimeOffset'] as String).input(),
     );
   }
 }

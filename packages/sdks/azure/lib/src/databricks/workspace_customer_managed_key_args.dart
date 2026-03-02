@@ -15,11 +15,9 @@ class WorkspaceCustomerManagedKeyArgs {
   /// [keyVaultKeyId] Required.
   /// [workspaceId] The unique identifier of the databricks workspace in Databricks control plane.
   WorkspaceCustomerManagedKeyArgs({
-    required pulumi.Output<String> keyVaultKeyId,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      keyVaultKeyId = pulumi.Input.asInput<String>(keyVaultKeyId),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.keyVaultKeyId,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class WorkspaceCustomerManagedKeyArgs {
 
   factory WorkspaceCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceCustomerManagedKeyArgs(
-      keyVaultKeyId: pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

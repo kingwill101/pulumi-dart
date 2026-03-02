@@ -29,19 +29,13 @@ class AdminRuleCollectionArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [ruleCollectionName] The name of the network manager security Configuration rule collection.
   AdminRuleCollectionArgs({
-    required pulumi.Output<List<NetworkManagerSecurityGroupItem>> appliesToGroups,
-    required pulumi.Output<String> configurationName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? ruleCollectionName,
-  }) :
-      appliesToGroups = pulumi.Input.asInput<List<NetworkManagerSecurityGroupItem>>(appliesToGroups),
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleCollectionName = pulumi.Input.asOptionalInput<String>(ruleCollectionName);
+    required this.appliesToGroups,
+    required this.configurationName,
+    this.description,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+    this.ruleCollectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class AdminRuleCollectionArgs {
 
   factory AdminRuleCollectionArgs.fromMap(Map<String, dynamic> map) {
     return AdminRuleCollectionArgs(
-      appliesToGroups: pulumi.Output.create<List<NetworkManagerSecurityGroupItem>>(pulumi.Input.decodeList<NetworkManagerSecurityGroupItem>(map['appliesToGroups'], (value) => NetworkManagerSecurityGroupItem.fromMap((value as Map).cast<String, dynamic>()))),
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleCollectionName: map['ruleCollectionName'] == null ? null : pulumi.Output.create<String>(map['ruleCollectionName'] as String),
+      appliesToGroups: (pulumi.Input.decodeList<NetworkManagerSecurityGroupItem>(map['appliesToGroups'], (value) => NetworkManagerSecurityGroupItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationName: (map['configurationName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleCollectionName: map['ruleCollectionName'] == null ? null : (map['ruleCollectionName'] as String).input(),
     );
   }
 }

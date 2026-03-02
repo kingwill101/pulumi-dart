@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies additional XML formatted information that can be included in the
 /// Unattend.xml file, which is used by Windows Setup. Contents are defined by
@@ -7,12 +8,12 @@
 class AdditionalUnattendContentResponse {
   /// The component name. Currently, the only allowable value is
   /// Microsoft-Windows-Shell-Setup.
-  final String? componentName;
+  final pulumi.Input<String>? componentName;
   /// The pass name. Currently, the only allowable value is OobeSystem.
-  final String? passName;
+  final pulumi.Input<String>? passName;
   /// Specifies the name of the setting to which the content applies. Possible values
   /// are: FirstLogonCommands and AutoLogon.
-  final String? settingName;
+  final pulumi.Input<String>? settingName;
 
   /// Creates a new [AdditionalUnattendContentResponse].
   /// [componentName] The component name. Currently, the only allowable value is
@@ -34,9 +35,9 @@ class AdditionalUnattendContentResponse {
 
   factory AdditionalUnattendContentResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalUnattendContentResponse(
-      componentName: map['componentName'] == null ? null : map['componentName'] as String,
-      passName: map['passName'] == null ? null : map['passName'] as String,
-      settingName: map['settingName'] == null ? null : map['settingName'] as String,
+      componentName: map['componentName'] == null ? null : (map['componentName'] as String).input(),
+      passName: map['passName'] == null ? null : (map['passName'] as String).input(),
+      settingName: map['settingName'] == null ? null : (map['settingName'] as String).input(),
     );
   }
 }

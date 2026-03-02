@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'advanced_datapath_observability_config_response.dart';
 import 'managed_prometheus_config_response.dart';
 import 'monitoring_component_config_response.dart';
@@ -7,11 +8,11 @@ import 'monitoring_component_config_response.dart';
 /// MonitoringConfig is cluster monitoring configuration.
 class MonitoringConfigResponse {
   /// Configuration of Advanced Datapath Observability features.
-  final AdvancedDatapathObservabilityConfigResponse advancedDatapathObservabilityConfig;
+  final pulumi.Input<AdvancedDatapathObservabilityConfigResponse> advancedDatapathObservabilityConfig;
   /// Monitoring components configuration
-  final MonitoringComponentConfigResponse componentConfig;
+  final pulumi.Input<MonitoringComponentConfigResponse> componentConfig;
   /// Enable Google Cloud Managed Service for Prometheus in the cluster.
-  final ManagedPrometheusConfigResponse managedPrometheusConfig;
+  final pulumi.Input<ManagedPrometheusConfigResponse> managedPrometheusConfig;
 
   /// Creates a new [MonitoringConfigResponse].
   /// [advancedDatapathObservabilityConfig] Configuration of Advanced Datapath Observability features.
@@ -25,17 +26,17 @@ class MonitoringConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedDatapathObservabilityConfig': advancedDatapathObservabilityConfig.toMap(),
-      'componentConfig': componentConfig.toMap(),
-      'managedPrometheusConfig': managedPrometheusConfig.toMap(),
+      'advancedDatapathObservabilityConfig': pulumi.Input.mapInputValue<AdvancedDatapathObservabilityConfigResponse, Map<String, dynamic>>(advancedDatapathObservabilityConfig, (value) => value.toMap()),
+      'componentConfig': pulumi.Input.mapInputValue<MonitoringComponentConfigResponse, Map<String, dynamic>>(componentConfig, (value) => value.toMap()),
+      'managedPrometheusConfig': pulumi.Input.mapInputValue<ManagedPrometheusConfigResponse, Map<String, dynamic>>(managedPrometheusConfig, (value) => value.toMap()),
     };
   }
 
   factory MonitoringConfigResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringConfigResponse(
-      advancedDatapathObservabilityConfig: AdvancedDatapathObservabilityConfigResponse.fromMap((map['advancedDatapathObservabilityConfig'] as Map).cast<String, dynamic>()),
-      componentConfig: MonitoringComponentConfigResponse.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
-      managedPrometheusConfig: ManagedPrometheusConfigResponse.fromMap((map['managedPrometheusConfig'] as Map).cast<String, dynamic>()),
+      advancedDatapathObservabilityConfig: (AdvancedDatapathObservabilityConfigResponse.fromMap((map['advancedDatapathObservabilityConfig'] as Map).cast<String, dynamic>())).input(),
+      componentConfig: (MonitoringComponentConfigResponse.fromMap((map['componentConfig'] as Map).cast<String, dynamic>())).input(),
+      managedPrometheusConfig: (ManagedPrometheusConfigResponse.fromMap((map['managedPrometheusConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

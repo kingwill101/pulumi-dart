@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'origin_response.dart';
 
 /// Properties of an alert which is related to the issue
 class RelatedAlertResponse {
   /// The time this relation was added to the issue (in UTC)
-  final String addedAt;
+  final pulumi.Input<String> addedAt;
   /// The alert ID
-  final String id;
+  final pulumi.Input<String> id;
   /// The last update time of this relation (in UTC)
-  final String lastModifiedAt;
+  final pulumi.Input<String> lastModifiedAt;
   /// The source that related the alert to the issue
-  final OriginResponse origin;
+  final pulumi.Input<OriginResponse> origin;
   /// The alerts's relevance status
-  final String relevance;
+  final pulumi.Input<String> relevance;
 
   /// Creates a new [RelatedAlertResponse].
   /// [addedAt] The time this relation was added to the issue (in UTC)
@@ -34,18 +35,18 @@ class RelatedAlertResponse {
       'addedAt': addedAt,
       'id': id,
       'lastModifiedAt': lastModifiedAt,
-      'origin': origin.toMap(),
+      'origin': pulumi.Input.mapInputValue<OriginResponse, Map<String, dynamic>>(origin, (value) => value.toMap()),
       'relevance': relevance,
     };
   }
 
   factory RelatedAlertResponse.fromMap(Map<String, dynamic> map) {
     return RelatedAlertResponse(
-      addedAt: map['addedAt'] as String,
-      id: map['id'] as String,
-      lastModifiedAt: map['lastModifiedAt'] as String,
-      origin: OriginResponse.fromMap((map['origin'] as Map).cast<String, dynamic>()),
-      relevance: map['relevance'] as String,
+      addedAt: (map['addedAt'] as String).input(),
+      id: (map['id'] as String).input(),
+      lastModifiedAt: (map['lastModifiedAt'] as String).input(),
+      origin: (OriginResponse.fromMap((map['origin'] as Map).cast<String, dynamic>())).input(),
+      relevance: (map['relevance'] as String).input(),
     );
   }
 }

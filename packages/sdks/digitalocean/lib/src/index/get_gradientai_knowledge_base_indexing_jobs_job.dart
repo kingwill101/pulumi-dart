@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiKnowledgeBaseIndexingJobsJob {
   /// Number of datasources indexed completed
-  final int completedDatasources;
+  final pulumi.Input<int> completedDatasources;
   /// Creation timestamp
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// List of data source UUIDs
-  final List<String> dataSourceUuids;
+  final pulumi.Input<List<String>> dataSourceUuids;
   /// Finish timestamp
-  final String finishedAt;
+  final pulumi.Input<String> finishedAt;
   /// Knowledge base UUID
-  final String knowledgeBaseUuid;
+  final pulumi.Input<String> knowledgeBaseUuid;
   /// Current phase of the batch job
-  final String phase;
+  final pulumi.Input<String> phase;
   /// Start timestamp
-  final String startedAt;
+  final pulumi.Input<String> startedAt;
   /// Status of the indexing job
-  final String status;
+  final pulumi.Input<String> status;
   /// Number of tokens
-  final int tokens;
+  final pulumi.Input<int> tokens;
   /// Total number of datasources being indexed
-  final int totalDatasources;
+  final pulumi.Input<int> totalDatasources;
   /// Total items failed
-  final String totalItemsFailed;
+  final pulumi.Input<String> totalItemsFailed;
   /// Total items indexed
-  final String totalItemsIndexed;
+  final pulumi.Input<String> totalItemsIndexed;
   /// Total items skipped
-  final String totalItemsSkipped;
+  final pulumi.Input<String> totalItemsSkipped;
   /// Last update timestamp
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
   /// Unique identifier of the indexing job
-  final String uuid;
+  final pulumi.Input<String> uuid;
 
   /// Creates a new [GetGradientaiKnowledgeBaseIndexingJobsJob].
   /// [completedDatasources] Number of datasources indexed completed
@@ -89,21 +90,21 @@ class GetGradientaiKnowledgeBaseIndexingJobsJob {
 
   factory GetGradientaiKnowledgeBaseIndexingJobsJob.fromMap(Map<String, dynamic> map) {
     return GetGradientaiKnowledgeBaseIndexingJobsJob(
-      completedDatasources: map['completedDatasources'] as int,
-      createdAt: map['createdAt'] as String,
-      dataSourceUuids: (map['dataSourceUuids'] as List).cast<String>(),
-      finishedAt: map['finishedAt'] as String,
-      knowledgeBaseUuid: map['knowledgeBaseUuid'] as String,
-      phase: map['phase'] as String,
-      startedAt: map['startedAt'] as String,
-      status: map['status'] as String,
-      tokens: map['tokens'] as int,
-      totalDatasources: map['totalDatasources'] as int,
-      totalItemsFailed: map['totalItemsFailed'] as String,
-      totalItemsIndexed: map['totalItemsIndexed'] as String,
-      totalItemsSkipped: map['totalItemsSkipped'] as String,
-      updatedAt: map['updatedAt'] as String,
-      uuid: map['uuid'] as String,
+      completedDatasources: (map['completedDatasources'] as int).input(),
+      createdAt: (map['createdAt'] as String).input(),
+      dataSourceUuids: ((map['dataSourceUuids'] as List).cast<String>()).input(),
+      finishedAt: (map['finishedAt'] as String).input(),
+      knowledgeBaseUuid: (map['knowledgeBaseUuid'] as String).input(),
+      phase: (map['phase'] as String).input(),
+      startedAt: (map['startedAt'] as String).input(),
+      status: (map['status'] as String).input(),
+      tokens: (map['tokens'] as int).input(),
+      totalDatasources: (map['totalDatasources'] as int).input(),
+      totalItemsFailed: (map['totalItemsFailed'] as String).input(),
+      totalItemsIndexed: (map['totalItemsIndexed'] as String).input(),
+      totalItemsSkipped: (map['totalItemsSkipped'] as String).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      uuid: (map['uuid'] as String).input(),
     );
   }
 }

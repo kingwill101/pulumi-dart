@@ -13,9 +13,8 @@ class GetFileShareLimitsArgs {
   /// Creates a new [GetFileShareLimitsArgs].
   /// [location] The name of the Azure region.
   GetFileShareLimitsArgs({
-    required pulumi.Output<String> location,
-  }) :
-      location = pulumi.Input.asInput<String>(location);
+    required this.location,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetFileShareLimitsArgs {
 
   factory GetFileShareLimitsArgs.fromMap(Map<String, dynamic> map) {
     return GetFileShareLimitsArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
+      location: (map['location'] as String).input(),
     );
   }
 }

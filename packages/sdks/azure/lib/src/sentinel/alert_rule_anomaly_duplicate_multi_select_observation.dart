@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleAnomalyDuplicateMultiSelectObservation {
   /// The description of the multi select observation.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The name of the multi select observation.
-  final String name;
+  final pulumi.Input<String> name;
   /// A list of supported values of the multi select observation.
-  final List<String>? supportedValues;
+  final pulumi.Input<List<String>>? supportedValues;
   /// A list of values of the multi select observation.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [AlertRuleAnomalyDuplicateMultiSelectObservation].
   /// [description] The description of the multi select observation.
@@ -34,10 +35,10 @@ class AlertRuleAnomalyDuplicateMultiSelectObservation {
 
   factory AlertRuleAnomalyDuplicateMultiSelectObservation.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyDuplicateMultiSelectObservation(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] as String,
-      supportedValues: map['supportedValues'] == null ? null : (map['supportedValues'] as List).cast<String>(),
-      values: (map['values'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      supportedValues: map['supportedValues'] == null ? null : ((map['supportedValues'] as List).cast<String>()).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

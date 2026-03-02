@@ -18,15 +18,11 @@ class GetCatalogItemArgs {
   /// [location] Required.
   /// [project] Optional.
   GetCatalogItemArgs({
-    required pulumi.Output<String> catalogId,
-    required pulumi.Output<String> catalogItemId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      catalogItemId = pulumi.Input.asInput<String>(catalogItemId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.catalogId,
+    required this.catalogItemId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetCatalogItemArgs {
 
   factory GetCatalogItemArgs.fromMap(Map<String, dynamic> map) {
     return GetCatalogItemArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      catalogItemId: pulumi.Output.create<String>(map['catalogItemId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      catalogId: (map['catalogId'] as String).input(),
+      catalogItemId: (map['catalogItemId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

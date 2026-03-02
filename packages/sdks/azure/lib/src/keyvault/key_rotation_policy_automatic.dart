@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeyRotationPolicyAutomatic {
   /// Rotate automatically at a duration after create as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
-  final String? timeAfterCreation;
+  final pulumi.Input<String>? timeAfterCreation;
   /// Rotate automatically at a duration before expiry as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
-  final String? timeBeforeExpiry;
+  final pulumi.Input<String>? timeBeforeExpiry;
 
   /// Creates a new [KeyRotationPolicyAutomatic].
   /// [timeAfterCreation] Rotate automatically at a duration after create as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
@@ -24,8 +25,8 @@ class KeyRotationPolicyAutomatic {
 
   factory KeyRotationPolicyAutomatic.fromMap(Map<String, dynamic> map) {
     return KeyRotationPolicyAutomatic(
-      timeAfterCreation: map['timeAfterCreation'] == null ? null : map['timeAfterCreation'] as String,
-      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : map['timeBeforeExpiry'] as String,
+      timeAfterCreation: map['timeAfterCreation'] == null ? null : (map['timeAfterCreation'] as String).input(),
+      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry'] as String).input(),
     );
   }
 }

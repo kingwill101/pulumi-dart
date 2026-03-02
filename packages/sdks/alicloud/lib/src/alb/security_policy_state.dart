@@ -28,21 +28,14 @@ class SecurityPolicyState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [tlsVersions] The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
   SecurityPolicyState({
-    pulumi.Output<List<String>>? ciphers,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? securityPolicyName,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? tlsVersions,
-  }) :
-      ciphers = pulumi.Input.asOptionalInput<List<String>>(ciphers),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      securityPolicyName = pulumi.Input.asOptionalInput<String>(securityPolicyName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tlsVersions = pulumi.Input.asOptionalInput<List<String>>(tlsVersions);
+    this.ciphers,
+    this.dryRun,
+    this.resourceGroupId,
+    this.securityPolicyName,
+    this.status,
+    this.tags,
+    this.tlsVersions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class SecurityPolicyState {
 
   factory SecurityPolicyState.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyState(
-      ciphers: map['ciphers'] == null ? null : pulumi.Output.create<List<String>>((map['ciphers'] as List).cast<String>()),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      securityPolicyName: map['securityPolicyName'] == null ? null : pulumi.Output.create<String>(map['securityPolicyName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tlsVersions: map['tlsVersions'] == null ? null : pulumi.Output.create<List<String>>((map['tlsVersions'] as List).cast<String>()),
+      ciphers: map['ciphers'] == null ? null : ((map['ciphers'] as List).cast<String>()).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      securityPolicyName: map['securityPolicyName'] == null ? null : (map['securityPolicyName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tlsVersions: map['tlsVersions'] == null ? null : ((map['tlsVersions'] as List).cast<String>()).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class ProductPortfolioAssociationArgs {
   /// [portfolioId] Product Portfolio ID
   /// [productId] Product ID
   ProductPortfolioAssociationArgs({
-    required pulumi.Output<String> portfolioId,
-    required pulumi.Output<String> productId,
-  }) :
-      portfolioId = pulumi.Input.asInput<String>(portfolioId),
-      productId = pulumi.Input.asInput<String>(productId);
+    required this.portfolioId,
+    required this.productId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ProductPortfolioAssociationArgs {
 
   factory ProductPortfolioAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ProductPortfolioAssociationArgs(
-      portfolioId: pulumi.Output.create<String>(map['portfolioId'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
+      portfolioId: (map['portfolioId'] as String).input(),
+      productId: (map['productId'] as String).input(),
     );
   }
 }

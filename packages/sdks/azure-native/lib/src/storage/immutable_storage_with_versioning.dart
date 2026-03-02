@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Object level immutability properties of the container.
 class ImmutableStorageWithVersioning {
   /// This is an immutable property, when set to true it enables object level immutability at the container level.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ImmutableStorageWithVersioning].
   /// [enabled] This is an immutable property, when set to true it enables object level immutability at the container level.
@@ -20,7 +21,7 @@ class ImmutableStorageWithVersioning {
 
   factory ImmutableStorageWithVersioning.fromMap(Map<String, dynamic> map) {
     return ImmutableStorageWithVersioning(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

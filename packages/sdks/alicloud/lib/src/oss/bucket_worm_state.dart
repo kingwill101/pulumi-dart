@@ -24,17 +24,12 @@ class BucketWormState {
   /// [status] The status of the compliance retention policy. Optional values:
   /// [wormId] The ID of the retention policy.
   BucketWormState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<int>? retentionPeriodInDays,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? wormId,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      retentionPeriodInDays = pulumi.Input.asOptionalInput<int>(retentionPeriodInDays),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      wormId = pulumi.Input.asOptionalInput<String>(wormId);
+    this.bucket,
+    this.createTime,
+    this.retentionPeriodInDays,
+    this.status,
+    this.wormId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class BucketWormState {
 
   factory BucketWormState.fromMap(Map<String, dynamic> map) {
     return BucketWormState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : pulumi.Output.create<int>(map['retentionPeriodInDays'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      wormId: map['wormId'] == null ? null : pulumi.Output.create<String>(map['wormId'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : (map['retentionPeriodInDays'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      wormId: map['wormId'] == null ? null : (map['wormId'] as String).input(),
     );
   }
 }

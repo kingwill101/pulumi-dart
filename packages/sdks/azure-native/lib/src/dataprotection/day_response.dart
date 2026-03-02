@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Day of the week
 class DayResponse {
   /// Date of the month
-  final int? date;
+  final pulumi.Input<int>? date;
   /// Whether Date is last date of month
-  final bool? isLast;
+  final pulumi.Input<bool>? isLast;
 
   /// Creates a new [DayResponse].
   /// [date] Date of the month
@@ -25,8 +26,8 @@ class DayResponse {
 
   factory DayResponse.fromMap(Map<String, dynamic> map) {
     return DayResponse(
-      date: map['date'] == null ? null : map['date'] as int,
-      isLast: map['isLast'] == null ? null : map['isLast'] as bool,
+      date: map['date'] == null ? null : (map['date'] as int).input(),
+      isLast: map['isLast'] == null ? null : (map['isLast'] as bool).input(),
     );
   }
 }

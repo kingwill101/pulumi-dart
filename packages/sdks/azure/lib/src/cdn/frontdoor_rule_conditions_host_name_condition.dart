@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorRuleConditionsHostNameCondition {
   /// A list of one or more string values representing the value of the request hostname to match. If multiple values are specified, they're evaluated using `OR` logic.
-  final List<String>? matchValues;
+  final pulumi.Input<List<String>>? matchValues;
   /// If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
-  final bool? negateCondition;
+  final pulumi.Input<bool>? negateCondition;
   /// A Conditional operator. Possible values include `Any`, `Equal`, `Contains`, `BeginsWith`, `EndsWith`, `LessThan`, `LessThanOrEqual`, `GreaterThan`, `GreaterThanOrEqual` or `RegEx`. Details can be found in the `Condition Operator List` below.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// A Conditional operator. Possible values include `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `UrlDecode` or `UrlEncode`. Details can be found in the `Condition Transform List` below.
-  final List<String>? transforms;
+  final pulumi.Input<List<String>>? transforms;
 
   /// Creates a new [FrontdoorRuleConditionsHostNameCondition].
   /// [matchValues] A list of one or more string values representing the value of the request hostname to match. If multiple values are specified, they're evaluated using `OR` logic.
@@ -34,10 +35,10 @@ class FrontdoorRuleConditionsHostNameCondition {
 
   factory FrontdoorRuleConditionsHostNameCondition.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleConditionsHostNameCondition(
-      matchValues: map['matchValues'] == null ? null : (map['matchValues'] as List).cast<String>(),
-      negateCondition: map['negateCondition'] == null ? null : map['negateCondition'] as bool,
-      operator: map['operator'] as String,
-      transforms: map['transforms'] == null ? null : (map['transforms'] as List).cast<String>(),
+      matchValues: map['matchValues'] == null ? null : ((map['matchValues'] as List).cast<String>()).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      operator: (map['operator'] as String).input(),
+      transforms: map['transforms'] == null ? null : ((map['transforms'] as List).cast<String>()).input(),
     );
   }
 }

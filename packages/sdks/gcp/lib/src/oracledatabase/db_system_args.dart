@@ -55,27 +55,17 @@ class DbSystemArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [properties] The properties of a DbSystem.
   DbSystemArgs({
-    required pulumi.Output<String> dbSystemId,
-    pulumi.Output<bool>? deletionProtection,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? gcpOracleZone,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? odbNetwork,
-    required pulumi.Output<String> odbSubnet,
-    pulumi.Output<String>? project,
-    pulumi.Output<DbSystemProperties>? properties,
-  }) :
-      dbSystemId = pulumi.Input.asInput<String>(dbSystemId),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      gcpOracleZone = pulumi.Input.asOptionalInput<String>(gcpOracleZone),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      odbNetwork = pulumi.Input.asOptionalInput<String>(odbNetwork),
-      odbSubnet = pulumi.Input.asInput<String>(odbSubnet),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      properties = pulumi.Input.asOptionalInput<DbSystemProperties>(properties);
+    required this.dbSystemId,
+    this.deletionProtection,
+    required this.displayName,
+    this.gcpOracleZone,
+    this.labels,
+    required this.location,
+    this.odbNetwork,
+    required this.odbSubnet,
+    this.project,
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,16 +84,16 @@ class DbSystemArgs {
 
   factory DbSystemArgs.fromMap(Map<String, dynamic> map) {
     return DbSystemArgs(
-      dbSystemId: pulumi.Output.create<String>(map['dbSystemId'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      gcpOracleZone: map['gcpOracleZone'] == null ? null : pulumi.Output.create<String>(map['gcpOracleZone'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      odbNetwork: map['odbNetwork'] == null ? null : pulumi.Output.create<String>(map['odbNetwork'] as String),
-      odbSubnet: pulumi.Output.create<String>(map['odbSubnet'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DbSystemProperties>(DbSystemProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
+      dbSystemId: (map['dbSystemId'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      gcpOracleZone: map['gcpOracleZone'] == null ? null : (map['gcpOracleZone'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      odbNetwork: map['odbNetwork'] == null ? null : (map['odbNetwork'] as String).input(),
+      odbSubnet: (map['odbSubnet'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      properties: map['properties'] == null ? null : (DbSystemProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

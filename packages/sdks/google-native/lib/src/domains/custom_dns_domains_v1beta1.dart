@@ -6,9 +6,9 @@ import 'ds_record_domains_v1beta1.dart';
 /// Configuration for an arbitrary DNS provider.
 class CustomDnsDomainsV1beta1 {
   /// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
-  final List<DsRecordDomainsV1beta1>? dsRecords;
+  final pulumi.Input<List<DsRecordDomainsV1beta1>>? dsRecords;
   /// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
-  final List<String> nameServers;
+  final pulumi.Input<List<String>> nameServers;
 
   /// Creates a new [CustomDnsDomainsV1beta1].
   /// [dsRecords] The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
@@ -20,15 +20,15 @@ class CustomDnsDomainsV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dsRecords': ?dsRecords == null ? null : pulumi.Input.encodeList<DsRecordDomainsV1beta1, Map<String, dynamic>>(dsRecords!, (value) => value.toMap()),
+      'dsRecords': ?pulumi.Input.mapOptionalInputValue<List<DsRecordDomainsV1beta1>, List<Map<String, dynamic>>>(dsRecords, (value) => pulumi.Input.encodeList<DsRecordDomainsV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nameServers': nameServers,
     };
   }
 
   factory CustomDnsDomainsV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomDnsDomainsV1beta1(
-      dsRecords: map['dsRecords'] == null ? null : pulumi.Input.decodeList<DsRecordDomainsV1beta1>(map['dsRecords'], (value) => DsRecordDomainsV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      nameServers: (map['nameServers'] as List).cast<String>(),
+      dsRecords: map['dsRecords'] == null ? null : (pulumi.Input.decodeList<DsRecordDomainsV1beta1>(map['dsRecords'], (value) => DsRecordDomainsV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nameServers: ((map['nameServers'] as List).cast<String>()).input(),
     );
   }
 }

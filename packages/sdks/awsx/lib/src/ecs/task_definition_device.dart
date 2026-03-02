@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionDevice {
-  final String? containerPath;
-  final String? hostPath;
-  final List<String>? permissions;
+  final pulumi.Input<String>? containerPath;
+  final pulumi.Input<String>? hostPath;
+  final pulumi.Input<List<String>>? permissions;
 
   /// Creates a new [TaskDefinitionDevice].
   /// [containerPath] Optional.
@@ -26,9 +27,9 @@ class TaskDefinitionDevice {
 
   factory TaskDefinitionDevice.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionDevice(
-      containerPath: map['containerPath'] == null ? null : map['containerPath'] as String,
-      hostPath: map['hostPath'] == null ? null : map['hostPath'] as String,
-      permissions: map['permissions'] == null ? null : (map['permissions'] as List).cast<String>(),
+      containerPath: map['containerPath'] == null ? null : (map['containerPath'] as String).input(),
+      hostPath: map['hostPath'] == null ? null : (map['hostPath'] as String).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
     );
   }
 }

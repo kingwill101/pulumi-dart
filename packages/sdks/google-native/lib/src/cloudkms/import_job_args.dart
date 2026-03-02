@@ -27,19 +27,13 @@ class ImportJobArgs {
   /// [project] Optional.
   /// [protectionLevel] Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
   ImportJobArgs({
-    pulumi.Output<String>? importJobId,
-    required pulumi.Output<ImportJobImportMethod> importMethod,
-    required pulumi.Output<String> keyRingId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<ImportJobProtectionLevel> protectionLevel,
-  }) :
-      importJobId = pulumi.Input.asOptionalInput<String>(importJobId),
-      importMethod = pulumi.Input.asInput<ImportJobImportMethod>(importMethod),
-      keyRingId = pulumi.Input.asInput<String>(keyRingId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      protectionLevel = pulumi.Input.asInput<ImportJobProtectionLevel>(protectionLevel);
+    this.importJobId,
+    required this.importMethod,
+    required this.keyRingId,
+    this.location,
+    this.project,
+    required this.protectionLevel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class ImportJobArgs {
 
   factory ImportJobArgs.fromMap(Map<String, dynamic> map) {
     return ImportJobArgs(
-      importJobId: map['importJobId'] == null ? null : pulumi.Output.create<String>(map['importJobId'] as String),
-      importMethod: pulumi.Output.create<ImportJobImportMethod>(ImportJobImportMethod.fromValue(map['importMethod'] as String)),
-      keyRingId: pulumi.Output.create<String>(map['keyRingId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      protectionLevel: pulumi.Output.create<ImportJobProtectionLevel>(ImportJobProtectionLevel.fromValue(map['protectionLevel'] as String)),
+      importJobId: map['importJobId'] == null ? null : (map['importJobId'] as String).input(),
+      importMethod: (ImportJobImportMethod.fromValue(map['importMethod'] as String)).input(),
+      keyRingId: (map['keyRingId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      protectionLevel: (ImportJobProtectionLevel.fromValue(map['protectionLevel'] as String)).input(),
     );
   }
 }

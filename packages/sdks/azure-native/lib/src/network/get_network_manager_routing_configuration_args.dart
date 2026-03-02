@@ -19,13 +19,10 @@ class GetNetworkManagerRoutingConfigurationArgs {
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNetworkManagerRoutingConfigurationArgs({
-    required pulumi.Output<String> configurationName,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.configurationName,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNetworkManagerRoutingConfigurationArgs {
 
   factory GetNetworkManagerRoutingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerRoutingConfigurationArgs(
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configurationName: (map['configurationName'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

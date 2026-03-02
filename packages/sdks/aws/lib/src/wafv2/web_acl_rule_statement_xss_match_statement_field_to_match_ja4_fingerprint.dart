@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint {
   /// Match status to assign to the web request if there is insufficient TSL Client Hello information to compute the JA4 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
-  final String fallbackBehavior;
+  final pulumi.Input<String> fallbackBehavior;
 
   /// Creates a new [WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint].
   /// [fallbackBehavior] Match status to assign to the web request if there is insufficient TSL Client Hello information to compute the JA4 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
@@ -19,7 +20,7 @@ class WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint {
 
   factory WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint(
-      fallbackBehavior: map['fallbackBehavior'] as String,
+      fallbackBehavior: (map['fallbackBehavior'] as String).input(),
     );
   }
 }

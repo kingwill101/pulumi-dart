@@ -6,15 +6,15 @@ import 'load_balancer_backend_response_networkmanagement_v1beta1.dart';
 /// For display only. Metadata associated with a load balancer.
 class LoadBalancerInfoResponseNetworkmanagementV1beta1 {
   /// Type of load balancer's backend configuration.
-  final String backendType;
+  final pulumi.Input<String> backendType;
   /// Backend configuration URI.
-  final String backendUri;
+  final pulumi.Input<String> backendUri;
   /// Information for the loadbalancer backends.
-  final List<LoadBalancerBackendResponseNetworkmanagementV1beta1> backends;
+  final pulumi.Input<List<LoadBalancerBackendResponseNetworkmanagementV1beta1>> backends;
   /// URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
-  final String healthCheckUri;
+  final pulumi.Input<String> healthCheckUri;
   /// Type of the load balancer.
-  final String loadBalancerType;
+  final pulumi.Input<String> loadBalancerType;
 
   /// Creates a new [LoadBalancerInfoResponseNetworkmanagementV1beta1].
   /// [backendType] Type of load balancer's backend configuration.
@@ -34,7 +34,7 @@ class LoadBalancerInfoResponseNetworkmanagementV1beta1 {
     return <String, dynamic>{
       'backendType': backendType,
       'backendUri': backendUri,
-      'backends': pulumi.Input.encodeList<LoadBalancerBackendResponseNetworkmanagementV1beta1, Map<String, dynamic>>(backends, (value) => value.toMap()),
+      'backends': pulumi.Input.mapInputValue<List<LoadBalancerBackendResponseNetworkmanagementV1beta1>, List<Map<String, dynamic>>>(backends, (value) => pulumi.Input.encodeList<LoadBalancerBackendResponseNetworkmanagementV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'healthCheckUri': healthCheckUri,
       'loadBalancerType': loadBalancerType,
     };
@@ -42,11 +42,11 @@ class LoadBalancerInfoResponseNetworkmanagementV1beta1 {
 
   factory LoadBalancerInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return LoadBalancerInfoResponseNetworkmanagementV1beta1(
-      backendType: map['backendType'] as String,
-      backendUri: map['backendUri'] as String,
-      backends: pulumi.Input.decodeList<LoadBalancerBackendResponseNetworkmanagementV1beta1>(map['backends'], (value) => LoadBalancerBackendResponseNetworkmanagementV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      healthCheckUri: map['healthCheckUri'] as String,
-      loadBalancerType: map['loadBalancerType'] as String,
+      backendType: (map['backendType'] as String).input(),
+      backendUri: (map['backendUri'] as String).input(),
+      backends: (pulumi.Input.decodeList<LoadBalancerBackendResponseNetworkmanagementV1beta1>(map['backends'], (value) => LoadBalancerBackendResponseNetworkmanagementV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthCheckUri: (map['healthCheckUri'] as String).input(),
+      loadBalancerType: (map['loadBalancerType'] as String).input(),
     );
   }
 }

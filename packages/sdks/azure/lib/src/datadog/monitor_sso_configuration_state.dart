@@ -24,19 +24,13 @@ class MonitorSsoConfigurationState {
   /// [singleSignOn] The state of SingleSignOn configuration. Possible values are `Enable`, `Disable`, `Initial` and `Existing`.
   /// [singleSignOnEnabled] Optional.
   MonitorSsoConfigurationState({
-    pulumi.Output<String>? datadogMonitorId,
-    pulumi.Output<String>? enterpriseApplicationId,
-    pulumi.Output<String>? loginUrl,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? singleSignOn,
-    pulumi.Output<String>? singleSignOnEnabled,
-  }) :
-      datadogMonitorId = pulumi.Input.asOptionalInput<String>(datadogMonitorId),
-      enterpriseApplicationId = pulumi.Input.asOptionalInput<String>(enterpriseApplicationId),
-      loginUrl = pulumi.Input.asOptionalInput<String>(loginUrl),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      singleSignOn = pulumi.Input.asOptionalInput<String>(singleSignOn),
-      singleSignOnEnabled = pulumi.Input.asOptionalInput<String>(singleSignOnEnabled);
+    this.datadogMonitorId,
+    this.enterpriseApplicationId,
+    this.loginUrl,
+    this.name,
+    this.singleSignOn,
+    this.singleSignOnEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +45,12 @@ class MonitorSsoConfigurationState {
 
   factory MonitorSsoConfigurationState.fromMap(Map<String, dynamic> map) {
     return MonitorSsoConfigurationState(
-      datadogMonitorId: map['datadogMonitorId'] == null ? null : pulumi.Output.create<String>(map['datadogMonitorId'] as String),
-      enterpriseApplicationId: map['enterpriseApplicationId'] == null ? null : pulumi.Output.create<String>(map['enterpriseApplicationId'] as String),
-      loginUrl: map['loginUrl'] == null ? null : pulumi.Output.create<String>(map['loginUrl'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      singleSignOn: map['singleSignOn'] == null ? null : pulumi.Output.create<String>(map['singleSignOn'] as String),
-      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : pulumi.Output.create<String>(map['singleSignOnEnabled'] as String),
+      datadogMonitorId: map['datadogMonitorId'] == null ? null : (map['datadogMonitorId'] as String).input(),
+      enterpriseApplicationId: map['enterpriseApplicationId'] == null ? null : (map['enterpriseApplicationId'] as String).input(),
+      loginUrl: map['loginUrl'] == null ? null : (map['loginUrl'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      singleSignOn: map['singleSignOn'] == null ? null : (map['singleSignOn'] as String).input(),
+      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : (map['singleSignOnEnabled'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetFabricCapacityArgs {
   /// [capacityName] The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFabricCapacityArgs({
-    required pulumi.Output<String> capacityName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      capacityName = pulumi.Input.asInput<String>(capacityName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.capacityName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetFabricCapacityArgs {
 
   factory GetFabricCapacityArgs.fromMap(Map<String, dynamic> map) {
     return GetFabricCapacityArgs(
-      capacityName: pulumi.Output.create<String>(map['capacityName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      capacityName: (map['capacityName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

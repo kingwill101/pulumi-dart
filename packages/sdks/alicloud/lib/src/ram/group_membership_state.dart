@@ -13,11 +13,9 @@ class GroupMembershipState {
   /// [groupName] Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
   /// [userNames] Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
   GroupMembershipState({
-    pulumi.Output<String>? groupName,
-    pulumi.Output<List<String>>? userNames,
-  }) :
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      userNames = pulumi.Input.asOptionalInput<List<String>>(userNames);
+    this.groupName,
+    this.userNames,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class GroupMembershipState {
 
   factory GroupMembershipState.fromMap(Map<String, dynamic> map) {
     return GroupMembershipState(
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      userNames: map['userNames'] == null ? null : pulumi.Output.create<List<String>>((map['userNames'] as List).cast<String>()),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      userNames: map['userNames'] == null ? null : ((map['userNames'] as List).cast<String>()).input(),
     );
   }
 }

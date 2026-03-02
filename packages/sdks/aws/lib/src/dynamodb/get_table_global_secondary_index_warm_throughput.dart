@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableGlobalSecondaryIndexWarmThroughput {
-  final int readUnitsPerSecond;
-  final int writeUnitsPerSecond;
+  final pulumi.Input<int> readUnitsPerSecond;
+  final pulumi.Input<int> writeUnitsPerSecond;
 
   /// Creates a new [GetTableGlobalSecondaryIndexWarmThroughput].
   /// [readUnitsPerSecond] Required.
@@ -22,8 +23,8 @@ class GetTableGlobalSecondaryIndexWarmThroughput {
 
   factory GetTableGlobalSecondaryIndexWarmThroughput.fromMap(Map<String, dynamic> map) {
     return GetTableGlobalSecondaryIndexWarmThroughput(
-      readUnitsPerSecond: map['readUnitsPerSecond'] as int,
-      writeUnitsPerSecond: map['writeUnitsPerSecond'] as int,
+      readUnitsPerSecond: (map['readUnitsPerSecond'] as int).input(),
+      writeUnitsPerSecond: (map['writeUnitsPerSecond'] as int).input(),
     );
   }
 }

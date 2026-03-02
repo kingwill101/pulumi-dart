@@ -16,11 +16,9 @@ class GetWorkflowArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workflowName] The name of the workflow resource.
   GetWorkflowArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workflowName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workflowName = pulumi.Input.asInput<String>(workflowName);
+    required this.resourceGroupName,
+    required this.workflowName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetWorkflowArgs {
 
   factory GetWorkflowArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workflowName: pulumi.Output.create<String>(map['workflowName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workflowName: (map['workflowName'] as String).input(),
     );
   }
 }

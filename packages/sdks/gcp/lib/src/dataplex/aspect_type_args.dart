@@ -42,23 +42,15 @@ class AspectTypeArgs {
   /// [metadataTemplate] MetadataTemplate of the Aspect.
   /// [project] The ID of the project in which the resource belongs.
   AspectTypeArgs({
-    pulumi.Output<String>? aspectTypeId,
-    pulumi.Output<String>? dataClassification,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? metadataTemplate,
-    pulumi.Output<String>? project,
-  }) :
-      aspectTypeId = pulumi.Input.asOptionalInput<String>(aspectTypeId),
-      dataClassification = pulumi.Input.asOptionalInput<String>(dataClassification),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadataTemplate = pulumi.Input.asOptionalInput<String>(metadataTemplate),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.aspectTypeId,
+    this.dataClassification,
+    this.description,
+    this.displayName,
+    this.labels,
+    this.location,
+    this.metadataTemplate,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class AspectTypeArgs {
 
   factory AspectTypeArgs.fromMap(Map<String, dynamic> map) {
     return AspectTypeArgs(
-      aspectTypeId: map['aspectTypeId'] == null ? null : pulumi.Output.create<String>(map['aspectTypeId'] as String),
-      dataClassification: map['dataClassification'] == null ? null : pulumi.Output.create<String>(map['dataClassification'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadataTemplate: map['metadataTemplate'] == null ? null : pulumi.Output.create<String>(map['metadataTemplate'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      aspectTypeId: map['aspectTypeId'] == null ? null : (map['aspectTypeId'] as String).input(),
+      dataClassification: map['dataClassification'] == null ? null : (map['dataClassification'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadataTemplate: map['metadataTemplate'] == null ? null : (map['metadataTemplate'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

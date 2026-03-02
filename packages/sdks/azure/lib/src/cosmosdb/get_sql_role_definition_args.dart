@@ -19,13 +19,10 @@ class GetSqlRoleDefinitionArgs {
   /// [resourceGroupName] The name of the Resource Group in which the Cosmos DB SQL Role Definition is created.
   /// [roleDefinitionId] The GUID as the name of the Cosmos DB SQL Role Definition.
   GetSqlRoleDefinitionArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> roleDefinitionId,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleDefinitionId = pulumi.Input.asInput<String>(roleDefinitionId);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.roleDefinitionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSqlRoleDefinitionArgs {
 
   factory GetSqlRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlRoleDefinitionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleDefinitionId: pulumi.Output.create<String>(map['roleDefinitionId'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );
   }
 }

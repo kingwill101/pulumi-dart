@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// State of the Membership resource.
 class MembershipStateResponseGkehubV1beta1 {
   /// The current state of the Membership resource.
-  final String code;
+  final pulumi.Input<String> code;
   /// This field is never set by the Hub Service.
-  final String description;
+  final pulumi.Input<String> description;
   /// This field is never set by the Hub Service.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [MembershipStateResponseGkehubV1beta1].
   /// [code] The current state of the Membership resource.
@@ -30,9 +31,9 @@ class MembershipStateResponseGkehubV1beta1 {
 
   factory MembershipStateResponseGkehubV1beta1.fromMap(Map<String, dynamic> map) {
     return MembershipStateResponseGkehubV1beta1(
-      code: map['code'] as String,
-      description: map['description'] as String,
-      updateTime: map['updateTime'] as String,
+      code: (map['code'] as String).input(),
+      description: (map['description'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

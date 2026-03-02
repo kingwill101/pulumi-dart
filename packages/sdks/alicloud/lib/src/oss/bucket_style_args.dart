@@ -22,15 +22,11 @@ class BucketStyleArgs {
   /// [content] The Image style content can contain single or multiple image processing parameters.
   /// [styleName] Image Style Name
   BucketStyleArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? category,
-    required pulumi.Output<String> content,
-    required pulumi.Output<String> styleName,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      category = pulumi.Input.asOptionalInput<String>(category),
-      content = pulumi.Input.asInput<String>(content),
-      styleName = pulumi.Input.asInput<String>(styleName);
+    required this.bucket,
+    this.category,
+    required this.content,
+    required this.styleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class BucketStyleArgs {
 
   factory BucketStyleArgs.fromMap(Map<String, dynamic> map) {
     return BucketStyleArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      content: pulumi.Output.create<String>(map['content'] as String),
-      styleName: pulumi.Output.create<String>(map['styleName'] as String),
+      bucket: (map['bucket'] as String).input(),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      content: (map['content'] as String).input(),
+      styleName: (map['styleName'] as String).input(),
     );
   }
 }

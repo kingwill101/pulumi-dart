@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterIstioServiceTelemetry {
   /// The full name of the resource that defines this service.
   /// Formatted as described in
   /// https://cloud.google.com/apis/design/resource_names.
-  final String resourceName;
+  final pulumi.Input<String> resourceName;
 
   /// Creates a new [GetClusterIstioServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
@@ -21,7 +22,7 @@ class GetClusterIstioServiceTelemetry {
 
   factory GetClusterIstioServiceTelemetry.fromMap(Map<String, dynamic> map) {
     return GetClusterIstioServiceTelemetry(
-      resourceName: map['resourceName'] as String,
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

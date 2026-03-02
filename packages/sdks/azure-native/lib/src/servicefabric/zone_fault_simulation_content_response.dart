@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fault_simulation_constraints_response.dart';
 
 /// Parameters for Zone Fault Simulation action.
 class ZoneFaultSimulationContentResponse {
   /// Constraints for Fault Simulation action.
-  final FaultSimulationConstraintsResponse? constraints;
+  final pulumi.Input<FaultSimulationConstraintsResponse>? constraints;
   /// The kind of fault simulation.
   /// Expected value is 'Zone'.
-  final String faultKind;
+  final pulumi.Input<String> faultKind;
   /// Force the action to go through without any check on the cluster.
-  final bool? force;
+  final pulumi.Input<bool>? force;
   /// Indicates the zones of the fault simulation.
-  final List<String>? zones;
+  final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [ZoneFaultSimulationContentResponse].
   /// [constraints] Constraints for Fault Simulation action.
@@ -28,7 +29,7 @@ class ZoneFaultSimulationContentResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'constraints': ?constraints == null ? null : constraints!.toMap(),
+      'constraints': ?pulumi.Input.mapOptionalInputValue<FaultSimulationConstraintsResponse, Map<String, dynamic>>(constraints, (value) => value.toMap()),
       'faultKind': faultKind,
       'force': ?force,
       'zones': ?zones,
@@ -37,10 +38,10 @@ class ZoneFaultSimulationContentResponse {
 
   factory ZoneFaultSimulationContentResponse.fromMap(Map<String, dynamic> map) {
     return ZoneFaultSimulationContentResponse(
-      constraints: map['constraints'] == null ? null : FaultSimulationConstraintsResponse.fromMap((map['constraints'] as Map).cast<String, dynamic>()),
-      faultKind: map['faultKind'] as String,
-      force: map['force'] == null ? null : map['force'] as bool,
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      constraints: map['constraints'] == null ? null : (FaultSimulationConstraintsResponse.fromMap((map['constraints'] as Map).cast<String, dynamic>())).input(),
+      faultKind: (map['faultKind'] as String).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

@@ -6,12 +6,12 @@ import 'future_reservation_status_last_known_good_state_future_reservation_specs
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings {
   /// A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   /// Structure is documented below.
-  final List<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap>? projectMaps;
+  final pulumi.Input<List<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap>>? projectMaps;
   /// list of Project names to specify consumer projects for this shared-reservation. This is only valid when shareType's value is SPECIFIC_PROJECTS.
-  final List<String>? projects;
+  final pulumi.Input<List<String>>? projects;
   /// Type of sharing for this future reservation.
   /// Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
-  final String? shareType;
+  final pulumi.Input<String>? shareType;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings].
   /// [projectMaps] A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
@@ -25,7 +25,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'projectMaps': ?projectMaps == null ? null : pulumi.Input.encodeList<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap, Map<String, dynamic>>(projectMaps!, (value) => value.toMap()),
+      'projectMaps': ?pulumi.Input.mapOptionalInputValue<List<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap>, List<Map<String, dynamic>>>(projectMaps, (value) => pulumi.Input.encodeList<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap, Map<String, dynamic>>(value, (value) => value.toMap())),
       'projects': ?projects,
       'shareType': ?shareType,
     };
@@ -33,9 +33,9 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
 
   factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings(
-      projectMaps: map['projectMaps'] == null ? null : pulumi.Input.decodeList<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap>(map['projectMaps'], (value) => FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap.fromMap((value as Map).cast<String, dynamic>())),
-      projects: map['projects'] == null ? null : (map['projects'] as List).cast<String>(),
-      shareType: map['shareType'] == null ? null : map['shareType'] as String,
+      projectMaps: map['projectMaps'] == null ? null : (pulumi.Input.decodeList<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap>(map['projectMaps'], (value) => FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projects: map['projects'] == null ? null : ((map['projects'] as List).cast<String>()).input(),
+      shareType: map['shareType'] == null ? null : (map['shareType'] as String).input(),
     );
   }
 }

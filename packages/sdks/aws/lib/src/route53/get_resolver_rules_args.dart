@@ -30,19 +30,13 @@ class GetResolverRulesArgs {
   /// [ruleType] Rule type of the desired resolver rules. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
   /// [shareStatus] Whether the desired resolver rules are shared and, if so, whether the current account is sharing the rules with another account, or another account is sharing the rules with the current account. Valid values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
   GetResolverRulesArgs({
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resolverEndpointId,
-    pulumi.Output<String>? ruleType,
-    pulumi.Output<String>? shareStatus,
-  }) :
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resolverEndpointId = pulumi.Input.asOptionalInput<String>(resolverEndpointId),
-      ruleType = pulumi.Input.asOptionalInput<String>(ruleType),
-      shareStatus = pulumi.Input.asOptionalInput<String>(shareStatus);
+    this.nameRegex,
+    this.ownerId,
+    this.region,
+    this.resolverEndpointId,
+    this.ruleType,
+    this.shareStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class GetResolverRulesArgs {
 
   factory GetResolverRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverRulesArgs(
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resolverEndpointId: map['resolverEndpointId'] == null ? null : pulumi.Output.create<String>(map['resolverEndpointId'] as String),
-      ruleType: map['ruleType'] == null ? null : pulumi.Output.create<String>(map['ruleType'] as String),
-      shareStatus: map['shareStatus'] == null ? null : pulumi.Output.create<String>(map['shareStatus'] as String),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resolverEndpointId: map['resolverEndpointId'] == null ? null : (map['resolverEndpointId'] as String).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
+      shareStatus: map['shareStatus'] == null ? null : (map['shareStatus'] as String).input(),
     );
   }
 }

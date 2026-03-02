@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_file_share_hydration_profile_response.dart';
 
 /// Class for automation artifact.
 class AutomationArtifactResponse {
   /// Gets or sets the artifacts.
-  final Map<String, String>? artifacts;
+  final pulumi.Input<Map<String, String>>? artifacts;
   /// Azure file share profile for hydration of application folders not mounted on
   /// the container file system.
-  final AzureFileShareHydrationProfileResponse? azureFileShareProfile;
+  final pulumi.Input<AzureFileShareHydrationProfileResponse>? azureFileShareProfile;
   /// Gets or sets the status of automation artifacts.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [AutomationArtifactResponse].
   /// [artifacts] Gets or sets the artifacts.
@@ -25,16 +26,16 @@ class AutomationArtifactResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'artifacts': ?artifacts,
-      'azureFileShareProfile': ?azureFileShareProfile == null ? null : azureFileShareProfile!.toMap(),
+      'azureFileShareProfile': ?pulumi.Input.mapOptionalInputValue<AzureFileShareHydrationProfileResponse, Map<String, dynamic>>(azureFileShareProfile, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory AutomationArtifactResponse.fromMap(Map<String, dynamic> map) {
     return AutomationArtifactResponse(
-      artifacts: map['artifacts'] == null ? null : (map['artifacts'] as Map).cast<String, String>(),
-      azureFileShareProfile: map['azureFileShareProfile'] == null ? null : AzureFileShareHydrationProfileResponse.fromMap((map['azureFileShareProfile'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
+      artifacts: map['artifacts'] == null ? null : ((map['artifacts'] as Map).cast<String, String>()).input(),
+      azureFileShareProfile: map['azureFileShareProfile'] == null ? null : (AzureFileShareHydrationProfileResponse.fromMap((map['azureFileShareProfile'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Secret deployment resource id reference.
 class SecretDeploymentResourceReferenceResponse {
   /// The resource reference arm id type.
   /// Expected value is 'Secret'.
-  final String idType;
+  final pulumi.Input<String> idType;
 
   /// Creates a new [SecretDeploymentResourceReferenceResponse].
   /// [idType] The resource reference arm id type.
@@ -21,7 +22,7 @@ class SecretDeploymentResourceReferenceResponse {
 
   factory SecretDeploymentResourceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return SecretDeploymentResourceReferenceResponse(
-      idType: map['idType'] as String,
+      idType: (map['idType'] as String).input(),
     );
   }
 }

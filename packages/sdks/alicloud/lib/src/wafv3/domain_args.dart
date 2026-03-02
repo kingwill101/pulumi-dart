@@ -32,21 +32,14 @@ class DomainArgs {
   /// [resourceManagerResourceGroupId] The ID of the Alibaba Cloud resource group.
   /// [tags] The tags. You can specify up to 20 tags.
   DomainArgs({
-    pulumi.Output<String>? accessType,
-    required pulumi.Output<String> domain,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<DomainListen> listen,
-    required pulumi.Output<DomainRedirect> redirect,
-    pulumi.Output<String>? resourceManagerResourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accessType = pulumi.Input.asOptionalInput<String>(accessType),
-      domain = pulumi.Input.asInput<String>(domain),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      listen = pulumi.Input.asInput<DomainListen>(listen),
-      redirect = pulumi.Input.asInput<DomainRedirect>(redirect),
-      resourceManagerResourceGroupId = pulumi.Input.asOptionalInput<String>(resourceManagerResourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accessType,
+    required this.domain,
+    required this.instanceId,
+    required this.listen,
+    required this.redirect,
+    this.resourceManagerResourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      accessType: map['accessType'] == null ? null : pulumi.Output.create<String>(map['accessType'] as String),
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      listen: pulumi.Output.create<DomainListen>(DomainListen.fromMap((map['listen'] as Map).cast<String, dynamic>())),
-      redirect: pulumi.Output.create<DomainRedirect>(DomainRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())),
-      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceManagerResourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      listen: (DomainListen.fromMap((map['listen'] as Map).cast<String, dynamic>())).input(),
+      redirect: (DomainRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())).input(),
+      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : (map['resourceManagerResourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

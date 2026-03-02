@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gallery_application_custom_action_parameter_type.dart';
 
 /// The definition of a parameter that can be passed to a custom action of a Gallery Application Version.
 class GalleryApplicationCustomActionParameter {
   /// The default value of the parameter.  Only applies to string types
-  final String? defaultValue;
+  final pulumi.Input<String>? defaultValue;
   /// A description to help users understand what this parameter means
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The name of the custom action.  Must be unique within the Gallery Application Version.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates whether this parameter must be passed when running the custom action.
-  final bool? required;
+  final pulumi.Input<bool>? required;
   /// Specifies the type of the custom action parameter. Possible values are: String, ConfigurationDataBlob or LogOutputBlob
-  final GalleryApplicationCustomActionParameterType? type;
+  final pulumi.Input<GalleryApplicationCustomActionParameterType>? type;
 
   /// Creates a new [GalleryApplicationCustomActionParameter].
   /// [defaultValue] The default value of the parameter.  Only applies to string types
@@ -35,17 +36,17 @@ class GalleryApplicationCustomActionParameter {
       'description': ?description,
       'name': name,
       'required': ?required,
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<GalleryApplicationCustomActionParameterType, String>(type, (value) => value.value),
     };
   }
 
   factory GalleryApplicationCustomActionParameter.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationCustomActionParameter(
-      defaultValue: map['defaultValue'] == null ? null : map['defaultValue'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] as String,
-      required: map['required'] == null ? null : map['required'] as bool,
-      type: map['type'] == null ? null : GalleryApplicationCustomActionParameterType.fromValue(map['type'] as String),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      type: map['type'] == null ? null : (GalleryApplicationCustomActionParameterType.fromValue(map['type'] as String)).input(),
     );
   }
 }

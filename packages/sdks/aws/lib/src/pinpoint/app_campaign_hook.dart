@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppCampaignHook {
   /// Lambda function name or ARN to be called for delivery. Conflicts with `web_url`
-  final String? lambdaFunctionName;
+  final pulumi.Input<String>? lambdaFunctionName;
   /// What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambda_function_name`
-  final String? webUrl;
+  final pulumi.Input<String>? webUrl;
 
   /// Creates a new [AppCampaignHook].
   /// [lambdaFunctionName] Lambda function name or ARN to be called for delivery. Conflicts with `web_url`
@@ -29,9 +30,9 @@ class AppCampaignHook {
 
   factory AppCampaignHook.fromMap(Map<String, dynamic> map) {
     return AppCampaignHook(
-      lambdaFunctionName: map['lambdaFunctionName'] == null ? null : map['lambdaFunctionName'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      webUrl: map['webUrl'] == null ? null : map['webUrl'] as String,
+      lambdaFunctionName: map['lambdaFunctionName'] == null ? null : (map['lambdaFunctionName'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      webUrl: map['webUrl'] == null ? null : (map['webUrl'] as String).input(),
     );
   }
 }

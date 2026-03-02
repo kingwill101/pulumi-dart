@@ -6,11 +6,11 @@ import 'system_component.dart';
 /// Defines the Arc Agent properties for the clusters.
 class ArcAgentProfile {
   /// Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
-  final String? agentAutoUpgrade;
+  final pulumi.Input<String>? agentAutoUpgrade;
   /// Version of the Arc agents to be installed on the cluster resource
-  final String? desiredAgentVersion;
+  final pulumi.Input<String>? desiredAgentVersion;
   /// List of system extensions can be installed on the cluster resource.
-  final List<SystemComponent>? systemComponents;
+  final pulumi.Input<List<SystemComponent>>? systemComponents;
 
   /// Creates a new [ArcAgentProfile].
   /// [agentAutoUpgrade] Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
@@ -26,15 +26,15 @@ class ArcAgentProfile {
     return <String, dynamic>{
       'agentAutoUpgrade': ?agentAutoUpgrade,
       'desiredAgentVersion': ?desiredAgentVersion,
-      'systemComponents': ?systemComponents == null ? null : pulumi.Input.encodeList<SystemComponent, Map<String, dynamic>>(systemComponents!, (value) => value.toMap()),
+      'systemComponents': ?pulumi.Input.mapOptionalInputValue<List<SystemComponent>, List<Map<String, dynamic>>>(systemComponents, (value) => pulumi.Input.encodeList<SystemComponent, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ArcAgentProfile.fromMap(Map<String, dynamic> map) {
     return ArcAgentProfile(
-      agentAutoUpgrade: map['agentAutoUpgrade'] == null ? null : map['agentAutoUpgrade'] as String,
-      desiredAgentVersion: map['desiredAgentVersion'] == null ? null : map['desiredAgentVersion'] as String,
-      systemComponents: map['systemComponents'] == null ? null : pulumi.Input.decodeList<SystemComponent>(map['systemComponents'], (value) => SystemComponent.fromMap((value as Map).cast<String, dynamic>())),
+      agentAutoUpgrade: map['agentAutoUpgrade'] == null ? null : (map['agentAutoUpgrade'] as String).input(),
+      desiredAgentVersion: map['desiredAgentVersion'] == null ? null : (map['desiredAgentVersion'] as String).input(),
+      systemComponents: map['systemComponents'] == null ? null : (pulumi.Input.decodeList<SystemComponent>(map['systemComponents'], (value) => SystemComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

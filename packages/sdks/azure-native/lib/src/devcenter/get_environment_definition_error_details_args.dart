@@ -22,15 +22,11 @@ class GetEnvironmentDefinitionErrorDetailsArgs {
   /// [environmentDefinitionName] The name of the Environment Definition.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetEnvironmentDefinitionErrorDetailsArgs({
-    required pulumi.Output<String> catalogName,
-    required pulumi.Output<String> devCenterName,
-    required pulumi.Output<String> environmentDefinitionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      catalogName = pulumi.Input.asInput<String>(catalogName),
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      environmentDefinitionName = pulumi.Input.asInput<String>(environmentDefinitionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.catalogName,
+    required this.devCenterName,
+    required this.environmentDefinitionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetEnvironmentDefinitionErrorDetailsArgs {
 
   factory GetEnvironmentDefinitionErrorDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentDefinitionErrorDetailsArgs(
-      catalogName: pulumi.Output.create<String>(map['catalogName'] as String),
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      environmentDefinitionName: pulumi.Output.create<String>(map['environmentDefinitionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      catalogName: (map['catalogName'] as String).input(),
+      devCenterName: (map['devCenterName'] as String).input(),
+      environmentDefinitionName: (map['environmentDefinitionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

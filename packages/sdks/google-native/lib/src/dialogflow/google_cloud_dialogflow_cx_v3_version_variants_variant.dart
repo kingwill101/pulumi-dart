@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A single flow version with specified traffic allocation.
 class GoogleCloudDialogflowCxV3VersionVariantsVariant {
   /// Whether the variant is for the control group.
-  final bool? isControlGroup;
+  final pulumi.Input<bool>? isControlGroup;
   /// Percentage of the traffic which should be routed to this version of flow. Traffic allocation for a single flow must sum up to 1.0.
-  final double? trafficAllocation;
+  final pulumi.Input<double>? trafficAllocation;
   /// The name of the flow version. Format: `projects//locations//agents//flows//versions/`.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [GoogleCloudDialogflowCxV3VersionVariantsVariant].
   /// [isControlGroup] Whether the variant is for the control group.
@@ -30,9 +31,9 @@ class GoogleCloudDialogflowCxV3VersionVariantsVariant {
 
   factory GoogleCloudDialogflowCxV3VersionVariantsVariant.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3VersionVariantsVariant(
-      isControlGroup: map['isControlGroup'] == null ? null : map['isControlGroup'] as bool,
-      trafficAllocation: map['trafficAllocation'] == null ? null : map['trafficAllocation'] as double,
-      version: map['version'] == null ? null : map['version'] as String,
+      isControlGroup: map['isControlGroup'] == null ? null : (map['isControlGroup'] as bool).input(),
+      trafficAllocation: map['trafficAllocation'] == null ? null : (map['trafficAllocation'] as double).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

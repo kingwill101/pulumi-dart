@@ -23,17 +23,12 @@ class AccountState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [throttleSettings] Account-Level throttle settings. See exported fields below.
   AccountState({
-    pulumi.Output<String>? apiKeyVersion,
-    pulumi.Output<String>? cloudwatchRoleArn,
-    pulumi.Output<List<String>>? features,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<AccountThrottleSetting>>? throttleSettings,
-  }) :
-      apiKeyVersion = pulumi.Input.asOptionalInput<String>(apiKeyVersion),
-      cloudwatchRoleArn = pulumi.Input.asOptionalInput<String>(cloudwatchRoleArn),
-      features = pulumi.Input.asOptionalInput<List<String>>(features),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      throttleSettings = pulumi.Input.asOptionalInput<List<AccountThrottleSetting>>(throttleSettings);
+    this.apiKeyVersion,
+    this.cloudwatchRoleArn,
+    this.features,
+    this.region,
+    this.throttleSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      apiKeyVersion: map['apiKeyVersion'] == null ? null : pulumi.Output.create<String>(map['apiKeyVersion'] as String),
-      cloudwatchRoleArn: map['cloudwatchRoleArn'] == null ? null : pulumi.Output.create<String>(map['cloudwatchRoleArn'] as String),
-      features: map['features'] == null ? null : pulumi.Output.create<List<String>>((map['features'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      throttleSettings: map['throttleSettings'] == null ? null : pulumi.Output.create<List<AccountThrottleSetting>>(pulumi.Input.decodeList<AccountThrottleSetting>(map['throttleSettings'], (value) => AccountThrottleSetting.fromMap((value as Map).cast<String, dynamic>()))),
+      apiKeyVersion: map['apiKeyVersion'] == null ? null : (map['apiKeyVersion'] as String).input(),
+      cloudwatchRoleArn: map['cloudwatchRoleArn'] == null ? null : (map['cloudwatchRoleArn'] as String).input(),
+      features: map['features'] == null ? null : ((map['features'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      throttleSettings: map['throttleSettings'] == null ? null : (pulumi.Input.decodeList<AccountThrottleSetting>(map['throttleSettings'], (value) => AccountThrottleSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

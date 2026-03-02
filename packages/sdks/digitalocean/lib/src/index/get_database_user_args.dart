@@ -16,11 +16,9 @@ class GetDatabaseUserArgs {
   /// [clusterId] The ID of the database cluster.
   /// [name] The name of the database user.
   GetDatabaseUserArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> name,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.clusterId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDatabaseUserArgs {
 
   factory GetDatabaseUserArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseUserArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

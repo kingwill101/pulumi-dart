@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventTargetAppsyncTarget {
   /// Contains the GraphQL mutation to be parsed and executed.
-  final String? graphqlOperation;
+  final pulumi.Input<String>? graphqlOperation;
 
   /// Creates a new [EventTargetAppsyncTarget].
   /// [graphqlOperation] Contains the GraphQL mutation to be parsed and executed.
@@ -19,7 +20,7 @@ class EventTargetAppsyncTarget {
 
   factory EventTargetAppsyncTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetAppsyncTarget(
-      graphqlOperation: map['graphqlOperation'] == null ? null : map['graphqlOperation'] as String,
+      graphqlOperation: map['graphqlOperation'] == null ? null : (map['graphqlOperation'] as String).input(),
     );
   }
 }

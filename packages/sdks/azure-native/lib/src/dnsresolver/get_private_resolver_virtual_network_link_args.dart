@@ -19,13 +19,10 @@ class GetPrivateResolverVirtualNetworkLinkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualNetworkLinkName] The name of the virtual network link.
   GetPrivateResolverVirtualNetworkLinkArgs({
-    required pulumi.Output<String> dnsForwardingRulesetName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualNetworkLinkName,
-  }) :
-      dnsForwardingRulesetName = pulumi.Input.asInput<String>(dnsForwardingRulesetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualNetworkLinkName = pulumi.Input.asInput<String>(virtualNetworkLinkName);
+    required this.dnsForwardingRulesetName,
+    required this.resourceGroupName,
+    required this.virtualNetworkLinkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPrivateResolverVirtualNetworkLinkArgs {
 
   factory GetPrivateResolverVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateResolverVirtualNetworkLinkArgs(
-      dnsForwardingRulesetName: pulumi.Output.create<String>(map['dnsForwardingRulesetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualNetworkLinkName: pulumi.Output.create<String>(map['virtualNetworkLinkName'] as String),
+      dnsForwardingRulesetName: (map['dnsForwardingRulesetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualNetworkLinkName: (map['virtualNetworkLinkName'] as String).input(),
     );
   }
 }

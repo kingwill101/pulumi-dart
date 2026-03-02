@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// FileShareSnapshot properties
 class FileShareSnapshotProperties {
   /// The metadata
-  final Map<String, String>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
 
   /// Creates a new [FileShareSnapshotProperties].
   /// [metadata] The metadata
@@ -20,7 +21,7 @@ class FileShareSnapshotProperties {
 
   factory FileShareSnapshotProperties.fromMap(Map<String, dynamic> map) {
     return FileShareSnapshotProperties(
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
     );
   }
 }

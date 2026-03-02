@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecordsExclusiveResourceRecordSetResourceRecord {
   /// DNS record value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [RecordsExclusiveResourceRecordSetResourceRecord].
   /// [value] DNS record value.
@@ -19,7 +20,7 @@ class RecordsExclusiveResourceRecordSetResourceRecord {
 
   factory RecordsExclusiveResourceRecordSetResourceRecord.fromMap(Map<String, dynamic> map) {
     return RecordsExclusiveResourceRecordSetResourceRecord(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes parameters for creating application-scoped volumes provided by Service Fabric Volume Disks
 class ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse {
   /// User readable description of the volume.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Specifies the application-scoped volume kind.
   /// Expected value is 'ServiceFabricVolumeDisk'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Volume size
-  final String sizeDisk;
+  final pulumi.Input<String> sizeDisk;
 
   /// Creates a new [ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse].
   /// [description] User readable description of the volume.
@@ -31,9 +32,9 @@ class ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse {
 
   factory ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      kind: map['kind'] as String,
-      sizeDisk: map['sizeDisk'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      sizeDisk: (map['sizeDisk'] as String).input(),
     );
   }
 }

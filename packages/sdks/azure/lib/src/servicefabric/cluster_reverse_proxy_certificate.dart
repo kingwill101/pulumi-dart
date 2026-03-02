@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterReverseProxyCertificate {
   /// The Thumbprint of the Certificate.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
   /// The Secondary Thumbprint of the Certificate.
-  final String? thumbprintSecondary;
+  final pulumi.Input<String>? thumbprintSecondary;
   /// The X509 Store where the Certificate Exists, such as `My`.
-  final String x509StoreName;
+  final pulumi.Input<String> x509StoreName;
 
   /// Creates a new [ClusterReverseProxyCertificate].
   /// [thumbprint] The Thumbprint of the Certificate.
@@ -29,9 +30,9 @@ class ClusterReverseProxyCertificate {
 
   factory ClusterReverseProxyCertificate.fromMap(Map<String, dynamic> map) {
     return ClusterReverseProxyCertificate(
-      thumbprint: map['thumbprint'] as String,
-      thumbprintSecondary: map['thumbprintSecondary'] == null ? null : map['thumbprintSecondary'] as String,
-      x509StoreName: map['x509StoreName'] as String,
+      thumbprint: (map['thumbprint'] as String).input(),
+      thumbprintSecondary: map['thumbprintSecondary'] == null ? null : (map['thumbprintSecondary'] as String).input(),
+      x509StoreName: (map['x509StoreName'] as String).input(),
     );
   }
 }

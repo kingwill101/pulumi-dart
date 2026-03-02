@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkIpDhcpBootp {
   /// Specifies a file used for BOOTP configurations.
-  final String? file;
+  final pulumi.Input<String>? file;
   /// Sets the server address for the BOOTP configuration.
-  final String? server;
+  final pulumi.Input<String>? server;
 
   /// Creates a new [NetworkIpDhcpBootp].
   /// [file] Specifies a file used for BOOTP configurations.
@@ -24,8 +25,8 @@ class NetworkIpDhcpBootp {
 
   factory NetworkIpDhcpBootp.fromMap(Map<String, dynamic> map) {
     return NetworkIpDhcpBootp(
-      file: map['file'] == null ? null : map['file'] as String,
-      server: map['server'] == null ? null : map['server'] as String,
+      file: map['file'] == null ? null : (map['file'] as String).input(),
+      server: map['server'] == null ? null : (map['server'] as String).input(),
     );
   }
 }

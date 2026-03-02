@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_node_spec_listener_tl_validation_subject_alternative_name_match.dart';
 
 class GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName {
-  final List<GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch> matches;
+  final pulumi.Input<List<GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch>> matches;
 
   /// Creates a new [GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName].
   /// [matches] Required.
@@ -14,13 +14,13 @@ class GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'matches': pulumi.Input.encodeList<GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch, Map<String, dynamic>>(matches, (value) => value.toMap()),
+      'matches': pulumi.Input.mapInputValue<List<GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch>, List<Map<String, dynamic>>>(matches, (value) => pulumi.Input.encodeList<GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName(
-      matches: pulumi.Input.decodeList<GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch>(map['matches'], (value) => GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch.fromMap((value as Map).cast<String, dynamic>())),
+      matches: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch>(map['matches'], (value) => GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

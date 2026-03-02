@@ -54,35 +54,21 @@ class TemplatesVersionArgs {
   /// [triggerConfigs] Optional. Trigger configurations.
   /// [userLabel] Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
   TemplatesVersionArgs({
-    pulumi.Output<TemplatesVersionDatabasePersistencePolicy>? databasePersistencePolicy,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>>? errorCatcherConfigs,
-    required pulumi.Output<String> integrationtemplateId,
-    pulumi.Output<String>? lastModifierEmail,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? parentIntegrationVersionId,
-    required pulumi.Output<String> productId,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<EnterpriseCrmFrontendsEventbusProtoTaskConfig>>? taskConfigs,
-    pulumi.Output<EnterpriseCrmEventbusProtoTeardown>? teardown,
-    pulumi.Output<EnterpriseCrmFrontendsEventbusProtoWorkflowParameters>? templateParameters,
-    pulumi.Output<List<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>>? triggerConfigs,
-    pulumi.Output<String>? userLabel,
-  }) :
-      databasePersistencePolicy = pulumi.Input.asOptionalInput<TemplatesVersionDatabasePersistencePolicy>(databasePersistencePolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      errorCatcherConfigs = pulumi.Input.asOptionalInput<List<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>>(errorCatcherConfigs),
-      integrationtemplateId = pulumi.Input.asInput<String>(integrationtemplateId),
-      lastModifierEmail = pulumi.Input.asOptionalInput<String>(lastModifierEmail),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parentIntegrationVersionId = pulumi.Input.asOptionalInput<String>(parentIntegrationVersionId),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      taskConfigs = pulumi.Input.asOptionalInput<List<EnterpriseCrmFrontendsEventbusProtoTaskConfig>>(taskConfigs),
-      teardown = pulumi.Input.asOptionalInput<EnterpriseCrmEventbusProtoTeardown>(teardown),
-      templateParameters = pulumi.Input.asOptionalInput<EnterpriseCrmFrontendsEventbusProtoWorkflowParameters>(templateParameters),
-      triggerConfigs = pulumi.Input.asOptionalInput<List<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>>(triggerConfigs),
-      userLabel = pulumi.Input.asOptionalInput<String>(userLabel);
+    this.databasePersistencePolicy,
+    this.description,
+    this.errorCatcherConfigs,
+    required this.integrationtemplateId,
+    this.lastModifierEmail,
+    this.location,
+    this.parentIntegrationVersionId,
+    required this.productId,
+    this.project,
+    this.taskConfigs,
+    this.teardown,
+    this.templateParameters,
+    this.triggerConfigs,
+    this.userLabel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class TemplatesVersionArgs {
 
   factory TemplatesVersionArgs.fromMap(Map<String, dynamic> map) {
     return TemplatesVersionArgs(
-      databasePersistencePolicy: map['databasePersistencePolicy'] == null ? null : pulumi.Output.create<TemplatesVersionDatabasePersistencePolicy>(TemplatesVersionDatabasePersistencePolicy.fromValue(map['databasePersistencePolicy'] as String)),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      errorCatcherConfigs: map['errorCatcherConfigs'] == null ? null : pulumi.Output.create<List<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>>(pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>(map['errorCatcherConfigs'], (value) => GoogleCloudIntegrationsV1alphaErrorCatcherConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      integrationtemplateId: pulumi.Output.create<String>(map['integrationtemplateId'] as String),
-      lastModifierEmail: map['lastModifierEmail'] == null ? null : pulumi.Output.create<String>(map['lastModifierEmail'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parentIntegrationVersionId: map['parentIntegrationVersionId'] == null ? null : pulumi.Output.create<String>(map['parentIntegrationVersionId'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      taskConfigs: map['taskConfigs'] == null ? null : pulumi.Output.create<List<EnterpriseCrmFrontendsEventbusProtoTaskConfig>>(pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoTaskConfig>(map['taskConfigs'], (value) => EnterpriseCrmFrontendsEventbusProtoTaskConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      teardown: map['teardown'] == null ? null : pulumi.Output.create<EnterpriseCrmEventbusProtoTeardown>(EnterpriseCrmEventbusProtoTeardown.fromMap((map['teardown'] as Map).cast<String, dynamic>())),
-      templateParameters: map['templateParameters'] == null ? null : pulumi.Output.create<EnterpriseCrmFrontendsEventbusProtoWorkflowParameters>(EnterpriseCrmFrontendsEventbusProtoWorkflowParameters.fromMap((map['templateParameters'] as Map).cast<String, dynamic>())),
-      triggerConfigs: map['triggerConfigs'] == null ? null : pulumi.Output.create<List<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>>(pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>(map['triggerConfigs'], (value) => EnterpriseCrmFrontendsEventbusProtoTriggerConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      userLabel: map['userLabel'] == null ? null : pulumi.Output.create<String>(map['userLabel'] as String),
+      databasePersistencePolicy: map['databasePersistencePolicy'] == null ? null : (TemplatesVersionDatabasePersistencePolicy.fromValue(map['databasePersistencePolicy'] as String)).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      errorCatcherConfigs: map['errorCatcherConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>(map['errorCatcherConfigs'], (value) => GoogleCloudIntegrationsV1alphaErrorCatcherConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      integrationtemplateId: (map['integrationtemplateId'] as String).input(),
+      lastModifierEmail: map['lastModifierEmail'] == null ? null : (map['lastModifierEmail'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parentIntegrationVersionId: map['parentIntegrationVersionId'] == null ? null : (map['parentIntegrationVersionId'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      taskConfigs: map['taskConfigs'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoTaskConfig>(map['taskConfigs'], (value) => EnterpriseCrmFrontendsEventbusProtoTaskConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      teardown: map['teardown'] == null ? null : (EnterpriseCrmEventbusProtoTeardown.fromMap((map['teardown'] as Map).cast<String, dynamic>())).input(),
+      templateParameters: map['templateParameters'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoWorkflowParameters.fromMap((map['templateParameters'] as Map).cast<String, dynamic>())).input(),
+      triggerConfigs: map['triggerConfigs'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>(map['triggerConfigs'], (value) => EnterpriseCrmFrontendsEventbusProtoTriggerConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userLabel: map['userLabel'] == null ? null : (map['userLabel'] as String).input(),
     );
   }
 }

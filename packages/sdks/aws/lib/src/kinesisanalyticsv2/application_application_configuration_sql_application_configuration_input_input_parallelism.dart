@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism {
   /// The number of in-application streams to create.
-  final int? count;
+  final pulumi.Input<int>? count;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism].
   /// [count] The number of in-application streams to create.
@@ -19,7 +20,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputPa
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism(
-      count: map['count'] == null ? null : map['count'] as int,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
     );
   }
 }

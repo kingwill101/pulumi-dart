@@ -40,27 +40,17 @@ class GetProductsArgs {
   /// [supplierId] The supplier id of the product.
   /// [supplierNameKeyword] The supplier name keyword of the product.
   GetProductsArgs({
-    pulumi.Output<String>? categoryId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? productType,
-    pulumi.Output<String>? searchTerm,
-    pulumi.Output<String>? sort,
-    pulumi.Output<double>? suggestedPrice,
-    pulumi.Output<String>? supplierId,
-    pulumi.Output<String>? supplierNameKeyword,
-  }) :
-      categoryId = pulumi.Input.asOptionalInput<String>(categoryId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      productType = pulumi.Input.asOptionalInput<String>(productType),
-      searchTerm = pulumi.Input.asOptionalInput<String>(searchTerm),
-      sort = pulumi.Input.asOptionalInput<String>(sort),
-      suggestedPrice = pulumi.Input.asOptionalInput<double>(suggestedPrice),
-      supplierId = pulumi.Input.asOptionalInput<String>(supplierId),
-      supplierNameKeyword = pulumi.Input.asOptionalInput<String>(supplierNameKeyword);
+    this.categoryId,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.productType,
+    this.searchTerm,
+    this.sort,
+    this.suggestedPrice,
+    this.supplierId,
+    this.supplierNameKeyword,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class GetProductsArgs {
 
   factory GetProductsArgs.fromMap(Map<String, dynamic> map) {
     return GetProductsArgs(
-      categoryId: map['categoryId'] == null ? null : pulumi.Output.create<String>(map['categoryId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      productType: map['productType'] == null ? null : pulumi.Output.create<String>(map['productType'] as String),
-      searchTerm: map['searchTerm'] == null ? null : pulumi.Output.create<String>(map['searchTerm'] as String),
-      sort: map['sort'] == null ? null : pulumi.Output.create<String>(map['sort'] as String),
-      suggestedPrice: map['suggestedPrice'] == null ? null : pulumi.Output.create<double>(map['suggestedPrice'] as double),
-      supplierId: map['supplierId'] == null ? null : pulumi.Output.create<String>(map['supplierId'] as String),
-      supplierNameKeyword: map['supplierNameKeyword'] == null ? null : pulumi.Output.create<String>(map['supplierNameKeyword'] as String),
+      categoryId: map['categoryId'] == null ? null : (map['categoryId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
+      searchTerm: map['searchTerm'] == null ? null : (map['searchTerm'] as String).input(),
+      sort: map['sort'] == null ? null : (map['sort'] as String).input(),
+      suggestedPrice: map['suggestedPrice'] == null ? null : (map['suggestedPrice'] as double).input(),
+      supplierId: map['supplierId'] == null ? null : (map['supplierId'] as String).input(),
+      supplierNameKeyword: map['supplierNameKeyword'] == null ? null : (map['supplierNameKeyword'] as String).input(),
     );
   }
 }

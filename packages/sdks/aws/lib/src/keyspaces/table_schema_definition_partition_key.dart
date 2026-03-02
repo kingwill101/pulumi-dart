@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableSchemaDefinitionPartitionKey {
   /// The name of the partition key column.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [TableSchemaDefinitionPartitionKey].
   /// [name] The name of the partition key column.
@@ -19,7 +20,7 @@ class TableSchemaDefinitionPartitionKey {
 
   factory TableSchemaDefinitionPartitionKey.fromMap(Map<String, dynamic> map) {
     return TableSchemaDefinitionPartitionKey(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

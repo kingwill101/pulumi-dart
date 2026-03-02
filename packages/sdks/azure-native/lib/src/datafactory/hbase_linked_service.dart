@@ -8,40 +8,40 @@ import 'parameter_specification.dart';
 /// HBase server linked service.
 class HBaseLinkedService {
   /// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
-  final dynamic allowHostNameCNMismatch;
+  final pulumi.Input<dynamic>? allowHostNameCNMismatch;
   /// Specifies whether to allow self-signed certificates from the server. The default value is false.
-  final dynamic allowSelfSignedServerCert;
+  final pulumi.Input<dynamic>? allowSelfSignedServerCert;
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The authentication mechanism to use to connect to the HBase server.
-  final String authenticationType;
+  final pulumi.Input<String> authenticationType;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
-  final dynamic enableSsl;
+  final pulumi.Input<dynamic>? enableSsl;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The IP address or host name of the HBase server. (i.e. 192.168.222.160)
-  final dynamic host;
+  final pulumi.Input<dynamic> host;
   /// The partial URL corresponding to the HBase server. (i.e. /gateway/sandbox/hbase/version)
-  final dynamic httpPath;
+  final pulumi.Input<dynamic>? httpPath;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The password corresponding to the user name.
-  final AzureKeyVaultSecretReference? password;
+  final pulumi.Input<AzureKeyVaultSecretReference>? password;
   /// The TCP port that the HBase instance uses to listen for client connections. The default value is 9090.
-  final dynamic port;
+  final pulumi.Input<dynamic>? port;
   /// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
-  final dynamic trustedCertPath;
+  final pulumi.Input<dynamic>? trustedCertPath;
   /// Type of linked service.
   /// Expected value is 'HBase'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The user name used to connect to the HBase instance.
-  final dynamic username;
+  final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [HBaseLinkedService].
   /// [allowHostNameCNMismatch] Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
@@ -87,14 +87,14 @@ class HBaseLinkedService {
       'allowSelfSignedServerCert': ?allowSelfSignedServerCert,
       'annotations': ?annotations,
       'authenticationType': authenticationType,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'enableSsl': ?enableSsl,
       'encryptedCredential': ?encryptedCredential,
       'host': host,
       'httpPath': ?httpPath,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
       'port': ?port,
       'trustedCertPath': ?trustedCertPath,
       'type': type,
@@ -105,23 +105,23 @@ class HBaseLinkedService {
 
   factory HBaseLinkedService.fromMap(Map<String, dynamic> map) {
     return HBaseLinkedService(
-      allowHostNameCNMismatch: map['allowHostNameCNMismatch'] == null ? null : map['allowHostNameCNMismatch'],
-      allowSelfSignedServerCert: map['allowSelfSignedServerCert'] == null ? null : map['allowSelfSignedServerCert'],
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      authenticationType: map['authenticationType'] as String,
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      enableSsl: map['enableSsl'] == null ? null : map['enableSsl'],
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      host: map['host'],
-      httpPath: map['httpPath'] == null ? null : map['httpPath'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      port: map['port'] == null ? null : map['port'],
-      trustedCertPath: map['trustedCertPath'] == null ? null : map['trustedCertPath'],
-      type: map['type'] as String,
-      username: map['username'] == null ? null : map['username'],
-      version: map['version'] == null ? null : map['version'] as String,
+      allowHostNameCNMismatch: map['allowHostNameCNMismatch'] == null ? null : (map['allowHostNameCNMismatch']).input(),
+      allowSelfSignedServerCert: map['allowSelfSignedServerCert'] == null ? null : (map['allowSelfSignedServerCert']).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      authenticationType: (map['authenticationType'] as String).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableSsl: map['enableSsl'] == null ? null : (map['enableSsl']).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      host: (map['host']).input(),
+      httpPath: map['httpPath'] == null ? null : (map['httpPath']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']).input(),
+      trustedCertPath: map['trustedCertPath'] == null ? null : (map['trustedCertPath']).input(),
+      type: (map['type'] as String).input(),
+      username: map['username'] == null ? null : (map['username']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

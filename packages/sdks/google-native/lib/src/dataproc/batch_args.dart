@@ -47,29 +47,18 @@ class BatchArgs {
   /// [sparkRBatch] Optional. SparkR batch config.
   /// [sparkSqlBatch] Optional. SparkSql batch config.
   BatchArgs({
-    pulumi.Output<String>? batchId,
-    pulumi.Output<EnvironmentConfig>? environmentConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<PySparkBatch>? pysparkBatch,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<RuntimeConfig>? runtimeConfig,
-    pulumi.Output<SparkBatch>? sparkBatch,
-    pulumi.Output<SparkRBatch>? sparkRBatch,
-    pulumi.Output<SparkSqlBatch>? sparkSqlBatch,
-  }) :
-      batchId = pulumi.Input.asOptionalInput<String>(batchId),
-      environmentConfig = pulumi.Input.asOptionalInput<EnvironmentConfig>(environmentConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pysparkBatch = pulumi.Input.asOptionalInput<PySparkBatch>(pysparkBatch),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      runtimeConfig = pulumi.Input.asOptionalInput<RuntimeConfig>(runtimeConfig),
-      sparkBatch = pulumi.Input.asOptionalInput<SparkBatch>(sparkBatch),
-      sparkRBatch = pulumi.Input.asOptionalInput<SparkRBatch>(sparkRBatch),
-      sparkSqlBatch = pulumi.Input.asOptionalInput<SparkSqlBatch>(sparkSqlBatch);
+    this.batchId,
+    this.environmentConfig,
+    this.labels,
+    this.location,
+    this.project,
+    this.pysparkBatch,
+    this.requestId,
+    this.runtimeConfig,
+    this.sparkBatch,
+    this.sparkRBatch,
+    this.sparkSqlBatch,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class BatchArgs {
 
   factory BatchArgs.fromMap(Map<String, dynamic> map) {
     return BatchArgs(
-      batchId: map['batchId'] == null ? null : pulumi.Output.create<String>(map['batchId'] as String),
-      environmentConfig: map['environmentConfig'] == null ? null : pulumi.Output.create<EnvironmentConfig>(EnvironmentConfig.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pysparkBatch: map['pysparkBatch'] == null ? null : pulumi.Output.create<PySparkBatch>(PySparkBatch.fromMap((map['pysparkBatch'] as Map).cast<String, dynamic>())),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      runtimeConfig: map['runtimeConfig'] == null ? null : pulumi.Output.create<RuntimeConfig>(RuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())),
-      sparkBatch: map['sparkBatch'] == null ? null : pulumi.Output.create<SparkBatch>(SparkBatch.fromMap((map['sparkBatch'] as Map).cast<String, dynamic>())),
-      sparkRBatch: map['sparkRBatch'] == null ? null : pulumi.Output.create<SparkRBatch>(SparkRBatch.fromMap((map['sparkRBatch'] as Map).cast<String, dynamic>())),
-      sparkSqlBatch: map['sparkSqlBatch'] == null ? null : pulumi.Output.create<SparkSqlBatch>(SparkSqlBatch.fromMap((map['sparkSqlBatch'] as Map).cast<String, dynamic>())),
+      batchId: map['batchId'] == null ? null : (map['batchId'] as String).input(),
+      environmentConfig: map['environmentConfig'] == null ? null : (EnvironmentConfig.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pysparkBatch: map['pysparkBatch'] == null ? null : (PySparkBatch.fromMap((map['pysparkBatch'] as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      runtimeConfig: map['runtimeConfig'] == null ? null : (RuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())).input(),
+      sparkBatch: map['sparkBatch'] == null ? null : (SparkBatch.fromMap((map['sparkBatch'] as Map).cast<String, dynamic>())).input(),
+      sparkRBatch: map['sparkRBatch'] == null ? null : (SparkRBatch.fromMap((map['sparkRBatch'] as Map).cast<String, dynamic>())).input(),
+      sparkSqlBatch: map['sparkSqlBatch'] == null ? null : (SparkSqlBatch.fromMap((map['sparkSqlBatch'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

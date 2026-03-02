@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VMwareClusterAutoRepairConfig {
   /// Whether auto repair is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [VMwareClusterAutoRepairConfig].
   /// [enabled] Whether auto repair is enabled.
@@ -19,7 +20,7 @@ class VMwareClusterAutoRepairConfig {
 
   factory VMwareClusterAutoRepairConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterAutoRepairConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

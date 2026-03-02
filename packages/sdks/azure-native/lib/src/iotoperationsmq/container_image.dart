@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the Docker image details
 class ContainerImage {
   /// Image pull policy.
-  final String? pullPolicy;
+  final pulumi.Input<String>? pullPolicy;
   /// Image pull secrets.
-  final String? pullSecrets;
+  final pulumi.Input<String>? pullSecrets;
   /// The Docker image name.
-  final String repository;
+  final pulumi.Input<String> repository;
   /// The Docker  image tag.
-  final String tag;
+  final pulumi.Input<String> tag;
 
   /// Creates a new [ContainerImage].
   /// [pullPolicy] Image pull policy.
@@ -35,10 +36,10 @@ class ContainerImage {
 
   factory ContainerImage.fromMap(Map<String, dynamic> map) {
     return ContainerImage(
-      pullPolicy: map['pullPolicy'] == null ? null : map['pullPolicy'] as String,
-      pullSecrets: map['pullSecrets'] == null ? null : map['pullSecrets'] as String,
-      repository: map['repository'] as String,
-      tag: map['tag'] as String,
+      pullPolicy: map['pullPolicy'] == null ? null : (map['pullPolicy'] as String).input(),
+      pullSecrets: map['pullSecrets'] == null ? null : (map['pullSecrets'] as String).input(),
+      repository: (map['repository'] as String).input(),
+      tag: (map['tag'] as String).input(),
     );
   }
 }

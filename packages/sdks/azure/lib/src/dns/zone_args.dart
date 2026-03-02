@@ -23,15 +23,11 @@ class ZoneArgs {
   /// [soaRecord] A `soa_record` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   ZoneArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<ZoneSoaRecord>? soaRecord,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      soaRecord = pulumi.Input.asOptionalInput<ZoneSoaRecord>(soaRecord),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.name,
+    required this.resourceGroupName,
+    this.soaRecord,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ZoneArgs {
 
   factory ZoneArgs.fromMap(Map<String, dynamic> map) {
     return ZoneArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      soaRecord: map['soaRecord'] == null ? null : pulumi.Output.create<ZoneSoaRecord>(ZoneSoaRecord.fromMap((map['soaRecord'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      soaRecord: map['soaRecord'] == null ? null : (ZoneSoaRecord.fromMap((map['soaRecord'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

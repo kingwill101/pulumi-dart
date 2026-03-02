@@ -24,15 +24,11 @@ class LocalGatewayRouteTableVpcAssociationArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] Identifier of EC2 VPC.
   LocalGatewayRouteTableVpcAssociationArgs({
-    required pulumi.Output<String> localGatewayRouteTableId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      localGatewayRouteTableId = pulumi.Input.asInput<String>(localGatewayRouteTableId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    required this.localGatewayRouteTableId,
+    this.region,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class LocalGatewayRouteTableVpcAssociationArgs {
 
   factory LocalGatewayRouteTableVpcAssociationArgs.fromMap(Map<String, dynamic> map) {
     return LocalGatewayRouteTableVpcAssociationArgs(
-      localGatewayRouteTableId: pulumi.Output.create<String>(map['localGatewayRouteTableId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      localGatewayRouteTableId: (map['localGatewayRouteTableId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

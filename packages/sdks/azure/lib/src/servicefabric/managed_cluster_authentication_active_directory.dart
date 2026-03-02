@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedClusterAuthenticationActiveDirectory {
   /// The ID of the Client Application.
-  final String clientApplicationId;
+  final pulumi.Input<String> clientApplicationId;
   /// The ID of the Cluster Application.
-  final String clusterApplicationId;
+  final pulumi.Input<String> clusterApplicationId;
   /// The ID of the Tenant.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [ManagedClusterAuthenticationActiveDirectory].
   /// [clientApplicationId] The ID of the Client Application.
@@ -29,9 +30,9 @@ class ManagedClusterAuthenticationActiveDirectory {
 
   factory ManagedClusterAuthenticationActiveDirectory.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAuthenticationActiveDirectory(
-      clientApplicationId: map['clientApplicationId'] as String,
-      clusterApplicationId: map['clusterApplicationId'] as String,
-      tenantId: map['tenantId'] as String,
+      clientApplicationId: (map['clientApplicationId'] as String).input(),
+      clusterApplicationId: (map['clusterApplicationId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

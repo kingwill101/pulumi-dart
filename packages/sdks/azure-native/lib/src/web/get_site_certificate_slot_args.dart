@@ -22,15 +22,11 @@ class GetSiteCertificateSlotArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
   GetSiteCertificateSlotArgs({
-    required pulumi.Output<String> certificateName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> slot,
-  }) :
-      certificateName = pulumi.Input.asInput<String>(certificateName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      slot = pulumi.Input.asInput<String>(slot);
+    required this.certificateName,
+    required this.name,
+    required this.resourceGroupName,
+    required this.slot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSiteCertificateSlotArgs {
 
   factory GetSiteCertificateSlotArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteCertificateSlotArgs(
-      certificateName: pulumi.Output.create<String>(map['certificateName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
+      certificateName: (map['certificateName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      slot: (map['slot'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointGroupsGroupPortOverride {
   /// Forwarding port.
-  final int endpointPort;
+  final pulumi.Input<int> endpointPort;
   /// Listener port.
-  final int listenerPort;
+  final pulumi.Input<int> listenerPort;
 
   /// Creates a new [GetEndpointGroupsGroupPortOverride].
   /// [endpointPort] Forwarding port.
@@ -24,8 +25,8 @@ class GetEndpointGroupsGroupPortOverride {
 
   factory GetEndpointGroupsGroupPortOverride.fromMap(Map<String, dynamic> map) {
     return GetEndpointGroupsGroupPortOverride(
-      endpointPort: map['endpointPort'] as int,
-      listenerPort: map['listenerPort'] as int,
+      endpointPort: (map['endpointPort'] as int).input(),
+      listenerPort: (map['listenerPort'] as int).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetSubscriptionsArgs {
   /// [displayNameContains] A case-insensitive value which must be contained within the `display_name` field, used to filter the results
   /// [displayNamePrefix] A case-insensitive prefix which can be used to filter on the `display_name` field
   GetSubscriptionsArgs({
-    pulumi.Output<String>? displayNameContains,
-    pulumi.Output<String>? displayNamePrefix,
-  }) :
-      displayNameContains = pulumi.Input.asOptionalInput<String>(displayNameContains),
-      displayNamePrefix = pulumi.Input.asOptionalInput<String>(displayNamePrefix);
+    this.displayNameContains,
+    this.displayNamePrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSubscriptionsArgs {
 
   factory GetSubscriptionsArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionsArgs(
-      displayNameContains: map['displayNameContains'] == null ? null : pulumi.Output.create<String>(map['displayNameContains'] as String),
-      displayNamePrefix: map['displayNamePrefix'] == null ? null : pulumi.Output.create<String>(map['displayNamePrefix'] as String),
+      displayNameContains: map['displayNameContains'] == null ? null : (map['displayNameContains'] as String).input(),
+      displayNamePrefix: map['displayNamePrefix'] == null ? null : (map['displayNamePrefix'] as String).input(),
     );
   }
 }

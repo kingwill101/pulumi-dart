@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountSASServices {
   /// Should permission be granted to `blob` services within this storage account?
-  final bool blob;
+  final pulumi.Input<bool> blob;
   /// Should permission be granted to `file` services within this storage account?
-  final bool file;
+  final pulumi.Input<bool> file;
   /// Should permission be granted to `queue` services within this storage account?
-  final bool queue;
+  final pulumi.Input<bool> queue;
   /// Should permission be granted to `table` services within this storage account?
-  final bool table;
+  final pulumi.Input<bool> table;
 
   /// Creates a new [GetAccountSASServices].
   /// [blob] Should permission be granted to `blob` services within this storage account?
@@ -34,10 +35,10 @@ class GetAccountSASServices {
 
   factory GetAccountSASServices.fromMap(Map<String, dynamic> map) {
     return GetAccountSASServices(
-      blob: map['blob'] as bool,
-      file: map['file'] as bool,
-      queue: map['queue'] as bool,
-      table: map['table'] as bool,
+      blob: (map['blob'] as bool).input(),
+      file: (map['file'] as bool).input(),
+      queue: (map['queue'] as bool).input(),
+      table: (map['table'] as bool).input(),
     );
   }
 }

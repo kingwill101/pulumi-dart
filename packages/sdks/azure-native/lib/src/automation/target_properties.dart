@@ -7,9 +7,9 @@ import 'non_azure_query_properties.dart';
 /// Group specific to the update configuration.
 class TargetProperties {
   /// List of Azure queries in the software update configuration.
-  final List<AzureQueryProperties>? azureQueries;
+  final pulumi.Input<List<AzureQueryProperties>>? azureQueries;
   /// List of non Azure queries in the software update configuration.
-  final List<NonAzureQueryProperties>? nonAzureQueries;
+  final pulumi.Input<List<NonAzureQueryProperties>>? nonAzureQueries;
 
   /// Creates a new [TargetProperties].
   /// [azureQueries] List of Azure queries in the software update configuration.
@@ -21,15 +21,15 @@ class TargetProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureQueries': ?azureQueries == null ? null : pulumi.Input.encodeList<AzureQueryProperties, Map<String, dynamic>>(azureQueries!, (value) => value.toMap()),
-      'nonAzureQueries': ?nonAzureQueries == null ? null : pulumi.Input.encodeList<NonAzureQueryProperties, Map<String, dynamic>>(nonAzureQueries!, (value) => value.toMap()),
+      'azureQueries': ?pulumi.Input.mapOptionalInputValue<List<AzureQueryProperties>, List<Map<String, dynamic>>>(azureQueries, (value) => pulumi.Input.encodeList<AzureQueryProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nonAzureQueries': ?pulumi.Input.mapOptionalInputValue<List<NonAzureQueryProperties>, List<Map<String, dynamic>>>(nonAzureQueries, (value) => pulumi.Input.encodeList<NonAzureQueryProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TargetProperties.fromMap(Map<String, dynamic> map) {
     return TargetProperties(
-      azureQueries: map['azureQueries'] == null ? null : pulumi.Input.decodeList<AzureQueryProperties>(map['azureQueries'], (value) => AzureQueryProperties.fromMap((value as Map).cast<String, dynamic>())),
-      nonAzureQueries: map['nonAzureQueries'] == null ? null : pulumi.Input.decodeList<NonAzureQueryProperties>(map['nonAzureQueries'], (value) => NonAzureQueryProperties.fromMap((value as Map).cast<String, dynamic>())),
+      azureQueries: map['azureQueries'] == null ? null : (pulumi.Input.decodeList<AzureQueryProperties>(map['azureQueries'], (value) => AzureQueryProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nonAzureQueries: map['nonAzureQueries'] == null ? null : (pulumi.Input.decodeList<NonAzureQueryProperties>(map['nonAzureQueries'], (value) => NonAzureQueryProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Zone details data.
 class A2AZoneDetailsResponse {
   /// Source zone info.
-  final String? source;
+  final pulumi.Input<String>? source;
   /// The target zone info.
-  final String? target;
+  final pulumi.Input<String>? target;
 
   /// Creates a new [A2AZoneDetailsResponse].
   /// [source] Source zone info.
@@ -25,8 +26,8 @@ class A2AZoneDetailsResponse {
 
   factory A2AZoneDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2AZoneDetailsResponse(
-      source: map['source'] == null ? null : map['source'] as String,
-      target: map['target'] == null ? null : map['target'] as String,
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

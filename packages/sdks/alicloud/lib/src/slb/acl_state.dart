@@ -23,17 +23,12 @@ class AclState {
   /// [resourceGroupId] Resource group ID.
   /// [tags] A mapping of tags to assign to the resource.
   AclState({
-    pulumi.Output<List<AclEntryList>>? entryLists,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      entryLists = pulumi.Input.asOptionalInput<List<AclEntryList>>(entryLists),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.entryLists,
+    this.ipVersion,
+    this.name,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class AclState {
 
   factory AclState.fromMap(Map<String, dynamic> map) {
     return AclState(
-      entryLists: map['entryLists'] == null ? null : pulumi.Output.create<List<AclEntryList>>(pulumi.Input.decodeList<AclEntryList>(map['entryLists'], (value) => AclEntryList.fromMap((value as Map).cast<String, dynamic>()))),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      entryLists: map['entryLists'] == null ? null : (pulumi.Input.decodeList<AclEntryList>(map['entryLists'], (value) => AclEntryList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

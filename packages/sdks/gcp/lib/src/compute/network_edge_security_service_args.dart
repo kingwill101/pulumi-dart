@@ -26,17 +26,12 @@ class NetworkEdgeSecurityServiceArgs {
   /// [region] The region of the gateway security policy.
   /// [securityPolicy] The resource URL for the network edge security service associated with this network edge security service.
   NetworkEdgeSecurityServiceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityPolicy,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityPolicy = pulumi.Input.asOptionalInput<String>(securityPolicy);
+    this.description,
+    this.name,
+    this.project,
+    this.region,
+    this.securityPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class NetworkEdgeSecurityServiceArgs {
 
   factory NetworkEdgeSecurityServiceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkEdgeSecurityServiceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityPolicy: map['securityPolicy'] == null ? null : pulumi.Output.create<String>(map['securityPolicy'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy'] as String).input(),
     );
   }
 }

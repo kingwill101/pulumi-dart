@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties for a Git repository catalog.
 class GitCatalogResponse {
   /// Git branch.
-  final String? branch;
+  final pulumi.Input<String>? branch;
   /// The folder where the catalog items can be found inside the repository.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
-  final String? secretIdentifier;
+  final pulumi.Input<String>? secretIdentifier;
   /// Git URI.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [GitCatalogResponse].
   /// [branch] Git branch.
@@ -35,10 +36,10 @@ class GitCatalogResponse {
 
   factory GitCatalogResponse.fromMap(Map<String, dynamic> map) {
     return GitCatalogResponse(
-      branch: map['branch'] == null ? null : map['branch'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      secretIdentifier: map['secretIdentifier'] == null ? null : map['secretIdentifier'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

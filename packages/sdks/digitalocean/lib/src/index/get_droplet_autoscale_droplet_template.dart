@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDropletAutoscaleDropletTemplate {
   /// Droplet image
-  final String image;
+  final pulumi.Input<String> image;
   /// Enable droplet IPv6
-  final bool ipv6;
+  final pulumi.Input<bool> ipv6;
   /// Droplet project ID
-  final String projectId;
+  final pulumi.Input<String> projectId;
   /// Droplet region
-  final String region;
+  final pulumi.Input<String> region;
   /// Droplet size
-  final String size;
+  final pulumi.Input<String> size;
   /// Droplet SSH keys
-  final List<String> sshKeys;
+  final pulumi.Input<List<String>> sshKeys;
   /// Droplet tags
-  final List<String> tags;
+  final pulumi.Input<List<String>> tags;
   /// Droplet user data
-  final String userData;
+  final pulumi.Input<String> userData;
   /// Droplet VPC UUID
-  final String vpcUuid;
+  final pulumi.Input<String> vpcUuid;
   /// Enable droplet agent
-  final bool withDropletAgent;
+  final pulumi.Input<bool> withDropletAgent;
 
   /// Creates a new [GetDropletAutoscaleDropletTemplate].
   /// [image] Droplet image
@@ -64,16 +65,16 @@ class GetDropletAutoscaleDropletTemplate {
 
   factory GetDropletAutoscaleDropletTemplate.fromMap(Map<String, dynamic> map) {
     return GetDropletAutoscaleDropletTemplate(
-      image: map['image'] as String,
-      ipv6: map['ipv6'] as bool,
-      projectId: map['projectId'] as String,
-      region: map['region'] as String,
-      size: map['size'] as String,
-      sshKeys: (map['sshKeys'] as List).cast<String>(),
-      tags: (map['tags'] as List).cast<String>(),
-      userData: map['userData'] as String,
-      vpcUuid: map['vpcUuid'] as String,
-      withDropletAgent: map['withDropletAgent'] as bool,
+      image: (map['image'] as String).input(),
+      ipv6: (map['ipv6'] as bool).input(),
+      projectId: (map['projectId'] as String).input(),
+      region: (map['region'] as String).input(),
+      size: (map['size'] as String).input(),
+      sshKeys: ((map['sshKeys'] as List).cast<String>()).input(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
+      userData: (map['userData'] as String).input(),
+      vpcUuid: (map['vpcUuid'] as String).input(),
+      withDropletAgent: (map['withDropletAgent'] as bool).input(),
     );
   }
 }

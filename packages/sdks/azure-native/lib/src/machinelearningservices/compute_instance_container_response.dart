@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compute_instance_environment_info_response.dart';
 
 /// Defines an Aml Instance container.
 class ComputeInstanceContainerResponse {
   /// Auto save settings.
-  final String? autosave;
+  final pulumi.Input<String>? autosave;
   /// Environment information of this container.
-  final ComputeInstanceEnvironmentInfoResponse? environment;
+  final pulumi.Input<ComputeInstanceEnvironmentInfoResponse>? environment;
   /// Information of GPU.
-  final String? gpu;
+  final pulumi.Input<String>? gpu;
   /// Name of the ComputeInstance container.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// network of this container.
-  final String? network;
+  final pulumi.Input<String>? network;
   /// services of this containers.
-  final List<dynamic> services;
+  final pulumi.Input<List<dynamic>> services;
 
   /// Creates a new [ComputeInstanceContainerResponse].
   /// [autosave] Auto save settings.
@@ -36,7 +37,7 @@ class ComputeInstanceContainerResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autosave': ?autosave,
-      'environment': ?environment == null ? null : environment!.toMap(),
+      'environment': ?pulumi.Input.mapOptionalInputValue<ComputeInstanceEnvironmentInfoResponse, Map<String, dynamic>>(environment, (value) => value.toMap()),
       'gpu': ?gpu,
       'name': ?name,
       'network': ?network,
@@ -46,12 +47,12 @@ class ComputeInstanceContainerResponse {
 
   factory ComputeInstanceContainerResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceContainerResponse(
-      autosave: map['autosave'] == null ? null : map['autosave'] as String,
-      environment: map['environment'] == null ? null : ComputeInstanceEnvironmentInfoResponse.fromMap((map['environment'] as Map).cast<String, dynamic>()),
-      gpu: map['gpu'] == null ? null : map['gpu'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      network: map['network'] == null ? null : map['network'] as String,
-      services: (map['services'] as List).cast<dynamic>(),
+      autosave: map['autosave'] == null ? null : (map['autosave'] as String).input(),
+      environment: map['environment'] == null ? null : (ComputeInstanceEnvironmentInfoResponse.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
+      gpu: map['gpu'] == null ? null : (map['gpu'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      services: ((map['services'] as List).cast<dynamic>()).input(),
     );
   }
 }

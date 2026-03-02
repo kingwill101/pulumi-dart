@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerPubsubConfig {
   /// Service account that will make the push request.
-  final String? serviceAccountEmail;
+  final pulumi.Input<String>? serviceAccountEmail;
   /// (Output)
   /// Potential issues with the underlying Pub/Sub subscription configuration.
   /// Only populated on get requests.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// (Output)
   /// Output only. Name of the subscription.
-  final String? subscription;
+  final pulumi.Input<String>? subscription;
   /// The name of the topic from which this subscription is receiving messages.
-  final String topic;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [TriggerPubsubConfig].
   /// [serviceAccountEmail] Service account that will make the push request.
@@ -37,10 +38,10 @@ class TriggerPubsubConfig {
 
   factory TriggerPubsubConfig.fromMap(Map<String, dynamic> map) {
     return TriggerPubsubConfig(
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : map['serviceAccountEmail'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      subscription: map['subscription'] == null ? null : map['subscription'] as String,
-      topic: map['topic'] as String,
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      subscription: map['subscription'] == null ? null : (map['subscription'] as String).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

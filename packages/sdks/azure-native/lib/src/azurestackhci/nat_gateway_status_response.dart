@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nat_gateway_status_provisioning_status_response.dart';
 
 /// Nat Gateway resource status
 class NatGatewayStatusResponse {
   /// NatGateway provisioning error code
-  final String? errorCode;
+  final pulumi.Input<String>? errorCode;
   /// Descriptive error message
-  final String? errorMessage;
+  final pulumi.Input<String>? errorMessage;
   /// NatGateway provisioning status
-  final NatGatewayStatusProvisioningStatusResponse? provisioningStatus;
+  final pulumi.Input<NatGatewayStatusProvisioningStatusResponse>? provisioningStatus;
 
   /// Creates a new [NatGatewayStatusResponse].
   /// [errorCode] NatGateway provisioning error code
@@ -25,15 +26,15 @@ class NatGatewayStatusResponse {
     return <String, dynamic>{
       'errorCode': ?errorCode,
       'errorMessage': ?errorMessage,
-      'provisioningStatus': ?provisioningStatus == null ? null : provisioningStatus!.toMap(),
+      'provisioningStatus': ?pulumi.Input.mapOptionalInputValue<NatGatewayStatusProvisioningStatusResponse, Map<String, dynamic>>(provisioningStatus, (value) => value.toMap()),
     };
   }
 
   factory NatGatewayStatusResponse.fromMap(Map<String, dynamic> map) {
     return NatGatewayStatusResponse(
-      errorCode: map['errorCode'] == null ? null : map['errorCode'] as String,
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
-      provisioningStatus: map['provisioningStatus'] == null ? null : NatGatewayStatusProvisioningStatusResponse.fromMap((map['provisioningStatus'] as Map).cast<String, dynamic>()),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (NatGatewayStatusProvisioningStatusResponse.fromMap((map['provisioningStatus'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

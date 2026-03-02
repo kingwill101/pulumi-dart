@@ -13,11 +13,9 @@ class ApplicationOwnerState {
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [ownerObjectId] The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
   ApplicationOwnerState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? ownerObjectId,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      ownerObjectId = pulumi.Input.asOptionalInput<String>(ownerObjectId);
+    this.applicationId,
+    this.ownerObjectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class ApplicationOwnerState {
 
   factory ApplicationOwnerState.fromMap(Map<String, dynamic> map) {
     return ApplicationOwnerState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      ownerObjectId: map['ownerObjectId'] == null ? null : pulumi.Output.create<String>(map['ownerObjectId'] as String),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      ownerObjectId: map['ownerObjectId'] == null ? null : (map['ownerObjectId'] as String).input(),
     );
   }
 }

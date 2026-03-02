@@ -25,17 +25,12 @@ class GetManagementAssociationArgs {
   /// [resourceName] Parent resource name.
   /// [resourceType] Resource type for the parent resource
   GetManagementAssociationArgs({
-    required pulumi.Output<String> managementAssociationName,
-    required pulumi.Output<String> providerName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<String> resourceType,
-  }) :
-      managementAssociationName = pulumi.Input.asInput<String>(managementAssociationName),
-      providerName = pulumi.Input.asInput<String>(providerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      resourceType = pulumi.Input.asInput<String>(resourceType);
+    required this.managementAssociationName,
+    required this.providerName,
+    required this.resourceGroupName,
+    required this.resourceName,
+    required this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetManagementAssociationArgs {
 
   factory GetManagementAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementAssociationArgs(
-      managementAssociationName: pulumi.Output.create<String>(map['managementAssociationName'] as String),
-      providerName: pulumi.Output.create<String>(map['providerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
+      managementAssociationName: (map['managementAssociationName'] as String).input(),
+      providerName: (map['providerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

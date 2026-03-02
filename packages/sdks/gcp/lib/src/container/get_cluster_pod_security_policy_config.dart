@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterPodSecurityPolicyConfig {
   /// Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetClusterPodSecurityPolicyConfig].
   /// [enabled] Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -19,7 +20,7 @@ class GetClusterPodSecurityPolicyConfig {
 
   factory GetClusterPodSecurityPolicyConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterPodSecurityPolicyConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

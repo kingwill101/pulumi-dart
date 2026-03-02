@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A copy activity source for an Office 365 service.
 class Office365SourceResponse {
   /// The groups containing all the users. Type: array of strings (or Expression with resultType array of strings).
-  final dynamic allowedGroups;
+  final pulumi.Input<dynamic>? allowedGroups;
   /// The Column to apply the <paramref name="StartTime"/> and <paramref name="EndTime"/>. Type: string (or Expression with resultType string).
-  final dynamic dateFilterColumn;
+  final pulumi.Input<dynamic>? dateFilterColumn;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// End time of the requested range for this dataset. Type: string (or Expression with resultType string).
-  final dynamic endTime;
+  final pulumi.Input<dynamic>? endTime;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// The columns to be read out from the Office 365 table. Type: array of objects (or Expression with resultType array of objects). itemType: OutputColumn. Example: [ { "name": "Id" }, { "name": "CreatedDateTime" } ]
-  final dynamic outputColumns;
+  final pulumi.Input<dynamic>? outputColumns;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Start time of the requested range for this dataset. Type: string (or Expression with resultType string).
-  final dynamic startTime;
+  final pulumi.Input<dynamic>? startTime;
   /// Copy source type.
   /// Expected value is 'Office365Source'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The user scope uri. Type: string (or Expression with resultType string).
-  final dynamic userScopeFilterUri;
+  final pulumi.Input<dynamic>? userScopeFilterUri;
 
   /// Creates a new [Office365SourceResponse].
   /// [allowedGroups] The groups containing all the users. Type: array of strings (or Expression with resultType array of strings).
@@ -71,17 +72,17 @@ class Office365SourceResponse {
 
   factory Office365SourceResponse.fromMap(Map<String, dynamic> map) {
     return Office365SourceResponse(
-      allowedGroups: map['allowedGroups'] == null ? null : map['allowedGroups'],
-      dateFilterColumn: map['dateFilterColumn'] == null ? null : map['dateFilterColumn'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      endTime: map['endTime'] == null ? null : map['endTime'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      outputColumns: map['outputColumns'] == null ? null : map['outputColumns'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      startTime: map['startTime'] == null ? null : map['startTime'],
-      type: map['type'] as String,
-      userScopeFilterUri: map['userScopeFilterUri'] == null ? null : map['userScopeFilterUri'],
+      allowedGroups: map['allowedGroups'] == null ? null : (map['allowedGroups']).input(),
+      dateFilterColumn: map['dateFilterColumn'] == null ? null : (map['dateFilterColumn']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      outputColumns: map['outputColumns'] == null ? null : (map['outputColumns']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']).input(),
+      type: (map['type'] as String).input(),
+      userScopeFilterUri: map['userScopeFilterUri'] == null ? null : (map['userScopeFilterUri']).input(),
     );
   }
 }

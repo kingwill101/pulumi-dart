@@ -56,31 +56,19 @@ class SystemTopicEventSubscriptionArgs {
   /// [retryPolicy] The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
   /// [systemTopicName] Name of the system topic.
   SystemTopicEventSubscriptionArgs({
-    pulumi.Output<StorageBlobDeadLetterDestination>? deadLetterDestination,
-    pulumi.Output<DeadLetterWithResourceIdentity>? deadLetterWithResourceIdentity,
-    pulumi.Output<DeliveryWithResourceIdentity>? deliveryWithResourceIdentity,
-    pulumi.Output<AzureFunctionEventSubscriptionDestination>? destination,
-    pulumi.Output<String>? eventDeliverySchema,
-    pulumi.Output<String>? eventSubscriptionName,
-    pulumi.Output<String>? expirationTimeUtc,
-    pulumi.Output<EventSubscriptionFilter>? filter,
-    pulumi.Output<List<String>>? labels,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<RetryPolicy>? retryPolicy,
-    required pulumi.Output<String> systemTopicName,
-  }) :
-      deadLetterDestination = pulumi.Input.asOptionalInput<StorageBlobDeadLetterDestination>(deadLetterDestination),
-      deadLetterWithResourceIdentity = pulumi.Input.asOptionalInput<DeadLetterWithResourceIdentity>(deadLetterWithResourceIdentity),
-      deliveryWithResourceIdentity = pulumi.Input.asOptionalInput<DeliveryWithResourceIdentity>(deliveryWithResourceIdentity),
-      destination = pulumi.Input.asOptionalInput<AzureFunctionEventSubscriptionDestination>(destination),
-      eventDeliverySchema = pulumi.Input.asOptionalInput<String>(eventDeliverySchema),
-      eventSubscriptionName = pulumi.Input.asOptionalInput<String>(eventSubscriptionName),
-      expirationTimeUtc = pulumi.Input.asOptionalInput<String>(expirationTimeUtc),
-      filter = pulumi.Input.asOptionalInput<EventSubscriptionFilter>(filter),
-      labels = pulumi.Input.asOptionalInput<List<String>>(labels),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      retryPolicy = pulumi.Input.asOptionalInput<RetryPolicy>(retryPolicy),
-      systemTopicName = pulumi.Input.asInput<String>(systemTopicName);
+    this.deadLetterDestination,
+    this.deadLetterWithResourceIdentity,
+    this.deliveryWithResourceIdentity,
+    this.destination,
+    this.eventDeliverySchema,
+    this.eventSubscriptionName,
+    this.expirationTimeUtc,
+    this.filter,
+    this.labels,
+    required this.resourceGroupName,
+    this.retryPolicy,
+    required this.systemTopicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,18 +89,18 @@ class SystemTopicEventSubscriptionArgs {
 
   factory SystemTopicEventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SystemTopicEventSubscriptionArgs(
-      deadLetterDestination: map['deadLetterDestination'] == null ? null : pulumi.Output.create<StorageBlobDeadLetterDestination>(StorageBlobDeadLetterDestination.fromMap((map['deadLetterDestination'] as Map).cast<String, dynamic>())),
-      deadLetterWithResourceIdentity: map['deadLetterWithResourceIdentity'] == null ? null : pulumi.Output.create<DeadLetterWithResourceIdentity>(DeadLetterWithResourceIdentity.fromMap((map['deadLetterWithResourceIdentity'] as Map).cast<String, dynamic>())),
-      deliveryWithResourceIdentity: map['deliveryWithResourceIdentity'] == null ? null : pulumi.Output.create<DeliveryWithResourceIdentity>(DeliveryWithResourceIdentity.fromMap((map['deliveryWithResourceIdentity'] as Map).cast<String, dynamic>())),
-      destination: map['destination'] == null ? null : pulumi.Output.create<AzureFunctionEventSubscriptionDestination>(AzureFunctionEventSubscriptionDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      eventDeliverySchema: map['eventDeliverySchema'] == null ? null : pulumi.Output.create<String>(map['eventDeliverySchema'] as String),
-      eventSubscriptionName: map['eventSubscriptionName'] == null ? null : pulumi.Output.create<String>(map['eventSubscriptionName'] as String),
-      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : pulumi.Output.create<String>(map['expirationTimeUtc'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<EventSubscriptionFilter>(EventSubscriptionFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<String>>((map['labels'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retryPolicy: map['retryPolicy'] == null ? null : pulumi.Output.create<RetryPolicy>(RetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())),
-      systemTopicName: pulumi.Output.create<String>(map['systemTopicName'] as String),
+      deadLetterDestination: map['deadLetterDestination'] == null ? null : (StorageBlobDeadLetterDestination.fromMap((map['deadLetterDestination'] as Map).cast<String, dynamic>())).input(),
+      deadLetterWithResourceIdentity: map['deadLetterWithResourceIdentity'] == null ? null : (DeadLetterWithResourceIdentity.fromMap((map['deadLetterWithResourceIdentity'] as Map).cast<String, dynamic>())).input(),
+      deliveryWithResourceIdentity: map['deliveryWithResourceIdentity'] == null ? null : (DeliveryWithResourceIdentity.fromMap((map['deliveryWithResourceIdentity'] as Map).cast<String, dynamic>())).input(),
+      destination: map['destination'] == null ? null : (AzureFunctionEventSubscriptionDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      eventDeliverySchema: map['eventDeliverySchema'] == null ? null : (map['eventDeliverySchema'] as String).input(),
+      eventSubscriptionName: map['eventSubscriptionName'] == null ? null : (map['eventSubscriptionName'] as String).input(),
+      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : (map['expirationTimeUtc'] as String).input(),
+      filter: map['filter'] == null ? null : (EventSubscriptionFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
+      systemTopicName: (map['systemTopicName'] as String).input(),
     );
   }
 }

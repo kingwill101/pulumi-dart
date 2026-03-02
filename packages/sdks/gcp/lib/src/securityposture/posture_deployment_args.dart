@@ -35,21 +35,14 @@ class PostureDeploymentArgs {
   /// [postureRevisionId] Revision_id the posture which needs to be deployed.
   /// [targetResource] The resource on which the posture should be deployed. This can be in one of the following formats:
   PostureDeploymentArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<String> postureDeploymentId,
-    required pulumi.Output<String> postureId,
-    required pulumi.Output<String> postureRevisionId,
-    required pulumi.Output<String> targetResource,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asInput<String>(location),
-      parent = pulumi.Input.asInput<String>(parent),
-      postureDeploymentId = pulumi.Input.asInput<String>(postureDeploymentId),
-      postureId = pulumi.Input.asInput<String>(postureId),
-      postureRevisionId = pulumi.Input.asInput<String>(postureRevisionId),
-      targetResource = pulumi.Input.asInput<String>(targetResource);
+    this.description,
+    required this.location,
+    required this.parent,
+    required this.postureDeploymentId,
+    required this.postureId,
+    required this.postureRevisionId,
+    required this.targetResource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class PostureDeploymentArgs {
 
   factory PostureDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return PostureDeploymentArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      postureDeploymentId: pulumi.Output.create<String>(map['postureDeploymentId'] as String),
-      postureId: pulumi.Output.create<String>(map['postureId'] as String),
-      postureRevisionId: pulumi.Output.create<String>(map['postureRevisionId'] as String),
-      targetResource: pulumi.Output.create<String>(map['targetResource'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: (map['location'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      postureDeploymentId: (map['postureDeploymentId'] as String).input(),
+      postureId: (map['postureId'] as String).input(),
+      postureRevisionId: (map['postureRevisionId'] as String).input(),
+      targetResource: (map['targetResource'] as String).input(),
     );
   }
 }

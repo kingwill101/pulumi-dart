@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network spec.
 class GoogleCloudAiplatformV1beta1NetworkSpecResponse {
   /// Whether to enable public internet access. Default false.
-  final bool enableInternetAccess;
+  final pulumi.Input<bool> enableInternetAccess;
   /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
-  final String network;
+  final pulumi.Input<String> network;
   /// The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
-  final String subnetwork;
+  final pulumi.Input<String> subnetwork;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1NetworkSpecResponse].
   /// [enableInternetAccess] Whether to enable public internet access. Default false.
@@ -30,9 +31,9 @@ class GoogleCloudAiplatformV1beta1NetworkSpecResponse {
 
   factory GoogleCloudAiplatformV1beta1NetworkSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1NetworkSpecResponse(
-      enableInternetAccess: map['enableInternetAccess'] as bool,
-      network: map['network'] as String,
-      subnetwork: map['subnetwork'] as String,
+      enableInternetAccess: (map['enableInternetAccess'] as bool).input(),
+      network: (map['network'] as String).input(),
+      subnetwork: (map['subnetwork'] as String).input(),
     );
   }
 }

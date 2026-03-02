@@ -7,9 +7,9 @@ import 'sub_resource.dart';
 /// The properties that define an exchange peering.
 class PeeringPropertiesExchange {
   /// The set of connections that constitute an exchange peering.
-  final List<ExchangeConnection>? connections;
+  final pulumi.Input<List<ExchangeConnection>>? connections;
   /// The reference of the peer ASN.
-  final SubResource? peerAsn;
+  final pulumi.Input<SubResource>? peerAsn;
 
   /// Creates a new [PeeringPropertiesExchange].
   /// [connections] The set of connections that constitute an exchange peering.
@@ -21,15 +21,15 @@ class PeeringPropertiesExchange {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connections': ?connections == null ? null : pulumi.Input.encodeList<ExchangeConnection, Map<String, dynamic>>(connections!, (value) => value.toMap()),
-      'peerAsn': ?peerAsn == null ? null : peerAsn!.toMap(),
+      'connections': ?pulumi.Input.mapOptionalInputValue<List<ExchangeConnection>, List<Map<String, dynamic>>>(connections, (value) => pulumi.Input.encodeList<ExchangeConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'peerAsn': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(peerAsn, (value) => value.toMap()),
     };
   }
 
   factory PeeringPropertiesExchange.fromMap(Map<String, dynamic> map) {
     return PeeringPropertiesExchange(
-      connections: map['connections'] == null ? null : pulumi.Input.decodeList<ExchangeConnection>(map['connections'], (value) => ExchangeConnection.fromMap((value as Map).cast<String, dynamic>())),
-      peerAsn: map['peerAsn'] == null ? null : SubResource.fromMap((map['peerAsn'] as Map).cast<String, dynamic>()),
+      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<ExchangeConnection>(map['connections'], (value) => ExchangeConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      peerAsn: map['peerAsn'] == null ? null : (SubResource.fromMap((map['peerAsn'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

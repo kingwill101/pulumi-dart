@@ -22,15 +22,11 @@ class ObjectACLState {
   /// [predefinedAcl] The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
   /// [roleEntities] List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
   ObjectACLState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? object,
-    pulumi.Output<String>? predefinedAcl,
-    pulumi.Output<List<String>>? roleEntities,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      object = pulumi.Input.asOptionalInput<String>(object),
-      predefinedAcl = pulumi.Input.asOptionalInput<String>(predefinedAcl),
-      roleEntities = pulumi.Input.asOptionalInput<List<String>>(roleEntities);
+    this.bucket,
+    this.object,
+    this.predefinedAcl,
+    this.roleEntities,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ObjectACLState {
 
   factory ObjectACLState.fromMap(Map<String, dynamic> map) {
     return ObjectACLState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      object: map['object'] == null ? null : pulumi.Output.create<String>(map['object'] as String),
-      predefinedAcl: map['predefinedAcl'] == null ? null : pulumi.Output.create<String>(map['predefinedAcl'] as String),
-      roleEntities: map['roleEntities'] == null ? null : pulumi.Output.create<List<String>>((map['roleEntities'] as List).cast<String>()),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      object: map['object'] == null ? null : (map['object'] as String).input(),
+      predefinedAcl: map['predefinedAcl'] == null ? null : (map['predefinedAcl'] as String).input(),
+      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities'] as List).cast<String>()).input(),
     );
   }
 }

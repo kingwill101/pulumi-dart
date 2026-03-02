@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a VHD in the lab.
 class LabVhdResponse {
   /// The URI to the VHD.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [LabVhdResponse].
   /// [id] The URI to the VHD.
@@ -20,7 +21,7 @@ class LabVhdResponse {
 
   factory LabVhdResponse.fromMap(Map<String, dynamic> map) {
     return LabVhdResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

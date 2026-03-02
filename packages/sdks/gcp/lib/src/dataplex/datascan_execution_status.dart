@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatascanExecutionStatus {
   /// (Output)
   /// The time when the latest DataScanJob started.
-  final String? latestJobEndTime;
+  final pulumi.Input<String>? latestJobEndTime;
   /// (Output)
   /// The time when the latest DataScanJob ended.
-  final String? latestJobStartTime;
+  final pulumi.Input<String>? latestJobStartTime;
 
   /// Creates a new [DatascanExecutionStatus].
   /// [latestJobEndTime] (Output)
@@ -26,8 +27,8 @@ class DatascanExecutionStatus {
 
   factory DatascanExecutionStatus.fromMap(Map<String, dynamic> map) {
     return DatascanExecutionStatus(
-      latestJobEndTime: map['latestJobEndTime'] == null ? null : map['latestJobEndTime'] as String,
-      latestJobStartTime: map['latestJobStartTime'] == null ? null : map['latestJobStartTime'] as String,
+      latestJobEndTime: map['latestJobEndTime'] == null ? null : (map['latestJobEndTime'] as String).input(),
+      latestJobStartTime: map['latestJobStartTime'] == null ? null : (map['latestJobStartTime'] as String).input(),
     );
   }
 }

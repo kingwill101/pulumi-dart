@@ -22,15 +22,11 @@ class GetDocumentArgs {
   /// [documentId] The id of the document to get.
   /// [project] The project in which the database resides.
   GetDocumentArgs({
-    required pulumi.Output<String> collection,
-    required pulumi.Output<String> database,
-    required pulumi.Output<String> documentId,
-    pulumi.Output<String>? project,
-  }) :
-      collection = pulumi.Input.asInput<String>(collection),
-      database = pulumi.Input.asInput<String>(database),
-      documentId = pulumi.Input.asInput<String>(documentId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.collection,
+    required this.database,
+    required this.documentId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDocumentArgs {
 
   factory GetDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetDocumentArgs(
-      collection: pulumi.Output.create<String>(map['collection'] as String),
-      database: pulumi.Output.create<String>(map['database'] as String),
-      documentId: pulumi.Output.create<String>(map['documentId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      collection: (map['collection'] as String).input(),
+      database: (map['database'] as String).input(),
+      documentId: (map['documentId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

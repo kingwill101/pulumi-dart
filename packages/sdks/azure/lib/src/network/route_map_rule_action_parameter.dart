@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteMapRuleActionParameter {
   /// A list of AS paths.
-  final List<String>? asPaths;
+  final pulumi.Input<List<String>>? asPaths;
   /// A list of BGP communities.
-  final List<String>? communities;
+  final pulumi.Input<List<String>>? communities;
   /// A list of route prefixes.
-  final List<String>? routePrefixes;
+  final pulumi.Input<List<String>>? routePrefixes;
 
   /// Creates a new [RouteMapRuleActionParameter].
   /// [asPaths] A list of AS paths.
@@ -29,9 +30,9 @@ class RouteMapRuleActionParameter {
 
   factory RouteMapRuleActionParameter.fromMap(Map<String, dynamic> map) {
     return RouteMapRuleActionParameter(
-      asPaths: map['asPaths'] == null ? null : (map['asPaths'] as List).cast<String>(),
-      communities: map['communities'] == null ? null : (map['communities'] as List).cast<String>(),
-      routePrefixes: map['routePrefixes'] == null ? null : (map['routePrefixes'] as List).cast<String>(),
+      asPaths: map['asPaths'] == null ? null : ((map['asPaths'] as List).cast<String>()).input(),
+      communities: map['communities'] == null ? null : ((map['communities'] as List).cast<String>()).input(),
+      routePrefixes: map['routePrefixes'] == null ? null : ((map['routePrefixes'] as List).cast<String>()).input(),
     );
   }
 }

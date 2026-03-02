@@ -30,17 +30,12 @@ class EtlArgs {
   /// [jobName] The job name. Naming rules are as follows:
   /// [project] Project name.
   EtlArgs({
-    required pulumi.Output<EtlConfiguration> configuration,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> jobName,
-    required pulumi.Output<String> project,
-  }) :
-      configuration = pulumi.Input.asInput<EtlConfiguration>(configuration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      jobName = pulumi.Input.asInput<String>(jobName),
-      project = pulumi.Input.asInput<String>(project);
+    required this.configuration,
+    this.description,
+    required this.displayName,
+    required this.jobName,
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class EtlArgs {
 
   factory EtlArgs.fromMap(Map<String, dynamic> map) {
     return EtlArgs(
-      configuration: pulumi.Output.create<EtlConfiguration>(EtlConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      jobName: pulumi.Output.create<String>(map['jobName'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
+      configuration: (EtlConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      jobName: (map['jobName'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

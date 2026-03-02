@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationConfiguration {
   /// Configuration parameter name. Changing this creates a new resource.
-  final String name;
+  final pulumi.Input<String> name;
   /// Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
-  final bool? stringType;
+  final pulumi.Input<bool>? stringType;
   /// Configuration parameter value. Changing this creates a new resource.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ConfigurationConfiguration].
   /// [name] Configuration parameter name. Changing this creates a new resource.
@@ -29,9 +30,9 @@ class ConfigurationConfiguration {
 
   factory ConfigurationConfiguration.fromMap(Map<String, dynamic> map) {
     return ConfigurationConfiguration(
-      name: map['name'] as String,
-      stringType: map['stringType'] == null ? null : map['stringType'] as bool,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      stringType: map['stringType'] == null ? null : (map['stringType'] as bool).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

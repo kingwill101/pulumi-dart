@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Manifest artifact properties.
 class ManifestArtifactFormatResponse {
   /// The artifact name
-  final String? artifactName;
+  final pulumi.Input<String>? artifactName;
   /// The artifact type.
-  final String? artifactType;
+  final pulumi.Input<String>? artifactType;
   /// The artifact version.
-  final String? artifactVersion;
+  final pulumi.Input<String>? artifactVersion;
 
   /// Creates a new [ManifestArtifactFormatResponse].
   /// [artifactName] The artifact name
@@ -30,9 +31,9 @@ class ManifestArtifactFormatResponse {
 
   factory ManifestArtifactFormatResponse.fromMap(Map<String, dynamic> map) {
     return ManifestArtifactFormatResponse(
-      artifactName: map['artifactName'] == null ? null : map['artifactName'] as String,
-      artifactType: map['artifactType'] == null ? null : map['artifactType'] as String,
-      artifactVersion: map['artifactVersion'] == null ? null : map['artifactVersion'] as String,
+      artifactName: map['artifactName'] == null ? null : (map['artifactName'] as String).input(),
+      artifactType: map['artifactType'] == null ? null : (map['artifactType'] as String).input(),
+      artifactVersion: map['artifactVersion'] == null ? null : (map['artifactVersion'] as String).input(),
     );
   }
 }

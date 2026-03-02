@@ -18,13 +18,10 @@ class BandwidthLimitState {
   /// [instanceId] The ID of the CEN.
   /// [regionIds] List of the two regions to interconnect. Must be two different regions.
   BandwidthLimitState({
-    pulumi.Output<int>? bandwidthLimit,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<List<String>>? regionIds,
-  }) :
-      bandwidthLimit = pulumi.Input.asOptionalInput<int>(bandwidthLimit),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      regionIds = pulumi.Input.asOptionalInput<List<String>>(regionIds);
+    this.bandwidthLimit,
+    this.instanceId,
+    this.regionIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class BandwidthLimitState {
 
   factory BandwidthLimitState.fromMap(Map<String, dynamic> map) {
     return BandwidthLimitState(
-      bandwidthLimit: map['bandwidthLimit'] == null ? null : pulumi.Output.create<int>(map['bandwidthLimit'] as int),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      regionIds: map['regionIds'] == null ? null : pulumi.Output.create<List<String>>((map['regionIds'] as List).cast<String>()),
+      bandwidthLimit: map['bandwidthLimit'] == null ? null : (map['bandwidthLimit'] as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      regionIds: map['regionIds'] == null ? null : ((map['regionIds'] as List).cast<String>()).input(),
     );
   }
 }

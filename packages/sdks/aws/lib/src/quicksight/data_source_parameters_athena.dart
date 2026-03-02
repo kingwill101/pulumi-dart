@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersAthena {
   /// The work-group to which to connect.
-  final String? workGroup;
+  final pulumi.Input<String>? workGroup;
 
   /// Creates a new [DataSourceParametersAthena].
   /// [workGroup] The work-group to which to connect.
@@ -19,7 +20,7 @@ class DataSourceParametersAthena {
 
   factory DataSourceParametersAthena.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersAthena(
-      workGroup: map['workGroup'] == null ? null : map['workGroup'] as String,
+      workGroup: map['workGroup'] == null ? null : (map['workGroup'] as String).input(),
     );
   }
 }

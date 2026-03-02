@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Export operation configuration information
 class FhirServiceExportConfigurationResponse {
   /// The name of the default export storage account.
-  final String? storageAccountName;
+  final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [FhirServiceExportConfigurationResponse].
   /// [storageAccountName] The name of the default export storage account.
@@ -20,7 +21,7 @@ class FhirServiceExportConfigurationResponse {
 
   factory FhirServiceExportConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FhirServiceExportConfigurationResponse(
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName'] as String,
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
     );
   }
 }

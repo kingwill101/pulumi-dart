@@ -31,21 +31,14 @@ class ClusterState {
   /// [sizeGb] The capacity of the Log Analytics Cluster is specified in GB/day. Possible values include `100`, `200`, `300`, `400`, `500`, `1000`, `2000`, `5000`, `10000`, `25000`, or `50000`. Defaults to `100`.
   /// [tags] A mapping of tags which should be assigned to the Log Analytics Cluster.
   ClusterState({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<ClusterIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<int>? sizeGb,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      identity = pulumi.Input.asOptionalInput<ClusterIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sizeGb = pulumi.Input.asOptionalInput<int>(sizeGb),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.clusterId,
+    this.identity,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.sizeGb,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ClusterIdentity>(ClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sizeGb: map['sizeGb'] == null ? null : pulumi.Output.create<int>(map['sizeGb'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      identity: map['identity'] == null ? null : (ClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

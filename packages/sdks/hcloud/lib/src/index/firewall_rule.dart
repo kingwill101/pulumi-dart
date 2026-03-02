@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallRule {
   /// Description of the firewall rule
-  final String? description;
+  final pulumi.Input<String>? description;
   /// List of IPs or CIDRs that are allowed within this Firewall Rule (when `direction`
   /// is `out`)
-  final List<String>? destinationIps;
+  final pulumi.Input<List<String>>? destinationIps;
   /// Direction of the Firewall Rule. `in`
-  final String direction;
+  final pulumi.Input<String> direction;
   /// Port of the Firewall Rule. Required when `protocol` is `tcp` or `udp`. You can use `any`
   /// to allow all ports for the specific protocol. Port ranges are also possible: `80-85` allows all ports between 80 and 85.
-  final String? port;
+  final pulumi.Input<String>? port;
   /// Protocol of the Firewall Rule. `tcp`, `icmp`, `udp`, `gre`, `esp`
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// List of IPs or CIDRs that are allowed within this Firewall Rule (when `direction`
   /// is `in`)
-  final List<String>? sourceIps;
+  final pulumi.Input<List<String>>? sourceIps;
 
   /// Creates a new [FirewallRule].
   /// [description] Description of the firewall rule
@@ -47,12 +48,12 @@ class FirewallRule {
 
   factory FirewallRule.fromMap(Map<String, dynamic> map) {
     return FirewallRule(
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationIps: map['destinationIps'] == null ? null : (map['destinationIps'] as List).cast<String>(),
-      direction: map['direction'] as String,
-      port: map['port'] == null ? null : map['port'] as String,
-      protocol: map['protocol'] as String,
-      sourceIps: map['sourceIps'] == null ? null : (map['sourceIps'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationIps: map['destinationIps'] == null ? null : ((map['destinationIps'] as List).cast<String>()).input(),
+      direction: (map['direction'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      sourceIps: map['sourceIps'] == null ? null : ((map['sourceIps'] as List).cast<String>()).input(),
     );
   }
 }

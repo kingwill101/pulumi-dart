@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parameters for using BigQuery as the destination of resource usage export.
 class BigQueryDestinationContainerV1beta1 {
   /// The ID of a BigQuery Dataset.
-  final String? datasetId;
+  final pulumi.Input<String>? datasetId;
 
   /// Creates a new [BigQueryDestinationContainerV1beta1].
   /// [datasetId] The ID of a BigQuery Dataset.
@@ -20,7 +21,7 @@ class BigQueryDestinationContainerV1beta1 {
 
   factory BigQueryDestinationContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return BigQueryDestinationContainerV1beta1(
-      datasetId: map['datasetId'] == null ? null : map['datasetId'] as String,
+      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
     );
   }
 }

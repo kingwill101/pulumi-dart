@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetBinaryAzureBlobStorageLocation {
   /// The container on the Azure Blob Storage Account hosting the file.
-  final String container;
+  final pulumi.Input<String> container;
   /// Is the `container` using dynamic expression, function or system variables? Defaults to `false`.
-  final bool? dynamicContainerEnabled;
+  final pulumi.Input<bool>? dynamicContainerEnabled;
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
-  final bool? dynamicFilenameEnabled;
+  final pulumi.Input<bool>? dynamicFilenameEnabled;
   /// Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
-  final bool? dynamicPathEnabled;
+  final pulumi.Input<bool>? dynamicPathEnabled;
   /// The filename of the file in the blob container.
-  final String? filename;
+  final pulumi.Input<String>? filename;
   /// The folder path to the file in the blob container.
-  final String? path;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [DatasetBinaryAzureBlobStorageLocation].
   /// [container] The container on the Azure Blob Storage Account hosting the file.
@@ -44,12 +45,12 @@ class DatasetBinaryAzureBlobStorageLocation {
 
   factory DatasetBinaryAzureBlobStorageLocation.fromMap(Map<String, dynamic> map) {
     return DatasetBinaryAzureBlobStorageLocation(
-      container: map['container'] as String,
-      dynamicContainerEnabled: map['dynamicContainerEnabled'] == null ? null : map['dynamicContainerEnabled'] as bool,
-      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : map['dynamicFilenameEnabled'] as bool,
-      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : map['dynamicPathEnabled'] as bool,
-      filename: map['filename'] == null ? null : map['filename'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
+      container: (map['container'] as String).input(),
+      dynamicContainerEnabled: map['dynamicContainerEnabled'] == null ? null : (map['dynamicContainerEnabled'] as bool).input(),
+      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : (map['dynamicFilenameEnabled'] as bool).input(),
+      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : (map['dynamicPathEnabled'] as bool).input(),
+      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

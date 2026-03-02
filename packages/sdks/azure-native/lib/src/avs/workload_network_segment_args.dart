@@ -32,21 +32,14 @@ class WorkloadNetworkSegmentArgs {
   /// [segmentId] The ID of the NSX Segment
   /// [subnet] Subnet which to connect segment to.
   WorkloadNetworkSegmentArgs({
-    pulumi.Output<String>? connectedGateway,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<double>? revision,
-    pulumi.Output<String>? segmentId,
-    pulumi.Output<WorkloadNetworkSegmentSubnet>? subnet,
-  }) :
-      connectedGateway = pulumi.Input.asOptionalInput<String>(connectedGateway),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      revision = pulumi.Input.asOptionalInput<double>(revision),
-      segmentId = pulumi.Input.asOptionalInput<String>(segmentId),
-      subnet = pulumi.Input.asOptionalInput<WorkloadNetworkSegmentSubnet>(subnet);
+    this.connectedGateway,
+    this.displayName,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+    this.revision,
+    this.segmentId,
+    this.subnet,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class WorkloadNetworkSegmentArgs {
 
   factory WorkloadNetworkSegmentArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkSegmentArgs(
-      connectedGateway: map['connectedGateway'] == null ? null : pulumi.Output.create<String>(map['connectedGateway'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      revision: map['revision'] == null ? null : pulumi.Output.create<double>(map['revision'] as double),
-      segmentId: map['segmentId'] == null ? null : pulumi.Output.create<String>(map['segmentId'] as String),
-      subnet: map['subnet'] == null ? null : pulumi.Output.create<WorkloadNetworkSegmentSubnet>(WorkloadNetworkSegmentSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())),
+      connectedGateway: map['connectedGateway'] == null ? null : (map['connectedGateway'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
+      segmentId: map['segmentId'] == null ? null : (map['segmentId'] as String).input(),
+      subnet: map['subnet'] == null ? null : (WorkloadNetworkSegmentSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

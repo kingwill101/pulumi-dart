@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents preferences for sending email notifications for transfer run events.
 class EmailPreferencesResponse {
   /// If true, email notifications will be sent on transfer run failures.
-  final bool enableFailureEmail;
+  final pulumi.Input<bool> enableFailureEmail;
 
   /// Creates a new [EmailPreferencesResponse].
   /// [enableFailureEmail] If true, email notifications will be sent on transfer run failures.
@@ -20,7 +21,7 @@ class EmailPreferencesResponse {
 
   factory EmailPreferencesResponse.fromMap(Map<String, dynamic> map) {
     return EmailPreferencesResponse(
-      enableFailureEmail: map['enableFailureEmail'] as bool,
+      enableFailureEmail: (map['enableFailureEmail'] as bool).input(),
     );
   }
 }

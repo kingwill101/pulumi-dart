@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the input for dtmf event.
 class GoogleCloudDialogflowCxV3beta1DtmfInputResponse {
   /// The dtmf digits.
-  final String digits;
+  final pulumi.Input<String> digits;
   /// The finish digit (if any).
-  final String finishDigit;
+  final pulumi.Input<String> finishDigit;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1DtmfInputResponse].
   /// [digits] The dtmf digits.
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowCxV3beta1DtmfInputResponse {
 
   factory GoogleCloudDialogflowCxV3beta1DtmfInputResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1DtmfInputResponse(
-      digits: map['digits'] as String,
-      finishDigit: map['finishDigit'] as String,
+      digits: (map['digits'] as String).input(),
+      finishDigit: (map['finishDigit'] as String).input(),
     );
   }
 }

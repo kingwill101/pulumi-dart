@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_data_response.dart';
 import 'sbe_partner_info_response.dart';
 
 /// Scale units will contains list of deployment data
 class ScaleUnitsResponse {
   /// Deployment Data to deploy AzureStackHCI Cluster.
-  final DeploymentDataResponse deploymentData;
+  final pulumi.Input<DeploymentDataResponse> deploymentData;
   /// Solution builder extension (SBE) partner properties
-  final SbePartnerInfoResponse? sbePartnerInfo;
+  final pulumi.Input<SbePartnerInfoResponse>? sbePartnerInfo;
 
   /// Creates a new [ScaleUnitsResponse].
   /// [deploymentData] Deployment Data to deploy AzureStackHCI Cluster.
@@ -20,15 +21,15 @@ class ScaleUnitsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deploymentData': deploymentData.toMap(),
-      'sbePartnerInfo': ?sbePartnerInfo == null ? null : sbePartnerInfo!.toMap(),
+      'deploymentData': pulumi.Input.mapInputValue<DeploymentDataResponse, Map<String, dynamic>>(deploymentData, (value) => value.toMap()),
+      'sbePartnerInfo': ?pulumi.Input.mapOptionalInputValue<SbePartnerInfoResponse, Map<String, dynamic>>(sbePartnerInfo, (value) => value.toMap()),
     };
   }
 
   factory ScaleUnitsResponse.fromMap(Map<String, dynamic> map) {
     return ScaleUnitsResponse(
-      deploymentData: DeploymentDataResponse.fromMap((map['deploymentData'] as Map).cast<String, dynamic>()),
-      sbePartnerInfo: map['sbePartnerInfo'] == null ? null : SbePartnerInfoResponse.fromMap((map['sbePartnerInfo'] as Map).cast<String, dynamic>()),
+      deploymentData: (DeploymentDataResponse.fromMap((map['deploymentData'] as Map).cast<String, dynamic>())).input(),
+      sbePartnerInfo: map['sbePartnerInfo'] == null ? null : (SbePartnerInfoResponse.fromMap((map['sbePartnerInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

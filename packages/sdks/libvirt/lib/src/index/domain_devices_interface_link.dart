@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceLink {
   /// Configures the operational state of the network link (up or down).
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [DomainDevicesInterfaceLink].
   /// [state] Configures the operational state of the network link (up or down).
@@ -19,7 +20,7 @@ class DomainDevicesInterfaceLink {
 
   factory DomainDevicesInterfaceLink.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceLink(
-      state: map['state'] as String,
+      state: (map['state'] as String).input(),
     );
   }
 }

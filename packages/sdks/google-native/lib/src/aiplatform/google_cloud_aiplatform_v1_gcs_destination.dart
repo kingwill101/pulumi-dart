@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Google Cloud Storage location where the output is to be written to.
 class GoogleCloudAiplatformV1GcsDestination {
   /// Google Cloud Storage URI to output directory. If the uri doesn't end with '/', a '/' will be automatically appended. The directory is created if it doesn't exist.
-  final String outputUriPrefix;
+  final pulumi.Input<String> outputUriPrefix;
 
   /// Creates a new [GoogleCloudAiplatformV1GcsDestination].
   /// [outputUriPrefix] Google Cloud Storage URI to output directory. If the uri doesn't end with '/', a '/' will be automatically appended. The directory is created if it doesn't exist.
@@ -20,7 +21,7 @@ class GoogleCloudAiplatformV1GcsDestination {
 
   factory GoogleCloudAiplatformV1GcsDestination.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1GcsDestination(
-      outputUriPrefix: map['outputUriPrefix'] as String,
+      outputUriPrefix: (map['outputUriPrefix'] as String).input(),
     );
   }
 }

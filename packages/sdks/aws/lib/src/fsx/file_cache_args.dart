@@ -48,29 +48,18 @@ class FileCacheArgs {
   /// [subnetIds] A list of subnet IDs that the cache will be accessible from. You can specify only one subnet ID.
   /// [tags] A map of tags to assign to the file cache. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   FileCacheArgs({
-    pulumi.Output<bool>? copyTagsToDataRepositoryAssociations,
-    pulumi.Output<List<FileCacheDataRepositoryAssociation>>? dataRepositoryAssociations,
-    required pulumi.Output<String> fileCacheType,
-    required pulumi.Output<String> fileCacheTypeVersion,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<List<FileCacheLustreConfiguration>>? lustreConfigurations,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupIds,
-    required pulumi.Output<int> storageCapacity,
-    required pulumi.Output<List<String>> subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      copyTagsToDataRepositoryAssociations = pulumi.Input.asOptionalInput<bool>(copyTagsToDataRepositoryAssociations),
-      dataRepositoryAssociations = pulumi.Input.asOptionalInput<List<FileCacheDataRepositoryAssociation>>(dataRepositoryAssociations),
-      fileCacheType = pulumi.Input.asInput<String>(fileCacheType),
-      fileCacheTypeVersion = pulumi.Input.asInput<String>(fileCacheTypeVersion),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      lustreConfigurations = pulumi.Input.asOptionalInput<List<FileCacheLustreConfiguration>>(lustreConfigurations),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-      storageCapacity = pulumi.Input.asInput<int>(storageCapacity),
-      subnetIds = pulumi.Input.asInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.copyTagsToDataRepositoryAssociations,
+    this.dataRepositoryAssociations,
+    required this.fileCacheType,
+    required this.fileCacheTypeVersion,
+    this.kmsKeyId,
+    this.lustreConfigurations,
+    this.region,
+    this.securityGroupIds,
+    required this.storageCapacity,
+    required this.subnetIds,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,17 +79,17 @@ class FileCacheArgs {
 
   factory FileCacheArgs.fromMap(Map<String, dynamic> map) {
     return FileCacheArgs(
-      copyTagsToDataRepositoryAssociations: map['copyTagsToDataRepositoryAssociations'] == null ? null : pulumi.Output.create<bool>(map['copyTagsToDataRepositoryAssociations'] as bool),
-      dataRepositoryAssociations: map['dataRepositoryAssociations'] == null ? null : pulumi.Output.create<List<FileCacheDataRepositoryAssociation>>(pulumi.Input.decodeList<FileCacheDataRepositoryAssociation>(map['dataRepositoryAssociations'], (value) => FileCacheDataRepositoryAssociation.fromMap((value as Map).cast<String, dynamic>()))),
-      fileCacheType: pulumi.Output.create<String>(map['fileCacheType'] as String),
-      fileCacheTypeVersion: pulumi.Output.create<String>(map['fileCacheTypeVersion'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      lustreConfigurations: map['lustreConfigurations'] == null ? null : pulumi.Output.create<List<FileCacheLustreConfiguration>>(pulumi.Input.decodeList<FileCacheLustreConfiguration>(map['lustreConfigurations'], (value) => FileCacheLustreConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
-      storageCapacity: pulumi.Output.create<int>(map['storageCapacity'] as int),
-      subnetIds: pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      copyTagsToDataRepositoryAssociations: map['copyTagsToDataRepositoryAssociations'] == null ? null : (map['copyTagsToDataRepositoryAssociations'] as bool).input(),
+      dataRepositoryAssociations: map['dataRepositoryAssociations'] == null ? null : (pulumi.Input.decodeList<FileCacheDataRepositoryAssociation>(map['dataRepositoryAssociations'], (value) => FileCacheDataRepositoryAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fileCacheType: (map['fileCacheType'] as String).input(),
+      fileCacheTypeVersion: (map['fileCacheTypeVersion'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      lustreConfigurations: map['lustreConfigurations'] == null ? null : (pulumi.Input.decodeList<FileCacheLustreConfiguration>(map['lustreConfigurations'], (value) => FileCacheLustreConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      storageCapacity: (map['storageCapacity'] as int).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

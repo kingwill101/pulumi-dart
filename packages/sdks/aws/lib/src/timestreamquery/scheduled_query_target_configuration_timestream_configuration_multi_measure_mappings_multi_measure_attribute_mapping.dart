@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping {
   /// Type of the attribute to be read from the source column. Valid values are `BIGINT`, `BOOLEAN`, `DOUBLE`, `VARCHAR`, `TIMESTAMP`.
-  final String measureValueType;
+  final pulumi.Input<String> measureValueType;
   /// Source column from where the attribute value is to be read.
-  final String sourceColumn;
+  final pulumi.Input<String> sourceColumn;
   /// Custom name to be used for attribute name in derived table. If not provided, `source_column` is used.
-  final String? targetMultiMeasureAttributeName;
+  final pulumi.Input<String>? targetMultiMeasureAttributeName;
 
   /// Creates a new [ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping].
   /// [measureValueType] Type of the attribute to be read from the source column. Valid values are `BIGINT`, `BOOLEAN`, `DOUBLE`, `VARCHAR`, `TIMESTAMP`.
@@ -29,9 +30,9 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappin
 
   factory ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping(
-      measureValueType: map['measureValueType'] as String,
-      sourceColumn: map['sourceColumn'] as String,
-      targetMultiMeasureAttributeName: map['targetMultiMeasureAttributeName'] == null ? null : map['targetMultiMeasureAttributeName'] as String,
+      measureValueType: (map['measureValueType'] as String).input(),
+      sourceColumn: (map['sourceColumn'] as String).input(),
+      targetMultiMeasureAttributeName: map['targetMultiMeasureAttributeName'] == null ? null : (map['targetMultiMeasureAttributeName'] as String).input(),
     );
   }
 }

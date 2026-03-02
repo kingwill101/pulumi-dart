@@ -16,11 +16,9 @@ class GetApplicationGatewayArgs {
   /// [applicationGatewayName] The name of the application gateway.
   /// [resourceGroupName] The name of the resource group.
   GetApplicationGatewayArgs({
-    required pulumi.Output<String> applicationGatewayName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      applicationGatewayName = pulumi.Input.asInput<String>(applicationGatewayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.applicationGatewayName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetApplicationGatewayArgs {
 
   factory GetApplicationGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayArgs(
-      applicationGatewayName: pulumi.Output.create<String>(map['applicationGatewayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      applicationGatewayName: (map['applicationGatewayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

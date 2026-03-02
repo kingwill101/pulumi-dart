@@ -38,27 +38,17 @@ class StreamState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   StreamState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? exclusiveEndTime,
-    pulumi.Output<String>? inclusiveStartTime,
-    pulumi.Output<StreamKinesisConfiguration>? kinesisConfiguration,
-    pulumi.Output<String>? ledgerName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<String>? streamName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      exclusiveEndTime = pulumi.Input.asOptionalInput<String>(exclusiveEndTime),
-      inclusiveStartTime = pulumi.Input.asOptionalInput<String>(inclusiveStartTime),
-      kinesisConfiguration = pulumi.Input.asOptionalInput<StreamKinesisConfiguration>(kinesisConfiguration),
-      ledgerName = pulumi.Input.asOptionalInput<String>(ledgerName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      streamName = pulumi.Input.asOptionalInput<String>(streamName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.exclusiveEndTime,
+    this.inclusiveStartTime,
+    this.kinesisConfiguration,
+    this.ledgerName,
+    this.region,
+    this.roleArn,
+    this.streamName,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class StreamState {
 
   factory StreamState.fromMap(Map<String, dynamic> map) {
     return StreamState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      exclusiveEndTime: map['exclusiveEndTime'] == null ? null : pulumi.Output.create<String>(map['exclusiveEndTime'] as String),
-      inclusiveStartTime: map['inclusiveStartTime'] == null ? null : pulumi.Output.create<String>(map['inclusiveStartTime'] as String),
-      kinesisConfiguration: map['kinesisConfiguration'] == null ? null : pulumi.Output.create<StreamKinesisConfiguration>(StreamKinesisConfiguration.fromMap((map['kinesisConfiguration'] as Map).cast<String, dynamic>())),
-      ledgerName: map['ledgerName'] == null ? null : pulumi.Output.create<String>(map['ledgerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      streamName: map['streamName'] == null ? null : pulumi.Output.create<String>(map['streamName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      exclusiveEndTime: map['exclusiveEndTime'] == null ? null : (map['exclusiveEndTime'] as String).input(),
+      inclusiveStartTime: map['inclusiveStartTime'] == null ? null : (map['inclusiveStartTime'] as String).input(),
+      kinesisConfiguration: map['kinesisConfiguration'] == null ? null : (StreamKinesisConfiguration.fromMap((map['kinesisConfiguration'] as Map).cast<String, dynamic>())).input(),
+      ledgerName: map['ledgerName'] == null ? null : (map['ledgerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      streamName: map['streamName'] == null ? null : (map['streamName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

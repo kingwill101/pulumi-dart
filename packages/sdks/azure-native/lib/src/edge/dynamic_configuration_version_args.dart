@@ -26,17 +26,12 @@ class DynamicConfigurationVersionArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   DynamicConfigurationVersionArgs({
-    required pulumi.Output<String> configurationName,
-    required pulumi.Output<String> dynamicConfigurationName,
-    pulumi.Output<String>? dynamicConfigurationVersionName,
-    pulumi.Output<DynamicConfigurationVersionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      dynamicConfigurationName = pulumi.Input.asInput<String>(dynamicConfigurationName),
-      dynamicConfigurationVersionName = pulumi.Input.asOptionalInput<String>(dynamicConfigurationVersionName),
-      properties = pulumi.Input.asOptionalInput<DynamicConfigurationVersionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.configurationName,
+    required this.dynamicConfigurationName,
+    this.dynamicConfigurationVersionName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DynamicConfigurationVersionArgs {
 
   factory DynamicConfigurationVersionArgs.fromMap(Map<String, dynamic> map) {
     return DynamicConfigurationVersionArgs(
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      dynamicConfigurationName: pulumi.Output.create<String>(map['dynamicConfigurationName'] as String),
-      dynamicConfigurationVersionName: map['dynamicConfigurationVersionName'] == null ? null : pulumi.Output.create<String>(map['dynamicConfigurationVersionName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DynamicConfigurationVersionProperties>(DynamicConfigurationVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configurationName: (map['configurationName'] as String).input(),
+      dynamicConfigurationName: (map['dynamicConfigurationName'] as String).input(),
+      dynamicConfigurationVersionName: map['dynamicConfigurationVersionName'] == null ? null : (map['dynamicConfigurationVersionName'] as String).input(),
+      properties: map['properties'] == null ? null : (DynamicConfigurationVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

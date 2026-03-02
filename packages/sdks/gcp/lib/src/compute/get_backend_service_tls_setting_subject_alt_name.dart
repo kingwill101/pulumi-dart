@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackendServiceTlsSettingSubjectAltName {
   /// The SAN specified as a DNS Name.
-  final String dnsName;
+  final pulumi.Input<String> dnsName;
   /// The SAN specified as a URI.
-  final String uniformResourceIdentifier;
+  final pulumi.Input<String> uniformResourceIdentifier;
 
   /// Creates a new [GetBackendServiceTlsSettingSubjectAltName].
   /// [dnsName] The SAN specified as a DNS Name.
@@ -24,8 +25,8 @@ class GetBackendServiceTlsSettingSubjectAltName {
 
   factory GetBackendServiceTlsSettingSubjectAltName.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceTlsSettingSubjectAltName(
-      dnsName: map['dnsName'] as String,
-      uniformResourceIdentifier: map['uniformResourceIdentifier'] as String,
+      dnsName: (map['dnsName'] as String).input(),
+      uniformResourceIdentifier: (map['uniformResourceIdentifier'] as String).input(),
     );
   }
 }

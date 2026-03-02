@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the ContainerGroupProfile.
 class ContainerGroupProfileResponse {
   /// Specifies container group profile id of standby container groups.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specifies revision of container group profile.
-  final double? revision;
+  final pulumi.Input<double>? revision;
 
   /// Creates a new [ContainerGroupProfileResponse].
   /// [id] Specifies container group profile id of standby container groups.
@@ -25,8 +26,8 @@ class ContainerGroupProfileResponse {
 
   factory ContainerGroupProfileResponse.fromMap(Map<String, dynamic> map) {
     return ContainerGroupProfileResponse(
-      id: map['id'] as String,
-      revision: map['revision'] == null ? null : map['revision'] as double,
+      id: (map['id'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
     );
   }
 }

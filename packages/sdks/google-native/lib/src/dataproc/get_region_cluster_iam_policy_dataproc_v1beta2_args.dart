@@ -18,15 +18,11 @@ class GetRegionClusterIamPolicyDataprocV1beta2Args {
   /// [project] Optional.
   /// [regionId] Required.
   GetRegionClusterIamPolicyDataprocV1beta2Args({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> regionId,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regionId = pulumi.Input.asInput<String>(regionId);
+    required this.clusterId,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+    required this.regionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetRegionClusterIamPolicyDataprocV1beta2Args {
 
   factory GetRegionClusterIamPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetRegionClusterIamPolicyDataprocV1beta2Args(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      regionId: pulumi.Output.create<String>(map['regionId'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
     );
   }
 }

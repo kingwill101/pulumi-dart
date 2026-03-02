@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EntryBigqueryTableSpecTableSpec {
   /// (Output)
@@ -7,7 +8,7 @@ class EntryBigqueryTableSpecTableSpec {
   /// Data Catalog resource name of the date sharded grouped entry, for example,
   /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
   /// Otherwise, groupedEntry is empty.
-  final String? groupedEntry;
+  final pulumi.Input<String>? groupedEntry;
 
   /// Creates a new [EntryBigqueryTableSpecTableSpec].
   /// [groupedEntry] (Output)
@@ -23,7 +24,7 @@ class EntryBigqueryTableSpecTableSpec {
 
   factory EntryBigqueryTableSpecTableSpec.fromMap(Map<String, dynamic> map) {
     return EntryBigqueryTableSpecTableSpec(
-      groupedEntry: map['groupedEntry'] == null ? null : map['groupedEntry'] as String,
+      groupedEntry: map['groupedEntry'] == null ? null : (map['groupedEntry'] as String).input(),
     );
   }
 }

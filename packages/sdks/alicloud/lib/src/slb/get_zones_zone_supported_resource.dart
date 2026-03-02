@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZonesZoneSupportedResource {
   /// The type of IP address.
-  final String addressIpVersion;
+  final pulumi.Input<String> addressIpVersion;
   /// The type of network.
-  final String addressType;
+  final pulumi.Input<String> addressType;
 
   /// Creates a new [GetZonesZoneSupportedResource].
   /// [addressIpVersion] The type of IP address.
@@ -24,8 +25,8 @@ class GetZonesZoneSupportedResource {
 
   factory GetZonesZoneSupportedResource.fromMap(Map<String, dynamic> map) {
     return GetZonesZoneSupportedResource(
-      addressIpVersion: map['addressIpVersion'] as String,
-      addressType: map['addressType'] as String,
+      addressIpVersion: (map['addressIpVersion'] as String).input(),
+      addressType: (map['addressType'] as String).input(),
     );
   }
 }

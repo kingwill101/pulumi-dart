@@ -28,19 +28,13 @@ class UsageLimitArgs {
   /// [resourceArn] The Amazon Resource Name (ARN) of the Amazon Redshift Serverless resource to create the usage limit for.
   /// [usageType] The type of Amazon Redshift Serverless usage to create a usage limit for. Valid values are `serverless-compute` or `cross-region-datasharing`.
   UsageLimitArgs({
-    required pulumi.Output<int> amount,
-    pulumi.Output<String>? breachAction,
-    pulumi.Output<String>? period,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceArn,
-    required pulumi.Output<String> usageType,
-  }) :
-      amount = pulumi.Input.asInput<int>(amount),
-      breachAction = pulumi.Input.asOptionalInput<String>(breachAction),
-      period = pulumi.Input.asOptionalInput<String>(period),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn),
-      usageType = pulumi.Input.asInput<String>(usageType);
+    required this.amount,
+    this.breachAction,
+    this.period,
+    this.region,
+    required this.resourceArn,
+    required this.usageType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class UsageLimitArgs {
 
   factory UsageLimitArgs.fromMap(Map<String, dynamic> map) {
     return UsageLimitArgs(
-      amount: pulumi.Output.create<int>(map['amount'] as int),
-      breachAction: map['breachAction'] == null ? null : pulumi.Output.create<String>(map['breachAction'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<String>(map['period'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
-      usageType: pulumi.Output.create<String>(map['usageType'] as String),
+      amount: (map['amount'] as int).input(),
+      breachAction: map['breachAction'] == null ? null : (map['breachAction'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
+      usageType: (map['usageType'] as String).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of LifecycleHookSpecification
 class LifecycleHookSpecification {
   /// The action the Auto Scaling group takes when the lifecycle hook timeout elapses or if an unexpected failure occurs. The default value is ``ABANDON``. Valid values: ``CONTINUE`` | ``ABANDON``
-  final String? defaultResult;
+  final pulumi.Input<String>? defaultResult;
   /// The maximum time, in seconds, that can elapse before the lifecycle hook times out. The range is from ``30`` to ``7200`` seconds. The default value is ``3600`` seconds (1 hour).
-  final int? heartbeatTimeout;
+  final pulumi.Input<int>? heartbeatTimeout;
   /// The name of the lifecycle hook.
-  final String? lifecycleHookName;
+  final pulumi.Input<String>? lifecycleHookName;
   /// The lifecycle transition. For Auto Scaling groups, there are two major lifecycle transitions.  +  To create a lifecycle hook for scale-out events, specify ``autoscaling:EC2_INSTANCE_LAUNCHING``.  +  To create a lifecycle hook for scale-in events, specify ``autoscaling:EC2_INSTANCE_TERMINATING``.
-  final String? lifecycleTransition;
+  final pulumi.Input<String>? lifecycleTransition;
   /// Additional information that you want to include any time Amazon EC2 Auto Scaling sends a message to the notification target.
-  final String? notificationMetadata;
+  final pulumi.Input<String>? notificationMetadata;
   /// The Amazon Resource Name (ARN) of the notification target that Amazon EC2 Auto Scaling sends notifications to when an instance is in a wait state for the lifecycle hook. You can specify an Amazon SNS topic or an Amazon SQS queue.
-  final String? notificationTargetARN;
+  final pulumi.Input<String>? notificationTargetARN;
   /// The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target. For information about creating this role, see [Configure a notification target for a lifecycle hook](https://docs.aws.amazon.com/autoscaling/ec2/userguide/prepare-for-lifecycle-notifications.html#lifecycle-hook-notification-target) in the *Amazon EC2 Auto Scaling User Guide*. Valid only if the notification target is an Amazon SNS topic or an Amazon SQS queue.
-  final String? roleARN;
+  final pulumi.Input<String>? roleARN;
 
   /// Creates a new [LifecycleHookSpecification].
   /// [defaultResult] The action the Auto Scaling group takes when the lifecycle hook timeout elapses or if an unexpected failure occurs. The default value is ``ABANDON``. Valid values: ``CONTINUE`` | ``ABANDON``
@@ -50,13 +51,13 @@ class LifecycleHookSpecification {
 
   factory LifecycleHookSpecification.fromMap(Map<String, dynamic> map) {
     return LifecycleHookSpecification(
-      defaultResult: map['defaultResult'] == null ? null : map['defaultResult'] as String,
-      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : map['heartbeatTimeout'] as int,
-      lifecycleHookName: map['lifecycleHookName'] == null ? null : map['lifecycleHookName'] as String,
-      lifecycleTransition: map['lifecycleTransition'] == null ? null : map['lifecycleTransition'] as String,
-      notificationMetadata: map['notificationMetadata'] == null ? null : map['notificationMetadata'] as String,
-      notificationTargetARN: map['notificationTargetARN'] == null ? null : map['notificationTargetARN'] as String,
-      roleARN: map['roleARN'] == null ? null : map['roleARN'] as String,
+      defaultResult: map['defaultResult'] == null ? null : (map['defaultResult'] as String).input(),
+      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : (map['heartbeatTimeout'] as int).input(),
+      lifecycleHookName: map['lifecycleHookName'] == null ? null : (map['lifecycleHookName'] as String).input(),
+      lifecycleTransition: map['lifecycleTransition'] == null ? null : (map['lifecycleTransition'] as String).input(),
+      notificationMetadata: map['notificationMetadata'] == null ? null : (map['notificationMetadata'] as String).input(),
+      notificationTargetARN: map['notificationTargetARN'] == null ? null : (map['notificationTargetARN'] as String).input(),
+      roleARN: map['roleARN'] == null ? null : (map['roleARN'] as String).input(),
     );
   }
 }

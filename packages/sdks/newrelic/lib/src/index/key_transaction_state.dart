@@ -30,21 +30,14 @@ class KeyTransactionState {
   /// [name] The name of the key transaction.
   /// [type] The type of the entity monitored by the key transaction.
   KeyTransactionState({
-    pulumi.Output<double>? apdexIndex,
-    pulumi.Output<String>? applicationGuid,
-    pulumi.Output<double>? browserApdexTarget,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? metricName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? type,
-  }) :
-      apdexIndex = pulumi.Input.asOptionalInput<double>(apdexIndex),
-      applicationGuid = pulumi.Input.asOptionalInput<String>(applicationGuid),
-      browserApdexTarget = pulumi.Input.asOptionalInput<double>(browserApdexTarget),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      metricName = pulumi.Input.asOptionalInput<String>(metricName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.apdexIndex,
+    this.applicationGuid,
+    this.browserApdexTarget,
+    this.domain,
+    this.metricName,
+    this.name,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class KeyTransactionState {
 
   factory KeyTransactionState.fromMap(Map<String, dynamic> map) {
     return KeyTransactionState(
-      apdexIndex: map['apdexIndex'] == null ? null : pulumi.Output.create<double>(map['apdexIndex'] as double),
-      applicationGuid: map['applicationGuid'] == null ? null : pulumi.Output.create<String>(map['applicationGuid'] as String),
-      browserApdexTarget: map['browserApdexTarget'] == null ? null : pulumi.Output.create<double>(map['browserApdexTarget'] as double),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      metricName: map['metricName'] == null ? null : pulumi.Output.create<String>(map['metricName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      apdexIndex: map['apdexIndex'] == null ? null : (map['apdexIndex'] as double).input(),
+      applicationGuid: map['applicationGuid'] == null ? null : (map['applicationGuid'] as String).input(),
+      browserApdexTarget: map['browserApdexTarget'] == null ? null : (map['browserApdexTarget'] as double).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

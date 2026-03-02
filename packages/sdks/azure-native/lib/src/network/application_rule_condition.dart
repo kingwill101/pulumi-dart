@@ -6,24 +6,24 @@ import 'firewall_policy_rule_condition_application_protocol.dart';
 /// Rule condition of type application.
 class ApplicationRuleCondition {
   /// Description of the rule condition.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// List of destination IP addresses or Service Tags.
-  final List<String>? destinationAddresses;
+  final pulumi.Input<List<String>>? destinationAddresses;
   /// List of FQDN Tags for this rule condition.
-  final List<String>? fqdnTags;
+  final pulumi.Input<List<String>>? fqdnTags;
   /// Name of the rule condition.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Array of Application Protocols.
-  final List<FirewallPolicyRuleConditionApplicationProtocol>? protocols;
+  final pulumi.Input<List<FirewallPolicyRuleConditionApplicationProtocol>>? protocols;
   /// Rule Condition Type.
   /// Expected value is 'ApplicationRuleCondition'.
-  final String ruleConditionType;
+  final pulumi.Input<String> ruleConditionType;
   /// List of source IP addresses for this rule.
-  final List<String>? sourceAddresses;
+  final pulumi.Input<List<String>>? sourceAddresses;
   /// List of source IpGroups for this rule.
-  final List<String>? sourceIpGroups;
+  final pulumi.Input<List<String>>? sourceIpGroups;
   /// List of FQDNs for this rule condition.
-  final List<String>? targetFqdns;
+  final pulumi.Input<List<String>>? targetFqdns;
 
   /// Creates a new [ApplicationRuleCondition].
   /// [description] Description of the rule condition.
@@ -53,7 +53,7 @@ class ApplicationRuleCondition {
       'destinationAddresses': ?destinationAddresses,
       'fqdnTags': ?fqdnTags,
       'name': ?name,
-      'protocols': ?protocols == null ? null : pulumi.Input.encodeList<FirewallPolicyRuleConditionApplicationProtocol, Map<String, dynamic>>(protocols!, (value) => value.toMap()),
+      'protocols': ?pulumi.Input.mapOptionalInputValue<List<FirewallPolicyRuleConditionApplicationProtocol>, List<Map<String, dynamic>>>(protocols, (value) => pulumi.Input.encodeList<FirewallPolicyRuleConditionApplicationProtocol, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ruleConditionType': ruleConditionType,
       'sourceAddresses': ?sourceAddresses,
       'sourceIpGroups': ?sourceIpGroups,
@@ -63,15 +63,15 @@ class ApplicationRuleCondition {
 
   factory ApplicationRuleCondition.fromMap(Map<String, dynamic> map) {
     return ApplicationRuleCondition(
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationAddresses: map['destinationAddresses'] == null ? null : (map['destinationAddresses'] as List).cast<String>(),
-      fqdnTags: map['fqdnTags'] == null ? null : (map['fqdnTags'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      protocols: map['protocols'] == null ? null : pulumi.Input.decodeList<FirewallPolicyRuleConditionApplicationProtocol>(map['protocols'], (value) => FirewallPolicyRuleConditionApplicationProtocol.fromMap((value as Map).cast<String, dynamic>())),
-      ruleConditionType: map['ruleConditionType'] as String,
-      sourceAddresses: map['sourceAddresses'] == null ? null : (map['sourceAddresses'] as List).cast<String>(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : (map['sourceIpGroups'] as List).cast<String>(),
-      targetFqdns: map['targetFqdns'] == null ? null : (map['targetFqdns'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses'] as List).cast<String>()).input(),
+      fqdnTags: map['fqdnTags'] == null ? null : ((map['fqdnTags'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleConditionApplicationProtocol>(map['protocols'], (value) => FirewallPolicyRuleConditionApplicationProtocol.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleConditionType: (map['ruleConditionType'] as String).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
+      targetFqdns: map['targetFqdns'] == null ? null : ((map['targetFqdns'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The participant profile property reference.
 class ParticipantProfilePropertyReference {
   /// The source interaction property that maps to the target profile property.
-  final String interactionPropertyName;
+  final pulumi.Input<String> interactionPropertyName;
   /// The target profile property that maps to the source interaction property.
-  final String profilePropertyName;
+  final pulumi.Input<String> profilePropertyName;
 
   /// Creates a new [ParticipantProfilePropertyReference].
   /// [interactionPropertyName] The source interaction property that maps to the target profile property.
@@ -25,8 +26,8 @@ class ParticipantProfilePropertyReference {
 
   factory ParticipantProfilePropertyReference.fromMap(Map<String, dynamic> map) {
     return ParticipantProfilePropertyReference(
-      interactionPropertyName: map['interactionPropertyName'] as String,
-      profilePropertyName: map['profilePropertyName'] as String,
+      interactionPropertyName: (map['interactionPropertyName'] as String).input(),
+      profilePropertyName: (map['profilePropertyName'] as String).input(),
     );
   }
 }

@@ -47,25 +47,16 @@ class InstanceGroupState {
   /// [size] The number of instances in the group.
   /// [zone] The zone that this instance group should be created in.
   InstanceGroupState({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? instances,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<InstanceGroupNamedPort>>? namedPorts,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<int>? size,
-    pulumi.Output<String>? zone,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instances = pulumi.Input.asOptionalInput<List<String>>(instances),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namedPorts = pulumi.Input.asOptionalInput<List<InstanceGroupNamedPort>>(namedPorts),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.description,
+    this.instances,
+    this.name,
+    this.namedPorts,
+    this.network,
+    this.project,
+    this.selfLink,
+    this.size,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,15 +74,15 @@ class InstanceGroupState {
 
   factory InstanceGroupState.fromMap(Map<String, dynamic> map) {
     return InstanceGroupState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instances: map['instances'] == null ? null : pulumi.Output.create<List<String>>((map['instances'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namedPorts: map['namedPorts'] == null ? null : pulumi.Output.create<List<InstanceGroupNamedPort>>(pulumi.Input.decodeList<InstanceGroupNamedPort>(map['namedPorts'], (value) => InstanceGroupNamedPort.fromMap((value as Map).cast<String, dynamic>()))),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instances: map['instances'] == null ? null : ((map['instances'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namedPorts: map['namedPorts'] == null ? null : (pulumi.Input.decodeList<InstanceGroupNamedPort>(map['namedPorts'], (value) => InstanceGroupNamedPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

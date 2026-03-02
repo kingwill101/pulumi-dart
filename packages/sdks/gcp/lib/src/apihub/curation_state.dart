@@ -76,33 +76,20 @@ class CurationState {
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] The time at which the curation was last updated.
   CurationState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? curationId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<CurationEndpoint>? endpoint,
-    pulumi.Output<String>? lastExecutionErrorCode,
-    pulumi.Output<String>? lastExecutionErrorMessage,
-    pulumi.Output<String>? lastExecutionState,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<CurationPluginInstanceAction>>? pluginInstanceActions,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      curationId = pulumi.Input.asOptionalInput<String>(curationId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      endpoint = pulumi.Input.asOptionalInput<CurationEndpoint>(endpoint),
-      lastExecutionErrorCode = pulumi.Input.asOptionalInput<String>(lastExecutionErrorCode),
-      lastExecutionErrorMessage = pulumi.Input.asOptionalInput<String>(lastExecutionErrorMessage),
-      lastExecutionState = pulumi.Input.asOptionalInput<String>(lastExecutionState),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pluginInstanceActions = pulumi.Input.asOptionalInput<List<CurationPluginInstanceAction>>(pluginInstanceActions),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.curationId,
+    this.description,
+    this.displayName,
+    this.endpoint,
+    this.lastExecutionErrorCode,
+    this.lastExecutionErrorMessage,
+    this.lastExecutionState,
+    this.location,
+    this.name,
+    this.pluginInstanceActions,
+    this.project,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -124,19 +111,19 @@ class CurationState {
 
   factory CurationState.fromMap(Map<String, dynamic> map) {
     return CurationState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      curationId: map['curationId'] == null ? null : pulumi.Output.create<String>(map['curationId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<CurationEndpoint>(CurationEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())),
-      lastExecutionErrorCode: map['lastExecutionErrorCode'] == null ? null : pulumi.Output.create<String>(map['lastExecutionErrorCode'] as String),
-      lastExecutionErrorMessage: map['lastExecutionErrorMessage'] == null ? null : pulumi.Output.create<String>(map['lastExecutionErrorMessage'] as String),
-      lastExecutionState: map['lastExecutionState'] == null ? null : pulumi.Output.create<String>(map['lastExecutionState'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pluginInstanceActions: map['pluginInstanceActions'] == null ? null : pulumi.Output.create<List<CurationPluginInstanceAction>>(pulumi.Input.decodeList<CurationPluginInstanceAction>(map['pluginInstanceActions'], (value) => CurationPluginInstanceAction.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      curationId: map['curationId'] == null ? null : (map['curationId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (CurationEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
+      lastExecutionErrorCode: map['lastExecutionErrorCode'] == null ? null : (map['lastExecutionErrorCode'] as String).input(),
+      lastExecutionErrorMessage: map['lastExecutionErrorMessage'] == null ? null : (map['lastExecutionErrorMessage'] as String).input(),
+      lastExecutionState: map['lastExecutionState'] == null ? null : (map['lastExecutionState'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pluginInstanceActions: map['pluginInstanceActions'] == null ? null : (pulumi.Input.decodeList<CurationPluginInstanceAction>(map['pluginInstanceActions'], (value) => CurationPluginInstanceAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

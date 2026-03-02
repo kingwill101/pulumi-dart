@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Billing type PAV2 meter details.
 class Pav2MeterDetailsResponse {
   /// Represents billing type.
   /// Expected value is 'Pav2'.
-  final String billingType;
+  final pulumi.Input<String> billingType;
   /// Charging type.
-  final String chargingType;
+  final pulumi.Input<String> chargingType;
   /// Validation status of requested data center and transport.
-  final String meterGuid;
+  final pulumi.Input<String> meterGuid;
   /// Billing unit applicable for Pav2 billing.
-  final double multiplier;
+  final pulumi.Input<double> multiplier;
 
   /// Creates a new [Pav2MeterDetailsResponse].
   /// [billingType] Represents billing type.
@@ -36,10 +37,10 @@ class Pav2MeterDetailsResponse {
 
   factory Pav2MeterDetailsResponse.fromMap(Map<String, dynamic> map) {
     return Pav2MeterDetailsResponse(
-      billingType: map['billingType'] as String,
-      chargingType: map['chargingType'] as String,
-      meterGuid: map['meterGuid'] as String,
-      multiplier: map['multiplier'] as double,
+      billingType: (map['billingType'] as String).input(),
+      chargingType: (map['chargingType'] as String).input(),
+      meterGuid: (map['meterGuid'] as String).input(),
+      multiplier: (map['multiplier'] as double).input(),
     );
   }
 }

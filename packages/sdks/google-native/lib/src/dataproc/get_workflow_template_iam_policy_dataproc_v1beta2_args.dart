@@ -18,15 +18,11 @@ class GetWorkflowTemplateIamPolicyDataprocV1beta2Args {
   /// [project] Optional.
   /// [workflowTemplateId] Required.
   GetWorkflowTemplateIamPolicyDataprocV1beta2Args({
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> workflowTemplateId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workflowTemplateId = pulumi.Input.asInput<String>(workflowTemplateId);
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+    required this.workflowTemplateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetWorkflowTemplateIamPolicyDataprocV1beta2Args {
 
   factory GetWorkflowTemplateIamPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetWorkflowTemplateIamPolicyDataprocV1beta2Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workflowTemplateId: pulumi.Output.create<String>(map['workflowTemplateId'] as String),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workflowTemplateId: (map['workflowTemplateId'] as String).input(),
     );
   }
 }

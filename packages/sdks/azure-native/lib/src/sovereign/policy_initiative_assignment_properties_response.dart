@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of assigned policy initiatives.
 class PolicyInitiativeAssignmentPropertiesResponse {
   /// The parameters of the assigned policy initiative.
-  final dynamic assignmentParameters;
+  final pulumi.Input<dynamic> assignmentParameters;
   /// The fully qualified id of the policy initiative.
-  final String policyInitiativeId;
+  final pulumi.Input<String> policyInitiativeId;
 
   /// Creates a new [PolicyInitiativeAssignmentPropertiesResponse].
   /// [assignmentParameters] The parameters of the assigned policy initiative.
@@ -25,8 +26,8 @@ class PolicyInitiativeAssignmentPropertiesResponse {
 
   factory PolicyInitiativeAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PolicyInitiativeAssignmentPropertiesResponse(
-      assignmentParameters: map['assignmentParameters'],
-      policyInitiativeId: map['policyInitiativeId'] as String,
+      assignmentParameters: (map['assignmentParameters']).input(),
+      policyInitiativeId: (map['policyInitiativeId'] as String).input(),
     );
   }
 }

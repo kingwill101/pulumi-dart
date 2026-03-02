@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_stage_on_failure_condition.dart';
 import 'pipeline_stage_on_failure_retry_configuration.dart';
 
 class PipelineStageOnFailure {
   /// The conditions that are failure conditions. Defined as a `condition` block below.
-  final PipelineStageOnFailureCondition? condition;
+  final pulumi.Input<PipelineStageOnFailureCondition>? condition;
   /// The conditions that are configured as failure conditions. Possible values are `ROLLBACK`,  `FAIL`, `RETRY` and `SKIP`.
-  final String? result;
+  final pulumi.Input<String>? result;
   /// The retry configuration specifies automatic retry for a failed stage, along with the configured retry mode. Defined as a `retry_configuration` block below.
-  final PipelineStageOnFailureRetryConfiguration? retryConfiguration;
+  final pulumi.Input<PipelineStageOnFailureRetryConfiguration>? retryConfiguration;
 
   /// Creates a new [PipelineStageOnFailure].
   /// [condition] The conditions that are failure conditions. Defined as a `condition` block below.
@@ -23,17 +24,17 @@ class PipelineStageOnFailure {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?condition == null ? null : condition!.toMap(),
+      'condition': ?pulumi.Input.mapOptionalInputValue<PipelineStageOnFailureCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'result': ?result,
-      'retryConfiguration': ?retryConfiguration == null ? null : retryConfiguration!.toMap(),
+      'retryConfiguration': ?pulumi.Input.mapOptionalInputValue<PipelineStageOnFailureRetryConfiguration, Map<String, dynamic>>(retryConfiguration, (value) => value.toMap()),
     };
   }
 
   factory PipelineStageOnFailure.fromMap(Map<String, dynamic> map) {
     return PipelineStageOnFailure(
-      condition: map['condition'] == null ? null : PipelineStageOnFailureCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
-      result: map['result'] == null ? null : map['result'] as String,
-      retryConfiguration: map['retryConfiguration'] == null ? null : PipelineStageOnFailureRetryConfiguration.fromMap((map['retryConfiguration'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : (PipelineStageOnFailureCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      result: map['result'] == null ? null : (map['result'] as String).input(),
+      retryConfiguration: map['retryConfiguration'] == null ? null : (PipelineStageOnFailureRetryConfiguration.fromMap((map['retryConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

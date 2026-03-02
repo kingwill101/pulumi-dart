@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnSiteLinkBgp {
   /// The BGP speaker's ASN.
-  final int asn;
+  final pulumi.Input<int> asn;
   /// The BGP peering IP address.
-  final String peeringAddress;
+  final pulumi.Input<String> peeringAddress;
 
   /// Creates a new [VpnSiteLinkBgp].
   /// [asn] The BGP speaker's ASN.
@@ -24,8 +25,8 @@ class VpnSiteLinkBgp {
 
   factory VpnSiteLinkBgp.fromMap(Map<String, dynamic> map) {
     return VpnSiteLinkBgp(
-      asn: map['asn'] as int,
-      peeringAddress: map['peeringAddress'] as String,
+      asn: (map['asn'] as int).input(),
+      peeringAddress: (map['peeringAddress'] as String).input(),
     );
   }
 }

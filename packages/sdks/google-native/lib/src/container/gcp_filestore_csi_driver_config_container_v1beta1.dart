@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for the GCP Filestore CSI driver.
 class GcpFilestoreCsiDriverConfigContainerV1beta1 {
   /// Whether the GCP Filestore CSI driver is enabled for this cluster.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [GcpFilestoreCsiDriverConfigContainerV1beta1].
   /// [enabled] Whether the GCP Filestore CSI driver is enabled for this cluster.
@@ -20,7 +21,7 @@ class GcpFilestoreCsiDriverConfigContainerV1beta1 {
 
   factory GcpFilestoreCsiDriverConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GcpFilestoreCsiDriverConfigContainerV1beta1(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

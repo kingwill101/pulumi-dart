@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagedServiceS3Access {
-  final String domainName;
-  final List<String> ipv4Addresses;
+  final pulumi.Input<String> domainName;
+  final pulumi.Input<List<String>> ipv4Addresses;
   /// Specifies the endpoint policy for Amazon S3 access from the ODB network.
-  final String s3PolicyDocument;
+  final pulumi.Input<String> s3PolicyDocument;
   /// The status of the network resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [NetworkManagedServiceS3Access].
   /// [domainName] Required.
@@ -32,10 +33,10 @@ class NetworkManagedServiceS3Access {
 
   factory NetworkManagedServiceS3Access.fromMap(Map<String, dynamic> map) {
     return NetworkManagedServiceS3Access(
-      domainName: map['domainName'] as String,
-      ipv4Addresses: (map['ipv4Addresses'] as List).cast<String>(),
-      s3PolicyDocument: map['s3PolicyDocument'] as String,
-      status: map['status'] as String,
+      domainName: (map['domainName'] as String).input(),
+      ipv4Addresses: ((map['ipv4Addresses'] as List).cast<String>()).input(),
+      s3PolicyDocument: (map['s3PolicyDocument'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

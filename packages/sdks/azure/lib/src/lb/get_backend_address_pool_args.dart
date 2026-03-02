@@ -16,11 +16,9 @@ class GetBackendAddressPoolArgs {
   /// [loadbalancerId] The ID of the Load Balancer in which the Backend Address Pool exists.
   /// [name] Specifies the name of the Backend Address Pool.
   GetBackendAddressPoolArgs({
-    required pulumi.Output<String> loadbalancerId,
-    required pulumi.Output<String> name,
-  }) :
-      loadbalancerId = pulumi.Input.asInput<String>(loadbalancerId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.loadbalancerId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBackendAddressPoolArgs {
 
   factory GetBackendAddressPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetBackendAddressPoolArgs(
-      loadbalancerId: pulumi.Output.create<String>(map['loadbalancerId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      loadbalancerId: (map['loadbalancerId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

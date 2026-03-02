@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to another resource along with its state.
 class ActivatedResourceReferenceResponse {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Whether the resource is active or inactive
-  final bool isActive;
+  final pulumi.Input<bool> isActive;
 
   /// Creates a new [ActivatedResourceReferenceResponse].
   /// [id] Resource ID.
@@ -25,8 +26,8 @@ class ActivatedResourceReferenceResponse {
 
   factory ActivatedResourceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ActivatedResourceReferenceResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      isActive: map['isActive'] as bool,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      isActive: (map['isActive'] as bool).input(),
     );
   }
 }

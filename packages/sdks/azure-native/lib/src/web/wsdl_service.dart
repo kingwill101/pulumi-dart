@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The service with name and endpoint names
 class WsdlService {
   /// List of the endpoints' qualified names
-  final List<String>? endpointQualifiedNames;
+  final pulumi.Input<List<String>>? endpointQualifiedNames;
   /// The service's qualified name
-  final String qualifiedName;
+  final pulumi.Input<String> qualifiedName;
 
   /// Creates a new [WsdlService].
   /// [endpointQualifiedNames] List of the endpoints' qualified names
@@ -25,8 +26,8 @@ class WsdlService {
 
   factory WsdlService.fromMap(Map<String, dynamic> map) {
     return WsdlService(
-      endpointQualifiedNames: map['endpointQualifiedNames'] == null ? null : (map['endpointQualifiedNames'] as List).cast<String>(),
-      qualifiedName: map['qualifiedName'] as String,
+      endpointQualifiedNames: map['endpointQualifiedNames'] == null ? null : ((map['endpointQualifiedNames'] as List).cast<String>()).input(),
+      qualifiedName: (map['qualifiedName'] as String).input(),
     );
   }
 }

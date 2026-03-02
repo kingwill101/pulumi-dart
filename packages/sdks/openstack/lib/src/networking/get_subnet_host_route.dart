@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSubnetHostRoute {
-  final String destinationCidr;
-  final String nextHop;
+  final pulumi.Input<String> destinationCidr;
+  final pulumi.Input<String> nextHop;
 
   /// Creates a new [GetSubnetHostRoute].
   /// [destinationCidr] Required.
@@ -22,8 +23,8 @@ class GetSubnetHostRoute {
 
   factory GetSubnetHostRoute.fromMap(Map<String, dynamic> map) {
     return GetSubnetHostRoute(
-      destinationCidr: map['destinationCidr'] as String,
-      nextHop: map['nextHop'] as String,
+      destinationCidr: (map['destinationCidr'] as String).input(),
+      nextHop: (map['nextHop'] as String).input(),
     );
   }
 }

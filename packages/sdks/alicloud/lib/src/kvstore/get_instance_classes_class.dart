@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceClassesClass {
   /// KVStore available instance class.
-  final String instanceClass;
-  final String price;
+  final pulumi.Input<String> instanceClass;
+  final pulumi.Input<String> price;
 
   /// Creates a new [GetInstanceClassesClass].
   /// [instanceClass] KVStore available instance class.
@@ -23,8 +24,8 @@ class GetInstanceClassesClass {
 
   factory GetInstanceClassesClass.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassesClass(
-      instanceClass: map['instanceClass'] as String,
-      price: map['price'] as String,
+      instanceClass: (map['instanceClass'] as String).input(),
+      price: (map['price'] as String).input(),
     );
   }
 }

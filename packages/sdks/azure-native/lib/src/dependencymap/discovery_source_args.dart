@@ -29,19 +29,13 @@ class DiscoverySourceArgs {
   /// [sourceName] discovery source resource
   /// [tags] Resource tags.
   DiscoverySourceArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> mapName,
-    pulumi.Output<OffAzureDiscoverySourceResourceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sourceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mapName = pulumi.Input.asInput<String>(mapName),
-      properties = pulumi.Input.asOptionalInput<OffAzureDiscoverySourceResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceName = pulumi.Input.asOptionalInput<String>(sourceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    required this.mapName,
+    this.properties,
+    required this.resourceGroupName,
+    this.sourceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class DiscoverySourceArgs {
 
   factory DiscoverySourceArgs.fromMap(Map<String, dynamic> map) {
     return DiscoverySourceArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mapName: pulumi.Output.create<String>(map['mapName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<OffAzureDiscoverySourceResourceProperties>(OffAzureDiscoverySourceResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceName: map['sourceName'] == null ? null : pulumi.Output.create<String>(map['sourceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mapName: (map['mapName'] as String).input(),
+      properties: map['properties'] == null ? null : (OffAzureDiscoverySourceResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

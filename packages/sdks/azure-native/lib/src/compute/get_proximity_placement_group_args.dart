@@ -19,13 +19,10 @@ class GetProximityPlacementGroupArgs {
   /// [proximityPlacementGroupName] The name of the proximity placement group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetProximityPlacementGroupArgs({
-    pulumi.Output<String>? includeColocationStatus,
-    required pulumi.Output<String> proximityPlacementGroupName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      includeColocationStatus = pulumi.Input.asOptionalInput<String>(includeColocationStatus),
-      proximityPlacementGroupName = pulumi.Input.asInput<String>(proximityPlacementGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.includeColocationStatus,
+    required this.proximityPlacementGroupName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetProximityPlacementGroupArgs {
 
   factory GetProximityPlacementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetProximityPlacementGroupArgs(
-      includeColocationStatus: map['includeColocationStatus'] == null ? null : pulumi.Output.create<String>(map['includeColocationStatus'] as String),
-      proximityPlacementGroupName: pulumi.Output.create<String>(map['proximityPlacementGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      includeColocationStatus: map['includeColocationStatus'] == null ? null : (map['includeColocationStatus'] as String).input(),
+      proximityPlacementGroupName: (map['proximityPlacementGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

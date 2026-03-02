@@ -6,19 +6,19 @@ import 'get_agent_extensions_block_list.dart';
 
 class GetAgent {
   /// A `extensions_allow_list` block as defined below.
-  final List<GetAgentExtensionsAllowList> extensionsAllowLists;
+  final pulumi.Input<List<GetAgentExtensionsAllowList>> extensionsAllowLists;
   /// A `extensions_block_list` block as defined below.
-  final List<GetAgentExtensionsBlockList> extensionsBlockLists;
+  final pulumi.Input<List<GetAgentExtensionsBlockList>> extensionsBlockLists;
   /// Specifies whether the extension service is enabled or disabled.
-  final bool extensionsEnabled;
+  final pulumi.Input<bool> extensionsEnabled;
   /// Specified whether the guest configuration service is enabled or disabled.
-  final bool guestConfigurationEnabled;
+  final pulumi.Input<bool> guestConfigurationEnabled;
   /// Specifies the list of ports that the agent will be able to listen on.
-  final List<String> incomingConnectionsPorts;
+  final pulumi.Input<List<String>> incomingConnectionsPorts;
   /// List of service names which should not use the specified proxy server.
-  final List<String> proxyBypasses;
+  final pulumi.Input<List<String>> proxyBypasses;
   /// Specifies the URL of the proxy to be used.
-  final String proxyUrl;
+  final pulumi.Input<String> proxyUrl;
 
   /// Creates a new [GetAgent].
   /// [extensionsAllowLists] A `extensions_allow_list` block as defined below.
@@ -40,8 +40,8 @@ class GetAgent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extensionsAllowLists': pulumi.Input.encodeList<GetAgentExtensionsAllowList, Map<String, dynamic>>(extensionsAllowLists, (value) => value.toMap()),
-      'extensionsBlockLists': pulumi.Input.encodeList<GetAgentExtensionsBlockList, Map<String, dynamic>>(extensionsBlockLists, (value) => value.toMap()),
+      'extensionsAllowLists': pulumi.Input.mapInputValue<List<GetAgentExtensionsAllowList>, List<Map<String, dynamic>>>(extensionsAllowLists, (value) => pulumi.Input.encodeList<GetAgentExtensionsAllowList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'extensionsBlockLists': pulumi.Input.mapInputValue<List<GetAgentExtensionsBlockList>, List<Map<String, dynamic>>>(extensionsBlockLists, (value) => pulumi.Input.encodeList<GetAgentExtensionsBlockList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'extensionsEnabled': extensionsEnabled,
       'guestConfigurationEnabled': guestConfigurationEnabled,
       'incomingConnectionsPorts': incomingConnectionsPorts,
@@ -52,13 +52,13 @@ class GetAgent {
 
   factory GetAgent.fromMap(Map<String, dynamic> map) {
     return GetAgent(
-      extensionsAllowLists: pulumi.Input.decodeList<GetAgentExtensionsAllowList>(map['extensionsAllowLists'], (value) => GetAgentExtensionsAllowList.fromMap((value as Map).cast<String, dynamic>())),
-      extensionsBlockLists: pulumi.Input.decodeList<GetAgentExtensionsBlockList>(map['extensionsBlockLists'], (value) => GetAgentExtensionsBlockList.fromMap((value as Map).cast<String, dynamic>())),
-      extensionsEnabled: map['extensionsEnabled'] as bool,
-      guestConfigurationEnabled: map['guestConfigurationEnabled'] as bool,
-      incomingConnectionsPorts: (map['incomingConnectionsPorts'] as List).cast<String>(),
-      proxyBypasses: (map['proxyBypasses'] as List).cast<String>(),
-      proxyUrl: map['proxyUrl'] as String,
+      extensionsAllowLists: (pulumi.Input.decodeList<GetAgentExtensionsAllowList>(map['extensionsAllowLists'], (value) => GetAgentExtensionsAllowList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extensionsBlockLists: (pulumi.Input.decodeList<GetAgentExtensionsBlockList>(map['extensionsBlockLists'], (value) => GetAgentExtensionsBlockList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extensionsEnabled: (map['extensionsEnabled'] as bool).input(),
+      guestConfigurationEnabled: (map['guestConfigurationEnabled'] as bool).input(),
+      incomingConnectionsPorts: ((map['incomingConnectionsPorts'] as List).cast<String>()).input(),
+      proxyBypasses: ((map['proxyBypasses'] as List).cast<String>()).input(),
+      proxyUrl: (map['proxyUrl'] as String).input(),
     );
   }
 }

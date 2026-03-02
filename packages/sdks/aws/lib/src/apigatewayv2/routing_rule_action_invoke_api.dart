@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RoutingRuleActionInvokeApi {
   /// Action to invoke a stage of a target API. Only REST APIs are supported.
-  final String apiId;
+  final pulumi.Input<String> apiId;
   /// Action to invoke a stage of a target API. Only REST APIs are supported.
-  final String stage;
+  final pulumi.Input<String> stage;
   /// Action to invoke a stage of a target API. Only REST APIs are supported.
-  final bool? stripBasePath;
+  final pulumi.Input<bool>? stripBasePath;
 
   /// Creates a new [RoutingRuleActionInvokeApi].
   /// [apiId] Action to invoke a stage of a target API. Only REST APIs are supported.
@@ -29,9 +30,9 @@ class RoutingRuleActionInvokeApi {
 
   factory RoutingRuleActionInvokeApi.fromMap(Map<String, dynamic> map) {
     return RoutingRuleActionInvokeApi(
-      apiId: map['apiId'] as String,
-      stage: map['stage'] as String,
-      stripBasePath: map['stripBasePath'] == null ? null : map['stripBasePath'] as bool,
+      apiId: (map['apiId'] as String).input(),
+      stage: (map['stage'] as String).input(),
+      stripBasePath: map['stripBasePath'] == null ? null : (map['stripBasePath'] as bool).input(),
     );
   }
 }

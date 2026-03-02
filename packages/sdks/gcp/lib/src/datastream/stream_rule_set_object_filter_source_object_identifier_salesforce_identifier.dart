@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier {
   /// The Salesforce object name.
-  final String objectName;
+  final pulumi.Input<String> objectName;
 
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier].
   /// [objectName] The Salesforce object name.
@@ -19,7 +20,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier {
 
   factory StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier(
-      objectName: map['objectName'] as String,
+      objectName: (map['objectName'] as String).input(),
     );
   }
 }

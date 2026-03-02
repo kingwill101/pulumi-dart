@@ -34,23 +34,15 @@ class PartnerAttachmentArgs {
   /// [region] The region where the Partner Attachment will be created
   /// [vpcIds] The list of VPC IDs to attach the Partner Attachment to
   PartnerAttachmentArgs({
-    pulumi.Output<PartnerAttachmentBgp>? bgp,
-    required pulumi.Output<int> connectionBandwidthInMbps,
-    required pulumi.Output<String> naasProvider,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentUuid,
-    pulumi.Output<String>? redundancyZone,
-    required pulumi.Output<String> region,
-    required pulumi.Output<List<String>> vpcIds,
-  }) :
-      bgp = pulumi.Input.asOptionalInput<PartnerAttachmentBgp>(bgp),
-      connectionBandwidthInMbps = pulumi.Input.asInput<int>(connectionBandwidthInMbps),
-      naasProvider = pulumi.Input.asInput<String>(naasProvider),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentUuid = pulumi.Input.asOptionalInput<String>(parentUuid),
-      redundancyZone = pulumi.Input.asOptionalInput<String>(redundancyZone),
-      region = pulumi.Input.asInput<String>(region),
-      vpcIds = pulumi.Input.asInput<List<String>>(vpcIds);
+    this.bgp,
+    required this.connectionBandwidthInMbps,
+    required this.naasProvider,
+    this.name,
+    this.parentUuid,
+    this.redundancyZone,
+    required this.region,
+    required this.vpcIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class PartnerAttachmentArgs {
 
   factory PartnerAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PartnerAttachmentArgs(
-      bgp: map['bgp'] == null ? null : pulumi.Output.create<PartnerAttachmentBgp>(PartnerAttachmentBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())),
-      connectionBandwidthInMbps: pulumi.Output.create<int>(map['connectionBandwidthInMbps'] as int),
-      naasProvider: pulumi.Output.create<String>(map['naasProvider'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentUuid: map['parentUuid'] == null ? null : pulumi.Output.create<String>(map['parentUuid'] as String),
-      redundancyZone: map['redundancyZone'] == null ? null : pulumi.Output.create<String>(map['redundancyZone'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      vpcIds: pulumi.Output.create<List<String>>((map['vpcIds'] as List).cast<String>()),
+      bgp: map['bgp'] == null ? null : (PartnerAttachmentBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())).input(),
+      connectionBandwidthInMbps: (map['connectionBandwidthInMbps'] as int).input(),
+      naasProvider: (map['naasProvider'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentUuid: map['parentUuid'] == null ? null : (map['parentUuid'] as String).input(),
+      redundancyZone: map['redundancyZone'] == null ? null : (map['redundancyZone'] as String).input(),
+      region: (map['region'] as String).input(),
+      vpcIds: ((map['vpcIds'] as List).cast<String>()).input(),
     );
   }
 }

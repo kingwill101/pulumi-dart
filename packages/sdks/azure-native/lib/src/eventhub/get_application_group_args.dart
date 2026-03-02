@@ -19,13 +19,10 @@ class GetApplicationGroupArgs {
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   GetApplicationGroupArgs({
-    required pulumi.Output<String> applicationGroupName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      applicationGroupName = pulumi.Input.asInput<String>(applicationGroupName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.applicationGroupName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetApplicationGroupArgs {
 
   factory GetApplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationGroupArgs(
-      applicationGroupName: pulumi.Output.create<String>(map['applicationGroupName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      applicationGroupName: (map['applicationGroupName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

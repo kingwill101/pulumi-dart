@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImageImportDiskDeviceMapping {
   /// The device name of the disk.
-  final String? device;
+  final pulumi.Input<String>? device;
   /// The size of the disk. Default value: `5`.
-  final int? diskImageSize;
+  final pulumi.Input<int>? diskImageSize;
   /// The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
-  final String? format;
+  final pulumi.Input<String>? format;
   /// The OSS bucket where the image file is stored.
-  final String? ossBucket;
+  final pulumi.Input<String>? ossBucket;
   /// The name (key) of the object that the uploaded image is stored as in the OSS bucket.
-  final String? ossObject;
+  final pulumi.Input<String>? ossObject;
 
   /// Creates a new [ImageImportDiskDeviceMapping].
   /// [device] The device name of the disk.
@@ -39,11 +40,11 @@ class ImageImportDiskDeviceMapping {
 
   factory ImageImportDiskDeviceMapping.fromMap(Map<String, dynamic> map) {
     return ImageImportDiskDeviceMapping(
-      device: map['device'] == null ? null : map['device'] as String,
-      diskImageSize: map['diskImageSize'] == null ? null : map['diskImageSize'] as int,
-      format: map['format'] == null ? null : map['format'] as String,
-      ossBucket: map['ossBucket'] == null ? null : map['ossBucket'] as String,
-      ossObject: map['ossObject'] == null ? null : map['ossObject'] as String,
+      device: map['device'] == null ? null : (map['device'] as String).input(),
+      diskImageSize: map['diskImageSize'] == null ? null : (map['diskImageSize'] as int).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      ossBucket: map['ossBucket'] == null ? null : (map['ossBucket'] as String).input(),
+      ossObject: map['ossObject'] == null ? null : (map['ossObject'] as String).input(),
     );
   }
 }

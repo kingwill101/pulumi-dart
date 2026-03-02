@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_spec_worker_autoscaling_metrics_cpu.dart';
 
 class AppSpecWorkerAutoscalingMetrics {
   /// Settings for scaling the component based on CPU utilization.
-  final AppSpecWorkerAutoscalingMetricsCpu? cpu;
+  final pulumi.Input<AppSpecWorkerAutoscalingMetricsCpu>? cpu;
 
   /// Creates a new [AppSpecWorkerAutoscalingMetrics].
   /// [cpu] Settings for scaling the component based on CPU utilization.
@@ -14,13 +15,13 @@ class AppSpecWorkerAutoscalingMetrics {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cpu': ?cpu == null ? null : cpu!.toMap(),
+      'cpu': ?pulumi.Input.mapOptionalInputValue<AppSpecWorkerAutoscalingMetricsCpu, Map<String, dynamic>>(cpu, (value) => value.toMap()),
     };
   }
 
   factory AppSpecWorkerAutoscalingMetrics.fromMap(Map<String, dynamic> map) {
     return AppSpecWorkerAutoscalingMetrics(
-      cpu: map['cpu'] == null ? null : AppSpecWorkerAutoscalingMetricsCpu.fromMap((map['cpu'] as Map).cast<String, dynamic>()),
+      cpu: map['cpu'] == null ? null : (AppSpecWorkerAutoscalingMetricsCpu.fromMap((map['cpu'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

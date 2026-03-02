@@ -13,51 +13,51 @@ import 'spending_limit_details_response.dart';
 /// A billing profile.
 class BillingProfilePropertiesResponse {
   /// Billing address.
-  final BillingProfilePropertiesResponseBillTo? billTo;
+  final pulumi.Input<BillingProfilePropertiesResponseBillTo>? billTo;
   /// Identifies the billing relationship represented by the billing profile. The billing relationship may be between Microsoft, the customer, and/or a third-party.
-  final String billingRelationshipType;
+  final pulumi.Input<String> billingRelationshipType;
   /// The currency in which the charges for the billing profile are billed.
-  final String currency;
+  final pulumi.Input<String> currency;
   /// The current payment term of the billing profile.
-  final BillingProfilePropertiesResponseCurrentPaymentTerm? currentPaymentTerm;
+  final pulumi.Input<BillingProfilePropertiesResponseCurrentPaymentTerm>? currentPaymentTerm;
   /// The name of the billing profile.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Information about the enabled azure plans.
-  final List<AzurePlanResponse>? enabledAzurePlans;
+  final pulumi.Input<List<AzurePlanResponse>>? enabledAzurePlans;
   /// Indicates whether user has read access to the billing profile.
-  final bool hasReadAccess;
+  final pulumi.Input<bool> hasReadAccess;
   /// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
-  final BillingProfilePropertiesResponseIndirectRelationshipInfo? indirectRelationshipInfo;
+  final pulumi.Input<BillingProfilePropertiesResponseIndirectRelationshipInfo>? indirectRelationshipInfo;
   /// The day of the month when the invoice for the billing profile is generated.
-  final int invoiceDay;
+  final pulumi.Input<int> invoiceDay;
   /// Flag controlling whether the invoices for the billing profile are sent through email.
-  final bool? invoiceEmailOptIn;
+  final pulumi.Input<bool>? invoiceEmailOptIn;
   /// The list of email addresses to receive invoices by email for the billing profile.
-  final List<String>? invoiceRecipients;
+  final pulumi.Input<List<String>>? invoiceRecipients;
   /// The other payment terms of the billing profile.
-  final List<PaymentTermResponse> otherPaymentTerms;
+  final pulumi.Input<List<PaymentTermResponse>> otherPaymentTerms;
   /// The default purchase order number that will appear on the invoices generated for the billing profile.
-  final String? poNumber;
+  final pulumi.Input<String>? poNumber;
   /// The provisioning state of the resource during a long-running operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
-  final BillingProfilePropertiesResponseShipTo? shipTo;
+  final pulumi.Input<BillingProfilePropertiesResponseShipTo>? shipTo;
   /// The address of the individual or organization that is responsible for the billing account.
-  final BillingProfilePropertiesResponseSoldTo? soldTo;
+  final pulumi.Input<BillingProfilePropertiesResponseSoldTo>? soldTo;
   /// The billing profile spending limit.
-  final String spendingLimit;
+  final pulumi.Input<String> spendingLimit;
   /// The details of billing profile spending limit.
-  final List<SpendingLimitDetailsResponse> spendingLimitDetails;
+  final pulumi.Input<List<SpendingLimitDetailsResponse>> spendingLimitDetails;
   /// The status of the billing profile.
-  final String status;
+  final pulumi.Input<String> status;
   /// Reason for the specified billing profile status.
-  final String statusReasonCode;
+  final pulumi.Input<String> statusReasonCode;
   /// The system generated unique identifier for a billing profile.
-  final String systemId;
+  final pulumi.Input<String> systemId;
   /// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Identifies the cloud environments that are associated with a billing profile. This is a system managed optional field and gets updated as the billing profile gets associated with accounts in various clouds.
-  final List<String> targetClouds;
+  final pulumi.Input<List<String>> targetClouds;
 
   /// Creates a new [BillingProfilePropertiesResponse].
   /// [billTo] Billing address.
@@ -111,24 +111,24 @@ class BillingProfilePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'billTo': ?billTo == null ? null : billTo!.toMap(),
+      'billTo': ?pulumi.Input.mapOptionalInputValue<BillingProfilePropertiesResponseBillTo, Map<String, dynamic>>(billTo, (value) => value.toMap()),
       'billingRelationshipType': billingRelationshipType,
       'currency': currency,
-      'currentPaymentTerm': ?currentPaymentTerm == null ? null : currentPaymentTerm!.toMap(),
+      'currentPaymentTerm': ?pulumi.Input.mapOptionalInputValue<BillingProfilePropertiesResponseCurrentPaymentTerm, Map<String, dynamic>>(currentPaymentTerm, (value) => value.toMap()),
       'displayName': ?displayName,
-      'enabledAzurePlans': ?enabledAzurePlans == null ? null : pulumi.Input.encodeList<AzurePlanResponse, Map<String, dynamic>>(enabledAzurePlans!, (value) => value.toMap()),
+      'enabledAzurePlans': ?pulumi.Input.mapOptionalInputValue<List<AzurePlanResponse>, List<Map<String, dynamic>>>(enabledAzurePlans, (value) => pulumi.Input.encodeList<AzurePlanResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'hasReadAccess': hasReadAccess,
-      'indirectRelationshipInfo': ?indirectRelationshipInfo == null ? null : indirectRelationshipInfo!.toMap(),
+      'indirectRelationshipInfo': ?pulumi.Input.mapOptionalInputValue<BillingProfilePropertiesResponseIndirectRelationshipInfo, Map<String, dynamic>>(indirectRelationshipInfo, (value) => value.toMap()),
       'invoiceDay': invoiceDay,
       'invoiceEmailOptIn': ?invoiceEmailOptIn,
       'invoiceRecipients': ?invoiceRecipients,
-      'otherPaymentTerms': pulumi.Input.encodeList<PaymentTermResponse, Map<String, dynamic>>(otherPaymentTerms, (value) => value.toMap()),
+      'otherPaymentTerms': pulumi.Input.mapInputValue<List<PaymentTermResponse>, List<Map<String, dynamic>>>(otherPaymentTerms, (value) => pulumi.Input.encodeList<PaymentTermResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'poNumber': ?poNumber,
       'provisioningState': provisioningState,
-      'shipTo': ?shipTo == null ? null : shipTo!.toMap(),
-      'soldTo': ?soldTo == null ? null : soldTo!.toMap(),
+      'shipTo': ?pulumi.Input.mapOptionalInputValue<BillingProfilePropertiesResponseShipTo, Map<String, dynamic>>(shipTo, (value) => value.toMap()),
+      'soldTo': ?pulumi.Input.mapOptionalInputValue<BillingProfilePropertiesResponseSoldTo, Map<String, dynamic>>(soldTo, (value) => value.toMap()),
       'spendingLimit': spendingLimit,
-      'spendingLimitDetails': pulumi.Input.encodeList<SpendingLimitDetailsResponse, Map<String, dynamic>>(spendingLimitDetails, (value) => value.toMap()),
+      'spendingLimitDetails': pulumi.Input.mapInputValue<List<SpendingLimitDetailsResponse>, List<Map<String, dynamic>>>(spendingLimitDetails, (value) => pulumi.Input.encodeList<SpendingLimitDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': status,
       'statusReasonCode': statusReasonCode,
       'systemId': systemId,
@@ -139,29 +139,29 @@ class BillingProfilePropertiesResponse {
 
   factory BillingProfilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BillingProfilePropertiesResponse(
-      billTo: map['billTo'] == null ? null : BillingProfilePropertiesResponseBillTo.fromMap((map['billTo'] as Map).cast<String, dynamic>()),
-      billingRelationshipType: map['billingRelationshipType'] as String,
-      currency: map['currency'] as String,
-      currentPaymentTerm: map['currentPaymentTerm'] == null ? null : BillingProfilePropertiesResponseCurrentPaymentTerm.fromMap((map['currentPaymentTerm'] as Map).cast<String, dynamic>()),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      enabledAzurePlans: map['enabledAzurePlans'] == null ? null : pulumi.Input.decodeList<AzurePlanResponse>(map['enabledAzurePlans'], (value) => AzurePlanResponse.fromMap((value as Map).cast<String, dynamic>())),
-      hasReadAccess: map['hasReadAccess'] as bool,
-      indirectRelationshipInfo: map['indirectRelationshipInfo'] == null ? null : BillingProfilePropertiesResponseIndirectRelationshipInfo.fromMap((map['indirectRelationshipInfo'] as Map).cast<String, dynamic>()),
-      invoiceDay: map['invoiceDay'] as int,
-      invoiceEmailOptIn: map['invoiceEmailOptIn'] == null ? null : map['invoiceEmailOptIn'] as bool,
-      invoiceRecipients: map['invoiceRecipients'] == null ? null : (map['invoiceRecipients'] as List).cast<String>(),
-      otherPaymentTerms: pulumi.Input.decodeList<PaymentTermResponse>(map['otherPaymentTerms'], (value) => PaymentTermResponse.fromMap((value as Map).cast<String, dynamic>())),
-      poNumber: map['poNumber'] == null ? null : map['poNumber'] as String,
-      provisioningState: map['provisioningState'] as String,
-      shipTo: map['shipTo'] == null ? null : BillingProfilePropertiesResponseShipTo.fromMap((map['shipTo'] as Map).cast<String, dynamic>()),
-      soldTo: map['soldTo'] == null ? null : BillingProfilePropertiesResponseSoldTo.fromMap((map['soldTo'] as Map).cast<String, dynamic>()),
-      spendingLimit: map['spendingLimit'] as String,
-      spendingLimitDetails: pulumi.Input.decodeList<SpendingLimitDetailsResponse>(map['spendingLimitDetails'], (value) => SpendingLimitDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
-      statusReasonCode: map['statusReasonCode'] as String,
-      systemId: map['systemId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetClouds: (map['targetClouds'] as List).cast<String>(),
+      billTo: map['billTo'] == null ? null : (BillingProfilePropertiesResponseBillTo.fromMap((map['billTo'] as Map).cast<String, dynamic>())).input(),
+      billingRelationshipType: (map['billingRelationshipType'] as String).input(),
+      currency: (map['currency'] as String).input(),
+      currentPaymentTerm: map['currentPaymentTerm'] == null ? null : (BillingProfilePropertiesResponseCurrentPaymentTerm.fromMap((map['currentPaymentTerm'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enabledAzurePlans: map['enabledAzurePlans'] == null ? null : (pulumi.Input.decodeList<AzurePlanResponse>(map['enabledAzurePlans'], (value) => AzurePlanResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hasReadAccess: (map['hasReadAccess'] as bool).input(),
+      indirectRelationshipInfo: map['indirectRelationshipInfo'] == null ? null : (BillingProfilePropertiesResponseIndirectRelationshipInfo.fromMap((map['indirectRelationshipInfo'] as Map).cast<String, dynamic>())).input(),
+      invoiceDay: (map['invoiceDay'] as int).input(),
+      invoiceEmailOptIn: map['invoiceEmailOptIn'] == null ? null : (map['invoiceEmailOptIn'] as bool).input(),
+      invoiceRecipients: map['invoiceRecipients'] == null ? null : ((map['invoiceRecipients'] as List).cast<String>()).input(),
+      otherPaymentTerms: (pulumi.Input.decodeList<PaymentTermResponse>(map['otherPaymentTerms'], (value) => PaymentTermResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      poNumber: map['poNumber'] == null ? null : (map['poNumber'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      shipTo: map['shipTo'] == null ? null : (BillingProfilePropertiesResponseShipTo.fromMap((map['shipTo'] as Map).cast<String, dynamic>())).input(),
+      soldTo: map['soldTo'] == null ? null : (BillingProfilePropertiesResponseSoldTo.fromMap((map['soldTo'] as Map).cast<String, dynamic>())).input(),
+      spendingLimit: (map['spendingLimit'] as String).input(),
+      spendingLimitDetails: (pulumi.Input.decodeList<SpendingLimitDetailsResponse>(map['spendingLimitDetails'], (value) => SpendingLimitDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: (map['status'] as String).input(),
+      statusReasonCode: (map['statusReasonCode'] as String).input(),
+      systemId: (map['systemId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetClouds: ((map['targetClouds'] as List).cast<String>()).input(),
     );
   }
 }

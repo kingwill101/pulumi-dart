@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegistryImageManifestsManifest {
   /// The platform architecture supported by the manifest.
-  final String architecture;
+  final pulumi.Input<String> architecture;
   /// The media type of the manifest.
-  final String mediaType;
+  final pulumi.Input<String> mediaType;
   /// The operating system supported by the manifest.
-  final String os;
+  final pulumi.Input<String> os;
   /// The content digest of the manifest, as stored in the registry.
-  final String sha256Digest;
+  final pulumi.Input<String> sha256Digest;
 
   /// Creates a new [GetRegistryImageManifestsManifest].
   /// [architecture] The platform architecture supported by the manifest.
@@ -34,10 +35,10 @@ class GetRegistryImageManifestsManifest {
 
   factory GetRegistryImageManifestsManifest.fromMap(Map<String, dynamic> map) {
     return GetRegistryImageManifestsManifest(
-      architecture: map['architecture'] as String,
-      mediaType: map['mediaType'] as String,
-      os: map['os'] as String,
-      sha256Digest: map['sha256Digest'] as String,
+      architecture: (map['architecture'] as String).input(),
+      mediaType: (map['mediaType'] as String).input(),
+      os: (map['os'] as String).input(),
+      sha256Digest: (map['sha256Digest'] as String).input(),
     );
   }
 }

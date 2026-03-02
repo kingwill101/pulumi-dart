@@ -38,25 +38,16 @@ class AuthorizationArgs {
   /// [serviceName] The name of the API Management service.
   /// [status] Status of the Authorization
   AuthorizationArgs({
-    pulumi.Output<String>? authorizationId,
-    required pulumi.Output<String> authorizationProviderId,
-    pulumi.Output<String>? authorizationType,
-    pulumi.Output<AuthorizationError>? error,
-    pulumi.Output<String>? oAuth2GrantType,
-    pulumi.Output<Map<String, String>>? parameters,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? status,
-  }) :
-      authorizationId = pulumi.Input.asOptionalInput<String>(authorizationId),
-      authorizationProviderId = pulumi.Input.asInput<String>(authorizationProviderId),
-      authorizationType = pulumi.Input.asOptionalInput<String>(authorizationType),
-      error = pulumi.Input.asOptionalInput<AuthorizationError>(error),
-      oAuth2GrantType = pulumi.Input.asOptionalInput<String>(oAuth2GrantType),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.authorizationId,
+    required this.authorizationProviderId,
+    this.authorizationType,
+    this.error,
+    this.oAuth2GrantType,
+    this.parameters,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class AuthorizationArgs {
 
   factory AuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationArgs(
-      authorizationId: map['authorizationId'] == null ? null : pulumi.Output.create<String>(map['authorizationId'] as String),
-      authorizationProviderId: pulumi.Output.create<String>(map['authorizationProviderId'] as String),
-      authorizationType: map['authorizationType'] == null ? null : pulumi.Output.create<String>(map['authorizationType'] as String),
-      error: map['error'] == null ? null : pulumi.Output.create<AuthorizationError>(AuthorizationError.fromMap((map['error'] as Map).cast<String, dynamic>())),
-      oAuth2GrantType: map['oAuth2GrantType'] == null ? null : pulumi.Output.create<String>(map['oAuth2GrantType'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      authorizationId: map['authorizationId'] == null ? null : (map['authorizationId'] as String).input(),
+      authorizationProviderId: (map['authorizationProviderId'] as String).input(),
+      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
+      error: map['error'] == null ? null : (AuthorizationError.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      oAuth2GrantType: map['oAuth2GrantType'] == null ? null : (map['oAuth2GrantType'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

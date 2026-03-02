@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Savings settings class.
 class SavingsSettings {
   /// Gets or sets the Azure offer code.
-  final String? azureOfferCode;
+  final pulumi.Input<String>? azureOfferCode;
   /// Gets or sets the savings options.
-  final String? savingsOptions;
+  final pulumi.Input<String>? savingsOptions;
 
   /// Creates a new [SavingsSettings].
   /// [azureOfferCode] Gets or sets the Azure offer code.
@@ -25,8 +26,8 @@ class SavingsSettings {
 
   factory SavingsSettings.fromMap(Map<String, dynamic> map) {
     return SavingsSettings(
-      azureOfferCode: map['azureOfferCode'] == null ? null : map['azureOfferCode'] as String,
-      savingsOptions: map['savingsOptions'] == null ? null : map['savingsOptions'] as String,
+      azureOfferCode: map['azureOfferCode'] == null ? null : (map['azureOfferCode'] as String).input(),
+      savingsOptions: map['savingsOptions'] == null ? null : (map['savingsOptions'] as String).input(),
     );
   }
 }

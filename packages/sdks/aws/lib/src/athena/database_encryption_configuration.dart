@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseEncryptionConfiguration {
   /// Type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`
-  final String encryptionOption;
+  final pulumi.Input<String> encryptionOption;
   /// KMS key ARN or ID; required for key types `SSE_KMS` and `CSE_KMS`.
-  final String? kmsKey;
+  final pulumi.Input<String>? kmsKey;
 
   /// Creates a new [DatabaseEncryptionConfiguration].
   /// [encryptionOption] Type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`
@@ -24,8 +25,8 @@ class DatabaseEncryptionConfiguration {
 
   factory DatabaseEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return DatabaseEncryptionConfiguration(
-      encryptionOption: map['encryptionOption'] as String,
-      kmsKey: map['kmsKey'] == null ? null : map['kmsKey'] as String,
+      encryptionOption: (map['encryptionOption'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
     );
   }
 }

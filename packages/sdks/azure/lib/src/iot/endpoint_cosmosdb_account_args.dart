@@ -57,33 +57,20 @@ class EndpointCosmosdbAccountArgs {
   /// [secondaryKey] The secondary key of the Cosmos DB Account.
   /// [subscriptionId] The subscription ID for the endpoint.
   EndpointCosmosdbAccountArgs({
-    pulumi.Output<String>? authenticationType,
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> endpointUri,
-    pulumi.Output<String>? identityId,
-    required pulumi.Output<String> iothubId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? partitionKeyName,
-    pulumi.Output<String>? partitionKeyTemplate,
-    pulumi.Output<String>? primaryKey,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? secondaryKey,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      authenticationType = pulumi.Input.asOptionalInput<String>(authenticationType),
-      containerName = pulumi.Input.asInput<String>(containerName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      endpointUri = pulumi.Input.asInput<String>(endpointUri),
-      identityId = pulumi.Input.asOptionalInput<String>(identityId),
-      iothubId = pulumi.Input.asInput<String>(iothubId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partitionKeyName = pulumi.Input.asOptionalInput<String>(partitionKeyName),
-      partitionKeyTemplate = pulumi.Input.asOptionalInput<String>(partitionKeyTemplate),
-      primaryKey = pulumi.Input.asOptionalInput<String>(primaryKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secondaryKey = pulumi.Input.asOptionalInput<String>(secondaryKey),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    this.authenticationType,
+    required this.containerName,
+    required this.databaseName,
+    required this.endpointUri,
+    this.identityId,
+    required this.iothubId,
+    this.name,
+    this.partitionKeyName,
+    this.partitionKeyTemplate,
+    this.primaryKey,
+    required this.resourceGroupName,
+    this.secondaryKey,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,19 +92,19 @@ class EndpointCosmosdbAccountArgs {
 
   factory EndpointCosmosdbAccountArgs.fromMap(Map<String, dynamic> map) {
     return EndpointCosmosdbAccountArgs(
-      authenticationType: map['authenticationType'] == null ? null : pulumi.Output.create<String>(map['authenticationType'] as String),
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      endpointUri: pulumi.Output.create<String>(map['endpointUri'] as String),
-      identityId: map['identityId'] == null ? null : pulumi.Output.create<String>(map['identityId'] as String),
-      iothubId: pulumi.Output.create<String>(map['iothubId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partitionKeyName: map['partitionKeyName'] == null ? null : pulumi.Output.create<String>(map['partitionKeyName'] as String),
-      partitionKeyTemplate: map['partitionKeyTemplate'] == null ? null : pulumi.Output.create<String>(map['partitionKeyTemplate'] as String),
-      primaryKey: map['primaryKey'] == null ? null : pulumi.Output.create<String>(map['primaryKey'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secondaryKey: map['secondaryKey'] == null ? null : pulumi.Output.create<String>(map['secondaryKey'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      endpointUri: (map['endpointUri'] as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
+      iothubId: (map['iothubId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partitionKeyName: map['partitionKeyName'] == null ? null : (map['partitionKeyName'] as String).input(),
+      partitionKeyTemplate: map['partitionKeyTemplate'] == null ? null : (map['partitionKeyTemplate'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_scale.dart';
 
 /// Trigger configuration of an event driven job.
 class JobConfigurationEventTriggerConfig {
   /// Number of parallel replicas of a job that can run at a given time.
-  final int? parallelism;
+  final pulumi.Input<int>? parallelism;
   /// Minimum number of successful replica completions before overall job completion.
-  final int? replicaCompletionCount;
+  final pulumi.Input<int>? replicaCompletionCount;
   /// Scaling configurations for event driven jobs.
-  final JobScale? scale;
+  final pulumi.Input<JobScale>? scale;
 
   /// Creates a new [JobConfigurationEventTriggerConfig].
   /// [parallelism] Number of parallel replicas of a job that can run at a given time.
@@ -25,15 +26,15 @@ class JobConfigurationEventTriggerConfig {
     return <String, dynamic>{
       'parallelism': ?parallelism,
       'replicaCompletionCount': ?replicaCompletionCount,
-      'scale': ?scale == null ? null : scale!.toMap(),
+      'scale': ?pulumi.Input.mapOptionalInputValue<JobScale, Map<String, dynamic>>(scale, (value) => value.toMap()),
     };
   }
 
   factory JobConfigurationEventTriggerConfig.fromMap(Map<String, dynamic> map) {
     return JobConfigurationEventTriggerConfig(
-      parallelism: map['parallelism'] == null ? null : map['parallelism'] as int,
-      replicaCompletionCount: map['replicaCompletionCount'] == null ? null : map['replicaCompletionCount'] as int,
-      scale: map['scale'] == null ? null : JobScale.fromMap((map['scale'] as Map).cast<String, dynamic>()),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
+      replicaCompletionCount: map['replicaCompletionCount'] == null ? null : (map['replicaCompletionCount'] as int).input(),
+      scale: map['scale'] == null ? null : (JobScale.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

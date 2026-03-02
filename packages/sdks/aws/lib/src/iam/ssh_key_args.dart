@@ -22,15 +22,11 @@ class SshKeyArgs {
   /// [status] The status to assign to the SSH public key. Active means the key can be used for authentication with an AWS CodeCommit repository. Inactive means the key cannot be used. Default is `active`.
   /// [username] The name of the IAM user to associate the SSH public key with.
   SshKeyArgs({
-    required pulumi.Output<String> encoding,
-    required pulumi.Output<String> publicKey,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> username,
-  }) :
-      encoding = pulumi.Input.asInput<String>(encoding),
-      publicKey = pulumi.Input.asInput<String>(publicKey),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      username = pulumi.Input.asInput<String>(username);
+    required this.encoding,
+    required this.publicKey,
+    this.status,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SshKeyArgs {
 
   factory SshKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshKeyArgs(
-      encoding: pulumi.Output.create<String>(map['encoding'] as String),
-      publicKey: pulumi.Output.create<String>(map['publicKey'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      encoding: (map['encoding'] as String).input(),
+      publicKey: (map['publicKey'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

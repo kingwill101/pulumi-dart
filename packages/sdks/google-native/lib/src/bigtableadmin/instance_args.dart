@@ -34,23 +34,15 @@ class InstanceArgs {
   /// [project] Optional.
   /// [type] The type of the instance. Defaults to `PRODUCTION`.
   InstanceArgs({
-    required pulumi.Output<Map<String, String>> clusters,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parent,
-    pulumi.Output<String>? project,
-    pulumi.Output<InstanceType>? type,
-  }) :
-      clusters = pulumi.Input.asInput<Map<String, String>>(clusters),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asOptionalInput<InstanceType>(type);
+    required this.clusters,
+    required this.displayName,
+    required this.instanceId,
+    this.labels,
+    this.name,
+    required this.parent,
+    this.project,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      clusters: pulumi.Output.create<Map<String, String>>((map['clusters'] as Map).cast<String, String>()),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<InstanceType>(InstanceType.fromValue(map['type'] as String)),
+      clusters: ((map['clusters'] as Map).cast<String, String>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: map['type'] == null ? null : (InstanceType.fromValue(map['type'] as String)).input(),
     );
   }
 }

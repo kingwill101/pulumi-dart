@@ -47,27 +47,17 @@ class AnalyticsApplicationArgs {
   /// [startApplication] Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `starting_position` must be configured.
   /// [tags] Key-value map of tags for the Kinesis Analytics Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AnalyticsApplicationArgs({
-    pulumi.Output<AnalyticsApplicationCloudwatchLoggingOptions>? cloudwatchLoggingOptions,
-    pulumi.Output<String>? code,
-    pulumi.Output<String>? description,
-    pulumi.Output<AnalyticsApplicationInputs>? inputs,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<AnalyticsApplicationOutput>>? outputs,
-    pulumi.Output<AnalyticsApplicationReferenceDataSources>? referenceDataSources,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? startApplication,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      cloudwatchLoggingOptions = pulumi.Input.asOptionalInput<AnalyticsApplicationCloudwatchLoggingOptions>(cloudwatchLoggingOptions),
-      code = pulumi.Input.asOptionalInput<String>(code),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      inputs = pulumi.Input.asOptionalInput<AnalyticsApplicationInputs>(inputs),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputs = pulumi.Input.asOptionalInput<List<AnalyticsApplicationOutput>>(outputs),
-      referenceDataSources = pulumi.Input.asOptionalInput<AnalyticsApplicationReferenceDataSources>(referenceDataSources),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      startApplication = pulumi.Input.asOptionalInput<bool>(startApplication),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.cloudwatchLoggingOptions,
+    this.code,
+    this.description,
+    this.inputs,
+    this.name,
+    this.outputs,
+    this.referenceDataSources,
+    this.region,
+    this.startApplication,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,16 +76,16 @@ class AnalyticsApplicationArgs {
 
   factory AnalyticsApplicationArgs.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationArgs(
-      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : pulumi.Output.create<AnalyticsApplicationCloudwatchLoggingOptions>(AnalyticsApplicationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())),
-      code: map['code'] == null ? null : pulumi.Output.create<String>(map['code'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      inputs: map['inputs'] == null ? null : pulumi.Output.create<AnalyticsApplicationInputs>(AnalyticsApplicationInputs.fromMap((map['inputs'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputs: map['outputs'] == null ? null : pulumi.Output.create<List<AnalyticsApplicationOutput>>(pulumi.Input.decodeList<AnalyticsApplicationOutput>(map['outputs'], (value) => AnalyticsApplicationOutput.fromMap((value as Map).cast<String, dynamic>()))),
-      referenceDataSources: map['referenceDataSources'] == null ? null : pulumi.Output.create<AnalyticsApplicationReferenceDataSources>(AnalyticsApplicationReferenceDataSources.fromMap((map['referenceDataSources'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      startApplication: map['startApplication'] == null ? null : pulumi.Output.create<bool>(map['startApplication'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : (AnalyticsApplicationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())).input(),
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      inputs: map['inputs'] == null ? null : (AnalyticsApplicationInputs.fromMap((map['inputs'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeList<AnalyticsApplicationOutput>(map['outputs'], (value) => AnalyticsApplicationOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      referenceDataSources: map['referenceDataSources'] == null ? null : (AnalyticsApplicationReferenceDataSources.fromMap((map['referenceDataSources'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      startApplication: map['startApplication'] == null ? null : (map['startApplication'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

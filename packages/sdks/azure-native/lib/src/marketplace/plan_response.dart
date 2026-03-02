@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanResponse {
   /// Plan accessibility
-  final String? accessibility;
+  final pulumi.Input<String>? accessibility;
   /// Alternative stack type
-  final String altStackReference;
+  final pulumi.Input<String> altStackReference;
   /// Friendly name for the plan for display in the marketplace
-  final String planDisplayName;
+  final pulumi.Input<String> planDisplayName;
   /// Text identifier for this plan
-  final String planId;
+  final pulumi.Input<String> planId;
   /// Identifier for this plan
-  final String skuId;
+  final pulumi.Input<String> skuId;
   /// Stack type (classic or arm)
-  final String stackType;
+  final pulumi.Input<String> stackType;
 
   /// Creates a new [PlanResponse].
   /// [accessibility] Plan accessibility
@@ -44,12 +45,12 @@ class PlanResponse {
 
   factory PlanResponse.fromMap(Map<String, dynamic> map) {
     return PlanResponse(
-      accessibility: map['accessibility'] == null ? null : map['accessibility'] as String,
-      altStackReference: map['altStackReference'] as String,
-      planDisplayName: map['planDisplayName'] as String,
-      planId: map['planId'] as String,
-      skuId: map['skuId'] as String,
-      stackType: map['stackType'] as String,
+      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
+      altStackReference: (map['altStackReference'] as String).input(),
+      planDisplayName: (map['planDisplayName'] as String).input(),
+      planId: (map['planId'] as String).input(),
+      skuId: (map['skuId'] as String).input(),
+      stackType: (map['stackType'] as String).input(),
     );
   }
 }

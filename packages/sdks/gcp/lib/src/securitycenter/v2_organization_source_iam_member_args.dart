@@ -37,17 +37,12 @@ class V2OrganizationSourceIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [source] Used to find the parent resource to bind the IAM policy to
   V2OrganizationSourceIamMemberArgs({
-    pulumi.Output<V2OrganizationSourceIamMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> source,
-  }) :
-      condition = pulumi.Input.asOptionalInput<V2OrganizationSourceIamMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      organization = pulumi.Input.asInput<String>(organization),
-      role = pulumi.Input.asInput<String>(role),
-      source = pulumi.Input.asInput<String>(source);
+    this.condition,
+    required this.member,
+    required this.organization,
+    required this.role,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,11 +56,11 @@ class V2OrganizationSourceIamMemberArgs {
 
   factory V2OrganizationSourceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return V2OrganizationSourceIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<V2OrganizationSourceIamMemberCondition>(V2OrganizationSourceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      source: pulumi.Output.create<String>(map['source'] as String),
+      condition: map['condition'] == null ? null : (V2OrganizationSourceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      role: (map['role'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class CommandArgs {
   /// [desktopId] The desktop id of the Desktop.
   /// [timeout] The timeout period for script execution the unit is seconds. Default to: `60`.
   CommandArgs({
-    required pulumi.Output<String> commandContent,
-    required pulumi.Output<String> commandType,
-    pulumi.Output<String>? contentEncoding,
-    required pulumi.Output<String> desktopId,
-    pulumi.Output<String>? timeout,
-  }) :
-      commandContent = pulumi.Input.asInput<String>(commandContent),
-      commandType = pulumi.Input.asInput<String>(commandType),
-      contentEncoding = pulumi.Input.asOptionalInput<String>(contentEncoding),
-      desktopId = pulumi.Input.asInput<String>(desktopId),
-      timeout = pulumi.Input.asOptionalInput<String>(timeout);
+    required this.commandContent,
+    required this.commandType,
+    this.contentEncoding,
+    required this.desktopId,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CommandArgs {
 
   factory CommandArgs.fromMap(Map<String, dynamic> map) {
     return CommandArgs(
-      commandContent: pulumi.Output.create<String>(map['commandContent'] as String),
-      commandType: pulumi.Output.create<String>(map['commandType'] as String),
-      contentEncoding: map['contentEncoding'] == null ? null : pulumi.Output.create<String>(map['contentEncoding'] as String),
-      desktopId: pulumi.Output.create<String>(map['desktopId'] as String),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<String>(map['timeout'] as String),
+      commandContent: (map['commandContent'] as String).input(),
+      commandType: (map['commandType'] as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
+      desktopId: (map['desktopId'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

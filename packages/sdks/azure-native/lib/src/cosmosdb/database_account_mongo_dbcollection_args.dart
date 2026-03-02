@@ -29,19 +29,13 @@ class DatabaseAccountMongoDBCollectionArgs {
   /// [resource] The standard JSON format of a MongoDB collection
   /// [resourceGroupName] Name of an Azure resource group.
   DatabaseAccountMongoDBCollectionArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? collectionName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<Map<String, String>> options,
-    required pulumi.Output<MongoDBCollectionResource> resource,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      collectionName = pulumi.Input.asOptionalInput<String>(collectionName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      options = pulumi.Input.asInput<Map<String, String>>(options),
-      resource = pulumi.Input.asInput<MongoDBCollectionResource>(resource),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.collectionName,
+    required this.databaseName,
+    required this.options,
+    required this.resource,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class DatabaseAccountMongoDBCollectionArgs {
 
   factory DatabaseAccountMongoDBCollectionArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAccountMongoDBCollectionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      collectionName: map['collectionName'] == null ? null : pulumi.Output.create<String>(map['collectionName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      options: pulumi.Output.create<Map<String, String>>((map['options'] as Map).cast<String, String>()),
-      resource: pulumi.Output.create<MongoDBCollectionResource>(MongoDBCollectionResource.fromMap((map['resource'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      collectionName: map['collectionName'] == null ? null : (map['collectionName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      options: ((map['options'] as Map).cast<String, String>()).input(),
+      resource: (MongoDBCollectionResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

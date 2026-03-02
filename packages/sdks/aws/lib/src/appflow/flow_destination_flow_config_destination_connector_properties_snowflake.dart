@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_destination_flow_config_destination_connector_properties_snowflake_error_handling_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake {
-  final String? bucketPrefix;
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflakeErrorHandlingConfig? errorHandlingConfig;
-  final String intermediateBucketName;
-  final String object;
+  final pulumi.Input<String>? bucketPrefix;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflakeErrorHandlingConfig>? errorHandlingConfig;
+  final pulumi.Input<String> intermediateBucketName;
+  final pulumi.Input<String> object;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake].
   /// [bucketPrefix] Optional.
@@ -23,7 +24,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucketPrefix': ?bucketPrefix,
-      'errorHandlingConfig': ?errorHandlingConfig == null ? null : errorHandlingConfig!.toMap(),
+      'errorHandlingConfig': ?pulumi.Input.mapOptionalInputValue<FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflakeErrorHandlingConfig, Map<String, dynamic>>(errorHandlingConfig, (value) => value.toMap()),
       'intermediateBucketName': intermediateBucketName,
       'object': object,
     };
@@ -31,10 +32,10 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake {
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake(
-      bucketPrefix: map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
-      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflakeErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>()),
-      intermediateBucketName: map['intermediateBucketName'] as String,
-      object: map['object'] as String,
+      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
+      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflakeErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>())).input(),
+      intermediateBucketName: (map['intermediateBucketName'] as String).input(),
+      object: (map['object'] as String).input(),
     );
   }
 }

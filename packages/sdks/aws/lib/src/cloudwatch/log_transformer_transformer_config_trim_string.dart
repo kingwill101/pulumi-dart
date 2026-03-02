@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigTrimString {
   /// Specifies the keys of the fields to trim.
-  final List<String> withKeys;
+  final pulumi.Input<List<String>> withKeys;
 
   /// Creates a new [LogTransformerTransformerConfigTrimString].
   /// [withKeys] Specifies the keys of the fields to trim.
@@ -19,7 +20,7 @@ class LogTransformerTransformerConfigTrimString {
 
   factory LogTransformerTransformerConfigTrimString.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigTrimString(
-      withKeys: (map['withKeys'] as List).cast<String>(),
+      withKeys: ((map['withKeys'] as List).cast<String>()).input(),
     );
   }
 }

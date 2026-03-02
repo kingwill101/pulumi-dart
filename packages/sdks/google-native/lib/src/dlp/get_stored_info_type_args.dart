@@ -16,13 +16,10 @@ class GetStoredInfoTypeArgs {
   /// [project] Optional.
   /// [storedInfoTypeId] Required.
   GetStoredInfoTypeArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> storedInfoTypeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      storedInfoTypeId = pulumi.Input.asInput<String>(storedInfoTypeId);
+    required this.location,
+    this.project,
+    required this.storedInfoTypeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetStoredInfoTypeArgs {
 
   factory GetStoredInfoTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetStoredInfoTypeArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      storedInfoTypeId: pulumi.Output.create<String>(map['storedInfoTypeId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      storedInfoTypeId: (map['storedInfoTypeId'] as String).input(),
     );
   }
 }

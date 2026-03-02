@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseMysqlUpdate {
-  final String dayOfWeek;
-  final int duration;
-  final String frequency;
-  final int hourOfDay;
-  final int weekOfMonth;
+  final pulumi.Input<String> dayOfWeek;
+  final pulumi.Input<int> duration;
+  final pulumi.Input<String> frequency;
+  final pulumi.Input<int> hourOfDay;
+  final pulumi.Input<int> weekOfMonth;
 
   /// Creates a new [GetDatabaseMysqlUpdate].
   /// [dayOfWeek] Required.
@@ -34,11 +35,11 @@ class GetDatabaseMysqlUpdate {
 
   factory GetDatabaseMysqlUpdate.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlUpdate(
-      dayOfWeek: map['dayOfWeek'] as String,
-      duration: map['duration'] as int,
-      frequency: map['frequency'] as String,
-      hourOfDay: map['hourOfDay'] as int,
-      weekOfMonth: map['weekOfMonth'] as int,
+      dayOfWeek: (map['dayOfWeek'] as String).input(),
+      duration: (map['duration'] as int).input(),
+      frequency: (map['frequency'] as String).input(),
+      hourOfDay: (map['hourOfDay'] as int).input(),
+      weekOfMonth: (map['weekOfMonth'] as int).input(),
     );
   }
 }

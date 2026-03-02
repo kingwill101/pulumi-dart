@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'binary_authorization_evaluation_mode.dart';
 
 /// Configuration for Binary Authorization.
 class BinaryAuthorization {
   /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
-  final BinaryAuthorizationEvaluationMode? evaluationMode;
+  final pulumi.Input<BinaryAuthorizationEvaluationMode>? evaluationMode;
 
   /// Creates a new [BinaryAuthorization].
   /// [evaluationMode] Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
@@ -15,13 +16,13 @@ class BinaryAuthorization {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'evaluationMode': ?evaluationMode == null ? null : evaluationMode!.value,
+      'evaluationMode': ?pulumi.Input.mapOptionalInputValue<BinaryAuthorizationEvaluationMode, String>(evaluationMode, (value) => value.value),
     };
   }
 
   factory BinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorization(
-      evaluationMode: map['evaluationMode'] == null ? null : BinaryAuthorizationEvaluationMode.fromValue(map['evaluationMode'] as String),
+      evaluationMode: map['evaluationMode'] == null ? null : (BinaryAuthorizationEvaluationMode.fromValue(map['evaluationMode'] as String)).input(),
     );
   }
 }

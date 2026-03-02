@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration {
   /// The VPCE ID for Firehose to privately connect with Snowflake.
-  final String privateLinkVpceId;
+  final pulumi.Input<String> privateLinkVpceId;
 
   /// Creates a new [FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration].
   /// [privateLinkVpceId] The VPCE ID for Firehose to privately connect with Snowflake.
@@ -19,7 +20,7 @@ class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration {
 
   factory FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration(
-      privateLinkVpceId: map['privateLinkVpceId'] as String,
+      privateLinkVpceId: (map['privateLinkVpceId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ManagementAssociation properties supported by the OperationsManagement resource provider.
 class ManagementAssociationPropertiesResponse {
   /// The applicationId of the appliance for this association.
-  final String applicationId;
+  final pulumi.Input<String> applicationId;
 
   /// Creates a new [ManagementAssociationPropertiesResponse].
   /// [applicationId] The applicationId of the appliance for this association.
@@ -20,7 +21,7 @@ class ManagementAssociationPropertiesResponse {
 
   factory ManagementAssociationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagementAssociationPropertiesResponse(
-      applicationId: map['applicationId'] as String,
+      applicationId: (map['applicationId'] as String).input(),
     );
   }
 }

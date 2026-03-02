@@ -29,21 +29,14 @@ class AccessPolicyAssociationState {
   /// [principalArn] The IAM Principal ARN which requires Authentication access to the EKS cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AccessPolicyAssociationState({
-    pulumi.Output<AccessPolicyAssociationAccessScope>? accessScope,
-    pulumi.Output<String>? associatedAt,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? modifiedAt,
-    pulumi.Output<String>? policyArn,
-    pulumi.Output<String>? principalArn,
-    pulumi.Output<String>? region,
-  }) :
-      accessScope = pulumi.Input.asOptionalInput<AccessPolicyAssociationAccessScope>(accessScope),
-      associatedAt = pulumi.Input.asOptionalInput<String>(associatedAt),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      modifiedAt = pulumi.Input.asOptionalInput<String>(modifiedAt),
-      policyArn = pulumi.Input.asOptionalInput<String>(policyArn),
-      principalArn = pulumi.Input.asOptionalInput<String>(principalArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accessScope,
+    this.associatedAt,
+    this.clusterName,
+    this.modifiedAt,
+    this.policyArn,
+    this.principalArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class AccessPolicyAssociationState {
 
   factory AccessPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssociationState(
-      accessScope: map['accessScope'] == null ? null : pulumi.Output.create<AccessPolicyAssociationAccessScope>(AccessPolicyAssociationAccessScope.fromMap((map['accessScope'] as Map).cast<String, dynamic>())),
-      associatedAt: map['associatedAt'] == null ? null : pulumi.Output.create<String>(map['associatedAt'] as String),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      modifiedAt: map['modifiedAt'] == null ? null : pulumi.Output.create<String>(map['modifiedAt'] as String),
-      policyArn: map['policyArn'] == null ? null : pulumi.Output.create<String>(map['policyArn'] as String),
-      principalArn: map['principalArn'] == null ? null : pulumi.Output.create<String>(map['principalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accessScope: map['accessScope'] == null ? null : (AccessPolicyAssociationAccessScope.fromMap((map['accessScope'] as Map).cast<String, dynamic>())).input(),
+      associatedAt: map['associatedAt'] == null ? null : (map['associatedAt'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      modifiedAt: map['modifiedAt'] == null ? null : (map['modifiedAt'] as String).input(),
+      policyArn: map['policyArn'] == null ? null : (map['policyArn'] as String).input(),
+      principalArn: map['principalArn'] == null ? null : (map['principalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

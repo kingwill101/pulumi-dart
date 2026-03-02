@@ -28,19 +28,13 @@ class GetEtlsArgs {
   /// [project] Project Name
   /// [size] Specify the number of data processing tasks returned by the query
   GetEtlsArgs({
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> logstore,
-    pulumi.Output<int>? offset,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> project,
-    pulumi.Output<int>? size,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      logstore = pulumi.Input.asInput<String>(logstore),
-      offset = pulumi.Input.asOptionalInput<int>(offset),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      project = pulumi.Input.asInput<String>(project),
-      size = pulumi.Input.asOptionalInput<int>(size);
+    this.ids,
+    required this.logstore,
+    this.offset,
+    this.outputFile,
+    required this.project,
+    this.size,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetEtlsArgs {
 
   factory GetEtlsArgs.fromMap(Map<String, dynamic> map) {
     return GetEtlsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      logstore: pulumi.Output.create<String>(map['logstore'] as String),
-      offset: map['offset'] == null ? null : pulumi.Output.create<int>(map['offset'] as int),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      logstore: (map['logstore'] as String).input(),
+      offset: map['offset'] == null ? null : (map['offset'] as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      project: (map['project'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

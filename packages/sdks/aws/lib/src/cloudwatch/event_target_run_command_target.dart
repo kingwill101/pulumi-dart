@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventTargetRunCommandTarget {
   /// Can be either `tag:tag-key` or `InstanceIds`.
-  final String key;
+  final pulumi.Input<String> key;
   /// If Key is `tag:tag-key`, Values is a list of tag values. If Key is `InstanceIds`, Values is a list of Amazon EC2 instance IDs.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [EventTargetRunCommandTarget].
   /// [key] Can be either `tag:tag-key` or `InstanceIds`.
@@ -24,8 +25,8 @@ class EventTargetRunCommandTarget {
 
   factory EventTargetRunCommandTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetRunCommandTarget(
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

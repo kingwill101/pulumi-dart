@@ -23,15 +23,11 @@ class StorageArgs {
   /// [serviceName] The name of the Service resource.
   /// [storageName] The name of the storage resource.
   StorageArgs({
-    pulumi.Output<StorageAccount>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? storageName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<StorageAccount>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      storageName = pulumi.Input.asOptionalInput<String>(storageName);
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.storageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class StorageArgs {
 
   factory StorageArgs.fromMap(Map<String, dynamic> map) {
     return StorageArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<StorageAccount>(StorageAccount.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      storageName: map['storageName'] == null ? null : pulumi.Output.create<String>(map['storageName'] as String),
+      properties: map['properties'] == null ? null : (StorageAccount.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      storageName: map['storageName'] == null ? null : (map['storageName'] as String).input(),
     );
   }
 }

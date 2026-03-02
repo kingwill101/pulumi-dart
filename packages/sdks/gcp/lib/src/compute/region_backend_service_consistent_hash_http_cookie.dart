@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_backend_service_consistent_hash_http_cookie_ttl.dart';
 
 class RegionBackendServiceConsistentHashHttpCookie {
   /// Name of the cookie.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Path to set for the cookie.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Lifetime of the cookie.
   /// Structure is documented below.
-  final RegionBackendServiceConsistentHashHttpCookieTtl? ttl;
+  final pulumi.Input<RegionBackendServiceConsistentHashHttpCookieTtl>? ttl;
 
   /// Creates a new [RegionBackendServiceConsistentHashHttpCookie].
   /// [name] Name of the cookie.
@@ -25,15 +26,15 @@ class RegionBackendServiceConsistentHashHttpCookie {
     return <String, dynamic>{
       'name': ?name,
       'path': ?path,
-      'ttl': ?ttl == null ? null : ttl!.toMap(),
+      'ttl': ?pulumi.Input.mapOptionalInputValue<RegionBackendServiceConsistentHashHttpCookieTtl, Map<String, dynamic>>(ttl, (value) => value.toMap()),
     };
   }
 
   factory RegionBackendServiceConsistentHashHttpCookie.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceConsistentHashHttpCookie(
-      name: map['name'] == null ? null : map['name'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      ttl: map['ttl'] == null ? null : RegionBackendServiceConsistentHashHttpCookieTtl.fromMap((map['ttl'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      ttl: map['ttl'] == null ? null : (RegionBackendServiceConsistentHashHttpCookieTtl.fromMap((map['ttl'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

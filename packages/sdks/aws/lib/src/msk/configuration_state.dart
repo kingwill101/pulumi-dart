@@ -28,21 +28,14 @@ class ConfigurationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serverProperties] Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
   ConfigurationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? kafkaVersions,
-    pulumi.Output<int>? latestRevision,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serverProperties,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kafkaVersions = pulumi.Input.asOptionalInput<List<String>>(kafkaVersions),
-      latestRevision = pulumi.Input.asOptionalInput<int>(latestRevision),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverProperties = pulumi.Input.asOptionalInput<String>(serverProperties);
+    this.arn,
+    this.description,
+    this.kafkaVersions,
+    this.latestRevision,
+    this.name,
+    this.region,
+    this.serverProperties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class ConfigurationState {
 
   factory ConfigurationState.fromMap(Map<String, dynamic> map) {
     return ConfigurationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kafkaVersions: map['kafkaVersions'] == null ? null : pulumi.Output.create<List<String>>((map['kafkaVersions'] as List).cast<String>()),
-      latestRevision: map['latestRevision'] == null ? null : pulumi.Output.create<int>(map['latestRevision'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverProperties: map['serverProperties'] == null ? null : pulumi.Output.create<String>(map['serverProperties'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kafkaVersions: map['kafkaVersions'] == null ? null : ((map['kafkaVersions'] as List).cast<String>()).input(),
+      latestRevision: map['latestRevision'] == null ? null : (map['latestRevision'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverProperties: map['serverProperties'] == null ? null : (map['serverProperties'] as String).input(),
     );
   }
 }

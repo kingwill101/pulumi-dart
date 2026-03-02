@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// The ID of the ECS instance to be bound.
-  final String clientInstanceId;
+  final pulumi.Input<String> clientInstanceId;
   /// The name of the ECS instance bound to the EAIS instance.
-  final String clientInstanceName;
+  final pulumi.Input<String> clientInstanceName;
   /// The type of the ECS instance bound to the EAIS instance.
-  final String clientInstanceType;
+  final pulumi.Input<String> clientInstanceType;
   /// The ID of the Instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the resource.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The name of the resource.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the region to which the EAIS instance belongs.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetInstancesInstance].
   /// [clientInstanceId] The ID of the ECS instance to be bound.
@@ -59,15 +60,15 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      clientInstanceId: map['clientInstanceId'] as String,
-      clientInstanceName: map['clientInstanceName'] as String,
-      clientInstanceType: map['clientInstanceType'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      instanceType: map['instanceType'] as String,
-      status: map['status'] as String,
-      zoneId: map['zoneId'] as String,
+      clientInstanceId: (map['clientInstanceId'] as String).input(),
+      clientInstanceName: (map['clientInstanceName'] as String).input(),
+      clientInstanceType: (map['clientInstanceType'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      status: (map['status'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

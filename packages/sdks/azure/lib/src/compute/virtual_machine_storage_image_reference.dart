@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineStorageImageReference {
   /// Specifies the ID of the Custom Image which the Virtual Machine should be created from. Changing this forces a new resource to be created.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies the offer of the image used to create the virtual machine. Changing this forces a new resource to be created.
-  final String? offer;
+  final pulumi.Input<String>? offer;
   /// Specifies the publisher of the image used to create the virtual machine. Changing this forces a new resource to be created.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// Specifies the SKU of the image used to create the virtual machine. Changing this forces a new resource to be created.
-  final String? sku;
+  final pulumi.Input<String>? sku;
   /// Specifies the version of the image used to create the virtual machine. Changing this forces a new resource to be created.
   ///
   /// To provision a Custom Image, the following fields are applicable:
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [VirtualMachineStorageImageReference].
   /// [id] Specifies the ID of the Custom Image which the Virtual Machine should be created from. Changing this forces a new resource to be created.
@@ -41,11 +42,11 @@ class VirtualMachineStorageImageReference {
 
   factory VirtualMachineStorageImageReference.fromMap(Map<String, dynamic> map) {
     return VirtualMachineStorageImageReference(
-      id: map['id'] == null ? null : map['id'] as String,
-      offer: map['offer'] == null ? null : map['offer'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      sku: map['sku'] == null ? null : map['sku'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      offer: map['offer'] == null ? null : (map['offer'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

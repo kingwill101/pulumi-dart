@@ -32,19 +32,13 @@ class VolumeQuotaRuleArgs {
   /// [quotaType] Quota type. Possible values are `DefaultGroupQuota`, `DefaultUserQuota`, `IndividualGroupQuota` and `IndividualUserQuota`. Please note that `IndividualGroupQuota` and `DefaultGroupQuota` are not applicable to SMB and dual-protocol volumes. Changing this forces a new resource to be created.
   /// [volumeId] The NetApp volume ID where the Volume Quota Rule is assigned to. Changing this forces a new resource to be created.
   VolumeQuotaRuleArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> quotaSizeInKib,
-    pulumi.Output<String>? quotaTarget,
-    required pulumi.Output<String> quotaType,
-    required pulumi.Output<String> volumeId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      quotaSizeInKib = pulumi.Input.asInput<int>(quotaSizeInKib),
-      quotaTarget = pulumi.Input.asOptionalInput<String>(quotaTarget),
-      quotaType = pulumi.Input.asInput<String>(quotaType),
-      volumeId = pulumi.Input.asInput<String>(volumeId);
+    this.location,
+    this.name,
+    required this.quotaSizeInKib,
+    this.quotaTarget,
+    required this.quotaType,
+    required this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class VolumeQuotaRuleArgs {
 
   factory VolumeQuotaRuleArgs.fromMap(Map<String, dynamic> map) {
     return VolumeQuotaRuleArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      quotaSizeInKib: pulumi.Output.create<int>(map['quotaSizeInKib'] as int),
-      quotaTarget: map['quotaTarget'] == null ? null : pulumi.Output.create<String>(map['quotaTarget'] as String),
-      quotaType: pulumi.Output.create<String>(map['quotaType'] as String),
-      volumeId: pulumi.Output.create<String>(map['volumeId'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      quotaSizeInKib: (map['quotaSizeInKib'] as int).input(),
+      quotaTarget: map['quotaTarget'] == null ? null : (map['quotaTarget'] as String).input(),
+      quotaType: (map['quotaType'] as String).input(),
+      volumeId: (map['volumeId'] as String).input(),
     );
   }
 }

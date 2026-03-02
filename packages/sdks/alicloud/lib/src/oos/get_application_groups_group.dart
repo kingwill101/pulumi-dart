@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationGroupsGroup {
   /// The name of the Application group.
-  final String applicationGroupName;
+  final pulumi.Input<String> applicationGroupName;
   /// The name of the Application.
-  final String applicationName;
+  final pulumi.Input<String> applicationName;
   /// The ID of the cloud monitor group.
-  final String cmsGroupId;
+  final pulumi.Input<String> cmsGroupId;
   /// The Creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The region ID of the deployment.
-  final String deployRegionId;
+  final pulumi.Input<String> deployRegionId;
   /// Application group description information.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Application Group. Its value is same as Queue Name.
-  final String id;
+  final pulumi.Input<String> id;
   /// Label key.
-  final String importTagKey;
+  final pulumi.Input<String> importTagKey;
   /// Label value.
-  final String importTagValue;
+  final pulumi.Input<String> importTagValue;
   /// The Update time of the resource.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GetApplicationGroupsGroup].
   /// [applicationGroupName] The name of the Application group.
@@ -64,16 +65,16 @@ class GetApplicationGroupsGroup {
 
   factory GetApplicationGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetApplicationGroupsGroup(
-      applicationGroupName: map['applicationGroupName'] as String,
-      applicationName: map['applicationName'] as String,
-      cmsGroupId: map['cmsGroupId'] as String,
-      createTime: map['createTime'] as String,
-      deployRegionId: map['deployRegionId'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      importTagKey: map['importTagKey'] as String,
-      importTagValue: map['importTagValue'] as String,
-      updateTime: map['updateTime'] as String,
+      applicationGroupName: (map['applicationGroupName'] as String).input(),
+      applicationName: (map['applicationName'] as String).input(),
+      cmsGroupId: (map['cmsGroupId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      deployRegionId: (map['deployRegionId'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      importTagKey: (map['importTagKey'] as String).input(),
+      importTagValue: (map['importTagValue'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

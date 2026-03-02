@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration {
   /// ARN of the S3 Vectors index. Conflicts with `index_name` and `vector_bucket_arn`.
-  final String? indexArn;
+  final pulumi.Input<String>? indexArn;
   /// Name of the S3 Vectors index. Must be specified with `vector_bucket_arn`. Conflicts with `index_arn`.
-  final String? indexName;
+  final pulumi.Input<String>? indexName;
   /// ARN of the S3 Vectors vector bucket. Must be specified with `index_name`. Conflicts with `index_arn`.
-  final String? vectorBucketArn;
+  final pulumi.Input<String>? vectorBucketArn;
 
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration].
   /// [indexArn] ARN of the S3 Vectors index. Conflicts with `index_name` and `vector_bucket_arn`.
@@ -29,9 +30,9 @@ class AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration {
 
   factory AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration(
-      indexArn: map['indexArn'] == null ? null : map['indexArn'] as String,
-      indexName: map['indexName'] == null ? null : map['indexName'] as String,
-      vectorBucketArn: map['vectorBucketArn'] == null ? null : map['vectorBucketArn'] as String,
+      indexArn: map['indexArn'] == null ? null : (map['indexArn'] as String).input(),
+      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
+      vectorBucketArn: map['vectorBucketArn'] == null ? null : (map['vectorBucketArn'] as String).input(),
     );
   }
 }

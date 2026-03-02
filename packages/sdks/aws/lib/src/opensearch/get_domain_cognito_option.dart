@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainCognitoOption {
   /// Enabled disabled toggle for off-peak update window
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Cognito Identity pool used by the domain.
-  final String identityPoolId;
+  final pulumi.Input<String> identityPoolId;
   /// IAM Role with the AmazonOpenSearchServiceCognitoAccess policy attached.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// Cognito User pool used by the domain.
-  final String userPoolId;
+  final pulumi.Input<String> userPoolId;
 
   /// Creates a new [GetDomainCognitoOption].
   /// [enabled] Enabled disabled toggle for off-peak update window
@@ -34,10 +35,10 @@ class GetDomainCognitoOption {
 
   factory GetDomainCognitoOption.fromMap(Map<String, dynamic> map) {
     return GetDomainCognitoOption(
-      enabled: map['enabled'] as bool,
-      identityPoolId: map['identityPoolId'] as String,
-      roleArn: map['roleArn'] as String,
-      userPoolId: map['userPoolId'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      identityPoolId: (map['identityPoolId'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      userPoolId: (map['userPoolId'] as String).input(),
     );
   }
 }

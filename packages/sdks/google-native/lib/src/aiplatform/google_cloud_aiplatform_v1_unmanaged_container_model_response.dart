@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_model_container_spec_response.dart';
 import 'google_cloud_aiplatform_v1_predict_schemata_response.dart';
 
 /// Contains model information necessary to perform batch prediction without requiring a full model import.
 class GoogleCloudAiplatformV1UnmanagedContainerModelResponse {
   /// The path to the directory containing the Model artifact and any of its supporting files.
-  final String artifactUri;
+  final pulumi.Input<String> artifactUri;
   /// Input only. The specification of the container that is to be used when deploying this Model.
-  final GoogleCloudAiplatformV1ModelContainerSpecResponse containerSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1ModelContainerSpecResponse> containerSpec;
   /// Contains the schemata used in Model's predictions and explanations
-  final GoogleCloudAiplatformV1PredictSchemataResponse predictSchemata;
+  final pulumi.Input<GoogleCloudAiplatformV1PredictSchemataResponse> predictSchemata;
 
   /// Creates a new [GoogleCloudAiplatformV1UnmanagedContainerModelResponse].
   /// [artifactUri] The path to the directory containing the Model artifact and any of its supporting files.
@@ -25,16 +26,16 @@ class GoogleCloudAiplatformV1UnmanagedContainerModelResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'artifactUri': artifactUri,
-      'containerSpec': containerSpec.toMap(),
-      'predictSchemata': predictSchemata.toMap(),
+      'containerSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1ModelContainerSpecResponse, Map<String, dynamic>>(containerSpec, (value) => value.toMap()),
+      'predictSchemata': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1PredictSchemataResponse, Map<String, dynamic>>(predictSchemata, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudAiplatformV1UnmanagedContainerModelResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1UnmanagedContainerModelResponse(
-      artifactUri: map['artifactUri'] as String,
-      containerSpec: GoogleCloudAiplatformV1ModelContainerSpecResponse.fromMap((map['containerSpec'] as Map).cast<String, dynamic>()),
-      predictSchemata: GoogleCloudAiplatformV1PredictSchemataResponse.fromMap((map['predictSchemata'] as Map).cast<String, dynamic>()),
+      artifactUri: (map['artifactUri'] as String).input(),
+      containerSpec: (GoogleCloudAiplatformV1ModelContainerSpecResponse.fromMap((map['containerSpec'] as Map).cast<String, dynamic>())).input(),
+      predictSchemata: (GoogleCloudAiplatformV1PredictSchemataResponse.fromMap((map['predictSchemata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

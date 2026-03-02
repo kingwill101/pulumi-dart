@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Supported OS upgrade versions.
 class OSUpgradeSupportedVersionsResponse {
   /// The source OS version name.
-  final String supportedSourceOsVersion;
+  final pulumi.Input<String> supportedSourceOsVersion;
   /// The target OS version names.
-  final List<String> supportedTargetOsVersions;
+  final pulumi.Input<List<String>> supportedTargetOsVersions;
 
   /// Creates a new [OSUpgradeSupportedVersionsResponse].
   /// [supportedSourceOsVersion] The source OS version name.
@@ -25,8 +26,8 @@ class OSUpgradeSupportedVersionsResponse {
 
   factory OSUpgradeSupportedVersionsResponse.fromMap(Map<String, dynamic> map) {
     return OSUpgradeSupportedVersionsResponse(
-      supportedSourceOsVersion: map['supportedSourceOsVersion'] as String,
-      supportedTargetOsVersions: (map['supportedTargetOsVersions'] as List).cast<String>(),
+      supportedSourceOsVersion: (map['supportedSourceOsVersion'] as String).input(),
+      supportedTargetOsVersions: ((map['supportedTargetOsVersions'] as List).cast<String>()).input(),
     );
   }
 }

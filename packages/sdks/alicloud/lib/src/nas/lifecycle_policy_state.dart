@@ -22,17 +22,12 @@ class LifecyclePolicyState {
   /// [paths] The absolute path of the directory for which the lifecycle management policy is configured. Set a maximum of `10` path. The path value must be prefixed by a forward slash (/) and must be an existing path in the mount target.
   /// [storageType] The storage type of the data that is dumped to the IA storage medium. Valid values: `InfrequentAccess`.
   LifecyclePolicyState({
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? lifecyclePolicyName,
-    pulumi.Output<String>? lifecycleRuleName,
-    pulumi.Output<List<String>>? paths,
-    pulumi.Output<String>? storageType,
-  }) :
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      lifecyclePolicyName = pulumi.Input.asOptionalInput<String>(lifecyclePolicyName),
-      lifecycleRuleName = pulumi.Input.asOptionalInput<String>(lifecycleRuleName),
-      paths = pulumi.Input.asOptionalInput<List<String>>(paths),
-      storageType = pulumi.Input.asOptionalInput<String>(storageType);
+    this.fileSystemId,
+    this.lifecyclePolicyName,
+    this.lifecycleRuleName,
+    this.paths,
+    this.storageType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class LifecyclePolicyState {
 
   factory LifecyclePolicyState.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyState(
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      lifecyclePolicyName: map['lifecyclePolicyName'] == null ? null : pulumi.Output.create<String>(map['lifecyclePolicyName'] as String),
-      lifecycleRuleName: map['lifecycleRuleName'] == null ? null : pulumi.Output.create<String>(map['lifecycleRuleName'] as String),
-      paths: map['paths'] == null ? null : pulumi.Output.create<List<String>>((map['paths'] as List).cast<String>()),
-      storageType: map['storageType'] == null ? null : pulumi.Output.create<String>(map['storageType'] as String),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      lifecyclePolicyName: map['lifecyclePolicyName'] == null ? null : (map['lifecyclePolicyName'] as String).input(),
+      lifecycleRuleName: map['lifecycleRuleName'] == null ? null : (map['lifecycleRuleName'] as String).input(),
+      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
     );
   }
 }

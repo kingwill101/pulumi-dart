@@ -10,32 +10,32 @@ import 'parameter_specification.dart';
 /// Azure Batch linked service.
 class AzureBatchLinkedService {
   /// The Azure Batch account access key.
-  final AzureKeyVaultSecretReference? accessKey;
+  final pulumi.Input<AzureKeyVaultSecretReference>? accessKey;
   /// The Azure Batch account name. Type: string (or Expression with resultType string).
-  final dynamic accountName;
+  final pulumi.Input<dynamic> accountName;
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The Azure Batch URI. Type: string (or Expression with resultType string).
-  final dynamic batchUri;
+  final pulumi.Input<dynamic> batchUri;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// The credential reference containing authentication information.
-  final CredentialReference? credential;
+  final pulumi.Input<CredentialReference>? credential;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The Azure Storage linked service reference.
-  final LinkedServiceReference linkedServiceName;
+  final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The Azure Batch pool name. Type: string (or Expression with resultType string).
-  final dynamic poolName;
+  final pulumi.Input<dynamic> poolName;
   /// Type of linked service.
   /// Expected value is 'AzureBatch'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [AzureBatchLinkedService].
   /// [accessKey] The Azure Batch account access key.
@@ -69,16 +69,16 @@ class AzureBatchLinkedService {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessKey': ?accessKey == null ? null : accessKey!.toMap(),
+      'accessKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(accessKey, (value) => value.toMap()),
       'accountName': accountName,
       'annotations': ?annotations,
       'batchUri': batchUri,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
-      'credential': ?credential == null ? null : credential!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReference, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
-      'linkedServiceName': linkedServiceName.toMap(),
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'poolName': poolName,
       'type': type,
       'version': ?version,
@@ -87,19 +87,19 @@ class AzureBatchLinkedService {
 
   factory AzureBatchLinkedService.fromMap(Map<String, dynamic> map) {
     return AzureBatchLinkedService(
-      accessKey: map['accessKey'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['accessKey'] as Map).cast<String, dynamic>()),
-      accountName: map['accountName'],
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      batchUri: map['batchUri'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      credential: map['credential'] == null ? null : CredentialReference.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      linkedServiceName: LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      poolName: map['poolName'],
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      accessKey: map['accessKey'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['accessKey'] as Map).cast<String, dynamic>())).input(),
+      accountName: (map['accountName']).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      batchUri: (map['batchUri']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (CredentialReference.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      poolName: (map['poolName']).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

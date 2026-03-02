@@ -22,15 +22,11 @@ class ModelArgs {
   /// [modelName] The name of the model.
   /// [schema] The schema of the model.
   ModelArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> modelName,
-    required pulumi.Output<String> schema,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      modelName = pulumi.Input.asInput<String>(modelName),
-      schema = pulumi.Input.asInput<String>(schema);
+    this.description,
+    required this.groupId,
+    required this.modelName,
+    required this.schema,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ModelArgs {
 
   factory ModelArgs.fromMap(Map<String, dynamic> map) {
     return ModelArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      modelName: pulumi.Output.create<String>(map['modelName'] as String),
-      schema: pulumi.Output.create<String>(map['schema'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      modelName: (map['modelName'] as String).input(),
+      schema: (map['schema'] as String).input(),
     );
   }
 }

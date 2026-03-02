@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'my_sql_connection_info.dart';
 
 /// Input for the task that validates MySQL database connection
 class ConnectToSourceMySqlTaskInput {
   /// Permission group for validations
-  final String? checkPermissionsGroup;
+  final pulumi.Input<String>? checkPermissionsGroup;
   /// Flag for whether or not the migration is offline
-  final bool? isOfflineMigration;
+  final pulumi.Input<bool>? isOfflineMigration;
   /// Information for connecting to MySQL source
-  final MySqlConnectionInfo sourceConnectionInfo;
+  final pulumi.Input<MySqlConnectionInfo> sourceConnectionInfo;
   /// Target Platform for the migration
-  final String? targetPlatform;
+  final pulumi.Input<String>? targetPlatform;
 
   /// Creates a new [ConnectToSourceMySqlTaskInput].
   /// [checkPermissionsGroup] Permission group for validations
@@ -29,17 +30,17 @@ class ConnectToSourceMySqlTaskInput {
     return <String, dynamic>{
       'checkPermissionsGroup': ?checkPermissionsGroup,
       'isOfflineMigration': ?isOfflineMigration,
-      'sourceConnectionInfo': sourceConnectionInfo.toMap(),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<MySqlConnectionInfo, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
       'targetPlatform': ?targetPlatform,
     };
   }
 
   factory ConnectToSourceMySqlTaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToSourceMySqlTaskInput(
-      checkPermissionsGroup: map['checkPermissionsGroup'] == null ? null : map['checkPermissionsGroup'] as String,
-      isOfflineMigration: map['isOfflineMigration'] == null ? null : map['isOfflineMigration'] as bool,
-      sourceConnectionInfo: MySqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>()),
-      targetPlatform: map['targetPlatform'] == null ? null : map['targetPlatform'] as String,
+      checkPermissionsGroup: map['checkPermissionsGroup'] == null ? null : (map['checkPermissionsGroup'] as String).input(),
+      isOfflineMigration: map['isOfflineMigration'] == null ? null : (map['isOfflineMigration'] as bool).input(),
+      sourceConnectionInfo: (MySqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      targetPlatform: map['targetPlatform'] == null ? null : (map['targetPlatform'] as String).input(),
     );
   }
 }

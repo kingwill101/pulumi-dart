@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerRuleTransformUrlRewriteConfigRewrite {
   /// Regular expression to match in the input string.
-  final String regex;
+  final pulumi.Input<String> regex;
   /// Replacement string to use when rewriting the matched input.
-  final String replace;
+  final pulumi.Input<String> replace;
 
   /// Creates a new [GetListenerRuleTransformUrlRewriteConfigRewrite].
   /// [regex] Regular expression to match in the input string.
@@ -24,8 +25,8 @@ class GetListenerRuleTransformUrlRewriteConfigRewrite {
 
   factory GetListenerRuleTransformUrlRewriteConfigRewrite.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleTransformUrlRewriteConfigRewrite(
-      regex: map['regex'] as String,
-      replace: map['replace'] as String,
+      regex: (map['regex'] as String).input(),
+      replace: (map['replace'] as String).input(),
     );
   }
 }

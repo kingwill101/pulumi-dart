@@ -16,11 +16,9 @@ class ListJobSecretsArgs {
   /// [jobName] Job Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListJobSecretsArgs({
-    required pulumi.Output<String> jobName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      jobName = pulumi.Input.asInput<String>(jobName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.jobName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListJobSecretsArgs {
 
   factory ListJobSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListJobSecretsArgs(
-      jobName: pulumi.Output.create<String>(map['jobName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      jobName: (map['jobName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

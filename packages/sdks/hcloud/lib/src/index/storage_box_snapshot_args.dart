@@ -19,13 +19,10 @@ class StorageBoxSnapshotArgs {
   /// [labels] User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   /// [storageBoxId] ID of the Storage Box.
   StorageBoxSnapshotArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<int> storageBoxId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      storageBoxId = pulumi.Input.asInput<int>(storageBoxId);
+    this.description,
+    this.labels,
+    required this.storageBoxId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class StorageBoxSnapshotArgs {
 
   factory StorageBoxSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return StorageBoxSnapshotArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      storageBoxId: pulumi.Output.create<int>(map['storageBoxId'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      storageBoxId: (map['storageBoxId'] as int).input(),
     );
   }
 }

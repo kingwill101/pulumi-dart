@@ -41,29 +41,18 @@ class FeatureGroupFeatureArgs {
   /// [valueType] Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
   /// [versionColumnName] Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
   FeatureGroupFeatureArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disableMonitoring,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> featureGroupId,
-    required pulumi.Output<String> featureId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<FeatureGroupFeatureValueType>? valueType,
-    pulumi.Output<String>? versionColumnName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disableMonitoring = pulumi.Input.asOptionalInput<bool>(disableMonitoring),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featureGroupId = pulumi.Input.asInput<String>(featureGroupId),
-      featureId = pulumi.Input.asInput<String>(featureId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      valueType = pulumi.Input.asOptionalInput<FeatureGroupFeatureValueType>(valueType),
-      versionColumnName = pulumi.Input.asOptionalInput<String>(versionColumnName);
+    this.description,
+    this.disableMonitoring,
+    this.etag,
+    required this.featureGroupId,
+    required this.featureId,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.valueType,
+    this.versionColumnName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class FeatureGroupFeatureArgs {
 
   factory FeatureGroupFeatureArgs.fromMap(Map<String, dynamic> map) {
     return FeatureGroupFeatureArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disableMonitoring: map['disableMonitoring'] == null ? null : pulumi.Output.create<bool>(map['disableMonitoring'] as bool),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featureGroupId: pulumi.Output.create<String>(map['featureGroupId'] as String),
-      featureId: pulumi.Output.create<String>(map['featureId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      valueType: map['valueType'] == null ? null : pulumi.Output.create<FeatureGroupFeatureValueType>(FeatureGroupFeatureValueType.fromValue(map['valueType'] as String)),
-      versionColumnName: map['versionColumnName'] == null ? null : pulumi.Output.create<String>(map['versionColumnName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableMonitoring: map['disableMonitoring'] == null ? null : (map['disableMonitoring'] as bool).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featureGroupId: (map['featureGroupId'] as String).input(),
+      featureId: (map['featureId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      valueType: map['valueType'] == null ? null : (FeatureGroupFeatureValueType.fromValue(map['valueType'] as String)).input(),
+      versionColumnName: map['versionColumnName'] == null ? null : (map['versionColumnName'] as String).input(),
     );
   }
 }

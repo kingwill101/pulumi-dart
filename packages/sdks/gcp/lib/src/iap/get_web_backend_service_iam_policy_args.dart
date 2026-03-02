@@ -17,11 +17,9 @@ class GetWebBackendServiceIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [webBackendService] Used to find the parent resource to bind the IAM policy to
   GetWebBackendServiceIamPolicyArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> webBackendService,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      webBackendService = pulumi.Input.asInput<String>(webBackendService);
+    this.project,
+    required this.webBackendService,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetWebBackendServiceIamPolicyArgs {
 
   factory GetWebBackendServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWebBackendServiceIamPolicyArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      webBackendService: pulumi.Output.create<String>(map['webBackendService'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      webBackendService: (map['webBackendService'] as String).input(),
     );
   }
 }

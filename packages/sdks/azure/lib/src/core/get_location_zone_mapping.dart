@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLocationZoneMapping {
   /// The logical zone id for the availability zone
-  final String logicalZone;
+  final pulumi.Input<String> logicalZone;
   /// The fully qualified physical zone id of availability zone to which logical zone id is mapped to
-  final String physicalZone;
+  final pulumi.Input<String> physicalZone;
 
   /// Creates a new [GetLocationZoneMapping].
   /// [logicalZone] The logical zone id for the availability zone
@@ -24,8 +25,8 @@ class GetLocationZoneMapping {
 
   factory GetLocationZoneMapping.fromMap(Map<String, dynamic> map) {
     return GetLocationZoneMapping(
-      logicalZone: map['logicalZone'] as String,
-      physicalZone: map['physicalZone'] as String,
+      logicalZone: (map['logicalZone'] as String).input(),
+      physicalZone: (map['physicalZone'] as String).input(),
     );
   }
 }

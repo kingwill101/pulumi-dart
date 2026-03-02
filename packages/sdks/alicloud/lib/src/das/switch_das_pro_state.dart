@@ -19,15 +19,11 @@ class SwitchDasProState {
   /// [status] Whether the database instance has DAS professional.
   /// [userId] The ID of the Alibaba Cloud account that is used to create the database instance.
   SwitchDasProState({
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<int>? sqlRetention,
-    pulumi.Output<bool>? status,
-    pulumi.Output<String>? userId,
-  }) :
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      sqlRetention = pulumi.Input.asOptionalInput<int>(sqlRetention),
-      status = pulumi.Input.asOptionalInput<bool>(status),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.instanceId,
+    this.sqlRetention,
+    this.status,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class SwitchDasProState {
 
   factory SwitchDasProState.fromMap(Map<String, dynamic> map) {
     return SwitchDasProState(
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      sqlRetention: map['sqlRetention'] == null ? null : pulumi.Output.create<int>(map['sqlRetention'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<bool>(map['status'] as bool),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      sqlRetention: map['sqlRetention'] == null ? null : (map['sqlRetention'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as bool).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

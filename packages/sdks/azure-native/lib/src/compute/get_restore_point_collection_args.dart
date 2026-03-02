@@ -19,13 +19,10 @@ class GetRestorePointCollectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [restorePointCollectionName] The name of the restore point collection.
   GetRestorePointCollectionArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> restorePointCollectionName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      restorePointCollectionName = pulumi.Input.asInput<String>(restorePointCollectionName);
+    this.expand,
+    required this.resourceGroupName,
+    required this.restorePointCollectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRestorePointCollectionArgs {
 
   factory GetRestorePointCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetRestorePointCollectionArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      restorePointCollectionName: pulumi.Output.create<String>(map['restorePointCollectionName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      restorePointCollectionName: (map['restorePointCollectionName'] as String).input(),
     );
   }
 }

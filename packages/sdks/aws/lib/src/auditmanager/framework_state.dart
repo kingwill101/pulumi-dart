@@ -37,25 +37,16 @@ class FrameworkState {
   /// [tags] A map of tags to assign to the framework. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   FrameworkState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? complianceType,
-    pulumi.Output<List<FrameworkControlSet>>? controlSets,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? frameworkType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      complianceType = pulumi.Input.asOptionalInput<String>(complianceType),
-      controlSets = pulumi.Input.asOptionalInput<List<FrameworkControlSet>>(controlSets),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      frameworkType = pulumi.Input.asOptionalInput<String>(frameworkType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.complianceType,
+    this.controlSets,
+    this.description,
+    this.frameworkType,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class FrameworkState {
 
   factory FrameworkState.fromMap(Map<String, dynamic> map) {
     return FrameworkState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      complianceType: map['complianceType'] == null ? null : pulumi.Output.create<String>(map['complianceType'] as String),
-      controlSets: map['controlSets'] == null ? null : pulumi.Output.create<List<FrameworkControlSet>>(pulumi.Input.decodeList<FrameworkControlSet>(map['controlSets'], (value) => FrameworkControlSet.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      frameworkType: map['frameworkType'] == null ? null : pulumi.Output.create<String>(map['frameworkType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      complianceType: map['complianceType'] == null ? null : (map['complianceType'] as String).input(),
+      controlSets: map['controlSets'] == null ? null : (pulumi.Input.decodeList<FrameworkControlSet>(map['controlSets'], (value) => FrameworkControlSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      frameworkType: map['frameworkType'] == null ? null : (map['frameworkType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationSettingsTransactionTracerSql {
   /// The level of SQL recording. Valid values ar `OBFUSCATED`,`OFF`,`RAW` (Mandatory attribute when `sql` block is provided).
-  final String recordSql;
+  final pulumi.Input<String> recordSql;
 
   /// Creates a new [ApplicationSettingsTransactionTracerSql].
   /// [recordSql] The level of SQL recording. Valid values ar `OBFUSCATED`,`OFF`,`RAW` (Mandatory attribute when `sql` block is provided).
@@ -19,7 +20,7 @@ class ApplicationSettingsTransactionTracerSql {
 
   factory ApplicationSettingsTransactionTracerSql.fromMap(Map<String, dynamic> map) {
     return ApplicationSettingsTransactionTracerSql(
-      recordSql: map['recordSql'] as String,
+      recordSql: (map['recordSql'] as String).input(),
     );
   }
 }

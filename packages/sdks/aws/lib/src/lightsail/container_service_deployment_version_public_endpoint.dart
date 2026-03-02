@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_service_deployment_version_public_endpoint_health_check.dart';
 
 class ContainerServiceDeploymentVersionPublicEndpoint {
   /// Name of the container for the endpoint.
-  final String containerName;
+  final pulumi.Input<String> containerName;
   /// Port of the container to which traffic is forwarded to.
-  final int containerPort;
+  final pulumi.Input<int> containerPort;
   /// Configuration block that describes the health check configuration of the container. See below.
-  final ContainerServiceDeploymentVersionPublicEndpointHealthCheck healthCheck;
+  final pulumi.Input<ContainerServiceDeploymentVersionPublicEndpointHealthCheck> healthCheck;
 
   /// Creates a new [ContainerServiceDeploymentVersionPublicEndpoint].
   /// [containerName] Name of the container for the endpoint.
@@ -24,15 +25,15 @@ class ContainerServiceDeploymentVersionPublicEndpoint {
     return <String, dynamic>{
       'containerName': containerName,
       'containerPort': containerPort,
-      'healthCheck': healthCheck.toMap(),
+      'healthCheck': pulumi.Input.mapInputValue<ContainerServiceDeploymentVersionPublicEndpointHealthCheck, Map<String, dynamic>>(healthCheck, (value) => value.toMap()),
     };
   }
 
   factory ContainerServiceDeploymentVersionPublicEndpoint.fromMap(Map<String, dynamic> map) {
     return ContainerServiceDeploymentVersionPublicEndpoint(
-      containerName: map['containerName'] as String,
-      containerPort: map['containerPort'] as int,
-      healthCheck: ContainerServiceDeploymentVersionPublicEndpointHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>()),
+      containerName: (map['containerName'] as String).input(),
+      containerPort: (map['containerPort'] as int).input(),
+      healthCheck: (ContainerServiceDeploymentVersionPublicEndpointHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

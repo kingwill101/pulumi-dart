@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesShmemMsi {
   /// Enables or disables MSI for the shared memory device, controlling interrupt generation.
-  final String? enabled;
+  final pulumi.Input<String>? enabled;
   /// Configures the IO event file descriptor for MSI handling in the shared memory device.
-  final String? ioEventFd;
+  final pulumi.Input<String>? ioEventFd;
   /// Sets the number of IRQ vectors available for the MSI configuration of the shared memory device.
-  final double? vectors;
+  final pulumi.Input<double>? vectors;
 
   /// Creates a new [DomainDevicesShmemMsi].
   /// [enabled] Enables or disables MSI for the shared memory device, controlling interrupt generation.
@@ -29,9 +30,9 @@ class DomainDevicesShmemMsi {
 
   factory DomainDevicesShmemMsi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesShmemMsi(
-      enabled: map['enabled'] == null ? null : map['enabled'] as String,
-      ioEventFd: map['ioEventFd'] == null ? null : map['ioEventFd'] as String,
-      vectors: map['vectors'] == null ? null : map['vectors'] as double,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
+      ioEventFd: map['ioEventFd'] == null ? null : (map['ioEventFd'] as String).input(),
+      vectors: map['vectors'] == null ? null : (map['vectors'] as double).input(),
     );
   }
 }

@@ -35,19 +35,13 @@ class HostingSiteState {
   /// [siteId] Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
   /// [type] The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
   HostingSiteState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? defaultUrl,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<String>? type,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      defaultUrl = pulumi.Input.asOptionalInput<String>(defaultUrl),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.appId,
+    this.defaultUrl,
+    this.name,
+    this.project,
+    this.siteId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class HostingSiteState {
 
   factory HostingSiteState.fromMap(Map<String, dynamic> map) {
     return HostingSiteState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      defaultUrl: map['defaultUrl'] == null ? null : pulumi.Output.create<String>(map['defaultUrl'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      defaultUrl: map['defaultUrl'] == null ? null : (map['defaultUrl'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

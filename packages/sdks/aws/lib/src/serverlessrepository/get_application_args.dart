@@ -19,13 +19,10 @@ class GetApplicationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [semanticVersion] Requested version of the application. By default, retrieves the latest version.
   GetApplicationArgs({
-    required pulumi.Output<String> applicationId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? semanticVersion,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      semanticVersion = pulumi.Input.asOptionalInput<String>(semanticVersion);
+    required this.applicationId,
+    this.region,
+    this.semanticVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetApplicationArgs {
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      semanticVersion: map['semanticVersion'] == null ? null : pulumi.Output.create<String>(map['semanticVersion'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      semanticVersion: map['semanticVersion'] == null ? null : (map['semanticVersion'] as String).input(),
     );
   }
 }

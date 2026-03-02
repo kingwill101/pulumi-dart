@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDirectoriesDirectorySamlIdentityProviderConfiguration {
   /// Saml identifies the creation time of the provider configuration.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Base64 encoded IdP metadata document.
-  final String encodedMetadataDocument;
+  final pulumi.Input<String> encodedMetadataDocument;
   /// SAML IdPEntityID.
-  final String entityId;
+  final pulumi.Input<String> entityId;
   /// SAML IdP http-post Binding address.
-  final String loginUrl;
+  final pulumi.Input<String> loginUrl;
   /// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-  final String ssoStatus;
+  final pulumi.Input<String> ssoStatus;
 
   /// Creates a new [GetDirectoriesDirectorySamlIdentityProviderConfiguration].
   /// [createTime] Saml identifies the creation time of the provider configuration.
@@ -39,11 +40,11 @@ class GetDirectoriesDirectorySamlIdentityProviderConfiguration {
 
   factory GetDirectoriesDirectorySamlIdentityProviderConfiguration.fromMap(Map<String, dynamic> map) {
     return GetDirectoriesDirectorySamlIdentityProviderConfiguration(
-      createTime: map['createTime'] as String,
-      encodedMetadataDocument: map['encodedMetadataDocument'] as String,
-      entityId: map['entityId'] as String,
-      loginUrl: map['loginUrl'] as String,
-      ssoStatus: map['ssoStatus'] as String,
+      createTime: (map['createTime'] as String).input(),
+      encodedMetadataDocument: (map['encodedMetadataDocument'] as String).input(),
+      entityId: (map['entityId'] as String).input(),
+      loginUrl: (map['loginUrl'] as String).input(),
+      ssoStatus: (map['ssoStatus'] as String).input(),
     );
   }
 }

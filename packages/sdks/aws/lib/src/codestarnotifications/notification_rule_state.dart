@@ -39,27 +39,17 @@ class NotificationRuleState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targets] Configuration blocks containing notification target information. Can be specified multiple times. At least one target must be specified on creation.
   NotificationRuleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? detailType,
-    pulumi.Output<List<String>>? eventTypeIds,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resource,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<List<NotificationRuleTarget>>? targets,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      detailType = pulumi.Input.asOptionalInput<String>(detailType),
-      eventTypeIds = pulumi.Input.asOptionalInput<List<String>>(eventTypeIds),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resource = pulumi.Input.asOptionalInput<String>(resource),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      targets = pulumi.Input.asOptionalInput<List<NotificationRuleTarget>>(targets);
+    this.arn,
+    this.detailType,
+    this.eventTypeIds,
+    this.name,
+    this.region,
+    this.resource,
+    this.status,
+    this.tags,
+    this.tagsAll,
+    this.targets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class NotificationRuleState {
 
   factory NotificationRuleState.fromMap(Map<String, dynamic> map) {
     return NotificationRuleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      detailType: map['detailType'] == null ? null : pulumi.Output.create<String>(map['detailType'] as String),
-      eventTypeIds: map['eventTypeIds'] == null ? null : pulumi.Output.create<List<String>>((map['eventTypeIds'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resource: map['resource'] == null ? null : pulumi.Output.create<String>(map['resource'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      targets: map['targets'] == null ? null : pulumi.Output.create<List<NotificationRuleTarget>>(pulumi.Input.decodeList<NotificationRuleTarget>(map['targets'], (value) => NotificationRuleTarget.fromMap((value as Map).cast<String, dynamic>()))),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      detailType: map['detailType'] == null ? null : (map['detailType'] as String).input(),
+      eventTypeIds: map['eventTypeIds'] == null ? null : ((map['eventTypeIds'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<NotificationRuleTarget>(map['targets'], (value) => NotificationRuleTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

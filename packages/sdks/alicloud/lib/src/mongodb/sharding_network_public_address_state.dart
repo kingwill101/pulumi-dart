@@ -17,13 +17,10 @@ class ShardingNetworkPublicAddressState {
   /// [networkAddresses] The endpoint of the instance.
   /// [nodeId] The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
   ShardingNetworkPublicAddressState({
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<List<ShardingNetworkPublicAddressNetworkAddress>>? networkAddresses,
-    pulumi.Output<String>? nodeId,
-  }) :
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      networkAddresses = pulumi.Input.asOptionalInput<List<ShardingNetworkPublicAddressNetworkAddress>>(networkAddresses),
-      nodeId = pulumi.Input.asOptionalInput<String>(nodeId);
+    this.dbInstanceId,
+    this.networkAddresses,
+    this.nodeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class ShardingNetworkPublicAddressState {
 
   factory ShardingNetworkPublicAddressState.fromMap(Map<String, dynamic> map) {
     return ShardingNetworkPublicAddressState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      networkAddresses: map['networkAddresses'] == null ? null : pulumi.Output.create<List<ShardingNetworkPublicAddressNetworkAddress>>(pulumi.Input.decodeList<ShardingNetworkPublicAddressNetworkAddress>(map['networkAddresses'], (value) => ShardingNetworkPublicAddressNetworkAddress.fromMap((value as Map).cast<String, dynamic>()))),
-      nodeId: map['nodeId'] == null ? null : pulumi.Output.create<String>(map['nodeId'] as String),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      networkAddresses: map['networkAddresses'] == null ? null : (pulumi.Input.decodeList<ShardingNetworkPublicAddressNetworkAddress>(map['networkAddresses'], (value) => ShardingNetworkPublicAddressNetworkAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
     );
   }
 }

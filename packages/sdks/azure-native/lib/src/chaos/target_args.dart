@@ -31,21 +31,14 @@ class TargetArgs {
   /// [resourceGroupName] String that represents an Azure resource group.
   /// [targetName] String that represents a Target resource name.
   TargetArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> parentProviderNamespace,
-    required pulumi.Output<String> parentResourceName,
-    required pulumi.Output<String> parentResourceType,
-    required pulumi.Output<dynamic> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? targetName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parentProviderNamespace = pulumi.Input.asInput<String>(parentProviderNamespace),
-      parentResourceName = pulumi.Input.asInput<String>(parentResourceName),
-      parentResourceType = pulumi.Input.asInput<String>(parentResourceType),
-      properties = pulumi.Input.asInput<dynamic>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetName = pulumi.Input.asOptionalInput<String>(targetName);
+    this.location,
+    required this.parentProviderNamespace,
+    required this.parentResourceName,
+    required this.parentResourceType,
+    required this.properties,
+    required this.resourceGroupName,
+    this.targetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parentProviderNamespace: pulumi.Output.create<String>(map['parentProviderNamespace'] as String),
-      parentResourceName: pulumi.Output.create<String>(map['parentResourceName'] as String),
-      parentResourceType: pulumi.Output.create<String>(map['parentResourceType'] as String),
-      properties: pulumi.Output.create<dynamic>(map['properties']),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetName: map['targetName'] == null ? null : pulumi.Output.create<String>(map['targetName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parentProviderNamespace: (map['parentProviderNamespace'] as String).input(),
+      parentResourceName: (map['parentResourceName'] as String).input(),
+      parentResourceType: (map['parentResourceType'] as String).input(),
+      properties: (map['properties']).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetName: map['targetName'] == null ? null : (map['targetName'] as String).input(),
     );
   }
 }

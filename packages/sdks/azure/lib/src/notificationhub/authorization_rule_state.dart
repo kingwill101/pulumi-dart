@@ -42,29 +42,18 @@ class AuthorizationRuleState {
   /// [secondaryConnectionString] The Secondary Connetion String associated with this Authorization Rule.
   /// [send] Does this Authorization Rule have Send access to the Notification Hub? Defaults to `false`.
   AuthorizationRuleState({
-    pulumi.Output<bool>? listen,
-    pulumi.Output<bool>? manage,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespaceName,
-    pulumi.Output<String>? notificationHubName,
-    pulumi.Output<String>? primaryAccessKey,
-    pulumi.Output<String>? primaryConnectionString,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? secondaryAccessKey,
-    pulumi.Output<String>? secondaryConnectionString,
-    pulumi.Output<bool>? send,
-  }) :
-      listen = pulumi.Input.asOptionalInput<bool>(listen),
-      manage = pulumi.Input.asOptionalInput<bool>(manage),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      notificationHubName = pulumi.Input.asOptionalInput<String>(notificationHubName),
-      primaryAccessKey = pulumi.Input.asOptionalInput<String>(primaryAccessKey),
-      primaryConnectionString = pulumi.Input.asOptionalInput<String>(primaryConnectionString),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      secondaryAccessKey = pulumi.Input.asOptionalInput<String>(secondaryAccessKey),
-      secondaryConnectionString = pulumi.Input.asOptionalInput<String>(secondaryConnectionString),
-      send = pulumi.Input.asOptionalInput<bool>(send);
+    this.listen,
+    this.manage,
+    this.name,
+    this.namespaceName,
+    this.notificationHubName,
+    this.primaryAccessKey,
+    this.primaryConnectionString,
+    this.resourceGroupName,
+    this.secondaryAccessKey,
+    this.secondaryConnectionString,
+    this.send,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class AuthorizationRuleState {
 
   factory AuthorizationRuleState.fromMap(Map<String, dynamic> map) {
     return AuthorizationRuleState(
-      listen: map['listen'] == null ? null : pulumi.Output.create<bool>(map['listen'] as bool),
-      manage: map['manage'] == null ? null : pulumi.Output.create<bool>(map['manage'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      notificationHubName: map['notificationHubName'] == null ? null : pulumi.Output.create<String>(map['notificationHubName'] as String),
-      primaryAccessKey: map['primaryAccessKey'] == null ? null : pulumi.Output.create<String>(map['primaryAccessKey'] as String),
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : pulumi.Output.create<String>(map['primaryConnectionString'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : pulumi.Output.create<String>(map['secondaryAccessKey'] as String),
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : pulumi.Output.create<String>(map['secondaryConnectionString'] as String),
-      send: map['send'] == null ? null : pulumi.Output.create<bool>(map['send'] as bool),
+      listen: map['listen'] == null ? null : (map['listen'] as bool).input(),
+      manage: map['manage'] == null ? null : (map['manage'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      notificationHubName: map['notificationHubName'] == null ? null : (map['notificationHubName'] as String).input(),
+      primaryAccessKey: map['primaryAccessKey'] == null ? null : (map['primaryAccessKey'] as String).input(),
+      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : (map['secondaryAccessKey'] as String).input(),
+      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString'] as String).input(),
+      send: map['send'] == null ? null : (map['send'] as bool).input(),
     );
   }
 }

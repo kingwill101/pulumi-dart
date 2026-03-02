@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The cadence at which to update data profiles when a table is modified.
 class GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse {
   /// How frequently data profiles can be updated when tables are modified. Defaults to never.
-  final String frequency;
+  final pulumi.Input<String> frequency;
   /// The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
-  final List<String> types;
+  final pulumi.Input<List<String>> types;
 
   /// Creates a new [GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse].
   /// [frequency] How frequently data profiles can be updated when tables are modified. Defaults to never.
@@ -25,8 +26,8 @@ class GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse {
 
   factory GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse(
-      frequency: map['frequency'] as String,
-      types: (map['types'] as List).cast<String>(),
+      frequency: (map['frequency'] as String).input(),
+      types: ((map['types'] as List).cast<String>()).input(),
     );
   }
 }

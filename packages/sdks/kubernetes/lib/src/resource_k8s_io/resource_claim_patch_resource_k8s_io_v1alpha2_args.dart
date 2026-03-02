@@ -24,15 +24,11 @@ class ResourceClaimPatchResourceK8sIoV1alpha2Args {
   /// [metadata] Standard object metadata
   /// [spec] Spec describes the desired attributes of a resource that then needs to be allocated. It can only be set once when creating the ResourceClaim.
   ResourceClaimPatchResourceK8sIoV1alpha2Args({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<ResourceClaimSpecPatchResourceK8sIoV1alpha2>? spec,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      spec = pulumi.Input.asOptionalInput<ResourceClaimSpecPatchResourceK8sIoV1alpha2>(spec);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ResourceClaimPatchResourceK8sIoV1alpha2Args {
 
   factory ResourceClaimPatchResourceK8sIoV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return ResourceClaimPatchResourceK8sIoV1alpha2Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      spec: map['spec'] == null ? null : pulumi.Output.create<ResourceClaimSpecPatchResourceK8sIoV1alpha2>(ResourceClaimSpecPatchResourceK8sIoV1alpha2.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ResourceClaimSpecPatchResourceK8sIoV1alpha2.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

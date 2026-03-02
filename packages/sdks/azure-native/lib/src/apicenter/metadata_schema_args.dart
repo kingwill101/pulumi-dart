@@ -26,17 +26,12 @@ class MetadataSchemaArgs {
   /// [schema] The schema defining the type.
   /// [serviceName] The name of Azure API Center service.
   MetadataSchemaArgs({
-    pulumi.Output<List<MetadataAssignment>>? assignedTo,
-    pulumi.Output<String>? metadataSchemaName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schema,
-    required pulumi.Output<String> serviceName,
-  }) :
-      assignedTo = pulumi.Input.asOptionalInput<List<MetadataAssignment>>(assignedTo),
-      metadataSchemaName = pulumi.Input.asOptionalInput<String>(metadataSchemaName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schema = pulumi.Input.asInput<String>(schema),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.assignedTo,
+    this.metadataSchemaName,
+    required this.resourceGroupName,
+    required this.schema,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class MetadataSchemaArgs {
 
   factory MetadataSchemaArgs.fromMap(Map<String, dynamic> map) {
     return MetadataSchemaArgs(
-      assignedTo: map['assignedTo'] == null ? null : pulumi.Output.create<List<MetadataAssignment>>(pulumi.Input.decodeList<MetadataAssignment>(map['assignedTo'], (value) => MetadataAssignment.fromMap((value as Map).cast<String, dynamic>()))),
-      metadataSchemaName: map['metadataSchemaName'] == null ? null : pulumi.Output.create<String>(map['metadataSchemaName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schema: pulumi.Output.create<String>(map['schema'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      assignedTo: map['assignedTo'] == null ? null : (pulumi.Input.decodeList<MetadataAssignment>(map['assignedTo'], (value) => MetadataAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadataSchemaName: map['metadataSchemaName'] == null ? null : (map['metadataSchemaName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schema: (map['schema'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

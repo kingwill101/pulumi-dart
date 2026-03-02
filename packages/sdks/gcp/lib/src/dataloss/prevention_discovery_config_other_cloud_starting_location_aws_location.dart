@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation {
   /// The AWS account ID that this discovery config applies to. Within an organization, you can find the AWS account ID inside an AWS account ARN. Example: arn:<partition>:organizations::<management-account-id>:account/<organization-id>/<account-id>
-  final String? accountId;
+  final pulumi.Input<String>? accountId;
   /// All AWS assets stored in Asset Inventory that didn't match other AWS discovery configs.
-  final bool? allAssetInventoryAssets;
+  final pulumi.Input<bool>? allAssetInventoryAssets;
 
   /// Creates a new [PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation].
   /// [accountId] The AWS account ID that this discovery config applies to. Within an organization, you can find the AWS account ID inside an AWS account ARN. Example: arn:<partition>:organizations::<management-account-id>:account/<organization-id>/<account-id>
@@ -24,8 +25,8 @@ class PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation {
 
   factory PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation(
-      accountId: map['accountId'] == null ? null : map['accountId'] as String,
-      allAssetInventoryAssets: map['allAssetInventoryAssets'] == null ? null : map['allAssetInventoryAssets'] as bool,
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      allAssetInventoryAssets: map['allAssetInventoryAssets'] == null ? null : (map['allAssetInventoryAssets'] as bool).input(),
     );
   }
 }

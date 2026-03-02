@@ -19,13 +19,10 @@ class GetMarkupRuleArgs {
   /// [billingProfileId] BillingProfile ID
   /// [name] Markup rule name.
   GetMarkupRuleArgs({
-    required pulumi.Output<String> billingAccountId,
-    required pulumi.Output<String> billingProfileId,
-    required pulumi.Output<String> name,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      billingProfileId = pulumi.Input.asInput<String>(billingProfileId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.billingAccountId,
+    required this.billingProfileId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMarkupRuleArgs {
 
   factory GetMarkupRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetMarkupRuleArgs(
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      billingProfileId: pulumi.Output.create<String>(map['billingProfileId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      billingProfileId: (map['billingProfileId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

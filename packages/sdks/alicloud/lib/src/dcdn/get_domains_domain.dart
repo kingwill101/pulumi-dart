@@ -5,29 +5,29 @@ import 'get_domains_domain_source.dart';
 
 class GetDomainsDomain {
   /// Indicates the name of the certificate.
-  final String certName;
+  final pulumi.Input<String> certName;
   /// The canonical name (CNAME) of the accelerated domain.
-  final String cname;
+  final pulumi.Input<String> cname;
   /// The reason that causes the review failure.
-  final String description;
+  final pulumi.Input<String> description;
   /// The name of the DCDN Domain.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The time when the accelerated domain was last modified.
-  final String gmtModified;
+  final pulumi.Input<String> gmtModified;
   /// The ID of the DCDN Domain.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The acceleration region.
-  final String scope;
+  final pulumi.Input<String> scope;
   /// The origin information.
-  final List<GetDomainsDomainSource> sources;
+  final pulumi.Input<List<GetDomainsDomainSource>> sources;
   /// Indicates whether the SSL certificate is enabled.
-  final String sslProtocol;
+  final pulumi.Input<String> sslProtocol;
   /// Indicates the public key of the certificate.
-  final String sslPub;
+  final pulumi.Input<String> sslPub;
   /// The status of DCDN Domain.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetDomainsDomain].
   /// [certName] Indicates the name of the certificate.
@@ -67,7 +67,7 @@ class GetDomainsDomain {
       'id': id,
       'resourceGroupId': resourceGroupId,
       'scope': scope,
-      'sources': pulumi.Input.encodeList<GetDomainsDomainSource, Map<String, dynamic>>(sources, (value) => value.toMap()),
+      'sources': pulumi.Input.mapInputValue<List<GetDomainsDomainSource>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<GetDomainsDomainSource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sslProtocol': sslProtocol,
       'sslPub': sslPub,
       'status': status,
@@ -76,18 +76,18 @@ class GetDomainsDomain {
 
   factory GetDomainsDomain.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomain(
-      certName: map['certName'] as String,
-      cname: map['cname'] as String,
-      description: map['description'] as String,
-      domainName: map['domainName'] as String,
-      gmtModified: map['gmtModified'] as String,
-      id: map['id'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      scope: map['scope'] as String,
-      sources: pulumi.Input.decodeList<GetDomainsDomainSource>(map['sources'], (value) => GetDomainsDomainSource.fromMap((value as Map).cast<String, dynamic>())),
-      sslProtocol: map['sslProtocol'] as String,
-      sslPub: map['sslPub'] as String,
-      status: map['status'] as String,
+      certName: (map['certName'] as String).input(),
+      cname: (map['cname'] as String).input(),
+      description: (map['description'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      gmtModified: (map['gmtModified'] as String).input(),
+      id: (map['id'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      sources: (pulumi.Input.decodeList<GetDomainsDomainSource>(map['sources'], (value) => GetDomainsDomainSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sslProtocol: (map['sslProtocol'] as String).input(),
+      sslPub: (map['sslPub'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

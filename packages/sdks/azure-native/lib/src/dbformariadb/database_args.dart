@@ -25,17 +25,12 @@ class DatabaseArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
   DatabaseArgs({
-    pulumi.Output<String>? charset,
-    pulumi.Output<String>? collation,
-    pulumi.Output<String>? databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      charset = pulumi.Input.asOptionalInput<String>(charset),
-      collation = pulumi.Input.asOptionalInput<String>(collation),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    this.charset,
+    this.collation,
+    this.databaseName,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      charset: map['charset'] == null ? null : pulumi.Output.create<String>(map['charset'] as String),
-      collation: map['collation'] == null ? null : pulumi.Output.create<String>(map['collation'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      charset: map['charset'] == null ? null : (map['charset'] as String).input(),
+      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

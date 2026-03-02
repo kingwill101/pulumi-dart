@@ -11,32 +11,32 @@ import 'user_owned_storage.dart';
 
 /// Properties of Cognitive Services account.
 class AccountProperties {
-  final List<String>? allowedFqdnList;
+  final pulumi.Input<List<String>>? allowedFqdnList;
   /// The user owned AML workspace properties.
-  final UserOwnedAmlWorkspace? amlWorkspace;
+  final pulumi.Input<UserOwnedAmlWorkspace>? amlWorkspace;
   /// The api properties for special APIs.
-  final ApiProperties? apiProperties;
+  final pulumi.Input<ApiProperties>? apiProperties;
   /// Optional subdomain name used for token-based authentication.
-  final String? customSubDomainName;
-  final bool? disableLocalAuth;
+  final pulumi.Input<String>? customSubDomainName;
+  final pulumi.Input<bool>? disableLocalAuth;
   /// The flag to enable dynamic throttling.
-  final bool? dynamicThrottlingEnabled;
+  final pulumi.Input<bool>? dynamicThrottlingEnabled;
   /// The encryption properties for this resource.
-  final Encryption? encryption;
+  final pulumi.Input<Encryption>? encryption;
   /// The multiregion settings of Cognitive Services account.
-  final MultiRegionSettings? locations;
+  final pulumi.Input<MultiRegionSettings>? locations;
   /// Resource migration token.
-  final String? migrationToken;
+  final pulumi.Input<String>? migrationToken;
   /// A collection of rules governing the accessibility from specific network locations.
-  final NetworkRuleSet? networkAcls;
+  final pulumi.Input<NetworkRuleSet>? networkAcls;
   /// Whether or not public endpoint access is allowed for this account.
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
   /// Cognitive Services Rai Monitor Config.
-  final RaiMonitorConfig? raiMonitorConfig;
-  final bool? restore;
-  final bool? restrictOutboundNetworkAccess;
+  final pulumi.Input<RaiMonitorConfig>? raiMonitorConfig;
+  final pulumi.Input<bool>? restore;
+  final pulumi.Input<bool>? restrictOutboundNetworkAccess;
   /// The storage accounts for this resource.
-  final List<UserOwnedStorage>? userOwnedStorage;
+  final pulumi.Input<List<UserOwnedStorage>>? userOwnedStorage;
 
   /// Creates a new [AccountProperties].
   /// [allowedFqdnList] Optional.
@@ -75,40 +75,40 @@ class AccountProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedFqdnList': ?allowedFqdnList,
-      'amlWorkspace': ?amlWorkspace == null ? null : amlWorkspace!.toMap(),
-      'apiProperties': ?apiProperties == null ? null : apiProperties!.toMap(),
+      'amlWorkspace': ?pulumi.Input.mapOptionalInputValue<UserOwnedAmlWorkspace, Map<String, dynamic>>(amlWorkspace, (value) => value.toMap()),
+      'apiProperties': ?pulumi.Input.mapOptionalInputValue<ApiProperties, Map<String, dynamic>>(apiProperties, (value) => value.toMap()),
       'customSubDomainName': ?customSubDomainName,
       'disableLocalAuth': ?disableLocalAuth,
       'dynamicThrottlingEnabled': ?dynamicThrottlingEnabled,
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
-      'locations': ?locations == null ? null : locations!.toMap(),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<Encryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'locations': ?pulumi.Input.mapOptionalInputValue<MultiRegionSettings, Map<String, dynamic>>(locations, (value) => value.toMap()),
       'migrationToken': ?migrationToken,
-      'networkAcls': ?networkAcls == null ? null : networkAcls!.toMap(),
+      'networkAcls': ?pulumi.Input.mapOptionalInputValue<NetworkRuleSet, Map<String, dynamic>>(networkAcls, (value) => value.toMap()),
       'publicNetworkAccess': ?publicNetworkAccess,
-      'raiMonitorConfig': ?raiMonitorConfig == null ? null : raiMonitorConfig!.toMap(),
+      'raiMonitorConfig': ?pulumi.Input.mapOptionalInputValue<RaiMonitorConfig, Map<String, dynamic>>(raiMonitorConfig, (value) => value.toMap()),
       'restore': ?restore,
       'restrictOutboundNetworkAccess': ?restrictOutboundNetworkAccess,
-      'userOwnedStorage': ?userOwnedStorage == null ? null : pulumi.Input.encodeList<UserOwnedStorage, Map<String, dynamic>>(userOwnedStorage!, (value) => value.toMap()),
+      'userOwnedStorage': ?pulumi.Input.mapOptionalInputValue<List<UserOwnedStorage>, List<Map<String, dynamic>>>(userOwnedStorage, (value) => pulumi.Input.encodeList<UserOwnedStorage, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AccountProperties.fromMap(Map<String, dynamic> map) {
     return AccountProperties(
-      allowedFqdnList: map['allowedFqdnList'] == null ? null : (map['allowedFqdnList'] as List).cast<String>(),
-      amlWorkspace: map['amlWorkspace'] == null ? null : UserOwnedAmlWorkspace.fromMap((map['amlWorkspace'] as Map).cast<String, dynamic>()),
-      apiProperties: map['apiProperties'] == null ? null : ApiProperties.fromMap((map['apiProperties'] as Map).cast<String, dynamic>()),
-      customSubDomainName: map['customSubDomainName'] == null ? null : map['customSubDomainName'] as String,
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : map['disableLocalAuth'] as bool,
-      dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] == null ? null : map['dynamicThrottlingEnabled'] as bool,
-      encryption: map['encryption'] == null ? null : Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      locations: map['locations'] == null ? null : MultiRegionSettings.fromMap((map['locations'] as Map).cast<String, dynamic>()),
-      migrationToken: map['migrationToken'] == null ? null : map['migrationToken'] as String,
-      networkAcls: map['networkAcls'] == null ? null : NetworkRuleSet.fromMap((map['networkAcls'] as Map).cast<String, dynamic>()),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
-      raiMonitorConfig: map['raiMonitorConfig'] == null ? null : RaiMonitorConfig.fromMap((map['raiMonitorConfig'] as Map).cast<String, dynamic>()),
-      restore: map['restore'] == null ? null : map['restore'] as bool,
-      restrictOutboundNetworkAccess: map['restrictOutboundNetworkAccess'] == null ? null : map['restrictOutboundNetworkAccess'] as bool,
-      userOwnedStorage: map['userOwnedStorage'] == null ? null : pulumi.Input.decodeList<UserOwnedStorage>(map['userOwnedStorage'], (value) => UserOwnedStorage.fromMap((value as Map).cast<String, dynamic>())),
+      allowedFqdnList: map['allowedFqdnList'] == null ? null : ((map['allowedFqdnList'] as List).cast<String>()).input(),
+      amlWorkspace: map['amlWorkspace'] == null ? null : (UserOwnedAmlWorkspace.fromMap((map['amlWorkspace'] as Map).cast<String, dynamic>())).input(),
+      apiProperties: map['apiProperties'] == null ? null : (ApiProperties.fromMap((map['apiProperties'] as Map).cast<String, dynamic>())).input(),
+      customSubDomainName: map['customSubDomainName'] == null ? null : (map['customSubDomainName'] as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
+      dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] == null ? null : (map['dynamicThrottlingEnabled'] as bool).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      locations: map['locations'] == null ? null : (MultiRegionSettings.fromMap((map['locations'] as Map).cast<String, dynamic>())).input(),
+      migrationToken: map['migrationToken'] == null ? null : (map['migrationToken'] as String).input(),
+      networkAcls: map['networkAcls'] == null ? null : (NetworkRuleSet.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      raiMonitorConfig: map['raiMonitorConfig'] == null ? null : (RaiMonitorConfig.fromMap((map['raiMonitorConfig'] as Map).cast<String, dynamic>())).input(),
+      restore: map['restore'] == null ? null : (map['restore'] as bool).input(),
+      restrictOutboundNetworkAccess: map['restrictOutboundNetworkAccess'] == null ? null : (map['restrictOutboundNetworkAccess'] as bool).input(),
+      userOwnedStorage: map['userOwnedStorage'] == null ? null : (pulumi.Input.decodeList<UserOwnedStorage>(map['userOwnedStorage'], (value) => UserOwnedStorage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

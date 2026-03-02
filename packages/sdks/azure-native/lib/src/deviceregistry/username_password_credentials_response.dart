@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The credentials for authentication mode UsernamePassword.
 class UsernamePasswordCredentialsResponse {
   /// The name of the secret containing the password.
-  final String passwordSecretName;
+  final pulumi.Input<String> passwordSecretName;
   /// The name of the secret containing the username.
-  final String usernameSecretName;
+  final pulumi.Input<String> usernameSecretName;
 
   /// Creates a new [UsernamePasswordCredentialsResponse].
   /// [passwordSecretName] The name of the secret containing the password.
@@ -25,8 +26,8 @@ class UsernamePasswordCredentialsResponse {
 
   factory UsernamePasswordCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return UsernamePasswordCredentialsResponse(
-      passwordSecretName: map['passwordSecretName'] as String,
-      usernameSecretName: map['usernameSecretName'] as String,
+      passwordSecretName: (map['passwordSecretName'] as String).input(),
+      usernameSecretName: (map['usernameSecretName'] as String).input(),
     );
   }
 }

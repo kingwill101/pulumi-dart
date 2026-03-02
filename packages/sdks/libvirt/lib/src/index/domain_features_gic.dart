@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesGic {
   /// Sets the version of the GIC feature supported by the domain.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [DomainFeaturesGic].
   /// [version] Sets the version of the GIC feature supported by the domain.
@@ -19,7 +20,7 @@ class DomainFeaturesGic {
 
   factory DomainFeaturesGic.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesGic(
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

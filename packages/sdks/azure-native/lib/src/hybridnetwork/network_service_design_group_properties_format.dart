@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// network service design group properties.
 class NetworkServiceDesignGroupPropertiesFormat {
   /// The network service design group description.
-  final String? description;
+  final pulumi.Input<String>? description;
 
   /// Creates a new [NetworkServiceDesignGroupPropertiesFormat].
   /// [description] The network service design group description.
@@ -20,7 +21,7 @@ class NetworkServiceDesignGroupPropertiesFormat {
 
   factory NetworkServiceDesignGroupPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return NetworkServiceDesignGroupPropertiesFormat(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
     );
   }
 }

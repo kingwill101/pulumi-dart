@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubResourceReadOnlyResponse {
   /// Resource Id
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [SubResourceReadOnlyResponse].
   /// [id] Resource Id
@@ -19,7 +20,7 @@ class SubResourceReadOnlyResponse {
 
   factory SubResourceReadOnlyResponse.fromMap(Map<String, dynamic> map) {
     return SubResourceReadOnlyResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

@@ -22,13 +22,10 @@ class AccountSettingArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [value] Setting value that is specified. Valid values are:
   AccountSettingArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> value,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      value = pulumi.Input.asInput<String>(value);
+    this.name,
+    this.region,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class AccountSettingArgs {
 
   factory AccountSettingArgs.fromMap(Map<String, dynamic> map) {
     return AccountSettingArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxClusterVpcConfiguration {
   /// IP address type for cluster network configuration parameters. The following type is available: IP_V4 - IP address version 4.
-  final String ipAddressType;
+  final pulumi.Input<String> ipAddressType;
   /// Unique identifier of the VPC security group applied to the VPC endpoint ENI for the cluster.
   /// * `subnet_ids `- (Required) Identifier of the subnet that the Privatelink VPC endpoint uses to connect to the cluster.
-  final List<String> securityGroupIds;
-  final List<String> subnetIds;
+  final pulumi.Input<List<String>> securityGroupIds;
+  final pulumi.Input<List<String>> subnetIds;
   /// Identifier of the VPC endpoint
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [KxClusterVpcConfiguration].
   /// [ipAddressType] IP address type for cluster network configuration parameters. The following type is available: IP_V4 - IP address version 4.
@@ -34,10 +35,10 @@ class KxClusterVpcConfiguration {
 
   factory KxClusterVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterVpcConfiguration(
-      ipAddressType: map['ipAddressType'] as String,
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
-      vpcId: map['vpcId'] as String,
+      ipAddressType: (map['ipAddressType'] as String).input(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

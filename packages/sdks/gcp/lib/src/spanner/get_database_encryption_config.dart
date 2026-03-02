@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseEncryptionConfig {
   /// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
   /// in the same location as the Spanner Database.
-  final String kmsKeyName;
+  final pulumi.Input<String> kmsKeyName;
   /// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
   /// in the same locations as the Spanner Database.
-  final List<String> kmsKeyNames;
+  final pulumi.Input<List<String>> kmsKeyNames;
 
   /// Creates a new [GetDatabaseEncryptionConfig].
   /// [kmsKeyName] Fully qualified name of the KMS key to use to encrypt this database. This key must exist
@@ -26,8 +27,8 @@ class GetDatabaseEncryptionConfig {
 
   factory GetDatabaseEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseEncryptionConfig(
-      kmsKeyName: map['kmsKeyName'] as String,
-      kmsKeyNames: (map['kmsKeyNames'] as List).cast<String>(),
+      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      kmsKeyNames: ((map['kmsKeyNames'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the provider properties.
 class SapNetWeaverProviderInstanceProperties {
   /// The provider type. For example, the value can be SapHana.
   /// Expected value is 'SapNetWeaver'.
-  final String providerType;
+  final pulumi.Input<String> providerType;
   /// Gets or sets the SAP Client ID.
-  final String? sapClientId;
+  final pulumi.Input<String>? sapClientId;
   /// Gets or sets the list of HostFile Entries
-  final List<String>? sapHostFileEntries;
+  final pulumi.Input<List<String>>? sapHostFileEntries;
   /// Gets or sets the target virtual machine IP Address/FQDN.
-  final String? sapHostname;
+  final pulumi.Input<String>? sapHostname;
   /// Gets or sets the instance number of SAP NetWeaver.
-  final String? sapInstanceNr;
+  final pulumi.Input<String>? sapInstanceNr;
   /// Sets the SAP password.
-  final String? sapPassword;
+  final pulumi.Input<String>? sapPassword;
   /// Gets or sets the key vault URI to secret with the SAP password.
-  final String? sapPasswordUri;
+  final pulumi.Input<String>? sapPasswordUri;
   /// Gets or sets the SAP HTTP port number.
-  final String? sapPortNumber;
+  final pulumi.Input<String>? sapPortNumber;
   /// Gets or sets the SAP System Identifier
-  final String? sapSid;
+  final pulumi.Input<String>? sapSid;
   /// Gets or sets the SAP user name.
-  final String? sapUsername;
+  final pulumi.Input<String>? sapUsername;
   /// Gets or sets the blob URI to SSL certificate for the SAP system.
-  final String? sslCertificateUri;
+  final pulumi.Input<String>? sslCertificateUri;
   /// Gets or sets certificate preference if secure communication is enabled.
-  final String? sslPreference;
+  final pulumi.Input<String>? sslPreference;
 
   /// Creates a new [SapNetWeaverProviderInstanceProperties].
   /// [providerType] The provider type. For example, the value can be SapHana.
@@ -76,18 +77,18 @@ class SapNetWeaverProviderInstanceProperties {
 
   factory SapNetWeaverProviderInstanceProperties.fromMap(Map<String, dynamic> map) {
     return SapNetWeaverProviderInstanceProperties(
-      providerType: map['providerType'] as String,
-      sapClientId: map['sapClientId'] == null ? null : map['sapClientId'] as String,
-      sapHostFileEntries: map['sapHostFileEntries'] == null ? null : (map['sapHostFileEntries'] as List).cast<String>(),
-      sapHostname: map['sapHostname'] == null ? null : map['sapHostname'] as String,
-      sapInstanceNr: map['sapInstanceNr'] == null ? null : map['sapInstanceNr'] as String,
-      sapPassword: map['sapPassword'] == null ? null : map['sapPassword'] as String,
-      sapPasswordUri: map['sapPasswordUri'] == null ? null : map['sapPasswordUri'] as String,
-      sapPortNumber: map['sapPortNumber'] == null ? null : map['sapPortNumber'] as String,
-      sapSid: map['sapSid'] == null ? null : map['sapSid'] as String,
-      sapUsername: map['sapUsername'] == null ? null : map['sapUsername'] as String,
-      sslCertificateUri: map['sslCertificateUri'] == null ? null : map['sslCertificateUri'] as String,
-      sslPreference: map['sslPreference'] == null ? null : map['sslPreference'] as String,
+      providerType: (map['providerType'] as String).input(),
+      sapClientId: map['sapClientId'] == null ? null : (map['sapClientId'] as String).input(),
+      sapHostFileEntries: map['sapHostFileEntries'] == null ? null : ((map['sapHostFileEntries'] as List).cast<String>()).input(),
+      sapHostname: map['sapHostname'] == null ? null : (map['sapHostname'] as String).input(),
+      sapInstanceNr: map['sapInstanceNr'] == null ? null : (map['sapInstanceNr'] as String).input(),
+      sapPassword: map['sapPassword'] == null ? null : (map['sapPassword'] as String).input(),
+      sapPasswordUri: map['sapPasswordUri'] == null ? null : (map['sapPasswordUri'] as String).input(),
+      sapPortNumber: map['sapPortNumber'] == null ? null : (map['sapPortNumber'] as String).input(),
+      sapSid: map['sapSid'] == null ? null : (map['sapSid'] as String).input(),
+      sapUsername: map['sapUsername'] == null ? null : (map['sapUsername'] as String).input(),
+      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri'] as String).input(),
+      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference'] as String).input(),
     );
   }
 }

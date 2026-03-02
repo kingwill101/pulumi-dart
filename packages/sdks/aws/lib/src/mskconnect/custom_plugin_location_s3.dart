@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomPluginLocationS3 {
   /// The Amazon Resource Name (ARN) of an S3 bucket.
-  final String bucketArn;
+  final pulumi.Input<String> bucketArn;
   /// The file key for an object in an S3 bucket.
-  final String fileKey;
+  final pulumi.Input<String> fileKey;
   /// The version of an object in an S3 bucket.
-  final String? objectVersion;
+  final pulumi.Input<String>? objectVersion;
 
   /// Creates a new [CustomPluginLocationS3].
   /// [bucketArn] The Amazon Resource Name (ARN) of an S3 bucket.
@@ -29,9 +30,9 @@ class CustomPluginLocationS3 {
 
   factory CustomPluginLocationS3.fromMap(Map<String, dynamic> map) {
     return CustomPluginLocationS3(
-      bucketArn: map['bucketArn'] as String,
-      fileKey: map['fileKey'] as String,
-      objectVersion: map['objectVersion'] == null ? null : map['objectVersion'] as String,
+      bucketArn: (map['bucketArn'] as String).input(),
+      fileKey: (map['fileKey'] as String).input(),
+      objectVersion: map['objectVersion'] == null ? null : (map['objectVersion'] as String).input(),
     );
   }
 }

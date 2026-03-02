@@ -43,31 +43,19 @@ class VolumeState {
   /// [tags] A list of the tags to be applied to this Volume.
   /// [volumeUrn] The uniform resource name for the volume.
   VolumeState({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<int>>? dropletIds,
-    pulumi.Output<String>? filesystemLabel,
-    pulumi.Output<String>? filesystemType,
-    pulumi.Output<String>? initialFilesystemLabel,
-    pulumi.Output<String>? initialFilesystemType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? size,
-    pulumi.Output<String>? snapshotId,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? volumeUrn,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dropletIds = pulumi.Input.asOptionalInput<List<int>>(dropletIds),
-      filesystemLabel = pulumi.Input.asOptionalInput<String>(filesystemLabel),
-      filesystemType = pulumi.Input.asOptionalInput<String>(filesystemType),
-      initialFilesystemLabel = pulumi.Input.asOptionalInput<String>(initialFilesystemLabel),
-      initialFilesystemType = pulumi.Input.asOptionalInput<String>(initialFilesystemType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      snapshotId = pulumi.Input.asOptionalInput<String>(snapshotId),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      volumeUrn = pulumi.Input.asOptionalInput<String>(volumeUrn);
+    this.description,
+    this.dropletIds,
+    this.filesystemLabel,
+    this.filesystemType,
+    this.initialFilesystemLabel,
+    this.initialFilesystemType,
+    this.name,
+    this.region,
+    this.size,
+    this.snapshotId,
+    this.tags,
+    this.volumeUrn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class VolumeState {
 
   factory VolumeState.fromMap(Map<String, dynamic> map) {
     return VolumeState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dropletIds: map['dropletIds'] == null ? null : pulumi.Output.create<List<int>>((map['dropletIds'] as List).cast<int>()),
-      filesystemLabel: map['filesystemLabel'] == null ? null : pulumi.Output.create<String>(map['filesystemLabel'] as String),
-      filesystemType: map['filesystemType'] == null ? null : pulumi.Output.create<String>(map['filesystemType'] as String),
-      initialFilesystemLabel: map['initialFilesystemLabel'] == null ? null : pulumi.Output.create<String>(map['initialFilesystemLabel'] as String),
-      initialFilesystemType: map['initialFilesystemType'] == null ? null : pulumi.Output.create<String>(map['initialFilesystemType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      snapshotId: map['snapshotId'] == null ? null : pulumi.Output.create<String>(map['snapshotId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      volumeUrn: map['volumeUrn'] == null ? null : pulumi.Output.create<String>(map['volumeUrn'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dropletIds: map['dropletIds'] == null ? null : ((map['dropletIds'] as List).cast<int>()).input(),
+      filesystemLabel: map['filesystemLabel'] == null ? null : (map['filesystemLabel'] as String).input(),
+      filesystemType: map['filesystemType'] == null ? null : (map['filesystemType'] as String).input(),
+      initialFilesystemLabel: map['initialFilesystemLabel'] == null ? null : (map['initialFilesystemLabel'] as String).input(),
+      initialFilesystemType: map['initialFilesystemType'] == null ? null : (map['initialFilesystemType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      volumeUrn: map['volumeUrn'] == null ? null : (map['volumeUrn'] as String).input(),
     );
   }
 }

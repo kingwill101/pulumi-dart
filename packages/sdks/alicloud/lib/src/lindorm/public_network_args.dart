@@ -19,13 +19,10 @@ class PublicNetworkArgs {
   /// [engineType] Engine type, value:
   /// [instanceId] Instance ID
   PublicNetworkArgs({
-    pulumi.Output<int>? enablePublicNetwork,
-    required pulumi.Output<String> engineType,
-    required pulumi.Output<String> instanceId,
-  }) :
-      enablePublicNetwork = pulumi.Input.asOptionalInput<int>(enablePublicNetwork),
-      engineType = pulumi.Input.asInput<String>(engineType),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    this.enablePublicNetwork,
+    required this.engineType,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PublicNetworkArgs {
 
   factory PublicNetworkArgs.fromMap(Map<String, dynamic> map) {
     return PublicNetworkArgs(
-      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : pulumi.Output.create<int>(map['enablePublicNetwork'] as int),
-      engineType: pulumi.Output.create<String>(map['engineType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : (map['enablePublicNetwork'] as int).input(),
+      engineType: (map['engineType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

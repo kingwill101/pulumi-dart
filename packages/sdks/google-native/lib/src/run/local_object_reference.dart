@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Not supported by Cloud Run. LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 class LocalObjectReference {
   /// Name of the referent.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [LocalObjectReference].
   /// [name] Name of the referent.
@@ -20,7 +21,7 @@ class LocalObjectReference {
 
   factory LocalObjectReference.fromMap(Map<String, dynamic> map) {
     return LocalObjectReference(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

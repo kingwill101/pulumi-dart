@@ -19,13 +19,10 @@ class GetWebAppPublicCertificateArgs {
   /// [publicCertificateName] Public certificate name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   GetWebAppPublicCertificateArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> publicCertificateName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      publicCertificateName = pulumi.Input.asInput<String>(publicCertificateName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.publicCertificateName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWebAppPublicCertificateArgs {
 
   factory GetWebAppPublicCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppPublicCertificateArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      publicCertificateName: pulumi.Output.create<String>(map['publicCertificateName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      publicCertificateName: (map['publicCertificateName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

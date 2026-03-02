@@ -35,19 +35,13 @@ class WorkstationIamPolicyArgs {
   /// [workstationConfigId] The ID of the parent workstation cluster config.
   /// [workstationId] Used to find the parent resource to bind the IAM policy to
   WorkstationIamPolicyArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> workstationClusterId,
-    required pulumi.Output<String> workstationConfigId,
-    required pulumi.Output<String> workstationId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workstationClusterId = pulumi.Input.asInput<String>(workstationClusterId),
-      workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
-      workstationId = pulumi.Input.asInput<String>(workstationId);
+    this.location,
+    required this.policyData,
+    this.project,
+    required this.workstationClusterId,
+    required this.workstationConfigId,
+    required this.workstationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class WorkstationIamPolicyArgs {
 
   factory WorkstationIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationIamPolicyArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workstationClusterId: pulumi.Output.create<String>(map['workstationClusterId'] as String),
-      workstationConfigId: pulumi.Output.create<String>(map['workstationConfigId'] as String),
-      workstationId: pulumi.Output.create<String>(map['workstationId'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workstationClusterId: (map['workstationClusterId'] as String).input(),
+      workstationConfigId: (map['workstationConfigId'] as String).input(),
+      workstationId: (map['workstationId'] as String).input(),
     );
   }
 }

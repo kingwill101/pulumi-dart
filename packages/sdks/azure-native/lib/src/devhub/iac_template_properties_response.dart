@@ -6,16 +6,16 @@ import 'iac_template_details_response.dart';
 /// Properties of a IacTemplate.
 class IacTemplatePropertiesResponse {
   /// the sample instance name of the template
-  final String? instanceName;
+  final pulumi.Input<String>? instanceName;
   /// the source stage of the template
-  final String? instanceStage;
+  final pulumi.Input<String>? instanceStage;
   /// Determines the authorization status of requests.
-  final String? quickStartTemplateType;
+  final pulumi.Input<String>? quickStartTemplateType;
   /// the source store of the template
-  final String? sourceResourceId;
-  final List<IacTemplateDetailsResponse>? templateDetails;
+  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<List<IacTemplateDetailsResponse>>? templateDetails;
   /// Template Name
-  final String? templateName;
+  final pulumi.Input<String>? templateName;
 
   /// Creates a new [IacTemplatePropertiesResponse].
   /// [instanceName] the sample instance name of the template
@@ -39,19 +39,19 @@ class IacTemplatePropertiesResponse {
       'instanceStage': ?instanceStage,
       'quickStartTemplateType': ?quickStartTemplateType,
       'sourceResourceId': ?sourceResourceId,
-      'templateDetails': ?templateDetails == null ? null : pulumi.Input.encodeList<IacTemplateDetailsResponse, Map<String, dynamic>>(templateDetails!, (value) => value.toMap()),
+      'templateDetails': ?pulumi.Input.mapOptionalInputValue<List<IacTemplateDetailsResponse>, List<Map<String, dynamic>>>(templateDetails, (value) => pulumi.Input.encodeList<IacTemplateDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'templateName': ?templateName,
     };
   }
 
   factory IacTemplatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IacTemplatePropertiesResponse(
-      instanceName: map['instanceName'] == null ? null : map['instanceName'] as String,
-      instanceStage: map['instanceStage'] == null ? null : map['instanceStage'] as String,
-      quickStartTemplateType: map['quickStartTemplateType'] == null ? null : map['quickStartTemplateType'] as String,
-      sourceResourceId: map['sourceResourceId'] == null ? null : map['sourceResourceId'] as String,
-      templateDetails: map['templateDetails'] == null ? null : pulumi.Input.decodeList<IacTemplateDetailsResponse>(map['templateDetails'], (value) => IacTemplateDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      templateName: map['templateName'] == null ? null : map['templateName'] as String,
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      instanceStage: map['instanceStage'] == null ? null : (map['instanceStage'] as String).input(),
+      quickStartTemplateType: map['quickStartTemplateType'] == null ? null : (map['quickStartTemplateType'] as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      templateDetails: map['templateDetails'] == null ? null : (pulumi.Input.decodeList<IacTemplateDetailsResponse>(map['templateDetails'], (value) => IacTemplateDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
     );
   }
 }

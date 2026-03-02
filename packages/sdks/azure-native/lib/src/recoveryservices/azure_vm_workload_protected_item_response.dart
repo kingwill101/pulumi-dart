@@ -9,72 +9,72 @@ import 'kpiresource_health_details_response.dart';
 /// Azure VM workload-specific protected item.
 class AzureVmWorkloadProtectedItemResponse {
   /// Type of backup management for the backed up item.
-  final String backupManagementType;
+  final pulumi.Input<String> backupManagementType;
   /// Name of the backup set the backup item belongs to
-  final String? backupSetName;
+  final pulumi.Input<String>? backupSetName;
   /// Unique name of container
-  final String? containerName;
+  final pulumi.Input<String>? containerName;
   /// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
-  final String? createMode;
+  final pulumi.Input<String>? createMode;
   /// Time for deferred deletion in UTC
-  final String? deferredDeleteTimeInUTC;
+  final pulumi.Input<String>? deferredDeleteTimeInUTC;
   /// Time remaining before the DS marked for deferred delete is permanently deleted
-  final String? deferredDeleteTimeRemaining;
+  final pulumi.Input<String>? deferredDeleteTimeRemaining;
   /// Additional information for this backup item.
-  final AzureVmWorkloadProtectedItemExtendedInfoResponse? extendedInfo;
+  final pulumi.Input<AzureVmWorkloadProtectedItemExtendedInfoResponse>? extendedInfo;
   /// Friendly name of the DB represented by this backup item.
-  final String friendlyName;
+  final pulumi.Input<String> friendlyName;
   /// Flag to identify whether datasource is protected in archive
-  final bool? isArchiveEnabled;
+  final pulumi.Input<bool>? isArchiveEnabled;
   /// Flag to identify whether the deferred deleted DS is to be purged soon
-  final bool? isDeferredDeleteScheduleUpcoming;
+  final pulumi.Input<bool>? isDeferredDeleteScheduleUpcoming;
   /// Flag to identify that deferred deleted DS is to be moved into Pause state
-  final bool? isRehydrate;
+  final pulumi.Input<bool>? isRehydrate;
   /// Flag to identify whether the DS is scheduled for deferred delete
-  final bool? isScheduledForDeferredDelete;
+  final pulumi.Input<bool>? isScheduledForDeferredDelete;
   /// Health details of different KPIs
-  final Map<String, KPIResourceHealthDetailsResponse>? kpisHealths;
+  final pulumi.Input<Map<String, KPIResourceHealthDetailsResponse>>? kpisHealths;
   /// Error details in last backup
-  final ErrorDetailResponse? lastBackupErrorDetail;
+  final pulumi.Input<ErrorDetailResponse>? lastBackupErrorDetail;
   /// Last backup operation status. Possible values: Healthy, Unhealthy.
-  final String? lastBackupStatus;
+  final pulumi.Input<String>? lastBackupStatus;
   /// Timestamp of the last backup operation on this backup item.
-  final String? lastBackupTime;
+  final pulumi.Input<String>? lastBackupTime;
   /// Timestamp when the last (latest) backup copy was created for this backup item.
-  final String? lastRecoveryPoint;
+  final pulumi.Input<String>? lastRecoveryPoint;
   /// List of the nodes in case of distributed container.
-  final List<DistributedNodesInfoResponse>? nodesList;
+  final pulumi.Input<List<DistributedNodesInfoResponse>>? nodesList;
   /// Parent name of the DB such as Instance or Availability Group.
-  final String? parentName;
+  final pulumi.Input<String>? parentName;
   /// Parent type of protected item, example: for a DB, standalone server or distributed
-  final String? parentType;
+  final pulumi.Input<String>? parentType;
   /// ID of the backup policy with which this item is backed up.
-  final String? policyId;
+  final pulumi.Input<String>? policyId;
   /// Name of the policy used for protection
-  final String? policyName;
+  final pulumi.Input<String>? policyName;
   /// Data ID of the protected item.
-  final String? protectedItemDataSourceId;
+  final pulumi.Input<String>? protectedItemDataSourceId;
   /// Health status of the backup item, evaluated based on last heartbeat received
-  final String? protectedItemHealthStatus;
+  final pulumi.Input<String>? protectedItemHealthStatus;
   /// backup item type.
   /// Expected value is 'AzureVmWorkloadProtectedItem'.
-  final String protectedItemType;
+  final pulumi.Input<String> protectedItemType;
   /// Backup state of this backup item.
-  final String? protectionState;
+  final pulumi.Input<String>? protectionState;
   /// Backup status of this backup item.
-  final String protectionStatus;
+  final pulumi.Input<String> protectionStatus;
   /// ResourceGuardOperationRequests on which LAC check will be performed
-  final List<String>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
   /// Host/Cluster Name for instance or AG
-  final String? serverName;
+  final pulumi.Input<String>? serverName;
   /// Soft delete retention period in days
-  final int? softDeleteRetentionPeriodInDays;
+  final pulumi.Input<int>? softDeleteRetentionPeriodInDays;
   /// ARM ID of the resource to be backed up.
-  final String? sourceResourceId;
+  final pulumi.Input<String>? sourceResourceId;
   /// ID of the vault which protects this item
-  final String vaultId;
+  final pulumi.Input<String> vaultId;
   /// Type of workload this item represents.
-  final String workloadType;
+  final pulumi.Input<String> workloadType;
 
   /// Creates a new [AzureVmWorkloadProtectedItemResponse].
   /// [backupManagementType] Type of backup management for the backed up item.
@@ -154,18 +154,18 @@ class AzureVmWorkloadProtectedItemResponse {
       'createMode': ?createMode,
       'deferredDeleteTimeInUTC': ?deferredDeleteTimeInUTC,
       'deferredDeleteTimeRemaining': ?deferredDeleteTimeRemaining,
-      'extendedInfo': ?extendedInfo == null ? null : extendedInfo!.toMap(),
+      'extendedInfo': ?pulumi.Input.mapOptionalInputValue<AzureVmWorkloadProtectedItemExtendedInfoResponse, Map<String, dynamic>>(extendedInfo, (value) => value.toMap()),
       'friendlyName': friendlyName,
       'isArchiveEnabled': ?isArchiveEnabled,
       'isDeferredDeleteScheduleUpcoming': ?isDeferredDeleteScheduleUpcoming,
       'isRehydrate': ?isRehydrate,
       'isScheduledForDeferredDelete': ?isScheduledForDeferredDelete,
-      'kpisHealths': ?kpisHealths == null ? null : pulumi.Input.encodeMapValues<KPIResourceHealthDetailsResponse, Map<String, dynamic>>(kpisHealths!, (value) => value.toMap()),
-      'lastBackupErrorDetail': ?lastBackupErrorDetail == null ? null : lastBackupErrorDetail!.toMap(),
+      'kpisHealths': ?pulumi.Input.mapOptionalInputValue<Map<String, KPIResourceHealthDetailsResponse>, Map<String, Map<String, dynamic>>>(kpisHealths, (value) => pulumi.Input.encodeMapValues<KPIResourceHealthDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lastBackupErrorDetail': ?pulumi.Input.mapOptionalInputValue<ErrorDetailResponse, Map<String, dynamic>>(lastBackupErrorDetail, (value) => value.toMap()),
       'lastBackupStatus': ?lastBackupStatus,
       'lastBackupTime': ?lastBackupTime,
       'lastRecoveryPoint': ?lastRecoveryPoint,
-      'nodesList': ?nodesList == null ? null : pulumi.Input.encodeList<DistributedNodesInfoResponse, Map<String, dynamic>>(nodesList!, (value) => value.toMap()),
+      'nodesList': ?pulumi.Input.mapOptionalInputValue<List<DistributedNodesInfoResponse>, List<Map<String, dynamic>>>(nodesList, (value) => pulumi.Input.encodeList<DistributedNodesInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'parentName': ?parentName,
       'parentType': ?parentType,
       'policyId': ?policyId,
@@ -186,39 +186,39 @@ class AzureVmWorkloadProtectedItemResponse {
 
   factory AzureVmWorkloadProtectedItemResponse.fromMap(Map<String, dynamic> map) {
     return AzureVmWorkloadProtectedItemResponse(
-      backupManagementType: map['backupManagementType'] as String,
-      backupSetName: map['backupSetName'] == null ? null : map['backupSetName'] as String,
-      containerName: map['containerName'] == null ? null : map['containerName'] as String,
-      createMode: map['createMode'] == null ? null : map['createMode'] as String,
-      deferredDeleteTimeInUTC: map['deferredDeleteTimeInUTC'] == null ? null : map['deferredDeleteTimeInUTC'] as String,
-      deferredDeleteTimeRemaining: map['deferredDeleteTimeRemaining'] == null ? null : map['deferredDeleteTimeRemaining'] as String,
-      extendedInfo: map['extendedInfo'] == null ? null : AzureVmWorkloadProtectedItemExtendedInfoResponse.fromMap((map['extendedInfo'] as Map).cast<String, dynamic>()),
-      friendlyName: map['friendlyName'] as String,
-      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : map['isArchiveEnabled'] as bool,
-      isDeferredDeleteScheduleUpcoming: map['isDeferredDeleteScheduleUpcoming'] == null ? null : map['isDeferredDeleteScheduleUpcoming'] as bool,
-      isRehydrate: map['isRehydrate'] == null ? null : map['isRehydrate'] as bool,
-      isScheduledForDeferredDelete: map['isScheduledForDeferredDelete'] == null ? null : map['isScheduledForDeferredDelete'] as bool,
-      kpisHealths: map['kpisHealths'] == null ? null : pulumi.Input.decodeMapValues<KPIResourceHealthDetailsResponse>(map['kpisHealths'], (value) => KPIResourceHealthDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastBackupErrorDetail: map['lastBackupErrorDetail'] == null ? null : ErrorDetailResponse.fromMap((map['lastBackupErrorDetail'] as Map).cast<String, dynamic>()),
-      lastBackupStatus: map['lastBackupStatus'] == null ? null : map['lastBackupStatus'] as String,
-      lastBackupTime: map['lastBackupTime'] == null ? null : map['lastBackupTime'] as String,
-      lastRecoveryPoint: map['lastRecoveryPoint'] == null ? null : map['lastRecoveryPoint'] as String,
-      nodesList: map['nodesList'] == null ? null : pulumi.Input.decodeList<DistributedNodesInfoResponse>(map['nodesList'], (value) => DistributedNodesInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      parentName: map['parentName'] == null ? null : map['parentName'] as String,
-      parentType: map['parentType'] == null ? null : map['parentType'] as String,
-      policyId: map['policyId'] == null ? null : map['policyId'] as String,
-      policyName: map['policyName'] == null ? null : map['policyName'] as String,
-      protectedItemDataSourceId: map['protectedItemDataSourceId'] == null ? null : map['protectedItemDataSourceId'] as String,
-      protectedItemHealthStatus: map['protectedItemHealthStatus'] == null ? null : map['protectedItemHealthStatus'] as String,
-      protectedItemType: map['protectedItemType'] as String,
-      protectionState: map['protectionState'] == null ? null : map['protectionState'] as String,
-      protectionStatus: map['protectionStatus'] as String,
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : (map['resourceGuardOperationRequests'] as List).cast<String>(),
-      serverName: map['serverName'] == null ? null : map['serverName'] as String,
-      softDeleteRetentionPeriodInDays: map['softDeleteRetentionPeriodInDays'] == null ? null : map['softDeleteRetentionPeriodInDays'] as int,
-      sourceResourceId: map['sourceResourceId'] == null ? null : map['sourceResourceId'] as String,
-      vaultId: map['vaultId'] as String,
-      workloadType: map['workloadType'] as String,
+      backupManagementType: (map['backupManagementType'] as String).input(),
+      backupSetName: map['backupSetName'] == null ? null : (map['backupSetName'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      deferredDeleteTimeInUTC: map['deferredDeleteTimeInUTC'] == null ? null : (map['deferredDeleteTimeInUTC'] as String).input(),
+      deferredDeleteTimeRemaining: map['deferredDeleteTimeRemaining'] == null ? null : (map['deferredDeleteTimeRemaining'] as String).input(),
+      extendedInfo: map['extendedInfo'] == null ? null : (AzureVmWorkloadProtectedItemExtendedInfoResponse.fromMap((map['extendedInfo'] as Map).cast<String, dynamic>())).input(),
+      friendlyName: (map['friendlyName'] as String).input(),
+      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled'] as bool).input(),
+      isDeferredDeleteScheduleUpcoming: map['isDeferredDeleteScheduleUpcoming'] == null ? null : (map['isDeferredDeleteScheduleUpcoming'] as bool).input(),
+      isRehydrate: map['isRehydrate'] == null ? null : (map['isRehydrate'] as bool).input(),
+      isScheduledForDeferredDelete: map['isScheduledForDeferredDelete'] == null ? null : (map['isScheduledForDeferredDelete'] as bool).input(),
+      kpisHealths: map['kpisHealths'] == null ? null : (pulumi.Input.decodeMapValues<KPIResourceHealthDetailsResponse>(map['kpisHealths'], (value) => KPIResourceHealthDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastBackupErrorDetail: map['lastBackupErrorDetail'] == null ? null : (ErrorDetailResponse.fromMap((map['lastBackupErrorDetail'] as Map).cast<String, dynamic>())).input(),
+      lastBackupStatus: map['lastBackupStatus'] == null ? null : (map['lastBackupStatus'] as String).input(),
+      lastBackupTime: map['lastBackupTime'] == null ? null : (map['lastBackupTime'] as String).input(),
+      lastRecoveryPoint: map['lastRecoveryPoint'] == null ? null : (map['lastRecoveryPoint'] as String).input(),
+      nodesList: map['nodesList'] == null ? null : (pulumi.Input.decodeList<DistributedNodesInfoResponse>(map['nodesList'], (value) => DistributedNodesInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parentName: map['parentName'] == null ? null : (map['parentName'] as String).input(),
+      parentType: map['parentType'] == null ? null : (map['parentType'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      protectedItemDataSourceId: map['protectedItemDataSourceId'] == null ? null : (map['protectedItemDataSourceId'] as String).input(),
+      protectedItemHealthStatus: map['protectedItemHealthStatus'] == null ? null : (map['protectedItemHealthStatus'] as String).input(),
+      protectedItemType: (map['protectedItemType'] as String).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
+      protectionStatus: (map['protectionStatus'] as String).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      softDeleteRetentionPeriodInDays: map['softDeleteRetentionPeriodInDays'] == null ? null : (map['softDeleteRetentionPeriodInDays'] as int).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
+      workloadType: (map['workloadType'] as String).input(),
     );
   }
 }

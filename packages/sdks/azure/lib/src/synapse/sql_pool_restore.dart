@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SqlPoolRestore {
   /// Specifies the Snapshot time to restore formatted as an RFC3339 date string. Changing this forces a new Synapse SQL Pool to be created.
-  final String pointInTime;
+  final pulumi.Input<String> pointInTime;
   /// The ID of the Synapse SQL Pool or SQL Database which is to restore. Changing this forces a new Synapse SQL Pool to be created.
-  final String sourceDatabaseId;
+  final pulumi.Input<String> sourceDatabaseId;
 
   /// Creates a new [SqlPoolRestore].
   /// [pointInTime] Specifies the Snapshot time to restore formatted as an RFC3339 date string. Changing this forces a new Synapse SQL Pool to be created.
@@ -24,8 +25,8 @@ class SqlPoolRestore {
 
   factory SqlPoolRestore.fromMap(Map<String, dynamic> map) {
     return SqlPoolRestore(
-      pointInTime: map['pointInTime'] as String,
-      sourceDatabaseId: map['sourceDatabaseId'] as String,
+      pointInTime: (map['pointInTime'] as String).input(),
+      sourceDatabaseId: (map['sourceDatabaseId'] as String).input(),
     );
   }
 }

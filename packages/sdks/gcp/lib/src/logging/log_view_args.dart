@@ -28,19 +28,13 @@ class LogViewArgs {
   /// [name] The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
   /// [parent] The parent of the resource.
   LogViewArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent);
+    required this.bucket,
+    this.description,
+    this.filter,
+    this.location,
+    this.name,
+    this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class LogViewArgs {
 
   factory LogViewArgs.fromMap(Map<String, dynamic> map) {
     return LogViewArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
+      bucket: (map['bucket'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
     );
   }
 }

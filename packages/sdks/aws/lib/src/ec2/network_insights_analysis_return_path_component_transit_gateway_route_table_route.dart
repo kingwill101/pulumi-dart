@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute {
-  final String? attachmentId;
-  final String? destinationCidr;
-  final String? prefixListId;
-  final String? resourceId;
-  final String? resourceType;
-  final String? routeOrigin;
-  final String? state;
+  final pulumi.Input<String>? attachmentId;
+  final pulumi.Input<String>? destinationCidr;
+  final pulumi.Input<String>? prefixListId;
+  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String>? routeOrigin;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute].
   /// [attachmentId] Optional.
@@ -42,13 +43,13 @@ class NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute {
 
   factory NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute(
-      attachmentId: map['attachmentId'] == null ? null : map['attachmentId'] as String,
-      destinationCidr: map['destinationCidr'] == null ? null : map['destinationCidr'] as String,
-      prefixListId: map['prefixListId'] == null ? null : map['prefixListId'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
-      routeOrigin: map['routeOrigin'] == null ? null : map['routeOrigin'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
+      destinationCidr: map['destinationCidr'] == null ? null : (map['destinationCidr'] as String).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      routeOrigin: map['routeOrigin'] == null ? null : (map['routeOrigin'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

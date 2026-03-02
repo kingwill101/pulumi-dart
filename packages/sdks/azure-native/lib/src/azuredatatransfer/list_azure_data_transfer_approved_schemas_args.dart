@@ -16,11 +16,9 @@ class ListAzureDataTransferApprovedSchemasArgs {
   /// [direction] The direction pipeline to filter approved schemas.
   /// [pipeline] The name of the pipeline to filter approved schemas.
   ListAzureDataTransferApprovedSchemasArgs({
-    pulumi.Output<String>? direction,
-    pulumi.Output<String>? pipeline,
-  }) :
-      direction = pulumi.Input.asOptionalInput<String>(direction),
-      pipeline = pulumi.Input.asOptionalInput<String>(pipeline);
+    this.direction,
+    this.pipeline,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListAzureDataTransferApprovedSchemasArgs {
 
   factory ListAzureDataTransferApprovedSchemasArgs.fromMap(Map<String, dynamic> map) {
     return ListAzureDataTransferApprovedSchemasArgs(
-      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
-      pipeline: map['pipeline'] == null ? null : pulumi.Output.create<String>(map['pipeline'] as String),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      pipeline: map['pipeline'] == null ? null : (map['pipeline'] as String).input(),
     );
   }
 }

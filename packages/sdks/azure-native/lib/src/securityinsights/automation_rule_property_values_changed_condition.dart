@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRulePropertyValuesChangedCondition {
-  final String? changeType;
-  final String? operator;
-  final String? propertyName;
-  final List<String>? propertyValues;
+  final pulumi.Input<String>? changeType;
+  final pulumi.Input<String>? operator;
+  final pulumi.Input<String>? propertyName;
+  final pulumi.Input<List<String>>? propertyValues;
 
   /// Creates a new [AutomationRulePropertyValuesChangedCondition].
   /// [changeType] Optional.
@@ -30,10 +31,10 @@ class AutomationRulePropertyValuesChangedCondition {
 
   factory AutomationRulePropertyValuesChangedCondition.fromMap(Map<String, dynamic> map) {
     return AutomationRulePropertyValuesChangedCondition(
-      changeType: map['changeType'] == null ? null : map['changeType'] as String,
-      operator: map['operator'] == null ? null : map['operator'] as String,
-      propertyName: map['propertyName'] == null ? null : map['propertyName'] as String,
-      propertyValues: map['propertyValues'] == null ? null : (map['propertyValues'] as List).cast<String>(),
+      changeType: map['changeType'] == null ? null : (map['changeType'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      propertyName: map['propertyName'] == null ? null : (map['propertyName'] as String).input(),
+      propertyValues: map['propertyValues'] == null ? null : ((map['propertyValues'] as List).cast<String>()).input(),
     );
   }
 }

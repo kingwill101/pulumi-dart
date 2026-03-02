@@ -16,11 +16,9 @@ class GetAiFeaturestoreEntitytypeIamPolicyArgs {
   /// [entitytype] Used to find the parent resource to bind the IAM policy to
   /// [featurestore] The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
   GetAiFeaturestoreEntitytypeIamPolicyArgs({
-    required pulumi.Output<String> entitytype,
-    required pulumi.Output<String> featurestore,
-  }) :
-      entitytype = pulumi.Input.asInput<String>(entitytype),
-      featurestore = pulumi.Input.asInput<String>(featurestore);
+    required this.entitytype,
+    required this.featurestore,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAiFeaturestoreEntitytypeIamPolicyArgs {
 
   factory GetAiFeaturestoreEntitytypeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAiFeaturestoreEntitytypeIamPolicyArgs(
-      entitytype: pulumi.Output.create<String>(map['entitytype'] as String),
-      featurestore: pulumi.Output.create<String>(map['featurestore'] as String),
+      entitytype: (map['entitytype'] as String).input(),
+      featurestore: (map['featurestore'] as String).input(),
     );
   }
 }

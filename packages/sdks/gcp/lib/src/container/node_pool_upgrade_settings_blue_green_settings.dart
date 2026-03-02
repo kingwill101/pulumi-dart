@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_pool_upgrade_settings_blue_green_settings_autoscaled_rollout_policy.dart';
 import 'node_pool_upgrade_settings_blue_green_settings_standard_rollout_policy.dart';
 
 class NodePoolUpgradeSettingsBlueGreenSettings {
   /// Autoscaled rollout policy for blue-green upgrade.
-  final NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy? autoscaledRolloutPolicy;
+  final pulumi.Input<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy>? autoscaledRolloutPolicy;
   /// Time needed after draining the entire blue pool.
   /// After this period, the blue pool will be cleaned up.
-  final String? nodePoolSoakDuration;
+  final pulumi.Input<String>? nodePoolSoakDuration;
   /// Specifies the standard policy settings for blue-green upgrades.
-  final NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy? standardRolloutPolicy;
+  final pulumi.Input<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy>? standardRolloutPolicy;
 
   /// Creates a new [NodePoolUpgradeSettingsBlueGreenSettings].
   /// [autoscaledRolloutPolicy] Autoscaled rollout policy for blue-green upgrade.
@@ -24,17 +25,17 @@ class NodePoolUpgradeSettingsBlueGreenSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscaledRolloutPolicy': ?autoscaledRolloutPolicy == null ? null : autoscaledRolloutPolicy!.toMap(),
+      'autoscaledRolloutPolicy': ?pulumi.Input.mapOptionalInputValue<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy, Map<String, dynamic>>(autoscaledRolloutPolicy, (value) => value.toMap()),
       'nodePoolSoakDuration': ?nodePoolSoakDuration,
-      'standardRolloutPolicy': ?standardRolloutPolicy == null ? null : standardRolloutPolicy!.toMap(),
+      'standardRolloutPolicy': ?pulumi.Input.mapOptionalInputValue<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy, Map<String, dynamic>>(standardRolloutPolicy, (value) => value.toMap()),
     };
   }
 
   factory NodePoolUpgradeSettingsBlueGreenSettings.fromMap(Map<String, dynamic> map) {
     return NodePoolUpgradeSettingsBlueGreenSettings(
-      autoscaledRolloutPolicy: map['autoscaledRolloutPolicy'] == null ? null : NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap((map['autoscaledRolloutPolicy'] as Map).cast<String, dynamic>()),
-      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null ? null : map['nodePoolSoakDuration'] as String,
-      standardRolloutPolicy: map['standardRolloutPolicy'] == null ? null : NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap((map['standardRolloutPolicy'] as Map).cast<String, dynamic>()),
+      autoscaledRolloutPolicy: map['autoscaledRolloutPolicy'] == null ? null : (NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap((map['autoscaledRolloutPolicy'] as Map).cast<String, dynamic>())).input(),
+      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null ? null : (map['nodePoolSoakDuration'] as String).input(),
+      standardRolloutPolicy: map['standardRolloutPolicy'] == null ? null : (NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap((map['standardRolloutPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

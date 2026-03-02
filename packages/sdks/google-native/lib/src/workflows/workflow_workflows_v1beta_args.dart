@@ -32,23 +32,15 @@ class WorkflowWorkflowsV1betaArgs {
   /// [sourceContents] Workflow code to be executed. The size limit is 128KB.
   /// [workflowId] Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
   WorkflowWorkflowsV1betaArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<String>? sourceContents,
-    required pulumi.Output<String> workflowId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      sourceContents = pulumi.Input.asOptionalInput<String>(sourceContents),
-      workflowId = pulumi.Input.asInput<String>(workflowId);
+    this.description,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.serviceAccount,
+    this.sourceContents,
+    required this.workflowId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class WorkflowWorkflowsV1betaArgs {
 
   factory WorkflowWorkflowsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowWorkflowsV1betaArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      sourceContents: map['sourceContents'] == null ? null : pulumi.Output.create<String>(map['sourceContents'] as String),
-      workflowId: pulumi.Output.create<String>(map['workflowId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      sourceContents: map['sourceContents'] == null ? null : (map['sourceContents'] as String).input(),
+      workflowId: (map['workflowId'] as String).input(),
     );
   }
 }

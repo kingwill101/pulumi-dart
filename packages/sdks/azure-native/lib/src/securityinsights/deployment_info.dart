@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_type.dart';
 
 /// Information regarding a deployment.
 class DeploymentInfo {
   /// Deployment information.
-  final DeploymentType? deployment;
+  final pulumi.Input<DeploymentType>? deployment;
   /// Status while fetching the last deployment.
-  final String? deploymentFetchStatus;
+  final pulumi.Input<String>? deploymentFetchStatus;
   /// Additional details about the deployment that can be shown to the user.
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [DeploymentInfo].
   /// [deployment] Deployment information.
@@ -23,7 +24,7 @@ class DeploymentInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deployment': ?deployment == null ? null : deployment!.toMap(),
+      'deployment': ?pulumi.Input.mapOptionalInputValue<DeploymentType, Map<String, dynamic>>(deployment, (value) => value.toMap()),
       'deploymentFetchStatus': ?deploymentFetchStatus,
       'message': ?message,
     };
@@ -31,9 +32,9 @@ class DeploymentInfo {
 
   factory DeploymentInfo.fromMap(Map<String, dynamic> map) {
     return DeploymentInfo(
-      deployment: map['deployment'] == null ? null : DeploymentType.fromMap((map['deployment'] as Map).cast<String, dynamic>()),
-      deploymentFetchStatus: map['deploymentFetchStatus'] == null ? null : map['deploymentFetchStatus'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
+      deployment: map['deployment'] == null ? null : (DeploymentType.fromMap((map['deployment'] as Map).cast<String, dynamic>())).input(),
+      deploymentFetchStatus: map['deploymentFetchStatus'] == null ? null : (map['deploymentFetchStatus'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

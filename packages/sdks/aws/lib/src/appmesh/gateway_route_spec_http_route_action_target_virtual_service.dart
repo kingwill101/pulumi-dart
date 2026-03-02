@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayRouteSpecHttpRouteActionTargetVirtualService {
   /// Name of the virtual service that traffic is routed to. Must be between 1 and 255 characters in length.
-  final String virtualServiceName;
+  final pulumi.Input<String> virtualServiceName;
 
   /// Creates a new [GatewayRouteSpecHttpRouteActionTargetVirtualService].
   /// [virtualServiceName] Name of the virtual service that traffic is routed to. Must be between 1 and 255 characters in length.
@@ -19,7 +20,7 @@ class GatewayRouteSpecHttpRouteActionTargetVirtualService {
 
   factory GatewayRouteSpecHttpRouteActionTargetVirtualService.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRouteActionTargetVirtualService(
-      virtualServiceName: map['virtualServiceName'] as String,
+      virtualServiceName: (map['virtualServiceName'] as String).input(),
     );
   }
 }

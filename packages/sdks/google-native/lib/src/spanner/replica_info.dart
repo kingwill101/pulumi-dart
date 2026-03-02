@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replica_info_type.dart';
 
 class ReplicaInfo {
   /// If true, this location is designated as the default leader location where leader replicas are placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types) for more details.
-  final bool? defaultLeaderLocation;
+  final pulumi.Input<bool>? defaultLeaderLocation;
   /// The location of the serving resources, e.g. "us-central1".
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The type of replica.
-  final ReplicaInfoType? type;
+  final pulumi.Input<ReplicaInfoType>? type;
 
   /// Creates a new [ReplicaInfo].
   /// [defaultLeaderLocation] If true, this location is designated as the default leader location where leader replicas are placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types) for more details.
@@ -24,15 +25,15 @@ class ReplicaInfo {
     return <String, dynamic>{
       'defaultLeaderLocation': ?defaultLeaderLocation,
       'location': ?location,
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<ReplicaInfoType, String>(type, (value) => value.value),
     };
   }
 
   factory ReplicaInfo.fromMap(Map<String, dynamic> map) {
     return ReplicaInfo(
-      defaultLeaderLocation: map['defaultLeaderLocation'] == null ? null : map['defaultLeaderLocation'] as bool,
-      location: map['location'] == null ? null : map['location'] as String,
-      type: map['type'] == null ? null : ReplicaInfoType.fromValue(map['type'] as String),
+      defaultLeaderLocation: map['defaultLeaderLocation'] == null ? null : (map['defaultLeaderLocation'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      type: map['type'] == null ? null : (ReplicaInfoType.fromValue(map['type'] as String)).input(),
     );
   }
 }

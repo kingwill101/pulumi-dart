@@ -19,13 +19,10 @@ class GetGuestConfigurationAssignmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmName] The name of the virtual machine.
   GetGuestConfigurationAssignmentArgs({
-    required pulumi.Output<String> guestConfigurationAssignmentName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vmName,
-  }) :
-      guestConfigurationAssignmentName = pulumi.Input.asInput<String>(guestConfigurationAssignmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmName = pulumi.Input.asInput<String>(vmName);
+    required this.guestConfigurationAssignmentName,
+    required this.resourceGroupName,
+    required this.vmName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGuestConfigurationAssignmentArgs {
 
   factory GetGuestConfigurationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetGuestConfigurationAssignmentArgs(
-      guestConfigurationAssignmentName: pulumi.Output.create<String>(map['guestConfigurationAssignmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmName: pulumi.Output.create<String>(map['vmName'] as String),
+      guestConfigurationAssignmentName: (map['guestConfigurationAssignmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmName: (map['vmName'] as String).input(),
     );
   }
 }

@@ -24,15 +24,11 @@ class DataConnectorThreatIntelligenceArgs {
   /// [name] The name which should be used for this Threat Intelligence Data Connector. Changing this forces a new Threat Intelligence Data Connector to be created.
   /// [tenantId] The ID of the tenant that this Threat Intelligence Data Connector connects to. Changing this forces a new Threat Intelligence Data Connector to be created.
   DataConnectorThreatIntelligenceArgs({
-    required pulumi.Output<String> logAnalyticsWorkspaceId,
-    pulumi.Output<String>? lookbackDate,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? tenantId,
-  }) :
-      logAnalyticsWorkspaceId = pulumi.Input.asInput<String>(logAnalyticsWorkspaceId),
-      lookbackDate = pulumi.Input.asOptionalInput<String>(lookbackDate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    required this.logAnalyticsWorkspaceId,
+    this.lookbackDate,
+    this.name,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class DataConnectorThreatIntelligenceArgs {
 
   factory DataConnectorThreatIntelligenceArgs.fromMap(Map<String, dynamic> map) {
     return DataConnectorThreatIntelligenceArgs(
-      logAnalyticsWorkspaceId: pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      lookbackDate: map['lookbackDate'] == null ? null : pulumi.Output.create<String>(map['lookbackDate'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      lookbackDate: map['lookbackDate'] == null ? null : (map['lookbackDate'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

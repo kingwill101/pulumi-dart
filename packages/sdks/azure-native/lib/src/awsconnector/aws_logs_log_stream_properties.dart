@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsLogsLogStream
 class AwsLogsLogStreamProperties {
   /// The name of the log group where the log stream is created.
-  final String? logGroupName;
+  final pulumi.Input<String>? logGroupName;
   /// The name of the log stream. The name must be unique wihtin the log group.
-  final String? logStreamName;
+  final pulumi.Input<String>? logStreamName;
 
   /// Creates a new [AwsLogsLogStreamProperties].
   /// [logGroupName] The name of the log group where the log stream is created.
@@ -25,8 +26,8 @@ class AwsLogsLogStreamProperties {
 
   factory AwsLogsLogStreamProperties.fromMap(Map<String, dynamic> map) {
     return AwsLogsLogStreamProperties(
-      logGroupName: map['logGroupName'] == null ? null : map['logGroupName'] as String,
-      logStreamName: map['logStreamName'] == null ? null : map['logStreamName'] as String,
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
+      logStreamName: map['logStreamName'] == null ? null : (map['logStreamName'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class OrganizationState {
   /// [realPk] User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
   /// [source] This is organization source information
   OrganizationState({
-    pulumi.Output<int>? desiredMemberCount,
-    pulumi.Output<String>? organizationName,
-    pulumi.Output<String>? realPk,
-    pulumi.Output<String>? source,
-  }) :
-      desiredMemberCount = pulumi.Input.asOptionalInput<int>(desiredMemberCount),
-      organizationName = pulumi.Input.asOptionalInput<String>(organizationName),
-      realPk = pulumi.Input.asOptionalInput<String>(realPk),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    this.desiredMemberCount,
+    this.organizationName,
+    this.realPk,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class OrganizationState {
 
   factory OrganizationState.fromMap(Map<String, dynamic> map) {
     return OrganizationState(
-      desiredMemberCount: map['desiredMemberCount'] == null ? null : pulumi.Output.create<int>(map['desiredMemberCount'] as int),
-      organizationName: map['organizationName'] == null ? null : pulumi.Output.create<String>(map['organizationName'] as String),
-      realPk: map['realPk'] == null ? null : pulumi.Output.create<String>(map['realPk'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      desiredMemberCount: map['desiredMemberCount'] == null ? null : (map['desiredMemberCount'] as int).input(),
+      organizationName: map['organizationName'] == null ? null : (map['organizationName'] as String).input(),
+      realPk: map['realPk'] == null ? null : (map['realPk'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

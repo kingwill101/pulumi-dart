@@ -24,17 +24,12 @@ class FolderExclusionArgs {
   /// [folderId] Required.
   /// [name] A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
   FolderExclusionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> filter,
-    required pulumi.Output<String> folderId,
-    pulumi.Output<String>? name,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      filter = pulumi.Input.asInput<String>(filter),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.description,
+    this.disabled,
+    required this.filter,
+    required this.folderId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class FolderExclusionArgs {
 
   factory FolderExclusionArgs.fromMap(Map<String, dynamic> map) {
     return FolderExclusionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      filter: pulumi.Output.create<String>(map['filter'] as String),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      filter: (map['filter'] as String).input(),
+      folderId: (map['folderId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

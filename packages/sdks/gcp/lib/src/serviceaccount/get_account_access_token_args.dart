@@ -22,15 +22,11 @@ class GetAccountAccessTokenArgs {
   /// [scopes] The scopes the new credential should have (e.g. `["cloud-platform"]`)
   /// [targetServiceAccount] The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
   GetAccountAccessTokenArgs({
-    pulumi.Output<List<String>>? delegates,
-    pulumi.Output<String>? lifetime,
-    required pulumi.Output<List<String>> scopes,
-    required pulumi.Output<String> targetServiceAccount,
-  }) :
-      delegates = pulumi.Input.asOptionalInput<List<String>>(delegates),
-      lifetime = pulumi.Input.asOptionalInput<String>(lifetime),
-      scopes = pulumi.Input.asInput<List<String>>(scopes),
-      targetServiceAccount = pulumi.Input.asInput<String>(targetServiceAccount);
+    this.delegates,
+    this.lifetime,
+    required this.scopes,
+    required this.targetServiceAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetAccountAccessTokenArgs {
 
   factory GetAccountAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountAccessTokenArgs(
-      delegates: map['delegates'] == null ? null : pulumi.Output.create<List<String>>((map['delegates'] as List).cast<String>()),
-      lifetime: map['lifetime'] == null ? null : pulumi.Output.create<String>(map['lifetime'] as String),
-      scopes: pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
-      targetServiceAccount: pulumi.Output.create<String>(map['targetServiceAccount'] as String),
+      delegates: map['delegates'] == null ? null : ((map['delegates'] as List).cast<String>()).input(),
+      lifetime: map['lifetime'] == null ? null : (map['lifetime'] as String).input(),
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
+      targetServiceAccount: (map['targetServiceAccount'] as String).input(),
     );
   }
 }

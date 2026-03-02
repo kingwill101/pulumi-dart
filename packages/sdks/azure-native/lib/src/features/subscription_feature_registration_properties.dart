@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriptionFeatureRegistrationProperties {
   /// The feature description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Key-value pairs for meta data.
-  final Map<String, String>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
   /// Indicates whether feature should be displayed in Portal.
-  final bool? shouldFeatureDisplayInPortal;
+  final pulumi.Input<bool>? shouldFeatureDisplayInPortal;
   /// The state.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [SubscriptionFeatureRegistrationProperties].
   /// [description] The feature description.
@@ -34,10 +35,10 @@ class SubscriptionFeatureRegistrationProperties {
 
   factory SubscriptionFeatureRegistrationProperties.fromMap(Map<String, dynamic> map) {
     return SubscriptionFeatureRegistrationProperties(
-      description: map['description'] == null ? null : map['description'] as String,
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
-      shouldFeatureDisplayInPortal: map['shouldFeatureDisplayInPortal'] == null ? null : map['shouldFeatureDisplayInPortal'] as bool,
-      state: map['state'] == null ? null : map['state'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      shouldFeatureDisplayInPortal: map['shouldFeatureDisplayInPortal'] == null ? null : (map['shouldFeatureDisplayInPortal'] as bool).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

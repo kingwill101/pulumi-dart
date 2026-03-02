@@ -22,15 +22,11 @@ class AuthPolicyArgs {
   /// [resourceIdentifier] The ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
   /// [state] The state of the auth policy. The auth policy is only active when the auth type is set to `AWS_IAM`. If you provide a policy, then authentication and authorization decisions are made based on this policy and the client's IAM policy. If the Auth type is `NONE`, then, any auth policy you provide will remain inactive.
   AuthPolicyArgs({
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceIdentifier,
-    pulumi.Output<String>? state,
-  }) :
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceIdentifier = pulumi.Input.asInput<String>(resourceIdentifier),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    required this.policy,
+    this.region,
+    required this.resourceIdentifier,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AuthPolicyArgs {
 
   factory AuthPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AuthPolicyArgs(
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceIdentifier: pulumi.Output.create<String>(map['resourceIdentifier'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      policy: (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceIdentifier: (map['resourceIdentifier'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -20,13 +20,10 @@ class ServiceGroupMemberRelationshipArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   ServiceGroupMemberRelationshipArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<ServiceGroupMemberRelationshipProperties>? properties,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<ServiceGroupMemberRelationshipProperties>(properties),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.name,
+    this.properties,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class ServiceGroupMemberRelationshipArgs {
 
   factory ServiceGroupMemberRelationshipArgs.fromMap(Map<String, dynamic> map) {
     return ServiceGroupMemberRelationshipArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ServiceGroupMemberRelationshipProperties>(ServiceGroupMemberRelationshipProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (ServiceGroupMemberRelationshipProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

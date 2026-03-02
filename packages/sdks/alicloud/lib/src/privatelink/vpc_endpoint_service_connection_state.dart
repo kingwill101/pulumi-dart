@@ -24,17 +24,12 @@ class VpcEndpointServiceConnectionState {
   /// [serviceId] The endpoint service ID.
   /// [status] The state of the endpoint connection.
   VpcEndpointServiceConnectionState({
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? endpointId,
-    pulumi.Output<String>? serviceId,
-    pulumi.Output<String>? status,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      endpointId = pulumi.Input.asOptionalInput<String>(endpointId),
-      serviceId = pulumi.Input.asOptionalInput<String>(serviceId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bandwidth,
+    this.dryRun,
+    this.endpointId,
+    this.serviceId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class VpcEndpointServiceConnectionState {
 
   factory VpcEndpointServiceConnectionState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceConnectionState(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      endpointId: map['endpointId'] == null ? null : pulumi.Output.create<String>(map['endpointId'] as String),
-      serviceId: map['serviceId'] == null ? null : pulumi.Output.create<String>(map['serviceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

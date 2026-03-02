@@ -34,21 +34,14 @@ class IntegrationServiceEnvironmentArgs {
   /// [sku] The sku.
   /// [tags] The resource tags.
   IntegrationServiceEnvironmentArgs({
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? integrationServiceEnvironmentName,
-    pulumi.Output<String>? location,
-    pulumi.Output<IntegrationServiceEnvironmentProperties>? properties,
-    required pulumi.Output<String> resourceGroup,
-    pulumi.Output<IntegrationServiceEnvironmentSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      integrationServiceEnvironmentName = pulumi.Input.asOptionalInput<String>(integrationServiceEnvironmentName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<IntegrationServiceEnvironmentProperties>(properties),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup),
-      sku = pulumi.Input.asOptionalInput<IntegrationServiceEnvironmentSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.identity,
+    this.integrationServiceEnvironmentName,
+    this.location,
+    this.properties,
+    required this.resourceGroup,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class IntegrationServiceEnvironmentArgs {
 
   factory IntegrationServiceEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmentArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      integrationServiceEnvironmentName: map['integrationServiceEnvironmentName'] == null ? null : pulumi.Output.create<String>(map['integrationServiceEnvironmentName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<IntegrationServiceEnvironmentProperties>(IntegrationServiceEnvironmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<IntegrationServiceEnvironmentSku>(IntegrationServiceEnvironmentSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      integrationServiceEnvironmentName: map['integrationServiceEnvironmentName'] == null ? null : (map['integrationServiceEnvironmentName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (IntegrationServiceEnvironmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      sku: map['sku'] == null ? null : (IntegrationServiceEnvironmentSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

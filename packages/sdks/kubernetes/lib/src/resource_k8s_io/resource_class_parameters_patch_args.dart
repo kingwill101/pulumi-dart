@@ -32,19 +32,13 @@ class ResourceClassParametersPatchArgs {
   /// [metadata] Standard object metadata
   /// [vendorParameters] VendorParameters are arbitrary setup parameters for all claims using this class. They are ignored while allocating the claim. There must not be more than one entry per driver.
   ResourceClassParametersPatchArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<List<ResourceFilterPatch>>? filters,
-    pulumi.Output<ResourceClassParametersReferencePatchResourceK8sIoV1alpha2>? generatedFrom,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<List<VendorParametersPatch>>? vendorParameters,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      filters = pulumi.Input.asOptionalInput<List<ResourceFilterPatch>>(filters),
-      generatedFrom = pulumi.Input.asOptionalInput<ResourceClassParametersReferencePatchResourceK8sIoV1alpha2>(generatedFrom),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      vendorParameters = pulumi.Input.asOptionalInput<List<VendorParametersPatch>>(vendorParameters);
+    this.apiVersion,
+    this.filters,
+    this.generatedFrom,
+    this.kind,
+    this.metadata,
+    this.vendorParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class ResourceClassParametersPatchArgs {
 
   factory ResourceClassParametersPatchArgs.fromMap(Map<String, dynamic> map) {
     return ResourceClassParametersPatchArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<ResourceFilterPatch>>(pulumi.Input.decodeList<ResourceFilterPatch>(map['filters'], (value) => ResourceFilterPatch.fromMap((value as Map).cast<String, dynamic>()))),
-      generatedFrom: map['generatedFrom'] == null ? null : pulumi.Output.create<ResourceClassParametersReferencePatchResourceK8sIoV1alpha2>(ResourceClassParametersReferencePatchResourceK8sIoV1alpha2.fromMap((map['generatedFrom'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      vendorParameters: map['vendorParameters'] == null ? null : pulumi.Output.create<List<VendorParametersPatch>>(pulumi.Input.decodeList<VendorParametersPatch>(map['vendorParameters'], (value) => VendorParametersPatch.fromMap((value as Map).cast<String, dynamic>()))),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<ResourceFilterPatch>(map['filters'], (value) => ResourceFilterPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      generatedFrom: map['generatedFrom'] == null ? null : (ResourceClassParametersReferencePatchResourceK8sIoV1alpha2.fromMap((map['generatedFrom'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      vendorParameters: map['vendorParameters'] == null ? null : (pulumi.Input.decodeList<VendorParametersPatch>(map['vendorParameters'], (value) => VendorParametersPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

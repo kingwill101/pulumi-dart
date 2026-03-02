@@ -32,21 +32,14 @@ class RoutingRuleState {
   /// [routingRuleArn] ARN of the Routing Rule.
   /// [routingRuleId] ID of the Routing Rule.
   RoutingRuleState({
-    pulumi.Output<List<RoutingRuleAction>>? actions,
-    pulumi.Output<List<RoutingRuleCondition>>? conditions,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routingRuleArn,
-    pulumi.Output<String>? routingRuleId,
-  }) :
-      actions = pulumi.Input.asOptionalInput<List<RoutingRuleAction>>(actions),
-      conditions = pulumi.Input.asOptionalInput<List<RoutingRuleCondition>>(conditions),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingRuleArn = pulumi.Input.asOptionalInput<String>(routingRuleArn),
-      routingRuleId = pulumi.Input.asOptionalInput<String>(routingRuleId);
+    this.actions,
+    this.conditions,
+    this.domainName,
+    this.priority,
+    this.region,
+    this.routingRuleArn,
+    this.routingRuleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class RoutingRuleState {
 
   factory RoutingRuleState.fromMap(Map<String, dynamic> map) {
     return RoutingRuleState(
-      actions: map['actions'] == null ? null : pulumi.Output.create<List<RoutingRuleAction>>(pulumi.Input.decodeList<RoutingRuleAction>(map['actions'], (value) => RoutingRuleAction.fromMap((value as Map).cast<String, dynamic>()))),
-      conditions: map['conditions'] == null ? null : pulumi.Output.create<List<RoutingRuleCondition>>(pulumi.Input.decodeList<RoutingRuleCondition>(map['conditions'], (value) => RoutingRuleCondition.fromMap((value as Map).cast<String, dynamic>()))),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingRuleArn: map['routingRuleArn'] == null ? null : pulumi.Output.create<String>(map['routingRuleArn'] as String),
-      routingRuleId: map['routingRuleId'] == null ? null : pulumi.Output.create<String>(map['routingRuleId'] as String),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<RoutingRuleAction>(map['actions'], (value) => RoutingRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<RoutingRuleCondition>(map['conditions'], (value) => RoutingRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingRuleArn: map['routingRuleArn'] == null ? null : (map['routingRuleArn'] as String).input(),
+      routingRuleId: map['routingRuleId'] == null ? null : (map['routingRuleId'] as String).input(),
     );
   }
 }

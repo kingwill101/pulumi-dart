@@ -28,19 +28,13 @@ class PrivateLinkScopedResourceArgs {
   /// [scopeName] The name of the Azure Monitor PrivateLinkScope resource.
   /// [subscriptionLocation] The location of a scoped subscription. Only needs to be specified for metric dataplane subscriptions.
   PrivateLinkScopedResourceArgs({
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? linkedResourceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scopeName,
-    pulumi.Output<String>? subscriptionLocation,
-  }) :
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      linkedResourceId = pulumi.Input.asOptionalInput<String>(linkedResourceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopeName = pulumi.Input.asInput<String>(scopeName),
-      subscriptionLocation = pulumi.Input.asOptionalInput<String>(subscriptionLocation);
+    this.kind,
+    this.linkedResourceId,
+    this.name,
+    required this.resourceGroupName,
+    required this.scopeName,
+    this.subscriptionLocation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class PrivateLinkScopedResourceArgs {
 
   factory PrivateLinkScopedResourceArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopedResourceArgs(
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      linkedResourceId: map['linkedResourceId'] == null ? null : pulumi.Output.create<String>(map['linkedResourceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopeName: pulumi.Output.create<String>(map['scopeName'] as String),
-      subscriptionLocation: map['subscriptionLocation'] == null ? null : pulumi.Output.create<String>(map['subscriptionLocation'] as String),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      linkedResourceId: map['linkedResourceId'] == null ? null : (map['linkedResourceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopeName: (map['scopeName'] as String).input(),
+      subscriptionLocation: map['subscriptionLocation'] == null ? null : (map['subscriptionLocation'] as String).input(),
     );
   }
 }

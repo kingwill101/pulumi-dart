@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compute_settings.dart';
 import 'facility_settings.dart';
 import 'labor_settings.dart';
@@ -11,19 +12,19 @@ import 'storage_settings.dart';
 /// On-premise settings.
 class OnPremiseSettings {
   /// Compute settings.
-  final ComputeSettings computeSettings;
+  final pulumi.Input<ComputeSettings> computeSettings;
   /// Facility settings.
-  final FacilitySettings facilitySettings;
+  final pulumi.Input<FacilitySettings> facilitySettings;
   /// Labour settings.
-  final LaborSettings laborSettings;
+  final pulumi.Input<LaborSettings> laborSettings;
   /// Management settings.
-  final ManagementSettings? managementSettings;
+  final pulumi.Input<ManagementSettings>? managementSettings;
   /// Network settings.
-  final NetworkSettings networkSettings;
+  final pulumi.Input<NetworkSettings> networkSettings;
   /// Security settings.
-  final SecuritySettings securitySettings;
+  final pulumi.Input<SecuritySettings> securitySettings;
   /// Storage settings.
-  final StorageSettings storageSettings;
+  final pulumi.Input<StorageSettings> storageSettings;
 
   /// Creates a new [OnPremiseSettings].
   /// [computeSettings] Compute settings.
@@ -45,25 +46,25 @@ class OnPremiseSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeSettings': computeSettings.toMap(),
-      'facilitySettings': facilitySettings.toMap(),
-      'laborSettings': laborSettings.toMap(),
-      'managementSettings': ?managementSettings == null ? null : managementSettings!.toMap(),
-      'networkSettings': networkSettings.toMap(),
-      'securitySettings': securitySettings.toMap(),
-      'storageSettings': storageSettings.toMap(),
+      'computeSettings': pulumi.Input.mapInputValue<ComputeSettings, Map<String, dynamic>>(computeSettings, (value) => value.toMap()),
+      'facilitySettings': pulumi.Input.mapInputValue<FacilitySettings, Map<String, dynamic>>(facilitySettings, (value) => value.toMap()),
+      'laborSettings': pulumi.Input.mapInputValue<LaborSettings, Map<String, dynamic>>(laborSettings, (value) => value.toMap()),
+      'managementSettings': ?pulumi.Input.mapOptionalInputValue<ManagementSettings, Map<String, dynamic>>(managementSettings, (value) => value.toMap()),
+      'networkSettings': pulumi.Input.mapInputValue<NetworkSettings, Map<String, dynamic>>(networkSettings, (value) => value.toMap()),
+      'securitySettings': pulumi.Input.mapInputValue<SecuritySettings, Map<String, dynamic>>(securitySettings, (value) => value.toMap()),
+      'storageSettings': pulumi.Input.mapInputValue<StorageSettings, Map<String, dynamic>>(storageSettings, (value) => value.toMap()),
     };
   }
 
   factory OnPremiseSettings.fromMap(Map<String, dynamic> map) {
     return OnPremiseSettings(
-      computeSettings: ComputeSettings.fromMap((map['computeSettings'] as Map).cast<String, dynamic>()),
-      facilitySettings: FacilitySettings.fromMap((map['facilitySettings'] as Map).cast<String, dynamic>()),
-      laborSettings: LaborSettings.fromMap((map['laborSettings'] as Map).cast<String, dynamic>()),
-      managementSettings: map['managementSettings'] == null ? null : ManagementSettings.fromMap((map['managementSettings'] as Map).cast<String, dynamic>()),
-      networkSettings: NetworkSettings.fromMap((map['networkSettings'] as Map).cast<String, dynamic>()),
-      securitySettings: SecuritySettings.fromMap((map['securitySettings'] as Map).cast<String, dynamic>()),
-      storageSettings: StorageSettings.fromMap((map['storageSettings'] as Map).cast<String, dynamic>()),
+      computeSettings: (ComputeSettings.fromMap((map['computeSettings'] as Map).cast<String, dynamic>())).input(),
+      facilitySettings: (FacilitySettings.fromMap((map['facilitySettings'] as Map).cast<String, dynamic>())).input(),
+      laborSettings: (LaborSettings.fromMap((map['laborSettings'] as Map).cast<String, dynamic>())).input(),
+      managementSettings: map['managementSettings'] == null ? null : (ManagementSettings.fromMap((map['managementSettings'] as Map).cast<String, dynamic>())).input(),
+      networkSettings: (NetworkSettings.fromMap((map['networkSettings'] as Map).cast<String, dynamic>())).input(),
+      securitySettings: (SecuritySettings.fromMap((map['securitySettings'] as Map).cast<String, dynamic>())).input(),
+      storageSettings: (StorageSettings.fromMap((map['storageSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

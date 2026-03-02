@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkWatcherFlowLogRetentionPolicy {
   /// The number of days to retain flow log records.
-  final int days;
+  final pulumi.Input<int> days;
   /// Boolean flag to enable/disable retention.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [NetworkWatcherFlowLogRetentionPolicy].
   /// [days] The number of days to retain flow log records.
@@ -24,8 +25,8 @@ class NetworkWatcherFlowLogRetentionPolicy {
 
   factory NetworkWatcherFlowLogRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return NetworkWatcherFlowLogRetentionPolicy(
-      days: map['days'] as int,
-      enabled: map['enabled'] as bool,
+      days: (map['days'] as int).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

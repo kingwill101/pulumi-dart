@@ -20,13 +20,10 @@ class ErArgs {
   /// [envConf] The configurations of the specified environment. See `env_conf` below.
   /// [erName] The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
   ErArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<ErEnvConf>? envConf,
-    required pulumi.Output<String> erName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      envConf = pulumi.Input.asOptionalInput<ErEnvConf>(envConf),
-      erName = pulumi.Input.asInput<String>(erName);
+    this.description,
+    this.envConf,
+    required this.erName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class ErArgs {
 
   factory ErArgs.fromMap(Map<String, dynamic> map) {
     return ErArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      envConf: map['envConf'] == null ? null : pulumi.Output.create<ErEnvConf>(ErEnvConf.fromMap((map['envConf'] as Map).cast<String, dynamic>())),
-      erName: pulumi.Output.create<String>(map['erName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      envConf: map['envConf'] == null ? null : (ErEnvConf.fromMap((map['envConf'] as Map).cast<String, dynamic>())).input(),
+      erName: (map['erName'] as String).input(),
     );
   }
 }

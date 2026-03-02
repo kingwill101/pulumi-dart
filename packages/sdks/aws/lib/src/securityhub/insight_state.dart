@@ -23,17 +23,12 @@ class InsightState {
   /// [name] The name of the custom insight.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   InsightState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<InsightFilters>? filters,
-    pulumi.Output<String>? groupByAttribute,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      filters = pulumi.Input.asOptionalInput<InsightFilters>(filters),
-      groupByAttribute = pulumi.Input.asOptionalInput<String>(groupByAttribute),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.arn,
+    this.filters,
+    this.groupByAttribute,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class InsightState {
 
   factory InsightState.fromMap(Map<String, dynamic> map) {
     return InsightState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<InsightFilters>(InsightFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())),
-      groupByAttribute: map['groupByAttribute'] == null ? null : pulumi.Output.create<String>(map['groupByAttribute'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      filters: map['filters'] == null ? null : (InsightFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      groupByAttribute: map['groupByAttribute'] == null ? null : (map['groupByAttribute'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

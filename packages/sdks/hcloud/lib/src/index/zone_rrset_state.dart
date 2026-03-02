@@ -29,21 +29,14 @@ class ZoneRrsetState {
   /// [type] Type of the Zone RRSet.
   /// [zone] ID or Name of the parent Zone.
   ZoneRrsetState({
-    pulumi.Output<bool>? changeProtection,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ZoneRrsetRecord>>? records,
-    pulumi.Output<int>? ttl,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? zone,
-  }) :
-      changeProtection = pulumi.Input.asOptionalInput<bool>(changeProtection),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      records = pulumi.Input.asOptionalInput<List<ZoneRrsetRecord>>(records),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.changeProtection,
+    this.labels,
+    this.name,
+    this.records,
+    this.ttl,
+    this.type,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class ZoneRrsetState {
 
   factory ZoneRrsetState.fromMap(Map<String, dynamic> map) {
     return ZoneRrsetState(
-      changeProtection: map['changeProtection'] == null ? null : pulumi.Output.create<bool>(map['changeProtection'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      records: map['records'] == null ? null : pulumi.Output.create<List<ZoneRrsetRecord>>(pulumi.Input.decodeList<ZoneRrsetRecord>(map['records'], (value) => ZoneRrsetRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      changeProtection: map['changeProtection'] == null ? null : (map['changeProtection'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      records: map['records'] == null ? null : (pulumi.Input.decodeList<ZoneRrsetRecord>(map['records'], (value) => ZoneRrsetRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

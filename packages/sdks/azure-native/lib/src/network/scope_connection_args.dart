@@ -28,19 +28,13 @@ class ScopeConnectionArgs {
   /// [scopeConnectionName] Name for the cross-tenant connection.
   /// [tenantId] Tenant ID.
   ScopeConnectionArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? scopeConnectionName,
-    pulumi.Output<String>? tenantId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      scopeConnectionName = pulumi.Input.asOptionalInput<String>(scopeConnectionName),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.description,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+    this.resourceId,
+    this.scopeConnectionName,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ScopeConnectionArgs {
 
   factory ScopeConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ScopeConnectionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      scopeConnectionName: map['scopeConnectionName'] == null ? null : pulumi.Output.create<String>(map['scopeConnectionName'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      scopeConnectionName: map['scopeConnectionName'] == null ? null : (map['scopeConnectionName'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

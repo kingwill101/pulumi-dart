@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionCacheBehavior {
   /// Cache behavior for the specified path. Valid values: `cache`, `dont-cache`.
-  final String behavior;
+  final pulumi.Input<String> behavior;
   /// Path to a directory or file to cache, or not cache. Use an asterisk symbol to specify wildcard directories (`path/to/assets/*`), and file types (`*.html`, `*.jpg`, `*.js`). Directories and file paths are case-sensitive.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [DistributionCacheBehavior].
   /// [behavior] Cache behavior for the specified path. Valid values: `cache`, `dont-cache`.
@@ -24,8 +25,8 @@ class DistributionCacheBehavior {
 
   factory DistributionCacheBehavior.fromMap(Map<String, dynamic> map) {
     return DistributionCacheBehavior(
-      behavior: map['behavior'] as String,
-      path: map['path'] as String,
+      behavior: (map['behavior'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

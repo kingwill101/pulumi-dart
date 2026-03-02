@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceWaitForIp {
   /// Source to query for IP addresses: 'lease', 'agent', or 'any'. Default: 'any'.
-  final String? source;
+  final pulumi.Input<String>? source;
   /// Maximum time to wait for IP address in seconds. Default: 300.
-  final double? timeout;
+  final pulumi.Input<double>? timeout;
 
   /// Creates a new [DomainDevicesInterfaceWaitForIp].
   /// [source] Source to query for IP addresses: 'lease', 'agent', or 'any'. Default: 'any'.
@@ -24,8 +25,8 @@ class DomainDevicesInterfaceWaitForIp {
 
   factory DomainDevicesInterfaceWaitForIp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceWaitForIp(
-      source: map['source'] == null ? null : map['source'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as double,
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as double).input(),
     );
   }
 }

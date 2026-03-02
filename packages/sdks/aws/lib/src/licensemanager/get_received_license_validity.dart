@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReceivedLicenseValidity {
   /// Start of the validity time range.
-  final String begin;
+  final pulumi.Input<String> begin;
   /// End of the validity time range.
-  final String end;
+  final pulumi.Input<String> end;
 
   /// Creates a new [GetReceivedLicenseValidity].
   /// [begin] Start of the validity time range.
@@ -24,8 +25,8 @@ class GetReceivedLicenseValidity {
 
   factory GetReceivedLicenseValidity.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseValidity(
-      begin: map['begin'] as String,
-      end: map['end'] as String,
+      begin: (map['begin'] as String).input(),
+      end: (map['end'] as String).input(),
     );
   }
 }

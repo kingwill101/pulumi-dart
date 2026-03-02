@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Body logging settings.
 class BodyDiagnosticSettings {
   /// Number of request body bytes to log.
-  final int? bytes;
+  final pulumi.Input<int>? bytes;
 
   /// Creates a new [BodyDiagnosticSettings].
   /// [bytes] Number of request body bytes to log.
@@ -20,7 +21,7 @@ class BodyDiagnosticSettings {
 
   factory BodyDiagnosticSettings.fromMap(Map<String, dynamic> map) {
     return BodyDiagnosticSettings(
-      bytes: map['bytes'] == null ? null : map['bytes'] as int,
+      bytes: map['bytes'] == null ? null : (map['bytes'] as int).input(),
     );
   }
 }

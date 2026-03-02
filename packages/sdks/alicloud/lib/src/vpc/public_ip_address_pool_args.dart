@@ -33,21 +33,14 @@ class PublicIpAddressPoolArgs {
   /// [securityProtectionTypes] Security protection level.
   /// [tags] The tags of PrefixList.
   PublicIpAddressPoolArgs({
-    pulumi.Output<String>? bizType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? isp,
-    pulumi.Output<String>? publicIpAddressPoolName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<List<String>>? securityProtectionTypes,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      bizType = pulumi.Input.asOptionalInput<String>(bizType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      isp = pulumi.Input.asOptionalInput<String>(isp),
-      publicIpAddressPoolName = pulumi.Input.asOptionalInput<String>(publicIpAddressPoolName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      securityProtectionTypes = pulumi.Input.asOptionalInput<List<String>>(securityProtectionTypes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.bizType,
+    this.description,
+    this.isp,
+    this.publicIpAddressPoolName,
+    this.resourceGroupId,
+    this.securityProtectionTypes,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class PublicIpAddressPoolArgs {
 
   factory PublicIpAddressPoolArgs.fromMap(Map<String, dynamic> map) {
     return PublicIpAddressPoolArgs(
-      bizType: map['bizType'] == null ? null : pulumi.Output.create<String>(map['bizType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      isp: map['isp'] == null ? null : pulumi.Output.create<String>(map['isp'] as String),
-      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : pulumi.Output.create<String>(map['publicIpAddressPoolName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      securityProtectionTypes: map['securityProtectionTypes'] == null ? null : pulumi.Output.create<List<String>>((map['securityProtectionTypes'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      bizType: map['bizType'] == null ? null : (map['bizType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
+      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : (map['publicIpAddressPoolName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      securityProtectionTypes: map['securityProtectionTypes'] == null ? null : ((map['securityProtectionTypes'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

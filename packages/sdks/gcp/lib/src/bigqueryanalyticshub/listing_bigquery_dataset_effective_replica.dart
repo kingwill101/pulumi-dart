@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListingBigqueryDatasetEffectiveReplica {
   /// The name of the location this data exchange listing.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Output-only. Indicates that this replica is the primary replica.
   /// Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
-  final String? primaryState;
+  final pulumi.Input<String>? primaryState;
   /// Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
   /// Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
-  final String? replicaState;
+  final pulumi.Input<String>? replicaState;
 
   /// Creates a new [ListingBigqueryDatasetEffectiveReplica].
   /// [location] The name of the location this data exchange listing.
@@ -31,9 +32,9 @@ class ListingBigqueryDatasetEffectiveReplica {
 
   factory ListingBigqueryDatasetEffectiveReplica.fromMap(Map<String, dynamic> map) {
     return ListingBigqueryDatasetEffectiveReplica(
-      location: map['location'] == null ? null : map['location'] as String,
-      primaryState: map['primaryState'] == null ? null : map['primaryState'] as String,
-      replicaState: map['replicaState'] == null ? null : map['replicaState'] as String,
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      primaryState: map['primaryState'] == null ? null : (map['primaryState'] as String).input(),
+      replicaState: map['replicaState'] == null ? null : (map['replicaState'] as String).input(),
     );
   }
 }

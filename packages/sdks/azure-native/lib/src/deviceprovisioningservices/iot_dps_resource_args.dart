@@ -40,25 +40,16 @@ class IotDpsResourceArgs {
   /// [subscriptionid] The subscription id of the resource.
   /// [tags] The resource tags.
   IotDpsResourceArgs({
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<IotDpsPropertiesDescription> properties,
-    pulumi.Output<String>? provisioningServiceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourcegroup,
-    required pulumi.Output<IotDpsSkuInfo> sku,
-    pulumi.Output<String>? subscriptionid,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<IotDpsPropertiesDescription>(properties),
-      provisioningServiceName = pulumi.Input.asOptionalInput<String>(provisioningServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourcegroup = pulumi.Input.asOptionalInput<String>(resourcegroup),
-      sku = pulumi.Input.asInput<IotDpsSkuInfo>(sku),
-      subscriptionid = pulumi.Input.asOptionalInput<String>(subscriptionid),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.identity,
+    this.location,
+    required this.properties,
+    this.provisioningServiceName,
+    required this.resourceGroupName,
+    this.resourcegroup,
+    required this.sku,
+    this.subscriptionid,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class IotDpsResourceArgs {
 
   factory IotDpsResourceArgs.fromMap(Map<String, dynamic> map) {
     return IotDpsResourceArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<IotDpsPropertiesDescription>(IotDpsPropertiesDescription.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      provisioningServiceName: map['provisioningServiceName'] == null ? null : pulumi.Output.create<String>(map['provisioningServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourcegroup: map['resourcegroup'] == null ? null : pulumi.Output.create<String>(map['resourcegroup'] as String),
-      sku: pulumi.Output.create<IotDpsSkuInfo>(IotDpsSkuInfo.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      subscriptionid: map['subscriptionid'] == null ? null : pulumi.Output.create<String>(map['subscriptionid'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (IotDpsPropertiesDescription.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      provisioningServiceName: map['provisioningServiceName'] == null ? null : (map['provisioningServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourcegroup: map['resourcegroup'] == null ? null : (map['resourcegroup'] as String).input(),
+      sku: (IotDpsSkuInfo.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      subscriptionid: map['subscriptionid'] == null ? null : (map['subscriptionid'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

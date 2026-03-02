@@ -8,22 +8,22 @@ import 'v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_pay
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter {
   /// Target all VMs in the project. If true, no other criteria is
   /// permitted.
-  final bool? all;
+  final pulumi.Input<bool>? all;
   /// List of label sets used for VM exclusion.
   /// If the list has more than one label set, the VM is excluded if any
   /// of the label sets are applicable for the VM.
   /// Structure is documented below.
-  final List<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel>? exclusionLabels;
+  final pulumi.Input<List<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel>>? exclusionLabels;
   /// List of label sets used for VM inclusion.
   /// If the list has more than one `LabelSet`, the VM is included if any
   /// of the label sets are applicable for the VM.
   /// Structure is documented below.
-  final List<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel>? inclusionLabels;
+  final pulumi.Input<List<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel>>? inclusionLabels;
   /// List of inventories to select VMs.
   /// A VM is selected if its inventory data matches at least one of the
   /// following inventories.
   /// Structure is documented below.
-  final List<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory>? inventories;
+  final pulumi.Input<List<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory>>? inventories;
 
   /// Creates a new [V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter].
   /// [all] Target all VMs in the project. If true, no other criteria is
@@ -40,18 +40,18 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'all': ?all,
-      'exclusionLabels': ?exclusionLabels == null ? null : pulumi.Input.encodeList<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel, Map<String, dynamic>>(exclusionLabels!, (value) => value.toMap()),
-      'inclusionLabels': ?inclusionLabels == null ? null : pulumi.Input.encodeList<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel, Map<String, dynamic>>(inclusionLabels!, (value) => value.toMap()),
-      'inventories': ?inventories == null ? null : pulumi.Input.encodeList<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory, Map<String, dynamic>>(inventories!, (value) => value.toMap()),
+      'exclusionLabels': ?pulumi.Input.mapOptionalInputValue<List<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel>, List<Map<String, dynamic>>>(exclusionLabels, (value) => pulumi.Input.encodeList<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inclusionLabels': ?pulumi.Input.mapOptionalInputValue<List<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel>, List<Map<String, dynamic>>>(inclusionLabels, (value) => pulumi.Input.encodeList<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inventories': ?pulumi.Input.mapOptionalInputValue<List<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory>, List<Map<String, dynamic>>>(inventories, (value) => pulumi.Input.encodeList<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter(
-      all: map['all'] == null ? null : map['all'] as bool,
-      exclusionLabels: map['exclusionLabels'] == null ? null : pulumi.Input.decodeList<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel>(map['exclusionLabels'], (value) => V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel.fromMap((value as Map).cast<String, dynamic>())),
-      inclusionLabels: map['inclusionLabels'] == null ? null : pulumi.Input.decodeList<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel>(map['inclusionLabels'], (value) => V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel.fromMap((value as Map).cast<String, dynamic>())),
-      inventories: map['inventories'] == null ? null : pulumi.Input.decodeList<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory>(map['inventories'], (value) => V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory.fromMap((value as Map).cast<String, dynamic>())),
+      all: map['all'] == null ? null : (map['all'] as bool).input(),
+      exclusionLabels: map['exclusionLabels'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel>(map['exclusionLabels'], (value) => V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inclusionLabels: map['inclusionLabels'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel>(map['inclusionLabels'], (value) => V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inventories: map['inventories'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory>(map['inventories'], (value) => V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

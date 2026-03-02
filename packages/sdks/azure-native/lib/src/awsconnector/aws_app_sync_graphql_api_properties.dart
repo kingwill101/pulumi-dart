@@ -15,51 +15,51 @@ import 'user_pool_config.dart';
 /// Definition of awsAppSyncGraphqlApi
 class AwsAppSyncGraphqlApiProperties {
   /// <p>A list of additional authentication providers for the <code>GraphqlApi</code> API.</p>
-  final List<AdditionalAuthenticationProvider>? additionalAuthenticationProviders;
+  final pulumi.Input<List<AdditionalAuthenticationProvider>>? additionalAuthenticationProviders;
   /// <p>The API ID.</p>
-  final String? apiId;
+  final pulumi.Input<String>? apiId;
   /// <p>The value that indicates whether the GraphQL API is a standard API (<code>GRAPHQL</code>) or merged API (<code>MERGED</code>).</p>
-  final GraphQLApiTypeEnumValue? apiType;
+  final pulumi.Input<GraphQLApiTypeEnumValue>? apiType;
   /// <p>The Amazon Resource Name (ARN).</p>
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// <p>The authentication type.</p>
-  final AuthenticationTypeEnumValue? authenticationType;
+  final pulumi.Input<AuthenticationTypeEnumValue>? authenticationType;
   /// <p>The DNS records for the API.</p>
-  final Map<String, String>? dns;
+  final pulumi.Input<Map<String, String>>? dns;
   /// <p>The <code>enhancedMetricsConfig</code> object.</p>
-  final EnhancedMetricsConfig? enhancedMetricsConfig;
+  final pulumi.Input<EnhancedMetricsConfig>? enhancedMetricsConfig;
   /// <p>Sets the value of the GraphQL API to enable (<code>ENABLED</code>) or disable (<code>DISABLED</code>) introspection. If no value is provided, the introspection configuration will be set to <code>ENABLED</code> by default. This field will produce an error if the operation attempts to use the introspection feature while this field is disabled.</p> <p>For more information about introspection, see <a href='https://graphql.org/learn/introspection/'>GraphQL introspection</a>.</p>
-  final GraphQLApiIntrospectionConfigEnumValue? introspectionConfig;
+  final pulumi.Input<GraphQLApiIntrospectionConfigEnumValue>? introspectionConfig;
   /// <p>Configuration for Lambda function authorization.</p>
-  final LambdaAuthorizerConfig? lambdaAuthorizerConfig;
+  final pulumi.Input<LambdaAuthorizerConfig>? lambdaAuthorizerConfig;
   /// <p>The Amazon CloudWatch Logs configuration.</p>
-  final LogConfig? logConfig;
+  final pulumi.Input<LogConfig>? logConfig;
   /// <p>The Identity and Access Management service role ARN for a merged API. The AppSync service assumes this role on behalf of the Merged API to validate access to source APIs at runtime and to prompt the <code>AUTO_MERGE</code> to update the merged API endpoint with the source API changes automatically.</p>
-  final String? mergedApiExecutionRoleArn;
+  final pulumi.Input<String>? mergedApiExecutionRoleArn;
   /// <p>The API name.</p>
-  final String? name;
+  final pulumi.Input<String>? name;
   /// <p>The OpenID Connect configuration.</p>
-  final OpenIDConnectConfig? openIDConnectConfig;
+  final pulumi.Input<OpenIDConnectConfig>? openIDConnectConfig;
   /// <p>The account owner of the GraphQL API.</p>
-  final String? owner;
+  final pulumi.Input<String>? owner;
   /// <p>The owner contact information for an API resource.</p> <p>This field accepts any string input with a length of 0 - 256 characters.</p>
-  final String? ownerContact;
+  final pulumi.Input<String>? ownerContact;
   /// <p>The maximum depth a query can have in a single request. Depth refers to the amount of nested levels allowed in the body of query. The default value is <code>0</code> (or unspecified), which indicates there's no depth limit. If you set a limit, it can be between <code>1</code> and <code>75</code> nested levels. This field will produce a limit error if the operation falls out of bounds.</p> <p>Note that fields can still be set to nullable or non-nullable. If a non-nullable field produces an error, the error will be thrown upwards to the first nullable field available.</p>
-  final int? queryDepthLimit;
+  final pulumi.Input<int>? queryDepthLimit;
   /// <p>The maximum number of resolvers that can be invoked in a single request. The default value is <code>0</code> (or unspecified), which will set the limit to <code>10000</code>. When specified, the limit value can be between <code>1</code> and <code>10000</code>. This field will produce a limit error if the operation falls out of bounds.</p>
-  final int? resolverCountLimit;
+  final pulumi.Input<int>? resolverCountLimit;
   /// <p>The tags.</p>
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// <p>The URIs.</p>
-  final Map<String, String>? uris;
+  final pulumi.Input<Map<String, String>>? uris;
   /// <p>The Amazon Cognito user pool configuration.</p>
-  final UserPoolConfig? userPoolConfig;
+  final pulumi.Input<UserPoolConfig>? userPoolConfig;
   /// <p>Sets the value of the GraphQL API to public (<code>GLOBAL</code>) or private (<code>PRIVATE</code>). If no value is provided, the visibility will be set to <code>GLOBAL</code> by default. This value cannot be changed once the API has been created.</p>
-  final GraphQLApiVisibilityEnumValue? visibility;
+  final pulumi.Input<GraphQLApiVisibilityEnumValue>? visibility;
   /// <p>The ARN of the WAF access control list (ACL) associated with this <code>GraphqlApi</code>, if one exists.</p>
-  final String? wafWebAclArn;
+  final pulumi.Input<String>? wafWebAclArn;
   /// <p>A flag indicating whether to use X-Ray tracing for this <code>GraphqlApi</code>.</p>
-  final bool? xrayEnabled;
+  final pulumi.Input<bool>? xrayEnabled;
 
   /// Creates a new [AwsAppSyncGraphqlApiProperties].
   /// [additionalAuthenticationProviders] <p>A list of additional authentication providers for the <code>GraphqlApi</code> API.</p>
@@ -113,27 +113,27 @@ class AwsAppSyncGraphqlApiProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalAuthenticationProviders': ?additionalAuthenticationProviders == null ? null : pulumi.Input.encodeList<AdditionalAuthenticationProvider, Map<String, dynamic>>(additionalAuthenticationProviders!, (value) => value.toMap()),
+      'additionalAuthenticationProviders': ?pulumi.Input.mapOptionalInputValue<List<AdditionalAuthenticationProvider>, List<Map<String, dynamic>>>(additionalAuthenticationProviders, (value) => pulumi.Input.encodeList<AdditionalAuthenticationProvider, Map<String, dynamic>>(value, (value) => value.toMap())),
       'apiId': ?apiId,
-      'apiType': ?apiType == null ? null : apiType!.toMap(),
+      'apiType': ?pulumi.Input.mapOptionalInputValue<GraphQLApiTypeEnumValue, Map<String, dynamic>>(apiType, (value) => value.toMap()),
       'arn': ?arn,
-      'authenticationType': ?authenticationType == null ? null : authenticationType!.toMap(),
+      'authenticationType': ?pulumi.Input.mapOptionalInputValue<AuthenticationTypeEnumValue, Map<String, dynamic>>(authenticationType, (value) => value.toMap()),
       'dns': ?dns,
-      'enhancedMetricsConfig': ?enhancedMetricsConfig == null ? null : enhancedMetricsConfig!.toMap(),
-      'introspectionConfig': ?introspectionConfig == null ? null : introspectionConfig!.toMap(),
-      'lambdaAuthorizerConfig': ?lambdaAuthorizerConfig == null ? null : lambdaAuthorizerConfig!.toMap(),
-      'logConfig': ?logConfig == null ? null : logConfig!.toMap(),
+      'enhancedMetricsConfig': ?pulumi.Input.mapOptionalInputValue<EnhancedMetricsConfig, Map<String, dynamic>>(enhancedMetricsConfig, (value) => value.toMap()),
+      'introspectionConfig': ?pulumi.Input.mapOptionalInputValue<GraphQLApiIntrospectionConfigEnumValue, Map<String, dynamic>>(introspectionConfig, (value) => value.toMap()),
+      'lambdaAuthorizerConfig': ?pulumi.Input.mapOptionalInputValue<LambdaAuthorizerConfig, Map<String, dynamic>>(lambdaAuthorizerConfig, (value) => value.toMap()),
+      'logConfig': ?pulumi.Input.mapOptionalInputValue<LogConfig, Map<String, dynamic>>(logConfig, (value) => value.toMap()),
       'mergedApiExecutionRoleArn': ?mergedApiExecutionRoleArn,
       'name': ?name,
-      'openIDConnectConfig': ?openIDConnectConfig == null ? null : openIDConnectConfig!.toMap(),
+      'openIDConnectConfig': ?pulumi.Input.mapOptionalInputValue<OpenIDConnectConfig, Map<String, dynamic>>(openIDConnectConfig, (value) => value.toMap()),
       'owner': ?owner,
       'ownerContact': ?ownerContact,
       'queryDepthLimit': ?queryDepthLimit,
       'resolverCountLimit': ?resolverCountLimit,
       'tags': ?tags,
       'uris': ?uris,
-      'userPoolConfig': ?userPoolConfig == null ? null : userPoolConfig!.toMap(),
-      'visibility': ?visibility == null ? null : visibility!.toMap(),
+      'userPoolConfig': ?pulumi.Input.mapOptionalInputValue<UserPoolConfig, Map<String, dynamic>>(userPoolConfig, (value) => value.toMap()),
+      'visibility': ?pulumi.Input.mapOptionalInputValue<GraphQLApiVisibilityEnumValue, Map<String, dynamic>>(visibility, (value) => value.toMap()),
       'wafWebAclArn': ?wafWebAclArn,
       'xrayEnabled': ?xrayEnabled,
     };
@@ -141,29 +141,29 @@ class AwsAppSyncGraphqlApiProperties {
 
   factory AwsAppSyncGraphqlApiProperties.fromMap(Map<String, dynamic> map) {
     return AwsAppSyncGraphqlApiProperties(
-      additionalAuthenticationProviders: map['additionalAuthenticationProviders'] == null ? null : pulumi.Input.decodeList<AdditionalAuthenticationProvider>(map['additionalAuthenticationProviders'], (value) => AdditionalAuthenticationProvider.fromMap((value as Map).cast<String, dynamic>())),
-      apiId: map['apiId'] == null ? null : map['apiId'] as String,
-      apiType: map['apiType'] == null ? null : GraphQLApiTypeEnumValue.fromMap((map['apiType'] as Map).cast<String, dynamic>()),
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      authenticationType: map['authenticationType'] == null ? null : AuthenticationTypeEnumValue.fromMap((map['authenticationType'] as Map).cast<String, dynamic>()),
-      dns: map['dns'] == null ? null : (map['dns'] as Map).cast<String, String>(),
-      enhancedMetricsConfig: map['enhancedMetricsConfig'] == null ? null : EnhancedMetricsConfig.fromMap((map['enhancedMetricsConfig'] as Map).cast<String, dynamic>()),
-      introspectionConfig: map['introspectionConfig'] == null ? null : GraphQLApiIntrospectionConfigEnumValue.fromMap((map['introspectionConfig'] as Map).cast<String, dynamic>()),
-      lambdaAuthorizerConfig: map['lambdaAuthorizerConfig'] == null ? null : LambdaAuthorizerConfig.fromMap((map['lambdaAuthorizerConfig'] as Map).cast<String, dynamic>()),
-      logConfig: map['logConfig'] == null ? null : LogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>()),
-      mergedApiExecutionRoleArn: map['mergedApiExecutionRoleArn'] == null ? null : map['mergedApiExecutionRoleArn'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      openIDConnectConfig: map['openIDConnectConfig'] == null ? null : OpenIDConnectConfig.fromMap((map['openIDConnectConfig'] as Map).cast<String, dynamic>()),
-      owner: map['owner'] == null ? null : map['owner'] as String,
-      ownerContact: map['ownerContact'] == null ? null : map['ownerContact'] as String,
-      queryDepthLimit: map['queryDepthLimit'] == null ? null : map['queryDepthLimit'] as int,
-      resolverCountLimit: map['resolverCountLimit'] == null ? null : map['resolverCountLimit'] as int,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      uris: map['uris'] == null ? null : (map['uris'] as Map).cast<String, String>(),
-      userPoolConfig: map['userPoolConfig'] == null ? null : UserPoolConfig.fromMap((map['userPoolConfig'] as Map).cast<String, dynamic>()),
-      visibility: map['visibility'] == null ? null : GraphQLApiVisibilityEnumValue.fromMap((map['visibility'] as Map).cast<String, dynamic>()),
-      wafWebAclArn: map['wafWebAclArn'] == null ? null : map['wafWebAclArn'] as String,
-      xrayEnabled: map['xrayEnabled'] == null ? null : map['xrayEnabled'] as bool,
+      additionalAuthenticationProviders: map['additionalAuthenticationProviders'] == null ? null : (pulumi.Input.decodeList<AdditionalAuthenticationProvider>(map['additionalAuthenticationProviders'], (value) => AdditionalAuthenticationProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      apiType: map['apiType'] == null ? null : (GraphQLApiTypeEnumValue.fromMap((map['apiType'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (AuthenticationTypeEnumValue.fromMap((map['authenticationType'] as Map).cast<String, dynamic>())).input(),
+      dns: map['dns'] == null ? null : ((map['dns'] as Map).cast<String, String>()).input(),
+      enhancedMetricsConfig: map['enhancedMetricsConfig'] == null ? null : (EnhancedMetricsConfig.fromMap((map['enhancedMetricsConfig'] as Map).cast<String, dynamic>())).input(),
+      introspectionConfig: map['introspectionConfig'] == null ? null : (GraphQLApiIntrospectionConfigEnumValue.fromMap((map['introspectionConfig'] as Map).cast<String, dynamic>())).input(),
+      lambdaAuthorizerConfig: map['lambdaAuthorizerConfig'] == null ? null : (LambdaAuthorizerConfig.fromMap((map['lambdaAuthorizerConfig'] as Map).cast<String, dynamic>())).input(),
+      logConfig: map['logConfig'] == null ? null : (LogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      mergedApiExecutionRoleArn: map['mergedApiExecutionRoleArn'] == null ? null : (map['mergedApiExecutionRoleArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      openIDConnectConfig: map['openIDConnectConfig'] == null ? null : (OpenIDConnectConfig.fromMap((map['openIDConnectConfig'] as Map).cast<String, dynamic>())).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      ownerContact: map['ownerContact'] == null ? null : (map['ownerContact'] as String).input(),
+      queryDepthLimit: map['queryDepthLimit'] == null ? null : (map['queryDepthLimit'] as int).input(),
+      resolverCountLimit: map['resolverCountLimit'] == null ? null : (map['resolverCountLimit'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      uris: map['uris'] == null ? null : ((map['uris'] as Map).cast<String, String>()).input(),
+      userPoolConfig: map['userPoolConfig'] == null ? null : (UserPoolConfig.fromMap((map['userPoolConfig'] as Map).cast<String, dynamic>())).input(),
+      visibility: map['visibility'] == null ? null : (GraphQLApiVisibilityEnumValue.fromMap((map['visibility'] as Map).cast<String, dynamic>())).input(),
+      wafWebAclArn: map['wafWebAclArn'] == null ? null : (map['wafWebAclArn'] as String).input(),
+      xrayEnabled: map['xrayEnabled'] == null ? null : (map['xrayEnabled'] as bool).input(),
     );
   }
 }

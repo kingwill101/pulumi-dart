@@ -33,23 +33,15 @@ class DataShareConsumerAssociationState {
   /// [producerArn] Amazon Resource Name (ARN) of the producer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DataShareConsumerAssociationState({
-    pulumi.Output<bool>? allowWrites,
-    pulumi.Output<bool>? associateEntireAccount,
-    pulumi.Output<String>? consumerArn,
-    pulumi.Output<String>? consumerRegion,
-    pulumi.Output<String>? dataShareArn,
-    pulumi.Output<String>? managedBy,
-    pulumi.Output<String>? producerArn,
-    pulumi.Output<String>? region,
-  }) :
-      allowWrites = pulumi.Input.asOptionalInput<bool>(allowWrites),
-      associateEntireAccount = pulumi.Input.asOptionalInput<bool>(associateEntireAccount),
-      consumerArn = pulumi.Input.asOptionalInput<String>(consumerArn),
-      consumerRegion = pulumi.Input.asOptionalInput<String>(consumerRegion),
-      dataShareArn = pulumi.Input.asOptionalInput<String>(dataShareArn),
-      managedBy = pulumi.Input.asOptionalInput<String>(managedBy),
-      producerArn = pulumi.Input.asOptionalInput<String>(producerArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.allowWrites,
+    this.associateEntireAccount,
+    this.consumerArn,
+    this.consumerRegion,
+    this.dataShareArn,
+    this.managedBy,
+    this.producerArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class DataShareConsumerAssociationState {
 
   factory DataShareConsumerAssociationState.fromMap(Map<String, dynamic> map) {
     return DataShareConsumerAssociationState(
-      allowWrites: map['allowWrites'] == null ? null : pulumi.Output.create<bool>(map['allowWrites'] as bool),
-      associateEntireAccount: map['associateEntireAccount'] == null ? null : pulumi.Output.create<bool>(map['associateEntireAccount'] as bool),
-      consumerArn: map['consumerArn'] == null ? null : pulumi.Output.create<String>(map['consumerArn'] as String),
-      consumerRegion: map['consumerRegion'] == null ? null : pulumi.Output.create<String>(map['consumerRegion'] as String),
-      dataShareArn: map['dataShareArn'] == null ? null : pulumi.Output.create<String>(map['dataShareArn'] as String),
-      managedBy: map['managedBy'] == null ? null : pulumi.Output.create<String>(map['managedBy'] as String),
-      producerArn: map['producerArn'] == null ? null : pulumi.Output.create<String>(map['producerArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      allowWrites: map['allowWrites'] == null ? null : (map['allowWrites'] as bool).input(),
+      associateEntireAccount: map['associateEntireAccount'] == null ? null : (map['associateEntireAccount'] as bool).input(),
+      consumerArn: map['consumerArn'] == null ? null : (map['consumerArn'] as String).input(),
+      consumerRegion: map['consumerRegion'] == null ? null : (map['consumerRegion'] as String).input(),
+      dataShareArn: map['dataShareArn'] == null ? null : (map['dataShareArn'] as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
+      producerArn: map['producerArn'] == null ? null : (map['producerArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

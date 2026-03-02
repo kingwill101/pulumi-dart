@@ -28,19 +28,13 @@ class BackupShortTermRetentionPolicyArgs {
   /// [retentionDays] The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   /// [serverName] The name of the server.
   BackupShortTermRetentionPolicyArgs({
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<int>? diffBackupIntervalInHours,
-    pulumi.Output<String>? policyName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? retentionDays,
-    required pulumi.Output<String> serverName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      diffBackupIntervalInHours = pulumi.Input.asOptionalInput<int>(diffBackupIntervalInHours),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    required this.databaseName,
+    this.diffBackupIntervalInHours,
+    this.policyName,
+    required this.resourceGroupName,
+    this.retentionDays,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class BackupShortTermRetentionPolicyArgs {
 
   factory BackupShortTermRetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupShortTermRetentionPolicyArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      diffBackupIntervalInHours: map['diffBackupIntervalInHours'] == null ? null : pulumi.Output.create<int>(map['diffBackupIntervalInHours'] as int),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      diffBackupIntervalInHours: map['diffBackupIntervalInHours'] == null ? null : (map['diffBackupIntervalInHours'] as int).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

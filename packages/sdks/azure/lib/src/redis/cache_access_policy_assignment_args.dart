@@ -25,17 +25,12 @@ class CacheAccessPolicyAssignmentArgs {
   /// [objectIdAlias] The alias of the principal ID. User-friendly name for object ID. Also represents username for token based authentication. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   /// [redisCacheId] The ID of the Redis Cache. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   CacheAccessPolicyAssignmentArgs({
-    required pulumi.Output<String> accessPolicyName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> objectId,
-    required pulumi.Output<String> objectIdAlias,
-    required pulumi.Output<String> redisCacheId,
-  }) :
-      accessPolicyName = pulumi.Input.asInput<String>(accessPolicyName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      objectId = pulumi.Input.asInput<String>(objectId),
-      objectIdAlias = pulumi.Input.asInput<String>(objectIdAlias),
-      redisCacheId = pulumi.Input.asInput<String>(redisCacheId);
+    required this.accessPolicyName,
+    this.name,
+    required this.objectId,
+    required this.objectIdAlias,
+    required this.redisCacheId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CacheAccessPolicyAssignmentArgs {
 
   factory CacheAccessPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return CacheAccessPolicyAssignmentArgs(
-      accessPolicyName: pulumi.Output.create<String>(map['accessPolicyName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      objectId: pulumi.Output.create<String>(map['objectId'] as String),
-      objectIdAlias: pulumi.Output.create<String>(map['objectIdAlias'] as String),
-      redisCacheId: pulumi.Output.create<String>(map['redisCacheId'] as String),
+      accessPolicyName: (map['accessPolicyName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      objectIdAlias: (map['objectIdAlias'] as String).input(),
+      redisCacheId: (map['redisCacheId'] as String).input(),
     );
   }
 }

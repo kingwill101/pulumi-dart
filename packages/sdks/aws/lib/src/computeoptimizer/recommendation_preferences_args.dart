@@ -44,27 +44,17 @@ class RecommendationPreferencesArgs {
   /// [scope] The scope of the recommendation preferences. See Scope below.
   /// [utilizationPreferences] The preference to control the resource’s CPU utilization threshold, CPU utilization headroom, and memory utilization headroom. See Utilization Preferences below.
   RecommendationPreferencesArgs({
-    pulumi.Output<String>? enhancedInfrastructureMetrics,
-    pulumi.Output<RecommendationPreferencesExternalMetricsPreference>? externalMetricsPreference,
-    pulumi.Output<String>? inferredWorkloadTypes,
-    pulumi.Output<String>? lookBackPeriod,
-    pulumi.Output<List<RecommendationPreferencesPreferredResource>>? preferredResources,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceType,
-    pulumi.Output<String>? savingsEstimationMode,
-    required pulumi.Output<RecommendationPreferencesScope> scope,
-    pulumi.Output<List<RecommendationPreferencesUtilizationPreference>>? utilizationPreferences,
-  }) :
-      enhancedInfrastructureMetrics = pulumi.Input.asOptionalInput<String>(enhancedInfrastructureMetrics),
-      externalMetricsPreference = pulumi.Input.asOptionalInput<RecommendationPreferencesExternalMetricsPreference>(externalMetricsPreference),
-      inferredWorkloadTypes = pulumi.Input.asOptionalInput<String>(inferredWorkloadTypes),
-      lookBackPeriod = pulumi.Input.asOptionalInput<String>(lookBackPeriod),
-      preferredResources = pulumi.Input.asOptionalInput<List<RecommendationPreferencesPreferredResource>>(preferredResources),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      savingsEstimationMode = pulumi.Input.asOptionalInput<String>(savingsEstimationMode),
-      scope = pulumi.Input.asInput<RecommendationPreferencesScope>(scope),
-      utilizationPreferences = pulumi.Input.asOptionalInput<List<RecommendationPreferencesUtilizationPreference>>(utilizationPreferences);
+    this.enhancedInfrastructureMetrics,
+    this.externalMetricsPreference,
+    this.inferredWorkloadTypes,
+    this.lookBackPeriod,
+    this.preferredResources,
+    this.region,
+    required this.resourceType,
+    this.savingsEstimationMode,
+    required this.scope,
+    this.utilizationPreferences,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class RecommendationPreferencesArgs {
 
   factory RecommendationPreferencesArgs.fromMap(Map<String, dynamic> map) {
     return RecommendationPreferencesArgs(
-      enhancedInfrastructureMetrics: map['enhancedInfrastructureMetrics'] == null ? null : pulumi.Output.create<String>(map['enhancedInfrastructureMetrics'] as String),
-      externalMetricsPreference: map['externalMetricsPreference'] == null ? null : pulumi.Output.create<RecommendationPreferencesExternalMetricsPreference>(RecommendationPreferencesExternalMetricsPreference.fromMap((map['externalMetricsPreference'] as Map).cast<String, dynamic>())),
-      inferredWorkloadTypes: map['inferredWorkloadTypes'] == null ? null : pulumi.Output.create<String>(map['inferredWorkloadTypes'] as String),
-      lookBackPeriod: map['lookBackPeriod'] == null ? null : pulumi.Output.create<String>(map['lookBackPeriod'] as String),
-      preferredResources: map['preferredResources'] == null ? null : pulumi.Output.create<List<RecommendationPreferencesPreferredResource>>(pulumi.Input.decodeList<RecommendationPreferencesPreferredResource>(map['preferredResources'], (value) => RecommendationPreferencesPreferredResource.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      savingsEstimationMode: map['savingsEstimationMode'] == null ? null : pulumi.Output.create<String>(map['savingsEstimationMode'] as String),
-      scope: pulumi.Output.create<RecommendationPreferencesScope>(RecommendationPreferencesScope.fromMap((map['scope'] as Map).cast<String, dynamic>())),
-      utilizationPreferences: map['utilizationPreferences'] == null ? null : pulumi.Output.create<List<RecommendationPreferencesUtilizationPreference>>(pulumi.Input.decodeList<RecommendationPreferencesUtilizationPreference>(map['utilizationPreferences'], (value) => RecommendationPreferencesUtilizationPreference.fromMap((value as Map).cast<String, dynamic>()))),
+      enhancedInfrastructureMetrics: map['enhancedInfrastructureMetrics'] == null ? null : (map['enhancedInfrastructureMetrics'] as String).input(),
+      externalMetricsPreference: map['externalMetricsPreference'] == null ? null : (RecommendationPreferencesExternalMetricsPreference.fromMap((map['externalMetricsPreference'] as Map).cast<String, dynamic>())).input(),
+      inferredWorkloadTypes: map['inferredWorkloadTypes'] == null ? null : (map['inferredWorkloadTypes'] as String).input(),
+      lookBackPeriod: map['lookBackPeriod'] == null ? null : (map['lookBackPeriod'] as String).input(),
+      preferredResources: map['preferredResources'] == null ? null : (pulumi.Input.decodeList<RecommendationPreferencesPreferredResource>(map['preferredResources'], (value) => RecommendationPreferencesPreferredResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      savingsEstimationMode: map['savingsEstimationMode'] == null ? null : (map['savingsEstimationMode'] as String).input(),
+      scope: (RecommendationPreferencesScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      utilizationPreferences: map['utilizationPreferences'] == null ? null : (pulumi.Input.decodeList<RecommendationPreferencesUtilizationPreference>(map['utilizationPreferences'], (value) => RecommendationPreferencesUtilizationPreference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class AliasState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routingConfig] Lambda alias' route configuration settings. See below.
   AliasState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? functionName,
-    pulumi.Output<String>? functionVersion,
-    pulumi.Output<String>? invokeArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<AliasRoutingConfig>? routingConfig,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      functionName = pulumi.Input.asOptionalInput<String>(functionName),
-      functionVersion = pulumi.Input.asOptionalInput<String>(functionVersion),
-      invokeArn = pulumi.Input.asOptionalInput<String>(invokeArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingConfig = pulumi.Input.asOptionalInput<AliasRoutingConfig>(routingConfig);
+    this.arn,
+    this.description,
+    this.functionName,
+    this.functionVersion,
+    this.invokeArn,
+    this.name,
+    this.region,
+    this.routingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class AliasState {
 
   factory AliasState.fromMap(Map<String, dynamic> map) {
     return AliasState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      functionName: map['functionName'] == null ? null : pulumi.Output.create<String>(map['functionName'] as String),
-      functionVersion: map['functionVersion'] == null ? null : pulumi.Output.create<String>(map['functionVersion'] as String),
-      invokeArn: map['invokeArn'] == null ? null : pulumi.Output.create<String>(map['invokeArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingConfig: map['routingConfig'] == null ? null : pulumi.Output.create<AliasRoutingConfig>(AliasRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
+      functionVersion: map['functionVersion'] == null ? null : (map['functionVersion'] as String).input(),
+      invokeArn: map['invokeArn'] == null ? null : (map['invokeArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingConfig: map['routingConfig'] == null ? null : (AliasRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

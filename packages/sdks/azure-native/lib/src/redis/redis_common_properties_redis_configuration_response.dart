@@ -1,46 +1,47 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
 class RedisCommonPropertiesRedisConfigurationResponse {
   /// Specifies whether AAD based authentication has been enabled or disabled for the cache
-  final String? aadEnabled;
+  final pulumi.Input<String>? aadEnabled;
   /// Specifies whether the aof backup is enabled
-  final String? aofBackupEnabled;
+  final pulumi.Input<String>? aofBackupEnabled;
   /// First storage account connection string
-  final String? aofStorageConnectionString0;
+  final pulumi.Input<String>? aofStorageConnectionString0;
   /// Second storage account connection string
-  final String? aofStorageConnectionString1;
+  final pulumi.Input<String>? aofStorageConnectionString1;
   /// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!
-  final String? authnotrequired;
+  final pulumi.Input<String>? authnotrequired;
   /// The max clients config
-  final String maxclients;
+  final pulumi.Input<String> maxclients;
   /// Value in megabytes reserved for fragmentation per shard
-  final String? maxfragmentationmemoryReserved;
+  final pulumi.Input<String>? maxfragmentationmemoryReserved;
   /// Value in megabytes reserved for non-cache usage per shard e.g. failover.
-  final String? maxmemoryDelta;
+  final pulumi.Input<String>? maxmemoryDelta;
   /// The eviction strategy used when your data won't fit within its memory limit.
-  final String? maxmemoryPolicy;
+  final pulumi.Input<String>? maxmemoryPolicy;
   /// Value in megabytes reserved for non-cache usage per shard e.g. failover.
-  final String? maxmemoryReserved;
+  final pulumi.Input<String>? maxmemoryReserved;
   /// The keyspace events which should be monitored.
-  final String? notifyKeyspaceEvents;
+  final pulumi.Input<String>? notifyKeyspaceEvents;
   /// Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS
-  final String preferredDataArchiveAuthMethod;
+  final pulumi.Input<String> preferredDataArchiveAuthMethod;
   /// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
-  final String? preferredDataPersistenceAuthMethod;
+  final pulumi.Input<String>? preferredDataPersistenceAuthMethod;
   /// Specifies whether the RDB backup is enabled
-  final String? rdbBackupEnabled;
+  final pulumi.Input<String>? rdbBackupEnabled;
   /// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
-  final String? rdbBackupFrequency;
+  final pulumi.Input<String>? rdbBackupFrequency;
   /// Specifies the maximum number of snapshots for rdb backup
-  final String? rdbBackupMaxSnapshotCount;
+  final pulumi.Input<String>? rdbBackupMaxSnapshotCount;
   /// The storage account connection string for storing rdb file
-  final String? rdbStorageConnectionString;
+  final pulumi.Input<String>? rdbStorageConnectionString;
   /// SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
-  final String? storageSubscriptionId;
+  final pulumi.Input<String>? storageSubscriptionId;
   /// Zonal Configuration
-  final String zonalConfiguration;
+  final pulumi.Input<String> zonalConfiguration;
 
   /// Creates a new [RedisCommonPropertiesRedisConfigurationResponse].
   /// [aadEnabled] Specifies whether AAD based authentication has been enabled or disabled for the cache
@@ -110,25 +111,25 @@ class RedisCommonPropertiesRedisConfigurationResponse {
 
   factory RedisCommonPropertiesRedisConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return RedisCommonPropertiesRedisConfigurationResponse(
-      aadEnabled: map['aadEnabled'] == null ? null : map['aadEnabled'] as String,
-      aofBackupEnabled: map['aofBackupEnabled'] == null ? null : map['aofBackupEnabled'] as String,
-      aofStorageConnectionString0: map['aofStorageConnectionString0'] == null ? null : map['aofStorageConnectionString0'] as String,
-      aofStorageConnectionString1: map['aofStorageConnectionString1'] == null ? null : map['aofStorageConnectionString1'] as String,
-      authnotrequired: map['authnotrequired'] == null ? null : map['authnotrequired'] as String,
-      maxclients: map['maxclients'] as String,
-      maxfragmentationmemoryReserved: map['maxfragmentationmemoryReserved'] == null ? null : map['maxfragmentationmemoryReserved'] as String,
-      maxmemoryDelta: map['maxmemoryDelta'] == null ? null : map['maxmemoryDelta'] as String,
-      maxmemoryPolicy: map['maxmemoryPolicy'] == null ? null : map['maxmemoryPolicy'] as String,
-      maxmemoryReserved: map['maxmemoryReserved'] == null ? null : map['maxmemoryReserved'] as String,
-      notifyKeyspaceEvents: map['notifyKeyspaceEvents'] == null ? null : map['notifyKeyspaceEvents'] as String,
-      preferredDataArchiveAuthMethod: map['preferredDataArchiveAuthMethod'] as String,
-      preferredDataPersistenceAuthMethod: map['preferredDataPersistenceAuthMethod'] == null ? null : map['preferredDataPersistenceAuthMethod'] as String,
-      rdbBackupEnabled: map['rdbBackupEnabled'] == null ? null : map['rdbBackupEnabled'] as String,
-      rdbBackupFrequency: map['rdbBackupFrequency'] == null ? null : map['rdbBackupFrequency'] as String,
-      rdbBackupMaxSnapshotCount: map['rdbBackupMaxSnapshotCount'] == null ? null : map['rdbBackupMaxSnapshotCount'] as String,
-      rdbStorageConnectionString: map['rdbStorageConnectionString'] == null ? null : map['rdbStorageConnectionString'] as String,
-      storageSubscriptionId: map['storageSubscriptionId'] == null ? null : map['storageSubscriptionId'] as String,
-      zonalConfiguration: map['zonalConfiguration'] as String,
+      aadEnabled: map['aadEnabled'] == null ? null : (map['aadEnabled'] as String).input(),
+      aofBackupEnabled: map['aofBackupEnabled'] == null ? null : (map['aofBackupEnabled'] as String).input(),
+      aofStorageConnectionString0: map['aofStorageConnectionString0'] == null ? null : (map['aofStorageConnectionString0'] as String).input(),
+      aofStorageConnectionString1: map['aofStorageConnectionString1'] == null ? null : (map['aofStorageConnectionString1'] as String).input(),
+      authnotrequired: map['authnotrequired'] == null ? null : (map['authnotrequired'] as String).input(),
+      maxclients: (map['maxclients'] as String).input(),
+      maxfragmentationmemoryReserved: map['maxfragmentationmemoryReserved'] == null ? null : (map['maxfragmentationmemoryReserved'] as String).input(),
+      maxmemoryDelta: map['maxmemoryDelta'] == null ? null : (map['maxmemoryDelta'] as String).input(),
+      maxmemoryPolicy: map['maxmemoryPolicy'] == null ? null : (map['maxmemoryPolicy'] as String).input(),
+      maxmemoryReserved: map['maxmemoryReserved'] == null ? null : (map['maxmemoryReserved'] as String).input(),
+      notifyKeyspaceEvents: map['notifyKeyspaceEvents'] == null ? null : (map['notifyKeyspaceEvents'] as String).input(),
+      preferredDataArchiveAuthMethod: (map['preferredDataArchiveAuthMethod'] as String).input(),
+      preferredDataPersistenceAuthMethod: map['preferredDataPersistenceAuthMethod'] == null ? null : (map['preferredDataPersistenceAuthMethod'] as String).input(),
+      rdbBackupEnabled: map['rdbBackupEnabled'] == null ? null : (map['rdbBackupEnabled'] as String).input(),
+      rdbBackupFrequency: map['rdbBackupFrequency'] == null ? null : (map['rdbBackupFrequency'] as String).input(),
+      rdbBackupMaxSnapshotCount: map['rdbBackupMaxSnapshotCount'] == null ? null : (map['rdbBackupMaxSnapshotCount'] as String).input(),
+      rdbStorageConnectionString: map['rdbStorageConnectionString'] == null ? null : (map['rdbStorageConnectionString'] as String).input(),
+      storageSubscriptionId: map['storageSubscriptionId'] == null ? null : (map['storageSubscriptionId'] as String).input(),
+      zonalConfiguration: (map['zonalConfiguration'] as String).input(),
     );
   }
 }

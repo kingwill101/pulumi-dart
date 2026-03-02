@@ -44,29 +44,18 @@ class FirmwareArgs {
   /// [version] Firmware version.
   /// [workspaceName] The name of the firmware analysis workspace.
   FirmwareArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fileName,
-    pulumi.Output<double>? fileSize,
-    pulumi.Output<String>? firmwareId,
-    pulumi.Output<String>? model,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<StatusMessage>>? statusMessages,
-    pulumi.Output<String>? vendor,
-    pulumi.Output<String>? version,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileName = pulumi.Input.asOptionalInput<String>(fileName),
-      fileSize = pulumi.Input.asOptionalInput<double>(fileSize),
-      firmwareId = pulumi.Input.asOptionalInput<String>(firmwareId),
-      model = pulumi.Input.asOptionalInput<String>(model),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      statusMessages = pulumi.Input.asOptionalInput<List<StatusMessage>>(statusMessages),
-      vendor = pulumi.Input.asOptionalInput<String>(vendor),
-      version = pulumi.Input.asOptionalInput<String>(version),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.description,
+    this.fileName,
+    this.fileSize,
+    this.firmwareId,
+    this.model,
+    required this.resourceGroupName,
+    this.status,
+    this.statusMessages,
+    this.vendor,
+    this.version,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class FirmwareArgs {
 
   factory FirmwareArgs.fromMap(Map<String, dynamic> map) {
     return FirmwareArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileName: map['fileName'] == null ? null : pulumi.Output.create<String>(map['fileName'] as String),
-      fileSize: map['fileSize'] == null ? null : pulumi.Output.create<double>(map['fileSize'] as double),
-      firmwareId: map['firmwareId'] == null ? null : pulumi.Output.create<String>(map['firmwareId'] as String),
-      model: map['model'] == null ? null : pulumi.Output.create<String>(map['model'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      statusMessages: map['statusMessages'] == null ? null : pulumi.Output.create<List<StatusMessage>>(pulumi.Input.decodeList<StatusMessage>(map['statusMessages'], (value) => StatusMessage.fromMap((value as Map).cast<String, dynamic>()))),
-      vendor: map['vendor'] == null ? null : pulumi.Output.create<String>(map['vendor'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      fileSize: map['fileSize'] == null ? null : (map['fileSize'] as double).input(),
+      firmwareId: map['firmwareId'] == null ? null : (map['firmwareId'] as String).input(),
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      statusMessages: map['statusMessages'] == null ? null : (pulumi.Input.decodeList<StatusMessage>(map['statusMessages'], (value) => StatusMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

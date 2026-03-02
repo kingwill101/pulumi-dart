@@ -28,19 +28,13 @@ class ServicePrincipalPasswordArgs {
   /// [servicePrincipalId] The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
   /// [startDate] The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
   ServicePrincipalPasswordArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? endDate,
-    pulumi.Output<String>? endDateRelative,
-    pulumi.Output<Map<String, String>>? rotateWhenChanged,
-    required pulumi.Output<String> servicePrincipalId,
-    pulumi.Output<String>? startDate,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      endDate = pulumi.Input.asOptionalInput<String>(endDate),
-      endDateRelative = pulumi.Input.asOptionalInput<String>(endDateRelative),
-      rotateWhenChanged = pulumi.Input.asOptionalInput<Map<String, String>>(rotateWhenChanged),
-      servicePrincipalId = pulumi.Input.asInput<String>(servicePrincipalId),
-      startDate = pulumi.Input.asOptionalInput<String>(startDate);
+    this.displayName,
+    this.endDate,
+    this.endDateRelative,
+    this.rotateWhenChanged,
+    required this.servicePrincipalId,
+    this.startDate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ServicePrincipalPasswordArgs {
 
   factory ServicePrincipalPasswordArgs.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalPasswordArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      endDate: map['endDate'] == null ? null : pulumi.Output.create<String>(map['endDate'] as String),
-      endDateRelative: map['endDateRelative'] == null ? null : pulumi.Output.create<String>(map['endDateRelative'] as String),
-      rotateWhenChanged: map['rotateWhenChanged'] == null ? null : pulumi.Output.create<Map<String, String>>((map['rotateWhenChanged'] as Map).cast<String, String>()),
-      servicePrincipalId: pulumi.Output.create<String>(map['servicePrincipalId'] as String),
-      startDate: map['startDate'] == null ? null : pulumi.Output.create<String>(map['startDate'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      endDateRelative: map['endDateRelative'] == null ? null : (map['endDateRelative'] as String).input(),
+      rotateWhenChanged: map['rotateWhenChanged'] == null ? null : ((map['rotateWhenChanged'] as Map).cast<String, String>()).input(),
+      servicePrincipalId: (map['servicePrincipalId'] as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
     );
   }
 }

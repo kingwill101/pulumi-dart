@@ -38,25 +38,16 @@ class DeploymentArgs {
   /// [project] Optional.
   /// [target] [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
   DeploymentArgs({
-    pulumi.Output<String>? createPolicy,
-    pulumi.Output<Credential>? credential,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? id,
-    pulumi.Output<List<DeploymentLabelEntry>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? preview,
-    pulumi.Output<String>? project,
-    pulumi.Output<TargetConfiguration>? target,
-  }) :
-      createPolicy = pulumi.Input.asOptionalInput<String>(createPolicy),
-      credential = pulumi.Input.asOptionalInput<Credential>(credential),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      labels = pulumi.Input.asOptionalInput<List<DeploymentLabelEntry>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      preview = pulumi.Input.asOptionalInput<bool>(preview),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      target = pulumi.Input.asOptionalInput<TargetConfiguration>(target);
+    this.createPolicy,
+    this.credential,
+    this.description,
+    this.id,
+    this.labels,
+    this.name,
+    this.preview,
+    this.project,
+    this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      createPolicy: map['createPolicy'] == null ? null : pulumi.Output.create<String>(map['createPolicy'] as String),
-      credential: map['credential'] == null ? null : pulumi.Output.create<Credential>(Credential.fromMap((map['credential'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<DeploymentLabelEntry>>(pulumi.Input.decodeList<DeploymentLabelEntry>(map['labels'], (value) => DeploymentLabelEntry.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      preview: map['preview'] == null ? null : pulumi.Output.create<bool>(map['preview'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      target: map['target'] == null ? null : pulumi.Output.create<TargetConfiguration>(TargetConfiguration.fromMap((map['target'] as Map).cast<String, dynamic>())),
+      createPolicy: map['createPolicy'] == null ? null : (map['createPolicy'] as String).input(),
+      credential: map['credential'] == null ? null : (Credential.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<DeploymentLabelEntry>(map['labels'], (value) => DeploymentLabelEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      target: map['target'] == null ? null : (TargetConfiguration.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

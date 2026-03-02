@@ -16,13 +16,10 @@ class GetAutoscalerArgs {
   /// [project] Optional.
   /// [zone] Required.
   GetAutoscalerArgs({
-    required pulumi.Output<String> autoscaler,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> zone,
-  }) :
-      autoscaler = pulumi.Input.asInput<String>(autoscaler),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+    required this.autoscaler,
+    this.project,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetAutoscalerArgs {
 
   factory GetAutoscalerArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoscalerArgs(
-      autoscaler: pulumi.Output.create<String>(map['autoscaler'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      autoscaler: (map['autoscaler'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

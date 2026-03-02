@@ -25,15 +25,11 @@ class GetZoneIamPolicyArgs {
   /// [location] Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
   GetZoneIamPolicyArgs({
-    required pulumi.Output<String> dataplexZone,
-    required pulumi.Output<String> lake,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      dataplexZone = pulumi.Input.asInput<String>(dataplexZone),
-      lake = pulumi.Input.asInput<String>(lake),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dataplexZone,
+    required this.lake,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class GetZoneIamPolicyArgs {
 
   factory GetZoneIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneIamPolicyArgs(
-      dataplexZone: pulumi.Output.create<String>(map['dataplexZone'] as String),
-      lake: pulumi.Output.create<String>(map['lake'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataplexZone: (map['dataplexZone'] as String).input(),
+      lake: (map['lake'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

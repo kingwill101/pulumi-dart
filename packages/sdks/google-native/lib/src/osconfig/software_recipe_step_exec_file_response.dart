@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Executes an artifact or local file.
 class SoftwareRecipeStepExecFileResponse {
   /// Defaults to [0]. A list of possible return values that the program can return to indicate a success.
-  final List<int> allowedExitCodes;
+  final pulumi.Input<List<int>> allowedExitCodes;
   /// Arguments to be passed to the provided executable.
-  final List<String> args;
+  final pulumi.Input<List<String>> args;
   /// The id of the relevant artifact in the recipe.
-  final String artifactId;
+  final pulumi.Input<String> artifactId;
   /// The absolute path of the file on the local filesystem.
-  final String localPath;
+  final pulumi.Input<String> localPath;
 
   /// Creates a new [SoftwareRecipeStepExecFileResponse].
   /// [allowedExitCodes] Defaults to [0]. A list of possible return values that the program can return to indicate a success.
@@ -35,10 +36,10 @@ class SoftwareRecipeStepExecFileResponse {
 
   factory SoftwareRecipeStepExecFileResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeStepExecFileResponse(
-      allowedExitCodes: (map['allowedExitCodes'] as List).cast<int>(),
-      args: (map['args'] as List).cast<String>(),
-      artifactId: map['artifactId'] as String,
-      localPath: map['localPath'] as String,
+      allowedExitCodes: ((map['allowedExitCodes'] as List).cast<int>()).input(),
+      args: ((map['args'] as List).cast<String>()).input(),
+      artifactId: (map['artifactId'] as String).input(),
+      localPath: (map['localPath'] as String).input(),
     );
   }
 }

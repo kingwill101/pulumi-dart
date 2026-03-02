@@ -13,9 +13,8 @@ class GetLockArgs {
   /// Creates a new [GetLockArgs].
   /// [id] The unique ID of the Lock.
   GetLockArgs({
-    required pulumi.Output<int> id,
-  }) :
-      id = pulumi.Input.asInput<int>(id);
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetLockArgs {
 
   factory GetLockArgs.fromMap(Map<String, dynamic> map) {
     return GetLockArgs(
-      id: pulumi.Output.create<int>(map['id'] as int),
+      id: (map['id'] as int).input(),
     );
   }
 }

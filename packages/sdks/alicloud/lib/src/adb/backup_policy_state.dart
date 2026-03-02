@@ -19,15 +19,11 @@ class BackupPolicyState {
   /// [preferredBackupPeriods] ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
   /// [preferredBackupTime] ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
   BackupPolicyState({
-    pulumi.Output<String>? backupRetentionPeriod,
-    pulumi.Output<String>? dbClusterId,
-    pulumi.Output<List<String>>? preferredBackupPeriods,
-    pulumi.Output<String>? preferredBackupTime,
-  }) :
-      backupRetentionPeriod = pulumi.Input.asOptionalInput<String>(backupRetentionPeriod),
-      dbClusterId = pulumi.Input.asOptionalInput<String>(dbClusterId),
-      preferredBackupPeriods = pulumi.Input.asOptionalInput<List<String>>(preferredBackupPeriods),
-      preferredBackupTime = pulumi.Input.asOptionalInput<String>(preferredBackupTime);
+    this.backupRetentionPeriod,
+    this.dbClusterId,
+    this.preferredBackupPeriods,
+    this.preferredBackupTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : pulumi.Output.create<String>(map['backupRetentionPeriod'] as String),
-      dbClusterId: map['dbClusterId'] == null ? null : pulumi.Output.create<String>(map['dbClusterId'] as String),
-      preferredBackupPeriods: map['preferredBackupPeriods'] == null ? null : pulumi.Output.create<List<String>>((map['preferredBackupPeriods'] as List).cast<String>()),
-      preferredBackupTime: map['preferredBackupTime'] == null ? null : pulumi.Output.create<String>(map['preferredBackupTime'] as String),
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod'] as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
+      preferredBackupPeriods: map['preferredBackupPeriods'] == null ? null : ((map['preferredBackupPeriods'] as List).cast<String>()).input(),
+      preferredBackupTime: map['preferredBackupTime'] == null ? null : (map['preferredBackupTime'] as String).input(),
     );
   }
 }

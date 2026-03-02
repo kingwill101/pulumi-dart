@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Safety Attribute categories and their associated confidence scores.
 class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponse {
   /// The display names of Safety Attribute categories associated with the generated content. Order matches the Scores.
-  final List<String> categories;
+  final pulumi.Input<List<String>> categories;
   /// The confidence scores of the each category, higher value means higher confidence. Order matches the Categories.
-  final List<double> scores;
+  final pulumi.Input<List<double>> scores;
 
   /// Creates a new [GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponse].
   /// [categories] The display names of Safety Attribute categories associated with the generated content. Order matches the Scores.
@@ -25,8 +26,8 @@ class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesRespo
 
   factory GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponse(
-      categories: (map['categories'] as List).cast<String>(),
-      scores: (map['scores'] as List).cast<double>(),
+      categories: ((map['categories'] as List).cast<String>()).input(),
+      scores: ((map['scores'] as List).cast<double>()).input(),
     );
   }
 }

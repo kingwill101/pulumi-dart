@@ -37,27 +37,17 @@ class DevicePoolState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] Optional.
   DevicePoolState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? maxDevices,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<DevicePoolRule>>? rules,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? type,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      maxDevices = pulumi.Input.asOptionalInput<int>(maxDevices),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectArn = pulumi.Input.asOptionalInput<String>(projectArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rules = pulumi.Input.asOptionalInput<List<DevicePoolRule>>(rules),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.arn,
+    this.description,
+    this.maxDevices,
+    this.name,
+    this.projectArn,
+    this.region,
+    this.rules,
+    this.tags,
+    this.tagsAll,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class DevicePoolState {
 
   factory DevicePoolState.fromMap(Map<String, dynamic> map) {
     return DevicePoolState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      maxDevices: map['maxDevices'] == null ? null : pulumi.Output.create<int>(map['maxDevices'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectArn: map['projectArn'] == null ? null : pulumi.Output.create<String>(map['projectArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<DevicePoolRule>>(pulumi.Input.decodeList<DevicePoolRule>(map['rules'], (value) => DevicePoolRule.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      maxDevices: map['maxDevices'] == null ? null : (map['maxDevices'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectArn: map['projectArn'] == null ? null : (map['projectArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<DevicePoolRule>(map['rules'], (value) => DevicePoolRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

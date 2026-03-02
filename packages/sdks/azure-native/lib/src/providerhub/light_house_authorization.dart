@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LightHouseAuthorization {
   /// The principal id.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The role definition id.
-  final String roleDefinitionId;
+  final pulumi.Input<String> roleDefinitionId;
 
   /// Creates a new [LightHouseAuthorization].
   /// [principalId] The principal id.
@@ -24,8 +25,8 @@ class LightHouseAuthorization {
 
   factory LightHouseAuthorization.fromMap(Map<String, dynamic> map) {
     return LightHouseAuthorization(
-      principalId: map['principalId'] as String,
-      roleDefinitionId: map['roleDefinitionId'] as String,
+      principalId: (map['principalId'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );
   }
 }

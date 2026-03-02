@@ -27,17 +27,12 @@ class GetServicePrincipalsArgs {
   /// [objectIds] The object IDs of the service principals.
   /// [returnAll] When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
   GetServicePrincipalsArgs({
-    pulumi.Output<List<String>>? clientIds,
-    pulumi.Output<List<String>>? displayNames,
-    pulumi.Output<bool>? ignoreMissing,
-    pulumi.Output<List<String>>? objectIds,
-    pulumi.Output<bool>? returnAll,
-  }) :
-      clientIds = pulumi.Input.asOptionalInput<List<String>>(clientIds),
-      displayNames = pulumi.Input.asOptionalInput<List<String>>(displayNames),
-      ignoreMissing = pulumi.Input.asOptionalInput<bool>(ignoreMissing),
-      objectIds = pulumi.Input.asOptionalInput<List<String>>(objectIds),
-      returnAll = pulumi.Input.asOptionalInput<bool>(returnAll);
+    this.clientIds,
+    this.displayNames,
+    this.ignoreMissing,
+    this.objectIds,
+    this.returnAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GetServicePrincipalsArgs {
 
   factory GetServicePrincipalsArgs.fromMap(Map<String, dynamic> map) {
     return GetServicePrincipalsArgs(
-      clientIds: map['clientIds'] == null ? null : pulumi.Output.create<List<String>>((map['clientIds'] as List).cast<String>()),
-      displayNames: map['displayNames'] == null ? null : pulumi.Output.create<List<String>>((map['displayNames'] as List).cast<String>()),
-      ignoreMissing: map['ignoreMissing'] == null ? null : pulumi.Output.create<bool>(map['ignoreMissing'] as bool),
-      objectIds: map['objectIds'] == null ? null : pulumi.Output.create<List<String>>((map['objectIds'] as List).cast<String>()),
-      returnAll: map['returnAll'] == null ? null : pulumi.Output.create<bool>(map['returnAll'] as bool),
+      clientIds: map['clientIds'] == null ? null : ((map['clientIds'] as List).cast<String>()).input(),
+      displayNames: map['displayNames'] == null ? null : ((map['displayNames'] as List).cast<String>()).input(),
+      ignoreMissing: map['ignoreMissing'] == null ? null : (map['ignoreMissing'] as bool).input(),
+      objectIds: map['objectIds'] == null ? null : ((map['objectIds'] as List).cast<String>()).input(),
+      returnAll: map['returnAll'] == null ? null : (map['returnAll'] as bool).input(),
     );
   }
 }

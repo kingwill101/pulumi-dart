@@ -44,31 +44,19 @@ class ClusterState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] The id of the VPC that the CloudHSM cluster resides in.
   ClusterState({
-    pulumi.Output<List<ClusterClusterCertificate>>? clusterCertificates,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? clusterState,
-    pulumi.Output<String>? hsmType,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityGroupId,
-    pulumi.Output<String>? sourceBackupIdentifier,
-    pulumi.Output<List<String>>? subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vpcId,
-  }) :
-      clusterCertificates = pulumi.Input.asOptionalInput<List<ClusterClusterCertificate>>(clusterCertificates),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      clusterState = pulumi.Input.asOptionalInput<String>(clusterState),
-      hsmType = pulumi.Input.asOptionalInput<String>(hsmType),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId),
-      sourceBackupIdentifier = pulumi.Input.asOptionalInput<String>(sourceBackupIdentifier),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.clusterCertificates,
+    this.clusterId,
+    this.clusterState,
+    this.hsmType,
+    this.mode,
+    this.region,
+    this.securityGroupId,
+    this.sourceBackupIdentifier,
+    this.subnetIds,
+    this.tags,
+    this.tagsAll,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      clusterCertificates: map['clusterCertificates'] == null ? null : pulumi.Output.create<List<ClusterClusterCertificate>>(pulumi.Input.decodeList<ClusterClusterCertificate>(map['clusterCertificates'], (value) => ClusterClusterCertificate.fromMap((value as Map).cast<String, dynamic>()))),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      clusterState: map['clusterState'] == null ? null : pulumi.Output.create<String>(map['clusterState'] as String),
-      hsmType: map['hsmType'] == null ? null : pulumi.Output.create<String>(map['hsmType'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
-      sourceBackupIdentifier: map['sourceBackupIdentifier'] == null ? null : pulumi.Output.create<String>(map['sourceBackupIdentifier'] as String),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      clusterCertificates: map['clusterCertificates'] == null ? null : (pulumi.Input.decodeList<ClusterClusterCertificate>(map['clusterCertificates'], (value) => ClusterClusterCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      clusterState: map['clusterState'] == null ? null : (map['clusterState'] as String).input(),
+      hsmType: map['hsmType'] == null ? null : (map['hsmType'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      sourceBackupIdentifier: map['sourceBackupIdentifier'] == null ? null : (map['sourceBackupIdentifier'] as String).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

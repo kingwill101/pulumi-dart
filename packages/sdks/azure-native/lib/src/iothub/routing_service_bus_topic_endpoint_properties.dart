@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_identity.dart';
 
 /// The properties related to service bus topic endpoint types.
 class RoutingServiceBusTopicEndpointProperties {
   /// Method used to authenticate against the service bus topic endpoint
-  final String? authenticationType;
+  final pulumi.Input<String>? authenticationType;
   /// The connection string of the service bus topic endpoint.
-  final String? connectionString;
+  final pulumi.Input<String>? connectionString;
   /// The url of the service bus topic endpoint. It must include the protocol sb://
-  final String? endpointUri;
+  final pulumi.Input<String>? endpointUri;
   /// Queue name on the service bus topic
-  final String? entityPath;
+  final pulumi.Input<String>? entityPath;
   /// Id of the service bus topic endpoint
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Managed identity properties of routing service bus topic endpoint.
-  final ManagedIdentity? identity;
+  final pulumi.Input<ManagedIdentity>? identity;
   /// The name that identifies this endpoint. The name can only include alphanumeric characters, periods, underscores, hyphens and has a maximum length of 64 characters. The following names are reserved:  events, fileNotifications, $default. Endpoint names must be unique across endpoint types.  The name need not be the same as the actual topic name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the resource group of the service bus topic endpoint.
-  final String? resourceGroup;
+  final pulumi.Input<String>? resourceGroup;
   /// The subscription identifier of the service bus topic endpoint.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
 
   /// Creates a new [RoutingServiceBusTopicEndpointProperties].
   /// [authenticationType] Method used to authenticate against the service bus topic endpoint
@@ -52,7 +53,7 @@ class RoutingServiceBusTopicEndpointProperties {
       'endpointUri': ?endpointUri,
       'entityPath': ?entityPath,
       'id': ?id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'name': name,
       'resourceGroup': ?resourceGroup,
       'subscriptionId': ?subscriptionId,
@@ -61,15 +62,15 @@ class RoutingServiceBusTopicEndpointProperties {
 
   factory RoutingServiceBusTopicEndpointProperties.fromMap(Map<String, dynamic> map) {
     return RoutingServiceBusTopicEndpointProperties(
-      authenticationType: map['authenticationType'] == null ? null : map['authenticationType'] as String,
-      connectionString: map['connectionString'] == null ? null : map['connectionString'] as String,
-      endpointUri: map['endpointUri'] == null ? null : map['endpointUri'] as String,
-      entityPath: map['entityPath'] == null ? null : map['entityPath'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
+      entityPath: map['entityPath'] == null ? null : (map['entityPath'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The failover policy for a given region of a database account.
 class FailoverPolicyResponse {
   /// The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
-  final int? failoverPriority;
+  final pulumi.Input<int>? failoverPriority;
   /// The unique identifier of the region in which the database account replicates to. Example: &lt;accountName&gt;-&lt;locationName&gt;.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the region in which the database account exists.
-  final String? locationName;
+  final pulumi.Input<String>? locationName;
 
   /// Creates a new [FailoverPolicyResponse].
   /// [failoverPriority] The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
@@ -30,9 +31,9 @@ class FailoverPolicyResponse {
 
   factory FailoverPolicyResponse.fromMap(Map<String, dynamic> map) {
     return FailoverPolicyResponse(
-      failoverPriority: map['failoverPriority'] == null ? null : map['failoverPriority'] as int,
-      id: map['id'] as String,
-      locationName: map['locationName'] == null ? null : map['locationName'] as String,
+      failoverPriority: map['failoverPriority'] == null ? null : (map['failoverPriority'] as int).input(),
+      id: (map['id'] as String).input(),
+      locationName: map['locationName'] == null ? null : (map['locationName'] as String).input(),
     );
   }
 }

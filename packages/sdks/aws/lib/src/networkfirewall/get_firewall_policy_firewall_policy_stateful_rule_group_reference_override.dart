@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride {
-  final String action;
+  final pulumi.Input<String> action;
 
   /// Creates a new [GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride].
   /// [action] Required.
@@ -18,7 +19,7 @@ class GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride {
 
   factory GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride(
-      action: map['action'] as String,
+      action: (map['action'] as String).input(),
     );
   }
 }

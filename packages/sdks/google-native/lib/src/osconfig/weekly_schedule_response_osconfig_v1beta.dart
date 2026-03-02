@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a weekly schedule.
 class WeeklyScheduleResponseOsconfigV1beta {
   /// Day of the week.
-  final String dayOfWeek;
+  final pulumi.Input<String> dayOfWeek;
 
   /// Creates a new [WeeklyScheduleResponseOsconfigV1beta].
   /// [dayOfWeek] Day of the week.
@@ -20,7 +21,7 @@ class WeeklyScheduleResponseOsconfigV1beta {
 
   factory WeeklyScheduleResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return WeeklyScheduleResponseOsconfigV1beta(
-      dayOfWeek: map['dayOfWeek'] as String,
+      dayOfWeek: (map['dayOfWeek'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'query_list.dart';
 
 /// A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
 class HiveJob {
   /// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
-  final bool? continueOnFailure;
+  final pulumi.Input<bool>? continueOnFailure;
   /// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
-  final List<String>? jarFileUris;
+  final pulumi.Input<List<String>>? jarFileUris;
   /// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// The HCFS URI of the script that contains Hive queries.
-  final String? queryFileUri;
+  final pulumi.Input<String>? queryFileUri;
   /// A list of queries.
-  final QueryList? queryList;
+  final pulumi.Input<QueryList>? queryList;
   /// Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
-  final Map<String, String>? scriptVariables;
+  final pulumi.Input<Map<String, String>>? scriptVariables;
 
   /// Creates a new [HiveJob].
   /// [continueOnFailure] Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
@@ -39,19 +40,19 @@ class HiveJob {
       'jarFileUris': ?jarFileUris,
       'properties': ?properties,
       'queryFileUri': ?queryFileUri,
-      'queryList': ?queryList == null ? null : queryList!.toMap(),
+      'queryList': ?pulumi.Input.mapOptionalInputValue<QueryList, Map<String, dynamic>>(queryList, (value) => value.toMap()),
       'scriptVariables': ?scriptVariables,
     };
   }
 
   factory HiveJob.fromMap(Map<String, dynamic> map) {
     return HiveJob(
-      continueOnFailure: map['continueOnFailure'] == null ? null : map['continueOnFailure'] as bool,
-      jarFileUris: map['jarFileUris'] == null ? null : (map['jarFileUris'] as List).cast<String>(),
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      queryFileUri: map['queryFileUri'] == null ? null : map['queryFileUri'] as String,
-      queryList: map['queryList'] == null ? null : QueryList.fromMap((map['queryList'] as Map).cast<String, dynamic>()),
-      scriptVariables: map['scriptVariables'] == null ? null : (map['scriptVariables'] as Map).cast<String, String>(),
+      continueOnFailure: map['continueOnFailure'] == null ? null : (map['continueOnFailure'] as bool).input(),
+      jarFileUris: map['jarFileUris'] == null ? null : ((map['jarFileUris'] as List).cast<String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      queryFileUri: map['queryFileUri'] == null ? null : (map['queryFileUri'] as String).input(),
+      queryList: map['queryList'] == null ? null : (QueryList.fromMap((map['queryList'] as Map).cast<String, dynamic>())).input(),
+      scriptVariables: map['scriptVariables'] == null ? null : ((map['scriptVariables'] as Map).cast<String, String>()).input(),
     );
   }
 }

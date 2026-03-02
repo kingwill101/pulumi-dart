@@ -19,13 +19,10 @@ class SingleScramSecretAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretArn] AWS Secrets Manager secret ARN.
   SingleScramSecretAssociationArgs({
-    required pulumi.Output<String> clusterArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> secretArn,
-  }) :
-      clusterArn = pulumi.Input.asInput<String>(clusterArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretArn = pulumi.Input.asInput<String>(secretArn);
+    required this.clusterArn,
+    this.region,
+    required this.secretArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SingleScramSecretAssociationArgs {
 
   factory SingleScramSecretAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SingleScramSecretAssociationArgs(
-      clusterArn: pulumi.Output.create<String>(map['clusterArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretArn: pulumi.Output.create<String>(map['secretArn'] as String),
+      clusterArn: (map['clusterArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretArn: (map['secretArn'] as String).input(),
     );
   }
 }

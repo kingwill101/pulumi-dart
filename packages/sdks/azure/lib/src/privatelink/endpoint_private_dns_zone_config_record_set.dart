@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointPrivateDnsZoneConfigRecordSet {
   /// The fully qualified domain name to the `private_dns_zone`.
-  final String? fqdn;
+  final pulumi.Input<String>? fqdn;
   /// A list of all IP Addresses that map to the `private_dns_zone` fqdn.
-  final List<String>? ipAddresses;
+  final pulumi.Input<List<String>>? ipAddresses;
   /// Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The time to live for each connection to the `private_dns_zone`.
-  final int? ttl;
+  final pulumi.Input<int>? ttl;
   /// The type of DNS record.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [EndpointPrivateDnsZoneConfigRecordSet].
   /// [fqdn] The fully qualified domain name to the `private_dns_zone`.
@@ -39,11 +40,11 @@ class EndpointPrivateDnsZoneConfigRecordSet {
 
   factory EndpointPrivateDnsZoneConfigRecordSet.fromMap(Map<String, dynamic> map) {
     return EndpointPrivateDnsZoneConfigRecordSet(
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      ttl: map['ttl'] == null ? null : map['ttl'] as int,
-      type: map['type'] == null ? null : map['type'] as String,
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

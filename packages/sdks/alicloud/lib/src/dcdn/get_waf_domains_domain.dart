@@ -5,13 +5,13 @@ import 'get_waf_domains_domain_defense_scene.dart';
 
 class GetWafDomainsDomain {
   /// The client ip tag.
-  final String clientIpTag;
+  final pulumi.Input<String> clientIpTag;
   /// Protection policy type.
-  final List<GetWafDomainsDomainDefenseScene> defenseScenes;
+  final pulumi.Input<List<GetWafDomainsDomainDefenseScene>> defenseScenes;
   /// The accelerated domain name.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The ID of the Waf Domain.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetWafDomainsDomain].
   /// [clientIpTag] The client ip tag.
@@ -28,7 +28,7 @@ class GetWafDomainsDomain {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientIpTag': clientIpTag,
-      'defenseScenes': pulumi.Input.encodeList<GetWafDomainsDomainDefenseScene, Map<String, dynamic>>(defenseScenes, (value) => value.toMap()),
+      'defenseScenes': pulumi.Input.mapInputValue<List<GetWafDomainsDomainDefenseScene>, List<Map<String, dynamic>>>(defenseScenes, (value) => pulumi.Input.encodeList<GetWafDomainsDomainDefenseScene, Map<String, dynamic>>(value, (value) => value.toMap())),
       'domainName': domainName,
       'id': id,
     };
@@ -36,10 +36,10 @@ class GetWafDomainsDomain {
 
   factory GetWafDomainsDomain.fromMap(Map<String, dynamic> map) {
     return GetWafDomainsDomain(
-      clientIpTag: map['clientIpTag'] as String,
-      defenseScenes: pulumi.Input.decodeList<GetWafDomainsDomainDefenseScene>(map['defenseScenes'], (value) => GetWafDomainsDomainDefenseScene.fromMap((value as Map).cast<String, dynamic>())),
-      domainName: map['domainName'] as String,
-      id: map['id'] as String,
+      clientIpTag: (map['clientIpTag'] as String).input(),
+      defenseScenes: (pulumi.Input.decodeList<GetWafDomainsDomainDefenseScene>(map['defenseScenes'], (value) => GetWafDomainsDomainDefenseScene.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domainName: (map['domainName'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

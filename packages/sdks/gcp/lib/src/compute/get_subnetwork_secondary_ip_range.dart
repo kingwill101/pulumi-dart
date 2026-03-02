@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSubnetworkSecondaryIpRange {
   /// The range of IP addresses belonging to this subnetwork
   /// secondary range.
-  final String ipCidrRange;
+  final pulumi.Input<String> ipCidrRange;
   /// The name associated with this subnetwork secondary range, used
   /// when adding an alias IP range to a VM instance.
-  final String rangeName;
+  final pulumi.Input<String> rangeName;
 
   /// Creates a new [GetSubnetworkSecondaryIpRange].
   /// [ipCidrRange] The range of IP addresses belonging to this subnetwork
@@ -26,8 +27,8 @@ class GetSubnetworkSecondaryIpRange {
 
   factory GetSubnetworkSecondaryIpRange.fromMap(Map<String, dynamic> map) {
     return GetSubnetworkSecondaryIpRange(
-      ipCidrRange: map['ipCidrRange'] as String,
-      rangeName: map['rangeName'] as String,
+      ipCidrRange: (map['ipCidrRange'] as String).input(),
+      rangeName: (map['rangeName'] as String).input(),
     );
   }
 }

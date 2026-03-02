@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported.
 class SessionProbeResponseTcpSocket {
   /// Optional: Host name to connect to, defaults to the pod IP.
-  final String? host;
+  final pulumi.Input<String>? host;
   /// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [SessionProbeResponseTcpSocket].
   /// [host] Optional: Host name to connect to, defaults to the pod IP.
@@ -25,8 +26,8 @@ class SessionProbeResponseTcpSocket {
 
   factory SessionProbeResponseTcpSocket.fromMap(Map<String, dynamic> map) {
     return SessionProbeResponseTcpSocket(
-      host: map['host'] == null ? null : map['host'] as String,
-      port: map['port'] as int,
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

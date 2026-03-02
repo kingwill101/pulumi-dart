@@ -34,21 +34,14 @@ class ProjectNotificationConfigState {
   /// [serviceAccount] The service account that needs "pubsub.topics.publish" permission to
   /// [streamingConfig] The config for triggering streaming-based notifications.
   ProjectNotificationConfigState({
-    pulumi.Output<String>? configId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? pubsubTopic,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<ProjectNotificationConfigStreamingConfig>? streamingConfig,
-  }) :
-      configId = pulumi.Input.asOptionalInput<String>(configId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pubsubTopic = pulumi.Input.asOptionalInput<String>(pubsubTopic),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      streamingConfig = pulumi.Input.asOptionalInput<ProjectNotificationConfigStreamingConfig>(streamingConfig);
+    this.configId,
+    this.description,
+    this.name,
+    this.project,
+    this.pubsubTopic,
+    this.serviceAccount,
+    this.streamingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class ProjectNotificationConfigState {
 
   factory ProjectNotificationConfigState.fromMap(Map<String, dynamic> map) {
     return ProjectNotificationConfigState(
-      configId: map['configId'] == null ? null : pulumi.Output.create<String>(map['configId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pubsubTopic: map['pubsubTopic'] == null ? null : pulumi.Output.create<String>(map['pubsubTopic'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      streamingConfig: map['streamingConfig'] == null ? null : pulumi.Output.create<ProjectNotificationConfigStreamingConfig>(ProjectNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())),
+      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      streamingConfig: map['streamingConfig'] == null ? null : (ProjectNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

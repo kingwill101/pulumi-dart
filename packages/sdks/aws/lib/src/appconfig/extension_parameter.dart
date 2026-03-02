@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExtensionParameter {
   /// Information about the parameter.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The parameter name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Determines if a parameter value must be specified in the extension association.
-  final bool? required;
+  final pulumi.Input<bool>? required;
 
   /// Creates a new [ExtensionParameter].
   /// [description] Information about the parameter.
@@ -29,9 +30,9 @@ class ExtensionParameter {
 
   factory ExtensionParameter.fromMap(Map<String, dynamic> map) {
     return ExtensionParameter(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] as String,
-      required: map['required'] == null ? null : map['required'] as bool,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      required: map['required'] == null ? null : (map['required'] as bool).input(),
     );
   }
 }

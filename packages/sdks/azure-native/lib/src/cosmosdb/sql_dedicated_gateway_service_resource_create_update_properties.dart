@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties for Create or Update request for SqlDedicatedGatewayServiceResource
 class SqlDedicatedGatewayServiceResourceCreateUpdateProperties {
   /// DedicatedGatewayType for the service.
-  final String? dedicatedGatewayType;
+  final pulumi.Input<String>? dedicatedGatewayType;
   /// Instance count for the service.
-  final int? instanceCount;
+  final pulumi.Input<int>? instanceCount;
   /// Instance type for the service.
-  final String? instanceSize;
+  final pulumi.Input<String>? instanceSize;
   /// ServiceType for the service.
   /// Expected value is 'SqlDedicatedGateway'.
-  final String serviceType;
+  final pulumi.Input<String> serviceType;
 
   /// Creates a new [SqlDedicatedGatewayServiceResourceCreateUpdateProperties].
   /// [dedicatedGatewayType] DedicatedGatewayType for the service.
@@ -36,10 +37,10 @@ class SqlDedicatedGatewayServiceResourceCreateUpdateProperties {
 
   factory SqlDedicatedGatewayServiceResourceCreateUpdateProperties.fromMap(Map<String, dynamic> map) {
     return SqlDedicatedGatewayServiceResourceCreateUpdateProperties(
-      dedicatedGatewayType: map['dedicatedGatewayType'] == null ? null : map['dedicatedGatewayType'] as String,
-      instanceCount: map['instanceCount'] == null ? null : map['instanceCount'] as int,
-      instanceSize: map['instanceSize'] == null ? null : map['instanceSize'] as String,
-      serviceType: map['serviceType'] as String,
+      dedicatedGatewayType: map['dedicatedGatewayType'] == null ? null : (map['dedicatedGatewayType'] as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize'] as String).input(),
+      serviceType: (map['serviceType'] as String).input(),
     );
   }
 }

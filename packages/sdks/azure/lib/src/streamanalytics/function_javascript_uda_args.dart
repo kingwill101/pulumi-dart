@@ -27,17 +27,12 @@ class FunctionJavascriptUdaArgs {
   /// [script] The JavaScript of this UDA Function.
   /// [streamAnalyticsJobId] The resource ID of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
   FunctionJavascriptUdaArgs({
-    required pulumi.Output<List<FunctionJavascriptUdaInput>> inputs,
-    pulumi.Output<String>? name,
-    required pulumi.Output<FunctionJavascriptUdaOutput> output,
-    required pulumi.Output<String> script,
-    required pulumi.Output<String> streamAnalyticsJobId,
-  }) :
-      inputs = pulumi.Input.asInput<List<FunctionJavascriptUdaInput>>(inputs),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      output = pulumi.Input.asInput<FunctionJavascriptUdaOutput>(output),
-      script = pulumi.Input.asInput<String>(script),
-      streamAnalyticsJobId = pulumi.Input.asInput<String>(streamAnalyticsJobId);
+    required this.inputs,
+    this.name,
+    required this.output,
+    required this.script,
+    required this.streamAnalyticsJobId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class FunctionJavascriptUdaArgs {
 
   factory FunctionJavascriptUdaArgs.fromMap(Map<String, dynamic> map) {
     return FunctionJavascriptUdaArgs(
-      inputs: pulumi.Output.create<List<FunctionJavascriptUdaInput>>(pulumi.Input.decodeList<FunctionJavascriptUdaInput>(map['inputs'], (value) => FunctionJavascriptUdaInput.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      output: pulumi.Output.create<FunctionJavascriptUdaOutput>(FunctionJavascriptUdaOutput.fromMap((map['output'] as Map).cast<String, dynamic>())),
-      script: pulumi.Output.create<String>(map['script'] as String),
-      streamAnalyticsJobId: pulumi.Output.create<String>(map['streamAnalyticsJobId'] as String),
+      inputs: (pulumi.Input.decodeList<FunctionJavascriptUdaInput>(map['inputs'], (value) => FunctionJavascriptUdaInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      output: (FunctionJavascriptUdaOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      script: (map['script'] as String).input(),
+      streamAnalyticsJobId: (map['streamAnalyticsJobId'] as String).input(),
     );
   }
 }

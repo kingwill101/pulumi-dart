@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A copy activity Azure Blob source.
 class BlobSource {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// If true, files under the folder path will be read recursively. Default is true. Type: boolean (or Expression with resultType boolean).
-  final dynamic recursive;
+  final pulumi.Input<dynamic>? recursive;
   /// Number of header lines to skip from each blob. Type: integer (or Expression with resultType integer).
-  final dynamic skipHeaderLineCount;
+  final pulumi.Input<dynamic>? skipHeaderLineCount;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Treat empty as null. Type: boolean (or Expression with resultType boolean).
-  final dynamic treatEmptyAsNull;
+  final pulumi.Input<dynamic>? treatEmptyAsNull;
   /// Copy source type.
   /// Expected value is 'BlobSource'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [BlobSource].
   /// [disableMetricsCollection] If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -56,14 +57,14 @@ class BlobSource {
 
   factory BlobSource.fromMap(Map<String, dynamic> map) {
     return BlobSource(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      recursive: map['recursive'] == null ? null : map['recursive'],
-      skipHeaderLineCount: map['skipHeaderLineCount'] == null ? null : map['skipHeaderLineCount'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      treatEmptyAsNull: map['treatEmptyAsNull'] == null ? null : map['treatEmptyAsNull'],
-      type: map['type'] as String,
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      recursive: map['recursive'] == null ? null : (map['recursive']).input(),
+      skipHeaderLineCount: map['skipHeaderLineCount'] == null ? null : (map['skipHeaderLineCount']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      treatEmptyAsNull: map['treatEmptyAsNull'] == null ? null : (map['treatEmptyAsNull']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

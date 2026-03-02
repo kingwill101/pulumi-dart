@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The partner connector type is KafkaAzureCosmosDBSource
 class KafkaAzureCosmosDBSourceConnectorInfoResponse {
   /// Kafka API Key
-  final String? apiKey;
+  final pulumi.Input<String>? apiKey;
   /// Kafka API Secret
-  final String? apiSecret;
+  final pulumi.Input<String>? apiSecret;
   /// Kafka Auth Type
-  final String? authType;
+  final pulumi.Input<String>? authType;
   /// Kafka Input Data Format Type
-  final String? inputFormat;
+  final pulumi.Input<String>? inputFormat;
   /// Maximum Tasks
-  final String? maxTasks;
+  final pulumi.Input<String>? maxTasks;
   /// Kafka Output Data Format Type
-  final String? outputFormat;
+  final pulumi.Input<String>? outputFormat;
   /// Partner Connector type.
   /// Expected value is 'KafkaAzureCosmosDBSource'.
-  final String partnerConnectorType;
+  final pulumi.Input<String> partnerConnectorType;
   /// Kafka Service Account Id
-  final String? serviceAccountId;
+  final pulumi.Input<String>? serviceAccountId;
   /// Kafka topics Regex pattern
-  final String? topicRegex;
+  final pulumi.Input<String>? topicRegex;
   /// Kafka topics directory
-  final String? topicsDir;
+  final pulumi.Input<String>? topicsDir;
 
   /// Creates a new [KafkaAzureCosmosDBSourceConnectorInfoResponse].
   /// [apiKey] Kafka API Key
@@ -66,16 +67,16 @@ class KafkaAzureCosmosDBSourceConnectorInfoResponse {
 
   factory KafkaAzureCosmosDBSourceConnectorInfoResponse.fromMap(Map<String, dynamic> map) {
     return KafkaAzureCosmosDBSourceConnectorInfoResponse(
-      apiKey: map['apiKey'] == null ? null : map['apiKey'] as String,
-      apiSecret: map['apiSecret'] == null ? null : map['apiSecret'] as String,
-      authType: map['authType'] == null ? null : map['authType'] as String,
-      inputFormat: map['inputFormat'] == null ? null : map['inputFormat'] as String,
-      maxTasks: map['maxTasks'] == null ? null : map['maxTasks'] as String,
-      outputFormat: map['outputFormat'] == null ? null : map['outputFormat'] as String,
-      partnerConnectorType: map['partnerConnectorType'] as String,
-      serviceAccountId: map['serviceAccountId'] == null ? null : map['serviceAccountId'] as String,
-      topicRegex: map['topicRegex'] == null ? null : map['topicRegex'] as String,
-      topicsDir: map['topicsDir'] == null ? null : map['topicsDir'] as String,
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiSecret: map['apiSecret'] == null ? null : (map['apiSecret'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat'] as String).input(),
+      maxTasks: map['maxTasks'] == null ? null : (map['maxTasks'] as String).input(),
+      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
+      partnerConnectorType: (map['partnerConnectorType'] as String).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
+      topicRegex: map['topicRegex'] == null ? null : (map['topicRegex'] as String).input(),
+      topicsDir: map['topicsDir'] == null ? null : (map['topicsDir'] as String).input(),
     );
   }
 }

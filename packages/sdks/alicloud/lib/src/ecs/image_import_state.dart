@@ -33,23 +33,15 @@ class ImageImportState {
   /// [osType] The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
   /// [platform] The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
   ImageImportState({
-    pulumi.Output<String>? architecture,
-    pulumi.Output<String>? bootMode,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<ImageImportDiskDeviceMapping>>? diskDeviceMappings,
-    pulumi.Output<String>? imageName,
-    pulumi.Output<String>? licenseType,
-    pulumi.Output<String>? osType,
-    pulumi.Output<String>? platform,
-  }) :
-      architecture = pulumi.Input.asOptionalInput<String>(architecture),
-      bootMode = pulumi.Input.asOptionalInput<String>(bootMode),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskDeviceMappings = pulumi.Input.asOptionalInput<List<ImageImportDiskDeviceMapping>>(diskDeviceMappings),
-      imageName = pulumi.Input.asOptionalInput<String>(imageName),
-      licenseType = pulumi.Input.asOptionalInput<String>(licenseType),
-      osType = pulumi.Input.asOptionalInput<String>(osType),
-      platform = pulumi.Input.asOptionalInput<String>(platform);
+    this.architecture,
+    this.bootMode,
+    this.description,
+    this.diskDeviceMappings,
+    this.imageName,
+    this.licenseType,
+    this.osType,
+    this.platform,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ImageImportState {
 
   factory ImageImportState.fromMap(Map<String, dynamic> map) {
     return ImageImportState(
-      architecture: map['architecture'] == null ? null : pulumi.Output.create<String>(map['architecture'] as String),
-      bootMode: map['bootMode'] == null ? null : pulumi.Output.create<String>(map['bootMode'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskDeviceMappings: map['diskDeviceMappings'] == null ? null : pulumi.Output.create<List<ImageImportDiskDeviceMapping>>(pulumi.Input.decodeList<ImageImportDiskDeviceMapping>(map['diskDeviceMappings'], (value) => ImageImportDiskDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      imageName: map['imageName'] == null ? null : pulumi.Output.create<String>(map['imageName'] as String),
-      licenseType: map['licenseType'] == null ? null : pulumi.Output.create<String>(map['licenseType'] as String),
-      osType: map['osType'] == null ? null : pulumi.Output.create<String>(map['osType'] as String),
-      platform: map['platform'] == null ? null : pulumi.Output.create<String>(map['platform'] as String),
+      architecture: map['architecture'] == null ? null : (map['architecture'] as String).input(),
+      bootMode: map['bootMode'] == null ? null : (map['bootMode'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskDeviceMappings: map['diskDeviceMappings'] == null ? null : (pulumi.Input.decodeList<ImageImportDiskDeviceMapping>(map['diskDeviceMappings'], (value) => ImageImportDiskDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
     );
   }
 }

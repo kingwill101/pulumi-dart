@@ -5,13 +5,13 @@ import 'get_cluster_shard_node.dart';
 
 class GetClusterShard {
   /// Name of the cluster.
-  final String name;
+  final pulumi.Input<String> name;
   /// Set of nodes in this shard.
-  final List<GetClusterShardNode> nodes;
+  final pulumi.Input<List<GetClusterShardNode>> nodes;
   /// Number of individual nodes in this shard.
-  final int numNodes;
+  final pulumi.Input<int> numNodes;
   /// Keyspace for this shard. Example: `0-16383`.
-  final String slots;
+  final pulumi.Input<String> slots;
 
   /// Creates a new [GetClusterShard].
   /// [name] Name of the cluster.
@@ -28,7 +28,7 @@ class GetClusterShard {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'nodes': pulumi.Input.encodeList<GetClusterShardNode, Map<String, dynamic>>(nodes, (value) => value.toMap()),
+      'nodes': pulumi.Input.mapInputValue<List<GetClusterShardNode>, List<Map<String, dynamic>>>(nodes, (value) => pulumi.Input.encodeList<GetClusterShardNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'numNodes': numNodes,
       'slots': slots,
     };
@@ -36,10 +36,10 @@ class GetClusterShard {
 
   factory GetClusterShard.fromMap(Map<String, dynamic> map) {
     return GetClusterShard(
-      name: map['name'] as String,
-      nodes: pulumi.Input.decodeList<GetClusterShardNode>(map['nodes'], (value) => GetClusterShardNode.fromMap((value as Map).cast<String, dynamic>())),
-      numNodes: map['numNodes'] as int,
-      slots: map['slots'] as String,
+      name: (map['name'] as String).input(),
+      nodes: (pulumi.Input.decodeList<GetClusterShardNode>(map['nodes'], (value) => GetClusterShardNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      numNodes: (map['numNodes'] as int).input(),
+      slots: (map['slots'] as String).input(),
     );
   }
 }

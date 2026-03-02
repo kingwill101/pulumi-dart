@@ -19,13 +19,10 @@ class OrganizationalUnitArgs {
   /// [parentId] ID of the parent organizational unit, which may be the root
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   OrganizationalUnitArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parentId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentId = pulumi.Input.asInput<String>(parentId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.name,
+    required this.parentId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class OrganizationalUnitArgs {
 
   factory OrganizationalUnitArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationalUnitArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentId: pulumi.Output.create<String>(map['parentId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentId: (map['parentId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetWebhookArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [webhookName] The webhook name.
   GetWebhookArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> webhookName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      webhookName = pulumi.Input.asInput<String>(webhookName);
+    required this.automationAccountName,
+    required this.resourceGroupName,
+    required this.webhookName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWebhookArgs {
 
   factory GetWebhookArgs.fromMap(Map<String, dynamic> map) {
     return GetWebhookArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      webhookName: pulumi.Output.create<String>(map['webhookName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      webhookName: (map['webhookName'] as String).input(),
     );
   }
 }

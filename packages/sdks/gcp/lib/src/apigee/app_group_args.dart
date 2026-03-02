@@ -35,21 +35,14 @@ class AppGroupArgs {
   /// [orgId] The Apigee Organization associated with the Apigee app group,
   /// [status] Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
   AppGroupArgs({
-    pulumi.Output<List<AppGroupAttribute>>? attributes,
-    pulumi.Output<String>? channelId,
-    pulumi.Output<String>? channelUri,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> orgId,
-    pulumi.Output<String>? status,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<List<AppGroupAttribute>>(attributes),
-      channelId = pulumi.Input.asOptionalInput<String>(channelId),
-      channelUri = pulumi.Input.asOptionalInput<String>(channelUri),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.attributes,
+    this.channelId,
+    this.channelUri,
+    this.displayName,
+    this.name,
+    required this.orgId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class AppGroupArgs {
 
   factory AppGroupArgs.fromMap(Map<String, dynamic> map) {
     return AppGroupArgs(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<List<AppGroupAttribute>>(pulumi.Input.decodeList<AppGroupAttribute>(map['attributes'], (value) => AppGroupAttribute.fromMap((value as Map).cast<String, dynamic>()))),
-      channelId: map['channelId'] == null ? null : pulumi.Output.create<String>(map['channelId'] as String),
-      channelUri: map['channelUri'] == null ? null : pulumi.Output.create<String>(map['channelUri'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<AppGroupAttribute>(map['attributes'], (value) => AppGroupAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
+      channelUri: map['channelUri'] == null ? null : (map['channelUri'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

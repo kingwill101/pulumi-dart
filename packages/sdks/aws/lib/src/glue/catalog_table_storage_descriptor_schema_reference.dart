@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'catalog_table_storage_descriptor_schema_reference_schema_id.dart';
 
 class CatalogTableStorageDescriptorSchemaReference {
   /// Configuration block that contains schema identity fields. Either this or the `schema_version_id` has to be provided. See `schema_id` below.
-  final CatalogTableStorageDescriptorSchemaReferenceSchemaId? schemaId;
+  final pulumi.Input<CatalogTableStorageDescriptorSchemaReferenceSchemaId>? schemaId;
   /// Unique ID assigned to a version of the schema. Either this or the `schema_id` has to be provided.
-  final String? schemaVersionId;
+  final pulumi.Input<String>? schemaVersionId;
   /// Version number of the schema.
-  final int schemaVersionNumber;
+  final pulumi.Input<int> schemaVersionNumber;
 
   /// Creates a new [CatalogTableStorageDescriptorSchemaReference].
   /// [schemaId] Configuration block that contains schema identity fields. Either this or the `schema_version_id` has to be provided. See `schema_id` below.
@@ -22,7 +23,7 @@ class CatalogTableStorageDescriptorSchemaReference {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schemaId': ?schemaId == null ? null : schemaId!.toMap(),
+      'schemaId': ?pulumi.Input.mapOptionalInputValue<CatalogTableStorageDescriptorSchemaReferenceSchemaId, Map<String, dynamic>>(schemaId, (value) => value.toMap()),
       'schemaVersionId': ?schemaVersionId,
       'schemaVersionNumber': schemaVersionNumber,
     };
@@ -30,9 +31,9 @@ class CatalogTableStorageDescriptorSchemaReference {
 
   factory CatalogTableStorageDescriptorSchemaReference.fromMap(Map<String, dynamic> map) {
     return CatalogTableStorageDescriptorSchemaReference(
-      schemaId: map['schemaId'] == null ? null : CatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap((map['schemaId'] as Map).cast<String, dynamic>()),
-      schemaVersionId: map['schemaVersionId'] == null ? null : map['schemaVersionId'] as String,
-      schemaVersionNumber: map['schemaVersionNumber'] as int,
+      schemaId: map['schemaId'] == null ? null : (CatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap((map['schemaId'] as Map).cast<String, dynamic>())).input(),
+      schemaVersionId: map['schemaVersionId'] == null ? null : (map['schemaVersionId'] as String).input(),
+      schemaVersionNumber: (map['schemaVersionNumber'] as int).input(),
     );
   }
 }

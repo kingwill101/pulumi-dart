@@ -33,17 +33,12 @@ class RouterInterfaceArgs {
   /// [routerId] ID of the router this interface belongs to. Changing
   /// [subnetId] ID of the subnet this interface connects to. Changing
   RouterInterfaceArgs({
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? portId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> routerId,
-    pulumi.Output<String>? subnetId,
-  }) :
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      portId = pulumi.Input.asOptionalInput<String>(portId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routerId = pulumi.Input.asInput<String>(routerId),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
+    this.forceDestroy,
+    this.portId,
+    this.region,
+    required this.routerId,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,11 +52,11 @@ class RouterInterfaceArgs {
 
   factory RouterInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return RouterInterfaceArgs(
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      portId: map['portId'] == null ? null : pulumi.Output.create<String>(map['portId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routerId: pulumi.Output.create<String>(map['routerId'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routerId: (map['routerId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

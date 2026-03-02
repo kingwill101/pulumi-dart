@@ -32,19 +32,13 @@ class ApplicationAppRoleArgs {
   /// [roleId] The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
   /// [value] The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
   ApplicationAppRoleArgs({
-    required pulumi.Output<List<String>> allowedMemberTypes,
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> roleId,
-    pulumi.Output<String>? value,
-  }) :
-      allowedMemberTypes = pulumi.Input.asInput<List<String>>(allowedMemberTypes),
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      description = pulumi.Input.asInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      roleId = pulumi.Input.asInput<String>(roleId),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    required this.allowedMemberTypes,
+    required this.applicationId,
+    required this.description,
+    required this.displayName,
+    required this.roleId,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class ApplicationAppRoleArgs {
 
   factory ApplicationAppRoleArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAppRoleArgs(
-      allowedMemberTypes: pulumi.Output.create<List<String>>((map['allowedMemberTypes'] as List).cast<String>()),
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      roleId: pulumi.Output.create<String>(map['roleId'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      allowedMemberTypes: ((map['allowedMemberTypes'] as List).cast<String>()).input(),
+      applicationId: (map['applicationId'] as String).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      roleId: (map['roleId'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

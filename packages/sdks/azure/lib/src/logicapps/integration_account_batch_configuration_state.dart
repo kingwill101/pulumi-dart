@@ -26,19 +26,13 @@ class IntegrationAccountBatchConfigurationState {
   /// [releaseCriteria] A `release_criteria` block as documented below, which is used to select the criteria to meet before processing each batch.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Batch Configuration should exist. Changing this forces a new resource to be created.
   IntegrationAccountBatchConfigurationState({
-    pulumi.Output<String>? batchGroupName,
-    pulumi.Output<String>? integrationAccountName,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<IntegrationAccountBatchConfigurationReleaseCriteria>? releaseCriteria,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      batchGroupName = pulumi.Input.asOptionalInput<String>(batchGroupName),
-      integrationAccountName = pulumi.Input.asOptionalInput<String>(integrationAccountName),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      releaseCriteria = pulumi.Input.asOptionalInput<IntegrationAccountBatchConfigurationReleaseCriteria>(releaseCriteria),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.batchGroupName,
+    this.integrationAccountName,
+    this.metadata,
+    this.name,
+    this.releaseCriteria,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class IntegrationAccountBatchConfigurationState {
 
   factory IntegrationAccountBatchConfigurationState.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountBatchConfigurationState(
-      batchGroupName: map['batchGroupName'] == null ? null : pulumi.Output.create<String>(map['batchGroupName'] as String),
-      integrationAccountName: map['integrationAccountName'] == null ? null : pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      releaseCriteria: map['releaseCriteria'] == null ? null : pulumi.Output.create<IntegrationAccountBatchConfigurationReleaseCriteria>(IntegrationAccountBatchConfigurationReleaseCriteria.fromMap((map['releaseCriteria'] as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      batchGroupName: map['batchGroupName'] == null ? null : (map['batchGroupName'] as String).input(),
+      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      releaseCriteria: map['releaseCriteria'] == null ? null : (IntegrationAccountBatchConfigurationReleaseCriteria.fromMap((map['releaseCriteria'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

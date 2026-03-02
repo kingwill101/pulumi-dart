@@ -41,29 +41,18 @@ class SnatState {
   /// [vlans] Specifies the available VLANs or tunnels and those for which the SNAT is enabled or disabled.
   /// [vlansdisabled] Specifies the VLANs or tunnels for which the SNAT is enabled or disabled. The default is `true`, vlandisabled on VLANS specified by `vlans`,if set to `false` vlanEnabled set on VLANS specified by `vlans` .
   SnatState({
-    pulumi.Output<String>? autolasthop,
-    pulumi.Output<String>? fullPath,
-    pulumi.Output<String>? mirror,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<SnatOrigin>>? origins,
-    pulumi.Output<String>? partition,
-    pulumi.Output<String>? snatpool,
-    pulumi.Output<String>? sourceport,
-    pulumi.Output<String>? translation,
-    pulumi.Output<List<String>>? vlans,
-    pulumi.Output<bool>? vlansdisabled,
-  }) :
-      autolasthop = pulumi.Input.asOptionalInput<String>(autolasthop),
-      fullPath = pulumi.Input.asOptionalInput<String>(fullPath),
-      mirror = pulumi.Input.asOptionalInput<String>(mirror),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      origins = pulumi.Input.asOptionalInput<List<SnatOrigin>>(origins),
-      partition = pulumi.Input.asOptionalInput<String>(partition),
-      snatpool = pulumi.Input.asOptionalInput<String>(snatpool),
-      sourceport = pulumi.Input.asOptionalInput<String>(sourceport),
-      translation = pulumi.Input.asOptionalInput<String>(translation),
-      vlans = pulumi.Input.asOptionalInput<List<String>>(vlans),
-      vlansdisabled = pulumi.Input.asOptionalInput<bool>(vlansdisabled);
+    this.autolasthop,
+    this.fullPath,
+    this.mirror,
+    this.name,
+    this.origins,
+    this.partition,
+    this.snatpool,
+    this.sourceport,
+    this.translation,
+    this.vlans,
+    this.vlansdisabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class SnatState {
 
   factory SnatState.fromMap(Map<String, dynamic> map) {
     return SnatState(
-      autolasthop: map['autolasthop'] == null ? null : pulumi.Output.create<String>(map['autolasthop'] as String),
-      fullPath: map['fullPath'] == null ? null : pulumi.Output.create<String>(map['fullPath'] as String),
-      mirror: map['mirror'] == null ? null : pulumi.Output.create<String>(map['mirror'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      origins: map['origins'] == null ? null : pulumi.Output.create<List<SnatOrigin>>(pulumi.Input.decodeList<SnatOrigin>(map['origins'], (value) => SnatOrigin.fromMap((value as Map).cast<String, dynamic>()))),
-      partition: map['partition'] == null ? null : pulumi.Output.create<String>(map['partition'] as String),
-      snatpool: map['snatpool'] == null ? null : pulumi.Output.create<String>(map['snatpool'] as String),
-      sourceport: map['sourceport'] == null ? null : pulumi.Output.create<String>(map['sourceport'] as String),
-      translation: map['translation'] == null ? null : pulumi.Output.create<String>(map['translation'] as String),
-      vlans: map['vlans'] == null ? null : pulumi.Output.create<List<String>>((map['vlans'] as List).cast<String>()),
-      vlansdisabled: map['vlansdisabled'] == null ? null : pulumi.Output.create<bool>(map['vlansdisabled'] as bool),
+      autolasthop: map['autolasthop'] == null ? null : (map['autolasthop'] as String).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
+      mirror: map['mirror'] == null ? null : (map['mirror'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<SnatOrigin>(map['origins'], (value) => SnatOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      snatpool: map['snatpool'] == null ? null : (map['snatpool'] as String).input(),
+      sourceport: map['sourceport'] == null ? null : (map['sourceport'] as String).input(),
+      translation: map['translation'] == null ? null : (map['translation'] as String).input(),
+      vlans: map['vlans'] == null ? null : ((map['vlans'] as List).cast<String>()).input(),
+      vlansdisabled: map['vlansdisabled'] == null ? null : (map['vlansdisabled'] as bool).input(),
     );
   }
 }

@@ -28,17 +28,12 @@ class AuditLogConfigState {
   /// [retention] Audit Log Retention Period Value: 1~365.
   /// [status] The status of the resource.
   AuditLogConfigState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? dbAudit,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<int>? retention,
-    pulumi.Output<String>? status,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dbAudit = pulumi.Input.asOptionalInput<bool>(dbAudit),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      retention = pulumi.Input.asOptionalInput<int>(retention),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createTime,
+    this.dbAudit,
+    this.instanceId,
+    this.retention,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class AuditLogConfigState {
 
   factory AuditLogConfigState.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dbAudit: map['dbAudit'] == null ? null : pulumi.Output.create<bool>(map['dbAudit'] as bool),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      retention: map['retention'] == null ? null : pulumi.Output.create<int>(map['retention'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dbAudit: map['dbAudit'] == null ? null : (map['dbAudit'] as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

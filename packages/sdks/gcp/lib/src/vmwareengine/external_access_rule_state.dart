@@ -62,35 +62,21 @@ class ExternalAccessRuleState {
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last updated time of this resource.
   ExternalAccessRuleState({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<ExternalAccessRuleDestinationIpRange>>? destinationIpRanges,
-    pulumi.Output<List<String>>? destinationPorts,
-    pulumi.Output<String>? ipProtocol,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<int>? priority,
-    pulumi.Output<List<ExternalAccessRuleSourceIpRange>>? sourceIpRanges,
-    pulumi.Output<List<String>>? sourcePorts,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? updateTime,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationIpRanges = pulumi.Input.asOptionalInput<List<ExternalAccessRuleDestinationIpRange>>(destinationIpRanges),
-      destinationPorts = pulumi.Input.asOptionalInput<List<String>>(destinationPorts),
-      ipProtocol = pulumi.Input.asOptionalInput<String>(ipProtocol),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      sourceIpRanges = pulumi.Input.asOptionalInput<List<ExternalAccessRuleSourceIpRange>>(sourceIpRanges),
-      sourcePorts = pulumi.Input.asOptionalInput<List<String>>(sourcePorts),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.action,
+    this.createTime,
+    this.description,
+    this.destinationIpRanges,
+    this.destinationPorts,
+    this.ipProtocol,
+    this.name,
+    this.parent,
+    this.priority,
+    this.sourceIpRanges,
+    this.sourcePorts,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -113,20 +99,20 @@ class ExternalAccessRuleState {
 
   factory ExternalAccessRuleState.fromMap(Map<String, dynamic> map) {
     return ExternalAccessRuleState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationIpRanges: map['destinationIpRanges'] == null ? null : pulumi.Output.create<List<ExternalAccessRuleDestinationIpRange>>(pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(map['destinationIpRanges'], (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>()))),
-      destinationPorts: map['destinationPorts'] == null ? null : pulumi.Output.create<List<String>>((map['destinationPorts'] as List).cast<String>()),
-      ipProtocol: map['ipProtocol'] == null ? null : pulumi.Output.create<String>(map['ipProtocol'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      sourceIpRanges: map['sourceIpRanges'] == null ? null : pulumi.Output.create<List<ExternalAccessRuleSourceIpRange>>(pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(map['sourceIpRanges'], (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>()))),
-      sourcePorts: map['sourcePorts'] == null ? null : pulumi.Output.create<List<String>>((map['sourcePorts'] as List).cast<String>()),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationIpRanges: map['destinationIpRanges'] == null ? null : (pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(map['destinationIpRanges'], (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts'] as List).cast<String>()).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      sourceIpRanges: map['sourceIpRanges'] == null ? null : (pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(map['sourceIpRanges'], (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePorts: map['sourcePorts'] == null ? null : ((map['sourcePorts'] as List).cast<String>()).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

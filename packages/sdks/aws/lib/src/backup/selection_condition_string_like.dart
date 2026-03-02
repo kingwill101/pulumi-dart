@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SelectionConditionStringLike {
   /// Key for the filter.
-  final String key;
+  final pulumi.Input<String> key;
   /// Value for the filter.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [SelectionConditionStringLike].
   /// [key] Key for the filter.
@@ -24,8 +25,8 @@ class SelectionConditionStringLike {
 
   factory SelectionConditionStringLike.fromMap(Map<String, dynamic> map) {
     return SelectionConditionStringLike(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

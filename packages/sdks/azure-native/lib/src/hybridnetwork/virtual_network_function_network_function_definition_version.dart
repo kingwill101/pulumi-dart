@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_core_network_function_template.dart';
 
 /// Virtual network function network function definition version properties.
 class VirtualNetworkFunctionNetworkFunctionDefinitionVersion {
   /// The deployment parameters of the network function definition version.
-  final String? deployParameters;
+  final pulumi.Input<String>? deployParameters;
   /// The network function definition version description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Virtual network function template.
-  final AzureCoreNetworkFunctionTemplate? networkFunctionTemplate;
+  final pulumi.Input<AzureCoreNetworkFunctionTemplate>? networkFunctionTemplate;
   /// The network function type.
   /// Expected value is 'VirtualNetworkFunction'.
-  final String networkFunctionType;
+  final pulumi.Input<String> networkFunctionType;
 
   /// Creates a new [VirtualNetworkFunctionNetworkFunctionDefinitionVersion].
   /// [deployParameters] The deployment parameters of the network function definition version.
@@ -30,17 +31,17 @@ class VirtualNetworkFunctionNetworkFunctionDefinitionVersion {
     return <String, dynamic>{
       'deployParameters': ?deployParameters,
       'description': ?description,
-      'networkFunctionTemplate': ?networkFunctionTemplate == null ? null : networkFunctionTemplate!.toMap(),
+      'networkFunctionTemplate': ?pulumi.Input.mapOptionalInputValue<AzureCoreNetworkFunctionTemplate, Map<String, dynamic>>(networkFunctionTemplate, (value) => value.toMap()),
       'networkFunctionType': networkFunctionType,
     };
   }
 
   factory VirtualNetworkFunctionNetworkFunctionDefinitionVersion.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkFunctionNetworkFunctionDefinitionVersion(
-      deployParameters: map['deployParameters'] == null ? null : map['deployParameters'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : AzureCoreNetworkFunctionTemplate.fromMap((map['networkFunctionTemplate'] as Map).cast<String, dynamic>()),
-      networkFunctionType: map['networkFunctionType'] as String,
+      deployParameters: map['deployParameters'] == null ? null : (map['deployParameters'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : (AzureCoreNetworkFunctionTemplate.fromMap((map['networkFunctionTemplate'] as Map).cast<String, dynamic>())).input(),
+      networkFunctionType: (map['networkFunctionType'] as String).input(),
     );
   }
 }

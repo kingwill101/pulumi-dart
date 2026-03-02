@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetLaunchTemplateConfigLaunchTemplateSpecification {
   /// The ID of the launch template.
-  final String? launchTemplateId;
+  final pulumi.Input<String>? launchTemplateId;
   /// The name of the launch template.
-  final String? launchTemplateName;
+  final pulumi.Input<String>? launchTemplateName;
   /// The launch template version number, `$Latest`, or `$Default.`
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [FleetLaunchTemplateConfigLaunchTemplateSpecification].
   /// [launchTemplateId] The ID of the launch template.
@@ -29,9 +30,9 @@ class FleetLaunchTemplateConfigLaunchTemplateSpecification {
 
   factory FleetLaunchTemplateConfigLaunchTemplateSpecification.fromMap(Map<String, dynamic> map) {
     return FleetLaunchTemplateConfigLaunchTemplateSpecification(
-      launchTemplateId: map['launchTemplateId'] == null ? null : map['launchTemplateId'] as String,
-      launchTemplateName: map['launchTemplateName'] == null ? null : map['launchTemplateName'] as String,
-      version: map['version'] as String,
+      launchTemplateId: map['launchTemplateId'] == null ? null : (map['launchTemplateId'] as String).input(),
+      launchTemplateName: map['launchTemplateName'] == null ? null : (map['launchTemplateName'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

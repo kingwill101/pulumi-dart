@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A resource Api configuration for the Telephony channel
 class TelephonyChannelResourceApiConfigurationResponse {
   /// The cognitive service region.
-  final String? cognitiveServiceRegion;
+  final pulumi.Input<String>? cognitiveServiceRegion;
   /// The cognitive service resourceId.
-  final String? cognitiveServiceResourceId;
+  final pulumi.Input<String>? cognitiveServiceResourceId;
   /// The cognitive service subscription key.
-  final String? cognitiveServiceSubscriptionKey;
+  final pulumi.Input<String>? cognitiveServiceSubscriptionKey;
   /// The default locale.
-  final String? defaultLocale;
+  final pulumi.Input<String>? defaultLocale;
   /// The id of config.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The provider name.
-  final String? providerName;
+  final pulumi.Input<String>? providerName;
 
   /// Creates a new [TelephonyChannelResourceApiConfigurationResponse].
   /// [cognitiveServiceRegion] The cognitive service region.
@@ -45,12 +46,12 @@ class TelephonyChannelResourceApiConfigurationResponse {
 
   factory TelephonyChannelResourceApiConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TelephonyChannelResourceApiConfigurationResponse(
-      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : map['cognitiveServiceRegion'] as String,
-      cognitiveServiceResourceId: map['cognitiveServiceResourceId'] == null ? null : map['cognitiveServiceResourceId'] as String,
-      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : map['cognitiveServiceSubscriptionKey'] as String,
-      defaultLocale: map['defaultLocale'] == null ? null : map['defaultLocale'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      providerName: map['providerName'] == null ? null : map['providerName'] as String,
+      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : (map['cognitiveServiceRegion'] as String).input(),
+      cognitiveServiceResourceId: map['cognitiveServiceResourceId'] == null ? null : (map['cognitiveServiceResourceId'] as String).input(),
+      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : (map['cognitiveServiceSubscriptionKey'] as String).input(),
+      defaultLocale: map['defaultLocale'] == null ? null : (map['defaultLocale'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiAgentsFilter {
-  final bool? all;
-  final String key;
-  final String? matchBy;
-  final List<String> values;
+  final pulumi.Input<bool>? all;
+  final pulumi.Input<String> key;
+  final pulumi.Input<String>? matchBy;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetGradientaiAgentsFilter].
   /// [all] Optional.
@@ -30,10 +31,10 @@ class GetGradientaiAgentsFilter {
 
   factory GetGradientaiAgentsFilter.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsFilter(
-      all: map['all'] == null ? null : map['all'] as bool,
-      key: map['key'] as String,
-      matchBy: map['matchBy'] == null ? null : map['matchBy'] as String,
-      values: (map['values'] as List).cast<String>(),
+      all: map['all'] == null ? null : (map['all'] as bool).input(),
+      key: (map['key'] as String).input(),
+      matchBy: map['matchBy'] == null ? null : (map['matchBy'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser {
   /// GID of the file system user.
-  final int gid;
+  final pulumi.Input<int> gid;
   /// List of secondary GIDs for the file system user..
-  final List<int>? secondaryGids;
+  final pulumi.Input<List<int>>? secondaryGids;
   /// UID of the file system user.
-  final int uid;
+  final pulumi.Input<int> uid;
 
   /// Creates a new [S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser].
   /// [gid] GID of the file system user.
@@ -29,9 +30,9 @@ class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser {
 
   factory S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser.fromMap(Map<String, dynamic> map) {
     return S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser(
-      gid: map['gid'] as int,
-      secondaryGids: map['secondaryGids'] == null ? null : (map['secondaryGids'] as List).cast<int>(),
-      uid: map['uid'] as int,
+      gid: (map['gid'] as int).input(),
+      secondaryGids: map['secondaryGids'] == null ? null : ((map['secondaryGids'] as List).cast<int>()).input(),
+      uid: (map['uid'] as int).input(),
     );
   }
 }

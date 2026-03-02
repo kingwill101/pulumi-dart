@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouteSpecTcpRouteMatch {
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [GetRouteSpecTcpRouteMatch].
   /// [port] Required.
@@ -18,7 +19,7 @@ class GetRouteSpecTcpRouteMatch {
 
   factory GetRouteSpecTcpRouteMatch.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecTcpRouteMatch(
-      port: map['port'] as int,
+      port: (map['port'] as int).input(),
     );
   }
 }

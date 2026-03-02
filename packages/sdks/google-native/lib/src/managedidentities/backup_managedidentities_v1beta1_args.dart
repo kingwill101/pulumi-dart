@@ -23,17 +23,12 @@ class BackupManagedidentitiesV1beta1Args {
   /// [labels] Optional. Resource labels to represent user provided metadata.
   /// [project] Optional.
   BackupManagedidentitiesV1beta1Args({
-    required pulumi.Output<String> backupId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> domainId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainId = pulumi.Input.asInput<String>(domainId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.backupId,
+    this.description,
+    required this.domainId,
+    this.labels,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class BackupManagedidentitiesV1beta1Args {
 
   factory BackupManagedidentitiesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return BackupManagedidentitiesV1beta1Args(
-      backupId: pulumi.Output.create<String>(map['backupId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainId: pulumi.Output.create<String>(map['domainId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backupId: (map['backupId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainId: (map['domainId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

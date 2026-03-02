@@ -19,13 +19,10 @@ class GetSummaryLogArgs {
   /// [summaryLogsName] The name of the summary logs. Must not contain '/'.
   /// [workspaceName] The name of the workspace.
   GetSummaryLogArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> summaryLogsName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      summaryLogsName = pulumi.Input.asInput<String>(summaryLogsName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.summaryLogsName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSummaryLogArgs {
 
   factory GetSummaryLogArgs.fromMap(Map<String, dynamic> map) {
     return GetSummaryLogArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      summaryLogsName: pulumi.Output.create<String>(map['summaryLogsName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      summaryLogsName: (map['summaryLogsName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

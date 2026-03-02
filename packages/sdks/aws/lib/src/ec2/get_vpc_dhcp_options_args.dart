@@ -23,15 +23,11 @@ class GetVpcDhcpOptionsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the resource.
   GetVpcDhcpOptionsArgs({
-    pulumi.Output<String>? dhcpOptionsId,
-    pulumi.Output<List<GetVpcDhcpOptionsFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dhcpOptionsId = pulumi.Input.asOptionalInput<String>(dhcpOptionsId),
-      filters = pulumi.Input.asOptionalInput<List<GetVpcDhcpOptionsFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dhcpOptionsId,
+    this.filters,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetVpcDhcpOptionsArgs {
 
   factory GetVpcDhcpOptionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcDhcpOptionsArgs(
-      dhcpOptionsId: map['dhcpOptionsId'] == null ? null : pulumi.Output.create<String>(map['dhcpOptionsId'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpcDhcpOptionsFilter>>(pulumi.Input.decodeList<GetVpcDhcpOptionsFilter>(map['filters'], (value) => GetVpcDhcpOptionsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dhcpOptionsId: map['dhcpOptionsId'] == null ? null : (map['dhcpOptionsId'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcDhcpOptionsFilter>(map['filters'], (value) => GetVpcDhcpOptionsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

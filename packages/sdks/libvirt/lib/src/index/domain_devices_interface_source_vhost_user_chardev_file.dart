@@ -5,11 +5,11 @@ import 'domain_devices_interface_source_vhost_user_chardev_file_sec_label.dart';
 
 class DomainDevicesInterfaceSourceVhostUserChardevFile {
   /// Specifies if data should be appended to the file used as a source.
-  final String? append;
+  final pulumi.Input<String>? append;
   /// Sets the file path for the RNG source in the EGD backend.
-  final String path;
+  final pulumi.Input<String> path;
   /// Configures security label settings for the file source in the EGD backend.
-  final List<DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardevFile].
   /// [append] Specifies if data should be appended to the file used as a source.
@@ -25,15 +25,15 @@ class DomainDevicesInterfaceSourceVhostUserChardevFile {
     return <String, dynamic>{
       'append': ?append,
       'path': path,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesInterfaceSourceVhostUserChardevFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceVhostUserChardevFile(
-      append: map['append'] == null ? null : map['append'] as String,
-      path: map['path'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel>(map['secLabels'], (value) => DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      append: map['append'] == null ? null : (map['append'] as String).input(),
+      path: (map['path'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel>(map['secLabels'], (value) => DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

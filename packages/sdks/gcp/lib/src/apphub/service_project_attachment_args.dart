@@ -22,13 +22,10 @@ class ServiceProjectAttachmentArgs {
   /// [serviceProject] "Immutable. Service project name in the format: \"projects/abc\"
   /// [serviceProjectAttachmentId] Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
   ServiceProjectAttachmentArgs({
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serviceProject,
-    required pulumi.Output<String> serviceProjectAttachmentId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceProject = pulumi.Input.asOptionalInput<String>(serviceProject),
-      serviceProjectAttachmentId = pulumi.Input.asInput<String>(serviceProjectAttachmentId);
+    this.project,
+    this.serviceProject,
+    required this.serviceProjectAttachmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class ServiceProjectAttachmentArgs {
 
   factory ServiceProjectAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ServiceProjectAttachmentArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceProject: map['serviceProject'] == null ? null : pulumi.Output.create<String>(map['serviceProject'] as String),
-      serviceProjectAttachmentId: pulumi.Output.create<String>(map['serviceProjectAttachmentId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceProject: map['serviceProject'] == null ? null : (map['serviceProject'] as String).input(),
+      serviceProjectAttachmentId: (map['serviceProjectAttachmentId'] as String).input(),
     );
   }
 }

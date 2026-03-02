@@ -23,15 +23,11 @@ class GetSpotPriceArgs {
   /// [instanceType] Type of instance for which to query Spot Price information.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetSpotPriceArgs({
-    pulumi.Output<String>? availabilityZone,
-    pulumi.Output<List<GetSpotPriceFilter>>? filters,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? region,
-  }) :
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      filters = pulumi.Input.asOptionalInput<List<GetSpotPriceFilter>>(filters),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.availabilityZone,
+    this.filters,
+    this.instanceType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetSpotPriceArgs {
 
   factory GetSpotPriceArgs.fromMap(Map<String, dynamic> map) {
     return GetSpotPriceArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetSpotPriceFilter>>(pulumi.Input.decodeList<GetSpotPriceFilter>(map['filters'], (value) => GetSpotPriceFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSpotPriceFilter>(map['filters'], (value) => GetSpotPriceFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

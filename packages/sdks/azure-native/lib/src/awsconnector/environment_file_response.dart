@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of EnvironmentFile
 class EnvironmentFileResponse {
   /// The file type to use. Environment files are objects in Amazon S3. The only supported value is ``s3``.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The Amazon Resource Name (ARN) of the Amazon S3 object containing the environment variable file.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [EnvironmentFileResponse].
   /// [type] The file type to use. Environment files are objects in Amazon S3. The only supported value is ``s3``.
@@ -25,8 +26,8 @@ class EnvironmentFileResponse {
 
   factory EnvironmentFileResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentFileResponse(
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

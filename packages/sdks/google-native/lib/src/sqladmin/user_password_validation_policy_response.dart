@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'password_status_response.dart';
 
 /// User level password validation policy.
 class UserPasswordValidationPolicyResponse {
   /// Number of failed login attempts allowed before user get locked.
-  final int allowedFailedAttempts;
+  final pulumi.Input<int> allowedFailedAttempts;
   /// If true, failed login attempts check will be enabled.
-  final bool enableFailedAttemptsCheck;
+  final pulumi.Input<bool> enableFailedAttemptsCheck;
   /// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
-  final bool enablePasswordVerification;
+  final pulumi.Input<bool> enablePasswordVerification;
   /// Expiration duration after password is updated.
-  final String passwordExpirationDuration;
+  final pulumi.Input<String> passwordExpirationDuration;
   /// Read-only password status.
-  final PasswordStatusResponse status;
+  final pulumi.Input<PasswordStatusResponse> status;
 
   /// Creates a new [UserPasswordValidationPolicyResponse].
   /// [allowedFailedAttempts] Number of failed login attempts allowed before user get locked.
@@ -35,17 +36,17 @@ class UserPasswordValidationPolicyResponse {
       'enableFailedAttemptsCheck': enableFailedAttemptsCheck,
       'enablePasswordVerification': enablePasswordVerification,
       'passwordExpirationDuration': passwordExpirationDuration,
-      'status': status.toMap(),
+      'status': pulumi.Input.mapInputValue<PasswordStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory UserPasswordValidationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return UserPasswordValidationPolicyResponse(
-      allowedFailedAttempts: map['allowedFailedAttempts'] as int,
-      enableFailedAttemptsCheck: map['enableFailedAttemptsCheck'] as bool,
-      enablePasswordVerification: map['enablePasswordVerification'] as bool,
-      passwordExpirationDuration: map['passwordExpirationDuration'] as String,
-      status: PasswordStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      allowedFailedAttempts: (map['allowedFailedAttempts'] as int).input(),
+      enableFailedAttemptsCheck: (map['enableFailedAttemptsCheck'] as bool).input(),
+      enablePasswordVerification: (map['enablePasswordVerification'] as bool).input(),
+      passwordExpirationDuration: (map['passwordExpirationDuration'] as String).input(),
+      status: (PasswordStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

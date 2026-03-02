@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3 {
   /// Account ID of the S3 bucket owner.
-  final String? bucketOwnerAccountId;
+  final pulumi.Input<String>? bucketOwnerAccountId;
   /// S3 URI where the schema is stored.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3].
   /// [bucketOwnerAccountId] Account ID of the S3 bucket owner.
@@ -24,8 +25,8 @@ class AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3 {
 
   factory AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3(
-      bucketOwnerAccountId: map['bucketOwnerAccountId'] == null ? null : map['bucketOwnerAccountId'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      bucketOwnerAccountId: map['bucketOwnerAccountId'] == null ? null : (map['bucketOwnerAccountId'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventBusDeadLetterConfig {
   /// The ARN of the SQS queue specified as the target for the dead-letter queue.
-  final String? arn;
+  final pulumi.Input<String>? arn;
 
   /// Creates a new [EventBusDeadLetterConfig].
   /// [arn] The ARN of the SQS queue specified as the target for the dead-letter queue.
@@ -19,7 +20,7 @@ class EventBusDeadLetterConfig {
 
   factory EventBusDeadLetterConfig.fromMap(Map<String, dynamic> map) {
     return EventBusDeadLetterConfig(
-      arn: map['arn'] == null ? null : map['arn'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
     );
   }
 }

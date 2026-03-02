@@ -16,11 +16,9 @@ class InviteAccepterArgs {
   /// [masterId] The account ID of the master Security Hub account whose invitation you're accepting.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   InviteAccepterArgs({
-    required pulumi.Output<String> masterId,
-    pulumi.Output<String>? region,
-  }) :
-      masterId = pulumi.Input.asInput<String>(masterId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.masterId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class InviteAccepterArgs {
 
   factory InviteAccepterArgs.fromMap(Map<String, dynamic> map) {
     return InviteAccepterArgs(
-      masterId: pulumi.Output.create<String>(map['masterId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      masterId: (map['masterId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -37,27 +37,17 @@ class JdbcDataSourceState {
   /// [jdbcUserName] The name of the database account.
   /// [status] Data Source Status
   JdbcDataSourceState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? dataSourceDescription,
-    pulumi.Output<String>? dataSourceId,
-    pulumi.Output<String>? dataSourceName,
-    pulumi.Output<String>? dataSourceType,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? jdbcConnectionString,
-    pulumi.Output<String>? jdbcPassword,
-    pulumi.Output<String>? jdbcUserName,
-    pulumi.Output<String>? status,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dataSourceDescription = pulumi.Input.asOptionalInput<String>(dataSourceDescription),
-      dataSourceId = pulumi.Input.asOptionalInput<String>(dataSourceId),
-      dataSourceName = pulumi.Input.asOptionalInput<String>(dataSourceName),
-      dataSourceType = pulumi.Input.asOptionalInput<String>(dataSourceType),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      jdbcConnectionString = pulumi.Input.asOptionalInput<String>(jdbcConnectionString),
-      jdbcPassword = pulumi.Input.asOptionalInput<String>(jdbcPassword),
-      jdbcUserName = pulumi.Input.asOptionalInput<String>(jdbcUserName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createTime,
+    this.dataSourceDescription,
+    this.dataSourceId,
+    this.dataSourceName,
+    this.dataSourceType,
+    this.dbInstanceId,
+    this.jdbcConnectionString,
+    this.jdbcPassword,
+    this.jdbcUserName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class JdbcDataSourceState {
 
   factory JdbcDataSourceState.fromMap(Map<String, dynamic> map) {
     return JdbcDataSourceState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dataSourceDescription: map['dataSourceDescription'] == null ? null : pulumi.Output.create<String>(map['dataSourceDescription'] as String),
-      dataSourceId: map['dataSourceId'] == null ? null : pulumi.Output.create<String>(map['dataSourceId'] as String),
-      dataSourceName: map['dataSourceName'] == null ? null : pulumi.Output.create<String>(map['dataSourceName'] as String),
-      dataSourceType: map['dataSourceType'] == null ? null : pulumi.Output.create<String>(map['dataSourceType'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      jdbcConnectionString: map['jdbcConnectionString'] == null ? null : pulumi.Output.create<String>(map['jdbcConnectionString'] as String),
-      jdbcPassword: map['jdbcPassword'] == null ? null : pulumi.Output.create<String>(map['jdbcPassword'] as String),
-      jdbcUserName: map['jdbcUserName'] == null ? null : pulumi.Output.create<String>(map['jdbcUserName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription'] as String).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as String).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      jdbcConnectionString: map['jdbcConnectionString'] == null ? null : (map['jdbcConnectionString'] as String).input(),
+      jdbcPassword: map['jdbcPassword'] == null ? null : (map['jdbcPassword'] as String).input(),
+      jdbcUserName: map['jdbcUserName'] == null ? null : (map['jdbcUserName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

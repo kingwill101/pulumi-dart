@@ -44,29 +44,18 @@ class TrainingPipelineArgs {
   /// [trainingTaskDefinition] A Google Cloud Storage path to the YAML file that defines the training task which is responsible for producing the model artifact, and may also include additional auxiliary work. The definition files that can be used here are found in gs://google-cloud-aiplatform/schema/trainingjob/definition/. Note: The URI given on output will be immutable and probably different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
   /// [trainingTaskInputs] The training task's parameter(s), as specified in the training_task_definition's `inputs`.
   TrainingPipelineArgs({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec,
-    pulumi.Output<GoogleCloudAiplatformV1InputDataConfig>? inputDataConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? modelId,
-    pulumi.Output<GoogleCloudAiplatformV1Model>? modelToUpload,
-    pulumi.Output<String>? parentModel,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> trainingTaskDefinition,
-    required pulumi.Output<dynamic> trainingTaskInputs,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(encryptionSpec),
-      inputDataConfig = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1InputDataConfig>(inputDataConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      modelId = pulumi.Input.asOptionalInput<String>(modelId),
-      modelToUpload = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1Model>(modelToUpload),
-      parentModel = pulumi.Input.asOptionalInput<String>(parentModel),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      trainingTaskDefinition = pulumi.Input.asInput<String>(trainingTaskDefinition),
-      trainingTaskInputs = pulumi.Input.asInput<dynamic>(trainingTaskInputs);
+    required this.displayName,
+    this.encryptionSpec,
+    this.inputDataConfig,
+    this.labels,
+    this.location,
+    this.modelId,
+    this.modelToUpload,
+    this.parentModel,
+    this.project,
+    required this.trainingTaskDefinition,
+    required this.trainingTaskInputs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class TrainingPipelineArgs {
 
   factory TrainingPipelineArgs.fromMap(Map<String, dynamic> map) {
     return TrainingPipelineArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1EncryptionSpec>(GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      inputDataConfig: map['inputDataConfig'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1InputDataConfig>(GoogleCloudAiplatformV1InputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      modelId: map['modelId'] == null ? null : pulumi.Output.create<String>(map['modelId'] as String),
-      modelToUpload: map['modelToUpload'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1Model>(GoogleCloudAiplatformV1Model.fromMap((map['modelToUpload'] as Map).cast<String, dynamic>())),
-      parentModel: map['parentModel'] == null ? null : pulumi.Output.create<String>(map['parentModel'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      trainingTaskDefinition: pulumi.Output.create<String>(map['trainingTaskDefinition'] as String),
-      trainingTaskInputs: pulumi.Output.create<dynamic>(map['trainingTaskInputs']),
+      displayName: (map['displayName'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      inputDataConfig: map['inputDataConfig'] == null ? null : (GoogleCloudAiplatformV1InputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      modelId: map['modelId'] == null ? null : (map['modelId'] as String).input(),
+      modelToUpload: map['modelToUpload'] == null ? null : (GoogleCloudAiplatformV1Model.fromMap((map['modelToUpload'] as Map).cast<String, dynamic>())).input(),
+      parentModel: map['parentModel'] == null ? null : (map['parentModel'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      trainingTaskDefinition: (map['trainingTaskDefinition'] as String).input(),
+      trainingTaskInputs: (map['trainingTaskInputs']).input(),
     );
   }
 }

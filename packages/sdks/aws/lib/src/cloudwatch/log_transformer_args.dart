@@ -20,13 +20,10 @@ class LogTransformerArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [transformerConfigs] Specifies the configuration of the transformer. You must include at least one configuration, and 20 at most. See `transformer_config` below for details.
   LogTransformerArgs({
-    required pulumi.Output<String> logGroupArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<LogTransformerTransformerConfig>> transformerConfigs,
-  }) :
-      logGroupArn = pulumi.Input.asInput<String>(logGroupArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      transformerConfigs = pulumi.Input.asInput<List<LogTransformerTransformerConfig>>(transformerConfigs);
+    required this.logGroupArn,
+    this.region,
+    required this.transformerConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class LogTransformerArgs {
 
   factory LogTransformerArgs.fromMap(Map<String, dynamic> map) {
     return LogTransformerArgs(
-      logGroupArn: pulumi.Output.create<String>(map['logGroupArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      transformerConfigs: pulumi.Output.create<List<LogTransformerTransformerConfig>>(pulumi.Input.decodeList<LogTransformerTransformerConfig>(map['transformerConfigs'], (value) => LogTransformerTransformerConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      logGroupArn: (map['logGroupArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      transformerConfigs: (pulumi.Input.decodeList<LogTransformerTransformerConfig>(map['transformerConfigs'], (value) => LogTransformerTransformerConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

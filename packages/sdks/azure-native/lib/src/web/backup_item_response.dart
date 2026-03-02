@@ -6,39 +6,39 @@ import 'database_backup_setting_response.dart';
 /// Backup description.
 class BackupItemResponse {
   /// Id of the backup.
-  final int backupId;
+  final pulumi.Input<int> backupId;
   /// Name of the blob which contains data for this backup.
-  final String blobName;
+  final pulumi.Input<String> blobName;
   /// Unique correlation identifier. Please use this along with the timestamp while communicating with Azure support.
-  final String correlationId;
+  final pulumi.Input<String> correlationId;
   /// Timestamp of the backup creation.
-  final String created;
+  final pulumi.Input<String> created;
   /// List of databases included in the backup.
-  final List<DatabaseBackupSettingResponse> databases;
+  final pulumi.Input<List<DatabaseBackupSettingResponse>> databases;
   /// Timestamp when this backup finished.
-  final String finishedTimeStamp;
+  final pulumi.Input<String> finishedTimeStamp;
   /// Resource Id.
-  final String id;
+  final pulumi.Input<String> id;
   /// Kind of resource.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Timestamp of a last restore operation which used this backup.
-  final String lastRestoreTimeStamp;
+  final pulumi.Input<String> lastRestoreTimeStamp;
   /// Details regarding this backup. Might contain an error message.
-  final String log;
+  final pulumi.Input<String> log;
   /// Resource Name.
-  final String name;
+  final pulumi.Input<String> name;
   /// True if this backup has been created due to a schedule being triggered.
-  final bool scheduled;
+  final pulumi.Input<bool> scheduled;
   /// Size of the backup in bytes.
-  final double sizeInBytes;
+  final pulumi.Input<double> sizeInBytes;
   /// Backup status.
-  final String status;
+  final pulumi.Input<String> status;
   /// SAS URL for the storage account container which contains this backup.
-  final String storageAccountUrl;
+  final pulumi.Input<String> storageAccountUrl;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
   /// Size of the original web app which has been backed up.
-  final double websiteSizeInBytes;
+  final pulumi.Input<double> websiteSizeInBytes;
 
   /// Creates a new [BackupItemResponse].
   /// [backupId] Id of the backup.
@@ -84,7 +84,7 @@ class BackupItemResponse {
       'blobName': blobName,
       'correlationId': correlationId,
       'created': created,
-      'databases': pulumi.Input.encodeList<DatabaseBackupSettingResponse, Map<String, dynamic>>(databases, (value) => value.toMap()),
+      'databases': pulumi.Input.mapInputValue<List<DatabaseBackupSettingResponse>, List<Map<String, dynamic>>>(databases, (value) => pulumi.Input.encodeList<DatabaseBackupSettingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'finishedTimeStamp': finishedTimeStamp,
       'id': id,
       'kind': ?kind,
@@ -102,23 +102,23 @@ class BackupItemResponse {
 
   factory BackupItemResponse.fromMap(Map<String, dynamic> map) {
     return BackupItemResponse(
-      backupId: map['backupId'] as int,
-      blobName: map['blobName'] as String,
-      correlationId: map['correlationId'] as String,
-      created: map['created'] as String,
-      databases: pulumi.Input.decodeList<DatabaseBackupSettingResponse>(map['databases'], (value) => DatabaseBackupSettingResponse.fromMap((value as Map).cast<String, dynamic>())),
-      finishedTimeStamp: map['finishedTimeStamp'] as String,
-      id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      lastRestoreTimeStamp: map['lastRestoreTimeStamp'] as String,
-      log: map['log'] as String,
-      name: map['name'] as String,
-      scheduled: map['scheduled'] as bool,
-      sizeInBytes: map['sizeInBytes'] as double,
-      status: map['status'] as String,
-      storageAccountUrl: map['storageAccountUrl'] as String,
-      type: map['type'] as String,
-      websiteSizeInBytes: map['websiteSizeInBytes'] as double,
+      backupId: (map['backupId'] as int).input(),
+      blobName: (map['blobName'] as String).input(),
+      correlationId: (map['correlationId'] as String).input(),
+      created: (map['created'] as String).input(),
+      databases: (pulumi.Input.decodeList<DatabaseBackupSettingResponse>(map['databases'], (value) => DatabaseBackupSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      finishedTimeStamp: (map['finishedTimeStamp'] as String).input(),
+      id: (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      lastRestoreTimeStamp: (map['lastRestoreTimeStamp'] as String).input(),
+      log: (map['log'] as String).input(),
+      name: (map['name'] as String).input(),
+      scheduled: (map['scheduled'] as bool).input(),
+      sizeInBytes: (map['sizeInBytes'] as double).input(),
+      status: (map['status'] as String).input(),
+      storageAccountUrl: (map['storageAccountUrl'] as String).input(),
+      type: (map['type'] as String).input(),
+      websiteSizeInBytes: (map['websiteSizeInBytes'] as double).input(),
     );
   }
 }

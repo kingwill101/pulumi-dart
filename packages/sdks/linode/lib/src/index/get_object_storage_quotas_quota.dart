@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetObjectStorageQuotasQuota {
   /// The description of the Object Storage quota.
-  final String description;
+  final pulumi.Input<String> description;
   /// The type of the S3 endpoint of the Object Storage.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// The ID of the Object Storage quota.
-  final String quotaId;
+  final pulumi.Input<String> quotaId;
   /// The maximum quantity of the `resource_metric` allowed by the quota.
-  final int quotaLimit;
+  final pulumi.Input<int> quotaLimit;
   /// The name of the Object Storage quota.
-  final String quotaName;
+  final pulumi.Input<String> quotaName;
   /// The specific Object Storage resource for the quota.
-  final String resourceMetric;
+  final pulumi.Input<String> resourceMetric;
   /// The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
-  final String s3Endpoint;
+  final pulumi.Input<String> s3Endpoint;
 
   /// Creates a new [GetObjectStorageQuotasQuota].
   /// [description] The description of the Object Storage quota.
@@ -49,13 +50,13 @@ class GetObjectStorageQuotasQuota {
 
   factory GetObjectStorageQuotasQuota.fromMap(Map<String, dynamic> map) {
     return GetObjectStorageQuotasQuota(
-      description: map['description'] as String,
-      endpointType: map['endpointType'] as String,
-      quotaId: map['quotaId'] as String,
-      quotaLimit: map['quotaLimit'] as int,
-      quotaName: map['quotaName'] as String,
-      resourceMetric: map['resourceMetric'] as String,
-      s3Endpoint: map['s3Endpoint'] as String,
+      description: (map['description'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      quotaId: (map['quotaId'] as String).input(),
+      quotaLimit: (map['quotaLimit'] as int).input(),
+      quotaName: (map['quotaName'] as String).input(),
+      resourceMetric: (map['resourceMetric'] as String).input(),
+      s3Endpoint: (map['s3Endpoint'] as String).input(),
     );
   }
 }

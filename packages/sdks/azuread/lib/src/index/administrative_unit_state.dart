@@ -29,19 +29,13 @@ class AdministrativeUnitState {
   /// [objectId] The object ID of the administrative unit.
   /// [preventDuplicateNames] If `true`, will return an error if an existing administrative unit is found with the same name
   AdministrativeUnitState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? hiddenMembershipEnabled,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? objectId,
-    pulumi.Output<bool>? preventDuplicateNames,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      hiddenMembershipEnabled = pulumi.Input.asOptionalInput<bool>(hiddenMembershipEnabled),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId),
-      preventDuplicateNames = pulumi.Input.asOptionalInput<bool>(preventDuplicateNames);
+    this.description,
+    this.displayName,
+    this.hiddenMembershipEnabled,
+    this.members,
+    this.objectId,
+    this.preventDuplicateNames,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class AdministrativeUnitState {
 
   factory AdministrativeUnitState.fromMap(Map<String, dynamic> map) {
     return AdministrativeUnitState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      hiddenMembershipEnabled: map['hiddenMembershipEnabled'] == null ? null : pulumi.Output.create<bool>(map['hiddenMembershipEnabled'] as bool),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
-      preventDuplicateNames: map['preventDuplicateNames'] == null ? null : pulumi.Output.create<bool>(map['preventDuplicateNames'] as bool),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      hiddenMembershipEnabled: map['hiddenMembershipEnabled'] == null ? null : (map['hiddenMembershipEnabled'] as bool).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      preventDuplicateNames: map['preventDuplicateNames'] == null ? null : (map['preventDuplicateNames'] as bool).input(),
     );
   }
 }

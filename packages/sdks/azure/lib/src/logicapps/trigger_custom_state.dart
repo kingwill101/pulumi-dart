@@ -21,15 +21,11 @@ class TriggerCustomState {
   /// [logicAppId] Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the HTTP Trigger to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   TriggerCustomState({
-    pulumi.Output<String>? body,
-    pulumi.Output<String>? callbackUrl,
-    pulumi.Output<String>? logicAppId,
-    pulumi.Output<String>? name,
-  }) :
-      body = pulumi.Input.asOptionalInput<String>(body),
-      callbackUrl = pulumi.Input.asOptionalInput<String>(callbackUrl),
-      logicAppId = pulumi.Input.asOptionalInput<String>(logicAppId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.body,
+    this.callbackUrl,
+    this.logicAppId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class TriggerCustomState {
 
   factory TriggerCustomState.fromMap(Map<String, dynamic> map) {
     return TriggerCustomState(
-      body: map['body'] == null ? null : pulumi.Output.create<String>(map['body'] as String),
-      callbackUrl: map['callbackUrl'] == null ? null : pulumi.Output.create<String>(map['callbackUrl'] as String),
-      logicAppId: map['logicAppId'] == null ? null : pulumi.Output.create<String>(map['logicAppId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl'] as String).input(),
+      logicAppId: map['logicAppId'] == null ? null : (map['logicAppId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

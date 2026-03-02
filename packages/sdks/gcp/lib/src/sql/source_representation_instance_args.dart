@@ -50,31 +50,19 @@ class SourceRepresentationInstanceArgs {
   /// [region] The Region in which the created instance should reside.
   /// [username] The replication user account on the external server.
   SourceRepresentationInstanceArgs({
-    pulumi.Output<String>? caCertificate,
-    pulumi.Output<String>? clientCertificate,
-    pulumi.Output<String>? clientKey,
-    required pulumi.Output<String> databaseVersion,
-    pulumi.Output<String>? dumpFilePath,
-    required pulumi.Output<String> host,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? username,
-  }) :
-      caCertificate = pulumi.Input.asOptionalInput<String>(caCertificate),
-      clientCertificate = pulumi.Input.asOptionalInput<String>(clientCertificate),
-      clientKey = pulumi.Input.asOptionalInput<String>(clientKey),
-      databaseVersion = pulumi.Input.asInput<String>(databaseVersion),
-      dumpFilePath = pulumi.Input.asOptionalInput<String>(dumpFilePath),
-      host = pulumi.Input.asInput<String>(host),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.caCertificate,
+    this.clientCertificate,
+    this.clientKey,
+    required this.databaseVersion,
+    this.dumpFilePath,
+    required this.host,
+    this.name,
+    this.password,
+    this.port,
+    this.project,
+    this.region,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class SourceRepresentationInstanceArgs {
 
   factory SourceRepresentationInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SourceRepresentationInstanceArgs(
-      caCertificate: map['caCertificate'] == null ? null : pulumi.Output.create<String>(map['caCertificate'] as String),
-      clientCertificate: map['clientCertificate'] == null ? null : pulumi.Output.create<String>(map['clientCertificate'] as String),
-      clientKey: map['clientKey'] == null ? null : pulumi.Output.create<String>(map['clientKey'] as String),
-      databaseVersion: pulumi.Output.create<String>(map['databaseVersion'] as String),
-      dumpFilePath: map['dumpFilePath'] == null ? null : pulumi.Output.create<String>(map['dumpFilePath'] as String),
-      host: pulumi.Output.create<String>(map['host'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate'] as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
+      databaseVersion: (map['databaseVersion'] as String).input(),
+      dumpFilePath: map['dumpFilePath'] == null ? null : (map['dumpFilePath'] as String).input(),
+      host: (map['host'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

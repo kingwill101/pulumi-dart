@@ -35,23 +35,15 @@ class StaticSiteArgs {
   /// [skuTier] Specifies the SKU tier of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
   /// [tags] A mapping of tags to assign to the resource.
   StaticSiteArgs({
-    pulumi.Output<Map<String, String>>? appSettings,
-    pulumi.Output<StaticSiteIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skuSize,
-    pulumi.Output<String>? skuTier,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      appSettings = pulumi.Input.asOptionalInput<Map<String, String>>(appSettings),
-      identity = pulumi.Input.asOptionalInput<StaticSiteIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skuSize = pulumi.Input.asOptionalInput<String>(skuSize),
-      skuTier = pulumi.Input.asOptionalInput<String>(skuTier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.appSettings,
+    this.identity,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.skuSize,
+    this.skuTier,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class StaticSiteArgs {
 
   factory StaticSiteArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteArgs(
-      appSettings: map['appSettings'] == null ? null : pulumi.Output.create<Map<String, String>>((map['appSettings'] as Map).cast<String, String>()),
-      identity: map['identity'] == null ? null : pulumi.Output.create<StaticSiteIdentity>(StaticSiteIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuSize: map['skuSize'] == null ? null : pulumi.Output.create<String>(map['skuSize'] as String),
-      skuTier: map['skuTier'] == null ? null : pulumi.Output.create<String>(map['skuTier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      appSettings: map['appSettings'] == null ? null : ((map['appSettings'] as Map).cast<String, String>()).input(),
+      identity: map['identity'] == null ? null : (StaticSiteIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skuSize: map['skuSize'] == null ? null : (map['skuSize'] as String).input(),
+      skuTier: map['skuTier'] == null ? null : (map['skuTier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

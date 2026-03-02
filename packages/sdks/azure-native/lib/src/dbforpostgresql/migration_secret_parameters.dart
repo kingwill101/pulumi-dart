@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'admin_credentials.dart';
 
 /// Migration secret parameters.
 class MigrationSecretParameters {
   /// Credentials of administrator users for source and target servers.
-  final AdminCredentials adminCredentials;
+  final pulumi.Input<AdminCredentials> adminCredentials;
   /// Gets or sets the name of the user for the source server. This user doesn't need to be an administrator.
-  final String? sourceServerUsername;
+  final pulumi.Input<String>? sourceServerUsername;
   /// Gets or sets the name of the user for the target server. This user doesn't need to be an administrator.
-  final String? targetServerUsername;
+  final pulumi.Input<String>? targetServerUsername;
 
   /// Creates a new [MigrationSecretParameters].
   /// [adminCredentials] Credentials of administrator users for source and target servers.
@@ -23,7 +24,7 @@ class MigrationSecretParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminCredentials': adminCredentials.toMap(),
+      'adminCredentials': pulumi.Input.mapInputValue<AdminCredentials, Map<String, dynamic>>(adminCredentials, (value) => value.toMap()),
       'sourceServerUsername': ?sourceServerUsername,
       'targetServerUsername': ?targetServerUsername,
     };
@@ -31,9 +32,9 @@ class MigrationSecretParameters {
 
   factory MigrationSecretParameters.fromMap(Map<String, dynamic> map) {
     return MigrationSecretParameters(
-      adminCredentials: AdminCredentials.fromMap((map['adminCredentials'] as Map).cast<String, dynamic>()),
-      sourceServerUsername: map['sourceServerUsername'] == null ? null : map['sourceServerUsername'] as String,
-      targetServerUsername: map['targetServerUsername'] == null ? null : map['targetServerUsername'] as String,
+      adminCredentials: (AdminCredentials.fromMap((map['adminCredentials'] as Map).cast<String, dynamic>())).input(),
+      sourceServerUsername: map['sourceServerUsername'] == null ? null : (map['sourceServerUsername'] as String).input(),
+      targetServerUsername: map['targetServerUsername'] == null ? null : (map['targetServerUsername'] as String).input(),
     );
   }
 }

@@ -17,11 +17,9 @@ class NetworkAclAttachmentArgs {
   /// [networkAclId] The id of the network acl, the field can't be changed.
   /// [resources] List of the resources associated with the network acl. The details see Block Resources.
   NetworkAclAttachmentArgs({
-    required pulumi.Output<String> networkAclId,
-    required pulumi.Output<List<NetworkAclAttachmentResource>> resources,
-  }) :
-      networkAclId = pulumi.Input.asInput<String>(networkAclId),
-      resources = pulumi.Input.asInput<List<NetworkAclAttachmentResource>>(resources);
+    required this.networkAclId,
+    required this.resources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class NetworkAclAttachmentArgs {
 
   factory NetworkAclAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAclAttachmentArgs(
-      networkAclId: pulumi.Output.create<String>(map['networkAclId'] as String),
-      resources: pulumi.Output.create<List<NetworkAclAttachmentResource>>(pulumi.Input.decodeList<NetworkAclAttachmentResource>(map['resources'], (value) => NetworkAclAttachmentResource.fromMap((value as Map).cast<String, dynamic>()))),
+      networkAclId: (map['networkAclId'] as String).input(),
+      resources: (pulumi.Input.decodeList<NetworkAclAttachmentResource>(map['resources'], (value) => NetworkAclAttachmentResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

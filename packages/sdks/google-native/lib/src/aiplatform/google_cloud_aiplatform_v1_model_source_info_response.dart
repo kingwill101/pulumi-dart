@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Detail description of the source information of the model.
 class GoogleCloudAiplatformV1ModelSourceInfoResponse {
   /// If this Model is copy of another Model. If true then source_type pertains to the original.
-  final bool copy;
+  final pulumi.Input<bool> copy;
   /// Type of the model source.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
 
   /// Creates a new [GoogleCloudAiplatformV1ModelSourceInfoResponse].
   /// [copy] If this Model is copy of another Model. If true then source_type pertains to the original.
@@ -25,8 +26,8 @@ class GoogleCloudAiplatformV1ModelSourceInfoResponse {
 
   factory GoogleCloudAiplatformV1ModelSourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelSourceInfoResponse(
-      copy: map['copy'] as bool,
-      sourceType: map['sourceType'] as String,
+      copy: (map['copy'] as bool).input(),
+      sourceType: (map['sourceType'] as String).input(),
     );
   }
 }

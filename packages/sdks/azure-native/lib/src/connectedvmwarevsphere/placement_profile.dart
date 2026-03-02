@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the compute and storage placement settings for the virtual machine.
 class PlacementProfile {
   /// Gets or sets the ARM Id of the cluster resource on which this virtual machine will deploy.
-  final String? clusterId;
+  final pulumi.Input<String>? clusterId;
   /// Gets or sets the ARM Id of the datastore resource on which the data for the virtual machine will be kept.
-  final String? datastoreId;
+  final pulumi.Input<String>? datastoreId;
   /// Gets or sets the ARM Id of the host resource on which this virtual machine will deploy.
-  final String? hostId;
+  final pulumi.Input<String>? hostId;
   /// Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will deploy.
-  final String? resourcePoolId;
+  final pulumi.Input<String>? resourcePoolId;
 
   /// Creates a new [PlacementProfile].
   /// [clusterId] Gets or sets the ARM Id of the cluster resource on which this virtual machine will deploy.
@@ -35,10 +36,10 @@ class PlacementProfile {
 
   factory PlacementProfile.fromMap(Map<String, dynamic> map) {
     return PlacementProfile(
-      clusterId: map['clusterId'] == null ? null : map['clusterId'] as String,
-      datastoreId: map['datastoreId'] == null ? null : map['datastoreId'] as String,
-      hostId: map['hostId'] == null ? null : map['hostId'] as String,
-      resourcePoolId: map['resourcePoolId'] == null ? null : map['resourcePoolId'] as String,
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      datastoreId: map['datastoreId'] == null ? null : (map['datastoreId'] as String).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
+      resourcePoolId: map['resourcePoolId'] == null ? null : (map['resourcePoolId'] as String).input(),
     );
   }
 }

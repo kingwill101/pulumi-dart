@@ -19,13 +19,10 @@ class GetFirewallRuleArgs {
   /// [firewallRuleName] The name of the firewall rule to retrieve.
   /// [resourceGroupName] The name of the Azure resource group.
   GetFirewallRuleArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> firewallRuleName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      firewallRuleName = pulumi.Input.asInput<String>(firewallRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.firewallRuleName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFirewallRuleArgs {
 
   factory GetFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallRuleArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      firewallRuleName: pulumi.Output.create<String>(map['firewallRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      firewallRuleName: (map['firewallRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

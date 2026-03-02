@@ -49,31 +49,19 @@ class DscpConfigurationArgs {
   /// [sourcePortRanges] Sources port ranges.
   /// [tags] Resource tags.
   DscpConfigurationArgs({
-    pulumi.Output<List<QosIpRange>>? destinationIpRanges,
-    pulumi.Output<List<QosPortRange>>? destinationPortRanges,
-    pulumi.Output<String>? dscpConfigurationName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<int>>? markings,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<List<QosDefinition>>? qosDefinitionCollection,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<QosIpRange>>? sourceIpRanges,
-    pulumi.Output<List<QosPortRange>>? sourcePortRanges,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      destinationIpRanges = pulumi.Input.asOptionalInput<List<QosIpRange>>(destinationIpRanges),
-      destinationPortRanges = pulumi.Input.asOptionalInput<List<QosPortRange>>(destinationPortRanges),
-      dscpConfigurationName = pulumi.Input.asOptionalInput<String>(dscpConfigurationName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      markings = pulumi.Input.asOptionalInput<List<int>>(markings),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      qosDefinitionCollection = pulumi.Input.asOptionalInput<List<QosDefinition>>(qosDefinitionCollection),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceIpRanges = pulumi.Input.asOptionalInput<List<QosIpRange>>(sourceIpRanges),
-      sourcePortRanges = pulumi.Input.asOptionalInput<List<QosPortRange>>(sourcePortRanges),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.destinationIpRanges,
+    this.destinationPortRanges,
+    this.dscpConfigurationName,
+    this.id,
+    this.location,
+    this.markings,
+    this.protocol,
+    this.qosDefinitionCollection,
+    required this.resourceGroupName,
+    this.sourceIpRanges,
+    this.sourcePortRanges,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class DscpConfigurationArgs {
 
   factory DscpConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DscpConfigurationArgs(
-      destinationIpRanges: map['destinationIpRanges'] == null ? null : pulumi.Output.create<List<QosIpRange>>(pulumi.Input.decodeList<QosIpRange>(map['destinationIpRanges'], (value) => QosIpRange.fromMap((value as Map).cast<String, dynamic>()))),
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : pulumi.Output.create<List<QosPortRange>>(pulumi.Input.decodeList<QosPortRange>(map['destinationPortRanges'], (value) => QosPortRange.fromMap((value as Map).cast<String, dynamic>()))),
-      dscpConfigurationName: map['dscpConfigurationName'] == null ? null : pulumi.Output.create<String>(map['dscpConfigurationName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      markings: map['markings'] == null ? null : pulumi.Output.create<List<int>>((map['markings'] as List).cast<int>()),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      qosDefinitionCollection: map['qosDefinitionCollection'] == null ? null : pulumi.Output.create<List<QosDefinition>>(pulumi.Input.decodeList<QosDefinition>(map['qosDefinitionCollection'], (value) => QosDefinition.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceIpRanges: map['sourceIpRanges'] == null ? null : pulumi.Output.create<List<QosIpRange>>(pulumi.Input.decodeList<QosIpRange>(map['sourceIpRanges'], (value) => QosIpRange.fromMap((value as Map).cast<String, dynamic>()))),
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : pulumi.Output.create<List<QosPortRange>>(pulumi.Input.decodeList<QosPortRange>(map['sourcePortRanges'], (value) => QosPortRange.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      destinationIpRanges: map['destinationIpRanges'] == null ? null : (pulumi.Input.decodeList<QosIpRange>(map['destinationIpRanges'], (value) => QosIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationPortRanges: map['destinationPortRanges'] == null ? null : (pulumi.Input.decodeList<QosPortRange>(map['destinationPortRanges'], (value) => QosPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dscpConfigurationName: map['dscpConfigurationName'] == null ? null : (map['dscpConfigurationName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      markings: map['markings'] == null ? null : ((map['markings'] as List).cast<int>()).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      qosDefinitionCollection: map['qosDefinitionCollection'] == null ? null : (pulumi.Input.decodeList<QosDefinition>(map['qosDefinitionCollection'], (value) => QosDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceIpRanges: map['sourceIpRanges'] == null ? null : (pulumi.Input.decodeList<QosIpRange>(map['sourceIpRanges'], (value) => QosIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePortRanges: map['sourcePortRanges'] == null ? null : (pulumi.Input.decodeList<QosPortRange>(map['sourcePortRanges'], (value) => QosPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

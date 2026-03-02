@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScalingRuleHybridMetricDimension {
-  final String? dimensionKey;
-  final String? dimensionValue;
+  final pulumi.Input<String>? dimensionKey;
+  final pulumi.Input<String>? dimensionValue;
 
   /// Creates a new [ScalingRuleHybridMetricDimension].
   /// [dimensionKey] Optional.
@@ -22,8 +23,8 @@ class ScalingRuleHybridMetricDimension {
 
   factory ScalingRuleHybridMetricDimension.fromMap(Map<String, dynamic> map) {
     return ScalingRuleHybridMetricDimension(
-      dimensionKey: map['dimensionKey'] == null ? null : map['dimensionKey'] as String,
-      dimensionValue: map['dimensionValue'] == null ? null : map['dimensionValue'] as String,
+      dimensionKey: map['dimensionKey'] == null ? null : (map['dimensionKey'] as String).input(),
+      dimensionValue: map['dimensionValue'] == null ? null : (map['dimensionValue'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetNotification {
   /// (Required) Comparison operator to use to evaluate the condition. Can be `LESS_THAN`, `EQUAL_TO` or `GREATER_THAN`.
-  final String comparisonOperator;
+  final pulumi.Input<String> comparisonOperator;
   /// (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`
-  final String notificationType;
+  final pulumi.Input<String> notificationType;
   /// (Optional) E-Mail addresses to notify. Either this or `subscriber_sns_topic_arns` is required.
-  final List<String>? subscriberEmailAddresses;
+  final pulumi.Input<List<String>>? subscriberEmailAddresses;
   /// (Optional) SNS topics to notify. Either this or `subscriber_email_addresses` is required.
-  final List<String>? subscriberSnsTopicArns;
+  final pulumi.Input<List<String>>? subscriberSnsTopicArns;
   /// (Required) Threshold when the notification should be sent.
-  final double threshold;
+  final pulumi.Input<double> threshold;
   /// (Required) What kind of threshold is defined. Can be `PERCENTAGE` OR `ABSOLUTE_VALUE`.
-  final String thresholdType;
+  final pulumi.Input<String> thresholdType;
 
   /// Creates a new [BudgetNotification].
   /// [comparisonOperator] (Required) Comparison operator to use to evaluate the condition. Can be `LESS_THAN`, `EQUAL_TO` or `GREATER_THAN`.
@@ -44,12 +45,12 @@ class BudgetNotification {
 
   factory BudgetNotification.fromMap(Map<String, dynamic> map) {
     return BudgetNotification(
-      comparisonOperator: map['comparisonOperator'] as String,
-      notificationType: map['notificationType'] as String,
-      subscriberEmailAddresses: map['subscriberEmailAddresses'] == null ? null : (map['subscriberEmailAddresses'] as List).cast<String>(),
-      subscriberSnsTopicArns: map['subscriberSnsTopicArns'] == null ? null : (map['subscriberSnsTopicArns'] as List).cast<String>(),
-      threshold: map['threshold'] as double,
-      thresholdType: map['thresholdType'] as String,
+      comparisonOperator: (map['comparisonOperator'] as String).input(),
+      notificationType: (map['notificationType'] as String).input(),
+      subscriberEmailAddresses: map['subscriberEmailAddresses'] == null ? null : ((map['subscriberEmailAddresses'] as List).cast<String>()).input(),
+      subscriberSnsTopicArns: map['subscriberSnsTopicArns'] == null ? null : ((map['subscriberSnsTopicArns'] as List).cast<String>()).input(),
+      threshold: (map['threshold'] as double).input(),
+      thresholdType: (map['thresholdType'] as String).input(),
     );
   }
 }

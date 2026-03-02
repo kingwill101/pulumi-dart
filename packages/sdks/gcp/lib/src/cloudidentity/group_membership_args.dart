@@ -32,17 +32,12 @@ class GroupMembershipArgs {
   /// [preferredMemberKey] EntityKey of the member.
   /// [roles] The MembershipRoles that apply to the Membership.
   GroupMembershipArgs({
-    pulumi.Output<bool>? createIgnoreAlreadyExists,
-    required pulumi.Output<String> group,
-    pulumi.Output<GroupMembershipMemberKey>? memberKey,
-    pulumi.Output<GroupMembershipPreferredMemberKey>? preferredMemberKey,
-    required pulumi.Output<List<GroupMembershipRole>> roles,
-  }) :
-      createIgnoreAlreadyExists = pulumi.Input.asOptionalInput<bool>(createIgnoreAlreadyExists),
-      group = pulumi.Input.asInput<String>(group),
-      memberKey = pulumi.Input.asOptionalInput<GroupMembershipMemberKey>(memberKey),
-      preferredMemberKey = pulumi.Input.asOptionalInput<GroupMembershipPreferredMemberKey>(preferredMemberKey),
-      roles = pulumi.Input.asInput<List<GroupMembershipRole>>(roles);
+    this.createIgnoreAlreadyExists,
+    required this.group,
+    this.memberKey,
+    this.preferredMemberKey,
+    required this.roles,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class GroupMembershipArgs {
 
   factory GroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return GroupMembershipArgs(
-      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : pulumi.Output.create<bool>(map['createIgnoreAlreadyExists'] as bool),
-      group: pulumi.Output.create<String>(map['group'] as String),
-      memberKey: map['memberKey'] == null ? null : pulumi.Output.create<GroupMembershipMemberKey>(GroupMembershipMemberKey.fromMap((map['memberKey'] as Map).cast<String, dynamic>())),
-      preferredMemberKey: map['preferredMemberKey'] == null ? null : pulumi.Output.create<GroupMembershipPreferredMemberKey>(GroupMembershipPreferredMemberKey.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>())),
-      roles: pulumi.Output.create<List<GroupMembershipRole>>(pulumi.Input.decodeList<GroupMembershipRole>(map['roles'], (value) => GroupMembershipRole.fromMap((value as Map).cast<String, dynamic>()))),
+      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists'] as bool).input(),
+      group: (map['group'] as String).input(),
+      memberKey: map['memberKey'] == null ? null : (GroupMembershipMemberKey.fromMap((map['memberKey'] as Map).cast<String, dynamic>())).input(),
+      preferredMemberKey: map['preferredMemberKey'] == null ? null : (GroupMembershipPreferredMemberKey.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>())).input(),
+      roles: (pulumi.Input.decodeList<GroupMembershipRole>(map['roles'], (value) => GroupMembershipRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

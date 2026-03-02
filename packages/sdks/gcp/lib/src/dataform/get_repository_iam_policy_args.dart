@@ -22,13 +22,10 @@ class GetRepositoryIamPolicyArgs {
   /// [region] A reference to the region Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [repository] Used to find the parent resource to bind the IAM policy to
   GetRepositoryIamPolicyArgs({
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> repository,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repository = pulumi.Input.asInput<String>(repository);
+    this.project,
+    this.region,
+    required this.repository,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetRepositoryIamPolicyArgs {
 
   factory GetRepositoryIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryIamPolicyArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repository: pulumi.Output.create<String>(map['repository'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repository: (map['repository'] as String).input(),
     );
   }
 }

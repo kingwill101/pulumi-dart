@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SacRealmPairingKey {
   /// (Output)
   /// Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
-  final String? expireTime;
+  final pulumi.Input<String>? expireTime;
   /// (Output)
   /// Key value.
-  final String? key;
+  final pulumi.Input<String>? key;
 
   /// Creates a new [SacRealmPairingKey].
   /// [expireTime] (Output)
@@ -26,8 +27,8 @@ class SacRealmPairingKey {
 
   factory SacRealmPairingKey.fromMap(Map<String, dynamic> map) {
     return SacRealmPairingKey(
-      expireTime: map['expireTime'] == null ? null : map['expireTime'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
     );
   }
 }

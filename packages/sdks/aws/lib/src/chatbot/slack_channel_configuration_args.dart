@@ -45,29 +45,18 @@ class SlackChannelConfigurationArgs {
   /// [timeouts] Optional.
   /// [userAuthorizationRequired] Enables use of a user role requirement in your chat configuration.
   SlackChannelConfigurationArgs({
-    required pulumi.Output<String> configurationName,
-    pulumi.Output<List<String>>? guardrailPolicyArns,
-    required pulumi.Output<String> iamRoleArn,
-    pulumi.Output<String>? loggingLevel,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> slackChannelId,
-    required pulumi.Output<String> slackTeamId,
-    pulumi.Output<List<String>>? snsTopicArns,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<SlackChannelConfigurationTimeouts>? timeouts,
-    pulumi.Output<bool>? userAuthorizationRequired,
-  }) :
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      guardrailPolicyArns = pulumi.Input.asOptionalInput<List<String>>(guardrailPolicyArns),
-      iamRoleArn = pulumi.Input.asInput<String>(iamRoleArn),
-      loggingLevel = pulumi.Input.asOptionalInput<String>(loggingLevel),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      slackChannelId = pulumi.Input.asInput<String>(slackChannelId),
-      slackTeamId = pulumi.Input.asInput<String>(slackTeamId),
-      snsTopicArns = pulumi.Input.asOptionalInput<List<String>>(snsTopicArns),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<SlackChannelConfigurationTimeouts>(timeouts),
-      userAuthorizationRequired = pulumi.Input.asOptionalInput<bool>(userAuthorizationRequired);
+    required this.configurationName,
+    this.guardrailPolicyArns,
+    required this.iamRoleArn,
+    this.loggingLevel,
+    this.region,
+    required this.slackChannelId,
+    required this.slackTeamId,
+    this.snsTopicArns,
+    this.tags,
+    this.timeouts,
+    this.userAuthorizationRequired,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class SlackChannelConfigurationArgs {
 
   factory SlackChannelConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SlackChannelConfigurationArgs(
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      guardrailPolicyArns: map['guardrailPolicyArns'] == null ? null : pulumi.Output.create<List<String>>((map['guardrailPolicyArns'] as List).cast<String>()),
-      iamRoleArn: pulumi.Output.create<String>(map['iamRoleArn'] as String),
-      loggingLevel: map['loggingLevel'] == null ? null : pulumi.Output.create<String>(map['loggingLevel'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      slackChannelId: pulumi.Output.create<String>(map['slackChannelId'] as String),
-      slackTeamId: pulumi.Output.create<String>(map['slackTeamId'] as String),
-      snsTopicArns: map['snsTopicArns'] == null ? null : pulumi.Output.create<List<String>>((map['snsTopicArns'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<SlackChannelConfigurationTimeouts>(SlackChannelConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      userAuthorizationRequired: map['userAuthorizationRequired'] == null ? null : pulumi.Output.create<bool>(map['userAuthorizationRequired'] as bool),
+      configurationName: (map['configurationName'] as String).input(),
+      guardrailPolicyArns: map['guardrailPolicyArns'] == null ? null : ((map['guardrailPolicyArns'] as List).cast<String>()).input(),
+      iamRoleArn: (map['iamRoleArn'] as String).input(),
+      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      slackChannelId: (map['slackChannelId'] as String).input(),
+      slackTeamId: (map['slackTeamId'] as String).input(),
+      snsTopicArns: map['snsTopicArns'] == null ? null : ((map['snsTopicArns'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (SlackChannelConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      userAuthorizationRequired: map['userAuthorizationRequired'] == null ? null : (map['userAuthorizationRequired'] as bool).input(),
     );
   }
 }

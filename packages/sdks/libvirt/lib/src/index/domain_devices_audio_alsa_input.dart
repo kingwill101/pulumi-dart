@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesAudioAlsaInput {
   /// Sets the device node for the ALSA audio output.
-  final String? dev;
+  final pulumi.Input<String>? dev;
 
   /// Creates a new [DomainDevicesAudioAlsaInput].
   /// [dev] Sets the device node for the ALSA audio output.
@@ -19,7 +20,7 @@ class DomainDevicesAudioAlsaInput {
 
   factory DomainDevicesAudioAlsaInput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioAlsaInput(
-      dev: map['dev'] == null ? null : map['dev'] as String,
+      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
     );
   }
 }

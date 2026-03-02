@@ -25,19 +25,13 @@ class TrafficPolicyInstanceState {
   /// [trafficPolicyVersion] Version of the traffic policy
   /// [ttl] TTL that you want Amazon Route 53 to assign to all the resource record sets that it creates in the specified hosted zone.
   TrafficPolicyInstanceState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? hostedZoneId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? trafficPolicyId,
-    pulumi.Output<int>? trafficPolicyVersion,
-    pulumi.Output<int>? ttl,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      hostedZoneId = pulumi.Input.asOptionalInput<String>(hostedZoneId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      trafficPolicyId = pulumi.Input.asOptionalInput<String>(trafficPolicyId),
-      trafficPolicyVersion = pulumi.Input.asOptionalInput<int>(trafficPolicyVersion),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl);
+    this.arn,
+    this.hostedZoneId,
+    this.name,
+    this.trafficPolicyId,
+    this.trafficPolicyVersion,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class TrafficPolicyInstanceState {
 
   factory TrafficPolicyInstanceState.fromMap(Map<String, dynamic> map) {
     return TrafficPolicyInstanceState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      hostedZoneId: map['hostedZoneId'] == null ? null : pulumi.Output.create<String>(map['hostedZoneId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      trafficPolicyId: map['trafficPolicyId'] == null ? null : pulumi.Output.create<String>(map['trafficPolicyId'] as String),
-      trafficPolicyVersion: map['trafficPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['trafficPolicyVersion'] as int),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      trafficPolicyId: map['trafficPolicyId'] == null ? null : (map['trafficPolicyId'] as String).input(),
+      trafficPolicyVersion: map['trafficPolicyVersion'] == null ? null : (map['trafficPolicyVersion'] as int).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
     );
   }
 }

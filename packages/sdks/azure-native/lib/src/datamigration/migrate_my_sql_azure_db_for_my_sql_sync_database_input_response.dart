@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Database specific information for MySQL to Azure Database for MySQL migration task inputs
 class MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse {
   /// Migration settings which tune the migration behavior
-  final Map<String, String>? migrationSetting;
+  final pulumi.Input<Map<String, String>>? migrationSetting;
   /// Name of the database
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Source settings to tune source endpoint migration behavior
-  final Map<String, String>? sourceSetting;
+  final pulumi.Input<Map<String, String>>? sourceSetting;
   /// Mapping of source to target tables
-  final Map<String, String>? tableMap;
+  final pulumi.Input<Map<String, String>>? tableMap;
   /// Name of target database. Note: Target database will be truncated before starting migration.
-  final String? targetDatabaseName;
+  final pulumi.Input<String>? targetDatabaseName;
   /// Target settings to tune target endpoint migration behavior
-  final Map<String, String>? targetSetting;
+  final pulumi.Input<Map<String, String>>? targetSetting;
 
   /// Creates a new [MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse].
   /// [migrationSetting] Migration settings which tune the migration behavior
@@ -45,12 +46,12 @@ class MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse {
 
   factory MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse(
-      migrationSetting: map['migrationSetting'] == null ? null : (map['migrationSetting'] as Map).cast<String, String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      sourceSetting: map['sourceSetting'] == null ? null : (map['sourceSetting'] as Map).cast<String, String>(),
-      tableMap: map['tableMap'] == null ? null : (map['tableMap'] as Map).cast<String, String>(),
-      targetDatabaseName: map['targetDatabaseName'] == null ? null : map['targetDatabaseName'] as String,
-      targetSetting: map['targetSetting'] == null ? null : (map['targetSetting'] as Map).cast<String, String>(),
+      migrationSetting: map['migrationSetting'] == null ? null : ((map['migrationSetting'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sourceSetting: map['sourceSetting'] == null ? null : ((map['sourceSetting'] as Map).cast<String, String>()).input(),
+      tableMap: map['tableMap'] == null ? null : ((map['tableMap'] as Map).cast<String, String>()).input(),
+      targetDatabaseName: map['targetDatabaseName'] == null ? null : (map['targetDatabaseName'] as String).input(),
+      targetSetting: map['targetSetting'] == null ? null : ((map['targetSetting'] as Map).cast<String, String>()).input(),
     );
   }
 }

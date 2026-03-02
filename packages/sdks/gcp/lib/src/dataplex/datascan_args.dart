@@ -60,31 +60,19 @@ class DatascanArgs {
   /// [location] The location where the data scan should reside.
   /// [project] The ID of the project in which the resource belongs.
   DatascanArgs({
-    required pulumi.Output<DatascanData> data,
-    pulumi.Output<DatascanDataDiscoverySpec>? dataDiscoverySpec,
-    pulumi.Output<Map<String, dynamic>>? dataDocumentationSpec,
-    pulumi.Output<DatascanDataProfileSpec>? dataProfileSpec,
-    pulumi.Output<DatascanDataQualitySpec>? dataQualitySpec,
-    required pulumi.Output<String> dataScanId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<DatascanExecutionSpec> executionSpec,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      data = pulumi.Input.asInput<DatascanData>(data),
-      dataDiscoverySpec = pulumi.Input.asOptionalInput<DatascanDataDiscoverySpec>(dataDiscoverySpec),
-      dataDocumentationSpec = pulumi.Input.asOptionalInput<Map<String, dynamic>>(dataDocumentationSpec),
-      dataProfileSpec = pulumi.Input.asOptionalInput<DatascanDataProfileSpec>(dataProfileSpec),
-      dataQualitySpec = pulumi.Input.asOptionalInput<DatascanDataQualitySpec>(dataQualitySpec),
-      dataScanId = pulumi.Input.asInput<String>(dataScanId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      executionSpec = pulumi.Input.asInput<DatascanExecutionSpec>(executionSpec),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.data,
+    this.dataDiscoverySpec,
+    this.dataDocumentationSpec,
+    this.dataProfileSpec,
+    this.dataQualitySpec,
+    required this.dataScanId,
+    this.description,
+    this.displayName,
+    required this.executionSpec,
+    this.labels,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,18 +93,18 @@ class DatascanArgs {
 
   factory DatascanArgs.fromMap(Map<String, dynamic> map) {
     return DatascanArgs(
-      data: pulumi.Output.create<DatascanData>(DatascanData.fromMap((map['data'] as Map).cast<String, dynamic>())),
-      dataDiscoverySpec: map['dataDiscoverySpec'] == null ? null : pulumi.Output.create<DatascanDataDiscoverySpec>(DatascanDataDiscoverySpec.fromMap((map['dataDiscoverySpec'] as Map).cast<String, dynamic>())),
-      dataDocumentationSpec: map['dataDocumentationSpec'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['dataDocumentationSpec'] as Map).cast<String, dynamic>()),
-      dataProfileSpec: map['dataProfileSpec'] == null ? null : pulumi.Output.create<DatascanDataProfileSpec>(DatascanDataProfileSpec.fromMap((map['dataProfileSpec'] as Map).cast<String, dynamic>())),
-      dataQualitySpec: map['dataQualitySpec'] == null ? null : pulumi.Output.create<DatascanDataQualitySpec>(DatascanDataQualitySpec.fromMap((map['dataQualitySpec'] as Map).cast<String, dynamic>())),
-      dataScanId: pulumi.Output.create<String>(map['dataScanId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      executionSpec: pulumi.Output.create<DatascanExecutionSpec>(DatascanExecutionSpec.fromMap((map['executionSpec'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      data: (DatascanData.fromMap((map['data'] as Map).cast<String, dynamic>())).input(),
+      dataDiscoverySpec: map['dataDiscoverySpec'] == null ? null : (DatascanDataDiscoverySpec.fromMap((map['dataDiscoverySpec'] as Map).cast<String, dynamic>())).input(),
+      dataDocumentationSpec: map['dataDocumentationSpec'] == null ? null : ((map['dataDocumentationSpec'] as Map).cast<String, dynamic>()).input(),
+      dataProfileSpec: map['dataProfileSpec'] == null ? null : (DatascanDataProfileSpec.fromMap((map['dataProfileSpec'] as Map).cast<String, dynamic>())).input(),
+      dataQualitySpec: map['dataQualitySpec'] == null ? null : (DatascanDataQualitySpec.fromMap((map['dataQualitySpec'] as Map).cast<String, dynamic>())).input(),
+      dataScanId: (map['dataScanId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      executionSpec: (DatascanExecutionSpec.fromMap((map['executionSpec'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

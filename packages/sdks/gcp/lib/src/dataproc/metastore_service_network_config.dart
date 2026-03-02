@@ -6,9 +6,9 @@ import 'metastore_service_network_config_consumer.dart';
 class MetastoreServiceNetworkConfig {
   /// The consumer-side network configuration for the Dataproc Metastore instance.
   /// Structure is documented below.
-  final List<MetastoreServiceNetworkConfigConsumer> consumers;
+  final pulumi.Input<List<MetastoreServiceNetworkConfigConsumer>> consumers;
   /// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
-  final bool? customRoutesEnabled;
+  final pulumi.Input<bool>? customRoutesEnabled;
 
   /// Creates a new [MetastoreServiceNetworkConfig].
   /// [consumers] The consumer-side network configuration for the Dataproc Metastore instance.
@@ -20,15 +20,15 @@ class MetastoreServiceNetworkConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumers': pulumi.Input.encodeList<MetastoreServiceNetworkConfigConsumer, Map<String, dynamic>>(consumers, (value) => value.toMap()),
+      'consumers': pulumi.Input.mapInputValue<List<MetastoreServiceNetworkConfigConsumer>, List<Map<String, dynamic>>>(consumers, (value) => pulumi.Input.encodeList<MetastoreServiceNetworkConfigConsumer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'customRoutesEnabled': ?customRoutesEnabled,
     };
   }
 
   factory MetastoreServiceNetworkConfig.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceNetworkConfig(
-      consumers: pulumi.Input.decodeList<MetastoreServiceNetworkConfigConsumer>(map['consumers'], (value) => MetastoreServiceNetworkConfigConsumer.fromMap((value as Map).cast<String, dynamic>())),
-      customRoutesEnabled: map['customRoutesEnabled'] == null ? null : map['customRoutesEnabled'] as bool,
+      consumers: (pulumi.Input.decodeList<MetastoreServiceNetworkConfigConsumer>(map['consumers'], (value) => MetastoreServiceNetworkConfigConsumer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customRoutesEnabled: map['customRoutesEnabled'] == null ? null : (map['customRoutesEnabled'] as bool).input(),
     );
   }
 }

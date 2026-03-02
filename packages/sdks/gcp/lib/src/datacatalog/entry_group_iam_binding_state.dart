@@ -45,21 +45,14 @@ class EntryGroupIamBindingState {
   /// [region] EntryGroup location region.
   /// [role] The role that should be applied. Only one
   EntryGroupIamBindingState({
-    pulumi.Output<EntryGroupIamBindingCondition>? condition,
-    pulumi.Output<String>? entryGroup,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<EntryGroupIamBindingCondition>(condition),
-      entryGroup = pulumi.Input.asOptionalInput<String>(entryGroup),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.entryGroup,
+    this.etag,
+    this.members,
+    this.project,
+    this.region,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,13 +68,13 @@ class EntryGroupIamBindingState {
 
   factory EntryGroupIamBindingState.fromMap(Map<String, dynamic> map) {
     return EntryGroupIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<EntryGroupIamBindingCondition>(EntryGroupIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      entryGroup: map['entryGroup'] == null ? null : pulumi.Output.create<String>(map['entryGroup'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (EntryGroupIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      entryGroup: map['entryGroup'] == null ? null : (map['entryGroup'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

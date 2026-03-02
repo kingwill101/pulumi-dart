@@ -25,17 +25,12 @@ class VolumeArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeName] Volume Resource
   VolumeArgs({
-    required pulumi.Output<double> capacityGiB,
-    required pulumi.Output<Map<String, String>> labels,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? volumeName,
-  }) :
-      capacityGiB = pulumi.Input.asInput<double>(capacityGiB),
-      labels = pulumi.Input.asInput<Map<String, String>>(labels),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      volumeName = pulumi.Input.asOptionalInput<String>(volumeName);
+    required this.capacityGiB,
+    required this.labels,
+    required this.poolName,
+    required this.resourceGroupName,
+    this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      capacityGiB: pulumi.Output.create<double>(map['capacityGiB'] as double),
-      labels: pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      volumeName: map['volumeName'] == null ? null : pulumi.Output.create<String>(map['volumeName'] as String),
+      capacityGiB: (map['capacityGiB'] as double).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
     );
   }
 }

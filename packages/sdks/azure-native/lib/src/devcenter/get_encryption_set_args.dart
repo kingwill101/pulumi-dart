@@ -19,13 +19,10 @@ class GetEncryptionSetArgs {
   /// [encryptionSetName] The name of the devcenter encryption set.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetEncryptionSetArgs({
-    required pulumi.Output<String> devCenterName,
-    required pulumi.Output<String> encryptionSetName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      encryptionSetName = pulumi.Input.asInput<String>(encryptionSetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.devCenterName,
+    required this.encryptionSetName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetEncryptionSetArgs {
 
   factory GetEncryptionSetArgs.fromMap(Map<String, dynamic> map) {
     return GetEncryptionSetArgs(
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      encryptionSetName: pulumi.Output.create<String>(map['encryptionSetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      devCenterName: (map['devCenterName'] as String).input(),
+      encryptionSetName: (map['encryptionSetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

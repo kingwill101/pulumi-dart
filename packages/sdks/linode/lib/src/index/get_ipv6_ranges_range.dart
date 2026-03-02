@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIpv6RangesRange {
   /// The prefix length of the address, denoting how many addresses can be assigned from this range.
-  final int prefix;
+  final pulumi.Input<int> prefix;
   /// The IPv6 address of this range.
-  final String range;
+  final pulumi.Input<String> range;
   /// The region for this range of IPv6 addresses.
-  final String region;
+  final pulumi.Input<String> region;
   /// The IPv6 SLAAC address.
-  final String routeTarget;
+  final pulumi.Input<String> routeTarget;
 
   /// Creates a new [GetIpv6RangesRange].
   /// [prefix] The prefix length of the address, denoting how many addresses can be assigned from this range.
@@ -34,10 +35,10 @@ class GetIpv6RangesRange {
 
   factory GetIpv6RangesRange.fromMap(Map<String, dynamic> map) {
     return GetIpv6RangesRange(
-      prefix: map['prefix'] as int,
-      range: map['range'] as String,
-      region: map['region'] as String,
-      routeTarget: map['routeTarget'] as String,
+      prefix: (map['prefix'] as int).input(),
+      range: (map['range'] as String).input(),
+      region: (map['region'] as String).input(),
+      routeTarget: (map['routeTarget'] as String).input(),
     );
   }
 }

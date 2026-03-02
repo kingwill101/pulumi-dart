@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CertificateTemplate (v3 Extension in X.509).
 class CertificateTemplateResponse {
   /// The Major version of the template. Example: 100.
-  final int majorVersion;
+  final pulumi.Input<int> majorVersion;
   /// The minor version of the template. Example: 12.
-  final int minorVersion;
+  final pulumi.Input<int> minorVersion;
 
   /// Creates a new [CertificateTemplateResponse].
   /// [majorVersion] The Major version of the template. Example: 100.
@@ -25,8 +26,8 @@ class CertificateTemplateResponse {
 
   factory CertificateTemplateResponse.fromMap(Map<String, dynamic> map) {
     return CertificateTemplateResponse(
-      majorVersion: map['majorVersion'] as int,
-      minorVersion: map['minorVersion'] as int,
+      majorVersion: (map['majorVersion'] as int).input(),
+      minorVersion: (map['minorVersion'] as int).input(),
     );
   }
 }

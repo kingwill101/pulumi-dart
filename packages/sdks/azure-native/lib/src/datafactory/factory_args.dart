@@ -45,27 +45,17 @@ class FactoryArgs {
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
   FactoryArgs({
-    pulumi.Output<EncryptionConfiguration>? encryption,
-    pulumi.Output<String>? factoryName,
-    pulumi.Output<Map<String, GlobalParameterSpecification>>? globalParameters,
-    pulumi.Output<FactoryIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? publicNetworkAccess,
-    pulumi.Output<PurviewConfiguration>? purviewConfiguration,
-    pulumi.Output<FactoryGitHubConfiguration>? repoConfiguration,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      encryption = pulumi.Input.asOptionalInput<EncryptionConfiguration>(encryption),
-      factoryName = pulumi.Input.asOptionalInput<String>(factoryName),
-      globalParameters = pulumi.Input.asOptionalInput<Map<String, GlobalParameterSpecification>>(globalParameters),
-      identity = pulumi.Input.asOptionalInput<FactoryIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      purviewConfiguration = pulumi.Input.asOptionalInput<PurviewConfiguration>(purviewConfiguration),
-      repoConfiguration = pulumi.Input.asOptionalInput<FactoryGitHubConfiguration>(repoConfiguration),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.encryption,
+    this.factoryName,
+    this.globalParameters,
+    this.identity,
+    this.location,
+    this.publicNetworkAccess,
+    this.purviewConfiguration,
+    this.repoConfiguration,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class FactoryArgs {
 
   factory FactoryArgs.fromMap(Map<String, dynamic> map) {
     return FactoryArgs(
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<EncryptionConfiguration>(EncryptionConfiguration.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      factoryName: map['factoryName'] == null ? null : pulumi.Output.create<String>(map['factoryName'] as String),
-      globalParameters: map['globalParameters'] == null ? null : pulumi.Output.create<Map<String, GlobalParameterSpecification>>(pulumi.Input.decodeMapValues<GlobalParameterSpecification>(map['globalParameters'], (value) => GlobalParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))),
-      identity: map['identity'] == null ? null : pulumi.Output.create<FactoryIdentity>(FactoryIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      purviewConfiguration: map['purviewConfiguration'] == null ? null : pulumi.Output.create<PurviewConfiguration>(PurviewConfiguration.fromMap((map['purviewConfiguration'] as Map).cast<String, dynamic>())),
-      repoConfiguration: map['repoConfiguration'] == null ? null : pulumi.Output.create<FactoryGitHubConfiguration>(FactoryGitHubConfiguration.fromMap((map['repoConfiguration'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      encryption: map['encryption'] == null ? null : (EncryptionConfiguration.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      factoryName: map['factoryName'] == null ? null : (map['factoryName'] as String).input(),
+      globalParameters: map['globalParameters'] == null ? null : (pulumi.Input.decodeMapValues<GlobalParameterSpecification>(map['globalParameters'], (value) => GlobalParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (FactoryIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      purviewConfiguration: map['purviewConfiguration'] == null ? null : (PurviewConfiguration.fromMap((map['purviewConfiguration'] as Map).cast<String, dynamic>())).input(),
+      repoConfiguration: map['repoConfiguration'] == null ? null : (FactoryGitHubConfiguration.fromMap((map['repoConfiguration'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

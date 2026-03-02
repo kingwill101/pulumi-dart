@@ -53,33 +53,20 @@ class AzureBareMetalInstanceArgs {
   /// [storageProfile] Specifies the storage settings for the Azure Bare Metal Instance disks.
   /// [tags] Resource tags.
   AzureBareMetalInstanceArgs({
-    pulumi.Output<String>? azureBareMetalInstanceId,
-    pulumi.Output<String>? azureBareMetalInstanceName,
-    pulumi.Output<HardwareProfile>? hardwareProfile,
-    pulumi.Output<String>? hwRevision,
-    pulumi.Output<String>? location,
-    pulumi.Output<NetworkProfile>? networkProfile,
-    pulumi.Output<OSProfile>? osProfile,
-    pulumi.Output<String>? partnerNodeId,
-    pulumi.Output<String>? powerState,
-    pulumi.Output<String>? proximityPlacementGroup,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<StorageProfile>? storageProfile,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      azureBareMetalInstanceId = pulumi.Input.asOptionalInput<String>(azureBareMetalInstanceId),
-      azureBareMetalInstanceName = pulumi.Input.asOptionalInput<String>(azureBareMetalInstanceName),
-      hardwareProfile = pulumi.Input.asOptionalInput<HardwareProfile>(hardwareProfile),
-      hwRevision = pulumi.Input.asOptionalInput<String>(hwRevision),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkProfile = pulumi.Input.asOptionalInput<NetworkProfile>(networkProfile),
-      osProfile = pulumi.Input.asOptionalInput<OSProfile>(osProfile),
-      partnerNodeId = pulumi.Input.asOptionalInput<String>(partnerNodeId),
-      powerState = pulumi.Input.asOptionalInput<String>(powerState),
-      proximityPlacementGroup = pulumi.Input.asOptionalInput<String>(proximityPlacementGroup),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageProfile = pulumi.Input.asOptionalInput<StorageProfile>(storageProfile),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.azureBareMetalInstanceId,
+    this.azureBareMetalInstanceName,
+    this.hardwareProfile,
+    this.hwRevision,
+    this.location,
+    this.networkProfile,
+    this.osProfile,
+    this.partnerNodeId,
+    this.powerState,
+    this.proximityPlacementGroup,
+    required this.resourceGroupName,
+    this.storageProfile,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class AzureBareMetalInstanceArgs {
 
   factory AzureBareMetalInstanceArgs.fromMap(Map<String, dynamic> map) {
     return AzureBareMetalInstanceArgs(
-      azureBareMetalInstanceId: map['azureBareMetalInstanceId'] == null ? null : pulumi.Output.create<String>(map['azureBareMetalInstanceId'] as String),
-      azureBareMetalInstanceName: map['azureBareMetalInstanceName'] == null ? null : pulumi.Output.create<String>(map['azureBareMetalInstanceName'] as String),
-      hardwareProfile: map['hardwareProfile'] == null ? null : pulumi.Output.create<HardwareProfile>(HardwareProfile.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())),
-      hwRevision: map['hwRevision'] == null ? null : pulumi.Output.create<String>(map['hwRevision'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkProfile: map['networkProfile'] == null ? null : pulumi.Output.create<NetworkProfile>(NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())),
-      osProfile: map['osProfile'] == null ? null : pulumi.Output.create<OSProfile>(OSProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())),
-      partnerNodeId: map['partnerNodeId'] == null ? null : pulumi.Output.create<String>(map['partnerNodeId'] as String),
-      powerState: map['powerState'] == null ? null : pulumi.Output.create<String>(map['powerState'] as String),
-      proximityPlacementGroup: map['proximityPlacementGroup'] == null ? null : pulumi.Output.create<String>(map['proximityPlacementGroup'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageProfile: map['storageProfile'] == null ? null : pulumi.Output.create<StorageProfile>(StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      azureBareMetalInstanceId: map['azureBareMetalInstanceId'] == null ? null : (map['azureBareMetalInstanceId'] as String).input(),
+      azureBareMetalInstanceName: map['azureBareMetalInstanceName'] == null ? null : (map['azureBareMetalInstanceName'] as String).input(),
+      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())).input(),
+      hwRevision: map['hwRevision'] == null ? null : (map['hwRevision'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      osProfile: map['osProfile'] == null ? null : (OSProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      partnerNodeId: map['partnerNodeId'] == null ? null : (map['partnerNodeId'] as String).input(),
+      powerState: map['powerState'] == null ? null : (map['powerState'] as String).input(),
+      proximityPlacementGroup: map['proximityPlacementGroup'] == null ? null : (map['proximityPlacementGroup'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pool_features_cow.dart';
 
 class PoolFeatures {
   /// Indicates whether copy-on-write (COW) is enabled for the storage pool's images.
-  final PoolFeaturesCow? cow;
+  final pulumi.Input<PoolFeaturesCow>? cow;
 
   /// Creates a new [PoolFeatures].
   /// [cow] Indicates whether copy-on-write (COW) is enabled for the storage pool's images.
@@ -14,13 +15,13 @@ class PoolFeatures {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cow': ?cow == null ? null : cow!.toMap(),
+      'cow': ?pulumi.Input.mapOptionalInputValue<PoolFeaturesCow, Map<String, dynamic>>(cow, (value) => value.toMap()),
     };
   }
 
   factory PoolFeatures.fromMap(Map<String, dynamic> map) {
     return PoolFeatures(
-      cow: map['cow'] == null ? null : PoolFeaturesCow.fromMap((map['cow'] as Map).cast<String, dynamic>()),
+      cow: map['cow'] == null ? null : (PoolFeaturesCow.fromMap((map['cow'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

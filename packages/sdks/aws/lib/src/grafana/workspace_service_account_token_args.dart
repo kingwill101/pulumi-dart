@@ -25,17 +25,12 @@ class WorkspaceServiceAccountTokenArgs {
   /// [serviceAccountId] The ID of the service account for which to create a token.
   /// [workspaceId] The Grafana workspace with which the service account token is associated.
   WorkspaceServiceAccountTokenArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<int> secondsToLive,
-    required pulumi.Output<String> serviceAccountId,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secondsToLive = pulumi.Input.asInput<int>(secondsToLive),
-      serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.name,
+    this.region,
+    required this.secondsToLive,
+    required this.serviceAccountId,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class WorkspaceServiceAccountTokenArgs {
 
   factory WorkspaceServiceAccountTokenArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceServiceAccountTokenArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secondsToLive: pulumi.Output.create<int>(map['secondsToLive'] as int),
-      serviceAccountId: pulumi.Output.create<String>(map['serviceAccountId'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secondsToLive: (map['secondsToLive'] as int).input(),
+      serviceAccountId: (map['serviceAccountId'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

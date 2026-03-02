@@ -10,9 +10,8 @@ class KvAccountState {
   /// Creates a new [KvAccountState].
   /// [status] The status of the resource.
   KvAccountState({
-    pulumi.Output<String>? status,
-  }) :
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class KvAccountState {
 
   factory KvAccountState.fromMap(Map<String, dynamic> map) {
     return KvAccountState(
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

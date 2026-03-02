@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'create_and_mount_file_share_configuration_response.dart';
 
 /// Gets or sets the storage configuration.
 class StorageConfigurationResponse {
   /// The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
-  final CreateAndMountFileShareConfigurationResponse? transportFileShareConfiguration;
+  final pulumi.Input<CreateAndMountFileShareConfigurationResponse>? transportFileShareConfiguration;
 
   /// Creates a new [StorageConfigurationResponse].
   /// [transportFileShareConfiguration] The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
@@ -15,13 +16,13 @@ class StorageConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'transportFileShareConfiguration': ?transportFileShareConfiguration == null ? null : transportFileShareConfiguration!.toMap(),
+      'transportFileShareConfiguration': ?pulumi.Input.mapOptionalInputValue<CreateAndMountFileShareConfigurationResponse, Map<String, dynamic>>(transportFileShareConfiguration, (value) => value.toMap()),
     };
   }
 
   factory StorageConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return StorageConfigurationResponse(
-      transportFileShareConfiguration: map['transportFileShareConfiguration'] == null ? null : CreateAndMountFileShareConfigurationResponse.fromMap((map['transportFileShareConfiguration'] as Map).cast<String, dynamic>()),
+      transportFileShareConfiguration: map['transportFileShareConfiguration'] == null ? null : (CreateAndMountFileShareConfigurationResponse.fromMap((map['transportFileShareConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

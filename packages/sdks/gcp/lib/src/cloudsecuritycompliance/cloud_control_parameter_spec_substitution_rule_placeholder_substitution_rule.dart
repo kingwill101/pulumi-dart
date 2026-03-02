@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRule {
   /// Fully qualified proto attribute path (e.g., dot notation)
-  final String? attribute;
+  final pulumi.Input<String>? attribute;
 
   /// Creates a new [CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRule].
   /// [attribute] Fully qualified proto attribute path (e.g., dot notation)
@@ -19,7 +20,7 @@ class CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRule {
 
   factory CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRule.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRule(
-      attribute: map['attribute'] == null ? null : map['attribute'] as String,
+      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
     );
   }
 }

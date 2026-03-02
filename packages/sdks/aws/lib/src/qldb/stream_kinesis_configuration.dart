@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamKinesisConfiguration {
   /// Enables QLDB to publish multiple data records in a single Kinesis Data Streams record, increasing the number of records sent per API call. Default: `true`.
-  final bool? aggregationEnabled;
+  final pulumi.Input<bool>? aggregationEnabled;
   /// The Amazon Resource Name (ARN) of the Kinesis Data Streams resource.
-  final String streamArn;
+  final pulumi.Input<String> streamArn;
 
   /// Creates a new [StreamKinesisConfiguration].
   /// [aggregationEnabled] Enables QLDB to publish multiple data records in a single Kinesis Data Streams record, increasing the number of records sent per API call. Default: `true`.
@@ -24,8 +25,8 @@ class StreamKinesisConfiguration {
 
   factory StreamKinesisConfiguration.fromMap(Map<String, dynamic> map) {
     return StreamKinesisConfiguration(
-      aggregationEnabled: map['aggregationEnabled'] == null ? null : map['aggregationEnabled'] as bool,
-      streamArn: map['streamArn'] as String,
+      aggregationEnabled: map['aggregationEnabled'] == null ? null : (map['aggregationEnabled'] as bool).input(),
+      streamArn: (map['streamArn'] as String).input(),
     );
   }
 }

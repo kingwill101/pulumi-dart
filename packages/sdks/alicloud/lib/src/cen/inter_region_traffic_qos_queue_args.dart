@@ -28,19 +28,13 @@ class InterRegionTrafficQosQueueArgs {
   /// [remainBandwidthPercent] The percentage of cross-region bandwidth that the current queue can use.
   /// [trafficQosPolicyId] The ID of the traffic scheduling policy.
   InterRegionTrafficQosQueueArgs({
-    pulumi.Output<String>? bandwidth,
-    required pulumi.Output<List<int>> dscps,
-    pulumi.Output<String>? interRegionTrafficQosQueueDescription,
-    pulumi.Output<String>? interRegionTrafficQosQueueName,
-    pulumi.Output<int>? remainBandwidthPercent,
-    required pulumi.Output<String> trafficQosPolicyId,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<String>(bandwidth),
-      dscps = pulumi.Input.asInput<List<int>>(dscps),
-      interRegionTrafficQosQueueDescription = pulumi.Input.asOptionalInput<String>(interRegionTrafficQosQueueDescription),
-      interRegionTrafficQosQueueName = pulumi.Input.asOptionalInput<String>(interRegionTrafficQosQueueName),
-      remainBandwidthPercent = pulumi.Input.asOptionalInput<int>(remainBandwidthPercent),
-      trafficQosPolicyId = pulumi.Input.asInput<String>(trafficQosPolicyId);
+    this.bandwidth,
+    required this.dscps,
+    this.interRegionTrafficQosQueueDescription,
+    this.interRegionTrafficQosQueueName,
+    this.remainBandwidthPercent,
+    required this.trafficQosPolicyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class InterRegionTrafficQosQueueArgs {
 
   factory InterRegionTrafficQosQueueArgs.fromMap(Map<String, dynamic> map) {
     return InterRegionTrafficQosQueueArgs(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<String>(map['bandwidth'] as String),
-      dscps: pulumi.Output.create<List<int>>((map['dscps'] as List).cast<int>()),
-      interRegionTrafficQosQueueDescription: map['interRegionTrafficQosQueueDescription'] == null ? null : pulumi.Output.create<String>(map['interRegionTrafficQosQueueDescription'] as String),
-      interRegionTrafficQosQueueName: map['interRegionTrafficQosQueueName'] == null ? null : pulumi.Output.create<String>(map['interRegionTrafficQosQueueName'] as String),
-      remainBandwidthPercent: map['remainBandwidthPercent'] == null ? null : pulumi.Output.create<int>(map['remainBandwidthPercent'] as int),
-      trafficQosPolicyId: pulumi.Output.create<String>(map['trafficQosPolicyId'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as String).input(),
+      dscps: ((map['dscps'] as List).cast<int>()).input(),
+      interRegionTrafficQosQueueDescription: map['interRegionTrafficQosQueueDescription'] == null ? null : (map['interRegionTrafficQosQueueDescription'] as String).input(),
+      interRegionTrafficQosQueueName: map['interRegionTrafficQosQueueName'] == null ? null : (map['interRegionTrafficQosQueueName'] as String).input(),
+      remainBandwidthPercent: map['remainBandwidthPercent'] == null ? null : (map['remainBandwidthPercent'] as int).input(),
+      trafficQosPolicyId: (map['trafficQosPolicyId'] as String).input(),
     );
   }
 }

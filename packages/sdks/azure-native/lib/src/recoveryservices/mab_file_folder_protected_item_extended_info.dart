@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional information on the backed up item.
 class MabFileFolderProtectedItemExtendedInfo {
   /// Last time when the agent data synced to service.
-  final String? lastRefreshedAt;
+  final pulumi.Input<String>? lastRefreshedAt;
   /// The oldest backup copy available.
-  final String? oldestRecoveryPoint;
+  final pulumi.Input<String>? oldestRecoveryPoint;
   /// Number of backup copies associated with the backup item.
-  final int? recoveryPointCount;
+  final pulumi.Input<int>? recoveryPointCount;
 
   /// Creates a new [MabFileFolderProtectedItemExtendedInfo].
   /// [lastRefreshedAt] Last time when the agent data synced to service.
@@ -30,9 +31,9 @@ class MabFileFolderProtectedItemExtendedInfo {
 
   factory MabFileFolderProtectedItemExtendedInfo.fromMap(Map<String, dynamic> map) {
     return MabFileFolderProtectedItemExtendedInfo(
-      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : map['lastRefreshedAt'] as String,
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : map['oldestRecoveryPoint'] as String,
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : map['recoveryPointCount'] as int,
+      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt'] as String).input(),
+      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint'] as String).input(),
+      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount'] as int).input(),
     );
   }
 }

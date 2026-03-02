@@ -37,25 +37,16 @@ class GetObjectsArgs {
   /// [requestPayer] Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests. If included, the only valid value is `requester`.
   /// [startAfter] Returns key names lexicographically after a specific object key in your bucket (Default: none; S3 lists object keys in UTF-8 character encoding in lexicographical order)
   GetObjectsArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? delimiter,
-    pulumi.Output<String>? encodingType,
-    pulumi.Output<bool>? fetchOwner,
-    pulumi.Output<int>? maxKeys,
-    pulumi.Output<String>? prefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? requestPayer,
-    pulumi.Output<String>? startAfter,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      delimiter = pulumi.Input.asOptionalInput<String>(delimiter),
-      encodingType = pulumi.Input.asOptionalInput<String>(encodingType),
-      fetchOwner = pulumi.Input.asOptionalInput<bool>(fetchOwner),
-      maxKeys = pulumi.Input.asOptionalInput<int>(maxKeys),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      requestPayer = pulumi.Input.asOptionalInput<String>(requestPayer),
-      startAfter = pulumi.Input.asOptionalInput<String>(startAfter);
+    required this.bucket,
+    this.delimiter,
+    this.encodingType,
+    this.fetchOwner,
+    this.maxKeys,
+    this.prefix,
+    this.region,
+    this.requestPayer,
+    this.startAfter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class GetObjectsArgs {
 
   factory GetObjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectsArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      delimiter: map['delimiter'] == null ? null : pulumi.Output.create<String>(map['delimiter'] as String),
-      encodingType: map['encodingType'] == null ? null : pulumi.Output.create<String>(map['encodingType'] as String),
-      fetchOwner: map['fetchOwner'] == null ? null : pulumi.Output.create<bool>(map['fetchOwner'] as bool),
-      maxKeys: map['maxKeys'] == null ? null : pulumi.Output.create<int>(map['maxKeys'] as int),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      requestPayer: map['requestPayer'] == null ? null : pulumi.Output.create<String>(map['requestPayer'] as String),
-      startAfter: map['startAfter'] == null ? null : pulumi.Output.create<String>(map['startAfter'] as String),
+      bucket: (map['bucket'] as String).input(),
+      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
+      encodingType: map['encodingType'] == null ? null : (map['encodingType'] as String).input(),
+      fetchOwner: map['fetchOwner'] == null ? null : (map['fetchOwner'] as bool).input(),
+      maxKeys: map['maxKeys'] == null ? null : (map['maxKeys'] as int).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      requestPayer: map['requestPayer'] == null ? null : (map['requestPayer'] as String).input(),
+      startAfter: map['startAfter'] == null ? null : (map['startAfter'] as String).input(),
     );
   }
 }

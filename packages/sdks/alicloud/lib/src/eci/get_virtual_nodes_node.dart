@@ -5,40 +5,40 @@ import 'get_virtual_nodes_node_event.dart';
 
 class GetVirtualNodesNode {
   /// The Number of CPU.
-  final int cpu;
+  final pulumi.Input<int> cpu;
   /// The creation time of the virtual node.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ENI instance ID.
-  final String eniInstanceId;
+  final pulumi.Input<String> eniInstanceId;
   /// The event list.
-  final List<GetVirtualNodesNodeEvent> events;
+  final pulumi.Input<List<GetVirtualNodesNodeEvent>> events;
   /// The ID of the Virtual Node.
-  final String id;
+  final pulumi.Input<String> id;
   /// The IP address of a public network.
-  final String internetIp;
+  final pulumi.Input<String> internetIp;
   /// The private IP address of the RDS instance.
-  final String intranetIp;
+  final pulumi.Input<String> intranetIp;
   /// The memory size.
-  final int memory;
+  final pulumi.Input<int> memory;
   /// The ram role.
-  final String ramRoleName;
+  final pulumi.Input<String> ramRoleName;
   /// The resource group ID.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The security group ID.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// The Status of the virtual node.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// Of the virtual node number.
-  final String virtualNodeId;
+  final pulumi.Input<String> virtualNodeId;
   /// The name of the virtual node.
-  final String virtualNodeName;
-  final String vpcId;
+  final pulumi.Input<String> virtualNodeName;
+  final pulumi.Input<String> vpcId;
   /// The vswitch id.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The Zone.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetVirtualNodesNode].
   /// [cpu] The Number of CPU.
@@ -85,7 +85,7 @@ class GetVirtualNodesNode {
       'cpu': cpu,
       'createTime': createTime,
       'eniInstanceId': eniInstanceId,
-      'events': pulumi.Input.encodeList<GetVirtualNodesNodeEvent, Map<String, dynamic>>(events, (value) => value.toMap()),
+      'events': pulumi.Input.mapInputValue<List<GetVirtualNodesNodeEvent>, List<Map<String, dynamic>>>(events, (value) => pulumi.Input.encodeList<GetVirtualNodesNodeEvent, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'internetIp': internetIp,
       'intranetIp': intranetIp,
@@ -105,24 +105,24 @@ class GetVirtualNodesNode {
 
   factory GetVirtualNodesNode.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodesNode(
-      cpu: map['cpu'] as int,
-      createTime: map['createTime'] as String,
-      eniInstanceId: map['eniInstanceId'] as String,
-      events: pulumi.Input.decodeList<GetVirtualNodesNodeEvent>(map['events'], (value) => GetVirtualNodesNodeEvent.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      internetIp: map['internetIp'] as String,
-      intranetIp: map['intranetIp'] as String,
-      memory: map['memory'] as int,
-      ramRoleName: map['ramRoleName'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      virtualNodeId: map['virtualNodeId'] as String,
-      virtualNodeName: map['virtualNodeName'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      cpu: (map['cpu'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      eniInstanceId: (map['eniInstanceId'] as String).input(),
+      events: (pulumi.Input.decodeList<GetVirtualNodesNodeEvent>(map['events'], (value) => GetVirtualNodesNodeEvent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      internetIp: (map['internetIp'] as String).input(),
+      intranetIp: (map['intranetIp'] as String).input(),
+      memory: (map['memory'] as int).input(),
+      ramRoleName: (map['ramRoleName'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualNodeId: (map['virtualNodeId'] as String).input(),
+      virtualNodeName: (map['virtualNodeName'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

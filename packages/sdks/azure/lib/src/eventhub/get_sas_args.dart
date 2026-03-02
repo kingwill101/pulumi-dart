@@ -16,11 +16,9 @@ class GetSasArgs {
   /// [connectionString] The connection string for the Event Hub to which this SAS applies.
   /// [expiry] The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
   GetSasArgs({
-    required pulumi.Output<String> connectionString,
-    required pulumi.Output<String> expiry,
-  }) :
-      connectionString = pulumi.Input.asInput<String>(connectionString),
-      expiry = pulumi.Input.asInput<String>(expiry);
+    required this.connectionString,
+    required this.expiry,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSasArgs {
 
   factory GetSasArgs.fromMap(Map<String, dynamic> map) {
     return GetSasArgs(
-      connectionString: pulumi.Output.create<String>(map['connectionString'] as String),
-      expiry: pulumi.Output.create<String>(map['expiry'] as String),
+      connectionString: (map['connectionString'] as String).input(),
+      expiry: (map['expiry'] as String).input(),
     );
   }
 }

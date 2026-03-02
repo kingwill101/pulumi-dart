@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypeFpga {
-  final int count;
-  final String manufacturer;
+  final pulumi.Input<int> count;
+  final pulumi.Input<String> manufacturer;
   /// Size of the instance memory, in MiB.
-  final int memorySize;
-  final String name;
+  final pulumi.Input<int> memorySize;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetInstanceTypeFpga].
   /// [count] Required.
@@ -31,10 +32,10 @@ class GetInstanceTypeFpga {
 
   factory GetInstanceTypeFpga.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeFpga(
-      count: map['count'] as int,
-      manufacturer: map['manufacturer'] as String,
-      memorySize: map['memorySize'] as int,
-      name: map['name'] as String,
+      count: (map['count'] as int).input(),
+      manufacturer: (map['manufacturer'] as String).input(),
+      memorySize: (map['memorySize'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class InstanceAttachmentState {
   /// [vpcName] The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
   /// [vswitchId] The ID of attaching VSwitch to instance.
   InstanceAttachmentState({
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vpcName,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vpcName = pulumi.Input.asOptionalInput<String>(vpcName),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.instanceName,
+    this.vpcId,
+    this.vpcName,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class InstanceAttachmentState {
 
   factory InstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentState(
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vpcName: map['vpcName'] == null ? null : pulumi.Output.create<String>(map['vpcName'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcName: map['vpcName'] == null ? null : (map['vpcName'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

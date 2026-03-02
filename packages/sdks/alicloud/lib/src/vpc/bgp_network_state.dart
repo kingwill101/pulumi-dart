@@ -19,15 +19,11 @@ class BgpNetworkState {
   /// [status] The state of the advertised BGP network.
   /// [vpcId] The ID of the VPC.
   BgpNetworkState({
-    pulumi.Output<String>? dstCidrBlock,
-    pulumi.Output<String>? routerId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-  }) :
-      dstCidrBlock = pulumi.Input.asOptionalInput<String>(dstCidrBlock),
-      routerId = pulumi.Input.asOptionalInput<String>(routerId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.dstCidrBlock,
+    this.routerId,
+    this.status,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class BgpNetworkState {
 
   factory BgpNetworkState.fromMap(Map<String, dynamic> map) {
     return BgpNetworkState(
-      dstCidrBlock: map['dstCidrBlock'] == null ? null : pulumi.Output.create<String>(map['dstCidrBlock'] as String),
-      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      dstCidrBlock: map['dstCidrBlock'] == null ? null : (map['dstCidrBlock'] as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationEncryptionConfiguration {
   /// Identifier of the AWS KMS key that is used to encrypt your data. Amazon Q doesn't support asymmetric keys.
-  final String kmsKeyId;
+  final pulumi.Input<String> kmsKeyId;
 
   /// Creates a new [ApplicationEncryptionConfiguration].
   /// [kmsKeyId] Identifier of the AWS KMS key that is used to encrypt your data. Amazon Q doesn't support asymmetric keys.
@@ -19,7 +20,7 @@ class ApplicationEncryptionConfiguration {
 
   factory ApplicationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationEncryptionConfiguration(
-      kmsKeyId: map['kmsKeyId'] as String,
+      kmsKeyId: (map['kmsKeyId'] as String).input(),
     );
   }
 }

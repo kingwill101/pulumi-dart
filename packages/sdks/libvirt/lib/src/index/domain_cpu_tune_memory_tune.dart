@@ -6,11 +6,11 @@ import 'domain_cpu_tune_memory_tune_node.dart';
 
 class DomainCpuTuneMemoryTune {
   /// Configures monitoring options for memory tuning, allowing observation of memory usage trends and patterns.
-  final List<DomainCpuTuneMemoryTuneMonitor>? monitors;
+  final pulumi.Input<List<DomainCpuTuneMemoryTuneMonitor>>? monitors;
   /// Configures specific nodes for memory tuning, allowing targeted adjustments to the memory configuration.
-  final List<DomainCpuTuneMemoryTuneNode>? nodes;
+  final pulumi.Input<List<DomainCpuTuneMemoryTuneNode>>? nodes;
   /// Configures the virtual CPUs associated with memory tuning, indicating which CPUs' memory performance should be adjusted.
-  final String vcpus;
+  final pulumi.Input<String> vcpus;
 
   /// Creates a new [DomainCpuTuneMemoryTune].
   /// [monitors] Configures monitoring options for memory tuning, allowing observation of memory usage trends and patterns.
@@ -24,17 +24,17 @@ class DomainCpuTuneMemoryTune {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'monitors': ?monitors == null ? null : pulumi.Input.encodeList<DomainCpuTuneMemoryTuneMonitor, Map<String, dynamic>>(monitors!, (value) => value.toMap()),
-      'nodes': ?nodes == null ? null : pulumi.Input.encodeList<DomainCpuTuneMemoryTuneNode, Map<String, dynamic>>(nodes!, (value) => value.toMap()),
+      'monitors': ?pulumi.Input.mapOptionalInputValue<List<DomainCpuTuneMemoryTuneMonitor>, List<Map<String, dynamic>>>(monitors, (value) => pulumi.Input.encodeList<DomainCpuTuneMemoryTuneMonitor, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodes': ?pulumi.Input.mapOptionalInputValue<List<DomainCpuTuneMemoryTuneNode>, List<Map<String, dynamic>>>(nodes, (value) => pulumi.Input.encodeList<DomainCpuTuneMemoryTuneNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vcpus': vcpus,
     };
   }
 
   factory DomainCpuTuneMemoryTune.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneMemoryTune(
-      monitors: map['monitors'] == null ? null : pulumi.Input.decodeList<DomainCpuTuneMemoryTuneMonitor>(map['monitors'], (value) => DomainCpuTuneMemoryTuneMonitor.fromMap((value as Map).cast<String, dynamic>())),
-      nodes: map['nodes'] == null ? null : pulumi.Input.decodeList<DomainCpuTuneMemoryTuneNode>(map['nodes'], (value) => DomainCpuTuneMemoryTuneNode.fromMap((value as Map).cast<String, dynamic>())),
-      vcpus: map['vcpus'] as String,
+      monitors: map['monitors'] == null ? null : (pulumi.Input.decodeList<DomainCpuTuneMemoryTuneMonitor>(map['monitors'], (value) => DomainCpuTuneMemoryTuneMonitor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<DomainCpuTuneMemoryTuneNode>(map['nodes'], (value) => DomainCpuTuneMemoryTuneNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vcpus: (map['vcpus'] as String).input(),
     );
   }
 }

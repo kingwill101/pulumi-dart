@@ -37,27 +37,17 @@ class PartitionState {
   /// [storageDescriptor] A storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
   /// [tableName] Optional.
   PartitionState({
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? lastAccessedTime,
-    pulumi.Output<String>? lastAnalyzedTime,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<List<String>>? partitionValues,
-    pulumi.Output<String>? region,
-    pulumi.Output<PartitionStorageDescriptor>? storageDescriptor,
-    pulumi.Output<String>? tableName,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      lastAccessedTime = pulumi.Input.asOptionalInput<String>(lastAccessedTime),
-      lastAnalyzedTime = pulumi.Input.asOptionalInput<String>(lastAnalyzedTime),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      partitionValues = pulumi.Input.asOptionalInput<List<String>>(partitionValues),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      storageDescriptor = pulumi.Input.asOptionalInput<PartitionStorageDescriptor>(storageDescriptor),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName);
+    this.catalogId,
+    this.creationTime,
+    this.databaseName,
+    this.lastAccessedTime,
+    this.lastAnalyzedTime,
+    this.parameters,
+    this.partitionValues,
+    this.region,
+    this.storageDescriptor,
+    this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class PartitionState {
 
   factory PartitionState.fromMap(Map<String, dynamic> map) {
     return PartitionState(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      lastAccessedTime: map['lastAccessedTime'] == null ? null : pulumi.Output.create<String>(map['lastAccessedTime'] as String),
-      lastAnalyzedTime: map['lastAnalyzedTime'] == null ? null : pulumi.Output.create<String>(map['lastAnalyzedTime'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      partitionValues: map['partitionValues'] == null ? null : pulumi.Output.create<List<String>>((map['partitionValues'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      storageDescriptor: map['storageDescriptor'] == null ? null : pulumi.Output.create<PartitionStorageDescriptor>(PartitionStorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>())),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      lastAccessedTime: map['lastAccessedTime'] == null ? null : (map['lastAccessedTime'] as String).input(),
+      lastAnalyzedTime: map['lastAnalyzedTime'] == null ? null : (map['lastAnalyzedTime'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      partitionValues: map['partitionValues'] == null ? null : ((map['partitionValues'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      storageDescriptor: map['storageDescriptor'] == null ? null : (PartitionStorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>())).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secure_string.dart';
 
 /// SSIS package execution credential.
 class SSISExecutionCredential {
   /// Domain for windows authentication. Type: string (or Expression with resultType string).
-  final dynamic domain;
+  final pulumi.Input<dynamic> domain;
   /// Password for windows authentication.
-  final SecureString password;
+  final pulumi.Input<SecureString> password;
   /// UseName for windows authentication. Type: string (or Expression with resultType string).
-  final dynamic userName;
+  final pulumi.Input<dynamic> userName;
 
   /// Creates a new [SSISExecutionCredential].
   /// [domain] Domain for windows authentication. Type: string (or Expression with resultType string).
@@ -24,16 +25,16 @@ class SSISExecutionCredential {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domain': domain,
-      'password': password.toMap(),
+      'password': pulumi.Input.mapInputValue<SecureString, Map<String, dynamic>>(password, (value) => value.toMap()),
       'userName': userName,
     };
   }
 
   factory SSISExecutionCredential.fromMap(Map<String, dynamic> map) {
     return SSISExecutionCredential(
-      domain: map['domain'],
-      password: SecureString.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      userName: map['userName'],
+      domain: (map['domain']).input(),
+      password: (SecureString.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      userName: (map['userName']).input(),
     );
   }
 }

@@ -6,19 +6,19 @@ import 'stage_spec_response.dart';
 /// Workflow Version Properties
 class WorkflowVersionPropertiesResponse {
   /// Resolved configuration values
-  final String configuration;
+  final pulumi.Input<String> configuration;
   /// Provisioning state of resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Review id of resolved config for this workflow version
-  final String reviewId;
+  final pulumi.Input<String> reviewId;
   /// Revision number of resolved config for this workflow version
-  final int revision;
+  final pulumi.Input<int> revision;
   /// Execution specification
-  final dynamic specification;
+  final pulumi.Input<dynamic>? specification;
   /// A list of stage specs
-  final List<StageSpecResponse> stageSpec;
+  final pulumi.Input<List<StageSpecResponse>> stageSpec;
   /// State of workflow version
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [WorkflowVersionPropertiesResponse].
   /// [configuration] Resolved configuration values
@@ -45,20 +45,20 @@ class WorkflowVersionPropertiesResponse {
       'reviewId': reviewId,
       'revision': revision,
       'specification': ?specification,
-      'stageSpec': pulumi.Input.encodeList<StageSpecResponse, Map<String, dynamic>>(stageSpec, (value) => value.toMap()),
+      'stageSpec': pulumi.Input.mapInputValue<List<StageSpecResponse>, List<Map<String, dynamic>>>(stageSpec, (value) => pulumi.Input.encodeList<StageSpecResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': state,
     };
   }
 
   factory WorkflowVersionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WorkflowVersionPropertiesResponse(
-      configuration: map['configuration'] as String,
-      provisioningState: map['provisioningState'] as String,
-      reviewId: map['reviewId'] as String,
-      revision: map['revision'] as int,
-      specification: map['specification'] == null ? null : map['specification'],
-      stageSpec: pulumi.Input.decodeList<StageSpecResponse>(map['stageSpec'], (value) => StageSpecResponse.fromMap((value as Map).cast<String, dynamic>())),
-      state: map['state'] as String,
+      configuration: (map['configuration'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      reviewId: (map['reviewId'] as String).input(),
+      revision: (map['revision'] as int).input(),
+      specification: map['specification'] == null ? null : (map['specification']).input(),
+      stageSpec: (pulumi.Input.decodeList<StageSpecResponse>(map['stageSpec'], (value) => StageSpecResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

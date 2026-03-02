@@ -5,7 +5,7 @@ import 'scheduled_query_last_run_summary_error_report_location_s3_report_locatio
 
 class ScheduledQueryLastRunSummaryErrorReportLocation {
   /// S3 location where error reports are written.
-  final List<ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation>? s3ReportLocations;
+  final pulumi.Input<List<ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation>>? s3ReportLocations;
 
   /// Creates a new [ScheduledQueryLastRunSummaryErrorReportLocation].
   /// [s3ReportLocations] S3 location where error reports are written.
@@ -15,13 +15,13 @@ class ScheduledQueryLastRunSummaryErrorReportLocation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3ReportLocations': ?s3ReportLocations == null ? null : pulumi.Input.encodeList<ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation, Map<String, dynamic>>(s3ReportLocations!, (value) => value.toMap()),
+      's3ReportLocations': ?pulumi.Input.mapOptionalInputValue<List<ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation>, List<Map<String, dynamic>>>(s3ReportLocations, (value) => pulumi.Input.encodeList<ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ScheduledQueryLastRunSummaryErrorReportLocation.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryErrorReportLocation(
-      s3ReportLocations: map['s3ReportLocations'] == null ? null : pulumi.Input.decodeList<ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation>(map['s3ReportLocations'], (value) => ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation.fromMap((value as Map).cast<String, dynamic>())),
+      s3ReportLocations: map['s3ReportLocations'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation>(map['s3ReportLocations'], (value) => ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

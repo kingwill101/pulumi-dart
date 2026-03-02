@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCondition {
   /// Expression string that is evaluated.
-  final String expressionString;
+  final pulumi.Input<String> expressionString;
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCondition].
   /// [expressionString] Expression string that is evaluated.
@@ -19,7 +20,7 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCo
 
   factory V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCondition.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCondition(
-      expressionString: map['expressionString'] as String,
+      expressionString: (map['expressionString'] as String).input(),
     );
   }
 }

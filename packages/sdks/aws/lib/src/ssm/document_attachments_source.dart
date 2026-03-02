@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DocumentAttachmentsSource {
   /// The key of a key-value pair that identifies the location of an attachment to the document. Valid values: `SourceUrl`, `S3FileUrl`, `AttachmentReference`.
-  final String key;
+  final pulumi.Input<String> key;
   /// The name of the document attachment file.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The value of a key-value pair that identifies the location of an attachment to the document. The argument format is a list of a single string that depends on the type of key you specify - see the [API Reference](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_AttachmentsSource.html) for details.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [DocumentAttachmentsSource].
   /// [key] The key of a key-value pair that identifies the location of an attachment to the document. Valid values: `SourceUrl`, `S3FileUrl`, `AttachmentReference`.
@@ -29,9 +30,9 @@ class DocumentAttachmentsSource {
 
   factory DocumentAttachmentsSource.fromMap(Map<String, dynamic> map) {
     return DocumentAttachmentsSource(
-      key: map['key'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

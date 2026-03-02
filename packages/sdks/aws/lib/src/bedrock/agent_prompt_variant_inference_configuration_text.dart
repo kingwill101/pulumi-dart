@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentPromptVariantInferenceConfigurationText {
   /// Maximum number of tokens to return in the response.
-  final int? maxTokens;
+  final pulumi.Input<int>? maxTokens;
   /// List of strings that define sequences after which the model will stop generating.
-  final List<String>? stopSequences;
+  final pulumi.Input<List<String>>? stopSequences;
   /// Controls the randomness of the response. Choose a lower value for more predictable outputs and a higher value for more surprising outputs.
-  final double? temperature;
+  final pulumi.Input<double>? temperature;
   /// Percentage of most-likely candidates that the model considers for the next token.
-  final double? topP;
+  final pulumi.Input<double>? topP;
 
   /// Creates a new [AgentPromptVariantInferenceConfigurationText].
   /// [maxTokens] Maximum number of tokens to return in the response.
@@ -34,10 +35,10 @@ class AgentPromptVariantInferenceConfigurationText {
 
   factory AgentPromptVariantInferenceConfigurationText.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantInferenceConfigurationText(
-      maxTokens: map['maxTokens'] == null ? null : map['maxTokens'] as int,
-      stopSequences: map['stopSequences'] == null ? null : (map['stopSequences'] as List).cast<String>(),
-      temperature: map['temperature'] == null ? null : map['temperature'] as double,
-      topP: map['topP'] == null ? null : map['topP'] as double,
+      maxTokens: map['maxTokens'] == null ? null : (map['maxTokens'] as int).input(),
+      stopSequences: map['stopSequences'] == null ? null : ((map['stopSequences'] as List).cast<String>()).input(),
+      temperature: map['temperature'] == null ? null : (map['temperature'] as double).input(),
+      topP: map['topP'] == null ? null : (map['topP'] as double).input(),
     );
   }
 }

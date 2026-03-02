@@ -16,11 +16,9 @@ class GetManufacturingDataServiceArgs {
   /// [mdsResourceName] Name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetManufacturingDataServiceArgs({
-    required pulumi.Output<String> mdsResourceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      mdsResourceName = pulumi.Input.asInput<String>(mdsResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.mdsResourceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetManufacturingDataServiceArgs {
 
   factory GetManufacturingDataServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetManufacturingDataServiceArgs(
-      mdsResourceName: pulumi.Output.create<String>(map['mdsResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      mdsResourceName: (map['mdsResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

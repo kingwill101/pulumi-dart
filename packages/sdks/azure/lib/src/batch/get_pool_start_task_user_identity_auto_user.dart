@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolStartTaskUserIdentityAutoUser {
   /// The elevation level of the user account. "NonAdmin" - The auto user is a standard user without elevated access. "Admin" - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin.
-  final String elevationLevel;
+  final pulumi.Input<String> elevationLevel;
   /// The scope of the user identity under which the start task runs.
-  final String scope;
+  final pulumi.Input<String> scope;
 
   /// Creates a new [GetPoolStartTaskUserIdentityAutoUser].
   /// [elevationLevel] The elevation level of the user account. "NonAdmin" - The auto user is a standard user without elevated access. "Admin" - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin.
@@ -24,8 +25,8 @@ class GetPoolStartTaskUserIdentityAutoUser {
 
   factory GetPoolStartTaskUserIdentityAutoUser.fromMap(Map<String, dynamic> map) {
     return GetPoolStartTaskUserIdentityAutoUser(
-      elevationLevel: map['elevationLevel'] as String,
-      scope: map['scope'] as String,
+      elevationLevel: (map['elevationLevel'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

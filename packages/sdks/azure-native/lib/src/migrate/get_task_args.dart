@@ -19,13 +19,10 @@ class GetTaskArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [taskName] Task ARM name
   GetTaskArgs({
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> taskName,
-  }) :
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      taskName = pulumi.Input.asInput<String>(taskName);
+    required this.projectName,
+    required this.resourceGroupName,
+    required this.taskName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTaskArgs {
 
   factory GetTaskArgs.fromMap(Map<String, dynamic> map) {
     return GetTaskArgs(
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      taskName: pulumi.Output.create<String>(map['taskName'] as String),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      taskName: (map['taskName'] as String).input(),
     );
   }
 }

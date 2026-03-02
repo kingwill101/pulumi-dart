@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureVariationValue {
   /// If this feature uses the Boolean variation type, this field contains the Boolean value of this variation.
-  final String? boolValue;
+  final pulumi.Input<String>? boolValue;
   /// If this feature uses the double integer variation type, this field contains the double integer value of this variation.
-  final String? doubleValue;
+  final pulumi.Input<String>? doubleValue;
   /// If this feature uses the long variation type, this field contains the long value of this variation. Minimum value of `-9007199254740991`. Maximum value of `9007199254740991`.
-  final String? longValue;
+  final pulumi.Input<String>? longValue;
   /// If this feature uses the string variation type, this field contains the string value of this variation. Minimum length of `0`. Maximum length of `512`.
-  final String? stringValue;
+  final pulumi.Input<String>? stringValue;
 
   /// Creates a new [FeatureVariationValue].
   /// [boolValue] If this feature uses the Boolean variation type, this field contains the Boolean value of this variation.
@@ -34,10 +35,10 @@ class FeatureVariationValue {
 
   factory FeatureVariationValue.fromMap(Map<String, dynamic> map) {
     return FeatureVariationValue(
-      boolValue: map['boolValue'] == null ? null : map['boolValue'] as String,
-      doubleValue: map['doubleValue'] == null ? null : map['doubleValue'] as String,
-      longValue: map['longValue'] == null ? null : map['longValue'] as String,
-      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
+      boolValue: map['boolValue'] == null ? null : (map['boolValue'] as String).input(),
+      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue'] as String).input(),
+      longValue: map['longValue'] == null ? null : (map['longValue'] as String).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
     );
   }
 }

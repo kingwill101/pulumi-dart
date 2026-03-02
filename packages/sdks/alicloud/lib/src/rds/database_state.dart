@@ -41,19 +41,13 @@ class DatabaseState {
   /// [name] The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
   /// [status] The status of the resource
   DatabaseState({
-    pulumi.Output<String>? characterSet,
-    pulumi.Output<String>? dataBaseName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? status,
-  }) :
-      characterSet = pulumi.Input.asOptionalInput<String>(characterSet),
-      dataBaseName = pulumi.Input.asOptionalInput<String>(dataBaseName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.characterSet,
+    this.dataBaseName,
+    this.description,
+    this.instanceId,
+    this.name,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,12 +62,12 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      characterSet: map['characterSet'] == null ? null : pulumi.Output.create<String>(map['characterSet'] as String),
-      dataBaseName: map['dataBaseName'] == null ? null : pulumi.Output.create<String>(map['dataBaseName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      characterSet: map['characterSet'] == null ? null : (map['characterSet'] as String).input(),
+      dataBaseName: map['dataBaseName'] == null ? null : (map['dataBaseName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

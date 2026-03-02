@@ -27,17 +27,12 @@ class SmartDetectionRuleArgs {
   /// [name] Specifies the name of the Application Insights Smart Detection Rule. Valid values include `Slow page load time`, `Slow server response time`, `Potential memory leak detected`, `Potential security issue detected`, `Long dependency duration`, `Degradation in server response time`, `Degradation in dependency duration`, `Degradation in trace severity ratio`, `Abnormal rise in exception volume`, `Abnormal rise in daily data volume`. Changing this forces a new resource to be created.
   /// [sendEmailsToSubscriptionOwners] Do emails get sent to subscription owners? Defaults to `true`.
   SmartDetectionRuleArgs({
-    pulumi.Output<List<String>>? additionalEmailRecipients,
-    required pulumi.Output<String> applicationInsightsId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? sendEmailsToSubscriptionOwners,
-  }) :
-      additionalEmailRecipients = pulumi.Input.asOptionalInput<List<String>>(additionalEmailRecipients),
-      applicationInsightsId = pulumi.Input.asInput<String>(applicationInsightsId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sendEmailsToSubscriptionOwners = pulumi.Input.asOptionalInput<bool>(sendEmailsToSubscriptionOwners);
+    this.additionalEmailRecipients,
+    required this.applicationInsightsId,
+    this.enabled,
+    this.name,
+    this.sendEmailsToSubscriptionOwners,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class SmartDetectionRuleArgs {
 
   factory SmartDetectionRuleArgs.fromMap(Map<String, dynamic> map) {
     return SmartDetectionRuleArgs(
-      additionalEmailRecipients: map['additionalEmailRecipients'] == null ? null : pulumi.Output.create<List<String>>((map['additionalEmailRecipients'] as List).cast<String>()),
-      applicationInsightsId: pulumi.Output.create<String>(map['applicationInsightsId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sendEmailsToSubscriptionOwners: map['sendEmailsToSubscriptionOwners'] == null ? null : pulumi.Output.create<bool>(map['sendEmailsToSubscriptionOwners'] as bool),
+      additionalEmailRecipients: map['additionalEmailRecipients'] == null ? null : ((map['additionalEmailRecipients'] as List).cast<String>()).input(),
+      applicationInsightsId: (map['applicationInsightsId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sendEmailsToSubscriptionOwners: map['sendEmailsToSubscriptionOwners'] == null ? null : (map['sendEmailsToSubscriptionOwners'] as bool).input(),
     );
   }
 }

@@ -29,21 +29,14 @@ class ManagedHardwareSecurityModuleRoleDefinitionState {
   /// [roleName] Specify a display name for this Key Vault Managed Hardware Security Module Role Definition.
   /// [roleType] The type of the role definition. Possible values are `AKVBuiltInRole` and `CustomRole`.
   ManagedHardwareSecurityModuleRoleDefinitionState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? managedHsmId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>>? permissions,
-    pulumi.Output<String>? resourceManagerId,
-    pulumi.Output<String>? roleName,
-    pulumi.Output<String>? roleType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      managedHsmId = pulumi.Input.asOptionalInput<String>(managedHsmId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      permissions = pulumi.Input.asOptionalInput<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>>(permissions),
-      resourceManagerId = pulumi.Input.asOptionalInput<String>(resourceManagerId),
-      roleName = pulumi.Input.asOptionalInput<String>(roleName),
-      roleType = pulumi.Input.asOptionalInput<String>(roleType);
+    this.description,
+    this.managedHsmId,
+    this.name,
+    this.permissions,
+    this.resourceManagerId,
+    this.roleName,
+    this.roleType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class ManagedHardwareSecurityModuleRoleDefinitionState {
 
   factory ManagedHardwareSecurityModuleRoleDefinitionState.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleRoleDefinitionState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      managedHsmId: map['managedHsmId'] == null ? null : pulumi.Output.create<String>(map['managedHsmId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>>(pulumi.Input.decodeList<ManagedHardwareSecurityModuleRoleDefinitionPermission>(map['permissions'], (value) => ManagedHardwareSecurityModuleRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceManagerId: map['resourceManagerId'] == null ? null : pulumi.Output.create<String>(map['resourceManagerId'] as String),
-      roleName: map['roleName'] == null ? null : pulumi.Output.create<String>(map['roleName'] as String),
-      roleType: map['roleType'] == null ? null : pulumi.Output.create<String>(map['roleType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      managedHsmId: map['managedHsmId'] == null ? null : (map['managedHsmId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<ManagedHardwareSecurityModuleRoleDefinitionPermission>(map['permissions'], (value) => ManagedHardwareSecurityModuleRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      roleType: map['roleType'] == null ? null : (map['roleType'] as String).input(),
     );
   }
 }

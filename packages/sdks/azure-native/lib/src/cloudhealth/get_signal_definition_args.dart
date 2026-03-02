@@ -19,13 +19,10 @@ class GetSignalDefinitionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [signalDefinitionName] Name of the signal definition. Must be unique within a health model.
   GetSignalDefinitionArgs({
-    required pulumi.Output<String> healthModelName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> signalDefinitionName,
-  }) :
-      healthModelName = pulumi.Input.asInput<String>(healthModelName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      signalDefinitionName = pulumi.Input.asInput<String>(signalDefinitionName);
+    required this.healthModelName,
+    required this.resourceGroupName,
+    required this.signalDefinitionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSignalDefinitionArgs {
 
   factory GetSignalDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetSignalDefinitionArgs(
-      healthModelName: pulumi.Output.create<String>(map['healthModelName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      signalDefinitionName: pulumi.Output.create<String>(map['signalDefinitionName'] as String),
+      healthModelName: (map['healthModelName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      signalDefinitionName: (map['signalDefinitionName'] as String).input(),
     );
   }
 }

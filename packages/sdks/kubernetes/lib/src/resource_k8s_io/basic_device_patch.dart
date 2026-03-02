@@ -8,11 +8,11 @@ class BasicDevicePatch {
   /// Attributes defines the set of attributes for this device. The name of each attribute must be unique in that set.
   ///
   /// The maximum number of attributes and capacities combined is 32.
-  final Map<String, DeviceAttributeResourceK8sIoV1alpha3>? attributes;
+  final pulumi.Input<Map<String, DeviceAttributeResourceK8sIoV1alpha3>>? attributes;
   /// Capacity defines the set of capacities for this device. The name of each capacity must be unique in that set.
   ///
   /// The maximum number of attributes and capacities combined is 32.
-  final Map<String, String>? capacity;
+  final pulumi.Input<Map<String, String>>? capacity;
 
   /// Creates a new [BasicDevicePatch].
   /// [attributes] Attributes defines the set of attributes for this device. The name of each attribute must be unique in that set.
@@ -24,15 +24,15 @@ class BasicDevicePatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': ?attributes == null ? null : pulumi.Input.encodeMapValues<DeviceAttributeResourceK8sIoV1alpha3, Map<String, dynamic>>(attributes!, (value) => value.toMap()),
+      'attributes': ?pulumi.Input.mapOptionalInputValue<Map<String, DeviceAttributeResourceK8sIoV1alpha3>, Map<String, Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeMapValues<DeviceAttributeResourceK8sIoV1alpha3, Map<String, dynamic>>(value, (value) => value.toMap())),
       'capacity': ?capacity,
     };
   }
 
   factory BasicDevicePatch.fromMap(Map<String, dynamic> map) {
     return BasicDevicePatch(
-      attributes: map['attributes'] == null ? null : pulumi.Input.decodeMapValues<DeviceAttributeResourceK8sIoV1alpha3>(map['attributes'], (value) => DeviceAttributeResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>())),
-      capacity: map['capacity'] == null ? null : (map['capacity'] as Map).cast<String, String>(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeMapValues<DeviceAttributeResourceK8sIoV1alpha3>(map['attributes'], (value) => DeviceAttributeResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      capacity: map['capacity'] == null ? null : ((map['capacity'] as Map).cast<String, String>()).input(),
     );
   }
 }

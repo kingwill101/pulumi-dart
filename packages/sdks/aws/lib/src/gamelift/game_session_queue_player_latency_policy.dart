@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GameSessionQueuePlayerLatencyPolicy {
   /// Maximum latency value that is allowed for any player.
-  final int maximumIndividualPlayerLatencyMilliseconds;
+  final pulumi.Input<int> maximumIndividualPlayerLatencyMilliseconds;
   /// Length of time that the policy is enforced while placing a new game session. Absence of value for this attribute means that the policy is enforced until the queue times out.
-  final int? policyDurationSeconds;
+  final pulumi.Input<int>? policyDurationSeconds;
 
   /// Creates a new [GameSessionQueuePlayerLatencyPolicy].
   /// [maximumIndividualPlayerLatencyMilliseconds] Maximum latency value that is allowed for any player.
@@ -24,8 +25,8 @@ class GameSessionQueuePlayerLatencyPolicy {
 
   factory GameSessionQueuePlayerLatencyPolicy.fromMap(Map<String, dynamic> map) {
     return GameSessionQueuePlayerLatencyPolicy(
-      maximumIndividualPlayerLatencyMilliseconds: map['maximumIndividualPlayerLatencyMilliseconds'] as int,
-      policyDurationSeconds: map['policyDurationSeconds'] == null ? null : map['policyDurationSeconds'] as int,
+      maximumIndividualPlayerLatencyMilliseconds: (map['maximumIndividualPlayerLatencyMilliseconds'] as int).input(),
+      policyDurationSeconds: map['policyDurationSeconds'] == null ? null : (map['policyDurationSeconds'] as int).input(),
     );
   }
 }

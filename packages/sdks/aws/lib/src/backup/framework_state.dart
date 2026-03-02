@@ -38,27 +38,17 @@ class FrameworkState {
   /// [tags] Metadata that you can assign to help organize the frameworks you create. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   FrameworkState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<FrameworkControl>>? controls,
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<String>? deploymentStatus,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      controls = pulumi.Input.asOptionalInput<List<FrameworkControl>>(controls),
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      deploymentStatus = pulumi.Input.asOptionalInput<String>(deploymentStatus),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.controls,
+    this.creationTime,
+    this.deploymentStatus,
+    this.description,
+    this.name,
+    this.region,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class FrameworkState {
 
   factory FrameworkState.fromMap(Map<String, dynamic> map) {
     return FrameworkState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      controls: map['controls'] == null ? null : pulumi.Output.create<List<FrameworkControl>>(pulumi.Input.decodeList<FrameworkControl>(map['controls'], (value) => FrameworkControl.fromMap((value as Map).cast<String, dynamic>()))),
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      deploymentStatus: map['deploymentStatus'] == null ? null : pulumi.Output.create<String>(map['deploymentStatus'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      controls: map['controls'] == null ? null : (pulumi.Input.decodeList<FrameworkControl>(map['controls'], (value) => FrameworkControl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      deploymentStatus: map['deploymentStatus'] == null ? null : (map['deploymentStatus'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

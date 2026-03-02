@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemBinaryThreadPool {
   /// Specifies the number of threads in the thread pool for the binary filesystem.
-  final double? size;
+  final pulumi.Input<double>? size;
 
   /// Creates a new [DomainDevicesFilesystemBinaryThreadPool].
   /// [size] Specifies the number of threads in the thread pool for the binary filesystem.
@@ -19,7 +20,7 @@ class DomainDevicesFilesystemBinaryThreadPool {
 
   factory DomainDevicesFilesystemBinaryThreadPool.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemBinaryThreadPool(
-      size: map['size'] == null ? null : map['size'] as double,
+      size: map['size'] == null ? null : (map['size'] as double).input(),
     );
   }
 }

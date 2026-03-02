@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about migration eligibility of a server object
 class MigrationEligibilityInfoResponse {
   /// Whether object is eligible for migration or not.
-  final bool isEligibleForMigration;
+  final pulumi.Input<bool> isEligibleForMigration;
   /// Information about eligibility failure for the server object.
-  final List<String> validationMessages;
+  final pulumi.Input<List<String>> validationMessages;
 
   /// Creates a new [MigrationEligibilityInfoResponse].
   /// [isEligibleForMigration] Whether object is eligible for migration or not.
@@ -25,8 +26,8 @@ class MigrationEligibilityInfoResponse {
 
   factory MigrationEligibilityInfoResponse.fromMap(Map<String, dynamic> map) {
     return MigrationEligibilityInfoResponse(
-      isEligibleForMigration: map['isEligibleForMigration'] as bool,
-      validationMessages: (map['validationMessages'] as List).cast<String>(),
+      isEligibleForMigration: (map['isEligibleForMigration'] as bool).input(),
+      validationMessages: ((map['validationMessages'] as List).cast<String>()).input(),
     );
   }
 }

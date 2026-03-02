@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesNetapp {
   /// When enabled, backups will be deleted when the `azure.netapp.BackupVault` resource is destroyed
-  final bool? deleteBackupsOnBackupVaultDestroy;
+  final pulumi.Input<bool>? deleteBackupsOnBackupVaultDestroy;
   /// When enabled, the volume will not be destroyed, safeguarding from severe data loss
-  final bool? preventVolumeDestruction;
+  final pulumi.Input<bool>? preventVolumeDestruction;
 
   /// Creates a new [FeaturesNetapp].
   /// [deleteBackupsOnBackupVaultDestroy] When enabled, backups will be deleted when the `azure.netapp.BackupVault` resource is destroyed
@@ -24,8 +25,8 @@ class FeaturesNetapp {
 
   factory FeaturesNetapp.fromMap(Map<String, dynamic> map) {
     return FeaturesNetapp(
-      deleteBackupsOnBackupVaultDestroy: map['deleteBackupsOnBackupVaultDestroy'] == null ? null : map['deleteBackupsOnBackupVaultDestroy'] as bool,
-      preventVolumeDestruction: map['preventVolumeDestruction'] == null ? null : map['preventVolumeDestruction'] as bool,
+      deleteBackupsOnBackupVaultDestroy: map['deleteBackupsOnBackupVaultDestroy'] == null ? null : (map['deleteBackupsOnBackupVaultDestroy'] as bool).input(),
+      preventVolumeDestruction: map['preventVolumeDestruction'] == null ? null : (map['preventVolumeDestruction'] as bool).input(),
     );
   }
 }

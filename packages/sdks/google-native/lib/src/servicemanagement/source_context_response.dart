@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined.
 class SourceContextResponse {
   /// The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
-  final String fileName;
+  final pulumi.Input<String> fileName;
 
   /// Creates a new [SourceContextResponse].
   /// [fileName] The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
@@ -20,7 +21,7 @@ class SourceContextResponse {
 
   factory SourceContextResponse.fromMap(Map<String, dynamic> map) {
     return SourceContextResponse(
-      fileName: map['fileName'] as String,
+      fileName: (map['fileName'] as String).input(),
     );
   }
 }

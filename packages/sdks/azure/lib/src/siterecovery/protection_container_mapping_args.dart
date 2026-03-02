@@ -35,23 +35,15 @@ class ProtectionContainerMappingArgs {
   /// [recoveryVaultName] The name of the vault that should be updated. Changing this forces a new resource to be created.
   /// [resourceGroupName] Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   ProtectionContainerMappingArgs({
-    pulumi.Output<ProtectionContainerMappingAutomaticUpdate>? automaticUpdate,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> recoveryFabricName,
-    required pulumi.Output<String> recoveryReplicationPolicyId,
-    required pulumi.Output<String> recoverySourceProtectionContainerName,
-    required pulumi.Output<String> recoveryTargetProtectionContainerId,
-    required pulumi.Output<String> recoveryVaultName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automaticUpdate = pulumi.Input.asOptionalInput<ProtectionContainerMappingAutomaticUpdate>(automaticUpdate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryFabricName = pulumi.Input.asInput<String>(recoveryFabricName),
-      recoveryReplicationPolicyId = pulumi.Input.asInput<String>(recoveryReplicationPolicyId),
-      recoverySourceProtectionContainerName = pulumi.Input.asInput<String>(recoverySourceProtectionContainerName),
-      recoveryTargetProtectionContainerId = pulumi.Input.asInput<String>(recoveryTargetProtectionContainerId),
-      recoveryVaultName = pulumi.Input.asInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.automaticUpdate,
+    this.name,
+    required this.recoveryFabricName,
+    required this.recoveryReplicationPolicyId,
+    required this.recoverySourceProtectionContainerName,
+    required this.recoveryTargetProtectionContainerId,
+    required this.recoveryVaultName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ProtectionContainerMappingArgs {
 
   factory ProtectionContainerMappingArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionContainerMappingArgs(
-      automaticUpdate: map['automaticUpdate'] == null ? null : pulumi.Output.create<ProtectionContainerMappingAutomaticUpdate>(ProtectionContainerMappingAutomaticUpdate.fromMap((map['automaticUpdate'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryFabricName: pulumi.Output.create<String>(map['recoveryFabricName'] as String),
-      recoveryReplicationPolicyId: pulumi.Output.create<String>(map['recoveryReplicationPolicyId'] as String),
-      recoverySourceProtectionContainerName: pulumi.Output.create<String>(map['recoverySourceProtectionContainerName'] as String),
-      recoveryTargetProtectionContainerId: pulumi.Output.create<String>(map['recoveryTargetProtectionContainerId'] as String),
-      recoveryVaultName: pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automaticUpdate: map['automaticUpdate'] == null ? null : (ProtectionContainerMappingAutomaticUpdate.fromMap((map['automaticUpdate'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryFabricName: (map['recoveryFabricName'] as String).input(),
+      recoveryReplicationPolicyId: (map['recoveryReplicationPolicyId'] as String).input(),
+      recoverySourceProtectionContainerName: (map['recoverySourceProtectionContainerName'] as String).input(),
+      recoveryTargetProtectionContainerId: (map['recoveryTargetProtectionContainerId'] as String).input(),
+      recoveryVaultName: (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

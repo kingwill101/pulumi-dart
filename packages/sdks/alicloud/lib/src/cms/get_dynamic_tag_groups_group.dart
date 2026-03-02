@@ -5,17 +5,17 @@ import 'get_dynamic_tag_groups_group_match_express.dart';
 
 class GetDynamicTagGroupsGroup {
   /// The ID of the tag rule.
-  final String dynamicTagRuleId;
+  final pulumi.Input<String> dynamicTagRuleId;
   /// The ID of the Dynamic Tag Group.
-  final String id;
+  final pulumi.Input<String> id;
   /// The relationship between conditional expressions. Valid values: `and`, `or`.
-  final String matchExpressFilterRelation;
+  final pulumi.Input<String> matchExpressFilterRelation;
   /// The label generates a matching expression that applies the grouping. See the following `Block match_express`.
-  final List<GetDynamicTagGroupsGroupMatchExpress> matchExpresses;
+  final pulumi.Input<List<GetDynamicTagGroupsGroupMatchExpress>> matchExpresses;
   /// The status of the resource. Valid values: `RUNNING`, `FINISH`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The tag key of the tag.
-  final String tagKey;
+  final pulumi.Input<String> tagKey;
 
   /// Creates a new [GetDynamicTagGroupsGroup].
   /// [dynamicTagRuleId] The ID of the tag rule.
@@ -38,7 +38,7 @@ class GetDynamicTagGroupsGroup {
       'dynamicTagRuleId': dynamicTagRuleId,
       'id': id,
       'matchExpressFilterRelation': matchExpressFilterRelation,
-      'matchExpresses': pulumi.Input.encodeList<GetDynamicTagGroupsGroupMatchExpress, Map<String, dynamic>>(matchExpresses, (value) => value.toMap()),
+      'matchExpresses': pulumi.Input.mapInputValue<List<GetDynamicTagGroupsGroupMatchExpress>, List<Map<String, dynamic>>>(matchExpresses, (value) => pulumi.Input.encodeList<GetDynamicTagGroupsGroupMatchExpress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': status,
       'tagKey': tagKey,
     };
@@ -46,12 +46,12 @@ class GetDynamicTagGroupsGroup {
 
   factory GetDynamicTagGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetDynamicTagGroupsGroup(
-      dynamicTagRuleId: map['dynamicTagRuleId'] as String,
-      id: map['id'] as String,
-      matchExpressFilterRelation: map['matchExpressFilterRelation'] as String,
-      matchExpresses: pulumi.Input.decodeList<GetDynamicTagGroupsGroupMatchExpress>(map['matchExpresses'], (value) => GetDynamicTagGroupsGroupMatchExpress.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
-      tagKey: map['tagKey'] as String,
+      dynamicTagRuleId: (map['dynamicTagRuleId'] as String).input(),
+      id: (map['id'] as String).input(),
+      matchExpressFilterRelation: (map['matchExpressFilterRelation'] as String).input(),
+      matchExpresses: (pulumi.Input.decodeList<GetDynamicTagGroupsGroupMatchExpress>(map['matchExpresses'], (value) => GetDynamicTagGroupsGroupMatchExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: (map['status'] as String).input(),
+      tagKey: (map['tagKey'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The effective CIFS username when accessing the volume data.
 class CifsUserResponse {
   /// The CIFS user's username
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [CifsUserResponse].
   /// [username] The CIFS user's username
@@ -20,7 +21,7 @@ class CifsUserResponse {
 
   factory CifsUserResponse.fromMap(Map<String, dynamic> map) {
     return CifsUserResponse(
-      username: map['username'] == null ? null : map['username'] as String,
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

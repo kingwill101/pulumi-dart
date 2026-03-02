@@ -19,13 +19,10 @@ class GetRoutingIntentArgs {
   /// [routingIntentName] The name of the RoutingIntent.
   /// [virtualHubName] The name of the VirtualHub.
   GetRoutingIntentArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> routingIntentName,
-    required pulumi.Output<String> virtualHubName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routingIntentName = pulumi.Input.asInput<String>(routingIntentName),
-      virtualHubName = pulumi.Input.asInput<String>(virtualHubName);
+    required this.resourceGroupName,
+    required this.routingIntentName,
+    required this.virtualHubName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRoutingIntentArgs {
 
   factory GetRoutingIntentArgs.fromMap(Map<String, dynamic> map) {
     return GetRoutingIntentArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routingIntentName: pulumi.Output.create<String>(map['routingIntentName'] as String),
-      virtualHubName: pulumi.Output.create<String>(map['virtualHubName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routingIntentName: (map['routingIntentName'] as String).input(),
+      virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }
 }

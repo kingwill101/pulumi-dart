@@ -30,19 +30,13 @@ class AadDiagnosticSettingState {
   /// [name] The name which should be used for this Monitor Azure Active Directory Diagnostic Setting. Changing this forces a new Monitor Azure Active Directory Diagnostic Setting to be created.
   /// [storageAccountId] The ID of the Storage Account where logs should be sent. Changing this forces a new resource to be created.
   AadDiagnosticSettingState({
-    pulumi.Output<List<AadDiagnosticSettingEnabledLog>>? enabledLogs,
-    pulumi.Output<String>? eventhubAuthorizationRuleId,
-    pulumi.Output<String>? eventhubName,
-    pulumi.Output<String>? logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? storageAccountId,
-  }) :
-      enabledLogs = pulumi.Input.asOptionalInput<List<AadDiagnosticSettingEnabledLog>>(enabledLogs),
-      eventhubAuthorizationRuleId = pulumi.Input.asOptionalInput<String>(eventhubAuthorizationRuleId),
-      eventhubName = pulumi.Input.asOptionalInput<String>(eventhubName),
-      logAnalyticsWorkspaceId = pulumi.Input.asOptionalInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId);
+    this.enabledLogs,
+    this.eventhubAuthorizationRuleId,
+    this.eventhubName,
+    this.logAnalyticsWorkspaceId,
+    this.name,
+    this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class AadDiagnosticSettingState {
 
   factory AadDiagnosticSettingState.fromMap(Map<String, dynamic> map) {
     return AadDiagnosticSettingState(
-      enabledLogs: map['enabledLogs'] == null ? null : pulumi.Output.create<List<AadDiagnosticSettingEnabledLog>>(pulumi.Input.decodeList<AadDiagnosticSettingEnabledLog>(map['enabledLogs'], (value) => AadDiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>()))),
-      eventhubAuthorizationRuleId: map['eventhubAuthorizationRuleId'] == null ? null : pulumi.Output.create<String>(map['eventhubAuthorizationRuleId'] as String),
-      eventhubName: map['eventhubName'] == null ? null : pulumi.Output.create<String>(map['eventhubName'] as String),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
+      enabledLogs: map['enabledLogs'] == null ? null : (pulumi.Input.decodeList<AadDiagnosticSettingEnabledLog>(map['enabledLogs'], (value) => AadDiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventhubAuthorizationRuleId: map['eventhubAuthorizationRuleId'] == null ? null : (map['eventhubAuthorizationRuleId'] as String).input(),
+      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName'] as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
     );
   }
 }

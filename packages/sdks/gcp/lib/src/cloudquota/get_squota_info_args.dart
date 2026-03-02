@@ -19,13 +19,10 @@ class GetSQuotaInfoArgs {
   /// [quotaId] The id of the quota, which is unique within the service.
   /// [service] The name of the service in which the quota is defined.
   GetSQuotaInfoArgs({
-    required pulumi.Output<String> parent,
-    required pulumi.Output<String> quotaId,
-    required pulumi.Output<String> service,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent),
-      quotaId = pulumi.Input.asInput<String>(quotaId),
-      service = pulumi.Input.asInput<String>(service);
+    required this.parent,
+    required this.quotaId,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSQuotaInfoArgs {
 
   factory GetSQuotaInfoArgs.fromMap(Map<String, dynamic> map) {
     return GetSQuotaInfoArgs(
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      quotaId: pulumi.Output.create<String>(map['quotaId'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
+      parent: (map['parent'] as String).input(),
+      quotaId: (map['quotaId'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

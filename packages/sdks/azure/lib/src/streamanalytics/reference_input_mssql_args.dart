@@ -46,31 +46,19 @@ class ReferenceInputMssqlArgs {
   /// [table] The name of the table in the Azure SQL database.
   /// [username] The username to connect to the MS SQL database.
   ReferenceInputMssqlArgs({
-    required pulumi.Output<String> database,
-    pulumi.Output<String>? deltaSnapshotQuery,
-    required pulumi.Output<String> fullSnapshotQuery,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> password,
-    pulumi.Output<String>? refreshIntervalDuration,
-    required pulumi.Output<String> refreshType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> server,
-    required pulumi.Output<String> streamAnalyticsJobName,
-    pulumi.Output<String>? table,
-    required pulumi.Output<String> username,
-  }) :
-      database = pulumi.Input.asInput<String>(database),
-      deltaSnapshotQuery = pulumi.Input.asOptionalInput<String>(deltaSnapshotQuery),
-      fullSnapshotQuery = pulumi.Input.asInput<String>(fullSnapshotQuery),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asInput<String>(password),
-      refreshIntervalDuration = pulumi.Input.asOptionalInput<String>(refreshIntervalDuration),
-      refreshType = pulumi.Input.asInput<String>(refreshType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      server = pulumi.Input.asInput<String>(server),
-      streamAnalyticsJobName = pulumi.Input.asInput<String>(streamAnalyticsJobName),
-      table = pulumi.Input.asOptionalInput<String>(table),
-      username = pulumi.Input.asInput<String>(username);
+    required this.database,
+    this.deltaSnapshotQuery,
+    required this.fullSnapshotQuery,
+    this.name,
+    required this.password,
+    this.refreshIntervalDuration,
+    required this.refreshType,
+    required this.resourceGroupName,
+    required this.server,
+    required this.streamAnalyticsJobName,
+    this.table,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class ReferenceInputMssqlArgs {
 
   factory ReferenceInputMssqlArgs.fromMap(Map<String, dynamic> map) {
     return ReferenceInputMssqlArgs(
-      database: pulumi.Output.create<String>(map['database'] as String),
-      deltaSnapshotQuery: map['deltaSnapshotQuery'] == null ? null : pulumi.Output.create<String>(map['deltaSnapshotQuery'] as String),
-      fullSnapshotQuery: pulumi.Output.create<String>(map['fullSnapshotQuery'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      refreshIntervalDuration: map['refreshIntervalDuration'] == null ? null : pulumi.Output.create<String>(map['refreshIntervalDuration'] as String),
-      refreshType: pulumi.Output.create<String>(map['refreshType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      server: pulumi.Output.create<String>(map['server'] as String),
-      streamAnalyticsJobName: pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
-      table: map['table'] == null ? null : pulumi.Output.create<String>(map['table'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      database: (map['database'] as String).input(),
+      deltaSnapshotQuery: map['deltaSnapshotQuery'] == null ? null : (map['deltaSnapshotQuery'] as String).input(),
+      fullSnapshotQuery: (map['fullSnapshotQuery'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: (map['password'] as String).input(),
+      refreshIntervalDuration: map['refreshIntervalDuration'] == null ? null : (map['refreshIntervalDuration'] as String).input(),
+      refreshType: (map['refreshType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      server: (map['server'] as String).input(),
+      streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
+      table: map['table'] == null ? null : (map['table'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

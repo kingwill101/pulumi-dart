@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Dapr application health check configuration
 class DaprResponseAppHealth {
   /// Boolean indicating if the health probe is enabled
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Path for the health probe
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Interval for the health probe in seconds
-  final int? probeIntervalSeconds;
+  final pulumi.Input<int>? probeIntervalSeconds;
   /// Timeout for the health probe in milliseconds
-  final int? probeTimeoutMilliseconds;
+  final pulumi.Input<int>? probeTimeoutMilliseconds;
   /// Threshold for the health probe
-  final int? threshold;
+  final pulumi.Input<int>? threshold;
 
   /// Creates a new [DaprResponseAppHealth].
   /// [enabled] Boolean indicating if the health probe is enabled
@@ -40,11 +41,11 @@ class DaprResponseAppHealth {
 
   factory DaprResponseAppHealth.fromMap(Map<String, dynamic> map) {
     return DaprResponseAppHealth(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      path: map['path'] == null ? null : map['path'] as String,
-      probeIntervalSeconds: map['probeIntervalSeconds'] == null ? null : map['probeIntervalSeconds'] as int,
-      probeTimeoutMilliseconds: map['probeTimeoutMilliseconds'] == null ? null : map['probeTimeoutMilliseconds'] as int,
-      threshold: map['threshold'] == null ? null : map['threshold'] as int,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      probeIntervalSeconds: map['probeIntervalSeconds'] == null ? null : (map['probeIntervalSeconds'] as int).input(),
+      probeTimeoutMilliseconds: map['probeTimeoutMilliseconds'] == null ? null : (map['probeTimeoutMilliseconds'] as int).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold'] as int).input(),
     );
   }
 }

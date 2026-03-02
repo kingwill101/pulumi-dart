@@ -18,15 +18,11 @@ class GetEnvironmentArgs {
   /// [location] Required.
   /// [project] Optional.
   GetEnvironmentArgs({
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> lakeId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.environmentId,
+    required this.lakeId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetEnvironmentArgs {
 
   factory GetEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      lakeId: pulumi.Output.create<String>(map['lakeId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      lakeId: (map['lakeId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

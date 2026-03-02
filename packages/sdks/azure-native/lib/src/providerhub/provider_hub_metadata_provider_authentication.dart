@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The provider authentication.
 class ProviderHubMetadataProviderAuthentication {
   /// The allowed audiences.
-  final List<String> allowedAudiences;
+  final pulumi.Input<List<String>> allowedAudiences;
 
   /// Creates a new [ProviderHubMetadataProviderAuthentication].
   /// [allowedAudiences] The allowed audiences.
@@ -20,7 +21,7 @@ class ProviderHubMetadataProviderAuthentication {
 
   factory ProviderHubMetadataProviderAuthentication.fromMap(Map<String, dynamic> map) {
     return ProviderHubMetadataProviderAuthentication(
-      allowedAudiences: (map['allowedAudiences'] as List).cast<String>(),
+      allowedAudiences: ((map['allowedAudiences'] as List).cast<String>()).input(),
     );
   }
 }

@@ -30,19 +30,13 @@ class OrganizationEnvironmentByIdArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [streamGovernanceConfig] Stream governance configuration
   OrganizationEnvironmentByIdArgs({
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<String>? kind,
-    pulumi.Output<SCMetadataEntity>? metadata,
-    required pulumi.Output<String> organizationName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<StreamGovernanceConfig>? streamGovernanceConfig,
-  }) :
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<SCMetadataEntity>(metadata),
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      streamGovernanceConfig = pulumi.Input.asOptionalInput<StreamGovernanceConfig>(streamGovernanceConfig);
+    this.environmentId,
+    this.kind,
+    this.metadata,
+    required this.organizationName,
+    required this.resourceGroupName,
+    this.streamGovernanceConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class OrganizationEnvironmentByIdArgs {
 
   factory OrganizationEnvironmentByIdArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationEnvironmentByIdArgs(
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<SCMetadataEntity>(SCMetadataEntity.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      streamGovernanceConfig: map['streamGovernanceConfig'] == null ? null : pulumi.Output.create<StreamGovernanceConfig>(StreamGovernanceConfig.fromMap((map['streamGovernanceConfig'] as Map).cast<String, dynamic>())),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (SCMetadataEntity.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      organizationName: (map['organizationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      streamGovernanceConfig: map['streamGovernanceConfig'] == null ? null : (StreamGovernanceConfig.fromMap((map['streamGovernanceConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of CertificateDetails
 class CertificateDetailsResponse {
   /// The CA identifier of the CA certificate used for the DB instance's server certificate.
-  final String? caIdentifier;
+  final pulumi.Input<String>? caIdentifier;
   /// The expiration date of the DB instance’s server certificate.
-  final String? validTill;
+  final pulumi.Input<String>? validTill;
 
   /// Creates a new [CertificateDetailsResponse].
   /// [caIdentifier] The CA identifier of the CA certificate used for the DB instance's server certificate.
@@ -25,8 +26,8 @@ class CertificateDetailsResponse {
 
   factory CertificateDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CertificateDetailsResponse(
-      caIdentifier: map['caIdentifier'] == null ? null : map['caIdentifier'] as String,
-      validTill: map['validTill'] == null ? null : map['validTill'] as String,
+      caIdentifier: map['caIdentifier'] == null ? null : (map['caIdentifier'] as String).input(),
+      validTill: map['validTill'] == null ? null : (map['validTill'] as String).input(),
     );
   }
 }

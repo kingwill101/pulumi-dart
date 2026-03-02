@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesAudioJackInput {
   /// Sets the client name for the Jack audio output.
-  final String? clientName;
+  final pulumi.Input<String>? clientName;
   /// Specifies the connection ports for the Jack audio output.
-  final String? connectPorts;
+  final pulumi.Input<String>? connectPorts;
   /// Sets the exact client name for the Jack audio output.
-  final String? exactName;
+  final pulumi.Input<String>? exactName;
   /// Sets the server name for the Jack audio output.
-  final String? serverName;
+  final pulumi.Input<String>? serverName;
 
   /// Creates a new [DomainDevicesAudioJackInput].
   /// [clientName] Sets the client name for the Jack audio output.
@@ -34,10 +35,10 @@ class DomainDevicesAudioJackInput {
 
   factory DomainDevicesAudioJackInput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioJackInput(
-      clientName: map['clientName'] == null ? null : map['clientName'] as String,
-      connectPorts: map['connectPorts'] == null ? null : map['connectPorts'] as String,
-      exactName: map['exactName'] == null ? null : map['exactName'] as String,
-      serverName: map['serverName'] == null ? null : map['serverName'] as String,
+      clientName: map['clientName'] == null ? null : (map['clientName'] as String).input(),
+      connectPorts: map['connectPorts'] == null ? null : (map['connectPorts'] as String).input(),
+      exactName: map['exactName'] == null ? null : (map['exactName'] as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
     );
   }
 }

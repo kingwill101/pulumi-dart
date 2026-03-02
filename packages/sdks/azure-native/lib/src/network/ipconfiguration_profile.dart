@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet.dart';
 
 /// IP configuration profile child resource.
 class IPConfigurationProfile {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The reference to the subnet resource to create a container network interface ip configuration.
-  final Subnet? subnet;
+  final pulumi.Input<Subnet>? subnet;
 
   /// Creates a new [IPConfigurationProfile].
   /// [id] Resource ID.
@@ -25,15 +26,15 @@ class IPConfigurationProfile {
     return <String, dynamic>{
       'id': ?id,
       'name': ?name,
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<Subnet, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
   factory IPConfigurationProfile.fromMap(Map<String, dynamic> map) {
     return IPConfigurationProfile(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      subnet: map['subnet'] == null ? null : Subnet.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      subnet: map['subnet'] == null ? null : (Subnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

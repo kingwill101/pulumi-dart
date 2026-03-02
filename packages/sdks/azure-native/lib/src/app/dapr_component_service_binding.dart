@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dapr_service_bind_metadata.dart';
 
 /// Configuration to bind a Dapr Component to a dev ContainerApp Service
 class DaprComponentServiceBinding {
   /// Service bind metadata
-  final DaprServiceBindMetadata? metadata;
+  final pulumi.Input<DaprServiceBindMetadata>? metadata;
   /// Name of the service bind
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Resource id of the target service
-  final String? serviceId;
+  final pulumi.Input<String>? serviceId;
 
   /// Creates a new [DaprComponentServiceBinding].
   /// [metadata] Service bind metadata
@@ -23,7 +24,7 @@ class DaprComponentServiceBinding {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<DaprServiceBindMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'name': ?name,
       'serviceId': ?serviceId,
     };
@@ -31,9 +32,9 @@ class DaprComponentServiceBinding {
 
   factory DaprComponentServiceBinding.fromMap(Map<String, dynamic> map) {
     return DaprComponentServiceBinding(
-      metadata: map['metadata'] == null ? null : DaprServiceBindMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      serviceId: map['serviceId'] == null ? null : map['serviceId'] as String,
+      metadata: map['metadata'] == null ? null : (DaprServiceBindMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Type modeling a reference to a version of an agent definition.
 class AgentReferenceResponse {
   /// Gets the agent's unique identifier within the organization (subscription).
-  final String? agentId;
+  final pulumi.Input<String>? agentId;
   /// Gets the agent's name (unique within the project/app).
-  final String? agentName;
+  final pulumi.Input<String>? agentName;
 
   /// Creates a new [AgentReferenceResponse].
   /// [agentId] Gets the agent's unique identifier within the organization (subscription).
@@ -25,8 +26,8 @@ class AgentReferenceResponse {
 
   factory AgentReferenceResponse.fromMap(Map<String, dynamic> map) {
     return AgentReferenceResponse(
-      agentId: map['agentId'] == null ? null : map['agentId'] as String,
-      agentName: map['agentName'] == null ? null : map['agentName'] as String,
+      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
+      agentName: map['agentName'] == null ? null : (map['agentName'] as String).input(),
     );
   }
 }

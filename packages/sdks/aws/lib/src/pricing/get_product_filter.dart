@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProductFilter {
   /// Product attribute name that you want to filter on.
-  final String field;
+  final pulumi.Input<String> field;
   /// Product attribute value that you want to filter on.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetProductFilter].
   /// [field] Product attribute name that you want to filter on.
@@ -24,8 +25,8 @@ class GetProductFilter {
 
   factory GetProductFilter.fromMap(Map<String, dynamic> map) {
     return GetProductFilter(
-      field: map['field'] as String,
-      value: map['value'] as String,
+      field: (map['field'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

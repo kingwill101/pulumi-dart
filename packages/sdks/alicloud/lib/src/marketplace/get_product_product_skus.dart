@@ -6,13 +6,13 @@ import 'get_product_product_skus_package_version.dart';
 
 class GetProductProductSkus {
   /// The list of custom ECS images, Each element contains the following attributes:
-  final List<GetProductProductSkusImage> images;
+  final pulumi.Input<List<GetProductProductSkusImage>> images;
   /// The list of package version details of this product sku, Each element contains the following attributes:
-  final List<GetProductProductSkusPackageVersion> packageVersions;
+  final pulumi.Input<List<GetProductProductSkusPackageVersion>> packageVersions;
   /// The sku code of this product sku.
-  final String skuCode;
+  final pulumi.Input<String> skuCode;
   /// The sku name of this product sku.
-  final String skuName;
+  final pulumi.Input<String> skuName;
 
   /// Creates a new [GetProductProductSkus].
   /// [images] The list of custom ECS images, Each element contains the following attributes:
@@ -28,8 +28,8 @@ class GetProductProductSkus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'images': pulumi.Input.encodeList<GetProductProductSkusImage, Map<String, dynamic>>(images, (value) => value.toMap()),
-      'packageVersions': pulumi.Input.encodeList<GetProductProductSkusPackageVersion, Map<String, dynamic>>(packageVersions, (value) => value.toMap()),
+      'images': pulumi.Input.mapInputValue<List<GetProductProductSkusImage>, List<Map<String, dynamic>>>(images, (value) => pulumi.Input.encodeList<GetProductProductSkusImage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'packageVersions': pulumi.Input.mapInputValue<List<GetProductProductSkusPackageVersion>, List<Map<String, dynamic>>>(packageVersions, (value) => pulumi.Input.encodeList<GetProductProductSkusPackageVersion, Map<String, dynamic>>(value, (value) => value.toMap())),
       'skuCode': skuCode,
       'skuName': skuName,
     };
@@ -37,10 +37,10 @@ class GetProductProductSkus {
 
   factory GetProductProductSkus.fromMap(Map<String, dynamic> map) {
     return GetProductProductSkus(
-      images: pulumi.Input.decodeList<GetProductProductSkusImage>(map['images'], (value) => GetProductProductSkusImage.fromMap((value as Map).cast<String, dynamic>())),
-      packageVersions: pulumi.Input.decodeList<GetProductProductSkusPackageVersion>(map['packageVersions'], (value) => GetProductProductSkusPackageVersion.fromMap((value as Map).cast<String, dynamic>())),
-      skuCode: map['skuCode'] as String,
-      skuName: map['skuName'] as String,
+      images: (pulumi.Input.decodeList<GetProductProductSkusImage>(map['images'], (value) => GetProductProductSkusImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packageVersions: (pulumi.Input.decodeList<GetProductProductSkusPackageVersion>(map['packageVersions'], (value) => GetProductProductSkusPackageVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      skuCode: (map['skuCode'] as String).input(),
+      skuName: (map['skuName'] as String).input(),
     );
   }
 }

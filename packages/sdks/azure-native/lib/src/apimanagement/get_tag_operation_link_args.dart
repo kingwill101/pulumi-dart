@@ -22,15 +22,11 @@ class GetTagOperationLinkArgs {
   /// [serviceName] The name of the API Management service.
   /// [tagId] Tag identifier. Must be unique in the current API Management service instance.
   GetTagOperationLinkArgs({
-    required pulumi.Output<String> operationLinkId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> tagId,
-  }) :
-      operationLinkId = pulumi.Input.asInput<String>(operationLinkId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      tagId = pulumi.Input.asInput<String>(tagId);
+    required this.operationLinkId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.tagId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetTagOperationLinkArgs {
 
   factory GetTagOperationLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetTagOperationLinkArgs(
-      operationLinkId: pulumi.Output.create<String>(map['operationLinkId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      tagId: pulumi.Output.create<String>(map['tagId'] as String),
+      operationLinkId: (map['operationLinkId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      tagId: (map['tagId'] as String).input(),
     );
   }
 }

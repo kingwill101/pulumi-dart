@@ -39,27 +39,17 @@ class GrpcRouteArgs {
   /// [project] Optional.
   /// [rules] A list of detailed rules defining how to route traffic. Within a single GrpcRoute, the GrpcRoute.RouteAction associated with the first matching GrpcRoute.RouteRule will be executed. At least one rule must be supplied.
   GrpcRouteArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? gateways,
-    required pulumi.Output<String> grpcRouteId,
-    required pulumi.Output<List<String>> hostnames,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<String>>? meshes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<List<GrpcRouteRouteRule>> rules,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gateways = pulumi.Input.asOptionalInput<List<String>>(gateways),
-      grpcRouteId = pulumi.Input.asInput<String>(grpcRouteId),
-      hostnames = pulumi.Input.asInput<List<String>>(hostnames),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      meshes = pulumi.Input.asOptionalInput<List<String>>(meshes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rules = pulumi.Input.asInput<List<GrpcRouteRouteRule>>(rules);
+    this.description,
+    this.gateways,
+    required this.grpcRouteId,
+    required this.hostnames,
+    this.labels,
+    this.location,
+    this.meshes,
+    this.name,
+    this.project,
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class GrpcRouteArgs {
 
   factory GrpcRouteArgs.fromMap(Map<String, dynamic> map) {
     return GrpcRouteArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gateways: map['gateways'] == null ? null : pulumi.Output.create<List<String>>((map['gateways'] as List).cast<String>()),
-      grpcRouteId: pulumi.Output.create<String>(map['grpcRouteId'] as String),
-      hostnames: pulumi.Output.create<List<String>>((map['hostnames'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      meshes: map['meshes'] == null ? null : pulumi.Output.create<List<String>>((map['meshes'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rules: pulumi.Output.create<List<GrpcRouteRouteRule>>(pulumi.Input.decodeList<GrpcRouteRouteRule>(map['rules'], (value) => GrpcRouteRouteRule.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gateways: map['gateways'] == null ? null : ((map['gateways'] as List).cast<String>()).input(),
+      grpcRouteId: (map['grpcRouteId'] as String).input(),
+      hostnames: ((map['hostnames'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      meshes: map['meshes'] == null ? null : ((map['meshes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rules: (pulumi.Input.decodeList<GrpcRouteRouteRule>(map['rules'], (value) => GrpcRouteRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

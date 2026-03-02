@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleRuleLabel {
   /// The label string.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [RuleGroupRuleRuleLabel].
   /// [name] The label string.
@@ -19,7 +20,7 @@ class RuleGroupRuleRuleLabel {
 
   factory RuleGroupRuleRuleLabel.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleRuleLabel(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppConnectionGateway {
   /// AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
-  final String appGateway;
+  final pulumi.Input<String> appGateway;
   /// (Output)
   /// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
-  final int? ingressPort;
+  final pulumi.Input<int>? ingressPort;
   /// The type of hosting used by the gateway. Refer to
   /// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
   /// for a list of possible values.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// (Output)
   /// Server-defined URI for this resource.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [AppConnectionGateway].
   /// [appGateway] AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
@@ -38,10 +39,10 @@ class AppConnectionGateway {
 
   factory AppConnectionGateway.fromMap(Map<String, dynamic> map) {
     return AppConnectionGateway(
-      appGateway: map['appGateway'] as String,
-      ingressPort: map['ingressPort'] == null ? null : map['ingressPort'] as int,
-      type: map['type'] == null ? null : map['type'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      appGateway: (map['appGateway'] as String).input(),
+      ingressPort: map['ingressPort'] == null ? null : (map['ingressPort'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

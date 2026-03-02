@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleErrorActionCloudwatchMetric {
   /// The CloudWatch metric name.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The CloudWatch metric namespace name.
-  final String metricNamespace;
+  final pulumi.Input<String> metricNamespace;
   /// An optional Unix timestamp (http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp).
-  final String? metricTimestamp;
+  final pulumi.Input<String>? metricTimestamp;
   /// The metric unit (supported units can be found here: http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit)
-  final String metricUnit;
+  final pulumi.Input<String> metricUnit;
   /// The CloudWatch metric value.
-  final String metricValue;
+  final pulumi.Input<String> metricValue;
   /// The IAM role ARN that allows access to the CloudWatch metric.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [TopicRuleErrorActionCloudwatchMetric].
   /// [metricName] The CloudWatch metric name.
@@ -44,12 +45,12 @@ class TopicRuleErrorActionCloudwatchMetric {
 
   factory TopicRuleErrorActionCloudwatchMetric.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionCloudwatchMetric(
-      metricName: map['metricName'] as String,
-      metricNamespace: map['metricNamespace'] as String,
-      metricTimestamp: map['metricTimestamp'] == null ? null : map['metricTimestamp'] as String,
-      metricUnit: map['metricUnit'] as String,
-      metricValue: map['metricValue'] as String,
-      roleArn: map['roleArn'] as String,
+      metricName: (map['metricName'] as String).input(),
+      metricNamespace: (map['metricNamespace'] as String).input(),
+      metricTimestamp: map['metricTimestamp'] == null ? null : (map['metricTimestamp'] as String).input(),
+      metricUnit: (map['metricUnit'] as String).input(),
+      metricValue: (map['metricValue'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

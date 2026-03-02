@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ingress_backend.dart';
 
 /// HTTPIngressPath associates a path with a backend. Incoming urls matching the path are forwarded to the backend.
 class HTTPIngressPath {
   /// backend defines the referenced service endpoint to which the traffic will be forwarded to.
-  final IngressBackend backend;
+  final pulumi.Input<IngressBackend> backend;
   /// path is matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional "path" part of a URL as defined by RFC 3986. Paths must begin with a '/' and must be present when using PathType with value "Exact" or "Prefix".
-  final String? path;
+  final pulumi.Input<String>? path;
   /// pathType determines the interpretation of the path matching. PathType can be one of the following values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split by '/'. Matching is
   /// done on a path element by element basis. A path element refers is the
   /// list of labels in the path split by the '/' separator. A request is a
@@ -19,7 +20,7 @@ class HTTPIngressPath {
   /// the IngressClass. Implementations can treat this as a separate PathType
   /// or treat it identically to Prefix or Exact path types.
   /// Implementations are required to support all path types.
-  final String pathType;
+  final pulumi.Input<String> pathType;
 
   /// Creates a new [HTTPIngressPath].
   /// [backend] backend defines the referenced service endpoint to which the traffic will be forwarded to.
@@ -33,7 +34,7 @@ class HTTPIngressPath {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backend': backend.toMap(),
+      'backend': pulumi.Input.mapInputValue<IngressBackend, Map<String, dynamic>>(backend, (value) => value.toMap()),
       'path': ?path,
       'pathType': pathType,
     };
@@ -41,9 +42,9 @@ class HTTPIngressPath {
 
   factory HTTPIngressPath.fromMap(Map<String, dynamic> map) {
     return HTTPIngressPath(
-      backend: IngressBackend.fromMap((map['backend'] as Map).cast<String, dynamic>()),
-      path: map['path'] == null ? null : map['path'] as String,
-      pathType: map['pathType'] as String,
+      backend: (IngressBackend.fromMap((map['backend'] as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      pathType: (map['pathType'] as String).input(),
     );
   }
 }

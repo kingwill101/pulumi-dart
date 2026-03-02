@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Term Commitment preference received from customer.
 class TermCommitmentPreferences {
   /// Customer preferred Term Duration.
-  final String? preferredTermCommitmentDuration;
+  final pulumi.Input<String>? preferredTermCommitmentDuration;
   /// Term Commitment Type
-  final String preferredTermCommitmentType;
+  final pulumi.Input<String> preferredTermCommitmentType;
 
   /// Creates a new [TermCommitmentPreferences].
   /// [preferredTermCommitmentDuration] Customer preferred Term Duration.
@@ -25,8 +26,8 @@ class TermCommitmentPreferences {
 
   factory TermCommitmentPreferences.fromMap(Map<String, dynamic> map) {
     return TermCommitmentPreferences(
-      preferredTermCommitmentDuration: map['preferredTermCommitmentDuration'] == null ? null : map['preferredTermCommitmentDuration'] as String,
-      preferredTermCommitmentType: map['preferredTermCommitmentType'] as String,
+      preferredTermCommitmentDuration: map['preferredTermCommitmentDuration'] == null ? null : (map['preferredTermCommitmentDuration'] as String).input(),
+      preferredTermCommitmentType: (map['preferredTermCommitmentType'] as String).input(),
     );
   }
 }

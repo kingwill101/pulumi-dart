@@ -41,27 +41,17 @@ class PolicyDefinitionVersionArgs {
   /// [policyType] The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
   /// [version] The policy definition version in #.#.# format.
   PolicyDefinitionVersionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<dynamic>? metadata,
-    pulumi.Output<String>? mode,
-    pulumi.Output<Map<String, ParameterDefinitionsValue>>? parameters,
-    required pulumi.Output<String> policyDefinitionName,
-    pulumi.Output<String>? policyDefinitionVersion,
-    pulumi.Output<dynamic>? policyRule,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<String>? version,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      metadata = pulumi.Input.asOptionalInput<dynamic>(metadata),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      parameters = pulumi.Input.asOptionalInput<Map<String, ParameterDefinitionsValue>>(parameters),
-      policyDefinitionName = pulumi.Input.asInput<String>(policyDefinitionName),
-      policyDefinitionVersion = pulumi.Input.asOptionalInput<String>(policyDefinitionVersion),
-      policyRule = pulumi.Input.asOptionalInput<dynamic>(policyRule),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.description,
+    this.displayName,
+    this.metadata,
+    this.mode,
+    this.parameters,
+    required this.policyDefinitionName,
+    this.policyDefinitionVersion,
+    this.policyRule,
+    this.policyType,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class PolicyDefinitionVersionArgs {
 
   factory PolicyDefinitionVersionArgs.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionVersionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<dynamic>(map['metadata']),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, ParameterDefinitionsValue>>(pulumi.Input.decodeMapValues<ParameterDefinitionsValue>(map['parameters'], (value) => ParameterDefinitionsValue.fromMap((value as Map).cast<String, dynamic>()))),
-      policyDefinitionName: pulumi.Output.create<String>(map['policyDefinitionName'] as String),
-      policyDefinitionVersion: map['policyDefinitionVersion'] == null ? null : pulumi.Output.create<String>(map['policyDefinitionVersion'] as String),
-      policyRule: map['policyRule'] == null ? null : pulumi.Output.create<dynamic>(map['policyRule']),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterDefinitionsValue>(map['parameters'], (value) => ParameterDefinitionsValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyDefinitionName: (map['policyDefinitionName'] as String).input(),
+      policyDefinitionVersion: map['policyDefinitionVersion'] == null ? null : (map['policyDefinitionVersion'] as String).input(),
+      policyRule: map['policyRule'] == null ? null : (map['policyRule']).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

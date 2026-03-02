@@ -6,15 +6,15 @@ import 'plan_workflow_step_custom_action_lambda_config_ungraceful.dart';
 
 class PlanWorkflowStepCustomActionLambdaConfig {
   /// Lambda function configuration. See Lambda below.
-  final List<PlanWorkflowStepCustomActionLambdaConfigLambda>? lambdas;
+  final pulumi.Input<List<PlanWorkflowStepCustomActionLambdaConfigLambda>>? lambdas;
   /// Region where the Lambda function should run. Valid values: `activatingRegion`, `deactivatingRegion`.
-  final String regionToRun;
+  final pulumi.Input<String> regionToRun;
   /// Retry interval in minutes.
-  final double retryIntervalMinutes;
+  final pulumi.Input<double> retryIntervalMinutes;
   /// Timeout in minutes.
-  final int? timeoutMinutes;
+  final pulumi.Input<int>? timeoutMinutes;
   /// Ungraceful behavior configuration. See Ungraceful below.
-  final List<PlanWorkflowStepCustomActionLambdaConfigUngraceful>? ungracefuls;
+  final pulumi.Input<List<PlanWorkflowStepCustomActionLambdaConfigUngraceful>>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepCustomActionLambdaConfig].
   /// [lambdas] Lambda function configuration. See Lambda below.
@@ -32,21 +32,21 @@ class PlanWorkflowStepCustomActionLambdaConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lambdas': ?lambdas == null ? null : pulumi.Input.encodeList<PlanWorkflowStepCustomActionLambdaConfigLambda, Map<String, dynamic>>(lambdas!, (value) => value.toMap()),
+      'lambdas': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepCustomActionLambdaConfigLambda>, List<Map<String, dynamic>>>(lambdas, (value) => pulumi.Input.encodeList<PlanWorkflowStepCustomActionLambdaConfigLambda, Map<String, dynamic>>(value, (value) => value.toMap())),
       'regionToRun': regionToRun,
       'retryIntervalMinutes': retryIntervalMinutes,
       'timeoutMinutes': ?timeoutMinutes,
-      'ungracefuls': ?ungracefuls == null ? null : pulumi.Input.encodeList<PlanWorkflowStepCustomActionLambdaConfigUngraceful, Map<String, dynamic>>(ungracefuls!, (value) => value.toMap()),
+      'ungracefuls': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepCustomActionLambdaConfigUngraceful>, List<Map<String, dynamic>>>(ungracefuls, (value) => pulumi.Input.encodeList<PlanWorkflowStepCustomActionLambdaConfigUngraceful, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PlanWorkflowStepCustomActionLambdaConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepCustomActionLambdaConfig(
-      lambdas: map['lambdas'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStepCustomActionLambdaConfigLambda>(map['lambdas'], (value) => PlanWorkflowStepCustomActionLambdaConfigLambda.fromMap((value as Map).cast<String, dynamic>())),
-      regionToRun: map['regionToRun'] as String,
-      retryIntervalMinutes: map['retryIntervalMinutes'] as double,
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
-      ungracefuls: map['ungracefuls'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStepCustomActionLambdaConfigUngraceful>(map['ungracefuls'], (value) => PlanWorkflowStepCustomActionLambdaConfigUngraceful.fromMap((value as Map).cast<String, dynamic>())),
+      lambdas: map['lambdas'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepCustomActionLambdaConfigLambda>(map['lambdas'], (value) => PlanWorkflowStepCustomActionLambdaConfigLambda.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regionToRun: (map['regionToRun'] as String).input(),
+      retryIntervalMinutes: (map['retryIntervalMinutes'] as double).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
+      ungracefuls: map['ungracefuls'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepCustomActionLambdaConfigUngraceful>(map['ungracefuls'], (value) => PlanWorkflowStepCustomActionLambdaConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

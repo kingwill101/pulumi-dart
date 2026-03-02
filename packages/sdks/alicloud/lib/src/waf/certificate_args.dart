@@ -28,19 +28,13 @@ class CertificateArgs {
   /// [instanceId] The ID of the WAF instance.
   /// [privateKey] The private key.
   CertificateArgs({
-    pulumi.Output<String>? certificate,
-    pulumi.Output<String>? certificateId,
-    pulumi.Output<String>? certificateName,
-    required pulumi.Output<String> domain,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? privateKey,
-  }) :
-      certificate = pulumi.Input.asOptionalInput<String>(certificate),
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId),
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      domain = pulumi.Input.asInput<String>(domain),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey);
+    this.certificate,
+    this.certificateId,
+    this.certificateName,
+    required this.domain,
+    required this.instanceId,
+    this.privateKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<String>(map['certificate'] as String),
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
     );
   }
 }

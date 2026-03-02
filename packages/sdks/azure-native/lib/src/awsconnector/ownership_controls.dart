@@ -6,7 +6,7 @@ import 'ownership_controls_rule.dart';
 /// Definition of OwnershipControls
 class OwnershipControls {
   /// Specifies the container element for Object Ownership rules.
-  final List<OwnershipControlsRule>? rules;
+  final pulumi.Input<List<OwnershipControlsRule>>? rules;
 
   /// Creates a new [OwnershipControls].
   /// [rules] Specifies the container element for Object Ownership rules.
@@ -16,13 +16,13 @@ class OwnershipControls {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<OwnershipControlsRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<OwnershipControlsRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<OwnershipControlsRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OwnershipControls.fromMap(Map<String, dynamic> map) {
     return OwnershipControls(
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<OwnershipControlsRule>(map['rules'], (value) => OwnershipControlsRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<OwnershipControlsRule>(map['rules'], (value) => OwnershipControlsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

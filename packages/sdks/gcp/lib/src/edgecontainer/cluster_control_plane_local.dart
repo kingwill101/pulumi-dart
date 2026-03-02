@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterControlPlaneLocal {
   /// Only machines matching this filter will be allowed to host control
   /// plane nodes. The filtering language accepts strings like "name=<name>",
   /// and is documented here: [AIP-160](https://google.aip.dev/160).
-  final String? machineFilter;
+  final pulumi.Input<String>? machineFilter;
   /// The number of nodes to serve as replicas of the Control Plane.
   /// Only 1 and 3 are supported.
-  final int? nodeCount;
+  final pulumi.Input<int>? nodeCount;
   /// Name of the Google Distributed Cloud Edge zones where this node pool
   /// will be created. For example: `us-central1-edge-customer-a`.
-  final String? nodeLocation;
+  final pulumi.Input<String>? nodeLocation;
   /// Policy configuration about how user applications are deployed.
   /// Possible values are: `SHARED_DEPLOYMENT_POLICY_UNSPECIFIED`, `ALLOWED`, `DISALLOWED`.
-  final String? sharedDeploymentPolicy;
+  final pulumi.Input<String>? sharedDeploymentPolicy;
 
   /// Creates a new [ClusterControlPlaneLocal].
   /// [machineFilter] Only machines matching this filter will be allowed to host control
@@ -39,10 +40,10 @@ class ClusterControlPlaneLocal {
 
   factory ClusterControlPlaneLocal.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneLocal(
-      machineFilter: map['machineFilter'] == null ? null : map['machineFilter'] as String,
-      nodeCount: map['nodeCount'] == null ? null : map['nodeCount'] as int,
-      nodeLocation: map['nodeLocation'] == null ? null : map['nodeLocation'] as String,
-      sharedDeploymentPolicy: map['sharedDeploymentPolicy'] == null ? null : map['sharedDeploymentPolicy'] as String,
+      machineFilter: map['machineFilter'] == null ? null : (map['machineFilter'] as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      nodeLocation: map['nodeLocation'] == null ? null : (map['nodeLocation'] as String).input(),
+      sharedDeploymentPolicy: map['sharedDeploymentPolicy'] == null ? null : (map['sharedDeploymentPolicy'] as String).input(),
     );
   }
 }

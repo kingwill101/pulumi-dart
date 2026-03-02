@@ -11,9 +11,8 @@ class FirewallSettingsState {
   /// Creates a new [FirewallSettingsState].
   /// [defaultFirewallIds] A map of default firewall IDs for various interfaces.
   FirewallSettingsState({
-    pulumi.Output<FirewallSettingsDefaultFirewallIds>? defaultFirewallIds,
-  }) :
-      defaultFirewallIds = pulumi.Input.asOptionalInput<FirewallSettingsDefaultFirewallIds>(defaultFirewallIds);
+    this.defaultFirewallIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,7 +22,7 @@ class FirewallSettingsState {
 
   factory FirewallSettingsState.fromMap(Map<String, dynamic> map) {
     return FirewallSettingsState(
-      defaultFirewallIds: map['defaultFirewallIds'] == null ? null : pulumi.Output.create<FirewallSettingsDefaultFirewallIds>(FirewallSettingsDefaultFirewallIds.fromMap((map['defaultFirewallIds'] as Map).cast<String, dynamic>())),
+      defaultFirewallIds: map['defaultFirewallIds'] == null ? null : (FirewallSettingsDefaultFirewallIds.fromMap((map['defaultFirewallIds'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

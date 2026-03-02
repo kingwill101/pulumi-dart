@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Response options.
 class ResourceProviderManifestPropertiesResponseOptions {
-  final String? serviceClientOptionsType;
+  final pulumi.Input<String>? serviceClientOptionsType;
 
   /// Creates a new [ResourceProviderManifestPropertiesResponseOptions].
   /// [serviceClientOptionsType] Optional.
@@ -19,7 +20,7 @@ class ResourceProviderManifestPropertiesResponseOptions {
 
   factory ResourceProviderManifestPropertiesResponseOptions.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesResponseOptions(
-      serviceClientOptionsType: map['serviceClientOptionsType'] == null ? null : map['serviceClientOptionsType'] as String,
+      serviceClientOptionsType: map['serviceClientOptionsType'] == null ? null : (map['serviceClientOptionsType'] as String).input(),
     );
   }
 }

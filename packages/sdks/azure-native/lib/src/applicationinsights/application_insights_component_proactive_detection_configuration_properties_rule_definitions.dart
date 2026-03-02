@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Static definitions of the ProactiveDetection configuration rule (same values for all components).
 class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions {
   /// The rule description
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The rule name as it is displayed in UI
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// URL which displays additional info about the proactive detection rule
-  final String? helpUrl;
+  final pulumi.Input<String>? helpUrl;
   /// A flag indicating whether the rule is enabled by default
-  final bool? isEnabledByDefault;
+  final pulumi.Input<bool>? isEnabledByDefault;
   /// A flag indicating whether the rule is hidden (from the UI)
-  final bool? isHidden;
+  final pulumi.Input<bool>? isHidden;
   /// A flag indicating whether the rule is in preview
-  final bool? isInPreview;
+  final pulumi.Input<bool>? isInPreview;
   /// The rule name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// A flag indicating whether email notifications are supported for detections for this rule
-  final bool? supportsEmailNotifications;
+  final pulumi.Input<bool>? supportsEmailNotifications;
 
   /// Creates a new [ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions].
   /// [description] The rule description
@@ -55,14 +56,14 @@ class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleD
 
   factory ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions.fromMap(Map<String, dynamic> map) {
     return ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions(
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      helpUrl: map['helpUrl'] == null ? null : map['helpUrl'] as String,
-      isEnabledByDefault: map['isEnabledByDefault'] == null ? null : map['isEnabledByDefault'] as bool,
-      isHidden: map['isHidden'] == null ? null : map['isHidden'] as bool,
-      isInPreview: map['isInPreview'] == null ? null : map['isInPreview'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      supportsEmailNotifications: map['supportsEmailNotifications'] == null ? null : map['supportsEmailNotifications'] as bool,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      helpUrl: map['helpUrl'] == null ? null : (map['helpUrl'] as String).input(),
+      isEnabledByDefault: map['isEnabledByDefault'] == null ? null : (map['isEnabledByDefault'] as bool).input(),
+      isHidden: map['isHidden'] == null ? null : (map['isHidden'] as bool).input(),
+      isInPreview: map['isInPreview'] == null ? null : (map['isInPreview'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      supportsEmailNotifications: map['supportsEmailNotifications'] == null ? null : (map['supportsEmailNotifications'] as bool).input(),
     );
   }
 }

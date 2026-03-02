@@ -16,11 +16,9 @@ class GatewayApiArgs {
   /// [apiId] The Identifier of the API Management API within the API Management Service. Changing this forces a new API Management Gateway API to be created.
   /// [gatewayId] The Identifier for the API Management Gateway. Changing this forces a new API Management Gateway API to be created.
   GatewayApiArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> gatewayId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      gatewayId = pulumi.Input.asInput<String>(gatewayId);
+    required this.apiId,
+    required this.gatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GatewayApiArgs {
 
   factory GatewayApiArgs.fromMap(Map<String, dynamic> map) {
     return GatewayApiArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      gatewayId: pulumi.Output.create<String>(map['gatewayId'] as String),
+      apiId: (map['apiId'] as String).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
     );
   }
 }

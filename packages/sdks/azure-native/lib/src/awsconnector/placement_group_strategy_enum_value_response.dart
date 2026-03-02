@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of PlacementGroupStrategyEnumValue
 class PlacementGroupStrategyEnumValueResponse {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [PlacementGroupStrategyEnumValueResponse].
   /// [value] Property value
@@ -20,7 +21,7 @@ class PlacementGroupStrategyEnumValueResponse {
 
   factory PlacementGroupStrategyEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return PlacementGroupStrategyEnumValueResponse(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

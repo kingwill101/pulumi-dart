@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Tag
 class Tag {
   /// The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The value for the tag. You can specify a value that is 0 to 256 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [Tag].
   /// [key] The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -.
@@ -25,8 +26,8 @@ class Tag {
 
   factory Tag.fromMap(Map<String, dynamic> map) {
     return Tag(
-      key: map['key'] == null ? null : map['key'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

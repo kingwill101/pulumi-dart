@@ -19,13 +19,10 @@ class GetFirewallSupportInfoArgs {
   /// [firewallName] Firewall resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFirewallSupportInfoArgs({
-    pulumi.Output<String>? email,
-    required pulumi.Output<String> firewallName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      email = pulumi.Input.asOptionalInput<String>(email),
-      firewallName = pulumi.Input.asInput<String>(firewallName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.email,
+    required this.firewallName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFirewallSupportInfoArgs {
 
   factory GetFirewallSupportInfoArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallSupportInfoArgs(
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      firewallName: pulumi.Output.create<String>(map['firewallName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      firewallName: (map['firewallName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

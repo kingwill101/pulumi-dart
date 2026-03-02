@@ -14,11 +14,9 @@ class GetIngressRuleArgs {
   /// [appId] Required.
   /// [ingressRuleId] Required.
   GetIngressRuleArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> ingressRuleId,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      ingressRuleId = pulumi.Input.asInput<String>(ingressRuleId);
+    required this.appId,
+    required this.ingressRuleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetIngressRuleArgs {
 
   factory GetIngressRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetIngressRuleArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      ingressRuleId: pulumi.Output.create<String>(map['ingressRuleId'] as String),
+      appId: (map['appId'] as String).input(),
+      ingressRuleId: (map['ingressRuleId'] as String).input(),
     );
   }
 }

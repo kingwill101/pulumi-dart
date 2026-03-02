@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_gateway_spec_listener_tls_certificate.dart';
 import 'virtual_gateway_spec_listener_tls_validation.dart';
 
 class VirtualGatewaySpecListenerTls {
   /// Listener's TLS certificate.
-  final VirtualGatewaySpecListenerTlsCertificate certificate;
+  final pulumi.Input<VirtualGatewaySpecListenerTlsCertificate> certificate;
   /// Listener's TLS mode. Valid values: `DISABLED`, `PERMISSIVE`, `STRICT`.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Listener's Transport Layer Security (TLS) validation context.
-  final VirtualGatewaySpecListenerTlsValidation? validation;
+  final pulumi.Input<VirtualGatewaySpecListenerTlsValidation>? validation;
 
   /// Creates a new [VirtualGatewaySpecListenerTls].
   /// [certificate] Listener's TLS certificate.
@@ -23,17 +24,17 @@ class VirtualGatewaySpecListenerTls {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificate': certificate.toMap(),
+      'certificate': pulumi.Input.mapInputValue<VirtualGatewaySpecListenerTlsCertificate, Map<String, dynamic>>(certificate, (value) => value.toMap()),
       'mode': mode,
-      'validation': ?validation == null ? null : validation!.toMap(),
+      'validation': ?pulumi.Input.mapOptionalInputValue<VirtualGatewaySpecListenerTlsValidation, Map<String, dynamic>>(validation, (value) => value.toMap()),
     };
   }
 
   factory VirtualGatewaySpecListenerTls.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerTls(
-      certificate: VirtualGatewaySpecListenerTlsCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>()),
-      mode: map['mode'] as String,
-      validation: map['validation'] == null ? null : VirtualGatewaySpecListenerTlsValidation.fromMap((map['validation'] as Map).cast<String, dynamic>()),
+      certificate: (VirtualGatewaySpecListenerTlsCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
+      mode: (map['mode'] as String).input(),
+      validation: map['validation'] == null ? null : (VirtualGatewaySpecListenerTlsValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

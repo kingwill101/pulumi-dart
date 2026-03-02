@@ -44,29 +44,18 @@ class GetDedicatedHostsArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneId] The zone ID of the ECS Dedicated Host.
   GetDedicatedHostsArgs({
-    pulumi.Output<String>? dedicatedHostId,
-    pulumi.Output<String>? dedicatedHostName,
-    pulumi.Output<String>? dedicatedHostType,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<List<GetDedicatedHostsOperationLock>>? operationLocks,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? zoneId,
-  }) :
-      dedicatedHostId = pulumi.Input.asOptionalInput<String>(dedicatedHostId),
-      dedicatedHostName = pulumi.Input.asOptionalInput<String>(dedicatedHostName),
-      dedicatedHostType = pulumi.Input.asOptionalInput<String>(dedicatedHostType),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      operationLocks = pulumi.Input.asOptionalInput<List<GetDedicatedHostsOperationLock>>(operationLocks),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.dedicatedHostId,
+    this.dedicatedHostName,
+    this.dedicatedHostType,
+    this.ids,
+    this.nameRegex,
+    this.operationLocks,
+    this.outputFile,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class GetDedicatedHostsArgs {
 
   factory GetDedicatedHostsArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsArgs(
-      dedicatedHostId: map['dedicatedHostId'] == null ? null : pulumi.Output.create<String>(map['dedicatedHostId'] as String),
-      dedicatedHostName: map['dedicatedHostName'] == null ? null : pulumi.Output.create<String>(map['dedicatedHostName'] as String),
-      dedicatedHostType: map['dedicatedHostType'] == null ? null : pulumi.Output.create<String>(map['dedicatedHostType'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      operationLocks: map['operationLocks'] == null ? null : pulumi.Output.create<List<GetDedicatedHostsOperationLock>>(pulumi.Input.decodeList<GetDedicatedHostsOperationLock>(map['operationLocks'], (value) => GetDedicatedHostsOperationLock.fromMap((value as Map).cast<String, dynamic>()))),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      dedicatedHostId: map['dedicatedHostId'] == null ? null : (map['dedicatedHostId'] as String).input(),
+      dedicatedHostName: map['dedicatedHostName'] == null ? null : (map['dedicatedHostName'] as String).input(),
+      dedicatedHostType: map['dedicatedHostType'] == null ? null : (map['dedicatedHostType'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      operationLocks: map['operationLocks'] == null ? null : (pulumi.Input.decodeList<GetDedicatedHostsOperationLock>(map['operationLocks'], (value) => GetDedicatedHostsOperationLock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

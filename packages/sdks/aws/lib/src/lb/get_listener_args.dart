@@ -24,17 +24,12 @@ class GetListenerArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
   GetListenerArgs({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? loadBalancerArn,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      loadBalancerArn = pulumi.Input.asOptionalInput<String>(loadBalancerArn),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.arn,
+    this.loadBalancerArn,
+    this.port,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class GetListenerArgs {
 
   factory GetListenerArgs.fromMap(Map<String, dynamic> map) {
     return GetListenerArgs(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      loadBalancerArn: map['loadBalancerArn'] == null ? null : pulumi.Output.create<String>(map['loadBalancerArn'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      loadBalancerArn: map['loadBalancerArn'] == null ? null : (map['loadBalancerArn'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

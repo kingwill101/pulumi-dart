@@ -30,21 +30,14 @@ class EmailTemplateState {
   /// [templateName] The name of the Email Template. Possible values are `AccountClosedDeveloper`, `ApplicationApprovedNotificationMessage`, `ConfirmSignUpIdentityDefault`, `EmailChangeIdentityDefault`, `InviteUserNotificationMessage`, `NewCommentNotificationMessage`, `NewDeveloperNotificationMessage`, `NewIssueNotificationMessage`, `PasswordResetByAdminNotificationMessage`, `PasswordResetIdentityDefault`, `PurchaseDeveloperNotificationMessage`, `QuotaLimitApproachingDeveloperNotificationMessage`, `RejectDeveloperNotificationMessage`, `RequestDeveloperNotificationMessage`. Changing this forces a new API Management Email Template to be created.
   /// [title] The title of the Email Template.
   EmailTemplateState({
-    pulumi.Output<String>? apiManagementName,
-    pulumi.Output<String>? body,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? subject,
-    pulumi.Output<String>? templateName,
-    pulumi.Output<String>? title,
-  }) :
-      apiManagementName = pulumi.Input.asOptionalInput<String>(apiManagementName),
-      body = pulumi.Input.asOptionalInput<String>(body),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      subject = pulumi.Input.asOptionalInput<String>(subject),
-      templateName = pulumi.Input.asOptionalInput<String>(templateName),
-      title = pulumi.Input.asOptionalInput<String>(title);
+    this.apiManagementName,
+    this.body,
+    this.description,
+    this.resourceGroupName,
+    this.subject,
+    this.templateName,
+    this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class EmailTemplateState {
 
   factory EmailTemplateState.fromMap(Map<String, dynamic> map) {
     return EmailTemplateState(
-      apiManagementName: map['apiManagementName'] == null ? null : pulumi.Output.create<String>(map['apiManagementName'] as String),
-      body: map['body'] == null ? null : pulumi.Output.create<String>(map['body'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subject: map['subject'] == null ? null : pulumi.Output.create<String>(map['subject'] as String),
-      templateName: map['templateName'] == null ? null : pulumi.Output.create<String>(map['templateName'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

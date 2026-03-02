@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionAppSourceControl {
   /// The branch of the remote repository to use. Defaults to 'master'.
-  final String? branch;
+  final pulumi.Input<String>? branch;
   /// Limits to manual integration. Defaults to `false` if not specified.
-  final bool? manualIntegration;
+  final pulumi.Input<bool>? manualIntegration;
   /// The URL of the source code repository.
-  final String? repoUrl;
+  final pulumi.Input<String>? repoUrl;
   /// Enable roll-back for the repository. Defaults to `false` if not specified.
-  final bool? rollbackEnabled;
+  final pulumi.Input<bool>? rollbackEnabled;
   /// Use Mercurial if `true`, otherwise uses Git.
-  final bool? useMercurial;
+  final pulumi.Input<bool>? useMercurial;
 
   /// Creates a new [FunctionAppSourceControl].
   /// [branch] The branch of the remote repository to use. Defaults to 'master'.
@@ -39,11 +40,11 @@ class FunctionAppSourceControl {
 
   factory FunctionAppSourceControl.fromMap(Map<String, dynamic> map) {
     return FunctionAppSourceControl(
-      branch: map['branch'] == null ? null : map['branch'] as String,
-      manualIntegration: map['manualIntegration'] == null ? null : map['manualIntegration'] as bool,
-      repoUrl: map['repoUrl'] == null ? null : map['repoUrl'] as String,
-      rollbackEnabled: map['rollbackEnabled'] == null ? null : map['rollbackEnabled'] as bool,
-      useMercurial: map['useMercurial'] == null ? null : map['useMercurial'] as bool,
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      manualIntegration: map['manualIntegration'] == null ? null : (map['manualIntegration'] as bool).input(),
+      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl'] as String).input(),
+      rollbackEnabled: map['rollbackEnabled'] == null ? null : (map['rollbackEnabled'] as bool).input(),
+      useMercurial: map['useMercurial'] == null ? null : (map['useMercurial'] as bool).input(),
     );
   }
 }

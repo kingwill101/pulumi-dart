@@ -54,33 +54,20 @@ class ConnectClusterState {
   /// [state] The current state of the connect cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
   /// [updateTime] The time when the cluster was last updated.
   ConnectClusterState({
-    pulumi.Output<ConnectClusterCapacityConfig>? capacityConfig,
-    pulumi.Output<String>? connectClusterId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<ConnectClusterGcpConfig>? gcpConfig,
-    pulumi.Output<String>? kafkaCluster,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? updateTime,
-  }) :
-      capacityConfig = pulumi.Input.asOptionalInput<ConnectClusterCapacityConfig>(capacityConfig),
-      connectClusterId = pulumi.Input.asOptionalInput<String>(connectClusterId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      gcpConfig = pulumi.Input.asOptionalInput<ConnectClusterGcpConfig>(gcpConfig),
-      kafkaCluster = pulumi.Input.asOptionalInput<String>(kafkaCluster),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.capacityConfig,
+    this.connectClusterId,
+    this.createTime,
+    this.effectiveLabels,
+    this.gcpConfig,
+    this.kafkaCluster,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.state,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class ConnectClusterState {
 
   factory ConnectClusterState.fromMap(Map<String, dynamic> map) {
     return ConnectClusterState(
-      capacityConfig: map['capacityConfig'] == null ? null : pulumi.Output.create<ConnectClusterCapacityConfig>(ConnectClusterCapacityConfig.fromMap((map['capacityConfig'] as Map).cast<String, dynamic>())),
-      connectClusterId: map['connectClusterId'] == null ? null : pulumi.Output.create<String>(map['connectClusterId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      gcpConfig: map['gcpConfig'] == null ? null : pulumi.Output.create<ConnectClusterGcpConfig>(ConnectClusterGcpConfig.fromMap((map['gcpConfig'] as Map).cast<String, dynamic>())),
-      kafkaCluster: map['kafkaCluster'] == null ? null : pulumi.Output.create<String>(map['kafkaCluster'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      capacityConfig: map['capacityConfig'] == null ? null : (ConnectClusterCapacityConfig.fromMap((map['capacityConfig'] as Map).cast<String, dynamic>())).input(),
+      connectClusterId: map['connectClusterId'] == null ? null : (map['connectClusterId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      gcpConfig: map['gcpConfig'] == null ? null : (ConnectClusterGcpConfig.fromMap((map['gcpConfig'] as Map).cast<String, dynamic>())).input(),
+      kafkaCluster: map['kafkaCluster'] == null ? null : (map['kafkaCluster'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

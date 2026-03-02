@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Scoping answer.
 class ScopingAnswerResponse {
   /// Question answer value list.
-  final List<String> answers;
+  final pulumi.Input<List<String>> answers;
   /// Question id.
-  final String questionId;
+  final pulumi.Input<String> questionId;
 
   /// Creates a new [ScopingAnswerResponse].
   /// [answers] Question answer value list.
@@ -25,8 +26,8 @@ class ScopingAnswerResponse {
 
   factory ScopingAnswerResponse.fromMap(Map<String, dynamic> map) {
     return ScopingAnswerResponse(
-      answers: (map['answers'] as List).cast<String>(),
-      questionId: map['questionId'] as String,
+      answers: ((map['answers'] as List).cast<String>()).input(),
+      questionId: (map['questionId'] as String).input(),
     );
   }
 }

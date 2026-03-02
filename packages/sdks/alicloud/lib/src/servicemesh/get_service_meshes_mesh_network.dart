@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceMeshesMeshNetwork {
   /// The ID of the Security group
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// The ID of the VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The list of Virtual Switch.
-  final List<String> vswitcheLists;
+  final pulumi.Input<List<String>> vswitcheLists;
 
   /// Creates a new [GetServiceMeshesMeshNetwork].
   /// [securityGroupId] The ID of the Security group
@@ -29,9 +30,9 @@ class GetServiceMeshesMeshNetwork {
 
   factory GetServiceMeshesMeshNetwork.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshNetwork(
-      securityGroupId: map['securityGroupId'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitcheLists: (map['vswitcheLists'] as List).cast<String>(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitcheLists: ((map['vswitcheLists'] as List).cast<String>()).input(),
     );
   }
 }

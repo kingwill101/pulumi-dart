@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SyntheticTaskMonitor {
   /// The city code of monitor.
-  final String cityCode;
+  final pulumi.Input<String> cityCode;
   /// The type of monitor.
-  final int clientType;
+  final pulumi.Input<int> clientType;
   /// The operator code of monitor.
-  final String operatorCode;
+  final pulumi.Input<String> operatorCode;
 
   /// Creates a new [SyntheticTaskMonitor].
   /// [cityCode] The city code of monitor.
@@ -29,9 +30,9 @@ class SyntheticTaskMonitor {
 
   factory SyntheticTaskMonitor.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskMonitor(
-      cityCode: map['cityCode'] as String,
-      clientType: map['clientType'] as int,
-      operatorCode: map['operatorCode'] as String,
+      cityCode: (map['cityCode'] as String).input(),
+      clientType: (map['clientType'] as int).input(),
+      operatorCode: (map['operatorCode'] as String).input(),
     );
   }
 }

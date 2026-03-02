@@ -47,31 +47,19 @@ class EntityTypeDialogflowV3beta1Args {
   /// [project] Optional.
   /// [redact] Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
   EntityTypeDialogflowV3beta1Args({
-    required pulumi.Output<String> agentId,
-    pulumi.Output<EntityTypeAutoExpansionModeDialogflowV3beta1>? autoExpansionMode,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enableFuzzyExtraction,
-    pulumi.Output<List<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>>? entities,
-    pulumi.Output<List<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase>>? excludedPhrases,
-    required pulumi.Output<EntityTypeKindDialogflowV3beta1> kind,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? redact,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      autoExpansionMode = pulumi.Input.asOptionalInput<EntityTypeAutoExpansionModeDialogflowV3beta1>(autoExpansionMode),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enableFuzzyExtraction = pulumi.Input.asOptionalInput<bool>(enableFuzzyExtraction),
-      entities = pulumi.Input.asOptionalInput<List<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>>(entities),
-      excludedPhrases = pulumi.Input.asOptionalInput<List<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase>>(excludedPhrases),
-      kind = pulumi.Input.asInput<EntityTypeKindDialogflowV3beta1>(kind),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      redact = pulumi.Input.asOptionalInput<bool>(redact);
+    required this.agentId,
+    this.autoExpansionMode,
+    required this.displayName,
+    this.enableFuzzyExtraction,
+    this.entities,
+    this.excludedPhrases,
+    required this.kind,
+    this.languageCode,
+    this.location,
+    this.name,
+    this.project,
+    this.redact,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class EntityTypeDialogflowV3beta1Args {
 
   factory EntityTypeDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return EntityTypeDialogflowV3beta1Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      autoExpansionMode: map['autoExpansionMode'] == null ? null : pulumi.Output.create<EntityTypeAutoExpansionModeDialogflowV3beta1>(EntityTypeAutoExpansionModeDialogflowV3beta1.fromValue(map['autoExpansionMode'] as String)),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : pulumi.Output.create<bool>(map['enableFuzzyExtraction'] as bool),
-      entities: map['entities'] == null ? null : pulumi.Output.create<List<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>>(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>(map['entities'], (value) => GoogleCloudDialogflowCxV3beta1EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))),
-      excludedPhrases: map['excludedPhrases'] == null ? null : pulumi.Output.create<List<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase>>(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase>(map['excludedPhrases'], (value) => GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>()))),
-      kind: pulumi.Output.create<EntityTypeKindDialogflowV3beta1>(EntityTypeKindDialogflowV3beta1.fromValue(map['kind'] as String)),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      redact: map['redact'] == null ? null : pulumi.Output.create<bool>(map['redact'] as bool),
+      agentId: (map['agentId'] as String).input(),
+      autoExpansionMode: map['autoExpansionMode'] == null ? null : (EntityTypeAutoExpansionModeDialogflowV3beta1.fromValue(map['autoExpansionMode'] as String)).input(),
+      displayName: (map['displayName'] as String).input(),
+      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction'] as bool).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>(map['entities'], (value) => GoogleCloudDialogflowCxV3beta1EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludedPhrases: map['excludedPhrases'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase>(map['excludedPhrases'], (value) => GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: (EntityTypeKindDialogflowV3beta1.fromValue(map['kind'] as String)).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      redact: map['redact'] == null ? null : (map['redact'] as bool).input(),
     );
   }
 }

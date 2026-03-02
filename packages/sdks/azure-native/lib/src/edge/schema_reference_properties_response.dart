@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Schema Reference Properties
 class SchemaReferencePropertiesResponse {
   /// Provisioning state of resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Schema Id of schema reference
-  final String schemaId;
+  final pulumi.Input<String> schemaId;
 
   /// Creates a new [SchemaReferencePropertiesResponse].
   /// [provisioningState] Provisioning state of resource
@@ -25,8 +26,8 @@ class SchemaReferencePropertiesResponse {
 
   factory SchemaReferencePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SchemaReferencePropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
-      schemaId: map['schemaId'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
+      schemaId: (map['schemaId'] as String).input(),
     );
   }
 }

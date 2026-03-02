@@ -31,21 +31,14 @@ class GetExportArgs {
   /// [specification] Version of the API specification to use. `OAS30`, for OpenAPI 3.0, is the only supported value.
   /// [stageName] Name of the API stage to export. If you don't specify this property, a representation of the latest API configuration is exported.
   GetExportArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? exportVersion,
-    pulumi.Output<bool>? includeExtensions,
-    required pulumi.Output<String> outputType,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> specification,
-    pulumi.Output<String>? stageName,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      exportVersion = pulumi.Input.asOptionalInput<String>(exportVersion),
-      includeExtensions = pulumi.Input.asOptionalInput<bool>(includeExtensions),
-      outputType = pulumi.Input.asInput<String>(outputType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      specification = pulumi.Input.asInput<String>(specification),
-      stageName = pulumi.Input.asOptionalInput<String>(stageName);
+    required this.apiId,
+    this.exportVersion,
+    this.includeExtensions,
+    required this.outputType,
+    this.region,
+    required this.specification,
+    this.stageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetExportArgs {
 
   factory GetExportArgs.fromMap(Map<String, dynamic> map) {
     return GetExportArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      exportVersion: map['exportVersion'] == null ? null : pulumi.Output.create<String>(map['exportVersion'] as String),
-      includeExtensions: map['includeExtensions'] == null ? null : pulumi.Output.create<bool>(map['includeExtensions'] as bool),
-      outputType: pulumi.Output.create<String>(map['outputType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      specification: pulumi.Output.create<String>(map['specification'] as String),
-      stageName: map['stageName'] == null ? null : pulumi.Output.create<String>(map['stageName'] as String),
+      apiId: (map['apiId'] as String).input(),
+      exportVersion: map['exportVersion'] == null ? null : (map['exportVersion'] as String).input(),
+      includeExtensions: map['includeExtensions'] == null ? null : (map['includeExtensions'] as bool).input(),
+      outputType: (map['outputType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      specification: (map['specification'] as String).input(),
+      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
     );
   }
 }

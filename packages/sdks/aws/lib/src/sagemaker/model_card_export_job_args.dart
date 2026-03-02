@@ -28,19 +28,13 @@ class ModelCardExportJobArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration
   /// [timeouts] Optional.
   ModelCardExportJobArgs({
-    required pulumi.Output<String> modelCardExportJobName,
-    required pulumi.Output<String> modelCardName,
-    pulumi.Output<int>? modelCardVersion,
-    required pulumi.Output<ModelCardExportJobOutputConfig> outputConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<ModelCardExportJobTimeouts>? timeouts,
-  }) :
-      modelCardExportJobName = pulumi.Input.asInput<String>(modelCardExportJobName),
-      modelCardName = pulumi.Input.asInput<String>(modelCardName),
-      modelCardVersion = pulumi.Input.asOptionalInput<int>(modelCardVersion),
-      outputConfig = pulumi.Input.asInput<ModelCardExportJobOutputConfig>(outputConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<ModelCardExportJobTimeouts>(timeouts);
+    required this.modelCardExportJobName,
+    required this.modelCardName,
+    this.modelCardVersion,
+    required this.outputConfig,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ModelCardExportJobArgs {
 
   factory ModelCardExportJobArgs.fromMap(Map<String, dynamic> map) {
     return ModelCardExportJobArgs(
-      modelCardExportJobName: pulumi.Output.create<String>(map['modelCardExportJobName'] as String),
-      modelCardName: pulumi.Output.create<String>(map['modelCardName'] as String),
-      modelCardVersion: map['modelCardVersion'] == null ? null : pulumi.Output.create<int>(map['modelCardVersion'] as int),
-      outputConfig: pulumi.Output.create<ModelCardExportJobOutputConfig>(ModelCardExportJobOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ModelCardExportJobTimeouts>(ModelCardExportJobTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      modelCardExportJobName: (map['modelCardExportJobName'] as String).input(),
+      modelCardName: (map['modelCardName'] as String).input(),
+      modelCardVersion: map['modelCardVersion'] == null ? null : (map['modelCardVersion'] as int).input(),
+      outputConfig: (ModelCardExportJobOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (ModelCardExportJobTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

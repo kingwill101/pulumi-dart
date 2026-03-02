@@ -19,13 +19,10 @@ class GetBookmarkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   GetBookmarkArgs({
-    required pulumi.Output<String> bookmarkId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      bookmarkId = pulumi.Input.asInput<String>(bookmarkId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.bookmarkId,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBookmarkArgs {
 
   factory GetBookmarkArgs.fromMap(Map<String, dynamic> map) {
     return GetBookmarkArgs(
-      bookmarkId: pulumi.Output.create<String>(map['bookmarkId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      bookmarkId: (map['bookmarkId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

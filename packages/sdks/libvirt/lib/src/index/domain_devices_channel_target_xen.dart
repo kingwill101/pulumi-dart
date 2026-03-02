@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesChannelTargetXen {
   /// This field sets the name for the Xen channel target.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// This field configures the state of the Xen channel target.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [DomainDevicesChannelTargetXen].
   /// [name] This field sets the name for the Xen channel target.
@@ -24,8 +25,8 @@ class DomainDevicesChannelTargetXen {
 
   factory DomainDevicesChannelTargetXen.fromMap(Map<String, dynamic> map) {
     return DomainDevicesChannelTargetXen(
-      name: map['name'] == null ? null : map['name'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

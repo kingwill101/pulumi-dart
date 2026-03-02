@@ -27,17 +27,12 @@ class SharedPrivateLinkResourceArgs {
   /// [subResourceName] The sub resource name which the Signalr Private Endpoint can connect to. Possible values are `sites`, `vault`. Changing this forces a new resource to be created.
   /// [targetResourceId] The ID of the Shared Private Link Enabled Remote Resource which this Signalr Private Endpoint should be connected to. Changing this forces a new resource to be created.
   SharedPrivateLinkResourceArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? requestMessage,
-    required pulumi.Output<String> signalrServiceId,
-    required pulumi.Output<String> subResourceName,
-    required pulumi.Output<String> targetResourceId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      requestMessage = pulumi.Input.asOptionalInput<String>(requestMessage),
-      signalrServiceId = pulumi.Input.asInput<String>(signalrServiceId),
-      subResourceName = pulumi.Input.asInput<String>(subResourceName),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId);
+    this.name,
+    this.requestMessage,
+    required this.signalrServiceId,
+    required this.subResourceName,
+    required this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class SharedPrivateLinkResourceArgs {
 
   factory SharedPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      requestMessage: map['requestMessage'] == null ? null : pulumi.Output.create<String>(map['requestMessage'] as String),
-      signalrServiceId: pulumi.Output.create<String>(map['signalrServiceId'] as String),
-      subResourceName: pulumi.Output.create<String>(map['subResourceName'] as String),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      signalrServiceId: (map['signalrServiceId'] as String).input(),
+      subResourceName: (map['subResourceName'] as String).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }
 }

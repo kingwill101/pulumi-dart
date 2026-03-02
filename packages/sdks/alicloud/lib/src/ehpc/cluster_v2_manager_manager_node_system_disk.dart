@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterV2ManagerManagerNodeSystemDisk {
   /// Manage the system disk configuration of the node. Value range:
@@ -7,13 +8,13 @@ class ClusterV2ManagerManagerNodeSystemDisk {
   /// - cloud_ssd:SSD cloud disk.
   /// - cloud_essd:ESSD cloud disk.
   /// - cloud: ordinary cloud disk.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
   /// - PL0: maximum random read/write IOPS 10000 for a single disk.
   /// - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
   /// - PL2: maximum random read/write IOPS 100000 for a single disk.
   /// - PL3: maximum random read/write IOPS 1 million for a single disk.
-  final String? level;
+  final pulumi.Input<String>? level;
   /// The system disk size of the management node. Unit: GiB. Value range:
   /// - Ordinary cloud tray: 20~500.
   /// - ESSD cloud disk:
@@ -22,7 +23,7 @@ class ClusterV2ManagerManagerNodeSystemDisk {
   /// - PL2:461~2048.
   /// - PL3:1261~2048.
   /// - Other cloud disk types: 20~2048.
-  final int? size;
+  final pulumi.Input<int>? size;
 
   /// Creates a new [ClusterV2ManagerManagerNodeSystemDisk].
   /// [category] Manage the system disk configuration of the node. Value range:
@@ -44,9 +45,9 @@ class ClusterV2ManagerManagerNodeSystemDisk {
 
   factory ClusterV2ManagerManagerNodeSystemDisk.fromMap(Map<String, dynamic> map) {
     return ClusterV2ManagerManagerNodeSystemDisk(
-      category: map['category'] == null ? null : map['category'] as String,
-      level: map['level'] == null ? null : map['level'] as String,
-      size: map['size'] == null ? null : map['size'] as int,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      level: map['level'] == null ? null : (map['level'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

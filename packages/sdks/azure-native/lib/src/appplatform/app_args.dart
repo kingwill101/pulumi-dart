@@ -30,19 +30,13 @@ class AppArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   AppArgs({
-    pulumi.Output<String>? appName,
-    pulumi.Output<ManagedIdentityProperties>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<AppResourceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      appName = pulumi.Input.asOptionalInput<String>(appName),
-      identity = pulumi.Input.asOptionalInput<ManagedIdentityProperties>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<AppResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.appName,
+    this.identity,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class AppArgs {
 
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
-      appName: map['appName'] == null ? null : pulumi.Output.create<String>(map['appName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedIdentityProperties>(ManagedIdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<AppResourceProperties>(AppResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (AppResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

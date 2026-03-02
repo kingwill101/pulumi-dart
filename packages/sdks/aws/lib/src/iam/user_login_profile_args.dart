@@ -22,15 +22,11 @@ class UserLoginProfileArgs {
   /// [pgpKey] Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:username`. Only applies on resource creation. Drift detection is not possible with this argument.
   /// [user] The IAM user's name.
   UserLoginProfileArgs({
-    pulumi.Output<int>? passwordLength,
-    pulumi.Output<bool>? passwordResetRequired,
-    pulumi.Output<String>? pgpKey,
-    required pulumi.Output<String> user,
-  }) :
-      passwordLength = pulumi.Input.asOptionalInput<int>(passwordLength),
-      passwordResetRequired = pulumi.Input.asOptionalInput<bool>(passwordResetRequired),
-      pgpKey = pulumi.Input.asOptionalInput<String>(pgpKey),
-      user = pulumi.Input.asInput<String>(user);
+    this.passwordLength,
+    this.passwordResetRequired,
+    this.pgpKey,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class UserLoginProfileArgs {
 
   factory UserLoginProfileArgs.fromMap(Map<String, dynamic> map) {
     return UserLoginProfileArgs(
-      passwordLength: map['passwordLength'] == null ? null : pulumi.Output.create<int>(map['passwordLength'] as int),
-      passwordResetRequired: map['passwordResetRequired'] == null ? null : pulumi.Output.create<bool>(map['passwordResetRequired'] as bool),
-      pgpKey: map['pgpKey'] == null ? null : pulumi.Output.create<String>(map['pgpKey'] as String),
-      user: pulumi.Output.create<String>(map['user'] as String),
+      passwordLength: map['passwordLength'] == null ? null : (map['passwordLength'] as int).input(),
+      passwordResetRequired: map['passwordResetRequired'] == null ? null : (map['passwordResetRequired'] as bool).input(),
+      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

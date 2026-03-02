@@ -32,21 +32,14 @@ class ClusterParameterGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ClusterParameterGroupArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> family,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<List<ClusterParameterGroupParameter>>? parameters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      family = pulumi.Input.asInput<String>(family),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      parameters = pulumi.Input.asOptionalInput<List<ClusterParameterGroupParameter>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.family,
+    this.name,
+    this.namePrefix,
+    this.parameters,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ClusterParameterGroupArgs {
 
   factory ClusterParameterGroupArgs.fromMap(Map<String, dynamic> map) {
     return ClusterParameterGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      family: pulumi.Output.create<String>(map['family'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<ClusterParameterGroupParameter>>(pulumi.Input.decodeList<ClusterParameterGroupParameter>(map['parameters'], (value) => ClusterParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      family: (map['family'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ClusterParameterGroupParameter>(map['parameters'], (value) => ClusterParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

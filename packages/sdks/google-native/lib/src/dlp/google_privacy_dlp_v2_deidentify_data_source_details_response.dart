@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_deidentify_data_source_stats_response.dart';
 import 'google_privacy_dlp_v2_requested_deidentify_options_response.dart';
 
 /// The results of a Deidentify action from an inspect job.
 class GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse {
   /// Stats about the de-identification operation.
-  final GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse deidentifyStats;
+  final pulumi.Input<GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse> deidentifyStats;
   /// De-identification config used for the request.
-  final GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse requestedOptions;
+  final pulumi.Input<GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse> requestedOptions;
 
   /// Creates a new [GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse].
   /// [deidentifyStats] Stats about the de-identification operation.
@@ -20,15 +21,15 @@ class GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deidentifyStats': deidentifyStats.toMap(),
-      'requestedOptions': requestedOptions.toMap(),
+      'deidentifyStats': pulumi.Input.mapInputValue<GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse, Map<String, dynamic>>(deidentifyStats, (value) => value.toMap()),
+      'requestedOptions': pulumi.Input.mapInputValue<GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse, Map<String, dynamic>>(requestedOptions, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse(
-      deidentifyStats: GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse.fromMap((map['deidentifyStats'] as Map).cast<String, dynamic>()),
-      requestedOptions: GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse.fromMap((map['requestedOptions'] as Map).cast<String, dynamic>()),
+      deidentifyStats: (GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse.fromMap((map['deidentifyStats'] as Map).cast<String, dynamic>())).input(),
+      requestedOptions: (GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse.fromMap((map['requestedOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

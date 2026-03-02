@@ -48,29 +48,18 @@ class MetricStreamArgs {
   /// [statisticsConfigurations] For each entry in this array, you specify one or more metrics and the list of additional statistics to stream for those metrics. The additional statistics that you can stream depend on the stream's `output_format`. If the OutputFormat is `json`, you can stream any additional statistic that is supported by CloudWatch, listed in [CloudWatch statistics definitions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Statistics-definitions.html.html). If the OutputFormat is `opentelemetry0.7` or `opentelemetry1.0`, you can stream percentile statistics (p99 etc.). See details below.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   MetricStreamArgs({
-    pulumi.Output<List<MetricStreamExcludeFilter>>? excludeFilters,
-    required pulumi.Output<String> firehoseArn,
-    pulumi.Output<List<MetricStreamIncludeFilter>>? includeFilters,
-    pulumi.Output<bool>? includeLinkedAccountsMetrics,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    required pulumi.Output<String> outputFormat,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<List<MetricStreamStatisticsConfiguration>>? statisticsConfigurations,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      excludeFilters = pulumi.Input.asOptionalInput<List<MetricStreamExcludeFilter>>(excludeFilters),
-      firehoseArn = pulumi.Input.asInput<String>(firehoseArn),
-      includeFilters = pulumi.Input.asOptionalInput<List<MetricStreamIncludeFilter>>(includeFilters),
-      includeLinkedAccountsMetrics = pulumi.Input.asOptionalInput<bool>(includeLinkedAccountsMetrics),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      outputFormat = pulumi.Input.asInput<String>(outputFormat),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      statisticsConfigurations = pulumi.Input.asOptionalInput<List<MetricStreamStatisticsConfiguration>>(statisticsConfigurations),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.excludeFilters,
+    required this.firehoseArn,
+    this.includeFilters,
+    this.includeLinkedAccountsMetrics,
+    this.name,
+    this.namePrefix,
+    required this.outputFormat,
+    this.region,
+    required this.roleArn,
+    this.statisticsConfigurations,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,17 +79,17 @@ class MetricStreamArgs {
 
   factory MetricStreamArgs.fromMap(Map<String, dynamic> map) {
     return MetricStreamArgs(
-      excludeFilters: map['excludeFilters'] == null ? null : pulumi.Output.create<List<MetricStreamExcludeFilter>>(pulumi.Input.decodeList<MetricStreamExcludeFilter>(map['excludeFilters'], (value) => MetricStreamExcludeFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      firehoseArn: pulumi.Output.create<String>(map['firehoseArn'] as String),
-      includeFilters: map['includeFilters'] == null ? null : pulumi.Output.create<List<MetricStreamIncludeFilter>>(pulumi.Input.decodeList<MetricStreamIncludeFilter>(map['includeFilters'], (value) => MetricStreamIncludeFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      includeLinkedAccountsMetrics: map['includeLinkedAccountsMetrics'] == null ? null : pulumi.Output.create<bool>(map['includeLinkedAccountsMetrics'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      outputFormat: pulumi.Output.create<String>(map['outputFormat'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      statisticsConfigurations: map['statisticsConfigurations'] == null ? null : pulumi.Output.create<List<MetricStreamStatisticsConfiguration>>(pulumi.Input.decodeList<MetricStreamStatisticsConfiguration>(map['statisticsConfigurations'], (value) => MetricStreamStatisticsConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      excludeFilters: map['excludeFilters'] == null ? null : (pulumi.Input.decodeList<MetricStreamExcludeFilter>(map['excludeFilters'], (value) => MetricStreamExcludeFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      firehoseArn: (map['firehoseArn'] as String).input(),
+      includeFilters: map['includeFilters'] == null ? null : (pulumi.Input.decodeList<MetricStreamIncludeFilter>(map['includeFilters'], (value) => MetricStreamIncludeFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includeLinkedAccountsMetrics: map['includeLinkedAccountsMetrics'] == null ? null : (map['includeLinkedAccountsMetrics'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      outputFormat: (map['outputFormat'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      statisticsConfigurations: map['statisticsConfigurations'] == null ? null : (pulumi.Input.decodeList<MetricStreamStatisticsConfiguration>(map['statisticsConfigurations'], (value) => MetricStreamStatisticsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

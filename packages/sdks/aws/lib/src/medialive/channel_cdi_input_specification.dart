@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelCdiInputSpecification {
   /// Maximum CDI input resolution.
-  final String resolution;
+  final pulumi.Input<String> resolution;
 
   /// Creates a new [ChannelCdiInputSpecification].
   /// [resolution] Maximum CDI input resolution.
@@ -19,7 +20,7 @@ class ChannelCdiInputSpecification {
 
   factory ChannelCdiInputSpecification.fromMap(Map<String, dynamic> map) {
     return ChannelCdiInputSpecification(
-      resolution: map['resolution'] as String,
+      resolution: (map['resolution'] as String).input(),
     );
   }
 }

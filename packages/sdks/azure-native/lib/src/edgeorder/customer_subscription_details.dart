@@ -6,11 +6,11 @@ import 'customer_subscription_registered_features.dart';
 /// Holds Customer subscription details. Clients can display available products to unregistered customers by explicitly passing subscription details.
 class CustomerSubscriptionDetails {
   /// Location placement Id of a subscription.
-  final String? locationPlacementId;
+  final pulumi.Input<String>? locationPlacementId;
   /// Quota ID of a subscription.
-  final String quotaId;
+  final pulumi.Input<String> quotaId;
   /// List of registered feature flags for subscription.
-  final List<CustomerSubscriptionRegisteredFeatures>? registeredFeatures;
+  final pulumi.Input<List<CustomerSubscriptionRegisteredFeatures>>? registeredFeatures;
 
   /// Creates a new [CustomerSubscriptionDetails].
   /// [locationPlacementId] Location placement Id of a subscription.
@@ -26,15 +26,15 @@ class CustomerSubscriptionDetails {
     return <String, dynamic>{
       'locationPlacementId': ?locationPlacementId,
       'quotaId': quotaId,
-      'registeredFeatures': ?registeredFeatures == null ? null : pulumi.Input.encodeList<CustomerSubscriptionRegisteredFeatures, Map<String, dynamic>>(registeredFeatures!, (value) => value.toMap()),
+      'registeredFeatures': ?pulumi.Input.mapOptionalInputValue<List<CustomerSubscriptionRegisteredFeatures>, List<Map<String, dynamic>>>(registeredFeatures, (value) => pulumi.Input.encodeList<CustomerSubscriptionRegisteredFeatures, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CustomerSubscriptionDetails.fromMap(Map<String, dynamic> map) {
     return CustomerSubscriptionDetails(
-      locationPlacementId: map['locationPlacementId'] == null ? null : map['locationPlacementId'] as String,
-      quotaId: map['quotaId'] as String,
-      registeredFeatures: map['registeredFeatures'] == null ? null : pulumi.Input.decodeList<CustomerSubscriptionRegisteredFeatures>(map['registeredFeatures'], (value) => CustomerSubscriptionRegisteredFeatures.fromMap((value as Map).cast<String, dynamic>())),
+      locationPlacementId: map['locationPlacementId'] == null ? null : (map['locationPlacementId'] as String).input(),
+      quotaId: (map['quotaId'] as String).input(),
+      registeredFeatures: map['registeredFeatures'] == null ? null : (pulumi.Input.decodeList<CustomerSubscriptionRegisteredFeatures>(map['registeredFeatures'], (value) => CustomerSubscriptionRegisteredFeatures.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountKeyVaultReference {
   /// The Azure identifier of the Azure KeyVault reference.
-  final String id;
+  final pulumi.Input<String> id;
   /// The HTTPS URL of the Azure KeyVault reference.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [GetAccountKeyVaultReference].
   /// [id] The Azure identifier of the Azure KeyVault reference.
@@ -24,8 +25,8 @@ class GetAccountKeyVaultReference {
 
   factory GetAccountKeyVaultReference.fromMap(Map<String, dynamic> map) {
     return GetAccountKeyVaultReference(
-      id: map['id'] as String,
-      url: map['url'] as String,
+      id: (map['id'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

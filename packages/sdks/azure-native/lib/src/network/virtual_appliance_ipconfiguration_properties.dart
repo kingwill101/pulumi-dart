@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a single IP configuration properties.
 class VirtualApplianceIPConfigurationProperties {
   /// Whether or not this is primary IP configuration of the NIC.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
 
   /// Creates a new [VirtualApplianceIPConfigurationProperties].
   /// [primary] Whether or not this is primary IP configuration of the NIC.
@@ -20,7 +21,7 @@ class VirtualApplianceIPConfigurationProperties {
 
   factory VirtualApplianceIPConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceIPConfigurationProperties(
-      primary: map['primary'] == null ? null : map['primary'] as bool,
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
     );
   }
 }

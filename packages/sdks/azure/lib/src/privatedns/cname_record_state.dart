@@ -28,21 +28,14 @@ class CnameRecordState {
   /// [ttl] The Time To Live (TTL) of the DNS record in seconds. Possible values are between `0` and `2147483647`.
   /// [zoneName] Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
   CnameRecordState({
-    pulumi.Output<String>? fqdn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? record,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? ttl,
-    pulumi.Output<String>? zoneName,
-  }) :
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      record = pulumi.Input.asOptionalInput<String>(record),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      zoneName = pulumi.Input.asOptionalInput<String>(zoneName);
+    this.fqdn,
+    this.name,
+    this.record,
+    this.resourceGroupName,
+    this.tags,
+    this.ttl,
+    this.zoneName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class CnameRecordState {
 
   factory CnameRecordState.fromMap(Map<String, dynamic> map) {
     return CnameRecordState(
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<String>(map['fqdn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      record: map['record'] == null ? null : pulumi.Output.create<String>(map['record'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      zoneName: map['zoneName'] == null ? null : pulumi.Output.create<String>(map['zoneName'] as String),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      record: map['record'] == null ? null : (map['record'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      zoneName: map['zoneName'] == null ? null : (map['zoneName'] as String).input(),
     );
   }
 }

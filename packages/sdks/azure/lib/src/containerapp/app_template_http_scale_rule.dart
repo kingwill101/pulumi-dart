@@ -5,11 +5,11 @@ import 'app_template_http_scale_rule_authentication.dart';
 
 class AppTemplateHttpScaleRule {
   /// Zero or more `authentication` blocks as defined below.
-  final List<AppTemplateHttpScaleRuleAuthentication>? authentications;
+  final pulumi.Input<List<AppTemplateHttpScaleRuleAuthentication>>? authentications;
   /// The number of concurrent requests to trigger scaling.
-  final String concurrentRequests;
+  final pulumi.Input<String> concurrentRequests;
   /// The name of the Scaling Rule
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [AppTemplateHttpScaleRule].
   /// [authentications] Zero or more `authentication` blocks as defined below.
@@ -23,7 +23,7 @@ class AppTemplateHttpScaleRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentications': ?authentications == null ? null : pulumi.Input.encodeList<AppTemplateHttpScaleRuleAuthentication, Map<String, dynamic>>(authentications!, (value) => value.toMap()),
+      'authentications': ?pulumi.Input.mapOptionalInputValue<List<AppTemplateHttpScaleRuleAuthentication>, List<Map<String, dynamic>>>(authentications, (value) => pulumi.Input.encodeList<AppTemplateHttpScaleRuleAuthentication, Map<String, dynamic>>(value, (value) => value.toMap())),
       'concurrentRequests': concurrentRequests,
       'name': name,
     };
@@ -31,9 +31,9 @@ class AppTemplateHttpScaleRule {
 
   factory AppTemplateHttpScaleRule.fromMap(Map<String, dynamic> map) {
     return AppTemplateHttpScaleRule(
-      authentications: map['authentications'] == null ? null : pulumi.Input.decodeList<AppTemplateHttpScaleRuleAuthentication>(map['authentications'], (value) => AppTemplateHttpScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>())),
-      concurrentRequests: map['concurrentRequests'] as String,
-      name: map['name'] as String,
+      authentications: map['authentications'] == null ? null : (pulumi.Input.decodeList<AppTemplateHttpScaleRuleAuthentication>(map['authentications'], (value) => AppTemplateHttpScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      concurrentRequests: (map['concurrentRequests'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

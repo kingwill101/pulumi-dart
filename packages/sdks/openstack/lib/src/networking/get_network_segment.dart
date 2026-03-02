@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkSegment {
-  final String networkType;
-  final String physicalNetwork;
-  final int segmentationId;
+  final pulumi.Input<String> networkType;
+  final pulumi.Input<String> physicalNetwork;
+  final pulumi.Input<int> segmentationId;
 
   /// Creates a new [GetNetworkSegment].
   /// [networkType] Required.
@@ -26,9 +27,9 @@ class GetNetworkSegment {
 
   factory GetNetworkSegment.fromMap(Map<String, dynamic> map) {
     return GetNetworkSegment(
-      networkType: map['networkType'] as String,
-      physicalNetwork: map['physicalNetwork'] as String,
-      segmentationId: map['segmentationId'] as int,
+      networkType: (map['networkType'] as String).input(),
+      physicalNetwork: (map['physicalNetwork'] as String).input(),
+      segmentationId: (map['segmentationId'] as int).input(),
     );
   }
 }

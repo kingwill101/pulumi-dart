@@ -13,9 +13,8 @@ class GetPrimaryContactArgs {
   /// Creates a new [GetPrimaryContactArgs].
   /// [accountId] The ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
   GetPrimaryContactArgs({
-    pulumi.Output<String>? accountId,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId);
+    this.accountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetPrimaryContactArgs {
 
   factory GetPrimaryContactArgs.fromMap(Map<String, dynamic> map) {
     return GetPrimaryContactArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
     );
   }
 }

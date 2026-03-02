@@ -50,31 +50,19 @@ class UserArgs {
   /// [username] The username for the user. Must be unique within the user pool. Must be a UTF-8 string between 1 and 128 characters. After the user is created, the username cannot be changed.
   /// [validationData] The user's validation data. This is an array of name-value pairs that contain user attributes and attribute values that you can use for custom validation, such as restricting the types of user accounts that can be registered. Amazon Cognito does not store the `validation_data` value. For more information, see [Customizing User Pool Workflows with Lambda Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html).
   UserArgs({
-    pulumi.Output<Map<String, String>>? attributes,
-    pulumi.Output<Map<String, String>>? clientMetadata,
-    pulumi.Output<List<String>>? desiredDeliveryMediums,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? forceAliasCreation,
-    pulumi.Output<String>? messageAction,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? temporaryPassword,
-    required pulumi.Output<String> userPoolId,
-    required pulumi.Output<String> username,
-    pulumi.Output<Map<String, String>>? validationData,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<Map<String, String>>(attributes),
-      clientMetadata = pulumi.Input.asOptionalInput<Map<String, String>>(clientMetadata),
-      desiredDeliveryMediums = pulumi.Input.asOptionalInput<List<String>>(desiredDeliveryMediums),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      forceAliasCreation = pulumi.Input.asOptionalInput<bool>(forceAliasCreation),
-      messageAction = pulumi.Input.asOptionalInput<String>(messageAction),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      temporaryPassword = pulumi.Input.asOptionalInput<String>(temporaryPassword),
-      userPoolId = pulumi.Input.asInput<String>(userPoolId),
-      username = pulumi.Input.asInput<String>(username),
-      validationData = pulumi.Input.asOptionalInput<Map<String, String>>(validationData);
+    this.attributes,
+    this.clientMetadata,
+    this.desiredDeliveryMediums,
+    this.enabled,
+    this.forceAliasCreation,
+    this.messageAction,
+    this.password,
+    this.region,
+    this.temporaryPassword,
+    required this.userPoolId,
+    required this.username,
+    this.validationData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<Map<String, String>>((map['attributes'] as Map).cast<String, String>()),
-      clientMetadata: map['clientMetadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['clientMetadata'] as Map).cast<String, String>()),
-      desiredDeliveryMediums: map['desiredDeliveryMediums'] == null ? null : pulumi.Output.create<List<String>>((map['desiredDeliveryMediums'] as List).cast<String>()),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      forceAliasCreation: map['forceAliasCreation'] == null ? null : pulumi.Output.create<bool>(map['forceAliasCreation'] as bool),
-      messageAction: map['messageAction'] == null ? null : pulumi.Output.create<String>(map['messageAction'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      temporaryPassword: map['temporaryPassword'] == null ? null : pulumi.Output.create<String>(map['temporaryPassword'] as String),
-      userPoolId: pulumi.Output.create<String>(map['userPoolId'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
-      validationData: map['validationData'] == null ? null : pulumi.Output.create<Map<String, String>>((map['validationData'] as Map).cast<String, String>()),
+      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
+      clientMetadata: map['clientMetadata'] == null ? null : ((map['clientMetadata'] as Map).cast<String, String>()).input(),
+      desiredDeliveryMediums: map['desiredDeliveryMediums'] == null ? null : ((map['desiredDeliveryMediums'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      forceAliasCreation: map['forceAliasCreation'] == null ? null : (map['forceAliasCreation'] as bool).input(),
+      messageAction: map['messageAction'] == null ? null : (map['messageAction'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      temporaryPassword: map['temporaryPassword'] == null ? null : (map['temporaryPassword'] as String).input(),
+      userPoolId: (map['userPoolId'] as String).input(),
+      username: (map['username'] as String).input(),
+      validationData: map['validationData'] == null ? null : ((map['validationData'] as Map).cast<String, String>()).input(),
     );
   }
 }

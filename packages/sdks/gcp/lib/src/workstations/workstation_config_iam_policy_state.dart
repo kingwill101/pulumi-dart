@@ -31,19 +31,13 @@ class WorkstationConfigIamPolicyState {
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] Used to find the parent resource to bind the IAM policy to
   WorkstationConfigIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? workstationClusterId,
-    pulumi.Output<String>? workstationConfigId,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workstationClusterId = pulumi.Input.asOptionalInput<String>(workstationClusterId),
-      workstationConfigId = pulumi.Input.asOptionalInput<String>(workstationConfigId);
+    this.etag,
+    this.location,
+    this.policyData,
+    this.project,
+    this.workstationClusterId,
+    this.workstationConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class WorkstationConfigIamPolicyState {
 
   factory WorkstationConfigIamPolicyState.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workstationClusterId: map['workstationClusterId'] == null ? null : pulumi.Output.create<String>(map['workstationClusterId'] as String),
-      workstationConfigId: map['workstationConfigId'] == null ? null : pulumi.Output.create<String>(map['workstationConfigId'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workstationClusterId: map['workstationClusterId'] == null ? null : (map['workstationClusterId'] as String).input(),
+      workstationConfigId: map['workstationConfigId'] == null ? null : (map['workstationConfigId'] as String).input(),
     );
   }
 }

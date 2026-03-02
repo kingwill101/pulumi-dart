@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of SQL Server ESU license.
 class SqlServerEsuLicensePropertiesResponse {
   /// The timestamp of the activation of the SqlServerEsuLicense in ISO 8601 date-time format.
-  final String activatedAt;
+  final pulumi.Input<String> activatedAt;
   /// The activation state of the license.
-  final String activationState;
+  final pulumi.Input<String> activationState;
   /// SQL Server ESU license type.
-  final String billingPlan;
+  final pulumi.Input<String> billingPlan;
   /// The number of total cores of the license covers.
-  final int physicalCores;
+  final pulumi.Input<int> physicalCores;
   /// The Azure scope to which the license will apply.
-  final String scopeType;
+  final pulumi.Input<String> scopeType;
   /// The tenantId the SQL Server ESU license resource subscription resides in.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The timestamp of the termination of the SqlServerEsuLicense in ISO 8601 date-time format.
-  final String terminatedAt;
+  final pulumi.Input<String> terminatedAt;
   /// The unique ID of this license. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  final String uniqueId;
+  final pulumi.Input<String> uniqueId;
   /// The SQL Server version the license covers.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [SqlServerEsuLicensePropertiesResponse].
   /// [activatedAt] The timestamp of the activation of the SqlServerEsuLicense in ISO 8601 date-time format.
@@ -60,15 +61,15 @@ class SqlServerEsuLicensePropertiesResponse {
 
   factory SqlServerEsuLicensePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlServerEsuLicensePropertiesResponse(
-      activatedAt: map['activatedAt'] as String,
-      activationState: map['activationState'] as String,
-      billingPlan: map['billingPlan'] as String,
-      physicalCores: map['physicalCores'] as int,
-      scopeType: map['scopeType'] as String,
-      tenantId: map['tenantId'] as String,
-      terminatedAt: map['terminatedAt'] as String,
-      uniqueId: map['uniqueId'] as String,
-      version: map['version'] as String,
+      activatedAt: (map['activatedAt'] as String).input(),
+      activationState: (map['activationState'] as String).input(),
+      billingPlan: (map['billingPlan'] as String).input(),
+      physicalCores: (map['physicalCores'] as int).input(),
+      scopeType: (map['scopeType'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      terminatedAt: (map['terminatedAt'] as String).input(),
+      uniqueId: (map['uniqueId'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

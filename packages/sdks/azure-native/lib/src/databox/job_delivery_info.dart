@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional delivery info.
 class JobDeliveryInfo {
   /// Scheduled date time.
-  final String? scheduledDateTime;
+  final pulumi.Input<String>? scheduledDateTime;
 
   /// Creates a new [JobDeliveryInfo].
   /// [scheduledDateTime] Scheduled date time.
@@ -20,7 +21,7 @@ class JobDeliveryInfo {
 
   factory JobDeliveryInfo.fromMap(Map<String, dynamic> map) {
     return JobDeliveryInfo(
-      scheduledDateTime: map['scheduledDateTime'] == null ? null : map['scheduledDateTime'] as String,
+      scheduledDateTime: map['scheduledDateTime'] == null ? null : (map['scheduledDateTime'] as String).input(),
     );
   }
 }

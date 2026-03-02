@@ -8,19 +8,19 @@ import 'get_genai_knowledge_base_data_sources_datasource_web_crawler_data_source
 
 class GetGenaiKnowledgeBaseDataSourcesDatasource {
   /// Created At timestamp for the Knowledge Base
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// File upload data source configuration
-  final List<GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource>? fileUploadDataSources;
+  final pulumi.Input<List<GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource>>? fileUploadDataSources;
   /// Last indexing job for the data source
-  final List<GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob>? lastIndexingJobs;
+  final pulumi.Input<List<GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob>>? lastIndexingJobs;
   /// Spaces data source configuration
-  final List<GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource>? spacesDataSources;
+  final pulumi.Input<List<GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource>>? spacesDataSources;
   /// Timestamp when the Knowledge Base was updated
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
   /// UUID of the Knowledge Base
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
   /// Web crawler data source configuration
-  final List<GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource>? webCrawlerDataSources;
+  final pulumi.Input<List<GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource>>? webCrawlerDataSources;
 
   /// Creates a new [GetGenaiKnowledgeBaseDataSourcesDatasource].
   /// [createdAt] Created At timestamp for the Knowledge Base
@@ -43,24 +43,24 @@ class GetGenaiKnowledgeBaseDataSourcesDatasource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createdAt': createdAt,
-      'fileUploadDataSources': ?fileUploadDataSources == null ? null : pulumi.Input.encodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource, Map<String, dynamic>>(fileUploadDataSources!, (value) => value.toMap()),
-      'lastIndexingJobs': ?lastIndexingJobs == null ? null : pulumi.Input.encodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob, Map<String, dynamic>>(lastIndexingJobs!, (value) => value.toMap()),
-      'spacesDataSources': ?spacesDataSources == null ? null : pulumi.Input.encodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource, Map<String, dynamic>>(spacesDataSources!, (value) => value.toMap()),
+      'fileUploadDataSources': ?pulumi.Input.mapOptionalInputValue<List<GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource>, List<Map<String, dynamic>>>(fileUploadDataSources, (value) => pulumi.Input.encodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lastIndexingJobs': ?pulumi.Input.mapOptionalInputValue<List<GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob>, List<Map<String, dynamic>>>(lastIndexingJobs, (value) => pulumi.Input.encodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'spacesDataSources': ?pulumi.Input.mapOptionalInputValue<List<GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource>, List<Map<String, dynamic>>>(spacesDataSources, (value) => pulumi.Input.encodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updatedAt': updatedAt,
       'uuid': ?uuid,
-      'webCrawlerDataSources': ?webCrawlerDataSources == null ? null : pulumi.Input.encodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource, Map<String, dynamic>>(webCrawlerDataSources!, (value) => value.toMap()),
+      'webCrawlerDataSources': ?pulumi.Input.mapOptionalInputValue<List<GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource>, List<Map<String, dynamic>>>(webCrawlerDataSources, (value) => pulumi.Input.encodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetGenaiKnowledgeBaseDataSourcesDatasource.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseDataSourcesDatasource(
-      createdAt: map['createdAt'] as String,
-      fileUploadDataSources: map['fileUploadDataSources'] == null ? null : pulumi.Input.decodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource>(map['fileUploadDataSources'], (value) => GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource.fromMap((value as Map).cast<String, dynamic>())),
-      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : pulumi.Input.decodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob>(map['lastIndexingJobs'], (value) => GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob.fromMap((value as Map).cast<String, dynamic>())),
-      spacesDataSources: map['spacesDataSources'] == null ? null : pulumi.Input.decodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource>(map['spacesDataSources'], (value) => GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource.fromMap((value as Map).cast<String, dynamic>())),
-      updatedAt: map['updatedAt'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
-      webCrawlerDataSources: map['webCrawlerDataSources'] == null ? null : pulumi.Input.decodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource>(map['webCrawlerDataSources'], (value) => GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource.fromMap((value as Map).cast<String, dynamic>())),
+      createdAt: (map['createdAt'] as String).input(),
+      fileUploadDataSources: map['fileUploadDataSources'] == null ? null : (pulumi.Input.decodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource>(map['fileUploadDataSources'], (value) => GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : (pulumi.Input.decodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob>(map['lastIndexingJobs'], (value) => GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spacesDataSources: map['spacesDataSources'] == null ? null : (pulumi.Input.decodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource>(map['spacesDataSources'], (value) => GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      webCrawlerDataSources: map['webCrawlerDataSources'] == null ? null : (pulumi.Input.decodeList<GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource>(map['webCrawlerDataSources'], (value) => GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

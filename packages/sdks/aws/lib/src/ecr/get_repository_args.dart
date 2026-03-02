@@ -22,15 +22,11 @@ class GetRepositoryArgs {
   /// [registryId] Registry ID where the repository was created.
   /// [tags] Map of tags assigned to the resource.
   GetRepositoryArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registryId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryId = pulumi.Input.asOptionalInput<String>(registryId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.name,
+    this.region,
+    this.registryId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetRepositoryArgs {
 
   factory GetRepositoryArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryId: map['registryId'] == null ? null : pulumi.Output.create<String>(map['registryId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

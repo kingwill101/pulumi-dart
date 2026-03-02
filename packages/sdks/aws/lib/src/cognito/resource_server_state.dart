@@ -26,19 +26,13 @@ class ResourceServerState {
   /// [scopes] A list of Authorization Scope.
   /// [userPoolId] User pool the client belongs to.
   ResourceServerState({
-    pulumi.Output<String>? identifier,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? scopeIdentifiers,
-    pulumi.Output<List<ResourceServerScope>>? scopes,
-    pulumi.Output<String>? userPoolId,
-  }) :
-      identifier = pulumi.Input.asOptionalInput<String>(identifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scopeIdentifiers = pulumi.Input.asOptionalInput<List<String>>(scopeIdentifiers),
-      scopes = pulumi.Input.asOptionalInput<List<ResourceServerScope>>(scopes),
-      userPoolId = pulumi.Input.asOptionalInput<String>(userPoolId);
+    this.identifier,
+    this.name,
+    this.region,
+    this.scopeIdentifiers,
+    this.scopes,
+    this.userPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class ResourceServerState {
 
   factory ResourceServerState.fromMap(Map<String, dynamic> map) {
     return ResourceServerState(
-      identifier: map['identifier'] == null ? null : pulumi.Output.create<String>(map['identifier'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scopeIdentifiers: map['scopeIdentifiers'] == null ? null : pulumi.Output.create<List<String>>((map['scopeIdentifiers'] as List).cast<String>()),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<List<ResourceServerScope>>(pulumi.Input.decodeList<ResourceServerScope>(map['scopes'], (value) => ResourceServerScope.fromMap((value as Map).cast<String, dynamic>()))),
-      userPoolId: map['userPoolId'] == null ? null : pulumi.Output.create<String>(map['userPoolId'] as String),
+      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scopeIdentifiers: map['scopeIdentifiers'] == null ? null : ((map['scopeIdentifiers'] as List).cast<String>()).input(),
+      scopes: map['scopes'] == null ? null : (pulumi.Input.decodeList<ResourceServerScope>(map['scopes'], (value) => ResourceServerScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
     );
   }
 }

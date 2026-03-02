@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiLogicConfigGenerativeLanguageConfig {
   /// The value of the API key. The API key must have
@@ -8,7 +9,7 @@ class AiLogicConfigGenerativeLanguageConfig {
   /// the Google Cloud console.
   ///
   /// Do **not** add this Gemini API key into your app's codebase
-  final String? apiKey;
+  final pulumi.Input<String>? apiKey;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// The value of the API key. The API key must have
   /// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
@@ -16,9 +17,9 @@ class AiLogicConfigGenerativeLanguageConfig {
   /// the Google Cloud console.
   ///
   /// Do **not** add this Gemini API key into your app's codebase
-  final String? apiKeyWo;
+  final pulumi.Input<String>? apiKeyWo;
   /// Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  final String? apiKeyWoVersion;
+  final pulumi.Input<String>? apiKeyWoVersion;
 
   /// Creates a new [AiLogicConfigGenerativeLanguageConfig].
   /// [apiKey] The value of the API key. The API key must have
@@ -40,9 +41,9 @@ class AiLogicConfigGenerativeLanguageConfig {
 
   factory AiLogicConfigGenerativeLanguageConfig.fromMap(Map<String, dynamic> map) {
     return AiLogicConfigGenerativeLanguageConfig(
-      apiKey: map['apiKey'] == null ? null : map['apiKey'] as String,
-      apiKeyWo: map['apiKeyWo'] == null ? null : map['apiKeyWo'] as String,
-      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : map['apiKeyWoVersion'] as String,
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiKeyWo: map['apiKeyWo'] == null ? null : (map['apiKeyWo'] as String).input(),
+      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : (map['apiKeyWoVersion'] as String).input(),
     );
   }
 }

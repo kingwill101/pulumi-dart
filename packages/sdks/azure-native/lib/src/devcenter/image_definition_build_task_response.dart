@@ -6,21 +6,21 @@ import 'image_definition_build_task_response_parameters.dart';
 /// A task executed during the image definition build.
 class ImageDefinitionBuildTaskResponse {
   /// Display name to help differentiate multiple instances of the same task.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// End time of the task.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// ID of the task instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// The URI for retrieving logs for the task execution.
-  final String logUri;
+  final pulumi.Input<String> logUri;
   /// The name of the task.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Parameters for the task.
-  final List<ImageDefinitionBuildTaskResponseParameters>? parameters;
+  final pulumi.Input<List<ImageDefinitionBuildTaskResponseParameters>>? parameters;
   /// Start time of the task.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The status of the task.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ImageDefinitionBuildTaskResponse].
   /// [displayName] Display name to help differentiate multiple instances of the same task.
@@ -49,7 +49,7 @@ class ImageDefinitionBuildTaskResponse {
       'id': id,
       'logUri': logUri,
       'name': ?name,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<ImageDefinitionBuildTaskResponseParameters, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ImageDefinitionBuildTaskResponseParameters>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ImageDefinitionBuildTaskResponseParameters, Map<String, dynamic>>(value, (value) => value.toMap())),
       'startTime': startTime,
       'status': status,
     };
@@ -57,14 +57,14 @@ class ImageDefinitionBuildTaskResponse {
 
   factory ImageDefinitionBuildTaskResponse.fromMap(Map<String, dynamic> map) {
     return ImageDefinitionBuildTaskResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      endTime: map['endTime'] as String,
-      id: map['id'] as String,
-      logUri: map['logUri'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<ImageDefinitionBuildTaskResponseParameters>(map['parameters'], (value) => ImageDefinitionBuildTaskResponseParameters.fromMap((value as Map).cast<String, dynamic>())),
-      startTime: map['startTime'] as String,
-      status: map['status'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      logUri: (map['logUri'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ImageDefinitionBuildTaskResponseParameters>(map['parameters'], (value) => ImageDefinitionBuildTaskResponseParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startTime: (map['startTime'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

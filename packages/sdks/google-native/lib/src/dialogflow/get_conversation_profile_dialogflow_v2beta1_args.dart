@@ -16,13 +16,10 @@ class GetConversationProfileDialogflowV2beta1Args {
   /// [location] Required.
   /// [project] Optional.
   GetConversationProfileDialogflowV2beta1Args({
-    required pulumi.Output<String> conversationProfileId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      conversationProfileId = pulumi.Input.asInput<String>(conversationProfileId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.conversationProfileId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetConversationProfileDialogflowV2beta1Args {
 
   factory GetConversationProfileDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return GetConversationProfileDialogflowV2beta1Args(
-      conversationProfileId: pulumi.Output.create<String>(map['conversationProfileId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      conversationProfileId: (map['conversationProfileId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

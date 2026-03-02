@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria {
   /// The delimiter of the selection criteria being used.
-  final String? delimiter;
+  final pulumi.Input<String>? delimiter;
   /// The max depth of the selection criteria.
-  final int? maxDepth;
+  final pulumi.Input<int>? maxDepth;
   /// The minimum number of storage bytes percentage whose metrics will be selected.
-  final double? minStorageBytesPercentage;
+  final pulumi.Input<double>? minStorageBytesPercentage;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria].
   /// [delimiter] The delimiter of the selection criteria being used.
@@ -29,9 +30,9 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
 
   factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria(
-      delimiter: map['delimiter'] == null ? null : map['delimiter'] as String,
-      maxDepth: map['maxDepth'] == null ? null : map['maxDepth'] as int,
-      minStorageBytesPercentage: map['minStorageBytesPercentage'] == null ? null : map['minStorageBytesPercentage'] as double,
+      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
+      maxDepth: map['maxDepth'] == null ? null : (map['maxDepth'] as int).input(),
+      minStorageBytesPercentage: map['minStorageBytesPercentage'] == null ? null : (map['minStorageBytesPercentage'] as double).input(),
     );
   }
 }

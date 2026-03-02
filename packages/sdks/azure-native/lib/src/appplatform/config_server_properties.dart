@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'config_server_settings.dart';
 import 'error.dart';
 
 /// Config server git properties payload
 class ConfigServerProperties {
   /// Settings of config server.
-  final ConfigServerSettings? configServer;
+  final pulumi.Input<ConfigServerSettings>? configServer;
   /// Enabled state of the config server. This is only used in Consumption tier.
-  final String? enabledState;
+  final pulumi.Input<String>? enabledState;
   /// Error when apply config server settings.
-  final Error? error;
+  final pulumi.Input<Error>? error;
 
   /// Creates a new [ConfigServerProperties].
   /// [configServer] Settings of config server.
@@ -24,17 +25,17 @@ class ConfigServerProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configServer': ?configServer == null ? null : configServer!.toMap(),
+      'configServer': ?pulumi.Input.mapOptionalInputValue<ConfigServerSettings, Map<String, dynamic>>(configServer, (value) => value.toMap()),
       'enabledState': ?enabledState,
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<Error, Map<String, dynamic>>(error, (value) => value.toMap()),
     };
   }
 
   factory ConfigServerProperties.fromMap(Map<String, dynamic> map) {
     return ConfigServerProperties(
-      configServer: map['configServer'] == null ? null : ConfigServerSettings.fromMap((map['configServer'] as Map).cast<String, dynamic>()),
-      enabledState: map['enabledState'] == null ? null : map['enabledState'] as String,
-      error: map['error'] == null ? null : Error.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      configServer: map['configServer'] == null ? null : (ConfigServerSettings.fromMap((map['configServer'] as Map).cast<String, dynamic>())).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      error: map['error'] == null ? null : (Error.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class InstanceAttachmentArgs {
   /// [ecsId] The ID of the ECS instance.
   /// [instanceId] The ID of the Database File System.
   InstanceAttachmentArgs({
-    required pulumi.Output<String> ecsId,
-    required pulumi.Output<String> instanceId,
-  }) :
-      ecsId = pulumi.Input.asInput<String>(ecsId),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    required this.ecsId,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class InstanceAttachmentArgs {
 
   factory InstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentArgs(
-      ecsId: pulumi.Output.create<String>(map['ecsId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      ecsId: (map['ecsId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

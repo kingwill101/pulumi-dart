@@ -19,13 +19,10 @@ class AdvancedThreatProtectionArgs {
   /// [resourceId] The identifier of the resource.
   /// [settingName] Advanced Threat Protection setting name.
   AdvancedThreatProtectionArgs({
-    pulumi.Output<bool>? isEnabled,
-    required pulumi.Output<String> resourceId,
-    pulumi.Output<String>? settingName,
-  }) :
-      isEnabled = pulumi.Input.asOptionalInput<bool>(isEnabled),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      settingName = pulumi.Input.asOptionalInput<String>(settingName);
+    this.isEnabled,
+    required this.resourceId,
+    this.settingName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AdvancedThreatProtectionArgs {
 
   factory AdvancedThreatProtectionArgs.fromMap(Map<String, dynamic> map) {
     return AdvancedThreatProtectionArgs(
-      isEnabled: map['isEnabled'] == null ? null : pulumi.Output.create<bool>(map['isEnabled'] as bool),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      settingName: map['settingName'] == null ? null : pulumi.Output.create<String>(map['settingName'] as String),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      settingName: map['settingName'] == null ? null : (map['settingName'] as String).input(),
     );
   }
 }

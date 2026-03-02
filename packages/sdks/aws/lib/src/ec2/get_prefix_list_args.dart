@@ -27,15 +27,11 @@ class GetPrefixListArgs {
   /// [prefixListId] ID of the prefix list to select.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetPrefixListArgs({
-    pulumi.Output<List<GetPrefixListFilter>>? filters,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? prefixListId,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetPrefixListFilter>>(filters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      prefixListId = pulumi.Input.asOptionalInput<String>(prefixListId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filters,
+    this.name,
+    this.prefixListId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class GetPrefixListArgs {
 
   factory GetPrefixListArgs.fromMap(Map<String, dynamic> map) {
     return GetPrefixListArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetPrefixListFilter>>(pulumi.Input.decodeList<GetPrefixListFilter>(map['filters'], (value) => GetPrefixListFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      prefixListId: map['prefixListId'] == null ? null : pulumi.Output.create<String>(map['prefixListId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetPrefixListFilter>(map['filters'], (value) => GetPrefixListFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

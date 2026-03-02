@@ -23,15 +23,11 @@ class AppCheckServiceConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
   AppCheckServiceConfigState({
-    pulumi.Output<String>? enforcementMode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serviceId,
-  }) :
-      enforcementMode = pulumi.Input.asOptionalInput<String>(enforcementMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asOptionalInput<String>(serviceId);
+    this.enforcementMode,
+    this.name,
+    this.project,
+    this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class AppCheckServiceConfigState {
 
   factory AppCheckServiceConfigState.fromMap(Map<String, dynamic> map) {
     return AppCheckServiceConfigState(
-      enforcementMode: map['enforcementMode'] == null ? null : pulumi.Output.create<String>(map['enforcementMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: map['serviceId'] == null ? null : pulumi.Output.create<String>(map['serviceId'] as String),
+      enforcementMode: map['enforcementMode'] == null ? null : (map['enforcementMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
     );
   }
 }

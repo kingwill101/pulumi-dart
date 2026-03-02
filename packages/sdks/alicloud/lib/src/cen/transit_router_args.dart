@@ -30,19 +30,13 @@ class TransitRouterArgs {
   /// [transitRouterDescription] The description of the Enterprise Edition transit router instance.
   /// [transitRouterName] The name of the Enterprise Edition transit router.
   TransitRouterArgs({
-    required pulumi.Output<String> cenId,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<bool>? supportMulticast,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitRouterDescription,
-    pulumi.Output<String>? transitRouterName,
-  }) :
-      cenId = pulumi.Input.asInput<String>(cenId),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      supportMulticast = pulumi.Input.asOptionalInput<bool>(supportMulticast),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitRouterDescription = pulumi.Input.asOptionalInput<String>(transitRouterDescription),
-      transitRouterName = pulumi.Input.asOptionalInput<String>(transitRouterName);
+    required this.cenId,
+    this.dryRun,
+    this.supportMulticast,
+    this.tags,
+    this.transitRouterDescription,
+    this.transitRouterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class TransitRouterArgs {
 
   factory TransitRouterArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterArgs(
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      supportMulticast: map['supportMulticast'] == null ? null : pulumi.Output.create<bool>(map['supportMulticast'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitRouterDescription: map['transitRouterDescription'] == null ? null : pulumi.Output.create<String>(map['transitRouterDescription'] as String),
-      transitRouterName: map['transitRouterName'] == null ? null : pulumi.Output.create<String>(map['transitRouterName'] as String),
+      cenId: (map['cenId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      supportMulticast: map['supportMulticast'] == null ? null : (map['supportMulticast'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitRouterDescription: map['transitRouterDescription'] == null ? null : (map['transitRouterDescription'] as String).input(),
+      transitRouterName: map['transitRouterName'] == null ? null : (map['transitRouterName'] as String).input(),
     );
   }
 }

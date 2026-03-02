@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppTemplateInitContainerEnv {
   /// The name of the Container App.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the secret that contains the value for this environment variable.
-  final String secretName;
+  final pulumi.Input<String> secretName;
   /// The HTTP Header value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetAppTemplateInitContainerEnv].
   /// [name] The name of the Container App.
@@ -29,9 +30,9 @@ class GetAppTemplateInitContainerEnv {
 
   factory GetAppTemplateInitContainerEnv.fromMap(Map<String, dynamic> map) {
     return GetAppTemplateInitContainerEnv(
-      name: map['name'] as String,
-      secretName: map['secretName'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

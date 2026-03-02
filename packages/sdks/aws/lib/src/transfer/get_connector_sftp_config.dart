@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectorSftpConfig {
   /// List of the public portions of the host keys that are used to identify the servers the connector is connected to.
-  final List<String> trustedHostKeys;
+  final pulumi.Input<List<String>> trustedHostKeys;
   /// Identifier for the secret in AWS Secrets Manager that contains the SFTP user's private key, and/or password.
-  final String userSecretId;
+  final pulumi.Input<String> userSecretId;
 
   /// Creates a new [GetConnectorSftpConfig].
   /// [trustedHostKeys] List of the public portions of the host keys that are used to identify the servers the connector is connected to.
@@ -24,8 +25,8 @@ class GetConnectorSftpConfig {
 
   factory GetConnectorSftpConfig.fromMap(Map<String, dynamic> map) {
     return GetConnectorSftpConfig(
-      trustedHostKeys: (map['trustedHostKeys'] as List).cast<String>(),
-      userSecretId: map['userSecretId'] as String,
+      trustedHostKeys: ((map['trustedHostKeys'] as List).cast<String>()).input(),
+      userSecretId: (map['userSecretId'] as String).input(),
     );
   }
 }

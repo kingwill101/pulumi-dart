@@ -19,13 +19,10 @@ class GetEnterpriseProxiesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tid] The ID of the tenant.
   GetEnterpriseProxiesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? tid,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      tid = pulumi.Input.asOptionalInput<String>(tid);
+    this.ids,
+    this.outputFile,
+    this.tid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetEnterpriseProxiesArgs {
 
   factory GetEnterpriseProxiesArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseProxiesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      tid: map['tid'] == null ? null : pulumi.Output.create<String>(map['tid'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      tid: map['tid'] == null ? null : (map['tid'] as String).input(),
     );
   }
 }

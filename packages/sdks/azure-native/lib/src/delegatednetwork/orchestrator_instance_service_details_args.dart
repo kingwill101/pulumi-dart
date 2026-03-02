@@ -48,31 +48,19 @@ class OrchestratorInstanceServiceDetailsArgs {
   /// [resourceName] The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
   /// [tags] The resource tags.
   OrchestratorInstanceServiceDetailsArgs({
-    pulumi.Output<String>? apiServerEndpoint,
-    pulumi.Output<String>? clusterRootCA,
-    required pulumi.Output<ControllerDetailsDelegatednetwork> controllerDetails,
-    pulumi.Output<OrchestratorIdentity>? identity,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? orchestratorAppId,
-    pulumi.Output<String>? orchestratorTenantId,
-    pulumi.Output<String>? privateLinkResourceId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      apiServerEndpoint = pulumi.Input.asOptionalInput<String>(apiServerEndpoint),
-      clusterRootCA = pulumi.Input.asOptionalInput<String>(clusterRootCA),
-      controllerDetails = pulumi.Input.asInput<ControllerDetailsDelegatednetwork>(controllerDetails),
-      identity = pulumi.Input.asOptionalInput<OrchestratorIdentity>(identity),
-      kind = pulumi.Input.asInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      orchestratorAppId = pulumi.Input.asOptionalInput<String>(orchestratorAppId),
-      orchestratorTenantId = pulumi.Input.asOptionalInput<String>(orchestratorTenantId),
-      privateLinkResourceId = pulumi.Input.asOptionalInput<String>(privateLinkResourceId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.apiServerEndpoint,
+    this.clusterRootCA,
+    required this.controllerDetails,
+    this.identity,
+    required this.kind,
+    this.location,
+    this.orchestratorAppId,
+    this.orchestratorTenantId,
+    this.privateLinkResourceId,
+    required this.resourceGroupName,
+    this.resourceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class OrchestratorInstanceServiceDetailsArgs {
 
   factory OrchestratorInstanceServiceDetailsArgs.fromMap(Map<String, dynamic> map) {
     return OrchestratorInstanceServiceDetailsArgs(
-      apiServerEndpoint: map['apiServerEndpoint'] == null ? null : pulumi.Output.create<String>(map['apiServerEndpoint'] as String),
-      clusterRootCA: map['clusterRootCA'] == null ? null : pulumi.Output.create<String>(map['clusterRootCA'] as String),
-      controllerDetails: pulumi.Output.create<ControllerDetailsDelegatednetwork>(map['controllerDetails'] as ControllerDetailsDelegatednetwork),
-      identity: map['identity'] == null ? null : pulumi.Output.create<OrchestratorIdentity>(OrchestratorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      orchestratorAppId: map['orchestratorAppId'] == null ? null : pulumi.Output.create<String>(map['orchestratorAppId'] as String),
-      orchestratorTenantId: map['orchestratorTenantId'] == null ? null : pulumi.Output.create<String>(map['orchestratorTenantId'] as String),
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : pulumi.Output.create<String>(map['privateLinkResourceId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      apiServerEndpoint: map['apiServerEndpoint'] == null ? null : (map['apiServerEndpoint'] as String).input(),
+      clusterRootCA: map['clusterRootCA'] == null ? null : (map['clusterRootCA'] as String).input(),
+      controllerDetails: (map['controllerDetails'] as ControllerDetailsDelegatednetwork).input(),
+      identity: map['identity'] == null ? null : (OrchestratorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      orchestratorAppId: map['orchestratorAppId'] == null ? null : (map['orchestratorAppId'] as String).input(),
+      orchestratorTenantId: map['orchestratorTenantId'] == null ? null : (map['orchestratorTenantId'] as String).input(),
+      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

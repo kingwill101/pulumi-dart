@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIamCustomRolesRole {
   /// The current deleted state of the role.
-  final bool deleted;
+  final pulumi.Input<bool> deleted;
   /// A human-readable description for the role.
-  final String description;
+  final pulumi.Input<String> description;
   /// an identifier for the resource with the format `projects/{{project}}/roles/{{role_id}}`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
-  final String name;
+  final pulumi.Input<String> name;
   /// The names of the permissions this role grants when bound in an IAM policy.
-  final List<String> permissions;
+  final pulumi.Input<List<String>> permissions;
   /// The camel case role id used for this role.
-  final String roleId;
+  final pulumi.Input<String> roleId;
   /// The current launch stage of the role. List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
-  final String stage;
+  final pulumi.Input<String> stage;
   /// A human-readable title for the role.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [GetIamCustomRolesRole].
   /// [deleted] The current deleted state of the role.
@@ -54,14 +55,14 @@ class GetIamCustomRolesRole {
 
   factory GetIamCustomRolesRole.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRolesRole(
-      deleted: map['deleted'] as bool,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      permissions: (map['permissions'] as List).cast<String>(),
-      roleId: map['roleId'] as String,
-      stage: map['stage'] as String,
-      title: map['title'] as String,
+      deleted: (map['deleted'] as bool).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      permissions: ((map['permissions'] as List).cast<String>()).input(),
+      roleId: (map['roleId'] as String).input(),
+      stage: (map['stage'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

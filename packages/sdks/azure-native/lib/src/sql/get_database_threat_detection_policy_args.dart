@@ -22,15 +22,11 @@ class GetDatabaseThreatDetectionPolicyArgs {
   /// [securityAlertPolicyName] The name of the security alert policy.
   /// [serverName] The name of the server.
   GetDatabaseThreatDetectionPolicyArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> securityAlertPolicyName,
-    required pulumi.Output<String> serverName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityAlertPolicyName = pulumi.Input.asInput<String>(securityAlertPolicyName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.securityAlertPolicyName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDatabaseThreatDetectionPolicyArgs {
 
   factory GetDatabaseThreatDetectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseThreatDetectionPolicyArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityAlertPolicyName: pulumi.Output.create<String>(map['securityAlertPolicyName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityAlertPolicyName: (map['securityAlertPolicyName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

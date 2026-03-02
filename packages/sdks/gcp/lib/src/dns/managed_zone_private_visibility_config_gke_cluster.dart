@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedZonePrivateVisibilityConfigGkeCluster {
   /// The resource name of the cluster to bind this ManagedZone to.
   /// This should be specified in the format like
   /// `projects/*/locations/*/clusters/*`
-  final String gkeClusterName;
+  final pulumi.Input<String> gkeClusterName;
 
   /// Creates a new [ManagedZonePrivateVisibilityConfigGkeCluster].
   /// [gkeClusterName] The resource name of the cluster to bind this ManagedZone to.
@@ -21,7 +22,7 @@ class ManagedZonePrivateVisibilityConfigGkeCluster {
 
   factory ManagedZonePrivateVisibilityConfigGkeCluster.fromMap(Map<String, dynamic> map) {
     return ManagedZonePrivateVisibilityConfigGkeCluster(
-      gkeClusterName: map['gkeClusterName'] as String,
+      gkeClusterName: (map['gkeClusterName'] as String).input(),
     );
   }
 }

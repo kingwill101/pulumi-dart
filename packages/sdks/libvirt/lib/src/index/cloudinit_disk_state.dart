@@ -25,19 +25,13 @@ class CloudinitDiskState {
   /// [size] Size of the ISO file in bytes
   /// [userData] Cloud-init user-data content (usually YAML)
   CloudinitDiskState({
-    pulumi.Output<String>? metaData,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkConfig,
-    pulumi.Output<String>? path,
-    pulumi.Output<double>? size,
-    pulumi.Output<String>? userData,
-  }) :
-      metaData = pulumi.Input.asOptionalInput<String>(metaData),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkConfig = pulumi.Input.asOptionalInput<String>(networkConfig),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      size = pulumi.Input.asOptionalInput<double>(size),
-      userData = pulumi.Input.asOptionalInput<String>(userData);
+    this.metaData,
+    this.name,
+    this.networkConfig,
+    this.path,
+    this.size,
+    this.userData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class CloudinitDiskState {
 
   factory CloudinitDiskState.fromMap(Map<String, dynamic> map) {
     return CloudinitDiskState(
-      metaData: map['metaData'] == null ? null : pulumi.Output.create<String>(map['metaData'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkConfig: map['networkConfig'] == null ? null : pulumi.Output.create<String>(map['networkConfig'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<double>(map['size'] as double),
-      userData: map['userData'] == null ? null : pulumi.Output.create<String>(map['userData'] as String),
+      metaData: map['metaData'] == null ? null : (map['metaData'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (map['networkConfig'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as double).input(),
+      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class AgentDeploymentArgs {
   /// [properties] [Required] Additional attributes of the entity.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   AgentDeploymentArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> appName,
-    pulumi.Output<String>? deploymentName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<HostedAgentDeployment> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      appName = pulumi.Input.asInput<String>(appName),
-      deploymentName = pulumi.Input.asOptionalInput<String>(deploymentName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asInput<HostedAgentDeployment>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.appName,
+    this.deploymentName,
+    required this.projectName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class AgentDeploymentArgs {
 
   factory AgentDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return AgentDeploymentArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      appName: pulumi.Output.create<String>(map['appName'] as String),
-      deploymentName: map['deploymentName'] == null ? null : pulumi.Output.create<String>(map['deploymentName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: pulumi.Output.create<HostedAgentDeployment>(HostedAgentDeployment.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      appName: (map['appName'] as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: (HostedAgentDeployment.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

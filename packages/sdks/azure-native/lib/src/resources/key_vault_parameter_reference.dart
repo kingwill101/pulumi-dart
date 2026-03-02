@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_vault_reference.dart';
 
 /// Azure Key Vault parameter reference.
 class KeyVaultParameterReference {
   /// Azure Key Vault reference.
-  final KeyVaultReference keyVault;
+  final pulumi.Input<KeyVaultReference> keyVault;
   /// Azure Key Vault secret name.
-  final String secretName;
+  final pulumi.Input<String> secretName;
   /// Azure Key Vault secret version.
-  final String? secretVersion;
+  final pulumi.Input<String>? secretVersion;
 
   /// Creates a new [KeyVaultParameterReference].
   /// [keyVault] Azure Key Vault reference.
@@ -23,7 +24,7 @@ class KeyVaultParameterReference {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVault': keyVault.toMap(),
+      'keyVault': pulumi.Input.mapInputValue<KeyVaultReference, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
       'secretName': secretName,
       'secretVersion': ?secretVersion,
     };
@@ -31,9 +32,9 @@ class KeyVaultParameterReference {
 
   factory KeyVaultParameterReference.fromMap(Map<String, dynamic> map) {
     return KeyVaultParameterReference(
-      keyVault: KeyVaultReference.fromMap((map['keyVault'] as Map).cast<String, dynamic>()),
-      secretName: map['secretName'] as String,
-      secretVersion: map['secretVersion'] == null ? null : map['secretVersion'] as String,
+      keyVault: (KeyVaultReference.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
+      secretName: (map['secretName'] as String).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
     );
   }
 }

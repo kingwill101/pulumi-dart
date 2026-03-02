@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Hub Item.
 class Hub {
   /// Resource Id.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// Resource Type.
-  final String? resourceType;
+  final pulumi.Input<String>? resourceType;
 
   /// Creates a new [Hub].
   /// [resourceId] Resource Id.
@@ -25,8 +26,8 @@ class Hub {
 
   factory Hub.fromMap(Map<String, dynamic> map) {
     return Hub(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

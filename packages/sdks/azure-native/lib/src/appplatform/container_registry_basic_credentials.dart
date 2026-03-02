@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The basic authentication properties for the container registry resource.
 class ContainerRegistryBasicCredentials {
   /// The password of the Container Registry.
-  final String password;
+  final pulumi.Input<String> password;
   /// The login server of the Container Registry.
-  final String server;
+  final pulumi.Input<String> server;
   /// The credential type of the container registry credentials.
   /// Expected value is 'BasicAuth'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The username of the Container Registry.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [ContainerRegistryBasicCredentials].
   /// [password] The password of the Container Registry.
@@ -36,10 +37,10 @@ class ContainerRegistryBasicCredentials {
 
   factory ContainerRegistryBasicCredentials.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryBasicCredentials(
-      password: map['password'] as String,
-      server: map['server'] as String,
-      type: map['type'] as String,
-      username: map['username'] as String,
+      password: (map['password'] as String).input(),
+      server: (map['server'] as String).input(),
+      type: (map['type'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CompliancePackConfigRuleId {
   /// The rule ID of Config Rule.
-  final String? configRuleId;
+  final pulumi.Input<String>? configRuleId;
 
   /// Creates a new [CompliancePackConfigRuleId].
   /// [configRuleId] The rule ID of Config Rule.
@@ -19,7 +20,7 @@ class CompliancePackConfigRuleId {
 
   factory CompliancePackConfigRuleId.fromMap(Map<String, dynamic> map) {
     return CompliancePackConfigRuleId(
-      configRuleId: map['configRuleId'] == null ? null : map['configRuleId'] as String,
+      configRuleId: map['configRuleId'] == null ? null : (map['configRuleId'] as String).input(),
     );
   }
 }

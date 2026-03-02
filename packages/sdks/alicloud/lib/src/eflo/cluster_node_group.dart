@@ -5,19 +5,19 @@ import 'cluster_node_group_node.dart';
 
 class ClusterNodeGroup {
   /// System Image ID
-  final String? imageId;
+  final pulumi.Input<String>? imageId;
   /// Model
-  final String? machineType;
+  final pulumi.Input<String>? machineType;
   /// Node Group Description
-  final String? nodeGroupDescription;
+  final pulumi.Input<String>? nodeGroupDescription;
   /// Node Group Name
-  final String? nodeGroupName;
+  final pulumi.Input<String>? nodeGroupName;
   /// Node List See `nodes` below.
-  final List<ClusterNodeGroupNode>? nodes;
+  final pulumi.Input<List<ClusterNodeGroupNode>>? nodes;
   /// Instance custom data. It needs to be encoded in Base64 mode, and the original data is at most 16KB.
-  final String? userData;
+  final pulumi.Input<String>? userData;
   /// Zone ID
-  final String? zoneId;
+  final pulumi.Input<String>? zoneId;
 
   /// Creates a new [ClusterNodeGroup].
   /// [imageId] System Image ID
@@ -43,7 +43,7 @@ class ClusterNodeGroup {
       'machineType': ?machineType,
       'nodeGroupDescription': ?nodeGroupDescription,
       'nodeGroupName': ?nodeGroupName,
-      'nodes': ?nodes == null ? null : pulumi.Input.encodeList<ClusterNodeGroupNode, Map<String, dynamic>>(nodes!, (value) => value.toMap()),
+      'nodes': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodeGroupNode>, List<Map<String, dynamic>>>(nodes, (value) => pulumi.Input.encodeList<ClusterNodeGroupNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'userData': ?userData,
       'zoneId': ?zoneId,
     };
@@ -51,13 +51,13 @@ class ClusterNodeGroup {
 
   factory ClusterNodeGroup.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroup(
-      imageId: map['imageId'] == null ? null : map['imageId'] as String,
-      machineType: map['machineType'] == null ? null : map['machineType'] as String,
-      nodeGroupDescription: map['nodeGroupDescription'] == null ? null : map['nodeGroupDescription'] as String,
-      nodeGroupName: map['nodeGroupName'] == null ? null : map['nodeGroupName'] as String,
-      nodes: map['nodes'] == null ? null : pulumi.Input.decodeList<ClusterNodeGroupNode>(map['nodes'], (value) => ClusterNodeGroupNode.fromMap((value as Map).cast<String, dynamic>())),
-      userData: map['userData'] == null ? null : map['userData'] as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      nodeGroupDescription: map['nodeGroupDescription'] == null ? null : (map['nodeGroupDescription'] as String).input(),
+      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName'] as String).input(),
+      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupNode>(map['nodes'], (value) => ClusterNodeGroupNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

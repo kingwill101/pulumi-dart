@@ -1,53 +1,54 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnterpriseInstancesInstance {
   /// The name of the data link for the database instance.
-  final String dataLinkName;
+  final pulumi.Input<String> dataLinkName;
   /// The logon password of the database instance.
-  final String databasePassword;
+  final pulumi.Input<String> databasePassword;
   /// The logon username of the database instance.
-  final String databaseUser;
+  final pulumi.Input<String> databaseUser;
   /// The ID of the database administrator (DBA) of the database instance.
-  final String dbaId;
+  final pulumi.Input<String> dbaId;
   /// The nickname of the DBA.
-  final String dbaNickName;
+  final pulumi.Input<String> dbaNickName;
   /// Indicates whether the online data description language (DDL) service was enabled for the database instance.
-  final int ddlOnline;
+  final pulumi.Input<int> ddlOnline;
   /// The ID of the Elastic Compute Service (ECS) instance to which the database instance belongs.
-  final String ecsInstanceId;
+  final pulumi.Input<String> ecsInstanceId;
   /// The region where the database instance resides.
-  final String ecsRegion;
+  final pulumi.Input<String> ecsRegion;
   /// The type of the environment to which the database instance belongs.
-  final String envType;
+  final pulumi.Input<String> envType;
   /// The timeout period for exporting the database instance.
-  final int exportTimeout;
+  final pulumi.Input<int> exportTimeout;
   /// The endpoint of the database instance.
-  final String host;
-  final String id;
+  final pulumi.Input<String> host;
+  final pulumi.Input<String> id;
   /// The alias of the database instance.
-  final String instanceAlias;
+  final pulumi.Input<String> instanceAlias;
   /// The ID of the database instance.
-  final String instanceId;
-  final String instanceName;
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<String> instanceName;
   /// The source of the database instance.
-  final String instanceSource;
+  final pulumi.Input<String> instanceSource;
   /// The ID of the database instance.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The connection port of the database instance.
-  final int port;
+  final pulumi.Input<int> port;
   /// The timeout period for querying the database instance.
-  final int queryTimeout;
+  final pulumi.Input<int> queryTimeout;
   /// The ID of the security rule for the database instance.
-  final String safeRuleId;
+  final pulumi.Input<String> safeRuleId;
   /// The system ID (SID) of the database instance.
-  final String sid;
+  final pulumi.Input<String> sid;
   /// Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
-  final String status;
+  final pulumi.Input<String> status;
   /// Indicates whether cross-database query was enabled for the database instance.
-  final int useDsql;
+  final pulumi.Input<int> useDsql;
   /// The ID of the Virtual Private Cloud (VPC) to which the database instance belongs.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetEnterpriseInstancesInstance].
   /// [dataLinkName] The name of the data link for the database instance.
@@ -132,30 +133,30 @@ class GetEnterpriseInstancesInstance {
 
   factory GetEnterpriseInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseInstancesInstance(
-      dataLinkName: map['dataLinkName'] as String,
-      databasePassword: map['databasePassword'] as String,
-      databaseUser: map['databaseUser'] as String,
-      dbaId: map['dbaId'] as String,
-      dbaNickName: map['dbaNickName'] as String,
-      ddlOnline: map['ddlOnline'] as int,
-      ecsInstanceId: map['ecsInstanceId'] as String,
-      ecsRegion: map['ecsRegion'] as String,
-      envType: map['envType'] as String,
-      exportTimeout: map['exportTimeout'] as int,
-      host: map['host'] as String,
-      id: map['id'] as String,
-      instanceAlias: map['instanceAlias'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      instanceSource: map['instanceSource'] as String,
-      instanceType: map['instanceType'] as String,
-      port: map['port'] as int,
-      queryTimeout: map['queryTimeout'] as int,
-      safeRuleId: map['safeRuleId'] as String,
-      sid: map['sid'] as String,
-      status: map['status'] as String,
-      useDsql: map['useDsql'] as int,
-      vpcId: map['vpcId'] as String,
+      dataLinkName: (map['dataLinkName'] as String).input(),
+      databasePassword: (map['databasePassword'] as String).input(),
+      databaseUser: (map['databaseUser'] as String).input(),
+      dbaId: (map['dbaId'] as String).input(),
+      dbaNickName: (map['dbaNickName'] as String).input(),
+      ddlOnline: (map['ddlOnline'] as int).input(),
+      ecsInstanceId: (map['ecsInstanceId'] as String).input(),
+      ecsRegion: (map['ecsRegion'] as String).input(),
+      envType: (map['envType'] as String).input(),
+      exportTimeout: (map['exportTimeout'] as int).input(),
+      host: (map['host'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceAlias: (map['instanceAlias'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      instanceSource: (map['instanceSource'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      port: (map['port'] as int).input(),
+      queryTimeout: (map['queryTimeout'] as int).input(),
+      safeRuleId: (map['safeRuleId'] as String).input(),
+      sid: (map['sid'] as String).input(),
+      status: (map['status'] as String).input(),
+      useDsql: (map['useDsql'] as int).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

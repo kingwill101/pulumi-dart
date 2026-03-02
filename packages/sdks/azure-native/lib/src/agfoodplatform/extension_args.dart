@@ -26,17 +26,12 @@ class ExtensionArgs {
   /// [extensionVersion] Extension Version.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ExtensionArgs({
-    pulumi.Output<Map<String, ApiProperties>>? additionalApiProperties,
-    required pulumi.Output<String> dataManagerForAgricultureResourceName,
-    pulumi.Output<String>? extensionId,
-    pulumi.Output<String>? extensionVersion,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      additionalApiProperties = pulumi.Input.asOptionalInput<Map<String, ApiProperties>>(additionalApiProperties),
-      dataManagerForAgricultureResourceName = pulumi.Input.asInput<String>(dataManagerForAgricultureResourceName),
-      extensionId = pulumi.Input.asOptionalInput<String>(extensionId),
-      extensionVersion = pulumi.Input.asOptionalInput<String>(extensionVersion),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.additionalApiProperties,
+    required this.dataManagerForAgricultureResourceName,
+    this.extensionId,
+    this.extensionVersion,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ExtensionArgs {
 
   factory ExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionArgs(
-      additionalApiProperties: map['additionalApiProperties'] == null ? null : pulumi.Output.create<Map<String, ApiProperties>>(pulumi.Input.decodeMapValues<ApiProperties>(map['additionalApiProperties'], (value) => ApiProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      dataManagerForAgricultureResourceName: pulumi.Output.create<String>(map['dataManagerForAgricultureResourceName'] as String),
-      extensionId: map['extensionId'] == null ? null : pulumi.Output.create<String>(map['extensionId'] as String),
-      extensionVersion: map['extensionVersion'] == null ? null : pulumi.Output.create<String>(map['extensionVersion'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      additionalApiProperties: map['additionalApiProperties'] == null ? null : (pulumi.Input.decodeMapValues<ApiProperties>(map['additionalApiProperties'], (value) => ApiProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataManagerForAgricultureResourceName: (map['dataManagerForAgricultureResourceName'] as String).input(),
+      extensionId: map['extensionId'] == null ? null : (map['extensionId'] as String).input(),
+      extensionVersion: map['extensionVersion'] == null ? null : (map['extensionVersion'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

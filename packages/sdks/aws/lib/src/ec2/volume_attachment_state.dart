@@ -37,21 +37,14 @@ class VolumeAttachmentState {
   /// [stopInstanceBeforeDetaching] Set this to true to ensure that the target instance is stopped
   /// [volumeId] ID of the Volume to be attached
   VolumeAttachmentState({
-    pulumi.Output<String>? deviceName,
-    pulumi.Output<bool>? forceDetach,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? skipDestroy,
-    pulumi.Output<bool>? stopInstanceBeforeDetaching,
-    pulumi.Output<String>? volumeId,
-  }) :
-      deviceName = pulumi.Input.asOptionalInput<String>(deviceName),
-      forceDetach = pulumi.Input.asOptionalInput<bool>(forceDetach),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      stopInstanceBeforeDetaching = pulumi.Input.asOptionalInput<bool>(stopInstanceBeforeDetaching),
-      volumeId = pulumi.Input.asOptionalInput<String>(volumeId);
+    this.deviceName,
+    this.forceDetach,
+    this.instanceId,
+    this.region,
+    this.skipDestroy,
+    this.stopInstanceBeforeDetaching,
+    this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class VolumeAttachmentState {
 
   factory VolumeAttachmentState.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentState(
-      deviceName: map['deviceName'] == null ? null : pulumi.Output.create<String>(map['deviceName'] as String),
-      forceDetach: map['forceDetach'] == null ? null : pulumi.Output.create<bool>(map['forceDetach'] as bool),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
-      stopInstanceBeforeDetaching: map['stopInstanceBeforeDetaching'] == null ? null : pulumi.Output.create<bool>(map['stopInstanceBeforeDetaching'] as bool),
-      volumeId: map['volumeId'] == null ? null : pulumi.Output.create<String>(map['volumeId'] as String),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      forceDetach: map['forceDetach'] == null ? null : (map['forceDetach'] as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      stopInstanceBeforeDetaching: map['stopInstanceBeforeDetaching'] == null ? null : (map['stopInstanceBeforeDetaching'] as bool).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
     );
   }
 }

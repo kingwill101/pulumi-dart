@@ -16,11 +16,9 @@ class GetAutomationArgs {
   /// [automationName] The security automation name.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetAutomationArgs({
-    required pulumi.Output<String> automationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationName = pulumi.Input.asInput<String>(automationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAutomationArgs {
 
   factory GetAutomationArgs.fromMap(Map<String, dynamic> map) {
     return GetAutomationArgs(
-      automationName: pulumi.Output.create<String>(map['automationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationName: (map['automationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

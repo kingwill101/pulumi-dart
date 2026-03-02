@@ -22,17 +22,12 @@ class AlertRobotState {
   /// [robotAddr] The webhook url of the robot.
   /// [robotType] The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
   AlertRobotState({
-    pulumi.Output<String>? alertRobotName,
-    pulumi.Output<bool>? dailyNoc,
-    pulumi.Output<String>? dailyNocTime,
-    pulumi.Output<String>? robotAddr,
-    pulumi.Output<String>? robotType,
-  }) :
-      alertRobotName = pulumi.Input.asOptionalInput<String>(alertRobotName),
-      dailyNoc = pulumi.Input.asOptionalInput<bool>(dailyNoc),
-      dailyNocTime = pulumi.Input.asOptionalInput<String>(dailyNocTime),
-      robotAddr = pulumi.Input.asOptionalInput<String>(robotAddr),
-      robotType = pulumi.Input.asOptionalInput<String>(robotType);
+    this.alertRobotName,
+    this.dailyNoc,
+    this.dailyNocTime,
+    this.robotAddr,
+    this.robotType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class AlertRobotState {
 
   factory AlertRobotState.fromMap(Map<String, dynamic> map) {
     return AlertRobotState(
-      alertRobotName: map['alertRobotName'] == null ? null : pulumi.Output.create<String>(map['alertRobotName'] as String),
-      dailyNoc: map['dailyNoc'] == null ? null : pulumi.Output.create<bool>(map['dailyNoc'] as bool),
-      dailyNocTime: map['dailyNocTime'] == null ? null : pulumi.Output.create<String>(map['dailyNocTime'] as String),
-      robotAddr: map['robotAddr'] == null ? null : pulumi.Output.create<String>(map['robotAddr'] as String),
-      robotType: map['robotType'] == null ? null : pulumi.Output.create<String>(map['robotType'] as String),
+      alertRobotName: map['alertRobotName'] == null ? null : (map['alertRobotName'] as String).input(),
+      dailyNoc: map['dailyNoc'] == null ? null : (map['dailyNoc'] as bool).input(),
+      dailyNocTime: map['dailyNocTime'] == null ? null : (map['dailyNocTime'] as String).input(),
+      robotAddr: map['robotAddr'] == null ? null : (map['robotAddr'] as String).input(),
+      robotType: map['robotType'] == null ? null : (map['robotType'] as String).input(),
     );
   }
 }

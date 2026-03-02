@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerAdaptiveRouting {
   /// Whether to failover across pools.
-  final bool? failoverAcrossPools;
+  final pulumi.Input<bool>? failoverAcrossPools;
 
   /// Creates a new [LoadBalancerAdaptiveRouting].
   /// [failoverAcrossPools] Whether to failover across pools.
@@ -19,7 +20,7 @@ class LoadBalancerAdaptiveRouting {
 
   factory LoadBalancerAdaptiveRouting.fromMap(Map<String, dynamic> map) {
     return LoadBalancerAdaptiveRouting(
-      failoverAcrossPools: map['failoverAcrossPools'] == null ? null : map['failoverAcrossPools'] as bool,
+      failoverAcrossPools: map['failoverAcrossPools'] == null ? null : (map['failoverAcrossPools'] as bool).input(),
     );
   }
 }

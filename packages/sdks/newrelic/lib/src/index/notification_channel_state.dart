@@ -32,23 +32,15 @@ class NotificationChannelState {
   /// [status] The status of the channel.
   /// [type] The type of channel.  One of: `EMAIL`, `SERVICENOW_INCIDENTS`, `SERVICE_NOW_APP`, `WEBHOOK`, `JIRA_CLASSIC`, `MOBILE_PUSH`, `EVENT_BRIDGE`, `SLACK` and `SLACK_COLLABORATION`, `PAGERDUTY_ACCOUNT_INTEGRATION`, `PAGERDUTY_SERVICE_INTEGRATION`, `MICROSOFT_TEAMS` or `WORKFLOW_AUTOMATION`.
   NotificationChannelState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<bool>? active,
-    pulumi.Output<String>? destinationId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? product,
-    pulumi.Output<List<NotificationChannelProperty>>? properties,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? type,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      destinationId = pulumi.Input.asOptionalInput<String>(destinationId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      product = pulumi.Input.asOptionalInput<String>(product),
-      properties = pulumi.Input.asOptionalInput<List<NotificationChannelProperty>>(properties),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.accountId,
+    this.active,
+    this.destinationId,
+    this.name,
+    this.product,
+    this.properties,
+    this.status,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class NotificationChannelState {
 
   factory NotificationChannelState.fromMap(Map<String, dynamic> map) {
     return NotificationChannelState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      destinationId: map['destinationId'] == null ? null : pulumi.Output.create<String>(map['destinationId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      product: map['product'] == null ? null : pulumi.Output.create<String>(map['product'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<List<NotificationChannelProperty>>(pulumi.Input.decodeList<NotificationChannelProperty>(map['properties'], (value) => NotificationChannelProperty.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      destinationId: map['destinationId'] == null ? null : (map['destinationId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      product: map['product'] == null ? null : (map['product'] as String).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<NotificationChannelProperty>(map['properties'], (value) => NotificationChannelProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

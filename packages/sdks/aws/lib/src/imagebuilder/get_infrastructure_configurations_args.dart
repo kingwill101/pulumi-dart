@@ -17,11 +17,9 @@ class GetInfrastructureConfigurationsArgs {
   /// [filters] Configuration block(s) for filtering. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetInfrastructureConfigurationsArgs({
-    pulumi.Output<List<GetInfrastructureConfigurationsFilter>>? filters,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetInfrastructureConfigurationsFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filters,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetInfrastructureConfigurationsArgs {
 
   factory GetInfrastructureConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureConfigurationsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetInfrastructureConfigurationsFilter>>(pulumi.Input.decodeList<GetInfrastructureConfigurationsFilter>(map['filters'], (value) => GetInfrastructureConfigurationsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetInfrastructureConfigurationsFilter>(map['filters'], (value) => GetInfrastructureConfigurationsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

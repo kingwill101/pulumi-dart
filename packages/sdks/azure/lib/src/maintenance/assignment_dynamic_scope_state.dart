@@ -19,13 +19,10 @@ class AssignmentDynamicScopeState {
   /// [maintenanceConfigurationId] The ID of the Maintenance Configuration Resource. Changing this forces a new Dynamic Maintenance Assignment to be created.
   /// [name] The name which should be used for this Dynamic Maintenance Assignment. Changing this forces a new Dynamic Maintenance Assignment to be created.
   AssignmentDynamicScopeState({
-    pulumi.Output<AssignmentDynamicScopeFilter>? filter,
-    pulumi.Output<String>? maintenanceConfigurationId,
-    pulumi.Output<String>? name,
-  }) :
-      filter = pulumi.Input.asOptionalInput<AssignmentDynamicScopeFilter>(filter),
-      maintenanceConfigurationId = pulumi.Input.asOptionalInput<String>(maintenanceConfigurationId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.filter,
+    this.maintenanceConfigurationId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AssignmentDynamicScopeState {
 
   factory AssignmentDynamicScopeState.fromMap(Map<String, dynamic> map) {
     return AssignmentDynamicScopeState(
-      filter: map['filter'] == null ? null : pulumi.Output.create<AssignmentDynamicScopeFilter>(AssignmentDynamicScopeFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : pulumi.Output.create<String>(map['maintenanceConfigurationId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      filter: map['filter'] == null ? null : (AssignmentDynamicScopeFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSubscriptionsSubscription {
   /// The subscription display name.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The ID of this subscription.
-  final String id;
+  final pulumi.Input<String> id;
   /// The subscription location placement ID.
-  final String locationPlacementId;
+  final pulumi.Input<String> locationPlacementId;
   /// The subscription quota ID.
-  final String quotaId;
+  final pulumi.Input<String> quotaId;
   /// The subscription spending limit.
-  final String spendingLimit;
+  final pulumi.Input<String> spendingLimit;
   /// The subscription state. Possible values are Enabled, Warned, PastDue, Disabled, and Deleted.
-  final String state;
+  final pulumi.Input<String> state;
   /// The subscription GUID.
-  final String subscriptionId;
+  final pulumi.Input<String> subscriptionId;
   /// A mapping of tags assigned to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The subscription tenant ID.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [GetSubscriptionsSubscription].
   /// [displayName] The subscription display name.
@@ -59,15 +60,15 @@ class GetSubscriptionsSubscription {
 
   factory GetSubscriptionsSubscription.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionsSubscription(
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
-      locationPlacementId: map['locationPlacementId'] as String,
-      quotaId: map['quotaId'] as String,
-      spendingLimit: map['spendingLimit'] as String,
-      state: map['state'] as String,
-      subscriptionId: map['subscriptionId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      tenantId: map['tenantId'] as String,
+      displayName: (map['displayName'] as String).input(),
+      id: (map['id'] as String).input(),
+      locationPlacementId: (map['locationPlacementId'] as String).input(),
+      quotaId: (map['quotaId'] as String).input(),
+      spendingLimit: (map['spendingLimit'] as String).input(),
+      state: (map['state'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

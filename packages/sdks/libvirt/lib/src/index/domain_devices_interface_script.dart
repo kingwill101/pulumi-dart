@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceScript {
   /// Defines the path to the down script that will be executed when the interface is brought down.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [DomainDevicesInterfaceScript].
   /// [path] Defines the path to the down script that will be executed when the interface is brought down.
@@ -19,7 +20,7 @@ class DomainDevicesInterfaceScript {
 
   factory DomainDevicesInterfaceScript.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceScript(
-      path: map['path'] as String,
+      path: (map['path'] as String).input(),
     );
   }
 }

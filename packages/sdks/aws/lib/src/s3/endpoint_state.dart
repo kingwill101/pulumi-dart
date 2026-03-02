@@ -38,27 +38,17 @@ class EndpointState {
   /// [securityGroupId] Identifier of the EC2 Security Group.
   /// [subnetId] Identifier of the EC2 Subnet.
   EndpointState({
-    pulumi.Output<String>? accessType,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<String>? customerOwnedIpv4Pool,
-    pulumi.Output<List<EndpointNetworkInterface>>? networkInterfaces,
-    pulumi.Output<String>? outpostId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityGroupId,
-    pulumi.Output<String>? subnetId,
-  }) :
-      accessType = pulumi.Input.asOptionalInput<String>(accessType),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      customerOwnedIpv4Pool = pulumi.Input.asOptionalInput<String>(customerOwnedIpv4Pool),
-      networkInterfaces = pulumi.Input.asOptionalInput<List<EndpointNetworkInterface>>(networkInterfaces),
-      outpostId = pulumi.Input.asOptionalInput<String>(outpostId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
+    this.accessType,
+    this.arn,
+    this.cidrBlock,
+    this.creationTime,
+    this.customerOwnedIpv4Pool,
+    this.networkInterfaces,
+    this.outpostId,
+    this.region,
+    this.securityGroupId,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class EndpointState {
 
   factory EndpointState.fromMap(Map<String, dynamic> map) {
     return EndpointState(
-      accessType: map['accessType'] == null ? null : pulumi.Output.create<String>(map['accessType'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : pulumi.Output.create<String>(map['customerOwnedIpv4Pool'] as String),
-      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Output.create<List<EndpointNetworkInterface>>(pulumi.Input.decodeList<EndpointNetworkInterface>(map['networkInterfaces'], (value) => EndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))),
-      outpostId: map['outpostId'] == null ? null : pulumi.Output.create<String>(map['outpostId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
+      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : (map['customerOwnedIpv4Pool'] as String).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<EndpointNetworkInterface>(map['networkInterfaces'], (value) => EndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outpostId: map['outpostId'] == null ? null : (map['outpostId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

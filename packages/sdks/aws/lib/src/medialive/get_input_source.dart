@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInputSource {
-  final String passwordParam;
-  final String url;
-  final String username;
+  final pulumi.Input<String> passwordParam;
+  final pulumi.Input<String> url;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GetInputSource].
   /// [passwordParam] Required.
@@ -26,9 +27,9 @@ class GetInputSource {
 
   factory GetInputSource.fromMap(Map<String, dynamic> map) {
     return GetInputSource(
-      passwordParam: map['passwordParam'] as String,
-      url: map['url'] as String,
-      username: map['username'] as String,
+      passwordParam: (map['passwordParam'] as String).input(),
+      url: (map['url'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

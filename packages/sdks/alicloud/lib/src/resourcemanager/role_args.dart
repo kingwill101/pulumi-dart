@@ -22,15 +22,11 @@ class RoleArgs {
   /// [maxSessionDuration] Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
   /// [roleName] Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
   RoleArgs({
-    required pulumi.Output<String> assumeRolePolicyDocument,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? maxSessionDuration,
-    required pulumi.Output<String> roleName,
-  }) :
-      assumeRolePolicyDocument = pulumi.Input.asInput<String>(assumeRolePolicyDocument),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      maxSessionDuration = pulumi.Input.asOptionalInput<int>(maxSessionDuration),
-      roleName = pulumi.Input.asInput<String>(roleName);
+    required this.assumeRolePolicyDocument,
+    this.description,
+    this.maxSessionDuration,
+    required this.roleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class RoleArgs {
 
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
-      assumeRolePolicyDocument: pulumi.Output.create<String>(map['assumeRolePolicyDocument'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      maxSessionDuration: map['maxSessionDuration'] == null ? null : pulumi.Output.create<int>(map['maxSessionDuration'] as int),
-      roleName: pulumi.Output.create<String>(map['roleName'] as String),
+      assumeRolePolicyDocument: (map['assumeRolePolicyDocument'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration'] as int).input(),
+      roleName: (map['roleName'] as String).input(),
     );
   }
 }

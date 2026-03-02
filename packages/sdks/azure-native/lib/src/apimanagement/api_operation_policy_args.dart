@@ -31,21 +31,14 @@ class ApiOperationPolicyArgs {
   /// [serviceName] The name of the API Management service.
   /// [value] Contents of the Policy as defined by the format.
   ApiOperationPolicyArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? format,
-    required pulumi.Output<String> operationId,
-    pulumi.Output<String>? policyId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> value,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      format = pulumi.Input.asOptionalInput<String>(format),
-      operationId = pulumi.Input.asInput<String>(operationId),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      value = pulumi.Input.asInput<String>(value);
+    required this.apiId,
+    this.format,
+    required this.operationId,
+    this.policyId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ApiOperationPolicyArgs {
 
   factory ApiOperationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ApiOperationPolicyArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      operationId: pulumi.Output.create<String>(map['operationId'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      apiId: (map['apiId'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      operationId: (map['operationId'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

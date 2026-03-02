@@ -52,25 +52,16 @@ class EntitlementArgs {
   /// [privilegedAccess] Privileged access that this service can be used to gate.
   /// [requesterJustificationConfig] Defines the ways in which a requester should provide the justification while requesting for access.
   EntitlementArgs({
-    pulumi.Output<EntitlementAdditionalNotificationTargets>? additionalNotificationTargets,
-    pulumi.Output<EntitlementApprovalWorkflow>? approvalWorkflow,
-    required pulumi.Output<List<EntitlementEligibleUser>> eligibleUsers,
-    required pulumi.Output<String> entitlementId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> maxRequestDuration,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<EntitlementPrivilegedAccess> privilegedAccess,
-    required pulumi.Output<EntitlementRequesterJustificationConfig> requesterJustificationConfig,
-  }) :
-      additionalNotificationTargets = pulumi.Input.asOptionalInput<EntitlementAdditionalNotificationTargets>(additionalNotificationTargets),
-      approvalWorkflow = pulumi.Input.asOptionalInput<EntitlementApprovalWorkflow>(approvalWorkflow),
-      eligibleUsers = pulumi.Input.asInput<List<EntitlementEligibleUser>>(eligibleUsers),
-      entitlementId = pulumi.Input.asInput<String>(entitlementId),
-      location = pulumi.Input.asInput<String>(location),
-      maxRequestDuration = pulumi.Input.asInput<String>(maxRequestDuration),
-      parent = pulumi.Input.asInput<String>(parent),
-      privilegedAccess = pulumi.Input.asInput<EntitlementPrivilegedAccess>(privilegedAccess),
-      requesterJustificationConfig = pulumi.Input.asInput<EntitlementRequesterJustificationConfig>(requesterJustificationConfig);
+    this.additionalNotificationTargets,
+    this.approvalWorkflow,
+    required this.eligibleUsers,
+    required this.entitlementId,
+    required this.location,
+    required this.maxRequestDuration,
+    required this.parent,
+    required this.privilegedAccess,
+    required this.requesterJustificationConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,15 +79,15 @@ class EntitlementArgs {
 
   factory EntitlementArgs.fromMap(Map<String, dynamic> map) {
     return EntitlementArgs(
-      additionalNotificationTargets: map['additionalNotificationTargets'] == null ? null : pulumi.Output.create<EntitlementAdditionalNotificationTargets>(EntitlementAdditionalNotificationTargets.fromMap((map['additionalNotificationTargets'] as Map).cast<String, dynamic>())),
-      approvalWorkflow: map['approvalWorkflow'] == null ? null : pulumi.Output.create<EntitlementApprovalWorkflow>(EntitlementApprovalWorkflow.fromMap((map['approvalWorkflow'] as Map).cast<String, dynamic>())),
-      eligibleUsers: pulumi.Output.create<List<EntitlementEligibleUser>>(pulumi.Input.decodeList<EntitlementEligibleUser>(map['eligibleUsers'], (value) => EntitlementEligibleUser.fromMap((value as Map).cast<String, dynamic>()))),
-      entitlementId: pulumi.Output.create<String>(map['entitlementId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      maxRequestDuration: pulumi.Output.create<String>(map['maxRequestDuration'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      privilegedAccess: pulumi.Output.create<EntitlementPrivilegedAccess>(EntitlementPrivilegedAccess.fromMap((map['privilegedAccess'] as Map).cast<String, dynamic>())),
-      requesterJustificationConfig: pulumi.Output.create<EntitlementRequesterJustificationConfig>(EntitlementRequesterJustificationConfig.fromMap((map['requesterJustificationConfig'] as Map).cast<String, dynamic>())),
+      additionalNotificationTargets: map['additionalNotificationTargets'] == null ? null : (EntitlementAdditionalNotificationTargets.fromMap((map['additionalNotificationTargets'] as Map).cast<String, dynamic>())).input(),
+      approvalWorkflow: map['approvalWorkflow'] == null ? null : (EntitlementApprovalWorkflow.fromMap((map['approvalWorkflow'] as Map).cast<String, dynamic>())).input(),
+      eligibleUsers: (pulumi.Input.decodeList<EntitlementEligibleUser>(map['eligibleUsers'], (value) => EntitlementEligibleUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entitlementId: (map['entitlementId'] as String).input(),
+      location: (map['location'] as String).input(),
+      maxRequestDuration: (map['maxRequestDuration'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      privilegedAccess: (EntitlementPrivilegedAccess.fromMap((map['privilegedAccess'] as Map).cast<String, dynamic>())).input(),
+      requesterJustificationConfig: (EntitlementRequesterJustificationConfig.fromMap((map['requesterJustificationConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

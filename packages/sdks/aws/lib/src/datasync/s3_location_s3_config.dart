@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class S3LocationS3Config {
   /// ARN of the IAM Role used to connect to the S3 Bucket.
-  final String bucketAccessRoleArn;
+  final pulumi.Input<String> bucketAccessRoleArn;
 
   /// Creates a new [S3LocationS3Config].
   /// [bucketAccessRoleArn] ARN of the IAM Role used to connect to the S3 Bucket.
@@ -19,7 +20,7 @@ class S3LocationS3Config {
 
   factory S3LocationS3Config.fromMap(Map<String, dynamic> map) {
     return S3LocationS3Config(
-      bucketAccessRoleArn: map['bucketAccessRoleArn'] as String,
+      bucketAccessRoleArn: (map['bucketAccessRoleArn'] as String).input(),
     );
   }
 }

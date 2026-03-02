@@ -22,15 +22,11 @@ class GetServerCertificateArgs {
   /// [namePrefix] prefix of cert to filter by
   /// [pathPrefix] prefix of path to filter by
   GetServerCertificateArgs({
-    pulumi.Output<bool>? latest,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? pathPrefix,
-  }) :
-      latest = pulumi.Input.asOptionalInput<bool>(latest),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      pathPrefix = pulumi.Input.asOptionalInput<String>(pathPrefix);
+    this.latest,
+    this.name,
+    this.namePrefix,
+    this.pathPrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetServerCertificateArgs {
 
   factory GetServerCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetServerCertificateArgs(
-      latest: map['latest'] == null ? null : pulumi.Output.create<bool>(map['latest'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      pathPrefix: map['pathPrefix'] == null ? null : pulumi.Output.create<String>(map['pathPrefix'] as String),
+      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      pathPrefix: map['pathPrefix'] == null ? null : (map['pathPrefix'] as String).input(),
     );
   }
 }

@@ -52,31 +52,19 @@ class FrontDoorArgs {
   /// [routingRules] Routing rules associated with this Front Door.
   /// [tags] Resource tags.
   FrontDoorArgs({
-    pulumi.Output<List<BackendPool>>? backendPools,
-    pulumi.Output<BackendPoolsSettings>? backendPoolsSettings,
-    pulumi.Output<String>? enabledState,
-    pulumi.Output<String>? friendlyName,
-    pulumi.Output<String>? frontDoorName,
-    pulumi.Output<List<FrontendEndpoint>>? frontendEndpoints,
-    pulumi.Output<List<HealthProbeSettingsModel>>? healthProbeSettings,
-    pulumi.Output<List<LoadBalancingSettingsModel>>? loadBalancingSettings,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<RoutingRule>>? routingRules,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      backendPools = pulumi.Input.asOptionalInput<List<BackendPool>>(backendPools),
-      backendPoolsSettings = pulumi.Input.asOptionalInput<BackendPoolsSettings>(backendPoolsSettings),
-      enabledState = pulumi.Input.asOptionalInput<String>(enabledState),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      frontDoorName = pulumi.Input.asOptionalInput<String>(frontDoorName),
-      frontendEndpoints = pulumi.Input.asOptionalInput<List<FrontendEndpoint>>(frontendEndpoints),
-      healthProbeSettings = pulumi.Input.asOptionalInput<List<HealthProbeSettingsModel>>(healthProbeSettings),
-      loadBalancingSettings = pulumi.Input.asOptionalInput<List<LoadBalancingSettingsModel>>(loadBalancingSettings),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routingRules = pulumi.Input.asOptionalInput<List<RoutingRule>>(routingRules),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.backendPools,
+    this.backendPoolsSettings,
+    this.enabledState,
+    this.friendlyName,
+    this.frontDoorName,
+    this.frontendEndpoints,
+    this.healthProbeSettings,
+    this.loadBalancingSettings,
+    this.location,
+    required this.resourceGroupName,
+    this.routingRules,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class FrontDoorArgs {
 
   factory FrontDoorArgs.fromMap(Map<String, dynamic> map) {
     return FrontDoorArgs(
-      backendPools: map['backendPools'] == null ? null : pulumi.Output.create<List<BackendPool>>(pulumi.Input.decodeList<BackendPool>(map['backendPools'], (value) => BackendPool.fromMap((value as Map).cast<String, dynamic>()))),
-      backendPoolsSettings: map['backendPoolsSettings'] == null ? null : pulumi.Output.create<BackendPoolsSettings>(BackendPoolsSettings.fromMap((map['backendPoolsSettings'] as Map).cast<String, dynamic>())),
-      enabledState: map['enabledState'] == null ? null : pulumi.Output.create<String>(map['enabledState'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      frontDoorName: map['frontDoorName'] == null ? null : pulumi.Output.create<String>(map['frontDoorName'] as String),
-      frontendEndpoints: map['frontendEndpoints'] == null ? null : pulumi.Output.create<List<FrontendEndpoint>>(pulumi.Input.decodeList<FrontendEndpoint>(map['frontendEndpoints'], (value) => FrontendEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      healthProbeSettings: map['healthProbeSettings'] == null ? null : pulumi.Output.create<List<HealthProbeSettingsModel>>(pulumi.Input.decodeList<HealthProbeSettingsModel>(map['healthProbeSettings'], (value) => HealthProbeSettingsModel.fromMap((value as Map).cast<String, dynamic>()))),
-      loadBalancingSettings: map['loadBalancingSettings'] == null ? null : pulumi.Output.create<List<LoadBalancingSettingsModel>>(pulumi.Input.decodeList<LoadBalancingSettingsModel>(map['loadBalancingSettings'], (value) => LoadBalancingSettingsModel.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routingRules: map['routingRules'] == null ? null : pulumi.Output.create<List<RoutingRule>>(pulumi.Input.decodeList<RoutingRule>(map['routingRules'], (value) => RoutingRule.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      backendPools: map['backendPools'] == null ? null : (pulumi.Input.decodeList<BackendPool>(map['backendPools'], (value) => BackendPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendPoolsSettings: map['backendPoolsSettings'] == null ? null : (BackendPoolsSettings.fromMap((map['backendPoolsSettings'] as Map).cast<String, dynamic>())).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      frontDoorName: map['frontDoorName'] == null ? null : (map['frontDoorName'] as String).input(),
+      frontendEndpoints: map['frontendEndpoints'] == null ? null : (pulumi.Input.decodeList<FrontendEndpoint>(map['frontendEndpoints'], (value) => FrontendEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthProbeSettings: map['healthProbeSettings'] == null ? null : (pulumi.Input.decodeList<HealthProbeSettingsModel>(map['healthProbeSettings'], (value) => HealthProbeSettingsModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancingSettings: map['loadBalancingSettings'] == null ? null : (pulumi.Input.decodeList<LoadBalancingSettingsModel>(map['loadBalancingSettings'], (value) => LoadBalancingSettingsModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routingRules: map['routingRules'] == null ? null : (pulumi.Input.decodeList<RoutingRule>(map['routingRules'], (value) => RoutingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

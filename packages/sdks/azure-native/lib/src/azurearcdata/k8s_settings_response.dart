@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'k8s_network_settings_response.dart';
 
 /// The kubernetes settings information.
 class K8sSettingsResponse {
   /// The kubernetes network settings information.
-  final K8sNetworkSettingsResponse? network;
+  final pulumi.Input<K8sNetworkSettingsResponse>? network;
 
   /// Creates a new [K8sSettingsResponse].
   /// [network] The kubernetes network settings information.
@@ -15,13 +16,13 @@ class K8sSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'network': ?network == null ? null : network!.toMap(),
+      'network': ?pulumi.Input.mapOptionalInputValue<K8sNetworkSettingsResponse, Map<String, dynamic>>(network, (value) => value.toMap()),
     };
   }
 
   factory K8sSettingsResponse.fromMap(Map<String, dynamic> map) {
     return K8sSettingsResponse(
-      network: map['network'] == null ? null : K8sNetworkSettingsResponse.fromMap((map['network'] as Map).cast<String, dynamic>()),
+      network: map['network'] == null ? null : (K8sNetworkSettingsResponse.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

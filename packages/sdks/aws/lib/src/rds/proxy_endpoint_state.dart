@@ -42,31 +42,19 @@ class ProxyEndpointState {
   /// [vpcSecurityGroupIds] One or more VPC security group IDs to associate with the new proxy.
   /// [vpcSubnetIds] One or more VPC subnet IDs to associate with the new proxy.
   ProxyEndpointState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? dbProxyEndpointName,
-    pulumi.Output<String>? dbProxyName,
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<bool>? isDefault,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? targetRole,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<List<String>>? vpcSecurityGroupIds,
-    pulumi.Output<List<String>>? vpcSubnetIds,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      dbProxyEndpointName = pulumi.Input.asOptionalInput<String>(dbProxyEndpointName),
-      dbProxyName = pulumi.Input.asOptionalInput<String>(dbProxyName),
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      isDefault = pulumi.Input.asOptionalInput<bool>(isDefault),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      targetRole = pulumi.Input.asOptionalInput<String>(targetRole),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vpcSecurityGroupIds = pulumi.Input.asOptionalInput<List<String>>(vpcSecurityGroupIds),
-      vpcSubnetIds = pulumi.Input.asOptionalInput<List<String>>(vpcSubnetIds);
+    this.arn,
+    this.dbProxyEndpointName,
+    this.dbProxyName,
+    this.endpoint,
+    this.isDefault,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.targetRole,
+    this.vpcId,
+    this.vpcSecurityGroupIds,
+    this.vpcSubnetIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,18 +75,18 @@ class ProxyEndpointState {
 
   factory ProxyEndpointState.fromMap(Map<String, dynamic> map) {
     return ProxyEndpointState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      dbProxyEndpointName: map['dbProxyEndpointName'] == null ? null : pulumi.Output.create<String>(map['dbProxyEndpointName'] as String),
-      dbProxyName: map['dbProxyName'] == null ? null : pulumi.Output.create<String>(map['dbProxyName'] as String),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      isDefault: map['isDefault'] == null ? null : pulumi.Output.create<bool>(map['isDefault'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      targetRole: map['targetRole'] == null ? null : pulumi.Output.create<String>(map['targetRole'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcSecurityGroupIds'] as List).cast<String>()),
-      vpcSubnetIds: map['vpcSubnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcSubnetIds'] as List).cast<String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      dbProxyEndpointName: map['dbProxyEndpointName'] == null ? null : (map['dbProxyEndpointName'] as String).input(),
+      dbProxyName: map['dbProxyName'] == null ? null : (map['dbProxyName'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      targetRole: map['targetRole'] == null ? null : (map['targetRole'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
+      vpcSubnetIds: map['vpcSubnetIds'] == null ? null : ((map['vpcSubnetIds'] as List).cast<String>()).input(),
     );
   }
 }

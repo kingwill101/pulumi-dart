@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Create network mappings input properties/behavior specific to vmm to vmm Network mapping.
 class VmmToVmmCreateNetworkMappingInput {
   /// The instance type.
   /// Expected value is 'VmmToVmm'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Creates a new [VmmToVmmCreateNetworkMappingInput].
   /// [instanceType] The instance type.
@@ -21,7 +22,7 @@ class VmmToVmmCreateNetworkMappingInput {
 
   factory VmmToVmmCreateNetworkMappingInput.fromMap(Map<String, dynamic> map) {
     return VmmToVmmCreateNetworkMappingInput(
-      instanceType: map['instanceType'] as String,
+      instanceType: (map['instanceType'] as String).input(),
     );
   }
 }

@@ -6,17 +6,17 @@ import 'service_provider_parameter_response.dart';
 /// The Object used to describe a Service Provider supported by Bot Service
 class ServiceProviderPropertiesResponse {
   /// URL of Dev Portal
-  final String devPortalUrl;
+  final pulumi.Input<String> devPortalUrl;
   /// Display Name of the Service Provider
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The URL of icon
-  final String? iconUrl;
+  final pulumi.Input<String>? iconUrl;
   /// Id for Service Provider
-  final String id;
+  final pulumi.Input<String> id;
   /// The list of parameters for the Service Provider
-  final List<ServiceProviderParameterResponse>? parameters;
+  final pulumi.Input<List<ServiceProviderParameterResponse>>? parameters;
   /// Name of the Service Provider
-  final String serviceProviderName;
+  final pulumi.Input<String> serviceProviderName;
 
   /// Creates a new [ServiceProviderPropertiesResponse].
   /// [devPortalUrl] URL of Dev Portal
@@ -40,19 +40,19 @@ class ServiceProviderPropertiesResponse {
       'displayName': displayName,
       'iconUrl': ?iconUrl,
       'id': id,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<ServiceProviderParameterResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ServiceProviderParameterResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ServiceProviderParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceProviderName': serviceProviderName,
     };
   }
 
   factory ServiceProviderPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServiceProviderPropertiesResponse(
-      devPortalUrl: map['devPortalUrl'] as String,
-      displayName: map['displayName'] as String,
-      iconUrl: map['iconUrl'] == null ? null : map['iconUrl'] as String,
-      id: map['id'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<ServiceProviderParameterResponse>(map['parameters'], (value) => ServiceProviderParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      serviceProviderName: map['serviceProviderName'] as String,
+      devPortalUrl: (map['devPortalUrl'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl'] as String).input(),
+      id: (map['id'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ServiceProviderParameterResponse>(map['parameters'], (value) => ServiceProviderParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceProviderName: (map['serviceProviderName'] as String).input(),
     );
   }
 }

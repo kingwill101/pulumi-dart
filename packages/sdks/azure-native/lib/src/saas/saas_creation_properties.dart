@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// properties for creation saas
 class SaasCreationProperties {
   /// Whether the SaaS subscription will auto renew upon term end.
-  final bool? autoRenew;
+  final pulumi.Input<bool>? autoRenew;
   /// The offer id.
-  final String? offerId;
+  final pulumi.Input<String>? offerId;
   /// The metadata about the SaaS subscription such as the AzureSubscriptionId and ResourceUri.
-  final Map<String, String>? paymentChannelMetadata;
+  final pulumi.Input<Map<String, String>>? paymentChannelMetadata;
   /// The Payment channel for the SaasSubscription.
-  final String? paymentChannelType;
+  final pulumi.Input<String>? paymentChannelType;
   /// The publisher id.
-  final String? publisherId;
+  final pulumi.Input<String>? publisherId;
   /// The environment in the publisher side for this resource.
-  final String? publisherTestEnvironment;
+  final pulumi.Input<String>? publisherTestEnvironment;
   /// The seat count.
-  final double? quantity;
+  final pulumi.Input<double>? quantity;
   /// The SaaS resource name.
-  final String? saasResourceName;
+  final pulumi.Input<String>? saasResourceName;
   /// The saas session id used for dev service migration request.
-  final String? saasSessionId;
+  final pulumi.Input<String>? saasSessionId;
   /// The saas subscription id used for tenant to subscription level migration request.
-  final String? saasSubscriptionId;
+  final pulumi.Input<String>? saasSubscriptionId;
   /// The plan id.
-  final String? skuId;
+  final pulumi.Input<String>? skuId;
   /// The current Term id.
-  final String? termId;
+  final pulumi.Input<String>? termId;
 
   /// Creates a new [SaasCreationProperties].
   /// [autoRenew] Whether the SaaS subscription will auto renew upon term end.
@@ -75,18 +76,18 @@ class SaasCreationProperties {
 
   factory SaasCreationProperties.fromMap(Map<String, dynamic> map) {
     return SaasCreationProperties(
-      autoRenew: map['autoRenew'] == null ? null : map['autoRenew'] as bool,
-      offerId: map['offerId'] == null ? null : map['offerId'] as String,
-      paymentChannelMetadata: map['paymentChannelMetadata'] == null ? null : (map['paymentChannelMetadata'] as Map).cast<String, String>(),
-      paymentChannelType: map['paymentChannelType'] == null ? null : map['paymentChannelType'] as String,
-      publisherId: map['publisherId'] == null ? null : map['publisherId'] as String,
-      publisherTestEnvironment: map['publisherTestEnvironment'] == null ? null : map['publisherTestEnvironment'] as String,
-      quantity: map['quantity'] == null ? null : map['quantity'] as double,
-      saasResourceName: map['saasResourceName'] == null ? null : map['saasResourceName'] as String,
-      saasSessionId: map['saasSessionId'] == null ? null : map['saasSessionId'] as String,
-      saasSubscriptionId: map['saasSubscriptionId'] == null ? null : map['saasSubscriptionId'] as String,
-      skuId: map['skuId'] == null ? null : map['skuId'] as String,
-      termId: map['termId'] == null ? null : map['termId'] as String,
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      offerId: map['offerId'] == null ? null : (map['offerId'] as String).input(),
+      paymentChannelMetadata: map['paymentChannelMetadata'] == null ? null : ((map['paymentChannelMetadata'] as Map).cast<String, String>()).input(),
+      paymentChannelType: map['paymentChannelType'] == null ? null : (map['paymentChannelType'] as String).input(),
+      publisherId: map['publisherId'] == null ? null : (map['publisherId'] as String).input(),
+      publisherTestEnvironment: map['publisherTestEnvironment'] == null ? null : (map['publisherTestEnvironment'] as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity'] as double).input(),
+      saasResourceName: map['saasResourceName'] == null ? null : (map['saasResourceName'] as String).input(),
+      saasSessionId: map['saasSessionId'] == null ? null : (map['saasSessionId'] as String).input(),
+      saasSubscriptionId: map['saasSubscriptionId'] == null ? null : (map['saasSubscriptionId'] as String).input(),
+      skuId: map['skuId'] == null ? null : (map['skuId'] as String).input(),
+      termId: map['termId'] == null ? null : (map['termId'] as String).input(),
     );
   }
 }

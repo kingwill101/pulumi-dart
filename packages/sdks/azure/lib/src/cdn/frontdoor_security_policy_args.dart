@@ -20,13 +20,10 @@ class FrontdoorSecurityPolicyArgs {
   /// [name] The name which should be used for this Front Door Security Policy. Possible values must not be an empty string. Changing this forces a new Front Door Security Policy to be created.
   /// [securityPolicies] An `security_policies` block as defined below.
   FrontdoorSecurityPolicyArgs({
-    required pulumi.Output<String> cdnFrontdoorProfileId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<FrontdoorSecurityPolicySecurityPolicies> securityPolicies,
-  }) :
-      cdnFrontdoorProfileId = pulumi.Input.asInput<String>(cdnFrontdoorProfileId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      securityPolicies = pulumi.Input.asInput<FrontdoorSecurityPolicySecurityPolicies>(securityPolicies);
+    required this.cdnFrontdoorProfileId,
+    this.name,
+    required this.securityPolicies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class FrontdoorSecurityPolicyArgs {
 
   factory FrontdoorSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorSecurityPolicyArgs(
-      cdnFrontdoorProfileId: pulumi.Output.create<String>(map['cdnFrontdoorProfileId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      securityPolicies: pulumi.Output.create<FrontdoorSecurityPolicySecurityPolicies>(FrontdoorSecurityPolicySecurityPolicies.fromMap((map['securityPolicies'] as Map).cast<String, dynamic>())),
+      cdnFrontdoorProfileId: (map['cdnFrontdoorProfileId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      securityPolicies: (FrontdoorSecurityPolicySecurityPolicies.fromMap((map['securityPolicies'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

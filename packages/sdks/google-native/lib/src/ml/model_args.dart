@@ -33,23 +33,15 @@ class ModelArgs {
   /// [project] Optional.
   /// [regions] Optional. The list of regions where the model is going to be deployed. Only one region per model is supported. Defaults to 'us-central1' if nothing is set. See the available regions for AI Platform services. Note: * No matter where a model is deployed, it can always be accessed by users from anywhere, both for online and batch prediction. * The region for a batch prediction job is set by the region field when submitting the batch prediction job and does not take its value from this field.
   ModelArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? onlinePredictionConsoleLogging,
-    pulumi.Output<bool>? onlinePredictionLogging,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? regions,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      onlinePredictionConsoleLogging = pulumi.Input.asOptionalInput<bool>(onlinePredictionConsoleLogging),
-      onlinePredictionLogging = pulumi.Input.asOptionalInput<bool>(onlinePredictionLogging),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regions = pulumi.Input.asOptionalInput<List<String>>(regions);
+    this.description,
+    this.etag,
+    this.labels,
+    this.name,
+    this.onlinePredictionConsoleLogging,
+    this.onlinePredictionLogging,
+    this.project,
+    this.regions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ModelArgs {
 
   factory ModelArgs.fromMap(Map<String, dynamic> map) {
     return ModelArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      onlinePredictionConsoleLogging: map['onlinePredictionConsoleLogging'] == null ? null : pulumi.Output.create<bool>(map['onlinePredictionConsoleLogging'] as bool),
-      onlinePredictionLogging: map['onlinePredictionLogging'] == null ? null : pulumi.Output.create<bool>(map['onlinePredictionLogging'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      onlinePredictionConsoleLogging: map['onlinePredictionConsoleLogging'] == null ? null : (map['onlinePredictionConsoleLogging'] as bool).input(),
+      onlinePredictionLogging: map['onlinePredictionLogging'] == null ? null : (map['onlinePredictionLogging'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
     );
   }
 }

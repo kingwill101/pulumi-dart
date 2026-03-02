@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesControllerNvme {
   /// Sets the serial number for the NVMe controller device.
-  final String? serial;
+  final pulumi.Input<String>? serial;
 
   /// Creates a new [DomainDevicesControllerNvme].
   /// [serial] Sets the serial number for the NVMe controller device.
@@ -19,7 +20,7 @@ class DomainDevicesControllerNvme {
 
   factory DomainDevicesControllerNvme.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerNvme(
-      serial: map['serial'] == null ? null : map['serial'] as String,
+      serial: map['serial'] == null ? null : (map['serial'] as String).input(),
     );
   }
 }

@@ -50,31 +50,19 @@ class ComputeInstanceState {
   /// [tags] A mapping of tags which should be assigned to the Machine Learning Compute Instance. Changing this forces a new Machine Learning Compute Instance to be created.
   /// [virtualMachineSize] The Virtual Machine Size. Changing this forces a new Machine Learning Compute Instance to be created.
   ComputeInstanceState({
-    pulumi.Output<ComputeInstanceAssignToUser>? assignToUser,
-    pulumi.Output<String>? authorizationType,
-    pulumi.Output<String>? description,
-    pulumi.Output<ComputeInstanceIdentity>? identity,
-    pulumi.Output<bool>? localAuthEnabled,
-    pulumi.Output<String>? machineLearningWorkspaceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? nodePublicIpEnabled,
-    pulumi.Output<ComputeInstanceSsh>? ssh,
-    pulumi.Output<String>? subnetResourceId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? virtualMachineSize,
-  }) :
-      assignToUser = pulumi.Input.asOptionalInput<ComputeInstanceAssignToUser>(assignToUser),
-      authorizationType = pulumi.Input.asOptionalInput<String>(authorizationType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      identity = pulumi.Input.asOptionalInput<ComputeInstanceIdentity>(identity),
-      localAuthEnabled = pulumi.Input.asOptionalInput<bool>(localAuthEnabled),
-      machineLearningWorkspaceId = pulumi.Input.asOptionalInput<String>(machineLearningWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodePublicIpEnabled = pulumi.Input.asOptionalInput<bool>(nodePublicIpEnabled),
-      ssh = pulumi.Input.asOptionalInput<ComputeInstanceSsh>(ssh),
-      subnetResourceId = pulumi.Input.asOptionalInput<String>(subnetResourceId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualMachineSize = pulumi.Input.asOptionalInput<String>(virtualMachineSize);
+    this.assignToUser,
+    this.authorizationType,
+    this.description,
+    this.identity,
+    this.localAuthEnabled,
+    this.machineLearningWorkspaceId,
+    this.name,
+    this.nodePublicIpEnabled,
+    this.ssh,
+    this.subnetResourceId,
+    this.tags,
+    this.virtualMachineSize,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class ComputeInstanceState {
 
   factory ComputeInstanceState.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceState(
-      assignToUser: map['assignToUser'] == null ? null : pulumi.Output.create<ComputeInstanceAssignToUser>(ComputeInstanceAssignToUser.fromMap((map['assignToUser'] as Map).cast<String, dynamic>())),
-      authorizationType: map['authorizationType'] == null ? null : pulumi.Output.create<String>(map['authorizationType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ComputeInstanceIdentity>(ComputeInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : pulumi.Output.create<bool>(map['localAuthEnabled'] as bool),
-      machineLearningWorkspaceId: map['machineLearningWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['machineLearningWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodePublicIpEnabled: map['nodePublicIpEnabled'] == null ? null : pulumi.Output.create<bool>(map['nodePublicIpEnabled'] as bool),
-      ssh: map['ssh'] == null ? null : pulumi.Output.create<ComputeInstanceSsh>(ComputeInstanceSsh.fromMap((map['ssh'] as Map).cast<String, dynamic>())),
-      subnetResourceId: map['subnetResourceId'] == null ? null : pulumi.Output.create<String>(map['subnetResourceId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualMachineSize: map['virtualMachineSize'] == null ? null : pulumi.Output.create<String>(map['virtualMachineSize'] as String),
+      assignToUser: map['assignToUser'] == null ? null : (ComputeInstanceAssignToUser.fromMap((map['assignToUser'] as Map).cast<String, dynamic>())).input(),
+      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      identity: map['identity'] == null ? null : (ComputeInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
+      machineLearningWorkspaceId: map['machineLearningWorkspaceId'] == null ? null : (map['machineLearningWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodePublicIpEnabled: map['nodePublicIpEnabled'] == null ? null : (map['nodePublicIpEnabled'] as bool).input(),
+      ssh: map['ssh'] == null ? null : (ComputeInstanceSsh.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
+      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualMachineSize: map['virtualMachineSize'] == null ? null : (map['virtualMachineSize'] as String).input(),
     );
   }
 }

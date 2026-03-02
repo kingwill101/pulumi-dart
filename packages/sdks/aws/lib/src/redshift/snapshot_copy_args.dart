@@ -30,19 +30,13 @@ class SnapshotCopyArgs {
   /// [retentionPeriod] Number of days to retain automated snapshots in the destination region after they are copied from the source region.
   /// [snapshotCopyGrantName] Name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
   SnapshotCopyArgs({
-    required pulumi.Output<String> clusterIdentifier,
-    required pulumi.Output<String> destinationRegion,
-    pulumi.Output<int>? manualSnapshotRetentionPeriod,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? retentionPeriod,
-    pulumi.Output<String>? snapshotCopyGrantName,
-  }) :
-      clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
-      destinationRegion = pulumi.Input.asInput<String>(destinationRegion),
-      manualSnapshotRetentionPeriod = pulumi.Input.asOptionalInput<int>(manualSnapshotRetentionPeriod),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionPeriod = pulumi.Input.asOptionalInput<int>(retentionPeriod),
-      snapshotCopyGrantName = pulumi.Input.asOptionalInput<String>(snapshotCopyGrantName);
+    required this.clusterIdentifier,
+    required this.destinationRegion,
+    this.manualSnapshotRetentionPeriod,
+    this.region,
+    this.retentionPeriod,
+    this.snapshotCopyGrantName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class SnapshotCopyArgs {
 
   factory SnapshotCopyArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyArgs(
-      clusterIdentifier: pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      destinationRegion: pulumi.Output.create<String>(map['destinationRegion'] as String),
-      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : pulumi.Output.create<int>(map['manualSnapshotRetentionPeriod'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionPeriod: map['retentionPeriod'] == null ? null : pulumi.Output.create<int>(map['retentionPeriod'] as int),
-      snapshotCopyGrantName: map['snapshotCopyGrantName'] == null ? null : pulumi.Output.create<String>(map['snapshotCopyGrantName'] as String),
+      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
+      destinationRegion: (map['destinationRegion'] as String).input(),
+      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : (map['manualSnapshotRetentionPeriod'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
+      snapshotCopyGrantName: map['snapshotCopyGrantName'] == null ? null : (map['snapshotCopyGrantName'] as String).input(),
     );
   }
 }

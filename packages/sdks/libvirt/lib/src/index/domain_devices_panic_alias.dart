@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesPanicAlias {
   /// Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DomainDevicesPanicAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
@@ -19,7 +20,7 @@ class DomainDevicesPanicAlias {
 
   factory DomainDevicesPanicAlias.fromMap(Map<String, dynamic> map) {
     return DomainDevicesPanicAlias(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

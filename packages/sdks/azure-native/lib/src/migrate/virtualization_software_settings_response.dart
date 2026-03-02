@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Virtualization software settings.
 class VirtualizationSoftwareSettingsResponse {
   /// VMware cloud foundation license cost.
-  final double vMwareCloudFoundationLicenseCost;
+  final pulumi.Input<double> vMwareCloudFoundationLicenseCost;
 
   /// Creates a new [VirtualizationSoftwareSettingsResponse].
   /// [vMwareCloudFoundationLicenseCost] VMware cloud foundation license cost.
@@ -20,7 +21,7 @@ class VirtualizationSoftwareSettingsResponse {
 
   factory VirtualizationSoftwareSettingsResponse.fromMap(Map<String, dynamic> map) {
     return VirtualizationSoftwareSettingsResponse(
-      vMwareCloudFoundationLicenseCost: map['vMwareCloudFoundationLicenseCost'] as double,
+      vMwareCloudFoundationLicenseCost: (map['vMwareCloudFoundationLicenseCost'] as double).input(),
     );
   }
 }

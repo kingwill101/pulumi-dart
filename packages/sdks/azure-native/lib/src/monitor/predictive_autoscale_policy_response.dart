@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The parameters for enabling predictive autoscale.
 class PredictiveAutoscalePolicyResponse {
   /// the amount of time to specify by which instances are launched in advance. It must be between 1 minute and 60 minutes in ISO 8601 format.
-  final String? scaleLookAheadTime;
+  final pulumi.Input<String>? scaleLookAheadTime;
   /// the predictive autoscale mode
-  final String scaleMode;
+  final pulumi.Input<String> scaleMode;
 
   /// Creates a new [PredictiveAutoscalePolicyResponse].
   /// [scaleLookAheadTime] the amount of time to specify by which instances are launched in advance. It must be between 1 minute and 60 minutes in ISO 8601 format.
@@ -25,8 +26,8 @@ class PredictiveAutoscalePolicyResponse {
 
   factory PredictiveAutoscalePolicyResponse.fromMap(Map<String, dynamic> map) {
     return PredictiveAutoscalePolicyResponse(
-      scaleLookAheadTime: map['scaleLookAheadTime'] == null ? null : map['scaleLookAheadTime'] as String,
-      scaleMode: map['scaleMode'] as String,
+      scaleLookAheadTime: map['scaleLookAheadTime'] == null ? null : (map['scaleLookAheadTime'] as String).input(),
+      scaleMode: (map['scaleMode'] as String).input(),
     );
   }
 }

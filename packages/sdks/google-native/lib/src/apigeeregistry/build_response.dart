@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Build information of the Instance if it's in `ACTIVE` state.
 class BuildResponse {
   /// Commit ID of the latest commit in the build.
-  final String commitId;
+  final pulumi.Input<String> commitId;
   /// Commit time of the latest commit in the build.
-  final String commitTime;
+  final pulumi.Input<String> commitTime;
   /// Path of the open source repository: github.com/apigee/registry.
-  final String repo;
+  final pulumi.Input<String> repo;
 
   /// Creates a new [BuildResponse].
   /// [commitId] Commit ID of the latest commit in the build.
@@ -30,9 +31,9 @@ class BuildResponse {
 
   factory BuildResponse.fromMap(Map<String, dynamic> map) {
     return BuildResponse(
-      commitId: map['commitId'] as String,
-      commitTime: map['commitTime'] as String,
-      repo: map['repo'] as String,
+      commitId: (map['commitId'] as String).input(),
+      commitTime: (map['commitTime'] as String).input(),
+      repo: (map['repo'] as String).input(),
     );
   }
 }

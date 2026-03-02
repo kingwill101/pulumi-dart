@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateTagSpecification {
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// Map of tags, each pair of which must exactly match a pair on the desired Launch Template.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetLaunchTemplateTagSpecification].
   /// [resourceType] Required.
@@ -23,8 +24,8 @@ class GetLaunchTemplateTagSpecification {
 
   factory GetLaunchTemplateTagSpecification.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateTagSpecification(
-      resourceType: map['resourceType'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      resourceType: (map['resourceType'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

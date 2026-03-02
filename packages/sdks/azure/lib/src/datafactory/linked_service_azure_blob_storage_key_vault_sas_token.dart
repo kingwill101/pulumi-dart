@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinkedServiceAzureBlobStorageKeyVaultSasToken {
-  final String linkedServiceName;
-  final String secretName;
+  final pulumi.Input<String> linkedServiceName;
+  final pulumi.Input<String> secretName;
 
   /// Creates a new [LinkedServiceAzureBlobStorageKeyVaultSasToken].
   /// [linkedServiceName] Required.
@@ -22,8 +23,8 @@ class LinkedServiceAzureBlobStorageKeyVaultSasToken {
 
   factory LinkedServiceAzureBlobStorageKeyVaultSasToken.fromMap(Map<String, dynamic> map) {
     return LinkedServiceAzureBlobStorageKeyVaultSasToken(
-      linkedServiceName: map['linkedServiceName'] as String,
-      secretName: map['secretName'] as String,
+      linkedServiceName: (map['linkedServiceName'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
     );
   }
 }

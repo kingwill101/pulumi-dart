@@ -28,19 +28,13 @@ class JobCredentialArgs {
   /// [serverName] The name of the server.
   /// [username] The credential user name.
   JobCredentialArgs({
-    pulumi.Output<String>? credentialName,
-    required pulumi.Output<String> jobAgentName,
-    required pulumi.Output<String> password,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> username,
-  }) :
-      credentialName = pulumi.Input.asOptionalInput<String>(credentialName),
-      jobAgentName = pulumi.Input.asInput<String>(jobAgentName),
-      password = pulumi.Input.asInput<String>(password),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      username = pulumi.Input.asInput<String>(username);
+    this.credentialName,
+    required this.jobAgentName,
+    required this.password,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class JobCredentialArgs {
 
   factory JobCredentialArgs.fromMap(Map<String, dynamic> map) {
     return JobCredentialArgs(
-      credentialName: map['credentialName'] == null ? null : pulumi.Output.create<String>(map['credentialName'] as String),
-      jobAgentName: pulumi.Output.create<String>(map['jobAgentName'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      credentialName: map['credentialName'] == null ? null : (map['credentialName'] as String).input(),
+      jobAgentName: (map['jobAgentName'] as String).input(),
+      password: (map['password'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

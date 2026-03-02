@@ -7,11 +7,11 @@ class GetTriggerBuildArtifactObject {
   /// The Cloud Build location for the trigger.
   ///
   /// - - -
-  final String location;
+  final pulumi.Input<String> location;
   /// Path globs used to match files in the build's workspace.
-  final List<String> paths;
+  final pulumi.Input<List<String>> paths;
   /// Output only. Stores timing information for pushing all artifact objects.
-  final List<GetTriggerBuildArtifactObjectTiming> timings;
+  final pulumi.Input<List<GetTriggerBuildArtifactObjectTiming>> timings;
 
   /// Creates a new [GetTriggerBuildArtifactObject].
   /// [location] The Cloud Build location for the trigger.
@@ -27,15 +27,15 @@ class GetTriggerBuildArtifactObject {
     return <String, dynamic>{
       'location': location,
       'paths': paths,
-      'timings': pulumi.Input.encodeList<GetTriggerBuildArtifactObjectTiming, Map<String, dynamic>>(timings, (value) => value.toMap()),
+      'timings': pulumi.Input.mapInputValue<List<GetTriggerBuildArtifactObjectTiming>, List<Map<String, dynamic>>>(timings, (value) => pulumi.Input.encodeList<GetTriggerBuildArtifactObjectTiming, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetTriggerBuildArtifactObject.fromMap(Map<String, dynamic> map) {
     return GetTriggerBuildArtifactObject(
-      location: map['location'] as String,
-      paths: (map['paths'] as List).cast<String>(),
-      timings: pulumi.Input.decodeList<GetTriggerBuildArtifactObjectTiming>(map['timings'], (value) => GetTriggerBuildArtifactObjectTiming.fromMap((value as Map).cast<String, dynamic>())),
+      location: (map['location'] as String).input(),
+      paths: ((map['paths'] as List).cast<String>()).input(),
+      timings: (pulumi.Input.decodeList<GetTriggerBuildArtifactObjectTiming>(map['timings'], (value) => GetTriggerBuildArtifactObjectTiming.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

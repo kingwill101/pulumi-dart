@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EdgeKubernetesLogConfig {
   /// Log Service project name, cluster logs will output to this project.
-  final String? project;
+  final pulumi.Input<String>? project;
   /// Type of collecting logs, only `SLS` are supported currently.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [EdgeKubernetesLogConfig].
   /// [project] Log Service project name, cluster logs will output to this project.
@@ -24,8 +25,8 @@ class EdgeKubernetesLogConfig {
 
   factory EdgeKubernetesLogConfig.fromMap(Map<String, dynamic> map) {
     return EdgeKubernetesLogConfig(
-      project: map['project'] == null ? null : map['project'] as String,
-      type: map['type'] as String,
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

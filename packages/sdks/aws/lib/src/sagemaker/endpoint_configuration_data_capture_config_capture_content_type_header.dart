@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader {
   /// CSV content type headers to capture. One of `csv_content_types` or `json_content_types` is required.
-  final List<String>? csvContentTypes;
+  final pulumi.Input<List<String>>? csvContentTypes;
   /// The JSON content type headers to capture. One of `json_content_types` or `csv_content_types` is required.
-  final List<String>? jsonContentTypes;
+  final pulumi.Input<List<String>>? jsonContentTypes;
 
   /// Creates a new [EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader].
   /// [csvContentTypes] CSV content type headers to capture. One of `csv_content_types` or `json_content_types` is required.
@@ -24,8 +25,8 @@ class EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader {
 
   factory EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader(
-      csvContentTypes: map['csvContentTypes'] == null ? null : (map['csvContentTypes'] as List).cast<String>(),
-      jsonContentTypes: map['jsonContentTypes'] == null ? null : (map['jsonContentTypes'] as List).cast<String>(),
+      csvContentTypes: map['csvContentTypes'] == null ? null : ((map['csvContentTypes'] as List).cast<String>()).input(),
+      jsonContentTypes: map['jsonContentTypes'] == null ? null : ((map['jsonContentTypes'] as List).cast<String>()).input(),
     );
   }
 }

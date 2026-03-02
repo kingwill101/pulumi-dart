@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of a run argument.
 class Argument {
   /// Flag to indicate whether the argument represents a secret and want to be removed from build logs.
-  final bool? isSecret;
+  final pulumi.Input<bool>? isSecret;
   /// The name of the argument.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the argument.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [Argument].
   /// [isSecret] Flag to indicate whether the argument represents a secret and want to be removed from build logs.
@@ -30,9 +31,9 @@ class Argument {
 
   factory Argument.fromMap(Map<String, dynamic> map) {
     return Argument(
-      isSecret: map['isSecret'] == null ? null : map['isSecret'] as bool,
-      name: map['name'] as String,
-      value: map['value'] as String,
+      isSecret: map['isSecret'] == null ? null : (map['isSecret'] as bool).input(),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies a location to extract JWT from an API request.
 class JwtLocationResponse {
   /// Specifies cookie name to extract JWT token.
-  final String cookie;
+  final pulumi.Input<String> cookie;
   /// Specifies HTTP header name to extract JWT token.
-  final String header;
+  final pulumi.Input<String> header;
   /// Specifies URL query parameter name to extract JWT token.
-  final String query;
+  final pulumi.Input<String> query;
   /// The value prefix. The value format is "value_prefix{token}" Only applies to "in" header type. Must be empty for "in" query type. If not empty, the header value has to match (case sensitive) this prefix. If not matched, JWT will not be extracted. If matched, JWT will be extracted after the prefix is removed. For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer " with a space at the end.
-  final String valuePrefix;
+  final pulumi.Input<String> valuePrefix;
 
   /// Creates a new [JwtLocationResponse].
   /// [cookie] Specifies cookie name to extract JWT token.
@@ -35,10 +36,10 @@ class JwtLocationResponse {
 
   factory JwtLocationResponse.fromMap(Map<String, dynamic> map) {
     return JwtLocationResponse(
-      cookie: map['cookie'] as String,
-      header: map['header'] as String,
-      query: map['query'] as String,
-      valuePrefix: map['valuePrefix'] as String,
+      cookie: (map['cookie'] as String).input(),
+      header: (map['header'] as String).input(),
+      query: (map['query'] as String).input(),
+      valuePrefix: (map['valuePrefix'] as String).input(),
     );
   }
 }

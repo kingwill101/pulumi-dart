@@ -16,11 +16,9 @@ class GetCatalogArgs {
   /// [devCenterId] Specifies the Dev Center Id within which this Dev Center Catalog should exist.
   /// [name] The name of this Dev Center Catalog.
   GetCatalogArgs({
-    required pulumi.Output<String> devCenterId,
-    required pulumi.Output<String> name,
-  }) :
-      devCenterId = pulumi.Input.asInput<String>(devCenterId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.devCenterId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCatalogArgs {
 
   factory GetCatalogArgs.fromMap(Map<String, dynamic> map) {
     return GetCatalogArgs(
-      devCenterId: pulumi.Output.create<String>(map['devCenterId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      devCenterId: (map['devCenterId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

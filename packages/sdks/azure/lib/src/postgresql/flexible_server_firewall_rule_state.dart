@@ -19,15 +19,11 @@ class FlexibleServerFirewallRuleState {
   /// [serverId] The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Firewall Rule. Changing this forces a new PostgreSQL Flexible Server Firewall Rule to be created.
   /// [startIpAddress] The IPv4 Address defining the start of the range of addresses associated with this PostgreSQL Flexible Server Firewall Rule.
   FlexibleServerFirewallRuleState({
-    pulumi.Output<String>? endIpAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? serverId,
-    pulumi.Output<String>? startIpAddress,
-  }) :
-      endIpAddress = pulumi.Input.asOptionalInput<String>(endIpAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId),
-      startIpAddress = pulumi.Input.asOptionalInput<String>(startIpAddress);
+    this.endIpAddress,
+    this.name,
+    this.serverId,
+    this.startIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class FlexibleServerFirewallRuleState {
 
   factory FlexibleServerFirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FlexibleServerFirewallRuleState(
-      endIpAddress: map['endIpAddress'] == null ? null : pulumi.Output.create<String>(map['endIpAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
-      startIpAddress: map['startIpAddress'] == null ? null : pulumi.Output.create<String>(map['startIpAddress'] as String),
+      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress'] as String).input(),
     );
   }
 }

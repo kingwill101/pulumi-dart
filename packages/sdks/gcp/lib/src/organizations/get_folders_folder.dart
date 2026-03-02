@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFoldersFolder {
   /// The timestamp of when the folder was created
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The timestamp of when the folder was requested to be deleted (if applicable)
-  final String deleteTime;
+  final pulumi.Input<String> deleteTime;
   /// The display name of the folder
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Entity tag identifier of the folder
-  final String etag;
+  final pulumi.Input<String> etag;
   /// The id of the folder
-  final String name;
+  final pulumi.Input<String> name;
   /// The parent id of the folder
-  final String parent;
+  final pulumi.Input<String> parent;
   /// The lifecycle state of the folder
-  final String state;
+  final pulumi.Input<String> state;
   /// The timestamp of when the folder was last modified
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GetFoldersFolder].
   /// [createTime] The timestamp of when the folder was created
@@ -54,14 +55,14 @@ class GetFoldersFolder {
 
   factory GetFoldersFolder.fromMap(Map<String, dynamic> map) {
     return GetFoldersFolder(
-      createTime: map['createTime'] as String,
-      deleteTime: map['deleteTime'] as String,
-      displayName: map['displayName'] as String,
-      etag: map['etag'] as String,
-      name: map['name'] as String,
-      parent: map['parent'] as String,
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (map['createTime'] as String).input(),
+      deleteTime: (map['deleteTime'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      name: (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      state: (map['state'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

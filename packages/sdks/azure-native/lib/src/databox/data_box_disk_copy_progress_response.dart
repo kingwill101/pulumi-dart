@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_error_response.dart';
 
 /// DataBox Disk Copy Progress
 class DataBoxDiskCopyProgressResponse {
   /// Available actions on the job.
-  final List<String> actions;
+  final pulumi.Input<List<String>> actions;
   /// Bytes copied during the copy of disk.
-  final double bytesCopied;
+  final pulumi.Input<double> bytesCopied;
   /// Error, if any, in the stage
-  final CloudErrorResponse error;
+  final pulumi.Input<CloudErrorResponse> error;
   /// Indicates the percentage completed for the copy of the disk.
-  final int percentComplete;
+  final pulumi.Input<int> percentComplete;
   /// The serial number of the disk
-  final String serialNumber;
+  final pulumi.Input<String> serialNumber;
   /// The Status of the copy
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [DataBoxDiskCopyProgressResponse].
   /// [actions] Available actions on the job.
@@ -37,7 +38,7 @@ class DataBoxDiskCopyProgressResponse {
     return <String, dynamic>{
       'actions': actions,
       'bytesCopied': bytesCopied,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<CloudErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'percentComplete': percentComplete,
       'serialNumber': serialNumber,
       'status': status,
@@ -46,12 +47,12 @@ class DataBoxDiskCopyProgressResponse {
 
   factory DataBoxDiskCopyProgressResponse.fromMap(Map<String, dynamic> map) {
     return DataBoxDiskCopyProgressResponse(
-      actions: (map['actions'] as List).cast<String>(),
-      bytesCopied: map['bytesCopied'] as double,
-      error: CloudErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      percentComplete: map['percentComplete'] as int,
-      serialNumber: map['serialNumber'] as String,
-      status: map['status'] as String,
+      actions: ((map['actions'] as List).cast<String>()).input(),
+      bytesCopied: (map['bytesCopied'] as double).input(),
+      error: (CloudErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      percentComplete: (map['percentComplete'] as int).input(),
+      serialNumber: (map['serialNumber'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

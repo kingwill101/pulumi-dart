@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetForwardingRulesForwardingRuleRuleConditionPathConfig {
   /// The domain name is 3-128 characters long.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetForwardingRulesForwardingRuleRuleConditionPathConfig].
   /// [values] The domain name is 3-128 characters long.
@@ -19,7 +20,7 @@ class GetForwardingRulesForwardingRuleRuleConditionPathConfig {
 
   factory GetForwardingRulesForwardingRuleRuleConditionPathConfig.fromMap(Map<String, dynamic> map) {
     return GetForwardingRulesForwardingRuleRuleConditionPathConfig(
-      values: (map['values'] as List).cast<String>(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

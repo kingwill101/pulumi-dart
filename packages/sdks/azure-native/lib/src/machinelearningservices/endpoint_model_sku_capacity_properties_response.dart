@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointModelSkuCapacityPropertiesResponse {
   /// The default capacity.
-  final int? default_;
+  final pulumi.Input<int>? default_;
   /// The maximum capacity.
-  final int? maximum;
+  final pulumi.Input<int>? maximum;
 
   /// Creates a new [EndpointModelSkuCapacityPropertiesResponse].
   /// [default_] The default capacity.
@@ -24,8 +25,8 @@ class EndpointModelSkuCapacityPropertiesResponse {
 
   factory EndpointModelSkuCapacityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointModelSkuCapacityPropertiesResponse(
-      default_: map['default'] == null ? null : map['default'] as int,
-      maximum: map['maximum'] == null ? null : map['maximum'] as int,
+      default_: map['default'] == null ? null : (map['default'] as int).input(),
+      maximum: map['maximum'] == null ? null : (map['maximum'] as int).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_insights_path_filter_at_destination_destination_port_range.dart';
 import 'network_insights_path_filter_at_destination_source_port_range.dart';
 
 class NetworkInsightsPathFilterAtDestination {
   /// The destination IPv4 address.
-  final String? destinationAddress;
+  final pulumi.Input<String>? destinationAddress;
   /// The destination port range. See below for details.
-  final NetworkInsightsPathFilterAtDestinationDestinationPortRange? destinationPortRange;
+  final pulumi.Input<NetworkInsightsPathFilterAtDestinationDestinationPortRange>? destinationPortRange;
   /// IP address of the source resource.
-  final String? sourceAddress;
+  final pulumi.Input<String>? sourceAddress;
   /// The source port range. See below for details.
-  final NetworkInsightsPathFilterAtDestinationSourcePortRange? sourcePortRange;
+  final pulumi.Input<NetworkInsightsPathFilterAtDestinationSourcePortRange>? sourcePortRange;
 
   /// Creates a new [NetworkInsightsPathFilterAtDestination].
   /// [destinationAddress] The destination IPv4 address.
@@ -28,18 +29,18 @@ class NetworkInsightsPathFilterAtDestination {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destinationAddress': ?destinationAddress,
-      'destinationPortRange': ?destinationPortRange == null ? null : destinationPortRange!.toMap(),
+      'destinationPortRange': ?pulumi.Input.mapOptionalInputValue<NetworkInsightsPathFilterAtDestinationDestinationPortRange, Map<String, dynamic>>(destinationPortRange, (value) => value.toMap()),
       'sourceAddress': ?sourceAddress,
-      'sourcePortRange': ?sourcePortRange == null ? null : sourcePortRange!.toMap(),
+      'sourcePortRange': ?pulumi.Input.mapOptionalInputValue<NetworkInsightsPathFilterAtDestinationSourcePortRange, Map<String, dynamic>>(sourcePortRange, (value) => value.toMap()),
     };
   }
 
   factory NetworkInsightsPathFilterAtDestination.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsPathFilterAtDestination(
-      destinationAddress: map['destinationAddress'] == null ? null : map['destinationAddress'] as String,
-      destinationPortRange: map['destinationPortRange'] == null ? null : NetworkInsightsPathFilterAtDestinationDestinationPortRange.fromMap((map['destinationPortRange'] as Map).cast<String, dynamic>()),
-      sourceAddress: map['sourceAddress'] == null ? null : map['sourceAddress'] as String,
-      sourcePortRange: map['sourcePortRange'] == null ? null : NetworkInsightsPathFilterAtDestinationSourcePortRange.fromMap((map['sourcePortRange'] as Map).cast<String, dynamic>()),
+      destinationAddress: map['destinationAddress'] == null ? null : (map['destinationAddress'] as String).input(),
+      destinationPortRange: map['destinationPortRange'] == null ? null : (NetworkInsightsPathFilterAtDestinationDestinationPortRange.fromMap((map['destinationPortRange'] as Map).cast<String, dynamic>())).input(),
+      sourceAddress: map['sourceAddress'] == null ? null : (map['sourceAddress'] as String).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (NetworkInsightsPathFilterAtDestinationSourcePortRange.fromMap((map['sourcePortRange'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_logging_v2_target_grant_grantee.dart';
 
 class BucketLoggingV2TargetGrant {
   /// Configuration block for the person being granted permissions. See below.
-  final BucketLoggingV2TargetGrantGrantee grantee;
+  final pulumi.Input<BucketLoggingV2TargetGrantGrantee> grantee;
   /// Logging permissions assigned to the grantee for the bucket. Valid values: `FULL_CONTROL`, `READ`, `WRITE`.
-  final String permission;
+  final pulumi.Input<String> permission;
 
   /// Creates a new [BucketLoggingV2TargetGrant].
   /// [grantee] Configuration block for the person being granted permissions. See below.
@@ -18,15 +19,15 @@ class BucketLoggingV2TargetGrant {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'grantee': grantee.toMap(),
+      'grantee': pulumi.Input.mapInputValue<BucketLoggingV2TargetGrantGrantee, Map<String, dynamic>>(grantee, (value) => value.toMap()),
       'permission': permission,
     };
   }
 
   factory BucketLoggingV2TargetGrant.fromMap(Map<String, dynamic> map) {
     return BucketLoggingV2TargetGrant(
-      grantee: BucketLoggingV2TargetGrantGrantee.fromMap((map['grantee'] as Map).cast<String, dynamic>()),
-      permission: map['permission'] as String,
+      grantee: (BucketLoggingV2TargetGrantGrantee.fromMap((map['grantee'] as Map).cast<String, dynamic>())).input(),
+      permission: (map['permission'] as String).input(),
     );
   }
 }

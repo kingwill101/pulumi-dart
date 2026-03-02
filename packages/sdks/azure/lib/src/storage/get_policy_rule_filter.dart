@@ -5,11 +5,11 @@ import 'get_policy_rule_filter_match_blob_index_tag.dart';
 
 class GetPolicyRuleFilter {
   /// An array of predefined values. Valid options are `blockBlob` and `appendBlob`.
-  final List<String> blobTypes;
+  final pulumi.Input<List<String>> blobTypes;
   /// A `match_blob_index_tag` block as defined below. The block defines the blob index tag based filtering for blob objects.
-  final List<GetPolicyRuleFilterMatchBlobIndexTag> matchBlobIndexTags;
+  final pulumi.Input<List<GetPolicyRuleFilterMatchBlobIndexTag>> matchBlobIndexTags;
   /// An array of strings for prefixes to be matched.
-  final List<String> prefixMatches;
+  final pulumi.Input<List<String>> prefixMatches;
 
   /// Creates a new [GetPolicyRuleFilter].
   /// [blobTypes] An array of predefined values. Valid options are `blockBlob` and `appendBlob`.
@@ -24,16 +24,16 @@ class GetPolicyRuleFilter {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'blobTypes': blobTypes,
-      'matchBlobIndexTags': pulumi.Input.encodeList<GetPolicyRuleFilterMatchBlobIndexTag, Map<String, dynamic>>(matchBlobIndexTags, (value) => value.toMap()),
+      'matchBlobIndexTags': pulumi.Input.mapInputValue<List<GetPolicyRuleFilterMatchBlobIndexTag>, List<Map<String, dynamic>>>(matchBlobIndexTags, (value) => pulumi.Input.encodeList<GetPolicyRuleFilterMatchBlobIndexTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'prefixMatches': prefixMatches,
     };
   }
 
   factory GetPolicyRuleFilter.fromMap(Map<String, dynamic> map) {
     return GetPolicyRuleFilter(
-      blobTypes: (map['blobTypes'] as List).cast<String>(),
-      matchBlobIndexTags: pulumi.Input.decodeList<GetPolicyRuleFilterMatchBlobIndexTag>(map['matchBlobIndexTags'], (value) => GetPolicyRuleFilterMatchBlobIndexTag.fromMap((value as Map).cast<String, dynamic>())),
-      prefixMatches: (map['prefixMatches'] as List).cast<String>(),
+      blobTypes: ((map['blobTypes'] as List).cast<String>()).input(),
+      matchBlobIndexTags: (pulumi.Input.decodeList<GetPolicyRuleFilterMatchBlobIndexTag>(map['matchBlobIndexTags'], (value) => GetPolicyRuleFilterMatchBlobIndexTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prefixMatches: ((map['prefixMatches'] as List).cast<String>()).input(),
     );
   }
 }

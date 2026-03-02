@@ -24,15 +24,11 @@ class AnywhereCacheArgs {
   /// [ttl] The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
   /// [zone] The zone in which the cache instance needs to be created. For example, `us-central1-a.`
   AnywhereCacheArgs({
-    pulumi.Output<String>? admissionPolicy,
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? ttl,
-    required pulumi.Output<String> zone,
-  }) :
-      admissionPolicy = pulumi.Input.asOptionalInput<String>(admissionPolicy),
-      bucket = pulumi.Input.asInput<String>(bucket),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl),
-      zone = pulumi.Input.asInput<String>(zone);
+    this.admissionPolicy,
+    required this.bucket,
+    this.ttl,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class AnywhereCacheArgs {
 
   factory AnywhereCacheArgs.fromMap(Map<String, dynamic> map) {
     return AnywhereCacheArgs(
-      admissionPolicy: map['admissionPolicy'] == null ? null : pulumi.Output.create<String>(map['admissionPolicy'] as String),
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      admissionPolicy: map['admissionPolicy'] == null ? null : (map['admissionPolicy'] as String).input(),
+      bucket: (map['bucket'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

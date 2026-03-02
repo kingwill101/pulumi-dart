@@ -19,13 +19,10 @@ class GetNetworkSecurityGroupArgs {
   /// [networkSecurityGroupName] The name of the network security group.
   /// [resourceGroupName] The name of the resource group.
   GetNetworkSecurityGroupArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> networkSecurityGroupName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      networkSecurityGroupName = pulumi.Input.asInput<String>(networkSecurityGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.expand,
+    required this.networkSecurityGroupName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNetworkSecurityGroupArgs {
 
   factory GetNetworkSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityGroupArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      networkSecurityGroupName: pulumi.Output.create<String>(map['networkSecurityGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      networkSecurityGroupName: (map['networkSecurityGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

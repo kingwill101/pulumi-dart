@@ -26,17 +26,12 @@ class AuthenticationSettingArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   AuthenticationSettingArgs({
-    pulumi.Output<String>? authenticationSettingName,
-    required pulumi.Output<String> azureMonitorWorkspaceName,
-    required pulumi.Output<String> healthModelName,
-    pulumi.Output<ManagedIdentityAuthenticationSettingProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authenticationSettingName = pulumi.Input.asOptionalInput<String>(authenticationSettingName),
-      azureMonitorWorkspaceName = pulumi.Input.asInput<String>(azureMonitorWorkspaceName),
-      healthModelName = pulumi.Input.asInput<String>(healthModelName),
-      properties = pulumi.Input.asOptionalInput<ManagedIdentityAuthenticationSettingProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.authenticationSettingName,
+    required this.azureMonitorWorkspaceName,
+    required this.healthModelName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AuthenticationSettingArgs {
 
   factory AuthenticationSettingArgs.fromMap(Map<String, dynamic> map) {
     return AuthenticationSettingArgs(
-      authenticationSettingName: map['authenticationSettingName'] == null ? null : pulumi.Output.create<String>(map['authenticationSettingName'] as String),
-      azureMonitorWorkspaceName: pulumi.Output.create<String>(map['azureMonitorWorkspaceName'] as String),
-      healthModelName: pulumi.Output.create<String>(map['healthModelName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ManagedIdentityAuthenticationSettingProperties>(ManagedIdentityAuthenticationSettingProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authenticationSettingName: map['authenticationSettingName'] == null ? null : (map['authenticationSettingName'] as String).input(),
+      azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
+      healthModelName: (map['healthModelName'] as String).input(),
+      properties: map['properties'] == null ? null : (ManagedIdentityAuthenticationSettingProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

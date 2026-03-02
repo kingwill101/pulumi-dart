@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'single_header_model_properties_response.dart';
 
 /// Definition of FieldToMatch
 class FieldToMatchResponse {
   /// Inspect the HTTP method. The method indicates the type of operation that the request is asking the origin to perform.
-  final dynamic method;
+  final pulumi.Input<dynamic>? method;
   /// Inspect the query string. This is the part of a URL that appears after a ? character, if any.
-  final dynamic queryString;
+  final pulumi.Input<dynamic>? queryString;
   /// Inspect a single header. Provide the name of the header to inspect, for example, User-Agent or Referer. This setting isn't case sensitive.
-  final SingleHeaderModelPropertiesResponse? singleHeader;
+  final pulumi.Input<SingleHeaderModelPropertiesResponse>? singleHeader;
   /// Inspect the request URI path. This is the part of a web request that identifies a resource, for example, /images/daily-ad.jpg.
-  final dynamic uriPath;
+  final pulumi.Input<dynamic>? uriPath;
 
   /// Creates a new [FieldToMatchResponse].
   /// [method] Inspect the HTTP method. The method indicates the type of operation that the request is asking the origin to perform.
@@ -29,17 +30,17 @@ class FieldToMatchResponse {
     return <String, dynamic>{
       'method': ?method,
       'queryString': ?queryString,
-      'singleHeader': ?singleHeader == null ? null : singleHeader!.toMap(),
+      'singleHeader': ?pulumi.Input.mapOptionalInputValue<SingleHeaderModelPropertiesResponse, Map<String, dynamic>>(singleHeader, (value) => value.toMap()),
       'uriPath': ?uriPath,
     };
   }
 
   factory FieldToMatchResponse.fromMap(Map<String, dynamic> map) {
     return FieldToMatchResponse(
-      method: map['method'] == null ? null : map['method'],
-      queryString: map['queryString'] == null ? null : map['queryString'],
-      singleHeader: map['singleHeader'] == null ? null : SingleHeaderModelPropertiesResponse.fromMap((map['singleHeader'] as Map).cast<String, dynamic>()),
-      uriPath: map['uriPath'] == null ? null : map['uriPath'],
+      method: map['method'] == null ? null : (map['method']).input(),
+      queryString: map['queryString'] == null ? null : (map['queryString']).input(),
+      singleHeader: map['singleHeader'] == null ? null : (SingleHeaderModelPropertiesResponse.fromMap((map['singleHeader'] as Map).cast<String, dynamic>())).input(),
+      uriPath: map['uriPath'] == null ? null : (map['uriPath']).input(),
     );
   }
 }

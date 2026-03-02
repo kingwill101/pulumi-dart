@@ -35,19 +35,13 @@ class InterceptEndpointGroupArgs {
   /// [location] The cloud location of the endpoint group, currently restricted to `global`.
   /// [project] The ID of the project in which the resource belongs.
   InterceptEndpointGroupArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> interceptDeploymentGroup,
-    required pulumi.Output<String> interceptEndpointGroupId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      interceptDeploymentGroup = pulumi.Input.asInput<String>(interceptDeploymentGroup),
-      interceptEndpointGroupId = pulumi.Input.asInput<String>(interceptEndpointGroupId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    required this.interceptDeploymentGroup,
+    required this.interceptEndpointGroupId,
+    this.labels,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class InterceptEndpointGroupArgs {
 
   factory InterceptEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return InterceptEndpointGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      interceptDeploymentGroup: pulumi.Output.create<String>(map['interceptDeploymentGroup'] as String),
-      interceptEndpointGroupId: pulumi.Output.create<String>(map['interceptEndpointGroupId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      interceptDeploymentGroup: (map['interceptDeploymentGroup'] as String).input(),
+      interceptEndpointGroupId: (map['interceptEndpointGroupId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

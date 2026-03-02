@@ -5,13 +5,13 @@ import 'get_service_metric_alarm_rules_rule_prometheus_annotation.dart';
 
 class GetServiceMetricAlarmRulesRulePrometheus {
   /// The annotations of the Prometheus alert rule.
-  final List<GetServiceMetricAlarmRulesRulePrometheusAnnotation> annotations;
+  final pulumi.Input<List<GetServiceMetricAlarmRulesRulePrometheusAnnotation>> annotations;
   /// The alert level.
-  final String level;
+  final pulumi.Input<String> level;
   /// The PromQL query statement.
-  final String promQl;
+  final pulumi.Input<String> promQl;
   /// The number of consecutive triggers.
-  final int times;
+  final pulumi.Input<int> times;
 
   /// Creates a new [GetServiceMetricAlarmRulesRulePrometheus].
   /// [annotations] The annotations of the Prometheus alert rule.
@@ -27,7 +27,7 @@ class GetServiceMetricAlarmRulesRulePrometheus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'annotations': pulumi.Input.encodeList<GetServiceMetricAlarmRulesRulePrometheusAnnotation, Map<String, dynamic>>(annotations, (value) => value.toMap()),
+      'annotations': pulumi.Input.mapInputValue<List<GetServiceMetricAlarmRulesRulePrometheusAnnotation>, List<Map<String, dynamic>>>(annotations, (value) => pulumi.Input.encodeList<GetServiceMetricAlarmRulesRulePrometheusAnnotation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'level': level,
       'promQl': promQl,
       'times': times,
@@ -36,10 +36,10 @@ class GetServiceMetricAlarmRulesRulePrometheus {
 
   factory GetServiceMetricAlarmRulesRulePrometheus.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesRulePrometheus(
-      annotations: pulumi.Input.decodeList<GetServiceMetricAlarmRulesRulePrometheusAnnotation>(map['annotations'], (value) => GetServiceMetricAlarmRulesRulePrometheusAnnotation.fromMap((value as Map).cast<String, dynamic>())),
-      level: map['level'] as String,
-      promQl: map['promQl'] as String,
-      times: map['times'] as int,
+      annotations: (pulumi.Input.decodeList<GetServiceMetricAlarmRulesRulePrometheusAnnotation>(map['annotations'], (value) => GetServiceMetricAlarmRulesRulePrometheusAnnotation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      level: (map['level'] as String).input(),
+      promQl: (map['promQl'] as String).input(),
+      times: (map['times'] as int).input(),
     );
   }
 }

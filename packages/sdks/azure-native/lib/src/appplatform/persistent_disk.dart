@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Persistent disk payload
 class PersistentDisk {
   /// Mount path of the persistent disk
-  final String? mountPath;
+  final pulumi.Input<String>? mountPath;
   /// Size of the persistent disk in GB
-  final int? sizeInGB;
+  final pulumi.Input<int>? sizeInGB;
 
   /// Creates a new [PersistentDisk].
   /// [mountPath] Mount path of the persistent disk
@@ -25,8 +26,8 @@ class PersistentDisk {
 
   factory PersistentDisk.fromMap(Map<String, dynamic> map) {
     return PersistentDisk(
-      mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
-      sizeInGB: map['sizeInGB'] == null ? null : map['sizeInGB'] as int,
+      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      sizeInGB: map['sizeInGB'] == null ? null : (map['sizeInGB'] as int).input(),
     );
   }
 }

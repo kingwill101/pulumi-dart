@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_cluster_cost_analysis_response.dart';
 
 /// The metrics profile for the ManagedCluster.
 class ManagedClusterMetricsProfileResponse {
   /// The configuration for detailed per-Kubernetes resource cost analysis.
-  final ManagedClusterCostAnalysisResponse? costAnalysis;
+  final pulumi.Input<ManagedClusterCostAnalysisResponse>? costAnalysis;
 
   /// Creates a new [ManagedClusterMetricsProfileResponse].
   /// [costAnalysis] The configuration for detailed per-Kubernetes resource cost analysis.
@@ -15,13 +16,13 @@ class ManagedClusterMetricsProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'costAnalysis': ?costAnalysis == null ? null : costAnalysis!.toMap(),
+      'costAnalysis': ?pulumi.Input.mapOptionalInputValue<ManagedClusterCostAnalysisResponse, Map<String, dynamic>>(costAnalysis, (value) => value.toMap()),
     };
   }
 
   factory ManagedClusterMetricsProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterMetricsProfileResponse(
-      costAnalysis: map['costAnalysis'] == null ? null : ManagedClusterCostAnalysisResponse.fromMap((map['costAnalysis'] as Map).cast<String, dynamic>()),
+      costAnalysis: map['costAnalysis'] == null ? null : (ManagedClusterCostAnalysisResponse.fromMap((map['costAnalysis'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

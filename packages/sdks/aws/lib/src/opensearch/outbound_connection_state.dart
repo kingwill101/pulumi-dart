@@ -34,23 +34,15 @@ class OutboundConnectionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [remoteDomainInfo] Configuration block for the remote Opensearch domain.
   OutboundConnectionState({
-    pulumi.Output<bool>? acceptConnection,
-    pulumi.Output<String>? connectionAlias,
-    pulumi.Output<String>? connectionMode,
-    pulumi.Output<OutboundConnectionConnectionProperties>? connectionProperties,
-    pulumi.Output<String>? connectionStatus,
-    pulumi.Output<OutboundConnectionLocalDomainInfo>? localDomainInfo,
-    pulumi.Output<String>? region,
-    pulumi.Output<OutboundConnectionRemoteDomainInfo>? remoteDomainInfo,
-  }) :
-      acceptConnection = pulumi.Input.asOptionalInput<bool>(acceptConnection),
-      connectionAlias = pulumi.Input.asOptionalInput<String>(connectionAlias),
-      connectionMode = pulumi.Input.asOptionalInput<String>(connectionMode),
-      connectionProperties = pulumi.Input.asOptionalInput<OutboundConnectionConnectionProperties>(connectionProperties),
-      connectionStatus = pulumi.Input.asOptionalInput<String>(connectionStatus),
-      localDomainInfo = pulumi.Input.asOptionalInput<OutboundConnectionLocalDomainInfo>(localDomainInfo),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      remoteDomainInfo = pulumi.Input.asOptionalInput<OutboundConnectionRemoteDomainInfo>(remoteDomainInfo);
+    this.acceptConnection,
+    this.connectionAlias,
+    this.connectionMode,
+    this.connectionProperties,
+    this.connectionStatus,
+    this.localDomainInfo,
+    this.region,
+    this.remoteDomainInfo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class OutboundConnectionState {
 
   factory OutboundConnectionState.fromMap(Map<String, dynamic> map) {
     return OutboundConnectionState(
-      acceptConnection: map['acceptConnection'] == null ? null : pulumi.Output.create<bool>(map['acceptConnection'] as bool),
-      connectionAlias: map['connectionAlias'] == null ? null : pulumi.Output.create<String>(map['connectionAlias'] as String),
-      connectionMode: map['connectionMode'] == null ? null : pulumi.Output.create<String>(map['connectionMode'] as String),
-      connectionProperties: map['connectionProperties'] == null ? null : pulumi.Output.create<OutboundConnectionConnectionProperties>(OutboundConnectionConnectionProperties.fromMap((map['connectionProperties'] as Map).cast<String, dynamic>())),
-      connectionStatus: map['connectionStatus'] == null ? null : pulumi.Output.create<String>(map['connectionStatus'] as String),
-      localDomainInfo: map['localDomainInfo'] == null ? null : pulumi.Output.create<OutboundConnectionLocalDomainInfo>(OutboundConnectionLocalDomainInfo.fromMap((map['localDomainInfo'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      remoteDomainInfo: map['remoteDomainInfo'] == null ? null : pulumi.Output.create<OutboundConnectionRemoteDomainInfo>(OutboundConnectionRemoteDomainInfo.fromMap((map['remoteDomainInfo'] as Map).cast<String, dynamic>())),
+      acceptConnection: map['acceptConnection'] == null ? null : (map['acceptConnection'] as bool).input(),
+      connectionAlias: map['connectionAlias'] == null ? null : (map['connectionAlias'] as String).input(),
+      connectionMode: map['connectionMode'] == null ? null : (map['connectionMode'] as String).input(),
+      connectionProperties: map['connectionProperties'] == null ? null : (OutboundConnectionConnectionProperties.fromMap((map['connectionProperties'] as Map).cast<String, dynamic>())).input(),
+      connectionStatus: map['connectionStatus'] == null ? null : (map['connectionStatus'] as String).input(),
+      localDomainInfo: map['localDomainInfo'] == null ? null : (OutboundConnectionLocalDomainInfo.fromMap((map['localDomainInfo'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      remoteDomainInfo: map['remoteDomainInfo'] == null ? null : (OutboundConnectionRemoteDomainInfo.fromMap((map['remoteDomainInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

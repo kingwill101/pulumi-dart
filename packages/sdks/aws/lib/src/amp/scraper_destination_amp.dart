@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScraperDestinationAmp {
   /// The Amazon Resource Name (ARN) of the prometheus workspace.
-  final String workspaceArn;
+  final pulumi.Input<String> workspaceArn;
 
   /// Creates a new [ScraperDestinationAmp].
   /// [workspaceArn] The Amazon Resource Name (ARN) of the prometheus workspace.
@@ -19,7 +20,7 @@ class ScraperDestinationAmp {
 
   factory ScraperDestinationAmp.fromMap(Map<String, dynamic> map) {
     return ScraperDestinationAmp(
-      workspaceArn: map['workspaceArn'] as String,
+      workspaceArn: (map['workspaceArn'] as String).input(),
     );
   }
 }

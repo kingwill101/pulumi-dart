@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Credentials of administrator users for source and target servers.
 class AdminCredentials {
   /// Password for the user of the source server.
-  final String sourceServerPassword;
+  final pulumi.Input<String> sourceServerPassword;
   /// Password for the user of the target server.
-  final String targetServerPassword;
+  final pulumi.Input<String> targetServerPassword;
 
   /// Creates a new [AdminCredentials].
   /// [sourceServerPassword] Password for the user of the source server.
@@ -25,8 +26,8 @@ class AdminCredentials {
 
   factory AdminCredentials.fromMap(Map<String, dynamic> map) {
     return AdminCredentials(
-      sourceServerPassword: map['sourceServerPassword'] as String,
-      targetServerPassword: map['targetServerPassword'] as String,
+      sourceServerPassword: (map['sourceServerPassword'] as String).input(),
+      targetServerPassword: (map['targetServerPassword'] as String).input(),
     );
   }
 }

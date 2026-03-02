@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancePerformanceConfigIopsPerTb {
   /// The instance max IOPS will be calculated by multiplying
@@ -7,7 +8,7 @@ class GetInstancePerformanceConfigIopsPerTb {
   /// and rounding to the nearest 1000. The instance max IOPS
   /// will be changed dynamically based on the instance
   /// capacity.
-  final int maxIopsPerTb;
+  final pulumi.Input<int> maxIopsPerTb;
 
   /// Creates a new [GetInstancePerformanceConfigIopsPerTb].
   /// [maxIopsPerTb] The instance max IOPS will be calculated by multiplying
@@ -23,7 +24,7 @@ class GetInstancePerformanceConfigIopsPerTb {
 
   factory GetInstancePerformanceConfigIopsPerTb.fromMap(Map<String, dynamic> map) {
     return GetInstancePerformanceConfigIopsPerTb(
-      maxIopsPerTb: map['maxIopsPerTb'] as int,
+      maxIopsPerTb: (map['maxIopsPerTb'] as int).input(),
     );
   }
 }

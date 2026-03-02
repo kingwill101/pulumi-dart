@@ -7,23 +7,23 @@ import 'status_response.dart';
 
 /// Provides information about the analysis status of a discovered resource.
 class DiscoveryOccurrenceResponse {
-  final AnalysisCompletedResponse analysisCompleted;
+  final pulumi.Input<AnalysisCompletedResponse> analysisCompleted;
   /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
-  final List<StatusResponse> analysisError;
+  final pulumi.Input<List<StatusResponse>> analysisError;
   /// The status of discovery for the resource.
-  final String analysisStatus;
+  final pulumi.Input<String> analysisStatus;
   /// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
-  final StatusResponse analysisStatusError;
+  final pulumi.Input<StatusResponse> analysisStatusError;
   /// The time occurrences related to this discovery occurrence were archived.
-  final String archiveTime;
+  final pulumi.Input<String> archiveTime;
   /// Whether the resource is continuously analyzed.
-  final String continuousAnalysis;
+  final pulumi.Input<String> continuousAnalysis;
   /// The CPE of the resource being scanned.
-  final String cpe;
+  final pulumi.Input<String> cpe;
   /// The last time this resource was scanned.
-  final String lastScanTime;
+  final pulumi.Input<String> lastScanTime;
   /// The status of an SBOM generation.
-  final SBOMStatusResponse sbomStatus;
+  final pulumi.Input<SBOMStatusResponse> sbomStatus;
 
   /// Creates a new [DiscoveryOccurrenceResponse].
   /// [analysisCompleted] Required.
@@ -49,29 +49,29 @@ class DiscoveryOccurrenceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'analysisCompleted': analysisCompleted.toMap(),
-      'analysisError': pulumi.Input.encodeList<StatusResponse, Map<String, dynamic>>(analysisError, (value) => value.toMap()),
+      'analysisCompleted': pulumi.Input.mapInputValue<AnalysisCompletedResponse, Map<String, dynamic>>(analysisCompleted, (value) => value.toMap()),
+      'analysisError': pulumi.Input.mapInputValue<List<StatusResponse>, List<Map<String, dynamic>>>(analysisError, (value) => pulumi.Input.encodeList<StatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'analysisStatus': analysisStatus,
-      'analysisStatusError': analysisStatusError.toMap(),
+      'analysisStatusError': pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(analysisStatusError, (value) => value.toMap()),
       'archiveTime': archiveTime,
       'continuousAnalysis': continuousAnalysis,
       'cpe': cpe,
       'lastScanTime': lastScanTime,
-      'sbomStatus': sbomStatus.toMap(),
+      'sbomStatus': pulumi.Input.mapInputValue<SBOMStatusResponse, Map<String, dynamic>>(sbomStatus, (value) => value.toMap()),
     };
   }
 
   factory DiscoveryOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveryOccurrenceResponse(
-      analysisCompleted: AnalysisCompletedResponse.fromMap((map['analysisCompleted'] as Map).cast<String, dynamic>()),
-      analysisError: pulumi.Input.decodeList<StatusResponse>(map['analysisError'], (value) => StatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      analysisStatus: map['analysisStatus'] as String,
-      analysisStatusError: StatusResponse.fromMap((map['analysisStatusError'] as Map).cast<String, dynamic>()),
-      archiveTime: map['archiveTime'] as String,
-      continuousAnalysis: map['continuousAnalysis'] as String,
-      cpe: map['cpe'] as String,
-      lastScanTime: map['lastScanTime'] as String,
-      sbomStatus: SBOMStatusResponse.fromMap((map['sbomStatus'] as Map).cast<String, dynamic>()),
+      analysisCompleted: (AnalysisCompletedResponse.fromMap((map['analysisCompleted'] as Map).cast<String, dynamic>())).input(),
+      analysisError: (pulumi.Input.decodeList<StatusResponse>(map['analysisError'], (value) => StatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      analysisStatus: (map['analysisStatus'] as String).input(),
+      analysisStatusError: (StatusResponse.fromMap((map['analysisStatusError'] as Map).cast<String, dynamic>())).input(),
+      archiveTime: (map['archiveTime'] as String).input(),
+      continuousAnalysis: (map['continuousAnalysis'] as String).input(),
+      cpe: (map['cpe'] as String).input(),
+      lastScanTime: (map['lastScanTime'] as String).input(),
+      sbomStatus: (SBOMStatusResponse.fromMap((map['sbomStatus'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

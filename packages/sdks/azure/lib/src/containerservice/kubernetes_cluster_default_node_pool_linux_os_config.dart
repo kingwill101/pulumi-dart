@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kubernetes_cluster_default_node_pool_linux_os_config_sysctl_config.dart';
 
 class KubernetesClusterDefaultNodePoolLinuxOsConfig {
   /// Specifies the size of the swap file on each node in MB.
-  final int? swapFileSizeMb;
+  final pulumi.Input<int>? swapFileSizeMb;
   /// A `sysctl_config` block as defined below.
-  final KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig? sysctlConfig;
+  final pulumi.Input<KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig>? sysctlConfig;
   /// Specifies the Transparent Huge Page configuration. Possible values are `always`, `madvise` and `never`.
-  final String? transparentHugePage;
+  final pulumi.Input<String>? transparentHugePage;
   /// specifies the defrag configuration for Transparent Huge Page. Possible values are `always`, `defer`, `defer+madvise`, `madvise` and `never`.
-  final String? transparentHugePageDefrag;
-  final String? transparentHugePageEnabled;
+  final pulumi.Input<String>? transparentHugePageDefrag;
+  final pulumi.Input<String>? transparentHugePageEnabled;
 
   /// Creates a new [KubernetesClusterDefaultNodePoolLinuxOsConfig].
   /// [swapFileSizeMb] Specifies the size of the swap file on each node in MB.
@@ -30,7 +31,7 @@ class KubernetesClusterDefaultNodePoolLinuxOsConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'swapFileSizeMb': ?swapFileSizeMb,
-      'sysctlConfig': ?sysctlConfig == null ? null : sysctlConfig!.toMap(),
+      'sysctlConfig': ?pulumi.Input.mapOptionalInputValue<KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig, Map<String, dynamic>>(sysctlConfig, (value) => value.toMap()),
       'transparentHugePage': ?transparentHugePage,
       'transparentHugePageDefrag': ?transparentHugePageDefrag,
       'transparentHugePageEnabled': ?transparentHugePageEnabled,
@@ -39,11 +40,11 @@ class KubernetesClusterDefaultNodePoolLinuxOsConfig {
 
   factory KubernetesClusterDefaultNodePoolLinuxOsConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterDefaultNodePoolLinuxOsConfig(
-      swapFileSizeMb: map['swapFileSizeMb'] == null ? null : map['swapFileSizeMb'] as int,
-      sysctlConfig: map['sysctlConfig'] == null ? null : KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig.fromMap((map['sysctlConfig'] as Map).cast<String, dynamic>()),
-      transparentHugePage: map['transparentHugePage'] == null ? null : map['transparentHugePage'] as String,
-      transparentHugePageDefrag: map['transparentHugePageDefrag'] == null ? null : map['transparentHugePageDefrag'] as String,
-      transparentHugePageEnabled: map['transparentHugePageEnabled'] == null ? null : map['transparentHugePageEnabled'] as String,
+      swapFileSizeMb: map['swapFileSizeMb'] == null ? null : (map['swapFileSizeMb'] as int).input(),
+      sysctlConfig: map['sysctlConfig'] == null ? null : (KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig.fromMap((map['sysctlConfig'] as Map).cast<String, dynamic>())).input(),
+      transparentHugePage: map['transparentHugePage'] == null ? null : (map['transparentHugePage'] as String).input(),
+      transparentHugePageDefrag: map['transparentHugePageDefrag'] == null ? null : (map['transparentHugePageDefrag'] as String).input(),
+      transparentHugePageEnabled: map['transparentHugePageEnabled'] == null ? null : (map['transparentHugePageEnabled'] as String).input(),
     );
   }
 }

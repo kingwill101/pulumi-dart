@@ -7,15 +7,15 @@ import 'template_contents_interpreter.dart';
 /// Files that make up the template contents of a template type.
 class TemplateContents {
   /// Import files referenced by the main template.
-  final List<ImportFile>? imports;
+  final pulumi.Input<List<ImportFile>>? imports;
   /// Which interpreter (python or jinja) should be used during expansion.
-  final TemplateContentsInterpreter? interpreter;
+  final pulumi.Input<TemplateContentsInterpreter>? interpreter;
   /// The filename of the mainTemplate
-  final String? mainTemplate;
+  final pulumi.Input<String>? mainTemplate;
   /// The contents of the template schema.
-  final String? schema;
+  final pulumi.Input<String>? schema;
   /// The contents of the main template file.
-  final String? template;
+  final pulumi.Input<String>? template;
 
   /// Creates a new [TemplateContents].
   /// [imports] Import files referenced by the main template.
@@ -33,8 +33,8 @@ class TemplateContents {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imports': ?imports == null ? null : pulumi.Input.encodeList<ImportFile, Map<String, dynamic>>(imports!, (value) => value.toMap()),
-      'interpreter': ?interpreter == null ? null : interpreter!.value,
+      'imports': ?pulumi.Input.mapOptionalInputValue<List<ImportFile>, List<Map<String, dynamic>>>(imports, (value) => pulumi.Input.encodeList<ImportFile, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'interpreter': ?pulumi.Input.mapOptionalInputValue<TemplateContentsInterpreter, String>(interpreter, (value) => value.value),
       'mainTemplate': ?mainTemplate,
       'schema': ?schema,
       'template': ?template,
@@ -43,11 +43,11 @@ class TemplateContents {
 
   factory TemplateContents.fromMap(Map<String, dynamic> map) {
     return TemplateContents(
-      imports: map['imports'] == null ? null : pulumi.Input.decodeList<ImportFile>(map['imports'], (value) => ImportFile.fromMap((value as Map).cast<String, dynamic>())),
-      interpreter: map['interpreter'] == null ? null : TemplateContentsInterpreter.fromValue(map['interpreter'] as String),
-      mainTemplate: map['mainTemplate'] == null ? null : map['mainTemplate'] as String,
-      schema: map['schema'] == null ? null : map['schema'] as String,
-      template: map['template'] == null ? null : map['template'] as String,
+      imports: map['imports'] == null ? null : (pulumi.Input.decodeList<ImportFile>(map['imports'], (value) => ImportFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interpreter: map['interpreter'] == null ? null : (TemplateContentsInterpreter.fromValue(map['interpreter'] as String)).input(),
+      mainTemplate: map['mainTemplate'] == null ? null : (map['mainTemplate'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      template: map['template'] == null ? null : (map['template'] as String).input(),
     );
   }
 }

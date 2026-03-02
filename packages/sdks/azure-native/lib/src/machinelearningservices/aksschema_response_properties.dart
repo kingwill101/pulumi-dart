@@ -8,23 +8,23 @@ import 'system_service_response.dart';
 /// AKS properties
 class AKSSchemaResponseProperties {
   /// Number of agents
-  final int? agentCount;
+  final pulumi.Input<int>? agentCount;
   /// Agent virtual machine size
-  final String? agentVmSize;
+  final pulumi.Input<String>? agentVmSize;
   /// AKS networking configuration for vnet
-  final AksNetworkingConfigurationResponse? aksNetworkingConfiguration;
+  final pulumi.Input<AksNetworkingConfigurationResponse>? aksNetworkingConfiguration;
   /// Cluster full qualified domain name
-  final String? clusterFqdn;
+  final pulumi.Input<String>? clusterFqdn;
   /// Intended usage of the cluster
-  final String? clusterPurpose;
+  final pulumi.Input<String>? clusterPurpose;
   /// Load Balancer Subnet
-  final String? loadBalancerSubnet;
+  final pulumi.Input<String>? loadBalancerSubnet;
   /// Load Balancer Type
-  final String? loadBalancerType;
+  final pulumi.Input<String>? loadBalancerType;
   /// SSL configuration
-  final SslConfigurationResponse? sslConfiguration;
+  final pulumi.Input<SslConfigurationResponse>? sslConfiguration;
   /// System services
-  final List<SystemServiceResponse> systemServices;
+  final pulumi.Input<List<SystemServiceResponse>> systemServices;
 
   /// Creates a new [AKSSchemaResponseProperties].
   /// [agentCount] Number of agents
@@ -52,27 +52,27 @@ class AKSSchemaResponseProperties {
     return <String, dynamic>{
       'agentCount': ?agentCount,
       'agentVmSize': ?agentVmSize,
-      'aksNetworkingConfiguration': ?aksNetworkingConfiguration == null ? null : aksNetworkingConfiguration!.toMap(),
+      'aksNetworkingConfiguration': ?pulumi.Input.mapOptionalInputValue<AksNetworkingConfigurationResponse, Map<String, dynamic>>(aksNetworkingConfiguration, (value) => value.toMap()),
       'clusterFqdn': ?clusterFqdn,
       'clusterPurpose': ?clusterPurpose,
       'loadBalancerSubnet': ?loadBalancerSubnet,
       'loadBalancerType': ?loadBalancerType,
-      'sslConfiguration': ?sslConfiguration == null ? null : sslConfiguration!.toMap(),
-      'systemServices': pulumi.Input.encodeList<SystemServiceResponse, Map<String, dynamic>>(systemServices, (value) => value.toMap()),
+      'sslConfiguration': ?pulumi.Input.mapOptionalInputValue<SslConfigurationResponse, Map<String, dynamic>>(sslConfiguration, (value) => value.toMap()),
+      'systemServices': pulumi.Input.mapInputValue<List<SystemServiceResponse>, List<Map<String, dynamic>>>(systemServices, (value) => pulumi.Input.encodeList<SystemServiceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AKSSchemaResponseProperties.fromMap(Map<String, dynamic> map) {
     return AKSSchemaResponseProperties(
-      agentCount: map['agentCount'] == null ? null : map['agentCount'] as int,
-      agentVmSize: map['agentVmSize'] == null ? null : map['agentVmSize'] as String,
-      aksNetworkingConfiguration: map['aksNetworkingConfiguration'] == null ? null : AksNetworkingConfigurationResponse.fromMap((map['aksNetworkingConfiguration'] as Map).cast<String, dynamic>()),
-      clusterFqdn: map['clusterFqdn'] == null ? null : map['clusterFqdn'] as String,
-      clusterPurpose: map['clusterPurpose'] == null ? null : map['clusterPurpose'] as String,
-      loadBalancerSubnet: map['loadBalancerSubnet'] == null ? null : map['loadBalancerSubnet'] as String,
-      loadBalancerType: map['loadBalancerType'] == null ? null : map['loadBalancerType'] as String,
-      sslConfiguration: map['sslConfiguration'] == null ? null : SslConfigurationResponse.fromMap((map['sslConfiguration'] as Map).cast<String, dynamic>()),
-      systemServices: pulumi.Input.decodeList<SystemServiceResponse>(map['systemServices'], (value) => SystemServiceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      agentCount: map['agentCount'] == null ? null : (map['agentCount'] as int).input(),
+      agentVmSize: map['agentVmSize'] == null ? null : (map['agentVmSize'] as String).input(),
+      aksNetworkingConfiguration: map['aksNetworkingConfiguration'] == null ? null : (AksNetworkingConfigurationResponse.fromMap((map['aksNetworkingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      clusterFqdn: map['clusterFqdn'] == null ? null : (map['clusterFqdn'] as String).input(),
+      clusterPurpose: map['clusterPurpose'] == null ? null : (map['clusterPurpose'] as String).input(),
+      loadBalancerSubnet: map['loadBalancerSubnet'] == null ? null : (map['loadBalancerSubnet'] as String).input(),
+      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType'] as String).input(),
+      sslConfiguration: map['sslConfiguration'] == null ? null : (SslConfigurationResponse.fromMap((map['sslConfiguration'] as Map).cast<String, dynamic>())).input(),
+      systemServices: (pulumi.Input.decodeList<SystemServiceResponse>(map['systemServices'], (value) => SystemServiceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

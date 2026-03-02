@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecContainerSpecDnsConfig {
   /// The IP addresses of the name servers
-  final List<String> nameservers;
+  final pulumi.Input<List<String>> nameservers;
   /// A list of internal resolver variables to be modified (e.g., `debug`, `ndots:3`, etc.)
-  final List<String>? options;
+  final pulumi.Input<List<String>>? options;
   /// A search list for host-name lookup
-  final List<String>? searches;
+  final pulumi.Input<List<String>>? searches;
 
   /// Creates a new [ServiceTaskSpecContainerSpecDnsConfig].
   /// [nameservers] The IP addresses of the name servers
@@ -29,9 +30,9 @@ class ServiceTaskSpecContainerSpecDnsConfig {
 
   factory ServiceTaskSpecContainerSpecDnsConfig.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecDnsConfig(
-      nameservers: (map['nameservers'] as List).cast<String>(),
-      options: map['options'] == null ? null : (map['options'] as List).cast<String>(),
-      searches: map['searches'] == null ? null : (map['searches'] as List).cast<String>(),
+      nameservers: ((map['nameservers'] as List).cast<String>()).input(),
+      options: map['options'] == null ? null : ((map['options'] as List).cast<String>()).input(),
+      searches: map['searches'] == null ? null : ((map['searches'] as List).cast<String>()).input(),
     );
   }
 }

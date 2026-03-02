@@ -18,15 +18,11 @@ class GetConversationArgs {
   /// [project] Optional.
   /// [view] Optional.
   GetConversationArgs({
-    required pulumi.Output<String> conversationId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? view,
-  }) :
-      conversationId = pulumi.Input.asInput<String>(conversationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    required this.conversationId,
+    required this.location,
+    this.project,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetConversationArgs {
 
   factory GetConversationArgs.fromMap(Map<String, dynamic> map) {
     return GetConversationArgs(
-      conversationId: pulumi.Output.create<String>(map['conversationId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      conversationId: (map['conversationId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

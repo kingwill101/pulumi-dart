@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of RedirectAllRequestsTo
 class RedirectAllRequestsTo {
   /// Name of the host where requests are redirected.
-  final String? hostName;
+  final pulumi.Input<String>? hostName;
   /// Protocol to use when redirecting requests. The default is the protocol that is used in the original request.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
 
   /// Creates a new [RedirectAllRequestsTo].
   /// [hostName] Name of the host where requests are redirected.
@@ -25,8 +26,8 @@ class RedirectAllRequestsTo {
 
   factory RedirectAllRequestsTo.fromMap(Map<String, dynamic> map) {
     return RedirectAllRequestsTo(
-      hostName: map['hostName'] == null ? null : map['hostName'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
     );
   }
 }

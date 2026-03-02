@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatascanDataQualitySpecRuleStatisticRangeExpectation {
   /// The maximum column statistic value allowed for a row to pass this validation.
   /// At least one of minValue and maxValue need to be provided.
-  final String? maxValue;
+  final pulumi.Input<String>? maxValue;
   /// The minimum column statistic value allowed for a row to pass this validation.
   /// At least one of minValue and maxValue need to be provided.
-  final String? minValue;
+  final pulumi.Input<String>? minValue;
   /// column statistics.
   /// Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
-  final String statistic;
+  final pulumi.Input<String> statistic;
   /// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
   /// Only relevant if a maxValue has been defined. Default = false.
-  final bool? strictMaxEnabled;
+  final pulumi.Input<bool>? strictMaxEnabled;
   /// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
   /// Only relevant if a minValue has been defined. Default = false.
-  final bool? strictMinEnabled;
+  final pulumi.Input<bool>? strictMinEnabled;
 
   /// Creates a new [DatascanDataQualitySpecRuleStatisticRangeExpectation].
   /// [maxValue] The maximum column statistic value allowed for a row to pass this validation.
@@ -44,11 +45,11 @@ class DatascanDataQualitySpecRuleStatisticRangeExpectation {
 
   factory DatascanDataQualitySpecRuleStatisticRangeExpectation.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecRuleStatisticRangeExpectation(
-      maxValue: map['maxValue'] == null ? null : map['maxValue'] as String,
-      minValue: map['minValue'] == null ? null : map['minValue'] as String,
-      statistic: map['statistic'] as String,
-      strictMaxEnabled: map['strictMaxEnabled'] == null ? null : map['strictMaxEnabled'] as bool,
-      strictMinEnabled: map['strictMinEnabled'] == null ? null : map['strictMinEnabled'] as bool,
+      maxValue: map['maxValue'] == null ? null : (map['maxValue'] as String).input(),
+      minValue: map['minValue'] == null ? null : (map['minValue'] as String).input(),
+      statistic: (map['statistic'] as String).input(),
+      strictMaxEnabled: map['strictMaxEnabled'] == null ? null : (map['strictMaxEnabled'] as bool).input(),
+      strictMinEnabled: map['strictMinEnabled'] == null ? null : (map['strictMinEnabled'] as bool).input(),
     );
   }
 }

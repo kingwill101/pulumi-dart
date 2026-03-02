@@ -16,11 +16,9 @@ class GetDatabaseConnectionPoolArgs {
   /// [clusterId] The ID of the original source database cluster.
   /// [name] The name for the database connection pool.
   GetDatabaseConnectionPoolArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> name,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.clusterId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDatabaseConnectionPoolArgs {
 
   factory GetDatabaseConnectionPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseConnectionPoolArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

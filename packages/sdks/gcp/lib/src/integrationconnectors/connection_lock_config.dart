@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionLockConfig {
   /// Indicates whether or not the connection is locked.
-  final bool locked;
+  final pulumi.Input<bool> locked;
   /// Describes why a connection is locked.
-  final String? reason;
+  final pulumi.Input<String>? reason;
 
   /// Creates a new [ConnectionLockConfig].
   /// [locked] Indicates whether or not the connection is locked.
@@ -24,8 +25,8 @@ class ConnectionLockConfig {
 
   factory ConnectionLockConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionLockConfig(
-      locked: map['locked'] as bool,
-      reason: map['reason'] == null ? null : map['reason'] as String,
+      locked: (map['locked'] as bool).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
     );
   }
 }

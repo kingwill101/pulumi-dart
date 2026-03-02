@@ -20,13 +20,10 @@ class DefenderForStorageArgs {
   /// [resourceId] The identifier of the resource.
   /// [settingName] Defender for Storage setting name.
   DefenderForStorageArgs({
-    pulumi.Output<DefenderForStorageSettingProperties>? properties,
-    required pulumi.Output<String> resourceId,
-    pulumi.Output<String>? settingName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<DefenderForStorageSettingProperties>(properties),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      settingName = pulumi.Input.asOptionalInput<String>(settingName);
+    this.properties,
+    required this.resourceId,
+    this.settingName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class DefenderForStorageArgs {
 
   factory DefenderForStorageArgs.fromMap(Map<String, dynamic> map) {
     return DefenderForStorageArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<DefenderForStorageSettingProperties>(DefenderForStorageSettingProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      settingName: map['settingName'] == null ? null : pulumi.Output.create<String>(map['settingName'] as String),
+      properties: map['properties'] == null ? null : (DefenderForStorageSettingProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      settingName: map['settingName'] == null ? null : (map['settingName'] as String).input(),
     );
   }
 }

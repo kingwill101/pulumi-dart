@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GenerateResourceLimits properties
 class GenerateResourceLimitsResponse {
   /// The toggle to enable/disable cpu resource limits.
-  final String? cpu;
+  final pulumi.Input<String>? cpu;
 
   /// Creates a new [GenerateResourceLimitsResponse].
   /// [cpu] The toggle to enable/disable cpu resource limits.
@@ -20,7 +21,7 @@ class GenerateResourceLimitsResponse {
 
   factory GenerateResourceLimitsResponse.fromMap(Map<String, dynamic> map) {
     return GenerateResourceLimitsResponse(
-      cpu: map['cpu'] == null ? null : map['cpu'] as String,
+      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
     );
   }
 }

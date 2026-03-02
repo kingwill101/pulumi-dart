@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseMysqlV2PendingUpdate {
   /// The time when a mandatory update needs to be applied.
-  final String deadline;
+  final pulumi.Input<String> deadline;
   /// A description of the update.
-  final String description;
+  final pulumi.Input<String> description;
   /// The date and time a maintenance update will be applied.
-  final String plannedFor;
+  final pulumi.Input<String> plannedFor;
 
   /// Creates a new [GetDatabaseMysqlV2PendingUpdate].
   /// [deadline] The time when a mandatory update needs to be applied.
@@ -29,9 +30,9 @@ class GetDatabaseMysqlV2PendingUpdate {
 
   factory GetDatabaseMysqlV2PendingUpdate.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlV2PendingUpdate(
-      deadline: map['deadline'] as String,
-      description: map['description'] as String,
-      plannedFor: map['plannedFor'] as String,
+      deadline: (map['deadline'] as String).input(),
+      description: (map['description'] as String).input(),
+      plannedFor: (map['plannedFor'] as String).input(),
     );
   }
 }

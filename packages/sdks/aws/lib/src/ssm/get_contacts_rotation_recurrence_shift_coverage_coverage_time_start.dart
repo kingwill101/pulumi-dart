@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetContactsRotationRecurrenceShiftCoverageCoverageTimeStart {
-  final int hourOfDay;
-  final int minuteOfHour;
+  final pulumi.Input<int> hourOfDay;
+  final pulumi.Input<int> minuteOfHour;
 
   /// Creates a new [GetContactsRotationRecurrenceShiftCoverageCoverageTimeStart].
   /// [hourOfDay] Required.
@@ -22,8 +23,8 @@ class GetContactsRotationRecurrenceShiftCoverageCoverageTimeStart {
 
   factory GetContactsRotationRecurrenceShiftCoverageCoverageTimeStart.fromMap(Map<String, dynamic> map) {
     return GetContactsRotationRecurrenceShiftCoverageCoverageTimeStart(
-      hourOfDay: map['hourOfDay'] as int,
-      minuteOfHour: map['minuteOfHour'] as int,
+      hourOfDay: (map['hourOfDay'] as int).input(),
+      minuteOfHour: (map['minuteOfHour'] as int).input(),
     );
   }
 }

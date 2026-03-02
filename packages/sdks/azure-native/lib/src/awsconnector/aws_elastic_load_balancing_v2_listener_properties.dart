@@ -8,23 +8,23 @@ import 'mutual_authentication.dart';
 /// Definition of awsElasticLoadBalancingV2Listener
 class AwsElasticLoadBalancingV2ListenerProperties {
   /// [TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN) policy.
-  final List<String>? alpnPolicy;
+  final pulumi.Input<List<String>>? alpnPolicy;
   /// The default SSL server certificate for a secure listener. You must provide exactly one certificate if the listener protocol is HTTPS or TLS. To create a certificate list for a secure listener, use [AWS::ElasticLoadBalancingV2::ListenerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenercertificate.html).
-  final List<Certificate>? certificates;
+  final pulumi.Input<List<Certificate>>? certificates;
   /// The actions for the default rule. You cannot define a condition for a default rule. To create additional rules for an Application Load Balancer, use [AWS::ElasticLoadBalancingV2::ListenerRule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html).
-  final List<Action>? defaultActions;
+  final pulumi.Input<List<Action>>? defaultActions;
   /// Property listenerArn
-  final String? listenerArn;
+  final pulumi.Input<String>? listenerArn;
   /// The Amazon Resource Name (ARN) of the load balancer.
-  final String? loadBalancerArn;
+  final pulumi.Input<String>? loadBalancerArn;
   /// The mutual authentication configuration information. Specifies the configuration information for mutual authentication.
-  final MutualAuthentication? mutualAuthentication;
+  final pulumi.Input<MutualAuthentication>? mutualAuthentication;
   /// The port on which the load balancer is listening. You cannot specify a port for a Gateway Load Balancer.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The protocol for connections from clients to the load balancer. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocols are TCP, TLS, UDP, and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if dual-stack mode is enabled. You cannot specify a protocol for a Gateway Load Balancer.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// [HTTPS and TLS listeners] The security policy that defines which protocols and ciphers are supported. Updating the security policy can result in interruptions if the load balancer is handling a high volume of traffic. For more information, see [Security policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies) in the *Application Load Balancers Guide* and [Security policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies) in the *Network Load Balancers Guide*.
-  final String? sslPolicy;
+  final pulumi.Input<String>? sslPolicy;
 
   /// Creates a new [AwsElasticLoadBalancingV2ListenerProperties].
   /// [alpnPolicy] [TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN) policy.
@@ -51,11 +51,11 @@ class AwsElasticLoadBalancingV2ListenerProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alpnPolicy': ?alpnPolicy,
-      'certificates': ?certificates == null ? null : pulumi.Input.encodeList<Certificate, Map<String, dynamic>>(certificates!, (value) => value.toMap()),
-      'defaultActions': ?defaultActions == null ? null : pulumi.Input.encodeList<Action, String>(defaultActions!, (value) => value.value),
+      'certificates': ?pulumi.Input.mapOptionalInputValue<List<Certificate>, List<Map<String, dynamic>>>(certificates, (value) => pulumi.Input.encodeList<Certificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultActions': ?pulumi.Input.mapOptionalInputValue<List<Action>, List<String>>(defaultActions, (value) => pulumi.Input.encodeList<Action, String>(value, (value) => value.value)),
       'listenerArn': ?listenerArn,
       'loadBalancerArn': ?loadBalancerArn,
-      'mutualAuthentication': ?mutualAuthentication == null ? null : mutualAuthentication!.toMap(),
+      'mutualAuthentication': ?pulumi.Input.mapOptionalInputValue<MutualAuthentication, Map<String, dynamic>>(mutualAuthentication, (value) => value.toMap()),
       'port': ?port,
       'protocol': ?protocol,
       'sslPolicy': ?sslPolicy,
@@ -64,15 +64,15 @@ class AwsElasticLoadBalancingV2ListenerProperties {
 
   factory AwsElasticLoadBalancingV2ListenerProperties.fromMap(Map<String, dynamic> map) {
     return AwsElasticLoadBalancingV2ListenerProperties(
-      alpnPolicy: map['alpnPolicy'] == null ? null : (map['alpnPolicy'] as List).cast<String>(),
-      certificates: map['certificates'] == null ? null : pulumi.Input.decodeList<Certificate>(map['certificates'], (value) => Certificate.fromMap((value as Map).cast<String, dynamic>())),
-      defaultActions: map['defaultActions'] == null ? null : pulumi.Input.decodeList<Action>(map['defaultActions'], (value) => Action.fromValue(value as String)),
-      listenerArn: map['listenerArn'] == null ? null : map['listenerArn'] as String,
-      loadBalancerArn: map['loadBalancerArn'] == null ? null : map['loadBalancerArn'] as String,
-      mutualAuthentication: map['mutualAuthentication'] == null ? null : MutualAuthentication.fromMap((map['mutualAuthentication'] as Map).cast<String, dynamic>()),
-      port: map['port'] == null ? null : map['port'] as int,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      sslPolicy: map['sslPolicy'] == null ? null : map['sslPolicy'] as String,
+      alpnPolicy: map['alpnPolicy'] == null ? null : ((map['alpnPolicy'] as List).cast<String>()).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<Certificate>(map['certificates'], (value) => Certificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultActions: map['defaultActions'] == null ? null : (pulumi.Input.decodeList<Action>(map['defaultActions'], (value) => Action.fromValue(value as String))).input(),
+      listenerArn: map['listenerArn'] == null ? null : (map['listenerArn'] as String).input(),
+      loadBalancerArn: map['loadBalancerArn'] == null ? null : (map['loadBalancerArn'] as String).input(),
+      mutualAuthentication: map['mutualAuthentication'] == null ? null : (MutualAuthentication.fromMap((map['mutualAuthentication'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
     );
   }
 }

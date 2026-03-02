@@ -22,15 +22,11 @@ class ListAgentApplicationAgentsArgs {
   /// [projectName] The name of Cognitive Services account's project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListAgentApplicationAgentsArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      name = pulumi.Input.asInput<String>(name),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.name,
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListAgentApplicationAgentsArgs {
 
   factory ListAgentApplicationAgentsArgs.fromMap(Map<String, dynamic> map) {
     return ListAgentApplicationAgentsArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      name: (map['name'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

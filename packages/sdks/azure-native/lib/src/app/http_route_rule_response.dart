@@ -7,11 +7,11 @@ import 'http_route_target_response.dart';
 /// Http Route rule.
 class HttpRouteRuleResponse {
   /// Description of rule. Optional.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Routing configuration that will allow matches on specific paths/headers.
-  final List<HttpRouteResponse>? routes;
+  final pulumi.Input<List<HttpRouteResponse>>? routes;
   /// Targets- container apps, revisions, labels
-  final List<HttpRouteTargetResponse>? targets;
+  final pulumi.Input<List<HttpRouteTargetResponse>>? targets;
 
   /// Creates a new [HttpRouteRuleResponse].
   /// [description] Description of rule. Optional.
@@ -26,16 +26,16 @@ class HttpRouteRuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'routes': ?routes == null ? null : pulumi.Input.encodeList<HttpRouteResponse, Map<String, dynamic>>(routes!, (value) => value.toMap()),
-      'targets': ?targets == null ? null : pulumi.Input.encodeList<HttpRouteTargetResponse, Map<String, dynamic>>(targets!, (value) => value.toMap()),
+      'routes': ?pulumi.Input.mapOptionalInputValue<List<HttpRouteResponse>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<HttpRouteResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targets': ?pulumi.Input.mapOptionalInputValue<List<HttpRouteTargetResponse>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<HttpRouteTargetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory HttpRouteRuleResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      routes: map['routes'] == null ? null : pulumi.Input.decodeList<HttpRouteResponse>(map['routes'], (value) => HttpRouteResponse.fromMap((value as Map).cast<String, dynamic>())),
-      targets: map['targets'] == null ? null : pulumi.Input.decodeList<HttpRouteTargetResponse>(map['targets'], (value) => HttpRouteTargetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<HttpRouteResponse>(map['routes'], (value) => HttpRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<HttpRouteTargetResponse>(map['targets'], (value) => HttpRouteTargetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

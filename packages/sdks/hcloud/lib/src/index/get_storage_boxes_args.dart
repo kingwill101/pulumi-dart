@@ -13,9 +13,8 @@ class GetStorageBoxesArgs {
   /// Creates a new [GetStorageBoxesArgs].
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   GetStorageBoxesArgs({
-    pulumi.Output<String>? withSelector,
-  }) :
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector);
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetStorageBoxesArgs {
 
   factory GetStorageBoxesArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxesArgs(
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
     );
   }
 }

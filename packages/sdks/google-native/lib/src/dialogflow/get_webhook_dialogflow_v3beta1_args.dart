@@ -18,15 +18,11 @@ class GetWebhookDialogflowV3beta1Args {
   /// [project] Optional.
   /// [webhookId] Required.
   GetWebhookDialogflowV3beta1Args({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> webhookId,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      webhookId = pulumi.Input.asInput<String>(webhookId);
+    required this.agentId,
+    required this.location,
+    this.project,
+    required this.webhookId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetWebhookDialogflowV3beta1Args {
 
   factory GetWebhookDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GetWebhookDialogflowV3beta1Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      webhookId: pulumi.Output.create<String>(map['webhookId'] as String),
+      agentId: (map['agentId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      webhookId: (map['webhookId'] as String).input(),
     );
   }
 }

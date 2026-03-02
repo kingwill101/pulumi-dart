@@ -55,33 +55,20 @@ class PrivateEndpointArgs {
   /// [subnet] The ID of the subnet from which the private IP will be allocated.
   /// [tags] Resource tags.
   PrivateEndpointArgs({
-    pulumi.Output<List<ApplicationSecurityGroupNetwork>>? applicationSecurityGroups,
-    pulumi.Output<List<CustomDnsConfigPropertiesFormat>>? customDnsConfigs,
-    pulumi.Output<String>? customNetworkInterfaceName,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? id,
-    pulumi.Output<List<PrivateEndpointIPConfiguration>>? ipConfigurations,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<PrivateLinkServiceConnection>>? manualPrivateLinkServiceConnections,
-    pulumi.Output<String>? privateEndpointName,
-    pulumi.Output<List<PrivateLinkServiceConnection>>? privateLinkServiceConnections,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SubnetNetwork>? subnet,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationSecurityGroups = pulumi.Input.asOptionalInput<List<ApplicationSecurityGroupNetwork>>(applicationSecurityGroups),
-      customDnsConfigs = pulumi.Input.asOptionalInput<List<CustomDnsConfigPropertiesFormat>>(customDnsConfigs),
-      customNetworkInterfaceName = pulumi.Input.asOptionalInput<String>(customNetworkInterfaceName),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      ipConfigurations = pulumi.Input.asOptionalInput<List<PrivateEndpointIPConfiguration>>(ipConfigurations),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      manualPrivateLinkServiceConnections = pulumi.Input.asOptionalInput<List<PrivateLinkServiceConnection>>(manualPrivateLinkServiceConnections),
-      privateEndpointName = pulumi.Input.asOptionalInput<String>(privateEndpointName),
-      privateLinkServiceConnections = pulumi.Input.asOptionalInput<List<PrivateLinkServiceConnection>>(privateLinkServiceConnections),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnet = pulumi.Input.asOptionalInput<SubnetNetwork>(subnet),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.applicationSecurityGroups,
+    this.customDnsConfigs,
+    this.customNetworkInterfaceName,
+    this.extendedLocation,
+    this.id,
+    this.ipConfigurations,
+    this.location,
+    this.manualPrivateLinkServiceConnections,
+    this.privateEndpointName,
+    this.privateLinkServiceConnections,
+    required this.resourceGroupName,
+    this.subnet,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,19 +90,19 @@ class PrivateEndpointArgs {
 
   factory PrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointArgs(
-      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : pulumi.Output.create<List<ApplicationSecurityGroupNetwork>>((map['applicationSecurityGroups'] as List).cast<ApplicationSecurityGroupNetwork>()),
-      customDnsConfigs: map['customDnsConfigs'] == null ? null : pulumi.Output.create<List<CustomDnsConfigPropertiesFormat>>(pulumi.Input.decodeList<CustomDnsConfigPropertiesFormat>(map['customDnsConfigs'], (value) => CustomDnsConfigPropertiesFormat.fromMap((value as Map).cast<String, dynamic>()))),
-      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : pulumi.Output.create<String>(map['customNetworkInterfaceName'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Output.create<List<PrivateEndpointIPConfiguration>>(pulumi.Input.decodeList<PrivateEndpointIPConfiguration>(map['ipConfigurations'], (value) => PrivateEndpointIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : pulumi.Output.create<List<PrivateLinkServiceConnection>>(pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['manualPrivateLinkServiceConnections'], (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))),
-      privateEndpointName: map['privateEndpointName'] == null ? null : pulumi.Output.create<String>(map['privateEndpointName'] as String),
-      privateLinkServiceConnections: map['privateLinkServiceConnections'] == null ? null : pulumi.Output.create<List<PrivateLinkServiceConnection>>(pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['privateLinkServiceConnections'], (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnet: map['subnet'] == null ? null : pulumi.Output.create<SubnetNetwork>(map['subnet'] as SubnetNetwork),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : ((map['applicationSecurityGroups'] as List).cast<ApplicationSecurityGroupNetwork>()).input(),
+      customDnsConfigs: map['customDnsConfigs'] == null ? null : (pulumi.Input.decodeList<CustomDnsConfigPropertiesFormat>(map['customDnsConfigs'], (value) => CustomDnsConfigPropertiesFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : (map['customNetworkInterfaceName'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateEndpointIPConfiguration>(map['ipConfigurations'], (value) => PrivateEndpointIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['manualPrivateLinkServiceConnections'], (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName'] as String).input(),
+      privateLinkServiceConnections: map['privateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['privateLinkServiceConnections'], (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet'] as SubnetNetwork).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

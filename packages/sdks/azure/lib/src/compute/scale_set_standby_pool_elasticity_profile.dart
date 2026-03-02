@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScaleSetStandbyPoolElasticityProfile {
   /// Specifies the maximum number of virtual machines in the standby pool.
-  final int maxReadyCapacity;
+  final pulumi.Input<int> maxReadyCapacity;
   /// Specifies the desired minimum number of virtual machines in the standby pool.
   ///
   /// > **Note:** `min_ready_capacity` cannot exceed `max_ready_capacity`.
-  final int minReadyCapacity;
+  final pulumi.Input<int> minReadyCapacity;
 
   /// Creates a new [ScaleSetStandbyPoolElasticityProfile].
   /// [maxReadyCapacity] Specifies the maximum number of virtual machines in the standby pool.
@@ -26,8 +27,8 @@ class ScaleSetStandbyPoolElasticityProfile {
 
   factory ScaleSetStandbyPoolElasticityProfile.fromMap(Map<String, dynamic> map) {
     return ScaleSetStandbyPoolElasticityProfile(
-      maxReadyCapacity: map['maxReadyCapacity'] as int,
-      minReadyCapacity: map['minReadyCapacity'] as int,
+      maxReadyCapacity: (map['maxReadyCapacity'] as int).input(),
+      minReadyCapacity: (map['minReadyCapacity'] as int).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class SshPublicKeyArgs {
   /// [sshPublicKeyName] The name of the SSH public key.
   /// [tags] Resource tags.
   SshPublicKeyArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? publicKey,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sshPublicKeyName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sshPublicKeyName = pulumi.Input.asOptionalInput<String>(sshPublicKeyName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.publicKey,
+    required this.resourceGroupName,
+    this.sshPublicKeyName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SshPublicKeyArgs {
 
   factory SshPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sshPublicKeyName: map['sshPublicKeyName'] == null ? null : pulumi.Output.create<String>(map['sshPublicKeyName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sshPublicKeyName: map['sshPublicKeyName'] == null ? null : (map['sshPublicKeyName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

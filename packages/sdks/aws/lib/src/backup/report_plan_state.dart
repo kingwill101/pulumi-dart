@@ -39,27 +39,17 @@ class ReportPlanState {
   /// [tags] Metadata that you can assign to help organize the report plans you create. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ReportPlanState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<String>? deploymentStatus,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<ReportPlanReportDeliveryChannel>? reportDeliveryChannel,
-    pulumi.Output<ReportPlanReportSetting>? reportSetting,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      deploymentStatus = pulumi.Input.asOptionalInput<String>(deploymentStatus),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reportDeliveryChannel = pulumi.Input.asOptionalInput<ReportPlanReportDeliveryChannel>(reportDeliveryChannel),
-      reportSetting = pulumi.Input.asOptionalInput<ReportPlanReportSetting>(reportSetting),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.creationTime,
+    this.deploymentStatus,
+    this.description,
+    this.name,
+    this.region,
+    this.reportDeliveryChannel,
+    this.reportSetting,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class ReportPlanState {
 
   factory ReportPlanState.fromMap(Map<String, dynamic> map) {
     return ReportPlanState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      deploymentStatus: map['deploymentStatus'] == null ? null : pulumi.Output.create<String>(map['deploymentStatus'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reportDeliveryChannel: map['reportDeliveryChannel'] == null ? null : pulumi.Output.create<ReportPlanReportDeliveryChannel>(ReportPlanReportDeliveryChannel.fromMap((map['reportDeliveryChannel'] as Map).cast<String, dynamic>())),
-      reportSetting: map['reportSetting'] == null ? null : pulumi.Output.create<ReportPlanReportSetting>(ReportPlanReportSetting.fromMap((map['reportSetting'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      deploymentStatus: map['deploymentStatus'] == null ? null : (map['deploymentStatus'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reportDeliveryChannel: map['reportDeliveryChannel'] == null ? null : (ReportPlanReportDeliveryChannel.fromMap((map['reportDeliveryChannel'] as Map).cast<String, dynamic>())).input(),
+      reportSetting: map['reportSetting'] == null ? null : (ReportPlanReportSetting.fromMap((map['reportSetting'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

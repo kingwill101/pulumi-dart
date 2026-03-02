@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Discovery rule properties for an Application Insights topology query
 class ApplicationInsightsTopologyDiscoveryRuleProperties {
   /// Whether to add all recommended signals to the discovered entities.
-  final String addRecommendedSignals;
+  final pulumi.Input<String> addRecommendedSignals;
   /// Application Insights resource ID
-  final String applicationInsightsResourceId;
+  final pulumi.Input<String> applicationInsightsResourceId;
   /// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
-  final String authenticationSetting;
+  final pulumi.Input<String> authenticationSetting;
   /// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
-  final String discoverRelationships;
+  final pulumi.Input<String> discoverRelationships;
   /// Discovery rule relationship discovery behavior
   /// Expected value is 'ApplicationInsightsTopology'.
-  final String discoveryRuleKind;
+  final pulumi.Input<String> discoveryRuleKind;
   /// Display name
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Creates a new [ApplicationInsightsTopologyDiscoveryRuleProperties].
   /// [addRecommendedSignals] Whether to add all recommended signals to the discovered entities.
@@ -46,12 +47,12 @@ class ApplicationInsightsTopologyDiscoveryRuleProperties {
 
   factory ApplicationInsightsTopologyDiscoveryRuleProperties.fromMap(Map<String, dynamic> map) {
     return ApplicationInsightsTopologyDiscoveryRuleProperties(
-      addRecommendedSignals: map['addRecommendedSignals'] as String,
-      applicationInsightsResourceId: map['applicationInsightsResourceId'] as String,
-      authenticationSetting: map['authenticationSetting'] as String,
-      discoverRelationships: map['discoverRelationships'] as String,
-      discoveryRuleKind: map['discoveryRuleKind'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      addRecommendedSignals: (map['addRecommendedSignals'] as String).input(),
+      applicationInsightsResourceId: (map['applicationInsightsResourceId'] as String).input(),
+      authenticationSetting: (map['authenticationSetting'] as String).input(),
+      discoverRelationships: (map['discoverRelationships'] as String).input(),
+      discoveryRuleKind: (map['discoveryRuleKind'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
     );
   }
 }

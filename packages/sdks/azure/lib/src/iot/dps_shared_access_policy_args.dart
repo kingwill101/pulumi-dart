@@ -42,23 +42,15 @@ class DpsSharedAccessPolicyArgs {
   /// [resourceGroupName] The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   /// [serviceConfig] Adds `ServiceConfig` permission to this Shared Access Account. It allows configuration of the Device Provisioning Service.
   DpsSharedAccessPolicyArgs({
-    pulumi.Output<bool>? enrollmentRead,
-    pulumi.Output<bool>? enrollmentWrite,
-    required pulumi.Output<String> iothubDpsName,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? registrationRead,
-    pulumi.Output<bool>? registrationWrite,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? serviceConfig,
-  }) :
-      enrollmentRead = pulumi.Input.asOptionalInput<bool>(enrollmentRead),
-      enrollmentWrite = pulumi.Input.asOptionalInput<bool>(enrollmentWrite),
-      iothubDpsName = pulumi.Input.asInput<String>(iothubDpsName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      registrationRead = pulumi.Input.asOptionalInput<bool>(registrationRead),
-      registrationWrite = pulumi.Input.asOptionalInput<bool>(registrationWrite),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceConfig = pulumi.Input.asOptionalInput<bool>(serviceConfig);
+    this.enrollmentRead,
+    this.enrollmentWrite,
+    required this.iothubDpsName,
+    this.name,
+    this.registrationRead,
+    this.registrationWrite,
+    required this.resourceGroupName,
+    this.serviceConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class DpsSharedAccessPolicyArgs {
 
   factory DpsSharedAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DpsSharedAccessPolicyArgs(
-      enrollmentRead: map['enrollmentRead'] == null ? null : pulumi.Output.create<bool>(map['enrollmentRead'] as bool),
-      enrollmentWrite: map['enrollmentWrite'] == null ? null : pulumi.Output.create<bool>(map['enrollmentWrite'] as bool),
-      iothubDpsName: pulumi.Output.create<String>(map['iothubDpsName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      registrationRead: map['registrationRead'] == null ? null : pulumi.Output.create<bool>(map['registrationRead'] as bool),
-      registrationWrite: map['registrationWrite'] == null ? null : pulumi.Output.create<bool>(map['registrationWrite'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceConfig: map['serviceConfig'] == null ? null : pulumi.Output.create<bool>(map['serviceConfig'] as bool),
+      enrollmentRead: map['enrollmentRead'] == null ? null : (map['enrollmentRead'] as bool).input(),
+      enrollmentWrite: map['enrollmentWrite'] == null ? null : (map['enrollmentWrite'] as bool).input(),
+      iothubDpsName: (map['iothubDpsName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      registrationRead: map['registrationRead'] == null ? null : (map['registrationRead'] as bool).input(),
+      registrationWrite: map['registrationWrite'] == null ? null : (map['registrationWrite'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceConfig: map['serviceConfig'] == null ? null : (map['serviceConfig'] as bool).input(),
     );
   }
 }

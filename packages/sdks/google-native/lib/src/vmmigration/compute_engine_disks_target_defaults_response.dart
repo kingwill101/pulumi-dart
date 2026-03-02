@@ -7,15 +7,15 @@ import 'persistent_disk_defaults_response.dart';
 /// ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project.
 class ComputeEngineDisksTargetDefaultsResponse {
   /// The details of each Persistent Disk to create.
-  final List<PersistentDiskDefaultsResponse> disks;
+  final pulumi.Input<List<PersistentDiskDefaultsResponse>> disks;
   /// Details of the disk only migration target.
-  final Map<String, dynamic> disksTargetDefaults;
+  final pulumi.Input<Map<String, dynamic>> disksTargetDefaults;
   /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
-  final String targetProject;
+  final pulumi.Input<String> targetProject;
   /// Details of the VM migration target.
-  final DisksMigrationVmTargetDefaultsResponse vmTargetDefaults;
+  final pulumi.Input<DisksMigrationVmTargetDefaultsResponse> vmTargetDefaults;
   /// The zone in which to create the Persistent Disks.
-  final String zone;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [ComputeEngineDisksTargetDefaultsResponse].
   /// [disks] The details of each Persistent Disk to create.
@@ -33,21 +33,21 @@ class ComputeEngineDisksTargetDefaultsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks': pulumi.Input.encodeList<PersistentDiskDefaultsResponse, Map<String, dynamic>>(disks, (value) => value.toMap()),
+      'disks': pulumi.Input.mapInputValue<List<PersistentDiskDefaultsResponse>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<PersistentDiskDefaultsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'disksTargetDefaults': disksTargetDefaults,
       'targetProject': targetProject,
-      'vmTargetDefaults': vmTargetDefaults.toMap(),
+      'vmTargetDefaults': pulumi.Input.mapInputValue<DisksMigrationVmTargetDefaultsResponse, Map<String, dynamic>>(vmTargetDefaults, (value) => value.toMap()),
       'zone': zone,
     };
   }
 
   factory ComputeEngineDisksTargetDefaultsResponse.fromMap(Map<String, dynamic> map) {
     return ComputeEngineDisksTargetDefaultsResponse(
-      disks: pulumi.Input.decodeList<PersistentDiskDefaultsResponse>(map['disks'], (value) => PersistentDiskDefaultsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      disksTargetDefaults: (map['disksTargetDefaults'] as Map).cast<String, dynamic>(),
-      targetProject: map['targetProject'] as String,
-      vmTargetDefaults: DisksMigrationVmTargetDefaultsResponse.fromMap((map['vmTargetDefaults'] as Map).cast<String, dynamic>()),
-      zone: map['zone'] as String,
+      disks: (pulumi.Input.decodeList<PersistentDiskDefaultsResponse>(map['disks'], (value) => PersistentDiskDefaultsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disksTargetDefaults: ((map['disksTargetDefaults'] as Map).cast<String, dynamic>()).input(),
+      targetProject: (map['targetProject'] as String).input(),
+      vmTargetDefaults: (DisksMigrationVmTargetDefaultsResponse.fromMap((map['vmTargetDefaults'] as Map).cast<String, dynamic>())).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class BrowserDlpRuleArgs {
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [ruleSetting] The policy settings to apply.
   BrowserDlpRuleArgs({
-    required pulumi.Output<GoogleCloudBeyondcorpPartnerservicesV1alphaGroup> group,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> partnerTenantId,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting> ruleSetting,
-  }) :
-      group = pulumi.Input.asInput<GoogleCloudBeyondcorpPartnerservicesV1alphaGroup>(group),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      ruleSetting = pulumi.Input.asInput<GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting>(ruleSetting);
+    required this.group,
+    required this.organizationId,
+    required this.partnerTenantId,
+    this.requestId,
+    required this.ruleSetting,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class BrowserDlpRuleArgs {
 
   factory BrowserDlpRuleArgs.fromMap(Map<String, dynamic> map) {
     return BrowserDlpRuleArgs(
-      group: pulumi.Output.create<GoogleCloudBeyondcorpPartnerservicesV1alphaGroup>(GoogleCloudBeyondcorpPartnerservicesV1alphaGroup.fromMap((map['group'] as Map).cast<String, dynamic>())),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      partnerTenantId: pulumi.Output.create<String>(map['partnerTenantId'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      ruleSetting: pulumi.Output.create<GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting>(GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting.fromMap((map['ruleSetting'] as Map).cast<String, dynamic>())),
+      group: (GoogleCloudBeyondcorpPartnerservicesV1alphaGroup.fromMap((map['group'] as Map).cast<String, dynamic>())).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      partnerTenantId: (map['partnerTenantId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      ruleSetting: (GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting.fromMap((map['ruleSetting'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

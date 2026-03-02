@@ -19,13 +19,10 @@ class ImageExportArgs {
   /// [ossBucket] Save the exported OSS bucket.
   /// [ossPrefix] The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
   ImageExportArgs({
-    required pulumi.Output<String> imageId,
-    required pulumi.Output<String> ossBucket,
-    pulumi.Output<String>? ossPrefix,
-  }) :
-      imageId = pulumi.Input.asInput<String>(imageId),
-      ossBucket = pulumi.Input.asInput<String>(ossBucket),
-      ossPrefix = pulumi.Input.asOptionalInput<String>(ossPrefix);
+    required this.imageId,
+    required this.ossBucket,
+    this.ossPrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ImageExportArgs {
 
   factory ImageExportArgs.fromMap(Map<String, dynamic> map) {
     return ImageExportArgs(
-      imageId: pulumi.Output.create<String>(map['imageId'] as String),
-      ossBucket: pulumi.Output.create<String>(map['ossBucket'] as String),
-      ossPrefix: map['ossPrefix'] == null ? null : pulumi.Output.create<String>(map['ossPrefix'] as String),
+      imageId: (map['imageId'] as String).input(),
+      ossBucket: (map['ossBucket'] as String).input(),
+      ossPrefix: map['ossPrefix'] == null ? null : (map['ossPrefix'] as String).input(),
     );
   }
 }

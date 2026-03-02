@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceCoalesceRxFrames {
   /// Sets the maximum number of frames that can be coalesced for received packets, influencing performance characteristics.
-  final double? max;
+  final pulumi.Input<double>? max;
 
   /// Creates a new [DomainDevicesInterfaceCoalesceRxFrames].
   /// [max] Sets the maximum number of frames that can be coalesced for received packets, influencing performance characteristics.
@@ -19,7 +20,7 @@ class DomainDevicesInterfaceCoalesceRxFrames {
 
   factory DomainDevicesInterfaceCoalesceRxFrames.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceCoalesceRxFrames(
-      max: map['max'] == null ? null : map['max'] as double,
+      max: map['max'] == null ? null : (map['max'] as double).input(),
     );
   }
 }

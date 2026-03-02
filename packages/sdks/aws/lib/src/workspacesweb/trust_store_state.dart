@@ -26,19 +26,13 @@ class TrustStoreState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [trustStoreArn] ARN of the trust store.
   TrustStoreState({
-    pulumi.Output<List<String>>? associatedPortalArns,
-    pulumi.Output<List<TrustStoreCertificate>>? certificates,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? trustStoreArn,
-  }) :
-      associatedPortalArns = pulumi.Input.asOptionalInput<List<String>>(associatedPortalArns),
-      certificates = pulumi.Input.asOptionalInput<List<TrustStoreCertificate>>(certificates),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      trustStoreArn = pulumi.Input.asOptionalInput<String>(trustStoreArn);
+    this.associatedPortalArns,
+    this.certificates,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.trustStoreArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class TrustStoreState {
 
   factory TrustStoreState.fromMap(Map<String, dynamic> map) {
     return TrustStoreState(
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : pulumi.Output.create<List<String>>((map['associatedPortalArns'] as List).cast<String>()),
-      certificates: map['certificates'] == null ? null : pulumi.Output.create<List<TrustStoreCertificate>>(pulumi.Input.decodeList<TrustStoreCertificate>(map['certificates'], (value) => TrustStoreCertificate.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      trustStoreArn: map['trustStoreArn'] == null ? null : pulumi.Output.create<String>(map['trustStoreArn'] as String),
+      associatedPortalArns: map['associatedPortalArns'] == null ? null : ((map['associatedPortalArns'] as List).cast<String>()).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<TrustStoreCertificate>(map['certificates'], (value) => TrustStoreCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      trustStoreArn: map['trustStoreArn'] == null ? null : (map['trustStoreArn'] as String).input(),
     );
   }
 }

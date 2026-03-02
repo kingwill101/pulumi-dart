@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the user's elastic deployment associated with the monitor resource.
 class ElasticCloudDeploymentResponse {
   /// Associated Azure subscription Id for the elastic deployment.
-  final String azureSubscriptionId;
+  final pulumi.Input<String> azureSubscriptionId;
   /// Elastic deployment Id
-  final String deploymentId;
+  final pulumi.Input<String> deploymentId;
   /// Region where Deployment at Elastic side took place.
-  final String elasticsearchRegion;
+  final pulumi.Input<String> elasticsearchRegion;
   /// Elasticsearch ingestion endpoint of the Elastic deployment.
-  final String elasticsearchServiceUrl;
+  final pulumi.Input<String> elasticsearchServiceUrl;
   /// Kibana endpoint of the Elastic deployment.
-  final String kibanaServiceUrl;
+  final pulumi.Input<String> kibanaServiceUrl;
   /// Kibana dashboard sso URL of the Elastic deployment.
-  final String kibanaSsoUrl;
+  final pulumi.Input<String> kibanaSsoUrl;
   /// Elastic deployment name
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ElasticCloudDeploymentResponse].
   /// [azureSubscriptionId] Associated Azure subscription Id for the elastic deployment.
@@ -50,13 +51,13 @@ class ElasticCloudDeploymentResponse {
 
   factory ElasticCloudDeploymentResponse.fromMap(Map<String, dynamic> map) {
     return ElasticCloudDeploymentResponse(
-      azureSubscriptionId: map['azureSubscriptionId'] as String,
-      deploymentId: map['deploymentId'] as String,
-      elasticsearchRegion: map['elasticsearchRegion'] as String,
-      elasticsearchServiceUrl: map['elasticsearchServiceUrl'] as String,
-      kibanaServiceUrl: map['kibanaServiceUrl'] as String,
-      kibanaSsoUrl: map['kibanaSsoUrl'] as String,
-      name: map['name'] as String,
+      azureSubscriptionId: (map['azureSubscriptionId'] as String).input(),
+      deploymentId: (map['deploymentId'] as String).input(),
+      elasticsearchRegion: (map['elasticsearchRegion'] as String).input(),
+      elasticsearchServiceUrl: (map['elasticsearchServiceUrl'] as String).input(),
+      kibanaServiceUrl: (map['kibanaServiceUrl'] as String).input(),
+      kibanaSsoUrl: (map['kibanaSsoUrl'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

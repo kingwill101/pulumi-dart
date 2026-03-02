@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZoneRrsetRecord {
   /// Comment of the record.
-  final String comment;
+  final pulumi.Input<String> comment;
   /// Value of the record.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetZoneRrsetRecord].
   /// [comment] Comment of the record.
@@ -24,8 +25,8 @@ class GetZoneRrsetRecord {
 
   factory GetZoneRrsetRecord.fromMap(Map<String, dynamic> map) {
     return GetZoneRrsetRecord(
-      comment: map['comment'] as String,
-      value: map['value'] as String,
+      comment: (map['comment'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

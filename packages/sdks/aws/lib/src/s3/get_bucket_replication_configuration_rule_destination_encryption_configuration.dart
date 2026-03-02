@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration {
-  final String replicaKmsKeyId;
+  final pulumi.Input<String> replicaKmsKeyId;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration].
   /// [replicaKmsKeyId] Required.
@@ -18,7 +19,7 @@ class GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration {
 
   factory GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration(
-      replicaKmsKeyId: map['replicaKmsKeyId'] as String,
+      replicaKmsKeyId: (map['replicaKmsKeyId'] as String).input(),
     );
   }
 }

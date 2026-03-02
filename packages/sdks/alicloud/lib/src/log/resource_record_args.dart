@@ -22,15 +22,11 @@ class ResourceRecordArgs {
   /// [tag] The record's tag, can be used for search.
   /// [value] The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
   ResourceRecordArgs({
-    required pulumi.Output<String> recordId,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<String> tag,
-    required pulumi.Output<String> value,
-  }) :
-      recordId = pulumi.Input.asInput<String>(recordId),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      tag = pulumi.Input.asInput<String>(tag),
-      value = pulumi.Input.asInput<String>(value);
+    required this.recordId,
+    required this.resourceName,
+    required this.tag,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ResourceRecordArgs {
 
   factory ResourceRecordArgs.fromMap(Map<String, dynamic> map) {
     return ResourceRecordArgs(
-      recordId: pulumi.Output.create<String>(map['recordId'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      tag: pulumi.Output.create<String>(map['tag'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      recordId: (map['recordId'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      tag: (map['tag'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

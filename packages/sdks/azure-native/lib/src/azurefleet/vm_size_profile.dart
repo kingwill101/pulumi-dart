@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifications about a VM Size. This will also contain the corresponding rank and weight in future.
 class VmSizeProfile {
   /// The Sku name (e.g. 'Standard_DS1_v2')
-  final String name;
+  final pulumi.Input<String> name;
   /// The rank of the VM size. This is used with 'RegularPriorityAllocationStrategy.Prioritized'
   /// The lower the number, the higher the priority. Starting with 0.
-  final int? rank;
+  final pulumi.Input<int>? rank;
 
   /// Creates a new [VmSizeProfile].
   /// [name] The Sku name (e.g. 'Standard_DS1_v2')
@@ -26,8 +27,8 @@ class VmSizeProfile {
 
   factory VmSizeProfile.fromMap(Map<String, dynamic> map) {
     return VmSizeProfile(
-      name: map['name'] as String,
-      rank: map['rank'] == null ? null : map['rank'] as int,
+      name: (map['name'] as String).input(),
+      rank: map['rank'] == null ? null : (map['rank'] as int).input(),
     );
   }
 }

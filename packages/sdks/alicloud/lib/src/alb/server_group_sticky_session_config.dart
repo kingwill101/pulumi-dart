@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerGroupStickySessionConfig {
   /// The cookie to be configured on the server.
@@ -7,7 +8,7 @@ class ServerGroupStickySessionConfig {
   /// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
   ///
   /// > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
-  final String? cookie;
+  final pulumi.Input<String>? cookie;
   /// The maximum amount of time to wait before the session cookie expires. Unit: seconds.
   ///
   /// Valid values: `1` to `86400`.
@@ -15,9 +16,9 @@ class ServerGroupStickySessionConfig {
   /// Default value: `1000`.
   ///
   /// > **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
-  final int? cookieTimeout;
+  final pulumi.Input<int>? cookieTimeout;
   /// Specifies whether to enable session persistence. Valid values:
-  final bool? stickySessionEnabled;
+  final pulumi.Input<bool>? stickySessionEnabled;
   /// The method that is used to handle a cookie. Valid values:
   ///
   /// *   `Insert`: inserts a cookie.
@@ -29,7 +30,7 @@ class ServerGroupStickySessionConfig {
   /// When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
   ///
   /// > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
-  final String? stickySessionType;
+  final pulumi.Input<String>? stickySessionType;
 
   /// Creates a new [ServerGroupStickySessionConfig].
   /// [cookie] The cookie to be configured on the server.
@@ -54,10 +55,10 @@ class ServerGroupStickySessionConfig {
 
   factory ServerGroupStickySessionConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupStickySessionConfig(
-      cookie: map['cookie'] == null ? null : map['cookie'] as String,
-      cookieTimeout: map['cookieTimeout'] == null ? null : map['cookieTimeout'] as int,
-      stickySessionEnabled: map['stickySessionEnabled'] == null ? null : map['stickySessionEnabled'] as bool,
-      stickySessionType: map['stickySessionType'] == null ? null : map['stickySessionType'] as String,
+      cookie: map['cookie'] == null ? null : (map['cookie'] as String).input(),
+      cookieTimeout: map['cookieTimeout'] == null ? null : (map['cookieTimeout'] as int).input(),
+      stickySessionEnabled: map['stickySessionEnabled'] == null ? null : (map['stickySessionEnabled'] as bool).input(),
+      stickySessionType: map['stickySessionType'] == null ? null : (map['stickySessionType'] as String).input(),
     );
   }
 }

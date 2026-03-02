@@ -5,13 +5,13 @@ import 'get_linux_web_app_backup_schedule.dart';
 
 class GetLinuxWebAppBackup {
   /// Is the Backup enabled?
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The name of this Linux Web App.
-  final String name;
+  final pulumi.Input<String> name;
   /// A `schedule` block as defined below.
-  final List<GetLinuxWebAppBackupSchedule> schedules;
+  final pulumi.Input<List<GetLinuxWebAppBackupSchedule>> schedules;
   /// The SAS URL to the container.
-  final String storageAccountUrl;
+  final pulumi.Input<String> storageAccountUrl;
 
   /// Creates a new [GetLinuxWebAppBackup].
   /// [enabled] Is the Backup enabled?
@@ -29,17 +29,17 @@ class GetLinuxWebAppBackup {
     return <String, dynamic>{
       'enabled': enabled,
       'name': name,
-      'schedules': pulumi.Input.encodeList<GetLinuxWebAppBackupSchedule, Map<String, dynamic>>(schedules, (value) => value.toMap()),
+      'schedules': pulumi.Input.mapInputValue<List<GetLinuxWebAppBackupSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<GetLinuxWebAppBackupSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'storageAccountUrl': storageAccountUrl,
     };
   }
 
   factory GetLinuxWebAppBackup.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppBackup(
-      enabled: map['enabled'] as bool,
-      name: map['name'] as String,
-      schedules: pulumi.Input.decodeList<GetLinuxWebAppBackupSchedule>(map['schedules'], (value) => GetLinuxWebAppBackupSchedule.fromMap((value as Map).cast<String, dynamic>())),
-      storageAccountUrl: map['storageAccountUrl'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      schedules: (pulumi.Input.decodeList<GetLinuxWebAppBackupSchedule>(map['schedules'], (value) => GetLinuxWebAppBackupSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountUrl: (map['storageAccountUrl'] as String).input(),
     );
   }
 }

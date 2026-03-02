@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cron.dart';
 import 'recurrence.dart';
 import 'schedule_base.dart';
@@ -7,17 +8,17 @@ import 'schedule_base.dart';
 /// Compute start stop schedule properties
 class ComputeStartStopSchedule {
   /// [Required] The compute power action.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// Required if triggerType is Cron.
-  final Cron? cron;
+  final pulumi.Input<Cron>? cron;
   /// Required if triggerType is Recurrence.
-  final Recurrence? recurrence;
+  final pulumi.Input<Recurrence>? recurrence;
   /// [Deprecated] Not used any more.
-  final ScheduleBase? schedule;
+  final pulumi.Input<ScheduleBase>? schedule;
   /// Is the schedule enabled or disabled?
-  final String? status;
+  final pulumi.Input<String>? status;
   /// [Required] The schedule trigger type.
-  final String? triggerType;
+  final pulumi.Input<String>? triggerType;
 
   /// Creates a new [ComputeStartStopSchedule].
   /// [action] [Required] The compute power action.
@@ -38,9 +39,9 @@ class ComputeStartStopSchedule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': ?action,
-      'cron': ?cron == null ? null : cron!.toMap(),
-      'recurrence': ?recurrence == null ? null : recurrence!.toMap(),
-      'schedule': ?schedule == null ? null : schedule!.toMap(),
+      'cron': ?pulumi.Input.mapOptionalInputValue<Cron, Map<String, dynamic>>(cron, (value) => value.toMap()),
+      'recurrence': ?pulumi.Input.mapOptionalInputValue<Recurrence, Map<String, dynamic>>(recurrence, (value) => value.toMap()),
+      'schedule': ?pulumi.Input.mapOptionalInputValue<ScheduleBase, Map<String, dynamic>>(schedule, (value) => value.toMap()),
       'status': ?status,
       'triggerType': ?triggerType,
     };
@@ -48,12 +49,12 @@ class ComputeStartStopSchedule {
 
   factory ComputeStartStopSchedule.fromMap(Map<String, dynamic> map) {
     return ComputeStartStopSchedule(
-      action: map['action'] == null ? null : map['action'] as String,
-      cron: map['cron'] == null ? null : Cron.fromMap((map['cron'] as Map).cast<String, dynamic>()),
-      recurrence: map['recurrence'] == null ? null : Recurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>()),
-      schedule: map['schedule'] == null ? null : ScheduleBase.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
-      triggerType: map['triggerType'] == null ? null : map['triggerType'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      cron: map['cron'] == null ? null : (Cron.fromMap((map['cron'] as Map).cast<String, dynamic>())).input(),
+      recurrence: map['recurrence'] == null ? null : (Recurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (ScheduleBase.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      triggerType: map['triggerType'] == null ? null : (map['triggerType'] as String).input(),
     );
   }
 }

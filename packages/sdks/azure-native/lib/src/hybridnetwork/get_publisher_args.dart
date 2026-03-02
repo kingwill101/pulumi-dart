@@ -16,11 +16,9 @@ class GetPublisherArgs {
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetPublisherArgs({
-    required pulumi.Output<String> publisherName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      publisherName = pulumi.Input.asInput<String>(publisherName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.publisherName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPublisherArgs {
 
   factory GetPublisherArgs.fromMap(Map<String, dynamic> map) {
     return GetPublisherArgs(
-      publisherName: pulumi.Output.create<String>(map['publisherName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      publisherName: (map['publisherName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

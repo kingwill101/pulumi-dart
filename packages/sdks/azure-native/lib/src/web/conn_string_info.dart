@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_string_type.dart';
 
 /// Database connection string information.
 class ConnStringInfo {
   /// Connection string value.
-  final String? connectionString;
+  final pulumi.Input<String>? connectionString;
   /// Name of connection string.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Type of database.
-  final ConnectionStringType? type;
+  final pulumi.Input<ConnectionStringType>? type;
 
   /// Creates a new [ConnStringInfo].
   /// [connectionString] Connection string value.
@@ -25,15 +26,15 @@ class ConnStringInfo {
     return <String, dynamic>{
       'connectionString': ?connectionString,
       'name': ?name,
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<ConnectionStringType, String>(type, (value) => value.value),
     };
   }
 
   factory ConnStringInfo.fromMap(Map<String, dynamic> map) {
     return ConnStringInfo(
-      connectionString: map['connectionString'] == null ? null : map['connectionString'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : ConnectionStringType.fromValue(map['type'] as String),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (ConnectionStringType.fromValue(map['type'] as String)).input(),
     );
   }
 }

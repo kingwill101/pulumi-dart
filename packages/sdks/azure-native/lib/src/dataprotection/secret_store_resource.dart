@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Class representing a secret store resource.
 class SecretStoreResource {
   /// Gets or sets the type of secret store
-  final String secretStoreType;
+  final pulumi.Input<String> secretStoreType;
   /// Uri to get to the resource
-  final String? uri;
+  final pulumi.Input<String>? uri;
   /// Gets or sets value stored in secret store resource
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [SecretStoreResource].
   /// [secretStoreType] Gets or sets the type of secret store
@@ -30,9 +31,9 @@ class SecretStoreResource {
 
   factory SecretStoreResource.fromMap(Map<String, dynamic> map) {
     return SecretStoreResource(
-      secretStoreType: map['secretStoreType'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      secretStoreType: (map['secretStoreType'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

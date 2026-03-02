@@ -25,17 +25,12 @@ class TemplateArgs {
   /// [serviceCode] Service identifier. To find the service code value for an AWS service, use the aws.servicequotas.getService data source.
   /// [value] The new, increased value for the quota.
   TemplateArgs({
-    pulumi.Output<String>? awsRegion,
-    required pulumi.Output<String> quotaCode,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceCode,
-    required pulumi.Output<double> value,
-  }) :
-      awsRegion = pulumi.Input.asOptionalInput<String>(awsRegion),
-      quotaCode = pulumi.Input.asInput<String>(quotaCode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceCode = pulumi.Input.asInput<String>(serviceCode),
-      value = pulumi.Input.asInput<double>(value);
+    this.awsRegion,
+    required this.quotaCode,
+    this.region,
+    required this.serviceCode,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      awsRegion: map['awsRegion'] == null ? null : pulumi.Output.create<String>(map['awsRegion'] as String),
-      quotaCode: pulumi.Output.create<String>(map['quotaCode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceCode: pulumi.Output.create<String>(map['serviceCode'] as String),
-      value: pulumi.Output.create<double>(map['value'] as double),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
+      quotaCode: (map['quotaCode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceCode: (map['serviceCode'] as String).input(),
+      value: (map['value'] as double).input(),
     );
   }
 }

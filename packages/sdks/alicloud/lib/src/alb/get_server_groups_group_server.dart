@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerGroupsGroupServer {
   /// The description of the server.
-  final String description;
+  final pulumi.Input<String> description;
   /// The port that is used by the server.
-  final int port;
+  final pulumi.Input<int> port;
   /// The ID of the ECS instance, ENI instance or ECI instance.
-  final String serverId;
+  final pulumi.Input<String> serverId;
   /// The IP address of the ENI instance when it is in the inclusive ENI mode.
-  final String serverIp;
+  final pulumi.Input<String> serverIp;
   /// The type of the server. The type of the server.
-  final String serverType;
+  final pulumi.Input<String> serverType;
   /// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The weight of the server.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetServerGroupsGroupServer].
   /// [description] The description of the server.
@@ -49,13 +50,13 @@ class GetServerGroupsGroupServer {
 
   factory GetServerGroupsGroupServer.fromMap(Map<String, dynamic> map) {
     return GetServerGroupsGroupServer(
-      description: map['description'] as String,
-      port: map['port'] as int,
-      serverId: map['serverId'] as String,
-      serverIp: map['serverIp'] as String,
-      serverType: map['serverType'] as String,
-      status: map['status'] as String,
-      weight: map['weight'] as int,
+      description: (map['description'] as String).input(),
+      port: (map['port'] as int).input(),
+      serverId: (map['serverId'] as String).input(),
+      serverIp: (map['serverIp'] as String).input(),
+      serverType: (map['serverType'] as String).input(),
+      status: (map['status'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class ClusterInstanceHybridIdentityMetadatumArgs {
   /// [publicKey] Onboarding public key for provisioning the Managed identity for the connected cluster.
   /// [resourceUid] Unique id of the parent provisioned cluster resource.
   ClusterInstanceHybridIdentityMetadatumArgs({
-    required pulumi.Output<String> connectedClusterResourceUri,
-    pulumi.Output<String>? publicKey,
-    pulumi.Output<String>? resourceUid,
-  }) :
-      connectedClusterResourceUri = pulumi.Input.asInput<String>(connectedClusterResourceUri),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      resourceUid = pulumi.Input.asOptionalInput<String>(resourceUid);
+    required this.connectedClusterResourceUri,
+    this.publicKey,
+    this.resourceUid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ClusterInstanceHybridIdentityMetadatumArgs {
 
   factory ClusterInstanceHybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return ClusterInstanceHybridIdentityMetadatumArgs(
-      connectedClusterResourceUri: pulumi.Output.create<String>(map['connectedClusterResourceUri'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      resourceUid: map['resourceUid'] == null ? null : pulumi.Output.create<String>(map['resourceUid'] as String),
+      connectedClusterResourceUri: (map['connectedClusterResourceUri'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid'] as String).input(),
     );
   }
 }

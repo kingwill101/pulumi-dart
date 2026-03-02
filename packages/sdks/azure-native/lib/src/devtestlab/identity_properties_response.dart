@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a managed identity
 class IdentityPropertiesResponse {
   /// The client secret URL of the identity.
-  final String? clientSecretUrl;
+  final pulumi.Input<String>? clientSecretUrl;
   /// The principal id of resource identity.
-  final String? principalId;
+  final pulumi.Input<String>? principalId;
   /// The tenant identifier of resource.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// Managed identity.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [IdentityPropertiesResponse].
   /// [clientSecretUrl] The client secret URL of the identity.
@@ -35,10 +36,10 @@ class IdentityPropertiesResponse {
 
   factory IdentityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IdentityPropertiesResponse(
-      clientSecretUrl: map['clientSecretUrl'] == null ? null : map['clientSecretUrl'] as String,
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      clientSecretUrl: map['clientSecretUrl'] == null ? null : (map['clientSecretUrl'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

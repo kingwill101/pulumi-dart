@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseInstanceDnsName {
-  final String connectionType;
-  final String dnsScope;
+  final pulumi.Input<String> connectionType;
+  final pulumi.Input<String> dnsScope;
   /// The name of the instance.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetDatabaseInstanceDnsName].
   /// [connectionType] Required.
@@ -27,9 +28,9 @@ class GetDatabaseInstanceDnsName {
 
   factory GetDatabaseInstanceDnsName.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceDnsName(
-      connectionType: map['connectionType'] as String,
-      dnsScope: map['dnsScope'] as String,
-      name: map['name'] as String,
+      connectionType: (map['connectionType'] as String).input(),
+      dnsScope: (map['dnsScope'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -54,33 +54,20 @@ class PublicIPPrefixArgs {
   /// [tags] Resource tags.
   /// [zones] A list of availability zones denoting the IP allocated for the resource needs to come from.
   PublicIPPrefixArgs({
-    pulumi.Output<SubResource>? customIPPrefix,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? id,
-    pulumi.Output<List<IpTag>>? ipTags,
-    pulumi.Output<String>? location,
-    pulumi.Output<NatGatewayNetwork>? natGateway,
-    pulumi.Output<int>? prefixLength,
-    pulumi.Output<String>? publicIPAddressVersion,
-    pulumi.Output<String>? publicIpPrefixName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<PublicIPPrefixSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      customIPPrefix = pulumi.Input.asOptionalInput<SubResource>(customIPPrefix),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      ipTags = pulumi.Input.asOptionalInput<List<IpTag>>(ipTags),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      natGateway = pulumi.Input.asOptionalInput<NatGatewayNetwork>(natGateway),
-      prefixLength = pulumi.Input.asOptionalInput<int>(prefixLength),
-      publicIPAddressVersion = pulumi.Input.asOptionalInput<String>(publicIPAddressVersion),
-      publicIpPrefixName = pulumi.Input.asOptionalInput<String>(publicIpPrefixName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<PublicIPPrefixSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.customIPPrefix,
+    this.extendedLocation,
+    this.id,
+    this.ipTags,
+    this.location,
+    this.natGateway,
+    this.prefixLength,
+    this.publicIPAddressVersion,
+    this.publicIpPrefixName,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class PublicIPPrefixArgs {
 
   factory PublicIPPrefixArgs.fromMap(Map<String, dynamic> map) {
     return PublicIPPrefixArgs(
-      customIPPrefix: map['customIPPrefix'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['customIPPrefix'] as Map).cast<String, dynamic>())),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      ipTags: map['ipTags'] == null ? null : pulumi.Output.create<List<IpTag>>(pulumi.Input.decodeList<IpTag>(map['ipTags'], (value) => IpTag.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      natGateway: map['natGateway'] == null ? null : pulumi.Output.create<NatGatewayNetwork>(map['natGateway'] as NatGatewayNetwork),
-      prefixLength: map['prefixLength'] == null ? null : pulumi.Output.create<int>(map['prefixLength'] as int),
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : pulumi.Output.create<String>(map['publicIPAddressVersion'] as String),
-      publicIpPrefixName: map['publicIpPrefixName'] == null ? null : pulumi.Output.create<String>(map['publicIpPrefixName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<PublicIPPrefixSku>(PublicIPPrefixSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      customIPPrefix: map['customIPPrefix'] == null ? null : (SubResource.fromMap((map['customIPPrefix'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<IpTag>(map['ipTags'], (value) => IpTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      natGateway: map['natGateway'] == null ? null : (map['natGateway'] as NatGatewayNetwork).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
+      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion'] as String).input(),
+      publicIpPrefixName: map['publicIpPrefixName'] == null ? null : (map['publicIpPrefixName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (PublicIPPrefixSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

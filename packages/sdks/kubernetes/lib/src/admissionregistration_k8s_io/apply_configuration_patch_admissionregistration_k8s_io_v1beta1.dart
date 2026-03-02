@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ApplyConfiguration defines the desired configuration values of an object.
 class ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1 {
@@ -31,7 +32,7 @@ class ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1 {
   /// The `apiVersion`, `kind`, `metadata.name` and `metadata.generateName` are always accessible from the root of the object. No other metadata properties are accessible.
   ///
   /// Only property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible. Required.
-  final String? expression;
+  final pulumi.Input<String>? expression;
 
   /// Creates a new [ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1].
   /// [expression] expression will be evaluated by CEL to create an apply configuration. ref: https://github.com/google/cel-spec
@@ -47,7 +48,7 @@ class ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1 {
 
   factory ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1(
-      expression: map['expression'] == null ? null : map['expression'] as String,
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
     );
   }
 }

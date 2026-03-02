@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuestPoliciesPackage {
   /// The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
   /// Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
-  final String? desiredState;
+  final pulumi.Input<String>? desiredState;
   /// Type of package manager that can be used to install this package. If a system does not have the package manager,
   /// the package is not installed or removed no error message is returned. By default, or if you specify ANY,
   /// the agent attempts to install and remove this package using the default package manager.
@@ -12,10 +13,10 @@ class GuestPoliciesPackage {
   /// The default behavior is ANY.
   /// Default value is `ANY`.
   /// Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
-  final String? manager;
+  final pulumi.Input<String>? manager;
   /// The name of the package. A package is uniquely identified for conflict validation
   /// by checking the package name and the manager(s) that the package targets.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GuestPoliciesPackage].
   /// [desiredState] The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
@@ -37,9 +38,9 @@ class GuestPoliciesPackage {
 
   factory GuestPoliciesPackage.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesPackage(
-      desiredState: map['desiredState'] == null ? null : map['desiredState'] as String,
-      manager: map['manager'] == null ? null : map['manager'] as String,
-      name: map['name'] as String,
+      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      manager: map['manager'] == null ? null : (map['manager'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

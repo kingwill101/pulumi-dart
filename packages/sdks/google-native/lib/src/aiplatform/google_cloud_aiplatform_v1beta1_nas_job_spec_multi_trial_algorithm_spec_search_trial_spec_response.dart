@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_custom_job_spec_response.dart';
 
 /// Represent spec for search trials.
 class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse {
   /// The number of failed trials that need to be seen before failing the NasJob. If set to 0, Vertex AI decides how many trials must fail before the whole job fails.
-  final int maxFailedTrialCount;
+  final pulumi.Input<int> maxFailedTrialCount;
   /// The maximum number of trials to run in parallel.
-  final int maxParallelTrialCount;
+  final pulumi.Input<int> maxParallelTrialCount;
   /// The maximum number of Neural Architecture Search (NAS) trials to run.
-  final int maxTrialCount;
+  final pulumi.Input<int> maxTrialCount;
   /// The spec of a search trial job. The same spec applies to all search trials.
-  final GoogleCloudAiplatformV1beta1CustomJobSpecResponse searchTrialJobSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1CustomJobSpecResponse> searchTrialJobSpec;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse].
   /// [maxFailedTrialCount] The number of failed trials that need to be seen before failing the NasJob. If set to 0, Vertex AI decides how many trials must fail before the whole job fails.
@@ -30,16 +31,16 @@ class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSp
       'maxFailedTrialCount': maxFailedTrialCount,
       'maxParallelTrialCount': maxParallelTrialCount,
       'maxTrialCount': maxTrialCount,
-      'searchTrialJobSpec': searchTrialJobSpec.toMap(),
+      'searchTrialJobSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1CustomJobSpecResponse, Map<String, dynamic>>(searchTrialJobSpec, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse(
-      maxFailedTrialCount: map['maxFailedTrialCount'] as int,
-      maxParallelTrialCount: map['maxParallelTrialCount'] as int,
-      maxTrialCount: map['maxTrialCount'] as int,
-      searchTrialJobSpec: GoogleCloudAiplatformV1beta1CustomJobSpecResponse.fromMap((map['searchTrialJobSpec'] as Map).cast<String, dynamic>()),
+      maxFailedTrialCount: (map['maxFailedTrialCount'] as int).input(),
+      maxParallelTrialCount: (map['maxParallelTrialCount'] as int).input(),
+      maxTrialCount: (map['maxTrialCount'] as int).input(),
+      searchTrialJobSpec: (GoogleCloudAiplatformV1beta1CustomJobSpecResponse.fromMap((map['searchTrialJobSpec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

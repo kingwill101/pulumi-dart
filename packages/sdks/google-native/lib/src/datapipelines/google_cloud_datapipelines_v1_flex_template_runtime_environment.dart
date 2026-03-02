@@ -1,42 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datapipelines_v1_flex_template_runtime_environment_flexrs_goal.dart';
 import 'google_cloud_datapipelines_v1_flex_template_runtime_environment_ip_configuration.dart';
 
 /// The environment values to be set at runtime for a Flex Template.
 class GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
   /// Additional experiment flags for the job.
-  final List<String>? additionalExperiments;
+  final pulumi.Input<List<String>>? additionalExperiments;
   /// Additional user labels to be specified for the job. Keys and values must follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions). An object containing a list of key/value pairs. Example: `{ "name": "wrench", "mass": "1kg", "count": "3" }`.
-  final Map<String, String>? additionalUserLabels;
+  final pulumi.Input<Map<String, String>>? additionalUserLabels;
   /// Whether to enable Streaming Engine for the job.
-  final bool? enableStreamingEngine;
+  final pulumi.Input<bool>? enableStreamingEngine;
   /// Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
-  final GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal? flexrsGoal;
+  final pulumi.Input<GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal>? flexrsGoal;
   /// Configuration for VM IPs.
-  final GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration? ipConfiguration;
+  final pulumi.Input<GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration>? ipConfiguration;
   /// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
-  final String? kmsKeyName;
+  final pulumi.Input<String>? kmsKeyName;
   /// The machine type to use for the job. Defaults to the value from the template if not specified.
-  final String? machineType;
+  final pulumi.Input<String>? machineType;
   /// The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
-  final int? maxWorkers;
+  final pulumi.Input<int>? maxWorkers;
   /// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
-  final String? network;
+  final pulumi.Input<String>? network;
   /// The initial number of Compute Engine instances for the job.
-  final int? numWorkers;
+  final pulumi.Input<int>? numWorkers;
   /// The email address of the service account to run the job as.
-  final String? serviceAccountEmail;
+  final pulumi.Input<String>? serviceAccountEmail;
   /// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
-  final String? subnetwork;
+  final pulumi.Input<String>? subnetwork;
   /// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-  final String? tempLocation;
+  final pulumi.Input<String>? tempLocation;
   /// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, defaults to the control plane region.
-  final String? workerRegion;
+  final pulumi.Input<String>? workerRegion;
   /// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
-  final String? workerZone;
+  final pulumi.Input<String>? workerZone;
   /// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
-  final String? zone;
+  final pulumi.Input<String>? zone;
 
   /// Creates a new [GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment].
   /// [additionalExperiments] Additional experiment flags for the job.
@@ -79,8 +80,8 @@ class GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
       'additionalExperiments': ?additionalExperiments,
       'additionalUserLabels': ?additionalUserLabels,
       'enableStreamingEngine': ?enableStreamingEngine,
-      'flexrsGoal': ?flexrsGoal == null ? null : flexrsGoal!.value,
-      'ipConfiguration': ?ipConfiguration == null ? null : ipConfiguration!.value,
+      'flexrsGoal': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal, String>(flexrsGoal, (value) => value.value),
+      'ipConfiguration': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration, String>(ipConfiguration, (value) => value.value),
       'kmsKeyName': ?kmsKeyName,
       'machineType': ?machineType,
       'maxWorkers': ?maxWorkers,
@@ -97,22 +98,22 @@ class GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
 
   factory GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment(
-      additionalExperiments: map['additionalExperiments'] == null ? null : (map['additionalExperiments'] as List).cast<String>(),
-      additionalUserLabels: map['additionalUserLabels'] == null ? null : (map['additionalUserLabels'] as Map).cast<String, String>(),
-      enableStreamingEngine: map['enableStreamingEngine'] == null ? null : map['enableStreamingEngine'] as bool,
-      flexrsGoal: map['flexrsGoal'] == null ? null : GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal.fromValue(map['flexrsGoal'] as String),
-      ipConfiguration: map['ipConfiguration'] == null ? null : GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration.fromValue(map['ipConfiguration'] as String),
-      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
-      machineType: map['machineType'] == null ? null : map['machineType'] as String,
-      maxWorkers: map['maxWorkers'] == null ? null : map['maxWorkers'] as int,
-      network: map['network'] == null ? null : map['network'] as String,
-      numWorkers: map['numWorkers'] == null ? null : map['numWorkers'] as int,
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : map['serviceAccountEmail'] as String,
-      subnetwork: map['subnetwork'] == null ? null : map['subnetwork'] as String,
-      tempLocation: map['tempLocation'] == null ? null : map['tempLocation'] as String,
-      workerRegion: map['workerRegion'] == null ? null : map['workerRegion'] as String,
-      workerZone: map['workerZone'] == null ? null : map['workerZone'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      additionalExperiments: map['additionalExperiments'] == null ? null : ((map['additionalExperiments'] as List).cast<String>()).input(),
+      additionalUserLabels: map['additionalUserLabels'] == null ? null : ((map['additionalUserLabels'] as Map).cast<String, String>()).input(),
+      enableStreamingEngine: map['enableStreamingEngine'] == null ? null : (map['enableStreamingEngine'] as bool).input(),
+      flexrsGoal: map['flexrsGoal'] == null ? null : (GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal.fromValue(map['flexrsGoal'] as String)).input(),
+      ipConfiguration: map['ipConfiguration'] == null ? null : (GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration.fromValue(map['ipConfiguration'] as String)).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      maxWorkers: map['maxWorkers'] == null ? null : (map['maxWorkers'] as int).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      numWorkers: map['numWorkers'] == null ? null : (map['numWorkers'] as int).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      tempLocation: map['tempLocation'] == null ? null : (map['tempLocation'] as String).input(),
+      workerRegion: map['workerRegion'] == null ? null : (map['workerRegion'] as String).input(),
+      workerZone: map['workerZone'] == null ? null : (map['workerZone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

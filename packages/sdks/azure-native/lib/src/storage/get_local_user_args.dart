@@ -19,13 +19,10 @@ class GetLocalUserArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [username] The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
   GetLocalUserArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> username,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      username = pulumi.Input.asInput<String>(username);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLocalUserArgs {
 
   factory GetLocalUserArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalUserArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

@@ -6,23 +6,23 @@ import 'resource_restore_parameters_response.dart';
 
 class MongoDBCollectionGetPropertiesResponseResource {
   /// Analytical TTL.
-  final int? analyticalStorageTtl;
+  final pulumi.Input<int>? analyticalStorageTtl;
   /// Enum to indicate the mode of resource creation.
-  final String? createMode;
+  final pulumi.Input<String>? createMode;
   /// A system generated property representing the resource etag required for optimistic concurrency control.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Name of the Cosmos DB MongoDB collection
-  final String id;
+  final pulumi.Input<String> id;
   /// List of index keys
-  final List<MongoIndexResponse>? indexes;
+  final pulumi.Input<List<MongoIndexResponse>>? indexes;
   /// Parameters to indicate the information about the restore
-  final ResourceRestoreParametersResponse? restoreParameters;
+  final pulumi.Input<ResourceRestoreParametersResponse>? restoreParameters;
   /// A system generated property. A unique identifier.
-  final String rid;
+  final pulumi.Input<String> rid;
   /// A key-value pair of shard keys to be applied for the request.
-  final Map<String, String>? shardKey;
+  final pulumi.Input<Map<String, String>>? shardKey;
   /// A system generated property that denotes the last updated timestamp of the resource.
-  final double ts;
+  final pulumi.Input<double> ts;
 
   /// Creates a new [MongoDBCollectionGetPropertiesResponseResource].
   /// [analyticalStorageTtl] Analytical TTL.
@@ -52,8 +52,8 @@ class MongoDBCollectionGetPropertiesResponseResource {
       'createMode': ?createMode,
       'etag': etag,
       'id': id,
-      'indexes': ?indexes == null ? null : pulumi.Input.encodeList<MongoIndexResponse, Map<String, dynamic>>(indexes!, (value) => value.toMap()),
-      'restoreParameters': ?restoreParameters == null ? null : restoreParameters!.toMap(),
+      'indexes': ?pulumi.Input.mapOptionalInputValue<List<MongoIndexResponse>, List<Map<String, dynamic>>>(indexes, (value) => pulumi.Input.encodeList<MongoIndexResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'restoreParameters': ?pulumi.Input.mapOptionalInputValue<ResourceRestoreParametersResponse, Map<String, dynamic>>(restoreParameters, (value) => value.toMap()),
       'rid': rid,
       'shardKey': ?shardKey,
       'ts': ts,
@@ -62,15 +62,15 @@ class MongoDBCollectionGetPropertiesResponseResource {
 
   factory MongoDBCollectionGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return MongoDBCollectionGetPropertiesResponseResource(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : map['analyticalStorageTtl'] as int,
-      createMode: map['createMode'] == null ? null : map['createMode'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      indexes: map['indexes'] == null ? null : pulumi.Input.decodeList<MongoIndexResponse>(map['indexes'], (value) => MongoIndexResponse.fromMap((value as Map).cast<String, dynamic>())),
-      restoreParameters: map['restoreParameters'] == null ? null : ResourceRestoreParametersResponse.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>()),
-      rid: map['rid'] as String,
-      shardKey: map['shardKey'] == null ? null : (map['shardKey'] as Map).cast<String, String>(),
-      ts: map['ts'] as double,
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      id: (map['id'] as String).input(),
+      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<MongoIndexResponse>(map['indexes'], (value) => MongoIndexResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParametersResponse.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>())).input(),
+      rid: (map['rid'] as String).input(),
+      shardKey: map['shardKey'] == null ? null : ((map['shardKey'] as Map).cast<String, String>()).input(),
+      ts: (map['ts'] as double).input(),
     );
   }
 }

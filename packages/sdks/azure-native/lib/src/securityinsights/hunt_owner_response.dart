@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a user that the hunt is assigned to
 class HuntOwnerResponse {
   /// The name of the user the hunt is assigned to.
-  final String? assignedTo;
+  final pulumi.Input<String>? assignedTo;
   /// The email of the user the hunt is assigned to.
-  final String? email;
+  final pulumi.Input<String>? email;
   /// The object id of the user the hunt is assigned to.
-  final String? objectId;
+  final pulumi.Input<String>? objectId;
   /// The type of the owner the hunt is assigned to.
-  final String? ownerType;
+  final pulumi.Input<String>? ownerType;
   /// The user principal name of the user the hunt is assigned to.
-  final String? userPrincipalName;
+  final pulumi.Input<String>? userPrincipalName;
 
   /// Creates a new [HuntOwnerResponse].
   /// [assignedTo] The name of the user the hunt is assigned to.
@@ -40,11 +41,11 @@ class HuntOwnerResponse {
 
   factory HuntOwnerResponse.fromMap(Map<String, dynamic> map) {
     return HuntOwnerResponse(
-      assignedTo: map['assignedTo'] == null ? null : map['assignedTo'] as String,
-      email: map['email'] == null ? null : map['email'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      ownerType: map['ownerType'] == null ? null : map['ownerType'] as String,
-      userPrincipalName: map['userPrincipalName'] == null ? null : map['userPrincipalName'] as String,
+      assignedTo: map['assignedTo'] == null ? null : (map['assignedTo'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      ownerType: map['ownerType'] == null ? null : (map['ownerType'] as String).input(),
+      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName'] as String).input(),
     );
   }
 }

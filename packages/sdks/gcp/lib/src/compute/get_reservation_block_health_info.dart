@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReservationBlockHealthInfo {
   /// The number of sub-blocks that are degraded.
-  final int degradedSubBlockCount;
+  final pulumi.Input<int> degradedSubBlockCount;
   /// The health status of the reservation block.
-  final String healthStatus;
+  final pulumi.Input<String> healthStatus;
   /// The number of sub-blocks that are healthy.
-  final int healthySubBlockCount;
+  final pulumi.Input<int> healthySubBlockCount;
 
   /// Creates a new [GetReservationBlockHealthInfo].
   /// [degradedSubBlockCount] The number of sub-blocks that are degraded.
@@ -29,9 +30,9 @@ class GetReservationBlockHealthInfo {
 
   factory GetReservationBlockHealthInfo.fromMap(Map<String, dynamic> map) {
     return GetReservationBlockHealthInfo(
-      degradedSubBlockCount: map['degradedSubBlockCount'] as int,
-      healthStatus: map['healthStatus'] as String,
-      healthySubBlockCount: map['healthySubBlockCount'] as int,
+      degradedSubBlockCount: (map['degradedSubBlockCount'] as int).input(),
+      healthStatus: (map['healthStatus'] as String).input(),
+      healthySubBlockCount: (map['healthySubBlockCount'] as int).input(),
     );
   }
 }

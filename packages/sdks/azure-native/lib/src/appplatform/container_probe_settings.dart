@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Container liveness and readiness probe settings
 class ContainerProbeSettings {
   /// Indicates whether disable the liveness and readiness probe
-  final bool? disableProbe;
+  final pulumi.Input<bool>? disableProbe;
 
   /// Creates a new [ContainerProbeSettings].
   /// [disableProbe] Indicates whether disable the liveness and readiness probe
@@ -20,7 +21,7 @@ class ContainerProbeSettings {
 
   factory ContainerProbeSettings.fromMap(Map<String, dynamic> map) {
     return ContainerProbeSettings(
-      disableProbe: map['disableProbe'] == null ? null : map['disableProbe'] as bool,
+      disableProbe: map['disableProbe'] == null ? null : (map['disableProbe'] as bool).input(),
     );
   }
 }

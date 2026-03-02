@@ -44,23 +44,15 @@ class OauthClientCredentialState {
   /// [oauthclient] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
   OauthClientCredentialState({
-    pulumi.Output<String>? clientSecret,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? oauthClientCredentialId,
-    pulumi.Output<String>? oauthclient,
-    pulumi.Output<String>? project,
-  }) :
-      clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      oauthClientCredentialId = pulumi.Input.asOptionalInput<String>(oauthClientCredentialId),
-      oauthclient = pulumi.Input.asOptionalInput<String>(oauthclient),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.clientSecret,
+    this.disabled,
+    this.displayName,
+    this.location,
+    this.name,
+    this.oauthClientCredentialId,
+    this.oauthclient,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,14 +69,14 @@ class OauthClientCredentialState {
 
   factory OauthClientCredentialState.fromMap(Map<String, dynamic> map) {
     return OauthClientCredentialState(
-      clientSecret: map['clientSecret'] == null ? null : pulumi.Output.create<String>(map['clientSecret'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      oauthClientCredentialId: map['oauthClientCredentialId'] == null ? null : pulumi.Output.create<String>(map['oauthClientCredentialId'] as String),
-      oauthclient: map['oauthclient'] == null ? null : pulumi.Output.create<String>(map['oauthclient'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      oauthClientCredentialId: map['oauthClientCredentialId'] == null ? null : (map['oauthClientCredentialId'] as String).input(),
+      oauthclient: map['oauthclient'] == null ? null : (map['oauthclient'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

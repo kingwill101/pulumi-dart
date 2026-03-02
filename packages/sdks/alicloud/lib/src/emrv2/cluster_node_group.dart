@@ -12,47 +12,47 @@ import 'cluster_node_group_system_disk.dart';
 
 class ClusterNodeGroup {
   /// The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
-  final ClusterNodeGroupAckConfig? ackConfig;
+  final pulumi.Input<ClusterNodeGroupAckConfig>? ackConfig;
   /// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
-  final List<String>? additionalSecurityGroupIds;
+  final pulumi.Input<List<String>>? additionalSecurityGroupIds;
   /// The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
-  final ClusterNodeGroupAutoScalingPolicy? autoScalingPolicy;
+  final pulumi.Input<ClusterNodeGroupAutoScalingPolicy>? autoScalingPolicy;
   /// The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
-  final ClusterNodeGroupCostOptimizedConfig? costOptimizedConfig;
+  final pulumi.Input<ClusterNodeGroupCostOptimizedConfig>? costOptimizedConfig;
   /// Host Ecs data disks information in this node group. See `data_disks` below.
-  final List<ClusterNodeGroupDataDisk> dataDisks;
+  final pulumi.Input<List<ClusterNodeGroupDataDisk>> dataDisks;
   /// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
-  final String? deploymentSetStrategy;
+  final pulumi.Input<String>? deploymentSetStrategy;
   /// Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
-  final bool? gracefulShutdown;
+  final pulumi.Input<bool>? gracefulShutdown;
   /// Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
-  final List<String> instanceTypes;
+  final pulumi.Input<List<String>> instanceTypes;
   /// Host Ecs number in this node group.
-  final int nodeCount;
+  final pulumi.Input<int> nodeCount;
   /// The node group name of emr cluster.
-  final String nodeGroupName;
+  final pulumi.Input<String> nodeGroupName;
   /// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
-  final String nodeGroupType;
+  final pulumi.Input<String> nodeGroupType;
   /// Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
-  final String? nodeResizeStrategy;
+  final pulumi.Input<String>? nodeResizeStrategy;
   /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
-  final String? paymentType;
+  final pulumi.Input<String>? paymentType;
   /// The node group specific private pool resources. See `private_pool_options` below.
-  final ClusterNodeGroupPrivatePoolOptions? privatePoolOptions;
+  final pulumi.Input<ClusterNodeGroupPrivatePoolOptions>? privatePoolOptions;
   /// The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
-  final List<ClusterNodeGroupSpotBidPrice>? spotBidPrices;
+  final pulumi.Input<List<ClusterNodeGroupSpotBidPrice>>? spotBidPrices;
   /// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
-  final bool? spotInstanceRemedy;
+  final pulumi.Input<bool>? spotInstanceRemedy;
   /// The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
-  final String? spotStrategy;
+  final pulumi.Input<String>? spotStrategy;
   /// The detail configuration of subscription payment type. See `subscription_config` below.
-  final ClusterNodeGroupSubscriptionConfig? subscriptionConfig;
+  final pulumi.Input<ClusterNodeGroupSubscriptionConfig>? subscriptionConfig;
   /// Host Ecs system disk information in this node group. See `system_disk` below.
-  final ClusterNodeGroupSystemDisk systemDisk;
+  final pulumi.Input<ClusterNodeGroupSystemDisk> systemDisk;
   /// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
-  final List<String>? vswitchIds;
+  final pulumi.Input<List<String>>? vswitchIds;
   /// Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
-  final bool? withPublicIp;
+  final pulumi.Input<bool>? withPublicIp;
 
   /// Creates a new [ClusterNodeGroup].
   /// [ackConfig] The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
@@ -102,11 +102,11 @@ class ClusterNodeGroup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ackConfig': ?ackConfig == null ? null : ackConfig!.toMap(),
+      'ackConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodeGroupAckConfig, Map<String, dynamic>>(ackConfig, (value) => value.toMap()),
       'additionalSecurityGroupIds': ?additionalSecurityGroupIds,
-      'autoScalingPolicy': ?autoScalingPolicy == null ? null : autoScalingPolicy!.toMap(),
-      'costOptimizedConfig': ?costOptimizedConfig == null ? null : costOptimizedConfig!.toMap(),
-      'dataDisks': pulumi.Input.encodeList<ClusterNodeGroupDataDisk, Map<String, dynamic>>(dataDisks, (value) => value.toMap()),
+      'autoScalingPolicy': ?pulumi.Input.mapOptionalInputValue<ClusterNodeGroupAutoScalingPolicy, Map<String, dynamic>>(autoScalingPolicy, (value) => value.toMap()),
+      'costOptimizedConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodeGroupCostOptimizedConfig, Map<String, dynamic>>(costOptimizedConfig, (value) => value.toMap()),
+      'dataDisks': pulumi.Input.mapInputValue<List<ClusterNodeGroupDataDisk>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<ClusterNodeGroupDataDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deploymentSetStrategy': ?deploymentSetStrategy,
       'gracefulShutdown': ?gracefulShutdown,
       'instanceTypes': instanceTypes,
@@ -115,12 +115,12 @@ class ClusterNodeGroup {
       'nodeGroupType': nodeGroupType,
       'nodeResizeStrategy': ?nodeResizeStrategy,
       'paymentType': ?paymentType,
-      'privatePoolOptions': ?privatePoolOptions == null ? null : privatePoolOptions!.toMap(),
-      'spotBidPrices': ?spotBidPrices == null ? null : pulumi.Input.encodeList<ClusterNodeGroupSpotBidPrice, Map<String, dynamic>>(spotBidPrices!, (value) => value.toMap()),
+      'privatePoolOptions': ?pulumi.Input.mapOptionalInputValue<ClusterNodeGroupPrivatePoolOptions, Map<String, dynamic>>(privatePoolOptions, (value) => value.toMap()),
+      'spotBidPrices': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodeGroupSpotBidPrice>, List<Map<String, dynamic>>>(spotBidPrices, (value) => pulumi.Input.encodeList<ClusterNodeGroupSpotBidPrice, Map<String, dynamic>>(value, (value) => value.toMap())),
       'spotInstanceRemedy': ?spotInstanceRemedy,
       'spotStrategy': ?spotStrategy,
-      'subscriptionConfig': ?subscriptionConfig == null ? null : subscriptionConfig!.toMap(),
-      'systemDisk': systemDisk.toMap(),
+      'subscriptionConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodeGroupSubscriptionConfig, Map<String, dynamic>>(subscriptionConfig, (value) => value.toMap()),
+      'systemDisk': pulumi.Input.mapInputValue<ClusterNodeGroupSystemDisk, Map<String, dynamic>>(systemDisk, (value) => value.toMap()),
       'vswitchIds': ?vswitchIds,
       'withPublicIp': ?withPublicIp,
     };
@@ -128,27 +128,27 @@ class ClusterNodeGroup {
 
   factory ClusterNodeGroup.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroup(
-      ackConfig: map['ackConfig'] == null ? null : ClusterNodeGroupAckConfig.fromMap((map['ackConfig'] as Map).cast<String, dynamic>()),
-      additionalSecurityGroupIds: map['additionalSecurityGroupIds'] == null ? null : (map['additionalSecurityGroupIds'] as List).cast<String>(),
-      autoScalingPolicy: map['autoScalingPolicy'] == null ? null : ClusterNodeGroupAutoScalingPolicy.fromMap((map['autoScalingPolicy'] as Map).cast<String, dynamic>()),
-      costOptimizedConfig: map['costOptimizedConfig'] == null ? null : ClusterNodeGroupCostOptimizedConfig.fromMap((map['costOptimizedConfig'] as Map).cast<String, dynamic>()),
-      dataDisks: pulumi.Input.decodeList<ClusterNodeGroupDataDisk>(map['dataDisks'], (value) => ClusterNodeGroupDataDisk.fromMap((value as Map).cast<String, dynamic>())),
-      deploymentSetStrategy: map['deploymentSetStrategy'] == null ? null : map['deploymentSetStrategy'] as String,
-      gracefulShutdown: map['gracefulShutdown'] == null ? null : map['gracefulShutdown'] as bool,
-      instanceTypes: (map['instanceTypes'] as List).cast<String>(),
-      nodeCount: map['nodeCount'] as int,
-      nodeGroupName: map['nodeGroupName'] as String,
-      nodeGroupType: map['nodeGroupType'] as String,
-      nodeResizeStrategy: map['nodeResizeStrategy'] == null ? null : map['nodeResizeStrategy'] as String,
-      paymentType: map['paymentType'] == null ? null : map['paymentType'] as String,
-      privatePoolOptions: map['privatePoolOptions'] == null ? null : ClusterNodeGroupPrivatePoolOptions.fromMap((map['privatePoolOptions'] as Map).cast<String, dynamic>()),
-      spotBidPrices: map['spotBidPrices'] == null ? null : pulumi.Input.decodeList<ClusterNodeGroupSpotBidPrice>(map['spotBidPrices'], (value) => ClusterNodeGroupSpotBidPrice.fromMap((value as Map).cast<String, dynamic>())),
-      spotInstanceRemedy: map['spotInstanceRemedy'] == null ? null : map['spotInstanceRemedy'] as bool,
-      spotStrategy: map['spotStrategy'] == null ? null : map['spotStrategy'] as String,
-      subscriptionConfig: map['subscriptionConfig'] == null ? null : ClusterNodeGroupSubscriptionConfig.fromMap((map['subscriptionConfig'] as Map).cast<String, dynamic>()),
-      systemDisk: ClusterNodeGroupSystemDisk.fromMap((map['systemDisk'] as Map).cast<String, dynamic>()),
-      vswitchIds: map['vswitchIds'] == null ? null : (map['vswitchIds'] as List).cast<String>(),
-      withPublicIp: map['withPublicIp'] == null ? null : map['withPublicIp'] as bool,
+      ackConfig: map['ackConfig'] == null ? null : (ClusterNodeGroupAckConfig.fromMap((map['ackConfig'] as Map).cast<String, dynamic>())).input(),
+      additionalSecurityGroupIds: map['additionalSecurityGroupIds'] == null ? null : ((map['additionalSecurityGroupIds'] as List).cast<String>()).input(),
+      autoScalingPolicy: map['autoScalingPolicy'] == null ? null : (ClusterNodeGroupAutoScalingPolicy.fromMap((map['autoScalingPolicy'] as Map).cast<String, dynamic>())).input(),
+      costOptimizedConfig: map['costOptimizedConfig'] == null ? null : (ClusterNodeGroupCostOptimizedConfig.fromMap((map['costOptimizedConfig'] as Map).cast<String, dynamic>())).input(),
+      dataDisks: (pulumi.Input.decodeList<ClusterNodeGroupDataDisk>(map['dataDisks'], (value) => ClusterNodeGroupDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deploymentSetStrategy: map['deploymentSetStrategy'] == null ? null : (map['deploymentSetStrategy'] as String).input(),
+      gracefulShutdown: map['gracefulShutdown'] == null ? null : (map['gracefulShutdown'] as bool).input(),
+      instanceTypes: ((map['instanceTypes'] as List).cast<String>()).input(),
+      nodeCount: (map['nodeCount'] as int).input(),
+      nodeGroupName: (map['nodeGroupName'] as String).input(),
+      nodeGroupType: (map['nodeGroupType'] as String).input(),
+      nodeResizeStrategy: map['nodeResizeStrategy'] == null ? null : (map['nodeResizeStrategy'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      privatePoolOptions: map['privatePoolOptions'] == null ? null : (ClusterNodeGroupPrivatePoolOptions.fromMap((map['privatePoolOptions'] as Map).cast<String, dynamic>())).input(),
+      spotBidPrices: map['spotBidPrices'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupSpotBidPrice>(map['spotBidPrices'], (value) => ClusterNodeGroupSpotBidPrice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spotInstanceRemedy: map['spotInstanceRemedy'] == null ? null : (map['spotInstanceRemedy'] as bool).input(),
+      spotStrategy: map['spotStrategy'] == null ? null : (map['spotStrategy'] as String).input(),
+      subscriptionConfig: map['subscriptionConfig'] == null ? null : (ClusterNodeGroupSubscriptionConfig.fromMap((map['subscriptionConfig'] as Map).cast<String, dynamic>())).input(),
+      systemDisk: (ClusterNodeGroupSystemDisk.fromMap((map['systemDisk'] as Map).cast<String, dynamic>())).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
+      withPublicIp: map['withPublicIp'] == null ? null : (map['withPublicIp'] as bool).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'postgre_sql_connection_info_response.dart';
 
 /// Input for the task that gets the list of tables for a provided list of PostgreSQL databases.
 class GetUserTablesPostgreSqlTaskInputResponse {
   /// Information for connecting to PostgreSQL source
-  final PostgreSqlConnectionInfoResponse connectionInfo;
+  final pulumi.Input<PostgreSqlConnectionInfoResponse> connectionInfo;
   /// List of PostgreSQL databases for which to collect tables
-  final List<String> selectedDatabases;
+  final pulumi.Input<List<String>> selectedDatabases;
 
   /// Creates a new [GetUserTablesPostgreSqlTaskInputResponse].
   /// [connectionInfo] Information for connecting to PostgreSQL source
@@ -19,15 +20,15 @@ class GetUserTablesPostgreSqlTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionInfo': connectionInfo.toMap(),
+      'connectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfoResponse, Map<String, dynamic>>(connectionInfo, (value) => value.toMap()),
       'selectedDatabases': selectedDatabases,
     };
   }
 
   factory GetUserTablesPostgreSqlTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return GetUserTablesPostgreSqlTaskInputResponse(
-      connectionInfo: PostgreSqlConnectionInfoResponse.fromMap((map['connectionInfo'] as Map).cast<String, dynamic>()),
-      selectedDatabases: (map['selectedDatabases'] as List).cast<String>(),
+      connectionInfo: (PostgreSqlConnectionInfoResponse.fromMap((map['connectionInfo'] as Map).cast<String, dynamic>())).input(),
+      selectedDatabases: ((map['selectedDatabases'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIpv6EgressRulesRule {
   /// The description of the egress-only rule.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Ipv6 Egress Rule. The value formats as `<ipv6_gateway_id>:<ipv6_egress_rule_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the instance to which the egress-only rule is applied.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The type of the instance to which the egress-only rule is applied.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The first ID of the resource.
-  final String ipv6EgressRuleId;
+  final pulumi.Input<String> ipv6EgressRuleId;
   /// The name of the resource.
-  final String ipv6EgressRuleName;
+  final pulumi.Input<String> ipv6EgressRuleName;
   /// The ID of the IPv6 gateway.
-  final String ipv6GatewayId;
+  final pulumi.Input<String> ipv6GatewayId;
   /// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetIpv6EgressRulesRule].
   /// [description] The description of the egress-only rule.
@@ -54,14 +55,14 @@ class GetIpv6EgressRulesRule {
 
   factory GetIpv6EgressRulesRule.fromMap(Map<String, dynamic> map) {
     return GetIpv6EgressRulesRule(
-      description: map['description'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceType: map['instanceType'] as String,
-      ipv6EgressRuleId: map['ipv6EgressRuleId'] as String,
-      ipv6EgressRuleName: map['ipv6EgressRuleName'] as String,
-      ipv6GatewayId: map['ipv6GatewayId'] as String,
-      status: map['status'] as String,
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      ipv6EgressRuleId: (map['ipv6EgressRuleId'] as String).input(),
+      ipv6EgressRuleName: (map['ipv6EgressRuleName'] as String).input(),
+      ipv6GatewayId: (map['ipv6GatewayId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

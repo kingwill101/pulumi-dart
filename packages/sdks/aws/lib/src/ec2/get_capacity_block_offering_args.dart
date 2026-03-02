@@ -28,19 +28,13 @@ class GetCapacityBlockOfferingArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [startDateRange] The date and time at which the Capacity Block Reservation starts. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   GetCapacityBlockOfferingArgs({
-    required pulumi.Output<int> capacityDurationHours,
-    pulumi.Output<String>? endDateRange,
-    required pulumi.Output<int> instanceCount,
-    required pulumi.Output<String> instanceType,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? startDateRange,
-  }) :
-      capacityDurationHours = pulumi.Input.asInput<int>(capacityDurationHours),
-      endDateRange = pulumi.Input.asOptionalInput<String>(endDateRange),
-      instanceCount = pulumi.Input.asInput<int>(instanceCount),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      startDateRange = pulumi.Input.asOptionalInput<String>(startDateRange);
+    required this.capacityDurationHours,
+    this.endDateRange,
+    required this.instanceCount,
+    required this.instanceType,
+    this.region,
+    this.startDateRange,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetCapacityBlockOfferingArgs {
 
   factory GetCapacityBlockOfferingArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityBlockOfferingArgs(
-      capacityDurationHours: pulumi.Output.create<int>(map['capacityDurationHours'] as int),
-      endDateRange: map['endDateRange'] == null ? null : pulumi.Output.create<String>(map['endDateRange'] as String),
-      instanceCount: pulumi.Output.create<int>(map['instanceCount'] as int),
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      startDateRange: map['startDateRange'] == null ? null : pulumi.Output.create<String>(map['startDateRange'] as String),
+      capacityDurationHours: (map['capacityDurationHours'] as int).input(),
+      endDateRange: map['endDateRange'] == null ? null : (map['endDateRange'] as String).input(),
+      instanceCount: (map['instanceCount'] as int).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      startDateRange: map['startDateRange'] == null ? null : (map['startDateRange'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_reasoning_engine_spec_source_code_spec_inline_source.dart';
 import 'ai_reasoning_engine_spec_source_code_spec_python_spec.dart';
 
 class AiReasoningEngineSpecSourceCodeSpec {
   /// Source code is provided directly in the request.
   /// Structure is documented below.
-  final AiReasoningEngineSpecSourceCodeSpecInlineSource? inlineSource;
+  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecInlineSource>? inlineSource;
   /// Specification for running a Python application from source.
   /// Structure is documented below.
-  final AiReasoningEngineSpecSourceCodeSpecPythonSpec? pythonSpec;
+  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecPythonSpec>? pythonSpec;
 
   /// Creates a new [AiReasoningEngineSpecSourceCodeSpec].
   /// [inlineSource] Source code is provided directly in the request.
@@ -21,15 +22,15 @@ class AiReasoningEngineSpecSourceCodeSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inlineSource': ?inlineSource == null ? null : inlineSource!.toMap(),
-      'pythonSpec': ?pythonSpec == null ? null : pythonSpec!.toMap(),
+      'inlineSource': ?pulumi.Input.mapOptionalInputValue<AiReasoningEngineSpecSourceCodeSpecInlineSource, Map<String, dynamic>>(inlineSource, (value) => value.toMap()),
+      'pythonSpec': ?pulumi.Input.mapOptionalInputValue<AiReasoningEngineSpecSourceCodeSpecPythonSpec, Map<String, dynamic>>(pythonSpec, (value) => value.toMap()),
     };
   }
 
   factory AiReasoningEngineSpecSourceCodeSpec.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecSourceCodeSpec(
-      inlineSource: map['inlineSource'] == null ? null : AiReasoningEngineSpecSourceCodeSpecInlineSource.fromMap((map['inlineSource'] as Map).cast<String, dynamic>()),
-      pythonSpec: map['pythonSpec'] == null ? null : AiReasoningEngineSpecSourceCodeSpecPythonSpec.fromMap((map['pythonSpec'] as Map).cast<String, dynamic>()),
+      inlineSource: map['inlineSource'] == null ? null : (AiReasoningEngineSpecSourceCodeSpecInlineSource.fromMap((map['inlineSource'] as Map).cast<String, dynamic>())).input(),
+      pythonSpec: map['pythonSpec'] == null ? null : (AiReasoningEngineSpecSourceCodeSpecPythonSpec.fromMap((map['pythonSpec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

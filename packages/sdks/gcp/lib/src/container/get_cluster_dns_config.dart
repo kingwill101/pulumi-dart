@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterDnsConfig {
   /// Enable additive VPC scope DNS in a GKE cluster.
-  final String additiveVpcScopeDnsDomain;
+  final pulumi.Input<String> additiveVpcScopeDnsDomain;
   /// Which in-cluster DNS provider should be used.
-  final String clusterDns;
+  final pulumi.Input<String> clusterDns;
   /// The suffix used for all cluster service records.
-  final String clusterDnsDomain;
+  final pulumi.Input<String> clusterDnsDomain;
   /// The scope of access to cluster DNS records.
-  final String clusterDnsScope;
+  final pulumi.Input<String> clusterDnsScope;
 
   /// Creates a new [GetClusterDnsConfig].
   /// [additiveVpcScopeDnsDomain] Enable additive VPC scope DNS in a GKE cluster.
@@ -34,10 +35,10 @@ class GetClusterDnsConfig {
 
   factory GetClusterDnsConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterDnsConfig(
-      additiveVpcScopeDnsDomain: map['additiveVpcScopeDnsDomain'] as String,
-      clusterDns: map['clusterDns'] as String,
-      clusterDnsDomain: map['clusterDnsDomain'] as String,
-      clusterDnsScope: map['clusterDnsScope'] as String,
+      additiveVpcScopeDnsDomain: (map['additiveVpcScopeDnsDomain'] as String).input(),
+      clusterDns: (map['clusterDns'] as String).input(),
+      clusterDnsDomain: (map['clusterDnsDomain'] as String).input(),
+      clusterDnsScope: (map['clusterDnsScope'] as String).input(),
     );
   }
 }

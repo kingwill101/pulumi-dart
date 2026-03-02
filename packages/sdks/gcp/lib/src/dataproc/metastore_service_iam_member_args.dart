@@ -46,19 +46,13 @@ class MetastoreServiceIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
   MetastoreServiceIamMemberArgs({
-    pulumi.Output<MetastoreServiceIamMemberCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> serviceId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<MetastoreServiceIamMemberCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    this.condition,
+    this.location,
+    required this.member,
+    this.project,
+    required this.role,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,12 +67,12 @@ class MetastoreServiceIamMemberArgs {
 
   factory MetastoreServiceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<MetastoreServiceIamMemberCondition>(MetastoreServiceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      condition: map['condition'] == null ? null : (MetastoreServiceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

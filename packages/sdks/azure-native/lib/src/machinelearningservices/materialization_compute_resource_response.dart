@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DTO object representing compute resource
 class MaterializationComputeResourceResponse {
   /// Specifies the instance type
-  final String? instanceType;
+  final pulumi.Input<String>? instanceType;
 
   /// Creates a new [MaterializationComputeResourceResponse].
   /// [instanceType] Specifies the instance type
@@ -20,7 +21,7 @@ class MaterializationComputeResourceResponse {
 
   factory MaterializationComputeResourceResponse.fromMap(Map<String, dynamic> map) {
     return MaterializationComputeResourceResponse(
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceDataSyncS3Destination {
   /// Name of S3 bucket where the aggregated data is stored.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// ARN of an encryption key for a destination in Amazon S3.
-  final String? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
   /// Prefix for the bucket.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// Region with the bucket targeted by the Resource Data Sync.
-  final String region;
+  final pulumi.Input<String> region;
   /// A supported sync format. Only JsonSerDe is currently supported. Defaults to JsonSerDe.
-  final String? syncFormat;
+  final pulumi.Input<String>? syncFormat;
 
   /// Creates a new [ResourceDataSyncS3Destination].
   /// [bucketName] Name of S3 bucket where the aggregated data is stored.
@@ -39,11 +40,11 @@ class ResourceDataSyncS3Destination {
 
   factory ResourceDataSyncS3Destination.fromMap(Map<String, dynamic> map) {
     return ResourceDataSyncS3Destination(
-      bucketName: map['bucketName'] as String,
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      region: map['region'] as String,
-      syncFormat: map['syncFormat'] == null ? null : map['syncFormat'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      region: (map['region'] as String).input(),
+      syncFormat: map['syncFormat'] == null ? null : (map['syncFormat'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class SnmpArgs {
   /// [sysContact] Specifies the contact information for the system administrator.
   /// [sysLocation] Describes the system's physical location.
   SnmpArgs({
-    pulumi.Output<List<String>>? allowedaddresses,
-    pulumi.Output<String>? sysContact,
-    pulumi.Output<String>? sysLocation,
-  }) :
-      allowedaddresses = pulumi.Input.asOptionalInput<List<String>>(allowedaddresses),
-      sysContact = pulumi.Input.asOptionalInput<String>(sysContact),
-      sysLocation = pulumi.Input.asOptionalInput<String>(sysLocation);
+    this.allowedaddresses,
+    this.sysContact,
+    this.sysLocation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SnmpArgs {
 
   factory SnmpArgs.fromMap(Map<String, dynamic> map) {
     return SnmpArgs(
-      allowedaddresses: map['allowedaddresses'] == null ? null : pulumi.Output.create<List<String>>((map['allowedaddresses'] as List).cast<String>()),
-      sysContact: map['sysContact'] == null ? null : pulumi.Output.create<String>(map['sysContact'] as String),
-      sysLocation: map['sysLocation'] == null ? null : pulumi.Output.create<String>(map['sysLocation'] as String),
+      allowedaddresses: map['allowedaddresses'] == null ? null : ((map['allowedaddresses'] as List).cast<String>()).input(),
+      sysContact: map['sysContact'] == null ? null : (map['sysContact'] as String).input(),
+      sysLocation: map['sysLocation'] == null ? null : (map['sysLocation'] as String).input(),
     );
   }
 }

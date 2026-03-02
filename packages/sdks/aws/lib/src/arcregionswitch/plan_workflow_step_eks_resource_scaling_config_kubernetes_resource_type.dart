@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType {
   /// Kubernetes API version.
-  final String apiVersion;
+  final pulumi.Input<String> apiVersion;
   /// Kubernetes resource kind.
-  final String kind;
+  final pulumi.Input<String> kind;
 
   /// Creates a new [PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType].
   /// [apiVersion] Kubernetes API version.
@@ -24,8 +25,8 @@ class PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType {
 
   factory PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType(
-      apiVersion: map['apiVersion'] as String,
-      kind: map['kind'] as String,
+      apiVersion: (map['apiVersion'] as String).input(),
+      kind: (map['kind'] as String).input(),
     );
   }
 }

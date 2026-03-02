@@ -31,21 +31,14 @@ class ConnectPeerArgs {
   /// [transitGatewayAddress] The IP address assigned to Transit Gateway, which will be used as tunnel endpoint. This address must be from associated Transit Gateway CIDR block. The address must be from the same address family as `peer_address`. If not set explicitly, it will be selected from associated Transit Gateway CIDR blocks
   /// [transitGatewayAttachmentId] The Transit Gateway Connect
   ConnectPeerArgs({
-    pulumi.Output<String>? bgpAsn,
-    required pulumi.Output<List<String>> insideCidrBlocks,
-    required pulumi.Output<String> peerAddress,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitGatewayAddress,
-    required pulumi.Output<String> transitGatewayAttachmentId,
-  }) :
-      bgpAsn = pulumi.Input.asOptionalInput<String>(bgpAsn),
-      insideCidrBlocks = pulumi.Input.asInput<List<String>>(insideCidrBlocks),
-      peerAddress = pulumi.Input.asInput<String>(peerAddress),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayAddress = pulumi.Input.asOptionalInput<String>(transitGatewayAddress),
-      transitGatewayAttachmentId = pulumi.Input.asInput<String>(transitGatewayAttachmentId);
+    this.bgpAsn,
+    required this.insideCidrBlocks,
+    required this.peerAddress,
+    this.region,
+    this.tags,
+    this.transitGatewayAddress,
+    required this.transitGatewayAttachmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ConnectPeerArgs {
 
   factory ConnectPeerArgs.fromMap(Map<String, dynamic> map) {
     return ConnectPeerArgs(
-      bgpAsn: map['bgpAsn'] == null ? null : pulumi.Output.create<String>(map['bgpAsn'] as String),
-      insideCidrBlocks: pulumi.Output.create<List<String>>((map['insideCidrBlocks'] as List).cast<String>()),
-      peerAddress: pulumi.Output.create<String>(map['peerAddress'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayAddress: map['transitGatewayAddress'] == null ? null : pulumi.Output.create<String>(map['transitGatewayAddress'] as String),
-      transitGatewayAttachmentId: pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
+      bgpAsn: map['bgpAsn'] == null ? null : (map['bgpAsn'] as String).input(),
+      insideCidrBlocks: ((map['insideCidrBlocks'] as List).cast<String>()).input(),
+      peerAddress: (map['peerAddress'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayAddress: map['transitGatewayAddress'] == null ? null : (map['transitGatewayAddress'] as String).input(),
+      transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
     );
   }
 }

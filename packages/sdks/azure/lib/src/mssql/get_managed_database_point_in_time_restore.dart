@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetManagedDatabasePointInTimeRestore {
   /// The point in time for the restore from `source_database_id`.
-  final String restorePointInTime;
+  final pulumi.Input<String> restorePointInTime;
   /// The source database ID that is used to restore from.
-  final String sourceDatabaseId;
+  final pulumi.Input<String> sourceDatabaseId;
 
   /// Creates a new [GetManagedDatabasePointInTimeRestore].
   /// [restorePointInTime] The point in time for the restore from `source_database_id`.
@@ -24,8 +25,8 @@ class GetManagedDatabasePointInTimeRestore {
 
   factory GetManagedDatabasePointInTimeRestore.fromMap(Map<String, dynamic> map) {
     return GetManagedDatabasePointInTimeRestore(
-      restorePointInTime: map['restorePointInTime'] as String,
-      sourceDatabaseId: map['sourceDatabaseId'] as String,
+      restorePointInTime: (map['restorePointInTime'] as String).input(),
+      sourceDatabaseId: (map['sourceDatabaseId'] as String).input(),
     );
   }
 }

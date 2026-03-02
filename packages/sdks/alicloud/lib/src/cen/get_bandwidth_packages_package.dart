@@ -1,50 +1,51 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBandwidthPackagesPackage {
   /// The bandwidth in Mbps of the CEN bandwidth package.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// The billing method, including `POSTPAY` and `PREPAY`.
-  final String bandwidthPackageChargeType;
+  final pulumi.Input<String> bandwidthPackageChargeType;
   /// Status of the CEN Bandwidth Package, including `Normal`, `FinancialLocked` and `SecurityLocked`.
-  final String businessStatus;
+  final pulumi.Input<String> businessStatus;
   /// The ID of the bandwidth package.
-  final String cenBandwidthPackageId;
+  final pulumi.Input<String> cenBandwidthPackageId;
   /// The name of the bandwidth package.
-  final String cenBandwidthPackageName;
+  final pulumi.Input<String> cenBandwidthPackageName;
   /// The list of CEN instances that are associated with the bandwidth package.
-  final List<String> cenIds;
+  final pulumi.Input<List<String>> cenIds;
   /// Description of the CEN Bandwidth Package.
-  final String description;
-  final String expiredTime;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> expiredTime;
   /// Region ID of the interconnected regions.
-  final String geographicRegionAId;
+  final pulumi.Input<String> geographicRegionAId;
   /// Region ID of the interconnected regions.
-  final String geographicRegionBId;
+  final pulumi.Input<String> geographicRegionBId;
   /// The area ID of the cross-area connection.
-  final String geographicSpanId;
+  final pulumi.Input<String> geographicSpanId;
   /// Indicates whether renewal data is involved.
-  final String hasReservationData;
+  final pulumi.Input<String> hasReservationData;
   /// ID of the CEN Bandwidth Package.
-  final String id;
+  final pulumi.Input<String> id;
   /// ID of a CEN instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Indicates whether the bandwidth package is a cross-border bandwidth package.
-  final bool isCrossBorder;
+  final pulumi.Input<bool> isCrossBorder;
   /// Name of the CEN Bandwidth Package.
-  final String name;
+  final pulumi.Input<String> name;
   /// The billing method of the bandwidth package.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The expiration time of the temporary upgrade.
-  final String reservationActiveTime;
+  final pulumi.Input<String> reservationActiveTime;
   /// The restored bandwidth after the temporary upgrade.
-  final String reservationBandwidth;
+  final pulumi.Input<String> reservationBandwidth;
   /// The billing method after the configuration change.
-  final String reservationInternetChargeType;
+  final pulumi.Input<String> reservationInternetChargeType;
   /// The type of the configuration change.
-  final String reservationOrderType;
+  final pulumi.Input<String> reservationOrderType;
   /// Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBandwidthPackagesPackage].
   /// [bandwidth] The bandwidth in Mbps of the CEN bandwidth package.
@@ -123,28 +124,28 @@ class GetBandwidthPackagesPackage {
 
   factory GetBandwidthPackagesPackage.fromMap(Map<String, dynamic> map) {
     return GetBandwidthPackagesPackage(
-      bandwidth: map['bandwidth'] as int,
-      bandwidthPackageChargeType: map['bandwidthPackageChargeType'] as String,
-      businessStatus: map['businessStatus'] as String,
-      cenBandwidthPackageId: map['cenBandwidthPackageId'] as String,
-      cenBandwidthPackageName: map['cenBandwidthPackageName'] as String,
-      cenIds: (map['cenIds'] as List).cast<String>(),
-      description: map['description'] as String,
-      expiredTime: map['expiredTime'] as String,
-      geographicRegionAId: map['geographicRegionAId'] as String,
-      geographicRegionBId: map['geographicRegionBId'] as String,
-      geographicSpanId: map['geographicSpanId'] as String,
-      hasReservationData: map['hasReservationData'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      isCrossBorder: map['isCrossBorder'] as bool,
-      name: map['name'] as String,
-      paymentType: map['paymentType'] as String,
-      reservationActiveTime: map['reservationActiveTime'] as String,
-      reservationBandwidth: map['reservationBandwidth'] as String,
-      reservationInternetChargeType: map['reservationInternetChargeType'] as String,
-      reservationOrderType: map['reservationOrderType'] as String,
-      status: map['status'] as String,
+      bandwidth: (map['bandwidth'] as int).input(),
+      bandwidthPackageChargeType: (map['bandwidthPackageChargeType'] as String).input(),
+      businessStatus: (map['businessStatus'] as String).input(),
+      cenBandwidthPackageId: (map['cenBandwidthPackageId'] as String).input(),
+      cenBandwidthPackageName: (map['cenBandwidthPackageName'] as String).input(),
+      cenIds: ((map['cenIds'] as List).cast<String>()).input(),
+      description: (map['description'] as String).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      geographicRegionAId: (map['geographicRegionAId'] as String).input(),
+      geographicRegionBId: (map['geographicRegionBId'] as String).input(),
+      geographicSpanId: (map['geographicSpanId'] as String).input(),
+      hasReservationData: (map['hasReservationData'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      isCrossBorder: (map['isCrossBorder'] as bool).input(),
+      name: (map['name'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      reservationActiveTime: (map['reservationActiveTime'] as String).input(),
+      reservationBandwidth: (map['reservationBandwidth'] as String).input(),
+      reservationInternetChargeType: (map['reservationInternetChargeType'] as String).input(),
+      reservationOrderType: (map['reservationOrderType'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

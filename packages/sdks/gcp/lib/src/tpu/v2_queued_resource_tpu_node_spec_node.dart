@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_queued_resource_tpu_node_spec_node_network_config.dart';
 
 class V2QueuedResourceTpuNodeSpecNode {
   /// TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
-  final String? acceleratorType;
+  final pulumi.Input<String>? acceleratorType;
   /// Text description of the TPU.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Network configurations for the TPU node.
   /// Structure is documented below.
-  final V2QueuedResourceTpuNodeSpecNodeNetworkConfig? networkConfig;
+  final pulumi.Input<V2QueuedResourceTpuNodeSpecNodeNetworkConfig>? networkConfig;
   /// Runtime version for the TPU.
-  final String runtimeVersion;
+  final pulumi.Input<String> runtimeVersion;
 
   /// Creates a new [V2QueuedResourceTpuNodeSpecNode].
   /// [acceleratorType] TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
@@ -29,17 +30,17 @@ class V2QueuedResourceTpuNodeSpecNode {
     return <String, dynamic>{
       'acceleratorType': ?acceleratorType,
       'description': ?description,
-      'networkConfig': ?networkConfig == null ? null : networkConfig!.toMap(),
+      'networkConfig': ?pulumi.Input.mapOptionalInputValue<V2QueuedResourceTpuNodeSpecNodeNetworkConfig, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
       'runtimeVersion': runtimeVersion,
     };
   }
 
   factory V2QueuedResourceTpuNodeSpecNode.fromMap(Map<String, dynamic> map) {
     return V2QueuedResourceTpuNodeSpecNode(
-      acceleratorType: map['acceleratorType'] == null ? null : map['acceleratorType'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      networkConfig: map['networkConfig'] == null ? null : V2QueuedResourceTpuNodeSpecNodeNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>()),
-      runtimeVersion: map['runtimeVersion'] as String,
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (V2QueuedResourceTpuNodeSpecNodeNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
+      runtimeVersion: (map['runtimeVersion'] as String).input(),
     );
   }
 }

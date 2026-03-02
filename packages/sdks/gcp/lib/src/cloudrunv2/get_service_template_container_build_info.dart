@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceTemplateContainerBuildInfo {
   /// Entry point of the function when the image is a Cloud Run function.
-  final String functionTarget;
+  final pulumi.Input<String> functionTarget;
   /// Source code location of the image.
-  final String sourceLocation;
+  final pulumi.Input<String> sourceLocation;
 
   /// Creates a new [GetServiceTemplateContainerBuildInfo].
   /// [functionTarget] Entry point of the function when the image is a Cloud Run function.
@@ -24,8 +25,8 @@ class GetServiceTemplateContainerBuildInfo {
 
   factory GetServiceTemplateContainerBuildInfo.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateContainerBuildInfo(
-      functionTarget: map['functionTarget'] as String,
-      sourceLocation: map['sourceLocation'] as String,
+      functionTarget: (map['functionTarget'] as String).input(),
+      sourceLocation: (map['sourceLocation'] as String).input(),
     );
   }
 }

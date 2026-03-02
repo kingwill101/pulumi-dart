@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_build_source_repo_source.dart';
 import 'trigger_build_source_storage_source.dart';
 
 class TriggerBuildSource {
   /// Location of the source in a Google Cloud Source Repository.
   /// Structure is documented below.
-  final TriggerBuildSourceRepoSource? repoSource;
+  final pulumi.Input<TriggerBuildSourceRepoSource>? repoSource;
   /// Location of the source in an archive file in Google Cloud Storage.
   /// Structure is documented below.
-  final TriggerBuildSourceStorageSource? storageSource;
+  final pulumi.Input<TriggerBuildSourceStorageSource>? storageSource;
 
   /// Creates a new [TriggerBuildSource].
   /// [repoSource] Location of the source in a Google Cloud Source Repository.
@@ -21,15 +22,15 @@ class TriggerBuildSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'repoSource': ?repoSource == null ? null : repoSource!.toMap(),
-      'storageSource': ?storageSource == null ? null : storageSource!.toMap(),
+      'repoSource': ?pulumi.Input.mapOptionalInputValue<TriggerBuildSourceRepoSource, Map<String, dynamic>>(repoSource, (value) => value.toMap()),
+      'storageSource': ?pulumi.Input.mapOptionalInputValue<TriggerBuildSourceStorageSource, Map<String, dynamic>>(storageSource, (value) => value.toMap()),
     };
   }
 
   factory TriggerBuildSource.fromMap(Map<String, dynamic> map) {
     return TriggerBuildSource(
-      repoSource: map['repoSource'] == null ? null : TriggerBuildSourceRepoSource.fromMap((map['repoSource'] as Map).cast<String, dynamic>()),
-      storageSource: map['storageSource'] == null ? null : TriggerBuildSourceStorageSource.fromMap((map['storageSource'] as Map).cast<String, dynamic>()),
+      repoSource: map['repoSource'] == null ? null : (TriggerBuildSourceRepoSource.fromMap((map['repoSource'] as Map).cast<String, dynamic>())).input(),
+      storageSource: map['storageSource'] == null ? null : (TriggerBuildSourceStorageSource.fromMap((map['storageSource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

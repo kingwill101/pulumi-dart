@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A webhook receiver.
 class WebhookReceiverResponse {
   /// Indicates the identifier uri for aad auth.
-  final String? identifierUri;
+  final pulumi.Input<String>? identifierUri;
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
-  final String? managedIdentity;
+  final pulumi.Input<String>? managedIdentity;
   /// The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates the webhook app object Id for aad auth.
-  final String? objectId;
+  final pulumi.Input<String>? objectId;
   /// The URI where webhooks should be sent.
-  final String serviceUri;
+  final pulumi.Input<String> serviceUri;
   /// Indicates the tenant id for aad auth.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// Indicates whether or not use AAD authentication.
-  final bool? useAadAuth;
+  final pulumi.Input<bool>? useAadAuth;
   /// Indicates whether to use common alert schema.
-  final bool? useCommonAlertSchema;
+  final pulumi.Input<bool>? useCommonAlertSchema;
 
   /// Creates a new [WebhookReceiverResponse].
   /// [identifierUri] Indicates the identifier uri for aad auth.
@@ -55,14 +56,14 @@ class WebhookReceiverResponse {
 
   factory WebhookReceiverResponse.fromMap(Map<String, dynamic> map) {
     return WebhookReceiverResponse(
-      identifierUri: map['identifierUri'] == null ? null : map['identifierUri'] as String,
-      managedIdentity: map['managedIdentity'] == null ? null : map['managedIdentity'] as String,
-      name: map['name'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      serviceUri: map['serviceUri'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      useAadAuth: map['useAadAuth'] == null ? null : map['useAadAuth'] as bool,
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : map['useCommonAlertSchema'] as bool,
+      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri'] as String).input(),
+      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity'] as String).input(),
+      name: (map['name'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      serviceUri: (map['serviceUri'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      useAadAuth: map['useAadAuth'] == null ? null : (map['useAadAuth'] as bool).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
     );
   }
 }

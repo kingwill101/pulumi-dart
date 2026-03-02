@@ -19,13 +19,10 @@ class ScimServerCredentialArgs {
   /// [directoryId] The ID of the Directory.
   /// [status] The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
   ScimServerCredentialArgs({
-    pulumi.Output<String>? credentialSecretFile,
-    required pulumi.Output<String> directoryId,
-    pulumi.Output<String>? status,
-  }) :
-      credentialSecretFile = pulumi.Input.asOptionalInput<String>(credentialSecretFile),
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.credentialSecretFile,
+    required this.directoryId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ScimServerCredentialArgs {
 
   factory ScimServerCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ScimServerCredentialArgs(
-      credentialSecretFile: map['credentialSecretFile'] == null ? null : pulumi.Output.create<String>(map['credentialSecretFile'] as String),
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      credentialSecretFile: map['credentialSecretFile'] == null ? null : (map['credentialSecretFile'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceQueryKey {
   /// The value of this Query Key.
-  final String key;
+  final pulumi.Input<String> key;
   /// The Name of the Search Service.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetServiceQueryKey].
   /// [key] The value of this Query Key.
@@ -24,8 +25,8 @@ class GetServiceQueryKey {
 
   factory GetServiceQueryKey.fromMap(Map<String, dynamic> map) {
     return GetServiceQueryKey(
-      key: map['key'] as String,
-      name: map['name'] as String,
+      key: (map['key'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

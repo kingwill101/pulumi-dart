@@ -5,12 +5,12 @@ import 'entitlement_privileged_access_gcp_iam_access_role_binding.dart';
 
 class EntitlementPrivilegedAccessGcpIamAccess {
   /// Name of the resource.
-  final String resource;
+  final pulumi.Input<String> resource;
   /// The type of this resource.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// Role bindings to be created on successful grant.
   /// Structure is documented below.
-  final List<EntitlementPrivilegedAccessGcpIamAccessRoleBinding> roleBindings;
+  final pulumi.Input<List<EntitlementPrivilegedAccessGcpIamAccessRoleBinding>> roleBindings;
 
   /// Creates a new [EntitlementPrivilegedAccessGcpIamAccess].
   /// [resource] Name of the resource.
@@ -26,15 +26,15 @@ class EntitlementPrivilegedAccessGcpIamAccess {
     return <String, dynamic>{
       'resource': resource,
       'resourceType': resourceType,
-      'roleBindings': pulumi.Input.encodeList<EntitlementPrivilegedAccessGcpIamAccessRoleBinding, Map<String, dynamic>>(roleBindings, (value) => value.toMap()),
+      'roleBindings': pulumi.Input.mapInputValue<List<EntitlementPrivilegedAccessGcpIamAccessRoleBinding>, List<Map<String, dynamic>>>(roleBindings, (value) => pulumi.Input.encodeList<EntitlementPrivilegedAccessGcpIamAccessRoleBinding, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EntitlementPrivilegedAccessGcpIamAccess.fromMap(Map<String, dynamic> map) {
     return EntitlementPrivilegedAccessGcpIamAccess(
-      resource: map['resource'] as String,
-      resourceType: map['resourceType'] as String,
-      roleBindings: pulumi.Input.decodeList<EntitlementPrivilegedAccessGcpIamAccessRoleBinding>(map['roleBindings'], (value) => EntitlementPrivilegedAccessGcpIamAccessRoleBinding.fromMap((value as Map).cast<String, dynamic>())),
+      resource: (map['resource'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      roleBindings: (pulumi.Input.decodeList<EntitlementPrivilegedAccessGcpIamAccessRoleBinding>(map['roleBindings'], (value) => EntitlementPrivilegedAccessGcpIamAccessRoleBinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

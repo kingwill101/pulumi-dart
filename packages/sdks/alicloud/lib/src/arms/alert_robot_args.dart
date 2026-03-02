@@ -25,17 +25,12 @@ class AlertRobotArgs {
   /// [robotAddr] The webhook url of the robot.
   /// [robotType] The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
   AlertRobotArgs({
-    required pulumi.Output<String> alertRobotName,
-    pulumi.Output<bool>? dailyNoc,
-    pulumi.Output<String>? dailyNocTime,
-    required pulumi.Output<String> robotAddr,
-    required pulumi.Output<String> robotType,
-  }) :
-      alertRobotName = pulumi.Input.asInput<String>(alertRobotName),
-      dailyNoc = pulumi.Input.asOptionalInput<bool>(dailyNoc),
-      dailyNocTime = pulumi.Input.asOptionalInput<String>(dailyNocTime),
-      robotAddr = pulumi.Input.asInput<String>(robotAddr),
-      robotType = pulumi.Input.asInput<String>(robotType);
+    required this.alertRobotName,
+    this.dailyNoc,
+    this.dailyNocTime,
+    required this.robotAddr,
+    required this.robotType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class AlertRobotArgs {
 
   factory AlertRobotArgs.fromMap(Map<String, dynamic> map) {
     return AlertRobotArgs(
-      alertRobotName: pulumi.Output.create<String>(map['alertRobotName'] as String),
-      dailyNoc: map['dailyNoc'] == null ? null : pulumi.Output.create<bool>(map['dailyNoc'] as bool),
-      dailyNocTime: map['dailyNocTime'] == null ? null : pulumi.Output.create<String>(map['dailyNocTime'] as String),
-      robotAddr: pulumi.Output.create<String>(map['robotAddr'] as String),
-      robotType: pulumi.Output.create<String>(map['robotType'] as String),
+      alertRobotName: (map['alertRobotName'] as String).input(),
+      dailyNoc: map['dailyNoc'] == null ? null : (map['dailyNoc'] as bool).input(),
+      dailyNocTime: map['dailyNocTime'] == null ? null : (map['dailyNocTime'] as String).input(),
+      robotAddr: (map['robotAddr'] as String).input(),
+      robotType: (map['robotType'] as String).input(),
     );
   }
 }

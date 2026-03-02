@@ -25,17 +25,12 @@ class OriginAccessControlArgs {
   /// [signingBehavior] Specifies which requests CloudFront signs. Specify `always` for the most common use case. Allowed values: `always`, `never`, and `no-override`.
   /// [signingProtocol] Determines how CloudFront signs (authenticates) requests. The only valid value is `sigv4`.
   OriginAccessControlArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> originAccessControlOriginType,
-    required pulumi.Output<String> signingBehavior,
-    required pulumi.Output<String> signingProtocol,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      originAccessControlOriginType = pulumi.Input.asInput<String>(originAccessControlOriginType),
-      signingBehavior = pulumi.Input.asInput<String>(signingBehavior),
-      signingProtocol = pulumi.Input.asInput<String>(signingProtocol);
+    this.description,
+    this.name,
+    required this.originAccessControlOriginType,
+    required this.signingBehavior,
+    required this.signingProtocol,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class OriginAccessControlArgs {
 
   factory OriginAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return OriginAccessControlArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      originAccessControlOriginType: pulumi.Output.create<String>(map['originAccessControlOriginType'] as String),
-      signingBehavior: pulumi.Output.create<String>(map['signingBehavior'] as String),
-      signingProtocol: pulumi.Output.create<String>(map['signingProtocol'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      originAccessControlOriginType: (map['originAccessControlOriginType'] as String).input(),
+      signingBehavior: (map['signingBehavior'] as String).input(),
+      signingProtocol: (map['signingProtocol'] as String).input(),
     );
   }
 }

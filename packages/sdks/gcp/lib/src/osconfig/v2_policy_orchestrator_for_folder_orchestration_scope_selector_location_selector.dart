@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector {
   /// Names of the locations in scope.
   /// Format: `us-central1-a`
-  final List<String>? includedLocations;
+  final pulumi.Input<List<String>>? includedLocations;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector].
   /// [includedLocations] Names of the locations in scope.
@@ -20,7 +21,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector {
 
   factory V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector(
-      includedLocations: map['includedLocations'] == null ? null : (map['includedLocations'] as List).cast<String>(),
+      includedLocations: map['includedLocations'] == null ? null : ((map['includedLocations'] as List).cast<String>()).input(),
     );
   }
 }

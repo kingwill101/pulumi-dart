@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Plan details of the monitor resource.
 class PlanDetails {
   /// Offer ID of the plan
-  final String? offerID;
+  final pulumi.Input<String>? offerID;
   /// Plan ID
-  final String? planID;
+  final pulumi.Input<String>? planID;
   /// Plan Name
-  final String? planName;
+  final pulumi.Input<String>? planName;
   /// Publisher ID of the plan
-  final String? publisherID;
+  final pulumi.Input<String>? publisherID;
   /// Term ID of the plan
-  final String? termID;
+  final pulumi.Input<String>? termID;
 
   /// Creates a new [PlanDetails].
   /// [offerID] Offer ID of the plan
@@ -40,11 +41,11 @@ class PlanDetails {
 
   factory PlanDetails.fromMap(Map<String, dynamic> map) {
     return PlanDetails(
-      offerID: map['offerID'] == null ? null : map['offerID'] as String,
-      planID: map['planID'] == null ? null : map['planID'] as String,
-      planName: map['planName'] == null ? null : map['planName'] as String,
-      publisherID: map['publisherID'] == null ? null : map['publisherID'] as String,
-      termID: map['termID'] == null ? null : map['termID'] as String,
+      offerID: map['offerID'] == null ? null : (map['offerID'] as String).input(),
+      planID: map['planID'] == null ? null : (map['planID'] as String).input(),
+      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
+      publisherID: map['publisherID'] == null ? null : (map['publisherID'] as String).input(),
+      termID: map['termID'] == null ? null : (map['termID'] as String).input(),
     );
   }
 }

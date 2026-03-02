@@ -8,13 +8,13 @@ import 'get_pool_mount_nfs_mount.dart';
 
 class GetPoolMount {
   /// A `azure_blob_file_system` block defined as below.
-  final List<GetPoolMountAzureBlobFileSystem>? azureBlobFileSystems;
+  final pulumi.Input<List<GetPoolMountAzureBlobFileSystem>>? azureBlobFileSystems;
   /// A `azure_file_share` block defined as below.
-  final List<GetPoolMountAzureFileShare>? azureFileShares;
+  final pulumi.Input<List<GetPoolMountAzureFileShare>>? azureFileShares;
   /// A `cifs_mount` block defined as below.
-  final List<GetPoolMountCifsMount> cifsMounts;
+  final pulumi.Input<List<GetPoolMountCifsMount>> cifsMounts;
   /// A `nfs_mount` block defined as below.
-  final List<GetPoolMountNfsMount> nfsMounts;
+  final pulumi.Input<List<GetPoolMountNfsMount>> nfsMounts;
 
   /// Creates a new [GetPoolMount].
   /// [azureBlobFileSystems] A `azure_blob_file_system` block defined as below.
@@ -30,19 +30,19 @@ class GetPoolMount {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureBlobFileSystems': ?azureBlobFileSystems == null ? null : pulumi.Input.encodeList<GetPoolMountAzureBlobFileSystem, Map<String, dynamic>>(azureBlobFileSystems!, (value) => value.toMap()),
-      'azureFileShares': ?azureFileShares == null ? null : pulumi.Input.encodeList<GetPoolMountAzureFileShare, Map<String, dynamic>>(azureFileShares!, (value) => value.toMap()),
-      'cifsMounts': pulumi.Input.encodeList<GetPoolMountCifsMount, Map<String, dynamic>>(cifsMounts, (value) => value.toMap()),
-      'nfsMounts': pulumi.Input.encodeList<GetPoolMountNfsMount, Map<String, dynamic>>(nfsMounts, (value) => value.toMap()),
+      'azureBlobFileSystems': ?pulumi.Input.mapOptionalInputValue<List<GetPoolMountAzureBlobFileSystem>, List<Map<String, dynamic>>>(azureBlobFileSystems, (value) => pulumi.Input.encodeList<GetPoolMountAzureBlobFileSystem, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'azureFileShares': ?pulumi.Input.mapOptionalInputValue<List<GetPoolMountAzureFileShare>, List<Map<String, dynamic>>>(azureFileShares, (value) => pulumi.Input.encodeList<GetPoolMountAzureFileShare, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cifsMounts': pulumi.Input.mapInputValue<List<GetPoolMountCifsMount>, List<Map<String, dynamic>>>(cifsMounts, (value) => pulumi.Input.encodeList<GetPoolMountCifsMount, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nfsMounts': pulumi.Input.mapInputValue<List<GetPoolMountNfsMount>, List<Map<String, dynamic>>>(nfsMounts, (value) => pulumi.Input.encodeList<GetPoolMountNfsMount, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetPoolMount.fromMap(Map<String, dynamic> map) {
     return GetPoolMount(
-      azureBlobFileSystems: map['azureBlobFileSystems'] == null ? null : pulumi.Input.decodeList<GetPoolMountAzureBlobFileSystem>(map['azureBlobFileSystems'], (value) => GetPoolMountAzureBlobFileSystem.fromMap((value as Map).cast<String, dynamic>())),
-      azureFileShares: map['azureFileShares'] == null ? null : pulumi.Input.decodeList<GetPoolMountAzureFileShare>(map['azureFileShares'], (value) => GetPoolMountAzureFileShare.fromMap((value as Map).cast<String, dynamic>())),
-      cifsMounts: pulumi.Input.decodeList<GetPoolMountCifsMount>(map['cifsMounts'], (value) => GetPoolMountCifsMount.fromMap((value as Map).cast<String, dynamic>())),
-      nfsMounts: pulumi.Input.decodeList<GetPoolMountNfsMount>(map['nfsMounts'], (value) => GetPoolMountNfsMount.fromMap((value as Map).cast<String, dynamic>())),
+      azureBlobFileSystems: map['azureBlobFileSystems'] == null ? null : (pulumi.Input.decodeList<GetPoolMountAzureBlobFileSystem>(map['azureBlobFileSystems'], (value) => GetPoolMountAzureBlobFileSystem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureFileShares: map['azureFileShares'] == null ? null : (pulumi.Input.decodeList<GetPoolMountAzureFileShare>(map['azureFileShares'], (value) => GetPoolMountAzureFileShare.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cifsMounts: (pulumi.Input.decodeList<GetPoolMountCifsMount>(map['cifsMounts'], (value) => GetPoolMountCifsMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nfsMounts: (pulumi.Input.decodeList<GetPoolMountNfsMount>(map['nfsMounts'], (value) => GetPoolMountNfsMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

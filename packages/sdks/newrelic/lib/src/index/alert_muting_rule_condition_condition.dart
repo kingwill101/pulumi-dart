@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertMutingRuleConditionCondition {
   /// The attribute on an incident.
-  final String attribute;
+  final pulumi.Input<String> attribute;
   /// The operator used to compare the attribute's value with the supplied value(s).
-  final String operator;
+  final pulumi.Input<String> operator;
   /// The value(s) to compare against the attribute's value.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [AlertMutingRuleConditionCondition].
   /// [attribute] The attribute on an incident.
@@ -29,9 +30,9 @@ class AlertMutingRuleConditionCondition {
 
   factory AlertMutingRuleConditionCondition.fromMap(Map<String, dynamic> map) {
     return AlertMutingRuleConditionCondition(
-      attribute: map['attribute'] as String,
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      attribute: (map['attribute'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

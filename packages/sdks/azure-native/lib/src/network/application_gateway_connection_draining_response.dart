@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Connection draining allows open connections to a backend server to be active for a specified time after the backend server got removed from the configuration.
 class ApplicationGatewayConnectionDrainingResponse {
   /// The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.
-  final int drainTimeoutInSec;
+  final pulumi.Input<int> drainTimeoutInSec;
   /// Whether connection draining is enabled or not.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ApplicationGatewayConnectionDrainingResponse].
   /// [drainTimeoutInSec] The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.
@@ -25,8 +26,8 @@ class ApplicationGatewayConnectionDrainingResponse {
 
   factory ApplicationGatewayConnectionDrainingResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayConnectionDrainingResponse(
-      drainTimeoutInSec: map['drainTimeoutInSec'] as int,
-      enabled: map['enabled'] as bool,
+      drainTimeoutInSec: (map['drainTimeoutInSec'] as int).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

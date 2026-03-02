@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceElasticsearchConfig {
   /// HTTP endpoint of the Elasticsearch domain.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// AWS region of Elasticsearch domain. Defaults to current region.
-  final String? region;
+  final pulumi.Input<String>? region;
 
   /// Creates a new [DataSourceElasticsearchConfig].
   /// [endpoint] HTTP endpoint of the Elasticsearch domain.
@@ -24,8 +25,8 @@ class DataSourceElasticsearchConfig {
 
   factory DataSourceElasticsearchConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceElasticsearchConfig(
-      endpoint: map['endpoint'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      endpoint: (map['endpoint'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

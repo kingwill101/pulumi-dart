@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDbInstancePlansPlanPlanConfigScaleIn {
   /// The executed time of the Plan.
-  final String executeTime;
+  final pulumi.Input<String> executeTime;
   /// The Cron Time of the plan.
-  final String planCronTime;
+  final pulumi.Input<String> planCronTime;
   /// The Status of the plan Task.
-  final String planTaskStatus;
+  final pulumi.Input<String> planTaskStatus;
   /// The segment Node Num of the Plan.
-  final String segmentNodeNum;
+  final pulumi.Input<String> segmentNodeNum;
 
   /// Creates a new [GetDbInstancePlansPlanPlanConfigScaleIn].
   /// [executeTime] The executed time of the Plan.
@@ -34,10 +35,10 @@ class GetDbInstancePlansPlanPlanConfigScaleIn {
 
   factory GetDbInstancePlansPlanPlanConfigScaleIn.fromMap(Map<String, dynamic> map) {
     return GetDbInstancePlansPlanPlanConfigScaleIn(
-      executeTime: map['executeTime'] as String,
-      planCronTime: map['planCronTime'] as String,
-      planTaskStatus: map['planTaskStatus'] as String,
-      segmentNodeNum: map['segmentNodeNum'] as String,
+      executeTime: (map['executeTime'] as String).input(),
+      planCronTime: (map['planCronTime'] as String).input(),
+      planTaskStatus: (map['planTaskStatus'] as String).input(),
+      segmentNodeNum: (map['segmentNodeNum'] as String).input(),
     );
   }
 }

@@ -18,11 +18,9 @@ class GetManagementGroupArgs {
   /// [displayName] Specifies the display name of this Management Group.
   /// [name] Specifies the name or UUID of this Management Group.
   GetManagementGroupArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.displayName,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetManagementGroupArgs {
 
   factory GetManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementGroupArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

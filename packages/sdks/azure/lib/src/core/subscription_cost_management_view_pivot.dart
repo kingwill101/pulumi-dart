@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriptionCostManagementViewPivot {
   /// The name of the column which should be used for this sub-view in the Cost Analysis UI.
-  final String name;
+  final pulumi.Input<String> name;
   /// The data type to show in this sub-view. Possible values are `Dimension` and `TagKey`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SubscriptionCostManagementViewPivot].
   /// [name] The name of the column which should be used for this sub-view in the Cost Analysis UI.
@@ -24,8 +25,8 @@ class SubscriptionCostManagementViewPivot {
 
   factory SubscriptionCostManagementViewPivot.fromMap(Map<String, dynamic> map) {
     return SubscriptionCostManagementViewPivot(
-      name: map['name'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

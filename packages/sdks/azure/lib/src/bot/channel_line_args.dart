@@ -23,15 +23,11 @@ class ChannelLineArgs {
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group where the Line Channel should be created. Changing this forces a new resource to be created.
   ChannelLineArgs({
-    required pulumi.Output<String> botName,
-    required pulumi.Output<List<ChannelLineLineChannel>> lineChannels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      botName = pulumi.Input.asInput<String>(botName),
-      lineChannels = pulumi.Input.asInput<List<ChannelLineLineChannel>>(lineChannels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.botName,
+    required this.lineChannels,
+    this.location,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ChannelLineArgs {
 
   factory ChannelLineArgs.fromMap(Map<String, dynamic> map) {
     return ChannelLineArgs(
-      botName: pulumi.Output.create<String>(map['botName'] as String),
-      lineChannels: pulumi.Output.create<List<ChannelLineLineChannel>>(pulumi.Input.decodeList<ChannelLineLineChannel>(map['lineChannels'], (value) => ChannelLineLineChannel.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      botName: (map['botName'] as String).input(),
+      lineChannels: (pulumi.Input.decodeList<ChannelLineLineChannel>(map['lineChannels'], (value) => ChannelLineLineChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

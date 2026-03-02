@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigLowerCaseString {
   /// Specifies the keys of the fields to convert to lowercase.
-  final List<String> withKeys;
+  final pulumi.Input<List<String>> withKeys;
 
   /// Creates a new [LogTransformerTransformerConfigLowerCaseString].
   /// [withKeys] Specifies the keys of the fields to convert to lowercase.
@@ -19,7 +20,7 @@ class LogTransformerTransformerConfigLowerCaseString {
 
   factory LogTransformerTransformerConfigLowerCaseString.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigLowerCaseString(
-      withKeys: (map['withKeys'] as List).cast<String>(),
+      withKeys: ((map['withKeys'] as List).cast<String>()).input(),
     );
   }
 }

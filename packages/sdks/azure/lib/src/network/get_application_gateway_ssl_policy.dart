@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationGatewaySslPolicy {
   /// A List of accepted cipher suites.
-  final List<String> cipherSuites;
+  final pulumi.Input<List<String>> cipherSuites;
   /// A list of SSL Protocols which are disabled on this Application Gateway.
-  final List<String> disabledProtocols;
+  final pulumi.Input<List<String>> disabledProtocols;
   /// The minimum TLS version.
-  final String minProtocolVersion;
+  final pulumi.Input<String> minProtocolVersion;
   /// The Name of the Policy.
-  final String policyName;
+  final pulumi.Input<String> policyName;
   /// The Type of the Policy.
-  final String policyType;
+  final pulumi.Input<String> policyType;
 
   /// Creates a new [GetApplicationGatewaySslPolicy].
   /// [cipherSuites] A List of accepted cipher suites.
@@ -39,11 +40,11 @@ class GetApplicationGatewaySslPolicy {
 
   factory GetApplicationGatewaySslPolicy.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewaySslPolicy(
-      cipherSuites: (map['cipherSuites'] as List).cast<String>(),
-      disabledProtocols: (map['disabledProtocols'] as List).cast<String>(),
-      minProtocolVersion: map['minProtocolVersion'] as String,
-      policyName: map['policyName'] as String,
-      policyType: map['policyType'] as String,
+      cipherSuites: ((map['cipherSuites'] as List).cast<String>()).input(),
+      disabledProtocols: ((map['disabledProtocols'] as List).cast<String>()).input(),
+      minProtocolVersion: (map['minProtocolVersion'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      policyType: (map['policyType'] as String).input(),
     );
   }
 }

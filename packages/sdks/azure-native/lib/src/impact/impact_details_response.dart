@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// details of of the impact for which insight has been generated.
 class ImpactDetailsResponse {
   /// Time at which impact was ended according to reported impact.
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// Azure Id of the impact.
-  final String impactId;
+  final pulumi.Input<String> impactId;
   /// List of impacted Azure resources.
-  final String impactedResourceId;
+  final pulumi.Input<String> impactedResourceId;
   /// Time at which impact was started according to reported impact.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [ImpactDetailsResponse].
   /// [endTime] Time at which impact was ended according to reported impact.
@@ -35,10 +36,10 @@ class ImpactDetailsResponse {
 
   factory ImpactDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ImpactDetailsResponse(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      impactId: map['impactId'] as String,
-      impactedResourceId: map['impactedResourceId'] as String,
-      startTime: map['startTime'] as String,
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      impactId: (map['impactId'] as String).input(),
+      impactedResourceId: (map['impactedResourceId'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

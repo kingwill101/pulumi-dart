@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecondaryIndexesIndex {
   /// A list of defined column for index, referenced from Table's primary keys or predefined columns.
-  final List<String> definedColumns;
+  final pulumi.Input<List<String>> definedColumns;
   /// The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The index name of the OTS Table which could not be changed.
-  final String indexName;
+  final pulumi.Input<String> indexName;
   /// The index type of the OTS Table which could not be changed.
-  final String indexType;
+  final pulumi.Input<String> indexType;
   /// The name of OTS instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// A list of primary keys for index, referenced from Table's primary keys or predefined columns.
-  final List<String> primaryKeys;
+  final pulumi.Input<List<String>> primaryKeys;
   /// The name of OTS table.
-  final String tableName;
+  final pulumi.Input<String> tableName;
 
   /// Creates a new [GetSecondaryIndexesIndex].
   /// [definedColumns] A list of defined column for index, referenced from Table's primary keys or predefined columns.
@@ -49,13 +50,13 @@ class GetSecondaryIndexesIndex {
 
   factory GetSecondaryIndexesIndex.fromMap(Map<String, dynamic> map) {
     return GetSecondaryIndexesIndex(
-      definedColumns: (map['definedColumns'] as List).cast<String>(),
-      id: map['id'] as String,
-      indexName: map['indexName'] as String,
-      indexType: map['indexType'] as String,
-      instanceName: map['instanceName'] as String,
-      primaryKeys: (map['primaryKeys'] as List).cast<String>(),
-      tableName: map['tableName'] as String,
+      definedColumns: ((map['definedColumns'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      indexName: (map['indexName'] as String).input(),
+      indexType: (map['indexType'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      primaryKeys: ((map['primaryKeys'] as List).cast<String>()).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

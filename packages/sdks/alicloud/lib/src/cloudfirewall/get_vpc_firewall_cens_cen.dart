@@ -5,21 +5,21 @@ import 'get_vpc_firewall_cens_cen_local_vpc.dart';
 
 class GetVpcFirewallCensCen {
   /// The ID of the CEN instance.
-  final String cenId;
+  final pulumi.Input<String> cenId;
   /// Intercommunication type, value: `expressconnect`: Express Channel `cen`: Cloud Enterprise Network
-  final String connectType;
+  final pulumi.Input<String> connectType;
   /// The ID of the CEN instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// The details of the VPC.
-  final List<GetVpcFirewallCensCenLocalVpc> localVpcs;
+  final pulumi.Input<List<GetVpcFirewallCensCenLocalVpc>> localVpcs;
   /// The ID of the VPC instance that created the VPC firewall.
-  final String networkInstanceId;
+  final pulumi.Input<String> networkInstanceId;
   /// Firewall switch status
-  final String status;
+  final pulumi.Input<String> status;
   /// VPC firewall ID
-  final String vpcFirewallId;
+  final pulumi.Input<String> vpcFirewallId;
   /// The name of the VPC firewall instance.
-  final String vpcFirewallName;
+  final pulumi.Input<String> vpcFirewallName;
 
   /// Creates a new [GetVpcFirewallCensCen].
   /// [cenId] The ID of the CEN instance.
@@ -46,7 +46,7 @@ class GetVpcFirewallCensCen {
       'cenId': cenId,
       'connectType': connectType,
       'id': id,
-      'localVpcs': pulumi.Input.encodeList<GetVpcFirewallCensCenLocalVpc, Map<String, dynamic>>(localVpcs, (value) => value.toMap()),
+      'localVpcs': pulumi.Input.mapInputValue<List<GetVpcFirewallCensCenLocalVpc>, List<Map<String, dynamic>>>(localVpcs, (value) => pulumi.Input.encodeList<GetVpcFirewallCensCenLocalVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
       'networkInstanceId': networkInstanceId,
       'status': status,
       'vpcFirewallId': vpcFirewallId,
@@ -56,14 +56,14 @@ class GetVpcFirewallCensCen {
 
   factory GetVpcFirewallCensCen.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallCensCen(
-      cenId: map['cenId'] as String,
-      connectType: map['connectType'] as String,
-      id: map['id'] as String,
-      localVpcs: pulumi.Input.decodeList<GetVpcFirewallCensCenLocalVpc>(map['localVpcs'], (value) => GetVpcFirewallCensCenLocalVpc.fromMap((value as Map).cast<String, dynamic>())),
-      networkInstanceId: map['networkInstanceId'] as String,
-      status: map['status'] as String,
-      vpcFirewallId: map['vpcFirewallId'] as String,
-      vpcFirewallName: map['vpcFirewallName'] as String,
+      cenId: (map['cenId'] as String).input(),
+      connectType: (map['connectType'] as String).input(),
+      id: (map['id'] as String).input(),
+      localVpcs: (pulumi.Input.decodeList<GetVpcFirewallCensCenLocalVpc>(map['localVpcs'], (value) => GetVpcFirewallCensCenLocalVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInstanceId: (map['networkInstanceId'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpcFirewallId: (map['vpcFirewallId'] as String).input(),
+      vpcFirewallName: (map['vpcFirewallName'] as String).input(),
     );
   }
 }

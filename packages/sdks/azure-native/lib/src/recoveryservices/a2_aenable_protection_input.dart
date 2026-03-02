@@ -9,48 +9,48 @@ import 'extended_location.dart';
 /// A2A enable protection input.
 class A2AEnableProtectionInput {
   /// A value indicating whether the auto protection is enabled.
-  final String? autoProtectionOfDataDisk;
+  final pulumi.Input<String>? autoProtectionOfDataDisk;
   /// The recovery disk encryption information (for two pass flows).
-  final DiskEncryptionInfo? diskEncryptionInfo;
+  final pulumi.Input<DiskEncryptionInfo>? diskEncryptionInfo;
   /// The fabric specific object Id of the virtual machine.
-  final String fabricObjectId;
+  final pulumi.Input<String> fabricObjectId;
   /// The class type.
   /// Expected value is 'A2A'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The multi vm group id.
-  final String? multiVmGroupId;
+  final pulumi.Input<String>? multiVmGroupId;
   /// The multi vm group name.
-  final String? multiVmGroupName;
+  final pulumi.Input<String>? multiVmGroupName;
   /// The replication protection cluster Id.
-  final String? protectionClusterId;
+  final pulumi.Input<String>? protectionClusterId;
   /// The recovery availability set Id.
-  final String? recoveryAvailabilitySetId;
+  final pulumi.Input<String>? recoveryAvailabilitySetId;
   /// The recovery availability zone.
-  final String? recoveryAvailabilityZone;
+  final pulumi.Input<String>? recoveryAvailabilityZone;
   /// The recovery Azure virtual network ARM id.
-  final String? recoveryAzureNetworkId;
+  final pulumi.Input<String>? recoveryAzureNetworkId;
   /// The boot diagnostic storage account.
-  final String? recoveryBootDiagStorageAccountId;
+  final pulumi.Input<String>? recoveryBootDiagStorageAccountId;
   /// The recovery capacity reservation group Id.
-  final String? recoveryCapacityReservationGroupId;
+  final pulumi.Input<String>? recoveryCapacityReservationGroupId;
   /// The recovery cloud service Id. Valid for V1 scenarios.
-  final String? recoveryCloudServiceId;
+  final pulumi.Input<String>? recoveryCloudServiceId;
   /// The recovery container Id.
-  final String? recoveryContainerId;
+  final pulumi.Input<String>? recoveryContainerId;
   /// The recovery extended location.
-  final ExtendedLocation? recoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocation>? recoveryExtendedLocation;
   /// The recovery proximity placement group Id.
-  final String? recoveryProximityPlacementGroupId;
+  final pulumi.Input<String>? recoveryProximityPlacementGroupId;
   /// The recovery resource group Id. Valid for V2 scenarios.
-  final String? recoveryResourceGroupId;
+  final pulumi.Input<String>? recoveryResourceGroupId;
   /// The recovery subnet name.
-  final String? recoverySubnetName;
+  final pulumi.Input<String>? recoverySubnetName;
   /// The virtual machine scale set Id.
-  final String? recoveryVirtualMachineScaleSetId;
+  final pulumi.Input<String>? recoveryVirtualMachineScaleSetId;
   /// The list of vm disk details.
-  final List<A2AVmDiskInputDetails>? vmDisks;
+  final pulumi.Input<List<A2AVmDiskInputDetails>>? vmDisks;
   /// The list of vm managed disk details.
-  final List<A2AVmManagedDiskInputDetails>? vmManagedDisks;
+  final pulumi.Input<List<A2AVmManagedDiskInputDetails>>? vmManagedDisks;
 
   /// Creates a new [A2AEnableProtectionInput].
   /// [autoProtectionOfDataDisk] A value indicating whether the auto protection is enabled.
@@ -101,7 +101,7 @@ class A2AEnableProtectionInput {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoProtectionOfDataDisk': ?autoProtectionOfDataDisk,
-      'diskEncryptionInfo': ?diskEncryptionInfo == null ? null : diskEncryptionInfo!.toMap(),
+      'diskEncryptionInfo': ?pulumi.Input.mapOptionalInputValue<DiskEncryptionInfo, Map<String, dynamic>>(diskEncryptionInfo, (value) => value.toMap()),
       'fabricObjectId': fabricObjectId,
       'instanceType': instanceType,
       'multiVmGroupId': ?multiVmGroupId,
@@ -114,39 +114,39 @@ class A2AEnableProtectionInput {
       'recoveryCapacityReservationGroupId': ?recoveryCapacityReservationGroupId,
       'recoveryCloudServiceId': ?recoveryCloudServiceId,
       'recoveryContainerId': ?recoveryContainerId,
-      'recoveryExtendedLocation': ?recoveryExtendedLocation == null ? null : recoveryExtendedLocation!.toMap(),
+      'recoveryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(recoveryExtendedLocation, (value) => value.toMap()),
       'recoveryProximityPlacementGroupId': ?recoveryProximityPlacementGroupId,
       'recoveryResourceGroupId': ?recoveryResourceGroupId,
       'recoverySubnetName': ?recoverySubnetName,
       'recoveryVirtualMachineScaleSetId': ?recoveryVirtualMachineScaleSetId,
-      'vmDisks': ?vmDisks == null ? null : pulumi.Input.encodeList<A2AVmDiskInputDetails, Map<String, dynamic>>(vmDisks!, (value) => value.toMap()),
-      'vmManagedDisks': ?vmManagedDisks == null ? null : pulumi.Input.encodeList<A2AVmManagedDiskInputDetails, Map<String, dynamic>>(vmManagedDisks!, (value) => value.toMap()),
+      'vmDisks': ?pulumi.Input.mapOptionalInputValue<List<A2AVmDiskInputDetails>, List<Map<String, dynamic>>>(vmDisks, (value) => pulumi.Input.encodeList<A2AVmDiskInputDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vmManagedDisks': ?pulumi.Input.mapOptionalInputValue<List<A2AVmManagedDiskInputDetails>, List<Map<String, dynamic>>>(vmManagedDisks, (value) => pulumi.Input.encodeList<A2AVmManagedDiskInputDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory A2AEnableProtectionInput.fromMap(Map<String, dynamic> map) {
     return A2AEnableProtectionInput(
-      autoProtectionOfDataDisk: map['autoProtectionOfDataDisk'] == null ? null : map['autoProtectionOfDataDisk'] as String,
-      diskEncryptionInfo: map['diskEncryptionInfo'] == null ? null : DiskEncryptionInfo.fromMap((map['diskEncryptionInfo'] as Map).cast<String, dynamic>()),
-      fabricObjectId: map['fabricObjectId'] as String,
-      instanceType: map['instanceType'] as String,
-      multiVmGroupId: map['multiVmGroupId'] == null ? null : map['multiVmGroupId'] as String,
-      multiVmGroupName: map['multiVmGroupName'] == null ? null : map['multiVmGroupName'] as String,
-      protectionClusterId: map['protectionClusterId'] == null ? null : map['protectionClusterId'] as String,
-      recoveryAvailabilitySetId: map['recoveryAvailabilitySetId'] == null ? null : map['recoveryAvailabilitySetId'] as String,
-      recoveryAvailabilityZone: map['recoveryAvailabilityZone'] == null ? null : map['recoveryAvailabilityZone'] as String,
-      recoveryAzureNetworkId: map['recoveryAzureNetworkId'] == null ? null : map['recoveryAzureNetworkId'] as String,
-      recoveryBootDiagStorageAccountId: map['recoveryBootDiagStorageAccountId'] == null ? null : map['recoveryBootDiagStorageAccountId'] as String,
-      recoveryCapacityReservationGroupId: map['recoveryCapacityReservationGroupId'] == null ? null : map['recoveryCapacityReservationGroupId'] as String,
-      recoveryCloudServiceId: map['recoveryCloudServiceId'] == null ? null : map['recoveryCloudServiceId'] as String,
-      recoveryContainerId: map['recoveryContainerId'] == null ? null : map['recoveryContainerId'] as String,
-      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : ExtendedLocation.fromMap((map['recoveryExtendedLocation'] as Map).cast<String, dynamic>()),
-      recoveryProximityPlacementGroupId: map['recoveryProximityPlacementGroupId'] == null ? null : map['recoveryProximityPlacementGroupId'] as String,
-      recoveryResourceGroupId: map['recoveryResourceGroupId'] == null ? null : map['recoveryResourceGroupId'] as String,
-      recoverySubnetName: map['recoverySubnetName'] == null ? null : map['recoverySubnetName'] as String,
-      recoveryVirtualMachineScaleSetId: map['recoveryVirtualMachineScaleSetId'] == null ? null : map['recoveryVirtualMachineScaleSetId'] as String,
-      vmDisks: map['vmDisks'] == null ? null : pulumi.Input.decodeList<A2AVmDiskInputDetails>(map['vmDisks'], (value) => A2AVmDiskInputDetails.fromMap((value as Map).cast<String, dynamic>())),
-      vmManagedDisks: map['vmManagedDisks'] == null ? null : pulumi.Input.decodeList<A2AVmManagedDiskInputDetails>(map['vmManagedDisks'], (value) => A2AVmManagedDiskInputDetails.fromMap((value as Map).cast<String, dynamic>())),
+      autoProtectionOfDataDisk: map['autoProtectionOfDataDisk'] == null ? null : (map['autoProtectionOfDataDisk'] as String).input(),
+      diskEncryptionInfo: map['diskEncryptionInfo'] == null ? null : (DiskEncryptionInfo.fromMap((map['diskEncryptionInfo'] as Map).cast<String, dynamic>())).input(),
+      fabricObjectId: (map['fabricObjectId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      multiVmGroupId: map['multiVmGroupId'] == null ? null : (map['multiVmGroupId'] as String).input(),
+      multiVmGroupName: map['multiVmGroupName'] == null ? null : (map['multiVmGroupName'] as String).input(),
+      protectionClusterId: map['protectionClusterId'] == null ? null : (map['protectionClusterId'] as String).input(),
+      recoveryAvailabilitySetId: map['recoveryAvailabilitySetId'] == null ? null : (map['recoveryAvailabilitySetId'] as String).input(),
+      recoveryAvailabilityZone: map['recoveryAvailabilityZone'] == null ? null : (map['recoveryAvailabilityZone'] as String).input(),
+      recoveryAzureNetworkId: map['recoveryAzureNetworkId'] == null ? null : (map['recoveryAzureNetworkId'] as String).input(),
+      recoveryBootDiagStorageAccountId: map['recoveryBootDiagStorageAccountId'] == null ? null : (map['recoveryBootDiagStorageAccountId'] as String).input(),
+      recoveryCapacityReservationGroupId: map['recoveryCapacityReservationGroupId'] == null ? null : (map['recoveryCapacityReservationGroupId'] as String).input(),
+      recoveryCloudServiceId: map['recoveryCloudServiceId'] == null ? null : (map['recoveryCloudServiceId'] as String).input(),
+      recoveryContainerId: map['recoveryContainerId'] == null ? null : (map['recoveryContainerId'] as String).input(),
+      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['recoveryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
+      recoveryProximityPlacementGroupId: map['recoveryProximityPlacementGroupId'] == null ? null : (map['recoveryProximityPlacementGroupId'] as String).input(),
+      recoveryResourceGroupId: map['recoveryResourceGroupId'] == null ? null : (map['recoveryResourceGroupId'] as String).input(),
+      recoverySubnetName: map['recoverySubnetName'] == null ? null : (map['recoverySubnetName'] as String).input(),
+      recoveryVirtualMachineScaleSetId: map['recoveryVirtualMachineScaleSetId'] == null ? null : (map['recoveryVirtualMachineScaleSetId'] as String).input(),
+      vmDisks: map['vmDisks'] == null ? null : (pulumi.Input.decodeList<A2AVmDiskInputDetails>(map['vmDisks'], (value) => A2AVmDiskInputDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmManagedDisks: map['vmManagedDisks'] == null ? null : (pulumi.Input.decodeList<A2AVmManagedDiskInputDetails>(map['vmManagedDisks'], (value) => A2AVmManagedDiskInputDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

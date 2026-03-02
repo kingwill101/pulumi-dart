@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A service account that acts as an identity.
 class ServiceAccountResponse {
   /// Optional. Email address of the service account.
-  final String email;
+  final pulumi.Input<String> email;
   /// The list of scopes to be made available for this service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
-  final List<String> scopes;
+  final pulumi.Input<List<String>> scopes;
 
   /// Creates a new [ServiceAccountResponse].
   /// [email] Optional. Email address of the service account.
@@ -25,8 +26,8 @@ class ServiceAccountResponse {
 
   factory ServiceAccountResponse.fromMap(Map<String, dynamic> map) {
     return ServiceAccountResponse(
-      email: map['email'] as String,
-      scopes: (map['scopes'] as List).cast<String>(),
+      email: (map['email'] as String).input(),
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

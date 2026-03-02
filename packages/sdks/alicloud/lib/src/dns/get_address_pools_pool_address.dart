@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAddressPoolsPoolAddress {
   /// The address that you want to add to the address pool.
-  final String address;
+  final pulumi.Input<String> address;
   /// The source region of the address.
-  final String attributeInfo;
+  final pulumi.Input<String> attributeInfo;
   /// The weight of the address.
-  final int lbaWeight;
+  final pulumi.Input<int> lbaWeight;
   /// The type of the address.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// The description of the address.
-  final String remark;
+  final pulumi.Input<String> remark;
 
   /// Creates a new [GetAddressPoolsPoolAddress].
   /// [address] The address that you want to add to the address pool.
@@ -39,11 +40,11 @@ class GetAddressPoolsPoolAddress {
 
   factory GetAddressPoolsPoolAddress.fromMap(Map<String, dynamic> map) {
     return GetAddressPoolsPoolAddress(
-      address: map['address'] as String,
-      attributeInfo: map['attributeInfo'] as String,
-      lbaWeight: map['lbaWeight'] as int,
-      mode: map['mode'] as String,
-      remark: map['remark'] as String,
+      address: (map['address'] as String).input(),
+      attributeInfo: (map['attributeInfo'] as String).input(),
+      lbaWeight: (map['lbaWeight'] as int).input(),
+      mode: (map['mode'] as String).input(),
+      remark: (map['remark'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetThemeConfigurationSheetTileBorder {
   /// This Boolean value controls whether to display sheet margins.
-  final bool show;
+  final pulumi.Input<bool> show;
 
   /// Creates a new [GetThemeConfigurationSheetTileBorder].
   /// [show] This Boolean value controls whether to display sheet margins.
@@ -19,7 +20,7 @@ class GetThemeConfigurationSheetTileBorder {
 
   factory GetThemeConfigurationSheetTileBorder.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationSheetTileBorder(
-      show: map['show'] as bool,
+      show: (map['show'] as bool).input(),
     );
   }
 }

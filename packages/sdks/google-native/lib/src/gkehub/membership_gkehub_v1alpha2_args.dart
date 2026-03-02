@@ -39,25 +39,16 @@ class MembershipGkehubV1alpha2Args {
   /// [monitoringConfig] Optional. The monitoring config information for this membership.
   /// [project] Optional.
   MembershipGkehubV1alpha2Args({
-    pulumi.Output<AuthorityGkehubV1alpha2>? authority,
-    pulumi.Output<MembershipEndpointGkehubV1alpha2>? endpoint,
-    pulumi.Output<String>? externalId,
-    pulumi.Output<MembershipInfrastructureType>? infrastructureType,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> membershipId,
-    pulumi.Output<MonitoringConfigGkehubV1alpha2>? monitoringConfig,
-    pulumi.Output<String>? project,
-  }) :
-      authority = pulumi.Input.asOptionalInput<AuthorityGkehubV1alpha2>(authority),
-      endpoint = pulumi.Input.asOptionalInput<MembershipEndpointGkehubV1alpha2>(endpoint),
-      externalId = pulumi.Input.asOptionalInput<String>(externalId),
-      infrastructureType = pulumi.Input.asOptionalInput<MembershipInfrastructureType>(infrastructureType),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      monitoringConfig = pulumi.Input.asOptionalInput<MonitoringConfigGkehubV1alpha2>(monitoringConfig),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.authority,
+    this.endpoint,
+    this.externalId,
+    this.infrastructureType,
+    this.labels,
+    this.location,
+    required this.membershipId,
+    this.monitoringConfig,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class MembershipGkehubV1alpha2Args {
 
   factory MembershipGkehubV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return MembershipGkehubV1alpha2Args(
-      authority: map['authority'] == null ? null : pulumi.Output.create<AuthorityGkehubV1alpha2>(AuthorityGkehubV1alpha2.fromMap((map['authority'] as Map).cast<String, dynamic>())),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<MembershipEndpointGkehubV1alpha2>(MembershipEndpointGkehubV1alpha2.fromMap((map['endpoint'] as Map).cast<String, dynamic>())),
-      externalId: map['externalId'] == null ? null : pulumi.Output.create<String>(map['externalId'] as String),
-      infrastructureType: map['infrastructureType'] == null ? null : pulumi.Output.create<MembershipInfrastructureType>(MembershipInfrastructureType.fromValue(map['infrastructureType'] as String)),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      membershipId: pulumi.Output.create<String>(map['membershipId'] as String),
-      monitoringConfig: map['monitoringConfig'] == null ? null : pulumi.Output.create<MonitoringConfigGkehubV1alpha2>(MonitoringConfigGkehubV1alpha2.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      authority: map['authority'] == null ? null : (AuthorityGkehubV1alpha2.fromMap((map['authority'] as Map).cast<String, dynamic>())).input(),
+      endpoint: map['endpoint'] == null ? null : (MembershipEndpointGkehubV1alpha2.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      infrastructureType: map['infrastructureType'] == null ? null : (MembershipInfrastructureType.fromValue(map['infrastructureType'] as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
+      monitoringConfig: map['monitoringConfig'] == null ? null : (MonitoringConfigGkehubV1alpha2.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

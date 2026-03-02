@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration {
   /// The number of pre-provisioned snapshots to keep on hand for a fast-launch enabled Windows AMI.
-  final int? targetResourceCount;
+  final pulumi.Input<int>? targetResourceCount;
 
   /// Creates a new [DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration].
   /// [targetResourceCount] The number of pre-provisioned snapshots to keep on hand for a fast-launch enabled Windows AMI.
@@ -19,7 +20,7 @@ class DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfig
 
   factory DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration(
-      targetResourceCount: map['targetResourceCount'] == null ? null : map['targetResourceCount'] as int,
+      targetResourceCount: map['targetResourceCount'] == null ? null : (map['targetResourceCount'] as int).input(),
     );
   }
 }

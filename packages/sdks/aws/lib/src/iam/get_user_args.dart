@@ -16,11 +16,9 @@ class GetUserArgs {
   /// [tags] Map of key-value pairs associated with the user.
   /// [userName] Friendly IAM user name to match.
   GetUserArgs({
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> userName,
-  }) :
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userName = pulumi.Input.asInput<String>(userName);
+    this.tags,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

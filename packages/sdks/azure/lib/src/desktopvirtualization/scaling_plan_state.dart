@@ -39,27 +39,17 @@ class ScalingPlanState {
   /// [tags] A mapping of tags which should be assigned to the Virtual Desktop Scaling Plan .
   /// [timeZone] Specifies the Time Zone which should be used by the Scaling Plan for time based events, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
   ScalingPlanState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? exclusionTag,
-    pulumi.Output<String>? friendlyName,
-    pulumi.Output<List<ScalingPlanHostPool>>? hostPools,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<List<ScalingPlanSchedule>>? schedules,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? timeZone,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      exclusionTag = pulumi.Input.asOptionalInput<String>(exclusionTag),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      hostPools = pulumi.Input.asOptionalInput<List<ScalingPlanHostPool>>(hostPools),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      schedules = pulumi.Input.asOptionalInput<List<ScalingPlanSchedule>>(schedules),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.description,
+    this.exclusionTag,
+    this.friendlyName,
+    this.hostPools,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.schedules,
+    this.tags,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class ScalingPlanState {
 
   factory ScalingPlanState.fromMap(Map<String, dynamic> map) {
     return ScalingPlanState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      exclusionTag: map['exclusionTag'] == null ? null : pulumi.Output.create<String>(map['exclusionTag'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      hostPools: map['hostPools'] == null ? null : pulumi.Output.create<List<ScalingPlanHostPool>>(pulumi.Input.decodeList<ScalingPlanHostPool>(map['hostPools'], (value) => ScalingPlanHostPool.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schedules: map['schedules'] == null ? null : pulumi.Output.create<List<ScalingPlanSchedule>>(pulumi.Input.decodeList<ScalingPlanSchedule>(map['schedules'], (value) => ScalingPlanSchedule.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      exclusionTag: map['exclusionTag'] == null ? null : (map['exclusionTag'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      hostPools: map['hostPools'] == null ? null : (pulumi.Input.decodeList<ScalingPlanHostPool>(map['hostPools'], (value) => ScalingPlanHostPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<ScalingPlanSchedule>(map['schedules'], (value) => ScalingPlanSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

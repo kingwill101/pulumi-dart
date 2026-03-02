@@ -19,15 +19,11 @@ class BucketAccelerateConfigurationV2State {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Transfer acceleration state of the bucket. Valid values: `Enabled`, `Suspended`.
   BucketAccelerateConfigurationV2State({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? expectedBucketOwner,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bucket,
+    this.expectedBucketOwner,
+    this.region,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class BucketAccelerateConfigurationV2State {
 
   factory BucketAccelerateConfigurationV2State.fromMap(Map<String, dynamic> map) {
     return BucketAccelerateConfigurationV2State(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

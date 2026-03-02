@@ -21,15 +21,11 @@ class SecretIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [secretId] Used to find the parent resource to bind the IAM policy to
   SecretIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? secretId,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secretId = pulumi.Input.asOptionalInput<String>(secretId);
+    this.etag,
+    this.policyData,
+    this.project,
+    this.secretId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class SecretIamPolicyState {
 
   factory SecretIamPolicyState.fromMap(Map<String, dynamic> map) {
     return SecretIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secretId: map['secretId'] == null ? null : pulumi.Output.create<String>(map['secretId'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
     );
   }
 }

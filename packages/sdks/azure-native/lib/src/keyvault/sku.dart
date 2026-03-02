@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sku_name.dart';
 
 /// SKU details
 class Sku {
   /// SKU family name
-  final String family;
+  final pulumi.Input<String> family;
   /// SKU name to specify whether the key vault is a standard vault or a premium vault.
-  final SkuName name;
+  final pulumi.Input<SkuName> name;
 
   /// Creates a new [Sku].
   /// [family] SKU family name
@@ -20,14 +21,14 @@ class Sku {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'family': family,
-      'name': name.value,
+      'name': pulumi.Input.mapInputValue<SkuName, String>(name, (value) => value.value),
     };
   }
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      family: map['family'] as String,
-      name: SkuName.fromValue(map['name'] as String),
+      family: (map['family'] as String).input(),
+      name: (SkuName.fromValue(map['name'] as String)).input(),
     );
   }
 }

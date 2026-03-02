@@ -23,15 +23,11 @@ class GetNetworkInterfaceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Any tags assigned to the network interface.
   GetNetworkInterfaceArgs({
-    pulumi.Output<List<GetNetworkInterfaceFilter>>? filters,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetNetworkInterfaceFilter>>(filters),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.id,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetNetworkInterfaceArgs {
 
   factory GetNetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetNetworkInterfaceFilter>>(pulumi.Input.decodeList<GetNetworkInterfaceFilter>(map['filters'], (value) => GetNetworkInterfaceFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNetworkInterfaceFilter>(map['filters'], (value) => GetNetworkInterfaceFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

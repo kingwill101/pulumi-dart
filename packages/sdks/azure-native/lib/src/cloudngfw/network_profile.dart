@@ -8,21 +8,21 @@ import 'vwan_configuration.dart';
 /// Network settings for Firewall
 class NetworkProfile {
   /// Egress nat IP to use
-  final List<IPAddress>? egressNatIp;
+  final pulumi.Input<List<IPAddress>>? egressNatIp;
   /// Enable egress NAT, enabled by default
-  final String enableEgressNat;
+  final pulumi.Input<String> enableEgressNat;
   /// vnet or vwan, cannot be updated
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// Array of ipv4 destination address for which source NAT is to be performed
-  final List<String>? privateSourceNatRulesDestination;
+  final pulumi.Input<List<String>>? privateSourceNatRulesDestination;
   /// List of IPs associated with the Firewall
-  final List<IPAddress> publicIps;
+  final pulumi.Input<List<IPAddress>> publicIps;
   /// Non-RFC 1918 address
-  final List<String>? trustedRanges;
+  final pulumi.Input<List<String>>? trustedRanges;
   /// Vnet configurations
-  final VnetConfiguration? vnetConfiguration;
+  final pulumi.Input<VnetConfiguration>? vnetConfiguration;
   /// Vwan configurations
-  final VwanConfiguration? vwanConfiguration;
+  final pulumi.Input<VwanConfiguration>? vwanConfiguration;
 
   /// Creates a new [NetworkProfile].
   /// [egressNatIp] Egress nat IP to use
@@ -46,27 +46,27 @@ class NetworkProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'egressNatIp': ?egressNatIp == null ? null : pulumi.Input.encodeList<IPAddress, Map<String, dynamic>>(egressNatIp!, (value) => value.toMap()),
+      'egressNatIp': ?pulumi.Input.mapOptionalInputValue<List<IPAddress>, List<Map<String, dynamic>>>(egressNatIp, (value) => pulumi.Input.encodeList<IPAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableEgressNat': enableEgressNat,
       'networkType': networkType,
       'privateSourceNatRulesDestination': ?privateSourceNatRulesDestination,
-      'publicIps': pulumi.Input.encodeList<IPAddress, Map<String, dynamic>>(publicIps, (value) => value.toMap()),
+      'publicIps': pulumi.Input.mapInputValue<List<IPAddress>, List<Map<String, dynamic>>>(publicIps, (value) => pulumi.Input.encodeList<IPAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'trustedRanges': ?trustedRanges,
-      'vnetConfiguration': ?vnetConfiguration == null ? null : vnetConfiguration!.toMap(),
-      'vwanConfiguration': ?vwanConfiguration == null ? null : vwanConfiguration!.toMap(),
+      'vnetConfiguration': ?pulumi.Input.mapOptionalInputValue<VnetConfiguration, Map<String, dynamic>>(vnetConfiguration, (value) => value.toMap()),
+      'vwanConfiguration': ?pulumi.Input.mapOptionalInputValue<VwanConfiguration, Map<String, dynamic>>(vwanConfiguration, (value) => value.toMap()),
     };
   }
 
   factory NetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkProfile(
-      egressNatIp: map['egressNatIp'] == null ? null : pulumi.Input.decodeList<IPAddress>(map['egressNatIp'], (value) => IPAddress.fromMap((value as Map).cast<String, dynamic>())),
-      enableEgressNat: map['enableEgressNat'] as String,
-      networkType: map['networkType'] as String,
-      privateSourceNatRulesDestination: map['privateSourceNatRulesDestination'] == null ? null : (map['privateSourceNatRulesDestination'] as List).cast<String>(),
-      publicIps: pulumi.Input.decodeList<IPAddress>(map['publicIps'], (value) => IPAddress.fromMap((value as Map).cast<String, dynamic>())),
-      trustedRanges: map['trustedRanges'] == null ? null : (map['trustedRanges'] as List).cast<String>(),
-      vnetConfiguration: map['vnetConfiguration'] == null ? null : VnetConfiguration.fromMap((map['vnetConfiguration'] as Map).cast<String, dynamic>()),
-      vwanConfiguration: map['vwanConfiguration'] == null ? null : VwanConfiguration.fromMap((map['vwanConfiguration'] as Map).cast<String, dynamic>()),
+      egressNatIp: map['egressNatIp'] == null ? null : (pulumi.Input.decodeList<IPAddress>(map['egressNatIp'], (value) => IPAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableEgressNat: (map['enableEgressNat'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      privateSourceNatRulesDestination: map['privateSourceNatRulesDestination'] == null ? null : ((map['privateSourceNatRulesDestination'] as List).cast<String>()).input(),
+      publicIps: (pulumi.Input.decodeList<IPAddress>(map['publicIps'], (value) => IPAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trustedRanges: map['trustedRanges'] == null ? null : ((map['trustedRanges'] as List).cast<String>()).input(),
+      vnetConfiguration: map['vnetConfiguration'] == null ? null : (VnetConfiguration.fromMap((map['vnetConfiguration'] as Map).cast<String, dynamic>())).input(),
+      vwanConfiguration: map['vwanConfiguration'] == null ? null : (VwanConfiguration.fromMap((map['vwanConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

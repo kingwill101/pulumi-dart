@@ -29,17 +29,12 @@ class PortSecGroupAssociateState {
   /// [region] The region in which to obtain the V2 networking client.
   /// [securityGroupIds] A list of security group IDs to apply to
   PortSecGroupAssociateState({
-    pulumi.Output<List<String>>? allSecurityGroupIds,
-    pulumi.Output<bool>? enforce,
-    pulumi.Output<String>? portId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupIds,
-  }) :
-      allSecurityGroupIds = pulumi.Input.asOptionalInput<List<String>>(allSecurityGroupIds),
-      enforce = pulumi.Input.asOptionalInput<bool>(enforce),
-      portId = pulumi.Input.asOptionalInput<String>(portId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds);
+    this.allSecurityGroupIds,
+    this.enforce,
+    this.portId,
+    this.region,
+    this.securityGroupIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class PortSecGroupAssociateState {
 
   factory PortSecGroupAssociateState.fromMap(Map<String, dynamic> map) {
     return PortSecGroupAssociateState(
-      allSecurityGroupIds: map['allSecurityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['allSecurityGroupIds'] as List).cast<String>()),
-      enforce: map['enforce'] == null ? null : pulumi.Output.create<bool>(map['enforce'] as bool),
-      portId: map['portId'] == null ? null : pulumi.Output.create<String>(map['portId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
+      allSecurityGroupIds: map['allSecurityGroupIds'] == null ? null : ((map['allSecurityGroupIds'] as List).cast<String>()).input(),
+      enforce: map['enforce'] == null ? null : (map['enforce'] as bool).input(),
+      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
     );
   }
 }

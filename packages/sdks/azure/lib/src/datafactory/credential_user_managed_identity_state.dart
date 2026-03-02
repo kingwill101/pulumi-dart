@@ -26,17 +26,12 @@ class CredentialUserManagedIdentityState {
   /// [identityId] The Resouce ID of an existing User Assigned Managed Identity. This can be changed without recreating the resource. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Credential. Changing this forces a new resource to be created.
   CredentialUserManagedIdentityState({
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? identityId,
-    pulumi.Output<String>? name,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      identityId = pulumi.Input.asOptionalInput<String>(identityId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.annotations,
+    this.dataFactoryId,
+    this.description,
+    this.identityId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class CredentialUserManagedIdentityState {
 
   factory CredentialUserManagedIdentityState.fromMap(Map<String, dynamic> map) {
     return CredentialUserManagedIdentityState(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      identityId: map['identityId'] == null ? null : pulumi.Output.create<String>(map['identityId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

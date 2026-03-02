@@ -22,15 +22,11 @@ class PrivateLocationArgs {
   /// [name] The name of the private location.
   /// [verifiedScriptExecution] The private location requires a password to edit if value is true. Defaults to `false`
   PrivateLocationArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> description,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? verifiedScriptExecution,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      description = pulumi.Input.asInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      verifiedScriptExecution = pulumi.Input.asOptionalInput<bool>(verifiedScriptExecution);
+    this.accountId,
+    required this.description,
+    this.name,
+    this.verifiedScriptExecution,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class PrivateLocationArgs {
 
   factory PrivateLocationArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLocationArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      verifiedScriptExecution: map['verifiedScriptExecution'] == null ? null : pulumi.Output.create<bool>(map['verifiedScriptExecution'] as bool),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      description: (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      verifiedScriptExecution: map['verifiedScriptExecution'] == null ? null : (map['verifiedScriptExecution'] as bool).input(),
     );
   }
 }

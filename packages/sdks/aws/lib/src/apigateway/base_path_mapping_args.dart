@@ -28,19 +28,13 @@ class BasePathMappingArgs {
   /// [restApi] ID of the API to connect.
   /// [stageName] Name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
   BasePathMappingArgs({
-    pulumi.Output<String>? basePath,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? domainNameId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> restApi,
-    pulumi.Output<String>? stageName,
-  }) :
-      basePath = pulumi.Input.asOptionalInput<String>(basePath),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      domainNameId = pulumi.Input.asOptionalInput<String>(domainNameId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApi = pulumi.Input.asInput<String>(restApi),
-      stageName = pulumi.Input.asOptionalInput<String>(stageName);
+    this.basePath,
+    required this.domainName,
+    this.domainNameId,
+    this.region,
+    required this.restApi,
+    this.stageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class BasePathMappingArgs {
 
   factory BasePathMappingArgs.fromMap(Map<String, dynamic> map) {
     return BasePathMappingArgs(
-      basePath: map['basePath'] == null ? null : pulumi.Output.create<String>(map['basePath'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      domainNameId: map['domainNameId'] == null ? null : pulumi.Output.create<String>(map['domainNameId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApi: pulumi.Output.create<String>(map['restApi'] as String),
-      stageName: map['stageName'] == null ? null : pulumi.Output.create<String>(map['stageName'] as String),
+      basePath: map['basePath'] == null ? null : (map['basePath'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      domainNameId: map['domainNameId'] == null ? null : (map['domainNameId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApi: (map['restApi'] as String).input(),
+      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
     );
   }
 }

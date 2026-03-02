@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// timeline aggregation information per kind
 class TimelineAggregationResponse {
   /// the total items found for a kind
-  final int count;
+  final pulumi.Input<int> count;
   /// the query kind
-  final String kind;
+  final pulumi.Input<String> kind;
 
   /// Creates a new [TimelineAggregationResponse].
   /// [count] the total items found for a kind
@@ -25,8 +26,8 @@ class TimelineAggregationResponse {
 
   factory TimelineAggregationResponse.fromMap(Map<String, dynamic> map) {
     return TimelineAggregationResponse(
-      count: map['count'] as int,
-      kind: map['kind'] as String,
+      count: (map['count'] as int).input(),
+      kind: (map['kind'] as String).input(),
     );
   }
 }

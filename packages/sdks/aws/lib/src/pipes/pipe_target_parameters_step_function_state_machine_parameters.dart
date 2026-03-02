@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeTargetParametersStepFunctionStateMachineParameters {
   /// Specify whether to invoke the function synchronously or asynchronously. Valid Values: REQUEST_RESPONSE, FIRE_AND_FORGET.
-  final String invocationType;
+  final pulumi.Input<String> invocationType;
 
   /// Creates a new [PipeTargetParametersStepFunctionStateMachineParameters].
   /// [invocationType] Specify whether to invoke the function synchronously or asynchronously. Valid Values: REQUEST_RESPONSE, FIRE_AND_FORGET.
@@ -19,7 +20,7 @@ class PipeTargetParametersStepFunctionStateMachineParameters {
 
   factory PipeTargetParametersStepFunctionStateMachineParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersStepFunctionStateMachineParameters(
-      invocationType: map['invocationType'] as String,
+      invocationType: (map['invocationType'] as String).input(),
     );
   }
 }

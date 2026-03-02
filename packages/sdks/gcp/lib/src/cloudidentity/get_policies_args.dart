@@ -13,9 +13,8 @@ class GetPoliciesArgs {
   /// Creates a new [GetPoliciesArgs].
   /// [filter] Filter expression for listing policies, as documented in the Cloud Identity Policy API policies.list method.
   GetPoliciesArgs({
-    pulumi.Output<String>? filter,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter);
+    this.filter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetPoliciesArgs {
 
   factory GetPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetPoliciesArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
     );
   }
 }

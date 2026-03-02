@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileAlloydbSettingsInitialUser {
   /// The initial password for the user.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final String password;
+  final pulumi.Input<String> password;
   /// (Output)
   /// Output only. Indicates if the initialUser.password field has been set.
-  final bool? passwordSet;
+  final pulumi.Input<bool>? passwordSet;
   /// The database username.
-  final String user;
+  final pulumi.Input<String> user;
 
   /// Creates a new [ConnectionProfileAlloydbSettingsInitialUser].
   /// [password] The initial password for the user.
@@ -31,9 +32,9 @@ class ConnectionProfileAlloydbSettingsInitialUser {
 
   factory ConnectionProfileAlloydbSettingsInitialUser.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileAlloydbSettingsInitialUser(
-      password: map['password'] as String,
-      passwordSet: map['passwordSet'] == null ? null : map['passwordSet'] as bool,
-      user: map['user'] as String,
+      password: (map['password'] as String).input(),
+      passwordSet: map['passwordSet'] == null ? null : (map['passwordSet'] as bool).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

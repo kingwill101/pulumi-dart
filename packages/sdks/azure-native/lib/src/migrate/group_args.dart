@@ -26,17 +26,12 @@ class GroupArgs {
   /// [properties] Properties of the group.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   GroupArgs({
-    pulumi.Output<String>? eTag,
-    pulumi.Output<String>? groupName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<GroupProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asInput<GroupProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.eTag,
+    this.groupName,
+    required this.projectName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: pulumi.Output.create<GroupProperties>(GroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: (GroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

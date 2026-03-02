@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// API server endpoint for the control plane
 class ControlPlaneEndpointProfileResponseControlPlaneEndpoint {
   /// Host IP address for API server
-  final String? hostIP;
+  final pulumi.Input<String>? hostIP;
   /// Port for the API server
-  final String? port;
+  final pulumi.Input<String>? port;
 
   /// Creates a new [ControlPlaneEndpointProfileResponseControlPlaneEndpoint].
   /// [hostIP] Host IP address for API server
@@ -25,8 +26,8 @@ class ControlPlaneEndpointProfileResponseControlPlaneEndpoint {
 
   factory ControlPlaneEndpointProfileResponseControlPlaneEndpoint.fromMap(Map<String, dynamic> map) {
     return ControlPlaneEndpointProfileResponseControlPlaneEndpoint(
-      hostIP: map['hostIP'] == null ? null : map['hostIP'] as String,
-      port: map['port'] == null ? null : map['port'] as String,
+      hostIP: map['hostIP'] == null ? null : (map['hostIP'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'front_end_configuration.dart';
 import 'storage_type.dart';
 
 class ArcConfiguration {
-  final String? artifactStorageAccessMode;
-  final String? artifactStorageClassName;
-  final String? artifactStorageMountPath;
-  final String? artifactStorageNodeName;
-  final StorageType? artifactsStorageType;
-  final FrontEndConfiguration? frontEndServiceConfiguration;
-  final String? kubeConfig;
+  final pulumi.Input<String>? artifactStorageAccessMode;
+  final pulumi.Input<String>? artifactStorageClassName;
+  final pulumi.Input<String>? artifactStorageMountPath;
+  final pulumi.Input<String>? artifactStorageNodeName;
+  final pulumi.Input<StorageType>? artifactsStorageType;
+  final pulumi.Input<FrontEndConfiguration>? frontEndServiceConfiguration;
+  final pulumi.Input<String>? kubeConfig;
 
   /// Creates a new [ArcConfiguration].
   /// [artifactStorageAccessMode] Optional.
@@ -36,21 +37,21 @@ class ArcConfiguration {
       'artifactStorageClassName': ?artifactStorageClassName,
       'artifactStorageMountPath': ?artifactStorageMountPath,
       'artifactStorageNodeName': ?artifactStorageNodeName,
-      'artifactsStorageType': ?artifactsStorageType == null ? null : artifactsStorageType!.value,
-      'frontEndServiceConfiguration': ?frontEndServiceConfiguration == null ? null : frontEndServiceConfiguration!.toMap(),
+      'artifactsStorageType': ?pulumi.Input.mapOptionalInputValue<StorageType, String>(artifactsStorageType, (value) => value.value),
+      'frontEndServiceConfiguration': ?pulumi.Input.mapOptionalInputValue<FrontEndConfiguration, Map<String, dynamic>>(frontEndServiceConfiguration, (value) => value.toMap()),
       'kubeConfig': ?kubeConfig,
     };
   }
 
   factory ArcConfiguration.fromMap(Map<String, dynamic> map) {
     return ArcConfiguration(
-      artifactStorageAccessMode: map['artifactStorageAccessMode'] == null ? null : map['artifactStorageAccessMode'] as String,
-      artifactStorageClassName: map['artifactStorageClassName'] == null ? null : map['artifactStorageClassName'] as String,
-      artifactStorageMountPath: map['artifactStorageMountPath'] == null ? null : map['artifactStorageMountPath'] as String,
-      artifactStorageNodeName: map['artifactStorageNodeName'] == null ? null : map['artifactStorageNodeName'] as String,
-      artifactsStorageType: map['artifactsStorageType'] == null ? null : StorageType.fromValue(map['artifactsStorageType'] as String),
-      frontEndServiceConfiguration: map['frontEndServiceConfiguration'] == null ? null : FrontEndConfiguration.fromMap((map['frontEndServiceConfiguration'] as Map).cast<String, dynamic>()),
-      kubeConfig: map['kubeConfig'] == null ? null : map['kubeConfig'] as String,
+      artifactStorageAccessMode: map['artifactStorageAccessMode'] == null ? null : (map['artifactStorageAccessMode'] as String).input(),
+      artifactStorageClassName: map['artifactStorageClassName'] == null ? null : (map['artifactStorageClassName'] as String).input(),
+      artifactStorageMountPath: map['artifactStorageMountPath'] == null ? null : (map['artifactStorageMountPath'] as String).input(),
+      artifactStorageNodeName: map['artifactStorageNodeName'] == null ? null : (map['artifactStorageNodeName'] as String).input(),
+      artifactsStorageType: map['artifactsStorageType'] == null ? null : (StorageType.fromValue(map['artifactsStorageType'] as String)).input(),
+      frontEndServiceConfiguration: map['frontEndServiceConfiguration'] == null ? null : (FrontEndConfiguration.fromMap((map['frontEndServiceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      kubeConfig: map['kubeConfig'] == null ? null : (map['kubeConfig'] as String).input(),
     );
   }
 }

@@ -69,33 +69,20 @@ class MirroringEndpointState {
   /// [state] The current state of the endpoint.
   /// [updateTime] The timestamp when the resource was most recently updated.
   MirroringEndpointState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? mirroringEndpointGroup,
-    pulumi.Output<String>? mirroringEndpointId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<bool>? reconciling,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mirroringEndpointGroup = pulumi.Input.asOptionalInput<String>(mirroringEndpointGroup),
-      mirroringEndpointId = pulumi.Input.asOptionalInput<String>(mirroringEndpointId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      reconciling = pulumi.Input.asOptionalInput<bool>(reconciling),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.mirroringEndpointGroup,
+    this.mirroringEndpointId,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.reconciling,
+    this.state,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -117,19 +104,19 @@ class MirroringEndpointState {
 
   factory MirroringEndpointState.fromMap(Map<String, dynamic> map) {
     return MirroringEndpointState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mirroringEndpointGroup: map['mirroringEndpointGroup'] == null ? null : pulumi.Output.create<String>(map['mirroringEndpointGroup'] as String),
-      mirroringEndpointId: map['mirroringEndpointId'] == null ? null : pulumi.Output.create<String>(map['mirroringEndpointId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      reconciling: map['reconciling'] == null ? null : pulumi.Output.create<bool>(map['reconciling'] as bool),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mirroringEndpointGroup: map['mirroringEndpointGroup'] == null ? null : (map['mirroringEndpointGroup'] as String).input(),
+      mirroringEndpointId: map['mirroringEndpointId'] == null ? null : (map['mirroringEndpointId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

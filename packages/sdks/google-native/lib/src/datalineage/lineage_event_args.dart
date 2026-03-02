@@ -34,25 +34,16 @@ class LineageEventArgs {
   /// [runId] Required.
   /// [startTime] The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
   LineageEventArgs({
-    pulumi.Output<String>? endTime,
-    pulumi.Output<List<GoogleCloudDatacatalogLineageV1EventLink>>? links,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> processId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> runId,
-    required pulumi.Output<String> startTime,
-  }) :
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      links = pulumi.Input.asOptionalInput<List<GoogleCloudDatacatalogLineageV1EventLink>>(links),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      processId = pulumi.Input.asInput<String>(processId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      runId = pulumi.Input.asInput<String>(runId),
-      startTime = pulumi.Input.asInput<String>(startTime);
+    this.endTime,
+    this.links,
+    this.location,
+    this.name,
+    required this.processId,
+    this.project,
+    this.requestId,
+    required this.runId,
+    required this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class LineageEventArgs {
 
   factory LineageEventArgs.fromMap(Map<String, dynamic> map) {
     return LineageEventArgs(
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      links: map['links'] == null ? null : pulumi.Output.create<List<GoogleCloudDatacatalogLineageV1EventLink>>(pulumi.Input.decodeList<GoogleCloudDatacatalogLineageV1EventLink>(map['links'], (value) => GoogleCloudDatacatalogLineageV1EventLink.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      processId: pulumi.Output.create<String>(map['processId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      runId: pulumi.Output.create<String>(map['runId'] as String),
-      startTime: pulumi.Output.create<String>(map['startTime'] as String),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      links: map['links'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogLineageV1EventLink>(map['links'], (value) => GoogleCloudDatacatalogLineageV1EventLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      processId: (map['processId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      runId: (map['runId'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class TransitRouterMulticastDomainPeerMemberArgs {
   /// [peerTransitRouterMulticastDomainId] The IDs of the inter-region multicast domains.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
   TransitRouterMulticastDomainPeerMemberArgs({
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> groupIpAddress,
-    required pulumi.Output<String> peerTransitRouterMulticastDomainId,
-    required pulumi.Output<String> transitRouterMulticastDomainId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      groupIpAddress = pulumi.Input.asInput<String>(groupIpAddress),
-      peerTransitRouterMulticastDomainId = pulumi.Input.asInput<String>(peerTransitRouterMulticastDomainId),
-      transitRouterMulticastDomainId = pulumi.Input.asInput<String>(transitRouterMulticastDomainId);
+    this.dryRun,
+    required this.groupIpAddress,
+    required this.peerTransitRouterMulticastDomainId,
+    required this.transitRouterMulticastDomainId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class TransitRouterMulticastDomainPeerMemberArgs {
 
   factory TransitRouterMulticastDomainPeerMemberArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainPeerMemberArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      groupIpAddress: pulumi.Output.create<String>(map['groupIpAddress'] as String),
-      peerTransitRouterMulticastDomainId: pulumi.Output.create<String>(map['peerTransitRouterMulticastDomainId'] as String),
-      transitRouterMulticastDomainId: pulumi.Output.create<String>(map['transitRouterMulticastDomainId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      groupIpAddress: (map['groupIpAddress'] as String).input(),
+      peerTransitRouterMulticastDomainId: (map['peerTransitRouterMulticastDomainId'] as String).input(),
+      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
     );
   }
 }

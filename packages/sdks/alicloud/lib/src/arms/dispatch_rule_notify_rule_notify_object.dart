@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DispatchRuleNotifyRuleNotifyObject {
   /// The name of the contact or contact group.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of the contact or contact group.
-  final String notifyObjectId;
+  final pulumi.Input<String> notifyObjectId;
   /// The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-  final String notifyType;
+  final pulumi.Input<String> notifyType;
 
   /// Creates a new [DispatchRuleNotifyRuleNotifyObject].
   /// [name] The name of the contact or contact group.
@@ -29,9 +30,9 @@ class DispatchRuleNotifyRuleNotifyObject {
 
   factory DispatchRuleNotifyRuleNotifyObject.fromMap(Map<String, dynamic> map) {
     return DispatchRuleNotifyRuleNotifyObject(
-      name: map['name'] as String,
-      notifyObjectId: map['notifyObjectId'] as String,
-      notifyType: map['notifyType'] as String,
+      name: (map['name'] as String).input(),
+      notifyObjectId: (map['notifyObjectId'] as String).input(),
+      notifyType: (map['notifyType'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'update_status_response.dart';
 
 /// The status of a member update operation.
 class MemberUpdateStatusResponse {
   /// The Azure resource id of the target Kubernetes cluster.
-  final String clusterResourceId;
+  final pulumi.Input<String> clusterResourceId;
   /// The status message after processing the member update operation.
-  final String message;
+  final pulumi.Input<String> message;
   /// The name of the FleetMember.
-  final String name;
+  final pulumi.Input<String> name;
   /// The operation resource id of the latest attempt to perform the operation.
-  final String operationId;
+  final pulumi.Input<String> operationId;
   /// The status of the MemberUpdate operation.
-  final UpdateStatusResponse status;
+  final pulumi.Input<UpdateStatusResponse> status;
 
   /// Creates a new [MemberUpdateStatusResponse].
   /// [clusterResourceId] The Azure resource id of the target Kubernetes cluster.
@@ -35,17 +36,17 @@ class MemberUpdateStatusResponse {
       'message': message,
       'name': name,
       'operationId': operationId,
-      'status': status.toMap(),
+      'status': pulumi.Input.mapInputValue<UpdateStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory MemberUpdateStatusResponse.fromMap(Map<String, dynamic> map) {
     return MemberUpdateStatusResponse(
-      clusterResourceId: map['clusterResourceId'] as String,
-      message: map['message'] as String,
-      name: map['name'] as String,
-      operationId: map['operationId'] as String,
-      status: UpdateStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      clusterResourceId: (map['clusterResourceId'] as String).input(),
+      message: (map['message'] as String).input(),
+      name: (map['name'] as String).input(),
+      operationId: (map['operationId'] as String).input(),
+      status: (UpdateStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

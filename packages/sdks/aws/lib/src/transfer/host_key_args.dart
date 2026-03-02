@@ -29,19 +29,13 @@ class HostKeyArgs {
   /// [serverId] Server ID.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   HostKeyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? hostKeyBody,
-    pulumi.Output<String>? hostKeyBodyWo,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serverId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      hostKeyBody = pulumi.Input.asOptionalInput<String>(hostKeyBody),
-      hostKeyBodyWo = pulumi.Input.asOptionalInput<String>(hostKeyBodyWo),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverId = pulumi.Input.asInput<String>(serverId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.hostKeyBody,
+    this.hostKeyBodyWo,
+    this.region,
+    required this.serverId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class HostKeyArgs {
 
   factory HostKeyArgs.fromMap(Map<String, dynamic> map) {
     return HostKeyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      hostKeyBody: map['hostKeyBody'] == null ? null : pulumi.Output.create<String>(map['hostKeyBody'] as String),
-      hostKeyBodyWo: map['hostKeyBodyWo'] == null ? null : pulumi.Output.create<String>(map['hostKeyBodyWo'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hostKeyBody: map['hostKeyBody'] == null ? null : (map['hostKeyBody'] as String).input(),
+      hostKeyBodyWo: map['hostKeyBodyWo'] == null ? null : (map['hostKeyBodyWo'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

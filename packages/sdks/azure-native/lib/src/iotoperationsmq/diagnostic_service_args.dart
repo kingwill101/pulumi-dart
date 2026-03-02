@@ -54,35 +54,21 @@ class DiagnosticServiceArgs {
   /// [staleDataTimeoutSeconds] Metric inactivity timeout.
   /// [tags] Resource tags.
   DiagnosticServiceArgs({
-    pulumi.Output<int>? dataExportFrequencySeconds,
-    pulumi.Output<String>? diagnosticServiceName,
-    required pulumi.Output<ExtendedLocationProperty> extendedLocation,
-    required pulumi.Output<ContainerImage> image,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? logFormat,
-    pulumi.Output<String>? logLevel,
-    pulumi.Output<double>? maxDataStorageSize,
-    pulumi.Output<int>? metricsPort,
-    required pulumi.Output<String> mqName,
-    pulumi.Output<String>? openTelemetryTracesCollectorAddr,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? staleDataTimeoutSeconds,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dataExportFrequencySeconds = pulumi.Input.asOptionalInput<int>(dataExportFrequencySeconds),
-      diagnosticServiceName = pulumi.Input.asOptionalInput<String>(diagnosticServiceName),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocationProperty>(extendedLocation),
-      image = pulumi.Input.asInput<ContainerImage>(image),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logFormat = pulumi.Input.asOptionalInput<String>(logFormat),
-      logLevel = pulumi.Input.asOptionalInput<String>(logLevel),
-      maxDataStorageSize = pulumi.Input.asOptionalInput<double>(maxDataStorageSize),
-      metricsPort = pulumi.Input.asOptionalInput<int>(metricsPort),
-      mqName = pulumi.Input.asInput<String>(mqName),
-      openTelemetryTracesCollectorAddr = pulumi.Input.asOptionalInput<String>(openTelemetryTracesCollectorAddr),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      staleDataTimeoutSeconds = pulumi.Input.asOptionalInput<int>(staleDataTimeoutSeconds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dataExportFrequencySeconds,
+    this.diagnosticServiceName,
+    required this.extendedLocation,
+    required this.image,
+    this.location,
+    this.logFormat,
+    this.logLevel,
+    this.maxDataStorageSize,
+    this.metricsPort,
+    required this.mqName,
+    this.openTelemetryTracesCollectorAddr,
+    required this.resourceGroupName,
+    this.staleDataTimeoutSeconds,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class DiagnosticServiceArgs {
 
   factory DiagnosticServiceArgs.fromMap(Map<String, dynamic> map) {
     return DiagnosticServiceArgs(
-      dataExportFrequencySeconds: map['dataExportFrequencySeconds'] == null ? null : pulumi.Output.create<int>(map['dataExportFrequencySeconds'] as int),
-      diagnosticServiceName: map['diagnosticServiceName'] == null ? null : pulumi.Output.create<String>(map['diagnosticServiceName'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocationProperty>(ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      image: pulumi.Output.create<ContainerImage>(ContainerImage.fromMap((map['image'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logFormat: map['logFormat'] == null ? null : pulumi.Output.create<String>(map['logFormat'] as String),
-      logLevel: map['logLevel'] == null ? null : pulumi.Output.create<String>(map['logLevel'] as String),
-      maxDataStorageSize: map['maxDataStorageSize'] == null ? null : pulumi.Output.create<double>(map['maxDataStorageSize'] as double),
-      metricsPort: map['metricsPort'] == null ? null : pulumi.Output.create<int>(map['metricsPort'] as int),
-      mqName: pulumi.Output.create<String>(map['mqName'] as String),
-      openTelemetryTracesCollectorAddr: map['openTelemetryTracesCollectorAddr'] == null ? null : pulumi.Output.create<String>(map['openTelemetryTracesCollectorAddr'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      staleDataTimeoutSeconds: map['staleDataTimeoutSeconds'] == null ? null : pulumi.Output.create<int>(map['staleDataTimeoutSeconds'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dataExportFrequencySeconds: map['dataExportFrequencySeconds'] == null ? null : (map['dataExportFrequencySeconds'] as int).input(),
+      diagnosticServiceName: map['diagnosticServiceName'] == null ? null : (map['diagnosticServiceName'] as String).input(),
+      extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      image: (ContainerImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logFormat: map['logFormat'] == null ? null : (map['logFormat'] as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      maxDataStorageSize: map['maxDataStorageSize'] == null ? null : (map['maxDataStorageSize'] as double).input(),
+      metricsPort: map['metricsPort'] == null ? null : (map['metricsPort'] as int).input(),
+      mqName: (map['mqName'] as String).input(),
+      openTelemetryTracesCollectorAddr: map['openTelemetryTracesCollectorAddr'] == null ? null : (map['openTelemetryTracesCollectorAddr'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      staleDataTimeoutSeconds: map['staleDataTimeoutSeconds'] == null ? null : (map['staleDataTimeoutSeconds'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

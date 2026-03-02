@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNasFileSystemsSystem {
   /// The capacity of nas file system.
-  final String capacity;
+  final pulumi.Input<String> capacity;
   /// The create time of nas file system.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of nas file system.
-  final String description;
+  final pulumi.Input<String> description;
   /// The filesystem id of nas file system.
-  final String fileSystemId;
+  final pulumi.Input<String> fileSystemId;
   /// The type of nas file system.
-  final String fileSystemType;
+  final pulumi.Input<String> fileSystemType;
   /// The ID of the Nas File System.
-  final String id;
+  final pulumi.Input<String> id;
   /// The size of metered.
-  final String meteredSize;
+  final pulumi.Input<String> meteredSize;
   /// The domain of mount target.
-  final String mountTargetDomain;
+  final pulumi.Input<String> mountTargetDomain;
   /// The status of mount target. Valid values: `Pending`, `Active`, `Inactive`,`Deleting`,`Invalid`.
-  final String mountTargetStatus;
+  final pulumi.Input<String> mountTargetStatus;
   /// The name of nas file system.
-  final String nasFileSystemName;
+  final pulumi.Input<String> nasFileSystemName;
   /// The ID of office site.
-  final String officeSiteId;
+  final pulumi.Input<String> officeSiteId;
   /// The name of office site.
-  final String officeSiteName;
+  final pulumi.Input<String> officeSiteName;
   /// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The storage type of nas file system.
-  final String storageType;
+  final pulumi.Input<String> storageType;
   /// Whether to support Acl.
-  final bool supportAcl;
+  final pulumi.Input<bool> supportAcl;
   /// The zone id of nas file system.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetNasFileSystemsSystem].
   /// [capacity] The capacity of nas file system.
@@ -94,22 +95,22 @@ class GetNasFileSystemsSystem {
 
   factory GetNasFileSystemsSystem.fromMap(Map<String, dynamic> map) {
     return GetNasFileSystemsSystem(
-      capacity: map['capacity'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      fileSystemId: map['fileSystemId'] as String,
-      fileSystemType: map['fileSystemType'] as String,
-      id: map['id'] as String,
-      meteredSize: map['meteredSize'] as String,
-      mountTargetDomain: map['mountTargetDomain'] as String,
-      mountTargetStatus: map['mountTargetStatus'] as String,
-      nasFileSystemName: map['nasFileSystemName'] as String,
-      officeSiteId: map['officeSiteId'] as String,
-      officeSiteName: map['officeSiteName'] as String,
-      status: map['status'] as String,
-      storageType: map['storageType'] as String,
-      supportAcl: map['supportAcl'] as bool,
-      zoneId: map['zoneId'] as String,
+      capacity: (map['capacity'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      fileSystemType: (map['fileSystemType'] as String).input(),
+      id: (map['id'] as String).input(),
+      meteredSize: (map['meteredSize'] as String).input(),
+      mountTargetDomain: (map['mountTargetDomain'] as String).input(),
+      mountTargetStatus: (map['mountTargetStatus'] as String).input(),
+      nasFileSystemName: (map['nasFileSystemName'] as String).input(),
+      officeSiteId: (map['officeSiteId'] as String).input(),
+      officeSiteName: (map['officeSiteName'] as String).input(),
+      status: (map['status'] as String).input(),
+      storageType: (map['storageType'] as String).input(),
+      supportAcl: (map['supportAcl'] as bool).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

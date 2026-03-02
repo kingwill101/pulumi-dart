@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ContainerResizePolicy represents resource resize policy for the container.
 class ContainerResizePolicyPatch {
   /// Name of the resource to which this resource resize policy applies. Supported values: cpu, memory.
-  final String? resourceName;
+  final pulumi.Input<String>? resourceName;
   /// Restart policy to apply when specified resource is resized. If not specified, it defaults to NotRequired.
-  final String? restartPolicy;
+  final pulumi.Input<String>? restartPolicy;
 
   /// Creates a new [ContainerResizePolicyPatch].
   /// [resourceName] Name of the resource to which this resource resize policy applies. Supported values: cpu, memory.
@@ -25,8 +26,8 @@ class ContainerResizePolicyPatch {
 
   factory ContainerResizePolicyPatch.fromMap(Map<String, dynamic> map) {
     return ContainerResizePolicyPatch(
-      resourceName: map['resourceName'] == null ? null : map['resourceName'] as String,
-      restartPolicy: map['restartPolicy'] == null ? null : map['restartPolicy'] as String,
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      restartPolicy: map['restartPolicy'] == null ? null : (map['restartPolicy'] as String).input(),
     );
   }
 }

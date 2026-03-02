@@ -19,13 +19,10 @@ class GetRuntimeEnvironmentArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [runtimeEnvironmentName] The name of the Runtime Environment.
   GetRuntimeEnvironmentArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> runtimeEnvironmentName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runtimeEnvironmentName = pulumi.Input.asInput<String>(runtimeEnvironmentName);
+    required this.automationAccountName,
+    required this.resourceGroupName,
+    required this.runtimeEnvironmentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRuntimeEnvironmentArgs {
 
   factory GetRuntimeEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeEnvironmentArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runtimeEnvironmentName: pulumi.Output.create<String>(map['runtimeEnvironmentName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runtimeEnvironmentName: (map['runtimeEnvironmentName'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class PolicyArgs {
   /// [xmlContent] The XML Content for this Policy as a string. To integrate frontend and backend services in Azure API Management, utilize the [`set-backend-service`](https://learn.microsoft.com/azure/api-management/set-backend-service-policy) policy, specifying the `base-url` value. Typically, this value corresponds to the `url` property defined in the `Backend` resource configuration.
   /// [xmlLink] A link to a Policy XML Document, which must be publicly available.
   PolicyArgs({
-    required pulumi.Output<String> apiManagementId,
-    pulumi.Output<String>? xmlContent,
-    pulumi.Output<String>? xmlLink,
-  }) :
-      apiManagementId = pulumi.Input.asInput<String>(apiManagementId),
-      xmlContent = pulumi.Input.asOptionalInput<String>(xmlContent),
-      xmlLink = pulumi.Input.asOptionalInput<String>(xmlLink);
+    required this.apiManagementId,
+    this.xmlContent,
+    this.xmlLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      apiManagementId: pulumi.Output.create<String>(map['apiManagementId'] as String),
-      xmlContent: map['xmlContent'] == null ? null : pulumi.Output.create<String>(map['xmlContent'] as String),
-      xmlLink: map['xmlLink'] == null ? null : pulumi.Output.create<String>(map['xmlLink'] as String),
+      apiManagementId: (map['apiManagementId'] as String).input(),
+      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent'] as String).input(),
+      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink'] as String).input(),
     );
   }
 }

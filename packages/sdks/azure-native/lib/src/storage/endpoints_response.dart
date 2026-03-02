@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_account_internet_endpoints_response.dart';
 import 'storage_account_microsoft_endpoints_response.dart';
 
 /// The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object.
 class EndpointsResponse {
   /// Gets the blob endpoint.
-  final String blob;
+  final pulumi.Input<String> blob;
   /// Gets the dfs endpoint.
-  final String dfs;
+  final pulumi.Input<String> dfs;
   /// Gets the file endpoint.
-  final String file;
+  final pulumi.Input<String> file;
   /// Gets the internet routing storage endpoints
-  final StorageAccountInternetEndpointsResponse? internetEndpoints;
+  final pulumi.Input<StorageAccountInternetEndpointsResponse>? internetEndpoints;
   /// Gets the microsoft routing storage endpoints.
-  final StorageAccountMicrosoftEndpointsResponse? microsoftEndpoints;
+  final pulumi.Input<StorageAccountMicrosoftEndpointsResponse>? microsoftEndpoints;
   /// Gets the queue endpoint.
-  final String queue;
+  final pulumi.Input<String> queue;
   /// Gets the table endpoint.
-  final String table;
+  final pulumi.Input<String> table;
   /// Gets the web endpoint.
-  final String web;
+  final pulumi.Input<String> web;
 
   /// Creates a new [EndpointsResponse].
   /// [blob] Gets the blob endpoint.
@@ -47,8 +48,8 @@ class EndpointsResponse {
       'blob': blob,
       'dfs': dfs,
       'file': file,
-      'internetEndpoints': ?internetEndpoints == null ? null : internetEndpoints!.toMap(),
-      'microsoftEndpoints': ?microsoftEndpoints == null ? null : microsoftEndpoints!.toMap(),
+      'internetEndpoints': ?pulumi.Input.mapOptionalInputValue<StorageAccountInternetEndpointsResponse, Map<String, dynamic>>(internetEndpoints, (value) => value.toMap()),
+      'microsoftEndpoints': ?pulumi.Input.mapOptionalInputValue<StorageAccountMicrosoftEndpointsResponse, Map<String, dynamic>>(microsoftEndpoints, (value) => value.toMap()),
       'queue': queue,
       'table': table,
       'web': web,
@@ -57,14 +58,14 @@ class EndpointsResponse {
 
   factory EndpointsResponse.fromMap(Map<String, dynamic> map) {
     return EndpointsResponse(
-      blob: map['blob'] as String,
-      dfs: map['dfs'] as String,
-      file: map['file'] as String,
-      internetEndpoints: map['internetEndpoints'] == null ? null : StorageAccountInternetEndpointsResponse.fromMap((map['internetEndpoints'] as Map).cast<String, dynamic>()),
-      microsoftEndpoints: map['microsoftEndpoints'] == null ? null : StorageAccountMicrosoftEndpointsResponse.fromMap((map['microsoftEndpoints'] as Map).cast<String, dynamic>()),
-      queue: map['queue'] as String,
-      table: map['table'] as String,
-      web: map['web'] as String,
+      blob: (map['blob'] as String).input(),
+      dfs: (map['dfs'] as String).input(),
+      file: (map['file'] as String).input(),
+      internetEndpoints: map['internetEndpoints'] == null ? null : (StorageAccountInternetEndpointsResponse.fromMap((map['internetEndpoints'] as Map).cast<String, dynamic>())).input(),
+      microsoftEndpoints: map['microsoftEndpoints'] == null ? null : (StorageAccountMicrosoftEndpointsResponse.fromMap((map['microsoftEndpoints'] as Map).cast<String, dynamic>())).input(),
+      queue: (map['queue'] as String).input(),
+      table: (map['table'] as String).input(),
+      web: (map['web'] as String).input(),
     );
   }
 }

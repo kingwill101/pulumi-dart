@@ -28,17 +28,12 @@ class ListingSubscriptionArgs {
   /// [location] The name of the location of the data exchange. Distinct from the location of the destination data set.
   /// [project] The ID of the project in which the resource belongs.
   ListingSubscriptionArgs({
-    required pulumi.Output<String> dataExchangeId,
-    required pulumi.Output<ListingSubscriptionDestinationDataset> destinationDataset,
-    required pulumi.Output<String> listingId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      dataExchangeId = pulumi.Input.asInput<String>(dataExchangeId),
-      destinationDataset = pulumi.Input.asInput<ListingSubscriptionDestinationDataset>(destinationDataset),
-      listingId = pulumi.Input.asInput<String>(listingId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dataExchangeId,
+    required this.destinationDataset,
+    required this.listingId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class ListingSubscriptionArgs {
 
   factory ListingSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return ListingSubscriptionArgs(
-      dataExchangeId: pulumi.Output.create<String>(map['dataExchangeId'] as String),
-      destinationDataset: pulumi.Output.create<ListingSubscriptionDestinationDataset>(ListingSubscriptionDestinationDataset.fromMap((map['destinationDataset'] as Map).cast<String, dynamic>())),
-      listingId: pulumi.Output.create<String>(map['listingId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataExchangeId: (map['dataExchangeId'] as String).input(),
+      destinationDataset: (ListingSubscriptionDestinationDataset.fromMap((map['destinationDataset'] as Map).cast<String, dynamic>())).input(),
+      listingId: (map['listingId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

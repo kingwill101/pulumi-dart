@@ -19,13 +19,10 @@ class GetElasticBackupPolicyArgs {
   /// [backupPolicyName] The name of the ElasticBackupPolicy
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetElasticBackupPolicyArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> backupPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      backupPolicyName = pulumi.Input.asInput<String>(backupPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.backupPolicyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetElasticBackupPolicyArgs {
 
   factory GetElasticBackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetElasticBackupPolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      backupPolicyName: pulumi.Output.create<String>(map['backupPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      backupPolicyName: (map['backupPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

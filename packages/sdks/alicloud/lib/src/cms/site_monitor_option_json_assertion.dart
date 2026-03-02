@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SiteMonitorOptionJsonAssertion {
   /// Assertion comparison operator. Value:
@@ -11,10 +12,10 @@ class SiteMonitorOptionJsonAssertion {
   /// - isNot: not equal.
   /// - Lesthan: less.
   /// - moreThan: Greater.
-  final String? operator;
+  final pulumi.Input<String>? operator;
   /// Assertion matches the target numeric value or character of the comparison.
-  final String? target;
-  final String? type;
+  final pulumi.Input<String>? target;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [SiteMonitorOptionJsonAssertion].
   /// [operator] Assertion comparison operator. Value:
@@ -36,9 +37,9 @@ class SiteMonitorOptionJsonAssertion {
 
   factory SiteMonitorOptionJsonAssertion.fromMap(Map<String, dynamic> map) {
     return SiteMonitorOptionJsonAssertion(
-      operator: map['operator'] == null ? null : map['operator'] as String,
-      target: map['target'] == null ? null : map['target'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

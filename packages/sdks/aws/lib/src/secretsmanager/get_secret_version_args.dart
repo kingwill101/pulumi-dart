@@ -22,15 +22,11 @@ class GetSecretVersionArgs {
   /// [versionId] Specifies the unique identifier of the version of the secret that you want to retrieve. Overrides `version_stage`.
   /// [versionStage] Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
   GetSecretVersionArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> secretId,
-    pulumi.Output<String>? versionId,
-    pulumi.Output<String>? versionStage,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretId = pulumi.Input.asInput<String>(secretId),
-      versionId = pulumi.Input.asOptionalInput<String>(versionId),
-      versionStage = pulumi.Input.asOptionalInput<String>(versionStage);
+    this.region,
+    required this.secretId,
+    this.versionId,
+    this.versionStage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSecretVersionArgs {
 
   factory GetSecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretId: pulumi.Output.create<String>(map['secretId'] as String),
-      versionId: map['versionId'] == null ? null : pulumi.Output.create<String>(map['versionId'] as String),
-      versionStage: map['versionStage'] == null ? null : pulumi.Output.create<String>(map['versionStage'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretId: (map['secretId'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      versionStage: map['versionStage'] == null ? null : (map['versionStage'] as String).input(),
     );
   }
 }

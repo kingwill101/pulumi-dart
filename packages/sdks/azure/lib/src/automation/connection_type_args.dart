@@ -26,17 +26,12 @@ class ConnectionTypeArgs {
   /// [name] The name which should be used for this Automation Connection Type. Changing this forces a new Automation to be created.
   /// [resourceGroupName] The name of the Resource Group where the Automation should exist. Changing this forces a new Automation to be created.
   ConnectionTypeArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<List<ConnectionTypeField>> fields,
-    pulumi.Output<bool>? isGlobal,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      fields = pulumi.Input.asInput<List<ConnectionTypeField>>(fields),
-      isGlobal = pulumi.Input.asOptionalInput<bool>(isGlobal),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.fields,
+    this.isGlobal,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ConnectionTypeArgs {
 
   factory ConnectionTypeArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionTypeArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      fields: pulumi.Output.create<List<ConnectionTypeField>>(pulumi.Input.decodeList<ConnectionTypeField>(map['fields'], (value) => ConnectionTypeField.fromMap((value as Map).cast<String, dynamic>()))),
-      isGlobal: map['isGlobal'] == null ? null : pulumi.Output.create<bool>(map['isGlobal'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      fields: (pulumi.Input.decodeList<ConnectionTypeField>(map['fields'], (value) => ConnectionTypeField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

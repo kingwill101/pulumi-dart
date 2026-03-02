@@ -14,11 +14,9 @@ class GetDeploymentDeploymentmanagerV2Args {
   /// [deployment] Required.
   /// [project] Optional.
   GetDeploymentDeploymentmanagerV2Args({
-    required pulumi.Output<String> deployment,
-    pulumi.Output<String>? project,
-  }) :
-      deployment = pulumi.Input.asInput<String>(deployment),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.deployment,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetDeploymentDeploymentmanagerV2Args {
 
   factory GetDeploymentDeploymentmanagerV2Args.fromMap(Map<String, dynamic> map) {
     return GetDeploymentDeploymentmanagerV2Args(
-      deployment: pulumi.Output.create<String>(map['deployment'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      deployment: (map['deployment'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

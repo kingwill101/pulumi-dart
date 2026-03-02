@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Build service agent pool size properties
 class BuildServiceAgentPoolSizePropertiesResponse {
   /// The cpu property of build service agent pool size
-  final String cpu;
+  final pulumi.Input<String> cpu;
   /// The memory property of build service agent pool size
-  final String memory;
+  final pulumi.Input<String> memory;
   /// The name of build service agent pool size
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [BuildServiceAgentPoolSizePropertiesResponse].
   /// [cpu] The cpu property of build service agent pool size
@@ -30,9 +31,9 @@ class BuildServiceAgentPoolSizePropertiesResponse {
 
   factory BuildServiceAgentPoolSizePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BuildServiceAgentPoolSizePropertiesResponse(
-      cpu: map['cpu'] as String,
-      memory: map['memory'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      cpu: (map['cpu'] as String).input(),
+      memory: (map['memory'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

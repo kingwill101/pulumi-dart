@@ -17,13 +17,10 @@ class ListGlobalRulestackCountriesArgs {
   /// [skip] Optional.
   /// [top] Optional.
   ListGlobalRulestackCountriesArgs({
-    required pulumi.Output<String> globalRulestackName,
-    pulumi.Output<String>? skip,
-    pulumi.Output<int>? top,
-  }) :
-      globalRulestackName = pulumi.Input.asInput<String>(globalRulestackName),
-      skip = pulumi.Input.asOptionalInput<String>(skip),
-      top = pulumi.Input.asOptionalInput<int>(top);
+    required this.globalRulestackName,
+    this.skip,
+    this.top,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class ListGlobalRulestackCountriesArgs {
 
   factory ListGlobalRulestackCountriesArgs.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackCountriesArgs(
-      globalRulestackName: pulumi.Output.create<String>(map['globalRulestackName'] as String),
-      skip: map['skip'] == null ? null : pulumi.Output.create<String>(map['skip'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
+      globalRulestackName: (map['globalRulestackName'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

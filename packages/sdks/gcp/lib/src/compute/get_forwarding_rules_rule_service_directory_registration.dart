@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetForwardingRulesRuleServiceDirectoryRegistration {
   /// Service Directory namespace to register the forwarding rule under.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// Service Directory service to register the forwarding rule under.
-  final String service;
+  final pulumi.Input<String> service;
 
   /// Creates a new [GetForwardingRulesRuleServiceDirectoryRegistration].
   /// [namespace] Service Directory namespace to register the forwarding rule under.
@@ -24,8 +25,8 @@ class GetForwardingRulesRuleServiceDirectoryRegistration {
 
   factory GetForwardingRulesRuleServiceDirectoryRegistration.fromMap(Map<String, dynamic> map) {
     return GetForwardingRulesRuleServiceDirectoryRegistration(
-      namespace: map['namespace'] as String,
-      service: map['service'] as String,
+      namespace: (map['namespace'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

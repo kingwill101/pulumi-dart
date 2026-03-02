@@ -49,31 +49,19 @@ class TriggerBlobEventArgs {
   /// [pipelines] One or more `pipeline` blocks as defined below.
   /// [storageAccountId] The ID of Storage Account in which blob event will be listened. Changing this forces a new resource.
   TriggerBlobEventArgs({
-    pulumi.Output<bool>? activated,
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? blobPathBeginsWith,
-    pulumi.Output<String>? blobPathEndsWith,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<String>> events,
-    pulumi.Output<bool>? ignoreEmptyBlobs,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<TriggerBlobEventPipeline>> pipelines,
-    required pulumi.Output<String> storageAccountId,
-  }) :
-      activated = pulumi.Input.asOptionalInput<bool>(activated),
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      blobPathBeginsWith = pulumi.Input.asOptionalInput<String>(blobPathBeginsWith),
-      blobPathEndsWith = pulumi.Input.asOptionalInput<String>(blobPathEndsWith),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      events = pulumi.Input.asInput<List<String>>(events),
-      ignoreEmptyBlobs = pulumi.Input.asOptionalInput<bool>(ignoreEmptyBlobs),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pipelines = pulumi.Input.asInput<List<TriggerBlobEventPipeline>>(pipelines),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId);
+    this.activated,
+    this.additionalProperties,
+    this.annotations,
+    this.blobPathBeginsWith,
+    this.blobPathEndsWith,
+    required this.dataFactoryId,
+    this.description,
+    required this.events,
+    this.ignoreEmptyBlobs,
+    this.name,
+    required this.pipelines,
+    required this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class TriggerBlobEventArgs {
 
   factory TriggerBlobEventArgs.fromMap(Map<String, dynamic> map) {
     return TriggerBlobEventArgs(
-      activated: map['activated'] == null ? null : pulumi.Output.create<bool>(map['activated'] as bool),
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      blobPathBeginsWith: map['blobPathBeginsWith'] == null ? null : pulumi.Output.create<String>(map['blobPathBeginsWith'] as String),
-      blobPathEndsWith: map['blobPathEndsWith'] == null ? null : pulumi.Output.create<String>(map['blobPathEndsWith'] as String),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      events: pulumi.Output.create<List<String>>((map['events'] as List).cast<String>()),
-      ignoreEmptyBlobs: map['ignoreEmptyBlobs'] == null ? null : pulumi.Output.create<bool>(map['ignoreEmptyBlobs'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pipelines: pulumi.Output.create<List<TriggerBlobEventPipeline>>(pulumi.Input.decodeList<TriggerBlobEventPipeline>(map['pipelines'], (value) => TriggerBlobEventPipeline.fromMap((value as Map).cast<String, dynamic>()))),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
+      activated: map['activated'] == null ? null : (map['activated'] as bool).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      blobPathBeginsWith: map['blobPathBeginsWith'] == null ? null : (map['blobPathBeginsWith'] as String).input(),
+      blobPathEndsWith: map['blobPathEndsWith'] == null ? null : (map['blobPathEndsWith'] as String).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      events: ((map['events'] as List).cast<String>()).input(),
+      ignoreEmptyBlobs: map['ignoreEmptyBlobs'] == null ? null : (map['ignoreEmptyBlobs'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pipelines: (pulumi.Input.decodeList<TriggerBlobEventPipeline>(map['pipelines'], (value) => TriggerBlobEventPipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

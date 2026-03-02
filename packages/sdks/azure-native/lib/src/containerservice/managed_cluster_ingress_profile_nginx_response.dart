@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedClusterIngressProfileNginxResponse {
   /// Ingress type for the default NginxIngressController custom resource
-  final String? defaultIngressControllerType;
+  final pulumi.Input<String>? defaultIngressControllerType;
 
   /// Creates a new [ManagedClusterIngressProfileNginxResponse].
   /// [defaultIngressControllerType] Ingress type for the default NginxIngressController custom resource
@@ -19,7 +20,7 @@ class ManagedClusterIngressProfileNginxResponse {
 
   factory ManagedClusterIngressProfileNginxResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterIngressProfileNginxResponse(
-      defaultIngressControllerType: map['defaultIngressControllerType'] == null ? null : map['defaultIngressControllerType'] as String,
+      defaultIngressControllerType: map['defaultIngressControllerType'] == null ? null : (map['defaultIngressControllerType'] as String).input(),
     );
   }
 }

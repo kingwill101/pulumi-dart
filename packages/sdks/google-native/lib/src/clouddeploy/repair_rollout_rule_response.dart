@@ -7,13 +7,13 @@ import 'repair_mode_response.dart';
 /// The `RepairRolloutRule` automation rule will automatically repair a failed `Rollout`.
 class RepairRolloutRuleResponse {
   /// Information around the state of the 'Automation' rule.
-  final AutomationRuleConditionResponse condition;
+  final pulumi.Input<AutomationRuleConditionResponse> condition;
   /// Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in `source_phase`. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
-  final List<String> jobs;
+  final pulumi.Input<List<String>> jobs;
   /// Defines the types of automatic repair actions for failed jobs.
-  final List<RepairModeResponse> repairModes;
+  final pulumi.Input<List<RepairModeResponse>> repairModes;
   /// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
-  final List<String> sourcePhases;
+  final pulumi.Input<List<String>> sourcePhases;
 
   /// Creates a new [RepairRolloutRuleResponse].
   /// [condition] Information around the state of the 'Automation' rule.
@@ -29,19 +29,19 @@ class RepairRolloutRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': condition.toMap(),
+      'condition': pulumi.Input.mapInputValue<AutomationRuleConditionResponse, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'jobs': jobs,
-      'repairModes': pulumi.Input.encodeList<RepairModeResponse, Map<String, dynamic>>(repairModes, (value) => value.toMap()),
+      'repairModes': pulumi.Input.mapInputValue<List<RepairModeResponse>, List<Map<String, dynamic>>>(repairModes, (value) => pulumi.Input.encodeList<RepairModeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sourcePhases': sourcePhases,
     };
   }
 
   factory RepairRolloutRuleResponse.fromMap(Map<String, dynamic> map) {
     return RepairRolloutRuleResponse(
-      condition: AutomationRuleConditionResponse.fromMap((map['condition'] as Map).cast<String, dynamic>()),
-      jobs: (map['jobs'] as List).cast<String>(),
-      repairModes: pulumi.Input.decodeList<RepairModeResponse>(map['repairModes'], (value) => RepairModeResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sourcePhases: (map['sourcePhases'] as List).cast<String>(),
+      condition: (AutomationRuleConditionResponse.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      jobs: ((map['jobs'] as List).cast<String>()).input(),
+      repairModes: (pulumi.Input.decodeList<RepairModeResponse>(map['repairModes'], (value) => RepairModeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePhases: ((map['sourcePhases'] as List).cast<String>()).input(),
     );
   }
 }

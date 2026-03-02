@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of a Custom SIP Header.
 class CustomSipHeaderResponse {
   /// The name of the Custom SIP Header
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [CustomSipHeaderResponse].
   /// [name] The name of the Custom SIP Header
@@ -20,7 +21,7 @@ class CustomSipHeaderResponse {
 
   factory CustomSipHeaderResponse.fromMap(Map<String, dynamic> map) {
     return CustomSipHeaderResponse(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

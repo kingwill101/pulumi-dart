@@ -31,21 +31,14 @@ class GetEcsLaunchTemplatesArgs {
   /// [templateResourceGroupId] The ID of the Resource Group.
   /// [templateTags] The tags of the launch template.
   GetEcsLaunchTemplatesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? launchTemplateName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? templateResourceGroupId,
-    pulumi.Output<Map<String, String>>? templateTags,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      launchTemplateName = pulumi.Input.asOptionalInput<String>(launchTemplateName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      templateResourceGroupId = pulumi.Input.asOptionalInput<String>(templateResourceGroupId),
-      templateTags = pulumi.Input.asOptionalInput<Map<String, String>>(templateTags);
+    this.enableDetails,
+    this.ids,
+    this.launchTemplateName,
+    this.nameRegex,
+    this.outputFile,
+    this.templateResourceGroupId,
+    this.templateTags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetEcsLaunchTemplatesArgs {
 
   factory GetEcsLaunchTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsLaunchTemplatesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      launchTemplateName: map['launchTemplateName'] == null ? null : pulumi.Output.create<String>(map['launchTemplateName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      templateResourceGroupId: map['templateResourceGroupId'] == null ? null : pulumi.Output.create<String>(map['templateResourceGroupId'] as String),
-      templateTags: map['templateTags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['templateTags'] as Map).cast<String, String>()),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      launchTemplateName: map['launchTemplateName'] == null ? null : (map['launchTemplateName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      templateResourceGroupId: map['templateResourceGroupId'] == null ? null : (map['templateResourceGroupId'] as String).input(),
+      templateTags: map['templateTags'] == null ? null : ((map['templateTags'] as Map).cast<String, String>()).input(),
     );
   }
 }

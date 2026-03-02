@@ -38,25 +38,16 @@ class FluxConfigurationState {
   /// [namespace] Specifies the namespace to which this configuration is installed to. Changing this forces a new Arc Kubernetes Flux Configuration to be created.
   /// [scope] Specifies the scope at which the operator will be installed. Possible values are `cluster` and `namespace`. Defaults to `namespace`. Changing this forces a new Arc Kubernetes Flux Configuration to be created.
   FluxConfigurationState({
-    pulumi.Output<FluxConfigurationBlobStorage>? blobStorage,
-    pulumi.Output<FluxConfigurationBucket>? bucket,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<bool>? continuousReconciliationEnabled,
-    pulumi.Output<FluxConfigurationGitRepository>? gitRepository,
-    pulumi.Output<List<FluxConfigurationKustomization>>? kustomizations,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? scope,
-  }) :
-      blobStorage = pulumi.Input.asOptionalInput<FluxConfigurationBlobStorage>(blobStorage),
-      bucket = pulumi.Input.asOptionalInput<FluxConfigurationBucket>(bucket),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      continuousReconciliationEnabled = pulumi.Input.asOptionalInput<bool>(continuousReconciliationEnabled),
-      gitRepository = pulumi.Input.asOptionalInput<FluxConfigurationGitRepository>(gitRepository),
-      kustomizations = pulumi.Input.asOptionalInput<List<FluxConfigurationKustomization>>(kustomizations),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    this.blobStorage,
+    this.bucket,
+    this.clusterId,
+    this.continuousReconciliationEnabled,
+    this.gitRepository,
+    this.kustomizations,
+    this.name,
+    this.namespace,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class FluxConfigurationState {
 
   factory FluxConfigurationState.fromMap(Map<String, dynamic> map) {
     return FluxConfigurationState(
-      blobStorage: map['blobStorage'] == null ? null : pulumi.Output.create<FluxConfigurationBlobStorage>(FluxConfigurationBlobStorage.fromMap((map['blobStorage'] as Map).cast<String, dynamic>())),
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<FluxConfigurationBucket>(FluxConfigurationBucket.fromMap((map['bucket'] as Map).cast<String, dynamic>())),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      continuousReconciliationEnabled: map['continuousReconciliationEnabled'] == null ? null : pulumi.Output.create<bool>(map['continuousReconciliationEnabled'] as bool),
-      gitRepository: map['gitRepository'] == null ? null : pulumi.Output.create<FluxConfigurationGitRepository>(FluxConfigurationGitRepository.fromMap((map['gitRepository'] as Map).cast<String, dynamic>())),
-      kustomizations: map['kustomizations'] == null ? null : pulumi.Output.create<List<FluxConfigurationKustomization>>(pulumi.Input.decodeList<FluxConfigurationKustomization>(map['kustomizations'], (value) => FluxConfigurationKustomization.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      blobStorage: map['blobStorage'] == null ? null : (FluxConfigurationBlobStorage.fromMap((map['blobStorage'] as Map).cast<String, dynamic>())).input(),
+      bucket: map['bucket'] == null ? null : (FluxConfigurationBucket.fromMap((map['bucket'] as Map).cast<String, dynamic>())).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      continuousReconciliationEnabled: map['continuousReconciliationEnabled'] == null ? null : (map['continuousReconciliationEnabled'] as bool).input(),
+      gitRepository: map['gitRepository'] == null ? null : (FluxConfigurationGitRepository.fromMap((map['gitRepository'] as Map).cast<String, dynamic>())).input(),
+      kustomizations: map['kustomizations'] == null ? null : (pulumi.Input.decodeList<FluxConfigurationKustomization>(map['kustomizations'], (value) => FluxConfigurationKustomization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

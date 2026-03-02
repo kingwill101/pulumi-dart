@@ -29,21 +29,14 @@ class AntiBruteForceRuleState {
   /// [span] The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
   /// [uuidLists] The UUIDs of the servers to which you want to apply the defense rule.
   AntiBruteForceRuleState({
-    pulumi.Output<String>? antiBruteForceRuleName,
-    pulumi.Output<bool>? defaultRule,
-    pulumi.Output<int>? failCount,
-    pulumi.Output<int>? forbiddenTime,
-    pulumi.Output<AntiBruteForceRuleProtocolType>? protocolType,
-    pulumi.Output<int>? span,
-    pulumi.Output<List<String>>? uuidLists,
-  }) :
-      antiBruteForceRuleName = pulumi.Input.asOptionalInput<String>(antiBruteForceRuleName),
-      defaultRule = pulumi.Input.asOptionalInput<bool>(defaultRule),
-      failCount = pulumi.Input.asOptionalInput<int>(failCount),
-      forbiddenTime = pulumi.Input.asOptionalInput<int>(forbiddenTime),
-      protocolType = pulumi.Input.asOptionalInput<AntiBruteForceRuleProtocolType>(protocolType),
-      span = pulumi.Input.asOptionalInput<int>(span),
-      uuidLists = pulumi.Input.asOptionalInput<List<String>>(uuidLists);
+    this.antiBruteForceRuleName,
+    this.defaultRule,
+    this.failCount,
+    this.forbiddenTime,
+    this.protocolType,
+    this.span,
+    this.uuidLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class AntiBruteForceRuleState {
 
   factory AntiBruteForceRuleState.fromMap(Map<String, dynamic> map) {
     return AntiBruteForceRuleState(
-      antiBruteForceRuleName: map['antiBruteForceRuleName'] == null ? null : pulumi.Output.create<String>(map['antiBruteForceRuleName'] as String),
-      defaultRule: map['defaultRule'] == null ? null : pulumi.Output.create<bool>(map['defaultRule'] as bool),
-      failCount: map['failCount'] == null ? null : pulumi.Output.create<int>(map['failCount'] as int),
-      forbiddenTime: map['forbiddenTime'] == null ? null : pulumi.Output.create<int>(map['forbiddenTime'] as int),
-      protocolType: map['protocolType'] == null ? null : pulumi.Output.create<AntiBruteForceRuleProtocolType>(AntiBruteForceRuleProtocolType.fromMap((map['protocolType'] as Map).cast<String, dynamic>())),
-      span: map['span'] == null ? null : pulumi.Output.create<int>(map['span'] as int),
-      uuidLists: map['uuidLists'] == null ? null : pulumi.Output.create<List<String>>((map['uuidLists'] as List).cast<String>()),
+      antiBruteForceRuleName: map['antiBruteForceRuleName'] == null ? null : (map['antiBruteForceRuleName'] as String).input(),
+      defaultRule: map['defaultRule'] == null ? null : (map['defaultRule'] as bool).input(),
+      failCount: map['failCount'] == null ? null : (map['failCount'] as int).input(),
+      forbiddenTime: map['forbiddenTime'] == null ? null : (map['forbiddenTime'] as int).input(),
+      protocolType: map['protocolType'] == null ? null : (AntiBruteForceRuleProtocolType.fromMap((map['protocolType'] as Map).cast<String, dynamic>())).input(),
+      span: map['span'] == null ? null : (map['span'] as int).input(),
+      uuidLists: map['uuidLists'] == null ? null : ((map['uuidLists'] as List).cast<String>()).input(),
     );
   }
 }

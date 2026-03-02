@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of the current status of the OperatorApiConnection resource.
 class StatusResponse {
   /// Explanation of the current state of the OperatorApiConnection resource.
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// Current state of the OperatorApiConnection resource.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [StatusResponse].
   /// [reason] Explanation of the current state of the OperatorApiConnection resource.
@@ -25,8 +26,8 @@ class StatusResponse {
 
   factory StatusResponse.fromMap(Map<String, dynamic> map) {
     return StatusResponse(
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

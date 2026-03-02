@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupActivatedRuleAction {
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RuleGroupActivatedRuleAction].
   /// [type] Required.
@@ -18,7 +19,7 @@ class RuleGroupActivatedRuleAction {
 
   factory RuleGroupActivatedRuleAction.fromMap(Map<String, dynamic> map) {
     return RuleGroupActivatedRuleAction(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

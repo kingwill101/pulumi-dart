@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'daily_schedule.dart';
 import 'hourly_schedule.dart';
 import 'weekly_schedule.dart';
@@ -7,16 +8,16 @@ import 'weekly_schedule.dart';
 /// The V2 policy schedule for IaaS that supports hourly backups.
 class SimpleSchedulePolicyV2 {
   /// Daily schedule of this policy
-  final DailySchedule? dailySchedule;
+  final pulumi.Input<DailySchedule>? dailySchedule;
   /// hourly schedule of this policy
-  final HourlySchedule? hourlySchedule;
+  final pulumi.Input<HourlySchedule>? hourlySchedule;
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'SimpleSchedulePolicyV2'.
-  final String schedulePolicyType;
+  final pulumi.Input<String> schedulePolicyType;
   /// Frequency of the schedule operation of this policy.
-  final String? scheduleRunFrequency;
+  final pulumi.Input<String>? scheduleRunFrequency;
   /// Weekly schedule of this policy
-  final WeeklySchedule? weeklySchedule;
+  final pulumi.Input<WeeklySchedule>? weeklySchedule;
 
   /// Creates a new [SimpleSchedulePolicyV2].
   /// [dailySchedule] Daily schedule of this policy
@@ -34,21 +35,21 @@ class SimpleSchedulePolicyV2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dailySchedule': ?dailySchedule == null ? null : dailySchedule!.toMap(),
-      'hourlySchedule': ?hourlySchedule == null ? null : hourlySchedule!.toMap(),
+      'dailySchedule': ?pulumi.Input.mapOptionalInputValue<DailySchedule, Map<String, dynamic>>(dailySchedule, (value) => value.toMap()),
+      'hourlySchedule': ?pulumi.Input.mapOptionalInputValue<HourlySchedule, Map<String, dynamic>>(hourlySchedule, (value) => value.toMap()),
       'schedulePolicyType': schedulePolicyType,
       'scheduleRunFrequency': ?scheduleRunFrequency,
-      'weeklySchedule': ?weeklySchedule == null ? null : weeklySchedule!.toMap(),
+      'weeklySchedule': ?pulumi.Input.mapOptionalInputValue<WeeklySchedule, Map<String, dynamic>>(weeklySchedule, (value) => value.toMap()),
     };
   }
 
   factory SimpleSchedulePolicyV2.fromMap(Map<String, dynamic> map) {
     return SimpleSchedulePolicyV2(
-      dailySchedule: map['dailySchedule'] == null ? null : DailySchedule.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>()),
-      hourlySchedule: map['hourlySchedule'] == null ? null : HourlySchedule.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>()),
-      schedulePolicyType: map['schedulePolicyType'] as String,
-      scheduleRunFrequency: map['scheduleRunFrequency'] == null ? null : map['scheduleRunFrequency'] as String,
-      weeklySchedule: map['weeklySchedule'] == null ? null : WeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>()),
+      dailySchedule: map['dailySchedule'] == null ? null : (DailySchedule.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>())).input(),
+      hourlySchedule: map['hourlySchedule'] == null ? null : (HourlySchedule.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>())).input(),
+      schedulePolicyType: (map['schedulePolicyType'] as String).input(),
+      scheduleRunFrequency: map['scheduleRunFrequency'] == null ? null : (map['scheduleRunFrequency'] as String).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (WeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository {
   /// The URL of the Git repository.
-  final String repositoryUrl;
+  final pulumi.Input<String> repositoryUrl;
 
   /// Creates a new [DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository].
   /// [repositoryUrl] The URL of the Git repository.
@@ -19,7 +20,7 @@ class DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository {
 
   factory DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository(
-      repositoryUrl: map['repositoryUrl'] as String,
+      repositoryUrl: (map['repositoryUrl'] as String).input(),
     );
   }
 }

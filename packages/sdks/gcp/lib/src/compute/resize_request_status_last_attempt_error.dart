@@ -7,7 +7,7 @@ class ResizeRequestStatusLastAttemptError {
   /// (Output)
   /// The array of errors encountered while processing this operation.
   /// Structure is documented below.
-  final List<ResizeRequestStatusLastAttemptErrorError>? errors;
+  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorError>>? errors;
 
   /// Creates a new [ResizeRequestStatusLastAttemptError].
   /// [errors] (Output)
@@ -17,13 +17,13 @@ class ResizeRequestStatusLastAttemptError {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': ?errors == null ? null : pulumi.Input.encodeList<ResizeRequestStatusLastAttemptErrorError, Map<String, dynamic>>(errors!, (value) => value.toMap()),
+      'errors': ?pulumi.Input.mapOptionalInputValue<List<ResizeRequestStatusLastAttemptErrorError>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ResizeRequestStatusLastAttemptErrorError, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResizeRequestStatusLastAttemptError.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusLastAttemptError(
-      errors: map['errors'] == null ? null : pulumi.Input.decodeList<ResizeRequestStatusLastAttemptErrorError>(map['errors'], (value) => ResizeRequestStatusLastAttemptErrorError.fromMap((value as Map).cast<String, dynamic>())),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ResizeRequestStatusLastAttemptErrorError>(map['errors'], (value) => ResizeRequestStatusLastAttemptErrorError.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

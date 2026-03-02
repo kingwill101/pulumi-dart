@@ -39,25 +39,16 @@ class ServerBackupPlanArgs {
   /// [retention] Backup retention days, the minimum is 1.
   /// [schedule] Backup strategy. Optional format: `I|{startTime}|{interval}`
   ServerBackupPlanArgs({
-    pulumi.Output<String>? crossAccountRoleName,
-    pulumi.Output<String>? crossAccountType,
-    pulumi.Output<int>? crossAccountUserId,
-    required pulumi.Output<List<ServerBackupPlanDetail>> details,
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> ecsServerBackupPlanName,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<int> retention,
-    required pulumi.Output<String> schedule,
-  }) :
-      crossAccountRoleName = pulumi.Input.asOptionalInput<String>(crossAccountRoleName),
-      crossAccountType = pulumi.Input.asOptionalInput<String>(crossAccountType),
-      crossAccountUserId = pulumi.Input.asOptionalInput<int>(crossAccountUserId),
-      details = pulumi.Input.asInput<List<ServerBackupPlanDetail>>(details),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      ecsServerBackupPlanName = pulumi.Input.asInput<String>(ecsServerBackupPlanName),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      retention = pulumi.Input.asInput<int>(retention),
-      schedule = pulumi.Input.asInput<String>(schedule);
+    this.crossAccountRoleName,
+    this.crossAccountType,
+    this.crossAccountUserId,
+    required this.details,
+    this.disabled,
+    required this.ecsServerBackupPlanName,
+    required this.instanceId,
+    required this.retention,
+    required this.schedule,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ServerBackupPlanArgs {
 
   factory ServerBackupPlanArgs.fromMap(Map<String, dynamic> map) {
     return ServerBackupPlanArgs(
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : pulumi.Output.create<String>(map['crossAccountRoleName'] as String),
-      crossAccountType: map['crossAccountType'] == null ? null : pulumi.Output.create<String>(map['crossAccountType'] as String),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : pulumi.Output.create<int>(map['crossAccountUserId'] as int),
-      details: pulumi.Output.create<List<ServerBackupPlanDetail>>(pulumi.Input.decodeList<ServerBackupPlanDetail>(map['details'], (value) => ServerBackupPlanDetail.fromMap((value as Map).cast<String, dynamic>()))),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      ecsServerBackupPlanName: pulumi.Output.create<String>(map['ecsServerBackupPlanName'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      retention: pulumi.Output.create<int>(map['retention'] as int),
-      schedule: pulumi.Output.create<String>(map['schedule'] as String),
+      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName'] as String).input(),
+      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType'] as String).input(),
+      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId'] as int).input(),
+      details: (pulumi.Input.decodeList<ServerBackupPlanDetail>(map['details'], (value) => ServerBackupPlanDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      ecsServerBackupPlanName: (map['ecsServerBackupPlanName'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      retention: (map['retention'] as int).input(),
+      schedule: (map['schedule'] as String).input(),
     );
   }
 }

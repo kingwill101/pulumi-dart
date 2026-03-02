@@ -25,17 +25,12 @@ class ConfigGroupYamlArgs {
   /// [transformations] A set of transformations to apply to Kubernetes resource definitions before registering with engine.
   /// [yaml] YAML text containing Kubernetes resource definitions.
   ConfigGroupYamlArgs({
-    pulumi.Output<String>? files,
-    pulumi.Output<List<dynamic>>? objs,
-    pulumi.Output<String>? resourcePrefix,
-    pulumi.Output<List<dynamic>>? transformations,
-    pulumi.Output<String>? yaml,
-  }) :
-      files = pulumi.Input.asOptionalInput<String>(files),
-      objs = pulumi.Input.asOptionalInput<List<dynamic>>(objs),
-      resourcePrefix = pulumi.Input.asOptionalInput<String>(resourcePrefix),
-      transformations = pulumi.Input.asOptionalInput<List<dynamic>>(transformations),
-      yaml = pulumi.Input.asOptionalInput<String>(yaml);
+    this.files,
+    this.objs,
+    this.resourcePrefix,
+    this.transformations,
+    this.yaml,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ConfigGroupYamlArgs {
 
   factory ConfigGroupYamlArgs.fromMap(Map<String, dynamic> map) {
     return ConfigGroupYamlArgs(
-      files: map['files'] == null ? null : pulumi.Output.create<String>(map['files'] as String),
-      objs: map['objs'] == null ? null : pulumi.Output.create<List<dynamic>>((map['objs'] as List).cast<dynamic>()),
-      resourcePrefix: map['resourcePrefix'] == null ? null : pulumi.Output.create<String>(map['resourcePrefix'] as String),
-      transformations: map['transformations'] == null ? null : pulumi.Output.create<List<dynamic>>((map['transformations'] as List).cast<dynamic>()),
-      yaml: map['yaml'] == null ? null : pulumi.Output.create<String>(map['yaml'] as String),
+      files: map['files'] == null ? null : (map['files'] as String).input(),
+      objs: map['objs'] == null ? null : ((map['objs'] as List).cast<dynamic>()).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
+      transformations: map['transformations'] == null ? null : ((map['transformations'] as List).cast<dynamic>()).input(),
+      yaml: map['yaml'] == null ? null : (map['yaml'] as String).input(),
     );
   }
 }

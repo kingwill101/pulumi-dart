@@ -28,19 +28,13 @@ class GlobalSchemaArgs {
   /// [type] The content type of the Schema. Possible values are `xml` and `json`.
   /// [value] The string defining the document representing the Schema.
   GlobalSchemaArgs({
-    required pulumi.Output<String> apiManagementName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaId,
-    required pulumi.Output<String> type,
-    required pulumi.Output<String> value,
-  }) :
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaId = pulumi.Input.asInput<String>(schemaId),
-      type = pulumi.Input.asInput<String>(type),
-      value = pulumi.Input.asInput<String>(value);
+    required this.apiManagementName,
+    this.description,
+    required this.resourceGroupName,
+    required this.schemaId,
+    required this.type,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GlobalSchemaArgs {
 
   factory GlobalSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GlobalSchemaArgs(
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaId: pulumi.Output.create<String>(map['schemaId'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaId: (map['schemaId'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

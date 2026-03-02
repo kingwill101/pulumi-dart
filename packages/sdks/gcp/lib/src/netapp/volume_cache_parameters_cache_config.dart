@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeCacheParametersCacheConfig {
   /// Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.
-  final bool? cifsChangeNotifyEnabled;
+  final pulumi.Input<bool>? cifsChangeNotifyEnabled;
 
   /// Creates a new [VolumeCacheParametersCacheConfig].
   /// [cifsChangeNotifyEnabled] Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.
@@ -19,7 +20,7 @@ class VolumeCacheParametersCacheConfig {
 
   factory VolumeCacheParametersCacheConfig.fromMap(Map<String, dynamic> map) {
     return VolumeCacheParametersCacheConfig(
-      cifsChangeNotifyEnabled: map['cifsChangeNotifyEnabled'] == null ? null : map['cifsChangeNotifyEnabled'] as bool,
+      cifsChangeNotifyEnabled: map['cifsChangeNotifyEnabled'] == null ? null : (map['cifsChangeNotifyEnabled'] as bool).input(),
     );
   }
 }

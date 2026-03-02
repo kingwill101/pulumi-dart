@@ -19,13 +19,10 @@ class GetContactArgs {
   /// [contactName] Unique identifier for this contact
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetContactArgs({
-    required pulumi.Output<String> communicationsGatewayName,
-    required pulumi.Output<String> contactName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      communicationsGatewayName = pulumi.Input.asInput<String>(communicationsGatewayName),
-      contactName = pulumi.Input.asInput<String>(contactName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.communicationsGatewayName,
+    required this.contactName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetContactArgs {
 
   factory GetContactArgs.fromMap(Map<String, dynamic> map) {
     return GetContactArgs(
-      communicationsGatewayName: pulumi.Output.create<String>(map['communicationsGatewayName'] as String),
-      contactName: pulumi.Output.create<String>(map['contactName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      communicationsGatewayName: (map['communicationsGatewayName'] as String).input(),
+      contactName: (map['contactName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

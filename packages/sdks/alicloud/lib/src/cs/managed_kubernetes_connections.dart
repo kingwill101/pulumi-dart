@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedKubernetesConnections {
   /// API Server Internet endpoint.
-  final String? apiServerInternet;
+  final pulumi.Input<String>? apiServerInternet;
   /// API Server Intranet endpoint.
-  final String? apiServerIntranet;
+  final pulumi.Input<String>? apiServerIntranet;
   /// Master node SSH IP address.
-  final String? masterPublicIp;
+  final pulumi.Input<String>? masterPublicIp;
   /// Service Access Domain.
-  final String? serviceDomain;
+  final pulumi.Input<String>? serviceDomain;
 
   /// Creates a new [ManagedKubernetesConnections].
   /// [apiServerInternet] API Server Internet endpoint.
@@ -34,10 +35,10 @@ class ManagedKubernetesConnections {
 
   factory ManagedKubernetesConnections.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesConnections(
-      apiServerInternet: map['apiServerInternet'] == null ? null : map['apiServerInternet'] as String,
-      apiServerIntranet: map['apiServerIntranet'] == null ? null : map['apiServerIntranet'] as String,
-      masterPublicIp: map['masterPublicIp'] == null ? null : map['masterPublicIp'] as String,
-      serviceDomain: map['serviceDomain'] == null ? null : map['serviceDomain'] as String,
+      apiServerInternet: map['apiServerInternet'] == null ? null : (map['apiServerInternet'] as String).input(),
+      apiServerIntranet: map['apiServerIntranet'] == null ? null : (map['apiServerIntranet'] as String).input(),
+      masterPublicIp: map['masterPublicIp'] == null ? null : (map['masterPublicIp'] as String).input(),
+      serviceDomain: map['serviceDomain'] == null ? null : (map['serviceDomain'] as String).input(),
     );
   }
 }

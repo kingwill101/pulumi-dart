@@ -8,42 +8,42 @@ import 'parameter_specification.dart';
 /// Google BigQuery service linked service.
 class GoogleBigQueryLinkedService {
   /// A comma-separated list of public BigQuery projects to access. Type: string (or Expression with resultType string).
-  final dynamic additionalProjects;
+  final pulumi.Input<dynamic>? additionalProjects;
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The OAuth 2.0 authentication mechanism used for authentication. ServiceAuthentication can only be used on self-hosted IR.
-  final String authenticationType;
+  final pulumi.Input<String> authenticationType;
   /// The client id of the google application used to acquire the refresh token. Type: string (or Expression with resultType string).
-  final dynamic clientId;
+  final pulumi.Input<dynamic>? clientId;
   /// The client secret of the google application used to acquire the refresh token.
-  final AzureKeyVaultSecretReference? clientSecret;
+  final pulumi.Input<AzureKeyVaultSecretReference>? clientSecret;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The service account email ID that is used for ServiceAuthentication and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
-  final dynamic email;
+  final pulumi.Input<dynamic>? email;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
-  final dynamic keyFilePath;
+  final pulumi.Input<dynamic>? keyFilePath;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The default BigQuery project to query against. Type: string (or Expression with resultType string).
-  final dynamic project;
+  final pulumi.Input<dynamic> project;
   /// The refresh token obtained from Google for authorizing access to BigQuery for UserAuthentication.
-  final AzureKeyVaultSecretReference? refreshToken;
+  final pulumi.Input<AzureKeyVaultSecretReference>? refreshToken;
   /// Whether to request access to Google Drive. Allowing Google Drive access enables support for federated tables that combine BigQuery data with data from Google Drive. The default value is false. Type: string (or Expression with resultType string).
-  final dynamic requestGoogleDriveScope;
+  final pulumi.Input<dynamic>? requestGoogleDriveScope;
   /// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Type: string (or Expression with resultType string).
-  final dynamic trustedCertPath;
+  final pulumi.Input<dynamic>? trustedCertPath;
   /// Type of linked service.
   /// Expected value is 'GoogleBigQuery'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.Type: boolean (or Expression with resultType boolean).
-  final dynamic useSystemTrustStore;
+  final pulumi.Input<dynamic>? useSystemTrustStore;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [GoogleBigQueryLinkedService].
   /// [additionalProjects] A comma-separated list of public BigQuery projects to access. Type: string (or Expression with resultType string).
@@ -91,15 +91,15 @@ class GoogleBigQueryLinkedService {
       'annotations': ?annotations,
       'authenticationType': authenticationType,
       'clientId': ?clientId,
-      'clientSecret': ?clientSecret == null ? null : clientSecret!.toMap(),
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'clientSecret': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'email': ?email,
       'encryptedCredential': ?encryptedCredential,
       'keyFilePath': ?keyFilePath,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'project': project,
-      'refreshToken': ?refreshToken == null ? null : refreshToken!.toMap(),
+      'refreshToken': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(refreshToken, (value) => value.toMap()),
       'requestGoogleDriveScope': ?requestGoogleDriveScope,
       'trustedCertPath': ?trustedCertPath,
       'type': type,
@@ -110,24 +110,24 @@ class GoogleBigQueryLinkedService {
 
   factory GoogleBigQueryLinkedService.fromMap(Map<String, dynamic> map) {
     return GoogleBigQueryLinkedService(
-      additionalProjects: map['additionalProjects'] == null ? null : map['additionalProjects'],
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      authenticationType: map['authenticationType'] as String,
-      clientId: map['clientId'] == null ? null : map['clientId'],
-      clientSecret: map['clientSecret'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      email: map['email'] == null ? null : map['email'],
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      keyFilePath: map['keyFilePath'] == null ? null : map['keyFilePath'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'],
-      refreshToken: map['refreshToken'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['refreshToken'] as Map).cast<String, dynamic>()),
-      requestGoogleDriveScope: map['requestGoogleDriveScope'] == null ? null : map['requestGoogleDriveScope'],
-      trustedCertPath: map['trustedCertPath'] == null ? null : map['trustedCertPath'],
-      type: map['type'] as String,
-      useSystemTrustStore: map['useSystemTrustStore'] == null ? null : map['useSystemTrustStore'],
-      version: map['version'] == null ? null : map['version'] as String,
+      additionalProjects: map['additionalProjects'] == null ? null : (map['additionalProjects']).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      authenticationType: (map['authenticationType'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']).input(),
+      clientSecret: map['clientSecret'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      email: map['email'] == null ? null : (map['email']).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      keyFilePath: map['keyFilePath'] == null ? null : (map['keyFilePath']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: (map['project']).input(),
+      refreshToken: map['refreshToken'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['refreshToken'] as Map).cast<String, dynamic>())).input(),
+      requestGoogleDriveScope: map['requestGoogleDriveScope'] == null ? null : (map['requestGoogleDriveScope']).input(),
+      trustedCertPath: map['trustedCertPath'] == null ? null : (map['trustedCertPath']).input(),
+      type: (map['type'] as String).input(),
+      useSystemTrustStore: map['useSystemTrustStore'] == null ? null : (map['useSystemTrustStore']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

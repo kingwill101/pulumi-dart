@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters {
   /// The column delimiter. For example, in a CSV format, a comma (`,`) is the typical column delimiter.
-  final String recordColumnDelimiter;
+  final pulumi.Input<String> recordColumnDelimiter;
   /// The row delimiter. For example, in a CSV format, `\n` is the typical row delimiter.
-  final String recordRowDelimiter;
+  final pulumi.Input<String> recordRowDelimiter;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters].
   /// [recordColumnDelimiter] The column delimiter. For example, in a CSV format, a comma (`,`) is the typical column delimiter.
@@ -24,8 +25,8 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters(
-      recordColumnDelimiter: map['recordColumnDelimiter'] as String,
-      recordRowDelimiter: map['recordRowDelimiter'] as String,
+      recordColumnDelimiter: (map['recordColumnDelimiter'] as String).input(),
+      recordRowDelimiter: (map['recordRowDelimiter'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status from the extension.
 class ExtensionStatus {
   /// Status code provided by the Extension
-  final String? code;
+  final pulumi.Input<String>? code;
   /// Short description of status of the extension.
-  final String? displayStatus;
+  final pulumi.Input<String>? displayStatus;
   /// Level of the status.
-  final String? level;
+  final pulumi.Input<String>? level;
   /// Detailed message of the status from the Extension.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// DateLiteral (per ISO8601) noting the time of installation status.
-  final String? time;
+  final pulumi.Input<String>? time;
 
   /// Creates a new [ExtensionStatus].
   /// [code] Status code provided by the Extension
@@ -40,11 +41,11 @@ class ExtensionStatus {
 
   factory ExtensionStatus.fromMap(Map<String, dynamic> map) {
     return ExtensionStatus(
-      code: map['code'] == null ? null : map['code'] as String,
-      displayStatus: map['displayStatus'] == null ? null : map['displayStatus'] as String,
-      level: map['level'] == null ? null : map['level'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      time: map['time'] == null ? null : map['time'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      displayStatus: map['displayStatus'] == null ? null : (map['displayStatus'] as String).input(),
+      level: map['level'] == null ? null : (map['level'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      time: map['time'] == null ? null : (map['time'] as String).input(),
     );
   }
 }

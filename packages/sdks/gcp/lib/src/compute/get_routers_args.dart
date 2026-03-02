@@ -17,11 +17,9 @@ class GetRoutersArgs {
   /// [project] The project in which the resource belongs. If it
   /// [region] If provided, only resources from the given regions are queried.
   GetRoutersArgs({
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetRoutersArgs {
 
   factory GetRoutersArgs.fromMap(Map<String, dynamic> map) {
     return GetRoutersArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -5,11 +5,11 @@ import 'domain_os_nv_ram_source_encryption_secret.dart';
 
 class DomainOsNvRamSourceEncryption {
   /// Specifies the encryption engine utilized for encrypting the disk.
-  final String? engine;
+  final pulumi.Input<String>? engine;
   /// Configures the format of the encrypted disk storage, determining how the data is stored and accessed.
-  final String? format;
+  final pulumi.Input<String>? format;
   /// Specifies the secrets used for encryption, which can include various elements needed for accessing encrypted data.
-  final List<DomainOsNvRamSourceEncryptionSecret>? secrets;
+  final pulumi.Input<List<DomainOsNvRamSourceEncryptionSecret>>? secrets;
 
   /// Creates a new [DomainOsNvRamSourceEncryption].
   /// [engine] Specifies the encryption engine utilized for encrypting the disk.
@@ -25,15 +25,15 @@ class DomainOsNvRamSourceEncryption {
     return <String, dynamic>{
       'engine': ?engine,
       'format': ?format,
-      'secrets': ?secrets == null ? null : pulumi.Input.encodeList<DomainOsNvRamSourceEncryptionSecret, Map<String, dynamic>>(secrets!, (value) => value.toMap()),
+      'secrets': ?pulumi.Input.mapOptionalInputValue<List<DomainOsNvRamSourceEncryptionSecret>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<DomainOsNvRamSourceEncryptionSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainOsNvRamSourceEncryption.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceEncryption(
-      engine: map['engine'] == null ? null : map['engine'] as String,
-      format: map['format'] == null ? null : map['format'] as String,
-      secrets: map['secrets'] == null ? null : pulumi.Input.decodeList<DomainOsNvRamSourceEncryptionSecret>(map['secrets'], (value) => DomainOsNvRamSourceEncryptionSecret.fromMap((value as Map).cast<String, dynamic>())),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceEncryptionSecret>(map['secrets'], (value) => DomainOsNvRamSourceEncryptionSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

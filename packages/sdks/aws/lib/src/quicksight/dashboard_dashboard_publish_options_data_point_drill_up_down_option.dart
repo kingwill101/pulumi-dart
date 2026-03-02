@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardDashboardPublishOptionsDataPointDrillUpDownOption {
   /// Availability status. Possibles values: ENABLED, DISABLED.
-  final String? availabilityStatus;
+  final pulumi.Input<String>? availabilityStatus;
 
   /// Creates a new [DashboardDashboardPublishOptionsDataPointDrillUpDownOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.
@@ -19,7 +20,7 @@ class DashboardDashboardPublishOptionsDataPointDrillUpDownOption {
 
   factory DashboardDashboardPublishOptionsDataPointDrillUpDownOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsDataPointDrillUpDownOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : map['availabilityStatus'] as String,
+      availabilityStatus: map['availabilityStatus'] == null ? null : (map['availabilityStatus'] as String).input(),
     );
   }
 }

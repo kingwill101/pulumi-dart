@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectivityTestsConnectivityTestSourceCloudFunction {
   /// A Cloud Run revision URI.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [GetConnectivityTestsConnectivityTestSourceCloudFunction].
   /// [uri] A Cloud Run revision URI.
@@ -19,7 +20,7 @@ class GetConnectivityTestsConnectivityTestSourceCloudFunction {
 
   factory GetConnectivityTestsConnectivityTestSourceCloudFunction.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestsConnectivityTestSourceCloudFunction(
-      uri: map['uri'] as String,
+      uri: (map['uri'] as String).input(),
     );
   }
 }

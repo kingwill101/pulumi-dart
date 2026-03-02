@@ -25,17 +25,12 @@ class ResolverOutboundEndpointArgs {
   /// [subnetId] The ID of the Subnet that is linked to the Private DNS Resolver Outbound Endpoint. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Private DNS Resolver Outbound Endpoint.
   ResolverOutboundEndpointArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> privateDnsResolverId,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateDnsResolverId = pulumi.Input.asInput<String>(privateDnsResolverId),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.name,
+    required this.privateDnsResolverId,
+    required this.subnetId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ResolverOutboundEndpointArgs {
 
   factory ResolverOutboundEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ResolverOutboundEndpointArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateDnsResolverId: pulumi.Output.create<String>(map['privateDnsResolverId'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateDnsResolverId: (map['privateDnsResolverId'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

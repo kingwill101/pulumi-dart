@@ -24,15 +24,11 @@ class GetDropletArgs {
   /// [name] The name of the Droplet.
   /// [tag] A tag applied to the Droplet.
   GetDropletArgs({
-    pulumi.Output<bool>? gpu,
-    pulumi.Output<int>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? tag,
-  }) :
-      gpu = pulumi.Input.asOptionalInput<bool>(gpu),
-      id = pulumi.Input.asOptionalInput<int>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tag = pulumi.Input.asOptionalInput<String>(tag);
+    this.gpu,
+    this.id,
+    this.name,
+    this.tag,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetDropletArgs {
 
   factory GetDropletArgs.fromMap(Map<String, dynamic> map) {
     return GetDropletArgs(
-      gpu: map['gpu'] == null ? null : pulumi.Output.create<bool>(map['gpu'] as bool),
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tag: map['tag'] == null ? null : pulumi.Output.create<String>(map['tag'] as String),
+      gpu: map['gpu'] == null ? null : (map['gpu'] as bool).input(),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
     );
   }
 }

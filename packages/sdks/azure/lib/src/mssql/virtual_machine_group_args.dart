@@ -32,21 +32,14 @@ class VirtualMachineGroupArgs {
   /// [tags] A mapping of tags which should be assigned to the Microsoft SQL Virtual Machine Group.
   /// [wsfcDomainProfile] A `wsfc_domain_profile` block as defined below.
   VirtualMachineGroupArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlImageOffer,
-    required pulumi.Output<String> sqlImageSku,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<VirtualMachineGroupWsfcDomainProfile> wsfcDomainProfile,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlImageOffer = pulumi.Input.asInput<String>(sqlImageOffer),
-      sqlImageSku = pulumi.Input.asInput<String>(sqlImageSku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      wsfcDomainProfile = pulumi.Input.asInput<VirtualMachineGroupWsfcDomainProfile>(wsfcDomainProfile);
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    required this.sqlImageOffer,
+    required this.sqlImageSku,
+    this.tags,
+    required this.wsfcDomainProfile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class VirtualMachineGroupArgs {
 
   factory VirtualMachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineGroupArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlImageOffer: pulumi.Output.create<String>(map['sqlImageOffer'] as String),
-      sqlImageSku: pulumi.Output.create<String>(map['sqlImageSku'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      wsfcDomainProfile: pulumi.Output.create<VirtualMachineGroupWsfcDomainProfile>(VirtualMachineGroupWsfcDomainProfile.fromMap((map['wsfcDomainProfile'] as Map).cast<String, dynamic>())),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlImageOffer: (map['sqlImageOffer'] as String).input(),
+      sqlImageSku: (map['sqlImageSku'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      wsfcDomainProfile: (VirtualMachineGroupWsfcDomainProfile.fromMap((map['wsfcDomainProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

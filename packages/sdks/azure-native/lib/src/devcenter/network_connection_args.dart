@@ -43,29 +43,18 @@ class NetworkConnectionArgs {
   /// [subnetId] The subnet to attach Virtual Machines to
   /// [tags] Resource tags.
   NetworkConnectionArgs({
-    required pulumi.Output<String> domainJoinType,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? domainPassword,
-    pulumi.Output<String>? domainUsername,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? networkConnectionName,
-    pulumi.Output<String>? networkingResourceGroupName,
-    pulumi.Output<String>? organizationUnit,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      domainJoinType = pulumi.Input.asInput<String>(domainJoinType),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      domainPassword = pulumi.Input.asOptionalInput<String>(domainPassword),
-      domainUsername = pulumi.Input.asOptionalInput<String>(domainUsername),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkConnectionName = pulumi.Input.asOptionalInput<String>(networkConnectionName),
-      networkingResourceGroupName = pulumi.Input.asOptionalInput<String>(networkingResourceGroupName),
-      organizationUnit = pulumi.Input.asOptionalInput<String>(organizationUnit),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.domainJoinType,
+    this.domainName,
+    this.domainPassword,
+    this.domainUsername,
+    this.location,
+    this.networkConnectionName,
+    this.networkingResourceGroupName,
+    this.organizationUnit,
+    required this.resourceGroupName,
+    required this.subnetId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class NetworkConnectionArgs {
 
   factory NetworkConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionArgs(
-      domainJoinType: pulumi.Output.create<String>(map['domainJoinType'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      domainPassword: map['domainPassword'] == null ? null : pulumi.Output.create<String>(map['domainPassword'] as String),
-      domainUsername: map['domainUsername'] == null ? null : pulumi.Output.create<String>(map['domainUsername'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkConnectionName: map['networkConnectionName'] == null ? null : pulumi.Output.create<String>(map['networkConnectionName'] as String),
-      networkingResourceGroupName: map['networkingResourceGroupName'] == null ? null : pulumi.Output.create<String>(map['networkingResourceGroupName'] as String),
-      organizationUnit: map['organizationUnit'] == null ? null : pulumi.Output.create<String>(map['organizationUnit'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      domainJoinType: (map['domainJoinType'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainPassword: map['domainPassword'] == null ? null : (map['domainPassword'] as String).input(),
+      domainUsername: map['domainUsername'] == null ? null : (map['domainUsername'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkConnectionName: map['networkConnectionName'] == null ? null : (map['networkConnectionName'] as String).input(),
+      networkingResourceGroupName: map['networkingResourceGroupName'] == null ? null : (map['networkingResourceGroupName'] as String).input(),
+      organizationUnit: map['organizationUnit'] == null ? null : (map['organizationUnit'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

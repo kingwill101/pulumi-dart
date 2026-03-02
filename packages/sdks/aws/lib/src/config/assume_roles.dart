@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssumeRoles {
   /// The duration, between 15 minutes and 12 hours, of the role session. Valid time units are ns, us (or µs), ms, s, h, or m.
-  final String? duration;
+  final pulumi.Input<String>? duration;
   /// A unique identifier that might be required when you assume a role in another account.
-  final String? externalId;
+  final pulumi.Input<String>? externalId;
   /// IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
-  final String? policy;
+  final pulumi.Input<String>? policy;
   /// Amazon Resource Names (ARNs) of IAM Policies describing further restricting permissions for the IAM Role being assumed.
-  final List<String>? policyArns;
+  final pulumi.Input<List<String>>? policyArns;
   /// Amazon Resource Name (ARN) of an IAM Role to assume prior to making API calls.
-  final String? roleArn;
+  final pulumi.Input<String>? roleArn;
   /// An identifier for the assumed role session.
-  final String? sessionName;
+  final pulumi.Input<String>? sessionName;
   /// Source identity specified by the principal assuming the role.
-  final String? sourceIdentity;
+  final pulumi.Input<String>? sourceIdentity;
   /// Assume role session tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Assume role session tag keys to pass to any subsequent sessions.
-  final List<String>? transitiveTagKeys;
+  final pulumi.Input<List<String>>? transitiveTagKeys;
 
   /// Creates a new [AssumeRoles].
   /// [duration] The duration, between 15 minutes and 12 hours, of the role session. Valid time units are ns, us (or µs), ms, s, h, or m.
@@ -59,15 +60,15 @@ class AssumeRoles {
 
   factory AssumeRoles.fromMap(Map<String, dynamic> map) {
     return AssumeRoles(
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
-      policy: map['policy'] == null ? null : map['policy'] as String,
-      policyArns: map['policyArns'] == null ? null : (map['policyArns'] as List).cast<String>(),
-      roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
-      sessionName: map['sessionName'] == null ? null : map['sessionName'] as String,
-      sourceIdentity: map['sourceIdentity'] == null ? null : map['sourceIdentity'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      transitiveTagKeys: map['transitiveTagKeys'] == null ? null : (map['transitiveTagKeys'] as List).cast<String>(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policyArns: map['policyArns'] == null ? null : ((map['policyArns'] as List).cast<String>()).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      sessionName: map['sessionName'] == null ? null : (map['sessionName'] as String).input(),
+      sourceIdentity: map['sourceIdentity'] == null ? null : (map['sourceIdentity'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitiveTagKeys: map['transitiveTagKeys'] == null ? null : ((map['transitiveTagKeys'] as List).cast<String>()).input(),
     );
   }
 }

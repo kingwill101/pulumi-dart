@@ -27,17 +27,12 @@ class AnalyticsConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [storageClassAnalysis] Configuration for the analytics data export (documented below).
   AnalyticsConfigurationArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<AnalyticsConfigurationFilter>? filter,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<AnalyticsConfigurationStorageClassAnalysis>? storageClassAnalysis,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      filter = pulumi.Input.asOptionalInput<AnalyticsConfigurationFilter>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      storageClassAnalysis = pulumi.Input.asOptionalInput<AnalyticsConfigurationStorageClassAnalysis>(storageClassAnalysis);
+    required this.bucket,
+    this.filter,
+    this.name,
+    this.region,
+    this.storageClassAnalysis,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class AnalyticsConfigurationArgs {
 
   factory AnalyticsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfigurationArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<AnalyticsConfigurationFilter>(AnalyticsConfigurationFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      storageClassAnalysis: map['storageClassAnalysis'] == null ? null : pulumi.Output.create<AnalyticsConfigurationStorageClassAnalysis>(AnalyticsConfigurationStorageClassAnalysis.fromMap((map['storageClassAnalysis'] as Map).cast<String, dynamic>())),
+      bucket: (map['bucket'] as String).input(),
+      filter: map['filter'] == null ? null : (AnalyticsConfigurationFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      storageClassAnalysis: map['storageClassAnalysis'] == null ? null : (AnalyticsConfigurationStorageClassAnalysis.fromMap((map['storageClassAnalysis'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLogDataProtectionPolicyDocumentStatementOperationDeidentify {
   /// An empty object that configures masking.
-  final Map<String, dynamic> maskConfig;
+  final pulumi.Input<Map<String, dynamic>> maskConfig;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatementOperationDeidentify].
   /// [maskConfig] An empty object that configures masking.
@@ -19,7 +20,7 @@ class GetLogDataProtectionPolicyDocumentStatementOperationDeidentify {
 
   factory GetLogDataProtectionPolicyDocumentStatementOperationDeidentify.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentStatementOperationDeidentify(
-      maskConfig: (map['maskConfig'] as Map).cast<String, dynamic>(),
+      maskConfig: ((map['maskConfig'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

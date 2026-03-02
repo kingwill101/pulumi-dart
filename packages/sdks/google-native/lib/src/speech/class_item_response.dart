@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An item of the class.
 class ClassItemResponse {
   /// The class item's value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ClassItemResponse].
   /// [value] The class item's value.
@@ -20,7 +21,7 @@ class ClassItemResponse {
 
   factory ClassItemResponse.fromMap(Map<String, dynamic> map) {
     return ClassItemResponse(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

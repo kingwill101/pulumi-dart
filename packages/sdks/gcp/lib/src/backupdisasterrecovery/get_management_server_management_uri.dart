@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetManagementServerManagementUri {
   /// The management console api endpoint.
-  final String api;
+  final pulumi.Input<String> api;
   /// The management console webUi.
-  final String webUi;
+  final pulumi.Input<String> webUi;
 
   /// Creates a new [GetManagementServerManagementUri].
   /// [api] The management console api endpoint.
@@ -24,8 +25,8 @@ class GetManagementServerManagementUri {
 
   factory GetManagementServerManagementUri.fromMap(Map<String, dynamic> map) {
     return GetManagementServerManagementUri(
-      api: map['api'] as String,
-      webUi: map['webUi'] as String,
+      api: (map['api'] as String).input(),
+      webUi: (map['webUi'] as String).input(),
     );
   }
 }

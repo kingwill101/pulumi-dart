@@ -28,19 +28,13 @@ class MoverSourceEndpointArgs {
   /// [nfsVersion] Specifies the NFS protocol version. Possible values are `NFSauto`, `NFSv3` and `NFSv4`. Defaults to `NFSauto`. Changing this forces a new resource to be created.
   /// [storageMoverId] Specifies the ID of the Storage Mover for this Storage Mover Source Endpoint. Changing this forces a new resource to be created.
   MoverSourceEndpointArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? export,
-    required pulumi.Output<String> host,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nfsVersion,
-    required pulumi.Output<String> storageMoverId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      export = pulumi.Input.asOptionalInput<String>(export),
-      host = pulumi.Input.asInput<String>(host),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nfsVersion = pulumi.Input.asOptionalInput<String>(nfsVersion),
-      storageMoverId = pulumi.Input.asInput<String>(storageMoverId);
+    this.description,
+    this.export,
+    required this.host,
+    this.name,
+    this.nfsVersion,
+    required this.storageMoverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class MoverSourceEndpointArgs {
 
   factory MoverSourceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return MoverSourceEndpointArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      export: map['export'] == null ? null : pulumi.Output.create<String>(map['export'] as String),
-      host: pulumi.Output.create<String>(map['host'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nfsVersion: map['nfsVersion'] == null ? null : pulumi.Output.create<String>(map['nfsVersion'] as String),
-      storageMoverId: pulumi.Output.create<String>(map['storageMoverId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      export: map['export'] == null ? null : (map['export'] as String).input(),
+      host: (map['host'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nfsVersion: map['nfsVersion'] == null ? null : (map['nfsVersion'] as String).input(),
+      storageMoverId: (map['storageMoverId'] as String).input(),
     );
   }
 }

@@ -34,25 +34,16 @@ class UploadState {
   /// [type] The upload's upload type. See [AWS Docs](https://docs.aws.amazon.com/devicefarm/latest/APIReference/API_CreateUpload.html#API_CreateUpload_RequestSyntax) for valid list of values.
   /// [url] The presigned Amazon S3 URL that was used to store a file using a PUT request.
   UploadState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? category,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? url,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      category = pulumi.Input.asOptionalInput<String>(category),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      metadata = pulumi.Input.asOptionalInput<String>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectArn = pulumi.Input.asOptionalInput<String>(projectArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.arn,
+    this.category,
+    this.contentType,
+    this.metadata,
+    this.name,
+    this.projectArn,
+    this.region,
+    this.type,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class UploadState {
 
   factory UploadState.fromMap(Map<String, dynamic> map) {
     return UploadState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<String>(map['metadata'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectArn: map['projectArn'] == null ? null : pulumi.Output.create<String>(map['projectArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectArn: map['projectArn'] == null ? null : (map['projectArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

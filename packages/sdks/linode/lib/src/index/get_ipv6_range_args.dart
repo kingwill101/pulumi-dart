@@ -13,9 +13,8 @@ class GetIpv6RangeArgs {
   /// Creates a new [GetIpv6RangeArgs].
   /// [range] The IPv6 range to retrieve information about.
   GetIpv6RangeArgs({
-    required pulumi.Output<String> range,
-  }) :
-      range = pulumi.Input.asInput<String>(range);
+    required this.range,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetIpv6RangeArgs {
 
   factory GetIpv6RangeArgs.fromMap(Map<String, dynamic> map) {
     return GetIpv6RangeArgs(
-      range: pulumi.Output.create<String>(map['range'] as String),
+      range: (map['range'] as String).input(),
     );
   }
 }

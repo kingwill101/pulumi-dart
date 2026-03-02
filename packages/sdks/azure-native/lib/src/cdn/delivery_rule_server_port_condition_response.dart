@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_port_match_condition_parameters_response.dart';
 
 /// Defines the ServerPort condition for the delivery rule.
 class DeliveryRuleServerPortConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'ServerPort'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the condition.
-  final ServerPortMatchConditionParametersResponse parameters;
+  final pulumi.Input<ServerPortMatchConditionParametersResponse> parameters;
 
   /// Creates a new [DeliveryRuleServerPortConditionResponse].
   /// [name] Request variable to compare with.
@@ -21,14 +22,14 @@ class DeliveryRuleServerPortConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<ServerPortMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleServerPortConditionResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleServerPortConditionResponse(
-      name: map['name'] as String,
-      parameters: ServerPortMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (ServerPortMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

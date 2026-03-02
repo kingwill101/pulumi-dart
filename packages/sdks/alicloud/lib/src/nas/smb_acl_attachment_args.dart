@@ -48,23 +48,15 @@ class SmbAclAttachmentArgs {
   /// [rejectUnencryptedAccess] Specifies whether to deny access from non-encrypted clients. Valid values:
   /// [superAdminSid] The ID of a super admin. The ID must meet the following requirements:
   SmbAclAttachmentArgs({
-    pulumi.Output<bool>? enableAnonymousAccess,
-    pulumi.Output<bool>? encryptData,
-    required pulumi.Output<String> fileSystemId,
-    pulumi.Output<String>? homeDirPath,
-    required pulumi.Output<String> keytab,
-    required pulumi.Output<String> keytabMd5,
-    pulumi.Output<bool>? rejectUnencryptedAccess,
-    pulumi.Output<String>? superAdminSid,
-  }) :
-      enableAnonymousAccess = pulumi.Input.asOptionalInput<bool>(enableAnonymousAccess),
-      encryptData = pulumi.Input.asOptionalInput<bool>(encryptData),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      homeDirPath = pulumi.Input.asOptionalInput<String>(homeDirPath),
-      keytab = pulumi.Input.asInput<String>(keytab),
-      keytabMd5 = pulumi.Input.asInput<String>(keytabMd5),
-      rejectUnencryptedAccess = pulumi.Input.asOptionalInput<bool>(rejectUnencryptedAccess),
-      superAdminSid = pulumi.Input.asOptionalInput<String>(superAdminSid);
+    this.enableAnonymousAccess,
+    this.encryptData,
+    required this.fileSystemId,
+    this.homeDirPath,
+    required this.keytab,
+    required this.keytabMd5,
+    this.rejectUnencryptedAccess,
+    this.superAdminSid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,14 +73,14 @@ class SmbAclAttachmentArgs {
 
   factory SmbAclAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return SmbAclAttachmentArgs(
-      enableAnonymousAccess: map['enableAnonymousAccess'] == null ? null : pulumi.Output.create<bool>(map['enableAnonymousAccess'] as bool),
-      encryptData: map['encryptData'] == null ? null : pulumi.Output.create<bool>(map['encryptData'] as bool),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      homeDirPath: map['homeDirPath'] == null ? null : pulumi.Output.create<String>(map['homeDirPath'] as String),
-      keytab: pulumi.Output.create<String>(map['keytab'] as String),
-      keytabMd5: pulumi.Output.create<String>(map['keytabMd5'] as String),
-      rejectUnencryptedAccess: map['rejectUnencryptedAccess'] == null ? null : pulumi.Output.create<bool>(map['rejectUnencryptedAccess'] as bool),
-      superAdminSid: map['superAdminSid'] == null ? null : pulumi.Output.create<String>(map['superAdminSid'] as String),
+      enableAnonymousAccess: map['enableAnonymousAccess'] == null ? null : (map['enableAnonymousAccess'] as bool).input(),
+      encryptData: map['encryptData'] == null ? null : (map['encryptData'] as bool).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      homeDirPath: map['homeDirPath'] == null ? null : (map['homeDirPath'] as String).input(),
+      keytab: (map['keytab'] as String).input(),
+      keytabMd5: (map['keytabMd5'] as String).input(),
+      rejectUnencryptedAccess: map['rejectUnencryptedAccess'] == null ? null : (map['rejectUnencryptedAccess'] as bool).input(),
+      superAdminSid: map['superAdminSid'] == null ? null : (map['superAdminSid'] as String).input(),
     );
   }
 }

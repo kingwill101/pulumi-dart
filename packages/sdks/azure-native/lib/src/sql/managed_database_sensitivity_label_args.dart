@@ -48,33 +48,20 @@ class ManagedDatabaseSensitivityLabelArgs {
   /// [sensitivityLabelSource] The source of the sensitivity label.
   /// [tableName] The name of the table.
   ManagedDatabaseSensitivityLabelArgs({
-    pulumi.Output<String>? clientClassificationSource,
-    required pulumi.Output<String> columnName,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? informationType,
-    pulumi.Output<String>? informationTypeId,
-    pulumi.Output<String>? labelId,
-    pulumi.Output<String>? labelName,
-    required pulumi.Output<String> managedInstanceName,
-    pulumi.Output<SensitivityLabelRank>? rank,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaName,
-    pulumi.Output<String>? sensitivityLabelSource,
-    required pulumi.Output<String> tableName,
-  }) :
-      clientClassificationSource = pulumi.Input.asOptionalInput<String>(clientClassificationSource),
-      columnName = pulumi.Input.asInput<String>(columnName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      informationType = pulumi.Input.asOptionalInput<String>(informationType),
-      informationTypeId = pulumi.Input.asOptionalInput<String>(informationTypeId),
-      labelId = pulumi.Input.asOptionalInput<String>(labelId),
-      labelName = pulumi.Input.asOptionalInput<String>(labelName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      rank = pulumi.Input.asOptionalInput<SensitivityLabelRank>(rank),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asInput<String>(schemaName),
-      sensitivityLabelSource = pulumi.Input.asOptionalInput<String>(sensitivityLabelSource),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    this.clientClassificationSource,
+    required this.columnName,
+    required this.databaseName,
+    this.informationType,
+    this.informationTypeId,
+    this.labelId,
+    this.labelName,
+    required this.managedInstanceName,
+    this.rank,
+    required this.resourceGroupName,
+    required this.schemaName,
+    this.sensitivityLabelSource,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class ManagedDatabaseSensitivityLabelArgs {
 
   factory ManagedDatabaseSensitivityLabelArgs.fromMap(Map<String, dynamic> map) {
     return ManagedDatabaseSensitivityLabelArgs(
-      clientClassificationSource: map['clientClassificationSource'] == null ? null : pulumi.Output.create<String>(map['clientClassificationSource'] as String),
-      columnName: pulumi.Output.create<String>(map['columnName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      informationType: map['informationType'] == null ? null : pulumi.Output.create<String>(map['informationType'] as String),
-      informationTypeId: map['informationTypeId'] == null ? null : pulumi.Output.create<String>(map['informationTypeId'] as String),
-      labelId: map['labelId'] == null ? null : pulumi.Output.create<String>(map['labelId'] as String),
-      labelName: map['labelName'] == null ? null : pulumi.Output.create<String>(map['labelName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      rank: map['rank'] == null ? null : pulumi.Output.create<SensitivityLabelRank>(SensitivityLabelRank.fromValue(map['rank'] as String)),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
-      sensitivityLabelSource: map['sensitivityLabelSource'] == null ? null : pulumi.Output.create<String>(map['sensitivityLabelSource'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      clientClassificationSource: map['clientClassificationSource'] == null ? null : (map['clientClassificationSource'] as String).input(),
+      columnName: (map['columnName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      informationType: map['informationType'] == null ? null : (map['informationType'] as String).input(),
+      informationTypeId: map['informationTypeId'] == null ? null : (map['informationTypeId'] as String).input(),
+      labelId: map['labelId'] == null ? null : (map['labelId'] as String).input(),
+      labelName: map['labelName'] == null ? null : (map['labelName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      rank: map['rank'] == null ? null : (SensitivityLabelRank.fromValue(map['rank'] as String)).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      sensitivityLabelSource: map['sensitivityLabelSource'] == null ? null : (map['sensitivityLabelSource'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

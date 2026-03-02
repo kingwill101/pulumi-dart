@@ -22,15 +22,11 @@ class GetBrokerListenerArgs {
   /// [listenerName] Name of Instance broker listener resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetBrokerListenerArgs({
-    required pulumi.Output<String> brokerName,
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<String> listenerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      brokerName = pulumi.Input.asInput<String>(brokerName),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      listenerName = pulumi.Input.asInput<String>(listenerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.brokerName,
+    required this.instanceName,
+    required this.listenerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetBrokerListenerArgs {
 
   factory GetBrokerListenerArgs.fromMap(Map<String, dynamic> map) {
     return GetBrokerListenerArgs(
-      brokerName: pulumi.Output.create<String>(map['brokerName'] as String),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      listenerName: pulumi.Output.create<String>(map['listenerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      brokerName: (map['brokerName'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      listenerName: (map['listenerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

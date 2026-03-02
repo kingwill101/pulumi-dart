@@ -22,15 +22,11 @@ class GetDataLimitsArgs {
   /// [parentId] The parent asset ID of the data asset.
   /// [resourceType] The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
   GetDataLimitsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? parentId,
-    pulumi.Output<String>? resourceType,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      parentId = pulumi.Input.asOptionalInput<String>(parentId),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType);
+    this.ids,
+    this.outputFile,
+    this.parentId,
+    this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDataLimitsArgs {
 
   factory GetDataLimitsArgs.fromMap(Map<String, dynamic> map) {
     return GetDataLimitsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      parentId: map['parentId'] == null ? null : pulumi.Output.create<String>(map['parentId'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

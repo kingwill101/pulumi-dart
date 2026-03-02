@@ -16,13 +16,10 @@ class GetUrlListNetworksecurityV1beta1Args {
   /// [project] Optional.
   /// [urlListId] Required.
   GetUrlListNetworksecurityV1beta1Args({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> urlListId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      urlListId = pulumi.Input.asInput<String>(urlListId);
+    required this.location,
+    this.project,
+    required this.urlListId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetUrlListNetworksecurityV1beta1Args {
 
   factory GetUrlListNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetUrlListNetworksecurityV1beta1Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      urlListId: pulumi.Output.create<String>(map['urlListId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      urlListId: (map['urlListId'] as String).input(),
     );
   }
 }

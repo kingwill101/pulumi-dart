@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
   /// Matches a taint effect.
-  final String? effect;
+  final pulumi.Input<String>? effect;
   /// Matches a taint key (not necessarily unique).
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Matches a taint operator.
-  final String? operator;
+  final pulumi.Input<String>? operator;
   /// Matches a taint value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration].
   /// [effect] Matches a taint effect.
@@ -34,10 +35,10 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 
   factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration(
-      effect: map['effect'] == null ? null : map['effect'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      operator: map['operator'] == null ? null : map['operator'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

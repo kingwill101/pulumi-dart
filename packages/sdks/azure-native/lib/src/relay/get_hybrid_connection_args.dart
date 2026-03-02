@@ -19,13 +19,10 @@ class GetHybridConnectionArgs {
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetHybridConnectionArgs({
-    required pulumi.Output<String> hybridConnectionName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hybridConnectionName = pulumi.Input.asInput<String>(hybridConnectionName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hybridConnectionName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetHybridConnectionArgs {
 
   factory GetHybridConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetHybridConnectionArgs(
-      hybridConnectionName: pulumi.Output.create<String>(map['hybridConnectionName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hybridConnectionName: (map['hybridConnectionName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

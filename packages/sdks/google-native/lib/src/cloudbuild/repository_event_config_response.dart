@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pull_request_filter_response.dart';
 import 'push_filter_response.dart';
 
 /// The configuration of a trigger that creates a build whenever an event from Repo API is received.
 class RepositoryEventConfigResponse {
   /// Filter to match changes in pull requests.
-  final PullRequestFilterResponse pullRequest;
+  final pulumi.Input<PullRequestFilterResponse> pullRequest;
   /// Filter to match changes in refs like branches, tags.
-  final PushFilterResponse push;
+  final pulumi.Input<PushFilterResponse> push;
   /// The resource name of the Repo API resource.
-  final String repository;
+  final pulumi.Input<String> repository;
   /// The type of the SCM vendor the repository points to.
-  final String repositoryType;
+  final pulumi.Input<String> repositoryType;
 
   /// Creates a new [RepositoryEventConfigResponse].
   /// [pullRequest] Filter to match changes in pull requests.
@@ -28,8 +29,8 @@ class RepositoryEventConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pullRequest': pullRequest.toMap(),
-      'push': push.toMap(),
+      'pullRequest': pulumi.Input.mapInputValue<PullRequestFilterResponse, Map<String, dynamic>>(pullRequest, (value) => value.toMap()),
+      'push': pulumi.Input.mapInputValue<PushFilterResponse, Map<String, dynamic>>(push, (value) => value.toMap()),
       'repository': repository,
       'repositoryType': repositoryType,
     };
@@ -37,10 +38,10 @@ class RepositoryEventConfigResponse {
 
   factory RepositoryEventConfigResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryEventConfigResponse(
-      pullRequest: PullRequestFilterResponse.fromMap((map['pullRequest'] as Map).cast<String, dynamic>()),
-      push: PushFilterResponse.fromMap((map['push'] as Map).cast<String, dynamic>()),
-      repository: map['repository'] as String,
-      repositoryType: map['repositoryType'] as String,
+      pullRequest: (PullRequestFilterResponse.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
+      push: (PushFilterResponse.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
+      repository: (map['repository'] as String).input(),
+      repositoryType: (map['repositoryType'] as String).input(),
     );
   }
 }

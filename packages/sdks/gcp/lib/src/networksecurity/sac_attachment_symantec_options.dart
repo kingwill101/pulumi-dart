@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SacAttachmentSymantecOptions {
   /// Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
-  final String? symantecLocationName;
+  final pulumi.Input<String>? symantecLocationName;
   /// Symantec data center identifier that this attachment will connect to.
-  final String? symantecSite;
+  final pulumi.Input<String>? symantecSite;
 
   /// Creates a new [SacAttachmentSymantecOptions].
   /// [symantecLocationName] Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
@@ -24,8 +25,8 @@ class SacAttachmentSymantecOptions {
 
   factory SacAttachmentSymantecOptions.fromMap(Map<String, dynamic> map) {
     return SacAttachmentSymantecOptions(
-      symantecLocationName: map['symantecLocationName'] == null ? null : map['symantecLocationName'] as String,
-      symantecSite: map['symantecSite'] == null ? null : map['symantecSite'] as String,
+      symantecLocationName: map['symantecLocationName'] == null ? null : (map['symantecLocationName'] as String).input(),
+      symantecSite: map['symantecSite'] == null ? null : (map['symantecSite'] as String).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Edifact schema reference.
 class EdifactSchemaReference {
   /// The association assigned code.
-  final String? associationAssignedCode;
+  final pulumi.Input<String>? associationAssignedCode;
   /// The message id.
-  final String messageId;
+  final pulumi.Input<String> messageId;
   /// The message release version.
-  final String messageRelease;
+  final pulumi.Input<String> messageRelease;
   /// The message version.
-  final String messageVersion;
+  final pulumi.Input<String> messageVersion;
   /// The schema name.
-  final String schemaName;
+  final pulumi.Input<String> schemaName;
   /// The sender application id.
-  final String? senderApplicationId;
+  final pulumi.Input<String>? senderApplicationId;
   /// The sender application qualifier.
-  final String? senderApplicationQualifier;
+  final pulumi.Input<String>? senderApplicationQualifier;
 
   /// Creates a new [EdifactSchemaReference].
   /// [associationAssignedCode] The association assigned code.
@@ -50,13 +51,13 @@ class EdifactSchemaReference {
 
   factory EdifactSchemaReference.fromMap(Map<String, dynamic> map) {
     return EdifactSchemaReference(
-      associationAssignedCode: map['associationAssignedCode'] == null ? null : map['associationAssignedCode'] as String,
-      messageId: map['messageId'] as String,
-      messageRelease: map['messageRelease'] as String,
-      messageVersion: map['messageVersion'] as String,
-      schemaName: map['schemaName'] as String,
-      senderApplicationId: map['senderApplicationId'] == null ? null : map['senderApplicationId'] as String,
-      senderApplicationQualifier: map['senderApplicationQualifier'] == null ? null : map['senderApplicationQualifier'] as String,
+      associationAssignedCode: map['associationAssignedCode'] == null ? null : (map['associationAssignedCode'] as String).input(),
+      messageId: (map['messageId'] as String).input(),
+      messageRelease: (map['messageRelease'] as String).input(),
+      messageVersion: (map['messageVersion'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      senderApplicationId: map['senderApplicationId'] == null ? null : (map['senderApplicationId'] as String).input(),
+      senderApplicationQualifier: map['senderApplicationQualifier'] == null ? null : (map['senderApplicationQualifier'] as String).input(),
     );
   }
 }

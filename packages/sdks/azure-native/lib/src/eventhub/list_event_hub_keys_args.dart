@@ -22,15 +22,11 @@ class ListEventHubKeysArgs {
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   ListEventHubKeysArgs({
-    required pulumi.Output<String> authorizationRuleName,
-    required pulumi.Output<String> eventHubName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authorizationRuleName = pulumi.Input.asInput<String>(authorizationRuleName),
-      eventHubName = pulumi.Input.asInput<String>(eventHubName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.authorizationRuleName,
+    required this.eventHubName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListEventHubKeysArgs {
 
   factory ListEventHubKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListEventHubKeysArgs(
-      authorizationRuleName: pulumi.Output.create<String>(map['authorizationRuleName'] as String),
-      eventHubName: pulumi.Output.create<String>(map['eventHubName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authorizationRuleName: (map['authorizationRuleName'] as String).input(),
+      eventHubName: (map['eventHubName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

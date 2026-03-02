@@ -16,13 +16,10 @@ class GetPreferenceSetArgs {
   /// [preferenceSetId] Required.
   /// [project] Optional.
   GetPreferenceSetArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> preferenceSetId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      preferenceSetId = pulumi.Input.asInput<String>(preferenceSetId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    required this.preferenceSetId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetPreferenceSetArgs {
 
   factory GetPreferenceSetArgs.fromMap(Map<String, dynamic> map) {
     return GetPreferenceSetArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      preferenceSetId: pulumi.Output.create<String>(map['preferenceSetId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      preferenceSetId: (map['preferenceSetId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Kafka endpoint Batching properties
 class DataflowEndpointKafkaBatchingResponse {
   /// Batching latency in milliseconds.
-  final int? latencyMs;
+  final pulumi.Input<int>? latencyMs;
   /// Maximum number of bytes in a batch.
-  final int? maxBytes;
+  final pulumi.Input<int>? maxBytes;
   /// Maximum number of messages in a batch.
-  final int? maxMessages;
+  final pulumi.Input<int>? maxMessages;
   /// Mode for batching.
-  final String? mode;
+  final pulumi.Input<String>? mode;
 
   /// Creates a new [DataflowEndpointKafkaBatchingResponse].
   /// [latencyMs] Batching latency in milliseconds.
@@ -35,10 +36,10 @@ class DataflowEndpointKafkaBatchingResponse {
 
   factory DataflowEndpointKafkaBatchingResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointKafkaBatchingResponse(
-      latencyMs: map['latencyMs'] == null ? null : map['latencyMs'] as int,
-      maxBytes: map['maxBytes'] == null ? null : map['maxBytes'] as int,
-      maxMessages: map['maxMessages'] == null ? null : map['maxMessages'] as int,
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      latencyMs: map['latencyMs'] == null ? null : (map['latencyMs'] as int).input(),
+      maxBytes: map['maxBytes'] == null ? null : (map['maxBytes'] as int).input(),
+      maxMessages: map['maxMessages'] == null ? null : (map['maxMessages'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
     );
   }
 }

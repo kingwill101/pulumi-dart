@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification {
   /// Metric type. Valid values: `ALBRequestCountPerTarget`, `ASGAverageCPUUtilization`, `ASGAverageNetworkIn`, `ASGAverageNetworkOut`, `DynamoDBReadCapacityUtilization`, `DynamoDBWriteCapacityUtilization`, `ECSServiceAverageCPUUtilization`, `ECSServiceAverageMemoryUtilization`, `EC2SpotFleetRequestAverageCPUUtilization`, `EC2SpotFleetRequestAverageNetworkIn`, `EC2SpotFleetRequestAverageNetworkOut`, `RDSReaderAverageCPUUtilization`, `RDSReaderAverageDatabaseConnections`.
-  final String predefinedScalingMetricType;
+  final pulumi.Input<String> predefinedScalingMetricType;
   /// Identifies the resource associated with the metric type.
-  final String? resourceLabel;
+  final pulumi.Input<String>? resourceLabel;
 
   /// Creates a new [ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification].
   /// [predefinedScalingMetricType] Metric type. Valid values: `ALBRequestCountPerTarget`, `ASGAverageCPUUtilization`, `ASGAverageNetworkIn`, `ASGAverageNetworkOut`, `DynamoDBReadCapacityUtilization`, `DynamoDBWriteCapacityUtilization`, `ECSServiceAverageCPUUtilization`, `ECSServiceAverageMemoryUtilization`, `EC2SpotFleetRequestAverageCPUUtilization`, `EC2SpotFleetRequestAverageNetworkIn`, `EC2SpotFleetRequestAverageNetworkOut`, `RDSReaderAverageCPUUtilization`, `RDSReaderAverageDatabaseConnections`.
@@ -24,8 +25,8 @@ class ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingM
 
   factory ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification.fromMap(Map<String, dynamic> map) {
     return ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification(
-      predefinedScalingMetricType: map['predefinedScalingMetricType'] as String,
-      resourceLabel: map['resourceLabel'] == null ? null : map['resourceLabel'] as String,
+      predefinedScalingMetricType: (map['predefinedScalingMetricType'] as String).input(),
+      resourceLabel: map['resourceLabel'] == null ? null : (map['resourceLabel'] as String).input(),
     );
   }
 }

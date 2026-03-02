@@ -33,21 +33,14 @@ class GetGroupsArgs {
   /// [returnAll] A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
   /// [securityEnabled] Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
   GetGroupsArgs({
-    pulumi.Output<String>? displayNamePrefix,
-    pulumi.Output<List<String>>? displayNames,
-    pulumi.Output<bool>? ignoreMissing,
-    pulumi.Output<bool>? mailEnabled,
-    pulumi.Output<List<String>>? objectIds,
-    pulumi.Output<bool>? returnAll,
-    pulumi.Output<bool>? securityEnabled,
-  }) :
-      displayNamePrefix = pulumi.Input.asOptionalInput<String>(displayNamePrefix),
-      displayNames = pulumi.Input.asOptionalInput<List<String>>(displayNames),
-      ignoreMissing = pulumi.Input.asOptionalInput<bool>(ignoreMissing),
-      mailEnabled = pulumi.Input.asOptionalInput<bool>(mailEnabled),
-      objectIds = pulumi.Input.asOptionalInput<List<String>>(objectIds),
-      returnAll = pulumi.Input.asOptionalInput<bool>(returnAll),
-      securityEnabled = pulumi.Input.asOptionalInput<bool>(securityEnabled);
+    this.displayNamePrefix,
+    this.displayNames,
+    this.ignoreMissing,
+    this.mailEnabled,
+    this.objectIds,
+    this.returnAll,
+    this.securityEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class GetGroupsArgs {
 
   factory GetGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupsArgs(
-      displayNamePrefix: map['displayNamePrefix'] == null ? null : pulumi.Output.create<String>(map['displayNamePrefix'] as String),
-      displayNames: map['displayNames'] == null ? null : pulumi.Output.create<List<String>>((map['displayNames'] as List).cast<String>()),
-      ignoreMissing: map['ignoreMissing'] == null ? null : pulumi.Output.create<bool>(map['ignoreMissing'] as bool),
-      mailEnabled: map['mailEnabled'] == null ? null : pulumi.Output.create<bool>(map['mailEnabled'] as bool),
-      objectIds: map['objectIds'] == null ? null : pulumi.Output.create<List<String>>((map['objectIds'] as List).cast<String>()),
-      returnAll: map['returnAll'] == null ? null : pulumi.Output.create<bool>(map['returnAll'] as bool),
-      securityEnabled: map['securityEnabled'] == null ? null : pulumi.Output.create<bool>(map['securityEnabled'] as bool),
+      displayNamePrefix: map['displayNamePrefix'] == null ? null : (map['displayNamePrefix'] as String).input(),
+      displayNames: map['displayNames'] == null ? null : ((map['displayNames'] as List).cast<String>()).input(),
+      ignoreMissing: map['ignoreMissing'] == null ? null : (map['ignoreMissing'] as bool).input(),
+      mailEnabled: map['mailEnabled'] == null ? null : (map['mailEnabled'] as bool).input(),
+      objectIds: map['objectIds'] == null ? null : ((map['objectIds'] as List).cast<String>()).input(),
+      returnAll: map['returnAll'] == null ? null : (map['returnAll'] as bool).input(),
+      securityEnabled: map['securityEnabled'] == null ? null : (map['securityEnabled'] as bool).input(),
     );
   }
 }

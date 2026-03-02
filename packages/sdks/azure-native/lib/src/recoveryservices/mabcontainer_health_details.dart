@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MAB workload-specific Health Details.
 class MABContainerHealthDetails {
   /// Health Code
-  final int? code;
+  final pulumi.Input<int>? code;
   /// Health Message
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Health Recommended Actions
-  final List<String>? recommendations;
+  final pulumi.Input<List<String>>? recommendations;
   /// Health Title
-  final String? title;
+  final pulumi.Input<String>? title;
 
   /// Creates a new [MABContainerHealthDetails].
   /// [code] Health Code
@@ -35,10 +36,10 @@ class MABContainerHealthDetails {
 
   factory MABContainerHealthDetails.fromMap(Map<String, dynamic> map) {
     return MABContainerHealthDetails(
-      code: map['code'] == null ? null : map['code'] as int,
-      message: map['message'] == null ? null : map['message'] as String,
-      recommendations: map['recommendations'] == null ? null : (map['recommendations'] as List).cast<String>(),
-      title: map['title'] == null ? null : map['title'] as String,
+      code: map['code'] == null ? null : (map['code'] as int).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      recommendations: map['recommendations'] == null ? null : ((map['recommendations'] as List).cast<String>()).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

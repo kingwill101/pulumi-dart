@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupMixedInstancesPolicyInstancesDistribution {
   /// Strategy to use when launching on-demand instances. Valid values: `prioritized`, `lowest-price`. Default: `prioritized`.
-  final String? onDemandAllocationStrategy;
+  final pulumi.Input<String>? onDemandAllocationStrategy;
   /// Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances. Default: `0`.
-  final int? onDemandBaseCapacity;
+  final pulumi.Input<int>? onDemandBaseCapacity;
   /// Percentage split between on-demand and Spot instances above the base on-demand capacity. Default: `100`.
-  final int? onDemandPercentageAboveBaseCapacity;
+  final pulumi.Input<int>? onDemandPercentageAboveBaseCapacity;
   /// How to allocate capacity across the Spot pools. Valid values: `lowest-price`, `capacity-optimized`, `capacity-optimized-prioritized`, and `price-capacity-optimized`. Default: `lowest-price`.
-  final String? spotAllocationStrategy;
+  final pulumi.Input<String>? spotAllocationStrategy;
   /// Number of Spot pools per availability zone to allocate capacity. EC2 Auto Scaling selects the cheapest Spot pools and evenly allocates Spot capacity across the number of Spot pools that you specify. Only available with `spot_allocation_strategy` set to `lowest-price`. Otherwise it must be set to `0`, if it has been defined before. Default: `2`.
-  final int? spotInstancePools;
+  final pulumi.Input<int>? spotInstancePools;
   /// Maximum price per unit hour that the user is willing to pay for the Spot instances. Default: an empty string which means the on-demand price.
-  final String? spotMaxPrice;
+  final pulumi.Input<String>? spotMaxPrice;
 
   /// Creates a new [GroupMixedInstancesPolicyInstancesDistribution].
   /// [onDemandAllocationStrategy] Strategy to use when launching on-demand instances. Valid values: `prioritized`, `lowest-price`. Default: `prioritized`.
@@ -44,12 +45,12 @@ class GroupMixedInstancesPolicyInstancesDistribution {
 
   factory GroupMixedInstancesPolicyInstancesDistribution.fromMap(Map<String, dynamic> map) {
     return GroupMixedInstancesPolicyInstancesDistribution(
-      onDemandAllocationStrategy: map['onDemandAllocationStrategy'] == null ? null : map['onDemandAllocationStrategy'] as String,
-      onDemandBaseCapacity: map['onDemandBaseCapacity'] == null ? null : map['onDemandBaseCapacity'] as int,
-      onDemandPercentageAboveBaseCapacity: map['onDemandPercentageAboveBaseCapacity'] == null ? null : map['onDemandPercentageAboveBaseCapacity'] as int,
-      spotAllocationStrategy: map['spotAllocationStrategy'] == null ? null : map['spotAllocationStrategy'] as String,
-      spotInstancePools: map['spotInstancePools'] == null ? null : map['spotInstancePools'] as int,
-      spotMaxPrice: map['spotMaxPrice'] == null ? null : map['spotMaxPrice'] as String,
+      onDemandAllocationStrategy: map['onDemandAllocationStrategy'] == null ? null : (map['onDemandAllocationStrategy'] as String).input(),
+      onDemandBaseCapacity: map['onDemandBaseCapacity'] == null ? null : (map['onDemandBaseCapacity'] as int).input(),
+      onDemandPercentageAboveBaseCapacity: map['onDemandPercentageAboveBaseCapacity'] == null ? null : (map['onDemandPercentageAboveBaseCapacity'] as int).input(),
+      spotAllocationStrategy: map['spotAllocationStrategy'] == null ? null : (map['spotAllocationStrategy'] as String).input(),
+      spotInstancePools: map['spotInstancePools'] == null ? null : (map['spotInstancePools'] as int).input(),
+      spotMaxPrice: map['spotMaxPrice'] == null ? null : (map['spotMaxPrice'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicSpiceFileTransfer {
   /// Enables or disables file transfer functionality for the Spice connection.
-  final String enable;
+  final pulumi.Input<String> enable;
 
   /// Creates a new [DomainDevicesGraphicSpiceFileTransfer].
   /// [enable] Enables or disables file transfer functionality for the Spice connection.
@@ -19,7 +20,7 @@ class DomainDevicesGraphicSpiceFileTransfer {
 
   factory DomainDevicesGraphicSpiceFileTransfer.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSpiceFileTransfer(
-      enable: map['enable'] as String,
+      enable: (map['enable'] as String).input(),
     );
   }
 }

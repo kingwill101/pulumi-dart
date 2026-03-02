@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lifecycle_configuration.dart';
 
 /// Dynamic pool configuration.
 class DynamicPoolConfiguration {
   /// The lifecycle configuration of a session in the dynamic session pool
-  final LifecycleConfiguration? lifecycleConfiguration;
+  final pulumi.Input<LifecycleConfiguration>? lifecycleConfiguration;
 
   /// Creates a new [DynamicPoolConfiguration].
   /// [lifecycleConfiguration] The lifecycle configuration of a session in the dynamic session pool
@@ -15,13 +16,13 @@ class DynamicPoolConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lifecycleConfiguration': ?lifecycleConfiguration == null ? null : lifecycleConfiguration!.toMap(),
+      'lifecycleConfiguration': ?pulumi.Input.mapOptionalInputValue<LifecycleConfiguration, Map<String, dynamic>>(lifecycleConfiguration, (value) => value.toMap()),
     };
   }
 
   factory DynamicPoolConfiguration.fromMap(Map<String, dynamic> map) {
     return DynamicPoolConfiguration(
-      lifecycleConfiguration: map['lifecycleConfiguration'] == null ? null : LifecycleConfiguration.fromMap((map['lifecycleConfiguration'] as Map).cast<String, dynamic>()),
+      lifecycleConfiguration: map['lifecycleConfiguration'] == null ? null : (LifecycleConfiguration.fromMap((map['lifecycleConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

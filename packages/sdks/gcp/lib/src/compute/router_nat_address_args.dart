@@ -31,19 +31,13 @@ class RouterNatAddressArgs {
   /// [router] The name of the Cloud Router in which the referenced NAT service is configured.
   /// [routerNat] The name of the Nat service in which this address will be configured.
   RouterNatAddressArgs({
-    pulumi.Output<List<String>>? drainNatIps,
-    required pulumi.Output<List<String>> natIps,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> router,
-    required pulumi.Output<String> routerNat,
-  }) :
-      drainNatIps = pulumi.Input.asOptionalInput<List<String>>(drainNatIps),
-      natIps = pulumi.Input.asInput<List<String>>(natIps),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      router = pulumi.Input.asInput<String>(router),
-      routerNat = pulumi.Input.asInput<String>(routerNat);
+    this.drainNatIps,
+    required this.natIps,
+    this.project,
+    this.region,
+    required this.router,
+    required this.routerNat,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class RouterNatAddressArgs {
 
   factory RouterNatAddressArgs.fromMap(Map<String, dynamic> map) {
     return RouterNatAddressArgs(
-      drainNatIps: map['drainNatIps'] == null ? null : pulumi.Output.create<List<String>>((map['drainNatIps'] as List).cast<String>()),
-      natIps: pulumi.Output.create<List<String>>((map['natIps'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      router: pulumi.Output.create<String>(map['router'] as String),
-      routerNat: pulumi.Output.create<String>(map['routerNat'] as String),
+      drainNatIps: map['drainNatIps'] == null ? null : ((map['drainNatIps'] as List).cast<String>()).input(),
+      natIps: ((map['natIps'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      router: (map['router'] as String).input(),
+      routerNat: (map['routerNat'] as String).input(),
     );
   }
 }

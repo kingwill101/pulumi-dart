@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StackStorageConnector {
   /// Type of storage connector.
   /// Valid values are `HOMEFOLDERS`, `GOOGLE_DRIVE`, or `ONE_DRIVE`.
-  final String connectorType;
+  final pulumi.Input<String> connectorType;
   /// Names of the domains for the account.
-  final List<String>? domains;
+  final pulumi.Input<List<String>>? domains;
   /// ARN of the storage connector.
-  final String? resourceIdentifier;
+  final pulumi.Input<String>? resourceIdentifier;
 
   /// Creates a new [StackStorageConnector].
   /// [connectorType] Type of storage connector.
@@ -30,9 +31,9 @@ class StackStorageConnector {
 
   factory StackStorageConnector.fromMap(Map<String, dynamic> map) {
     return StackStorageConnector(
-      connectorType: map['connectorType'] as String,
-      domains: map['domains'] == null ? null : (map['domains'] as List).cast<String>(),
-      resourceIdentifier: map['resourceIdentifier'] == null ? null : map['resourceIdentifier'] as String,
+      connectorType: (map['connectorType'] as String).input(),
+      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
+      resourceIdentifier: map['resourceIdentifier'] == null ? null : (map['resourceIdentifier'] as String).input(),
     );
   }
 }

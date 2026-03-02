@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes {
   /// Whether audio input is allowed.
-  final bool allowAudioInput;
+  final pulumi.Input<bool> allowAudioInput;
   /// Whether DTMF input is allowed.
-  final bool allowDtmfInput;
+  final pulumi.Input<bool> allowDtmfInput;
 
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes].
   /// [allowAudioInput] Whether audio input is allowed.
@@ -24,8 +25,8 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
 
   factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes(
-      allowAudioInput: map['allowAudioInput'] as bool,
-      allowDtmfInput: map['allowDtmfInput'] as bool,
+      allowAudioInput: (map['allowAudioInput'] as bool).input(),
+      allowDtmfInput: (map['allowDtmfInput'] as bool).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiProductOperationGroupOperationConfigOperation {
   /// Methods refers to the REST verbs, when none specified, all verb types are allowed.
-  final List<String>? methods;
+  final pulumi.Input<List<String>>? methods;
   /// Required. REST resource path associated with the API proxy or remote service.
-  final String? resource;
+  final pulumi.Input<String>? resource;
 
   /// Creates a new [ApiProductOperationGroupOperationConfigOperation].
   /// [methods] Methods refers to the REST verbs, when none specified, all verb types are allowed.
@@ -24,8 +25,8 @@ class ApiProductOperationGroupOperationConfigOperation {
 
   factory ApiProductOperationGroupOperationConfigOperation.fromMap(Map<String, dynamic> map) {
     return ApiProductOperationGroupOperationConfigOperation(
-      methods: map['methods'] == null ? null : (map['methods'] as List).cast<String>(),
-      resource: map['resource'] == null ? null : map['resource'] as String,
+      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
+      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
     );
   }
 }

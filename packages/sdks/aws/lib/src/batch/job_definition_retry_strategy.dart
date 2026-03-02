@@ -5,9 +5,9 @@ import 'job_definition_retry_strategy_evaluate_on_exit.dart';
 
 class JobDefinitionRetryStrategy {
   /// Number of times to move a job to the `RUNNABLE` status. You may specify between `1` and `10` attempts.
-  final int? attempts;
+  final pulumi.Input<int>? attempts;
   /// Evaluate on exit conditions under which the job should be retried or failed. If this parameter is specified, then the `attempts` parameter must also be specified. You may specify up to 5 configuration blocks.
-  final List<JobDefinitionRetryStrategyEvaluateOnExit>? evaluateOnExits;
+  final pulumi.Input<List<JobDefinitionRetryStrategyEvaluateOnExit>>? evaluateOnExits;
 
   /// Creates a new [JobDefinitionRetryStrategy].
   /// [attempts] Number of times to move a job to the `RUNNABLE` status. You may specify between `1` and `10` attempts.
@@ -20,14 +20,14 @@ class JobDefinitionRetryStrategy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attempts': ?attempts,
-      'evaluateOnExits': ?evaluateOnExits == null ? null : pulumi.Input.encodeList<JobDefinitionRetryStrategyEvaluateOnExit, Map<String, dynamic>>(evaluateOnExits!, (value) => value.toMap()),
+      'evaluateOnExits': ?pulumi.Input.mapOptionalInputValue<List<JobDefinitionRetryStrategyEvaluateOnExit>, List<Map<String, dynamic>>>(evaluateOnExits, (value) => pulumi.Input.encodeList<JobDefinitionRetryStrategyEvaluateOnExit, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory JobDefinitionRetryStrategy.fromMap(Map<String, dynamic> map) {
     return JobDefinitionRetryStrategy(
-      attempts: map['attempts'] == null ? null : map['attempts'] as int,
-      evaluateOnExits: map['evaluateOnExits'] == null ? null : pulumi.Input.decodeList<JobDefinitionRetryStrategyEvaluateOnExit>(map['evaluateOnExits'], (value) => JobDefinitionRetryStrategyEvaluateOnExit.fromMap((value as Map).cast<String, dynamic>())),
+      attempts: map['attempts'] == null ? null : (map['attempts'] as int).input(),
+      evaluateOnExits: map['evaluateOnExits'] == null ? null : (pulumi.Input.decodeList<JobDefinitionRetryStrategyEvaluateOnExit>(map['evaluateOnExits'], (value) => JobDefinitionRetryStrategyEvaluateOnExit.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

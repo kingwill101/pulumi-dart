@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPeerConnectionsConnection {
   /// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-  final int acceptingAliUid;
+  final pulumi.Input<int> acceptingAliUid;
   /// The region ID of the recipient of the VPC peering connection to be created.
-  final String acceptingRegionId;
+  final pulumi.Input<String> acceptingRegionId;
   /// The VPC ID of the receiving end of the VPC peer connection.
-  final String acceptingVpcId;
+  final pulumi.Input<String> acceptingVpcId;
   /// The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the VPC peer connection to be created.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the PeerConnection.
-  final String id;
+  final pulumi.Input<String> id;
   /// The first ID of the resource.
-  final String peerConnectionId;
+  final pulumi.Input<String> peerConnectionId;
   /// The name of the resource.
-  final String peerConnectionName;
+  final pulumi.Input<String> peerConnectionName;
   /// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the requester VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetPeerConnectionsConnection].
   /// [acceptingAliUid] The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
@@ -69,17 +70,17 @@ class GetPeerConnectionsConnection {
 
   factory GetPeerConnectionsConnection.fromMap(Map<String, dynamic> map) {
     return GetPeerConnectionsConnection(
-      acceptingAliUid: map['acceptingAliUid'] as int,
-      acceptingRegionId: map['acceptingRegionId'] as String,
-      acceptingVpcId: map['acceptingVpcId'] as String,
-      bandwidth: map['bandwidth'] as int,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      peerConnectionId: map['peerConnectionId'] as String,
-      peerConnectionName: map['peerConnectionName'] as String,
-      status: map['status'] as String,
-      vpcId: map['vpcId'] as String,
+      acceptingAliUid: (map['acceptingAliUid'] as int).input(),
+      acceptingRegionId: (map['acceptingRegionId'] as String).input(),
+      acceptingVpcId: (map['acceptingVpcId'] as String).input(),
+      bandwidth: (map['bandwidth'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      peerConnectionId: (map['peerConnectionId'] as String).input(),
+      peerConnectionName: (map['peerConnectionName'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

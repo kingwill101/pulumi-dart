@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFrontdoorOriginGroupHealthProbe {
   /// Specifies the number of seconds between health probes.
-  final int intervalInSeconds;
+  final pulumi.Input<int> intervalInSeconds;
   /// Specifies the path relative to the origin that is used to determine the health of the origin.
-  final String path;
+  final pulumi.Input<String> path;
   /// Specifies the protocol to use for health probe.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// Specifies the type of health probe request that is made.
-  final String requestType;
+  final pulumi.Input<String> requestType;
 
   /// Creates a new [GetFrontdoorOriginGroupHealthProbe].
   /// [intervalInSeconds] Specifies the number of seconds between health probes.
@@ -34,10 +35,10 @@ class GetFrontdoorOriginGroupHealthProbe {
 
   factory GetFrontdoorOriginGroupHealthProbe.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorOriginGroupHealthProbe(
-      intervalInSeconds: map['intervalInSeconds'] as int,
-      path: map['path'] as String,
-      protocol: map['protocol'] as String,
-      requestType: map['requestType'] as String,
+      intervalInSeconds: (map['intervalInSeconds'] as int).input(),
+      path: (map['path'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      requestType: (map['requestType'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This represents extensions installed on virtualSwitch.
 class SwitchExtensionResponse {
   /// This represents whether extension is enabled on virtualSwitch.
-  final bool extensionEnabled;
+  final pulumi.Input<bool> extensionEnabled;
   /// This will show extension name for virtualSwitch.
-  final String extensionName;
+  final pulumi.Input<String> extensionName;
   /// Unique identifier for virtualSwitch.
-  final String switchId;
+  final pulumi.Input<String> switchId;
 
   /// Creates a new [SwitchExtensionResponse].
   /// [extensionEnabled] This represents whether extension is enabled on virtualSwitch.
@@ -30,9 +31,9 @@ class SwitchExtensionResponse {
 
   factory SwitchExtensionResponse.fromMap(Map<String, dynamic> map) {
     return SwitchExtensionResponse(
-      extensionEnabled: map['extensionEnabled'] as bool,
-      extensionName: map['extensionName'] as String,
-      switchId: map['switchId'] as String,
+      extensionEnabled: (map['extensionEnabled'] as bool).input(),
+      extensionName: (map['extensionName'] as String).input(),
+      switchId: (map['switchId'] as String).input(),
     );
   }
 }

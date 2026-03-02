@@ -19,13 +19,10 @@ class RoutineRelatedRecordArgs {
   /// [recordName] The record name.
   /// [siteId] The website ID.
   RoutineRelatedRecordArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> recordName,
-    required pulumi.Output<String> siteId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recordName = pulumi.Input.asInput<String>(recordName),
-      siteId = pulumi.Input.asInput<String>(siteId);
+    this.name,
+    required this.recordName,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class RoutineRelatedRecordArgs {
 
   factory RoutineRelatedRecordArgs.fromMap(Map<String, dynamic> map) {
     return RoutineRelatedRecordArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recordName: pulumi.Output.create<String>(map['recordName'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recordName: (map['recordName'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

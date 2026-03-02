@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the Power State of the cluster
 class PowerState {
   /// Tells whether the cluster is Running or Stopped
-  final String? code;
+  final pulumi.Input<String>? code;
 
   /// Creates a new [PowerState].
   /// [code] Tells whether the cluster is Running or Stopped
@@ -20,7 +21,7 @@ class PowerState {
 
   factory PowerState.fromMap(Map<String, dynamic> map) {
     return PowerState(
-      code: map['code'] == null ? null : map['code'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
     );
   }
 }

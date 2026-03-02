@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeLogConfigurationCloudwatchLogsLogDestination {
   /// Amazon Web Services Resource Name (ARN) for the CloudWatch log group to which EventBridge sends the log records.
-  final String logGroupArn;
+  final pulumi.Input<String> logGroupArn;
 
   /// Creates a new [PipeLogConfigurationCloudwatchLogsLogDestination].
   /// [logGroupArn] Amazon Web Services Resource Name (ARN) for the CloudWatch log group to which EventBridge sends the log records.
@@ -19,7 +20,7 @@ class PipeLogConfigurationCloudwatchLogsLogDestination {
 
   factory PipeLogConfigurationCloudwatchLogsLogDestination.fromMap(Map<String, dynamic> map) {
     return PipeLogConfigurationCloudwatchLogsLogDestination(
-      logGroupArn: map['logGroupArn'] as String,
+      logGroupArn: (map['logGroupArn'] as String).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileOracleProfile {
   /// Connection string attributes
-  final Map<String, String>? connectionAttributes;
+  final pulumi.Input<Map<String, String>>? connectionAttributes;
   /// Database for the Oracle connection.
-  final String databaseService;
+  final pulumi.Input<String> databaseService;
   /// Hostname for the Oracle connection.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// Password for the Oracle connection.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Port for the Oracle connection.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// A reference to a Secret Manager resource name storing the user's password.
-  final String? secretManagerStoredPassword;
+  final pulumi.Input<String>? secretManagerStoredPassword;
   /// Username for the Oracle connection.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [ConnectionProfileOracleProfile].
   /// [connectionAttributes] Connection string attributes
@@ -50,13 +51,13 @@ class ConnectionProfileOracleProfile {
 
   factory ConnectionProfileOracleProfile.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileOracleProfile(
-      connectionAttributes: map['connectionAttributes'] == null ? null : (map['connectionAttributes'] as Map).cast<String, String>(),
-      databaseService: map['databaseService'] as String,
-      hostname: map['hostname'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      secretManagerStoredPassword: map['secretManagerStoredPassword'] == null ? null : map['secretManagerStoredPassword'] as String,
-      username: map['username'] as String,
+      connectionAttributes: map['connectionAttributes'] == null ? null : ((map['connectionAttributes'] as Map).cast<String, String>()).input(),
+      databaseService: (map['databaseService'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      secretManagerStoredPassword: map['secretManagerStoredPassword'] == null ? null : (map['secretManagerStoredPassword'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

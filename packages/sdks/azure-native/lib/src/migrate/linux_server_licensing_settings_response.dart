@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Linux Server licensing settings.
 class LinuxServerLicensingSettingsResponse {
   /// Licence Cost.
-  final double licenseCost;
+  final pulumi.Input<double> licenseCost;
 
   /// Creates a new [LinuxServerLicensingSettingsResponse].
   /// [licenseCost] Licence Cost.
@@ -20,7 +21,7 @@ class LinuxServerLicensingSettingsResponse {
 
   factory LinuxServerLicensingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return LinuxServerLicensingSettingsResponse(
-      licenseCost: map['licenseCost'] as double,
+      licenseCost: (map['licenseCost'] as double).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetAnomaliesArgs {
   /// [settingsName] The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
   /// [workspaceName] The name of the workspace.
   GetAnomaliesArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> settingsName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      settingsName = pulumi.Input.asInput<String>(settingsName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.settingsName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAnomaliesArgs {
 
   factory GetAnomaliesArgs.fromMap(Map<String, dynamic> map) {
     return GetAnomaliesArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      settingsName: pulumi.Output.create<String>(map['settingsName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      settingsName: (map['settingsName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

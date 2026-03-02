@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppGroupsGroupQuota {
   /// Computing resources. Unit: LCU.
-  final String computeResource;
+  final pulumi.Input<String> computeResource;
   /// Storage Size. Unit: GB.
-  final String docSize;
+  final pulumi.Input<String> docSize;
   /// Specification. Valid values:
   /// * `opensearch.share.junior`: Entry-level.
   /// * `opensearch.share.common`: Shared universal.
@@ -14,7 +15,7 @@ class GetAppGroupsGroupQuota {
   /// * `opensearch.private.common`: Exclusive universal type.
   /// * `opensearch.private.compute`: Exclusive computing type.
   /// * `opensearch.private.storage`: Exclusive storage type
-  final String spec;
+  final pulumi.Input<String> spec;
 
   /// Creates a new [GetAppGroupsGroupQuota].
   /// [computeResource] Computing resources. Unit: LCU.
@@ -36,9 +37,9 @@ class GetAppGroupsGroupQuota {
 
   factory GetAppGroupsGroupQuota.fromMap(Map<String, dynamic> map) {
     return GetAppGroupsGroupQuota(
-      computeResource: map['computeResource'] as String,
-      docSize: map['docSize'] as String,
-      spec: map['spec'] as String,
+      computeResource: (map['computeResource'] as String).input(),
+      docSize: (map['docSize'] as String).input(),
+      spec: (map['spec'] as String).input(),
     );
   }
 }

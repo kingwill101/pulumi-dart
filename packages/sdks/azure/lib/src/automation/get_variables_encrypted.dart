@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVariablesEncrypted {
   /// The description of the Automation Variable.
-  final String description;
+  final pulumi.Input<String> description;
   /// Specifies if the Automation Variable is encrypted.
-  final bool encrypted;
-  final String id;
+  final pulumi.Input<bool> encrypted;
+  final pulumi.Input<String> id;
   /// The name of the Automation Variable.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the Automation Variable.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetVariablesEncrypted].
   /// [description] The description of the Automation Variable.
@@ -38,11 +39,11 @@ class GetVariablesEncrypted {
 
   factory GetVariablesEncrypted.fromMap(Map<String, dynamic> map) {
     return GetVariablesEncrypted(
-      description: map['description'] as String,
-      encrypted: map['encrypted'] as bool,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      value: map['value'] as String,
+      description: (map['description'] as String).input(),
+      encrypted: (map['encrypted'] as bool).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

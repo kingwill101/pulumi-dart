@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Hl7StoreNotificationConfigs {
   /// Restricts notifications sent for messages matching a filter. If this is empty, all messages
@@ -11,7 +12,7 @@ class Hl7StoreNotificationConfigs {
   /// * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
   /// * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
   /// * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
-  final String? filter;
+  final pulumi.Input<String>? filter;
   /// The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
   /// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
   /// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
@@ -19,7 +20,7 @@ class Hl7StoreNotificationConfigs {
   /// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
   /// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
   /// If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
-  final String pubsubTopic;
+  final pulumi.Input<String> pubsubTopic;
 
   /// Creates a new [Hl7StoreNotificationConfigs].
   /// [filter] Restricts notifications sent for messages matching a filter. If this is empty, all messages
@@ -38,8 +39,8 @@ class Hl7StoreNotificationConfigs {
 
   factory Hl7StoreNotificationConfigs.fromMap(Map<String, dynamic> map) {
     return Hl7StoreNotificationConfigs(
-      filter: map['filter'] == null ? null : map['filter'] as String,
-      pubsubTopic: map['pubsubTopic'] as String,
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      pubsubTopic: (map['pubsubTopic'] as String).input(),
     );
   }
 }

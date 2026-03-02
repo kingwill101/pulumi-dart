@@ -30,19 +30,13 @@ class CacheReserveInstanceArgs {
   /// [period] Purchase period (unit: month).
   /// [quotaGb] Cache retention specification (unit: GB).
   CacheReserveInstanceArgs({
-    pulumi.Output<bool>? autoPay,
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<String>? crRegion,
-    required pulumi.Output<String> paymentType,
-    pulumi.Output<int>? period,
-    pulumi.Output<int>? quotaGb,
-  }) :
-      autoPay = pulumi.Input.asOptionalInput<bool>(autoPay),
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      crRegion = pulumi.Input.asOptionalInput<String>(crRegion),
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      quotaGb = pulumi.Input.asOptionalInput<int>(quotaGb);
+    this.autoPay,
+    this.autoRenew,
+    this.crRegion,
+    required this.paymentType,
+    this.period,
+    this.quotaGb,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class CacheReserveInstanceArgs {
 
   factory CacheReserveInstanceArgs.fromMap(Map<String, dynamic> map) {
     return CacheReserveInstanceArgs(
-      autoPay: map['autoPay'] == null ? null : pulumi.Output.create<bool>(map['autoPay'] as bool),
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      crRegion: map['crRegion'] == null ? null : pulumi.Output.create<String>(map['crRegion'] as String),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      quotaGb: map['quotaGb'] == null ? null : pulumi.Output.create<int>(map['quotaGb'] as int),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      crRegion: map['crRegion'] == null ? null : (map['crRegion'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      quotaGb: map['quotaGb'] == null ? null : (map['quotaGb'] as int).input(),
     );
   }
 }

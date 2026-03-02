@@ -50,29 +50,18 @@ class DataSourceArgs {
   /// [type] The type of the data source. See the [AWS Documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDataSource.html#QS-CreateDataSource-request-Type) for the complete list of valid values.
   /// [vpcConnectionProperties] Use this parameter only when you want Amazon QuickSight to use a VPC connection when connecting to your underlying source. See VPC Connection Properties below for more details.
   DataSourceArgs({
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<DataSourceCredentials>? credentials,
-    required pulumi.Output<String> dataSourceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<DataSourceParameters> parameters,
-    pulumi.Output<List<DataSourcePermission>>? permissions,
-    pulumi.Output<String>? region,
-    pulumi.Output<DataSourceSslProperties>? sslProperties,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-    pulumi.Output<DataSourceVpcConnectionProperties>? vpcConnectionProperties,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      credentials = pulumi.Input.asOptionalInput<DataSourceCredentials>(credentials),
-      dataSourceId = pulumi.Input.asInput<String>(dataSourceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asInput<DataSourceParameters>(parameters),
-      permissions = pulumi.Input.asOptionalInput<List<DataSourcePermission>>(permissions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sslProperties = pulumi.Input.asOptionalInput<DataSourceSslProperties>(sslProperties),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type),
-      vpcConnectionProperties = pulumi.Input.asOptionalInput<DataSourceVpcConnectionProperties>(vpcConnectionProperties);
+    this.awsAccountId,
+    this.credentials,
+    required this.dataSourceId,
+    this.name,
+    required this.parameters,
+    this.permissions,
+    this.region,
+    this.sslProperties,
+    this.tags,
+    required this.type,
+    this.vpcConnectionProperties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,17 +81,17 @@ class DataSourceArgs {
 
   factory DataSourceArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<DataSourceCredentials>(DataSourceCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())),
-      dataSourceId: pulumi.Output.create<String>(map['dataSourceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: pulumi.Output.create<DataSourceParameters>(DataSourceParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<List<DataSourcePermission>>(pulumi.Input.decodeList<DataSourcePermission>(map['permissions'], (value) => DataSourcePermission.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sslProperties: map['sslProperties'] == null ? null : pulumi.Output.create<DataSourceSslProperties>(DataSourceSslProperties.fromMap((map['sslProperties'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      vpcConnectionProperties: map['vpcConnectionProperties'] == null ? null : pulumi.Output.create<DataSourceVpcConnectionProperties>(DataSourceVpcConnectionProperties.fromMap((map['vpcConnectionProperties'] as Map).cast<String, dynamic>())),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      credentials: map['credentials'] == null ? null : (DataSourceCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      dataSourceId: (map['dataSourceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: (DataSourceParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<DataSourcePermission>(map['permissions'], (value) => DataSourcePermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sslProperties: map['sslProperties'] == null ? null : (DataSourceSslProperties.fromMap((map['sslProperties'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      vpcConnectionProperties: map['vpcConnectionProperties'] == null ? null : (DataSourceVpcConnectionProperties.fromMap((map['vpcConnectionProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

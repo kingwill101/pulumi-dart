@@ -5,12 +5,12 @@ import 'get_cluster_shard_node_endpoint.dart';
 
 class GetClusterShardNode {
   /// The Availability Zone in which the node resides.
-  final String availabilityZone;
+  final pulumi.Input<String> availabilityZone;
   /// The date and time when the node was created. Example: `2022-01-01T21:00:00Z`.
-  final String createTime;
-  final List<GetClusterShardNodeEndpoint> endpoints;
+  final pulumi.Input<String> createTime;
+  final pulumi.Input<List<GetClusterShardNodeEndpoint>> endpoints;
   /// Name of the cluster.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetClusterShardNode].
   /// [availabilityZone] The Availability Zone in which the node resides.
@@ -28,17 +28,17 @@ class GetClusterShardNode {
     return <String, dynamic>{
       'availabilityZone': availabilityZone,
       'createTime': createTime,
-      'endpoints': pulumi.Input.encodeList<GetClusterShardNodeEndpoint, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
+      'endpoints': pulumi.Input.mapInputValue<List<GetClusterShardNodeEndpoint>, List<Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeList<GetClusterShardNodeEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
   factory GetClusterShardNode.fromMap(Map<String, dynamic> map) {
     return GetClusterShardNode(
-      availabilityZone: map['availabilityZone'] as String,
-      createTime: map['createTime'] as String,
-      endpoints: pulumi.Input.decodeList<GetClusterShardNodeEndpoint>(map['endpoints'], (value) => GetClusterShardNodeEndpoint.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      endpoints: (pulumi.Input.decodeList<GetClusterShardNodeEndpoint>(map['endpoints'], (value) => GetClusterShardNodeEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

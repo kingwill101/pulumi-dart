@@ -24,17 +24,12 @@ class ConversationDialogflowV2beta1Args {
   /// [location] Optional.
   /// [project] Optional.
   ConversationDialogflowV2beta1Args({
-    pulumi.Output<String>? conversationId,
-    required pulumi.Output<String> conversationProfile,
-    pulumi.Output<ConversationConversationStageDialogflowV2beta1>? conversationStage,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      conversationId = pulumi.Input.asOptionalInput<String>(conversationId),
-      conversationProfile = pulumi.Input.asInput<String>(conversationProfile),
-      conversationStage = pulumi.Input.asOptionalInput<ConversationConversationStageDialogflowV2beta1>(conversationStage),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.conversationId,
+    required this.conversationProfile,
+    this.conversationStage,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ConversationDialogflowV2beta1Args {
 
   factory ConversationDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return ConversationDialogflowV2beta1Args(
-      conversationId: map['conversationId'] == null ? null : pulumi.Output.create<String>(map['conversationId'] as String),
-      conversationProfile: pulumi.Output.create<String>(map['conversationProfile'] as String),
-      conversationStage: map['conversationStage'] == null ? null : pulumi.Output.create<ConversationConversationStageDialogflowV2beta1>(ConversationConversationStageDialogflowV2beta1.fromValue(map['conversationStage'] as String)),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      conversationId: map['conversationId'] == null ? null : (map['conversationId'] as String).input(),
+      conversationProfile: (map['conversationProfile'] as String).input(),
+      conversationStage: map['conversationStage'] == null ? null : (ConversationConversationStageDialogflowV2beta1.fromValue(map['conversationStage'] as String)).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class CustomerSubscriptionArgs {
   /// [resourceGroup] Name of the resource group.
   /// [tenantId] Tenant Id.
   CustomerSubscriptionArgs({
-    pulumi.Output<String>? customerSubscriptionName,
-    required pulumi.Output<String> registrationName,
-    required pulumi.Output<String> resourceGroup,
-    pulumi.Output<String>? tenantId,
-  }) :
-      customerSubscriptionName = pulumi.Input.asOptionalInput<String>(customerSubscriptionName),
-      registrationName = pulumi.Input.asInput<String>(registrationName),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.customerSubscriptionName,
+    required this.registrationName,
+    required this.resourceGroup,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class CustomerSubscriptionArgs {
 
   factory CustomerSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return CustomerSubscriptionArgs(
-      customerSubscriptionName: map['customerSubscriptionName'] == null ? null : pulumi.Output.create<String>(map['customerSubscriptionName'] as String),
-      registrationName: pulumi.Output.create<String>(map['registrationName'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      customerSubscriptionName: map['customerSubscriptionName'] == null ? null : (map['customerSubscriptionName'] as String).input(),
+      registrationName: (map['registrationName'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The detailed result of a validation or rule checking.
 class VerificationResultResponse {
   /// Message for clarification.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Indicates if the validation or rule checking is passed.
-  final String result;
+  final pulumi.Input<String> result;
   /// The name of the verification rule.
-  final String? verificationName;
+  final pulumi.Input<String>? verificationName;
 
   /// Creates a new [VerificationResultResponse].
   /// [message] Message for clarification.
@@ -30,9 +31,9 @@ class VerificationResultResponse {
 
   factory VerificationResultResponse.fromMap(Map<String, dynamic> map) {
     return VerificationResultResponse(
-      message: map['message'] == null ? null : map['message'] as String,
-      result: map['result'] as String,
-      verificationName: map['verificationName'] == null ? null : map['verificationName'] as String,
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      result: (map['result'] as String).input(),
+      verificationName: map['verificationName'] == null ? null : (map['verificationName'] as String).input(),
     );
   }
 }

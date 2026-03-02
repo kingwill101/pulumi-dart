@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsFunctionAppSiteConfigAppServiceLog {
   /// The amount of disk space to use for logs.
-  final int diskQuotaMb;
+  final pulumi.Input<int> diskQuotaMb;
   /// After how many days backups is deleted.
-  final int retentionPeriodDays;
+  final pulumi.Input<int> retentionPeriodDays;
 
   /// Creates a new [GetWindowsFunctionAppSiteConfigAppServiceLog].
   /// [diskQuotaMb] The amount of disk space to use for logs.
@@ -24,8 +25,8 @@ class GetWindowsFunctionAppSiteConfigAppServiceLog {
 
   factory GetWindowsFunctionAppSiteConfigAppServiceLog.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppSiteConfigAppServiceLog(
-      diskQuotaMb: map['diskQuotaMb'] as int,
-      retentionPeriodDays: map['retentionPeriodDays'] as int,
+      diskQuotaMb: (map['diskQuotaMb'] as int).input(),
+      retentionPeriodDays: (map['retentionPeriodDays'] as int).input(),
     );
   }
 }

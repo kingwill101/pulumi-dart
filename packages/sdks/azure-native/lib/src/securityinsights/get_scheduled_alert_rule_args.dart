@@ -19,13 +19,10 @@ class GetScheduledAlertRuleArgs {
   /// [ruleId] Alert rule ID
   /// [workspaceName] The name of the workspace.
   GetScheduledAlertRuleArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleId,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleId = pulumi.Input.asInput<String>(ruleId),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.ruleId,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetScheduledAlertRuleArgs {
 
   factory GetScheduledAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduledAlertRuleArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleId: pulumi.Output.create<String>(map['ruleId'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleId: (map['ruleId'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

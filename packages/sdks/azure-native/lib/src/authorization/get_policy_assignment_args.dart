@@ -19,13 +19,10 @@ class GetPolicyAssignmentArgs {
   /// [policyAssignmentName] The name of the policy assignment to get.
   /// [scope] The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   GetPolicyAssignmentArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> policyAssignmentName,
-    required pulumi.Output<String> scope,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      policyAssignmentName = pulumi.Input.asInput<String>(policyAssignmentName),
-      scope = pulumi.Input.asInput<String>(scope);
+    this.expand,
+    required this.policyAssignmentName,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPolicyAssignmentArgs {
 
   factory GetPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyAssignmentArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      policyAssignmentName: pulumi.Output.create<String>(map['policyAssignmentName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      policyAssignmentName: (map['policyAssignmentName'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

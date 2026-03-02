@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceConfigHelper {
   /// Populates the /dev directory early during boot without udev. (default `true`)
-  final bool? devtmpfsAutomount;
+  final pulumi.Input<bool>? devtmpfsAutomount;
   /// Helps maintain correct inittab/upstart console device. (default `true`)
-  final bool? distro;
+  final pulumi.Input<bool>? distro;
   /// Creates a modules dependency file for the Kernel you run. (default `true`)
-  final bool? modulesDep;
+  final pulumi.Input<bool>? modulesDep;
   /// Automatically configures static networking. (default `true`)
-  final bool? network;
+  final pulumi.Input<bool>? network;
   /// Disables updatedb cron job to avoid disk thrashing. (default `true`)
-  final bool? updatedbDisabled;
+  final pulumi.Input<bool>? updatedbDisabled;
 
   /// Creates a new [InstanceConfigHelper].
   /// [devtmpfsAutomount] Populates the /dev directory early during boot without udev. (default `true`)
@@ -39,11 +40,11 @@ class InstanceConfigHelper {
 
   factory InstanceConfigHelper.fromMap(Map<String, dynamic> map) {
     return InstanceConfigHelper(
-      devtmpfsAutomount: map['devtmpfsAutomount'] == null ? null : map['devtmpfsAutomount'] as bool,
-      distro: map['distro'] == null ? null : map['distro'] as bool,
-      modulesDep: map['modulesDep'] == null ? null : map['modulesDep'] as bool,
-      network: map['network'] == null ? null : map['network'] as bool,
-      updatedbDisabled: map['updatedbDisabled'] == null ? null : map['updatedbDisabled'] as bool,
+      devtmpfsAutomount: map['devtmpfsAutomount'] == null ? null : (map['devtmpfsAutomount'] as bool).input(),
+      distro: map['distro'] == null ? null : (map['distro'] as bool).input(),
+      modulesDep: map['modulesDep'] == null ? null : (map['modulesDep'] as bool).input(),
+      network: map['network'] == null ? null : (map['network'] as bool).input(),
+      updatedbDisabled: map['updatedbDisabled'] == null ? null : (map['updatedbDisabled'] as bool).input(),
     );
   }
 }

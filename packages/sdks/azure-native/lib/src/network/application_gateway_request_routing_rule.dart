@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sub_resource.dart';
 
 /// Request routing rule of an application gateway.
 class ApplicationGatewayRequestRoutingRule {
   /// Backend address pool resource of the application gateway.
-  final SubResource? backendAddressPool;
+  final pulumi.Input<SubResource>? backendAddressPool;
   /// Backend http settings resource of the application gateway.
-  final SubResource? backendHttpSettings;
+  final pulumi.Input<SubResource>? backendHttpSettings;
   /// Http listener resource of the application gateway.
-  final SubResource? httpListener;
+  final pulumi.Input<SubResource>? httpListener;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Load Distribution Policy resource of the application gateway.
-  final SubResource? loadDistributionPolicy;
+  final pulumi.Input<SubResource>? loadDistributionPolicy;
   /// Name of the request routing rule that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Priority of the request routing rule.
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// Redirect configuration resource of the application gateway.
-  final SubResource? redirectConfiguration;
+  final pulumi.Input<SubResource>? redirectConfiguration;
   /// Rewrite Rule Set resource in Basic rule of the application gateway.
-  final SubResource? rewriteRuleSet;
+  final pulumi.Input<SubResource>? rewriteRuleSet;
   /// Rule type.
-  final String? ruleType;
+  final pulumi.Input<String>? ruleType;
   /// URL path map resource of the application gateway.
-  final SubResource? urlPathMap;
+  final pulumi.Input<SubResource>? urlPathMap;
 
   /// Creates a new [ApplicationGatewayRequestRoutingRule].
   /// [backendAddressPool] Backend address pool resource of the application gateway.
@@ -55,33 +56,33 @@ class ApplicationGatewayRequestRoutingRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddressPool': ?backendAddressPool == null ? null : backendAddressPool!.toMap(),
-      'backendHttpSettings': ?backendHttpSettings == null ? null : backendHttpSettings!.toMap(),
-      'httpListener': ?httpListener == null ? null : httpListener!.toMap(),
+      'backendAddressPool': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(backendAddressPool, (value) => value.toMap()),
+      'backendHttpSettings': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(backendHttpSettings, (value) => value.toMap()),
+      'httpListener': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(httpListener, (value) => value.toMap()),
       'id': ?id,
-      'loadDistributionPolicy': ?loadDistributionPolicy == null ? null : loadDistributionPolicy!.toMap(),
+      'loadDistributionPolicy': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(loadDistributionPolicy, (value) => value.toMap()),
       'name': ?name,
       'priority': ?priority,
-      'redirectConfiguration': ?redirectConfiguration == null ? null : redirectConfiguration!.toMap(),
-      'rewriteRuleSet': ?rewriteRuleSet == null ? null : rewriteRuleSet!.toMap(),
+      'redirectConfiguration': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(redirectConfiguration, (value) => value.toMap()),
+      'rewriteRuleSet': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(rewriteRuleSet, (value) => value.toMap()),
       'ruleType': ?ruleType,
-      'urlPathMap': ?urlPathMap == null ? null : urlPathMap!.toMap(),
+      'urlPathMap': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(urlPathMap, (value) => value.toMap()),
     };
   }
 
   factory ApplicationGatewayRequestRoutingRule.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRequestRoutingRule(
-      backendAddressPool: map['backendAddressPool'] == null ? null : SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>()),
-      backendHttpSettings: map['backendHttpSettings'] == null ? null : SubResource.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>()),
-      httpListener: map['httpListener'] == null ? null : SubResource.fromMap((map['httpListener'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      loadDistributionPolicy: map['loadDistributionPolicy'] == null ? null : SubResource.fromMap((map['loadDistributionPolicy'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      redirectConfiguration: map['redirectConfiguration'] == null ? null : SubResource.fromMap((map['redirectConfiguration'] as Map).cast<String, dynamic>()),
-      rewriteRuleSet: map['rewriteRuleSet'] == null ? null : SubResource.fromMap((map['rewriteRuleSet'] as Map).cast<String, dynamic>()),
-      ruleType: map['ruleType'] == null ? null : map['ruleType'] as String,
-      urlPathMap: map['urlPathMap'] == null ? null : SubResource.fromMap((map['urlPathMap'] as Map).cast<String, dynamic>()),
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
+      backendHttpSettings: map['backendHttpSettings'] == null ? null : (SubResource.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>())).input(),
+      httpListener: map['httpListener'] == null ? null : (SubResource.fromMap((map['httpListener'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      loadDistributionPolicy: map['loadDistributionPolicy'] == null ? null : (SubResource.fromMap((map['loadDistributionPolicy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      redirectConfiguration: map['redirectConfiguration'] == null ? null : (SubResource.fromMap((map['redirectConfiguration'] as Map).cast<String, dynamic>())).input(),
+      rewriteRuleSet: map['rewriteRuleSet'] == null ? null : (SubResource.fromMap((map['rewriteRuleSet'] as Map).cast<String, dynamic>())).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
+      urlPathMap: map['urlPathMap'] == null ? null : (SubResource.fromMap((map['urlPathMap'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the action responsible for adding document under a folder.
 class GoogleCloudContentwarehouseV1AddToFolderAction {
   /// Names of the folder under which new document is to be added. Format: projects/{project_number}/locations/{location}/documents/{document_id}.
-  final List<String>? folders;
+  final pulumi.Input<List<String>>? folders;
 
   /// Creates a new [GoogleCloudContentwarehouseV1AddToFolderAction].
   /// [folders] Names of the folder under which new document is to be added. Format: projects/{project_number}/locations/{location}/documents/{document_id}.
@@ -20,7 +21,7 @@ class GoogleCloudContentwarehouseV1AddToFolderAction {
 
   factory GoogleCloudContentwarehouseV1AddToFolderAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1AddToFolderAction(
-      folders: map['folders'] == null ? null : (map['folders'] as List).cast<String>(),
+      folders: map['folders'] == null ? null : ((map['folders'] as List).cast<String>()).input(),
     );
   }
 }

@@ -49,35 +49,21 @@ class DeploymentArgs {
   /// [name] Resource name.
   /// [project] Optional.
   DeploymentArgs({
-    pulumi.Output<String>? accessGuidance,
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> apiDeploymentId,
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? apiSpecRevision,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? endpointUri,
-    pulumi.Output<String>? externalChannelUri,
-    pulumi.Output<String>? intendedAudience,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      accessGuidance = pulumi.Input.asOptionalInput<String>(accessGuidance),
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      apiDeploymentId = pulumi.Input.asInput<String>(apiDeploymentId),
-      apiId = pulumi.Input.asInput<String>(apiId),
-      apiSpecRevision = pulumi.Input.asOptionalInput<String>(apiSpecRevision),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      endpointUri = pulumi.Input.asOptionalInput<String>(endpointUri),
-      externalChannelUri = pulumi.Input.asOptionalInput<String>(externalChannelUri),
-      intendedAudience = pulumi.Input.asOptionalInput<String>(intendedAudience),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.accessGuidance,
+    this.annotations,
+    required this.apiDeploymentId,
+    required this.apiId,
+    this.apiSpecRevision,
+    this.description,
+    this.displayName,
+    this.endpointUri,
+    this.externalChannelUri,
+    this.intendedAudience,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,20 +86,20 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      accessGuidance: map['accessGuidance'] == null ? null : pulumi.Output.create<String>(map['accessGuidance'] as String),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      apiDeploymentId: pulumi.Output.create<String>(map['apiDeploymentId'] as String),
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      apiSpecRevision: map['apiSpecRevision'] == null ? null : pulumi.Output.create<String>(map['apiSpecRevision'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      endpointUri: map['endpointUri'] == null ? null : pulumi.Output.create<String>(map['endpointUri'] as String),
-      externalChannelUri: map['externalChannelUri'] == null ? null : pulumi.Output.create<String>(map['externalChannelUri'] as String),
-      intendedAudience: map['intendedAudience'] == null ? null : pulumi.Output.create<String>(map['intendedAudience'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      accessGuidance: map['accessGuidance'] == null ? null : (map['accessGuidance'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      apiDeploymentId: (map['apiDeploymentId'] as String).input(),
+      apiId: (map['apiId'] as String).input(),
+      apiSpecRevision: map['apiSpecRevision'] == null ? null : (map['apiSpecRevision'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
+      externalChannelUri: map['externalChannelUri'] == null ? null : (map['externalChannelUri'] as String).input(),
+      intendedAudience: map['intendedAudience'] == null ? null : (map['intendedAudience'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

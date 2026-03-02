@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
 import 'resource_claim_template_spec.dart';
 
@@ -8,15 +9,15 @@ import 'resource_claim_template_spec.dart';
 /// This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
 class ResourceClaimTemplate {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Standard object metadata
-  final ObjectMeta? metadata;
+  final pulumi.Input<ObjectMeta>? metadata;
   /// Describes the ResourceClaim that is to be generated.
   ///
   /// This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore.
-  final ResourceClaimTemplateSpec spec;
+  final pulumi.Input<ResourceClaimTemplateSpec> spec;
 
   /// Creates a new [ResourceClaimTemplate].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -34,17 +35,17 @@ class ResourceClaimTemplate {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'spec': spec.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<ResourceClaimTemplateSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
   factory ResourceClaimTemplate.fromMap(Map<String, dynamic> map) {
     return ResourceClaimTemplate(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      spec: ResourceClaimTemplateSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: (ResourceClaimTemplateSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTimeConfig {
   /// The cron type can optionally fill in a custom calendar.
-  final String? calendar;
+  final pulumi.Input<String>? calendar;
   /// Cron type can choose time offset, unit s.
-  final int? dataOffset;
+  final pulumi.Input<int>? dataOffset;
   /// Time expressions. Currently, the following types of time expressions are supported:
-  final String? timeExpression;
+  final pulumi.Input<String>? timeExpression;
   /// Time configuration type. Currently, the following time types are supported:
-  final int timeType;
+  final pulumi.Input<int> timeType;
 
   /// Creates a new [JobTimeConfig].
   /// [calendar] The cron type can optionally fill in a custom calendar.
@@ -34,10 +35,10 @@ class JobTimeConfig {
 
   factory JobTimeConfig.fromMap(Map<String, dynamic> map) {
     return JobTimeConfig(
-      calendar: map['calendar'] == null ? null : map['calendar'] as String,
-      dataOffset: map['dataOffset'] == null ? null : map['dataOffset'] as int,
-      timeExpression: map['timeExpression'] == null ? null : map['timeExpression'] as String,
-      timeType: map['timeType'] as int,
+      calendar: map['calendar'] == null ? null : (map['calendar'] as String).input(),
+      dataOffset: map['dataOffset'] == null ? null : (map['dataOffset'] as int).input(),
+      timeExpression: map['timeExpression'] == null ? null : (map['timeExpression'] as String).input(),
+      timeType: (map['timeType'] as int).input(),
     );
   }
 }

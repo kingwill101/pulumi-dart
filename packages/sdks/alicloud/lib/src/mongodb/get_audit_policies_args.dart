@@ -16,11 +16,9 @@ class GetAuditPoliciesArgs {
   /// [dbInstanceId] The id of the db instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetAuditPoliciesArgs({
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.dbInstanceId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAuditPoliciesArgs {
 
   factory GetAuditPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetAuditPoliciesArgs(
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

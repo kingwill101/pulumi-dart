@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
   /// Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
-  final String dataprocMetastoreService;
+  final pulumi.Input<String> dataprocMetastoreService;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig].
   /// [dataprocMetastoreService] Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
@@ -19,7 +20,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
 
   factory WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig(
-      dataprocMetastoreService: map['dataprocMetastoreService'] as String,
+      dataprocMetastoreService: (map['dataprocMetastoreService'] as String).input(),
     );
   }
 }

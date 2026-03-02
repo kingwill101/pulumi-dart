@@ -5,11 +5,11 @@ import 'get_cluster_addons_config_ray_operator_config_ray_cluster_logging_config
 import 'get_cluster_addons_config_ray_operator_config_ray_cluster_monitoring_config.dart';
 
 class GetClusterAddonsConfigRayOperatorConfig {
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
-  final List<GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig> rayClusterLoggingConfigs;
+  final pulumi.Input<List<GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig>> rayClusterLoggingConfigs;
   /// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
-  final List<GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig> rayClusterMonitoringConfigs;
+  final pulumi.Input<List<GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig>> rayClusterMonitoringConfigs;
 
   /// Creates a new [GetClusterAddonsConfigRayOperatorConfig].
   /// [enabled] Required.
@@ -24,16 +24,16 @@ class GetClusterAddonsConfigRayOperatorConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'rayClusterLoggingConfigs': pulumi.Input.encodeList<GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig, Map<String, dynamic>>(rayClusterLoggingConfigs, (value) => value.toMap()),
-      'rayClusterMonitoringConfigs': pulumi.Input.encodeList<GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig, Map<String, dynamic>>(rayClusterMonitoringConfigs, (value) => value.toMap()),
+      'rayClusterLoggingConfigs': pulumi.Input.mapInputValue<List<GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig>, List<Map<String, dynamic>>>(rayClusterLoggingConfigs, (value) => pulumi.Input.encodeList<GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rayClusterMonitoringConfigs': pulumi.Input.mapInputValue<List<GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig>, List<Map<String, dynamic>>>(rayClusterMonitoringConfigs, (value) => pulumi.Input.encodeList<GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetClusterAddonsConfigRayOperatorConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigRayOperatorConfig(
-      enabled: map['enabled'] as bool,
-      rayClusterLoggingConfigs: pulumi.Input.decodeList<GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig>(map['rayClusterLoggingConfigs'], (value) => GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig.fromMap((value as Map).cast<String, dynamic>())),
-      rayClusterMonitoringConfigs: pulumi.Input.decodeList<GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig>(map['rayClusterMonitoringConfigs'], (value) => GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig.fromMap((value as Map).cast<String, dynamic>())),
+      enabled: (map['enabled'] as bool).input(),
+      rayClusterLoggingConfigs: (pulumi.Input.decodeList<GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig>(map['rayClusterLoggingConfigs'], (value) => GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rayClusterMonitoringConfigs: (pulumi.Input.decodeList<GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig>(map['rayClusterMonitoringConfigs'], (value) => GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

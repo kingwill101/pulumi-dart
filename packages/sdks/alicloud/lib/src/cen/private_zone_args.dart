@@ -24,15 +24,11 @@ class PrivateZoneArgs {
   /// [hostRegionId] The ID of the region where PrivateZone is deployed.
   /// [hostVpcId] The ID of the VPC that is associated with PrivateZone.
   PrivateZoneArgs({
-    required pulumi.Output<String> accessRegionId,
-    required pulumi.Output<String> cenId,
-    required pulumi.Output<String> hostRegionId,
-    required pulumi.Output<String> hostVpcId,
-  }) :
-      accessRegionId = pulumi.Input.asInput<String>(accessRegionId),
-      cenId = pulumi.Input.asInput<String>(cenId),
-      hostRegionId = pulumi.Input.asInput<String>(hostRegionId),
-      hostVpcId = pulumi.Input.asInput<String>(hostVpcId);
+    required this.accessRegionId,
+    required this.cenId,
+    required this.hostRegionId,
+    required this.hostVpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class PrivateZoneArgs {
 
   factory PrivateZoneArgs.fromMap(Map<String, dynamic> map) {
     return PrivateZoneArgs(
-      accessRegionId: pulumi.Output.create<String>(map['accessRegionId'] as String),
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      hostRegionId: pulumi.Output.create<String>(map['hostRegionId'] as String),
-      hostVpcId: pulumi.Output.create<String>(map['hostVpcId'] as String),
+      accessRegionId: (map['accessRegionId'] as String).input(),
+      cenId: (map['cenId'] as String).input(),
+      hostRegionId: (map['hostRegionId'] as String).input(),
+      hostVpcId: (map['hostVpcId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetScalingConfigurationsConfigurationSpotPriceLimit {
   /// Resource type of an ECS instance.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Price limit hourly of instance type.
-  final double priceLimit;
+  final pulumi.Input<double> priceLimit;
 
   /// Creates a new [GetScalingConfigurationsConfigurationSpotPriceLimit].
   /// [instanceType] Resource type of an ECS instance.
@@ -24,8 +25,8 @@ class GetScalingConfigurationsConfigurationSpotPriceLimit {
 
   factory GetScalingConfigurationsConfigurationSpotPriceLimit.fromMap(Map<String, dynamic> map) {
     return GetScalingConfigurationsConfigurationSpotPriceLimit(
-      instanceType: map['instanceType'] as String,
-      priceLimit: map['priceLimit'] as double,
+      instanceType: (map['instanceType'] as String).input(),
+      priceLimit: (map['priceLimit'] as double).input(),
     );
   }
 }

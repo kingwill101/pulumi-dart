@@ -23,13 +23,10 @@ class GetDatascanIamPolicyArgs {
   /// [location] The location where the data scan should reside.
   /// [project] The ID of the project in which the resource belongs.
   GetDatascanIamPolicyArgs({
-    required pulumi.Output<String> dataScanId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      dataScanId = pulumi.Input.asInput<String>(dataScanId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dataScanId,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetDatascanIamPolicyArgs {
 
   factory GetDatascanIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDatascanIamPolicyArgs(
-      dataScanId: pulumi.Output.create<String>(map['dataScanId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataScanId: (map['dataScanId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

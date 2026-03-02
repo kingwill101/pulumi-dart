@@ -29,19 +29,13 @@ class RoleManagementPolicyArgs {
   /// [rules] The rule applied to the policy.
   /// [scope] The role management policy scope.
   RoleManagementPolicyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? isOrganizationDefault,
-    pulumi.Output<String>? roleManagementPolicyName,
-    pulumi.Output<List<RoleManagementPolicyApprovalRule>>? rules,
-    required pulumi.Output<String> scope,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      isOrganizationDefault = pulumi.Input.asOptionalInput<bool>(isOrganizationDefault),
-      roleManagementPolicyName = pulumi.Input.asOptionalInput<String>(roleManagementPolicyName),
-      rules = pulumi.Input.asOptionalInput<List<RoleManagementPolicyApprovalRule>>(rules),
-      scope = pulumi.Input.asInput<String>(scope);
+    this.description,
+    this.displayName,
+    this.isOrganizationDefault,
+    this.roleManagementPolicyName,
+    this.rules,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class RoleManagementPolicyArgs {
 
   factory RoleManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      isOrganizationDefault: map['isOrganizationDefault'] == null ? null : pulumi.Output.create<bool>(map['isOrganizationDefault'] as bool),
-      roleManagementPolicyName: map['roleManagementPolicyName'] == null ? null : pulumi.Output.create<String>(map['roleManagementPolicyName'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<RoleManagementPolicyApprovalRule>>(pulumi.Input.decodeList<RoleManagementPolicyApprovalRule>(map['rules'], (value) => RoleManagementPolicyApprovalRule.fromMap((value as Map).cast<String, dynamic>()))),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      isOrganizationDefault: map['isOrganizationDefault'] == null ? null : (map['isOrganizationDefault'] as bool).input(),
+      roleManagementPolicyName: map['roleManagementPolicyName'] == null ? null : (map['roleManagementPolicyName'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RoleManagementPolicyApprovalRule>(map['rules'], (value) => RoleManagementPolicyApprovalRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

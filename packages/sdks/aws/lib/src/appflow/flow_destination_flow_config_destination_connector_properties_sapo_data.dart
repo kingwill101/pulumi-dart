@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_destination_flow_config_destination_connector_properties_sapo_data_error_handling_config.dart';
 import 'flow_destination_flow_config_destination_connector_properties_sapo_data_success_response_handling_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData {
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig? errorHandlingConfig;
-  final List<String>? idFieldNames;
-  final String objectPath;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig>? errorHandlingConfig;
+  final pulumi.Input<List<String>>? idFieldNames;
+  final pulumi.Input<String> objectPath;
   /// Determines how Amazon AppFlow handles the success response that it gets from the connector after placing data. See Success Response Handling Config for more details.
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig? successResponseHandlingConfig;
-  final String? writeOperationType;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig>? successResponseHandlingConfig;
+  final pulumi.Input<String>? writeOperationType;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData].
   /// [errorHandlingConfig] Optional.
@@ -27,21 +28,21 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorHandlingConfig': ?errorHandlingConfig == null ? null : errorHandlingConfig!.toMap(),
+      'errorHandlingConfig': ?pulumi.Input.mapOptionalInputValue<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig, Map<String, dynamic>>(errorHandlingConfig, (value) => value.toMap()),
       'idFieldNames': ?idFieldNames,
       'objectPath': objectPath,
-      'successResponseHandlingConfig': ?successResponseHandlingConfig == null ? null : successResponseHandlingConfig!.toMap(),
+      'successResponseHandlingConfig': ?pulumi.Input.mapOptionalInputValue<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig, Map<String, dynamic>>(successResponseHandlingConfig, (value) => value.toMap()),
       'writeOperationType': ?writeOperationType,
     };
   }
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData(
-      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>()),
-      idFieldNames: map['idFieldNames'] == null ? null : (map['idFieldNames'] as List).cast<String>(),
-      objectPath: map['objectPath'] as String,
-      successResponseHandlingConfig: map['successResponseHandlingConfig'] == null ? null : FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig.fromMap((map['successResponseHandlingConfig'] as Map).cast<String, dynamic>()),
-      writeOperationType: map['writeOperationType'] == null ? null : map['writeOperationType'] as String,
+      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>())).input(),
+      idFieldNames: map['idFieldNames'] == null ? null : ((map['idFieldNames'] as List).cast<String>()).input(),
+      objectPath: (map['objectPath'] as String).input(),
+      successResponseHandlingConfig: map['successResponseHandlingConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig.fromMap((map['successResponseHandlingConfig'] as Map).cast<String, dynamic>())).input(),
+      writeOperationType: map['writeOperationType'] == null ? null : (map['writeOperationType'] as String).input(),
     );
   }
 }

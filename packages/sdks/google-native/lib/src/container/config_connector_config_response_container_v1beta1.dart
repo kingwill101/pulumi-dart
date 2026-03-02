@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration options for the Config Connector add-on.
 class ConfigConnectorConfigResponseContainerV1beta1 {
   /// Whether Cloud Connector is enabled for this cluster.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ConfigConnectorConfigResponseContainerV1beta1].
   /// [enabled] Whether Cloud Connector is enabled for this cluster.
@@ -20,7 +21,7 @@ class ConfigConnectorConfigResponseContainerV1beta1 {
 
   factory ConfigConnectorConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ConfigConnectorConfigResponseContainerV1beta1(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketTransferAcceleration {
   /// Specifies the accelerate status of a bucket.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [BucketTransferAcceleration].
   /// [enabled] Specifies the accelerate status of a bucket.
@@ -19,7 +20,7 @@ class BucketTransferAcceleration {
 
   factory BucketTransferAcceleration.fromMap(Map<String, dynamic> map) {
     return BucketTransferAcceleration(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

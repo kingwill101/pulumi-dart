@@ -39,17 +39,12 @@ class PluginArgs {
   /// [pluginType] The type of the plug-in. Valid values:
   /// [tags] The tag of the resource.
   PluginArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> pluginData,
-    required pulumi.Output<String> pluginName,
-    required pulumi.Output<String> pluginType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      pluginData = pulumi.Input.asInput<String>(pluginData),
-      pluginName = pulumi.Input.asInput<String>(pluginName),
-      pluginType = pulumi.Input.asInput<String>(pluginType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.pluginData,
+    required this.pluginName,
+    required this.pluginType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,11 +58,11 @@ class PluginArgs {
 
   factory PluginArgs.fromMap(Map<String, dynamic> map) {
     return PluginArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      pluginData: pulumi.Output.create<String>(map['pluginData'] as String),
-      pluginName: pulumi.Output.create<String>(map['pluginName'] as String),
-      pluginType: pulumi.Output.create<String>(map['pluginType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      pluginData: (map['pluginData'] as String).input(),
+      pluginName: (map['pluginName'] as String).input(),
+      pluginType: (map['pluginType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

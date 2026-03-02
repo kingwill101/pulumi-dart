@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Rule used to validate strings.
 class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse {
   /// Whether the regex matcher is applied exclusively (if true, matching values will be rejected).
-  final bool exclusive;
+  final pulumi.Input<bool> exclusive;
   /// The regex applied to the input value(s).
-  final String regex;
+  final pulumi.Input<String> regex;
 
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse].
   /// [exclusive] Whether the regex matcher is applied exclusively (if true, matching values will be rejected).
@@ -25,8 +26,8 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse 
 
   factory EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse(
-      exclusive: map['exclusive'] as bool,
-      regex: map['regex'] as String,
+      exclusive: (map['exclusive'] as bool).input(),
+      regex: (map['regex'] as String).input(),
     );
   }
 }

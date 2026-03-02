@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplatePrivateDnsNameOption {
-  final bool enableResourceNameDnsARecord;
-  final bool enableResourceNameDnsAaaaRecord;
-  final String hostnameType;
+  final pulumi.Input<bool> enableResourceNameDnsARecord;
+  final pulumi.Input<bool> enableResourceNameDnsAaaaRecord;
+  final pulumi.Input<String> hostnameType;
 
   /// Creates a new [GetLaunchTemplatePrivateDnsNameOption].
   /// [enableResourceNameDnsARecord] Required.
@@ -26,9 +27,9 @@ class GetLaunchTemplatePrivateDnsNameOption {
 
   factory GetLaunchTemplatePrivateDnsNameOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplatePrivateDnsNameOption(
-      enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] as bool,
-      enableResourceNameDnsAaaaRecord: map['enableResourceNameDnsAaaaRecord'] as bool,
-      hostnameType: map['hostnameType'] as String,
+      enableResourceNameDnsARecord: (map['enableResourceNameDnsARecord'] as bool).input(),
+      enableResourceNameDnsAaaaRecord: (map['enableResourceNameDnsAaaaRecord'] as bool).input(),
+      hostnameType: (map['hostnameType'] as String).input(),
     );
   }
 }

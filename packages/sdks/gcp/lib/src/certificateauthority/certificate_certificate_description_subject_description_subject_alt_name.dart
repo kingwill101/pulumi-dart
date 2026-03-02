@@ -7,15 +7,15 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
   /// (Output)
   /// Contains additional subject alternative name values.
   /// Structure is documented below.
-  final List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan>? customSans;
+  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan>>? customSans;
   /// Contains only valid, fully-qualified host names.
-  final List<String>? dnsNames;
+  final pulumi.Input<List<String>>? dnsNames;
   /// Contains only valid RFC 2822 E-mail addresses.
-  final List<String>? emailAddresses;
+  final pulumi.Input<List<String>>? emailAddresses;
   /// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
-  final List<String>? ipAddresses;
+  final pulumi.Input<List<String>>? ipAddresses;
   /// Contains only valid RFC 3986 URIs.
-  final List<String>? uris;
+  final pulumi.Input<List<String>>? uris;
 
   /// Creates a new [CertificateCertificateDescriptionSubjectDescriptionSubjectAltName].
   /// [customSans] (Output)
@@ -33,7 +33,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customSans': ?customSans == null ? null : pulumi.Input.encodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan, Map<String, dynamic>>(customSans!, (value) => value.toMap()),
+      'customSans': ?pulumi.Input.mapOptionalInputValue<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan>, List<Map<String, dynamic>>>(customSans, (value) => pulumi.Input.encodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dnsNames': ?dnsNames,
       'emailAddresses': ?emailAddresses,
       'ipAddresses': ?ipAddresses,
@@ -43,11 +43,11 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
 
   factory CertificateCertificateDescriptionSubjectDescriptionSubjectAltName.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionSubjectDescriptionSubjectAltName(
-      customSans: map['customSans'] == null ? null : pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan>(map['customSans'], (value) => CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan.fromMap((value as Map).cast<String, dynamic>())),
-      dnsNames: map['dnsNames'] == null ? null : (map['dnsNames'] as List).cast<String>(),
-      emailAddresses: map['emailAddresses'] == null ? null : (map['emailAddresses'] as List).cast<String>(),
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
-      uris: map['uris'] == null ? null : (map['uris'] as List).cast<String>(),
+      customSans: map['customSans'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan>(map['customSans'], (value) => CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames'] as List).cast<String>()).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      uris: map['uris'] == null ? null : ((map['uris'] as List).cast<String>()).input(),
     );
   }
 }

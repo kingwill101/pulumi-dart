@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectionsConnection {
   /// The connection string of the instance.
-  final String connectionString;
+  final pulumi.Input<String> connectionString;
   /// The network type of the instance.
-  final String dbInstanceNetType;
+  final pulumi.Input<String> dbInstanceNetType;
   /// The expiration time of the classic network address.
-  final String expiredTime;
-  final String id;
-  final String instanceId;
+  final pulumi.Input<String> expiredTime;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> instanceId;
   /// The IP address of the instance.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The port number of the instance.
-  final String port;
+  final pulumi.Input<String> port;
   /// The remaining validity period of the endpoint of the classic network.
-  final String upgradeable;
+  final pulumi.Input<String> upgradeable;
   /// The ID of the VPC where the instance is deployed.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
-  final String vpcInstanceId;
+  final pulumi.Input<String> vpcInstanceId;
   /// The ID of the vSwitch.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetConnectionsConnection].
   /// [connectionString] The connection string of the instance.
@@ -67,17 +68,17 @@ class GetConnectionsConnection {
 
   factory GetConnectionsConnection.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnection(
-      connectionString: map['connectionString'] as String,
-      dbInstanceNetType: map['dbInstanceNetType'] as String,
-      expiredTime: map['expiredTime'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      ipAddress: map['ipAddress'] as String,
-      port: map['port'] as String,
-      upgradeable: map['upgradeable'] as String,
-      vpcId: map['vpcId'] as String,
-      vpcInstanceId: map['vpcInstanceId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      connectionString: (map['connectionString'] as String).input(),
+      dbInstanceNetType: (map['dbInstanceNetType'] as String).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      port: (map['port'] as String).input(),
+      upgradeable: (map['upgradeable'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vpcInstanceId: (map['vpcInstanceId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

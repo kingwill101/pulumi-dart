@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QuicksetupConfigurationManagerStatusSummary {
   /// Current status.
-  final String status;
+  final pulumi.Input<String> status;
   /// When applicable, returns an informational message relevant to the current status and status type of the status summary object.
-  final String statusMessage;
+  final pulumi.Input<String> statusMessage;
   /// Type of a status summary.
-  final String statusType;
+  final pulumi.Input<String> statusType;
 
   /// Creates a new [QuicksetupConfigurationManagerStatusSummary].
   /// [status] Current status.
@@ -29,9 +30,9 @@ class QuicksetupConfigurationManagerStatusSummary {
 
   factory QuicksetupConfigurationManagerStatusSummary.fromMap(Map<String, dynamic> map) {
     return QuicksetupConfigurationManagerStatusSummary(
-      status: map['status'] as String,
-      statusMessage: map['statusMessage'] as String,
-      statusType: map['statusType'] as String,
+      status: (map['status'] as String).input(),
+      statusMessage: (map['statusMessage'] as String).input(),
+      statusType: (map['statusType'] as String).input(),
     );
   }
 }

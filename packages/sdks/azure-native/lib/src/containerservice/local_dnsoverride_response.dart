@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Overrides for localDNS profile.
 class LocalDNSOverrideResponse {
   /// Cache max TTL in seconds. See [cache plugin](https://coredns.io/plugins/cache) for more information.
-  final int? cacheDurationInSeconds;
+  final pulumi.Input<int>? cacheDurationInSeconds;
   /// Destination server for DNS queries to be forwarded from localDNS.
-  final String? forwardDestination;
+  final pulumi.Input<String>? forwardDestination;
   /// Forward policy for selecting upstream DNS server. See [forward plugin](https://coredns.io/plugins/forward) for more information.
-  final String? forwardPolicy;
+  final pulumi.Input<String>? forwardPolicy;
   /// Maximum number of concurrent queries. See [forward plugin](https://coredns.io/plugins/forward) for more information.
-  final int? maxConcurrent;
+  final pulumi.Input<int>? maxConcurrent;
   /// Enforce TCP or prefer UDP protocol for connections from localDNS to upstream DNS server.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Log level for DNS queries in localDNS.
-  final String? queryLogging;
+  final pulumi.Input<String>? queryLogging;
   /// Policy for serving stale data. See [cache plugin](https://coredns.io/plugins/cache) for more information.
-  final String? serveStale;
+  final pulumi.Input<String>? serveStale;
   /// Serve stale duration in seconds. See [cache plugin](https://coredns.io/plugins/cache) for more information.
-  final int? serveStaleDurationInSeconds;
+  final pulumi.Input<int>? serveStaleDurationInSeconds;
 
   /// Creates a new [LocalDNSOverrideResponse].
   /// [cacheDurationInSeconds] Cache max TTL in seconds. See [cache plugin](https://coredns.io/plugins/cache) for more information.
@@ -55,14 +56,14 @@ class LocalDNSOverrideResponse {
 
   factory LocalDNSOverrideResponse.fromMap(Map<String, dynamic> map) {
     return LocalDNSOverrideResponse(
-      cacheDurationInSeconds: map['cacheDurationInSeconds'] == null ? null : map['cacheDurationInSeconds'] as int,
-      forwardDestination: map['forwardDestination'] == null ? null : map['forwardDestination'] as String,
-      forwardPolicy: map['forwardPolicy'] == null ? null : map['forwardPolicy'] as String,
-      maxConcurrent: map['maxConcurrent'] == null ? null : map['maxConcurrent'] as int,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      queryLogging: map['queryLogging'] == null ? null : map['queryLogging'] as String,
-      serveStale: map['serveStale'] == null ? null : map['serveStale'] as String,
-      serveStaleDurationInSeconds: map['serveStaleDurationInSeconds'] == null ? null : map['serveStaleDurationInSeconds'] as int,
+      cacheDurationInSeconds: map['cacheDurationInSeconds'] == null ? null : (map['cacheDurationInSeconds'] as int).input(),
+      forwardDestination: map['forwardDestination'] == null ? null : (map['forwardDestination'] as String).input(),
+      forwardPolicy: map['forwardPolicy'] == null ? null : (map['forwardPolicy'] as String).input(),
+      maxConcurrent: map['maxConcurrent'] == null ? null : (map['maxConcurrent'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      queryLogging: map['queryLogging'] == null ? null : (map['queryLogging'] as String).input(),
+      serveStale: map['serveStale'] == null ? null : (map['serveStale'] as String).input(),
+      serveStaleDurationInSeconds: map['serveStaleDurationInSeconds'] == null ? null : (map['serveStaleDurationInSeconds'] as int).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class APICollectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   APICollectionArgs({
-    pulumi.Output<String>? apiCollectionId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      apiCollectionId = pulumi.Input.asOptionalInput<String>(apiCollectionId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.apiCollectionId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class APICollectionArgs {
 
   factory APICollectionArgs.fromMap(Map<String, dynamic> map) {
     return APICollectionArgs(
-      apiCollectionId: map['apiCollectionId'] == null ? null : pulumi.Output.create<String>(map['apiCollectionId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      apiCollectionId: map['apiCollectionId'] == null ? null : (map['apiCollectionId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

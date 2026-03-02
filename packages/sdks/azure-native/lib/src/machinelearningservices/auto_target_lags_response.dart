@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutoTargetLagsResponse {
   /// Target lags selection modes.
   /// Expected value is 'Auto'.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [AutoTargetLagsResponse].
   /// [mode] Target lags selection modes.
@@ -20,7 +21,7 @@ class AutoTargetLagsResponse {
 
   factory AutoTargetLagsResponse.fromMap(Map<String, dynamic> map) {
     return AutoTargetLagsResponse(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

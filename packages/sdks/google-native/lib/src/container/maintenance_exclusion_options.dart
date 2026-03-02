@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'maintenance_exclusion_options_scope.dart';
 
 /// Represents the Maintenance exclusion option.
 class MaintenanceExclusionOptions {
   /// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
-  final MaintenanceExclusionOptionsScope? scope;
+  final pulumi.Input<MaintenanceExclusionOptionsScope>? scope;
 
   /// Creates a new [MaintenanceExclusionOptions].
   /// [scope] Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
@@ -15,13 +16,13 @@ class MaintenanceExclusionOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scope': ?scope == null ? null : scope!.value,
+      'scope': ?pulumi.Input.mapOptionalInputValue<MaintenanceExclusionOptionsScope, String>(scope, (value) => value.value),
     };
   }
 
   factory MaintenanceExclusionOptions.fromMap(Map<String, dynamic> map) {
     return MaintenanceExclusionOptions(
-      scope: map['scope'] == null ? null : MaintenanceExclusionOptionsScope.fromValue(map['scope'] as String),
+      scope: map['scope'] == null ? null : (MaintenanceExclusionOptionsScope.fromValue(map['scope'] as String)).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_delivery_configuration_log_configuration_cloud_watch_logs_configuration.dart';
 import 'log_delivery_configuration_log_configuration_firehose_configuration.dart';
 import 'log_delivery_configuration_log_configuration_s3_configuration.dart';
 
 class LogDeliveryConfigurationLogConfiguration {
   /// Configuration for CloudWatch Logs delivery. See CloudWatch Logs Configuration below.
-  final LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration? cloudWatchLogsConfiguration;
+  final pulumi.Input<LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration>? cloudWatchLogsConfiguration;
   /// The event source to configure logging for. Valid values are `userNotification` and `userAuthEvents`.
-  final String eventSource;
+  final pulumi.Input<String> eventSource;
   /// Configuration for Kinesis Data Firehose delivery. See Firehose Configuration below.
-  final LogDeliveryConfigurationLogConfigurationFirehoseConfiguration? firehoseConfiguration;
+  final pulumi.Input<LogDeliveryConfigurationLogConfigurationFirehoseConfiguration>? firehoseConfiguration;
   /// The log level to set for the event source. Valid values are `ERROR` and `INFO`.
-  final String logLevel;
+  final pulumi.Input<String> logLevel;
   /// Configuration for S3 delivery. See S3 Configuration below.
   ///
   /// > **Note:** At least one destination configuration (`cloud_watch_logs_configuration`, `firehose_configuration`, or `s3_configuration`) must be specified for each log configuration.
-  final LogDeliveryConfigurationLogConfigurationS3Configuration? s3Configuration;
+  final pulumi.Input<LogDeliveryConfigurationLogConfigurationS3Configuration>? s3Configuration;
 
   /// Creates a new [LogDeliveryConfigurationLogConfiguration].
   /// [cloudWatchLogsConfiguration] Configuration for CloudWatch Logs delivery. See CloudWatch Logs Configuration below.
@@ -34,21 +35,21 @@ class LogDeliveryConfigurationLogConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudWatchLogsConfiguration': ?cloudWatchLogsConfiguration == null ? null : cloudWatchLogsConfiguration!.toMap(),
+      'cloudWatchLogsConfiguration': ?pulumi.Input.mapOptionalInputValue<LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration, Map<String, dynamic>>(cloudWatchLogsConfiguration, (value) => value.toMap()),
       'eventSource': eventSource,
-      'firehoseConfiguration': ?firehoseConfiguration == null ? null : firehoseConfiguration!.toMap(),
+      'firehoseConfiguration': ?pulumi.Input.mapOptionalInputValue<LogDeliveryConfigurationLogConfigurationFirehoseConfiguration, Map<String, dynamic>>(firehoseConfiguration, (value) => value.toMap()),
       'logLevel': logLevel,
-      's3Configuration': ?s3Configuration == null ? null : s3Configuration!.toMap(),
+      's3Configuration': ?pulumi.Input.mapOptionalInputValue<LogDeliveryConfigurationLogConfigurationS3Configuration, Map<String, dynamic>>(s3Configuration, (value) => value.toMap()),
     };
   }
 
   factory LogDeliveryConfigurationLogConfiguration.fromMap(Map<String, dynamic> map) {
     return LogDeliveryConfigurationLogConfiguration(
-      cloudWatchLogsConfiguration: map['cloudWatchLogsConfiguration'] == null ? null : LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration.fromMap((map['cloudWatchLogsConfiguration'] as Map).cast<String, dynamic>()),
-      eventSource: map['eventSource'] as String,
-      firehoseConfiguration: map['firehoseConfiguration'] == null ? null : LogDeliveryConfigurationLogConfigurationFirehoseConfiguration.fromMap((map['firehoseConfiguration'] as Map).cast<String, dynamic>()),
-      logLevel: map['logLevel'] as String,
-      s3Configuration: map['s3Configuration'] == null ? null : LogDeliveryConfigurationLogConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>()),
+      cloudWatchLogsConfiguration: map['cloudWatchLogsConfiguration'] == null ? null : (LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration.fromMap((map['cloudWatchLogsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      eventSource: (map['eventSource'] as String).input(),
+      firehoseConfiguration: map['firehoseConfiguration'] == null ? null : (LogDeliveryConfigurationLogConfigurationFirehoseConfiguration.fromMap((map['firehoseConfiguration'] as Map).cast<String, dynamic>())).input(),
+      logLevel: (map['logLevel'] as String).input(),
+      s3Configuration: map['s3Configuration'] == null ? null : (LogDeliveryConfigurationLogConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

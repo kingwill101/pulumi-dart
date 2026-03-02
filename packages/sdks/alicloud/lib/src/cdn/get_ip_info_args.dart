@@ -13,9 +13,8 @@ class GetIpInfoArgs {
   /// Creates a new [GetIpInfoArgs].
   /// [ip] Specify IP address.
   GetIpInfoArgs({
-    required pulumi.Output<String> ip,
-  }) :
-      ip = pulumi.Input.asInput<String>(ip);
+    required this.ip,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetIpInfoArgs {
 
   factory GetIpInfoArgs.fromMap(Map<String, dynamic> map) {
     return GetIpInfoArgs(
-      ip: pulumi.Output.create<String>(map['ip'] as String),
+      ip: (map['ip'] as String).input(),
     );
   }
 }

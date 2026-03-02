@@ -43,29 +43,18 @@ class NatPoolArgs {
   /// [resourceGroupName] The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   /// [tcpResetEnabled] Is TCP Reset enabled for this Load Balancer Rule?
   NatPoolArgs({
-    required pulumi.Output<int> backendPort,
-    pulumi.Output<bool>? floatingIpEnabled,
-    required pulumi.Output<String> frontendIpConfigurationName,
-    required pulumi.Output<int> frontendPortEnd,
-    required pulumi.Output<int> frontendPortStart,
-    pulumi.Output<int>? idleTimeoutInMinutes,
-    required pulumi.Output<String> loadbalancerId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> protocol,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? tcpResetEnabled,
-  }) :
-      backendPort = pulumi.Input.asInput<int>(backendPort),
-      floatingIpEnabled = pulumi.Input.asOptionalInput<bool>(floatingIpEnabled),
-      frontendIpConfigurationName = pulumi.Input.asInput<String>(frontendIpConfigurationName),
-      frontendPortEnd = pulumi.Input.asInput<int>(frontendPortEnd),
-      frontendPortStart = pulumi.Input.asInput<int>(frontendPortStart),
-      idleTimeoutInMinutes = pulumi.Input.asOptionalInput<int>(idleTimeoutInMinutes),
-      loadbalancerId = pulumi.Input.asInput<String>(loadbalancerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tcpResetEnabled = pulumi.Input.asOptionalInput<bool>(tcpResetEnabled);
+    required this.backendPort,
+    this.floatingIpEnabled,
+    required this.frontendIpConfigurationName,
+    required this.frontendPortEnd,
+    required this.frontendPortStart,
+    this.idleTimeoutInMinutes,
+    required this.loadbalancerId,
+    this.name,
+    required this.protocol,
+    required this.resourceGroupName,
+    this.tcpResetEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class NatPoolArgs {
 
   factory NatPoolArgs.fromMap(Map<String, dynamic> map) {
     return NatPoolArgs(
-      backendPort: pulumi.Output.create<int>(map['backendPort'] as int),
-      floatingIpEnabled: map['floatingIpEnabled'] == null ? null : pulumi.Output.create<bool>(map['floatingIpEnabled'] as bool),
-      frontendIpConfigurationName: pulumi.Output.create<String>(map['frontendIpConfigurationName'] as String),
-      frontendPortEnd: pulumi.Output.create<int>(map['frontendPortEnd'] as int),
-      frontendPortStart: pulumi.Output.create<int>(map['frontendPortStart'] as int),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : pulumi.Output.create<int>(map['idleTimeoutInMinutes'] as int),
-      loadbalancerId: pulumi.Output.create<String>(map['loadbalancerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tcpResetEnabled: map['tcpResetEnabled'] == null ? null : pulumi.Output.create<bool>(map['tcpResetEnabled'] as bool),
+      backendPort: (map['backendPort'] as int).input(),
+      floatingIpEnabled: map['floatingIpEnabled'] == null ? null : (map['floatingIpEnabled'] as bool).input(),
+      frontendIpConfigurationName: (map['frontendIpConfigurationName'] as String).input(),
+      frontendPortEnd: (map['frontendPortEnd'] as int).input(),
+      frontendPortStart: (map['frontendPortStart'] as int).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      loadbalancerId: (map['loadbalancerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tcpResetEnabled: map['tcpResetEnabled'] == null ? null : (map['tcpResetEnabled'] as bool).input(),
     );
   }
 }

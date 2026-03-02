@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorUser {
   /// Email of the user used by Datadog for contacting them if needed. Changing this forces a new Datadog Monitor to be created.
-  final String email;
+  final pulumi.Input<String> email;
   /// The name which should be used for this user_info. Changing this forces a new resource to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// Phone number of the user used by Datadog for contacting them if needed. Changing this forces a new resource to be created.
-  final String? phoneNumber;
+  final pulumi.Input<String>? phoneNumber;
 
   /// Creates a new [MonitorUser].
   /// [email] Email of the user used by Datadog for contacting them if needed. Changing this forces a new Datadog Monitor to be created.
@@ -29,9 +30,9 @@ class MonitorUser {
 
   factory MonitorUser.fromMap(Map<String, dynamic> map) {
     return MonitorUser(
-      email: map['email'] as String,
-      name: map['name'] as String,
-      phoneNumber: map['phoneNumber'] == null ? null : map['phoneNumber'] as String,
+      email: (map['email'] as String).input(),
+      name: (map['name'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
     );
   }
 }

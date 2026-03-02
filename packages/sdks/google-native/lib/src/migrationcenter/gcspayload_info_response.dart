@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A resource that represents a payload hosted on Google Cloud Storage.
 class GCSPayloadInfoResponse {
   /// The import job format.
-  final String format;
+  final pulumi.Input<String> format;
   /// The payload path in Google Cloud Storage.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [GCSPayloadInfoResponse].
   /// [format] The import job format.
@@ -25,8 +26,8 @@ class GCSPayloadInfoResponse {
 
   factory GCSPayloadInfoResponse.fromMap(Map<String, dynamic> map) {
     return GCSPayloadInfoResponse(
-      format: map['format'] as String,
-      path: map['path'] as String,
+      format: (map['format'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

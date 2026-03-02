@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'in_mage_rcm_failback_sync_details_response.dart';
 
 /// InMageRcmFailback protected disk details.
 class InMageRcmFailbackProtectedDiskDetailsResponse {
   /// The disk capacity in bytes.
-  final double capacityInBytes;
+  final pulumi.Input<double> capacityInBytes;
   /// The data pending at source agent in MB.
-  final double dataPendingAtSourceAgentInMB;
+  final pulumi.Input<double> dataPendingAtSourceAgentInMB;
   /// The data pending in log data store in MB.
-  final double dataPendingInLogDataStoreInMB;
+  final pulumi.Input<double> dataPendingInLogDataStoreInMB;
   /// The disk Id (reported by source agent).
-  final String diskId;
+  final pulumi.Input<String> diskId;
   /// The disk name.
-  final String diskName;
+  final pulumi.Input<String> diskName;
   /// The disk Uuid (reported by vCenter).
-  final String diskUuid;
+  final pulumi.Input<String> diskUuid;
   /// The initial replication details.
-  final InMageRcmFailbackSyncDetailsResponse? irDetails;
+  final pulumi.Input<InMageRcmFailbackSyncDetailsResponse>? irDetails;
   /// A value indicating whether initial replication is complete or not.
-  final String isInitialReplicationComplete;
+  final pulumi.Input<String> isInitialReplicationComplete;
   /// A value indicating whether the disk is the OS disk.
-  final String isOSDisk;
+  final pulumi.Input<String> isOSDisk;
   /// The last sync time.
-  final String lastSyncTime;
+  final pulumi.Input<String> lastSyncTime;
   /// The resync details.
-  final InMageRcmFailbackSyncDetailsResponse? resyncDetails;
+  final pulumi.Input<InMageRcmFailbackSyncDetailsResponse>? resyncDetails;
 
   /// Creates a new [InMageRcmFailbackProtectedDiskDetailsResponse].
   /// [capacityInBytes] The disk capacity in bytes.
@@ -61,27 +62,27 @@ class InMageRcmFailbackProtectedDiskDetailsResponse {
       'diskId': diskId,
       'diskName': diskName,
       'diskUuid': diskUuid,
-      'irDetails': ?irDetails == null ? null : irDetails!.toMap(),
+      'irDetails': ?pulumi.Input.mapOptionalInputValue<InMageRcmFailbackSyncDetailsResponse, Map<String, dynamic>>(irDetails, (value) => value.toMap()),
       'isInitialReplicationComplete': isInitialReplicationComplete,
       'isOSDisk': isOSDisk,
       'lastSyncTime': lastSyncTime,
-      'resyncDetails': ?resyncDetails == null ? null : resyncDetails!.toMap(),
+      'resyncDetails': ?pulumi.Input.mapOptionalInputValue<InMageRcmFailbackSyncDetailsResponse, Map<String, dynamic>>(resyncDetails, (value) => value.toMap()),
     };
   }
 
   factory InMageRcmFailbackProtectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmFailbackProtectedDiskDetailsResponse(
-      capacityInBytes: map['capacityInBytes'] as double,
-      dataPendingAtSourceAgentInMB: map['dataPendingAtSourceAgentInMB'] as double,
-      dataPendingInLogDataStoreInMB: map['dataPendingInLogDataStoreInMB'] as double,
-      diskId: map['diskId'] as String,
-      diskName: map['diskName'] as String,
-      diskUuid: map['diskUuid'] as String,
-      irDetails: map['irDetails'] == null ? null : InMageRcmFailbackSyncDetailsResponse.fromMap((map['irDetails'] as Map).cast<String, dynamic>()),
-      isInitialReplicationComplete: map['isInitialReplicationComplete'] as String,
-      isOSDisk: map['isOSDisk'] as String,
-      lastSyncTime: map['lastSyncTime'] as String,
-      resyncDetails: map['resyncDetails'] == null ? null : InMageRcmFailbackSyncDetailsResponse.fromMap((map['resyncDetails'] as Map).cast<String, dynamic>()),
+      capacityInBytes: (map['capacityInBytes'] as double).input(),
+      dataPendingAtSourceAgentInMB: (map['dataPendingAtSourceAgentInMB'] as double).input(),
+      dataPendingInLogDataStoreInMB: (map['dataPendingInLogDataStoreInMB'] as double).input(),
+      diskId: (map['diskId'] as String).input(),
+      diskName: (map['diskName'] as String).input(),
+      diskUuid: (map['diskUuid'] as String).input(),
+      irDetails: map['irDetails'] == null ? null : (InMageRcmFailbackSyncDetailsResponse.fromMap((map['irDetails'] as Map).cast<String, dynamic>())).input(),
+      isInitialReplicationComplete: (map['isInitialReplicationComplete'] as String).input(),
+      isOSDisk: (map['isOSDisk'] as String).input(),
+      lastSyncTime: (map['lastSyncTime'] as String).input(),
+      resyncDetails: map['resyncDetails'] == null ? null : (InMageRcmFailbackSyncDetailsResponse.fromMap((map['resyncDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

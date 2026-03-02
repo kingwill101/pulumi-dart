@@ -39,25 +39,16 @@ class HciExtensionArgs {
   /// [type] Specifies the type of the extension. For example `CustomScriptExtension` or `AzureMonitorLinuxAgent`. Changing this forces a new resource to be created.
   /// [typeHandlerVersion] Specifies the version of the script handler.
   HciExtensionArgs({
-    required pulumi.Output<String> arcSettingId,
-    pulumi.Output<bool>? autoUpgradeMinorVersionEnabled,
-    pulumi.Output<bool>? automaticUpgradeEnabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? protectedSettings,
-    required pulumi.Output<String> publisher,
-    pulumi.Output<String>? settings,
-    required pulumi.Output<String> type,
-    pulumi.Output<String>? typeHandlerVersion,
-  }) :
-      arcSettingId = pulumi.Input.asInput<String>(arcSettingId),
-      autoUpgradeMinorVersionEnabled = pulumi.Input.asOptionalInput<bool>(autoUpgradeMinorVersionEnabled),
-      automaticUpgradeEnabled = pulumi.Input.asOptionalInput<bool>(automaticUpgradeEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protectedSettings = pulumi.Input.asOptionalInput<String>(protectedSettings),
-      publisher = pulumi.Input.asInput<String>(publisher),
-      settings = pulumi.Input.asOptionalInput<String>(settings),
-      type = pulumi.Input.asInput<String>(type),
-      typeHandlerVersion = pulumi.Input.asOptionalInput<String>(typeHandlerVersion);
+    required this.arcSettingId,
+    this.autoUpgradeMinorVersionEnabled,
+    this.automaticUpgradeEnabled,
+    this.name,
+    this.protectedSettings,
+    required this.publisher,
+    this.settings,
+    required this.type,
+    this.typeHandlerVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class HciExtensionArgs {
 
   factory HciExtensionArgs.fromMap(Map<String, dynamic> map) {
     return HciExtensionArgs(
-      arcSettingId: pulumi.Output.create<String>(map['arcSettingId'] as String),
-      autoUpgradeMinorVersionEnabled: map['autoUpgradeMinorVersionEnabled'] == null ? null : pulumi.Output.create<bool>(map['autoUpgradeMinorVersionEnabled'] as bool),
-      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : pulumi.Output.create<bool>(map['automaticUpgradeEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protectedSettings: map['protectedSettings'] == null ? null : pulumi.Output.create<String>(map['protectedSettings'] as String),
-      publisher: pulumi.Output.create<String>(map['publisher'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<String>(map['settings'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : pulumi.Output.create<String>(map['typeHandlerVersion'] as String),
+      arcSettingId: (map['arcSettingId'] as String).input(),
+      autoUpgradeMinorVersionEnabled: map['autoUpgradeMinorVersionEnabled'] == null ? null : (map['autoUpgradeMinorVersionEnabled'] as bool).input(),
+      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings'] as String).input(),
+      type: (map['type'] as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
     );
   }
 }

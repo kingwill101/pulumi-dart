@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation {
   /// ARN of the key value store.
-  final String keyValueStoreArn;
+  final pulumi.Input<String> keyValueStoreArn;
 
   /// Creates a new [ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation].
   /// [keyValueStoreArn] ARN of the key value store.
@@ -19,7 +20,7 @@ class ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation {
 
   factory ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation.fromMap(Map<String, dynamic> map) {
     return ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation(
-      keyValueStoreArn: map['keyValueStoreArn'] as String,
+      keyValueStoreArn: (map['keyValueStoreArn'] as String).input(),
     );
   }
 }

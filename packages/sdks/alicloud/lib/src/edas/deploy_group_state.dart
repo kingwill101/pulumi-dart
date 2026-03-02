@@ -16,13 +16,10 @@ class DeployGroupState {
   /// [groupName] The name of the instance group that you want to create.
   /// [groupType] The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
   DeployGroupState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<int>? groupType,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      groupType = pulumi.Input.asOptionalInput<int>(groupType);
+    this.appId,
+    this.groupName,
+    this.groupType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class DeployGroupState {
 
   factory DeployGroupState.fromMap(Map<String, dynamic> map) {
     return DeployGroupState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      groupType: map['groupType'] == null ? null : pulumi.Output.create<int>(map['groupType'] as int),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType'] as int).input(),
     );
   }
 }

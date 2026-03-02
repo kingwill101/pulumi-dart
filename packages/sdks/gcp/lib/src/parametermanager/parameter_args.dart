@@ -39,17 +39,12 @@ class ParameterArgs {
   /// [parameterId] This must be unique within the project.
   /// [project] The ID of the project in which the resource belongs.
   ParameterArgs({
-    pulumi.Output<String>? format,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> parameterId,
-    pulumi.Output<String>? project,
-  }) :
-      format = pulumi.Input.asOptionalInput<String>(format),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      parameterId = pulumi.Input.asInput<String>(parameterId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.format,
+    this.kmsKey,
+    this.labels,
+    required this.parameterId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,11 +58,11 @@ class ParameterArgs {
 
   factory ParameterArgs.fromMap(Map<String, dynamic> map) {
     return ParameterArgs(
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      parameterId: pulumi.Output.create<String>(map['parameterId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      parameterId: (map['parameterId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

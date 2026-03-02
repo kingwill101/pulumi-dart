@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes authentication configuration that uses a Google account.
 class GoogleAccountWebsecurityscannerV1beta {
   /// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-  final String password;
+  final pulumi.Input<String> password;
   /// The user name of the Google account.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GoogleAccountWebsecurityscannerV1beta].
   /// [password] Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
@@ -25,8 +26,8 @@ class GoogleAccountWebsecurityscannerV1beta {
 
   factory GoogleAccountWebsecurityscannerV1beta.fromMap(Map<String, dynamic> map) {
     return GoogleAccountWebsecurityscannerV1beta(
-      password: map['password'] as String,
-      username: map['username'] as String,
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

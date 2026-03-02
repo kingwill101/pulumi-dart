@@ -9,23 +9,23 @@ import 'vpn_server_configuration_policy_group_response.dart';
 /// P2SConnectionConfiguration Resource.
 class P2SConnectionConfigurationResponse {
   /// List of Configuration Policy Groups that this P2SConnectionConfiguration is attached to.
-  final List<SubResourceResponse> configurationPolicyGroupAssociations;
+  final pulumi.Input<List<SubResourceResponse>> configurationPolicyGroupAssociations;
   /// Flag indicating whether the enable internet security flag is turned on for the P2S Connections or not.
-  final bool? enableInternetSecurity;
+  final pulumi.Input<bool>? enableInternetSecurity;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// List of previous Configuration Policy Groups that this P2SConnectionConfiguration was attached to.
-  final List<VpnServerConfigurationPolicyGroupResponse> previousConfigurationPolicyGroupAssociations;
+  final pulumi.Input<List<VpnServerConfigurationPolicyGroupResponse>> previousConfigurationPolicyGroupAssociations;
   /// The provisioning state of the P2SConnectionConfiguration resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final RoutingConfigurationResponse? routingConfiguration;
+  final pulumi.Input<RoutingConfigurationResponse>? routingConfiguration;
   /// The reference to the address space resource which represents Address space for P2S VpnClient.
-  final AddressSpaceResponse? vpnClientAddressPool;
+  final pulumi.Input<AddressSpaceResponse>? vpnClientAddressPool;
 
   /// Creates a new [P2SConnectionConfigurationResponse].
   /// [configurationPolicyGroupAssociations] List of Configuration Policy Groups that this P2SConnectionConfiguration is attached to.
@@ -51,29 +51,29 @@ class P2SConnectionConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configurationPolicyGroupAssociations': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(configurationPolicyGroupAssociations, (value) => value.toMap()),
+      'configurationPolicyGroupAssociations': pulumi.Input.mapInputValue<List<SubResourceResponse>, List<Map<String, dynamic>>>(configurationPolicyGroupAssociations, (value) => pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableInternetSecurity': ?enableInternetSecurity,
       'etag': etag,
       'id': ?id,
       'name': ?name,
-      'previousConfigurationPolicyGroupAssociations': pulumi.Input.encodeList<VpnServerConfigurationPolicyGroupResponse, Map<String, dynamic>>(previousConfigurationPolicyGroupAssociations, (value) => value.toMap()),
+      'previousConfigurationPolicyGroupAssociations': pulumi.Input.mapInputValue<List<VpnServerConfigurationPolicyGroupResponse>, List<Map<String, dynamic>>>(previousConfigurationPolicyGroupAssociations, (value) => pulumi.Input.encodeList<VpnServerConfigurationPolicyGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
-      'routingConfiguration': ?routingConfiguration == null ? null : routingConfiguration!.toMap(),
-      'vpnClientAddressPool': ?vpnClientAddressPool == null ? null : vpnClientAddressPool!.toMap(),
+      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfigurationResponse, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
+      'vpnClientAddressPool': ?pulumi.Input.mapOptionalInputValue<AddressSpaceResponse, Map<String, dynamic>>(vpnClientAddressPool, (value) => value.toMap()),
     };
   }
 
   factory P2SConnectionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return P2SConnectionConfigurationResponse(
-      configurationPolicyGroupAssociations: pulumi.Input.decodeList<SubResourceResponse>(map['configurationPolicyGroupAssociations'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : map['enableInternetSecurity'] as bool,
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      previousConfigurationPolicyGroupAssociations: pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupResponse>(map['previousConfigurationPolicyGroupAssociations'], (value) => VpnServerConfigurationPolicyGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      routingConfiguration: map['routingConfiguration'] == null ? null : RoutingConfigurationResponse.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>()),
-      vpnClientAddressPool: map['vpnClientAddressPool'] == null ? null : AddressSpaceResponse.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>()),
+      configurationPolicyGroupAssociations: (pulumi.Input.decodeList<SubResourceResponse>(map['configurationPolicyGroupAssociations'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      previousConfigurationPolicyGroupAssociations: (pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupResponse>(map['previousConfigurationPolicyGroupAssociations'], (value) => VpnServerConfigurationPolicyGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfigurationResponse.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      vpnClientAddressPool: map['vpnClientAddressPool'] == null ? null : (AddressSpaceResponse.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

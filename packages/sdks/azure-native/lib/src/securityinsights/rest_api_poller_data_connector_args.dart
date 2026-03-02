@@ -55,33 +55,20 @@ class RestApiPollerDataConnectorArgs {
   /// [response] The response configuration.
   /// [workspaceName] The name of the workspace.
   RestApiPollerDataConnectorArgs({
-    pulumi.Output<Map<String, String>>? addOnAttributes,
-    required pulumi.Output<AWSAuthModel> auth,
-    required pulumi.Output<String> connectorDefinitionName,
-    pulumi.Output<String>? dataConnectorId,
-    pulumi.Output<String>? dataType,
-    pulumi.Output<DCRConfiguration>? dcrConfig,
-    pulumi.Output<bool>? isActive,
-    required pulumi.Output<String> kind,
-    pulumi.Output<RestApiPollerRequestPagingConfig>? paging,
-    required pulumi.Output<RestApiPollerRequestConfig> request,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<CcpResponseConfig>? response,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      addOnAttributes = pulumi.Input.asOptionalInput<Map<String, String>>(addOnAttributes),
-      auth = pulumi.Input.asInput<AWSAuthModel>(auth),
-      connectorDefinitionName = pulumi.Input.asInput<String>(connectorDefinitionName),
-      dataConnectorId = pulumi.Input.asOptionalInput<String>(dataConnectorId),
-      dataType = pulumi.Input.asOptionalInput<String>(dataType),
-      dcrConfig = pulumi.Input.asOptionalInput<DCRConfiguration>(dcrConfig),
-      isActive = pulumi.Input.asOptionalInput<bool>(isActive),
-      kind = pulumi.Input.asInput<String>(kind),
-      paging = pulumi.Input.asOptionalInput<RestApiPollerRequestPagingConfig>(paging),
-      request = pulumi.Input.asInput<RestApiPollerRequestConfig>(request),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      response = pulumi.Input.asOptionalInput<CcpResponseConfig>(response),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.addOnAttributes,
+    required this.auth,
+    required this.connectorDefinitionName,
+    this.dataConnectorId,
+    this.dataType,
+    this.dcrConfig,
+    this.isActive,
+    required this.kind,
+    this.paging,
+    required this.request,
+    required this.resourceGroupName,
+    this.response,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,19 +90,19 @@ class RestApiPollerDataConnectorArgs {
 
   factory RestApiPollerDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return RestApiPollerDataConnectorArgs(
-      addOnAttributes: map['addOnAttributes'] == null ? null : pulumi.Output.create<Map<String, String>>((map['addOnAttributes'] as Map).cast<String, String>()),
-      auth: pulumi.Output.create<AWSAuthModel>(AWSAuthModel.fromMap((map['auth'] as Map).cast<String, dynamic>())),
-      connectorDefinitionName: pulumi.Output.create<String>(map['connectorDefinitionName'] as String),
-      dataConnectorId: map['dataConnectorId'] == null ? null : pulumi.Output.create<String>(map['dataConnectorId'] as String),
-      dataType: map['dataType'] == null ? null : pulumi.Output.create<String>(map['dataType'] as String),
-      dcrConfig: map['dcrConfig'] == null ? null : pulumi.Output.create<DCRConfiguration>(DCRConfiguration.fromMap((map['dcrConfig'] as Map).cast<String, dynamic>())),
-      isActive: map['isActive'] == null ? null : pulumi.Output.create<bool>(map['isActive'] as bool),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      paging: map['paging'] == null ? null : pulumi.Output.create<RestApiPollerRequestPagingConfig>(RestApiPollerRequestPagingConfig.fromMap((map['paging'] as Map).cast<String, dynamic>())),
-      request: pulumi.Output.create<RestApiPollerRequestConfig>(RestApiPollerRequestConfig.fromMap((map['request'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      response: map['response'] == null ? null : pulumi.Output.create<CcpResponseConfig>(CcpResponseConfig.fromMap((map['response'] as Map).cast<String, dynamic>())),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      addOnAttributes: map['addOnAttributes'] == null ? null : ((map['addOnAttributes'] as Map).cast<String, String>()).input(),
+      auth: (AWSAuthModel.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
+      connectorDefinitionName: (map['connectorDefinitionName'] as String).input(),
+      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      dcrConfig: map['dcrConfig'] == null ? null : (DCRConfiguration.fromMap((map['dcrConfig'] as Map).cast<String, dynamic>())).input(),
+      isActive: map['isActive'] == null ? null : (map['isActive'] as bool).input(),
+      kind: (map['kind'] as String).input(),
+      paging: map['paging'] == null ? null : (RestApiPollerRequestPagingConfig.fromMap((map['paging'] as Map).cast<String, dynamic>())).input(),
+      request: (RestApiPollerRequestConfig.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      response: map['response'] == null ? null : (CcpResponseConfig.fromMap((map['response'] as Map).cast<String, dynamic>())).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

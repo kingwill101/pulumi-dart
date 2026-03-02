@@ -40,29 +40,18 @@ class RemoteAdbDataSourceState {
   /// [userName] The user name used to connect to the remote instance
   /// [userPassword] The user password used to connect to the remote instance
   RemoteAdbDataSourceState({
-    pulumi.Output<String>? dataSourceName,
-    pulumi.Output<String>? localDatabase,
-    pulumi.Output<String>? localDbInstanceId,
-    pulumi.Output<String>? managerUserName,
-    pulumi.Output<String>? managerUserPassword,
-    pulumi.Output<int>? remoteAdbDataSourceId,
-    pulumi.Output<String>? remoteDatabase,
-    pulumi.Output<String>? remoteDbInstanceId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? userName,
-    pulumi.Output<String>? userPassword,
-  }) :
-      dataSourceName = pulumi.Input.asOptionalInput<String>(dataSourceName),
-      localDatabase = pulumi.Input.asOptionalInput<String>(localDatabase),
-      localDbInstanceId = pulumi.Input.asOptionalInput<String>(localDbInstanceId),
-      managerUserName = pulumi.Input.asOptionalInput<String>(managerUserName),
-      managerUserPassword = pulumi.Input.asOptionalInput<String>(managerUserPassword),
-      remoteAdbDataSourceId = pulumi.Input.asOptionalInput<int>(remoteAdbDataSourceId),
-      remoteDatabase = pulumi.Input.asOptionalInput<String>(remoteDatabase),
-      remoteDbInstanceId = pulumi.Input.asOptionalInput<String>(remoteDbInstanceId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      userName = pulumi.Input.asOptionalInput<String>(userName),
-      userPassword = pulumi.Input.asOptionalInput<String>(userPassword);
+    this.dataSourceName,
+    this.localDatabase,
+    this.localDbInstanceId,
+    this.managerUserName,
+    this.managerUserPassword,
+    this.remoteAdbDataSourceId,
+    this.remoteDatabase,
+    this.remoteDbInstanceId,
+    this.status,
+    this.userName,
+    this.userPassword,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class RemoteAdbDataSourceState {
 
   factory RemoteAdbDataSourceState.fromMap(Map<String, dynamic> map) {
     return RemoteAdbDataSourceState(
-      dataSourceName: map['dataSourceName'] == null ? null : pulumi.Output.create<String>(map['dataSourceName'] as String),
-      localDatabase: map['localDatabase'] == null ? null : pulumi.Output.create<String>(map['localDatabase'] as String),
-      localDbInstanceId: map['localDbInstanceId'] == null ? null : pulumi.Output.create<String>(map['localDbInstanceId'] as String),
-      managerUserName: map['managerUserName'] == null ? null : pulumi.Output.create<String>(map['managerUserName'] as String),
-      managerUserPassword: map['managerUserPassword'] == null ? null : pulumi.Output.create<String>(map['managerUserPassword'] as String),
-      remoteAdbDataSourceId: map['remoteAdbDataSourceId'] == null ? null : pulumi.Output.create<int>(map['remoteAdbDataSourceId'] as int),
-      remoteDatabase: map['remoteDatabase'] == null ? null : pulumi.Output.create<String>(map['remoteDatabase'] as String),
-      remoteDbInstanceId: map['remoteDbInstanceId'] == null ? null : pulumi.Output.create<String>(map['remoteDbInstanceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
-      userPassword: map['userPassword'] == null ? null : pulumi.Output.create<String>(map['userPassword'] as String),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
+      localDatabase: map['localDatabase'] == null ? null : (map['localDatabase'] as String).input(),
+      localDbInstanceId: map['localDbInstanceId'] == null ? null : (map['localDbInstanceId'] as String).input(),
+      managerUserName: map['managerUserName'] == null ? null : (map['managerUserName'] as String).input(),
+      managerUserPassword: map['managerUserPassword'] == null ? null : (map['managerUserPassword'] as String).input(),
+      remoteAdbDataSourceId: map['remoteAdbDataSourceId'] == null ? null : (map['remoteAdbDataSourceId'] as int).input(),
+      remoteDatabase: map['remoteDatabase'] == null ? null : (map['remoteDatabase'] as String).input(),
+      remoteDbInstanceId: map['remoteDbInstanceId'] == null ? null : (map['remoteDbInstanceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userPassword: map['userPassword'] == null ? null : (map['userPassword'] as String).input(),
     );
   }
 }

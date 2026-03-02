@@ -16,13 +16,10 @@ class GetEkmConnectionArgs {
   /// [location] Required.
   /// [project] Optional.
   GetEkmConnectionArgs({
-    required pulumi.Output<String> ekmConnectionId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      ekmConnectionId = pulumi.Input.asInput<String>(ekmConnectionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.ekmConnectionId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetEkmConnectionArgs {
 
   factory GetEkmConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetEkmConnectionArgs(
-      ekmConnectionId: pulumi.Output.create<String>(map['ekmConnectionId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      ekmConnectionId: (map['ekmConnectionId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

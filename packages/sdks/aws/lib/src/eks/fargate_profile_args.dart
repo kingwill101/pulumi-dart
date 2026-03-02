@@ -34,21 +34,14 @@ class FargateProfileArgs {
   /// [subnetIds] Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   FargateProfileArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? fargateProfileName,
-    required pulumi.Output<String> podExecutionRoleArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<FargateProfileSelector>> selectors,
-    pulumi.Output<List<String>>? subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      fargateProfileName = pulumi.Input.asOptionalInput<String>(fargateProfileName),
-      podExecutionRoleArn = pulumi.Input.asInput<String>(podExecutionRoleArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selectors = pulumi.Input.asInput<List<FargateProfileSelector>>(selectors),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.clusterName,
+    this.fargateProfileName,
+    required this.podExecutionRoleArn,
+    this.region,
+    required this.selectors,
+    this.subnetIds,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class FargateProfileArgs {
 
   factory FargateProfileArgs.fromMap(Map<String, dynamic> map) {
     return FargateProfileArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      fargateProfileName: map['fargateProfileName'] == null ? null : pulumi.Output.create<String>(map['fargateProfileName'] as String),
-      podExecutionRoleArn: pulumi.Output.create<String>(map['podExecutionRoleArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selectors: pulumi.Output.create<List<FargateProfileSelector>>(pulumi.Input.decodeList<FargateProfileSelector>(map['selectors'], (value) => FargateProfileSelector.fromMap((value as Map).cast<String, dynamic>()))),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterName: (map['clusterName'] as String).input(),
+      fargateProfileName: map['fargateProfileName'] == null ? null : (map['fargateProfileName'] as String).input(),
+      podExecutionRoleArn: (map['podExecutionRoleArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selectors: (pulumi.Input.decodeList<FargateProfileSelector>(map['selectors'], (value) => FargateProfileSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

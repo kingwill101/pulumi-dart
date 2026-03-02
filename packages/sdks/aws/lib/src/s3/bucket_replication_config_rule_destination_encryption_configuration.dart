@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketReplicationConfigRuleDestinationEncryptionConfiguration {
   /// ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket.
-  final String replicaKmsKeyId;
+  final pulumi.Input<String> replicaKmsKeyId;
 
   /// Creates a new [BucketReplicationConfigRuleDestinationEncryptionConfiguration].
   /// [replicaKmsKeyId] ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket.
@@ -19,7 +20,7 @@ class BucketReplicationConfigRuleDestinationEncryptionConfiguration {
 
   factory BucketReplicationConfigRuleDestinationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleDestinationEncryptionConfiguration(
-      replicaKmsKeyId: map['replicaKmsKeyId'] as String,
+      replicaKmsKeyId: (map['replicaKmsKeyId'] as String).input(),
     );
   }
 }

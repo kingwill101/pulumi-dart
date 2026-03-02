@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GenaiAgentChildAgentChatbotIdentifier {
-  final String? chatbotId;
+  final pulumi.Input<String>? chatbotId;
 
   /// Creates a new [GenaiAgentChildAgentChatbotIdentifier].
   /// [chatbotId] Optional.
@@ -18,7 +19,7 @@ class GenaiAgentChildAgentChatbotIdentifier {
 
   factory GenaiAgentChildAgentChatbotIdentifier.fromMap(Map<String, dynamic> map) {
     return GenaiAgentChildAgentChatbotIdentifier(
-      chatbotId: map['chatbotId'] == null ? null : map['chatbotId'] as String,
+      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId'] as String).input(),
     );
   }
 }

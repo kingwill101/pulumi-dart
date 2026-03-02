@@ -34,23 +34,15 @@ class ApiVersionSetArgs {
   /// [versionSetId] Api Version Set identifier. Must be unique in the current API Management service instance.
   /// [versioningScheme] An value that determines where the API Version identifier will be located in a HTTP request.
   ApiVersionSetArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? versionHeaderName,
-    pulumi.Output<String>? versionQueryName,
-    pulumi.Output<String>? versionSetId,
-    required pulumi.Output<String> versioningScheme,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      versionHeaderName = pulumi.Input.asOptionalInput<String>(versionHeaderName),
-      versionQueryName = pulumi.Input.asOptionalInput<String>(versionQueryName),
-      versionSetId = pulumi.Input.asOptionalInput<String>(versionSetId),
-      versioningScheme = pulumi.Input.asInput<String>(versioningScheme);
+    this.description,
+    required this.displayName,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.versionHeaderName,
+    this.versionQueryName,
+    this.versionSetId,
+    required this.versioningScheme,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ApiVersionSetArgs {
 
   factory ApiVersionSetArgs.fromMap(Map<String, dynamic> map) {
     return ApiVersionSetArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      versionHeaderName: map['versionHeaderName'] == null ? null : pulumi.Output.create<String>(map['versionHeaderName'] as String),
-      versionQueryName: map['versionQueryName'] == null ? null : pulumi.Output.create<String>(map['versionQueryName'] as String),
-      versionSetId: map['versionSetId'] == null ? null : pulumi.Output.create<String>(map['versionSetId'] as String),
-      versioningScheme: pulumi.Output.create<String>(map['versioningScheme'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      versionHeaderName: map['versionHeaderName'] == null ? null : (map['versionHeaderName'] as String).input(),
+      versionQueryName: map['versionQueryName'] == null ? null : (map['versionQueryName'] as String).input(),
+      versionSetId: map['versionSetId'] == null ? null : (map['versionSetId'] as String).input(),
+      versioningScheme: (map['versioningScheme'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An Azure SKU instance
 class ServiceSku {
   /// The capacity of the SKU, if it supports scaling
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// The SKU family, used when the service has multiple performance classes within a tier, such as 'A', 'D', etc. for virtual machines
-  final String? family;
+  final pulumi.Input<String>? family;
   /// The unique name of the SKU, such as 'P3'
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The size of the SKU, used when the name alone does not denote a service size or when a SKU has multiple performance classes within a family, e.g. 'A1' for virtual machines
-  final String? size;
+  final pulumi.Input<String>? size;
   /// The tier of the SKU, such as 'Basic', 'General Purpose', or 'Business Critical'
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [ServiceSku].
   /// [capacity] The capacity of the SKU, if it supports scaling
@@ -40,11 +41,11 @@ class ServiceSku {
 
   factory ServiceSku.fromMap(Map<String, dynamic> map) {
     return ServiceSku(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      family: map['family'] == null ? null : map['family'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      size: map['size'] == null ? null : map['size'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

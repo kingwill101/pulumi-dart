@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketWebsiteConfigurationV2ErrorDocument {
   /// Object key name to use when a 4XX class error occurs.
-  final String key;
+  final pulumi.Input<String> key;
 
   /// Creates a new [BucketWebsiteConfigurationV2ErrorDocument].
   /// [key] Object key name to use when a 4XX class error occurs.
@@ -19,7 +20,7 @@ class BucketWebsiteConfigurationV2ErrorDocument {
 
   factory BucketWebsiteConfigurationV2ErrorDocument.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteConfigurationV2ErrorDocument(
-      key: map['key'] as String,
+      key: (map['key'] as String).input(),
     );
   }
 }

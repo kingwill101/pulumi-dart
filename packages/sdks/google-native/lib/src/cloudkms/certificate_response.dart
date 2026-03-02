@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
 class CertificateResponse {
   /// The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// The certificate is not valid after this time. Only present if parsed is true.
-  final String notAfterTime;
+  final pulumi.Input<String> notAfterTime;
   /// The certificate is not valid before this time. Only present if parsed is true.
-  final String notBeforeTime;
+  final pulumi.Input<String> notBeforeTime;
   /// True if the certificate was parsed successfully.
-  final bool parsed;
+  final pulumi.Input<bool> parsed;
   /// The raw certificate bytes in DER format.
-  final String rawDer;
+  final pulumi.Input<String> rawDer;
   /// The certificate serial number as a hex string. Only present if parsed is true.
-  final String serialNumber;
+  final pulumi.Input<String> serialNumber;
   /// The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
-  final String sha256Fingerprint;
+  final pulumi.Input<String> sha256Fingerprint;
   /// The subject distinguished name in RFC 2253 format. Only present if parsed is true.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// The subject Alternative DNS names. Only present if parsed is true.
-  final List<String> subjectAlternativeDnsNames;
+  final pulumi.Input<List<String>> subjectAlternativeDnsNames;
 
   /// Creates a new [CertificateResponse].
   /// [issuer] The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
@@ -60,15 +61,15 @@ class CertificateResponse {
 
   factory CertificateResponse.fromMap(Map<String, dynamic> map) {
     return CertificateResponse(
-      issuer: map['issuer'] as String,
-      notAfterTime: map['notAfterTime'] as String,
-      notBeforeTime: map['notBeforeTime'] as String,
-      parsed: map['parsed'] as bool,
-      rawDer: map['rawDer'] as String,
-      serialNumber: map['serialNumber'] as String,
-      sha256Fingerprint: map['sha256Fingerprint'] as String,
-      subject: map['subject'] as String,
-      subjectAlternativeDnsNames: (map['subjectAlternativeDnsNames'] as List).cast<String>(),
+      issuer: (map['issuer'] as String).input(),
+      notAfterTime: (map['notAfterTime'] as String).input(),
+      notBeforeTime: (map['notBeforeTime'] as String).input(),
+      parsed: (map['parsed'] as bool).input(),
+      rawDer: (map['rawDer'] as String).input(),
+      serialNumber: (map['serialNumber'] as String).input(),
+      sha256Fingerprint: (map['sha256Fingerprint'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      subjectAlternativeDnsNames: ((map['subjectAlternativeDnsNames'] as List).cast<String>()).input(),
     );
   }
 }

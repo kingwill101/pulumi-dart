@@ -16,11 +16,9 @@ class GetDiscoveredAssetArgs {
   /// [discoveredAssetName] Discovered Asset name parameter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDiscoveredAssetArgs({
-    required pulumi.Output<String> discoveredAssetName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      discoveredAssetName = pulumi.Input.asInput<String>(discoveredAssetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.discoveredAssetName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDiscoveredAssetArgs {
 
   factory GetDiscoveredAssetArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredAssetArgs(
-      discoveredAssetName: pulumi.Output.create<String>(map['discoveredAssetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      discoveredAssetName: (map['discoveredAssetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

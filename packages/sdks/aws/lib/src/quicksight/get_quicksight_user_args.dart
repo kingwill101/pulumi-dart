@@ -24,15 +24,11 @@ class GetQuicksightUserArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userName] The name of the user that you want to match.
   GetQuicksightUserArgs({
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> userName,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userName = pulumi.Input.asInput<String>(userName);
+    this.awsAccountId,
+    this.namespace,
+    this.region,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetQuicksightUserArgs {
 
   factory GetQuicksightUserArgs.fromMap(Map<String, dynamic> map) {
     return GetQuicksightUserArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

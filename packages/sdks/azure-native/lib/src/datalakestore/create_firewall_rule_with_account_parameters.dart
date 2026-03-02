@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The parameters used to create a new firewall rule while creating a new Data Lake Store account.
 class CreateFirewallRuleWithAccountParameters {
   /// The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
-  final String endIpAddress;
+  final pulumi.Input<String> endIpAddress;
   /// The unique name of the firewall rule to create.
-  final String name;
+  final pulumi.Input<String> name;
   /// The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
-  final String startIpAddress;
+  final pulumi.Input<String> startIpAddress;
 
   /// Creates a new [CreateFirewallRuleWithAccountParameters].
   /// [endIpAddress] The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
@@ -30,9 +31,9 @@ class CreateFirewallRuleWithAccountParameters {
 
   factory CreateFirewallRuleWithAccountParameters.fromMap(Map<String, dynamic> map) {
     return CreateFirewallRuleWithAccountParameters(
-      endIpAddress: map['endIpAddress'] as String,
-      name: map['name'] as String,
-      startIpAddress: map['startIpAddress'] as String,
+      endIpAddress: (map['endIpAddress'] as String).input(),
+      name: (map['name'] as String).input(),
+      startIpAddress: (map['startIpAddress'] as String).input(),
     );
   }
 }

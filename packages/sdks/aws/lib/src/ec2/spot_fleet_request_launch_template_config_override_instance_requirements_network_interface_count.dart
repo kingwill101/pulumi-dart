@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount {
   /// Maximum.
-  final int? max;
+  final pulumi.Input<int>? max;
   /// Minimum.
-  final int? min;
+  final pulumi.Input<int>? min;
 
   /// Creates a new [SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount].
   /// [max] Maximum.
@@ -24,8 +25,8 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkInt
 
   factory SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount.fromMap(Map<String, dynamic> map) {
     return SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount(
-      max: map['max'] == null ? null : map['max'] as int,
-      min: map['min'] == null ? null : map['min'] as int,
+      max: map['max'] == null ? null : (map['max'] as int).input(),
+      min: map['min'] == null ? null : (map['min'] as int).input(),
     );
   }
 }

@@ -45,31 +45,19 @@ class ResourceGatewayState {
   /// [timeouts] Optional.
   /// [vpcId] ID of the VPC for the resource gateway.
   ResourceGatewayState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? ipAddressType,
-    pulumi.Output<int>? ipv4AddressesPerEni,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupIds,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<ResourceGatewayTimeouts>? timeouts,
-    pulumi.Output<String>? vpcId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
-      ipv4AddressesPerEni = pulumi.Input.asOptionalInput<int>(ipv4AddressesPerEni),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<ResourceGatewayTimeouts>(timeouts),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.arn,
+    this.ipAddressType,
+    this.ipv4AddressesPerEni,
+    this.name,
+    this.region,
+    this.securityGroupIds,
+    this.status,
+    this.subnetIds,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class ResourceGatewayState {
 
   factory ResourceGatewayState.fromMap(Map<String, dynamic> map) {
     return ResourceGatewayState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      ipAddressType: map['ipAddressType'] == null ? null : pulumi.Output.create<String>(map['ipAddressType'] as String),
-      ipv4AddressesPerEni: map['ipv4AddressesPerEni'] == null ? null : pulumi.Output.create<int>(map['ipv4AddressesPerEni'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ResourceGatewayTimeouts>(ResourceGatewayTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      ipv4AddressesPerEni: map['ipv4AddressesPerEni'] == null ? null : (map['ipv4AddressesPerEni'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ResourceGatewayTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

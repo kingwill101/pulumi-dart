@@ -29,21 +29,14 @@ class ContactChannelState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] Type of the contact channel. One of `SMS`, `VOICE` or `EMAIL`.
   ContactChannelState({
-    pulumi.Output<String>? activationStatus,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? contactId,
-    pulumi.Output<ContactChannelDeliveryAddress>? deliveryAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? type,
-  }) :
-      activationStatus = pulumi.Input.asOptionalInput<String>(activationStatus),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      contactId = pulumi.Input.asOptionalInput<String>(contactId),
-      deliveryAddress = pulumi.Input.asOptionalInput<ContactChannelDeliveryAddress>(deliveryAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.activationStatus,
+    this.arn,
+    this.contactId,
+    this.deliveryAddress,
+    this.name,
+    this.region,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class ContactChannelState {
 
   factory ContactChannelState.fromMap(Map<String, dynamic> map) {
     return ContactChannelState(
-      activationStatus: map['activationStatus'] == null ? null : pulumi.Output.create<String>(map['activationStatus'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      contactId: map['contactId'] == null ? null : pulumi.Output.create<String>(map['contactId'] as String),
-      deliveryAddress: map['deliveryAddress'] == null ? null : pulumi.Output.create<ContactChannelDeliveryAddress>(ContactChannelDeliveryAddress.fromMap((map['deliveryAddress'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      activationStatus: map['activationStatus'] == null ? null : (map['activationStatus'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      contactId: map['contactId'] == null ? null : (map['contactId'] as String).input(),
+      deliveryAddress: map['deliveryAddress'] == null ? null : (ContactChannelDeliveryAddress.fromMap((map['deliveryAddress'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

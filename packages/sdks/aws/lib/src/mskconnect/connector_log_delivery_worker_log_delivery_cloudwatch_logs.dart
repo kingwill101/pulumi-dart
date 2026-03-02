@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs {
   /// Whether log delivery to Amazon CloudWatch Logs is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The name of the CloudWatch log group that is the destination for log delivery.
-  final String? logGroup;
+  final pulumi.Input<String>? logGroup;
 
   /// Creates a new [ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs].
   /// [enabled] Whether log delivery to Amazon CloudWatch Logs is enabled.
@@ -24,8 +25,8 @@ class ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs {
 
   factory ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs(
-      enabled: map['enabled'] as bool,
-      logGroup: map['logGroup'] == null ? null : map['logGroup'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
     );
   }
 }

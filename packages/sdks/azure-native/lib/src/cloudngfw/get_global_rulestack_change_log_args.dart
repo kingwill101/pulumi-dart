@@ -13,9 +13,8 @@ class GetGlobalRulestackChangeLogArgs {
   /// Creates a new [GetGlobalRulestackChangeLogArgs].
   /// [globalRulestackName] GlobalRulestack resource name
   GetGlobalRulestackChangeLogArgs({
-    required pulumi.Output<String> globalRulestackName,
-  }) :
-      globalRulestackName = pulumi.Input.asInput<String>(globalRulestackName);
+    required this.globalRulestackName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetGlobalRulestackChangeLogArgs {
 
   factory GetGlobalRulestackChangeLogArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalRulestackChangeLogArgs(
-      globalRulestackName: pulumi.Output.create<String>(map['globalRulestackName'] as String),
+      globalRulestackName: (map['globalRulestackName'] as String).input(),
     );
   }
 }

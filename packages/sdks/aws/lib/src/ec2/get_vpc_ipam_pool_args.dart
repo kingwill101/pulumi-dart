@@ -29,19 +29,13 @@ class GetVpcIpamPoolArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assigned to the resource.
   GetVpcIpamPoolArgs({
-    pulumi.Output<Map<String, String>>? allocationResourceTags,
-    pulumi.Output<List<GetVpcIpamPoolFilter>>? filters,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? ipamPoolId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      allocationResourceTags = pulumi.Input.asOptionalInput<Map<String, String>>(allocationResourceTags),
-      filters = pulumi.Input.asOptionalInput<List<GetVpcIpamPoolFilter>>(filters),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      ipamPoolId = pulumi.Input.asOptionalInput<String>(ipamPoolId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.allocationResourceTags,
+    this.filters,
+    this.id,
+    this.ipamPoolId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GetVpcIpamPoolArgs {
 
   factory GetVpcIpamPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamPoolArgs(
-      allocationResourceTags: map['allocationResourceTags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['allocationResourceTags'] as Map).cast<String, String>()),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpcIpamPoolFilter>>(pulumi.Input.decodeList<GetVpcIpamPoolFilter>(map['filters'], (value) => GetVpcIpamPoolFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      ipamPoolId: map['ipamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipamPoolId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      allocationResourceTags: map['allocationResourceTags'] == null ? null : ((map['allocationResourceTags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcIpamPoolFilter>(map['filters'], (value) => GetVpcIpamPoolFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

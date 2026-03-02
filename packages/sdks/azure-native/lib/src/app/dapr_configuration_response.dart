@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration properties Dapr component
 class DaprConfigurationResponse {
   /// The version of Dapr
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [DaprConfigurationResponse].
   /// [version] The version of Dapr
@@ -20,7 +21,7 @@ class DaprConfigurationResponse {
 
   factory DaprConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DaprConfigurationResponse(
-      version: map['version'] as String,
+      version: (map['version'] as String).input(),
     );
   }
 }

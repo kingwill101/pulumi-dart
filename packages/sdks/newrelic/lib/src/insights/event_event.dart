@@ -5,11 +5,11 @@ import 'event_event_attribute.dart';
 
 class EventEvent {
   /// An attribute to include in your event payload. Multiple attribute blocks can be defined for an event.
-  final List<EventEventAttribute> attributes;
+  final pulumi.Input<List<EventEventAttribute>> attributes;
   /// Must be a Unix epoch timestamp. You can define timestamps either in seconds or in milliseconds.
-  final int? timestamp;
+  final pulumi.Input<int>? timestamp;
   /// The event's name. Can be a combination of alphanumeric characters, underscores, and colons.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [EventEvent].
   /// [attributes] An attribute to include in your event payload. Multiple attribute blocks can be defined for an event.
@@ -23,7 +23,7 @@ class EventEvent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': pulumi.Input.encodeList<EventEventAttribute, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'attributes': pulumi.Input.mapInputValue<List<EventEventAttribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<EventEventAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timestamp': ?timestamp,
       'type': type,
     };
@@ -31,9 +31,9 @@ class EventEvent {
 
   factory EventEvent.fromMap(Map<String, dynamic> map) {
     return EventEvent(
-      attributes: pulumi.Input.decodeList<EventEventAttribute>(map['attributes'], (value) => EventEventAttribute.fromMap((value as Map).cast<String, dynamic>())),
-      timestamp: map['timestamp'] == null ? null : map['timestamp'] as int,
-      type: map['type'] as String,
+      attributes: (pulumi.Input.decodeList<EventEventAttribute>(map['attributes'], (value) => EventEventAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

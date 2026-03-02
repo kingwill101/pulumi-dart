@@ -26,19 +26,13 @@ class ApiApigatewayV1betaArgs {
   /// [managedService] Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
   /// [project] Optional.
   ApiApigatewayV1betaArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedService,
-    pulumi.Output<String>? project,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedService = pulumi.Input.asOptionalInput<String>(managedService),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.apiId,
+    this.displayName,
+    this.labels,
+    this.location,
+    this.managedService,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class ApiApigatewayV1betaArgs {
 
   factory ApiApigatewayV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ApiApigatewayV1betaArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedService: map['managedService'] == null ? null : pulumi.Output.create<String>(map['managedService'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      apiId: (map['apiId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedService: map['managedService'] == null ? null : (map['managedService'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

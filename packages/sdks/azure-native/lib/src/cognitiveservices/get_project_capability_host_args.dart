@@ -22,15 +22,11 @@ class GetProjectCapabilityHostArgs {
   /// [projectName] The name of Cognitive Services account's project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetProjectCapabilityHostArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> capabilityHostName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      capabilityHostName = pulumi.Input.asInput<String>(capabilityHostName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.capabilityHostName,
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetProjectCapabilityHostArgs {
 
   factory GetProjectCapabilityHostArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectCapabilityHostArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      capabilityHostName: pulumi.Output.create<String>(map['capabilityHostName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      capabilityHostName: (map['capabilityHostName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

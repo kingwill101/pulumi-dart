@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Snapshot Controller settings for the storage profile.
 class ManagedClusterStorageProfileSnapshotControllerResponse {
   /// Whether to enable Snapshot Controller. The default value is true.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ManagedClusterStorageProfileSnapshotControllerResponse].
   /// [enabled] Whether to enable Snapshot Controller. The default value is true.
@@ -20,7 +21,7 @@ class ManagedClusterStorageProfileSnapshotControllerResponse {
 
   factory ManagedClusterStorageProfileSnapshotControllerResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterStorageProfileSnapshotControllerResponse(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

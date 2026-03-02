@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Managed Disk to attach to the Disk Pool.
 class Disk {
   /// Unique Azure Resource ID of the Managed Disk.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [Disk].
   /// [id] Unique Azure Resource ID of the Managed Disk.
@@ -20,7 +21,7 @@ class Disk {
 
   factory Disk.fromMap(Map<String, dynamic> map) {
     return Disk(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

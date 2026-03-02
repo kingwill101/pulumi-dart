@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainLogPublishingOption {
   /// The CloudWatch Log Group where the logs are published.
-  final String cloudwatchLogGroupArn;
+  final pulumi.Input<String> cloudwatchLogGroupArn;
   /// Whether node to node encryption is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The type of Elasticsearch log being published.
-  final String logType;
+  final pulumi.Input<String> logType;
 
   /// Creates a new [GetDomainLogPublishingOption].
   /// [cloudwatchLogGroupArn] The CloudWatch Log Group where the logs are published.
@@ -29,9 +30,9 @@ class GetDomainLogPublishingOption {
 
   factory GetDomainLogPublishingOption.fromMap(Map<String, dynamic> map) {
     return GetDomainLogPublishingOption(
-      cloudwatchLogGroupArn: map['cloudwatchLogGroupArn'] as String,
-      enabled: map['enabled'] as bool,
-      logType: map['logType'] as String,
+      cloudwatchLogGroupArn: (map['cloudwatchLogGroupArn'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      logType: (map['logType'] as String).input(),
     );
   }
 }

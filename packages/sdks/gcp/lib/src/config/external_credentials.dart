@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExternalCredentials {
-  final String audience;
-  final String identityToken;
-  final String serviceAccountEmail;
+  final pulumi.Input<String> audience;
+  final pulumi.Input<String> identityToken;
+  final pulumi.Input<String> serviceAccountEmail;
 
   /// Creates a new [ExternalCredentials].
   /// [audience] Required.
@@ -26,9 +27,9 @@ class ExternalCredentials {
 
   factory ExternalCredentials.fromMap(Map<String, dynamic> map) {
     return ExternalCredentials(
-      audience: map['audience'] as String,
-      identityToken: map['identityToken'] as String,
-      serviceAccountEmail: map['serviceAccountEmail'] as String,
+      audience: (map['audience'] as String).input(),
+      identityToken: (map['identityToken'] as String).input(),
+      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
     );
   }
 }

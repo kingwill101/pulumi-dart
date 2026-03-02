@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRulePropertyValuesConditionResponse {
-  final String? operator;
+  final pulumi.Input<String>? operator;
   /// The property to evaluate in an automation rule property condition.
-  final String? propertyName;
-  final List<String>? propertyValues;
+  final pulumi.Input<String>? propertyName;
+  final pulumi.Input<List<String>>? propertyValues;
 
   /// Creates a new [AutomationRulePropertyValuesConditionResponse].
   /// [operator] Optional.
@@ -27,9 +28,9 @@ class AutomationRulePropertyValuesConditionResponse {
 
   factory AutomationRulePropertyValuesConditionResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRulePropertyValuesConditionResponse(
-      operator: map['operator'] == null ? null : map['operator'] as String,
-      propertyName: map['propertyName'] == null ? null : map['propertyName'] as String,
-      propertyValues: map['propertyValues'] == null ? null : (map['propertyValues'] as List).cast<String>(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      propertyName: map['propertyName'] == null ? null : (map['propertyName'] as String).input(),
+      propertyValues: map['propertyValues'] == null ? null : ((map['propertyValues'] as List).cast<String>()).input(),
     );
   }
 }

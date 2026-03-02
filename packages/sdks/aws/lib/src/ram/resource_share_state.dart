@@ -28,21 +28,14 @@ class ResourceShareState {
   /// [tags] A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ResourceShareState({
-    pulumi.Output<bool>? allowExternalPrincipals,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? permissionArns,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      allowExternalPrincipals = pulumi.Input.asOptionalInput<bool>(allowExternalPrincipals),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      permissionArns = pulumi.Input.asOptionalInput<List<String>>(permissionArns),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.allowExternalPrincipals,
+    this.arn,
+    this.name,
+    this.permissionArns,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class ResourceShareState {
 
   factory ResourceShareState.fromMap(Map<String, dynamic> map) {
     return ResourceShareState(
-      allowExternalPrincipals: map['allowExternalPrincipals'] == null ? null : pulumi.Output.create<bool>(map['allowExternalPrincipals'] as bool),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      permissionArns: map['permissionArns'] == null ? null : pulumi.Output.create<List<String>>((map['permissionArns'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      allowExternalPrincipals: map['allowExternalPrincipals'] == null ? null : (map['allowExternalPrincipals'] as bool).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      permissionArns: map['permissionArns'] == null ? null : ((map['permissionArns'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

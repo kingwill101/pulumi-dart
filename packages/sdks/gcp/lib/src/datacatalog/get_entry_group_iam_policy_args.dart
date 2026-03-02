@@ -23,13 +23,10 @@ class GetEntryGroupIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] EntryGroup location region.
   GetEntryGroupIamPolicyArgs({
-    required pulumi.Output<String> entryGroup,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      entryGroup = pulumi.Input.asInput<String>(entryGroup),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.entryGroup,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetEntryGroupIamPolicyArgs {
 
   factory GetEntryGroupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetEntryGroupIamPolicyArgs(
-      entryGroup: pulumi.Output.create<String>(map['entryGroup'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      entryGroup: (map['entryGroup'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

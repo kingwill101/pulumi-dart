@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The project team associated with the entity, if any.
 class BucketAccessControlProjectTeam {
   /// The project number.
-  final String? projectNumber;
+  final pulumi.Input<String>? projectNumber;
   /// The team.
-  final String? team;
+  final pulumi.Input<String>? team;
 
   /// Creates a new [BucketAccessControlProjectTeam].
   /// [projectNumber] The project number.
@@ -25,8 +26,8 @@ class BucketAccessControlProjectTeam {
 
   factory BucketAccessControlProjectTeam.fromMap(Map<String, dynamic> map) {
     return BucketAccessControlProjectTeam(
-      projectNumber: map['projectNumber'] == null ? null : map['projectNumber'] as String,
-      team: map['team'] == null ? null : map['team'] as String,
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
+      team: map['team'] == null ? null : (map['team'] as String).input(),
     );
   }
 }

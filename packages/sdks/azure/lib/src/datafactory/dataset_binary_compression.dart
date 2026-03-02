@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetBinaryCompression {
   /// The level of compression. Possible values are `Fastest` and `Optimal`.
-  final String? level;
+  final pulumi.Input<String>? level;
   /// The type of compression used during transport. Possible values are `BZip2`, `Deflate`, `GZip`, `Tar`, `TarGZip` and `ZipDeflate`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DatasetBinaryCompression].
   /// [level] The level of compression. Possible values are `Fastest` and `Optimal`.
@@ -24,8 +25,8 @@ class DatasetBinaryCompression {
 
   factory DatasetBinaryCompression.fromMap(Map<String, dynamic> map) {
     return DatasetBinaryCompression(
-      level: map['level'] == null ? null : map['level'] as String,
-      type: map['type'] as String,
+      level: map['level'] == null ? null : (map['level'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

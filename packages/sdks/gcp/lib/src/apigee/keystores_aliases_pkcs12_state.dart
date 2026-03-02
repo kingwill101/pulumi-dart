@@ -38,25 +38,16 @@ class KeystoresAliasesPkcs12State {
   /// [password] Password for the PKCS12 file if it's encrypted
   /// [type] Optional.Type of Alias
   KeystoresAliasesPkcs12State({
-    pulumi.Output<String>? alias,
-    pulumi.Output<List<KeystoresAliasesPkcs12CertsInfo>>? certsInfos,
-    pulumi.Output<String>? environment,
-    pulumi.Output<String>? file,
-    pulumi.Output<String>? filehash,
-    pulumi.Output<String>? keystore,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? type,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      certsInfos = pulumi.Input.asOptionalInput<List<KeystoresAliasesPkcs12CertsInfo>>(certsInfos),
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      file = pulumi.Input.asOptionalInput<String>(file),
-      filehash = pulumi.Input.asOptionalInput<String>(filehash),
-      keystore = pulumi.Input.asOptionalInput<String>(keystore),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.alias,
+    this.certsInfos,
+    this.environment,
+    this.file,
+    this.filehash,
+    this.keystore,
+    this.orgId,
+    this.password,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class KeystoresAliasesPkcs12State {
 
   factory KeystoresAliasesPkcs12State.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesPkcs12State(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      certsInfos: map['certsInfos'] == null ? null : pulumi.Output.create<List<KeystoresAliasesPkcs12CertsInfo>>(pulumi.Input.decodeList<KeystoresAliasesPkcs12CertsInfo>(map['certsInfos'], (value) => KeystoresAliasesPkcs12CertsInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      file: map['file'] == null ? null : pulumi.Output.create<String>(map['file'] as String),
-      filehash: map['filehash'] == null ? null : pulumi.Output.create<String>(map['filehash'] as String),
-      keystore: map['keystore'] == null ? null : pulumi.Output.create<String>(map['keystore'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      certsInfos: map['certsInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesPkcs12CertsInfo>(map['certsInfos'], (value) => KeystoresAliasesPkcs12CertsInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      file: map['file'] == null ? null : (map['file'] as String).input(),
+      filehash: map['filehash'] == null ? null : (map['filehash'] as String).input(),
+      keystore: map['keystore'] == null ? null : (map['keystore'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -36,25 +36,16 @@ class AggregateCompliancePackState {
   /// [riskLevel] The Risk Level. Valid values:
   /// [status] The status of the Aggregate Compliance Pack.
   AggregateCompliancePackState({
-    pulumi.Output<String>? aggregateCompliancePackName,
-    pulumi.Output<String>? aggregatorCompliancePackId,
-    pulumi.Output<String>? aggregatorId,
-    pulumi.Output<String>? compliancePackTemplateId,
-    pulumi.Output<List<AggregateCompliancePackConfigRuleId>>? configRuleIds,
-    pulumi.Output<List<AggregateCompliancePackConfigRule>>? configRules,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? riskLevel,
-    pulumi.Output<String>? status,
-  }) :
-      aggregateCompliancePackName = pulumi.Input.asOptionalInput<String>(aggregateCompliancePackName),
-      aggregatorCompliancePackId = pulumi.Input.asOptionalInput<String>(aggregatorCompliancePackId),
-      aggregatorId = pulumi.Input.asOptionalInput<String>(aggregatorId),
-      compliancePackTemplateId = pulumi.Input.asOptionalInput<String>(compliancePackTemplateId),
-      configRuleIds = pulumi.Input.asOptionalInput<List<AggregateCompliancePackConfigRuleId>>(configRuleIds),
-      configRules = pulumi.Input.asOptionalInput<List<AggregateCompliancePackConfigRule>>(configRules),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      riskLevel = pulumi.Input.asOptionalInput<int>(riskLevel),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.aggregateCompliancePackName,
+    this.aggregatorCompliancePackId,
+    this.aggregatorId,
+    this.compliancePackTemplateId,
+    this.configRuleIds,
+    this.configRules,
+    this.description,
+    this.riskLevel,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class AggregateCompliancePackState {
 
   factory AggregateCompliancePackState.fromMap(Map<String, dynamic> map) {
     return AggregateCompliancePackState(
-      aggregateCompliancePackName: map['aggregateCompliancePackName'] == null ? null : pulumi.Output.create<String>(map['aggregateCompliancePackName'] as String),
-      aggregatorCompliancePackId: map['aggregatorCompliancePackId'] == null ? null : pulumi.Output.create<String>(map['aggregatorCompliancePackId'] as String),
-      aggregatorId: map['aggregatorId'] == null ? null : pulumi.Output.create<String>(map['aggregatorId'] as String),
-      compliancePackTemplateId: map['compliancePackTemplateId'] == null ? null : pulumi.Output.create<String>(map['compliancePackTemplateId'] as String),
-      configRuleIds: map['configRuleIds'] == null ? null : pulumi.Output.create<List<AggregateCompliancePackConfigRuleId>>(pulumi.Input.decodeList<AggregateCompliancePackConfigRuleId>(map['configRuleIds'], (value) => AggregateCompliancePackConfigRuleId.fromMap((value as Map).cast<String, dynamic>()))),
-      configRules: map['configRules'] == null ? null : pulumi.Output.create<List<AggregateCompliancePackConfigRule>>(pulumi.Input.decodeList<AggregateCompliancePackConfigRule>(map['configRules'], (value) => AggregateCompliancePackConfigRule.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      riskLevel: map['riskLevel'] == null ? null : pulumi.Output.create<int>(map['riskLevel'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      aggregateCompliancePackName: map['aggregateCompliancePackName'] == null ? null : (map['aggregateCompliancePackName'] as String).input(),
+      aggregatorCompliancePackId: map['aggregatorCompliancePackId'] == null ? null : (map['aggregatorCompliancePackId'] as String).input(),
+      aggregatorId: map['aggregatorId'] == null ? null : (map['aggregatorId'] as String).input(),
+      compliancePackTemplateId: map['compliancePackTemplateId'] == null ? null : (map['compliancePackTemplateId'] as String).input(),
+      configRuleIds: map['configRuleIds'] == null ? null : (pulumi.Input.decodeList<AggregateCompliancePackConfigRuleId>(map['configRuleIds'], (value) => AggregateCompliancePackConfigRuleId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configRules: map['configRules'] == null ? null : (pulumi.Input.decodeList<AggregateCompliancePackConfigRule>(map['configRules'], (value) => AggregateCompliancePackConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      riskLevel: map['riskLevel'] == null ? null : (map['riskLevel'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

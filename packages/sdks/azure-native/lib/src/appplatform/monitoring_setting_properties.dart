@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error.dart';
 
 /// Monitoring Setting properties payload
 class MonitoringSettingProperties {
   /// Target application insight instrumentation key, null or whitespace include empty will disable monitoringSettings
-  final String? appInsightsInstrumentationKey;
+  final pulumi.Input<String>? appInsightsInstrumentationKey;
   /// Indicates the sampling rate of application insight agent, should be in range [0.0, 100.0]
-  final double? appInsightsSamplingRate;
+  final pulumi.Input<double>? appInsightsSamplingRate;
   /// Error when apply Monitoring Setting changes.
-  final Error? error;
+  final pulumi.Input<Error>? error;
   /// Indicates whether enable the trace functionality, which will be deprecated since api version 2020-11-01-preview. Please leverage appInsightsInstrumentationKey to indicate if monitoringSettings enabled or not
-  final bool? traceEnabled;
+  final pulumi.Input<bool>? traceEnabled;
 
   /// Creates a new [MonitoringSettingProperties].
   /// [appInsightsInstrumentationKey] Target application insight instrumentation key, null or whitespace include empty will disable monitoringSettings
@@ -29,17 +30,17 @@ class MonitoringSettingProperties {
     return <String, dynamic>{
       'appInsightsInstrumentationKey': ?appInsightsInstrumentationKey,
       'appInsightsSamplingRate': ?appInsightsSamplingRate,
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<Error, Map<String, dynamic>>(error, (value) => value.toMap()),
       'traceEnabled': ?traceEnabled,
     };
   }
 
   factory MonitoringSettingProperties.fromMap(Map<String, dynamic> map) {
     return MonitoringSettingProperties(
-      appInsightsInstrumentationKey: map['appInsightsInstrumentationKey'] == null ? null : map['appInsightsInstrumentationKey'] as String,
-      appInsightsSamplingRate: map['appInsightsSamplingRate'] == null ? null : map['appInsightsSamplingRate'] as double,
-      error: map['error'] == null ? null : Error.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      traceEnabled: map['traceEnabled'] == null ? null : map['traceEnabled'] as bool,
+      appInsightsInstrumentationKey: map['appInsightsInstrumentationKey'] == null ? null : (map['appInsightsInstrumentationKey'] as String).input(),
+      appInsightsSamplingRate: map['appInsightsSamplingRate'] == null ? null : (map['appInsightsSamplingRate'] as double).input(),
+      error: map['error'] == null ? null : (Error.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      traceEnabled: map['traceEnabled'] == null ? null : (map['traceEnabled'] as bool).input(),
     );
   }
 }

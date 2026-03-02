@@ -7,11 +7,11 @@ import 'virtual_machine_network_interface_configuration.dart';
 /// Specifies the network interfaces or the networking configuration of the virtual machine.
 class NetworkProfile {
   /// specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations
-  final String? networkApiVersion;
+  final pulumi.Input<String>? networkApiVersion;
   /// Specifies the networking configurations that will be used to create the virtual machine networking resources.
-  final List<VirtualMachineNetworkInterfaceConfiguration>? networkInterfaceConfigurations;
+  final pulumi.Input<List<VirtualMachineNetworkInterfaceConfiguration>>? networkInterfaceConfigurations;
   /// Specifies the list of resource Ids for the network interfaces associated with the virtual machine.
-  final List<NetworkInterfaceReference>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceReference>>? networkInterfaces;
 
   /// Creates a new [NetworkProfile].
   /// [networkApiVersion] specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations
@@ -26,16 +26,16 @@ class NetworkProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'networkApiVersion': ?networkApiVersion,
-      'networkInterfaceConfigurations': ?networkInterfaceConfigurations == null ? null : pulumi.Input.encodeList<VirtualMachineNetworkInterfaceConfiguration, Map<String, dynamic>>(networkInterfaceConfigurations!, (value) => value.toMap()),
-      'networkInterfaces': ?networkInterfaces == null ? null : pulumi.Input.encodeList<NetworkInterfaceReference, Map<String, dynamic>>(networkInterfaces!, (value) => value.toMap()),
+      'networkInterfaceConfigurations': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineNetworkInterfaceConfiguration>, List<Map<String, dynamic>>>(networkInterfaceConfigurations, (value) => pulumi.Input.encodeList<VirtualMachineNetworkInterfaceConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterfaceReference>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterfaceReference, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkProfile(
-      networkApiVersion: map['networkApiVersion'] == null ? null : map['networkApiVersion'] as String,
-      networkInterfaceConfigurations: map['networkInterfaceConfigurations'] == null ? null : pulumi.Input.decodeList<VirtualMachineNetworkInterfaceConfiguration>(map['networkInterfaceConfigurations'], (value) => VirtualMachineNetworkInterfaceConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Input.decodeList<NetworkInterfaceReference>(map['networkInterfaces'], (value) => NetworkInterfaceReference.fromMap((value as Map).cast<String, dynamic>())),
+      networkApiVersion: map['networkApiVersion'] == null ? null : (map['networkApiVersion'] as String).input(),
+      networkInterfaceConfigurations: map['networkInterfaceConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualMachineNetworkInterfaceConfiguration>(map['networkInterfaceConfigurations'], (value) => VirtualMachineNetworkInterfaceConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceReference>(map['networkInterfaces'], (value) => NetworkInterfaceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

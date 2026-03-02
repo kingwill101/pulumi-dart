@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Table properties
 class DatabaseTableResponse {
   /// Indicates whether table is empty or not
-  final bool hasRows;
+  final pulumi.Input<bool> hasRows;
   /// Schema-qualified name of the table
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DatabaseTableResponse].
   /// [hasRows] Indicates whether table is empty or not
@@ -25,8 +26,8 @@ class DatabaseTableResponse {
 
   factory DatabaseTableResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseTableResponse(
-      hasRows: map['hasRows'] as bool,
-      name: map['name'] as String,
+      hasRows: (map['hasRows'] as bool).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

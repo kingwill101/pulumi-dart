@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppConnectionSecretStore {
   /// The key vault id to store secret.
-  final String keyVaultId;
+  final pulumi.Input<String> keyVaultId;
 
   /// Creates a new [AppConnectionSecretStore].
   /// [keyVaultId] The key vault id to store secret.
@@ -19,7 +20,7 @@ class AppConnectionSecretStore {
 
   factory AppConnectionSecretStore.fromMap(Map<String, dynamic> map) {
     return AppConnectionSecretStore(
-      keyVaultId: map['keyVaultId'] as String,
+      keyVaultId: (map['keyVaultId'] as String).input(),
     );
   }
 }

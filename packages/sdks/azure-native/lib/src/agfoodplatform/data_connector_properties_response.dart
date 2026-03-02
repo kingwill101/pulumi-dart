@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_key_auth_credentials_response.dart';
 
 /// DataConnector Properties.
 class DataConnectorPropertiesResponse {
   /// AuthCredentials abstract base class for Auth Purpose.
-  final ApiKeyAuthCredentialsResponse credentials;
+  final pulumi.Input<ApiKeyAuthCredentialsResponse> credentials;
 
   /// Creates a new [DataConnectorPropertiesResponse].
   /// [credentials] AuthCredentials abstract base class for Auth Purpose.
@@ -15,13 +16,13 @@ class DataConnectorPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credentials': credentials.toMap(),
+      'credentials': pulumi.Input.mapInputValue<ApiKeyAuthCredentialsResponse, Map<String, dynamic>>(credentials, (value) => value.toMap()),
     };
   }
 
   factory DataConnectorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataConnectorPropertiesResponse(
-      credentials: ApiKeyAuthCredentialsResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
+      credentials: (ApiKeyAuthCredentialsResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

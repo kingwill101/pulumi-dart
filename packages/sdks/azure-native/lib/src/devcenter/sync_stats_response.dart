@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Stats of the synchronization.
 class SyncStatsResponse {
   /// Count of catalog items added during synchronization.
-  final int added;
+  final pulumi.Input<int> added;
   /// Count of catalog items removed during synchronization.
-  final int removed;
+  final pulumi.Input<int> removed;
   /// Indicates catalog item types that were synced.
-  final List<String>? syncedCatalogItemTypes;
+  final pulumi.Input<List<String>>? syncedCatalogItemTypes;
   /// Count of synchronization errors that occured during synchronization.
-  final int synchronizationErrors;
+  final pulumi.Input<int> synchronizationErrors;
   /// Count of catalog items that were unchanged during synchronization.
-  final int unchanged;
+  final pulumi.Input<int> unchanged;
   /// Count of catalog items updated during synchronization.
-  final int updated;
+  final pulumi.Input<int> updated;
   /// Count of catalog items that had validation errors during synchronization.
-  final int validationErrors;
+  final pulumi.Input<int> validationErrors;
 
   /// Creates a new [SyncStatsResponse].
   /// [added] Count of catalog items added during synchronization.
@@ -50,13 +51,13 @@ class SyncStatsResponse {
 
   factory SyncStatsResponse.fromMap(Map<String, dynamic> map) {
     return SyncStatsResponse(
-      added: map['added'] as int,
-      removed: map['removed'] as int,
-      syncedCatalogItemTypes: map['syncedCatalogItemTypes'] == null ? null : (map['syncedCatalogItemTypes'] as List).cast<String>(),
-      synchronizationErrors: map['synchronizationErrors'] as int,
-      unchanged: map['unchanged'] as int,
-      updated: map['updated'] as int,
-      validationErrors: map['validationErrors'] as int,
+      added: (map['added'] as int).input(),
+      removed: (map['removed'] as int).input(),
+      syncedCatalogItemTypes: map['syncedCatalogItemTypes'] == null ? null : ((map['syncedCatalogItemTypes'] as List).cast<String>()).input(),
+      synchronizationErrors: (map['synchronizationErrors'] as int).input(),
+      unchanged: (map['unchanged'] as int).input(),
+      updated: (map['updated'] as int).input(),
+      validationErrors: (map['validationErrors'] as int).input(),
     );
   }
 }

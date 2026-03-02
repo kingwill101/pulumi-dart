@@ -26,17 +26,12 @@ class GetPrincipalApplicationAssignmentsArgs {
   /// [principalType] Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetPrincipalApplicationAssignmentsArgs({
-    pulumi.Output<List<GetPrincipalApplicationAssignmentsApplicationAssignment>>? applicationAssignments,
-    required pulumi.Output<String> instanceArn,
-    required pulumi.Output<String> principalId,
-    required pulumi.Output<String> principalType,
-    pulumi.Output<String>? region,
-  }) :
-      applicationAssignments = pulumi.Input.asOptionalInput<List<GetPrincipalApplicationAssignmentsApplicationAssignment>>(applicationAssignments),
-      instanceArn = pulumi.Input.asInput<String>(instanceArn),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      principalType = pulumi.Input.asInput<String>(principalType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.applicationAssignments,
+    required this.instanceArn,
+    required this.principalId,
+    required this.principalType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GetPrincipalApplicationAssignmentsArgs {
 
   factory GetPrincipalApplicationAssignmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetPrincipalApplicationAssignmentsArgs(
-      applicationAssignments: map['applicationAssignments'] == null ? null : pulumi.Output.create<List<GetPrincipalApplicationAssignmentsApplicationAssignment>>(pulumi.Input.decodeList<GetPrincipalApplicationAssignmentsApplicationAssignment>(map['applicationAssignments'], (value) => GetPrincipalApplicationAssignmentsApplicationAssignment.fromMap((value as Map).cast<String, dynamic>()))),
-      instanceArn: pulumi.Output.create<String>(map['instanceArn'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: pulumi.Output.create<String>(map['principalType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      applicationAssignments: map['applicationAssignments'] == null ? null : (pulumi.Input.decodeList<GetPrincipalApplicationAssignmentsApplicationAssignment>(map['applicationAssignments'], (value) => GetPrincipalApplicationAssignmentsApplicationAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceArn: (map['instanceArn'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

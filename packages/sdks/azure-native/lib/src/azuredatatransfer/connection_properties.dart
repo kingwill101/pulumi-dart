@@ -6,29 +6,29 @@ import 'schema.dart';
 /// Properties of connection
 class ConnectionProperties {
   /// Direction of data movement
-  final String? direction;
+  final pulumi.Input<String>? direction;
   /// The flow types being requested for this connection
-  final List<String>? flowTypes;
+  final pulumi.Input<List<String>>? flowTypes;
   /// Justification for the connection request
-  final String? justification;
+  final pulumi.Input<String>? justification;
   /// PIN to link requests together
-  final String? pin;
+  final pulumi.Input<String>? pin;
   /// Pipeline to use to transfer data
-  final String pipeline;
+  final pulumi.Input<String> pipeline;
   /// The policies for this connection
-  final List<String>? policies;
+  final pulumi.Input<List<String>>? policies;
   /// The primary contact for this connection request
-  final String? primaryContact;
+  final pulumi.Input<String>? primaryContact;
   /// Subscription ID to link cloud subscriptions together
-  final String? remoteSubscriptionId;
+  final pulumi.Input<String>? remoteSubscriptionId;
   /// Requirement ID of the connection
-  final String? requirementId;
+  final pulumi.Input<String>? requirementId;
   /// The schema URIs for this connection
-  final List<String>? schemaUris;
+  final pulumi.Input<List<String>>? schemaUris;
   /// The schemas for this connection
-  final List<Schema>? schemas;
+  final pulumi.Input<List<Schema>>? schemas;
   /// The secondary contacts for this connection request
-  final List<String>? secondaryContacts;
+  final pulumi.Input<List<String>>? secondaryContacts;
 
   /// Creates a new [ConnectionProperties].
   /// [direction] Direction of data movement
@@ -70,25 +70,25 @@ class ConnectionProperties {
       'remoteSubscriptionId': ?remoteSubscriptionId,
       'requirementId': ?requirementId,
       'schemaUris': ?schemaUris,
-      'schemas': ?schemas == null ? null : pulumi.Input.encodeList<Schema, Map<String, dynamic>>(schemas!, (value) => value.toMap()),
+      'schemas': ?pulumi.Input.mapOptionalInputValue<List<Schema>, List<Map<String, dynamic>>>(schemas, (value) => pulumi.Input.encodeList<Schema, Map<String, dynamic>>(value, (value) => value.toMap())),
       'secondaryContacts': ?secondaryContacts,
     };
   }
 
   factory ConnectionProperties.fromMap(Map<String, dynamic> map) {
     return ConnectionProperties(
-      direction: map['direction'] == null ? null : map['direction'] as String,
-      flowTypes: map['flowTypes'] == null ? null : (map['flowTypes'] as List).cast<String>(),
-      justification: map['justification'] == null ? null : map['justification'] as String,
-      pin: map['pin'] == null ? null : map['pin'] as String,
-      pipeline: map['pipeline'] as String,
-      policies: map['policies'] == null ? null : (map['policies'] as List).cast<String>(),
-      primaryContact: map['primaryContact'] == null ? null : map['primaryContact'] as String,
-      remoteSubscriptionId: map['remoteSubscriptionId'] == null ? null : map['remoteSubscriptionId'] as String,
-      requirementId: map['requirementId'] == null ? null : map['requirementId'] as String,
-      schemaUris: map['schemaUris'] == null ? null : (map['schemaUris'] as List).cast<String>(),
-      schemas: map['schemas'] == null ? null : pulumi.Input.decodeList<Schema>(map['schemas'], (value) => Schema.fromMap((value as Map).cast<String, dynamic>())),
-      secondaryContacts: map['secondaryContacts'] == null ? null : (map['secondaryContacts'] as List).cast<String>(),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      flowTypes: map['flowTypes'] == null ? null : ((map['flowTypes'] as List).cast<String>()).input(),
+      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      pin: map['pin'] == null ? null : (map['pin'] as String).input(),
+      pipeline: (map['pipeline'] as String).input(),
+      policies: map['policies'] == null ? null : ((map['policies'] as List).cast<String>()).input(),
+      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact'] as String).input(),
+      remoteSubscriptionId: map['remoteSubscriptionId'] == null ? null : (map['remoteSubscriptionId'] as String).input(),
+      requirementId: map['requirementId'] == null ? null : (map['requirementId'] as String).input(),
+      schemaUris: map['schemaUris'] == null ? null : ((map['schemaUris'] as List).cast<String>()).input(),
+      schemas: map['schemas'] == null ? null : (pulumi.Input.decodeList<Schema>(map['schemas'], (value) => Schema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secondaryContacts: map['secondaryContacts'] == null ? null : ((map['secondaryContacts'] as List).cast<String>()).input(),
     );
   }
 }

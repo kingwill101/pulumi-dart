@@ -41,27 +41,17 @@ class PointToPointVpnGatewayArgs {
   /// [virtualHubId] The ID of the Virtual Hub where this Point-to-Site VPN Gateway should exist. Changing this forces a new resource to be created.
   /// [vpnServerConfigurationId] The ID of the VPN Server Configuration which this Point-to-Site VPN Gateway should use. Changing this forces a new resource to be created.
   PointToPointVpnGatewayArgs({
-    required pulumi.Output<List<PointToPointVpnGatewayConnectionConfiguration>> connectionConfigurations,
-    pulumi.Output<List<String>>? dnsServers,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? routingPreferenceInternetEnabled,
-    required pulumi.Output<int> scaleUnit,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualHubId,
-    required pulumi.Output<String> vpnServerConfigurationId,
-  }) :
-      connectionConfigurations = pulumi.Input.asInput<List<PointToPointVpnGatewayConnectionConfiguration>>(connectionConfigurations),
-      dnsServers = pulumi.Input.asOptionalInput<List<String>>(dnsServers),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routingPreferenceInternetEnabled = pulumi.Input.asOptionalInput<bool>(routingPreferenceInternetEnabled),
-      scaleUnit = pulumi.Input.asInput<int>(scaleUnit),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualHubId = pulumi.Input.asInput<String>(virtualHubId),
-      vpnServerConfigurationId = pulumi.Input.asInput<String>(vpnServerConfigurationId);
+    required this.connectionConfigurations,
+    this.dnsServers,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.routingPreferenceInternetEnabled,
+    required this.scaleUnit,
+    this.tags,
+    required this.virtualHubId,
+    required this.vpnServerConfigurationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class PointToPointVpnGatewayArgs {
 
   factory PointToPointVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return PointToPointVpnGatewayArgs(
-      connectionConfigurations: pulumi.Output.create<List<PointToPointVpnGatewayConnectionConfiguration>>(pulumi.Input.decodeList<PointToPointVpnGatewayConnectionConfiguration>(map['connectionConfigurations'], (value) => PointToPointVpnGatewayConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      dnsServers: map['dnsServers'] == null ? null : pulumi.Output.create<List<String>>((map['dnsServers'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routingPreferenceInternetEnabled: map['routingPreferenceInternetEnabled'] == null ? null : pulumi.Output.create<bool>(map['routingPreferenceInternetEnabled'] as bool),
-      scaleUnit: pulumi.Output.create<int>(map['scaleUnit'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualHubId: pulumi.Output.create<String>(map['virtualHubId'] as String),
-      vpnServerConfigurationId: pulumi.Output.create<String>(map['vpnServerConfigurationId'] as String),
+      connectionConfigurations: (pulumi.Input.decodeList<PointToPointVpnGatewayConnectionConfiguration>(map['connectionConfigurations'], (value) => PointToPointVpnGatewayConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routingPreferenceInternetEnabled: map['routingPreferenceInternetEnabled'] == null ? null : (map['routingPreferenceInternetEnabled'] as bool).input(),
+      scaleUnit: (map['scaleUnit'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualHubId: (map['virtualHubId'] as String).input(),
+      vpnServerConfigurationId: (map['vpnServerConfigurationId'] as String).input(),
     );
   }
 }

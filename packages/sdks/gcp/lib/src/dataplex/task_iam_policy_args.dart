@@ -31,17 +31,12 @@ class TaskIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [taskId] Used to find the parent resource to bind the IAM policy to
   TaskIamPolicyArgs({
-    required pulumi.Output<String> lake,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> taskId,
-  }) :
-      lake = pulumi.Input.asInput<String>(lake),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      taskId = pulumi.Input.asInput<String>(taskId);
+    required this.lake,
+    this.location,
+    required this.policyData,
+    this.project,
+    required this.taskId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class TaskIamPolicyArgs {
 
   factory TaskIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TaskIamPolicyArgs(
-      lake: pulumi.Output.create<String>(map['lake'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      taskId: pulumi.Output.create<String>(map['taskId'] as String),
+      lake: (map['lake'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      taskId: (map['taskId'] as String).input(),
     );
   }
 }

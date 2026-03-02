@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information specifying a GKE Cluster.
 class GkeCluster {
   /// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
-  final String? cluster;
+  final pulumi.Input<String>? cluster;
   /// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
-  final bool? internalIp;
+  final pulumi.Input<bool>? internalIp;
 
   /// Creates a new [GkeCluster].
   /// [cluster] Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
@@ -25,8 +26,8 @@ class GkeCluster {
 
   factory GkeCluster.fromMap(Map<String, dynamic> map) {
     return GkeCluster(
-      cluster: map['cluster'] == null ? null : map['cluster'] as String,
-      internalIp: map['internalIp'] == null ? null : map['internalIp'] as bool,
+      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as bool).input(),
     );
   }
 }

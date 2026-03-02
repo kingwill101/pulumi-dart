@@ -16,11 +16,9 @@ class GetContainersArgs {
   /// [namePrefix] A prefix match used for the Storage Container `name` field.
   /// [storageAccountId] The ID of the Storage Account that the Storage Containers reside in.
   GetContainersArgs({
-    pulumi.Output<String>? namePrefix,
-    required pulumi.Output<String> storageAccountId,
-  }) :
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId);
+    this.namePrefix,
+    required this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetContainersArgs {
 
   factory GetContainersArgs.fromMap(Map<String, dynamic> map) {
     return GetContainersArgs(
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

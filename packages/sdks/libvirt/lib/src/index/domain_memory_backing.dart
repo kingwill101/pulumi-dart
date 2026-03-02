@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_memory_backing_memory_access.dart';
 import 'domain_memory_backing_memory_allocation.dart';
 import 'domain_memory_backing_memory_huge_pages.dart';
@@ -7,19 +8,19 @@ import 'domain_memory_backing_memory_source.dart';
 
 class DomainMemoryBacking {
   /// Defines the access mode for the memory backing, which influences how memory is treated by the hypervisor.
-  final DomainMemoryBackingMemoryAccess? memoryAccess;
+  final pulumi.Input<DomainMemoryBackingMemoryAccess>? memoryAccess;
   /// Configures the allocation properties for the memory backing of the domain, affecting its performance.
-  final DomainMemoryBackingMemoryAllocation? memoryAllocation;
+  final pulumi.Input<DomainMemoryBackingMemoryAllocation>? memoryAllocation;
   /// Controls whether memory discard is enabled, allowing the hypervisor to reclaim unused memory.
-  final bool? memoryDiscard;
+  final pulumi.Input<bool>? memoryDiscard;
   /// Configures the use of huge pages for memory allocation, which can improve performance by reducing page table overhead.
-  final DomainMemoryBackingMemoryHugePages? memoryHugePages;
+  final pulumi.Input<DomainMemoryBackingMemoryHugePages>? memoryHugePages;
   /// Controls whether the memory backing is locked, preventing it from being swapped or moved.
-  final bool? memoryLocked;
+  final pulumi.Input<bool>? memoryLocked;
   /// Configures whether shared pages are forbidden for the domain, affecting memory sharing behaviors.
-  final bool? memoryNosharepages;
+  final pulumi.Input<bool>? memoryNosharepages;
   /// Specifies the source from which the memory backing is allocated, influencing its origin.
-  final DomainMemoryBackingMemorySource? memorySource;
+  final pulumi.Input<DomainMemoryBackingMemorySource>? memorySource;
 
   /// Creates a new [DomainMemoryBacking].
   /// [memoryAccess] Defines the access mode for the memory backing, which influences how memory is treated by the hypervisor.
@@ -41,25 +42,25 @@ class DomainMemoryBacking {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'memoryAccess': ?memoryAccess == null ? null : memoryAccess!.toMap(),
-      'memoryAllocation': ?memoryAllocation == null ? null : memoryAllocation!.toMap(),
+      'memoryAccess': ?pulumi.Input.mapOptionalInputValue<DomainMemoryBackingMemoryAccess, Map<String, dynamic>>(memoryAccess, (value) => value.toMap()),
+      'memoryAllocation': ?pulumi.Input.mapOptionalInputValue<DomainMemoryBackingMemoryAllocation, Map<String, dynamic>>(memoryAllocation, (value) => value.toMap()),
       'memoryDiscard': ?memoryDiscard,
-      'memoryHugePages': ?memoryHugePages == null ? null : memoryHugePages!.toMap(),
+      'memoryHugePages': ?pulumi.Input.mapOptionalInputValue<DomainMemoryBackingMemoryHugePages, Map<String, dynamic>>(memoryHugePages, (value) => value.toMap()),
       'memoryLocked': ?memoryLocked,
       'memoryNosharepages': ?memoryNosharepages,
-      'memorySource': ?memorySource == null ? null : memorySource!.toMap(),
+      'memorySource': ?pulumi.Input.mapOptionalInputValue<DomainMemoryBackingMemorySource, Map<String, dynamic>>(memorySource, (value) => value.toMap()),
     };
   }
 
   factory DomainMemoryBacking.fromMap(Map<String, dynamic> map) {
     return DomainMemoryBacking(
-      memoryAccess: map['memoryAccess'] == null ? null : DomainMemoryBackingMemoryAccess.fromMap((map['memoryAccess'] as Map).cast<String, dynamic>()),
-      memoryAllocation: map['memoryAllocation'] == null ? null : DomainMemoryBackingMemoryAllocation.fromMap((map['memoryAllocation'] as Map).cast<String, dynamic>()),
-      memoryDiscard: map['memoryDiscard'] == null ? null : map['memoryDiscard'] as bool,
-      memoryHugePages: map['memoryHugePages'] == null ? null : DomainMemoryBackingMemoryHugePages.fromMap((map['memoryHugePages'] as Map).cast<String, dynamic>()),
-      memoryLocked: map['memoryLocked'] == null ? null : map['memoryLocked'] as bool,
-      memoryNosharepages: map['memoryNosharepages'] == null ? null : map['memoryNosharepages'] as bool,
-      memorySource: map['memorySource'] == null ? null : DomainMemoryBackingMemorySource.fromMap((map['memorySource'] as Map).cast<String, dynamic>()),
+      memoryAccess: map['memoryAccess'] == null ? null : (DomainMemoryBackingMemoryAccess.fromMap((map['memoryAccess'] as Map).cast<String, dynamic>())).input(),
+      memoryAllocation: map['memoryAllocation'] == null ? null : (DomainMemoryBackingMemoryAllocation.fromMap((map['memoryAllocation'] as Map).cast<String, dynamic>())).input(),
+      memoryDiscard: map['memoryDiscard'] == null ? null : (map['memoryDiscard'] as bool).input(),
+      memoryHugePages: map['memoryHugePages'] == null ? null : (DomainMemoryBackingMemoryHugePages.fromMap((map['memoryHugePages'] as Map).cast<String, dynamic>())).input(),
+      memoryLocked: map['memoryLocked'] == null ? null : (map['memoryLocked'] as bool).input(),
+      memoryNosharepages: map['memoryNosharepages'] == null ? null : (map['memoryNosharepages'] as bool).input(),
+      memorySource: map['memorySource'] == null ? null : (DomainMemoryBackingMemorySource.fromMap((map['memorySource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

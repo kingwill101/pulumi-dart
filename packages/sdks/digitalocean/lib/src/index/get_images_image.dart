@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagesImage {
   /// When the image was created
-  final String created;
+  final pulumi.Input<String> created;
   /// a description of the image
-  final String description;
+  final pulumi.Input<String> description;
   /// The name of the distribution of the OS of the image.
-  final String distribution;
+  final pulumi.Input<String> distribution;
   /// Any applicable error message pertaining to the image
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// The ID of the image.
-  final int id;
+  final pulumi.Input<int> id;
   /// The id of the image (legacy parameter).
-  final String image;
+  final pulumi.Input<String> image;
   /// The minimum 'disk' required for the image.
-  final int minDiskSize;
+  final pulumi.Input<int> minDiskSize;
   /// The name of the image.
-  final String name;
+  final pulumi.Input<String> name;
   /// Is image a public image or not. Public images represent
   /// Linux distributions or One-Click Applications, while non-public images represent
   /// snapshots and backups and are only available within your account.
-  final bool private;
+  final pulumi.Input<bool> private;
   /// A set of the regions that the image is available in.
-  final List<String> regions;
+  final pulumi.Input<List<String>> regions;
   /// The size of the image in GB.
-  final double sizeGigabytes;
+  final pulumi.Input<double> sizeGigabytes;
   /// Unique text identifier of the image.
-  final String slug;
+  final pulumi.Input<String> slug;
   /// Current status of the image
-  final String status;
+  final pulumi.Input<String> status;
   /// A set of tags applied to the image
-  final List<String> tags;
+  final pulumi.Input<List<String>> tags;
   /// Type of the image.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetImagesImage].
   /// [created] When the image was created
@@ -91,21 +92,21 @@ class GetImagesImage {
 
   factory GetImagesImage.fromMap(Map<String, dynamic> map) {
     return GetImagesImage(
-      created: map['created'] as String,
-      description: map['description'] as String,
-      distribution: map['distribution'] as String,
-      errorMessage: map['errorMessage'] as String,
-      id: map['id'] as int,
-      image: map['image'] as String,
-      minDiskSize: map['minDiskSize'] as int,
-      name: map['name'] as String,
-      private: map['private'] as bool,
-      regions: (map['regions'] as List).cast<String>(),
-      sizeGigabytes: map['sizeGigabytes'] as double,
-      slug: map['slug'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as List).cast<String>(),
-      type: map['type'] as String,
+      created: (map['created'] as String).input(),
+      description: (map['description'] as String).input(),
+      distribution: (map['distribution'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      id: (map['id'] as int).input(),
+      image: (map['image'] as String).input(),
+      minDiskSize: (map['minDiskSize'] as int).input(),
+      name: (map['name'] as String).input(),
+      private: (map['private'] as bool).input(),
+      regions: ((map['regions'] as List).cast<String>()).input(),
+      sizeGigabytes: (map['sizeGigabytes'] as double).input(),
+      slug: (map['slug'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

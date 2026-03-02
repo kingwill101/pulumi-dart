@@ -20,17 +20,12 @@ class GetTableArgs {
   /// [tableId] Required.
   /// [view] Optional.
   GetTableArgs({
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selectedFields,
-    required pulumi.Output<String> tableId,
-    pulumi.Output<String>? view,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selectedFields = pulumi.Input.asOptionalInput<String>(selectedFields),
-      tableId = pulumi.Input.asInput<String>(tableId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    required this.datasetId,
+    this.project,
+    this.selectedFields,
+    required this.tableId,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetTableArgs {
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selectedFields: map['selectedFields'] == null ? null : pulumi.Output.create<String>(map['selectedFields'] as String),
-      tableId: pulumi.Output.create<String>(map['tableId'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      datasetId: (map['datasetId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selectedFields: map['selectedFields'] == null ? null : (map['selectedFields'] as String).input(),
+      tableId: (map['tableId'] as String).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

@@ -37,25 +37,16 @@ class LogSubscriptionFilterArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery. If you use Lambda as a destination, you should skip this argument and use `aws.lambda.Permission` resource for granting access from CloudWatch logs to the destination Lambda function.
   LogSubscriptionFilterArgs({
-    pulumi.Output<bool>? applyOnTransformedLogs,
-    required pulumi.Output<String> destinationArn,
-    pulumi.Output<String>? distribution,
-    pulumi.Output<List<String>>? emitSystemFields,
-    required pulumi.Output<String> filterPattern,
-    required pulumi.Output<String> logGroup,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-  }) :
-      applyOnTransformedLogs = pulumi.Input.asOptionalInput<bool>(applyOnTransformedLogs),
-      destinationArn = pulumi.Input.asInput<String>(destinationArn),
-      distribution = pulumi.Input.asOptionalInput<String>(distribution),
-      emitSystemFields = pulumi.Input.asOptionalInput<List<String>>(emitSystemFields),
-      filterPattern = pulumi.Input.asInput<String>(filterPattern),
-      logGroup = pulumi.Input.asInput<String>(logGroup),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn);
+    this.applyOnTransformedLogs,
+    required this.destinationArn,
+    this.distribution,
+    this.emitSystemFields,
+    required this.filterPattern,
+    required this.logGroup,
+    this.name,
+    this.region,
+    this.roleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class LogSubscriptionFilterArgs {
 
   factory LogSubscriptionFilterArgs.fromMap(Map<String, dynamic> map) {
     return LogSubscriptionFilterArgs(
-      applyOnTransformedLogs: map['applyOnTransformedLogs'] == null ? null : pulumi.Output.create<bool>(map['applyOnTransformedLogs'] as bool),
-      destinationArn: pulumi.Output.create<String>(map['destinationArn'] as String),
-      distribution: map['distribution'] == null ? null : pulumi.Output.create<String>(map['distribution'] as String),
-      emitSystemFields: map['emitSystemFields'] == null ? null : pulumi.Output.create<List<String>>((map['emitSystemFields'] as List).cast<String>()),
-      filterPattern: pulumi.Output.create<String>(map['filterPattern'] as String),
-      logGroup: pulumi.Output.create<String>(map['logGroup'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
+      applyOnTransformedLogs: map['applyOnTransformedLogs'] == null ? null : (map['applyOnTransformedLogs'] as bool).input(),
+      destinationArn: (map['destinationArn'] as String).input(),
+      distribution: map['distribution'] == null ? null : (map['distribution'] as String).input(),
+      emitSystemFields: map['emitSystemFields'] == null ? null : ((map['emitSystemFields'] as List).cast<String>()).input(),
+      filterPattern: (map['filterPattern'] as String).input(),
+      logGroup: (map['logGroup'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An Azure NetApp Files volume from Microsoft.NetApp provider
 class NetAppVolumeResponse {
   /// Azure resource ID of the NetApp volume
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [NetAppVolumeResponse].
   /// [id] Azure resource ID of the NetApp volume
@@ -20,7 +21,7 @@ class NetAppVolumeResponse {
 
   factory NetAppVolumeResponse.fromMap(Map<String, dynamic> map) {
     return NetAppVolumeResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

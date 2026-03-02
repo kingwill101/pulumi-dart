@@ -29,19 +29,13 @@ class GetNestServiceInstancesArgs {
   /// [status] The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
   /// [tags] A mapping of tags to assign to the resource.
   GetNestServiceInstancesArgs({
-    pulumi.Output<List<GetNestServiceInstancesFilter>>? filters,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetNestServiceInstancesFilter>>(filters),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GetNestServiceInstancesArgs {
 
   factory GetNestServiceInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetNestServiceInstancesArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetNestServiceInstancesFilter>>(pulumi.Input.decodeList<GetNestServiceInstancesFilter>(map['filters'], (value) => GetNestServiceInstancesFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNestServiceInstancesFilter>(map['filters'], (value) => GetNestServiceInstancesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

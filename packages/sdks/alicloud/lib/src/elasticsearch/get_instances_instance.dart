@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
-  final String createdAt;
-  final int dataNodeAmount;
-  final int dataNodeDiskSize;
-  final String dataNodeDiskType;
-  final String dataNodeSpec;
-  final String description;
-  final String id;
-  final String instanceChargeType;
-  final String status;
-  final Map<String, String> tags;
-  final String updatedAt;
-  final String version;
-  final String vswitchId;
+  final pulumi.Input<String> createdAt;
+  final pulumi.Input<int> dataNodeAmount;
+  final pulumi.Input<int> dataNodeDiskSize;
+  final pulumi.Input<String> dataNodeDiskType;
+  final pulumi.Input<String> dataNodeSpec;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> instanceChargeType;
+  final pulumi.Input<String> status;
+  final pulumi.Input<Map<String, String>> tags;
+  final pulumi.Input<String> updatedAt;
+  final pulumi.Input<String> version;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetInstancesInstance].
   /// [createdAt] Required.
@@ -66,19 +67,19 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      createdAt: map['createdAt'] as String,
-      dataNodeAmount: map['dataNodeAmount'] as int,
-      dataNodeDiskSize: map['dataNodeDiskSize'] as int,
-      dataNodeDiskType: map['dataNodeDiskType'] as String,
-      dataNodeSpec: map['dataNodeSpec'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      instanceChargeType: map['instanceChargeType'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      updatedAt: map['updatedAt'] as String,
-      version: map['version'] as String,
-      vswitchId: map['vswitchId'] as String,
+      createdAt: (map['createdAt'] as String).input(),
+      dataNodeAmount: (map['dataNodeAmount'] as int).input(),
+      dataNodeDiskSize: (map['dataNodeDiskSize'] as int).input(),
+      dataNodeDiskType: (map['dataNodeDiskType'] as String).input(),
+      dataNodeSpec: (map['dataNodeSpec'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceChargeType: (map['instanceChargeType'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      version: (map['version'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

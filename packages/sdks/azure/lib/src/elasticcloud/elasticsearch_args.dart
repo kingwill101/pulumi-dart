@@ -39,23 +39,15 @@ class ElasticsearchArgs {
   /// [skuName] Specifies the name of the SKU for this Elasticsearch. Changing this forces a new Elasticsearch to be created.
   /// [tags] A mapping of tags which should be assigned to the Elasticsearch resource.
   ElasticsearchArgs({
-    required pulumi.Output<String> elasticCloudEmailAddress,
-    pulumi.Output<String>? location,
-    pulumi.Output<ElasticsearchLogs>? logs,
-    pulumi.Output<bool>? monitoringEnabled,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> skuName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      elasticCloudEmailAddress = pulumi.Input.asInput<String>(elasticCloudEmailAddress),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logs = pulumi.Input.asOptionalInput<ElasticsearchLogs>(logs),
-      monitoringEnabled = pulumi.Input.asOptionalInput<bool>(monitoringEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.elasticCloudEmailAddress,
+    this.location,
+    this.logs,
+    this.monitoringEnabled,
+    this.name,
+    required this.resourceGroupName,
+    required this.skuName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class ElasticsearchArgs {
 
   factory ElasticsearchArgs.fromMap(Map<String, dynamic> map) {
     return ElasticsearchArgs(
-      elasticCloudEmailAddress: pulumi.Output.create<String>(map['elasticCloudEmailAddress'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logs: map['logs'] == null ? null : pulumi.Output.create<ElasticsearchLogs>(ElasticsearchLogs.fromMap((map['logs'] as Map).cast<String, dynamic>())),
-      monitoringEnabled: map['monitoringEnabled'] == null ? null : pulumi.Output.create<bool>(map['monitoringEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      elasticCloudEmailAddress: (map['elasticCloudEmailAddress'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logs: map['logs'] == null ? null : (ElasticsearchLogs.fromMap((map['logs'] as Map).cast<String, dynamic>())).input(),
+      monitoringEnabled: map['monitoringEnabled'] == null ? null : (map['monitoringEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skuName: (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

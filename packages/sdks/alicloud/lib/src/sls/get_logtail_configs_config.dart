@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLogtailConfigsConfig {
   /// The ID of the resource supplied above.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the resource
-  final String logtailConfigName;
+  final pulumi.Input<String> logtailConfigName;
 
   /// Creates a new [GetLogtailConfigsConfig].
   /// [id] The ID of the resource supplied above.
@@ -24,8 +25,8 @@ class GetLogtailConfigsConfig {
 
   factory GetLogtailConfigsConfig.fromMap(Map<String, dynamic> map) {
     return GetLogtailConfigsConfig(
-      id: map['id'] as String,
-      logtailConfigName: map['logtailConfigName'] as String,
+      id: (map['id'] as String).input(),
+      logtailConfigName: (map['logtailConfigName'] as String).input(),
     );
   }
 }

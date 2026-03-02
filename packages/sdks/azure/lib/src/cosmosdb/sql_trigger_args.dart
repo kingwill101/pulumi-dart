@@ -25,17 +25,12 @@ class SqlTriggerArgs {
   /// [operation] The operation the trigger is associated with. Possible values are `All`, `Create`, `Update`, `Delete` and `Replace`.
   /// [type] Type of the Trigger. Possible values are `Pre` and `Post`.
   SqlTriggerArgs({
-    required pulumi.Output<String> body,
-    required pulumi.Output<String> containerId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> operation,
-    required pulumi.Output<String> type,
-  }) :
-      body = pulumi.Input.asInput<String>(body),
-      containerId = pulumi.Input.asInput<String>(containerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      operation = pulumi.Input.asInput<String>(operation),
-      type = pulumi.Input.asInput<String>(type);
+    required this.body,
+    required this.containerId,
+    this.name,
+    required this.operation,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SqlTriggerArgs {
 
   factory SqlTriggerArgs.fromMap(Map<String, dynamic> map) {
     return SqlTriggerArgs(
-      body: pulumi.Output.create<String>(map['body'] as String),
-      containerId: pulumi.Output.create<String>(map['containerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      operation: pulumi.Output.create<String>(map['operation'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      body: (map['body'] as String).input(),
+      containerId: (map['containerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operation: (map['operation'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

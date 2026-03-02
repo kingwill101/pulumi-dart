@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer {
   /// Set of allowed audience values for JWT token validation.
-  final List<String>? allowedAudiences;
+  final pulumi.Input<List<String>>? allowedAudiences;
   /// Set of allowed client IDs for JWT token validation.
-  final List<String>? allowedClients;
+  final pulumi.Input<List<String>>? allowedClients;
   /// URL used to fetch OpenID Connect configuration or authorization server metadata. Must end with `.well-known/openid-configuration`.
-  final String discoveryUrl;
+  final pulumi.Input<String> discoveryUrl;
 
   /// Creates a new [AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer].
   /// [allowedAudiences] Set of allowed audience values for JWT token validation.
@@ -29,9 +30,9 @@ class AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer {
 
   factory AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer(
-      allowedAudiences: map['allowedAudiences'] == null ? null : (map['allowedAudiences'] as List).cast<String>(),
-      allowedClients: map['allowedClients'] == null ? null : (map['allowedClients'] as List).cast<String>(),
-      discoveryUrl: map['discoveryUrl'] as String,
+      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
+      allowedClients: map['allowedClients'] == null ? null : ((map['allowedClients'] as List).cast<String>()).input(),
+      discoveryUrl: (map['discoveryUrl'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class UploadBufferState {
   /// [gatewayArn] The Amazon Resource Name (ARN) of the gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   UploadBufferState({
-    pulumi.Output<String>? diskId,
-    pulumi.Output<String>? diskPath,
-    pulumi.Output<String>? gatewayArn,
-    pulumi.Output<String>? region,
-  }) :
-      diskId = pulumi.Input.asOptionalInput<String>(diskId),
-      diskPath = pulumi.Input.asOptionalInput<String>(diskPath),
-      gatewayArn = pulumi.Input.asOptionalInput<String>(gatewayArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.diskId,
+    this.diskPath,
+    this.gatewayArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class UploadBufferState {
 
   factory UploadBufferState.fromMap(Map<String, dynamic> map) {
     return UploadBufferState(
-      diskId: map['diskId'] == null ? null : pulumi.Output.create<String>(map['diskId'] as String),
-      diskPath: map['diskPath'] == null ? null : pulumi.Output.create<String>(map['diskPath'] as String),
-      gatewayArn: map['gatewayArn'] == null ? null : pulumi.Output.create<String>(map['gatewayArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      diskPath: map['diskPath'] == null ? null : (map['diskPath'] as String).input(),
+      gatewayArn: map['gatewayArn'] == null ? null : (map['gatewayArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

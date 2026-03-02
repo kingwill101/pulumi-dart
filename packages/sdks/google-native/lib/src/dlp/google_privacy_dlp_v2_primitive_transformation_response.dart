@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_bucketing_config_response.dart';
 import 'google_privacy_dlp_v2_character_mask_config_response.dart';
 import 'google_privacy_dlp_v2_crypto_deterministic_config_response.dart';
@@ -14,29 +15,29 @@ import 'google_privacy_dlp_v2_time_part_config_response.dart';
 /// A rule for transforming a value.
 class GooglePrivacyDlpV2PrimitiveTransformationResponse {
   /// Bucketing
-  final GooglePrivacyDlpV2BucketingConfigResponse bucketingConfig;
+  final pulumi.Input<GooglePrivacyDlpV2BucketingConfigResponse> bucketingConfig;
   /// Mask
-  final GooglePrivacyDlpV2CharacterMaskConfigResponse characterMaskConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CharacterMaskConfigResponse> characterMaskConfig;
   /// Deterministic Crypto
-  final GooglePrivacyDlpV2CryptoDeterministicConfigResponse cryptoDeterministicConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CryptoDeterministicConfigResponse> cryptoDeterministicConfig;
   /// Crypto
-  final GooglePrivacyDlpV2CryptoHashConfigResponse cryptoHashConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CryptoHashConfigResponse> cryptoHashConfig;
   /// Ffx-Fpe
-  final GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse cryptoReplaceFfxFpeConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse> cryptoReplaceFfxFpeConfig;
   /// Date Shift
-  final GooglePrivacyDlpV2DateShiftConfigResponse dateShiftConfig;
+  final pulumi.Input<GooglePrivacyDlpV2DateShiftConfigResponse> dateShiftConfig;
   /// Fixed size bucketing
-  final GooglePrivacyDlpV2FixedSizeBucketingConfigResponse fixedSizeBucketingConfig;
+  final pulumi.Input<GooglePrivacyDlpV2FixedSizeBucketingConfigResponse> fixedSizeBucketingConfig;
   /// Redact
-  final Map<String, dynamic> redactConfig;
+  final pulumi.Input<Map<String, dynamic>> redactConfig;
   /// Replace with a specified value.
-  final GooglePrivacyDlpV2ReplaceValueConfigResponse replaceConfig;
+  final pulumi.Input<GooglePrivacyDlpV2ReplaceValueConfigResponse> replaceConfig;
   /// Replace with a value randomly drawn (with replacement) from a dictionary.
-  final GooglePrivacyDlpV2ReplaceDictionaryConfigResponse replaceDictionaryConfig;
+  final pulumi.Input<GooglePrivacyDlpV2ReplaceDictionaryConfigResponse> replaceDictionaryConfig;
   /// Replace with infotype
-  final Map<String, dynamic> replaceWithInfoTypeConfig;
+  final pulumi.Input<Map<String, dynamic>> replaceWithInfoTypeConfig;
   /// Time extraction
-  final GooglePrivacyDlpV2TimePartConfigResponse timePartConfig;
+  final pulumi.Input<GooglePrivacyDlpV2TimePartConfigResponse> timePartConfig;
 
   /// Creates a new [GooglePrivacyDlpV2PrimitiveTransformationResponse].
   /// [bucketingConfig] Bucketing
@@ -68,35 +69,35 @@ class GooglePrivacyDlpV2PrimitiveTransformationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bucketingConfig': bucketingConfig.toMap(),
-      'characterMaskConfig': characterMaskConfig.toMap(),
-      'cryptoDeterministicConfig': cryptoDeterministicConfig.toMap(),
-      'cryptoHashConfig': cryptoHashConfig.toMap(),
-      'cryptoReplaceFfxFpeConfig': cryptoReplaceFfxFpeConfig.toMap(),
-      'dateShiftConfig': dateShiftConfig.toMap(),
-      'fixedSizeBucketingConfig': fixedSizeBucketingConfig.toMap(),
+      'bucketingConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2BucketingConfigResponse, Map<String, dynamic>>(bucketingConfig, (value) => value.toMap()),
+      'characterMaskConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2CharacterMaskConfigResponse, Map<String, dynamic>>(characterMaskConfig, (value) => value.toMap()),
+      'cryptoDeterministicConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2CryptoDeterministicConfigResponse, Map<String, dynamic>>(cryptoDeterministicConfig, (value) => value.toMap()),
+      'cryptoHashConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2CryptoHashConfigResponse, Map<String, dynamic>>(cryptoHashConfig, (value) => value.toMap()),
+      'cryptoReplaceFfxFpeConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse, Map<String, dynamic>>(cryptoReplaceFfxFpeConfig, (value) => value.toMap()),
+      'dateShiftConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2DateShiftConfigResponse, Map<String, dynamic>>(dateShiftConfig, (value) => value.toMap()),
+      'fixedSizeBucketingConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2FixedSizeBucketingConfigResponse, Map<String, dynamic>>(fixedSizeBucketingConfig, (value) => value.toMap()),
       'redactConfig': redactConfig,
-      'replaceConfig': replaceConfig.toMap(),
-      'replaceDictionaryConfig': replaceDictionaryConfig.toMap(),
+      'replaceConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ReplaceValueConfigResponse, Map<String, dynamic>>(replaceConfig, (value) => value.toMap()),
+      'replaceDictionaryConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ReplaceDictionaryConfigResponse, Map<String, dynamic>>(replaceDictionaryConfig, (value) => value.toMap()),
       'replaceWithInfoTypeConfig': replaceWithInfoTypeConfig,
-      'timePartConfig': timePartConfig.toMap(),
+      'timePartConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2TimePartConfigResponse, Map<String, dynamic>>(timePartConfig, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2PrimitiveTransformationResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PrimitiveTransformationResponse(
-      bucketingConfig: GooglePrivacyDlpV2BucketingConfigResponse.fromMap((map['bucketingConfig'] as Map).cast<String, dynamic>()),
-      characterMaskConfig: GooglePrivacyDlpV2CharacterMaskConfigResponse.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>()),
-      cryptoDeterministicConfig: GooglePrivacyDlpV2CryptoDeterministicConfigResponse.fromMap((map['cryptoDeterministicConfig'] as Map).cast<String, dynamic>()),
-      cryptoHashConfig: GooglePrivacyDlpV2CryptoHashConfigResponse.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>()),
-      cryptoReplaceFfxFpeConfig: GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse.fromMap((map['cryptoReplaceFfxFpeConfig'] as Map).cast<String, dynamic>()),
-      dateShiftConfig: GooglePrivacyDlpV2DateShiftConfigResponse.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>()),
-      fixedSizeBucketingConfig: GooglePrivacyDlpV2FixedSizeBucketingConfigResponse.fromMap((map['fixedSizeBucketingConfig'] as Map).cast<String, dynamic>()),
-      redactConfig: (map['redactConfig'] as Map).cast<String, dynamic>(),
-      replaceConfig: GooglePrivacyDlpV2ReplaceValueConfigResponse.fromMap((map['replaceConfig'] as Map).cast<String, dynamic>()),
-      replaceDictionaryConfig: GooglePrivacyDlpV2ReplaceDictionaryConfigResponse.fromMap((map['replaceDictionaryConfig'] as Map).cast<String, dynamic>()),
-      replaceWithInfoTypeConfig: (map['replaceWithInfoTypeConfig'] as Map).cast<String, dynamic>(),
-      timePartConfig: GooglePrivacyDlpV2TimePartConfigResponse.fromMap((map['timePartConfig'] as Map).cast<String, dynamic>()),
+      bucketingConfig: (GooglePrivacyDlpV2BucketingConfigResponse.fromMap((map['bucketingConfig'] as Map).cast<String, dynamic>())).input(),
+      characterMaskConfig: (GooglePrivacyDlpV2CharacterMaskConfigResponse.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>())).input(),
+      cryptoDeterministicConfig: (GooglePrivacyDlpV2CryptoDeterministicConfigResponse.fromMap((map['cryptoDeterministicConfig'] as Map).cast<String, dynamic>())).input(),
+      cryptoHashConfig: (GooglePrivacyDlpV2CryptoHashConfigResponse.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>())).input(),
+      cryptoReplaceFfxFpeConfig: (GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse.fromMap((map['cryptoReplaceFfxFpeConfig'] as Map).cast<String, dynamic>())).input(),
+      dateShiftConfig: (GooglePrivacyDlpV2DateShiftConfigResponse.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>())).input(),
+      fixedSizeBucketingConfig: (GooglePrivacyDlpV2FixedSizeBucketingConfigResponse.fromMap((map['fixedSizeBucketingConfig'] as Map).cast<String, dynamic>())).input(),
+      redactConfig: ((map['redactConfig'] as Map).cast<String, dynamic>()).input(),
+      replaceConfig: (GooglePrivacyDlpV2ReplaceValueConfigResponse.fromMap((map['replaceConfig'] as Map).cast<String, dynamic>())).input(),
+      replaceDictionaryConfig: (GooglePrivacyDlpV2ReplaceDictionaryConfigResponse.fromMap((map['replaceDictionaryConfig'] as Map).cast<String, dynamic>())).input(),
+      replaceWithInfoTypeConfig: ((map['replaceWithInfoTypeConfig'] as Map).cast<String, dynamic>()).input(),
+      timePartConfig: (GooglePrivacyDlpV2TimePartConfigResponse.fromMap((map['timePartConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Health Alert Description
 class HealthAlertResponse {
   /// Health Alert Id
-  final String id;
+  final pulumi.Input<String> id;
   /// Health Alert Issue
-  final String issue;
+  final pulumi.Input<String> issue;
   /// Health Alert Last Detected DateTime
-  final String lastDetected;
+  final pulumi.Input<String> lastDetected;
   /// Health Alert Name
-  final String name;
+  final pulumi.Input<String> name;
   /// Health Alert Raised DateTime
-  final String raised;
+  final pulumi.Input<String> raised;
   /// Health Alert TSG Link
-  final String resolutionUri;
+  final pulumi.Input<String> resolutionUri;
   /// Health Alert Severity
-  final String severity;
+  final pulumi.Input<String> severity;
 
   /// Creates a new [HealthAlertResponse].
   /// [id] Health Alert Id
@@ -50,13 +51,13 @@ class HealthAlertResponse {
 
   factory HealthAlertResponse.fromMap(Map<String, dynamic> map) {
     return HealthAlertResponse(
-      id: map['id'] as String,
-      issue: map['issue'] as String,
-      lastDetected: map['lastDetected'] as String,
-      name: map['name'] as String,
-      raised: map['raised'] as String,
-      resolutionUri: map['resolutionUri'] as String,
-      severity: map['severity'] as String,
+      id: (map['id'] as String).input(),
+      issue: (map['issue'] as String).input(),
+      lastDetected: (map['lastDetected'] as String).input(),
+      name: (map['name'] as String).input(),
+      raised: (map['raised'] as String).input(),
+      resolutionUri: (map['resolutionUri'] as String).input(),
+      severity: (map['severity'] as String).input(),
     );
   }
 }

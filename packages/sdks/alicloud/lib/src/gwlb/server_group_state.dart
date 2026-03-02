@@ -67,33 +67,20 @@ class ServerGroupState {
   /// [tags] The tag keys.
   /// [vpcId] The VPC ID.
   ServerGroupState({
-    pulumi.Output<ServerGroupConnectionDrainConfig>? connectionDrainConfig,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<ServerGroupHealthCheckConfig>? healthCheckConfig,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? scheduler,
-    pulumi.Output<String>? serverGroupName,
-    pulumi.Output<String>? serverGroupType,
-    pulumi.Output<List<ServerGroupServer>>? servers,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-  }) :
-      connectionDrainConfig = pulumi.Input.asOptionalInput<ServerGroupConnectionDrainConfig>(connectionDrainConfig),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      healthCheckConfig = pulumi.Input.asOptionalInput<ServerGroupHealthCheckConfig>(healthCheckConfig),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      scheduler = pulumi.Input.asOptionalInput<String>(scheduler),
-      serverGroupName = pulumi.Input.asOptionalInput<String>(serverGroupName),
-      serverGroupType = pulumi.Input.asOptionalInput<String>(serverGroupType),
-      servers = pulumi.Input.asOptionalInput<List<ServerGroupServer>>(servers),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.connectionDrainConfig,
+    this.createTime,
+    this.dryRun,
+    this.healthCheckConfig,
+    this.protocol,
+    this.resourceGroupId,
+    this.scheduler,
+    this.serverGroupName,
+    this.serverGroupType,
+    this.servers,
+    this.status,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -115,19 +102,19 @@ class ServerGroupState {
 
   factory ServerGroupState.fromMap(Map<String, dynamic> map) {
     return ServerGroupState(
-      connectionDrainConfig: map['connectionDrainConfig'] == null ? null : pulumi.Output.create<ServerGroupConnectionDrainConfig>(ServerGroupConnectionDrainConfig.fromMap((map['connectionDrainConfig'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      healthCheckConfig: map['healthCheckConfig'] == null ? null : pulumi.Output.create<ServerGroupHealthCheckConfig>(ServerGroupHealthCheckConfig.fromMap((map['healthCheckConfig'] as Map).cast<String, dynamic>())),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      scheduler: map['scheduler'] == null ? null : pulumi.Output.create<String>(map['scheduler'] as String),
-      serverGroupName: map['serverGroupName'] == null ? null : pulumi.Output.create<String>(map['serverGroupName'] as String),
-      serverGroupType: map['serverGroupType'] == null ? null : pulumi.Output.create<String>(map['serverGroupType'] as String),
-      servers: map['servers'] == null ? null : pulumi.Output.create<List<ServerGroupServer>>(pulumi.Input.decodeList<ServerGroupServer>(map['servers'], (value) => ServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      connectionDrainConfig: map['connectionDrainConfig'] == null ? null : (ServerGroupConnectionDrainConfig.fromMap((map['connectionDrainConfig'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      healthCheckConfig: map['healthCheckConfig'] == null ? null : (ServerGroupHealthCheckConfig.fromMap((map['healthCheckConfig'] as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      scheduler: map['scheduler'] == null ? null : (map['scheduler'] as String).input(),
+      serverGroupName: map['serverGroupName'] == null ? null : (map['serverGroupName'] as String).input(),
+      serverGroupType: map['serverGroupType'] == null ? null : (map['serverGroupType'] as String).input(),
+      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<ServerGroupServer>(map['servers'], (value) => ServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

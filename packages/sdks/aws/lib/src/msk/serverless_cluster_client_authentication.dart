@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'serverless_cluster_client_authentication_sasl.dart';
 
 class ServerlessClusterClientAuthentication {
   /// Details for client authentication using SASL. See below.
-  final ServerlessClusterClientAuthenticationSasl sasl;
+  final pulumi.Input<ServerlessClusterClientAuthenticationSasl> sasl;
 
   /// Creates a new [ServerlessClusterClientAuthentication].
   /// [sasl] Details for client authentication using SASL. See below.
@@ -14,13 +15,13 @@ class ServerlessClusterClientAuthentication {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sasl': sasl.toMap(),
+      'sasl': pulumi.Input.mapInputValue<ServerlessClusterClientAuthenticationSasl, Map<String, dynamic>>(sasl, (value) => value.toMap()),
     };
   }
 
   factory ServerlessClusterClientAuthentication.fromMap(Map<String, dynamic> map) {
     return ServerlessClusterClientAuthentication(
-      sasl: ServerlessClusterClientAuthenticationSasl.fromMap((map['sasl'] as Map).cast<String, dynamic>()),
+      sasl: (ServerlessClusterClientAuthenticationSasl.fromMap((map['sasl'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The error message associated with the cluster creation.
 class ErrorsResponse {
   /// The error code.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// The error message.
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [ErrorsResponse].
   /// [code] The error code.
@@ -25,8 +26,8 @@ class ErrorsResponse {
 
   factory ErrorsResponse.fromMap(Map<String, dynamic> map) {
     return ErrorsResponse(
-      code: map['code'] == null ? null : map['code'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

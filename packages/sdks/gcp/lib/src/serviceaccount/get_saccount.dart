@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSAccount {
   /// The Google service account ID (the part before the `@` sign in the `email`)
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// Whether a service account is disabled or not.
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
   /// The display name for the service account.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The e-mail address of the service account. This value
   /// should be referenced from any `gcp.organizations.getIAMPolicy` data sources
   /// that would grant the service account privileges.
-  final String email;
+  final pulumi.Input<String> email;
   /// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
-  final String member;
+  final pulumi.Input<String> member;
   /// The fully-qualified name of the service account.
-  final String name;
+  final pulumi.Input<String> name;
   /// The unique id of the service account.
-  final String uniqueId;
+  final pulumi.Input<String> uniqueId;
 
   /// Creates a new [GetSAccount].
   /// [accountId] The Google service account ID (the part before the `@` sign in the `email`)
@@ -51,13 +52,13 @@ class GetSAccount {
 
   factory GetSAccount.fromMap(Map<String, dynamic> map) {
     return GetSAccount(
-      accountId: map['accountId'] as String,
-      disabled: map['disabled'] as bool,
-      displayName: map['displayName'] as String,
-      email: map['email'] as String,
-      member: map['member'] as String,
-      name: map['name'] as String,
-      uniqueId: map['uniqueId'] as String,
+      accountId: (map['accountId'] as String).input(),
+      disabled: (map['disabled'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      email: (map['email'] as String).input(),
+      member: (map['member'] as String).input(),
+      name: (map['name'] as String).input(),
+      uniqueId: (map['uniqueId'] as String).input(),
     );
   }
 }

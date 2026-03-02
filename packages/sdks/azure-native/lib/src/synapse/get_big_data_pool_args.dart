@@ -19,13 +19,10 @@ class GetBigDataPoolArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   GetBigDataPoolArgs({
-    required pulumi.Output<String> bigDataPoolName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      bigDataPoolName = pulumi.Input.asInput<String>(bigDataPoolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.bigDataPoolName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBigDataPoolArgs {
 
   factory GetBigDataPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetBigDataPoolArgs(
-      bigDataPoolName: pulumi.Output.create<String>(map['bigDataPoolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      bigDataPoolName: (map['bigDataPoolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

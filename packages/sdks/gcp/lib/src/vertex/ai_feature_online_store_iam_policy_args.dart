@@ -26,15 +26,11 @@ class AiFeatureOnlineStoreIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of feature online store. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
   AiFeatureOnlineStoreIamPolicyArgs({
-    required pulumi.Output<String> featureOnlineStore,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      featureOnlineStore = pulumi.Input.asInput<String>(featureOnlineStore),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.featureOnlineStore,
+    required this.policyData,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class AiFeatureOnlineStoreIamPolicyArgs {
 
   factory AiFeatureOnlineStoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreIamPolicyArgs(
-      featureOnlineStore: pulumi.Output.create<String>(map['featureOnlineStore'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      featureOnlineStore: (map['featureOnlineStore'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

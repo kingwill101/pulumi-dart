@@ -20,13 +20,10 @@ class AzureServersSettingArgs {
   /// [selectedProvider] The selected vulnerability assessments provider on Azure servers in the defined scope.
   /// [settingKind] The kind of the server vulnerability assessments setting
   AzureServersSettingArgs({
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> selectedProvider,
-    pulumi.Output<String>? settingKind,
-  }) :
-      kind = pulumi.Input.asInput<String>(kind),
-      selectedProvider = pulumi.Input.asInput<String>(selectedProvider),
-      settingKind = pulumi.Input.asOptionalInput<String>(settingKind);
+    required this.kind,
+    required this.selectedProvider,
+    this.settingKind,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class AzureServersSettingArgs {
 
   factory AzureServersSettingArgs.fromMap(Map<String, dynamic> map) {
     return AzureServersSettingArgs(
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      selectedProvider: pulumi.Output.create<String>(map['selectedProvider'] as String),
-      settingKind: map['settingKind'] == null ? null : pulumi.Output.create<String>(map['settingKind'] as String),
+      kind: (map['kind'] as String).input(),
+      selectedProvider: (map['selectedProvider'] as String).input(),
+      settingKind: map['settingKind'] == null ? null : (map['settingKind'] as String).input(),
     );
   }
 }

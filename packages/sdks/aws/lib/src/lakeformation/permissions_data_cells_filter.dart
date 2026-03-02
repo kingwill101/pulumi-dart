@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PermissionsDataCellsFilter {
   /// The name of the database.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// The name of the data cells filter.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of the Data Catalog.
-  final String tableCatalogId;
+  final pulumi.Input<String> tableCatalogId;
   /// The name of the table.
-  final String tableName;
+  final pulumi.Input<String> tableName;
 
   /// Creates a new [PermissionsDataCellsFilter].
   /// [databaseName] The name of the database.
@@ -34,10 +35,10 @@ class PermissionsDataCellsFilter {
 
   factory PermissionsDataCellsFilter.fromMap(Map<String, dynamic> map) {
     return PermissionsDataCellsFilter(
-      databaseName: map['databaseName'] as String,
-      name: map['name'] as String,
-      tableCatalogId: map['tableCatalogId'] as String,
-      tableName: map['tableName'] as String,
+      databaseName: (map['databaseName'] as String).input(),
+      name: (map['name'] as String).input(),
+      tableCatalogId: (map['tableCatalogId'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataQualityRulesetTargetTable {
   /// The catalog id where the AWS Glue table exists.
-  final String? catalogId;
+  final pulumi.Input<String>? catalogId;
   /// Name of the database where the AWS Glue table exists.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// Name of the AWS Glue table.
-  final String tableName;
+  final pulumi.Input<String> tableName;
 
   /// Creates a new [DataQualityRulesetTargetTable].
   /// [catalogId] The catalog id where the AWS Glue table exists.
@@ -29,9 +30,9 @@ class DataQualityRulesetTargetTable {
 
   factory DataQualityRulesetTargetTable.fromMap(Map<String, dynamic> map) {
     return DataQualityRulesetTargetTable(
-      catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
-      databaseName: map['databaseName'] as String,
-      tableName: map['tableName'] as String,
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

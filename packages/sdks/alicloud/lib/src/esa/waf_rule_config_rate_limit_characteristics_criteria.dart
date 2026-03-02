@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'waf_rule_config_rate_limit_characteristics_criteria_criteria.dart';
 
 class WafRuleConfigRateLimitCharacteristicsCriteria {
-  final List<WafRuleConfigRateLimitCharacteristicsCriteriaCriteria>? criterias;
-  final String? logic;
-  final String? matchType;
+  final pulumi.Input<List<WafRuleConfigRateLimitCharacteristicsCriteriaCriteria>>? criterias;
+  final pulumi.Input<String>? logic;
+  final pulumi.Input<String>? matchType;
 
   /// Creates a new [WafRuleConfigRateLimitCharacteristicsCriteria].
   /// [criterias] Optional.
@@ -20,7 +20,7 @@ class WafRuleConfigRateLimitCharacteristicsCriteria {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'criterias': ?criterias == null ? null : pulumi.Input.encodeList<WafRuleConfigRateLimitCharacteristicsCriteriaCriteria, Map<String, dynamic>>(criterias!, (value) => value.toMap()),
+      'criterias': ?pulumi.Input.mapOptionalInputValue<List<WafRuleConfigRateLimitCharacteristicsCriteriaCriteria>, List<Map<String, dynamic>>>(criterias, (value) => pulumi.Input.encodeList<WafRuleConfigRateLimitCharacteristicsCriteriaCriteria, Map<String, dynamic>>(value, (value) => value.toMap())),
       'logic': ?logic,
       'matchType': ?matchType,
     };
@@ -28,9 +28,9 @@ class WafRuleConfigRateLimitCharacteristicsCriteria {
 
   factory WafRuleConfigRateLimitCharacteristicsCriteria.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigRateLimitCharacteristicsCriteria(
-      criterias: map['criterias'] == null ? null : pulumi.Input.decodeList<WafRuleConfigRateLimitCharacteristicsCriteriaCriteria>(map['criterias'], (value) => WafRuleConfigRateLimitCharacteristicsCriteriaCriteria.fromMap((value as Map).cast<String, dynamic>())),
-      logic: map['logic'] == null ? null : map['logic'] as String,
-      matchType: map['matchType'] == null ? null : map['matchType'] as String,
+      criterias: map['criterias'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigRateLimitCharacteristicsCriteriaCriteria>(map['criterias'], (value) => WafRuleConfigRateLimitCharacteristicsCriteriaCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logic: map['logic'] == null ? null : (map['logic'] as String).input(),
+      matchType: map['matchType'] == null ? null : (map['matchType'] as String).input(),
     );
   }
 }

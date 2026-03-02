@@ -23,15 +23,11 @@ class CompoundAssessmentOperationArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   CompoundAssessmentOperationArgs({
-    pulumi.Output<String>? compoundAssessmentName,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<CompoundAssessmentProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      compoundAssessmentName = pulumi.Input.asOptionalInput<String>(compoundAssessmentName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<CompoundAssessmentProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.compoundAssessmentName,
+    required this.projectName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class CompoundAssessmentOperationArgs {
 
   factory CompoundAssessmentOperationArgs.fromMap(Map<String, dynamic> map) {
     return CompoundAssessmentOperationArgs(
-      compoundAssessmentName: map['compoundAssessmentName'] == null ? null : pulumi.Output.create<String>(map['compoundAssessmentName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<CompoundAssessmentProperties>(CompoundAssessmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      compoundAssessmentName: map['compoundAssessmentName'] == null ? null : (map['compoundAssessmentName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (CompoundAssessmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

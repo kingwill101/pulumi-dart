@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'opt_in_resource_data_table_with_columns_column_wildcard.dart';
 
 class OptInResourceDataTableWithColumns {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final String? catalogId;
+  final pulumi.Input<String>? catalogId;
   /// List of column names for the table. At least one of ColumnNames or ColumnWildcard is required.
-  final List<String>? columnNames;
+  final pulumi.Input<List<String>>? columnNames;
   /// Wildcard specified by a ColumnWildcard object. At least one of ColumnNames or ColumnWildcard is required.
-  final OptInResourceDataTableWithColumnsColumnWildcard? columnWildcard;
+  final pulumi.Input<OptInResourceDataTableWithColumnsColumnWildcard>? columnWildcard;
   /// The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// Name of the table.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [OptInResourceDataTableWithColumns].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -32,7 +33,7 @@ class OptInResourceDataTableWithColumns {
     return <String, dynamic>{
       'catalogId': ?catalogId,
       'columnNames': ?columnNames,
-      'columnWildcard': ?columnWildcard == null ? null : columnWildcard!.toMap(),
+      'columnWildcard': ?pulumi.Input.mapOptionalInputValue<OptInResourceDataTableWithColumnsColumnWildcard, Map<String, dynamic>>(columnWildcard, (value) => value.toMap()),
       'databaseName': databaseName,
       'name': name,
     };
@@ -40,11 +41,11 @@ class OptInResourceDataTableWithColumns {
 
   factory OptInResourceDataTableWithColumns.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataTableWithColumns(
-      catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
-      columnNames: map['columnNames'] == null ? null : (map['columnNames'] as List).cast<String>(),
-      columnWildcard: map['columnWildcard'] == null ? null : OptInResourceDataTableWithColumnsColumnWildcard.fromMap((map['columnWildcard'] as Map).cast<String, dynamic>()),
-      databaseName: map['databaseName'] as String,
-      name: map['name'] as String,
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      columnNames: map['columnNames'] == null ? null : ((map['columnNames'] as List).cast<String>()).input(),
+      columnWildcard: map['columnWildcard'] == null ? null : (OptInResourceDataTableWithColumnsColumnWildcard.fromMap((map['columnWildcard'] as Map).cast<String, dynamic>())).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

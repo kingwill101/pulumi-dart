@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 
 /// Describes a Shared Private Link Resource
 class SharedPrivateLinkResourceResponse {
   /// The group id from the provider of resource the shared private link resource is for
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the resource
-  final String name;
+  final pulumi.Input<String> name;
   /// The resource id of the resource the shared private link resource is for
-  final String privateLinkResourceId;
+  final pulumi.Input<String> privateLinkResourceId;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The request message for requesting approval of the shared private link resource
-  final String? requestMessage;
+  final pulumi.Input<String>? requestMessage;
   /// Status of the shared private link resource
-  final String status;
+  final pulumi.Input<String> status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SharedPrivateLinkResourceResponse].
   /// [groupId] The group id from the provider of resource the shared private link resource is for
@@ -54,22 +55,22 @@ class SharedPrivateLinkResourceResponse {
       'provisioningState': provisioningState,
       'requestMessage': ?requestMessage,
       'status': status,
-      'systemData': systemData.toMap(),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory SharedPrivateLinkResourceResponse.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceResponse(
-      groupId: map['groupId'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      privateLinkResourceId: map['privateLinkResourceId'] as String,
-      provisioningState: map['provisioningState'] as String,
-      requestMessage: map['requestMessage'] == null ? null : map['requestMessage'] as String,
-      status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      groupId: (map['groupId'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      privateLinkResourceId: (map['privateLinkResourceId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      status: (map['status'] as String).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

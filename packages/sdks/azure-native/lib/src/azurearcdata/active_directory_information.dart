@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'keytab_information.dart';
 
 /// Active Directory information that related to the resource.
 class ActiveDirectoryInformation {
   /// Keytab information that is used for the Sql Managed Instance when Active Directory authentication is used.
-  final KeytabInformation? keytabInformation;
+  final pulumi.Input<KeytabInformation>? keytabInformation;
 
   /// Creates a new [ActiveDirectoryInformation].
   /// [keytabInformation] Keytab information that is used for the Sql Managed Instance when Active Directory authentication is used.
@@ -15,13 +16,13 @@ class ActiveDirectoryInformation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keytabInformation': ?keytabInformation == null ? null : keytabInformation!.toMap(),
+      'keytabInformation': ?pulumi.Input.mapOptionalInputValue<KeytabInformation, Map<String, dynamic>>(keytabInformation, (value) => value.toMap()),
     };
   }
 
   factory ActiveDirectoryInformation.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryInformation(
-      keytabInformation: map['keytabInformation'] == null ? null : KeytabInformation.fromMap((map['keytabInformation'] as Map).cast<String, dynamic>()),
+      keytabInformation: map['keytabInformation'] == null ? null : (KeytabInformation.fromMap((map['keytabInformation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

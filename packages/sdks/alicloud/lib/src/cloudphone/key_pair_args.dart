@@ -16,11 +16,9 @@ class KeyPairArgs {
   /// [keyPairName] ADB key pair name.
   /// [publicKeyBody] The public key of the key pair.
   KeyPairArgs({
-    required pulumi.Output<String> keyPairName,
-    pulumi.Output<String>? publicKeyBody,
-  }) :
-      keyPairName = pulumi.Input.asInput<String>(keyPairName),
-      publicKeyBody = pulumi.Input.asOptionalInput<String>(publicKeyBody);
+    required this.keyPairName,
+    this.publicKeyBody,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class KeyPairArgs {
 
   factory KeyPairArgs.fromMap(Map<String, dynamic> map) {
     return KeyPairArgs(
-      keyPairName: pulumi.Output.create<String>(map['keyPairName'] as String),
-      publicKeyBody: map['publicKeyBody'] == null ? null : pulumi.Output.create<String>(map['publicKeyBody'] as String),
+      keyPairName: (map['keyPairName'] as String).input(),
+      publicKeyBody: map['publicKeyBody'] == null ? null : (map['publicKeyBody'] as String).input(),
     );
   }
 }

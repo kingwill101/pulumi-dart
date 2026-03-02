@@ -7,49 +7,49 @@ import 'get_volume_group_sap_hana_volume_export_policy_rule.dart';
 
 class GetVolumeGroupSapHanaVolume {
   /// The ID of the Capacity Pool.
-  final String capacityPoolId;
+  final pulumi.Input<String> capacityPoolId;
   /// A `data_protection_replication` block as defined below.
-  final List<GetVolumeGroupSapHanaVolumeDataProtectionReplication> dataProtectionReplications;
+  final pulumi.Input<List<GetVolumeGroupSapHanaVolumeDataProtectionReplication>> dataProtectionReplications;
   /// A `data_protection_snapshot_policy` block as defined below.
-  final List<GetVolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy> dataProtectionSnapshotPolicies;
+  final pulumi.Input<List<GetVolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy>> dataProtectionSnapshotPolicies;
   /// The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys.
-  final String encryptionKeySource;
+  final pulumi.Input<String> encryptionKeySource;
   /// A `export_policy_rule` block as defined below.
-  final List<GetVolumeGroupSapHanaVolumeExportPolicyRule> exportPolicyRules;
+  final pulumi.Input<List<GetVolumeGroupSapHanaVolumeExportPolicyRule>> exportPolicyRules;
   /// Volume ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Private Endpoint ID for Key Vault, which is required when using customer-managed keys.
-  final String keyVaultPrivateEndpointId;
+  final pulumi.Input<String> keyVaultPrivateEndpointId;
   /// A `mount_ip_addresses` block as defined below.
-  final List<String> mountIpAddresses;
+  final pulumi.Input<List<String>> mountIpAddresses;
   /// The name of this Application Volume Group for SAP HANA application.
-  final String name;
+  final pulumi.Input<String> name;
   /// Network features of the volume.
-  final String networkFeatures;
+  final pulumi.Input<String> networkFeatures;
   /// A `protocols` block as defined below.
-  final List<String> protocols;
+  final pulumi.Input<List<String>> protocols;
   /// The ID of the proximity placement group.
-  final String proximityPlacementGroupId;
+  final pulumi.Input<String> proximityPlacementGroupId;
   /// Volume security style.
-  final String securityStyle;
+  final pulumi.Input<String> securityStyle;
   /// The target performance of the file system.
-  final String serviceLevel;
+  final pulumi.Input<String> serviceLevel;
   /// Is the .snapshot (NFS clients) path of a volume visible?
-  final bool snapshotDirectoryVisible;
+  final pulumi.Input<bool> snapshotDirectoryVisible;
   /// The maximum Storage Quota allowed for a file system in Gigabytes.
-  final int storageQuotaInGb;
+  final pulumi.Input<int> storageQuotaInGb;
   /// The ID of the Subnet the NetApp Volume resides in.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
   /// A mapping of tags assigned to the Application Volume Group.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// Throughput of this volume in Mibps.
-  final double throughputInMibps;
+  final pulumi.Input<double> throughputInMibps;
   /// A unique file path for the volume.
-  final String volumePath;
+  final pulumi.Input<String> volumePath;
   /// Volume spec name.
-  final String volumeSpecName;
+  final pulumi.Input<String> volumeSpecName;
   /// Specifies the Availability Zone in which the Volume is located.
-  final String zone;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [GetVolumeGroupSapHanaVolume].
   /// [capacityPoolId] The ID of the Capacity Pool.
@@ -102,10 +102,10 @@ class GetVolumeGroupSapHanaVolume {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capacityPoolId': capacityPoolId,
-      'dataProtectionReplications': pulumi.Input.encodeList<GetVolumeGroupSapHanaVolumeDataProtectionReplication, Map<String, dynamic>>(dataProtectionReplications, (value) => value.toMap()),
-      'dataProtectionSnapshotPolicies': pulumi.Input.encodeList<GetVolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy, Map<String, dynamic>>(dataProtectionSnapshotPolicies, (value) => value.toMap()),
+      'dataProtectionReplications': pulumi.Input.mapInputValue<List<GetVolumeGroupSapHanaVolumeDataProtectionReplication>, List<Map<String, dynamic>>>(dataProtectionReplications, (value) => pulumi.Input.encodeList<GetVolumeGroupSapHanaVolumeDataProtectionReplication, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataProtectionSnapshotPolicies': pulumi.Input.mapInputValue<List<GetVolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy>, List<Map<String, dynamic>>>(dataProtectionSnapshotPolicies, (value) => pulumi.Input.encodeList<GetVolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'encryptionKeySource': encryptionKeySource,
-      'exportPolicyRules': pulumi.Input.encodeList<GetVolumeGroupSapHanaVolumeExportPolicyRule, Map<String, dynamic>>(exportPolicyRules, (value) => value.toMap()),
+      'exportPolicyRules': pulumi.Input.mapInputValue<List<GetVolumeGroupSapHanaVolumeExportPolicyRule>, List<Map<String, dynamic>>>(exportPolicyRules, (value) => pulumi.Input.encodeList<GetVolumeGroupSapHanaVolumeExportPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'keyVaultPrivateEndpointId': keyVaultPrivateEndpointId,
       'mountIpAddresses': mountIpAddresses,
@@ -128,28 +128,28 @@ class GetVolumeGroupSapHanaVolume {
 
   factory GetVolumeGroupSapHanaVolume.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupSapHanaVolume(
-      capacityPoolId: map['capacityPoolId'] as String,
-      dataProtectionReplications: pulumi.Input.decodeList<GetVolumeGroupSapHanaVolumeDataProtectionReplication>(map['dataProtectionReplications'], (value) => GetVolumeGroupSapHanaVolumeDataProtectionReplication.fromMap((value as Map).cast<String, dynamic>())),
-      dataProtectionSnapshotPolicies: pulumi.Input.decodeList<GetVolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy>(map['dataProtectionSnapshotPolicies'], (value) => GetVolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      encryptionKeySource: map['encryptionKeySource'] as String,
-      exportPolicyRules: pulumi.Input.decodeList<GetVolumeGroupSapHanaVolumeExportPolicyRule>(map['exportPolicyRules'], (value) => GetVolumeGroupSapHanaVolumeExportPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      keyVaultPrivateEndpointId: map['keyVaultPrivateEndpointId'] as String,
-      mountIpAddresses: (map['mountIpAddresses'] as List).cast<String>(),
-      name: map['name'] as String,
-      networkFeatures: map['networkFeatures'] as String,
-      protocols: (map['protocols'] as List).cast<String>(),
-      proximityPlacementGroupId: map['proximityPlacementGroupId'] as String,
-      securityStyle: map['securityStyle'] as String,
-      serviceLevel: map['serviceLevel'] as String,
-      snapshotDirectoryVisible: map['snapshotDirectoryVisible'] as bool,
-      storageQuotaInGb: map['storageQuotaInGb'] as int,
-      subnetId: map['subnetId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      throughputInMibps: map['throughputInMibps'] as double,
-      volumePath: map['volumePath'] as String,
-      volumeSpecName: map['volumeSpecName'] as String,
-      zone: map['zone'] as String,
+      capacityPoolId: (map['capacityPoolId'] as String).input(),
+      dataProtectionReplications: (pulumi.Input.decodeList<GetVolumeGroupSapHanaVolumeDataProtectionReplication>(map['dataProtectionReplications'], (value) => GetVolumeGroupSapHanaVolumeDataProtectionReplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataProtectionSnapshotPolicies: (pulumi.Input.decodeList<GetVolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy>(map['dataProtectionSnapshotPolicies'], (value) => GetVolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionKeySource: (map['encryptionKeySource'] as String).input(),
+      exportPolicyRules: (pulumi.Input.decodeList<GetVolumeGroupSapHanaVolumeExportPolicyRule>(map['exportPolicyRules'], (value) => GetVolumeGroupSapHanaVolumeExportPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      keyVaultPrivateEndpointId: (map['keyVaultPrivateEndpointId'] as String).input(),
+      mountIpAddresses: ((map['mountIpAddresses'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      networkFeatures: (map['networkFeatures'] as String).input(),
+      protocols: ((map['protocols'] as List).cast<String>()).input(),
+      proximityPlacementGroupId: (map['proximityPlacementGroupId'] as String).input(),
+      securityStyle: (map['securityStyle'] as String).input(),
+      serviceLevel: (map['serviceLevel'] as String).input(),
+      snapshotDirectoryVisible: (map['snapshotDirectoryVisible'] as bool).input(),
+      storageQuotaInGb: (map['storageQuotaInGb'] as int).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      throughputInMibps: (map['throughputInMibps'] as double).input(),
+      volumePath: (map['volumePath'] as String).input(),
+      volumeSpecName: (map['volumeSpecName'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

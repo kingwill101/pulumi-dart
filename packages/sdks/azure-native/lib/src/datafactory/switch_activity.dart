@@ -10,26 +10,26 @@ import 'user_property.dart';
 /// This activity evaluates an expression and executes activities under the cases property that correspond to the expression evaluation expected in the equals property.
 class SwitchActivity {
   /// List of cases that correspond to expected values of the 'on' property. This is an optional property and if not provided, the activity will execute activities provided in defaultActivities.
-  final List<SwitchCase>? cases;
+  final pulumi.Input<List<SwitchCase>>? cases;
   /// List of activities to execute if no case condition is satisfied. This is an optional property and if not provided, the activity will exit without any action.
-  final List<AppendVariableActivity>? defaultActivities;
+  final pulumi.Input<List<AppendVariableActivity>>? defaultActivities;
   /// Activity depends on condition.
-  final List<ActivityDependency>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>>? dependsOn;
   /// Activity description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Activity name.
-  final String name;
+  final pulumi.Input<String> name;
   /// An expression that would evaluate to a string or integer. This is used to determine the block of activities in cases that will be executed.
-  final Expression on;
+  final pulumi.Input<Expression> on;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final String? onInactiveMarkAs;
+  final pulumi.Input<String>? onInactiveMarkAs;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Type of activity.
   /// Expected value is 'Switch'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Activity user properties.
-  final List<UserProperty>? userProperties;
+  final pulumi.Input<List<UserProperty>>? userProperties;
 
   /// Creates a new [SwitchActivity].
   /// [cases] List of cases that correspond to expected values of the 'on' property. This is an optional property and if not provided, the activity will execute activities provided in defaultActivities.
@@ -57,31 +57,31 @@ class SwitchActivity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cases': ?cases == null ? null : pulumi.Input.encodeList<SwitchCase, Map<String, dynamic>>(cases!, (value) => value.toMap()),
-      'defaultActivities': ?defaultActivities == null ? null : pulumi.Input.encodeList<AppendVariableActivity, Map<String, dynamic>>(defaultActivities!, (value) => value.toMap()),
-      'dependsOn': ?dependsOn == null ? null : pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(dependsOn!, (value) => value.toMap()),
+      'cases': ?pulumi.Input.mapOptionalInputValue<List<SwitchCase>, List<Map<String, dynamic>>>(cases, (value) => pulumi.Input.encodeList<SwitchCase, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultActivities': ?pulumi.Input.mapOptionalInputValue<List<AppendVariableActivity>, List<Map<String, dynamic>>>(defaultActivities, (value) => pulumi.Input.encodeList<AppendVariableActivity, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'name': name,
-      'on': on.toMap(),
+      'on': pulumi.Input.mapInputValue<Expression, Map<String, dynamic>>(on, (value) => value.toMap()),
       'onInactiveMarkAs': ?onInactiveMarkAs,
       'state': ?state,
       'type': type,
-      'userProperties': ?userProperties == null ? null : pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(userProperties!, (value) => value.toMap()),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserProperty>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SwitchActivity.fromMap(Map<String, dynamic> map) {
     return SwitchActivity(
-      cases: map['cases'] == null ? null : pulumi.Input.decodeList<SwitchCase>(map['cases'], (value) => SwitchCase.fromMap((value as Map).cast<String, dynamic>())),
-      defaultActivities: map['defaultActivities'] == null ? null : pulumi.Input.decodeList<AppendVariableActivity>(map['defaultActivities'], (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>())),
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] as String,
-      on: Expression.fromMap((map['on'] as Map).cast<String, dynamic>()),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : map['onInactiveMarkAs'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      type: map['type'] as String,
-      userProperties: map['userProperties'] == null ? null : pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>())),
+      cases: map['cases'] == null ? null : (pulumi.Input.decodeList<SwitchCase>(map['cases'], (value) => SwitchCase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultActivities: map['defaultActivities'] == null ? null : (pulumi.Input.decodeList<AppendVariableActivity>(map['defaultActivities'], (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      on: (Expression.fromMap((map['on'] as Map).cast<String, dynamic>())).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

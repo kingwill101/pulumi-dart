@@ -23,17 +23,12 @@ class ArchiveDeploymentArgs {
   /// [name] Name of the Archive Deployment in the following format: `organizations/{org}/environments/{env}/archiveDeployments/{id}`.
   /// [organizationId] Required.
   ArchiveDeploymentArgs({
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? gcsUri,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      gcsUri = pulumi.Input.asOptionalInput<String>(gcsUri),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.environmentId,
+    this.gcsUri,
+    this.labels,
+    this.name,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class ArchiveDeploymentArgs {
 
   factory ArchiveDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return ArchiveDeploymentArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      gcsUri: map['gcsUri'] == null ? null : pulumi.Output.create<String>(map['gcsUri'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      gcsUri: map['gcsUri'] == null ? null : (map['gcsUri'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

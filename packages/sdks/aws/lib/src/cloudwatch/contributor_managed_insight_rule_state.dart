@@ -29,23 +29,15 @@ class ContributorManagedInsightRuleState {
   /// [tagsAll] Optional.
   /// [templateName] Template name for the managed Contributor Insights rule, as returned by ListManagedInsightRules.
   ContributorManagedInsightRuleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? templateName,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      templateName = pulumi.Input.asOptionalInput<String>(templateName);
+    this.arn,
+    this.region,
+    this.resourceArn,
+    this.ruleName,
+    this.state,
+    this.tags,
+    this.tagsAll,
+    this.templateName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,14 +54,14 @@ class ContributorManagedInsightRuleState {
 
   factory ContributorManagedInsightRuleState.fromMap(Map<String, dynamic> map) {
     return ContributorManagedInsightRuleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      templateName: map['templateName'] == null ? null : pulumi.Output.create<String>(map['templateName'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
     );
   }
 }

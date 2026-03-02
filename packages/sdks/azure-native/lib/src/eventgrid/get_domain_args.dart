@@ -16,11 +16,9 @@ class GetDomainArgs {
   /// [domainName] Name of the domain.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   GetDomainArgs({
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.domainName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDomainArgs {
 
   factory GetDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      domainName: (map['domainName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetBuilderArgs {
   /// [builderName] The name of the builder.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetBuilderArgs({
-    required pulumi.Output<String> builderName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      builderName = pulumi.Input.asInput<String>(builderName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.builderName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBuilderArgs {
 
   factory GetBuilderArgs.fromMap(Map<String, dynamic> map) {
     return GetBuilderArgs(
-      builderName: pulumi.Output.create<String>(map['builderName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      builderName: (map['builderName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

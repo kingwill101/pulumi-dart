@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudVmClusterFileSystemConfiguration {
   /// The mount path of the file system.
-  final String mountPoint;
+  final pulumi.Input<String> mountPoint;
   /// The size of the virtual machine's file system.
-  final int sizeInGb;
+  final pulumi.Input<int> sizeInGb;
 
   /// Creates a new [GetCloudVmClusterFileSystemConfiguration].
   /// [mountPoint] The mount path of the file system.
@@ -24,8 +25,8 @@ class GetCloudVmClusterFileSystemConfiguration {
 
   factory GetCloudVmClusterFileSystemConfiguration.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterFileSystemConfiguration(
-      mountPoint: map['mountPoint'] as String,
-      sizeInGb: map['sizeInGb'] as int,
+      mountPoint: (map['mountPoint'] as String).input(),
+      sizeInGb: (map['sizeInGb'] as int).input(),
     );
   }
 }

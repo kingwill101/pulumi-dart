@@ -19,13 +19,10 @@ class GetInboundEndpointArgs {
   /// [inboundEndpointName] The name of the inbound endpoint for the DNS resolver.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetInboundEndpointArgs({
-    required pulumi.Output<String> dnsResolverName,
-    required pulumi.Output<String> inboundEndpointName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dnsResolverName = pulumi.Input.asInput<String>(dnsResolverName),
-      inboundEndpointName = pulumi.Input.asInput<String>(inboundEndpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dnsResolverName,
+    required this.inboundEndpointName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetInboundEndpointArgs {
 
   factory GetInboundEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetInboundEndpointArgs(
-      dnsResolverName: pulumi.Output.create<String>(map['dnsResolverName'] as String),
-      inboundEndpointName: pulumi.Output.create<String>(map['inboundEndpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dnsResolverName: (map['dnsResolverName'] as String).input(),
+      inboundEndpointName: (map['inboundEndpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

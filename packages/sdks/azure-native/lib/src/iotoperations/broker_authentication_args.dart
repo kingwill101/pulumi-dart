@@ -30,19 +30,13 @@ class BrokerAuthenticationArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   BrokerAuthenticationArgs({
-    pulumi.Output<String>? authenticationName,
-    required pulumi.Output<String> brokerName,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<BrokerAuthenticationProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authenticationName = pulumi.Input.asOptionalInput<String>(authenticationName),
-      brokerName = pulumi.Input.asInput<String>(brokerName),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      properties = pulumi.Input.asOptionalInput<BrokerAuthenticationProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.authenticationName,
+    required this.brokerName,
+    required this.extendedLocation,
+    required this.instanceName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class BrokerAuthenticationArgs {
 
   factory BrokerAuthenticationArgs.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticationArgs(
-      authenticationName: map['authenticationName'] == null ? null : pulumi.Output.create<String>(map['authenticationName'] as String),
-      brokerName: pulumi.Output.create<String>(map['brokerName'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<BrokerAuthenticationProperties>(BrokerAuthenticationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName'] as String).input(),
+      brokerName: (map['brokerName'] as String).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      properties: map['properties'] == null ? null : (BrokerAuthenticationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

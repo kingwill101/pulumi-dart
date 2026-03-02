@@ -46,29 +46,18 @@ class AutoscaleSettingArgs {
   /// [targetResourceLocation] the location of the resource that the autoscale setting should be added to.
   /// [targetResourceUri] the resource identifier of the resource that the autoscale setting should be added to.
   AutoscaleSettingArgs({
-    pulumi.Output<String>? autoscaleSettingName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<AutoscaleNotification>>? notifications,
-    pulumi.Output<PredictiveAutoscalePolicy>? predictiveAutoscalePolicy,
-    required pulumi.Output<List<AutoscaleProfile>> profiles,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? targetResourceLocation,
-    pulumi.Output<String>? targetResourceUri,
-  }) :
-      autoscaleSettingName = pulumi.Input.asOptionalInput<String>(autoscaleSettingName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notifications = pulumi.Input.asOptionalInput<List<AutoscaleNotification>>(notifications),
-      predictiveAutoscalePolicy = pulumi.Input.asOptionalInput<PredictiveAutoscalePolicy>(predictiveAutoscalePolicy),
-      profiles = pulumi.Input.asInput<List<AutoscaleProfile>>(profiles),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetResourceLocation = pulumi.Input.asOptionalInput<String>(targetResourceLocation),
-      targetResourceUri = pulumi.Input.asOptionalInput<String>(targetResourceUri);
+    this.autoscaleSettingName,
+    this.enabled,
+    this.location,
+    this.name,
+    this.notifications,
+    this.predictiveAutoscalePolicy,
+    required this.profiles,
+    required this.resourceGroupName,
+    this.tags,
+    this.targetResourceLocation,
+    this.targetResourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class AutoscaleSettingArgs {
 
   factory AutoscaleSettingArgs.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingArgs(
-      autoscaleSettingName: map['autoscaleSettingName'] == null ? null : pulumi.Output.create<String>(map['autoscaleSettingName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notifications: map['notifications'] == null ? null : pulumi.Output.create<List<AutoscaleNotification>>(pulumi.Input.decodeList<AutoscaleNotification>(map['notifications'], (value) => AutoscaleNotification.fromMap((value as Map).cast<String, dynamic>()))),
-      predictiveAutoscalePolicy: map['predictiveAutoscalePolicy'] == null ? null : pulumi.Output.create<PredictiveAutoscalePolicy>(PredictiveAutoscalePolicy.fromMap((map['predictiveAutoscalePolicy'] as Map).cast<String, dynamic>())),
-      profiles: pulumi.Output.create<List<AutoscaleProfile>>(pulumi.Input.decodeList<AutoscaleProfile>(map['profiles'], (value) => AutoscaleProfile.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetResourceLocation: map['targetResourceLocation'] == null ? null : pulumi.Output.create<String>(map['targetResourceLocation'] as String),
-      targetResourceUri: map['targetResourceUri'] == null ? null : pulumi.Output.create<String>(map['targetResourceUri'] as String),
+      autoscaleSettingName: map['autoscaleSettingName'] == null ? null : (map['autoscaleSettingName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<AutoscaleNotification>(map['notifications'], (value) => AutoscaleNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      predictiveAutoscalePolicy: map['predictiveAutoscalePolicy'] == null ? null : (PredictiveAutoscalePolicy.fromMap((map['predictiveAutoscalePolicy'] as Map).cast<String, dynamic>())).input(),
+      profiles: (pulumi.Input.decodeList<AutoscaleProfile>(map['profiles'], (value) => AutoscaleProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceLocation: map['targetResourceLocation'] == null ? null : (map['targetResourceLocation'] as String).input(),
+      targetResourceUri: map['targetResourceUri'] == null ? null : (map['targetResourceUri'] as String).input(),
     );
   }
 }

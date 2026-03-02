@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponse {
-  final List<double> doubleValues;
+  final pulumi.Input<List<double>> doubleValues;
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponse].
   /// [doubleValues] Required.
@@ -18,7 +19,7 @@ class EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponse {
 
   factory EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponse(
-      doubleValues: (map['doubleValues'] as List).cast<double>(),
+      doubleValues: ((map['doubleValues'] as List).cast<double>()).input(),
     );
   }
 }

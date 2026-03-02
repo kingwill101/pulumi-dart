@@ -30,19 +30,13 @@ class ServerMicrosoftSupportAuditingPolicyArgs {
   /// [storageAccountAccessKey] The access key to use for the auditing storage account.
   /// [storageAccountSubscriptionId] The ID of the Subscription containing the Storage Account.
   ServerMicrosoftSupportAuditingPolicyArgs({
-    pulumi.Output<String>? blobStorageEndpoint,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? logMonitoringEnabled,
-    required pulumi.Output<String> serverId,
-    pulumi.Output<String>? storageAccountAccessKey,
-    pulumi.Output<String>? storageAccountSubscriptionId,
-  }) :
-      blobStorageEndpoint = pulumi.Input.asOptionalInput<String>(blobStorageEndpoint),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      logMonitoringEnabled = pulumi.Input.asOptionalInput<bool>(logMonitoringEnabled),
-      serverId = pulumi.Input.asInput<String>(serverId),
-      storageAccountAccessKey = pulumi.Input.asOptionalInput<String>(storageAccountAccessKey),
-      storageAccountSubscriptionId = pulumi.Input.asOptionalInput<String>(storageAccountSubscriptionId);
+    this.blobStorageEndpoint,
+    this.enabled,
+    this.logMonitoringEnabled,
+    required this.serverId,
+    this.storageAccountAccessKey,
+    this.storageAccountSubscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class ServerMicrosoftSupportAuditingPolicyArgs {
 
   factory ServerMicrosoftSupportAuditingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServerMicrosoftSupportAuditingPolicyArgs(
-      blobStorageEndpoint: map['blobStorageEndpoint'] == null ? null : pulumi.Output.create<String>(map['blobStorageEndpoint'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      logMonitoringEnabled: map['logMonitoringEnabled'] == null ? null : pulumi.Output.create<bool>(map['logMonitoringEnabled'] as bool),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountAccessKey'] as String),
-      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : pulumi.Output.create<String>(map['storageAccountSubscriptionId'] as String),
+      blobStorageEndpoint: map['blobStorageEndpoint'] == null ? null : (map['blobStorageEndpoint'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      logMonitoringEnabled: map['logMonitoringEnabled'] == null ? null : (map['logMonitoringEnabled'] as bool).input(),
+      serverId: (map['serverId'] as String).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
+      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : (map['storageAccountSubscriptionId'] as String).input(),
     );
   }
 }

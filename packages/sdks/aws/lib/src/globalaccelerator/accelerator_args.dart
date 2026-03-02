@@ -29,19 +29,13 @@ class AcceleratorArgs {
   /// [name] The name of the accelerator.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AcceleratorArgs({
-    pulumi.Output<AcceleratorAttributes>? attributes,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? ipAddressType,
-    pulumi.Output<List<String>>? ipAddresses,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<AcceleratorAttributes>(attributes),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
-      ipAddresses = pulumi.Input.asOptionalInput<List<String>>(ipAddresses),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.attributes,
+    this.enabled,
+    this.ipAddressType,
+    this.ipAddresses,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class AcceleratorArgs {
 
   factory AcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return AcceleratorArgs(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<AcceleratorAttributes>(AcceleratorAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      ipAddressType: map['ipAddressType'] == null ? null : pulumi.Output.create<String>(map['ipAddressType'] as String),
-      ipAddresses: map['ipAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['ipAddresses'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      attributes: map['attributes'] == null ? null : (AcceleratorAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

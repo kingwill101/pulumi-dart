@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_init_container_volume_git_repo.dart';
 
 class GroupInitContainerVolume {
   /// Boolean as to whether the mounted volume should be an empty directory. Defaults to `false`. Changing this forces a new resource to be created.
-  final bool? emptyDir;
+  final pulumi.Input<bool>? emptyDir;
   /// A `git_repo` block as defined below. Changing this forces a new resource to be created.
-  final GroupInitContainerVolumeGitRepo? gitRepo;
+  final pulumi.Input<GroupInitContainerVolumeGitRepo>? gitRepo;
   /// The path on which this volume is to be mounted. Changing this forces a new resource to be created.
-  final String mountPath;
+  final pulumi.Input<String> mountPath;
   /// The name of the volume mount. Changing this forces a new resource to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specify if the volume is to be mounted as read only or not. The default value is `false`. Changing this forces a new resource to be created.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// A map of secrets that will be mounted as files in the volume. Changing this forces a new resource to be created.
   ///
   /// > **Note:** Exactly one of `empty_dir` volume, `git_repo` volume, `secret` volume or storage account volume (`share_name`, `storage_account_name`, and `storage_account_key`) must be specified.
@@ -20,13 +21,13 @@ class GroupInitContainerVolume {
   /// > **Note:** when using a storage account volume, all of `share_name`, `storage_account_name`, and `storage_account_key` must be specified.
   ///
   /// > **Note:** The secret values must be supplied as Base64 encoded strings. The secret values are decoded to their original values when mounted in the volume on the container.
-  final Map<String, String>? secret;
+  final pulumi.Input<Map<String, String>>? secret;
   /// The Azure storage share that is to be mounted as a volume. This must be created on the storage account specified as above. Changing this forces a new resource to be created.
-  final String? shareName;
+  final pulumi.Input<String>? shareName;
   /// The access key for the Azure Storage account specified as above. Changing this forces a new resource to be created.
-  final String? storageAccountKey;
+  final pulumi.Input<String>? storageAccountKey;
   /// The Azure storage account from which the volume is to be mounted. Changing this forces a new resource to be created.
-  final String? storageAccountName;
+  final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [GroupInitContainerVolume].
   /// [emptyDir] Boolean as to whether the mounted volume should be an empty directory. Defaults to `false`. Changing this forces a new resource to be created.
@@ -53,7 +54,7 @@ class GroupInitContainerVolume {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'emptyDir': ?emptyDir,
-      'gitRepo': ?gitRepo == null ? null : gitRepo!.toMap(),
+      'gitRepo': ?pulumi.Input.mapOptionalInputValue<GroupInitContainerVolumeGitRepo, Map<String, dynamic>>(gitRepo, (value) => value.toMap()),
       'mountPath': mountPath,
       'name': name,
       'readOnly': ?readOnly,
@@ -66,15 +67,15 @@ class GroupInitContainerVolume {
 
   factory GroupInitContainerVolume.fromMap(Map<String, dynamic> map) {
     return GroupInitContainerVolume(
-      emptyDir: map['emptyDir'] == null ? null : map['emptyDir'] as bool,
-      gitRepo: map['gitRepo'] == null ? null : GroupInitContainerVolumeGitRepo.fromMap((map['gitRepo'] as Map).cast<String, dynamic>()),
-      mountPath: map['mountPath'] as String,
-      name: map['name'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      secret: map['secret'] == null ? null : (map['secret'] as Map).cast<String, String>(),
-      shareName: map['shareName'] == null ? null : map['shareName'] as String,
-      storageAccountKey: map['storageAccountKey'] == null ? null : map['storageAccountKey'] as String,
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName'] as String,
+      emptyDir: map['emptyDir'] == null ? null : (map['emptyDir'] as bool).input(),
+      gitRepo: map['gitRepo'] == null ? null : (GroupInitContainerVolumeGitRepo.fromMap((map['gitRepo'] as Map).cast<String, dynamic>())).input(),
+      mountPath: (map['mountPath'] as String).input(),
+      name: (map['name'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      secret: map['secret'] == null ? null : ((map['secret'] as Map).cast<String, String>()).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
     );
   }
 }

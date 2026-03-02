@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The delegation signer information.
 class DelegationSignerInfoResponse {
   /// The digest algorithm type represents the standard digest algorithm number used to construct the digest. See: https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml
-  final int digestAlgorithmType;
+  final pulumi.Input<int> digestAlgorithmType;
   /// The digest value is a cryptographic hash value of the referenced DNSKEY Resource Record.
-  final String digestValue;
+  final pulumi.Input<String> digestValue;
   /// The record represents a delegation signer (DS) record.
-  final String record;
+  final pulumi.Input<String> record;
 
   /// Creates a new [DelegationSignerInfoResponse].
   /// [digestAlgorithmType] The digest algorithm type represents the standard digest algorithm number used to construct the digest. See: https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml
@@ -30,9 +31,9 @@ class DelegationSignerInfoResponse {
 
   factory DelegationSignerInfoResponse.fromMap(Map<String, dynamic> map) {
     return DelegationSignerInfoResponse(
-      digestAlgorithmType: map['digestAlgorithmType'] as int,
-      digestValue: map['digestValue'] as String,
-      record: map['record'] as String,
+      digestAlgorithmType: (map['digestAlgorithmType'] as int).input(),
+      digestValue: (map['digestValue'] as String).input(),
+      record: (map['record'] as String).input(),
     );
   }
 }

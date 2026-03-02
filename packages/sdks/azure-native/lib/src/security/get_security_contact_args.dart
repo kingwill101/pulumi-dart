@@ -13,9 +13,8 @@ class GetSecurityContactArgs {
   /// Creates a new [GetSecurityContactArgs].
   /// [securityContactName] Name of the security contact object
   GetSecurityContactArgs({
-    required pulumi.Output<String> securityContactName,
-  }) :
-      securityContactName = pulumi.Input.asInput<String>(securityContactName);
+    required this.securityContactName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetSecurityContactArgs {
 
   factory GetSecurityContactArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityContactArgs(
-      securityContactName: pulumi.Output.create<String>(map['securityContactName'] as String),
+      securityContactName: (map['securityContactName'] as String).input(),
     );
   }
 }

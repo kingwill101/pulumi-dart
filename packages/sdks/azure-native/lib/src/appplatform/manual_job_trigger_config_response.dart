@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for manual triggered job
 class ManualJobTriggerConfigResponse {
   /// Number of parallel replicas of a job execution can run.
-  final int? parallelism;
+  final pulumi.Input<int>? parallelism;
   /// Maximum number of retries before failing the job.
-  final int? retryLimit;
+  final pulumi.Input<int>? retryLimit;
   /// Maximum number of seconds an execution is allowed to run.
-  final int? timeoutInSeconds;
+  final pulumi.Input<int>? timeoutInSeconds;
   /// Type of job trigger
   /// Expected value is 'Manual'.
-  final String triggerType;
+  final pulumi.Input<String> triggerType;
 
   /// Creates a new [ManualJobTriggerConfigResponse].
   /// [parallelism] Number of parallel replicas of a job execution can run.
@@ -36,10 +37,10 @@ class ManualJobTriggerConfigResponse {
 
   factory ManualJobTriggerConfigResponse.fromMap(Map<String, dynamic> map) {
     return ManualJobTriggerConfigResponse(
-      parallelism: map['parallelism'] == null ? null : map['parallelism'] as int,
-      retryLimit: map['retryLimit'] == null ? null : map['retryLimit'] as int,
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : map['timeoutInSeconds'] as int,
-      triggerType: map['triggerType'] as String,
+      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
+      retryLimit: map['retryLimit'] == null ? null : (map['retryLimit'] as int).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      triggerType: (map['triggerType'] as String).input(),
     );
   }
 }

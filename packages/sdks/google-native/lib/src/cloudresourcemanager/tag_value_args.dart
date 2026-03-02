@@ -25,17 +25,12 @@ class TagValueArgs {
   /// [parent] Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
   /// [shortName] Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
   TagValueArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    required pulumi.Output<String> shortName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      shortName = pulumi.Input.asInput<String>(shortName);
+    this.description,
+    this.etag,
+    this.name,
+    this.parent,
+    required this.shortName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class TagValueArgs {
 
   factory TagValueArgs.fromMap(Map<String, dynamic> map) {
     return TagValueArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      shortName: pulumi.Output.create<String>(map['shortName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      shortName: (map['shortName'] as String).input(),
     );
   }
 }

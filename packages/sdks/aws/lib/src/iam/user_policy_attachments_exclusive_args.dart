@@ -16,11 +16,9 @@ class UserPolicyAttachmentsExclusiveArgs {
   /// [policyArns] A list of managed IAM policy ARNs to be attached to the user. Policies attached to this user but not configured in this argument will be removed.
   /// [userName] IAM user name.
   UserPolicyAttachmentsExclusiveArgs({
-    required pulumi.Output<List<String>> policyArns,
-    required pulumi.Output<String> userName,
-  }) :
-      policyArns = pulumi.Input.asInput<List<String>>(policyArns),
-      userName = pulumi.Input.asInput<String>(userName);
+    required this.policyArns,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class UserPolicyAttachmentsExclusiveArgs {
 
   factory UserPolicyAttachmentsExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return UserPolicyAttachmentsExclusiveArgs(
-      policyArns: pulumi.Output.create<List<String>>((map['policyArns'] as List).cast<String>()),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      policyArns: ((map['policyArns'] as List).cast<String>()).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

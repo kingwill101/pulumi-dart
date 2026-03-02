@@ -16,11 +16,9 @@ class GetConsoleWithLocationArgs {
   /// [consoleName] The name of the console
   /// [location] The provider location
   GetConsoleWithLocationArgs({
-    required pulumi.Output<String> consoleName,
-    required pulumi.Output<String> location,
-  }) :
-      consoleName = pulumi.Input.asInput<String>(consoleName),
-      location = pulumi.Input.asInput<String>(location);
+    required this.consoleName,
+    required this.location,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetConsoleWithLocationArgs {
 
   factory GetConsoleWithLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetConsoleWithLocationArgs(
-      consoleName: pulumi.Output.create<String>(map['consoleName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
+      consoleName: (map['consoleName'] as String).input(),
+      location: (map['location'] as String).input(),
     );
   }
 }

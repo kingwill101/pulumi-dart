@@ -40,23 +40,15 @@ class GeneratorArgs {
   /// [summarizationContext] Input of prebuilt Summarization feature.
   /// [triggerEvent] Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
   GeneratorArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? generatorId,
-    pulumi.Output<GeneratorInferenceParameter>? inferenceParameter,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? publishedModel,
-    required pulumi.Output<GeneratorSummarizationContext> summarizationContext,
-    pulumi.Output<String>? triggerEvent,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      generatorId = pulumi.Input.asOptionalInput<String>(generatorId),
-      inferenceParameter = pulumi.Input.asOptionalInput<GeneratorInferenceParameter>(inferenceParameter),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publishedModel = pulumi.Input.asOptionalInput<String>(publishedModel),
-      summarizationContext = pulumi.Input.asInput<GeneratorSummarizationContext>(summarizationContext),
-      triggerEvent = pulumi.Input.asOptionalInput<String>(triggerEvent);
+    this.description,
+    this.generatorId,
+    this.inferenceParameter,
+    required this.location,
+    this.project,
+    this.publishedModel,
+    required this.summarizationContext,
+    this.triggerEvent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,14 +65,14 @@ class GeneratorArgs {
 
   factory GeneratorArgs.fromMap(Map<String, dynamic> map) {
     return GeneratorArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      generatorId: map['generatorId'] == null ? null : pulumi.Output.create<String>(map['generatorId'] as String),
-      inferenceParameter: map['inferenceParameter'] == null ? null : pulumi.Output.create<GeneratorInferenceParameter>(GeneratorInferenceParameter.fromMap((map['inferenceParameter'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      publishedModel: map['publishedModel'] == null ? null : pulumi.Output.create<String>(map['publishedModel'] as String),
-      summarizationContext: pulumi.Output.create<GeneratorSummarizationContext>(GeneratorSummarizationContext.fromMap((map['summarizationContext'] as Map).cast<String, dynamic>())),
-      triggerEvent: map['triggerEvent'] == null ? null : pulumi.Output.create<String>(map['triggerEvent'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      generatorId: map['generatorId'] == null ? null : (map['generatorId'] as String).input(),
+      inferenceParameter: map['inferenceParameter'] == null ? null : (GeneratorInferenceParameter.fromMap((map['inferenceParameter'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      publishedModel: map['publishedModel'] == null ? null : (map['publishedModel'] as String).input(),
+      summarizationContext: (GeneratorSummarizationContext.fromMap((map['summarizationContext'] as Map).cast<String, dynamic>())).input(),
+      triggerEvent: map['triggerEvent'] == null ? null : (map['triggerEvent'] as String).input(),
     );
   }
 }

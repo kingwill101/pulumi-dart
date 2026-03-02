@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'builder_version.dart';
 import 'cache_from.dart';
 
 /// The Docker build context
 class DockerBuild {
   /// Custom host-to-IP mappings to use while building (format: "host:ip")
-  final List<String>? addHosts;
+  final pulumi.Input<List<String>>? addHosts;
   /// An optional map of named build-time argument variables to set during the Docker build. This flag allows you to pass build-time variables that can be accessed like environment variables inside the RUN instruction.
-  final Map<String, String>? args;
+  final pulumi.Input<Map<String, String>>? args;
   /// The version of the Docker builder.
-  final BuilderVersion? builderVersion;
+  final pulumi.Input<BuilderVersion>? builderVersion;
   /// A list of image names to use as build cache. Images provided must have a cache manifest. Must provide authentication to cache registry.
-  final CacheFrom? cacheFrom;
+  final pulumi.Input<CacheFrom>? cacheFrom;
   /// The path to the build context to use.
-  final String? context;
+  final pulumi.Input<String>? context;
   /// The path to the Dockerfile to use.
-  final String? dockerfile;
+  final pulumi.Input<String>? dockerfile;
   /// Set the networking mode for RUN instructions
-  final String? network;
+  final pulumi.Input<String>? network;
   /// The architecture of the platform you want to build this image for, e.g. `linux/arm64`.
-  final String? platform;
+  final pulumi.Input<String>? platform;
   /// The target of the Dockerfile to build
-  final String? target;
+  final pulumi.Input<String>? target;
 
   /// Creates a new [DockerBuild].
   /// [addHosts] Custom host-to-IP mappings to use while building (format: "host:ip")
@@ -50,8 +51,8 @@ class DockerBuild {
     return <String, dynamic>{
       'addHosts': ?addHosts,
       'args': ?args,
-      'builderVersion': ?builderVersion == null ? null : builderVersion!.value,
-      'cacheFrom': ?cacheFrom == null ? null : cacheFrom!.toMap(),
+      'builderVersion': ?pulumi.Input.mapOptionalInputValue<BuilderVersion, String>(builderVersion, (value) => value.value),
+      'cacheFrom': ?pulumi.Input.mapOptionalInputValue<CacheFrom, Map<String, dynamic>>(cacheFrom, (value) => value.toMap()),
       'context': ?context,
       'dockerfile': ?dockerfile,
       'network': ?network,
@@ -62,15 +63,15 @@ class DockerBuild {
 
   factory DockerBuild.fromMap(Map<String, dynamic> map) {
     return DockerBuild(
-      addHosts: map['addHosts'] == null ? null : (map['addHosts'] as List).cast<String>(),
-      args: map['args'] == null ? null : (map['args'] as Map).cast<String, String>(),
-      builderVersion: map['builderVersion'] == null ? null : BuilderVersion.fromValue(map['builderVersion'] as String),
-      cacheFrom: map['cacheFrom'] == null ? null : CacheFrom.fromMap((map['cacheFrom'] as Map).cast<String, dynamic>()),
-      context: map['context'] == null ? null : map['context'] as String,
-      dockerfile: map['dockerfile'] == null ? null : map['dockerfile'] as String,
-      network: map['network'] == null ? null : map['network'] as String,
-      platform: map['platform'] == null ? null : map['platform'] as String,
-      target: map['target'] == null ? null : map['target'] as String,
+      addHosts: map['addHosts'] == null ? null : ((map['addHosts'] as List).cast<String>()).input(),
+      args: map['args'] == null ? null : ((map['args'] as Map).cast<String, String>()).input(),
+      builderVersion: map['builderVersion'] == null ? null : (BuilderVersion.fromValue(map['builderVersion'] as String)).input(),
+      cacheFrom: map['cacheFrom'] == null ? null : (CacheFrom.fromMap((map['cacheFrom'] as Map).cast<String, dynamic>())).input(),
+      context: map['context'] == null ? null : (map['context'] as String).input(),
+      dockerfile: map['dockerfile'] == null ? null : (map['dockerfile'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

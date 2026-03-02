@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_vault_connection_properties.dart';
 import 'key_vault_secret_object.dart';
 
 /// Kafka Token KeyVault properties.
 class KafkaTokenKeyVaultProperties {
   /// Username to connect with.
-  final String? username;
+  final pulumi.Input<String>? username;
   /// KeyVault properties.
-  final KeyVaultConnectionProperties vault;
+  final pulumi.Input<KeyVaultConnectionProperties> vault;
   /// KeyVault secret details.
-  final KeyVaultSecretObject vaultSecret;
+  final pulumi.Input<KeyVaultSecretObject> vaultSecret;
 
   /// Creates a new [KafkaTokenKeyVaultProperties].
   /// [username] Username to connect with.
@@ -25,16 +26,16 @@ class KafkaTokenKeyVaultProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'username': ?username,
-      'vault': vault.toMap(),
-      'vaultSecret': vaultSecret.toMap(),
+      'vault': pulumi.Input.mapInputValue<KeyVaultConnectionProperties, Map<String, dynamic>>(vault, (value) => value.toMap()),
+      'vaultSecret': pulumi.Input.mapInputValue<KeyVaultSecretObject, Map<String, dynamic>>(vaultSecret, (value) => value.toMap()),
     };
   }
 
   factory KafkaTokenKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return KafkaTokenKeyVaultProperties(
-      username: map['username'] == null ? null : map['username'] as String,
-      vault: KeyVaultConnectionProperties.fromMap((map['vault'] as Map).cast<String, dynamic>()),
-      vaultSecret: KeyVaultSecretObject.fromMap((map['vaultSecret'] as Map).cast<String, dynamic>()),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
+      vault: (KeyVaultConnectionProperties.fromMap((map['vault'] as Map).cast<String, dynamic>())).input(),
+      vaultSecret: (KeyVaultSecretObject.fromMap((map['vaultSecret'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

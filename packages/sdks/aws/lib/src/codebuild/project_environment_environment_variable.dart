@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectEnvironmentEnvironmentVariable {
   /// Environment variable's name or key.
-  final String name;
+  final pulumi.Input<String> name;
   /// Type of environment variable. Valid values: `PARAMETER_STORE`, `PLAINTEXT`, `SECRETS_MANAGER`.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Environment variable's value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ProjectEnvironmentEnvironmentVariable].
   /// [name] Environment variable's name or key.
@@ -29,9 +30,9 @@ class ProjectEnvironmentEnvironmentVariable {
 
   factory ProjectEnvironmentEnvironmentVariable.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentEnvironmentVariable(
-      name: map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

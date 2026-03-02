@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourceTypesTypeHandlersList {
   /// The collection of required RAM permission information.
-  final List<String> permissions;
+  final pulumi.Input<List<String>> permissions;
 
   /// Creates a new [GetResourceTypesTypeHandlersList].
   /// [permissions] The collection of required RAM permission information.
@@ -19,7 +20,7 @@ class GetResourceTypesTypeHandlersList {
 
   factory GetResourceTypesTypeHandlersList.fromMap(Map<String, dynamic> map) {
     return GetResourceTypesTypeHandlersList(
-      permissions: (map['permissions'] as List).cast<String>(),
+      permissions: ((map['permissions'] as List).cast<String>()).input(),
     );
   }
 }

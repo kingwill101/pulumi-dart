@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupQuotasEntityResponseProperties {
   /// Display name of the GroupQuota entity.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Provisioning state of the operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [GroupQuotasEntityResponseProperties].
   /// [displayName] Display name of the GroupQuota entity.
@@ -24,8 +25,8 @@ class GroupQuotasEntityResponseProperties {
 
   factory GroupQuotasEntityResponseProperties.fromMap(Map<String, dynamic> map) {
     return GroupQuotasEntityResponseProperties(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      provisioningState: map['provisioningState'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// vCenter Single Sign On Identity Source
 class IdentitySourceResponse {
   /// The domain's NetBIOS name
-  final String? alias;
+  final pulumi.Input<String>? alias;
   /// The base distinguished name for groups
-  final String? baseGroupDN;
+  final pulumi.Input<String>? baseGroupDN;
   /// The base distinguished name for users
-  final String? baseUserDN;
+  final pulumi.Input<String>? baseUserDN;
   /// The domain's DNS name
-  final String? domain;
+  final pulumi.Input<String>? domain;
   /// The name of the identity source
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The password of the Active Directory user with a minimum of read-only access to
   /// Base DN for users and groups.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Primary server URL
-  final String? primaryServer;
+  final pulumi.Input<String>? primaryServer;
   /// Secondary server URL
-  final String? secondaryServer;
+  final pulumi.Input<String>? secondaryServer;
   /// Protect LDAP communication using SSL certificate (LDAPS)
-  final String? ssl;
+  final pulumi.Input<String>? ssl;
   /// The ID of an Active Directory user with a minimum of read-only access to Base
   /// DN for users and group
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [IdentitySourceResponse].
   /// [alias] The domain's NetBIOS name
@@ -67,16 +68,16 @@ class IdentitySourceResponse {
 
   factory IdentitySourceResponse.fromMap(Map<String, dynamic> map) {
     return IdentitySourceResponse(
-      alias: map['alias'] == null ? null : map['alias'] as String,
-      baseGroupDN: map['baseGroupDN'] == null ? null : map['baseGroupDN'] as String,
-      baseUserDN: map['baseUserDN'] == null ? null : map['baseUserDN'] as String,
-      domain: map['domain'] == null ? null : map['domain'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      primaryServer: map['primaryServer'] == null ? null : map['primaryServer'] as String,
-      secondaryServer: map['secondaryServer'] == null ? null : map['secondaryServer'] as String,
-      ssl: map['ssl'] == null ? null : map['ssl'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      baseGroupDN: map['baseGroupDN'] == null ? null : (map['baseGroupDN'] as String).input(),
+      baseUserDN: map['baseUserDN'] == null ? null : (map['baseUserDN'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      primaryServer: map['primaryServer'] == null ? null : (map['primaryServer'] as String).input(),
+      secondaryServer: map['secondaryServer'] == null ? null : (map['secondaryServer'] as String).input(),
+      ssl: map['ssl'] == null ? null : (map['ssl'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

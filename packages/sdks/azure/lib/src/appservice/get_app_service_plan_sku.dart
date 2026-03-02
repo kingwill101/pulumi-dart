@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppServicePlanSku {
   /// Specifies the number of workers associated with this App Service Plan.
-  final int capacity;
+  final pulumi.Input<int> capacity;
   /// Specifies the plan's instance size.
-  final String size;
+  final pulumi.Input<String> size;
   /// Specifies the plan's pricing tier.
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [GetAppServicePlanSku].
   /// [capacity] Specifies the number of workers associated with this App Service Plan.
@@ -29,9 +30,9 @@ class GetAppServicePlanSku {
 
   factory GetAppServicePlanSku.fromMap(Map<String, dynamic> map) {
     return GetAppServicePlanSku(
-      capacity: map['capacity'] as int,
-      size: map['size'] as String,
-      tier: map['tier'] as String,
+      capacity: (map['capacity'] as int).input(),
+      size: (map['size'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

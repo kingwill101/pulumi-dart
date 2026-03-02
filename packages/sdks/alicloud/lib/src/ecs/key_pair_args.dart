@@ -28,21 +28,14 @@ class KeyPairArgs {
   /// [resourceGroupId] The Id of resource group which the key pair belongs.
   /// [tags] Optional.
   KeyPairArgs({
-    pulumi.Output<String>? keyFile,
-    pulumi.Output<String>? keyName,
-    pulumi.Output<String>? keyNamePrefix,
-    pulumi.Output<String>? keyPairName,
-    pulumi.Output<String>? publicKey,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      keyFile = pulumi.Input.asOptionalInput<String>(keyFile),
-      keyName = pulumi.Input.asOptionalInput<String>(keyName),
-      keyNamePrefix = pulumi.Input.asOptionalInput<String>(keyNamePrefix),
-      keyPairName = pulumi.Input.asOptionalInput<String>(keyPairName),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.keyFile,
+    this.keyName,
+    this.keyNamePrefix,
+    this.keyPairName,
+    this.publicKey,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class KeyPairArgs {
 
   factory KeyPairArgs.fromMap(Map<String, dynamic> map) {
     return KeyPairArgs(
-      keyFile: map['keyFile'] == null ? null : pulumi.Output.create<String>(map['keyFile'] as String),
-      keyName: map['keyName'] == null ? null : pulumi.Output.create<String>(map['keyName'] as String),
-      keyNamePrefix: map['keyNamePrefix'] == null ? null : pulumi.Output.create<String>(map['keyNamePrefix'] as String),
-      keyPairName: map['keyPairName'] == null ? null : pulumi.Output.create<String>(map['keyPairName'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      keyFile: map['keyFile'] == null ? null : (map['keyFile'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyNamePrefix: map['keyNamePrefix'] == null ? null : (map['keyNamePrefix'] as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

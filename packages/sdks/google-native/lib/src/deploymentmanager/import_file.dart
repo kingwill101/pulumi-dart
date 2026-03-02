@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImportFile {
   /// The contents of the file.
-  final String? content;
+  final pulumi.Input<String>? content;
   /// The name of the file.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ImportFile].
   /// [content] The contents of the file.
@@ -24,8 +25,8 @@ class ImportFile {
 
   factory ImportFile.fromMap(Map<String, dynamic> map) {
     return ImportFile(
-      content: map['content'] == null ? null : map['content'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

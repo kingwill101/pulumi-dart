@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autoscaling_limits.dart';
 import 'autoscaling_targets.dart';
 
 /// Autoscaling config for a cluster.
 class ClusterAutoscalingConfig {
   /// Autoscaling limits for this cluster.
-  final AutoscalingLimits autoscalingLimits;
+  final pulumi.Input<AutoscalingLimits> autoscalingLimits;
   /// Autoscaling targets for this cluster.
-  final AutoscalingTargets autoscalingTargets;
+  final pulumi.Input<AutoscalingTargets> autoscalingTargets;
 
   /// Creates a new [ClusterAutoscalingConfig].
   /// [autoscalingLimits] Autoscaling limits for this cluster.
@@ -20,15 +21,15 @@ class ClusterAutoscalingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingLimits': autoscalingLimits.toMap(),
-      'autoscalingTargets': autoscalingTargets.toMap(),
+      'autoscalingLimits': pulumi.Input.mapInputValue<AutoscalingLimits, Map<String, dynamic>>(autoscalingLimits, (value) => value.toMap()),
+      'autoscalingTargets': pulumi.Input.mapInputValue<AutoscalingTargets, Map<String, dynamic>>(autoscalingTargets, (value) => value.toMap()),
     };
   }
 
   factory ClusterAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAutoscalingConfig(
-      autoscalingLimits: AutoscalingLimits.fromMap((map['autoscalingLimits'] as Map).cast<String, dynamic>()),
-      autoscalingTargets: AutoscalingTargets.fromMap((map['autoscalingTargets'] as Map).cast<String, dynamic>()),
+      autoscalingLimits: (AutoscalingLimits.fromMap((map['autoscalingLimits'] as Map).cast<String, dynamic>())).input(),
+      autoscalingTargets: (AutoscalingTargets.fromMap((map['autoscalingTargets'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

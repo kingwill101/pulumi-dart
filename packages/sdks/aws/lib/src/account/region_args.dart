@@ -19,13 +19,10 @@ class RegionArgs {
   /// [enabled] Whether the region is enabled.
   /// [regionName] The region name to manage.
   RegionArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> regionName,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      regionName = pulumi.Input.asInput<String>(regionName);
+    this.accountId,
+    required this.enabled,
+    required this.regionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class RegionArgs {
 
   factory RegionArgs.fromMap(Map<String, dynamic> map) {
     return RegionArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      regionName: pulumi.Output.create<String>(map['regionName'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      regionName: (map['regionName'] as String).input(),
     );
   }
 }

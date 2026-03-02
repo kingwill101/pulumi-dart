@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodePoolQueuedProvisioning {
   /// Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ClusterNodePoolQueuedProvisioning].
   /// [enabled] Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
@@ -19,7 +20,7 @@ class ClusterNodePoolQueuedProvisioning {
 
   factory ClusterNodePoolQueuedProvisioning.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolQueuedProvisioning(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

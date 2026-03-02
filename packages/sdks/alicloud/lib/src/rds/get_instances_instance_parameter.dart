@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstanceParameter {
   /// The value range of the parameter.
-  final String checkingCode;
+  final pulumi.Input<String> checkingCode;
   /// Indicates whether the parameter can be modified. Valid values: true | false
-  final String forceModify;
+  final pulumi.Input<String> forceModify;
   /// Indicates whether the modified parameter takes effect only after a database restart. Valid values: true | false
-  final String forceRestart;
+  final pulumi.Input<String> forceRestart;
   /// The description of the parameter.
-  final String parameterDescription;
+  final pulumi.Input<String> parameterDescription;
   /// The name of the parameter.
-  final String parameterName;
+  final pulumi.Input<String> parameterName;
   /// The default value of the parameter.
-  final String parameterValue;
+  final pulumi.Input<String> parameterValue;
 
   /// Creates a new [GetInstancesInstanceParameter].
   /// [checkingCode] The value range of the parameter.
@@ -44,12 +45,12 @@ class GetInstancesInstanceParameter {
 
   factory GetInstancesInstanceParameter.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceParameter(
-      checkingCode: map['checkingCode'] as String,
-      forceModify: map['forceModify'] as String,
-      forceRestart: map['forceRestart'] as String,
-      parameterDescription: map['parameterDescription'] as String,
-      parameterName: map['parameterName'] as String,
-      parameterValue: map['parameterValue'] as String,
+      checkingCode: (map['checkingCode'] as String).input(),
+      forceModify: (map['forceModify'] as String).input(),
+      forceRestart: (map['forceRestart'] as String).input(),
+      parameterDescription: (map['parameterDescription'] as String).input(),
+      parameterName: (map['parameterName'] as String).input(),
+      parameterValue: (map['parameterValue'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_node_spec_listener_connection_pool.dart';
 import 'virtual_node_spec_listener_health_check.dart';
 import 'virtual_node_spec_listener_outlier_detection.dart';
@@ -9,17 +10,17 @@ import 'virtual_node_spec_listener_tls.dart';
 
 class VirtualNodeSpecListener {
   /// Connection pool information for the listener.
-  final VirtualNodeSpecListenerConnectionPool? connectionPool;
+  final pulumi.Input<VirtualNodeSpecListenerConnectionPool>? connectionPool;
   /// Health check information for the listener.
-  final VirtualNodeSpecListenerHealthCheck? healthCheck;
+  final pulumi.Input<VirtualNodeSpecListenerHealthCheck>? healthCheck;
   /// Outlier detection information for the listener.
-  final VirtualNodeSpecListenerOutlierDetection? outlierDetection;
+  final pulumi.Input<VirtualNodeSpecListenerOutlierDetection>? outlierDetection;
   /// Port mapping information for the listener.
-  final VirtualNodeSpecListenerPortMapping portMapping;
+  final pulumi.Input<VirtualNodeSpecListenerPortMapping> portMapping;
   /// Timeouts for different protocols.
-  final VirtualNodeSpecListenerTimeout? timeout;
+  final pulumi.Input<VirtualNodeSpecListenerTimeout>? timeout;
   /// Transport Layer Security (TLS) properties for the listener
-  final VirtualNodeSpecListenerTls? tls;
+  final pulumi.Input<VirtualNodeSpecListenerTls>? tls;
 
   /// Creates a new [VirtualNodeSpecListener].
   /// [connectionPool] Connection pool information for the listener.
@@ -39,23 +40,23 @@ class VirtualNodeSpecListener {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionPool': ?connectionPool == null ? null : connectionPool!.toMap(),
-      'healthCheck': ?healthCheck == null ? null : healthCheck!.toMap(),
-      'outlierDetection': ?outlierDetection == null ? null : outlierDetection!.toMap(),
-      'portMapping': portMapping.toMap(),
-      'timeout': ?timeout == null ? null : timeout!.toMap(),
-      'tls': ?tls == null ? null : tls!.toMap(),
+      'connectionPool': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecListenerConnectionPool, Map<String, dynamic>>(connectionPool, (value) => value.toMap()),
+      'healthCheck': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecListenerHealthCheck, Map<String, dynamic>>(healthCheck, (value) => value.toMap()),
+      'outlierDetection': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecListenerOutlierDetection, Map<String, dynamic>>(outlierDetection, (value) => value.toMap()),
+      'portMapping': pulumi.Input.mapInputValue<VirtualNodeSpecListenerPortMapping, Map<String, dynamic>>(portMapping, (value) => value.toMap()),
+      'timeout': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecListenerTimeout, Map<String, dynamic>>(timeout, (value) => value.toMap()),
+      'tls': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecListenerTls, Map<String, dynamic>>(tls, (value) => value.toMap()),
     };
   }
 
   factory VirtualNodeSpecListener.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListener(
-      connectionPool: map['connectionPool'] == null ? null : VirtualNodeSpecListenerConnectionPool.fromMap((map['connectionPool'] as Map).cast<String, dynamic>()),
-      healthCheck: map['healthCheck'] == null ? null : VirtualNodeSpecListenerHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>()),
-      outlierDetection: map['outlierDetection'] == null ? null : VirtualNodeSpecListenerOutlierDetection.fromMap((map['outlierDetection'] as Map).cast<String, dynamic>()),
-      portMapping: VirtualNodeSpecListenerPortMapping.fromMap((map['portMapping'] as Map).cast<String, dynamic>()),
-      timeout: map['timeout'] == null ? null : VirtualNodeSpecListenerTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>()),
-      tls: map['tls'] == null ? null : VirtualNodeSpecListenerTls.fromMap((map['tls'] as Map).cast<String, dynamic>()),
+      connectionPool: map['connectionPool'] == null ? null : (VirtualNodeSpecListenerConnectionPool.fromMap((map['connectionPool'] as Map).cast<String, dynamic>())).input(),
+      healthCheck: map['healthCheck'] == null ? null : (VirtualNodeSpecListenerHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())).input(),
+      outlierDetection: map['outlierDetection'] == null ? null : (VirtualNodeSpecListenerOutlierDetection.fromMap((map['outlierDetection'] as Map).cast<String, dynamic>())).input(),
+      portMapping: (VirtualNodeSpecListenerPortMapping.fromMap((map['portMapping'] as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (VirtualNodeSpecListenerTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>())).input(),
+      tls: map['tls'] == null ? null : (VirtualNodeSpecListenerTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

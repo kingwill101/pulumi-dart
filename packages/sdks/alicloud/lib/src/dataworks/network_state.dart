@@ -22,17 +22,12 @@ class NetworkState {
   /// [vpcId] Virtual Private Cloud ID of network resources
   /// [vswitchId] The vSwitch ID of the network resource.
   NetworkState({
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? dwResourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      dwResourceGroupId = pulumi.Input.asOptionalInput<String>(dwResourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.createTime,
+    this.dwResourceGroupId,
+    this.status,
+    this.vpcId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class NetworkState {
 
   factory NetworkState.fromMap(Map<String, dynamic> map) {
     return NetworkState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      dwResourceGroupId: map['dwResourceGroupId'] == null ? null : pulumi.Output.create<String>(map['dwResourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      dwResourceGroupId: map['dwResourceGroupId'] == null ? null : (map['dwResourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

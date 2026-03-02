@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Workflow Properties
 class WorkflowPropertiesResponse {
   /// Provisioning state of resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Workflow template Id
-  final String workflowTemplateId;
+  final pulumi.Input<String> workflowTemplateId;
 
   /// Creates a new [WorkflowPropertiesResponse].
   /// [provisioningState] Provisioning state of resource
@@ -25,8 +26,8 @@ class WorkflowPropertiesResponse {
 
   factory WorkflowPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WorkflowPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
-      workflowTemplateId: map['workflowTemplateId'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
+      workflowTemplateId: (map['workflowTemplateId'] as String).input(),
     );
   }
 }

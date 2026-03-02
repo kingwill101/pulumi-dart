@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apache_tomcat_aksworkload_deployment.dart';
 
 /// ApacheTomcat workload instance model custom properties.
 class ApacheTomcatAKSWorkloadDeploymentModelCustomProperties {
   /// ApacheTomcat web application.
-  final ApacheTomcatAKSWorkloadDeployment? apacheTomcatAksWorkloadDeploymentProperties;
+  final pulumi.Input<ApacheTomcatAKSWorkloadDeployment>? apacheTomcatAksWorkloadDeploymentProperties;
   /// Gets or sets the instance type.
   /// Expected value is 'ApacheTomcatAKSWorkloadDeploymentModelCustomProperties'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Creates a new [ApacheTomcatAKSWorkloadDeploymentModelCustomProperties].
   /// [apacheTomcatAksWorkloadDeploymentProperties] ApacheTomcat web application.
@@ -20,15 +21,15 @@ class ApacheTomcatAKSWorkloadDeploymentModelCustomProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apacheTomcatAksWorkloadDeploymentProperties': ?apacheTomcatAksWorkloadDeploymentProperties == null ? null : apacheTomcatAksWorkloadDeploymentProperties!.toMap(),
+      'apacheTomcatAksWorkloadDeploymentProperties': ?pulumi.Input.mapOptionalInputValue<ApacheTomcatAKSWorkloadDeployment, Map<String, dynamic>>(apacheTomcatAksWorkloadDeploymentProperties, (value) => value.toMap()),
       'instanceType': instanceType,
     };
   }
 
   factory ApacheTomcatAKSWorkloadDeploymentModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return ApacheTomcatAKSWorkloadDeploymentModelCustomProperties(
-      apacheTomcatAksWorkloadDeploymentProperties: map['apacheTomcatAksWorkloadDeploymentProperties'] == null ? null : ApacheTomcatAKSWorkloadDeployment.fromMap((map['apacheTomcatAksWorkloadDeploymentProperties'] as Map).cast<String, dynamic>()),
-      instanceType: map['instanceType'] as String,
+      apacheTomcatAksWorkloadDeploymentProperties: map['apacheTomcatAksWorkloadDeploymentProperties'] == null ? null : (ApacheTomcatAKSWorkloadDeployment.fromMap((map['apacheTomcatAksWorkloadDeploymentProperties'] as Map).cast<String, dynamic>())).input(),
+      instanceType: (map['instanceType'] as String).input(),
     );
   }
 }

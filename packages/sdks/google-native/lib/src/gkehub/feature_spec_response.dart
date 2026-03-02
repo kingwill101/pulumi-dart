@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'membership_spec_response.dart';
 
 /// **Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.
 class FeatureSpecResponse {
   /// Specifies default membership spec. Users can override the default in the member_configs for each member.
-  final MembershipSpecResponse defaultConfig;
+  final pulumi.Input<MembershipSpecResponse> defaultConfig;
   /// Immutable. Specifies CA configuration.
-  final String provisionGoogleCa;
+  final pulumi.Input<String> provisionGoogleCa;
 
   /// Creates a new [FeatureSpecResponse].
   /// [defaultConfig] Specifies default membership spec. Users can override the default in the member_configs for each member.
@@ -19,15 +20,15 @@ class FeatureSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultConfig': defaultConfig.toMap(),
+      'defaultConfig': pulumi.Input.mapInputValue<MembershipSpecResponse, Map<String, dynamic>>(defaultConfig, (value) => value.toMap()),
       'provisionGoogleCa': provisionGoogleCa,
     };
   }
 
   factory FeatureSpecResponse.fromMap(Map<String, dynamic> map) {
     return FeatureSpecResponse(
-      defaultConfig: MembershipSpecResponse.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>()),
-      provisionGoogleCa: map['provisionGoogleCa'] as String,
+      defaultConfig: (MembershipSpecResponse.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>())).input(),
+      provisionGoogleCa: (map['provisionGoogleCa'] as String).input(),
     );
   }
 }

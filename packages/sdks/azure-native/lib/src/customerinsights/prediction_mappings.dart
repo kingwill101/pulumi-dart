@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of the link mapping of prediction.
 class PredictionMappings {
   /// The grade of the link mapping.
-  final String grade;
+  final pulumi.Input<String> grade;
   /// The reason of the link mapping.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// The score of the link mapping.
-  final String score;
+  final pulumi.Input<String> score;
 
   /// Creates a new [PredictionMappings].
   /// [grade] The grade of the link mapping.
@@ -30,9 +31,9 @@ class PredictionMappings {
 
   factory PredictionMappings.fromMap(Map<String, dynamic> map) {
     return PredictionMappings(
-      grade: map['grade'] as String,
-      reason: map['reason'] as String,
-      score: map['score'] as String,
+      grade: (map['grade'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      score: (map['score'] as String).input(),
     );
   }
 }

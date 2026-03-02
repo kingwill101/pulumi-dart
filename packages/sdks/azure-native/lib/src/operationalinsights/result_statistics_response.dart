@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Search job execution statistics.
 class ResultStatisticsResponse {
   /// The number of rows that were returned by the search job.
-  final int ingestedRecords;
+  final pulumi.Input<int> ingestedRecords;
   /// Search job completion percentage.
-  final double progress;
+  final pulumi.Input<double> progress;
   /// Search job: Amount of scanned data.
-  final double scannedGb;
+  final pulumi.Input<double> scannedGb;
 
   /// Creates a new [ResultStatisticsResponse].
   /// [ingestedRecords] The number of rows that were returned by the search job.
@@ -30,9 +31,9 @@ class ResultStatisticsResponse {
 
   factory ResultStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return ResultStatisticsResponse(
-      ingestedRecords: map['ingestedRecords'] as int,
-      progress: map['progress'] as double,
-      scannedGb: map['scannedGb'] as double,
+      ingestedRecords: (map['ingestedRecords'] as int).input(),
+      progress: (map['progress'] as double).input(),
+      scannedGb: (map['scannedGb'] as double).input(),
     );
   }
 }

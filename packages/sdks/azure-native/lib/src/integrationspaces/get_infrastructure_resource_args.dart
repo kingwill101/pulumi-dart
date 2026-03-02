@@ -19,13 +19,10 @@ class GetInfrastructureResourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spaceName] The name of the space
   GetInfrastructureResourceArgs({
-    required pulumi.Output<String> infrastructureResourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> spaceName,
-  }) :
-      infrastructureResourceName = pulumi.Input.asInput<String>(infrastructureResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      spaceName = pulumi.Input.asInput<String>(spaceName);
+    required this.infrastructureResourceName,
+    required this.resourceGroupName,
+    required this.spaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetInfrastructureResourceArgs {
 
   factory GetInfrastructureResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureResourceArgs(
-      infrastructureResourceName: pulumi.Output.create<String>(map['infrastructureResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      spaceName: pulumi.Output.create<String>(map['spaceName'] as String),
+      infrastructureResourceName: (map['infrastructureResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      spaceName: (map['spaceName'] as String).input(),
     );
   }
 }

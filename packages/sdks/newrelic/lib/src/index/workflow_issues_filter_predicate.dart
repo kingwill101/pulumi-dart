@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowIssuesFilterPredicate {
   /// Issue event attribute to check
-  final String attribute;
+  final pulumi.Input<String> attribute;
   /// An operator to use to compare the attribute with the provided `values`, see supported operators below
-  final String operator;
+  final pulumi.Input<String> operator;
   /// The `attribute` must match **any** of the values in this list
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [WorkflowIssuesFilterPredicate].
   /// [attribute] Issue event attribute to check
@@ -29,9 +30,9 @@ class WorkflowIssuesFilterPredicate {
 
   factory WorkflowIssuesFilterPredicate.fromMap(Map<String, dynamic> map) {
     return WorkflowIssuesFilterPredicate(
-      attribute: map['attribute'] as String,
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      attribute: (map['attribute'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

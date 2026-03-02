@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterConfigMasterConfigDiskConfig {
   /// Size of the primary disk attached to each node, specified
@@ -7,18 +8,18 @@ class ClusterClusterConfigMasterConfigDiskConfig {
   /// smallest allowed disk size is 10GB. GCP will default to a predetermined
   /// computed value if not set (currently 500GB). Note: If SSDs are not
   /// attached, it also contains the HDFS data blocks and Hadoop working directories.
-  final int? bootDiskSizeGb;
+  final pulumi.Input<int>? bootDiskSizeGb;
   /// The disk type of the primary disk attached to each node.
   /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-  final String? bootDiskType;
+  final pulumi.Input<String>? bootDiskType;
   /// Optional. Interface type of local SSDs (default is "scsi").
   /// Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile
   /// Memory Express). See
   /// [local SSD performance](https://cloud.google.com/compute/docs/disks/local-ssd#performance).
-  final String? localSsdInterface;
+  final pulumi.Input<String>? localSsdInterface;
   /// The amount of local SSD disks that will be
   /// attached to each master cluster node. Defaults to 0.
-  final int? numLocalSsds;
+  final pulumi.Input<int>? numLocalSsds;
 
   /// Creates a new [ClusterClusterConfigMasterConfigDiskConfig].
   /// [bootDiskSizeGb] Size of the primary disk attached to each node, specified
@@ -43,10 +44,10 @@ class ClusterClusterConfigMasterConfigDiskConfig {
 
   factory ClusterClusterConfigMasterConfigDiskConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigMasterConfigDiskConfig(
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : map['bootDiskSizeGb'] as int,
-      bootDiskType: map['bootDiskType'] == null ? null : map['bootDiskType'] as String,
-      localSsdInterface: map['localSsdInterface'] == null ? null : map['localSsdInterface'] as String,
-      numLocalSsds: map['numLocalSsds'] == null ? null : map['numLocalSsds'] as int,
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb'] as int).input(),
+      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType'] as String).input(),
+      localSsdInterface: map['localSsdInterface'] == null ? null : (map['localSsdInterface'] as String).input(),
+      numLocalSsds: map['numLocalSsds'] == null ? null : (map['numLocalSsds'] as int).input(),
     );
   }
 }

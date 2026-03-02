@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
 import 'horizontal_pod_autoscaler_spec.dart';
 import 'horizontal_pod_autoscaler_status.dart';
@@ -7,15 +8,15 @@ import 'horizontal_pod_autoscaler_status.dart';
 /// configuration of a horizontal pod autoscaler.
 class HorizontalPodAutoscaler {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final ObjectMeta? metadata;
+  final pulumi.Input<ObjectMeta>? metadata;
   /// spec defines the behaviour of autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
-  final HorizontalPodAutoscalerSpec? spec;
+  final pulumi.Input<HorizontalPodAutoscalerSpec>? spec;
   /// status is the current information about the autoscaler.
-  final HorizontalPodAutoscalerStatus? status;
+  final pulumi.Input<HorizontalPodAutoscalerStatus>? status;
 
   /// Creates a new [HorizontalPodAutoscaler].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -35,19 +36,19 @@ class HorizontalPodAutoscaler {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'spec': ?spec == null ? null : spec!.toMap(),
-      'status': ?status == null ? null : status!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<HorizontalPodAutoscalerSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<HorizontalPodAutoscalerStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory HorizontalPodAutoscaler.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscaler(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      spec: map['spec'] == null ? null : HorizontalPodAutoscalerSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : HorizontalPodAutoscalerStatus.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (HorizontalPodAutoscalerSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (HorizontalPodAutoscalerStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

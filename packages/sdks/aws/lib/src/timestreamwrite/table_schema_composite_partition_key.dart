@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableSchemaCompositePartitionKey {
   /// The level of enforcement for the specification of a dimension key in ingested records. Valid values: `REQUIRED`, `OPTIONAL`.
-  final String? enforcementInRecord;
+  final pulumi.Input<String>? enforcementInRecord;
   /// The name of the attribute used for a dimension key.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The type of the partition key. Valid values: `DIMENSION`, `MEASURE`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TableSchemaCompositePartitionKey].
   /// [enforcementInRecord] The level of enforcement for the specification of a dimension key in ingested records. Valid values: `REQUIRED`, `OPTIONAL`.
@@ -29,9 +30,9 @@ class TableSchemaCompositePartitionKey {
 
   factory TableSchemaCompositePartitionKey.fromMap(Map<String, dynamic> map) {
     return TableSchemaCompositePartitionKey(
-      enforcementInRecord: map['enforcementInRecord'] == null ? null : map['enforcementInRecord'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] as String,
+      enforcementInRecord: map['enforcementInRecord'] == null ? null : (map['enforcementInRecord'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

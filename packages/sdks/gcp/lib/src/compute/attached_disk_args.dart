@@ -61,21 +61,14 @@ class AttachedDiskArgs {
   /// [project] The project that the referenced compute instance is a part of. If `instance` is referenced by its
   /// [zone] The zone that the referenced compute instance is located within. If `instance` is referenced by its
   AttachedDiskArgs({
-    pulumi.Output<String>? deviceName,
-    required pulumi.Output<String> disk,
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? interface,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      deviceName = pulumi.Input.asOptionalInput<String>(deviceName),
-      disk = pulumi.Input.asInput<String>(disk),
-      instance = pulumi.Input.asInput<String>(instance),
-      interface = pulumi.Input.asOptionalInput<String>(interface),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.deviceName,
+    required this.disk,
+    required this.instance,
+    this.interface,
+    this.mode,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,13 +84,13 @@ class AttachedDiskArgs {
 
   factory AttachedDiskArgs.fromMap(Map<String, dynamic> map) {
     return AttachedDiskArgs(
-      deviceName: map['deviceName'] == null ? null : pulumi.Output.create<String>(map['deviceName'] as String),
-      disk: pulumi.Output.create<String>(map['disk'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      interface: map['interface'] == null ? null : pulumi.Output.create<String>(map['interface'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      disk: (map['disk'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      interface: map['interface'] == null ? null : (map['interface'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

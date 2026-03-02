@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleErrorActionCloudwatchLogs {
   /// The payload that contains a JSON array of records will be sent to CloudWatch via a batch call.
-  final bool? batchMode;
+  final pulumi.Input<bool>? batchMode;
   /// The CloudWatch log group name.
-  final String logGroupName;
+  final pulumi.Input<String> logGroupName;
   /// The IAM role ARN that allows access to the CloudWatch alarm.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [TopicRuleErrorActionCloudwatchLogs].
   /// [batchMode] The payload that contains a JSON array of records will be sent to CloudWatch via a batch call.
@@ -29,9 +30,9 @@ class TopicRuleErrorActionCloudwatchLogs {
 
   factory TopicRuleErrorActionCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionCloudwatchLogs(
-      batchMode: map['batchMode'] == null ? null : map['batchMode'] as bool,
-      logGroupName: map['logGroupName'] as String,
-      roleArn: map['roleArn'] as String,
+      batchMode: map['batchMode'] == null ? null : (map['batchMode'] as bool).input(),
+      logGroupName: (map['logGroupName'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

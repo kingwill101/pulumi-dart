@@ -31,23 +31,15 @@ class SnatEntryState {
   /// [sourceVswitchId] The ID of the vSwitch.
   /// [status] (Available since v1.119.1) The ID of the SNAT entry.
   SnatEntryState({
-    pulumi.Output<int>? eipAffinity,
-    pulumi.Output<String>? snatEntryId,
-    pulumi.Output<String>? snatEntryName,
-    pulumi.Output<String>? snatIp,
-    pulumi.Output<String>? snatTableId,
-    pulumi.Output<String>? sourceCidr,
-    pulumi.Output<String>? sourceVswitchId,
-    pulumi.Output<String>? status,
-  }) :
-      eipAffinity = pulumi.Input.asOptionalInput<int>(eipAffinity),
-      snatEntryId = pulumi.Input.asOptionalInput<String>(snatEntryId),
-      snatEntryName = pulumi.Input.asOptionalInput<String>(snatEntryName),
-      snatIp = pulumi.Input.asOptionalInput<String>(snatIp),
-      snatTableId = pulumi.Input.asOptionalInput<String>(snatTableId),
-      sourceCidr = pulumi.Input.asOptionalInput<String>(sourceCidr),
-      sourceVswitchId = pulumi.Input.asOptionalInput<String>(sourceVswitchId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.eipAffinity,
+    this.snatEntryId,
+    this.snatEntryName,
+    this.snatIp,
+    this.snatTableId,
+    this.sourceCidr,
+    this.sourceVswitchId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class SnatEntryState {
 
   factory SnatEntryState.fromMap(Map<String, dynamic> map) {
     return SnatEntryState(
-      eipAffinity: map['eipAffinity'] == null ? null : pulumi.Output.create<int>(map['eipAffinity'] as int),
-      snatEntryId: map['snatEntryId'] == null ? null : pulumi.Output.create<String>(map['snatEntryId'] as String),
-      snatEntryName: map['snatEntryName'] == null ? null : pulumi.Output.create<String>(map['snatEntryName'] as String),
-      snatIp: map['snatIp'] == null ? null : pulumi.Output.create<String>(map['snatIp'] as String),
-      snatTableId: map['snatTableId'] == null ? null : pulumi.Output.create<String>(map['snatTableId'] as String),
-      sourceCidr: map['sourceCidr'] == null ? null : pulumi.Output.create<String>(map['sourceCidr'] as String),
-      sourceVswitchId: map['sourceVswitchId'] == null ? null : pulumi.Output.create<String>(map['sourceVswitchId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      eipAffinity: map['eipAffinity'] == null ? null : (map['eipAffinity'] as int).input(),
+      snatEntryId: map['snatEntryId'] == null ? null : (map['snatEntryId'] as String).input(),
+      snatEntryName: map['snatEntryName'] == null ? null : (map['snatEntryName'] as String).input(),
+      snatIp: map['snatIp'] == null ? null : (map['snatIp'] as String).input(),
+      snatTableId: map['snatTableId'] == null ? null : (map['snatTableId'] as String).input(),
+      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr'] as String).input(),
+      sourceVswitchId: map['sourceVswitchId'] == null ? null : (map['sourceVswitchId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

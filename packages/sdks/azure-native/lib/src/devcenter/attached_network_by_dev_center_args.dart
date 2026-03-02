@@ -22,15 +22,11 @@ class AttachedNetworkByDevCenterArgs {
   /// [networkConnectionId] The resource ID of the NetworkConnection you want to attach.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   AttachedNetworkByDevCenterArgs({
-    pulumi.Output<String>? attachedNetworkConnectionName,
-    required pulumi.Output<String> devCenterName,
-    required pulumi.Output<String> networkConnectionId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      attachedNetworkConnectionName = pulumi.Input.asOptionalInput<String>(attachedNetworkConnectionName),
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      networkConnectionId = pulumi.Input.asInput<String>(networkConnectionId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.attachedNetworkConnectionName,
+    required this.devCenterName,
+    required this.networkConnectionId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AttachedNetworkByDevCenterArgs {
 
   factory AttachedNetworkByDevCenterArgs.fromMap(Map<String, dynamic> map) {
     return AttachedNetworkByDevCenterArgs(
-      attachedNetworkConnectionName: map['attachedNetworkConnectionName'] == null ? null : pulumi.Output.create<String>(map['attachedNetworkConnectionName'] as String),
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      networkConnectionId: pulumi.Output.create<String>(map['networkConnectionId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      attachedNetworkConnectionName: map['attachedNetworkConnectionName'] == null ? null : (map['attachedNetworkConnectionName'] as String).input(),
+      devCenterName: (map['devCenterName'] as String).input(),
+      networkConnectionId: (map['networkConnectionId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

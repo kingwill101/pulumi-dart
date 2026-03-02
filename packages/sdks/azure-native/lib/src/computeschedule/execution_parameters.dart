@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'retry_policy.dart';
 
 /// Extra details needed to run the user's request
 class ExecutionParameters {
   /// Details that could optimize the user's request
-  final String? optimizationPreference;
+  final pulumi.Input<String>? optimizationPreference;
   /// Retry policy the user can pass
-  final RetryPolicy? retryPolicy;
+  final pulumi.Input<RetryPolicy>? retryPolicy;
 
   /// Creates a new [ExecutionParameters].
   /// [optimizationPreference] Details that could optimize the user's request
@@ -20,14 +21,14 @@ class ExecutionParameters {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'optimizationPreference': ?optimizationPreference,
-      'retryPolicy': ?retryPolicy == null ? null : retryPolicy!.toMap(),
+      'retryPolicy': ?pulumi.Input.mapOptionalInputValue<RetryPolicy, Map<String, dynamic>>(retryPolicy, (value) => value.toMap()),
     };
   }
 
   factory ExecutionParameters.fromMap(Map<String, dynamic> map) {
     return ExecutionParameters(
-      optimizationPreference: map['optimizationPreference'] == null ? null : map['optimizationPreference'] as String,
-      retryPolicy: map['retryPolicy'] == null ? null : RetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>()),
+      optimizationPreference: map['optimizationPreference'] == null ? null : (map['optimizationPreference'] as String).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

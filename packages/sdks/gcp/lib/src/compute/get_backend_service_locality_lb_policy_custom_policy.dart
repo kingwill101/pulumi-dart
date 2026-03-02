@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackendServiceLocalityLbPolicyCustomPolicy {
   /// An optional, arbitrary JSON object with configuration data, understood
   /// by a locally installed custom policy implementation.
-  final String data;
+  final pulumi.Input<String> data;
   /// The name of the Backend Service.
   ///
   /// - - -
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetBackendServiceLocalityLbPolicyCustomPolicy].
   /// [data] An optional, arbitrary JSON object with configuration data, understood
@@ -27,8 +28,8 @@ class GetBackendServiceLocalityLbPolicyCustomPolicy {
 
   factory GetBackendServiceLocalityLbPolicyCustomPolicy.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceLocalityLbPolicyCustomPolicy(
-      data: map['data'] as String,
-      name: map['name'] as String,
+      data: (map['data'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

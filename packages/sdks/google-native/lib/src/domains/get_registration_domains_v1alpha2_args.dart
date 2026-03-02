@@ -16,13 +16,10 @@ class GetRegistrationDomainsV1alpha2Args {
   /// [project] Optional.
   /// [registrationId] Required.
   GetRegistrationDomainsV1alpha2Args({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> registrationId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      registrationId = pulumi.Input.asInput<String>(registrationId);
+    required this.location,
+    this.project,
+    required this.registrationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetRegistrationDomainsV1alpha2Args {
 
   factory GetRegistrationDomainsV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return GetRegistrationDomainsV1alpha2Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      registrationId: pulumi.Output.create<String>(map['registrationId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      registrationId: (map['registrationId'] as String).input(),
     );
   }
 }

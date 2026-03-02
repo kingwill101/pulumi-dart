@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IoTHubNetworkRuleSetIpRule {
   /// The desired action for requests captured by this rule. Possible values are `Allow`. Defaults to `Allow`.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// The IP address range in CIDR notation for the ip rule.
-  final String ipMask;
+  final pulumi.Input<String> ipMask;
   /// The name of the ip rule.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [IoTHubNetworkRuleSetIpRule].
   /// [action] The desired action for requests captured by this rule. Possible values are `Allow`. Defaults to `Allow`.
@@ -29,9 +30,9 @@ class IoTHubNetworkRuleSetIpRule {
 
   factory IoTHubNetworkRuleSetIpRule.fromMap(Map<String, dynamic> map) {
     return IoTHubNetworkRuleSetIpRule(
-      action: map['action'] == null ? null : map['action'] as String,
-      ipMask: map['ipMask'] as String,
-      name: map['name'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      ipMask: (map['ipMask'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for sessions created for this environment.
 class GoogleCloudDataplexV1EnvironmentSessionSpecResponse {
   /// Optional. If True, this causes sessions to be pre-created and available for faster startup to enable interactive exploration use-cases. This defaults to False to avoid additional billed charges. These can only be set to True for the environment with name set to "default", and with default configuration.
-  final bool enableFastStartup;
+  final pulumi.Input<bool> enableFastStartup;
   /// Optional. The idle time configuration of the session. The session will be auto-terminated at the end of this period.
-  final String maxIdleDuration;
+  final pulumi.Input<String> maxIdleDuration;
 
   /// Creates a new [GoogleCloudDataplexV1EnvironmentSessionSpecResponse].
   /// [enableFastStartup] Optional. If True, this causes sessions to be pre-created and available for faster startup to enable interactive exploration use-cases. This defaults to False to avoid additional billed charges. These can only be set to True for the environment with name set to "default", and with default configuration.
@@ -25,8 +26,8 @@ class GoogleCloudDataplexV1EnvironmentSessionSpecResponse {
 
   factory GoogleCloudDataplexV1EnvironmentSessionSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EnvironmentSessionSpecResponse(
-      enableFastStartup: map['enableFastStartup'] as bool,
-      maxIdleDuration: map['maxIdleDuration'] as String,
+      enableFastStartup: (map['enableFastStartup'] as bool).input(),
+      maxIdleDuration: (map['maxIdleDuration'] as String).input(),
     );
   }
 }

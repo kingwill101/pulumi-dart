@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_audio_pulse_audio_input.dart';
 import 'domain_devices_audio_pulse_audio_output.dart';
 
 class DomainDevicesAudioPulseAudio {
   /// Configures the output settings for the PipeWire audio device.
-  final DomainDevicesAudioPulseAudioInput? input;
+  final pulumi.Input<DomainDevicesAudioPulseAudioInput>? input;
   /// Configures the output settings for the PipeWire audio device.
-  final DomainDevicesAudioPulseAudioOutput? output;
+  final pulumi.Input<DomainDevicesAudioPulseAudioOutput>? output;
   /// Specifies the server name for the PulseAudio audio backend configuration.
-  final String? serverName;
+  final pulumi.Input<String>? serverName;
 
   /// Creates a new [DomainDevicesAudioPulseAudio].
   /// [input] Configures the output settings for the PipeWire audio device.
@@ -23,17 +24,17 @@ class DomainDevicesAudioPulseAudio {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'input': ?input == null ? null : input!.toMap(),
-      'output': ?output == null ? null : output!.toMap(),
+      'input': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioPulseAudioInput, Map<String, dynamic>>(input, (value) => value.toMap()),
+      'output': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioPulseAudioOutput, Map<String, dynamic>>(output, (value) => value.toMap()),
       'serverName': ?serverName,
     };
   }
 
   factory DomainDevicesAudioPulseAudio.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioPulseAudio(
-      input: map['input'] == null ? null : DomainDevicesAudioPulseAudioInput.fromMap((map['input'] as Map).cast<String, dynamic>()),
-      output: map['output'] == null ? null : DomainDevicesAudioPulseAudioOutput.fromMap((map['output'] as Map).cast<String, dynamic>()),
-      serverName: map['serverName'] == null ? null : map['serverName'] as String,
+      input: map['input'] == null ? null : (DomainDevicesAudioPulseAudioInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      output: map['output'] == null ? null : (DomainDevicesAudioPulseAudioOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
     );
   }
 }

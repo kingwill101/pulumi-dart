@@ -22,13 +22,10 @@ class HmacKeyArgs {
   /// [serviceAccountEmail] The email address of the key's associated service account.
   /// [state] The state of the key. Can be set to one of ACTIVE, INACTIVE.
   HmacKeyArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceAccountEmail,
-    pulumi.Output<String>? state,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceAccountEmail = pulumi.Input.asInput<String>(serviceAccountEmail),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.project,
+    required this.serviceAccountEmail,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class HmacKeyArgs {
 
   factory HmacKeyArgs.fromMap(Map<String, dynamic> map) {
     return HmacKeyArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceAccountEmail: pulumi.Output.create<String>(map['serviceAccountEmail'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

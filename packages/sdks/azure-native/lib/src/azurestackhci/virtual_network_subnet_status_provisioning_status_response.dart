@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of virtual network subnet operations
 class VirtualNetworkSubnetStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the virtual network subnet
-  final String? operationId;
+  final pulumi.Input<String>? operationId;
   /// The status of the operation performed on the virtual network subnet [Succeeded, Failed, InProgress]
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [VirtualNetworkSubnetStatusProvisioningStatusResponse].
   /// [operationId] The ID of the operation performed on the virtual network subnet
@@ -25,8 +26,8 @@ class VirtualNetworkSubnetStatusProvisioningStatusResponse {
 
   factory VirtualNetworkSubnetStatusProvisioningStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetStatusProvisioningStatusResponse(
-      operationId: map['operationId'] == null ? null : map['operationId'] as String,
-      status: map['status'] as String,
+      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

@@ -52,35 +52,21 @@ class SamplingRuleArgs {
   /// [urlPath] Matches the path from a request URL.
   /// [version] The version of the sampling rule format (`1` )
   SamplingRuleArgs({
-    pulumi.Output<Map<String, String>>? attributes,
-    required pulumi.Output<double> fixedRate,
-    required pulumi.Output<String> host,
-    required pulumi.Output<String> httpMethod,
-    required pulumi.Output<int> priority,
-    pulumi.Output<String>? region,
-    required pulumi.Output<int> reservoirSize,
-    required pulumi.Output<String> resourceArn,
-    pulumi.Output<String>? ruleName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> serviceType,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> urlPath,
-    required pulumi.Output<int> version,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<Map<String, String>>(attributes),
-      fixedRate = pulumi.Input.asInput<double>(fixedRate),
-      host = pulumi.Input.asInput<String>(host),
-      httpMethod = pulumi.Input.asInput<String>(httpMethod),
-      priority = pulumi.Input.asInput<int>(priority),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reservoirSize = pulumi.Input.asInput<int>(reservoirSize),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      serviceType = pulumi.Input.asInput<String>(serviceType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      urlPath = pulumi.Input.asInput<String>(urlPath),
-      version = pulumi.Input.asInput<int>(version);
+    this.attributes,
+    required this.fixedRate,
+    required this.host,
+    required this.httpMethod,
+    required this.priority,
+    this.region,
+    required this.reservoirSize,
+    required this.resourceArn,
+    this.ruleName,
+    required this.serviceName,
+    required this.serviceType,
+    this.tags,
+    required this.urlPath,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class SamplingRuleArgs {
 
   factory SamplingRuleArgs.fromMap(Map<String, dynamic> map) {
     return SamplingRuleArgs(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<Map<String, String>>((map['attributes'] as Map).cast<String, String>()),
-      fixedRate: pulumi.Output.create<double>(map['fixedRate'] as double),
-      host: pulumi.Output.create<String>(map['host'] as String),
-      httpMethod: pulumi.Output.create<String>(map['httpMethod'] as String),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reservoirSize: pulumi.Output.create<int>(map['reservoirSize'] as int),
-      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      serviceType: pulumi.Output.create<String>(map['serviceType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      urlPath: pulumi.Output.create<String>(map['urlPath'] as String),
-      version: pulumi.Output.create<int>(map['version'] as int),
+      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
+      fixedRate: (map['fixedRate'] as double).input(),
+      host: (map['host'] as String).input(),
+      httpMethod: (map['httpMethod'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reservoirSize: (map['reservoirSize'] as int).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      serviceType: (map['serviceType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      urlPath: (map['urlPath'] as String).input(),
+      version: (map['version'] as int).input(),
     );
   }
 }

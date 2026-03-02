@@ -42,29 +42,18 @@ class ApiState {
   /// [wafWebAclArn] ARN of the associated WAF web ACL.
   /// [xrayEnabled] Optional.
   ApiState({
-    pulumi.Output<String>? apiArn,
-    pulumi.Output<String>? apiId,
-    pulumi.Output<Map<String, String>>? dns,
-    pulumi.Output<ApiEventConfig>? eventConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ownerContact,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? wafWebAclArn,
-    pulumi.Output<bool>? xrayEnabled,
-  }) :
-      apiArn = pulumi.Input.asOptionalInput<String>(apiArn),
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      dns = pulumi.Input.asOptionalInput<Map<String, String>>(dns),
-      eventConfig = pulumi.Input.asOptionalInput<ApiEventConfig>(eventConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerContact = pulumi.Input.asOptionalInput<String>(ownerContact),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      wafWebAclArn = pulumi.Input.asOptionalInput<String>(wafWebAclArn),
-      xrayEnabled = pulumi.Input.asOptionalInput<bool>(xrayEnabled);
+    this.apiArn,
+    this.apiId,
+    this.dns,
+    this.eventConfig,
+    this.name,
+    this.ownerContact,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.wafWebAclArn,
+    this.xrayEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class ApiState {
 
   factory ApiState.fromMap(Map<String, dynamic> map) {
     return ApiState(
-      apiArn: map['apiArn'] == null ? null : pulumi.Output.create<String>(map['apiArn'] as String),
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      dns: map['dns'] == null ? null : pulumi.Output.create<Map<String, String>>((map['dns'] as Map).cast<String, String>()),
-      eventConfig: map['eventConfig'] == null ? null : pulumi.Output.create<ApiEventConfig>(ApiEventConfig.fromMap((map['eventConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerContact: map['ownerContact'] == null ? null : pulumi.Output.create<String>(map['ownerContact'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      wafWebAclArn: map['wafWebAclArn'] == null ? null : pulumi.Output.create<String>(map['wafWebAclArn'] as String),
-      xrayEnabled: map['xrayEnabled'] == null ? null : pulumi.Output.create<bool>(map['xrayEnabled'] as bool),
+      apiArn: map['apiArn'] == null ? null : (map['apiArn'] as String).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      dns: map['dns'] == null ? null : ((map['dns'] as Map).cast<String, String>()).input(),
+      eventConfig: map['eventConfig'] == null ? null : (ApiEventConfig.fromMap((map['eventConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerContact: map['ownerContact'] == null ? null : (map['ownerContact'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      wafWebAclArn: map['wafWebAclArn'] == null ? null : (map['wafWebAclArn'] as String).input(),
+      xrayEnabled: map['xrayEnabled'] == null ? null : (map['xrayEnabled'] as bool).input(),
     );
   }
 }

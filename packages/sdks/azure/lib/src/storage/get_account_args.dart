@@ -19,13 +19,10 @@ class GetAccountArgs {
   /// [name] Specifies the name of the Storage Account
   /// [resourceGroupName] Specifies the name of the resource group the Storage Account is located in.
   GetAccountArgs({
-    pulumi.Output<String>? minTlsVersion,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      minTlsVersion = pulumi.Input.asOptionalInput<String>(minTlsVersion),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.minTlsVersion,
+    required this.name,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      minTlsVersion: map['minTlsVersion'] == null ? null : pulumi.Output.create<String>(map['minTlsVersion'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

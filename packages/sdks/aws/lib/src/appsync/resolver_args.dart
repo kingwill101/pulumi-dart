@@ -56,35 +56,21 @@ class ResolverArgs {
   /// [syncConfig] Describes a Sync configuration for a resolver. See Sync Config.
   /// [type] Type name from the schema defined in the GraphQL API.
   ResolverArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<ResolverCachingConfig>? cachingConfig,
-    pulumi.Output<String>? code,
-    pulumi.Output<String>? dataSource,
-    required pulumi.Output<String> field,
-    pulumi.Output<String>? kind,
-    pulumi.Output<int>? maxBatchSize,
-    pulumi.Output<ResolverPipelineConfig>? pipelineConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? requestTemplate,
-    pulumi.Output<String>? responseTemplate,
-    pulumi.Output<ResolverRuntime>? runtime,
-    pulumi.Output<ResolverSyncConfig>? syncConfig,
-    required pulumi.Output<String> type,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      cachingConfig = pulumi.Input.asOptionalInput<ResolverCachingConfig>(cachingConfig),
-      code = pulumi.Input.asOptionalInput<String>(code),
-      dataSource = pulumi.Input.asOptionalInput<String>(dataSource),
-      field = pulumi.Input.asInput<String>(field),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      maxBatchSize = pulumi.Input.asOptionalInput<int>(maxBatchSize),
-      pipelineConfig = pulumi.Input.asOptionalInput<ResolverPipelineConfig>(pipelineConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      requestTemplate = pulumi.Input.asOptionalInput<String>(requestTemplate),
-      responseTemplate = pulumi.Input.asOptionalInput<String>(responseTemplate),
-      runtime = pulumi.Input.asOptionalInput<ResolverRuntime>(runtime),
-      syncConfig = pulumi.Input.asOptionalInput<ResolverSyncConfig>(syncConfig),
-      type = pulumi.Input.asInput<String>(type);
+    required this.apiId,
+    this.cachingConfig,
+    this.code,
+    this.dataSource,
+    required this.field,
+    this.kind,
+    this.maxBatchSize,
+    this.pipelineConfig,
+    this.region,
+    this.requestTemplate,
+    this.responseTemplate,
+    this.runtime,
+    this.syncConfig,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class ResolverArgs {
 
   factory ResolverArgs.fromMap(Map<String, dynamic> map) {
     return ResolverArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      cachingConfig: map['cachingConfig'] == null ? null : pulumi.Output.create<ResolverCachingConfig>(ResolverCachingConfig.fromMap((map['cachingConfig'] as Map).cast<String, dynamic>())),
-      code: map['code'] == null ? null : pulumi.Output.create<String>(map['code'] as String),
-      dataSource: map['dataSource'] == null ? null : pulumi.Output.create<String>(map['dataSource'] as String),
-      field: pulumi.Output.create<String>(map['field'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      maxBatchSize: map['maxBatchSize'] == null ? null : pulumi.Output.create<int>(map['maxBatchSize'] as int),
-      pipelineConfig: map['pipelineConfig'] == null ? null : pulumi.Output.create<ResolverPipelineConfig>(ResolverPipelineConfig.fromMap((map['pipelineConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      requestTemplate: map['requestTemplate'] == null ? null : pulumi.Output.create<String>(map['requestTemplate'] as String),
-      responseTemplate: map['responseTemplate'] == null ? null : pulumi.Output.create<String>(map['responseTemplate'] as String),
-      runtime: map['runtime'] == null ? null : pulumi.Output.create<ResolverRuntime>(ResolverRuntime.fromMap((map['runtime'] as Map).cast<String, dynamic>())),
-      syncConfig: map['syncConfig'] == null ? null : pulumi.Output.create<ResolverSyncConfig>(ResolverSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      apiId: (map['apiId'] as String).input(),
+      cachingConfig: map['cachingConfig'] == null ? null : (ResolverCachingConfig.fromMap((map['cachingConfig'] as Map).cast<String, dynamic>())).input(),
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
+      field: (map['field'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize'] as int).input(),
+      pipelineConfig: map['pipelineConfig'] == null ? null : (ResolverPipelineConfig.fromMap((map['pipelineConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      requestTemplate: map['requestTemplate'] == null ? null : (map['requestTemplate'] as String).input(),
+      responseTemplate: map['responseTemplate'] == null ? null : (map['responseTemplate'] as String).input(),
+      runtime: map['runtime'] == null ? null : (ResolverRuntime.fromMap((map['runtime'] as Map).cast<String, dynamic>())).input(),
+      syncConfig: map['syncConfig'] == null ? null : (ResolverSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

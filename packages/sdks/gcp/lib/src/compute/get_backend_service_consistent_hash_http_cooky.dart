@@ -7,11 +7,11 @@ class GetBackendServiceConsistentHashHttpCooky {
   /// The name of the Backend Service.
   ///
   /// - - -
-  final String name;
+  final pulumi.Input<String> name;
   /// Path to set for the cookie.
-  final String path;
+  final pulumi.Input<String> path;
   /// Lifetime of the cookie.
-  final List<GetBackendServiceConsistentHashHttpCookyTtl> ttls;
+  final pulumi.Input<List<GetBackendServiceConsistentHashHttpCookyTtl>> ttls;
 
   /// Creates a new [GetBackendServiceConsistentHashHttpCooky].
   /// [name] The name of the Backend Service.
@@ -27,15 +27,15 @@ class GetBackendServiceConsistentHashHttpCooky {
     return <String, dynamic>{
       'name': name,
       'path': path,
-      'ttls': pulumi.Input.encodeList<GetBackendServiceConsistentHashHttpCookyTtl, Map<String, dynamic>>(ttls, (value) => value.toMap()),
+      'ttls': pulumi.Input.mapInputValue<List<GetBackendServiceConsistentHashHttpCookyTtl>, List<Map<String, dynamic>>>(ttls, (value) => pulumi.Input.encodeList<GetBackendServiceConsistentHashHttpCookyTtl, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetBackendServiceConsistentHashHttpCooky.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceConsistentHashHttpCooky(
-      name: map['name'] as String,
-      path: map['path'] as String,
-      ttls: pulumi.Input.decodeList<GetBackendServiceConsistentHashHttpCookyTtl>(map['ttls'], (value) => GetBackendServiceConsistentHashHttpCookyTtl.fromMap((value as Map).cast<String, dynamic>())),
+      name: (map['name'] as String).input(),
+      path: (map['path'] as String).input(),
+      ttls: (pulumi.Input.decodeList<GetBackendServiceConsistentHashHttpCookyTtl>(map['ttls'], (value) => GetBackendServiceConsistentHashHttpCookyTtl.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

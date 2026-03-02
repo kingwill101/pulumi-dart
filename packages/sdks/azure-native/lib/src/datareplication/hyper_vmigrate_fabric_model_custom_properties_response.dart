@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// HyperV migrate fabric model custom properties.
 class HyperVMigrateFabricModelCustomPropertiesResponse {
   /// Gets or sets the fabric container Id.
-  final String fabricContainerId;
+  final pulumi.Input<String> fabricContainerId;
   /// Gets or sets the fabric resource Id.
-  final String fabricResourceId;
+  final pulumi.Input<String> fabricResourceId;
   /// Gets or sets the ARM Id of the HyperV site.
-  final String hyperVSiteId;
+  final pulumi.Input<String> hyperVSiteId;
   /// Gets or sets the instance type.
   /// Expected value is 'HyperVMigrate'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Gets or sets the migration hub Uri.
-  final String migrationHubUri;
+  final pulumi.Input<String> migrationHubUri;
   /// Gets or sets the migration solution ARM Id.
-  final String migrationSolutionId;
+  final pulumi.Input<String> migrationSolutionId;
 
   /// Creates a new [HyperVMigrateFabricModelCustomPropertiesResponse].
   /// [fabricContainerId] Gets or sets the fabric container Id.
@@ -46,12 +47,12 @@ class HyperVMigrateFabricModelCustomPropertiesResponse {
 
   factory HyperVMigrateFabricModelCustomPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HyperVMigrateFabricModelCustomPropertiesResponse(
-      fabricContainerId: map['fabricContainerId'] as String,
-      fabricResourceId: map['fabricResourceId'] as String,
-      hyperVSiteId: map['hyperVSiteId'] as String,
-      instanceType: map['instanceType'] as String,
-      migrationHubUri: map['migrationHubUri'] as String,
-      migrationSolutionId: map['migrationSolutionId'] as String,
+      fabricContainerId: (map['fabricContainerId'] as String).input(),
+      fabricResourceId: (map['fabricResourceId'] as String).input(),
+      hyperVSiteId: (map['hyperVSiteId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      migrationHubUri: (map['migrationHubUri'] as String).input(),
+      migrationSolutionId: (map['migrationSolutionId'] as String).input(),
     );
   }
 }

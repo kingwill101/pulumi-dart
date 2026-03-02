@@ -1,61 +1,62 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNodeDeviceInfoCapability {
   /// MAC address or device address.
-  final String address;
+  final pulumi.Input<String> address;
   /// Block device path (e.g., `/dev/sda`).
-  final String block;
+  final pulumi.Input<String> block;
   /// PCI/USB bus number.
-  final double bus;
+  final pulumi.Input<double> bus;
   /// PCI class code (e.g., `0x030000` for VGA).
-  final String class_;
+  final pulumi.Input<String> class_;
   /// USB device number.
-  final double deviceNumber;
+  final pulumi.Input<double> deviceNumber;
   /// PCI domain number.
-  final double domain;
+  final pulumi.Input<double> domain;
   /// Drive type (e.g., `disk`, `cdrom`).
-  final String driveType;
+  final pulumi.Input<String> driveType;
   /// PCI function number.
-  final double function;
+  final pulumi.Input<double> function;
   /// SCSI host number.
-  final double host;
+  final pulumi.Input<double> host;
   /// Network interface name (e.g., `eth0`).
-  final String interface;
+  final pulumi.Input<String> interface;
   /// IOMMU group number (for PCI passthrough).
-  final double iommuGroup;
+  final pulumi.Input<double> iommuGroup;
   /// Network link speed.
-  final String linkSpeed;
+  final pulumi.Input<String> linkSpeed;
   /// Network link state (e.g., `up`, `down`).
-  final String linkState;
+  final pulumi.Input<String> linkState;
   /// Logical block size in bytes.
-  final double logicalBlockSize;
+  final pulumi.Input<double> logicalBlockSize;
   /// SCSI LUN (Logical Unit Number).
-  final double lun;
+  final pulumi.Input<double> lun;
   /// Device model name.
-  final String model;
+  final pulumi.Input<String> model;
   /// Number of blocks.
-  final double numBlocks;
+  final pulumi.Input<double> numBlocks;
   /// Product ID (vendor-specific identifier).
-  final String productId;
+  final pulumi.Input<String> productId;
   /// Product name or description.
-  final String productName;
+  final pulumi.Input<String> productName;
   /// SCSI device type.
-  final String scsiType;
+  final pulumi.Input<String> scsiType;
   /// Device serial number.
-  final String serial;
+  final pulumi.Input<String> serial;
   /// Storage capacity in bytes.
-  final double size;
+  final pulumi.Input<double> size;
   /// PCI slot number.
-  final double slot;
+  final pulumi.Input<double> slot;
   /// SCSI target number.
-  final double target;
+  final pulumi.Input<double> target;
   /// Capability type (e.g., `pci`, `usb_device`, `net`, `storage`).
-  final String type;
+  final pulumi.Input<String> type;
   /// Vendor ID.
-  final String vendorId;
+  final pulumi.Input<String> vendorId;
   /// Vendor name.
-  final String vendorName;
+  final pulumi.Input<String> vendorName;
 
   /// Creates a new [GetNodeDeviceInfoCapability].
   /// [address] MAC address or device address.
@@ -149,33 +150,33 @@ class GetNodeDeviceInfoCapability {
 
   factory GetNodeDeviceInfoCapability.fromMap(Map<String, dynamic> map) {
     return GetNodeDeviceInfoCapability(
-      address: map['address'] as String,
-      block: map['block'] as String,
-      bus: map['bus'] as double,
-      class_: map['class'] as String,
-      deviceNumber: map['deviceNumber'] as double,
-      domain: map['domain'] as double,
-      driveType: map['driveType'] as String,
-      function: map['function'] as double,
-      host: map['host'] as double,
-      interface: map['interface'] as String,
-      iommuGroup: map['iommuGroup'] as double,
-      linkSpeed: map['linkSpeed'] as String,
-      linkState: map['linkState'] as String,
-      logicalBlockSize: map['logicalBlockSize'] as double,
-      lun: map['lun'] as double,
-      model: map['model'] as String,
-      numBlocks: map['numBlocks'] as double,
-      productId: map['productId'] as String,
-      productName: map['productName'] as String,
-      scsiType: map['scsiType'] as String,
-      serial: map['serial'] as String,
-      size: map['size'] as double,
-      slot: map['slot'] as double,
-      target: map['target'] as double,
-      type: map['type'] as String,
-      vendorId: map['vendorId'] as String,
-      vendorName: map['vendorName'] as String,
+      address: (map['address'] as String).input(),
+      block: (map['block'] as String).input(),
+      bus: (map['bus'] as double).input(),
+      class_: (map['class'] as String).input(),
+      deviceNumber: (map['deviceNumber'] as double).input(),
+      domain: (map['domain'] as double).input(),
+      driveType: (map['driveType'] as String).input(),
+      function: (map['function'] as double).input(),
+      host: (map['host'] as double).input(),
+      interface: (map['interface'] as String).input(),
+      iommuGroup: (map['iommuGroup'] as double).input(),
+      linkSpeed: (map['linkSpeed'] as String).input(),
+      linkState: (map['linkState'] as String).input(),
+      logicalBlockSize: (map['logicalBlockSize'] as double).input(),
+      lun: (map['lun'] as double).input(),
+      model: (map['model'] as String).input(),
+      numBlocks: (map['numBlocks'] as double).input(),
+      productId: (map['productId'] as String).input(),
+      productName: (map['productName'] as String).input(),
+      scsiType: (map['scsiType'] as String).input(),
+      serial: (map['serial'] as String).input(),
+      size: (map['size'] as double).input(),
+      slot: (map['slot'] as double).input(),
+      target: (map['target'] as double).input(),
+      type: (map['type'] as String).input(),
+      vendorId: (map['vendorId'] as String).input(),
+      vendorName: (map['vendorName'] as String).input(),
     );
   }
 }

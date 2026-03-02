@@ -28,19 +28,13 @@ class SlbAttachmentArgs {
   /// [type] The type of the bound SLB instance.
   /// [vserverGroupId] The ID of the virtual server (VServer) group associated with the intranet SLB instance.
   SlbAttachmentArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<int>? listenerPort,
-    required pulumi.Output<String> slbId,
-    required pulumi.Output<String> slbIp,
-    required pulumi.Output<String> type,
-    pulumi.Output<String>? vserverGroupId,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      listenerPort = pulumi.Input.asOptionalInput<int>(listenerPort),
-      slbId = pulumi.Input.asInput<String>(slbId),
-      slbIp = pulumi.Input.asInput<String>(slbIp),
-      type = pulumi.Input.asInput<String>(type),
-      vserverGroupId = pulumi.Input.asOptionalInput<String>(vserverGroupId);
+    required this.appId,
+    this.listenerPort,
+    required this.slbId,
+    required this.slbIp,
+    required this.type,
+    this.vserverGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SlbAttachmentArgs {
 
   factory SlbAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return SlbAttachmentArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      listenerPort: map['listenerPort'] == null ? null : pulumi.Output.create<int>(map['listenerPort'] as int),
-      slbId: pulumi.Output.create<String>(map['slbId'] as String),
-      slbIp: pulumi.Output.create<String>(map['slbIp'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      vserverGroupId: map['vserverGroupId'] == null ? null : pulumi.Output.create<String>(map['vserverGroupId'] as String),
+      appId: (map['appId'] as String).input(),
+      listenerPort: map['listenerPort'] == null ? null : (map['listenerPort'] as int).input(),
+      slbId: (map['slbId'] as String).input(),
+      slbIp: (map['slbIp'] as String).input(),
+      type: (map['type'] as String).input(),
+      vserverGroupId: map['vserverGroupId'] == null ? null : (map['vserverGroupId'] as String).input(),
     );
   }
 }

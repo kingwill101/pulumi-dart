@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties defining the mapping between a cloud secret store object and a Kubernetes Secret.
 class KubernetesSecretObjectMappingResponse {
   /// SourcePath is the identifier for the secret data as defined by the external secret provider. This is the key or path to the secret in the provider's system, which gets mounted to a specific path in the pod. The value should match the name of the secret as specified in the SecretProviderClass's objects array.
-  final String sourcePath;
+  final pulumi.Input<String> sourcePath;
   /// TargetKey is the key in the Kubernetes secret's data field where the secret value will be stored. This key is used to reference the secret data within Kubernetes, and it should be unique within the secret.
-  final String targetKey;
+  final pulumi.Input<String> targetKey;
 
   /// Creates a new [KubernetesSecretObjectMappingResponse].
   /// [sourcePath] SourcePath is the identifier for the secret data as defined by the external secret provider. This is the key or path to the secret in the provider's system, which gets mounted to a specific path in the pod. The value should match the name of the secret as specified in the SecretProviderClass's objects array.
@@ -25,8 +26,8 @@ class KubernetesSecretObjectMappingResponse {
 
   factory KubernetesSecretObjectMappingResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesSecretObjectMappingResponse(
-      sourcePath: map['sourcePath'] as String,
-      targetKey: map['targetKey'] as String,
+      sourcePath: (map['sourcePath'] as String).input(),
+      targetKey: (map['targetKey'] as String).input(),
     );
   }
 }

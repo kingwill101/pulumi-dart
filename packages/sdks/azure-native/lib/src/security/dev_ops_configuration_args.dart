@@ -20,13 +20,10 @@ class DevOpsConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
   DevOpsConfigurationArgs({
-    pulumi.Output<DevOpsConfigurationProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> securityConnectorName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<DevOpsConfigurationProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityConnectorName = pulumi.Input.asInput<String>(securityConnectorName);
+    this.properties,
+    required this.resourceGroupName,
+    required this.securityConnectorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class DevOpsConfigurationArgs {
 
   factory DevOpsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DevOpsConfigurationArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<DevOpsConfigurationProperties>(DevOpsConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityConnectorName: pulumi.Output.create<String>(map['securityConnectorName'] as String),
+      properties: map['properties'] == null ? null : (DevOpsConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityConnectorName: (map['securityConnectorName'] as String).input(),
     );
   }
 }

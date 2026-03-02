@@ -29,19 +29,13 @@ class VolumeArgs {
   /// [tags] Resource tags.
   /// [volumeName] The name of the volume.
   VolumeArgs({
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<double> sizeMiB,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? volumeName,
-  }) :
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sizeMiB = pulumi.Input.asInput<double>(sizeMiB),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      volumeName = pulumi.Input.asOptionalInput<String>(volumeName);
+    required this.extendedLocation,
+    this.location,
+    required this.resourceGroupName,
+    required this.sizeMiB,
+    this.tags,
+    this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sizeMiB: pulumi.Output.create<double>(map['sizeMiB'] as double),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      volumeName: map['volumeName'] == null ? null : pulumi.Output.create<String>(map['volumeName'] as String),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sizeMiB: (map['sizeMiB'] as double).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
     );
   }
 }

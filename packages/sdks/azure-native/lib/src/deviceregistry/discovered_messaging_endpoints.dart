@@ -7,9 +7,9 @@ import 'discovered_outbound_endpoints.dart';
 /// Connection endpoint URL a device can use to connect to a service.
 class DiscoveredMessagingEndpoints {
   /// Set of endpoints to connect to the device.
-  final Map<String, DiscoveredInboundEndpoints>? inbound;
+  final pulumi.Input<Map<String, DiscoveredInboundEndpoints>>? inbound;
   /// Set of endpoints a device can connect to.
-  final DiscoveredOutboundEndpoints? outbound;
+  final pulumi.Input<DiscoveredOutboundEndpoints>? outbound;
 
   /// Creates a new [DiscoveredMessagingEndpoints].
   /// [inbound] Set of endpoints to connect to the device.
@@ -21,15 +21,15 @@ class DiscoveredMessagingEndpoints {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inbound': ?inbound == null ? null : pulumi.Input.encodeMapValues<DiscoveredInboundEndpoints, Map<String, dynamic>>(inbound!, (value) => value.toMap()),
-      'outbound': ?outbound == null ? null : outbound!.toMap(),
+      'inbound': ?pulumi.Input.mapOptionalInputValue<Map<String, DiscoveredInboundEndpoints>, Map<String, Map<String, dynamic>>>(inbound, (value) => pulumi.Input.encodeMapValues<DiscoveredInboundEndpoints, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'outbound': ?pulumi.Input.mapOptionalInputValue<DiscoveredOutboundEndpoints, Map<String, dynamic>>(outbound, (value) => value.toMap()),
     };
   }
 
   factory DiscoveredMessagingEndpoints.fromMap(Map<String, dynamic> map) {
     return DiscoveredMessagingEndpoints(
-      inbound: map['inbound'] == null ? null : pulumi.Input.decodeMapValues<DiscoveredInboundEndpoints>(map['inbound'], (value) => DiscoveredInboundEndpoints.fromMap((value as Map).cast<String, dynamic>())),
-      outbound: map['outbound'] == null ? null : DiscoveredOutboundEndpoints.fromMap((map['outbound'] as Map).cast<String, dynamic>()),
+      inbound: map['inbound'] == null ? null : (pulumi.Input.decodeMapValues<DiscoveredInboundEndpoints>(map['inbound'], (value) => DiscoveredInboundEndpoints.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outbound: map['outbound'] == null ? null : (DiscoveredOutboundEndpoints.fromMap((map['outbound'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

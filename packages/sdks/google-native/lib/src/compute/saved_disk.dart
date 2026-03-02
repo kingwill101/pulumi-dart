@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An instance-attached disk resource.
 class SavedDisk {
   /// Specifies a URL of the disk attached to the source instance.
-  final String? sourceDisk;
+  final pulumi.Input<String>? sourceDisk;
 
   /// Creates a new [SavedDisk].
   /// [sourceDisk] Specifies a URL of the disk attached to the source instance.
@@ -20,7 +21,7 @@ class SavedDisk {
 
   factory SavedDisk.fromMap(Map<String, dynamic> map) {
     return SavedDisk(
-      sourceDisk: map['sourceDisk'] == null ? null : map['sourceDisk'] as String,
+      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk'] as String).input(),
     );
   }
 }

@@ -28,21 +28,14 @@ class TaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args {
   /// [taxonomyId] Required.
   /// [version] Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   TaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args({
-    pulumi.Output<List<BindingDatacatalogV1beta1>>? bindings,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> policyTagId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> taxonomyId,
-    pulumi.Output<int>? version,
-  }) :
-      bindings = pulumi.Input.asOptionalInput<List<BindingDatacatalogV1beta1>>(bindings),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyTagId = pulumi.Input.asInput<String>(policyTagId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      taxonomyId = pulumi.Input.asInput<String>(taxonomyId),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.bindings,
+    this.etag,
+    this.location,
+    required this.policyTagId,
+    this.project,
+    required this.taxonomyId,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class TaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args {
 
   factory TaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args(
-      bindings: map['bindings'] == null ? null : pulumi.Output.create<List<BindingDatacatalogV1beta1>>(pulumi.Input.decodeList<BindingDatacatalogV1beta1>(map['bindings'], (value) => BindingDatacatalogV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyTagId: pulumi.Output.create<String>(map['policyTagId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      taxonomyId: pulumi.Output.create<String>(map['taxonomyId'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingDatacatalogV1beta1>(map['bindings'], (value) => BindingDatacatalogV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyTagId: (map['policyTagId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      taxonomyId: (map['taxonomyId'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

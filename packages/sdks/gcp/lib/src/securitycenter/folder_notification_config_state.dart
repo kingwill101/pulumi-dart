@@ -33,21 +33,14 @@ class FolderNotificationConfigState {
   /// [serviceAccount] The service account that needs "pubsub.topics.publish" permission to
   /// [streamingConfig] The config for triggering streaming-based notifications.
   FolderNotificationConfigState({
-    pulumi.Output<String>? configId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? folder,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pubsubTopic,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<FolderNotificationConfigStreamingConfig>? streamingConfig,
-  }) :
-      configId = pulumi.Input.asOptionalInput<String>(configId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pubsubTopic = pulumi.Input.asOptionalInput<String>(pubsubTopic),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      streamingConfig = pulumi.Input.asOptionalInput<FolderNotificationConfigStreamingConfig>(streamingConfig);
+    this.configId,
+    this.description,
+    this.folder,
+    this.name,
+    this.pubsubTopic,
+    this.serviceAccount,
+    this.streamingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class FolderNotificationConfigState {
 
   factory FolderNotificationConfigState.fromMap(Map<String, dynamic> map) {
     return FolderNotificationConfigState(
-      configId: map['configId'] == null ? null : pulumi.Output.create<String>(map['configId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pubsubTopic: map['pubsubTopic'] == null ? null : pulumi.Output.create<String>(map['pubsubTopic'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      streamingConfig: map['streamingConfig'] == null ? null : pulumi.Output.create<FolderNotificationConfigStreamingConfig>(FolderNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())),
+      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      streamingConfig: map['streamingConfig'] == null ? null : (FolderNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

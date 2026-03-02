@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A copy activity source for an HTTP file.
 class HttpSource {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Specifies the timeout for a HTTP client to get HTTP response from HTTP server. The default value is equivalent to System.Net.HttpWebRequest.Timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic httpRequestTimeout;
+  final pulumi.Input<dynamic>? httpRequestTimeout;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Copy source type.
   /// Expected value is 'HttpSource'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [HttpSource].
   /// [disableMetricsCollection] If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -46,12 +47,12 @@ class HttpSource {
 
   factory HttpSource.fromMap(Map<String, dynamic> map) {
     return HttpSource(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      httpRequestTimeout: map['httpRequestTimeout'] == null ? null : map['httpRequestTimeout'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      type: map['type'] as String,
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      httpRequestTimeout: map['httpRequestTimeout'] == null ? null : (map['httpRequestTimeout']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

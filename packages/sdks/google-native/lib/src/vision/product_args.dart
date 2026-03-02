@@ -33,23 +33,15 @@ class ProductArgs {
   /// [productLabels] Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
   /// [project] Optional.
   ProductArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? productCategory,
-    pulumi.Output<String>? productId,
-    pulumi.Output<List<KeyValue>>? productLabels,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      productCategory = pulumi.Input.asOptionalInput<String>(productCategory),
-      productId = pulumi.Input.asOptionalInput<String>(productId),
-      productLabels = pulumi.Input.asOptionalInput<List<KeyValue>>(productLabels),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    this.displayName,
+    this.location,
+    this.name,
+    this.productCategory,
+    this.productId,
+    this.productLabels,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ProductArgs {
 
   factory ProductArgs.fromMap(Map<String, dynamic> map) {
     return ProductArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      productCategory: map['productCategory'] == null ? null : pulumi.Output.create<String>(map['productCategory'] as String),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
-      productLabels: map['productLabels'] == null ? null : pulumi.Output.create<List<KeyValue>>(pulumi.Input.decodeList<KeyValue>(map['productLabels'], (value) => KeyValue.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      productCategory: map['productCategory'] == null ? null : (map['productCategory'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      productLabels: map['productLabels'] == null ? null : (pulumi.Input.decodeList<KeyValue>(map['productLabels'], (value) => KeyValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes an image source that is a managed image in customer subscription. This image must reside in the same subscription and region as the Image Builder template.
 class ImageTemplateManagedImageSource {
   /// ARM resource id of the managed image in customer subscription
-  final String imageId;
+  final pulumi.Input<String> imageId;
   /// Specifies the type of source image you want to start with.
   /// Expected value is 'ManagedImage'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ImageTemplateManagedImageSource].
   /// [imageId] ARM resource id of the managed image in customer subscription
@@ -26,8 +27,8 @@ class ImageTemplateManagedImageSource {
 
   factory ImageTemplateManagedImageSource.fromMap(Map<String, dynamic> map) {
     return ImageTemplateManagedImageSource(
-      imageId: map['imageId'] as String,
-      type: map['type'] as String,
+      imageId: (map['imageId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

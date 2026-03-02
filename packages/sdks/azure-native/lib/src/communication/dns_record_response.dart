@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A class that represents a VerificationStatus record.
 class DnsRecordResponse {
   /// Name of the DNS record.
-  final String name;
+  final pulumi.Input<String> name;
   /// Represents an expiry time in seconds to represent how long this entry can be cached by the resolver, default = 3600sec.
-  final int ttl;
+  final pulumi.Input<int> ttl;
   /// Type of the DNS record. Example: TXT
-  final String type;
+  final pulumi.Input<String> type;
   /// Value of the DNS record.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DnsRecordResponse].
   /// [name] Name of the DNS record.
@@ -35,10 +36,10 @@ class DnsRecordResponse {
 
   factory DnsRecordResponse.fromMap(Map<String, dynamic> map) {
     return DnsRecordResponse(
-      name: map['name'] as String,
-      ttl: map['ttl'] as int,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      ttl: (map['ttl'] as int).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

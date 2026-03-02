@@ -32,21 +32,14 @@ class ManagementAssociationArgs {
   /// [resourceName] Parent resource name.
   /// [resourceType] Resource type for the parent resource
   ManagementAssociationArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managementAssociationName,
-    pulumi.Output<ManagementAssociationProperties>? properties,
-    required pulumi.Output<String> providerName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<String> resourceType,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managementAssociationName = pulumi.Input.asOptionalInput<String>(managementAssociationName),
-      properties = pulumi.Input.asOptionalInput<ManagementAssociationProperties>(properties),
-      providerName = pulumi.Input.asInput<String>(providerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      resourceType = pulumi.Input.asInput<String>(resourceType);
+    this.location,
+    this.managementAssociationName,
+    this.properties,
+    required this.providerName,
+    required this.resourceGroupName,
+    required this.resourceName,
+    required this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ManagementAssociationArgs {
 
   factory ManagementAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ManagementAssociationArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managementAssociationName: map['managementAssociationName'] == null ? null : pulumi.Output.create<String>(map['managementAssociationName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ManagementAssociationProperties>(ManagementAssociationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      providerName: pulumi.Output.create<String>(map['providerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managementAssociationName: map['managementAssociationName'] == null ? null : (map['managementAssociationName'] as String).input(),
+      properties: map['properties'] == null ? null : (ManagementAssociationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      providerName: (map['providerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

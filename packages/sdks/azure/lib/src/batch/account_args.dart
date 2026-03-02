@@ -66,35 +66,21 @@ class AccountArgs {
   /// [storageAccountNodeIdentity] Specifies the user assigned identity for the storage account.
   /// [tags] A mapping of tags to assign to the resource.
   AccountArgs({
-    pulumi.Output<List<String>>? allowedAuthenticationModes,
-    pulumi.Output<AccountEncryption>? encryption,
-    pulumi.Output<AccountIdentity>? identity,
-    pulumi.Output<AccountKeyVaultReference>? keyVaultReference,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<AccountNetworkProfile>? networkProfile,
-    pulumi.Output<String>? poolAllocationMode,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageAccountAuthenticationMode,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? storageAccountNodeIdentity,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      allowedAuthenticationModes = pulumi.Input.asOptionalInput<List<String>>(allowedAuthenticationModes),
-      encryption = pulumi.Input.asOptionalInput<AccountEncryption>(encryption),
-      identity = pulumi.Input.asOptionalInput<AccountIdentity>(identity),
-      keyVaultReference = pulumi.Input.asOptionalInput<AccountKeyVaultReference>(keyVaultReference),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkProfile = pulumi.Input.asOptionalInput<AccountNetworkProfile>(networkProfile),
-      poolAllocationMode = pulumi.Input.asOptionalInput<String>(poolAllocationMode),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageAccountAuthenticationMode = pulumi.Input.asOptionalInput<String>(storageAccountAuthenticationMode),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      storageAccountNodeIdentity = pulumi.Input.asOptionalInput<String>(storageAccountNodeIdentity),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.allowedAuthenticationModes,
+    this.encryption,
+    this.identity,
+    this.keyVaultReference,
+    this.location,
+    this.name,
+    this.networkProfile,
+    this.poolAllocationMode,
+    this.publicNetworkAccessEnabled,
+    required this.resourceGroupName,
+    this.storageAccountAuthenticationMode,
+    this.storageAccountId,
+    this.storageAccountNodeIdentity,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -117,20 +103,20 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      allowedAuthenticationModes: map['allowedAuthenticationModes'] == null ? null : pulumi.Output.create<List<String>>((map['allowedAuthenticationModes'] as List).cast<String>()),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<AccountEncryption>(AccountEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<AccountIdentity>(AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      keyVaultReference: map['keyVaultReference'] == null ? null : pulumi.Output.create<AccountKeyVaultReference>(AccountKeyVaultReference.fromMap((map['keyVaultReference'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkProfile: map['networkProfile'] == null ? null : pulumi.Output.create<AccountNetworkProfile>(AccountNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())),
-      poolAllocationMode: map['poolAllocationMode'] == null ? null : pulumi.Output.create<String>(map['poolAllocationMode'] as String),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageAccountAuthenticationMode: map['storageAccountAuthenticationMode'] == null ? null : pulumi.Output.create<String>(map['storageAccountAuthenticationMode'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      storageAccountNodeIdentity: map['storageAccountNodeIdentity'] == null ? null : pulumi.Output.create<String>(map['storageAccountNodeIdentity'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      allowedAuthenticationModes: map['allowedAuthenticationModes'] == null ? null : ((map['allowedAuthenticationModes'] as List).cast<String>()).input(),
+      encryption: map['encryption'] == null ? null : (AccountEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      keyVaultReference: map['keyVaultReference'] == null ? null : (AccountKeyVaultReference.fromMap((map['keyVaultReference'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (AccountNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      poolAllocationMode: map['poolAllocationMode'] == null ? null : (map['poolAllocationMode'] as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageAccountAuthenticationMode: map['storageAccountAuthenticationMode'] == null ? null : (map['storageAccountAuthenticationMode'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageAccountNodeIdentity: map['storageAccountNodeIdentity'] == null ? null : (map['storageAccountNodeIdentity'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

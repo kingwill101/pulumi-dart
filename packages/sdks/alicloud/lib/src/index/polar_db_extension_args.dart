@@ -25,17 +25,12 @@ class PolarDbExtensionArgs {
   /// [extensionName] Information about the installed plug-ins under the specified database.
   /// [installedVersion] Installed version, only supports upgrading to the default version.
   PolarDbExtensionArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> dbClusterId,
-    required pulumi.Output<String> dbName,
-    required pulumi.Output<String> extensionName,
-    pulumi.Output<String>? installedVersion,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      dbName = pulumi.Input.asInput<String>(dbName),
-      extensionName = pulumi.Input.asInput<String>(extensionName),
-      installedVersion = pulumi.Input.asOptionalInput<String>(installedVersion);
+    required this.accountName,
+    required this.dbClusterId,
+    required this.dbName,
+    required this.extensionName,
+    this.installedVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PolarDbExtensionArgs {
 
   factory PolarDbExtensionArgs.fromMap(Map<String, dynamic> map) {
     return PolarDbExtensionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      dbName: pulumi.Output.create<String>(map['dbName'] as String),
-      extensionName: pulumi.Output.create<String>(map['extensionName'] as String),
-      installedVersion: map['installedVersion'] == null ? null : pulumi.Output.create<String>(map['installedVersion'] as String),
+      accountName: (map['accountName'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      dbName: (map['dbName'] as String).input(),
+      extensionName: (map['extensionName'] as String).input(),
+      installedVersion: map['installedVersion'] == null ? null : (map['installedVersion'] as String).input(),
     );
   }
 }

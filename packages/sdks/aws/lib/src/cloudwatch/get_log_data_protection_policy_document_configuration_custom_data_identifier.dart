@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier {
   /// Name of the custom data idenfitier
-  final String name;
+  final pulumi.Input<String> name;
   /// Regular expression to match sensitive data
-  final String regex;
+  final pulumi.Input<String> regex;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier].
   /// [name] Name of the custom data idenfitier
@@ -24,8 +25,8 @@ class GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier {
 
   factory GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier(
-      name: map['name'] as String,
-      regex: map['regex'] as String,
+      name: (map['name'] as String).input(),
+      regex: (map['regex'] as String).input(),
     );
   }
 }

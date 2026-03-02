@@ -6,9 +6,9 @@ import 'google_cloud_dialogflow_cx_v3_experiment_result_version_metrics_response
 /// The inference result which includes an objective metric to optimize and the confidence interval.
 class GoogleCloudDialogflowCxV3ExperimentResultResponse {
   /// The last time the experiment's stats data was updated. Will have default value if stats have never been computed for this experiment.
-  final String lastUpdateTime;
+  final pulumi.Input<String> lastUpdateTime;
   /// Version variants and metrics.
-  final List<GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponse> versionMetrics;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponse>> versionMetrics;
 
   /// Creates a new [GoogleCloudDialogflowCxV3ExperimentResultResponse].
   /// [lastUpdateTime] The last time the experiment's stats data was updated. Will have default value if stats have never been computed for this experiment.
@@ -21,14 +21,14 @@ class GoogleCloudDialogflowCxV3ExperimentResultResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'lastUpdateTime': lastUpdateTime,
-      'versionMetrics': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponse, Map<String, dynamic>>(versionMetrics, (value) => value.toMap()),
+      'versionMetrics': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponse>, List<Map<String, dynamic>>>(versionMetrics, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GoogleCloudDialogflowCxV3ExperimentResultResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ExperimentResultResponse(
-      lastUpdateTime: map['lastUpdateTime'] as String,
-      versionMetrics: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponse>(map['versionMetrics'], (value) => GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      lastUpdateTime: (map['lastUpdateTime'] as String).input(),
+      versionMetrics: (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponse>(map['versionMetrics'], (value) => GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

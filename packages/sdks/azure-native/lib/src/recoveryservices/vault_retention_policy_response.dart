@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'long_term_retention_policy_response.dart';
 
 /// Vault retention policy for AzureFileShare
 class VaultRetentionPolicyResponse {
-  final int snapshotRetentionInDays;
+  final pulumi.Input<int> snapshotRetentionInDays;
   /// Base class for retention policy.
-  final LongTermRetentionPolicyResponse vaultRetention;
+  final pulumi.Input<LongTermRetentionPolicyResponse> vaultRetention;
 
   /// Creates a new [VaultRetentionPolicyResponse].
   /// [snapshotRetentionInDays] Required.
@@ -19,14 +20,14 @@ class VaultRetentionPolicyResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'snapshotRetentionInDays': snapshotRetentionInDays,
-      'vaultRetention': vaultRetention.toMap(),
+      'vaultRetention': pulumi.Input.mapInputValue<LongTermRetentionPolicyResponse, Map<String, dynamic>>(vaultRetention, (value) => value.toMap()),
     };
   }
 
   factory VaultRetentionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return VaultRetentionPolicyResponse(
-      snapshotRetentionInDays: map['snapshotRetentionInDays'] as int,
-      vaultRetention: LongTermRetentionPolicyResponse.fromMap((map['vaultRetention'] as Map).cast<String, dynamic>()),
+      snapshotRetentionInDays: (map['snapshotRetentionInDays'] as int).input(),
+      vaultRetention: (LongTermRetentionPolicyResponse.fromMap((map['vaultRetention'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

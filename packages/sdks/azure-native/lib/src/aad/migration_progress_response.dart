@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Migration Progress
 class MigrationProgressResponse {
   /// Completion Percentage
-  final double? completionPercentage;
+  final pulumi.Input<double>? completionPercentage;
   /// Progress Message
-  final String? progressMessage;
+  final pulumi.Input<String>? progressMessage;
 
   /// Creates a new [MigrationProgressResponse].
   /// [completionPercentage] Completion Percentage
@@ -25,8 +26,8 @@ class MigrationProgressResponse {
 
   factory MigrationProgressResponse.fromMap(Map<String, dynamic> map) {
     return MigrationProgressResponse(
-      completionPercentage: map['completionPercentage'] == null ? null : map['completionPercentage'] as double,
-      progressMessage: map['progressMessage'] == null ? null : map['progressMessage'] as String,
+      completionPercentage: map['completionPercentage'] == null ? null : (map['completionPercentage'] as double).input(),
+      progressMessage: map['progressMessage'] == null ? null : (map['progressMessage'] as String).input(),
     );
   }
 }

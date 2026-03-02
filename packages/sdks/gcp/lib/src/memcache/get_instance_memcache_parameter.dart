@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceMemcacheParameter {
   /// This is a unique ID associated with this set of parameters.
-  final String id;
+  final pulumi.Input<String> id;
   /// User-defined set of parameters to use in the memcache process.
-  final Map<String, String> params;
+  final pulumi.Input<Map<String, String>> params;
 
   /// Creates a new [GetInstanceMemcacheParameter].
   /// [id] This is a unique ID associated with this set of parameters.
@@ -24,8 +25,8 @@ class GetInstanceMemcacheParameter {
 
   factory GetInstanceMemcacheParameter.fromMap(Map<String, dynamic> map) {
     return GetInstanceMemcacheParameter(
-      id: map['id'] as String,
-      params: (map['params'] as Map).cast<String, String>(),
+      id: (map['id'] as String).input(),
+      params: ((map['params'] as Map).cast<String, String>()).input(),
     );
   }
 }

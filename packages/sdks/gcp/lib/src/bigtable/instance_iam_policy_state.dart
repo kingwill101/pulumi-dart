@@ -19,15 +19,11 @@ class InstanceIamPolicyState {
   /// [policyData] Optional.
   /// [project] Optional.
   InstanceIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.etag,
+    this.instance,
+    this.policyData,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class InstanceIamPolicyState {
 
   factory InstanceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return InstanceIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

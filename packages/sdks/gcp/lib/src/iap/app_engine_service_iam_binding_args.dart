@@ -44,19 +44,13 @@ class AppEngineServiceIamBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [service] Used to find the parent resource to bind the IAM policy to
   AppEngineServiceIamBindingArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<AppEngineServiceIamBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> service,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      condition = pulumi.Input.asOptionalInput<AppEngineServiceIamBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      service = pulumi.Input.asInput<String>(service);
+    required this.appId,
+    this.condition,
+    required this.members,
+    this.project,
+    required this.role,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,12 +65,12 @@ class AppEngineServiceIamBindingArgs {
 
   factory AppEngineServiceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return AppEngineServiceIamBindingArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<AppEngineServiceIamBindingCondition>(AppEngineServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
+      appId: (map['appId'] as String).input(),
+      condition: map['condition'] == null ? null : (AppEngineServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

@@ -8,12 +8,12 @@ class TableTableConstraints {
   /// Present only if the table has a foreign key.
   /// The foreign key is not enforced.
   /// Structure is documented below.
-  final List<TableTableConstraintsForeignKey>? foreignKeys;
+  final pulumi.Input<List<TableTableConstraintsForeignKey>>? foreignKeys;
   /// Represents the primary key constraint
   /// on a table's columns. Present only if the table has a primary key.
   /// The primary key is not enforced.
   /// Structure is documented below.
-  final TableTableConstraintsPrimaryKey? primaryKey;
+  final pulumi.Input<TableTableConstraintsPrimaryKey>? primaryKey;
 
   /// Creates a new [TableTableConstraints].
   /// [foreignKeys] Present only if the table has a foreign key.
@@ -25,15 +25,15 @@ class TableTableConstraints {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'foreignKeys': ?foreignKeys == null ? null : pulumi.Input.encodeList<TableTableConstraintsForeignKey, Map<String, dynamic>>(foreignKeys!, (value) => value.toMap()),
-      'primaryKey': ?primaryKey == null ? null : primaryKey!.toMap(),
+      'foreignKeys': ?pulumi.Input.mapOptionalInputValue<List<TableTableConstraintsForeignKey>, List<Map<String, dynamic>>>(foreignKeys, (value) => pulumi.Input.encodeList<TableTableConstraintsForeignKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'primaryKey': ?pulumi.Input.mapOptionalInputValue<TableTableConstraintsPrimaryKey, Map<String, dynamic>>(primaryKey, (value) => value.toMap()),
     };
   }
 
   factory TableTableConstraints.fromMap(Map<String, dynamic> map) {
     return TableTableConstraints(
-      foreignKeys: map['foreignKeys'] == null ? null : pulumi.Input.decodeList<TableTableConstraintsForeignKey>(map['foreignKeys'], (value) => TableTableConstraintsForeignKey.fromMap((value as Map).cast<String, dynamic>())),
-      primaryKey: map['primaryKey'] == null ? null : TableTableConstraintsPrimaryKey.fromMap((map['primaryKey'] as Map).cast<String, dynamic>()),
+      foreignKeys: map['foreignKeys'] == null ? null : (pulumi.Input.decodeList<TableTableConstraintsForeignKey>(map['foreignKeys'], (value) => TableTableConstraintsForeignKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      primaryKey: map['primaryKey'] == null ? null : (TableTableConstraintsPrimaryKey.fromMap((map['primaryKey'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

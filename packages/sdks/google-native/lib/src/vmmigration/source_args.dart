@@ -42,27 +42,17 @@ class SourceArgs {
   /// [sourceId] Required. The source identifier.
   /// [vmware] Vmware type source details.
   SourceArgs({
-    pulumi.Output<AwsSourceDetails>? aws,
-    pulumi.Output<AzureSourceDetails>? azure,
-    pulumi.Output<String>? description,
-    pulumi.Output<Encryption>? encryption,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> sourceId,
-    pulumi.Output<VmwareSourceDetails>? vmware,
-  }) :
-      aws = pulumi.Input.asOptionalInput<AwsSourceDetails>(aws),
-      azure = pulumi.Input.asOptionalInput<AzureSourceDetails>(azure),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryption = pulumi.Input.asOptionalInput<Encryption>(encryption),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      sourceId = pulumi.Input.asInput<String>(sourceId),
-      vmware = pulumi.Input.asOptionalInput<VmwareSourceDetails>(vmware);
+    this.aws,
+    this.azure,
+    this.description,
+    this.encryption,
+    this.labels,
+    this.location,
+    this.project,
+    this.requestId,
+    required this.sourceId,
+    this.vmware,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class SourceArgs {
 
   factory SourceArgs.fromMap(Map<String, dynamic> map) {
     return SourceArgs(
-      aws: map['aws'] == null ? null : pulumi.Output.create<AwsSourceDetails>(AwsSourceDetails.fromMap((map['aws'] as Map).cast<String, dynamic>())),
-      azure: map['azure'] == null ? null : pulumi.Output.create<AzureSourceDetails>(AzureSourceDetails.fromMap((map['azure'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<Encryption>(Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      sourceId: pulumi.Output.create<String>(map['sourceId'] as String),
-      vmware: map['vmware'] == null ? null : pulumi.Output.create<VmwareSourceDetails>(VmwareSourceDetails.fromMap((map['vmware'] as Map).cast<String, dynamic>())),
+      aws: map['aws'] == null ? null : (AwsSourceDetails.fromMap((map['aws'] as Map).cast<String, dynamic>())).input(),
+      azure: map['azure'] == null ? null : (AzureSourceDetails.fromMap((map['azure'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      sourceId: (map['sourceId'] as String).input(),
+      vmware: map['vmware'] == null ? null : (VmwareSourceDetails.fromMap((map['vmware'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

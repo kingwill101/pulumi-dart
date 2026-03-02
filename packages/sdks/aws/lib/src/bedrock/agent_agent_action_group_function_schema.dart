@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_agent_action_group_function_schema_member_functions.dart';
 
 class AgentAgentActionGroupFunctionSchema {
   /// Contains a list of functions.
   /// Each function describes and action in the action group.
   /// See `member_functions` Block for details.
-  final AgentAgentActionGroupFunctionSchemaMemberFunctions? memberFunctions;
+  final pulumi.Input<AgentAgentActionGroupFunctionSchemaMemberFunctions>? memberFunctions;
 
   /// Creates a new [AgentAgentActionGroupFunctionSchema].
   /// [memberFunctions] Contains a list of functions.
@@ -16,13 +17,13 @@ class AgentAgentActionGroupFunctionSchema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'memberFunctions': ?memberFunctions == null ? null : memberFunctions!.toMap(),
+      'memberFunctions': ?pulumi.Input.mapOptionalInputValue<AgentAgentActionGroupFunctionSchemaMemberFunctions, Map<String, dynamic>>(memberFunctions, (value) => value.toMap()),
     };
   }
 
   factory AgentAgentActionGroupFunctionSchema.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupFunctionSchema(
-      memberFunctions: map['memberFunctions'] == null ? null : AgentAgentActionGroupFunctionSchemaMemberFunctions.fromMap((map['memberFunctions'] as Map).cast<String, dynamic>()),
+      memberFunctions: map['memberFunctions'] == null ? null : (AgentAgentActionGroupFunctionSchemaMemberFunctions.fromMap((map['memberFunctions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

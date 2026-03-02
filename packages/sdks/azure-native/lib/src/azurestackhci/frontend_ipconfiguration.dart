@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frontend_ipconfiguration_properties.dart';
 
 /// FrontendIP Configuration object for a load balancer.
 class FrontendIPConfiguration {
   /// name for the frontend IP configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// properties for this frontendIPConfiguration
-  final FrontendIPConfigurationProperties properties;
+  final pulumi.Input<FrontendIPConfigurationProperties> properties;
 
   /// Creates a new [FrontendIPConfiguration].
   /// [name] name for the frontend IP configuration.
@@ -20,14 +21,14 @@ class FrontendIPConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': properties.toMap(),
+      'properties': pulumi.Input.mapInputValue<FrontendIPConfigurationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory FrontendIPConfiguration.fromMap(Map<String, dynamic> map) {
     return FrontendIPConfiguration(
-      name: map['name'] as String,
-      properties: FrontendIPConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      properties: (FrontendIPConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

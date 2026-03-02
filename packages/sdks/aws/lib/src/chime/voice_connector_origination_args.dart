@@ -23,15 +23,11 @@ class VoiceConnectorOriginationArgs {
   /// [routes] Set of call distribution properties defined for your SIP hosts. See route below for more details. Minimum of 1. Maximum of 20.
   /// [voiceConnectorId] The Amazon Chime Voice Connector ID.
   VoiceConnectorOriginationArgs({
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<VoiceConnectorOriginationRoute>> routes,
-    required pulumi.Output<String> voiceConnectorId,
-  }) :
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routes = pulumi.Input.asInput<List<VoiceConnectorOriginationRoute>>(routes),
-      voiceConnectorId = pulumi.Input.asInput<String>(voiceConnectorId);
+    this.disabled,
+    this.region,
+    required this.routes,
+    required this.voiceConnectorId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class VoiceConnectorOriginationArgs {
 
   factory VoiceConnectorOriginationArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorOriginationArgs(
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routes: pulumi.Output.create<List<VoiceConnectorOriginationRoute>>(pulumi.Input.decodeList<VoiceConnectorOriginationRoute>(map['routes'], (value) => VoiceConnectorOriginationRoute.fromMap((value as Map).cast<String, dynamic>()))),
-      voiceConnectorId: pulumi.Output.create<String>(map['voiceConnectorId'] as String),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routes: (pulumi.Input.decodeList<VoiceConnectorOriginationRoute>(map['routes'], (value) => VoiceConnectorOriginationRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      voiceConnectorId: (map['voiceConnectorId'] as String).input(),
     );
   }
 }

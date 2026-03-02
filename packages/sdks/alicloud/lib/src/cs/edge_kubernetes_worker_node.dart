@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EdgeKubernetesWorkerNode {
   /// ID of the node.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The kubernetes cluster's name. It is unique in one Alicloud account.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The private IP address of node.
-  final String? privateIp;
+  final pulumi.Input<String>? privateIp;
 
   /// Creates a new [EdgeKubernetesWorkerNode].
   /// [id] ID of the node.
@@ -29,9 +30,9 @@ class EdgeKubernetesWorkerNode {
 
   factory EdgeKubernetesWorkerNode.fromMap(Map<String, dynamic> map) {
     return EdgeKubernetesWorkerNode(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      privateIp: map['privateIp'] == null ? null : map['privateIp'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateIp: map['privateIp'] == null ? null : (map['privateIp'] as String).input(),
     );
   }
 }

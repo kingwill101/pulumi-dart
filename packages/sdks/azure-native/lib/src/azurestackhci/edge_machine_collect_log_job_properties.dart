@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties for pausing a server in the cluster.
 class EdgeMachineCollectLogJobProperties {
   /// Deployment mode to trigger job.
-  final String? deploymentMode;
+  final pulumi.Input<String>? deploymentMode;
   /// From date for log collection.
-  final String fromDate;
+  final pulumi.Input<String> fromDate;
   /// Job Type supported.
   /// Expected value is 'CollectLog'.
-  final String jobType;
+  final pulumi.Input<String> jobType;
   /// To date for log collection.
-  final String toDate;
+  final pulumi.Input<String> toDate;
 
   /// Creates a new [EdgeMachineCollectLogJobProperties].
   /// [deploymentMode] Deployment mode to trigger job.
@@ -36,10 +37,10 @@ class EdgeMachineCollectLogJobProperties {
 
   factory EdgeMachineCollectLogJobProperties.fromMap(Map<String, dynamic> map) {
     return EdgeMachineCollectLogJobProperties(
-      deploymentMode: map['deploymentMode'] == null ? null : map['deploymentMode'] as String,
-      fromDate: map['fromDate'] as String,
-      jobType: map['jobType'] as String,
-      toDate: map['toDate'] as String,
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
+      fromDate: (map['fromDate'] as String).input(),
+      jobType: (map['jobType'] as String).input(),
+      toDate: (map['toDate'] as String).input(),
     );
   }
 }

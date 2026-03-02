@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A namespace junction.
 class NamespaceJunction {
   /// Namespace path on a cache for a Storage Target.
-  final String? namespacePath;
+  final pulumi.Input<String>? namespacePath;
   /// Name of the access policy applied to this junction.
-  final String? nfsAccessPolicy;
+  final pulumi.Input<String>? nfsAccessPolicy;
   /// NFS export where targetPath exists.
-  final String? nfsExport;
+  final pulumi.Input<String>? nfsExport;
   /// Path in Storage Target to which namespacePath points.
-  final String? targetPath;
+  final pulumi.Input<String>? targetPath;
 
   /// Creates a new [NamespaceJunction].
   /// [namespacePath] Namespace path on a cache for a Storage Target.
@@ -35,10 +36,10 @@ class NamespaceJunction {
 
   factory NamespaceJunction.fromMap(Map<String, dynamic> map) {
     return NamespaceJunction(
-      namespacePath: map['namespacePath'] == null ? null : map['namespacePath'] as String,
-      nfsAccessPolicy: map['nfsAccessPolicy'] == null ? null : map['nfsAccessPolicy'] as String,
-      nfsExport: map['nfsExport'] == null ? null : map['nfsExport'] as String,
-      targetPath: map['targetPath'] == null ? null : map['targetPath'] as String,
+      namespacePath: map['namespacePath'] == null ? null : (map['namespacePath'] as String).input(),
+      nfsAccessPolicy: map['nfsAccessPolicy'] == null ? null : (map['nfsAccessPolicy'] as String).input(),
+      nfsExport: map['nfsExport'] == null ? null : (map['nfsExport'] as String).input(),
+      targetPath: map['targetPath'] == null ? null : (map['targetPath'] as String).input(),
     );
   }
 }

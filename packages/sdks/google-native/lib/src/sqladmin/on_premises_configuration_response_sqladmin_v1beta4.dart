@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_reference_response_sqladmin_v1beta4.dart';
 
 /// On-premises instance configuration.
 class OnPremisesConfigurationResponseSqladminV1beta4 {
   /// PEM representation of the trusted CA's x509 certificate.
-  final String caCertificate;
+  final pulumi.Input<String> caCertificate;
   /// PEM representation of the replica's x509 certificate.
-  final String clientCertificate;
+  final pulumi.Input<String> clientCertificate;
   /// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
-  final String clientKey;
+  final pulumi.Input<String> clientKey;
   /// The dump file to create the Cloud SQL replica.
-  final String dumpFilePath;
+  final pulumi.Input<String> dumpFilePath;
   /// The host and port of the on-premises instance in host:port format
-  final String hostPort;
+  final pulumi.Input<String> hostPort;
   /// This is always `sql#onPremisesConfiguration`.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// The password for connecting to on-premises instance.
-  final String password;
+  final pulumi.Input<String> password;
   /// The reference to Cloud SQL instance if the source is Cloud SQL.
-  final InstanceReferenceResponseSqladminV1beta4 sourceInstance;
+  final pulumi.Input<InstanceReferenceResponseSqladminV1beta4> sourceInstance;
   /// The username for connecting to on-premises instance.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [OnPremisesConfigurationResponseSqladminV1beta4].
   /// [caCertificate] PEM representation of the trusted CA's x509 certificate.
@@ -54,22 +55,22 @@ class OnPremisesConfigurationResponseSqladminV1beta4 {
       'hostPort': hostPort,
       'kind': kind,
       'password': password,
-      'sourceInstance': sourceInstance.toMap(),
+      'sourceInstance': pulumi.Input.mapInputValue<InstanceReferenceResponseSqladminV1beta4, Map<String, dynamic>>(sourceInstance, (value) => value.toMap()),
       'username': username,
     };
   }
 
   factory OnPremisesConfigurationResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return OnPremisesConfigurationResponseSqladminV1beta4(
-      caCertificate: map['caCertificate'] as String,
-      clientCertificate: map['clientCertificate'] as String,
-      clientKey: map['clientKey'] as String,
-      dumpFilePath: map['dumpFilePath'] as String,
-      hostPort: map['hostPort'] as String,
-      kind: map['kind'] as String,
-      password: map['password'] as String,
-      sourceInstance: InstanceReferenceResponseSqladminV1beta4.fromMap((map['sourceInstance'] as Map).cast<String, dynamic>()),
-      username: map['username'] as String,
+      caCertificate: (map['caCertificate'] as String).input(),
+      clientCertificate: (map['clientCertificate'] as String).input(),
+      clientKey: (map['clientKey'] as String).input(),
+      dumpFilePath: (map['dumpFilePath'] as String).input(),
+      hostPort: (map['hostPort'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      password: (map['password'] as String).input(),
+      sourceInstance: (InstanceReferenceResponseSqladminV1beta4.fromMap((map['sourceInstance'] as Map).cast<String, dynamic>())).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

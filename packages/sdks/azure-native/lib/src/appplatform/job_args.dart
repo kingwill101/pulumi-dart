@@ -23,15 +23,11 @@ class JobArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   JobArgs({
-    pulumi.Output<String>? jobName,
-    pulumi.Output<JobResourceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      jobName = pulumi.Input.asOptionalInput<String>(jobName),
-      properties = pulumi.Input.asOptionalInput<JobResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.jobName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      jobName: map['jobName'] == null ? null : pulumi.Output.create<String>(map['jobName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<JobResourceProperties>(JobResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
+      properties: map['properties'] == null ? null : (JobResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

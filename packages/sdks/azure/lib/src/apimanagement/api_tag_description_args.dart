@@ -22,15 +22,11 @@ class ApiTagDescriptionArgs {
   /// [externalDocumentationDescription] The description of the external documentation resources describing the tag.
   /// [externalDocumentationUrl] The URL of external documentation resources describing the tag.
   ApiTagDescriptionArgs({
-    required pulumi.Output<String> apiTagId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? externalDocumentationDescription,
-    pulumi.Output<String>? externalDocumentationUrl,
-  }) :
-      apiTagId = pulumi.Input.asInput<String>(apiTagId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      externalDocumentationDescription = pulumi.Input.asOptionalInput<String>(externalDocumentationDescription),
-      externalDocumentationUrl = pulumi.Input.asOptionalInput<String>(externalDocumentationUrl);
+    required this.apiTagId,
+    this.description,
+    this.externalDocumentationDescription,
+    this.externalDocumentationUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ApiTagDescriptionArgs {
 
   factory ApiTagDescriptionArgs.fromMap(Map<String, dynamic> map) {
     return ApiTagDescriptionArgs(
-      apiTagId: pulumi.Output.create<String>(map['apiTagId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      externalDocumentationDescription: map['externalDocumentationDescription'] == null ? null : pulumi.Output.create<String>(map['externalDocumentationDescription'] as String),
-      externalDocumentationUrl: map['externalDocumentationUrl'] == null ? null : pulumi.Output.create<String>(map['externalDocumentationUrl'] as String),
+      apiTagId: (map['apiTagId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      externalDocumentationDescription: map['externalDocumentationDescription'] == null ? null : (map['externalDocumentationDescription'] as String).input(),
+      externalDocumentationUrl: map['externalDocumentationUrl'] == null ? null : (map['externalDocumentationUrl'] as String).input(),
     );
   }
 }

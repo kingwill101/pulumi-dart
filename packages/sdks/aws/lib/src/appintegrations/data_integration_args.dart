@@ -32,21 +32,14 @@ class DataIntegrationArgs {
   /// [sourceUri] Specifies the URI of the data source. Create an AppFlow Connector Profile and reference the name of the profile in the URL. An example of this value for Salesforce is `Salesforce://AppFlow/example` where `example` is the name of the AppFlow Connector Profile.
   /// [tags] Tags to apply to the Data Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DataIntegrationArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> kmsKey,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<DataIntegrationScheduleConfig> scheduleConfig,
-    required pulumi.Output<String> sourceUri,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKey = pulumi.Input.asInput<String>(kmsKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scheduleConfig = pulumi.Input.asInput<DataIntegrationScheduleConfig>(scheduleConfig),
-      sourceUri = pulumi.Input.asInput<String>(sourceUri),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.kmsKey,
+    this.name,
+    this.region,
+    required this.scheduleConfig,
+    required this.sourceUri,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class DataIntegrationArgs {
 
   factory DataIntegrationArgs.fromMap(Map<String, dynamic> map) {
     return DataIntegrationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsKey: pulumi.Output.create<String>(map['kmsKey'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scheduleConfig: pulumi.Output.create<DataIntegrationScheduleConfig>(DataIntegrationScheduleConfig.fromMap((map['scheduleConfig'] as Map).cast<String, dynamic>())),
-      sourceUri: pulumi.Output.create<String>(map['sourceUri'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsKey: (map['kmsKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scheduleConfig: (DataIntegrationScheduleConfig.fromMap((map['scheduleConfig'] as Map).cast<String, dynamic>())).input(),
+      sourceUri: (map['sourceUri'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

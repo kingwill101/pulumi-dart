@@ -48,27 +48,17 @@ class ExperimentTemplateArgs {
   /// [tags] Key-value mapping of tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targets] Target of an action. See below.
   ExperimentTemplateArgs({
-    required pulumi.Output<List<ExperimentTemplateAction>> actions,
-    required pulumi.Output<String> description,
-    pulumi.Output<ExperimentTemplateExperimentOptions>? experimentOptions,
-    pulumi.Output<ExperimentTemplateExperimentReportConfiguration>? experimentReportConfiguration,
-    pulumi.Output<ExperimentTemplateLogConfiguration>? logConfiguration,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    required pulumi.Output<List<ExperimentTemplateStopCondition>> stopConditions,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<ExperimentTemplateTarget>>? targets,
-  }) :
-      actions = pulumi.Input.asInput<List<ExperimentTemplateAction>>(actions),
-      description = pulumi.Input.asInput<String>(description),
-      experimentOptions = pulumi.Input.asOptionalInput<ExperimentTemplateExperimentOptions>(experimentOptions),
-      experimentReportConfiguration = pulumi.Input.asOptionalInput<ExperimentTemplateExperimentReportConfiguration>(experimentReportConfiguration),
-      logConfiguration = pulumi.Input.asOptionalInput<ExperimentTemplateLogConfiguration>(logConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      stopConditions = pulumi.Input.asInput<List<ExperimentTemplateStopCondition>>(stopConditions),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targets = pulumi.Input.asOptionalInput<List<ExperimentTemplateTarget>>(targets);
+    required this.actions,
+    required this.description,
+    this.experimentOptions,
+    this.experimentReportConfiguration,
+    this.logConfiguration,
+    this.region,
+    required this.roleArn,
+    required this.stopConditions,
+    this.tags,
+    this.targets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,16 +77,16 @@ class ExperimentTemplateArgs {
 
   factory ExperimentTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateArgs(
-      actions: pulumi.Output.create<List<ExperimentTemplateAction>>(pulumi.Input.decodeList<ExperimentTemplateAction>(map['actions'], (value) => ExperimentTemplateAction.fromMap((value as Map).cast<String, dynamic>()))),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      experimentOptions: map['experimentOptions'] == null ? null : pulumi.Output.create<ExperimentTemplateExperimentOptions>(ExperimentTemplateExperimentOptions.fromMap((map['experimentOptions'] as Map).cast<String, dynamic>())),
-      experimentReportConfiguration: map['experimentReportConfiguration'] == null ? null : pulumi.Output.create<ExperimentTemplateExperimentReportConfiguration>(ExperimentTemplateExperimentReportConfiguration.fromMap((map['experimentReportConfiguration'] as Map).cast<String, dynamic>())),
-      logConfiguration: map['logConfiguration'] == null ? null : pulumi.Output.create<ExperimentTemplateLogConfiguration>(ExperimentTemplateLogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      stopConditions: pulumi.Output.create<List<ExperimentTemplateStopCondition>>(pulumi.Input.decodeList<ExperimentTemplateStopCondition>(map['stopConditions'], (value) => ExperimentTemplateStopCondition.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targets: map['targets'] == null ? null : pulumi.Output.create<List<ExperimentTemplateTarget>>(pulumi.Input.decodeList<ExperimentTemplateTarget>(map['targets'], (value) => ExperimentTemplateTarget.fromMap((value as Map).cast<String, dynamic>()))),
+      actions: (pulumi.Input.decodeList<ExperimentTemplateAction>(map['actions'], (value) => ExperimentTemplateAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: (map['description'] as String).input(),
+      experimentOptions: map['experimentOptions'] == null ? null : (ExperimentTemplateExperimentOptions.fromMap((map['experimentOptions'] as Map).cast<String, dynamic>())).input(),
+      experimentReportConfiguration: map['experimentReportConfiguration'] == null ? null : (ExperimentTemplateExperimentReportConfiguration.fromMap((map['experimentReportConfiguration'] as Map).cast<String, dynamic>())).input(),
+      logConfiguration: map['logConfiguration'] == null ? null : (ExperimentTemplateLogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      stopConditions: (pulumi.Input.decodeList<ExperimentTemplateStopCondition>(map['stopConditions'], (value) => ExperimentTemplateStopCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<ExperimentTemplateTarget>(map['targets'], (value) => ExperimentTemplateTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

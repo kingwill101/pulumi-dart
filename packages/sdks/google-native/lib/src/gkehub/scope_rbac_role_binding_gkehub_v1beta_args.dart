@@ -35,25 +35,16 @@ class ScopeRbacRoleBindingGkehubV1betaArgs {
   /// [scopeId] Required.
   /// [user] user is the name of the user as seen by the kubernetes cluster, example "alice" or "alice@domain.tld"
   ScopeRbacRoleBindingGkehubV1betaArgs({
-    pulumi.Output<String>? group,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> rbacrolebindingId,
-    required pulumi.Output<RoleGkehubV1beta> role,
-    required pulumi.Output<String> scopeId,
-    pulumi.Output<String>? user,
-  }) :
-      group = pulumi.Input.asOptionalInput<String>(group),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rbacrolebindingId = pulumi.Input.asInput<String>(rbacrolebindingId),
-      role = pulumi.Input.asInput<RoleGkehubV1beta>(role),
-      scopeId = pulumi.Input.asInput<String>(scopeId),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.group,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    required this.rbacrolebindingId,
+    required this.role,
+    required this.scopeId,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class ScopeRbacRoleBindingGkehubV1betaArgs {
 
   factory ScopeRbacRoleBindingGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ScopeRbacRoleBindingGkehubV1betaArgs(
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rbacrolebindingId: pulumi.Output.create<String>(map['rbacrolebindingId'] as String),
-      role: pulumi.Output.create<RoleGkehubV1beta>(RoleGkehubV1beta.fromMap((map['role'] as Map).cast<String, dynamic>())),
-      scopeId: pulumi.Output.create<String>(map['scopeId'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rbacrolebindingId: (map['rbacrolebindingId'] as String).input(),
+      role: (RoleGkehubV1beta.fromMap((map['role'] as Map).cast<String, dynamic>())).input(),
+      scopeId: (map['scopeId'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

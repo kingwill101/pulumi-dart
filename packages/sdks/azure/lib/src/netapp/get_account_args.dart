@@ -19,13 +19,10 @@ class GetAccountArgs {
   /// [name] The name of the NetApp Account.
   /// [resourceGroupName] The Name of the Resource Group where the NetApp Account exists.
   GetAccountArgs({
-    pulumi.Output<GetAccountIdentity>? identity,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      identity = pulumi.Input.asOptionalInput<GetAccountIdentity>(identity),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.identity,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<GetAccountIdentity>(GetAccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      identity: map['identity'] == null ? null : (GetAccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

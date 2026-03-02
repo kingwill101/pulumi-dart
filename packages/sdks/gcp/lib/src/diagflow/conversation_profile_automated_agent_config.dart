@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileAutomatedAgentConfig {
   /// ID of the Dialogflow agent environment to use.
   /// Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
-  final String agent;
+  final pulumi.Input<String> agent;
   /// Configure lifetime of the Dialogflow session.
-  final String? sessionTtl;
+  final pulumi.Input<String>? sessionTtl;
 
   /// Creates a new [ConversationProfileAutomatedAgentConfig].
   /// [agent] ID of the Dialogflow agent environment to use.
@@ -25,8 +26,8 @@ class ConversationProfileAutomatedAgentConfig {
 
   factory ConversationProfileAutomatedAgentConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileAutomatedAgentConfig(
-      agent: map['agent'] as String,
-      sessionTtl: map['sessionTtl'] == null ? null : map['sessionTtl'] as String,
+      agent: (map['agent'] as String).input(),
+      sessionTtl: map['sessionTtl'] == null ? null : (map['sessionTtl'] as String).input(),
     );
   }
 }

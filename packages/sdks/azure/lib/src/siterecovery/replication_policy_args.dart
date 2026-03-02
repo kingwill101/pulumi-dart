@@ -27,17 +27,12 @@ class ReplicationPolicyArgs {
   /// [recoveryVaultName] The name of the vault that should be updated. Changing this forces a new resource to be created.
   /// [resourceGroupName] Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   ReplicationPolicyArgs({
-    required pulumi.Output<int> applicationConsistentSnapshotFrequencyInMinutes,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> recoveryPointRetentionInMinutes,
-    required pulumi.Output<String> recoveryVaultName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      applicationConsistentSnapshotFrequencyInMinutes = pulumi.Input.asInput<int>(applicationConsistentSnapshotFrequencyInMinutes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryPointRetentionInMinutes = pulumi.Input.asInput<int>(recoveryPointRetentionInMinutes),
-      recoveryVaultName = pulumi.Input.asInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.applicationConsistentSnapshotFrequencyInMinutes,
+    this.name,
+    required this.recoveryPointRetentionInMinutes,
+    required this.recoveryVaultName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ReplicationPolicyArgs {
 
   factory ReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationPolicyArgs(
-      applicationConsistentSnapshotFrequencyInMinutes: pulumi.Output.create<int>(map['applicationConsistentSnapshotFrequencyInMinutes'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryPointRetentionInMinutes: pulumi.Output.create<int>(map['recoveryPointRetentionInMinutes'] as int),
-      recoveryVaultName: pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      applicationConsistentSnapshotFrequencyInMinutes: (map['applicationConsistentSnapshotFrequencyInMinutes'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryPointRetentionInMinutes: (map['recoveryPointRetentionInMinutes'] as int).input(),
+      recoveryVaultName: (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

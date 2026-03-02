@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of RulesSourceList
 class RulesSourceList {
   /// Property generatedRulesType
-  final String? generatedRulesType;
+  final pulumi.Input<String>? generatedRulesType;
   /// Property targetTypes
-  final List<String>? targetTypes;
+  final pulumi.Input<List<String>>? targetTypes;
   /// Property targets
-  final List<String>? targets;
+  final pulumi.Input<List<String>>? targets;
 
   /// Creates a new [RulesSourceList].
   /// [generatedRulesType] Property generatedRulesType
@@ -30,9 +31,9 @@ class RulesSourceList {
 
   factory RulesSourceList.fromMap(Map<String, dynamic> map) {
     return RulesSourceList(
-      generatedRulesType: map['generatedRulesType'] == null ? null : map['generatedRulesType'] as String,
-      targetTypes: map['targetTypes'] == null ? null : (map['targetTypes'] as List).cast<String>(),
-      targets: map['targets'] == null ? null : (map['targets'] as List).cast<String>(),
+      generatedRulesType: map['generatedRulesType'] == null ? null : (map['generatedRulesType'] as String).input(),
+      targetTypes: map['targetTypes'] == null ? null : ((map['targetTypes'] as List).cast<String>()).input(),
+      targets: map['targets'] == null ? null : ((map['targets'] as List).cast<String>()).input(),
     );
   }
 }

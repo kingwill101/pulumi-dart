@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiEventConfigConnectionAuthMode {
   /// Type of authentication. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
-  final String authType;
+  final pulumi.Input<String> authType;
 
   /// Creates a new [ApiEventConfigConnectionAuthMode].
   /// [authType] Type of authentication. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
@@ -19,7 +20,7 @@ class ApiEventConfigConnectionAuthMode {
 
   factory ApiEventConfigConnectionAuthMode.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigConnectionAuthMode(
-      authType: map['authType'] as String,
+      authType: (map['authType'] as String).input(),
     );
   }
 }

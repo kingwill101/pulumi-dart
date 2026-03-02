@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WidgetConfigUiSettingsGenerativeAnswerConfig {
   /// Whether generated answer contains suggested related questions.
-  final bool? disableRelatedQuestions;
+  final pulumi.Input<bool>? disableRelatedQuestions;
   /// Specifies whether to filter out queries that are adversarial.
-  final bool? ignoreAdversarialQuery;
+  final pulumi.Input<bool>? ignoreAdversarialQuery;
   /// Specifies whether to filter out queries that are not relevant to the content.
-  final bool? ignoreLowRelevantContent;
+  final pulumi.Input<bool>? ignoreLowRelevantContent;
   /// Specifies whether to filter out queries that are not answer-seeking.
   /// The default value is `false`. No answer is returned if the search query
   /// is classified as a non-answer seeking query.
   /// If this field is set to `true`, we skip generating answers for
   /// non-answer seeking queries and return fallback messages instead.
-  final bool? ignoreNonAnswerSeekingQuery;
+  final pulumi.Input<bool>? ignoreNonAnswerSeekingQuery;
   /// Source of image returned in the answer.
   /// Possible values are: `ALL_AVAILABLE_SOURCES`, `CORPUS_IMAGE_ONLY`, `FIGURE_GENERATION_ONLY`.
-  final String? imageSource;
+  final pulumi.Input<String>? imageSource;
   /// Language code for Summary. Use language tags defined by
   /// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This
   /// is an experimental feature.
-  final String? languageCode;
+  final pulumi.Input<String>? languageCode;
   /// Max rephrase steps. The max number is 5 steps. If not set or
   /// set to < 1, it will be set to 1 by default.
-  final int? maxRephraseSteps;
+  final pulumi.Input<int>? maxRephraseSteps;
   /// Text at the beginning of the prompt that instructs the model that generates the answer.
-  final String? modelPromptPreamble;
+  final pulumi.Input<String>? modelPromptPreamble;
   /// The model version used to generate the answer.
-  final String? modelVersion;
+  final pulumi.Input<String>? modelVersion;
   /// The number of top results to generate the answer from. Up to 10.
-  final int? resultCount;
+  final pulumi.Input<int>? resultCount;
 
   /// Creates a new [WidgetConfigUiSettingsGenerativeAnswerConfig].
   /// [disableRelatedQuestions] Whether generated answer contains suggested related questions.
@@ -72,16 +73,16 @@ class WidgetConfigUiSettingsGenerativeAnswerConfig {
 
   factory WidgetConfigUiSettingsGenerativeAnswerConfig.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiSettingsGenerativeAnswerConfig(
-      disableRelatedQuestions: map['disableRelatedQuestions'] == null ? null : map['disableRelatedQuestions'] as bool,
-      ignoreAdversarialQuery: map['ignoreAdversarialQuery'] == null ? null : map['ignoreAdversarialQuery'] as bool,
-      ignoreLowRelevantContent: map['ignoreLowRelevantContent'] == null ? null : map['ignoreLowRelevantContent'] as bool,
-      ignoreNonAnswerSeekingQuery: map['ignoreNonAnswerSeekingQuery'] == null ? null : map['ignoreNonAnswerSeekingQuery'] as bool,
-      imageSource: map['imageSource'] == null ? null : map['imageSource'] as String,
-      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
-      maxRephraseSteps: map['maxRephraseSteps'] == null ? null : map['maxRephraseSteps'] as int,
-      modelPromptPreamble: map['modelPromptPreamble'] == null ? null : map['modelPromptPreamble'] as String,
-      modelVersion: map['modelVersion'] == null ? null : map['modelVersion'] as String,
-      resultCount: map['resultCount'] == null ? null : map['resultCount'] as int,
+      disableRelatedQuestions: map['disableRelatedQuestions'] == null ? null : (map['disableRelatedQuestions'] as bool).input(),
+      ignoreAdversarialQuery: map['ignoreAdversarialQuery'] == null ? null : (map['ignoreAdversarialQuery'] as bool).input(),
+      ignoreLowRelevantContent: map['ignoreLowRelevantContent'] == null ? null : (map['ignoreLowRelevantContent'] as bool).input(),
+      ignoreNonAnswerSeekingQuery: map['ignoreNonAnswerSeekingQuery'] == null ? null : (map['ignoreNonAnswerSeekingQuery'] as bool).input(),
+      imageSource: map['imageSource'] == null ? null : (map['imageSource'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      maxRephraseSteps: map['maxRephraseSteps'] == null ? null : (map['maxRephraseSteps'] as int).input(),
+      modelPromptPreamble: map['modelPromptPreamble'] == null ? null : (map['modelPromptPreamble'] as String).input(),
+      modelVersion: map['modelVersion'] == null ? null : (map['modelVersion'] as String).input(),
+      resultCount: map['resultCount'] == null ? null : (map['resultCount'] as int).input(),
     );
   }
 }

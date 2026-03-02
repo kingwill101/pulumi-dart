@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Filter for text-based data types like varchar.
 class SourceTextFilterResponse {
   /// Optional. The filter will match columns with length smaller than or equal to this number.
-  final String sourceMaxLengthFilter;
+  final pulumi.Input<String> sourceMaxLengthFilter;
   /// Optional. The filter will match columns with length greater than or equal to this number.
-  final String sourceMinLengthFilter;
+  final pulumi.Input<String> sourceMinLengthFilter;
 
   /// Creates a new [SourceTextFilterResponse].
   /// [sourceMaxLengthFilter] Optional. The filter will match columns with length smaller than or equal to this number.
@@ -25,8 +26,8 @@ class SourceTextFilterResponse {
 
   factory SourceTextFilterResponse.fromMap(Map<String, dynamic> map) {
     return SourceTextFilterResponse(
-      sourceMaxLengthFilter: map['sourceMaxLengthFilter'] as String,
-      sourceMinLengthFilter: map['sourceMinLengthFilter'] as String,
+      sourceMaxLengthFilter: (map['sourceMaxLengthFilter'] as String).input(),
+      sourceMinLengthFilter: (map['sourceMinLengthFilter'] as String).input(),
     );
   }
 }

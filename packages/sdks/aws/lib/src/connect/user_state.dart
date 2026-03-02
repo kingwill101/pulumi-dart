@@ -52,35 +52,21 @@ class UserState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [userId] The identifier for the user.
   UserState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? directoryUserId,
-    pulumi.Output<String>? hierarchyGroupId,
-    pulumi.Output<UserIdentityInfo>? identityInfo,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<UserPhoneConfig>? phoneConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routingProfileId,
-    pulumi.Output<List<String>>? securityProfileIds,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? userId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      directoryUserId = pulumi.Input.asOptionalInput<String>(directoryUserId),
-      hierarchyGroupId = pulumi.Input.asOptionalInput<String>(hierarchyGroupId),
-      identityInfo = pulumi.Input.asOptionalInput<UserIdentityInfo>(identityInfo),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      phoneConfig = pulumi.Input.asOptionalInput<UserPhoneConfig>(phoneConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingProfileId = pulumi.Input.asOptionalInput<String>(routingProfileId),
-      securityProfileIds = pulumi.Input.asOptionalInput<List<String>>(securityProfileIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.arn,
+    this.directoryUserId,
+    this.hierarchyGroupId,
+    this.identityInfo,
+    this.instanceId,
+    this.name,
+    this.password,
+    this.phoneConfig,
+    this.region,
+    this.routingProfileId,
+    this.securityProfileIds,
+    this.tags,
+    this.tagsAll,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      directoryUserId: map['directoryUserId'] == null ? null : pulumi.Output.create<String>(map['directoryUserId'] as String),
-      hierarchyGroupId: map['hierarchyGroupId'] == null ? null : pulumi.Output.create<String>(map['hierarchyGroupId'] as String),
-      identityInfo: map['identityInfo'] == null ? null : pulumi.Output.create<UserIdentityInfo>(UserIdentityInfo.fromMap((map['identityInfo'] as Map).cast<String, dynamic>())),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      phoneConfig: map['phoneConfig'] == null ? null : pulumi.Output.create<UserPhoneConfig>(UserPhoneConfig.fromMap((map['phoneConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingProfileId: map['routingProfileId'] == null ? null : pulumi.Output.create<String>(map['routingProfileId'] as String),
-      securityProfileIds: map['securityProfileIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityProfileIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      directoryUserId: map['directoryUserId'] == null ? null : (map['directoryUserId'] as String).input(),
+      hierarchyGroupId: map['hierarchyGroupId'] == null ? null : (map['hierarchyGroupId'] as String).input(),
+      identityInfo: map['identityInfo'] == null ? null : (UserIdentityInfo.fromMap((map['identityInfo'] as Map).cast<String, dynamic>())).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      phoneConfig: map['phoneConfig'] == null ? null : (UserPhoneConfig.fromMap((map['phoneConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingProfileId: map['routingProfileId'] == null ? null : (map['routingProfileId'] as String).input(),
+      securityProfileIds: map['securityProfileIds'] == null ? null : ((map['securityProfileIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

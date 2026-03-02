@@ -16,13 +16,10 @@ class GetWorkloadArgs {
   /// [organizationId] Required.
   /// [workloadId] Required.
   GetWorkloadArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> workloadId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      workloadId = pulumi.Input.asInput<String>(workloadId);
+    required this.location,
+    required this.organizationId,
+    required this.workloadId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetWorkloadArgs {
 
   factory GetWorkloadArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      workloadId: pulumi.Output.create<String>(map['workloadId'] as String),
+      location: (map['location'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      workloadId: (map['workloadId'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSigningJobSignedObjectS3 {
-  final String bucket;
-  final String key;
+  final pulumi.Input<String> bucket;
+  final pulumi.Input<String> key;
 
   /// Creates a new [GetSigningJobSignedObjectS3].
   /// [bucket] Required.
@@ -22,8 +23,8 @@ class GetSigningJobSignedObjectS3 {
 
   factory GetSigningJobSignedObjectS3.fromMap(Map<String, dynamic> map) {
     return GetSigningJobSignedObjectS3(
-      bucket: map['bucket'] as String,
-      key: map['key'] as String,
+      bucket: (map['bucket'] as String).input(),
+      key: (map['key'] as String).input(),
     );
   }
 }

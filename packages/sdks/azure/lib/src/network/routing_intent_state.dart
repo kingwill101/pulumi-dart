@@ -17,13 +17,10 @@ class RoutingIntentState {
   /// [routingPolicies] One or more `routing_policy` blocks as defined below.
   /// [virtualHubId] The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
   RoutingIntentState({
-    pulumi.Output<String>? name,
-    pulumi.Output<List<RoutingIntentRoutingPolicy>>? routingPolicies,
-    pulumi.Output<String>? virtualHubId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      routingPolicies = pulumi.Input.asOptionalInput<List<RoutingIntentRoutingPolicy>>(routingPolicies),
-      virtualHubId = pulumi.Input.asOptionalInput<String>(virtualHubId);
+    this.name,
+    this.routingPolicies,
+    this.virtualHubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class RoutingIntentState {
 
   factory RoutingIntentState.fromMap(Map<String, dynamic> map) {
     return RoutingIntentState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      routingPolicies: map['routingPolicies'] == null ? null : pulumi.Output.create<List<RoutingIntentRoutingPolicy>>(pulumi.Input.decodeList<RoutingIntentRoutingPolicy>(map['routingPolicies'], (value) => RoutingIntentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      virtualHubId: map['virtualHubId'] == null ? null : pulumi.Output.create<String>(map['virtualHubId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      routingPolicies: map['routingPolicies'] == null ? null : (pulumi.Input.decodeList<RoutingIntentRoutingPolicy>(map['routingPolicies'], (value) => RoutingIntentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Rendered image contents for this page.
 class GoogleCloudDocumentaiV1DocumentPageImage {
   /// Raw byte content of the image.
-  final String? content;
+  final pulumi.Input<String>? content;
   /// Height of the image in pixels.
-  final int? height;
+  final pulumi.Input<int>? height;
   /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
-  final String? mimeType;
+  final pulumi.Input<String>? mimeType;
   /// Width of the image in pixels.
-  final int? width;
+  final pulumi.Input<int>? width;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageImage].
   /// [content] Raw byte content of the image.
@@ -35,10 +36,10 @@ class GoogleCloudDocumentaiV1DocumentPageImage {
 
   factory GoogleCloudDocumentaiV1DocumentPageImage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageImage(
-      content: map['content'] == null ? null : map['content'] as String,
-      height: map['height'] == null ? null : map['height'] as int,
-      mimeType: map['mimeType'] == null ? null : map['mimeType'] as String,
-      width: map['width'] == null ? null : map['width'] as int,
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      height: map['height'] == null ? null : (map['height'] as int).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
+      width: map['width'] == null ? null : (map['width'] as int).input(),
     );
   }
 }

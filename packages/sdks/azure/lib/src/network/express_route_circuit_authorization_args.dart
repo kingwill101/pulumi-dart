@@ -19,13 +19,10 @@ class ExpressRouteCircuitAuthorizationArgs {
   /// [name] The name of the ExpressRoute circuit. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the ExpressRoute circuit. Changing this forces a new resource to be created.
   ExpressRouteCircuitAuthorizationArgs({
-    required pulumi.Output<String> expressRouteCircuitName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expressRouteCircuitName = pulumi.Input.asInput<String>(expressRouteCircuitName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.expressRouteCircuitName,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ExpressRouteCircuitAuthorizationArgs {
 
   factory ExpressRouteCircuitAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitAuthorizationArgs(
-      expressRouteCircuitName: pulumi.Output.create<String>(map['expressRouteCircuitName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expressRouteCircuitName: (map['expressRouteCircuitName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

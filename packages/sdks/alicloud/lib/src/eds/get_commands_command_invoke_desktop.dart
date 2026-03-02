@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCommandsCommandInvokeDesktop {
   /// The desktop id of the Desktop.
-  final String desktopId;
+  final pulumi.Input<String> desktopId;
   /// Output Field Text Length Exceeds 24 KB of Truncated Discarded Text Length.
-  final int dropped;
+  final pulumi.Input<int> dropped;
   /// Command of the Failure Or Perform the Reason for the Failure of the Code.
-  final String errorCode;
+  final pulumi.Input<String> errorCode;
   /// Command of the Failure Or Perform the Reason for the Failure of the Details.
-  final String errorInfo;
+  final pulumi.Input<String> errorInfo;
   /// Command of the Failure Or Perform the Reason for the Failure of the Details.
-  final String exitCode;
+  final pulumi.Input<String> exitCode;
   /// The Script Process until the End of Time.
-  final String finishTime;
+  final pulumi.Input<String> finishTime;
   /// A Single Cloud Desktop Script Progress Status.
-  final String invocationStatus;
+  final pulumi.Input<String> invocationStatus;
   /// Script the Output of the Process.
-  final String output;
+  final pulumi.Input<String> output;
   /// Command in the Desktop Implementation.
-  final int repeats;
+  final pulumi.Input<int> repeats;
   /// The Script Process on the Desktop, in the Start Timing of the Execution.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// If You Use the invocation Indicates That the Call of the Time.
-  final String stopTime;
+  final pulumi.Input<String> stopTime;
 
   /// Creates a new [GetCommandsCommandInvokeDesktop].
   /// [desktopId] The desktop id of the Desktop.
@@ -69,17 +70,17 @@ class GetCommandsCommandInvokeDesktop {
 
   factory GetCommandsCommandInvokeDesktop.fromMap(Map<String, dynamic> map) {
     return GetCommandsCommandInvokeDesktop(
-      desktopId: map['desktopId'] as String,
-      dropped: map['dropped'] as int,
-      errorCode: map['errorCode'] as String,
-      errorInfo: map['errorInfo'] as String,
-      exitCode: map['exitCode'] as String,
-      finishTime: map['finishTime'] as String,
-      invocationStatus: map['invocationStatus'] as String,
-      output: map['output'] as String,
-      repeats: map['repeats'] as int,
-      startTime: map['startTime'] as String,
-      stopTime: map['stopTime'] as String,
+      desktopId: (map['desktopId'] as String).input(),
+      dropped: (map['dropped'] as int).input(),
+      errorCode: (map['errorCode'] as String).input(),
+      errorInfo: (map['errorInfo'] as String).input(),
+      exitCode: (map['exitCode'] as String).input(),
+      finishTime: (map['finishTime'] as String).input(),
+      invocationStatus: (map['invocationStatus'] as String).input(),
+      output: (map['output'] as String).input(),
+      repeats: (map['repeats'] as int).input(),
+      startTime: (map['startTime'] as String).input(),
+      stopTime: (map['stopTime'] as String).input(),
     );
   }
 }

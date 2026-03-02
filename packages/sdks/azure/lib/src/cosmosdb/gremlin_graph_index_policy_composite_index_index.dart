@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GremlinGraphIndexPolicyCompositeIndexIndex {
   /// Order of the index. Possible values are `Ascending` or `Descending`.
-  final String order;
+  final pulumi.Input<String> order;
   /// Path for which the indexing behaviour applies to.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [GremlinGraphIndexPolicyCompositeIndexIndex].
   /// [order] Order of the index. Possible values are `Ascending` or `Descending`.
@@ -24,8 +25,8 @@ class GremlinGraphIndexPolicyCompositeIndexIndex {
 
   factory GremlinGraphIndexPolicyCompositeIndexIndex.fromMap(Map<String, dynamic> map) {
     return GremlinGraphIndexPolicyCompositeIndexIndex(
-      order: map['order'] as String,
-      path: map['path'] as String,
+      order: (map['order'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

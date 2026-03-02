@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMscSubWebhooksWebhook {
   /// The ID of the Webhook.
-  final String id;
+  final pulumi.Input<String> id;
   /// The serverUrl of the Subscription.
-  final String serverUrl;
+  final pulumi.Input<String> serverUrl;
   /// The first ID of the resource.
-  final String webhookId;
+  final pulumi.Input<String> webhookId;
   /// The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
-  final String webhookName;
+  final pulumi.Input<String> webhookName;
 
   /// Creates a new [GetMscSubWebhooksWebhook].
   /// [id] The ID of the Webhook.
@@ -34,10 +35,10 @@ class GetMscSubWebhooksWebhook {
 
   factory GetMscSubWebhooksWebhook.fromMap(Map<String, dynamic> map) {
     return GetMscSubWebhooksWebhook(
-      id: map['id'] as String,
-      serverUrl: map['serverUrl'] as String,
-      webhookId: map['webhookId'] as String,
-      webhookName: map['webhookName'] as String,
+      id: (map['id'] as String).input(),
+      serverUrl: (map['serverUrl'] as String).input(),
+      webhookId: (map['webhookId'] as String).input(),
+      webhookName: (map['webhookName'] as String).input(),
     );
   }
 }

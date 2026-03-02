@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Helm artifact profile.
 class HelmArtifactProfile {
   /// Helm package name.
-  final String? helmPackageName;
+  final pulumi.Input<String>? helmPackageName;
   /// Helm package version range.
-  final String? helmPackageVersionRange;
+  final pulumi.Input<String>? helmPackageVersionRange;
   /// The image pull secrets values path list.
-  final List<String>? imagePullSecretsValuesPaths;
+  final pulumi.Input<List<String>>? imagePullSecretsValuesPaths;
   /// The registry values path list.
-  final List<String>? registryValuesPaths;
+  final pulumi.Input<List<String>>? registryValuesPaths;
 
   /// Creates a new [HelmArtifactProfile].
   /// [helmPackageName] Helm package name.
@@ -35,10 +36,10 @@ class HelmArtifactProfile {
 
   factory HelmArtifactProfile.fromMap(Map<String, dynamic> map) {
     return HelmArtifactProfile(
-      helmPackageName: map['helmPackageName'] == null ? null : map['helmPackageName'] as String,
-      helmPackageVersionRange: map['helmPackageVersionRange'] == null ? null : map['helmPackageVersionRange'] as String,
-      imagePullSecretsValuesPaths: map['imagePullSecretsValuesPaths'] == null ? null : (map['imagePullSecretsValuesPaths'] as List).cast<String>(),
-      registryValuesPaths: map['registryValuesPaths'] == null ? null : (map['registryValuesPaths'] as List).cast<String>(),
+      helmPackageName: map['helmPackageName'] == null ? null : (map['helmPackageName'] as String).input(),
+      helmPackageVersionRange: map['helmPackageVersionRange'] == null ? null : (map['helmPackageVersionRange'] as String).input(),
+      imagePullSecretsValuesPaths: map['imagePullSecretsValuesPaths'] == null ? null : ((map['imagePullSecretsValuesPaths'] as List).cast<String>()).input(),
+      registryValuesPaths: map['registryValuesPaths'] == null ? null : ((map['registryValuesPaths'] as List).cast<String>()).input(),
     );
   }
 }

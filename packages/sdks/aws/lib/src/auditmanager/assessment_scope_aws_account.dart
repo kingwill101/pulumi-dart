@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssessmentScopeAwsAccount {
   /// Identifier for the Amazon Web Services account.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [AssessmentScopeAwsAccount].
   /// [id] Identifier for the Amazon Web Services account.
@@ -19,7 +20,7 @@ class AssessmentScopeAwsAccount {
 
   factory AssessmentScopeAwsAccount.fromMap(Map<String, dynamic> map) {
     return AssessmentScopeAwsAccount(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

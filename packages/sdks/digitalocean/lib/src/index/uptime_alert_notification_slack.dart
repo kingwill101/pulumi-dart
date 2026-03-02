@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UptimeAlertNotificationSlack {
   /// The Slack channel to send alerts to.
-  final String channel;
+  final pulumi.Input<String> channel;
   /// The webhook URL for Slack.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [UptimeAlertNotificationSlack].
   /// [channel] The Slack channel to send alerts to.
@@ -24,8 +25,8 @@ class UptimeAlertNotificationSlack {
 
   factory UptimeAlertNotificationSlack.fromMap(Map<String, dynamic> map) {
     return UptimeAlertNotificationSlack(
-      channel: map['channel'] as String,
-      url: map['url'] as String,
+      channel: (map['channel'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 class MetaV1LabelSelectorRequirementResponse {
   /// key is the label key that the selector applies to.
-  final String key;
+  final pulumi.Input<String> key;
   /// operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [MetaV1LabelSelectorRequirementResponse].
   /// [key] key is the label key that the selector applies to.
@@ -30,9 +31,9 @@ class MetaV1LabelSelectorRequirementResponse {
 
   factory MetaV1LabelSelectorRequirementResponse.fromMap(Map<String, dynamic> map) {
     return MetaV1LabelSelectorRequirementResponse(
-      key: map['key'] as String,
-      operator: map['operator'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMongoInstancesInstanceMongo {
-  final String class_;
-  final String description;
-  final String nodeId;
+  final pulumi.Input<String> class_;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> nodeId;
 
   /// Creates a new [GetMongoInstancesInstanceMongo].
   /// [class_] Required.
@@ -26,9 +27,9 @@ class GetMongoInstancesInstanceMongo {
 
   factory GetMongoInstancesInstanceMongo.fromMap(Map<String, dynamic> map) {
     return GetMongoInstancesInstanceMongo(
-      class_: map['class'] as String,
-      description: map['description'] as String,
-      nodeId: map['nodeId'] as String,
+      class_: (map['class'] as String).input(),
+      description: (map['description'] as String).input(),
+      nodeId: (map['nodeId'] as String).input(),
     );
   }
 }

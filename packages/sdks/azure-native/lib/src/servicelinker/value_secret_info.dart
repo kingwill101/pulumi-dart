@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The secret info when type is rawValue. It's for scenarios that user input the secret.
 class ValueSecretInfo {
   /// The secret type.
   /// Expected value is 'rawValue'.
-  final String secretType;
+  final pulumi.Input<String> secretType;
   /// The actual value of the secret.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ValueSecretInfo].
   /// [secretType] The secret type.
@@ -26,8 +27,8 @@ class ValueSecretInfo {
 
   factory ValueSecretInfo.fromMap(Map<String, dynamic> map) {
     return ValueSecretInfo(
-      secretType: map['secretType'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      secretType: (map['secretType'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

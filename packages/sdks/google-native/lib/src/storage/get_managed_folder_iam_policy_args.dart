@@ -18,15 +18,11 @@ class GetManagedFolderIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [userProject] Optional.
   GetManagedFolderIamPolicyArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<String> managedFolder,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      managedFolder = pulumi.Input.asInput<String>(managedFolder),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+    required this.bucket,
+    required this.managedFolder,
+    this.optionsRequestedPolicyVersion,
+    this.userProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetManagedFolderIamPolicyArgs {
 
   factory GetManagedFolderIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedFolderIamPolicyArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      managedFolder: pulumi.Output.create<String>(map['managedFolder'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
+      bucket: (map['bucket'] as String).input(),
+      managedFolder: (map['managedFolder'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
     );
   }
 }

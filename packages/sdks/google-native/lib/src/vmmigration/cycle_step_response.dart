@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replicating_step_response.dart';
 
 /// CycleStep holds information about a step progress.
 class CycleStepResponse {
   /// The time the cycle step has ended.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Initializing replication step.
-  final Map<String, dynamic> initializingReplication;
+  final pulumi.Input<Map<String, dynamic>> initializingReplication;
   /// Post processing step.
-  final Map<String, dynamic> postProcessing;
+  final pulumi.Input<Map<String, dynamic>> postProcessing;
   /// Replicating step.
-  final ReplicatingStepResponse replicating;
+  final pulumi.Input<ReplicatingStepResponse> replicating;
   /// The time the cycle step has started.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [CycleStepResponse].
   /// [endTime] The time the cycle step has ended.
@@ -34,18 +35,18 @@ class CycleStepResponse {
       'endTime': endTime,
       'initializingReplication': initializingReplication,
       'postProcessing': postProcessing,
-      'replicating': replicating.toMap(),
+      'replicating': pulumi.Input.mapInputValue<ReplicatingStepResponse, Map<String, dynamic>>(replicating, (value) => value.toMap()),
       'startTime': startTime,
     };
   }
 
   factory CycleStepResponse.fromMap(Map<String, dynamic> map) {
     return CycleStepResponse(
-      endTime: map['endTime'] as String,
-      initializingReplication: (map['initializingReplication'] as Map).cast<String, dynamic>(),
-      postProcessing: (map['postProcessing'] as Map).cast<String, dynamic>(),
-      replicating: ReplicatingStepResponse.fromMap((map['replicating'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      initializingReplication: ((map['initializingReplication'] as Map).cast<String, dynamic>()).input(),
+      postProcessing: ((map['postProcessing'] as Map).cast<String, dynamic>()).input(),
+      replicating: (ReplicatingStepResponse.fromMap((map['replicating'] as Map).cast<String, dynamic>())).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

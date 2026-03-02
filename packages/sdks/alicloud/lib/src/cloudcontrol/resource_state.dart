@@ -22,17 +22,12 @@ class ResourceState {
   /// [resourceCode] Resource Code, if there is a parent resource, split with `::`, such as VPC::VSwitch. The supported resource Code can be obtained from the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
   /// [resourceId] If there is a parent resource, you need to enter the id of the parent resource, for example, in the VPC::VSwtich resource, you need to enter the id of the VPC: vpc-dexadfe3r4ad. If there are more than one level of parent resources, you need to use `:` to split.
   ResourceState({
-    pulumi.Output<String>? desireAttributes,
-    pulumi.Output<String>? product,
-    pulumi.Output<String>? resourceAttributes,
-    pulumi.Output<String>? resourceCode,
-    pulumi.Output<String>? resourceId,
-  }) :
-      desireAttributes = pulumi.Input.asOptionalInput<String>(desireAttributes),
-      product = pulumi.Input.asOptionalInput<String>(product),
-      resourceAttributes = pulumi.Input.asOptionalInput<String>(resourceAttributes),
-      resourceCode = pulumi.Input.asOptionalInput<String>(resourceCode),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId);
+    this.desireAttributes,
+    this.product,
+    this.resourceAttributes,
+    this.resourceCode,
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ResourceState {
 
   factory ResourceState.fromMap(Map<String, dynamic> map) {
     return ResourceState(
-      desireAttributes: map['desireAttributes'] == null ? null : pulumi.Output.create<String>(map['desireAttributes'] as String),
-      product: map['product'] == null ? null : pulumi.Output.create<String>(map['product'] as String),
-      resourceAttributes: map['resourceAttributes'] == null ? null : pulumi.Output.create<String>(map['resourceAttributes'] as String),
-      resourceCode: map['resourceCode'] == null ? null : pulumi.Output.create<String>(map['resourceCode'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
+      desireAttributes: map['desireAttributes'] == null ? null : (map['desireAttributes'] as String).input(),
+      product: map['product'] == null ? null : (map['product'] as String).input(),
+      resourceAttributes: map['resourceAttributes'] == null ? null : (map['resourceAttributes'] as String).input(),
+      resourceCode: map['resourceCode'] == null ? null : (map['resourceCode'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

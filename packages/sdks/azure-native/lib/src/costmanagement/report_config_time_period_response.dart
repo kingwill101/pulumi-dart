@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The start and end date for pulling data for the report.
 class ReportConfigTimePeriodResponse {
   /// The start date to pull data from.
-  final String from;
+  final pulumi.Input<String> from;
   /// The end date to pull data to.
-  final String to;
+  final pulumi.Input<String> to;
 
   /// Creates a new [ReportConfigTimePeriodResponse].
   /// [from] The start date to pull data from.
@@ -25,8 +26,8 @@ class ReportConfigTimePeriodResponse {
 
   factory ReportConfigTimePeriodResponse.fromMap(Map<String, dynamic> map) {
     return ReportConfigTimePeriodResponse(
-      from: map['from'] as String,
-      to: map['to'] as String,
+      from: (map['from'] as String).input(),
+      to: (map['to'] as String).input(),
     );
   }
 }

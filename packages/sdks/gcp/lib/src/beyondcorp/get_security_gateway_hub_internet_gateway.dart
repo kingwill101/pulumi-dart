@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecurityGatewayHubInternetGateway {
   /// Output only. List of IP addresses assigned to the Cloud NAT.
-  final List<String> assignedIps;
+  final pulumi.Input<List<String>> assignedIps;
 
   /// Creates a new [GetSecurityGatewayHubInternetGateway].
   /// [assignedIps] Output only. List of IP addresses assigned to the Cloud NAT.
@@ -19,7 +20,7 @@ class GetSecurityGatewayHubInternetGateway {
 
   factory GetSecurityGatewayHubInternetGateway.fromMap(Map<String, dynamic> map) {
     return GetSecurityGatewayHubInternetGateway(
-      assignedIps: (map['assignedIps'] as List).cast<String>(),
+      assignedIps: ((map['assignedIps'] as List).cast<String>()).input(),
     );
   }
 }

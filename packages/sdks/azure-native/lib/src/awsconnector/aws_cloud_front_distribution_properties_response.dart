@@ -7,13 +7,13 @@ import 'tag_response.dart';
 /// Definition of awsCloudFrontDistribution
 class AwsCloudFrontDistributionPropertiesResponse {
   /// The distribution's configuration. A distribution configuration.
-  final DistributionConfigResponse? distributionConfig;
+  final pulumi.Input<DistributionConfigResponse>? distributionConfig;
   /// Property domainName
-  final String? domainName;
+  final pulumi.Input<String>? domainName;
   /// Property id
-  final String? id;
+  final pulumi.Input<String>? id;
   /// A complex type that contains zero or more ``Tag`` elements.
-  final List<TagResponse>? tags;
+  final pulumi.Input<List<TagResponse>>? tags;
 
   /// Creates a new [AwsCloudFrontDistributionPropertiesResponse].
   /// [distributionConfig] The distribution's configuration. A distribution configuration.
@@ -29,19 +29,19 @@ class AwsCloudFrontDistributionPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'distributionConfig': ?distributionConfig == null ? null : distributionConfig!.toMap(),
+      'distributionConfig': ?pulumi.Input.mapOptionalInputValue<DistributionConfigResponse, Map<String, dynamic>>(distributionConfig, (value) => value.toMap()),
       'domainName': ?domainName,
       'id': ?id,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AwsCloudFrontDistributionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsCloudFrontDistributionPropertiesResponse(
-      distributionConfig: map['distributionConfig'] == null ? null : DistributionConfigResponse.fromMap((map['distributionConfig'] as Map).cast<String, dynamic>()),
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
+      distributionConfig: map['distributionConfig'] == null ? null : (DistributionConfigResponse.fromMap((map['distributionConfig'] as Map).cast<String, dynamic>())).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'get_router_bgp_advertised_ip_range.dart';
 
 class GetRouterBgp {
   /// User-specified flag to indicate which mode to use for advertisement. Default value: "DEFAULT" Possible values: ["DEFAULT", "CUSTOM"]
-  final String advertiseMode;
+  final pulumi.Input<String> advertiseMode;
   /// User-specified list of prefix groups to advertise in custom mode.
   /// This field can only be populated if advertiseMode is CUSTOM and
   /// is advertised to all peers of the router. These groups will be
@@ -13,24 +13,24 @@ class GetRouterBgp {
   /// blank to advertise no custom groups.
   ///
   /// This enum field has the one valid value: ALL_SUBNETS
-  final List<String> advertisedGroups;
+  final pulumi.Input<List<String>> advertisedGroups;
   /// User-specified list of individual IP ranges to advertise in
   /// custom mode. This field can only be populated if advertiseMode
   /// is CUSTOM and is advertised to all peers of the router. These IP
   /// ranges will be advertised in addition to any specified groups.
   /// Leave this field blank to advertise no custom IP ranges.
-  final List<GetRouterBgpAdvertisedIpRange> advertisedIpRanges;
+  final pulumi.Input<List<GetRouterBgpAdvertisedIpRange>> advertisedIpRanges;
   /// Local BGP Autonomous System Number (ASN). Must be an RFC6996
   /// private ASN, either 16-bit or 32-bit. The value will be fixed for
   /// this router resource. All VPN tunnels that link to this router
   /// will have the same local ASN.
-  final int asn;
+  final pulumi.Input<int> asn;
   /// Explicitly specifies a range of valid BGP Identifiers for this Router.
   /// It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
   /// size at least /30, even if the BGP sessions are over IPv6. It must
   /// not overlap with any IPv4 BGP session ranges. Other vendors commonly
   /// call this router ID.
-  final String identifierRange;
+  final pulumi.Input<String> identifierRange;
   /// The interval in seconds between BGP keepalive messages that are sent
   /// to the peer. Hold time is three times the interval at which keepalive
   /// messages are sent, and the hold time is the maximum number of seconds
@@ -41,7 +41,7 @@ class GetRouterBgp {
   /// peer's hold time value as the hold time for the BGP connection
   /// between the two peers. If set, this value must be between 20 and 60.
   /// The default is 20.
-  final int keepaliveInterval;
+  final pulumi.Input<int> keepaliveInterval;
 
   /// Creates a new [GetRouterBgp].
   /// [advertiseMode] User-specified flag to indicate which mode to use for advertisement. Default value: "DEFAULT" Possible values: ["DEFAULT", "CUSTOM"]
@@ -63,7 +63,7 @@ class GetRouterBgp {
     return <String, dynamic>{
       'advertiseMode': advertiseMode,
       'advertisedGroups': advertisedGroups,
-      'advertisedIpRanges': pulumi.Input.encodeList<GetRouterBgpAdvertisedIpRange, Map<String, dynamic>>(advertisedIpRanges, (value) => value.toMap()),
+      'advertisedIpRanges': pulumi.Input.mapInputValue<List<GetRouterBgpAdvertisedIpRange>, List<Map<String, dynamic>>>(advertisedIpRanges, (value) => pulumi.Input.encodeList<GetRouterBgpAdvertisedIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'asn': asn,
       'identifierRange': identifierRange,
       'keepaliveInterval': keepaliveInterval,
@@ -72,12 +72,12 @@ class GetRouterBgp {
 
   factory GetRouterBgp.fromMap(Map<String, dynamic> map) {
     return GetRouterBgp(
-      advertiseMode: map['advertiseMode'] as String,
-      advertisedGroups: (map['advertisedGroups'] as List).cast<String>(),
-      advertisedIpRanges: pulumi.Input.decodeList<GetRouterBgpAdvertisedIpRange>(map['advertisedIpRanges'], (value) => GetRouterBgpAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>())),
-      asn: map['asn'] as int,
-      identifierRange: map['identifierRange'] as String,
-      keepaliveInterval: map['keepaliveInterval'] as int,
+      advertiseMode: (map['advertiseMode'] as String).input(),
+      advertisedGroups: ((map['advertisedGroups'] as List).cast<String>()).input(),
+      advertisedIpRanges: (pulumi.Input.decodeList<GetRouterBgpAdvertisedIpRange>(map['advertisedIpRanges'], (value) => GetRouterBgpAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      asn: (map['asn'] as int).input(),
+      identifierRange: (map['identifierRange'] as String).input(),
+      keepaliveInterval: (map['keepaliveInterval'] as int).input(),
     );
   }
 }

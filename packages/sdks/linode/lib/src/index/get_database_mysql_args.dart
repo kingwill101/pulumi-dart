@@ -16,11 +16,9 @@ class GetDatabaseMysqlArgs {
   /// [databaseId] The ID of the MySQL database. Deprecated: Use id instead.
   /// [id] The ID of the MySQL database. Mutually exclusive with `database_id`.
   GetDatabaseMysqlArgs({
-    pulumi.Output<int>? databaseId,
-    pulumi.Output<int>? id,
-  }) :
-      databaseId = pulumi.Input.asOptionalInput<int>(databaseId),
-      id = pulumi.Input.asOptionalInput<int>(id);
+    this.databaseId,
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDatabaseMysqlArgs {
 
   factory GetDatabaseMysqlArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlArgs(
-      databaseId: map['databaseId'] == null ? null : pulumi.Output.create<int>(map['databaseId'] as int),
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as int).input(),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
     );
   }
 }

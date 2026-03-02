@@ -16,13 +16,10 @@ class InboundConnectionAccepterState {
   /// [connectionStatus] Status of the connection request.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   InboundConnectionAccepterState({
-    pulumi.Output<String>? connectionId,
-    pulumi.Output<String>? connectionStatus,
-    pulumi.Output<String>? region,
-  }) :
-      connectionId = pulumi.Input.asOptionalInput<String>(connectionId),
-      connectionStatus = pulumi.Input.asOptionalInput<String>(connectionStatus),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.connectionId,
+    this.connectionStatus,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class InboundConnectionAccepterState {
 
   factory InboundConnectionAccepterState.fromMap(Map<String, dynamic> map) {
     return InboundConnectionAccepterState(
-      connectionId: map['connectionId'] == null ? null : pulumi.Output.create<String>(map['connectionId'] as String),
-      connectionStatus: map['connectionStatus'] == null ? null : pulumi.Output.create<String>(map['connectionStatus'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      connectionStatus: map['connectionStatus'] == null ? null : (map['connectionStatus'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

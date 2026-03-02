@@ -13,9 +13,8 @@ class GetViewsArgs {
   /// Creates a new [GetViewsArgs].
   /// [billingViewTypes] List of billing view types to retrieve. Valid values are `PRIMARY`, `BILLING_GROUP`, `CUSTOM`.
   GetViewsArgs({
-    pulumi.Output<List<String>>? billingViewTypes,
-  }) :
-      billingViewTypes = pulumi.Input.asOptionalInput<List<String>>(billingViewTypes);
+    this.billingViewTypes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetViewsArgs {
 
   factory GetViewsArgs.fromMap(Map<String, dynamic> map) {
     return GetViewsArgs(
-      billingViewTypes: map['billingViewTypes'] == null ? null : pulumi.Output.create<List<String>>((map['billingViewTypes'] as List).cast<String>()),
+      billingViewTypes: map['billingViewTypes'] == null ? null : ((map['billingViewTypes'] as List).cast<String>()).input(),
     );
   }
 }

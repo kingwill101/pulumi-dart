@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This message only contains a field of integer array.
 class GoogleCloudIntegrationsV1alphaIntParameterArrayResponse {
   /// Integer array.
-  final List<String> intValues;
+  final pulumi.Input<List<String>> intValues;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaIntParameterArrayResponse].
   /// [intValues] Integer array.
@@ -20,7 +21,7 @@ class GoogleCloudIntegrationsV1alphaIntParameterArrayResponse {
 
   factory GoogleCloudIntegrationsV1alphaIntParameterArrayResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaIntParameterArrayResponse(
-      intValues: (map['intValues'] as List).cast<String>(),
+      intValues: ((map['intValues'] as List).cast<String>()).input(),
     );
   }
 }

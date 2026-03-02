@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Recurrence Range of an Access Review Schedule Definition.
 class AccessReviewRecurrenceRange {
   /// The DateTime when the review is scheduled to end. Required if type is endDate
-  final String? endDate;
+  final pulumi.Input<String>? endDate;
   /// The number of times to repeat the access review. Required and must be positive if type is numbered.
-  final int? numberOfOccurrences;
+  final pulumi.Input<int>? numberOfOccurrences;
   /// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
-  final String? startDate;
+  final pulumi.Input<String>? startDate;
   /// The recurrence range type. The possible values are: endDate, noEnd, numbered.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [AccessReviewRecurrenceRange].
   /// [endDate] The DateTime when the review is scheduled to end. Required if type is endDate
@@ -35,10 +36,10 @@ class AccessReviewRecurrenceRange {
 
   factory AccessReviewRecurrenceRange.fromMap(Map<String, dynamic> map) {
     return AccessReviewRecurrenceRange(
-      endDate: map['endDate'] == null ? null : map['endDate'] as String,
-      numberOfOccurrences: map['numberOfOccurrences'] == null ? null : map['numberOfOccurrences'] as int,
-      startDate: map['startDate'] == null ? null : map['startDate'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      numberOfOccurrences: map['numberOfOccurrences'] == null ? null : (map['numberOfOccurrences'] as int).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

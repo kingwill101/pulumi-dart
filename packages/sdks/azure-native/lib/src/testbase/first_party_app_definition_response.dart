@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of the definition of a first party application of the Test Base package.
 class FirstPartyAppDefinitionResponse {
   /// The architecture of a first party application of a Test Base Account.
-  final String? architecture;
+  final pulumi.Input<String>? architecture;
   /// The channel info of a first party application of a Test Base Account.
-  final String? channel;
+  final pulumi.Input<String>? channel;
   /// Specifies how the first party applications should be inter-operated with user's application.
-  final String? interopExecutionMode;
+  final pulumi.Input<String>? interopExecutionMode;
   /// The media name of a first party application of a Test Base Account.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The ring info of a first party application of a Test Base Account.
-  final String? ring;
+  final pulumi.Input<String>? ring;
 
   /// Creates a new [FirstPartyAppDefinitionResponse].
   /// [architecture] The architecture of a first party application of a Test Base Account.
@@ -40,11 +41,11 @@ class FirstPartyAppDefinitionResponse {
 
   factory FirstPartyAppDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return FirstPartyAppDefinitionResponse(
-      architecture: map['architecture'] == null ? null : map['architecture'] as String,
-      channel: map['channel'] == null ? null : map['channel'] as String,
-      interopExecutionMode: map['interopExecutionMode'] == null ? null : map['interopExecutionMode'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      ring: map['ring'] == null ? null : map['ring'] as String,
+      architecture: map['architecture'] == null ? null : (map['architecture'] as String).input(),
+      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
+      interopExecutionMode: map['interopExecutionMode'] == null ? null : (map['interopExecutionMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ring: map['ring'] == null ? null : (map['ring'] as String).input(),
     );
   }
 }

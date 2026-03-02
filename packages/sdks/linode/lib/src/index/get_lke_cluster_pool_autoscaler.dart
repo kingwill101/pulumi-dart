@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLkeClusterPoolAutoscaler {
   /// The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The maximum number of nodes to autoscale to.
-  final int max;
+  final pulumi.Input<int> max;
   /// The minimum number of nodes to autoscale to.
-  final int min;
+  final pulumi.Input<int> min;
 
   /// Creates a new [GetLkeClusterPoolAutoscaler].
   /// [enabled] The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
@@ -29,9 +30,9 @@ class GetLkeClusterPoolAutoscaler {
 
   factory GetLkeClusterPoolAutoscaler.fromMap(Map<String, dynamic> map) {
     return GetLkeClusterPoolAutoscaler(
-      enabled: map['enabled'] as bool,
-      max: map['max'] as int,
-      min: map['min'] as int,
+      enabled: (map['enabled'] as bool).input(),
+      max: (map['max'] as int).input(),
+      min: (map['min'] as int).input(),
     );
   }
 }

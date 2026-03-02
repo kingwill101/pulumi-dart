@@ -42,27 +42,17 @@ class TemplateArtifactArgs {
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   /// [template] The Resource Manager template blueprint artifact body.
   TemplateArtifactArgs({
-    pulumi.Output<String>? artifactName,
-    required pulumi.Output<String> blueprintName,
-    pulumi.Output<List<String>>? dependsOn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<Map<String, ParameterValue>> parameters,
-    pulumi.Output<String>? resourceGroup,
-    required pulumi.Output<String> resourceScope,
-    required pulumi.Output<dynamic> template,
-  }) :
-      artifactName = pulumi.Input.asOptionalInput<String>(artifactName),
-      blueprintName = pulumi.Input.asInput<String>(blueprintName),
-      dependsOn = pulumi.Input.asOptionalInput<List<String>>(dependsOn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      kind = pulumi.Input.asInput<String>(kind),
-      parameters = pulumi.Input.asInput<Map<String, ParameterValue>>(parameters),
-      resourceGroup = pulumi.Input.asOptionalInput<String>(resourceGroup),
-      resourceScope = pulumi.Input.asInput<String>(resourceScope),
-      template = pulumi.Input.asInput<dynamic>(template);
+    this.artifactName,
+    required this.blueprintName,
+    this.dependsOn,
+    this.description,
+    this.displayName,
+    required this.kind,
+    required this.parameters,
+    this.resourceGroup,
+    required this.resourceScope,
+    required this.template,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class TemplateArtifactArgs {
 
   factory TemplateArtifactArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArtifactArgs(
-      artifactName: map['artifactName'] == null ? null : pulumi.Output.create<String>(map['artifactName'] as String),
-      blueprintName: pulumi.Output.create<String>(map['blueprintName'] as String),
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Output.create<List<String>>((map['dependsOn'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      parameters: pulumi.Output.create<Map<String, ParameterValue>>(pulumi.Input.decodeMapValues<ParameterValue>(map['parameters'], (value) => ParameterValue.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroup: map['resourceGroup'] == null ? null : pulumi.Output.create<String>(map['resourceGroup'] as String),
-      resourceScope: pulumi.Output.create<String>(map['resourceScope'] as String),
-      template: pulumi.Output.create<dynamic>(map['template']),
+      artifactName: map['artifactName'] == null ? null : (map['artifactName'] as String).input(),
+      blueprintName: (map['blueprintName'] as String).input(),
+      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      parameters: (pulumi.Input.decodeMapValues<ParameterValue>(map['parameters'], (value) => ParameterValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      resourceScope: (map['resourceScope'] as String).input(),
+      template: (map['template']).input(),
     );
   }
 }

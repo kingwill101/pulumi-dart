@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_cluster_load_balancer_bgp_lb_config.dart';
 import 'bare_metal_cluster_load_balancer_manual_lb_config.dart';
 import 'bare_metal_cluster_load_balancer_metal_lb_config.dart';
@@ -9,19 +10,19 @@ import 'bare_metal_cluster_load_balancer_vip_config.dart';
 class BareMetalClusterLoadBalancer {
   /// Configuration for BGP typed load balancers.
   /// Structure is documented below.
-  final BareMetalClusterLoadBalancerBgpLbConfig? bgpLbConfig;
+  final pulumi.Input<BareMetalClusterLoadBalancerBgpLbConfig>? bgpLbConfig;
   /// A nested object resource.
   /// Structure is documented below.
-  final BareMetalClusterLoadBalancerManualLbConfig? manualLbConfig;
+  final pulumi.Input<BareMetalClusterLoadBalancerManualLbConfig>? manualLbConfig;
   /// A nested object resource.
   /// Structure is documented below.
-  final BareMetalClusterLoadBalancerMetalLbConfig? metalLbConfig;
+  final pulumi.Input<BareMetalClusterLoadBalancerMetalLbConfig>? metalLbConfig;
   /// Specifies the load balancer ports.
   /// Structure is documented below.
-  final BareMetalClusterLoadBalancerPortConfig portConfig;
+  final pulumi.Input<BareMetalClusterLoadBalancerPortConfig> portConfig;
   /// Specified the Bare Metal Load Balancer Config
   /// Structure is documented below.
-  final BareMetalClusterLoadBalancerVipConfig vipConfig;
+  final pulumi.Input<BareMetalClusterLoadBalancerVipConfig> vipConfig;
 
   /// Creates a new [BareMetalClusterLoadBalancer].
   /// [bgpLbConfig] Configuration for BGP typed load balancers.
@@ -39,21 +40,21 @@ class BareMetalClusterLoadBalancer {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgpLbConfig': ?bgpLbConfig == null ? null : bgpLbConfig!.toMap(),
-      'manualLbConfig': ?manualLbConfig == null ? null : manualLbConfig!.toMap(),
-      'metalLbConfig': ?metalLbConfig == null ? null : metalLbConfig!.toMap(),
-      'portConfig': portConfig.toMap(),
-      'vipConfig': vipConfig.toMap(),
+      'bgpLbConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalClusterLoadBalancerBgpLbConfig, Map<String, dynamic>>(bgpLbConfig, (value) => value.toMap()),
+      'manualLbConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalClusterLoadBalancerManualLbConfig, Map<String, dynamic>>(manualLbConfig, (value) => value.toMap()),
+      'metalLbConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalClusterLoadBalancerMetalLbConfig, Map<String, dynamic>>(metalLbConfig, (value) => value.toMap()),
+      'portConfig': pulumi.Input.mapInputValue<BareMetalClusterLoadBalancerPortConfig, Map<String, dynamic>>(portConfig, (value) => value.toMap()),
+      'vipConfig': pulumi.Input.mapInputValue<BareMetalClusterLoadBalancerVipConfig, Map<String, dynamic>>(vipConfig, (value) => value.toMap()),
     };
   }
 
   factory BareMetalClusterLoadBalancer.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancer(
-      bgpLbConfig: map['bgpLbConfig'] == null ? null : BareMetalClusterLoadBalancerBgpLbConfig.fromMap((map['bgpLbConfig'] as Map).cast<String, dynamic>()),
-      manualLbConfig: map['manualLbConfig'] == null ? null : BareMetalClusterLoadBalancerManualLbConfig.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>()),
-      metalLbConfig: map['metalLbConfig'] == null ? null : BareMetalClusterLoadBalancerMetalLbConfig.fromMap((map['metalLbConfig'] as Map).cast<String, dynamic>()),
-      portConfig: BareMetalClusterLoadBalancerPortConfig.fromMap((map['portConfig'] as Map).cast<String, dynamic>()),
-      vipConfig: BareMetalClusterLoadBalancerVipConfig.fromMap((map['vipConfig'] as Map).cast<String, dynamic>()),
+      bgpLbConfig: map['bgpLbConfig'] == null ? null : (BareMetalClusterLoadBalancerBgpLbConfig.fromMap((map['bgpLbConfig'] as Map).cast<String, dynamic>())).input(),
+      manualLbConfig: map['manualLbConfig'] == null ? null : (BareMetalClusterLoadBalancerManualLbConfig.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>())).input(),
+      metalLbConfig: map['metalLbConfig'] == null ? null : (BareMetalClusterLoadBalancerMetalLbConfig.fromMap((map['metalLbConfig'] as Map).cast<String, dynamic>())).input(),
+      portConfig: (BareMetalClusterLoadBalancerPortConfig.fromMap((map['portConfig'] as Map).cast<String, dynamic>())).input(),
+      vipConfig: (BareMetalClusterLoadBalancerVipConfig.fromMap((map['vipConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

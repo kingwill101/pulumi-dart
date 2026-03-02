@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions {
   /// List of possible enum values.
-  final List<String> possibleValues;
+  final pulumi.Input<List<String>> possibleValues;
   /// Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-  final bool? validationCheckDisabled;
+  final pulumi.Input<bool>? validationCheckDisabled;
 
   /// Creates a new [DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions].
   /// [possibleValues] List of possible enum values.
@@ -24,8 +25,8 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
   factory DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions.fromMap(Map<String, dynamic> map) {
     return DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions(
-      possibleValues: (map['possibleValues'] as List).cast<String>(),
-      validationCheckDisabled: map['validationCheckDisabled'] == null ? null : map['validationCheckDisabled'] as bool,
+      possibleValues: ((map['possibleValues'] as List).cast<String>()).input(),
+      validationCheckDisabled: map['validationCheckDisabled'] == null ? null : (map['validationCheckDisabled'] as bool).input(),
     );
   }
 }

@@ -6,15 +6,15 @@ import 'stream_mqtt_destination.dart';
 /// Defines the stream properties.
 class NamespaceDiscoveredStream {
   /// Destinations for a stream.
-  final List<StreamMqttDestination>? destinations;
+  final pulumi.Input<List<StreamMqttDestination>>? destinations;
   /// Timestamp (in UTC) indicating when the stream was added or modified.
-  final String? lastUpdatedOn;
+  final pulumi.Input<String>? lastUpdatedOn;
   /// Name of the stream definition.
-  final String name;
+  final pulumi.Input<String> name;
   /// Stringified JSON that contains connector-specific configuration for the specific stream.
-  final String? streamConfiguration;
+  final pulumi.Input<String>? streamConfiguration;
   /// URI or type definition ID.
-  final String? typeRef;
+  final pulumi.Input<String>? typeRef;
 
   /// Creates a new [NamespaceDiscoveredStream].
   /// [destinations] Destinations for a stream.
@@ -32,7 +32,7 @@ class NamespaceDiscoveredStream {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<StreamMqttDestination, Map<String, dynamic>>(destinations!, (value) => value.toMap()),
+      'destinations': ?pulumi.Input.mapOptionalInputValue<List<StreamMqttDestination>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<StreamMqttDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastUpdatedOn': ?lastUpdatedOn,
       'name': name,
       'streamConfiguration': ?streamConfiguration,
@@ -42,11 +42,11 @@ class NamespaceDiscoveredStream {
 
   factory NamespaceDiscoveredStream.fromMap(Map<String, dynamic> map) {
     return NamespaceDiscoveredStream(
-      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<StreamMqttDestination>(map['destinations'], (value) => StreamMqttDestination.fromMap((value as Map).cast<String, dynamic>())),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : map['lastUpdatedOn'] as String,
-      name: map['name'] as String,
-      streamConfiguration: map['streamConfiguration'] == null ? null : map['streamConfiguration'] as String,
-      typeRef: map['typeRef'] == null ? null : map['typeRef'] as String,
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<StreamMqttDestination>(map['destinations'], (value) => StreamMqttDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn'] as String).input(),
+      name: (map['name'] as String).input(),
+      streamConfiguration: map['streamConfiguration'] == null ? null : (map['streamConfiguration'] as String).input(),
+      typeRef: map['typeRef'] == null ? null : (map['typeRef'] as String).input(),
     );
   }
 }

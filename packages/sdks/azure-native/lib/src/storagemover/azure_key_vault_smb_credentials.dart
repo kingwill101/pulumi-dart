@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Azure Key Vault secret URIs which store the credentials.
 class AzureKeyVaultSmbCredentials {
   /// The Azure Key Vault secret URI which stores the password. Use empty string to clean-up existing value.
-  final String? passwordUri;
+  final pulumi.Input<String>? passwordUri;
   /// The Credentials type.
   /// Expected value is 'AzureKeyVaultSmb'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The Azure Key Vault secret URI which stores the username. Use empty string to clean-up existing value.
-  final String? usernameUri;
+  final pulumi.Input<String>? usernameUri;
 
   /// Creates a new [AzureKeyVaultSmbCredentials].
   /// [passwordUri] The Azure Key Vault secret URI which stores the password. Use empty string to clean-up existing value.
@@ -31,9 +32,9 @@ class AzureKeyVaultSmbCredentials {
 
   factory AzureKeyVaultSmbCredentials.fromMap(Map<String, dynamic> map) {
     return AzureKeyVaultSmbCredentials(
-      passwordUri: map['passwordUri'] == null ? null : map['passwordUri'] as String,
-      type: map['type'] as String,
-      usernameUri: map['usernameUri'] == null ? null : map['usernameUri'] as String,
+      passwordUri: map['passwordUri'] == null ? null : (map['passwordUri'] as String).input(),
+      type: (map['type'] as String).input(),
+      usernameUri: map['usernameUri'] == null ? null : (map['usernameUri'] as String).input(),
     );
   }
 }

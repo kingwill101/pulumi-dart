@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiJobJobSettingsDdlHandlingSetting {
-  final String? action;
+  final pulumi.Input<String>? action;
   /// DDL type, optional enumeration value:
   ///
   /// RenameColumn (rename column)
@@ -14,7 +15,7 @@ class DiJobJobSettingsDdlHandlingSetting {
   /// TruncateTable (empty table)
   ///
   /// DropTable (delete table)
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DiJobJobSettingsDdlHandlingSetting].
   /// [action] Optional.
@@ -33,8 +34,8 @@ class DiJobJobSettingsDdlHandlingSetting {
 
   factory DiJobJobSettingsDdlHandlingSetting.fromMap(Map<String, dynamic> map) {
     return DiJobJobSettingsDdlHandlingSetting(
-      action: map['action'] == null ? null : map['action'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

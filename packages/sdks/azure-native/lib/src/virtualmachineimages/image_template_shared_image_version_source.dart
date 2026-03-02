@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes an image source that is an image version in an Azure Compute Gallery or a Direct Shared Gallery.
 class ImageTemplateSharedImageVersionSource {
   /// ARM resource id of the image version. When image version name is 'latest', the version is evaluated when the image build takes place.
-  final String imageVersionId;
+  final pulumi.Input<String> imageVersionId;
   /// Specifies the type of source image you want to start with.
   /// Expected value is 'SharedImageVersion'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ImageTemplateSharedImageVersionSource].
   /// [imageVersionId] ARM resource id of the image version. When image version name is 'latest', the version is evaluated when the image build takes place.
@@ -26,8 +27,8 @@ class ImageTemplateSharedImageVersionSource {
 
   factory ImageTemplateSharedImageVersionSource.fromMap(Map<String, dynamic> map) {
     return ImageTemplateSharedImageVersionSource(
-      imageVersionId: map['imageVersionId'] as String,
-      type: map['type'] as String,
+      imageVersionId: (map['imageVersionId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

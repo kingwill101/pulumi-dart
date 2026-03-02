@@ -26,17 +26,12 @@ class SpringCloudConfigurationServiceArgs {
   /// [repositories] One or more `repository` blocks as defined below.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Configuration Service to be created.
   SpringCloudConfigurationServiceArgs({
-    pulumi.Output<String>? generation,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? refreshIntervalInSeconds,
-    pulumi.Output<List<SpringCloudConfigurationServiceRepository>>? repositories,
-    required pulumi.Output<String> springCloudServiceId,
-  }) :
-      generation = pulumi.Input.asOptionalInput<String>(generation),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      refreshIntervalInSeconds = pulumi.Input.asOptionalInput<int>(refreshIntervalInSeconds),
-      repositories = pulumi.Input.asOptionalInput<List<SpringCloudConfigurationServiceRepository>>(repositories),
-      springCloudServiceId = pulumi.Input.asInput<String>(springCloudServiceId);
+    this.generation,
+    this.name,
+    this.refreshIntervalInSeconds,
+    this.repositories,
+    required this.springCloudServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class SpringCloudConfigurationServiceArgs {
 
   factory SpringCloudConfigurationServiceArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudConfigurationServiceArgs(
-      generation: map['generation'] == null ? null : pulumi.Output.create<String>(map['generation'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      refreshIntervalInSeconds: map['refreshIntervalInSeconds'] == null ? null : pulumi.Output.create<int>(map['refreshIntervalInSeconds'] as int),
-      repositories: map['repositories'] == null ? null : pulumi.Output.create<List<SpringCloudConfigurationServiceRepository>>(pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(map['repositories'], (value) => SpringCloudConfigurationServiceRepository.fromMap((value as Map).cast<String, dynamic>()))),
-      springCloudServiceId: pulumi.Output.create<String>(map['springCloudServiceId'] as String),
+      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      refreshIntervalInSeconds: map['refreshIntervalInSeconds'] == null ? null : (map['refreshIntervalInSeconds'] as int).input(),
+      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(map['repositories'], (value) => SpringCloudConfigurationServiceRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      springCloudServiceId: (map['springCloudServiceId'] as String).input(),
     );
   }
 }

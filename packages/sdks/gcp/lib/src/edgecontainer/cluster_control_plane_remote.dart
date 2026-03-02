@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterControlPlaneRemote {
   /// Name of the Google Distributed Cloud Edge zones where this node pool
   /// will be created. For example: `us-central1-edge-customer-a`.
-  final String? nodeLocation;
+  final pulumi.Input<String>? nodeLocation;
 
   /// Creates a new [ClusterControlPlaneRemote].
   /// [nodeLocation] Name of the Google Distributed Cloud Edge zones where this node pool
@@ -20,7 +21,7 @@ class ClusterControlPlaneRemote {
 
   factory ClusterControlPlaneRemote.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneRemote(
-      nodeLocation: map['nodeLocation'] == null ? null : map['nodeLocation'] as String,
+      nodeLocation: map['nodeLocation'] == null ? null : (map['nodeLocation'] as String).input(),
     );
   }
 }

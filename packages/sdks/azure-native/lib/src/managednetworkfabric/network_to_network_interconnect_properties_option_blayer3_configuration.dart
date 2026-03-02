@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Common properties for Layer3Configuration.
 class NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration {
   /// ASN of PE devices for CE/PE connectivity.Example : 28
-  final double peerASN;
+  final pulumi.Input<double> peerASN;
   /// IPv4 Address Prefix.
-  final String? primaryIpv4Prefix;
+  final pulumi.Input<String>? primaryIpv4Prefix;
   /// IPv6 Address Prefix.
-  final String? primaryIpv6Prefix;
+  final pulumi.Input<String>? primaryIpv6Prefix;
   /// Secondary IPv4 Address Prefix.
-  final String? secondaryIpv4Prefix;
+  final pulumi.Input<String>? secondaryIpv4Prefix;
   /// Secondary IPv6 Address Prefix.
-  final String? secondaryIpv6Prefix;
+  final pulumi.Input<String>? secondaryIpv6Prefix;
   /// VLAN for CE/PE Layer 3 connectivity.Example : 501
-  final int vlanId;
+  final pulumi.Input<int> vlanId;
 
   /// Creates a new [NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration].
   /// [peerASN] ASN of PE devices for CE/PE connectivity.Example : 28
@@ -45,12 +46,12 @@ class NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration {
 
   factory NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration.fromMap(Map<String, dynamic> map) {
     return NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration(
-      peerASN: map['peerASN'] as double,
-      primaryIpv4Prefix: map['primaryIpv4Prefix'] == null ? null : map['primaryIpv4Prefix'] as String,
-      primaryIpv6Prefix: map['primaryIpv6Prefix'] == null ? null : map['primaryIpv6Prefix'] as String,
-      secondaryIpv4Prefix: map['secondaryIpv4Prefix'] == null ? null : map['secondaryIpv4Prefix'] as String,
-      secondaryIpv6Prefix: map['secondaryIpv6Prefix'] == null ? null : map['secondaryIpv6Prefix'] as String,
-      vlanId: map['vlanId'] as int,
+      peerASN: (map['peerASN'] as double).input(),
+      primaryIpv4Prefix: map['primaryIpv4Prefix'] == null ? null : (map['primaryIpv4Prefix'] as String).input(),
+      primaryIpv6Prefix: map['primaryIpv6Prefix'] == null ? null : (map['primaryIpv6Prefix'] as String).input(),
+      secondaryIpv4Prefix: map['secondaryIpv4Prefix'] == null ? null : (map['secondaryIpv4Prefix'] as String).input(),
+      secondaryIpv6Prefix: map['secondaryIpv6Prefix'] == null ? null : (map['secondaryIpv6Prefix'] as String).input(),
+      vlanId: (map['vlanId'] as int).input(),
     );
   }
 }

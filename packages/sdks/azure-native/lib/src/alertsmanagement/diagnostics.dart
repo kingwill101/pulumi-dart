@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'conditions.dart';
 import 'scope.dart';
 
 /// Action rule with diagnostics configuration
 class Diagnostics {
   /// conditions on which alerts will be filtered
-  final Conditions? conditions;
+  final pulumi.Input<Conditions>? conditions;
   /// Description of action rule
-  final String? description;
+  final pulumi.Input<String>? description;
   /// scope on which action rule will apply
-  final Scope? scope;
+  final pulumi.Input<Scope>? scope;
   /// Indicates if the given action rule is enabled or disabled
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Indicates type of action rule
   /// Expected value is 'Diagnostics'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [Diagnostics].
   /// [conditions] conditions on which alerts will be filtered
@@ -33,9 +34,9 @@ class Diagnostics {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : conditions!.toMap(),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<Conditions, Map<String, dynamic>>(conditions, (value) => value.toMap()),
       'description': ?description,
-      'scope': ?scope == null ? null : scope!.toMap(),
+      'scope': ?pulumi.Input.mapOptionalInputValue<Scope, Map<String, dynamic>>(scope, (value) => value.toMap()),
       'status': ?status,
       'type': type,
     };
@@ -43,11 +44,11 @@ class Diagnostics {
 
   factory Diagnostics.fromMap(Map<String, dynamic> map) {
     return Diagnostics(
-      conditions: map['conditions'] == null ? null : Conditions.fromMap((map['conditions'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      scope: map['scope'] == null ? null : Scope.fromMap((map['scope'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] as String,
+      conditions: map['conditions'] == null ? null : (Conditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath {
   /// A URL representing a file or path (no wildcards) in Cloud Storage.
   /// Example: `gs://[BUCKET_NAME]/dictionary.txt`
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath].
   /// [path] A URL representing a file or path (no wildcards) in Cloud Storage.
@@ -20,7 +21,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath {
 
   factory PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath(
-      path: map['path'] as String,
+      path: (map['path'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InternetMonitorInternetMeasurementsLogDeliveryS3Config {
-  final String bucketName;
-  final String? bucketPrefix;
-  final String? logDeliveryStatus;
+  final pulumi.Input<String> bucketName;
+  final pulumi.Input<String>? bucketPrefix;
+  final pulumi.Input<String>? logDeliveryStatus;
 
   /// Creates a new [InternetMonitorInternetMeasurementsLogDeliveryS3Config].
   /// [bucketName] Required.
@@ -26,9 +27,9 @@ class InternetMonitorInternetMeasurementsLogDeliveryS3Config {
 
   factory InternetMonitorInternetMeasurementsLogDeliveryS3Config.fromMap(Map<String, dynamic> map) {
     return InternetMonitorInternetMeasurementsLogDeliveryS3Config(
-      bucketName: map['bucketName'] as String,
-      bucketPrefix: map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
-      logDeliveryStatus: map['logDeliveryStatus'] == null ? null : map['logDeliveryStatus'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
+      logDeliveryStatus: map['logDeliveryStatus'] == null ? null : (map['logDeliveryStatus'] as String).input(),
     );
   }
 }

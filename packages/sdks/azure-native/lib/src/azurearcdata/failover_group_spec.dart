@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The specifications of the failover group resource.
 class FailoverGroupSpec {
   /// The name of the partner SQL managed instance.
-  final String? partnerMI;
+  final pulumi.Input<String>? partnerMI;
   /// The mirroring endpoint public certificate for the partner SQL managed instance. Only PEM format is supported.
-  final String? partnerMirroringCert;
+  final pulumi.Input<String>? partnerMirroringCert;
   /// The mirroring endpoint URL of the partner SQL managed instance.
-  final String? partnerMirroringURL;
+  final pulumi.Input<String>? partnerMirroringURL;
   /// The partner sync mode of the SQL managed instance.
-  final String? partnerSyncMode;
+  final pulumi.Input<String>? partnerSyncMode;
   /// The role of the SQL managed instance in this failover group.
-  final String role;
+  final pulumi.Input<String> role;
   /// The shared name of the failover group for this SQL managed instance. Both SQL managed instance and its partner have to use the same shared name.
-  final String? sharedName;
+  final pulumi.Input<String>? sharedName;
   /// The name of the SQL managed instance with this failover group role.
-  final String? sourceMI;
+  final pulumi.Input<String>? sourceMI;
 
   /// Creates a new [FailoverGroupSpec].
   /// [partnerMI] The name of the partner SQL managed instance.
@@ -50,13 +51,13 @@ class FailoverGroupSpec {
 
   factory FailoverGroupSpec.fromMap(Map<String, dynamic> map) {
     return FailoverGroupSpec(
-      partnerMI: map['partnerMI'] == null ? null : map['partnerMI'] as String,
-      partnerMirroringCert: map['partnerMirroringCert'] == null ? null : map['partnerMirroringCert'] as String,
-      partnerMirroringURL: map['partnerMirroringURL'] == null ? null : map['partnerMirroringURL'] as String,
-      partnerSyncMode: map['partnerSyncMode'] == null ? null : map['partnerSyncMode'] as String,
-      role: map['role'] as String,
-      sharedName: map['sharedName'] == null ? null : map['sharedName'] as String,
-      sourceMI: map['sourceMI'] == null ? null : map['sourceMI'] as String,
+      partnerMI: map['partnerMI'] == null ? null : (map['partnerMI'] as String).input(),
+      partnerMirroringCert: map['partnerMirroringCert'] == null ? null : (map['partnerMirroringCert'] as String).input(),
+      partnerMirroringURL: map['partnerMirroringURL'] == null ? null : (map['partnerMirroringURL'] as String).input(),
+      partnerSyncMode: map['partnerSyncMode'] == null ? null : (map['partnerSyncMode'] as String).input(),
+      role: (map['role'] as String).input(),
+      sharedName: map['sharedName'] == null ? null : (map['sharedName'] as String).input(),
+      sourceMI: map['sourceMI'] == null ? null : (map['sourceMI'] as String).input(),
     );
   }
 }

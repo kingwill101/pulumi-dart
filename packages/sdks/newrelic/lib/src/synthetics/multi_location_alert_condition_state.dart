@@ -39,25 +39,16 @@ class MultiLocationAlertConditionState {
   /// [violationTimeLimitSeconds] The maximum number of seconds a violation can remain open before being closed by the system. The value must be between 300 seconds (5 minutes) to 2592000 seconds (30 days), both inclusive. Defaults to 259200 seconds (3 days) if this argument is not specified in the configuration, in accordance with the characteristics of this field in NerdGraph, as specified in the [docs](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/advanced-alerts/rest-api-alerts/alerts-conditions-api-field-names/#violation_time_limit_seconds).
   /// [warning] A condition term with the priority set to warning.
   MultiLocationAlertConditionState({
-    pulumi.Output<MultiLocationAlertConditionCritical>? critical,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<String>>? entities,
-    pulumi.Output<String>? entityGuid,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? runbookUrl,
-    pulumi.Output<int>? violationTimeLimitSeconds,
-    pulumi.Output<MultiLocationAlertConditionWarning>? warning,
-  }) :
-      critical = pulumi.Input.asOptionalInput<MultiLocationAlertConditionCritical>(critical),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      entities = pulumi.Input.asOptionalInput<List<String>>(entities),
-      entityGuid = pulumi.Input.asOptionalInput<String>(entityGuid),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      runbookUrl = pulumi.Input.asOptionalInput<String>(runbookUrl),
-      violationTimeLimitSeconds = pulumi.Input.asOptionalInput<int>(violationTimeLimitSeconds),
-      warning = pulumi.Input.asOptionalInput<MultiLocationAlertConditionWarning>(warning);
+    this.critical,
+    this.enabled,
+    this.entities,
+    this.entityGuid,
+    this.name,
+    this.policyId,
+    this.runbookUrl,
+    this.violationTimeLimitSeconds,
+    this.warning,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class MultiLocationAlertConditionState {
 
   factory MultiLocationAlertConditionState.fromMap(Map<String, dynamic> map) {
     return MultiLocationAlertConditionState(
-      critical: map['critical'] == null ? null : pulumi.Output.create<MultiLocationAlertConditionCritical>(MultiLocationAlertConditionCritical.fromMap((map['critical'] as Map).cast<String, dynamic>())),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      entities: map['entities'] == null ? null : pulumi.Output.create<List<String>>((map['entities'] as List).cast<String>()),
-      entityGuid: map['entityGuid'] == null ? null : pulumi.Output.create<String>(map['entityGuid'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      runbookUrl: map['runbookUrl'] == null ? null : pulumi.Output.create<String>(map['runbookUrl'] as String),
-      violationTimeLimitSeconds: map['violationTimeLimitSeconds'] == null ? null : pulumi.Output.create<int>(map['violationTimeLimitSeconds'] as int),
-      warning: map['warning'] == null ? null : pulumi.Output.create<MultiLocationAlertConditionWarning>(MultiLocationAlertConditionWarning.fromMap((map['warning'] as Map).cast<String, dynamic>())),
+      critical: map['critical'] == null ? null : (MultiLocationAlertConditionCritical.fromMap((map['critical'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      entities: map['entities'] == null ? null : ((map['entities'] as List).cast<String>()).input(),
+      entityGuid: map['entityGuid'] == null ? null : (map['entityGuid'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl'] as String).input(),
+      violationTimeLimitSeconds: map['violationTimeLimitSeconds'] == null ? null : (map['violationTimeLimitSeconds'] as int).input(),
+      warning: map['warning'] == null ? null : (MultiLocationAlertConditionWarning.fromMap((map['warning'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

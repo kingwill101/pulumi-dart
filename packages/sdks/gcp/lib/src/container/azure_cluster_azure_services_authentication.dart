@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureClusterAzureServicesAuthentication {
   /// The Azure Active Directory Application ID for Authentication configuration.
-  final String applicationId;
+  final pulumi.Input<String> applicationId;
   /// The Azure Active Directory Tenant ID for Authentication configuration.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [AzureClusterAzureServicesAuthentication].
   /// [applicationId] The Azure Active Directory Application ID for Authentication configuration.
@@ -24,8 +25,8 @@ class AzureClusterAzureServicesAuthentication {
 
   factory AzureClusterAzureServicesAuthentication.fromMap(Map<String, dynamic> map) {
     return AzureClusterAzureServicesAuthentication(
-      applicationId: map['applicationId'] as String,
-      tenantId: map['tenantId'] as String,
+      applicationId: (map['applicationId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

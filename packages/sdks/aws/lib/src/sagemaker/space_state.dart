@@ -46,31 +46,19 @@ class SpaceState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [url] Returns the URL of the space. If the space is created with Amazon Web Services IAM Identity Center (Successor to Amazon Web Services Single Sign-On) authentication, users can navigate to the URL after appending the respective redirect parameter for the application type to be federated through Amazon Web Services IAM Identity Center.
   SpaceState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<String>? homeEfsFileSystemUid,
-    pulumi.Output<SpaceOwnershipSettings>? ownershipSettings,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? spaceDisplayName,
-    pulumi.Output<String>? spaceName,
-    pulumi.Output<SpaceSpaceSettings>? spaceSettings,
-    pulumi.Output<SpaceSpaceSharingSettings>? spaceSharingSettings,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? url,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      homeEfsFileSystemUid = pulumi.Input.asOptionalInput<String>(homeEfsFileSystemUid),
-      ownershipSettings = pulumi.Input.asOptionalInput<SpaceOwnershipSettings>(ownershipSettings),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      spaceDisplayName = pulumi.Input.asOptionalInput<String>(spaceDisplayName),
-      spaceName = pulumi.Input.asOptionalInput<String>(spaceName),
-      spaceSettings = pulumi.Input.asOptionalInput<SpaceSpaceSettings>(spaceSettings),
-      spaceSharingSettings = pulumi.Input.asOptionalInput<SpaceSpaceSharingSettings>(spaceSharingSettings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.arn,
+    this.domainId,
+    this.homeEfsFileSystemUid,
+    this.ownershipSettings,
+    this.region,
+    this.spaceDisplayName,
+    this.spaceName,
+    this.spaceSettings,
+    this.spaceSharingSettings,
+    this.tags,
+    this.tagsAll,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class SpaceState {
 
   factory SpaceState.fromMap(Map<String, dynamic> map) {
     return SpaceState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      homeEfsFileSystemUid: map['homeEfsFileSystemUid'] == null ? null : pulumi.Output.create<String>(map['homeEfsFileSystemUid'] as String),
-      ownershipSettings: map['ownershipSettings'] == null ? null : pulumi.Output.create<SpaceOwnershipSettings>(SpaceOwnershipSettings.fromMap((map['ownershipSettings'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      spaceDisplayName: map['spaceDisplayName'] == null ? null : pulumi.Output.create<String>(map['spaceDisplayName'] as String),
-      spaceName: map['spaceName'] == null ? null : pulumi.Output.create<String>(map['spaceName'] as String),
-      spaceSettings: map['spaceSettings'] == null ? null : pulumi.Output.create<SpaceSpaceSettings>(SpaceSpaceSettings.fromMap((map['spaceSettings'] as Map).cast<String, dynamic>())),
-      spaceSharingSettings: map['spaceSharingSettings'] == null ? null : pulumi.Output.create<SpaceSpaceSharingSettings>(SpaceSpaceSharingSettings.fromMap((map['spaceSharingSettings'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      homeEfsFileSystemUid: map['homeEfsFileSystemUid'] == null ? null : (map['homeEfsFileSystemUid'] as String).input(),
+      ownershipSettings: map['ownershipSettings'] == null ? null : (SpaceOwnershipSettings.fromMap((map['ownershipSettings'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      spaceDisplayName: map['spaceDisplayName'] == null ? null : (map['spaceDisplayName'] as String).input(),
+      spaceName: map['spaceName'] == null ? null : (map['spaceName'] as String).input(),
+      spaceSettings: map['spaceSettings'] == null ? null : (SpaceSpaceSettings.fromMap((map['spaceSettings'] as Map).cast<String, dynamic>())).input(),
+      spaceSharingSettings: map['spaceSharingSettings'] == null ? null : (SpaceSpaceSharingSettings.fromMap((map['spaceSharingSettings'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

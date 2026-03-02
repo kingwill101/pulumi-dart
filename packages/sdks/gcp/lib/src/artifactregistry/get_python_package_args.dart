@@ -22,15 +22,11 @@ class GetPythonPackageArgs {
   /// [project] The ID of the project that owns the repository. If not provided, the provider-level project is used.
   /// [repositoryId] The ID of the repository containing the Python package.
   GetPythonPackageArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> packageName,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      packageName = pulumi.Input.asInput<String>(packageName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId);
+    required this.location,
+    required this.packageName,
+    this.project,
+    required this.repositoryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetPythonPackageArgs {
 
   factory GetPythonPackageArgs.fromMap(Map<String, dynamic> map) {
     return GetPythonPackageArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      packageName: pulumi.Output.create<String>(map['packageName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
+      location: (map['location'] as String).input(),
+      packageName: (map['packageName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetPeerAsnArgs {
   /// Creates a new [GetPeerAsnArgs].
   /// [peerAsnName] The peer ASN name.
   GetPeerAsnArgs({
-    required pulumi.Output<String> peerAsnName,
-  }) :
-      peerAsnName = pulumi.Input.asInput<String>(peerAsnName);
+    required this.peerAsnName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetPeerAsnArgs {
 
   factory GetPeerAsnArgs.fromMap(Map<String, dynamic> map) {
     return GetPeerAsnArgs(
-      peerAsnName: pulumi.Output.create<String>(map['peerAsnName'] as String),
+      peerAsnName: (map['peerAsnName'] as String).input(),
     );
   }
 }

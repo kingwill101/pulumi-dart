@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeMetric {
   /// (Output)
   /// Contains runtime daemon metrics, such as OS and kernels and
   /// sessions stats.
-  final Map<String, String>? systemMetrics;
+  final pulumi.Input<Map<String, String>>? systemMetrics;
 
   /// Creates a new [RuntimeMetric].
   /// [systemMetrics] (Output)
@@ -21,7 +22,7 @@ class RuntimeMetric {
 
   factory RuntimeMetric.fromMap(Map<String, dynamic> map) {
     return RuntimeMetric(
-      systemMetrics: map['systemMetrics'] == null ? null : (map['systemMetrics'] as Map).cast<String, String>(),
+      systemMetrics: map['systemMetrics'] == null ? null : ((map['systemMetrics'] as Map).cast<String, String>()).input(),
     );
   }
 }

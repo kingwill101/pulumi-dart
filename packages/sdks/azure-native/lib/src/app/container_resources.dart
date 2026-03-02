@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Container App container resource requirements.
 class ContainerResources {
   /// Required CPU in cores, e.g. 0.5
-  final double? cpu;
+  final pulumi.Input<double>? cpu;
   /// Required GPU in cores for GPU based app, e.g. 1.0
-  final double? gpu;
+  final pulumi.Input<double>? gpu;
   /// Required memory, e.g. "250Mb"
-  final String? memory;
+  final pulumi.Input<String>? memory;
 
   /// Creates a new [ContainerResources].
   /// [cpu] Required CPU in cores, e.g. 0.5
@@ -30,9 +31,9 @@ class ContainerResources {
 
   factory ContainerResources.fromMap(Map<String, dynamic> map) {
     return ContainerResources(
-      cpu: map['cpu'] == null ? null : map['cpu'] as double,
-      gpu: map['gpu'] == null ? null : map['gpu'] as double,
-      memory: map['memory'] == null ? null : map['memory'] as String,
+      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
+      gpu: map['gpu'] == null ? null : (map['gpu'] as double).input(),
+      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
     );
   }
 }

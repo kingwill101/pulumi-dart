@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dashboard_part_metadata_response.dart';
 import 'dashboard_parts_position_response.dart';
 
 /// A dashboard part.
 class DashboardPartsResponse {
   /// The dashboard's part metadata.
-  final DashboardPartMetadataResponse? metadata;
+  final pulumi.Input<DashboardPartMetadataResponse>? metadata;
   /// The dashboard's part position.
-  final DashboardPartsPositionResponse position;
+  final pulumi.Input<DashboardPartsPositionResponse> position;
 
   /// Creates a new [DashboardPartsResponse].
   /// [metadata] The dashboard's part metadata.
@@ -20,15 +21,15 @@ class DashboardPartsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'position': position.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<DashboardPartMetadataResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'position': pulumi.Input.mapInputValue<DashboardPartsPositionResponse, Map<String, dynamic>>(position, (value) => value.toMap()),
     };
   }
 
   factory DashboardPartsResponse.fromMap(Map<String, dynamic> map) {
     return DashboardPartsResponse(
-      metadata: map['metadata'] == null ? null : DashboardPartMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      position: DashboardPartsPositionResponse.fromMap((map['position'] as Map).cast<String, dynamic>()),
+      metadata: map['metadata'] == null ? null : (DashboardPartMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      position: (DashboardPartsPositionResponse.fromMap((map['position'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDispatchRulesRuleNotifyTemplate {
   /// The content of the email.
-  final String emailContent;
+  final pulumi.Input<String> emailContent;
   /// The content of the email.
-  final String emailRecoverContent;
+  final pulumi.Input<String> emailRecoverContent;
   /// The title of the email.
-  final String emailRecoverTitle;
+  final pulumi.Input<String> emailRecoverTitle;
   /// The title of the email.
-  final String emailTitle;
+  final pulumi.Input<String> emailTitle;
   /// The content of the robot.
-  final String robotContent;
+  final pulumi.Input<String> robotContent;
   /// The content of the SMS.
-  final String smsContent;
+  final pulumi.Input<String> smsContent;
   /// The content of the SMS.
-  final String smsRecoverContent;
+  final pulumi.Input<String> smsRecoverContent;
   /// The content of the TTS.
-  final String ttsContent;
+  final pulumi.Input<String> ttsContent;
   /// The content of the TTS.
-  final String ttsRecoverContent;
+  final pulumi.Input<String> ttsRecoverContent;
 
   /// Creates a new [GetDispatchRulesRuleNotifyTemplate].
   /// [emailContent] The content of the email.
@@ -59,15 +60,15 @@ class GetDispatchRulesRuleNotifyTemplate {
 
   factory GetDispatchRulesRuleNotifyTemplate.fromMap(Map<String, dynamic> map) {
     return GetDispatchRulesRuleNotifyTemplate(
-      emailContent: map['emailContent'] as String,
-      emailRecoverContent: map['emailRecoverContent'] as String,
-      emailRecoverTitle: map['emailRecoverTitle'] as String,
-      emailTitle: map['emailTitle'] as String,
-      robotContent: map['robotContent'] as String,
-      smsContent: map['smsContent'] as String,
-      smsRecoverContent: map['smsRecoverContent'] as String,
-      ttsContent: map['ttsContent'] as String,
-      ttsRecoverContent: map['ttsRecoverContent'] as String,
+      emailContent: (map['emailContent'] as String).input(),
+      emailRecoverContent: (map['emailRecoverContent'] as String).input(),
+      emailRecoverTitle: (map['emailRecoverTitle'] as String).input(),
+      emailTitle: (map['emailTitle'] as String).input(),
+      robotContent: (map['robotContent'] as String).input(),
+      smsContent: (map['smsContent'] as String).input(),
+      smsRecoverContent: (map['smsRecoverContent'] as String).input(),
+      ttsContent: (map['ttsContent'] as String).input(),
+      ttsRecoverContent: (map['ttsRecoverContent'] as String).input(),
     );
   }
 }

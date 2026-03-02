@@ -16,11 +16,9 @@ class SubnetNetworkSecurityGroupAssociationArgs {
   /// [networkSecurityGroupId] The ID of the Network Security Group which should be associated with the Subnet. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet. Changing this forces a new resource to be created.
   SubnetNetworkSecurityGroupAssociationArgs({
-    required pulumi.Output<String> networkSecurityGroupId,
-    required pulumi.Output<String> subnetId,
-  }) :
-      networkSecurityGroupId = pulumi.Input.asInput<String>(networkSecurityGroupId),
-      subnetId = pulumi.Input.asInput<String>(subnetId);
+    required this.networkSecurityGroupId,
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class SubnetNetworkSecurityGroupAssociationArgs {
 
   factory SubnetNetworkSecurityGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SubnetNetworkSecurityGroupAssociationArgs(
-      networkSecurityGroupId: pulumi.Output.create<String>(map['networkSecurityGroupId'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
+      networkSecurityGroupId: (map['networkSecurityGroupId'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationsApplicationOssMountDetail {
   /// The name of the bucket.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// The path of the bucket.
-  final String bucketPath;
+  final pulumi.Input<String> bucketPath;
   /// The Container mount path.
-  final String mountPath;
+  final pulumi.Input<String> mountPath;
   /// Whether the container path has readable permission to mount directory resources.
-  final bool readOnly;
+  final pulumi.Input<bool> readOnly;
 
   /// Creates a new [GetApplicationsApplicationOssMountDetail].
   /// [bucketName] The name of the bucket.
@@ -34,10 +35,10 @@ class GetApplicationsApplicationOssMountDetail {
 
   factory GetApplicationsApplicationOssMountDetail.fromMap(Map<String, dynamic> map) {
     return GetApplicationsApplicationOssMountDetail(
-      bucketName: map['bucketName'] as String,
-      bucketPath: map['bucketPath'] as String,
-      mountPath: map['mountPath'] as String,
-      readOnly: map['readOnly'] as bool,
+      bucketName: (map['bucketName'] as String).input(),
+      bucketPath: (map['bucketPath'] as String).input(),
+      mountPath: (map['mountPath'] as String).input(),
+      readOnly: (map['readOnly'] as bool).input(),
     );
   }
 }

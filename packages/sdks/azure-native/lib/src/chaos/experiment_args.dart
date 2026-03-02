@@ -30,19 +30,13 @@ class ExperimentArgs {
   /// [resourceGroupName] String that represents an Azure resource group.
   /// [tags] Resource tags.
   ExperimentArgs({
-    pulumi.Output<String>? experimentName,
-    pulumi.Output<ExperimentIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<ExperimentProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      experimentName = pulumi.Input.asOptionalInput<String>(experimentName),
-      identity = pulumi.Input.asOptionalInput<ExperimentIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<ExperimentProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.experimentName,
+    this.identity,
+    this.location,
+    required this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class ExperimentArgs {
 
   factory ExperimentArgs.fromMap(Map<String, dynamic> map) {
     return ExperimentArgs(
-      experimentName: map['experimentName'] == null ? null : pulumi.Output.create<String>(map['experimentName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ExperimentIdentity>(ExperimentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<ExperimentProperties>(ExperimentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      experimentName: map['experimentName'] == null ? null : (map['experimentName'] as String).input(),
+      identity: map['identity'] == null ? null : (ExperimentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (ExperimentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyDocumentStatementCondition {
   /// The operator of the condition.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// The values of the condition.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
   /// The variable of the condition.
-  final String variable;
+  final pulumi.Input<String> variable;
 
   /// Creates a new [GetPolicyDocumentStatementCondition].
   /// [operator] The operator of the condition.
@@ -29,9 +30,9 @@ class GetPolicyDocumentStatementCondition {
 
   factory GetPolicyDocumentStatementCondition.fromMap(Map<String, dynamic> map) {
     return GetPolicyDocumentStatementCondition(
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
-      variable: map['variable'] as String,
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
+      variable: (map['variable'] as String).input(),
     );
   }
 }

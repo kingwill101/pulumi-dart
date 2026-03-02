@@ -50,29 +50,18 @@ class NetworkState {
   /// [updateTime] Last update time of this resource.
   /// [vpcNetworks] VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
   NetworkState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<List<NetworkVpcNetwork>>? vpcNetworks,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      vpcNetworks = pulumi.Input.asOptionalInput<List<NetworkVpcNetwork>>(vpcNetworks);
+    this.createTime,
+    this.description,
+    this.etag,
+    this.location,
+    this.name,
+    this.project,
+    this.state,
+    this.type,
+    this.uid,
+    this.updateTime,
+    this.vpcNetworks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,17 +81,17 @@ class NetworkState {
 
   factory NetworkState.fromMap(Map<String, dynamic> map) {
     return NetworkState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      vpcNetworks: map['vpcNetworks'] == null ? null : pulumi.Output.create<List<NetworkVpcNetwork>>(pulumi.Input.decodeList<NetworkVpcNetwork>(map['vpcNetworks'], (value) => NetworkVpcNetwork.fromMap((value as Map).cast<String, dynamic>()))),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      vpcNetworks: map['vpcNetworks'] == null ? null : (pulumi.Input.decodeList<NetworkVpcNetwork>(map['vpcNetworks'], (value) => NetworkVpcNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

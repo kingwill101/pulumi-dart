@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_status_response_error_details.dart';
 
 /// Gets or sets the status of the account.
 class AccountPropertiesResponseAccountStatus {
   /// Gets the account status code.
-  final String accountProvisioningState;
+  final pulumi.Input<String> accountProvisioningState;
   /// Gets the account error details.
-  final AccountStatusResponseErrorDetails errorDetails;
+  final pulumi.Input<AccountStatusResponseErrorDetails> errorDetails;
 
   /// Creates a new [AccountPropertiesResponseAccountStatus].
   /// [accountProvisioningState] Gets the account status code.
@@ -20,14 +21,14 @@ class AccountPropertiesResponseAccountStatus {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountProvisioningState': accountProvisioningState,
-      'errorDetails': errorDetails.toMap(),
+      'errorDetails': pulumi.Input.mapInputValue<AccountStatusResponseErrorDetails, Map<String, dynamic>>(errorDetails, (value) => value.toMap()),
     };
   }
 
   factory AccountPropertiesResponseAccountStatus.fromMap(Map<String, dynamic> map) {
     return AccountPropertiesResponseAccountStatus(
-      accountProvisioningState: map['accountProvisioningState'] as String,
-      errorDetails: AccountStatusResponseErrorDetails.fromMap((map['errorDetails'] as Map).cast<String, dynamic>()),
+      accountProvisioningState: (map['accountProvisioningState'] as String).input(),
+      errorDetails: (AccountStatusResponseErrorDetails.fromMap((map['errorDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

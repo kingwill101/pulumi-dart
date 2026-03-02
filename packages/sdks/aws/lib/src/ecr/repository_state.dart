@@ -47,31 +47,19 @@ class RepositoryState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   RepositoryState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<RepositoryEncryptionConfiguration>>? encryptionConfigurations,
-    pulumi.Output<bool>? forceDelete,
-    pulumi.Output<RepositoryImageScanningConfiguration>? imageScanningConfiguration,
-    pulumi.Output<String>? imageTagMutability,
-    pulumi.Output<List<RepositoryImageTagMutabilityExclusionFilter>>? imageTagMutabilityExclusionFilters,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registryId,
-    pulumi.Output<String>? repositoryUrl,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      encryptionConfigurations = pulumi.Input.asOptionalInput<List<RepositoryEncryptionConfiguration>>(encryptionConfigurations),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      imageScanningConfiguration = pulumi.Input.asOptionalInput<RepositoryImageScanningConfiguration>(imageScanningConfiguration),
-      imageTagMutability = pulumi.Input.asOptionalInput<String>(imageTagMutability),
-      imageTagMutabilityExclusionFilters = pulumi.Input.asOptionalInput<List<RepositoryImageTagMutabilityExclusionFilter>>(imageTagMutabilityExclusionFilters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryId = pulumi.Input.asOptionalInput<String>(registryId),
-      repositoryUrl = pulumi.Input.asOptionalInput<String>(repositoryUrl),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.encryptionConfigurations,
+    this.forceDelete,
+    this.imageScanningConfiguration,
+    this.imageTagMutability,
+    this.imageTagMutabilityExclusionFilters,
+    this.name,
+    this.region,
+    this.registryId,
+    this.repositoryUrl,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class RepositoryState {
 
   factory RepositoryState.fromMap(Map<String, dynamic> map) {
     return RepositoryState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : pulumi.Output.create<List<RepositoryEncryptionConfiguration>>(pulumi.Input.decodeList<RepositoryEncryptionConfiguration>(map['encryptionConfigurations'], (value) => RepositoryEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : pulumi.Output.create<RepositoryImageScanningConfiguration>(RepositoryImageScanningConfiguration.fromMap((map['imageScanningConfiguration'] as Map).cast<String, dynamic>())),
-      imageTagMutability: map['imageTagMutability'] == null ? null : pulumi.Output.create<String>(map['imageTagMutability'] as String),
-      imageTagMutabilityExclusionFilters: map['imageTagMutabilityExclusionFilters'] == null ? null : pulumi.Output.create<List<RepositoryImageTagMutabilityExclusionFilter>>(pulumi.Input.decodeList<RepositoryImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters'], (value) => RepositoryImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryId: map['registryId'] == null ? null : pulumi.Output.create<String>(map['registryId'] as String),
-      repositoryUrl: map['repositoryUrl'] == null ? null : pulumi.Output.create<String>(map['repositoryUrl'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<RepositoryEncryptionConfiguration>(map['encryptionConfigurations'], (value) => RepositoryEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : (RepositoryImageScanningConfiguration.fromMap((map['imageScanningConfiguration'] as Map).cast<String, dynamic>())).input(),
+      imageTagMutability: map['imageTagMutability'] == null ? null : (map['imageTagMutability'] as String).input(),
+      imageTagMutabilityExclusionFilters: map['imageTagMutabilityExclusionFilters'] == null ? null : (pulumi.Input.decodeList<RepositoryImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters'], (value) => RepositoryImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      repositoryUrl: map['repositoryUrl'] == null ? null : (map['repositoryUrl'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertifiateCertificateAttribute {
   /// The create time of the Key Vault Certificate.
-  final String? created;
+  final pulumi.Input<String>? created;
   /// whether the Key Vault Certificate is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The expires time of the Key Vault Certificate.
-  final String? expires;
+  final pulumi.Input<String>? expires;
   /// The not before valid time of the Key Vault Certificate.
-  final String? notBefore;
+  final pulumi.Input<String>? notBefore;
   /// The deletion recovery level of the Key Vault Certificate.
-  final String? recoveryLevel;
+  final pulumi.Input<String>? recoveryLevel;
   /// The recent update time of the Key Vault Certificate.
-  final String? updated;
+  final pulumi.Input<String>? updated;
 
   /// Creates a new [CertifiateCertificateAttribute].
   /// [created] The create time of the Key Vault Certificate.
@@ -44,12 +45,12 @@ class CertifiateCertificateAttribute {
 
   factory CertifiateCertificateAttribute.fromMap(Map<String, dynamic> map) {
     return CertifiateCertificateAttribute(
-      created: map['created'] == null ? null : map['created'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      expires: map['expires'] == null ? null : map['expires'] as String,
-      notBefore: map['notBefore'] == null ? null : map['notBefore'] as String,
-      recoveryLevel: map['recoveryLevel'] == null ? null : map['recoveryLevel'] as String,
-      updated: map['updated'] == null ? null : map['updated'] as String,
+      created: map['created'] == null ? null : (map['created'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      expires: map['expires'] == null ? null : (map['expires'] as String).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
+      recoveryLevel: map['recoveryLevel'] == null ? null : (map['recoveryLevel'] as String).input(),
+      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
     );
   }
 }

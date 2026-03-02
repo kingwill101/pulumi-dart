@@ -20,13 +20,10 @@ class JobTargetGroupArgs {
   /// [jobTargets] One or more `job_target` blocks as defined below.
   /// [name] The name which should be used for this Job Target Group. Changing this forces a new Job Target Group to be created.
   JobTargetGroupArgs({
-    required pulumi.Output<String> jobAgentId,
-    pulumi.Output<List<JobTargetGroupJobTarget>>? jobTargets,
-    pulumi.Output<String>? name,
-  }) :
-      jobAgentId = pulumi.Input.asInput<String>(jobAgentId),
-      jobTargets = pulumi.Input.asOptionalInput<List<JobTargetGroupJobTarget>>(jobTargets),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.jobAgentId,
+    this.jobTargets,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class JobTargetGroupArgs {
 
   factory JobTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return JobTargetGroupArgs(
-      jobAgentId: pulumi.Output.create<String>(map['jobAgentId'] as String),
-      jobTargets: map['jobTargets'] == null ? null : pulumi.Output.create<List<JobTargetGroupJobTarget>>(pulumi.Input.decodeList<JobTargetGroupJobTarget>(map['jobTargets'], (value) => JobTargetGroupJobTarget.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      jobAgentId: (map['jobAgentId'] as String).input(),
+      jobTargets: map['jobTargets'] == null ? null : (pulumi.Input.decodeList<JobTargetGroupJobTarget>(map['jobTargets'], (value) => JobTargetGroupJobTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

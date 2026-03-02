@@ -31,21 +31,14 @@ class PartitionArgs {
   /// [storageDescriptor] A storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
   /// [tableName] Required.
   PartitionArgs({
-    pulumi.Output<String>? catalogId,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<Map<String, String>>? parameters,
-    required pulumi.Output<List<String>> partitionValues,
-    pulumi.Output<String>? region,
-    pulumi.Output<PartitionStorageDescriptor>? storageDescriptor,
-    required pulumi.Output<String> tableName,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      partitionValues = pulumi.Input.asInput<List<String>>(partitionValues),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      storageDescriptor = pulumi.Input.asOptionalInput<PartitionStorageDescriptor>(storageDescriptor),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    this.catalogId,
+    required this.databaseName,
+    this.parameters,
+    required this.partitionValues,
+    this.region,
+    this.storageDescriptor,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class PartitionArgs {
 
   factory PartitionArgs.fromMap(Map<String, dynamic> map) {
     return PartitionArgs(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      partitionValues: pulumi.Output.create<List<String>>((map['partitionValues'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      storageDescriptor: map['storageDescriptor'] == null ? null : pulumi.Output.create<PartitionStorageDescriptor>(PartitionStorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>())),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      partitionValues: ((map['partitionValues'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      storageDescriptor: map['storageDescriptor'] == null ? null : (PartitionStorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>())).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

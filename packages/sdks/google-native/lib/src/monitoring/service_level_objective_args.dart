@@ -42,29 +42,18 @@ class ServiceLevelObjectiveArgs {
   /// [v3Id] Required.
   /// [v3Id1] Required.
   ServiceLevelObjectiveArgs({
-    pulumi.Output<ServiceLevelObjectiveCalendarPeriod>? calendarPeriod,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<double>? goal,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? rollingPeriod,
-    required pulumi.Output<String> serviceId,
-    pulumi.Output<ServiceLevelIndicator>? serviceLevelIndicator,
-    pulumi.Output<String>? serviceLevelObjectiveId,
-    pulumi.Output<Map<String, String>>? userLabels,
-    required pulumi.Output<String> v3Id,
-    required pulumi.Output<String> v3Id1,
-  }) :
-      calendarPeriod = pulumi.Input.asOptionalInput<ServiceLevelObjectiveCalendarPeriod>(calendarPeriod),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      goal = pulumi.Input.asOptionalInput<double>(goal),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      rollingPeriod = pulumi.Input.asOptionalInput<String>(rollingPeriod),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      serviceLevelIndicator = pulumi.Input.asOptionalInput<ServiceLevelIndicator>(serviceLevelIndicator),
-      serviceLevelObjectiveId = pulumi.Input.asOptionalInput<String>(serviceLevelObjectiveId),
-      userLabels = pulumi.Input.asOptionalInput<Map<String, String>>(userLabels),
-      v3Id = pulumi.Input.asInput<String>(v3Id),
-      v3Id1 = pulumi.Input.asInput<String>(v3Id1);
+    this.calendarPeriod,
+    this.displayName,
+    this.goal,
+    this.name,
+    this.rollingPeriod,
+    required this.serviceId,
+    this.serviceLevelIndicator,
+    this.serviceLevelObjectiveId,
+    this.userLabels,
+    required this.v3Id,
+    required this.v3Id1,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class ServiceLevelObjectiveArgs {
 
   factory ServiceLevelObjectiveArgs.fromMap(Map<String, dynamic> map) {
     return ServiceLevelObjectiveArgs(
-      calendarPeriod: map['calendarPeriod'] == null ? null : pulumi.Output.create<ServiceLevelObjectiveCalendarPeriod>(ServiceLevelObjectiveCalendarPeriod.fromValue(map['calendarPeriod'] as String)),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      goal: map['goal'] == null ? null : pulumi.Output.create<double>(map['goal'] as double),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      rollingPeriod: map['rollingPeriod'] == null ? null : pulumi.Output.create<String>(map['rollingPeriod'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      serviceLevelIndicator: map['serviceLevelIndicator'] == null ? null : pulumi.Output.create<ServiceLevelIndicator>(ServiceLevelIndicator.fromMap((map['serviceLevelIndicator'] as Map).cast<String, dynamic>())),
-      serviceLevelObjectiveId: map['serviceLevelObjectiveId'] == null ? null : pulumi.Output.create<String>(map['serviceLevelObjectiveId'] as String),
-      userLabels: map['userLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['userLabels'] as Map).cast<String, String>()),
-      v3Id: pulumi.Output.create<String>(map['v3Id'] as String),
-      v3Id1: pulumi.Output.create<String>(map['v3Id1'] as String),
+      calendarPeriod: map['calendarPeriod'] == null ? null : (ServiceLevelObjectiveCalendarPeriod.fromValue(map['calendarPeriod'] as String)).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      goal: map['goal'] == null ? null : (map['goal'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rollingPeriod: map['rollingPeriod'] == null ? null : (map['rollingPeriod'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      serviceLevelIndicator: map['serviceLevelIndicator'] == null ? null : (ServiceLevelIndicator.fromMap((map['serviceLevelIndicator'] as Map).cast<String, dynamic>())).input(),
+      serviceLevelObjectiveId: map['serviceLevelObjectiveId'] == null ? null : (map['serviceLevelObjectiveId'] as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
+      v3Id: (map['v3Id'] as String).input(),
+      v3Id1: (map['v3Id1'] as String).input(),
     );
   }
 }

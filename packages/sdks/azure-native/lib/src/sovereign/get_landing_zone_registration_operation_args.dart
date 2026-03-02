@@ -19,13 +19,10 @@ class GetLandingZoneRegistrationOperationArgs {
   /// [landingZoneRegistrationName] The name of the landing zone registration resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetLandingZoneRegistrationOperationArgs({
-    required pulumi.Output<String> landingZoneAccountName,
-    required pulumi.Output<String> landingZoneRegistrationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      landingZoneAccountName = pulumi.Input.asInput<String>(landingZoneAccountName),
-      landingZoneRegistrationName = pulumi.Input.asInput<String>(landingZoneRegistrationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.landingZoneAccountName,
+    required this.landingZoneRegistrationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLandingZoneRegistrationOperationArgs {
 
   factory GetLandingZoneRegistrationOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetLandingZoneRegistrationOperationArgs(
-      landingZoneAccountName: pulumi.Output.create<String>(map['landingZoneAccountName'] as String),
-      landingZoneRegistrationName: pulumi.Output.create<String>(map['landingZoneRegistrationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      landingZoneAccountName: (map['landingZoneAccountName'] as String).input(),
+      landingZoneRegistrationName: (map['landingZoneRegistrationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

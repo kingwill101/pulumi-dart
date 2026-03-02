@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'all_nodes.dart';
 
 /// Job endpoint definition
 class JobService {
   /// Url for endpoint.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// Endpoint type.
-  final String? jobServiceType;
+  final pulumi.Input<String>? jobServiceType;
   /// Nodes that user would like to start the service on.
   /// If Nodes is not set or set to null, the service will only be started on leader node.
-  final AllNodes? nodes;
+  final pulumi.Input<AllNodes>? nodes;
   /// Port for endpoint.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Additional properties to set on the endpoint.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
 
   /// Creates a new [JobService].
   /// [endpoint] Url for endpoint.
@@ -34,7 +35,7 @@ class JobService {
     return <String, dynamic>{
       'endpoint': ?endpoint,
       'jobServiceType': ?jobServiceType,
-      'nodes': ?nodes == null ? null : nodes!.toMap(),
+      'nodes': ?pulumi.Input.mapOptionalInputValue<AllNodes, Map<String, dynamic>>(nodes, (value) => value.toMap()),
       'port': ?port,
       'properties': ?properties,
     };
@@ -42,11 +43,11 @@ class JobService {
 
   factory JobService.fromMap(Map<String, dynamic> map) {
     return JobService(
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      jobServiceType: map['jobServiceType'] == null ? null : map['jobServiceType'] as String,
-      nodes: map['nodes'] == null ? null : AllNodes.fromMap((map['nodes'] as Map).cast<String, dynamic>()),
-      port: map['port'] == null ? null : map['port'] as int,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      jobServiceType: map['jobServiceType'] == null ? null : (map['jobServiceType'] as String).input(),
+      nodes: map['nodes'] == null ? null : (AllNodes.fromMap((map['nodes'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iapp_table_row.dart';
 
 class IAppTable {
-  final List<String>? columnNames;
+  final pulumi.Input<List<String>>? columnNames;
   /// Name of origin
-  final String? encryptedColumns;
+  final pulumi.Input<String>? encryptedColumns;
   /// Name of the iApp.
-  final String? name;
-  final List<IAppTableRow>? rows;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<List<IAppTableRow>>? rows;
 
   /// Creates a new [IAppTable].
   /// [columnNames] Optional.
@@ -28,16 +28,16 @@ class IAppTable {
       'columnNames': ?columnNames,
       'encryptedColumns': ?encryptedColumns,
       'name': ?name,
-      'rows': ?rows == null ? null : pulumi.Input.encodeList<IAppTableRow, Map<String, dynamic>>(rows!, (value) => value.toMap()),
+      'rows': ?pulumi.Input.mapOptionalInputValue<List<IAppTableRow>, List<Map<String, dynamic>>>(rows, (value) => pulumi.Input.encodeList<IAppTableRow, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory IAppTable.fromMap(Map<String, dynamic> map) {
     return IAppTable(
-      columnNames: map['columnNames'] == null ? null : (map['columnNames'] as List).cast<String>(),
-      encryptedColumns: map['encryptedColumns'] == null ? null : map['encryptedColumns'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      rows: map['rows'] == null ? null : pulumi.Input.decodeList<IAppTableRow>(map['rows'], (value) => IAppTableRow.fromMap((value as Map).cast<String, dynamic>())),
+      columnNames: map['columnNames'] == null ? null : ((map['columnNames'] as List).cast<String>()).input(),
+      encryptedColumns: map['encryptedColumns'] == null ? null : (map['encryptedColumns'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rows: map['rows'] == null ? null : (pulumi.Input.decodeList<IAppTableRow>(map['rows'], (value) => IAppTableRow.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

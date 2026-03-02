@@ -16,11 +16,9 @@ class GetNotificationRegistrationArgs {
   /// [notificationRegistrationName] The notification registration.
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   GetNotificationRegistrationArgs({
-    required pulumi.Output<String> notificationRegistrationName,
-    required pulumi.Output<String> providerNamespace,
-  }) :
-      notificationRegistrationName = pulumi.Input.asInput<String>(notificationRegistrationName),
-      providerNamespace = pulumi.Input.asInput<String>(providerNamespace);
+    required this.notificationRegistrationName,
+    required this.providerNamespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNotificationRegistrationArgs {
 
   factory GetNotificationRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationRegistrationArgs(
-      notificationRegistrationName: pulumi.Output.create<String>(map['notificationRegistrationName'] as String),
-      providerNamespace: pulumi.Output.create<String>(map['providerNamespace'] as String),
+      notificationRegistrationName: (map['notificationRegistrationName'] as String).input(),
+      providerNamespace: (map['providerNamespace'] as String).input(),
     );
   }
 }

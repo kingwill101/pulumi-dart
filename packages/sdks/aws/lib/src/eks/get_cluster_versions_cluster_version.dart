@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterVersionsClusterVersion {
   /// Type of clusters to filter by.
   /// Currently, the only valid value is `eks`.
-  final String clusterType;
+  final pulumi.Input<String> clusterType;
   /// Kubernetes version supported by EKS.
-  final String clusterVersion;
+  final pulumi.Input<String> clusterVersion;
   /// Default eks platform version for the cluster version.
-  final String defaultPlatformVersion;
+  final pulumi.Input<String> defaultPlatformVersion;
   /// Default Kubernetes version for the cluster version.
-  final bool defaultVersion;
+  final pulumi.Input<bool> defaultVersion;
   /// End of extended support date for the cluster version.
-  final String endOfExtendedSupportDate;
+  final pulumi.Input<String> endOfExtendedSupportDate;
   /// End of standard support date for the cluster version.
-  final String endOfStandardSupportDate;
+  final pulumi.Input<String> endOfStandardSupportDate;
   /// Kubernetes patch version for the cluster version.
-  final String kubernetesPatchVersion;
+  final pulumi.Input<String> kubernetesPatchVersion;
   /// Release date of the cluster version.
-  final String releaseDate;
+  final pulumi.Input<String> releaseDate;
   /// Status of the EKS cluster versions to list.
   /// Valid values are `STANDARD_SUPPORT` or `UNSUPPORTED` or `EXTENDED_SUPPORT`.
-  final String versionStatus;
+  final pulumi.Input<String> versionStatus;
 
   /// Creates a new [GetClusterVersionsClusterVersion].
   /// [clusterType] Type of clusters to filter by.
@@ -61,15 +62,15 @@ class GetClusterVersionsClusterVersion {
 
   factory GetClusterVersionsClusterVersion.fromMap(Map<String, dynamic> map) {
     return GetClusterVersionsClusterVersion(
-      clusterType: map['clusterType'] as String,
-      clusterVersion: map['clusterVersion'] as String,
-      defaultPlatformVersion: map['defaultPlatformVersion'] as String,
-      defaultVersion: map['defaultVersion'] as bool,
-      endOfExtendedSupportDate: map['endOfExtendedSupportDate'] as String,
-      endOfStandardSupportDate: map['endOfStandardSupportDate'] as String,
-      kubernetesPatchVersion: map['kubernetesPatchVersion'] as String,
-      releaseDate: map['releaseDate'] as String,
-      versionStatus: map['versionStatus'] as String,
+      clusterType: (map['clusterType'] as String).input(),
+      clusterVersion: (map['clusterVersion'] as String).input(),
+      defaultPlatformVersion: (map['defaultPlatformVersion'] as String).input(),
+      defaultVersion: (map['defaultVersion'] as bool).input(),
+      endOfExtendedSupportDate: (map['endOfExtendedSupportDate'] as String).input(),
+      endOfStandardSupportDate: (map['endOfStandardSupportDate'] as String).input(),
+      kubernetesPatchVersion: (map['kubernetesPatchVersion'] as String).input(),
+      releaseDate: (map['releaseDate'] as String).input(),
+      versionStatus: (map['versionStatus'] as String).input(),
     );
   }
 }

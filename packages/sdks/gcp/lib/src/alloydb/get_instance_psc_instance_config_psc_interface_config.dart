@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancePscInstanceConfigPscInterfaceConfig {
   /// The network attachment resource created in the consumer project to which the PSC interface will be linked.
   /// This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
   /// The network attachment must be in the same region as the instance.
-  final String networkAttachmentResource;
+  final pulumi.Input<String> networkAttachmentResource;
 
   /// Creates a new [GetInstancePscInstanceConfigPscInterfaceConfig].
   /// [networkAttachmentResource] The network attachment resource created in the consumer project to which the PSC interface will be linked.
@@ -21,7 +22,7 @@ class GetInstancePscInstanceConfigPscInterfaceConfig {
 
   factory GetInstancePscInstanceConfigPscInterfaceConfig.fromMap(Map<String, dynamic> map) {
     return GetInstancePscInstanceConfigPscInterfaceConfig(
-      networkAttachmentResource: map['networkAttachmentResource'] as String,
+      networkAttachmentResource: (map['networkAttachmentResource'] as String).input(),
     );
   }
 }

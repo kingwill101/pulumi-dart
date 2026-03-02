@@ -16,13 +16,10 @@ class GetDomainIamPolicyManagedidentitiesV1alpha1Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   GetDomainIamPolicyManagedidentitiesV1alpha1Args({
-    required pulumi.Output<String> domainId,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-  }) :
-      domainId = pulumi.Input.asInput<String>(domainId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.domainId,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetDomainIamPolicyManagedidentitiesV1alpha1Args {
 
   factory GetDomainIamPolicyManagedidentitiesV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetDomainIamPolicyManagedidentitiesV1alpha1Args(
-      domainId: pulumi.Output.create<String>(map['domainId'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      domainId: (map['domainId'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

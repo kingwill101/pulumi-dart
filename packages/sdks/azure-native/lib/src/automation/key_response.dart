@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Automation key which is used to register a DSC Node
 class KeyResponse {
   /// Automation key name.
-  final String keyName;
+  final pulumi.Input<String> keyName;
   /// Automation key permissions.
-  final String permissions;
+  final pulumi.Input<String> permissions;
   /// Value of the Automation Key used for registration.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [KeyResponse].
   /// [keyName] Automation key name.
@@ -30,9 +31,9 @@ class KeyResponse {
 
   factory KeyResponse.fromMap(Map<String, dynamic> map) {
     return KeyResponse(
-      keyName: map['keyName'] as String,
-      permissions: map['permissions'] as String,
-      value: map['value'] as String,
+      keyName: (map['keyName'] as String).input(),
+      permissions: (map['permissions'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

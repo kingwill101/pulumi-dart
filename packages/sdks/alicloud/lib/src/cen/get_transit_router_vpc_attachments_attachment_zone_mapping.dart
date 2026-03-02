@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTransitRouterVpcAttachmentsAttachmentZoneMapping {
   /// The ID of the vSwitch.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The ID of the zone.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetTransitRouterVpcAttachmentsAttachmentZoneMapping].
   /// [vswitchId] The ID of the vSwitch.
@@ -24,8 +25,8 @@ class GetTransitRouterVpcAttachmentsAttachmentZoneMapping {
 
   factory GetTransitRouterVpcAttachmentsAttachmentZoneMapping.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterVpcAttachmentsAttachmentZoneMapping(
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

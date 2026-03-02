@@ -5,13 +5,13 @@ import 'cluster_shard_node.dart';
 
 class ClusterShard {
   /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Set of nodes in this shard.
-  final List<ClusterShardNode>? nodes;
+  final pulumi.Input<List<ClusterShardNode>>? nodes;
   /// Number of individual nodes in this shard.
-  final int? numNodes;
+  final pulumi.Input<int>? numNodes;
   /// Keyspace for this shard. Example: `0-16383`.
-  final String? slots;
+  final pulumi.Input<String>? slots;
 
   /// Creates a new [ClusterShard].
   /// [name] Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
@@ -28,7 +28,7 @@ class ClusterShard {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'nodes': ?nodes == null ? null : pulumi.Input.encodeList<ClusterShardNode, Map<String, dynamic>>(nodes!, (value) => value.toMap()),
+      'nodes': ?pulumi.Input.mapOptionalInputValue<List<ClusterShardNode>, List<Map<String, dynamic>>>(nodes, (value) => pulumi.Input.encodeList<ClusterShardNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'numNodes': ?numNodes,
       'slots': ?slots,
     };
@@ -36,10 +36,10 @@ class ClusterShard {
 
   factory ClusterShard.fromMap(Map<String, dynamic> map) {
     return ClusterShard(
-      name: map['name'] == null ? null : map['name'] as String,
-      nodes: map['nodes'] == null ? null : pulumi.Input.decodeList<ClusterShardNode>(map['nodes'], (value) => ClusterShardNode.fromMap((value as Map).cast<String, dynamic>())),
-      numNodes: map['numNodes'] == null ? null : map['numNodes'] as int,
-      slots: map['slots'] == null ? null : map['slots'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<ClusterShardNode>(map['nodes'], (value) => ClusterShardNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      numNodes: map['numNodes'] == null ? null : (map['numNodes'] as int).input(),
+      slots: map['slots'] == null ? null : (map['slots'] as String).input(),
     );
   }
 }

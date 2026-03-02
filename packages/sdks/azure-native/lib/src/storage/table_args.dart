@@ -23,15 +23,11 @@ class TableArgs {
   /// [signedIdentifiers] List of stored access policies specified on the table.
   /// [tableName] A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   TableArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<TableSignedIdentifier>>? signedIdentifiers,
-    pulumi.Output<String>? tableName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      signedIdentifiers = pulumi.Input.asOptionalInput<List<TableSignedIdentifier>>(signedIdentifiers),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName);
+    required this.accountName,
+    required this.resourceGroupName,
+    this.signedIdentifiers,
+    this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      signedIdentifiers: map['signedIdentifiers'] == null ? null : pulumi.Output.create<List<TableSignedIdentifier>>(pulumi.Input.decodeList<TableSignedIdentifier>(map['signedIdentifiers'], (value) => TableSignedIdentifier.fromMap((value as Map).cast<String, dynamic>()))),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      signedIdentifiers: map['signedIdentifiers'] == null ? null : (pulumi.Input.decodeList<TableSignedIdentifier>(map['signedIdentifiers'], (value) => TableSignedIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

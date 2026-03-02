@@ -16,13 +16,10 @@ class GetCompanyJobsV4Args {
   /// [project] Optional.
   /// [tenantId] Required.
   GetCompanyJobsV4Args({
-    required pulumi.Output<String> companyId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tenantId,
-  }) :
-      companyId = pulumi.Input.asInput<String>(companyId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    required this.companyId,
+    this.project,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetCompanyJobsV4Args {
 
   factory GetCompanyJobsV4Args.fromMap(Map<String, dynamic> map) {
     return GetCompanyJobsV4Args(
-      companyId: pulumi.Output.create<String>(map['companyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      companyId: (map['companyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

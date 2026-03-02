@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountConnectorProviderOauthConfig {
   /// Required. User selected scopes to apply to the Oauth config
   /// In the event of changing scopes, user records under AccountConnector will
   /// be deleted and users will re-auth again.
-  final List<String> scopes;
+  final pulumi.Input<List<String>> scopes;
   /// List of providers that are owned by Developer Connect.
   /// Possible values:
   /// GITHUB
@@ -15,7 +16,7 @@ class AccountConnectorProviderOauthConfig {
   /// ROVO
   /// NEW_RELIC
   /// DATASTAX
-  final String? systemProviderId;
+  final pulumi.Input<String>? systemProviderId;
 
   /// Creates a new [AccountConnectorProviderOauthConfig].
   /// [scopes] Required. User selected scopes to apply to the Oauth config
@@ -34,8 +35,8 @@ class AccountConnectorProviderOauthConfig {
 
   factory AccountConnectorProviderOauthConfig.fromMap(Map<String, dynamic> map) {
     return AccountConnectorProviderOauthConfig(
-      scopes: (map['scopes'] as List).cast<String>(),
-      systemProviderId: map['systemProviderId'] == null ? null : map['systemProviderId'] as String,
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
+      systemProviderId: map['systemProviderId'] == null ? null : (map['systemProviderId'] as String).input(),
     );
   }
 }

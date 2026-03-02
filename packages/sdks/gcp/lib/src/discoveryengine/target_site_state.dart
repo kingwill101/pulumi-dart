@@ -65,35 +65,21 @@ class TargetSiteState {
   /// [type] The possible target site types.
   /// [updateTime] The target site's last updated time.
   TargetSiteState({
-    pulumi.Output<String>? dataStoreId,
-    pulumi.Output<bool>? exactMatch,
-    pulumi.Output<List<TargetSiteFailureReason>>? failureReasons,
-    pulumi.Output<String>? generatedUriPattern,
-    pulumi.Output<String>? indexingStatus,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? providedUriPattern,
-    pulumi.Output<String>? rootDomainUri,
-    pulumi.Output<List<TargetSiteSiteVerificationInfo>>? siteVerificationInfos,
-    pulumi.Output<String>? targetSiteId,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? updateTime,
-  }) :
-      dataStoreId = pulumi.Input.asOptionalInput<String>(dataStoreId),
-      exactMatch = pulumi.Input.asOptionalInput<bool>(exactMatch),
-      failureReasons = pulumi.Input.asOptionalInput<List<TargetSiteFailureReason>>(failureReasons),
-      generatedUriPattern = pulumi.Input.asOptionalInput<String>(generatedUriPattern),
-      indexingStatus = pulumi.Input.asOptionalInput<String>(indexingStatus),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      providedUriPattern = pulumi.Input.asOptionalInput<String>(providedUriPattern),
-      rootDomainUri = pulumi.Input.asOptionalInput<String>(rootDomainUri),
-      siteVerificationInfos = pulumi.Input.asOptionalInput<List<TargetSiteSiteVerificationInfo>>(siteVerificationInfos),
-      targetSiteId = pulumi.Input.asOptionalInput<String>(targetSiteId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.dataStoreId,
+    this.exactMatch,
+    this.failureReasons,
+    this.generatedUriPattern,
+    this.indexingStatus,
+    this.location,
+    this.name,
+    this.project,
+    this.providedUriPattern,
+    this.rootDomainUri,
+    this.siteVerificationInfos,
+    this.targetSiteId,
+    this.type,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -116,20 +102,20 @@ class TargetSiteState {
 
   factory TargetSiteState.fromMap(Map<String, dynamic> map) {
     return TargetSiteState(
-      dataStoreId: map['dataStoreId'] == null ? null : pulumi.Output.create<String>(map['dataStoreId'] as String),
-      exactMatch: map['exactMatch'] == null ? null : pulumi.Output.create<bool>(map['exactMatch'] as bool),
-      failureReasons: map['failureReasons'] == null ? null : pulumi.Output.create<List<TargetSiteFailureReason>>(pulumi.Input.decodeList<TargetSiteFailureReason>(map['failureReasons'], (value) => TargetSiteFailureReason.fromMap((value as Map).cast<String, dynamic>()))),
-      generatedUriPattern: map['generatedUriPattern'] == null ? null : pulumi.Output.create<String>(map['generatedUriPattern'] as String),
-      indexingStatus: map['indexingStatus'] == null ? null : pulumi.Output.create<String>(map['indexingStatus'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      providedUriPattern: map['providedUriPattern'] == null ? null : pulumi.Output.create<String>(map['providedUriPattern'] as String),
-      rootDomainUri: map['rootDomainUri'] == null ? null : pulumi.Output.create<String>(map['rootDomainUri'] as String),
-      siteVerificationInfos: map['siteVerificationInfos'] == null ? null : pulumi.Output.create<List<TargetSiteSiteVerificationInfo>>(pulumi.Input.decodeList<TargetSiteSiteVerificationInfo>(map['siteVerificationInfos'], (value) => TargetSiteSiteVerificationInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      targetSiteId: map['targetSiteId'] == null ? null : pulumi.Output.create<String>(map['targetSiteId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      dataStoreId: map['dataStoreId'] == null ? null : (map['dataStoreId'] as String).input(),
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as bool).input(),
+      failureReasons: map['failureReasons'] == null ? null : (pulumi.Input.decodeList<TargetSiteFailureReason>(map['failureReasons'], (value) => TargetSiteFailureReason.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      generatedUriPattern: map['generatedUriPattern'] == null ? null : (map['generatedUriPattern'] as String).input(),
+      indexingStatus: map['indexingStatus'] == null ? null : (map['indexingStatus'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      providedUriPattern: map['providedUriPattern'] == null ? null : (map['providedUriPattern'] as String).input(),
+      rootDomainUri: map['rootDomainUri'] == null ? null : (map['rootDomainUri'] as String).input(),
+      siteVerificationInfos: map['siteVerificationInfos'] == null ? null : (pulumi.Input.decodeList<TargetSiteSiteVerificationInfo>(map['siteVerificationInfos'], (value) => TargetSiteSiteVerificationInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetSiteId: map['targetSiteId'] == null ? null : (map['targetSiteId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

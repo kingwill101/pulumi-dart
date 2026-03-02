@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configure your SQL virtual machine to be able to connect to the Azure Key Vault service.
 class KeyVaultCredentialSettings {
   /// Azure Key Vault url.
-  final String? azureKeyVaultUrl;
+  final pulumi.Input<String>? azureKeyVaultUrl;
   /// Credential name.
-  final String? credentialName;
+  final pulumi.Input<String>? credentialName;
   /// Enable or disable key vault credential setting.
-  final bool? enable;
+  final pulumi.Input<bool>? enable;
   /// Service principal name to access key vault.
-  final String? servicePrincipalName;
+  final pulumi.Input<String>? servicePrincipalName;
   /// Service principal name secret to access key vault.
-  final String? servicePrincipalSecret;
+  final pulumi.Input<String>? servicePrincipalSecret;
 
   /// Creates a new [KeyVaultCredentialSettings].
   /// [azureKeyVaultUrl] Azure Key Vault url.
@@ -40,11 +41,11 @@ class KeyVaultCredentialSettings {
 
   factory KeyVaultCredentialSettings.fromMap(Map<String, dynamic> map) {
     return KeyVaultCredentialSettings(
-      azureKeyVaultUrl: map['azureKeyVaultUrl'] == null ? null : map['azureKeyVaultUrl'] as String,
-      credentialName: map['credentialName'] == null ? null : map['credentialName'] as String,
-      enable: map['enable'] == null ? null : map['enable'] as bool,
-      servicePrincipalName: map['servicePrincipalName'] == null ? null : map['servicePrincipalName'] as String,
-      servicePrincipalSecret: map['servicePrincipalSecret'] == null ? null : map['servicePrincipalSecret'] as String,
+      azureKeyVaultUrl: map['azureKeyVaultUrl'] == null ? null : (map['azureKeyVaultUrl'] as String).input(),
+      credentialName: map['credentialName'] == null ? null : (map['credentialName'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      servicePrincipalName: map['servicePrincipalName'] == null ? null : (map['servicePrincipalName'] as String).input(),
+      servicePrincipalSecret: map['servicePrincipalSecret'] == null ? null : (map['servicePrincipalSecret'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attached_cluster_logging_config_component_config.dart';
 
 class AttachedClusterLoggingConfig {
   /// The configuration of the logging components
   /// Structure is documented below.
-  final AttachedClusterLoggingConfigComponentConfig? componentConfig;
+  final pulumi.Input<AttachedClusterLoggingConfigComponentConfig>? componentConfig;
 
   /// Creates a new [AttachedClusterLoggingConfig].
   /// [componentConfig] The configuration of the logging components
@@ -15,13 +16,13 @@ class AttachedClusterLoggingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentConfig': ?componentConfig == null ? null : componentConfig!.toMap(),
+      'componentConfig': ?pulumi.Input.mapOptionalInputValue<AttachedClusterLoggingConfigComponentConfig, Map<String, dynamic>>(componentConfig, (value) => value.toMap()),
     };
   }
 
   factory AttachedClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterLoggingConfig(
-      componentConfig: map['componentConfig'] == null ? null : AttachedClusterLoggingConfigComponentConfig.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
+      componentConfig: map['componentConfig'] == null ? null : (AttachedClusterLoggingConfigComponentConfig.fromMap((map['componentConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

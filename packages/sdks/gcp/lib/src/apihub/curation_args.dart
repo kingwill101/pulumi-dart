@@ -42,19 +42,13 @@ class CurationArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
   CurationArgs({
-    required pulumi.Output<String> curationId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<CurationEndpoint> endpoint,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      curationId = pulumi.Input.asInput<String>(curationId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      endpoint = pulumi.Input.asInput<CurationEndpoint>(endpoint),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.curationId,
+    this.description,
+    required this.displayName,
+    required this.endpoint,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,12 +63,12 @@ class CurationArgs {
 
   factory CurationArgs.fromMap(Map<String, dynamic> map) {
     return CurationArgs(
-      curationId: pulumi.Output.create<String>(map['curationId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      endpoint: pulumi.Output.create<CurationEndpoint>(CurationEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      curationId: (map['curationId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      endpoint: (CurationEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

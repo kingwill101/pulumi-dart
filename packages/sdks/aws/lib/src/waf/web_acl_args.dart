@@ -31,19 +31,13 @@ class WebAclArgs {
   /// [rules] Configuration blocks containing rules to associate with the web ACL and the settings for each rule. Detailed below.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   WebAclArgs({
-    required pulumi.Output<WebAclDefaultAction> defaultAction,
-    pulumi.Output<WebAclLoggingConfiguration>? loggingConfiguration,
-    required pulumi.Output<String> metricName,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<WebAclRule>>? rules,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      defaultAction = pulumi.Input.asInput<WebAclDefaultAction>(defaultAction),
-      loggingConfiguration = pulumi.Input.asOptionalInput<WebAclLoggingConfiguration>(loggingConfiguration),
-      metricName = pulumi.Input.asInput<String>(metricName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      rules = pulumi.Input.asOptionalInput<List<WebAclRule>>(rules),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.defaultAction,
+    this.loggingConfiguration,
+    required this.metricName,
+    this.name,
+    this.rules,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class WebAclArgs {
 
   factory WebAclArgs.fromMap(Map<String, dynamic> map) {
     return WebAclArgs(
-      defaultAction: pulumi.Output.create<WebAclDefaultAction>(WebAclDefaultAction.fromMap((map['defaultAction'] as Map).cast<String, dynamic>())),
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : pulumi.Output.create<WebAclLoggingConfiguration>(WebAclLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())),
-      metricName: pulumi.Output.create<String>(map['metricName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<WebAclRule>>(pulumi.Input.decodeList<WebAclRule>(map['rules'], (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      defaultAction: (WebAclDefaultAction.fromMap((map['defaultAction'] as Map).cast<String, dynamic>())).input(),
+      loggingConfiguration: map['loggingConfiguration'] == null ? null : (WebAclLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      metricName: (map['metricName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<WebAclRule>(map['rules'], (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

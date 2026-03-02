@@ -29,21 +29,14 @@ class MultiRegionAccessPointState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] The current status of the Multi-Region Access Point. One of: `READY`, `INCONSISTENT_ACROSS_REGIONS`, `CREATING`, `PARTIALLY_CREATED`, `PARTIALLY_DELETED`, `DELETING`.
   MultiRegionAccessPointState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? alias,
-    pulumi.Output<String>? arn,
-    pulumi.Output<MultiRegionAccessPointDetails>? details,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      details = pulumi.Input.asOptionalInput<MultiRegionAccessPointDetails>(details),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.accountId,
+    this.alias,
+    this.arn,
+    this.details,
+    this.domainName,
+    this.region,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class MultiRegionAccessPointState {
 
   factory MultiRegionAccessPointState.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      details: map['details'] == null ? null : pulumi.Output.create<MultiRegionAccessPointDetails>(MultiRegionAccessPointDetails.fromMap((map['details'] as Map).cast<String, dynamic>())),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      details: map['details'] == null ? null : (MultiRegionAccessPointDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

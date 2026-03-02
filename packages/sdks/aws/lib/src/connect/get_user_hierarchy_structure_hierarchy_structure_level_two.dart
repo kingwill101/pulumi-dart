@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserHierarchyStructureHierarchyStructureLevelTwo {
   /// ARN of the hierarchy level.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// The identifier of the hierarchy level.
-  final String id;
+  final pulumi.Input<String> id;
   /// Name of the user hierarchy level. Must not be more than 50 characters.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetUserHierarchyStructureHierarchyStructureLevelTwo].
   /// [arn] ARN of the hierarchy level.
@@ -29,9 +30,9 @@ class GetUserHierarchyStructureHierarchyStructureLevelTwo {
 
   factory GetUserHierarchyStructureHierarchyStructureLevelTwo.fromMap(Map<String, dynamic> map) {
     return GetUserHierarchyStructureHierarchyStructureLevelTwo(
-      arn: map['arn'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      arn: (map['arn'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

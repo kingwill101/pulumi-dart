@@ -36,23 +36,15 @@ class InvitationArgs {
   /// [targetEmail] The email the invitation is directed to.
   /// [targetObjectId] The target user or application Id that invitation is being sent to.
   InvitationArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? expirationDate,
-    pulumi.Output<String>? invitationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareName,
-    pulumi.Output<String>? targetActiveDirectoryId,
-    pulumi.Output<String>? targetEmail,
-    pulumi.Output<String>? targetObjectId,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      invitationName = pulumi.Input.asOptionalInput<String>(invitationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareName = pulumi.Input.asInput<String>(shareName),
-      targetActiveDirectoryId = pulumi.Input.asOptionalInput<String>(targetActiveDirectoryId),
-      targetEmail = pulumi.Input.asOptionalInput<String>(targetEmail),
-      targetObjectId = pulumi.Input.asOptionalInput<String>(targetObjectId);
+    required this.accountName,
+    this.expirationDate,
+    this.invitationName,
+    required this.resourceGroupName,
+    required this.shareName,
+    this.targetActiveDirectoryId,
+    this.targetEmail,
+    this.targetObjectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class InvitationArgs {
 
   factory InvitationArgs.fromMap(Map<String, dynamic> map) {
     return InvitationArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      invitationName: map['invitationName'] == null ? null : pulumi.Output.create<String>(map['invitationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareName: pulumi.Output.create<String>(map['shareName'] as String),
-      targetActiveDirectoryId: map['targetActiveDirectoryId'] == null ? null : pulumi.Output.create<String>(map['targetActiveDirectoryId'] as String),
-      targetEmail: map['targetEmail'] == null ? null : pulumi.Output.create<String>(map['targetEmail'] as String),
-      targetObjectId: map['targetObjectId'] == null ? null : pulumi.Output.create<String>(map['targetObjectId'] as String),
+      accountName: (map['accountName'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      invitationName: map['invitationName'] == null ? null : (map['invitationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareName: (map['shareName'] as String).input(),
+      targetActiveDirectoryId: map['targetActiveDirectoryId'] == null ? null : (map['targetActiveDirectoryId'] as String).input(),
+      targetEmail: map['targetEmail'] == null ? null : (map['targetEmail'] as String).input(),
+      targetObjectId: map['targetObjectId'] == null ? null : (map['targetObjectId'] as String).input(),
     );
   }
 }

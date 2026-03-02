@@ -47,23 +47,15 @@ class LbRouteExtensionArgs {
   /// [name] Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
   /// [project] The ID of the project in which the resource belongs.
   LbRouteExtensionArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<LbRouteExtensionExtensionChain>> extensionChains,
-    required pulumi.Output<List<String>> forwardingRules,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> loadBalancingScheme,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      extensionChains = pulumi.Input.asInput<List<LbRouteExtensionExtensionChain>>(extensionChains),
-      forwardingRules = pulumi.Input.asInput<List<String>>(forwardingRules),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      loadBalancingScheme = pulumi.Input.asInput<String>(loadBalancingScheme),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    required this.extensionChains,
+    required this.forwardingRules,
+    this.labels,
+    required this.loadBalancingScheme,
+    required this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,14 +72,14 @@ class LbRouteExtensionArgs {
 
   factory LbRouteExtensionArgs.fromMap(Map<String, dynamic> map) {
     return LbRouteExtensionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      extensionChains: pulumi.Output.create<List<LbRouteExtensionExtensionChain>>(pulumi.Input.decodeList<LbRouteExtensionExtensionChain>(map['extensionChains'], (value) => LbRouteExtensionExtensionChain.fromMap((value as Map).cast<String, dynamic>()))),
-      forwardingRules: pulumi.Output.create<List<String>>((map['forwardingRules'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      loadBalancingScheme: pulumi.Output.create<String>(map['loadBalancingScheme'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      extensionChains: (pulumi.Input.decodeList<LbRouteExtensionExtensionChain>(map['extensionChains'], (value) => LbRouteExtensionExtensionChain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forwardingRules: ((map['forwardingRules'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      loadBalancingScheme: (map['loadBalancingScheme'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

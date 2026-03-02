@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetScheduledQueryRulesLogCriteriaDimension {
   /// Specifies the name of the scheduled query rule.
-  final String name;
+  final pulumi.Input<String> name;
   /// Operator for dimension values.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// List of dimension values.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetScheduledQueryRulesLogCriteriaDimension].
   /// [name] Specifies the name of the scheduled query rule.
@@ -29,9 +30,9 @@ class GetScheduledQueryRulesLogCriteriaDimension {
 
   factory GetScheduledQueryRulesLogCriteriaDimension.fromMap(Map<String, dynamic> map) {
     return GetScheduledQueryRulesLogCriteriaDimension(
-      name: map['name'] as String,
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -61,33 +61,20 @@ class StackArgs {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userSettings] Configuration block for the actions that are enabled or disabled for users during their streaming sessions. If not provided, these settings are configured automatically by AWS. If provided, the configuration should include a block for each configurable action.
   StackArgs({
-    pulumi.Output<List<StackAccessEndpoint>>? accessEndpoints,
-    pulumi.Output<StackApplicationSettings>? applicationSettings,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<String>>? embedHostDomains,
-    pulumi.Output<String>? feedbackUrl,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? redirectUrl,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<StackStorageConnector>>? storageConnectors,
-    pulumi.Output<StackStreamingExperienceSettings>? streamingExperienceSettings,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<StackUserSetting>>? userSettings,
-  }) :
-      accessEndpoints = pulumi.Input.asOptionalInput<List<StackAccessEndpoint>>(accessEndpoints),
-      applicationSettings = pulumi.Input.asOptionalInput<StackApplicationSettings>(applicationSettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      embedHostDomains = pulumi.Input.asOptionalInput<List<String>>(embedHostDomains),
-      feedbackUrl = pulumi.Input.asOptionalInput<String>(feedbackUrl),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      redirectUrl = pulumi.Input.asOptionalInput<String>(redirectUrl),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      storageConnectors = pulumi.Input.asOptionalInput<List<StackStorageConnector>>(storageConnectors),
-      streamingExperienceSettings = pulumi.Input.asOptionalInput<StackStreamingExperienceSettings>(streamingExperienceSettings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userSettings = pulumi.Input.asOptionalInput<List<StackUserSetting>>(userSettings);
+    this.accessEndpoints,
+    this.applicationSettings,
+    this.description,
+    this.displayName,
+    this.embedHostDomains,
+    this.feedbackUrl,
+    this.name,
+    this.redirectUrl,
+    this.region,
+    this.storageConnectors,
+    this.streamingExperienceSettings,
+    this.tags,
+    this.userSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,19 +96,19 @@ class StackArgs {
 
   factory StackArgs.fromMap(Map<String, dynamic> map) {
     return StackArgs(
-      accessEndpoints: map['accessEndpoints'] == null ? null : pulumi.Output.create<List<StackAccessEndpoint>>(pulumi.Input.decodeList<StackAccessEndpoint>(map['accessEndpoints'], (value) => StackAccessEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      applicationSettings: map['applicationSettings'] == null ? null : pulumi.Output.create<StackApplicationSettings>(StackApplicationSettings.fromMap((map['applicationSettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      embedHostDomains: map['embedHostDomains'] == null ? null : pulumi.Output.create<List<String>>((map['embedHostDomains'] as List).cast<String>()),
-      feedbackUrl: map['feedbackUrl'] == null ? null : pulumi.Output.create<String>(map['feedbackUrl'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      redirectUrl: map['redirectUrl'] == null ? null : pulumi.Output.create<String>(map['redirectUrl'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      storageConnectors: map['storageConnectors'] == null ? null : pulumi.Output.create<List<StackStorageConnector>>(pulumi.Input.decodeList<StackStorageConnector>(map['storageConnectors'], (value) => StackStorageConnector.fromMap((value as Map).cast<String, dynamic>()))),
-      streamingExperienceSettings: map['streamingExperienceSettings'] == null ? null : pulumi.Output.create<StackStreamingExperienceSettings>(StackStreamingExperienceSettings.fromMap((map['streamingExperienceSettings'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userSettings: map['userSettings'] == null ? null : pulumi.Output.create<List<StackUserSetting>>(pulumi.Input.decodeList<StackUserSetting>(map['userSettings'], (value) => StackUserSetting.fromMap((value as Map).cast<String, dynamic>()))),
+      accessEndpoints: map['accessEndpoints'] == null ? null : (pulumi.Input.decodeList<StackAccessEndpoint>(map['accessEndpoints'], (value) => StackAccessEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationSettings: map['applicationSettings'] == null ? null : (StackApplicationSettings.fromMap((map['applicationSettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      embedHostDomains: map['embedHostDomains'] == null ? null : ((map['embedHostDomains'] as List).cast<String>()).input(),
+      feedbackUrl: map['feedbackUrl'] == null ? null : (map['feedbackUrl'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      storageConnectors: map['storageConnectors'] == null ? null : (pulumi.Input.decodeList<StackStorageConnector>(map['storageConnectors'], (value) => StackStorageConnector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      streamingExperienceSettings: map['streamingExperienceSettings'] == null ? null : (StackStreamingExperienceSettings.fromMap((map['streamingExperienceSettings'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userSettings: map['userSettings'] == null ? null : (pulumi.Input.decodeList<StackUserSetting>(map['userSettings'], (value) => StackUserSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

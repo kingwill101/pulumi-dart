@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiAgentsByOpenaiApiKeyAgentChatbot {
   /// Background color for the chatbot button
-  final String? buttonBackgroundColor;
+  final pulumi.Input<String>? buttonBackgroundColor;
   /// Logo for the chatbot
-  final String? logo;
+  final pulumi.Input<String>? logo;
   /// Name of the chatbot
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Primary color for the chatbot
-  final String? primaryColor;
+  final pulumi.Input<String>? primaryColor;
   /// Secondary color for the chatbot
-  final String? secondaryColor;
+  final pulumi.Input<String>? secondaryColor;
   /// Starting message for the chatbot
-  final String? startingMessage;
+  final pulumi.Input<String>? startingMessage;
 
   /// Creates a new [GetGradientaiAgentsByOpenaiApiKeyAgentChatbot].
   /// [buttonBackgroundColor] Background color for the chatbot button
@@ -44,12 +45,12 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentChatbot {
 
   factory GetGradientaiAgentsByOpenaiApiKeyAgentChatbot.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsByOpenaiApiKeyAgentChatbot(
-      buttonBackgroundColor: map['buttonBackgroundColor'] == null ? null : map['buttonBackgroundColor'] as String,
-      logo: map['logo'] == null ? null : map['logo'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      primaryColor: map['primaryColor'] == null ? null : map['primaryColor'] as String,
-      secondaryColor: map['secondaryColor'] == null ? null : map['secondaryColor'] as String,
-      startingMessage: map['startingMessage'] == null ? null : map['startingMessage'] as String,
+      buttonBackgroundColor: map['buttonBackgroundColor'] == null ? null : (map['buttonBackgroundColor'] as String).input(),
+      logo: map['logo'] == null ? null : (map['logo'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryColor: map['primaryColor'] == null ? null : (map['primaryColor'] as String).input(),
+      secondaryColor: map['secondaryColor'] == null ? null : (map['secondaryColor'] as String).input(),
+      startingMessage: map['startingMessage'] == null ? null : (map['startingMessage'] as String).input(),
     );
   }
 }

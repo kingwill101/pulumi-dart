@@ -20,15 +20,11 @@ class BackupArgs {
   /// [labels] Optional. Resource labels to represent user provided metadata.
   /// [project] Optional.
   BackupArgs({
-    required pulumi.Output<String> backupId,
-    required pulumi.Output<String> domainId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      domainId = pulumi.Input.asInput<String>(domainId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.backupId,
+    required this.domainId,
+    this.labels,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      backupId: pulumi.Output.create<String>(map['backupId'] as String),
-      domainId: pulumi.Output.create<String>(map['domainId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backupId: (map['backupId'] as String).input(),
+      domainId: (map['domainId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

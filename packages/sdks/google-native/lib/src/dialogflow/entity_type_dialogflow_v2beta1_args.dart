@@ -38,25 +38,16 @@ class EntityTypeDialogflowV2beta1Args {
   /// [name] The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
   /// [project] Optional.
   EntityTypeDialogflowV2beta1Args({
-    pulumi.Output<EntityTypeAutoExpansionModeDialogflowV2beta1>? autoExpansionMode,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enableFuzzyExtraction,
-    pulumi.Output<List<GoogleCloudDialogflowV2beta1EntityTypeEntity>>? entities,
-    required pulumi.Output<EntityTypeKindDialogflowV2beta1> kind,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      autoExpansionMode = pulumi.Input.asOptionalInput<EntityTypeAutoExpansionModeDialogflowV2beta1>(autoExpansionMode),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enableFuzzyExtraction = pulumi.Input.asOptionalInput<bool>(enableFuzzyExtraction),
-      entities = pulumi.Input.asOptionalInput<List<GoogleCloudDialogflowV2beta1EntityTypeEntity>>(entities),
-      kind = pulumi.Input.asInput<EntityTypeKindDialogflowV2beta1>(kind),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.autoExpansionMode,
+    required this.displayName,
+    this.enableFuzzyExtraction,
+    this.entities,
+    required this.kind,
+    this.languageCode,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class EntityTypeDialogflowV2beta1Args {
 
   factory EntityTypeDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return EntityTypeDialogflowV2beta1Args(
-      autoExpansionMode: map['autoExpansionMode'] == null ? null : pulumi.Output.create<EntityTypeAutoExpansionModeDialogflowV2beta1>(EntityTypeAutoExpansionModeDialogflowV2beta1.fromValue(map['autoExpansionMode'] as String)),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : pulumi.Output.create<bool>(map['enableFuzzyExtraction'] as bool),
-      entities: map['entities'] == null ? null : pulumi.Output.create<List<GoogleCloudDialogflowV2beta1EntityTypeEntity>>(pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1EntityTypeEntity>(map['entities'], (value) => GoogleCloudDialogflowV2beta1EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))),
-      kind: pulumi.Output.create<EntityTypeKindDialogflowV2beta1>(EntityTypeKindDialogflowV2beta1.fromValue(map['kind'] as String)),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      autoExpansionMode: map['autoExpansionMode'] == null ? null : (EntityTypeAutoExpansionModeDialogflowV2beta1.fromValue(map['autoExpansionMode'] as String)).input(),
+      displayName: (map['displayName'] as String).input(),
+      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction'] as bool).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1EntityTypeEntity>(map['entities'], (value) => GoogleCloudDialogflowV2beta1EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: (EntityTypeKindDialogflowV2beta1.fromValue(map['kind'] as String)).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -50,23 +50,15 @@ class MetastoreTableIamMemberArgs {
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
   /// [table] Used to find the parent resource to bind the IAM policy to
   MetastoreTableIamMemberArgs({
-    pulumi.Output<MetastoreTableIamMemberCondition>? condition,
-    required pulumi.Output<String> databaseId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> serviceId,
-    required pulumi.Output<String> table,
-  }) :
-      condition = pulumi.Input.asOptionalInput<MetastoreTableIamMemberCondition>(condition),
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      table = pulumi.Input.asInput<String>(table);
+    this.condition,
+    required this.databaseId,
+    this.location,
+    required this.member,
+    this.project,
+    required this.role,
+    required this.serviceId,
+    required this.table,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,14 +75,14 @@ class MetastoreTableIamMemberArgs {
 
   factory MetastoreTableIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return MetastoreTableIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<MetastoreTableIamMemberCondition>(MetastoreTableIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      table: pulumi.Output.create<String>(map['table'] as String),
+      condition: map['condition'] == null ? null : (MetastoreTableIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      databaseId: (map['databaseId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      table: (map['table'] as String).input(),
     );
   }
 }

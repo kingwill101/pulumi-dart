@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about a domain controller in the AD domain.
 class ActiveDirectoryDomainControllerResponse {
   /// Fully-qualified domain name of a domain controller in the AD domain.
-  final String hostname;
+  final pulumi.Input<String> hostname;
 
   /// Creates a new [ActiveDirectoryDomainControllerResponse].
   /// [hostname] Fully-qualified domain name of a domain controller in the AD domain.
@@ -20,7 +21,7 @@ class ActiveDirectoryDomainControllerResponse {
 
   factory ActiveDirectoryDomainControllerResponse.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryDomainControllerResponse(
-      hostname: map['hostname'] as String,
+      hostname: (map['hostname'] as String).input(),
     );
   }
 }

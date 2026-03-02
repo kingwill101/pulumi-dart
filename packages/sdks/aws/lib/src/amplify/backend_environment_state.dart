@@ -25,19 +25,13 @@ class BackendEnvironmentState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stackName] AWS CloudFormation stack name of a backend environment.
   BackendEnvironmentState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? deploymentArtifacts,
-    pulumi.Output<String>? environmentName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? stackName,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      deploymentArtifacts = pulumi.Input.asOptionalInput<String>(deploymentArtifacts),
-      environmentName = pulumi.Input.asOptionalInput<String>(environmentName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      stackName = pulumi.Input.asOptionalInput<String>(stackName);
+    this.appId,
+    this.arn,
+    this.deploymentArtifacts,
+    this.environmentName,
+    this.region,
+    this.stackName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class BackendEnvironmentState {
 
   factory BackendEnvironmentState.fromMap(Map<String, dynamic> map) {
     return BackendEnvironmentState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      deploymentArtifacts: map['deploymentArtifacts'] == null ? null : pulumi.Output.create<String>(map['deploymentArtifacts'] as String),
-      environmentName: map['environmentName'] == null ? null : pulumi.Output.create<String>(map['environmentName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      stackName: map['stackName'] == null ? null : pulumi.Output.create<String>(map['stackName'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      deploymentArtifacts: map['deploymentArtifacts'] == null ? null : (map['deploymentArtifacts'] as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      stackName: map['stackName'] == null ? null : (map['stackName'] as String).input(),
     );
   }
 }

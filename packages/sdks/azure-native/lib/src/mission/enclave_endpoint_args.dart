@@ -29,19 +29,13 @@ class EnclaveEndpointArgs {
   /// [tags] Resource tags.
   /// [virtualEnclaveName] The name of the enclaveResource Resource
   EnclaveEndpointArgs({
-    pulumi.Output<String>? enclaveEndpointName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<EnclaveEndpointDestinationRule>> ruleCollection,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualEnclaveName,
-  }) :
-      enclaveEndpointName = pulumi.Input.asOptionalInput<String>(enclaveEndpointName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleCollection = pulumi.Input.asInput<List<EnclaveEndpointDestinationRule>>(ruleCollection),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualEnclaveName = pulumi.Input.asInput<String>(virtualEnclaveName);
+    this.enclaveEndpointName,
+    this.location,
+    required this.resourceGroupName,
+    required this.ruleCollection,
+    this.tags,
+    required this.virtualEnclaveName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class EnclaveEndpointArgs {
 
   factory EnclaveEndpointArgs.fromMap(Map<String, dynamic> map) {
     return EnclaveEndpointArgs(
-      enclaveEndpointName: map['enclaveEndpointName'] == null ? null : pulumi.Output.create<String>(map['enclaveEndpointName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleCollection: pulumi.Output.create<List<EnclaveEndpointDestinationRule>>(pulumi.Input.decodeList<EnclaveEndpointDestinationRule>(map['ruleCollection'], (value) => EnclaveEndpointDestinationRule.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualEnclaveName: pulumi.Output.create<String>(map['virtualEnclaveName'] as String),
+      enclaveEndpointName: map['enclaveEndpointName'] == null ? null : (map['enclaveEndpointName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleCollection: (pulumi.Input.decodeList<EnclaveEndpointDestinationRule>(map['ruleCollection'], (value) => EnclaveEndpointDestinationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualEnclaveName: (map['virtualEnclaveName'] as String).input(),
     );
   }
 }

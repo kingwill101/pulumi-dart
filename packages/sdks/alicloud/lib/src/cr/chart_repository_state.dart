@@ -22,17 +22,12 @@ class ChartRepositoryState {
   /// [repoType] The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
   /// [summary] The summary about the repository.
   ChartRepositoryState({
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? repoName,
-    pulumi.Output<String>? repoNamespaceName,
-    pulumi.Output<String>? repoType,
-    pulumi.Output<String>? summary,
-  }) :
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      repoName = pulumi.Input.asOptionalInput<String>(repoName),
-      repoNamespaceName = pulumi.Input.asOptionalInput<String>(repoNamespaceName),
-      repoType = pulumi.Input.asOptionalInput<String>(repoType),
-      summary = pulumi.Input.asOptionalInput<String>(summary);
+    this.instanceId,
+    this.repoName,
+    this.repoNamespaceName,
+    this.repoType,
+    this.summary,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ChartRepositoryState {
 
   factory ChartRepositoryState.fromMap(Map<String, dynamic> map) {
     return ChartRepositoryState(
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      repoName: map['repoName'] == null ? null : pulumi.Output.create<String>(map['repoName'] as String),
-      repoNamespaceName: map['repoNamespaceName'] == null ? null : pulumi.Output.create<String>(map['repoNamespaceName'] as String),
-      repoType: map['repoType'] == null ? null : pulumi.Output.create<String>(map['repoType'] as String),
-      summary: map['summary'] == null ? null : pulumi.Output.create<String>(map['summary'] as String),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
+      repoNamespaceName: map['repoNamespaceName'] == null ? null : (map['repoNamespaceName'] as String).input(),
+      repoType: map['repoType'] == null ? null : (map['repoType'] as String).input(),
+      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
     );
   }
 }

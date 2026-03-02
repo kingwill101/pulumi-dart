@@ -25,17 +25,12 @@ class EndpointEventHubArgs {
   /// [eventhubSecondaryConnectionString] The secondary connection string of the Event Hub Authorization Rule with a minimum of `send` permission.
   /// [name] The name which should be used for this Digital Twins Event Hub Endpoint. Changing this forces a new Digital Twins Event Hub Endpoint to be created.
   EndpointEventHubArgs({
-    pulumi.Output<String>? deadLetterStorageSecret,
-    required pulumi.Output<String> digitalTwinsId,
-    required pulumi.Output<String> eventhubPrimaryConnectionString,
-    required pulumi.Output<String> eventhubSecondaryConnectionString,
-    pulumi.Output<String>? name,
-  }) :
-      deadLetterStorageSecret = pulumi.Input.asOptionalInput<String>(deadLetterStorageSecret),
-      digitalTwinsId = pulumi.Input.asInput<String>(digitalTwinsId),
-      eventhubPrimaryConnectionString = pulumi.Input.asInput<String>(eventhubPrimaryConnectionString),
-      eventhubSecondaryConnectionString = pulumi.Input.asInput<String>(eventhubSecondaryConnectionString),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.deadLetterStorageSecret,
+    required this.digitalTwinsId,
+    required this.eventhubPrimaryConnectionString,
+    required this.eventhubSecondaryConnectionString,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EndpointEventHubArgs {
 
   factory EndpointEventHubArgs.fromMap(Map<String, dynamic> map) {
     return EndpointEventHubArgs(
-      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : pulumi.Output.create<String>(map['deadLetterStorageSecret'] as String),
-      digitalTwinsId: pulumi.Output.create<String>(map['digitalTwinsId'] as String),
-      eventhubPrimaryConnectionString: pulumi.Output.create<String>(map['eventhubPrimaryConnectionString'] as String),
-      eventhubSecondaryConnectionString: pulumi.Output.create<String>(map['eventhubSecondaryConnectionString'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret'] as String).input(),
+      digitalTwinsId: (map['digitalTwinsId'] as String).input(),
+      eventhubPrimaryConnectionString: (map['eventhubPrimaryConnectionString'] as String).input(),
+      eventhubSecondaryConnectionString: (map['eventhubSecondaryConnectionString'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

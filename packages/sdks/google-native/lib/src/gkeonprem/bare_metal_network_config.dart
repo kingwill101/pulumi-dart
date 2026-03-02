@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_island_mode_cidr_config.dart';
 import 'bare_metal_multiple_network_interfaces_config.dart';
 import 'bare_metal_sr_iov_config.dart';
@@ -7,13 +8,13 @@ import 'bare_metal_sr_iov_config.dart';
 /// Specifies the cluster network configuration.
 class BareMetalNetworkConfig {
   /// Enables the use of advanced Anthos networking features, such as Bundled Load Balancing with BGP or the egress NAT gateway. Setting configuration for advanced networking features will automatically set this flag.
-  final bool? advancedNetworking;
+  final pulumi.Input<bool>? advancedNetworking;
   /// Configuration for island mode CIDR. In an island-mode network, nodes have unique IP addresses, but pods don't have unique addresses across clusters. This doesn't cause problems because pods in one cluster never directly communicate with pods in another cluster. Instead, there are gateways that mediate between a pod in one cluster and a pod in another cluster.
-  final BareMetalIslandModeCidrConfig? islandModeCidr;
+  final pulumi.Input<BareMetalIslandModeCidrConfig>? islandModeCidr;
   /// Configuration for multiple network interfaces.
-  final BareMetalMultipleNetworkInterfacesConfig? multipleNetworkInterfacesConfig;
+  final pulumi.Input<BareMetalMultipleNetworkInterfacesConfig>? multipleNetworkInterfacesConfig;
   /// Configuration for SR-IOV.
-  final BareMetalSrIovConfig? srIovConfig;
+  final pulumi.Input<BareMetalSrIovConfig>? srIovConfig;
 
   /// Creates a new [BareMetalNetworkConfig].
   /// [advancedNetworking] Enables the use of advanced Anthos networking features, such as Bundled Load Balancing with BGP or the egress NAT gateway. Setting configuration for advanced networking features will automatically set this flag.
@@ -30,18 +31,18 @@ class BareMetalNetworkConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'advancedNetworking': ?advancedNetworking,
-      'islandModeCidr': ?islandModeCidr == null ? null : islandModeCidr!.toMap(),
-      'multipleNetworkInterfacesConfig': ?multipleNetworkInterfacesConfig == null ? null : multipleNetworkInterfacesConfig!.toMap(),
-      'srIovConfig': ?srIovConfig == null ? null : srIovConfig!.toMap(),
+      'islandModeCidr': ?pulumi.Input.mapOptionalInputValue<BareMetalIslandModeCidrConfig, Map<String, dynamic>>(islandModeCidr, (value) => value.toMap()),
+      'multipleNetworkInterfacesConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalMultipleNetworkInterfacesConfig, Map<String, dynamic>>(multipleNetworkInterfacesConfig, (value) => value.toMap()),
+      'srIovConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalSrIovConfig, Map<String, dynamic>>(srIovConfig, (value) => value.toMap()),
     };
   }
 
   factory BareMetalNetworkConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalNetworkConfig(
-      advancedNetworking: map['advancedNetworking'] == null ? null : map['advancedNetworking'] as bool,
-      islandModeCidr: map['islandModeCidr'] == null ? null : BareMetalIslandModeCidrConfig.fromMap((map['islandModeCidr'] as Map).cast<String, dynamic>()),
-      multipleNetworkInterfacesConfig: map['multipleNetworkInterfacesConfig'] == null ? null : BareMetalMultipleNetworkInterfacesConfig.fromMap((map['multipleNetworkInterfacesConfig'] as Map).cast<String, dynamic>()),
-      srIovConfig: map['srIovConfig'] == null ? null : BareMetalSrIovConfig.fromMap((map['srIovConfig'] as Map).cast<String, dynamic>()),
+      advancedNetworking: map['advancedNetworking'] == null ? null : (map['advancedNetworking'] as bool).input(),
+      islandModeCidr: map['islandModeCidr'] == null ? null : (BareMetalIslandModeCidrConfig.fromMap((map['islandModeCidr'] as Map).cast<String, dynamic>())).input(),
+      multipleNetworkInterfacesConfig: map['multipleNetworkInterfacesConfig'] == null ? null : (BareMetalMultipleNetworkInterfacesConfig.fromMap((map['multipleNetworkInterfacesConfig'] as Map).cast<String, dynamic>())).input(),
+      srIovConfig: map['srIovConfig'] == null ? null : (BareMetalSrIovConfig.fromMap((map['srIovConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

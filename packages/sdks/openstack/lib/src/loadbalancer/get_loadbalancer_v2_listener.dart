@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadbalancerV2Listener {
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetLoadbalancerV2Listener].
   /// [id] Required.
@@ -18,7 +19,7 @@ class GetLoadbalancerV2Listener {
 
   factory GetLoadbalancerV2Listener.fromMap(Map<String, dynamic> map) {
     return GetLoadbalancerV2Listener(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

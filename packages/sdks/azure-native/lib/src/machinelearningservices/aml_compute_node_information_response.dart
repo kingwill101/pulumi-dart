@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Compute node information related to a AmlCompute.
 class AmlComputeNodeInformationResponse {
   /// ID of the compute node.
-  final String nodeId;
+  final pulumi.Input<String> nodeId;
   /// State of the compute node. Values are idle, running, preparing, unusable, leaving and preempted.
-  final String nodeState;
+  final pulumi.Input<String> nodeState;
   /// SSH port number of the node.
-  final double port;
+  final pulumi.Input<double> port;
   /// Private IP address of the compute node.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// Public IP address of the compute node.
-  final String publicIpAddress;
+  final pulumi.Input<String> publicIpAddress;
   /// ID of the Experiment running on the node, if any else null.
-  final String runId;
+  final pulumi.Input<String> runId;
 
   /// Creates a new [AmlComputeNodeInformationResponse].
   /// [nodeId] ID of the compute node.
@@ -45,12 +46,12 @@ class AmlComputeNodeInformationResponse {
 
   factory AmlComputeNodeInformationResponse.fromMap(Map<String, dynamic> map) {
     return AmlComputeNodeInformationResponse(
-      nodeId: map['nodeId'] as String,
-      nodeState: map['nodeState'] as String,
-      port: map['port'] as double,
-      privateIpAddress: map['privateIpAddress'] as String,
-      publicIpAddress: map['publicIpAddress'] as String,
-      runId: map['runId'] as String,
+      nodeId: (map['nodeId'] as String).input(),
+      nodeState: (map['nodeState'] as String).input(),
+      port: (map['port'] as double).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      publicIpAddress: (map['publicIpAddress'] as String).input(),
+      runId: (map['runId'] as String).input(),
     );
   }
 }

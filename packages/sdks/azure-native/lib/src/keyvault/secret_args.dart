@@ -26,17 +26,12 @@ class SecretArgs {
   /// [tags] The tags that will be assigned to the secret.
   /// [vaultName] Name of the vault
   SecretArgs({
-    required pulumi.Output<SecretProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? secretName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vaultName,
-  }) :
-      properties = pulumi.Input.asInput<SecretProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secretName = pulumi.Input.asOptionalInput<String>(secretName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.properties,
+    required this.resourceGroupName,
+    this.secretName,
+    this.tags,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      properties: pulumi.Output.create<SecretProperties>(SecretProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secretName: map['secretName'] == null ? null : pulumi.Output.create<String>(map['secretName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      properties: (SecretProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

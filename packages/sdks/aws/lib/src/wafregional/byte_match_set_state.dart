@@ -17,13 +17,10 @@ class ByteMatchSetState {
   /// [name] The name or description of the ByteMatchSet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ByteMatchSetState({
-    pulumi.Output<List<ByteMatchSetByteMatchTuple>>? byteMatchTuples,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      byteMatchTuples = pulumi.Input.asOptionalInput<List<ByteMatchSetByteMatchTuple>>(byteMatchTuples),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.byteMatchTuples,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class ByteMatchSetState {
 
   factory ByteMatchSetState.fromMap(Map<String, dynamic> map) {
     return ByteMatchSetState(
-      byteMatchTuples: map['byteMatchTuples'] == null ? null : pulumi.Output.create<List<ByteMatchSetByteMatchTuple>>(pulumi.Input.decodeList<ByteMatchSetByteMatchTuple>(map['byteMatchTuples'], (value) => ByteMatchSetByteMatchTuple.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      byteMatchTuples: map['byteMatchTuples'] == null ? null : (pulumi.Input.decodeList<ByteMatchSetByteMatchTuple>(map['byteMatchTuples'], (value) => ByteMatchSetByteMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

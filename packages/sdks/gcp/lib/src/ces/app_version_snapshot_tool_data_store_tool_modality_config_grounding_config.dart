@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig {
   /// (Output)
   /// Whether summarization is disabled.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// (Output)
   /// The groundedness threshold of the answer based on the retrieved sources.
   /// The value has a configurable range of [1, 5]. The level is used to
@@ -13,7 +14,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig {
   /// relevant snippets only.
   /// For example, a level of 3 means that the groundedness score must be
   /// 3 or higher for the response to be returned.
-  final double? groundingLevel;
+  final pulumi.Input<double>? groundingLevel;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig].
   /// [disabled] (Output)
@@ -32,8 +33,8 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig {
 
   factory AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig(
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      groundingLevel: map['groundingLevel'] == null ? null : map['groundingLevel'] as double,
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      groundingLevel: map['groundingLevel'] == null ? null : (map['groundingLevel'] as double).input(),
     );
   }
 }

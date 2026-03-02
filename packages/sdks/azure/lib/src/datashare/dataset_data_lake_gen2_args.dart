@@ -28,19 +28,13 @@ class DatasetDataLakeGen2Args {
   /// [shareId] The resource ID of the Data Share where this Data Share Data Lake Gen2 Dataset should be created. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
   /// [storageAccountId] The resource id of the storage account of the data lake file system to be shared with the receiver. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
   DatasetDataLakeGen2Args({
-    pulumi.Output<String>? filePath,
-    required pulumi.Output<String> fileSystemName,
-    pulumi.Output<String>? folderPath,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> shareId,
-    required pulumi.Output<String> storageAccountId,
-  }) :
-      filePath = pulumi.Input.asOptionalInput<String>(filePath),
-      fileSystemName = pulumi.Input.asInput<String>(fileSystemName),
-      folderPath = pulumi.Input.asOptionalInput<String>(folderPath),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      shareId = pulumi.Input.asInput<String>(shareId),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId);
+    this.filePath,
+    required this.fileSystemName,
+    this.folderPath,
+    this.name,
+    required this.shareId,
+    required this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class DatasetDataLakeGen2Args {
 
   factory DatasetDataLakeGen2Args.fromMap(Map<String, dynamic> map) {
     return DatasetDataLakeGen2Args(
-      filePath: map['filePath'] == null ? null : pulumi.Output.create<String>(map['filePath'] as String),
-      fileSystemName: pulumi.Output.create<String>(map['fileSystemName'] as String),
-      folderPath: map['folderPath'] == null ? null : pulumi.Output.create<String>(map['folderPath'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      shareId: pulumi.Output.create<String>(map['shareId'] as String),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
+      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
+      fileSystemName: (map['fileSystemName'] as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      shareId: (map['shareId'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

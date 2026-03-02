@@ -22,15 +22,11 @@ class GetArchifeArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetArchifeArgs({
-    required pulumi.Output<String> archiveName,
-    required pulumi.Output<String> packageType,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      archiveName = pulumi.Input.asInput<String>(archiveName),
-      packageType = pulumi.Input.asInput<String>(packageType),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.archiveName,
+    required this.packageType,
+    required this.registryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetArchifeArgs {
 
   factory GetArchifeArgs.fromMap(Map<String, dynamic> map) {
     return GetArchifeArgs(
-      archiveName: pulumi.Output.create<String>(map['archiveName'] as String),
-      packageType: pulumi.Output.create<String>(map['packageType'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      archiveName: (map['archiveName'] as String).input(),
+      packageType: (map['packageType'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

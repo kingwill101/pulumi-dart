@@ -54,35 +54,21 @@ class GovernanceRuleArgs {
   /// [scope] The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   /// [sourceResourceType] The governance rule source, what the rule affects, e.g. Assessments
   GovernanceRuleArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<List<String>>? excludedScopes,
-    pulumi.Output<GovernanceRuleEmailNotification>? governanceEmailNotification,
-    pulumi.Output<bool>? includeMemberScopes,
-    pulumi.Output<bool>? isDisabled,
-    pulumi.Output<bool>? isGracePeriod,
-    required pulumi.Output<GovernanceRuleOwnerSource> ownerSource,
-    pulumi.Output<String>? remediationTimeframe,
-    pulumi.Output<String>? ruleId,
-    required pulumi.Output<int> rulePriority,
-    required pulumi.Output<String> ruleType,
-    required pulumi.Output<String> scope,
-    required pulumi.Output<String> sourceResourceType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      excludedScopes = pulumi.Input.asOptionalInput<List<String>>(excludedScopes),
-      governanceEmailNotification = pulumi.Input.asOptionalInput<GovernanceRuleEmailNotification>(governanceEmailNotification),
-      includeMemberScopes = pulumi.Input.asOptionalInput<bool>(includeMemberScopes),
-      isDisabled = pulumi.Input.asOptionalInput<bool>(isDisabled),
-      isGracePeriod = pulumi.Input.asOptionalInput<bool>(isGracePeriod),
-      ownerSource = pulumi.Input.asInput<GovernanceRuleOwnerSource>(ownerSource),
-      remediationTimeframe = pulumi.Input.asOptionalInput<String>(remediationTimeframe),
-      ruleId = pulumi.Input.asOptionalInput<String>(ruleId),
-      rulePriority = pulumi.Input.asInput<int>(rulePriority),
-      ruleType = pulumi.Input.asInput<String>(ruleType),
-      scope = pulumi.Input.asInput<String>(scope),
-      sourceResourceType = pulumi.Input.asInput<String>(sourceResourceType);
+    this.description,
+    required this.displayName,
+    this.excludedScopes,
+    this.governanceEmailNotification,
+    this.includeMemberScopes,
+    this.isDisabled,
+    this.isGracePeriod,
+    required this.ownerSource,
+    this.remediationTimeframe,
+    this.ruleId,
+    required this.rulePriority,
+    required this.ruleType,
+    required this.scope,
+    required this.sourceResourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class GovernanceRuleArgs {
 
   factory GovernanceRuleArgs.fromMap(Map<String, dynamic> map) {
     return GovernanceRuleArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      excludedScopes: map['excludedScopes'] == null ? null : pulumi.Output.create<List<String>>((map['excludedScopes'] as List).cast<String>()),
-      governanceEmailNotification: map['governanceEmailNotification'] == null ? null : pulumi.Output.create<GovernanceRuleEmailNotification>(GovernanceRuleEmailNotification.fromMap((map['governanceEmailNotification'] as Map).cast<String, dynamic>())),
-      includeMemberScopes: map['includeMemberScopes'] == null ? null : pulumi.Output.create<bool>(map['includeMemberScopes'] as bool),
-      isDisabled: map['isDisabled'] == null ? null : pulumi.Output.create<bool>(map['isDisabled'] as bool),
-      isGracePeriod: map['isGracePeriod'] == null ? null : pulumi.Output.create<bool>(map['isGracePeriod'] as bool),
-      ownerSource: pulumi.Output.create<GovernanceRuleOwnerSource>(GovernanceRuleOwnerSource.fromMap((map['ownerSource'] as Map).cast<String, dynamic>())),
-      remediationTimeframe: map['remediationTimeframe'] == null ? null : pulumi.Output.create<String>(map['remediationTimeframe'] as String),
-      ruleId: map['ruleId'] == null ? null : pulumi.Output.create<String>(map['ruleId'] as String),
-      rulePriority: pulumi.Output.create<int>(map['rulePriority'] as int),
-      ruleType: pulumi.Output.create<String>(map['ruleType'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      sourceResourceType: pulumi.Output.create<String>(map['sourceResourceType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      excludedScopes: map['excludedScopes'] == null ? null : ((map['excludedScopes'] as List).cast<String>()).input(),
+      governanceEmailNotification: map['governanceEmailNotification'] == null ? null : (GovernanceRuleEmailNotification.fromMap((map['governanceEmailNotification'] as Map).cast<String, dynamic>())).input(),
+      includeMemberScopes: map['includeMemberScopes'] == null ? null : (map['includeMemberScopes'] as bool).input(),
+      isDisabled: map['isDisabled'] == null ? null : (map['isDisabled'] as bool).input(),
+      isGracePeriod: map['isGracePeriod'] == null ? null : (map['isGracePeriod'] as bool).input(),
+      ownerSource: (GovernanceRuleOwnerSource.fromMap((map['ownerSource'] as Map).cast<String, dynamic>())).input(),
+      remediationTimeframe: map['remediationTimeframe'] == null ? null : (map['remediationTimeframe'] as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      rulePriority: (map['rulePriority'] as int).input(),
+      ruleType: (map['ruleType'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      sourceResourceType: (map['sourceResourceType'] as String).input(),
     );
   }
 }

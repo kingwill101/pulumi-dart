@@ -27,17 +27,12 @@ class TemplateAliasArgs {
   /// [templateId] ID of the template.
   /// [templateVersionNumber] Version number of the template.
   TemplateAliasArgs({
-    required pulumi.Output<String> aliasName,
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> templateId,
-    required pulumi.Output<int> templateVersionNumber,
-  }) :
-      aliasName = pulumi.Input.asInput<String>(aliasName),
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      templateId = pulumi.Input.asInput<String>(templateId),
-      templateVersionNumber = pulumi.Input.asInput<int>(templateVersionNumber);
+    required this.aliasName,
+    this.awsAccountId,
+    this.region,
+    required this.templateId,
+    required this.templateVersionNumber,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class TemplateAliasArgs {
 
   factory TemplateAliasArgs.fromMap(Map<String, dynamic> map) {
     return TemplateAliasArgs(
-      aliasName: pulumi.Output.create<String>(map['aliasName'] as String),
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      templateId: pulumi.Output.create<String>(map['templateId'] as String),
-      templateVersionNumber: pulumi.Output.create<int>(map['templateVersionNumber'] as int),
+      aliasName: (map['aliasName'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
+      templateVersionNumber: (map['templateVersionNumber'] as int).input(),
     );
   }
 }

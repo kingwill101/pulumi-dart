@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification that applies to entries that are part `LOOKER` system (user_specified_type)
 class GoogleCloudDatacatalogV1LookerSystemSpec {
   /// Name of the parent Looker Instance. Empty if it does not exist.
-  final String? parentInstanceDisplayName;
+  final pulumi.Input<String>? parentInstanceDisplayName;
   /// ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com`
-  final String? parentInstanceId;
+  final pulumi.Input<String>? parentInstanceId;
   /// Name of the parent Model. Empty if it does not exist.
-  final String? parentModelDisplayName;
+  final pulumi.Input<String>? parentModelDisplayName;
   /// ID of the parent Model. Empty if it does not exist.
-  final String? parentModelId;
+  final pulumi.Input<String>? parentModelId;
   /// Name of the parent View. Empty if it does not exist.
-  final String? parentViewDisplayName;
+  final pulumi.Input<String>? parentViewDisplayName;
   /// ID of the parent View. Empty if it does not exist.
-  final String? parentViewId;
+  final pulumi.Input<String>? parentViewId;
 
   /// Creates a new [GoogleCloudDatacatalogV1LookerSystemSpec].
   /// [parentInstanceDisplayName] Name of the parent Looker Instance. Empty if it does not exist.
@@ -45,12 +46,12 @@ class GoogleCloudDatacatalogV1LookerSystemSpec {
 
   factory GoogleCloudDatacatalogV1LookerSystemSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1LookerSystemSpec(
-      parentInstanceDisplayName: map['parentInstanceDisplayName'] == null ? null : map['parentInstanceDisplayName'] as String,
-      parentInstanceId: map['parentInstanceId'] == null ? null : map['parentInstanceId'] as String,
-      parentModelDisplayName: map['parentModelDisplayName'] == null ? null : map['parentModelDisplayName'] as String,
-      parentModelId: map['parentModelId'] == null ? null : map['parentModelId'] as String,
-      parentViewDisplayName: map['parentViewDisplayName'] == null ? null : map['parentViewDisplayName'] as String,
-      parentViewId: map['parentViewId'] == null ? null : map['parentViewId'] as String,
+      parentInstanceDisplayName: map['parentInstanceDisplayName'] == null ? null : (map['parentInstanceDisplayName'] as String).input(),
+      parentInstanceId: map['parentInstanceId'] == null ? null : (map['parentInstanceId'] as String).input(),
+      parentModelDisplayName: map['parentModelDisplayName'] == null ? null : (map['parentModelDisplayName'] as String).input(),
+      parentModelId: map['parentModelId'] == null ? null : (map['parentModelId'] as String).input(),
+      parentViewDisplayName: map['parentViewDisplayName'] == null ? null : (map['parentViewDisplayName'] as String).input(),
+      parentViewId: map['parentViewId'] == null ? null : (map['parentViewId'] as String).input(),
     );
   }
 }

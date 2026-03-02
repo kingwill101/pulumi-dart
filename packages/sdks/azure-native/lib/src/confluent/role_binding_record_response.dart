@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metadata_entity_response.dart';
 
 /// Details on principal, role name and crn pattern of a role binding
 class RoleBindingRecordResponse {
   /// A CRN that specifies the scope and resource patterns necessary for the role to bind
-  final String? crnPattern;
+  final pulumi.Input<String>? crnPattern;
   /// Id of the role binding
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The type of the resource.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Metadata of the record
-  final MetadataEntityResponse? metadata;
+  final pulumi.Input<MetadataEntityResponse>? metadata;
   /// The principal User or Group to bind the role to
-  final String? principal;
+  final pulumi.Input<String>? principal;
   /// The name of the role to bind to the principal
-  final String? roleName;
+  final pulumi.Input<String>? roleName;
 
   /// Creates a new [RoleBindingRecordResponse].
   /// [crnPattern] A CRN that specifies the scope and resource patterns necessary for the role to bind
@@ -38,7 +39,7 @@ class RoleBindingRecordResponse {
       'crnPattern': ?crnPattern,
       'id': ?id,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<MetadataEntityResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'principal': ?principal,
       'roleName': ?roleName,
     };
@@ -46,12 +47,12 @@ class RoleBindingRecordResponse {
 
   factory RoleBindingRecordResponse.fromMap(Map<String, dynamic> map) {
     return RoleBindingRecordResponse(
-      crnPattern: map['crnPattern'] == null ? null : map['crnPattern'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      principal: map['principal'] == null ? null : map['principal'] as String,
-      roleName: map['roleName'] == null ? null : map['roleName'] as String,
+      crnPattern: map['crnPattern'] == null ? null : (map['crnPattern'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
     );
   }
 }

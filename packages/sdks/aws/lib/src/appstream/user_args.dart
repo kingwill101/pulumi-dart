@@ -33,21 +33,14 @@ class UserArgs {
   /// [sendEmailNotification] Send an email notification.
   /// [userName] Email address of the user.
   UserArgs({
-    required pulumi.Output<String> authenticationType,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? firstName,
-    pulumi.Output<String>? lastName,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? sendEmailNotification,
-    required pulumi.Output<String> userName,
-  }) :
-      authenticationType = pulumi.Input.asInput<String>(authenticationType),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      firstName = pulumi.Input.asOptionalInput<String>(firstName),
-      lastName = pulumi.Input.asOptionalInput<String>(lastName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sendEmailNotification = pulumi.Input.asOptionalInput<bool>(sendEmailNotification),
-      userName = pulumi.Input.asInput<String>(userName);
+    required this.authenticationType,
+    this.enabled,
+    this.firstName,
+    this.lastName,
+    this.region,
+    this.sendEmailNotification,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      authenticationType: pulumi.Output.create<String>(map['authenticationType'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      firstName: map['firstName'] == null ? null : pulumi.Output.create<String>(map['firstName'] as String),
-      lastName: map['lastName'] == null ? null : pulumi.Output.create<String>(map['lastName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sendEmailNotification: map['sendEmailNotification'] == null ? null : pulumi.Output.create<bool>(map['sendEmailNotification'] as bool),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      authenticationType: (map['authenticationType'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sendEmailNotification: map['sendEmailNotification'] == null ? null : (map['sendEmailNotification'] as bool).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

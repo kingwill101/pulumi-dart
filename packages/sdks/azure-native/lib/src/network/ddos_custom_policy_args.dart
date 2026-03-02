@@ -25,17 +25,12 @@ class DdosCustomPolicyArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   DdosCustomPolicyArgs({
-    pulumi.Output<String>? ddosCustomPolicyName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      ddosCustomPolicyName = pulumi.Input.asOptionalInput<String>(ddosCustomPolicyName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.ddosCustomPolicyName,
+    this.id,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DdosCustomPolicyArgs {
 
   factory DdosCustomPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DdosCustomPolicyArgs(
-      ddosCustomPolicyName: map['ddosCustomPolicyName'] == null ? null : pulumi.Output.create<String>(map['ddosCustomPolicyName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      ddosCustomPolicyName: map['ddosCustomPolicyName'] == null ? null : (map['ddosCustomPolicyName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

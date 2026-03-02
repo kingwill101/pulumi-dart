@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kubernetes_role_compute.dart';
 import 'kubernetes_role_storage.dart';
 
 /// Kubernetes role resources
 class KubernetesRoleResources {
   /// Kubernetes role compute resource
-  final KubernetesRoleCompute compute;
+  final pulumi.Input<KubernetesRoleCompute> compute;
   /// Kubernetes role storage resource
-  final KubernetesRoleStorage? storage;
+  final pulumi.Input<KubernetesRoleStorage>? storage;
 
   /// Creates a new [KubernetesRoleResources].
   /// [compute] Kubernetes role compute resource
@@ -20,15 +21,15 @@ class KubernetesRoleResources {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compute': compute.toMap(),
-      'storage': ?storage == null ? null : storage!.toMap(),
+      'compute': pulumi.Input.mapInputValue<KubernetesRoleCompute, Map<String, dynamic>>(compute, (value) => value.toMap()),
+      'storage': ?pulumi.Input.mapOptionalInputValue<KubernetesRoleStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
     };
   }
 
   factory KubernetesRoleResources.fromMap(Map<String, dynamic> map) {
     return KubernetesRoleResources(
-      compute: KubernetesRoleCompute.fromMap((map['compute'] as Map).cast<String, dynamic>()),
-      storage: map['storage'] == null ? null : KubernetesRoleStorage.fromMap((map['storage'] as Map).cast<String, dynamic>()),
+      compute: (KubernetesRoleCompute.fromMap((map['compute'] as Map).cast<String, dynamic>())).input(),
+      storage: map['storage'] == null ? null : (KubernetesRoleStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

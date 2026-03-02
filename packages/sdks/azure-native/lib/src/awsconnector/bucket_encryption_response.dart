@@ -6,7 +6,7 @@ import 'server_side_encryption_rule_response.dart';
 /// Definition of BucketEncryption
 class BucketEncryptionResponse {
   /// Specifies the default server-side-encryption configuration.
-  final List<ServerSideEncryptionRuleResponse>? serverSideEncryptionConfiguration;
+  final pulumi.Input<List<ServerSideEncryptionRuleResponse>>? serverSideEncryptionConfiguration;
 
   /// Creates a new [BucketEncryptionResponse].
   /// [serverSideEncryptionConfiguration] Specifies the default server-side-encryption configuration.
@@ -16,13 +16,13 @@ class BucketEncryptionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serverSideEncryptionConfiguration': ?serverSideEncryptionConfiguration == null ? null : pulumi.Input.encodeList<ServerSideEncryptionRuleResponse, Map<String, dynamic>>(serverSideEncryptionConfiguration!, (value) => value.toMap()),
+      'serverSideEncryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<List<ServerSideEncryptionRuleResponse>, List<Map<String, dynamic>>>(serverSideEncryptionConfiguration, (value) => pulumi.Input.encodeList<ServerSideEncryptionRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BucketEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return BucketEncryptionResponse(
-      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : pulumi.Input.decodeList<ServerSideEncryptionRuleResponse>(map['serverSideEncryptionConfiguration'], (value) => ServerSideEncryptionRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : (pulumi.Input.decodeList<ServerSideEncryptionRuleResponse>(map['serverSideEncryptionConfiguration'], (value) => ServerSideEncryptionRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

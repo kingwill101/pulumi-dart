@@ -34,23 +34,15 @@ class NetworkManagerIpamPoolArgs {
   /// [parentPoolName] The name of the parent IPAM Pool. Changing this forces a new Network Manager IPAM Pool to be created.
   /// [tags] A mapping of tags which should be assigned to the Network Manager IPAM Pool.
   NetworkManagerIpamPoolArgs({
-    required pulumi.Output<List<String>> addressPrefixes,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkManagerId,
-    pulumi.Output<String>? parentPoolName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      addressPrefixes = pulumi.Input.asInput<List<String>>(addressPrefixes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkManagerId = pulumi.Input.asInput<String>(networkManagerId),
-      parentPoolName = pulumi.Input.asOptionalInput<String>(parentPoolName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.addressPrefixes,
+    this.description,
+    this.displayName,
+    this.location,
+    this.name,
+    required this.networkManagerId,
+    this.parentPoolName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class NetworkManagerIpamPoolArgs {
 
   factory NetworkManagerIpamPoolArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerIpamPoolArgs(
-      addressPrefixes: pulumi.Output.create<List<String>>((map['addressPrefixes'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkManagerId: pulumi.Output.create<String>(map['networkManagerId'] as String),
-      parentPoolName: map['parentPoolName'] == null ? null : pulumi.Output.create<String>(map['parentPoolName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      addressPrefixes: ((map['addressPrefixes'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkManagerId: (map['networkManagerId'] as String).input(),
+      parentPoolName: map['parentPoolName'] == null ? null : (map['parentPoolName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

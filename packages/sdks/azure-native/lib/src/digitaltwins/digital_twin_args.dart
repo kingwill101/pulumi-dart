@@ -34,21 +34,14 @@ class DigitalTwinArgs {
   /// [resourceName] The name of the DigitalTwinsInstance.
   /// [tags] The resource tags.
   DigitalTwinArgs({
-    pulumi.Output<DigitalTwinsIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<PrivateEndpointConnectionDigitaltwins>>? privateEndpointConnections,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asOptionalInput<DigitalTwinsIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      privateEndpointConnections = pulumi.Input.asOptionalInput<List<PrivateEndpointConnectionDigitaltwins>>(privateEndpointConnections),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.identity,
+    this.location,
+    this.privateEndpointConnections,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    this.resourceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class DigitalTwinArgs {
 
   factory DigitalTwinArgs.fromMap(Map<String, dynamic> map) {
     return DigitalTwinArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<DigitalTwinsIdentity>(DigitalTwinsIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : pulumi.Output.create<List<PrivateEndpointConnectionDigitaltwins>>((map['privateEndpointConnections'] as List).cast<PrivateEndpointConnectionDigitaltwins>()),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: map['identity'] == null ? null : (DigitalTwinsIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : ((map['privateEndpointConnections'] as List).cast<PrivateEndpointConnectionDigitaltwins>()).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

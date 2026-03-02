@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The complex type of the extended location.
 class AzureResourceManagerCommonTypesExtendedLocationResponse {
   /// The name of the extended location.
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of the extended location.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AzureResourceManagerCommonTypesExtendedLocationResponse].
   /// [name] The name of the extended location.
@@ -25,8 +26,8 @@ class AzureResourceManagerCommonTypesExtendedLocationResponse {
 
   factory AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap(Map<String, dynamic> map) {
     return AzureResourceManagerCommonTypesExtendedLocationResponse(
-      name: map['name'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

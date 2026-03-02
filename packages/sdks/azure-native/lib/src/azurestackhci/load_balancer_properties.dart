@@ -9,13 +9,13 @@ import 'probe.dart';
 /// Load Balancer resource properties
 class LoadBalancerProperties {
   /// backendAddressPools for the loadbalancer
-  final List<BackendAddressPool>? backendAddressPools;
+  final pulumi.Input<List<BackendAddressPool>>? backendAddressPools;
   /// Frontend IPs for the loadbalancer.
-  final List<FrontendIPConfiguration> frontendIPConfigurations;
+  final pulumi.Input<List<FrontendIPConfiguration>> frontendIPConfigurations;
   /// load balancer rules
-  final List<LoadBalancerRule>? loadBalancingRules;
+  final pulumi.Input<List<LoadBalancerRule>>? loadBalancingRules;
   /// load balancer health probes
-  final List<Probe>? probes;
+  final pulumi.Input<List<Probe>>? probes;
 
   /// Creates a new [LoadBalancerProperties].
   /// [backendAddressPools] backendAddressPools for the loadbalancer
@@ -31,19 +31,19 @@ class LoadBalancerProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddressPools': ?backendAddressPools == null ? null : pulumi.Input.encodeList<BackendAddressPool, Map<String, dynamic>>(backendAddressPools!, (value) => value.toMap()),
-      'frontendIPConfigurations': pulumi.Input.encodeList<FrontendIPConfiguration, Map<String, dynamic>>(frontendIPConfigurations, (value) => value.toMap()),
-      'loadBalancingRules': ?loadBalancingRules == null ? null : pulumi.Input.encodeList<LoadBalancerRule, Map<String, dynamic>>(loadBalancingRules!, (value) => value.toMap()),
-      'probes': ?probes == null ? null : pulumi.Input.encodeList<Probe, Map<String, dynamic>>(probes!, (value) => value.toMap()),
+      'backendAddressPools': ?pulumi.Input.mapOptionalInputValue<List<BackendAddressPool>, List<Map<String, dynamic>>>(backendAddressPools, (value) => pulumi.Input.encodeList<BackendAddressPool, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'frontendIPConfigurations': pulumi.Input.mapInputValue<List<FrontendIPConfiguration>, List<Map<String, dynamic>>>(frontendIPConfigurations, (value) => pulumi.Input.encodeList<FrontendIPConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loadBalancingRules': ?pulumi.Input.mapOptionalInputValue<List<LoadBalancerRule>, List<Map<String, dynamic>>>(loadBalancingRules, (value) => pulumi.Input.encodeList<LoadBalancerRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'probes': ?pulumi.Input.mapOptionalInputValue<List<Probe>, List<Map<String, dynamic>>>(probes, (value) => pulumi.Input.encodeList<Probe, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LoadBalancerProperties.fromMap(Map<String, dynamic> map) {
     return LoadBalancerProperties(
-      backendAddressPools: map['backendAddressPools'] == null ? null : pulumi.Input.decodeList<BackendAddressPool>(map['backendAddressPools'], (value) => BackendAddressPool.fromMap((value as Map).cast<String, dynamic>())),
-      frontendIPConfigurations: pulumi.Input.decodeList<FrontendIPConfiguration>(map['frontendIPConfigurations'], (value) => FrontendIPConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancingRules: map['loadBalancingRules'] == null ? null : pulumi.Input.decodeList<LoadBalancerRule>(map['loadBalancingRules'], (value) => LoadBalancerRule.fromMap((value as Map).cast<String, dynamic>())),
-      probes: map['probes'] == null ? null : pulumi.Input.decodeList<Probe>(map['probes'], (value) => Probe.fromMap((value as Map).cast<String, dynamic>())),
+      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<BackendAddressPool>(map['backendAddressPools'], (value) => BackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      frontendIPConfigurations: (pulumi.Input.decodeList<FrontendIPConfiguration>(map['frontendIPConfigurations'], (value) => FrontendIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancingRules: map['loadBalancingRules'] == null ? null : (pulumi.Input.decodeList<LoadBalancerRule>(map['loadBalancingRules'], (value) => LoadBalancerRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      probes: map['probes'] == null ? null : (pulumi.Input.decodeList<Probe>(map['probes'], (value) => Probe.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

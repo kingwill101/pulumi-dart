@@ -30,19 +30,13 @@ class BucketIntelligentTieringConfigurationArgs {
   /// [status] Specifies the status of the configuration. Valid values: `Enabled`, `Disabled`.
   /// [tierings] S3 Intelligent-Tiering storage class tiers of the configuration (documented below).
   BucketIntelligentTieringConfigurationArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<BucketIntelligentTieringConfigurationFilter>? filter,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    required pulumi.Output<List<BucketIntelligentTieringConfigurationTiering>> tierings,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      filter = pulumi.Input.asOptionalInput<BucketIntelligentTieringConfigurationFilter>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tierings = pulumi.Input.asInput<List<BucketIntelligentTieringConfigurationTiering>>(tierings);
+    required this.bucket,
+    this.filter,
+    this.name,
+    this.region,
+    this.status,
+    required this.tierings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class BucketIntelligentTieringConfigurationArgs {
 
   factory BucketIntelligentTieringConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BucketIntelligentTieringConfigurationArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<BucketIntelligentTieringConfigurationFilter>(BucketIntelligentTieringConfigurationFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tierings: pulumi.Output.create<List<BucketIntelligentTieringConfigurationTiering>>(pulumi.Input.decodeList<BucketIntelligentTieringConfigurationTiering>(map['tierings'], (value) => BucketIntelligentTieringConfigurationTiering.fromMap((value as Map).cast<String, dynamic>()))),
+      bucket: (map['bucket'] as String).input(),
+      filter: map['filter'] == null ? null : (BucketIntelligentTieringConfigurationFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tierings: (pulumi.Input.decodeList<BucketIntelligentTieringConfigurationTiering>(map['tierings'], (value) => BucketIntelligentTieringConfigurationTiering.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_task_spec_container_spec_mount_bind_options.dart';
 import 'service_task_spec_container_spec_mount_tmpfs_options.dart';
 import 'service_task_spec_container_spec_mount_volume_options.dart';
 
 class ServiceTaskSpecContainerSpecMount {
   /// Optional configuration for the bind type
-  final ServiceTaskSpecContainerSpecMountBindOptions? bindOptions;
+  final pulumi.Input<ServiceTaskSpecContainerSpecMountBindOptions>? bindOptions;
   /// Whether the mount should be read-only
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// Mount source (e.g. a volume name, a host path)
-  final String? source;
+  final pulumi.Input<String>? source;
   /// Container path
-  final String target;
+  final pulumi.Input<String> target;
   /// Optional configuration for the tmpfs type
-  final ServiceTaskSpecContainerSpecMountTmpfsOptions? tmpfsOptions;
+  final pulumi.Input<ServiceTaskSpecContainerSpecMountTmpfsOptions>? tmpfsOptions;
   /// The mount type
-  final String type;
+  final pulumi.Input<String> type;
   /// Optional configuration for the volume type
-  final ServiceTaskSpecContainerSpecMountVolumeOptions? volumeOptions;
+  final pulumi.Input<ServiceTaskSpecContainerSpecMountVolumeOptions>? volumeOptions;
 
   /// Creates a new [ServiceTaskSpecContainerSpecMount].
   /// [bindOptions] Optional configuration for the bind type
@@ -40,25 +41,25 @@ class ServiceTaskSpecContainerSpecMount {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bindOptions': ?bindOptions == null ? null : bindOptions!.toMap(),
+      'bindOptions': ?pulumi.Input.mapOptionalInputValue<ServiceTaskSpecContainerSpecMountBindOptions, Map<String, dynamic>>(bindOptions, (value) => value.toMap()),
       'readOnly': ?readOnly,
       'source': ?source,
       'target': target,
-      'tmpfsOptions': ?tmpfsOptions == null ? null : tmpfsOptions!.toMap(),
+      'tmpfsOptions': ?pulumi.Input.mapOptionalInputValue<ServiceTaskSpecContainerSpecMountTmpfsOptions, Map<String, dynamic>>(tmpfsOptions, (value) => value.toMap()),
       'type': type,
-      'volumeOptions': ?volumeOptions == null ? null : volumeOptions!.toMap(),
+      'volumeOptions': ?pulumi.Input.mapOptionalInputValue<ServiceTaskSpecContainerSpecMountVolumeOptions, Map<String, dynamic>>(volumeOptions, (value) => value.toMap()),
     };
   }
 
   factory ServiceTaskSpecContainerSpecMount.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecMount(
-      bindOptions: map['bindOptions'] == null ? null : ServiceTaskSpecContainerSpecMountBindOptions.fromMap((map['bindOptions'] as Map).cast<String, dynamic>()),
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      source: map['source'] == null ? null : map['source'] as String,
-      target: map['target'] as String,
-      tmpfsOptions: map['tmpfsOptions'] == null ? null : ServiceTaskSpecContainerSpecMountTmpfsOptions.fromMap((map['tmpfsOptions'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      volumeOptions: map['volumeOptions'] == null ? null : ServiceTaskSpecContainerSpecMountVolumeOptions.fromMap((map['volumeOptions'] as Map).cast<String, dynamic>()),
+      bindOptions: map['bindOptions'] == null ? null : (ServiceTaskSpecContainerSpecMountBindOptions.fromMap((map['bindOptions'] as Map).cast<String, dynamic>())).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      target: (map['target'] as String).input(),
+      tmpfsOptions: map['tmpfsOptions'] == null ? null : (ServiceTaskSpecContainerSpecMountTmpfsOptions.fromMap((map['tmpfsOptions'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      volumeOptions: map['volumeOptions'] == null ? null : (ServiceTaskSpecContainerSpecMountVolumeOptions.fromMap((map['volumeOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

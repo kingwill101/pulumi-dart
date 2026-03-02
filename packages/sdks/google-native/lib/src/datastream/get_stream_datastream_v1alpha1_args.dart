@@ -16,13 +16,10 @@ class GetStreamDatastreamV1alpha1Args {
   /// [project] Optional.
   /// [streamId] Required.
   GetStreamDatastreamV1alpha1Args({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> streamId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      streamId = pulumi.Input.asInput<String>(streamId);
+    required this.location,
+    this.project,
+    required this.streamId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetStreamDatastreamV1alpha1Args {
 
   factory GetStreamDatastreamV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetStreamDatastreamV1alpha1Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      streamId: pulumi.Output.create<String>(map['streamId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      streamId: (map['streamId'] as String).input(),
     );
   }
 }

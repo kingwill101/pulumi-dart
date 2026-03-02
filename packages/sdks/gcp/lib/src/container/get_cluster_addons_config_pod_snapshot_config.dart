@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterAddonsConfigPodSnapshotConfig {
   /// Whether the Pod Snapshot feature is enabled for this cluster.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetClusterAddonsConfigPodSnapshotConfig].
   /// [enabled] Whether the Pod Snapshot feature is enabled for this cluster.
@@ -19,7 +20,7 @@ class GetClusterAddonsConfigPodSnapshotConfig {
 
   factory GetClusterAddonsConfigPodSnapshotConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigPodSnapshotConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -26,19 +26,13 @@ class DatabaseOnlineMigrationState {
   /// [source] Configuration for migration
   /// [status] The status of the online migration
   DatabaseOnlineMigrationState({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<bool>? disableSsl,
-    pulumi.Output<List<String>>? ignoreDbs,
-    pulumi.Output<DatabaseOnlineMigrationSource>? source,
-    pulumi.Output<String>? status,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      disableSsl = pulumi.Input.asOptionalInput<bool>(disableSsl),
-      ignoreDbs = pulumi.Input.asOptionalInput<List<String>>(ignoreDbs),
-      source = pulumi.Input.asOptionalInput<DatabaseOnlineMigrationSource>(source),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.clusterId,
+    this.createdAt,
+    this.disableSsl,
+    this.ignoreDbs,
+    this.source,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class DatabaseOnlineMigrationState {
 
   factory DatabaseOnlineMigrationState.fromMap(Map<String, dynamic> map) {
     return DatabaseOnlineMigrationState(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      disableSsl: map['disableSsl'] == null ? null : pulumi.Output.create<bool>(map['disableSsl'] as bool),
-      ignoreDbs: map['ignoreDbs'] == null ? null : pulumi.Output.create<List<String>>((map['ignoreDbs'] as List).cast<String>()),
-      source: map['source'] == null ? null : pulumi.Output.create<DatabaseOnlineMigrationSource>(DatabaseOnlineMigrationSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      disableSsl: map['disableSsl'] == null ? null : (map['disableSsl'] as bool).input(),
+      ignoreDbs: map['ignoreDbs'] == null ? null : ((map['ignoreDbs'] as List).cast<String>()).input(),
+      source: map['source'] == null ? null : (DatabaseOnlineMigrationSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

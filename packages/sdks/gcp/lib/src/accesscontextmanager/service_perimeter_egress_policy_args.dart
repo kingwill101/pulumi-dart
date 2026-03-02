@@ -27,15 +27,11 @@ class ServicePerimeterEgressPolicyArgs {
   /// [perimeter] The name of the Service Perimeter to add this resource to.
   /// [title] Human readable title. Must be unique within the perimeter. Does not affect behavior.
   ServicePerimeterEgressPolicyArgs({
-    pulumi.Output<ServicePerimeterEgressPolicyEgressFrom>? egressFrom,
-    pulumi.Output<ServicePerimeterEgressPolicyEgressTo>? egressTo,
-    required pulumi.Output<String> perimeter,
-    pulumi.Output<String>? title,
-  }) :
-      egressFrom = pulumi.Input.asOptionalInput<ServicePerimeterEgressPolicyEgressFrom>(egressFrom),
-      egressTo = pulumi.Input.asOptionalInput<ServicePerimeterEgressPolicyEgressTo>(egressTo),
-      perimeter = pulumi.Input.asInput<String>(perimeter),
-      title = pulumi.Input.asOptionalInput<String>(title);
+    this.egressFrom,
+    this.egressTo,
+    required this.perimeter,
+    this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class ServicePerimeterEgressPolicyArgs {
 
   factory ServicePerimeterEgressPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterEgressPolicyArgs(
-      egressFrom: map['egressFrom'] == null ? null : pulumi.Output.create<ServicePerimeterEgressPolicyEgressFrom>(ServicePerimeterEgressPolicyEgressFrom.fromMap((map['egressFrom'] as Map).cast<String, dynamic>())),
-      egressTo: map['egressTo'] == null ? null : pulumi.Output.create<ServicePerimeterEgressPolicyEgressTo>(ServicePerimeterEgressPolicyEgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>())),
-      perimeter: pulumi.Output.create<String>(map['perimeter'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
+      egressFrom: map['egressFrom'] == null ? null : (ServicePerimeterEgressPolicyEgressFrom.fromMap((map['egressFrom'] as Map).cast<String, dynamic>())).input(),
+      egressTo: map['egressTo'] == null ? null : (ServicePerimeterEgressPolicyEgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>())).input(),
+      perimeter: (map['perimeter'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

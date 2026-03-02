@@ -37,27 +37,17 @@ class PoolState {
   /// [serviceDownAction] Specifies how the system should respond when the target pool member becomes unavailable. The default is `None`, Possible values: `[none, reset, reselect, drop]`.
   /// [slowRampTime] Specifies the duration during which the system sends less traffic to a newly-enabled pool member.
   PoolState({
-    pulumi.Output<String>? allowNat,
-    pulumi.Output<String>? allowSnat,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? loadBalancingMode,
-    pulumi.Output<int>? minimumActiveMembers,
-    pulumi.Output<List<String>>? monitors,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? reselectTries,
-    pulumi.Output<String>? serviceDownAction,
-    pulumi.Output<int>? slowRampTime,
-  }) :
-      allowNat = pulumi.Input.asOptionalInput<String>(allowNat),
-      allowSnat = pulumi.Input.asOptionalInput<String>(allowSnat),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      loadBalancingMode = pulumi.Input.asOptionalInput<String>(loadBalancingMode),
-      minimumActiveMembers = pulumi.Input.asOptionalInput<int>(minimumActiveMembers),
-      monitors = pulumi.Input.asOptionalInput<List<String>>(monitors),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      reselectTries = pulumi.Input.asOptionalInput<int>(reselectTries),
-      serviceDownAction = pulumi.Input.asOptionalInput<String>(serviceDownAction),
-      slowRampTime = pulumi.Input.asOptionalInput<int>(slowRampTime);
+    this.allowNat,
+    this.allowSnat,
+    this.description,
+    this.loadBalancingMode,
+    this.minimumActiveMembers,
+    this.monitors,
+    this.name,
+    this.reselectTries,
+    this.serviceDownAction,
+    this.slowRampTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class PoolState {
 
   factory PoolState.fromMap(Map<String, dynamic> map) {
     return PoolState(
-      allowNat: map['allowNat'] == null ? null : pulumi.Output.create<String>(map['allowNat'] as String),
-      allowSnat: map['allowSnat'] == null ? null : pulumi.Output.create<String>(map['allowSnat'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      loadBalancingMode: map['loadBalancingMode'] == null ? null : pulumi.Output.create<String>(map['loadBalancingMode'] as String),
-      minimumActiveMembers: map['minimumActiveMembers'] == null ? null : pulumi.Output.create<int>(map['minimumActiveMembers'] as int),
-      monitors: map['monitors'] == null ? null : pulumi.Output.create<List<String>>((map['monitors'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      reselectTries: map['reselectTries'] == null ? null : pulumi.Output.create<int>(map['reselectTries'] as int),
-      serviceDownAction: map['serviceDownAction'] == null ? null : pulumi.Output.create<String>(map['serviceDownAction'] as String),
-      slowRampTime: map['slowRampTime'] == null ? null : pulumi.Output.create<int>(map['slowRampTime'] as int),
+      allowNat: map['allowNat'] == null ? null : (map['allowNat'] as String).input(),
+      allowSnat: map['allowSnat'] == null ? null : (map['allowSnat'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      loadBalancingMode: map['loadBalancingMode'] == null ? null : (map['loadBalancingMode'] as String).input(),
+      minimumActiveMembers: map['minimumActiveMembers'] == null ? null : (map['minimumActiveMembers'] as int).input(),
+      monitors: map['monitors'] == null ? null : ((map['monitors'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      reselectTries: map['reselectTries'] == null ? null : (map['reselectTries'] as int).input(),
+      serviceDownAction: map['serviceDownAction'] == null ? null : (map['serviceDownAction'] as String).input(),
+      slowRampTime: map['slowRampTime'] == null ? null : (map['slowRampTime'] as int).input(),
     );
   }
 }

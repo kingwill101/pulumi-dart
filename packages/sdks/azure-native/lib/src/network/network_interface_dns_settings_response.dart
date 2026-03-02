@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DNS settings of a network interface.
 class NetworkInterfaceDnsSettingsResponse {
   /// If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.
-  final List<String> appliedDnsServers;
+  final pulumi.Input<List<String>> appliedDnsServers;
   /// List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
-  final List<String>? dnsServers;
+  final pulumi.Input<List<String>>? dnsServers;
   /// Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
-  final String? internalDnsNameLabel;
+  final pulumi.Input<String>? internalDnsNameLabel;
   /// Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
-  final String internalDomainNameSuffix;
+  final pulumi.Input<String> internalDomainNameSuffix;
   /// Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
-  final String internalFqdn;
+  final pulumi.Input<String> internalFqdn;
 
   /// Creates a new [NetworkInterfaceDnsSettingsResponse].
   /// [appliedDnsServers] If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.
@@ -40,11 +41,11 @@ class NetworkInterfaceDnsSettingsResponse {
 
   factory NetworkInterfaceDnsSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceDnsSettingsResponse(
-      appliedDnsServers: (map['appliedDnsServers'] as List).cast<String>(),
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
-      internalDnsNameLabel: map['internalDnsNameLabel'] == null ? null : map['internalDnsNameLabel'] as String,
-      internalDomainNameSuffix: map['internalDomainNameSuffix'] as String,
-      internalFqdn: map['internalFqdn'] as String,
+      appliedDnsServers: ((map['appliedDnsServers'] as List).cast<String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      internalDnsNameLabel: map['internalDnsNameLabel'] == null ? null : (map['internalDnsNameLabel'] as String).input(),
+      internalDomainNameSuffix: (map['internalDomainNameSuffix'] as String).input(),
+      internalFqdn: (map['internalFqdn'] as String).input(),
     );
   }
 }

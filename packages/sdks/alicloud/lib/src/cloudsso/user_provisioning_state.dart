@@ -44,31 +44,19 @@ class UserProvisioningState {
   /// [userProvisioningId] The first ID of the resource
   /// [userProvisioningStatistics] User Provisioning statistics
   UserProvisioningState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? deletionStrategy,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? directoryId,
-    pulumi.Output<String>? duplicationStrategy,
-    pulumi.Output<String>? principalId,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? targetId,
-    pulumi.Output<String>? targetType,
-    pulumi.Output<String>? userProvisioningId,
-    pulumi.Output<List<UserProvisioningUserProvisioningStatistic>>? userProvisioningStatistics,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      deletionStrategy = pulumi.Input.asOptionalInput<String>(deletionStrategy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      duplicationStrategy = pulumi.Input.asOptionalInput<String>(duplicationStrategy),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      targetId = pulumi.Input.asOptionalInput<String>(targetId),
-      targetType = pulumi.Input.asOptionalInput<String>(targetType),
-      userProvisioningId = pulumi.Input.asOptionalInput<String>(userProvisioningId),
-      userProvisioningStatistics = pulumi.Input.asOptionalInput<List<UserProvisioningUserProvisioningStatistic>>(userProvisioningStatistics);
+    this.createTime,
+    this.deletionStrategy,
+    this.description,
+    this.directoryId,
+    this.duplicationStrategy,
+    this.principalId,
+    this.principalType,
+    this.status,
+    this.targetId,
+    this.targetType,
+    this.userProvisioningId,
+    this.userProvisioningStatistics,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class UserProvisioningState {
 
   factory UserProvisioningState.fromMap(Map<String, dynamic> map) {
     return UserProvisioningState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      deletionStrategy: map['deletionStrategy'] == null ? null : pulumi.Output.create<String>(map['deletionStrategy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      directoryId: map['directoryId'] == null ? null : pulumi.Output.create<String>(map['directoryId'] as String),
-      duplicationStrategy: map['duplicationStrategy'] == null ? null : pulumi.Output.create<String>(map['duplicationStrategy'] as String),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      targetId: map['targetId'] == null ? null : pulumi.Output.create<String>(map['targetId'] as String),
-      targetType: map['targetType'] == null ? null : pulumi.Output.create<String>(map['targetType'] as String),
-      userProvisioningId: map['userProvisioningId'] == null ? null : pulumi.Output.create<String>(map['userProvisioningId'] as String),
-      userProvisioningStatistics: map['userProvisioningStatistics'] == null ? null : pulumi.Output.create<List<UserProvisioningUserProvisioningStatistic>>(pulumi.Input.decodeList<UserProvisioningUserProvisioningStatistic>(map['userProvisioningStatistics'], (value) => UserProvisioningUserProvisioningStatistic.fromMap((value as Map).cast<String, dynamic>()))),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      deletionStrategy: map['deletionStrategy'] == null ? null : (map['deletionStrategy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
+      duplicationStrategy: map['duplicationStrategy'] == null ? null : (map['duplicationStrategy'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      userProvisioningId: map['userProvisioningId'] == null ? null : (map['userProvisioningId'] as String).input(),
+      userProvisioningStatistics: map['userProvisioningStatistics'] == null ? null : (pulumi.Input.decodeList<UserProvisioningUserProvisioningStatistic>(map['userProvisioningStatistics'], (value) => UserProvisioningUserProvisioningStatistic.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

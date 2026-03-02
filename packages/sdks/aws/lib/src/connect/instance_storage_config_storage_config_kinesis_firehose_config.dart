@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceStorageConfigStorageConfigKinesisFirehoseConfig {
   /// The Amazon Resource Name (ARN) of the delivery stream.
-  final String firehoseArn;
+  final pulumi.Input<String> firehoseArn;
 
   /// Creates a new [InstanceStorageConfigStorageConfigKinesisFirehoseConfig].
   /// [firehoseArn] The Amazon Resource Name (ARN) of the delivery stream.
@@ -19,7 +20,7 @@ class InstanceStorageConfigStorageConfigKinesisFirehoseConfig {
 
   factory InstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap(Map<String, dynamic> map) {
     return InstanceStorageConfigStorageConfigKinesisFirehoseConfig(
-      firehoseArn: map['firehoseArn'] as String,
+      firehoseArn: (map['firehoseArn'] as String).input(),
     );
   }
 }

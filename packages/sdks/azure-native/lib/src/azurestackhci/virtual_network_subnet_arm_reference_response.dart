@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Azure Resource ID for a Virtual Network subnet
 class VirtualNetworkSubnetArmReferenceResponse {
   /// The Azure Resource ID for a Virtual Network subnet.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [VirtualNetworkSubnetArmReferenceResponse].
   /// [resourceId] The Azure Resource ID for a Virtual Network subnet.
@@ -20,7 +21,7 @@ class VirtualNetworkSubnetArmReferenceResponse {
 
   factory VirtualNetworkSubnetArmReferenceResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetArmReferenceResponse(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

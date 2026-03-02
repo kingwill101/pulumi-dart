@@ -16,13 +16,10 @@ class GetRegionHealthCheckServiceComputeV1Args {
   /// [project] Optional.
   /// [region] Required.
   GetRegionHealthCheckServiceComputeV1Args({
-    required pulumi.Output<String> healthCheckService,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-  }) :
-      healthCheckService = pulumi.Input.asInput<String>(healthCheckService),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+    required this.healthCheckService,
+    this.project,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetRegionHealthCheckServiceComputeV1Args {
 
   factory GetRegionHealthCheckServiceComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionHealthCheckServiceComputeV1Args(
-      healthCheckService: pulumi.Output.create<String>(map['healthCheckService'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      healthCheckService: (map['healthCheckService'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

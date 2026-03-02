@@ -52,21 +52,14 @@ class EipSegmentAddressArgs {
   /// [resourceGroupId] The resource group ID.
   /// [zone] The zone of the contiguous EIP group.
   EipSegmentAddressArgs({
-    pulumi.Output<String>? bandwidth,
-    required pulumi.Output<String> eipMask,
-    pulumi.Output<String>? internetChargeType,
-    pulumi.Output<String>? isp,
-    pulumi.Output<String>? netmode,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? zone,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<String>(bandwidth),
-      eipMask = pulumi.Input.asInput<String>(eipMask),
-      internetChargeType = pulumi.Input.asOptionalInput<String>(internetChargeType),
-      isp = pulumi.Input.asOptionalInput<String>(isp),
-      netmode = pulumi.Input.asOptionalInput<String>(netmode),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.bandwidth,
+    required this.eipMask,
+    this.internetChargeType,
+    this.isp,
+    this.netmode,
+    this.resourceGroupId,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,13 +75,13 @@ class EipSegmentAddressArgs {
 
   factory EipSegmentAddressArgs.fromMap(Map<String, dynamic> map) {
     return EipSegmentAddressArgs(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<String>(map['bandwidth'] as String),
-      eipMask: pulumi.Output.create<String>(map['eipMask'] as String),
-      internetChargeType: map['internetChargeType'] == null ? null : pulumi.Output.create<String>(map['internetChargeType'] as String),
-      isp: map['isp'] == null ? null : pulumi.Output.create<String>(map['isp'] as String),
-      netmode: map['netmode'] == null ? null : pulumi.Output.create<String>(map['netmode'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as String).input(),
+      eipMask: (map['eipMask'] as String).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
+      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
+      netmode: map['netmode'] == null ? null : (map['netmode'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

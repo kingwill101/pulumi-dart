@@ -149,31 +149,19 @@ class CommandArgs {
   /// [triggers] The resource will be updated (or replaced) if any of these values change.
   /// [update] The command to run when the resource is updated.
   CommandArgs({
-    pulumi.Output<bool>? addPreviousOutputInEnv,
-    pulumi.Output<List<String>>? archivePaths,
-    pulumi.Output<List<String>>? assetPaths,
-    pulumi.Output<String>? create,
-    pulumi.Output<String>? delete,
-    pulumi.Output<String>? dir,
-    pulumi.Output<Map<String, String>>? environment,
-    pulumi.Output<List<String>>? interpreter,
-    pulumi.Output<Logging>? logging,
-    pulumi.Output<String>? stdin,
-    pulumi.Output<List<dynamic>>? triggers,
-    pulumi.Output<String>? update,
-  }) :
-      addPreviousOutputInEnv = pulumi.Input.asOptionalInput<bool>(addPreviousOutputInEnv),
-      archivePaths = pulumi.Input.asOptionalInput<List<String>>(archivePaths),
-      assetPaths = pulumi.Input.asOptionalInput<List<String>>(assetPaths),
-      create = pulumi.Input.asOptionalInput<String>(create),
-      delete = pulumi.Input.asOptionalInput<String>(delete),
-      dir = pulumi.Input.asOptionalInput<String>(dir),
-      environment = pulumi.Input.asOptionalInput<Map<String, String>>(environment),
-      interpreter = pulumi.Input.asOptionalInput<List<String>>(interpreter),
-      logging = pulumi.Input.asOptionalInput<Logging>(logging),
-      stdin = pulumi.Input.asOptionalInput<String>(stdin),
-      triggers = pulumi.Input.asOptionalInput<List<dynamic>>(triggers),
-      update = pulumi.Input.asOptionalInput<String>(update);
+    this.addPreviousOutputInEnv,
+    this.archivePaths,
+    this.assetPaths,
+    this.create,
+    this.delete,
+    this.dir,
+    this.environment,
+    this.interpreter,
+    this.logging,
+    this.stdin,
+    this.triggers,
+    this.update,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -194,18 +182,18 @@ class CommandArgs {
 
   factory CommandArgs.fromMap(Map<String, dynamic> map) {
     return CommandArgs(
-      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : pulumi.Output.create<bool>(map['addPreviousOutputInEnv'] as bool),
-      archivePaths: map['archivePaths'] == null ? null : pulumi.Output.create<List<String>>((map['archivePaths'] as List).cast<String>()),
-      assetPaths: map['assetPaths'] == null ? null : pulumi.Output.create<List<String>>((map['assetPaths'] as List).cast<String>()),
-      create: map['create'] == null ? null : pulumi.Output.create<String>(map['create'] as String),
-      delete: map['delete'] == null ? null : pulumi.Output.create<String>(map['delete'] as String),
-      dir: map['dir'] == null ? null : pulumi.Output.create<String>(map['dir'] as String),
-      environment: map['environment'] == null ? null : pulumi.Output.create<Map<String, String>>((map['environment'] as Map).cast<String, String>()),
-      interpreter: map['interpreter'] == null ? null : pulumi.Output.create<List<String>>((map['interpreter'] as List).cast<String>()),
-      logging: map['logging'] == null ? null : pulumi.Output.create<Logging>(Logging.fromValue(map['logging'] as String)),
-      stdin: map['stdin'] == null ? null : pulumi.Output.create<String>(map['stdin'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<List<dynamic>>((map['triggers'] as List).cast<dynamic>()),
-      update: map['update'] == null ? null : pulumi.Output.create<String>(map['update'] as String),
+      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : (map['addPreviousOutputInEnv'] as bool).input(),
+      archivePaths: map['archivePaths'] == null ? null : ((map['archivePaths'] as List).cast<String>()).input(),
+      assetPaths: map['assetPaths'] == null ? null : ((map['assetPaths'] as List).cast<String>()).input(),
+      create: map['create'] == null ? null : (map['create'] as String).input(),
+      delete: map['delete'] == null ? null : (map['delete'] as String).input(),
+      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
+      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
+      interpreter: map['interpreter'] == null ? null : ((map['interpreter'] as List).cast<String>()).input(),
+      logging: map['logging'] == null ? null : (Logging.fromValue(map['logging'] as String)).input(),
+      stdin: map['stdin'] == null ? null : (map['stdin'] as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as List).cast<dynamic>()).input(),
+      update: map['update'] == null ? null : (map['update'] as String).input(),
     );
   }
 }

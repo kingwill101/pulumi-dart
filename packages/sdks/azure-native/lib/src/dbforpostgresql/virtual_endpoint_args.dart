@@ -25,17 +25,12 @@ class VirtualEndpointArgs {
   /// [serverName] The name of the server.
   /// [virtualEndpointName] Base name of the virtual endpoints.
   VirtualEndpointArgs({
-    pulumi.Output<String>? endpointType,
-    pulumi.Output<List<String>>? members,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? virtualEndpointName,
-  }) :
-      endpointType = pulumi.Input.asOptionalInput<String>(endpointType),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      virtualEndpointName = pulumi.Input.asOptionalInput<String>(virtualEndpointName);
+    this.endpointType,
+    this.members,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.virtualEndpointName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class VirtualEndpointArgs {
 
   factory VirtualEndpointArgs.fromMap(Map<String, dynamic> map) {
     return VirtualEndpointArgs(
-      endpointType: map['endpointType'] == null ? null : pulumi.Output.create<String>(map['endpointType'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      virtualEndpointName: map['virtualEndpointName'] == null ? null : pulumi.Output.create<String>(map['virtualEndpointName'] as String),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      virtualEndpointName: map['virtualEndpointName'] == null ? null : (map['virtualEndpointName'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class VscArgs {
   /// [vscName] The name of the Vsc.
   /// [vscType] The type of the Vsc. Default value: `primary`. Valid values: `primary`.
   VscArgs({
-    required pulumi.Output<String> nodeId,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vscName,
-    pulumi.Output<String>? vscType,
-  }) :
-      nodeId = pulumi.Input.asInput<String>(nodeId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vscName = pulumi.Input.asOptionalInput<String>(vscName),
-      vscType = pulumi.Input.asOptionalInput<String>(vscType);
+    required this.nodeId,
+    this.resourceGroupId,
+    this.tags,
+    this.vscName,
+    this.vscType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class VscArgs {
 
   factory VscArgs.fromMap(Map<String, dynamic> map) {
     return VscArgs(
-      nodeId: pulumi.Output.create<String>(map['nodeId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vscName: map['vscName'] == null ? null : pulumi.Output.create<String>(map['vscName'] as String),
-      vscType: map['vscType'] == null ? null : pulumi.Output.create<String>(map['vscType'] as String),
+      nodeId: (map['nodeId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vscName: map['vscName'] == null ? null : (map['vscName'] as String).input(),
+      vscType: map['vscType'] == null ? null : (map['vscType'] as String).input(),
     );
   }
 }

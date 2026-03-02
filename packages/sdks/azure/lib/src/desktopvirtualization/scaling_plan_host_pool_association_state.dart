@@ -16,13 +16,10 @@ class ScalingPlanHostPoolAssociationState {
   /// [hostPoolId] The resource ID for the Virtual Desktop Host Pool. Changing this forces a new resource to be created.
   /// [scalingPlanId] The resource ID for the Virtual Desktop Scaling Plan. Changing this forces a new resource to be created.
   ScalingPlanHostPoolAssociationState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? hostPoolId,
-    pulumi.Output<String>? scalingPlanId,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      hostPoolId = pulumi.Input.asOptionalInput<String>(hostPoolId),
-      scalingPlanId = pulumi.Input.asOptionalInput<String>(scalingPlanId);
+    this.enabled,
+    this.hostPoolId,
+    this.scalingPlanId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ScalingPlanHostPoolAssociationState {
 
   factory ScalingPlanHostPoolAssociationState.fromMap(Map<String, dynamic> map) {
     return ScalingPlanHostPoolAssociationState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      hostPoolId: map['hostPoolId'] == null ? null : pulumi.Output.create<String>(map['hostPoolId'] as String),
-      scalingPlanId: map['scalingPlanId'] == null ? null : pulumi.Output.create<String>(map['scalingPlanId'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      hostPoolId: map['hostPoolId'] == null ? null : (map['hostPoolId'] as String).input(),
+      scalingPlanId: map['scalingPlanId'] == null ? null : (map['scalingPlanId'] as String).input(),
     );
   }
 }

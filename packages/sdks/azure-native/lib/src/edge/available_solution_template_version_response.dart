@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Available Solution template Version along with latest revision
 class AvailableSolutionTemplateVersionResponse {
   /// Has this solution template version been configured
-  final bool isConfigured;
+  final pulumi.Input<bool> isConfigured;
   /// Latest Configuration Revision
-  final String latestConfigRevision;
+  final pulumi.Input<String> latestConfigRevision;
   /// Solution template Version
-  final String solutionTemplateVersion;
+  final pulumi.Input<String> solutionTemplateVersion;
 
   /// Creates a new [AvailableSolutionTemplateVersionResponse].
   /// [isConfigured] Has this solution template version been configured
@@ -30,9 +31,9 @@ class AvailableSolutionTemplateVersionResponse {
 
   factory AvailableSolutionTemplateVersionResponse.fromMap(Map<String, dynamic> map) {
     return AvailableSolutionTemplateVersionResponse(
-      isConfigured: map['isConfigured'] as bool,
-      latestConfigRevision: map['latestConfigRevision'] as String,
-      solutionTemplateVersion: map['solutionTemplateVersion'] as String,
+      isConfigured: (map['isConfigured'] as bool).input(),
+      latestConfigRevision: (map['latestConfigRevision'] as String).input(),
+      solutionTemplateVersion: (map['solutionTemplateVersion'] as String).input(),
     );
   }
 }

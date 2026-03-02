@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RoutingConfig configures the behaviour of fleet logging feature.
 class FleetObservabilityRoutingConfigResponse {
   /// mode configures the logs routing mode.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [FleetObservabilityRoutingConfigResponse].
   /// [mode] mode configures the logs routing mode.
@@ -20,7 +21,7 @@ class FleetObservabilityRoutingConfigResponse {
 
   factory FleetObservabilityRoutingConfigResponse.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityRoutingConfigResponse(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

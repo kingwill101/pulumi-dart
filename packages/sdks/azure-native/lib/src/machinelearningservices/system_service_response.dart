@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A system service running on a compute.
 class SystemServiceResponse {
   /// Public IP address
-  final String publicIpAddress;
+  final pulumi.Input<String> publicIpAddress;
   /// The type of this system service.
-  final String systemServiceType;
+  final pulumi.Input<String> systemServiceType;
   /// The version for this type.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [SystemServiceResponse].
   /// [publicIpAddress] Public IP address
@@ -30,9 +31,9 @@ class SystemServiceResponse {
 
   factory SystemServiceResponse.fromMap(Map<String, dynamic> map) {
     return SystemServiceResponse(
-      publicIpAddress: map['publicIpAddress'] as String,
-      systemServiceType: map['systemServiceType'] as String,
-      version: map['version'] as String,
+      publicIpAddress: (map['publicIpAddress'] as String).input(),
+      systemServiceType: (map['systemServiceType'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

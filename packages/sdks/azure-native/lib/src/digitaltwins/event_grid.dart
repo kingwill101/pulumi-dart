@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_identity_reference.dart';
 
 /// Properties related to EventGrid.
 class EventGrid {
   /// EventGrid secondary accesskey. Will be obfuscated during read.
-  final String accessKey1;
+  final pulumi.Input<String> accessKey1;
   /// EventGrid secondary accesskey. Will be obfuscated during read.
-  final String? accessKey2;
+  final pulumi.Input<String>? accessKey2;
   /// Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
-  final String? authenticationType;
+  final pulumi.Input<String>? authenticationType;
   /// Dead letter storage secret for key-based authentication. Will be obfuscated during read.
-  final String? deadLetterSecret;
+  final pulumi.Input<String>? deadLetterSecret;
   /// Dead letter storage URL for identity-based authentication.
-  final String? deadLetterUri;
+  final pulumi.Input<String>? deadLetterUri;
   /// The type of Digital Twins endpoint
   /// Expected value is 'EventGrid'.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// Managed identity properties for the endpoint.
-  final ManagedIdentityReference? identity;
+  final pulumi.Input<ManagedIdentityReference>? identity;
   /// EventGrid Topic Endpoint.
-  final String topicEndpoint;
+  final pulumi.Input<String> topicEndpoint;
 
   /// Creates a new [EventGrid].
   /// [accessKey1] EventGrid secondary accesskey. Will be obfuscated during read.
@@ -50,21 +51,21 @@ class EventGrid {
       'deadLetterSecret': ?deadLetterSecret,
       'deadLetterUri': ?deadLetterUri,
       'endpointType': endpointType,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedIdentityReference, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'topicEndpoint': topicEndpoint,
     };
   }
 
   factory EventGrid.fromMap(Map<String, dynamic> map) {
     return EventGrid(
-      accessKey1: map['accessKey1'] as String,
-      accessKey2: map['accessKey2'] == null ? null : map['accessKey2'] as String,
-      authenticationType: map['authenticationType'] == null ? null : map['authenticationType'] as String,
-      deadLetterSecret: map['deadLetterSecret'] == null ? null : map['deadLetterSecret'] as String,
-      deadLetterUri: map['deadLetterUri'] == null ? null : map['deadLetterUri'] as String,
-      endpointType: map['endpointType'] as String,
-      identity: map['identity'] == null ? null : ManagedIdentityReference.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      topicEndpoint: map['topicEndpoint'] as String,
+      accessKey1: (map['accessKey1'] as String).input(),
+      accessKey2: map['accessKey2'] == null ? null : (map['accessKey2'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      deadLetterSecret: map['deadLetterSecret'] == null ? null : (map['deadLetterSecret'] as String).input(),
+      deadLetterUri: map['deadLetterUri'] == null ? null : (map['deadLetterUri'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentityReference.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      topicEndpoint: (map['topicEndpoint'] as String).input(),
     );
   }
 }

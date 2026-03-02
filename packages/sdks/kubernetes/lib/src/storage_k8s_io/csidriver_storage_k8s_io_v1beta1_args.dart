@@ -24,15 +24,11 @@ class CSIDriverStorageK8sIoV1beta1Args {
   /// [metadata] Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Specification of the CSI Driver.
   CSIDriverStorageK8sIoV1beta1Args({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    required pulumi.Output<CSIDriverSpecStorageK8sIoV1beta1> spec,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      spec = pulumi.Input.asInput<CSIDriverSpecStorageK8sIoV1beta1>(spec);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    required this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class CSIDriverStorageK8sIoV1beta1Args {
 
   factory CSIDriverStorageK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return CSIDriverStorageK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      spec: pulumi.Output.create<CSIDriverSpecStorageK8sIoV1beta1>(CSIDriverSpecStorageK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: (CSIDriverSpecStorageK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

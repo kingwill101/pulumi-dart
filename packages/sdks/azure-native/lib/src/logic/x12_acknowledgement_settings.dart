@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The X12 agreement acknowledgement settings.
 class X12AcknowledgementSettings {
   /// The acknowledgement control number lower bound.
-  final int acknowledgementControlNumberLowerBound;
+  final pulumi.Input<int> acknowledgementControlNumberLowerBound;
   /// The acknowledgement control number prefix.
-  final String? acknowledgementControlNumberPrefix;
+  final pulumi.Input<String>? acknowledgementControlNumberPrefix;
   /// The acknowledgement control number suffix.
-  final String? acknowledgementControlNumberSuffix;
+  final pulumi.Input<String>? acknowledgementControlNumberSuffix;
   /// The acknowledgement control number upper bound.
-  final int acknowledgementControlNumberUpperBound;
+  final pulumi.Input<int> acknowledgementControlNumberUpperBound;
   /// The value indicating whether to batch functional acknowledgements.
-  final bool batchFunctionalAcknowledgements;
+  final pulumi.Input<bool> batchFunctionalAcknowledgements;
   /// The value indicating whether to batch implementation acknowledgements.
-  final bool batchImplementationAcknowledgements;
+  final pulumi.Input<bool> batchImplementationAcknowledgements;
   /// The value indicating whether to batch the technical acknowledgements.
-  final bool batchTechnicalAcknowledgements;
+  final pulumi.Input<bool> batchTechnicalAcknowledgements;
   /// The functional acknowledgement version.
-  final String? functionalAcknowledgementVersion;
+  final pulumi.Input<String>? functionalAcknowledgementVersion;
   /// The implementation acknowledgement version.
-  final String? implementationAcknowledgementVersion;
+  final pulumi.Input<String>? implementationAcknowledgementVersion;
   /// The value indicating whether functional acknowledgement is needed.
-  final bool needFunctionalAcknowledgement;
+  final pulumi.Input<bool> needFunctionalAcknowledgement;
   /// The value indicating whether implementation acknowledgement is needed.
-  final bool needImplementationAcknowledgement;
+  final pulumi.Input<bool> needImplementationAcknowledgement;
   /// The value indicating whether a loop is needed for valid messages.
-  final bool needLoopForValidMessages;
+  final pulumi.Input<bool> needLoopForValidMessages;
   /// The value indicating whether technical acknowledgement is needed.
-  final bool needTechnicalAcknowledgement;
+  final pulumi.Input<bool> needTechnicalAcknowledgement;
   /// The value indicating whether to rollover acknowledgement control number.
-  final bool rolloverAcknowledgementControlNumber;
+  final pulumi.Input<bool> rolloverAcknowledgementControlNumber;
   /// The value indicating whether to send synchronous acknowledgement.
-  final bool sendSynchronousAcknowledgement;
+  final pulumi.Input<bool> sendSynchronousAcknowledgement;
 
   /// Creates a new [X12AcknowledgementSettings].
   /// [acknowledgementControlNumberLowerBound] The acknowledgement control number lower bound.
@@ -90,21 +91,21 @@ class X12AcknowledgementSettings {
 
   factory X12AcknowledgementSettings.fromMap(Map<String, dynamic> map) {
     return X12AcknowledgementSettings(
-      acknowledgementControlNumberLowerBound: map['acknowledgementControlNumberLowerBound'] as int,
-      acknowledgementControlNumberPrefix: map['acknowledgementControlNumberPrefix'] == null ? null : map['acknowledgementControlNumberPrefix'] as String,
-      acknowledgementControlNumberSuffix: map['acknowledgementControlNumberSuffix'] == null ? null : map['acknowledgementControlNumberSuffix'] as String,
-      acknowledgementControlNumberUpperBound: map['acknowledgementControlNumberUpperBound'] as int,
-      batchFunctionalAcknowledgements: map['batchFunctionalAcknowledgements'] as bool,
-      batchImplementationAcknowledgements: map['batchImplementationAcknowledgements'] as bool,
-      batchTechnicalAcknowledgements: map['batchTechnicalAcknowledgements'] as bool,
-      functionalAcknowledgementVersion: map['functionalAcknowledgementVersion'] == null ? null : map['functionalAcknowledgementVersion'] as String,
-      implementationAcknowledgementVersion: map['implementationAcknowledgementVersion'] == null ? null : map['implementationAcknowledgementVersion'] as String,
-      needFunctionalAcknowledgement: map['needFunctionalAcknowledgement'] as bool,
-      needImplementationAcknowledgement: map['needImplementationAcknowledgement'] as bool,
-      needLoopForValidMessages: map['needLoopForValidMessages'] as bool,
-      needTechnicalAcknowledgement: map['needTechnicalAcknowledgement'] as bool,
-      rolloverAcknowledgementControlNumber: map['rolloverAcknowledgementControlNumber'] as bool,
-      sendSynchronousAcknowledgement: map['sendSynchronousAcknowledgement'] as bool,
+      acknowledgementControlNumberLowerBound: (map['acknowledgementControlNumberLowerBound'] as int).input(),
+      acknowledgementControlNumberPrefix: map['acknowledgementControlNumberPrefix'] == null ? null : (map['acknowledgementControlNumberPrefix'] as String).input(),
+      acknowledgementControlNumberSuffix: map['acknowledgementControlNumberSuffix'] == null ? null : (map['acknowledgementControlNumberSuffix'] as String).input(),
+      acknowledgementControlNumberUpperBound: (map['acknowledgementControlNumberUpperBound'] as int).input(),
+      batchFunctionalAcknowledgements: (map['batchFunctionalAcknowledgements'] as bool).input(),
+      batchImplementationAcknowledgements: (map['batchImplementationAcknowledgements'] as bool).input(),
+      batchTechnicalAcknowledgements: (map['batchTechnicalAcknowledgements'] as bool).input(),
+      functionalAcknowledgementVersion: map['functionalAcknowledgementVersion'] == null ? null : (map['functionalAcknowledgementVersion'] as String).input(),
+      implementationAcknowledgementVersion: map['implementationAcknowledgementVersion'] == null ? null : (map['implementationAcknowledgementVersion'] as String).input(),
+      needFunctionalAcknowledgement: (map['needFunctionalAcknowledgement'] as bool).input(),
+      needImplementationAcknowledgement: (map['needImplementationAcknowledgement'] as bool).input(),
+      needLoopForValidMessages: (map['needLoopForValidMessages'] as bool).input(),
+      needTechnicalAcknowledgement: (map['needTechnicalAcknowledgement'] as bool).input(),
+      rolloverAcknowledgementControlNumber: (map['rolloverAcknowledgementControlNumber'] as bool).input(),
+      sendSynchronousAcknowledgement: (map['sendSynchronousAcknowledgement'] as bool).input(),
     );
   }
 }

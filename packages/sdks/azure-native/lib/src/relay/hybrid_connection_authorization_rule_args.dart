@@ -25,17 +25,12 @@ class HybridConnectionAuthorizationRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [rights] The rights associated with the rule.
   HybridConnectionAuthorizationRuleArgs({
-    pulumi.Output<String>? authorizationRuleName,
-    required pulumi.Output<String> hybridConnectionName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<String>> rights,
-  }) :
-      authorizationRuleName = pulumi.Input.asOptionalInput<String>(authorizationRuleName),
-      hybridConnectionName = pulumi.Input.asInput<String>(hybridConnectionName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rights = pulumi.Input.asInput<List<String>>(rights);
+    this.authorizationRuleName,
+    required this.hybridConnectionName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    required this.rights,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class HybridConnectionAuthorizationRuleArgs {
 
   factory HybridConnectionAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return HybridConnectionAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : pulumi.Output.create<String>(map['authorizationRuleName'] as String),
-      hybridConnectionName: pulumi.Output.create<String>(map['hybridConnectionName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rights: pulumi.Output.create<List<String>>((map['rights'] as List).cast<String>()),
+      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName'] as String).input(),
+      hybridConnectionName: (map['hybridConnectionName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rights: ((map['rights'] as List).cast<String>()).input(),
     );
   }
 }

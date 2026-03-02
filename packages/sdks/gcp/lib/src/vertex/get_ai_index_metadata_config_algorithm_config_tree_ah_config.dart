@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
   /// Number of embeddings on each leaf node. The default value is 1000 if not set.
-  final int leafNodeEmbeddingCount;
+  final pulumi.Input<int> leafNodeEmbeddingCount;
   /// The default percentage of leaf nodes that any query may be searched. Must be in
   /// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
-  final int leafNodesToSearchPercent;
+  final pulumi.Input<int> leafNodesToSearchPercent;
 
   /// Creates a new [GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig].
   /// [leafNodeEmbeddingCount] Number of embeddings on each leaf node. The default value is 1000 if not set.
@@ -25,8 +26,8 @@ class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
 
   factory GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap(Map<String, dynamic> map) {
     return GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig(
-      leafNodeEmbeddingCount: map['leafNodeEmbeddingCount'] as int,
-      leafNodesToSearchPercent: map['leafNodesToSearchPercent'] as int,
+      leafNodeEmbeddingCount: (map['leafNodeEmbeddingCount'] as int).input(),
+      leafNodesToSearchPercent: (map['leafNodesToSearchPercent'] as int).input(),
     );
   }
 }

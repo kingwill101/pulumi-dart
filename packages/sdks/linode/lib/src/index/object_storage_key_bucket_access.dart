@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ObjectStorageKeyBucketAccess {
   /// The unique label of the bucket to which the key will grant limited access.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
-  final String? cluster;
+  final pulumi.Input<String>? cluster;
   /// This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
-  final String permissions;
+  final pulumi.Input<String> permissions;
   /// The region where the bucket resides.
-  final String? region;
+  final pulumi.Input<String>? region;
 
   /// Creates a new [ObjectStorageKeyBucketAccess].
   /// [bucketName] The unique label of the bucket to which the key will grant limited access.
@@ -34,10 +35,10 @@ class ObjectStorageKeyBucketAccess {
 
   factory ObjectStorageKeyBucketAccess.fromMap(Map<String, dynamic> map) {
     return ObjectStorageKeyBucketAccess(
-      bucketName: map['bucketName'] as String,
-      cluster: map['cluster'] == null ? null : map['cluster'] as String,
-      permissions: map['permissions'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
+      permissions: (map['permissions'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -46,29 +46,18 @@ class MarketplaceGalleryImageArgs {
   /// [tags] Resource tags.
   /// [version] Specifies information about the gallery image version that you want to create or update.
   MarketplaceGalleryImageArgs({
-    pulumi.Output<String>? cloudInitDataSource,
-    pulumi.Output<String>? containerId,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? hyperVGeneration,
-    pulumi.Output<GalleryImageIdentifier>? identifier,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? marketplaceGalleryImageName,
-    required pulumi.Output<String> osType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<GalleryImageVersion>? version,
-  }) :
-      cloudInitDataSource = pulumi.Input.asOptionalInput<String>(cloudInitDataSource),
-      containerId = pulumi.Input.asOptionalInput<String>(containerId),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      hyperVGeneration = pulumi.Input.asOptionalInput<String>(hyperVGeneration),
-      identifier = pulumi.Input.asOptionalInput<GalleryImageIdentifier>(identifier),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      marketplaceGalleryImageName = pulumi.Input.asOptionalInput<String>(marketplaceGalleryImageName),
-      osType = pulumi.Input.asInput<String>(osType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asOptionalInput<GalleryImageVersion>(version);
+    this.cloudInitDataSource,
+    this.containerId,
+    this.extendedLocation,
+    this.hyperVGeneration,
+    this.identifier,
+    this.location,
+    this.marketplaceGalleryImageName,
+    required this.osType,
+    required this.resourceGroupName,
+    this.tags,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class MarketplaceGalleryImageArgs {
 
   factory MarketplaceGalleryImageArgs.fromMap(Map<String, dynamic> map) {
     return MarketplaceGalleryImageArgs(
-      cloudInitDataSource: map['cloudInitDataSource'] == null ? null : pulumi.Output.create<String>(map['cloudInitDataSource'] as String),
-      containerId: map['containerId'] == null ? null : pulumi.Output.create<String>(map['containerId'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : pulumi.Output.create<String>(map['hyperVGeneration'] as String),
-      identifier: map['identifier'] == null ? null : pulumi.Output.create<GalleryImageIdentifier>(GalleryImageIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      marketplaceGalleryImageName: map['marketplaceGalleryImageName'] == null ? null : pulumi.Output.create<String>(map['marketplaceGalleryImageName'] as String),
-      osType: pulumi.Output.create<String>(map['osType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<GalleryImageVersion>(GalleryImageVersion.fromMap((map['version'] as Map).cast<String, dynamic>())),
+      cloudInitDataSource: map['cloudInitDataSource'] == null ? null : (map['cloudInitDataSource'] as String).input(),
+      containerId: map['containerId'] == null ? null : (map['containerId'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration'] as String).input(),
+      identifier: map['identifier'] == null ? null : (GalleryImageIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      marketplaceGalleryImageName: map['marketplaceGalleryImageName'] == null ? null : (map['marketplaceGalleryImageName'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (GalleryImageVersion.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hbase_cluster_private_link_configuration_ip_configuration.dart';
 
 class HBaseClusterPrivateLinkConfiguration {
   /// The ID of the private link service group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// An `ip_configuration` block as defined below.
-  final HBaseClusterPrivateLinkConfigurationIpConfiguration ipConfiguration;
+  final pulumi.Input<HBaseClusterPrivateLinkConfigurationIpConfiguration> ipConfiguration;
   /// The name of the private link configuration.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [HBaseClusterPrivateLinkConfiguration].
   /// [groupId] The ID of the private link service group.
@@ -23,16 +24,16 @@ class HBaseClusterPrivateLinkConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'groupId': groupId,
-      'ipConfiguration': ipConfiguration.toMap(),
+      'ipConfiguration': pulumi.Input.mapInputValue<HBaseClusterPrivateLinkConfigurationIpConfiguration, Map<String, dynamic>>(ipConfiguration, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory HBaseClusterPrivateLinkConfiguration.fromMap(Map<String, dynamic> map) {
     return HBaseClusterPrivateLinkConfiguration(
-      groupId: map['groupId'] as String,
-      ipConfiguration: HBaseClusterPrivateLinkConfigurationIpConfiguration.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
+      groupId: (map['groupId'] as String).input(),
+      ipConfiguration: (HBaseClusterPrivateLinkConfigurationIpConfiguration.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

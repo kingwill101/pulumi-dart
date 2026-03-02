@@ -13,9 +13,8 @@ class GetInstanceNetworkingArgs {
   /// Creates a new [GetInstanceNetworkingArgs].
   /// [linodeId] The Linode instance's ID.
   GetInstanceNetworkingArgs({
-    required pulumi.Output<int> linodeId,
-  }) :
-      linodeId = pulumi.Input.asInput<int>(linodeId);
+    required this.linodeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetInstanceNetworkingArgs {
 
   factory GetInstanceNetworkingArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceNetworkingArgs(
-      linodeId: pulumi.Output.create<int>(map['linodeId'] as int),
+      linodeId: (map['linodeId'] as int).input(),
     );
   }
 }

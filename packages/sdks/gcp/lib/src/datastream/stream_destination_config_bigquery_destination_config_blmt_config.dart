@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
   /// The Cloud Storage bucket name.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// The bigquery connection. Format: `{project}.{location}.{name}`
-  final String connectionName;
+  final pulumi.Input<String> connectionName;
   /// The file format.
-  final String fileFormat;
+  final pulumi.Input<String> fileFormat;
   /// The root path inside the Cloud Storage bucket.
-  final String? rootPath;
+  final pulumi.Input<String>? rootPath;
   /// The table format.
-  final String tableFormat;
+  final pulumi.Input<String> tableFormat;
 
   /// Creates a new [StreamDestinationConfigBigqueryDestinationConfigBlmtConfig].
   /// [bucket] The Cloud Storage bucket name.
@@ -39,11 +40,11 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
 
   factory StreamDestinationConfigBigqueryDestinationConfigBlmtConfig.fromMap(Map<String, dynamic> map) {
     return StreamDestinationConfigBigqueryDestinationConfigBlmtConfig(
-      bucket: map['bucket'] as String,
-      connectionName: map['connectionName'] as String,
-      fileFormat: map['fileFormat'] as String,
-      rootPath: map['rootPath'] == null ? null : map['rootPath'] as String,
-      tableFormat: map['tableFormat'] as String,
+      bucket: (map['bucket'] as String).input(),
+      connectionName: (map['connectionName'] as String).input(),
+      fileFormat: (map['fileFormat'] as String).input(),
+      rootPath: map['rootPath'] == null ? null : (map['rootPath'] as String).input(),
+      tableFormat: (map['tableFormat'] as String).input(),
     );
   }
 }

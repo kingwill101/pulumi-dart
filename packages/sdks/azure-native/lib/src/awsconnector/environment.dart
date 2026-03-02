@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Environment
 class Environment {
   /// Environment variable key-value pairs. For more information, see [Using Lambda environment variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
-  final Map<String, String>? variables;
+  final pulumi.Input<Map<String, String>>? variables;
 
   /// Creates a new [Environment].
   /// [variables] Environment variable key-value pairs. For more information, see [Using Lambda environment variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
@@ -20,7 +21,7 @@ class Environment {
 
   factory Environment.fromMap(Map<String, dynamic> map) {
     return Environment(
-      variables: map['variables'] == null ? null : (map['variables'] as Map).cast<String, String>(),
+      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, String>()).input(),
     );
   }
 }

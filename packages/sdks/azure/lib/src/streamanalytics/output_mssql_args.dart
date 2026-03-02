@@ -43,29 +43,18 @@ class OutputMssqlArgs {
   /// [table] Table in the database that the output points to. Changing this forces a new resource to be created.
   /// [user] Username used to login to the Microsoft SQL Server. Changing this forces a new resource to be created. Required if `authentication_mode` is `ConnectionString`.
   OutputMssqlArgs({
-    pulumi.Output<String>? authenticationMode,
-    required pulumi.Output<String> database,
-    pulumi.Output<double>? maxBatchCount,
-    pulumi.Output<double>? maxWriterCount,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> server,
-    required pulumi.Output<String> streamAnalyticsJobName,
-    required pulumi.Output<String> table,
-    pulumi.Output<String>? user,
-  }) :
-      authenticationMode = pulumi.Input.asOptionalInput<String>(authenticationMode),
-      database = pulumi.Input.asInput<String>(database),
-      maxBatchCount = pulumi.Input.asOptionalInput<double>(maxBatchCount),
-      maxWriterCount = pulumi.Input.asOptionalInput<double>(maxWriterCount),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      server = pulumi.Input.asInput<String>(server),
-      streamAnalyticsJobName = pulumi.Input.asInput<String>(streamAnalyticsJobName),
-      table = pulumi.Input.asInput<String>(table),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.authenticationMode,
+    required this.database,
+    this.maxBatchCount,
+    this.maxWriterCount,
+    this.name,
+    this.password,
+    required this.resourceGroupName,
+    required this.server,
+    required this.streamAnalyticsJobName,
+    required this.table,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class OutputMssqlArgs {
 
   factory OutputMssqlArgs.fromMap(Map<String, dynamic> map) {
     return OutputMssqlArgs(
-      authenticationMode: map['authenticationMode'] == null ? null : pulumi.Output.create<String>(map['authenticationMode'] as String),
-      database: pulumi.Output.create<String>(map['database'] as String),
-      maxBatchCount: map['maxBatchCount'] == null ? null : pulumi.Output.create<double>(map['maxBatchCount'] as double),
-      maxWriterCount: map['maxWriterCount'] == null ? null : pulumi.Output.create<double>(map['maxWriterCount'] as double),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      server: pulumi.Output.create<String>(map['server'] as String),
-      streamAnalyticsJobName: pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
-      table: pulumi.Output.create<String>(map['table'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      database: (map['database'] as String).input(),
+      maxBatchCount: map['maxBatchCount'] == null ? null : (map['maxBatchCount'] as double).input(),
+      maxWriterCount: map['maxWriterCount'] == null ? null : (map['maxWriterCount'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      server: (map['server'] as String).input(),
+      streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
+      table: (map['table'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

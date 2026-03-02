@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
 class VpcPeeringConfigDatastreamV1alpha1 {
   /// A free subnet for peering. (CIDR of /29)
-  final String subnet;
+  final pulumi.Input<String> subnet;
   /// fully qualified name of the VPC Datastream will peer to.
-  final String vpcName;
+  final pulumi.Input<String> vpcName;
 
   /// Creates a new [VpcPeeringConfigDatastreamV1alpha1].
   /// [subnet] A free subnet for peering. (CIDR of /29)
@@ -25,8 +26,8 @@ class VpcPeeringConfigDatastreamV1alpha1 {
 
   factory VpcPeeringConfigDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return VpcPeeringConfigDatastreamV1alpha1(
-      subnet: map['subnet'] as String,
-      vpcName: map['vpcName'] as String,
+      subnet: (map['subnet'] as String).input(),
+      vpcName: (map['vpcName'] as String).input(),
     );
   }
 }

@@ -25,15 +25,11 @@ class GetFlavorprofileV2Args {
   /// [providerName] The name of the provider that the flavorprofile uses. Conflicts
   /// [region] The region in which to obtain the V2 Load Balancer client.
   GetFlavorprofileV2Args({
-    pulumi.Output<String>? flavorprofileId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? providerName,
-    pulumi.Output<String>? region,
-  }) :
-      flavorprofileId = pulumi.Input.asOptionalInput<String>(flavorprofileId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      providerName = pulumi.Input.asOptionalInput<String>(providerName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.flavorprofileId,
+    this.name,
+    this.providerName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class GetFlavorprofileV2Args {
 
   factory GetFlavorprofileV2Args.fromMap(Map<String, dynamic> map) {
     return GetFlavorprofileV2Args(
-      flavorprofileId: map['flavorprofileId'] == null ? null : pulumi.Output.create<String>(map['flavorprofileId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      providerName: map['providerName'] == null ? null : pulumi.Output.create<String>(map['providerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      flavorprofileId: map['flavorprofileId'] == null ? null : (map['flavorprofileId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

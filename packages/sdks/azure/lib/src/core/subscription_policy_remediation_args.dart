@@ -37,25 +37,16 @@ class SubscriptionPolicyRemediationArgs {
   /// [resourceDiscoveryMode] The way that resources to remediate are discovered. Possible values are `ExistingNonCompliant`, `ReEvaluateCompliance`. Defaults to `ExistingNonCompliant`.
   /// [subscriptionId] The Subscription ID at which the Policy Remediation should be applied. Changing this forces a new resource to be created.
   SubscriptionPolicyRemediationArgs({
-    pulumi.Output<double>? failurePercentage,
-    pulumi.Output<List<String>>? locationFilters,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? parallelDeployments,
-    required pulumi.Output<String> policyAssignmentId,
-    pulumi.Output<String>? policyDefinitionReferenceId,
-    pulumi.Output<int>? resourceCount,
-    pulumi.Output<String>? resourceDiscoveryMode,
-    required pulumi.Output<String> subscriptionId,
-  }) :
-      failurePercentage = pulumi.Input.asOptionalInput<double>(failurePercentage),
-      locationFilters = pulumi.Input.asOptionalInput<List<String>>(locationFilters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parallelDeployments = pulumi.Input.asOptionalInput<int>(parallelDeployments),
-      policyAssignmentId = pulumi.Input.asInput<String>(policyAssignmentId),
-      policyDefinitionReferenceId = pulumi.Input.asOptionalInput<String>(policyDefinitionReferenceId),
-      resourceCount = pulumi.Input.asOptionalInput<int>(resourceCount),
-      resourceDiscoveryMode = pulumi.Input.asOptionalInput<String>(resourceDiscoveryMode),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+    this.failurePercentage,
+    this.locationFilters,
+    this.name,
+    this.parallelDeployments,
+    required this.policyAssignmentId,
+    this.policyDefinitionReferenceId,
+    this.resourceCount,
+    this.resourceDiscoveryMode,
+    required this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class SubscriptionPolicyRemediationArgs {
 
   factory SubscriptionPolicyRemediationArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionPolicyRemediationArgs(
-      failurePercentage: map['failurePercentage'] == null ? null : pulumi.Output.create<double>(map['failurePercentage'] as double),
-      locationFilters: map['locationFilters'] == null ? null : pulumi.Output.create<List<String>>((map['locationFilters'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parallelDeployments: map['parallelDeployments'] == null ? null : pulumi.Output.create<int>(map['parallelDeployments'] as int),
-      policyAssignmentId: pulumi.Output.create<String>(map['policyAssignmentId'] as String),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : pulumi.Output.create<String>(map['policyDefinitionReferenceId'] as String),
-      resourceCount: map['resourceCount'] == null ? null : pulumi.Output.create<int>(map['resourceCount'] as int),
-      resourceDiscoveryMode: map['resourceDiscoveryMode'] == null ? null : pulumi.Output.create<String>(map['resourceDiscoveryMode'] as String),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
+      failurePercentage: map['failurePercentage'] == null ? null : (map['failurePercentage'] as double).input(),
+      locationFilters: map['locationFilters'] == null ? null : ((map['locationFilters'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parallelDeployments: map['parallelDeployments'] == null ? null : (map['parallelDeployments'] as int).input(),
+      policyAssignmentId: (map['policyAssignmentId'] as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
+      resourceCount: map['resourceCount'] == null ? null : (map['resourceCount'] as int).input(),
+      resourceDiscoveryMode: map['resourceDiscoveryMode'] == null ? null : (map['resourceDiscoveryMode'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }
 }

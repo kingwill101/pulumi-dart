@@ -5,9 +5,9 @@ import 'envelope_signature_containeranalysis_v1beta1.dart';
 
 /// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
 class EnvelopeContaineranalysisV1beta1 {
-  final String? payload;
-  final String? payloadType;
-  final List<EnvelopeSignatureContaineranalysisV1beta1>? signatures;
+  final pulumi.Input<String>? payload;
+  final pulumi.Input<String>? payloadType;
+  final pulumi.Input<List<EnvelopeSignatureContaineranalysisV1beta1>>? signatures;
 
   /// Creates a new [EnvelopeContaineranalysisV1beta1].
   /// [payload] Optional.
@@ -23,15 +23,15 @@ class EnvelopeContaineranalysisV1beta1 {
     return <String, dynamic>{
       'payload': ?payload,
       'payloadType': ?payloadType,
-      'signatures': ?signatures == null ? null : pulumi.Input.encodeList<EnvelopeSignatureContaineranalysisV1beta1, Map<String, dynamic>>(signatures!, (value) => value.toMap()),
+      'signatures': ?pulumi.Input.mapOptionalInputValue<List<EnvelopeSignatureContaineranalysisV1beta1>, List<Map<String, dynamic>>>(signatures, (value) => pulumi.Input.encodeList<EnvelopeSignatureContaineranalysisV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EnvelopeContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return EnvelopeContaineranalysisV1beta1(
-      payload: map['payload'] == null ? null : map['payload'] as String,
-      payloadType: map['payloadType'] == null ? null : map['payloadType'] as String,
-      signatures: map['signatures'] == null ? null : pulumi.Input.decodeList<EnvelopeSignatureContaineranalysisV1beta1>(map['signatures'], (value) => EnvelopeSignatureContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
+      payloadType: map['payloadType'] == null ? null : (map['payloadType'] as String).input(),
+      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<EnvelopeSignatureContaineranalysisV1beta1>(map['signatures'], (value) => EnvelopeSignatureContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

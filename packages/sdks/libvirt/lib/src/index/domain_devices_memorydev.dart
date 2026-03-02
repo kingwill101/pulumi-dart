@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_memorydev_acpi.dart';
 import 'domain_devices_memorydev_alias.dart';
 import 'domain_devices_memorydev_source.dart';
@@ -7,23 +8,23 @@ import 'domain_devices_memorydev_target.dart';
 
 class DomainDevicesMemorydev {
   /// Sets the access mode for the memory device, controlling how the memory can be utilized.
-  final String? access;
+  final pulumi.Input<String>? access;
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final DomainDevicesMemorydevAcpi? acpi;
+  final pulumi.Input<DomainDevicesMemorydevAcpi>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final Map<String, dynamic>? address;
+  final pulumi.Input<Map<String, dynamic>>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final DomainDevicesMemorydevAlias? alias;
+  final pulumi.Input<DomainDevicesMemorydevAlias>? alias;
   /// Configures the discard attribute for the memory device, indicating whether memory should be freed.
-  final String? discard;
+  final pulumi.Input<String>? discard;
   /// Sets the model for the memory device, determining its type and capabilities.
-  final String model;
+  final pulumi.Input<String> model;
   /// Defines the source configuration for the memory device, indicating the memory backing.
-  final DomainDevicesMemorydevSource? source;
+  final pulumi.Input<DomainDevicesMemorydevSource>? source;
   /// Configures the target settings for the memory device, defining how it connects to the guest.
-  final DomainDevicesMemorydevTarget? target;
+  final pulumi.Input<DomainDevicesMemorydevTarget>? target;
   /// Sets the universally unique identifier for the memory device.
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
 
   /// Creates a new [DomainDevicesMemorydev].
   /// [access] Sets the access mode for the memory device, controlling how the memory can be utilized.
@@ -50,28 +51,28 @@ class DomainDevicesMemorydev {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'access': ?access,
-      'acpi': ?acpi == null ? null : acpi!.toMap(),
+      'acpi': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemorydevAcpi, Map<String, dynamic>>(acpi, (value) => value.toMap()),
       'address': ?address,
-      'alias': ?alias == null ? null : alias!.toMap(),
+      'alias': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemorydevAlias, Map<String, dynamic>>(alias, (value) => value.toMap()),
       'discard': ?discard,
       'model': model,
-      'source': ?source == null ? null : source!.toMap(),
-      'target': ?target == null ? null : target!.toMap(),
+      'source': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemorydevSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'target': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemorydevTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
       'uuid': ?uuid,
     };
   }
 
   factory DomainDevicesMemorydev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemorydev(
-      access: map['access'] == null ? null : map['access'] as String,
-      acpi: map['acpi'] == null ? null : DomainDevicesMemorydevAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>()),
-      address: map['address'] == null ? null : (map['address'] as Map).cast<String, dynamic>(),
-      alias: map['alias'] == null ? null : DomainDevicesMemorydevAlias.fromMap((map['alias'] as Map).cast<String, dynamic>()),
-      discard: map['discard'] == null ? null : map['discard'] as String,
-      model: map['model'] as String,
-      source: map['source'] == null ? null : DomainDevicesMemorydevSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
-      target: map['target'] == null ? null : DomainDevicesMemorydevTarget.fromMap((map['target'] as Map).cast<String, dynamic>()),
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
+      access: map['access'] == null ? null : (map['access'] as String).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesMemorydevAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesMemorydevAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
+      discard: map['discard'] == null ? null : (map['discard'] as String).input(),
+      model: (map['model'] as String).input(),
+      source: map['source'] == null ? null : (DomainDevicesMemorydevSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (DomainDevicesMemorydevTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

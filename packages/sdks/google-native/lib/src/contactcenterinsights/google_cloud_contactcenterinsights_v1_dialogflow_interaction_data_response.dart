@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Dialogflow interaction data.
 class GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse {
   /// The confidence of the match ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
-  final double confidence;
+  final pulumi.Input<double> confidence;
   /// The Dialogflow intent resource path. Format: projects/{project}/agent/{agent}/intents/{intent}
-  final String dialogflowIntentId;
+  final pulumi.Input<String> dialogflowIntentId;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse].
   /// [confidence] The confidence of the match ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
@@ -25,8 +26,8 @@ class GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse {
 
   factory GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse(
-      confidence: map['confidence'] as double,
-      dialogflowIntentId: map['dialogflowIntentId'] as String,
+      confidence: (map['confidence'] as double).input(),
+      dialogflowIntentId: (map['dialogflowIntentId'] as String).input(),
     );
   }
 }

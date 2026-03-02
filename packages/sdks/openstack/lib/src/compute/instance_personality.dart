@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstancePersonality {
   /// The contents of the file. Limited to 255 bytes.
-  final String content;
+  final pulumi.Input<String> content;
   /// The absolute path of the destination file.
-  final String file;
+  final pulumi.Input<String> file;
 
   /// Creates a new [InstancePersonality].
   /// [content] The contents of the file. Limited to 255 bytes.
@@ -24,8 +25,8 @@ class InstancePersonality {
 
   factory InstancePersonality.fromMap(Map<String, dynamic> map) {
     return InstancePersonality(
-      content: map['content'] as String,
-      file: map['file'] as String,
+      content: (map['content'] as String).input(),
+      file: (map['file'] as String).input(),
     );
   }
 }

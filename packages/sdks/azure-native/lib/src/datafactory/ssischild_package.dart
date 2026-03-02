@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SSIS embedded child package.
 class SSISChildPackage {
   /// Content for embedded child package. Type: string (or Expression with resultType string).
-  final dynamic packageContent;
+  final pulumi.Input<dynamic> packageContent;
   /// Last modified date for embedded child package.
-  final String? packageLastModifiedDate;
+  final pulumi.Input<String>? packageLastModifiedDate;
   /// Name for embedded child package.
-  final String? packageName;
+  final pulumi.Input<String>? packageName;
   /// Path for embedded child package. Type: string (or Expression with resultType string).
-  final dynamic packagePath;
+  final pulumi.Input<dynamic> packagePath;
 
   /// Creates a new [SSISChildPackage].
   /// [packageContent] Content for embedded child package. Type: string (or Expression with resultType string).
@@ -35,10 +36,10 @@ class SSISChildPackage {
 
   factory SSISChildPackage.fromMap(Map<String, dynamic> map) {
     return SSISChildPackage(
-      packageContent: map['packageContent'],
-      packageLastModifiedDate: map['packageLastModifiedDate'] == null ? null : map['packageLastModifiedDate'] as String,
-      packageName: map['packageName'] == null ? null : map['packageName'] as String,
-      packagePath: map['packagePath'],
+      packageContent: (map['packageContent']).input(),
+      packageLastModifiedDate: map['packageLastModifiedDate'] == null ? null : (map['packageLastModifiedDate'] as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      packagePath: (map['packagePath']).input(),
     );
   }
 }

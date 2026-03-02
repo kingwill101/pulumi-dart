@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionEksPropertyPodPropertyMetadata {
   /// Key-value pairs used to identify, sort, and organize cube resources.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyMetadata].
   /// [labels] Key-value pairs used to identify, sort, and organize cube resources.
@@ -19,7 +20,7 @@ class GetJobDefinitionEksPropertyPodPropertyMetadata {
 
   factory GetJobDefinitionEksPropertyPodPropertyMetadata.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionEksPropertyPodPropertyMetadata(
-      labels: (map['labels'] as Map).cast<String, String>(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
     );
   }
 }

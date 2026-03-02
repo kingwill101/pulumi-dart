@@ -7,47 +7,47 @@ import 'get_scaling_configurations_configuration_spot_price_limit.dart';
 
 class GetScalingConfigurationsConfiguration {
   /// Creation time of the scaling configuration.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// Performance mode of the t5 burstable instance.
-  final String creditSpecification;
+  final pulumi.Input<String> creditSpecification;
   /// Data disks of the scaling configuration.
-  final List<GetScalingConfigurationsConfigurationDataDisk> dataDisks;
+  final pulumi.Input<List<GetScalingConfigurationsConfigurationDataDisk>> dataDisks;
   /// (Optional,Available since v1.143.0) Hostname of an ECS instance.
-  final String hostName;
+  final pulumi.Input<String> hostName;
   /// ID of the scaling rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// Image ID of the scaling configuration.
-  final String imageId;
+  final pulumi.Input<String> imageId;
   /// (Optional,Available since v1.143.0) InstanceName of an ECS instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// (Optional, Available since v1.240.0) intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.
-  final List<GetScalingConfigurationsConfigurationInstancePatternInfo> instancePatternInfos;
+  final pulumi.Input<List<GetScalingConfigurationsConfigurationInstancePatternInfo>> instancePatternInfos;
   /// Resource type of an ECS instance.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Internet charge type of the scaling configuration.
-  final String internetChargeType;
+  final pulumi.Input<String> internetChargeType;
   /// Internet max bandwidth in of the scaling configuration.
-  final int internetMaxBandwidthIn;
+  final pulumi.Input<int> internetMaxBandwidthIn;
   /// Internet max bandwidth of the scaling configuration.
-  final int internetMaxBandwidthOut;
+  final pulumi.Input<int> internetMaxBandwidthOut;
   /// Lifecycle state of the scaling configuration.
-  final String lifecycleState;
+  final pulumi.Input<String> lifecycleState;
   /// Name of the scaling configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// Scaling group id the scaling configurations belong to.
-  final String scalingGroupId;
+  final pulumi.Input<String> scalingGroupId;
   /// Security group ID of the scaling configuration.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// (Optional, Available since v1.151.0) The maximum price hourly for instance types.
-  final List<GetScalingConfigurationsConfigurationSpotPriceLimit> spotPriceLimits;
+  final pulumi.Input<List<GetScalingConfigurationsConfigurationSpotPriceLimit>> spotPriceLimits;
   /// (Optional, Available since v1.151.0) The spot strategy for a Pay-As-You-Go instance.
-  final String spotStrategy;
+  final pulumi.Input<String> spotStrategy;
   /// System disk category of the scaling configuration.
-  final String systemDiskCategory;
+  final pulumi.Input<String> systemDiskCategory;
   /// The performance level of the ESSD used as the system disk.
-  final String systemDiskPerformanceLevel;
+  final pulumi.Input<String> systemDiskPerformanceLevel;
   /// System disk size of the scaling configuration.
-  final int systemDiskSize;
+  final pulumi.Input<int> systemDiskSize;
 
   /// Creates a new [GetScalingConfigurationsConfiguration].
   /// [creationTime] Creation time of the scaling configuration.
@@ -99,12 +99,12 @@ class GetScalingConfigurationsConfiguration {
     return <String, dynamic>{
       'creationTime': creationTime,
       'creditSpecification': creditSpecification,
-      'dataDisks': pulumi.Input.encodeList<GetScalingConfigurationsConfigurationDataDisk, Map<String, dynamic>>(dataDisks, (value) => value.toMap()),
+      'dataDisks': pulumi.Input.mapInputValue<List<GetScalingConfigurationsConfigurationDataDisk>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<GetScalingConfigurationsConfigurationDataDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'hostName': hostName,
       'id': id,
       'imageId': imageId,
       'instanceName': instanceName,
-      'instancePatternInfos': pulumi.Input.encodeList<GetScalingConfigurationsConfigurationInstancePatternInfo, Map<String, dynamic>>(instancePatternInfos, (value) => value.toMap()),
+      'instancePatternInfos': pulumi.Input.mapInputValue<List<GetScalingConfigurationsConfigurationInstancePatternInfo>, List<Map<String, dynamic>>>(instancePatternInfos, (value) => pulumi.Input.encodeList<GetScalingConfigurationsConfigurationInstancePatternInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'instanceType': instanceType,
       'internetChargeType': internetChargeType,
       'internetMaxBandwidthIn': internetMaxBandwidthIn,
@@ -113,7 +113,7 @@ class GetScalingConfigurationsConfiguration {
       'name': name,
       'scalingGroupId': scalingGroupId,
       'securityGroupId': securityGroupId,
-      'spotPriceLimits': pulumi.Input.encodeList<GetScalingConfigurationsConfigurationSpotPriceLimit, Map<String, dynamic>>(spotPriceLimits, (value) => value.toMap()),
+      'spotPriceLimits': pulumi.Input.mapInputValue<List<GetScalingConfigurationsConfigurationSpotPriceLimit>, List<Map<String, dynamic>>>(spotPriceLimits, (value) => pulumi.Input.encodeList<GetScalingConfigurationsConfigurationSpotPriceLimit, Map<String, dynamic>>(value, (value) => value.toMap())),
       'spotStrategy': spotStrategy,
       'systemDiskCategory': systemDiskCategory,
       'systemDiskPerformanceLevel': systemDiskPerformanceLevel,
@@ -123,27 +123,27 @@ class GetScalingConfigurationsConfiguration {
 
   factory GetScalingConfigurationsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetScalingConfigurationsConfiguration(
-      creationTime: map['creationTime'] as String,
-      creditSpecification: map['creditSpecification'] as String,
-      dataDisks: pulumi.Input.decodeList<GetScalingConfigurationsConfigurationDataDisk>(map['dataDisks'], (value) => GetScalingConfigurationsConfigurationDataDisk.fromMap((value as Map).cast<String, dynamic>())),
-      hostName: map['hostName'] as String,
-      id: map['id'] as String,
-      imageId: map['imageId'] as String,
-      instanceName: map['instanceName'] as String,
-      instancePatternInfos: pulumi.Input.decodeList<GetScalingConfigurationsConfigurationInstancePatternInfo>(map['instancePatternInfos'], (value) => GetScalingConfigurationsConfigurationInstancePatternInfo.fromMap((value as Map).cast<String, dynamic>())),
-      instanceType: map['instanceType'] as String,
-      internetChargeType: map['internetChargeType'] as String,
-      internetMaxBandwidthIn: map['internetMaxBandwidthIn'] as int,
-      internetMaxBandwidthOut: map['internetMaxBandwidthOut'] as int,
-      lifecycleState: map['lifecycleState'] as String,
-      name: map['name'] as String,
-      scalingGroupId: map['scalingGroupId'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      spotPriceLimits: pulumi.Input.decodeList<GetScalingConfigurationsConfigurationSpotPriceLimit>(map['spotPriceLimits'], (value) => GetScalingConfigurationsConfigurationSpotPriceLimit.fromMap((value as Map).cast<String, dynamic>())),
-      spotStrategy: map['spotStrategy'] as String,
-      systemDiskCategory: map['systemDiskCategory'] as String,
-      systemDiskPerformanceLevel: map['systemDiskPerformanceLevel'] as String,
-      systemDiskSize: map['systemDiskSize'] as int,
+      creationTime: (map['creationTime'] as String).input(),
+      creditSpecification: (map['creditSpecification'] as String).input(),
+      dataDisks: (pulumi.Input.decodeList<GetScalingConfigurationsConfigurationDataDisk>(map['dataDisks'], (value) => GetScalingConfigurationsConfigurationDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostName: (map['hostName'] as String).input(),
+      id: (map['id'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      instancePatternInfos: (pulumi.Input.decodeList<GetScalingConfigurationsConfigurationInstancePatternInfo>(map['instancePatternInfos'], (value) => GetScalingConfigurationsConfigurationInstancePatternInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      internetChargeType: (map['internetChargeType'] as String).input(),
+      internetMaxBandwidthIn: (map['internetMaxBandwidthIn'] as int).input(),
+      internetMaxBandwidthOut: (map['internetMaxBandwidthOut'] as int).input(),
+      lifecycleState: (map['lifecycleState'] as String).input(),
+      name: (map['name'] as String).input(),
+      scalingGroupId: (map['scalingGroupId'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      spotPriceLimits: (pulumi.Input.decodeList<GetScalingConfigurationsConfigurationSpotPriceLimit>(map['spotPriceLimits'], (value) => GetScalingConfigurationsConfigurationSpotPriceLimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spotStrategy: (map['spotStrategy'] as String).input(),
+      systemDiskCategory: (map['systemDiskCategory'] as String).input(),
+      systemDiskPerformanceLevel: (map['systemDiskPerformanceLevel'] as String).input(),
+      systemDiskSize: (map['systemDiskSize'] as int).input(),
     );
   }
 }

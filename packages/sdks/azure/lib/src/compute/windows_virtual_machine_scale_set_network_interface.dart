@@ -7,27 +7,27 @@ class WindowsVirtualMachineScaleSetNetworkInterface {
   /// Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections` and `Floating`.
   ///
   /// > **Note:** `auxiliary_mode` is in **Preview** and requires that the prerequisites are enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
-  final String? auxiliaryMode;
+  final pulumi.Input<String>? auxiliaryMode;
   /// Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are `A1`, `A2`, `A4` and `A8`.
   ///
   /// > **Note:** `auxiliary_sku` is in **Preview** and requires that the prerequisites are enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
-  final String? auxiliarySku;
+  final pulumi.Input<String>? auxiliarySku;
   /// A list of IP Addresses of DNS Servers which should be assigned to the Network Interface.
-  final List<String>? dnsServers;
+  final pulumi.Input<List<String>>? dnsServers;
   /// Does this Network Interface support Accelerated Networking? Defaults to `false`.
-  final bool? enableAcceleratedNetworking;
+  final pulumi.Input<bool>? enableAcceleratedNetworking;
   /// Does this Network Interface support IP Forwarding? Defaults to `false`.
-  final bool? enableIpForwarding;
+  final pulumi.Input<bool>? enableIpForwarding;
   /// One or more `ip_configuration` blocks as defined above.
-  final List<WindowsVirtualMachineScaleSetNetworkInterfaceIpConfiguration> ipConfigurations;
+  final pulumi.Input<List<WindowsVirtualMachineScaleSetNetworkInterfaceIpConfiguration>> ipConfigurations;
   /// The Name which should be used for this Network Interface. Changing this forces a new resource to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of a Network Security Group which should be assigned to this Network Interface.
-  final String? networkSecurityGroupId;
+  final pulumi.Input<String>? networkSecurityGroupId;
   /// Is this the Primary IP Configuration?
   ///
   /// > **Note:** If multiple `network_interface` blocks are specified, one must be set to `primary`.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
 
   /// Creates a new [WindowsVirtualMachineScaleSetNetworkInterface].
   /// [auxiliaryMode] Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections` and `Floating`.
@@ -58,7 +58,7 @@ class WindowsVirtualMachineScaleSetNetworkInterface {
       'dnsServers': ?dnsServers,
       'enableAcceleratedNetworking': ?enableAcceleratedNetworking,
       'enableIpForwarding': ?enableIpForwarding,
-      'ipConfigurations': pulumi.Input.encodeList<WindowsVirtualMachineScaleSetNetworkInterfaceIpConfiguration, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations': pulumi.Input.mapInputValue<List<WindowsVirtualMachineScaleSetNetworkInterfaceIpConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<WindowsVirtualMachineScaleSetNetworkInterfaceIpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'networkSecurityGroupId': ?networkSecurityGroupId,
       'primary': ?primary,
@@ -67,15 +67,15 @@ class WindowsVirtualMachineScaleSetNetworkInterface {
 
   factory WindowsVirtualMachineScaleSetNetworkInterface.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineScaleSetNetworkInterface(
-      auxiliaryMode: map['auxiliaryMode'] == null ? null : map['auxiliaryMode'] as String,
-      auxiliarySku: map['auxiliarySku'] == null ? null : map['auxiliarySku'] as String,
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
-      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : map['enableAcceleratedNetworking'] as bool,
-      enableIpForwarding: map['enableIpForwarding'] == null ? null : map['enableIpForwarding'] as bool,
-      ipConfigurations: pulumi.Input.decodeList<WindowsVirtualMachineScaleSetNetworkInterfaceIpConfiguration>(map['ipConfigurations'], (value) => WindowsVirtualMachineScaleSetNetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : map['networkSecurityGroupId'] as String,
-      primary: map['primary'] == null ? null : map['primary'] as bool,
+      auxiliaryMode: map['auxiliaryMode'] == null ? null : (map['auxiliaryMode'] as String).input(),
+      auxiliarySku: map['auxiliarySku'] == null ? null : (map['auxiliarySku'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking'] as bool).input(),
+      enableIpForwarding: map['enableIpForwarding'] == null ? null : (map['enableIpForwarding'] as bool).input(),
+      ipConfigurations: (pulumi.Input.decodeList<WindowsVirtualMachineScaleSetNetworkInterfaceIpConfiguration>(map['ipConfigurations'], (value) => WindowsVirtualMachineScaleSetNetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
     );
   }
 }

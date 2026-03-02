@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OsPolicyAssignmentRolloutDisruptionBudget {
   /// Specifies a fixed value.
-  final int? fixed;
+  final pulumi.Input<int>? fixed;
   /// Specifies the relative value defined as a percentage,
   /// which will be multiplied by a reference value.
   ///
   /// --------------------------------------------------------------------------------
-  final int? percent;
+  final pulumi.Input<int>? percent;
 
   /// Creates a new [OsPolicyAssignmentRolloutDisruptionBudget].
   /// [fixed] Specifies a fixed value.
@@ -27,8 +28,8 @@ class OsPolicyAssignmentRolloutDisruptionBudget {
 
   factory OsPolicyAssignmentRolloutDisruptionBudget.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentRolloutDisruptionBudget(
-      fixed: map['fixed'] == null ? null : map['fixed'] as int,
-      percent: map['percent'] == null ? null : map['percent'] as int,
+      fixed: map['fixed'] == null ? null : (map['fixed'] as int).input(),
+      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
     );
   }
 }

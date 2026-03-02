@@ -16,13 +16,10 @@ class GetPhraseSetArgs {
   /// [phraseSetId] Required.
   /// [project] Optional.
   GetPhraseSetArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> phraseSetId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      phraseSetId = pulumi.Input.asInput<String>(phraseSetId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    required this.phraseSetId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetPhraseSetArgs {
 
   factory GetPhraseSetArgs.fromMap(Map<String, dynamic> map) {
     return GetPhraseSetArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      phraseSetId: pulumi.Output.create<String>(map['phraseSetId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      phraseSetId: (map['phraseSetId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

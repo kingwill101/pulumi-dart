@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain {
   /// Is the Front Door Custom Domain/Endpoint activated?
-  final bool? active;
+  final pulumi.Input<bool>? active;
   /// The Resource Id of the **Front Door Custom Domain** or **Front Door Endpoint** that should be bound to this Front Door Security Policy.
-  final String cdnFrontdoorDomainId;
+  final pulumi.Input<String> cdnFrontdoorDomainId;
 
   /// Creates a new [FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain].
   /// [active] Is the Front Door Custom Domain/Endpoint activated?
@@ -24,8 +25,8 @@ class FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain {
 
   factory FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain.fromMap(Map<String, dynamic> map) {
     return FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain(
-      active: map['active'] == null ? null : map['active'] as bool,
-      cdnFrontdoorDomainId: map['cdnFrontdoorDomainId'] as String,
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      cdnFrontdoorDomainId: (map['cdnFrontdoorDomainId'] as String).input(),
     );
   }
 }

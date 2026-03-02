@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Domain purchase consent object, representing acceptance of applicable legal agreements.
 class DomainPurchaseConsent {
   /// Timestamp when the agreements were accepted.
-  final String? agreedAt;
+  final pulumi.Input<String>? agreedAt;
   /// Client IP address.
-  final String? agreedBy;
+  final pulumi.Input<String>? agreedBy;
   /// List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
-  final List<String>? agreementKeys;
+  final pulumi.Input<List<String>>? agreementKeys;
 
   /// Creates a new [DomainPurchaseConsent].
   /// [agreedAt] Timestamp when the agreements were accepted.
@@ -30,9 +31,9 @@ class DomainPurchaseConsent {
 
   factory DomainPurchaseConsent.fromMap(Map<String, dynamic> map) {
     return DomainPurchaseConsent(
-      agreedAt: map['agreedAt'] == null ? null : map['agreedAt'] as String,
-      agreedBy: map['agreedBy'] == null ? null : map['agreedBy'] as String,
-      agreementKeys: map['agreementKeys'] == null ? null : (map['agreementKeys'] as List).cast<String>(),
+      agreedAt: map['agreedAt'] == null ? null : (map['agreedAt'] as String).input(),
+      agreedBy: map['agreedBy'] == null ? null : (map['agreedBy'] as String).input(),
+      agreementKeys: map['agreementKeys'] == null ? null : ((map['agreementKeys'] as List).cast<String>()).input(),
     );
   }
 }

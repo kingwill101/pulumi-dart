@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Radius Server root certificate of P2SVpnServerConfiguration.
 class P2SVpnServerConfigRadiusServerRootCertificateResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final String? etag;
+  final pulumi.Input<String>? etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the radius server root certificate resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The certificate public data.
-  final String publicCertData;
+  final pulumi.Input<String> publicCertData;
 
   /// Creates a new [P2SVpnServerConfigRadiusServerRootCertificateResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.
@@ -40,11 +41,11 @@ class P2SVpnServerConfigRadiusServerRootCertificateResponse {
 
   factory P2SVpnServerConfigRadiusServerRootCertificateResponse.fromMap(Map<String, dynamic> map) {
     return P2SVpnServerConfigRadiusServerRootCertificateResponse(
-      etag: map['etag'] == null ? null : map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      publicCertData: map['publicCertData'] as String,
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publicCertData: (map['publicCertData'] as String).input(),
     );
   }
 }

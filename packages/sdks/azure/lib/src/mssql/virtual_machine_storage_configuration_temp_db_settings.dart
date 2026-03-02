@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineStorageConfigurationTempDbSettings {
   /// The SQL Server default file count. This value defaults to `8`
-  final int? dataFileCount;
+  final pulumi.Input<int>? dataFileCount;
   /// The SQL Server default file size - This value defaults to `512`
-  final int? dataFileGrowthInMb;
+  final pulumi.Input<int>? dataFileGrowthInMb;
   /// The SQL Server default file size - This value defaults to `256`
-  final int? dataFileSizeMb;
+  final pulumi.Input<int>? dataFileSizeMb;
   /// The SQL Server default path
-  final String defaultFilePath;
+  final pulumi.Input<String> defaultFilePath;
   /// The SQL Server default file size - This value defaults to `512`
-  final int? logFileGrowthMb;
+  final pulumi.Input<int>? logFileGrowthMb;
   /// The SQL Server default file size - This value defaults to `256`
-  final int? logFileSizeMb;
+  final pulumi.Input<int>? logFileSizeMb;
   /// A list of Logical Unit Numbers for the disks.
-  final List<int> luns;
+  final pulumi.Input<List<int>> luns;
 
   /// Creates a new [VirtualMachineStorageConfigurationTempDbSettings].
   /// [dataFileCount] The SQL Server default file count. This value defaults to `8`
@@ -49,13 +50,13 @@ class VirtualMachineStorageConfigurationTempDbSettings {
 
   factory VirtualMachineStorageConfigurationTempDbSettings.fromMap(Map<String, dynamic> map) {
     return VirtualMachineStorageConfigurationTempDbSettings(
-      dataFileCount: map['dataFileCount'] == null ? null : map['dataFileCount'] as int,
-      dataFileGrowthInMb: map['dataFileGrowthInMb'] == null ? null : map['dataFileGrowthInMb'] as int,
-      dataFileSizeMb: map['dataFileSizeMb'] == null ? null : map['dataFileSizeMb'] as int,
-      defaultFilePath: map['defaultFilePath'] as String,
-      logFileGrowthMb: map['logFileGrowthMb'] == null ? null : map['logFileGrowthMb'] as int,
-      logFileSizeMb: map['logFileSizeMb'] == null ? null : map['logFileSizeMb'] as int,
-      luns: (map['luns'] as List).cast<int>(),
+      dataFileCount: map['dataFileCount'] == null ? null : (map['dataFileCount'] as int).input(),
+      dataFileGrowthInMb: map['dataFileGrowthInMb'] == null ? null : (map['dataFileGrowthInMb'] as int).input(),
+      dataFileSizeMb: map['dataFileSizeMb'] == null ? null : (map['dataFileSizeMb'] as int).input(),
+      defaultFilePath: (map['defaultFilePath'] as String).input(),
+      logFileGrowthMb: map['logFileGrowthMb'] == null ? null : (map['logFileGrowthMb'] as int).input(),
+      logFileSizeMb: map['logFileSizeMb'] == null ? null : (map['logFileSizeMb'] as int).input(),
+      luns: ((map['luns'] as List).cast<int>()).input(),
     );
   }
 }

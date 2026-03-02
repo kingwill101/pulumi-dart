@@ -16,13 +16,10 @@ class GetServiceArgs {
   /// [v3Id] Required.
   /// [v3Id1] Required.
   GetServiceArgs({
-    required pulumi.Output<String> serviceId,
-    required pulumi.Output<String> v3Id,
-    required pulumi.Output<String> v3Id1,
-  }) :
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      v3Id = pulumi.Input.asInput<String>(v3Id),
-      v3Id1 = pulumi.Input.asInput<String>(v3Id1);
+    required this.serviceId,
+    required this.v3Id,
+    required this.v3Id1,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      v3Id: pulumi.Output.create<String>(map['v3Id'] as String),
-      v3Id1: pulumi.Output.create<String>(map['v3Id1'] as String),
+      serviceId: (map['serviceId'] as String).input(),
+      v3Id: (map['v3Id'] as String).input(),
+      v3Id1: (map['v3Id1'] as String).input(),
     );
   }
 }

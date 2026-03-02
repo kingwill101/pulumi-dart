@@ -19,13 +19,10 @@ class DrtAccessLogBucketAssociationArgs {
   /// [roleArnAssociationId] The ID of the Role Arn association used for allowing Shield DRT Access.
   /// [timeouts] Optional.
   DrtAccessLogBucketAssociationArgs({
-    required pulumi.Output<String> logBucket,
-    required pulumi.Output<String> roleArnAssociationId,
-    pulumi.Output<DrtAccessLogBucketAssociationTimeouts>? timeouts,
-  }) :
-      logBucket = pulumi.Input.asInput<String>(logBucket),
-      roleArnAssociationId = pulumi.Input.asInput<String>(roleArnAssociationId),
-      timeouts = pulumi.Input.asOptionalInput<DrtAccessLogBucketAssociationTimeouts>(timeouts);
+    required this.logBucket,
+    required this.roleArnAssociationId,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DrtAccessLogBucketAssociationArgs {
 
   factory DrtAccessLogBucketAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DrtAccessLogBucketAssociationArgs(
-      logBucket: pulumi.Output.create<String>(map['logBucket'] as String),
-      roleArnAssociationId: pulumi.Output.create<String>(map['roleArnAssociationId'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DrtAccessLogBucketAssociationTimeouts>(DrtAccessLogBucketAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      logBucket: (map['logBucket'] as String).input(),
+      roleArnAssociationId: (map['roleArnAssociationId'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (DrtAccessLogBucketAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class IntegrationRuntimeSelfHostedArgs {
   /// [rbacAuthorizations] A `rbac_authorization` block as defined below. Changing this forces a new resource to be created.
   /// [selfContainedInteractiveAuthoringEnabled] Specifies whether enable interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
   IntegrationRuntimeSelfHostedArgs({
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<IntegrationRuntimeSelfHostedRbacAuthorization>>? rbacAuthorizations,
-    pulumi.Output<bool>? selfContainedInteractiveAuthoringEnabled,
-  }) :
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      rbacAuthorizations = pulumi.Input.asOptionalInput<List<IntegrationRuntimeSelfHostedRbacAuthorization>>(rbacAuthorizations),
-      selfContainedInteractiveAuthoringEnabled = pulumi.Input.asOptionalInput<bool>(selfContainedInteractiveAuthoringEnabled);
+    required this.dataFactoryId,
+    this.description,
+    this.name,
+    this.rbacAuthorizations,
+    this.selfContainedInteractiveAuthoringEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class IntegrationRuntimeSelfHostedArgs {
 
   factory IntegrationRuntimeSelfHostedArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSelfHostedArgs(
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      rbacAuthorizations: map['rbacAuthorizations'] == null ? null : pulumi.Output.create<List<IntegrationRuntimeSelfHostedRbacAuthorization>>(pulumi.Input.decodeList<IntegrationRuntimeSelfHostedRbacAuthorization>(map['rbacAuthorizations'], (value) => IntegrationRuntimeSelfHostedRbacAuthorization.fromMap((value as Map).cast<String, dynamic>()))),
-      selfContainedInteractiveAuthoringEnabled: map['selfContainedInteractiveAuthoringEnabled'] == null ? null : pulumi.Output.create<bool>(map['selfContainedInteractiveAuthoringEnabled'] as bool),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rbacAuthorizations: map['rbacAuthorizations'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeSelfHostedRbacAuthorization>(map['rbacAuthorizations'], (value) => IntegrationRuntimeSelfHostedRbacAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selfContainedInteractiveAuthoringEnabled: map['selfContainedInteractiveAuthoringEnabled'] == null ? null : (map['selfContainedInteractiveAuthoringEnabled'] as bool).input(),
     );
   }
 }

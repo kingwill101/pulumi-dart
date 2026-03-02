@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InternetMonitorHealthEventsConfig {
   /// The health event threshold percentage set for availability scores.
-  final double? availabilityScoreThreshold;
+  final pulumi.Input<double>? availabilityScoreThreshold;
   /// The health event threshold percentage set for performance scores.
-  final double? performanceScoreThreshold;
+  final pulumi.Input<double>? performanceScoreThreshold;
 
   /// Creates a new [InternetMonitorHealthEventsConfig].
   /// [availabilityScoreThreshold] The health event threshold percentage set for availability scores.
@@ -24,8 +25,8 @@ class InternetMonitorHealthEventsConfig {
 
   factory InternetMonitorHealthEventsConfig.fromMap(Map<String, dynamic> map) {
     return InternetMonitorHealthEventsConfig(
-      availabilityScoreThreshold: map['availabilityScoreThreshold'] == null ? null : map['availabilityScoreThreshold'] as double,
-      performanceScoreThreshold: map['performanceScoreThreshold'] == null ? null : map['performanceScoreThreshold'] as double,
+      availabilityScoreThreshold: map['availabilityScoreThreshold'] == null ? null : (map['availabilityScoreThreshold'] as double).input(),
+      performanceScoreThreshold: map['performanceScoreThreshold'] == null ? null : (map['performanceScoreThreshold'] as double).input(),
     );
   }
 }

@@ -26,19 +26,13 @@ class GcmChannelArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceJson] Optional.
   GcmChannelArgs({
-    pulumi.Output<String>? apiKey,
-    required pulumi.Output<String> applicationId,
-    pulumi.Output<String>? defaultAuthenticationMethod,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceJson,
-  }) :
-      apiKey = pulumi.Input.asOptionalInput<String>(apiKey),
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      defaultAuthenticationMethod = pulumi.Input.asOptionalInput<String>(defaultAuthenticationMethod),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceJson = pulumi.Input.asOptionalInput<String>(serviceJson);
+    this.apiKey,
+    required this.applicationId,
+    this.defaultAuthenticationMethod,
+    this.enabled,
+    this.region,
+    this.serviceJson,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class GcmChannelArgs {
 
   factory GcmChannelArgs.fromMap(Map<String, dynamic> map) {
     return GcmChannelArgs(
-      apiKey: map['apiKey'] == null ? null : pulumi.Output.create<String>(map['apiKey'] as String),
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      defaultAuthenticationMethod: map['defaultAuthenticationMethod'] == null ? null : pulumi.Output.create<String>(map['defaultAuthenticationMethod'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceJson: map['serviceJson'] == null ? null : pulumi.Output.create<String>(map['serviceJson'] as String),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      applicationId: (map['applicationId'] as String).input(),
+      defaultAuthenticationMethod: map['defaultAuthenticationMethod'] == null ? null : (map['defaultAuthenticationMethod'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceJson: map['serviceJson'] == null ? null : (map['serviceJson'] as String).input(),
     );
   }
 }

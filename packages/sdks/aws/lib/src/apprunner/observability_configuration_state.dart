@@ -35,25 +35,16 @@ class ObservabilityConfigurationState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [traceConfiguration] Configuration of the tracing feature within this observability configuration. If you don't specify it, App Runner doesn't enable tracing. See Trace Configuration below for more details.
   ObservabilityConfigurationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<bool>? latest,
-    pulumi.Output<String>? observabilityConfigurationName,
-    pulumi.Output<int>? observabilityConfigurationRevision,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<ObservabilityConfigurationTraceConfiguration>? traceConfiguration,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      latest = pulumi.Input.asOptionalInput<bool>(latest),
-      observabilityConfigurationName = pulumi.Input.asOptionalInput<String>(observabilityConfigurationName),
-      observabilityConfigurationRevision = pulumi.Input.asOptionalInput<int>(observabilityConfigurationRevision),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      traceConfiguration = pulumi.Input.asOptionalInput<ObservabilityConfigurationTraceConfiguration>(traceConfiguration);
+    this.arn,
+    this.latest,
+    this.observabilityConfigurationName,
+    this.observabilityConfigurationRevision,
+    this.region,
+    this.status,
+    this.tags,
+    this.tagsAll,
+    this.traceConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class ObservabilityConfigurationState {
 
   factory ObservabilityConfigurationState.fromMap(Map<String, dynamic> map) {
     return ObservabilityConfigurationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      latest: map['latest'] == null ? null : pulumi.Output.create<bool>(map['latest'] as bool),
-      observabilityConfigurationName: map['observabilityConfigurationName'] == null ? null : pulumi.Output.create<String>(map['observabilityConfigurationName'] as String),
-      observabilityConfigurationRevision: map['observabilityConfigurationRevision'] == null ? null : pulumi.Output.create<int>(map['observabilityConfigurationRevision'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      traceConfiguration: map['traceConfiguration'] == null ? null : pulumi.Output.create<ObservabilityConfigurationTraceConfiguration>(ObservabilityConfigurationTraceConfiguration.fromMap((map['traceConfiguration'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
+      observabilityConfigurationName: map['observabilityConfigurationName'] == null ? null : (map['observabilityConfigurationName'] as String).input(),
+      observabilityConfigurationRevision: map['observabilityConfigurationRevision'] == null ? null : (map['observabilityConfigurationRevision'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      traceConfiguration: map['traceConfiguration'] == null ? null : (ObservabilityConfigurationTraceConfiguration.fromMap((map['traceConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier {
   /// The schema name.
-  final String schema;
+  final pulumi.Input<String> schema;
   /// The table name.
-  final String table;
+  final pulumi.Input<String> table;
 
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier].
   /// [schema] The schema name.
@@ -24,8 +25,8 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier {
 
   factory StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier(
-      schema: map['schema'] as String,
-      table: map['table'] as String,
+      schema: (map['schema'] as String).input(),
+      table: (map['table'] as String).input(),
     );
   }
 }

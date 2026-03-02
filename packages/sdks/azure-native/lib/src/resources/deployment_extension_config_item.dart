@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_vault_parameter_reference.dart';
 
 /// The value or how to get a value for an extension config property.
 class DeploymentExtensionConfigItem {
   /// The key vault reference of the config item.
-  final KeyVaultParameterReference? keyVaultReference;
+  final pulumi.Input<KeyVaultParameterReference>? keyVaultReference;
   /// The value of the config item. The type is determined by the extension config schema.
-  final dynamic value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [DeploymentExtensionConfigItem].
   /// [keyVaultReference] The key vault reference of the config item.
@@ -19,15 +20,15 @@ class DeploymentExtensionConfigItem {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVaultReference': ?keyVaultReference == null ? null : keyVaultReference!.toMap(),
+      'keyVaultReference': ?pulumi.Input.mapOptionalInputValue<KeyVaultParameterReference, Map<String, dynamic>>(keyVaultReference, (value) => value.toMap()),
       'value': ?value,
     };
   }
 
   factory DeploymentExtensionConfigItem.fromMap(Map<String, dynamic> map) {
     return DeploymentExtensionConfigItem(
-      keyVaultReference: map['keyVaultReference'] == null ? null : KeyVaultParameterReference.fromMap((map['keyVaultReference'] as Map).cast<String, dynamic>()),
-      value: map['value'] == null ? null : map['value'],
+      keyVaultReference: map['keyVaultReference'] == null ? null : (KeyVaultParameterReference.fromMap((map['keyVaultReference'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (map['value']).input(),
     );
   }
 }

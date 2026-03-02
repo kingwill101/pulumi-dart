@@ -12,9 +12,8 @@ class GetGroupArgs {
   /// Creates a new [GetGroupArgs].
   /// [groupId] Required.
   GetGroupArgs({
-    required pulumi.Output<String> groupId,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId);
+    required this.groupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetGroupArgs {
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
+      groupId: (map['groupId'] as String).input(),
     );
   }
 }

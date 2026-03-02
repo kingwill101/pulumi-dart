@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Condition applicable to the resource, or to the job overall, that warrant customer attention.
 class DiagnosticConditionResponse {
   /// The opaque diagnostic code.
-  final String code;
+  final pulumi.Input<String> code;
   /// The human-readable message describing the condition in detail. Localized in the Accept-Language of the client request.
-  final String message;
+  final pulumi.Input<String> message;
   /// The UTC timestamp of when the condition started. Customers should be able to find a corresponding event in the ops log around this time.
-  final String since;
+  final pulumi.Input<String> since;
 
   /// Creates a new [DiagnosticConditionResponse].
   /// [code] The opaque diagnostic code.
@@ -30,9 +31,9 @@ class DiagnosticConditionResponse {
 
   factory DiagnosticConditionResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticConditionResponse(
-      code: map['code'] as String,
-      message: map['message'] as String,
-      since: map['since'] as String,
+      code: (map['code'] as String).input(),
+      message: (map['message'] as String).input(),
+      since: (map['since'] as String).input(),
     );
   }
 }

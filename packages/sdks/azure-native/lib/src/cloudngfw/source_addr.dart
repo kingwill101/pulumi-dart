@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Address properties
 class SourceAddr {
   /// special value 'any'
-  final List<String>? cidrs;
+  final pulumi.Input<List<String>>? cidrs;
   /// list of countries
-  final List<String>? countries;
+  final pulumi.Input<List<String>>? countries;
   /// list of feeds
-  final List<String>? feeds;
+  final pulumi.Input<List<String>>? feeds;
   /// prefix list
-  final List<String>? prefixLists;
+  final pulumi.Input<List<String>>? prefixLists;
 
   /// Creates a new [SourceAddr].
   /// [cidrs] special value 'any'
@@ -35,10 +36,10 @@ class SourceAddr {
 
   factory SourceAddr.fromMap(Map<String, dynamic> map) {
     return SourceAddr(
-      cidrs: map['cidrs'] == null ? null : (map['cidrs'] as List).cast<String>(),
-      countries: map['countries'] == null ? null : (map['countries'] as List).cast<String>(),
-      feeds: map['feeds'] == null ? null : (map['feeds'] as List).cast<String>(),
-      prefixLists: map['prefixLists'] == null ? null : (map['prefixLists'] as List).cast<String>(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
+      countries: map['countries'] == null ? null : ((map['countries'] as List).cast<String>()).input(),
+      feeds: map['feeds'] == null ? null : ((map['feeds'] as List).cast<String>()).input(),
+      prefixLists: map['prefixLists'] == null ? null : ((map['prefixLists'] as List).cast<String>()).input(),
     );
   }
 }

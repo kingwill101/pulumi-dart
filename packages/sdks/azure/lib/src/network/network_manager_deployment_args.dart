@@ -25,17 +25,12 @@ class NetworkManagerDeploymentArgs {
   /// [scopeAccess] Specifies the configuration deployment type. Possible values are `Connectivity`, `SecurityAdmin` and `Routing`. Changing this forces a new Network Manager Deployment to be created.
   /// [triggers] A mapping of key values pairs that can be used to keep the deployment up with the Network Manager configurations and rules.
   NetworkManagerDeploymentArgs({
-    required pulumi.Output<List<String>> configurationIds,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> networkManagerId,
-    required pulumi.Output<String> scopeAccess,
-    pulumi.Output<Map<String, String>>? triggers,
-  }) :
-      configurationIds = pulumi.Input.asInput<List<String>>(configurationIds),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkManagerId = pulumi.Input.asInput<String>(networkManagerId),
-      scopeAccess = pulumi.Input.asInput<String>(scopeAccess),
-      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+    required this.configurationIds,
+    this.location,
+    required this.networkManagerId,
+    required this.scopeAccess,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class NetworkManagerDeploymentArgs {
 
   factory NetworkManagerDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerDeploymentArgs(
-      configurationIds: pulumi.Output.create<List<String>>((map['configurationIds'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkManagerId: pulumi.Output.create<String>(map['networkManagerId'] as String),
-      scopeAccess: pulumi.Output.create<String>(map['scopeAccess'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['triggers'] as Map).cast<String, String>()),
+      configurationIds: ((map['configurationIds'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkManagerId: (map['networkManagerId'] as String).input(),
+      scopeAccess: (map['scopeAccess'] as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
     );
   }
 }

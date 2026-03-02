@@ -37,17 +37,12 @@ class DatastoreArgs {
   /// [nfsDatastore] The NFS datastore configuration.
   /// [project] The ID of the project in which the resource belongs.
   DatastoreArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<DatastoreNfsDatastore> nfsDatastore,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nfsDatastore = pulumi.Input.asInput<DatastoreNfsDatastore>(nfsDatastore),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    required this.location,
+    this.name,
+    required this.nfsDatastore,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,11 +56,11 @@ class DatastoreArgs {
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nfsDatastore: pulumi.Output.create<DatastoreNfsDatastore>(DatastoreNfsDatastore.fromMap((map['nfsDatastore'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nfsDatastore: (DatastoreNfsDatastore.fromMap((map['nfsDatastore'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

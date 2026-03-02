@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the PrometheusOS provider properties.
 class PrometheusOsProviderInstanceProperties {
   /// URL of the Node Exporter endpoint
-  final String? prometheusUrl;
+  final pulumi.Input<String>? prometheusUrl;
   /// The provider type. For example, the value can be SapHana.
   /// Expected value is 'PrometheusOS'.
-  final String providerType;
+  final pulumi.Input<String> providerType;
   /// Gets or sets the SAP System Identifier
-  final String? sapSid;
+  final pulumi.Input<String>? sapSid;
   /// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
-  final String? sslCertificateUri;
+  final pulumi.Input<String>? sslCertificateUri;
   /// Gets or sets certificate preference if secure communication is enabled.
-  final String? sslPreference;
+  final pulumi.Input<String>? sslPreference;
 
   /// Creates a new [PrometheusOsProviderInstanceProperties].
   /// [prometheusUrl] URL of the Node Exporter endpoint
@@ -41,11 +42,11 @@ class PrometheusOsProviderInstanceProperties {
 
   factory PrometheusOsProviderInstanceProperties.fromMap(Map<String, dynamic> map) {
     return PrometheusOsProviderInstanceProperties(
-      prometheusUrl: map['prometheusUrl'] == null ? null : map['prometheusUrl'] as String,
-      providerType: map['providerType'] as String,
-      sapSid: map['sapSid'] == null ? null : map['sapSid'] as String,
-      sslCertificateUri: map['sslCertificateUri'] == null ? null : map['sslCertificateUri'] as String,
-      sslPreference: map['sslPreference'] == null ? null : map['sslPreference'] as String,
+      prometheusUrl: map['prometheusUrl'] == null ? null : (map['prometheusUrl'] as String).input(),
+      providerType: (map['providerType'] as String).input(),
+      sapSid: map['sapSid'] == null ? null : (map['sapSid'] as String).input(),
+      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri'] as String).input(),
+      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference'] as String).input(),
     );
   }
 }

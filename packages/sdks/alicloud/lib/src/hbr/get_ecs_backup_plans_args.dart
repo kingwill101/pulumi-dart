@@ -25,17 +25,12 @@ class GetEcsBackupPlansArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [vaultId] The Vault ID of the EcsBackupPlan used.
   GetEcsBackupPlansArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? vaultId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      vaultId = pulumi.Input.asOptionalInput<String>(vaultId);
+    this.ids,
+    this.instanceId,
+    this.nameRegex,
+    this.outputFile,
+    this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetEcsBackupPlansArgs {
 
   factory GetEcsBackupPlansArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsBackupPlansArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      vaultId: map['vaultId'] == null ? null : pulumi.Output.create<String>(map['vaultId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
     );
   }
 }

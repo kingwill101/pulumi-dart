@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'expiry_detail.dart';
 import 'restriction_evaluations.dart';
 
 /// A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
 class MembershipRole {
   /// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
-  final ExpiryDetail? expiryDetail;
+  final pulumi.Input<ExpiryDetail>? expiryDetail;
   /// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Evaluations of restrictions applied to parent group on this membership.
-  final RestrictionEvaluations? restrictionEvaluations;
+  final pulumi.Input<RestrictionEvaluations>? restrictionEvaluations;
 
   /// Creates a new [MembershipRole].
   /// [expiryDetail] The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
@@ -24,17 +25,17 @@ class MembershipRole {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expiryDetail': ?expiryDetail == null ? null : expiryDetail!.toMap(),
+      'expiryDetail': ?pulumi.Input.mapOptionalInputValue<ExpiryDetail, Map<String, dynamic>>(expiryDetail, (value) => value.toMap()),
       'name': ?name,
-      'restrictionEvaluations': ?restrictionEvaluations == null ? null : restrictionEvaluations!.toMap(),
+      'restrictionEvaluations': ?pulumi.Input.mapOptionalInputValue<RestrictionEvaluations, Map<String, dynamic>>(restrictionEvaluations, (value) => value.toMap()),
     };
   }
 
   factory MembershipRole.fromMap(Map<String, dynamic> map) {
     return MembershipRole(
-      expiryDetail: map['expiryDetail'] == null ? null : ExpiryDetail.fromMap((map['expiryDetail'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      restrictionEvaluations: map['restrictionEvaluations'] == null ? null : RestrictionEvaluations.fromMap((map['restrictionEvaluations'] as Map).cast<String, dynamic>()),
+      expiryDetail: map['expiryDetail'] == null ? null : (ExpiryDetail.fromMap((map['expiryDetail'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      restrictionEvaluations: map['restrictionEvaluations'] == null ? null : (RestrictionEvaluations.fromMap((map['restrictionEvaluations'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

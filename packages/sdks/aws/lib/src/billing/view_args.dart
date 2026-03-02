@@ -31,19 +31,13 @@ class ViewArgs {
   /// [tags] List of key value map specifying tags associated to the billing view being created.
   /// [timeouts] Optional.
   ViewArgs({
-    pulumi.Output<ViewDataFilterExpression>? dataFilterExpression,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? sourceViews,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ViewTimeouts>? timeouts,
-  }) :
-      dataFilterExpression = pulumi.Input.asOptionalInput<ViewDataFilterExpression>(dataFilterExpression),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sourceViews = pulumi.Input.asOptionalInput<List<String>>(sourceViews),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ViewTimeouts>(timeouts);
+    this.dataFilterExpression,
+    this.description,
+    this.name,
+    this.sourceViews,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class ViewArgs {
 
   factory ViewArgs.fromMap(Map<String, dynamic> map) {
     return ViewArgs(
-      dataFilterExpression: map['dataFilterExpression'] == null ? null : pulumi.Output.create<ViewDataFilterExpression>(ViewDataFilterExpression.fromMap((map['dataFilterExpression'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sourceViews: map['sourceViews'] == null ? null : pulumi.Output.create<List<String>>((map['sourceViews'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ViewTimeouts>(ViewTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      dataFilterExpression: map['dataFilterExpression'] == null ? null : (ViewDataFilterExpression.fromMap((map['dataFilterExpression'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sourceViews: map['sourceViews'] == null ? null : ((map['sourceViews'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ViewTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

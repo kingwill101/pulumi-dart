@@ -8,31 +8,31 @@ import 'source.dart';
 /// Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
 class BuildProvenance {
   /// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
-  final Map<String, String>? buildOptions;
+  final pulumi.Input<Map<String, String>>? buildOptions;
   /// Version string of the builder at the time this build was executed.
-  final String? builderVersion;
+  final pulumi.Input<String>? builderVersion;
   /// Output of the build.
-  final List<Artifact>? builtArtifacts;
+  final pulumi.Input<List<Artifact>>? builtArtifacts;
   /// Commands requested by the build.
-  final List<Command>? commands;
+  final pulumi.Input<List<Command>>? commands;
   /// Time at which the build was created.
-  final String? createTime;
+  final pulumi.Input<String>? createTime;
   /// E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
-  final String? creator;
+  final pulumi.Input<String>? creator;
   /// Time at which execution of the build was finished.
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// Unique identifier of the build.
-  final String id;
+  final pulumi.Input<String> id;
   /// URI where any logs for this provenance were written.
-  final String? logsUri;
+  final pulumi.Input<String>? logsUri;
   /// ID of the project.
-  final String? project;
+  final pulumi.Input<String>? project;
   /// Details of the Source input to the build.
-  final Source? sourceProvenance;
+  final pulumi.Input<Source>? sourceProvenance;
   /// Time at which execution of the build was started.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// Trigger identifier if the build was triggered automatically; empty if not.
-  final String? triggerId;
+  final pulumi.Input<String>? triggerId;
 
   /// Creates a new [BuildProvenance].
   /// [buildOptions] Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
@@ -68,15 +68,15 @@ class BuildProvenance {
     return <String, dynamic>{
       'buildOptions': ?buildOptions,
       'builderVersion': ?builderVersion,
-      'builtArtifacts': ?builtArtifacts == null ? null : pulumi.Input.encodeList<Artifact, Map<String, dynamic>>(builtArtifacts!, (value) => value.toMap()),
-      'commands': ?commands == null ? null : pulumi.Input.encodeList<Command, Map<String, dynamic>>(commands!, (value) => value.toMap()),
+      'builtArtifacts': ?pulumi.Input.mapOptionalInputValue<List<Artifact>, List<Map<String, dynamic>>>(builtArtifacts, (value) => pulumi.Input.encodeList<Artifact, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'commands': ?pulumi.Input.mapOptionalInputValue<List<Command>, List<Map<String, dynamic>>>(commands, (value) => pulumi.Input.encodeList<Command, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
       'creator': ?creator,
       'endTime': ?endTime,
       'id': id,
       'logsUri': ?logsUri,
       'project': ?project,
-      'sourceProvenance': ?sourceProvenance == null ? null : sourceProvenance!.toMap(),
+      'sourceProvenance': ?pulumi.Input.mapOptionalInputValue<Source, Map<String, dynamic>>(sourceProvenance, (value) => value.toMap()),
       'startTime': ?startTime,
       'triggerId': ?triggerId,
     };
@@ -84,19 +84,19 @@ class BuildProvenance {
 
   factory BuildProvenance.fromMap(Map<String, dynamic> map) {
     return BuildProvenance(
-      buildOptions: map['buildOptions'] == null ? null : (map['buildOptions'] as Map).cast<String, String>(),
-      builderVersion: map['builderVersion'] == null ? null : map['builderVersion'] as String,
-      builtArtifacts: map['builtArtifacts'] == null ? null : pulumi.Input.decodeList<Artifact>(map['builtArtifacts'], (value) => Artifact.fromMap((value as Map).cast<String, dynamic>())),
-      commands: map['commands'] == null ? null : pulumi.Input.decodeList<Command>(map['commands'], (value) => Command.fromMap((value as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : map['createTime'] as String,
-      creator: map['creator'] == null ? null : map['creator'] as String,
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      id: map['id'] as String,
-      logsUri: map['logsUri'] == null ? null : map['logsUri'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
-      sourceProvenance: map['sourceProvenance'] == null ? null : Source.fromMap((map['sourceProvenance'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      triggerId: map['triggerId'] == null ? null : map['triggerId'] as String,
+      buildOptions: map['buildOptions'] == null ? null : ((map['buildOptions'] as Map).cast<String, String>()).input(),
+      builderVersion: map['builderVersion'] == null ? null : (map['builderVersion'] as String).input(),
+      builtArtifacts: map['builtArtifacts'] == null ? null : (pulumi.Input.decodeList<Artifact>(map['builtArtifacts'], (value) => Artifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commands: map['commands'] == null ? null : (pulumi.Input.decodeList<Command>(map['commands'], (value) => Command.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      creator: map['creator'] == null ? null : (map['creator'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      logsUri: map['logsUri'] == null ? null : (map['logsUri'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sourceProvenance: map['sourceProvenance'] == null ? null : (Source.fromMap((map['sourceProvenance'] as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
     );
   }
 }

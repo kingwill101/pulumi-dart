@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GcpIntegrationsDataProc {
   /// the data polling interval in seconds
-  final int? metricsPollingInterval;
+  final pulumi.Input<int>? metricsPollingInterval;
 
   /// Creates a new [GcpIntegrationsDataProc].
   /// [metricsPollingInterval] the data polling interval in seconds
@@ -19,7 +20,7 @@ class GcpIntegrationsDataProc {
 
   factory GcpIntegrationsDataProc.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsDataProc(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : map['metricsPollingInterval'] as int,
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
     );
   }
 }

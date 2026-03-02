@@ -34,21 +34,14 @@ class BaselineArgs {
   /// [targetIdentifier] The ARN of the target on which the baseline will be enabled. Only OUs are supported as targets.
   /// [timeouts] Optional.
   BaselineArgs({
-    required pulumi.Output<String> baselineIdentifier,
-    required pulumi.Output<String> baselineVersion,
-    pulumi.Output<BaselineParameters>? parameters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetIdentifier,
-    pulumi.Output<BaselineTimeouts>? timeouts,
-  }) :
-      baselineIdentifier = pulumi.Input.asInput<String>(baselineIdentifier),
-      baselineVersion = pulumi.Input.asInput<String>(baselineVersion),
-      parameters = pulumi.Input.asOptionalInput<BaselineParameters>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetIdentifier = pulumi.Input.asInput<String>(targetIdentifier),
-      timeouts = pulumi.Input.asOptionalInput<BaselineTimeouts>(timeouts);
+    required this.baselineIdentifier,
+    required this.baselineVersion,
+    this.parameters,
+    this.region,
+    this.tags,
+    required this.targetIdentifier,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class BaselineArgs {
 
   factory BaselineArgs.fromMap(Map<String, dynamic> map) {
     return BaselineArgs(
-      baselineIdentifier: pulumi.Output.create<String>(map['baselineIdentifier'] as String),
-      baselineVersion: pulumi.Output.create<String>(map['baselineVersion'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<BaselineParameters>(BaselineParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetIdentifier: pulumi.Output.create<String>(map['targetIdentifier'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<BaselineTimeouts>(BaselineTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      baselineIdentifier: (map['baselineIdentifier'] as String).input(),
+      baselineVersion: (map['baselineVersion'] as String).input(),
+      parameters: map['parameters'] == null ? null : (BaselineParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetIdentifier: (map['targetIdentifier'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (BaselineTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

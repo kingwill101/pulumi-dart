@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventRuleWebhookParameter {
   /// The HTTP request method.
-  final String? method;
+  final pulumi.Input<String>? method;
   /// The name of the protocol.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// The callback URL.
-  final String? url;
+  final pulumi.Input<String>? url;
   /// The ID of the recipient that receives alert notifications.
-  final String? webhookParametersId;
+  final pulumi.Input<String>? webhookParametersId;
 
   /// Creates a new [EventRuleWebhookParameter].
   /// [method] The HTTP request method.
@@ -34,10 +35,10 @@ class EventRuleWebhookParameter {
 
   factory EventRuleWebhookParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleWebhookParameter(
-      method: map['method'] == null ? null : map['method'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
-      webhookParametersId: map['webhookParametersId'] == null ? null : map['webhookParametersId'] as String,
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      webhookParametersId: map['webhookParametersId'] == null ? null : (map['webhookParametersId'] as String).input(),
     );
   }
 }

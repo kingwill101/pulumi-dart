@@ -14,31 +14,31 @@ import 'vector_embedding_policy.dart';
 /// Cosmos DB SQL container resource object
 class SqlContainerResource {
   /// Analytical TTL.
-  final double? analyticalStorageTtl;
+  final pulumi.Input<double>? analyticalStorageTtl;
   /// The client encryption policy for the container.
-  final ClientEncryptionPolicy? clientEncryptionPolicy;
+  final pulumi.Input<ClientEncryptionPolicy>? clientEncryptionPolicy;
   /// List of computed properties
-  final List<ComputedProperty>? computedProperties;
+  final pulumi.Input<List<ComputedProperty>>? computedProperties;
   /// The conflict resolution policy for the container.
-  final ConflictResolutionPolicy? conflictResolutionPolicy;
+  final pulumi.Input<ConflictResolutionPolicy>? conflictResolutionPolicy;
   /// Enum to indicate the mode of resource creation.
-  final String? createMode;
+  final pulumi.Input<String>? createMode;
   /// Default time to live
-  final int? defaultTtl;
+  final pulumi.Input<int>? defaultTtl;
   /// The FullText policy for the container.
-  final FullTextPolicy? fullTextPolicy;
+  final pulumi.Input<FullTextPolicy>? fullTextPolicy;
   /// Name of the Cosmos DB SQL container
-  final String id;
+  final pulumi.Input<String> id;
   /// The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container
-  final IndexingPolicy? indexingPolicy;
+  final pulumi.Input<IndexingPolicy>? indexingPolicy;
   /// The configuration of the partition key to be used for partitioning data into multiple partitions
-  final ContainerPartitionKey? partitionKey;
+  final pulumi.Input<ContainerPartitionKey>? partitionKey;
   /// Parameters to indicate the information about the restore
-  final ResourceRestoreParameters? restoreParameters;
+  final pulumi.Input<ResourceRestoreParameters>? restoreParameters;
   /// The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
-  final UniqueKeyPolicy? uniqueKeyPolicy;
+  final pulumi.Input<UniqueKeyPolicy>? uniqueKeyPolicy;
   /// The vector embedding policy for the container.
-  final VectorEmbeddingPolicy? vectorEmbeddingPolicy;
+  final pulumi.Input<VectorEmbeddingPolicy>? vectorEmbeddingPolicy;
 
   /// Creates a new [SqlContainerResource].
   /// [analyticalStorageTtl] Analytical TTL.
@@ -73,36 +73,36 @@ class SqlContainerResource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'analyticalStorageTtl': ?analyticalStorageTtl,
-      'clientEncryptionPolicy': ?clientEncryptionPolicy == null ? null : clientEncryptionPolicy!.toMap(),
-      'computedProperties': ?computedProperties == null ? null : pulumi.Input.encodeList<ComputedProperty, Map<String, dynamic>>(computedProperties!, (value) => value.toMap()),
-      'conflictResolutionPolicy': ?conflictResolutionPolicy == null ? null : conflictResolutionPolicy!.toMap(),
+      'clientEncryptionPolicy': ?pulumi.Input.mapOptionalInputValue<ClientEncryptionPolicy, Map<String, dynamic>>(clientEncryptionPolicy, (value) => value.toMap()),
+      'computedProperties': ?pulumi.Input.mapOptionalInputValue<List<ComputedProperty>, List<Map<String, dynamic>>>(computedProperties, (value) => pulumi.Input.encodeList<ComputedProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conflictResolutionPolicy': ?pulumi.Input.mapOptionalInputValue<ConflictResolutionPolicy, Map<String, dynamic>>(conflictResolutionPolicy, (value) => value.toMap()),
       'createMode': ?createMode,
       'defaultTtl': ?defaultTtl,
-      'fullTextPolicy': ?fullTextPolicy == null ? null : fullTextPolicy!.toMap(),
+      'fullTextPolicy': ?pulumi.Input.mapOptionalInputValue<FullTextPolicy, Map<String, dynamic>>(fullTextPolicy, (value) => value.toMap()),
       'id': id,
-      'indexingPolicy': ?indexingPolicy == null ? null : indexingPolicy!.toMap(),
-      'partitionKey': ?partitionKey == null ? null : partitionKey!.toMap(),
-      'restoreParameters': ?restoreParameters == null ? null : restoreParameters!.toMap(),
-      'uniqueKeyPolicy': ?uniqueKeyPolicy == null ? null : uniqueKeyPolicy!.toMap(),
-      'vectorEmbeddingPolicy': ?vectorEmbeddingPolicy == null ? null : vectorEmbeddingPolicy!.toMap(),
+      'indexingPolicy': ?pulumi.Input.mapOptionalInputValue<IndexingPolicy, Map<String, dynamic>>(indexingPolicy, (value) => value.toMap()),
+      'partitionKey': ?pulumi.Input.mapOptionalInputValue<ContainerPartitionKey, Map<String, dynamic>>(partitionKey, (value) => value.toMap()),
+      'restoreParameters': ?pulumi.Input.mapOptionalInputValue<ResourceRestoreParameters, Map<String, dynamic>>(restoreParameters, (value) => value.toMap()),
+      'uniqueKeyPolicy': ?pulumi.Input.mapOptionalInputValue<UniqueKeyPolicy, Map<String, dynamic>>(uniqueKeyPolicy, (value) => value.toMap()),
+      'vectorEmbeddingPolicy': ?pulumi.Input.mapOptionalInputValue<VectorEmbeddingPolicy, Map<String, dynamic>>(vectorEmbeddingPolicy, (value) => value.toMap()),
     };
   }
 
   factory SqlContainerResource.fromMap(Map<String, dynamic> map) {
     return SqlContainerResource(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : map['analyticalStorageTtl'] as double,
-      clientEncryptionPolicy: map['clientEncryptionPolicy'] == null ? null : ClientEncryptionPolicy.fromMap((map['clientEncryptionPolicy'] as Map).cast<String, dynamic>()),
-      computedProperties: map['computedProperties'] == null ? null : pulumi.Input.decodeList<ComputedProperty>(map['computedProperties'], (value) => ComputedProperty.fromMap((value as Map).cast<String, dynamic>())),
-      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : ConflictResolutionPolicy.fromMap((map['conflictResolutionPolicy'] as Map).cast<String, dynamic>()),
-      createMode: map['createMode'] == null ? null : map['createMode'] as String,
-      defaultTtl: map['defaultTtl'] == null ? null : map['defaultTtl'] as int,
-      fullTextPolicy: map['fullTextPolicy'] == null ? null : FullTextPolicy.fromMap((map['fullTextPolicy'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      indexingPolicy: map['indexingPolicy'] == null ? null : IndexingPolicy.fromMap((map['indexingPolicy'] as Map).cast<String, dynamic>()),
-      partitionKey: map['partitionKey'] == null ? null : ContainerPartitionKey.fromMap((map['partitionKey'] as Map).cast<String, dynamic>()),
-      restoreParameters: map['restoreParameters'] == null ? null : ResourceRestoreParameters.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>()),
-      uniqueKeyPolicy: map['uniqueKeyPolicy'] == null ? null : UniqueKeyPolicy.fromMap((map['uniqueKeyPolicy'] as Map).cast<String, dynamic>()),
-      vectorEmbeddingPolicy: map['vectorEmbeddingPolicy'] == null ? null : VectorEmbeddingPolicy.fromMap((map['vectorEmbeddingPolicy'] as Map).cast<String, dynamic>()),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as double).input(),
+      clientEncryptionPolicy: map['clientEncryptionPolicy'] == null ? null : (ClientEncryptionPolicy.fromMap((map['clientEncryptionPolicy'] as Map).cast<String, dynamic>())).input(),
+      computedProperties: map['computedProperties'] == null ? null : (pulumi.Input.decodeList<ComputedProperty>(map['computedProperties'], (value) => ComputedProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : (ConflictResolutionPolicy.fromMap((map['conflictResolutionPolicy'] as Map).cast<String, dynamic>())).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
+      fullTextPolicy: map['fullTextPolicy'] == null ? null : (FullTextPolicy.fromMap((map['fullTextPolicy'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      indexingPolicy: map['indexingPolicy'] == null ? null : (IndexingPolicy.fromMap((map['indexingPolicy'] as Map).cast<String, dynamic>())).input(),
+      partitionKey: map['partitionKey'] == null ? null : (ContainerPartitionKey.fromMap((map['partitionKey'] as Map).cast<String, dynamic>())).input(),
+      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParameters.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>())).input(),
+      uniqueKeyPolicy: map['uniqueKeyPolicy'] == null ? null : (UniqueKeyPolicy.fromMap((map['uniqueKeyPolicy'] as Map).cast<String, dynamic>())).input(),
+      vectorEmbeddingPolicy: map['vectorEmbeddingPolicy'] == null ? null : (VectorEmbeddingPolicy.fromMap((map['vectorEmbeddingPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

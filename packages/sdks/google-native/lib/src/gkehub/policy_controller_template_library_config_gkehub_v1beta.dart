@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_controller_template_library_config_installation_gkehub_v1beta.dart';
 
 /// The config specifying which default library templates to install.
 class PolicyControllerTemplateLibraryConfigGkehubV1beta {
   /// Configures the manner in which the template library is installed on the cluster.
-  final PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta? installation;
+  final pulumi.Input<PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta>? installation;
 
   /// Creates a new [PolicyControllerTemplateLibraryConfigGkehubV1beta].
   /// [installation] Configures the manner in which the template library is installed on the cluster.
@@ -15,13 +16,13 @@ class PolicyControllerTemplateLibraryConfigGkehubV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'installation': ?installation == null ? null : installation!.value,
+      'installation': ?pulumi.Input.mapOptionalInputValue<PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta, String>(installation, (value) => value.value),
     };
   }
 
   factory PolicyControllerTemplateLibraryConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return PolicyControllerTemplateLibraryConfigGkehubV1beta(
-      installation: map['installation'] == null ? null : PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta.fromValue(map['installation'] as String),
+      installation: map['installation'] == null ? null : (PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta.fromValue(map['installation'] as String)).input(),
     );
   }
 }

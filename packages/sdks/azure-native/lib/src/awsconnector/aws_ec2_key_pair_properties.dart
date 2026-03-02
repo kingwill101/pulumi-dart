@@ -6,19 +6,19 @@ import 'tag.dart';
 /// Definition of awsEc2KeyPair
 class AwsEc2KeyPairProperties {
   /// Property keyFingerprint
-  final String? keyFingerprint;
+  final pulumi.Input<String>? keyFingerprint;
   /// The format of the key pair. Default: ``pem``
-  final String? keyFormat;
+  final pulumi.Input<String>? keyFormat;
   /// A unique name for the key pair. Constraints: Up to 255 ASCII characters
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
   /// Property keyPairId
-  final String? keyPairId;
+  final pulumi.Input<String>? keyPairId;
   /// The type of key pair. Note that ED25519 keys are not supported for Windows instances. If the ``PublicKeyMaterial`` property is specified, the ``KeyType`` property is ignored, and the key type is inferred from the ``PublicKeyMaterial`` value. Default: ``rsa``
-  final String? keyType;
+  final pulumi.Input<String>? keyType;
   /// The public key material. The ``PublicKeyMaterial`` property is used to import a key pair. If this property is not specified, then a new key pair will be created.
-  final String? publicKeyMaterial;
+  final pulumi.Input<String>? publicKeyMaterial;
   /// The tags to apply to the key pair.
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
 
   /// Creates a new [AwsEc2KeyPairProperties].
   /// [keyFingerprint] Property keyFingerprint
@@ -46,19 +46,19 @@ class AwsEc2KeyPairProperties {
       'keyPairId': ?keyPairId,
       'keyType': ?keyType,
       'publicKeyMaterial': ?publicKeyMaterial,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AwsEc2KeyPairProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2KeyPairProperties(
-      keyFingerprint: map['keyFingerprint'] == null ? null : map['keyFingerprint'] as String,
-      keyFormat: map['keyFormat'] == null ? null : map['keyFormat'] as String,
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      keyPairId: map['keyPairId'] == null ? null : map['keyPairId'] as String,
-      keyType: map['keyType'] == null ? null : map['keyType'] as String,
-      publicKeyMaterial: map['publicKeyMaterial'] == null ? null : map['publicKeyMaterial'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
+      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint'] as String).input(),
+      keyFormat: map['keyFormat'] == null ? null : (map['keyFormat'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyPairId: map['keyPairId'] == null ? null : (map['keyPairId'] as String).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
+      publicKeyMaterial: map['publicKeyMaterial'] == null ? null : (map['publicKeyMaterial'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

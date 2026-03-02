@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkGatewayVpnClientConfigurationRevokedCertificate {
   /// Specifies the name of the certificate resource.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the public data of the certificate.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
 
   /// Creates a new [VirtualNetworkGatewayVpnClientConfigurationRevokedCertificate].
   /// [name] Specifies the name of the certificate resource.
@@ -24,8 +25,8 @@ class VirtualNetworkGatewayVpnClientConfigurationRevokedCertificate {
 
   factory VirtualNetworkGatewayVpnClientConfigurationRevokedCertificate.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayVpnClientConfigurationRevokedCertificate(
-      name: map['name'] as String,
-      thumbprint: map['thumbprint'] as String,
+      name: (map['name'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
     );
   }
 }

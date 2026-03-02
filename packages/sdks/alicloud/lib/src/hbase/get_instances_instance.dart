@@ -1,51 +1,52 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// The Backup Status of the instance.
-  final String backupStatus;
+  final pulumi.Input<String> backupStatus;
   /// Core node disk size, unit:GB.
-  final int coreDiskSize;
+  final pulumi.Input<int> coreDiskSize;
   /// Cloud_ssd or cloud_efficiency
-  final String coreDiskType;
+  final pulumi.Input<String> coreDiskType;
   /// Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
-  final String coreInstanceType;
+  final pulumi.Input<String> coreInstanceType;
   /// Same with "core_instance_quantity"
-  final int coreNodeCount;
+  final pulumi.Input<int> coreNodeCount;
   /// The created time of the instance.
-  final String createdTime;
+  final pulumi.Input<String> createdTime;
   /// The switch of delete protection.
-  final bool deletionProtection;
+  final pulumi.Input<bool> deletionProtection;
   /// The engine of the instance.
-  final String engine;
+  final pulumi.Input<String> engine;
   /// The engine_version of the instance.
-  final String engineVersion;
+  final pulumi.Input<String> engineVersion;
   /// The expire time of the instance.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
   /// The ID of the HBase instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
-  final String masterInstanceType;
+  final pulumi.Input<String> masterInstanceType;
   /// The node count of master
-  final int masterNodeCount;
+  final pulumi.Input<int> masterNodeCount;
   /// The name of the HBase instance.
-  final String name;
+  final pulumi.Input<String> name;
   /// Classic network or VPC.
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
-  final String payType;
+  final pulumi.Input<String> payType;
   /// Region ID the instance belongs to.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// Status of the instance.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// VPC ID the instance belongs to.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// VSwitch ID the instance belongs to.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// Zone ID the instance belongs to.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetInstancesInstance].
   /// [backupStatus] The Backup Status of the instance.
@@ -124,28 +125,28 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      backupStatus: map['backupStatus'] as String,
-      coreDiskSize: map['coreDiskSize'] as int,
-      coreDiskType: map['coreDiskType'] as String,
-      coreInstanceType: map['coreInstanceType'] as String,
-      coreNodeCount: map['coreNodeCount'] as int,
-      createdTime: map['createdTime'] as String,
-      deletionProtection: map['deletionProtection'] as bool,
-      engine: map['engine'] as String,
-      engineVersion: map['engineVersion'] as String,
-      expireTime: map['expireTime'] as String,
-      id: map['id'] as String,
-      masterInstanceType: map['masterInstanceType'] as String,
-      masterNodeCount: map['masterNodeCount'] as int,
-      name: map['name'] as String,
-      networkType: map['networkType'] as String,
-      payType: map['payType'] as String,
-      regionId: map['regionId'] as String,
-      status: map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      backupStatus: (map['backupStatus'] as String).input(),
+      coreDiskSize: (map['coreDiskSize'] as int).input(),
+      coreDiskType: (map['coreDiskType'] as String).input(),
+      coreInstanceType: (map['coreInstanceType'] as String).input(),
+      coreNodeCount: (map['coreNodeCount'] as int).input(),
+      createdTime: (map['createdTime'] as String).input(),
+      deletionProtection: (map['deletionProtection'] as bool).input(),
+      engine: (map['engine'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      masterInstanceType: (map['masterInstanceType'] as String).input(),
+      masterNodeCount: (map['masterNodeCount'] as int).input(),
+      name: (map['name'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      payType: (map['payType'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

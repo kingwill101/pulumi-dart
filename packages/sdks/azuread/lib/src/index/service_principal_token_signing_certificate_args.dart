@@ -21,13 +21,10 @@ class ServicePrincipalTokenSigningCertificateArgs {
   /// [endDate] The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
   /// [servicePrincipalId] The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
   ServicePrincipalTokenSigningCertificateArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? endDate,
-    required pulumi.Output<String> servicePrincipalId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      endDate = pulumi.Input.asOptionalInput<String>(endDate),
-      servicePrincipalId = pulumi.Input.asInput<String>(servicePrincipalId);
+    this.displayName,
+    this.endDate,
+    required this.servicePrincipalId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class ServicePrincipalTokenSigningCertificateArgs {
 
   factory ServicePrincipalTokenSigningCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalTokenSigningCertificateArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      endDate: map['endDate'] == null ? null : pulumi.Output.create<String>(map['endDate'] as String),
-      servicePrincipalId: pulumi.Output.create<String>(map['servicePrincipalId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      servicePrincipalId: (map['servicePrincipalId'] as String).input(),
     );
   }
 }

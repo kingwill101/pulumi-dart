@@ -5,19 +5,19 @@ import 'get_app_spec_service_image_deploy_on_push.dart';
 
 class GetAppSpecServiceImage {
   /// Whether to automatically deploy new commits made to the repo.
-  final List<GetAppSpecServiceImageDeployOnPush> deployOnPushes;
+  final pulumi.Input<List<GetAppSpecServiceImageDeployOnPush>> deployOnPushes;
   /// The image digest. Cannot be specified if `tag` is provided.
-  final String? digest;
+  final pulumi.Input<String>? digest;
   /// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
-  final String? registry;
+  final pulumi.Input<String>? registry;
   /// Access credentials for third-party registries
-  final String? registryCredentials;
+  final pulumi.Input<String>? registryCredentials;
   /// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
-  final String registryType;
+  final pulumi.Input<String> registryType;
   /// The repository name.
-  final String repository;
+  final pulumi.Input<String> repository;
   /// The repository tag. Defaults to `latest` if not provided.
-  final String? tag;
+  final pulumi.Input<String>? tag;
 
   /// Creates a new [GetAppSpecServiceImage].
   /// [deployOnPushes] Whether to automatically deploy new commits made to the repo.
@@ -39,7 +39,7 @@ class GetAppSpecServiceImage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deployOnPushes': pulumi.Input.encodeList<GetAppSpecServiceImageDeployOnPush, Map<String, dynamic>>(deployOnPushes, (value) => value.toMap()),
+      'deployOnPushes': pulumi.Input.mapInputValue<List<GetAppSpecServiceImageDeployOnPush>, List<Map<String, dynamic>>>(deployOnPushes, (value) => pulumi.Input.encodeList<GetAppSpecServiceImageDeployOnPush, Map<String, dynamic>>(value, (value) => value.toMap())),
       'digest': ?digest,
       'registry': ?registry,
       'registryCredentials': ?registryCredentials,
@@ -51,13 +51,13 @@ class GetAppSpecServiceImage {
 
   factory GetAppSpecServiceImage.fromMap(Map<String, dynamic> map) {
     return GetAppSpecServiceImage(
-      deployOnPushes: pulumi.Input.decodeList<GetAppSpecServiceImageDeployOnPush>(map['deployOnPushes'], (value) => GetAppSpecServiceImageDeployOnPush.fromMap((value as Map).cast<String, dynamic>())),
-      digest: map['digest'] == null ? null : map['digest'] as String,
-      registry: map['registry'] == null ? null : map['registry'] as String,
-      registryCredentials: map['registryCredentials'] == null ? null : map['registryCredentials'] as String,
-      registryType: map['registryType'] as String,
-      repository: map['repository'] as String,
-      tag: map['tag'] == null ? null : map['tag'] as String,
+      deployOnPushes: (pulumi.Input.decodeList<GetAppSpecServiceImageDeployOnPush>(map['deployOnPushes'], (value) => GetAppSpecServiceImageDeployOnPush.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
+      registry: map['registry'] == null ? null : (map['registry'] as String).input(),
+      registryCredentials: map['registryCredentials'] == null ? null : (map['registryCredentials'] as String).input(),
+      registryType: (map['registryType'] as String).input(),
+      repository: (map['repository'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
     );
   }
 }

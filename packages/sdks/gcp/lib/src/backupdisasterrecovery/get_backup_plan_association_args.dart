@@ -20,13 +20,10 @@ class GetBackupPlanAssociationArgs {
   /// [location] The location in which the Backupplan association resource belongs.
   /// [project] Optional.
   GetBackupPlanAssociationArgs({
-    required pulumi.Output<String> backupPlanAssociationId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      backupPlanAssociationId = pulumi.Input.asInput<String>(backupPlanAssociationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.backupPlanAssociationId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetBackupPlanAssociationArgs {
 
   factory GetBackupPlanAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanAssociationArgs(
-      backupPlanAssociationId: pulumi.Output.create<String>(map['backupPlanAssociationId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backupPlanAssociationId: (map['backupPlanAssociationId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

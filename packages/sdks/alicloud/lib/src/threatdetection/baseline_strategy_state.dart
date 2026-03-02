@@ -42,25 +42,16 @@ class BaselineStrategyState {
   /// [startTime] The baseline check policy start time.
   /// [targetType] The method of adding assets that take effect from the policy. Value:
   BaselineStrategyState({
-    pulumi.Output<String>? baselineStrategyId,
-    pulumi.Output<String>? baselineStrategyName,
-    pulumi.Output<String>? customType,
-    pulumi.Output<int>? cycleDays,
-    pulumi.Output<int>? cycleStartTime,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? riskSubTypeName,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? targetType,
-  }) :
-      baselineStrategyId = pulumi.Input.asOptionalInput<String>(baselineStrategyId),
-      baselineStrategyName = pulumi.Input.asOptionalInput<String>(baselineStrategyName),
-      customType = pulumi.Input.asOptionalInput<String>(customType),
-      cycleDays = pulumi.Input.asOptionalInput<int>(cycleDays),
-      cycleStartTime = pulumi.Input.asOptionalInput<int>(cycleStartTime),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      riskSubTypeName = pulumi.Input.asOptionalInput<String>(riskSubTypeName),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      targetType = pulumi.Input.asOptionalInput<String>(targetType);
+    this.baselineStrategyId,
+    this.baselineStrategyName,
+    this.customType,
+    this.cycleDays,
+    this.cycleStartTime,
+    this.endTime,
+    this.riskSubTypeName,
+    this.startTime,
+    this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,15 +69,15 @@ class BaselineStrategyState {
 
   factory BaselineStrategyState.fromMap(Map<String, dynamic> map) {
     return BaselineStrategyState(
-      baselineStrategyId: map['baselineStrategyId'] == null ? null : pulumi.Output.create<String>(map['baselineStrategyId'] as String),
-      baselineStrategyName: map['baselineStrategyName'] == null ? null : pulumi.Output.create<String>(map['baselineStrategyName'] as String),
-      customType: map['customType'] == null ? null : pulumi.Output.create<String>(map['customType'] as String),
-      cycleDays: map['cycleDays'] == null ? null : pulumi.Output.create<int>(map['cycleDays'] as int),
-      cycleStartTime: map['cycleStartTime'] == null ? null : pulumi.Output.create<int>(map['cycleStartTime'] as int),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      riskSubTypeName: map['riskSubTypeName'] == null ? null : pulumi.Output.create<String>(map['riskSubTypeName'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      targetType: map['targetType'] == null ? null : pulumi.Output.create<String>(map['targetType'] as String),
+      baselineStrategyId: map['baselineStrategyId'] == null ? null : (map['baselineStrategyId'] as String).input(),
+      baselineStrategyName: map['baselineStrategyName'] == null ? null : (map['baselineStrategyName'] as String).input(),
+      customType: map['customType'] == null ? null : (map['customType'] as String).input(),
+      cycleDays: map['cycleDays'] == null ? null : (map['cycleDays'] as int).input(),
+      cycleStartTime: map['cycleStartTime'] == null ? null : (map['cycleStartTime'] as int).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      riskSubTypeName: map['riskSubTypeName'] == null ? null : (map['riskSubTypeName'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
     );
   }
 }

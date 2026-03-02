@@ -40,27 +40,17 @@ class InstanceArgs {
   /// [planId] The ID of the plan. You can use the `alicloud.simpleapplicationserver.getServerPlans`  to query all the plans provided by Simple Application Server in the specified region.
   /// [status] The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
   InstanceArgs({
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<int>? autoRenewPeriod,
-    pulumi.Output<int>? dataDiskSize,
-    required pulumi.Output<String> imageId,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? paymentType,
-    required pulumi.Output<int> period,
-    required pulumi.Output<String> planId,
-    pulumi.Output<String>? status,
-  }) :
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      autoRenewPeriod = pulumi.Input.asOptionalInput<int>(autoRenewPeriod),
-      dataDiskSize = pulumi.Input.asOptionalInput<int>(dataDiskSize),
-      imageId = pulumi.Input.asInput<String>(imageId),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      period = pulumi.Input.asInput<int>(period),
-      planId = pulumi.Input.asInput<String>(planId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.autoRenew,
+    this.autoRenewPeriod,
+    this.dataDiskSize,
+    required this.imageId,
+    this.instanceName,
+    this.password,
+    this.paymentType,
+    required this.period,
+    required this.planId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : pulumi.Output.create<int>(map['autoRenewPeriod'] as int),
-      dataDiskSize: map['dataDiskSize'] == null ? null : pulumi.Output.create<int>(map['dataDiskSize'] as int),
-      imageId: pulumi.Output.create<String>(map['imageId'] as String),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      period: pulumi.Output.create<int>(map['period'] as int),
-      planId: pulumi.Output.create<String>(map['planId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod'] as int).input(),
+      dataDiskSize: map['dataDiskSize'] == null ? null : (map['dataDiskSize'] as int).input(),
+      imageId: (map['imageId'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      period: (map['period'] as int).input(),
+      planId: (map['planId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

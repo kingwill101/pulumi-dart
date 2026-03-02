@@ -1,41 +1,42 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFlowlogsFlowlog {
   /// The ID of Cen instance.
-  final String cenId;
+  final pulumi.Input<String> cenId;
   /// The createTime of flowlog.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the flowlog.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of FlowLog.
-  final String flowLogId;
+  final pulumi.Input<String> flowLogId;
   /// The name of the flowlog.
-  final String flowLogName;
+  final pulumi.Input<String> flowLogName;
   /// Flowlog Version.
-  final String flowLogVersion;
+  final pulumi.Input<String> flowLogVersion;
   /// The ID of FlowLog.
-  final String id;
+  final pulumi.Input<String> id;
   /// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
-  final int interval;
+  final pulumi.Input<int> interval;
   /// (Available since v1.236.0) Log Format.
-  final String logFormatString;
+  final pulumi.Input<String> logFormatString;
   /// The LogStore that stores the flowlog.
-  final String logStoreName;
+  final pulumi.Input<String> logStoreName;
   /// The Project that stores the flowlog.
-  final String projectName;
+  final pulumi.Input<String> projectName;
   /// (Available since v1.236.0) Total number of records.
-  final String recordTotal;
+  final pulumi.Input<String> recordTotal;
   /// Region id
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
-  final String status;
+  final pulumi.Input<String> status;
   /// The tag of the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// (Available since v1.236.0) Cross-region Connection ID or VBR connection ID.> This parameter is required.
-  final String transitRouterAttachmentId;
+  final pulumi.Input<String> transitRouterAttachmentId;
   /// Transit Router ID
-  final String transitRouterId;
+  final pulumi.Input<String> transitRouterId;
 
   /// Creates a new [GetFlowlogsFlowlog].
   /// [cenId] The ID of Cen instance.
@@ -99,23 +100,23 @@ class GetFlowlogsFlowlog {
 
   factory GetFlowlogsFlowlog.fromMap(Map<String, dynamic> map) {
     return GetFlowlogsFlowlog(
-      cenId: map['cenId'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      flowLogId: map['flowLogId'] as String,
-      flowLogName: map['flowLogName'] as String,
-      flowLogVersion: map['flowLogVersion'] as String,
-      id: map['id'] as String,
-      interval: map['interval'] as int,
-      logFormatString: map['logFormatString'] as String,
-      logStoreName: map['logStoreName'] as String,
-      projectName: map['projectName'] as String,
-      recordTotal: map['recordTotal'] as String,
-      regionId: map['regionId'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] as String,
-      transitRouterId: map['transitRouterId'] as String,
+      cenId: (map['cenId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      flowLogId: (map['flowLogId'] as String).input(),
+      flowLogName: (map['flowLogName'] as String).input(),
+      flowLogVersion: (map['flowLogVersion'] as String).input(),
+      id: (map['id'] as String).input(),
+      interval: (map['interval'] as int).input(),
+      logFormatString: (map['logFormatString'] as String).input(),
+      logStoreName: (map['logStoreName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      recordTotal: (map['recordTotal'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }
 }

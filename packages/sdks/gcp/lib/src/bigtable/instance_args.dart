@@ -48,23 +48,15 @@ class InstanceArgs {
   /// [name] The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
   /// [project] The ID of the project in which the resource belongs. If it
   InstanceArgs({
-    pulumi.Output<List<InstanceCluster>>? clusters,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      clusters = pulumi.Input.asOptionalInput<List<InstanceCluster>>(clusters),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.clusters,
+    this.deletionProtection,
+    this.displayName,
+    this.forceDestroy,
+    this.instanceType,
+    this.labels,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,14 +73,14 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      clusters: map['clusters'] == null ? null : pulumi.Output.create<List<InstanceCluster>>(pulumi.Input.decodeList<InstanceCluster>(map['clusters'], (value) => InstanceCluster.fromMap((value as Map).cast<String, dynamic>()))),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      clusters: map['clusters'] == null ? null : (pulumi.Input.decodeList<InstanceCluster>(map['clusters'], (value) => InstanceCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

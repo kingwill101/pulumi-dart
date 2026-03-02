@@ -19,13 +19,10 @@ class GetInstanceArgs {
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [zone] The ID of the zone in which the resource belongs. If it is not provided, the provider zone is used.
   GetInstanceArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.instanceId,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

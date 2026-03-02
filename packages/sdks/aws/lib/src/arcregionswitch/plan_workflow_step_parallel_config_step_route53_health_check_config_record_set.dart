@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet {
   /// Record set identifier.
-  final String recordSetIdentifier;
+  final pulumi.Input<String> recordSetIdentifier;
   /// AWS region.
-  final String region;
+  final pulumi.Input<String> region;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet].
   /// [recordSetIdentifier] Record set identifier.
@@ -24,8 +25,8 @@ class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet {
 
   factory PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet(
-      recordSetIdentifier: map['recordSetIdentifier'] as String,
-      region: map['region'] as String,
+      recordSetIdentifier: (map['recordSetIdentifier'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

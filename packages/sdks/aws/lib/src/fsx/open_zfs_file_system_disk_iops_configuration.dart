@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OpenZfsFileSystemDiskIopsConfiguration {
   /// The total number of SSD IOPS provisioned for the file system.
-  final int? iops;
+  final pulumi.Input<int>? iops;
   /// Specifies whether the number of IOPS for the file system is using the system. Valid values are `AUTOMATIC` and `USER_PROVISIONED`. Default value is `AUTOMATIC`.
-  final String? mode;
+  final pulumi.Input<String>? mode;
 
   /// Creates a new [OpenZfsFileSystemDiskIopsConfiguration].
   /// [iops] The total number of SSD IOPS provisioned for the file system.
@@ -24,8 +25,8 @@ class OpenZfsFileSystemDiskIopsConfiguration {
 
   factory OpenZfsFileSystemDiskIopsConfiguration.fromMap(Map<String, dynamic> map) {
     return OpenZfsFileSystemDiskIopsConfiguration(
-      iops: map['iops'] == null ? null : map['iops'] as int,
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
     );
   }
 }

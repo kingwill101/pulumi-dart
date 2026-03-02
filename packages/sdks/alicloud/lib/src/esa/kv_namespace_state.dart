@@ -16,13 +16,10 @@ class KvNamespaceState {
   /// [kvNamespace] The name of the namespace.
   /// [status] The status of the namespace.
   KvNamespaceState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kvNamespace,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kvNamespace = pulumi.Input.asOptionalInput<String>(kvNamespace),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    this.kvNamespace,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class KvNamespaceState {
 
   factory KvNamespaceState.fromMap(Map<String, dynamic> map) {
     return KvNamespaceState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kvNamespace: map['kvNamespace'] == null ? null : pulumi.Output.create<String>(map['kvNamespace'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kvNamespace: map['kvNamespace'] == null ? null : (map['kvNamespace'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

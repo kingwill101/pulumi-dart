@@ -25,17 +25,12 @@ class GetScheduleArgs {
   /// [scheduleName] The name of the schedule that uniquely identifies it.
   /// [top] The maximum number of resources to return from the operation. Example: '$top=10'.
   GetScheduleArgs({
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scheduleName,
-    pulumi.Output<int>? top,
-  }) :
-      poolName = pulumi.Input.asInput<String>(poolName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scheduleName = pulumi.Input.asInput<String>(scheduleName),
-      top = pulumi.Input.asOptionalInput<int>(top);
+    required this.poolName,
+    required this.projectName,
+    required this.resourceGroupName,
+    required this.scheduleName,
+    this.top,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetScheduleArgs {
 
   factory GetScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduleArgs(
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scheduleName: pulumi.Output.create<String>(map['scheduleName'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
+      poolName: (map['poolName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scheduleName: (map['scheduleName'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

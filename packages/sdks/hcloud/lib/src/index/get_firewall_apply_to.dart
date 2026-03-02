@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallApplyTo {
   /// (string) Label Selector to select servers the firewall is applied to. Empty if a server is directly
   /// referenced
-  final String labelSelector;
+  final pulumi.Input<String> labelSelector;
   /// (int) ID of a server where the firewall is applied to. `0` if applied to a label_selector
-  final int server;
+  final pulumi.Input<int> server;
 
   /// Creates a new [GetFirewallApplyTo].
   /// [labelSelector] (string) Label Selector to select servers the firewall is applied to. Empty if a server is directly
@@ -25,8 +26,8 @@ class GetFirewallApplyTo {
 
   factory GetFirewallApplyTo.fromMap(Map<String, dynamic> map) {
     return GetFirewallApplyTo(
-      labelSelector: map['labelSelector'] as String,
-      server: map['server'] as int,
+      labelSelector: (map['labelSelector'] as String).input(),
+      server: (map['server'] as int).input(),
     );
   }
 }

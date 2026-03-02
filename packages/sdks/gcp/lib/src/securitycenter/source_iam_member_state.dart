@@ -22,19 +22,13 @@ class SourceIamMemberState {
   /// [role] Optional.
   /// [source] Optional.
   SourceIamMemberState({
-    pulumi.Output<SourceIamMemberCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? organization,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? source,
-  }) :
-      condition = pulumi.Input.asOptionalInput<SourceIamMemberCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      organization = pulumi.Input.asOptionalInput<String>(organization),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    this.condition,
+    this.etag,
+    this.member,
+    this.organization,
+    this.role,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,12 +43,12 @@ class SourceIamMemberState {
 
   factory SourceIamMemberState.fromMap(Map<String, dynamic> map) {
     return SourceIamMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<SourceIamMemberCondition>(SourceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      organization: map['organization'] == null ? null : pulumi.Output.create<String>(map['organization'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      condition: map['condition'] == null ? null : (SourceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

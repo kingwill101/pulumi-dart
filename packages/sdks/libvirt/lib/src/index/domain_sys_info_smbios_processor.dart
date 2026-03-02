@@ -5,7 +5,7 @@ import 'domain_sys_info_smbios_processor_entry.dart';
 
 class DomainSysInfoSmbiosProcessor {
   /// Specifies individual entries for processor information in the SMBIOS.
-  final List<DomainSysInfoSmbiosProcessorEntry>? entries;
+  final pulumi.Input<List<DomainSysInfoSmbiosProcessorEntry>>? entries;
 
   /// Creates a new [DomainSysInfoSmbiosProcessor].
   /// [entries] Specifies individual entries for processor information in the SMBIOS.
@@ -15,13 +15,13 @@ class DomainSysInfoSmbiosProcessor {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries': ?entries == null ? null : pulumi.Input.encodeList<DomainSysInfoSmbiosProcessorEntry, Map<String, dynamic>>(entries!, (value) => value.toMap()),
+      'entries': ?pulumi.Input.mapOptionalInputValue<List<DomainSysInfoSmbiosProcessorEntry>, List<Map<String, dynamic>>>(entries, (value) => pulumi.Input.encodeList<DomainSysInfoSmbiosProcessorEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainSysInfoSmbiosProcessor.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosProcessor(
-      entries: map['entries'] == null ? null : pulumi.Input.decodeList<DomainSysInfoSmbiosProcessorEntry>(map['entries'], (value) => DomainSysInfoSmbiosProcessorEntry.fromMap((value as Map).cast<String, dynamic>())),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosProcessorEntry>(map['entries'], (value) => DomainSysInfoSmbiosProcessorEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

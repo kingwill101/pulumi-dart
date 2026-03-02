@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a DNS certificate challenge.
 class CertDnsChallengeResponse {
   /// The domain name upon which the DNS challenge must be satisfied.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The value that must be present as a TXT record on the domain name to satisfy the challenge.
-  final String token;
+  final pulumi.Input<String> token;
 
   /// Creates a new [CertDnsChallengeResponse].
   /// [domainName] The domain name upon which the DNS challenge must be satisfied.
@@ -25,8 +26,8 @@ class CertDnsChallengeResponse {
 
   factory CertDnsChallengeResponse.fromMap(Map<String, dynamic> map) {
     return CertDnsChallengeResponse(
-      domainName: map['domainName'] as String,
-      token: map['token'] as String,
+      domainName: (map['domainName'] as String).input(),
+      token: (map['token'] as String).input(),
     );
   }
 }

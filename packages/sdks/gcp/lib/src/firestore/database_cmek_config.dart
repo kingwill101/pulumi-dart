@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseCmekConfig {
   /// (Output)
@@ -8,7 +9,7 @@ class DatabaseCmekConfig {
   /// multiple in-use key versions.
   /// The expected format is
   /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
-  final List<String>? activeKeyVersions;
+  final pulumi.Input<List<String>>? activeKeyVersions;
   /// The resource ID of a Cloud KMS key. If set, the database created will
   /// be a Customer-managed Encryption Key (CMEK) database encrypted with
   /// this key. This feature is allowlist only in initial launch.
@@ -20,7 +21,7 @@ class DatabaseCmekConfig {
   /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
   /// How to retrieve this resource ID is listed at
   /// https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
-  final String kmsKeyName;
+  final pulumi.Input<String> kmsKeyName;
 
   /// Creates a new [DatabaseCmekConfig].
   /// [activeKeyVersions] (Output)
@@ -39,8 +40,8 @@ class DatabaseCmekConfig {
 
   factory DatabaseCmekConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseCmekConfig(
-      activeKeyVersions: map['activeKeyVersions'] == null ? null : (map['activeKeyVersions'] as List).cast<String>(),
-      kmsKeyName: map['kmsKeyName'] as String,
+      activeKeyVersions: map['activeKeyVersions'] == null ? null : ((map['activeKeyVersions'] as List).cast<String>()).input(),
+      kmsKeyName: (map['kmsKeyName'] as String).input(),
     );
   }
 }

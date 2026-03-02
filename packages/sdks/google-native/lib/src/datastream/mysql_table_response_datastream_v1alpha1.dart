@@ -6,9 +6,9 @@ import 'mysql_column_response_datastream_v1alpha1.dart';
 /// MySQL table.
 class MysqlTableResponseDatastreamV1alpha1 {
   /// MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
-  final List<MysqlColumnResponseDatastreamV1alpha1> mysqlColumns;
+  final pulumi.Input<List<MysqlColumnResponseDatastreamV1alpha1>> mysqlColumns;
   /// Table name.
-  final String tableName;
+  final pulumi.Input<String> tableName;
 
   /// Creates a new [MysqlTableResponseDatastreamV1alpha1].
   /// [mysqlColumns] MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
@@ -20,15 +20,15 @@ class MysqlTableResponseDatastreamV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlColumns': pulumi.Input.encodeList<MysqlColumnResponseDatastreamV1alpha1, Map<String, dynamic>>(mysqlColumns, (value) => value.toMap()),
+      'mysqlColumns': pulumi.Input.mapInputValue<List<MysqlColumnResponseDatastreamV1alpha1>, List<Map<String, dynamic>>>(mysqlColumns, (value) => pulumi.Input.encodeList<MysqlColumnResponseDatastreamV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tableName': tableName,
     };
   }
 
   factory MysqlTableResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return MysqlTableResponseDatastreamV1alpha1(
-      mysqlColumns: pulumi.Input.decodeList<MysqlColumnResponseDatastreamV1alpha1>(map['mysqlColumns'], (value) => MysqlColumnResponseDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
-      tableName: map['tableName'] as String,
+      mysqlColumns: (pulumi.Input.decodeList<MysqlColumnResponseDatastreamV1alpha1>(map['mysqlColumns'], (value) => MysqlColumnResponseDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class RelationshipArgs {
   /// [relationshipName] Name of the relationship. Must be unique within a health model. For example, a concatenation of parentEntityName and childEntityName can be used as the name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   RelationshipArgs({
-    required pulumi.Output<String> healthModelName,
-    pulumi.Output<RelationshipProperties>? properties,
-    pulumi.Output<String>? relationshipName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      healthModelName = pulumi.Input.asInput<String>(healthModelName),
-      properties = pulumi.Input.asOptionalInput<RelationshipProperties>(properties),
-      relationshipName = pulumi.Input.asOptionalInput<String>(relationshipName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.healthModelName,
+    this.properties,
+    this.relationshipName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class RelationshipArgs {
 
   factory RelationshipArgs.fromMap(Map<String, dynamic> map) {
     return RelationshipArgs(
-      healthModelName: pulumi.Output.create<String>(map['healthModelName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<RelationshipProperties>(RelationshipProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      relationshipName: map['relationshipName'] == null ? null : pulumi.Output.create<String>(map['relationshipName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      healthModelName: (map['healthModelName'] as String).input(),
+      properties: map['properties'] == null ? null : (RelationshipProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      relationshipName: map['relationshipName'] == null ? null : (map['relationshipName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetTaxonomyDatacatalogV1beta1Args {
   /// [project] Optional.
   /// [taxonomyId] Required.
   GetTaxonomyDatacatalogV1beta1Args({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> taxonomyId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      taxonomyId = pulumi.Input.asInput<String>(taxonomyId);
+    required this.location,
+    this.project,
+    required this.taxonomyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetTaxonomyDatacatalogV1beta1Args {
 
   factory GetTaxonomyDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTaxonomyDatacatalogV1beta1Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      taxonomyId: pulumi.Output.create<String>(map['taxonomyId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      taxonomyId: (map['taxonomyId'] as String).input(),
     );
   }
 }

@@ -41,23 +41,15 @@ class ResiliencyPolicyArgs {
   /// [tier] Resiliency Policy Tier.
   /// [timeouts] Optional.
   ResiliencyPolicyArgs({
-    pulumi.Output<String>? dataLocationConstraint,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<ResiliencyPolicyPolicy>? policy,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> tier,
-    pulumi.Output<ResiliencyPolicyTimeouts>? timeouts,
-  }) :
-      dataLocationConstraint = pulumi.Input.asOptionalInput<String>(dataLocationConstraint),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policy = pulumi.Input.asOptionalInput<ResiliencyPolicyPolicy>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tier = pulumi.Input.asInput<String>(tier),
-      timeouts = pulumi.Input.asOptionalInput<ResiliencyPolicyTimeouts>(timeouts);
+    this.dataLocationConstraint,
+    this.description,
+    this.name,
+    this.policy,
+    this.region,
+    this.tags,
+    required this.tier,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,14 +66,14 @@ class ResiliencyPolicyArgs {
 
   factory ResiliencyPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResiliencyPolicyArgs(
-      dataLocationConstraint: map['dataLocationConstraint'] == null ? null : pulumi.Output.create<String>(map['dataLocationConstraint'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<ResiliencyPolicyPolicy>(ResiliencyPolicyPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tier: pulumi.Output.create<String>(map['tier'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ResiliencyPolicyTimeouts>(ResiliencyPolicyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      dataLocationConstraint: map['dataLocationConstraint'] == null ? null : (map['dataLocationConstraint'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policy: map['policy'] == null ? null : (ResiliencyPolicyPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tier: (map['tier'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (ResiliencyPolicyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

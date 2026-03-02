@@ -27,17 +27,12 @@ class ReservedInstanceArgs {
   /// [reservationId] Customer-specified identifier to track this reservation.
   /// [tags] Map of tags to assign to the DB reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ReservedInstanceArgs({
-    pulumi.Output<int>? instanceCount,
-    required pulumi.Output<String> offeringId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? reservationId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      instanceCount = pulumi.Input.asOptionalInput<int>(instanceCount),
-      offeringId = pulumi.Input.asInput<String>(offeringId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reservationId = pulumi.Input.asOptionalInput<String>(reservationId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.instanceCount,
+    required this.offeringId,
+    this.region,
+    this.reservationId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ReservedInstanceArgs {
 
   factory ReservedInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ReservedInstanceArgs(
-      instanceCount: map['instanceCount'] == null ? null : pulumi.Output.create<int>(map['instanceCount'] as int),
-      offeringId: pulumi.Output.create<String>(map['offeringId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reservationId: map['reservationId'] == null ? null : pulumi.Output.create<String>(map['reservationId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      offeringId: (map['offeringId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reservationId: map['reservationId'] == null ? null : (map['reservationId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

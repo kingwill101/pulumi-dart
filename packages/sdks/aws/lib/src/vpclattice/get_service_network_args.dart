@@ -18,13 +18,10 @@ class GetServiceNetworkArgs {
   /// [serviceNetworkIdentifier] Identifier of the service network.
   /// [tags] Optional.
   GetServiceNetworkArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceNetworkIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceNetworkIdentifier = pulumi.Input.asInput<String>(serviceNetworkIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.region,
+    required this.serviceNetworkIdentifier,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetServiceNetworkArgs {
 
   factory GetServiceNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceNetworkArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceNetworkIdentifier: pulumi.Output.create<String>(map['serviceNetworkIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceNetworkIdentifier: (map['serviceNetworkIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

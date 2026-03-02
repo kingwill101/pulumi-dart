@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExternalDatasetReferenceResponse {
   /// [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
-  final String connection;
+  final pulumi.Input<String> connection;
   /// [Required] External source that backs this dataset.
-  final String externalSource;
+  final pulumi.Input<String> externalSource;
 
   /// Creates a new [ExternalDatasetReferenceResponse].
   /// [connection] [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
@@ -24,8 +25,8 @@ class ExternalDatasetReferenceResponse {
 
   factory ExternalDatasetReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ExternalDatasetReferenceResponse(
-      connection: map['connection'] as String,
-      externalSource: map['externalSource'] as String,
+      connection: (map['connection'] as String).input(),
+      externalSource: (map['externalSource'] as String).input(),
     );
   }
 }

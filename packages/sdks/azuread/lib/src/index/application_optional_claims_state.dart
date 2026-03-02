@@ -24,15 +24,11 @@ class ApplicationOptionalClaimsState {
   /// [idTokens] One or more `id_token` blocks as documented below.
   /// [saml2Tokens] One or more `saml2_token` blocks as documented below.
   ApplicationOptionalClaimsState({
-    pulumi.Output<List<ApplicationOptionalClaimsAccessToken>>? accessTokens,
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<List<ApplicationOptionalClaimsIdToken>>? idTokens,
-    pulumi.Output<List<ApplicationOptionalClaimsSaml2Token>>? saml2Tokens,
-  }) :
-      accessTokens = pulumi.Input.asOptionalInput<List<ApplicationOptionalClaimsAccessToken>>(accessTokens),
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      idTokens = pulumi.Input.asOptionalInput<List<ApplicationOptionalClaimsIdToken>>(idTokens),
-      saml2Tokens = pulumi.Input.asOptionalInput<List<ApplicationOptionalClaimsSaml2Token>>(saml2Tokens);
+    this.accessTokens,
+    this.applicationId,
+    this.idTokens,
+    this.saml2Tokens,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ApplicationOptionalClaimsState {
 
   factory ApplicationOptionalClaimsState.fromMap(Map<String, dynamic> map) {
     return ApplicationOptionalClaimsState(
-      accessTokens: map['accessTokens'] == null ? null : pulumi.Output.create<List<ApplicationOptionalClaimsAccessToken>>(pulumi.Input.decodeList<ApplicationOptionalClaimsAccessToken>(map['accessTokens'], (value) => ApplicationOptionalClaimsAccessToken.fromMap((value as Map).cast<String, dynamic>()))),
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      idTokens: map['idTokens'] == null ? null : pulumi.Output.create<List<ApplicationOptionalClaimsIdToken>>(pulumi.Input.decodeList<ApplicationOptionalClaimsIdToken>(map['idTokens'], (value) => ApplicationOptionalClaimsIdToken.fromMap((value as Map).cast<String, dynamic>()))),
-      saml2Tokens: map['saml2Tokens'] == null ? null : pulumi.Output.create<List<ApplicationOptionalClaimsSaml2Token>>(pulumi.Input.decodeList<ApplicationOptionalClaimsSaml2Token>(map['saml2Tokens'], (value) => ApplicationOptionalClaimsSaml2Token.fromMap((value as Map).cast<String, dynamic>()))),
+      accessTokens: map['accessTokens'] == null ? null : (pulumi.Input.decodeList<ApplicationOptionalClaimsAccessToken>(map['accessTokens'], (value) => ApplicationOptionalClaimsAccessToken.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      idTokens: map['idTokens'] == null ? null : (pulumi.Input.decodeList<ApplicationOptionalClaimsIdToken>(map['idTokens'], (value) => ApplicationOptionalClaimsIdToken.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      saml2Tokens: map['saml2Tokens'] == null ? null : (pulumi.Input.decodeList<ApplicationOptionalClaimsSaml2Token>(map['saml2Tokens'], (value) => ApplicationOptionalClaimsSaml2Token.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

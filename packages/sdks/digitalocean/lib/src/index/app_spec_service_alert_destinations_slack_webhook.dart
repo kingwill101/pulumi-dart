@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecServiceAlertDestinationsSlackWebhook {
   /// The Slack channel to send notifications to.
-  final String channel;
+  final pulumi.Input<String> channel;
   /// The Slack webhook URL.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [AppSpecServiceAlertDestinationsSlackWebhook].
   /// [channel] The Slack channel to send notifications to.
@@ -24,8 +25,8 @@ class AppSpecServiceAlertDestinationsSlackWebhook {
 
   factory AppSpecServiceAlertDestinationsSlackWebhook.fromMap(Map<String, dynamic> map) {
     return AppSpecServiceAlertDestinationsSlackWebhook(
-      channel: map['channel'] as String,
-      url: map['url'] as String,
+      channel: (map['channel'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

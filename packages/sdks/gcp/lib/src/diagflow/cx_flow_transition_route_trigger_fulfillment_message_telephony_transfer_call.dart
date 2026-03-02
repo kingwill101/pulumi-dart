@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
   /// Transfer the call to a phone number in E.164 format.
-  final String phoneNumber;
+  final pulumi.Input<String> phoneNumber;
 
   /// Creates a new [CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall].
   /// [phoneNumber] Transfer the call to a phone number in E.164 format.
@@ -19,7 +20,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
 
   factory CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall.fromMap(Map<String, dynamic> map) {
     return CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall(
-      phoneNumber: map['phoneNumber'] as String,
+      phoneNumber: (map['phoneNumber'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorRuleConditionsRequestMethodCondition {
   /// A list of one or more HTTP methods. Possible values include `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS` or `TRACE`. If multiple values are specified, they're evaluated using `OR` logic.
-  final List<String> matchValues;
+  final pulumi.Input<List<String>> matchValues;
   /// If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
-  final bool? negateCondition;
+  final pulumi.Input<bool>? negateCondition;
   /// Possible value `Equal`. Defaults to `Equal`.
-  final String? operator;
+  final pulumi.Input<String>? operator;
 
   /// Creates a new [FrontdoorRuleConditionsRequestMethodCondition].
   /// [matchValues] A list of one or more HTTP methods. Possible values include `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS` or `TRACE`. If multiple values are specified, they're evaluated using `OR` logic.
@@ -29,9 +30,9 @@ class FrontdoorRuleConditionsRequestMethodCondition {
 
   factory FrontdoorRuleConditionsRequestMethodCondition.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleConditionsRequestMethodCondition(
-      matchValues: (map['matchValues'] as List).cast<String>(),
-      negateCondition: map['negateCondition'] == null ? null : map['negateCondition'] as bool,
-      operator: map['operator'] == null ? null : map['operator'] as String,
+      matchValues: ((map['matchValues'] as List).cast<String>()).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
     );
   }
 }

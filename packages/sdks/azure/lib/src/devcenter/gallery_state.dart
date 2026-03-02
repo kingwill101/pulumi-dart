@@ -16,13 +16,10 @@ class GalleryState {
   /// [name] Specifies the name of this Dev Center Gallery. Changing this forces a new Dev Center Gallery to be created.
   /// [sharedGalleryId] The ID of the Shared Gallery which should be connected to the Dev Center Gallery. Changing this forces a new Dev Center Gallery to be created.
   GalleryState({
-    pulumi.Output<String>? devCenterId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? sharedGalleryId,
-  }) :
-      devCenterId = pulumi.Input.asOptionalInput<String>(devCenterId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sharedGalleryId = pulumi.Input.asOptionalInput<String>(sharedGalleryId);
+    this.devCenterId,
+    this.name,
+    this.sharedGalleryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GalleryState {
 
   factory GalleryState.fromMap(Map<String, dynamic> map) {
     return GalleryState(
-      devCenterId: map['devCenterId'] == null ? null : pulumi.Output.create<String>(map['devCenterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sharedGalleryId: map['sharedGalleryId'] == null ? null : pulumi.Output.create<String>(map['sharedGalleryId'] as String),
+      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sharedGalleryId: map['sharedGalleryId'] == null ? null : (map['sharedGalleryId'] as String).input(),
     );
   }
 }

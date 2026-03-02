@@ -19,13 +19,10 @@ class GetVpcEndpointZonesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
   GetVpcEndpointZonesArgs({
-    required pulumi.Output<String> endpointId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      endpointId = pulumi.Input.asInput<String>(endpointId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.endpointId,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVpcEndpointZonesArgs {
 
   factory GetVpcEndpointZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointZonesArgs(
-      endpointId: pulumi.Output.create<String>(map['endpointId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      endpointId: (map['endpointId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

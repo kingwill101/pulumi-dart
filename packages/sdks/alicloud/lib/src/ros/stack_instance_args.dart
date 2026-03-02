@@ -39,23 +39,15 @@ class StackInstanceArgs {
   /// [stackInstanceRegionId] The region of the stack instance.
   /// [timeoutInMinutes] The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
   StackInstanceArgs({
-    pulumi.Output<String>? operationDescription,
-    pulumi.Output<String>? operationPreferences,
-    pulumi.Output<List<StackInstanceParameterOverride>>? parameterOverrides,
-    pulumi.Output<bool>? retainStacks,
-    required pulumi.Output<String> stackGroupName,
-    required pulumi.Output<String> stackInstanceAccountId,
-    required pulumi.Output<String> stackInstanceRegionId,
-    pulumi.Output<String>? timeoutInMinutes,
-  }) :
-      operationDescription = pulumi.Input.asOptionalInput<String>(operationDescription),
-      operationPreferences = pulumi.Input.asOptionalInput<String>(operationPreferences),
-      parameterOverrides = pulumi.Input.asOptionalInput<List<StackInstanceParameterOverride>>(parameterOverrides),
-      retainStacks = pulumi.Input.asOptionalInput<bool>(retainStacks),
-      stackGroupName = pulumi.Input.asInput<String>(stackGroupName),
-      stackInstanceAccountId = pulumi.Input.asInput<String>(stackInstanceAccountId),
-      stackInstanceRegionId = pulumi.Input.asInput<String>(stackInstanceRegionId),
-      timeoutInMinutes = pulumi.Input.asOptionalInput<String>(timeoutInMinutes);
+    this.operationDescription,
+    this.operationPreferences,
+    this.parameterOverrides,
+    this.retainStacks,
+    required this.stackGroupName,
+    required this.stackInstanceAccountId,
+    required this.stackInstanceRegionId,
+    this.timeoutInMinutes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class StackInstanceArgs {
 
   factory StackInstanceArgs.fromMap(Map<String, dynamic> map) {
     return StackInstanceArgs(
-      operationDescription: map['operationDescription'] == null ? null : pulumi.Output.create<String>(map['operationDescription'] as String),
-      operationPreferences: map['operationPreferences'] == null ? null : pulumi.Output.create<String>(map['operationPreferences'] as String),
-      parameterOverrides: map['parameterOverrides'] == null ? null : pulumi.Output.create<List<StackInstanceParameterOverride>>(pulumi.Input.decodeList<StackInstanceParameterOverride>(map['parameterOverrides'], (value) => StackInstanceParameterOverride.fromMap((value as Map).cast<String, dynamic>()))),
-      retainStacks: map['retainStacks'] == null ? null : pulumi.Output.create<bool>(map['retainStacks'] as bool),
-      stackGroupName: pulumi.Output.create<String>(map['stackGroupName'] as String),
-      stackInstanceAccountId: pulumi.Output.create<String>(map['stackInstanceAccountId'] as String),
-      stackInstanceRegionId: pulumi.Output.create<String>(map['stackInstanceRegionId'] as String),
-      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : pulumi.Output.create<String>(map['timeoutInMinutes'] as String),
+      operationDescription: map['operationDescription'] == null ? null : (map['operationDescription'] as String).input(),
+      operationPreferences: map['operationPreferences'] == null ? null : (map['operationPreferences'] as String).input(),
+      parameterOverrides: map['parameterOverrides'] == null ? null : (pulumi.Input.decodeList<StackInstanceParameterOverride>(map['parameterOverrides'], (value) => StackInstanceParameterOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      retainStacks: map['retainStacks'] == null ? null : (map['retainStacks'] as bool).input(),
+      stackGroupName: (map['stackGroupName'] as String).input(),
+      stackInstanceAccountId: (map['stackInstanceAccountId'] as String).input(),
+      stackInstanceRegionId: (map['stackInstanceRegionId'] as String).input(),
+      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : (map['timeoutInMinutes'] as String).input(),
     );
   }
 }

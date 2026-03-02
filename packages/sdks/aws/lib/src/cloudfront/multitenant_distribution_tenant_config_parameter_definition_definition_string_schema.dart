@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema {
   /// Comment describing the parameter.
-  final String? comment;
+  final pulumi.Input<String>? comment;
   /// Default value for the parameter.
-  final String? defaultValue;
+  final pulumi.Input<String>? defaultValue;
   /// Whether the parameter is required.
-  final bool required;
+  final pulumi.Input<bool> required;
 
   /// Creates a new [MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema].
   /// [comment] Comment describing the parameter.
@@ -29,9 +30,9 @@ class MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSche
 
   factory MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema(
-      comment: map['comment'] == null ? null : map['comment'] as String,
-      defaultValue: map['defaultValue'] == null ? null : map['defaultValue'] as String,
-      required: map['required'] as bool,
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      required: (map['required'] as bool).input(),
     );
   }
 }

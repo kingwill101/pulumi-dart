@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hadoop_cluster_roles_worker_node_autoscale_capacity.dart';
 import 'hadoop_cluster_roles_worker_node_autoscale_recurrence.dart';
 
 class HadoopClusterRolesWorkerNodeAutoscale {
   /// A `capacity` block as defined below.
-  final HadoopClusterRolesWorkerNodeAutoscaleCapacity? capacity;
+  final pulumi.Input<HadoopClusterRolesWorkerNodeAutoscaleCapacity>? capacity;
   /// A `recurrence` block as defined below.
   ///
   /// > **Note:** Either a `capacity` or `recurrence` block must be specified - but not both.
-  final HadoopClusterRolesWorkerNodeAutoscaleRecurrence? recurrence;
+  final pulumi.Input<HadoopClusterRolesWorkerNodeAutoscaleRecurrence>? recurrence;
 
   /// Creates a new [HadoopClusterRolesWorkerNodeAutoscale].
   /// [capacity] A `capacity` block as defined below.
@@ -21,15 +22,15 @@ class HadoopClusterRolesWorkerNodeAutoscale {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capacity': ?capacity == null ? null : capacity!.toMap(),
-      'recurrence': ?recurrence == null ? null : recurrence!.toMap(),
+      'capacity': ?pulumi.Input.mapOptionalInputValue<HadoopClusterRolesWorkerNodeAutoscaleCapacity, Map<String, dynamic>>(capacity, (value) => value.toMap()),
+      'recurrence': ?pulumi.Input.mapOptionalInputValue<HadoopClusterRolesWorkerNodeAutoscaleRecurrence, Map<String, dynamic>>(recurrence, (value) => value.toMap()),
     };
   }
 
   factory HadoopClusterRolesWorkerNodeAutoscale.fromMap(Map<String, dynamic> map) {
     return HadoopClusterRolesWorkerNodeAutoscale(
-      capacity: map['capacity'] == null ? null : HadoopClusterRolesWorkerNodeAutoscaleCapacity.fromMap((map['capacity'] as Map).cast<String, dynamic>()),
-      recurrence: map['recurrence'] == null ? null : HadoopClusterRolesWorkerNodeAutoscaleRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>()),
+      capacity: map['capacity'] == null ? null : (HadoopClusterRolesWorkerNodeAutoscaleCapacity.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
+      recurrence: map['recurrence'] == null ? null : (HadoopClusterRolesWorkerNodeAutoscaleRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

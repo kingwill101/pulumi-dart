@@ -55,35 +55,21 @@ class TopicArgs {
   /// [topicId] Topic Id returned by Confluent
   /// [topicName] Confluent kafka or schema registry topic name
   TopicArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<TopicsRelatedLink>? configs,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<List<TopicsInputConfig>>? inputConfigs,
-    pulumi.Output<String>? kind,
-    pulumi.Output<TopicMetadataEntity>? metadata,
-    required pulumi.Output<String> organizationName,
-    pulumi.Output<TopicsRelatedLink>? partitions,
-    pulumi.Output<String>? partitionsCount,
-    pulumi.Output<TopicsRelatedLink>? partitionsReassignments,
-    pulumi.Output<String>? replicationFactor,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? topicId,
-    pulumi.Output<String>? topicName,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      configs = pulumi.Input.asOptionalInput<TopicsRelatedLink>(configs),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      inputConfigs = pulumi.Input.asOptionalInput<List<TopicsInputConfig>>(inputConfigs),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<TopicMetadataEntity>(metadata),
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      partitions = pulumi.Input.asOptionalInput<TopicsRelatedLink>(partitions),
-      partitionsCount = pulumi.Input.asOptionalInput<String>(partitionsCount),
-      partitionsReassignments = pulumi.Input.asOptionalInput<TopicsRelatedLink>(partitionsReassignments),
-      replicationFactor = pulumi.Input.asOptionalInput<String>(replicationFactor),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      topicId = pulumi.Input.asOptionalInput<String>(topicId),
-      topicName = pulumi.Input.asOptionalInput<String>(topicName);
+    required this.clusterId,
+    this.configs,
+    required this.environmentId,
+    this.inputConfigs,
+    this.kind,
+    this.metadata,
+    required this.organizationName,
+    this.partitions,
+    this.partitionsCount,
+    this.partitionsReassignments,
+    this.replicationFactor,
+    required this.resourceGroupName,
+    this.topicId,
+    this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,20 +92,20 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      configs: map['configs'] == null ? null : pulumi.Output.create<TopicsRelatedLink>(TopicsRelatedLink.fromMap((map['configs'] as Map).cast<String, dynamic>())),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      inputConfigs: map['inputConfigs'] == null ? null : pulumi.Output.create<List<TopicsInputConfig>>(pulumi.Input.decodeList<TopicsInputConfig>(map['inputConfigs'], (value) => TopicsInputConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<TopicMetadataEntity>(TopicMetadataEntity.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      partitions: map['partitions'] == null ? null : pulumi.Output.create<TopicsRelatedLink>(TopicsRelatedLink.fromMap((map['partitions'] as Map).cast<String, dynamic>())),
-      partitionsCount: map['partitionsCount'] == null ? null : pulumi.Output.create<String>(map['partitionsCount'] as String),
-      partitionsReassignments: map['partitionsReassignments'] == null ? null : pulumi.Output.create<TopicsRelatedLink>(TopicsRelatedLink.fromMap((map['partitionsReassignments'] as Map).cast<String, dynamic>())),
-      replicationFactor: map['replicationFactor'] == null ? null : pulumi.Output.create<String>(map['replicationFactor'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topicId: map['topicId'] == null ? null : pulumi.Output.create<String>(map['topicId'] as String),
-      topicName: map['topicName'] == null ? null : pulumi.Output.create<String>(map['topicName'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      configs: map['configs'] == null ? null : (TopicsRelatedLink.fromMap((map['configs'] as Map).cast<String, dynamic>())).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      inputConfigs: map['inputConfigs'] == null ? null : (pulumi.Input.decodeList<TopicsInputConfig>(map['inputConfigs'], (value) => TopicsInputConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (TopicMetadataEntity.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      organizationName: (map['organizationName'] as String).input(),
+      partitions: map['partitions'] == null ? null : (TopicsRelatedLink.fromMap((map['partitions'] as Map).cast<String, dynamic>())).input(),
+      partitionsCount: map['partitionsCount'] == null ? null : (map['partitionsCount'] as String).input(),
+      partitionsReassignments: map['partitionsReassignments'] == null ? null : (TopicsRelatedLink.fromMap((map['partitionsReassignments'] as Map).cast<String, dynamic>())).input(),
+      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      topicId: map['topicId'] == null ? null : (map['topicId'] as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
     );
   }
 }

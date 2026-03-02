@@ -24,17 +24,12 @@ class RegistryCredentialSetState {
   /// [loginServer] The login server for the Credential Set. Changing this forces a new Container Registry Credential Set to be created.
   /// [name] The name which should be used for this Container Registry Credential Set. Changing this forces a new Container Registry Credential Set to be created.
   RegistryCredentialSetState({
-    pulumi.Output<RegistryCredentialSetAuthenticationCredentials>? authenticationCredentials,
-    pulumi.Output<String>? containerRegistryId,
-    pulumi.Output<RegistryCredentialSetIdentity>? identity,
-    pulumi.Output<String>? loginServer,
-    pulumi.Output<String>? name,
-  }) :
-      authenticationCredentials = pulumi.Input.asOptionalInput<RegistryCredentialSetAuthenticationCredentials>(authenticationCredentials),
-      containerRegistryId = pulumi.Input.asOptionalInput<String>(containerRegistryId),
-      identity = pulumi.Input.asOptionalInput<RegistryCredentialSetIdentity>(identity),
-      loginServer = pulumi.Input.asOptionalInput<String>(loginServer),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.authenticationCredentials,
+    this.containerRegistryId,
+    this.identity,
+    this.loginServer,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class RegistryCredentialSetState {
 
   factory RegistryCredentialSetState.fromMap(Map<String, dynamic> map) {
     return RegistryCredentialSetState(
-      authenticationCredentials: map['authenticationCredentials'] == null ? null : pulumi.Output.create<RegistryCredentialSetAuthenticationCredentials>(RegistryCredentialSetAuthenticationCredentials.fromMap((map['authenticationCredentials'] as Map).cast<String, dynamic>())),
-      containerRegistryId: map['containerRegistryId'] == null ? null : pulumi.Output.create<String>(map['containerRegistryId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<RegistryCredentialSetIdentity>(RegistryCredentialSetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      loginServer: map['loginServer'] == null ? null : pulumi.Output.create<String>(map['loginServer'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      authenticationCredentials: map['authenticationCredentials'] == null ? null : (RegistryCredentialSetAuthenticationCredentials.fromMap((map['authenticationCredentials'] as Map).cast<String, dynamic>())).input(),
+      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId'] as String).input(),
+      identity: map['identity'] == null ? null : (RegistryCredentialSetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      loginServer: map['loginServer'] == null ? null : (map['loginServer'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

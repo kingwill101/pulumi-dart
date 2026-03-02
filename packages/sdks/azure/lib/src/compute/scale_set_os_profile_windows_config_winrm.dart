@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScaleSetOsProfileWindowsConfigWinrm {
   /// Specifies URL of the certificate with which new Virtual Machines is provisioned.
-  final String? certificateUrl;
+  final pulumi.Input<String>? certificateUrl;
   /// Specifies the protocol of listener
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [ScaleSetOsProfileWindowsConfigWinrm].
   /// [certificateUrl] Specifies URL of the certificate with which new Virtual Machines is provisioned.
@@ -24,8 +25,8 @@ class ScaleSetOsProfileWindowsConfigWinrm {
 
   factory ScaleSetOsProfileWindowsConfigWinrm.fromMap(Map<String, dynamic> map) {
     return ScaleSetOsProfileWindowsConfigWinrm(
-      certificateUrl: map['certificateUrl'] == null ? null : map['certificateUrl'] as String,
-      protocol: map['protocol'] as String,
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

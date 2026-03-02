@@ -28,21 +28,14 @@ class BackupArgs {
   /// [project] Optional.
   /// [sourceTable] Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
   BackupArgs({
-    required pulumi.Output<String> backupId,
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> expireTime,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sourceTable,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      expireTime = pulumi.Input.asInput<String>(expireTime),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceTable = pulumi.Input.asInput<String>(sourceTable);
+    required this.backupId,
+    required this.clusterId,
+    required this.expireTime,
+    required this.instanceId,
+    this.name,
+    this.project,
+    required this.sourceTable,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      backupId: pulumi.Output.create<String>(map['backupId'] as String),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      expireTime: pulumi.Output.create<String>(map['expireTime'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sourceTable: pulumi.Output.create<String>(map['sourceTable'] as String),
+      backupId: (map['backupId'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sourceTable: (map['sourceTable'] as String).input(),
     );
   }
 }

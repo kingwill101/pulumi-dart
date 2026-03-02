@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Capacity rule.
 class ResourceTypeRegistrationPropertiesCapacityRuleResponse {
   /// Capacity policy.
-  final String? capacityPolicy;
+  final pulumi.Input<String>? capacityPolicy;
   /// Sku alias
-  final String? skuAlias;
+  final pulumi.Input<String>? skuAlias;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesCapacityRuleResponse].
   /// [capacityPolicy] Capacity policy.
@@ -25,8 +26,8 @@ class ResourceTypeRegistrationPropertiesCapacityRuleResponse {
 
   factory ResourceTypeRegistrationPropertiesCapacityRuleResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesCapacityRuleResponse(
-      capacityPolicy: map['capacityPolicy'] == null ? null : map['capacityPolicy'] as String,
-      skuAlias: map['skuAlias'] == null ? null : map['skuAlias'] as String,
+      capacityPolicy: map['capacityPolicy'] == null ? null : (map['capacityPolicy'] as String).input(),
+      skuAlias: map['skuAlias'] == null ? null : (map['skuAlias'] as String).input(),
     );
   }
 }

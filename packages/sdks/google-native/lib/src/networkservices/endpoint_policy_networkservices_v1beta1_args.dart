@@ -47,31 +47,19 @@ class EndpointPolicyNetworkservicesV1beta1Args {
   /// [trafficPortSelector] Optional. Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
   /// [type] The type of endpoint policy. This is primarily used to validate the configuration.
   EndpointPolicyNetworkservicesV1beta1Args({
-    pulumi.Output<String>? authorizationPolicy,
-    pulumi.Output<String>? clientTlsPolicy,
-    pulumi.Output<String>? description,
-    required pulumi.Output<EndpointMatcherNetworkservicesV1beta1> endpointMatcher,
-    required pulumi.Output<String> endpointPolicyId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serverTlsPolicy,
-    pulumi.Output<TrafficPortSelectorNetworkservicesV1beta1>? trafficPortSelector,
-    required pulumi.Output<EndpointPolicyTypeNetworkservicesV1beta1> type,
-  }) :
-      authorizationPolicy = pulumi.Input.asOptionalInput<String>(authorizationPolicy),
-      clientTlsPolicy = pulumi.Input.asOptionalInput<String>(clientTlsPolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpointMatcher = pulumi.Input.asInput<EndpointMatcherNetworkservicesV1beta1>(endpointMatcher),
-      endpointPolicyId = pulumi.Input.asInput<String>(endpointPolicyId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serverTlsPolicy = pulumi.Input.asOptionalInput<String>(serverTlsPolicy),
-      trafficPortSelector = pulumi.Input.asOptionalInput<TrafficPortSelectorNetworkservicesV1beta1>(trafficPortSelector),
-      type = pulumi.Input.asInput<EndpointPolicyTypeNetworkservicesV1beta1>(type);
+    this.authorizationPolicy,
+    this.clientTlsPolicy,
+    this.description,
+    required this.endpointMatcher,
+    required this.endpointPolicyId,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.serverTlsPolicy,
+    this.trafficPortSelector,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class EndpointPolicyNetworkservicesV1beta1Args {
 
   factory EndpointPolicyNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return EndpointPolicyNetworkservicesV1beta1Args(
-      authorizationPolicy: map['authorizationPolicy'] == null ? null : pulumi.Output.create<String>(map['authorizationPolicy'] as String),
-      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : pulumi.Output.create<String>(map['clientTlsPolicy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpointMatcher: pulumi.Output.create<EndpointMatcherNetworkservicesV1beta1>(EndpointMatcherNetworkservicesV1beta1.fromMap((map['endpointMatcher'] as Map).cast<String, dynamic>())),
-      endpointPolicyId: pulumi.Output.create<String>(map['endpointPolicyId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : pulumi.Output.create<String>(map['serverTlsPolicy'] as String),
-      trafficPortSelector: map['trafficPortSelector'] == null ? null : pulumi.Output.create<TrafficPortSelectorNetworkservicesV1beta1>(TrafficPortSelectorNetworkservicesV1beta1.fromMap((map['trafficPortSelector'] as Map).cast<String, dynamic>())),
-      type: pulumi.Output.create<EndpointPolicyTypeNetworkservicesV1beta1>(EndpointPolicyTypeNetworkservicesV1beta1.fromValue(map['type'] as String)),
+      authorizationPolicy: map['authorizationPolicy'] == null ? null : (map['authorizationPolicy'] as String).input(),
+      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointMatcher: (EndpointMatcherNetworkservicesV1beta1.fromMap((map['endpointMatcher'] as Map).cast<String, dynamic>())).input(),
+      endpointPolicyId: (map['endpointPolicyId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy'] as String).input(),
+      trafficPortSelector: map['trafficPortSelector'] == null ? null : (TrafficPortSelectorNetworkservicesV1beta1.fromMap((map['trafficPortSelector'] as Map).cast<String, dynamic>())).input(),
+      type: (EndpointPolicyTypeNetworkservicesV1beta1.fromValue(map['type'] as String)).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnvironmentV3InboundNetworkDependency {
   /// A short description of the purpose of the network traffic.
-  final String description;
+  final pulumi.Input<String> description;
   /// A list of IP addresses that network traffic will originate from in CIDR notation.
-  final List<String> ipAddresses;
+  final pulumi.Input<List<String>> ipAddresses;
   /// The ports that network traffic will arrive to the App Service Environment V3 on.
-  final List<String> ports;
+  final pulumi.Input<List<String>> ports;
 
   /// Creates a new [GetEnvironmentV3InboundNetworkDependency].
   /// [description] A short description of the purpose of the network traffic.
@@ -29,9 +30,9 @@ class GetEnvironmentV3InboundNetworkDependency {
 
   factory GetEnvironmentV3InboundNetworkDependency.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentV3InboundNetworkDependency(
-      description: map['description'] as String,
-      ipAddresses: (map['ipAddresses'] as List).cast<String>(),
-      ports: (map['ports'] as List).cast<String>(),
+      description: (map['description'] as String).input(),
+      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
+      ports: ((map['ports'] as List).cast<String>()).input(),
     );
   }
 }

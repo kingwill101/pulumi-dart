@@ -22,17 +22,12 @@ class BizTypeState {
   /// [description] The description of the business scenario defined by the customer, which is a combination of Chinese and English, numbers, and underscores, and cannot exceed 32 characters.
   /// [industryInfo] The industry classification. Valid values: Social-Registration information-Profile picture Social-Registration information-Nickname Social-Registration information-Bio Social-Instant messaging-Chat Social-Instant messaging-Group chat Social-Instant messaging-Chat room Social-Forums&Communities-Post Social-Forums&Communities-Comment Social-Forums&Communities-Tag Social-Forums&Communities-Recommendation Multimedia-Registration information-Profile picture Multimedia-Registration information-Nickname Multimedia-Registration information-Bio Multimedia-Instant messaging-Chat Multimedia-Live streaming-Heading Multimedia-Live streaming-Cover Multimedia-Live streaming-Content Multimedia-Live streaming-Comment Multimedia-Online storage-Storage content Multimedia-Online storage-Shared content Gaming-Registration information-Nickname Gaming-Registration information-Profile picture Gaming-Registration information-Signature Gaming-Instant messaging-Chat Gaming-Instant messaging-Group chat Gaming-Instant messaging-Chat room Gaming-Forums&Communities-Post Gaming-Forums&Communities-Comment Gaming-Forums&Communities-Tag Gaming-Forums&Communities-Recommendation New retail-Goods-Heading New retail-Goods-Description Reading-Books-Title Reading-Books-Heading Reading-Books-Cover Reading-Books-Content Media-News content-News content Education-Registration information-Nickname Education-Registration information-Profile picture Education-Registration information-Bio Gaming-Instant messaging-Chat Gaming-Forums&Communities-Post Education-Forums&Communities-Comment Education-Forums&Communities-Tag Education-Forums&Communities-Recommendation Education-Customer service-Voice call Others
   BizTypeState({
-    pulumi.Output<String>? bizTypeImport,
-    pulumi.Output<String>? bizTypeName,
-    pulumi.Output<bool>? citeTemplate,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? industryInfo,
-  }) :
-      bizTypeImport = pulumi.Input.asOptionalInput<String>(bizTypeImport),
-      bizTypeName = pulumi.Input.asOptionalInput<String>(bizTypeName),
-      citeTemplate = pulumi.Input.asOptionalInput<bool>(citeTemplate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      industryInfo = pulumi.Input.asOptionalInput<String>(industryInfo);
+    this.bizTypeImport,
+    this.bizTypeName,
+    this.citeTemplate,
+    this.description,
+    this.industryInfo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class BizTypeState {
 
   factory BizTypeState.fromMap(Map<String, dynamic> map) {
     return BizTypeState(
-      bizTypeImport: map['bizTypeImport'] == null ? null : pulumi.Output.create<String>(map['bizTypeImport'] as String),
-      bizTypeName: map['bizTypeName'] == null ? null : pulumi.Output.create<String>(map['bizTypeName'] as String),
-      citeTemplate: map['citeTemplate'] == null ? null : pulumi.Output.create<bool>(map['citeTemplate'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      industryInfo: map['industryInfo'] == null ? null : pulumi.Output.create<String>(map['industryInfo'] as String),
+      bizTypeImport: map['bizTypeImport'] == null ? null : (map['bizTypeImport'] as String).input(),
+      bizTypeName: map['bizTypeName'] == null ? null : (map['bizTypeName'] as String).input(),
+      citeTemplate: map['citeTemplate'] == null ? null : (map['citeTemplate'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      industryInfo: map['industryInfo'] == null ? null : (map['industryInfo'] as String).input(),
     );
   }
 }

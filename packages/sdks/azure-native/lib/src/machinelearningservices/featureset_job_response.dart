@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_window_response.dart';
 
 /// Dto object representing the feature set job
 class FeaturesetJobResponse {
   /// Specifies the created date
-  final String? createdDate;
+  final pulumi.Input<String>? createdDate;
   /// Specifies the display name
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Specifies the duration
-  final String? duration;
+  final pulumi.Input<String>? duration;
   /// Specifies the experiment id
-  final String? experimentId;
+  final pulumi.Input<String>? experimentId;
   /// Specifies the backfill feature window to be materialized
-  final FeatureWindowResponse? featureWindow;
+  final pulumi.Input<FeatureWindowResponse>? featureWindow;
   /// Specifies the job id
-  final String? jobId;
+  final pulumi.Input<String>? jobId;
   /// Specifies the job status
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Specifies the tags if any
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Specifies the feature store job type
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [FeaturesetJobResponse].
   /// [createdDate] Specifies the created date
@@ -51,7 +52,7 @@ class FeaturesetJobResponse {
       'displayName': ?displayName,
       'duration': ?duration,
       'experimentId': ?experimentId,
-      'featureWindow': ?featureWindow == null ? null : featureWindow!.toMap(),
+      'featureWindow': ?pulumi.Input.mapOptionalInputValue<FeatureWindowResponse, Map<String, dynamic>>(featureWindow, (value) => value.toMap()),
       'jobId': ?jobId,
       'status': ?status,
       'tags': ?tags,
@@ -61,15 +62,15 @@ class FeaturesetJobResponse {
 
   factory FeaturesetJobResponse.fromMap(Map<String, dynamic> map) {
     return FeaturesetJobResponse(
-      createdDate: map['createdDate'] == null ? null : map['createdDate'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      experimentId: map['experimentId'] == null ? null : map['experimentId'] as String,
-      featureWindow: map['featureWindow'] == null ? null : FeatureWindowResponse.fromMap((map['featureWindow'] as Map).cast<String, dynamic>()),
-      jobId: map['jobId'] == null ? null : map['jobId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      experimentId: map['experimentId'] == null ? null : (map['experimentId'] as String).input(),
+      featureWindow: map['featureWindow'] == null ? null : (FeatureWindowResponse.fromMap((map['featureWindow'] as Map).cast<String, dynamic>())).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -29,21 +29,14 @@ class SecurityProfileGroupArgs {
   /// [securityProfileGroupId] Required. Short name of the SecurityProfileGroup resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile_group1".
   /// [threatPreventionProfile] Optional. Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
   SecurityProfileGroupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> securityProfileGroupId,
-    pulumi.Output<String>? threatPreventionProfile,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      securityProfileGroupId = pulumi.Input.asInput<String>(securityProfileGroupId),
-      threatPreventionProfile = pulumi.Input.asOptionalInput<String>(threatPreventionProfile);
+    this.description,
+    this.labels,
+    this.location,
+    this.name,
+    required this.organizationId,
+    required this.securityProfileGroupId,
+    this.threatPreventionProfile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class SecurityProfileGroupArgs {
 
   factory SecurityProfileGroupArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      securityProfileGroupId: pulumi.Output.create<String>(map['securityProfileGroupId'] as String),
-      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : pulumi.Output.create<String>(map['threatPreventionProfile'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      securityProfileGroupId: (map['securityProfileGroupId'] as String).input(),
+      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (map['threatPreventionProfile'] as String).input(),
     );
   }
 }

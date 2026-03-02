@@ -23,15 +23,11 @@ class SolutionArgs {
   /// [solutionName] Name of the solution
   /// [targetName] Name of the target
   SolutionArgs({
-    pulumi.Output<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? solutionName,
-    required pulumi.Output<String> targetName,
-  }) :
-      extendedLocation = pulumi.Input.asOptionalInput<AzureResourceManagerCommonTypesExtendedLocation>(extendedLocation),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      solutionName = pulumi.Input.asOptionalInput<String>(solutionName),
-      targetName = pulumi.Input.asInput<String>(targetName);
+    this.extendedLocation,
+    required this.resourceGroupName,
+    this.solutionName,
+    required this.targetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SolutionArgs {
 
   factory SolutionArgs.fromMap(Map<String, dynamic> map) {
     return SolutionArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<AzureResourceManagerCommonTypesExtendedLocation>(AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      solutionName: map['solutionName'] == null ? null : pulumi.Output.create<String>(map['solutionName'] as String),
-      targetName: pulumi.Output.create<String>(map['targetName'] as String),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      solutionName: map['solutionName'] == null ? null : (map['solutionName'] as String).input(),
+      targetName: (map['targetName'] as String).input(),
     );
   }
 }

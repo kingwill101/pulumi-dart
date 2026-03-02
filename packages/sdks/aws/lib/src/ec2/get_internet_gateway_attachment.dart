@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInternetGatewayAttachment {
   /// Current state of the attachment between the gateway and the VPC. Present only if a VPC is attached
-  final String state;
+  final pulumi.Input<String> state;
   /// ID of an attached VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetInternetGatewayAttachment].
   /// [state] Current state of the attachment between the gateway and the VPC. Present only if a VPC is attached
@@ -24,8 +25,8 @@ class GetInternetGatewayAttachment {
 
   factory GetInternetGatewayAttachment.fromMap(Map<String, dynamic> map) {
     return GetInternetGatewayAttachment(
-      state: map['state'] as String,
-      vpcId: map['vpcId'] as String,
+      state: (map['state'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

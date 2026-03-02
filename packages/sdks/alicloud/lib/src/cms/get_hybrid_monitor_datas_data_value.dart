@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHybridMonitorDatasDataValue {
   /// The timestamp that indicates the time when the metric value is collected. Unit: seconds.
-  final String ts;
+  final pulumi.Input<String> ts;
   /// The value of the monitoring indicator.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetHybridMonitorDatasDataValue].
   /// [ts] The timestamp that indicates the time when the metric value is collected. Unit: seconds.
@@ -24,8 +25,8 @@ class GetHybridMonitorDatasDataValue {
 
   factory GetHybridMonitorDatasDataValue.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorDatasDataValue(
-      ts: map['ts'] as String,
-      value: map['value'] as String,
+      ts: (map['ts'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

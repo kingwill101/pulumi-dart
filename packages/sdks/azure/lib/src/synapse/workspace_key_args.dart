@@ -24,15 +24,11 @@ class WorkspaceKeyArgs {
   /// [customerManagedKeyVersionlessId] The Azure Key Vault Key Versionless ID to be used as the Customer Managed Key (CMK) for double encryption
   /// [synapseWorkspaceId] The ID of the Synapse Workspace where the encryption key should be configured.
   WorkspaceKeyArgs({
-    required pulumi.Output<bool> active,
-    required pulumi.Output<String> customerManagedKeyName,
-    pulumi.Output<String>? customerManagedKeyVersionlessId,
-    required pulumi.Output<String> synapseWorkspaceId,
-  }) :
-      active = pulumi.Input.asInput<bool>(active),
-      customerManagedKeyName = pulumi.Input.asInput<String>(customerManagedKeyName),
-      customerManagedKeyVersionlessId = pulumi.Input.asOptionalInput<String>(customerManagedKeyVersionlessId),
-      synapseWorkspaceId = pulumi.Input.asInput<String>(synapseWorkspaceId);
+    required this.active,
+    required this.customerManagedKeyName,
+    this.customerManagedKeyVersionlessId,
+    required this.synapseWorkspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class WorkspaceKeyArgs {
 
   factory WorkspaceKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceKeyArgs(
-      active: pulumi.Output.create<bool>(map['active'] as bool),
-      customerManagedKeyName: pulumi.Output.create<String>(map['customerManagedKeyName'] as String),
-      customerManagedKeyVersionlessId: map['customerManagedKeyVersionlessId'] == null ? null : pulumi.Output.create<String>(map['customerManagedKeyVersionlessId'] as String),
-      synapseWorkspaceId: pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
+      active: (map['active'] as bool).input(),
+      customerManagedKeyName: (map['customerManagedKeyName'] as String).input(),
+      customerManagedKeyVersionlessId: map['customerManagedKeyVersionlessId'] == null ? null : (map['customerManagedKeyVersionlessId'] as String).input(),
+      synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
     );
   }
 }

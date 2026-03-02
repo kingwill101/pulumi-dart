@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IP Address
 class IPAddress {
   /// Address value
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Resource Id
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [IPAddress].
   /// [address] Address value
@@ -25,8 +26,8 @@ class IPAddress {
 
   factory IPAddress.fromMap(Map<String, dynamic> map) {
     return IPAddress(
-      address: map['address'] == null ? null : map['address'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

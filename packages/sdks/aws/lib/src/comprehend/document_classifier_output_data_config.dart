@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DocumentClassifierOutputDataConfig {
   /// KMS Key used to encrypt the output documents.
   /// Can be a KMS Key ID, a KMS Key ARN, a KMS Alias name, or a KMS Alias ARN.
-  final String? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
   /// Full path for the output documents.
-  final String? outputS3Uri;
+  final pulumi.Input<String>? outputS3Uri;
   /// Destination path for the output documents.
   /// The full path to the output file will be returned in `output_s3_uri`.
-  final String s3Uri;
+  final pulumi.Input<String> s3Uri;
 
   /// Creates a new [DocumentClassifierOutputDataConfig].
   /// [kmsKeyId] KMS Key used to encrypt the output documents.
@@ -31,9 +32,9 @@ class DocumentClassifierOutputDataConfig {
 
   factory DocumentClassifierOutputDataConfig.fromMap(Map<String, dynamic> map) {
     return DocumentClassifierOutputDataConfig(
-      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      outputS3Uri: map['outputS3Uri'] == null ? null : map['outputS3Uri'] as String,
-      s3Uri: map['s3Uri'] as String,
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      outputS3Uri: map['outputS3Uri'] == null ? null : (map['outputS3Uri'] as String).input(),
+      s3Uri: (map['s3Uri'] as String).input(),
     );
   }
 }

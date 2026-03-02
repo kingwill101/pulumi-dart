@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskSetLoadBalancer {
   /// The name of the container to associate with the load balancer (as it appears in a container definition).
-  final String containerName;
+  final pulumi.Input<String> containerName;
   /// The port on the container to associate with the load balancer. Defaults to `0` if not specified.
   ///
   /// > **Note:** Specifying multiple `load_balancer` configurations is still not supported by AWS for ECS task set.
-  final int? containerPort;
+  final pulumi.Input<int>? containerPort;
   /// The name of the ELB (Classic) to associate with the service.
-  final String? loadBalancerName;
+  final pulumi.Input<String>? loadBalancerName;
   /// The ARN of the Load Balancer target group to associate with the service.
-  final String? targetGroupArn;
+  final pulumi.Input<String>? targetGroupArn;
 
   /// Creates a new [TaskSetLoadBalancer].
   /// [containerName] The name of the container to associate with the load balancer (as it appears in a container definition).
@@ -36,10 +37,10 @@ class TaskSetLoadBalancer {
 
   factory TaskSetLoadBalancer.fromMap(Map<String, dynamic> map) {
     return TaskSetLoadBalancer(
-      containerName: map['containerName'] as String,
-      containerPort: map['containerPort'] == null ? null : map['containerPort'] as int,
-      loadBalancerName: map['loadBalancerName'] == null ? null : map['loadBalancerName'] as String,
-      targetGroupArn: map['targetGroupArn'] == null ? null : map['targetGroupArn'] as String,
+      containerName: (map['containerName'] as String).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn'] as String).input(),
     );
   }
 }

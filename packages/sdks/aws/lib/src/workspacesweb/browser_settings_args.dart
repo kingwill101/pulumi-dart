@@ -27,17 +27,12 @@ class BrowserSettingsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   BrowserSettingsArgs({
-    pulumi.Output<Map<String, String>>? additionalEncryptionContext,
-    required pulumi.Output<String> browserPolicy,
-    pulumi.Output<String>? customerManagedKey,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      additionalEncryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(additionalEncryptionContext),
-      browserPolicy = pulumi.Input.asInput<String>(browserPolicy),
-      customerManagedKey = pulumi.Input.asOptionalInput<String>(customerManagedKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.additionalEncryptionContext,
+    required this.browserPolicy,
+    this.customerManagedKey,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class BrowserSettingsArgs {
 
   factory BrowserSettingsArgs.fromMap(Map<String, dynamic> map) {
     return BrowserSettingsArgs(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalEncryptionContext'] as Map).cast<String, String>()),
-      browserPolicy: pulumi.Output.create<String>(map['browserPolicy'] as String),
-      customerManagedKey: map['customerManagedKey'] == null ? null : pulumi.Output.create<String>(map['customerManagedKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
+      browserPolicy: (map['browserPolicy'] as String).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of RWX StorageClass
 class RwxStorageClassTypeProperties {
   /// The backing storageclass used to create new storageclass
-  final String backingStorageClassName;
+  final pulumi.Input<String> backingStorageClassName;
   /// Type of a storage class
   /// Expected value is 'RWX'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RwxStorageClassTypeProperties].
   /// [backingStorageClassName] The backing storageclass used to create new storageclass
@@ -26,8 +27,8 @@ class RwxStorageClassTypeProperties {
 
   factory RwxStorageClassTypeProperties.fromMap(Map<String, dynamic> map) {
     return RwxStorageClassTypeProperties(
-      backingStorageClassName: map['backingStorageClassName'] as String,
-      type: map['type'] as String,
+      backingStorageClassName: (map['backingStorageClassName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

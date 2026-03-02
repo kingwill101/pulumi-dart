@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// File share
 class SqlFileShare {
   /// Password for username to access file share location.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Location as SMB share or local drive where backups are placed.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Username to access the file share location for backups.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [SqlFileShare].
   /// [password] Password for username to access file share location.
@@ -30,9 +31,9 @@ class SqlFileShare {
 
   factory SqlFileShare.fromMap(Map<String, dynamic> map) {
     return SqlFileShare(
-      password: map['password'] == null ? null : map['password'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

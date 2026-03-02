@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tar_gzip_read_settings.dart';
 
 /// Delimited text read settings.
 class DelimitedTextReadSettings {
   /// Compression settings.
-  final TarGZipReadSettings? compressionProperties;
+  final pulumi.Input<TarGZipReadSettings>? compressionProperties;
   /// Indicates the number of non-empty rows to skip when reading data from input files. Type: integer (or Expression with resultType integer).
-  final dynamic skipLineCount;
+  final pulumi.Input<dynamic>? skipLineCount;
   /// The read setting type.
   /// Expected value is 'DelimitedTextReadSettings'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DelimitedTextReadSettings].
   /// [compressionProperties] Compression settings.
@@ -24,7 +25,7 @@ class DelimitedTextReadSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compressionProperties': ?compressionProperties == null ? null : compressionProperties!.toMap(),
+      'compressionProperties': ?pulumi.Input.mapOptionalInputValue<TarGZipReadSettings, Map<String, dynamic>>(compressionProperties, (value) => value.toMap()),
       'skipLineCount': ?skipLineCount,
       'type': type,
     };
@@ -32,9 +33,9 @@ class DelimitedTextReadSettings {
 
   factory DelimitedTextReadSettings.fromMap(Map<String, dynamic> map) {
     return DelimitedTextReadSettings(
-      compressionProperties: map['compressionProperties'] == null ? null : TarGZipReadSettings.fromMap((map['compressionProperties'] as Map).cast<String, dynamic>()),
-      skipLineCount: map['skipLineCount'] == null ? null : map['skipLineCount'],
-      type: map['type'] as String,
+      compressionProperties: map['compressionProperties'] == null ? null : (TarGZipReadSettings.fromMap((map['compressionProperties'] as Map).cast<String, dynamic>())).input(),
+      skipLineCount: map['skipLineCount'] == null ? null : (map['skipLineCount']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

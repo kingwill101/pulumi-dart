@@ -16,11 +16,9 @@ class ClusterCustomerManagedKeyArgs {
   /// [keyVaultKeyId] The ID of the Key Vault Key to use for encryption.
   /// [logAnalyticsClusterId] The ID of the Log Analytics Cluster. Changing this forces a new Log Analytics Cluster Customer Managed Key to be created.
   ClusterCustomerManagedKeyArgs({
-    required pulumi.Output<String> keyVaultKeyId,
-    required pulumi.Output<String> logAnalyticsClusterId,
-  }) :
-      keyVaultKeyId = pulumi.Input.asInput<String>(keyVaultKeyId),
-      logAnalyticsClusterId = pulumi.Input.asInput<String>(logAnalyticsClusterId);
+    required this.keyVaultKeyId,
+    required this.logAnalyticsClusterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ClusterCustomerManagedKeyArgs {
 
   factory ClusterCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return ClusterCustomerManagedKeyArgs(
-      keyVaultKeyId: pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      logAnalyticsClusterId: pulumi.Output.create<String>(map['logAnalyticsClusterId'] as String),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
+      logAnalyticsClusterId: (map['logAnalyticsClusterId'] as String).input(),
     );
   }
 }

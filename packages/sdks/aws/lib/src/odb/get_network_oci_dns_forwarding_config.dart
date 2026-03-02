@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkOciDnsForwardingConfig {
-  final String domainName;
-  final String ociDnsListenerIp;
+  final pulumi.Input<String> domainName;
+  final pulumi.Input<String> ociDnsListenerIp;
 
   /// Creates a new [GetNetworkOciDnsForwardingConfig].
   /// [domainName] Required.
@@ -22,8 +23,8 @@ class GetNetworkOciDnsForwardingConfig {
 
   factory GetNetworkOciDnsForwardingConfig.fromMap(Map<String, dynamic> map) {
     return GetNetworkOciDnsForwardingConfig(
-      domainName: map['domainName'] as String,
-      ociDnsListenerIp: map['ociDnsListenerIp'] as String,
+      domainName: (map['domainName'] as String).input(),
+      ociDnsListenerIp: (map['ociDnsListenerIp'] as String).input(),
     );
   }
 }

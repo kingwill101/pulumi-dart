@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A class representing database principal entity.
 class DatabasePrincipalResponse {
   /// Application id - relevant only for application principal type.
-  final String? appId;
+  final pulumi.Input<String>? appId;
   /// Database principal email if exists.
-  final String? email;
+  final pulumi.Input<String>? email;
   /// Database principal fully qualified name.
-  final String? fqn;
+  final pulumi.Input<String>? fqn;
   /// Database principal name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Database principal role.
-  final String role;
+  final pulumi.Input<String> role;
   /// The tenant name of the principal
-  final String tenantName;
+  final pulumi.Input<String> tenantName;
   /// Database principal type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DatabasePrincipalResponse].
   /// [appId] Application id - relevant only for application principal type.
@@ -50,13 +51,13 @@ class DatabasePrincipalResponse {
 
   factory DatabasePrincipalResponse.fromMap(Map<String, dynamic> map) {
     return DatabasePrincipalResponse(
-      appId: map['appId'] == null ? null : map['appId'] as String,
-      email: map['email'] == null ? null : map['email'] as String,
-      fqn: map['fqn'] == null ? null : map['fqn'] as String,
-      name: map['name'] as String,
-      role: map['role'] as String,
-      tenantName: map['tenantName'] as String,
-      type: map['type'] as String,
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      fqn: map['fqn'] == null ? null : (map['fqn'] as String).input(),
+      name: (map['name'] as String).input(),
+      role: (map['role'] as String).input(),
+      tenantName: (map['tenantName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -53,27 +53,17 @@ class RedirectRuleArgs {
   /// [targetUrl] The destination URL to which requests are redirected.
   /// [type] The redirection type. Value range:
   RedirectRuleArgs({
-    required pulumi.Output<String> reserveQueryString,
-    pulumi.Output<String>? rule,
-    pulumi.Output<String>? ruleEnable,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<int>? sequence,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<int>? siteVersion,
-    required pulumi.Output<String> statusCode,
-    required pulumi.Output<String> targetUrl,
-    required pulumi.Output<String> type,
-  }) :
-      reserveQueryString = pulumi.Input.asInput<String>(reserveQueryString),
-      rule = pulumi.Input.asOptionalInput<String>(rule),
-      ruleEnable = pulumi.Input.asOptionalInput<String>(ruleEnable),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      sequence = pulumi.Input.asOptionalInput<int>(sequence),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      siteVersion = pulumi.Input.asOptionalInput<int>(siteVersion),
-      statusCode = pulumi.Input.asInput<String>(statusCode),
-      targetUrl = pulumi.Input.asInput<String>(targetUrl),
-      type = pulumi.Input.asInput<String>(type);
+    required this.reserveQueryString,
+    this.rule,
+    this.ruleEnable,
+    this.ruleName,
+    this.sequence,
+    required this.siteId,
+    this.siteVersion,
+    required this.statusCode,
+    required this.targetUrl,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,16 +82,16 @@ class RedirectRuleArgs {
 
   factory RedirectRuleArgs.fromMap(Map<String, dynamic> map) {
     return RedirectRuleArgs(
-      reserveQueryString: pulumi.Output.create<String>(map['reserveQueryString'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<String>(map['rule'] as String),
-      ruleEnable: map['ruleEnable'] == null ? null : pulumi.Output.create<String>(map['ruleEnable'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      sequence: map['sequence'] == null ? null : pulumi.Output.create<int>(map['sequence'] as int),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      siteVersion: map['siteVersion'] == null ? null : pulumi.Output.create<int>(map['siteVersion'] as int),
-      statusCode: pulumi.Output.create<String>(map['statusCode'] as String),
-      targetUrl: pulumi.Output.create<String>(map['targetUrl'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      reserveQueryString: (map['reserveQueryString'] as String).input(),
+      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
+      siteId: (map['siteId'] as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
+      statusCode: (map['statusCode'] as String).input(),
+      targetUrl: (map['targetUrl'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

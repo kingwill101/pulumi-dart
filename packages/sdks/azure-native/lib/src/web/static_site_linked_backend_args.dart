@@ -28,19 +28,13 @@ class StaticSiteLinkedBackendArgs {
   /// [region] The region of the backend linked to the static site
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   StaticSiteLinkedBackendArgs({
-    pulumi.Output<String>? backendResourceId,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? linkedBackendName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      backendResourceId = pulumi.Input.asOptionalInput<String>(backendResourceId),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      linkedBackendName = pulumi.Input.asOptionalInput<String>(linkedBackendName),
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asInput<String>(region),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.backendResourceId,
+    this.kind,
+    this.linkedBackendName,
+    required this.name,
+    required this.region,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class StaticSiteLinkedBackendArgs {
 
   factory StaticSiteLinkedBackendArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteLinkedBackendArgs(
-      backendResourceId: map['backendResourceId'] == null ? null : pulumi.Output.create<String>(map['backendResourceId'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      linkedBackendName: map['linkedBackendName'] == null ? null : pulumi.Output.create<String>(map['linkedBackendName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      backendResourceId: map['backendResourceId'] == null ? null : (map['backendResourceId'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      linkedBackendName: map['linkedBackendName'] == null ? null : (map['linkedBackendName'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

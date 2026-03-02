@@ -30,17 +30,12 @@ class TransferAcceptArgs {
   /// [valueSpecs] Map of additional options. Changing this creates a
   /// [zoneTransferRequestId] The ID of the zone transfer request.
   TransferAcceptArgs({
-    pulumi.Output<bool>? disableStatusCheck,
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-    required pulumi.Output<String> zoneTransferRequestId,
-  }) :
-      disableStatusCheck = pulumi.Input.asOptionalInput<bool>(disableStatusCheck),
-      key = pulumi.Input.asInput<String>(key),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs),
-      zoneTransferRequestId = pulumi.Input.asInput<String>(zoneTransferRequestId);
+    this.disableStatusCheck,
+    required this.key,
+    this.region,
+    this.valueSpecs,
+    required this.zoneTransferRequestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class TransferAcceptArgs {
 
   factory TransferAcceptArgs.fromMap(Map<String, dynamic> map) {
     return TransferAcceptArgs(
-      disableStatusCheck: map['disableStatusCheck'] == null ? null : pulumi.Output.create<bool>(map['disableStatusCheck'] as bool),
-      key: pulumi.Output.create<String>(map['key'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
-      zoneTransferRequestId: pulumi.Output.create<String>(map['zoneTransferRequestId'] as String),
+      disableStatusCheck: map['disableStatusCheck'] == null ? null : (map['disableStatusCheck'] as bool).input(),
+      key: (map['key'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
+      zoneTransferRequestId: (map['zoneTransferRequestId'] as String).input(),
     );
   }
 }

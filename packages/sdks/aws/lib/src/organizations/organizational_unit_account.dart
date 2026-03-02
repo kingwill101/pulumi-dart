@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationalUnitAccount {
   /// ARN of the organizational unit
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// Email of the account
-  final String? email;
+  final pulumi.Input<String>? email;
   /// Identifier of the organization unit
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name for the organizational unit
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [OrganizationalUnitAccount].
   /// [arn] ARN of the organizational unit
@@ -34,10 +35,10 @@ class OrganizationalUnitAccount {
 
   factory OrganizationalUnitAccount.fromMap(Map<String, dynamic> map) {
     return OrganizationalUnitAccount(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      email: map['email'] == null ? null : map['email'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

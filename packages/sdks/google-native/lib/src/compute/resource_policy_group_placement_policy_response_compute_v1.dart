@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
 class ResourcePolicyGroupPlacementPolicyResponseComputeV1 {
   /// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
-  final int availabilityDomainCount;
+  final pulumi.Input<int> availabilityDomainCount;
   /// Specifies network collocation
-  final String collocation;
+  final pulumi.Input<String> collocation;
   /// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
-  final int vmCount;
+  final pulumi.Input<int> vmCount;
 
   /// Creates a new [ResourcePolicyGroupPlacementPolicyResponseComputeV1].
   /// [availabilityDomainCount] The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
@@ -30,9 +31,9 @@ class ResourcePolicyGroupPlacementPolicyResponseComputeV1 {
 
   factory ResourcePolicyGroupPlacementPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicyResponseComputeV1(
-      availabilityDomainCount: map['availabilityDomainCount'] as int,
-      collocation: map['collocation'] as String,
-      vmCount: map['vmCount'] as int,
+      availabilityDomainCount: (map['availabilityDomainCount'] as int).input(),
+      collocation: (map['collocation'] as String).input(),
+      vmCount: (map['vmCount'] as int).input(),
     );
   }
 }

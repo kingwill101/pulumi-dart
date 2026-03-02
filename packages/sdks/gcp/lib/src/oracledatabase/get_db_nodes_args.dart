@@ -20,13 +20,10 @@ class GetDbNodesArgs {
   /// [location] The location of the resource.
   /// [project] The project in which the resource belongs. If it
   GetDbNodesArgs({
-    required pulumi.Output<String> cloudVmCluster,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      cloudVmCluster = pulumi.Input.asInput<String>(cloudVmCluster),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.cloudVmCluster,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetDbNodesArgs {
 
   factory GetDbNodesArgs.fromMap(Map<String, dynamic> map) {
     return GetDbNodesArgs(
-      cloudVmCluster: pulumi.Output.create<String>(map['cloudVmCluster'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      cloudVmCluster: (map['cloudVmCluster'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

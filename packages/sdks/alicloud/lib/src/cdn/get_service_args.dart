@@ -20,11 +20,9 @@ class GetServiceArgs {
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
   /// [internetChargeType] The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
   GetServiceArgs({
-    pulumi.Output<String>? enable,
-    pulumi.Output<String>? internetChargeType,
-  }) :
-      enable = pulumi.Input.asOptionalInput<String>(enable),
-      internetChargeType = pulumi.Input.asOptionalInput<String>(internetChargeType);
+    this.enable,
+    this.internetChargeType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,8 +33,8 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      enable: map['enable'] == null ? null : pulumi.Output.create<String>(map['enable'] as String),
-      internetChargeType: map['internetChargeType'] == null ? null : pulumi.Output.create<String>(map['internetChargeType'] as String),
+      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetAgentPoolArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
   GetAgentPoolArgs({
-    required pulumi.Output<String> agentPoolName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      agentPoolName = pulumi.Input.asInput<String>(agentPoolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.agentPoolName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAgentPoolArgs {
 
   factory GetAgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentPoolArgs(
-      agentPoolName: pulumi.Output.create<String>(map['agentPoolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      agentPoolName: (map['agentPoolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

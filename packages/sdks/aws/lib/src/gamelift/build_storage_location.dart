@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuildStorageLocation {
   /// Name of your S3 bucket.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// Name of the zip file containing your build files.
-  final String key;
+  final pulumi.Input<String> key;
   /// A specific version of the file. If not set, the latest version of the file is retrieved.
-  final String? objectVersion;
+  final pulumi.Input<String>? objectVersion;
   /// ARN of the access role that allows Amazon GameLift to access your S3 bucket.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [BuildStorageLocation].
   /// [bucket] Name of your S3 bucket.
@@ -34,10 +35,10 @@ class BuildStorageLocation {
 
   factory BuildStorageLocation.fromMap(Map<String, dynamic> map) {
     return BuildStorageLocation(
-      bucket: map['bucket'] as String,
-      key: map['key'] as String,
-      objectVersion: map['objectVersion'] == null ? null : map['objectVersion'] as String,
-      roleArn: map['roleArn'] as String,
+      bucket: (map['bucket'] as String).input(),
+      key: (map['key'] as String).input(),
+      objectVersion: map['objectVersion'] == null ? null : (map['objectVersion'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

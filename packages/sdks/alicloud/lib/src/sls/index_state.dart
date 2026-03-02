@@ -32,23 +32,15 @@ class IndexState {
   /// [maxTextLen] Maximum length of statistical field
   /// [projectName] Project name
   IndexState({
-    pulumi.Output<String>? keys,
-    pulumi.Output<IndexLine>? line,
-    pulumi.Output<bool>? logReduce,
-    pulumi.Output<List<String>>? logReduceBlackLists,
-    pulumi.Output<List<String>>? logReduceWhiteLists,
-    pulumi.Output<String>? logstoreName,
-    pulumi.Output<int>? maxTextLen,
-    pulumi.Output<String>? projectName,
-  }) :
-      keys = pulumi.Input.asOptionalInput<String>(keys),
-      line = pulumi.Input.asOptionalInput<IndexLine>(line),
-      logReduce = pulumi.Input.asOptionalInput<bool>(logReduce),
-      logReduceBlackLists = pulumi.Input.asOptionalInput<List<String>>(logReduceBlackLists),
-      logReduceWhiteLists = pulumi.Input.asOptionalInput<List<String>>(logReduceWhiteLists),
-      logstoreName = pulumi.Input.asOptionalInput<String>(logstoreName),
-      maxTextLen = pulumi.Input.asOptionalInput<int>(maxTextLen),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName);
+    this.keys,
+    this.line,
+    this.logReduce,
+    this.logReduceBlackLists,
+    this.logReduceWhiteLists,
+    this.logstoreName,
+    this.maxTextLen,
+    this.projectName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class IndexState {
 
   factory IndexState.fromMap(Map<String, dynamic> map) {
     return IndexState(
-      keys: map['keys'] == null ? null : pulumi.Output.create<String>(map['keys'] as String),
-      line: map['line'] == null ? null : pulumi.Output.create<IndexLine>(IndexLine.fromMap((map['line'] as Map).cast<String, dynamic>())),
-      logReduce: map['logReduce'] == null ? null : pulumi.Output.create<bool>(map['logReduce'] as bool),
-      logReduceBlackLists: map['logReduceBlackLists'] == null ? null : pulumi.Output.create<List<String>>((map['logReduceBlackLists'] as List).cast<String>()),
-      logReduceWhiteLists: map['logReduceWhiteLists'] == null ? null : pulumi.Output.create<List<String>>((map['logReduceWhiteLists'] as List).cast<String>()),
-      logstoreName: map['logstoreName'] == null ? null : pulumi.Output.create<String>(map['logstoreName'] as String),
-      maxTextLen: map['maxTextLen'] == null ? null : pulumi.Output.create<int>(map['maxTextLen'] as int),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
+      keys: map['keys'] == null ? null : (map['keys'] as String).input(),
+      line: map['line'] == null ? null : (IndexLine.fromMap((map['line'] as Map).cast<String, dynamic>())).input(),
+      logReduce: map['logReduce'] == null ? null : (map['logReduce'] as bool).input(),
+      logReduceBlackLists: map['logReduceBlackLists'] == null ? null : ((map['logReduceBlackLists'] as List).cast<String>()).input(),
+      logReduceWhiteLists: map['logReduceWhiteLists'] == null ? null : ((map['logReduceWhiteLists'] as List).cast<String>()).input(),
+      logstoreName: map['logstoreName'] == null ? null : (map['logstoreName'] as String).input(),
+      maxTextLen: map['maxTextLen'] == null ? null : (map['maxTextLen'] as int).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
     );
   }
 }

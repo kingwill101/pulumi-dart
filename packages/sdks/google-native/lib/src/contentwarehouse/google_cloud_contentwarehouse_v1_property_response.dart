@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_date_time_array_response.dart';
 import 'google_cloud_contentwarehouse_v1_enum_array_response.dart';
 import 'google_cloud_contentwarehouse_v1_float_array_response.dart';
@@ -12,23 +13,23 @@ import 'google_cloud_contentwarehouse_v1_timestamp_array_response.dart';
 /// Property of a document.
 class GoogleCloudContentwarehouseV1PropertyResponse {
   /// Date time property values. It is not supported by CMEK compliant deployment.
-  final GoogleCloudContentwarehouseV1DateTimeArrayResponse dateTimeValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1DateTimeArrayResponse> dateTimeValues;
   /// Enum property values.
-  final GoogleCloudContentwarehouseV1EnumArrayResponse enumValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1EnumArrayResponse> enumValues;
   /// Float property values.
-  final GoogleCloudContentwarehouseV1FloatArrayResponse floatValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1FloatArrayResponse> floatValues;
   /// Integer property values.
-  final GoogleCloudContentwarehouseV1IntegerArrayResponse integerValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1IntegerArrayResponse> integerValues;
   /// Map property values.
-  final GoogleCloudContentwarehouseV1MapPropertyResponse mapProperty;
+  final pulumi.Input<GoogleCloudContentwarehouseV1MapPropertyResponse> mapProperty;
   /// Must match the name of a PropertyDefinition in the DocumentSchema.
-  final String name;
+  final pulumi.Input<String> name;
   /// Nested structured data property values.
-  final GoogleCloudContentwarehouseV1PropertyArrayResponse propertyValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1PropertyArrayResponse> propertyValues;
   /// String/text property values.
-  final GoogleCloudContentwarehouseV1TextArrayResponse textValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1TextArrayResponse> textValues;
   /// Timestamp property values. It is not supported by CMEK compliant deployment.
-  final GoogleCloudContentwarehouseV1TimestampArrayResponse timestampValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1TimestampArrayResponse> timestampValues;
 
   /// Creates a new [GoogleCloudContentwarehouseV1PropertyResponse].
   /// [dateTimeValues] Date time property values. It is not supported by CMEK compliant deployment.
@@ -54,29 +55,29 @@ class GoogleCloudContentwarehouseV1PropertyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dateTimeValues': dateTimeValues.toMap(),
-      'enumValues': enumValues.toMap(),
-      'floatValues': floatValues.toMap(),
-      'integerValues': integerValues.toMap(),
-      'mapProperty': mapProperty.toMap(),
+      'dateTimeValues': pulumi.Input.mapInputValue<GoogleCloudContentwarehouseV1DateTimeArrayResponse, Map<String, dynamic>>(dateTimeValues, (value) => value.toMap()),
+      'enumValues': pulumi.Input.mapInputValue<GoogleCloudContentwarehouseV1EnumArrayResponse, Map<String, dynamic>>(enumValues, (value) => value.toMap()),
+      'floatValues': pulumi.Input.mapInputValue<GoogleCloudContentwarehouseV1FloatArrayResponse, Map<String, dynamic>>(floatValues, (value) => value.toMap()),
+      'integerValues': pulumi.Input.mapInputValue<GoogleCloudContentwarehouseV1IntegerArrayResponse, Map<String, dynamic>>(integerValues, (value) => value.toMap()),
+      'mapProperty': pulumi.Input.mapInputValue<GoogleCloudContentwarehouseV1MapPropertyResponse, Map<String, dynamic>>(mapProperty, (value) => value.toMap()),
       'name': name,
-      'propertyValues': propertyValues.toMap(),
-      'textValues': textValues.toMap(),
-      'timestampValues': timestampValues.toMap(),
+      'propertyValues': pulumi.Input.mapInputValue<GoogleCloudContentwarehouseV1PropertyArrayResponse, Map<String, dynamic>>(propertyValues, (value) => value.toMap()),
+      'textValues': pulumi.Input.mapInputValue<GoogleCloudContentwarehouseV1TextArrayResponse, Map<String, dynamic>>(textValues, (value) => value.toMap()),
+      'timestampValues': pulumi.Input.mapInputValue<GoogleCloudContentwarehouseV1TimestampArrayResponse, Map<String, dynamic>>(timestampValues, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudContentwarehouseV1PropertyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1PropertyResponse(
-      dateTimeValues: GoogleCloudContentwarehouseV1DateTimeArrayResponse.fromMap((map['dateTimeValues'] as Map).cast<String, dynamic>()),
-      enumValues: GoogleCloudContentwarehouseV1EnumArrayResponse.fromMap((map['enumValues'] as Map).cast<String, dynamic>()),
-      floatValues: GoogleCloudContentwarehouseV1FloatArrayResponse.fromMap((map['floatValues'] as Map).cast<String, dynamic>()),
-      integerValues: GoogleCloudContentwarehouseV1IntegerArrayResponse.fromMap((map['integerValues'] as Map).cast<String, dynamic>()),
-      mapProperty: GoogleCloudContentwarehouseV1MapPropertyResponse.fromMap((map['mapProperty'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      propertyValues: GoogleCloudContentwarehouseV1PropertyArrayResponse.fromMap((map['propertyValues'] as Map).cast<String, dynamic>()),
-      textValues: GoogleCloudContentwarehouseV1TextArrayResponse.fromMap((map['textValues'] as Map).cast<String, dynamic>()),
-      timestampValues: GoogleCloudContentwarehouseV1TimestampArrayResponse.fromMap((map['timestampValues'] as Map).cast<String, dynamic>()),
+      dateTimeValues: (GoogleCloudContentwarehouseV1DateTimeArrayResponse.fromMap((map['dateTimeValues'] as Map).cast<String, dynamic>())).input(),
+      enumValues: (GoogleCloudContentwarehouseV1EnumArrayResponse.fromMap((map['enumValues'] as Map).cast<String, dynamic>())).input(),
+      floatValues: (GoogleCloudContentwarehouseV1FloatArrayResponse.fromMap((map['floatValues'] as Map).cast<String, dynamic>())).input(),
+      integerValues: (GoogleCloudContentwarehouseV1IntegerArrayResponse.fromMap((map['integerValues'] as Map).cast<String, dynamic>())).input(),
+      mapProperty: (GoogleCloudContentwarehouseV1MapPropertyResponse.fromMap((map['mapProperty'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      propertyValues: (GoogleCloudContentwarehouseV1PropertyArrayResponse.fromMap((map['propertyValues'] as Map).cast<String, dynamic>())).input(),
+      textValues: (GoogleCloudContentwarehouseV1TextArrayResponse.fromMap((map['textValues'] as Map).cast<String, dynamic>())).input(),
+      timestampValues: (GoogleCloudContentwarehouseV1TimestampArrayResponse.fromMap((map['timestampValues'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

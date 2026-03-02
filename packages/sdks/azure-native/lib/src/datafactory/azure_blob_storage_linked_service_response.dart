@@ -9,46 +9,46 @@ import 'parameter_specification_response.dart';
 /// The azure blob storage linked service.
 class AzureBlobStorageLinkedServiceResponse {
   /// The Azure key vault secret reference of accountKey in connection string.
-  final AzureKeyVaultSecretReferenceResponse? accountKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? accountKey;
   /// Specify the kind of your storage account. Allowed values are: Storage (general purpose v1), StorageV2 (general purpose v2), BlobStorage, or BlockBlobStorage. Type: string (or Expression with resultType string).
-  final dynamic accountKind;
+  final pulumi.Input<dynamic>? accountKind;
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The type used for authentication. Type: string.
-  final String? authenticationType;
+  final pulumi.Input<String>? authenticationType;
   /// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
-  final dynamic azureCloudType;
+  final pulumi.Input<dynamic>? azureCloudType;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// The connection string. It is mutually exclusive with sasUri, serviceEndpoint property. Type: string, SecureString or AzureKeyVaultSecretReference.
-  final dynamic connectionString;
+  final pulumi.Input<dynamic>? connectionString;
   /// Container uri of the Azure Blob Storage resource only support for anonymous access. Type: string (or Expression with resultType string).
-  final dynamic containerUri;
+  final pulumi.Input<dynamic>? containerUri;
   /// The credential reference containing authentication information.
-  final CredentialReferenceResponse? credential;
+  final pulumi.Input<CredentialReferenceResponse>? credential;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// The Azure key vault secret reference of sasToken in sas uri.
-  final AzureKeyVaultSecretReferenceResponse? sasToken;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? sasToken;
   /// SAS URI of the Azure Blob Storage resource. It is mutually exclusive with connectionString, serviceEndpoint property. Type: string, SecureString or AzureKeyVaultSecretReference.
-  final dynamic sasUri;
+  final pulumi.Input<dynamic>? sasUri;
   /// Blob service endpoint of the Azure Blob Storage resource. It is mutually exclusive with connectionString, sasUri property.
-  final dynamic serviceEndpoint;
+  final pulumi.Input<dynamic>? serviceEndpoint;
   /// The ID of the service principal used to authenticate against Azure SQL Data Warehouse. Type: string (or Expression with resultType string).
-  final dynamic servicePrincipalId;
+  final pulumi.Input<dynamic>? servicePrincipalId;
   /// The key of the service principal used to authenticate against Azure SQL Data Warehouse.
-  final AzureKeyVaultSecretReferenceResponse? servicePrincipalKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? servicePrincipalKey;
   /// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
-  final dynamic tenant;
+  final pulumi.Input<dynamic>? tenant;
   /// Type of linked service.
   /// Expected value is 'AzureBlobStorage'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [AzureBlobStorageLinkedServiceResponse].
   /// [accountKey] The Azure key vault secret reference of accountKey in connection string.
@@ -96,23 +96,23 @@ class AzureBlobStorageLinkedServiceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountKey': ?accountKey == null ? null : accountKey!.toMap(),
+      'accountKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(accountKey, (value) => value.toMap()),
       'accountKind': ?accountKind,
       'annotations': ?annotations,
       'authenticationType': ?authenticationType,
       'azureCloudType': ?azureCloudType,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionString': ?connectionString,
       'containerUri': ?containerUri,
-      'credential': ?credential == null ? null : credential!.toMap(),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReferenceResponse, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'sasToken': ?sasToken == null ? null : sasToken!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sasToken': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(sasToken, (value) => value.toMap()),
       'sasUri': ?sasUri,
       'serviceEndpoint': ?serviceEndpoint,
       'servicePrincipalId': ?servicePrincipalId,
-      'servicePrincipalKey': ?servicePrincipalKey == null ? null : servicePrincipalKey!.toMap(),
+      'servicePrincipalKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
       'tenant': ?tenant,
       'type': type,
       'version': ?version,
@@ -121,26 +121,26 @@ class AzureBlobStorageLinkedServiceResponse {
 
   factory AzureBlobStorageLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return AzureBlobStorageLinkedServiceResponse(
-      accountKey: map['accountKey'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['accountKey'] as Map).cast<String, dynamic>()),
-      accountKind: map['accountKind'] == null ? null : map['accountKind'],
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      authenticationType: map['authenticationType'] == null ? null : map['authenticationType'] as String,
-      azureCloudType: map['azureCloudType'] == null ? null : map['azureCloudType'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      connectionString: map['connectionString'] == null ? null : map['connectionString'],
-      containerUri: map['containerUri'] == null ? null : map['containerUri'],
-      credential: map['credential'] == null ? null : CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sasToken: map['sasToken'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['sasToken'] as Map).cast<String, dynamic>()),
-      sasUri: map['sasUri'] == null ? null : map['sasUri'],
-      serviceEndpoint: map['serviceEndpoint'] == null ? null : map['serviceEndpoint'],
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : map['servicePrincipalId'],
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>()),
-      tenant: map['tenant'] == null ? null : map['tenant'],
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      accountKey: map['accountKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['accountKey'] as Map).cast<String, dynamic>())).input(),
+      accountKind: map['accountKind'] == null ? null : (map['accountKind']).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      azureCloudType: map['azureCloudType'] == null ? null : (map['azureCloudType']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']).input(),
+      containerUri: map['containerUri'] == null ? null : (map['containerUri']).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sasToken: map['sasToken'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['sasToken'] as Map).cast<String, dynamic>())).input(),
+      sasUri: map['sasUri'] == null ? null : (map['sasUri']).input(),
+      serviceEndpoint: map['serviceEndpoint'] == null ? null : (map['serviceEndpoint']).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>())).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

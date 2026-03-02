@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainSysInfoSmbiosOemStrings {
   /// Defines individual entries for the OEM strings in the SMBIOS configuration.
-  final List<String>? entries;
+  final pulumi.Input<List<String>>? entries;
 
   /// Creates a new [DomainSysInfoSmbiosOemStrings].
   /// [entries] Defines individual entries for the OEM strings in the SMBIOS configuration.
@@ -19,7 +20,7 @@ class DomainSysInfoSmbiosOemStrings {
 
   factory DomainSysInfoSmbiosOemStrings.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosOemStrings(
-      entries: map['entries'] == null ? null : (map['entries'] as List).cast<String>(),
+      entries: map['entries'] == null ? null : ((map['entries'] as List).cast<String>()).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class ServiceMonitoringAgentProcessState {
   /// [processName] The name of the process.
   /// [processUser] The user who launches the process.
   ServiceMonitoringAgentProcessState({
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? processId,
-    pulumi.Output<String>? processName,
-    pulumi.Output<String>? processUser,
-  }) :
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      processId = pulumi.Input.asOptionalInput<String>(processId),
-      processName = pulumi.Input.asOptionalInput<String>(processName),
-      processUser = pulumi.Input.asOptionalInput<String>(processUser);
+    this.instanceId,
+    this.processId,
+    this.processName,
+    this.processUser,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ServiceMonitoringAgentProcessState {
 
   factory ServiceMonitoringAgentProcessState.fromMap(Map<String, dynamic> map) {
     return ServiceMonitoringAgentProcessState(
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      processId: map['processId'] == null ? null : pulumi.Output.create<String>(map['processId'] as String),
-      processName: map['processName'] == null ? null : pulumi.Output.create<String>(map['processName'] as String),
-      processUser: map['processUser'] == null ? null : pulumi.Output.create<String>(map['processUser'] as String),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      processId: map['processId'] == null ? null : (map['processId'] as String).input(),
+      processName: map['processName'] == null ? null : (map['processName'] as String).input(),
+      processUser: map['processUser'] == null ? null : (map['processUser'] as String).input(),
     );
   }
 }

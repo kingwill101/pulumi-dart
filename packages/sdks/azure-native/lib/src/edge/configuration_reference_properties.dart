@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties for ConfigurationReference Resource
 class ConfigurationReferenceProperties {
   /// ArmId of Configuration resource
-  final String? configurationResourceId;
+  final pulumi.Input<String>? configurationResourceId;
 
   /// Creates a new [ConfigurationReferenceProperties].
   /// [configurationResourceId] ArmId of Configuration resource
@@ -20,7 +21,7 @@ class ConfigurationReferenceProperties {
 
   factory ConfigurationReferenceProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationReferenceProperties(
-      configurationResourceId: map['configurationResourceId'] == null ? null : map['configurationResourceId'] as String,
+      configurationResourceId: map['configurationResourceId'] == null ? null : (map['configurationResourceId'] as String).input(),
     );
   }
 }

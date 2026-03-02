@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'week_day_of_month_day_of_week.dart';
 
 /// Represents one week day in a month. An example is "the 4th Sunday".
 class WeekDayOfMonth {
   /// A day of the week.
-  final WeekDayOfMonthDayOfWeek dayOfWeek;
+  final pulumi.Input<WeekDayOfMonthDayOfWeek> dayOfWeek;
   /// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
-  final int? dayOffset;
+  final pulumi.Input<int>? dayOffset;
   /// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
-  final int weekOrdinal;
+  final pulumi.Input<int> weekOrdinal;
 
   /// Creates a new [WeekDayOfMonth].
   /// [dayOfWeek] A day of the week.
@@ -23,7 +24,7 @@ class WeekDayOfMonth {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dayOfWeek': dayOfWeek.value,
+      'dayOfWeek': pulumi.Input.mapInputValue<WeekDayOfMonthDayOfWeek, String>(dayOfWeek, (value) => value.value),
       'dayOffset': ?dayOffset,
       'weekOrdinal': weekOrdinal,
     };
@@ -31,9 +32,9 @@ class WeekDayOfMonth {
 
   factory WeekDayOfMonth.fromMap(Map<String, dynamic> map) {
     return WeekDayOfMonth(
-      dayOfWeek: WeekDayOfMonthDayOfWeek.fromValue(map['dayOfWeek'] as String),
-      dayOffset: map['dayOffset'] == null ? null : map['dayOffset'] as int,
-      weekOrdinal: map['weekOrdinal'] as int,
+      dayOfWeek: (WeekDayOfMonthDayOfWeek.fromValue(map['dayOfWeek'] as String)).input(),
+      dayOffset: map['dayOffset'] == null ? null : (map['dayOffset'] as int).input(),
+      weekOrdinal: (map['weekOrdinal'] as int).input(),
     );
   }
 }

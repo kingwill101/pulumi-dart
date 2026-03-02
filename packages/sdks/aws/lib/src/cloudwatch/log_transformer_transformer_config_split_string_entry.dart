@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigSplitStringEntry {
   /// Specifies the separator characters to split the string entry on.
-  final String delimiter;
+  final pulumi.Input<String> delimiter;
   /// Specifies the key to modify.
-  final String source;
+  final pulumi.Input<String> source;
 
   /// Creates a new [LogTransformerTransformerConfigSplitStringEntry].
   /// [delimiter] Specifies the separator characters to split the string entry on.
@@ -24,8 +25,8 @@ class LogTransformerTransformerConfigSplitStringEntry {
 
   factory LogTransformerTransformerConfigSplitStringEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigSplitStringEntry(
-      delimiter: map['delimiter'] as String,
-      source: map['source'] as String,
+      delimiter: (map['delimiter'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

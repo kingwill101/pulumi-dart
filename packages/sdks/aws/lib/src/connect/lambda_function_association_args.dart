@@ -19,13 +19,10 @@ class LambdaFunctionAssociationArgs {
   /// [instanceId] The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LambdaFunctionAssociationArgs({
-    required pulumi.Output<String> functionArn,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? region,
-  }) :
-      functionArn = pulumi.Input.asInput<String>(functionArn),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.functionArn,
+    required this.instanceId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LambdaFunctionAssociationArgs {
 
   factory LambdaFunctionAssociationArgs.fromMap(Map<String, dynamic> map) {
     return LambdaFunctionAssociationArgs(
-      functionArn: pulumi.Output.create<String>(map['functionArn'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      functionArn: (map['functionArn'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

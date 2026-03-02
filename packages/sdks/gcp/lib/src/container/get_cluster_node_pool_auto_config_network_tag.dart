@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolAutoConfigNetworkTag {
   /// List of network tags applied to auto-provisioned node pools.
-  final List<String> tags;
+  final pulumi.Input<List<String>> tags;
 
   /// Creates a new [GetClusterNodePoolAutoConfigNetworkTag].
   /// [tags] List of network tags applied to auto-provisioned node pools.
@@ -19,7 +20,7 @@ class GetClusterNodePoolAutoConfigNetworkTag {
 
   factory GetClusterNodePoolAutoConfigNetworkTag.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolAutoConfigNetworkTag(
-      tags: (map['tags'] as List).cast<String>(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

@@ -41,27 +41,17 @@ class ContactProfileArgs {
   /// [resourceGroupName] The name of the Resource Group where the contact profile exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   ContactProfileArgs({
-    required pulumi.Output<String> autoTracking,
-    pulumi.Output<String>? eventHubUri,
-    required pulumi.Output<List<ContactProfileLink>> links,
-    pulumi.Output<String>? location,
-    pulumi.Output<double>? minimumElevationDegrees,
-    required pulumi.Output<String> minimumVariableContactDuration,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkConfigurationSubnetId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoTracking = pulumi.Input.asInput<String>(autoTracking),
-      eventHubUri = pulumi.Input.asOptionalInput<String>(eventHubUri),
-      links = pulumi.Input.asInput<List<ContactProfileLink>>(links),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      minimumElevationDegrees = pulumi.Input.asOptionalInput<double>(minimumElevationDegrees),
-      minimumVariableContactDuration = pulumi.Input.asInput<String>(minimumVariableContactDuration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkConfigurationSubnetId = pulumi.Input.asInput<String>(networkConfigurationSubnetId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.autoTracking,
+    this.eventHubUri,
+    required this.links,
+    this.location,
+    this.minimumElevationDegrees,
+    required this.minimumVariableContactDuration,
+    this.name,
+    required this.networkConfigurationSubnetId,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class ContactProfileArgs {
 
   factory ContactProfileArgs.fromMap(Map<String, dynamic> map) {
     return ContactProfileArgs(
-      autoTracking: pulumi.Output.create<String>(map['autoTracking'] as String),
-      eventHubUri: map['eventHubUri'] == null ? null : pulumi.Output.create<String>(map['eventHubUri'] as String),
-      links: pulumi.Output.create<List<ContactProfileLink>>(pulumi.Input.decodeList<ContactProfileLink>(map['links'], (value) => ContactProfileLink.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      minimumElevationDegrees: map['minimumElevationDegrees'] == null ? null : pulumi.Output.create<double>(map['minimumElevationDegrees'] as double),
-      minimumVariableContactDuration: pulumi.Output.create<String>(map['minimumVariableContactDuration'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkConfigurationSubnetId: pulumi.Output.create<String>(map['networkConfigurationSubnetId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoTracking: (map['autoTracking'] as String).input(),
+      eventHubUri: map['eventHubUri'] == null ? null : (map['eventHubUri'] as String).input(),
+      links: (pulumi.Input.decodeList<ContactProfileLink>(map['links'], (value) => ContactProfileLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      minimumElevationDegrees: map['minimumElevationDegrees'] == null ? null : (map['minimumElevationDegrees'] as double).input(),
+      minimumVariableContactDuration: (map['minimumVariableContactDuration'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkConfigurationSubnetId: (map['networkConfigurationSubnetId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

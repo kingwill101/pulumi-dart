@@ -57,35 +57,21 @@ class NamespaceArgs {
   /// [tags] Resource tags
   /// [zoneRedundant] This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
   NamespaceArgs({
-    pulumi.Output<String>? alternateName,
-    pulumi.Output<bool>? disableLocalAuth,
-    pulumi.Output<Encryption>? encryption,
-    pulumi.Output<Identity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? minimumTlsVersion,
-    pulumi.Output<String>? namespaceName,
-    pulumi.Output<int>? premiumMessagingPartitions,
-    pulumi.Output<List<PrivateEndpointConnectionServicebus>>? privateEndpointConnections,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SBSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? zoneRedundant,
-  }) :
-      alternateName = pulumi.Input.asOptionalInput<String>(alternateName),
-      disableLocalAuth = pulumi.Input.asOptionalInput<bool>(disableLocalAuth),
-      encryption = pulumi.Input.asOptionalInput<Encryption>(encryption),
-      identity = pulumi.Input.asOptionalInput<Identity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      minimumTlsVersion = pulumi.Input.asOptionalInput<String>(minimumTlsVersion),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      premiumMessagingPartitions = pulumi.Input.asOptionalInput<int>(premiumMessagingPartitions),
-      privateEndpointConnections = pulumi.Input.asOptionalInput<List<PrivateEndpointConnectionServicebus>>(privateEndpointConnections),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<SBSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneRedundant = pulumi.Input.asOptionalInput<bool>(zoneRedundant);
+    this.alternateName,
+    this.disableLocalAuth,
+    this.encryption,
+    this.identity,
+    this.location,
+    this.minimumTlsVersion,
+    this.namespaceName,
+    this.premiumMessagingPartitions,
+    this.privateEndpointConnections,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+    this.zoneRedundant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,20 +94,20 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      alternateName: map['alternateName'] == null ? null : pulumi.Output.create<String>(map['alternateName'] as String),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : pulumi.Output.create<bool>(map['disableLocalAuth'] as bool),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<Encryption>(Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<Identity>(Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : pulumi.Output.create<String>(map['minimumTlsVersion'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      premiumMessagingPartitions: map['premiumMessagingPartitions'] == null ? null : pulumi.Output.create<int>(map['premiumMessagingPartitions'] as int),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : pulumi.Output.create<List<PrivateEndpointConnectionServicebus>>((map['privateEndpointConnections'] as List).cast<PrivateEndpointConnectionServicebus>()),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<SBSku>(SBSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneRedundant: map['zoneRedundant'] == null ? null : pulumi.Output.create<bool>(map['zoneRedundant'] as bool),
+      alternateName: map['alternateName'] == null ? null : (map['alternateName'] as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      premiumMessagingPartitions: map['premiumMessagingPartitions'] == null ? null : (map['premiumMessagingPartitions'] as int).input(),
+      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : ((map['privateEndpointConnections'] as List).cast<PrivateEndpointConnectionServicebus>()).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (SBSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as bool).input(),
     );
   }
 }

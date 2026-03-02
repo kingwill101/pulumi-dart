@@ -23,15 +23,11 @@ class FirewallRuleArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   FirewallRuleArgs({
-    pulumi.Output<String>? firewallRuleName,
-    required pulumi.Output<String> mongoClusterName,
-    pulumi.Output<FirewallRuleProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      firewallRuleName = pulumi.Input.asOptionalInput<String>(firewallRuleName),
-      mongoClusterName = pulumi.Input.asInput<String>(mongoClusterName),
-      properties = pulumi.Input.asOptionalInput<FirewallRuleProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.firewallRuleName,
+    required this.mongoClusterName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      firewallRuleName: map['firewallRuleName'] == null ? null : pulumi.Output.create<String>(map['firewallRuleName'] as String),
-      mongoClusterName: pulumi.Output.create<String>(map['mongoClusterName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<FirewallRuleProperties>(FirewallRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
+      mongoClusterName: (map['mongoClusterName'] as String).input(),
+      properties: map['properties'] == null ? null : (FirewallRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

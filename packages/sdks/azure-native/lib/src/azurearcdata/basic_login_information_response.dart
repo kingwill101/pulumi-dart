@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Username and password for basic login authentication.
 class BasicLoginInformationResponse {
   /// Login username.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [BasicLoginInformationResponse].
   /// [username] Login username.
@@ -20,7 +21,7 @@ class BasicLoginInformationResponse {
 
   factory BasicLoginInformationResponse.fromMap(Map<String, dynamic> map) {
     return BasicLoginInformationResponse(
-      username: map['username'] == null ? null : map['username'] as String,
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

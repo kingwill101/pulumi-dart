@@ -22,15 +22,11 @@ class BgpIpArgs {
   /// [memberUid] The member to which the asset belongs.
   /// [resourceGroupId] Field `resource_group_id` has been deprecated from provider version 1.259.0.
   BgpIpArgs({
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> ip,
-    pulumi.Output<String>? memberUid,
-    pulumi.Output<String>? resourceGroupId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      ip = pulumi.Input.asInput<String>(ip),
-      memberUid = pulumi.Input.asOptionalInput<String>(memberUid),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId);
+    required this.instanceId,
+    required this.ip,
+    this.memberUid,
+    this.resourceGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class BgpIpArgs {
 
   factory BgpIpArgs.fromMap(Map<String, dynamic> map) {
     return BgpIpArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      ip: pulumi.Output.create<String>(map['ip'] as String),
-      memberUid: map['memberUid'] == null ? null : pulumi.Output.create<String>(map['memberUid'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      ip: (map['ip'] as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
     );
   }
 }

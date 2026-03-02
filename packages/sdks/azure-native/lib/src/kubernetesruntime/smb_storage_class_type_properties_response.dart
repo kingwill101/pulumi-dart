@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of SMB StorageClass
 class SmbStorageClassTypePropertiesResponse {
   /// Server domain
-  final String? domain;
+  final pulumi.Input<String>? domain;
   /// Server password
-  final String? password;
+  final pulumi.Input<String>? password;
   /// SMB Source
-  final String source;
+  final pulumi.Input<String> source;
   /// Sub directory under share. If the sub directory doesn't exist, driver will create it
-  final String? subDir;
+  final pulumi.Input<String>? subDir;
   /// Type of a storage class
   /// Expected value is 'SMB'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Server username
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [SmbStorageClassTypePropertiesResponse].
   /// [domain] Server domain
@@ -46,12 +47,12 @@ class SmbStorageClassTypePropertiesResponse {
 
   factory SmbStorageClassTypePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SmbStorageClassTypePropertiesResponse(
-      domain: map['domain'] == null ? null : map['domain'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      source: map['source'] as String,
-      subDir: map['subDir'] == null ? null : map['subDir'] as String,
-      type: map['type'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      source: (map['source'] as String).input(),
+      subDir: map['subDir'] == null ? null : (map['subDir'] as String).input(),
+      type: (map['type'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class EndpointArgs {
   /// [securityGroupId] Identifier of the EC2 Security Group.
   /// [subnetId] Identifier of the EC2 Subnet.
   EndpointArgs({
-    pulumi.Output<String>? accessType,
-    pulumi.Output<String>? customerOwnedIpv4Pool,
-    required pulumi.Output<String> outpostId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> securityGroupId,
-    required pulumi.Output<String> subnetId,
-  }) :
-      accessType = pulumi.Input.asOptionalInput<String>(accessType),
-      customerOwnedIpv4Pool = pulumi.Input.asOptionalInput<String>(customerOwnedIpv4Pool),
-      outpostId = pulumi.Input.asInput<String>(outpostId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
-      subnetId = pulumi.Input.asInput<String>(subnetId);
+    this.accessType,
+    this.customerOwnedIpv4Pool,
+    required this.outpostId,
+    this.region,
+    required this.securityGroupId,
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      accessType: map['accessType'] == null ? null : pulumi.Output.create<String>(map['accessType'] as String),
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : pulumi.Output.create<String>(map['customerOwnedIpv4Pool'] as String),
-      outpostId: pulumi.Output.create<String>(map['outpostId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupId: pulumi.Output.create<String>(map['securityGroupId'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
+      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
+      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : (map['customerOwnedIpv4Pool'] as String).input(),
+      outpostId: (map['outpostId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

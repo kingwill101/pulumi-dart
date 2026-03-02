@@ -21,15 +21,11 @@ class TransitRouterRouteTablePropagationState {
   /// [transitRouterAttachmentId] The ID the transit router attachment.
   /// [transitRouterRouteTableId] The ID of the transit router route table.
   TransitRouterRouteTablePropagationState({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transitRouterAttachmentId,
-    pulumi.Output<String>? transitRouterRouteTableId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouterAttachmentId = pulumi.Input.asOptionalInput<String>(transitRouterAttachmentId),
-      transitRouterRouteTableId = pulumi.Input.asOptionalInput<String>(transitRouterRouteTableId);
+    this.dryRun,
+    this.status,
+    this.transitRouterAttachmentId,
+    this.transitRouterRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class TransitRouterRouteTablePropagationState {
 
   factory TransitRouterRouteTablePropagationState.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteTablePropagationState(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
-      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteTableId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : (map['transitRouterRouteTableId'] as String).input(),
     );
   }
 }

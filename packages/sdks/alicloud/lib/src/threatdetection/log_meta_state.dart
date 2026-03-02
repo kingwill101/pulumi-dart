@@ -33,11 +33,9 @@ class LogMetaState {
   /// [logMetaName] The name of the exclusive Logstore where logs are stored. Value:
   /// [status] The status of the resource
   LogMetaState({
-    pulumi.Output<String>? logMetaName,
-    pulumi.Output<String>? status,
-  }) :
-      logMetaName = pulumi.Input.asOptionalInput<String>(logMetaName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.logMetaName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,8 +46,8 @@ class LogMetaState {
 
   factory LogMetaState.fromMap(Map<String, dynamic> map) {
     return LogMetaState(
-      logMetaName: map['logMetaName'] == null ? null : pulumi.Output.create<String>(map['logMetaName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      logMetaName: map['logMetaName'] == null ? null : (map['logMetaName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

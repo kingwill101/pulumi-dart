@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateConfigManifest {
   /// The name of the generated file. The default is `manifest`.
-  final String? fileName;
+  final pulumi.Input<String>? fileName;
   /// List of user supplied MuxStream.key values that should appear in this manifest.
-  final List<String>? muxStreams;
+  final pulumi.Input<List<String>>? muxStreams;
   /// Type of the manifest.
   /// Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [JobTemplateConfigManifest].
   /// [fileName] The name of the generated file. The default is `manifest`.
@@ -30,9 +31,9 @@ class JobTemplateConfigManifest {
 
   factory JobTemplateConfigManifest.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigManifest(
-      fileName: map['fileName'] == null ? null : map['fileName'] as String,
-      muxStreams: map['muxStreams'] == null ? null : (map['muxStreams'] as List).cast<String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      muxStreams: map['muxStreams'] == null ? null : ((map['muxStreams'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

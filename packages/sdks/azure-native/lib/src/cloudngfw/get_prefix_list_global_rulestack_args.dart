@@ -16,11 +16,9 @@ class GetPrefixListGlobalRulestackArgs {
   /// [globalRulestackName] GlobalRulestack resource name
   /// [name] Local Rule priority
   GetPrefixListGlobalRulestackArgs({
-    required pulumi.Output<String> globalRulestackName,
-    required pulumi.Output<String> name,
-  }) :
-      globalRulestackName = pulumi.Input.asInput<String>(globalRulestackName),
-      name = pulumi.Input.asInput<String>(name);
+    required this.globalRulestackName,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPrefixListGlobalRulestackArgs {
 
   factory GetPrefixListGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GetPrefixListGlobalRulestackArgs(
-      globalRulestackName: pulumi.Output.create<String>(map['globalRulestackName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      globalRulestackName: (map['globalRulestackName'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

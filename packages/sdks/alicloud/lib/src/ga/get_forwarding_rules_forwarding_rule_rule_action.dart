@@ -5,11 +5,11 @@ import 'get_forwarding_rules_forwarding_rule_rule_action_forward_group_config.da
 
 class GetForwardingRulesForwardingRuleRuleAction {
   /// Forwarding configuration.
-  final List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig> forwardGroupConfigs;
+  final pulumi.Input<List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig>> forwardGroupConfigs;
   /// Forwarding priority.
-  final int order;
+  final pulumi.Input<int> order;
   /// Forward action type.
-  final String ruleActionType;
+  final pulumi.Input<String> ruleActionType;
 
   /// Creates a new [GetForwardingRulesForwardingRuleRuleAction].
   /// [forwardGroupConfigs] Forwarding configuration.
@@ -23,7 +23,7 @@ class GetForwardingRulesForwardingRuleRuleAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'forwardGroupConfigs': pulumi.Input.encodeList<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig, Map<String, dynamic>>(forwardGroupConfigs, (value) => value.toMap()),
+      'forwardGroupConfigs': pulumi.Input.mapInputValue<List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig>, List<Map<String, dynamic>>>(forwardGroupConfigs, (value) => pulumi.Input.encodeList<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'order': order,
       'ruleActionType': ruleActionType,
     };
@@ -31,9 +31,9 @@ class GetForwardingRulesForwardingRuleRuleAction {
 
   factory GetForwardingRulesForwardingRuleRuleAction.fromMap(Map<String, dynamic> map) {
     return GetForwardingRulesForwardingRuleRuleAction(
-      forwardGroupConfigs: pulumi.Input.decodeList<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig>(map['forwardGroupConfigs'], (value) => GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig.fromMap((value as Map).cast<String, dynamic>())),
-      order: map['order'] as int,
-      ruleActionType: map['ruleActionType'] as String,
+      forwardGroupConfigs: (pulumi.Input.decodeList<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig>(map['forwardGroupConfigs'], (value) => GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      order: (map['order'] as int).input(),
+      ruleActionType: (map['ruleActionType'] as String).input(),
     );
   }
 }

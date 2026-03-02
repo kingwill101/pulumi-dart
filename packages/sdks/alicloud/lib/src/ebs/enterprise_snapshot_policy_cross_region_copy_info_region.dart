@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion {
   /// Destination region ID.
-  final String? regionId;
+  final pulumi.Input<String>? regionId;
   /// Number of days of snapshot retention for replication.
-  final int? retainDays;
+  final pulumi.Input<int>? retainDays;
 
   /// Creates a new [EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion].
   /// [regionId] Destination region ID.
@@ -24,8 +25,8 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion {
 
   factory EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion(
-      regionId: map['regionId'] == null ? null : map['regionId'] as String,
-      retainDays: map['retainDays'] == null ? null : map['retainDays'] as int,
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      retainDays: map['retainDays'] == null ? null : (map['retainDays'] as int).input(),
     );
   }
 }

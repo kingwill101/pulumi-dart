@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entity_parent_group_info_response.dart';
 
 /// The entity.
 class EntityInfoResponse {
   /// The friendly name of the management group.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The fully qualified ID for the entity.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
-  final String id;
+  final pulumi.Input<String> id;
   /// The users specific permissions to this item.
-  final String? inheritedPermissions;
+  final pulumi.Input<String>? inheritedPermissions;
   /// The name of the entity. For example, 00000000-0000-0000-0000-000000000000
-  final String name;
+  final pulumi.Input<String> name;
   /// Number of children is the number of Groups that are exactly one level underneath the current Group.
-  final int? numberOfChildGroups;
+  final pulumi.Input<int>? numberOfChildGroups;
   /// Number of children is the number of Groups and Subscriptions that are exactly one level underneath the current Group.
-  final int? numberOfChildren;
+  final pulumi.Input<int>? numberOfChildren;
   /// Number of Descendants
-  final int? numberOfDescendants;
+  final pulumi.Input<int>? numberOfDescendants;
   /// (Optional) The ID of the parent management group.
-  final EntityParentGroupInfoResponse? parent;
+  final pulumi.Input<EntityParentGroupInfoResponse>? parent;
   /// The parent display name chain from the root group to the immediate parent
-  final List<String>? parentDisplayNameChain;
+  final pulumi.Input<List<String>>? parentDisplayNameChain;
   /// The parent name chain from the root group to the immediate parent
-  final List<String>? parentNameChain;
+  final pulumi.Input<List<String>>? parentNameChain;
   /// The users specific permissions to this item.
-  final String? permissions;
+  final pulumi.Input<String>? permissions;
   /// The AAD Tenant ID associated with the entity. For example, 00000000-0000-0000-0000-000000000000
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// The type of the resource. For example, Microsoft.Management/managementGroups
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [EntityInfoResponse].
   /// [displayName] The friendly name of the management group.
@@ -70,7 +71,7 @@ class EntityInfoResponse {
       'numberOfChildGroups': ?numberOfChildGroups,
       'numberOfChildren': ?numberOfChildren,
       'numberOfDescendants': ?numberOfDescendants,
-      'parent': ?parent == null ? null : parent!.toMap(),
+      'parent': ?pulumi.Input.mapOptionalInputValue<EntityParentGroupInfoResponse, Map<String, dynamic>>(parent, (value) => value.toMap()),
       'parentDisplayNameChain': ?parentDisplayNameChain,
       'parentNameChain': ?parentNameChain,
       'permissions': ?permissions,
@@ -81,19 +82,19 @@ class EntityInfoResponse {
 
   factory EntityInfoResponse.fromMap(Map<String, dynamic> map) {
     return EntityInfoResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      id: map['id'] as String,
-      inheritedPermissions: map['inheritedPermissions'] == null ? null : map['inheritedPermissions'] as String,
-      name: map['name'] as String,
-      numberOfChildGroups: map['numberOfChildGroups'] == null ? null : map['numberOfChildGroups'] as int,
-      numberOfChildren: map['numberOfChildren'] == null ? null : map['numberOfChildren'] as int,
-      numberOfDescendants: map['numberOfDescendants'] == null ? null : map['numberOfDescendants'] as int,
-      parent: map['parent'] == null ? null : EntityParentGroupInfoResponse.fromMap((map['parent'] as Map).cast<String, dynamic>()),
-      parentDisplayNameChain: map['parentDisplayNameChain'] == null ? null : (map['parentDisplayNameChain'] as List).cast<String>(),
-      parentNameChain: map['parentNameChain'] == null ? null : (map['parentNameChain'] as List).cast<String>(),
-      permissions: map['permissions'] == null ? null : map['permissions'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      id: (map['id'] as String).input(),
+      inheritedPermissions: map['inheritedPermissions'] == null ? null : (map['inheritedPermissions'] as String).input(),
+      name: (map['name'] as String).input(),
+      numberOfChildGroups: map['numberOfChildGroups'] == null ? null : (map['numberOfChildGroups'] as int).input(),
+      numberOfChildren: map['numberOfChildren'] == null ? null : (map['numberOfChildren'] as int).input(),
+      numberOfDescendants: map['numberOfDescendants'] == null ? null : (map['numberOfDescendants'] as int).input(),
+      parent: map['parent'] == null ? null : (EntityParentGroupInfoResponse.fromMap((map['parent'] as Map).cast<String, dynamic>())).input(),
+      parentDisplayNameChain: map['parentDisplayNameChain'] == null ? null : ((map['parentDisplayNameChain'] as List).cast<String>()).input(),
+      parentNameChain: map['parentNameChain'] == null ? null : ((map['parentNameChain'] as List).cast<String>()).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

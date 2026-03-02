@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiAgentVersionsAgentVersionAttachedChildAgent {
   /// Name of the child agent
-  final String agentName;
+  final pulumi.Input<String> agentName;
   /// Child agent unique identifier
-  final String childAgentUuid;
+  final pulumi.Input<String> childAgentUuid;
   /// If case
-  final String ifCase;
+  final pulumi.Input<String> ifCase;
   /// Child agent is deleted
-  final bool isDeleted;
+  final pulumi.Input<bool> isDeleted;
   /// Route name
-  final String routeName;
+  final pulumi.Input<String> routeName;
 
   /// Creates a new [GetGradientaiAgentVersionsAgentVersionAttachedChildAgent].
   /// [agentName] Name of the child agent
@@ -39,11 +40,11 @@ class GetGradientaiAgentVersionsAgentVersionAttachedChildAgent {
 
   factory GetGradientaiAgentVersionsAgentVersionAttachedChildAgent.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentVersionsAgentVersionAttachedChildAgent(
-      agentName: map['agentName'] as String,
-      childAgentUuid: map['childAgentUuid'] as String,
-      ifCase: map['ifCase'] as String,
-      isDeleted: map['isDeleted'] as bool,
-      routeName: map['routeName'] as String,
+      agentName: (map['agentName'] as String).input(),
+      childAgentUuid: (map['childAgentUuid'] as String).input(),
+      ifCase: (map['ifCase'] as String).input(),
+      isDeleted: (map['isDeleted'] as bool).input(),
+      routeName: (map['routeName'] as String).input(),
     );
   }
 }

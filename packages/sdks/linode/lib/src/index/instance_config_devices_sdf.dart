@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceConfigDevicesSdf {
   /// The Disk ID to map to this disk slot
-  final int? diskId;
+  final pulumi.Input<int>? diskId;
   /// The Block Storage volume ID to map to this disk slot
-  final int? volumeId;
+  final pulumi.Input<int>? volumeId;
 
   /// Creates a new [InstanceConfigDevicesSdf].
   /// [diskId] The Disk ID to map to this disk slot
@@ -24,8 +25,8 @@ class InstanceConfigDevicesSdf {
 
   factory InstanceConfigDevicesSdf.fromMap(Map<String, dynamic> map) {
     return InstanceConfigDevicesSdf(
-      diskId: map['diskId'] == null ? null : map['diskId'] as int,
-      volumeId: map['volumeId'] == null ? null : map['volumeId'] as int,
+      diskId: map['diskId'] == null ? null : (map['diskId'] as int).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as int).input(),
     );
   }
 }

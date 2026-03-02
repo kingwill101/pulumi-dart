@@ -18,13 +18,10 @@ class GetResourceGuardProxyArgs {
   /// [resourceGuardProxyName] Required.
   /// [vaultName] The name of the recovery services vault.
   GetResourceGuardProxyArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceGuardProxyName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceGuardProxyName = pulumi.Input.asInput<String>(resourceGuardProxyName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.resourceGroupName,
+    required this.resourceGuardProxyName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetResourceGuardProxyArgs {
 
   factory GetResourceGuardProxyArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceGuardProxyArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceGuardProxyName: pulumi.Output.create<String>(map['resourceGuardProxyName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceGuardProxyName: (map['resourceGuardProxyName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

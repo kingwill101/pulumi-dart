@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The OIDC issuer profile of the Managed Cluster.
 class ManagedClusterOIDCIssuerProfileResponse {
   /// Whether the OIDC issuer is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The OIDC issuer url of the Managed Cluster.
-  final String issuerURL;
+  final pulumi.Input<String> issuerURL;
 
   /// Creates a new [ManagedClusterOIDCIssuerProfileResponse].
   /// [enabled] Whether the OIDC issuer is enabled.
@@ -25,8 +26,8 @@ class ManagedClusterOIDCIssuerProfileResponse {
 
   factory ManagedClusterOIDCIssuerProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterOIDCIssuerProfileResponse(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      issuerURL: map['issuerURL'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      issuerURL: (map['issuerURL'] as String).input(),
     );
   }
 }

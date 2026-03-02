@@ -25,17 +25,12 @@ class DataCollectionRuleAssociationArgs {
   /// [description] Description of the association.
   /// [resourceUri] The identifier of the resource.
   DataCollectionRuleAssociationArgs({
-    pulumi.Output<String>? associationName,
-    pulumi.Output<String>? dataCollectionEndpointId,
-    pulumi.Output<String>? dataCollectionRuleId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      associationName = pulumi.Input.asOptionalInput<String>(associationName),
-      dataCollectionEndpointId = pulumi.Input.asOptionalInput<String>(dataCollectionEndpointId),
-      dataCollectionRuleId = pulumi.Input.asOptionalInput<String>(dataCollectionRuleId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.associationName,
+    this.dataCollectionEndpointId,
+    this.dataCollectionRuleId,
+    this.description,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DataCollectionRuleAssociationArgs {
 
   factory DataCollectionRuleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleAssociationArgs(
-      associationName: map['associationName'] == null ? null : pulumi.Output.create<String>(map['associationName'] as String),
-      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : pulumi.Output.create<String>(map['dataCollectionEndpointId'] as String),
-      dataCollectionRuleId: map['dataCollectionRuleId'] == null ? null : pulumi.Output.create<String>(map['dataCollectionRuleId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      associationName: map['associationName'] == null ? null : (map['associationName'] as String).input(),
+      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : (map['dataCollectionEndpointId'] as String).input(),
+      dataCollectionRuleId: map['dataCollectionRuleId'] == null ? null : (map['dataCollectionRuleId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

@@ -7,17 +7,17 @@ import 'status_response.dart';
 /// An SSL certificate used to provide end-to-end encryption for requests against your domain name. A `Certificate` can be an actual SSL certificate or, for newly-created custom domains, Hosting's intent to create one.
 class CertificateResponse {
   /// The certificate's creation time. For `TEMPORARY` certs this is the time Hosting first generated challenges for your domain name. For all other cert types, it's the time the actual cert was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The certificate's expiration time. After this time, the cert can no longer be used to provide secure communication between Hosting and your site's visitors.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
   /// A set of errors Hosting encountered when attempting to create a cert for your domain name. Resolve these issues to ensure Hosting is able to provide secure communication with your site's visitors.
-  final List<StatusResponse> issues;
+  final pulumi.Input<List<StatusResponse>> issues;
   /// The state of the certificate. Only the `CERT_ACTIVE` and `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the state is `PROPAGATING` and Hosting had an active cert for the domain name before, that formerly-active cert provides SSL coverage for the domain name until the current cert propagates.
-  final String state;
+  final pulumi.Input<String> state;
   /// The certificate's type.
-  final String type;
+  final pulumi.Input<String> type;
   /// A set of ACME challenges you can add to your DNS records or existing, non-Hosting hosting provider to allow Hosting to create an SSL certificate for your domain name before you point traffic toward hosting. You can use thse challenges as part of a zero downtime transition from your old provider to Hosting.
-  final CertVerificationResponse verification;
+  final pulumi.Input<CertVerificationResponse> verification;
 
   /// Creates a new [CertificateResponse].
   /// [createTime] The certificate's creation time. For `TEMPORARY` certs this is the time Hosting first generated challenges for your domain name. For all other cert types, it's the time the actual cert was created.
@@ -39,21 +39,21 @@ class CertificateResponse {
     return <String, dynamic>{
       'createTime': createTime,
       'expireTime': expireTime,
-      'issues': pulumi.Input.encodeList<StatusResponse, Map<String, dynamic>>(issues, (value) => value.toMap()),
+      'issues': pulumi.Input.mapInputValue<List<StatusResponse>, List<Map<String, dynamic>>>(issues, (value) => pulumi.Input.encodeList<StatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': state,
       'type': type,
-      'verification': verification.toMap(),
+      'verification': pulumi.Input.mapInputValue<CertVerificationResponse, Map<String, dynamic>>(verification, (value) => value.toMap()),
     };
   }
 
   factory CertificateResponse.fromMap(Map<String, dynamic> map) {
     return CertificateResponse(
-      createTime: map['createTime'] as String,
-      expireTime: map['expireTime'] as String,
-      issues: pulumi.Input.decodeList<StatusResponse>(map['issues'], (value) => StatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      state: map['state'] as String,
-      type: map['type'] as String,
-      verification: CertVerificationResponse.fromMap((map['verification'] as Map).cast<String, dynamic>()),
+      createTime: (map['createTime'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      issues: (pulumi.Input.decodeList<StatusResponse>(map['issues'], (value) => StatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
+      verification: (CertVerificationResponse.fromMap((map['verification'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainOsNvRamSourceReadahead {
   /// Configures the size of data that should be prefetched when reading from the network block device.
-  final String size;
+  final pulumi.Input<String> size;
 
   /// Creates a new [DomainOsNvRamSourceReadahead].
   /// [size] Configures the size of data that should be prefetched when reading from the network block device.
@@ -19,7 +20,7 @@ class DomainOsNvRamSourceReadahead {
 
   factory DomainOsNvRamSourceReadahead.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceReadahead(
-      size: map['size'] as String,
+      size: (map['size'] as String).input(),
     );
   }
 }

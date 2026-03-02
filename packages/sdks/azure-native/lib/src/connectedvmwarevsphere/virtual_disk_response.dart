@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Virtual disk model
 class VirtualDiskResponse {
   /// Gets or sets the controller id.
-  final int? controllerKey;
+  final pulumi.Input<int>? controllerKey;
   /// Gets or sets the device key value.
-  final int? deviceKey;
+  final pulumi.Input<int>? deviceKey;
   /// Gets or sets the device name.
-  final String? deviceName;
+  final pulumi.Input<String>? deviceName;
   /// Gets or sets the disk mode.
-  final String? diskMode;
+  final pulumi.Input<String>? diskMode;
   /// Gets or sets the disk object id.
-  final String diskObjectId;
+  final pulumi.Input<String> diskObjectId;
   /// Gets or sets the disk total size.
-  final int? diskSizeGB;
+  final pulumi.Input<int>? diskSizeGB;
   /// Gets or sets the disk backing type.
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
   /// Gets or sets the label of the virtual disk in vCenter.
-  final String label;
+  final pulumi.Input<String> label;
   /// Gets or sets the name of the virtual disk.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Gets or sets the unit number of the disk on the controller.
-  final int? unitNumber;
+  final pulumi.Input<int>? unitNumber;
 
   /// Creates a new [VirtualDiskResponse].
   /// [controllerKey] Gets or sets the controller id.
@@ -65,16 +66,16 @@ class VirtualDiskResponse {
 
   factory VirtualDiskResponse.fromMap(Map<String, dynamic> map) {
     return VirtualDiskResponse(
-      controllerKey: map['controllerKey'] == null ? null : map['controllerKey'] as int,
-      deviceKey: map['deviceKey'] == null ? null : map['deviceKey'] as int,
-      deviceName: map['deviceName'] == null ? null : map['deviceName'] as String,
-      diskMode: map['diskMode'] == null ? null : map['diskMode'] as String,
-      diskObjectId: map['diskObjectId'] as String,
-      diskSizeGB: map['diskSizeGB'] == null ? null : map['diskSizeGB'] as int,
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      label: map['label'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      unitNumber: map['unitNumber'] == null ? null : map['unitNumber'] as int,
+      controllerKey: map['controllerKey'] == null ? null : (map['controllerKey'] as int).input(),
+      deviceKey: map['deviceKey'] == null ? null : (map['deviceKey'] as int).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      diskMode: map['diskMode'] == null ? null : (map['diskMode'] as String).input(),
+      diskObjectId: (map['diskObjectId'] as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      label: (map['label'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      unitNumber: map['unitNumber'] == null ? null : (map['unitNumber'] as int).input(),
     );
   }
 }

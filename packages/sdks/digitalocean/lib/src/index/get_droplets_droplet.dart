@@ -1,57 +1,58 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDropletsDroplet {
   /// Whether backups are enabled.
-  final bool backups;
+  final pulumi.Input<bool> backups;
   /// the creation date for the Droplet
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// The size of the Droplet's disk in GB.
-  final int disk;
+  final pulumi.Input<int> disk;
   /// The ID of the Droplet.
-  final int id;
+  final pulumi.Input<int> id;
   /// The Droplet image ID or slug.
-  final String image;
+  final pulumi.Input<String> image;
   /// The Droplet's public IPv4 address
-  final String ipv4Address;
+  final pulumi.Input<String> ipv4Address;
   /// The Droplet's private IPv4 address
-  final String ipv4AddressPrivate;
+  final pulumi.Input<String> ipv4AddressPrivate;
   /// Whether IPv6 is enabled.
-  final bool ipv6;
+  final pulumi.Input<bool> ipv6;
   /// The Droplet's public IPv6 address
-  final String ipv6Address;
+  final pulumi.Input<String> ipv6Address;
   /// The Droplet's private IPv6 address
-  final String ipv6AddressPrivate;
+  final pulumi.Input<String> ipv6AddressPrivate;
   /// Whether the Droplet is locked.
-  final bool locked;
+  final pulumi.Input<bool> locked;
   /// The amount of the Droplet's memory in MB.
-  final int memory;
+  final pulumi.Input<int> memory;
   /// Whether monitoring agent is installed.
-  final bool monitoring;
+  final pulumi.Input<bool> monitoring;
   /// name of the Droplet
-  final String name;
+  final pulumi.Input<String> name;
   /// Droplet hourly price.
-  final double priceHourly;
+  final pulumi.Input<double> priceHourly;
   /// Droplet monthly price.
-  final double priceMonthly;
+  final pulumi.Input<double> priceMonthly;
   /// Whether private networks are enabled.
-  final bool privateNetworking;
+  final pulumi.Input<bool> privateNetworking;
   /// The region the Droplet is running in.
-  final String region;
+  final pulumi.Input<String> region;
   /// The unique slug that identifies the type of Droplet.
-  final String size;
+  final pulumi.Input<String> size;
   /// The status of the Droplet.
-  final String status;
+  final pulumi.Input<String> status;
   /// A list of the tags associated to the Droplet.
-  final List<String> tags;
+  final pulumi.Input<List<String>> tags;
   /// The uniform resource name of the Droplet
-  final String urn;
+  final pulumi.Input<String> urn;
   /// The number of the Droplet's virtual CPUs.
-  final int vcpus;
+  final pulumi.Input<int> vcpus;
   /// List of the IDs of each volumes attached to the Droplet.
-  final List<String> volumeIds;
+  final pulumi.Input<List<String>> volumeIds;
   /// The ID of the VPC where the Droplet is located.
-  final String vpcUuid;
+  final pulumi.Input<String> vpcUuid;
 
   /// Creates a new [GetDropletsDroplet].
   /// [backups] Whether backups are enabled.
@@ -139,31 +140,31 @@ class GetDropletsDroplet {
 
   factory GetDropletsDroplet.fromMap(Map<String, dynamic> map) {
     return GetDropletsDroplet(
-      backups: map['backups'] as bool,
-      createdAt: map['createdAt'] as String,
-      disk: map['disk'] as int,
-      id: map['id'] as int,
-      image: map['image'] as String,
-      ipv4Address: map['ipv4Address'] as String,
-      ipv4AddressPrivate: map['ipv4AddressPrivate'] as String,
-      ipv6: map['ipv6'] as bool,
-      ipv6Address: map['ipv6Address'] as String,
-      ipv6AddressPrivate: map['ipv6AddressPrivate'] as String,
-      locked: map['locked'] as bool,
-      memory: map['memory'] as int,
-      monitoring: map['monitoring'] as bool,
-      name: map['name'] as String,
-      priceHourly: map['priceHourly'] as double,
-      priceMonthly: map['priceMonthly'] as double,
-      privateNetworking: map['privateNetworking'] as bool,
-      region: map['region'] as String,
-      size: map['size'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as List).cast<String>(),
-      urn: map['urn'] as String,
-      vcpus: map['vcpus'] as int,
-      volumeIds: (map['volumeIds'] as List).cast<String>(),
-      vpcUuid: map['vpcUuid'] as String,
+      backups: (map['backups'] as bool).input(),
+      createdAt: (map['createdAt'] as String).input(),
+      disk: (map['disk'] as int).input(),
+      id: (map['id'] as int).input(),
+      image: (map['image'] as String).input(),
+      ipv4Address: (map['ipv4Address'] as String).input(),
+      ipv4AddressPrivate: (map['ipv4AddressPrivate'] as String).input(),
+      ipv6: (map['ipv6'] as bool).input(),
+      ipv6Address: (map['ipv6Address'] as String).input(),
+      ipv6AddressPrivate: (map['ipv6AddressPrivate'] as String).input(),
+      locked: (map['locked'] as bool).input(),
+      memory: (map['memory'] as int).input(),
+      monitoring: (map['monitoring'] as bool).input(),
+      name: (map['name'] as String).input(),
+      priceHourly: (map['priceHourly'] as double).input(),
+      priceMonthly: (map['priceMonthly'] as double).input(),
+      privateNetworking: (map['privateNetworking'] as bool).input(),
+      region: (map['region'] as String).input(),
+      size: (map['size'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
+      urn: (map['urn'] as String).input(),
+      vcpus: (map['vcpus'] as int).input(),
+      volumeIds: ((map['volumeIds'] as List).cast<String>()).input(),
+      vpcUuid: (map['vpcUuid'] as String).input(),
     );
   }
 }

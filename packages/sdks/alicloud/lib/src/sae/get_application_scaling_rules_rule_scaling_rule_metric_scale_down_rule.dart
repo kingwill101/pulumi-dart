@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule {
   /// Whether shrinkage is prohibited.
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
   /// Shrinkage cooling time.
-  final int stabilizationWindowSeconds;
+  final pulumi.Input<int> stabilizationWindowSeconds;
   /// Elastic shrinkage step. The maximum number of instances per unit time.
-  final int step;
+  final pulumi.Input<int> step;
 
   /// Creates a new [GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule].
   /// [disabled] Whether shrinkage is prohibited.
@@ -29,9 +30,9 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule {
 
   factory GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule.fromMap(Map<String, dynamic> map) {
     return GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule(
-      disabled: map['disabled'] as bool,
-      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] as int,
-      step: map['step'] as int,
+      disabled: (map['disabled'] as bool).input(),
+      stabilizationWindowSeconds: (map['stabilizationWindowSeconds'] as int).input(),
+      step: (map['step'] as int).input(),
     );
   }
 }

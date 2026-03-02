@@ -34,17 +34,12 @@ class BucketReplicationConfigArgs {
   /// [rules] List of configuration blocks describing the rules managing the replication. See below.
   /// [token] Token to allow replication to be enabled on an Object Lock-enabled bucket. You must contact AWS support for the bucket's "Object Lock token".
   BucketReplicationConfigArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-    required pulumi.Output<List<BucketReplicationConfigRule>> rules,
-    pulumi.Output<String>? token,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role),
-      rules = pulumi.Input.asInput<List<BucketReplicationConfigRule>>(rules),
-      token = pulumi.Input.asOptionalInput<String>(token);
+    required this.bucket,
+    this.region,
+    required this.role,
+    required this.rules,
+    this.token,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,11 +53,11 @@ class BucketReplicationConfigArgs {
 
   factory BucketReplicationConfigArgs.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      rules: pulumi.Output.create<List<BucketReplicationConfigRule>>(pulumi.Input.decodeList<BucketReplicationConfigRule>(map['rules'], (value) => BucketReplicationConfigRule.fromMap((value as Map).cast<String, dynamic>()))),
-      token: map['token'] == null ? null : pulumi.Output.create<String>(map['token'] as String),
+      bucket: (map['bucket'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
+      rules: (pulumi.Input.decodeList<BucketReplicationConfigRule>(map['rules'], (value) => BucketReplicationConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
     );
   }
 }

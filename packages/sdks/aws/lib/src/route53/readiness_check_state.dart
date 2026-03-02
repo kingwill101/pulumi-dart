@@ -24,17 +24,12 @@ class ReadinessCheckState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ReadinessCheckState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? readinessCheckName,
-    pulumi.Output<String>? resourceSetName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      readinessCheckName = pulumi.Input.asOptionalInput<String>(readinessCheckName),
-      resourceSetName = pulumi.Input.asOptionalInput<String>(resourceSetName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.readinessCheckName,
+    this.resourceSetName,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ReadinessCheckState {
 
   factory ReadinessCheckState.fromMap(Map<String, dynamic> map) {
     return ReadinessCheckState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      readinessCheckName: map['readinessCheckName'] == null ? null : pulumi.Output.create<String>(map['readinessCheckName'] as String),
-      resourceSetName: map['resourceSetName'] == null ? null : pulumi.Output.create<String>(map['resourceSetName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      readinessCheckName: map['readinessCheckName'] == null ? null : (map['readinessCheckName'] as String).input(),
+      resourceSetName: map['resourceSetName'] == null ? null : (map['resourceSetName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

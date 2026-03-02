@@ -19,13 +19,10 @@ class GetSlotTypeArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Version of the slot type.
   GetSlotTypeArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? version,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.name,
+    this.region,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSlotTypeArgs {
 
   factory GetSlotTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetSlotTypeArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

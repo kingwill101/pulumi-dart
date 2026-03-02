@@ -10,7 +10,7 @@ class AppDataStoreSettings {
   ///
   ///
   /// <a name="nested_data_store_settings_engines"></a>The `engines` block contains:
-  final List<AppDataStoreSettingsEngine>? engines;
+  final pulumi.Input<List<AppDataStoreSettingsEngine>>? engines;
 
   /// Creates a new [AppDataStoreSettings].
   /// [engines] (Output)
@@ -20,13 +20,13 @@ class AppDataStoreSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'engines': ?engines == null ? null : pulumi.Input.encodeList<AppDataStoreSettingsEngine, Map<String, dynamic>>(engines!, (value) => value.toMap()),
+      'engines': ?pulumi.Input.mapOptionalInputValue<List<AppDataStoreSettingsEngine>, List<Map<String, dynamic>>>(engines, (value) => pulumi.Input.encodeList<AppDataStoreSettingsEngine, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AppDataStoreSettings.fromMap(Map<String, dynamic> map) {
     return AppDataStoreSettings(
-      engines: map['engines'] == null ? null : pulumi.Input.decodeList<AppDataStoreSettingsEngine>(map['engines'], (value) => AppDataStoreSettingsEngine.fromMap((value as Map).cast<String, dynamic>())),
+      engines: map['engines'] == null ? null : (pulumi.Input.decodeList<AppDataStoreSettingsEngine>(map['engines'], (value) => AppDataStoreSettingsEngine.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

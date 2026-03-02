@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudGatewayClientAuthorization {
   /// Specifies the Spring Cloud Certificate IDs of the Spring Cloud Gateway.
-  final List<String>? certificateIds;
+  final pulumi.Input<List<String>>? certificateIds;
   /// Specifies whether the client certificate verification is enabled.
-  final bool? verificationEnabled;
+  final pulumi.Input<bool>? verificationEnabled;
 
   /// Creates a new [SpringCloudGatewayClientAuthorization].
   /// [certificateIds] Specifies the Spring Cloud Certificate IDs of the Spring Cloud Gateway.
@@ -24,8 +25,8 @@ class SpringCloudGatewayClientAuthorization {
 
   factory SpringCloudGatewayClientAuthorization.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayClientAuthorization(
-      certificateIds: map['certificateIds'] == null ? null : (map['certificateIds'] as List).cast<String>(),
-      verificationEnabled: map['verificationEnabled'] == null ? null : map['verificationEnabled'] as bool,
+      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds'] as List).cast<String>()).input(),
+      verificationEnabled: map['verificationEnabled'] == null ? null : (map['verificationEnabled'] as bool).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_control_rule_cel_expression.dart';
 
 class CloudControlRule {
   /// A [CEL
   /// expression](https://cloud.google.com/certificate-authority-service/docs/using-cel).
   /// Structure is documented below.
-  final CloudControlRuleCelExpression? celExpression;
+  final pulumi.Input<CloudControlRuleCelExpression>? celExpression;
   /// Description of the Rule. The maximum length is 2000 characters.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The functionality enabled by the Rule.
-  final List<String> ruleActionTypes;
+  final pulumi.Input<List<String>> ruleActionTypes;
 
   /// Creates a new [CloudControlRule].
   /// [celExpression] A [CEL
@@ -24,7 +25,7 @@ class CloudControlRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'celExpression': ?celExpression == null ? null : celExpression!.toMap(),
+      'celExpression': ?pulumi.Input.mapOptionalInputValue<CloudControlRuleCelExpression, Map<String, dynamic>>(celExpression, (value) => value.toMap()),
       'description': ?description,
       'ruleActionTypes': ruleActionTypes,
     };
@@ -32,9 +33,9 @@ class CloudControlRule {
 
   factory CloudControlRule.fromMap(Map<String, dynamic> map) {
     return CloudControlRule(
-      celExpression: map['celExpression'] == null ? null : CloudControlRuleCelExpression.fromMap((map['celExpression'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      ruleActionTypes: (map['ruleActionTypes'] as List).cast<String>(),
+      celExpression: map['celExpression'] == null ? null : (CloudControlRuleCelExpression.fromMap((map['celExpression'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ruleActionTypes: ((map['ruleActionTypes'] as List).cast<String>()).input(),
     );
   }
 }

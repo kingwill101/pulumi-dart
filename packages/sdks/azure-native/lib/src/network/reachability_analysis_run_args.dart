@@ -26,17 +26,12 @@ class ReachabilityAnalysisRunArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [workspaceName] Workspace name.
   ReachabilityAnalysisRunArgs({
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<ReachabilityAnalysisRunProperties> properties,
-    pulumi.Output<String>? reachabilityAnalysisRunName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      properties = pulumi.Input.asInput<ReachabilityAnalysisRunProperties>(properties),
-      reachabilityAnalysisRunName = pulumi.Input.asOptionalInput<String>(reachabilityAnalysisRunName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.networkManagerName,
+    required this.properties,
+    this.reachabilityAnalysisRunName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ReachabilityAnalysisRunArgs {
 
   factory ReachabilityAnalysisRunArgs.fromMap(Map<String, dynamic> map) {
     return ReachabilityAnalysisRunArgs(
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      properties: pulumi.Output.create<ReachabilityAnalysisRunProperties>(ReachabilityAnalysisRunProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      reachabilityAnalysisRunName: map['reachabilityAnalysisRunName'] == null ? null : pulumi.Output.create<String>(map['reachabilityAnalysisRunName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      properties: (ReachabilityAnalysisRunProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      reachabilityAnalysisRunName: map['reachabilityAnalysisRunName'] == null ? null : (map['reachabilityAnalysisRunName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

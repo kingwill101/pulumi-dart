@@ -8,19 +8,19 @@ import 'rule_action.dart';
 /// This is deprecated and has no effect. Do not use.
 class Rule {
   /// This is deprecated and has no effect. Do not use.
-  final RuleAction? action;
+  final pulumi.Input<RuleAction>? action;
   /// This is deprecated and has no effect. Do not use.
-  final List<Condition>? conditions;
+  final pulumi.Input<List<Condition>>? conditions;
   /// This is deprecated and has no effect. Do not use.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// This is deprecated and has no effect. Do not use.
-  final List<String>? ins;
+  final pulumi.Input<List<String>>? ins;
   /// This is deprecated and has no effect. Do not use.
-  final List<LogConfig>? logConfigs;
+  final pulumi.Input<List<LogConfig>>? logConfigs;
   /// This is deprecated and has no effect. Do not use.
-  final List<String>? notIns;
+  final pulumi.Input<List<String>>? notIns;
   /// This is deprecated and has no effect. Do not use.
-  final List<String>? permissions;
+  final pulumi.Input<List<String>>? permissions;
 
   /// Creates a new [Rule].
   /// [action] This is deprecated and has no effect. Do not use.
@@ -42,11 +42,11 @@ class Rule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?action == null ? null : action!.value,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<Condition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'action': ?pulumi.Input.mapOptionalInputValue<RuleAction, String>(action, (value) => value.value),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<Condition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'ins': ?ins,
-      'logConfigs': ?logConfigs == null ? null : pulumi.Input.encodeList<LogConfig, Map<String, dynamic>>(logConfigs!, (value) => value.toMap()),
+      'logConfigs': ?pulumi.Input.mapOptionalInputValue<List<LogConfig>, List<Map<String, dynamic>>>(logConfigs, (value) => pulumi.Input.encodeList<LogConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'notIns': ?notIns,
       'permissions': ?permissions,
     };
@@ -54,13 +54,13 @@ class Rule {
 
   factory Rule.fromMap(Map<String, dynamic> map) {
     return Rule(
-      action: map['action'] == null ? null : RuleAction.fromValue(map['action'] as String),
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      ins: map['ins'] == null ? null : (map['ins'] as List).cast<String>(),
-      logConfigs: map['logConfigs'] == null ? null : pulumi.Input.decodeList<LogConfig>(map['logConfigs'], (value) => LogConfig.fromMap((value as Map).cast<String, dynamic>())),
-      notIns: map['notIns'] == null ? null : (map['notIns'] as List).cast<String>(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as List).cast<String>(),
+      action: map['action'] == null ? null : (RuleAction.fromValue(map['action'] as String)).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ins: map['ins'] == null ? null : ((map['ins'] as List).cast<String>()).input(),
+      logConfigs: map['logConfigs'] == null ? null : (pulumi.Input.decodeList<LogConfig>(map['logConfigs'], (value) => LogConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notIns: map['notIns'] == null ? null : ((map['notIns'] as List).cast<String>()).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
     );
   }
 }

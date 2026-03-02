@@ -25,15 +25,11 @@ class GetRegionalParameterVersionRenderArgs {
   /// [parameterVersionId] The version of the regional parameter to get.
   /// [project] The project for retrieving the Regional Parameter Version. If it's not
   GetRegionalParameterVersionRenderArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> parameter,
-    required pulumi.Output<String> parameterVersionId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parameter = pulumi.Input.asInput<String>(parameter),
-      parameterVersionId = pulumi.Input.asInput<String>(parameterVersionId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.location,
+    required this.parameter,
+    required this.parameterVersionId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class GetRegionalParameterVersionRenderArgs {
 
   factory GetRegionalParameterVersionRenderArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalParameterVersionRenderArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parameter: pulumi.Output.create<String>(map['parameter'] as String),
-      parameterVersionId: pulumi.Output.create<String>(map['parameterVersionId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parameter: (map['parameter'] as String).input(),
+      parameterVersionId: (map['parameterVersionId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

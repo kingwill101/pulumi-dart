@@ -6,11 +6,11 @@ import 'copy_progress_details_response.dart';
 /// Detailed status of current Sql Db migration.
 class SqlDbMigrationStatusDetailsResponse {
   /// Details on progress of ADF copy activities.
-  final List<CopyProgressDetailsResponse> listOfCopyProgressDetails;
+  final pulumi.Input<List<CopyProgressDetailsResponse>> listOfCopyProgressDetails;
   /// Current State of Migration.
-  final String migrationState;
+  final pulumi.Input<String> migrationState;
   /// Sql Data Copy errors, if any.
-  final List<String> sqlDataCopyErrors;
+  final pulumi.Input<List<String>> sqlDataCopyErrors;
 
   /// Creates a new [SqlDbMigrationStatusDetailsResponse].
   /// [listOfCopyProgressDetails] Details on progress of ADF copy activities.
@@ -24,7 +24,7 @@ class SqlDbMigrationStatusDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'listOfCopyProgressDetails': pulumi.Input.encodeList<CopyProgressDetailsResponse, Map<String, dynamic>>(listOfCopyProgressDetails, (value) => value.toMap()),
+      'listOfCopyProgressDetails': pulumi.Input.mapInputValue<List<CopyProgressDetailsResponse>, List<Map<String, dynamic>>>(listOfCopyProgressDetails, (value) => pulumi.Input.encodeList<CopyProgressDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'migrationState': migrationState,
       'sqlDataCopyErrors': sqlDataCopyErrors,
     };
@@ -32,9 +32,9 @@ class SqlDbMigrationStatusDetailsResponse {
 
   factory SqlDbMigrationStatusDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SqlDbMigrationStatusDetailsResponse(
-      listOfCopyProgressDetails: pulumi.Input.decodeList<CopyProgressDetailsResponse>(map['listOfCopyProgressDetails'], (value) => CopyProgressDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      migrationState: map['migrationState'] as String,
-      sqlDataCopyErrors: (map['sqlDataCopyErrors'] as List).cast<String>(),
+      listOfCopyProgressDetails: (pulumi.Input.decodeList<CopyProgressDetailsResponse>(map['listOfCopyProgressDetails'], (value) => CopyProgressDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      migrationState: (map['migrationState'] as String).input(),
+      sqlDataCopyErrors: ((map['sqlDataCopyErrors'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FulfillmentFeature {
   /// The type of the feature that enabled for fulfillment.
   /// * SMALLTALK: Fulfillment is enabled for SmallTalk.
   /// Possible values are: `SMALLTALK`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FulfillmentFeature].
   /// [type] The type of the feature that enabled for fulfillment.
@@ -21,7 +22,7 @@ class FulfillmentFeature {
 
   factory FulfillmentFeature.fromMap(Map<String, dynamic> map) {
     return FulfillmentFeature(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

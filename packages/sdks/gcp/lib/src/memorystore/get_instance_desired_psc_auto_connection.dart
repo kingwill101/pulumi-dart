@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceDesiredPscAutoConnection {
   /// Required. The consumer network where the IP address resides, in the form of
   /// projects/{project_id}/global/networks/{network_id}.
-  final String network;
+  final pulumi.Input<String> network;
   /// Required. The consumer project_id where the forwarding rule is created from.
-  final String projectId;
+  final pulumi.Input<String> projectId;
 
   /// Creates a new [GetInstanceDesiredPscAutoConnection].
   /// [network] Required. The consumer network where the IP address resides, in the form of
@@ -25,8 +26,8 @@ class GetInstanceDesiredPscAutoConnection {
 
   factory GetInstanceDesiredPscAutoConnection.fromMap(Map<String, dynamic> map) {
     return GetInstanceDesiredPscAutoConnection(
-      network: map['network'] as String,
-      projectId: map['projectId'] as String,
+      network: (map['network'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

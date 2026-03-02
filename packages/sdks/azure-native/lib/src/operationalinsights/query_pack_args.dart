@@ -22,15 +22,11 @@ class QueryPackArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   QueryPackArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? queryPackName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      queryPackName = pulumi.Input.asOptionalInput<String>(queryPackName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.queryPackName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class QueryPackArgs {
 
   factory QueryPackArgs.fromMap(Map<String, dynamic> map) {
     return QueryPackArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      queryPackName: map['queryPackName'] == null ? null : pulumi.Output.create<String>(map['queryPackName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      queryPackName: map['queryPackName'] == null ? null : (map['queryPackName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

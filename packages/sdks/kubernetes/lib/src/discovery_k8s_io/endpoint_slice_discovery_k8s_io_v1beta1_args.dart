@@ -31,19 +31,13 @@ class EndpointSliceDiscoveryK8sIoV1beta1Args {
   /// [metadata] Standard object's metadata.
   /// [ports] ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
   EndpointSliceDiscoveryK8sIoV1beta1Args({
-    required pulumi.Output<String> addressType,
-    pulumi.Output<String>? apiVersion,
-    required pulumi.Output<List<EndpointDiscoveryK8sIoV1beta1>> endpoints,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<List<EndpointPortDiscoveryK8sIoV1beta1>>? ports,
-  }) :
-      addressType = pulumi.Input.asInput<String>(addressType),
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      endpoints = pulumi.Input.asInput<List<EndpointDiscoveryK8sIoV1beta1>>(endpoints),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      ports = pulumi.Input.asOptionalInput<List<EndpointPortDiscoveryK8sIoV1beta1>>(ports);
+    required this.addressType,
+    this.apiVersion,
+    required this.endpoints,
+    this.kind,
+    this.metadata,
+    this.ports,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class EndpointSliceDiscoveryK8sIoV1beta1Args {
 
   factory EndpointSliceDiscoveryK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return EndpointSliceDiscoveryK8sIoV1beta1Args(
-      addressType: pulumi.Output.create<String>(map['addressType'] as String),
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      endpoints: pulumi.Output.create<List<EndpointDiscoveryK8sIoV1beta1>>(pulumi.Input.decodeList<EndpointDiscoveryK8sIoV1beta1>(map['endpoints'], (value) => EndpointDiscoveryK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      ports: map['ports'] == null ? null : pulumi.Output.create<List<EndpointPortDiscoveryK8sIoV1beta1>>(pulumi.Input.decodeList<EndpointPortDiscoveryK8sIoV1beta1>(map['ports'], (value) => EndpointPortDiscoveryK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
+      addressType: (map['addressType'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      endpoints: (pulumi.Input.decodeList<EndpointDiscoveryK8sIoV1beta1>(map['endpoints'], (value) => EndpointDiscoveryK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<EndpointPortDiscoveryK8sIoV1beta1>(map['ports'], (value) => EndpointPortDiscoveryK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

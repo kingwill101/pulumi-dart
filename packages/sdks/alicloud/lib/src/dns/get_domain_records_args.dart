@@ -28,25 +28,16 @@ class GetDomainRecordsArgs {
   /// [type] Optional.
   /// [valueRegex] Optional.
   GetDomainRecordsArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? hostRecordRegex,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<bool>? isLocked,
-    pulumi.Output<String>? line,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? valueRegex,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      hostRecordRegex = pulumi.Input.asOptionalInput<String>(hostRecordRegex),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      isLocked = pulumi.Input.asOptionalInput<bool>(isLocked),
-      line = pulumi.Input.asOptionalInput<String>(line),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      valueRegex = pulumi.Input.asOptionalInput<String>(valueRegex);
+    required this.domainName,
+    this.hostRecordRegex,
+    this.ids,
+    this.isLocked,
+    this.line,
+    this.outputFile,
+    this.status,
+    this.type,
+    this.valueRegex,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,15 +55,15 @@ class GetDomainRecordsArgs {
 
   factory GetDomainRecordsArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainRecordsArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      hostRecordRegex: map['hostRecordRegex'] == null ? null : pulumi.Output.create<String>(map['hostRecordRegex'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      isLocked: map['isLocked'] == null ? null : pulumi.Output.create<bool>(map['isLocked'] as bool),
-      line: map['line'] == null ? null : pulumi.Output.create<String>(map['line'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      valueRegex: map['valueRegex'] == null ? null : pulumi.Output.create<String>(map['valueRegex'] as String),
+      domainName: (map['domainName'] as String).input(),
+      hostRecordRegex: map['hostRecordRegex'] == null ? null : (map['hostRecordRegex'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      isLocked: map['isLocked'] == null ? null : (map['isLocked'] as bool).input(),
+      line: map['line'] == null ? null : (map['line'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      valueRegex: map['valueRegex'] == null ? null : (map['valueRegex'] as String).input(),
     );
   }
 }

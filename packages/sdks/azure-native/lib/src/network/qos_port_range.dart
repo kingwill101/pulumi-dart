@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Qos Traffic Profiler Port range properties.
 class QosPortRange {
   /// Qos Port Range end.
-  final int? end;
+  final pulumi.Input<int>? end;
   /// Qos Port Range start.
-  final int? start;
+  final pulumi.Input<int>? start;
 
   /// Creates a new [QosPortRange].
   /// [end] Qos Port Range end.
@@ -25,8 +26,8 @@ class QosPortRange {
 
   factory QosPortRange.fromMap(Map<String, dynamic> map) {
     return QosPortRange(
-      end: map['end'] == null ? null : map['end'] as int,
-      start: map['start'] == null ? null : map['start'] as int,
+      end: map['end'] == null ? null : (map['end'] as int).input(),
+      start: map['start'] == null ? null : (map['start'] as int).input(),
     );
   }
 }

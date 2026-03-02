@@ -6,7 +6,7 @@ import 'consumer_response.dart';
 /// Network configuration for the Dataproc Metastore service.
 class NetworkConfigResponse {
   /// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
-  final List<ConsumerResponse> consumers;
+  final pulumi.Input<List<ConsumerResponse>> consumers;
 
   /// Creates a new [NetworkConfigResponse].
   /// [consumers] Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
@@ -16,13 +16,13 @@ class NetworkConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumers': pulumi.Input.encodeList<ConsumerResponse, Map<String, dynamic>>(consumers, (value) => value.toMap()),
+      'consumers': pulumi.Input.mapInputValue<List<ConsumerResponse>, List<Map<String, dynamic>>>(consumers, (value) => pulumi.Input.encodeList<ConsumerResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkConfigResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigResponse(
-      consumers: pulumi.Input.decodeList<ConsumerResponse>(map['consumers'], (value) => ConsumerResponse.fromMap((value as Map).cast<String, dynamic>())),
+      consumers: (pulumi.Input.decodeList<ConsumerResponse>(map['consumers'], (value) => ConsumerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

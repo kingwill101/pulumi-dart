@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PrivateLinkAssociationProperties {
   /// The rmpl Resource ID.
-  final String? privateLink;
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? privateLink;
+  final pulumi.Input<String>? publicNetworkAccess;
 
   /// Creates a new [PrivateLinkAssociationProperties].
   /// [privateLink] The rmpl Resource ID.
@@ -23,8 +24,8 @@ class PrivateLinkAssociationProperties {
 
   factory PrivateLinkAssociationProperties.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationProperties(
-      privateLink: map['privateLink'] == null ? null : map['privateLink'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
+      privateLink: map['privateLink'] == null ? null : (map['privateLink'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
     );
   }
 }

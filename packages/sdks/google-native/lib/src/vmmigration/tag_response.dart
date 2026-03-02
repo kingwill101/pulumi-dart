@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Tag is an AWS tag representation.
 class TagResponse {
   /// Key of tag.
-  final String key;
+  final pulumi.Input<String> key;
   /// Value of tag.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [TagResponse].
   /// [key] Key of tag.
@@ -25,8 +26,8 @@ class TagResponse {
 
   factory TagResponse.fromMap(Map<String, dynamic> map) {
     return TagResponse(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

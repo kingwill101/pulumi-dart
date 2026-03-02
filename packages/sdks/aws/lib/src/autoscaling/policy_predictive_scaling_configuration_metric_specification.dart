@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_predictive_scaling_configuration_metric_specification_customized_capacity_metric_specification.dart';
 import 'policy_predictive_scaling_configuration_metric_specification_customized_load_metric_specification.dart';
 import 'policy_predictive_scaling_configuration_metric_specification_customized_scaling_metric_specification.dart';
@@ -9,19 +10,19 @@ import 'policy_predictive_scaling_configuration_metric_specification_predefined_
 
 class PolicyPredictiveScalingConfigurationMetricSpecification {
   /// Customized capacity metric specification. The field is only valid when you use `customized_load_metric_specification`
-  final PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification? customizedCapacityMetricSpecification;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification>? customizedCapacityMetricSpecification;
   /// Customized load metric specification.
-  final PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification? customizedLoadMetricSpecification;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification>? customizedLoadMetricSpecification;
   /// Customized scaling metric specification.
-  final PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification? customizedScalingMetricSpecification;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification>? customizedScalingMetricSpecification;
   /// Predefined load metric specification.
-  final PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification? predefinedLoadMetricSpecification;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification>? predefinedLoadMetricSpecification;
   /// Metric pair specification from which Amazon EC2 Auto Scaling determines the appropriate scaling metric and load metric to use.
-  final PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification? predefinedMetricPairSpecification;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification>? predefinedMetricPairSpecification;
   /// Predefined scaling metric specification.
-  final PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification? predefinedScalingMetricSpecification;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification>? predefinedScalingMetricSpecification;
   /// Target value for the metric.
-  final double targetValue;
+  final pulumi.Input<double> targetValue;
 
   /// Creates a new [PolicyPredictiveScalingConfigurationMetricSpecification].
   /// [customizedCapacityMetricSpecification] Customized capacity metric specification. The field is only valid when you use `customized_load_metric_specification`
@@ -43,25 +44,25 @@ class PolicyPredictiveScalingConfigurationMetricSpecification {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customizedCapacityMetricSpecification': ?customizedCapacityMetricSpecification == null ? null : customizedCapacityMetricSpecification!.toMap(),
-      'customizedLoadMetricSpecification': ?customizedLoadMetricSpecification == null ? null : customizedLoadMetricSpecification!.toMap(),
-      'customizedScalingMetricSpecification': ?customizedScalingMetricSpecification == null ? null : customizedScalingMetricSpecification!.toMap(),
-      'predefinedLoadMetricSpecification': ?predefinedLoadMetricSpecification == null ? null : predefinedLoadMetricSpecification!.toMap(),
-      'predefinedMetricPairSpecification': ?predefinedMetricPairSpecification == null ? null : predefinedMetricPairSpecification!.toMap(),
-      'predefinedScalingMetricSpecification': ?predefinedScalingMetricSpecification == null ? null : predefinedScalingMetricSpecification!.toMap(),
+      'customizedCapacityMetricSpecification': ?pulumi.Input.mapOptionalInputValue<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification, Map<String, dynamic>>(customizedCapacityMetricSpecification, (value) => value.toMap()),
+      'customizedLoadMetricSpecification': ?pulumi.Input.mapOptionalInputValue<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification, Map<String, dynamic>>(customizedLoadMetricSpecification, (value) => value.toMap()),
+      'customizedScalingMetricSpecification': ?pulumi.Input.mapOptionalInputValue<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification, Map<String, dynamic>>(customizedScalingMetricSpecification, (value) => value.toMap()),
+      'predefinedLoadMetricSpecification': ?pulumi.Input.mapOptionalInputValue<PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification, Map<String, dynamic>>(predefinedLoadMetricSpecification, (value) => value.toMap()),
+      'predefinedMetricPairSpecification': ?pulumi.Input.mapOptionalInputValue<PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification, Map<String, dynamic>>(predefinedMetricPairSpecification, (value) => value.toMap()),
+      'predefinedScalingMetricSpecification': ?pulumi.Input.mapOptionalInputValue<PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification, Map<String, dynamic>>(predefinedScalingMetricSpecification, (value) => value.toMap()),
       'targetValue': targetValue,
     };
   }
 
   factory PolicyPredictiveScalingConfigurationMetricSpecification.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingConfigurationMetricSpecification(
-      customizedCapacityMetricSpecification: map['customizedCapacityMetricSpecification'] == null ? null : PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification.fromMap((map['customizedCapacityMetricSpecification'] as Map).cast<String, dynamic>()),
-      customizedLoadMetricSpecification: map['customizedLoadMetricSpecification'] == null ? null : PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification.fromMap((map['customizedLoadMetricSpecification'] as Map).cast<String, dynamic>()),
-      customizedScalingMetricSpecification: map['customizedScalingMetricSpecification'] == null ? null : PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification.fromMap((map['customizedScalingMetricSpecification'] as Map).cast<String, dynamic>()),
-      predefinedLoadMetricSpecification: map['predefinedLoadMetricSpecification'] == null ? null : PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification.fromMap((map['predefinedLoadMetricSpecification'] as Map).cast<String, dynamic>()),
-      predefinedMetricPairSpecification: map['predefinedMetricPairSpecification'] == null ? null : PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification.fromMap((map['predefinedMetricPairSpecification'] as Map).cast<String, dynamic>()),
-      predefinedScalingMetricSpecification: map['predefinedScalingMetricSpecification'] == null ? null : PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification.fromMap((map['predefinedScalingMetricSpecification'] as Map).cast<String, dynamic>()),
-      targetValue: map['targetValue'] as double,
+      customizedCapacityMetricSpecification: map['customizedCapacityMetricSpecification'] == null ? null : (PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification.fromMap((map['customizedCapacityMetricSpecification'] as Map).cast<String, dynamic>())).input(),
+      customizedLoadMetricSpecification: map['customizedLoadMetricSpecification'] == null ? null : (PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification.fromMap((map['customizedLoadMetricSpecification'] as Map).cast<String, dynamic>())).input(),
+      customizedScalingMetricSpecification: map['customizedScalingMetricSpecification'] == null ? null : (PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification.fromMap((map['customizedScalingMetricSpecification'] as Map).cast<String, dynamic>())).input(),
+      predefinedLoadMetricSpecification: map['predefinedLoadMetricSpecification'] == null ? null : (PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification.fromMap((map['predefinedLoadMetricSpecification'] as Map).cast<String, dynamic>())).input(),
+      predefinedMetricPairSpecification: map['predefinedMetricPairSpecification'] == null ? null : (PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification.fromMap((map['predefinedMetricPairSpecification'] as Map).cast<String, dynamic>())).input(),
+      predefinedScalingMetricSpecification: map['predefinedScalingMetricSpecification'] == null ? null : (PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification.fromMap((map['predefinedScalingMetricSpecification'] as Map).cast<String, dynamic>())).input(),
+      targetValue: (map['targetValue'] as double).input(),
     );
   }
 }

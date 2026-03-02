@@ -31,17 +31,12 @@ class WorkspaceNetworkOutboundRulePrivateEndpointState {
   /// [subResourceTarget] Specifies the Sub Resource of the service resource to connect to. Possible values are `vault`,`amlworkspace`,`blob`,`table`,`queue`,`file`,`web`,`dfs`, `redisCache`. Changing this forces a new resource to be created.
   /// [workspaceId] Specifies the ID of the Machine Learning Workspace. Changing this forces a new resource to be created.
   WorkspaceNetworkOutboundRulePrivateEndpointState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? serviceResourceId,
-    pulumi.Output<bool>? sparkEnabled,
-    pulumi.Output<String>? subResourceTarget,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serviceResourceId = pulumi.Input.asOptionalInput<String>(serviceResourceId),
-      sparkEnabled = pulumi.Input.asOptionalInput<bool>(sparkEnabled),
-      subResourceTarget = pulumi.Input.asOptionalInput<String>(subResourceTarget),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.name,
+    this.serviceResourceId,
+    this.sparkEnabled,
+    this.subResourceTarget,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class WorkspaceNetworkOutboundRulePrivateEndpointState {
 
   factory WorkspaceNetworkOutboundRulePrivateEndpointState.fromMap(Map<String, dynamic> map) {
     return WorkspaceNetworkOutboundRulePrivateEndpointState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serviceResourceId: map['serviceResourceId'] == null ? null : pulumi.Output.create<String>(map['serviceResourceId'] as String),
-      sparkEnabled: map['sparkEnabled'] == null ? null : pulumi.Output.create<bool>(map['sparkEnabled'] as bool),
-      subResourceTarget: map['subResourceTarget'] == null ? null : pulumi.Output.create<String>(map['subResourceTarget'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serviceResourceId: map['serviceResourceId'] == null ? null : (map['serviceResourceId'] as String).input(),
+      sparkEnabled: map['sparkEnabled'] == null ? null : (map['sparkEnabled'] as bool).input(),
+      subResourceTarget: map['subResourceTarget'] == null ? null : (map['subResourceTarget'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

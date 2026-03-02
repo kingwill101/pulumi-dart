@@ -22,17 +22,12 @@ class ActiveDirectoryAdministratorState {
   /// [serverName] The name of the PostgreSQL Server on which to set the administrator. Changing this forces a new resource to be created.
   /// [tenantId] The Azure Tenant ID
   ActiveDirectoryAdministratorState({
-    pulumi.Output<String>? login,
-    pulumi.Output<String>? objectId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? serverName,
-    pulumi.Output<String>? tenantId,
-  }) :
-      login = pulumi.Input.asOptionalInput<String>(login),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asOptionalInput<String>(serverName),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.login,
+    this.objectId,
+    this.resourceGroupName,
+    this.serverName,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ActiveDirectoryAdministratorState {
 
   factory ActiveDirectoryAdministratorState.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryAdministratorState(
-      login: map['login'] == null ? null : pulumi.Output.create<String>(map['login'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: map['serverName'] == null ? null : pulumi.Output.create<String>(map['serverName'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      login: map['login'] == null ? null : (map['login'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -28,21 +28,14 @@ class RoleAliasState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   RoleAliasState({
-    pulumi.Output<String>? alias,
-    pulumi.Output<String>? arn,
-    pulumi.Output<int>? credentialDuration,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      credentialDuration = pulumi.Input.asOptionalInput<int>(credentialDuration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.alias,
+    this.arn,
+    this.credentialDuration,
+    this.region,
+    this.roleArn,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class RoleAliasState {
 
   factory RoleAliasState.fromMap(Map<String, dynamic> map) {
     return RoleAliasState(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      credentialDuration: map['credentialDuration'] == null ? null : pulumi.Output.create<int>(map['credentialDuration'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      credentialDuration: map['credentialDuration'] == null ? null : (map['credentialDuration'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

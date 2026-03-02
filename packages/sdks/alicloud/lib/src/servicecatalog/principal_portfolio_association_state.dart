@@ -16,13 +16,10 @@ class PrincipalPortfolioAssociationState {
   /// [principalId] RAM entity ID
   /// [principalType] RAM entity type
   PrincipalPortfolioAssociationState({
-    pulumi.Output<String>? portfolioId,
-    pulumi.Output<String>? principalId,
-    pulumi.Output<String>? principalType,
-  }) :
-      portfolioId = pulumi.Input.asOptionalInput<String>(portfolioId),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType);
+    this.portfolioId,
+    this.principalId,
+    this.principalType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class PrincipalPortfolioAssociationState {
 
   factory PrincipalPortfolioAssociationState.fromMap(Map<String, dynamic> map) {
     return PrincipalPortfolioAssociationState(
-      portfolioId: map['portfolioId'] == null ? null : pulumi.Output.create<String>(map['portfolioId'] as String),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
+      portfolioId: map['portfolioId'] == null ? null : (map['portfolioId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
     );
   }
 }

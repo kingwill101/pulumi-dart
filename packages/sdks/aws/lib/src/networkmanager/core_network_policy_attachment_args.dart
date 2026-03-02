@@ -16,11 +16,9 @@ class CoreNetworkPolicyAttachmentArgs {
   /// [coreNetworkId] ID of the core network that a policy will be attached to and made `LIVE`.
   /// [policyDocument] Policy document for creating a core network. Note that updating this argument will result in the new policy document version being set as the `LATEST` and `LIVE` policy document. Refer to the [Core network policies documentation](https://docs.aws.amazon.com/network-manager/latest/cloudwan/cloudwan-policy-change-sets.html) for more information.
   CoreNetworkPolicyAttachmentArgs({
-    required pulumi.Output<String> coreNetworkId,
-    required pulumi.Output<String> policyDocument,
-  }) :
-      coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
-      policyDocument = pulumi.Input.asInput<String>(policyDocument);
+    required this.coreNetworkId,
+    required this.policyDocument,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class CoreNetworkPolicyAttachmentArgs {
 
   factory CoreNetworkPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return CoreNetworkPolicyAttachmentArgs(
-      coreNetworkId: pulumi.Output.create<String>(map['coreNetworkId'] as String),
-      policyDocument: pulumi.Output.create<String>(map['policyDocument'] as String),
+      coreNetworkId: (map['coreNetworkId'] as String).input(),
+      policyDocument: (map['policyDocument'] as String).input(),
     );
   }
 }

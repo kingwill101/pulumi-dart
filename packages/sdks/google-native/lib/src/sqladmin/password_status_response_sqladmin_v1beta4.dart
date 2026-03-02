@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Read-only password status.
 class PasswordStatusResponseSqladminV1beta4 {
   /// If true, user does not have login privileges.
-  final bool locked;
+  final pulumi.Input<bool> locked;
   /// The expiration time of the current password.
-  final String passwordExpirationTime;
+  final pulumi.Input<String> passwordExpirationTime;
 
   /// Creates a new [PasswordStatusResponseSqladminV1beta4].
   /// [locked] If true, user does not have login privileges.
@@ -25,8 +26,8 @@ class PasswordStatusResponseSqladminV1beta4 {
 
   factory PasswordStatusResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return PasswordStatusResponseSqladminV1beta4(
-      locked: map['locked'] as bool,
-      passwordExpirationTime: map['passwordExpirationTime'] as String,
+      locked: (map['locked'] as bool).input(),
+      passwordExpirationTime: (map['passwordExpirationTime'] as String).input(),
     );
   }
 }

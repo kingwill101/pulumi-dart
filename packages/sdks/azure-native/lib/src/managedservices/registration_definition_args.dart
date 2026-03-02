@@ -24,15 +24,11 @@ class RegistrationDefinitionArgs {
   /// [registrationDefinitionId] The GUID of the registration definition.
   /// [scope] The scope of the resource.
   RegistrationDefinitionArgs({
-    pulumi.Output<Plan>? plan,
-    pulumi.Output<RegistrationDefinitionProperties>? properties,
-    pulumi.Output<String>? registrationDefinitionId,
-    required pulumi.Output<String> scope,
-  }) :
-      plan = pulumi.Input.asOptionalInput<Plan>(plan),
-      properties = pulumi.Input.asOptionalInput<RegistrationDefinitionProperties>(properties),
-      registrationDefinitionId = pulumi.Input.asOptionalInput<String>(registrationDefinitionId),
-      scope = pulumi.Input.asInput<String>(scope);
+    this.plan,
+    this.properties,
+    this.registrationDefinitionId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class RegistrationDefinitionArgs {
 
   factory RegistrationDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return RegistrationDefinitionArgs(
-      plan: map['plan'] == null ? null : pulumi.Output.create<Plan>(Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      properties: map['properties'] == null ? null : pulumi.Output.create<RegistrationDefinitionProperties>(RegistrationDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      registrationDefinitionId: map['registrationDefinitionId'] == null ? null : pulumi.Output.create<String>(map['registrationDefinitionId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (RegistrationDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      registrationDefinitionId: map['registrationDefinitionId'] == null ? null : (map['registrationDefinitionId'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

@@ -49,25 +49,16 @@ class VPCRouteEntryState {
   /// [routeTableId] Routing table ID
   /// [status] The status of the route entry.
   VPCRouteEntryState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destinationCidrBlock,
-    pulumi.Output<List<VPCRouteEntryNextHop>>? nextHops,
-    pulumi.Output<String>? nexthopId,
-    pulumi.Output<String>? nexthopType,
-    pulumi.Output<String>? routeEntryName,
-    pulumi.Output<List<VPCRouteEntryRoutePublishTarget>>? routePublishTargets,
-    pulumi.Output<String>? routeTableId,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationCidrBlock = pulumi.Input.asOptionalInput<String>(destinationCidrBlock),
-      nextHops = pulumi.Input.asOptionalInput<List<VPCRouteEntryNextHop>>(nextHops),
-      nexthopId = pulumi.Input.asOptionalInput<String>(nexthopId),
-      nexthopType = pulumi.Input.asOptionalInput<String>(nexthopType),
-      routeEntryName = pulumi.Input.asOptionalInput<String>(routeEntryName),
-      routePublishTargets = pulumi.Input.asOptionalInput<List<VPCRouteEntryRoutePublishTarget>>(routePublishTargets),
-      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    this.destinationCidrBlock,
+    this.nextHops,
+    this.nexthopId,
+    this.nexthopType,
+    this.routeEntryName,
+    this.routePublishTargets,
+    this.routeTableId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,15 +76,15 @@ class VPCRouteEntryState {
 
   factory VPCRouteEntryState.fromMap(Map<String, dynamic> map) {
     return VPCRouteEntryState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : pulumi.Output.create<String>(map['destinationCidrBlock'] as String),
-      nextHops: map['nextHops'] == null ? null : pulumi.Output.create<List<VPCRouteEntryNextHop>>(pulumi.Input.decodeList<VPCRouteEntryNextHop>(map['nextHops'], (value) => VPCRouteEntryNextHop.fromMap((value as Map).cast<String, dynamic>()))),
-      nexthopId: map['nexthopId'] == null ? null : pulumi.Output.create<String>(map['nexthopId'] as String),
-      nexthopType: map['nexthopType'] == null ? null : pulumi.Output.create<String>(map['nexthopType'] as String),
-      routeEntryName: map['routeEntryName'] == null ? null : pulumi.Output.create<String>(map['routeEntryName'] as String),
-      routePublishTargets: map['routePublishTargets'] == null ? null : pulumi.Output.create<List<VPCRouteEntryRoutePublishTarget>>(pulumi.Input.decodeList<VPCRouteEntryRoutePublishTarget>(map['routePublishTargets'], (value) => VPCRouteEntryRoutePublishTarget.fromMap((value as Map).cast<String, dynamic>()))),
-      routeTableId: map['routeTableId'] == null ? null : pulumi.Output.create<String>(map['routeTableId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
+      nextHops: map['nextHops'] == null ? null : (pulumi.Input.decodeList<VPCRouteEntryNextHop>(map['nextHops'], (value) => VPCRouteEntryNextHop.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nexthopId: map['nexthopId'] == null ? null : (map['nexthopId'] as String).input(),
+      nexthopType: map['nexthopType'] == null ? null : (map['nexthopType'] as String).input(),
+      routeEntryName: map['routeEntryName'] == null ? null : (map['routeEntryName'] as String).input(),
+      routePublishTargets: map['routePublishTargets'] == null ? null : (pulumi.Input.decodeList<VPCRouteEntryRoutePublishTarget>(map['routePublishTargets'], (value) => VPCRouteEntryRoutePublishTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetModelingArgs {
   /// [modelingName] The name of the Modeling resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetModelingArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> modelingName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      modelingName = pulumi.Input.asInput<String>(modelingName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.modelingName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetModelingArgs {
 
   factory GetModelingArgs.fromMap(Map<String, dynamic> map) {
     return GetModelingArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      modelingName: pulumi.Output.create<String>(map['modelingName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      modelingName: (map['modelingName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class FlexibleServerDatabaseState {
   /// [name] Specifies the name of the PostgreSQL Database, which needs [to be a valid PostgreSQL identifier](https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS). Changing this forces a new Azure PostgreSQL Flexible Server Database to be created.
   /// [serverId] The ID of the Azure PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Database. Changing this forces a new Azure PostgreSQL Flexible Server Database to be created.
   FlexibleServerDatabaseState({
-    pulumi.Output<String>? charset,
-    pulumi.Output<String>? collation,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? serverId,
-  }) :
-      charset = pulumi.Input.asOptionalInput<String>(charset),
-      collation = pulumi.Input.asOptionalInput<String>(collation),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId);
+    this.charset,
+    this.collation,
+    this.name,
+    this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class FlexibleServerDatabaseState {
 
   factory FlexibleServerDatabaseState.fromMap(Map<String, dynamic> map) {
     return FlexibleServerDatabaseState(
-      charset: map['charset'] == null ? null : pulumi.Output.create<String>(map['charset'] as String),
-      collation: map['collation'] == null ? null : pulumi.Output.create<String>(map['collation'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
+      charset: map['charset'] == null ? null : (map['charset'] as String).input(),
+      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
     );
   }
 }

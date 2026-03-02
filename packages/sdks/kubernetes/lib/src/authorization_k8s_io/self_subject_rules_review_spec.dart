@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SelfSubjectRulesReviewSpec defines the specification for SelfSubjectRulesReview.
 class SelfSubjectRulesReviewSpec {
   /// Namespace to evaluate rules for. Required.
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// Creates a new [SelfSubjectRulesReviewSpec].
   /// [namespace] Namespace to evaluate rules for. Required.
@@ -20,7 +21,7 @@ class SelfSubjectRulesReviewSpec {
 
   factory SelfSubjectRulesReviewSpec.fromMap(Map<String, dynamic> map) {
     return SelfSubjectRulesReviewSpec(
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
     );
   }
 }

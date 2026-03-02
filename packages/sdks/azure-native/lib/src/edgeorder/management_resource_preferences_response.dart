@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Management resource preference to link device.
 class ManagementResourcePreferencesResponse {
   /// Customer preferred Management resource ARM ID.
-  final String? preferredManagementResourceId;
+  final pulumi.Input<String>? preferredManagementResourceId;
 
   /// Creates a new [ManagementResourcePreferencesResponse].
   /// [preferredManagementResourceId] Customer preferred Management resource ARM ID.
@@ -20,7 +21,7 @@ class ManagementResourcePreferencesResponse {
 
   factory ManagementResourcePreferencesResponse.fromMap(Map<String, dynamic> map) {
     return ManagementResourcePreferencesResponse(
-      preferredManagementResourceId: map['preferredManagementResourceId'] == null ? null : map['preferredManagementResourceId'] as String,
+      preferredManagementResourceId: map['preferredManagementResourceId'] == null ? null : (map['preferredManagementResourceId'] as String).input(),
     );
   }
 }

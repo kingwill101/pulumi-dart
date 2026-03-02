@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FilterFilterCriteriaPortRange {
   /// (Required) The beginning of the port range, inclusive.
-  final int beginInclusive;
+  final pulumi.Input<int> beginInclusive;
   /// (Required) The end of the port range, inclusive.
-  final int endInclusive;
+  final pulumi.Input<int> endInclusive;
 
   /// Creates a new [FilterFilterCriteriaPortRange].
   /// [beginInclusive] (Required) The beginning of the port range, inclusive.
@@ -24,8 +25,8 @@ class FilterFilterCriteriaPortRange {
 
   factory FilterFilterCriteriaPortRange.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaPortRange(
-      beginInclusive: map['beginInclusive'] as int,
-      endInclusive: map['endInclusive'] as int,
+      beginInclusive: (map['beginInclusive'] as int).input(),
+      endInclusive: (map['endInclusive'] as int).input(),
     );
   }
 }

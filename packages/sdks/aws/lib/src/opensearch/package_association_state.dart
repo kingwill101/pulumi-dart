@@ -18,15 +18,11 @@ class PackageAssociationState {
   /// [referencePath] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PackageAssociationState({
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? packageId,
-    pulumi.Output<String>? referencePath,
-    pulumi.Output<String>? region,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      packageId = pulumi.Input.asOptionalInput<String>(packageId),
-      referencePath = pulumi.Input.asOptionalInput<String>(referencePath),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.domainName,
+    this.packageId,
+    this.referencePath,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class PackageAssociationState {
 
   factory PackageAssociationState.fromMap(Map<String, dynamic> map) {
     return PackageAssociationState(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      packageId: map['packageId'] == null ? null : pulumi.Output.create<String>(map['packageId'] as String),
-      referencePath: map['referencePath'] == null ? null : pulumi.Output.create<String>(map['referencePath'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      packageId: map['packageId'] == null ? null : (map['packageId'] as String).input(),
+      referencePath: map['referencePath'] == null ? null : (map['referencePath'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

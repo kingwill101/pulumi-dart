@@ -21,15 +21,11 @@ class GetEnterpriseProxyAccessesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [proxyId] The ID of the security agent.
   GetEnterpriseProxyAccessesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> proxyId,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      proxyId = pulumi.Input.asInput<String>(proxyId);
+    this.enableDetails,
+    this.ids,
+    this.outputFile,
+    required this.proxyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class GetEnterpriseProxyAccessesArgs {
 
   factory GetEnterpriseProxyAccessesArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseProxyAccessesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      proxyId: pulumi.Output.create<String>(map['proxyId'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      proxyId: (map['proxyId'] as String).input(),
     );
   }
 }

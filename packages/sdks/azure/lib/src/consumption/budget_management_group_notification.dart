@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetManagementGroupNotification {
   /// Specifies a list of email addresses to send the budget notification to when the threshold is exceeded.
-  final List<String> contactEmails;
+  final pulumi.Input<List<String>> contactEmails;
   /// Should the notification be enabled? Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The comparison operator for the notification. Must be one of `EqualTo`, `GreaterThan`, or `GreaterThanOrEqualTo`.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Threshold value associated with a notification. Notification is sent when the cost exceeded the threshold. It is always percent and has to be between 0 and 1000.
-  final int threshold;
+  final pulumi.Input<int> threshold;
   /// The type of threshold for the notification. This determines whether the notification is triggered by forecasted costs or actual costs. The allowed values are `Actual` and `Forecasted`. Default is `Actual`.
-  final String? thresholdType;
+  final pulumi.Input<String>? thresholdType;
 
   /// Creates a new [BudgetManagementGroupNotification].
   /// [contactEmails] Specifies a list of email addresses to send the budget notification to when the threshold is exceeded.
@@ -39,11 +40,11 @@ class BudgetManagementGroupNotification {
 
   factory BudgetManagementGroupNotification.fromMap(Map<String, dynamic> map) {
     return BudgetManagementGroupNotification(
-      contactEmails: (map['contactEmails'] as List).cast<String>(),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      operator: map['operator'] as String,
-      threshold: map['threshold'] as int,
-      thresholdType: map['thresholdType'] == null ? null : map['thresholdType'] as String,
+      contactEmails: ((map['contactEmails'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      operator: (map['operator'] as String).input(),
+      threshold: (map['threshold'] as int).input(),
+      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType'] as String).input(),
     );
   }
 }

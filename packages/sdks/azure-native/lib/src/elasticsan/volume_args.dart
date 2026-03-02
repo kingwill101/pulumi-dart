@@ -33,21 +33,14 @@ class VolumeArgs {
   /// [volumeGroupName] The name of the VolumeGroup.
   /// [volumeName] The name of the Volume.
   VolumeArgs({
-    pulumi.Output<SourceCreationData>? creationData,
-    required pulumi.Output<String> elasticSanName,
-    pulumi.Output<ManagedByInfo>? managedBy,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<double> sizeGiB,
-    required pulumi.Output<String> volumeGroupName,
-    pulumi.Output<String>? volumeName,
-  }) :
-      creationData = pulumi.Input.asOptionalInput<SourceCreationData>(creationData),
-      elasticSanName = pulumi.Input.asInput<String>(elasticSanName),
-      managedBy = pulumi.Input.asOptionalInput<ManagedByInfo>(managedBy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sizeGiB = pulumi.Input.asInput<double>(sizeGiB),
-      volumeGroupName = pulumi.Input.asInput<String>(volumeGroupName),
-      volumeName = pulumi.Input.asOptionalInput<String>(volumeName);
+    this.creationData,
+    required this.elasticSanName,
+    this.managedBy,
+    required this.resourceGroupName,
+    required this.sizeGiB,
+    required this.volumeGroupName,
+    this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      creationData: map['creationData'] == null ? null : pulumi.Output.create<SourceCreationData>(SourceCreationData.fromMap((map['creationData'] as Map).cast<String, dynamic>())),
-      elasticSanName: pulumi.Output.create<String>(map['elasticSanName'] as String),
-      managedBy: map['managedBy'] == null ? null : pulumi.Output.create<ManagedByInfo>(ManagedByInfo.fromMap((map['managedBy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sizeGiB: pulumi.Output.create<double>(map['sizeGiB'] as double),
-      volumeGroupName: pulumi.Output.create<String>(map['volumeGroupName'] as String),
-      volumeName: map['volumeName'] == null ? null : pulumi.Output.create<String>(map['volumeName'] as String),
+      creationData: map['creationData'] == null ? null : (SourceCreationData.fromMap((map['creationData'] as Map).cast<String, dynamic>())).input(),
+      elasticSanName: (map['elasticSanName'] as String).input(),
+      managedBy: map['managedBy'] == null ? null : (ManagedByInfo.fromMap((map['managedBy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sizeGiB: (map['sizeGiB'] as double).input(),
+      volumeGroupName: (map['volumeGroupName'] as String).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
     );
   }
 }

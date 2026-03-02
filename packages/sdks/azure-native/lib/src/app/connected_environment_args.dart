@@ -36,23 +36,15 @@ class ConnectedEnvironmentArgs {
   /// [staticIp] Static IP of the connectedEnvironment
   /// [tags] Resource tags.
   ConnectedEnvironmentArgs({
-    pulumi.Output<String>? connectedEnvironmentName,
-    pulumi.Output<CustomDomainConfiguration>? customDomainConfiguration,
-    pulumi.Output<String>? daprAIConnectionString,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? staticIp,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      connectedEnvironmentName = pulumi.Input.asOptionalInput<String>(connectedEnvironmentName),
-      customDomainConfiguration = pulumi.Input.asOptionalInput<CustomDomainConfiguration>(customDomainConfiguration),
-      daprAIConnectionString = pulumi.Input.asOptionalInput<String>(daprAIConnectionString),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      staticIp = pulumi.Input.asOptionalInput<String>(staticIp),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.connectedEnvironmentName,
+    this.customDomainConfiguration,
+    this.daprAIConnectionString,
+    this.extendedLocation,
+    this.location,
+    required this.resourceGroupName,
+    this.staticIp,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class ConnectedEnvironmentArgs {
 
   factory ConnectedEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return ConnectedEnvironmentArgs(
-      connectedEnvironmentName: map['connectedEnvironmentName'] == null ? null : pulumi.Output.create<String>(map['connectedEnvironmentName'] as String),
-      customDomainConfiguration: map['customDomainConfiguration'] == null ? null : pulumi.Output.create<CustomDomainConfiguration>(CustomDomainConfiguration.fromMap((map['customDomainConfiguration'] as Map).cast<String, dynamic>())),
-      daprAIConnectionString: map['daprAIConnectionString'] == null ? null : pulumi.Output.create<String>(map['daprAIConnectionString'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      staticIp: map['staticIp'] == null ? null : pulumi.Output.create<String>(map['staticIp'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      connectedEnvironmentName: map['connectedEnvironmentName'] == null ? null : (map['connectedEnvironmentName'] as String).input(),
+      customDomainConfiguration: map['customDomainConfiguration'] == null ? null : (CustomDomainConfiguration.fromMap((map['customDomainConfiguration'] as Map).cast<String, dynamic>())).input(),
+      daprAIConnectionString: map['daprAIConnectionString'] == null ? null : (map['daprAIConnectionString'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      staticIp: map['staticIp'] == null ? null : (map['staticIp'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class S3LocationArgs {
   /// [subdirectory] Prefix to perform actions as source or destination.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   S3LocationArgs({
-    pulumi.Output<List<String>>? agentArns,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> s3BucketArn,
-    required pulumi.Output<S3LocationS3Config> s3Config,
-    pulumi.Output<String>? s3StorageClass,
-    required pulumi.Output<String> subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      agentArns = pulumi.Input.asOptionalInput<List<String>>(agentArns),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3BucketArn = pulumi.Input.asInput<String>(s3BucketArn),
-      s3Config = pulumi.Input.asInput<S3LocationS3Config>(s3Config),
-      s3StorageClass = pulumi.Input.asOptionalInput<String>(s3StorageClass),
-      subdirectory = pulumi.Input.asInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.agentArns,
+    this.region,
+    required this.s3BucketArn,
+    required this.s3Config,
+    this.s3StorageClass,
+    required this.subdirectory,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class S3LocationArgs {
 
   factory S3LocationArgs.fromMap(Map<String, dynamic> map) {
     return S3LocationArgs(
-      agentArns: map['agentArns'] == null ? null : pulumi.Output.create<List<String>>((map['agentArns'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3BucketArn: pulumi.Output.create<String>(map['s3BucketArn'] as String),
-      s3Config: pulumi.Output.create<S3LocationS3Config>(S3LocationS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>())),
-      s3StorageClass: map['s3StorageClass'] == null ? null : pulumi.Output.create<String>(map['s3StorageClass'] as String),
-      subdirectory: pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      agentArns: map['agentArns'] == null ? null : ((map['agentArns'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3BucketArn: (map['s3BucketArn'] as String).input(),
+      s3Config: (S3LocationS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>())).input(),
+      s3StorageClass: map['s3StorageClass'] == null ? null : (map['s3StorageClass'] as String).input(),
+      subdirectory: (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

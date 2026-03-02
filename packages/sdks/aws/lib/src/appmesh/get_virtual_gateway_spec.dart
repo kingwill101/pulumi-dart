@@ -6,9 +6,9 @@ import 'get_virtual_gateway_spec_listener.dart';
 import 'get_virtual_gateway_spec_logging.dart';
 
 class GetVirtualGatewaySpec {
-  final List<GetVirtualGatewaySpecBackendDefault> backendDefaults;
-  final List<GetVirtualGatewaySpecListener> listeners;
-  final List<GetVirtualGatewaySpecLogging> loggings;
+  final pulumi.Input<List<GetVirtualGatewaySpecBackendDefault>> backendDefaults;
+  final pulumi.Input<List<GetVirtualGatewaySpecListener>> listeners;
+  final pulumi.Input<List<GetVirtualGatewaySpecLogging>> loggings;
 
   /// Creates a new [GetVirtualGatewaySpec].
   /// [backendDefaults] Required.
@@ -22,17 +22,17 @@ class GetVirtualGatewaySpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendDefaults': pulumi.Input.encodeList<GetVirtualGatewaySpecBackendDefault, Map<String, dynamic>>(backendDefaults, (value) => value.toMap()),
-      'listeners': pulumi.Input.encodeList<GetVirtualGatewaySpecListener, Map<String, dynamic>>(listeners, (value) => value.toMap()),
-      'loggings': pulumi.Input.encodeList<GetVirtualGatewaySpecLogging, Map<String, dynamic>>(loggings, (value) => value.toMap()),
+      'backendDefaults': pulumi.Input.mapInputValue<List<GetVirtualGatewaySpecBackendDefault>, List<Map<String, dynamic>>>(backendDefaults, (value) => pulumi.Input.encodeList<GetVirtualGatewaySpecBackendDefault, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'listeners': pulumi.Input.mapInputValue<List<GetVirtualGatewaySpecListener>, List<Map<String, dynamic>>>(listeners, (value) => pulumi.Input.encodeList<GetVirtualGatewaySpecListener, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loggings': pulumi.Input.mapInputValue<List<GetVirtualGatewaySpecLogging>, List<Map<String, dynamic>>>(loggings, (value) => pulumi.Input.encodeList<GetVirtualGatewaySpecLogging, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetVirtualGatewaySpec.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpec(
-      backendDefaults: pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefault>(map['backendDefaults'], (value) => GetVirtualGatewaySpecBackendDefault.fromMap((value as Map).cast<String, dynamic>())),
-      listeners: pulumi.Input.decodeList<GetVirtualGatewaySpecListener>(map['listeners'], (value) => GetVirtualGatewaySpecListener.fromMap((value as Map).cast<String, dynamic>())),
-      loggings: pulumi.Input.decodeList<GetVirtualGatewaySpecLogging>(map['loggings'], (value) => GetVirtualGatewaySpecLogging.fromMap((value as Map).cast<String, dynamic>())),
+      backendDefaults: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefault>(map['backendDefaults'], (value) => GetVirtualGatewaySpecBackendDefault.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      listeners: (pulumi.Input.decodeList<GetVirtualGatewaySpecListener>(map['listeners'], (value) => GetVirtualGatewaySpecListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loggings: (pulumi.Input.decodeList<GetVirtualGatewaySpecLogging>(map['loggings'], (value) => GetVirtualGatewaySpecLogging.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

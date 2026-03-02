@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceIpVpcNat11 {
   /// The resulting IPv4 address.
-  final String address;
-  final int subnetId;
-  final int vpcId;
+  final pulumi.Input<String> address;
+  final pulumi.Input<int> subnetId;
+  final pulumi.Input<int> vpcId;
 
   /// Creates a new [InstanceIpVpcNat11].
   /// [address] The resulting IPv4 address.
@@ -27,9 +28,9 @@ class InstanceIpVpcNat11 {
 
   factory InstanceIpVpcNat11.fromMap(Map<String, dynamic> map) {
     return InstanceIpVpcNat11(
-      address: map['address'] as String,
-      subnetId: map['subnetId'] as int,
-      vpcId: map['vpcId'] as int,
+      address: (map['address'] as String).input(),
+      subnetId: (map['subnetId'] as int).input(),
+      vpcId: (map['vpcId'] as int).input(),
     );
   }
 }

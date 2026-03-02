@@ -1,43 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointPostgresSettings {
   /// For use with change data capture (CDC) only, this attribute has AWS DMS bypass foreign keys and user triggers to reduce the time it takes to bulk load data.
-  final String? afterConnectScript;
+  final pulumi.Input<String>? afterConnectScript;
   /// Specifies the authentication method. Valid values: `password`, `iam`.
-  final String? authenticationMethod;
+  final pulumi.Input<String>? authenticationMethod;
   /// The Babelfish for Aurora PostgreSQL database name for the endpoint.
-  final String? babelfishDatabaseName;
+  final pulumi.Input<String>? babelfishDatabaseName;
   /// To capture DDL events, AWS DMS creates various artifacts in the PostgreSQL database when the task starts.
-  final bool? captureDdls;
+  final pulumi.Input<bool>? captureDdls;
   /// Specifies the default behavior of the replication's handling of PostgreSQL- compatible endpoints that require some additional configuration, such as Babelfish endpoints.
-  final String? databaseMode;
+  final pulumi.Input<String>? databaseMode;
   /// Sets the schema in which the operational DDL database artifacts are created. Default is `public`.
-  final String? ddlArtifactsSchema;
+  final pulumi.Input<String>? ddlArtifactsSchema;
   /// Sets the client statement timeout for the PostgreSQL instance, in seconds. Default value is `60`.
-  final int? executeTimeout;
+  final pulumi.Input<int>? executeTimeout;
   /// When set to `true`, this value causes a task to fail if the actual size of a LOB column is greater than the specified `LobMaxSize`. Default is `false`.
-  final bool? failTasksOnLobTruncation;
+  final pulumi.Input<bool>? failTasksOnLobTruncation;
   /// The write-ahead log (WAL) heartbeat feature mimics a dummy transaction. By doing this, it prevents idle logical replication slots from holding onto old WAL logs, which can result in storage full situations on the source.
-  final bool? heartbeatEnable;
+  final pulumi.Input<bool>? heartbeatEnable;
   /// Sets the WAL heartbeat frequency (in minutes). Default value is `5`.
-  final int? heartbeatFrequency;
+  final pulumi.Input<int>? heartbeatFrequency;
   /// Sets the schema in which the heartbeat artifacts are created. Default value is `public`.
-  final String? heartbeatSchema;
+  final pulumi.Input<String>? heartbeatSchema;
   /// You can use PostgreSQL endpoint settings to map a boolean as a boolean from your PostgreSQL source to a Amazon Redshift target. Default value is `false`.
-  final bool? mapBooleanAsBoolean;
+  final pulumi.Input<bool>? mapBooleanAsBoolean;
   /// Optional When true, DMS migrates JSONB values as CLOB.
-  final bool? mapJsonbAsClob;
+  final pulumi.Input<bool>? mapJsonbAsClob;
   /// Optional When true, DMS migrates LONG values as VARCHAR.
-  final String? mapLongVarcharAs;
+  final pulumi.Input<String>? mapLongVarcharAs;
   /// Specifies the maximum size (in KB) of any .csv file used to transfer data to PostgreSQL. Default is `32,768 KB`.
-  final int? maxFileSize;
+  final pulumi.Input<int>? maxFileSize;
   /// Specifies the plugin to use to create a replication slot. Valid values: `pglogical`, `test-decoding`.
-  final String? pluginName;
+  final pulumi.Input<String>? pluginName;
   /// Specifies the IAM role to use to authenticate the connection.
-  final String? serviceAccessRoleArn;
+  final pulumi.Input<String>? serviceAccessRoleArn;
   /// Sets the name of a previously created logical replication slot for a CDC load of the PostgreSQL source instance.
-  final String? slotName;
+  final pulumi.Input<String>? slotName;
 
   /// Creates a new [EndpointPostgresSettings].
   /// [afterConnectScript] For use with change data capture (CDC) only, this attribute has AWS DMS bypass foreign keys and user triggers to reduce the time it takes to bulk load data.
@@ -104,24 +105,24 @@ class EndpointPostgresSettings {
 
   factory EndpointPostgresSettings.fromMap(Map<String, dynamic> map) {
     return EndpointPostgresSettings(
-      afterConnectScript: map['afterConnectScript'] == null ? null : map['afterConnectScript'] as String,
-      authenticationMethod: map['authenticationMethod'] == null ? null : map['authenticationMethod'] as String,
-      babelfishDatabaseName: map['babelfishDatabaseName'] == null ? null : map['babelfishDatabaseName'] as String,
-      captureDdls: map['captureDdls'] == null ? null : map['captureDdls'] as bool,
-      databaseMode: map['databaseMode'] == null ? null : map['databaseMode'] as String,
-      ddlArtifactsSchema: map['ddlArtifactsSchema'] == null ? null : map['ddlArtifactsSchema'] as String,
-      executeTimeout: map['executeTimeout'] == null ? null : map['executeTimeout'] as int,
-      failTasksOnLobTruncation: map['failTasksOnLobTruncation'] == null ? null : map['failTasksOnLobTruncation'] as bool,
-      heartbeatEnable: map['heartbeatEnable'] == null ? null : map['heartbeatEnable'] as bool,
-      heartbeatFrequency: map['heartbeatFrequency'] == null ? null : map['heartbeatFrequency'] as int,
-      heartbeatSchema: map['heartbeatSchema'] == null ? null : map['heartbeatSchema'] as String,
-      mapBooleanAsBoolean: map['mapBooleanAsBoolean'] == null ? null : map['mapBooleanAsBoolean'] as bool,
-      mapJsonbAsClob: map['mapJsonbAsClob'] == null ? null : map['mapJsonbAsClob'] as bool,
-      mapLongVarcharAs: map['mapLongVarcharAs'] == null ? null : map['mapLongVarcharAs'] as String,
-      maxFileSize: map['maxFileSize'] == null ? null : map['maxFileSize'] as int,
-      pluginName: map['pluginName'] == null ? null : map['pluginName'] as String,
-      serviceAccessRoleArn: map['serviceAccessRoleArn'] == null ? null : map['serviceAccessRoleArn'] as String,
-      slotName: map['slotName'] == null ? null : map['slotName'] as String,
+      afterConnectScript: map['afterConnectScript'] == null ? null : (map['afterConnectScript'] as String).input(),
+      authenticationMethod: map['authenticationMethod'] == null ? null : (map['authenticationMethod'] as String).input(),
+      babelfishDatabaseName: map['babelfishDatabaseName'] == null ? null : (map['babelfishDatabaseName'] as String).input(),
+      captureDdls: map['captureDdls'] == null ? null : (map['captureDdls'] as bool).input(),
+      databaseMode: map['databaseMode'] == null ? null : (map['databaseMode'] as String).input(),
+      ddlArtifactsSchema: map['ddlArtifactsSchema'] == null ? null : (map['ddlArtifactsSchema'] as String).input(),
+      executeTimeout: map['executeTimeout'] == null ? null : (map['executeTimeout'] as int).input(),
+      failTasksOnLobTruncation: map['failTasksOnLobTruncation'] == null ? null : (map['failTasksOnLobTruncation'] as bool).input(),
+      heartbeatEnable: map['heartbeatEnable'] == null ? null : (map['heartbeatEnable'] as bool).input(),
+      heartbeatFrequency: map['heartbeatFrequency'] == null ? null : (map['heartbeatFrequency'] as int).input(),
+      heartbeatSchema: map['heartbeatSchema'] == null ? null : (map['heartbeatSchema'] as String).input(),
+      mapBooleanAsBoolean: map['mapBooleanAsBoolean'] == null ? null : (map['mapBooleanAsBoolean'] as bool).input(),
+      mapJsonbAsClob: map['mapJsonbAsClob'] == null ? null : (map['mapJsonbAsClob'] as bool).input(),
+      mapLongVarcharAs: map['mapLongVarcharAs'] == null ? null : (map['mapLongVarcharAs'] as String).input(),
+      maxFileSize: map['maxFileSize'] == null ? null : (map['maxFileSize'] as int).input(),
+      pluginName: map['pluginName'] == null ? null : (map['pluginName'] as String).input(),
+      serviceAccessRoleArn: map['serviceAccessRoleArn'] == null ? null : (map['serviceAccessRoleArn'] as String).input(),
+      slotName: map['slotName'] == null ? null : (map['slotName'] as String).input(),
     );
   }
 }

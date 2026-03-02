@@ -25,17 +25,12 @@ class GroupMembershipArgs {
   /// [namespace] The namespace that you want the user to be a part of. Defaults to `default`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GroupMembershipArgs({
-    pulumi.Output<String>? awsAccountId,
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> memberName,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? region,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      memberName = pulumi.Input.asInput<String>(memberName),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.awsAccountId,
+    required this.groupName,
+    required this.memberName,
+    this.namespace,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GroupMembershipArgs {
 
   factory GroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return GroupMembershipArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      memberName: pulumi.Output.create<String>(map['memberName'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      memberName: (map['memberName'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

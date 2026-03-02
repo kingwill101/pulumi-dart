@@ -26,17 +26,12 @@ class PrivateResolverVirtualNetworkLinkArgs {
   /// [virtualNetwork] The reference to the virtual network. This cannot be changed after creation.
   /// [virtualNetworkLinkName] The name of the virtual network link.
   PrivateResolverVirtualNetworkLinkArgs({
-    required pulumi.Output<String> dnsForwardingRulesetName,
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<SubResource> virtualNetwork,
-    pulumi.Output<String>? virtualNetworkLinkName,
-  }) :
-      dnsForwardingRulesetName = pulumi.Input.asInput<String>(dnsForwardingRulesetName),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualNetwork = pulumi.Input.asInput<SubResource>(virtualNetwork),
-      virtualNetworkLinkName = pulumi.Input.asOptionalInput<String>(virtualNetworkLinkName);
+    required this.dnsForwardingRulesetName,
+    this.metadata,
+    required this.resourceGroupName,
+    required this.virtualNetwork,
+    this.virtualNetworkLinkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PrivateResolverVirtualNetworkLinkArgs {
 
   factory PrivateResolverVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return PrivateResolverVirtualNetworkLinkArgs(
-      dnsForwardingRulesetName: pulumi.Output.create<String>(map['dnsForwardingRulesetName'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualNetwork: pulumi.Output.create<SubResource>(SubResource.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())),
-      virtualNetworkLinkName: map['virtualNetworkLinkName'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkLinkName'] as String),
+      dnsForwardingRulesetName: (map['dnsForwardingRulesetName'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualNetwork: (SubResource.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())).input(),
+      virtualNetworkLinkName: map['virtualNetworkLinkName'] == null ? null : (map['virtualNetworkLinkName'] as String).input(),
     );
   }
 }

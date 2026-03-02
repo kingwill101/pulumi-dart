@@ -19,15 +19,11 @@ class VoiceConnectorLoggingState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [voiceConnectorId] The Amazon Chime Voice Connector ID.
   VoiceConnectorLoggingState({
-    pulumi.Output<bool>? enableMediaMetricLogs,
-    pulumi.Output<bool>? enableSipLogs,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? voiceConnectorId,
-  }) :
-      enableMediaMetricLogs = pulumi.Input.asOptionalInput<bool>(enableMediaMetricLogs),
-      enableSipLogs = pulumi.Input.asOptionalInput<bool>(enableSipLogs),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      voiceConnectorId = pulumi.Input.asOptionalInput<String>(voiceConnectorId);
+    this.enableMediaMetricLogs,
+    this.enableSipLogs,
+    this.region,
+    this.voiceConnectorId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class VoiceConnectorLoggingState {
 
   factory VoiceConnectorLoggingState.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorLoggingState(
-      enableMediaMetricLogs: map['enableMediaMetricLogs'] == null ? null : pulumi.Output.create<bool>(map['enableMediaMetricLogs'] as bool),
-      enableSipLogs: map['enableSipLogs'] == null ? null : pulumi.Output.create<bool>(map['enableSipLogs'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      voiceConnectorId: map['voiceConnectorId'] == null ? null : pulumi.Output.create<String>(map['voiceConnectorId'] as String),
+      enableMediaMetricLogs: map['enableMediaMetricLogs'] == null ? null : (map['enableMediaMetricLogs'] as bool).input(),
+      enableSipLogs: map['enableSipLogs'] == null ? null : (map['enableSipLogs'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      voiceConnectorId: map['voiceConnectorId'] == null ? null : (map['voiceConnectorId'] as String).input(),
     );
   }
 }

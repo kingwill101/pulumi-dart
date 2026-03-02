@@ -19,13 +19,10 @@ class ListConfigurationStoreKeysArgs {
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
   /// [skipToken] A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
   ListConfigurationStoreKeysArgs({
-    required pulumi.Output<String> configStoreName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skipToken,
-  }) :
-      configStoreName = pulumi.Input.asInput<String>(configStoreName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken);
+    required this.configStoreName,
+    required this.resourceGroupName,
+    this.skipToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListConfigurationStoreKeysArgs {
 
   factory ListConfigurationStoreKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListConfigurationStoreKeysArgs(
-      configStoreName: pulumi.Output.create<String>(map['configStoreName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
+      configStoreName: (map['configStoreName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
     );
   }
 }

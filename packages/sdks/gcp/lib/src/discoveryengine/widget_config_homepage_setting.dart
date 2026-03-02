@@ -6,7 +6,7 @@ import 'widget_config_homepage_setting_shortcut.dart';
 class WidgetConfigHomepageSetting {
   /// The shortcuts to display on the homepage.
   /// Structure is documented below.
-  final List<WidgetConfigHomepageSettingShortcut>? shortcuts;
+  final pulumi.Input<List<WidgetConfigHomepageSettingShortcut>>? shortcuts;
 
   /// Creates a new [WidgetConfigHomepageSetting].
   /// [shortcuts] The shortcuts to display on the homepage.
@@ -16,13 +16,13 @@ class WidgetConfigHomepageSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'shortcuts': ?shortcuts == null ? null : pulumi.Input.encodeList<WidgetConfigHomepageSettingShortcut, Map<String, dynamic>>(shortcuts!, (value) => value.toMap()),
+      'shortcuts': ?pulumi.Input.mapOptionalInputValue<List<WidgetConfigHomepageSettingShortcut>, List<Map<String, dynamic>>>(shortcuts, (value) => pulumi.Input.encodeList<WidgetConfigHomepageSettingShortcut, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WidgetConfigHomepageSetting.fromMap(Map<String, dynamic> map) {
     return WidgetConfigHomepageSetting(
-      shortcuts: map['shortcuts'] == null ? null : pulumi.Input.decodeList<WidgetConfigHomepageSettingShortcut>(map['shortcuts'], (value) => WidgetConfigHomepageSettingShortcut.fromMap((value as Map).cast<String, dynamic>())),
+      shortcuts: map['shortcuts'] == null ? null : (pulumi.Input.decodeList<WidgetConfigHomepageSettingShortcut>(map['shortcuts'], (value) => WidgetConfigHomepageSettingShortcut.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

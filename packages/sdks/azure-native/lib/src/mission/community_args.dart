@@ -54,33 +54,20 @@ class CommunityArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   CommunityArgs({
-    pulumi.Output<String>? addressSpace,
-    pulumi.Output<ApprovalSettings>? approvalSettings,
-    pulumi.Output<String>? communityName,
-    pulumi.Output<List<RoleAssignmentItem>>? communityRoleAssignments,
-    pulumi.Output<List<String>>? dnsServers,
-    pulumi.Output<String>? firewallSku,
-    pulumi.Output<List<GovernedServiceItem>>? governedServiceList,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<MaintenanceModeConfigurationModel>? maintenanceModeConfiguration,
-    pulumi.Output<String>? policyOverride,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      addressSpace = pulumi.Input.asOptionalInput<String>(addressSpace),
-      approvalSettings = pulumi.Input.asOptionalInput<ApprovalSettings>(approvalSettings),
-      communityName = pulumi.Input.asOptionalInput<String>(communityName),
-      communityRoleAssignments = pulumi.Input.asOptionalInput<List<RoleAssignmentItem>>(communityRoleAssignments),
-      dnsServers = pulumi.Input.asOptionalInput<List<String>>(dnsServers),
-      firewallSku = pulumi.Input.asOptionalInput<String>(firewallSku),
-      governedServiceList = pulumi.Input.asOptionalInput<List<GovernedServiceItem>>(governedServiceList),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maintenanceModeConfiguration = pulumi.Input.asOptionalInput<MaintenanceModeConfigurationModel>(maintenanceModeConfiguration),
-      policyOverride = pulumi.Input.asOptionalInput<String>(policyOverride),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.addressSpace,
+    this.approvalSettings,
+    this.communityName,
+    this.communityRoleAssignments,
+    this.dnsServers,
+    this.firewallSku,
+    this.governedServiceList,
+    this.identity,
+    this.location,
+    this.maintenanceModeConfiguration,
+    this.policyOverride,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class CommunityArgs {
 
   factory CommunityArgs.fromMap(Map<String, dynamic> map) {
     return CommunityArgs(
-      addressSpace: map['addressSpace'] == null ? null : pulumi.Output.create<String>(map['addressSpace'] as String),
-      approvalSettings: map['approvalSettings'] == null ? null : pulumi.Output.create<ApprovalSettings>(ApprovalSettings.fromMap((map['approvalSettings'] as Map).cast<String, dynamic>())),
-      communityName: map['communityName'] == null ? null : pulumi.Output.create<String>(map['communityName'] as String),
-      communityRoleAssignments: map['communityRoleAssignments'] == null ? null : pulumi.Output.create<List<RoleAssignmentItem>>(pulumi.Input.decodeList<RoleAssignmentItem>(map['communityRoleAssignments'], (value) => RoleAssignmentItem.fromMap((value as Map).cast<String, dynamic>()))),
-      dnsServers: map['dnsServers'] == null ? null : pulumi.Output.create<List<String>>((map['dnsServers'] as List).cast<String>()),
-      firewallSku: map['firewallSku'] == null ? null : pulumi.Output.create<String>(map['firewallSku'] as String),
-      governedServiceList: map['governedServiceList'] == null ? null : pulumi.Output.create<List<GovernedServiceItem>>(pulumi.Input.decodeList<GovernedServiceItem>(map['governedServiceList'], (value) => GovernedServiceItem.fromMap((value as Map).cast<String, dynamic>()))),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maintenanceModeConfiguration: map['maintenanceModeConfiguration'] == null ? null : pulumi.Output.create<MaintenanceModeConfigurationModel>(MaintenanceModeConfigurationModel.fromMap((map['maintenanceModeConfiguration'] as Map).cast<String, dynamic>())),
-      policyOverride: map['policyOverride'] == null ? null : pulumi.Output.create<String>(map['policyOverride'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      addressSpace: map['addressSpace'] == null ? null : (map['addressSpace'] as String).input(),
+      approvalSettings: map['approvalSettings'] == null ? null : (ApprovalSettings.fromMap((map['approvalSettings'] as Map).cast<String, dynamic>())).input(),
+      communityName: map['communityName'] == null ? null : (map['communityName'] as String).input(),
+      communityRoleAssignments: map['communityRoleAssignments'] == null ? null : (pulumi.Input.decodeList<RoleAssignmentItem>(map['communityRoleAssignments'], (value) => RoleAssignmentItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      firewallSku: map['firewallSku'] == null ? null : (map['firewallSku'] as String).input(),
+      governedServiceList: map['governedServiceList'] == null ? null : (pulumi.Input.decodeList<GovernedServiceItem>(map['governedServiceList'], (value) => GovernedServiceItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maintenanceModeConfiguration: map['maintenanceModeConfiguration'] == null ? null : (MaintenanceModeConfigurationModel.fromMap((map['maintenanceModeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      policyOverride: map['policyOverride'] == null ? null : (map['policyOverride'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

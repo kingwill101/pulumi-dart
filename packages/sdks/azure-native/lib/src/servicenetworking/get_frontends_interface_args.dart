@@ -19,13 +19,10 @@ class GetFrontendsInterfaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [trafficControllerName] traffic controller name for path
   GetFrontendsInterfaceArgs({
-    required pulumi.Output<String> frontendName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> trafficControllerName,
-  }) :
-      frontendName = pulumi.Input.asInput<String>(frontendName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      trafficControllerName = pulumi.Input.asInput<String>(trafficControllerName);
+    required this.frontendName,
+    required this.resourceGroupName,
+    required this.trafficControllerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFrontendsInterfaceArgs {
 
   factory GetFrontendsInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetFrontendsInterfaceArgs(
-      frontendName: pulumi.Output.create<String>(map['frontendName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      trafficControllerName: pulumi.Output.create<String>(map['trafficControllerName'] as String),
+      frontendName: (map['frontendName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      trafficControllerName: (map['trafficControllerName'] as String).input(),
     );
   }
 }

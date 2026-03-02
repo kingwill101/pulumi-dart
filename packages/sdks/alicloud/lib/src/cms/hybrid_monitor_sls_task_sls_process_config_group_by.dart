@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HybridMonitorSlsTaskSlsProcessConfigGroupBy {
   /// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-  final String? alias;
+  final pulumi.Input<String>? alias;
   /// The name of the key that is used to filter logs imported from Log Service.
-  final String? slsKeyName;
+  final pulumi.Input<String>? slsKeyName;
 
   /// Creates a new [HybridMonitorSlsTaskSlsProcessConfigGroupBy].
   /// [alias] The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
@@ -24,8 +25,8 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupBy {
 
   factory HybridMonitorSlsTaskSlsProcessConfigGroupBy.fromMap(Map<String, dynamic> map) {
     return HybridMonitorSlsTaskSlsProcessConfigGroupBy(
-      alias: map['alias'] == null ? null : map['alias'] as String,
-      slsKeyName: map['slsKeyName'] == null ? null : map['slsKeyName'] as String,
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      slsKeyName: map['slsKeyName'] == null ? null : (map['slsKeyName'] as String).input(),
     );
   }
 }

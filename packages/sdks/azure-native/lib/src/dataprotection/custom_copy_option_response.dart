@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Duration based custom options to copy
 class CustomCopyOptionResponse {
   /// Data copied after given timespan
-  final String? duration;
+  final pulumi.Input<String>? duration;
   /// Type of the specific object - used for deserializing
   /// Expected value is 'CustomCopyOption'.
-  final String objectType;
+  final pulumi.Input<String> objectType;
 
   /// Creates a new [CustomCopyOptionResponse].
   /// [duration] Data copied after given timespan
@@ -26,8 +27,8 @@ class CustomCopyOptionResponse {
 
   factory CustomCopyOptionResponse.fromMap(Map<String, dynamic> map) {
     return CustomCopyOptionResponse(
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      objectType: map['objectType'] as String,
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
     );
   }
 }

@@ -31,23 +31,15 @@ class ProducerImageShareGroupMemberState {
   /// [tokenUuid] The UUID of member's token.
   /// [updated] When the member was last updated.
   ProducerImageShareGroupMemberState({
-    pulumi.Output<String>? created,
-    pulumi.Output<String>? expiry,
-    pulumi.Output<String>? label,
-    pulumi.Output<int>? sharegroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? token,
-    pulumi.Output<String>? tokenUuid,
-    pulumi.Output<String>? updated,
-  }) :
-      created = pulumi.Input.asOptionalInput<String>(created),
-      expiry = pulumi.Input.asOptionalInput<String>(expiry),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      sharegroupId = pulumi.Input.asOptionalInput<int>(sharegroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      token = pulumi.Input.asOptionalInput<String>(token),
-      tokenUuid = pulumi.Input.asOptionalInput<String>(tokenUuid),
-      updated = pulumi.Input.asOptionalInput<String>(updated);
+    this.created,
+    this.expiry,
+    this.label,
+    this.sharegroupId,
+    this.status,
+    this.token,
+    this.tokenUuid,
+    this.updated,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class ProducerImageShareGroupMemberState {
 
   factory ProducerImageShareGroupMemberState.fromMap(Map<String, dynamic> map) {
     return ProducerImageShareGroupMemberState(
-      created: map['created'] == null ? null : pulumi.Output.create<String>(map['created'] as String),
-      expiry: map['expiry'] == null ? null : pulumi.Output.create<String>(map['expiry'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      sharegroupId: map['sharegroupId'] == null ? null : pulumi.Output.create<int>(map['sharegroupId'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      token: map['token'] == null ? null : pulumi.Output.create<String>(map['token'] as String),
-      tokenUuid: map['tokenUuid'] == null ? null : pulumi.Output.create<String>(map['tokenUuid'] as String),
-      updated: map['updated'] == null ? null : pulumi.Output.create<String>(map['updated'] as String),
+      created: map['created'] == null ? null : (map['created'] as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      sharegroupId: map['sharegroupId'] == null ? null : (map['sharegroupId'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
+      tokenUuid: map['tokenUuid'] == null ? null : (map['tokenUuid'] as String).input(),
+      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
     );
   }
 }

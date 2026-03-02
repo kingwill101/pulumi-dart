@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The secret management attributes.
 class SecretAttributesResponse {
   /// Creation time in seconds since 1970-01-01T00:00:00Z.
-  final int created;
+  final pulumi.Input<int> created;
   /// Determines whether the object is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Expiry date in seconds since 1970-01-01T00:00:00Z.
-  final int? expires;
+  final pulumi.Input<int>? expires;
   /// Not before date in seconds since 1970-01-01T00:00:00Z.
-  final int? notBefore;
+  final pulumi.Input<int>? notBefore;
   /// Last updated time in seconds since 1970-01-01T00:00:00Z.
-  final int updated;
+  final pulumi.Input<int> updated;
 
   /// Creates a new [SecretAttributesResponse].
   /// [created] Creation time in seconds since 1970-01-01T00:00:00Z.
@@ -40,11 +41,11 @@ class SecretAttributesResponse {
 
   factory SecretAttributesResponse.fromMap(Map<String, dynamic> map) {
     return SecretAttributesResponse(
-      created: map['created'] as int,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      expires: map['expires'] == null ? null : map['expires'] as int,
-      notBefore: map['notBefore'] == null ? null : map['notBefore'] as int,
-      updated: map['updated'] as int,
+      created: (map['created'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      expires: map['expires'] == null ? null : (map['expires'] as int).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as int).input(),
+      updated: (map['updated'] as int).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Uefi settings - Specifies whether secure boot should be enabled on the virtual machine instance.
 class VirtualMachineInstancePropertiesSecurityProfileUefiSettings {
   /// Specifies whether secure boot should be enabled on the virtual machine instance.
-  final bool? secureBootEnabled;
+  final pulumi.Input<bool>? secureBootEnabled;
 
   /// Creates a new [VirtualMachineInstancePropertiesSecurityProfileUefiSettings].
   /// [secureBootEnabled] Specifies whether secure boot should be enabled on the virtual machine instance.
@@ -20,7 +21,7 @@ class VirtualMachineInstancePropertiesSecurityProfileUefiSettings {
 
   factory VirtualMachineInstancePropertiesSecurityProfileUefiSettings.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesSecurityProfileUefiSettings(
-      secureBootEnabled: map['secureBootEnabled'] == null ? null : map['secureBootEnabled'] as bool,
+      secureBootEnabled: map['secureBootEnabled'] == null ? null : (map['secureBootEnabled'] as bool).input(),
     );
   }
 }

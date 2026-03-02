@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDirectoryActiveDirectoryConfig {
   /// Fully qualified domain name of the AWS Directory Service directory.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// ARN of the Secrets Manager secret that contains the credentials for the service account.
-  final String serviceAccountSecretArn;
+  final pulumi.Input<String> serviceAccountSecretArn;
 
   /// Creates a new [GetDirectoryActiveDirectoryConfig].
   /// [domainName] Fully qualified domain name of the AWS Directory Service directory.
@@ -24,8 +25,8 @@ class GetDirectoryActiveDirectoryConfig {
 
   factory GetDirectoryActiveDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return GetDirectoryActiveDirectoryConfig(
-      domainName: map['domainName'] as String,
-      serviceAccountSecretArn: map['serviceAccountSecretArn'] as String,
+      domainName: (map['domainName'] as String).input(),
+      serviceAccountSecretArn: (map['serviceAccountSecretArn'] as String).input(),
     );
   }
 }

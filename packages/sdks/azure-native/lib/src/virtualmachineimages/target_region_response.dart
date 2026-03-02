@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the target region information.
 class TargetRegionResponse {
   /// The name of the region.
-  final String name;
+  final pulumi.Input<String> name;
   /// The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
-  final int? replicaCount;
+  final pulumi.Input<int>? replicaCount;
   /// Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
-  final String? storageAccountType;
+  final pulumi.Input<String>? storageAccountType;
 
   /// Creates a new [TargetRegionResponse].
   /// [name] The name of the region.
@@ -30,9 +31,9 @@ class TargetRegionResponse {
 
   factory TargetRegionResponse.fromMap(Map<String, dynamic> map) {
     return TargetRegionResponse(
-      name: map['name'] as String,
-      replicaCount: map['replicaCount'] == null ? null : map['replicaCount'] as int,
-      storageAccountType: map['storageAccountType'] == null ? null : map['storageAccountType'] as String,
+      name: (map['name'] as String).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
     );
   }
 }

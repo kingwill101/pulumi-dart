@@ -44,25 +44,16 @@ class GetLoadbalancerV2Args {
   /// [tagsNots] A set of tags. The load balancer will be returned if
   /// [vipAddress] The IP address of the loadbalancer's virtual IP (VIP).
   GetLoadbalancerV2Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? loadbalancerId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<List<String>>? tagsAnies,
-    pulumi.Output<List<String>>? tagsNotAnies,
-    pulumi.Output<List<String>>? tagsNots,
-    pulumi.Output<String>? vipAddress,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      loadbalancerId = pulumi.Input.asOptionalInput<String>(loadbalancerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      tagsAnies = pulumi.Input.asOptionalInput<List<String>>(tagsAnies),
-      tagsNotAnies = pulumi.Input.asOptionalInput<List<String>>(tagsNotAnies),
-      tagsNots = pulumi.Input.asOptionalInput<List<String>>(tagsNots),
-      vipAddress = pulumi.Input.asOptionalInput<String>(vipAddress);
+    this.description,
+    this.loadbalancerId,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAnies,
+    this.tagsNotAnies,
+    this.tagsNots,
+    this.vipAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,15 +71,15 @@ class GetLoadbalancerV2Args {
 
   factory GetLoadbalancerV2Args.fromMap(Map<String, dynamic> map) {
     return GetLoadbalancerV2Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      loadbalancerId: map['loadbalancerId'] == null ? null : pulumi.Output.create<String>(map['loadbalancerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      tagsAnies: map['tagsAnies'] == null ? null : pulumi.Output.create<List<String>>((map['tagsAnies'] as List).cast<String>()),
-      tagsNotAnies: map['tagsNotAnies'] == null ? null : pulumi.Output.create<List<String>>((map['tagsNotAnies'] as List).cast<String>()),
-      tagsNots: map['tagsNots'] == null ? null : pulumi.Output.create<List<String>>((map['tagsNots'] as List).cast<String>()),
-      vipAddress: map['vipAddress'] == null ? null : pulumi.Output.create<String>(map['vipAddress'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tagsAnies: map['tagsAnies'] == null ? null : ((map['tagsAnies'] as List).cast<String>()).input(),
+      tagsNotAnies: map['tagsNotAnies'] == null ? null : ((map['tagsNotAnies'] as List).cast<String>()).input(),
+      tagsNots: map['tagsNots'] == null ? null : ((map['tagsNots'] as List).cast<String>()).input(),
+      vipAddress: map['vipAddress'] == null ? null : (map['vipAddress'] as String).input(),
     );
   }
 }

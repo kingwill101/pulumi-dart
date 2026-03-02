@@ -29,19 +29,13 @@ class AiFeatureOnlineStoreFeatureviewIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region for the resource. It should be the same as the featureonlinestore region. Used to find the parent resource to bind the IAM policy to. If not specified,
   AiFeatureOnlineStoreFeatureviewIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? featureOnlineStore,
-    pulumi.Output<String>? featureView,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featureOnlineStore = pulumi.Input.asOptionalInput<String>(featureOnlineStore),
-      featureView = pulumi.Input.asOptionalInput<String>(featureView),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.etag,
+    this.featureOnlineStore,
+    this.featureView,
+    this.policyData,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class AiFeatureOnlineStoreFeatureviewIamPolicyState {
 
   factory AiFeatureOnlineStoreFeatureviewIamPolicyState.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featureOnlineStore: map['featureOnlineStore'] == null ? null : pulumi.Output.create<String>(map['featureOnlineStore'] as String),
-      featureView: map['featureView'] == null ? null : pulumi.Output.create<String>(map['featureView'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featureOnlineStore: map['featureOnlineStore'] == null ? null : (map['featureOnlineStore'] as String).input(),
+      featureView: map['featureView'] == null ? null : (map['featureView'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

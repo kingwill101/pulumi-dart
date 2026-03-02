@@ -19,13 +19,10 @@ class DomainPolicyArgs {
   /// [domainName] Name of the domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DomainPolicyArgs({
-    required pulumi.Output<String> accessPolicies,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? region,
-  }) :
-      accessPolicies = pulumi.Input.asInput<String>(accessPolicies),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.accessPolicies,
+    required this.domainName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DomainPolicyArgs {
 
   factory DomainPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DomainPolicyArgs(
-      accessPolicies: pulumi.Output.create<String>(map['accessPolicies'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accessPolicies: (map['accessPolicies'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -31,19 +31,13 @@ class AppCheckRecaptchaV3ConfigState {
   /// [siteSecretSet] Whether the siteSecret was previously set. Since we will never return the siteSecret field, this field is the only way to find out whether it was previously set.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from reCAPTCHA V3 artifacts will be valid.
   AppCheckRecaptchaV3ConfigState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? siteSecret,
-    pulumi.Output<bool>? siteSecretSet,
-    pulumi.Output<String>? tokenTtl,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteSecret = pulumi.Input.asOptionalInput<String>(siteSecret),
-      siteSecretSet = pulumi.Input.asOptionalInput<bool>(siteSecretSet),
-      tokenTtl = pulumi.Input.asOptionalInput<String>(tokenTtl);
+    this.appId,
+    this.name,
+    this.project,
+    this.siteSecret,
+    this.siteSecretSet,
+    this.tokenTtl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class AppCheckRecaptchaV3ConfigState {
 
   factory AppCheckRecaptchaV3ConfigState.fromMap(Map<String, dynamic> map) {
     return AppCheckRecaptchaV3ConfigState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      siteSecret: map['siteSecret'] == null ? null : pulumi.Output.create<String>(map['siteSecret'] as String),
-      siteSecretSet: map['siteSecretSet'] == null ? null : pulumi.Output.create<bool>(map['siteSecretSet'] as bool),
-      tokenTtl: map['tokenTtl'] == null ? null : pulumi.Output.create<String>(map['tokenTtl'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      siteSecret: map['siteSecret'] == null ? null : (map['siteSecret'] as String).input(),
+      siteSecretSet: map['siteSecretSet'] == null ? null : (map['siteSecretSet'] as bool).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
     );
   }
 }

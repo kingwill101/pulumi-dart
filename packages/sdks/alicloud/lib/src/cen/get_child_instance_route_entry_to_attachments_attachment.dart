@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetChildInstanceRouteEntryToAttachmentsAttachment {
   /// The ID of the CEN instance.
-  final String cenId;
+  final pulumi.Input<String> cenId;
   /// The first ID of the resource
-  final String childInstanceRouteTableId;
+  final pulumi.Input<String> childInstanceRouteTableId;
   /// DestinationCidrBlock
-  final String destinationCidrBlock;
+  final pulumi.Input<String> destinationCidrBlock;
   /// The ID of the resource. The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// ServiceType
-  final String serviceType;
+  final pulumi.Input<String> serviceType;
   /// The status of the resource
-  final String status;
+  final pulumi.Input<String> status;
   /// TransitRouterAttachmentId
-  final String transitRouterAttachmentId;
+  final pulumi.Input<String> transitRouterAttachmentId;
 
   /// Creates a new [GetChildInstanceRouteEntryToAttachmentsAttachment].
   /// [cenId] The ID of the CEN instance.
@@ -49,13 +50,13 @@ class GetChildInstanceRouteEntryToAttachmentsAttachment {
 
   factory GetChildInstanceRouteEntryToAttachmentsAttachment.fromMap(Map<String, dynamic> map) {
     return GetChildInstanceRouteEntryToAttachmentsAttachment(
-      cenId: map['cenId'] as String,
-      childInstanceRouteTableId: map['childInstanceRouteTableId'] as String,
-      destinationCidrBlock: map['destinationCidrBlock'] as String,
-      id: map['id'] as String,
-      serviceType: map['serviceType'] as String,
-      status: map['status'] as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] as String,
+      cenId: (map['cenId'] as String).input(),
+      childInstanceRouteTableId: (map['childInstanceRouteTableId'] as String).input(),
+      destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
+      id: (map['id'] as String).input(),
+      serviceType: (map['serviceType'] as String).input(),
+      status: (map['status'] as String).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
     );
   }
 }

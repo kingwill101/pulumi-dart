@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineSourceTriggerPropertiesResponse {
   /// The current status of the source trigger.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [PipelineSourceTriggerPropertiesResponse].
   /// [status] The current status of the source trigger.
@@ -19,7 +20,7 @@ class PipelineSourceTriggerPropertiesResponse {
 
   factory PipelineSourceTriggerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PipelineSourceTriggerPropertiesResponse(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

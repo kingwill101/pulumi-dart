@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_response.dart';
 import 'private_link_service_connection_state_response.dart';
 import 'proxy_resource_response_system_data.dart';
@@ -7,19 +8,19 @@ import 'proxy_resource_response_system_data.dart';
 /// A private endpoint connection class.
 class PrivateEndpointConnectionResponse {
   /// Gets or sets the identifier.
-  final String id;
+  final pulumi.Input<String> id;
   /// Gets or sets the name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The private endpoint information.
-  final PrivateEndpointResponse? privateEndpoint;
+  final pulumi.Input<PrivateEndpointResponse>? privateEndpoint;
   /// The private link service connection state.
-  final PrivateLinkServiceConnectionStateResponse? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
   /// The provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Metadata pertaining to creation and last modification of the resource.
-  final ProxyResourceResponseSystemData systemData;
+  final pulumi.Input<ProxyResourceResponseSystemData> systemData;
   /// Gets or sets the type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PrivateEndpointConnectionResponse].
   /// [id] Gets or sets the identifier.
@@ -43,23 +44,23 @@ class PrivateEndpointConnectionResponse {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'privateEndpoint': ?privateEndpoint == null ? null : privateEndpoint!.toMap(),
-      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState == null ? null : privateLinkServiceConnectionState!.toMap(),
+      'privateEndpoint': ?pulumi.Input.mapOptionalInputValue<PrivateEndpointResponse, Map<String, dynamic>>(privateEndpoint, (value) => value.toMap()),
+      'privateLinkServiceConnectionState': ?pulumi.Input.mapOptionalInputValue<PrivateLinkServiceConnectionStateResponse, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'systemData': pulumi.Input.mapInputValue<ProxyResourceResponseSystemData, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory PrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionResponse(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      privateEndpoint: map['privateEndpoint'] == null ? null : PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>()),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      systemData: ProxyResourceResponseSystemData.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      systemData: (ProxyResourceResponseSystemData.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

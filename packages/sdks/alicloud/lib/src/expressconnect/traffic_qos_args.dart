@@ -24,15 +24,11 @@ class TrafficQosArgs {
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
   TrafficQosArgs({
-    pulumi.Output<String>? qosDescription,
-    pulumi.Output<String>? qosName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      qosDescription = pulumi.Input.asOptionalInput<String>(qosDescription),
-      qosName = pulumi.Input.asOptionalInput<String>(qosName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.qosDescription,
+    this.qosName,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class TrafficQosArgs {
 
   factory TrafficQosArgs.fromMap(Map<String, dynamic> map) {
     return TrafficQosArgs(
-      qosDescription: map['qosDescription'] == null ? null : pulumi.Output.create<String>(map['qosDescription'] as String),
-      qosName: map['qosName'] == null ? null : pulumi.Output.create<String>(map['qosName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      qosDescription: map['qosDescription'] == null ? null : (map['qosDescription'] as String).input(),
+      qosName: map['qosName'] == null ? null : (map['qosName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

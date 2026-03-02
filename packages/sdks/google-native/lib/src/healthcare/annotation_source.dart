@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_healthcare_source.dart';
 
 /// AnnotationSource holds the source information of the annotation.
 class AnnotationSource {
   /// Cloud Healthcare API resource.
-  final CloudHealthcareSource? cloudHealthcareSource;
+  final pulumi.Input<CloudHealthcareSource>? cloudHealthcareSource;
 
   /// Creates a new [AnnotationSource].
   /// [cloudHealthcareSource] Cloud Healthcare API resource.
@@ -15,13 +16,13 @@ class AnnotationSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudHealthcareSource': ?cloudHealthcareSource == null ? null : cloudHealthcareSource!.toMap(),
+      'cloudHealthcareSource': ?pulumi.Input.mapOptionalInputValue<CloudHealthcareSource, Map<String, dynamic>>(cloudHealthcareSource, (value) => value.toMap()),
     };
   }
 
   factory AnnotationSource.fromMap(Map<String, dynamic> map) {
     return AnnotationSource(
-      cloudHealthcareSource: map['cloudHealthcareSource'] == null ? null : CloudHealthcareSource.fromMap((map['cloudHealthcareSource'] as Map).cast<String, dynamic>()),
+      cloudHealthcareSource: map['cloudHealthcareSource'] == null ? null : (CloudHealthcareSource.fromMap((map['cloudHealthcareSource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

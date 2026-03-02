@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs to be assigned to this SQL Database.
-  final List<String> identityIds;
+  final pulumi.Input<List<String>> identityIds;
   /// Specifies the type of Managed Service Identity that should be configured on this SQL Database. Possible value is `UserAssigned`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DatabaseIdentity].
   /// [identityIds] Specifies a list of User Assigned Managed Identity IDs to be assigned to this SQL Database.
@@ -24,8 +25,8 @@ class DatabaseIdentity {
 
   factory DatabaseIdentity.fromMap(Map<String, dynamic> map) {
     return DatabaseIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

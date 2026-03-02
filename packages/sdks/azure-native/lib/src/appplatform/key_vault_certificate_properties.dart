@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of certificate imported from key vault.
 class KeyVaultCertificateProperties {
   /// Indicates whether to automatically synchronize certificate from key vault or not.
-  final String? autoSync;
+  final pulumi.Input<String>? autoSync;
   /// The certificate version of key vault.
-  final String? certVersion;
+  final pulumi.Input<String>? certVersion;
   /// Optional. If set to true, it will not import private key from key vault.
-  final bool? excludePrivateKey;
+  final pulumi.Input<bool>? excludePrivateKey;
   /// The certificate name of key vault.
-  final String keyVaultCertName;
+  final pulumi.Input<String> keyVaultCertName;
   /// The type of the certificate source.
   /// Expected value is 'KeyVaultCertificate'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The vault uri of user key vault.
-  final String vaultUri;
+  final pulumi.Input<String> vaultUri;
 
   /// Creates a new [KeyVaultCertificateProperties].
   /// [autoSync] Indicates whether to automatically synchronize certificate from key vault or not.
@@ -46,12 +47,12 @@ class KeyVaultCertificateProperties {
 
   factory KeyVaultCertificateProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultCertificateProperties(
-      autoSync: map['autoSync'] == null ? null : map['autoSync'] as String,
-      certVersion: map['certVersion'] == null ? null : map['certVersion'] as String,
-      excludePrivateKey: map['excludePrivateKey'] == null ? null : map['excludePrivateKey'] as bool,
-      keyVaultCertName: map['keyVaultCertName'] as String,
-      type: map['type'] as String,
-      vaultUri: map['vaultUri'] as String,
+      autoSync: map['autoSync'] == null ? null : (map['autoSync'] as String).input(),
+      certVersion: map['certVersion'] == null ? null : (map['certVersion'] as String).input(),
+      excludePrivateKey: map['excludePrivateKey'] == null ? null : (map['excludePrivateKey'] as bool).input(),
+      keyVaultCertName: (map['keyVaultCertName'] as String).input(),
+      type: (map['type'] as String).input(),
+      vaultUri: (map['vaultUri'] as String).input(),
     );
   }
 }

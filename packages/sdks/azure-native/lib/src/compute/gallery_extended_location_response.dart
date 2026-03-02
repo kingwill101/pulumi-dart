@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The name of the extended location.
 class GalleryExtendedLocationResponse {
-  final String? name;
+  final pulumi.Input<String>? name;
   /// It is type of the extended location.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [GalleryExtendedLocationResponse].
   /// [name] Optional.
@@ -24,8 +25,8 @@ class GalleryExtendedLocationResponse {
 
   factory GalleryExtendedLocationResponse.fromMap(Map<String, dynamic> map) {
     return GalleryExtendedLocationResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

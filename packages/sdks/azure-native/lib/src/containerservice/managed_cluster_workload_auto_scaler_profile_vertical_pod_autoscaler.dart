@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
 class ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler {
   /// Whether to enable VPA. Default value is false.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler].
   /// [enabled] Whether to enable VPA. Default value is false.
@@ -20,7 +21,7 @@ class ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler {
 
   factory ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler.fromMap(Map<String, dynamic> map) {
     return ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

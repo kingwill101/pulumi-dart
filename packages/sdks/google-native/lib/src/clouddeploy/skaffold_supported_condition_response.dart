@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.
 class SkaffoldSupportedConditionResponse {
   /// The time at which this release's version of skaffold will enter maintenance mode.
-  final String maintenanceModeTime;
+  final pulumi.Input<String> maintenanceModeTime;
   /// The skaffold support state for this release's version of skaffold.
-  final String skaffoldSupportState;
+  final pulumi.Input<String> skaffoldSupportState;
   /// True if the version of skaffold used by this release is supported.
-  final bool status;
+  final pulumi.Input<bool> status;
   /// The time at which this release's version of skaffold will no longer be supported.
-  final String supportExpirationTime;
+  final pulumi.Input<String> supportExpirationTime;
 
   /// Creates a new [SkaffoldSupportedConditionResponse].
   /// [maintenanceModeTime] The time at which this release's version of skaffold will enter maintenance mode.
@@ -35,10 +36,10 @@ class SkaffoldSupportedConditionResponse {
 
   factory SkaffoldSupportedConditionResponse.fromMap(Map<String, dynamic> map) {
     return SkaffoldSupportedConditionResponse(
-      maintenanceModeTime: map['maintenanceModeTime'] as String,
-      skaffoldSupportState: map['skaffoldSupportState'] as String,
-      status: map['status'] as bool,
-      supportExpirationTime: map['supportExpirationTime'] as String,
+      maintenanceModeTime: (map['maintenanceModeTime'] as String).input(),
+      skaffoldSupportState: (map['skaffoldSupportState'] as String).input(),
+      status: (map['status'] as bool).input(),
+      supportExpirationTime: (map['supportExpirationTime'] as String).input(),
     );
   }
 }

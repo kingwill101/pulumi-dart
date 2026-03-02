@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateTemplatePredefinedValuesAdditionalExtensionObjectId {
   /// Required. The parts of an OID path. The most significant parts of the path come first.
-  final List<int> objectIdPaths;
+  final pulumi.Input<List<int>> objectIdPaths;
 
   /// Creates a new [CertificateTemplatePredefinedValuesAdditionalExtensionObjectId].
   /// [objectIdPaths] Required. The parts of an OID path. The most significant parts of the path come first.
@@ -19,7 +20,7 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionObjectId {
 
   factory CertificateTemplatePredefinedValuesAdditionalExtensionObjectId.fromMap(Map<String, dynamic> map) {
     return CertificateTemplatePredefinedValuesAdditionalExtensionObjectId(
-      objectIdPaths: (map['objectIdPaths'] as List).cast<int>(),
+      objectIdPaths: ((map['objectIdPaths'] as List).cast<int>()).input(),
     );
   }
 }

@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Route Filter Rule Resource.
 class RouteFilterRuleResponse {
   /// The access type of the rule.
-  final String access;
+  final pulumi.Input<String> access;
   /// The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020'].
-  final List<String> communities;
+  final pulumi.Input<List<String>> communities;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the route filter rule resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The rule type of the rule.
-  final String routeFilterRuleType;
+  final pulumi.Input<String> routeFilterRuleType;
 
   /// Creates a new [RouteFilterRuleResponse].
   /// [access] The access type of the rule.
@@ -55,14 +56,14 @@ class RouteFilterRuleResponse {
 
   factory RouteFilterRuleResponse.fromMap(Map<String, dynamic> map) {
     return RouteFilterRuleResponse(
-      access: map['access'] as String,
-      communities: (map['communities'] as List).cast<String>(),
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      routeFilterRuleType: map['routeFilterRuleType'] as String,
+      access: (map['access'] as String).input(),
+      communities: ((map['communities'] as List).cast<String>()).input(),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      routeFilterRuleType: (map['routeFilterRuleType'] as String).input(),
     );
   }
 }

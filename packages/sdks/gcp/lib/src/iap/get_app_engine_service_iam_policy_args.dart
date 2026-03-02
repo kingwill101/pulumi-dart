@@ -20,13 +20,10 @@ class GetAppEngineServiceIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [service] Used to find the parent resource to bind the IAM policy to
   GetAppEngineServiceIamPolicyArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> service,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asInput<String>(service);
+    required this.appId,
+    this.project,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetAppEngineServiceIamPolicyArgs {
 
   factory GetAppEngineServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAppEngineServiceIamPolicyArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
+      appId: (map['appId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A custom alert rule that checks if a value (depends on the custom alert type) is within the given range.
 class ThresholdCustomAlertRule {
   /// Status of the custom alert.
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
   /// The maximum threshold.
-  final int maxThreshold;
+  final pulumi.Input<int> maxThreshold;
   /// The minimum threshold.
-  final int minThreshold;
+  final pulumi.Input<int> minThreshold;
   /// The type of the custom alert rule.
   /// Expected value is 'ThresholdCustomAlertRule'.
-  final String ruleType;
+  final pulumi.Input<String> ruleType;
 
   /// Creates a new [ThresholdCustomAlertRule].
   /// [isEnabled] Status of the custom alert.
@@ -36,10 +37,10 @@ class ThresholdCustomAlertRule {
 
   factory ThresholdCustomAlertRule.fromMap(Map<String, dynamic> map) {
     return ThresholdCustomAlertRule(
-      isEnabled: map['isEnabled'] as bool,
-      maxThreshold: map['maxThreshold'] as int,
-      minThreshold: map['minThreshold'] as int,
-      ruleType: map['ruleType'] as String,
+      isEnabled: (map['isEnabled'] as bool).input(),
+      maxThreshold: (map['maxThreshold'] as int).input(),
+      minThreshold: (map['minThreshold'] as int).input(),
+      ruleType: (map['ruleType'] as String).input(),
     );
   }
 }

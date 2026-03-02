@@ -22,15 +22,11 @@ class RoleManagementPolicyAssignmentArgs {
   /// [roleManagementPolicyAssignmentName] The name of format {guid_guid} the role management policy assignment to upsert.
   /// [scope] The role management policy scope.
   RoleManagementPolicyAssignmentArgs({
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? roleDefinitionId,
-    pulumi.Output<String>? roleManagementPolicyAssignmentName,
-    required pulumi.Output<String> scope,
-  }) :
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      roleDefinitionId = pulumi.Input.asOptionalInput<String>(roleDefinitionId),
-      roleManagementPolicyAssignmentName = pulumi.Input.asOptionalInput<String>(roleManagementPolicyAssignmentName),
-      scope = pulumi.Input.asInput<String>(scope);
+    this.policyId,
+    this.roleDefinitionId,
+    this.roleManagementPolicyAssignmentName,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class RoleManagementPolicyAssignmentArgs {
 
   factory RoleManagementPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyAssignmentArgs(
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      roleManagementPolicyAssignmentName: map['roleManagementPolicyAssignmentName'] == null ? null : pulumi.Output.create<String>(map['roleManagementPolicyAssignmentName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      roleManagementPolicyAssignmentName: map['roleManagementPolicyAssignmentName'] == null ? null : (map['roleManagementPolicyAssignmentName'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

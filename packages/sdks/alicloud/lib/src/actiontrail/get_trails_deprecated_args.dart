@@ -24,19 +24,13 @@ class GetTrailsDeprecatedArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] Optional.
   GetTrailsDeprecatedArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<bool>? includeOrganizationTrail,
-    pulumi.Output<bool>? includeShadowTrails,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      includeOrganizationTrail = pulumi.Input.asOptionalInput<bool>(includeOrganizationTrail),
-      includeShadowTrails = pulumi.Input.asOptionalInput<bool>(includeShadowTrails),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.includeOrganizationTrail,
+    this.includeShadowTrails,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +45,12 @@ class GetTrailsDeprecatedArgs {
 
   factory GetTrailsDeprecatedArgs.fromMap(Map<String, dynamic> map) {
     return GetTrailsDeprecatedArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      includeOrganizationTrail: map['includeOrganizationTrail'] == null ? null : pulumi.Output.create<bool>(map['includeOrganizationTrail'] as bool),
-      includeShadowTrails: map['includeShadowTrails'] == null ? null : pulumi.Output.create<bool>(map['includeShadowTrails'] as bool),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      includeOrganizationTrail: map['includeOrganizationTrail'] == null ? null : (map['includeOrganizationTrail'] as bool).input(),
+      includeShadowTrails: map['includeShadowTrails'] == null ? null : (map['includeShadowTrails'] as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

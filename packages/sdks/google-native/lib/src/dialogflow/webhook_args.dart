@@ -36,25 +36,16 @@ class WebhookArgs {
   /// [serviceDirectory] Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
   /// [timeout] Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
   WebhookArgs({
-    required pulumi.Output<String> agentId,
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<GoogleCloudDialogflowCxV3WebhookGenericWebService>? genericWebService,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig>? serviceDirectory,
-    pulumi.Output<String>? timeout,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      genericWebService = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3WebhookGenericWebService>(genericWebService),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceDirectory = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig>(serviceDirectory),
-      timeout = pulumi.Input.asOptionalInput<String>(timeout);
+    required this.agentId,
+    this.disabled,
+    required this.displayName,
+    this.genericWebService,
+    this.location,
+    this.name,
+    this.project,
+    this.serviceDirectory,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      genericWebService: map['genericWebService'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowCxV3WebhookGenericWebService>(GoogleCloudDialogflowCxV3WebhookGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceDirectory: map['serviceDirectory'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig>(GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig.fromMap((map['serviceDirectory'] as Map).cast<String, dynamic>())),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<String>(map['timeout'] as String),
+      agentId: (map['agentId'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      genericWebService: map['genericWebService'] == null ? null : (GoogleCloudDialogflowCxV3WebhookGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceDirectory: map['serviceDirectory'] == null ? null : (GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig.fromMap((map['serviceDirectory'] as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

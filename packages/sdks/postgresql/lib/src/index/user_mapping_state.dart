@@ -22,13 +22,10 @@ class UserMappingState {
   /// [serverName] The name of an existing server for which the user mapping is to be created.
   /// [userName] The name of an existing user that is mapped to foreign server. CURRENT_ROLE, CURRENT_USER, and USER match the name of the current user. When PUBLIC is specified, a so-called public mapping is created that is used when no user-specific mapping is applicable.
   UserMappingState({
-    pulumi.Output<Map<String, String>>? options,
-    pulumi.Output<String>? serverName,
-    pulumi.Output<String>? userName,
-  }) :
-      options = pulumi.Input.asOptionalInput<Map<String, String>>(options),
-      serverName = pulumi.Input.asOptionalInput<String>(serverName),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.options,
+    this.serverName,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class UserMappingState {
 
   factory UserMappingState.fromMap(Map<String, dynamic> map) {
     return UserMappingState(
-      options: map['options'] == null ? null : pulumi.Output.create<Map<String, String>>((map['options'] as Map).cast<String, String>()),
-      serverName: map['serverName'] == null ? null : pulumi.Output.create<String>(map['serverName'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

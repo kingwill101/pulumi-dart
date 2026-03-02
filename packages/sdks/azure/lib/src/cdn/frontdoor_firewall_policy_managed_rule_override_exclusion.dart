@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorFirewallPolicyManagedRuleOverrideExclusion {
   /// The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`, `RequestBodyJsonArgNames`
   ///
   /// > **Note:** `RequestBodyJsonArgNames` is only available on Default Rule Set (DRS) 2.0 or later
-  final String matchVariable;
+  final pulumi.Input<String> matchVariable;
   /// Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, or `EqualsAny`.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Selector for the value in the `match_variable` attribute this exclusion applies to.
   ///
   /// > **Note:** `selector` must be set to `*` if `operator` is set to `EqualsAny`.
-  final String selector;
+  final pulumi.Input<String> selector;
 
   /// Creates a new [FrontdoorFirewallPolicyManagedRuleOverrideExclusion].
   /// [matchVariable] The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`, `RequestBodyJsonArgNames`
@@ -33,9 +34,9 @@ class FrontdoorFirewallPolicyManagedRuleOverrideExclusion {
 
   factory FrontdoorFirewallPolicyManagedRuleOverrideExclusion.fromMap(Map<String, dynamic> map) {
     return FrontdoorFirewallPolicyManagedRuleOverrideExclusion(
-      matchVariable: map['matchVariable'] as String,
-      operator: map['operator'] as String,
-      selector: map['selector'] as String,
+      matchVariable: (map['matchVariable'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      selector: (map['selector'] as String).input(),
     );
   }
 }

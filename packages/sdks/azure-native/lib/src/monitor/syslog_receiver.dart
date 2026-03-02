@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Base receiver using TCP as transport protocol.
 class SyslogReceiver {
   /// Syslog receiver endpoint definition. Example: 0.0.0.0:<port>.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// Protocol to parse syslog messages. Default rfc3164
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
 
   /// Creates a new [SyslogReceiver].
   /// [endpoint] Syslog receiver endpoint definition. Example: 0.0.0.0:<port>.
@@ -25,8 +26,8 @@ class SyslogReceiver {
 
   factory SyslogReceiver.fromMap(Map<String, dynamic> map) {
     return SyslogReceiver(
-      endpoint: map['endpoint'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
+      endpoint: (map['endpoint'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
     );
   }
 }

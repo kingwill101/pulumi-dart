@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceMeshExtraConfiguration {
   /// Whether the data plane KubeAPI access capability is enabled.
-  final bool? crAggregationEnabled;
+  final pulumi.Input<bool>? crAggregationEnabled;
 
   /// Creates a new [ServiceMeshExtraConfiguration].
   /// [crAggregationEnabled] Whether the data plane KubeAPI access capability is enabled.
@@ -19,7 +20,7 @@ class ServiceMeshExtraConfiguration {
 
   factory ServiceMeshExtraConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceMeshExtraConfiguration(
-      crAggregationEnabled: map['crAggregationEnabled'] == null ? null : map['crAggregationEnabled'] as bool,
+      crAggregationEnabled: map['crAggregationEnabled'] == null ? null : (map['crAggregationEnabled'] as bool).input(),
     );
   }
 }

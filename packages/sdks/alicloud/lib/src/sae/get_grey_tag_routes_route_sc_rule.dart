@@ -5,11 +5,11 @@ import 'get_grey_tag_routes_route_sc_rule_item.dart';
 
 class GetGreyTagRoutesRouteScRule {
   /// The Conditional Patterns for Grayscale Rules.
-  final String condition;
+  final pulumi.Input<String> condition;
   /// A list of conditions items.
-  final List<GetGreyTagRoutesRouteScRuleItem> items;
+  final pulumi.Input<List<GetGreyTagRoutesRouteScRuleItem>> items;
   /// The path corresponding to the grayscale rule.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [GetGreyTagRoutesRouteScRule].
   /// [condition] The Conditional Patterns for Grayscale Rules.
@@ -24,16 +24,16 @@ class GetGreyTagRoutesRouteScRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'condition': condition,
-      'items': pulumi.Input.encodeList<GetGreyTagRoutesRouteScRuleItem, Map<String, dynamic>>(items, (value) => value.toMap()),
+      'items': pulumi.Input.mapInputValue<List<GetGreyTagRoutesRouteScRuleItem>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<GetGreyTagRoutesRouteScRuleItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'path': path,
     };
   }
 
   factory GetGreyTagRoutesRouteScRule.fromMap(Map<String, dynamic> map) {
     return GetGreyTagRoutesRouteScRule(
-      condition: map['condition'] as String,
-      items: pulumi.Input.decodeList<GetGreyTagRoutesRouteScRuleItem>(map['items'], (value) => GetGreyTagRoutesRouteScRuleItem.fromMap((value as Map).cast<String, dynamic>())),
-      path: map['path'] as String,
+      condition: (map['condition'] as String).input(),
+      items: (pulumi.Input.decodeList<GetGreyTagRoutesRouteScRuleItem>(map['items'], (value) => GetGreyTagRoutesRouteScRuleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

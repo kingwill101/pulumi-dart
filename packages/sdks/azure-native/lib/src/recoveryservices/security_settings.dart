@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'immutability_settings.dart';
 import 'soft_delete_settings.dart';
 
 /// Security Settings of the vault
 class SecuritySettings {
   /// Immutability Settings of a vault
-  final ImmutabilitySettings? immutabilitySettings;
+  final pulumi.Input<ImmutabilitySettings>? immutabilitySettings;
   /// Soft delete Settings of a vault
-  final SoftDeleteSettings? softDeleteSettings;
+  final pulumi.Input<SoftDeleteSettings>? softDeleteSettings;
 
   /// Creates a new [SecuritySettings].
   /// [immutabilitySettings] Immutability Settings of a vault
@@ -20,15 +21,15 @@ class SecuritySettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'immutabilitySettings': ?immutabilitySettings == null ? null : immutabilitySettings!.toMap(),
-      'softDeleteSettings': ?softDeleteSettings == null ? null : softDeleteSettings!.toMap(),
+      'immutabilitySettings': ?pulumi.Input.mapOptionalInputValue<ImmutabilitySettings, Map<String, dynamic>>(immutabilitySettings, (value) => value.toMap()),
+      'softDeleteSettings': ?pulumi.Input.mapOptionalInputValue<SoftDeleteSettings, Map<String, dynamic>>(softDeleteSettings, (value) => value.toMap()),
     };
   }
 
   factory SecuritySettings.fromMap(Map<String, dynamic> map) {
     return SecuritySettings(
-      immutabilitySettings: map['immutabilitySettings'] == null ? null : ImmutabilitySettings.fromMap((map['immutabilitySettings'] as Map).cast<String, dynamic>()),
-      softDeleteSettings: map['softDeleteSettings'] == null ? null : SoftDeleteSettings.fromMap((map['softDeleteSettings'] as Map).cast<String, dynamic>()),
+      immutabilitySettings: map['immutabilitySettings'] == null ? null : (ImmutabilitySettings.fromMap((map['immutabilitySettings'] as Map).cast<String, dynamic>())).input(),
+      softDeleteSettings: map['softDeleteSettings'] == null ? null : (SoftDeleteSettings.fromMap((map['softDeleteSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

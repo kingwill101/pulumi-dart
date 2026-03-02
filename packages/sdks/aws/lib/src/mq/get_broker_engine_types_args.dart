@@ -16,11 +16,9 @@ class GetBrokerEngineTypesArgs {
   /// [engineType] MQ engine type to return version details for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetBrokerEngineTypesArgs({
-    pulumi.Output<String>? engineType,
-    pulumi.Output<String>? region,
-  }) :
-      engineType = pulumi.Input.asOptionalInput<String>(engineType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.engineType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBrokerEngineTypesArgs {
 
   factory GetBrokerEngineTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetBrokerEngineTypesArgs(
-      engineType: map['engineType'] == null ? null : pulumi.Output.create<String>(map['engineType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

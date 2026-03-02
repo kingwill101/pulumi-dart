@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceNetworkingIpv6Global {
   /// The network prefix.
-  final int prefix;
+  final pulumi.Input<int> prefix;
   /// The IPv6 range of addresses in this pool.
-  final String range;
+  final pulumi.Input<String> range;
   /// (Filterable) The Region this address resides in.
-  final String region;
+  final pulumi.Input<String> region;
   /// (Nullable) The last address in this block of IPv6 addresses.
-  final String routeTarget;
+  final pulumi.Input<String> routeTarget;
 
   /// Creates a new [GetInstanceNetworkingIpv6Global].
   /// [prefix] The network prefix.
@@ -34,10 +35,10 @@ class GetInstanceNetworkingIpv6Global {
 
   factory GetInstanceNetworkingIpv6Global.fromMap(Map<String, dynamic> map) {
     return GetInstanceNetworkingIpv6Global(
-      prefix: map['prefix'] as int,
-      range: map['range'] as String,
-      region: map['region'] as String,
-      routeTarget: map['routeTarget'] as String,
+      prefix: (map['prefix'] as int).input(),
+      range: (map['range'] as String).input(),
+      region: (map['region'] as String).input(),
+      routeTarget: (map['routeTarget'] as String).input(),
     );
   }
 }

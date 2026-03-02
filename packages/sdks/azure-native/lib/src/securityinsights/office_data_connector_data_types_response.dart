@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'office_data_connector_data_types_response_exchange.dart';
 import 'office_data_connector_data_types_response_share_point.dart';
 import 'office_data_connector_data_types_response_teams.dart';
@@ -7,11 +8,11 @@ import 'office_data_connector_data_types_response_teams.dart';
 /// The available data types for office data connector.
 class OfficeDataConnectorDataTypesResponse {
   /// Exchange data type connection.
-  final OfficeDataConnectorDataTypesResponseExchange exchange;
+  final pulumi.Input<OfficeDataConnectorDataTypesResponseExchange> exchange;
   /// SharePoint data type connection.
-  final OfficeDataConnectorDataTypesResponseSharePoint sharePoint;
+  final pulumi.Input<OfficeDataConnectorDataTypesResponseSharePoint> sharePoint;
   /// Teams data type connection.
-  final OfficeDataConnectorDataTypesResponseTeams teams;
+  final pulumi.Input<OfficeDataConnectorDataTypesResponseTeams> teams;
 
   /// Creates a new [OfficeDataConnectorDataTypesResponse].
   /// [exchange] Exchange data type connection.
@@ -25,17 +26,17 @@ class OfficeDataConnectorDataTypesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exchange': exchange.toMap(),
-      'sharePoint': sharePoint.toMap(),
-      'teams': teams.toMap(),
+      'exchange': pulumi.Input.mapInputValue<OfficeDataConnectorDataTypesResponseExchange, Map<String, dynamic>>(exchange, (value) => value.toMap()),
+      'sharePoint': pulumi.Input.mapInputValue<OfficeDataConnectorDataTypesResponseSharePoint, Map<String, dynamic>>(sharePoint, (value) => value.toMap()),
+      'teams': pulumi.Input.mapInputValue<OfficeDataConnectorDataTypesResponseTeams, Map<String, dynamic>>(teams, (value) => value.toMap()),
     };
   }
 
   factory OfficeDataConnectorDataTypesResponse.fromMap(Map<String, dynamic> map) {
     return OfficeDataConnectorDataTypesResponse(
-      exchange: OfficeDataConnectorDataTypesResponseExchange.fromMap((map['exchange'] as Map).cast<String, dynamic>()),
-      sharePoint: OfficeDataConnectorDataTypesResponseSharePoint.fromMap((map['sharePoint'] as Map).cast<String, dynamic>()),
-      teams: OfficeDataConnectorDataTypesResponseTeams.fromMap((map['teams'] as Map).cast<String, dynamic>()),
+      exchange: (OfficeDataConnectorDataTypesResponseExchange.fromMap((map['exchange'] as Map).cast<String, dynamic>())).input(),
+      sharePoint: (OfficeDataConnectorDataTypesResponseSharePoint.fromMap((map['sharePoint'] as Map).cast<String, dynamic>())).input(),
+      teams: (OfficeDataConnectorDataTypesResponseTeams.fromMap((map['teams'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

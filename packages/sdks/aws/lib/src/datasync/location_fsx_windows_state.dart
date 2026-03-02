@@ -43,31 +43,19 @@ class LocationFsxWindowsState {
   /// [uri] The URL of the FSx for Windows location that was described.
   /// [user] The user who has the permissions to access files and folders in the FSx for Windows file system.
   LocationFsxWindowsState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? fsxFilesystemArn,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupArns,
-    pulumi.Output<String>? subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? uri,
-    pulumi.Output<String>? user,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      fsxFilesystemArn = pulumi.Input.asOptionalInput<String>(fsxFilesystemArn),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupArns = pulumi.Input.asOptionalInput<List<String>>(securityGroupArns),
-      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      uri = pulumi.Input.asOptionalInput<String>(uri),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.arn,
+    this.creationTime,
+    this.domain,
+    this.fsxFilesystemArn,
+    this.password,
+    this.region,
+    this.securityGroupArns,
+    this.subdirectory,
+    this.tags,
+    this.tagsAll,
+    this.uri,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class LocationFsxWindowsState {
 
   factory LocationFsxWindowsState.fromMap(Map<String, dynamic> map) {
     return LocationFsxWindowsState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      fsxFilesystemArn: map['fsxFilesystemArn'] == null ? null : pulumi.Output.create<String>(map['fsxFilesystemArn'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupArns: map['securityGroupArns'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupArns'] as List).cast<String>()),
-      subdirectory: map['subdirectory'] == null ? null : pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      fsxFilesystemArn: map['fsxFilesystemArn'] == null ? null : (map['fsxFilesystemArn'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupArns: map['securityGroupArns'] == null ? null : ((map['securityGroupArns'] as List).cast<String>()).input(),
+      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

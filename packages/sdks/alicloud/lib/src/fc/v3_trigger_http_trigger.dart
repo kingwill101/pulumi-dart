@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3TriggerHttpTrigger {
   /// The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
-  final String? urlInternet;
+  final pulumi.Input<String>? urlInternet;
   /// The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
-  final String? urlIntranet;
+  final pulumi.Input<String>? urlIntranet;
 
   /// Creates a new [V3TriggerHttpTrigger].
   /// [urlInternet] The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
@@ -24,8 +25,8 @@ class V3TriggerHttpTrigger {
 
   factory V3TriggerHttpTrigger.fromMap(Map<String, dynamic> map) {
     return V3TriggerHttpTrigger(
-      urlInternet: map['urlInternet'] == null ? null : map['urlInternet'] as String,
-      urlIntranet: map['urlIntranet'] == null ? null : map['urlIntranet'] as String,
+      urlInternet: map['urlInternet'] == null ? null : (map['urlInternet'] as String).input(),
+      urlIntranet: map['urlIntranet'] == null ? null : (map['urlIntranet'] as String).input(),
     );
   }
 }

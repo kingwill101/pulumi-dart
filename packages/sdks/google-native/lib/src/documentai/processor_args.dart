@@ -29,21 +29,14 @@ class ProcessorArgs {
   /// [project] Optional.
   /// [type] The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
   ProcessorArgs({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? defaultProcessorVersion,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? kmsKeyName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? type,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      defaultProcessorVersion = pulumi.Input.asOptionalInput<String>(defaultProcessorVersion),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.createTime,
+    this.defaultProcessorVersion,
+    this.displayName,
+    this.kmsKeyName,
+    this.location,
+    this.project,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class ProcessorArgs {
 
   factory ProcessorArgs.fromMap(Map<String, dynamic> map) {
     return ProcessorArgs(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      defaultProcessorVersion: map['defaultProcessorVersion'] == null ? null : pulumi.Output.create<String>(map['defaultProcessorVersion'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      defaultProcessorVersion: map['defaultProcessorVersion'] == null ? null : (map['defaultProcessorVersion'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -41,27 +41,17 @@ class HandshakeState {
   /// [targetEntity] The ID or logon email address of the account that you want to invite.
   /// [targetType] The type of the invited account. Valid values:
   HandshakeState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<String>? masterAccountId,
-    pulumi.Output<String>? masterAccountName,
-    pulumi.Output<String>? modifyTime,
-    pulumi.Output<String>? note,
-    pulumi.Output<String>? resourceDirectoryId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? targetEntity,
-    pulumi.Output<String>? targetType,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      masterAccountId = pulumi.Input.asOptionalInput<String>(masterAccountId),
-      masterAccountName = pulumi.Input.asOptionalInput<String>(masterAccountName),
-      modifyTime = pulumi.Input.asOptionalInput<String>(modifyTime),
-      note = pulumi.Input.asOptionalInput<String>(note),
-      resourceDirectoryId = pulumi.Input.asOptionalInput<String>(resourceDirectoryId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      targetEntity = pulumi.Input.asOptionalInput<String>(targetEntity),
-      targetType = pulumi.Input.asOptionalInput<String>(targetType);
+    this.createTime,
+    this.expireTime,
+    this.masterAccountId,
+    this.masterAccountName,
+    this.modifyTime,
+    this.note,
+    this.resourceDirectoryId,
+    this.status,
+    this.targetEntity,
+    this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class HandshakeState {
 
   factory HandshakeState.fromMap(Map<String, dynamic> map) {
     return HandshakeState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      masterAccountId: map['masterAccountId'] == null ? null : pulumi.Output.create<String>(map['masterAccountId'] as String),
-      masterAccountName: map['masterAccountName'] == null ? null : pulumi.Output.create<String>(map['masterAccountName'] as String),
-      modifyTime: map['modifyTime'] == null ? null : pulumi.Output.create<String>(map['modifyTime'] as String),
-      note: map['note'] == null ? null : pulumi.Output.create<String>(map['note'] as String),
-      resourceDirectoryId: map['resourceDirectoryId'] == null ? null : pulumi.Output.create<String>(map['resourceDirectoryId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      targetEntity: map['targetEntity'] == null ? null : pulumi.Output.create<String>(map['targetEntity'] as String),
-      targetType: map['targetType'] == null ? null : pulumi.Output.create<String>(map['targetType'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      masterAccountId: map['masterAccountId'] == null ? null : (map['masterAccountId'] as String).input(),
+      masterAccountName: map['masterAccountName'] == null ? null : (map['masterAccountName'] as String).input(),
+      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime'] as String).input(),
+      note: map['note'] == null ? null : (map['note'] as String).input(),
+      resourceDirectoryId: map['resourceDirectoryId'] == null ? null : (map['resourceDirectoryId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      targetEntity: map['targetEntity'] == null ? null : (map['targetEntity'] as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
     );
   }
 }

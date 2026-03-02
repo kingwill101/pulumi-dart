@@ -16,13 +16,10 @@ class GetSchemaIamPolicyArgs {
   /// [project] Optional.
   /// [schemaId] Required.
   GetSchemaIamPolicyArgs({
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> schemaId,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schemaId = pulumi.Input.asInput<String>(schemaId);
+    this.optionsRequestedPolicyVersion,
+    this.project,
+    required this.schemaId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetSchemaIamPolicyArgs {
 
   factory GetSchemaIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaIamPolicyArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schemaId: pulumi.Output.create<String>(map['schemaId'] as String),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schemaId: (map['schemaId'] as String).input(),
     );
   }
 }

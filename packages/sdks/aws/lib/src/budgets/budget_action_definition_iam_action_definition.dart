@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetActionDefinitionIamActionDefinition {
   /// A list of groups to be attached. There must be at least one group.
-  final List<String>? groups;
+  final pulumi.Input<List<String>>? groups;
   /// The Amazon Resource Name (ARN) of the policy to be attached.
-  final String policyArn;
+  final pulumi.Input<String> policyArn;
   /// A list of roles to be attached. There must be at least one role.
-  final List<String>? roles;
+  final pulumi.Input<List<String>>? roles;
   /// A list of users to be attached. There must be at least one user.
-  final List<String>? users;
+  final pulumi.Input<List<String>>? users;
 
   /// Creates a new [BudgetActionDefinitionIamActionDefinition].
   /// [groups] A list of groups to be attached. There must be at least one group.
@@ -34,10 +35,10 @@ class BudgetActionDefinitionIamActionDefinition {
 
   factory BudgetActionDefinitionIamActionDefinition.fromMap(Map<String, dynamic> map) {
     return BudgetActionDefinitionIamActionDefinition(
-      groups: map['groups'] == null ? null : (map['groups'] as List).cast<String>(),
-      policyArn: map['policyArn'] as String,
-      roles: map['roles'] == null ? null : (map['roles'] as List).cast<String>(),
-      users: map['users'] == null ? null : (map['users'] as List).cast<String>(),
+      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
+      policyArn: (map['policyArn'] as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
+      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
     );
   }
 }

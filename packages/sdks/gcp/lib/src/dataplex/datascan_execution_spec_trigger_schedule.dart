@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatascanExecutionSpecTriggerSchedule {
   /// Cron schedule for running scans periodically. This field is required for Schedule scans.
-  final String cron;
+  final pulumi.Input<String> cron;
 
   /// Creates a new [DatascanExecutionSpecTriggerSchedule].
   /// [cron] Cron schedule for running scans periodically. This field is required for Schedule scans.
@@ -19,7 +20,7 @@ class DatascanExecutionSpecTriggerSchedule {
 
   factory DatascanExecutionSpecTriggerSchedule.fromMap(Map<String, dynamic> map) {
     return DatascanExecutionSpecTriggerSchedule(
-      cron: map['cron'] as String,
+      cron: (map['cron'] as String).input(),
     );
   }
 }

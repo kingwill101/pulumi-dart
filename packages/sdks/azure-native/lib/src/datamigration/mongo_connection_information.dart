@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Mongo Connection
 class MongoConnectionInformation {
   /// ConnectionString to connect to Mongo.
-  final String? connectionString;
+  final pulumi.Input<String>? connectionString;
   /// Host of mongo connection.
-  final String? host;
+  final pulumi.Input<String>? host;
   /// Password to connect to Mongo.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Port of mongo connection.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Whether to UseSsl or UseTls to connect to Mongo. Default is true.
-  final bool? useSsl;
+  final pulumi.Input<bool>? useSsl;
   /// User name to connect to Mongo.
-  final String? userName;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [MongoConnectionInformation].
   /// [connectionString] ConnectionString to connect to Mongo.
@@ -45,12 +46,12 @@ class MongoConnectionInformation {
 
   factory MongoConnectionInformation.fromMap(Map<String, dynamic> map) {
     return MongoConnectionInformation(
-      connectionString: map['connectionString'] == null ? null : map['connectionString'] as String,
-      host: map['host'] == null ? null : map['host'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      useSsl: map['useSsl'] == null ? null : map['useSsl'] as bool,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      useSsl: map['useSsl'] == null ? null : (map['useSsl'] as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

@@ -6,17 +6,17 @@ import 'user_set.dart';
 /// The approval stage.
 class ApprovalStage {
   /// The time in days when approval request would be timed out
-  final int? approvalStageTimeOutInDays;
+  final pulumi.Input<int>? approvalStageTimeOutInDays;
   /// The escalation approver of the request.
-  final List<UserSet>? escalationApprovers;
+  final pulumi.Input<List<UserSet>>? escalationApprovers;
   /// The time in minutes when the approval request would be escalated if the primary approver does not approve
-  final int? escalationTimeInMinutes;
+  final pulumi.Input<int>? escalationTimeInMinutes;
   /// Determines whether approver need to provide justification for his decision.
-  final bool? isApproverJustificationRequired;
+  final pulumi.Input<bool>? isApproverJustificationRequired;
   /// The value determine whether escalation feature is enabled.
-  final bool? isEscalationEnabled;
+  final pulumi.Input<bool>? isEscalationEnabled;
   /// The primary approver of the request.
-  final List<UserSet>? primaryApprovers;
+  final pulumi.Input<List<UserSet>>? primaryApprovers;
 
   /// Creates a new [ApprovalStage].
   /// [approvalStageTimeOutInDays] The time in days when approval request would be timed out
@@ -37,22 +37,22 @@ class ApprovalStage {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'approvalStageTimeOutInDays': ?approvalStageTimeOutInDays,
-      'escalationApprovers': ?escalationApprovers == null ? null : pulumi.Input.encodeList<UserSet, Map<String, dynamic>>(escalationApprovers!, (value) => value.toMap()),
+      'escalationApprovers': ?pulumi.Input.mapOptionalInputValue<List<UserSet>, List<Map<String, dynamic>>>(escalationApprovers, (value) => pulumi.Input.encodeList<UserSet, Map<String, dynamic>>(value, (value) => value.toMap())),
       'escalationTimeInMinutes': ?escalationTimeInMinutes,
       'isApproverJustificationRequired': ?isApproverJustificationRequired,
       'isEscalationEnabled': ?isEscalationEnabled,
-      'primaryApprovers': ?primaryApprovers == null ? null : pulumi.Input.encodeList<UserSet, Map<String, dynamic>>(primaryApprovers!, (value) => value.toMap()),
+      'primaryApprovers': ?pulumi.Input.mapOptionalInputValue<List<UserSet>, List<Map<String, dynamic>>>(primaryApprovers, (value) => pulumi.Input.encodeList<UserSet, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ApprovalStage.fromMap(Map<String, dynamic> map) {
     return ApprovalStage(
-      approvalStageTimeOutInDays: map['approvalStageTimeOutInDays'] == null ? null : map['approvalStageTimeOutInDays'] as int,
-      escalationApprovers: map['escalationApprovers'] == null ? null : pulumi.Input.decodeList<UserSet>(map['escalationApprovers'], (value) => UserSet.fromMap((value as Map).cast<String, dynamic>())),
-      escalationTimeInMinutes: map['escalationTimeInMinutes'] == null ? null : map['escalationTimeInMinutes'] as int,
-      isApproverJustificationRequired: map['isApproverJustificationRequired'] == null ? null : map['isApproverJustificationRequired'] as bool,
-      isEscalationEnabled: map['isEscalationEnabled'] == null ? null : map['isEscalationEnabled'] as bool,
-      primaryApprovers: map['primaryApprovers'] == null ? null : pulumi.Input.decodeList<UserSet>(map['primaryApprovers'], (value) => UserSet.fromMap((value as Map).cast<String, dynamic>())),
+      approvalStageTimeOutInDays: map['approvalStageTimeOutInDays'] == null ? null : (map['approvalStageTimeOutInDays'] as int).input(),
+      escalationApprovers: map['escalationApprovers'] == null ? null : (pulumi.Input.decodeList<UserSet>(map['escalationApprovers'], (value) => UserSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      escalationTimeInMinutes: map['escalationTimeInMinutes'] == null ? null : (map['escalationTimeInMinutes'] as int).input(),
+      isApproverJustificationRequired: map['isApproverJustificationRequired'] == null ? null : (map['isApproverJustificationRequired'] as bool).input(),
+      isEscalationEnabled: map['isEscalationEnabled'] == null ? null : (map['isEscalationEnabled'] as bool).input(),
+      primaryApprovers: map['primaryApprovers'] == null ? null : (pulumi.Input.decodeList<UserSet>(map['primaryApprovers'], (value) => UserSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

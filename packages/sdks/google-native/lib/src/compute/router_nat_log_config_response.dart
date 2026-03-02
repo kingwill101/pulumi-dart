@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of logging on a NAT.
 class RouterNatLogConfigResponse {
   /// Indicates whether or not to export logs. This is false by default.
-  final bool enable;
+  final pulumi.Input<bool> enable;
   /// Specify the desired filtering of logs on this NAT. If unspecified, logs are exported for all connections handled by this NAT. This option can take one of the following values: - ERRORS_ONLY: Export logs only for connection failures. - TRANSLATIONS_ONLY: Export logs only for successful connections. - ALL: Export logs for all connections, successful and unsuccessful.
-  final String filter;
+  final pulumi.Input<String> filter;
 
   /// Creates a new [RouterNatLogConfigResponse].
   /// [enable] Indicates whether or not to export logs. This is false by default.
@@ -25,8 +26,8 @@ class RouterNatLogConfigResponse {
 
   factory RouterNatLogConfigResponse.fromMap(Map<String, dynamic> map) {
     return RouterNatLogConfigResponse(
-      enable: map['enable'] as bool,
-      filter: map['filter'] as String,
+      enable: (map['enable'] as bool).input(),
+      filter: (map['filter'] as String).input(),
     );
   }
 }

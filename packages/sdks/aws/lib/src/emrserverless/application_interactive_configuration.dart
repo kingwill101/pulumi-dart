@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationInteractiveConfiguration {
   /// Enables an Apache Livy endpoint that you can connect to and run interactive jobs.
-  final bool? livyEndpointEnabled;
+  final pulumi.Input<bool>? livyEndpointEnabled;
   /// Enables you to connect an application to Amazon EMR Studio to run interactive workloads in a notebook.
-  final bool? studioEnabled;
+  final pulumi.Input<bool>? studioEnabled;
 
   /// Creates a new [ApplicationInteractiveConfiguration].
   /// [livyEndpointEnabled] Enables an Apache Livy endpoint that you can connect to and run interactive jobs.
@@ -24,8 +25,8 @@ class ApplicationInteractiveConfiguration {
 
   factory ApplicationInteractiveConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationInteractiveConfiguration(
-      livyEndpointEnabled: map['livyEndpointEnabled'] == null ? null : map['livyEndpointEnabled'] as bool,
-      studioEnabled: map['studioEnabled'] == null ? null : map['studioEnabled'] as bool,
+      livyEndpointEnabled: map['livyEndpointEnabled'] == null ? null : (map['livyEndpointEnabled'] as bool).input(),
+      studioEnabled: map['studioEnabled'] == null ? null : (map['studioEnabled'] as bool).input(),
     );
   }
 }

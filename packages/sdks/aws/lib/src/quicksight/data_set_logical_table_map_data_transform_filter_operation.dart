@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetLogicalTableMapDataTransformFilterOperation {
   /// An expression that must evaluate to a Boolean value. Rows for which the expression evaluates to true are kept in the dataset.
-  final String conditionExpression;
+  final pulumi.Input<String> conditionExpression;
 
   /// Creates a new [DataSetLogicalTableMapDataTransformFilterOperation].
   /// [conditionExpression] An expression that must evaluate to a Boolean value. Rows for which the expression evaluates to true are kept in the dataset.
@@ -19,7 +20,7 @@ class DataSetLogicalTableMapDataTransformFilterOperation {
 
   factory DataSetLogicalTableMapDataTransformFilterOperation.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformFilterOperation(
-      conditionExpression: map['conditionExpression'] as String,
+      conditionExpression: (map['conditionExpression'] as String).input(),
     );
   }
 }

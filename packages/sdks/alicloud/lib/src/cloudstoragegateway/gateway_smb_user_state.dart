@@ -16,13 +16,10 @@ class GatewaySmbUserState {
   /// [password] The password of the Gateway SMB User.
   /// [username] The username of the Gateway SMB User.
   GatewaySmbUserState({
-    pulumi.Output<String>? gatewayId,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? username,
-  }) :
-      gatewayId = pulumi.Input.asOptionalInput<String>(gatewayId),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.gatewayId,
+    this.password,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GatewaySmbUserState {
 
   factory GatewaySmbUserState.fromMap(Map<String, dynamic> map) {
     return GatewaySmbUserState(
-      gatewayId: map['gatewayId'] == null ? null : pulumi.Output.create<String>(map['gatewayId'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

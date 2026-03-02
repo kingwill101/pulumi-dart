@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxGeneratorPlaceholder {
   /// Unique ID used to map custom placeholder to parameters in fulfillment.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Custom placeholder value in the prompt text.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [CxGeneratorPlaceholder].
   /// [id] Unique ID used to map custom placeholder to parameters in fulfillment.
@@ -24,8 +25,8 @@ class CxGeneratorPlaceholder {
 
   factory CxGeneratorPlaceholder.fromMap(Map<String, dynamic> map) {
     return CxGeneratorPlaceholder(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

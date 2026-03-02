@@ -16,11 +16,9 @@ class GetPlanArgs {
   /// [contactId] The Amazon Resource Name (ARN) of the contact or escalation plan.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetPlanArgs({
-    required pulumi.Output<String> contactId,
-    pulumi.Output<String>? region,
-  }) :
-      contactId = pulumi.Input.asInput<String>(contactId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.contactId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPlanArgs {
 
   factory GetPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetPlanArgs(
-      contactId: pulumi.Output.create<String>(map['contactId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      contactId: (map['contactId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

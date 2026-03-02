@@ -25,17 +25,12 @@ class LabelByWorkspaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the Workspace.
   LabelByWorkspaceArgs({
-    pulumi.Output<String>? color,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? labelName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      color = pulumi.Input.asOptionalInput<String>(color),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labelName = pulumi.Input.asOptionalInput<String>(labelName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.color,
+    this.displayName,
+    this.labelName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class LabelByWorkspaceArgs {
 
   factory LabelByWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return LabelByWorkspaceArgs(
-      color: map['color'] == null ? null : pulumi.Output.create<String>(map['color'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labelName: map['labelName'] == null ? null : pulumi.Output.create<String>(map['labelName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      color: map['color'] == null ? null : (map['color'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labelName: map['labelName'] == null ? null : (map['labelName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

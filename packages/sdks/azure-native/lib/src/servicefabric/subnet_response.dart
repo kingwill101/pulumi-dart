@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a Subnet.
 class SubnetResponse {
   /// Indicates wether to enable Ipv6 or not. If not provided, it will take the same configuration as the cluster.
-  final bool? enableIpv6;
+  final pulumi.Input<bool>? enableIpv6;
   /// Subnet name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Full resource id for the network security group.
-  final String? networkSecurityGroupId;
+  final pulumi.Input<String>? networkSecurityGroupId;
   /// Enable or Disable apply network policies on private end point in the subnet.
-  final String? privateEndpointNetworkPolicies;
+  final pulumi.Input<String>? privateEndpointNetworkPolicies;
   /// Enable or Disable apply network policies on private link service in the subnet.
-  final String? privateLinkServiceNetworkPolicies;
+  final pulumi.Input<String>? privateLinkServiceNetworkPolicies;
 
   /// Creates a new [SubnetResponse].
   /// [enableIpv6] Indicates wether to enable Ipv6 or not. If not provided, it will take the same configuration as the cluster.
@@ -40,11 +41,11 @@ class SubnetResponse {
 
   factory SubnetResponse.fromMap(Map<String, dynamic> map) {
     return SubnetResponse(
-      enableIpv6: map['enableIpv6'] == null ? null : map['enableIpv6'] as bool,
-      name: map['name'] as String,
-      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : map['networkSecurityGroupId'] as String,
-      privateEndpointNetworkPolicies: map['privateEndpointNetworkPolicies'] == null ? null : map['privateEndpointNetworkPolicies'] as String,
-      privateLinkServiceNetworkPolicies: map['privateLinkServiceNetworkPolicies'] == null ? null : map['privateLinkServiceNetworkPolicies'] as String,
+      enableIpv6: map['enableIpv6'] == null ? null : (map['enableIpv6'] as bool).input(),
+      name: (map['name'] as String).input(),
+      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId'] as String).input(),
+      privateEndpointNetworkPolicies: map['privateEndpointNetworkPolicies'] == null ? null : (map['privateEndpointNetworkPolicies'] as String).input(),
+      privateLinkServiceNetworkPolicies: map['privateLinkServiceNetworkPolicies'] == null ? null : (map['privateLinkServiceNetworkPolicies'] as String).input(),
     );
   }
 }

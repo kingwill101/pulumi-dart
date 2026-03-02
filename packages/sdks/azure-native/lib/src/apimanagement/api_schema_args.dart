@@ -34,23 +34,15 @@ class ApiSchemaArgs {
   /// [serviceName] The name of the API Management service.
   /// [value] Json escaped string defining the document representing the Schema. Used for schemas other than Swagger/OpenAPI.
   ApiSchemaArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<dynamic>? components,
-    required pulumi.Output<String> contentType,
-    pulumi.Output<dynamic>? definitions,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? schemaId,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? value,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      components = pulumi.Input.asOptionalInput<dynamic>(components),
-      contentType = pulumi.Input.asInput<String>(contentType),
-      definitions = pulumi.Input.asOptionalInput<dynamic>(definitions),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaId = pulumi.Input.asOptionalInput<String>(schemaId),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    required this.apiId,
+    this.components,
+    required this.contentType,
+    this.definitions,
+    required this.resourceGroupName,
+    this.schemaId,
+    required this.serviceName,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ApiSchemaArgs {
 
   factory ApiSchemaArgs.fromMap(Map<String, dynamic> map) {
     return ApiSchemaArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      components: map['components'] == null ? null : pulumi.Output.create<dynamic>(map['components']),
-      contentType: pulumi.Output.create<String>(map['contentType'] as String),
-      definitions: map['definitions'] == null ? null : pulumi.Output.create<dynamic>(map['definitions']),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaId: map['schemaId'] == null ? null : pulumi.Output.create<String>(map['schemaId'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      apiId: (map['apiId'] as String).input(),
+      components: map['components'] == null ? null : (map['components']).input(),
+      contentType: (map['contentType'] as String).input(),
+      definitions: map['definitions'] == null ? null : (map['definitions']).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -31,17 +31,12 @@ class GetFileSystemsArgs {
   /// [protocolType] The protocol type of the file system.
   /// [storageType] The storage type of the file system.
   GetFileSystemsArgs({
-    pulumi.Output<String>? descriptionRegex,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? protocolType,
-    pulumi.Output<String>? storageType,
-  }) :
-      descriptionRegex = pulumi.Input.asOptionalInput<String>(descriptionRegex),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      protocolType = pulumi.Input.asOptionalInput<String>(protocolType),
-      storageType = pulumi.Input.asOptionalInput<String>(storageType);
+    this.descriptionRegex,
+    this.ids,
+    this.outputFile,
+    this.protocolType,
+    this.storageType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class GetFileSystemsArgs {
 
   factory GetFileSystemsArgs.fromMap(Map<String, dynamic> map) {
     return GetFileSystemsArgs(
-      descriptionRegex: map['descriptionRegex'] == null ? null : pulumi.Output.create<String>(map['descriptionRegex'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      protocolType: map['protocolType'] == null ? null : pulumi.Output.create<String>(map['protocolType'] as String),
-      storageType: map['storageType'] == null ? null : pulumi.Output.create<String>(map['storageType'] as String),
+      descriptionRegex: map['descriptionRegex'] == null ? null : (map['descriptionRegex'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      protocolType: map['protocolType'] == null ? null : (map['protocolType'] as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
     );
   }
 }

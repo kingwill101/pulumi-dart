@@ -19,13 +19,10 @@ class GetDatabaseArgs {
   /// [name] The name of the database.
   /// [project] The ID of the project in which the instance belongs.
   GetDatabaseArgs({
-    required pulumi.Output<String> instance,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-  }) :
-      instance = pulumi.Input.asInput<String>(instance),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.instance,
+    required this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDatabaseArgs {
 
   factory GetDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseArgs(
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      instance: (map['instance'] as String).input(),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

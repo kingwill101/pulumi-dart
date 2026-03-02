@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScaleSetPlan {
   /// Specifies the name of the image from the marketplace.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the product of the image from the marketplace.
-  final String product;
+  final pulumi.Input<String> product;
   /// Specifies the publisher of the image.
-  final String publisher;
+  final pulumi.Input<String> publisher;
 
   /// Creates a new [ScaleSetPlan].
   /// [name] Specifies the name of the image from the marketplace.
@@ -29,9 +30,9 @@ class ScaleSetPlan {
 
   factory ScaleSetPlan.fromMap(Map<String, dynamic> map) {
     return ScaleSetPlan(
-      name: map['name'] as String,
-      product: map['product'] as String,
-      publisher: map['publisher'] as String,
+      name: (map['name'] as String).input(),
+      product: (map['product'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
     );
   }
 }

@@ -28,21 +28,14 @@ class RepositoryPermissionsPolicyState {
   /// [repository] The name of the repository to set the resource policy on.
   /// [resourceArn] The ARN of the resource associated with the resource policy.
   RepositoryPermissionsPolicyState({
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? domainOwner,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? policyRevision,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? repository,
-    pulumi.Output<String>? resourceArn,
-  }) :
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      domainOwner = pulumi.Input.asOptionalInput<String>(domainOwner),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      policyRevision = pulumi.Input.asOptionalInput<String>(policyRevision),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repository = pulumi.Input.asOptionalInput<String>(repository),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn);
+    this.domain,
+    this.domainOwner,
+    this.policyDocument,
+    this.policyRevision,
+    this.region,
+    this.repository,
+    this.resourceArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class RepositoryPermissionsPolicyState {
 
   factory RepositoryPermissionsPolicyState.fromMap(Map<String, dynamic> map) {
     return RepositoryPermissionsPolicyState(
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      domainOwner: map['domainOwner'] == null ? null : pulumi.Output.create<String>(map['domainOwner'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      policyRevision: map['policyRevision'] == null ? null : pulumi.Output.create<String>(map['policyRevision'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repository: map['repository'] == null ? null : pulumi.Output.create<String>(map['repository'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domainOwner: map['domainOwner'] == null ? null : (map['domainOwner'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      policyRevision: map['policyRevision'] == null ? null : (map['policyRevision'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
     );
   }
 }

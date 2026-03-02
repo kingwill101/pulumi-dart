@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ping_config_response.dart';
 
 /// Information required for a TCP Uptime check request.
 class TcpCheckResponse {
   /// Contains information needed to add pings to a TCP check.
-  final PingConfigResponse pingConfig;
+  final pulumi.Input<PingConfigResponse> pingConfig;
   /// The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [TcpCheckResponse].
   /// [pingConfig] Contains information needed to add pings to a TCP check.
@@ -19,15 +20,15 @@ class TcpCheckResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pingConfig': pingConfig.toMap(),
+      'pingConfig': pulumi.Input.mapInputValue<PingConfigResponse, Map<String, dynamic>>(pingConfig, (value) => value.toMap()),
       'port': port,
     };
   }
 
   factory TcpCheckResponse.fromMap(Map<String, dynamic> map) {
     return TcpCheckResponse(
-      pingConfig: PingConfigResponse.fromMap((map['pingConfig'] as Map).cast<String, dynamic>()),
-      port: map['port'] as int,
+      pingConfig: (PingConfigResponse.fromMap((map['pingConfig'] as Map).cast<String, dynamic>())).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

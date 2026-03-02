@@ -29,19 +29,13 @@ class DeploymentScheduleArgs {
   /// [stack] Stack name.
   /// [timestamp] The time at which the schedule should run, in ISO 8601 format. Eg: 2020-01-01T00:00:00Z. If you are supplying this, do not supply scheduleCron.
   DeploymentScheduleArgs({
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> project,
-    required pulumi.Output<PulumiOperation> pulumiOperation,
-    pulumi.Output<String>? scheduleCron,
-    required pulumi.Output<String> stack,
-    pulumi.Output<String>? timestamp,
-  }) :
-      organization = pulumi.Input.asInput<String>(organization),
-      project = pulumi.Input.asInput<String>(project),
-      pulumiOperation = pulumi.Input.asInput<PulumiOperation>(pulumiOperation),
-      scheduleCron = pulumi.Input.asOptionalInput<String>(scheduleCron),
-      stack = pulumi.Input.asInput<String>(stack),
-      timestamp = pulumi.Input.asOptionalInput<String>(timestamp);
+    required this.organization,
+    required this.project,
+    required this.pulumiOperation,
+    this.scheduleCron,
+    required this.stack,
+    this.timestamp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class DeploymentScheduleArgs {
 
   factory DeploymentScheduleArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentScheduleArgs(
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      pulumiOperation: pulumi.Output.create<PulumiOperation>(PulumiOperation.fromValue(map['pulumiOperation'] as String)),
-      scheduleCron: map['scheduleCron'] == null ? null : pulumi.Output.create<String>(map['scheduleCron'] as String),
-      stack: pulumi.Output.create<String>(map['stack'] as String),
-      timestamp: map['timestamp'] == null ? null : pulumi.Output.create<String>(map['timestamp'] as String),
+      organization: (map['organization'] as String).input(),
+      project: (map['project'] as String).input(),
+      pulumiOperation: (PulumiOperation.fromValue(map['pulumiOperation'] as String)).input(),
+      scheduleCron: map['scheduleCron'] == null ? null : (map['scheduleCron'] as String).input(),
+      stack: (map['stack'] as String).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
     );
   }
 }

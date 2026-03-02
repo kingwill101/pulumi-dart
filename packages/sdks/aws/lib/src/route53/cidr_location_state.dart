@@ -16,13 +16,10 @@ class CidrLocationState {
   /// [cidrCollectionId] The ID of the CIDR collection to update.
   /// [name] Name for the CIDR location.
   CidrLocationState({
-    pulumi.Output<List<String>>? cidrBlocks,
-    pulumi.Output<String>? cidrCollectionId,
-    pulumi.Output<String>? name,
-  }) :
-      cidrBlocks = pulumi.Input.asOptionalInput<List<String>>(cidrBlocks),
-      cidrCollectionId = pulumi.Input.asOptionalInput<String>(cidrCollectionId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.cidrBlocks,
+    this.cidrCollectionId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class CidrLocationState {
 
   factory CidrLocationState.fromMap(Map<String, dynamic> map) {
     return CidrLocationState(
-      cidrBlocks: map['cidrBlocks'] == null ? null : pulumi.Output.create<List<String>>((map['cidrBlocks'] as List).cast<String>()),
-      cidrCollectionId: map['cidrCollectionId'] == null ? null : pulumi.Output.create<String>(map['cidrCollectionId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      cidrBlocks: map['cidrBlocks'] == null ? null : ((map['cidrBlocks'] as List).cast<String>()).input(),
+      cidrCollectionId: map['cidrCollectionId'] == null ? null : (map['cidrCollectionId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

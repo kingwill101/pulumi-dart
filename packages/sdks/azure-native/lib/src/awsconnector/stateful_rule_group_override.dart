@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of StatefulRuleGroupOverride
 class StatefulRuleGroupOverride {
   /// Property action
-  final String? action;
+  final pulumi.Input<String>? action;
 
   /// Creates a new [StatefulRuleGroupOverride].
   /// [action] Property action
@@ -20,7 +21,7 @@ class StatefulRuleGroupOverride {
 
   factory StatefulRuleGroupOverride.fromMap(Map<String, dynamic> map) {
     return StatefulRuleGroupOverride(
-      action: map['action'] == null ? null : map['action'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
     );
   }
 }

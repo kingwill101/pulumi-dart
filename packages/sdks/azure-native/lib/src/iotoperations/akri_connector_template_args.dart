@@ -27,17 +27,12 @@ class AkriConnectorTemplateArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   AkriConnectorTemplateArgs({
-    pulumi.Output<String>? akriConnectorTemplateName,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<AkriConnectorTemplateProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      akriConnectorTemplateName = pulumi.Input.asOptionalInput<String>(akriConnectorTemplateName),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      properties = pulumi.Input.asOptionalInput<AkriConnectorTemplateProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.akriConnectorTemplateName,
+    this.extendedLocation,
+    required this.instanceName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class AkriConnectorTemplateArgs {
 
   factory AkriConnectorTemplateArgs.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateArgs(
-      akriConnectorTemplateName: map['akriConnectorTemplateName'] == null ? null : pulumi.Output.create<String>(map['akriConnectorTemplateName'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<AkriConnectorTemplateProperties>(AkriConnectorTemplateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      akriConnectorTemplateName: map['akriConnectorTemplateName'] == null ? null : (map['akriConnectorTemplateName'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      properties: map['properties'] == null ? null : (AkriConnectorTemplateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

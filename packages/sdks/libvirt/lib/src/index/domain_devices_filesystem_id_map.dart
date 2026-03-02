@@ -6,9 +6,9 @@ import 'domain_devices_filesystem_id_map_uid.dart';
 
 class DomainDevicesFilesystemIdMap {
   /// Configures group ID mapping for the filesystem.
-  final List<DomainDevicesFilesystemIdMapGid>? gids;
+  final pulumi.Input<List<DomainDevicesFilesystemIdMapGid>>? gids;
   /// Configures user ID mapping for the filesystem.
-  final List<DomainDevicesFilesystemIdMapUid>? uids;
+  final pulumi.Input<List<DomainDevicesFilesystemIdMapUid>>? uids;
 
   /// Creates a new [DomainDevicesFilesystemIdMap].
   /// [gids] Configures group ID mapping for the filesystem.
@@ -20,15 +20,15 @@ class DomainDevicesFilesystemIdMap {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gids': ?gids == null ? null : pulumi.Input.encodeList<DomainDevicesFilesystemIdMapGid, Map<String, dynamic>>(gids!, (value) => value.toMap()),
-      'uids': ?uids == null ? null : pulumi.Input.encodeList<DomainDevicesFilesystemIdMapUid, Map<String, dynamic>>(uids!, (value) => value.toMap()),
+      'gids': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesFilesystemIdMapGid>, List<Map<String, dynamic>>>(gids, (value) => pulumi.Input.encodeList<DomainDevicesFilesystemIdMapGid, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'uids': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesFilesystemIdMapUid>, List<Map<String, dynamic>>>(uids, (value) => pulumi.Input.encodeList<DomainDevicesFilesystemIdMapUid, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesFilesystemIdMap.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemIdMap(
-      gids: map['gids'] == null ? null : pulumi.Input.decodeList<DomainDevicesFilesystemIdMapGid>(map['gids'], (value) => DomainDevicesFilesystemIdMapGid.fromMap((value as Map).cast<String, dynamic>())),
-      uids: map['uids'] == null ? null : pulumi.Input.decodeList<DomainDevicesFilesystemIdMapUid>(map['uids'], (value) => DomainDevicesFilesystemIdMapUid.fromMap((value as Map).cast<String, dynamic>())),
+      gids: map['gids'] == null ? null : (pulumi.Input.decodeList<DomainDevicesFilesystemIdMapGid>(map['gids'], (value) => DomainDevicesFilesystemIdMapGid.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uids: map['uids'] == null ? null : (pulumi.Input.decodeList<DomainDevicesFilesystemIdMapUid>(map['uids'], (value) => DomainDevicesFilesystemIdMapUid.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

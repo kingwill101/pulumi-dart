@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCostCategorySplitChargeRuleParameter {
   /// Parameter type.
-  final String type;
+  final pulumi.Input<String> type;
   /// Parameter values.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetCostCategorySplitChargeRuleParameter].
   /// [type] Parameter type.
@@ -24,8 +25,8 @@ class GetCostCategorySplitChargeRuleParameter {
 
   factory GetCostCategorySplitChargeRuleParameter.fromMap(Map<String, dynamic> map) {
     return GetCostCategorySplitChargeRuleParameter(
-      type: map['type'] as String,
-      values: (map['values'] as List).cast<String>(),
+      type: (map['type'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

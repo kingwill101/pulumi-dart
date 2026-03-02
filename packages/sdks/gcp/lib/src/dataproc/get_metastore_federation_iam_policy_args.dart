@@ -23,13 +23,10 @@ class GetMetastoreFederationIamPolicyArgs {
   /// [location] The location where the metastore federation should reside.
   /// [project] The ID of the project in which the resource belongs.
   GetMetastoreFederationIamPolicyArgs({
-    required pulumi.Output<String> federationId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      federationId = pulumi.Input.asInput<String>(federationId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.federationId,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetMetastoreFederationIamPolicyArgs {
 
   factory GetMetastoreFederationIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetMetastoreFederationIamPolicyArgs(
-      federationId: pulumi.Output.create<String>(map['federationId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      federationId: (map['federationId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -6,31 +6,31 @@ import 'get_template_applications_application_dimension.dart';
 
 class GetTemplateApplicationsApplication {
   /// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.> Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
-  final List<String> aliyunUids;
+  final pulumi.Input<List<String>> aliyunUids;
   /// The UTC time of the quota increase application.
-  final String applyTime;
+  final pulumi.Input<String> applyTime;
   /// Quantity of requisitions in different approval statuses.
-  final List<GetTemplateApplicationsApplicationAuditStatusVo> auditStatusVos;
+  final pulumi.Input<List<GetTemplateApplicationsApplicationAuditStatusVo>> auditStatusVos;
   /// The ID of the quota application batch.
-  final String batchQuotaApplicationId;
+  final pulumi.Input<String> batchQuotaApplicationId;
   /// The value of the quota request.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
-  final double desireValue;
+  final pulumi.Input<double> desireValue;
   /// Quota dimension.
-  final List<GetTemplateApplicationsApplicationDimension> dimensions;
+  final pulumi.Input<List<GetTemplateApplicationsApplicationDimension>> dimensions;
   /// The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).> If the current account does not select the effective time, the default is the submission time.
-  final String effectiveTime;
+  final pulumi.Input<String> effectiveTime;
   /// The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).> If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
   /// The ID of the quota application batch.
-  final String id;
+  final pulumi.Input<String> id;
   /// Cloud service name abbreviation.> For more information about cloud services that support quota centers, see Cloud services that support quota centers.
-  final String productCode;
+  final pulumi.Input<String> productCode;
   /// The quota ID.
-  final String quotaActionCode;
+  final pulumi.Input<String> quotaActionCode;
   /// The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
-  final String quotaCategory;
+  final pulumi.Input<String> quotaCategory;
   /// Reason for quota application.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
-  final String reason;
+  final pulumi.Input<String> reason;
 
   /// Creates a new [GetTemplateApplicationsApplication].
   /// [aliyunUids] The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.> Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
@@ -66,10 +66,10 @@ class GetTemplateApplicationsApplication {
     return <String, dynamic>{
       'aliyunUids': aliyunUids,
       'applyTime': applyTime,
-      'auditStatusVos': pulumi.Input.encodeList<GetTemplateApplicationsApplicationAuditStatusVo, Map<String, dynamic>>(auditStatusVos, (value) => value.toMap()),
+      'auditStatusVos': pulumi.Input.mapInputValue<List<GetTemplateApplicationsApplicationAuditStatusVo>, List<Map<String, dynamic>>>(auditStatusVos, (value) => pulumi.Input.encodeList<GetTemplateApplicationsApplicationAuditStatusVo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'batchQuotaApplicationId': batchQuotaApplicationId,
       'desireValue': desireValue,
-      'dimensions': pulumi.Input.encodeList<GetTemplateApplicationsApplicationDimension, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
+      'dimensions': pulumi.Input.mapInputValue<List<GetTemplateApplicationsApplicationDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<GetTemplateApplicationsApplicationDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'effectiveTime': effectiveTime,
       'expireTime': expireTime,
       'id': id,
@@ -82,19 +82,19 @@ class GetTemplateApplicationsApplication {
 
   factory GetTemplateApplicationsApplication.fromMap(Map<String, dynamic> map) {
     return GetTemplateApplicationsApplication(
-      aliyunUids: (map['aliyunUids'] as List).cast<String>(),
-      applyTime: map['applyTime'] as String,
-      auditStatusVos: pulumi.Input.decodeList<GetTemplateApplicationsApplicationAuditStatusVo>(map['auditStatusVos'], (value) => GetTemplateApplicationsApplicationAuditStatusVo.fromMap((value as Map).cast<String, dynamic>())),
-      batchQuotaApplicationId: map['batchQuotaApplicationId'] as String,
-      desireValue: map['desireValue'] as double,
-      dimensions: pulumi.Input.decodeList<GetTemplateApplicationsApplicationDimension>(map['dimensions'], (value) => GetTemplateApplicationsApplicationDimension.fromMap((value as Map).cast<String, dynamic>())),
-      effectiveTime: map['effectiveTime'] as String,
-      expireTime: map['expireTime'] as String,
-      id: map['id'] as String,
-      productCode: map['productCode'] as String,
-      quotaActionCode: map['quotaActionCode'] as String,
-      quotaCategory: map['quotaCategory'] as String,
-      reason: map['reason'] as String,
+      aliyunUids: ((map['aliyunUids'] as List).cast<String>()).input(),
+      applyTime: (map['applyTime'] as String).input(),
+      auditStatusVos: (pulumi.Input.decodeList<GetTemplateApplicationsApplicationAuditStatusVo>(map['auditStatusVos'], (value) => GetTemplateApplicationsApplicationAuditStatusVo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      batchQuotaApplicationId: (map['batchQuotaApplicationId'] as String).input(),
+      desireValue: (map['desireValue'] as double).input(),
+      dimensions: (pulumi.Input.decodeList<GetTemplateApplicationsApplicationDimension>(map['dimensions'], (value) => GetTemplateApplicationsApplicationDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      effectiveTime: (map['effectiveTime'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      productCode: (map['productCode'] as String).input(),
+      quotaActionCode: (map['quotaActionCode'] as String).input(),
+      quotaCategory: (map['quotaCategory'] as String).input(),
+      reason: (map['reason'] as String).input(),
     );
   }
 }

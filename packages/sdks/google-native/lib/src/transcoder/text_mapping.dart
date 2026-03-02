@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 class TextMapping {
   /// The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
-  final String atomKey;
+  final pulumi.Input<String> atomKey;
   /// The Input.key that identifies the input file.
-  final String inputKey;
+  final pulumi.Input<String> inputKey;
   /// The zero-based index of the track in the input file.
-  final int inputTrack;
+  final pulumi.Input<int> inputTrack;
 
   /// Creates a new [TextMapping].
   /// [atomKey] The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
@@ -30,9 +31,9 @@ class TextMapping {
 
   factory TextMapping.fromMap(Map<String, dynamic> map) {
     return TextMapping(
-      atomKey: map['atomKey'] as String,
-      inputKey: map['inputKey'] as String,
-      inputTrack: map['inputTrack'] as int,
+      atomKey: (map['atomKey'] as String).input(),
+      inputKey: (map['inputKey'] as String).input(),
+      inputTrack: (map['inputTrack'] as int).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class KeyValueArgs {
   /// [tags] A dictionary of tags that can help identify what a key-value may be applicable for.
   /// [value] The value of the key-value.
   KeyValueArgs({
-    required pulumi.Output<String> configStoreName,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? keyValueName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? value,
-  }) :
-      configStoreName = pulumi.Input.asInput<String>(configStoreName),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      keyValueName = pulumi.Input.asOptionalInput<String>(keyValueName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    required this.configStoreName,
+    this.contentType,
+    this.keyValueName,
+    required this.resourceGroupName,
+    this.tags,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class KeyValueArgs {
 
   factory KeyValueArgs.fromMap(Map<String, dynamic> map) {
     return KeyValueArgs(
-      configStoreName: pulumi.Output.create<String>(map['configStoreName'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      keyValueName: map['keyValueName'] == null ? null : pulumi.Output.create<String>(map['keyValueName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      configStoreName: (map['configStoreName'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      keyValueName: map['keyValueName'] == null ? null : (map['keyValueName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -37,25 +37,16 @@ class WebhookArgs {
   /// [runbookName] Name of the Automation Runbook to execute by Webhook.
   /// [uri] URI to initiate the webhook. Can be generated using [Generate URI API](https://docs.microsoft.com/rest/api/automation/webhook/generate-uri). By default, new URI is generated on each new resource creation. Changing this forces a new resource to be created.
   WebhookArgs({
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> expiryTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? runOnWorkerGroup,
-    required pulumi.Output<String> runbookName,
-    pulumi.Output<String>? uri,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      expiryTime = pulumi.Input.asInput<String>(expiryTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runOnWorkerGroup = pulumi.Input.asOptionalInput<String>(runOnWorkerGroup),
-      runbookName = pulumi.Input.asInput<String>(runbookName),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    required this.automationAccountName,
+    this.enabled,
+    required this.expiryTime,
+    this.name,
+    this.parameters,
+    required this.resourceGroupName,
+    this.runOnWorkerGroup,
+    required this.runbookName,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      expiryTime: pulumi.Output.create<String>(map['expiryTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runOnWorkerGroup: map['runOnWorkerGroup'] == null ? null : pulumi.Output.create<String>(map['runOnWorkerGroup'] as String),
-      runbookName: pulumi.Output.create<String>(map['runbookName'] as String),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      expiryTime: (map['expiryTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runOnWorkerGroup: map['runOnWorkerGroup'] == null ? null : (map['runOnWorkerGroup'] as String).input(),
+      runbookName: (map['runbookName'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

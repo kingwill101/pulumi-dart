@@ -34,23 +34,15 @@ class TriggerEventarcV1beta1Args {
   /// [serviceAccount] Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
   /// [triggerId] Required. The user-provided ID to be assigned to the trigger.
   TriggerEventarcV1beta1Args({
-    required pulumi.Output<DestinationEventarcV1beta1> destination,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<MatchingCriteria>> matchingCriteria,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serviceAccount,
-    required pulumi.Output<String> triggerId,
-  }) :
-      destination = pulumi.Input.asInput<DestinationEventarcV1beta1>(destination),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      matchingCriteria = pulumi.Input.asInput<List<MatchingCriteria>>(matchingCriteria),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      triggerId = pulumi.Input.asInput<String>(triggerId);
+    required this.destination,
+    this.labels,
+    this.location,
+    required this.matchingCriteria,
+    this.name,
+    this.project,
+    this.serviceAccount,
+    required this.triggerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class TriggerEventarcV1beta1Args {
 
   factory TriggerEventarcV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TriggerEventarcV1beta1Args(
-      destination: pulumi.Output.create<DestinationEventarcV1beta1>(DestinationEventarcV1beta1.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      matchingCriteria: pulumi.Output.create<List<MatchingCriteria>>(pulumi.Input.decodeList<MatchingCriteria>(map['matchingCriteria'], (value) => MatchingCriteria.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      triggerId: pulumi.Output.create<String>(map['triggerId'] as String),
+      destination: (DestinationEventarcV1beta1.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      matchingCriteria: (pulumi.Input.decodeList<MatchingCriteria>(map['matchingCriteria'], (value) => MatchingCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      triggerId: (map['triggerId'] as String).input(),
     );
   }
 }

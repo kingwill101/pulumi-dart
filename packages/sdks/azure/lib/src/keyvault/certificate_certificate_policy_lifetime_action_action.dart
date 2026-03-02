@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateCertificatePolicyLifetimeActionAction {
   /// The Type of action to be performed when the lifetime trigger is triggerec. Possible values include `AutoRenew` and `EmailContacts`.
-  final String actionType;
+  final pulumi.Input<String> actionType;
 
   /// Creates a new [CertificateCertificatePolicyLifetimeActionAction].
   /// [actionType] The Type of action to be performed when the lifetime trigger is triggerec. Possible values include `AutoRenew` and `EmailContacts`.
@@ -19,7 +20,7 @@ class CertificateCertificatePolicyLifetimeActionAction {
 
   factory CertificateCertificatePolicyLifetimeActionAction.fromMap(Map<String, dynamic> map) {
     return CertificateCertificatePolicyLifetimeActionAction(
-      actionType: map['actionType'] as String,
+      actionType: (map['actionType'] as String).input(),
     );
   }
 }

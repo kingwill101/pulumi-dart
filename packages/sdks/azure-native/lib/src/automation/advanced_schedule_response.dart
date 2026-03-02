@@ -6,11 +6,11 @@ import 'advanced_schedule_monthly_occurrence_response.dart';
 /// The properties of the create Advanced Schedule.
 class AdvancedScheduleResponse {
   /// Days of the month that the job should execute on. Must be between 1 and 31.
-  final List<int>? monthDays;
+  final pulumi.Input<List<int>>? monthDays;
   /// Occurrences of days within a month.
-  final List<AdvancedScheduleMonthlyOccurrenceResponse>? monthlyOccurrences;
+  final pulumi.Input<List<AdvancedScheduleMonthlyOccurrenceResponse>>? monthlyOccurrences;
   /// Days of the week that the job should execute on.
-  final List<String>? weekDays;
+  final pulumi.Input<List<String>>? weekDays;
 
   /// Creates a new [AdvancedScheduleResponse].
   /// [monthDays] Days of the month that the job should execute on. Must be between 1 and 31.
@@ -25,16 +25,16 @@ class AdvancedScheduleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'monthDays': ?monthDays,
-      'monthlyOccurrences': ?monthlyOccurrences == null ? null : pulumi.Input.encodeList<AdvancedScheduleMonthlyOccurrenceResponse, Map<String, dynamic>>(monthlyOccurrences!, (value) => value.toMap()),
+      'monthlyOccurrences': ?pulumi.Input.mapOptionalInputValue<List<AdvancedScheduleMonthlyOccurrenceResponse>, List<Map<String, dynamic>>>(monthlyOccurrences, (value) => pulumi.Input.encodeList<AdvancedScheduleMonthlyOccurrenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'weekDays': ?weekDays,
     };
   }
 
   factory AdvancedScheduleResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedScheduleResponse(
-      monthDays: map['monthDays'] == null ? null : (map['monthDays'] as List).cast<int>(),
-      monthlyOccurrences: map['monthlyOccurrences'] == null ? null : pulumi.Input.decodeList<AdvancedScheduleMonthlyOccurrenceResponse>(map['monthlyOccurrences'], (value) => AdvancedScheduleMonthlyOccurrenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      weekDays: map['weekDays'] == null ? null : (map['weekDays'] as List).cast<String>(),
+      monthDays: map['monthDays'] == null ? null : ((map['monthDays'] as List).cast<int>()).input(),
+      monthlyOccurrences: map['monthlyOccurrences'] == null ? null : (pulumi.Input.decodeList<AdvancedScheduleMonthlyOccurrenceResponse>(map['monthlyOccurrences'], (value) => AdvancedScheduleMonthlyOccurrenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      weekDays: map['weekDays'] == null ? null : ((map['weekDays'] as List).cast<String>()).input(),
     );
   }
 }

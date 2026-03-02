@@ -46,19 +46,13 @@ class SecurityGatewayIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [securityGatewayId] Used to find the parent resource to bind the IAM policy to
   SecurityGatewayIamMemberArgs({
-    pulumi.Output<SecurityGatewayIamMemberCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> securityGatewayId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<SecurityGatewayIamMemberCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      securityGatewayId = pulumi.Input.asInput<String>(securityGatewayId);
+    this.condition,
+    this.location,
+    required this.member,
+    this.project,
+    required this.role,
+    required this.securityGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,12 +67,12 @@ class SecurityGatewayIamMemberArgs {
 
   factory SecurityGatewayIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<SecurityGatewayIamMemberCondition>(SecurityGatewayIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      securityGatewayId: pulumi.Output.create<String>(map['securityGatewayId'] as String),
+      condition: map['condition'] == null ? null : (SecurityGatewayIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      securityGatewayId: (map['securityGatewayId'] as String).input(),
     );
   }
 }

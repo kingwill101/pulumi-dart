@@ -5,11 +5,11 @@ import 'get_region_backend_service_consistent_hash_http_cooky_ttl.dart';
 
 class GetRegionBackendServiceConsistentHashHttpCooky {
   /// The name of the regional backend service.
-  final String name;
+  final pulumi.Input<String> name;
   /// Path to set for the cookie.
-  final String path;
+  final pulumi.Input<String> path;
   /// Lifetime of the cookie.
-  final List<GetRegionBackendServiceConsistentHashHttpCookyTtl> ttls;
+  final pulumi.Input<List<GetRegionBackendServiceConsistentHashHttpCookyTtl>> ttls;
 
   /// Creates a new [GetRegionBackendServiceConsistentHashHttpCooky].
   /// [name] The name of the regional backend service.
@@ -25,15 +25,15 @@ class GetRegionBackendServiceConsistentHashHttpCooky {
     return <String, dynamic>{
       'name': name,
       'path': path,
-      'ttls': pulumi.Input.encodeList<GetRegionBackendServiceConsistentHashHttpCookyTtl, Map<String, dynamic>>(ttls, (value) => value.toMap()),
+      'ttls': pulumi.Input.mapInputValue<List<GetRegionBackendServiceConsistentHashHttpCookyTtl>, List<Map<String, dynamic>>>(ttls, (value) => pulumi.Input.encodeList<GetRegionBackendServiceConsistentHashHttpCookyTtl, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRegionBackendServiceConsistentHashHttpCooky.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceConsistentHashHttpCooky(
-      name: map['name'] as String,
-      path: map['path'] as String,
-      ttls: pulumi.Input.decodeList<GetRegionBackendServiceConsistentHashHttpCookyTtl>(map['ttls'], (value) => GetRegionBackendServiceConsistentHashHttpCookyTtl.fromMap((value as Map).cast<String, dynamic>())),
+      name: (map['name'] as String).input(),
+      path: (map['path'] as String).input(),
+      ttls: (pulumi.Input.decodeList<GetRegionBackendServiceConsistentHashHttpCookyTtl>(map['ttls'], (value) => GetRegionBackendServiceConsistentHashHttpCookyTtl.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

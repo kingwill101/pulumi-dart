@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainScalingParameters {
   /// The instance type that you want to preconfigure for your domain. See the [AWS documentation](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/API_ScalingParameters.html) for valid values.
-  final String? desiredInstanceType;
+  final pulumi.Input<String>? desiredInstanceType;
   /// The number of partitions you want to preconfigure for your domain. Only valid when you select `search.2xlarge` as the instance type.
-  final int? desiredPartitionCount;
+  final pulumi.Input<int>? desiredPartitionCount;
   /// The number of replicas you want to preconfigure for each index partition.
-  final int? desiredReplicationCount;
+  final pulumi.Input<int>? desiredReplicationCount;
 
   /// Creates a new [DomainScalingParameters].
   /// [desiredInstanceType] The instance type that you want to preconfigure for your domain. See the [AWS documentation](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/API_ScalingParameters.html) for valid values.
@@ -29,9 +30,9 @@ class DomainScalingParameters {
 
   factory DomainScalingParameters.fromMap(Map<String, dynamic> map) {
     return DomainScalingParameters(
-      desiredInstanceType: map['desiredInstanceType'] == null ? null : map['desiredInstanceType'] as String,
-      desiredPartitionCount: map['desiredPartitionCount'] == null ? null : map['desiredPartitionCount'] as int,
-      desiredReplicationCount: map['desiredReplicationCount'] == null ? null : map['desiredReplicationCount'] as int,
+      desiredInstanceType: map['desiredInstanceType'] == null ? null : (map['desiredInstanceType'] as String).input(),
+      desiredPartitionCount: map['desiredPartitionCount'] == null ? null : (map['desiredPartitionCount'] as int).input(),
+      desiredReplicationCount: map['desiredReplicationCount'] == null ? null : (map['desiredReplicationCount'] as int).input(),
     );
   }
 }

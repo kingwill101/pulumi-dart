@@ -22,15 +22,11 @@ class Ipv6InternetBandwidthArgs {
   /// [ipv6AddressId] The ID of the IPv6 address instance.
   /// [ipv6GatewayId] The ID of the IPv6 gateway to which the IPv6 address belongs.
   Ipv6InternetBandwidthArgs({
-    required pulumi.Output<int> bandwidth,
-    pulumi.Output<String>? internetChargeType,
-    required pulumi.Output<String> ipv6AddressId,
-    required pulumi.Output<String> ipv6GatewayId,
-  }) :
-      bandwidth = pulumi.Input.asInput<int>(bandwidth),
-      internetChargeType = pulumi.Input.asOptionalInput<String>(internetChargeType),
-      ipv6AddressId = pulumi.Input.asInput<String>(ipv6AddressId),
-      ipv6GatewayId = pulumi.Input.asInput<String>(ipv6GatewayId);
+    required this.bandwidth,
+    this.internetChargeType,
+    required this.ipv6AddressId,
+    required this.ipv6GatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class Ipv6InternetBandwidthArgs {
 
   factory Ipv6InternetBandwidthArgs.fromMap(Map<String, dynamic> map) {
     return Ipv6InternetBandwidthArgs(
-      bandwidth: pulumi.Output.create<int>(map['bandwidth'] as int),
-      internetChargeType: map['internetChargeType'] == null ? null : pulumi.Output.create<String>(map['internetChargeType'] as String),
-      ipv6AddressId: pulumi.Output.create<String>(map['ipv6AddressId'] as String),
-      ipv6GatewayId: pulumi.Output.create<String>(map['ipv6GatewayId'] as String),
+      bandwidth: (map['bandwidth'] as int).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
+      ipv6AddressId: (map['ipv6AddressId'] as String).input(),
+      ipv6GatewayId: (map['ipv6GatewayId'] as String).input(),
     );
   }
 }

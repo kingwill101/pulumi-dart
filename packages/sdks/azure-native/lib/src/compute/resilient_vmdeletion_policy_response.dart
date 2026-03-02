@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration parameters used while performing resilient VM deletion.
 class ResilientVMDeletionPolicyResponse {
   /// Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ResilientVMDeletionPolicyResponse].
   /// [enabled] Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.
@@ -20,7 +21,7 @@ class ResilientVMDeletionPolicyResponse {
 
   factory ResilientVMDeletionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ResilientVMDeletionPolicyResponse(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

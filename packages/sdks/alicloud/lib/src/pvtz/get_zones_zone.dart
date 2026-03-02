@@ -5,33 +5,33 @@ import 'get_zones_zone_bind_vpc.dart';
 
 class GetZonesZone {
   /// The VPCs associated with the zone. **Note:** `bind_vpcs` takes effect only if `enable_details` is set to `true`.
-  final List<GetZonesZoneBindVpc> bindVpcs;
+  final pulumi.Input<List<GetZonesZoneBindVpc>> bindVpcs;
   /// The time when the zone was created.
-  final int createTimestamp;
-  final String creationTime;
+  final pulumi.Input<int> createTimestamp;
+  final pulumi.Input<String> creationTime;
   /// The ID of the Private Zone.
-  final String id;
+  final pulumi.Input<String> id;
   /// Indicates whether the zone is a reverse lookup zone.
-  final bool isPtr;
+  final pulumi.Input<bool> isPtr;
   /// The Name of the Zone.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates whether the recursive resolution proxy for subdomain names is enabled.
-  final String proxyPattern;
+  final pulumi.Input<String> proxyPattern;
   /// The number of Domain Name System (DNS) records added in the zone.
-  final int recordCount;
+  final pulumi.Input<int> recordCount;
   /// The description of the zone.
-  final String remark;
+  final pulumi.Input<String> remark;
   /// The ID of the resource group to which the zone belongs.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slave_dns` takes effect only if `enable_details` is set to `true`.
-  final bool slaveDns;
-  final String updateTime;
+  final pulumi.Input<bool> slaveDns;
+  final pulumi.Input<String> updateTime;
   /// The time when the DNS record was updated.
-  final int updateTimestamp;
+  final pulumi.Input<int> updateTimestamp;
   /// The ID of the Zone.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
   /// The Name of the Private Zone.
-  final String zoneName;
+  final pulumi.Input<String> zoneName;
 
   /// Creates a new [GetZonesZone].
   /// [bindVpcs] The VPCs associated with the zone. **Note:** `bind_vpcs` takes effect only if `enable_details` is set to `true`.
@@ -69,7 +69,7 @@ class GetZonesZone {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bindVpcs': pulumi.Input.encodeList<GetZonesZoneBindVpc, Map<String, dynamic>>(bindVpcs, (value) => value.toMap()),
+      'bindVpcs': pulumi.Input.mapInputValue<List<GetZonesZoneBindVpc>, List<Map<String, dynamic>>>(bindVpcs, (value) => pulumi.Input.encodeList<GetZonesZoneBindVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTimestamp': createTimestamp,
       'creationTime': creationTime,
       'id': id,
@@ -89,21 +89,21 @@ class GetZonesZone {
 
   factory GetZonesZone.fromMap(Map<String, dynamic> map) {
     return GetZonesZone(
-      bindVpcs: pulumi.Input.decodeList<GetZonesZoneBindVpc>(map['bindVpcs'], (value) => GetZonesZoneBindVpc.fromMap((value as Map).cast<String, dynamic>())),
-      createTimestamp: map['createTimestamp'] as int,
-      creationTime: map['creationTime'] as String,
-      id: map['id'] as String,
-      isPtr: map['isPtr'] as bool,
-      name: map['name'] as String,
-      proxyPattern: map['proxyPattern'] as String,
-      recordCount: map['recordCount'] as int,
-      remark: map['remark'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      slaveDns: map['slaveDns'] as bool,
-      updateTime: map['updateTime'] as String,
-      updateTimestamp: map['updateTimestamp'] as int,
-      zoneId: map['zoneId'] as String,
-      zoneName: map['zoneName'] as String,
+      bindVpcs: (pulumi.Input.decodeList<GetZonesZoneBindVpc>(map['bindVpcs'], (value) => GetZonesZoneBindVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTimestamp: (map['createTimestamp'] as int).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      isPtr: (map['isPtr'] as bool).input(),
+      name: (map['name'] as String).input(),
+      proxyPattern: (map['proxyPattern'] as String).input(),
+      recordCount: (map['recordCount'] as int).input(),
+      remark: (map['remark'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      slaveDns: (map['slaveDns'] as bool).input(),
+      updateTime: (map['updateTime'] as String).input(),
+      updateTimestamp: (map['updateTimestamp'] as int).input(),
+      zoneId: (map['zoneId'] as String).input(),
+      zoneName: (map['zoneName'] as String).input(),
     );
   }
 }

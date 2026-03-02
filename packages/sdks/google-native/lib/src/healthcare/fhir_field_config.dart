@@ -8,11 +8,11 @@ import 'google_cloud_healthcare_v1beta1_deidentify_options.dart';
 /// Specifies how to handle the de-identification of a FHIR store.
 class FhirFieldConfig {
   /// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata `action` is passed through to the output dataset unmodified. All extensions will be processed according to keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action` option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
-  final List<GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata>? fieldMetadataList;
+  final pulumi.Input<List<GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata>>? fieldMetadataList;
   /// Specifies additional options, overriding the base ProfileType.
-  final GoogleCloudHealthcareV1beta1DeidentifyOptions? options;
+  final pulumi.Input<GoogleCloudHealthcareV1beta1DeidentifyOptions>? options;
   /// Base profile type for handling FHIR fields.
-  final FhirFieldConfigProfileType? profileType;
+  final pulumi.Input<FhirFieldConfigProfileType>? profileType;
 
   /// Creates a new [FhirFieldConfig].
   /// [fieldMetadataList] Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata `action` is passed through to the output dataset unmodified. All extensions will be processed according to keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action` option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
@@ -26,17 +26,17 @@ class FhirFieldConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldMetadataList': ?fieldMetadataList == null ? null : pulumi.Input.encodeList<GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata, Map<String, dynamic>>(fieldMetadataList!, (value) => value.toMap()),
-      'options': ?options == null ? null : options!.toMap(),
-      'profileType': ?profileType == null ? null : profileType!.value,
+      'fieldMetadataList': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata>, List<Map<String, dynamic>>>(fieldMetadataList, (value) => pulumi.Input.encodeList<GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'options': ?pulumi.Input.mapOptionalInputValue<GoogleCloudHealthcareV1beta1DeidentifyOptions, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'profileType': ?pulumi.Input.mapOptionalInputValue<FhirFieldConfigProfileType, String>(profileType, (value) => value.value),
     };
   }
 
   factory FhirFieldConfig.fromMap(Map<String, dynamic> map) {
     return FhirFieldConfig(
-      fieldMetadataList: map['fieldMetadataList'] == null ? null : pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata>(map['fieldMetadataList'], (value) => GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata.fromMap((value as Map).cast<String, dynamic>())),
-      options: map['options'] == null ? null : GoogleCloudHealthcareV1beta1DeidentifyOptions.fromMap((map['options'] as Map).cast<String, dynamic>()),
-      profileType: map['profileType'] == null ? null : FhirFieldConfigProfileType.fromValue(map['profileType'] as String),
+      fieldMetadataList: map['fieldMetadataList'] == null ? null : (pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata>(map['fieldMetadataList'], (value) => GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      options: map['options'] == null ? null : (GoogleCloudHealthcareV1beta1DeidentifyOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      profileType: map['profileType'] == null ? null : (FhirFieldConfigProfileType.fromValue(map['profileType'] as String)).input(),
     );
   }
 }

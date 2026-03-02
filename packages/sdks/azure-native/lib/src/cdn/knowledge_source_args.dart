@@ -31,21 +31,14 @@ class KnowledgeSourceArgs {
   /// [url] Endpoint or location of the knowledge source.
   /// [webAgentName] The name of the web agent.
   KnowledgeSourceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? knowledgeSourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sourceType,
-    pulumi.Output<String>? updateFrequency,
-    required pulumi.Output<String> url,
-    required pulumi.Output<String> webAgentName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      knowledgeSourceName = pulumi.Input.asOptionalInput<String>(knowledgeSourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceType = pulumi.Input.asInput<String>(sourceType),
-      updateFrequency = pulumi.Input.asOptionalInput<String>(updateFrequency),
-      url = pulumi.Input.asInput<String>(url),
-      webAgentName = pulumi.Input.asInput<String>(webAgentName);
+    this.description,
+    this.knowledgeSourceName,
+    required this.resourceGroupName,
+    required this.sourceType,
+    this.updateFrequency,
+    required this.url,
+    required this.webAgentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class KnowledgeSourceArgs {
 
   factory KnowledgeSourceArgs.fromMap(Map<String, dynamic> map) {
     return KnowledgeSourceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      knowledgeSourceName: map['knowledgeSourceName'] == null ? null : pulumi.Output.create<String>(map['knowledgeSourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceType: pulumi.Output.create<String>(map['sourceType'] as String),
-      updateFrequency: map['updateFrequency'] == null ? null : pulumi.Output.create<String>(map['updateFrequency'] as String),
-      url: pulumi.Output.create<String>(map['url'] as String),
-      webAgentName: pulumi.Output.create<String>(map['webAgentName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      knowledgeSourceName: map['knowledgeSourceName'] == null ? null : (map['knowledgeSourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
+      updateFrequency: map['updateFrequency'] == null ? null : (map['updateFrequency'] as String).input(),
+      url: (map['url'] as String).input(),
+      webAgentName: (map['webAgentName'] as String).input(),
     );
   }
 }

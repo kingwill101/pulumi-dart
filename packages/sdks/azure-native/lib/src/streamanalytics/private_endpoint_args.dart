@@ -23,15 +23,11 @@ class PrivateEndpointArgs {
   /// [privateEndpointName] The name of the private endpoint.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   PrivateEndpointArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<List<PrivateLinkServiceConnection>>? manualPrivateLinkServiceConnections,
-    pulumi.Output<String>? privateEndpointName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      manualPrivateLinkServiceConnections = pulumi.Input.asOptionalInput<List<PrivateLinkServiceConnection>>(manualPrivateLinkServiceConnections),
-      privateEndpointName = pulumi.Input.asOptionalInput<String>(privateEndpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    this.manualPrivateLinkServiceConnections,
+    this.privateEndpointName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class PrivateEndpointArgs {
 
   factory PrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : pulumi.Output.create<List<PrivateLinkServiceConnection>>(pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['manualPrivateLinkServiceConnections'], (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))),
-      privateEndpointName: map['privateEndpointName'] == null ? null : pulumi.Output.create<String>(map['privateEndpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['manualPrivateLinkServiceConnections'], (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

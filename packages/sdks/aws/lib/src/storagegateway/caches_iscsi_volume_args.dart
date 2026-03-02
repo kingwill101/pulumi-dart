@@ -40,27 +40,17 @@ class CachesIscsiVolumeArgs {
   /// [targetName] The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. The target name must be unique across all volumes of a gateway.
   /// [volumeSizeInBytes] The size of the volume in bytes.
   CachesIscsiVolumeArgs({
-    required pulumi.Output<String> gatewayArn,
-    pulumi.Output<bool>? kmsEncrypted,
-    pulumi.Output<String>? kmsKey,
-    required pulumi.Output<String> networkInterfaceId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? snapshotId,
-    pulumi.Output<String>? sourceVolumeArn,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetName,
-    required pulumi.Output<int> volumeSizeInBytes,
-  }) :
-      gatewayArn = pulumi.Input.asInput<String>(gatewayArn),
-      kmsEncrypted = pulumi.Input.asOptionalInput<bool>(kmsEncrypted),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotId = pulumi.Input.asOptionalInput<String>(snapshotId),
-      sourceVolumeArn = pulumi.Input.asOptionalInput<String>(sourceVolumeArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetName = pulumi.Input.asInput<String>(targetName),
-      volumeSizeInBytes = pulumi.Input.asInput<int>(volumeSizeInBytes);
+    required this.gatewayArn,
+    this.kmsEncrypted,
+    this.kmsKey,
+    required this.networkInterfaceId,
+    this.region,
+    this.snapshotId,
+    this.sourceVolumeArn,
+    this.tags,
+    required this.targetName,
+    required this.volumeSizeInBytes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class CachesIscsiVolumeArgs {
 
   factory CachesIscsiVolumeArgs.fromMap(Map<String, dynamic> map) {
     return CachesIscsiVolumeArgs(
-      gatewayArn: pulumi.Output.create<String>(map['gatewayArn'] as String),
-      kmsEncrypted: map['kmsEncrypted'] == null ? null : pulumi.Output.create<bool>(map['kmsEncrypted'] as bool),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      networkInterfaceId: pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotId: map['snapshotId'] == null ? null : pulumi.Output.create<String>(map['snapshotId'] as String),
-      sourceVolumeArn: map['sourceVolumeArn'] == null ? null : pulumi.Output.create<String>(map['sourceVolumeArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetName: pulumi.Output.create<String>(map['targetName'] as String),
-      volumeSizeInBytes: pulumi.Output.create<int>(map['volumeSizeInBytes'] as int),
+      gatewayArn: (map['gatewayArn'] as String).input(),
+      kmsEncrypted: map['kmsEncrypted'] == null ? null : (map['kmsEncrypted'] as bool).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      sourceVolumeArn: map['sourceVolumeArn'] == null ? null : (map['sourceVolumeArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetName: (map['targetName'] as String).input(),
+      volumeSizeInBytes: (map['volumeSizeInBytes'] as int).input(),
     );
   }
 }

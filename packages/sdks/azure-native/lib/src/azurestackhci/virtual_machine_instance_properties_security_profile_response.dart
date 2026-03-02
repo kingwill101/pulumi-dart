@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_instance_properties_security_profile_uefi_settings_response.dart';
 
 /// SecurityProfile - Specifies the security settings for the virtual machine instance.
 class VirtualMachineInstancePropertiesSecurityProfileResponse {
   /// Enable TPM flag
-  final bool? enableTPM;
+  final pulumi.Input<bool>? enableTPM;
   /// Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
-  final String? securityType;
+  final pulumi.Input<String>? securityType;
   /// Uefi settings of the virtual machine instance
-  final VirtualMachineInstancePropertiesSecurityProfileUefiSettingsResponse? uefiSettings;
+  final pulumi.Input<VirtualMachineInstancePropertiesSecurityProfileUefiSettingsResponse>? uefiSettings;
 
   /// Creates a new [VirtualMachineInstancePropertiesSecurityProfileResponse].
   /// [enableTPM] Enable TPM flag
@@ -25,15 +26,15 @@ class VirtualMachineInstancePropertiesSecurityProfileResponse {
     return <String, dynamic>{
       'enableTPM': ?enableTPM,
       'securityType': ?securityType,
-      'uefiSettings': ?uefiSettings == null ? null : uefiSettings!.toMap(),
+      'uefiSettings': ?pulumi.Input.mapOptionalInputValue<VirtualMachineInstancePropertiesSecurityProfileUefiSettingsResponse, Map<String, dynamic>>(uefiSettings, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineInstancePropertiesSecurityProfileResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesSecurityProfileResponse(
-      enableTPM: map['enableTPM'] == null ? null : map['enableTPM'] as bool,
-      securityType: map['securityType'] == null ? null : map['securityType'] as String,
-      uefiSettings: map['uefiSettings'] == null ? null : VirtualMachineInstancePropertiesSecurityProfileUefiSettingsResponse.fromMap((map['uefiSettings'] as Map).cast<String, dynamic>()),
+      enableTPM: map['enableTPM'] == null ? null : (map['enableTPM'] as bool).input(),
+      securityType: map['securityType'] == null ? null : (map['securityType'] as String).input(),
+      uefiSettings: map['uefiSettings'] == null ? null : (VirtualMachineInstancePropertiesSecurityProfileUefiSettingsResponse.fromMap((map['uefiSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_devtools_containeranalysis_v1alpha1_project_repo_id_response.dart';
 
 /// A unique identifier for a Cloud Repo.
 class GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse {
   /// A combination of a project ID and a repo name.
-  final GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse projectRepoId;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse> projectRepoId;
   /// A server-assigned, globally unique identifier.
-  final String uid;
+  final pulumi.Input<String> uid;
 
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse].
   /// [projectRepoId] A combination of a project ID and a repo name.
@@ -19,15 +20,15 @@ class GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'projectRepoId': projectRepoId.toMap(),
+      'projectRepoId': pulumi.Input.mapInputValue<GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse, Map<String, dynamic>>(projectRepoId, (value) => value.toMap()),
       'uid': uid,
     };
   }
 
   factory GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse(
-      projectRepoId: GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse.fromMap((map['projectRepoId'] as Map).cast<String, dynamic>()),
-      uid: map['uid'] as String,
+      projectRepoId: (GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse.fromMap((map['projectRepoId'] as Map).cast<String, dynamic>())).input(),
+      uid: (map['uid'] as String).input(),
     );
   }
 }

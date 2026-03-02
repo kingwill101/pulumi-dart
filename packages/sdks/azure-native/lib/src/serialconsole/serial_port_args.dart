@@ -29,19 +29,13 @@ class SerialPortArgs {
   /// [serialPort] The name of the serial port to create.
   /// [state] Specifies whether the port is enabled for a serial console connection.
   SerialPortArgs({
-    required pulumi.Output<String> parentResource,
-    required pulumi.Output<String> parentResourceType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceProviderNamespace,
-    pulumi.Output<String>? serialPort,
-    pulumi.Output<SerialPortState>? state,
-  }) :
-      parentResource = pulumi.Input.asInput<String>(parentResource),
-      parentResourceType = pulumi.Input.asInput<String>(parentResourceType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceProviderNamespace = pulumi.Input.asInput<String>(resourceProviderNamespace),
-      serialPort = pulumi.Input.asOptionalInput<String>(serialPort),
-      state = pulumi.Input.asOptionalInput<SerialPortState>(state);
+    required this.parentResource,
+    required this.parentResourceType,
+    required this.resourceGroupName,
+    required this.resourceProviderNamespace,
+    this.serialPort,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class SerialPortArgs {
 
   factory SerialPortArgs.fromMap(Map<String, dynamic> map) {
     return SerialPortArgs(
-      parentResource: pulumi.Output.create<String>(map['parentResource'] as String),
-      parentResourceType: pulumi.Output.create<String>(map['parentResourceType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceProviderNamespace: pulumi.Output.create<String>(map['resourceProviderNamespace'] as String),
-      serialPort: map['serialPort'] == null ? null : pulumi.Output.create<String>(map['serialPort'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<SerialPortState>(SerialPortState.fromValue(map['state'] as String)),
+      parentResource: (map['parentResource'] as String).input(),
+      parentResourceType: (map['parentResourceType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceProviderNamespace: (map['resourceProviderNamespace'] as String).input(),
+      serialPort: map['serialPort'] == null ? null : (map['serialPort'] as String).input(),
+      state: map['state'] == null ? null : (SerialPortState.fromValue(map['state'] as String)).input(),
     );
   }
 }

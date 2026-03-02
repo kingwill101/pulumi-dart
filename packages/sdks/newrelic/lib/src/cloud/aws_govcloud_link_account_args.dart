@@ -25,15 +25,11 @@ class AwsGovcloudLinkAccountArgs {
   /// [metricCollectionMode] The mode by which metric data is to be collected from the linked AWS GovCloud account. Defaults to `PULL`, if not specified in the configuration.
   /// [name] The name/identifier of the AWS GovCloud - New Relic 'linked' account.
   AwsGovcloudLinkAccountArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> arn,
-    pulumi.Output<String>? metricCollectionMode,
-    pulumi.Output<String>? name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      arn = pulumi.Input.asInput<String>(arn),
-      metricCollectionMode = pulumi.Input.asOptionalInput<String>(metricCollectionMode),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.accountId,
+    required this.arn,
+    this.metricCollectionMode,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class AwsGovcloudLinkAccountArgs {
 
   factory AwsGovcloudLinkAccountArgs.fromMap(Map<String, dynamic> map) {
     return AwsGovcloudLinkAccountArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      arn: pulumi.Output.create<String>(map['arn'] as String),
-      metricCollectionMode: map['metricCollectionMode'] == null ? null : pulumi.Output.create<String>(map['metricCollectionMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      arn: (map['arn'] as String).input(),
+      metricCollectionMode: map['metricCollectionMode'] == null ? null : (map['metricCollectionMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authentication_response.dart';
 import 'backup_policy_response.dart';
 import 'client_connection_response.dart';
@@ -11,81 +12,81 @@ import 'monitoring_response.dart';
 /// Properties of SqlServerInstance.
 class SqlServerInstancePropertiesResponse {
   /// The role of the SQL Server, based on availability.
-  final String alwaysOnRole;
+  final pulumi.Input<String> alwaysOnRole;
   /// Authentication related configuration for the SQL Server Instance.
-  final AuthenticationResponse? authentication;
+  final pulumi.Input<AuthenticationResponse>? authentication;
   /// Status of Azure Defender.
-  final String azureDefenderStatus;
+  final pulumi.Input<String> azureDefenderStatus;
   /// Timestamp of last Azure Defender status update.
-  final String azureDefenderStatusLastUpdated;
+  final pulumi.Input<String> azureDefenderStatusLastUpdated;
   /// The backup profile for the SQL server.
-  final BackupPolicyResponse? backupPolicy;
+  final pulumi.Input<BackupPolicyResponse>? backupPolicy;
   /// Client connection related configuration.
-  final ClientConnectionResponse? clientConnection;
+  final pulumi.Input<ClientConnectionResponse>? clientConnection;
   /// SQL Server collation.
-  final String collation;
+  final pulumi.Input<String> collation;
   /// ARM Resource id of the container resource (Azure Arc for Servers).
-  final String containerResourceId;
+  final pulumi.Input<String> containerResourceId;
   /// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
-  final String? cores;
+  final pulumi.Input<String>? cores;
   /// The time when the resource was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// SQL Server current version.
-  final String currentVersion;
+  final pulumi.Input<String> currentVersion;
   /// Database mirroring endpoint related properties.
-  final DBMEndpointResponse? databaseMirroringEndpoint;
+  final pulumi.Input<DBMEndpointResponse>? databaseMirroringEndpoint;
   /// Indicates whether database master key exists in SQL Server.
-  final bool dbMasterKeyExists;
+  final pulumi.Input<bool> dbMasterKeyExists;
   /// SQL Server edition.
-  final String? edition;
+  final pulumi.Input<String>? edition;
   /// Failover Cluster Instance properties.
-  final FailoverClusterResponse? failoverCluster;
+  final pulumi.Input<FailoverClusterResponse>? failoverCluster;
   /// Type of host for Azure Arc SQL Server
-  final String? hostType;
+  final pulumi.Input<String>? hostType;
   /// SQL Server instance name.
-  final String? instanceName;
+  final pulumi.Input<String>? instanceName;
   /// Indicates whether DigiCert PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains.
-  final bool isDigiCertPkiCertTrustConfigured;
+  final pulumi.Input<bool> isDigiCertPkiCertTrustConfigured;
   /// Indicates whether always On availability groups is enabled in SQL Server.
-  final bool isHadrEnabled;
+  final pulumi.Input<bool> isHadrEnabled;
   /// Indicates whether Microsoft PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains.
-  final bool isMicrosoftPkiCertTrustConfigured;
+  final pulumi.Input<bool> isMicrosoftPkiCertTrustConfigured;
   /// The time when last successful inventory upload was performed.
-  final String lastInventoryUploadTime;
+  final pulumi.Input<String> lastInventoryUploadTime;
   /// The time when last successful usage upload was performed.
-  final String lastUsageUploadTime;
+  final pulumi.Input<String> lastUsageUploadTime;
   /// SQL Server license type.
-  final String licenseType;
+  final pulumi.Input<String> licenseType;
   /// max server memory (MB) value configured for this instance.
-  final double maxServerMemoryMB;
+  final pulumi.Input<double> maxServerMemoryMB;
   /// Migration related configuration.
-  final MigrationResponse? migration;
+  final pulumi.Input<MigrationResponse>? migration;
   /// The monitoring configuration.
-  final MonitoringResponse? monitoring;
+  final pulumi.Input<MonitoringResponse>? monitoring;
   /// SQL Server update level.
-  final String patchLevel;
+  final pulumi.Input<String> patchLevel;
   /// SQL Server product ID.
-  final String productId;
+  final pulumi.Input<String> productId;
   /// The provisioning state of the Arc-enabled SQL Server resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
-  final String? serviceType;
+  final pulumi.Input<String>? serviceType;
   /// The cloud connectivity status.
-  final String status;
+  final pulumi.Input<String> status;
   /// Dynamic TCP ports used by SQL Server.
-  final String tcpDynamicPorts;
+  final pulumi.Input<String> tcpDynamicPorts;
   /// Static TCP ports used by SQL Server.
-  final String tcpStaticPorts;
+  final pulumi.Input<String> tcpStaticPorts;
   /// An array of integers, where each value represents the enabled trace flags in SQL Server.
-  final List<int> traceFlags;
+  final pulumi.Input<List<int>> traceFlags;
   /// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
-  final String? upgradeLockedUntil;
+  final pulumi.Input<String>? upgradeLockedUntil;
   /// The number of logical processors used by the SQL Server instance.
-  final String vCore;
+  final pulumi.Input<String> vCore;
   /// SQL Server version.
-  final String? version;
+  final pulumi.Input<String>? version;
   /// The unique ID of the hybrid machine that this resource belongs to.
-  final String vmId;
+  final pulumi.Input<String> vmId;
 
   /// Creates a new [SqlServerInstancePropertiesResponse].
   /// [alwaysOnRole] The role of the SQL Server, based on availability.
@@ -170,20 +171,20 @@ class SqlServerInstancePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alwaysOnRole': alwaysOnRole,
-      'authentication': ?authentication == null ? null : authentication!.toMap(),
+      'authentication': ?pulumi.Input.mapOptionalInputValue<AuthenticationResponse, Map<String, dynamic>>(authentication, (value) => value.toMap()),
       'azureDefenderStatus': azureDefenderStatus,
       'azureDefenderStatusLastUpdated': azureDefenderStatusLastUpdated,
-      'backupPolicy': ?backupPolicy == null ? null : backupPolicy!.toMap(),
-      'clientConnection': ?clientConnection == null ? null : clientConnection!.toMap(),
+      'backupPolicy': ?pulumi.Input.mapOptionalInputValue<BackupPolicyResponse, Map<String, dynamic>>(backupPolicy, (value) => value.toMap()),
+      'clientConnection': ?pulumi.Input.mapOptionalInputValue<ClientConnectionResponse, Map<String, dynamic>>(clientConnection, (value) => value.toMap()),
       'collation': collation,
       'containerResourceId': containerResourceId,
       'cores': ?cores,
       'createTime': createTime,
       'currentVersion': currentVersion,
-      'databaseMirroringEndpoint': ?databaseMirroringEndpoint == null ? null : databaseMirroringEndpoint!.toMap(),
+      'databaseMirroringEndpoint': ?pulumi.Input.mapOptionalInputValue<DBMEndpointResponse, Map<String, dynamic>>(databaseMirroringEndpoint, (value) => value.toMap()),
       'dbMasterKeyExists': dbMasterKeyExists,
       'edition': ?edition,
-      'failoverCluster': ?failoverCluster == null ? null : failoverCluster!.toMap(),
+      'failoverCluster': ?pulumi.Input.mapOptionalInputValue<FailoverClusterResponse, Map<String, dynamic>>(failoverCluster, (value) => value.toMap()),
       'hostType': ?hostType,
       'instanceName': ?instanceName,
       'isDigiCertPkiCertTrustConfigured': isDigiCertPkiCertTrustConfigured,
@@ -193,8 +194,8 @@ class SqlServerInstancePropertiesResponse {
       'lastUsageUploadTime': lastUsageUploadTime,
       'licenseType': licenseType,
       'maxServerMemoryMB': maxServerMemoryMB,
-      'migration': ?migration == null ? null : migration!.toMap(),
-      'monitoring': ?monitoring == null ? null : monitoring!.toMap(),
+      'migration': ?pulumi.Input.mapOptionalInputValue<MigrationResponse, Map<String, dynamic>>(migration, (value) => value.toMap()),
+      'monitoring': ?pulumi.Input.mapOptionalInputValue<MonitoringResponse, Map<String, dynamic>>(monitoring, (value) => value.toMap()),
       'patchLevel': patchLevel,
       'productId': productId,
       'provisioningState': provisioningState,
@@ -212,44 +213,44 @@ class SqlServerInstancePropertiesResponse {
 
   factory SqlServerInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlServerInstancePropertiesResponse(
-      alwaysOnRole: map['alwaysOnRole'] as String,
-      authentication: map['authentication'] == null ? null : AuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      azureDefenderStatus: map['azureDefenderStatus'] as String,
-      azureDefenderStatusLastUpdated: map['azureDefenderStatusLastUpdated'] as String,
-      backupPolicy: map['backupPolicy'] == null ? null : BackupPolicyResponse.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>()),
-      clientConnection: map['clientConnection'] == null ? null : ClientConnectionResponse.fromMap((map['clientConnection'] as Map).cast<String, dynamic>()),
-      collation: map['collation'] as String,
-      containerResourceId: map['containerResourceId'] as String,
-      cores: map['cores'] == null ? null : map['cores'] as String,
-      createTime: map['createTime'] as String,
-      currentVersion: map['currentVersion'] as String,
-      databaseMirroringEndpoint: map['databaseMirroringEndpoint'] == null ? null : DBMEndpointResponse.fromMap((map['databaseMirroringEndpoint'] as Map).cast<String, dynamic>()),
-      dbMasterKeyExists: map['dbMasterKeyExists'] as bool,
-      edition: map['edition'] == null ? null : map['edition'] as String,
-      failoverCluster: map['failoverCluster'] == null ? null : FailoverClusterResponse.fromMap((map['failoverCluster'] as Map).cast<String, dynamic>()),
-      hostType: map['hostType'] == null ? null : map['hostType'] as String,
-      instanceName: map['instanceName'] == null ? null : map['instanceName'] as String,
-      isDigiCertPkiCertTrustConfigured: map['isDigiCertPkiCertTrustConfigured'] as bool,
-      isHadrEnabled: map['isHadrEnabled'] as bool,
-      isMicrosoftPkiCertTrustConfigured: map['isMicrosoftPkiCertTrustConfigured'] as bool,
-      lastInventoryUploadTime: map['lastInventoryUploadTime'] as String,
-      lastUsageUploadTime: map['lastUsageUploadTime'] as String,
-      licenseType: map['licenseType'] as String,
-      maxServerMemoryMB: map['maxServerMemoryMB'] as double,
-      migration: map['migration'] == null ? null : MigrationResponse.fromMap((map['migration'] as Map).cast<String, dynamic>()),
-      monitoring: map['monitoring'] == null ? null : MonitoringResponse.fromMap((map['monitoring'] as Map).cast<String, dynamic>()),
-      patchLevel: map['patchLevel'] as String,
-      productId: map['productId'] as String,
-      provisioningState: map['provisioningState'] as String,
-      serviceType: map['serviceType'] == null ? null : map['serviceType'] as String,
-      status: map['status'] as String,
-      tcpDynamicPorts: map['tcpDynamicPorts'] as String,
-      tcpStaticPorts: map['tcpStaticPorts'] as String,
-      traceFlags: (map['traceFlags'] as List).cast<int>(),
-      upgradeLockedUntil: map['upgradeLockedUntil'] == null ? null : map['upgradeLockedUntil'] as String,
-      vCore: map['vCore'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
-      vmId: map['vmId'] as String,
+      alwaysOnRole: (map['alwaysOnRole'] as String).input(),
+      authentication: map['authentication'] == null ? null : (AuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      azureDefenderStatus: (map['azureDefenderStatus'] as String).input(),
+      azureDefenderStatusLastUpdated: (map['azureDefenderStatusLastUpdated'] as String).input(),
+      backupPolicy: map['backupPolicy'] == null ? null : (BackupPolicyResponse.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
+      clientConnection: map['clientConnection'] == null ? null : (ClientConnectionResponse.fromMap((map['clientConnection'] as Map).cast<String, dynamic>())).input(),
+      collation: (map['collation'] as String).input(),
+      containerResourceId: (map['containerResourceId'] as String).input(),
+      cores: map['cores'] == null ? null : (map['cores'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      currentVersion: (map['currentVersion'] as String).input(),
+      databaseMirroringEndpoint: map['databaseMirroringEndpoint'] == null ? null : (DBMEndpointResponse.fromMap((map['databaseMirroringEndpoint'] as Map).cast<String, dynamic>())).input(),
+      dbMasterKeyExists: (map['dbMasterKeyExists'] as bool).input(),
+      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      failoverCluster: map['failoverCluster'] == null ? null : (FailoverClusterResponse.fromMap((map['failoverCluster'] as Map).cast<String, dynamic>())).input(),
+      hostType: map['hostType'] == null ? null : (map['hostType'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      isDigiCertPkiCertTrustConfigured: (map['isDigiCertPkiCertTrustConfigured'] as bool).input(),
+      isHadrEnabled: (map['isHadrEnabled'] as bool).input(),
+      isMicrosoftPkiCertTrustConfigured: (map['isMicrosoftPkiCertTrustConfigured'] as bool).input(),
+      lastInventoryUploadTime: (map['lastInventoryUploadTime'] as String).input(),
+      lastUsageUploadTime: (map['lastUsageUploadTime'] as String).input(),
+      licenseType: (map['licenseType'] as String).input(),
+      maxServerMemoryMB: (map['maxServerMemoryMB'] as double).input(),
+      migration: map['migration'] == null ? null : (MigrationResponse.fromMap((map['migration'] as Map).cast<String, dynamic>())).input(),
+      monitoring: map['monitoring'] == null ? null : (MonitoringResponse.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
+      patchLevel: (map['patchLevel'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
+      status: (map['status'] as String).input(),
+      tcpDynamicPorts: (map['tcpDynamicPorts'] as String).input(),
+      tcpStaticPorts: (map['tcpStaticPorts'] as String).input(),
+      traceFlags: ((map['traceFlags'] as List).cast<int>()).input(),
+      upgradeLockedUntil: map['upgradeLockedUntil'] == null ? null : (map['upgradeLockedUntil'] as String).input(),
+      vCore: (map['vCore'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      vmId: (map['vmId'] as String).input(),
     );
   }
 }

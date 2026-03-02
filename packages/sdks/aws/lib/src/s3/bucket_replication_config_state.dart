@@ -31,17 +31,12 @@ class BucketReplicationConfigState {
   /// [rules] List of configuration blocks describing the rules managing the replication. See below.
   /// [token] Token to allow replication to be enabled on an Object Lock-enabled bucket. You must contact AWS support for the bucket's "Object Lock token".
   BucketReplicationConfigState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-    pulumi.Output<List<BucketReplicationConfigRule>>? rules,
-    pulumi.Output<String>? token,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      rules = pulumi.Input.asOptionalInput<List<BucketReplicationConfigRule>>(rules),
-      token = pulumi.Input.asOptionalInput<String>(token);
+    this.bucket,
+    this.region,
+    this.role,
+    this.rules,
+    this.token,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class BucketReplicationConfigState {
 
   factory BucketReplicationConfigState.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<BucketReplicationConfigRule>>(pulumi.Input.decodeList<BucketReplicationConfigRule>(map['rules'], (value) => BucketReplicationConfigRule.fromMap((value as Map).cast<String, dynamic>()))),
-      token: map['token'] == null ? null : pulumi.Output.create<String>(map['token'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketReplicationConfigRule>(map['rules'], (value) => BucketReplicationConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
     );
   }
 }

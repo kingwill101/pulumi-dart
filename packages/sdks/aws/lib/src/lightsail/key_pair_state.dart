@@ -45,31 +45,19 @@ class KeyPairState {
   /// [tags] Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   KeyPairState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? encryptedFingerprint,
-    pulumi.Output<String>? encryptedPrivateKey,
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? pgpKey,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? publicKey,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      encryptedFingerprint = pulumi.Input.asOptionalInput<String>(encryptedFingerprint),
-      encryptedPrivateKey = pulumi.Input.asOptionalInput<String>(encryptedPrivateKey),
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      pgpKey = pulumi.Input.asOptionalInput<String>(pgpKey),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.encryptedFingerprint,
+    this.encryptedPrivateKey,
+    this.fingerprint,
+    this.name,
+    this.namePrefix,
+    this.pgpKey,
+    this.privateKey,
+    this.publicKey,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class KeyPairState {
 
   factory KeyPairState.fromMap(Map<String, dynamic> map) {
     return KeyPairState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      encryptedFingerprint: map['encryptedFingerprint'] == null ? null : pulumi.Output.create<String>(map['encryptedFingerprint'] as String),
-      encryptedPrivateKey: map['encryptedPrivateKey'] == null ? null : pulumi.Output.create<String>(map['encryptedPrivateKey'] as String),
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      pgpKey: map['pgpKey'] == null ? null : pulumi.Output.create<String>(map['pgpKey'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      encryptedFingerprint: map['encryptedFingerprint'] == null ? null : (map['encryptedFingerprint'] as String).input(),
+      encryptedPrivateKey: map['encryptedPrivateKey'] == null ? null : (map['encryptedPrivateKey'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

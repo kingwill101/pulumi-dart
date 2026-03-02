@@ -29,17 +29,12 @@ class AccessPointArgs {
   /// [publicAccessBlockConfiguration] Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
   /// [vpcConfiguration] If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
   AccessPointArgs({
-    required pulumi.Output<String> accessPointName,
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<String> networkOrigin,
-    pulumi.Output<AccessPointPublicAccessBlockConfiguration>? publicAccessBlockConfiguration,
-    pulumi.Output<AccessPointVpcConfiguration>? vpcConfiguration,
-  }) :
-      accessPointName = pulumi.Input.asInput<String>(accessPointName),
-      bucket = pulumi.Input.asInput<String>(bucket),
-      networkOrigin = pulumi.Input.asInput<String>(networkOrigin),
-      publicAccessBlockConfiguration = pulumi.Input.asOptionalInput<AccessPointPublicAccessBlockConfiguration>(publicAccessBlockConfiguration),
-      vpcConfiguration = pulumi.Input.asOptionalInput<AccessPointVpcConfiguration>(vpcConfiguration);
+    required this.accessPointName,
+    required this.bucket,
+    required this.networkOrigin,
+    this.publicAccessBlockConfiguration,
+    this.vpcConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class AccessPointArgs {
 
   factory AccessPointArgs.fromMap(Map<String, dynamic> map) {
     return AccessPointArgs(
-      accessPointName: pulumi.Output.create<String>(map['accessPointName'] as String),
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      networkOrigin: pulumi.Output.create<String>(map['networkOrigin'] as String),
-      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : pulumi.Output.create<AccessPointPublicAccessBlockConfiguration>(AccessPointPublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration'] as Map).cast<String, dynamic>())),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : pulumi.Output.create<AccessPointVpcConfiguration>(AccessPointVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())),
+      accessPointName: (map['accessPointName'] as String).input(),
+      bucket: (map['bucket'] as String).input(),
+      networkOrigin: (map['networkOrigin'] as String).input(),
+      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : (AccessPointPublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration'] as Map).cast<String, dynamic>())).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : (AccessPointVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

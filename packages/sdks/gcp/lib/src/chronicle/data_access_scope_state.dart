@@ -74,35 +74,21 @@ class DataAccessScopeState {
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Output only. The time at which the data access scope was last updated.
   DataAccessScopeState({
-    pulumi.Output<bool>? allowAll,
-    pulumi.Output<List<DataAccessScopeAllowedDataAccessLabel>>? allowedDataAccessLabels,
-    pulumi.Output<String>? author,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? dataAccessScopeId,
-    pulumi.Output<List<DataAccessScopeDeniedDataAccessLabel>>? deniedDataAccessLabels,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? lastEditor,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateTime,
-  }) :
-      allowAll = pulumi.Input.asOptionalInput<bool>(allowAll),
-      allowedDataAccessLabels = pulumi.Input.asOptionalInput<List<DataAccessScopeAllowedDataAccessLabel>>(allowedDataAccessLabels),
-      author = pulumi.Input.asOptionalInput<String>(author),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dataAccessScopeId = pulumi.Input.asOptionalInput<String>(dataAccessScopeId),
-      deniedDataAccessLabels = pulumi.Input.asOptionalInput<List<DataAccessScopeDeniedDataAccessLabel>>(deniedDataAccessLabels),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      lastEditor = pulumi.Input.asOptionalInput<String>(lastEditor),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.allowAll,
+    this.allowedDataAccessLabels,
+    this.author,
+    this.createTime,
+    this.dataAccessScopeId,
+    this.deniedDataAccessLabels,
+    this.description,
+    this.displayName,
+    this.instance,
+    this.lastEditor,
+    this.location,
+    this.name,
+    this.project,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -125,20 +111,20 @@ class DataAccessScopeState {
 
   factory DataAccessScopeState.fromMap(Map<String, dynamic> map) {
     return DataAccessScopeState(
-      allowAll: map['allowAll'] == null ? null : pulumi.Output.create<bool>(map['allowAll'] as bool),
-      allowedDataAccessLabels: map['allowedDataAccessLabels'] == null ? null : pulumi.Output.create<List<DataAccessScopeAllowedDataAccessLabel>>(pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(map['allowedDataAccessLabels'], (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      author: map['author'] == null ? null : pulumi.Output.create<String>(map['author'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dataAccessScopeId: map['dataAccessScopeId'] == null ? null : pulumi.Output.create<String>(map['dataAccessScopeId'] as String),
-      deniedDataAccessLabels: map['deniedDataAccessLabels'] == null ? null : pulumi.Output.create<List<DataAccessScopeDeniedDataAccessLabel>>(pulumi.Input.decodeList<DataAccessScopeDeniedDataAccessLabel>(map['deniedDataAccessLabels'], (value) => DataAccessScopeDeniedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      lastEditor: map['lastEditor'] == null ? null : pulumi.Output.create<String>(map['lastEditor'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      allowAll: map['allowAll'] == null ? null : (map['allowAll'] as bool).input(),
+      allowedDataAccessLabels: map['allowedDataAccessLabels'] == null ? null : (pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(map['allowedDataAccessLabels'], (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      author: map['author'] == null ? null : (map['author'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dataAccessScopeId: map['dataAccessScopeId'] == null ? null : (map['dataAccessScopeId'] as String).input(),
+      deniedDataAccessLabels: map['deniedDataAccessLabels'] == null ? null : (pulumi.Input.decodeList<DataAccessScopeDeniedDataAccessLabel>(map['deniedDataAccessLabels'], (value) => DataAccessScopeDeniedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      lastEditor: map['lastEditor'] == null ? null : (map['lastEditor'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

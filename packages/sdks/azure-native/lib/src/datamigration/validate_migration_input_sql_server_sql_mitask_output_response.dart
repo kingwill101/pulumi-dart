@@ -7,21 +7,21 @@ import 'reportable_exception_response.dart';
 /// Output for task that validates migration input for SQL to Azure SQL Managed Instance migrations
 class ValidateMigrationInputSqlServerSqlMITaskOutputResponse {
   /// Errors associated with the BackupFolder path
-  final List<ReportableExceptionResponse> backupFolderErrors;
+  final pulumi.Input<List<ReportableExceptionResponse>> backupFolderErrors;
   /// Errors associated with backup share user name and password credentials
-  final List<ReportableExceptionResponse> backupShareCredentialsErrors;
+  final pulumi.Input<List<ReportableExceptionResponse>> backupShareCredentialsErrors;
   /// Errors associated with the storage account provided.
-  final List<ReportableExceptionResponse> backupStorageAccountErrors;
+  final pulumi.Input<List<ReportableExceptionResponse>> backupStorageAccountErrors;
   /// Information about backup files when existing backup mode is used.
-  final DatabaseBackupInfoResponse? databaseBackupInfo;
+  final pulumi.Input<DatabaseBackupInfoResponse>? databaseBackupInfo;
   /// Errors associated with existing backup files.
-  final List<ReportableExceptionResponse> existingBackupErrors;
+  final pulumi.Input<List<ReportableExceptionResponse>> existingBackupErrors;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Name of database
-  final String name;
+  final pulumi.Input<String> name;
   /// Errors associated with the RestoreDatabaseName
-  final List<ReportableExceptionResponse> restoreDatabaseNameErrors;
+  final pulumi.Input<List<ReportableExceptionResponse>> restoreDatabaseNameErrors;
 
   /// Creates a new [ValidateMigrationInputSqlServerSqlMITaskOutputResponse].
   /// [backupFolderErrors] Errors associated with the BackupFolder path
@@ -45,27 +45,27 @@ class ValidateMigrationInputSqlServerSqlMITaskOutputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupFolderErrors': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(backupFolderErrors, (value) => value.toMap()),
-      'backupShareCredentialsErrors': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(backupShareCredentialsErrors, (value) => value.toMap()),
-      'backupStorageAccountErrors': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(backupStorageAccountErrors, (value) => value.toMap()),
-      'databaseBackupInfo': ?databaseBackupInfo == null ? null : databaseBackupInfo!.toMap(),
-      'existingBackupErrors': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(existingBackupErrors, (value) => value.toMap()),
+      'backupFolderErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(backupFolderErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'backupShareCredentialsErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(backupShareCredentialsErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'backupStorageAccountErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(backupStorageAccountErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'databaseBackupInfo': ?pulumi.Input.mapOptionalInputValue<DatabaseBackupInfoResponse, Map<String, dynamic>>(databaseBackupInfo, (value) => value.toMap()),
+      'existingBackupErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(existingBackupErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'name': name,
-      'restoreDatabaseNameErrors': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(restoreDatabaseNameErrors, (value) => value.toMap()),
+      'restoreDatabaseNameErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(restoreDatabaseNameErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ValidateMigrationInputSqlServerSqlMITaskOutputResponse.fromMap(Map<String, dynamic> map) {
     return ValidateMigrationInputSqlServerSqlMITaskOutputResponse(
-      backupFolderErrors: pulumi.Input.decodeList<ReportableExceptionResponse>(map['backupFolderErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      backupShareCredentialsErrors: pulumi.Input.decodeList<ReportableExceptionResponse>(map['backupShareCredentialsErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      backupStorageAccountErrors: pulumi.Input.decodeList<ReportableExceptionResponse>(map['backupStorageAccountErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      databaseBackupInfo: map['databaseBackupInfo'] == null ? null : DatabaseBackupInfoResponse.fromMap((map['databaseBackupInfo'] as Map).cast<String, dynamic>()),
-      existingBackupErrors: pulumi.Input.decodeList<ReportableExceptionResponse>(map['existingBackupErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      restoreDatabaseNameErrors: pulumi.Input.decodeList<ReportableExceptionResponse>(map['restoreDatabaseNameErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      backupFolderErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['backupFolderErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backupShareCredentialsErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['backupShareCredentialsErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backupStorageAccountErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['backupStorageAccountErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databaseBackupInfo: map['databaseBackupInfo'] == null ? null : (DatabaseBackupInfoResponse.fromMap((map['databaseBackupInfo'] as Map).cast<String, dynamic>())).input(),
+      existingBackupErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['existingBackupErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      restoreDatabaseNameErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['restoreDatabaseNameErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

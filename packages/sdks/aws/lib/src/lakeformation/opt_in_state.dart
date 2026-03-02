@@ -27,19 +27,13 @@ class OptInState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceDatas] Structure for the resource. See Resource for more details.
   OptInState({
-    pulumi.Output<List<OptInCondition>>? conditions,
-    pulumi.Output<String>? lastModified,
-    pulumi.Output<String>? lastUpdatedBy,
-    pulumi.Output<List<OptInPrincipal>>? principals,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<OptInResourceData>>? resourceDatas,
-  }) :
-      conditions = pulumi.Input.asOptionalInput<List<OptInCondition>>(conditions),
-      lastModified = pulumi.Input.asOptionalInput<String>(lastModified),
-      lastUpdatedBy = pulumi.Input.asOptionalInput<String>(lastUpdatedBy),
-      principals = pulumi.Input.asOptionalInput<List<OptInPrincipal>>(principals),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceDatas = pulumi.Input.asOptionalInput<List<OptInResourceData>>(resourceDatas);
+    this.conditions,
+    this.lastModified,
+    this.lastUpdatedBy,
+    this.principals,
+    this.region,
+    this.resourceDatas,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class OptInState {
 
   factory OptInState.fromMap(Map<String, dynamic> map) {
     return OptInState(
-      conditions: map['conditions'] == null ? null : pulumi.Output.create<List<OptInCondition>>(pulumi.Input.decodeList<OptInCondition>(map['conditions'], (value) => OptInCondition.fromMap((value as Map).cast<String, dynamic>()))),
-      lastModified: map['lastModified'] == null ? null : pulumi.Output.create<String>(map['lastModified'] as String),
-      lastUpdatedBy: map['lastUpdatedBy'] == null ? null : pulumi.Output.create<String>(map['lastUpdatedBy'] as String),
-      principals: map['principals'] == null ? null : pulumi.Output.create<List<OptInPrincipal>>(pulumi.Input.decodeList<OptInPrincipal>(map['principals'], (value) => OptInPrincipal.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceDatas: map['resourceDatas'] == null ? null : pulumi.Output.create<List<OptInResourceData>>(pulumi.Input.decodeList<OptInResourceData>(map['resourceDatas'], (value) => OptInResourceData.fromMap((value as Map).cast<String, dynamic>()))),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<OptInCondition>(map['conditions'], (value) => OptInCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
+      lastUpdatedBy: map['lastUpdatedBy'] == null ? null : (map['lastUpdatedBy'] as String).input(),
+      principals: map['principals'] == null ? null : (pulumi.Input.decodeList<OptInPrincipal>(map['principals'], (value) => OptInPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceDatas: map['resourceDatas'] == null ? null : (pulumi.Input.decodeList<OptInResourceData>(map['resourceDatas'], (value) => OptInResourceData.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

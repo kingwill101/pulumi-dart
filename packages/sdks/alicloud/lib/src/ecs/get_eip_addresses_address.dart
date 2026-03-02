@@ -1,69 +1,70 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEipAddressesAddress {
   /// The name of the EIP.
-  final String addressName;
+  final pulumi.Input<String> addressName;
   /// The ID of the EIP.
-  final String allocationId;
+  final pulumi.Input<String> allocationId;
   /// The ID of the region to which the EIP belongs.
-  final List<String> availableRegions;
+  final pulumi.Input<List<String>> availableRegions;
   /// The maximum bandwidth of the EIP. Unit: Mbit/s.
-  final String bandwidth;
+  final pulumi.Input<String> bandwidth;
   /// The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
-  final String bandwidthPackageBandwidth;
+  final pulumi.Input<String> bandwidthPackageBandwidth;
   /// The ID of the EIP bandwidth plan.
-  final String bandwidthPackageId;
+  final pulumi.Input<String> bandwidthPackageId;
   /// The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
-  final String bandwidthPackageType;
+  final pulumi.Input<String> bandwidthPackageType;
   /// The time when the EIP was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Indicates whether deletion protection is enabled.
-  final bool deletionProtection;
+  final pulumi.Input<bool> deletionProtection;
   /// The description of the EIP.
-  final String description;
+  final pulumi.Input<String> description;
   /// The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
-  final String hasReservationData;
+  final pulumi.Input<String> hasReservationData;
   /// Indicates whether fine-grained monitoring is enabled for the EIP.
-  final String hdMonitorStatus;
+  final pulumi.Input<String> hdMonitorStatus;
   /// The ID of the Address.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the instance with which the EIP is associated.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The region ID of the associated resource.
-  final String instanceRegionId;
+  final pulumi.Input<String> instanceRegionId;
   /// The type of the instance with which the EIP is associated.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The metering method of the EIP.
-  final String internetChargeType;
+  final pulumi.Input<String> internetChargeType;
   /// The IP address of the EIP.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The Internet service provider (ISP).
-  final String isp;
+  final pulumi.Input<String> isp;
   /// The details about the locked EIP.
-  final List<String> operationLocks;
+  final pulumi.Input<List<String>> operationLocks;
   /// The billing method of the EIP.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The time when the renewal takes effect.
-  final String reservationActiveTime;
+  final pulumi.Input<String> reservationActiveTime;
   /// The bandwidth after the renewal takes effect.
-  final String reservationBandwidth;
+  final pulumi.Input<String> reservationBandwidth;
   /// The metering method of the renewal.
-  final String reservationInternetChargeType;
+  final pulumi.Input<String> reservationInternetChargeType;
   /// The type of the renewal order.
-  final String reservationOrderType;
+  final pulumi.Input<String> reservationOrderType;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// Indicates whether level-2 throttling is configured.
-  final bool secondLimited;
+  final pulumi.Input<bool> secondLimited;
   /// The IDs of the contiguous EIPs.
-  final String segmentInstanceId;
+  final pulumi.Input<String> segmentInstanceId;
   /// The status of the EIP.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetEipAddressesAddress].
   /// [addressName] The name of the EIP.
@@ -169,37 +170,37 @@ class GetEipAddressesAddress {
 
   factory GetEipAddressesAddress.fromMap(Map<String, dynamic> map) {
     return GetEipAddressesAddress(
-      addressName: map['addressName'] as String,
-      allocationId: map['allocationId'] as String,
-      availableRegions: (map['availableRegions'] as List).cast<String>(),
-      bandwidth: map['bandwidth'] as String,
-      bandwidthPackageBandwidth: map['bandwidthPackageBandwidth'] as String,
-      bandwidthPackageId: map['bandwidthPackageId'] as String,
-      bandwidthPackageType: map['bandwidthPackageType'] as String,
-      createTime: map['createTime'] as String,
-      deletionProtection: map['deletionProtection'] as bool,
-      description: map['description'] as String,
-      expiredTime: map['expiredTime'] as String,
-      hasReservationData: map['hasReservationData'] as String,
-      hdMonitorStatus: map['hdMonitorStatus'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceRegionId: map['instanceRegionId'] as String,
-      instanceType: map['instanceType'] as String,
-      internetChargeType: map['internetChargeType'] as String,
-      ipAddress: map['ipAddress'] as String,
-      isp: map['isp'] as String,
-      operationLocks: (map['operationLocks'] as List).cast<String>(),
-      paymentType: map['paymentType'] as String,
-      reservationActiveTime: map['reservationActiveTime'] as String,
-      reservationBandwidth: map['reservationBandwidth'] as String,
-      reservationInternetChargeType: map['reservationInternetChargeType'] as String,
-      reservationOrderType: map['reservationOrderType'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      secondLimited: map['secondLimited'] as bool,
-      segmentInstanceId: map['segmentInstanceId'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      addressName: (map['addressName'] as String).input(),
+      allocationId: (map['allocationId'] as String).input(),
+      availableRegions: ((map['availableRegions'] as List).cast<String>()).input(),
+      bandwidth: (map['bandwidth'] as String).input(),
+      bandwidthPackageBandwidth: (map['bandwidthPackageBandwidth'] as String).input(),
+      bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
+      bandwidthPackageType: (map['bandwidthPackageType'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      deletionProtection: (map['deletionProtection'] as bool).input(),
+      description: (map['description'] as String).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      hasReservationData: (map['hasReservationData'] as String).input(),
+      hdMonitorStatus: (map['hdMonitorStatus'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceRegionId: (map['instanceRegionId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      internetChargeType: (map['internetChargeType'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      isp: (map['isp'] as String).input(),
+      operationLocks: ((map['operationLocks'] as List).cast<String>()).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      reservationActiveTime: (map['reservationActiveTime'] as String).input(),
+      reservationBandwidth: (map['reservationBandwidth'] as String).input(),
+      reservationInternetChargeType: (map['reservationInternetChargeType'] as String).input(),
+      reservationOrderType: (map['reservationOrderType'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      secondLimited: (map['secondLimited'] as bool).input(),
+      segmentInstanceId: (map['segmentInstanceId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ResourceSetArgs {
   /// [tags] Optional.
   /// [timeouts] Optional.
   ResourceSetArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<List<ResourceSetResourceSet>>? resourceSets,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ResourceSetTimeouts>? timeouts,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceSets = pulumi.Input.asOptionalInput<List<ResourceSetResourceSet>>(resourceSets),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ResourceSetTimeouts>(timeouts);
+    this.region,
+    this.resourceSets,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ResourceSetArgs {
 
   factory ResourceSetArgs.fromMap(Map<String, dynamic> map) {
     return ResourceSetArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceSets: map['resourceSets'] == null ? null : pulumi.Output.create<List<ResourceSetResourceSet>>(pulumi.Input.decodeList<ResourceSetResourceSet>(map['resourceSets'], (value) => ResourceSetResourceSet.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ResourceSetTimeouts>(ResourceSetTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceSets: map['resourceSets'] == null ? null : (pulumi.Input.decodeList<ResourceSetResourceSet>(map['resourceSets'], (value) => ResourceSetResourceSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ResourceSetTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

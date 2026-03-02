@@ -25,17 +25,12 @@ class BookmarkRelationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   BookmarkRelationArgs({
-    required pulumi.Output<String> bookmarkId,
-    required pulumi.Output<String> relatedResourceId,
-    pulumi.Output<String>? relationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      bookmarkId = pulumi.Input.asInput<String>(bookmarkId),
-      relatedResourceId = pulumi.Input.asInput<String>(relatedResourceId),
-      relationName = pulumi.Input.asOptionalInput<String>(relationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.bookmarkId,
+    required this.relatedResourceId,
+    this.relationName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class BookmarkRelationArgs {
 
   factory BookmarkRelationArgs.fromMap(Map<String, dynamic> map) {
     return BookmarkRelationArgs(
-      bookmarkId: pulumi.Output.create<String>(map['bookmarkId'] as String),
-      relatedResourceId: pulumi.Output.create<String>(map['relatedResourceId'] as String),
-      relationName: map['relationName'] == null ? null : pulumi.Output.create<String>(map['relationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      bookmarkId: (map['bookmarkId'] as String).input(),
+      relatedResourceId: (map['relatedResourceId'] as String).input(),
+      relationName: map['relationName'] == null ? null : (map['relationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

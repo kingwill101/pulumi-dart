@@ -19,13 +19,10 @@ class SubscriptionNetworkManagerConnectionArgs {
   /// [networkManagerConnectionName] Name for the network manager connection.
   /// [networkManagerId] Network Manager Id.
   SubscriptionNetworkManagerConnectionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? networkManagerConnectionName,
-    pulumi.Output<String>? networkManagerId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      networkManagerConnectionName = pulumi.Input.asOptionalInput<String>(networkManagerConnectionName),
-      networkManagerId = pulumi.Input.asOptionalInput<String>(networkManagerId);
+    this.description,
+    this.networkManagerConnectionName,
+    this.networkManagerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SubscriptionNetworkManagerConnectionArgs {
 
   factory SubscriptionNetworkManagerConnectionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionNetworkManagerConnectionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      networkManagerConnectionName: map['networkManagerConnectionName'] == null ? null : pulumi.Output.create<String>(map['networkManagerConnectionName'] as String),
-      networkManagerId: map['networkManagerId'] == null ? null : pulumi.Output.create<String>(map['networkManagerId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkManagerConnectionName: map['networkManagerConnectionName'] == null ? null : (map['networkManagerConnectionName'] as String).input(),
+      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId'] as String).input(),
     );
   }
 }

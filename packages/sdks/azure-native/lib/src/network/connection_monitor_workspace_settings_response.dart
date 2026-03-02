@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the settings for producing output into a log analytics workspace.
 class ConnectionMonitorWorkspaceSettingsResponse {
   /// Log analytics workspace resource ID.
-  final String? workspaceResourceId;
+  final pulumi.Input<String>? workspaceResourceId;
 
   /// Creates a new [ConnectionMonitorWorkspaceSettingsResponse].
   /// [workspaceResourceId] Log analytics workspace resource ID.
@@ -20,7 +21,7 @@ class ConnectionMonitorWorkspaceSettingsResponse {
 
   factory ConnectionMonitorWorkspaceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorWorkspaceSettingsResponse(
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : map['workspaceResourceId'] as String,
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
     );
   }
 }

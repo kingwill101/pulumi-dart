@@ -36,23 +36,15 @@ class DscNodeConfigurationArgs {
   /// [source] Gets or sets the source.
   /// [tags] Gets or sets the tags attached to the resource.
   DscNodeConfigurationArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<DscConfigurationAssociationProperty> configuration,
-    pulumi.Output<bool>? incrementNodeConfigurationBuild,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nodeConfigurationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<ContentSource> source,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      configuration = pulumi.Input.asInput<DscConfigurationAssociationProperty>(configuration),
-      incrementNodeConfigurationBuild = pulumi.Input.asOptionalInput<bool>(incrementNodeConfigurationBuild),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeConfigurationName = pulumi.Input.asOptionalInput<String>(nodeConfigurationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      source = pulumi.Input.asInput<ContentSource>(source),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.automationAccountName,
+    required this.configuration,
+    this.incrementNodeConfigurationBuild,
+    this.name,
+    this.nodeConfigurationName,
+    required this.resourceGroupName,
+    required this.source,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class DscNodeConfigurationArgs {
 
   factory DscNodeConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DscNodeConfigurationArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      configuration: pulumi.Output.create<DscConfigurationAssociationProperty>(DscConfigurationAssociationProperty.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      incrementNodeConfigurationBuild: map['incrementNodeConfigurationBuild'] == null ? null : pulumi.Output.create<bool>(map['incrementNodeConfigurationBuild'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeConfigurationName: map['nodeConfigurationName'] == null ? null : pulumi.Output.create<String>(map['nodeConfigurationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      source: pulumi.Output.create<ContentSource>(ContentSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      configuration: (DscConfigurationAssociationProperty.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      incrementNodeConfigurationBuild: map['incrementNodeConfigurationBuild'] == null ? null : (map['incrementNodeConfigurationBuild'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeConfigurationName: map['nodeConfigurationName'] == null ? null : (map['nodeConfigurationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      source: (ContentSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

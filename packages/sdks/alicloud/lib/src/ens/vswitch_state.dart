@@ -28,21 +28,14 @@ class VswitchState {
   /// [status] The status of the vSwitch.
   /// [vswitchName] The name of the vSwitch.
   VswitchState({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ensRegionId,
-    pulumi.Output<String>? networkId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vswitchName,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ensRegionId = pulumi.Input.asOptionalInput<String>(ensRegionId),
-      networkId = pulumi.Input.asOptionalInput<String>(networkId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vswitchName = pulumi.Input.asOptionalInput<String>(vswitchName);
+    this.cidrBlock,
+    this.createTime,
+    this.description,
+    this.ensRegionId,
+    this.networkId,
+    this.status,
+    this.vswitchName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class VswitchState {
 
   factory VswitchState.fromMap(Map<String, dynamic> map) {
     return VswitchState(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ensRegionId: map['ensRegionId'] == null ? null : pulumi.Output.create<String>(map['ensRegionId'] as String),
-      networkId: map['networkId'] == null ? null : pulumi.Output.create<String>(map['networkId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vswitchName: map['vswitchName'] == null ? null : pulumi.Output.create<String>(map['vswitchName'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vswitchName: map['vswitchName'] == null ? null : (map['vswitchName'] as String).input(),
     );
   }
 }

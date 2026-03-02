@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The integration account partner's business identity.
 class BusinessIdentity {
   /// The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
-  final String qualifier;
+  final pulumi.Input<String> qualifier;
   /// The user defined business identity value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [BusinessIdentity].
   /// [qualifier] The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
@@ -25,8 +26,8 @@ class BusinessIdentity {
 
   factory BusinessIdentity.fromMap(Map<String, dynamic> map) {
     return BusinessIdentity(
-      qualifier: map['qualifier'] as String,
-      value: map['value'] as String,
+      qualifier: (map['qualifier'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

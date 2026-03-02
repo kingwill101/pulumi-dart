@@ -22,15 +22,11 @@ class EnvironmentArgs {
   /// [project] Project name.
   /// [yaml] Environment's yaml file.
   EnvironmentArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> organization,
-    pulumi.Output<String>? project,
-    required pulumi.Output<dynamic> yaml,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      organization = pulumi.Input.asInput<String>(organization),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      yaml = pulumi.Input.asInput<dynamic>(yaml);
+    required this.name,
+    required this.organization,
+    this.project,
+    required this.yaml,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      yaml: pulumi.Output.create<dynamic>(map['yaml']),
+      name: (map['name'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      yaml: (map['yaml']).input(),
     );
   }
 }

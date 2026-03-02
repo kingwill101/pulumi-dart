@@ -6,7 +6,7 @@ import 'stream_source_config_sql_server_source_config_include_objects_schema.dar
 class StreamSourceConfigSqlServerSourceConfigIncludeObjects {
   /// Spanner schemas in the database
   /// Structure is documented below.
-  final List<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema> schemas;
+  final pulumi.Input<List<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema>> schemas;
 
   /// Creates a new [StreamSourceConfigSqlServerSourceConfigIncludeObjects].
   /// [schemas] Spanner schemas in the database
@@ -16,13 +16,13 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjects {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schemas': pulumi.Input.encodeList<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema, Map<String, dynamic>>(schemas, (value) => value.toMap()),
+      'schemas': pulumi.Input.mapInputValue<List<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema>, List<Map<String, dynamic>>>(schemas, (value) => pulumi.Input.encodeList<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StreamSourceConfigSqlServerSourceConfigIncludeObjects.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSqlServerSourceConfigIncludeObjects(
-      schemas: pulumi.Input.decodeList<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema>(map['schemas'], (value) => StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema.fromMap((value as Map).cast<String, dynamic>())),
+      schemas: (pulumi.Input.decodeList<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema>(map['schemas'], (value) => StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

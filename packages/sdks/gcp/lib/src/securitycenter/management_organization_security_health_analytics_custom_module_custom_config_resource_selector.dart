@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector {
   /// The resource types to run the detector on.
-  final List<String> resourceTypes;
+  final pulumi.Input<List<String>> resourceTypes;
 
   /// Creates a new [ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector].
   /// [resourceTypes] The resource types to run the detector on.
@@ -19,7 +20,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResou
 
   factory ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector.fromMap(Map<String, dynamic> map) {
     return ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector(
-      resourceTypes: (map['resourceTypes'] as List).cast<String>(),
+      resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
     );
   }
 }

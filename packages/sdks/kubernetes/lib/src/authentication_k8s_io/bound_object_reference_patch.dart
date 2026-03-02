@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// BoundObjectReference is a reference to an object that a token is bound to.
 class BoundObjectReferencePatch {
   /// API version of the referent.
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Kind of the referent. Valid kinds are 'Pod' and 'Secret'.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Name of the referent.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// UID of the referent.
-  final String? uid;
+  final pulumi.Input<String>? uid;
 
   /// Creates a new [BoundObjectReferencePatch].
   /// [apiVersion] API version of the referent.
@@ -35,10 +36,10 @@ class BoundObjectReferencePatch {
 
   factory BoundObjectReferencePatch.fromMap(Map<String, dynamic> map) {
     return BoundObjectReferencePatch(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      uid: map['uid'] == null ? null : map['uid'] as String,
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
     );
   }
 }

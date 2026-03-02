@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment {
   /// API Key value
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Name of the API Key
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Status of the Deployment
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Updated At timestamp for the Agent
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
   /// Url of the Deployment
-  final String? url;
+  final pulumi.Input<String>? url;
   /// API Key value
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
   /// Visibility of the Deployment
-  final String? visibility;
+  final pulumi.Input<String>? visibility;
 
   /// Creates a new [GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment].
   /// [createdAt] API Key value
@@ -49,13 +50,13 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment {
 
   factory GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment(
-      createdAt: map['createdAt'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      updatedAt: map['updatedAt'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
-      visibility: map['visibility'] == null ? null : map['visibility'] as String,
+      createdAt: (map['createdAt'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
     );
   }
 }

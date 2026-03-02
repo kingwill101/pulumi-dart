@@ -8,21 +8,21 @@ import 'tool_data_store_tool_modality_config.dart';
 class ToolDataStoreTool {
   /// Boost specification to boost certain documents.
   /// Structure is documented below.
-  final List<ToolDataStoreToolBoostSpec>? boostSpecs;
+  final pulumi.Input<List<ToolDataStoreToolBoostSpec>>? boostSpecs;
   /// The tool description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Configuration for searching within an Engine, potentially targeting
   /// specific DataStores.
   /// Structure is documented below.
-  final ToolDataStoreToolEngineSource? engineSource;
+  final pulumi.Input<ToolDataStoreToolEngineSource>? engineSource;
   /// Number of search results to return per query.
   /// The default value is 10. The maximum allowed value is 10.
-  final int? maxResults;
+  final pulumi.Input<int>? maxResults;
   /// The modality configs for the data store.
   /// Structure is documented below.
-  final List<ToolDataStoreToolModalityConfig>? modalityConfigs;
+  final pulumi.Input<List<ToolDataStoreToolModalityConfig>>? modalityConfigs;
   /// The data store tool name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ToolDataStoreTool].
   /// [boostSpecs] Boost specification to boost certain documents.
@@ -42,23 +42,23 @@ class ToolDataStoreTool {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'boostSpecs': ?boostSpecs == null ? null : pulumi.Input.encodeList<ToolDataStoreToolBoostSpec, Map<String, dynamic>>(boostSpecs!, (value) => value.toMap()),
+      'boostSpecs': ?pulumi.Input.mapOptionalInputValue<List<ToolDataStoreToolBoostSpec>, List<Map<String, dynamic>>>(boostSpecs, (value) => pulumi.Input.encodeList<ToolDataStoreToolBoostSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
-      'engineSource': ?engineSource == null ? null : engineSource!.toMap(),
+      'engineSource': ?pulumi.Input.mapOptionalInputValue<ToolDataStoreToolEngineSource, Map<String, dynamic>>(engineSource, (value) => value.toMap()),
       'maxResults': ?maxResults,
-      'modalityConfigs': ?modalityConfigs == null ? null : pulumi.Input.encodeList<ToolDataStoreToolModalityConfig, Map<String, dynamic>>(modalityConfigs!, (value) => value.toMap()),
+      'modalityConfigs': ?pulumi.Input.mapOptionalInputValue<List<ToolDataStoreToolModalityConfig>, List<Map<String, dynamic>>>(modalityConfigs, (value) => pulumi.Input.encodeList<ToolDataStoreToolModalityConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
   factory ToolDataStoreTool.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreTool(
-      boostSpecs: map['boostSpecs'] == null ? null : pulumi.Input.decodeList<ToolDataStoreToolBoostSpec>(map['boostSpecs'], (value) => ToolDataStoreToolBoostSpec.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      engineSource: map['engineSource'] == null ? null : ToolDataStoreToolEngineSource.fromMap((map['engineSource'] as Map).cast<String, dynamic>()),
-      maxResults: map['maxResults'] == null ? null : map['maxResults'] as int,
-      modalityConfigs: map['modalityConfigs'] == null ? null : pulumi.Input.decodeList<ToolDataStoreToolModalityConfig>(map['modalityConfigs'], (value) => ToolDataStoreToolModalityConfig.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
+      boostSpecs: map['boostSpecs'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolBoostSpec>(map['boostSpecs'], (value) => ToolDataStoreToolBoostSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      engineSource: map['engineSource'] == null ? null : (ToolDataStoreToolEngineSource.fromMap((map['engineSource'] as Map).cast<String, dynamic>())).input(),
+      maxResults: map['maxResults'] == null ? null : (map['maxResults'] as int).input(),
+      modalityConfigs: map['modalityConfigs'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolModalityConfig>(map['modalityConfigs'], (value) => ToolDataStoreToolModalityConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

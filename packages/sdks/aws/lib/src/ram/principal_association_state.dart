@@ -16,13 +16,10 @@ class PrincipalAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceShareArn] The Amazon Resource Name (ARN) of the resource share.
   PrincipalAssociationState({
-    pulumi.Output<String>? principal,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceShareArn,
-  }) :
-      principal = pulumi.Input.asOptionalInput<String>(principal),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceShareArn = pulumi.Input.asOptionalInput<String>(resourceShareArn);
+    this.principal,
+    this.region,
+    this.resourceShareArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class PrincipalAssociationState {
 
   factory PrincipalAssociationState.fromMap(Map<String, dynamic> map) {
     return PrincipalAssociationState(
-      principal: map['principal'] == null ? null : pulumi.Output.create<String>(map['principal'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceShareArn: map['resourceShareArn'] == null ? null : pulumi.Output.create<String>(map['resourceShareArn'] as String),
+      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceShareArn: map['resourceShareArn'] == null ? null : (map['resourceShareArn'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZonesZone {
   /// Set of supported disk categories.
-  final List<String> availableDiskCategories;
+  final pulumi.Input<List<String>> availableDiskCategories;
   /// Allowed instance types.
-  final List<String> availableInstanceTypes;
+  final pulumi.Input<List<String>> availableInstanceTypes;
   /// Filter the results by a specific resource type.
   /// Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
   ///
   /// > **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated.
   /// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
-  final List<String> availableResourceCreations;
+  final pulumi.Input<List<String>> availableResourceCreations;
   /// ID of the zone.
-  final String id;
+  final pulumi.Input<String> id;
   /// Name of the zone in the local language.
-  final String localName;
+  final pulumi.Input<String> localName;
   /// A list of zone ids in which the multi zone.
-  final List<String> multiZoneIds;
+  final pulumi.Input<List<String>> multiZoneIds;
   /// A list of slb slave zone ids in which the slb master zone.
-  final List<String> slbSlaveZoneIds;
+  final pulumi.Input<List<String>> slbSlaveZoneIds;
 
   /// Creates a new [GetZonesZone].
   /// [availableDiskCategories] Set of supported disk categories.
@@ -53,13 +54,13 @@ class GetZonesZone {
 
   factory GetZonesZone.fromMap(Map<String, dynamic> map) {
     return GetZonesZone(
-      availableDiskCategories: (map['availableDiskCategories'] as List).cast<String>(),
-      availableInstanceTypes: (map['availableInstanceTypes'] as List).cast<String>(),
-      availableResourceCreations: (map['availableResourceCreations'] as List).cast<String>(),
-      id: map['id'] as String,
-      localName: map['localName'] as String,
-      multiZoneIds: (map['multiZoneIds'] as List).cast<String>(),
-      slbSlaveZoneIds: (map['slbSlaveZoneIds'] as List).cast<String>(),
+      availableDiskCategories: ((map['availableDiskCategories'] as List).cast<String>()).input(),
+      availableInstanceTypes: ((map['availableInstanceTypes'] as List).cast<String>()).input(),
+      availableResourceCreations: ((map['availableResourceCreations'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      localName: (map['localName'] as String).input(),
+      multiZoneIds: ((map['multiZoneIds'] as List).cast<String>()).input(),
+      slbSlaveZoneIds: ((map['slbSlaveZoneIds'] as List).cast<String>()).input(),
     );
   }
 }

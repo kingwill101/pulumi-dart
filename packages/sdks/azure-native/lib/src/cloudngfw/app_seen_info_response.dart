@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition for App Seen
 class AppSeenInfoResponse {
   /// category
-  final String category;
+  final pulumi.Input<String> category;
   /// risk
-  final String risk;
+  final pulumi.Input<String> risk;
   /// standardPorts
-  final String standardPorts;
+  final pulumi.Input<String> standardPorts;
   /// subCategory
-  final String subCategory;
+  final pulumi.Input<String> subCategory;
   /// tag
-  final String tag;
+  final pulumi.Input<String> tag;
   /// technology
-  final String technology;
+  final pulumi.Input<String> technology;
   /// title
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [AppSeenInfoResponse].
   /// [category] category
@@ -50,13 +51,13 @@ class AppSeenInfoResponse {
 
   factory AppSeenInfoResponse.fromMap(Map<String, dynamic> map) {
     return AppSeenInfoResponse(
-      category: map['category'] as String,
-      risk: map['risk'] as String,
-      standardPorts: map['standardPorts'] as String,
-      subCategory: map['subCategory'] as String,
-      tag: map['tag'] as String,
-      technology: map['technology'] as String,
-      title: map['title'] as String,
+      category: (map['category'] as String).input(),
+      risk: (map['risk'] as String).input(),
+      standardPorts: (map['standardPorts'] as String).input(),
+      subCategory: (map['subCategory'] as String).input(),
+      tag: (map['tag'] as String).input(),
+      technology: (map['technology'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

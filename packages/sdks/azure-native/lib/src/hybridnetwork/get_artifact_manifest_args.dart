@@ -22,15 +22,11 @@ class GetArtifactManifestArgs {
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetArtifactManifestArgs({
-    required pulumi.Output<String> artifactManifestName,
-    required pulumi.Output<String> artifactStoreName,
-    required pulumi.Output<String> publisherName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      artifactManifestName = pulumi.Input.asInput<String>(artifactManifestName),
-      artifactStoreName = pulumi.Input.asInput<String>(artifactStoreName),
-      publisherName = pulumi.Input.asInput<String>(publisherName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.artifactManifestName,
+    required this.artifactStoreName,
+    required this.publisherName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetArtifactManifestArgs {
 
   factory GetArtifactManifestArgs.fromMap(Map<String, dynamic> map) {
     return GetArtifactManifestArgs(
-      artifactManifestName: pulumi.Output.create<String>(map['artifactManifestName'] as String),
-      artifactStoreName: pulumi.Output.create<String>(map['artifactStoreName'] as String),
-      publisherName: pulumi.Output.create<String>(map['publisherName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      artifactManifestName: (map['artifactManifestName'] as String).input(),
+      artifactStoreName: (map['artifactStoreName'] as String).input(),
+      publisherName: (map['publisherName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class GetRouteServicesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
   GetRouteServicesArgs({
-    pulumi.Output<String>? accessRegionId,
-    required pulumi.Output<String> cenId,
-    pulumi.Output<String>? host,
-    pulumi.Output<String>? hostRegionId,
-    pulumi.Output<String>? hostVpcId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      accessRegionId = pulumi.Input.asOptionalInput<String>(accessRegionId),
-      cenId = pulumi.Input.asInput<String>(cenId),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      hostRegionId = pulumi.Input.asOptionalInput<String>(hostRegionId),
-      hostVpcId = pulumi.Input.asOptionalInput<String>(hostVpcId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.accessRegionId,
+    required this.cenId,
+    this.host,
+    this.hostRegionId,
+    this.hostVpcId,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetRouteServicesArgs {
 
   factory GetRouteServicesArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteServicesArgs(
-      accessRegionId: map['accessRegionId'] == null ? null : pulumi.Output.create<String>(map['accessRegionId'] as String),
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      hostRegionId: map['hostRegionId'] == null ? null : pulumi.Output.create<String>(map['hostRegionId'] as String),
-      hostVpcId: map['hostVpcId'] == null ? null : pulumi.Output.create<String>(map['hostVpcId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accessRegionId: map['accessRegionId'] == null ? null : (map['accessRegionId'] as String).input(),
+      cenId: (map['cenId'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId'] as String).input(),
+      hostVpcId: map['hostVpcId'] == null ? null : (map['hostVpcId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

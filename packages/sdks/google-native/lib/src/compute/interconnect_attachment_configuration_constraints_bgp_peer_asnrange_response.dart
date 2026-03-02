@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse {
-  final int max;
-  final int min;
+  final pulumi.Input<int> max;
+  final pulumi.Input<int> min;
 
   /// Creates a new [InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse].
   /// [max] Required.
@@ -22,8 +23,8 @@ class InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse {
 
   factory InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse(
-      max: map['max'] as int,
-      min: map['min'] as int,
+      max: (map['max'] as int).input(),
+      min: (map['min'] as int).input(),
     );
   }
 }

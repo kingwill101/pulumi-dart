@@ -18,11 +18,9 @@ class GetProtectionArgs {
   /// [protectionId] Unique identifier for the protection.
   /// [resourceArn] ARN (Amazon Resource Name) of the resource being protected.
   GetProtectionArgs({
-    pulumi.Output<String>? protectionId,
-    pulumi.Output<String>? resourceArn,
-  }) :
-      protectionId = pulumi.Input.asOptionalInput<String>(protectionId),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn);
+    this.protectionId,
+    this.resourceArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetProtectionArgs {
 
   factory GetProtectionArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectionArgs(
-      protectionId: map['protectionId'] == null ? null : pulumi.Output.create<String>(map['protectionId'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
+      protectionId: map['protectionId'] == null ? null : (map['protectionId'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
     );
   }
 }

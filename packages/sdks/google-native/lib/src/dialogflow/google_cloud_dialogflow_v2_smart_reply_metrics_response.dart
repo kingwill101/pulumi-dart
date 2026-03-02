@@ -6,11 +6,11 @@ import 'google_cloud_dialogflow_v2_smart_reply_metrics_top_nmetrics_response.dar
 /// The evaluation metrics for smart reply model.
 class GoogleCloudDialogflowV2SmartReplyMetricsResponse {
   /// Percentage of target participant messages in the evaluation dataset for which similar messages have appeared at least once in the allowlist. Should be [0, 1].
-  final double allowlistCoverage;
+  final pulumi.Input<double> allowlistCoverage;
   /// Total number of conversations used to generate this metric.
-  final String conversationCount;
+  final pulumi.Input<String> conversationCount;
   /// Metrics of top n smart replies, sorted by TopNMetric.n.
-  final List<GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse> topNMetrics;
+  final pulumi.Input<List<GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse>> topNMetrics;
 
   /// Creates a new [GoogleCloudDialogflowV2SmartReplyMetricsResponse].
   /// [allowlistCoverage] Percentage of target participant messages in the evaluation dataset for which similar messages have appeared at least once in the allowlist. Should be [0, 1].
@@ -26,15 +26,15 @@ class GoogleCloudDialogflowV2SmartReplyMetricsResponse {
     return <String, dynamic>{
       'allowlistCoverage': allowlistCoverage,
       'conversationCount': conversationCount,
-      'topNMetrics': pulumi.Input.encodeList<GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse, Map<String, dynamic>>(topNMetrics, (value) => value.toMap()),
+      'topNMetrics': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse>, List<Map<String, dynamic>>>(topNMetrics, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GoogleCloudDialogflowV2SmartReplyMetricsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2SmartReplyMetricsResponse(
-      allowlistCoverage: map['allowlistCoverage'] as double,
-      conversationCount: map['conversationCount'] as String,
-      topNMetrics: pulumi.Input.decodeList<GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse>(map['topNMetrics'], (value) => GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      allowlistCoverage: (map['allowlistCoverage'] as double).input(),
+      conversationCount: (map['conversationCount'] as String).input(),
+      topNMetrics: (pulumi.Input.decodeList<GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse>(map['topNMetrics'], (value) => GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

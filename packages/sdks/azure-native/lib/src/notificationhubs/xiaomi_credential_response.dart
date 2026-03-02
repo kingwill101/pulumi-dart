@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of a NotificationHub XiaomiCredential.
 class XiaomiCredentialResponse {
   /// Gets or sets app secret.
-  final String? appSecret;
+  final pulumi.Input<String>? appSecret;
   /// Gets or sets xiaomi service endpoint.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
 
   /// Creates a new [XiaomiCredentialResponse].
   /// [appSecret] Gets or sets app secret.
@@ -25,8 +26,8 @@ class XiaomiCredentialResponse {
 
   factory XiaomiCredentialResponse.fromMap(Map<String, dynamic> map) {
     return XiaomiCredentialResponse(
-      appSecret: map['appSecret'] == null ? null : map['appSecret'] as String,
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
+      appSecret: map['appSecret'] == null ? null : (map['appSecret'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
     );
   }
 }

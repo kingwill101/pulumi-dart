@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plugin_config_template_auth_config_template_service_account.dart';
 
 class PluginConfigTemplateAuthConfigTemplate {
   /// Config for Google service account authentication.
   /// Structure is documented below.
-  final PluginConfigTemplateAuthConfigTemplateServiceAccount? serviceAccount;
+  final pulumi.Input<PluginConfigTemplateAuthConfigTemplateServiceAccount>? serviceAccount;
   /// The list of authentication types supported by the plugin.
-  final List<String> supportedAuthTypes;
+  final pulumi.Input<List<String>> supportedAuthTypes;
 
   /// Creates a new [PluginConfigTemplateAuthConfigTemplate].
   /// [serviceAccount] Config for Google service account authentication.
@@ -19,15 +20,15 @@ class PluginConfigTemplateAuthConfigTemplate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serviceAccount': ?serviceAccount == null ? null : serviceAccount!.toMap(),
+      'serviceAccount': ?pulumi.Input.mapOptionalInputValue<PluginConfigTemplateAuthConfigTemplateServiceAccount, Map<String, dynamic>>(serviceAccount, (value) => value.toMap()),
       'supportedAuthTypes': supportedAuthTypes,
     };
   }
 
   factory PluginConfigTemplateAuthConfigTemplate.fromMap(Map<String, dynamic> map) {
     return PluginConfigTemplateAuthConfigTemplate(
-      serviceAccount: map['serviceAccount'] == null ? null : PluginConfigTemplateAuthConfigTemplateServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>()),
-      supportedAuthTypes: (map['supportedAuthTypes'] as List).cast<String>(),
+      serviceAccount: map['serviceAccount'] == null ? null : (PluginConfigTemplateAuthConfigTemplateServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
+      supportedAuthTypes: ((map['supportedAuthTypes'] as List).cast<String>()).input(),
     );
   }
 }

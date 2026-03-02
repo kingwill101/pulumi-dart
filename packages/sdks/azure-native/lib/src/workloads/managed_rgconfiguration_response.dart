@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed resource group configuration
 class ManagedRGConfigurationResponse {
   /// Managed resource group name
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ManagedRGConfigurationResponse].
   /// [name] Managed resource group name
@@ -20,7 +21,7 @@ class ManagedRGConfigurationResponse {
 
   factory ManagedRGConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ManagedRGConfigurationResponse(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

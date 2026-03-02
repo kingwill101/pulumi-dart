@@ -14,11 +14,9 @@ class GetGuestPolicyArgs {
   /// [guestPolicyId] Required.
   /// [project] Optional.
   GetGuestPolicyArgs({
-    required pulumi.Output<String> guestPolicyId,
-    pulumi.Output<String>? project,
-  }) :
-      guestPolicyId = pulumi.Input.asInput<String>(guestPolicyId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.guestPolicyId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetGuestPolicyArgs {
 
   factory GetGuestPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetGuestPolicyArgs(
-      guestPolicyId: pulumi.Output.create<String>(map['guestPolicyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      guestPolicyId: (map['guestPolicyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

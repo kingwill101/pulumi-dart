@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A more specific scope used to identify the alerts to suppress.
 class ScopeElementResponse {
   /// The alert entity type to suppress by.
-  final String? field;
+  final pulumi.Input<String>? field;
 
   /// Creates a new [ScopeElementResponse].
   /// [field] The alert entity type to suppress by.
@@ -20,7 +21,7 @@ class ScopeElementResponse {
 
   factory ScopeElementResponse.fromMap(Map<String, dynamic> map) {
     return ScopeElementResponse(
-      field: map['field'] == null ? null : map['field'] as String,
+      field: map['field'] == null ? null : (map['field'] as String).input(),
     );
   }
 }

@@ -56,35 +56,21 @@ class CustomModelArgs {
   /// [validationDataConfig] Information about the validation dataset.
   /// [vpcConfig] Configuration parameters for the private Virtual Private Cloud (VPC) that contains the resources you are using for this job.
   CustomModelArgs({
-    required pulumi.Output<String> baseModelIdentifier,
-    pulumi.Output<String>? customModelKmsKeyId,
-    required pulumi.Output<String> customModelName,
-    pulumi.Output<String>? customizationType,
-    required pulumi.Output<Map<String, String>> hyperparameters,
-    required pulumi.Output<String> jobName,
-    required pulumi.Output<CustomModelOutputDataConfig> outputDataConfig,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<CustomModelTimeouts>? timeouts,
-    required pulumi.Output<CustomModelTrainingDataConfig> trainingDataConfig,
-    pulumi.Output<CustomModelValidationDataConfig>? validationDataConfig,
-    pulumi.Output<CustomModelVpcConfig>? vpcConfig,
-  }) :
-      baseModelIdentifier = pulumi.Input.asInput<String>(baseModelIdentifier),
-      customModelKmsKeyId = pulumi.Input.asOptionalInput<String>(customModelKmsKeyId),
-      customModelName = pulumi.Input.asInput<String>(customModelName),
-      customizationType = pulumi.Input.asOptionalInput<String>(customizationType),
-      hyperparameters = pulumi.Input.asInput<Map<String, String>>(hyperparameters),
-      jobName = pulumi.Input.asInput<String>(jobName),
-      outputDataConfig = pulumi.Input.asInput<CustomModelOutputDataConfig>(outputDataConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<CustomModelTimeouts>(timeouts),
-      trainingDataConfig = pulumi.Input.asInput<CustomModelTrainingDataConfig>(trainingDataConfig),
-      validationDataConfig = pulumi.Input.asOptionalInput<CustomModelValidationDataConfig>(validationDataConfig),
-      vpcConfig = pulumi.Input.asOptionalInput<CustomModelVpcConfig>(vpcConfig);
+    required this.baseModelIdentifier,
+    this.customModelKmsKeyId,
+    required this.customModelName,
+    this.customizationType,
+    required this.hyperparameters,
+    required this.jobName,
+    required this.outputDataConfig,
+    this.region,
+    required this.roleArn,
+    this.tags,
+    this.timeouts,
+    required this.trainingDataConfig,
+    this.validationDataConfig,
+    this.vpcConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class CustomModelArgs {
 
   factory CustomModelArgs.fromMap(Map<String, dynamic> map) {
     return CustomModelArgs(
-      baseModelIdentifier: pulumi.Output.create<String>(map['baseModelIdentifier'] as String),
-      customModelKmsKeyId: map['customModelKmsKeyId'] == null ? null : pulumi.Output.create<String>(map['customModelKmsKeyId'] as String),
-      customModelName: pulumi.Output.create<String>(map['customModelName'] as String),
-      customizationType: map['customizationType'] == null ? null : pulumi.Output.create<String>(map['customizationType'] as String),
-      hyperparameters: pulumi.Output.create<Map<String, String>>((map['hyperparameters'] as Map).cast<String, String>()),
-      jobName: pulumi.Output.create<String>(map['jobName'] as String),
-      outputDataConfig: pulumi.Output.create<CustomModelOutputDataConfig>(CustomModelOutputDataConfig.fromMap((map['outputDataConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<CustomModelTimeouts>(CustomModelTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      trainingDataConfig: pulumi.Output.create<CustomModelTrainingDataConfig>(CustomModelTrainingDataConfig.fromMap((map['trainingDataConfig'] as Map).cast<String, dynamic>())),
-      validationDataConfig: map['validationDataConfig'] == null ? null : pulumi.Output.create<CustomModelValidationDataConfig>(CustomModelValidationDataConfig.fromMap((map['validationDataConfig'] as Map).cast<String, dynamic>())),
-      vpcConfig: map['vpcConfig'] == null ? null : pulumi.Output.create<CustomModelVpcConfig>(CustomModelVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())),
+      baseModelIdentifier: (map['baseModelIdentifier'] as String).input(),
+      customModelKmsKeyId: map['customModelKmsKeyId'] == null ? null : (map['customModelKmsKeyId'] as String).input(),
+      customModelName: (map['customModelName'] as String).input(),
+      customizationType: map['customizationType'] == null ? null : (map['customizationType'] as String).input(),
+      hyperparameters: ((map['hyperparameters'] as Map).cast<String, String>()).input(),
+      jobName: (map['jobName'] as String).input(),
+      outputDataConfig: (CustomModelOutputDataConfig.fromMap((map['outputDataConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (CustomModelTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      trainingDataConfig: (CustomModelTrainingDataConfig.fromMap((map['trainingDataConfig'] as Map).cast<String, dynamic>())).input(),
+      validationDataConfig: map['validationDataConfig'] == null ? null : (CustomModelValidationDataConfig.fromMap((map['validationDataConfig'] as Map).cast<String, dynamic>())).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : (CustomModelVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

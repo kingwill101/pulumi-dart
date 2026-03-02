@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Condition for a discount.
 class ConditionsItem {
-  final String? conditionName;
-  final String? type;
+  final pulumi.Input<String>? conditionName;
+  final pulumi.Input<String>? type;
   /// These items are open-ended strings.
-  final List<String>? value;
+  final pulumi.Input<List<String>>? value;
 
   /// Creates a new [ConditionsItem].
   /// [conditionName] Optional.
@@ -28,9 +29,9 @@ class ConditionsItem {
 
   factory ConditionsItem.fromMap(Map<String, dynamic> map) {
     return ConditionsItem(
-      conditionName: map['conditionName'] == null ? null : map['conditionName'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : (map['value'] as List).cast<String>(),
+      conditionName: map['conditionName'] == null ? null : (map['conditionName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : ((map['value'] as List).cast<String>()).input(),
     );
   }
 }

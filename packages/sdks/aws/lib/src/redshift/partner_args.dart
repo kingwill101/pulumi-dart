@@ -25,17 +25,12 @@ class PartnerArgs {
   /// [partnerName] The name of the partner that is authorized to send data.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PartnerArgs({
-    required pulumi.Output<String> accountId,
-    required pulumi.Output<String> clusterIdentifier,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> partnerName,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      partnerName = pulumi.Input.asInput<String>(partnerName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.accountId,
+    required this.clusterIdentifier,
+    required this.databaseName,
+    required this.partnerName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PartnerArgs {
 
   factory PartnerArgs.fromMap(Map<String, dynamic> map) {
     return PartnerArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      clusterIdentifier: pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      partnerName: pulumi.Output.create<String>(map['partnerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: (map['accountId'] as String).input(),
+      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      partnerName: (map['partnerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

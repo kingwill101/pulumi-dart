@@ -28,19 +28,13 @@ class SnatEntryArgs {
   /// [sourceCidr] The source CIDR block specified in the SNAT entry.
   /// [sourceVswitchId] The ID of the vSwitch.
   SnatEntryArgs({
-    pulumi.Output<int>? eipAffinity,
-    pulumi.Output<String>? snatEntryName,
-    required pulumi.Output<String> snatIp,
-    required pulumi.Output<String> snatTableId,
-    pulumi.Output<String>? sourceCidr,
-    pulumi.Output<String>? sourceVswitchId,
-  }) :
-      eipAffinity = pulumi.Input.asOptionalInput<int>(eipAffinity),
-      snatEntryName = pulumi.Input.asOptionalInput<String>(snatEntryName),
-      snatIp = pulumi.Input.asInput<String>(snatIp),
-      snatTableId = pulumi.Input.asInput<String>(snatTableId),
-      sourceCidr = pulumi.Input.asOptionalInput<String>(sourceCidr),
-      sourceVswitchId = pulumi.Input.asOptionalInput<String>(sourceVswitchId);
+    this.eipAffinity,
+    this.snatEntryName,
+    required this.snatIp,
+    required this.snatTableId,
+    this.sourceCidr,
+    this.sourceVswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SnatEntryArgs {
 
   factory SnatEntryArgs.fromMap(Map<String, dynamic> map) {
     return SnatEntryArgs(
-      eipAffinity: map['eipAffinity'] == null ? null : pulumi.Output.create<int>(map['eipAffinity'] as int),
-      snatEntryName: map['snatEntryName'] == null ? null : pulumi.Output.create<String>(map['snatEntryName'] as String),
-      snatIp: pulumi.Output.create<String>(map['snatIp'] as String),
-      snatTableId: pulumi.Output.create<String>(map['snatTableId'] as String),
-      sourceCidr: map['sourceCidr'] == null ? null : pulumi.Output.create<String>(map['sourceCidr'] as String),
-      sourceVswitchId: map['sourceVswitchId'] == null ? null : pulumi.Output.create<String>(map['sourceVswitchId'] as String),
+      eipAffinity: map['eipAffinity'] == null ? null : (map['eipAffinity'] as int).input(),
+      snatEntryName: map['snatEntryName'] == null ? null : (map['snatEntryName'] as String).input(),
+      snatIp: (map['snatIp'] as String).input(),
+      snatTableId: (map['snatTableId'] as String).input(),
+      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr'] as String).input(),
+      sourceVswitchId: map['sourceVswitchId'] == null ? null : (map['sourceVswitchId'] as String).input(),
     );
   }
 }

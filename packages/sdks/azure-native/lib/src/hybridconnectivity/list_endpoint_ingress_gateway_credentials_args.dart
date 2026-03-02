@@ -22,15 +22,11 @@ class ListEndpointIngressGatewayCredentialsArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [serviceName] The name of the service. If not provided, the request will by pass the generation of service configuration token.
   ListEndpointIngressGatewayCredentialsArgs({
-    required pulumi.Output<String> endpointName,
-    pulumi.Output<int>? expiresin,
-    required pulumi.Output<String> resourceUri,
-    pulumi.Output<String>? serviceName,
-  }) :
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      expiresin = pulumi.Input.asOptionalInput<int>(expiresin),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName);
+    required this.endpointName,
+    this.expiresin,
+    required this.resourceUri,
+    this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListEndpointIngressGatewayCredentialsArgs {
 
   factory ListEndpointIngressGatewayCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return ListEndpointIngressGatewayCredentialsArgs(
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      expiresin: map['expiresin'] == null ? null : pulumi.Output.create<int>(map['expiresin'] as int),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
+      endpointName: (map['endpointName'] as String).input(),
+      expiresin: map['expiresin'] == null ? null : (map['expiresin'] as int).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
     );
   }
 }

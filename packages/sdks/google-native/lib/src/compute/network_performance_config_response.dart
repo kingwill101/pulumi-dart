@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkPerformanceConfigResponse {
-  final String externalIpEgressBandwidthTier;
-  final String totalEgressBandwidthTier;
+  final pulumi.Input<String> externalIpEgressBandwidthTier;
+  final pulumi.Input<String> totalEgressBandwidthTier;
 
   /// Creates a new [NetworkPerformanceConfigResponse].
   /// [externalIpEgressBandwidthTier] Required.
@@ -22,8 +23,8 @@ class NetworkPerformanceConfigResponse {
 
   factory NetworkPerformanceConfigResponse.fromMap(Map<String, dynamic> map) {
     return NetworkPerformanceConfigResponse(
-      externalIpEgressBandwidthTier: map['externalIpEgressBandwidthTier'] as String,
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] as String,
+      externalIpEgressBandwidthTier: (map['externalIpEgressBandwidthTier'] as String).input(),
+      totalEgressBandwidthTier: (map['totalEgressBandwidthTier'] as String).input(),
     );
   }
 }

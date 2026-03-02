@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of the resource referenced by an asset.
 class GoogleCloudDataplexV1AssetResourceStatusResponse {
   /// Service account associated with the BigQuery Connection.
-  final String managedAccessIdentity;
+  final pulumi.Input<String> managedAccessIdentity;
   /// Additional information about the current state.
-  final String message;
+  final pulumi.Input<String> message;
   /// The current state of the managed resource.
-  final String state;
+  final pulumi.Input<String> state;
   /// Last update time of the status.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GoogleCloudDataplexV1AssetResourceStatusResponse].
   /// [managedAccessIdentity] Service account associated with the BigQuery Connection.
@@ -35,10 +36,10 @@ class GoogleCloudDataplexV1AssetResourceStatusResponse {
 
   factory GoogleCloudDataplexV1AssetResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1AssetResourceStatusResponse(
-      managedAccessIdentity: map['managedAccessIdentity'] as String,
-      message: map['message'] as String,
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
+      managedAccessIdentity: (map['managedAccessIdentity'] as String).input(),
+      message: (map['message'] as String).input(),
+      state: (map['state'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

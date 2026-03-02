@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsFunctionAppSlotSiteCredential {
   /// The Site Credentials Username used for publishing.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The Site Credentials Password used for publishing.
-  final String? password;
+  final pulumi.Input<String>? password;
 
   /// Creates a new [WindowsFunctionAppSlotSiteCredential].
   /// [name] The Site Credentials Username used for publishing.
@@ -24,8 +25,8 @@ class WindowsFunctionAppSlotSiteCredential {
 
   factory WindowsFunctionAppSlotSiteCredential.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppSlotSiteCredential(
-      name: map['name'] == null ? null : map['name'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
     );
   }
 }

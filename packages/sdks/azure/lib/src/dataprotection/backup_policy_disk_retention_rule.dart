@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_disk_retention_rule_criteria.dart';
 
 class BackupPolicyDiskRetentionRule {
   /// A `criteria` block as defined below. Changing this forces a new Backup Policy Disk to be created.
-  final BackupPolicyDiskRetentionRuleCriteria criteria;
+  final pulumi.Input<BackupPolicyDiskRetentionRuleCriteria> criteria;
   /// Duration of deletion after given timespan. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Disk to be created.
-  final String duration;
+  final pulumi.Input<String> duration;
   /// The name which should be used for this retention rule. Changing this forces a new Backup Policy Disk to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// Retention Tag priority. Changing this forces a new Backup Policy Disk to be created.
-  final int priority;
+  final pulumi.Input<int> priority;
 
   /// Creates a new [BackupPolicyDiskRetentionRule].
   /// [criteria] A `criteria` block as defined below. Changing this forces a new Backup Policy Disk to be created.
@@ -26,7 +27,7 @@ class BackupPolicyDiskRetentionRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'criteria': criteria.toMap(),
+      'criteria': pulumi.Input.mapInputValue<BackupPolicyDiskRetentionRuleCriteria, Map<String, dynamic>>(criteria, (value) => value.toMap()),
       'duration': duration,
       'name': name,
       'priority': priority,
@@ -35,10 +36,10 @@ class BackupPolicyDiskRetentionRule {
 
   factory BackupPolicyDiskRetentionRule.fromMap(Map<String, dynamic> map) {
     return BackupPolicyDiskRetentionRule(
-      criteria: BackupPolicyDiskRetentionRuleCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>()),
-      duration: map['duration'] as String,
-      name: map['name'] as String,
-      priority: map['priority'] as int,
+      criteria: (BackupPolicyDiskRetentionRuleCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
+      duration: (map['duration'] as String).input(),
+      name: (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
     );
   }
 }

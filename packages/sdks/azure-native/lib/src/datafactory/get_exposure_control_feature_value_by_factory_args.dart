@@ -22,15 +22,11 @@ class GetExposureControlFeatureValueByFactoryArgs {
   /// [featureType] The feature type.
   /// [resourceGroupName] The resource group name.
   GetExposureControlFeatureValueByFactoryArgs({
-    required pulumi.Output<String> factoryName,
-    pulumi.Output<String>? featureName,
-    pulumi.Output<String>? featureType,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      featureName = pulumi.Input.asOptionalInput<String>(featureName),
-      featureType = pulumi.Input.asOptionalInput<String>(featureType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.factoryName,
+    this.featureName,
+    this.featureType,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetExposureControlFeatureValueByFactoryArgs {
 
   factory GetExposureControlFeatureValueByFactoryArgs.fromMap(Map<String, dynamic> map) {
     return GetExposureControlFeatureValueByFactoryArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      featureName: map['featureName'] == null ? null : pulumi.Output.create<String>(map['featureName'] as String),
-      featureType: map['featureType'] == null ? null : pulumi.Output.create<String>(map['featureType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
+      featureType: map['featureType'] == null ? null : (map['featureType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

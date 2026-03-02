@@ -28,15 +28,11 @@ class CustomDomainArgs {
   /// [containerAppId] The ID of the Container App to which this Custom Domain should be bound. Changing this forces a new resource to be created.
   /// [name] The fully qualified name of the Custom Domain. Must be the CN or a named SAN in the certificate specified by the `container_app_environment_certificate_id`. Changing this forces a new resource to be created.
   CustomDomainArgs({
-    pulumi.Output<String>? certificateBindingType,
-    pulumi.Output<String>? containerAppEnvironmentCertificateId,
-    required pulumi.Output<String> containerAppId,
-    pulumi.Output<String>? name,
-  }) :
-      certificateBindingType = pulumi.Input.asOptionalInput<String>(certificateBindingType),
-      containerAppEnvironmentCertificateId = pulumi.Input.asOptionalInput<String>(containerAppEnvironmentCertificateId),
-      containerAppId = pulumi.Input.asInput<String>(containerAppId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.certificateBindingType,
+    this.containerAppEnvironmentCertificateId,
+    required this.containerAppId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class CustomDomainArgs {
 
   factory CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainArgs(
-      certificateBindingType: map['certificateBindingType'] == null ? null : pulumi.Output.create<String>(map['certificateBindingType'] as String),
-      containerAppEnvironmentCertificateId: map['containerAppEnvironmentCertificateId'] == null ? null : pulumi.Output.create<String>(map['containerAppEnvironmentCertificateId'] as String),
-      containerAppId: pulumi.Output.create<String>(map['containerAppId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      certificateBindingType: map['certificateBindingType'] == null ? null : (map['certificateBindingType'] as String).input(),
+      containerAppEnvironmentCertificateId: map['containerAppEnvironmentCertificateId'] == null ? null : (map['containerAppEnvironmentCertificateId'] as String).input(),
+      containerAppId: (map['containerAppId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -20,13 +20,10 @@ class VolumeTypeAccessV3State {
   /// [region] The region in which to create the volume. If
   /// [volumeTypeId] ID of the volume type to give access to. Changing
   VolumeTypeAccessV3State({
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? volumeTypeId,
-  }) :
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      volumeTypeId = pulumi.Input.asOptionalInput<String>(volumeTypeId);
+    this.projectId,
+    this.region,
+    this.volumeTypeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class VolumeTypeAccessV3State {
 
   factory VolumeTypeAccessV3State.fromMap(Map<String, dynamic> map) {
     return VolumeTypeAccessV3State(
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      volumeTypeId: map['volumeTypeId'] == null ? null : pulumi.Output.create<String>(map['volumeTypeId'] as String),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      volumeTypeId: map['volumeTypeId'] == null ? null : (map['volumeTypeId'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterfacePublicIpv6Range {
   /// The IPv6 range.
-  final String range;
+  final pulumi.Input<String> range;
 
   /// Creates a new [InterfacePublicIpv6Range].
   /// [range] The IPv6 range.
@@ -19,7 +20,7 @@ class InterfacePublicIpv6Range {
 
   factory InterfacePublicIpv6Range.fromMap(Map<String, dynamic> map) {
     return InterfacePublicIpv6Range(
-      range: map['range'] as String,
+      range: (map['range'] as String).input(),
     );
   }
 }

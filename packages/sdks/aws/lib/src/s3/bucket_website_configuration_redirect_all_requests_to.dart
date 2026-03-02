@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketWebsiteConfigurationRedirectAllRequestsTo {
   /// Name of the host where requests are redirected.
-  final String hostName;
+  final pulumi.Input<String> hostName;
   /// Protocol to use when redirecting requests. The default is the protocol that is used in the original request. Valid values: `http`, `https`.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
 
   /// Creates a new [BucketWebsiteConfigurationRedirectAllRequestsTo].
   /// [hostName] Name of the host where requests are redirected.
@@ -24,8 +25,8 @@ class BucketWebsiteConfigurationRedirectAllRequestsTo {
 
   factory BucketWebsiteConfigurationRedirectAllRequestsTo.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteConfigurationRedirectAllRequestsTo(
-      hostName: map['hostName'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
+      hostName: (map['hostName'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
     );
   }
 }

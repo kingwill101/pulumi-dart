@@ -34,23 +34,15 @@ class AccountArgs {
   /// [scalableExecution] When enabled, Playwright client workers can connect to cloud-hosted browsers. This can increase the number of parallel workers for a test run, significantly minimizing test completion durations.
   /// [tags] Resource tags.
   AccountArgs({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<String>? localAuth,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? regionalAffinity,
-    pulumi.Output<String>? reporting,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scalableExecution,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      localAuth = pulumi.Input.asOptionalInput<String>(localAuth),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      regionalAffinity = pulumi.Input.asOptionalInput<String>(regionalAffinity),
-      reporting = pulumi.Input.asOptionalInput<String>(reporting),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scalableExecution = pulumi.Input.asOptionalInput<String>(scalableExecution),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accountName,
+    this.localAuth,
+    this.location,
+    this.regionalAffinity,
+    this.reporting,
+    required this.resourceGroupName,
+    this.scalableExecution,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      localAuth: map['localAuth'] == null ? null : pulumi.Output.create<String>(map['localAuth'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      regionalAffinity: map['regionalAffinity'] == null ? null : pulumi.Output.create<String>(map['regionalAffinity'] as String),
-      reporting: map['reporting'] == null ? null : pulumi.Output.create<String>(map['reporting'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scalableExecution: map['scalableExecution'] == null ? null : pulumi.Output.create<String>(map['scalableExecution'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      localAuth: map['localAuth'] == null ? null : (map['localAuth'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      regionalAffinity: map['regionalAffinity'] == null ? null : (map['regionalAffinity'] as String).input(),
+      reporting: map['reporting'] == null ? null : (map['reporting'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scalableExecution: map['scalableExecution'] == null ? null : (map['scalableExecution'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

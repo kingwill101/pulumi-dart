@@ -56,27 +56,17 @@ class CertificateArgs {
   /// [pool] The name of the CaPool this Certificate belongs to.
   /// [project] The ID of the project in which the resource belongs.
   CertificateArgs({
-    pulumi.Output<String>? certificateAuthority,
-    pulumi.Output<String>? certificateTemplate,
-    pulumi.Output<CertificateConfig>? config,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? lifetime,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pemCsr,
-    required pulumi.Output<String> pool,
-    pulumi.Output<String>? project,
-  }) :
-      certificateAuthority = pulumi.Input.asOptionalInput<String>(certificateAuthority),
-      certificateTemplate = pulumi.Input.asOptionalInput<String>(certificateTemplate),
-      config = pulumi.Input.asOptionalInput<CertificateConfig>(config),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      lifetime = pulumi.Input.asOptionalInput<String>(lifetime),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pemCsr = pulumi.Input.asOptionalInput<String>(pemCsr),
-      pool = pulumi.Input.asInput<String>(pool),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.certificateAuthority,
+    this.certificateTemplate,
+    this.config,
+    this.labels,
+    this.lifetime,
+    required this.location,
+    this.name,
+    this.pemCsr,
+    required this.pool,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,16 +85,16 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateAuthority: map['certificateAuthority'] == null ? null : pulumi.Output.create<String>(map['certificateAuthority'] as String),
-      certificateTemplate: map['certificateTemplate'] == null ? null : pulumi.Output.create<String>(map['certificateTemplate'] as String),
-      config: map['config'] == null ? null : pulumi.Output.create<CertificateConfig>(CertificateConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      lifetime: map['lifetime'] == null ? null : pulumi.Output.create<String>(map['lifetime'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pemCsr: map['pemCsr'] == null ? null : pulumi.Output.create<String>(map['pemCsr'] as String),
-      pool: pulumi.Output.create<String>(map['pool'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      certificateAuthority: map['certificateAuthority'] == null ? null : (map['certificateAuthority'] as String).input(),
+      certificateTemplate: map['certificateTemplate'] == null ? null : (map['certificateTemplate'] as String).input(),
+      config: map['config'] == null ? null : (CertificateConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      lifetime: map['lifetime'] == null ? null : (map['lifetime'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pemCsr: map['pemCsr'] == null ? null : (map['pemCsr'] as String).input(),
+      pool: (map['pool'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

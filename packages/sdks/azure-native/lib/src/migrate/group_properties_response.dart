@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of group resource.
 class GroupPropertiesResponse {
   /// If the assessments are in running state.
-  final bool areAssessmentsRunning;
+  final pulumi.Input<bool> areAssessmentsRunning;
   /// List of References to Assessments created on this group.
-  final List<String> assessments;
+  final pulumi.Input<List<String>> assessments;
   /// Time when this group was created. Date-Time represented in ISO-8601 format.
-  final String createdTimestamp;
+  final pulumi.Input<String> createdTimestamp;
   /// Whether the group has been created and is valid.
-  final String groupStatus;
+  final pulumi.Input<String> groupStatus;
   /// The type of group.
-  final String? groupType;
+  final pulumi.Input<String>? groupType;
   /// Number of machines part of this group.
-  final int machineCount;
+  final pulumi.Input<int> machineCount;
   /// Time when this group was last updated. Date-Time represented in ISO-8601 format.
-  final String updatedTimestamp;
+  final pulumi.Input<String> updatedTimestamp;
 
   /// Creates a new [GroupPropertiesResponse].
   /// [areAssessmentsRunning] If the assessments are in running state.
@@ -50,13 +51,13 @@ class GroupPropertiesResponse {
 
   factory GroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GroupPropertiesResponse(
-      areAssessmentsRunning: map['areAssessmentsRunning'] as bool,
-      assessments: (map['assessments'] as List).cast<String>(),
-      createdTimestamp: map['createdTimestamp'] as String,
-      groupStatus: map['groupStatus'] as String,
-      groupType: map['groupType'] == null ? null : map['groupType'] as String,
-      machineCount: map['machineCount'] as int,
-      updatedTimestamp: map['updatedTimestamp'] as String,
+      areAssessmentsRunning: (map['areAssessmentsRunning'] as bool).input(),
+      assessments: ((map['assessments'] as List).cast<String>()).input(),
+      createdTimestamp: (map['createdTimestamp'] as String).input(),
+      groupStatus: (map['groupStatus'] as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
+      machineCount: (map['machineCount'] as int).input(),
+      updatedTimestamp: (map['updatedTimestamp'] as String).input(),
     );
   }
 }

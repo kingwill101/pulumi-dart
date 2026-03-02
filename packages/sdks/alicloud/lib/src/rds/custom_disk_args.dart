@@ -65,35 +65,21 @@ class CustomDiskArgs {
   /// [type] The method of expanding the disk. Value range:
   /// [zoneId] The zone ID.
   CustomDiskArgs({
-    pulumi.Output<bool>? autoPay,
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> diskCategory,
-    pulumi.Output<String>? diskName,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? instanceChargeType,
-    pulumi.Output<String>? performanceLevel,
-    pulumi.Output<int>? period,
-    pulumi.Output<String>? periodUnit,
-    required pulumi.Output<int> size,
-    pulumi.Output<String>? snapshotId,
-    pulumi.Output<String>? type,
-    required pulumi.Output<String> zoneId,
-  }) :
-      autoPay = pulumi.Input.asOptionalInput<bool>(autoPay),
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskCategory = pulumi.Input.asInput<String>(diskCategory),
-      diskName = pulumi.Input.asOptionalInput<String>(diskName),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      instanceChargeType = pulumi.Input.asOptionalInput<String>(instanceChargeType),
-      performanceLevel = pulumi.Input.asOptionalInput<String>(performanceLevel),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      periodUnit = pulumi.Input.asOptionalInput<String>(periodUnit),
-      size = pulumi.Input.asInput<int>(size),
-      snapshotId = pulumi.Input.asOptionalInput<String>(snapshotId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.autoPay,
+    this.autoRenew,
+    this.description,
+    required this.diskCategory,
+    this.diskName,
+    this.dryRun,
+    this.instanceChargeType,
+    this.performanceLevel,
+    this.period,
+    this.periodUnit,
+    required this.size,
+    this.snapshotId,
+    this.type,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -116,20 +102,20 @@ class CustomDiskArgs {
 
   factory CustomDiskArgs.fromMap(Map<String, dynamic> map) {
     return CustomDiskArgs(
-      autoPay: map['autoPay'] == null ? null : pulumi.Output.create<bool>(map['autoPay'] as bool),
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskCategory: pulumi.Output.create<String>(map['diskCategory'] as String),
-      diskName: map['diskName'] == null ? null : pulumi.Output.create<String>(map['diskName'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      instanceChargeType: map['instanceChargeType'] == null ? null : pulumi.Output.create<String>(map['instanceChargeType'] as String),
-      performanceLevel: map['performanceLevel'] == null ? null : pulumi.Output.create<String>(map['performanceLevel'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      periodUnit: map['periodUnit'] == null ? null : pulumi.Output.create<String>(map['periodUnit'] as String),
-      size: pulumi.Output.create<int>(map['size'] as int),
-      snapshotId: map['snapshotId'] == null ? null : pulumi.Output.create<String>(map['snapshotId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskCategory: (map['diskCategory'] as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
+      size: (map['size'] as int).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

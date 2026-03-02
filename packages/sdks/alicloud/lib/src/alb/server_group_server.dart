@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerGroupServer {
   /// The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
   ///
   /// > **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
-  final bool? remoteIpEnabled;
+  final pulumi.Input<bool>? remoteIpEnabled;
   /// The ID of the server group.
-  final String? serverGroupId;
+  final pulumi.Input<String>? serverGroupId;
   /// The ID of the backend server. You can specify at most 200 servers in each call.
   ///
   /// *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
@@ -19,11 +20,11 @@ class ServerGroupServer {
   /// *   If the server group is of the `Ip` type, set ServerId to IP addresses.
   ///
   /// > **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
-  final String serverId;
+  final pulumi.Input<String> serverId;
   /// The IP address of the backend server. You can specify at most 200 servers in each call.
   ///
   /// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
-  final String? serverIp;
+  final pulumi.Input<String>? serverIp;
   /// The type of the backend server. You can specify at most 200 servers in each call. Default values:
   ///
   /// - `Ecs`: Elastic Compute Service (ECS) instance
@@ -31,14 +32,14 @@ class ServerGroupServer {
   /// - `Eci`: elastic container instance
   /// - `Ip`: IP address
   /// - `Fc`: Function Compute
-  final String serverType;
+  final pulumi.Input<String> serverType;
   /// The status of the resource
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
   ///
   /// > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
   /// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
-  final int? weight;
+  final pulumi.Input<int>? weight;
 
   /// Creates a new [ServerGroupServer].
   /// [description] The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
@@ -78,15 +79,15 @@ class ServerGroupServer {
 
   factory ServerGroupServer.fromMap(Map<String, dynamic> map) {
     return ServerGroupServer(
-      description: map['description'] == null ? null : map['description'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      remoteIpEnabled: map['remoteIpEnabled'] == null ? null : map['remoteIpEnabled'] as bool,
-      serverGroupId: map['serverGroupId'] == null ? null : map['serverGroupId'] as String,
-      serverId: map['serverId'] as String,
-      serverIp: map['serverIp'] == null ? null : map['serverIp'] as String,
-      serverType: map['serverType'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      remoteIpEnabled: map['remoteIpEnabled'] == null ? null : (map['remoteIpEnabled'] as bool).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      serverIp: map['serverIp'] == null ? null : (map['serverIp'] as String).input(),
+      serverType: (map['serverType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

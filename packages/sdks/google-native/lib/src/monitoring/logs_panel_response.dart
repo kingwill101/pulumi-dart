@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A widget that displays a stream of log.
 class LogsPanelResponse {
   /// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
-  final String filter;
+  final pulumi.Input<String> filter;
   /// The names of logging resources to collect logs for. Currently only projects are supported. If empty, the widget will default to the host project.
-  final List<String> resourceNames;
+  final pulumi.Input<List<String>> resourceNames;
 
   /// Creates a new [LogsPanelResponse].
   /// [filter] A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
@@ -25,8 +26,8 @@ class LogsPanelResponse {
 
   factory LogsPanelResponse.fromMap(Map<String, dynamic> map) {
     return LogsPanelResponse(
-      filter: map['filter'] as String,
-      resourceNames: (map['resourceNames'] as List).cast<String>(),
+      filter: (map['filter'] as String).input(),
+      resourceNames: ((map['resourceNames'] as List).cast<String>()).input(),
     );
   }
 }

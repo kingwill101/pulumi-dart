@@ -22,15 +22,11 @@ class ServerAzureADOnlyAuthenticationArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
   ServerAzureADOnlyAuthenticationArgs({
-    pulumi.Output<String>? authenticationName,
-    required pulumi.Output<bool> azureADOnlyAuthentication,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      authenticationName = pulumi.Input.asOptionalInput<String>(authenticationName),
-      azureADOnlyAuthentication = pulumi.Input.asInput<bool>(azureADOnlyAuthentication),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    this.authenticationName,
+    required this.azureADOnlyAuthentication,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ServerAzureADOnlyAuthenticationArgs {
 
   factory ServerAzureADOnlyAuthenticationArgs.fromMap(Map<String, dynamic> map) {
     return ServerAzureADOnlyAuthenticationArgs(
-      authenticationName: map['authenticationName'] == null ? null : pulumi.Output.create<String>(map['authenticationName'] as String),
-      azureADOnlyAuthentication: pulumi.Output.create<bool>(map['azureADOnlyAuthentication'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName'] as String).input(),
+      azureADOnlyAuthentication: (map['azureADOnlyAuthentication'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

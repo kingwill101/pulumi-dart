@@ -38,25 +38,16 @@ class LocationSmbArgs {
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [user] The user who can mount the share and has file and folder permissions in the SMB share.
   LocationSmbArgs({
-    required pulumi.Output<List<String>> agentArns,
-    pulumi.Output<String>? domain,
-    pulumi.Output<LocationSmbMountOptions>? mountOptions,
-    required pulumi.Output<String> password,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serverHostname,
-    required pulumi.Output<String> subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> user,
-  }) :
-      agentArns = pulumi.Input.asInput<List<String>>(agentArns),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      mountOptions = pulumi.Input.asOptionalInput<LocationSmbMountOptions>(mountOptions),
-      password = pulumi.Input.asInput<String>(password),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverHostname = pulumi.Input.asInput<String>(serverHostname),
-      subdirectory = pulumi.Input.asInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      user = pulumi.Input.asInput<String>(user);
+    required this.agentArns,
+    this.domain,
+    this.mountOptions,
+    required this.password,
+    this.region,
+    required this.serverHostname,
+    required this.subdirectory,
+    this.tags,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class LocationSmbArgs {
 
   factory LocationSmbArgs.fromMap(Map<String, dynamic> map) {
     return LocationSmbArgs(
-      agentArns: pulumi.Output.create<List<String>>((map['agentArns'] as List).cast<String>()),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      mountOptions: map['mountOptions'] == null ? null : pulumi.Output.create<LocationSmbMountOptions>(LocationSmbMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverHostname: pulumi.Output.create<String>(map['serverHostname'] as String),
-      subdirectory: pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      user: pulumi.Output.create<String>(map['user'] as String),
+      agentArns: ((map['agentArns'] as List).cast<String>()).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : (LocationSmbMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())).input(),
+      password: (map['password'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverHostname: (map['serverHostname'] as String).input(),
+      subdirectory: (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

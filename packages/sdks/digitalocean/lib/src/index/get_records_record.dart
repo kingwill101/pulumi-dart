@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRecordsRecord {
   /// The domain name to search for DNS records
-  final String domain;
+  final pulumi.Input<String> domain;
   /// An unsigned integer between 0-255 used for CAA records.
-  final int flags;
+  final pulumi.Input<int> flags;
   /// The ID of the record.
-  final int id;
+  final pulumi.Input<int> id;
   /// The name of the DNS record.
-  final String name;
+  final pulumi.Input<String> name;
   /// The port for SRV records.
-  final int port;
+  final pulumi.Input<int> port;
   /// The priority for SRV and MX records.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The parameter tag for CAA records.
-  final String tag;
+  final pulumi.Input<String> tag;
   /// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
-  final int ttl;
+  final pulumi.Input<int> ttl;
   /// The type of the DNS record.
-  final String type;
+  final pulumi.Input<String> type;
   /// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
-  final String value;
+  final pulumi.Input<String> value;
   /// The weight for SRV records.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetRecordsRecord].
   /// [domain] The domain name to search for DNS records
@@ -69,17 +70,17 @@ class GetRecordsRecord {
 
   factory GetRecordsRecord.fromMap(Map<String, dynamic> map) {
     return GetRecordsRecord(
-      domain: map['domain'] as String,
-      flags: map['flags'] as int,
-      id: map['id'] as int,
-      name: map['name'] as String,
-      port: map['port'] as int,
-      priority: map['priority'] as int,
-      tag: map['tag'] as String,
-      ttl: map['ttl'] as int,
-      type: map['type'] as String,
-      value: map['value'] as String,
-      weight: map['weight'] as int,
+      domain: (map['domain'] as String).input(),
+      flags: (map['flags'] as int).input(),
+      id: (map['id'] as int).input(),
+      name: (map['name'] as String).input(),
+      port: (map['port'] as int).input(),
+      priority: (map['priority'] as int).input(),
+      tag: (map['tag'] as String).input(),
+      ttl: (map['ttl'] as int).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

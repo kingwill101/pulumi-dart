@@ -18,15 +18,11 @@ class GetWorkflowConfigArgs {
   /// [repositoryId] Required.
   /// [workflowConfigId] Required.
   GetWorkflowConfigArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-    required pulumi.Output<String> workflowConfigId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      workflowConfigId = pulumi.Input.asInput<String>(workflowConfigId);
+    required this.location,
+    this.project,
+    required this.repositoryId,
+    required this.workflowConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetWorkflowConfigArgs {
 
   factory GetWorkflowConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowConfigArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
-      workflowConfigId: pulumi.Output.create<String>(map['workflowConfigId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
+      workflowConfigId: (map['workflowConfigId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterBinaryAuthorization {
   /// Enable Binary Authorization for this cluster.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Mode of operation for Binary Authorization policy evaluation.
-  final String evaluationMode;
+  final pulumi.Input<String> evaluationMode;
 
   /// Creates a new [GetClusterBinaryAuthorization].
   /// [enabled] Enable Binary Authorization for this cluster.
@@ -24,8 +25,8 @@ class GetClusterBinaryAuthorization {
 
   factory GetClusterBinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return GetClusterBinaryAuthorization(
-      enabled: map['enabled'] as bool,
-      evaluationMode: map['evaluationMode'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      evaluationMode: (map['evaluationMode'] as String).input(),
     );
   }
 }

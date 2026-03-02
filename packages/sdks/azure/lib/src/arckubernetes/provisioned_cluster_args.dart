@@ -36,23 +36,15 @@ class ProvisionedClusterArgs {
   /// [resourceGroupName] The name of the Resource Group where the Arc Kubernetes Provisioned Cluster should exist. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   /// [tags] A mapping of tags which should be assigned to the Arc Kubernetes Provisioned Cluster.
   ProvisionedClusterArgs({
-    pulumi.Output<bool>? arcAgentAutoUpgradeEnabled,
-    pulumi.Output<String>? arcAgentDesiredVersion,
-    pulumi.Output<ProvisionedClusterAzureActiveDirectory>? azureActiveDirectory,
-    required pulumi.Output<ProvisionedClusterIdentity> identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      arcAgentAutoUpgradeEnabled = pulumi.Input.asOptionalInput<bool>(arcAgentAutoUpgradeEnabled),
-      arcAgentDesiredVersion = pulumi.Input.asOptionalInput<String>(arcAgentDesiredVersion),
-      azureActiveDirectory = pulumi.Input.asOptionalInput<ProvisionedClusterAzureActiveDirectory>(azureActiveDirectory),
-      identity = pulumi.Input.asInput<ProvisionedClusterIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.arcAgentAutoUpgradeEnabled,
+    this.arcAgentDesiredVersion,
+    this.azureActiveDirectory,
+    required this.identity,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class ProvisionedClusterArgs {
 
   factory ProvisionedClusterArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedClusterArgs(
-      arcAgentAutoUpgradeEnabled: map['arcAgentAutoUpgradeEnabled'] == null ? null : pulumi.Output.create<bool>(map['arcAgentAutoUpgradeEnabled'] as bool),
-      arcAgentDesiredVersion: map['arcAgentDesiredVersion'] == null ? null : pulumi.Output.create<String>(map['arcAgentDesiredVersion'] as String),
-      azureActiveDirectory: map['azureActiveDirectory'] == null ? null : pulumi.Output.create<ProvisionedClusterAzureActiveDirectory>(ProvisionedClusterAzureActiveDirectory.fromMap((map['azureActiveDirectory'] as Map).cast<String, dynamic>())),
-      identity: pulumi.Output.create<ProvisionedClusterIdentity>(ProvisionedClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      arcAgentAutoUpgradeEnabled: map['arcAgentAutoUpgradeEnabled'] == null ? null : (map['arcAgentAutoUpgradeEnabled'] as bool).input(),
+      arcAgentDesiredVersion: map['arcAgentDesiredVersion'] == null ? null : (map['arcAgentDesiredVersion'] as String).input(),
+      azureActiveDirectory: map['azureActiveDirectory'] == null ? null : (ProvisionedClusterAzureActiveDirectory.fromMap((map['azureActiveDirectory'] as Map).cast<String, dynamic>())).input(),
+      identity: (ProvisionedClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

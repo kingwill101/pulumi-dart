@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppSiteConfigApplicationStack {
   /// The Current Stack value of the Windows Web App.
-  final String currentStack;
+  final pulumi.Input<String> currentStack;
   /// The docker image, including tag, used by this Windows Web App.
-  final String dockerImageName;
+  final pulumi.Input<String> dockerImageName;
   /// The User Name to use for authentication against the registry to pull the image.
-  final String dockerRegistryPassword;
+  final pulumi.Input<String> dockerRegistryPassword;
   /// The URL of the container registry where the `docker_image_name` is located.
-  final String dockerRegistryUrl;
+  final pulumi.Input<String> dockerRegistryUrl;
   /// The User Name to use for authentication against the registry to pull the image.
-  final String dockerRegistryUsername;
-  final String dotnetCoreVersion;
+  final pulumi.Input<String> dockerRegistryUsername;
+  final pulumi.Input<String> dotnetCoreVersion;
   /// The version of .NET in use.
-  final String dotnetVersion;
+  final pulumi.Input<String> dotnetVersion;
   /// The Java Container in use.
-  final String javaContainer;
+  final pulumi.Input<String> javaContainer;
   /// The Version of the Java Container in use.
-  final String javaContainerVersion;
-  final bool javaEmbeddedServerEnabled;
+  final pulumi.Input<String> javaContainerVersion;
+  final pulumi.Input<bool> javaEmbeddedServerEnabled;
   /// The Version of Java in use.
-  final String javaVersion;
+  final pulumi.Input<String> javaVersion;
   /// The Version of Node in use.
-  final String nodeVersion;
+  final pulumi.Input<String> nodeVersion;
   /// The Version of the PHP in use.
-  final String phpVersion;
-  final bool python;
+  final pulumi.Input<String> phpVersion;
+  final pulumi.Input<bool> python;
   /// The Version of Python in use.
-  final String pythonVersion;
-  final String tomcatVersion;
+  final pulumi.Input<String> pythonVersion;
+  final pulumi.Input<String> tomcatVersion;
 
   /// Creates a new [GetWindowsWebAppSiteConfigApplicationStack].
   /// [currentStack] The Current Stack value of the Windows Web App.
@@ -90,22 +91,22 @@ class GetWindowsWebAppSiteConfigApplicationStack {
 
   factory GetWindowsWebAppSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigApplicationStack(
-      currentStack: map['currentStack'] as String,
-      dockerImageName: map['dockerImageName'] as String,
-      dockerRegistryPassword: map['dockerRegistryPassword'] as String,
-      dockerRegistryUrl: map['dockerRegistryUrl'] as String,
-      dockerRegistryUsername: map['dockerRegistryUsername'] as String,
-      dotnetCoreVersion: map['dotnetCoreVersion'] as String,
-      dotnetVersion: map['dotnetVersion'] as String,
-      javaContainer: map['javaContainer'] as String,
-      javaContainerVersion: map['javaContainerVersion'] as String,
-      javaEmbeddedServerEnabled: map['javaEmbeddedServerEnabled'] as bool,
-      javaVersion: map['javaVersion'] as String,
-      nodeVersion: map['nodeVersion'] as String,
-      phpVersion: map['phpVersion'] as String,
-      python: map['python'] as bool,
-      pythonVersion: map['pythonVersion'] as String,
-      tomcatVersion: map['tomcatVersion'] as String,
+      currentStack: (map['currentStack'] as String).input(),
+      dockerImageName: (map['dockerImageName'] as String).input(),
+      dockerRegistryPassword: (map['dockerRegistryPassword'] as String).input(),
+      dockerRegistryUrl: (map['dockerRegistryUrl'] as String).input(),
+      dockerRegistryUsername: (map['dockerRegistryUsername'] as String).input(),
+      dotnetCoreVersion: (map['dotnetCoreVersion'] as String).input(),
+      dotnetVersion: (map['dotnetVersion'] as String).input(),
+      javaContainer: (map['javaContainer'] as String).input(),
+      javaContainerVersion: (map['javaContainerVersion'] as String).input(),
+      javaEmbeddedServerEnabled: (map['javaEmbeddedServerEnabled'] as bool).input(),
+      javaVersion: (map['javaVersion'] as String).input(),
+      nodeVersion: (map['nodeVersion'] as String).input(),
+      phpVersion: (map['phpVersion'] as String).input(),
+      python: (map['python'] as bool).input(),
+      pythonVersion: (map['pythonVersion'] as String).input(),
+      tomcatVersion: (map['tomcatVersion'] as String).input(),
     );
   }
 }

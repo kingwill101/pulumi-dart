@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'express_route_circuit_peering_id_response.dart';
 import 'routing_configuration_response.dart';
 
 /// ExpressRouteConnection resource.
 class ExpressRouteConnectionResponse {
   /// Authorization key to establish the connection.
-  final String? authorizationKey;
+  final pulumi.Input<String>? authorizationKey;
   /// Enable internet security.
-  final bool? enableInternetSecurity;
+  final pulumi.Input<bool>? enableInternetSecurity;
   /// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
-  final bool? enablePrivateLinkFastPath;
+  final pulumi.Input<bool>? enablePrivateLinkFastPath;
   /// The ExpressRoute circuit peering.
-  final ExpressRouteCircuitPeeringIdResponse expressRouteCircuitPeering;
+  final pulumi.Input<ExpressRouteCircuitPeeringIdResponse> expressRouteCircuitPeering;
   /// Enable FastPath to vWan Firewall hub.
-  final bool? expressRouteGatewayBypass;
+  final pulumi.Input<bool>? expressRouteGatewayBypass;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource.
-  final String name;
+  final pulumi.Input<String> name;
   /// The provisioning state of the express route connection resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final RoutingConfigurationResponse? routingConfiguration;
+  final pulumi.Input<RoutingConfigurationResponse>? routingConfiguration;
   /// The routing weight associated to the connection.
-  final int? routingWeight;
+  final pulumi.Input<int>? routingWeight;
 
   /// Creates a new [ExpressRouteConnectionResponse].
   /// [authorizationKey] Authorization key to establish the connection.
@@ -55,28 +56,28 @@ class ExpressRouteConnectionResponse {
       'authorizationKey': ?authorizationKey,
       'enableInternetSecurity': ?enableInternetSecurity,
       'enablePrivateLinkFastPath': ?enablePrivateLinkFastPath,
-      'expressRouteCircuitPeering': expressRouteCircuitPeering.toMap(),
+      'expressRouteCircuitPeering': pulumi.Input.mapInputValue<ExpressRouteCircuitPeeringIdResponse, Map<String, dynamic>>(expressRouteCircuitPeering, (value) => value.toMap()),
       'expressRouteGatewayBypass': ?expressRouteGatewayBypass,
       'id': ?id,
       'name': name,
       'provisioningState': provisioningState,
-      'routingConfiguration': ?routingConfiguration == null ? null : routingConfiguration!.toMap(),
+      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfigurationResponse, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
       'routingWeight': ?routingWeight,
     };
   }
 
   factory ExpressRouteConnectionResponse.fromMap(Map<String, dynamic> map) {
     return ExpressRouteConnectionResponse(
-      authorizationKey: map['authorizationKey'] == null ? null : map['authorizationKey'] as String,
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : map['enableInternetSecurity'] as bool,
-      enablePrivateLinkFastPath: map['enablePrivateLinkFastPath'] == null ? null : map['enablePrivateLinkFastPath'] as bool,
-      expressRouteCircuitPeering: ExpressRouteCircuitPeeringIdResponse.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>()),
-      expressRouteGatewayBypass: map['expressRouteGatewayBypass'] == null ? null : map['expressRouteGatewayBypass'] as bool,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      routingConfiguration: map['routingConfiguration'] == null ? null : RoutingConfigurationResponse.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>()),
-      routingWeight: map['routingWeight'] == null ? null : map['routingWeight'] as int,
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
+      enablePrivateLinkFastPath: map['enablePrivateLinkFastPath'] == null ? null : (map['enablePrivateLinkFastPath'] as bool).input(),
+      expressRouteCircuitPeering: (ExpressRouteCircuitPeeringIdResponse.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
+      expressRouteGatewayBypass: map['expressRouteGatewayBypass'] == null ? null : (map['expressRouteGatewayBypass'] as bool).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfigurationResponse.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      routingWeight: map['routingWeight'] == null ? null : (map['routingWeight'] as int).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class GetReplicationProtectionContainerMappingArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
   GetReplicationProtectionContainerMappingArgs({
-    required pulumi.Output<String> fabricName,
-    required pulumi.Output<String> mappingName,
-    required pulumi.Output<String> protectionContainerName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      mappingName = pulumi.Input.asInput<String>(mappingName),
-      protectionContainerName = pulumi.Input.asInput<String>(protectionContainerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.fabricName,
+    required this.mappingName,
+    required this.protectionContainerName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetReplicationProtectionContainerMappingArgs {
 
   factory GetReplicationProtectionContainerMappingArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationProtectionContainerMappingArgs(
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      mappingName: pulumi.Output.create<String>(map['mappingName'] as String),
-      protectionContainerName: pulumi.Output.create<String>(map['protectionContainerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      fabricName: (map['fabricName'] as String).input(),
+      mappingName: (map['mappingName'] as String).input(),
+      protectionContainerName: (map['protectionContainerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

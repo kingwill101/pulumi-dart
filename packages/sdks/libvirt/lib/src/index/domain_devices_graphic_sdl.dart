@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_graphic_sdl_gl.dart';
 
 class DomainDevicesGraphicSdl {
   /// Sets the display attribute for SDL graphics configuration.
-  final String? display;
+  final pulumi.Input<String>? display;
   /// Configures whether the SDL graphics output should launch in fullscreen mode.
-  final String? fullScreen;
+  final pulumi.Input<String>? fullScreen;
   /// Sets the OpenGL settings specific to the SDL graphics configuration.
-  final DomainDevicesGraphicSdlGl? gl;
+  final pulumi.Input<DomainDevicesGraphicSdlGl>? gl;
   /// Configures X authentication for the SDL graphics display.
-  final String? xauth;
+  final pulumi.Input<String>? xauth;
 
   /// Creates a new [DomainDevicesGraphicSdl].
   /// [display] Sets the display attribute for SDL graphics configuration.
@@ -28,17 +29,17 @@ class DomainDevicesGraphicSdl {
     return <String, dynamic>{
       'display': ?display,
       'fullScreen': ?fullScreen,
-      'gl': ?gl == null ? null : gl!.toMap(),
+      'gl': ?pulumi.Input.mapOptionalInputValue<DomainDevicesGraphicSdlGl, Map<String, dynamic>>(gl, (value) => value.toMap()),
       'xauth': ?xauth,
     };
   }
 
   factory DomainDevicesGraphicSdl.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSdl(
-      display: map['display'] == null ? null : map['display'] as String,
-      fullScreen: map['fullScreen'] == null ? null : map['fullScreen'] as String,
-      gl: map['gl'] == null ? null : DomainDevicesGraphicSdlGl.fromMap((map['gl'] as Map).cast<String, dynamic>()),
-      xauth: map['xauth'] == null ? null : map['xauth'] as String,
+      display: map['display'] == null ? null : (map['display'] as String).input(),
+      fullScreen: map['fullScreen'] == null ? null : (map['fullScreen'] as String).input(),
+      gl: map['gl'] == null ? null : (DomainDevicesGraphicSdlGl.fromMap((map['gl'] as Map).cast<String, dynamic>())).input(),
+      xauth: map['xauth'] == null ? null : (map['xauth'] as String).input(),
     );
   }
 }

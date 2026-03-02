@@ -25,17 +25,12 @@ class HybridConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userMetadata] The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
   HybridConnectionArgs({
-    pulumi.Output<String>? hybridConnectionName,
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<bool>? requiresClientAuthorization,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? userMetadata,
-  }) :
-      hybridConnectionName = pulumi.Input.asOptionalInput<String>(hybridConnectionName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      requiresClientAuthorization = pulumi.Input.asOptionalInput<bool>(requiresClientAuthorization),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userMetadata = pulumi.Input.asOptionalInput<String>(userMetadata);
+    this.hybridConnectionName,
+    required this.namespaceName,
+    this.requiresClientAuthorization,
+    required this.resourceGroupName,
+    this.userMetadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class HybridConnectionArgs {
 
   factory HybridConnectionArgs.fromMap(Map<String, dynamic> map) {
     return HybridConnectionArgs(
-      hybridConnectionName: map['hybridConnectionName'] == null ? null : pulumi.Output.create<String>(map['hybridConnectionName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : pulumi.Output.create<bool>(map['requiresClientAuthorization'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userMetadata: map['userMetadata'] == null ? null : pulumi.Output.create<String>(map['userMetadata'] as String),
+      hybridConnectionName: map['hybridConnectionName'] == null ? null : (map['hybridConnectionName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : (map['requiresClientAuthorization'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata'] as String).input(),
     );
   }
 }

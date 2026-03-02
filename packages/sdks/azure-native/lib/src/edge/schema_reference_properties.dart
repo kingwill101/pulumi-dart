@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Schema Reference Properties
 class SchemaReferenceProperties {
   /// Schema Id of schema reference
-  final String schemaId;
+  final pulumi.Input<String> schemaId;
 
   /// Creates a new [SchemaReferenceProperties].
   /// [schemaId] Schema Id of schema reference
@@ -20,7 +21,7 @@ class SchemaReferenceProperties {
 
   factory SchemaReferenceProperties.fromMap(Map<String, dynamic> map) {
     return SchemaReferenceProperties(
-      schemaId: map['schemaId'] as String,
+      schemaId: (map['schemaId'] as String).input(),
     );
   }
 }

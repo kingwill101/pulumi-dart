@@ -20,13 +20,10 @@ class DelegationSignerRecordArgs {
   /// [signingAttributes] The information about a key, including the algorithm, public key-value, and flags.
   /// [timeouts] Optional.
   DelegationSignerRecordArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<DelegationSignerRecordSigningAttributes>? signingAttributes,
-    pulumi.Output<DelegationSignerRecordTimeouts>? timeouts,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      signingAttributes = pulumi.Input.asOptionalInput<DelegationSignerRecordSigningAttributes>(signingAttributes),
-      timeouts = pulumi.Input.asOptionalInput<DelegationSignerRecordTimeouts>(timeouts);
+    required this.domainName,
+    this.signingAttributes,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class DelegationSignerRecordArgs {
 
   factory DelegationSignerRecordArgs.fromMap(Map<String, dynamic> map) {
     return DelegationSignerRecordArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      signingAttributes: map['signingAttributes'] == null ? null : pulumi.Output.create<DelegationSignerRecordSigningAttributes>(DelegationSignerRecordSigningAttributes.fromMap((map['signingAttributes'] as Map).cast<String, dynamic>())),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DelegationSignerRecordTimeouts>(DelegationSignerRecordTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      domainName: (map['domainName'] as String).input(),
+      signingAttributes: map['signingAttributes'] == null ? null : (DelegationSignerRecordSigningAttributes.fromMap((map['signingAttributes'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : (DelegationSignerRecordTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

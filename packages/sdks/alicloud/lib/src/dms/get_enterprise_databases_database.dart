@@ -1,41 +1,42 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnterpriseDatabasesDatabase {
   /// The name of the Database Directory.> PG Series databases will display the database name.
-  final String catalogName;
+  final pulumi.Input<String> catalogName;
   /// The ID of the physical library.
-  final String databaseId;
+  final pulumi.Input<String> databaseId;
   /// Database type.
-  final String dbType;
+  final pulumi.Input<String> dbType;
   /// The DBA user ID of the target database.
-  final String dbaId;
+  final pulumi.Input<String> dbaId;
   /// The DBA nickname of the target Library.
-  final String dbaName;
+  final pulumi.Input<String> dbaName;
   /// Database encoding.
-  final String encoding;
+  final pulumi.Input<String> encoding;
   /// The environment type of the database.
-  final String envType;
+  final pulumi.Input<String> envType;
   /// The database connection address.
-  final String host;
+  final pulumi.Input<String> host;
   /// The Database ID, same value as `database_id`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The instance ID of the target database.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Library Owner User ID list.
-  final List<String> ownerIdLists;
+  final pulumi.Input<List<String>> ownerIdLists;
   /// Library Owner nickname list.
-  final List<String> ownerNameLists;
+  final pulumi.Input<List<String>> ownerNameLists;
   /// The connection port of the database.
-  final int port;
+  final pulumi.Input<int> port;
   /// The name of the database.> PG Series databases will display schema names.
-  final String schemaName;
+  final pulumi.Input<String> schemaName;
   /// Library search name.
-  final String searchName;
+  final pulumi.Input<String> searchName;
   /// Database SID.> only Oracle Database Display.
-  final String sid;
+  final pulumi.Input<String> sid;
   /// Library status, value description:-**NORMAL**: NORMAL-**DISABLE**: Disabled-**OFFLINE**: OFFLINE-**NOT_EXIST**: does not exist
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GetEnterpriseDatabasesDatabase].
   /// [catalogName] The name of the Database Directory.> PG Series databases will display the database name.
@@ -99,23 +100,23 @@ class GetEnterpriseDatabasesDatabase {
 
   factory GetEnterpriseDatabasesDatabase.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseDatabasesDatabase(
-      catalogName: map['catalogName'] as String,
-      databaseId: map['databaseId'] as String,
-      dbType: map['dbType'] as String,
-      dbaId: map['dbaId'] as String,
-      dbaName: map['dbaName'] as String,
-      encoding: map['encoding'] as String,
-      envType: map['envType'] as String,
-      host: map['host'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      ownerIdLists: (map['ownerIdLists'] as List).cast<String>(),
-      ownerNameLists: (map['ownerNameLists'] as List).cast<String>(),
-      port: map['port'] as int,
-      schemaName: map['schemaName'] as String,
-      searchName: map['searchName'] as String,
-      sid: map['sid'] as String,
-      state: map['state'] as String,
+      catalogName: (map['catalogName'] as String).input(),
+      databaseId: (map['databaseId'] as String).input(),
+      dbType: (map['dbType'] as String).input(),
+      dbaId: (map['dbaId'] as String).input(),
+      dbaName: (map['dbaName'] as String).input(),
+      encoding: (map['encoding'] as String).input(),
+      envType: (map['envType'] as String).input(),
+      host: (map['host'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      ownerIdLists: ((map['ownerIdLists'] as List).cast<String>()).input(),
+      ownerNameLists: ((map['ownerNameLists'] as List).cast<String>()).input(),
+      port: (map['port'] as int).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      searchName: (map['searchName'] as String).input(),
+      sid: (map['sid'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

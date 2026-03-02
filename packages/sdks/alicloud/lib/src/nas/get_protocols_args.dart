@@ -19,13 +19,10 @@ class GetProtocolsArgs {
   /// [type] The file system type. Valid Values: `Performance` and `Capacity`.
   /// [zoneId] String to filter results by zone id.
   GetProtocolsArgs({
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> type,
-    pulumi.Output<String>? zoneId,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      type = pulumi.Input.asInput<String>(type),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.outputFile,
+    required this.type,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetProtocolsArgs {
 
   factory GetProtocolsArgs.fromMap(Map<String, dynamic> map) {
     return GetProtocolsArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      type: (map['type'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

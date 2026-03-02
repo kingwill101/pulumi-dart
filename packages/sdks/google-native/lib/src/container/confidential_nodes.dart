@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 class ConfidentialNodes {
   /// Whether Confidential Nodes feature is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ConfidentialNodes].
   /// [enabled] Whether Confidential Nodes feature is enabled.
@@ -20,7 +21,7 @@ class ConfidentialNodes {
 
   factory ConfidentialNodes.fromMap(Map<String, dynamic> map) {
     return ConfidentialNodes(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

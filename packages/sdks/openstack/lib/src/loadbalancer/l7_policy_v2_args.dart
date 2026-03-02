@@ -61,31 +61,19 @@ class L7PolicyV2Args {
   /// [region] The region in which to obtain the V2 Networking client.
   /// [tenantId] Required for admins. The UUID of the tenant who owns
   L7PolicyV2Args({
-    required pulumi.Output<String> action,
-    pulumi.Output<bool>? adminStateUp,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> listenerId,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? position,
-    pulumi.Output<int>? redirectHttpCode,
-    pulumi.Output<String>? redirectPoolId,
-    pulumi.Output<String>? redirectPrefix,
-    pulumi.Output<String>? redirectUrl,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tenantId,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      adminStateUp = pulumi.Input.asOptionalInput<bool>(adminStateUp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      listenerId = pulumi.Input.asInput<String>(listenerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      position = pulumi.Input.asOptionalInput<int>(position),
-      redirectHttpCode = pulumi.Input.asOptionalInput<int>(redirectHttpCode),
-      redirectPoolId = pulumi.Input.asOptionalInput<String>(redirectPoolId),
-      redirectPrefix = pulumi.Input.asOptionalInput<String>(redirectPrefix),
-      redirectUrl = pulumi.Input.asOptionalInput<String>(redirectUrl),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    required this.action,
+    this.adminStateUp,
+    this.description,
+    required this.listenerId,
+    this.name,
+    this.position,
+    this.redirectHttpCode,
+    this.redirectPoolId,
+    this.redirectPrefix,
+    this.redirectUrl,
+    this.region,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,18 +94,18 @@ class L7PolicyV2Args {
 
   factory L7PolicyV2Args.fromMap(Map<String, dynamic> map) {
     return L7PolicyV2Args(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      adminStateUp: map['adminStateUp'] == null ? null : pulumi.Output.create<bool>(map['adminStateUp'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      listenerId: pulumi.Output.create<String>(map['listenerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      position: map['position'] == null ? null : pulumi.Output.create<int>(map['position'] as int),
-      redirectHttpCode: map['redirectHttpCode'] == null ? null : pulumi.Output.create<int>(map['redirectHttpCode'] as int),
-      redirectPoolId: map['redirectPoolId'] == null ? null : pulumi.Output.create<String>(map['redirectPoolId'] as String),
-      redirectPrefix: map['redirectPrefix'] == null ? null : pulumi.Output.create<String>(map['redirectPrefix'] as String),
-      redirectUrl: map['redirectUrl'] == null ? null : pulumi.Output.create<String>(map['redirectUrl'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      action: (map['action'] as String).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      position: map['position'] == null ? null : (map['position'] as int).input(),
+      redirectHttpCode: map['redirectHttpCode'] == null ? null : (map['redirectHttpCode'] as int).input(),
+      redirectPoolId: map['redirectPoolId'] == null ? null : (map['redirectPoolId'] as String).input(),
+      redirectPrefix: map['redirectPrefix'] == null ? null : (map['redirectPrefix'] as String).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

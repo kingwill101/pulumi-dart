@@ -8,40 +8,40 @@ import 'parameter_specification_response.dart';
 /// SAP Business Warehouse Open Hub Destination Linked Service.
 class SapOpenHubLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// Client ID of the client on the BW system where the open hub destination is located. (Usually a three-digit decimal number represented as a string) Type: string (or Expression with resultType string).
-  final dynamic clientId;
+  final pulumi.Input<dynamic>? clientId;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// Language of the BW system where the open hub destination is located. The default value is EN. Type: string (or Expression with resultType string).
-  final dynamic language;
+  final pulumi.Input<dynamic>? language;
   /// The Logon Group for the SAP System. Type: string (or Expression with resultType string).
-  final dynamic logonGroup;
+  final pulumi.Input<dynamic>? logonGroup;
   /// The hostname of the SAP Message Server. Type: string (or Expression with resultType string).
-  final dynamic messageServer;
+  final pulumi.Input<dynamic>? messageServer;
   /// The service name or port number of the Message Server. Type: string (or Expression with resultType string).
-  final dynamic messageServerService;
+  final pulumi.Input<dynamic>? messageServerService;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// Password to access the SAP BW server where the open hub destination is located.
-  final AzureKeyVaultSecretReferenceResponse? password;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
   /// Host name of the SAP BW instance where the open hub destination is located. Type: string (or Expression with resultType string).
-  final dynamic server;
+  final pulumi.Input<dynamic>? server;
   /// SystemID of the SAP system where the table is located. Type: string (or Expression with resultType string).
-  final dynamic systemId;
+  final pulumi.Input<dynamic>? systemId;
   /// System number of the BW system where the open hub destination is located. (Usually a two-digit decimal number represented as a string.) Type: string (or Expression with resultType string).
-  final dynamic systemNumber;
+  final pulumi.Input<dynamic>? systemNumber;
   /// Type of linked service.
   /// Expected value is 'SapOpenHub'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Username to access the SAP BW server where the open hub destination is located. Type: string (or Expression with resultType string).
-  final dynamic userName;
+  final pulumi.Input<dynamic>? userName;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [SapOpenHubLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -85,15 +85,15 @@ class SapOpenHubLinkedServiceResponse {
     return <String, dynamic>{
       'annotations': ?annotations,
       'clientId': ?clientId,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'language': ?language,
       'logonGroup': ?logonGroup,
       'messageServer': ?messageServer,
       'messageServerService': ?messageServerService,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
       'server': ?server,
       'systemId': ?systemId,
       'systemNumber': ?systemNumber,
@@ -105,23 +105,23 @@ class SapOpenHubLinkedServiceResponse {
 
   factory SapOpenHubLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return SapOpenHubLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      clientId: map['clientId'] == null ? null : map['clientId'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      language: map['language'] == null ? null : map['language'],
-      logonGroup: map['logonGroup'] == null ? null : map['logonGroup'],
-      messageServer: map['messageServer'] == null ? null : map['messageServer'],
-      messageServerService: map['messageServerService'] == null ? null : map['messageServerService'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      server: map['server'] == null ? null : map['server'],
-      systemId: map['systemId'] == null ? null : map['systemId'],
-      systemNumber: map['systemNumber'] == null ? null : map['systemNumber'],
-      type: map['type'] as String,
-      userName: map['userName'] == null ? null : map['userName'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      language: map['language'] == null ? null : (map['language']).input(),
+      logonGroup: map['logonGroup'] == null ? null : (map['logonGroup']).input(),
+      messageServer: map['messageServer'] == null ? null : (map['messageServer']).input(),
+      messageServerService: map['messageServerService'] == null ? null : (map['messageServerService']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      server: map['server'] == null ? null : (map['server']).input(),
+      systemId: map['systemId'] == null ? null : (map['systemId']).input(),
+      systemNumber: map['systemNumber'] == null ? null : (map['systemNumber']).input(),
+      type: (map['type'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

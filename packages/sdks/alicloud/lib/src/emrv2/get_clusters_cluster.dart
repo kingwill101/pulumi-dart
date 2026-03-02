@@ -5,33 +5,33 @@ import 'get_clusters_cluster_tag.dart';
 
 class GetClustersCluster {
   /// The first ID of the resource.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The cluster name.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
   /// The state of the emr cluster.
-  final String clusterState;
+  final pulumi.Input<String> clusterState;
   /// The type of the emr cluster.
-  final String clusterType;
+  final pulumi.Input<String> clusterType;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ecs default role belongs to this emr cluster.
-  final String emrDefaultRole;
+  final pulumi.Input<String> emrDefaultRole;
   /// The end time of the resource.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The expire time of the resource.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
   /// The payment type of the emr cluster.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The ready time of the resource.
-  final String readyTime;
+  final pulumi.Input<String> readyTime;
   /// The release version of the resource.
-  final String releaseVersion;
+  final pulumi.Input<String> releaseVersion;
   /// The Resource Group ID.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The cluster state change reason.
-  final Map<String, String> stateChangeReason;
+  final pulumi.Input<Map<String, String>> stateChangeReason;
   /// A mapping of tags to assign to the resource.
-  final List<GetClustersClusterTag> tags;
+  final pulumi.Input<List<GetClustersClusterTag>> tags;
 
   /// Creates a new [GetClustersCluster].
   /// [clusterId] The first ID of the resource.
@@ -80,26 +80,26 @@ class GetClustersCluster {
       'releaseVersion': releaseVersion,
       'resourceGroupId': resourceGroupId,
       'stateChangeReason': stateChangeReason,
-      'tags': pulumi.Input.encodeList<GetClustersClusterTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
+      'tags': pulumi.Input.mapInputValue<List<GetClustersClusterTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<GetClustersClusterTag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetClustersCluster(
-      clusterId: map['clusterId'] as String,
-      clusterName: map['clusterName'] as String,
-      clusterState: map['clusterState'] as String,
-      clusterType: map['clusterType'] as String,
-      createTime: map['createTime'] as String,
-      emrDefaultRole: map['emrDefaultRole'] as String,
-      endTime: map['endTime'] as String,
-      expireTime: map['expireTime'] as String,
-      paymentType: map['paymentType'] as String,
-      readyTime: map['readyTime'] as String,
-      releaseVersion: map['releaseVersion'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      stateChangeReason: (map['stateChangeReason'] as Map).cast<String, String>(),
-      tags: pulumi.Input.decodeList<GetClustersClusterTag>(map['tags'], (value) => GetClustersClusterTag.fromMap((value as Map).cast<String, dynamic>())),
+      clusterId: (map['clusterId'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      clusterState: (map['clusterState'] as String).input(),
+      clusterType: (map['clusterType'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      emrDefaultRole: (map['emrDefaultRole'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      readyTime: (map['readyTime'] as String).input(),
+      releaseVersion: (map['releaseVersion'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      stateChangeReason: ((map['stateChangeReason'] as Map).cast<String, String>()).input(),
+      tags: (pulumi.Input.decodeList<GetClustersClusterTag>(map['tags'], (value) => GetClustersClusterTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

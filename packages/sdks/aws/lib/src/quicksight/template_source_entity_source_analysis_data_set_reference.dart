@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TemplateSourceEntitySourceAnalysisDataSetReference {
   /// Dataset Amazon Resource Name (ARN).
-  final String dataSetArn;
+  final pulumi.Input<String> dataSetArn;
   /// Dataset placeholder.
-  final String dataSetPlaceholder;
+  final pulumi.Input<String> dataSetPlaceholder;
 
   /// Creates a new [TemplateSourceEntitySourceAnalysisDataSetReference].
   /// [dataSetArn] Dataset Amazon Resource Name (ARN).
@@ -24,8 +25,8 @@ class TemplateSourceEntitySourceAnalysisDataSetReference {
 
   factory TemplateSourceEntitySourceAnalysisDataSetReference.fromMap(Map<String, dynamic> map) {
     return TemplateSourceEntitySourceAnalysisDataSetReference(
-      dataSetArn: map['dataSetArn'] as String,
-      dataSetPlaceholder: map['dataSetPlaceholder'] as String,
+      dataSetArn: (map['dataSetArn'] as String).input(),
+      dataSetPlaceholder: (map['dataSetPlaceholder'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class SqlFunctionState {
   /// [containerId] The id of the Cosmos DB SQL Container to create the SQL User Defined Function within. Changing this forces a new SQL User Defined Function to be created.
   /// [name] The name which should be used for this SQL User Defined Function. Changing this forces a new SQL User Defined Function to be created.
   SqlFunctionState({
-    pulumi.Output<String>? body,
-    pulumi.Output<String>? containerId,
-    pulumi.Output<String>? name,
-  }) :
-      body = pulumi.Input.asOptionalInput<String>(body),
-      containerId = pulumi.Input.asOptionalInput<String>(containerId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.body,
+    this.containerId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class SqlFunctionState {
 
   factory SqlFunctionState.fromMap(Map<String, dynamic> map) {
     return SqlFunctionState(
-      body: map['body'] == null ? null : pulumi.Output.create<String>(map['body'] as String),
-      containerId: map['containerId'] == null ? null : pulumi.Output.create<String>(map['containerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      containerId: map['containerId'] == null ? null : (map['containerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

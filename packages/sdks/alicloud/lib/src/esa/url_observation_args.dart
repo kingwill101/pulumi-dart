@@ -19,13 +19,10 @@ class UrlObservationArgs {
   /// [siteId] The site ID.
   /// [url] The URL of the page to monitor.
   UrlObservationArgs({
-    required pulumi.Output<String> sdkType,
-    required pulumi.Output<String> siteId,
-    required pulumi.Output<String> url,
-  }) :
-      sdkType = pulumi.Input.asInput<String>(sdkType),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      url = pulumi.Input.asInput<String>(url);
+    required this.sdkType,
+    required this.siteId,
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class UrlObservationArgs {
 
   factory UrlObservationArgs.fromMap(Map<String, dynamic> map) {
     return UrlObservationArgs(
-      sdkType: pulumi.Output.create<String>(map['sdkType'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      url: pulumi.Output.create<String>(map['url'] as String),
+      sdkType: (map['sdkType'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

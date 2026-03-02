@@ -7,29 +7,29 @@ import 'system_data_response.dart';
 /// The ID of the policy definition version.
 class PolicyDefinitionVersionResponse {
   /// The policy definition description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The display name of the policy definition.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The ID of the policy definition version.
-  final String id;
+  final pulumi.Input<String> id;
   /// The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
-  final dynamic metadata;
+  final pulumi.Input<dynamic>? metadata;
   /// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// The name of the policy definition version.
-  final String name;
+  final pulumi.Input<String> name;
   /// The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
-  final Map<String, ParameterDefinitionsValueResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterDefinitionsValueResponse>>? parameters;
   /// The policy rule.
-  final dynamic policyRule;
+  final pulumi.Input<dynamic>? policyRule;
   /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
-  final String? policyType;
+  final pulumi.Input<String>? policyType;
   /// The system metadata relating to this resource.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource (Microsoft.Authorization/policyDefinitions/versions).
-  final String type;
+  final pulumi.Input<String> type;
   /// The policy definition version in #.#.# format.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [PolicyDefinitionVersionResponse].
   /// [description] The policy definition description.
@@ -67,10 +67,10 @@ class PolicyDefinitionVersionResponse {
       'metadata': ?metadata,
       'mode': ?mode,
       'name': name,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterDefinitionsValueResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterDefinitionsValueResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterDefinitionsValueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'policyRule': ?policyRule,
       'policyType': ?policyType,
-      'systemData': systemData.toMap(),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
       'version': ?version,
     };
@@ -78,18 +78,18 @@ class PolicyDefinitionVersionResponse {
 
   factory PolicyDefinitionVersionResponse.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionVersionResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      id: map['id'] as String,
-      metadata: map['metadata'] == null ? null : map['metadata'],
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterDefinitionsValueResponse>(map['parameters'], (value) => ParameterDefinitionsValueResponse.fromMap((value as Map).cast<String, dynamic>())),
-      policyRule: map['policyRule'] == null ? null : map['policyRule'],
-      policyType: map['policyType'] == null ? null : map['policyType'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      id: (map['id'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterDefinitionsValueResponse>(map['parameters'], (value) => ParameterDefinitionsValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyRule: map['policyRule'] == null ? null : (map['policyRule']).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

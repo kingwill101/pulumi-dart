@@ -41,27 +41,17 @@ class CertificateTemplateArgs {
   /// [project] Optional.
   /// [requestId] Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   CertificateTemplateArgs({
-    required pulumi.Output<String> certificateTemplateId,
-    pulumi.Output<String>? description,
-    pulumi.Output<CertificateIdentityConstraints>? identityConstraints,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? maximumLifetime,
-    pulumi.Output<CertificateExtensionConstraints>? passthroughExtensions,
-    pulumi.Output<X509Parameters>? predefinedValues,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-  }) :
-      certificateTemplateId = pulumi.Input.asInput<String>(certificateTemplateId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      identityConstraints = pulumi.Input.asOptionalInput<CertificateIdentityConstraints>(identityConstraints),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maximumLifetime = pulumi.Input.asOptionalInput<String>(maximumLifetime),
-      passthroughExtensions = pulumi.Input.asOptionalInput<CertificateExtensionConstraints>(passthroughExtensions),
-      predefinedValues = pulumi.Input.asOptionalInput<X509Parameters>(predefinedValues),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    required this.certificateTemplateId,
+    this.description,
+    this.identityConstraints,
+    this.labels,
+    this.location,
+    this.maximumLifetime,
+    this.passthroughExtensions,
+    this.predefinedValues,
+    this.project,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class CertificateTemplateArgs {
 
   factory CertificateTemplateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateTemplateArgs(
-      certificateTemplateId: pulumi.Output.create<String>(map['certificateTemplateId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      identityConstraints: map['identityConstraints'] == null ? null : pulumi.Output.create<CertificateIdentityConstraints>(CertificateIdentityConstraints.fromMap((map['identityConstraints'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maximumLifetime: map['maximumLifetime'] == null ? null : pulumi.Output.create<String>(map['maximumLifetime'] as String),
-      passthroughExtensions: map['passthroughExtensions'] == null ? null : pulumi.Output.create<CertificateExtensionConstraints>(CertificateExtensionConstraints.fromMap((map['passthroughExtensions'] as Map).cast<String, dynamic>())),
-      predefinedValues: map['predefinedValues'] == null ? null : pulumi.Output.create<X509Parameters>(X509Parameters.fromMap((map['predefinedValues'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      certificateTemplateId: (map['certificateTemplateId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      identityConstraints: map['identityConstraints'] == null ? null : (CertificateIdentityConstraints.fromMap((map['identityConstraints'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime'] as String).input(),
+      passthroughExtensions: map['passthroughExtensions'] == null ? null : (CertificateExtensionConstraints.fromMap((map['passthroughExtensions'] as Map).cast<String, dynamic>())).input(),
+      predefinedValues: map['predefinedValues'] == null ? null : (X509Parameters.fromMap((map['predefinedValues'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

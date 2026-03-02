@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Config to block services with externalIPs field.
 class ServiceExternalIPsConfigResponse {
   /// Whether Services with ExternalIPs field are allowed or not.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ServiceExternalIPsConfigResponse].
   /// [enabled] Whether Services with ExternalIPs field are allowed or not.
@@ -20,7 +21,7 @@ class ServiceExternalIPsConfigResponse {
 
   factory ServiceExternalIPsConfigResponse.fromMap(Map<String, dynamic> map) {
     return ServiceExternalIPsConfigResponse(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

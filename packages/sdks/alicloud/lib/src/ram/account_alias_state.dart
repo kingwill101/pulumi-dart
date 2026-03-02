@@ -11,9 +11,8 @@ class AccountAliasState {
   /// Creates a new [AccountAliasState].
   /// [accountAlias] The alias of the account.
   AccountAliasState({
-    pulumi.Output<String>? accountAlias,
-  }) :
-      accountAlias = pulumi.Input.asOptionalInput<String>(accountAlias);
+    this.accountAlias,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,7 +22,7 @@ class AccountAliasState {
 
   factory AccountAliasState.fromMap(Map<String, dynamic> map) {
     return AccountAliasState(
-      accountAlias: map['accountAlias'] == null ? null : pulumi.Output.create<String>(map['accountAlias'] as String),
+      accountAlias: map['accountAlias'] == null ? null : (map['accountAlias'] as String).input(),
     );
   }
 }

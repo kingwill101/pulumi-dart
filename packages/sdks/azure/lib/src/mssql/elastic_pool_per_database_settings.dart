@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ElasticPoolPerDatabaseSettings {
   /// The maximum capacity any one database can consume.
-  final double maxCapacity;
+  final pulumi.Input<double> maxCapacity;
   /// The minimum capacity all databases are guaranteed.
-  final double minCapacity;
+  final pulumi.Input<double> minCapacity;
 
   /// Creates a new [ElasticPoolPerDatabaseSettings].
   /// [maxCapacity] The maximum capacity any one database can consume.
@@ -24,8 +25,8 @@ class ElasticPoolPerDatabaseSettings {
 
   factory ElasticPoolPerDatabaseSettings.fromMap(Map<String, dynamic> map) {
     return ElasticPoolPerDatabaseSettings(
-      maxCapacity: map['maxCapacity'] as double,
-      minCapacity: map['minCapacity'] as double,
+      maxCapacity: (map['maxCapacity'] as double).input(),
+      minCapacity: (map['minCapacity'] as double).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class PrivateLinkScopedResourceArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [scopeName] The name of the Azure Arc PrivateLinkScope resource.
   PrivateLinkScopedResourceArgs({
-    pulumi.Output<String>? linkedResourceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scopeName,
-  }) :
-      linkedResourceId = pulumi.Input.asOptionalInput<String>(linkedResourceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopeName = pulumi.Input.asInput<String>(scopeName);
+    this.linkedResourceId,
+    this.name,
+    required this.resourceGroupName,
+    required this.scopeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class PrivateLinkScopedResourceArgs {
 
   factory PrivateLinkScopedResourceArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopedResourceArgs(
-      linkedResourceId: map['linkedResourceId'] == null ? null : pulumi.Output.create<String>(map['linkedResourceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopeName: pulumi.Output.create<String>(map['scopeName'] as String),
+      linkedResourceId: map['linkedResourceId'] == null ? null : (map['linkedResourceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopeName: (map['scopeName'] as String).input(),
     );
   }
 }

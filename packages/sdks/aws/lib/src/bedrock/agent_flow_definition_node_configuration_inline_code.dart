@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationInlineCode {
   /// The code that's executed in your inline code node.
-  final String code;
+  final pulumi.Input<String> code;
   /// The programming language used by your inline code node.
-  final String language;
+  final pulumi.Input<String> language;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationInlineCode].
   /// [code] The code that's executed in your inline code node.
@@ -24,8 +25,8 @@ class AgentFlowDefinitionNodeConfigurationInlineCode {
 
   factory AgentFlowDefinitionNodeConfigurationInlineCode.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationInlineCode(
-      code: map['code'] as String,
-      language: map['language'] as String,
+      code: (map['code'] as String).input(),
+      language: (map['language'] as String).input(),
     );
   }
 }

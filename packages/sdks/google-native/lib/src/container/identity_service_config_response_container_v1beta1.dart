@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
 class IdentityServiceConfigResponseContainerV1beta1 {
   /// Whether to enable the Identity Service component
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [IdentityServiceConfigResponseContainerV1beta1].
   /// [enabled] Whether to enable the Identity Service component
@@ -20,7 +21,7 @@ class IdentityServiceConfigResponseContainerV1beta1 {
 
   factory IdentityServiceConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return IdentityServiceConfigResponseContainerV1beta1(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -42,23 +42,15 @@ class ImplicitDataDiskFromSourceArgs {
   /// [virtualMachineId] The ID of the Virtual Machine to which the Data Disk should be attached. Changing this forces a new resource to be created.
   /// [writeAcceleratorEnabled] Specifies if Write Accelerator is enabled on the disk. This can only be enabled on `Premium_LRS` managed disks with no caching and [M-Series VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator). Defaults to `false`.
   ImplicitDataDiskFromSourceArgs({
-    pulumi.Output<String>? caching,
-    required pulumi.Output<String> createOption,
-    required pulumi.Output<int> diskSizeGb,
-    required pulumi.Output<int> lun,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> sourceResourceId,
-    required pulumi.Output<String> virtualMachineId,
-    pulumi.Output<bool>? writeAcceleratorEnabled,
-  }) :
-      caching = pulumi.Input.asOptionalInput<String>(caching),
-      createOption = pulumi.Input.asInput<String>(createOption),
-      diskSizeGb = pulumi.Input.asInput<int>(diskSizeGb),
-      lun = pulumi.Input.asInput<int>(lun),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sourceResourceId = pulumi.Input.asInput<String>(sourceResourceId),
-      virtualMachineId = pulumi.Input.asInput<String>(virtualMachineId),
-      writeAcceleratorEnabled = pulumi.Input.asOptionalInput<bool>(writeAcceleratorEnabled);
+    this.caching,
+    required this.createOption,
+    required this.diskSizeGb,
+    required this.lun,
+    this.name,
+    required this.sourceResourceId,
+    required this.virtualMachineId,
+    this.writeAcceleratorEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class ImplicitDataDiskFromSourceArgs {
 
   factory ImplicitDataDiskFromSourceArgs.fromMap(Map<String, dynamic> map) {
     return ImplicitDataDiskFromSourceArgs(
-      caching: map['caching'] == null ? null : pulumi.Output.create<String>(map['caching'] as String),
-      createOption: pulumi.Output.create<String>(map['createOption'] as String),
-      diskSizeGb: pulumi.Output.create<int>(map['diskSizeGb'] as int),
-      lun: pulumi.Output.create<int>(map['lun'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sourceResourceId: pulumi.Output.create<String>(map['sourceResourceId'] as String),
-      virtualMachineId: pulumi.Output.create<String>(map['virtualMachineId'] as String),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : pulumi.Output.create<bool>(map['writeAcceleratorEnabled'] as bool),
+      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
+      createOption: (map['createOption'] as String).input(),
+      diskSizeGb: (map['diskSizeGb'] as int).input(),
+      lun: (map['lun'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sourceResourceId: (map['sourceResourceId'] as String).input(),
+      virtualMachineId: (map['virtualMachineId'] as String).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
     );
   }
 }

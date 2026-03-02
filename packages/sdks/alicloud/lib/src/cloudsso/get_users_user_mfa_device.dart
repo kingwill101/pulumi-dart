@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUsersUserMfaDevice {
   /// The MFA Device ID.
-  final String deviceId;
+  final pulumi.Input<String> deviceId;
   /// The MFA Device Name.
-  final String deviceName;
+  final pulumi.Input<String> deviceName;
   /// The MFA Device Type.
-  final String deviceType;
+  final pulumi.Input<String> deviceType;
   /// The Effective Time of MFA Device.
-  final String effectiveTime;
+  final pulumi.Input<String> effectiveTime;
 
   /// Creates a new [GetUsersUserMfaDevice].
   /// [deviceId] The MFA Device ID.
@@ -34,10 +35,10 @@ class GetUsersUserMfaDevice {
 
   factory GetUsersUserMfaDevice.fromMap(Map<String, dynamic> map) {
     return GetUsersUserMfaDevice(
-      deviceId: map['deviceId'] as String,
-      deviceName: map['deviceName'] as String,
-      deviceType: map['deviceType'] as String,
-      effectiveTime: map['effectiveTime'] as String,
+      deviceId: (map['deviceId'] as String).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      deviceType: (map['deviceType'] as String).input(),
+      effectiveTime: (map['effectiveTime'] as String).input(),
     );
   }
 }

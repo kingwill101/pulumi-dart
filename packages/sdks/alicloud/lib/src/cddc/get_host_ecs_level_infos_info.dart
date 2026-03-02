@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHostEcsLevelInfosInfo {
   /// The description of the host ecs level info.
-  final String description;
+  final pulumi.Input<String> description;
   /// The instance family of the host ecs level info.
-  final String ecsClass;
+  final pulumi.Input<String> ecsClass;
   /// The Elastic Compute Service (ECS) instance type.
-  final String ecsClassCode;
+  final pulumi.Input<String> ecsClassCode;
   /// The ApsaraDB RDS instance type of the host ecs level info.
-  final String resClassCode;
+  final pulumi.Input<String> resClassCode;
 
   /// Creates a new [GetHostEcsLevelInfosInfo].
   /// [description] The description of the host ecs level info.
@@ -34,10 +35,10 @@ class GetHostEcsLevelInfosInfo {
 
   factory GetHostEcsLevelInfosInfo.fromMap(Map<String, dynamic> map) {
     return GetHostEcsLevelInfosInfo(
-      description: map['description'] as String,
-      ecsClass: map['ecsClass'] as String,
-      ecsClassCode: map['ecsClassCode'] as String,
-      resClassCode: map['resClassCode'] as String,
+      description: (map['description'] as String).input(),
+      ecsClass: (map['ecsClass'] as String).input(),
+      ecsClassCode: (map['ecsClassCode'] as String).input(),
+      resClassCode: (map['resClassCode'] as String).input(),
     );
   }
 }

@@ -35,21 +35,14 @@ class AutoUpgradeProfileArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [updateStrategyId] The resource id of the UpdateStrategy resource to reference. If not specified, the auto upgrade will run on all clusters which are members of the fleet.
   AutoUpgradeProfileArgs({
-    pulumi.Output<String>? autoUpgradeProfileName,
-    required pulumi.Output<String> channel,
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> fleetName,
-    pulumi.Output<AutoUpgradeNodeImageSelection>? nodeImageSelection,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? updateStrategyId,
-  }) :
-      autoUpgradeProfileName = pulumi.Input.asOptionalInput<String>(autoUpgradeProfileName),
-      channel = pulumi.Input.asInput<String>(channel),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      nodeImageSelection = pulumi.Input.asOptionalInput<AutoUpgradeNodeImageSelection>(nodeImageSelection),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      updateStrategyId = pulumi.Input.asOptionalInput<String>(updateStrategyId);
+    this.autoUpgradeProfileName,
+    required this.channel,
+    this.disabled,
+    required this.fleetName,
+    this.nodeImageSelection,
+    required this.resourceGroupName,
+    this.updateStrategyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class AutoUpgradeProfileArgs {
 
   factory AutoUpgradeProfileArgs.fromMap(Map<String, dynamic> map) {
     return AutoUpgradeProfileArgs(
-      autoUpgradeProfileName: map['autoUpgradeProfileName'] == null ? null : pulumi.Output.create<String>(map['autoUpgradeProfileName'] as String),
-      channel: pulumi.Output.create<String>(map['channel'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      nodeImageSelection: map['nodeImageSelection'] == null ? null : pulumi.Output.create<AutoUpgradeNodeImageSelection>(AutoUpgradeNodeImageSelection.fromMap((map['nodeImageSelection'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      updateStrategyId: map['updateStrategyId'] == null ? null : pulumi.Output.create<String>(map['updateStrategyId'] as String),
+      autoUpgradeProfileName: map['autoUpgradeProfileName'] == null ? null : (map['autoUpgradeProfileName'] as String).input(),
+      channel: (map['channel'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      fleetName: (map['fleetName'] as String).input(),
+      nodeImageSelection: map['nodeImageSelection'] == null ? null : (AutoUpgradeNodeImageSelection.fromMap((map['nodeImageSelection'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      updateStrategyId: map['updateStrategyId'] == null ? null : (map['updateStrategyId'] as String).input(),
     );
   }
 }

@@ -7,9 +7,9 @@ import 'installed_solution_map.dart';
 /// Details of the Agriculture AgriDataManager.
 class AgriServiceResourceProperties {
   /// Data connector credentials of AgriService instance.
-  final List<DataConnectorCredentialMap>? dataConnectorCredentials;
+  final pulumi.Input<List<DataConnectorCredentialMap>>? dataConnectorCredentials;
   /// AgriService installed solutions.
-  final List<InstalledSolutionMap>? installedSolutions;
+  final pulumi.Input<List<InstalledSolutionMap>>? installedSolutions;
 
   /// Creates a new [AgriServiceResourceProperties].
   /// [dataConnectorCredentials] Data connector credentials of AgriService instance.
@@ -21,15 +21,15 @@ class AgriServiceResourceProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataConnectorCredentials': ?dataConnectorCredentials == null ? null : pulumi.Input.encodeList<DataConnectorCredentialMap, Map<String, dynamic>>(dataConnectorCredentials!, (value) => value.toMap()),
-      'installedSolutions': ?installedSolutions == null ? null : pulumi.Input.encodeList<InstalledSolutionMap, Map<String, dynamic>>(installedSolutions!, (value) => value.toMap()),
+      'dataConnectorCredentials': ?pulumi.Input.mapOptionalInputValue<List<DataConnectorCredentialMap>, List<Map<String, dynamic>>>(dataConnectorCredentials, (value) => pulumi.Input.encodeList<DataConnectorCredentialMap, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'installedSolutions': ?pulumi.Input.mapOptionalInputValue<List<InstalledSolutionMap>, List<Map<String, dynamic>>>(installedSolutions, (value) => pulumi.Input.encodeList<InstalledSolutionMap, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AgriServiceResourceProperties.fromMap(Map<String, dynamic> map) {
     return AgriServiceResourceProperties(
-      dataConnectorCredentials: map['dataConnectorCredentials'] == null ? null : pulumi.Input.decodeList<DataConnectorCredentialMap>(map['dataConnectorCredentials'], (value) => DataConnectorCredentialMap.fromMap((value as Map).cast<String, dynamic>())),
-      installedSolutions: map['installedSolutions'] == null ? null : pulumi.Input.decodeList<InstalledSolutionMap>(map['installedSolutions'], (value) => InstalledSolutionMap.fromMap((value as Map).cast<String, dynamic>())),
+      dataConnectorCredentials: map['dataConnectorCredentials'] == null ? null : (pulumi.Input.decodeList<DataConnectorCredentialMap>(map['dataConnectorCredentials'], (value) => DataConnectorCredentialMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      installedSolutions: map['installedSolutions'] == null ? null : (pulumi.Input.decodeList<InstalledSolutionMap>(map['installedSolutions'], (value) => InstalledSolutionMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

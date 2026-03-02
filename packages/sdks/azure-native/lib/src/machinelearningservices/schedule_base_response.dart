@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleBaseResponse {
   /// A system assigned id for the schedule.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The current deployment state of schedule.
-  final String? provisioningStatus;
+  final pulumi.Input<String>? provisioningStatus;
   /// Is the schedule enabled or disabled?
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [ScheduleBaseResponse].
   /// [id] A system assigned id for the schedule.
@@ -29,9 +30,9 @@ class ScheduleBaseResponse {
 
   factory ScheduleBaseResponse.fromMap(Map<String, dynamic> map) {
     return ScheduleBaseResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      provisioningStatus: map['provisioningStatus'] == null ? null : map['provisioningStatus'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (map['provisioningStatus'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -26,19 +26,13 @@ class PrefixListReferenceState {
   /// [transitGatewayAttachmentId] Identifier of EC2 Transit Gateway Attachment.
   /// [transitGatewayRouteTableId] Identifier of EC2 Transit Gateway Route Table.
   PrefixListReferenceState({
-    pulumi.Output<bool>? blackhole,
-    pulumi.Output<String>? prefixListId,
-    pulumi.Output<String>? prefixListOwnerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? transitGatewayAttachmentId,
-    pulumi.Output<String>? transitGatewayRouteTableId,
-  }) :
-      blackhole = pulumi.Input.asOptionalInput<bool>(blackhole),
-      prefixListId = pulumi.Input.asOptionalInput<String>(prefixListId),
-      prefixListOwnerId = pulumi.Input.asOptionalInput<String>(prefixListOwnerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      transitGatewayAttachmentId = pulumi.Input.asOptionalInput<String>(transitGatewayAttachmentId),
-      transitGatewayRouteTableId = pulumi.Input.asOptionalInput<String>(transitGatewayRouteTableId);
+    this.blackhole,
+    this.prefixListId,
+    this.prefixListOwnerId,
+    this.region,
+    this.transitGatewayAttachmentId,
+    this.transitGatewayRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class PrefixListReferenceState {
 
   factory PrefixListReferenceState.fromMap(Map<String, dynamic> map) {
     return PrefixListReferenceState(
-      blackhole: map['blackhole'] == null ? null : pulumi.Output.create<bool>(map['blackhole'] as bool),
-      prefixListId: map['prefixListId'] == null ? null : pulumi.Output.create<String>(map['prefixListId'] as String),
-      prefixListOwnerId: map['prefixListOwnerId'] == null ? null : pulumi.Output.create<String>(map['prefixListOwnerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
-      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayRouteTableId'] as String),
+      blackhole: map['blackhole'] == null ? null : (map['blackhole'] as bool).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
+      prefixListOwnerId: map['prefixListOwnerId'] == null ? null : (map['prefixListOwnerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
+      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : (map['transitGatewayRouteTableId'] as String).input(),
     );
   }
 }

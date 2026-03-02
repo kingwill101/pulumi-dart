@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metric_range.dart';
 import 'performance_threshold.dart';
 
 /// A WindowsBasedSli defines good_service as the count of time windows for which the provided service was of good quality. Criteria for determining if service was good are embedded in the window_criterion.
 class WindowsBasedSli {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
-  final String? goodBadMetricFilter;
+  final pulumi.Input<String>? goodBadMetricFilter;
   /// A window is good if its performance is high enough.
-  final PerformanceThreshold? goodTotalRatioThreshold;
+  final pulumi.Input<PerformanceThreshold>? goodTotalRatioThreshold;
   /// A window is good if the metric's value is in a good range, averaged across returned streams.
-  final MetricRange? metricMeanInRange;
+  final pulumi.Input<MetricRange>? metricMeanInRange;
   /// A window is good if the metric's value is in a good range, summed across returned streams.
-  final MetricRange? metricSumInRange;
+  final pulumi.Input<MetricRange>? metricSumInRange;
   /// Duration over which window quality is evaluated. Must be an integer fraction of a day and at least 60s.
-  final String? windowPeriod;
+  final pulumi.Input<String>? windowPeriod;
 
   /// Creates a new [WindowsBasedSli].
   /// [goodBadMetricFilter] A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
@@ -33,20 +34,20 @@ class WindowsBasedSli {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'goodBadMetricFilter': ?goodBadMetricFilter,
-      'goodTotalRatioThreshold': ?goodTotalRatioThreshold == null ? null : goodTotalRatioThreshold!.toMap(),
-      'metricMeanInRange': ?metricMeanInRange == null ? null : metricMeanInRange!.toMap(),
-      'metricSumInRange': ?metricSumInRange == null ? null : metricSumInRange!.toMap(),
+      'goodTotalRatioThreshold': ?pulumi.Input.mapOptionalInputValue<PerformanceThreshold, Map<String, dynamic>>(goodTotalRatioThreshold, (value) => value.toMap()),
+      'metricMeanInRange': ?pulumi.Input.mapOptionalInputValue<MetricRange, Map<String, dynamic>>(metricMeanInRange, (value) => value.toMap()),
+      'metricSumInRange': ?pulumi.Input.mapOptionalInputValue<MetricRange, Map<String, dynamic>>(metricSumInRange, (value) => value.toMap()),
       'windowPeriod': ?windowPeriod,
     };
   }
 
   factory WindowsBasedSli.fromMap(Map<String, dynamic> map) {
     return WindowsBasedSli(
-      goodBadMetricFilter: map['goodBadMetricFilter'] == null ? null : map['goodBadMetricFilter'] as String,
-      goodTotalRatioThreshold: map['goodTotalRatioThreshold'] == null ? null : PerformanceThreshold.fromMap((map['goodTotalRatioThreshold'] as Map).cast<String, dynamic>()),
-      metricMeanInRange: map['metricMeanInRange'] == null ? null : MetricRange.fromMap((map['metricMeanInRange'] as Map).cast<String, dynamic>()),
-      metricSumInRange: map['metricSumInRange'] == null ? null : MetricRange.fromMap((map['metricSumInRange'] as Map).cast<String, dynamic>()),
-      windowPeriod: map['windowPeriod'] == null ? null : map['windowPeriod'] as String,
+      goodBadMetricFilter: map['goodBadMetricFilter'] == null ? null : (map['goodBadMetricFilter'] as String).input(),
+      goodTotalRatioThreshold: map['goodTotalRatioThreshold'] == null ? null : (PerformanceThreshold.fromMap((map['goodTotalRatioThreshold'] as Map).cast<String, dynamic>())).input(),
+      metricMeanInRange: map['metricMeanInRange'] == null ? null : (MetricRange.fromMap((map['metricMeanInRange'] as Map).cast<String, dynamic>())).input(),
+      metricSumInRange: map['metricSumInRange'] == null ? null : (MetricRange.fromMap((map['metricSumInRange'] as Map).cast<String, dynamic>())).input(),
+      windowPeriod: map['windowPeriod'] == null ? null : (map['windowPeriod'] as String).input(),
     );
   }
 }

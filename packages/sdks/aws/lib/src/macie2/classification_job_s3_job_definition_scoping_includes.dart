@@ -5,7 +5,7 @@ import 'classification_job_s3_job_definition_scoping_includes_and.dart';
 
 class ClassificationJobS3JobDefinitionScopingIncludes {
   /// An array of conditions, one for each condition that determines which objects to include or exclude from the job. (documented below)
-  final List<ClassificationJobS3JobDefinitionScopingIncludesAnd>? ands;
+  final pulumi.Input<List<ClassificationJobS3JobDefinitionScopingIncludesAnd>>? ands;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingIncludes].
   /// [ands] An array of conditions, one for each condition that determines which objects to include or exclude from the job. (documented below)
@@ -15,13 +15,13 @@ class ClassificationJobS3JobDefinitionScopingIncludes {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ands': ?ands == null ? null : pulumi.Input.encodeList<ClassificationJobS3JobDefinitionScopingIncludesAnd, Map<String, dynamic>>(ands!, (value) => value.toMap()),
+      'ands': ?pulumi.Input.mapOptionalInputValue<List<ClassificationJobS3JobDefinitionScopingIncludesAnd>, List<Map<String, dynamic>>>(ands, (value) => pulumi.Input.encodeList<ClassificationJobS3JobDefinitionScopingIncludesAnd, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ClassificationJobS3JobDefinitionScopingIncludes.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionScopingIncludes(
-      ands: map['ands'] == null ? null : pulumi.Input.decodeList<ClassificationJobS3JobDefinitionScopingIncludesAnd>(map['ands'], (value) => ClassificationJobS3JobDefinitionScopingIncludesAnd.fromMap((value as Map).cast<String, dynamic>())),
+      ands: map['ands'] == null ? null : (pulumi.Input.decodeList<ClassificationJobS3JobDefinitionScopingIncludesAnd>(map['ands'], (value) => ClassificationJobS3JobDefinitionScopingIncludesAnd.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Integration runtime reference type.
 class IntegrationRuntimeReferenceResponse {
   /// Arguments for integration runtime.
-  final Map<String, dynamic>? parameters;
+  final pulumi.Input<Map<String, dynamic>>? parameters;
   /// Reference integration runtime name.
-  final String referenceName;
+  final pulumi.Input<String> referenceName;
   /// Type of integration runtime.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [IntegrationRuntimeReferenceResponse].
   /// [parameters] Arguments for integration runtime.
@@ -30,9 +31,9 @@ class IntegrationRuntimeReferenceResponse {
 
   factory IntegrationRuntimeReferenceResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeReferenceResponse(
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, dynamic>(),
-      referenceName: map['referenceName'] as String,
-      type: map['type'] as String,
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
+      referenceName: (map['referenceName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

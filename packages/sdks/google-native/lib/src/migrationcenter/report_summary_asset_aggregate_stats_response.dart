@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_summary_chart_data_response.dart';
 import 'report_summary_histogram_chart_data_response.dart';
 import 'report_summary_utilization_chart_data_response.dart';
@@ -7,25 +8,25 @@ import 'report_summary_utilization_chart_data_response.dart';
 /// Aggregate statistics for a collection of assets.
 class ReportSummaryAssetAggregateStatsResponse {
   /// Histogram showing a distribution of CPU core counts.
-  final ReportSummaryHistogramChartDataResponse coreCountHistogram;
+  final pulumi.Input<ReportSummaryHistogramChartDataResponse> coreCountHistogram;
   /// Histogram showing a distribution of memory sizes.
-  final ReportSummaryHistogramChartDataResponse memoryBytesHistogram;
+  final pulumi.Input<ReportSummaryHistogramChartDataResponse> memoryBytesHistogram;
   /// Total memory split into Used/Free buckets.
-  final ReportSummaryUtilizationChartDataResponse memoryUtilizationChart;
+  final pulumi.Input<ReportSummaryUtilizationChartDataResponse> memoryUtilizationChart;
   /// Count of assets grouped by Operating System families.
-  final ReportSummaryChartDataResponse operatingSystem;
+  final pulumi.Input<ReportSummaryChartDataResponse> operatingSystem;
   /// Histogram showing a distribution of memory sizes.
-  final ReportSummaryHistogramChartDataResponse storageBytesHistogram;
+  final pulumi.Input<ReportSummaryHistogramChartDataResponse> storageBytesHistogram;
   /// Total memory split into Used/Free buckets.
-  final ReportSummaryUtilizationChartDataResponse storageUtilizationChart;
+  final pulumi.Input<ReportSummaryUtilizationChartDataResponse> storageUtilizationChart;
   /// Count of the number of unique assets in this collection.
-  final String totalAssets;
+  final pulumi.Input<String> totalAssets;
   /// Sum of the CPU core count of all the assets in this collection.
-  final String totalCores;
+  final pulumi.Input<String> totalCores;
   /// Sum of the memory in bytes of all the assets in this collection.
-  final String totalMemoryBytes;
+  final pulumi.Input<String> totalMemoryBytes;
   /// Sum of persistent storage in bytes of all the assets in this collection.
-  final String totalStorageBytes;
+  final pulumi.Input<String> totalStorageBytes;
 
   /// Creates a new [ReportSummaryAssetAggregateStatsResponse].
   /// [coreCountHistogram] Histogram showing a distribution of CPU core counts.
@@ -53,12 +54,12 @@ class ReportSummaryAssetAggregateStatsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'coreCountHistogram': coreCountHistogram.toMap(),
-      'memoryBytesHistogram': memoryBytesHistogram.toMap(),
-      'memoryUtilizationChart': memoryUtilizationChart.toMap(),
-      'operatingSystem': operatingSystem.toMap(),
-      'storageBytesHistogram': storageBytesHistogram.toMap(),
-      'storageUtilizationChart': storageUtilizationChart.toMap(),
+      'coreCountHistogram': pulumi.Input.mapInputValue<ReportSummaryHistogramChartDataResponse, Map<String, dynamic>>(coreCountHistogram, (value) => value.toMap()),
+      'memoryBytesHistogram': pulumi.Input.mapInputValue<ReportSummaryHistogramChartDataResponse, Map<String, dynamic>>(memoryBytesHistogram, (value) => value.toMap()),
+      'memoryUtilizationChart': pulumi.Input.mapInputValue<ReportSummaryUtilizationChartDataResponse, Map<String, dynamic>>(memoryUtilizationChart, (value) => value.toMap()),
+      'operatingSystem': pulumi.Input.mapInputValue<ReportSummaryChartDataResponse, Map<String, dynamic>>(operatingSystem, (value) => value.toMap()),
+      'storageBytesHistogram': pulumi.Input.mapInputValue<ReportSummaryHistogramChartDataResponse, Map<String, dynamic>>(storageBytesHistogram, (value) => value.toMap()),
+      'storageUtilizationChart': pulumi.Input.mapInputValue<ReportSummaryUtilizationChartDataResponse, Map<String, dynamic>>(storageUtilizationChart, (value) => value.toMap()),
       'totalAssets': totalAssets,
       'totalCores': totalCores,
       'totalMemoryBytes': totalMemoryBytes,
@@ -68,16 +69,16 @@ class ReportSummaryAssetAggregateStatsResponse {
 
   factory ReportSummaryAssetAggregateStatsResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryAssetAggregateStatsResponse(
-      coreCountHistogram: ReportSummaryHistogramChartDataResponse.fromMap((map['coreCountHistogram'] as Map).cast<String, dynamic>()),
-      memoryBytesHistogram: ReportSummaryHistogramChartDataResponse.fromMap((map['memoryBytesHistogram'] as Map).cast<String, dynamic>()),
-      memoryUtilizationChart: ReportSummaryUtilizationChartDataResponse.fromMap((map['memoryUtilizationChart'] as Map).cast<String, dynamic>()),
-      operatingSystem: ReportSummaryChartDataResponse.fromMap((map['operatingSystem'] as Map).cast<String, dynamic>()),
-      storageBytesHistogram: ReportSummaryHistogramChartDataResponse.fromMap((map['storageBytesHistogram'] as Map).cast<String, dynamic>()),
-      storageUtilizationChart: ReportSummaryUtilizationChartDataResponse.fromMap((map['storageUtilizationChart'] as Map).cast<String, dynamic>()),
-      totalAssets: map['totalAssets'] as String,
-      totalCores: map['totalCores'] as String,
-      totalMemoryBytes: map['totalMemoryBytes'] as String,
-      totalStorageBytes: map['totalStorageBytes'] as String,
+      coreCountHistogram: (ReportSummaryHistogramChartDataResponse.fromMap((map['coreCountHistogram'] as Map).cast<String, dynamic>())).input(),
+      memoryBytesHistogram: (ReportSummaryHistogramChartDataResponse.fromMap((map['memoryBytesHistogram'] as Map).cast<String, dynamic>())).input(),
+      memoryUtilizationChart: (ReportSummaryUtilizationChartDataResponse.fromMap((map['memoryUtilizationChart'] as Map).cast<String, dynamic>())).input(),
+      operatingSystem: (ReportSummaryChartDataResponse.fromMap((map['operatingSystem'] as Map).cast<String, dynamic>())).input(),
+      storageBytesHistogram: (ReportSummaryHistogramChartDataResponse.fromMap((map['storageBytesHistogram'] as Map).cast<String, dynamic>())).input(),
+      storageUtilizationChart: (ReportSummaryUtilizationChartDataResponse.fromMap((map['storageUtilizationChart'] as Map).cast<String, dynamic>())).input(),
+      totalAssets: (map['totalAssets'] as String).input(),
+      totalCores: (map['totalCores'] as String).input(),
+      totalMemoryBytes: (map['totalMemoryBytes'] as String).input(),
+      totalStorageBytes: (map['totalStorageBytes'] as String).input(),
     );
   }
 }

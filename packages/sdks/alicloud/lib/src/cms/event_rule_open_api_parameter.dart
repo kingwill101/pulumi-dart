@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventRuleOpenApiParameter {
   /// The API name.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// (Available since v1.211.1) The ARN of the API operation.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// The ID of the recipient that receives alert notifications sent by an API callback.
-  final String? openApiParametersId;
+  final pulumi.Input<String>? openApiParametersId;
   /// The ID of the cloud service to which the API operation belongs.
-  final String? product;
+  final pulumi.Input<String>? product;
   /// The region where the resource resides.
-  final String? region;
+  final pulumi.Input<String>? region;
   /// The name of the role.
-  final String? role;
+  final pulumi.Input<String>? role;
   /// The version of the API.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [EventRuleOpenApiParameter].
   /// [action] The API name.
@@ -49,13 +50,13 @@ class EventRuleOpenApiParameter {
 
   factory EventRuleOpenApiParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleOpenApiParameter(
-      action: map['action'] == null ? null : map['action'] as String,
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      openApiParametersId: map['openApiParametersId'] == null ? null : map['openApiParametersId'] as String,
-      product: map['product'] == null ? null : map['product'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      role: map['role'] == null ? null : map['role'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      openApiParametersId: map['openApiParametersId'] == null ? null : (map['openApiParametersId'] as String).input(),
+      product: map['product'] == null ? null : (map['product'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

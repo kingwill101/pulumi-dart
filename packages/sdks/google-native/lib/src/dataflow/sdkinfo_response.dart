@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SDK Information.
 class SDKInfoResponse {
   /// The SDK Language.
-  final String language;
+  final pulumi.Input<String> language;
   /// Optional. The SDK version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [SDKInfoResponse].
   /// [language] The SDK Language.
@@ -25,8 +26,8 @@ class SDKInfoResponse {
 
   factory SDKInfoResponse.fromMap(Map<String, dynamic> map) {
     return SDKInfoResponse(
-      language: map['language'] as String,
-      version: map['version'] as String,
+      language: (map['language'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

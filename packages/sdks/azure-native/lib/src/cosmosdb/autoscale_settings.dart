@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutoscaleSettings {
   /// Represents maximum throughput, the resource can scale up to.
-  final int? maxThroughput;
+  final pulumi.Input<int>? maxThroughput;
 
   /// Creates a new [AutoscaleSettings].
   /// [maxThroughput] Represents maximum throughput, the resource can scale up to.
@@ -19,7 +20,7 @@ class AutoscaleSettings {
 
   factory AutoscaleSettings.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettings(
-      maxThroughput: map['maxThroughput'] == null ? null : map['maxThroughput'] as int,
+      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput'] as int).input(),
     );
   }
 }

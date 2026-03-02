@@ -6,19 +6,19 @@ import 'get_domains_domain_redirect.dart';
 
 class GetDomainsDomain {
   /// The CNAME assigned by WAF to the domain name.
-  final String cname;
+  final pulumi.Input<String> cname;
   /// The name of the domain name to query.
-  final String domain;
+  final pulumi.Input<String> domain;
   /// The ID of the domain. It formats as `<instance_id>:<domain>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// Configure listening information
-  final List<GetDomainsDomainListen> listens;
+  final pulumi.Input<List<GetDomainsDomainListen>> listens;
   /// Configure forwarding information.
-  final List<GetDomainsDomainRedirect> redirects;
+  final pulumi.Input<List<GetDomainsDomainRedirect>> redirects;
   /// The ID of the resource group.
-  final String resourceManagerResourceGroupId;
+  final pulumi.Input<String> resourceManagerResourceGroupId;
   /// The status of the domain.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetDomainsDomain].
   /// [cname] The CNAME assigned by WAF to the domain name.
@@ -43,8 +43,8 @@ class GetDomainsDomain {
       'cname': cname,
       'domain': domain,
       'id': id,
-      'listens': pulumi.Input.encodeList<GetDomainsDomainListen, Map<String, dynamic>>(listens, (value) => value.toMap()),
-      'redirects': pulumi.Input.encodeList<GetDomainsDomainRedirect, Map<String, dynamic>>(redirects, (value) => value.toMap()),
+      'listens': pulumi.Input.mapInputValue<List<GetDomainsDomainListen>, List<Map<String, dynamic>>>(listens, (value) => pulumi.Input.encodeList<GetDomainsDomainListen, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'redirects': pulumi.Input.mapInputValue<List<GetDomainsDomainRedirect>, List<Map<String, dynamic>>>(redirects, (value) => pulumi.Input.encodeList<GetDomainsDomainRedirect, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceManagerResourceGroupId': resourceManagerResourceGroupId,
       'status': status,
     };
@@ -52,13 +52,13 @@ class GetDomainsDomain {
 
   factory GetDomainsDomain.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomain(
-      cname: map['cname'] as String,
-      domain: map['domain'] as String,
-      id: map['id'] as String,
-      listens: pulumi.Input.decodeList<GetDomainsDomainListen>(map['listens'], (value) => GetDomainsDomainListen.fromMap((value as Map).cast<String, dynamic>())),
-      redirects: pulumi.Input.decodeList<GetDomainsDomainRedirect>(map['redirects'], (value) => GetDomainsDomainRedirect.fromMap((value as Map).cast<String, dynamic>())),
-      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] as String,
-      status: map['status'] as String,
+      cname: (map['cname'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      id: (map['id'] as String).input(),
+      listens: (pulumi.Input.decodeList<GetDomainsDomainListen>(map['listens'], (value) => GetDomainsDomainListen.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      redirects: (pulumi.Input.decodeList<GetDomainsDomainRedirect>(map['redirects'], (value) => GetDomainsDomainRedirect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceManagerResourceGroupId: (map['resourceManagerResourceGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

@@ -50,31 +50,19 @@ class ServiceArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [tlsClientCertEnabled] Whether to request client certificate during TLS handshake? Defaults to `false`.
   ServiceArgs({
-    pulumi.Output<bool>? aadAuthEnabled,
-    pulumi.Output<int>? capacity,
-    pulumi.Output<ServiceIdentity>? identity,
-    pulumi.Output<ServiceLiveTrace>? liveTrace,
-    pulumi.Output<bool>? localAuthEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? tlsClientCertEnabled,
-  }) :
-      aadAuthEnabled = pulumi.Input.asOptionalInput<bool>(aadAuthEnabled),
-      capacity = pulumi.Input.asOptionalInput<int>(capacity),
-      identity = pulumi.Input.asOptionalInput<ServiceIdentity>(identity),
-      liveTrace = pulumi.Input.asOptionalInput<ServiceLiveTrace>(liveTrace),
-      localAuthEnabled = pulumi.Input.asOptionalInput<bool>(localAuthEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<String>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tlsClientCertEnabled = pulumi.Input.asOptionalInput<bool>(tlsClientCertEnabled);
+    this.aadAuthEnabled,
+    this.capacity,
+    this.identity,
+    this.liveTrace,
+    this.localAuthEnabled,
+    this.location,
+    this.name,
+    this.publicNetworkAccessEnabled,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+    this.tlsClientCertEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      aadAuthEnabled: map['aadAuthEnabled'] == null ? null : pulumi.Output.create<bool>(map['aadAuthEnabled'] as bool),
-      capacity: map['capacity'] == null ? null : pulumi.Output.create<int>(map['capacity'] as int),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ServiceIdentity>(ServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      liveTrace: map['liveTrace'] == null ? null : pulumi.Output.create<ServiceLiveTrace>(ServiceLiveTrace.fromMap((map['liveTrace'] as Map).cast<String, dynamic>())),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : pulumi.Output.create<bool>(map['localAuthEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<String>(map['sku'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tlsClientCertEnabled: map['tlsClientCertEnabled'] == null ? null : pulumi.Output.create<bool>(map['tlsClientCertEnabled'] as bool),
+      aadAuthEnabled: map['aadAuthEnabled'] == null ? null : (map['aadAuthEnabled'] as bool).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      identity: map['identity'] == null ? null : (ServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      liveTrace: map['liveTrace'] == null ? null : (ServiceLiveTrace.fromMap((map['liveTrace'] as Map).cast<String, dynamic>())).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (map['sku'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tlsClientCertEnabled: map['tlsClientCertEnabled'] == null ? null : (map['tlsClientCertEnabled'] as bool).input(),
     );
   }
 }

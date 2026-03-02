@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains the IPTag associated with the object.
 class IPTag {
   /// The IP tag type. Example: RoutingPreference.
-  final String? ipTagType;
+  final pulumi.Input<String>? ipTagType;
   /// The value of the IP tag associated with the public IP. Example: Internet.
-  final String? tag;
+  final pulumi.Input<String>? tag;
 
   /// Creates a new [IPTag].
   /// [ipTagType] The IP tag type. Example: RoutingPreference.
@@ -25,8 +26,8 @@ class IPTag {
 
   factory IPTag.fromMap(Map<String, dynamic> map) {
     return IPTag(
-      ipTagType: map['ipTagType'] == null ? null : map['ipTagType'] as String,
-      tag: map['tag'] == null ? null : map['tag'] as String,
+      ipTagType: map['ipTagType'] == null ? null : (map['ipTagType'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of key vault.
 class KeyVaultPropertiesResponse {
   /// This is a read only property that represents the expiration time of the current version of the customer managed key used for encryption.
-  final String currentVersionedKeyExpirationTimestamp;
+  final pulumi.Input<String> currentVersionedKeyExpirationTimestamp;
   /// The object identifier of the current versioned Key Vault Key in use.
-  final String currentVersionedKeyIdentifier;
+  final pulumi.Input<String> currentVersionedKeyIdentifier;
   /// The name of KeyVault key.
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
   /// The Uri of KeyVault.
-  final String? keyVaultUri;
+  final pulumi.Input<String>? keyVaultUri;
   /// The version of KeyVault key.
-  final String? keyVersion;
+  final pulumi.Input<String>? keyVersion;
   /// Timestamp of last rotation of the Key Vault Key.
-  final String lastKeyRotationTimestamp;
+  final pulumi.Input<String> lastKeyRotationTimestamp;
 
   /// Creates a new [KeyVaultPropertiesResponse].
   /// [currentVersionedKeyExpirationTimestamp] This is a read only property that represents the expiration time of the current version of the customer managed key used for encryption.
@@ -45,12 +46,12 @@ class KeyVaultPropertiesResponse {
 
   factory KeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPropertiesResponse(
-      currentVersionedKeyExpirationTimestamp: map['currentVersionedKeyExpirationTimestamp'] as String,
-      currentVersionedKeyIdentifier: map['currentVersionedKeyIdentifier'] as String,
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      keyVaultUri: map['keyVaultUri'] == null ? null : map['keyVaultUri'] as String,
-      keyVersion: map['keyVersion'] == null ? null : map['keyVersion'] as String,
-      lastKeyRotationTimestamp: map['lastKeyRotationTimestamp'] as String,
+      currentVersionedKeyExpirationTimestamp: (map['currentVersionedKeyExpirationTimestamp'] as String).input(),
+      currentVersionedKeyIdentifier: (map['currentVersionedKeyIdentifier'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      lastKeyRotationTimestamp: (map['lastKeyRotationTimestamp'] as String).input(),
     );
   }
 }

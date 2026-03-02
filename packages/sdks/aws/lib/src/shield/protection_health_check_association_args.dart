@@ -16,11 +16,9 @@ class ProtectionHealthCheckAssociationArgs {
   /// [healthCheckArn] The ARN (Amazon Resource Name) of the Route53 Health Check resource which will be associated to the protected resource.
   /// [shieldProtectionId] The ID of the protected resource.
   ProtectionHealthCheckAssociationArgs({
-    required pulumi.Output<String> healthCheckArn,
-    required pulumi.Output<String> shieldProtectionId,
-  }) :
-      healthCheckArn = pulumi.Input.asInput<String>(healthCheckArn),
-      shieldProtectionId = pulumi.Input.asInput<String>(shieldProtectionId);
+    required this.healthCheckArn,
+    required this.shieldProtectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ProtectionHealthCheckAssociationArgs {
 
   factory ProtectionHealthCheckAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionHealthCheckAssociationArgs(
-      healthCheckArn: pulumi.Output.create<String>(map['healthCheckArn'] as String),
-      shieldProtectionId: pulumi.Output.create<String>(map['shieldProtectionId'] as String),
+      healthCheckArn: (map['healthCheckArn'] as String).input(),
+      shieldProtectionId: (map['shieldProtectionId'] as String).input(),
     );
   }
 }

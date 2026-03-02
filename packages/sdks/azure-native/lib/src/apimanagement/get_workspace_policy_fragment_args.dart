@@ -25,17 +25,12 @@ class GetWorkspacePolicyFragmentArgs {
   /// [serviceName] The name of the API Management service.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   GetWorkspacePolicyFragmentArgs({
-    pulumi.Output<String>? format,
-    required pulumi.Output<String> id,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      format = pulumi.Input.asOptionalInput<String>(format),
-      id = pulumi.Input.asInput<String>(id),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.format,
+    required this.id,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetWorkspacePolicyFragmentArgs {
 
   factory GetWorkspacePolicyFragmentArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspacePolicyFragmentArgs(
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      id: pulumi.Output.create<String>(map['id'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      id: (map['id'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

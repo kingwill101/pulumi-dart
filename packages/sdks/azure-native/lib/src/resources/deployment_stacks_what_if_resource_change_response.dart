@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_extension_response.dart';
 import 'deployment_stacks_what_if_resource_change_response_deny_status_change.dart';
 import 'deployment_stacks_what_if_resource_change_response_management_status_change.dart';
@@ -8,31 +9,31 @@ import 'deployment_stacks_what_if_resource_change_response_resource_configuratio
 /// Information about a single resource change predicted by What-If operation.
 class DeploymentStacksWhatIfResourceChangeResponse {
   /// The API version the resource was deployed with
-  final String apiVersion;
+  final pulumi.Input<String> apiVersion;
   /// The confidence level of the predicted change.
-  final String changeCertainty;
+  final pulumi.Input<String> changeCertainty;
   /// Type of change that will be made to the resource when the deployment is executed.
-  final String changeType;
+  final pulumi.Input<String> changeType;
   /// The predicted changes to the deployment stack deny status of the resource.
-  final DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange? denyStatusChange;
+  final pulumi.Input<DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange>? denyStatusChange;
   /// The resource id of the Deployment responsible for this change.
-  final String? deploymentId;
+  final pulumi.Input<String>? deploymentId;
   /// The extension the resource was deployed with.
-  final DeploymentExtensionResponse extension;
+  final pulumi.Input<DeploymentExtensionResponse> extension;
   /// The ARM Resource ID of a resource managed by the deployment stack.
-  final String id;
+  final pulumi.Input<String> id;
   /// The extensible resource identifiers.
-  final dynamic identifiers;
+  final pulumi.Input<dynamic> identifiers;
   /// The predicted changes to the deployment stack management status of the resource.
-  final DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange? managementStatusChange;
+  final pulumi.Input<DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange>? managementStatusChange;
   /// The predicted changes to the resource configuration.
-  final DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges? resourceConfigurationChanges;
+  final pulumi.Input<DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges>? resourceConfigurationChanges;
   /// The symbolic name of the resource being changed.
-  final String? symbolicName;
+  final pulumi.Input<String>? symbolicName;
   /// The resource type.
-  final String type;
+  final pulumi.Input<String> type;
   /// The explanation about why the resource is unsupported by What-If.
-  final String? unsupportedReason;
+  final pulumi.Input<String>? unsupportedReason;
 
   /// Creates a new [DeploymentStacksWhatIfResourceChangeResponse].
   /// [apiVersion] The API version the resource was deployed with
@@ -69,13 +70,13 @@ class DeploymentStacksWhatIfResourceChangeResponse {
       'apiVersion': apiVersion,
       'changeCertainty': changeCertainty,
       'changeType': changeType,
-      'denyStatusChange': ?denyStatusChange == null ? null : denyStatusChange!.toMap(),
+      'denyStatusChange': ?pulumi.Input.mapOptionalInputValue<DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange, Map<String, dynamic>>(denyStatusChange, (value) => value.toMap()),
       'deploymentId': ?deploymentId,
-      'extension': extension.toMap(),
+      'extension': pulumi.Input.mapInputValue<DeploymentExtensionResponse, Map<String, dynamic>>(extension, (value) => value.toMap()),
       'id': id,
       'identifiers': identifiers,
-      'managementStatusChange': ?managementStatusChange == null ? null : managementStatusChange!.toMap(),
-      'resourceConfigurationChanges': ?resourceConfigurationChanges == null ? null : resourceConfigurationChanges!.toMap(),
+      'managementStatusChange': ?pulumi.Input.mapOptionalInputValue<DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange, Map<String, dynamic>>(managementStatusChange, (value) => value.toMap()),
+      'resourceConfigurationChanges': ?pulumi.Input.mapOptionalInputValue<DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges, Map<String, dynamic>>(resourceConfigurationChanges, (value) => value.toMap()),
       'symbolicName': ?symbolicName,
       'type': type,
       'unsupportedReason': ?unsupportedReason,
@@ -84,19 +85,19 @@ class DeploymentStacksWhatIfResourceChangeResponse {
 
   factory DeploymentStacksWhatIfResourceChangeResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksWhatIfResourceChangeResponse(
-      apiVersion: map['apiVersion'] as String,
-      changeCertainty: map['changeCertainty'] as String,
-      changeType: map['changeType'] as String,
-      denyStatusChange: map['denyStatusChange'] == null ? null : DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange.fromMap((map['denyStatusChange'] as Map).cast<String, dynamic>()),
-      deploymentId: map['deploymentId'] == null ? null : map['deploymentId'] as String,
-      extension: DeploymentExtensionResponse.fromMap((map['extension'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      identifiers: map['identifiers'],
-      managementStatusChange: map['managementStatusChange'] == null ? null : DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange.fromMap((map['managementStatusChange'] as Map).cast<String, dynamic>()),
-      resourceConfigurationChanges: map['resourceConfigurationChanges'] == null ? null : DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges.fromMap((map['resourceConfigurationChanges'] as Map).cast<String, dynamic>()),
-      symbolicName: map['symbolicName'] == null ? null : map['symbolicName'] as String,
-      type: map['type'] as String,
-      unsupportedReason: map['unsupportedReason'] == null ? null : map['unsupportedReason'] as String,
+      apiVersion: (map['apiVersion'] as String).input(),
+      changeCertainty: (map['changeCertainty'] as String).input(),
+      changeType: (map['changeType'] as String).input(),
+      denyStatusChange: map['denyStatusChange'] == null ? null : (DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange.fromMap((map['denyStatusChange'] as Map).cast<String, dynamic>())).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
+      extension: (DeploymentExtensionResponse.fromMap((map['extension'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      identifiers: (map['identifiers']).input(),
+      managementStatusChange: map['managementStatusChange'] == null ? null : (DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange.fromMap((map['managementStatusChange'] as Map).cast<String, dynamic>())).input(),
+      resourceConfigurationChanges: map['resourceConfigurationChanges'] == null ? null : (DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges.fromMap((map['resourceConfigurationChanges'] as Map).cast<String, dynamic>())).input(),
+      symbolicName: map['symbolicName'] == null ? null : (map['symbolicName'] as String).input(),
+      type: (map['type'] as String).input(),
+      unsupportedReason: map['unsupportedReason'] == null ? null : (map['unsupportedReason'] as String).input(),
     );
   }
 }

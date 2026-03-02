@@ -23,17 +23,12 @@ class AliasState {
   /// [serviceName] The Function Compute service name.
   /// [serviceVersion] The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
   AliasState({
-    pulumi.Output<String>? aliasName,
-    pulumi.Output<String>? description,
-    pulumi.Output<AliasRoutingConfig>? routingConfig,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<String>? serviceVersion,
-  }) :
-      aliasName = pulumi.Input.asOptionalInput<String>(aliasName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      routingConfig = pulumi.Input.asOptionalInput<AliasRoutingConfig>(routingConfig),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      serviceVersion = pulumi.Input.asOptionalInput<String>(serviceVersion);
+    this.aliasName,
+    this.description,
+    this.routingConfig,
+    this.serviceName,
+    this.serviceVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class AliasState {
 
   factory AliasState.fromMap(Map<String, dynamic> map) {
     return AliasState(
-      aliasName: map['aliasName'] == null ? null : pulumi.Output.create<String>(map['aliasName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      routingConfig: map['routingConfig'] == null ? null : pulumi.Output.create<AliasRoutingConfig>(AliasRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      serviceVersion: map['serviceVersion'] == null ? null : pulumi.Output.create<String>(map['serviceVersion'] as String),
+      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      routingConfig: map['routingConfig'] == null ? null : (AliasRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      serviceVersion: map['serviceVersion'] == null ? null : (map['serviceVersion'] as String).input(),
     );
   }
 }

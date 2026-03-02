@@ -42,27 +42,17 @@ class KeystoresAliasesKeyCertFileState {
   /// [timeouts] Optional.
   /// [type] Optional.Type of Alias
   KeystoresAliasesKeyCertFileState({
-    pulumi.Output<String>? alias,
-    pulumi.Output<String>? cert,
-    pulumi.Output<List<KeystoresAliasesKeyCertFileCertsInfo>>? certsInfos,
-    pulumi.Output<String>? environment,
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? keystore,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? password,
-    pulumi.Output<KeystoresAliasesKeyCertFileTimeouts>? timeouts,
-    pulumi.Output<String>? type,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      cert = pulumi.Input.asOptionalInput<String>(cert),
-      certsInfos = pulumi.Input.asOptionalInput<List<KeystoresAliasesKeyCertFileCertsInfo>>(certsInfos),
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      keystore = pulumi.Input.asOptionalInput<String>(keystore),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      timeouts = pulumi.Input.asOptionalInput<KeystoresAliasesKeyCertFileTimeouts>(timeouts),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.alias,
+    this.cert,
+    this.certsInfos,
+    this.environment,
+    this.key,
+    this.keystore,
+    this.orgId,
+    this.password,
+    this.timeouts,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class KeystoresAliasesKeyCertFileState {
 
   factory KeystoresAliasesKeyCertFileState.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesKeyCertFileState(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      cert: map['cert'] == null ? null : pulumi.Output.create<String>(map['cert'] as String),
-      certsInfos: map['certsInfos'] == null ? null : pulumi.Output.create<List<KeystoresAliasesKeyCertFileCertsInfo>>(pulumi.Input.decodeList<KeystoresAliasesKeyCertFileCertsInfo>(map['certsInfos'], (value) => KeystoresAliasesKeyCertFileCertsInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      keystore: map['keystore'] == null ? null : pulumi.Output.create<String>(map['keystore'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<KeystoresAliasesKeyCertFileTimeouts>(KeystoresAliasesKeyCertFileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
+      certsInfos: map['certsInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesKeyCertFileCertsInfo>(map['certsInfos'], (value) => KeystoresAliasesKeyCertFileCertsInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      keystore: map['keystore'] == null ? null : (map['keystore'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (KeystoresAliasesKeyCertFileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

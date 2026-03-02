@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetModelsModel {
   /// The creation time of the model.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the model.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the api group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The ID of the Api Gateway Model.
-  final String id;
+  final pulumi.Input<String> id;
   /// The id of the model.
-  final String modelId;
+  final pulumi.Input<String> modelId;
   /// The name of the Model.
-  final String modelName;
+  final pulumi.Input<String> modelName;
   /// The reference of the model.
-  final String modelRef;
+  final pulumi.Input<String> modelRef;
   /// The modified time of the model.
-  final String modifiedTime;
+  final pulumi.Input<String> modifiedTime;
   /// The schema of the model.
-  final String schema;
+  final pulumi.Input<String> schema;
 
   /// Creates a new [GetModelsModel].
   /// [createTime] The creation time of the model.
@@ -59,15 +60,15 @@ class GetModelsModel {
 
   factory GetModelsModel.fromMap(Map<String, dynamic> map) {
     return GetModelsModel(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      groupId: map['groupId'] as String,
-      id: map['id'] as String,
-      modelId: map['modelId'] as String,
-      modelName: map['modelName'] as String,
-      modelRef: map['modelRef'] as String,
-      modifiedTime: map['modifiedTime'] as String,
-      schema: map['schema'] as String,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      id: (map['id'] as String).input(),
+      modelId: (map['modelId'] as String).input(),
+      modelName: (map['modelName'] as String).input(),
+      modelRef: (map['modelRef'] as String).input(),
+      modifiedTime: (map['modifiedTime'] as String).input(),
+      schema: (map['schema'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The cluster sku definition.
 class ClusterSkuResponse {
   /// The capacity reservation level in Gigabytes for this cluster.
-  final double? capacity;
+  final pulumi.Input<double>? capacity;
   /// The SKU (tier) of a cluster.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ClusterSkuResponse].
   /// [capacity] The capacity reservation level in Gigabytes for this cluster.
@@ -25,8 +26,8 @@ class ClusterSkuResponse {
 
   factory ClusterSkuResponse.fromMap(Map<String, dynamic> map) {
     return ClusterSkuResponse(
-      capacity: map['capacity'] == null ? null : map['capacity'] as double,
-      name: map['name'] == null ? null : map['name'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -34,17 +34,12 @@ class GetClusterIstioServiceArgs {
   /// [serviceName] The name of the Istio service underlying this service.
   /// [serviceNamespace] The namespace of the Istio service underlying this service.
   GetClusterIstioServiceArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> serviceNamespace,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      serviceNamespace = pulumi.Input.asInput<String>(serviceNamespace);
+    required this.clusterName,
+    required this.location,
+    this.project,
+    required this.serviceName,
+    required this.serviceNamespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,11 +53,11 @@ class GetClusterIstioServiceArgs {
 
   factory GetClusterIstioServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterIstioServiceArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      serviceNamespace: pulumi.Output.create<String>(map['serviceNamespace'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      serviceNamespace: (map['serviceNamespace'] as String).input(),
     );
   }
 }

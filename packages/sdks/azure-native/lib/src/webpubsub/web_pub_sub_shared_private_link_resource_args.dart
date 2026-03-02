@@ -28,19 +28,13 @@ class WebPubSubSharedPrivateLinkResourceArgs {
   /// [resourceName] The name of the resource.
   /// [sharedPrivateLinkResourceName] The name of the shared private link resource.
   WebPubSubSharedPrivateLinkResourceArgs({
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> privateLinkResourceId,
-    pulumi.Output<String>? requestMessage,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? sharedPrivateLinkResourceName,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      privateLinkResourceId = pulumi.Input.asInput<String>(privateLinkResourceId),
-      requestMessage = pulumi.Input.asOptionalInput<String>(requestMessage),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      sharedPrivateLinkResourceName = pulumi.Input.asOptionalInput<String>(sharedPrivateLinkResourceName);
+    required this.groupId,
+    required this.privateLinkResourceId,
+    this.requestMessage,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.sharedPrivateLinkResourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class WebPubSubSharedPrivateLinkResourceArgs {
 
   factory WebPubSubSharedPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return WebPubSubSharedPrivateLinkResourceArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      privateLinkResourceId: pulumi.Output.create<String>(map['privateLinkResourceId'] as String),
-      requestMessage: map['requestMessage'] == null ? null : pulumi.Output.create<String>(map['requestMessage'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : pulumi.Output.create<String>(map['sharedPrivateLinkResourceName'] as String),
+      groupId: (map['groupId'] as String).input(),
+      privateLinkResourceId: (map['privateLinkResourceId'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : (map['sharedPrivateLinkResourceName'] as String).input(),
     );
   }
 }

@@ -50,29 +50,18 @@ class ContainerV1State {
   /// [type] Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
   /// [updatedAt] The date the container was last updated.
   ContainerV1State({
-    pulumi.Output<ContainerV1Acl>? acl,
-    pulumi.Output<List<ContainerV1Consumer>>? consumers,
-    pulumi.Output<String>? containerRef,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? creatorId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<ContainerV1SecretRef>>? secretRefs,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? updatedAt,
-  }) :
-      acl = pulumi.Input.asOptionalInput<ContainerV1Acl>(acl),
-      consumers = pulumi.Input.asOptionalInput<List<ContainerV1Consumer>>(consumers),
-      containerRef = pulumi.Input.asOptionalInput<String>(containerRef),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      creatorId = pulumi.Input.asOptionalInput<String>(creatorId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretRefs = pulumi.Input.asOptionalInput<List<ContainerV1SecretRef>>(secretRefs),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt);
+    this.acl,
+    this.consumers,
+    this.containerRef,
+    this.createdAt,
+    this.creatorId,
+    this.name,
+    this.region,
+    this.secretRefs,
+    this.status,
+    this.type,
+    this.updatedAt,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,17 +81,17 @@ class ContainerV1State {
 
   factory ContainerV1State.fromMap(Map<String, dynamic> map) {
     return ContainerV1State(
-      acl: map['acl'] == null ? null : pulumi.Output.create<ContainerV1Acl>(ContainerV1Acl.fromMap((map['acl'] as Map).cast<String, dynamic>())),
-      consumers: map['consumers'] == null ? null : pulumi.Output.create<List<ContainerV1Consumer>>(pulumi.Input.decodeList<ContainerV1Consumer>(map['consumers'], (value) => ContainerV1Consumer.fromMap((value as Map).cast<String, dynamic>()))),
-      containerRef: map['containerRef'] == null ? null : pulumi.Output.create<String>(map['containerRef'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      creatorId: map['creatorId'] == null ? null : pulumi.Output.create<String>(map['creatorId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretRefs: map['secretRefs'] == null ? null : pulumi.Output.create<List<ContainerV1SecretRef>>(pulumi.Input.decodeList<ContainerV1SecretRef>(map['secretRefs'], (value) => ContainerV1SecretRef.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
+      acl: map['acl'] == null ? null : (ContainerV1Acl.fromMap((map['acl'] as Map).cast<String, dynamic>())).input(),
+      consumers: map['consumers'] == null ? null : (pulumi.Input.decodeList<ContainerV1Consumer>(map['consumers'], (value) => ContainerV1Consumer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerRef: map['containerRef'] == null ? null : (map['containerRef'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      creatorId: map['creatorId'] == null ? null : (map['creatorId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretRefs: map['secretRefs'] == null ? null : (pulumi.Input.decodeList<ContainerV1SecretRef>(map['secretRefs'], (value) => ContainerV1SecretRef.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
     );
   }
 }

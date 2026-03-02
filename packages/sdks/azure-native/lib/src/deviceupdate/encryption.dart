@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The CMK encryption settings on the Device Update account.
 class Encryption {
   /// The URI of the key vault
-  final String? keyVaultKeyUri;
+  final pulumi.Input<String>? keyVaultKeyUri;
   /// The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
-  final String? userAssignedIdentity;
+  final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [Encryption].
   /// [keyVaultKeyUri] The URI of the key vault
@@ -25,8 +26,8 @@ class Encryption {
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
-      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : map['keyVaultKeyUri'] as String,
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : map['userAssignedIdentity'] as String,
+      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : (map['keyVaultKeyUri'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
     );
   }
 }

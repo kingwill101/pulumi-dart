@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Whether fulfillment is enabled for the specific feature.
 class GoogleCloudDialogflowV2FulfillmentFeatureResponse {
   /// The type of the feature that enabled for fulfillment.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleCloudDialogflowV2FulfillmentFeatureResponse].
   /// [type] The type of the feature that enabled for fulfillment.
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowV2FulfillmentFeatureResponse {
 
   factory GoogleCloudDialogflowV2FulfillmentFeatureResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2FulfillmentFeatureResponse(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

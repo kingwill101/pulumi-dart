@@ -23,15 +23,11 @@ class MarketplaceSubscriptionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   MarketplaceSubscriptionArgs({
-    required pulumi.Output<MarketplaceSubscriptionMachinelearningservices> marketplaceSubscriptionProperties,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      marketplaceSubscriptionProperties = pulumi.Input.asInput<MarketplaceSubscriptionMachinelearningservices>(marketplaceSubscriptionProperties),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.marketplaceSubscriptionProperties,
+    this.name,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class MarketplaceSubscriptionArgs {
 
   factory MarketplaceSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return MarketplaceSubscriptionArgs(
-      marketplaceSubscriptionProperties: pulumi.Output.create<MarketplaceSubscriptionMachinelearningservices>(map['marketplaceSubscriptionProperties'] as MarketplaceSubscriptionMachinelearningservices),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      marketplaceSubscriptionProperties: (map['marketplaceSubscriptionProperties'] as MarketplaceSubscriptionMachinelearningservices).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

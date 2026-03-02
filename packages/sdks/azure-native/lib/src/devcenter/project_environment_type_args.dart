@@ -46,29 +46,18 @@ class ProjectEnvironmentTypeArgs {
   /// [tags] Resource tags.
   /// [userRoleAssignments] Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
   ProjectEnvironmentTypeArgs({
-    pulumi.Output<ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment>? creatorRoleAssignment,
-    pulumi.Output<String>? deploymentTargetId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? environmentTypeName,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, UserRoleAssignment>>? userRoleAssignments,
-  }) :
-      creatorRoleAssignment = pulumi.Input.asOptionalInput<ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment>(creatorRoleAssignment),
-      deploymentTargetId = pulumi.Input.asOptionalInput<String>(deploymentTargetId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      environmentTypeName = pulumi.Input.asOptionalInput<String>(environmentTypeName),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userRoleAssignments = pulumi.Input.asOptionalInput<Map<String, UserRoleAssignment>>(userRoleAssignments);
+    this.creatorRoleAssignment,
+    this.deploymentTargetId,
+    this.displayName,
+    this.environmentTypeName,
+    this.identity,
+    this.location,
+    required this.projectName,
+    required this.resourceGroupName,
+    this.status,
+    this.tags,
+    this.userRoleAssignments,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class ProjectEnvironmentTypeArgs {
 
   factory ProjectEnvironmentTypeArgs.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentTypeArgs(
-      creatorRoleAssignment: map['creatorRoleAssignment'] == null ? null : pulumi.Output.create<ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment>(ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment.fromMap((map['creatorRoleAssignment'] as Map).cast<String, dynamic>())),
-      deploymentTargetId: map['deploymentTargetId'] == null ? null : pulumi.Output.create<String>(map['deploymentTargetId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      environmentTypeName: map['environmentTypeName'] == null ? null : pulumi.Output.create<String>(map['environmentTypeName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userRoleAssignments: map['userRoleAssignments'] == null ? null : pulumi.Output.create<Map<String, UserRoleAssignment>>(pulumi.Input.decodeMapValues<UserRoleAssignment>(map['userRoleAssignments'], (value) => UserRoleAssignment.fromMap((value as Map).cast<String, dynamic>()))),
+      creatorRoleAssignment: map['creatorRoleAssignment'] == null ? null : (ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment.fromMap((map['creatorRoleAssignment'] as Map).cast<String, dynamic>())).input(),
+      deploymentTargetId: map['deploymentTargetId'] == null ? null : (map['deploymentTargetId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      environmentTypeName: map['environmentTypeName'] == null ? null : (map['environmentTypeName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userRoleAssignments: map['userRoleAssignments'] == null ? null : (pulumi.Input.decodeMapValues<UserRoleAssignment>(map['userRoleAssignments'], (value) => UserRoleAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

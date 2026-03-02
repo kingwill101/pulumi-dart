@@ -31,21 +31,14 @@ class GetEntitiesGetTimelineArgs {
   /// [startTime] The start timeline date, so the results returned are after this date.
   /// [workspaceName] The name of the workspace.
   GetEntitiesGetTimelineArgs({
-    required pulumi.Output<String> endTime,
-    required pulumi.Output<String> entityId,
-    pulumi.Output<List<String>>? kinds,
-    pulumi.Output<int>? numberOfBucket,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> startTime,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      endTime = pulumi.Input.asInput<String>(endTime),
-      entityId = pulumi.Input.asInput<String>(entityId),
-      kinds = pulumi.Input.asOptionalInput<List<String>>(kinds),
-      numberOfBucket = pulumi.Input.asOptionalInput<int>(numberOfBucket),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      startTime = pulumi.Input.asInput<String>(startTime),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.endTime,
+    required this.entityId,
+    this.kinds,
+    this.numberOfBucket,
+    required this.resourceGroupName,
+    required this.startTime,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetEntitiesGetTimelineArgs {
 
   factory GetEntitiesGetTimelineArgs.fromMap(Map<String, dynamic> map) {
     return GetEntitiesGetTimelineArgs(
-      endTime: pulumi.Output.create<String>(map['endTime'] as String),
-      entityId: pulumi.Output.create<String>(map['entityId'] as String),
-      kinds: map['kinds'] == null ? null : pulumi.Output.create<List<String>>((map['kinds'] as List).cast<String>()),
-      numberOfBucket: map['numberOfBucket'] == null ? null : pulumi.Output.create<int>(map['numberOfBucket'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startTime: pulumi.Output.create<String>(map['startTime'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      endTime: (map['endTime'] as String).input(),
+      entityId: (map['entityId'] as String).input(),
+      kinds: map['kinds'] == null ? null : ((map['kinds'] as List).cast<String>()).input(),
+      numberOfBucket: map['numberOfBucket'] == null ? null : (map['numberOfBucket'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

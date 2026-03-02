@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_reference.dart';
 
 /// Customer Certificate used for https
 class CustomerCertificateParameters {
   /// Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{certificateName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-  final ResourceReference secretSource;
+  final pulumi.Input<ResourceReference> secretSource;
   /// Version of the secret to be used
-  final String? secretVersion;
+  final pulumi.Input<String>? secretVersion;
   /// The type of the secret resource.
   /// Expected value is 'CustomerCertificate'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Whether to use the latest version for the certificate
-  final bool? useLatestVersion;
+  final pulumi.Input<bool>? useLatestVersion;
 
   /// Creates a new [CustomerCertificateParameters].
   /// [secretSource] Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{certificateName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
@@ -28,7 +29,7 @@ class CustomerCertificateParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'secretSource': secretSource.toMap(),
+      'secretSource': pulumi.Input.mapInputValue<ResourceReference, Map<String, dynamic>>(secretSource, (value) => value.toMap()),
       'secretVersion': ?secretVersion,
       'type': type,
       'useLatestVersion': ?useLatestVersion,
@@ -37,10 +38,10 @@ class CustomerCertificateParameters {
 
   factory CustomerCertificateParameters.fromMap(Map<String, dynamic> map) {
     return CustomerCertificateParameters(
-      secretSource: ResourceReference.fromMap((map['secretSource'] as Map).cast<String, dynamic>()),
-      secretVersion: map['secretVersion'] == null ? null : map['secretVersion'] as String,
-      type: map['type'] as String,
-      useLatestVersion: map['useLatestVersion'] == null ? null : map['useLatestVersion'] as bool,
+      secretSource: (ResourceReference.fromMap((map['secretSource'] as Map).cast<String, dynamic>())).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
+      type: (map['type'] as String).input(),
+      useLatestVersion: map['useLatestVersion'] == null ? null : (map['useLatestVersion'] as bool).input(),
     );
   }
 }

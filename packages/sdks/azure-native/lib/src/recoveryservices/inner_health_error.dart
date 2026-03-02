@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Implements InnerHealthError class. HealthError object has a list of InnerHealthErrors as child errors. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
 class InnerHealthError {
   /// Error creation time (UTC).
-  final String? creationTimeUtc;
+  final pulumi.Input<String>? creationTimeUtc;
   /// Value indicating whether the health error is customer resolvable.
-  final String? customerResolvability;
+  final pulumi.Input<String>? customerResolvability;
   /// ID of the entity.
-  final String? entityId;
+  final pulumi.Input<String>? entityId;
   /// Category of error.
-  final String? errorCategory;
+  final pulumi.Input<String>? errorCategory;
   /// Error code.
-  final String? errorCode;
+  final pulumi.Input<String>? errorCode;
   /// The health error unique id.
-  final String? errorId;
+  final pulumi.Input<String>? errorId;
   /// Level of error.
-  final String? errorLevel;
+  final pulumi.Input<String>? errorLevel;
   /// Error message.
-  final String? errorMessage;
+  final pulumi.Input<String>? errorMessage;
   /// Source of error.
-  final String? errorSource;
+  final pulumi.Input<String>? errorSource;
   /// Type of error.
-  final String? errorType;
+  final pulumi.Input<String>? errorType;
   /// Possible causes of error.
-  final String? possibleCauses;
+  final pulumi.Input<String>? possibleCauses;
   /// Recommended action to resolve error.
-  final String? recommendedAction;
+  final pulumi.Input<String>? recommendedAction;
   /// DRA error message.
-  final String? recoveryProviderErrorMessage;
+  final pulumi.Input<String>? recoveryProviderErrorMessage;
   /// Summary message of the entity.
-  final String? summaryMessage;
+  final pulumi.Input<String>? summaryMessage;
 
   /// Creates a new [InnerHealthError].
   /// [creationTimeUtc] Error creation time (UTC).
@@ -85,20 +86,20 @@ class InnerHealthError {
 
   factory InnerHealthError.fromMap(Map<String, dynamic> map) {
     return InnerHealthError(
-      creationTimeUtc: map['creationTimeUtc'] == null ? null : map['creationTimeUtc'] as String,
-      customerResolvability: map['customerResolvability'] == null ? null : map['customerResolvability'] as String,
-      entityId: map['entityId'] == null ? null : map['entityId'] as String,
-      errorCategory: map['errorCategory'] == null ? null : map['errorCategory'] as String,
-      errorCode: map['errorCode'] == null ? null : map['errorCode'] as String,
-      errorId: map['errorId'] == null ? null : map['errorId'] as String,
-      errorLevel: map['errorLevel'] == null ? null : map['errorLevel'] as String,
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
-      errorSource: map['errorSource'] == null ? null : map['errorSource'] as String,
-      errorType: map['errorType'] == null ? null : map['errorType'] as String,
-      possibleCauses: map['possibleCauses'] == null ? null : map['possibleCauses'] as String,
-      recommendedAction: map['recommendedAction'] == null ? null : map['recommendedAction'] as String,
-      recoveryProviderErrorMessage: map['recoveryProviderErrorMessage'] == null ? null : map['recoveryProviderErrorMessage'] as String,
-      summaryMessage: map['summaryMessage'] == null ? null : map['summaryMessage'] as String,
+      creationTimeUtc: map['creationTimeUtc'] == null ? null : (map['creationTimeUtc'] as String).input(),
+      customerResolvability: map['customerResolvability'] == null ? null : (map['customerResolvability'] as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId'] as String).input(),
+      errorCategory: map['errorCategory'] == null ? null : (map['errorCategory'] as String).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
+      errorId: map['errorId'] == null ? null : (map['errorId'] as String).input(),
+      errorLevel: map['errorLevel'] == null ? null : (map['errorLevel'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      errorSource: map['errorSource'] == null ? null : (map['errorSource'] as String).input(),
+      errorType: map['errorType'] == null ? null : (map['errorType'] as String).input(),
+      possibleCauses: map['possibleCauses'] == null ? null : (map['possibleCauses'] as String).input(),
+      recommendedAction: map['recommendedAction'] == null ? null : (map['recommendedAction'] as String).input(),
+      recoveryProviderErrorMessage: map['recoveryProviderErrorMessage'] == null ? null : (map['recoveryProviderErrorMessage'] as String).input(),
+      summaryMessage: map['summaryMessage'] == null ? null : (map['summaryMessage'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fleet_observability_routing_config_response_gkehub_v1alpha.dart';
 
 /// LoggingConfig defines the configuration for different types of logs.
 class FleetObservabilityLoggingConfigResponseGkehubV1alpha {
   /// Specified if applying the default routing config to logs not specified in other configs.
-  final FleetObservabilityRoutingConfigResponseGkehubV1alpha defaultConfig;
+  final pulumi.Input<FleetObservabilityRoutingConfigResponseGkehubV1alpha> defaultConfig;
   /// Specified if applying the routing config to all logs for all fleet scopes.
-  final FleetObservabilityRoutingConfigResponseGkehubV1alpha fleetScopeLogsConfig;
+  final pulumi.Input<FleetObservabilityRoutingConfigResponseGkehubV1alpha> fleetScopeLogsConfig;
 
   /// Creates a new [FleetObservabilityLoggingConfigResponseGkehubV1alpha].
   /// [defaultConfig] Specified if applying the default routing config to logs not specified in other configs.
@@ -19,15 +20,15 @@ class FleetObservabilityLoggingConfigResponseGkehubV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultConfig': defaultConfig.toMap(),
-      'fleetScopeLogsConfig': fleetScopeLogsConfig.toMap(),
+      'defaultConfig': pulumi.Input.mapInputValue<FleetObservabilityRoutingConfigResponseGkehubV1alpha, Map<String, dynamic>>(defaultConfig, (value) => value.toMap()),
+      'fleetScopeLogsConfig': pulumi.Input.mapInputValue<FleetObservabilityRoutingConfigResponseGkehubV1alpha, Map<String, dynamic>>(fleetScopeLogsConfig, (value) => value.toMap()),
     };
   }
 
   factory FleetObservabilityLoggingConfigResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityLoggingConfigResponseGkehubV1alpha(
-      defaultConfig: FleetObservabilityRoutingConfigResponseGkehubV1alpha.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>()),
-      fleetScopeLogsConfig: FleetObservabilityRoutingConfigResponseGkehubV1alpha.fromMap((map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>()),
+      defaultConfig: (FleetObservabilityRoutingConfigResponseGkehubV1alpha.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>())).input(),
+      fleetScopeLogsConfig: (FleetObservabilityRoutingConfigResponseGkehubV1alpha.fromMap((map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

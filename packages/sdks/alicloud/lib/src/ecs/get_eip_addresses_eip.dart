@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEipAddressesEip {
   /// The maximum bandwidth of the EIP. Unit: Mbit/s.
-  final String bandwidth;
-  final String creationTime;
+  final pulumi.Input<String> bandwidth;
+  final pulumi.Input<String> creationTime;
   /// Indicates whether deletion protection is enabled.
-  final bool deletionProtection;
+  final pulumi.Input<bool> deletionProtection;
   /// The ID of the Address.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the instance with which the EIP is associated.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The type of the instance with which the EIP is associated.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The metering method of the EIP.
-  final String internetChargeType;
+  final pulumi.Input<String> internetChargeType;
   /// The eip address.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetEipAddressesEip].
   /// [bandwidth] The maximum bandwidth of the EIP. Unit: Mbit/s.
@@ -58,15 +59,15 @@ class GetEipAddressesEip {
 
   factory GetEipAddressesEip.fromMap(Map<String, dynamic> map) {
     return GetEipAddressesEip(
-      bandwidth: map['bandwidth'] as String,
-      creationTime: map['creationTime'] as String,
-      deletionProtection: map['deletionProtection'] as bool,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceType: map['instanceType'] as String,
-      internetChargeType: map['internetChargeType'] as String,
-      ipAddress: map['ipAddress'] as String,
-      status: map['status'] as String,
+      bandwidth: (map['bandwidth'] as String).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      deletionProtection: (map['deletionProtection'] as bool).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      internetChargeType: (map['internetChargeType'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

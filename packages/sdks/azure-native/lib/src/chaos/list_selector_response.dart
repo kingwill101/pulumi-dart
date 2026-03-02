@@ -7,14 +7,14 @@ import 'target_reference_response.dart';
 /// Model that represents a list selector.
 class ListSelectorResponse {
   /// Model that represents available filter types that can be applied to a targets list.
-  final SimpleFilterResponse? filter;
+  final pulumi.Input<SimpleFilterResponse>? filter;
   /// String of the selector ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// List of Target references.
-  final List<TargetReferenceResponse> targets;
+  final pulumi.Input<List<TargetReferenceResponse>> targets;
   /// Enum of the selector type.
   /// Expected value is 'List'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ListSelectorResponse].
   /// [filter] Model that represents available filter types that can be applied to a targets list.
@@ -30,19 +30,19 @@ class ListSelectorResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filter': ?filter == null ? null : filter!.toMap(),
+      'filter': ?pulumi.Input.mapOptionalInputValue<SimpleFilterResponse, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'id': id,
-      'targets': pulumi.Input.encodeList<TargetReferenceResponse, Map<String, dynamic>>(targets, (value) => value.toMap()),
+      'targets': pulumi.Input.mapInputValue<List<TargetReferenceResponse>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<TargetReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory ListSelectorResponse.fromMap(Map<String, dynamic> map) {
     return ListSelectorResponse(
-      filter: map['filter'] == null ? null : SimpleFilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      targets: pulumi.Input.decodeList<TargetReferenceResponse>(map['targets'], (value) => TargetReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      filter: map['filter'] == null ? null : (SimpleFilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      targets: (pulumi.Input.decodeList<TargetReferenceResponse>(map['targets'], (value) => TargetReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

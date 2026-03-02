@@ -25,17 +25,12 @@ class PreparedStatementArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroup] The name of the workgroup to which the prepared statement belongs.
   PreparedStatementArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> queryStatement,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> workgroup,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queryStatement = pulumi.Input.asInput<String>(queryStatement),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workgroup = pulumi.Input.asInput<String>(workgroup);
+    this.description,
+    this.name,
+    required this.queryStatement,
+    this.region,
+    required this.workgroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PreparedStatementArgs {
 
   factory PreparedStatementArgs.fromMap(Map<String, dynamic> map) {
     return PreparedStatementArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queryStatement: pulumi.Output.create<String>(map['queryStatement'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workgroup: pulumi.Output.create<String>(map['workgroup'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queryStatement: (map['queryStatement'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workgroup: (map['workgroup'] as String).input(),
     );
   }
 }

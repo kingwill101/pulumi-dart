@@ -42,25 +42,16 @@ class GetAccountSASArgs {
   /// [signedVersion] Specifies the signed storage service version to use to authorize requests made with this account SAS. Defaults to `2022-11-02`.
   /// [start] The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
   GetAccountSASArgs({
-    required pulumi.Output<String> connectionString,
-    required pulumi.Output<String> expiry,
-    pulumi.Output<bool>? httpsOnly,
-    pulumi.Output<String>? ipAddresses,
-    required pulumi.Output<GetAccountSASPermissions> permissions,
-    required pulumi.Output<GetAccountSASResourceTypes> resourceTypes,
-    required pulumi.Output<GetAccountSASServices> services,
-    pulumi.Output<String>? signedVersion,
-    required pulumi.Output<String> start,
-  }) :
-      connectionString = pulumi.Input.asInput<String>(connectionString),
-      expiry = pulumi.Input.asInput<String>(expiry),
-      httpsOnly = pulumi.Input.asOptionalInput<bool>(httpsOnly),
-      ipAddresses = pulumi.Input.asOptionalInput<String>(ipAddresses),
-      permissions = pulumi.Input.asInput<GetAccountSASPermissions>(permissions),
-      resourceTypes = pulumi.Input.asInput<GetAccountSASResourceTypes>(resourceTypes),
-      services = pulumi.Input.asInput<GetAccountSASServices>(services),
-      signedVersion = pulumi.Input.asOptionalInput<String>(signedVersion),
-      start = pulumi.Input.asInput<String>(start);
+    required this.connectionString,
+    required this.expiry,
+    this.httpsOnly,
+    this.ipAddresses,
+    required this.permissions,
+    required this.resourceTypes,
+    required this.services,
+    this.signedVersion,
+    required this.start,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,15 +69,15 @@ class GetAccountSASArgs {
 
   factory GetAccountSASArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountSASArgs(
-      connectionString: pulumi.Output.create<String>(map['connectionString'] as String),
-      expiry: pulumi.Output.create<String>(map['expiry'] as String),
-      httpsOnly: map['httpsOnly'] == null ? null : pulumi.Output.create<bool>(map['httpsOnly'] as bool),
-      ipAddresses: map['ipAddresses'] == null ? null : pulumi.Output.create<String>(map['ipAddresses'] as String),
-      permissions: pulumi.Output.create<GetAccountSASPermissions>(GetAccountSASPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())),
-      resourceTypes: pulumi.Output.create<GetAccountSASResourceTypes>(GetAccountSASResourceTypes.fromMap((map['resourceTypes'] as Map).cast<String, dynamic>())),
-      services: pulumi.Output.create<GetAccountSASServices>(GetAccountSASServices.fromMap((map['services'] as Map).cast<String, dynamic>())),
-      signedVersion: map['signedVersion'] == null ? null : pulumi.Output.create<String>(map['signedVersion'] as String),
-      start: pulumi.Output.create<String>(map['start'] as String),
+      connectionString: (map['connectionString'] as String).input(),
+      expiry: (map['expiry'] as String).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as String).input(),
+      permissions: (GetAccountSASPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
+      resourceTypes: (GetAccountSASResourceTypes.fromMap((map['resourceTypes'] as Map).cast<String, dynamic>())).input(),
+      services: (GetAccountSASServices.fromMap((map['services'] as Map).cast<String, dynamic>())).input(),
+      signedVersion: map['signedVersion'] == null ? null : (map['signedVersion'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

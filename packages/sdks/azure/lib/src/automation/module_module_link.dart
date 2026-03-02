@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'module_module_link_hash.dart';
 
 class ModuleModuleLink {
   /// A `hash` block as defined below.
-  final ModuleModuleLinkHash? hash;
+  final pulumi.Input<ModuleModuleLinkHash>? hash;
   /// The URI of the module content (zip or nupkg).
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [ModuleModuleLink].
   /// [hash] A `hash` block as defined below.
@@ -18,15 +19,15 @@ class ModuleModuleLink {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hash': ?hash == null ? null : hash!.toMap(),
+      'hash': ?pulumi.Input.mapOptionalInputValue<ModuleModuleLinkHash, Map<String, dynamic>>(hash, (value) => value.toMap()),
       'uri': uri,
     };
   }
 
   factory ModuleModuleLink.fromMap(Map<String, dynamic> map) {
     return ModuleModuleLink(
-      hash: map['hash'] == null ? null : ModuleModuleLinkHash.fromMap((map['hash'] as Map).cast<String, dynamic>()),
-      uri: map['uri'] as String,
+      hash: map['hash'] == null ? null : (ModuleModuleLinkHash.fromMap((map['hash'] as Map).cast<String, dynamic>())).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

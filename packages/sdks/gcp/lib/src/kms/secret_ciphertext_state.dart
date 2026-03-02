@@ -22,15 +22,11 @@ class SecretCiphertextState {
   /// [cryptoKey] The full name of the CryptoKey that will be used to encrypt the provided plaintext.
   /// [plaintext] The plaintext to be encrypted.
   SecretCiphertextState({
-    pulumi.Output<String>? additionalAuthenticatedData,
-    pulumi.Output<String>? ciphertext,
-    pulumi.Output<String>? cryptoKey,
-    pulumi.Output<String>? plaintext,
-  }) :
-      additionalAuthenticatedData = pulumi.Input.asOptionalInput<String>(additionalAuthenticatedData),
-      ciphertext = pulumi.Input.asOptionalInput<String>(ciphertext),
-      cryptoKey = pulumi.Input.asOptionalInput<String>(cryptoKey),
-      plaintext = pulumi.Input.asOptionalInput<String>(plaintext);
+    this.additionalAuthenticatedData,
+    this.ciphertext,
+    this.cryptoKey,
+    this.plaintext,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SecretCiphertextState {
 
   factory SecretCiphertextState.fromMap(Map<String, dynamic> map) {
     return SecretCiphertextState(
-      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : pulumi.Output.create<String>(map['additionalAuthenticatedData'] as String),
-      ciphertext: map['ciphertext'] == null ? null : pulumi.Output.create<String>(map['ciphertext'] as String),
-      cryptoKey: map['cryptoKey'] == null ? null : pulumi.Output.create<String>(map['cryptoKey'] as String),
-      plaintext: map['plaintext'] == null ? null : pulumi.Output.create<String>(map['plaintext'] as String),
+      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : (map['additionalAuthenticatedData'] as String).input(),
+      ciphertext: map['ciphertext'] == null ? null : (map['ciphertext'] as String).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (map['cryptoKey'] as String).input(),
+      plaintext: map['plaintext'] == null ? null : (map['plaintext'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// API source configuration for Azure API Management.
 class AzureApiManagementSource {
   /// The resource ID of the managed identity that has access to the API Management instance.
-  final String? msiResourceId;
+  final pulumi.Input<String>? msiResourceId;
   /// API Management service resource ID.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [AzureApiManagementSource].
   /// [msiResourceId] The resource ID of the managed identity that has access to the API Management instance.
@@ -25,8 +26,8 @@ class AzureApiManagementSource {
 
   factory AzureApiManagementSource.fromMap(Map<String, dynamic> map) {
     return AzureApiManagementSource(
-      msiResourceId: map['msiResourceId'] == null ? null : map['msiResourceId'] as String,
-      resourceId: map['resourceId'] as String,
+      msiResourceId: map['msiResourceId'] == null ? null : (map['msiResourceId'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

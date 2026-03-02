@@ -34,23 +34,15 @@ class IntegrationAccountAssemblyArgs {
   /// [name] The name which should be used for this Logic App Integration Account Assembly Artifact. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Assembly Artifact should exist. Changing this forces a new resource to be created.
   IntegrationAccountAssemblyArgs({
-    required pulumi.Output<String> assemblyName,
-    pulumi.Output<String>? assemblyVersion,
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? contentLinkUri,
-    required pulumi.Output<String> integrationAccountName,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      assemblyName = pulumi.Input.asInput<String>(assemblyName),
-      assemblyVersion = pulumi.Input.asOptionalInput<String>(assemblyVersion),
-      content = pulumi.Input.asOptionalInput<String>(content),
-      contentLinkUri = pulumi.Input.asOptionalInput<String>(contentLinkUri),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.assemblyName,
+    this.assemblyVersion,
+    this.content,
+    this.contentLinkUri,
+    required this.integrationAccountName,
+    this.metadata,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class IntegrationAccountAssemblyArgs {
 
   factory IntegrationAccountAssemblyArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountAssemblyArgs(
-      assemblyName: pulumi.Output.create<String>(map['assemblyName'] as String),
-      assemblyVersion: map['assemblyVersion'] == null ? null : pulumi.Output.create<String>(map['assemblyVersion'] as String),
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      contentLinkUri: map['contentLinkUri'] == null ? null : pulumi.Output.create<String>(map['contentLinkUri'] as String),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      assemblyName: (map['assemblyName'] as String).input(),
+      assemblyVersion: map['assemblyVersion'] == null ? null : (map['assemblyVersion'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      contentLinkUri: map['contentLinkUri'] == null ? null : (map['contentLinkUri'] as String).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

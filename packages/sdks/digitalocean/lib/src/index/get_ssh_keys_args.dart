@@ -20,11 +20,9 @@ class GetSshKeysArgs {
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
   GetSshKeysArgs({
-    pulumi.Output<List<GetSshKeysFilter>>? filters,
-    pulumi.Output<List<GetSshKeysSort>>? sorts,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetSshKeysFilter>>(filters),
-      sorts = pulumi.Input.asOptionalInput<List<GetSshKeysSort>>(sorts);
+    this.filters,
+    this.sorts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,8 +33,8 @@ class GetSshKeysArgs {
 
   factory GetSshKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetSshKeysArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetSshKeysFilter>>(pulumi.Input.decodeList<GetSshKeysFilter>(map['filters'], (value) => GetSshKeysFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      sorts: map['sorts'] == null ? null : pulumi.Output.create<List<GetSshKeysSort>>(pulumi.Input.decodeList<GetSshKeysSort>(map['sorts'], (value) => GetSshKeysSort.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSshKeysFilter>(map['filters'], (value) => GetSshKeysFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetSshKeysSort>(map['sorts'], (value) => GetSshKeysSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

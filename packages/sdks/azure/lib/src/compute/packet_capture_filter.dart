@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PacketCaptureFilter {
   /// The local IP Address to be filtered on. Specify `127.0.0.1` for a single address entry, `127.0.0.1-127.0.0.255` for a range and `127.0.0.1;127.0.0.5` for multiple entries. Multiple ranges and mixing ranges with multiple entries are currently not supported. Changing this forces a new resource to be created.
-  final String? localIpAddress;
+  final pulumi.Input<String>? localIpAddress;
   /// The local port to be filtered on. Specify `80` for single port entry, `80-85` for a range and `80;443;` for multiple entries. Multiple ranges and mixing ranges with multiple entries are currently not supported. Changing this forces a new resource to be created.
-  final String? localPort;
+  final pulumi.Input<String>? localPort;
   /// The Protocol to be filtered on. Possible values include `Any`, `TCP` and `UDP`. Changing this forces a new resource to be created.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The remote IP Address to be filtered on. Specify `127.0.0.1` for a single address entry, `127.0.0.1-127.0.0.255` for a range and `127.0.0.1;127.0.0.5` for multiple entries. Multiple ranges and mixing ranges with multiple entries are currently not supported. Changing this forces a new resource to be created.
-  final String? remoteIpAddress;
+  final pulumi.Input<String>? remoteIpAddress;
   /// The remote port to be filtered on. Specify `80` for single port entry, `80-85` for a range and `80;443;` for multiple entries. Multiple ranges and mixing ranges with multiple entries are currently not supported. Changing this forces a new resource to be created.
-  final String? remotePort;
+  final pulumi.Input<String>? remotePort;
 
   /// Creates a new [PacketCaptureFilter].
   /// [localIpAddress] The local IP Address to be filtered on. Specify `127.0.0.1` for a single address entry, `127.0.0.1-127.0.0.255` for a range and `127.0.0.1;127.0.0.5` for multiple entries. Multiple ranges and mixing ranges with multiple entries are currently not supported. Changing this forces a new resource to be created.
@@ -39,11 +40,11 @@ class PacketCaptureFilter {
 
   factory PacketCaptureFilter.fromMap(Map<String, dynamic> map) {
     return PacketCaptureFilter(
-      localIpAddress: map['localIpAddress'] == null ? null : map['localIpAddress'] as String,
-      localPort: map['localPort'] == null ? null : map['localPort'] as String,
-      protocol: map['protocol'] as String,
-      remoteIpAddress: map['remoteIpAddress'] == null ? null : map['remoteIpAddress'] as String,
-      remotePort: map['remotePort'] == null ? null : map['remotePort'] as String,
+      localIpAddress: map['localIpAddress'] == null ? null : (map['localIpAddress'] as String).input(),
+      localPort: map['localPort'] == null ? null : (map['localPort'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      remoteIpAddress: map['remoteIpAddress'] == null ? null : (map['remoteIpAddress'] as String).input(),
+      remotePort: map['remotePort'] == null ? null : (map['remotePort'] as String).input(),
     );
   }
 }

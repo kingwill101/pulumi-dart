@@ -65,27 +65,17 @@ class GlobalAddressArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [purpose] The purpose of the resource. Possible values include:
   GlobalAddressArgs({
-    pulumi.Output<String>? address,
-    pulumi.Output<String>? addressType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<int>? prefixLength,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? purpose,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      addressType = pulumi.Input.asOptionalInput<String>(addressType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      prefixLength = pulumi.Input.asOptionalInput<int>(prefixLength),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      purpose = pulumi.Input.asOptionalInput<String>(purpose);
+    this.address,
+    this.addressType,
+    this.description,
+    this.ipVersion,
+    this.labels,
+    this.name,
+    this.network,
+    this.prefixLength,
+    this.project,
+    this.purpose,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,16 +94,16 @@ class GlobalAddressArgs {
 
   factory GlobalAddressArgs.fromMap(Map<String, dynamic> map) {
     return GlobalAddressArgs(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      addressType: map['addressType'] == null ? null : pulumi.Output.create<String>(map['addressType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      prefixLength: map['prefixLength'] == null ? null : pulumi.Output.create<int>(map['prefixLength'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      purpose: map['purpose'] == null ? null : pulumi.Output.create<String>(map['purpose'] as String),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      addressType: map['addressType'] == null ? null : (map['addressType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
     );
   }
 }

@@ -31,19 +31,13 @@ class ConnectAttachmentArgs {
   /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transportAttachmentId] ID of the attachment between the two connections.
   ConnectAttachmentArgs({
-    required pulumi.Output<String> coreNetworkId,
-    required pulumi.Output<String> edgeLocation,
-    required pulumi.Output<ConnectAttachmentOptions> options,
-    pulumi.Output<String>? routingPolicyLabel,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> transportAttachmentId,
-  }) :
-      coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
-      edgeLocation = pulumi.Input.asInput<String>(edgeLocation),
-      options = pulumi.Input.asInput<ConnectAttachmentOptions>(options),
-      routingPolicyLabel = pulumi.Input.asOptionalInput<String>(routingPolicyLabel),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transportAttachmentId = pulumi.Input.asInput<String>(transportAttachmentId);
+    required this.coreNetworkId,
+    required this.edgeLocation,
+    required this.options,
+    this.routingPolicyLabel,
+    this.tags,
+    required this.transportAttachmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class ConnectAttachmentArgs {
 
   factory ConnectAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ConnectAttachmentArgs(
-      coreNetworkId: pulumi.Output.create<String>(map['coreNetworkId'] as String),
-      edgeLocation: pulumi.Output.create<String>(map['edgeLocation'] as String),
-      options: pulumi.Output.create<ConnectAttachmentOptions>(ConnectAttachmentOptions.fromMap((map['options'] as Map).cast<String, dynamic>())),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : pulumi.Output.create<String>(map['routingPolicyLabel'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transportAttachmentId: pulumi.Output.create<String>(map['transportAttachmentId'] as String),
+      coreNetworkId: (map['coreNetworkId'] as String).input(),
+      edgeLocation: (map['edgeLocation'] as String).input(),
+      options: (ConnectAttachmentOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transportAttachmentId: (map['transportAttachmentId'] as String).input(),
     );
   }
 }

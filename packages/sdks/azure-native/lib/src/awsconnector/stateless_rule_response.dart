@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_definition_response.dart';
 
 /// Definition of StatelessRule
 class StatelessRuleResponse {
   /// Property priority
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// Property ruleDefinition
-  final RuleDefinitionResponse? ruleDefinition;
+  final pulumi.Input<RuleDefinitionResponse>? ruleDefinition;
 
   /// Creates a new [StatelessRuleResponse].
   /// [priority] Property priority
@@ -20,14 +21,14 @@ class StatelessRuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'priority': ?priority,
-      'ruleDefinition': ?ruleDefinition == null ? null : ruleDefinition!.toMap(),
+      'ruleDefinition': ?pulumi.Input.mapOptionalInputValue<RuleDefinitionResponse, Map<String, dynamic>>(ruleDefinition, (value) => value.toMap()),
     };
   }
 
   factory StatelessRuleResponse.fromMap(Map<String, dynamic> map) {
     return StatelessRuleResponse(
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      ruleDefinition: map['ruleDefinition'] == null ? null : RuleDefinitionResponse.fromMap((map['ruleDefinition'] as Map).cast<String, dynamic>()),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      ruleDefinition: map['ruleDefinition'] == null ? null : (RuleDefinitionResponse.fromMap((map['ruleDefinition'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

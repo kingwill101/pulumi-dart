@@ -22,15 +22,11 @@ class GetProfileArgs {
   /// [profileName] The name of the profile.
   /// [resourceGroupName] The name of the resource group.
   GetProfileArgs({
-    required pulumi.Output<String> hubName,
-    pulumi.Output<String>? localeCode,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hubName = pulumi.Input.asInput<String>(hubName),
-      localeCode = pulumi.Input.asOptionalInput<String>(localeCode),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hubName,
+    this.localeCode,
+    required this.profileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetProfileArgs {
 
   factory GetProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetProfileArgs(
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      localeCode: map['localeCode'] == null ? null : pulumi.Output.create<String>(map['localeCode'] as String),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hubName: (map['hubName'] as String).input(),
+      localeCode: map['localeCode'] == null ? null : (map['localeCode'] as String).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

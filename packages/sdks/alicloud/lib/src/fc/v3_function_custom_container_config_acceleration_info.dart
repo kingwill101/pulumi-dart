@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3FunctionCustomContainerConfigAccelerationInfo {
   /// Image Acceleration Status (Deprecated)
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [V3FunctionCustomContainerConfigAccelerationInfo].
   /// [status] Image Acceleration Status (Deprecated)
@@ -19,7 +20,7 @@ class V3FunctionCustomContainerConfigAccelerationInfo {
 
   factory V3FunctionCustomContainerConfigAccelerationInfo.fromMap(Map<String, dynamic> map) {
     return V3FunctionCustomContainerConfigAccelerationInfo(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

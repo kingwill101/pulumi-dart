@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNodeSpecListenerTimeoutHttpIdle {
   /// Unit of time. Valid values: `ms`, `s`.
-  final String unit;
+  final pulumi.Input<String> unit;
   /// Number of time units. Minimum value of `0`.
-  final int value;
+  final pulumi.Input<int> value;
 
   /// Creates a new [VirtualNodeSpecListenerTimeoutHttpIdle].
   /// [unit] Unit of time. Valid values: `ms`, `s`.
@@ -24,8 +25,8 @@ class VirtualNodeSpecListenerTimeoutHttpIdle {
 
   factory VirtualNodeSpecListenerTimeoutHttpIdle.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTimeoutHttpIdle(
-      unit: map['unit'] as String,
-      value: map['value'] as int,
+      unit: (map['unit'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

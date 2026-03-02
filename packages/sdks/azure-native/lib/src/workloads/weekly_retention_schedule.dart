@@ -7,11 +7,11 @@ import 'retention_duration.dart';
 /// Weekly retention schedule.
 class WeeklyRetentionSchedule {
   /// List of days of week for weekly retention policy.
-  final List<DayOfWeek>? daysOfTheWeek;
+  final pulumi.Input<List<DayOfWeek>>? daysOfTheWeek;
   /// Retention duration of retention Policy.
-  final RetentionDuration? retentionDuration;
+  final pulumi.Input<RetentionDuration>? retentionDuration;
   /// Retention times of retention policy.
-  final List<String>? retentionTimes;
+  final pulumi.Input<List<String>>? retentionTimes;
 
   /// Creates a new [WeeklyRetentionSchedule].
   /// [daysOfTheWeek] List of days of week for weekly retention policy.
@@ -25,17 +25,17 @@ class WeeklyRetentionSchedule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'daysOfTheWeek': ?daysOfTheWeek == null ? null : pulumi.Input.encodeList<DayOfWeek, String>(daysOfTheWeek!, (value) => value.value),
-      'retentionDuration': ?retentionDuration == null ? null : retentionDuration!.toMap(),
+      'daysOfTheWeek': ?pulumi.Input.mapOptionalInputValue<List<DayOfWeek>, List<String>>(daysOfTheWeek, (value) => pulumi.Input.encodeList<DayOfWeek, String>(value, (value) => value.value)),
+      'retentionDuration': ?pulumi.Input.mapOptionalInputValue<RetentionDuration, Map<String, dynamic>>(retentionDuration, (value) => value.toMap()),
       'retentionTimes': ?retentionTimes,
     };
   }
 
   factory WeeklyRetentionSchedule.fromMap(Map<String, dynamic> map) {
     return WeeklyRetentionSchedule(
-      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : pulumi.Input.decodeList<DayOfWeek>(map['daysOfTheWeek'], (value) => DayOfWeek.fromValue(value as String)),
-      retentionDuration: map['retentionDuration'] == null ? null : RetentionDuration.fromMap((map['retentionDuration'] as Map).cast<String, dynamic>()),
-      retentionTimes: map['retentionTimes'] == null ? null : (map['retentionTimes'] as List).cast<String>(),
+      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : (pulumi.Input.decodeList<DayOfWeek>(map['daysOfTheWeek'], (value) => DayOfWeek.fromValue(value as String))).input(),
+      retentionDuration: map['retentionDuration'] == null ? null : (RetentionDuration.fromMap((map['retentionDuration'] as Map).cast<String, dynamic>())).input(),
+      retentionTimes: map['retentionTimes'] == null ? null : ((map['retentionTimes'] as List).cast<String>()).input(),
     );
   }
 }

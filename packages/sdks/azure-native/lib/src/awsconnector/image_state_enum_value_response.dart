@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ImageStateEnumValue
 class ImageStateEnumValueResponse {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ImageStateEnumValueResponse].
   /// [value] Property value
@@ -20,7 +21,7 @@ class ImageStateEnumValueResponse {
 
   factory ImageStateEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ImageStateEnumValueResponse(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

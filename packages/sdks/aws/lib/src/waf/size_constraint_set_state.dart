@@ -17,13 +17,10 @@ class SizeConstraintSetState {
   /// [name] Name or description of the Size Constraint Set.
   /// [sizeConstraints] Parts of web requests that you want to inspect the size of.
   SizeConstraintSetState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<SizeConstraintSetSizeConstraint>>? sizeConstraints,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sizeConstraints = pulumi.Input.asOptionalInput<List<SizeConstraintSetSizeConstraint>>(sizeConstraints);
+    this.arn,
+    this.name,
+    this.sizeConstraints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class SizeConstraintSetState {
 
   factory SizeConstraintSetState.fromMap(Map<String, dynamic> map) {
     return SizeConstraintSetState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sizeConstraints: map['sizeConstraints'] == null ? null : pulumi.Output.create<List<SizeConstraintSetSizeConstraint>>(pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(map['sizeConstraints'], (value) => SizeConstraintSetSizeConstraint.fromMap((value as Map).cast<String, dynamic>()))),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sizeConstraints: map['sizeConstraints'] == null ? null : (pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(map['sizeConstraints'], (value) => SizeConstraintSetSizeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

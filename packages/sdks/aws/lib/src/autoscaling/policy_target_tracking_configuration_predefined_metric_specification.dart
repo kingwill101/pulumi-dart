@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyTargetTrackingConfigurationPredefinedMetricSpecification {
   /// Metric type.
-  final String predefinedMetricType;
+  final pulumi.Input<String> predefinedMetricType;
   /// Identifies the resource associated with the metric type.
-  final String? resourceLabel;
+  final pulumi.Input<String>? resourceLabel;
 
   /// Creates a new [PolicyTargetTrackingConfigurationPredefinedMetricSpecification].
   /// [predefinedMetricType] Metric type.
@@ -24,8 +25,8 @@ class PolicyTargetTrackingConfigurationPredefinedMetricSpecification {
 
   factory PolicyTargetTrackingConfigurationPredefinedMetricSpecification.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingConfigurationPredefinedMetricSpecification(
-      predefinedMetricType: map['predefinedMetricType'] as String,
-      resourceLabel: map['resourceLabel'] == null ? null : map['resourceLabel'] as String,
+      predefinedMetricType: (map['predefinedMetricType'] as String).input(),
+      resourceLabel: map['resourceLabel'] == null ? null : (map['resourceLabel'] as String).input(),
     );
   }
 }

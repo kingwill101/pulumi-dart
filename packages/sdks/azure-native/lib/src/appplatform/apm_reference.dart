@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A reference to the APM
 class ApmReference {
   /// Resource Id of the APM
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [ApmReference].
   /// [resourceId] Resource Id of the APM
@@ -20,7 +21,7 @@ class ApmReference {
 
   factory ApmReference.fromMap(Map<String, dynamic> map) {
     return ApmReference(
-      resourceId: map['resourceId'] as String,
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

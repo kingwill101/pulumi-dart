@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Import disk details
 class ImportDiskDetails {
   /// BitLocker key used to encrypt the disk.
-  final String bitLockerKey;
+  final pulumi.Input<String> bitLockerKey;
   /// The relative path of the manifest file on the disk.
-  final String manifestFile;
+  final pulumi.Input<String> manifestFile;
   /// The Base16-encoded MD5 hash of the manifest file on the disk.
-  final String manifestHash;
+  final pulumi.Input<String> manifestHash;
 
   /// Creates a new [ImportDiskDetails].
   /// [bitLockerKey] BitLocker key used to encrypt the disk.
@@ -30,9 +31,9 @@ class ImportDiskDetails {
 
   factory ImportDiskDetails.fromMap(Map<String, dynamic> map) {
     return ImportDiskDetails(
-      bitLockerKey: map['bitLockerKey'] as String,
-      manifestFile: map['manifestFile'] as String,
-      manifestHash: map['manifestHash'] as String,
+      bitLockerKey: (map['bitLockerKey'] as String).input(),
+      manifestFile: (map['manifestFile'] as String).input(),
+      manifestHash: (map['manifestHash'] as String).input(),
     );
   }
 }

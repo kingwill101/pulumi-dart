@@ -16,11 +16,9 @@ class GetIamCustomRoleArgs {
   /// [orgId] The numeric ID of the organization in which you want to create a custom role.
   /// [roleId] The role id that has been used for this role.
   GetIamCustomRoleArgs({
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<String> roleId,
-  }) :
-      orgId = pulumi.Input.asInput<String>(orgId),
-      roleId = pulumi.Input.asInput<String>(roleId);
+    required this.orgId,
+    required this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetIamCustomRoleArgs {
 
   factory GetIamCustomRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRoleArgs(
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      roleId: pulumi.Output.create<String>(map['roleId'] as String),
+      orgId: (map['orgId'] as String).input(),
+      roleId: (map['roleId'] as String).input(),
     );
   }
 }

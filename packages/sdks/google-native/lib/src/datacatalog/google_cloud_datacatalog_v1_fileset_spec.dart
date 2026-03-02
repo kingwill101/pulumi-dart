@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_dataplex_fileset_spec.dart';
 
 /// Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
 class GoogleCloudDatacatalogV1FilesetSpec {
   /// Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
-  final GoogleCloudDatacatalogV1DataplexFilesetSpec? dataplexFileset;
+  final pulumi.Input<GoogleCloudDatacatalogV1DataplexFilesetSpec>? dataplexFileset;
 
   /// Creates a new [GoogleCloudDatacatalogV1FilesetSpec].
   /// [dataplexFileset] Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
@@ -15,13 +16,13 @@ class GoogleCloudDatacatalogV1FilesetSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataplexFileset': ?dataplexFileset == null ? null : dataplexFileset!.toMap(),
+      'dataplexFileset': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDatacatalogV1DataplexFilesetSpec, Map<String, dynamic>>(dataplexFileset, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDatacatalogV1FilesetSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1FilesetSpec(
-      dataplexFileset: map['dataplexFileset'] == null ? null : GoogleCloudDatacatalogV1DataplexFilesetSpec.fromMap((map['dataplexFileset'] as Map).cast<String, dynamic>()),
+      dataplexFileset: map['dataplexFileset'] == null ? null : (GoogleCloudDatacatalogV1DataplexFilesetSpec.fromMap((map['dataplexFileset'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -6,15 +6,15 @@ import 'get_connectivity_test_run_reachability_detail_trace.dart';
 class GetConnectivityTestRunReachabilityDetail {
   /// (Output)
   /// Status of the connectivity test: RESULT_UNSPECIFIED, REACHABLE, UNREACHABLE, AMBIGUOUS or UNDETERMINED.
-  final String result;
+  final pulumi.Input<String> result;
   /// (Output)
   /// List of connectivity test traces.
   /// Structure is documented below.
-  final List<GetConnectivityTestRunReachabilityDetailTrace> traces;
+  final pulumi.Input<List<GetConnectivityTestRunReachabilityDetailTrace>> traces;
   /// (Output)
   /// Time when reachability details were determined. An RFC3339 timestamp in UTC time.
   /// This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
-  final String verifyTime;
+  final pulumi.Input<String> verifyTime;
 
   /// Creates a new [GetConnectivityTestRunReachabilityDetail].
   /// [result] (Output)
@@ -29,16 +29,16 @@ class GetConnectivityTestRunReachabilityDetail {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'result': result,
-      'traces': pulumi.Input.encodeList<GetConnectivityTestRunReachabilityDetailTrace, Map<String, dynamic>>(traces, (value) => value.toMap()),
+      'traces': pulumi.Input.mapInputValue<List<GetConnectivityTestRunReachabilityDetailTrace>, List<Map<String, dynamic>>>(traces, (value) => pulumi.Input.encodeList<GetConnectivityTestRunReachabilityDetailTrace, Map<String, dynamic>>(value, (value) => value.toMap())),
       'verifyTime': verifyTime,
     };
   }
 
   factory GetConnectivityTestRunReachabilityDetail.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestRunReachabilityDetail(
-      result: map['result'] as String,
-      traces: pulumi.Input.decodeList<GetConnectivityTestRunReachabilityDetailTrace>(map['traces'], (value) => GetConnectivityTestRunReachabilityDetailTrace.fromMap((value as Map).cast<String, dynamic>())),
-      verifyTime: map['verifyTime'] as String,
+      result: (map['result'] as String).input(),
+      traces: (pulumi.Input.decodeList<GetConnectivityTestRunReachabilityDetailTrace>(map['traces'], (value) => GetConnectivityTestRunReachabilityDetailTrace.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      verifyTime: (map['verifyTime'] as String).input(),
     );
   }
 }

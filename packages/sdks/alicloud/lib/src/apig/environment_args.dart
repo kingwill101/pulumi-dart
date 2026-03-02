@@ -22,15 +22,11 @@ class EnvironmentArgs {
   /// [gatewayId] Gateway id
   /// [resourceGroupId] The ID of the resource group
   EnvironmentArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> gatewayId,
-    pulumi.Output<String>? resourceGroupId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      gatewayId = pulumi.Input.asInput<String>(gatewayId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId);
+    this.description,
+    required this.environmentName,
+    required this.gatewayId,
+    this.resourceGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      gatewayId: pulumi.Output.create<String>(map['gatewayId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentName: (map['environmentName'] as String).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
     );
   }
 }

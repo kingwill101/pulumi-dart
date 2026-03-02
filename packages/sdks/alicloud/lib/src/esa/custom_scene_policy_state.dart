@@ -27,19 +27,13 @@ class CustomScenePolicyState {
   /// [status] Policy effective status. Valid values: `Disabled`, `Running`.
   /// [template] The name of the policy template. Valid value:
   CustomScenePolicyState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? customScenePolicyName,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? siteIds,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? template,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      customScenePolicyName = pulumi.Input.asOptionalInput<String>(customScenePolicyName),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      siteIds = pulumi.Input.asOptionalInput<String>(siteIds),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      template = pulumi.Input.asOptionalInput<String>(template);
+    this.createTime,
+    this.customScenePolicyName,
+    this.endTime,
+    this.siteIds,
+    this.status,
+    this.template,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class CustomScenePolicyState {
 
   factory CustomScenePolicyState.fromMap(Map<String, dynamic> map) {
     return CustomScenePolicyState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      customScenePolicyName: map['customScenePolicyName'] == null ? null : pulumi.Output.create<String>(map['customScenePolicyName'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      siteIds: map['siteIds'] == null ? null : pulumi.Output.create<String>(map['siteIds'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      template: map['template'] == null ? null : pulumi.Output.create<String>(map['template'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      customScenePolicyName: map['customScenePolicyName'] == null ? null : (map['customScenePolicyName'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      siteIds: map['siteIds'] == null ? null : (map['siteIds'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      template: map['template'] == null ? null : (map['template'] as String).input(),
     );
   }
 }

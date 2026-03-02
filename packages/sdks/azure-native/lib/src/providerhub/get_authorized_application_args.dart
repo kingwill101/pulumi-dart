@@ -16,11 +16,9 @@ class GetAuthorizedApplicationArgs {
   /// [applicationId] The application ID.
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   GetAuthorizedApplicationArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> providerNamespace,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      providerNamespace = pulumi.Input.asInput<String>(providerNamespace);
+    required this.applicationId,
+    required this.providerNamespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAuthorizedApplicationArgs {
 
   factory GetAuthorizedApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizedApplicationArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      providerNamespace: pulumi.Output.create<String>(map['providerNamespace'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      providerNamespace: (map['providerNamespace'] as String).input(),
     );
   }
 }

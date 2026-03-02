@@ -63,33 +63,20 @@ class CertificateMapEntryState {
   /// [state] A serving state of this Certificate Map Entry.
   /// [updateTime] Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
   CertificateMapEntryState({
-    pulumi.Output<List<String>>? certificates,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? hostname,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? map,
-    pulumi.Output<String>? matcher,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? updateTime,
-  }) :
-      certificates = pulumi.Input.asOptionalInput<List<String>>(certificates),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      map = pulumi.Input.asOptionalInput<String>(map),
-      matcher = pulumi.Input.asOptionalInput<String>(matcher),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.certificates,
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.hostname,
+    this.labels,
+    this.map,
+    this.matcher,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.state,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -111,19 +98,19 @@ class CertificateMapEntryState {
 
   factory CertificateMapEntryState.fromMap(Map<String, dynamic> map) {
     return CertificateMapEntryState(
-      certificates: map['certificates'] == null ? null : pulumi.Output.create<List<String>>((map['certificates'] as List).cast<String>()),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      map: map['map'] == null ? null : pulumi.Output.create<String>(map['map'] as String),
-      matcher: map['matcher'] == null ? null : pulumi.Output.create<String>(map['matcher'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      certificates: map['certificates'] == null ? null : ((map['certificates'] as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      map: map['map'] == null ? null : (map['map'] as String).input(),
+      matcher: map['matcher'] == null ? null : (map['matcher'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

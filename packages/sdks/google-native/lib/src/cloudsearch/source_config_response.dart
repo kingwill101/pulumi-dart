@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'source_crowding_config_response.dart';
 import 'source_response.dart';
 import 'source_scoring_config_response.dart';
@@ -7,11 +8,11 @@ import 'source_scoring_config_response.dart';
 /// Configurations for a source while processing a Search or Suggest request.
 class SourceConfigResponse {
   /// The crowding configuration for the source.
-  final SourceCrowdingConfigResponse crowdingConfig;
+  final pulumi.Input<SourceCrowdingConfigResponse> crowdingConfig;
   /// The scoring configuration for the source.
-  final SourceScoringConfigResponse scoringConfig;
+  final pulumi.Input<SourceScoringConfigResponse> scoringConfig;
   /// The source for which this configuration is to be used.
-  final SourceResponse source;
+  final pulumi.Input<SourceResponse> source;
 
   /// Creates a new [SourceConfigResponse].
   /// [crowdingConfig] The crowding configuration for the source.
@@ -25,17 +26,17 @@ class SourceConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'crowdingConfig': crowdingConfig.toMap(),
-      'scoringConfig': scoringConfig.toMap(),
-      'source': source.toMap(),
+      'crowdingConfig': pulumi.Input.mapInputValue<SourceCrowdingConfigResponse, Map<String, dynamic>>(crowdingConfig, (value) => value.toMap()),
+      'scoringConfig': pulumi.Input.mapInputValue<SourceScoringConfigResponse, Map<String, dynamic>>(scoringConfig, (value) => value.toMap()),
+      'source': pulumi.Input.mapInputValue<SourceResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
   factory SourceConfigResponse.fromMap(Map<String, dynamic> map) {
     return SourceConfigResponse(
-      crowdingConfig: SourceCrowdingConfigResponse.fromMap((map['crowdingConfig'] as Map).cast<String, dynamic>()),
-      scoringConfig: SourceScoringConfigResponse.fromMap((map['scoringConfig'] as Map).cast<String, dynamic>()),
-      source: SourceResponse.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      crowdingConfig: (SourceCrowdingConfigResponse.fromMap((map['crowdingConfig'] as Map).cast<String, dynamic>())).input(),
+      scoringConfig: (SourceScoringConfigResponse.fromMap((map['scoringConfig'] as Map).cast<String, dynamic>())).input(),
+      source: (SourceResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

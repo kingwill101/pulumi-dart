@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcEndpointDnsOption {
   /// The DNS records created for the endpoint.
-  final String dnsRecordIpType;
+  final pulumi.Input<String> dnsRecordIpType;
   /// Indicates whether to enable private DNS only for inbound endpoints.
-  final bool privateDnsOnlyForInboundResolverEndpoint;
+  final pulumi.Input<bool> privateDnsOnlyForInboundResolverEndpoint;
   /// Preference for which private domains have a private hosted zone created for and associated with the specified VPC.
-  final String privateDnsPreference;
+  final pulumi.Input<String> privateDnsPreference;
   /// List of private domains to create private hosted zones for and associate with the specified VPC.
-  final List<String> privateDnsSpecifiedDomains;
+  final pulumi.Input<List<String>> privateDnsSpecifiedDomains;
 
   /// Creates a new [GetVpcEndpointDnsOption].
   /// [dnsRecordIpType] The DNS records created for the endpoint.
@@ -34,10 +35,10 @@ class GetVpcEndpointDnsOption {
 
   factory GetVpcEndpointDnsOption.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointDnsOption(
-      dnsRecordIpType: map['dnsRecordIpType'] as String,
-      privateDnsOnlyForInboundResolverEndpoint: map['privateDnsOnlyForInboundResolverEndpoint'] as bool,
-      privateDnsPreference: map['privateDnsPreference'] as String,
-      privateDnsSpecifiedDomains: (map['privateDnsSpecifiedDomains'] as List).cast<String>(),
+      dnsRecordIpType: (map['dnsRecordIpType'] as String).input(),
+      privateDnsOnlyForInboundResolverEndpoint: (map['privateDnsOnlyForInboundResolverEndpoint'] as bool).input(),
+      privateDnsPreference: (map['privateDnsPreference'] as String).input(),
+      privateDnsSpecifiedDomains: ((map['privateDnsSpecifiedDomains'] as List).cast<String>()).input(),
     );
   }
 }

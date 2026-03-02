@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_policy_instance_schedule_policy_schedule_compute_v1.dart';
 
 /// An InstanceSchedulePolicy specifies when and how frequent certain operations are performed on the instance.
 class ResourcePolicyInstanceSchedulePolicyComputeV1 {
   /// The expiration time of the schedule. The timestamp is an RFC3339 string.
-  final String? expirationTime;
+  final pulumi.Input<String>? expirationTime;
   /// The start time of the schedule. The timestamp is an RFC3339 string.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
   /// Specifies the schedule for starting instances.
-  final ResourcePolicyInstanceSchedulePolicyScheduleComputeV1? vmStartSchedule;
+  final pulumi.Input<ResourcePolicyInstanceSchedulePolicyScheduleComputeV1>? vmStartSchedule;
   /// Specifies the schedule for stopping instances.
-  final ResourcePolicyInstanceSchedulePolicyScheduleComputeV1? vmStopSchedule;
+  final pulumi.Input<ResourcePolicyInstanceSchedulePolicyScheduleComputeV1>? vmStopSchedule;
 
   /// Creates a new [ResourcePolicyInstanceSchedulePolicyComputeV1].
   /// [expirationTime] The expiration time of the schedule. The timestamp is an RFC3339 string.
@@ -34,18 +35,18 @@ class ResourcePolicyInstanceSchedulePolicyComputeV1 {
       'expirationTime': ?expirationTime,
       'startTime': ?startTime,
       'timeZone': ?timeZone,
-      'vmStartSchedule': ?vmStartSchedule == null ? null : vmStartSchedule!.toMap(),
-      'vmStopSchedule': ?vmStopSchedule == null ? null : vmStopSchedule!.toMap(),
+      'vmStartSchedule': ?pulumi.Input.mapOptionalInputValue<ResourcePolicyInstanceSchedulePolicyScheduleComputeV1, Map<String, dynamic>>(vmStartSchedule, (value) => value.toMap()),
+      'vmStopSchedule': ?pulumi.Input.mapOptionalInputValue<ResourcePolicyInstanceSchedulePolicyScheduleComputeV1, Map<String, dynamic>>(vmStopSchedule, (value) => value.toMap()),
     };
   }
 
   factory ResourcePolicyInstanceSchedulePolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyInstanceSchedulePolicyComputeV1(
-      expirationTime: map['expirationTime'] == null ? null : map['expirationTime'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
-      vmStartSchedule: map['vmStartSchedule'] == null ? null : ResourcePolicyInstanceSchedulePolicyScheduleComputeV1.fromMap((map['vmStartSchedule'] as Map).cast<String, dynamic>()),
-      vmStopSchedule: map['vmStopSchedule'] == null ? null : ResourcePolicyInstanceSchedulePolicyScheduleComputeV1.fromMap((map['vmStopSchedule'] as Map).cast<String, dynamic>()),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      vmStartSchedule: map['vmStartSchedule'] == null ? null : (ResourcePolicyInstanceSchedulePolicyScheduleComputeV1.fromMap((map['vmStartSchedule'] as Map).cast<String, dynamic>())).input(),
+      vmStopSchedule: map['vmStopSchedule'] == null ? null : (ResourcePolicyInstanceSchedulePolicyScheduleComputeV1.fromMap((map['vmStopSchedule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

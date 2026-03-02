@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowTemplateJobHadoopJobLoggingConfig {
   /// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-  final Map<String, String>? driverLogLevels;
+  final pulumi.Input<Map<String, String>>? driverLogLevels;
 
   /// Creates a new [WorkflowTemplateJobHadoopJobLoggingConfig].
   /// [driverLogLevels] The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
@@ -19,7 +20,7 @@ class WorkflowTemplateJobHadoopJobLoggingConfig {
 
   factory WorkflowTemplateJobHadoopJobLoggingConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateJobHadoopJobLoggingConfig(
-      driverLogLevels: map['driverLogLevels'] == null ? null : (map['driverLogLevels'] as Map).cast<String, String>(),
+      driverLogLevels: map['driverLogLevels'] == null ? null : ((map['driverLogLevels'] as Map).cast<String, String>()).input(),
     );
   }
 }

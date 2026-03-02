@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineTriggerGitConfigurationPullRequestFilePaths {
   /// A list of patterns of Git repository file paths that, when a commit is pushed, are to be excluded from starting the pipeline.
-  final List<String>? excludes;
+  final pulumi.Input<List<String>>? excludes;
   /// A list of patterns of Git repository file paths that, when a commit is pushed, are to be included as criteria that starts the pipeline.
-  final List<String>? includes;
+  final pulumi.Input<List<String>>? includes;
 
   /// Creates a new [PipelineTriggerGitConfigurationPullRequestFilePaths].
   /// [excludes] A list of patterns of Git repository file paths that, when a commit is pushed, are to be excluded from starting the pipeline.
@@ -24,8 +25,8 @@ class PipelineTriggerGitConfigurationPullRequestFilePaths {
 
   factory PipelineTriggerGitConfigurationPullRequestFilePaths.fromMap(Map<String, dynamic> map) {
     return PipelineTriggerGitConfigurationPullRequestFilePaths(
-      excludes: map['excludes'] == null ? null : (map['excludes'] as List).cast<String>(),
-      includes: map['includes'] == null ? null : (map['includes'] as List).cast<String>(),
+      excludes: map['excludes'] == null ? null : ((map['excludes'] as List).cast<String>()).input(),
+      includes: map['includes'] == null ? null : ((map['includes'] as List).cast<String>()).input(),
     );
   }
 }

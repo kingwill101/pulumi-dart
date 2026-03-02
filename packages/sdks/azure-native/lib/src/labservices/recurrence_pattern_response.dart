@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Recurrence pattern of a lab schedule.
 class RecurrencePatternResponse {
   /// When the recurrence will expire. This date is inclusive.
-  final String expirationDate;
+  final pulumi.Input<String> expirationDate;
   /// The frequency of the recurrence.
-  final String frequency;
+  final pulumi.Input<String> frequency;
   /// The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days. When no interval is supplied, an interval of 1 is used.
-  final int? interval;
+  final pulumi.Input<int>? interval;
   /// The week days the schedule runs. Used for when the Frequency is set to Weekly.
-  final List<String>? weekDays;
+  final pulumi.Input<List<String>>? weekDays;
 
   /// Creates a new [RecurrencePatternResponse].
   /// [expirationDate] When the recurrence will expire. This date is inclusive.
@@ -35,10 +36,10 @@ class RecurrencePatternResponse {
 
   factory RecurrencePatternResponse.fromMap(Map<String, dynamic> map) {
     return RecurrencePatternResponse(
-      expirationDate: map['expirationDate'] as String,
-      frequency: map['frequency'] as String,
-      interval: map['interval'] == null ? null : map['interval'] as int,
-      weekDays: map['weekDays'] == null ? null : (map['weekDays'] as List).cast<String>(),
+      expirationDate: (map['expirationDate'] as String).input(),
+      frequency: (map['frequency'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      weekDays: map['weekDays'] == null ? null : ((map['weekDays'] as List).cast<String>()).input(),
     );
   }
 }

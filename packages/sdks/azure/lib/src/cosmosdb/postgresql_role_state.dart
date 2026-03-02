@@ -16,13 +16,10 @@ class PostgresqlRoleState {
   /// [name] The name which should be used for this Azure Cosmos DB for PostgreSQL Role. Changing this forces a new resource to be created.
   /// [password] The password of the Azure Cosmos DB for PostgreSQL Role. Changing this forces a new resource to be created.
   PostgresqlRoleState({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password);
+    this.clusterId,
+    this.name,
+    this.password,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class PostgresqlRoleState {
 
   factory PostgresqlRoleState.fromMap(Map<String, dynamic> map) {
     return PostgresqlRoleState(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
     );
   }
 }

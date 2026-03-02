@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// BrokerAuthenticatorMethodX509Attributes properties.
 class BrokerAuthenticatorMethodX509Attributes {
   /// Attributes object.
-  final Map<String, String> attributes;
+  final pulumi.Input<Map<String, String>> attributes;
   /// Subject of the X509 attribute.
-  final String subject;
+  final pulumi.Input<String> subject;
 
   /// Creates a new [BrokerAuthenticatorMethodX509Attributes].
   /// [attributes] Attributes object.
@@ -25,8 +26,8 @@ class BrokerAuthenticatorMethodX509Attributes {
 
   factory BrokerAuthenticatorMethodX509Attributes.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodX509Attributes(
-      attributes: (map['attributes'] as Map).cast<String, String>(),
-      subject: map['subject'] as String,
+      attributes: ((map['attributes'] as Map).cast<String, String>()).input(),
+      subject: (map['subject'] as String).input(),
     );
   }
 }

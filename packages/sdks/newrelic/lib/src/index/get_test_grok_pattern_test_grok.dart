@@ -5,11 +5,11 @@ import 'get_test_grok_pattern_test_grok_attribute.dart';
 
 class GetTestGrokPatternTestGrok {
   /// Nested list containing information about any attributes that were extracted.
-  final List<GetTestGrokPatternTestGrokAttribute> attributes;
+  final pulumi.Input<List<GetTestGrokPatternTestGrokAttribute>> attributes;
   /// The log line that was tested against.
-  final String logLine;
+  final pulumi.Input<String> logLine;
   /// Whether the Grok pattern matched.
-  final bool matched;
+  final pulumi.Input<bool> matched;
 
   /// Creates a new [GetTestGrokPatternTestGrok].
   /// [attributes] Nested list containing information about any attributes that were extracted.
@@ -23,7 +23,7 @@ class GetTestGrokPatternTestGrok {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': pulumi.Input.encodeList<GetTestGrokPatternTestGrokAttribute, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'attributes': pulumi.Input.mapInputValue<List<GetTestGrokPatternTestGrokAttribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<GetTestGrokPatternTestGrokAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'logLine': logLine,
       'matched': matched,
     };
@@ -31,9 +31,9 @@ class GetTestGrokPatternTestGrok {
 
   factory GetTestGrokPatternTestGrok.fromMap(Map<String, dynamic> map) {
     return GetTestGrokPatternTestGrok(
-      attributes: pulumi.Input.decodeList<GetTestGrokPatternTestGrokAttribute>(map['attributes'], (value) => GetTestGrokPatternTestGrokAttribute.fromMap((value as Map).cast<String, dynamic>())),
-      logLine: map['logLine'] as String,
-      matched: map['matched'] as bool,
+      attributes: (pulumi.Input.decodeList<GetTestGrokPatternTestGrokAttribute>(map['attributes'], (value) => GetTestGrokPatternTestGrokAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logLine: (map['logLine'] as String).input(),
+      matched: (map['matched'] as bool).input(),
     );
   }
 }

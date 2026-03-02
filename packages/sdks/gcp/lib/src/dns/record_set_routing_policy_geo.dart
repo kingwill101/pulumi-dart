@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'record_set_routing_policy_geo_health_checked_targets.dart';
 
 class RecordSetRoutingPolicyGeo {
   /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
   /// Structure is documented below.
-  final RecordSetRoutingPolicyGeoHealthCheckedTargets? healthCheckedTargets;
+  final pulumi.Input<RecordSetRoutingPolicyGeoHealthCheckedTargets>? healthCheckedTargets;
   /// The location name defined in Google Cloud.
-  final String location;
+  final pulumi.Input<String> location;
   /// Same as `rrdatas` above.
-  final List<String>? rrdatas;
+  final pulumi.Input<List<String>>? rrdatas;
 
   /// Creates a new [RecordSetRoutingPolicyGeo].
   /// [healthCheckedTargets] For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
@@ -23,7 +24,7 @@ class RecordSetRoutingPolicyGeo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'healthCheckedTargets': ?healthCheckedTargets == null ? null : healthCheckedTargets!.toMap(),
+      'healthCheckedTargets': ?pulumi.Input.mapOptionalInputValue<RecordSetRoutingPolicyGeoHealthCheckedTargets, Map<String, dynamic>>(healthCheckedTargets, (value) => value.toMap()),
       'location': location,
       'rrdatas': ?rrdatas,
     };
@@ -31,9 +32,9 @@ class RecordSetRoutingPolicyGeo {
 
   factory RecordSetRoutingPolicyGeo.fromMap(Map<String, dynamic> map) {
     return RecordSetRoutingPolicyGeo(
-      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : RecordSetRoutingPolicyGeoHealthCheckedTargets.fromMap((map['healthCheckedTargets'] as Map).cast<String, dynamic>()),
-      location: map['location'] as String,
-      rrdatas: map['rrdatas'] == null ? null : (map['rrdatas'] as List).cast<String>(),
+      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : (RecordSetRoutingPolicyGeoHealthCheckedTargets.fromMap((map['healthCheckedTargets'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas'] as List).cast<String>()).input(),
     );
   }
 }

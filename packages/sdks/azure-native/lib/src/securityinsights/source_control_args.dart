@@ -49,31 +49,19 @@ class SourceControlArgs {
   /// [version] The version number associated with the source control
   /// [workspaceName] The name of the workspace.
   SourceControlArgs({
-    required pulumi.Output<List<String>> contentTypes,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? id,
-    pulumi.Output<DeploymentInfo>? lastDeploymentInfo,
-    required pulumi.Output<String> repoType,
-    required pulumi.Output<Repository> repository,
-    pulumi.Output<RepositoryResourceInfo>? repositoryResourceInfo,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sourceControlId,
-    pulumi.Output<String>? version,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      contentTypes = pulumi.Input.asInput<List<String>>(contentTypes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      lastDeploymentInfo = pulumi.Input.asOptionalInput<DeploymentInfo>(lastDeploymentInfo),
-      repoType = pulumi.Input.asInput<String>(repoType),
-      repository = pulumi.Input.asInput<Repository>(repository),
-      repositoryResourceInfo = pulumi.Input.asOptionalInput<RepositoryResourceInfo>(repositoryResourceInfo),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceControlId = pulumi.Input.asOptionalInput<String>(sourceControlId),
-      version = pulumi.Input.asOptionalInput<String>(version),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.contentTypes,
+    this.description,
+    required this.displayName,
+    this.id,
+    this.lastDeploymentInfo,
+    required this.repoType,
+    required this.repository,
+    this.repositoryResourceInfo,
+    required this.resourceGroupName,
+    this.sourceControlId,
+    this.version,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class SourceControlArgs {
 
   factory SourceControlArgs.fromMap(Map<String, dynamic> map) {
     return SourceControlArgs(
-      contentTypes: pulumi.Output.create<List<String>>((map['contentTypes'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      lastDeploymentInfo: map['lastDeploymentInfo'] == null ? null : pulumi.Output.create<DeploymentInfo>(DeploymentInfo.fromMap((map['lastDeploymentInfo'] as Map).cast<String, dynamic>())),
-      repoType: pulumi.Output.create<String>(map['repoType'] as String),
-      repository: pulumi.Output.create<Repository>(Repository.fromMap((map['repository'] as Map).cast<String, dynamic>())),
-      repositoryResourceInfo: map['repositoryResourceInfo'] == null ? null : pulumi.Output.create<RepositoryResourceInfo>(RepositoryResourceInfo.fromMap((map['repositoryResourceInfo'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceControlId: map['sourceControlId'] == null ? null : pulumi.Output.create<String>(map['sourceControlId'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      contentTypes: ((map['contentTypes'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      lastDeploymentInfo: map['lastDeploymentInfo'] == null ? null : (DeploymentInfo.fromMap((map['lastDeploymentInfo'] as Map).cast<String, dynamic>())).input(),
+      repoType: (map['repoType'] as String).input(),
+      repository: (Repository.fromMap((map['repository'] as Map).cast<String, dynamic>())).input(),
+      repositoryResourceInfo: map['repositoryResourceInfo'] == null ? null : (RepositoryResourceInfo.fromMap((map['repositoryResourceInfo'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceControlId: map['sourceControlId'] == null ? null : (map['sourceControlId'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

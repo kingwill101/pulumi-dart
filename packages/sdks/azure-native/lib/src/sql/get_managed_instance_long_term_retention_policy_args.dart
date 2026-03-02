@@ -22,15 +22,11 @@ class GetManagedInstanceLongTermRetentionPolicyArgs {
   /// [policyName] The policy name. Should always be Default.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   GetManagedInstanceLongTermRetentionPolicyArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      policyName = pulumi.Input.asInput<String>(policyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.databaseName,
+    required this.managedInstanceName,
+    required this.policyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetManagedInstanceLongTermRetentionPolicyArgs {
 
   factory GetManagedInstanceLongTermRetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedInstanceLongTermRetentionPolicyArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

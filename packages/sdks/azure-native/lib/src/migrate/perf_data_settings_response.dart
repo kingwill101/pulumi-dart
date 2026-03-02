@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data model of Performance Data Settings.
 class PerfDataSettingsResponse {
   /// Gets percentile utilization for performance data.
-  final String percentile;
+  final pulumi.Input<String> percentile;
   /// Gets or sets perf data end time.
-  final String? perfDataEndTime;
+  final pulumi.Input<String>? perfDataEndTime;
   /// Gets or sets perf data start time.
-  final String? perfDataStartTime;
+  final pulumi.Input<String>? perfDataStartTime;
   /// Gets perf data time range.
-  final String timeRange;
+  final pulumi.Input<String> timeRange;
 
   /// Creates a new [PerfDataSettingsResponse].
   /// [percentile] Gets percentile utilization for performance data.
@@ -35,10 +36,10 @@ class PerfDataSettingsResponse {
 
   factory PerfDataSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PerfDataSettingsResponse(
-      percentile: map['percentile'] as String,
-      perfDataEndTime: map['perfDataEndTime'] == null ? null : map['perfDataEndTime'] as String,
-      perfDataStartTime: map['perfDataStartTime'] == null ? null : map['perfDataStartTime'] as String,
-      timeRange: map['timeRange'] as String,
+      percentile: (map['percentile'] as String).input(),
+      perfDataEndTime: map['perfDataEndTime'] == null ? null : (map['perfDataEndTime'] as String).input(),
+      perfDataStartTime: map['perfDataStartTime'] == null ? null : (map['perfDataStartTime'] as String).input(),
+      timeRange: (map['timeRange'] as String).input(),
     );
   }
 }

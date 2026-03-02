@@ -19,13 +19,10 @@ class GetHttpRouteConfigArgs {
   /// [httpRouteName] Name of the Http Route Config Resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetHttpRouteConfigArgs({
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> httpRouteName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      httpRouteName = pulumi.Input.asInput<String>(httpRouteName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentName,
+    required this.httpRouteName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetHttpRouteConfigArgs {
 
   factory GetHttpRouteConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetHttpRouteConfigArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      httpRouteName: pulumi.Output.create<String>(map['httpRouteName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      httpRouteName: (map['httpRouteName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

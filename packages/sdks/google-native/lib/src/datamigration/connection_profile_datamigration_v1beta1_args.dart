@@ -45,29 +45,18 @@ class ConnectionProfileDatamigrationV1beta1Args {
   /// [requestId] A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
   /// [state] The current connection profile state (e.g. DRAFT, READY, or FAILED).
   ConnectionProfileDatamigrationV1beta1Args({
-    pulumi.Output<CloudSqlConnectionProfileDatamigrationV1beta1>? cloudsql,
-    required pulumi.Output<String> connectionProfileId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<MySqlConnectionProfileDatamigrationV1beta1>? mysql,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ConnectionProfileProviderDatamigrationV1beta1>? provider,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<ConnectionProfileStateDatamigrationV1beta1>? state,
-  }) :
-      cloudsql = pulumi.Input.asOptionalInput<CloudSqlConnectionProfileDatamigrationV1beta1>(cloudsql),
-      connectionProfileId = pulumi.Input.asInput<String>(connectionProfileId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mysql = pulumi.Input.asOptionalInput<MySqlConnectionProfileDatamigrationV1beta1>(mysql),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      provider = pulumi.Input.asOptionalInput<ConnectionProfileProviderDatamigrationV1beta1>(provider),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      state = pulumi.Input.asOptionalInput<ConnectionProfileStateDatamigrationV1beta1>(state);
+    this.cloudsql,
+    required this.connectionProfileId,
+    this.displayName,
+    this.labels,
+    this.location,
+    this.mysql,
+    this.name,
+    this.project,
+    this.provider,
+    this.requestId,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class ConnectionProfileDatamigrationV1beta1Args {
 
   factory ConnectionProfileDatamigrationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileDatamigrationV1beta1Args(
-      cloudsql: map['cloudsql'] == null ? null : pulumi.Output.create<CloudSqlConnectionProfileDatamigrationV1beta1>(CloudSqlConnectionProfileDatamigrationV1beta1.fromMap((map['cloudsql'] as Map).cast<String, dynamic>())),
-      connectionProfileId: pulumi.Output.create<String>(map['connectionProfileId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mysql: map['mysql'] == null ? null : pulumi.Output.create<MySqlConnectionProfileDatamigrationV1beta1>(MySqlConnectionProfileDatamigrationV1beta1.fromMap((map['mysql'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      provider: map['provider'] == null ? null : pulumi.Output.create<ConnectionProfileProviderDatamigrationV1beta1>(ConnectionProfileProviderDatamigrationV1beta1.fromValue(map['provider'] as String)),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<ConnectionProfileStateDatamigrationV1beta1>(ConnectionProfileStateDatamigrationV1beta1.fromValue(map['state'] as String)),
+      cloudsql: map['cloudsql'] == null ? null : (CloudSqlConnectionProfileDatamigrationV1beta1.fromMap((map['cloudsql'] as Map).cast<String, dynamic>())).input(),
+      connectionProfileId: (map['connectionProfileId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mysql: map['mysql'] == null ? null : (MySqlConnectionProfileDatamigrationV1beta1.fromMap((map['mysql'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      provider: map['provider'] == null ? null : (ConnectionProfileProviderDatamigrationV1beta1.fromValue(map['provider'] as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      state: map['state'] == null ? null : (ConnectionProfileStateDatamigrationV1beta1.fromValue(map['state'] as String)).input(),
     );
   }
 }

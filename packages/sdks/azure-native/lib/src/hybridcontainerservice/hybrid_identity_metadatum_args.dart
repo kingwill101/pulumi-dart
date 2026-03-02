@@ -29,19 +29,13 @@ class HybridIdentityMetadatumArgs {
   /// [resourceName] Parameter for the name of the provisioned cluster
   /// [resourceUid] Unique id of the parent provisioned cluster resource.
   HybridIdentityMetadatumArgs({
-    pulumi.Output<String>? hybridIdentityMetadataResourceName,
-    pulumi.Output<ProvisionedClusterIdentity>? identity,
-    pulumi.Output<String>? publicKey,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? resourceUid,
-  }) :
-      hybridIdentityMetadataResourceName = pulumi.Input.asOptionalInput<String>(hybridIdentityMetadataResourceName),
-      identity = pulumi.Input.asOptionalInput<ProvisionedClusterIdentity>(identity),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      resourceUid = pulumi.Input.asOptionalInput<String>(resourceUid);
+    this.hybridIdentityMetadataResourceName,
+    this.identity,
+    this.publicKey,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.resourceUid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class HybridIdentityMetadatumArgs {
 
   factory HybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return HybridIdentityMetadatumArgs(
-      hybridIdentityMetadataResourceName: map['hybridIdentityMetadataResourceName'] == null ? null : pulumi.Output.create<String>(map['hybridIdentityMetadataResourceName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ProvisionedClusterIdentity>(ProvisionedClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      resourceUid: map['resourceUid'] == null ? null : pulumi.Output.create<String>(map['resourceUid'] as String),
+      hybridIdentityMetadataResourceName: map['hybridIdentityMetadataResourceName'] == null ? null : (map['hybridIdentityMetadataResourceName'] as String).input(),
+      identity: map['identity'] == null ? null : (ProvisionedClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid'] as String).input(),
     );
   }
 }

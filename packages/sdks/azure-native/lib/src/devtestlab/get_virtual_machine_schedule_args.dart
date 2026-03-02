@@ -25,17 +25,12 @@ class GetVirtualMachineScheduleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualMachineName] virtualmachines
   GetVirtualMachineScheduleArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> labName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualMachineName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      labName = pulumi.Input.asInput<String>(labName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualMachineName = pulumi.Input.asInput<String>(virtualMachineName);
+    this.expand,
+    required this.labName,
+    required this.name,
+    required this.resourceGroupName,
+    required this.virtualMachineName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetVirtualMachineScheduleArgs {
 
   factory GetVirtualMachineScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScheduleArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualMachineName: pulumi.Output.create<String>(map['virtualMachineName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      labName: (map['labName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualMachineName: (map['virtualMachineName'] as String).input(),
     );
   }
 }

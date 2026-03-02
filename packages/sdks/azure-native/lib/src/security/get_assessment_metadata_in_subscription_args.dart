@@ -13,9 +13,8 @@ class GetAssessmentMetadataInSubscriptionArgs {
   /// Creates a new [GetAssessmentMetadataInSubscriptionArgs].
   /// [assessmentMetadataName] The Assessment Key - Unique key for the assessment type
   GetAssessmentMetadataInSubscriptionArgs({
-    required pulumi.Output<String> assessmentMetadataName,
-  }) :
-      assessmentMetadataName = pulumi.Input.asInput<String>(assessmentMetadataName);
+    required this.assessmentMetadataName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetAssessmentMetadataInSubscriptionArgs {
 
   factory GetAssessmentMetadataInSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetAssessmentMetadataInSubscriptionArgs(
-      assessmentMetadataName: pulumi.Output.create<String>(map['assessmentMetadataName'] as String),
+      assessmentMetadataName: (map['assessmentMetadataName'] as String).input(),
     );
   }
 }

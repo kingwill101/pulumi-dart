@@ -16,11 +16,9 @@ class GetDatabasesArgs {
   /// [dbClusterId] The polarDB cluster ID.
   /// [nameRegex] A regex string to filter results by database name.
   GetDatabasesArgs({
-    required pulumi.Output<String> dbClusterId,
-    pulumi.Output<String>? nameRegex,
-  }) :
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex);
+    required this.dbClusterId,
+    this.nameRegex,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDatabasesArgs {
 
   factory GetDatabasesArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabasesArgs(
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
     );
   }
 }

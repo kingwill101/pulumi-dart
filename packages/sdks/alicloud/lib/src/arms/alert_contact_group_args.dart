@@ -16,11 +16,9 @@ class AlertContactGroupArgs {
   /// [alertContactGroupName] The name of the resource.
   /// [contactIds] The list id of alert contact.
   AlertContactGroupArgs({
-    required pulumi.Output<String> alertContactGroupName,
-    pulumi.Output<List<String>>? contactIds,
-  }) :
-      alertContactGroupName = pulumi.Input.asInput<String>(alertContactGroupName),
-      contactIds = pulumi.Input.asOptionalInput<List<String>>(contactIds);
+    required this.alertContactGroupName,
+    this.contactIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class AlertContactGroupArgs {
 
   factory AlertContactGroupArgs.fromMap(Map<String, dynamic> map) {
     return AlertContactGroupArgs(
-      alertContactGroupName: pulumi.Output.create<String>(map['alertContactGroupName'] as String),
-      contactIds: map['contactIds'] == null ? null : pulumi.Output.create<List<String>>((map['contactIds'] as List).cast<String>()),
+      alertContactGroupName: (map['alertContactGroupName'] as String).input(),
+      contactIds: map['contactIds'] == null ? null : ((map['contactIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -20,11 +20,9 @@ class GetSizesArgs {
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
   GetSizesArgs({
-    pulumi.Output<List<GetSizesFilter>>? filters,
-    pulumi.Output<List<GetSizesSort>>? sorts,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetSizesFilter>>(filters),
-      sorts = pulumi.Input.asOptionalInput<List<GetSizesSort>>(sorts);
+    this.filters,
+    this.sorts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,8 +33,8 @@ class GetSizesArgs {
 
   factory GetSizesArgs.fromMap(Map<String, dynamic> map) {
     return GetSizesArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetSizesFilter>>(pulumi.Input.decodeList<GetSizesFilter>(map['filters'], (value) => GetSizesFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      sorts: map['sorts'] == null ? null : pulumi.Output.create<List<GetSizesSort>>(pulumi.Input.decodeList<GetSizesSort>(map['sorts'], (value) => GetSizesSort.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSizesFilter>(map['filters'], (value) => GetSizesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetSizesSort>(map['sorts'], (value) => GetSizesSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

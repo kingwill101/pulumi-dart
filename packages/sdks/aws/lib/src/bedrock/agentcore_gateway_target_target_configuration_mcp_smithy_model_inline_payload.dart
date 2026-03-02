@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload {
   /// The inline schema payload content.
-  final String payload;
+  final pulumi.Input<String> payload;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload].
   /// [payload] The inline schema payload content.
@@ -19,7 +20,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload {
 
   factory AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload(
-      payload: map['payload'] as String,
+      payload: (map['payload'] as String).input(),
     );
   }
 }

@@ -39,25 +39,16 @@ class DnsSecurityRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   DnsSecurityRuleArgs({
-    required pulumi.Output<DnsSecurityRuleAction> action,
-    required pulumi.Output<List<SubResource>> dnsResolverDomainLists,
-    required pulumi.Output<String> dnsResolverPolicyName,
-    pulumi.Output<String>? dnsSecurityRuleName,
-    pulumi.Output<String>? dnsSecurityRuleState,
-    pulumi.Output<String>? location,
-    required pulumi.Output<int> priority,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      action = pulumi.Input.asInput<DnsSecurityRuleAction>(action),
-      dnsResolverDomainLists = pulumi.Input.asInput<List<SubResource>>(dnsResolverDomainLists),
-      dnsResolverPolicyName = pulumi.Input.asInput<String>(dnsResolverPolicyName),
-      dnsSecurityRuleName = pulumi.Input.asOptionalInput<String>(dnsSecurityRuleName),
-      dnsSecurityRuleState = pulumi.Input.asOptionalInput<String>(dnsSecurityRuleState),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      priority = pulumi.Input.asInput<int>(priority),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.action,
+    required this.dnsResolverDomainLists,
+    required this.dnsResolverPolicyName,
+    this.dnsSecurityRuleName,
+    this.dnsSecurityRuleState,
+    this.location,
+    required this.priority,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class DnsSecurityRuleArgs {
 
   factory DnsSecurityRuleArgs.fromMap(Map<String, dynamic> map) {
     return DnsSecurityRuleArgs(
-      action: pulumi.Output.create<DnsSecurityRuleAction>(DnsSecurityRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())),
-      dnsResolverDomainLists: pulumi.Output.create<List<SubResource>>(pulumi.Input.decodeList<SubResource>(map['dnsResolverDomainLists'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))),
-      dnsResolverPolicyName: pulumi.Output.create<String>(map['dnsResolverPolicyName'] as String),
-      dnsSecurityRuleName: map['dnsSecurityRuleName'] == null ? null : pulumi.Output.create<String>(map['dnsSecurityRuleName'] as String),
-      dnsSecurityRuleState: map['dnsSecurityRuleState'] == null ? null : pulumi.Output.create<String>(map['dnsSecurityRuleState'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      action: (DnsSecurityRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      dnsResolverDomainLists: (pulumi.Input.decodeList<SubResource>(map['dnsResolverDomainLists'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsResolverPolicyName: (map['dnsResolverPolicyName'] as String).input(),
+      dnsSecurityRuleName: map['dnsSecurityRuleName'] == null ? null : (map['dnsSecurityRuleName'] as String).input(),
+      dnsSecurityRuleState: map['dnsSecurityRuleState'] == null ? null : (map['dnsSecurityRuleState'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

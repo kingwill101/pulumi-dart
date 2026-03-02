@@ -23,15 +23,11 @@ class BucketHttpsConfigArgs {
   /// [enable] Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
   /// [tlsVersions] Specifies the TLS versions allowed to access this buckets.
   BucketHttpsConfigArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<BucketHttpsConfigCipherSuit>? cipherSuit,
-    required pulumi.Output<bool> enable,
-    pulumi.Output<List<String>>? tlsVersions,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      cipherSuit = pulumi.Input.asOptionalInput<BucketHttpsConfigCipherSuit>(cipherSuit),
-      enable = pulumi.Input.asInput<bool>(enable),
-      tlsVersions = pulumi.Input.asOptionalInput<List<String>>(tlsVersions);
+    required this.bucket,
+    this.cipherSuit,
+    required this.enable,
+    this.tlsVersions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class BucketHttpsConfigArgs {
 
   factory BucketHttpsConfigArgs.fromMap(Map<String, dynamic> map) {
     return BucketHttpsConfigArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      cipherSuit: map['cipherSuit'] == null ? null : pulumi.Output.create<BucketHttpsConfigCipherSuit>(BucketHttpsConfigCipherSuit.fromMap((map['cipherSuit'] as Map).cast<String, dynamic>())),
-      enable: pulumi.Output.create<bool>(map['enable'] as bool),
-      tlsVersions: map['tlsVersions'] == null ? null : pulumi.Output.create<List<String>>((map['tlsVersions'] as List).cast<String>()),
+      bucket: (map['bucket'] as String).input(),
+      cipherSuit: map['cipherSuit'] == null ? null : (BucketHttpsConfigCipherSuit.fromMap((map['cipherSuit'] as Map).cast<String, dynamic>())).input(),
+      enable: (map['enable'] as bool).input(),
+      tlsVersions: map['tlsVersions'] == null ? null : ((map['tlsVersions'] as List).cast<String>()).input(),
     );
   }
 }

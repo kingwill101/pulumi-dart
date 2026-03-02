@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of StatelessRuleGroupReference
 class StatelessRuleGroupReference {
   /// Property priority
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// A resource ARN.
-  final String? resourceArn;
+  final pulumi.Input<String>? resourceArn;
 
   /// Creates a new [StatelessRuleGroupReference].
   /// [priority] Property priority
@@ -25,8 +26,8 @@ class StatelessRuleGroupReference {
 
   factory StatelessRuleGroupReference.fromMap(Map<String, dynamic> map) {
     return StatelessRuleGroupReference(
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      resourceArn: map['resourceArn'] == null ? null : map['resourceArn'] as String,
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
     );
   }
 }

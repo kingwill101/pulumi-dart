@@ -50,35 +50,21 @@ class V3TriggerState {
   /// [triggerName] Trigger Name
   /// [triggerType] The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
   V3TriggerState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? functionName,
-    pulumi.Output<V3TriggerHttpTrigger>? httpTrigger,
-    pulumi.Output<String>? invocationRole,
-    pulumi.Output<String>? lastModifiedTime,
-    pulumi.Output<String>? qualifier,
-    pulumi.Output<String>? sourceArn,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? targetArn,
-    pulumi.Output<String>? triggerConfig,
-    pulumi.Output<String>? triggerId,
-    pulumi.Output<String>? triggerName,
-    pulumi.Output<String>? triggerType,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      functionName = pulumi.Input.asOptionalInput<String>(functionName),
-      httpTrigger = pulumi.Input.asOptionalInput<V3TriggerHttpTrigger>(httpTrigger),
-      invocationRole = pulumi.Input.asOptionalInput<String>(invocationRole),
-      lastModifiedTime = pulumi.Input.asOptionalInput<String>(lastModifiedTime),
-      qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
-      sourceArn = pulumi.Input.asOptionalInput<String>(sourceArn),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      targetArn = pulumi.Input.asOptionalInput<String>(targetArn),
-      triggerConfig = pulumi.Input.asOptionalInput<String>(triggerConfig),
-      triggerId = pulumi.Input.asOptionalInput<String>(triggerId),
-      triggerName = pulumi.Input.asOptionalInput<String>(triggerName),
-      triggerType = pulumi.Input.asOptionalInput<String>(triggerType);
+    this.createTime,
+    this.description,
+    this.functionName,
+    this.httpTrigger,
+    this.invocationRole,
+    this.lastModifiedTime,
+    this.qualifier,
+    this.sourceArn,
+    this.status,
+    this.targetArn,
+    this.triggerConfig,
+    this.triggerId,
+    this.triggerName,
+    this.triggerType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,20 +87,20 @@ class V3TriggerState {
 
   factory V3TriggerState.fromMap(Map<String, dynamic> map) {
     return V3TriggerState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      functionName: map['functionName'] == null ? null : pulumi.Output.create<String>(map['functionName'] as String),
-      httpTrigger: map['httpTrigger'] == null ? null : pulumi.Output.create<V3TriggerHttpTrigger>(V3TriggerHttpTrigger.fromMap((map['httpTrigger'] as Map).cast<String, dynamic>())),
-      invocationRole: map['invocationRole'] == null ? null : pulumi.Output.create<String>(map['invocationRole'] as String),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : pulumi.Output.create<String>(map['lastModifiedTime'] as String),
-      qualifier: map['qualifier'] == null ? null : pulumi.Output.create<String>(map['qualifier'] as String),
-      sourceArn: map['sourceArn'] == null ? null : pulumi.Output.create<String>(map['sourceArn'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      targetArn: map['targetArn'] == null ? null : pulumi.Output.create<String>(map['targetArn'] as String),
-      triggerConfig: map['triggerConfig'] == null ? null : pulumi.Output.create<String>(map['triggerConfig'] as String),
-      triggerId: map['triggerId'] == null ? null : pulumi.Output.create<String>(map['triggerId'] as String),
-      triggerName: map['triggerName'] == null ? null : pulumi.Output.create<String>(map['triggerName'] as String),
-      triggerType: map['triggerType'] == null ? null : pulumi.Output.create<String>(map['triggerType'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
+      httpTrigger: map['httpTrigger'] == null ? null : (V3TriggerHttpTrigger.fromMap((map['httpTrigger'] as Map).cast<String, dynamic>())).input(),
+      invocationRole: map['invocationRole'] == null ? null : (map['invocationRole'] as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
+      triggerConfig: map['triggerConfig'] == null ? null : (map['triggerConfig'] as String).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
+      triggerName: map['triggerName'] == null ? null : (map['triggerName'] as String).input(),
+      triggerType: map['triggerType'] == null ? null : (map['triggerType'] as String).input(),
     );
   }
 }

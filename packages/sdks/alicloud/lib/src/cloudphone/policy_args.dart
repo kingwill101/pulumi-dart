@@ -32,21 +32,14 @@ class PolicyArgs {
   /// [resolutionHeight] The height of the resolution. Unit: Pixels.
   /// [resolutionWidth] The width of the resolution. Unit: Pixels.
   PolicyArgs({
-    pulumi.Output<String>? cameraRedirect,
-    pulumi.Output<String>? clipboard,
-    pulumi.Output<String>? lockResolution,
-    pulumi.Output<PolicyNetRedirectPolicy>? netRedirectPolicy,
-    pulumi.Output<String>? policyGroupName,
-    pulumi.Output<int>? resolutionHeight,
-    pulumi.Output<int>? resolutionWidth,
-  }) :
-      cameraRedirect = pulumi.Input.asOptionalInput<String>(cameraRedirect),
-      clipboard = pulumi.Input.asOptionalInput<String>(clipboard),
-      lockResolution = pulumi.Input.asOptionalInput<String>(lockResolution),
-      netRedirectPolicy = pulumi.Input.asOptionalInput<PolicyNetRedirectPolicy>(netRedirectPolicy),
-      policyGroupName = pulumi.Input.asOptionalInput<String>(policyGroupName),
-      resolutionHeight = pulumi.Input.asOptionalInput<int>(resolutionHeight),
-      resolutionWidth = pulumi.Input.asOptionalInput<int>(resolutionWidth);
+    this.cameraRedirect,
+    this.clipboard,
+    this.lockResolution,
+    this.netRedirectPolicy,
+    this.policyGroupName,
+    this.resolutionHeight,
+    this.resolutionWidth,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      cameraRedirect: map['cameraRedirect'] == null ? null : pulumi.Output.create<String>(map['cameraRedirect'] as String),
-      clipboard: map['clipboard'] == null ? null : pulumi.Output.create<String>(map['clipboard'] as String),
-      lockResolution: map['lockResolution'] == null ? null : pulumi.Output.create<String>(map['lockResolution'] as String),
-      netRedirectPolicy: map['netRedirectPolicy'] == null ? null : pulumi.Output.create<PolicyNetRedirectPolicy>(PolicyNetRedirectPolicy.fromMap((map['netRedirectPolicy'] as Map).cast<String, dynamic>())),
-      policyGroupName: map['policyGroupName'] == null ? null : pulumi.Output.create<String>(map['policyGroupName'] as String),
-      resolutionHeight: map['resolutionHeight'] == null ? null : pulumi.Output.create<int>(map['resolutionHeight'] as int),
-      resolutionWidth: map['resolutionWidth'] == null ? null : pulumi.Output.create<int>(map['resolutionWidth'] as int),
+      cameraRedirect: map['cameraRedirect'] == null ? null : (map['cameraRedirect'] as String).input(),
+      clipboard: map['clipboard'] == null ? null : (map['clipboard'] as String).input(),
+      lockResolution: map['lockResolution'] == null ? null : (map['lockResolution'] as String).input(),
+      netRedirectPolicy: map['netRedirectPolicy'] == null ? null : (PolicyNetRedirectPolicy.fromMap((map['netRedirectPolicy'] as Map).cast<String, dynamic>())).input(),
+      policyGroupName: map['policyGroupName'] == null ? null : (map['policyGroupName'] as String).input(),
+      resolutionHeight: map['resolutionHeight'] == null ? null : (map['resolutionHeight'] as int).input(),
+      resolutionWidth: map['resolutionWidth'] == null ? null : (map['resolutionWidth'] as int).input(),
     );
   }
 }

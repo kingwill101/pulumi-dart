@@ -6,7 +6,7 @@ import 'folder_custom_module_custom_config_custom_output_property.dart';
 class FolderCustomModuleCustomConfigCustomOutput {
   /// A list of custom output properties to add to the finding.
   /// Structure is documented below.
-  final List<FolderCustomModuleCustomConfigCustomOutputProperty>? properties;
+  final pulumi.Input<List<FolderCustomModuleCustomConfigCustomOutputProperty>>? properties;
 
   /// Creates a new [FolderCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
@@ -16,13 +16,13 @@ class FolderCustomModuleCustomConfigCustomOutput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?properties == null ? null : pulumi.Input.encodeList<FolderCustomModuleCustomConfigCustomOutputProperty, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<List<FolderCustomModuleCustomConfigCustomOutputProperty>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<FolderCustomModuleCustomConfigCustomOutputProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory FolderCustomModuleCustomConfigCustomOutput.fromMap(Map<String, dynamic> map) {
     return FolderCustomModuleCustomConfigCustomOutput(
-      properties: map['properties'] == null ? null : pulumi.Input.decodeList<FolderCustomModuleCustomConfigCustomOutputProperty>(map['properties'], (value) => FolderCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<FolderCustomModuleCustomConfigCustomOutputProperty>(map['properties'], (value) => FolderCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

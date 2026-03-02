@@ -24,15 +24,11 @@ class NatGatewayEipAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   NatGatewayEipAssociationArgs({
-    required pulumi.Output<String> allocationId,
-    required pulumi.Output<String> natGatewayId,
-    pulumi.Output<String>? region,
-    pulumi.Output<NatGatewayEipAssociationTimeouts>? timeouts,
-  }) :
-      allocationId = pulumi.Input.asInput<String>(allocationId),
-      natGatewayId = pulumi.Input.asInput<String>(natGatewayId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<NatGatewayEipAssociationTimeouts>(timeouts);
+    required this.allocationId,
+    required this.natGatewayId,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class NatGatewayEipAssociationArgs {
 
   factory NatGatewayEipAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NatGatewayEipAssociationArgs(
-      allocationId: pulumi.Output.create<String>(map['allocationId'] as String),
-      natGatewayId: pulumi.Output.create<String>(map['natGatewayId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<NatGatewayEipAssociationTimeouts>(NatGatewayEipAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      allocationId: (map['allocationId'] as String).input(),
+      natGatewayId: (map['natGatewayId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (NatGatewayEipAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

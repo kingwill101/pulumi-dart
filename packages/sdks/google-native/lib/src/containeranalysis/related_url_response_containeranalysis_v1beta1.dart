@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata for any related URL information.
 class RelatedUrlResponseContaineranalysisV1beta1 {
   /// Label to describe usage of the URL.
-  final String label;
+  final pulumi.Input<String> label;
   /// Specific URL associated with the resource.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [RelatedUrlResponseContaineranalysisV1beta1].
   /// [label] Label to describe usage of the URL.
@@ -25,8 +26,8 @@ class RelatedUrlResponseContaineranalysisV1beta1 {
 
   factory RelatedUrlResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return RelatedUrlResponseContaineranalysisV1beta1(
-      label: map['label'] as String,
-      url: map['url'] as String,
+      label: (map['label'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

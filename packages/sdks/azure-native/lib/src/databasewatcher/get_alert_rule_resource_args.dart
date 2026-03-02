@@ -19,13 +19,10 @@ class GetAlertRuleResourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [watcherName] The database watcher name.
   GetAlertRuleResourceArgs({
-    required pulumi.Output<String> alertRuleResourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> watcherName,
-  }) :
-      alertRuleResourceName = pulumi.Input.asInput<String>(alertRuleResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      watcherName = pulumi.Input.asInput<String>(watcherName);
+    required this.alertRuleResourceName,
+    required this.resourceGroupName,
+    required this.watcherName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAlertRuleResourceArgs {
 
   factory GetAlertRuleResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleResourceArgs(
-      alertRuleResourceName: pulumi.Output.create<String>(map['alertRuleResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      watcherName: pulumi.Output.create<String>(map['watcherName'] as String),
+      alertRuleResourceName: (map['alertRuleResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      watcherName: (map['watcherName'] as String).input(),
     );
   }
 }

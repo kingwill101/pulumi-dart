@@ -46,19 +46,13 @@ class AutoscalingPolicyIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   AutoscalingPolicyIamBindingArgs({
-    pulumi.Output<AutoscalingPolicyIamBindingCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> policyId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<AutoscalingPolicyIamBindingCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      policyId = pulumi.Input.asInput<String>(policyId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    this.location,
+    required this.members,
+    required this.policyId,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,12 +67,12 @@ class AutoscalingPolicyIamBindingArgs {
 
   factory AutoscalingPolicyIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<AutoscalingPolicyIamBindingCondition>(AutoscalingPolicyIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (AutoscalingPolicyIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      policyId: (map['policyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

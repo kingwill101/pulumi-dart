@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The event response message received from the service URI.
 class EventResponseMessageResponse {
   /// The content of the event response message.
-  final String? content;
+  final pulumi.Input<String>? content;
   /// The headers of the event response message.
-  final Map<String, String>? headers;
+  final pulumi.Input<Map<String, String>>? headers;
   /// The reason phrase of the event response message.
-  final String? reasonPhrase;
+  final pulumi.Input<String>? reasonPhrase;
   /// The status code of the event response message.
-  final String? statusCode;
+  final pulumi.Input<String>? statusCode;
   /// The HTTP message version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [EventResponseMessageResponse].
   /// [content] The content of the event response message.
@@ -40,11 +41,11 @@ class EventResponseMessageResponse {
 
   factory EventResponseMessageResponse.fromMap(Map<String, dynamic> map) {
     return EventResponseMessageResponse(
-      content: map['content'] == null ? null : map['content'] as String,
-      headers: map['headers'] == null ? null : (map['headers'] as Map).cast<String, String>(),
-      reasonPhrase: map['reasonPhrase'] == null ? null : map['reasonPhrase'] as String,
-      statusCode: map['statusCode'] == null ? null : map['statusCode'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
+      reasonPhrase: map['reasonPhrase'] == null ? null : (map['reasonPhrase'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

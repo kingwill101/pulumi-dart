@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SessionInfoResponse {
   /// // [Preview] Id of the session.
-  final String sessionId;
+  final pulumi.Input<String> sessionId;
 
   /// Creates a new [SessionInfoResponse].
   /// [sessionId] // [Preview] Id of the session.
@@ -19,7 +20,7 @@ class SessionInfoResponse {
 
   factory SessionInfoResponse.fromMap(Map<String, dynamic> map) {
     return SessionInfoResponse(
-      sessionId: map['sessionId'] as String,
+      sessionId: (map['sessionId'] as String).input(),
     );
   }
 }

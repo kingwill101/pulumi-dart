@@ -37,25 +37,16 @@ class RoleAssignmentArgs {
   /// [roleDefinitionId] The role definition ID.
   /// [scope] The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   RoleAssignmentArgs({
-    pulumi.Output<String>? condition,
-    pulumi.Output<String>? conditionVersion,
-    pulumi.Output<String>? delegatedManagedIdentityResourceId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> principalId,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? roleAssignmentName,
-    required pulumi.Output<String> roleDefinitionId,
-    required pulumi.Output<String> scope,
-  }) :
-      condition = pulumi.Input.asOptionalInput<String>(condition),
-      conditionVersion = pulumi.Input.asOptionalInput<String>(conditionVersion),
-      delegatedManagedIdentityResourceId = pulumi.Input.asOptionalInput<String>(delegatedManagedIdentityResourceId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      roleAssignmentName = pulumi.Input.asOptionalInput<String>(roleAssignmentName),
-      roleDefinitionId = pulumi.Input.asInput<String>(roleDefinitionId),
-      scope = pulumi.Input.asInput<String>(scope);
+    this.condition,
+    this.conditionVersion,
+    this.delegatedManagedIdentityResourceId,
+    this.description,
+    required this.principalId,
+    this.principalType,
+    this.roleAssignmentName,
+    required this.roleDefinitionId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class RoleAssignmentArgs {
 
   factory RoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return RoleAssignmentArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<String>(map['condition'] as String),
-      conditionVersion: map['conditionVersion'] == null ? null : pulumi.Output.create<String>(map['conditionVersion'] as String),
-      delegatedManagedIdentityResourceId: map['delegatedManagedIdentityResourceId'] == null ? null : pulumi.Output.create<String>(map['delegatedManagedIdentityResourceId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      roleAssignmentName: map['roleAssignmentName'] == null ? null : pulumi.Output.create<String>(map['roleAssignmentName'] as String),
-      roleDefinitionId: pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion'] as String).input(),
+      delegatedManagedIdentityResourceId: map['delegatedManagedIdentityResourceId'] == null ? null : (map['delegatedManagedIdentityResourceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      roleAssignmentName: map['roleAssignmentName'] == null ? null : (map['roleAssignmentName'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

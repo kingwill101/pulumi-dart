@@ -30,19 +30,13 @@ class CapacityProviderArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   CapacityProviderArgs({
-    pulumi.Output<CapacityProviderAutoScalingGroupProvider>? autoScalingGroupProvider,
-    pulumi.Output<String>? cluster,
-    pulumi.Output<CapacityProviderManagedInstancesProvider>? managedInstancesProvider,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoScalingGroupProvider = pulumi.Input.asOptionalInput<CapacityProviderAutoScalingGroupProvider>(autoScalingGroupProvider),
-      cluster = pulumi.Input.asOptionalInput<String>(cluster),
-      managedInstancesProvider = pulumi.Input.asOptionalInput<CapacityProviderManagedInstancesProvider>(managedInstancesProvider),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.autoScalingGroupProvider,
+    this.cluster,
+    this.managedInstancesProvider,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class CapacityProviderArgs {
 
   factory CapacityProviderArgs.fromMap(Map<String, dynamic> map) {
     return CapacityProviderArgs(
-      autoScalingGroupProvider: map['autoScalingGroupProvider'] == null ? null : pulumi.Output.create<CapacityProviderAutoScalingGroupProvider>(CapacityProviderAutoScalingGroupProvider.fromMap((map['autoScalingGroupProvider'] as Map).cast<String, dynamic>())),
-      cluster: map['cluster'] == null ? null : pulumi.Output.create<String>(map['cluster'] as String),
-      managedInstancesProvider: map['managedInstancesProvider'] == null ? null : pulumi.Output.create<CapacityProviderManagedInstancesProvider>(CapacityProviderManagedInstancesProvider.fromMap((map['managedInstancesProvider'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoScalingGroupProvider: map['autoScalingGroupProvider'] == null ? null : (CapacityProviderAutoScalingGroupProvider.fromMap((map['autoScalingGroupProvider'] as Map).cast<String, dynamic>())).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
+      managedInstancesProvider: map['managedInstancesProvider'] == null ? null : (CapacityProviderManagedInstancesProvider.fromMap((map['managedInstancesProvider'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

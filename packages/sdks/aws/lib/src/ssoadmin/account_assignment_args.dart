@@ -31,21 +31,14 @@ class AccountAssignmentArgs {
   /// [targetId] An AWS account identifier, typically a 10-12 digit string.
   /// [targetType] The entity type for which the assignment will be created. Valid values: `AWS_ACCOUNT`.
   AccountAssignmentArgs({
-    required pulumi.Output<String> instanceArn,
-    required pulumi.Output<String> permissionSetArn,
-    required pulumi.Output<String> principalId,
-    required pulumi.Output<String> principalType,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> targetId,
-    required pulumi.Output<String> targetType,
-  }) :
-      instanceArn = pulumi.Input.asInput<String>(instanceArn),
-      permissionSetArn = pulumi.Input.asInput<String>(permissionSetArn),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      principalType = pulumi.Input.asInput<String>(principalType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetId = pulumi.Input.asInput<String>(targetId),
-      targetType = pulumi.Input.asInput<String>(targetType);
+    required this.instanceArn,
+    required this.permissionSetArn,
+    required this.principalId,
+    required this.principalType,
+    this.region,
+    required this.targetId,
+    required this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class AccountAssignmentArgs {
 
   factory AccountAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AccountAssignmentArgs(
-      instanceArn: pulumi.Output.create<String>(map['instanceArn'] as String),
-      permissionSetArn: pulumi.Output.create<String>(map['permissionSetArn'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: pulumi.Output.create<String>(map['principalType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetId: pulumi.Output.create<String>(map['targetId'] as String),
-      targetType: pulumi.Output.create<String>(map['targetType'] as String),
+      instanceArn: (map['instanceArn'] as String).input(),
+      permissionSetArn: (map['permissionSetArn'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
     );
   }
 }

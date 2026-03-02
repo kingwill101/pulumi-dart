@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A message representing a metric in the measurement.
 class GoogleCloudAiplatformV1beta1MeasurementMetricResponse {
   /// The ID of the Metric. The Metric should be defined in StudySpec's Metrics.
-  final String metricId;
+  final pulumi.Input<String> metricId;
   /// The value for this metric.
-  final double value;
+  final pulumi.Input<double> value;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1MeasurementMetricResponse].
   /// [metricId] The ID of the Metric. The Metric should be defined in StudySpec's Metrics.
@@ -25,8 +26,8 @@ class GoogleCloudAiplatformV1beta1MeasurementMetricResponse {
 
   factory GoogleCloudAiplatformV1beta1MeasurementMetricResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1MeasurementMetricResponse(
-      metricId: map['metricId'] as String,
-      value: map['value'] as double,
+      metricId: (map['metricId'] as String).input(),
+      value: (map['value'] as double).input(),
     );
   }
 }

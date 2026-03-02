@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Self referenced tumbling window trigger dependency.
 class SelfDependencyTumblingWindowTriggerReference {
   /// Timespan applied to the start time of a tumbling window when evaluating dependency.
-  final String offset;
+  final pulumi.Input<String> offset;
   /// The size of the window when evaluating the dependency. If undefined the frequency of the tumbling window will be used.
-  final String? size;
+  final pulumi.Input<String>? size;
   /// The type of dependency reference.
   /// Expected value is 'SelfDependencyTumblingWindowTriggerReference'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SelfDependencyTumblingWindowTriggerReference].
   /// [offset] Timespan applied to the start time of a tumbling window when evaluating dependency.
@@ -31,9 +32,9 @@ class SelfDependencyTumblingWindowTriggerReference {
 
   factory SelfDependencyTumblingWindowTriggerReference.fromMap(Map<String, dynamic> map) {
     return SelfDependencyTumblingWindowTriggerReference(
-      offset: map['offset'] as String,
-      size: map['size'] == null ? null : map['size'] as String,
-      type: map['type'] as String,
+      offset: (map['offset'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

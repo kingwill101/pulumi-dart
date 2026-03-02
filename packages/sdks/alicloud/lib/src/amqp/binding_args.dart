@@ -39,21 +39,14 @@ class BindingArgs {
   /// [sourceExchange] The name of the source exchange.
   /// [virtualHostName] The name of the vhost.
   BindingArgs({
-    pulumi.Output<String>? argument,
-    required pulumi.Output<String> bindingKey,
-    required pulumi.Output<String> bindingType,
-    required pulumi.Output<String> destinationName,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> sourceExchange,
-    required pulumi.Output<String> virtualHostName,
-  }) :
-      argument = pulumi.Input.asOptionalInput<String>(argument),
-      bindingKey = pulumi.Input.asInput<String>(bindingKey),
-      bindingType = pulumi.Input.asInput<String>(bindingType),
-      destinationName = pulumi.Input.asInput<String>(destinationName),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      sourceExchange = pulumi.Input.asInput<String>(sourceExchange),
-      virtualHostName = pulumi.Input.asInput<String>(virtualHostName);
+    this.argument,
+    required this.bindingKey,
+    required this.bindingType,
+    required this.destinationName,
+    required this.instanceId,
+    required this.sourceExchange,
+    required this.virtualHostName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,13 +62,13 @@ class BindingArgs {
 
   factory BindingArgs.fromMap(Map<String, dynamic> map) {
     return BindingArgs(
-      argument: map['argument'] == null ? null : pulumi.Output.create<String>(map['argument'] as String),
-      bindingKey: pulumi.Output.create<String>(map['bindingKey'] as String),
-      bindingType: pulumi.Output.create<String>(map['bindingType'] as String),
-      destinationName: pulumi.Output.create<String>(map['destinationName'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      sourceExchange: pulumi.Output.create<String>(map['sourceExchange'] as String),
-      virtualHostName: pulumi.Output.create<String>(map['virtualHostName'] as String),
+      argument: map['argument'] == null ? null : (map['argument'] as String).input(),
+      bindingKey: (map['bindingKey'] as String).input(),
+      bindingType: (map['bindingType'] as String).input(),
+      destinationName: (map['destinationName'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      sourceExchange: (map['sourceExchange'] as String).input(),
+      virtualHostName: (map['virtualHostName'] as String).input(),
     );
   }
 }

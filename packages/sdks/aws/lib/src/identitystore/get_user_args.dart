@@ -27,15 +27,11 @@ class GetUserArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userId] The identifier for a user in the Identity Store.
   GetUserArgs({
-    pulumi.Output<GetUserAlternateIdentifier>? alternateIdentifier,
-    required pulumi.Output<String> identityStoreId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? userId,
-  }) :
-      alternateIdentifier = pulumi.Input.asOptionalInput<GetUserAlternateIdentifier>(alternateIdentifier),
-      identityStoreId = pulumi.Input.asInput<String>(identityStoreId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.alternateIdentifier,
+    required this.identityStoreId,
+    this.region,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      alternateIdentifier: map['alternateIdentifier'] == null ? null : pulumi.Output.create<GetUserAlternateIdentifier>(GetUserAlternateIdentifier.fromMap((map['alternateIdentifier'] as Map).cast<String, dynamic>())),
-      identityStoreId: pulumi.Output.create<String>(map['identityStoreId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      alternateIdentifier: map['alternateIdentifier'] == null ? null : (GetUserAlternateIdentifier.fromMap((map['alternateIdentifier'] as Map).cast<String, dynamic>())).input(),
+      identityStoreId: (map['identityStoreId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

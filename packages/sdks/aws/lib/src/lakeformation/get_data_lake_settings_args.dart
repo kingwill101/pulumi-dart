@@ -16,11 +16,9 @@ class GetDataLakeSettingsArgs {
   /// [catalogId] Identifier for the Data Catalog. By default, the account ID.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetDataLakeSettingsArgs({
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<String>? region,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.catalogId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDataLakeSettingsArgs {
 
   factory GetDataLakeSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetDataLakeSettingsArgs(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

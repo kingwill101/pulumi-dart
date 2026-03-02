@@ -16,11 +16,9 @@ class GetBucketReplicationConfigurationArgs {
   /// [bucket] The name of the bucket to get the replication configuration for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetBucketReplicationConfigurationArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? region,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.bucket,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBucketReplicationConfigurationArgs {
 
   factory GetBucketReplicationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bucket: (map['bucket'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -40,29 +40,18 @@ class ActivationState {
   /// [tags] A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ActivationState({
-    pulumi.Output<String>? activationCode,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expirationDate,
-    pulumi.Output<bool>? expired,
-    pulumi.Output<String>? iamRole,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? registrationCount,
-    pulumi.Output<int>? registrationLimit,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      activationCode = pulumi.Input.asOptionalInput<String>(activationCode),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      expired = pulumi.Input.asOptionalInput<bool>(expired),
-      iamRole = pulumi.Input.asOptionalInput<String>(iamRole),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registrationCount = pulumi.Input.asOptionalInput<int>(registrationCount),
-      registrationLimit = pulumi.Input.asOptionalInput<int>(registrationLimit),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.activationCode,
+    this.description,
+    this.expirationDate,
+    this.expired,
+    this.iamRole,
+    this.name,
+    this.region,
+    this.registrationCount,
+    this.registrationLimit,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class ActivationState {
 
   factory ActivationState.fromMap(Map<String, dynamic> map) {
     return ActivationState(
-      activationCode: map['activationCode'] == null ? null : pulumi.Output.create<String>(map['activationCode'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      expired: map['expired'] == null ? null : pulumi.Output.create<bool>(map['expired'] as bool),
-      iamRole: map['iamRole'] == null ? null : pulumi.Output.create<String>(map['iamRole'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registrationCount: map['registrationCount'] == null ? null : pulumi.Output.create<int>(map['registrationCount'] as int),
-      registrationLimit: map['registrationLimit'] == null ? null : pulumi.Output.create<int>(map['registrationLimit'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      activationCode: map['activationCode'] == null ? null : (map['activationCode'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      expired: map['expired'] == null ? null : (map['expired'] as bool).input(),
+      iamRole: map['iamRole'] == null ? null : (map['iamRole'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registrationCount: map['registrationCount'] == null ? null : (map['registrationCount'] as int).input(),
+      registrationLimit: map['registrationLimit'] == null ? null : (map['registrationLimit'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VPN client root certificate of virtual network gateway.
 class VpnClientRootCertificate {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The certificate public data.
-  final String publicCertData;
+  final pulumi.Input<String> publicCertData;
 
   /// Creates a new [VpnClientRootCertificate].
   /// [id] Resource ID.
@@ -30,9 +31,9 @@ class VpnClientRootCertificate {
 
   factory VpnClientRootCertificate.fromMap(Map<String, dynamic> map) {
     return VpnClientRootCertificate(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      publicCertData: map['publicCertData'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicCertData: (map['publicCertData'] as String).input(),
     );
   }
 }

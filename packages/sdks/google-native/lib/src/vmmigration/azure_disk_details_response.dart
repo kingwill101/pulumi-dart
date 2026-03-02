@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The details of an Azure VM disk.
 class AzureDiskDetailsResponse {
   /// Azure disk ID.
-  final String diskId;
+  final pulumi.Input<String> diskId;
   /// The ordinal number of the disk.
-  final int diskNumber;
+  final pulumi.Input<int> diskNumber;
   /// Size in GB.
-  final String sizeGb;
+  final pulumi.Input<String> sizeGb;
 
   /// Creates a new [AzureDiskDetailsResponse].
   /// [diskId] Azure disk ID.
@@ -30,9 +31,9 @@ class AzureDiskDetailsResponse {
 
   factory AzureDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureDiskDetailsResponse(
-      diskId: map['diskId'] as String,
-      diskNumber: map['diskNumber'] as int,
-      sizeGb: map['sizeGb'] as String,
+      diskId: (map['diskId'] as String).input(),
+      diskNumber: (map['diskNumber'] as int).input(),
+      sizeGb: (map['sizeGb'] as String).input(),
     );
   }
 }

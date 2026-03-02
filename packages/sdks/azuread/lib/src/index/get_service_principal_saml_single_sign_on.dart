@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServicePrincipalSamlSingleSignOn {
   /// The relative URI the service provider would redirect to after completion of the single sign-on flow.
-  final String relayState;
+  final pulumi.Input<String> relayState;
 
   /// Creates a new [GetServicePrincipalSamlSingleSignOn].
   /// [relayState] The relative URI the service provider would redirect to after completion of the single sign-on flow.
@@ -19,7 +20,7 @@ class GetServicePrincipalSamlSingleSignOn {
 
   factory GetServicePrincipalSamlSingleSignOn.fromMap(Map<String, dynamic> map) {
     return GetServicePrincipalSamlSingleSignOn(
-      relayState: map['relayState'] as String,
+      relayState: (map['relayState'] as String).input(),
     );
   }
 }

@@ -30,19 +30,13 @@ class NamespaceArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   NamespaceArgs({
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? identityStore,
-    required pulumi.Output<String> namespace,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<NamespaceTimeouts>? timeouts,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      identityStore = pulumi.Input.asOptionalInput<String>(identityStore),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<NamespaceTimeouts>(timeouts);
+    this.awsAccountId,
+    this.identityStore,
+    required this.namespace,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      identityStore: map['identityStore'] == null ? null : pulumi.Output.create<String>(map['identityStore'] as String),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<NamespaceTimeouts>(NamespaceTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      identityStore: map['identityStore'] == null ? null : (map['identityStore'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (NamespaceTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

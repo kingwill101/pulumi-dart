@@ -28,15 +28,11 @@ class AppArgs {
   /// [projectId] The ID of the project that the app is assigned to.
   /// [spec] A DigitalOcean App spec describing the app.
   AppArgs({
-    pulumi.Output<List<AppDedicatedIp>>? dedicatedIps,
-    pulumi.Output<int>? deploymentPerPage,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<AppSpec>? spec,
-  }) :
-      dedicatedIps = pulumi.Input.asOptionalInput<List<AppDedicatedIp>>(dedicatedIps),
-      deploymentPerPage = pulumi.Input.asOptionalInput<int>(deploymentPerPage),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      spec = pulumi.Input.asOptionalInput<AppSpec>(spec);
+    this.dedicatedIps,
+    this.deploymentPerPage,
+    this.projectId,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class AppArgs {
 
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
-      dedicatedIps: map['dedicatedIps'] == null ? null : pulumi.Output.create<List<AppDedicatedIp>>(pulumi.Input.decodeList<AppDedicatedIp>(map['dedicatedIps'], (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>()))),
-      deploymentPerPage: map['deploymentPerPage'] == null ? null : pulumi.Output.create<int>(map['deploymentPerPage'] as int),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<AppSpec>(AppSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      dedicatedIps: map['dedicatedIps'] == null ? null : (pulumi.Input.decodeList<AppDedicatedIp>(map['dedicatedIps'], (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deploymentPerPage: map['deploymentPerPage'] == null ? null : (map['deploymentPerPage'] as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      spec: map['spec'] == null ? null : (AppSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

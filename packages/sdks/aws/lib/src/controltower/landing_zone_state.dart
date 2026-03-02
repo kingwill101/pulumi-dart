@@ -32,23 +32,15 @@ class LandingZoneState {
   /// [tagsAll] A map of tags assigned to the landing zone, including those inherited from the provider `default_tags` configuration block.
   /// [version] The landing zone version.
   LandingZoneState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<LandingZoneDriftStatus>>? driftStatuses,
-    pulumi.Output<String>? latestAvailableVersion,
-    pulumi.Output<String>? manifestJson,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? version,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      driftStatuses = pulumi.Input.asOptionalInput<List<LandingZoneDriftStatus>>(driftStatuses),
-      latestAvailableVersion = pulumi.Input.asOptionalInput<String>(latestAvailableVersion),
-      manifestJson = pulumi.Input.asOptionalInput<String>(manifestJson),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.arn,
+    this.driftStatuses,
+    this.latestAvailableVersion,
+    this.manifestJson,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class LandingZoneState {
 
   factory LandingZoneState.fromMap(Map<String, dynamic> map) {
     return LandingZoneState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      driftStatuses: map['driftStatuses'] == null ? null : pulumi.Output.create<List<LandingZoneDriftStatus>>(pulumi.Input.decodeList<LandingZoneDriftStatus>(map['driftStatuses'], (value) => LandingZoneDriftStatus.fromMap((value as Map).cast<String, dynamic>()))),
-      latestAvailableVersion: map['latestAvailableVersion'] == null ? null : pulumi.Output.create<String>(map['latestAvailableVersion'] as String),
-      manifestJson: map['manifestJson'] == null ? null : pulumi.Output.create<String>(map['manifestJson'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      driftStatuses: map['driftStatuses'] == null ? null : (pulumi.Input.decodeList<LandingZoneDriftStatus>(map['driftStatuses'], (value) => LandingZoneDriftStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      latestAvailableVersion: map['latestAvailableVersion'] == null ? null : (map['latestAvailableVersion'] as String).input(),
+      manifestJson: map['manifestJson'] == null ? null : (map['manifestJson'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

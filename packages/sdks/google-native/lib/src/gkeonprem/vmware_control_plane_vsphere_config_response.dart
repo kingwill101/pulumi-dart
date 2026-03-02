@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies control plane node config.
 class VmwareControlPlaneVsphereConfigResponse {
   /// The Vsphere datastore used by the control plane Node.
-  final String datastore;
+  final pulumi.Input<String> datastore;
   /// The Vsphere storage policy used by the control plane Node.
-  final String storagePolicyName;
+  final pulumi.Input<String> storagePolicyName;
 
   /// Creates a new [VmwareControlPlaneVsphereConfigResponse].
   /// [datastore] The Vsphere datastore used by the control plane Node.
@@ -25,8 +26,8 @@ class VmwareControlPlaneVsphereConfigResponse {
 
   factory VmwareControlPlaneVsphereConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareControlPlaneVsphereConfigResponse(
-      datastore: map['datastore'] as String,
-      storagePolicyName: map['storagePolicyName'] as String,
+      datastore: (map['datastore'] as String).input(),
+      storagePolicyName: (map['storagePolicyName'] as String).input(),
     );
   }
 }

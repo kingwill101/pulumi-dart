@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU for the cache.
 class CacheResponseSku {
   /// SKU name for this cache.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [CacheResponseSku].
   /// [name] SKU name for this cache.
@@ -20,7 +21,7 @@ class CacheResponseSku {
 
   factory CacheResponseSku.fromMap(Map<String, dynamic> map) {
     return CacheResponseSku(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

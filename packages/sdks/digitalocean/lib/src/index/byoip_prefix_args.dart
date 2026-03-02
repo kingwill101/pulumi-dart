@@ -24,15 +24,11 @@ class ByoipPrefixArgs {
   /// [region] The DigitalOcean region where the prefix will be deployed.
   /// [signature] The cryptographic signature proving ownership of the prefix.
   ByoipPrefixArgs({
-    pulumi.Output<bool>? advertised,
-    required pulumi.Output<String> prefix,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? signature,
-  }) :
-      advertised = pulumi.Input.asOptionalInput<bool>(advertised),
-      prefix = pulumi.Input.asInput<String>(prefix),
-      region = pulumi.Input.asInput<String>(region),
-      signature = pulumi.Input.asOptionalInput<String>(signature);
+    this.advertised,
+    required this.prefix,
+    required this.region,
+    this.signature,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ByoipPrefixArgs {
 
   factory ByoipPrefixArgs.fromMap(Map<String, dynamic> map) {
     return ByoipPrefixArgs(
-      advertised: map['advertised'] == null ? null : pulumi.Output.create<bool>(map['advertised'] as bool),
-      prefix: pulumi.Output.create<String>(map['prefix'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      signature: map['signature'] == null ? null : pulumi.Output.create<String>(map['signature'] as String),
+      advertised: map['advertised'] == null ? null : (map['advertised'] as bool).input(),
+      prefix: (map['prefix'] as String).input(),
+      region: (map['region'] as String).input(),
+      signature: map['signature'] == null ? null : (map['signature'] as String).input(),
     );
   }
 }

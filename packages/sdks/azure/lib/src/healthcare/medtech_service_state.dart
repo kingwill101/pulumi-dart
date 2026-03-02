@@ -35,25 +35,16 @@ class MedtechServiceState {
   /// [tags] A mapping of tags to assign to the Healthcare Med Tech Service.
   /// [workspaceId] Specifies the id of the Healthcare Workspace where the Healthcare Med Tech Service should exist. Changing this forces a new Healthcare Med Tech Service to be created.
   MedtechServiceState({
-    pulumi.Output<String>? deviceMappingJson,
-    pulumi.Output<String>? eventhubConsumerGroupName,
-    pulumi.Output<String>? eventhubName,
-    pulumi.Output<String>? eventhubNamespaceName,
-    pulumi.Output<MedtechServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      deviceMappingJson = pulumi.Input.asOptionalInput<String>(deviceMappingJson),
-      eventhubConsumerGroupName = pulumi.Input.asOptionalInput<String>(eventhubConsumerGroupName),
-      eventhubName = pulumi.Input.asOptionalInput<String>(eventhubName),
-      eventhubNamespaceName = pulumi.Input.asOptionalInput<String>(eventhubNamespaceName),
-      identity = pulumi.Input.asOptionalInput<MedtechServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.deviceMappingJson,
+    this.eventhubConsumerGroupName,
+    this.eventhubName,
+    this.eventhubNamespaceName,
+    this.identity,
+    this.location,
+    this.name,
+    this.tags,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class MedtechServiceState {
 
   factory MedtechServiceState.fromMap(Map<String, dynamic> map) {
     return MedtechServiceState(
-      deviceMappingJson: map['deviceMappingJson'] == null ? null : pulumi.Output.create<String>(map['deviceMappingJson'] as String),
-      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : pulumi.Output.create<String>(map['eventhubConsumerGroupName'] as String),
-      eventhubName: map['eventhubName'] == null ? null : pulumi.Output.create<String>(map['eventhubName'] as String),
-      eventhubNamespaceName: map['eventhubNamespaceName'] == null ? null : pulumi.Output.create<String>(map['eventhubNamespaceName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<MedtechServiceIdentity>(MedtechServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      deviceMappingJson: map['deviceMappingJson'] == null ? null : (map['deviceMappingJson'] as String).input(),
+      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName'] as String).input(),
+      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName'] as String).input(),
+      eventhubNamespaceName: map['eventhubNamespaceName'] == null ? null : (map['eventhubNamespaceName'] as String).input(),
+      identity: map['identity'] == null ? null : (MedtechServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

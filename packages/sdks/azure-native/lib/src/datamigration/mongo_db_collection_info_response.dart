@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_db_shard_key_info_response.dart';
 
 /// Describes a supported collection within a MongoDB database
 class MongoDbCollectionInfoResponse {
   /// The average document size, or -1 if the average size is unknown
-  final double averageDocumentSize;
+  final pulumi.Input<double> averageDocumentSize;
   /// The estimated total data size, in bytes, or -1 if the size is unknown.
-  final double dataSize;
+  final pulumi.Input<double> dataSize;
   /// The name of the database containing the collection
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// The estimated total number of documents, or -1 if the document count is unknown
-  final double documentCount;
+  final pulumi.Input<double> documentCount;
   /// Whether the collection is a capped collection (i.e. whether it has a fixed size and acts like a circular buffer)
-  final bool isCapped;
+  final pulumi.Input<bool> isCapped;
   /// Whether the collection is system collection
-  final bool isSystemCollection;
+  final pulumi.Input<bool> isSystemCollection;
   /// Whether the collection is a view of another collection
-  final bool isView;
+  final pulumi.Input<bool> isView;
   /// The unqualified name of the database or collection
-  final String name;
+  final pulumi.Input<String> name;
   /// The qualified name of the database or collection. For a collection, this is the database-qualified name.
-  final String qualifiedName;
+  final pulumi.Input<String> qualifiedName;
   /// The shard key on the collection, or null if the collection is not sharded
-  final MongoDbShardKeyInfoResponse? shardKey;
+  final pulumi.Input<MongoDbShardKeyInfoResponse>? shardKey;
   /// Whether the database has sharding enabled. Note that the migration task will enable sharding on the target if necessary.
-  final bool supportsSharding;
+  final pulumi.Input<bool> supportsSharding;
   /// The name of the collection that this is a view of, if IsView is true
-  final String? viewOf;
+  final pulumi.Input<String>? viewOf;
 
   /// Creates a new [MongoDbCollectionInfoResponse].
   /// [averageDocumentSize] The average document size, or -1 if the average size is unknown
@@ -68,7 +69,7 @@ class MongoDbCollectionInfoResponse {
       'isView': isView,
       'name': name,
       'qualifiedName': qualifiedName,
-      'shardKey': ?shardKey == null ? null : shardKey!.toMap(),
+      'shardKey': ?pulumi.Input.mapOptionalInputValue<MongoDbShardKeyInfoResponse, Map<String, dynamic>>(shardKey, (value) => value.toMap()),
       'supportsSharding': supportsSharding,
       'viewOf': ?viewOf,
     };
@@ -76,18 +77,18 @@ class MongoDbCollectionInfoResponse {
 
   factory MongoDbCollectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbCollectionInfoResponse(
-      averageDocumentSize: map['averageDocumentSize'] as double,
-      dataSize: map['dataSize'] as double,
-      databaseName: map['databaseName'] as String,
-      documentCount: map['documentCount'] as double,
-      isCapped: map['isCapped'] as bool,
-      isSystemCollection: map['isSystemCollection'] as bool,
-      isView: map['isView'] as bool,
-      name: map['name'] as String,
-      qualifiedName: map['qualifiedName'] as String,
-      shardKey: map['shardKey'] == null ? null : MongoDbShardKeyInfoResponse.fromMap((map['shardKey'] as Map).cast<String, dynamic>()),
-      supportsSharding: map['supportsSharding'] as bool,
-      viewOf: map['viewOf'] == null ? null : map['viewOf'] as String,
+      averageDocumentSize: (map['averageDocumentSize'] as double).input(),
+      dataSize: (map['dataSize'] as double).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      documentCount: (map['documentCount'] as double).input(),
+      isCapped: (map['isCapped'] as bool).input(),
+      isSystemCollection: (map['isSystemCollection'] as bool).input(),
+      isView: (map['isView'] as bool).input(),
+      name: (map['name'] as String).input(),
+      qualifiedName: (map['qualifiedName'] as String).input(),
+      shardKey: map['shardKey'] == null ? null : (MongoDbShardKeyInfoResponse.fromMap((map['shardKey'] as Map).cast<String, dynamic>())).input(),
+      supportsSharding: (map['supportsSharding'] as bool).input(),
+      viewOf: map['viewOf'] == null ? null : (map['viewOf'] as String).input(),
     );
   }
 }

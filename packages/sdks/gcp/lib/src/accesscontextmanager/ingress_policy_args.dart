@@ -16,11 +16,9 @@ class IngressPolicyArgs {
   /// [ingressPolicyName] The name of the Service Perimeter to add this resource to.
   /// [resource] A GCP resource that is inside of the service perimeter.
   IngressPolicyArgs({
-    required pulumi.Output<String> ingressPolicyName,
-    required pulumi.Output<String> resource,
-  }) :
-      ingressPolicyName = pulumi.Input.asInput<String>(ingressPolicyName),
-      resource = pulumi.Input.asInput<String>(resource);
+    required this.ingressPolicyName,
+    required this.resource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class IngressPolicyArgs {
 
   factory IngressPolicyArgs.fromMap(Map<String, dynamic> map) {
     return IngressPolicyArgs(
-      ingressPolicyName: pulumi.Output.create<String>(map['ingressPolicyName'] as String),
-      resource: pulumi.Output.create<String>(map['resource'] as String),
+      ingressPolicyName: (map['ingressPolicyName'] as String).input(),
+      resource: (map['resource'] as String).input(),
     );
   }
 }

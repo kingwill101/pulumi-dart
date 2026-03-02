@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about VMSS VM
 class VMSSVMInfoResponse {
   /// A value indicating compliance status of the machine for the assigned guest configuration.
-  final String complianceStatus;
+  final pulumi.Input<String> complianceStatus;
   /// Date and time when last compliance status was checked.
-  final String lastComplianceChecked;
+  final pulumi.Input<String> lastComplianceChecked;
   /// Id of the latest report for the guest configuration assignment.
-  final String latestReportId;
+  final pulumi.Input<String> latestReportId;
   /// UUID of the VM.
-  final String vmId;
+  final pulumi.Input<String> vmId;
   /// Azure resource Id of the VM.
-  final String vmResourceId;
+  final pulumi.Input<String> vmResourceId;
 
   /// Creates a new [VMSSVMInfoResponse].
   /// [complianceStatus] A value indicating compliance status of the machine for the assigned guest configuration.
@@ -40,11 +41,11 @@ class VMSSVMInfoResponse {
 
   factory VMSSVMInfoResponse.fromMap(Map<String, dynamic> map) {
     return VMSSVMInfoResponse(
-      complianceStatus: map['complianceStatus'] as String,
-      lastComplianceChecked: map['lastComplianceChecked'] as String,
-      latestReportId: map['latestReportId'] as String,
-      vmId: map['vmId'] as String,
-      vmResourceId: map['vmResourceId'] as String,
+      complianceStatus: (map['complianceStatus'] as String).input(),
+      lastComplianceChecked: (map['lastComplianceChecked'] as String).input(),
+      latestReportId: (map['latestReportId'] as String).input(),
+      vmId: (map['vmId'] as String).input(),
+      vmResourceId: (map['vmResourceId'] as String).input(),
     );
   }
 }

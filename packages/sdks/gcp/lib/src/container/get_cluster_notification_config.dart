@@ -5,7 +5,7 @@ import 'get_cluster_notification_config_pubsub.dart';
 
 class GetClusterNotificationConfig {
   /// Notification config for Cloud Pub/Sub
-  final List<GetClusterNotificationConfigPubsub> pubsubs;
+  final pulumi.Input<List<GetClusterNotificationConfigPubsub>> pubsubs;
 
   /// Creates a new [GetClusterNotificationConfig].
   /// [pubsubs] Notification config for Cloud Pub/Sub
@@ -15,13 +15,13 @@ class GetClusterNotificationConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pubsubs': pulumi.Input.encodeList<GetClusterNotificationConfigPubsub, Map<String, dynamic>>(pubsubs, (value) => value.toMap()),
+      'pubsubs': pulumi.Input.mapInputValue<List<GetClusterNotificationConfigPubsub>, List<Map<String, dynamic>>>(pubsubs, (value) => pulumi.Input.encodeList<GetClusterNotificationConfigPubsub, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetClusterNotificationConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNotificationConfig(
-      pubsubs: pulumi.Input.decodeList<GetClusterNotificationConfigPubsub>(map['pubsubs'], (value) => GetClusterNotificationConfigPubsub.fromMap((value as Map).cast<String, dynamic>())),
+      pubsubs: (pulumi.Input.decodeList<GetClusterNotificationConfigPubsub>(map['pubsubs'], (value) => GetClusterNotificationConfigPubsub.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

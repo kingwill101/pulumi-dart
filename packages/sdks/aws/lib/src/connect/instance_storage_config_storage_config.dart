@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_storage_config_storage_config_kinesis_firehose_config.dart';
 import 'instance_storage_config_storage_config_kinesis_stream_config.dart';
 import 'instance_storage_config_storage_config_kinesis_video_stream_config.dart';
@@ -7,15 +8,15 @@ import 'instance_storage_config_storage_config_s3_config.dart';
 
 class InstanceStorageConfigStorageConfig {
   /// A block that specifies the configuration of the Kinesis Firehose delivery stream. Documented below.
-  final InstanceStorageConfigStorageConfigKinesisFirehoseConfig? kinesisFirehoseConfig;
+  final pulumi.Input<InstanceStorageConfigStorageConfigKinesisFirehoseConfig>? kinesisFirehoseConfig;
   /// A block that specifies the configuration of the Kinesis data stream. Documented below.
-  final InstanceStorageConfigStorageConfigKinesisStreamConfig? kinesisStreamConfig;
+  final pulumi.Input<InstanceStorageConfigStorageConfigKinesisStreamConfig>? kinesisStreamConfig;
   /// A block that specifies the configuration of the Kinesis video stream. Documented below.
-  final InstanceStorageConfigStorageConfigKinesisVideoStreamConfig? kinesisVideoStreamConfig;
+  final pulumi.Input<InstanceStorageConfigStorageConfigKinesisVideoStreamConfig>? kinesisVideoStreamConfig;
   /// A block that specifies the configuration of S3 Bucket. Documented below.
-  final InstanceStorageConfigStorageConfigS3Config? s3Config;
+  final pulumi.Input<InstanceStorageConfigStorageConfigS3Config>? s3Config;
   /// A valid storage type. Valid Values: `S3` | `KINESIS_VIDEO_STREAM` | `KINESIS_STREAM` | `KINESIS_FIREHOSE`.
-  final String storageType;
+  final pulumi.Input<String> storageType;
 
   /// Creates a new [InstanceStorageConfigStorageConfig].
   /// [kinesisFirehoseConfig] A block that specifies the configuration of the Kinesis Firehose delivery stream. Documented below.
@@ -33,21 +34,21 @@ class InstanceStorageConfigStorageConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kinesisFirehoseConfig': ?kinesisFirehoseConfig == null ? null : kinesisFirehoseConfig!.toMap(),
-      'kinesisStreamConfig': ?kinesisStreamConfig == null ? null : kinesisStreamConfig!.toMap(),
-      'kinesisVideoStreamConfig': ?kinesisVideoStreamConfig == null ? null : kinesisVideoStreamConfig!.toMap(),
-      's3Config': ?s3Config == null ? null : s3Config!.toMap(),
+      'kinesisFirehoseConfig': ?pulumi.Input.mapOptionalInputValue<InstanceStorageConfigStorageConfigKinesisFirehoseConfig, Map<String, dynamic>>(kinesisFirehoseConfig, (value) => value.toMap()),
+      'kinesisStreamConfig': ?pulumi.Input.mapOptionalInputValue<InstanceStorageConfigStorageConfigKinesisStreamConfig, Map<String, dynamic>>(kinesisStreamConfig, (value) => value.toMap()),
+      'kinesisVideoStreamConfig': ?pulumi.Input.mapOptionalInputValue<InstanceStorageConfigStorageConfigKinesisVideoStreamConfig, Map<String, dynamic>>(kinesisVideoStreamConfig, (value) => value.toMap()),
+      's3Config': ?pulumi.Input.mapOptionalInputValue<InstanceStorageConfigStorageConfigS3Config, Map<String, dynamic>>(s3Config, (value) => value.toMap()),
       'storageType': storageType,
     };
   }
 
   factory InstanceStorageConfigStorageConfig.fromMap(Map<String, dynamic> map) {
     return InstanceStorageConfigStorageConfig(
-      kinesisFirehoseConfig: map['kinesisFirehoseConfig'] == null ? null : InstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap((map['kinesisFirehoseConfig'] as Map).cast<String, dynamic>()),
-      kinesisStreamConfig: map['kinesisStreamConfig'] == null ? null : InstanceStorageConfigStorageConfigKinesisStreamConfig.fromMap((map['kinesisStreamConfig'] as Map).cast<String, dynamic>()),
-      kinesisVideoStreamConfig: map['kinesisVideoStreamConfig'] == null ? null : InstanceStorageConfigStorageConfigKinesisVideoStreamConfig.fromMap((map['kinesisVideoStreamConfig'] as Map).cast<String, dynamic>()),
-      s3Config: map['s3Config'] == null ? null : InstanceStorageConfigStorageConfigS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>()),
-      storageType: map['storageType'] as String,
+      kinesisFirehoseConfig: map['kinesisFirehoseConfig'] == null ? null : (InstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap((map['kinesisFirehoseConfig'] as Map).cast<String, dynamic>())).input(),
+      kinesisStreamConfig: map['kinesisStreamConfig'] == null ? null : (InstanceStorageConfigStorageConfigKinesisStreamConfig.fromMap((map['kinesisStreamConfig'] as Map).cast<String, dynamic>())).input(),
+      kinesisVideoStreamConfig: map['kinesisVideoStreamConfig'] == null ? null : (InstanceStorageConfigStorageConfigKinesisVideoStreamConfig.fromMap((map['kinesisVideoStreamConfig'] as Map).cast<String, dynamic>())).input(),
+      s3Config: map['s3Config'] == null ? null : (InstanceStorageConfigStorageConfigS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>())).input(),
+      storageType: (map['storageType'] as String).input(),
     );
   }
 }

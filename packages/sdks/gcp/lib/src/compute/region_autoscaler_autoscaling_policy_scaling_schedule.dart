@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionAutoscalerAutoscalingPolicyScalingSchedule {
   /// A description of a scaling schedule.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
-  final int durationSec;
+  final pulumi.Input<int> durationSec;
   /// Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
-  final int minRequiredReplicas;
+  final pulumi.Input<int> minRequiredReplicas;
   /// The identifier for this object. Format specified above.
-  final String name;
+  final pulumi.Input<String> name;
   /// The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
-  final String schedule;
+  final pulumi.Input<String> schedule;
   /// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [RegionAutoscalerAutoscalingPolicyScalingSchedule].
   /// [description] A description of a scaling schedule.
@@ -49,13 +50,13 @@ class RegionAutoscalerAutoscalingPolicyScalingSchedule {
 
   factory RegionAutoscalerAutoscalingPolicyScalingSchedule.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerAutoscalingPolicyScalingSchedule(
-      description: map['description'] == null ? null : map['description'] as String,
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      durationSec: map['durationSec'] as int,
-      minRequiredReplicas: map['minRequiredReplicas'] as int,
-      name: map['name'] as String,
-      schedule: map['schedule'] as String,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      durationSec: (map['durationSec'] as int).input(),
+      minRequiredReplicas: (map['minRequiredReplicas'] as int).input(),
+      name: (map['name'] as String).input(),
+      schedule: (map['schedule'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

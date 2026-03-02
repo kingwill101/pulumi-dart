@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource request payload of Application Configuration Service
 class ConfigurationServiceResourceRequestsResponse {
   /// Cpu allocated to each Application Configuration Service instance
-  final String cpu;
+  final pulumi.Input<String> cpu;
   /// Instance count of the Application Configuration Service
-  final int instanceCount;
+  final pulumi.Input<int> instanceCount;
   /// Memory allocated to each Application Configuration Service instance
-  final String memory;
+  final pulumi.Input<String> memory;
 
   /// Creates a new [ConfigurationServiceResourceRequestsResponse].
   /// [cpu] Cpu allocated to each Application Configuration Service instance
@@ -30,9 +31,9 @@ class ConfigurationServiceResourceRequestsResponse {
 
   factory ConfigurationServiceResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceResourceRequestsResponse(
-      cpu: map['cpu'] as String,
-      instanceCount: map['instanceCount'] as int,
-      memory: map['memory'] as String,
+      cpu: (map['cpu'] as String).input(),
+      instanceCount: (map['instanceCount'] as int).input(),
+      memory: (map['memory'] as String).input(),
     );
   }
 }

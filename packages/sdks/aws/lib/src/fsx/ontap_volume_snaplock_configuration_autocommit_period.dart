@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OntapVolumeSnaplockConfigurationAutocommitPeriod {
   /// The type of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume. Setting this value to `NONE` disables autocommit. Valid values: `MINUTES`, `HOURS`, `DAYS`, `MONTHS`, `YEARS`, `NONE`.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The amount of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume.
-  final int? value;
+  final pulumi.Input<int>? value;
 
   /// Creates a new [OntapVolumeSnaplockConfigurationAutocommitPeriod].
   /// [type] The type of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume. Setting this value to `NONE` disables autocommit. Valid values: `MINUTES`, `HOURS`, `DAYS`, `MONTHS`, `YEARS`, `NONE`.
@@ -24,8 +25,8 @@ class OntapVolumeSnaplockConfigurationAutocommitPeriod {
 
   factory OntapVolumeSnaplockConfigurationAutocommitPeriod.fromMap(Map<String, dynamic> map) {
     return OntapVolumeSnaplockConfigurationAutocommitPeriod(
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as int,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as int).input(),
     );
   }
 }

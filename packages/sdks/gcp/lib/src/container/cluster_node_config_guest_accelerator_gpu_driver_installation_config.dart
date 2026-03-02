@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
   /// Mode for how the GPU driver is installed.
@@ -8,7 +9,7 @@ class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
   /// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
   /// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
   /// * `"LATEST"`: "Latest" GPU driver in COS.
-  final String gpuDriverVersion;
+  final pulumi.Input<String> gpuDriverVersion;
 
   /// Creates a new [ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.
@@ -24,7 +25,7 @@ class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
 
   factory ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig(
-      gpuDriverVersion: map['gpuDriverVersion'] as String,
+      gpuDriverVersion: (map['gpuDriverVersion'] as String).input(),
     );
   }
 }

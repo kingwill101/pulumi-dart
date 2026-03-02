@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Logger settings for java workloads.
 class LoggerSetting {
   /// The specified logger's log level.
-  final String level;
+  final pulumi.Input<String> level;
   /// Logger name.
-  final String logger;
+  final pulumi.Input<String> logger;
 
   /// Creates a new [LoggerSetting].
   /// [level] The specified logger's log level.
@@ -25,8 +26,8 @@ class LoggerSetting {
 
   factory LoggerSetting.fromMap(Map<String, dynamic> map) {
     return LoggerSetting(
-      level: map['level'] as String,
-      logger: map['logger'] as String,
+      level: (map['level'] as String).input(),
+      logger: (map['logger'] as String).input(),
     );
   }
 }

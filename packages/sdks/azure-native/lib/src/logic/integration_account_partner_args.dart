@@ -35,23 +35,15 @@ class IntegrationAccountPartnerArgs {
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
   IntegrationAccountPartnerArgs({
-    required pulumi.Output<PartnerContent> content,
-    required pulumi.Output<String> integrationAccountName,
-    pulumi.Output<String>? location,
-    pulumi.Output<dynamic>? metadata,
-    pulumi.Output<String>? partnerName,
-    required pulumi.Output<String> partnerType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      content = pulumi.Input.asInput<PartnerContent>(content),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<dynamic>(metadata),
-      partnerName = pulumi.Input.asOptionalInput<String>(partnerName),
-      partnerType = pulumi.Input.asInput<String>(partnerType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.content,
+    required this.integrationAccountName,
+    this.location,
+    this.metadata,
+    this.partnerName,
+    required this.partnerType,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class IntegrationAccountPartnerArgs {
 
   factory IntegrationAccountPartnerArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountPartnerArgs(
-      content: pulumi.Output.create<PartnerContent>(PartnerContent.fromMap((map['content'] as Map).cast<String, dynamic>())),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<dynamic>(map['metadata']),
-      partnerName: map['partnerName'] == null ? null : pulumi.Output.create<String>(map['partnerName'] as String),
-      partnerType: pulumi.Output.create<String>(map['partnerType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      content: (PartnerContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      partnerName: map['partnerName'] == null ? null : (map['partnerName'] as String).input(),
+      partnerType: (map['partnerType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiOauth2Authorization {
   /// OAuth authorization server identifier. The name of an OAuth2 Authorization Server.
-  final String authorizationServerName;
+  final pulumi.Input<String> authorizationServerName;
   /// Operations scope.
-  final String? scope;
+  final pulumi.Input<String>? scope;
 
   /// Creates a new [ApiOauth2Authorization].
   /// [authorizationServerName] OAuth authorization server identifier. The name of an OAuth2 Authorization Server.
@@ -24,8 +25,8 @@ class ApiOauth2Authorization {
 
   factory ApiOauth2Authorization.fromMap(Map<String, dynamic> map) {
     return ApiOauth2Authorization(
-      authorizationServerName: map['authorizationServerName'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      authorizationServerName: (map['authorizationServerName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

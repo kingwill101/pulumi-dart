@@ -24,15 +24,11 @@ class VirtualNetworkRuleArgs {
   /// [serverId] The resource ID of the SQL Server to which this SQL virtual network rule will be applied. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the subnet from which the SQL server will accept communications.
   VirtualNetworkRuleArgs({
-    pulumi.Output<bool>? ignoreMissingVnetServiceEndpoint,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> serverId,
-    required pulumi.Output<String> subnetId,
-  }) :
-      ignoreMissingVnetServiceEndpoint = pulumi.Input.asOptionalInput<bool>(ignoreMissingVnetServiceEndpoint),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asInput<String>(serverId),
-      subnetId = pulumi.Input.asInput<String>(subnetId);
+    this.ignoreMissingVnetServiceEndpoint,
+    this.name,
+    required this.serverId,
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class VirtualNetworkRuleArgs {
 
   factory VirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleArgs(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : pulumi.Output.create<bool>(map['ignoreMissingVnetServiceEndpoint'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ConnectionState information.
 class ConnectionState {
   /// Actions required (if any).
-  final String? actionsRequired;
+  final pulumi.Input<String>? actionsRequired;
   /// Description of the connection state.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Status of the connection.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [ConnectionState].
   /// [actionsRequired] Actions required (if any).
@@ -30,9 +31,9 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      actionsRequired: map['actionsRequired'] == null ? null : map['actionsRequired'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      actionsRequired: map['actionsRequired'] == null ? null : (map['actionsRequired'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

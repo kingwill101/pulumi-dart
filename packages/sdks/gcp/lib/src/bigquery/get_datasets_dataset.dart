@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatasetsDataset {
   /// The id of the dataset.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
   /// The friendly name of the dataset.
-  final String friendlyName;
+  final pulumi.Input<String> friendlyName;
   /// User-provided dataset labels, in key/value pairs.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// The geographic location of the dataset.
-  final String location;
+  final pulumi.Input<String> location;
 
   /// Creates a new [GetDatasetsDataset].
   /// [datasetId] The id of the dataset.
@@ -34,10 +35,10 @@ class GetDatasetsDataset {
 
   factory GetDatasetsDataset.fromMap(Map<String, dynamic> map) {
     return GetDatasetsDataset(
-      datasetId: map['datasetId'] as String,
-      friendlyName: map['friendlyName'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] as String,
+      datasetId: (map['datasetId'] as String).input(),
+      friendlyName: (map['friendlyName'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
     );
   }
 }

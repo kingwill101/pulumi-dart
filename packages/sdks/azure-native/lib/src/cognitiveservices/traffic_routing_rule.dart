@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a rule for routing traffic to a specific deployment.
 class TrafficRoutingRule {
   /// The unique identifier of the deployment to which traffic is routed by this rule.
-  final String? deploymentId;
+  final pulumi.Input<String>? deploymentId;
   /// A user-provided description for this traffic routing rule.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The identifier of this traffic routing rule.
-  final String? ruleId;
+  final pulumi.Input<String>? ruleId;
   /// Gets or sets the percentage of traffic allocated to this instance.
-  final int? trafficPercentage;
+  final pulumi.Input<int>? trafficPercentage;
 
   /// Creates a new [TrafficRoutingRule].
   /// [deploymentId] The unique identifier of the deployment to which traffic is routed by this rule.
@@ -35,10 +36,10 @@ class TrafficRoutingRule {
 
   factory TrafficRoutingRule.fromMap(Map<String, dynamic> map) {
     return TrafficRoutingRule(
-      deploymentId: map['deploymentId'] == null ? null : map['deploymentId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      ruleId: map['ruleId'] == null ? null : map['ruleId'] as String,
-      trafficPercentage: map['trafficPercentage'] == null ? null : map['trafficPercentage'] as int,
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      trafficPercentage: map['trafficPercentage'] == null ? null : (map['trafficPercentage'] as int).input(),
     );
   }
 }

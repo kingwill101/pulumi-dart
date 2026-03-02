@@ -30,17 +30,12 @@ class CodeToolsSettingArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
   CodeToolsSettingArgs({
-    required pulumi.Output<String> codeToolsSettingId,
-    required pulumi.Output<List<CodeToolsSettingEnabledTool>> enabledTools,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      codeToolsSettingId = pulumi.Input.asInput<String>(codeToolsSettingId),
-      enabledTools = pulumi.Input.asInput<List<CodeToolsSettingEnabledTool>>(enabledTools),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.codeToolsSettingId,
+    required this.enabledTools,
+    this.labels,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class CodeToolsSettingArgs {
 
   factory CodeToolsSettingArgs.fromMap(Map<String, dynamic> map) {
     return CodeToolsSettingArgs(
-      codeToolsSettingId: pulumi.Output.create<String>(map['codeToolsSettingId'] as String),
-      enabledTools: pulumi.Output.create<List<CodeToolsSettingEnabledTool>>(pulumi.Input.decodeList<CodeToolsSettingEnabledTool>(map['enabledTools'], (value) => CodeToolsSettingEnabledTool.fromMap((value as Map).cast<String, dynamic>()))),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      codeToolsSettingId: (map['codeToolsSettingId'] as String).input(),
+      enabledTools: (pulumi.Input.decodeList<CodeToolsSettingEnabledTool>(map['enabledTools'], (value) => CodeToolsSettingEnabledTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

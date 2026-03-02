@@ -42,23 +42,15 @@ class OdbSubnetArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [purpose] Purpose of the subnet.
   OdbSubnetArgs({
-    required pulumi.Output<String> cidrRange,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> odbSubnetId,
-    required pulumi.Output<String> odbnetwork,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> purpose,
-  }) :
-      cidrRange = pulumi.Input.asInput<String>(cidrRange),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      odbSubnetId = pulumi.Input.asInput<String>(odbSubnetId),
-      odbnetwork = pulumi.Input.asInput<String>(odbnetwork),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      purpose = pulumi.Input.asInput<String>(purpose);
+    required this.cidrRange,
+    this.deletionProtection,
+    this.labels,
+    required this.location,
+    required this.odbSubnetId,
+    required this.odbnetwork,
+    this.project,
+    required this.purpose,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class OdbSubnetArgs {
 
   factory OdbSubnetArgs.fromMap(Map<String, dynamic> map) {
     return OdbSubnetArgs(
-      cidrRange: pulumi.Output.create<String>(map['cidrRange'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      odbSubnetId: pulumi.Output.create<String>(map['odbSubnetId'] as String),
-      odbnetwork: pulumi.Output.create<String>(map['odbnetwork'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      purpose: pulumi.Output.create<String>(map['purpose'] as String),
+      cidrRange: (map['cidrRange'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      odbSubnetId: (map['odbSubnetId'] as String).input(),
+      odbnetwork: (map['odbnetwork'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      purpose: (map['purpose'] as String).input(),
     );
   }
 }

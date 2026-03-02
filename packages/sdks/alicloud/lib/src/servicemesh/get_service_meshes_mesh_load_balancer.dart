@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceMeshesMeshLoadBalancer {
   /// The IP address of a public network exposed API Server corresponding to the Load Balance.
-  final String apiServerLoadbalancerId;
+  final pulumi.Input<String> apiServerLoadbalancerId;
   /// Whether to use the IP address of a public network exposed the API Server.
-  final bool apiServerPublicEip;
+  final pulumi.Input<bool> apiServerPublicEip;
   /// Whether to use the IP address of a public network exposure the Istio Pilot.
-  final bool pilotPublicEip;
+  final pulumi.Input<bool> pilotPublicEip;
   /// The IP address of a public network exposure Istio Pilot corresponds to the Load Balance.
-  final String pilotPublicLoadbalancerId;
+  final pulumi.Input<String> pilotPublicLoadbalancerId;
 
   /// Creates a new [GetServiceMeshesMeshLoadBalancer].
   /// [apiServerLoadbalancerId] The IP address of a public network exposed API Server corresponding to the Load Balance.
@@ -34,10 +35,10 @@ class GetServiceMeshesMeshLoadBalancer {
 
   factory GetServiceMeshesMeshLoadBalancer.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshLoadBalancer(
-      apiServerLoadbalancerId: map['apiServerLoadbalancerId'] as String,
-      apiServerPublicEip: map['apiServerPublicEip'] as bool,
-      pilotPublicEip: map['pilotPublicEip'] as bool,
-      pilotPublicLoadbalancerId: map['pilotPublicLoadbalancerId'] as String,
+      apiServerLoadbalancerId: (map['apiServerLoadbalancerId'] as String).input(),
+      apiServerPublicEip: (map['apiServerPublicEip'] as bool).input(),
+      pilotPublicEip: (map['pilotPublicEip'] as bool).input(),
+      pilotPublicLoadbalancerId: (map['pilotPublicLoadbalancerId'] as String).input(),
     );
   }
 }

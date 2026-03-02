@@ -30,19 +30,13 @@ class DatasetState {
   /// [selfLink] The fully qualified name of this dataset
   /// [timeZone] The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
   DatasetState({
-    pulumi.Output<DatasetEncryptionSpec>? encryptionSpec,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? timeZone,
-  }) :
-      encryptionSpec = pulumi.Input.asOptionalInput<DatasetEncryptionSpec>(encryptionSpec),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.encryptionSpec,
+    this.location,
+    this.name,
+    this.project,
+    this.selfLink,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class DatasetState {
 
   factory DatasetState.fromMap(Map<String, dynamic> map) {
     return DatasetState(
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<DatasetEncryptionSpec>(DatasetEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (DatasetEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

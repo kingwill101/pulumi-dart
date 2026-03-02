@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for resources used by Airflow workers.
 class WorkerResourceResponseComposerV1beta1 {
   /// Optional. CPU request and limit for a single Airflow worker replica.
-  final double cpu;
+  final pulumi.Input<double> cpu;
   /// Optional. Maximum number of workers for autoscaling.
-  final int maxCount;
+  final pulumi.Input<int> maxCount;
   /// Optional. Memory (GB) request and limit for a single Airflow worker replica.
-  final double memoryGb;
+  final pulumi.Input<double> memoryGb;
   /// Optional. Minimum number of workers for autoscaling.
-  final int minCount;
+  final pulumi.Input<int> minCount;
   /// Optional. Storage (GB) request and limit for a single Airflow worker replica.
-  final double storageGb;
+  final pulumi.Input<double> storageGb;
 
   /// Creates a new [WorkerResourceResponseComposerV1beta1].
   /// [cpu] Optional. CPU request and limit for a single Airflow worker replica.
@@ -40,11 +41,11 @@ class WorkerResourceResponseComposerV1beta1 {
 
   factory WorkerResourceResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WorkerResourceResponseComposerV1beta1(
-      cpu: map['cpu'] as double,
-      maxCount: map['maxCount'] as int,
-      memoryGb: map['memoryGb'] as double,
-      minCount: map['minCount'] as int,
-      storageGb: map['storageGb'] as double,
+      cpu: (map['cpu'] as double).input(),
+      maxCount: (map['maxCount'] as int).input(),
+      memoryGb: (map['memoryGb'] as double).input(),
+      minCount: (map['minCount'] as int).input(),
+      storageGb: (map['storageGb'] as double).input(),
     );
   }
 }

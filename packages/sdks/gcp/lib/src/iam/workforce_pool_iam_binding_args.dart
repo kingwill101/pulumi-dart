@@ -40,17 +40,12 @@ class WorkforcePoolIamBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [workforcePoolId] Used to find the parent resource to bind the IAM policy to
   WorkforcePoolIamBindingArgs({
-    pulumi.Output<WorkforcePoolIamBindingCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> workforcePoolId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<WorkforcePoolIamBindingCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      role = pulumi.Input.asInput<String>(role),
-      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+    this.condition,
+    this.location,
+    required this.members,
+    required this.role,
+    required this.workforcePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,11 +59,11 @@ class WorkforcePoolIamBindingArgs {
 
   factory WorkforcePoolIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<WorkforcePoolIamBindingCondition>(WorkforcePoolIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      workforcePoolId: pulumi.Output.create<String>(map['workforcePoolId'] as String),
+      condition: map['condition'] == null ? null : (WorkforcePoolIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      role: (map['role'] as String).input(),
+      workforcePoolId: (map['workforcePoolId'] as String).input(),
     );
   }
 }

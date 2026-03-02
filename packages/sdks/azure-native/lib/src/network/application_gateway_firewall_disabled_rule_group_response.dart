@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Allows to disable rules within a rule group or an entire rule group.
 class ApplicationGatewayFirewallDisabledRuleGroupResponse {
   /// The name of the rule group that will be disabled.
-  final String ruleGroupName;
+  final pulumi.Input<String> ruleGroupName;
   /// The list of rules that will be disabled. If null, all rules of the rule group will be disabled.
-  final List<int>? rules;
+  final pulumi.Input<List<int>>? rules;
 
   /// Creates a new [ApplicationGatewayFirewallDisabledRuleGroupResponse].
   /// [ruleGroupName] The name of the rule group that will be disabled.
@@ -25,8 +26,8 @@ class ApplicationGatewayFirewallDisabledRuleGroupResponse {
 
   factory ApplicationGatewayFirewallDisabledRuleGroupResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayFirewallDisabledRuleGroupResponse(
-      ruleGroupName: map['ruleGroupName'] as String,
-      rules: map['rules'] == null ? null : (map['rules'] as List).cast<int>(),
+      ruleGroupName: (map['ruleGroupName'] as String).input(),
+      rules: map['rules'] == null ? null : ((map['rules'] as List).cast<int>()).input(),
     );
   }
 }

@@ -20,13 +20,10 @@ class CostAllocationRuleArgs {
   /// [properties] Cost allocation rule properties
   /// [ruleName] Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters.
   CostAllocationRuleArgs({
-    required pulumi.Output<String> billingAccountId,
-    pulumi.Output<CostAllocationRuleProperties>? properties,
-    pulumi.Output<String>? ruleName,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      properties = pulumi.Input.asOptionalInput<CostAllocationRuleProperties>(properties),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName);
+    required this.billingAccountId,
+    this.properties,
+    this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class CostAllocationRuleArgs {
 
   factory CostAllocationRuleArgs.fromMap(Map<String, dynamic> map) {
     return CostAllocationRuleArgs(
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<CostAllocationRuleProperties>(CostAllocationRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      properties: map['properties'] == null ? null : (CostAllocationRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
     );
   }
 }

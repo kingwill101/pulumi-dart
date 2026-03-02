@@ -14,9 +14,8 @@ class GetAvailbilityZonesArgs {
   /// Creates a new [GetAvailbilityZonesArgs].
   /// [region] The region in which to obtain the V2 Shared File System
   GetAvailbilityZonesArgs({
-    pulumi.Output<String>? region,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +25,7 @@ class GetAvailbilityZonesArgs {
 
   factory GetAvailbilityZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailbilityZonesArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

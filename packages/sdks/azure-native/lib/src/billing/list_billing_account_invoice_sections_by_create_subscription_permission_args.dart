@@ -16,11 +16,9 @@ class ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs {
   /// [billingAccountName] The ID that uniquely identifies a billing account.
   /// [filter] The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
   ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs({
-    required pulumi.Output<String> billingAccountName,
-    pulumi.Output<String>? filter,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      filter = pulumi.Input.asOptionalInput<String>(filter);
+    required this.billingAccountName,
+    this.filter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs {
 
   factory ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs.fromMap(Map<String, dynamic> map) {
     return ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
     );
   }
 }

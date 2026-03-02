@@ -52,33 +52,20 @@ class GalleryImageArgs {
   /// [tags] Resource tags.
   /// [version] Specifies information about the gallery image version that you want to create or update.
   GalleryImageArgs({
-    pulumi.Output<String>? cloudInitDataSource,
-    pulumi.Output<String>? containerId,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? galleryImageName,
-    pulumi.Output<String>? hyperVGeneration,
-    pulumi.Output<GalleryImageIdentifier>? identifier,
-    pulumi.Output<String>? imagePath,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> osType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sourceVirtualMachineId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<GalleryImageVersion>? version,
-  }) :
-      cloudInitDataSource = pulumi.Input.asOptionalInput<String>(cloudInitDataSource),
-      containerId = pulumi.Input.asOptionalInput<String>(containerId),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      galleryImageName = pulumi.Input.asOptionalInput<String>(galleryImageName),
-      hyperVGeneration = pulumi.Input.asOptionalInput<String>(hyperVGeneration),
-      identifier = pulumi.Input.asOptionalInput<GalleryImageIdentifier>(identifier),
-      imagePath = pulumi.Input.asOptionalInput<String>(imagePath),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      osType = pulumi.Input.asInput<String>(osType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceVirtualMachineId = pulumi.Input.asOptionalInput<String>(sourceVirtualMachineId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asOptionalInput<GalleryImageVersion>(version);
+    this.cloudInitDataSource,
+    this.containerId,
+    this.extendedLocation,
+    this.galleryImageName,
+    this.hyperVGeneration,
+    this.identifier,
+    this.imagePath,
+    this.location,
+    required this.osType,
+    required this.resourceGroupName,
+    this.sourceVirtualMachineId,
+    this.tags,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,19 +87,19 @@ class GalleryImageArgs {
 
   factory GalleryImageArgs.fromMap(Map<String, dynamic> map) {
     return GalleryImageArgs(
-      cloudInitDataSource: map['cloudInitDataSource'] == null ? null : pulumi.Output.create<String>(map['cloudInitDataSource'] as String),
-      containerId: map['containerId'] == null ? null : pulumi.Output.create<String>(map['containerId'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      galleryImageName: map['galleryImageName'] == null ? null : pulumi.Output.create<String>(map['galleryImageName'] as String),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : pulumi.Output.create<String>(map['hyperVGeneration'] as String),
-      identifier: map['identifier'] == null ? null : pulumi.Output.create<GalleryImageIdentifier>(GalleryImageIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())),
-      imagePath: map['imagePath'] == null ? null : pulumi.Output.create<String>(map['imagePath'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      osType: pulumi.Output.create<String>(map['osType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceVirtualMachineId: map['sourceVirtualMachineId'] == null ? null : pulumi.Output.create<String>(map['sourceVirtualMachineId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<GalleryImageVersion>(GalleryImageVersion.fromMap((map['version'] as Map).cast<String, dynamic>())),
+      cloudInitDataSource: map['cloudInitDataSource'] == null ? null : (map['cloudInitDataSource'] as String).input(),
+      containerId: map['containerId'] == null ? null : (map['containerId'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      galleryImageName: map['galleryImageName'] == null ? null : (map['galleryImageName'] as String).input(),
+      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration'] as String).input(),
+      identifier: map['identifier'] == null ? null : (GalleryImageIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())).input(),
+      imagePath: map['imagePath'] == null ? null : (map['imagePath'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceVirtualMachineId: map['sourceVirtualMachineId'] == null ? null : (map['sourceVirtualMachineId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (GalleryImageVersion.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

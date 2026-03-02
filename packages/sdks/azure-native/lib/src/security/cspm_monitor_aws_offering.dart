@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cspm_monitor_aws_offering_native_cloud_connection.dart';
 
 /// The CSPM monitoring for AWS offering
 class CspmMonitorAwsOffering {
   /// The native cloud connection configuration
-  final CspmMonitorAwsOfferingNativeCloudConnection? nativeCloudConnection;
+  final pulumi.Input<CspmMonitorAwsOfferingNativeCloudConnection>? nativeCloudConnection;
   /// The type of the security offering.
   /// Expected value is 'CspmMonitorAws'.
-  final String offeringType;
+  final pulumi.Input<String> offeringType;
 
   /// Creates a new [CspmMonitorAwsOffering].
   /// [nativeCloudConnection] The native cloud connection configuration
@@ -20,15 +21,15 @@ class CspmMonitorAwsOffering {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nativeCloudConnection': ?nativeCloudConnection == null ? null : nativeCloudConnection!.toMap(),
+      'nativeCloudConnection': ?pulumi.Input.mapOptionalInputValue<CspmMonitorAwsOfferingNativeCloudConnection, Map<String, dynamic>>(nativeCloudConnection, (value) => value.toMap()),
       'offeringType': offeringType,
     };
   }
 
   factory CspmMonitorAwsOffering.fromMap(Map<String, dynamic> map) {
     return CspmMonitorAwsOffering(
-      nativeCloudConnection: map['nativeCloudConnection'] == null ? null : CspmMonitorAwsOfferingNativeCloudConnection.fromMap((map['nativeCloudConnection'] as Map).cast<String, dynamic>()),
-      offeringType: map['offeringType'] as String,
+      nativeCloudConnection: map['nativeCloudConnection'] == null ? null : (CspmMonitorAwsOfferingNativeCloudConnection.fromMap((map['nativeCloudConnection'] as Map).cast<String, dynamic>())).input(),
+      offeringType: (map['offeringType'] as String).input(),
     );
   }
 }

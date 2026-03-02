@@ -27,17 +27,12 @@ class GetPatchBaselineArgs {
   /// [owner] Owner of the baseline. Valid values: `All`, `AWS`, `Self` (the current account).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetPatchBaselineArgs({
-    pulumi.Output<bool>? defaultBaseline,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? operatingSystem,
-    required pulumi.Output<String> owner,
-    pulumi.Output<String>? region,
-  }) :
-      defaultBaseline = pulumi.Input.asOptionalInput<bool>(defaultBaseline),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      operatingSystem = pulumi.Input.asOptionalInput<String>(operatingSystem),
-      owner = pulumi.Input.asInput<String>(owner),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.defaultBaseline,
+    this.namePrefix,
+    this.operatingSystem,
+    required this.owner,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GetPatchBaselineArgs {
 
   factory GetPatchBaselineArgs.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselineArgs(
-      defaultBaseline: map['defaultBaseline'] == null ? null : pulumi.Output.create<bool>(map['defaultBaseline'] as bool),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      operatingSystem: map['operatingSystem'] == null ? null : pulumi.Output.create<String>(map['operatingSystem'] as String),
-      owner: pulumi.Output.create<String>(map['owner'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      defaultBaseline: map['defaultBaseline'] == null ? null : (map['defaultBaseline'] as bool).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
+      owner: (map['owner'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

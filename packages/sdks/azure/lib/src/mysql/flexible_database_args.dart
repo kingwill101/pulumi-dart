@@ -25,17 +25,12 @@ class FlexibleDatabaseArgs {
   /// [resourceGroupName] The name of the resource group in which the MySQL Server exists. Changing this forces a new resource to be created.
   /// [serverName] Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.
   FlexibleDatabaseArgs({
-    required pulumi.Output<String> charset,
-    required pulumi.Output<String> collation,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      charset = pulumi.Input.asInput<String>(charset),
-      collation = pulumi.Input.asInput<String>(collation),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    required this.charset,
+    required this.collation,
+    this.name,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class FlexibleDatabaseArgs {
 
   factory FlexibleDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleDatabaseArgs(
-      charset: pulumi.Output.create<String>(map['charset'] as String),
-      collation: pulumi.Output.create<String>(map['collation'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      charset: (map['charset'] as String).input(),
+      collation: (map['collation'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

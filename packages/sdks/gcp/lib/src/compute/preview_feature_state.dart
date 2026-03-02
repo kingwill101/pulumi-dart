@@ -23,15 +23,11 @@ class PreviewFeatureState {
   /// [project] The ID of the project in which the resource belongs.
   /// [rolloutOperation] The rollout operation of the feature.
   PreviewFeatureState({
-    pulumi.Output<String>? activationStatus,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<PreviewFeatureRolloutOperation>? rolloutOperation,
-  }) :
-      activationStatus = pulumi.Input.asOptionalInput<String>(activationStatus),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rolloutOperation = pulumi.Input.asOptionalInput<PreviewFeatureRolloutOperation>(rolloutOperation);
+    this.activationStatus,
+    this.name,
+    this.project,
+    this.rolloutOperation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class PreviewFeatureState {
 
   factory PreviewFeatureState.fromMap(Map<String, dynamic> map) {
     return PreviewFeatureState(
-      activationStatus: map['activationStatus'] == null ? null : pulumi.Output.create<String>(map['activationStatus'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rolloutOperation: map['rolloutOperation'] == null ? null : pulumi.Output.create<PreviewFeatureRolloutOperation>(PreviewFeatureRolloutOperation.fromMap((map['rolloutOperation'] as Map).cast<String, dynamic>())),
+      activationStatus: map['activationStatus'] == null ? null : (map['activationStatus'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rolloutOperation: map['rolloutOperation'] == null ? null : (PreviewFeatureRolloutOperation.fromMap((map['rolloutOperation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

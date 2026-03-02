@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallPolicyDn {
-  final bool networkRuleFqdnEnabled;
-  final bool proxyEnabled;
-  final List<String> servers;
+  final pulumi.Input<bool> networkRuleFqdnEnabled;
+  final pulumi.Input<bool> proxyEnabled;
+  final pulumi.Input<List<String>> servers;
 
   /// Creates a new [GetFirewallPolicyDn].
   /// [networkRuleFqdnEnabled] Required.
@@ -26,9 +27,9 @@ class GetFirewallPolicyDn {
 
   factory GetFirewallPolicyDn.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyDn(
-      networkRuleFqdnEnabled: map['networkRuleFqdnEnabled'] as bool,
-      proxyEnabled: map['proxyEnabled'] as bool,
-      servers: (map['servers'] as List).cast<String>(),
+      networkRuleFqdnEnabled: (map['networkRuleFqdnEnabled'] as bool).input(),
+      proxyEnabled: (map['proxyEnabled'] as bool).input(),
+      servers: ((map['servers'] as List).cast<String>()).input(),
     );
   }
 }

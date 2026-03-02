@@ -35,23 +35,15 @@ class L2NetworkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   L2NetworkArgs({
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? hybridAksPluginType,
-    pulumi.Output<String>? interfaceName,
-    required pulumi.Output<String> l2IsolationDomainId,
-    pulumi.Output<String>? l2NetworkName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      hybridAksPluginType = pulumi.Input.asOptionalInput<String>(hybridAksPluginType),
-      interfaceName = pulumi.Input.asOptionalInput<String>(interfaceName),
-      l2IsolationDomainId = pulumi.Input.asInput<String>(l2IsolationDomainId),
-      l2NetworkName = pulumi.Input.asOptionalInput<String>(l2NetworkName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.extendedLocation,
+    this.hybridAksPluginType,
+    this.interfaceName,
+    required this.l2IsolationDomainId,
+    this.l2NetworkName,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class L2NetworkArgs {
 
   factory L2NetworkArgs.fromMap(Map<String, dynamic> map) {
     return L2NetworkArgs(
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      hybridAksPluginType: map['hybridAksPluginType'] == null ? null : pulumi.Output.create<String>(map['hybridAksPluginType'] as String),
-      interfaceName: map['interfaceName'] == null ? null : pulumi.Output.create<String>(map['interfaceName'] as String),
-      l2IsolationDomainId: pulumi.Output.create<String>(map['l2IsolationDomainId'] as String),
-      l2NetworkName: map['l2NetworkName'] == null ? null : pulumi.Output.create<String>(map['l2NetworkName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      hybridAksPluginType: map['hybridAksPluginType'] == null ? null : (map['hybridAksPluginType'] as String).input(),
+      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName'] as String).input(),
+      l2IsolationDomainId: (map['l2IsolationDomainId'] as String).input(),
+      l2NetworkName: map['l2NetworkName'] == null ? null : (map['l2NetworkName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -34,21 +34,14 @@ class EventEndpointArgs {
   /// [roleArn] The ARN of the IAM role used for replication between event buses.
   /// [routingConfig] Parameters used for routing, including the health check and secondary Region. Documented below.
   EventEndpointArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<EventEndpointEventBus>> eventBuses,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<EventEndpointReplicationConfig>? replicationConfig,
-    pulumi.Output<String>? roleArn,
-    required pulumi.Output<EventEndpointRoutingConfig> routingConfig,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventBuses = pulumi.Input.asInput<List<EventEndpointEventBus>>(eventBuses),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationConfig = pulumi.Input.asOptionalInput<EventEndpointReplicationConfig>(replicationConfig),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      routingConfig = pulumi.Input.asInput<EventEndpointRoutingConfig>(routingConfig);
+    this.description,
+    required this.eventBuses,
+    this.name,
+    this.region,
+    this.replicationConfig,
+    this.roleArn,
+    required this.routingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class EventEndpointArgs {
 
   factory EventEndpointArgs.fromMap(Map<String, dynamic> map) {
     return EventEndpointArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventBuses: pulumi.Output.create<List<EventEndpointEventBus>>(pulumi.Input.decodeList<EventEndpointEventBus>(map['eventBuses'], (value) => EventEndpointEventBus.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicationConfig: map['replicationConfig'] == null ? null : pulumi.Output.create<EventEndpointReplicationConfig>(EventEndpointReplicationConfig.fromMap((map['replicationConfig'] as Map).cast<String, dynamic>())),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      routingConfig: pulumi.Output.create<EventEndpointRoutingConfig>(EventEndpointRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventBuses: (pulumi.Input.decodeList<EventEndpointEventBus>(map['eventBuses'], (value) => EventEndpointEventBus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicationConfig: map['replicationConfig'] == null ? null : (EventEndpointReplicationConfig.fromMap((map['replicationConfig'] as Map).cast<String, dynamic>())).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      routingConfig: (EventEndpointRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

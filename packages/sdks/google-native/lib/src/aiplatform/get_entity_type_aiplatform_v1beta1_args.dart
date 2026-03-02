@@ -18,15 +18,11 @@ class GetEntityTypeAiplatformV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   GetEntityTypeAiplatformV1beta1Args({
-    required pulumi.Output<String> entityTypeId,
-    required pulumi.Output<String> featurestoreId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.entityTypeId,
+    required this.featurestoreId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetEntityTypeAiplatformV1beta1Args {
 
   factory GetEntityTypeAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEntityTypeAiplatformV1beta1Args(
-      entityTypeId: pulumi.Output.create<String>(map['entityTypeId'] as String),
-      featurestoreId: pulumi.Output.create<String>(map['featurestoreId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      entityTypeId: (map['entityTypeId'] as String).input(),
+      featurestoreId: (map['featurestoreId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

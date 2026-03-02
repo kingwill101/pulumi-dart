@@ -34,23 +34,15 @@ class CapacityPoolSubvolumeArgs {
   /// [subvolumeName] The name of the subvolume.
   /// [volumeName] The name of the volume
   CapacityPoolSubvolumeArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? parentPath,
-    pulumi.Output<String>? path,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<double>? size,
-    pulumi.Output<String>? subvolumeName,
-    required pulumi.Output<String> volumeName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      parentPath = pulumi.Input.asOptionalInput<String>(parentPath),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      size = pulumi.Input.asOptionalInput<double>(size),
-      subvolumeName = pulumi.Input.asOptionalInput<String>(subvolumeName),
-      volumeName = pulumi.Input.asInput<String>(volumeName);
+    required this.accountName,
+    this.parentPath,
+    this.path,
+    required this.poolName,
+    required this.resourceGroupName,
+    this.size,
+    this.subvolumeName,
+    required this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class CapacityPoolSubvolumeArgs {
 
   factory CapacityPoolSubvolumeArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolSubvolumeArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      parentPath: map['parentPath'] == null ? null : pulumi.Output.create<String>(map['parentPath'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<double>(map['size'] as double),
-      subvolumeName: map['subvolumeName'] == null ? null : pulumi.Output.create<String>(map['subvolumeName'] as String),
-      volumeName: pulumi.Output.create<String>(map['volumeName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      parentPath: map['parentPath'] == null ? null : (map['parentPath'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as double).input(),
+      subvolumeName: map['subvolumeName'] == null ? null : (map['subvolumeName'] as String).input(),
+      volumeName: (map['volumeName'] as String).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_gateway_reference.dart';
 
 class ConnectionGatewayDefinitionProperties {
   /// The URI of the backend
-  final String? backendUri;
+  final pulumi.Input<String>? backendUri;
   /// The gateway installation reference
-  final ConnectionGatewayReference? connectionGatewayInstallation;
+  final pulumi.Input<ConnectionGatewayReference>? connectionGatewayInstallation;
   /// The gateway admin
-  final List<String>? contactInformation;
+  final pulumi.Input<List<String>>? contactInformation;
   /// The gateway description
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The gateway display name
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The machine name of the gateway
-  final String? machineName;
+  final pulumi.Input<String>? machineName;
   /// The gateway status
-  final dynamic status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [ConnectionGatewayDefinitionProperties].
   /// [backendUri] The URI of the backend
@@ -39,7 +40,7 @@ class ConnectionGatewayDefinitionProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backendUri': ?backendUri,
-      'connectionGatewayInstallation': ?connectionGatewayInstallation == null ? null : connectionGatewayInstallation!.toMap(),
+      'connectionGatewayInstallation': ?pulumi.Input.mapOptionalInputValue<ConnectionGatewayReference, Map<String, dynamic>>(connectionGatewayInstallation, (value) => value.toMap()),
       'contactInformation': ?contactInformation,
       'description': ?description,
       'displayName': ?displayName,
@@ -50,13 +51,13 @@ class ConnectionGatewayDefinitionProperties {
 
   factory ConnectionGatewayDefinitionProperties.fromMap(Map<String, dynamic> map) {
     return ConnectionGatewayDefinitionProperties(
-      backendUri: map['backendUri'] == null ? null : map['backendUri'] as String,
-      connectionGatewayInstallation: map['connectionGatewayInstallation'] == null ? null : ConnectionGatewayReference.fromMap((map['connectionGatewayInstallation'] as Map).cast<String, dynamic>()),
-      contactInformation: map['contactInformation'] == null ? null : (map['contactInformation'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      machineName: map['machineName'] == null ? null : map['machineName'] as String,
-      status: map['status'] == null ? null : map['status'],
+      backendUri: map['backendUri'] == null ? null : (map['backendUri'] as String).input(),
+      connectionGatewayInstallation: map['connectionGatewayInstallation'] == null ? null : (ConnectionGatewayReference.fromMap((map['connectionGatewayInstallation'] as Map).cast<String, dynamic>())).input(),
+      contactInformation: map['contactInformation'] == null ? null : ((map['contactInformation'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      machineName: map['machineName'] == null ? null : (map['machineName'] as String).input(),
+      status: map['status'] == null ? null : (map['status']).input(),
     );
   }
 }

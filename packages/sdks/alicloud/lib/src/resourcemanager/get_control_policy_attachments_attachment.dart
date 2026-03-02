@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetControlPolicyAttachmentsAttachment {
   /// The attach date.
-  final String attachDate;
+  final pulumi.Input<String> attachDate;
   /// The description of policy.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Control Policy Attachment.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of policy.
-  final String policyId;
+  final pulumi.Input<String> policyId;
   /// The name of policy.
-  final String policyName;
+  final pulumi.Input<String> policyName;
   /// The type of policy.
-  final String policyType;
+  final pulumi.Input<String> policyType;
 
   /// Creates a new [GetControlPolicyAttachmentsAttachment].
   /// [attachDate] The attach date.
@@ -44,12 +45,12 @@ class GetControlPolicyAttachmentsAttachment {
 
   factory GetControlPolicyAttachmentsAttachment.fromMap(Map<String, dynamic> map) {
     return GetControlPolicyAttachmentsAttachment(
-      attachDate: map['attachDate'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      policyId: map['policyId'] as String,
-      policyName: map['policyName'] as String,
-      policyType: map['policyType'] as String,
+      attachDate: (map['attachDate'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      policyType: (map['policyType'] as String).input(),
     );
   }
 }

@@ -37,27 +37,17 @@ class QueryPackQueryState {
   /// [solutions] A list of the related Log Analytics solutions for the function. Possible values are `AADDomainServices`, `ADAssessment`, `ADAssessmentPlus`, `ADReplication`, `ADSecurityAssessment`, `AlertManagement`, `AntiMalware`, `ApplicationInsights`, `AzureAssessment`, `AzureSecurityOfThings`, `AzureSentinelDSRE`, `AzureSentinelPrivatePreview`, `BehaviorAnalyticsInsights`, `ChangeTracking`, `CompatibilityAssessment`, `ContainerInsights`, `Containers`, `CustomizedWindowsEventsFiltering`, `DeviceHealthProd`, `DnsAnalytics`, `ExchangeAssessment`, `ExchangeOnlineAssessment`, `IISAssessmentPlus`, `InfrastructureInsights`, `InternalWindowsEvent`, `LogManagement`, `Microsoft365Analytics`, `NetworkMonitoring`, `SCCMAssessmentPlus`, `SCOMAssessment`, `SCOMAssessmentPlus`, `Security`, `SecurityCenter`, `SecurityCenterFree`, `SecurityInsights`, `ServiceMap`, `SfBAssessment`, `SfBOnlineAssessment`, `SharePointOnlineAssessment`, `SPAssessment`, `SQLAdvancedThreatProtection`, `SQLAssessment`, `SQLAssessmentPlus`, `SQLDataClassification`, `SQLThreatDetection`, `SQLVulnerabilityAssessment`, `SurfaceHub`, `Updates`, `VMInsights`, `WEFInternalUat`, `WEF_10x`, `WEF_10xDSRE`, `WaaSUpdateInsights`, `WinLog`, `WindowsClientAssessmentPlus`, `WindowsEventForwarding`, `WindowsFirewall`, `WindowsServerAssessment`, `WireData` and `WireData2`.
   /// [tags] A mapping of tags which should be assigned to the Log Analytics Query Pack Query.
   QueryPackQueryState({
-    pulumi.Output<String>? additionalSettingsJson,
-    pulumi.Output<String>? body,
-    pulumi.Output<List<String>>? categories,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? queryPackId,
-    pulumi.Output<List<String>>? resourceTypes,
-    pulumi.Output<List<String>>? solutions,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      additionalSettingsJson = pulumi.Input.asOptionalInput<String>(additionalSettingsJson),
-      body = pulumi.Input.asOptionalInput<String>(body),
-      categories = pulumi.Input.asOptionalInput<List<String>>(categories),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queryPackId = pulumi.Input.asOptionalInput<String>(queryPackId),
-      resourceTypes = pulumi.Input.asOptionalInput<List<String>>(resourceTypes),
-      solutions = pulumi.Input.asOptionalInput<List<String>>(solutions),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.additionalSettingsJson,
+    this.body,
+    this.categories,
+    this.description,
+    this.displayName,
+    this.name,
+    this.queryPackId,
+    this.resourceTypes,
+    this.solutions,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class QueryPackQueryState {
 
   factory QueryPackQueryState.fromMap(Map<String, dynamic> map) {
     return QueryPackQueryState(
-      additionalSettingsJson: map['additionalSettingsJson'] == null ? null : pulumi.Output.create<String>(map['additionalSettingsJson'] as String),
-      body: map['body'] == null ? null : pulumi.Output.create<String>(map['body'] as String),
-      categories: map['categories'] == null ? null : pulumi.Output.create<List<String>>((map['categories'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queryPackId: map['queryPackId'] == null ? null : pulumi.Output.create<String>(map['queryPackId'] as String),
-      resourceTypes: map['resourceTypes'] == null ? null : pulumi.Output.create<List<String>>((map['resourceTypes'] as List).cast<String>()),
-      solutions: map['solutions'] == null ? null : pulumi.Output.create<List<String>>((map['solutions'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      additionalSettingsJson: map['additionalSettingsJson'] == null ? null : (map['additionalSettingsJson'] as String).input(),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queryPackId: map['queryPackId'] == null ? null : (map['queryPackId'] as String).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      solutions: map['solutions'] == null ? null : ((map['solutions'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

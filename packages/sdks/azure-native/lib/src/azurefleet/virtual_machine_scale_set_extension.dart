@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_scale_set_extension_properties.dart';
 
 /// Describes a Virtual Machine Scale Set Extension.
 class VirtualMachineScaleSetExtension {
   /// The name of the extension.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Describes the properties of a Virtual Machine Scale Set Extension.
-  final VirtualMachineScaleSetExtensionProperties? properties;
+  final pulumi.Input<VirtualMachineScaleSetExtensionProperties>? properties;
 
   /// Creates a new [VirtualMachineScaleSetExtension].
   /// [name] The name of the extension.
@@ -20,14 +21,14 @@ class VirtualMachineScaleSetExtension {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'properties': ?properties == null ? null : properties!.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetExtensionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineScaleSetExtension.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetExtension(
-      name: map['name'] == null ? null : map['name'] as String,
-      properties: map['properties'] == null ? null : VirtualMachineScaleSetExtensionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (VirtualMachineScaleSetExtensionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

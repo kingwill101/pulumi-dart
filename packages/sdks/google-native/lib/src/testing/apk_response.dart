@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_reference_response.dart';
 
 /// An Android package file to install.
 class ApkResponse {
   /// The path to an APK to be installed on the device before the test begins.
-  final FileReferenceResponse location;
+  final pulumi.Input<FileReferenceResponse> location;
   /// The java package for the APK to be installed. Value is determined by examining the application's manifest.
-  final String packageName;
+  final pulumi.Input<String> packageName;
 
   /// Creates a new [ApkResponse].
   /// [location] The path to an APK to be installed on the device before the test begins.
@@ -19,15 +20,15 @@ class ApkResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'location': location.toMap(),
+      'location': pulumi.Input.mapInputValue<FileReferenceResponse, Map<String, dynamic>>(location, (value) => value.toMap()),
       'packageName': packageName,
     };
   }
 
   factory ApkResponse.fromMap(Map<String, dynamic> map) {
     return ApkResponse(
-      location: FileReferenceResponse.fromMap((map['location'] as Map).cast<String, dynamic>()),
-      packageName: map['packageName'] as String,
+      location: (FileReferenceResponse.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
+      packageName: (map['packageName'] as String).input(),
     );
   }
 }

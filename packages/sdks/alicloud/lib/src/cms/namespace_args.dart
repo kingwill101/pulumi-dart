@@ -25,13 +25,10 @@ class NamespaceArgs {
   /// [namespace] The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
   /// [specification] The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
   NamespaceArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> namespace,
-    pulumi.Output<String>? specification,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      specification = pulumi.Input.asOptionalInput<String>(specification);
+    this.description,
+    required this.namespace,
+    this.specification,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,9 +40,9 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      specification: map['specification'] == null ? null : pulumi.Output.create<String>(map['specification'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      specification: map['specification'] == null ? null : (map['specification'] as String).input(),
     );
   }
 }

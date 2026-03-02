@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Connector properties of a CDC table in terms of name / value pairs.
 class MapperDslConnectorProperties {
   /// Name of the property.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Value of the property.
-  final dynamic value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [MapperDslConnectorProperties].
   /// [name] Name of the property.
@@ -25,8 +26,8 @@ class MapperDslConnectorProperties {
 
   factory MapperDslConnectorProperties.fromMap(Map<String, dynamic> map) {
     return MapperDslConnectorProperties(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'],
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value']).input(),
     );
   }
 }

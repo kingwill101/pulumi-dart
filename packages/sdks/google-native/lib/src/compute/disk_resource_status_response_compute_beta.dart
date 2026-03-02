@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_resource_status_async_replication_status_response_compute_beta.dart';
 
 class DiskResourceStatusResponseComputeBeta {
-  final DiskResourceStatusAsyncReplicationStatusResponseComputeBeta asyncPrimaryDisk;
+  final pulumi.Input<DiskResourceStatusAsyncReplicationStatusResponseComputeBeta> asyncPrimaryDisk;
   /// Key: disk, value: AsyncReplicationStatus message
-  final Map<String, String> asyncSecondaryDisks;
+  final pulumi.Input<Map<String, String>> asyncSecondaryDisks;
 
   /// Creates a new [DiskResourceStatusResponseComputeBeta].
   /// [asyncPrimaryDisk] Required.
@@ -17,15 +18,15 @@ class DiskResourceStatusResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'asyncPrimaryDisk': asyncPrimaryDisk.toMap(),
+      'asyncPrimaryDisk': pulumi.Input.mapInputValue<DiskResourceStatusAsyncReplicationStatusResponseComputeBeta, Map<String, dynamic>>(asyncPrimaryDisk, (value) => value.toMap()),
       'asyncSecondaryDisks': asyncSecondaryDisks,
     };
   }
 
   factory DiskResourceStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return DiskResourceStatusResponseComputeBeta(
-      asyncPrimaryDisk: DiskResourceStatusAsyncReplicationStatusResponseComputeBeta.fromMap((map['asyncPrimaryDisk'] as Map).cast<String, dynamic>()),
-      asyncSecondaryDisks: (map['asyncSecondaryDisks'] as Map).cast<String, String>(),
+      asyncPrimaryDisk: (DiskResourceStatusAsyncReplicationStatusResponseComputeBeta.fromMap((map['asyncPrimaryDisk'] as Map).cast<String, dynamic>())).input(),
+      asyncSecondaryDisks: ((map['asyncSecondaryDisks'] as Map).cast<String, String>()).input(),
     );
   }
 }

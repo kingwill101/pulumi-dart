@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for the Analytics add-on.
 class GoogleCloudApigeeV1AnalyticsConfig {
   /// Whether the Analytics add-on is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [GoogleCloudApigeeV1AnalyticsConfig].
   /// [enabled] Whether the Analytics add-on is enabled.
@@ -20,7 +21,7 @@ class GoogleCloudApigeeV1AnalyticsConfig {
 
   factory GoogleCloudApigeeV1AnalyticsConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1AnalyticsConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

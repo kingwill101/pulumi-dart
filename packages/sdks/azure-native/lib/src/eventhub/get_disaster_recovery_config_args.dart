@@ -19,13 +19,10 @@ class GetDisasterRecoveryConfigArgs {
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   GetDisasterRecoveryConfigArgs({
-    required pulumi.Output<String> alias,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      alias = pulumi.Input.asInput<String>(alias),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.alias,
+    required this.namespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDisasterRecoveryConfigArgs {
 
   factory GetDisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetDisasterRecoveryConfigArgs(
-      alias: pulumi.Output.create<String>(map['alias'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      alias: (map['alias'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

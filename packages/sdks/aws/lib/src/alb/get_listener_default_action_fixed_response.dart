@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerDefaultActionFixedResponse {
-  final String contentType;
-  final String messageBody;
-  final String statusCode;
+  final pulumi.Input<String> contentType;
+  final pulumi.Input<String> messageBody;
+  final pulumi.Input<String> statusCode;
 
   /// Creates a new [GetListenerDefaultActionFixedResponse].
   /// [contentType] Required.
@@ -26,9 +27,9 @@ class GetListenerDefaultActionFixedResponse {
 
   factory GetListenerDefaultActionFixedResponse.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionFixedResponse(
-      contentType: map['contentType'] as String,
-      messageBody: map['messageBody'] as String,
-      statusCode: map['statusCode'] as String,
+      contentType: (map['contentType'] as String).input(),
+      messageBody: (map['messageBody'] as String).input(),
+      statusCode: (map['statusCode'] as String).input(),
     );
   }
 }

@@ -68,33 +68,20 @@ class FirewallPolicyRuleArgs {
   /// [targetServiceAccounts] A list of service accounts indicating the sets of instances that are applied with this rule.
   /// [tlsInspect] Boolean flag indicating if the traffic should be TLS decrypted.
   FirewallPolicyRuleArgs({
-    required pulumi.Output<String> action,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> direction,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<bool>? enableLogging,
-    required pulumi.Output<String> firewallPolicy,
-    required pulumi.Output<FirewallPolicyRuleMatch> match,
-    required pulumi.Output<int> priority,
-    pulumi.Output<String>? securityProfileGroup,
-    pulumi.Output<List<String>>? targetResources,
-    pulumi.Output<List<FirewallPolicyRuleTargetSecureTag>>? targetSecureTags,
-    pulumi.Output<List<String>>? targetServiceAccounts,
-    pulumi.Output<bool>? tlsInspect,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      direction = pulumi.Input.asInput<String>(direction),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      enableLogging = pulumi.Input.asOptionalInput<bool>(enableLogging),
-      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
-      match = pulumi.Input.asInput<FirewallPolicyRuleMatch>(match),
-      priority = pulumi.Input.asInput<int>(priority),
-      securityProfileGroup = pulumi.Input.asOptionalInput<String>(securityProfileGroup),
-      targetResources = pulumi.Input.asOptionalInput<List<String>>(targetResources),
-      targetSecureTags = pulumi.Input.asOptionalInput<List<FirewallPolicyRuleTargetSecureTag>>(targetSecureTags),
-      targetServiceAccounts = pulumi.Input.asOptionalInput<List<String>>(targetServiceAccounts),
-      tlsInspect = pulumi.Input.asOptionalInput<bool>(tlsInspect);
+    required this.action,
+    this.description,
+    required this.direction,
+    this.disabled,
+    this.enableLogging,
+    required this.firewallPolicy,
+    required this.match,
+    required this.priority,
+    this.securityProfileGroup,
+    this.targetResources,
+    this.targetSecureTags,
+    this.targetServiceAccounts,
+    this.tlsInspect,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -116,19 +103,19 @@ class FirewallPolicyRuleArgs {
 
   factory FirewallPolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      direction: pulumi.Output.create<String>(map['direction'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      enableLogging: map['enableLogging'] == null ? null : pulumi.Output.create<bool>(map['enableLogging'] as bool),
-      firewallPolicy: pulumi.Output.create<String>(map['firewallPolicy'] as String),
-      match: pulumi.Output.create<FirewallPolicyRuleMatch>(FirewallPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      securityProfileGroup: map['securityProfileGroup'] == null ? null : pulumi.Output.create<String>(map['securityProfileGroup'] as String),
-      targetResources: map['targetResources'] == null ? null : pulumi.Output.create<List<String>>((map['targetResources'] as List).cast<String>()),
-      targetSecureTags: map['targetSecureTags'] == null ? null : pulumi.Output.create<List<FirewallPolicyRuleTargetSecureTag>>(pulumi.Input.decodeList<FirewallPolicyRuleTargetSecureTag>(map['targetSecureTags'], (value) => FirewallPolicyRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))),
-      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : pulumi.Output.create<List<String>>((map['targetServiceAccounts'] as List).cast<String>()),
-      tlsInspect: map['tlsInspect'] == null ? null : pulumi.Output.create<bool>(map['tlsInspect'] as bool),
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
+      firewallPolicy: (map['firewallPolicy'] as String).input(),
+      match: (FirewallPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      priority: (map['priority'] as int).input(),
+      securityProfileGroup: map['securityProfileGroup'] == null ? null : (map['securityProfileGroup'] as String).input(),
+      targetResources: map['targetResources'] == null ? null : ((map['targetResources'] as List).cast<String>()).input(),
+      targetSecureTags: map['targetSecureTags'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleTargetSecureTag>(map['targetSecureTags'], (value) => FirewallPolicyRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts'] as List).cast<String>()).input(),
+      tlsInspect: map['tlsInspect'] == null ? null : (map['tlsInspect'] as bool).input(),
     );
   }
 }

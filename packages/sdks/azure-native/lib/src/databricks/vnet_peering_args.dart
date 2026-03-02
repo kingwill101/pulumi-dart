@@ -46,29 +46,18 @@ class VNetPeeringArgs {
   /// [useRemoteGateways] If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
   /// [workspaceName] The name of the workspace.
   VNetPeeringArgs({
-    pulumi.Output<bool>? allowForwardedTraffic,
-    pulumi.Output<bool>? allowGatewayTransit,
-    pulumi.Output<bool>? allowVirtualNetworkAccess,
-    pulumi.Output<AddressSpace>? databricksAddressSpace,
-    pulumi.Output<VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork>? databricksVirtualNetwork,
-    pulumi.Output<String>? peeringName,
-    pulumi.Output<AddressSpace>? remoteAddressSpace,
-    required pulumi.Output<VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork> remoteVirtualNetwork,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? useRemoteGateways,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      allowForwardedTraffic = pulumi.Input.asOptionalInput<bool>(allowForwardedTraffic),
-      allowGatewayTransit = pulumi.Input.asOptionalInput<bool>(allowGatewayTransit),
-      allowVirtualNetworkAccess = pulumi.Input.asOptionalInput<bool>(allowVirtualNetworkAccess),
-      databricksAddressSpace = pulumi.Input.asOptionalInput<AddressSpace>(databricksAddressSpace),
-      databricksVirtualNetwork = pulumi.Input.asOptionalInput<VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork>(databricksVirtualNetwork),
-      peeringName = pulumi.Input.asOptionalInput<String>(peeringName),
-      remoteAddressSpace = pulumi.Input.asOptionalInput<AddressSpace>(remoteAddressSpace),
-      remoteVirtualNetwork = pulumi.Input.asInput<VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork>(remoteVirtualNetwork),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      useRemoteGateways = pulumi.Input.asOptionalInput<bool>(useRemoteGateways),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.allowForwardedTraffic,
+    this.allowGatewayTransit,
+    this.allowVirtualNetworkAccess,
+    this.databricksAddressSpace,
+    this.databricksVirtualNetwork,
+    this.peeringName,
+    this.remoteAddressSpace,
+    required this.remoteVirtualNetwork,
+    required this.resourceGroupName,
+    this.useRemoteGateways,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class VNetPeeringArgs {
 
   factory VNetPeeringArgs.fromMap(Map<String, dynamic> map) {
     return VNetPeeringArgs(
-      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : pulumi.Output.create<bool>(map['allowForwardedTraffic'] as bool),
-      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : pulumi.Output.create<bool>(map['allowGatewayTransit'] as bool),
-      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : pulumi.Output.create<bool>(map['allowVirtualNetworkAccess'] as bool),
-      databricksAddressSpace: map['databricksAddressSpace'] == null ? null : pulumi.Output.create<AddressSpace>(AddressSpace.fromMap((map['databricksAddressSpace'] as Map).cast<String, dynamic>())),
-      databricksVirtualNetwork: map['databricksVirtualNetwork'] == null ? null : pulumi.Output.create<VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork>(VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork.fromMap((map['databricksVirtualNetwork'] as Map).cast<String, dynamic>())),
-      peeringName: map['peeringName'] == null ? null : pulumi.Output.create<String>(map['peeringName'] as String),
-      remoteAddressSpace: map['remoteAddressSpace'] == null ? null : pulumi.Output.create<AddressSpace>(AddressSpace.fromMap((map['remoteAddressSpace'] as Map).cast<String, dynamic>())),
-      remoteVirtualNetwork: pulumi.Output.create<VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork>(VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork.fromMap((map['remoteVirtualNetwork'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      useRemoteGateways: map['useRemoteGateways'] == null ? null : pulumi.Output.create<bool>(map['useRemoteGateways'] as bool),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : (map['allowForwardedTraffic'] as bool).input(),
+      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : (map['allowGatewayTransit'] as bool).input(),
+      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : (map['allowVirtualNetworkAccess'] as bool).input(),
+      databricksAddressSpace: map['databricksAddressSpace'] == null ? null : (AddressSpace.fromMap((map['databricksAddressSpace'] as Map).cast<String, dynamic>())).input(),
+      databricksVirtualNetwork: map['databricksVirtualNetwork'] == null ? null : (VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork.fromMap((map['databricksVirtualNetwork'] as Map).cast<String, dynamic>())).input(),
+      peeringName: map['peeringName'] == null ? null : (map['peeringName'] as String).input(),
+      remoteAddressSpace: map['remoteAddressSpace'] == null ? null : (AddressSpace.fromMap((map['remoteAddressSpace'] as Map).cast<String, dynamic>())).input(),
+      remoteVirtualNetwork: (VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork.fromMap((map['remoteVirtualNetwork'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      useRemoteGateways: map['useRemoteGateways'] == null ? null : (map['useRemoteGateways'] as bool).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

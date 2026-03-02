@@ -50,33 +50,20 @@ class EndpointStorageContainerState {
   /// [resourceGroupName] The name of the resource group under which the Storage Container has been created. Changing this forces a new resource to be created.
   /// [subscriptionId] The subscription ID for the endpoint.
   EndpointStorageContainerState({
-    pulumi.Output<String>? authenticationType,
-    pulumi.Output<int>? batchFrequencyInSeconds,
-    pulumi.Output<String>? connectionString,
-    pulumi.Output<String>? containerName,
-    pulumi.Output<String>? encoding,
-    pulumi.Output<String>? endpointUri,
-    pulumi.Output<String>? fileNameFormat,
-    pulumi.Output<String>? identityId,
-    pulumi.Output<String>? iothubId,
-    pulumi.Output<int>? maxChunkSizeInBytes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      authenticationType = pulumi.Input.asOptionalInput<String>(authenticationType),
-      batchFrequencyInSeconds = pulumi.Input.asOptionalInput<int>(batchFrequencyInSeconds),
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      containerName = pulumi.Input.asOptionalInput<String>(containerName),
-      encoding = pulumi.Input.asOptionalInput<String>(encoding),
-      endpointUri = pulumi.Input.asOptionalInput<String>(endpointUri),
-      fileNameFormat = pulumi.Input.asOptionalInput<String>(fileNameFormat),
-      identityId = pulumi.Input.asOptionalInput<String>(identityId),
-      iothubId = pulumi.Input.asOptionalInput<String>(iothubId),
-      maxChunkSizeInBytes = pulumi.Input.asOptionalInput<int>(maxChunkSizeInBytes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    this.authenticationType,
+    this.batchFrequencyInSeconds,
+    this.connectionString,
+    this.containerName,
+    this.encoding,
+    this.endpointUri,
+    this.fileNameFormat,
+    this.identityId,
+    this.iothubId,
+    this.maxChunkSizeInBytes,
+    this.name,
+    this.resourceGroupName,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class EndpointStorageContainerState {
 
   factory EndpointStorageContainerState.fromMap(Map<String, dynamic> map) {
     return EndpointStorageContainerState(
-      authenticationType: map['authenticationType'] == null ? null : pulumi.Output.create<String>(map['authenticationType'] as String),
-      batchFrequencyInSeconds: map['batchFrequencyInSeconds'] == null ? null : pulumi.Output.create<int>(map['batchFrequencyInSeconds'] as int),
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      containerName: map['containerName'] == null ? null : pulumi.Output.create<String>(map['containerName'] as String),
-      encoding: map['encoding'] == null ? null : pulumi.Output.create<String>(map['encoding'] as String),
-      endpointUri: map['endpointUri'] == null ? null : pulumi.Output.create<String>(map['endpointUri'] as String),
-      fileNameFormat: map['fileNameFormat'] == null ? null : pulumi.Output.create<String>(map['fileNameFormat'] as String),
-      identityId: map['identityId'] == null ? null : pulumi.Output.create<String>(map['identityId'] as String),
-      iothubId: map['iothubId'] == null ? null : pulumi.Output.create<String>(map['iothubId'] as String),
-      maxChunkSizeInBytes: map['maxChunkSizeInBytes'] == null ? null : pulumi.Output.create<int>(map['maxChunkSizeInBytes'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      batchFrequencyInSeconds: map['batchFrequencyInSeconds'] == null ? null : (map['batchFrequencyInSeconds'] as int).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
+      fileNameFormat: map['fileNameFormat'] == null ? null : (map['fileNameFormat'] as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
+      iothubId: map['iothubId'] == null ? null : (map['iothubId'] as String).input(),
+      maxChunkSizeInBytes: map['maxChunkSizeInBytes'] == null ? null : (map['maxChunkSizeInBytes'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetAttestorIamPolicyBinaryauthorizationV1beta1Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   GetAttestorIamPolicyBinaryauthorizationV1beta1Args({
-    required pulumi.Output<String> attestorId,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-  }) :
-      attestorId = pulumi.Input.asInput<String>(attestorId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.attestorId,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetAttestorIamPolicyBinaryauthorizationV1beta1Args {
 
   factory GetAttestorIamPolicyBinaryauthorizationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetAttestorIamPolicyBinaryauthorizationV1beta1Args(
-      attestorId: pulumi.Output.create<String>(map['attestorId'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      attestorId: (map['attestorId'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

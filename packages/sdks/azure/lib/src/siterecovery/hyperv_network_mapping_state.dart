@@ -22,17 +22,12 @@ class HypervNetworkMappingState {
   /// [sourceSystemCenterVirtualMachineManagerName] Specifies the name of source System Center Virtual Machine Manager where the source network exists. Changing this forces a new resource to be created.
   /// [targetNetworkId] The id of the recovery network. Changing this forces a new resource to be created.
   HypervNetworkMappingState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? recoveryVaultId,
-    pulumi.Output<String>? sourceNetworkName,
-    pulumi.Output<String>? sourceSystemCenterVirtualMachineManagerName,
-    pulumi.Output<String>? targetNetworkId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryVaultId = pulumi.Input.asOptionalInput<String>(recoveryVaultId),
-      sourceNetworkName = pulumi.Input.asOptionalInput<String>(sourceNetworkName),
-      sourceSystemCenterVirtualMachineManagerName = pulumi.Input.asOptionalInput<String>(sourceSystemCenterVirtualMachineManagerName),
-      targetNetworkId = pulumi.Input.asOptionalInput<String>(targetNetworkId);
+    this.name,
+    this.recoveryVaultId,
+    this.sourceNetworkName,
+    this.sourceSystemCenterVirtualMachineManagerName,
+    this.targetNetworkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class HypervNetworkMappingState {
 
   factory HypervNetworkMappingState.fromMap(Map<String, dynamic> map) {
     return HypervNetworkMappingState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryVaultId: map['recoveryVaultId'] == null ? null : pulumi.Output.create<String>(map['recoveryVaultId'] as String),
-      sourceNetworkName: map['sourceNetworkName'] == null ? null : pulumi.Output.create<String>(map['sourceNetworkName'] as String),
-      sourceSystemCenterVirtualMachineManagerName: map['sourceSystemCenterVirtualMachineManagerName'] == null ? null : pulumi.Output.create<String>(map['sourceSystemCenterVirtualMachineManagerName'] as String),
-      targetNetworkId: map['targetNetworkId'] == null ? null : pulumi.Output.create<String>(map['targetNetworkId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId'] as String).input(),
+      sourceNetworkName: map['sourceNetworkName'] == null ? null : (map['sourceNetworkName'] as String).input(),
+      sourceSystemCenterVirtualMachineManagerName: map['sourceSystemCenterVirtualMachineManagerName'] == null ? null : (map['sourceSystemCenterVirtualMachineManagerName'] as String).input(),
+      targetNetworkId: map['targetNetworkId'] == null ? null : (map['targetNetworkId'] as String).input(),
     );
   }
 }

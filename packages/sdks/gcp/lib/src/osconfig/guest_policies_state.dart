@@ -64,29 +64,18 @@ class GuestPoliciesState {
   /// [recipes] A list of Recipes to install on the VM instance.
   /// [updateTime] Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   GuestPoliciesState({
-    pulumi.Output<GuestPoliciesAssignment>? assignment,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? guestPolicyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<GuestPoliciesPackageRepository>>? packageRepositories,
-    pulumi.Output<List<GuestPoliciesPackage>>? packages,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<GuestPoliciesRecipe>>? recipes,
-    pulumi.Output<String>? updateTime,
-  }) :
-      assignment = pulumi.Input.asOptionalInput<GuestPoliciesAssignment>(assignment),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      guestPolicyId = pulumi.Input.asOptionalInput<String>(guestPolicyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      packageRepositories = pulumi.Input.asOptionalInput<List<GuestPoliciesPackageRepository>>(packageRepositories),
-      packages = pulumi.Input.asOptionalInput<List<GuestPoliciesPackage>>(packages),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      recipes = pulumi.Input.asOptionalInput<List<GuestPoliciesRecipe>>(recipes),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.assignment,
+    this.createTime,
+    this.description,
+    this.etag,
+    this.guestPolicyId,
+    this.name,
+    this.packageRepositories,
+    this.packages,
+    this.project,
+    this.recipes,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,17 +95,17 @@ class GuestPoliciesState {
 
   factory GuestPoliciesState.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesState(
-      assignment: map['assignment'] == null ? null : pulumi.Output.create<GuestPoliciesAssignment>(GuestPoliciesAssignment.fromMap((map['assignment'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      guestPolicyId: map['guestPolicyId'] == null ? null : pulumi.Output.create<String>(map['guestPolicyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      packageRepositories: map['packageRepositories'] == null ? null : pulumi.Output.create<List<GuestPoliciesPackageRepository>>(pulumi.Input.decodeList<GuestPoliciesPackageRepository>(map['packageRepositories'], (value) => GuestPoliciesPackageRepository.fromMap((value as Map).cast<String, dynamic>()))),
-      packages: map['packages'] == null ? null : pulumi.Output.create<List<GuestPoliciesPackage>>(pulumi.Input.decodeList<GuestPoliciesPackage>(map['packages'], (value) => GuestPoliciesPackage.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      recipes: map['recipes'] == null ? null : pulumi.Output.create<List<GuestPoliciesRecipe>>(pulumi.Input.decodeList<GuestPoliciesRecipe>(map['recipes'], (value) => GuestPoliciesRecipe.fromMap((value as Map).cast<String, dynamic>()))),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      assignment: map['assignment'] == null ? null : (GuestPoliciesAssignment.fromMap((map['assignment'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      guestPolicyId: map['guestPolicyId'] == null ? null : (map['guestPolicyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      packageRepositories: map['packageRepositories'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesPackageRepository>(map['packageRepositories'], (value) => GuestPoliciesPackageRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packages: map['packages'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesPackage>(map['packages'], (value) => GuestPoliciesPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      recipes: map['recipes'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesRecipe>(map['recipes'], (value) => GuestPoliciesRecipe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

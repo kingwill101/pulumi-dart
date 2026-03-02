@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The bucket's uniform bucket-level access configuration.
 class BucketIamConfigurationUniformBucketLevelAccess {
   /// If set, access is controlled only by bucket-level or above IAM policies.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
-  final String? lockedTime;
+  final pulumi.Input<String>? lockedTime;
 
   /// Creates a new [BucketIamConfigurationUniformBucketLevelAccess].
   /// [enabled] If set, access is controlled only by bucket-level or above IAM policies.
@@ -25,8 +26,8 @@ class BucketIamConfigurationUniformBucketLevelAccess {
 
   factory BucketIamConfigurationUniformBucketLevelAccess.fromMap(Map<String, dynamic> map) {
     return BucketIamConfigurationUniformBucketLevelAccess(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      lockedTime: map['lockedTime'] == null ? null : map['lockedTime'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      lockedTime: map['lockedTime'] == null ? null : (map['lockedTime'] as String).input(),
     );
   }
 }

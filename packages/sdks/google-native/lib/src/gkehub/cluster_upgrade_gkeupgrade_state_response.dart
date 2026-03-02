@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_upgrade_gkeupgrade_response.dart';
 import 'cluster_upgrade_upgrade_status_response.dart';
 
 /// GKEUpgradeState is a GKEUpgrade and its state at the scope and fleet level.
 class ClusterUpgradeGKEUpgradeStateResponse {
   /// Number of GKE clusters in each status code.
-  final Map<String, String> stats;
+  final pulumi.Input<Map<String, String>> stats;
   /// Status of the upgrade.
-  final ClusterUpgradeUpgradeStatusResponse status;
+  final pulumi.Input<ClusterUpgradeUpgradeStatusResponse> status;
   /// Which upgrade to track the state.
-  final ClusterUpgradeGKEUpgradeResponse upgrade;
+  final pulumi.Input<ClusterUpgradeGKEUpgradeResponse> upgrade;
 
   /// Creates a new [ClusterUpgradeGKEUpgradeStateResponse].
   /// [stats] Number of GKE clusters in each status code.
@@ -25,16 +26,16 @@ class ClusterUpgradeGKEUpgradeStateResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'stats': stats,
-      'status': status.toMap(),
-      'upgrade': upgrade.toMap(),
+      'status': pulumi.Input.mapInputValue<ClusterUpgradeUpgradeStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'upgrade': pulumi.Input.mapInputValue<ClusterUpgradeGKEUpgradeResponse, Map<String, dynamic>>(upgrade, (value) => value.toMap()),
     };
   }
 
   factory ClusterUpgradeGKEUpgradeStateResponse.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeGKEUpgradeStateResponse(
-      stats: (map['stats'] as Map).cast<String, String>(),
-      status: ClusterUpgradeUpgradeStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      upgrade: ClusterUpgradeGKEUpgradeResponse.fromMap((map['upgrade'] as Map).cast<String, dynamic>()),
+      stats: ((map['stats'] as Map).cast<String, String>()).input(),
+      status: (ClusterUpgradeUpgradeStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      upgrade: (ClusterUpgradeGKEUpgradeResponse.fromMap((map['upgrade'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

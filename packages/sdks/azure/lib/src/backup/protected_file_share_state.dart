@@ -24,17 +24,12 @@ class ProtectedFileShareState {
   /// [sourceFileShareName] Specifies the name of the file share to backup. Changing this forces a new resource to be created.
   /// [sourceStorageAccountId] Specifies the ID of the storage account of the file share to backup. Changing this forces a new resource to be created.
   ProtectedFileShareState({
-    pulumi.Output<String>? backupPolicyId,
-    pulumi.Output<String>? recoveryVaultName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? sourceFileShareName,
-    pulumi.Output<String>? sourceStorageAccountId,
-  }) :
-      backupPolicyId = pulumi.Input.asOptionalInput<String>(backupPolicyId),
-      recoveryVaultName = pulumi.Input.asOptionalInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sourceFileShareName = pulumi.Input.asOptionalInput<String>(sourceFileShareName),
-      sourceStorageAccountId = pulumi.Input.asOptionalInput<String>(sourceStorageAccountId);
+    this.backupPolicyId,
+    this.recoveryVaultName,
+    this.resourceGroupName,
+    this.sourceFileShareName,
+    this.sourceStorageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ProtectedFileShareState {
 
   factory ProtectedFileShareState.fromMap(Map<String, dynamic> map) {
     return ProtectedFileShareState(
-      backupPolicyId: map['backupPolicyId'] == null ? null : pulumi.Output.create<String>(map['backupPolicyId'] as String),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceFileShareName: map['sourceFileShareName'] == null ? null : pulumi.Output.create<String>(map['sourceFileShareName'] as String),
-      sourceStorageAccountId: map['sourceStorageAccountId'] == null ? null : pulumi.Output.create<String>(map['sourceStorageAccountId'] as String),
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sourceFileShareName: map['sourceFileShareName'] == null ? null : (map['sourceFileShareName'] as String).input(),
+      sourceStorageAccountId: map['sourceStorageAccountId'] == null ? null : (map['sourceStorageAccountId'] as String).input(),
     );
   }
 }

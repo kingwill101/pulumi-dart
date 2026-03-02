@@ -28,17 +28,12 @@ class DeliveryChannelArgs {
   /// [resourceChangeDelivery] The configurations for delivery of resource configuration change events. See `resource_change_delivery` below.
   /// [resourceSnapshotDelivery] The configurations for delivery of scheduled resource snapshots. See `resource_snapshot_delivery` below.
   DeliveryChannelArgs({
-    pulumi.Output<String>? deliveryChannelDescription,
-    required pulumi.Output<DeliveryChannelDeliveryChannelFilter> deliveryChannelFilter,
-    required pulumi.Output<String> deliveryChannelName,
-    pulumi.Output<DeliveryChannelResourceChangeDelivery>? resourceChangeDelivery,
-    pulumi.Output<DeliveryChannelResourceSnapshotDelivery>? resourceSnapshotDelivery,
-  }) :
-      deliveryChannelDescription = pulumi.Input.asOptionalInput<String>(deliveryChannelDescription),
-      deliveryChannelFilter = pulumi.Input.asInput<DeliveryChannelDeliveryChannelFilter>(deliveryChannelFilter),
-      deliveryChannelName = pulumi.Input.asInput<String>(deliveryChannelName),
-      resourceChangeDelivery = pulumi.Input.asOptionalInput<DeliveryChannelResourceChangeDelivery>(resourceChangeDelivery),
-      resourceSnapshotDelivery = pulumi.Input.asOptionalInput<DeliveryChannelResourceSnapshotDelivery>(resourceSnapshotDelivery);
+    this.deliveryChannelDescription,
+    required this.deliveryChannelFilter,
+    required this.deliveryChannelName,
+    this.resourceChangeDelivery,
+    this.resourceSnapshotDelivery,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class DeliveryChannelArgs {
 
   factory DeliveryChannelArgs.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelArgs(
-      deliveryChannelDescription: map['deliveryChannelDescription'] == null ? null : pulumi.Output.create<String>(map['deliveryChannelDescription'] as String),
-      deliveryChannelFilter: pulumi.Output.create<DeliveryChannelDeliveryChannelFilter>(DeliveryChannelDeliveryChannelFilter.fromMap((map['deliveryChannelFilter'] as Map).cast<String, dynamic>())),
-      deliveryChannelName: pulumi.Output.create<String>(map['deliveryChannelName'] as String),
-      resourceChangeDelivery: map['resourceChangeDelivery'] == null ? null : pulumi.Output.create<DeliveryChannelResourceChangeDelivery>(DeliveryChannelResourceChangeDelivery.fromMap((map['resourceChangeDelivery'] as Map).cast<String, dynamic>())),
-      resourceSnapshotDelivery: map['resourceSnapshotDelivery'] == null ? null : pulumi.Output.create<DeliveryChannelResourceSnapshotDelivery>(DeliveryChannelResourceSnapshotDelivery.fromMap((map['resourceSnapshotDelivery'] as Map).cast<String, dynamic>())),
+      deliveryChannelDescription: map['deliveryChannelDescription'] == null ? null : (map['deliveryChannelDescription'] as String).input(),
+      deliveryChannelFilter: (DeliveryChannelDeliveryChannelFilter.fromMap((map['deliveryChannelFilter'] as Map).cast<String, dynamic>())).input(),
+      deliveryChannelName: (map['deliveryChannelName'] as String).input(),
+      resourceChangeDelivery: map['resourceChangeDelivery'] == null ? null : (DeliveryChannelResourceChangeDelivery.fromMap((map['resourceChangeDelivery'] as Map).cast<String, dynamic>())).input(),
+      resourceSnapshotDelivery: map['resourceSnapshotDelivery'] == null ? null : (DeliveryChannelResourceSnapshotDelivery.fromMap((map['resourceSnapshotDelivery'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

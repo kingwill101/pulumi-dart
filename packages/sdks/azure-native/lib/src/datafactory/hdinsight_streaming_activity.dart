@@ -9,48 +9,48 @@ import 'user_property.dart';
 /// HDInsight streaming activity type.
 class HDInsightStreamingActivity {
   /// User specified arguments to HDInsightActivity.
-  final List<dynamic>? arguments;
+  final pulumi.Input<List<dynamic>>? arguments;
   /// Combiner executable name. Type: string (or Expression with resultType string).
-  final dynamic combiner;
+  final pulumi.Input<dynamic>? combiner;
   /// Command line environment values.
-  final List<dynamic>? commandEnvironment;
+  final pulumi.Input<List<dynamic>>? commandEnvironment;
   /// Allows user to specify defines for streaming job request.
-  final Map<String, dynamic>? defines;
+  final pulumi.Input<Map<String, dynamic>>? defines;
   /// Activity depends on condition.
-  final List<ActivityDependency>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>>? dependsOn;
   /// Activity description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Linked service reference where the files are located.
-  final LinkedServiceReference? fileLinkedService;
+  final pulumi.Input<LinkedServiceReference>? fileLinkedService;
   /// Paths to streaming job files. Can be directories.
-  final List<dynamic> filePaths;
+  final pulumi.Input<List<dynamic>> filePaths;
   /// Debug info option.
-  final String? getDebugInfo;
+  final pulumi.Input<String>? getDebugInfo;
   /// Input blob path. Type: string (or Expression with resultType string).
-  final dynamic input;
+  final pulumi.Input<dynamic> input;
   /// Linked service reference.
-  final LinkedServiceReference? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
   /// Mapper executable name. Type: string (or Expression with resultType string).
-  final dynamic mapper;
+  final pulumi.Input<dynamic> mapper;
   /// Activity name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final String? onInactiveMarkAs;
+  final pulumi.Input<String>? onInactiveMarkAs;
   /// Output blob path. Type: string (or Expression with resultType string).
-  final dynamic output;
+  final pulumi.Input<dynamic> output;
   /// Activity policy.
-  final ActivityPolicy? policy;
+  final pulumi.Input<ActivityPolicy>? policy;
   /// Reducer executable name. Type: string (or Expression with resultType string).
-  final dynamic reducer;
+  final pulumi.Input<dynamic> reducer;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Storage linked service references.
-  final List<LinkedServiceReference>? storageLinkedServices;
+  final pulumi.Input<List<LinkedServiceReference>>? storageLinkedServices;
   /// Type of activity.
   /// Expected value is 'HDInsightStreaming'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Activity user properties.
-  final List<UserProperty>? userProperties;
+  final pulumi.Input<List<UserProperty>>? userProperties;
 
   /// Creates a new [HDInsightStreamingActivity].
   /// [arguments] User specified arguments to HDInsightActivity.
@@ -104,49 +104,49 @@ class HDInsightStreamingActivity {
       'combiner': ?combiner,
       'commandEnvironment': ?commandEnvironment,
       'defines': ?defines,
-      'dependsOn': ?dependsOn == null ? null : pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(dependsOn!, (value) => value.toMap()),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
-      'fileLinkedService': ?fileLinkedService == null ? null : fileLinkedService!.toMap(),
+      'fileLinkedService': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(fileLinkedService, (value) => value.toMap()),
       'filePaths': filePaths,
       'getDebugInfo': ?getDebugInfo,
       'input': input,
-      'linkedServiceName': ?linkedServiceName == null ? null : linkedServiceName!.toMap(),
+      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'mapper': mapper,
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
       'output': output,
-      'policy': ?policy == null ? null : policy!.toMap(),
+      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'reducer': reducer,
       'state': ?state,
-      'storageLinkedServices': ?storageLinkedServices == null ? null : pulumi.Input.encodeList<LinkedServiceReference, Map<String, dynamic>>(storageLinkedServices!, (value) => value.toMap()),
+      'storageLinkedServices': ?pulumi.Input.mapOptionalInputValue<List<LinkedServiceReference>, List<Map<String, dynamic>>>(storageLinkedServices, (value) => pulumi.Input.encodeList<LinkedServiceReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
-      'userProperties': ?userProperties == null ? null : pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(userProperties!, (value) => value.toMap()),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserProperty>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory HDInsightStreamingActivity.fromMap(Map<String, dynamic> map) {
     return HDInsightStreamingActivity(
-      arguments: map['arguments'] == null ? null : (map['arguments'] as List).cast<dynamic>(),
-      combiner: map['combiner'] == null ? null : map['combiner'],
-      commandEnvironment: map['commandEnvironment'] == null ? null : (map['commandEnvironment'] as List).cast<dynamic>(),
-      defines: map['defines'] == null ? null : (map['defines'] as Map).cast<String, dynamic>(),
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      fileLinkedService: map['fileLinkedService'] == null ? null : LinkedServiceReference.fromMap((map['fileLinkedService'] as Map).cast<String, dynamic>()),
-      filePaths: (map['filePaths'] as List).cast<dynamic>(),
-      getDebugInfo: map['getDebugInfo'] == null ? null : map['getDebugInfo'] as String,
-      input: map['input'],
-      linkedServiceName: map['linkedServiceName'] == null ? null : LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      mapper: map['mapper'],
-      name: map['name'] as String,
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : map['onInactiveMarkAs'] as String,
-      output: map['output'],
-      policy: map['policy'] == null ? null : ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>()),
-      reducer: map['reducer'],
-      state: map['state'] == null ? null : map['state'] as String,
-      storageLinkedServices: map['storageLinkedServices'] == null ? null : pulumi.Input.decodeList<LinkedServiceReference>(map['storageLinkedServices'], (value) => LinkedServiceReference.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      userProperties: map['userProperties'] == null ? null : pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>())),
+      arguments: map['arguments'] == null ? null : ((map['arguments'] as List).cast<dynamic>()).input(),
+      combiner: map['combiner'] == null ? null : (map['combiner']).input(),
+      commandEnvironment: map['commandEnvironment'] == null ? null : ((map['commandEnvironment'] as List).cast<dynamic>()).input(),
+      defines: map['defines'] == null ? null : ((map['defines'] as Map).cast<String, dynamic>()).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileLinkedService: map['fileLinkedService'] == null ? null : (LinkedServiceReference.fromMap((map['fileLinkedService'] as Map).cast<String, dynamic>())).input(),
+      filePaths: ((map['filePaths'] as List).cast<dynamic>()).input(),
+      getDebugInfo: map['getDebugInfo'] == null ? null : (map['getDebugInfo'] as String).input(),
+      input: (map['input']).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      mapper: (map['mapper']).input(),
+      name: (map['name'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
+      output: (map['output']).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      reducer: (map['reducer']).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      storageLinkedServices: map['storageLinkedServices'] == null ? null : (pulumi.Input.decodeList<LinkedServiceReference>(map['storageLinkedServices'], (value) => LinkedServiceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class GetNetworkVirtualApplianceBootDiagnosticLogsArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [serialConsoleStorageSasUrl] Specifies the sas-url to the storage blob into which serial console logs for the requested instance will be written
   GetNetworkVirtualApplianceBootDiagnosticLogsArgs({
-    pulumi.Output<String>? consoleScreenshotStorageSasUrl,
-    pulumi.Output<int>? instanceId,
-    required pulumi.Output<String> networkVirtualApplianceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serialConsoleStorageSasUrl,
-  }) :
-      consoleScreenshotStorageSasUrl = pulumi.Input.asOptionalInput<String>(consoleScreenshotStorageSasUrl),
-      instanceId = pulumi.Input.asOptionalInput<int>(instanceId),
-      networkVirtualApplianceName = pulumi.Input.asInput<String>(networkVirtualApplianceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serialConsoleStorageSasUrl = pulumi.Input.asOptionalInput<String>(serialConsoleStorageSasUrl);
+    this.consoleScreenshotStorageSasUrl,
+    this.instanceId,
+    required this.networkVirtualApplianceName,
+    required this.resourceGroupName,
+    this.serialConsoleStorageSasUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetNetworkVirtualApplianceBootDiagnosticLogsArgs {
 
   factory GetNetworkVirtualApplianceBootDiagnosticLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkVirtualApplianceBootDiagnosticLogsArgs(
-      consoleScreenshotStorageSasUrl: map['consoleScreenshotStorageSasUrl'] == null ? null : pulumi.Output.create<String>(map['consoleScreenshotStorageSasUrl'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<int>(map['instanceId'] as int),
-      networkVirtualApplianceName: pulumi.Output.create<String>(map['networkVirtualApplianceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serialConsoleStorageSasUrl: map['serialConsoleStorageSasUrl'] == null ? null : pulumi.Output.create<String>(map['serialConsoleStorageSasUrl'] as String),
+      consoleScreenshotStorageSasUrl: map['consoleScreenshotStorageSasUrl'] == null ? null : (map['consoleScreenshotStorageSasUrl'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as int).input(),
+      networkVirtualApplianceName: (map['networkVirtualApplianceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serialConsoleStorageSasUrl: map['serialConsoleStorageSasUrl'] == null ? null : (map['serialConsoleStorageSasUrl'] as String).input(),
     );
   }
 }

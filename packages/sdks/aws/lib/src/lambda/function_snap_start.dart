@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionSnapStart {
   /// When to apply snap start optimization. Valid value: `PublishedVersions`.
-  final String applyOn;
+  final pulumi.Input<String> applyOn;
   /// Optimization status of the snap start configuration. Valid values are `On` and `Off`.
-  final String? optimizationStatus;
+  final pulumi.Input<String>? optimizationStatus;
 
   /// Creates a new [FunctionSnapStart].
   /// [applyOn] When to apply snap start optimization. Valid value: `PublishedVersions`.
@@ -24,8 +25,8 @@ class FunctionSnapStart {
 
   factory FunctionSnapStart.fromMap(Map<String, dynamic> map) {
     return FunctionSnapStart(
-      applyOn: map['applyOn'] as String,
-      optimizationStatus: map['optimizationStatus'] == null ? null : map['optimizationStatus'] as String,
+      applyOn: (map['applyOn'] as String).input(),
+      optimizationStatus: map['optimizationStatus'] == null ? null : (map['optimizationStatus'] as String).input(),
     );
   }
 }

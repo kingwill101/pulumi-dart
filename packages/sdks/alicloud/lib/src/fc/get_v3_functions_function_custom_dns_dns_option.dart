@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetV3FunctionsFunctionCustomDnsDnsOption {
   /// Configuration Item Name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Configuration Item Value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetV3FunctionsFunctionCustomDnsDnsOption].
   /// [name] Configuration Item Name.
@@ -24,8 +25,8 @@ class GetV3FunctionsFunctionCustomDnsDnsOption {
 
   factory GetV3FunctionsFunctionCustomDnsDnsOption.fromMap(Map<String, dynamic> map) {
     return GetV3FunctionsFunctionCustomDnsDnsOption(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

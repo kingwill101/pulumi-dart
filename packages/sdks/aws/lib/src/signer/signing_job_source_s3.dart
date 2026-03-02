@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SigningJobSourceS3 {
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// Key name of the object that contains your unsigned code.
-  final String key;
+  final pulumi.Input<String> key;
   /// Version of your source image in your version enabled S3 bucket.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [SigningJobSourceS3].
   /// [bucket] Required.
@@ -28,9 +29,9 @@ class SigningJobSourceS3 {
 
   factory SigningJobSourceS3.fromMap(Map<String, dynamic> map) {
     return SigningJobSourceS3(
-      bucket: map['bucket'] as String,
-      key: map['key'] as String,
-      version: map['version'] as String,
+      bucket: (map['bucket'] as String).input(),
+      key: (map['key'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

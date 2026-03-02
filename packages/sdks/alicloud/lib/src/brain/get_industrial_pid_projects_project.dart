@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIndustrialPidProjectsProject {
   /// The ID of the Pid Project.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of Pid Organization.
-  final String pidOrganizationId;
+  final pulumi.Input<String> pidOrganizationId;
   /// The description of Pid Project.
-  final String pidProjectDesc;
+  final pulumi.Input<String> pidProjectDesc;
   /// The ID of Pid Project.
-  final String pidProjectId;
+  final pulumi.Input<String> pidProjectId;
   /// The name of Pid Project.
-  final String pidProjectName;
+  final pulumi.Input<String> pidProjectName;
 
   /// Creates a new [GetIndustrialPidProjectsProject].
   /// [id] The ID of the Pid Project.
@@ -39,11 +40,11 @@ class GetIndustrialPidProjectsProject {
 
   factory GetIndustrialPidProjectsProject.fromMap(Map<String, dynamic> map) {
     return GetIndustrialPidProjectsProject(
-      id: map['id'] as String,
-      pidOrganizationId: map['pidOrganizationId'] as String,
-      pidProjectDesc: map['pidProjectDesc'] as String,
-      pidProjectId: map['pidProjectId'] as String,
-      pidProjectName: map['pidProjectName'] as String,
+      id: (map['id'] as String).input(),
+      pidOrganizationId: (map['pidOrganizationId'] as String).input(),
+      pidProjectDesc: (map['pidProjectDesc'] as String).input(),
+      pidProjectId: (map['pidProjectId'] as String).input(),
+      pidProjectName: (map['pidProjectName'] as String).input(),
     );
   }
 }

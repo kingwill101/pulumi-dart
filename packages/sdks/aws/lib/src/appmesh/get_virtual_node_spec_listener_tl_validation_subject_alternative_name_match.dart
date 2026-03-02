@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch {
-  final List<String> exacts;
+  final pulumi.Input<List<String>> exacts;
 
   /// Creates a new [GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch].
   /// [exacts] Required.
@@ -18,7 +19,7 @@ class GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch {
 
   factory GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch(
-      exacts: (map['exacts'] as List).cast<String>(),
+      exacts: ((map['exacts'] as List).cast<String>()).input(),
     );
   }
 }

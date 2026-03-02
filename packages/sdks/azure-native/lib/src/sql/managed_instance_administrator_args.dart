@@ -30,21 +30,14 @@ class ManagedInstanceAdministratorArgs {
   /// [sid] SID (object ID) of the managed instance administrator.
   /// [tenantId] Tenant ID of the managed instance administrator.
   ManagedInstanceAdministratorArgs({
-    pulumi.Output<String>? administratorName,
-    required pulumi.Output<String> administratorType,
-    required pulumi.Output<String> login,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sid,
-    pulumi.Output<String>? tenantId,
-  }) :
-      administratorName = pulumi.Input.asOptionalInput<String>(administratorName),
-      administratorType = pulumi.Input.asInput<String>(administratorType),
-      login = pulumi.Input.asInput<String>(login),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sid = pulumi.Input.asInput<String>(sid),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.administratorName,
+    required this.administratorType,
+    required this.login,
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+    required this.sid,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ManagedInstanceAdministratorArgs {
 
   factory ManagedInstanceAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceAdministratorArgs(
-      administratorName: map['administratorName'] == null ? null : pulumi.Output.create<String>(map['administratorName'] as String),
-      administratorType: pulumi.Output.create<String>(map['administratorType'] as String),
-      login: pulumi.Output.create<String>(map['login'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sid: pulumi.Output.create<String>(map['sid'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      administratorName: map['administratorName'] == null ? null : (map['administratorName'] as String).input(),
+      administratorType: (map['administratorType'] as String).input(),
+      login: (map['login'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sid: (map['sid'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuTuneCacheTuneCach {
   /// Sets the identifier for the cache tuning configuration related to the CPUs.
-  final double? id;
+  final pulumi.Input<double>? id;
   /// Specifies the level of cache tuning being configured within the CPU tuning settings.
-  final double level;
+  final pulumi.Input<double> level;
   /// Configures the size of the cache allocated in the CPU tuning parameters.
-  final double size;
+  final pulumi.Input<double> size;
   /// Sets the type of cache being configured in the domain's CPU tuning settings.
-  final String type;
+  final pulumi.Input<String> type;
   /// Specifies the unit of measurement for the configured cache size in CPU tuning.
-  final String unit;
+  final pulumi.Input<String> unit;
 
   /// Creates a new [DomainCpuTuneCacheTuneCach].
   /// [id] Sets the identifier for the cache tuning configuration related to the CPUs.
@@ -39,11 +40,11 @@ class DomainCpuTuneCacheTuneCach {
 
   factory DomainCpuTuneCacheTuneCach.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneCacheTuneCach(
-      id: map['id'] == null ? null : map['id'] as double,
-      level: map['level'] as double,
-      size: map['size'] as double,
-      type: map['type'] as String,
-      unit: map['unit'] as String,
+      id: map['id'] == null ? null : (map['id'] as double).input(),
+      level: (map['level'] as double).input(),
+      size: (map['size'] as double).input(),
+      type: (map['type'] as String).input(),
+      unit: (map['unit'] as String).input(),
     );
   }
 }

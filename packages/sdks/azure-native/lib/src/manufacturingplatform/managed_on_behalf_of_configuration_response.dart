@@ -6,7 +6,7 @@ import 'mobo_broker_resource_response.dart';
 /// Configuration of the managed on behalf of resource.
 class ManagedOnBehalfOfConfigurationResponse {
   /// Associated MoboBrokerResources.
-  final List<MoboBrokerResourceResponse> moboBrokerResources;
+  final pulumi.Input<List<MoboBrokerResourceResponse>> moboBrokerResources;
 
   /// Creates a new [ManagedOnBehalfOfConfigurationResponse].
   /// [moboBrokerResources] Associated MoboBrokerResources.
@@ -16,13 +16,13 @@ class ManagedOnBehalfOfConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'moboBrokerResources': pulumi.Input.encodeList<MoboBrokerResourceResponse, Map<String, dynamic>>(moboBrokerResources, (value) => value.toMap()),
+      'moboBrokerResources': pulumi.Input.mapInputValue<List<MoboBrokerResourceResponse>, List<Map<String, dynamic>>>(moboBrokerResources, (value) => pulumi.Input.encodeList<MoboBrokerResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ManagedOnBehalfOfConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ManagedOnBehalfOfConfigurationResponse(
-      moboBrokerResources: pulumi.Input.decodeList<MoboBrokerResourceResponse>(map['moboBrokerResources'], (value) => MoboBrokerResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      moboBrokerResources: (pulumi.Input.decodeList<MoboBrokerResourceResponse>(map['moboBrokerResources'], (value) => MoboBrokerResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

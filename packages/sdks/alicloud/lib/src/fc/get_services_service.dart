@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_services_service_log_config.dart';
 import 'get_services_service_nas_config.dart';
 import 'get_services_service_vpc_config.dart';
 
 class GetServicesService {
   /// FC service creation time.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// FC service description.
-  final String description;
+  final pulumi.Input<String> description;
   /// FC service ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Indicate whether the service can access to internet or not.
-  final bool internetAccess;
+  final pulumi.Input<bool> internetAccess;
   /// FC service last modification time.
-  final String lastModificationTime;
+  final pulumi.Input<String> lastModificationTime;
   /// A list of one element containing information about the associated log store. It contains the following attributes:
-  final GetServicesServiceLogConfig logConfig;
+  final pulumi.Input<GetServicesServiceLogConfig> logConfig;
   /// FC service name.
-  final String name;
+  final pulumi.Input<String> name;
   /// A list of one element about the nas configuration.
-  final GetServicesServiceNasConfig nasConfig;
+  final pulumi.Input<GetServicesServiceNasConfig> nasConfig;
   /// FC service role ARN.
-  final String role;
+  final pulumi.Input<String> role;
   /// A list of one element containing information about accessible VPC resources. It contains the following attributes:
-  final GetServicesServiceVpcConfig vpcConfig;
+  final pulumi.Input<GetServicesServiceVpcConfig> vpcConfig;
 
   /// Creates a new [GetServicesService].
   /// [creationTime] FC service creation time.
@@ -57,26 +58,26 @@ class GetServicesService {
       'id': id,
       'internetAccess': internetAccess,
       'lastModificationTime': lastModificationTime,
-      'logConfig': logConfig.toMap(),
+      'logConfig': pulumi.Input.mapInputValue<GetServicesServiceLogConfig, Map<String, dynamic>>(logConfig, (value) => value.toMap()),
       'name': name,
-      'nasConfig': nasConfig.toMap(),
+      'nasConfig': pulumi.Input.mapInputValue<GetServicesServiceNasConfig, Map<String, dynamic>>(nasConfig, (value) => value.toMap()),
       'role': role,
-      'vpcConfig': vpcConfig.toMap(),
+      'vpcConfig': pulumi.Input.mapInputValue<GetServicesServiceVpcConfig, Map<String, dynamic>>(vpcConfig, (value) => value.toMap()),
     };
   }
 
   factory GetServicesService.fromMap(Map<String, dynamic> map) {
     return GetServicesService(
-      creationTime: map['creationTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      internetAccess: map['internetAccess'] as bool,
-      lastModificationTime: map['lastModificationTime'] as String,
-      logConfig: GetServicesServiceLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      nasConfig: GetServicesServiceNasConfig.fromMap((map['nasConfig'] as Map).cast<String, dynamic>()),
-      role: map['role'] as String,
-      vpcConfig: GetServicesServiceVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>()),
+      creationTime: (map['creationTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      internetAccess: (map['internetAccess'] as bool).input(),
+      lastModificationTime: (map['lastModificationTime'] as String).input(),
+      logConfig: (GetServicesServiceLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      nasConfig: (GetServicesServiceNasConfig.fromMap((map['nasConfig'] as Map).cast<String, dynamic>())).input(),
+      role: (map['role'] as String).input(),
+      vpcConfig: (GetServicesServiceVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

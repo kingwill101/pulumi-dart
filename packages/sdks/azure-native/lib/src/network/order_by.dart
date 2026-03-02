@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a column to sort
 class OrderBy {
   /// Describes the actual column name to sort by
-  final String? field;
+  final pulumi.Input<String>? field;
   /// Describes if results should be in ascending/descending order
-  final String? order;
+  final pulumi.Input<String>? order;
 
   /// Creates a new [OrderBy].
   /// [field] Describes the actual column name to sort by
@@ -25,8 +26,8 @@ class OrderBy {
 
   factory OrderBy.fromMap(Map<String, dynamic> map) {
     return OrderBy(
-      field: map['field'] == null ? null : map['field'] as String,
-      order: map['order'] == null ? null : map['order'] as String,
+      field: map['field'] == null ? null : (map['field'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as String).input(),
     );
   }
 }

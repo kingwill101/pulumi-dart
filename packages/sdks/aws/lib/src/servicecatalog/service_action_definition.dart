@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceActionDefinition {
   /// ARN of the role that performs the self-service actions on your behalf. For example, `arn:aws:iam::12345678910:role/ActionRole`. To reuse the provisioned product launch role, set to `LAUNCH_ROLE`.
-  final String? assumeRole;
+  final pulumi.Input<String>? assumeRole;
   /// Name of the SSM document. For example, `AWS-RestartEC2Instance`. If you are using a shared SSM document, you must provide the ARN instead of the name.
-  final String name;
+  final pulumi.Input<String> name;
   /// List of parameters in JSON format. For example: `[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]` or `[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]`.
-  final String? parameters;
+  final pulumi.Input<String>? parameters;
   /// Service action definition type. Valid value is `SSM_AUTOMATION`. Default is `SSM_AUTOMATION`.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// SSM document version. For example, `1`.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [ServiceActionDefinition].
   /// [assumeRole] ARN of the role that performs the self-service actions on your behalf. For example, `arn:aws:iam::12345678910:role/ActionRole`. To reuse the provisioned product launch role, set to `LAUNCH_ROLE`.
@@ -39,11 +40,11 @@ class ServiceActionDefinition {
 
   factory ServiceActionDefinition.fromMap(Map<String, dynamic> map) {
     return ServiceActionDefinition(
-      assumeRole: map['assumeRole'] == null ? null : map['assumeRole'] as String,
-      name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : map['parameters'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      version: map['version'] as String,
+      assumeRole: map['assumeRole'] == null ? null : (map['assumeRole'] as String).input(),
+      name: (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for a push delivery endpoint.
 class PushConfigPubsubV1beta1a {
   /// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
-  final String? pushEndpoint;
+  final pulumi.Input<String>? pushEndpoint;
 
   /// Creates a new [PushConfigPubsubV1beta1a].
   /// [pushEndpoint] A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
@@ -20,7 +21,7 @@ class PushConfigPubsubV1beta1a {
 
   factory PushConfigPubsubV1beta1a.fromMap(Map<String, dynamic> map) {
     return PushConfigPubsubV1beta1a(
-      pushEndpoint: map['pushEndpoint'] == null ? null : map['pushEndpoint'] as String,
+      pushEndpoint: map['pushEndpoint'] == null ? null : (map['pushEndpoint'] as String).input(),
     );
   }
 }

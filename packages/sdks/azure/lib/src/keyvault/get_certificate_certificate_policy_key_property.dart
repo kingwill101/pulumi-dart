@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificateCertificatePolicyKeyProperty {
-  final String curve;
+  final pulumi.Input<String> curve;
   /// Is this Certificate Exportable?
-  final bool exportable;
+  final pulumi.Input<bool> exportable;
   /// The size of the Key used in the Certificate.
-  final int keySize;
+  final pulumi.Input<int> keySize;
   /// Specifies the Type of Key, for example `RSA`.
-  final String keyType;
+  final pulumi.Input<String> keyType;
   /// Is the key reusable?
-  final bool reuseKey;
+  final pulumi.Input<bool> reuseKey;
 
   /// Creates a new [GetCertificateCertificatePolicyKeyProperty].
   /// [curve] Required.
@@ -38,11 +39,11 @@ class GetCertificateCertificatePolicyKeyProperty {
 
   factory GetCertificateCertificatePolicyKeyProperty.fromMap(Map<String, dynamic> map) {
     return GetCertificateCertificatePolicyKeyProperty(
-      curve: map['curve'] as String,
-      exportable: map['exportable'] as bool,
-      keySize: map['keySize'] as int,
-      keyType: map['keyType'] as String,
-      reuseKey: map['reuseKey'] as bool,
+      curve: (map['curve'] as String).input(),
+      exportable: (map['exportable'] as bool).input(),
+      keySize: (map['keySize'] as int).input(),
+      keyType: (map['keyType'] as String).input(),
+      reuseKey: (map['reuseKey'] as bool).input(),
     );
   }
 }

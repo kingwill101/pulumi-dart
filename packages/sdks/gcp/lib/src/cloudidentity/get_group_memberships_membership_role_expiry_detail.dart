@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupMembershipsMembershipRoleExpiryDetail {
   /// The time at which the MembershipRole will expire.
@@ -8,7 +9,7 @@ class GetGroupMembershipsMembershipRoleExpiryDetail {
   /// resolution and up to nine fractional digits.
   ///
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
 
   /// Creates a new [GetGroupMembershipsMembershipRoleExpiryDetail].
   /// [expireTime] The time at which the MembershipRole will expire.
@@ -24,7 +25,7 @@ class GetGroupMembershipsMembershipRoleExpiryDetail {
 
   factory GetGroupMembershipsMembershipRoleExpiryDetail.fromMap(Map<String, dynamic> map) {
     return GetGroupMembershipsMembershipRoleExpiryDetail(
-      expireTime: map['expireTime'] as String,
+      expireTime: (map['expireTime'] as String).input(),
     );
   }
 }

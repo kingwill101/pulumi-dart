@@ -30,19 +30,13 @@ class UserProfileArgs {
   /// [userIdentifier] The user identifier.
   /// [userType] The user type.
   UserProfileArgs({
-    required pulumi.Output<String> domainIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<UserProfileTimeouts>? timeouts,
-    required pulumi.Output<String> userIdentifier,
-    pulumi.Output<String>? userType,
-  }) :
-      domainIdentifier = pulumi.Input.asInput<String>(domainIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      timeouts = pulumi.Input.asOptionalInput<UserProfileTimeouts>(timeouts),
-      userIdentifier = pulumi.Input.asInput<String>(userIdentifier),
-      userType = pulumi.Input.asOptionalInput<String>(userType);
+    required this.domainIdentifier,
+    this.region,
+    this.status,
+    this.timeouts,
+    required this.userIdentifier,
+    this.userType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class UserProfileArgs {
 
   factory UserProfileArgs.fromMap(Map<String, dynamic> map) {
     return UserProfileArgs(
-      domainIdentifier: pulumi.Output.create<String>(map['domainIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<UserProfileTimeouts>(UserProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      userIdentifier: pulumi.Output.create<String>(map['userIdentifier'] as String),
-      userType: map['userType'] == null ? null : pulumi.Output.create<String>(map['userType'] as String),
+      domainIdentifier: (map['domainIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (UserProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      userIdentifier: (map['userIdentifier'] as String).input(),
+      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetManagedPrivateEndpointArgs {
   /// [managedPrivateEndpointName] The name of the managed private endpoint.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetManagedPrivateEndpointArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> managedPrivateEndpointName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      managedPrivateEndpointName = pulumi.Input.asInput<String>(managedPrivateEndpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.managedPrivateEndpointName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetManagedPrivateEndpointArgs {
 
   factory GetManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedPrivateEndpointArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      managedPrivateEndpointName: pulumi.Output.create<String>(map['managedPrivateEndpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      managedPrivateEndpointName: (map['managedPrivateEndpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

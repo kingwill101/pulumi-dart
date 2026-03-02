@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRepositoryCleanupPolicyCondition {
   /// Match versions newer than a duration.
-  final String newerThan;
+  final pulumi.Input<String> newerThan;
   /// Match versions older than a duration.
-  final String olderThan;
+  final pulumi.Input<String> olderThan;
   /// Match versions by package prefix. Applied on any prefix match.
-  final List<String> packageNamePrefixes;
+  final pulumi.Input<List<String>> packageNamePrefixes;
   /// Match versions by tag prefix. Applied on any prefix match.
-  final List<String> tagPrefixes;
+  final pulumi.Input<List<String>> tagPrefixes;
   /// Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"]
-  final String tagState;
+  final pulumi.Input<String> tagState;
   /// Match versions by version name prefix. Applied on any prefix match.
-  final List<String> versionNamePrefixes;
+  final pulumi.Input<List<String>> versionNamePrefixes;
 
   /// Creates a new [GetRepositoryCleanupPolicyCondition].
   /// [newerThan] Match versions newer than a duration.
@@ -44,12 +45,12 @@ class GetRepositoryCleanupPolicyCondition {
 
   factory GetRepositoryCleanupPolicyCondition.fromMap(Map<String, dynamic> map) {
     return GetRepositoryCleanupPolicyCondition(
-      newerThan: map['newerThan'] as String,
-      olderThan: map['olderThan'] as String,
-      packageNamePrefixes: (map['packageNamePrefixes'] as List).cast<String>(),
-      tagPrefixes: (map['tagPrefixes'] as List).cast<String>(),
-      tagState: map['tagState'] as String,
-      versionNamePrefixes: (map['versionNamePrefixes'] as List).cast<String>(),
+      newerThan: (map['newerThan'] as String).input(),
+      olderThan: (map['olderThan'] as String).input(),
+      packageNamePrefixes: ((map['packageNamePrefixes'] as List).cast<String>()).input(),
+      tagPrefixes: ((map['tagPrefixes'] as List).cast<String>()).input(),
+      tagState: (map['tagState'] as String).input(),
+      versionNamePrefixes: ((map['versionNamePrefixes'] as List).cast<String>()).input(),
     );
   }
 }

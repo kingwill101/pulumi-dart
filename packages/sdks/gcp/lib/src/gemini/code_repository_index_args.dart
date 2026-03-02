@@ -32,19 +32,13 @@ class CodeRepositoryIndexArgs {
   /// [location] The location of the Code Repository Index, for example `us-central1`.
   /// [project] The ID of the project in which the resource belongs.
   CodeRepositoryIndexArgs({
-    required pulumi.Output<String> codeRepositoryIndexId,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      codeRepositoryIndexId = pulumi.Input.asInput<String>(codeRepositoryIndexId),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.codeRepositoryIndexId,
+    this.forceDestroy,
+    this.kmsKey,
+    this.labels,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class CodeRepositoryIndexArgs {
 
   factory CodeRepositoryIndexArgs.fromMap(Map<String, dynamic> map) {
     return CodeRepositoryIndexArgs(
-      codeRepositoryIndexId: pulumi.Output.create<String>(map['codeRepositoryIndexId'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      codeRepositoryIndexId: (map['codeRepositoryIndexId'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

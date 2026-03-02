@@ -26,15 +26,11 @@ class GetEndpointAclServiceArgs {
   /// [instanceId] The ID of the CR Instance.
   /// [moduleName] The ModuleName. Valid values: `Registry`.
   GetEndpointAclServiceArgs({
-    required pulumi.Output<bool> enable,
-    required pulumi.Output<String> endpointType,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? moduleName,
-  }) :
-      enable = pulumi.Input.asInput<bool>(enable),
-      endpointType = pulumi.Input.asInput<String>(endpointType),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      moduleName = pulumi.Input.asOptionalInput<String>(moduleName);
+    required this.enable,
+    required this.endpointType,
+    required this.instanceId,
+    this.moduleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class GetEndpointAclServiceArgs {
 
   factory GetEndpointAclServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointAclServiceArgs(
-      enable: pulumi.Output.create<bool>(map['enable'] as bool),
-      endpointType: pulumi.Output.create<String>(map['endpointType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      moduleName: map['moduleName'] == null ? null : pulumi.Output.create<String>(map['moduleName'] as String),
+      enable: (map['enable'] as bool).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      moduleName: map['moduleName'] == null ? null : (map['moduleName'] as String).input(),
     );
   }
 }

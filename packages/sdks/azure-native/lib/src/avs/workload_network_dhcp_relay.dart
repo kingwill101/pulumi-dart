@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NSX DHCP Relay
 class WorkloadNetworkDhcpRelay {
   /// Type of DHCP: SERVER or RELAY.
   /// Expected value is 'RELAY'.
-  final String dhcpType;
+  final pulumi.Input<String> dhcpType;
   /// Display name of the DHCP entity.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// NSX revision number.
-  final double? revision;
+  final pulumi.Input<double>? revision;
   /// DHCP Relay Addresses. Max 3.
-  final List<String>? serverAddresses;
+  final pulumi.Input<List<String>>? serverAddresses;
 
   /// Creates a new [WorkloadNetworkDhcpRelay].
   /// [dhcpType] Type of DHCP: SERVER or RELAY.
@@ -36,10 +37,10 @@ class WorkloadNetworkDhcpRelay {
 
   factory WorkloadNetworkDhcpRelay.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkDhcpRelay(
-      dhcpType: map['dhcpType'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      revision: map['revision'] == null ? null : map['revision'] as double,
-      serverAddresses: map['serverAddresses'] == null ? null : (map['serverAddresses'] as List).cast<String>(),
+      dhcpType: (map['dhcpType'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
+      serverAddresses: map['serverAddresses'] == null ? null : ((map['serverAddresses'] as List).cast<String>()).input(),
     );
   }
 }

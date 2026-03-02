@@ -51,35 +51,21 @@ class SecurityGroupIngressRuleState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [toPort] The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
   SecurityGroupIngressRuleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? cidrIpv4,
-    pulumi.Output<String>? cidrIpv6,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? fromPort,
-    pulumi.Output<String>? ipProtocol,
-    pulumi.Output<String>? prefixListId,
-    pulumi.Output<String>? referencedSecurityGroupId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityGroupId,
-    pulumi.Output<String>? securityGroupRuleId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<int>? toPort,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      cidrIpv4 = pulumi.Input.asOptionalInput<String>(cidrIpv4),
-      cidrIpv6 = pulumi.Input.asOptionalInput<String>(cidrIpv6),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fromPort = pulumi.Input.asOptionalInput<int>(fromPort),
-      ipProtocol = pulumi.Input.asOptionalInput<String>(ipProtocol),
-      prefixListId = pulumi.Input.asOptionalInput<String>(prefixListId),
-      referencedSecurityGroupId = pulumi.Input.asOptionalInput<String>(referencedSecurityGroupId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId),
-      securityGroupRuleId = pulumi.Input.asOptionalInput<String>(securityGroupRuleId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      toPort = pulumi.Input.asOptionalInput<int>(toPort);
+    this.arn,
+    this.cidrIpv4,
+    this.cidrIpv6,
+    this.description,
+    this.fromPort,
+    this.ipProtocol,
+    this.prefixListId,
+    this.referencedSecurityGroupId,
+    this.region,
+    this.securityGroupId,
+    this.securityGroupRuleId,
+    this.tags,
+    this.tagsAll,
+    this.toPort,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class SecurityGroupIngressRuleState {
 
   factory SecurityGroupIngressRuleState.fromMap(Map<String, dynamic> map) {
     return SecurityGroupIngressRuleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      cidrIpv4: map['cidrIpv4'] == null ? null : pulumi.Output.create<String>(map['cidrIpv4'] as String),
-      cidrIpv6: map['cidrIpv6'] == null ? null : pulumi.Output.create<String>(map['cidrIpv6'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fromPort: map['fromPort'] == null ? null : pulumi.Output.create<int>(map['fromPort'] as int),
-      ipProtocol: map['ipProtocol'] == null ? null : pulumi.Output.create<String>(map['ipProtocol'] as String),
-      prefixListId: map['prefixListId'] == null ? null : pulumi.Output.create<String>(map['prefixListId'] as String),
-      referencedSecurityGroupId: map['referencedSecurityGroupId'] == null ? null : pulumi.Output.create<String>(map['referencedSecurityGroupId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
-      securityGroupRuleId: map['securityGroupRuleId'] == null ? null : pulumi.Output.create<String>(map['securityGroupRuleId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      toPort: map['toPort'] == null ? null : pulumi.Output.create<int>(map['toPort'] as int),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      cidrIpv4: map['cidrIpv4'] == null ? null : (map['cidrIpv4'] as String).input(),
+      cidrIpv6: map['cidrIpv6'] == null ? null : (map['cidrIpv6'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
+      referencedSecurityGroupId: map['referencedSecurityGroupId'] == null ? null : (map['referencedSecurityGroupId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      securityGroupRuleId: map['securityGroupRuleId'] == null ? null : (map['securityGroupRuleId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class DefaultKmsKeyArgs {
   /// [keyArn] The ARN of the AWS Key Management Service (AWS KMS) customer master key (CMK) to use to encrypt the EBS volume.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DefaultKmsKeyArgs({
-    required pulumi.Output<String> keyArn,
-    pulumi.Output<String>? region,
-  }) :
-      keyArn = pulumi.Input.asInput<String>(keyArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.keyArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class DefaultKmsKeyArgs {
 
   factory DefaultKmsKeyArgs.fromMap(Map<String, dynamic> map) {
     return DefaultKmsKeyArgs(
-      keyArn: pulumi.Output.create<String>(map['keyArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      keyArn: (map['keyArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

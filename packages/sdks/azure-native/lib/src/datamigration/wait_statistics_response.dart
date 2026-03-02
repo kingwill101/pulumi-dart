@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Wait statistics gathered during query batch execution
 class WaitStatisticsResponse {
   /// Total no. of waits
-  final double? waitCount;
+  final pulumi.Input<double>? waitCount;
   /// Total wait time in millisecond(s)
-  final double? waitTimeMs;
+  final pulumi.Input<double>? waitTimeMs;
   /// Type of the Wait
-  final String? waitType;
+  final pulumi.Input<String>? waitType;
 
   /// Creates a new [WaitStatisticsResponse].
   /// [waitCount] Total no. of waits
@@ -30,9 +31,9 @@ class WaitStatisticsResponse {
 
   factory WaitStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return WaitStatisticsResponse(
-      waitCount: map['waitCount'] == null ? null : map['waitCount'] as double,
-      waitTimeMs: map['waitTimeMs'] == null ? null : map['waitTimeMs'] as double,
-      waitType: map['waitType'] == null ? null : map['waitType'] as String,
+      waitCount: map['waitCount'] == null ? null : (map['waitCount'] as double).input(),
+      waitTimeMs: map['waitTimeMs'] == null ? null : (map['waitTimeMs'] as double).input(),
+      waitType: map['waitType'] == null ? null : (map['waitType'] as String).input(),
     );
   }
 }

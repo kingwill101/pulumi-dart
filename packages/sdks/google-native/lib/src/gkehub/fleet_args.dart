@@ -24,17 +24,12 @@ class FleetArgs {
   /// [location] Optional.
   /// [project] Optional.
   FleetArgs({
-    pulumi.Output<DefaultClusterConfig>? defaultClusterConfig,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      defaultClusterConfig = pulumi.Input.asOptionalInput<DefaultClusterConfig>(defaultClusterConfig),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.defaultClusterConfig,
+    this.displayName,
+    this.labels,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class FleetArgs {
 
   factory FleetArgs.fromMap(Map<String, dynamic> map) {
     return FleetArgs(
-      defaultClusterConfig: map['defaultClusterConfig'] == null ? null : pulumi.Output.create<DefaultClusterConfig>(DefaultClusterConfig.fromMap((map['defaultClusterConfig'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      defaultClusterConfig: map['defaultClusterConfig'] == null ? null : (DefaultClusterConfig.fromMap((map['defaultClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

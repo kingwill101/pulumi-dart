@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of user assigned identity.
 class UserAssignedIdentityPropertyResponse {
   /// Get the client id for the user assigned identity
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Get the principal id for the user assigned identity
-  final String principalId;
+  final pulumi.Input<String> principalId;
 
   /// Creates a new [UserAssignedIdentityPropertyResponse].
   /// [clientId] Get the client id for the user assigned identity
@@ -25,8 +26,8 @@ class UserAssignedIdentityPropertyResponse {
 
   factory UserAssignedIdentityPropertyResponse.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentityPropertyResponse(
-      clientId: map['clientId'] as String,
-      principalId: map['principalId'] as String,
+      clientId: (map['clientId'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
     );
   }
 }

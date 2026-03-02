@@ -37,23 +37,15 @@ class PipelineArgs {
   /// [project] The project in which to create the pipeline. The caller must have WRITE access.
   /// [resources] Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
   PipelineArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<DockerExecutor>? docker,
-    pulumi.Output<List<PipelineParameter>>? inputParameters,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<PipelineParameter>>? outputParameters,
-    pulumi.Output<String>? pipelineId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<PipelineResources> resources,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      docker = pulumi.Input.asOptionalInput<DockerExecutor>(docker),
-      inputParameters = pulumi.Input.asOptionalInput<List<PipelineParameter>>(inputParameters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputParameters = pulumi.Input.asOptionalInput<List<PipelineParameter>>(outputParameters),
-      pipelineId = pulumi.Input.asOptionalInput<String>(pipelineId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resources = pulumi.Input.asInput<PipelineResources>(resources);
+    this.description,
+    this.docker,
+    this.inputParameters,
+    this.name,
+    this.outputParameters,
+    this.pipelineId,
+    this.project,
+    required this.resources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      docker: map['docker'] == null ? null : pulumi.Output.create<DockerExecutor>(DockerExecutor.fromMap((map['docker'] as Map).cast<String, dynamic>())),
-      inputParameters: map['inputParameters'] == null ? null : pulumi.Output.create<List<PipelineParameter>>(pulumi.Input.decodeList<PipelineParameter>(map['inputParameters'], (value) => PipelineParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputParameters: map['outputParameters'] == null ? null : pulumi.Output.create<List<PipelineParameter>>(pulumi.Input.decodeList<PipelineParameter>(map['outputParameters'], (value) => PipelineParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      pipelineId: map['pipelineId'] == null ? null : pulumi.Output.create<String>(map['pipelineId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resources: pulumi.Output.create<PipelineResources>(PipelineResources.fromMap((map['resources'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      docker: map['docker'] == null ? null : (DockerExecutor.fromMap((map['docker'] as Map).cast<String, dynamic>())).input(),
+      inputParameters: map['inputParameters'] == null ? null : (pulumi.Input.decodeList<PipelineParameter>(map['inputParameters'], (value) => PipelineParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputParameters: map['outputParameters'] == null ? null : (pulumi.Input.decodeList<PipelineParameter>(map['outputParameters'], (value) => PipelineParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pipelineId: map['pipelineId'] == null ? null : (map['pipelineId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resources: (PipelineResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

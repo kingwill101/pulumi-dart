@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stateful_rule_group_override_response.dart';
 
 /// Definition of StatefulRuleGroupReference
 class StatefulRuleGroupReferenceResponse {
   /// Property override
-  final StatefulRuleGroupOverrideResponse? override;
+  final pulumi.Input<StatefulRuleGroupOverrideResponse>? override;
   /// Property priority
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// A resource ARN.
-  final String? resourceArn;
+  final pulumi.Input<String>? resourceArn;
 
   /// Creates a new [StatefulRuleGroupReferenceResponse].
   /// [override] Property override
@@ -23,7 +24,7 @@ class StatefulRuleGroupReferenceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'override': ?override == null ? null : override!.toMap(),
+      'override': ?pulumi.Input.mapOptionalInputValue<StatefulRuleGroupOverrideResponse, Map<String, dynamic>>(override, (value) => value.toMap()),
       'priority': ?priority,
       'resourceArn': ?resourceArn,
     };
@@ -31,9 +32,9 @@ class StatefulRuleGroupReferenceResponse {
 
   factory StatefulRuleGroupReferenceResponse.fromMap(Map<String, dynamic> map) {
     return StatefulRuleGroupReferenceResponse(
-      override: map['override'] == null ? null : StatefulRuleGroupOverrideResponse.fromMap((map['override'] as Map).cast<String, dynamic>()),
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      resourceArn: map['resourceArn'] == null ? null : map['resourceArn'] as String,
+      override: map['override'] == null ? null : (StatefulRuleGroupOverrideResponse.fromMap((map['override'] as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
     );
   }
 }

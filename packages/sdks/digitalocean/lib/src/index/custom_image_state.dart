@@ -49,35 +49,21 @@ class CustomImageState {
   /// [type] Describes the kind of image.
   /// [url] A URL from which the custom Linux virtual machine image may be retrieved.
   CustomImageState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? distribution,
-    pulumi.Output<int>? imageId,
-    pulumi.Output<int>? minDiskSize,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? public,
-    pulumi.Output<List<String>>? regions,
-    pulumi.Output<double>? sizeGigabytes,
-    pulumi.Output<String>? slug,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? url,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      distribution = pulumi.Input.asOptionalInput<String>(distribution),
-      imageId = pulumi.Input.asOptionalInput<int>(imageId),
-      minDiskSize = pulumi.Input.asOptionalInput<int>(minDiskSize),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      public = pulumi.Input.asOptionalInput<bool>(public),
-      regions = pulumi.Input.asOptionalInput<List<String>>(regions),
-      sizeGigabytes = pulumi.Input.asOptionalInput<double>(sizeGigabytes),
-      slug = pulumi.Input.asOptionalInput<String>(slug),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.createdAt,
+    this.description,
+    this.distribution,
+    this.imageId,
+    this.minDiskSize,
+    this.name,
+    this.public,
+    this.regions,
+    this.sizeGigabytes,
+    this.slug,
+    this.status,
+    this.tags,
+    this.type,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,20 +86,20 @@ class CustomImageState {
 
   factory CustomImageState.fromMap(Map<String, dynamic> map) {
     return CustomImageState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      distribution: map['distribution'] == null ? null : pulumi.Output.create<String>(map['distribution'] as String),
-      imageId: map['imageId'] == null ? null : pulumi.Output.create<int>(map['imageId'] as int),
-      minDiskSize: map['minDiskSize'] == null ? null : pulumi.Output.create<int>(map['minDiskSize'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      public: map['public'] == null ? null : pulumi.Output.create<bool>(map['public'] as bool),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      sizeGigabytes: map['sizeGigabytes'] == null ? null : pulumi.Output.create<double>(map['sizeGigabytes'] as double),
-      slug: map['slug'] == null ? null : pulumi.Output.create<String>(map['slug'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      distribution: map['distribution'] == null ? null : (map['distribution'] as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as int).input(),
+      minDiskSize: map['minDiskSize'] == null ? null : (map['minDiskSize'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      public: map['public'] == null ? null : (map['public'] as bool).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      sizeGigabytes: map['sizeGigabytes'] == null ? null : (map['sizeGigabytes'] as double).input(),
+      slug: map['slug'] == null ? null : (map['slug'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

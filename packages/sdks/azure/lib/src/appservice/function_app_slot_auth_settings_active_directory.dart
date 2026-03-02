@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionAppSlotAuthSettingsActiveDirectory {
   /// Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
-  final List<String>? allowedAudiences;
+  final pulumi.Input<List<String>>? allowedAudiences;
   /// The Client ID of this relying party application. Enables OpenIDConnection authentication with Azure Active Directory.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The Client Secret of this relying party application. If no secret is provided, implicit flow will be used.
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
 
   /// Creates a new [FunctionAppSlotAuthSettingsActiveDirectory].
   /// [allowedAudiences] Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
@@ -29,9 +30,9 @@ class FunctionAppSlotAuthSettingsActiveDirectory {
 
   factory FunctionAppSlotAuthSettingsActiveDirectory.fromMap(Map<String, dynamic> map) {
     return FunctionAppSlotAuthSettingsActiveDirectory(
-      allowedAudiences: map['allowedAudiences'] == null ? null : (map['allowedAudiences'] as List).cast<String>(),
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
+      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
     );
   }
 }

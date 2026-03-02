@@ -35,17 +35,12 @@ class GlobalNetworkEndpointGroupArgs {
   /// [networkEndpointType] Type of network endpoints in this network endpoint group.
   /// [project] The ID of the project in which the resource belongs.
   GlobalNetworkEndpointGroupArgs({
-    pulumi.Output<int>? defaultPort,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkEndpointType,
-    pulumi.Output<String>? project,
-  }) :
-      defaultPort = pulumi.Input.asOptionalInput<int>(defaultPort),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkEndpointType = pulumi.Input.asInput<String>(networkEndpointType),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.defaultPort,
+    this.description,
+    this.name,
+    required this.networkEndpointType,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,11 +54,11 @@ class GlobalNetworkEndpointGroupArgs {
 
   factory GlobalNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return GlobalNetworkEndpointGroupArgs(
-      defaultPort: map['defaultPort'] == null ? null : pulumi.Output.create<int>(map['defaultPort'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkEndpointType: pulumi.Output.create<String>(map['networkEndpointType'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      defaultPort: map['defaultPort'] == null ? null : (map['defaultPort'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkEndpointType: (map['networkEndpointType'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

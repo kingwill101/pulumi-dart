@@ -35,23 +35,15 @@ class RuntimeArgs {
   /// [softwareConfig] The config settings for software inside the runtime.
   /// [virtualMachine] Use a Compute Engine VM image to start the managed notebook instance.
   RuntimeArgs({
-    pulumi.Output<RuntimeAccessConfig>? accessConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> runtimeId,
-    pulumi.Output<RuntimeSoftwareConfig>? softwareConfig,
-    pulumi.Output<VirtualMachine>? virtualMachine,
-  }) :
-      accessConfig = pulumi.Input.asOptionalInput<RuntimeAccessConfig>(accessConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      runtimeId = pulumi.Input.asInput<String>(runtimeId),
-      softwareConfig = pulumi.Input.asOptionalInput<RuntimeSoftwareConfig>(softwareConfig),
-      virtualMachine = pulumi.Input.asOptionalInput<VirtualMachine>(virtualMachine);
+    this.accessConfig,
+    this.labels,
+    this.location,
+    this.project,
+    this.requestId,
+    required this.runtimeId,
+    this.softwareConfig,
+    this.virtualMachine,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class RuntimeArgs {
 
   factory RuntimeArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeArgs(
-      accessConfig: map['accessConfig'] == null ? null : pulumi.Output.create<RuntimeAccessConfig>(RuntimeAccessConfig.fromMap((map['accessConfig'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      runtimeId: pulumi.Output.create<String>(map['runtimeId'] as String),
-      softwareConfig: map['softwareConfig'] == null ? null : pulumi.Output.create<RuntimeSoftwareConfig>(RuntimeSoftwareConfig.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>())),
-      virtualMachine: map['virtualMachine'] == null ? null : pulumi.Output.create<VirtualMachine>(VirtualMachine.fromMap((map['virtualMachine'] as Map).cast<String, dynamic>())),
+      accessConfig: map['accessConfig'] == null ? null : (RuntimeAccessConfig.fromMap((map['accessConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      runtimeId: (map['runtimeId'] as String).input(),
+      softwareConfig: map['softwareConfig'] == null ? null : (RuntimeSoftwareConfig.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>())).input(),
+      virtualMachine: map['virtualMachine'] == null ? null : (VirtualMachine.fromMap((map['virtualMachine'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

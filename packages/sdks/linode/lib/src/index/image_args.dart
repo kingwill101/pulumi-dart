@@ -52,31 +52,19 @@ class ImageArgs {
   /// [timeouts] Optional.
   /// [waitForReplications] Whether to wait for all image replications become `available`. Default to false.
   ImageArgs({
-    pulumi.Output<bool>? cloudInit,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? diskId,
-    pulumi.Output<String>? fileHash,
-    pulumi.Output<String>? filePath,
-    required pulumi.Output<String> label,
-    pulumi.Output<int>? linodeId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? replicaRegions,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<ImageTimeouts>? timeouts,
-    pulumi.Output<bool>? waitForReplications,
-  }) :
-      cloudInit = pulumi.Input.asOptionalInput<bool>(cloudInit),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskId = pulumi.Input.asOptionalInput<int>(diskId),
-      fileHash = pulumi.Input.asOptionalInput<String>(fileHash),
-      filePath = pulumi.Input.asOptionalInput<String>(filePath),
-      label = pulumi.Input.asInput<String>(label),
-      linodeId = pulumi.Input.asOptionalInput<int>(linodeId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicaRegions = pulumi.Input.asOptionalInput<List<String>>(replicaRegions),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ImageTimeouts>(timeouts),
-      waitForReplications = pulumi.Input.asOptionalInput<bool>(waitForReplications);
+    this.cloudInit,
+    this.description,
+    this.diskId,
+    this.fileHash,
+    this.filePath,
+    required this.label,
+    this.linodeId,
+    this.region,
+    this.replicaRegions,
+    this.tags,
+    this.timeouts,
+    this.waitForReplications,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      cloudInit: map['cloudInit'] == null ? null : pulumi.Output.create<bool>(map['cloudInit'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskId: map['diskId'] == null ? null : pulumi.Output.create<int>(map['diskId'] as int),
-      fileHash: map['fileHash'] == null ? null : pulumi.Output.create<String>(map['fileHash'] as String),
-      filePath: map['filePath'] == null ? null : pulumi.Output.create<String>(map['filePath'] as String),
-      label: pulumi.Output.create<String>(map['label'] as String),
-      linodeId: map['linodeId'] == null ? null : pulumi.Output.create<int>(map['linodeId'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicaRegions: map['replicaRegions'] == null ? null : pulumi.Output.create<List<String>>((map['replicaRegions'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ImageTimeouts>(ImageTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      waitForReplications: map['waitForReplications'] == null ? null : pulumi.Output.create<bool>(map['waitForReplications'] as bool),
+      cloudInit: map['cloudInit'] == null ? null : (map['cloudInit'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as int).input(),
+      fileHash: map['fileHash'] == null ? null : (map['fileHash'] as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
+      label: (map['label'] as String).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicaRegions: map['replicaRegions'] == null ? null : ((map['replicaRegions'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ImageTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      waitForReplications: map['waitForReplications'] == null ? null : (map['waitForReplications'] as bool).input(),
     );
   }
 }

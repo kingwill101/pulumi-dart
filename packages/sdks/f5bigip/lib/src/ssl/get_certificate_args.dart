@@ -16,11 +16,9 @@ class GetCertificateArgs {
   /// [name] Name of the ssl_certificate
   /// [partition] partition of the ltm ssl_certificate
   GetCertificateArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> partition,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      partition = pulumi.Input.asInput<String>(partition);
+    required this.name,
+    required this.partition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      partition: pulumi.Output.create<String>(map['partition'] as String),
+      name: (map['name'] as String).input(),
+      partition: (map['partition'] as String).input(),
     );
   }
 }

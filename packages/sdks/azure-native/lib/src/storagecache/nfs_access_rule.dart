@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Rule to place restrictions on portions of the cache namespace being presented to clients.
 class NfsAccessRule {
   /// Access allowed by this rule.
-  final String access;
+  final pulumi.Input<String> access;
   /// GID value that replaces 0 when rootSquash is true. This will use the value of anonymousUID if not provided.
-  final String? anonymousGID;
+  final pulumi.Input<String>? anonymousGID;
   /// UID value that replaces 0 when rootSquash is true. 65534 will be used if not provided.
-  final String? anonymousUID;
+  final pulumi.Input<String>? anonymousUID;
   /// Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
-  final String? filter;
+  final pulumi.Input<String>? filter;
   /// Map root accesses to anonymousUID and anonymousGID.
-  final bool? rootSquash;
+  final pulumi.Input<bool>? rootSquash;
   /// Scope for this rule. The scope and filter determine which clients match the rule.
-  final String scope;
+  final pulumi.Input<String> scope;
   /// For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
-  final bool? submountAccess;
+  final pulumi.Input<bool>? submountAccess;
   /// Allow SUID semantics.
-  final bool? suid;
+  final pulumi.Input<bool>? suid;
 
   /// Creates a new [NfsAccessRule].
   /// [access] Access allowed by this rule.
@@ -55,14 +56,14 @@ class NfsAccessRule {
 
   factory NfsAccessRule.fromMap(Map<String, dynamic> map) {
     return NfsAccessRule(
-      access: map['access'] as String,
-      anonymousGID: map['anonymousGID'] == null ? null : map['anonymousGID'] as String,
-      anonymousUID: map['anonymousUID'] == null ? null : map['anonymousUID'] as String,
-      filter: map['filter'] == null ? null : map['filter'] as String,
-      rootSquash: map['rootSquash'] == null ? null : map['rootSquash'] as bool,
-      scope: map['scope'] as String,
-      submountAccess: map['submountAccess'] == null ? null : map['submountAccess'] as bool,
-      suid: map['suid'] == null ? null : map['suid'] as bool,
+      access: (map['access'] as String).input(),
+      anonymousGID: map['anonymousGID'] == null ? null : (map['anonymousGID'] as String).input(),
+      anonymousUID: map['anonymousUID'] == null ? null : (map['anonymousUID'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      rootSquash: map['rootSquash'] == null ? null : (map['rootSquash'] as bool).input(),
+      scope: (map['scope'] as String).input(),
+      submountAccess: map['submountAccess'] == null ? null : (map['submountAccess'] as bool).input(),
+      suid: map['suid'] == null ? null : (map['suid'] as bool).input(),
     );
   }
 }

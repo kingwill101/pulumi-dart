@@ -38,27 +38,17 @@ class CustomerGatewayState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] The type of customer gateway. The only type AWS
   CustomerGatewayState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? bgpAsn,
-    pulumi.Output<String>? bgpAsnExtended,
-    pulumi.Output<String>? certificateArn,
-    pulumi.Output<String>? deviceName,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? type,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      bgpAsn = pulumi.Input.asOptionalInput<String>(bgpAsn),
-      bgpAsnExtended = pulumi.Input.asOptionalInput<String>(bgpAsnExtended),
-      certificateArn = pulumi.Input.asOptionalInput<String>(certificateArn),
-      deviceName = pulumi.Input.asOptionalInput<String>(deviceName),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.arn,
+    this.bgpAsn,
+    this.bgpAsnExtended,
+    this.certificateArn,
+    this.deviceName,
+    this.ipAddress,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class CustomerGatewayState {
 
   factory CustomerGatewayState.fromMap(Map<String, dynamic> map) {
     return CustomerGatewayState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      bgpAsn: map['bgpAsn'] == null ? null : pulumi.Output.create<String>(map['bgpAsn'] as String),
-      bgpAsnExtended: map['bgpAsnExtended'] == null ? null : pulumi.Output.create<String>(map['bgpAsnExtended'] as String),
-      certificateArn: map['certificateArn'] == null ? null : pulumi.Output.create<String>(map['certificateArn'] as String),
-      deviceName: map['deviceName'] == null ? null : pulumi.Output.create<String>(map['deviceName'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      bgpAsn: map['bgpAsn'] == null ? null : (map['bgpAsn'] as String).input(),
+      bgpAsnExtended: map['bgpAsnExtended'] == null ? null : (map['bgpAsnExtended'] as String).input(),
+      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

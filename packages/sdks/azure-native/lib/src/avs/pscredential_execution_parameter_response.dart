@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// a powershell credential object
 class PSCredentialExecutionParameterResponse {
   /// The parameter name
-  final String name;
+  final pulumi.Input<String> name;
   /// password for login
-  final String? password;
+  final pulumi.Input<String>? password;
   /// script execution parameter type
   /// Expected value is 'Credential'.
-  final String type;
+  final pulumi.Input<String> type;
   /// username for login
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [PSCredentialExecutionParameterResponse].
   /// [name] The parameter name
@@ -36,10 +37,10 @@ class PSCredentialExecutionParameterResponse {
 
   factory PSCredentialExecutionParameterResponse.fromMap(Map<String, dynamic> map) {
     return PSCredentialExecutionParameterResponse(
-      name: map['name'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      type: map['type'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      name: (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      type: (map['type'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

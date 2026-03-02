@@ -41,29 +41,18 @@ class OptionGroupState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   OptionGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? engineName,
-    pulumi.Output<String>? majorEngineVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? optionGroupDescription,
-    pulumi.Output<List<OptionGroupOption>>? options,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? skipDestroy,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      engineName = pulumi.Input.asOptionalInput<String>(engineName),
-      majorEngineVersion = pulumi.Input.asOptionalInput<String>(majorEngineVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      optionGroupDescription = pulumi.Input.asOptionalInput<String>(optionGroupDescription),
-      options = pulumi.Input.asOptionalInput<List<OptionGroupOption>>(options),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.engineName,
+    this.majorEngineVersion,
+    this.name,
+    this.namePrefix,
+    this.optionGroupDescription,
+    this.options,
+    this.region,
+    this.skipDestroy,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class OptionGroupState {
 
   factory OptionGroupState.fromMap(Map<String, dynamic> map) {
     return OptionGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      engineName: map['engineName'] == null ? null : pulumi.Output.create<String>(map['engineName'] as String),
-      majorEngineVersion: map['majorEngineVersion'] == null ? null : pulumi.Output.create<String>(map['majorEngineVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      optionGroupDescription: map['optionGroupDescription'] == null ? null : pulumi.Output.create<String>(map['optionGroupDescription'] as String),
-      options: map['options'] == null ? null : pulumi.Output.create<List<OptionGroupOption>>(pulumi.Input.decodeList<OptionGroupOption>(map['options'], (value) => OptionGroupOption.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      engineName: map['engineName'] == null ? null : (map['engineName'] as String).input(),
+      majorEngineVersion: map['majorEngineVersion'] == null ? null : (map['majorEngineVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      optionGroupDescription: map['optionGroupDescription'] == null ? null : (map['optionGroupDescription'] as String).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<OptionGroupOption>(map['options'], (value) => OptionGroupOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

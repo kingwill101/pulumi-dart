@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The data disk of the VMSS.
 class DataDisk {
   /// The type of caching to be enabled for the data disks. The default value for caching is readwrite. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
-  final String? caching;
+  final pulumi.Input<String>? caching;
   /// The initial disk size in gigabytes.
-  final int? diskSizeGiB;
+  final pulumi.Input<int>? diskSizeGiB;
   /// The drive letter for the empty data disk. If not specified, it will be the first available letter.
-  final String? driveLetter;
+  final pulumi.Input<String>? driveLetter;
   /// The storage Account type to be used for the data disk. If omitted, the default is "standard_lrs".
-  final String? storageAccountType;
+  final pulumi.Input<String>? storageAccountType;
 
   /// Creates a new [DataDisk].
   /// [caching] The type of caching to be enabled for the data disks. The default value for caching is readwrite. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
@@ -35,10 +36,10 @@ class DataDisk {
 
   factory DataDisk.fromMap(Map<String, dynamic> map) {
     return DataDisk(
-      caching: map['caching'] == null ? null : map['caching'] as String,
-      diskSizeGiB: map['diskSizeGiB'] == null ? null : map['diskSizeGiB'] as int,
-      driveLetter: map['driveLetter'] == null ? null : map['driveLetter'] as String,
-      storageAccountType: map['storageAccountType'] == null ? null : map['storageAccountType'] as String,
+      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
+      diskSizeGiB: map['diskSizeGiB'] == null ? null : (map['diskSizeGiB'] as int).input(),
+      driveLetter: map['driveLetter'] == null ? null : (map['driveLetter'] as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
     );
   }
 }

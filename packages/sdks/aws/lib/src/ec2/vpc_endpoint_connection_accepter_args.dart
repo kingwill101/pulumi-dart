@@ -19,13 +19,10 @@ class VpcEndpointConnectionAccepterArgs {
   /// [vpcEndpointId] AWS VPC Endpoint ID.
   /// [vpcEndpointServiceId] AWS VPC Endpoint Service ID.
   VpcEndpointConnectionAccepterArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> vpcEndpointId,
-    required pulumi.Output<String> vpcEndpointServiceId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId),
-      vpcEndpointServiceId = pulumi.Input.asInput<String>(vpcEndpointServiceId);
+    this.region,
+    required this.vpcEndpointId,
+    required this.vpcEndpointServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VpcEndpointConnectionAccepterArgs {
 
   factory VpcEndpointConnectionAccepterArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointConnectionAccepterArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcEndpointId: pulumi.Output.create<String>(map['vpcEndpointId'] as String),
-      vpcEndpointServiceId: pulumi.Output.create<String>(map['vpcEndpointServiceId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcEndpointId: (map['vpcEndpointId'] as String).input(),
+      vpcEndpointServiceId: (map['vpcEndpointServiceId'] as String).input(),
     );
   }
 }

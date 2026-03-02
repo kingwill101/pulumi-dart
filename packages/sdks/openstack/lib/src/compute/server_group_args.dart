@@ -32,17 +32,12 @@ class ServerGroupArgs {
   /// [rules] The rules which are applied to specified `policy`. Currently,
   /// [valueSpecs] Map of additional options.
   ServerGroupArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policies,
-    pulumi.Output<String>? region,
-    pulumi.Output<ServerGroupRules>? rules,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policies = pulumi.Input.asOptionalInput<String>(policies),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rules = pulumi.Input.asOptionalInput<ServerGroupRules>(rules),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs);
+    this.name,
+    this.policies,
+    this.region,
+    this.rules,
+    this.valueSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class ServerGroupArgs {
 
   factory ServerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policies: map['policies'] == null ? null : pulumi.Output.create<String>(map['policies'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<ServerGroupRules>(ServerGroupRules.fromMap((map['rules'] as Map).cast<String, dynamic>())),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policies: map['policies'] == null ? null : (map['policies'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rules: map['rules'] == null ? null : (ServerGroupRules.fromMap((map['rules'] as Map).cast<String, dynamic>())).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
     );
   }
 }

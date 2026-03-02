@@ -49,31 +49,19 @@ class PresetState {
   /// [videoCodecOptions] Codec options for the video parameters
   /// [videoWatermarks] Watermark parameters for the video parameters (documented below)
   PresetState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<PresetAudio>? audio,
-    pulumi.Output<PresetAudioCodecOptions>? audioCodecOptions,
-    pulumi.Output<String>? container,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<PresetThumbnails>? thumbnails,
-    pulumi.Output<String>? type,
-    pulumi.Output<PresetVideo>? video,
-    pulumi.Output<Map<String, String>>? videoCodecOptions,
-    pulumi.Output<List<PresetVideoWatermark>>? videoWatermarks,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      audio = pulumi.Input.asOptionalInput<PresetAudio>(audio),
-      audioCodecOptions = pulumi.Input.asOptionalInput<PresetAudioCodecOptions>(audioCodecOptions),
-      container = pulumi.Input.asOptionalInput<String>(container),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      thumbnails = pulumi.Input.asOptionalInput<PresetThumbnails>(thumbnails),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      video = pulumi.Input.asOptionalInput<PresetVideo>(video),
-      videoCodecOptions = pulumi.Input.asOptionalInput<Map<String, String>>(videoCodecOptions),
-      videoWatermarks = pulumi.Input.asOptionalInput<List<PresetVideoWatermark>>(videoWatermarks);
+    this.arn,
+    this.audio,
+    this.audioCodecOptions,
+    this.container,
+    this.description,
+    this.name,
+    this.region,
+    this.thumbnails,
+    this.type,
+    this.video,
+    this.videoCodecOptions,
+    this.videoWatermarks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class PresetState {
 
   factory PresetState.fromMap(Map<String, dynamic> map) {
     return PresetState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      audio: map['audio'] == null ? null : pulumi.Output.create<PresetAudio>(PresetAudio.fromMap((map['audio'] as Map).cast<String, dynamic>())),
-      audioCodecOptions: map['audioCodecOptions'] == null ? null : pulumi.Output.create<PresetAudioCodecOptions>(PresetAudioCodecOptions.fromMap((map['audioCodecOptions'] as Map).cast<String, dynamic>())),
-      container: map['container'] == null ? null : pulumi.Output.create<String>(map['container'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      thumbnails: map['thumbnails'] == null ? null : pulumi.Output.create<PresetThumbnails>(PresetThumbnails.fromMap((map['thumbnails'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      video: map['video'] == null ? null : pulumi.Output.create<PresetVideo>(PresetVideo.fromMap((map['video'] as Map).cast<String, dynamic>())),
-      videoCodecOptions: map['videoCodecOptions'] == null ? null : pulumi.Output.create<Map<String, String>>((map['videoCodecOptions'] as Map).cast<String, String>()),
-      videoWatermarks: map['videoWatermarks'] == null ? null : pulumi.Output.create<List<PresetVideoWatermark>>(pulumi.Input.decodeList<PresetVideoWatermark>(map['videoWatermarks'], (value) => PresetVideoWatermark.fromMap((value as Map).cast<String, dynamic>()))),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      audio: map['audio'] == null ? null : (PresetAudio.fromMap((map['audio'] as Map).cast<String, dynamic>())).input(),
+      audioCodecOptions: map['audioCodecOptions'] == null ? null : (PresetAudioCodecOptions.fromMap((map['audioCodecOptions'] as Map).cast<String, dynamic>())).input(),
+      container: map['container'] == null ? null : (map['container'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      thumbnails: map['thumbnails'] == null ? null : (PresetThumbnails.fromMap((map['thumbnails'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      video: map['video'] == null ? null : (PresetVideo.fromMap((map['video'] as Map).cast<String, dynamic>())).input(),
+      videoCodecOptions: map['videoCodecOptions'] == null ? null : ((map['videoCodecOptions'] as Map).cast<String, String>()).input(),
+      videoWatermarks: map['videoWatermarks'] == null ? null : (pulumi.Input.decodeList<PresetVideoWatermark>(map['videoWatermarks'], (value) => PresetVideoWatermark.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

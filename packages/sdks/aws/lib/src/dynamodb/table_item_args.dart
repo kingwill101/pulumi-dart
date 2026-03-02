@@ -27,17 +27,12 @@ class TableItemArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] Name or ARN of the table to contain the item.
   TableItemArgs({
-    required pulumi.Output<String> hashKey,
-    required pulumi.Output<String> item,
-    pulumi.Output<String>? rangeKey,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> tableName,
-  }) :
-      hashKey = pulumi.Input.asInput<String>(hashKey),
-      item = pulumi.Input.asInput<String>(item),
-      rangeKey = pulumi.Input.asOptionalInput<String>(rangeKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    required this.hashKey,
+    required this.item,
+    this.rangeKey,
+    this.region,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class TableItemArgs {
 
   factory TableItemArgs.fromMap(Map<String, dynamic> map) {
     return TableItemArgs(
-      hashKey: pulumi.Output.create<String>(map['hashKey'] as String),
-      item: pulumi.Output.create<String>(map['item'] as String),
-      rangeKey: map['rangeKey'] == null ? null : pulumi.Output.create<String>(map['rangeKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      hashKey: (map['hashKey'] as String).input(),
+      item: (map['item'] as String).input(),
+      rangeKey: map['rangeKey'] == null ? null : (map['rangeKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

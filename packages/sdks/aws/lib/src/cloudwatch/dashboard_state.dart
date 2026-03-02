@@ -19,15 +19,11 @@ class DashboardState {
   /// [dashboardName] The name of the dashboard.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DashboardState({
-    pulumi.Output<String>? dashboardArn,
-    pulumi.Output<String>? dashboardBody,
-    pulumi.Output<String>? dashboardName,
-    pulumi.Output<String>? region,
-  }) :
-      dashboardArn = pulumi.Input.asOptionalInput<String>(dashboardArn),
-      dashboardBody = pulumi.Input.asOptionalInput<String>(dashboardBody),
-      dashboardName = pulumi.Input.asOptionalInput<String>(dashboardName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.dashboardArn,
+    this.dashboardBody,
+    this.dashboardName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class DashboardState {
 
   factory DashboardState.fromMap(Map<String, dynamic> map) {
     return DashboardState(
-      dashboardArn: map['dashboardArn'] == null ? null : pulumi.Output.create<String>(map['dashboardArn'] as String),
-      dashboardBody: map['dashboardBody'] == null ? null : pulumi.Output.create<String>(map['dashboardBody'] as String),
-      dashboardName: map['dashboardName'] == null ? null : pulumi.Output.create<String>(map['dashboardName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      dashboardArn: map['dashboardArn'] == null ? null : (map['dashboardArn'] as String).input(),
+      dashboardBody: map['dashboardBody'] == null ? null : (map['dashboardBody'] as String).input(),
+      dashboardName: map['dashboardName'] == null ? null : (map['dashboardName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

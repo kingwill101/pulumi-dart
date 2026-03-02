@@ -6,9 +6,9 @@ import 'widget_response.dart';
 /// A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy.
 class GridLayoutResponse {
   /// The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
-  final String columns;
+  final pulumi.Input<String> columns;
   /// The informational elements that are arranged into the columns row-first.
-  final List<WidgetResponse> widgets;
+  final pulumi.Input<List<WidgetResponse>> widgets;
 
   /// Creates a new [GridLayoutResponse].
   /// [columns] The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
@@ -21,14 +21,14 @@ class GridLayoutResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'columns': columns,
-      'widgets': pulumi.Input.encodeList<WidgetResponse, Map<String, dynamic>>(widgets, (value) => value.toMap()),
+      'widgets': pulumi.Input.mapInputValue<List<WidgetResponse>, List<Map<String, dynamic>>>(widgets, (value) => pulumi.Input.encodeList<WidgetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GridLayoutResponse.fromMap(Map<String, dynamic> map) {
     return GridLayoutResponse(
-      columns: map['columns'] as String,
-      widgets: pulumi.Input.decodeList<WidgetResponse>(map['widgets'], (value) => WidgetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      columns: (map['columns'] as String).input(),
+      widgets: (pulumi.Input.decodeList<WidgetResponse>(map['widgets'], (value) => WidgetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

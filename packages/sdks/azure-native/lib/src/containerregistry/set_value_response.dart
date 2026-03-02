@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of a overridable value that can be passed to a task template.
 class SetValueResponse {
   /// Flag to indicate whether the value represents a secret or not.
-  final bool? isSecret;
+  final pulumi.Input<bool>? isSecret;
   /// The name of the overridable value.
-  final String name;
+  final pulumi.Input<String> name;
   /// The overridable value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [SetValueResponse].
   /// [isSecret] Flag to indicate whether the value represents a secret or not.
@@ -30,9 +31,9 @@ class SetValueResponse {
 
   factory SetValueResponse.fromMap(Map<String, dynamic> map) {
     return SetValueResponse(
-      isSecret: map['isSecret'] == null ? null : map['isSecret'] as bool,
-      name: map['name'] as String,
-      value: map['value'] as String,
+      isSecret: map['isSecret'] == null ? null : (map['isSecret'] as bool).input(),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

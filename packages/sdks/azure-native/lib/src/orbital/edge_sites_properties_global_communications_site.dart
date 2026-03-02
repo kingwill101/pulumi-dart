@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A reference to global communications site.
 class EdgeSitesPropertiesGlobalCommunicationsSite {
   /// Resource ID.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [EdgeSitesPropertiesGlobalCommunicationsSite].
   /// [id] Resource ID.
@@ -20,7 +21,7 @@ class EdgeSitesPropertiesGlobalCommunicationsSite {
 
   factory EdgeSitesPropertiesGlobalCommunicationsSite.fromMap(Map<String, dynamic> map) {
     return EdgeSitesPropertiesGlobalCommunicationsSite(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

@@ -28,21 +28,14 @@ class ThingState {
   /// [thingTypeName] The thing type name.
   /// [version] The current version of the thing record in the registry.
   ThingState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<Map<String, String>>? attributes,
-    pulumi.Output<String>? defaultClientId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? thingTypeName,
-    pulumi.Output<int>? version,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      attributes = pulumi.Input.asOptionalInput<Map<String, String>>(attributes),
-      defaultClientId = pulumi.Input.asOptionalInput<String>(defaultClientId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      thingTypeName = pulumi.Input.asOptionalInput<String>(thingTypeName),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.arn,
+    this.attributes,
+    this.defaultClientId,
+    this.name,
+    this.region,
+    this.thingTypeName,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class ThingState {
 
   factory ThingState.fromMap(Map<String, dynamic> map) {
     return ThingState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<Map<String, String>>((map['attributes'] as Map).cast<String, String>()),
-      defaultClientId: map['defaultClientId'] == null ? null : pulumi.Output.create<String>(map['defaultClientId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      thingTypeName: map['thingTypeName'] == null ? null : pulumi.Output.create<String>(map['thingTypeName'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
+      defaultClientId: map['defaultClientId'] == null ? null : (map['defaultClientId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      thingTypeName: map['thingTypeName'] == null ? null : (map['thingTypeName'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

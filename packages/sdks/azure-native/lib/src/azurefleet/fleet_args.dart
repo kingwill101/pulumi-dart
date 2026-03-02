@@ -57,33 +57,20 @@ class FleetArgs {
   /// [vmSizesProfile] List of VM sizes supported for Compute Fleet
   /// [zones] Zones in which the Compute Fleet is available
   FleetArgs({
-    pulumi.Output<AdditionalLocationsProfile>? additionalLocationsProfile,
-    required pulumi.Output<ComputeProfile> computeProfile,
-    pulumi.Output<String>? fleetName,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<Plan>? plan,
-    pulumi.Output<RegularPriorityProfile>? regularPriorityProfile,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SpotPriorityProfile>? spotPriorityProfile,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<VMAttributes>? vmAttributes,
-    required pulumi.Output<List<VmSizeProfile>> vmSizesProfile,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      additionalLocationsProfile = pulumi.Input.asOptionalInput<AdditionalLocationsProfile>(additionalLocationsProfile),
-      computeProfile = pulumi.Input.asInput<ComputeProfile>(computeProfile),
-      fleetName = pulumi.Input.asOptionalInput<String>(fleetName),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      plan = pulumi.Input.asOptionalInput<Plan>(plan),
-      regularPriorityProfile = pulumi.Input.asOptionalInput<RegularPriorityProfile>(regularPriorityProfile),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      spotPriorityProfile = pulumi.Input.asOptionalInput<SpotPriorityProfile>(spotPriorityProfile),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vmAttributes = pulumi.Input.asOptionalInput<VMAttributes>(vmAttributes),
-      vmSizesProfile = pulumi.Input.asInput<List<VmSizeProfile>>(vmSizesProfile),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.additionalLocationsProfile,
+    required this.computeProfile,
+    this.fleetName,
+    this.identity,
+    this.location,
+    this.plan,
+    this.regularPriorityProfile,
+    required this.resourceGroupName,
+    this.spotPriorityProfile,
+    this.tags,
+    this.vmAttributes,
+    required this.vmSizesProfile,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,19 +92,19 @@ class FleetArgs {
 
   factory FleetArgs.fromMap(Map<String, dynamic> map) {
     return FleetArgs(
-      additionalLocationsProfile: map['additionalLocationsProfile'] == null ? null : pulumi.Output.create<AdditionalLocationsProfile>(AdditionalLocationsProfile.fromMap((map['additionalLocationsProfile'] as Map).cast<String, dynamic>())),
-      computeProfile: pulumi.Output.create<ComputeProfile>(ComputeProfile.fromMap((map['computeProfile'] as Map).cast<String, dynamic>())),
-      fleetName: map['fleetName'] == null ? null : pulumi.Output.create<String>(map['fleetName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<Plan>(Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      regularPriorityProfile: map['regularPriorityProfile'] == null ? null : pulumi.Output.create<RegularPriorityProfile>(RegularPriorityProfile.fromMap((map['regularPriorityProfile'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      spotPriorityProfile: map['spotPriorityProfile'] == null ? null : pulumi.Output.create<SpotPriorityProfile>(SpotPriorityProfile.fromMap((map['spotPriorityProfile'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vmAttributes: map['vmAttributes'] == null ? null : pulumi.Output.create<VMAttributes>(VMAttributes.fromMap((map['vmAttributes'] as Map).cast<String, dynamic>())),
-      vmSizesProfile: pulumi.Output.create<List<VmSizeProfile>>(pulumi.Input.decodeList<VmSizeProfile>(map['vmSizesProfile'], (value) => VmSizeProfile.fromMap((value as Map).cast<String, dynamic>()))),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      additionalLocationsProfile: map['additionalLocationsProfile'] == null ? null : (AdditionalLocationsProfile.fromMap((map['additionalLocationsProfile'] as Map).cast<String, dynamic>())).input(),
+      computeProfile: (ComputeProfile.fromMap((map['computeProfile'] as Map).cast<String, dynamic>())).input(),
+      fleetName: map['fleetName'] == null ? null : (map['fleetName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      regularPriorityProfile: map['regularPriorityProfile'] == null ? null : (RegularPriorityProfile.fromMap((map['regularPriorityProfile'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      spotPriorityProfile: map['spotPriorityProfile'] == null ? null : (SpotPriorityProfile.fromMap((map['spotPriorityProfile'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vmAttributes: map['vmAttributes'] == null ? null : (VMAttributes.fromMap((map['vmAttributes'] as Map).cast<String, dynamic>())).input(),
+      vmSizesProfile: (pulumi.Input.decodeList<VmSizeProfile>(map['vmSizesProfile'], (value) => VmSizeProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

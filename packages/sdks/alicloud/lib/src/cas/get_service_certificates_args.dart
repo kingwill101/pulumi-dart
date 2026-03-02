@@ -28,19 +28,13 @@ class GetServiceCertificatesArgs {
   /// [nameRegex] A regex string to filter results by Ssl Certificates name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetServiceCertificatesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? keyword,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      keyword = pulumi.Input.asOptionalInput<String>(keyword),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.enableDetails,
+    this.ids,
+    this.keyword,
+    this.lang,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetServiceCertificatesArgs {
 
   factory GetServiceCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceCertificatesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      keyword: map['keyword'] == null ? null : pulumi.Output.create<String>(map['keyword'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

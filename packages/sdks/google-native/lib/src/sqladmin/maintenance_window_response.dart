@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes.
 class MaintenanceWindowResponse {
   /// day of week (1-7), starting on Monday.
-  final int day;
+  final pulumi.Input<int> day;
   /// hour of day - 0 to 23.
-  final int hour;
+  final pulumi.Input<int> hour;
   /// This is always `sql#maintenanceWindow`.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
-  final String updateTrack;
+  final pulumi.Input<String> updateTrack;
 
   /// Creates a new [MaintenanceWindowResponse].
   /// [day] day of week (1-7), starting on Monday.
@@ -35,10 +36,10 @@ class MaintenanceWindowResponse {
 
   factory MaintenanceWindowResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowResponse(
-      day: map['day'] as int,
-      hour: map['hour'] as int,
-      kind: map['kind'] as String,
-      updateTrack: map['updateTrack'] as String,
+      day: (map['day'] as int).input(),
+      hour: (map['hour'] as int).input(),
+      kind: (map['kind'] as String).input(),
+      updateTrack: (map['updateTrack'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSaslAclsAcl {
   /// The operation type of the sasl acl.
-  final String aclOperationType;
+  final pulumi.Input<String> aclOperationType;
   /// Get results for the specified resource name.
-  final String aclResourceName;
+  final pulumi.Input<String> aclResourceName;
   /// The resource pattern type of the sasl acl.
-  final String aclResourcePatternType;
+  final pulumi.Input<String> aclResourcePatternType;
   /// Get results for the specified resource type.
-  final String aclResourceType;
+  final pulumi.Input<String> aclResourceType;
   /// The host of the sasl acl.
-  final String host;
+  final pulumi.Input<String> host;
   /// Get results for the specified username.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GetSaslAclsAcl].
   /// [aclOperationType] The operation type of the sasl acl.
@@ -44,12 +45,12 @@ class GetSaslAclsAcl {
 
   factory GetSaslAclsAcl.fromMap(Map<String, dynamic> map) {
     return GetSaslAclsAcl(
-      aclOperationType: map['aclOperationType'] as String,
-      aclResourceName: map['aclResourceName'] as String,
-      aclResourcePatternType: map['aclResourcePatternType'] as String,
-      aclResourceType: map['aclResourceType'] as String,
-      host: map['host'] as String,
-      username: map['username'] as String,
+      aclOperationType: (map['aclOperationType'] as String).input(),
+      aclResourceName: (map['aclResourceName'] as String).input(),
+      aclResourcePatternType: (map['aclResourcePatternType'] as String).input(),
+      aclResourceType: (map['aclResourceType'] as String).input(),
+      host: (map['host'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

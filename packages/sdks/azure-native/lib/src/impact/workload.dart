@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about the impacted workload
 class Workload {
   /// the scenario for the workload
-  final String? context;
+  final pulumi.Input<String>? context;
   /// Tool used to interact with Azure. SDK, AzPortal, etc.., Other
-  final String? toolset;
+  final pulumi.Input<String>? toolset;
 
   /// Creates a new [Workload].
   /// [context] the scenario for the workload
@@ -25,8 +26,8 @@ class Workload {
 
   factory Workload.fromMap(Map<String, dynamic> map) {
     return Workload(
-      context: map['context'] == null ? null : map['context'] as String,
-      toolset: map['toolset'] == null ? null : map['toolset'] as String,
+      context: map['context'] == null ? null : (map['context'] as String).input(),
+      toolset: map['toolset'] == null ? null : (map['toolset'] as String).input(),
     );
   }
 }

@@ -6,14 +6,14 @@ import 'instruction_step_details.dart';
 /// Instruction steps to enable the connector.
 class InstructionStep {
   /// Gets or sets the instruction step description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Gets or sets the inner instruction steps details.
   /// For Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
-  final List<InstructionStep>? innerSteps;
+  final pulumi.Input<List<InstructionStep>>? innerSteps;
   /// Gets or sets the instruction step details.
-  final List<InstructionStepDetails>? instructions;
+  final pulumi.Input<List<InstructionStepDetails>>? instructions;
   /// Gets or sets the instruction step title.
-  final String? title;
+  final pulumi.Input<String>? title;
 
   /// Creates a new [InstructionStep].
   /// [description] Gets or sets the instruction step description.
@@ -30,18 +30,18 @@ class InstructionStep {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'innerSteps': ?innerSteps == null ? null : pulumi.Input.encodeList<InstructionStep, Map<String, dynamic>>(innerSteps!, (value) => value.toMap()),
-      'instructions': ?instructions == null ? null : pulumi.Input.encodeList<InstructionStepDetails, Map<String, dynamic>>(instructions!, (value) => value.toMap()),
+      'innerSteps': ?pulumi.Input.mapOptionalInputValue<List<InstructionStep>, List<Map<String, dynamic>>>(innerSteps, (value) => pulumi.Input.encodeList<InstructionStep, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'instructions': ?pulumi.Input.mapOptionalInputValue<List<InstructionStepDetails>, List<Map<String, dynamic>>>(instructions, (value) => pulumi.Input.encodeList<InstructionStepDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
       'title': ?title,
     };
   }
 
   factory InstructionStep.fromMap(Map<String, dynamic> map) {
     return InstructionStep(
-      description: map['description'] == null ? null : map['description'] as String,
-      innerSteps: map['innerSteps'] == null ? null : pulumi.Input.decodeList<InstructionStep>(map['innerSteps'], (value) => InstructionStep.fromMap((value as Map).cast<String, dynamic>())),
-      instructions: map['instructions'] == null ? null : pulumi.Input.decodeList<InstructionStepDetails>(map['instructions'], (value) => InstructionStepDetails.fromMap((value as Map).cast<String, dynamic>())),
-      title: map['title'] == null ? null : map['title'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      innerSteps: map['innerSteps'] == null ? null : (pulumi.Input.decodeList<InstructionStep>(map['innerSteps'], (value) => InstructionStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instructions: map['instructions'] == null ? null : (pulumi.Input.decodeList<InstructionStepDetails>(map['instructions'], (value) => InstructionStepDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

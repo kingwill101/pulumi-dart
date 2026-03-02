@@ -6,23 +6,23 @@ import 'scheduled_query_rules_alert_v2_criteria_failing_periods.dart';
 
 class ScheduledQueryRulesAlertV2Criteria {
   /// A `dimension` block as defined below.
-  final List<ScheduledQueryRulesAlertV2CriteriaDimension>? dimensions;
+  final pulumi.Input<List<ScheduledQueryRulesAlertV2CriteriaDimension>>? dimensions;
   /// A `failing_periods` block as defined below.
-  final ScheduledQueryRulesAlertV2CriteriaFailingPeriods? failingPeriods;
+  final pulumi.Input<ScheduledQueryRulesAlertV2CriteriaFailingPeriods>? failingPeriods;
   /// Specifies the column containing the metric measure number.
   ///
   /// > **Note:** `metric_measure_column` is required if `time_aggregation_method` is `Average`, `Maximum`, `Minimum`, or `Total`. And `metric_measure_column` can not be specified if `time_aggregation_method` is `Count`.
-  final String? metricMeasureColumn;
+  final pulumi.Input<String>? metricMeasureColumn;
   /// Specifies the criteria operator. Possible values are `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan`,and `LessThanOrEqual`.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// The query to run on logs. The results returned by this query are used to populate the alert.
-  final String query;
+  final pulumi.Input<String> query;
   /// Specifies the column containing the resource ID. The content of the column must be an uri formatted as resource ID.
-  final String? resourceIdColumn;
+  final pulumi.Input<String>? resourceIdColumn;
   /// Specifies the criteria threshold value that activates the alert.
-  final double threshold;
+  final pulumi.Input<double> threshold;
   /// The type of aggregation to apply to the data points in aggregation granularity. Possible values are `Average`, `Count`, `Maximum`, `Minimum`,and `Total`.
-  final String timeAggregationMethod;
+  final pulumi.Input<String> timeAggregationMethod;
 
   /// Creates a new [ScheduledQueryRulesAlertV2Criteria].
   /// [dimensions] A `dimension` block as defined below.
@@ -46,8 +46,8 @@ class ScheduledQueryRulesAlertV2Criteria {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<ScheduledQueryRulesAlertV2CriteriaDimension, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
-      'failingPeriods': ?failingPeriods == null ? null : failingPeriods!.toMap(),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<ScheduledQueryRulesAlertV2CriteriaDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<ScheduledQueryRulesAlertV2CriteriaDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'failingPeriods': ?pulumi.Input.mapOptionalInputValue<ScheduledQueryRulesAlertV2CriteriaFailingPeriods, Map<String, dynamic>>(failingPeriods, (value) => value.toMap()),
       'metricMeasureColumn': ?metricMeasureColumn,
       'operator': operator,
       'query': query,
@@ -59,14 +59,14 @@ class ScheduledQueryRulesAlertV2Criteria {
 
   factory ScheduledQueryRulesAlertV2Criteria.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesAlertV2Criteria(
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<ScheduledQueryRulesAlertV2CriteriaDimension>(map['dimensions'], (value) => ScheduledQueryRulesAlertV2CriteriaDimension.fromMap((value as Map).cast<String, dynamic>())),
-      failingPeriods: map['failingPeriods'] == null ? null : ScheduledQueryRulesAlertV2CriteriaFailingPeriods.fromMap((map['failingPeriods'] as Map).cast<String, dynamic>()),
-      metricMeasureColumn: map['metricMeasureColumn'] == null ? null : map['metricMeasureColumn'] as String,
-      operator: map['operator'] as String,
-      query: map['query'] as String,
-      resourceIdColumn: map['resourceIdColumn'] == null ? null : map['resourceIdColumn'] as String,
-      threshold: map['threshold'] as double,
-      timeAggregationMethod: map['timeAggregationMethod'] as String,
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryRulesAlertV2CriteriaDimension>(map['dimensions'], (value) => ScheduledQueryRulesAlertV2CriteriaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failingPeriods: map['failingPeriods'] == null ? null : (ScheduledQueryRulesAlertV2CriteriaFailingPeriods.fromMap((map['failingPeriods'] as Map).cast<String, dynamic>())).input(),
+      metricMeasureColumn: map['metricMeasureColumn'] == null ? null : (map['metricMeasureColumn'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      query: (map['query'] as String).input(),
+      resourceIdColumn: map['resourceIdColumn'] == null ? null : (map['resourceIdColumn'] as String).input(),
+      threshold: (map['threshold'] as double).input(),
+      timeAggregationMethod: (map['timeAggregationMethod'] as String).input(),
     );
   }
 }

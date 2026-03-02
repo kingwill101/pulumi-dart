@@ -34,23 +34,15 @@ class UsageLimitArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   UsageLimitArgs({
-    required pulumi.Output<int> amount,
-    pulumi.Output<String>? breachAction,
-    required pulumi.Output<String> clusterIdentifier,
-    required pulumi.Output<String> featureType,
-    required pulumi.Output<String> limitType,
-    pulumi.Output<String>? period,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      amount = pulumi.Input.asInput<int>(amount),
-      breachAction = pulumi.Input.asOptionalInput<String>(breachAction),
-      clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
-      featureType = pulumi.Input.asInput<String>(featureType),
-      limitType = pulumi.Input.asInput<String>(limitType),
-      period = pulumi.Input.asOptionalInput<String>(period),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.amount,
+    this.breachAction,
+    required this.clusterIdentifier,
+    required this.featureType,
+    required this.limitType,
+    this.period,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class UsageLimitArgs {
 
   factory UsageLimitArgs.fromMap(Map<String, dynamic> map) {
     return UsageLimitArgs(
-      amount: pulumi.Output.create<int>(map['amount'] as int),
-      breachAction: map['breachAction'] == null ? null : pulumi.Output.create<String>(map['breachAction'] as String),
-      clusterIdentifier: pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      featureType: pulumi.Output.create<String>(map['featureType'] as String),
-      limitType: pulumi.Output.create<String>(map['limitType'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<String>(map['period'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      amount: (map['amount'] as int).input(),
+      breachAction: map['breachAction'] == null ? null : (map['breachAction'] as String).input(),
+      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
+      featureType: (map['featureType'] as String).input(),
+      limitType: (map['limitType'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

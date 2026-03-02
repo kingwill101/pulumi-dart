@@ -19,13 +19,10 @@ class GetQueueArgs {
   /// [queueName] The queue name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetQueueArgs({
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> queueName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      queueName = pulumi.Input.asInput<String>(queueName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.namespaceName,
+    required this.queueName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetQueueArgs {
 
   factory GetQueueArgs.fromMap(Map<String, dynamic> map) {
     return GetQueueArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      queueName: pulumi.Output.create<String>(map['queueName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      queueName: (map['queueName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

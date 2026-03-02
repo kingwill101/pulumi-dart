@@ -48,21 +48,14 @@ class LogViewIamBindingArgs {
   /// [parent] The parent of the resource. Used to find the parent resource to bind the IAM policy to
   /// [role] The role that should be applied. Only one
   LogViewIamBindingArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<LogViewIamBindingCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<String> role,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      condition = pulumi.Input.asOptionalInput<LogViewIamBindingCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent),
-      role = pulumi.Input.asInput<String>(role);
+    required this.bucket,
+    this.condition,
+    this.location,
+    required this.members,
+    this.name,
+    required this.parent,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,13 +71,13 @@ class LogViewIamBindingArgs {
 
   factory LogViewIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return LogViewIamBindingArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<LogViewIamBindingCondition>(LogViewIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      bucket: (map['bucket'] as String).input(),
+      condition: map['condition'] == null ? null : (LogViewIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

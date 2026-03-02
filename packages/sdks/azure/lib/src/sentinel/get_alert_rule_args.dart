@@ -16,11 +16,9 @@ class GetAlertRuleArgs {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace this Sentinel Alert Rule belongs to.
   /// [name] The name which should be used for this Sentinel Alert Rule.
   GetAlertRuleArgs({
-    required pulumi.Output<String> logAnalyticsWorkspaceId,
-    required pulumi.Output<String> name,
-  }) :
-      logAnalyticsWorkspaceId = pulumi.Input.asInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.logAnalyticsWorkspaceId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAlertRuleArgs {
 
   factory GetAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleArgs(
-      logAnalyticsWorkspaceId: pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

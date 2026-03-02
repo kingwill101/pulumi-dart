@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceGuardOperationDetailResponse {
-  final String? defaultResourceRequest;
-  final String? vaultCriticalOperation;
+  final pulumi.Input<String>? defaultResourceRequest;
+  final pulumi.Input<String>? vaultCriticalOperation;
 
   /// Creates a new [ResourceGuardOperationDetailResponse].
   /// [defaultResourceRequest] Optional.
@@ -22,8 +23,8 @@ class ResourceGuardOperationDetailResponse {
 
   factory ResourceGuardOperationDetailResponse.fromMap(Map<String, dynamic> map) {
     return ResourceGuardOperationDetailResponse(
-      defaultResourceRequest: map['defaultResourceRequest'] == null ? null : map['defaultResourceRequest'] as String,
-      vaultCriticalOperation: map['vaultCriticalOperation'] == null ? null : map['vaultCriticalOperation'] as String,
+      defaultResourceRequest: map['defaultResourceRequest'] == null ? null : (map['defaultResourceRequest'] as String).input(),
+      vaultCriticalOperation: map['vaultCriticalOperation'] == null ? null : (map['vaultCriticalOperation'] as String).input(),
     );
   }
 }

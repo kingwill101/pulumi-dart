@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetPhysicalTableMapCustomSqlColumn {
   /// Name of this column in the underlying data source.
-  final String name;
+  final pulumi.Input<String> name;
   /// Data type of the column.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DataSetPhysicalTableMapCustomSqlColumn].
   /// [name] Name of this column in the underlying data source.
@@ -24,8 +25,8 @@ class DataSetPhysicalTableMapCustomSqlColumn {
 
   factory DataSetPhysicalTableMapCustomSqlColumn.fromMap(Map<String, dynamic> map) {
     return DataSetPhysicalTableMapCustomSqlColumn(
-      name: map['name'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

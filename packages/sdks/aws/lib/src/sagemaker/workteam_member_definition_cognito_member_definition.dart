@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkteamMemberDefinitionCognitoMemberDefinition {
   /// An identifier for an application client. You must create the app client ID using Amazon Cognito.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// An identifier for a user group.
-  final String userGroup;
+  final pulumi.Input<String> userGroup;
   /// An identifier for a user pool. The user pool must be in the same region as the service that you are calling.
-  final String userPool;
+  final pulumi.Input<String> userPool;
 
   /// Creates a new [WorkteamMemberDefinitionCognitoMemberDefinition].
   /// [clientId] An identifier for an application client. You must create the app client ID using Amazon Cognito.
@@ -29,9 +30,9 @@ class WorkteamMemberDefinitionCognitoMemberDefinition {
 
   factory WorkteamMemberDefinitionCognitoMemberDefinition.fromMap(Map<String, dynamic> map) {
     return WorkteamMemberDefinitionCognitoMemberDefinition(
-      clientId: map['clientId'] as String,
-      userGroup: map['userGroup'] as String,
-      userPool: map['userPool'] as String,
+      clientId: (map['clientId'] as String).input(),
+      userGroup: (map['userGroup'] as String).input(),
+      userPool: (map['userPool'] as String).input(),
     );
   }
 }

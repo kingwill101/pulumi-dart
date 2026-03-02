@@ -16,13 +16,10 @@ class OrganizationAdminAccountRegistrationState {
   /// [organizationId] Identifier for the organization.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   OrganizationAdminAccountRegistrationState({
-    pulumi.Output<String>? adminAccountId,
-    pulumi.Output<String>? organizationId,
-    pulumi.Output<String>? region,
-  }) :
-      adminAccountId = pulumi.Input.asOptionalInput<String>(adminAccountId),
-      organizationId = pulumi.Input.asOptionalInput<String>(organizationId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.adminAccountId,
+    this.organizationId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class OrganizationAdminAccountRegistrationState {
 
   factory OrganizationAdminAccountRegistrationState.fromMap(Map<String, dynamic> map) {
     return OrganizationAdminAccountRegistrationState(
-      adminAccountId: map['adminAccountId'] == null ? null : pulumi.Output.create<String>(map['adminAccountId'] as String),
-      organizationId: map['organizationId'] == null ? null : pulumi.Output.create<String>(map['organizationId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      adminAccountId: map['adminAccountId'] == null ? null : (map['adminAccountId'] as String).input(),
+      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

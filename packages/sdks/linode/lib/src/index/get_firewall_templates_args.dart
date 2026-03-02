@@ -13,9 +13,8 @@ class GetFirewallTemplatesArgs {
   /// Creates a new [GetFirewallTemplatesArgs].
   /// [filters] Optional.
   GetFirewallTemplatesArgs({
-    pulumi.Output<List<GetFirewallTemplatesFilter>>? filters,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetFirewallTemplatesFilter>>(filters);
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetFirewallTemplatesArgs {
 
   factory GetFirewallTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallTemplatesArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetFirewallTemplatesFilter>>(pulumi.Input.decodeList<GetFirewallTemplatesFilter>(map['filters'], (value) => GetFirewallTemplatesFilter.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetFirewallTemplatesFilter>(map['filters'], (value) => GetFirewallTemplatesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

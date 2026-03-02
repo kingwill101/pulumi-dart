@@ -47,23 +47,15 @@ class NoteArgs {
   /// [relatedUrls] URLs associated with this note and related metadata.
   /// [shortDescription] A one sentence description of the note.
   NoteArgs({
-    required pulumi.Output<NoteAttestationAuthority> attestationAuthority,
-    pulumi.Output<String>? expirationTime,
-    pulumi.Output<String>? longDescription,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? relatedNoteNames,
-    pulumi.Output<List<NoteRelatedUrl>>? relatedUrls,
-    pulumi.Output<String>? shortDescription,
-  }) :
-      attestationAuthority = pulumi.Input.asInput<NoteAttestationAuthority>(attestationAuthority),
-      expirationTime = pulumi.Input.asOptionalInput<String>(expirationTime),
-      longDescription = pulumi.Input.asOptionalInput<String>(longDescription),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      relatedNoteNames = pulumi.Input.asOptionalInput<List<String>>(relatedNoteNames),
-      relatedUrls = pulumi.Input.asOptionalInput<List<NoteRelatedUrl>>(relatedUrls),
-      shortDescription = pulumi.Input.asOptionalInput<String>(shortDescription);
+    required this.attestationAuthority,
+    this.expirationTime,
+    this.longDescription,
+    this.name,
+    this.project,
+    this.relatedNoteNames,
+    this.relatedUrls,
+    this.shortDescription,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,14 +72,14 @@ class NoteArgs {
 
   factory NoteArgs.fromMap(Map<String, dynamic> map) {
     return NoteArgs(
-      attestationAuthority: pulumi.Output.create<NoteAttestationAuthority>(NoteAttestationAuthority.fromMap((map['attestationAuthority'] as Map).cast<String, dynamic>())),
-      expirationTime: map['expirationTime'] == null ? null : pulumi.Output.create<String>(map['expirationTime'] as String),
-      longDescription: map['longDescription'] == null ? null : pulumi.Output.create<String>(map['longDescription'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      relatedNoteNames: map['relatedNoteNames'] == null ? null : pulumi.Output.create<List<String>>((map['relatedNoteNames'] as List).cast<String>()),
-      relatedUrls: map['relatedUrls'] == null ? null : pulumi.Output.create<List<NoteRelatedUrl>>(pulumi.Input.decodeList<NoteRelatedUrl>(map['relatedUrls'], (value) => NoteRelatedUrl.fromMap((value as Map).cast<String, dynamic>()))),
-      shortDescription: map['shortDescription'] == null ? null : pulumi.Output.create<String>(map['shortDescription'] as String),
+      attestationAuthority: (NoteAttestationAuthority.fromMap((map['attestationAuthority'] as Map).cast<String, dynamic>())).input(),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
+      longDescription: map['longDescription'] == null ? null : (map['longDescription'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      relatedNoteNames: map['relatedNoteNames'] == null ? null : ((map['relatedNoteNames'] as List).cast<String>()).input(),
+      relatedUrls: map['relatedUrls'] == null ? null : (pulumi.Input.decodeList<NoteRelatedUrl>(map['relatedUrls'], (value) => NoteRelatedUrl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shortDescription: map['shortDescription'] == null ? null : (map['shortDescription'] as String).input(),
     );
   }
 }

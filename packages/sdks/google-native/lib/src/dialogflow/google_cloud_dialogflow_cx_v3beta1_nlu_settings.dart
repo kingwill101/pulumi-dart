@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3beta1_nlu_settings_model_training_mode.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_nlu_settings_model_type.dart';
 
 /// Settings related to NLU.
 class GoogleCloudDialogflowCxV3beta1NluSettings {
   /// To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
-  final double? classificationThreshold;
+  final pulumi.Input<double>? classificationThreshold;
   /// Indicates NLU model training mode.
-  final GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode? modelTrainingMode;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode>? modelTrainingMode;
   /// Indicates the type of NLU model.
-  final GoogleCloudDialogflowCxV3beta1NluSettingsModelType? modelType;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1NluSettingsModelType>? modelType;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1NluSettings].
   /// [classificationThreshold] To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
@@ -25,16 +26,16 @@ class GoogleCloudDialogflowCxV3beta1NluSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'classificationThreshold': ?classificationThreshold,
-      'modelTrainingMode': ?modelTrainingMode == null ? null : modelTrainingMode!.value,
-      'modelType': ?modelType == null ? null : modelType!.value,
+      'modelTrainingMode': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode, String>(modelTrainingMode, (value) => value.value),
+      'modelType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1NluSettingsModelType, String>(modelType, (value) => value.value),
     };
   }
 
   factory GoogleCloudDialogflowCxV3beta1NluSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1NluSettings(
-      classificationThreshold: map['classificationThreshold'] == null ? null : map['classificationThreshold'] as double,
-      modelTrainingMode: map['modelTrainingMode'] == null ? null : GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode.fromValue(map['modelTrainingMode'] as String),
-      modelType: map['modelType'] == null ? null : GoogleCloudDialogflowCxV3beta1NluSettingsModelType.fromValue(map['modelType'] as String),
+      classificationThreshold: map['classificationThreshold'] == null ? null : (map['classificationThreshold'] as double).input(),
+      modelTrainingMode: map['modelTrainingMode'] == null ? null : (GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode.fromValue(map['modelTrainingMode'] as String)).input(),
+      modelType: map['modelType'] == null ? null : (GoogleCloudDialogflowCxV3beta1NluSettingsModelType.fromValue(map['modelType'] as String)).input(),
     );
   }
 }

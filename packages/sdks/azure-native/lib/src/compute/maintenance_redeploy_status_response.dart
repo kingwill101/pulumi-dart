@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Maintenance Operation Status.
 class MaintenanceRedeployStatusResponse {
   /// True, if customer is allowed to perform Maintenance.
-  final bool? isCustomerInitiatedMaintenanceAllowed;
+  final pulumi.Input<bool>? isCustomerInitiatedMaintenanceAllowed;
   /// Message returned for the last Maintenance Operation.
-  final String? lastOperationMessage;
+  final pulumi.Input<String>? lastOperationMessage;
   /// The Last Maintenance Operation Result Code.
-  final String? lastOperationResultCode;
+  final pulumi.Input<String>? lastOperationResultCode;
   /// End Time for the Maintenance Window.
-  final String? maintenanceWindowEndTime;
+  final pulumi.Input<String>? maintenanceWindowEndTime;
   /// Start Time for the Maintenance Window.
-  final String? maintenanceWindowStartTime;
+  final pulumi.Input<String>? maintenanceWindowStartTime;
   /// End Time for the Pre Maintenance Window.
-  final String? preMaintenanceWindowEndTime;
+  final pulumi.Input<String>? preMaintenanceWindowEndTime;
   /// Start Time for the Pre Maintenance Window.
-  final String? preMaintenanceWindowStartTime;
+  final pulumi.Input<String>? preMaintenanceWindowStartTime;
 
   /// Creates a new [MaintenanceRedeployStatusResponse].
   /// [isCustomerInitiatedMaintenanceAllowed] True, if customer is allowed to perform Maintenance.
@@ -50,13 +51,13 @@ class MaintenanceRedeployStatusResponse {
 
   factory MaintenanceRedeployStatusResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceRedeployStatusResponse(
-      isCustomerInitiatedMaintenanceAllowed: map['isCustomerInitiatedMaintenanceAllowed'] == null ? null : map['isCustomerInitiatedMaintenanceAllowed'] as bool,
-      lastOperationMessage: map['lastOperationMessage'] == null ? null : map['lastOperationMessage'] as String,
-      lastOperationResultCode: map['lastOperationResultCode'] == null ? null : map['lastOperationResultCode'] as String,
-      maintenanceWindowEndTime: map['maintenanceWindowEndTime'] == null ? null : map['maintenanceWindowEndTime'] as String,
-      maintenanceWindowStartTime: map['maintenanceWindowStartTime'] == null ? null : map['maintenanceWindowStartTime'] as String,
-      preMaintenanceWindowEndTime: map['preMaintenanceWindowEndTime'] == null ? null : map['preMaintenanceWindowEndTime'] as String,
-      preMaintenanceWindowStartTime: map['preMaintenanceWindowStartTime'] == null ? null : map['preMaintenanceWindowStartTime'] as String,
+      isCustomerInitiatedMaintenanceAllowed: map['isCustomerInitiatedMaintenanceAllowed'] == null ? null : (map['isCustomerInitiatedMaintenanceAllowed'] as bool).input(),
+      lastOperationMessage: map['lastOperationMessage'] == null ? null : (map['lastOperationMessage'] as String).input(),
+      lastOperationResultCode: map['lastOperationResultCode'] == null ? null : (map['lastOperationResultCode'] as String).input(),
+      maintenanceWindowEndTime: map['maintenanceWindowEndTime'] == null ? null : (map['maintenanceWindowEndTime'] as String).input(),
+      maintenanceWindowStartTime: map['maintenanceWindowStartTime'] == null ? null : (map['maintenanceWindowStartTime'] as String).input(),
+      preMaintenanceWindowEndTime: map['preMaintenanceWindowEndTime'] == null ? null : (map['preMaintenanceWindowEndTime'] as String).input(),
+      preMaintenanceWindowStartTime: map['preMaintenanceWindowStartTime'] == null ? null : (map['preMaintenanceWindowStartTime'] as String).input(),
     );
   }
 }

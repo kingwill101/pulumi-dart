@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Grafana Snapshots settings
 class Snapshots {
   /// Set to false to disable external snapshot publish endpoint
-  final bool? externalEnabled;
+  final pulumi.Input<bool>? externalEnabled;
 
   /// Creates a new [Snapshots].
   /// [externalEnabled] Set to false to disable external snapshot publish endpoint
@@ -20,7 +21,7 @@ class Snapshots {
 
   factory Snapshots.fromMap(Map<String, dynamic> map) {
     return Snapshots(
-      externalEnabled: map['externalEnabled'] == null ? null : map['externalEnabled'] as bool,
+      externalEnabled: map['externalEnabled'] == null ? null : (map['externalEnabled'] as bool).input(),
     );
   }
 }

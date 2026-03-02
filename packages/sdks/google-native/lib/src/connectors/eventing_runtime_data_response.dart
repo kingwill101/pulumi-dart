@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'eventing_status_response.dart';
 
 /// Eventing runtime data has the details related to eventing managed by the system.
 class EventingRuntimeDataResponse {
   /// Events listener endpoint. The value will populated after provisioning the events listener.
-  final String eventsListenerEndpoint;
+  final pulumi.Input<String> eventsListenerEndpoint;
   /// Events listener PSC Service attachment. The value will be populated after provisioning the events listener with private connectivity enabled.
-  final String eventsListenerPscSa;
+  final pulumi.Input<String> eventsListenerPscSa;
   /// Current status of eventing.
-  final EventingStatusResponse status;
+  final pulumi.Input<EventingStatusResponse> status;
 
   /// Creates a new [EventingRuntimeDataResponse].
   /// [eventsListenerEndpoint] Events listener endpoint. The value will populated after provisioning the events listener.
@@ -25,15 +26,15 @@ class EventingRuntimeDataResponse {
     return <String, dynamic>{
       'eventsListenerEndpoint': eventsListenerEndpoint,
       'eventsListenerPscSa': eventsListenerPscSa,
-      'status': status.toMap(),
+      'status': pulumi.Input.mapInputValue<EventingStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory EventingRuntimeDataResponse.fromMap(Map<String, dynamic> map) {
     return EventingRuntimeDataResponse(
-      eventsListenerEndpoint: map['eventsListenerEndpoint'] as String,
-      eventsListenerPscSa: map['eventsListenerPscSa'] as String,
-      status: EventingStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      eventsListenerEndpoint: (map['eventsListenerEndpoint'] as String).input(),
+      eventsListenerPscSa: (map['eventsListenerPscSa'] as String).input(),
+      status: (EventingStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationCustomHostAliasV2 {
   /// The domain name or hostname.
-  final String? hostName;
+  final pulumi.Input<String>? hostName;
   /// The IP address.
-  final String? ip;
+  final pulumi.Input<String>? ip;
 
   /// Creates a new [ApplicationCustomHostAliasV2].
   /// [hostName] The domain name or hostname.
@@ -24,8 +25,8 @@ class ApplicationCustomHostAliasV2 {
 
   factory ApplicationCustomHostAliasV2.fromMap(Map<String, dynamic> map) {
     return ApplicationCustomHostAliasV2(
-      hostName: map['hostName'] == null ? null : map['hostName'] as String,
-      ip: map['ip'] == null ? null : map['ip'] as String,
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
     );
   }
 }

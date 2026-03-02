@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The session detail for a target.
 class BastionActiveSessionResponse {
   /// The protocol used to connect to the target.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The type of the resource.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// Duration in mins the session has been active.
-  final double sessionDurationInMins;
+  final pulumi.Input<double> sessionDurationInMins;
   /// A unique id for the session.
-  final String sessionId;
+  final pulumi.Input<String> sessionId;
   /// The time when the session started.
-  final dynamic startTime;
+  final pulumi.Input<dynamic> startTime;
   /// The host name of the target.
-  final String targetHostName;
+  final pulumi.Input<String> targetHostName;
   /// The IP Address of the target.
-  final String targetIpAddress;
+  final pulumi.Input<String> targetIpAddress;
   /// The resource group of the target.
-  final String targetResourceGroup;
+  final pulumi.Input<String> targetResourceGroup;
   /// The resource id of the target.
-  final String targetResourceId;
+  final pulumi.Input<String> targetResourceId;
   /// The subscription id for the target virtual machine.
-  final String targetSubscriptionId;
+  final pulumi.Input<String> targetSubscriptionId;
   /// The user name who is active on this session.
-  final String userName;
+  final pulumi.Input<String> userName;
 
   /// Creates a new [BastionActiveSessionResponse].
   /// [protocol] The protocol used to connect to the target.
@@ -70,17 +71,17 @@ class BastionActiveSessionResponse {
 
   factory BastionActiveSessionResponse.fromMap(Map<String, dynamic> map) {
     return BastionActiveSessionResponse(
-      protocol: map['protocol'] as String,
-      resourceType: map['resourceType'] as String,
-      sessionDurationInMins: map['sessionDurationInMins'] as double,
-      sessionId: map['sessionId'] as String,
-      startTime: map['startTime'],
-      targetHostName: map['targetHostName'] as String,
-      targetIpAddress: map['targetIpAddress'] as String,
-      targetResourceGroup: map['targetResourceGroup'] as String,
-      targetResourceId: map['targetResourceId'] as String,
-      targetSubscriptionId: map['targetSubscriptionId'] as String,
-      userName: map['userName'] as String,
+      protocol: (map['protocol'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      sessionDurationInMins: (map['sessionDurationInMins'] as double).input(),
+      sessionId: (map['sessionId'] as String).input(),
+      startTime: (map['startTime']).input(),
+      targetHostName: (map['targetHostName'] as String).input(),
+      targetIpAddress: (map['targetIpAddress'] as String).input(),
+      targetResourceGroup: (map['targetResourceGroup'] as String).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
+      targetSubscriptionId: (map['targetSubscriptionId'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

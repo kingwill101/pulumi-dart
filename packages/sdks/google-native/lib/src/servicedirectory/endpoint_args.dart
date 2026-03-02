@@ -36,27 +36,17 @@ class EndpointArgs {
   /// [project] Optional.
   /// [serviceId] Required.
   EndpointArgs({
-    pulumi.Output<String>? address,
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> endpointId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespaceId,
-    pulumi.Output<String>? network,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceId,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      endpointId = pulumi.Input.asInput<String>(endpointId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    this.address,
+    this.annotations,
+    required this.endpointId,
+    this.location,
+    this.name,
+    required this.namespaceId,
+    this.network,
+    this.port,
+    this.project,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,16 +65,16 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      endpointId: pulumi.Output.create<String>(map['endpointId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      endpointId: (map['endpointId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

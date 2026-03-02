@@ -61,27 +61,17 @@ class ProtocolMountTargetArgs {
   /// [vswitchId] The vSwitch ID of the protocol service mount target.
   /// [vswitchIds] The vSwitch IDs of the protocol service mount target.
   ProtocolMountTargetArgs({
-    pulumi.Output<String>? accessGroupName,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> fileSystemId,
-    pulumi.Output<String>? fsetId,
-    pulumi.Output<String>? path,
-    required pulumi.Output<String> protocolServiceId,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-    pulumi.Output<List<String>>? vswitchIds,
-  }) :
-      accessGroupName = pulumi.Input.asOptionalInput<String>(accessGroupName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      fsetId = pulumi.Input.asOptionalInput<String>(fsetId),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      protocolServiceId = pulumi.Input.asInput<String>(protocolServiceId),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId),
-      vswitchIds = pulumi.Input.asOptionalInput<List<String>>(vswitchIds);
+    this.accessGroupName,
+    this.description,
+    this.dryRun,
+    required this.fileSystemId,
+    this.fsetId,
+    this.path,
+    required this.protocolServiceId,
+    this.vpcId,
+    this.vswitchId,
+    this.vswitchIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,16 +90,16 @@ class ProtocolMountTargetArgs {
 
   factory ProtocolMountTargetArgs.fromMap(Map<String, dynamic> map) {
     return ProtocolMountTargetArgs(
-      accessGroupName: map['accessGroupName'] == null ? null : pulumi.Output.create<String>(map['accessGroupName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      fsetId: map['fsetId'] == null ? null : pulumi.Output.create<String>(map['fsetId'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      protocolServiceId: pulumi.Output.create<String>(map['protocolServiceId'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
-      vswitchIds: map['vswitchIds'] == null ? null : pulumi.Output.create<List<String>>((map['vswitchIds'] as List).cast<String>()),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      fsetId: map['fsetId'] == null ? null : (map['fsetId'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      protocolServiceId: (map['protocolServiceId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
     );
   }
 }

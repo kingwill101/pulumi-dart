@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetActionGroupEmailReceiver {
   /// The email address of this receiver.
-  final String emailAddress;
+  final pulumi.Input<String> emailAddress;
   /// Specifies the name of the Action Group.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates whether to use common alert schema.
-  final bool useCommonAlertSchema;
+  final pulumi.Input<bool> useCommonAlertSchema;
 
   /// Creates a new [GetActionGroupEmailReceiver].
   /// [emailAddress] The email address of this receiver.
@@ -29,9 +30,9 @@ class GetActionGroupEmailReceiver {
 
   factory GetActionGroupEmailReceiver.fromMap(Map<String, dynamic> map) {
     return GetActionGroupEmailReceiver(
-      emailAddress: map['emailAddress'] as String,
-      name: map['name'] as String,
-      useCommonAlertSchema: map['useCommonAlertSchema'] as bool,
+      emailAddress: (map['emailAddress'] as String).input(),
+      name: (map['name'] as String).input(),
+      useCommonAlertSchema: (map['useCommonAlertSchema'] as bool).input(),
     );
   }
 }

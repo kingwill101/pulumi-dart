@@ -28,19 +28,13 @@ class FlexibleServerActiveDirectoryAdministratorArgs {
   /// [serverName] The name of the PostgreSQL Flexible Server on which to set the administrator. Changing this forces a new resource to be created.
   /// [tenantId] The Azure Tenant ID. Changing this forces a new resource to be created.
   FlexibleServerActiveDirectoryAdministratorArgs({
-    required pulumi.Output<String> objectId,
-    required pulumi.Output<String> principalName,
-    required pulumi.Output<String> principalType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> tenantId,
-  }) :
-      objectId = pulumi.Input.asInput<String>(objectId),
-      principalName = pulumi.Input.asInput<String>(principalName),
-      principalType = pulumi.Input.asInput<String>(principalType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    required this.objectId,
+    required this.principalName,
+    required this.principalType,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class FlexibleServerActiveDirectoryAdministratorArgs {
 
   factory FlexibleServerActiveDirectoryAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerActiveDirectoryAdministratorArgs(
-      objectId: pulumi.Output.create<String>(map['objectId'] as String),
-      principalName: pulumi.Output.create<String>(map['principalName'] as String),
-      principalType: pulumi.Output.create<String>(map['principalType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      objectId: (map['objectId'] as String).input(),
+      principalName: (map['principalName'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

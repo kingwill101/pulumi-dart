@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a daily schedule.
 class DayDetails {
   /// The time of day the schedule will occur.
-  final String? time;
+  final pulumi.Input<String>? time;
 
   /// Creates a new [DayDetails].
   /// [time] The time of day the schedule will occur.
@@ -20,7 +21,7 @@ class DayDetails {
 
   factory DayDetails.fromMap(Map<String, dynamic> map) {
     return DayDetails(
-      time: map['time'] == null ? null : map['time'] as String,
+      time: map['time'] == null ? null : (map['time'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceMultiRegionSetting {
   /// System-generated unique id for the multi-region Service.
-  final String multiRegionId;
+  final pulumi.Input<String> multiRegionId;
   /// The list of regions to deploy the multi-region Service.
-  final List<String> regions;
+  final pulumi.Input<List<String>> regions;
 
   /// Creates a new [GetServiceMultiRegionSetting].
   /// [multiRegionId] System-generated unique id for the multi-region Service.
@@ -24,8 +25,8 @@ class GetServiceMultiRegionSetting {
 
   factory GetServiceMultiRegionSetting.fromMap(Map<String, dynamic> map) {
     return GetServiceMultiRegionSetting(
-      multiRegionId: map['multiRegionId'] as String,
-      regions: (map['regions'] as List).cast<String>(),
+      multiRegionId: (map['multiRegionId'] as String).input(),
+      regions: ((map['regions'] as List).cast<String>()).input(),
     );
   }
 }

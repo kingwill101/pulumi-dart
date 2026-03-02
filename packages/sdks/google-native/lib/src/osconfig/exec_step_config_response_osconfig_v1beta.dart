@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gcs_object_response_osconfig_v1beta.dart';
 
 /// Common configurations for an ExecStep.
 class ExecStepConfigResponseOsconfigV1beta {
   /// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-  final List<int> allowedSuccessCodes;
+  final pulumi.Input<List<int>> allowedSuccessCodes;
   /// A Google Cloud Storage object containing the executable.
-  final GcsObjectResponseOsconfigV1beta gcsObject;
+  final pulumi.Input<GcsObjectResponseOsconfigV1beta> gcsObject;
   /// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-  final String interpreter;
+  final pulumi.Input<String> interpreter;
   /// An absolute path to the executable on the VM.
-  final String localPath;
+  final pulumi.Input<String> localPath;
 
   /// Creates a new [ExecStepConfigResponseOsconfigV1beta].
   /// [allowedSuccessCodes] Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
@@ -28,7 +29,7 @@ class ExecStepConfigResponseOsconfigV1beta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedSuccessCodes': allowedSuccessCodes,
-      'gcsObject': gcsObject.toMap(),
+      'gcsObject': pulumi.Input.mapInputValue<GcsObjectResponseOsconfigV1beta, Map<String, dynamic>>(gcsObject, (value) => value.toMap()),
       'interpreter': interpreter,
       'localPath': localPath,
     };
@@ -36,10 +37,10 @@ class ExecStepConfigResponseOsconfigV1beta {
 
   factory ExecStepConfigResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return ExecStepConfigResponseOsconfigV1beta(
-      allowedSuccessCodes: (map['allowedSuccessCodes'] as List).cast<int>(),
-      gcsObject: GcsObjectResponseOsconfigV1beta.fromMap((map['gcsObject'] as Map).cast<String, dynamic>()),
-      interpreter: map['interpreter'] as String,
-      localPath: map['localPath'] as String,
+      allowedSuccessCodes: ((map['allowedSuccessCodes'] as List).cast<int>()).input(),
+      gcsObject: (GcsObjectResponseOsconfigV1beta.fromMap((map['gcsObject'] as Map).cast<String, dynamic>())).input(),
+      interpreter: (map['interpreter'] as String).input(),
+      localPath: (map['localPath'] as String).input(),
     );
   }
 }

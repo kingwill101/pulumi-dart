@@ -22,15 +22,11 @@ class ExtensionProviderArgs {
   /// [serviceMeshId] The ID of the Service Mesh.
   /// [type] The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
   ExtensionProviderArgs({
-    required pulumi.Output<String> config,
-    required pulumi.Output<String> extensionProviderName,
-    required pulumi.Output<String> serviceMeshId,
-    required pulumi.Output<String> type,
-  }) :
-      config = pulumi.Input.asInput<String>(config),
-      extensionProviderName = pulumi.Input.asInput<String>(extensionProviderName),
-      serviceMeshId = pulumi.Input.asInput<String>(serviceMeshId),
-      type = pulumi.Input.asInput<String>(type);
+    required this.config,
+    required this.extensionProviderName,
+    required this.serviceMeshId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ExtensionProviderArgs {
 
   factory ExtensionProviderArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionProviderArgs(
-      config: pulumi.Output.create<String>(map['config'] as String),
-      extensionProviderName: pulumi.Output.create<String>(map['extensionProviderName'] as String),
-      serviceMeshId: pulumi.Output.create<String>(map['serviceMeshId'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      config: (map['config'] as String).input(),
+      extensionProviderName: (map['extensionProviderName'] as String).input(),
+      serviceMeshId: (map['serviceMeshId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

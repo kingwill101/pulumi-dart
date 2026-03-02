@@ -28,19 +28,13 @@ class SecurityPartnerProviderArgs {
   /// [tags] A mapping of tags which should be assigned to the Security Partner Provider.
   /// [virtualHubId] The ID of the Virtual Hub within which this Security Partner Provider should be created. Changing this forces a new resource to be created.
   SecurityPartnerProviderArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> securityProviderName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? virtualHubId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityProviderName = pulumi.Input.asInput<String>(securityProviderName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualHubId = pulumi.Input.asOptionalInput<String>(virtualHubId);
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    required this.securityProviderName,
+    this.tags,
+    this.virtualHubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SecurityPartnerProviderArgs {
 
   factory SecurityPartnerProviderArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPartnerProviderArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityProviderName: pulumi.Output.create<String>(map['securityProviderName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualHubId: map['virtualHubId'] == null ? null : pulumi.Output.create<String>(map['virtualHubId'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityProviderName: (map['securityProviderName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
     );
   }
 }

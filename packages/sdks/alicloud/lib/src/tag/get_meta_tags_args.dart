@@ -16,11 +16,9 @@ class GetMetaTagsArgs {
   /// [keyName] The name of the key.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetMetaTagsArgs({
-    pulumi.Output<String>? keyName,
-    pulumi.Output<String>? outputFile,
-  }) :
-      keyName = pulumi.Input.asOptionalInput<String>(keyName),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.keyName,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMetaTagsArgs {
 
   factory GetMetaTagsArgs.fromMap(Map<String, dynamic> map) {
     return GetMetaTagsArgs(
-      keyName: map['keyName'] == null ? null : pulumi.Output.create<String>(map['keyName'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

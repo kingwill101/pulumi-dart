@@ -25,17 +25,12 @@ class RegistryCacheRuleArgs {
   /// [sourceRepo] The name of the source repository path. Changing this forces a new resource to be created.
   /// [targetRepo] The name of the new repository path to store artifacts. Changing this forces a new resource to be created.
   RegistryCacheRuleArgs({
-    required pulumi.Output<String> containerRegistryId,
-    pulumi.Output<String>? credentialSetId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> sourceRepo,
-    required pulumi.Output<String> targetRepo,
-  }) :
-      containerRegistryId = pulumi.Input.asInput<String>(containerRegistryId),
-      credentialSetId = pulumi.Input.asOptionalInput<String>(credentialSetId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sourceRepo = pulumi.Input.asInput<String>(sourceRepo),
-      targetRepo = pulumi.Input.asInput<String>(targetRepo);
+    required this.containerRegistryId,
+    this.credentialSetId,
+    this.name,
+    required this.sourceRepo,
+    required this.targetRepo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class RegistryCacheRuleArgs {
 
   factory RegistryCacheRuleArgs.fromMap(Map<String, dynamic> map) {
     return RegistryCacheRuleArgs(
-      containerRegistryId: pulumi.Output.create<String>(map['containerRegistryId'] as String),
-      credentialSetId: map['credentialSetId'] == null ? null : pulumi.Output.create<String>(map['credentialSetId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sourceRepo: pulumi.Output.create<String>(map['sourceRepo'] as String),
-      targetRepo: pulumi.Output.create<String>(map['targetRepo'] as String),
+      containerRegistryId: (map['containerRegistryId'] as String).input(),
+      credentialSetId: map['credentialSetId'] == null ? null : (map['credentialSetId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sourceRepo: (map['sourceRepo'] as String).input(),
+      targetRepo: (map['targetRepo'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppIngressIpSecurityRestriction {
   /// The IP-filter action. `Allow` or `Deny`.
   ///
   /// > **Note:** The `action` types in an all `ip_security_restriction` blocks must be the same for the `ingress`, mixing `Allow` and `Deny` rules is not currently supported by the service.
-  final String action;
+  final pulumi.Input<String> action;
   /// Describe the IP restriction rule that is being sent to the container-app.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The incoming IP address or range of IP addresses (in CIDR notation).
-  final String ipAddressRange;
+  final pulumi.Input<String> ipAddressRange;
   /// Name for the IP restriction rule.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [AppIngressIpSecurityRestriction].
   /// [action] The IP-filter action. `Allow` or `Deny`.
@@ -36,10 +37,10 @@ class AppIngressIpSecurityRestriction {
 
   factory AppIngressIpSecurityRestriction.fromMap(Map<String, dynamic> map) {
     return AppIngressIpSecurityRestriction(
-      action: map['action'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      ipAddressRange: map['ipAddressRange'] as String,
-      name: map['name'] as String,
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipAddressRange: (map['ipAddressRange'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

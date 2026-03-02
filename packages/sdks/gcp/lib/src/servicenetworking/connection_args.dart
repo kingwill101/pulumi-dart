@@ -29,17 +29,12 @@ class ConnectionArgs {
   /// [service] Provider peering service that is managing peering connectivity for a
   /// [updateOnCreationFail] When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
   ConnectionArgs({
-    pulumi.Output<String>? deletionPolicy,
-    required pulumi.Output<String> network,
-    required pulumi.Output<List<String>> reservedPeeringRanges,
-    required pulumi.Output<String> service,
-    pulumi.Output<bool>? updateOnCreationFail,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      network = pulumi.Input.asInput<String>(network),
-      reservedPeeringRanges = pulumi.Input.asInput<List<String>>(reservedPeeringRanges),
-      service = pulumi.Input.asInput<String>(service),
-      updateOnCreationFail = pulumi.Input.asOptionalInput<bool>(updateOnCreationFail);
+    this.deletionPolicy,
+    required this.network,
+    required this.reservedPeeringRanges,
+    required this.service,
+    this.updateOnCreationFail,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      reservedPeeringRanges: pulumi.Output.create<List<String>>((map['reservedPeeringRanges'] as List).cast<String>()),
-      service: pulumi.Output.create<String>(map['service'] as String),
-      updateOnCreationFail: map['updateOnCreationFail'] == null ? null : pulumi.Output.create<bool>(map['updateOnCreationFail'] as bool),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      network: (map['network'] as String).input(),
+      reservedPeeringRanges: ((map['reservedPeeringRanges'] as List).cast<String>()).input(),
+      service: (map['service'] as String).input(),
+      updateOnCreationFail: map['updateOnCreationFail'] == null ? null : (map['updateOnCreationFail'] as bool).input(),
     );
   }
 }

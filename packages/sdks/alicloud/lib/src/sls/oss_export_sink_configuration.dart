@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'oss_export_sink_configuration_sink.dart';
 
 class OssExportSinkConfiguration {
   /// The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
-  final int fromTime;
+  final pulumi.Input<int> fromTime;
   /// The name of the Logstore.
-  final String logstore;
+  final pulumi.Input<String> logstore;
   /// The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
-  final OssExportSinkConfigurationSink sink;
+  final pulumi.Input<OssExportSinkConfigurationSink> sink;
   /// The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
-  final int toTime;
+  final pulumi.Input<int> toTime;
 
   /// Creates a new [OssExportSinkConfiguration].
   /// [fromTime] The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
@@ -33,18 +34,18 @@ class OssExportSinkConfiguration {
       'fromTime': fromTime,
       'logstore': logstore,
       'roleArn': roleArn,
-      'sink': sink.toMap(),
+      'sink': pulumi.Input.mapInputValue<OssExportSinkConfigurationSink, Map<String, dynamic>>(sink, (value) => value.toMap()),
       'toTime': toTime,
     };
   }
 
   factory OssExportSinkConfiguration.fromMap(Map<String, dynamic> map) {
     return OssExportSinkConfiguration(
-      fromTime: map['fromTime'] as int,
-      logstore: map['logstore'] as String,
-      roleArn: map['roleArn'] as String,
-      sink: OssExportSinkConfigurationSink.fromMap((map['sink'] as Map).cast<String, dynamic>()),
-      toTime: map['toTime'] as int,
+      fromTime: (map['fromTime'] as int).input(),
+      logstore: (map['logstore'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      sink: (OssExportSinkConfigurationSink.fromMap((map['sink'] as Map).cast<String, dynamic>())).input(),
+      toTime: (map['toTime'] as int).input(),
     );
   }
 }

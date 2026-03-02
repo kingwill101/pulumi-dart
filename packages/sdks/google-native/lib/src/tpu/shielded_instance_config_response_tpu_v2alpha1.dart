@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A set of Shielded Instance options.
 class ShieldedInstanceConfigResponseTpuV2alpha1 {
   /// Defines whether the instance has Secure Boot enabled.
-  final bool enableSecureBoot;
+  final pulumi.Input<bool> enableSecureBoot;
 
   /// Creates a new [ShieldedInstanceConfigResponseTpuV2alpha1].
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
@@ -20,7 +21,7 @@ class ShieldedInstanceConfigResponseTpuV2alpha1 {
 
   factory ShieldedInstanceConfigResponseTpuV2alpha1.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceConfigResponseTpuV2alpha1(
-      enableSecureBoot: map['enableSecureBoot'] as bool,
+      enableSecureBoot: (map['enableSecureBoot'] as bool).input(),
     );
   }
 }

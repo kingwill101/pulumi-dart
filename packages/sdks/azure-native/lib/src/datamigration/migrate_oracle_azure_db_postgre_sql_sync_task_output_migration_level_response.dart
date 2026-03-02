@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MigrateOracleAzureDbPostgreSqlSyncTaskOutputMigrationLevelResponse {
   /// Migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Result type
   /// Expected value is 'MigrationLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Source server name
-  final String sourceServer;
+  final pulumi.Input<String> sourceServer;
   /// Source server version
-  final String sourceServerVersion;
+  final pulumi.Input<String> sourceServerVersion;
   /// Migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Target server name
-  final String targetServer;
+  final pulumi.Input<String> targetServer;
   /// Target server version
-  final String targetServerVersion;
+  final pulumi.Input<String> targetServerVersion;
 
   /// Creates a new [MigrateOracleAzureDbPostgreSqlSyncTaskOutputMigrationLevelResponse].
   /// [endedOn] Migration end time
@@ -55,14 +56,14 @@ class MigrateOracleAzureDbPostgreSqlSyncTaskOutputMigrationLevelResponse {
 
   factory MigrateOracleAzureDbPostgreSqlSyncTaskOutputMigrationLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateOracleAzureDbPostgreSqlSyncTaskOutputMigrationLevelResponse(
-      endedOn: map['endedOn'] as String,
-      id: map['id'] as String,
-      resultType: map['resultType'] as String,
-      sourceServer: map['sourceServer'] as String,
-      sourceServerVersion: map['sourceServerVersion'] as String,
-      startedOn: map['startedOn'] as String,
-      targetServer: map['targetServer'] as String,
-      targetServerVersion: map['targetServerVersion'] as String,
+      endedOn: (map['endedOn'] as String).input(),
+      id: (map['id'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
+      sourceServer: (map['sourceServer'] as String).input(),
+      sourceServerVersion: (map['sourceServerVersion'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      targetServer: (map['targetServer'] as String).input(),
+      targetServerVersion: (map['targetServerVersion'] as String).input(),
     );
   }
 }

@@ -40,25 +40,16 @@ class EndpointArgs {
   /// [subnetId] The ID of the Subnet from which Private IP Addresses will be allocated for this Private Endpoint. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   EndpointArgs({
-    pulumi.Output<String>? customNetworkInterfaceName,
-    pulumi.Output<List<EndpointIpConfiguration>>? ipConfigurations,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<EndpointPrivateDnsZoneGroup>? privateDnsZoneGroup,
-    required pulumi.Output<EndpointPrivateServiceConnection> privateServiceConnection,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      customNetworkInterfaceName = pulumi.Input.asOptionalInput<String>(customNetworkInterfaceName),
-      ipConfigurations = pulumi.Input.asOptionalInput<List<EndpointIpConfiguration>>(ipConfigurations),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateDnsZoneGroup = pulumi.Input.asOptionalInput<EndpointPrivateDnsZoneGroup>(privateDnsZoneGroup),
-      privateServiceConnection = pulumi.Input.asInput<EndpointPrivateServiceConnection>(privateServiceConnection),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.customNetworkInterfaceName,
+    this.ipConfigurations,
+    this.location,
+    this.name,
+    this.privateDnsZoneGroup,
+    required this.privateServiceConnection,
+    required this.resourceGroupName,
+    required this.subnetId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : pulumi.Output.create<String>(map['customNetworkInterfaceName'] as String),
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Output.create<List<EndpointIpConfiguration>>(pulumi.Input.decodeList<EndpointIpConfiguration>(map['ipConfigurations'], (value) => EndpointIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateDnsZoneGroup: map['privateDnsZoneGroup'] == null ? null : pulumi.Output.create<EndpointPrivateDnsZoneGroup>(EndpointPrivateDnsZoneGroup.fromMap((map['privateDnsZoneGroup'] as Map).cast<String, dynamic>())),
-      privateServiceConnection: pulumi.Output.create<EndpointPrivateServiceConnection>(EndpointPrivateServiceConnection.fromMap((map['privateServiceConnection'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : (map['customNetworkInterfaceName'] as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<EndpointIpConfiguration>(map['ipConfigurations'], (value) => EndpointIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateDnsZoneGroup: map['privateDnsZoneGroup'] == null ? null : (EndpointPrivateDnsZoneGroup.fromMap((map['privateDnsZoneGroup'] as Map).cast<String, dynamic>())).input(),
+      privateServiceConnection: (EndpointPrivateServiceConnection.fromMap((map['privateServiceConnection'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

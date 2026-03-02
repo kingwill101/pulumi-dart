@@ -16,13 +16,10 @@ class CapabilityState {
   /// [parent] Folder on which Capability needs to be updated in the format folders/folder_id.
   /// [value] Capability Value.
   CapabilityState({
-    pulumi.Output<String>? capabilityName,
-    pulumi.Output<String>? parent,
-    pulumi.Output<bool>? value,
-  }) :
-      capabilityName = pulumi.Input.asOptionalInput<String>(capabilityName),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      value = pulumi.Input.asOptionalInput<bool>(value);
+    this.capabilityName,
+    this.parent,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class CapabilityState {
 
   factory CapabilityState.fromMap(Map<String, dynamic> map) {
     return CapabilityState(
-      capabilityName: map['capabilityName'] == null ? null : pulumi.Output.create<String>(map['capabilityName'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<bool>(map['value'] as bool),
+      capabilityName: map['capabilityName'] == null ? null : (map['capabilityName'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as bool).input(),
     );
   }
 }

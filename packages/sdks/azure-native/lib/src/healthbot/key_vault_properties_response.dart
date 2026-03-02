@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of the key vault.
 class KeyVaultPropertiesResponse {
   /// The name of the key vault key.
-  final String keyName;
+  final pulumi.Input<String> keyName;
   /// The Uri of the key vault.
-  final String keyVaultUri;
+  final pulumi.Input<String> keyVaultUri;
   /// The version of the key vault key.
-  final String? keyVersion;
+  final pulumi.Input<String>? keyVersion;
   /// The user assigned identity (ARM resource id) that has access to the key.
-  final String? userIdentity;
+  final pulumi.Input<String>? userIdentity;
 
   /// Creates a new [KeyVaultPropertiesResponse].
   /// [keyName] The name of the key vault key.
@@ -35,10 +36,10 @@ class KeyVaultPropertiesResponse {
 
   factory KeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPropertiesResponse(
-      keyName: map['keyName'] as String,
-      keyVaultUri: map['keyVaultUri'] as String,
-      keyVersion: map['keyVersion'] == null ? null : map['keyVersion'] as String,
-      userIdentity: map['userIdentity'] == null ? null : map['userIdentity'] as String,
+      keyName: (map['keyName'] as String).input(),
+      keyVaultUri: (map['keyVaultUri'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      userIdentity: map['userIdentity'] == null ? null : (map['userIdentity'] as String).input(),
     );
   }
 }

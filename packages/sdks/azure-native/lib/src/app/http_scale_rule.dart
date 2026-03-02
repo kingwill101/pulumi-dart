@@ -6,11 +6,11 @@ import 'scale_rule_auth.dart';
 /// Container App container Http scaling rule.
 class HttpScaleRule {
   /// Authentication secrets for the custom scale rule.
-  final List<ScaleRuleAuth>? auth;
+  final pulumi.Input<List<ScaleRuleAuth>>? auth;
   /// The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
-  final String? identity;
+  final pulumi.Input<String>? identity;
   /// Metadata properties to describe http scale rule.
-  final Map<String, String>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
 
   /// Creates a new [HttpScaleRule].
   /// [auth] Authentication secrets for the custom scale rule.
@@ -24,7 +24,7 @@ class HttpScaleRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auth': ?auth == null ? null : pulumi.Input.encodeList<ScaleRuleAuth, Map<String, dynamic>>(auth!, (value) => value.toMap()),
+      'auth': ?pulumi.Input.mapOptionalInputValue<List<ScaleRuleAuth>, List<Map<String, dynamic>>>(auth, (value) => pulumi.Input.encodeList<ScaleRuleAuth, Map<String, dynamic>>(value, (value) => value.toMap())),
       'identity': ?identity,
       'metadata': ?metadata,
     };
@@ -32,9 +32,9 @@ class HttpScaleRule {
 
   factory HttpScaleRule.fromMap(Map<String, dynamic> map) {
     return HttpScaleRule(
-      auth: map['auth'] == null ? null : pulumi.Input.decodeList<ScaleRuleAuth>(map['auth'], (value) => ScaleRuleAuth.fromMap((value as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : map['identity'] as String,
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
+      auth: map['auth'] == null ? null : (pulumi.Input.decodeList<ScaleRuleAuth>(map['auth'], (value) => ScaleRuleAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
     );
   }
 }

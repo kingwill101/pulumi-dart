@@ -22,15 +22,11 @@ class IfileArgs {
   /// [partition] Partition where the LTM iFile will be created. Defaults to `Common`.
   /// [subPath] Subdirectory within the partition for organizing iFiles.
   IfileArgs({
-    required pulumi.Output<String> fileName,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? partition,
-    pulumi.Output<String>? subPath,
-  }) :
-      fileName = pulumi.Input.asInput<String>(fileName),
-      name = pulumi.Input.asInput<String>(name),
-      partition = pulumi.Input.asOptionalInput<String>(partition),
-      subPath = pulumi.Input.asOptionalInput<String>(subPath);
+    required this.fileName,
+    required this.name,
+    this.partition,
+    this.subPath,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class IfileArgs {
 
   factory IfileArgs.fromMap(Map<String, dynamic> map) {
     return IfileArgs(
-      fileName: pulumi.Output.create<String>(map['fileName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      partition: map['partition'] == null ? null : pulumi.Output.create<String>(map['partition'] as String),
-      subPath: map['subPath'] == null ? null : pulumi.Output.create<String>(map['subPath'] as String),
+      fileName: (map['fileName'] as String).input(),
+      name: (map['name'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
     );
   }
 }

@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InMageRcmFailback disk level sync details.
 class InMageRcmFailbackSyncDetailsResponse {
   /// The bytes transferred in last 15 minutes from source VM to target.
-  final double last15MinutesTransferredBytes;
+  final pulumi.Input<double> last15MinutesTransferredBytes;
   /// The time of the last data transfer from source VM to target.
-  final String lastDataTransferTimeUtc;
+  final pulumi.Input<String> lastDataTransferTimeUtc;
   /// The last refresh time.
-  final String lastRefreshTime;
+  final pulumi.Input<String> lastRefreshTime;
   /// The total processed bytes. This includes bytes that are transferred from source VM to target and matched bytes.
-  final double processedBytes;
+  final pulumi.Input<double> processedBytes;
   /// The progress health.
-  final String progressHealth;
+  final pulumi.Input<String> progressHealth;
   /// Progress in percentage. Progress percentage is calculated based on processed bytes.
-  final int progressPercentage;
+  final pulumi.Input<int> progressPercentage;
   /// The start time.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The transferred bytes from source VM to azure for the disk.
-  final double transferredBytes;
+  final pulumi.Input<double> transferredBytes;
 
   /// Creates a new [InMageRcmFailbackSyncDetailsResponse].
   /// [last15MinutesTransferredBytes] The bytes transferred in last 15 minutes from source VM to target.
@@ -55,14 +56,14 @@ class InMageRcmFailbackSyncDetailsResponse {
 
   factory InMageRcmFailbackSyncDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmFailbackSyncDetailsResponse(
-      last15MinutesTransferredBytes: map['last15MinutesTransferredBytes'] as double,
-      lastDataTransferTimeUtc: map['lastDataTransferTimeUtc'] as String,
-      lastRefreshTime: map['lastRefreshTime'] as String,
-      processedBytes: map['processedBytes'] as double,
-      progressHealth: map['progressHealth'] as String,
-      progressPercentage: map['progressPercentage'] as int,
-      startTime: map['startTime'] as String,
-      transferredBytes: map['transferredBytes'] as double,
+      last15MinutesTransferredBytes: (map['last15MinutesTransferredBytes'] as double).input(),
+      lastDataTransferTimeUtc: (map['lastDataTransferTimeUtc'] as String).input(),
+      lastRefreshTime: (map['lastRefreshTime'] as String).input(),
+      processedBytes: (map['processedBytes'] as double).input(),
+      progressHealth: (map['progressHealth'] as String).input(),
+      progressPercentage: (map['progressPercentage'] as int).input(),
+      startTime: (map['startTime'] as String).input(),
+      transferredBytes: (map['transferredBytes'] as double).input(),
     );
   }
 }

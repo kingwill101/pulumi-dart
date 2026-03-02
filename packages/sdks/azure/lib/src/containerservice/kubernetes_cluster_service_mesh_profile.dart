@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kubernetes_cluster_service_mesh_profile_certificate_authority.dart';
 
 class KubernetesClusterServiceMeshProfile {
   /// A `certificate_authority` block as defined below. When this property is specified, `key_vault_secrets_provider` is also required to be set. This configuration allows you to bring your own root certificate and keys for Istio CA in the Istio-based service mesh add-on for Azure Kubernetes Service.
-  final KubernetesClusterServiceMeshProfileCertificateAuthority? certificateAuthority;
+  final pulumi.Input<KubernetesClusterServiceMeshProfileCertificateAuthority>? certificateAuthority;
   /// Is Istio External Ingress Gateway enabled?
   ///
   /// > **NOTE:** Currently only one Internal Ingress Gateway and one External Ingress Gateway are allowed per cluster
-  final bool? externalIngressGatewayEnabled;
+  final pulumi.Input<bool>? externalIngressGatewayEnabled;
   /// Is Istio Internal Ingress Gateway enabled?
-  final bool? internalIngressGatewayEnabled;
+  final pulumi.Input<bool>? internalIngressGatewayEnabled;
   /// The mode of the service mesh. Possible value is `Istio`.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Specify 1 or 2 Istio control plane revisions for managing minor upgrades using the canary upgrade process. For example, create the resource with `revisions` set to `["asm-1-25"]`, or leave it empty (the `revisions` will only be known after apply). To start the canary upgrade, change `revisions` to `["asm-1-25", "asm-1-26"]`. To roll back the canary upgrade, revert to `["asm-1-25"]`. To confirm the upgrade, change to `["asm-1-26"]`.
   ///
   /// > **NOTE:** Upgrading to a new (canary) revision does not affect existing sidecar proxies. You need to apply the canary revision label to selected namespaces and restart pods with kubectl to inject the new sidecar proxy. [Learn more](https://istio.io/latest/docs/setup/upgrade/canary/#data-plane).
-  final List<String> revisions;
+  final pulumi.Input<List<String>> revisions;
 
   /// Creates a new [KubernetesClusterServiceMeshProfile].
   /// [certificateAuthority] A `certificate_authority` block as defined below. When this property is specified, `key_vault_secrets_provider` is also required to be set. This configuration allows you to bring your own root certificate and keys for Istio CA in the Istio-based service mesh add-on for Azure Kubernetes Service.
@@ -34,7 +35,7 @@ class KubernetesClusterServiceMeshProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateAuthority': ?certificateAuthority == null ? null : certificateAuthority!.toMap(),
+      'certificateAuthority': ?pulumi.Input.mapOptionalInputValue<KubernetesClusterServiceMeshProfileCertificateAuthority, Map<String, dynamic>>(certificateAuthority, (value) => value.toMap()),
       'externalIngressGatewayEnabled': ?externalIngressGatewayEnabled,
       'internalIngressGatewayEnabled': ?internalIngressGatewayEnabled,
       'mode': mode,
@@ -44,11 +45,11 @@ class KubernetesClusterServiceMeshProfile {
 
   factory KubernetesClusterServiceMeshProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterServiceMeshProfile(
-      certificateAuthority: map['certificateAuthority'] == null ? null : KubernetesClusterServiceMeshProfileCertificateAuthority.fromMap((map['certificateAuthority'] as Map).cast<String, dynamic>()),
-      externalIngressGatewayEnabled: map['externalIngressGatewayEnabled'] == null ? null : map['externalIngressGatewayEnabled'] as bool,
-      internalIngressGatewayEnabled: map['internalIngressGatewayEnabled'] == null ? null : map['internalIngressGatewayEnabled'] as bool,
-      mode: map['mode'] as String,
-      revisions: (map['revisions'] as List).cast<String>(),
+      certificateAuthority: map['certificateAuthority'] == null ? null : (KubernetesClusterServiceMeshProfileCertificateAuthority.fromMap((map['certificateAuthority'] as Map).cast<String, dynamic>())).input(),
+      externalIngressGatewayEnabled: map['externalIngressGatewayEnabled'] == null ? null : (map['externalIngressGatewayEnabled'] as bool).input(),
+      internalIngressGatewayEnabled: map['internalIngressGatewayEnabled'] == null ? null : (map['internalIngressGatewayEnabled'] as bool).input(),
+      mode: (map['mode'] as String).input(),
+      revisions: ((map['revisions'] as List).cast<String>()).input(),
     );
   }
 }

@@ -64,33 +64,20 @@ class SpokeArgs {
   /// [name] Immutable. The name of the spoke. Spoke names must be unique.
   /// [project] The ID of the project in which the resource belongs.
   SpokeArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<SpokeGateway>? gateway,
-    pulumi.Output<String>? group,
-    required pulumi.Output<String> hub,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<SpokeLinkedInterconnectAttachments>? linkedInterconnectAttachments,
-    pulumi.Output<SpokeLinkedProducerVpcNetwork>? linkedProducerVpcNetwork,
-    pulumi.Output<SpokeLinkedRouterApplianceInstances>? linkedRouterApplianceInstances,
-    pulumi.Output<SpokeLinkedVpcNetwork>? linkedVpcNetwork,
-    pulumi.Output<SpokeLinkedVpnTunnels>? linkedVpnTunnels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gateway = pulumi.Input.asOptionalInput<SpokeGateway>(gateway),
-      group = pulumi.Input.asOptionalInput<String>(group),
-      hub = pulumi.Input.asInput<String>(hub),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      linkedInterconnectAttachments = pulumi.Input.asOptionalInput<SpokeLinkedInterconnectAttachments>(linkedInterconnectAttachments),
-      linkedProducerVpcNetwork = pulumi.Input.asOptionalInput<SpokeLinkedProducerVpcNetwork>(linkedProducerVpcNetwork),
-      linkedRouterApplianceInstances = pulumi.Input.asOptionalInput<SpokeLinkedRouterApplianceInstances>(linkedRouterApplianceInstances),
-      linkedVpcNetwork = pulumi.Input.asOptionalInput<SpokeLinkedVpcNetwork>(linkedVpcNetwork),
-      linkedVpnTunnels = pulumi.Input.asOptionalInput<SpokeLinkedVpnTunnels>(linkedVpnTunnels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    this.gateway,
+    this.group,
+    required this.hub,
+    this.labels,
+    this.linkedInterconnectAttachments,
+    this.linkedProducerVpcNetwork,
+    this.linkedRouterApplianceInstances,
+    this.linkedVpcNetwork,
+    this.linkedVpnTunnels,
+    required this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,19 +99,19 @@ class SpokeArgs {
 
   factory SpokeArgs.fromMap(Map<String, dynamic> map) {
     return SpokeArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gateway: map['gateway'] == null ? null : pulumi.Output.create<SpokeGateway>(SpokeGateway.fromMap((map['gateway'] as Map).cast<String, dynamic>())),
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      hub: pulumi.Output.create<String>(map['hub'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      linkedInterconnectAttachments: map['linkedInterconnectAttachments'] == null ? null : pulumi.Output.create<SpokeLinkedInterconnectAttachments>(SpokeLinkedInterconnectAttachments.fromMap((map['linkedInterconnectAttachments'] as Map).cast<String, dynamic>())),
-      linkedProducerVpcNetwork: map['linkedProducerVpcNetwork'] == null ? null : pulumi.Output.create<SpokeLinkedProducerVpcNetwork>(SpokeLinkedProducerVpcNetwork.fromMap((map['linkedProducerVpcNetwork'] as Map).cast<String, dynamic>())),
-      linkedRouterApplianceInstances: map['linkedRouterApplianceInstances'] == null ? null : pulumi.Output.create<SpokeLinkedRouterApplianceInstances>(SpokeLinkedRouterApplianceInstances.fromMap((map['linkedRouterApplianceInstances'] as Map).cast<String, dynamic>())),
-      linkedVpcNetwork: map['linkedVpcNetwork'] == null ? null : pulumi.Output.create<SpokeLinkedVpcNetwork>(SpokeLinkedVpcNetwork.fromMap((map['linkedVpcNetwork'] as Map).cast<String, dynamic>())),
-      linkedVpnTunnels: map['linkedVpnTunnels'] == null ? null : pulumi.Output.create<SpokeLinkedVpnTunnels>(SpokeLinkedVpnTunnels.fromMap((map['linkedVpnTunnels'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gateway: map['gateway'] == null ? null : (SpokeGateway.fromMap((map['gateway'] as Map).cast<String, dynamic>())).input(),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      hub: (map['hub'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      linkedInterconnectAttachments: map['linkedInterconnectAttachments'] == null ? null : (SpokeLinkedInterconnectAttachments.fromMap((map['linkedInterconnectAttachments'] as Map).cast<String, dynamic>())).input(),
+      linkedProducerVpcNetwork: map['linkedProducerVpcNetwork'] == null ? null : (SpokeLinkedProducerVpcNetwork.fromMap((map['linkedProducerVpcNetwork'] as Map).cast<String, dynamic>())).input(),
+      linkedRouterApplianceInstances: map['linkedRouterApplianceInstances'] == null ? null : (SpokeLinkedRouterApplianceInstances.fromMap((map['linkedRouterApplianceInstances'] as Map).cast<String, dynamic>())).input(),
+      linkedVpcNetwork: map['linkedVpcNetwork'] == null ? null : (SpokeLinkedVpcNetwork.fromMap((map['linkedVpcNetwork'] as Map).cast<String, dynamic>())).input(),
+      linkedVpnTunnels: map['linkedVpnTunnels'] == null ? null : (SpokeLinkedVpnTunnels.fromMap((map['linkedVpnTunnels'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

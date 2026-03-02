@@ -35,25 +35,16 @@ class LinkedServiceOdataState {
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service OData.
   /// [url] The URL of the OData service endpoint.
   LinkedServiceOdataState({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<LinkedServiceOdataBasicAuthentication>? basicAuthentication,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? integrationRuntimeName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? url,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      basicAuthentication = pulumi.Input.asOptionalInput<LinkedServiceOdataBasicAuthentication>(basicAuthentication),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      integrationRuntimeName = pulumi.Input.asOptionalInput<String>(integrationRuntimeName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.additionalProperties,
+    this.annotations,
+    this.basicAuthentication,
+    this.dataFactoryId,
+    this.description,
+    this.integrationRuntimeName,
+    this.name,
+    this.parameters,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class LinkedServiceOdataState {
 
   factory LinkedServiceOdataState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceOdataState(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      basicAuthentication: map['basicAuthentication'] == null ? null : pulumi.Output.create<LinkedServiceOdataBasicAuthentication>(LinkedServiceOdataBasicAuthentication.fromMap((map['basicAuthentication'] as Map).cast<String, dynamic>())),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      basicAuthentication: map['basicAuthentication'] == null ? null : (LinkedServiceOdataBasicAuthentication.fromMap((map['basicAuthentication'] as Map).cast<String, dynamic>())).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

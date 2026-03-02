@@ -35,25 +35,16 @@ class ContactListState {
   /// [tagsAll] Optional.
   /// [topics] Configuration block(s) with topic for the contact list. Detailed below.
   ContactListState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? contactListName,
-    pulumi.Output<String>? createdTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? lastUpdatedTimestamp,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<List<ContactListTopic>>? topics,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      contactListName = pulumi.Input.asOptionalInput<String>(contactListName),
-      createdTimestamp = pulumi.Input.asOptionalInput<String>(createdTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      lastUpdatedTimestamp = pulumi.Input.asOptionalInput<String>(lastUpdatedTimestamp),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      topics = pulumi.Input.asOptionalInput<List<ContactListTopic>>(topics);
+    this.arn,
+    this.contactListName,
+    this.createdTimestamp,
+    this.description,
+    this.lastUpdatedTimestamp,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.topics,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class ContactListState {
 
   factory ContactListState.fromMap(Map<String, dynamic> map) {
     return ContactListState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      contactListName: map['contactListName'] == null ? null : pulumi.Output.create<String>(map['contactListName'] as String),
-      createdTimestamp: map['createdTimestamp'] == null ? null : pulumi.Output.create<String>(map['createdTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] == null ? null : pulumi.Output.create<String>(map['lastUpdatedTimestamp'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      topics: map['topics'] == null ? null : pulumi.Output.create<List<ContactListTopic>>(pulumi.Input.decodeList<ContactListTopic>(map['topics'], (value) => ContactListTopic.fromMap((value as Map).cast<String, dynamic>()))),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      contactListName: map['contactListName'] == null ? null : (map['contactListName'] as String).input(),
+      createdTimestamp: map['createdTimestamp'] == null ? null : (map['createdTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] == null ? null : (map['lastUpdatedTimestamp'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<ContactListTopic>(map['topics'], (value) => ContactListTopic.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

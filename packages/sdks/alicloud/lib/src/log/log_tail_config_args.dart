@@ -31,21 +31,14 @@ class LogTailConfigArgs {
   /// [outputType] The output type. Currently, only LogService is supported.
   /// [project] The project name to the log store belongs.
   LogTailConfigArgs({
-    required pulumi.Output<String> inputDetail,
-    required pulumi.Output<String> inputType,
-    pulumi.Output<String>? logSample,
-    required pulumi.Output<String> logstore,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> outputType,
-    required pulumi.Output<String> project,
-  }) :
-      inputDetail = pulumi.Input.asInput<String>(inputDetail),
-      inputType = pulumi.Input.asInput<String>(inputType),
-      logSample = pulumi.Input.asOptionalInput<String>(logSample),
-      logstore = pulumi.Input.asInput<String>(logstore),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputType = pulumi.Input.asInput<String>(outputType),
-      project = pulumi.Input.asInput<String>(project);
+    required this.inputDetail,
+    required this.inputType,
+    this.logSample,
+    required this.logstore,
+    this.name,
+    required this.outputType,
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class LogTailConfigArgs {
 
   factory LogTailConfigArgs.fromMap(Map<String, dynamic> map) {
     return LogTailConfigArgs(
-      inputDetail: pulumi.Output.create<String>(map['inputDetail'] as String),
-      inputType: pulumi.Output.create<String>(map['inputType'] as String),
-      logSample: map['logSample'] == null ? null : pulumi.Output.create<String>(map['logSample'] as String),
-      logstore: pulumi.Output.create<String>(map['logstore'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputType: pulumi.Output.create<String>(map['outputType'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
+      inputDetail: (map['inputDetail'] as String).input(),
+      inputType: (map['inputType'] as String).input(),
+      logSample: map['logSample'] == null ? null : (map['logSample'] as String).input(),
+      logstore: (map['logstore'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputType: (map['outputType'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

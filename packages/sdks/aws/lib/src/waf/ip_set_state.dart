@@ -17,13 +17,10 @@ class IpSetState {
   /// [ipSetDescriptors] One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR format) from which web requests originate.
   /// [name] The name or description of the IPSet.
   IpSetState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<IpSetIpSetDescriptor>>? ipSetDescriptors,
-    pulumi.Output<String>? name,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      ipSetDescriptors = pulumi.Input.asOptionalInput<List<IpSetIpSetDescriptor>>(ipSetDescriptors),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.arn,
+    this.ipSetDescriptors,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class IpSetState {
 
   factory IpSetState.fromMap(Map<String, dynamic> map) {
     return IpSetState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      ipSetDescriptors: map['ipSetDescriptors'] == null ? null : pulumi.Output.create<List<IpSetIpSetDescriptor>>(pulumi.Input.decodeList<IpSetIpSetDescriptor>(map['ipSetDescriptors'], (value) => IpSetIpSetDescriptor.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      ipSetDescriptors: map['ipSetDescriptors'] == null ? null : (pulumi.Input.decodeList<IpSetIpSetDescriptor>(map['ipSetDescriptors'], (value) => IpSetIpSetDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

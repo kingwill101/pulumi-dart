@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PrincipalDefinition properties of Basic Rule
 class PrincipalDefinitionResponse {
   /// A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication.
-  final List<Map<String, String>>? attributes;
+  final pulumi.Input<List<Map<String, String>>>? attributes;
   /// A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection.
-  final List<String>? clientids;
+  final pulumi.Input<List<String>>? clientids;
   /// A list of usernames that match the clients. The usernames are case-sensitive and must match the usernames provided by the clients during authentication.
-  final List<String>? usernames;
+  final pulumi.Input<List<String>>? usernames;
 
   /// Creates a new [PrincipalDefinitionResponse].
   /// [attributes] A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication.
@@ -30,9 +31,9 @@ class PrincipalDefinitionResponse {
 
   factory PrincipalDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return PrincipalDefinitionResponse(
-      attributes: map['attributes'] == null ? null : (map['attributes'] as List).cast<Map<String, String>>(),
-      clientids: map['clientids'] == null ? null : (map['clientids'] as List).cast<String>(),
-      usernames: map['usernames'] == null ? null : (map['usernames'] as List).cast<String>(),
+      attributes: map['attributes'] == null ? null : ((map['attributes'] as List).cast<Map<String, String>>()).input(),
+      clientids: map['clientids'] == null ? null : ((map['clientids'] as List).cast<String>()).input(),
+      usernames: map['usernames'] == null ? null : ((map['usernames'] as List).cast<String>()).input(),
     );
   }
 }

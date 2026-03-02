@@ -34,23 +34,15 @@ class VbrHaState {
   /// [vbrHaName] VBR switch group name.
   /// [vbrId] The VBR instance ID.
   VbrHaState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? peerVbrId,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vbrHaName,
-    pulumi.Output<String>? vbrId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      peerVbrId = pulumi.Input.asOptionalInput<String>(peerVbrId),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vbrHaName = pulumi.Input.asOptionalInput<String>(vbrHaName),
-      vbrId = pulumi.Input.asOptionalInput<String>(vbrId);
+    this.createTime,
+    this.description,
+    this.dryRun,
+    this.peerVbrId,
+    this.regionId,
+    this.status,
+    this.vbrHaName,
+    this.vbrId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class VbrHaState {
 
   factory VbrHaState.fromMap(Map<String, dynamic> map) {
     return VbrHaState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      peerVbrId: map['peerVbrId'] == null ? null : pulumi.Output.create<String>(map['peerVbrId'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vbrHaName: map['vbrHaName'] == null ? null : pulumi.Output.create<String>(map['vbrHaName'] as String),
-      vbrId: map['vbrId'] == null ? null : pulumi.Output.create<String>(map['vbrId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      peerVbrId: map['peerVbrId'] == null ? null : (map['peerVbrId'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vbrHaName: map['vbrHaName'] == null ? null : (map['vbrHaName'] as String).input(),
+      vbrId: map['vbrId'] == null ? null : (map['vbrId'] as String).input(),
     );
   }
 }

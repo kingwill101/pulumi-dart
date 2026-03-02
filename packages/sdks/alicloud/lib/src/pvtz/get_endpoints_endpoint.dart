@@ -5,22 +5,22 @@ import 'get_endpoints_endpoint_ip_config.dart';
 
 class GetEndpointsEndpoint {
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The name of the resource.
-  final String endpointName;
-  final String id;
+  final pulumi.Input<String> endpointName;
+  final pulumi.Input<String> id;
   /// The Ip Configs.
-  final List<GetEndpointsEndpointIpConfig> ipConfigs;
+  final pulumi.Input<List<GetEndpointsEndpointIpConfig>> ipConfigs;
   /// The ID of the Security Group.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The VPC ID.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The name of the VPC.
-  final String vpcName;
+  final pulumi.Input<String> vpcName;
   /// The Region of the VPC.
-  final String vpcRegionId;
+  final pulumi.Input<String> vpcRegionId;
 
   /// Creates a new [GetEndpointsEndpoint].
   /// [createTime] The creation time of the resource.
@@ -49,7 +49,7 @@ class GetEndpointsEndpoint {
       'createTime': createTime,
       'endpointName': endpointName,
       'id': id,
-      'ipConfigs': pulumi.Input.encodeList<GetEndpointsEndpointIpConfig, Map<String, dynamic>>(ipConfigs, (value) => value.toMap()),
+      'ipConfigs': pulumi.Input.mapInputValue<List<GetEndpointsEndpointIpConfig>, List<Map<String, dynamic>>>(ipConfigs, (value) => pulumi.Input.encodeList<GetEndpointsEndpointIpConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'securityGroupId': securityGroupId,
       'status': status,
       'vpcId': vpcId,
@@ -60,15 +60,15 @@ class GetEndpointsEndpoint {
 
   factory GetEndpointsEndpoint.fromMap(Map<String, dynamic> map) {
     return GetEndpointsEndpoint(
-      createTime: map['createTime'] as String,
-      endpointName: map['endpointName'] as String,
-      id: map['id'] as String,
-      ipConfigs: pulumi.Input.decodeList<GetEndpointsEndpointIpConfig>(map['ipConfigs'], (value) => GetEndpointsEndpointIpConfig.fromMap((value as Map).cast<String, dynamic>())),
-      securityGroupId: map['securityGroupId'] as String,
-      status: map['status'] as String,
-      vpcId: map['vpcId'] as String,
-      vpcName: map['vpcName'] as String,
-      vpcRegionId: map['vpcRegionId'] as String,
+      createTime: (map['createTime'] as String).input(),
+      endpointName: (map['endpointName'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipConfigs: (pulumi.Input.decodeList<GetEndpointsEndpointIpConfig>(map['ipConfigs'], (value) => GetEndpointsEndpointIpConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vpcName: (map['vpcName'] as String).input(),
+      vpcRegionId: (map['vpcRegionId'] as String).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody {
-  final String? oversizeHandling;
+  final pulumi.Input<String>? oversizeHandling;
 
   /// Creates a new [RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody].
   /// [oversizeHandling] Optional.
@@ -18,7 +19,7 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody {
 
   factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody(
-      oversizeHandling: map['oversizeHandling'] == null ? null : map['oversizeHandling'] as String,
+      oversizeHandling: map['oversizeHandling'] == null ? null : (map['oversizeHandling'] as String).input(),
     );
   }
 }

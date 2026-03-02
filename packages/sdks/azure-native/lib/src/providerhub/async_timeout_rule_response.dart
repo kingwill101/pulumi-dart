@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AsyncTimeoutRuleResponse {
-  final String? actionName;
+  final pulumi.Input<String>? actionName;
   /// This is a TimeSpan property
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
 
   /// Creates a new [AsyncTimeoutRuleResponse].
   /// [actionName] Optional.
@@ -23,8 +24,8 @@ class AsyncTimeoutRuleResponse {
 
   factory AsyncTimeoutRuleResponse.fromMap(Map<String, dynamic> map) {
     return AsyncTimeoutRuleResponse(
-      actionName: map['actionName'] == null ? null : map['actionName'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
+      actionName: map['actionName'] == null ? null : (map['actionName'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

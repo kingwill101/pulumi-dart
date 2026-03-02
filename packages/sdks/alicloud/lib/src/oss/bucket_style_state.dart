@@ -22,17 +22,12 @@ class BucketStyleState {
   /// [createTime] Image Style Creation Time
   /// [styleName] Image Style Name
   BucketStyleState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? category,
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? styleName,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      category = pulumi.Input.asOptionalInput<String>(category),
-      content = pulumi.Input.asOptionalInput<String>(content),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      styleName = pulumi.Input.asOptionalInput<String>(styleName);
+    this.bucket,
+    this.category,
+    this.content,
+    this.createTime,
+    this.styleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class BucketStyleState {
 
   factory BucketStyleState.fromMap(Map<String, dynamic> map) {
     return BucketStyleState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      styleName: map['styleName'] == null ? null : pulumi.Output.create<String>(map['styleName'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      styleName: map['styleName'] == null ? null : (map['styleName'] as String).input(),
     );
   }
 }

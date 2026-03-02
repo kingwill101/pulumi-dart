@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SortOptionsResponse {
   /// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
-  final String operatorName;
+  final pulumi.Input<String> operatorName;
   /// Ascending is the default sort order
-  final String sortOrder;
+  final pulumi.Input<String> sortOrder;
 
   /// Creates a new [SortOptionsResponse].
   /// [operatorName] The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
@@ -24,8 +25,8 @@ class SortOptionsResponse {
 
   factory SortOptionsResponse.fromMap(Map<String, dynamic> map) {
     return SortOptionsResponse(
-      operatorName: map['operatorName'] as String,
-      sortOrder: map['sortOrder'] as String,
+      operatorName: (map['operatorName'] as String).input(),
+      sortOrder: (map['sortOrder'] as String).input(),
     );
   }
 }

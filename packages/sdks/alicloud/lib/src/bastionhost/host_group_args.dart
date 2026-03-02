@@ -19,13 +19,10 @@ class HostGroupArgs {
   /// [hostGroupName] Specify the New Host Group Name, Supports up to 128 Characters.
   /// [instanceId] Specify the New Host Group Where the Bastion Host ID of.
   HostGroupArgs({
-    pulumi.Output<String>? comment,
-    required pulumi.Output<String> hostGroupName,
-    required pulumi.Output<String> instanceId,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      hostGroupName = pulumi.Input.asInput<String>(hostGroupName),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    this.comment,
+    required this.hostGroupName,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class HostGroupArgs {
 
   factory HostGroupArgs.fromMap(Map<String, dynamic> map) {
     return HostGroupArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      hostGroupName: pulumi.Output.create<String>(map['hostGroupName'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      hostGroupName: (map['hostGroupName'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

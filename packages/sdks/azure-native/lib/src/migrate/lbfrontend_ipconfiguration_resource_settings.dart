@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_reference.dart';
 
 /// Defines load balancer frontend IP configuration properties.
 class LBFrontendIPConfigurationResourceSettings {
   /// Gets or sets the frontend IP configuration name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Gets or sets the IP address of the Load Balancer.This is only specified if a specific
   /// private IP address shall be allocated from the subnet specified in subnetRef.
-  final String? privateIpAddress;
+  final pulumi.Input<String>? privateIpAddress;
   /// Gets or sets PrivateIP allocation method (Static/Dynamic).
-  final String? privateIpAllocationMethod;
+  final pulumi.Input<String>? privateIpAllocationMethod;
   /// Defines reference to subnet.
-  final SubnetReference? subnet;
+  final pulumi.Input<SubnetReference>? subnet;
   /// Gets or sets the csv list of zones.
-  final String? zones;
+  final pulumi.Input<String>? zones;
 
   /// Creates a new [LBFrontendIPConfigurationResourceSettings].
   /// [name] Gets or sets the frontend IP configuration name.
@@ -35,18 +36,18 @@ class LBFrontendIPConfigurationResourceSettings {
       'name': ?name,
       'privateIpAddress': ?privateIpAddress,
       'privateIpAllocationMethod': ?privateIpAllocationMethod,
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<SubnetReference, Map<String, dynamic>>(subnet, (value) => value.toMap()),
       'zones': ?zones,
     };
   }
 
   factory LBFrontendIPConfigurationResourceSettings.fromMap(Map<String, dynamic> map) {
     return LBFrontendIPConfigurationResourceSettings(
-      name: map['name'] == null ? null : map['name'] as String,
-      privateIpAddress: map['privateIpAddress'] == null ? null : map['privateIpAddress'] as String,
-      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : map['privateIpAllocationMethod'] as String,
-      subnet: map['subnet'] == null ? null : SubnetReference.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
-      zones: map['zones'] == null ? null : map['zones'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : (map['privateIpAllocationMethod'] as String).input(),
+      subnet: map['subnet'] == null ? null : (SubnetReference.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : (map['zones'] as String).input(),
     );
   }
 }

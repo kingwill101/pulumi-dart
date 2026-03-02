@@ -32,21 +32,14 @@ class EncryptionScopeArgs {
   /// [source] The provider for the encryption scope. Possible values (case-insensitive):  Microsoft.Storage, Microsoft.KeyVault.
   /// [state] The state of the encryption scope. Possible values (case-insensitive):  Enabled, Disabled.
   EncryptionScopeArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? encryptionScopeName,
-    pulumi.Output<EncryptionScopeKeyVaultProperties>? keyVaultProperties,
-    pulumi.Output<bool>? requireInfrastructureEncryption,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? source,
-    pulumi.Output<String>? state,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      encryptionScopeName = pulumi.Input.asOptionalInput<String>(encryptionScopeName),
-      keyVaultProperties = pulumi.Input.asOptionalInput<EncryptionScopeKeyVaultProperties>(keyVaultProperties),
-      requireInfrastructureEncryption = pulumi.Input.asOptionalInput<bool>(requireInfrastructureEncryption),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    required this.accountName,
+    this.encryptionScopeName,
+    this.keyVaultProperties,
+    this.requireInfrastructureEncryption,
+    required this.resourceGroupName,
+    this.source,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class EncryptionScopeArgs {
 
   factory EncryptionScopeArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionScopeArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      encryptionScopeName: map['encryptionScopeName'] == null ? null : pulumi.Output.create<String>(map['encryptionScopeName'] as String),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : pulumi.Output.create<EncryptionScopeKeyVaultProperties>(EncryptionScopeKeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())),
-      requireInfrastructureEncryption: map['requireInfrastructureEncryption'] == null ? null : pulumi.Output.create<bool>(map['requireInfrastructureEncryption'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      accountName: (map['accountName'] as String).input(),
+      encryptionScopeName: map['encryptionScopeName'] == null ? null : (map['encryptionScopeName'] as String).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (EncryptionScopeKeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      requireInfrastructureEncryption: map['requireInfrastructureEncryption'] == null ? null : (map['requireInfrastructureEncryption'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

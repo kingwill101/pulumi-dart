@@ -36,19 +36,13 @@ class SlotTypeArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [valueSelectionStrategy] Determines the slot resolution strategy that Amazon Lex
   SlotTypeArgs({
-    pulumi.Output<bool>? createVersion,
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<SlotTypeEnumerationValue>> enumerationValues,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? valueSelectionStrategy,
-  }) :
-      createVersion = pulumi.Input.asOptionalInput<bool>(createVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enumerationValues = pulumi.Input.asInput<List<SlotTypeEnumerationValue>>(enumerationValues),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      valueSelectionStrategy = pulumi.Input.asOptionalInput<String>(valueSelectionStrategy);
+    this.createVersion,
+    this.description,
+    required this.enumerationValues,
+    this.name,
+    this.region,
+    this.valueSelectionStrategy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,12 +57,12 @@ class SlotTypeArgs {
 
   factory SlotTypeArgs.fromMap(Map<String, dynamic> map) {
     return SlotTypeArgs(
-      createVersion: map['createVersion'] == null ? null : pulumi.Output.create<bool>(map['createVersion'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enumerationValues: pulumi.Output.create<List<SlotTypeEnumerationValue>>(pulumi.Input.decodeList<SlotTypeEnumerationValue>(map['enumerationValues'], (value) => SlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      valueSelectionStrategy: map['valueSelectionStrategy'] == null ? null : pulumi.Output.create<String>(map['valueSelectionStrategy'] as String),
+      createVersion: map['createVersion'] == null ? null : (map['createVersion'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enumerationValues: (pulumi.Input.decodeList<SlotTypeEnumerationValue>(map['enumerationValues'], (value) => SlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      valueSelectionStrategy: map['valueSelectionStrategy'] == null ? null : (map['valueSelectionStrategy'] as String).input(),
     );
   }
 }

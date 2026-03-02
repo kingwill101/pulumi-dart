@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CidrBlock contains an optional name and one CIDR block.
 class CidrBlock {
   /// cidr_block must be specified in CIDR notation.
-  final String? cidrBlock;
+  final pulumi.Input<String>? cidrBlock;
   /// display_name is an optional field for users to identify CIDR blocks.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Creates a new [CidrBlock].
   /// [cidrBlock] cidr_block must be specified in CIDR notation.
@@ -25,8 +26,8 @@ class CidrBlock {
 
   factory CidrBlock.fromMap(Map<String, dynamic> map) {
     return CidrBlock(
-      cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
     );
   }
 }

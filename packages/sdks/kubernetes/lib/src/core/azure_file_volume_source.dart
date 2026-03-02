@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
 class AzureFileVolumeSource {
   /// readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// secretName is the  name of secret that contains Azure Storage Account Name and Key
-  final String secretName;
+  final pulumi.Input<String> secretName;
   /// shareName is the azure share Name
-  final String shareName;
+  final pulumi.Input<String> shareName;
 
   /// Creates a new [AzureFileVolumeSource].
   /// [readOnly] readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
@@ -30,9 +31,9 @@ class AzureFileVolumeSource {
 
   factory AzureFileVolumeSource.fromMap(Map<String, dynamic> map) {
     return AzureFileVolumeSource(
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      secretName: map['secretName'] as String,
-      shareName: map['shareName'] as String,
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      secretName: (map['secretName'] as String).input(),
+      shareName: (map['shareName'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of BatchReportModeTypeEnumValue
 class BatchReportModeTypeEnumValueResponse {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [BatchReportModeTypeEnumValueResponse].
   /// [value] Property value
@@ -20,7 +21,7 @@ class BatchReportModeTypeEnumValueResponse {
 
   factory BatchReportModeTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return BatchReportModeTypeEnumValueResponse(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

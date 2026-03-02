@@ -5,9 +5,9 @@ import 'group_policy_assignment_override_selector.dart';
 
 class GroupPolicyAssignmentOverride {
   /// One or more `override_selector` block as defined below.
-  final List<GroupPolicyAssignmentOverrideSelector>? selectors;
+  final pulumi.Input<List<GroupPolicyAssignmentOverrideSelector>>? selectors;
   /// Specifies the value to override the policy property. Possible values for `policyEffect` override listed [policy effects](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects).
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GroupPolicyAssignmentOverride].
   /// [selectors] One or more `override_selector` block as defined below.
@@ -19,15 +19,15 @@ class GroupPolicyAssignmentOverride {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'selectors': ?selectors == null ? null : pulumi.Input.encodeList<GroupPolicyAssignmentOverrideSelector, Map<String, dynamic>>(selectors!, (value) => value.toMap()),
+      'selectors': ?pulumi.Input.mapOptionalInputValue<List<GroupPolicyAssignmentOverrideSelector>, List<Map<String, dynamic>>>(selectors, (value) => pulumi.Input.encodeList<GroupPolicyAssignmentOverrideSelector, Map<String, dynamic>>(value, (value) => value.toMap())),
       'value': value,
     };
   }
 
   factory GroupPolicyAssignmentOverride.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAssignmentOverride(
-      selectors: map['selectors'] == null ? null : pulumi.Input.decodeList<GroupPolicyAssignmentOverrideSelector>(map['selectors'], (value) => GroupPolicyAssignmentOverrideSelector.fromMap((value as Map).cast<String, dynamic>())),
-      value: map['value'] as String,
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<GroupPolicyAssignmentOverrideSelector>(map['selectors'], (value) => GroupPolicyAssignmentOverrideSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

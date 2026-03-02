@@ -5,11 +5,11 @@ import 'get_chains_chain_chain_config_node_node_config.dart';
 
 class GetChainsChainChainConfigNode {
   /// Whether to enable the delivery chain node. Valid values: `true`, `false`.
-  final bool enable;
+  final pulumi.Input<bool> enable;
   /// The configuration of delivery chain node.
-  final List<GetChainsChainChainConfigNodeNodeConfig> nodeConfigs;
+  final pulumi.Input<List<GetChainsChainChainConfigNodeNodeConfig>> nodeConfigs;
   /// The name of delivery chain node.
-  final String nodeName;
+  final pulumi.Input<String> nodeName;
 
   /// Creates a new [GetChainsChainChainConfigNode].
   /// [enable] Whether to enable the delivery chain node. Valid values: `true`, `false`.
@@ -24,16 +24,16 @@ class GetChainsChainChainConfigNode {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enable': enable,
-      'nodeConfigs': pulumi.Input.encodeList<GetChainsChainChainConfigNodeNodeConfig, Map<String, dynamic>>(nodeConfigs, (value) => value.toMap()),
+      'nodeConfigs': pulumi.Input.mapInputValue<List<GetChainsChainChainConfigNodeNodeConfig>, List<Map<String, dynamic>>>(nodeConfigs, (value) => pulumi.Input.encodeList<GetChainsChainChainConfigNodeNodeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nodeName': nodeName,
     };
   }
 
   factory GetChainsChainChainConfigNode.fromMap(Map<String, dynamic> map) {
     return GetChainsChainChainConfigNode(
-      enable: map['enable'] as bool,
-      nodeConfigs: pulumi.Input.decodeList<GetChainsChainChainConfigNodeNodeConfig>(map['nodeConfigs'], (value) => GetChainsChainChainConfigNodeNodeConfig.fromMap((value as Map).cast<String, dynamic>())),
-      nodeName: map['nodeName'] as String,
+      enable: (map['enable'] as bool).input(),
+      nodeConfigs: (pulumi.Input.decodeList<GetChainsChainChainConfigNodeNodeConfig>(map['nodeConfigs'], (value) => GetChainsChainChainConfigNodeNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeName: (map['nodeName'] as String).input(),
     );
   }
 }

@@ -13,11 +13,9 @@ class CloudPhoneInstanceState {
   /// [androidInstanceGroupId] The ID of the instance group to which the instance belongs
   /// [androidInstanceName] The instance name
   CloudPhoneInstanceState({
-    pulumi.Output<String>? androidInstanceGroupId,
-    pulumi.Output<String>? androidInstanceName,
-  }) :
-      androidInstanceGroupId = pulumi.Input.asOptionalInput<String>(androidInstanceGroupId),
-      androidInstanceName = pulumi.Input.asOptionalInput<String>(androidInstanceName);
+    this.androidInstanceGroupId,
+    this.androidInstanceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class CloudPhoneInstanceState {
 
   factory CloudPhoneInstanceState.fromMap(Map<String, dynamic> map) {
     return CloudPhoneInstanceState(
-      androidInstanceGroupId: map['androidInstanceGroupId'] == null ? null : pulumi.Output.create<String>(map['androidInstanceGroupId'] as String),
-      androidInstanceName: map['androidInstanceName'] == null ? null : pulumi.Output.create<String>(map['androidInstanceName'] as String),
+      androidInstanceGroupId: map['androidInstanceGroupId'] == null ? null : (map['androidInstanceGroupId'] as String).input(),
+      androidInstanceName: map['androidInstanceName'] == null ? null : (map['androidInstanceName'] as String).input(),
     );
   }
 }

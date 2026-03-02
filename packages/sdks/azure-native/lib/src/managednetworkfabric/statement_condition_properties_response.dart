@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Route policy statement condition properties.
 class StatementConditionPropertiesResponse {
   /// List of IP Community resource IDs.
-  final List<String>? ipCommunityIds;
+  final pulumi.Input<List<String>>? ipCommunityIds;
   /// List of IP Extended Community resource IDs.
-  final List<String>? ipExtendedCommunityIds;
+  final pulumi.Input<List<String>>? ipExtendedCommunityIds;
   /// Arm Resource Id of IpPrefix.
-  final String? ipPrefixId;
+  final pulumi.Input<String>? ipPrefixId;
   /// Type of the condition used.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [StatementConditionPropertiesResponse].
   /// [ipCommunityIds] List of IP Community resource IDs.
@@ -35,10 +36,10 @@ class StatementConditionPropertiesResponse {
 
   factory StatementConditionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StatementConditionPropertiesResponse(
-      ipCommunityIds: map['ipCommunityIds'] == null ? null : (map['ipCommunityIds'] as List).cast<String>(),
-      ipExtendedCommunityIds: map['ipExtendedCommunityIds'] == null ? null : (map['ipExtendedCommunityIds'] as List).cast<String>(),
-      ipPrefixId: map['ipPrefixId'] == null ? null : map['ipPrefixId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      ipCommunityIds: map['ipCommunityIds'] == null ? null : ((map['ipCommunityIds'] as List).cast<String>()).input(),
+      ipExtendedCommunityIds: map['ipExtendedCommunityIds'] == null ? null : ((map['ipExtendedCommunityIds'] as List).cast<String>()).input(),
+      ipPrefixId: map['ipPrefixId'] == null ? null : (map['ipPrefixId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

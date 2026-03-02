@@ -19,13 +19,10 @@ class GetIotConnectorArgs {
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
   GetIotConnectorArgs({
-    required pulumi.Output<String> iotConnectorName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      iotConnectorName = pulumi.Input.asInput<String>(iotConnectorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.iotConnectorName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIotConnectorArgs {
 
   factory GetIotConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetIotConnectorArgs(
-      iotConnectorName: pulumi.Output.create<String>(map['iotConnectorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      iotConnectorName: (map['iotConnectorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

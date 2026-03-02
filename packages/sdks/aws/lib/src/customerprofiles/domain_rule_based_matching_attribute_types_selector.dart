@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainRuleBasedMatchingAttributeTypesSelector {
   /// The `Address` type. You can choose from `Address`, `BusinessAddress`, `MaillingAddress`, and `ShippingAddress`.
-  final List<String>? addresses;
+  final pulumi.Input<List<String>>? addresses;
   /// Configures the `AttributeMatchingModel`, you can either choose `ONE_TO_ONE` or `MANY_TO_MANY`.
-  final String attributeMatchingModel;
+  final pulumi.Input<String> attributeMatchingModel;
   /// The `Email` type. You can choose from `EmailAddress`, `BusinessEmailAddress` and `PersonalEmailAddress`.
-  final List<String>? emailAddresses;
+  final pulumi.Input<List<String>>? emailAddresses;
   /// The `PhoneNumber` type. You can choose from `PhoneNumber`, `HomePhoneNumber`, and `MobilePhoneNumber`.
-  final List<String>? phoneNumbers;
+  final pulumi.Input<List<String>>? phoneNumbers;
 
   /// Creates a new [DomainRuleBasedMatchingAttributeTypesSelector].
   /// [addresses] The `Address` type. You can choose from `Address`, `BusinessAddress`, `MaillingAddress`, and `ShippingAddress`.
@@ -34,10 +35,10 @@ class DomainRuleBasedMatchingAttributeTypesSelector {
 
   factory DomainRuleBasedMatchingAttributeTypesSelector.fromMap(Map<String, dynamic> map) {
     return DomainRuleBasedMatchingAttributeTypesSelector(
-      addresses: map['addresses'] == null ? null : (map['addresses'] as List).cast<String>(),
-      attributeMatchingModel: map['attributeMatchingModel'] as String,
-      emailAddresses: map['emailAddresses'] == null ? null : (map['emailAddresses'] as List).cast<String>(),
-      phoneNumbers: map['phoneNumbers'] == null ? null : (map['phoneNumbers'] as List).cast<String>(),
+      addresses: map['addresses'] == null ? null : ((map['addresses'] as List).cast<String>()).input(),
+      attributeMatchingModel: (map['attributeMatchingModel'] as String).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
+      phoneNumbers: map['phoneNumbers'] == null ? null : ((map['phoneNumbers'] as List).cast<String>()).input(),
     );
   }
 }

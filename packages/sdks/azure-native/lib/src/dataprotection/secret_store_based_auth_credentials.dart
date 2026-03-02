@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_store_resource.dart';
 
 /// Secret store based authentication credentials.
 class SecretStoreBasedAuthCredentials {
   /// Type of the specific object - used for deserializing
   /// Expected value is 'SecretStoreBasedAuthCredentials'.
-  final String objectType;
+  final pulumi.Input<String> objectType;
   /// Secret store resource
-  final SecretStoreResource? secretStoreResource;
+  final pulumi.Input<SecretStoreResource>? secretStoreResource;
 
   /// Creates a new [SecretStoreBasedAuthCredentials].
   /// [objectType] Type of the specific object - used for deserializing
@@ -21,14 +22,14 @@ class SecretStoreBasedAuthCredentials {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'objectType': objectType,
-      'secretStoreResource': ?secretStoreResource == null ? null : secretStoreResource!.toMap(),
+      'secretStoreResource': ?pulumi.Input.mapOptionalInputValue<SecretStoreResource, Map<String, dynamic>>(secretStoreResource, (value) => value.toMap()),
     };
   }
 
   factory SecretStoreBasedAuthCredentials.fromMap(Map<String, dynamic> map) {
     return SecretStoreBasedAuthCredentials(
-      objectType: map['objectType'] as String,
-      secretStoreResource: map['secretStoreResource'] == null ? null : SecretStoreResource.fromMap((map['secretStoreResource'] as Map).cast<String, dynamic>()),
+      objectType: (map['objectType'] as String).input(),
+      secretStoreResource: map['secretStoreResource'] == null ? null : (SecretStoreResource.fromMap((map['secretStoreResource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetActionGroupArgs {
   /// [actionGroupName] The name of the action group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetActionGroupArgs({
-    required pulumi.Output<String> actionGroupName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      actionGroupName = pulumi.Input.asInput<String>(actionGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.actionGroupName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetActionGroupArgs {
 
   factory GetActionGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetActionGroupArgs(
-      actionGroupName: pulumi.Output.create<String>(map['actionGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      actionGroupName: (map['actionGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

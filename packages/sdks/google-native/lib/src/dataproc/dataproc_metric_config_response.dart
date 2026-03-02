@@ -6,7 +6,7 @@ import 'metric_response.dart';
 /// Dataproc metric config.
 class DataprocMetricConfigResponse {
   /// Metrics sources to enable.
-  final List<MetricResponse> metrics;
+  final pulumi.Input<List<MetricResponse>> metrics;
 
   /// Creates a new [DataprocMetricConfigResponse].
   /// [metrics] Metrics sources to enable.
@@ -16,13 +16,13 @@ class DataprocMetricConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metrics': pulumi.Input.encodeList<MetricResponse, Map<String, dynamic>>(metrics, (value) => value.toMap()),
+      'metrics': pulumi.Input.mapInputValue<List<MetricResponse>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<MetricResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DataprocMetricConfigResponse.fromMap(Map<String, dynamic> map) {
     return DataprocMetricConfigResponse(
-      metrics: pulumi.Input.decodeList<MetricResponse>(map['metrics'], (value) => MetricResponse.fromMap((value as Map).cast<String, dynamic>())),
+      metrics: (pulumi.Input.decodeList<MetricResponse>(map['metrics'], (value) => MetricResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

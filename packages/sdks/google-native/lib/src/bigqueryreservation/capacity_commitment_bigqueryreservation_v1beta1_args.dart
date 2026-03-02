@@ -34,23 +34,15 @@ class CapacityCommitmentBigqueryreservationV1beta1Args {
   /// [renewalPlan] The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
   /// [slotCount] Number of slots in this commitment.
   CapacityCommitmentBigqueryreservationV1beta1Args({
-    pulumi.Output<String>? capacityCommitmentId,
-    pulumi.Output<bool>? enforceSingleAdminProjectPerOrg,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? multiRegionAuxiliary,
-    pulumi.Output<CapacityCommitmentPlanBigqueryreservationV1beta1>? plan,
-    pulumi.Output<String>? project,
-    pulumi.Output<CapacityCommitmentRenewalPlanBigqueryreservationV1beta1>? renewalPlan,
-    pulumi.Output<String>? slotCount,
-  }) :
-      capacityCommitmentId = pulumi.Input.asOptionalInput<String>(capacityCommitmentId),
-      enforceSingleAdminProjectPerOrg = pulumi.Input.asOptionalInput<bool>(enforceSingleAdminProjectPerOrg),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      multiRegionAuxiliary = pulumi.Input.asOptionalInput<bool>(multiRegionAuxiliary),
-      plan = pulumi.Input.asOptionalInput<CapacityCommitmentPlanBigqueryreservationV1beta1>(plan),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      renewalPlan = pulumi.Input.asOptionalInput<CapacityCommitmentRenewalPlanBigqueryreservationV1beta1>(renewalPlan),
-      slotCount = pulumi.Input.asOptionalInput<String>(slotCount);
+    this.capacityCommitmentId,
+    this.enforceSingleAdminProjectPerOrg,
+    this.location,
+    this.multiRegionAuxiliary,
+    this.plan,
+    this.project,
+    this.renewalPlan,
+    this.slotCount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class CapacityCommitmentBigqueryreservationV1beta1Args {
 
   factory CapacityCommitmentBigqueryreservationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return CapacityCommitmentBigqueryreservationV1beta1Args(
-      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : pulumi.Output.create<String>(map['capacityCommitmentId'] as String),
-      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : pulumi.Output.create<bool>(map['enforceSingleAdminProjectPerOrg'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : pulumi.Output.create<bool>(map['multiRegionAuxiliary'] as bool),
-      plan: map['plan'] == null ? null : pulumi.Output.create<CapacityCommitmentPlanBigqueryreservationV1beta1>(CapacityCommitmentPlanBigqueryreservationV1beta1.fromValue(map['plan'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      renewalPlan: map['renewalPlan'] == null ? null : pulumi.Output.create<CapacityCommitmentRenewalPlanBigqueryreservationV1beta1>(CapacityCommitmentRenewalPlanBigqueryreservationV1beta1.fromValue(map['renewalPlan'] as String)),
-      slotCount: map['slotCount'] == null ? null : pulumi.Output.create<String>(map['slotCount'] as String),
+      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : (map['capacityCommitmentId'] as String).input(),
+      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : (map['enforceSingleAdminProjectPerOrg'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : (map['multiRegionAuxiliary'] as bool).input(),
+      plan: map['plan'] == null ? null : (CapacityCommitmentPlanBigqueryreservationV1beta1.fromValue(map['plan'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      renewalPlan: map['renewalPlan'] == null ? null : (CapacityCommitmentRenewalPlanBigqueryreservationV1beta1.fromValue(map['renewalPlan'] as String)).input(),
+      slotCount: map['slotCount'] == null ? null : (map['slotCount'] as String).input(),
     );
   }
 }

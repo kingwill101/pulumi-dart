@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'basic_yarn_autoscaling_config_response.dart';
 import 'spark_standalone_autoscaling_config_response.dart';
 
 /// Basic algorithm for autoscaling.
 class BasicAutoscalingAlgorithmResponse {
   /// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
-  final String cooldownPeriod;
+  final pulumi.Input<String> cooldownPeriod;
   /// Optional. Spark Standalone autoscaling configuration
-  final SparkStandaloneAutoscalingConfigResponse sparkStandaloneConfig;
+  final pulumi.Input<SparkStandaloneAutoscalingConfigResponse> sparkStandaloneConfig;
   /// Optional. YARN autoscaling configuration.
-  final BasicYarnAutoscalingConfigResponse yarnConfig;
+  final pulumi.Input<BasicYarnAutoscalingConfigResponse> yarnConfig;
 
   /// Creates a new [BasicAutoscalingAlgorithmResponse].
   /// [cooldownPeriod] Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
@@ -25,16 +26,16 @@ class BasicAutoscalingAlgorithmResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cooldownPeriod': cooldownPeriod,
-      'sparkStandaloneConfig': sparkStandaloneConfig.toMap(),
-      'yarnConfig': yarnConfig.toMap(),
+      'sparkStandaloneConfig': pulumi.Input.mapInputValue<SparkStandaloneAutoscalingConfigResponse, Map<String, dynamic>>(sparkStandaloneConfig, (value) => value.toMap()),
+      'yarnConfig': pulumi.Input.mapInputValue<BasicYarnAutoscalingConfigResponse, Map<String, dynamic>>(yarnConfig, (value) => value.toMap()),
     };
   }
 
   factory BasicAutoscalingAlgorithmResponse.fromMap(Map<String, dynamic> map) {
     return BasicAutoscalingAlgorithmResponse(
-      cooldownPeriod: map['cooldownPeriod'] as String,
-      sparkStandaloneConfig: SparkStandaloneAutoscalingConfigResponse.fromMap((map['sparkStandaloneConfig'] as Map).cast<String, dynamic>()),
-      yarnConfig: BasicYarnAutoscalingConfigResponse.fromMap((map['yarnConfig'] as Map).cast<String, dynamic>()),
+      cooldownPeriod: (map['cooldownPeriod'] as String).input(),
+      sparkStandaloneConfig: (SparkStandaloneAutoscalingConfigResponse.fromMap((map['sparkStandaloneConfig'] as Map).cast<String, dynamic>())).input(),
+      yarnConfig: (BasicYarnAutoscalingConfigResponse.fromMap((map['yarnConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

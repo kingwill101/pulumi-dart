@@ -6,11 +6,11 @@ import 'provider.dart';
 /// Properties of a Workspace
 class WorkspaceResourceProperties {
   /// Indicator of enablement of the Quantum workspace Api keys.
-  final bool? apiKeyEnabled;
+  final pulumi.Input<bool>? apiKeyEnabled;
   /// List of Providers selected for this Workspace
-  final List<Provider>? providers;
+  final pulumi.Input<List<Provider>>? providers;
   /// ARM Resource Id of the storage account associated with this workspace.
-  final String? storageAccount;
+  final pulumi.Input<String>? storageAccount;
 
   /// Creates a new [WorkspaceResourceProperties].
   /// [apiKeyEnabled] Indicator of enablement of the Quantum workspace Api keys.
@@ -25,16 +25,16 @@ class WorkspaceResourceProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiKeyEnabled': ?apiKeyEnabled,
-      'providers': ?providers == null ? null : pulumi.Input.encodeList<Provider, Map<String, dynamic>>(providers!, (value) => value.toMap()),
+      'providers': ?pulumi.Input.mapOptionalInputValue<List<Provider>, List<Map<String, dynamic>>>(providers, (value) => pulumi.Input.encodeList<Provider, Map<String, dynamic>>(value, (value) => value.toMap())),
       'storageAccount': ?storageAccount,
     };
   }
 
   factory WorkspaceResourceProperties.fromMap(Map<String, dynamic> map) {
     return WorkspaceResourceProperties(
-      apiKeyEnabled: map['apiKeyEnabled'] == null ? null : map['apiKeyEnabled'] as bool,
-      providers: map['providers'] == null ? null : pulumi.Input.decodeList<Provider>(map['providers'], (value) => Provider.fromMap((value as Map).cast<String, dynamic>())),
-      storageAccount: map['storageAccount'] == null ? null : map['storageAccount'] as String,
+      apiKeyEnabled: map['apiKeyEnabled'] == null ? null : (map['apiKeyEnabled'] as bool).input(),
+      providers: map['providers'] == null ? null : (pulumi.Input.decodeList<Provider>(map['providers'], (value) => Provider.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccount: map['storageAccount'] == null ? null : (map['storageAccount'] as String).input(),
     );
   }
 }

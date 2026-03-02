@@ -39,23 +39,15 @@ class CapacityCommitmentArgs {
   /// [renewalPlan] The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
   /// [slotCount] Number of slots in this commitment.
   CapacityCommitmentArgs({
-    pulumi.Output<String>? capacityCommitmentId,
-    pulumi.Output<String>? edition,
-    pulumi.Output<String>? enforceSingleAdminProjectPerOrg,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> plan,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? renewalPlan,
-    required pulumi.Output<int> slotCount,
-  }) :
-      capacityCommitmentId = pulumi.Input.asOptionalInput<String>(capacityCommitmentId),
-      edition = pulumi.Input.asOptionalInput<String>(edition),
-      enforceSingleAdminProjectPerOrg = pulumi.Input.asOptionalInput<String>(enforceSingleAdminProjectPerOrg),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      plan = pulumi.Input.asInput<String>(plan),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      renewalPlan = pulumi.Input.asOptionalInput<String>(renewalPlan),
-      slotCount = pulumi.Input.asInput<int>(slotCount);
+    this.capacityCommitmentId,
+    this.edition,
+    this.enforceSingleAdminProjectPerOrg,
+    this.location,
+    required this.plan,
+    this.project,
+    this.renewalPlan,
+    required this.slotCount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class CapacityCommitmentArgs {
 
   factory CapacityCommitmentArgs.fromMap(Map<String, dynamic> map) {
     return CapacityCommitmentArgs(
-      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : pulumi.Output.create<String>(map['capacityCommitmentId'] as String),
-      edition: map['edition'] == null ? null : pulumi.Output.create<String>(map['edition'] as String),
-      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : pulumi.Output.create<String>(map['enforceSingleAdminProjectPerOrg'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      plan: pulumi.Output.create<String>(map['plan'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      renewalPlan: map['renewalPlan'] == null ? null : pulumi.Output.create<String>(map['renewalPlan'] as String),
-      slotCount: pulumi.Output.create<int>(map['slotCount'] as int),
+      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : (map['capacityCommitmentId'] as String).input(),
+      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : (map['enforceSingleAdminProjectPerOrg'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      plan: (map['plan'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      renewalPlan: map['renewalPlan'] == null ? null : (map['renewalPlan'] as String).input(),
+      slotCount: (map['slotCount'] as int).input(),
     );
   }
 }

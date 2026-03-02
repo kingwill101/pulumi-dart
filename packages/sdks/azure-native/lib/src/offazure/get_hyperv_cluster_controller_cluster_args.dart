@@ -19,13 +19,10 @@ class GetHypervClusterControllerClusterArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
   GetHypervClusterControllerClusterArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asInput<String>(siteName);
+    required this.clusterName,
+    required this.resourceGroupName,
+    required this.siteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetHypervClusterControllerClusterArgs {
 
   factory GetHypervClusterControllerClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetHypervClusterControllerClusterArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
     );
   }
 }

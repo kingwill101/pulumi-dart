@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallVpcFirewallCenLocalVpcEniList {
   /// The ID of the instance of the ENI in the VPC.
-  final String? eniId;
+  final pulumi.Input<String>? eniId;
   /// The private IP address of the ENI in the VPC.
-  final String? eniPrivateIpAddress;
+  final pulumi.Input<String>? eniPrivateIpAddress;
 
   /// Creates a new [FirewallVpcFirewallCenLocalVpcEniList].
   /// [eniId] The ID of the instance of the ENI in the VPC.
@@ -24,8 +25,8 @@ class FirewallVpcFirewallCenLocalVpcEniList {
 
   factory FirewallVpcFirewallCenLocalVpcEniList.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallCenLocalVpcEniList(
-      eniId: map['eniId'] == null ? null : map['eniId'] as String,
-      eniPrivateIpAddress: map['eniPrivateIpAddress'] == null ? null : map['eniPrivateIpAddress'] as String,
+      eniId: map['eniId'] == null ? null : (map['eniId'] as String).input(),
+      eniPrivateIpAddress: map['eniPrivateIpAddress'] == null ? null : (map['eniPrivateIpAddress'] as String).input(),
     );
   }
 }

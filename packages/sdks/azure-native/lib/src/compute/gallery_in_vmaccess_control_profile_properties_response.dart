@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the properties of a gallery inVMAccessControlProfile.
 class GalleryInVMAccessControlProfilePropertiesResponse {
   /// This property allows you to specify the Endpoint type for which this profile is defining the access control for. Possible values are: 'WireServer' or 'IMDS'
-  final String applicableHostEndpoint;
+  final pulumi.Input<String> applicableHostEndpoint;
   /// The description of this gallery inVMAccessControlProfile resources. This property is updatable.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// This property allows you to specify the OS type of the VMs/VMSS for which this profile can be used against. Possible values are: 'Windows' or 'Linux'
-  final String osType;
+  final pulumi.Input<String> osType;
   /// The provisioning state, which only appears in the response.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [GalleryInVMAccessControlProfilePropertiesResponse].
   /// [applicableHostEndpoint] This property allows you to specify the Endpoint type for which this profile is defining the access control for. Possible values are: 'WireServer' or 'IMDS'
@@ -35,10 +36,10 @@ class GalleryInVMAccessControlProfilePropertiesResponse {
 
   factory GalleryInVMAccessControlProfilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GalleryInVMAccessControlProfilePropertiesResponse(
-      applicableHostEndpoint: map['applicableHostEndpoint'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      osType: map['osType'] as String,
-      provisioningState: map['provisioningState'] as String,
+      applicableHostEndpoint: (map['applicableHostEndpoint'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

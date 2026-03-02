@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAdditionalCertificatesCertificate {
   /// The ID of the GA instance.
-  final String acceleratorId;
+  final pulumi.Input<String> acceleratorId;
   /// The Certificate ID.
-  final String certificateId;
+  final pulumi.Input<String> certificateId;
   /// The domain name specified by the certificate.
-  final String domain;
+  final pulumi.Input<String> domain;
   /// The ID of the Additional Certificate. The value formats as `<accelerator_id>:<listener_id>:<domain>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the listener. Only HTTPS listeners support this parameter.
-  final String listenerId;
+  final pulumi.Input<String> listenerId;
 
   /// Creates a new [GetAdditionalCertificatesCertificate].
   /// [acceleratorId] The ID of the GA instance.
@@ -39,11 +40,11 @@ class GetAdditionalCertificatesCertificate {
 
   factory GetAdditionalCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetAdditionalCertificatesCertificate(
-      acceleratorId: map['acceleratorId'] as String,
-      certificateId: map['certificateId'] as String,
-      domain: map['domain'] as String,
-      id: map['id'] as String,
-      listenerId: map['listenerId'] as String,
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      certificateId: (map['certificateId'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      id: (map['id'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
     );
   }
 }

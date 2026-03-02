@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiAgentVersionsAgentVersionAttachedFunction {
   /// Description of the function
-  final String description;
+  final pulumi.Input<String> description;
   /// FaaS name of the function
-  final String faasName;
+  final pulumi.Input<String> faasName;
   /// FaaS namespace of the function
-  final String faasNamespace;
+  final pulumi.Input<String> faasNamespace;
   /// Function is deleted
-  final bool isDeleted;
+  final pulumi.Input<bool> isDeleted;
   /// Name of the function
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetGradientaiAgentVersionsAgentVersionAttachedFunction].
   /// [description] Description of the function
@@ -39,11 +40,11 @@ class GetGradientaiAgentVersionsAgentVersionAttachedFunction {
 
   factory GetGradientaiAgentVersionsAgentVersionAttachedFunction.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentVersionsAgentVersionAttachedFunction(
-      description: map['description'] as String,
-      faasName: map['faasName'] as String,
-      faasNamespace: map['faasNamespace'] as String,
-      isDeleted: map['isDeleted'] as bool,
-      name: map['name'] as String,
+      description: (map['description'] as String).input(),
+      faasName: (map['faasName'] as String).input(),
+      faasNamespace: (map['faasNamespace'] as String).input(),
+      isDeleted: (map['isDeleted'] as bool).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

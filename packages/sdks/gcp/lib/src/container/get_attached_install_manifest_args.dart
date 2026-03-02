@@ -23,15 +23,11 @@ class GetAttachedInstallManifestArgs {
   /// [platformVersion] The platform version for the cluster. A list of valid values can be retrieved using the `gcp.container.getAttachedVersions` data source.
   /// [project] ID of the project to list available platform versions for. Should match the project the cluster will be deployed to.
   GetAttachedInstallManifestArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> platformVersion,
-    required pulumi.Output<String> project,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      location = pulumi.Input.asInput<String>(location),
-      platformVersion = pulumi.Input.asInput<String>(platformVersion),
-      project = pulumi.Input.asInput<String>(project);
+    required this.clusterId,
+    required this.location,
+    required this.platformVersion,
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetAttachedInstallManifestArgs {
 
   factory GetAttachedInstallManifestArgs.fromMap(Map<String, dynamic> map) {
     return GetAttachedInstallManifestArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      platformVersion: pulumi.Output.create<String>(map['platformVersion'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      location: (map['location'] as String).input(),
+      platformVersion: (map['platformVersion'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

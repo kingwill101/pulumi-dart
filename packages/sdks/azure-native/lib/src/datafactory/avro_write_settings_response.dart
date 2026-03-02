@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Avro write settings.
 class AvroWriteSettingsResponse {
   /// Specifies the file name pattern <fileNamePrefix>_<fileIndex>.<fileExtension> when copy from non-file based store without partitionOptions. Type: string (or Expression with resultType string).
-  final dynamic fileNamePrefix;
+  final pulumi.Input<dynamic>? fileNamePrefix;
   /// Limit the written file's row count to be smaller than or equal to the specified count. Type: integer (or Expression with resultType integer).
-  final dynamic maxRowsPerFile;
+  final pulumi.Input<dynamic>? maxRowsPerFile;
   /// Top level record name in write result, which is required in AVRO spec.
-  final String? recordName;
+  final pulumi.Input<String>? recordName;
   /// Record namespace in the write result.
-  final String? recordNamespace;
+  final pulumi.Input<String>? recordNamespace;
   /// The write setting type.
   /// Expected value is 'AvroWriteSettings'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AvroWriteSettingsResponse].
   /// [fileNamePrefix] Specifies the file name pattern <fileNamePrefix>_<fileIndex>.<fileExtension> when copy from non-file based store without partitionOptions. Type: string (or Expression with resultType string).
@@ -41,11 +42,11 @@ class AvroWriteSettingsResponse {
 
   factory AvroWriteSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AvroWriteSettingsResponse(
-      fileNamePrefix: map['fileNamePrefix'] == null ? null : map['fileNamePrefix'],
-      maxRowsPerFile: map['maxRowsPerFile'] == null ? null : map['maxRowsPerFile'],
-      recordName: map['recordName'] == null ? null : map['recordName'] as String,
-      recordNamespace: map['recordNamespace'] == null ? null : map['recordNamespace'] as String,
-      type: map['type'] as String,
+      fileNamePrefix: map['fileNamePrefix'] == null ? null : (map['fileNamePrefix']).input(),
+      maxRowsPerFile: map['maxRowsPerFile'] == null ? null : (map['maxRowsPerFile']).input(),
+      recordName: map['recordName'] == null ? null : (map['recordName'] as String).input(),
+      recordNamespace: map['recordNamespace'] == null ? null : (map['recordNamespace'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

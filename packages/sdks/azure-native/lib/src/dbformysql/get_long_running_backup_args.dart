@@ -19,13 +19,10 @@ class GetLongRunningBackupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
   GetLongRunningBackupArgs({
-    required pulumi.Output<String> backupName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      backupName = pulumi.Input.asInput<String>(backupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    required this.backupName,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLongRunningBackupArgs {
 
   factory GetLongRunningBackupArgs.fromMap(Map<String, dynamic> map) {
     return GetLongRunningBackupArgs(
-      backupName: pulumi.Output.create<String>(map['backupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      backupName: (map['backupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

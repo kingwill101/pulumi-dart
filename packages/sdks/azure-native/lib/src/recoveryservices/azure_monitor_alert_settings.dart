@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for Azure Monitor based alerts
 class AzureMonitorAlertSettings {
-  final String? alertsForAllFailoverIssues;
-  final String? alertsForAllJobFailures;
-  final String? alertsForAllReplicationIssues;
+  final pulumi.Input<String>? alertsForAllFailoverIssues;
+  final pulumi.Input<String>? alertsForAllJobFailures;
+  final pulumi.Input<String>? alertsForAllReplicationIssues;
 
   /// Creates a new [AzureMonitorAlertSettings].
   /// [alertsForAllFailoverIssues] Optional.
@@ -27,9 +28,9 @@ class AzureMonitorAlertSettings {
 
   factory AzureMonitorAlertSettings.fromMap(Map<String, dynamic> map) {
     return AzureMonitorAlertSettings(
-      alertsForAllFailoverIssues: map['alertsForAllFailoverIssues'] == null ? null : map['alertsForAllFailoverIssues'] as String,
-      alertsForAllJobFailures: map['alertsForAllJobFailures'] == null ? null : map['alertsForAllJobFailures'] as String,
-      alertsForAllReplicationIssues: map['alertsForAllReplicationIssues'] == null ? null : map['alertsForAllReplicationIssues'] as String,
+      alertsForAllFailoverIssues: map['alertsForAllFailoverIssues'] == null ? null : (map['alertsForAllFailoverIssues'] as String).input(),
+      alertsForAllJobFailures: map['alertsForAllJobFailures'] == null ? null : (map['alertsForAllJobFailures'] as String).input(),
+      alertsForAllReplicationIssues: map['alertsForAllReplicationIssues'] == null ? null : (map['alertsForAllReplicationIssues'] as String).input(),
     );
   }
 }

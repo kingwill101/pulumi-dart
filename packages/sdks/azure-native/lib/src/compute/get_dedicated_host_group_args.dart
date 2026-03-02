@@ -19,13 +19,10 @@ class GetDedicatedHostGroupArgs {
   /// [hostGroupName] The name of the dedicated host group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDedicatedHostGroupArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> hostGroupName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      hostGroupName = pulumi.Input.asInput<String>(hostGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.expand,
+    required this.hostGroupName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDedicatedHostGroupArgs {
 
   factory GetDedicatedHostGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostGroupArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      hostGroupName: pulumi.Output.create<String>(map['hostGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      hostGroupName: (map['hostGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

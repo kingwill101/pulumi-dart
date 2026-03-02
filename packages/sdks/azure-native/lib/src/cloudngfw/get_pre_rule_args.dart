@@ -16,11 +16,9 @@ class GetPreRuleArgs {
   /// [globalRulestackName] GlobalRulestack resource name
   /// [priority] Pre Rule priority
   GetPreRuleArgs({
-    required pulumi.Output<String> globalRulestackName,
-    required pulumi.Output<String> priority,
-  }) :
-      globalRulestackName = pulumi.Input.asInput<String>(globalRulestackName),
-      priority = pulumi.Input.asInput<String>(priority);
+    required this.globalRulestackName,
+    required this.priority,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPreRuleArgs {
 
   factory GetPreRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetPreRuleArgs(
-      globalRulestackName: pulumi.Output.create<String>(map['globalRulestackName'] as String),
-      priority: pulumi.Output.create<String>(map['priority'] as String),
+      globalRulestackName: (map['globalRulestackName'] as String).input(),
+      priority: (map['priority'] as String).input(),
     );
   }
 }

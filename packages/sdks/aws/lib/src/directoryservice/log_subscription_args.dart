@@ -19,13 +19,10 @@ class LogSubscriptionArgs {
   /// [logGroupName] Name of the cloudwatch log group to which the logs should be published. The log group should be already created and the directory service principal should be provided with required permission to create stream and publish logs. Changing this value would delete the current subscription and create a new one. A directory can only have one log subscription at a time.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LogSubscriptionArgs({
-    required pulumi.Output<String> directoryId,
-    required pulumi.Output<String> logGroupName,
-    pulumi.Output<String>? region,
-  }) :
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      logGroupName = pulumi.Input.asInput<String>(logGroupName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.directoryId,
+    required this.logGroupName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LogSubscriptionArgs {
 
   factory LogSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return LogSubscriptionArgs(
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      logGroupName: pulumi.Output.create<String>(map['logGroupName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      directoryId: (map['directoryId'] as String).input(),
+      logGroupName: (map['logGroupName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

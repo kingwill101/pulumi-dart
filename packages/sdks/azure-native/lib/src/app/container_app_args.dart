@@ -57,35 +57,21 @@ class ContainerAppArgs {
   /// [template] Container App versioned application definition.
   /// [workloadProfileName] Workload profile name to pin for container app execution.
   ContainerAppArgs({
-    pulumi.Output<Configuration>? configuration,
-    pulumi.Output<String>? containerAppName,
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedBy,
-    pulumi.Output<String>? managedEnvironmentId,
-    pulumi.Output<ContainerAppPatchingConfiguration>? patchingConfiguration,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Template>? template,
-    pulumi.Output<String>? workloadProfileName,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<Configuration>(configuration),
-      containerAppName = pulumi.Input.asOptionalInput<String>(containerAppName),
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedBy = pulumi.Input.asOptionalInput<String>(managedBy),
-      managedEnvironmentId = pulumi.Input.asOptionalInput<String>(managedEnvironmentId),
-      patchingConfiguration = pulumi.Input.asOptionalInput<ContainerAppPatchingConfiguration>(patchingConfiguration),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      template = pulumi.Input.asOptionalInput<Template>(template),
-      workloadProfileName = pulumi.Input.asOptionalInput<String>(workloadProfileName);
+    this.configuration,
+    this.containerAppName,
+    this.environmentId,
+    this.extendedLocation,
+    this.identity,
+    this.kind,
+    this.location,
+    this.managedBy,
+    this.managedEnvironmentId,
+    this.patchingConfiguration,
+    required this.resourceGroupName,
+    this.tags,
+    this.template,
+    this.workloadProfileName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,20 +94,20 @@ class ContainerAppArgs {
 
   factory ContainerAppArgs.fromMap(Map<String, dynamic> map) {
     return ContainerAppArgs(
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<Configuration>(Configuration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      containerAppName: map['containerAppName'] == null ? null : pulumi.Output.create<String>(map['containerAppName'] as String),
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedBy: map['managedBy'] == null ? null : pulumi.Output.create<String>(map['managedBy'] as String),
-      managedEnvironmentId: map['managedEnvironmentId'] == null ? null : pulumi.Output.create<String>(map['managedEnvironmentId'] as String),
-      patchingConfiguration: map['patchingConfiguration'] == null ? null : pulumi.Output.create<ContainerAppPatchingConfiguration>(ContainerAppPatchingConfiguration.fromMap((map['patchingConfiguration'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      template: map['template'] == null ? null : pulumi.Output.create<Template>(Template.fromMap((map['template'] as Map).cast<String, dynamic>())),
-      workloadProfileName: map['workloadProfileName'] == null ? null : pulumi.Output.create<String>(map['workloadProfileName'] as String),
+      configuration: map['configuration'] == null ? null : (Configuration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      containerAppName: map['containerAppName'] == null ? null : (map['containerAppName'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
+      managedEnvironmentId: map['managedEnvironmentId'] == null ? null : (map['managedEnvironmentId'] as String).input(),
+      patchingConfiguration: map['patchingConfiguration'] == null ? null : (ContainerAppPatchingConfiguration.fromMap((map['patchingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      template: map['template'] == null ? null : (Template.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName'] as String).input(),
     );
   }
 }

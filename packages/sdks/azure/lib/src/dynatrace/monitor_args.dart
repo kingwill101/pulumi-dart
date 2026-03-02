@@ -44,27 +44,17 @@ class MonitorArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [user] User's information. A `user` block as defined below. Changing this forces a new resource to be created.
   MonitorArgs({
-    pulumi.Output<List<MonitorEnvironmentProperty>>? environmentProperties,
-    required pulumi.Output<MonitorIdentity> identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> marketplaceSubscription,
-    pulumi.Output<bool>? monitoringEnabled,
-    pulumi.Output<String>? name,
-    required pulumi.Output<MonitorPlan> plan,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<MonitorUser> user,
-  }) :
-      environmentProperties = pulumi.Input.asOptionalInput<List<MonitorEnvironmentProperty>>(environmentProperties),
-      identity = pulumi.Input.asInput<MonitorIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      marketplaceSubscription = pulumi.Input.asInput<String>(marketplaceSubscription),
-      monitoringEnabled = pulumi.Input.asOptionalInput<bool>(monitoringEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      plan = pulumi.Input.asInput<MonitorPlan>(plan),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      user = pulumi.Input.asInput<MonitorUser>(user);
+    this.environmentProperties,
+    required this.identity,
+    this.location,
+    required this.marketplaceSubscription,
+    this.monitoringEnabled,
+    this.name,
+    required this.plan,
+    required this.resourceGroupName,
+    this.tags,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class MonitorArgs {
 
   factory MonitorArgs.fromMap(Map<String, dynamic> map) {
     return MonitorArgs(
-      environmentProperties: map['environmentProperties'] == null ? null : pulumi.Output.create<List<MonitorEnvironmentProperty>>(pulumi.Input.decodeList<MonitorEnvironmentProperty>(map['environmentProperties'], (value) => MonitorEnvironmentProperty.fromMap((value as Map).cast<String, dynamic>()))),
-      identity: pulumi.Output.create<MonitorIdentity>(MonitorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      marketplaceSubscription: pulumi.Output.create<String>(map['marketplaceSubscription'] as String),
-      monitoringEnabled: map['monitoringEnabled'] == null ? null : pulumi.Output.create<bool>(map['monitoringEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      plan: pulumi.Output.create<MonitorPlan>(MonitorPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      user: pulumi.Output.create<MonitorUser>(MonitorUser.fromMap((map['user'] as Map).cast<String, dynamic>())),
+      environmentProperties: map['environmentProperties'] == null ? null : (pulumi.Input.decodeList<MonitorEnvironmentProperty>(map['environmentProperties'], (value) => MonitorEnvironmentProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: (MonitorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      marketplaceSubscription: (map['marketplaceSubscription'] as String).input(),
+      monitoringEnabled: map['monitoringEnabled'] == null ? null : (map['monitoringEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      plan: (MonitorPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      user: (MonitorUser.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

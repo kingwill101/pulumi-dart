@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auto_pause_properties_response.dart';
 import 'auto_scale_properties_response.dart';
 
 class SynapseSparkResponseProperties {
   /// Auto pause properties.
-  final AutoPausePropertiesResponse? autoPauseProperties;
+  final pulumi.Input<AutoPausePropertiesResponse>? autoPauseProperties;
   /// Auto scale properties.
-  final AutoScalePropertiesResponse? autoScaleProperties;
+  final pulumi.Input<AutoScalePropertiesResponse>? autoScaleProperties;
   /// The number of compute nodes currently assigned to the compute.
-  final int? nodeCount;
+  final pulumi.Input<int>? nodeCount;
   /// Node size.
-  final String? nodeSize;
+  final pulumi.Input<String>? nodeSize;
   /// Node size family.
-  final String? nodeSizeFamily;
+  final pulumi.Input<String>? nodeSizeFamily;
   /// Pool name.
-  final String? poolName;
+  final pulumi.Input<String>? poolName;
   /// Name of the resource group in which workspace is located.
-  final String? resourceGroup;
+  final pulumi.Input<String>? resourceGroup;
   /// Spark version.
-  final String? sparkVersion;
+  final pulumi.Input<String>? sparkVersion;
   /// Azure subscription identifier.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// Name of Azure Machine Learning workspace.
-  final String? workspaceName;
+  final pulumi.Input<String>? workspaceName;
 
   /// Creates a new [SynapseSparkResponseProperties].
   /// [autoPauseProperties] Auto pause properties.
@@ -51,8 +52,8 @@ class SynapseSparkResponseProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoPauseProperties': ?autoPauseProperties == null ? null : autoPauseProperties!.toMap(),
-      'autoScaleProperties': ?autoScaleProperties == null ? null : autoScaleProperties!.toMap(),
+      'autoPauseProperties': ?pulumi.Input.mapOptionalInputValue<AutoPausePropertiesResponse, Map<String, dynamic>>(autoPauseProperties, (value) => value.toMap()),
+      'autoScaleProperties': ?pulumi.Input.mapOptionalInputValue<AutoScalePropertiesResponse, Map<String, dynamic>>(autoScaleProperties, (value) => value.toMap()),
       'nodeCount': ?nodeCount,
       'nodeSize': ?nodeSize,
       'nodeSizeFamily': ?nodeSizeFamily,
@@ -66,16 +67,16 @@ class SynapseSparkResponseProperties {
 
   factory SynapseSparkResponseProperties.fromMap(Map<String, dynamic> map) {
     return SynapseSparkResponseProperties(
-      autoPauseProperties: map['autoPauseProperties'] == null ? null : AutoPausePropertiesResponse.fromMap((map['autoPauseProperties'] as Map).cast<String, dynamic>()),
-      autoScaleProperties: map['autoScaleProperties'] == null ? null : AutoScalePropertiesResponse.fromMap((map['autoScaleProperties'] as Map).cast<String, dynamic>()),
-      nodeCount: map['nodeCount'] == null ? null : map['nodeCount'] as int,
-      nodeSize: map['nodeSize'] == null ? null : map['nodeSize'] as String,
-      nodeSizeFamily: map['nodeSizeFamily'] == null ? null : map['nodeSizeFamily'] as String,
-      poolName: map['poolName'] == null ? null : map['poolName'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      sparkVersion: map['sparkVersion'] == null ? null : map['sparkVersion'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      workspaceName: map['workspaceName'] == null ? null : map['workspaceName'] as String,
+      autoPauseProperties: map['autoPauseProperties'] == null ? null : (AutoPausePropertiesResponse.fromMap((map['autoPauseProperties'] as Map).cast<String, dynamic>())).input(),
+      autoScaleProperties: map['autoScaleProperties'] == null ? null : (AutoScalePropertiesResponse.fromMap((map['autoScaleProperties'] as Map).cast<String, dynamic>())).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      nodeSize: map['nodeSize'] == null ? null : (map['nodeSize'] as String).input(),
+      nodeSizeFamily: map['nodeSizeFamily'] == null ? null : (map['nodeSizeFamily'] as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      sparkVersion: map['sparkVersion'] == null ? null : (map['sparkVersion'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
     );
   }
 }

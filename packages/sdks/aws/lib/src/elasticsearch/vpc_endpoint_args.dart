@@ -20,13 +20,10 @@ class VpcEndpointArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcOptions] Options to specify the subnets and security groups for the endpoint.
   VpcEndpointArgs({
-    required pulumi.Output<String> domainArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<VpcEndpointVpcOptions> vpcOptions,
-  }) :
-      domainArn = pulumi.Input.asInput<String>(domainArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcOptions = pulumi.Input.asInput<VpcEndpointVpcOptions>(vpcOptions);
+    required this.domainArn,
+    this.region,
+    required this.vpcOptions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class VpcEndpointArgs {
 
   factory VpcEndpointArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointArgs(
-      domainArn: pulumi.Output.create<String>(map['domainArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcOptions: pulumi.Output.create<VpcEndpointVpcOptions>(VpcEndpointVpcOptions.fromMap((map['vpcOptions'] as Map).cast<String, dynamic>())),
+      domainArn: (map['domainArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcOptions: (VpcEndpointVpcOptions.fromMap((map['vpcOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

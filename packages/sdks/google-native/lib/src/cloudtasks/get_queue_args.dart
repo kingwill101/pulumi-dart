@@ -16,13 +16,10 @@ class GetQueueArgs {
   /// [project] Optional.
   /// [queueId] Required.
   GetQueueArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> queueId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queueId = pulumi.Input.asInput<String>(queueId);
+    required this.location,
+    this.project,
+    required this.queueId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetQueueArgs {
 
   factory GetQueueArgs.fromMap(Map<String, dynamic> map) {
     return GetQueueArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      queueId: pulumi.Output.create<String>(map['queueId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      queueId: (map['queueId'] as String).input(),
     );
   }
 }

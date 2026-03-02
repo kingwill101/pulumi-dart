@@ -19,13 +19,10 @@ class GetRegisteredServerArgs {
   /// [serverId] GUID identifying the on-premises server.
   /// [storageSyncServiceName] Name of Storage Sync Service resource.
   GetRegisteredServerArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverId,
-    required pulumi.Output<String> storageSyncServiceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverId = pulumi.Input.asInput<String>(serverId),
-      storageSyncServiceName = pulumi.Input.asInput<String>(storageSyncServiceName);
+    required this.resourceGroupName,
+    required this.serverId,
+    required this.storageSyncServiceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRegisteredServerArgs {
 
   factory GetRegisteredServerArgs.fromMap(Map<String, dynamic> map) {
     return GetRegisteredServerArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
-      storageSyncServiceName: pulumi.Output.create<String>(map['storageSyncServiceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      storageSyncServiceName: (map['storageSyncServiceName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NamespaceCustomerManagedKey {
   /// The ID of the User Assigned Identity that has access to the key.
-  final String identityId;
+  final pulumi.Input<String> identityId;
   /// Used to specify whether enable Infrastructure Encryption (Double Encryption). Changing this forces a new resource to be created.
-  final bool? infrastructureEncryptionEnabled;
+  final pulumi.Input<bool>? infrastructureEncryptionEnabled;
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Service Bus Namespace.
-  final String keyVaultKeyId;
+  final pulumi.Input<String> keyVaultKeyId;
 
   /// Creates a new [NamespaceCustomerManagedKey].
   /// [identityId] The ID of the User Assigned Identity that has access to the key.
@@ -29,9 +30,9 @@ class NamespaceCustomerManagedKey {
 
   factory NamespaceCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return NamespaceCustomerManagedKey(
-      identityId: map['identityId'] as String,
-      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : map['infrastructureEncryptionEnabled'] as bool,
-      keyVaultKeyId: map['keyVaultKeyId'] as String,
+      identityId: (map['identityId'] as String).input(),
+      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : (map['infrastructureEncryptionEnabled'] as bool).input(),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
     );
   }
 }

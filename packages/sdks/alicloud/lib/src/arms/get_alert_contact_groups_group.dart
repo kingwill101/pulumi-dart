@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertContactGroupsGroup {
   /// The first ID of the resource.
-  final String alertContactGroupId;
+  final pulumi.Input<String> alertContactGroupId;
   /// The name of the resource.
-  final String alertContactGroupName;
+  final pulumi.Input<String> alertContactGroupName;
   /// contact ids.
-  final List<String> contactIds;
+  final pulumi.Input<List<String>> contactIds;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the Alert Contact Group.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetAlertContactGroupsGroup].
   /// [alertContactGroupId] The first ID of the resource.
@@ -39,11 +40,11 @@ class GetAlertContactGroupsGroup {
 
   factory GetAlertContactGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetAlertContactGroupsGroup(
-      alertContactGroupId: map['alertContactGroupId'] as String,
-      alertContactGroupName: map['alertContactGroupName'] as String,
-      contactIds: (map['contactIds'] as List).cast<String>(),
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
+      alertContactGroupId: (map['alertContactGroupId'] as String).input(),
+      alertContactGroupName: (map['alertContactGroupName'] as String).input(),
+      contactIds: ((map['contactIds'] as List).cast<String>()).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

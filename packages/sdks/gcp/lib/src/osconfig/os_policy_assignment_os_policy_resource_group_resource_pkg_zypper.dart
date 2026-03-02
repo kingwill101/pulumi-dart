@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
   /// Package name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper].
   /// [name] Package name.
@@ -19,7 +20,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
 
   factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

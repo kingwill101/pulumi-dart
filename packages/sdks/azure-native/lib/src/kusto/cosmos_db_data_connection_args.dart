@@ -50,33 +50,20 @@ class CosmosDbDataConnectionArgs {
   /// [retrievalStartDate] Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date.
   /// [tableName] The case-sensitive name of the existing target table in your cluster. Retrieved data is ingested into this table.
   CosmosDbDataConnectionArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> cosmosDbAccountResourceId,
-    required pulumi.Output<String> cosmosDbContainer,
-    required pulumi.Output<String> cosmosDbDatabase,
-    pulumi.Output<String>? dataConnectionName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> managedIdentityResourceId,
-    pulumi.Output<String>? mappingRuleName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? retrievalStartDate,
-    required pulumi.Output<String> tableName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      cosmosDbAccountResourceId = pulumi.Input.asInput<String>(cosmosDbAccountResourceId),
-      cosmosDbContainer = pulumi.Input.asInput<String>(cosmosDbContainer),
-      cosmosDbDatabase = pulumi.Input.asInput<String>(cosmosDbDatabase),
-      dataConnectionName = pulumi.Input.asOptionalInput<String>(dataConnectionName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      kind = pulumi.Input.asInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedIdentityResourceId = pulumi.Input.asInput<String>(managedIdentityResourceId),
-      mappingRuleName = pulumi.Input.asOptionalInput<String>(mappingRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      retrievalStartDate = pulumi.Input.asOptionalInput<String>(retrievalStartDate),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    required this.clusterName,
+    required this.cosmosDbAccountResourceId,
+    required this.cosmosDbContainer,
+    required this.cosmosDbDatabase,
+    this.dataConnectionName,
+    required this.databaseName,
+    required this.kind,
+    this.location,
+    required this.managedIdentityResourceId,
+    this.mappingRuleName,
+    required this.resourceGroupName,
+    this.retrievalStartDate,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class CosmosDbDataConnectionArgs {
 
   factory CosmosDbDataConnectionArgs.fromMap(Map<String, dynamic> map) {
     return CosmosDbDataConnectionArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      cosmosDbAccountResourceId: pulumi.Output.create<String>(map['cosmosDbAccountResourceId'] as String),
-      cosmosDbContainer: pulumi.Output.create<String>(map['cosmosDbContainer'] as String),
-      cosmosDbDatabase: pulumi.Output.create<String>(map['cosmosDbDatabase'] as String),
-      dataConnectionName: map['dataConnectionName'] == null ? null : pulumi.Output.create<String>(map['dataConnectionName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedIdentityResourceId: pulumi.Output.create<String>(map['managedIdentityResourceId'] as String),
-      mappingRuleName: map['mappingRuleName'] == null ? null : pulumi.Output.create<String>(map['mappingRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retrievalStartDate: map['retrievalStartDate'] == null ? null : pulumi.Output.create<String>(map['retrievalStartDate'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      cosmosDbAccountResourceId: (map['cosmosDbAccountResourceId'] as String).input(),
+      cosmosDbContainer: (map['cosmosDbContainer'] as String).input(),
+      cosmosDbDatabase: (map['cosmosDbDatabase'] as String).input(),
+      dataConnectionName: map['dataConnectionName'] == null ? null : (map['dataConnectionName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedIdentityResourceId: (map['managedIdentityResourceId'] as String).input(),
+      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      retrievalStartDate: map['retrievalStartDate'] == null ? null : (map['retrievalStartDate'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

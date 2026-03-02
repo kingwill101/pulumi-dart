@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Postdeploy contains the postdeploy job configuration information.
 class Postdeploy {
   /// Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
-  final List<String>? actions;
+  final pulumi.Input<List<String>>? actions;
 
   /// Creates a new [Postdeploy].
   /// [actions] Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
@@ -20,7 +21,7 @@ class Postdeploy {
 
   factory Postdeploy.fromMap(Map<String, dynamic> map) {
     return Postdeploy(
-      actions: map['actions'] == null ? null : (map['actions'] as List).cast<String>(),
+      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
     );
   }
 }

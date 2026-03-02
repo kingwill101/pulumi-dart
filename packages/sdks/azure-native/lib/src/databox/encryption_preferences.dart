@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Preferences related to the Encryption.
 class EncryptionPreferences {
   /// Defines secondary layer of software-based encryption enablement.
-  final String? doubleEncryption;
+  final pulumi.Input<String>? doubleEncryption;
   /// Defines Hardware level encryption (Only for disk)
-  final String? hardwareEncryption;
+  final pulumi.Input<String>? hardwareEncryption;
 
   /// Creates a new [EncryptionPreferences].
   /// [doubleEncryption] Defines secondary layer of software-based encryption enablement.
@@ -25,8 +26,8 @@ class EncryptionPreferences {
 
   factory EncryptionPreferences.fromMap(Map<String, dynamic> map) {
     return EncryptionPreferences(
-      doubleEncryption: map['doubleEncryption'] == null ? null : map['doubleEncryption'] as String,
-      hardwareEncryption: map['hardwareEncryption'] == null ? null : map['hardwareEncryption'] as String,
+      doubleEncryption: map['doubleEncryption'] == null ? null : (map['doubleEncryption'] as String).input(),
+      hardwareEncryption: map['hardwareEncryption'] == null ? null : (map['hardwareEncryption'] as String).input(),
     );
   }
 }

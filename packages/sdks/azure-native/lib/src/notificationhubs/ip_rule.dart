@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A network authorization rule that filters traffic based on IP address.
 class IpRule {
   /// IP mask.
-  final String ipMask;
+  final pulumi.Input<String> ipMask;
   /// List of access rights.
-  final List<String> rights;
+  final pulumi.Input<List<String>> rights;
 
   /// Creates a new [IpRule].
   /// [ipMask] IP mask.
@@ -25,8 +26,8 @@ class IpRule {
 
   factory IpRule.fromMap(Map<String, dynamic> map) {
     return IpRule(
-      ipMask: map['ipMask'] as String,
-      rights: (map['rights'] as List).cast<String>(),
+      ipMask: (map['ipMask'] as String).input(),
+      rights: ((map['rights'] as List).cast<String>()).input(),
     );
   }
 }

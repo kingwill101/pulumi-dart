@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'next_generation_firewall_virtual_network_panorama_network_profile_vnet_configuration.dart';
 
 class NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile {
   /// Specifies a list of Azure Public IP Address IDs that can be used for Egress (Source) Network Address Translation.
-  final List<String>? egressNatIpAddressIds;
-  final List<String>? egressNatIpAddresses;
+  final pulumi.Input<List<String>>? egressNatIpAddressIds;
+  final pulumi.Input<List<String>>? egressNatIpAddresses;
   /// Specifies a list of Azure Public IP Address IDs.
-  final List<String> publicIpAddressIds;
-  final List<String>? publicIpAddresses;
+  final pulumi.Input<List<String>> publicIpAddressIds;
+  final pulumi.Input<List<String>>? publicIpAddresses;
   /// Specifies a list of trusted ranges to use for the Network.
-  final List<String>? trustedAddressRanges;
+  final pulumi.Input<List<String>>? trustedAddressRanges;
   /// A `vnet_configuration` block as defined below.
-  final NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfiguration vnetConfiguration;
+  final pulumi.Input<NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfiguration> vnetConfiguration;
 
   /// Creates a new [NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile].
   /// [egressNatIpAddressIds] Specifies a list of Azure Public IP Address IDs that can be used for Egress (Source) Network Address Translation.
@@ -37,18 +38,18 @@ class NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile {
       'publicIpAddressIds': publicIpAddressIds,
       'publicIpAddresses': ?publicIpAddresses,
       'trustedAddressRanges': ?trustedAddressRanges,
-      'vnetConfiguration': vnetConfiguration.toMap(),
+      'vnetConfiguration': pulumi.Input.mapInputValue<NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfiguration, Map<String, dynamic>>(vnetConfiguration, (value) => value.toMap()),
     };
   }
 
   factory NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile(
-      egressNatIpAddressIds: map['egressNatIpAddressIds'] == null ? null : (map['egressNatIpAddressIds'] as List).cast<String>(),
-      egressNatIpAddresses: map['egressNatIpAddresses'] == null ? null : (map['egressNatIpAddresses'] as List).cast<String>(),
-      publicIpAddressIds: (map['publicIpAddressIds'] as List).cast<String>(),
-      publicIpAddresses: map['publicIpAddresses'] == null ? null : (map['publicIpAddresses'] as List).cast<String>(),
-      trustedAddressRanges: map['trustedAddressRanges'] == null ? null : (map['trustedAddressRanges'] as List).cast<String>(),
-      vnetConfiguration: NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfiguration.fromMap((map['vnetConfiguration'] as Map).cast<String, dynamic>()),
+      egressNatIpAddressIds: map['egressNatIpAddressIds'] == null ? null : ((map['egressNatIpAddressIds'] as List).cast<String>()).input(),
+      egressNatIpAddresses: map['egressNatIpAddresses'] == null ? null : ((map['egressNatIpAddresses'] as List).cast<String>()).input(),
+      publicIpAddressIds: ((map['publicIpAddressIds'] as List).cast<String>()).input(),
+      publicIpAddresses: map['publicIpAddresses'] == null ? null : ((map['publicIpAddresses'] as List).cast<String>()).input(),
+      trustedAddressRanges: map['trustedAddressRanges'] == null ? null : ((map['trustedAddressRanges'] as List).cast<String>()).input(),
+      vnetConfiguration: (NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfiguration.fromMap((map['vnetConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

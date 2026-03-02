@@ -49,31 +49,19 @@ class BucketReplicationState {
   /// [status] The status of the data replication task. Can be starting, doing and closing.
   /// [syncRole] Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
   BucketReplicationState({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? bucket,
-    pulumi.Output<BucketReplicationDestination>? destination,
-    pulumi.Output<BucketReplicationEncryptionConfiguration>? encryptionConfiguration,
-    pulumi.Output<String>? historicalObjectReplication,
-    pulumi.Output<BucketReplicationPrefixSet>? prefixSet,
-    pulumi.Output<BucketReplicationProgress>? progress,
-    pulumi.Output<BucketReplicationRtc>? rtc,
-    pulumi.Output<String>? ruleId,
-    pulumi.Output<BucketReplicationSourceSelectionCriteria>? sourceSelectionCriteria,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? syncRole,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      destination = pulumi.Input.asOptionalInput<BucketReplicationDestination>(destination),
-      encryptionConfiguration = pulumi.Input.asOptionalInput<BucketReplicationEncryptionConfiguration>(encryptionConfiguration),
-      historicalObjectReplication = pulumi.Input.asOptionalInput<String>(historicalObjectReplication),
-      prefixSet = pulumi.Input.asOptionalInput<BucketReplicationPrefixSet>(prefixSet),
-      progress = pulumi.Input.asOptionalInput<BucketReplicationProgress>(progress),
-      rtc = pulumi.Input.asOptionalInput<BucketReplicationRtc>(rtc),
-      ruleId = pulumi.Input.asOptionalInput<String>(ruleId),
-      sourceSelectionCriteria = pulumi.Input.asOptionalInput<BucketReplicationSourceSelectionCriteria>(sourceSelectionCriteria),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      syncRole = pulumi.Input.asOptionalInput<String>(syncRole);
+    this.action,
+    this.bucket,
+    this.destination,
+    this.encryptionConfiguration,
+    this.historicalObjectReplication,
+    this.prefixSet,
+    this.progress,
+    this.rtc,
+    this.ruleId,
+    this.sourceSelectionCriteria,
+    this.status,
+    this.syncRole,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class BucketReplicationState {
 
   factory BucketReplicationState.fromMap(Map<String, dynamic> map) {
     return BucketReplicationState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      destination: map['destination'] == null ? null : pulumi.Output.create<BucketReplicationDestination>(BucketReplicationDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : pulumi.Output.create<BucketReplicationEncryptionConfiguration>(BucketReplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())),
-      historicalObjectReplication: map['historicalObjectReplication'] == null ? null : pulumi.Output.create<String>(map['historicalObjectReplication'] as String),
-      prefixSet: map['prefixSet'] == null ? null : pulumi.Output.create<BucketReplicationPrefixSet>(BucketReplicationPrefixSet.fromMap((map['prefixSet'] as Map).cast<String, dynamic>())),
-      progress: map['progress'] == null ? null : pulumi.Output.create<BucketReplicationProgress>(BucketReplicationProgress.fromMap((map['progress'] as Map).cast<String, dynamic>())),
-      rtc: map['rtc'] == null ? null : pulumi.Output.create<BucketReplicationRtc>(BucketReplicationRtc.fromMap((map['rtc'] as Map).cast<String, dynamic>())),
-      ruleId: map['ruleId'] == null ? null : pulumi.Output.create<String>(map['ruleId'] as String),
-      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : pulumi.Output.create<BucketReplicationSourceSelectionCriteria>(BucketReplicationSourceSelectionCriteria.fromMap((map['sourceSelectionCriteria'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      syncRole: map['syncRole'] == null ? null : pulumi.Output.create<String>(map['syncRole'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      destination: map['destination'] == null ? null : (BucketReplicationDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (BucketReplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      historicalObjectReplication: map['historicalObjectReplication'] == null ? null : (map['historicalObjectReplication'] as String).input(),
+      prefixSet: map['prefixSet'] == null ? null : (BucketReplicationPrefixSet.fromMap((map['prefixSet'] as Map).cast<String, dynamic>())).input(),
+      progress: map['progress'] == null ? null : (BucketReplicationProgress.fromMap((map['progress'] as Map).cast<String, dynamic>())).input(),
+      rtc: map['rtc'] == null ? null : (BucketReplicationRtc.fromMap((map['rtc'] as Map).cast<String, dynamic>())).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : (BucketReplicationSourceSelectionCriteria.fromMap((map['sourceSelectionCriteria'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      syncRole: map['syncRole'] == null ? null : (map['syncRole'] as String).input(),
     );
   }
 }

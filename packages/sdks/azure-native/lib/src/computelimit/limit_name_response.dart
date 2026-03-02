@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of the limit name.
 class LimitNameResponse {
   /// The localized limit name.
-  final String localizedValue;
+  final pulumi.Input<String> localizedValue;
   /// The limit name.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [LimitNameResponse].
   /// [localizedValue] The localized limit name.
@@ -25,8 +26,8 @@ class LimitNameResponse {
 
   factory LimitNameResponse.fromMap(Map<String, dynamic> map) {
     return LimitNameResponse(
-      localizedValue: map['localizedValue'] as String,
-      value: map['value'] as String,
+      localizedValue: (map['localizedValue'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

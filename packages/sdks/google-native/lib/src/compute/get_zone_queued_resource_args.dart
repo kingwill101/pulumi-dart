@@ -16,13 +16,10 @@ class GetZoneQueuedResourceArgs {
   /// [queuedResource] Required.
   /// [zone] Required.
   GetZoneQueuedResourceArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> queuedResource,
-    required pulumi.Output<String> zone,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queuedResource = pulumi.Input.asInput<String>(queuedResource),
-      zone = pulumi.Input.asInput<String>(zone);
+    this.project,
+    required this.queuedResource,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetZoneQueuedResourceArgs {
 
   factory GetZoneQueuedResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneQueuedResourceArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      queuedResource: pulumi.Output.create<String>(map['queuedResource'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      queuedResource: (map['queuedResource'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

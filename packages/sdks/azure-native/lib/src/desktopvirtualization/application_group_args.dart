@@ -52,35 +52,21 @@ class ApplicationGroupArgs {
   /// [sku] Optional.
   /// [tags] Resource tags.
   ApplicationGroupArgs({
-    pulumi.Output<String>? applicationGroupName,
-    required pulumi.Output<String> applicationGroupType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? friendlyName,
-    required pulumi.Output<String> hostPoolArmPath,
-    pulumi.Output<ResourceModelWithAllowedPropertySetIdentity>? identity,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedBy,
-    pulumi.Output<ResourceModelWithAllowedPropertySetPlan>? plan,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? showInFeed,
-    pulumi.Output<ResourceModelWithAllowedPropertySetSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationGroupName = pulumi.Input.asOptionalInput<String>(applicationGroupName),
-      applicationGroupType = pulumi.Input.asInput<String>(applicationGroupType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      hostPoolArmPath = pulumi.Input.asInput<String>(hostPoolArmPath),
-      identity = pulumi.Input.asOptionalInput<ResourceModelWithAllowedPropertySetIdentity>(identity),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedBy = pulumi.Input.asOptionalInput<String>(managedBy),
-      plan = pulumi.Input.asOptionalInput<ResourceModelWithAllowedPropertySetPlan>(plan),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      showInFeed = pulumi.Input.asOptionalInput<bool>(showInFeed),
-      sku = pulumi.Input.asOptionalInput<ResourceModelWithAllowedPropertySetSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.applicationGroupName,
+    required this.applicationGroupType,
+    this.description,
+    this.friendlyName,
+    required this.hostPoolArmPath,
+    this.identity,
+    this.kind,
+    this.location,
+    this.managedBy,
+    this.plan,
+    required this.resourceGroupName,
+    this.showInFeed,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class ApplicationGroupArgs {
 
   factory ApplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationGroupArgs(
-      applicationGroupName: map['applicationGroupName'] == null ? null : pulumi.Output.create<String>(map['applicationGroupName'] as String),
-      applicationGroupType: pulumi.Output.create<String>(map['applicationGroupType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      hostPoolArmPath: pulumi.Output.create<String>(map['hostPoolArmPath'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ResourceModelWithAllowedPropertySetIdentity>(ResourceModelWithAllowedPropertySetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedBy: map['managedBy'] == null ? null : pulumi.Output.create<String>(map['managedBy'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<ResourceModelWithAllowedPropertySetPlan>(ResourceModelWithAllowedPropertySetPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      showInFeed: map['showInFeed'] == null ? null : pulumi.Output.create<bool>(map['showInFeed'] as bool),
-      sku: map['sku'] == null ? null : pulumi.Output.create<ResourceModelWithAllowedPropertySetSku>(ResourceModelWithAllowedPropertySetSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationGroupName: map['applicationGroupName'] == null ? null : (map['applicationGroupName'] as String).input(),
+      applicationGroupType: (map['applicationGroupType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      hostPoolArmPath: (map['hostPoolArmPath'] as String).input(),
+      identity: map['identity'] == null ? null : (ResourceModelWithAllowedPropertySetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
+      plan: map['plan'] == null ? null : (ResourceModelWithAllowedPropertySetPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      showInFeed: map['showInFeed'] == null ? null : (map['showInFeed'] as bool).input(),
+      sku: map['sku'] == null ? null : (ResourceModelWithAllowedPropertySetSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class OrderArgs {
   /// [shipmentType] ShipmentType of the order
   /// [shippingAddress] The shipping address.
   OrderArgs({
-    required pulumi.Output<ContactDetails> contactInformation,
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? shipmentType,
-    pulumi.Output<Address>? shippingAddress,
-  }) :
-      contactInformation = pulumi.Input.asInput<ContactDetails>(contactInformation),
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shipmentType = pulumi.Input.asOptionalInput<String>(shipmentType),
-      shippingAddress = pulumi.Input.asOptionalInput<Address>(shippingAddress);
+    required this.contactInformation,
+    required this.deviceName,
+    required this.resourceGroupName,
+    this.shipmentType,
+    this.shippingAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class OrderArgs {
 
   factory OrderArgs.fromMap(Map<String, dynamic> map) {
     return OrderArgs(
-      contactInformation: pulumi.Output.create<ContactDetails>(ContactDetails.fromMap((map['contactInformation'] as Map).cast<String, dynamic>())),
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shipmentType: map['shipmentType'] == null ? null : pulumi.Output.create<String>(map['shipmentType'] as String),
-      shippingAddress: map['shippingAddress'] == null ? null : pulumi.Output.create<Address>(Address.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())),
+      contactInformation: (ContactDetails.fromMap((map['contactInformation'] as Map).cast<String, dynamic>())).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shipmentType: map['shipmentType'] == null ? null : (map['shipmentType'] as String).input(),
+      shippingAddress: map['shippingAddress'] == null ? null : (Address.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

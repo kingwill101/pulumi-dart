@@ -19,13 +19,10 @@ class GetAccountConnectionArgs {
   /// [connectionName] Friendly name of the connection
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAccountConnectionArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> connectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.connectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAccountConnectionArgs {
 
   factory GetAccountConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountConnectionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      connectionName: (map['connectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

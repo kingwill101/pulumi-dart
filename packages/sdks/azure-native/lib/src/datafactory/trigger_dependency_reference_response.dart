@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_reference_response.dart';
 
 /// Trigger referenced dependency.
 class TriggerDependencyReferenceResponse {
   /// Referenced trigger.
-  final TriggerReferenceResponse referenceTrigger;
+  final pulumi.Input<TriggerReferenceResponse> referenceTrigger;
   /// The type of dependency reference.
   /// Expected value is 'TriggerDependencyReference'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TriggerDependencyReferenceResponse].
   /// [referenceTrigger] Referenced trigger.
@@ -20,15 +21,15 @@ class TriggerDependencyReferenceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'referenceTrigger': referenceTrigger.toMap(),
+      'referenceTrigger': pulumi.Input.mapInputValue<TriggerReferenceResponse, Map<String, dynamic>>(referenceTrigger, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory TriggerDependencyReferenceResponse.fromMap(Map<String, dynamic> map) {
     return TriggerDependencyReferenceResponse(
-      referenceTrigger: TriggerReferenceResponse.fromMap((map['referenceTrigger'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      referenceTrigger: (TriggerReferenceResponse.fromMap((map['referenceTrigger'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class BackupPolicyPostgresqlArgs {
   /// [timeZone] Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy PostgreSQL to be created.
   /// [vaultName] The name of the Backup Vault where the Backup Policy PostgreSQL should exist. Changing this forces a new Backup Policy PostgreSQL to be created.
   BackupPolicyPostgresqlArgs({
-    required pulumi.Output<List<String>> backupRepeatingTimeIntervals,
-    required pulumi.Output<String> defaultRetentionDuration,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<BackupPolicyPostgresqlRetentionRule>>? retentionRules,
-    pulumi.Output<String>? timeZone,
-    required pulumi.Output<String> vaultName,
-  }) :
-      backupRepeatingTimeIntervals = pulumi.Input.asInput<List<String>>(backupRepeatingTimeIntervals),
-      defaultRetentionDuration = pulumi.Input.asInput<String>(defaultRetentionDuration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      retentionRules = pulumi.Input.asOptionalInput<List<BackupPolicyPostgresqlRetentionRule>>(retentionRules),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.backupRepeatingTimeIntervals,
+    required this.defaultRetentionDuration,
+    this.name,
+    required this.resourceGroupName,
+    this.retentionRules,
+    this.timeZone,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class BackupPolicyPostgresqlArgs {
 
   factory BackupPolicyPostgresqlArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyPostgresqlArgs(
-      backupRepeatingTimeIntervals: pulumi.Output.create<List<String>>((map['backupRepeatingTimeIntervals'] as List).cast<String>()),
-      defaultRetentionDuration: pulumi.Output.create<String>(map['defaultRetentionDuration'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retentionRules: map['retentionRules'] == null ? null : pulumi.Output.create<List<BackupPolicyPostgresqlRetentionRule>>(pulumi.Input.decodeList<BackupPolicyPostgresqlRetentionRule>(map['retentionRules'], (value) => BackupPolicyPostgresqlRetentionRule.fromMap((value as Map).cast<String, dynamic>()))),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      backupRepeatingTimeIntervals: ((map['backupRepeatingTimeIntervals'] as List).cast<String>()).input(),
+      defaultRetentionDuration: (map['defaultRetentionDuration'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyPostgresqlRetentionRule>(map['retentionRules'], (value) => BackupPolicyPostgresqlRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

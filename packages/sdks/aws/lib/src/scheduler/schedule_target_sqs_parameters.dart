@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleTargetSqsParameters {
   /// FIFO message group ID to use as the target.
-  final String? messageGroupId;
+  final pulumi.Input<String>? messageGroupId;
 
   /// Creates a new [ScheduleTargetSqsParameters].
   /// [messageGroupId] FIFO message group ID to use as the target.
@@ -19,7 +20,7 @@ class ScheduleTargetSqsParameters {
 
   factory ScheduleTargetSqsParameters.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetSqsParameters(
-      messageGroupId: map['messageGroupId'] == null ? null : map['messageGroupId'] as String,
+      messageGroupId: map['messageGroupId'] == null ? null : (map['messageGroupId'] as String).input(),
     );
   }
 }

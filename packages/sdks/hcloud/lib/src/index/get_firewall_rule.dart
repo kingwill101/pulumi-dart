@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallRule {
   /// (Optional, string) Description of the firewall rule
-  final String? description;
+  final pulumi.Input<String>? description;
   /// (Required, List) List of CIDRs that are allowed within this Firewall Rule (when `direction` is `out`)
-  final List<String>? destinationIps;
+  final pulumi.Input<List<String>>? destinationIps;
   /// (Required, string) Direction of the Firewall Rule. `in`, `out`
-  final String direction;
+  final pulumi.Input<String> direction;
   /// (Required, string) Port of the Firewall Rule. Required when `protocol` is `tcp` or `udp`
-  final String? port;
+  final pulumi.Input<String>? port;
   /// (Required, string) Protocol of the Firewall Rule. `tcp`, `icmp`, `udp`, `gre`, `esp`
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// (Required, List) List of CIDRs that are allowed within this Firewall Rule (when `direction` is `in`)
-  final List<String>? sourceIps;
+  final pulumi.Input<List<String>>? sourceIps;
 
   /// Creates a new [GetFirewallRule].
   /// [description] (Optional, string) Description of the firewall rule
@@ -44,12 +45,12 @@ class GetFirewallRule {
 
   factory GetFirewallRule.fromMap(Map<String, dynamic> map) {
     return GetFirewallRule(
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationIps: map['destinationIps'] == null ? null : (map['destinationIps'] as List).cast<String>(),
-      direction: map['direction'] as String,
-      port: map['port'] == null ? null : map['port'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      sourceIps: map['sourceIps'] == null ? null : (map['sourceIps'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationIps: map['destinationIps'] == null ? null : ((map['destinationIps'] as List).cast<String>()).input(),
+      direction: (map['direction'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      sourceIps: map['sourceIps'] == null ? null : ((map['sourceIps'] as List).cast<String>()).input(),
     );
   }
 }

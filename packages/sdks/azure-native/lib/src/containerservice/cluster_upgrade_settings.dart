@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'upgrade_override_settings.dart';
 
 /// Settings for upgrading a cluster.
 class ClusterUpgradeSettings {
   /// Settings for overrides.
-  final UpgradeOverrideSettings? overrideSettings;
+  final pulumi.Input<UpgradeOverrideSettings>? overrideSettings;
 
   /// Creates a new [ClusterUpgradeSettings].
   /// [overrideSettings] Settings for overrides.
@@ -15,13 +16,13 @@ class ClusterUpgradeSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'overrideSettings': ?overrideSettings == null ? null : overrideSettings!.toMap(),
+      'overrideSettings': ?pulumi.Input.mapOptionalInputValue<UpgradeOverrideSettings, Map<String, dynamic>>(overrideSettings, (value) => value.toMap()),
     };
   }
 
   factory ClusterUpgradeSettings.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeSettings(
-      overrideSettings: map['overrideSettings'] == null ? null : UpgradeOverrideSettings.fromMap((map['overrideSettings'] as Map).cast<String, dynamic>()),
+      overrideSettings: map['overrideSettings'] == null ? null : (UpgradeOverrideSettings.fromMap((map['overrideSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

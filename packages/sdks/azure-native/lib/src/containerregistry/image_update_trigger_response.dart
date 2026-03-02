@@ -6,11 +6,11 @@ import 'image_descriptor_response.dart';
 /// The image update trigger that caused a build.
 class ImageUpdateTriggerResponse {
   /// The unique ID of the trigger.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The list of image updates that caused the build.
-  final List<ImageDescriptorResponse>? images;
+  final pulumi.Input<List<ImageDescriptorResponse>>? images;
   /// The timestamp when the image update happened.
-  final String? timestamp;
+  final pulumi.Input<String>? timestamp;
 
   /// Creates a new [ImageUpdateTriggerResponse].
   /// [id] The unique ID of the trigger.
@@ -25,16 +25,16 @@ class ImageUpdateTriggerResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'images': ?images == null ? null : pulumi.Input.encodeList<ImageDescriptorResponse, Map<String, dynamic>>(images!, (value) => value.toMap()),
+      'images': ?pulumi.Input.mapOptionalInputValue<List<ImageDescriptorResponse>, List<Map<String, dynamic>>>(images, (value) => pulumi.Input.encodeList<ImageDescriptorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timestamp': ?timestamp,
     };
   }
 
   factory ImageUpdateTriggerResponse.fromMap(Map<String, dynamic> map) {
     return ImageUpdateTriggerResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      images: map['images'] == null ? null : pulumi.Input.decodeList<ImageDescriptorResponse>(map['images'], (value) => ImageDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      timestamp: map['timestamp'] == null ? null : map['timestamp'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      images: map['images'] == null ? null : (pulumi.Input.decodeList<ImageDescriptorResponse>(map['images'], (value) => ImageDescriptorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
     );
   }
 }

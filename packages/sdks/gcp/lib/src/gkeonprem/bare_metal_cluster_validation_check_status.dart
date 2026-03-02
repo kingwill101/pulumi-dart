@@ -7,7 +7,7 @@ class BareMetalClusterValidationCheckStatus {
   /// (Output)
   /// Individual checks which failed as part of the Preflight check execution.
   /// Structure is documented below.
-  final List<BareMetalClusterValidationCheckStatusResult>? results;
+  final pulumi.Input<List<BareMetalClusterValidationCheckStatusResult>>? results;
 
   /// Creates a new [BareMetalClusterValidationCheckStatus].
   /// [results] (Output)
@@ -17,13 +17,13 @@ class BareMetalClusterValidationCheckStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'results': ?results == null ? null : pulumi.Input.encodeList<BareMetalClusterValidationCheckStatusResult, Map<String, dynamic>>(results!, (value) => value.toMap()),
+      'results': ?pulumi.Input.mapOptionalInputValue<List<BareMetalClusterValidationCheckStatusResult>, List<Map<String, dynamic>>>(results, (value) => pulumi.Input.encodeList<BareMetalClusterValidationCheckStatusResult, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BareMetalClusterValidationCheckStatus.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterValidationCheckStatus(
-      results: map['results'] == null ? null : pulumi.Input.decodeList<BareMetalClusterValidationCheckStatusResult>(map['results'], (value) => BareMetalClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>())),
+      results: map['results'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterValidationCheckStatusResult>(map['results'], (value) => BareMetalClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

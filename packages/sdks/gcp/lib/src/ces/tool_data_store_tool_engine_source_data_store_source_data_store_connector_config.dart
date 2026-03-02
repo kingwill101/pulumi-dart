@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig {
   /// Resource name of the collection the data store belongs to.
-  final String? collection;
+  final pulumi.Input<String>? collection;
   /// Display name of the collection the data store belongs to.
-  final String? collectionDisplayName;
+  final pulumi.Input<String>? collectionDisplayName;
   /// The name of the data source.
   /// Example: 'salesforce', 'jira', 'confluence', 'bigquery'.
-  final String? dataSource;
+  final pulumi.Input<String>? dataSource;
 
   /// Creates a new [ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig].
   /// [collection] Resource name of the collection the data store belongs to.
@@ -30,9 +31,9 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig {
 
   factory ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig(
-      collection: map['collection'] == null ? null : map['collection'] as String,
-      collectionDisplayName: map['collectionDisplayName'] == null ? null : map['collectionDisplayName'] as String,
-      dataSource: map['dataSource'] == null ? null : map['dataSource'] as String,
+      collection: map['collection'] == null ? null : (map['collection'] as String).input(),
+      collectionDisplayName: map['collectionDisplayName'] == null ? null : (map['collectionDisplayName'] as String).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
     );
   }
 }

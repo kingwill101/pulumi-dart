@@ -40,21 +40,14 @@ class ServerCertificateArgs {
   /// [privateKey] The contents of the private key in PEM-encoded format.
   /// [tags] Map of resource tags for the server certificate. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ServerCertificateArgs({
-    required pulumi.Output<String> certificateBody,
-    pulumi.Output<String>? certificateChain,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? path,
-    required pulumi.Output<String> privateKey,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      certificateBody = pulumi.Input.asInput<String>(certificateBody),
-      certificateChain = pulumi.Input.asOptionalInput<String>(certificateChain),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      privateKey = pulumi.Input.asInput<String>(privateKey),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.certificateBody,
+    this.certificateChain,
+    this.name,
+    this.namePrefix,
+    this.path,
+    required this.privateKey,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,13 +63,13 @@ class ServerCertificateArgs {
 
   factory ServerCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ServerCertificateArgs(
-      certificateBody: pulumi.Output.create<String>(map['certificateBody'] as String),
-      certificateChain: map['certificateChain'] == null ? null : pulumi.Output.create<String>(map['certificateChain'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      privateKey: pulumi.Output.create<String>(map['privateKey'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      certificateBody: (map['certificateBody'] as String).input(),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      privateKey: (map['privateKey'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

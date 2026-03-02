@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prevention_discovery_config_action_pub_sub_notification_pubsub_condition_expressions.dart';
 
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition {
   /// An expression
   /// Structure is documented below.
-  final PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions? expressions;
+  final pulumi.Input<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions>? expressions;
 
   /// Creates a new [PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition].
   /// [expressions] An expression
@@ -15,13 +16,13 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expressions': ?expressions == null ? null : expressions!.toMap(),
+      'expressions': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions, Map<String, dynamic>>(expressions, (value) => value.toMap()),
     };
   }
 
   factory PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition(
-      expressions: map['expressions'] == null ? null : PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.fromMap((map['expressions'] as Map).cast<String, dynamic>()),
+      expressions: map['expressions'] == null ? null : (PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.fromMap((map['expressions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

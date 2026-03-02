@@ -19,13 +19,10 @@ class GetDnsResolverPolicyVirtualNetworkLinkArgs {
   /// [dnsResolverPolicyVirtualNetworkLinkName] The name of the DNS resolver policy virtual network link for the DNS resolver policy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDnsResolverPolicyVirtualNetworkLinkArgs({
-    required pulumi.Output<String> dnsResolverPolicyName,
-    required pulumi.Output<String> dnsResolverPolicyVirtualNetworkLinkName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dnsResolverPolicyName = pulumi.Input.asInput<String>(dnsResolverPolicyName),
-      dnsResolverPolicyVirtualNetworkLinkName = pulumi.Input.asInput<String>(dnsResolverPolicyVirtualNetworkLinkName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dnsResolverPolicyName,
+    required this.dnsResolverPolicyVirtualNetworkLinkName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDnsResolverPolicyVirtualNetworkLinkArgs {
 
   factory GetDnsResolverPolicyVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsResolverPolicyVirtualNetworkLinkArgs(
-      dnsResolverPolicyName: pulumi.Output.create<String>(map['dnsResolverPolicyName'] as String),
-      dnsResolverPolicyVirtualNetworkLinkName: pulumi.Output.create<String>(map['dnsResolverPolicyVirtualNetworkLinkName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dnsResolverPolicyName: (map['dnsResolverPolicyName'] as String).input(),
+      dnsResolverPolicyVirtualNetworkLinkName: (map['dnsResolverPolicyVirtualNetworkLinkName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

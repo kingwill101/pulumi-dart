@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The runtime config of a PipelineJob.
 class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse {
   /// Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as PIPELINE_FAILURE_POLICY_FAIL_SLOW. However, if a pipeline is set to PIPELINE_FAILURE_POLICY_FAIL_FAST, it will stop scheduling any new tasks when a task has failed. Any scheduled tasks will continue to completion.
-  final String failurePolicy;
+  final pulumi.Input<String> failurePolicy;
   /// A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
-  final String gcsOutputDirectory;
+  final pulumi.Input<String> gcsOutputDirectory;
   /// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
-  final Map<String, String> inputArtifacts;
+  final pulumi.Input<Map<String, String>> inputArtifacts;
   /// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-  final Map<String, String> parameterValues;
+  final pulumi.Input<Map<String, String>> parameterValues;
   /// Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
-  final Map<String, String> parameters;
+  final pulumi.Input<Map<String, String>> parameters;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse].
   /// [failurePolicy] Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as PIPELINE_FAILURE_POLICY_FAIL_SLOW. However, if a pipeline is set to PIPELINE_FAILURE_POLICY_FAIL_FAST, it will stop scheduling any new tasks when a task has failed. Any scheduled tasks will continue to completion.
@@ -40,11 +41,11 @@ class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse {
 
   factory GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse(
-      failurePolicy: map['failurePolicy'] as String,
-      gcsOutputDirectory: map['gcsOutputDirectory'] as String,
-      inputArtifacts: (map['inputArtifacts'] as Map).cast<String, String>(),
-      parameterValues: (map['parameterValues'] as Map).cast<String, String>(),
-      parameters: (map['parameters'] as Map).cast<String, String>(),
+      failurePolicy: (map['failurePolicy'] as String).input(),
+      gcsOutputDirectory: (map['gcsOutputDirectory'] as String).input(),
+      inputArtifacts: ((map['inputArtifacts'] as Map).cast<String, String>()).input(),
+      parameterValues: ((map['parameterValues'] as Map).cast<String, String>()).input(),
+      parameters: ((map['parameters'] as Map).cast<String, String>()).input(),
     );
   }
 }
